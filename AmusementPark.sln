@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "API\WebAPI\WebAPI.csproj", "{BD518101-2995-431D-9AD4-30FD07E575F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F6275A80-5435-44C9-BE3D-33DB5D18A16C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FRONT", "FRONT", "{D83DD268-8F42-4A92-8A60-D9E4C0CA203E}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "AmusementPark", "FRONT\AmusementPark\AmusementPark.esproj", "{C8B4836C-153D-48E7-B802-0006481CAD1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD518101-2995-431D-9AD4-30FD07E575F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD518101-2995-431D-9AD4-30FD07E575F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD518101-2995-431D-9AD4-30FD07E575F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD518101-2995-431D-9AD4-30FD07E575F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8B4836C-153D-48E7-B802-0006481CAD1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B4836C-153D-48E7-B802-0006481CAD1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B4836C-153D-48E7-B802-0006481CAD1F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C8B4836C-153D-48E7-B802-0006481CAD1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B4836C-153D-48E7-B802-0006481CAD1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8B4836C-153D-48E7-B802-0006481CAD1F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD518101-2995-431D-9AD4-30FD07E575F4} = {F6275A80-5435-44C9-BE3D-33DB5D18A16C}
+		{C8B4836C-153D-48E7-B802-0006481CAD1F} = {D83DD268-8F42-4A92-8A60-D9E4C0CA203E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4636A4D0-2F20-4420-A022-3083E277A276}
+	EndGlobalSection
+EndGlobal
