@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: ./API/WebAPI
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+      - "5001:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - API_URL=http://api:5000
+
+  front:
+    build:
+      context: ./FRONT/AmusementPark
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+
+    networks:
+      - default
+
+networks:
+  default:

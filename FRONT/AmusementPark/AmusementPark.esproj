@@ -8,5 +8,6 @@
     <ProductionBuildCommand>npm run build</ProductionBuildCommand>
     <!-- Folder where production build objects will be placed -->
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\AmusementPark</BuildOutputFolder>
+    <DockerSupport>true</DockerSupport>
   </PropertyGroup>
 </Project>

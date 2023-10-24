@@ -11,6 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FRONT", "FRONT", "{D83DD268
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "AmusementPark", "FRONT\AmusementPark\AmusementPark.esproj", "{C8B4836C-153D-48E7-B802-0006481CAD1F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D7BDE5C4-D1D5-4458-A97C-13E78BDA01AE}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
