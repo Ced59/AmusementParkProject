@@ -2,6 +2,7 @@ version: '3'
 
 services:
   api:
+    container_name: amusement-park-api
     build:
       context: .
       dockerfile: API/WebAPI/Dockerfile
@@ -13,6 +14,7 @@ services:
       - API_URL=http://api:5000
 
   front:
+    container_name: amusement-park-front
     build:
       context: ./FRONT/AmusementPark
       dockerfile: Dockerfile
@@ -23,6 +25,32 @@ services:
       - api
     environment:
       - API_URL=https://api:5001
+
+  amusement-park-db:
+    container_name: amusement-park-db
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - amusement_park_db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"  
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    depends_on:
+      - amusement-park-db
+    ports:
+      - "5050:80"
+
+volumes:
+  amusement_park_db_data:     
 
 networks:
   default:
