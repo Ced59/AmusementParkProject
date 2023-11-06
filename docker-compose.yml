@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  api:
+  amusement-park-api:
     container_name: amusement-park-api
     build:
       context: .
@@ -13,7 +13,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - API_URL=http://api:5000
 
-  front:
+  amusement-park-front:
     container_name: amusement-park-front
     build:
       context: ./FRONT/AmusementPark
@@ -22,7 +22,7 @@ services:
       - "4200:80"  # Port HTTP local pour le front-end
       - "4201:443"  # Port HTTPS local pour le front-end
     depends_on:
-      - api
+      - amusement-park-api
     environment:
       - API_URL=https://api:5001
 
@@ -38,8 +38,8 @@ services:
     ports:
       - "5432:5432"  
 
-  pgadmin:
-    container_name: pgadmin4
+  amusement-park-pgadmin:
+    container_name: amusement-park-pgadmin
     image: dpage/pgadmin4
     environment:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
