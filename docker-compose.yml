@@ -3,11 +3,11 @@ version: '3'
 services:
   api:
     build:
-      context: ./API/WebAPI
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: API/WebAPI/Dockerfile
     ports:
-      - "5000:80"
-      - "5001:443"
+      - "5000:80"  # Port HTTP local pour l'API
+      - "5001:443"  # Port HTTPS local pour l'API
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - API_URL=http://api:5000
@@ -17,12 +17,14 @@ services:
       context: ./FRONT/AmusementPark
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "4200:80"  # Port HTTP local pour le front-end
+      - "4201:443"  # Port HTTPS local pour le front-end
     depends_on:
       - api
-
-    networks:
-      - default
+    environment:
+      - API_URL=https://api:5001
 
 networks:
   default:
+  
+  
