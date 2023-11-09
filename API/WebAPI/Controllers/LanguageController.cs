@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
         public LanguageController(IStringLocalizer<LanguageController> localizer, IStringLocalizerFactory factory, IOptions<RequestLocalizationOptions> localizationOptions)
         {
             _localizer = localizer;
-            _errorsLocalizer = factory.Create("ErrorMessages", Assembly.GetExecutingAssembly().GetName().Name);
+            _errorsLocalizer = factory.Create("ErrorMessages", Assembly.GetExecutingAssembly().GetName().Name!);
             _localizationOptions = localizationOptions;
         }
 
@@ -26,10 +26,20 @@ namespace WebAPI.Controllers
         [HttpGet("get-languages")]
         public IActionResult GetLanguages()
         {
-            var cultures = _localizationOptions.Value.SupportedCultures.Select(c => c.Name).ToList();
+            var cultures = _localizationOptions.Value.SupportedCultures!.Select(c => c.Name).ToList();
 
             return Ok(cultures);
         }
+
+        [HttpGet("get-language")]
+        public IActionResult GetLanguage()
+        {
+            var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
+            var culture = requestCultureFeature!.RequestCulture.Culture.Name;
+
+            return Ok(culture);
+        }
+
 
 
         [HttpPost("set-language")]
