@@ -10,6 +10,8 @@ namespace Entities.Model
     public abstract class ModelBase
     {
         public Guid Id { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public GeneralStatus OpenStatus { get; set; }
     }
 }
