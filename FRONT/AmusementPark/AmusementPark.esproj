@@ -10,4 +10,7 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\AmusementPark</BuildOutputFolder>
     <DockerSupport>true</DockerSupport>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\environments\" />
+  </ItemGroup>
 </Project>
