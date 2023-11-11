@@ -1,8 +1,8 @@
 
 export const apiConfig = {
-  baseUrl: 'http://localhost:5000',
+  baseUrl: "http://localhost:5000",
   endpoints: {
-    users: 'users',
-    posts: 'posts',
+    users: "users",
+    posts: "posts",
   }
 };
