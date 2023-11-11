@@ -4,6 +4,6 @@ export const environment = {
   production: true,
   api: {
     ...apiConfig,
-    baseUrl: 'https://your-production-api-url.com' // URL de production
+    baseUrl: "https://your-production-api-url.com" // URL de production
   }
 };

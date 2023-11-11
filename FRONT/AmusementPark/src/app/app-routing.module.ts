@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home-page/home/home.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule, Routes } from "@angular/router";
+import { HomeComponent } from "./home-page/home/home.component";
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' } // redirect to `home`
+  { path: "home", component: HomeComponent },
+  { path: "", redirectTo: "/home", pathMatch: "full" } // redirect to `home`
 ];
 
 
