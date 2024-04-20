@@ -13,20 +13,18 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "AmusementPark", "FRONT\Amus
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D7BDE5C4-D1D5-4458-A97C-13E78BDA01AE}"
 	ProjectSection(SolutionItems) = preProject
-		.env = .env
-		.env.example = .env.example
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "API\Entities\Entities\Entities.csproj", "{1B12CFB1-BFF5-4D6F-B8E8-E4986CDAAF3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "API\Entities\Entities\Entities.csproj", "{1B12CFB1-BFF5-4D6F-B8E8-E4986CDAAF3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dtos", "API\Dtos\Dtos\Dtos.csproj", "{6057AC59-DC71-4A5E-BC40-49F6FEAF38C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dtos", "API\Dtos\Dtos\Dtos.csproj", "{6057AC59-DC71-4A5E-BC40-49F6FEAF38C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "API\Services\Services\Services.csproj", "{F7784A87-0737-40E9-8E93-1673978CD958}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "API\Services\Services\Services.csproj", "{F7784A87-0737-40E9-8E93-1673978CD958}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "API\Repositories\Repositories\Repositories.csproj", "{EB2E9389-7D8D-4F95-BE0F-73193D0B54C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "API\Repositories\Repositories\Repositories.csproj", "{EB2E9389-7D8D-4F95-BE0F-73193D0B54C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonStatus", "API\CommonStatus\CommonStatus\CommonStatus.csproj", "{6A96C298-4137-426B-AC14-FE53AD70A64B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonStatus", "API\CommonStatus\CommonStatus\CommonStatus.csproj", "{6A96C298-4137-426B-AC14-FE53AD70A64B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommonStatus.General;
 using Entities.Model.Attractions;
 
 namespace Entities.Model.Parks
@@ -20,7 +21,7 @@ namespace Entities.Model.Parks
         public string? Website { get; set; }
         public string? Email { get; set; }
         public string? Phone { get; set; }
-
+        public GeneralStatus OpenStatus { get; set; }
         public List<Attraction>? Attractions { get; set; }
     }
 }

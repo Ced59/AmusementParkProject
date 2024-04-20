@@ -1,6 +1,13 @@
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
+using Repositories.Implementations;
+using Repositories.Interfaces;
+using Services.Implementations;
+using Services.Interfaces;
+using WebAPI.Settings;
 
 namespace WebAPI
 {
@@ -10,24 +17,30 @@ namespace WebAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Liste des cultures supportées
-            var supportedCultures = new List<CultureInfo> { new("en-US"), new("fr-FR"), new("de-DE"), new("es-ES") };
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IUsersService, UsersService>();
 
-            // Ajout des ressources statiques de traduction
-            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            // Ajout du service de localisation
-            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            // Services MongoDB
+            var mongoDbSettings = builder.Configuration.GetSection("MongoDB").Get<MongoDbSettings>();
+            builder.Services.AddSingleton<IMongoDbSettings>(mongoDbSettings);
+
+            builder.Services.AddSingleton<IMongoDatabase>(serviceProvider =>
             {
-                options.DefaultRequestCulture = new RequestCulture("en-US");
-                options.SupportedCultures = supportedCultures;
-                options.SupportedUICultures = supportedCultures;
+                var settings = serviceProvider.GetRequiredService<IMongoDbSettings>();
+                var client = new MongoClient(settings.Url);
+                return client.GetDatabase(settings.DatabaseName);
             });
+
+            builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
+
+            
+
+
 
             // Ajout de la prise en charge des routes en minuscule
             builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
@@ -47,19 +60,9 @@ namespace WebAPI
 
             app.MapControllers();
 
-            // MiddleWare pour sélectionner automatiquement la culture en fonction de la langue du navigateur ou de la langue selectionnée
-            app.UseRequestLocalization(options =>
-            {
-                options.SupportedCultures = supportedCultures;
-                options.SupportedUICultures = supportedCultures;
+            var mongoDatabase = app.Services.GetRequiredService<IMongoDatabase>();
+            MongoDbInitializer.InitializeCollections(mongoDatabase, mongoDbSettings);
 
-                options.ApplyCurrentCultureToResponseHeaders = true; // Ajout de l'entête Content-Language avec la culture par défaut du navigateur
-
-                options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider()); // Culture par query string
-                options.RequestCultureProviders.Insert(1, new CookieRequestCultureProvider()); // Culture par cookie
-
-                options.DefaultRequestCulture = new RequestCulture("en-US"); // Culture par défaut
-            });
 
             app.Run();
         }

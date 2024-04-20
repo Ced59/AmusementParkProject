@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonStatus.General;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Entities.Model.Attractions
 {
     public class Attraction : ModelBase
     {
+        public GeneralStatus OpenStatus { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string AttractionType { get; set; }

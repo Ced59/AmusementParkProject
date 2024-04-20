@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommonStatus.General;
-
-namespace Entities.Model
+﻿namespace Entities.Model
 {
     public abstract class ModelBase
     {
-        public Guid Id { get; set; }
+        public string? Id { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public GeneralStatus OpenStatus { get; set; }
+        public string? Language { get; set; }
     }
 }
