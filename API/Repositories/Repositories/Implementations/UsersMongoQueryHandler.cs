@@ -18,11 +18,22 @@ namespace Repositories.Implementations
             _usersCollection = database.GetCollection<UserInDb>(settings.UsersCollectionName);
         }
 
+        public async Task<bool> ExistsByEmailAsync(string? email)
+        {
+            var count = await _usersCollection.CountDocumentsAsync(user => user.Email == email);
+            return count > 0;
+        }
 
         public async Task<UserInDb> GetUserByIdAsync(string id)
         {
             return await _usersCollection.Find(user => user.Id == id).FirstOrDefaultAsync();
         }
+
+        public async Task<UserInDb> GetUserByEmailAsync(string? email)
+        {
+            return await _usersCollection.Find(user => user.Email == email).FirstOrDefaultAsync();
+        }
+
 
         public async Task<IEnumerable<UserInDb>> GetAllUsersAsync()
         {

@@ -8,4 +8,5 @@ public class UserCreated : ModelBase
     public bool? IsActivated { get; set;}
     public bool? IsBlocked { get; set;}
     public List<Role> Roles { get; set; } = new List<Role>();
+    public string? PreferredLanguage { get; set; }
 }

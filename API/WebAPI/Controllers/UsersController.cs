@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
+using WebAPI.ResponseHandlers;
 
 namespace WebAPI.Controllers
 {
@@ -18,14 +19,11 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         //[Authorize(Roles = "Admin,RH")]
-        public IActionResult CreateUser([FromBody] UserCreate user)
+        public async Task<IActionResult> CreateUserAsync([FromBody] UserCreate user)
         {
-            var userCreated = _usersService.CreateUser(user);
-            if (userCreated == null)
-            {
-                return BadRequest("Failed to create user");
-            }
-            return Ok(userCreated);
+            var userCreated = await _usersService!.CreateUser(user);
+
+            return ApiResponseHandler.HandleResponse(userCreated);
         }
     }
 

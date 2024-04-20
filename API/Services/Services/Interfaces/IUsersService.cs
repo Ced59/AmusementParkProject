@@ -1,4 +1,6 @@
-﻿using Entities.Model.Users;
+﻿using Entities.Model.Errors;
+using Entities.Model.Users;
+using OneOf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,6 @@ namespace Services.Interfaces
 {
     public interface IUsersService
     {
-        UserCreated? CreateUser(UserCreate user);
+        Task<OneOf<UserCreated, ErrorCodes.ErrorDetail>>? CreateUser(UserCreate user);
     }
 }

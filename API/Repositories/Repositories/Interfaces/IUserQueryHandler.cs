@@ -15,6 +15,8 @@ namespace Repositories.Interfaces
         Task<UserInDb> CreateUserAsync(UserInDb user);
         Task UpdateUserAsync(UserInDb user);
         Task DeleteUserAsync(string id);
+        Task<bool> ExistsByEmailAsync(string? email);
+        Task<UserInDb> GetUserByEmailAsync(string? email);
     }
 
 }

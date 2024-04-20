@@ -13,8 +13,9 @@ namespace Entities.Model.Users
         public string? LastName { get; set; }
         public string? Email { get; set; }
         public string? HashedPassword { get; set; }
-        public string? IsActivated { get; set; }
-        public string? IsBlocked { get; set; }
+        public bool IsActivated { get; set; }
+        public bool IsBlocked { get; set; }
+        public string? PreferredLanguage { get; set; }
         public List<Role> Roles { get; set; } = new();
         public DateTime LastLogin { get; set; }
         public DateTime LastActivity { get; set; }

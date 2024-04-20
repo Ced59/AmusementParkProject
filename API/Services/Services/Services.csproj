@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="OneOf" Version="3.0.263" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Entities\Entities\Entities.csproj" />
+    <ProjectReference Include="..\..\Repositories\Repositories\Repositories.csproj" />
   </ItemGroup>
 
 </Project>
