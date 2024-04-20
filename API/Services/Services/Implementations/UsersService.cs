@@ -74,6 +74,28 @@ namespace Services.Implementations
             };
         }
 
+        public async Task<OneOf<UserCreated, ErrorDetail>> GetUserByEmail(string email)
+        {
+            var user = await _userQueryHandler.GetUserByEmailAsync(email);
+            if (user == null)
+            {
+                return ErrorCodes.UserNotExists;
+            }
+            else
+            {
+                return new UserCreated
+                {
+                    CreatedAt = user.CreatedAt,
+                    Email = user.Email,
+                    Id = user.Id,
+                    IsActivated = user.IsActivated,
+                    IsBlocked = user.IsBlocked,
+                    Roles = user.Roles,
+                    PreferredLanguage = user.PreferredLanguage
+                };
+            }
+        }
+
         private static bool IsValidEmail(string? email)
         {
             if (string.IsNullOrWhiteSpace(email))

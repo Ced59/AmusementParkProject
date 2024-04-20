@@ -25,6 +25,14 @@ namespace WebAPI.Controllers
 
             return ApiResponseHandler.HandleResponse(userCreated);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserByEmail(string email)
+        {
+            var user = await _usersService.GetUserByEmail(email);
+
+            return ApiResponseHandler.HandleResponse(user);
+        }
     }
 
 }
