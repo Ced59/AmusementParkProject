@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommonStatus.General;
+using Common.General;
 using Entities.Model.Attractions;
 
 namespace Entities.Model.Parks

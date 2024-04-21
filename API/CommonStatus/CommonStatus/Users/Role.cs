@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Entities.Model.Users.Enums
+namespace Common.Users
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Role

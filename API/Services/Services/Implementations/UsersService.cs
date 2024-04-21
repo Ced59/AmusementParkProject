@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Common.Users;
+using Dtos.Users;
 using Entities.Model.Errors;
 using Entities.Model.Users;
-using Entities.Model.Users.Enums;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces;
@@ -23,7 +24,7 @@ namespace Services.Implementations
             _userQueryHandler = userQueryHandler;
         }
 
-        public async Task<OneOf<UserCreated, ErrorDetail>>? CreateUserAsync(UserCreate user)
+        public async Task<OneOf<UserCreatedDto, ErrorDetail>>? CreateUserAsync(UserCreateDto user)
         {
             if (user.Password != user.VerifyPassword)
             {
@@ -67,7 +68,7 @@ namespace Services.Implementations
 
             var userCreated =  await _userQueryHandler.CreateUserAsync(userToCreate);
 
-            return new UserCreated
+            return new UserCreatedDto
             {
                 CreatedAt = userCreated.CreatedAt,
                 Email = userCreated.Email,
@@ -79,7 +80,7 @@ namespace Services.Implementations
             };
         }
 
-        public async Task<OneOf<UserCreated, ErrorDetail>> GetUserByEmailAsync(string email)
+        public async Task<OneOf<UserCreatedDto, ErrorDetail>> GetUserByEmailAsync(string email)
         {
             var user = await _userQueryHandler.GetUserByEmailAsync(email);
             if (user == null)
@@ -87,7 +88,7 @@ namespace Services.Implementations
                 return ErrorCodes.UserNotExists;
             }
 
-            return new UserCreated
+            return new UserCreatedDto
             {
                 CreatedAt = user.CreatedAt,
                 Email = user.Email,
@@ -99,7 +100,7 @@ namespace Services.Implementations
             };
         }
 
-        public async Task<OneOf<UserCreated, ErrorDetail>> GetUserByIdAsync(string id)
+        public async Task<OneOf<UserCreatedDto, ErrorDetail>> GetUserByIdAsync(string id)
         {
             var user = await _userQueryHandler.GetUserByIdAsync(id);
 
@@ -108,7 +109,7 @@ namespace Services.Implementations
                 return ErrorCodes.UserNotExists;
             }
 
-            return new UserCreated
+            return new UserCreatedDto
             {
                 CreatedAt = user.CreatedAt,
                 Email = user.Email,

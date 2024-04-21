@@ -1,8 +1,8 @@
-﻿using Entities.Model.Users.Enums;
+﻿using Common.Users;
 
-namespace Entities.Model.Users;
+namespace Dtos.Users;
 
-public class UserCreated : ModelBase
+public class UserCreatedDto : ModelBaseDto
 {
     public string? Email { get; set;}
     public bool? IsActivated { get; set;}

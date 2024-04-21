@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "API\Services\Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "API\Repositories\Repositories\Repositories.csproj", "{EB2E9389-7D8D-4F95-BE0F-73193D0B54C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonStatus", "API\CommonStatus\CommonStatus\CommonStatus.csproj", "{6A96C298-4137-426B-AC14-FE53AD70A64B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "API\CommonStatus\CommonStatus\Common.csproj", "{6A96C298-4137-426B-AC14-FE53AD70A64B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

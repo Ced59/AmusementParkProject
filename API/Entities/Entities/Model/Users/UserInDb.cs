@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entities.Model.Users.Enums;
+using Common.Users;
 
 namespace Entities.Model.Users
 {

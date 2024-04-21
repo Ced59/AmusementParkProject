@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Dtos\Dtos\Dtos.csproj" />
     <ProjectReference Include="..\..\Entities\Entities\Entities.csproj" />
     <ProjectReference Include="..\..\Repositories\Repositories\Repositories.csproj" />
   </ItemGroup>

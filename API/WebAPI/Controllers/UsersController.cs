@@ -1,4 +1,5 @@
-﻿using Entities.Model.Users;
+﻿using Dtos.Users;
+using Entities.Model.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
@@ -19,7 +20,7 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         //[Authorize(Roles = "Admin,RH")]
-        public async Task<IActionResult> CreateUserAsync([FromBody] UserCreate user)
+        public async Task<IActionResult> CreateUserAsync([FromBody] UserCreateDto user)
         {
             var userCreated = await _usersService!.CreateUserAsync(user);
 
@@ -40,6 +41,12 @@ namespace WebAPI.Controllers
         {
             var user = await _usersService.GetUserByIdAsync(id);
             return ApiResponseHandler.HandleResponse(user);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> PutUserById(string id)
+        {
+            return Ok();
         }
     }
 

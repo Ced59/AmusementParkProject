@@ -1,4 +1,4 @@
-﻿namespace CommonStatus.General
+﻿namespace Common.General
 {
     public enum GeneralStatus
     {

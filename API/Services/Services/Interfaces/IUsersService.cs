@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dtos.Users;
 
 namespace Services.Interfaces
 {
     public interface IUsersService
     {
-        Task<OneOf<UserCreated, ErrorCodes.ErrorDetail>>? CreateUserAsync(UserCreate user);
-        Task<OneOf<UserCreated, ErrorCodes.ErrorDetail>> GetUserByEmailAsync(string email);
-        Task<OneOf<UserCreated, ErrorCodes.ErrorDetail>> GetUserByIdAsync(string id);
+        Task<OneOf<UserCreatedDto, ErrorCodes.ErrorDetail>>? CreateUserAsync(UserCreateDto user);
+        Task<OneOf<UserCreatedDto, ErrorCodes.ErrorDetail>> GetUserByEmailAsync(string email);
+        Task<OneOf<UserCreatedDto, ErrorCodes.ErrorDetail>> GetUserByIdAsync(string id);
     }
 }
