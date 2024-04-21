@@ -21,16 +21,24 @@ namespace WebAPI.Controllers
         //[Authorize(Roles = "Admin,RH")]
         public async Task<IActionResult> CreateUserAsync([FromBody] UserCreate user)
         {
-            var userCreated = await _usersService!.CreateUser(user);
+            var userCreated = await _usersService!.CreateUserAsync(user);
 
             return ApiResponseHandler.HandleResponse(userCreated);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUserByEmail(string email)
+        [Route("by-email")]
+        public async Task<IActionResult> GetUserByEmailAsync([FromQuery] string email)
         {
-            var user = await _usersService.GetUserByEmail(email);
+            var user = await _usersService.GetUserByEmailAsync(email);
 
+            return ApiResponseHandler.HandleResponse(user);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserByIdAsync(string id)
+        {
+            var user = await _usersService.GetUserByIdAsync(id);
             return ApiResponseHandler.HandleResponse(user);
         }
     }

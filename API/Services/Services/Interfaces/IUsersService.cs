@@ -11,7 +11,8 @@ namespace Services.Interfaces
 {
     public interface IUsersService
     {
-        Task<OneOf<UserCreated, ErrorCodes.ErrorDetail>>? CreateUser(UserCreate user);
-        Task<OneOf<UserCreated, ErrorCodes.ErrorDetail>> GetUserByEmail(string email);
+        Task<OneOf<UserCreated, ErrorCodes.ErrorDetail>>? CreateUserAsync(UserCreate user);
+        Task<OneOf<UserCreated, ErrorCodes.ErrorDetail>> GetUserByEmailAsync(string email);
+        Task<OneOf<UserCreated, ErrorCodes.ErrorDetail>> GetUserByIdAsync(string id);
     }
 }

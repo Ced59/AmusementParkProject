@@ -24,5 +24,7 @@ namespace Entities.Model.Errors
         public static readonly ErrorDetail InvalidEmailAddress = new(400, "Invalid email address format.");
         public static readonly ErrorDetail UserAlreadyExists = new(400, "User Already Exist.");
         public static readonly ErrorDetail UserNotExists = new(404, "User not Exist");
+        public static readonly ErrorDetail
+            InvalidPassword = new(400, "Password does not meet complexity requirements.");
     }
 }

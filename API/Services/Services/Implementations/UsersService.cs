@@ -23,7 +23,7 @@ namespace Services.Implementations
             _userQueryHandler = userQueryHandler;
         }
 
-        public async Task<OneOf<UserCreated, ErrorDetail>>? CreateUser(UserCreate user)
+        public async Task<OneOf<UserCreated, ErrorDetail>>? CreateUserAsync(UserCreate user)
         {
             if (user.Password != user.VerifyPassword)
             {
@@ -38,6 +38,11 @@ namespace Services.Implementations
             if (await _userQueryHandler.ExistsByEmailAsync(user.Email))
             {
                 return ErrorCodes.UserAlreadyExists;
+            }
+
+            if (!IsValidPassword(user.Password))
+            {
+                return ErrorCodes.InvalidPassword; 
             }
 
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
@@ -74,26 +79,45 @@ namespace Services.Implementations
             };
         }
 
-        public async Task<OneOf<UserCreated, ErrorDetail>> GetUserByEmail(string email)
+        public async Task<OneOf<UserCreated, ErrorDetail>> GetUserByEmailAsync(string email)
         {
             var user = await _userQueryHandler.GetUserByEmailAsync(email);
             if (user == null)
             {
                 return ErrorCodes.UserNotExists;
             }
-            else
+
+            return new UserCreated
             {
-                return new UserCreated
-                {
-                    CreatedAt = user.CreatedAt,
-                    Email = user.Email,
-                    Id = user.Id,
-                    IsActivated = user.IsActivated,
-                    IsBlocked = user.IsBlocked,
-                    Roles = user.Roles,
-                    PreferredLanguage = user.PreferredLanguage
-                };
+                CreatedAt = user.CreatedAt,
+                Email = user.Email,
+                Id = user.Id,
+                IsActivated = user.IsActivated,
+                IsBlocked = user.IsBlocked,
+                Roles = user.Roles,
+                PreferredLanguage = user.PreferredLanguage
+            };
+        }
+
+        public async Task<OneOf<UserCreated, ErrorDetail>> GetUserByIdAsync(string id)
+        {
+            var user = await _userQueryHandler.GetUserByIdAsync(id);
+
+            if (user == null)
+            {
+                return ErrorCodes.UserNotExists;
             }
+
+            return new UserCreated
+            {
+                CreatedAt = user.CreatedAt,
+                Email = user.Email,
+                Id = user.Id,
+                IsActivated = user.IsActivated,
+                IsBlocked = user.IsBlocked,
+                Roles = user.Roles,
+                PreferredLanguage = user.PreferredLanguage
+            };
         }
 
         private static bool IsValidEmail(string? email)
@@ -112,5 +136,13 @@ namespace Services.Implementations
                 return false;
             }
         }
+
+        private bool IsValidPassword(string password)
+        {
+            // Le mot de passe doit contenir au moins 8 caractères, dont un chiffre et un caractère spécial
+            var passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$";
+            return Regex.IsMatch(password, passwordPattern);
+        }
+
     }
 }
