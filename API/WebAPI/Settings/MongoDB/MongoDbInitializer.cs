@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using Repositories.Interfaces;
 
-namespace WebAPI.Settings
+namespace WebAPI.Settings.MongoDB
 {
     public static class MongoDbInitializer
     {

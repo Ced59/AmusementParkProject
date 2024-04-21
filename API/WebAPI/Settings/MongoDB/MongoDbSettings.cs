@@ -1,6 +1,6 @@
 ﻿using Repositories.Interfaces;
 
-namespace WebAPI.Settings
+namespace WebAPI.Settings.MongoDB
 {
     public class MongoDbSettings : IMongoDbSettings
     {

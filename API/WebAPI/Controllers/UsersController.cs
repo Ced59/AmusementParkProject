@@ -10,11 +10,13 @@ using Microsoft.AspNetCore.Mvc;
 using OneOf;
 using Services.Interfaces;
 using WebAPI.ResponseHandlers;
+using WebAPI.Settings.Attributes;
 using static Entities.Model.Errors.ErrorCodes;
 
 namespace WebAPI.Controllers
 {
     [ApiController]
+    [SwaggerOrder(2)]
     [Route("[controller]")]
     public class UsersController : ControllerBase
     {
