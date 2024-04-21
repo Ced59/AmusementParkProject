@@ -10,13 +10,13 @@ namespace Repositories.Interfaces
 
     public interface IUserQueryHandler
     {
-        Task<UserInDb> GetUserByIdAsync(string id);
-        Task<IEnumerable<UserInDb>> GetAllUsersAsync();
-        Task<UserInDb> CreateUserAsync(UserInDb user);
-        Task UpdateUserAsync(UserInDb user);
+        Task<User?> GetUserByIdAsync(string id);
+        Task<IEnumerable<User>> GetAllUsersAsync();
+        Task<User?> CreateUserAsync(User user);
+        Task<User?> UpdateUserAsync(User user);
         Task DeleteUserAsync(string id);
         Task<bool> ExistsByEmailAsync(string? email);
-        Task<UserInDb> GetUserByEmailAsync(string? email);
+        Task<User?> GetUserByEmailAsync(string? email);
     }
 
 }

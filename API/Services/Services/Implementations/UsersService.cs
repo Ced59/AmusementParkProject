@@ -5,7 +5,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Common.Users;
-using Dtos.Users;
+using Dtos.Users.Creating;
+using Dtos.Users.Updating;
 using Entities.Model.Errors;
 using Entities.Model.Users;
 using OneOf;
@@ -48,7 +49,7 @@ namespace Services.Implementations
 
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-            var userToCreate = new UserInDb()
+            var userToCreate = new User()
             {
                 Id = Guid.NewGuid().ToString(),
                 Email = user.Email,
@@ -121,6 +122,53 @@ namespace Services.Implementations
             };
         }
 
+        public async Task<OneOf<UserUpdatedDto, ErrorDetail>> UpdateUser(string id, UserUpdateDto userUpdate)
+        {
+            if (!IsValidEmail(userUpdate.Email))
+            {
+                return ErrorCodes.InvalidEmailAddress;
+            }
+
+            var userToUpdate = await _userQueryHandler.GetUserByIdAsync(id);
+
+            if (userToUpdate == null)
+            {
+                return ErrorCodes.UserNotExists;
+            }
+
+            userToUpdate.Email = userUpdate.Email;
+            userToUpdate.LastName = userUpdate.LastName;
+            userToUpdate.FirstName = userUpdate.FirstName;
+            userToUpdate.UpdatedAt = DateTime.Now;
+            userToUpdate.PreferredLanguage = userUpdate.PreferredLanguage;
+            userToUpdate.LastActivity = DateTime.Now;
+
+            var userUpdated = await _userQueryHandler.UpdateUserAsync(userToUpdate);
+
+            if (userUpdated == null)
+            {
+                return ErrorCodes.UserUpdateFailed;
+            }
+
+            var userUpdatedDto = new UserUpdatedDto
+            {
+                CreatedAt = userUpdated.CreatedAt,
+                Email = userUpdated.Email,
+                FirstName = userUpdated.FirstName,
+                LastName = userUpdated.LastName,
+                UpdatedAt = userUpdated.UpdatedAt,
+                PreferredLanguage = userUpdated.PreferredLanguage,
+                IsActivated = userUpdated.IsActivated,
+                Id = userUpdated.Id,
+                IsBlocked = userUpdated.IsBlocked,
+                Roles = userUpdated.Roles
+            };
+
+            return userUpdatedDto;
+        }
+
+        
+
         private static bool IsValidEmail(string? email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -140,7 +188,7 @@ namespace Services.Implementations
 
         private bool IsValidPassword(string password)
         {
-            // Le mot de passe doit contenir au moins 8 caractères, dont un chiffre et un caractère spécial
+            // Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial
             var passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$";
             return Regex.IsMatch(password, passwordPattern);
         }

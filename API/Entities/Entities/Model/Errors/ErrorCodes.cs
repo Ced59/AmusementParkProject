@@ -26,5 +26,6 @@ namespace Entities.Model.Errors
         public static readonly ErrorDetail UserNotExists = new(404, "User not Exist");
         public static readonly ErrorDetail
             InvalidPassword = new(400, "Password does not meet complexity requirements.");
+        public static readonly ErrorDetail UserUpdateFailed = new(500, "Update of the user failed.");
     }
 }

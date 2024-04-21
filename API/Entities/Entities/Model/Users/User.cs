@@ -7,7 +7,7 @@ using Common.Users;
 
 namespace Entities.Model.Users
 {
-    public class UserInDb : ModelBase
+    public class User : ModelBase
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

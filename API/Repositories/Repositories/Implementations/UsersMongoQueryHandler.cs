@@ -11,11 +11,11 @@ namespace Repositories.Implementations
 {
     public class UsersMongoQueryHandler : IUserQueryHandler
     {
-        private readonly IMongoCollection<UserInDb> _usersCollection;
+        private readonly IMongoCollection<User> _usersCollection;
 
         public UsersMongoQueryHandler(IMongoDatabase database, IMongoDbSettings settings)
         {
-            _usersCollection = database.GetCollection<UserInDb>(settings.UsersCollectionName);
+            _usersCollection = database.GetCollection<User>(settings.UsersCollectionName);
         }
 
         public async Task<bool> ExistsByEmailAsync(string? email)
@@ -24,32 +24,54 @@ namespace Repositories.Implementations
             return count > 0;
         }
 
-        public async Task<UserInDb> GetUserByIdAsync(string id)
+        public async Task<User?> GetUserByIdAsync(string id)
         {
             return await _usersCollection.Find(user => user.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<UserInDb> GetUserByEmailAsync(string? email)
+        public async Task<User?> GetUserByEmailAsync(string? email)
         {
             return await _usersCollection.Find(user => user.Email == email).FirstOrDefaultAsync();
         }
 
 
-        public async Task<IEnumerable<UserInDb>> GetAllUsersAsync()
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
             return await _usersCollection.Find(user => true).ToListAsync();
         }
 
-        public async Task<UserInDb> CreateUserAsync(UserInDb user)
+        public async Task<User?> CreateUserAsync(User user)
         {
-            await _usersCollection.InsertOneAsync(user);
-            return user;
+            try
+            {
+                await _usersCollection.InsertOneAsync(user);
+                return user;  
+            }
+            catch (Exception)
+            {
+                return null;  
+            }
         }
 
-        public async Task UpdateUserAsync(UserInDb user)
+        public async Task<User?> UpdateUserAsync(User user)
         {
-            await _usersCollection.ReplaceOneAsync(u => u.Id == user.Id, user);
+            var filter = Builders<User>.Filter.Eq(u => u.Id, user.Id);
+            var options = new FindOneAndReplaceOptions<User>
+            {
+                ReturnDocument = ReturnDocument.After, 
+                IsUpsert = false  
+            };
+
+            try
+            {
+                return await _usersCollection.FindOneAndReplaceAsync(filter, user, options);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
+
 
         public async Task DeleteUserAsync(string id)
         {

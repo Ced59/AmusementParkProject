@@ -1,4 +1,5 @@
-﻿using Dtos.Users;
+﻿using Dtos.Users.Creating;
+using Dtos.Users.Updating;
 using Entities.Model.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -43,10 +44,12 @@ namespace WebAPI.Controllers
             return ApiResponseHandler.HandleResponse(user);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> PutUserById(string id)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUserAsync(string id, [FromBody] UserUpdateDto userUpdate)
         {
-            return Ok();
+            var userUpdated = await _usersService.UpdateUser(id, userUpdate);
+
+            return ApiResponseHandler.HandleResponse(userUpdated);
         }
     }
 
