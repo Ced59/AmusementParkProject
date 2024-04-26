@@ -45,11 +45,11 @@ namespace Repositories.Implementations
             try
             {
                 await _usersCollection.InsertOneAsync(user);
-                return user;  
+                return user;
             }
             catch (Exception)
             {
-                return null;  
+                return null;
             }
         }
 
@@ -58,8 +58,8 @@ namespace Repositories.Implementations
             var filter = Builders<User>.Filter.Eq(u => u.Id, user.Id);
             var options = new FindOneAndReplaceOptions<User>
             {
-                ReturnDocument = ReturnDocument.After, 
-                IsUpsert = false  
+                ReturnDocument = ReturnDocument.After,
+                IsUpsert = false
             };
 
             try
@@ -76,6 +76,33 @@ namespace Repositories.Implementations
         public async Task DeleteUserAsync(string id)
         {
             await _usersCollection.DeleteOneAsync(user => user.Id == id);
+        }
+
+        public async Task UpdateLastLoginAndActivityAsync(string userId)
+        {
+            var now = DateTime.UtcNow; 
+
+            var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+            var update = Builders<User>.Update
+                .Set(u => u.LastLogin, now)
+                .Set(u => u.LastActivity, now);
+
+
+            await _usersCollection.UpdateOneAsync(filter, update);
+
+        }
+
+        public async Task UpdateLastActivityAsync(string userId)
+        {
+            var now = DateTime.UtcNow;
+
+            var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+            var update = Builders<User>.Update
+                .Set(u => u.LastActivity, now);
+
+
+            await _usersCollection.UpdateOneAsync(filter, update);
+
         }
     }
 }

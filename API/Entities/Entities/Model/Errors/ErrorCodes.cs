@@ -27,5 +27,9 @@ namespace Entities.Model.Errors
         public static readonly ErrorDetail
             InvalidPassword = new(400, "Password does not meet complexity requirements.");
         public static readonly ErrorDetail UserUpdateFailed = new(500, "Update of the user failed.");
+        public static readonly ErrorDetail LoginFailed = new(403, "Username or password invalid");
+        public static readonly ErrorDetail TokenRefreshFailed = new(400, "Refresh token failed");
+        public static readonly ErrorDetail TokenRefreshFailedInactivity =
+            new(400, "Refresh token failed due to inactivity");
     }
 }

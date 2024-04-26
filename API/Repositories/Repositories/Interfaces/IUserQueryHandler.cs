@@ -17,6 +17,8 @@ namespace Repositories.Interfaces
         Task DeleteUserAsync(string id);
         Task<bool> ExistsByEmailAsync(string? email);
         Task<User?> GetUserByEmailAsync(string? email);
+        Task UpdateLastLoginAndActivityAsync(string userId);
+        Task UpdateLastActivityAsync(string userId);
     }
 
 }

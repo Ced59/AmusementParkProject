@@ -10,6 +10,7 @@ using WebAPI.Settings.Attributes;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
+using Dtos.Users.RefreshToken;
 
 namespace WebAPI.Controllers
 {
@@ -28,15 +29,16 @@ namespace WebAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> LoginAsync([FromBody] UserLoginDto userLoginDto)
         {
-            var userLogged = new UserLoggedDto();
-            return ApiResponseHandler.HandleResponse(OneOf<UserLoggedDto, ErrorDetail>.FromT0(userLogged));
+            var userLogged = await _usersService.LoginAsync(userLoginDto);
+            return ApiResponseHandler.HandleResponse(userLogged);
         }
 
         [HttpPost("refresh-token")]
-        public async Task<IActionResult> RefreshTokenAsync([FromBody] string token)
+        public async Task<IActionResult> RefreshTokenAsync([FromBody] RefreshTokenRequestDto token)
         {
-            
-            return Ok();
+            var tokenRefreshed = await _usersService.RefreshTokenAsync(token);
+
+            return ApiResponseHandler.HandleResponse(tokenRefreshed);
         }
 
         [HttpGet("auth/google")]
