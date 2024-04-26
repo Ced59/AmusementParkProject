@@ -5,6 +5,7 @@ using System.Text;
 using Services.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using MongoDB.Driver.Linq;
 
 namespace Services.Security
 {
@@ -30,7 +31,7 @@ namespace Services.Security
                 issuer: jwtSettings.Issuer,
                 audience: jwtSettings.Audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(15),
+                expires: DateTime.UtcNow.AddMinutes(jwtSettings.TokenBaseExpirationMinutes),
                 signingCredentials: credentials
             );
 
