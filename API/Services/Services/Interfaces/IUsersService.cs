@@ -12,6 +12,7 @@ using Dtos.Users.Login;
 using static Entities.Model.Errors.ErrorCodes;
 using Dtos.Users.RefreshToken;
 using Dtos.Users.Roles;
+using Dtos.Users.LockUser;
 
 namespace Services.Interfaces
 {
@@ -75,5 +76,19 @@ namespace Services.Interfaces
         /// <param name="roleToRemove">Role to remove</param>
         /// <returns>All roles of user or error</returns>
         Task<OneOf<RoleRemovedDto, ErrorDetail>> RemoveRoleAsync(string userId, RoleRemoveDto roleToRemove);
+
+        /// <summary>
+        /// Lock user
+        /// </summary>
+        /// <param name="userToLock">User to lock</param>
+        /// <returns>User locked</returns>
+        Task<OneOf<UserLockedDto, ErrorDetail>> LockUser(UserToLockDto userToLock);
+
+        /// <summary>
+        /// Unlock user
+        /// </summary>
+        /// <param name="userToUnlock">User to unlock</param>
+        /// <returns>User unlocked</returns>
+        Task<OneOf<UserUnlockedDto, ErrorDetail>> UnlockUser(UserToUnlockDto userToUnlock);
     }
 }

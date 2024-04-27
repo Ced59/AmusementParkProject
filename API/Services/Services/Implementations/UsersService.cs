@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Common.Users;
 using Dtos.Users.Creating;
+using Dtos.Users.LockUser;
 using Dtos.Users.Login;
 using Dtos.Users.RefreshToken;
 using Dtos.Users.Roles;
@@ -316,6 +317,65 @@ namespace Services.Implementations
             {
                 UserId = updatedUser.Id,
                 Roles = updatedUser.Roles
+            };
+        }
+
+
+        /// <summary>
+        /// Lock user
+        /// </summary>
+        /// <param name="userToLock">User to lock</param>
+        /// <returns>User locked</returns>
+        public async Task<OneOf<UserLockedDto, ErrorDetail>> LockUser(UserToLockDto userToLock)
+        {
+            var user = await _userQueryHandler.GetUserByIdAsync(userToLock.IdUser);
+
+            if (user == null)
+            {
+                return ErrorCodes.UserNotExists;
+            }
+
+            var userLocked = await _userQueryHandler.LockUser(userToLock.IdUser);
+
+            if (userLocked is null)
+            {
+                return ErrorCodes.CannotLockUser;
+            }
+
+            return new UserLockedDto
+            {
+                FirstName = userLocked.FirstName,
+                LastName = userLocked.LastName,
+                UserId = userLocked.Id
+            };
+        }
+
+        /// <summary>
+        /// Unlock user
+        /// </summary>
+        /// <param name="userToUnlock">User to unlock</param>
+        /// <returns>User unlocked</returns>
+        public async Task<OneOf<UserUnlockedDto, ErrorDetail>> UnlockUser(UserToUnlockDto userToUnlock)
+        {
+            var user = await _userQueryHandler.GetUserByIdAsync(userToUnlock.IdUser);
+
+            if (user == null)
+            {
+                return ErrorCodes.UserNotExists;
+            }
+
+            var userLocked = await _userQueryHandler.UnlockUser(userToUnlock.IdUser);
+
+            if (userLocked is null)
+            {
+                return ErrorCodes.CannotUnlockUser;
+            }
+
+            return new UserUnlockedDto
+            {
+                FirstName = userLocked.FirstName,
+                LastName = userLocked.LastName,
+                UserId = userLocked.Id
             };
         }
 

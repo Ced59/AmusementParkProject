@@ -3,9 +3,11 @@ using Common.Users;
 using Dtos.Users.ChangePassword;
 using Dtos.Users.Creating;
 using Dtos.Users.ForgotPassword;
+using Dtos.Users.LockUser;
 using Dtos.Users.ResetPassword;
 using Dtos.Users.Roles;
 using Dtos.Users.Updating;
+using Entities.Model.Errors;
 using Entities.Model.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +33,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin,RH")]
         public async Task<IActionResult> CreateUserAsync([FromBody] UserCreateDto user)
         {
             var userCreated = await _usersService.CreateUserAsync(user)!;
@@ -41,7 +42,7 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Route("by-email")]
-        [Authorize(Roles = "MODERATOR,ADMIN")]
+        [RequireActivatedUnblockedUser]
         public async Task<IActionResult> GetUserByEmailAsync([FromQuery] string email)
         {
             var user = await _usersService.GetUserByEmailAsync(email);
@@ -70,7 +71,7 @@ namespace WebAPI.Controllers
 
             if (currentUserId != id && !User.IsInRoles(Role.ADMIN, Role.MODERATOR))
             {
-                return Forbid();
+                return ApiResponseHandler.HandleResponse(ErrorCodes.UserCannotUpdateOtherUser);
             }
 
             var userUpdated = await _usersService.UpdateUser(id, userUpdate);
@@ -117,18 +118,20 @@ namespace WebAPI.Controllers
             return ApiResponseHandler.HandleResponse(roleRemoved);
         }
 
-        [HttpPost("lock/{userId}")]
+        [HttpPost("lock")]
         [Authorize(Roles = "MODERATOR,ADMIN")]
-        public async Task<IActionResult> LockUserAsync(string userId)
+        public async Task<IActionResult> LockUserAsync(UserToLockDto userToLock)
         {
-            return Ok();
+            var userLocked = await _usersService.LockUser(userToLock);
+            return ApiResponseHandler.HandleResponse(userLocked);
         }
 
-        [HttpPost("unlock/{userId}")]
+        [HttpPost("unlock")]
         [Authorize(Roles = "MODERATOR,ADMIN")]
-        public async Task<IActionResult> UnlockUserAsync(string userId)
+        public async Task<IActionResult> UnlockUserAsync(UserToUnlockDto userToUnlock)
         {
-            return Ok();
+            var userUnlocked = await _usersService.UnlockUser(userToUnlock);
+            return ApiResponseHandler.HandleResponse(userUnlocked);
         }
     }
 

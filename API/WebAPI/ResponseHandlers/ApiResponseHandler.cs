@@ -17,6 +17,14 @@
                 }
             );
         }
+
+        public static IActionResult HandleResponse(ErrorDetail error)
+        {
+            return new ObjectResult(new { error.StatusCode, error.Message })
+            {
+                StatusCode = error.StatusCode
+            };
+        }
     }
 
 }
