@@ -93,6 +93,12 @@ namespace Services.Interfaces
         /// <returns>User unlocked</returns>
         Task<OneOf<UserUnlockedDto, ErrorDetail>> UnlockUser(UserToUnlockDto userToUnlock);
 
+        /// <summary>
+        /// Get list of users with pagination
+        /// </summary>
+        /// <param name="page">The page requested</param>
+        /// <param name="pageSize">The number of items per page</param>
+        /// <returns>List of users with pagination</returns>
         Task<(IEnumerable<User>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize);
     }
 }
