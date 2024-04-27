@@ -24,6 +24,8 @@ namespace Repositories.Interfaces
         Task<User?> RemoveRoleAsync(string userId, Role role);
         Task<User?> LockUser(string userId);
         Task<User?> UnlockUser(string userId);
+        Task<IEnumerable<User>> GetUsersPaginatedAsync(int page, int pageSize);
+        Task<long> GetTotalUsersCountAsync();
     }
 
 }

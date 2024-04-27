@@ -13,6 +13,8 @@ using static Entities.Model.Errors.ErrorCodes;
 using Dtos.Users.RefreshToken;
 using Dtos.Users.Roles;
 using Dtos.Users.LockUser;
+using Dtos.Users.UserGet;
+using Dtos.Pagination;
 
 namespace Services.Interfaces
 {
@@ -30,14 +32,14 @@ namespace Services.Interfaces
         /// </summary>
         /// <param name="email">Email of user</param>
         /// <returns>User or error</returns>
-        Task<OneOf<UserCreatedDto, ErrorCodes.ErrorDetail>> GetUserByEmailAsync(string email);
+        Task<OneOf<UserGettedDto, ErrorCodes.ErrorDetail>> GetUserByEmailAsync(string email);
 
         /// <summary>
         /// Get user by id
         /// </summary>
         /// <param name="id">Id of user</param>
         /// <returns>User or error</returns>
-        Task<OneOf<UserCreatedDto, ErrorCodes.ErrorDetail>> GetUserByIdAsync(string id);
+        Task<OneOf<UserGettedDto, ErrorCodes.ErrorDetail>> GetUserByIdAsync(string id);
 
         /// <summary>
         /// Update user
@@ -90,5 +92,7 @@ namespace Services.Interfaces
         /// <param name="userToUnlock">User to unlock</param>
         /// <returns>User unlocked</returns>
         Task<OneOf<UserUnlockedDto, ErrorDetail>> UnlockUser(UserToUnlockDto userToUnlock);
+
+        Task<(IEnumerable<User>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize);
     }
 }

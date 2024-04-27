@@ -166,5 +166,19 @@ namespace Repositories.Implementations
             return updatedUser;
         }
 
+        public async Task<IEnumerable<User>> GetUsersPaginatedAsync(int page, int pageSize)
+        {
+            return await _usersCollection.Find(_ => true)
+                .Skip((page - 1) * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<long> GetTotalUsersCountAsync()
+        {
+            return await _usersCollection.CountDocumentsAsync(_ => true);
+        }
+
+
     }
 }

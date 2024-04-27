@@ -1,12 +1,14 @@
 ﻿using System.Security.Claims;
 using System.Text.RegularExpressions;
 using Common.Users;
+using Dtos.Pagination;
 using Dtos.Users.Creating;
 using Dtos.Users.LockUser;
 using Dtos.Users.Login;
 using Dtos.Users.RefreshToken;
 using Dtos.Users.Roles;
 using Dtos.Users.Updating;
+using Dtos.Users.UserGet;
 using Entities.Model.Errors;
 using Entities.Model.Users;
 using OneOf;
@@ -95,7 +97,7 @@ namespace Services.Implementations
         /// </summary>
         /// <param name="email">Email of user</param>
         /// <returns>User or error</returns>
-        public async Task<OneOf<UserCreatedDto, ErrorDetail>> GetUserByEmailAsync(string email)
+        public async Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByEmailAsync(string email)
         {
             var user = await _userQueryHandler.GetUserByEmailAsync(email);
             if (user == null)
@@ -103,7 +105,7 @@ namespace Services.Implementations
                 return ErrorCodes.UserNotExists;
             }
 
-            return new UserCreatedDto
+            return new UserGettedDto
             {
                 CreatedAt = user.CreatedAt,
                 Email = user.Email,
@@ -111,7 +113,9 @@ namespace Services.Implementations
                 IsActivated = user.IsActivated,
                 IsBlocked = user.IsBlocked,
                 Roles = user.Roles,
-                PreferredLanguage = user.PreferredLanguage
+                PreferredLanguage = user.PreferredLanguage,
+                FirstName = user.FirstName,
+                LastName = user.LastName
             };
         }
 
@@ -120,7 +124,7 @@ namespace Services.Implementations
         /// </summary>
         /// <param name="id">Id of user</param>
         /// <returns>User or error</returns>
-        public async Task<OneOf<UserCreatedDto, ErrorDetail>> GetUserByIdAsync(string id)
+        public async Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByIdAsync(string id)
         {
             var user = await _userQueryHandler.GetUserByIdAsync(id);
 
@@ -129,7 +133,7 @@ namespace Services.Implementations
                 return ErrorCodes.UserNotExists;
             }
 
-            return new UserCreatedDto
+            return new UserGettedDto
             {
                 CreatedAt = user.CreatedAt,
                 Email = user.Email,
@@ -137,7 +141,9 @@ namespace Services.Implementations
                 IsActivated = user.IsActivated,
                 IsBlocked = user.IsBlocked,
                 Roles = user.Roles,
-                PreferredLanguage = user.PreferredLanguage
+                PreferredLanguage = user.PreferredLanguage,
+                FirstName = user.FirstName,
+                LastName = user.LastName
             };
         }
 
@@ -378,6 +384,16 @@ namespace Services.Implementations
                 UserId = userLocked.Id
             };
         }
+
+        public async Task<(IEnumerable<User>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize)
+        {
+            var totalItems = await _userQueryHandler.GetTotalUsersCountAsync();
+            var users = await _userQueryHandler.GetUsersPaginatedAsync(page, pageSize);
+
+            var pagination = PaginationDto.Create((int)totalItems, page, pageSize);
+            return (users, pagination);
+        }
+
 
 
         /// <summary>

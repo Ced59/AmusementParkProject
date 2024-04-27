@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 using Common.Users;
 using Dtos.Users.ChangePassword;
 using Dtos.Users.Creating;
@@ -7,6 +8,7 @@ using Dtos.Users.LockUser;
 using Dtos.Users.ResetPassword;
 using Dtos.Users.Roles;
 using Dtos.Users.Updating;
+using Dtos.Users.UserGet;
 using Entities.Model.Errors;
 using Entities.Model.Users;
 using Microsoft.AspNetCore.Authorization;
@@ -42,29 +44,33 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Route("by-email")]
-        [RequireActivatedUnblockedUser]
-        public async Task<IActionResult> GetUserByEmailAsync([FromQuery] string email)
+        public async Task<IActionResult> GetUserByEmailAsync([FromQuery] UserGetByEmailDto userByEmail)
         {
-            var user = await _usersService.GetUserByEmailAsync(email);
+            var user = await _usersService.GetUserByEmailAsync(userByEmail.Email);
 
             return ApiResponseHandler.HandleResponse(user);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserByIdAsync(string id)
+        [HttpGet]
+        public async Task<IActionResult> GetUserByIdAsync([FromQuery] UserGetByIdDto userById)
         {
-            var user = await _usersService.GetUserByIdAsync(id);
+            var user = await _usersService.GetUserByIdAsync(userById.Id);
             return ApiResponseHandler.HandleResponse(user);
         }
 
         [HttpGet("list")]
-        public async Task<IActionResult> ListUsersAsync([FromQuery] int? page, [FromQuery] int? size)
+        public async Task<IActionResult> ListUsersAsync(
+            [FromQuery, Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")] int page = 1,
+            [FromQuery, Range(1, 100, ErrorMessage = "Size must be between 1 and 100")] int size = 10)
         {
-            return Ok();
+            var (users, pagination) = await _usersService.GetAllUsersPaginatedAsync(page, size);
+            return ApiResponseHandler.HandleResponse(users, pagination);
         }
 
+
         [HttpPut("{id}")]
-        [Authorize(Roles = "USER")] 
+        [Authorize(Roles = "USER")]
+        [RequireActivatedUnblockedUser]
         public async Task<IActionResult> UpdateUserAsync(string id, [FromBody] UserUpdateDto userUpdate)
         {
             var currentUserId = User.GetUserId();
@@ -82,6 +88,7 @@ namespace WebAPI.Controllers
 
         [HttpPost("change-password")]
         [Authorize(Roles = "USER")]
+        [RequireActivatedUnblockedUser]
         public async Task<IActionResult> ChangePasswordAsync([FromBody] ChangePasswordDto changePasswordDto)
         {
             var userPasswordChanged = new PasswordChangedDto();
@@ -104,6 +111,7 @@ namespace WebAPI.Controllers
 
         [HttpPost("roles/assign/{userId}")]
         [Authorize(Roles = "ADMIN")]
+        [RequireActivatedUnblockedUser]
         public async Task<IActionResult> AssignRoleAsync(string userId, [FromBody] RoleAssignDto roleAssignDto)
         {
             var roleAssigned = await _usersService.AssignRoleAsync(userId, roleAssignDto);
@@ -112,6 +120,7 @@ namespace WebAPI.Controllers
 
         [HttpDelete("roles/remove/{userId}")]
         [Authorize(Roles = "ADMIN")]
+        [RequireActivatedUnblockedUser]
         public async Task<IActionResult> RemoveRoleAsync(string userId, [FromBody] RoleRemoveDto roleRemoveDto)
         {
             var roleRemoved = await _usersService.RemoveRoleAsync(userId, roleRemoveDto);
@@ -120,6 +129,7 @@ namespace WebAPI.Controllers
 
         [HttpPost("lock")]
         [Authorize(Roles = "MODERATOR,ADMIN")]
+        [RequireActivatedUnblockedUser]
         public async Task<IActionResult> LockUserAsync(UserToLockDto userToLock)
         {
             var userLocked = await _usersService.LockUser(userToLock);
@@ -128,6 +138,7 @@ namespace WebAPI.Controllers
 
         [HttpPost("unlock")]
         [Authorize(Roles = "MODERATOR,ADMIN")]
+        [RequireActivatedUnblockedUser]
         public async Task<IActionResult> UnlockUserAsync(UserToUnlockDto userToUnlock)
         {
             var userUnlocked = await _usersService.UnlockUser(userToUnlock);

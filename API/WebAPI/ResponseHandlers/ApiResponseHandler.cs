@@ -1,4 +1,6 @@
-﻿namespace WebAPI.ResponseHandlers
+﻿using Dtos.Pagination;
+
+namespace WebAPI.ResponseHandlers
 {
     using Entities.Model.Errors;
     using Microsoft.AspNetCore.Mvc;
@@ -24,6 +26,11 @@
             {
                 StatusCode = error.StatusCode
             };
+        }
+
+        public static IActionResult HandleResponse<T>(IEnumerable<T> data, PaginationDto pagination)
+        {
+            return new OkObjectResult(new { Data = data, Pagination = pagination });
         }
     }
 
