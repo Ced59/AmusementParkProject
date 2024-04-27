@@ -1,4 +1,6 @@
-﻿using Dtos.Users.ChangePassword;
+﻿using System.Security.Claims;
+using Common.Users;
+using Dtos.Users.ChangePassword;
 using Dtos.Users.Creating;
 using Dtos.Users.ForgotPassword;
 using Dtos.Users.ResetPassword;
@@ -9,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OneOf;
 using Services.Interfaces;
+using WebAPI.Extensions;
 using WebAPI.ResponseHandlers;
 using WebAPI.Settings.Attributes;
 using static Entities.Model.Errors.ErrorCodes;
@@ -31,13 +34,14 @@ namespace WebAPI.Controllers
         //[Authorize(Roles = "Admin,RH")]
         public async Task<IActionResult> CreateUserAsync([FromBody] UserCreateDto user)
         {
-            var userCreated = await _usersService!.CreateUserAsync(user);
+            var userCreated = await _usersService.CreateUserAsync(user)!;
 
             return ApiResponseHandler.HandleResponse(userCreated);
         }
 
         [HttpGet]
         [Route("by-email")]
+        [Authorize(Roles = "MODERATOR,ADMIN")]
         public async Task<IActionResult> GetUserByEmailAsync([FromQuery] string email)
         {
             var user = await _usersService.GetUserByEmailAsync(email);
@@ -59,14 +63,24 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "USER")] 
         public async Task<IActionResult> UpdateUserAsync(string id, [FromBody] UserUpdateDto userUpdate)
         {
+            var currentUserId = User.GetUserId();
+
+            if (currentUserId != id && !User.IsInRoles(Role.ADMIN, Role.MODERATOR))
+            {
+                return Forbid();
+            }
+
             var userUpdated = await _usersService.UpdateUser(id, userUpdate);
 
             return ApiResponseHandler.HandleResponse(userUpdated);
         }
 
+
         [HttpPost("change-password")]
+        [Authorize(Roles = "USER")]
         public async Task<IActionResult> ChangePasswordAsync([FromBody] ChangePasswordDto changePasswordDto)
         {
             var userPasswordChanged = new PasswordChangedDto();
@@ -88,26 +102,30 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("roles/assign/{userId}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> AssignRoleAsync(string userId, [FromBody] RoleAssignDto roleAssignDto)
         {
-            var roleAssigned = new RoleAssignedDto();
-            return ApiResponseHandler.HandleResponse(OneOf<RoleAssignedDto, ErrorDetail>.FromT0(roleAssigned));
+            var roleAssigned = await _usersService.AssignRoleAsync(userId, roleAssignDto);
+            return ApiResponseHandler.HandleResponse(roleAssigned);
         }
 
         [HttpDelete("roles/remove/{userId}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> RemoveRoleAsync(string userId, [FromBody] RoleRemoveDto roleRemoveDto)
         {
-            var roleRemoved = new RoleRemovedDto();
-            return ApiResponseHandler.HandleResponse(OneOf<RoleRemovedDto, ErrorDetail>.FromT0(roleRemoved));
+            var roleRemoved = await _usersService.RemoveRoleAsync(userId, roleRemoveDto);
+            return ApiResponseHandler.HandleResponse(roleRemoved);
         }
 
         [HttpPost("lock/{userId}")]
+        [Authorize(Roles = "MODERATOR,ADMIN")]
         public async Task<IActionResult> LockUserAsync(string userId)
         {
             return Ok();
         }
 
         [HttpPost("unlock/{userId}")]
+        [Authorize(Roles = "MODERATOR,ADMIN")]
         public async Task<IActionResult> UnlockUserAsync(string userId)
         {
             return Ok();

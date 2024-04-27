@@ -18,12 +18,13 @@ namespace Services.Security
 
             var claims = new List<Claim>
             {
-                new(JwtRegisteredClaimNames.Sub, user.Email),
+                new(JwtRegisteredClaimNames.Sub, user.Id),
+                new(JwtRegisteredClaimNames.Email, user.Email),
                 new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new(ClaimTypes.NameIdentifier, user.Id),
-                new("FirstName", user.FirstName ?? ""), 
-                new("LastName", user.LastName ?? ""), 
-                new("lastLogin", user.LastLogin.ToString("o")), 
+                new("firstname", user.FirstName ?? ""), 
+                new("lastname", user.LastName ?? ""), 
+                new("lastlogin", user.LastLogin.ToString("o")), 
             };
             claims.AddRange(user.Roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
 

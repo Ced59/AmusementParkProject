@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Users;
 using Entities.Model.Users;
 using MongoDB.Driver;
 using Repositories.Interfaces;
@@ -66,7 +67,7 @@ namespace Repositories.Implementations
             {
                 return await _usersCollection.FindOneAndReplaceAsync(filter, user, options);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -104,5 +105,66 @@ namespace Repositories.Implementations
             await _usersCollection.UpdateOneAsync(filter, update);
 
         }
+
+        public async Task<User?> AssignRoleAsync(string userId, Role role)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+            var update = Builders<User>.Update.AddToSet(u => u.Roles, role);
+
+            var options = new FindOneAndUpdateOptions<User>
+            {
+                ReturnDocument = ReturnDocument.After
+            };
+
+            var updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+
+            return updatedUser;
+        }
+
+        public async Task<User?> RemoveRoleAsync(string userId, Role role)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+            var update = Builders<User>.Update.Pull(u => u.Roles, role);
+
+            var options = new FindOneAndUpdateOptions<User>
+            {
+                ReturnDocument = ReturnDocument.After
+            };
+
+            var updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+
+            return updatedUser;
+        }
+
+        public async Task<User?> LockUser(string userId)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+            var update = Builders<User>.Update.Set(u => u.IsBlocked, true);
+
+            var options = new FindOneAndUpdateOptions<User>
+            {
+                ReturnDocument = ReturnDocument.After
+            };
+
+            var updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+
+            return updatedUser;
+        }
+
+        public async Task<User?> UnlockUser(string userId)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+            var update = Builders<User>.Update.Set(u => u.IsBlocked, false);
+
+            var options = new FindOneAndUpdateOptions<User>
+            {
+                ReturnDocument = ReturnDocument.After
+            };
+
+            var updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+
+            return updatedUser;
+        }
+
     }
 }

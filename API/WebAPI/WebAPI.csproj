@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Services\Services\Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>

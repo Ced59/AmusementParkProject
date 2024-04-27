@@ -17,6 +17,11 @@ using WebAPI.Settings.MongoDB;
 using WebAPI.Settings.Security;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
+using System.Security.Claims;
+using System.Text.Json;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+//using WebAPI.Middlewares;
 
 namespace WebAPI
 {
@@ -51,7 +56,7 @@ namespace WebAPI
             // MongoDB Settings
             var mongoDbSettings = builder.Configuration.GetSection("MongoDB").Get<MongoDbSettings>();
             builder.Services.AddSingleton<IMongoDbSettings>(mongoDbSettings);
-            ConfigureMongoDB(builder.Services, mongoDbSettings);
+            ConfigureMongoDb(builder.Services, mongoDbSettings);
 
             // Services
             builder.Services.AddScoped<IUsersService, UsersService>();
@@ -75,7 +80,44 @@ namespace WebAPI
                     var orderAttr = apiDesc.CustomAttributes().OfType<SwaggerOrderAttribute>().FirstOrDefault();
                     return orderAttr != null ? orderAttr.Order.ToString() : int.MaxValue.ToString();
                 });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter JWT bearer token in the Authorization header using the Bearer scheme. Example: Bearer {token}",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+                        },
+                        new List<string>()
+                    }
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                if (File.Exists(xmlPath))
+                {
+                    c.IncludeXmlComments(xmlPath);
+                }
+
+                // Add authorization filter to mark protected endpoints
+                c.OperationFilter<AddJwtBearerAuthorizationFilter>();
             });
+
+            services.AddScoped<IOperationFilter, AddJwtBearerAuthorizationFilter>();
         }
 
         public static void ConfigureAuthentication(IServiceCollection services, IConfiguration configuration)
@@ -97,7 +139,35 @@ namespace WebAPI
                         ValidateAudience = true,
                         ValidAudience = configuration["Authentication:Jwt:Audience"],
                         ValidateLifetime = true,
-                        ClockSkew = TimeSpan.Zero
+                        ClockSkew = TimeSpan.Zero,
+                        NameClaimType = ClaimTypes.NameIdentifier
+                    };
+
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnAuthenticationFailed = context =>
+                        {
+                            context.Response.StatusCode = 401;
+                            context.Response.ContentType = "application/json";
+                            return context.Response.WriteAsync(JsonSerializer.Serialize(new { message = "Authentication failed" }));
+                        },
+                        OnChallenge = context =>
+                        {
+                            if (!context.Response.HasStarted)
+                            {
+                                context.Response.StatusCode = 401;
+                                context.Response.ContentType = "application/json";
+                                return context.Response.WriteAsync(JsonSerializer.Serialize(new { message = "Access denied. You must be logged in." }));
+                            }
+
+                            return Task.CompletedTask;
+                        },
+                        OnForbidden = context =>
+                        {
+                            context.Response.StatusCode = 403;
+                            context.Response.ContentType = "application/json";
+                            return context.Response.WriteAsync(JsonSerializer.Serialize(new { message = "You do not have permission to access this resource." }));
+                        }
                     };
                 })
             .AddGoogle("Google", options =>
@@ -133,7 +203,7 @@ namespace WebAPI
             }
         }
 
-        private static void ConfigureMongoDB(IServiceCollection services, MongoDbSettings settings)
+        private static void ConfigureMongoDb(IServiceCollection services, MongoDbSettings settings)
         {
             services.AddSingleton<IMongoDatabase>(serviceProvider =>
             {
@@ -150,10 +220,13 @@ namespace WebAPI
                 app.UseSwaggerUI();
             }
 
+            //app.UseMiddleware<JwtMiddleware>();
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
+
+
         }
     }
 }

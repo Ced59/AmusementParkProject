@@ -31,5 +31,11 @@ namespace Entities.Model.Errors
         public static readonly ErrorDetail TokenRefreshFailed = new(400, "Refresh token failed");
         public static readonly ErrorDetail TokenRefreshFailedInactivity =
             new(400, "Refresh token failed due to inactivity");
+
+        public static readonly ErrorDetail RoleAlreadyAssigned = new(400, "Role already assigned to the user");
+        public static readonly ErrorDetail AssignRoleFailed = new(500, "Role assignation failed");
+        public static readonly ErrorDetail RoleNotAssigned = new(404, "Role to remove is not assigned to this user");
+        public static readonly ErrorDetail RemoveRoleFailed = new(500, "Role deleting failed");
+        public static readonly ErrorDetail CannotDeleteUserRole = new(400, "Cannot suppress User Role");
     }
 }

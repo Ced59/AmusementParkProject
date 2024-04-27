@@ -11,6 +11,7 @@ using Dtos.Users.Updating;
 using Dtos.Users.Login;
 using static Entities.Model.Errors.ErrorCodes;
 using Dtos.Users.RefreshToken;
+using Dtos.Users.Roles;
 
 namespace Services.Interfaces
 {
@@ -58,5 +59,21 @@ namespace Services.Interfaces
         /// <param name="token">Token to refresh</param>
         /// <returns>Jwt Token refreshed</returns>
         Task<OneOf<RefreshTokenResponseDto, ErrorDetail>> RefreshTokenAsync(RefreshTokenRequestDto token);
+
+        /// <summary>
+        /// Assign role to User
+        /// </summary>
+        /// <param name="userId">Id user</param>
+        /// <param name="roleAssignDto">Role to assign</param>
+        /// <returns>All roles of user or error</returns>
+        Task<OneOf<RoleAssignedDto, ErrorDetail>> AssignRoleAsync(string userId, RoleAssignDto roleAssignDto);
+
+        /// <summary>
+        /// Remove role from User
+        /// </summary>
+        /// <param name="userId">ID of the user</param>
+        /// <param name="roleToRemove">Role to remove</param>
+        /// <returns>All roles of user or error</returns>
+        Task<OneOf<RoleRemovedDto, ErrorDetail>> RemoveRoleAsync(string userId, RoleRemoveDto roleToRemove);
     }
 }

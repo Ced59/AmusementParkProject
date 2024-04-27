@@ -4,6 +4,7 @@ using Common.Users;
 using Dtos.Users.Creating;
 using Dtos.Users.Login;
 using Dtos.Users.RefreshToken;
+using Dtos.Users.Roles;
 using Dtos.Users.Updating;
 using Entities.Model.Errors;
 using Entities.Model.Users;
@@ -51,7 +52,7 @@ namespace Services.Implementations
 
             if (!IsValidPassword(user.Password))
             {
-                return ErrorCodes.InvalidPassword; 
+                return ErrorCodes.InvalidPassword;
             }
 
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
@@ -74,7 +75,7 @@ namespace Services.Implementations
                 LastActivity = DateTime.UtcNow
             };
 
-            var userCreated =  await _userQueryHandler.CreateUserAsync(userToCreate);
+            var userCreated = await _userQueryHandler.CreateUserAsync(userToCreate);
 
             return new UserCreatedDto
             {
@@ -200,7 +201,7 @@ namespace Services.Implementations
             var user = await _userQueryHandler.GetUserByEmailAsync(credentials.Email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(credentials.Password, user.HashedPassword))
             {
-                return ErrorCodes.LoginFailed; 
+                return ErrorCodes.LoginFailed;
             }
 
             var token = JwtHelper.GenerateToken(user, _jwtSettings);
@@ -249,6 +250,74 @@ namespace Services.Implementations
             return ErrorCodes.TokenRefreshFailed;
         }
 
+        /// <summary>
+        /// Assign role to User
+        /// </summary>
+        /// <param name="userId">Id user</param>
+        /// <param name="roleToAssign">Role to assign</param>
+        /// <returns>All roles of user or error</returns>
+        public async Task<OneOf<RoleAssignedDto, ErrorDetail>> AssignRoleAsync(string userId, RoleAssignDto roleToAssign)
+        {
+            var user = await _userQueryHandler.GetUserByIdAsync(userId);
+
+            if (user == null)
+            {
+                return ErrorCodes.UserNotExists;
+            }
+
+            if (user.Roles.Contains(roleToAssign.Role))
+            {
+                return ErrorCodes.RoleAlreadyAssigned;
+            }
+
+            var updatedUser = await _userQueryHandler.AssignRoleAsync(userId, roleToAssign.Role);
+
+            if (updatedUser is null)
+            {
+                return ErrorCodes.AssignRoleFailed;
+            }
+
+            return new RoleAssignedDto
+            {
+                UserId = updatedUser.Id,
+                Roles = updatedUser.Roles
+            };
+        }
+
+
+        /// <summary>
+        /// Remove role from User
+        /// </summary>
+        /// <param name="userId">ID of the user</param>
+        /// <param name="roleToRemove">Role to remove</param>
+        /// <returns>All roles of user or error</returns>
+        public async Task<OneOf<RoleRemovedDto, ErrorDetail>> RemoveRoleAsync(string userId, RoleRemoveDto roleToRemove)
+        {
+            var user = await _userQueryHandler.GetUserByIdAsync(userId);
+
+            if (user == null)
+            {
+                return ErrorCodes.UserNotExists; 
+            }
+
+            if (!user.Roles.Contains(roleToRemove.Role))
+            {
+                return ErrorCodes.RoleNotAssigned; 
+            }
+
+            var updatedUser = await _userQueryHandler.RemoveRoleAsync(userId, roleToRemove.Role);
+
+            if (updatedUser is null)
+            {
+                return ErrorCodes.RemoveRoleFailed; 
+            }
+
+            return new RoleRemovedDto
+            {
+                UserId = updatedUser.Id,
+                Roles = updatedUser.Roles
+            };
+        }
 
 
         /// <summary>

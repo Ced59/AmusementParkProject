@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Users;
 
 namespace Repositories.Interfaces
 {
@@ -19,6 +20,10 @@ namespace Repositories.Interfaces
         Task<User?> GetUserByEmailAsync(string? email);
         Task UpdateLastLoginAndActivityAsync(string userId);
         Task UpdateLastActivityAsync(string userId);
+        Task<User?> AssignRoleAsync(string userId, Role role);
+        Task<User?> RemoveRoleAsync(string userId, Role role);
+        Task<User?> LockUser(string userId);
+        Task<User?> UnlockUser(string userId);
     }
 
 }
