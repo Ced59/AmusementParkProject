@@ -393,11 +393,7 @@ namespace Services.Implementations
 
             var pagination = PaginationDto.Create((int)totalItems, page, pageSize);
 
-            var usersDto = new List<UserDto>();
-
-            foreach (var user in users)
-            {
-                usersDto.Add(new UserDto
+            var usersDto = users.Select(user => new UserDto
                 {
                     CreatedAt = user.CreatedAt,
                     IsActivated = user.IsActivated,
@@ -412,7 +408,7 @@ namespace Services.Implementations
                     LastLogin = user.LastLogin,
                     PreferredLanguage = user.PreferredLanguage
                 });
-            }
+
             return (usersDto, pagination);
         }
 
