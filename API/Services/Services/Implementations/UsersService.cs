@@ -386,6 +386,12 @@ namespace Services.Implementations
             };
         }
 
+        /// <summary>
+        /// Get list of Users
+        /// </summary>
+        /// <param name="page">Number of page got in pagination</param>
+        /// <param name="pageSize">Page size for pagination</param>
+        /// <returns>Get list of users</returns>
         public async Task<(IEnumerable<UserDto>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize)
         {
             var totalItems = await _userQueryHandler.GetTotalUsersCountAsync();
