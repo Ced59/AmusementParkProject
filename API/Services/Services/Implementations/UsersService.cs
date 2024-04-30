@@ -9,6 +9,7 @@ using Dtos.Users.RefreshToken;
 using Dtos.Users.Roles;
 using Dtos.Users.Updating;
 using Dtos.Users.UserGet;
+using Dtos.Users.Users;
 using Entities.Model.Errors;
 using Entities.Model.Users;
 using OneOf;
@@ -385,13 +386,34 @@ namespace Services.Implementations
             };
         }
 
-        public async Task<(IEnumerable<User>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize)
+        public async Task<(IEnumerable<UserDto>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize)
         {
             var totalItems = await _userQueryHandler.GetTotalUsersCountAsync();
             var users = await _userQueryHandler.GetUsersPaginatedAsync(page, pageSize);
 
             var pagination = PaginationDto.Create((int)totalItems, page, pageSize);
-            return (users, pagination);
+
+            var usersDto = new List<UserDto>();
+
+            foreach (var user in users)
+            {
+                usersDto.Add(new UserDto
+                {
+                    CreatedAt = user.CreatedAt,
+                    IsActivated = user.IsActivated,
+                    UpdatedAt = user.UpdatedAt,
+                    LastActivity = user.LastActivity,
+                    LastName = user.LastName,
+                    FirstName = user.FirstName,
+                    Email = user.Email,
+                    Roles = user.Roles,
+                    Id = user.Id,
+                    IsBlocked = user.IsBlocked,
+                    LastLogin = user.LastLogin,
+                    PreferredLanguage = user.PreferredLanguage
+                });
+            }
+            return (usersDto, pagination);
         }
 
 

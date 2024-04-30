@@ -15,6 +15,7 @@ using Dtos.Users.Roles;
 using Dtos.Users.LockUser;
 using Dtos.Users.UserGet;
 using Dtos.Pagination;
+using Dtos.Users.Users;
 
 namespace Services.Interfaces
 {
@@ -99,6 +100,6 @@ namespace Services.Interfaces
         /// <param name="page">The page requested</param>
         /// <param name="pageSize">The number of items per page</param>
         /// <returns>List of users with pagination</returns>
-        Task<(IEnumerable<User>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize);
+        Task<(IEnumerable<UserDto>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize);
     }
 }
