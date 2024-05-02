@@ -159,6 +159,17 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         return updatedUser;
     }
 
+    public async Task<bool> ChangePassword(string idUser, string newHashedPassword)
+    {
+        var filter = Builders<User>.Filter.Eq(u => u.Id, idUser);
+        var update = Builders<User>.Update.Set(u => u.HashedPassword, newHashedPassword);
+
+        var result = await _usersCollection.UpdateOneAsync(filter, update);
+
+        return result.ModifiedCount == 1;
+
+    }
+
     public async Task<IEnumerable<User>> GetUsersPaginatedAsync(int page, int pageSize)
     {
         return await _usersCollection.Find(_ => true)

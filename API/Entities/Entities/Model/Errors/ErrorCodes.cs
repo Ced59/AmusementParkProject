@@ -31,6 +31,9 @@ public static class ErrorCodes
     public static readonly ErrorDetail UserCannotChangeOtherPasswordUser =
         new(403, "You cannot update other user password");
 
+    public static readonly ErrorDetail IncorrectPassword = new(403, "The actual password is incorrect");
+    public static readonly ErrorDetail ChangePasswordFailed = new(500, "Change Password Failed");
+
     public readonly struct ErrorDetail
     {
         public int StatusCode { get; }

@@ -20,4 +20,5 @@ public interface IUserQueryHandler
     Task<User?> UnlockUser(string userId);
     Task<IEnumerable<User>> GetUsersPaginatedAsync(int page, int pageSize);
     Task<long> GetTotalUsersCountAsync();
+    Task<bool> ChangePassword(string idUser, string newHashedPassword);
 }

@@ -3,7 +3,9 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
@@ -63,6 +65,15 @@ public class Program
         {
             options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         });
+
+        // Configure IpRateLimiting
+        builder.Services.AddMemoryCache();
+        builder.Services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+        builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
+        builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+        builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+        builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+        builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     }
 
     private static void ConfigureSwagger(IServiceCollection services)
@@ -206,6 +217,13 @@ public class Program
         });
     }
 
+    private static void InitializeMongoDb(WebApplication app)
+    {
+        var database = app.Services.GetRequiredService<IMongoDatabase>();
+        var mongoDbSettings = app.Services.GetRequiredService<IMongoDbSettings>();
+        MongoDbInitializer.InitializeCollections(database, mongoDbSettings);
+    }
+
     private static void ConfigureApplication(WebApplication app)
     {
         if (app.Environment.IsDevelopment())
@@ -215,9 +233,12 @@ public class Program
         }
 
         //app.UseMiddleware<JwtMiddleware>();
+        app.UseIpRateLimiting();
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
+
+        InitializeMongoDb(app);
     }
 }

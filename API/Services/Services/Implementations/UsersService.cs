@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Common.Users;
 using Dtos.Pagination;
+using Dtos.Users.ChangePassword;
 using Dtos.Users.Creating;
 using Dtos.Users.LockUser;
 using Dtos.Users.Login;
@@ -10,6 +11,7 @@ using Dtos.Users.Roles;
 using Dtos.Users.Updating;
 using Dtos.Users.UserGet;
 using Dtos.Users.Users;
+using Entities.Model.Errors;
 using Entities.Model.Users;
 using OneOf;
 using Repositories.Interfaces;
@@ -350,6 +352,42 @@ public class UsersService : IUsersService
         return (usersDto, pagination);
     }
 
+    /// <summary>
+    ///     Change user password
+    /// </summary>
+    /// <param name="idUser">User to change password</param>
+    /// <param name="changePasswordDto">OldPassword and/or new password & confirmation</param>
+    /// <param name="isSelfChanged">The change password process id for the user who demands</param>
+    /// <returns></returns>
+    public async Task<OneOf<PasswordChangedDto, ErrorDetail>> ChangeUserPassword(string idUser, ChangePasswordDto changePasswordDto, bool isSelfChanged)
+    {
+        var user = await _userQueryHandler.GetUserByIdAsync(idUser);
+
+        if (user == null)
+        {
+            return UserNotExists;
+        }
+
+        if (isSelfChanged && !BCrypt.Net.BCrypt.Verify(changePasswordDto.ActualPassword, user.HashedPassword))
+        {
+            return IncorrectPassword;
+        }
+
+        var hashedPassword = BCrypt.Net.BCrypt.HashPassword(changePasswordDto.NewPassword);
+
+        var changePasswordOk = await _userQueryHandler.ChangePassword(idUser, hashedPassword);
+
+        if (changePasswordOk)
+        {
+            return new PasswordChangedDto
+            {
+                Message = $"Password of user {idUser} successfully changed"
+            };
+        }
+
+        return ChangePasswordFailed;
+    }
+
 
     /// <summary>
     ///     Validation email
@@ -384,4 +422,5 @@ public class UsersService : IUsersService
         var passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$";
         return Regex.IsMatch(password, passwordPattern);
     }
+
 }

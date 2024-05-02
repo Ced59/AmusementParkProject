@@ -89,12 +89,21 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> ChangePasswordAsync(string idUser, [FromBody] ChangePasswordDto changePasswordDto)
     {
         var currentUserId = User.GetUserId();
+        var isAdminOrModerator = User.IsInRoles(Role.ADMIN, Role.MODERATOR);
 
-        if (currentUserId != idUser && !User.IsInRoles(Role.ADMIN, Role.MODERATOR))
+        if (changePasswordDto.NewPassword != changePasswordDto.NewPasswordConfirm)
+        {
+            return ApiResponseHandler.HandleResponse(PasswordsNotSames);
+        }
+
+        if (currentUserId != idUser && !isAdminOrModerator)
+        {
             return ApiResponseHandler.HandleResponse(UserCannotChangeOtherPasswordUser);
+        }
 
-        var userPasswordChanged = await _usersService.ChangeUserPassword(idUser, changePasswordDto);
-        return ApiResponseHandler.HandleResponse(OneOf<PasswordChangedDto, ErrorDetail>.FromT0(userPasswordChanged));
+        var isSelfChange = currentUserId == idUser;
+        var userPasswordChanged = await _usersService.ChangeUserPassword(idUser, changePasswordDto, isSelfChange);
+        return ApiResponseHandler.HandleResponse(userPasswordChanged);
     }
 
     [HttpPost("forgot-password")]

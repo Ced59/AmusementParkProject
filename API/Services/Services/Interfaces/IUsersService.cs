@@ -101,6 +101,7 @@ public interface IUsersService
     /// </summary>
     /// <param name="idUser">User to change password</param>
     /// <param name="changePasswordDto">OldPassword and/or new password & confirmation</param>
+    /// <param name="changeToSameUser">The change password process id for the user who demands</param>
     /// <returns></returns>
-    Task<PasswordChangedDto> ChangeUserPassword(string idUser, ChangePasswordDto changePasswordDto);
+    Task<OneOf<PasswordChangedDto, ErrorDetail>> ChangeUserPassword(string idUser, ChangePasswordDto changePasswordDto, bool changeToSameUser);
 }
