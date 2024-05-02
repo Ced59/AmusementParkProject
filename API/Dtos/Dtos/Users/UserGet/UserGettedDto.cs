@@ -12,5 +12,4 @@ public class UserGettedDto : ModelBase
     public bool? IsBlocked { get; set; } = false;
     public List<Role> Roles { get; set; } = new();
     public string? PreferredLanguage { get; set; } = string.Empty;
-
 }

@@ -1,8 +1,7 @@
-﻿namespace Common.General
+﻿namespace Common.General;
+
+public enum GeneralStatus
 {
-    public enum GeneralStatus
-    {
-        OPEN,
-        DEFINITIVELY_CLOSED
-    }
+    OPEN,
+    DEFINITIVELY_CLOSED
 }

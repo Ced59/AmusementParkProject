@@ -1,72 +1,68 @@
-﻿using Entities.Model.Users;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Services.Interfaces;
+using Entities.Model.Users;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using MongoDB.Driver.Linq;
+using Services.Interfaces;
 
-namespace Services.Security
+namespace Services.Security;
+
+public static class JwtHelper
 {
-    public static class JwtHelper
+    public static string GenerateToken(User user, IJwtSettings jwtSettings)
     {
-        public static string GenerateToken(User user, IJwtSettings jwtSettings)
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key));
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+        var claims = new List<Claim>
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            new(JwtRegisteredClaimNames.Sub, user.Id),
+            new(JwtRegisteredClaimNames.Email, user.Email),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new(ClaimTypes.NameIdentifier, user.Id),
+            new("firstname", user.FirstName ?? ""),
+            new("lastname", user.LastName ?? ""),
+            new("lastlogin", user.LastLogin.ToString("o"))
+        };
+        claims.AddRange(user.Roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
 
-            var claims = new List<Claim>
-            {
-                new(JwtRegisteredClaimNames.Sub, user.Id),
-                new(JwtRegisteredClaimNames.Email, user.Email),
-                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new(ClaimTypes.NameIdentifier, user.Id),
-                new("firstname", user.FirstName ?? ""), 
-                new("lastname", user.LastName ?? ""), 
-                new("lastlogin", user.LastLogin.ToString("o")), 
-            };
-            claims.AddRange(user.Roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
+        var token = new JwtSecurityToken(
+            jwtSettings.Issuer,
+            jwtSettings.Audience,
+            claims,
+            expires: DateTime.UtcNow.AddMinutes(jwtSettings.TokenBaseExpirationMinutes),
+            signingCredentials: credentials
+        );
 
-            var token = new JwtSecurityToken(
-                issuer: jwtSettings.Issuer,
-                audience: jwtSettings.Audience,
-                claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(jwtSettings.TokenBaseExpirationMinutes),
-                signingCredentials: credentials
-            );
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
-
-        public record ValidationResult(bool IsValid, JwtSecurityToken? Token);
-
-        public static ValidationResult ValidateToken(string token, bool withExp, IJwtSettings jwtSettings)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var validationParameters = new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)),
-                ValidateIssuer = true,
-                ValidIssuer = jwtSettings.Issuer,
-                ValidateAudience = true,
-                ValidAudience = jwtSettings.Audience,
-                ValidateLifetime = withExp,
-                ClockSkew = TimeSpan.Zero // Optional: reduce or eliminate clock skew if required
-            };
-
-            try
-            {
-                tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
-                return new ValidationResult(true, (JwtSecurityToken)validatedToken);
-            }
-            catch (Exception ex)
-            {
-                return new ValidationResult(false, null);
-            }
-        }
-
+        return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+    public static ValidationResult ValidateToken(string token, bool withExp, IJwtSettings jwtSettings)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var validationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)),
+            ValidateIssuer = true,
+            ValidIssuer = jwtSettings.Issuer,
+            ValidateAudience = true,
+            ValidAudience = jwtSettings.Audience,
+            ValidateLifetime = withExp,
+            ClockSkew = TimeSpan.Zero // Optional: reduce or eliminate clock skew if required
+        };
+
+        try
+        {
+            tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
+            return new ValidationResult(true, (JwtSecurityToken)validatedToken);
+        }
+        catch (Exception ex)
+        {
+            return new ValidationResult(false, null);
+        }
+    }
+
+
+    public record ValidationResult(bool IsValid, JwtSecurityToken? Token);
 }

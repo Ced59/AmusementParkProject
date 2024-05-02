@@ -1,6 +1,5 @@
 ﻿using System.Security.Claims;
 using Common.Users;
-using Entities.Model.Users;
 
 namespace WebAPI.Extensions;
 
@@ -16,7 +15,6 @@ public static class ClaimsPrincipalExtensions
 
     public static string? GetUserId(this ClaimsPrincipal user)
     {
-
         return user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
     }
 }

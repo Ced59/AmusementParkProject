@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Entities.Model.Errors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Services.Interfaces;
-using System.Security.Claims;
-using Entities.Model.Errors;
 using WebAPI.ResponseHandlers;
 
 namespace WebAPI.Settings.Attributes;
@@ -30,22 +30,15 @@ public class RequireActivatedUnblockedUserAttribute : ActionFilterAttribute, IAs
                     context.Result = ApiResponseHandler.HandleResponse(ErrorCodes.UserNotActivated);
                     return;
                 }
+
                 if ((bool)user.IsBlocked!)
                 {
                     context.Result = ApiResponseHandler.HandleResponse(ErrorCodes.UserBlocked);
-                    return;
                 }
             },
-            error =>
-            {
-                context.Result = new ObjectResult(error.Message) { StatusCode = error.StatusCode };
-                return;
-            }
+            error => { context.Result = new ObjectResult(error.Message) { StatusCode = error.StatusCode }; }
         );
 
-        if (context.Result == null)
-        {
-            await next(); 
-        }
+        if (context.Result == null) await next();
     }
 }
