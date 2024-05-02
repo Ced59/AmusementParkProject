@@ -89,9 +89,16 @@ namespace WebAPI.Controllers
         [HttpPost("change-password")]
         [Authorize(Roles = "USER")]
         [RequireActivatedUnblockedUser]
-        public async Task<IActionResult> ChangePasswordAsync([FromBody] ChangePasswordDto changePasswordDto)
+        public async Task<IActionResult> ChangePasswordAsync(string idUser, [FromBody] ChangePasswordDto changePasswordDto)
         {
-            var userPasswordChanged = new PasswordChangedDto();
+            var currentUserId = User.GetUserId();
+
+            if (currentUserId != idUser && !User.IsInRoles(Role.ADMIN, Role.MODERATOR))
+            {
+                return ApiResponseHandler.HandleResponse(ErrorCodes.UserCannotChangeOtherPasswordUser);
+            }
+
+            var userPasswordChanged = await _usersService.ChangeUserPassword(idUser, changePasswordDto);
             return ApiResponseHandler.HandleResponse(OneOf<PasswordChangedDto, ErrorDetail>.FromT0(userPasswordChanged));
         }
 

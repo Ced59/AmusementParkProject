@@ -42,5 +42,6 @@ namespace Entities.Model.Errors
         public static readonly ErrorDetail Unauthorized = new(401, "Need be logged to access at this resource");
         public static readonly ErrorDetail UserNotActivated = new(403, "Need be activated to access at this resource");
         public static readonly ErrorDetail UserBlocked = new(403, "User is blocked. You cannot access this resource");
+        public static readonly ErrorDetail UserCannotChangeOtherPasswordUser = new(403, "You cannot update other user password");
     }
 }

@@ -15,6 +15,7 @@ using Dtos.Users.Roles;
 using Dtos.Users.LockUser;
 using Dtos.Users.UserGet;
 using Dtos.Pagination;
+using Dtos.Users.ChangePassword;
 using Dtos.Users.Users;
 
 namespace Services.Interfaces
@@ -101,5 +102,13 @@ namespace Services.Interfaces
         /// <param name="pageSize">The number of items per page</param>
         /// <returns>List of users with pagination</returns>
         Task<(IEnumerable<UserDto>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize);
+
+        /// <summary>
+        /// Change user password
+        /// </summary>
+        /// <param name="idUser">User to change password</param>
+        /// <param name="changePasswordDto">OldPassword and/or new password & confirmation</param>
+        /// <returns></returns>
+        Task<PasswordChangedDto> ChangeUserPassword(string idUser, ChangePasswordDto changePasswordDto);
     }
 }
