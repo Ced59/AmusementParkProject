@@ -13,6 +13,7 @@ import {DropdownModule} from "primeng/dropdown";
 import {ToolbarModule} from "primeng/toolbar";
 import {ButtonModule} from "primeng/button";
 import {FormsModule} from "@angular/forms";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 // Fonction pour créer un nouveau TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -42,6 +43,7 @@ export function initializeApp(translationService: TranslationService): () => Pro
         deps: [HttpClient]
       }
     }),
+    BrowserAnimationsModule,
     DropdownModule,
     ToolbarModule,
     ButtonModule,

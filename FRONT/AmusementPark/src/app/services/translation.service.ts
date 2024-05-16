@@ -44,4 +44,8 @@ export class TranslationService {
     this.setDefaultLang('en');
     return firstValueFrom(this.useLang('en'));
   }
+
+  getCurrentLang(): string {
+    return this.translate.currentLang;
+  }
 }
