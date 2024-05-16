@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TranslationService {
-  private validLangs = ['en', 'fr', 'es', 'de']; // Ajoutez ici toutes les langues valides
+  private validLangs = ['en', 'fr', 'es', 'de'];
 
   constructor(
     private translate: TranslateService,
