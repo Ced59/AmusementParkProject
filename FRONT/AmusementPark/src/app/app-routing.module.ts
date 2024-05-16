@@ -1,45 +1,54 @@
-// app-routing.module.ts
-import { NgModule } from '@angular/core';
-import { CanActivateFn, RouterModule, Routes } from '@angular/router';
+import { NgModule, inject } from '@angular/core';
+import {RouterModule, Routes, CanActivateFn, CanMatchFn} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { TranslationService } from './services/translation.service';
+import { ActivatedRouteSnapshot, Route } from '@angular/router';
 
-export function languageGuardFactory(translationService: TranslationService): CanActivateFn {
-  return (route) => {
-    const lang = route.params['lang'] || 'en';
-    translationService.useLang(lang);
-    return true;
-  };
-}
+const languageGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
+  const translationService = inject(TranslationService);
+  const lang = route.paramMap.get('lang') || 'en';
+  translationService.useLang(lang);
+  return true;
+};
+
+const languageMatcher: CanMatchFn = (route: Route) => {
+  const lang = route.path?.split('/')[0] || 'en';
+  const translationService = inject(TranslationService);
+  translationService.useLang(lang);
+  return true;
+};
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'en/home',  // Redirection par défaut vers anglais
+    redirectTo: 'en/home',
     pathMatch: 'full'
   },
   {
     path: ':lang',
-    canActivate: [languageGuardFactory],
+    canActivate: [languageGuard],
+    canMatch: [languageMatcher],
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },  // Redirection vers home lorsque seulement la langue est spécifiée
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
-      { path: 'about', component: AboutComponent },
-      // autres sous-routes
+      { path: 'about', component: AboutComponent }
     ]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
   providers: [
     {
       provide: 'languageGuard',
-      useFactory: languageGuardFactory,
-      deps: [TranslationService]
+      useFactory: () => languageGuard
+    },
+    {
+      provide: 'languageMatcher',
+      useFactory: () => languageMatcher
     }
-  ],
-  exports: [RouterModule]
+  ]
 })
 export class AppRoutingModule { }

@@ -6,8 +6,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from "./components/home/home.component";
-import { AboutComponent } from "./components/about/about.component";
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
 
 // Fonction pour créer un nouveau TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
