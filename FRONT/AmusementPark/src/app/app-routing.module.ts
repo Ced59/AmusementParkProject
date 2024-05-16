@@ -8,14 +8,18 @@ import { ActivatedRouteSnapshot, Route } from '@angular/router';
 const languageGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
   const translationService = inject(TranslationService);
   const lang = route.paramMap.get('lang') || 'en';
-  translationService.useLang(lang);
+  if (lang !== ":lang"){
+    translationService.useLang(lang);
+  }
   return true;
 };
 
 const languageMatcher: CanMatchFn = (route: Route) => {
   const lang = route.path?.split('/')[0] || 'en';
   const translationService = inject(TranslationService);
-  translationService.useLang(lang);
+  if (lang !== ":lang") {
+    translationService.useLang(lang);
+  }
   return true;
 };
 
