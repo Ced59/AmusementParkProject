@@ -10,11 +10,12 @@ import { filter } from 'rxjs/operators';
 })
 export class TopbarComponent implements OnInit {
   languages = [
-    { label: 'English', value: 'en' },
-    { label: 'French', value: 'fr' },
-    { label: 'Spanish', value: 'es' },
-    { label: 'German', value: 'de' }
+    { label: 'English', value: 'en' },  // English
+    { label: 'Français', value: 'fr' },  // French
+    { label: 'Español', value: 'es' },  // Spanish
+    { label: 'Deutsch', value: 'de' }   // German
   ];
+
   selectedLanguage: string | undefined;
 
   constructor(
