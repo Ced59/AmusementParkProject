@@ -1,11 +1,12 @@
 
 <!-- app.component.html -->
+
+<app-topbar></app-topbar>
+
 <div *ngIf="isLoading" class="loader">
   Loading...
 </div>
 <div *ngIf="!isLoading">
-  <h1>{{ 'title' | translate }}</h1>
-  <p>{{ 'description' | translate }}</p>
   <router-outlet></router-outlet>
 </div>
 

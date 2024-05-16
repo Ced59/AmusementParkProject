@@ -1,0 +1,22 @@
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+    <img src="assets/general-icon/logo-amusementpark.png" alt="Logo" class="logo">
+  </div>
+  <div class="p-toolbar-group-right">
+    <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage($event.value)" [style]="{'width':'150px'}" [appendTo]="'body'">
+      <ng-template let-language pTemplate="selectedItem">
+        <div class="p-d-flex p-ai-center">
+          <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="">
+          <span>{{language.label}}</span>
+        </div>
+      </ng-template>
+      <ng-template let-language pTemplate="item">
+        <div class="p-d-flex p-ai-center">
+          <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="">
+          <span>{{language.label}}</span>
+        </div>
+      </ng-template>
+    </p-dropdown>
+    <button pButton type="button" label="Login" icon="pi pi-user" class="p-button-secondary"></button>
+  </div>
+</p-toolbar>

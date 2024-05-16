@@ -8,6 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { TranslationService } from './services/translation.service';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import {DropdownModule} from "primeng/dropdown";
+import {ToolbarModule} from "primeng/toolbar";
+import {ButtonModule} from "primeng/button";
+import {FormsModule} from "@angular/forms";
 
 // Fonction pour créer un nouveau TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -23,7 +28,8 @@ export function initializeApp(translationService: TranslationService): () => Pro
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    TopbarComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,11 @@ export function initializeApp(translationService: TranslationService): () => Pro
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    DropdownModule,
+    ToolbarModule,
+    ButtonModule,
+    FormsModule
   ],
   providers: [
     {
