@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslationService } from './services/translation.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -8,7 +8,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = "Amusement Parks";
   isLoading = true;
 
@@ -16,7 +16,10 @@ export class AppComponent {
     private translationService: TranslationService,
     private route: ActivatedRoute,
     private router: Router
-  ) {
+  ) {}
+
+  ngOnInit(): void {
+    // Listen to navigation events to update the loading state
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
