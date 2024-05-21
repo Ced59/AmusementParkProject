@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslationService } from './services/translation.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import {ApiService} from "./services/api.service";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit {
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
       const lang = this.route.root.firstChild?.snapshot.paramMap.get('lang');
-      console.log("Current Lang:", lang);
+
       if (lang) {
         this.isLoading = true;
         this.translationService.useLang(lang).subscribe({
@@ -40,5 +41,6 @@ export class AppComponent implements OnInit {
         this.isLoading = false;  // Hide the loader if no lang is found
       }
     });
+
   }
 }
