@@ -3,12 +3,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable, of, firstValueFrom } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import {LANGUAGES} from "../commons/languages";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
-  private validLangs = ['en', 'fr', 'es', 'de'];
+  private validLangs = LANGUAGES.map(lang => lang.value);
 
   constructor(
     private translate: TranslateService,
@@ -47,5 +48,11 @@ export class TranslationService {
 
   getCurrentLang(): string {
     return this.translate.currentLang;
+  }
+
+  getCurrentLangCode(): string {
+    const currentLang = this.getCurrentLang();
+    const language = LANGUAGES.find(lang => lang.value === currentLang);
+    return language ? language.code : 'en-US';
   }
 }

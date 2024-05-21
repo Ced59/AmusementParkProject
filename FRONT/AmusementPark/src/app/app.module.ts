@@ -1,6 +1,6 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { AuthModalComponent } from './components/login-register/auth-modal/auth-
 import { RegisterFormComponent } from './components/login-register/register-form/register-form.component';
 import {InputTextModule} from "primeng/inputtext";
 import {CardModule} from "primeng/card";
+import {LanguageInterceptor} from "./interceptors/language.interceptor";
 
 // Fonction pour créer un nouveau TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -66,6 +67,11 @@ export function initializeApp(translationService: TranslationService): () => Pro
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       deps: [TranslationService],
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LanguageInterceptor,
       multi: true
     }
   ],

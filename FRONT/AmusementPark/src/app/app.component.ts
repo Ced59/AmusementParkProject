@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
             this.isLoading = false;  // Hide the loader once the language is loaded
           },
           error: (err) => {
-            console.error('Error loading language:', err);
             this.isLoading = false;  // Hide the loader even if there's an error
           }
         });

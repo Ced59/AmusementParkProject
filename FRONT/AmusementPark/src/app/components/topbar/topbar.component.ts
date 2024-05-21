@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import {LANGUAGES} from "../../commons/languages";
 
 @Component({
   selector: 'app-topbar',
@@ -9,12 +10,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
-  languages = [
-    { label: 'English', value: 'en' },  // English
-    { label: 'Français', value: 'fr' },  // French
-    { label: 'Español', value: 'es' },  // Spanish
-    { label: 'Deutsch', value: 'de' }   // German
-  ];
+  languages = LANGUAGES
 
   selectedLanguage: string | undefined;
   displayLoginModal: boolean = false;
