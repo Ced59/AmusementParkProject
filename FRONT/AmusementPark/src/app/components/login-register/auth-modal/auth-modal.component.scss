@@ -1,0 +1,14 @@
+/* auth-modal.component.css */
+:host ::ng-deep .p-dialog .p-button {
+  min-width: 150px; /* Assure une largeur minimale pour les boutons OAuth */
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+p-inputText {
+  width: 100%;
+  margin-bottom: 0.5rem; /* Espacement pour les champs de formulaire */
+}

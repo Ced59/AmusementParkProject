@@ -14,8 +14,12 @@ import {ToolbarModule} from "primeng/toolbar";
 import {ButtonModule} from "primeng/button";
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { LoginFormComponent } from './components/login-form/login-form.component';
+import { LoginFormComponent } from './components/login-register/login-form/login-form.component';
 import {DialogModule} from "primeng/dialog";
+import { AuthModalComponent } from './components/login-register/auth-modal/auth-modal.component';
+import { RegisterFormComponent } from './components/login-register/register-form/register-form.component';
+import {InputTextModule} from "primeng/inputtext";
+import {CardModule} from "primeng/card";
 
 // Fonction pour créer un nouveau TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,7 +37,9 @@ export function initializeApp(translationService: TranslationService): () => Pro
     HomeComponent,
     AboutComponent,
     TopbarComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    AuthModalComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,9 @@ export function initializeApp(translationService: TranslationService): () => Pro
     ToolbarModule,
     ButtonModule,
     FormsModule,
-    DialogModule
+    DialogModule,
+    InputTextModule,
+    CardModule
   ],
   providers: [
     {

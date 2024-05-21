@@ -1,6 +1,14 @@
+.custom-toolbar {
+  background-color: #f4f4f4;  /* Couleur de fond claire */
+  border-bottom: 1px solid #ccc; /* Ligne de séparation subtile */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombre légère pour un effet de profondeur */
+  padding: 10px 20px; /* Espacement interne */
+}
+
+
 .logo {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
 }
 
 .flag {
@@ -13,17 +21,19 @@
   height: 40px;
 }
 
+.dropdown-language {
+  border: none;
+}
+
 .p-button {
   height: 40px;
 }
 
-.p-toolbar {
-  align-items: center;
-}
+
 
 .fun-text {
   font-family: 'Bangers-Regular', sans-serif;
-  font-size: 40px;
+  font-size:30px;
   margin-left: 20px;
   color: #ffffff;
 }
