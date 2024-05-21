@@ -17,6 +17,7 @@ export class TopbarComponent implements OnInit {
   ];
 
   selectedLanguage: string | undefined;
+  displayLoginModal: boolean = false;
 
   constructor(
     private translationService: TranslationService,
@@ -46,5 +47,13 @@ export class TopbarComponent implements OnInit {
       },
       error: (err) => console.error('Error changing language:', err)
     });
+  }
+
+  openLoginModal() {
+    this.displayLoginModal = true;
+  }
+
+  closeLoginModal() {
+    this.displayLoginModal = false;
   }
 }

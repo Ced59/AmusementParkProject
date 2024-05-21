@@ -14,6 +14,8 @@ import {ToolbarModule} from "primeng/toolbar";
 import {ButtonModule} from "primeng/button";
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import {DialogModule} from "primeng/dialog";
 
 // Fonction pour créer un nouveau TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -30,7 +32,8 @@ export function initializeApp(translationService: TranslationService): () => Pro
     AppComponent,
     HomeComponent,
     AboutComponent,
-    TopbarComponent
+    TopbarComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ export function initializeApp(translationService: TranslationService): () => Pro
     DropdownModule,
     ToolbarModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    DialogModule
   ],
   providers: [
     {

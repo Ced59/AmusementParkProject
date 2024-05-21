@@ -1,8 +1,40 @@
 .logo {
-  width: 50px;
+  width: 60px;
+  height: 60px;
 }
 
 .flag {
   width: 20px;
   margin-right: 8px;
+}
+
+.menu-language {
+  margin-right: 10px;
+  height: 40px;
+}
+
+.p-button {
+  height: 40px;
+}
+
+.p-toolbar {
+  align-items: center;
+}
+
+.fun-text {
+  font-family: 'Bangers-Regular', sans-serif;
+  font-size: 40px;
+  margin-left: 20px;
+  color: #ffffff;
+}
+
+@font-face {
+  font-family: 'Bangers-Regular';
+  src: url('/assets/fonts/Bangers-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.top-bar-button{
+  height: 40px;
 }
