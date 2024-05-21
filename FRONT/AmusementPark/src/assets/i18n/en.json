@@ -1,4 +1,7 @@
 {
+  "topbar" : {
+    "login_header" : "Login / Register"
+  },
   "title": "Welcome",
   "description": "This is an English description."
 }

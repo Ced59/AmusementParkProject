@@ -3,6 +3,13 @@
     <img src="assets/general-icon/logo-amusementpark.png" alt="Logo" class="logo">
     <span class="fun-text">Amusement Parks</span>
   </div>
+
+  <div class="p-toolbar-group-center">
+    <p-dialog [header]="('topbar.login_header' | translate)" [(visible)]="displayLoginModal" [modal]="true">
+      <app-login-form></app-login-form> <!-- Le composant que vous créez pour les formulaires -->
+    </p-dialog>
+  </div>
+
   <div class="p-toolbar-group-right">
     <div class="menu-language">
       <p-dropdown [options]="languages" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage($event.value)" [appendTo]="'body'">
@@ -12,6 +19,8 @@
             <span>{{language.label}}</span>
           </div>
         </ng-template>
+
+
         <ng-template let-language pTemplate="item">
           <div class="p-d-flex p-ai-center">
             <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="">
@@ -20,10 +29,9 @@
         </ng-template>
       </p-dropdown>
     </div>
-    <button pButton type="button" label="Login" icon="pi pi-user" class="p-button-secondary top-bar-button" (click)="openLoginModal()"></button>
+    <button pButton type="button" [label]="('topbar.login_header' | translate)" icon="pi pi-user" class="p-button-secondary top-bar-button" (click)="openLoginModal()"></button>
   </div>
 
-  <p-dialog header="Login" [(visible)]="displayLoginModal" [modal]="true" [style]="{width: '400px'}">
-    <app-login-form></app-login-form> <!-- Le composant que vous créez pour les formulaires -->
-  </p-dialog>
+
+
 </p-toolbar>

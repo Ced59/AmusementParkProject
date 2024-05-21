@@ -1,4 +1,7 @@
 {
+  "topbar": {
+    "login_header": "Iniciar sesión / Registrarse"
+  },
   "title": "Bienvenido",
   "description": "Esta es una descripción en español."
 }
