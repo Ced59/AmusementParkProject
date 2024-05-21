@@ -74,6 +74,15 @@ public class Program
         builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
         builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
         builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+        // Configure CORS
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigin",
+                builderCors => builderCors.WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
+        });
     }
 
     private static void ConfigureSwagger(IServiceCollection services)
@@ -238,6 +247,8 @@ public class Program
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
+        app.UseCors("AllowSpecificOrigin");
+
 
         InitializeMongoDb(app);
     }
