@@ -1,19 +1,17 @@
-<p-card>
-  <h5>Inscription classique</h5>
-  <form>
-    <!-- Champs de formulaire pour l'inscription -->
-    <div>
-      <label for="registerEmail">Email</label>
-      <input type="email" id="registerEmail" name="registerEmail" pInputText placeholder="Entrez votre email"
-             [(ngModel)]="registerEmail">
-    </div>
-    <div>
-      <label for="registerPassword">Mot de passe</label>
-      <input type="password" id="registerPassword" name="registerPassword" pInputText
-             placeholder="Entrez votre mot de passe" [(ngModel)]="registerPassword">
-      <input type="password" id="confirmPassword" name="confirmPassword" pInputText
-             placeholder="Confirmation du mot de passe" [(ngModel)]="confirmPassword">
-    </div>
-    <button pButton type="submit" label="S'inscrire"></button>
-  </form>
-</p-card>
+<h5>Inscription classique</h5>
+<form class="form-style">
+  <div class="form-group">
+    <label for="registerEmail">Email</label>
+    <input type="email" id="registerEmail" name="registerEmail" pInputText placeholder="Entrez votre email"
+           [(ngModel)]="registerEmail">
+  </div>
+  <div class="form-group">
+    <label for="registerPassword">Mot de passe</label>
+    <input type="password" id="registerPassword" name="registerPassword" pInputText
+           placeholder="Entrez votre mot de passe" [(ngModel)]="registerPassword">
+    <input type="password" id="confirmPassword" name="confirmPassword" pInputText
+           placeholder="Confirmation du mot de passe" [(ngModel)]="confirmPassword">
+  </div>
+  <button pButton type="submit" label="S'inscrire"></button>
+</form>
+
