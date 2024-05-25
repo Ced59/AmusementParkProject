@@ -13,11 +13,11 @@ namespace WebAPI.Controllers;
 [ApiController]
 [SwaggerOrder(1)]
 [Route("[controller]")]
-public class LoginController : ControllerBase
+public class AuthController : ControllerBase
 {
     private readonly IUsersService _usersService;
 
-    public LoginController(IUsersService usersService)
+    public AuthController(IUsersService usersService)
     {
         _usersService = usersService;
     }
@@ -37,21 +37,21 @@ public class LoginController : ControllerBase
         return ApiResponseHandler.HandleResponse(tokenRefreshed);
     }
 
-    [HttpGet("auth/google")]
+    [HttpGet("google")]
     public IActionResult AuthenticateGoogle()
     {
         var authenticationProperties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
         return Challenge(authenticationProperties, GoogleDefaults.AuthenticationScheme);
     }
 
-    [HttpGet("auth/facebook")]
+    [HttpGet("facebook")]
     public IActionResult AuthenticateFacebook()
     {
         var authenticationProperties = new AuthenticationProperties { RedirectUri = Url.Action("FacebookResponse") };
         return Challenge(authenticationProperties, FacebookDefaults.AuthenticationScheme);
     }
 
-    [HttpGet("auth/google-response")]
+    [HttpGet("google-response")]
     public async Task<IActionResult> GoogleResponse()
     {
         var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
@@ -62,7 +62,7 @@ public class LoginController : ControllerBase
         return Ok();
     }
 
-    [HttpGet("auth/facebook-response")]
+    [HttpGet("facebook-response")]
     public async Task<IActionResult> FacebookResponse()
     {
         var result = await HttpContext.AuthenticateAsync(FacebookDefaults.AuthenticationScheme);

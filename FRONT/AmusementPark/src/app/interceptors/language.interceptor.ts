@@ -9,6 +9,7 @@ export class LanguageInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const currentLang = this.translationService.getCurrentLangCode() || 'en-US';
+    console.log(currentLang);
 
     const modifiedReq = req.clone({
       headers: req.headers.set('Accept-Language', currentLang)

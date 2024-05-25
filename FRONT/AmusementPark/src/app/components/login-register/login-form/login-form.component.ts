@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {UserCredentials} from "../../../models/users/user_credentials";
+import {ApiService} from "../../../services/api.service";
 
 @Component({
   selector: 'app-login-form',
@@ -6,11 +8,25 @@ import { Component } from '@angular/core';
   styleUrl: './login-form.component.scss'
 })
 export class LoginFormComponent {
-  loginEmail: string; // Définissez la propriété pour l'email
-  loginPassword: string; // Définissez la propriété pour le mot de passe
+  loginEmail: string;
+  loginPassword: string;
 
-  constructor() {
-    this.loginEmail = '';
-    this.loginPassword = '';
+  constructor(private apiService: ApiService) {
+    this.loginEmail = "";
+    this.loginPassword = "";
+  }
+
+  onSubmit() {
+    console.log('Email:', this.loginEmail);
+    console.log('Password:', this.loginPassword);
+
+
+    let userCredentials = new UserCredentials(this.loginEmail, this.loginPassword);
+
+    this.apiService.login(userCredentials).subscribe(result => {
+      console.log(result);
+    });
+
+
   }
 }

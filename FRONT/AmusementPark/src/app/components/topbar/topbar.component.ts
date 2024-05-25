@@ -3,6 +3,7 @@ import { TranslationService } from '../../services/translation.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import {LANGUAGES} from "../../commons/languages";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-topbar',
@@ -17,7 +18,8 @@ export class TopbarComponent implements OnInit {
 
   constructor(
     private translationService: TranslationService,
-    private router: Router
+    private router: Router,
+    private apiService: ApiService
   ) {}
 
   ngOnInit() {
@@ -31,6 +33,10 @@ export class TopbarComponent implements OnInit {
         next: () => {},
         error: (err) => console.error('Error loading language:', err)
       });
+    });
+
+    this.apiService.getUsers().subscribe(users => {
+      console.log(users);
     });
   }
 

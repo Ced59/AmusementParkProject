@@ -1,14 +1,14 @@
 <h5>Login classique</h5>
-<form class="form-style">
+<form class="form-style" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="loginEmail">Email</label>
     <input type="email" id="loginEmail" name="loginEmail" pInputText placeholder="Entrez votre email"
-           [(ngModel)]="loginEmail">
+           [(ngModel)]="loginEmail" ngModel>
   </div>
   <div class="form-group">
     <label for="loginPassword">Mot de passe</label>
     <input type="password" id="loginPassword" name="loginPassword" pInputText placeholder="Entrez votre mot de passe"
-           [(ngModel)]="loginPassword">
+           [(ngModel)]="loginPassword" ngModel>
   </div>
   <button pButton type="submit" label="Se connecter"></button>
 </form>

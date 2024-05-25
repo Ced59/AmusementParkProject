@@ -12,7 +12,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   login(credentials: UserCredentials) {
-    const url = `${API_ENDPOINTS.postLogin}`;
+    const url = `${environment.baseUrl}${API_ENDPOINTS.postLogin}`;
     return this.http.post(url, credentials);
   }
 

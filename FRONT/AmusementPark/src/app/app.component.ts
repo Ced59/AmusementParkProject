@@ -40,6 +40,5 @@ export class AppComponent implements OnInit {
         this.isLoading = false;  // Hide the loader if no lang is found
       }
     });
-
   }
 }

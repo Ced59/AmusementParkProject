@@ -47,7 +47,9 @@ export class TranslationService {
   }
 
   getCurrentLang(): string {
-    return this.translate.currentLang;
+    let currentLang = this.translate.currentLang;
+    console.log(currentLang);
+    return currentLang;
   }
 
   getCurrentLangCode(): string {
