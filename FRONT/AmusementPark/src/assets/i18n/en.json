@@ -1,7 +1,26 @@
 {
-  "topbar" : {
-    "login_header" : "Login / Register"
+  "topbar": {
+    "login_header": "Login / Registration"
+  },
+  "auth": {
+    "login": {
+      "title": "Standard Registration",
+      "title_email": "Email",
+      "mail_placeholder": "Enter your email",
+      "title_password": "Password",
+      "password_placeholder": "Enter your password",
+      "btn_text": "Login"
+    },
+    "register": {
+      "title": "Standard Login",
+      "title_email": "Email",
+      "mail_placeholder": "Enter your email",
+      "title_password": "Password",
+      "password_placeholder": "Enter your password",
+      "password_confirm_placeholder": "Confirm your password",
+      "btn_text": "Register"
+    }
   },
   "title": "Welcome",
-  "description": "This is an English description."
+  "description": "This is a description in English."
 }

@@ -1,7 +1,26 @@
 {
   "topbar": {
-    "login_header": "Iniciar sesión / Registrarse"
+    "login_header": "Iniciar sesión / Registro"
+  },
+  "auth": {
+    "login": {
+      "title": "Registro Clásico",
+      "title_email": "Correo Electrónico",
+      "mail_placeholder": "Introduce tu correo electrónico",
+      "title_password": "Contraseña",
+      "password_placeholder": "Introduce tu contraseña",
+      "btn_text": "Iniciar sesión"
+    },
+    "register": {
+      "title": "Autenticación Clásica",
+      "title_email": "Correo Electrónico",
+      "mail_placeholder": "Introduce tu correo electrónico",
+      "title_password": "Contraseña",
+      "password_placeholder": "Introduce tu contraseña",
+      "password_confirm_placeholder": "Confirma tu contraseña",
+      "btn_text": "Registrarse"
+    }
   },
   "title": "Bienvenido",
-  "description": "Esta es una descripción en español."
+  "description": "Esta es una descripción en Español."
 }

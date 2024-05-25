@@ -1,14 +1,14 @@
-<h5>Login classique</h5>
+<h5>{{ 'auth.login.title' | translate }}</h5>
 <form class="form-style" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="loginEmail">Email</label>
-    <input type="email" id="loginEmail" name="loginEmail" pInputText placeholder="Entrez votre email"
+    <label for="loginEmail">{{ 'auth.login.title_email' | translate }}</label>
+    <input type="email" id="loginEmail" name="loginEmail" pInputText [placeholder]="('auth.login.mail_placeholder' | translate)"
            [(ngModel)]="loginEmail" ngModel>
   </div>
   <div class="form-group">
-    <label for="loginPassword">Mot de passe</label>
-    <input type="password" id="loginPassword" name="loginPassword" pInputText placeholder="Entrez votre mot de passe"
+    <label for="loginPassword">{{ 'auth.login.title_password' | translate }}</label>
+    <input type="password" id="loginPassword" name="loginPassword" pInputText [placeholder]="('auth.login.password_placeholder' | translate)"
            [(ngModel)]="loginPassword" ngModel>
   </div>
-  <button pButton type="submit" label="Se connecter"></button>
+  <button pButton type="submit" [label]="('auth.login.btn_text' | translate)"></button>
 </form>

@@ -1,8 +1,26 @@
 {
   "topbar": {
-    "login_header": "Anmelden / Registrieren"
+    "login_header": "Anmeldung / Registrierung"
   },
-
+  "auth": {
+    "login": {
+      "title": "Klassische Anmeldung",
+      "title_email": "E-Mail",
+      "mail_placeholder": "Geben Sie Ihre E-Mail ein",
+      "title_password": "Passwort",
+      "password_placeholder": "Geben Sie Ihr Passwort ein",
+      "btn_text": "Anmelden"
+    },
+    "register": {
+      "title": "Klassische Authentifizierung",
+      "title_email": "E-Mail",
+      "mail_placeholder": "Geben Sie Ihre E-Mail ein",
+      "title_password": "Passwort",
+      "password_placeholder": "Geben Sie Ihr Passwort ein",
+      "password_confirm_placeholder": "Bestätigen Sie Ihr Passwort",
+      "btn_text": "Registrieren"
+    }
+  },
   "title": "Willkommen",
   "description": "Dies ist eine Beschreibung auf Deutsch."
 }

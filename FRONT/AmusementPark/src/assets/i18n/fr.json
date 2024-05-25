@@ -2,6 +2,25 @@
   "topbar": {
     "login_header": "Connexion / Inscription"
   },
+  "auth": {
+    "login": {
+      "title": "Inscription classique",
+      "title_email": "Email",
+      "mail_placeholder": "Entrez votre email",
+      "title_password" : "Mot de passe",
+      "password_placeholder": "Entrez votre mot de passe",
+      "btn_text" : "Se connecter"
+    },
+    "register": {
+      "title": "Authentification classique",
+      "title_email": "Email",
+      "mail_placeholder": "Entrez votre email",
+      "title_password" : "Mot de passe",
+      "password_placeholder": "Entrez votre mot de passe",
+      "password_confirm_placeholder": "Confirmation du mot de passe",
+      "btn_text" : "S'enregister"
+    }
+  },
   "title": "Bienvenue",
   "description": "Ceci est une description en français."
 }
