@@ -17,8 +17,13 @@
       "mail_placeholder": "Introduce tu correo electrónico",
       "title_password": "Contraseña",
       "password_placeholder": "Introduce tu contraseña",
+      "password_info": "Tu contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula y un dígito.",
       "password_confirm_placeholder": "Confirma tu contraseña",
-      "btn_text": "Registrarse"
+      "btn_text": "Registrarse",
+      "errors": {
+        "password_error_summary": "Error de contraseña",
+        "password_error": "La contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula y un dígito."
+      }
     }
   },
   "title": "Bienvenido",

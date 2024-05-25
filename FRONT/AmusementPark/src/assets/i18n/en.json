@@ -17,8 +17,13 @@
       "mail_placeholder": "Enter your email",
       "title_password": "Password",
       "password_placeholder": "Enter your password",
+      "password_info":"Your password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one digit.",
       "password_confirm_placeholder": "Confirm your password",
-      "btn_text": "Register"
+      "btn_text": "Register",
+      "errors": {
+        "password_error_summary": "Password Error",
+        "password_error": "The password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one digit."
+      }
     }
   },
   "title": "Welcome",

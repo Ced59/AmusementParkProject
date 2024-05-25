@@ -1,8 +1,8 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Observable, of, firstValueFrom } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import {Observable, of, firstValueFrom, forkJoin} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 import {LANGUAGES} from "../commons/languages";
 
 @Injectable({
@@ -57,4 +57,23 @@ export class TranslationService {
     const language = LANGUAGES.find(lang => lang.value === currentLang);
     return language ? language.code : 'en-US';
   }
+
+  getTranslations(keys: string[]): Observable<{ [key: string]: string }> {
+    return forkJoin(
+      keys.map(key =>
+        this.translate.get(key).pipe(
+          map(value => ({ key, value }))
+        )
+      )
+    ).pipe(
+      map(results => {
+        let translations: { [key: string]: string } = {};
+        results.forEach(result => {
+          translations[result.key] = result.value;
+        });
+        return translations;
+      })
+    );
+  }
+
 }

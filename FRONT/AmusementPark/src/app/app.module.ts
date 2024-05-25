@@ -21,6 +21,9 @@ import { RegisterFormComponent } from './components/login-register/register-form
 import {InputTextModule} from "primeng/inputtext";
 import {CardModule} from "primeng/card";
 import {LanguageInterceptor} from "./interceptors/language.interceptor";
+import {TooltipModule} from "primeng/tooltip";
+import {ToastModule} from "primeng/toast";
+import {MessageService} from "primeng/api";
 
 // Fonction pour créer un nouveau TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -60,7 +63,9 @@ export function initializeApp(translationService: TranslationService): () => Pro
     FormsModule,
     DialogModule,
     InputTextModule,
-    CardModule
+    CardModule,
+    TooltipModule,
+    ToastModule
   ],
   providers: [
     {
@@ -73,7 +78,8 @@ export function initializeApp(translationService: TranslationService): () => Pro
       provide: HTTP_INTERCEPTORS,
       useClass: LanguageInterceptor,
       multi: true
-    }
+    },
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

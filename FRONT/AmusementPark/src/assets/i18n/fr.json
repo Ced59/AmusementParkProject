@@ -7,18 +7,23 @@
       "title": "Inscription classique",
       "title_email": "Email",
       "mail_placeholder": "Entrez votre email",
-      "title_password" : "Mot de passe",
+      "title_password": "Mot de passe",
       "password_placeholder": "Entrez votre mot de passe",
-      "btn_text" : "Se connecter"
+      "btn_text": "Se connecter"
     },
     "register": {
       "title": "Authentification classique",
       "title_email": "Email",
       "mail_placeholder": "Entrez votre email",
-      "title_password" : "Mot de passe",
+      "title_password": "Mot de passe",
       "password_placeholder": "Entrez votre mot de passe",
+      "password_info": "Votre mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, et un chiffre.",
       "password_confirm_placeholder": "Confirmation du mot de passe",
-      "btn_text" : "S'enregister"
+      "btn_text": "S'enregister",
+      "errors": {
+        "password_error_summary": "Erreur de mot de passe",
+        "password_error": "Le mot de passe doit contenir au minimum 8 caractères, une majuscule, une minuscule, et un chiffre."
+      }
     }
   },
   "title": "Bienvenue",
