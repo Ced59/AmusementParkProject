@@ -34,6 +34,8 @@ public static class ErrorCodes
     public static readonly ErrorDetail IncorrectPassword = new(403, "The actual password is incorrect");
     public static readonly ErrorDetail ChangePasswordFailed = new(500, "Change Password Failed");
 
+    public static readonly ErrorDetail ParkNotExists = new(404, "Park not exists");
+
     public readonly struct ErrorDetail
     {
         public int StatusCode { get; }

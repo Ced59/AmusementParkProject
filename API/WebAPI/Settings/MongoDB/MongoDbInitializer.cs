@@ -60,8 +60,6 @@ public static class MongoDbInitializer
                 var park = new Park
                 {
                     Name = parkJson.Name,
-                    Latitude = parkJson.Latitude,
-                    Longitude = parkJson.Longitude,
                     CountryCode = ExtractCountryCode(parkJson.Country.Name)
                 };
 

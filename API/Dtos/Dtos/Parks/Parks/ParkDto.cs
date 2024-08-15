@@ -1,0 +1,9 @@
+﻿namespace Dtos.Parks.Parks;
+
+public class ParkDto
+{
+    public string? Name { get; set; }
+    public string? CountryCode { get; set; }
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
+}

@@ -58,6 +58,8 @@ public class Program
         // Services
         builder.Services.AddScoped<IUsersService, UsersService>();
         builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
+        builder.Services.AddScoped<IParksService, ParksService>();
+        builder.Services.AddScoped<IParksQueryHandler, ParksQueryHandler>();
 
         // Other Configurations
         builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);

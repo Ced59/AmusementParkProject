@@ -10,4 +10,8 @@
     <ProjectReference Include="..\..\CommonStatus\CommonStatus\Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Parks\Creating\" />
+  </ItemGroup>
+
 </Project>
