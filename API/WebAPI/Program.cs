@@ -24,15 +24,15 @@ namespace WebAPI;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
         ConfigureServices(builder);
         var app = builder.Build();
-        ConfigureApplication(app);
+        await ConfigureApplication(app);
 
-        app.Run();
+        await app.RunAsync();
     }
 
     private static void ConfigureServices(WebApplicationBuilder builder)
@@ -210,14 +210,14 @@ public class Program
     }
 
 
-    private static void ValidateJwtSettings(JwtSettings settings)
+    private static void ValidateJwtSettings(IJwtSettings settings)
     {
         if (string.IsNullOrEmpty(settings.Key) || string.IsNullOrEmpty(settings.Issuer) ||
             string.IsNullOrEmpty(settings.Audience))
             throw new InvalidOperationException("JWT settings are not properly configured.");
     }
 
-    private static void ConfigureMongoDb(IServiceCollection services, MongoDbSettings settings)
+    private static void ConfigureMongoDb(IServiceCollection services, IMongoDbSettings settings)
     {
         services.AddSingleton<IMongoDatabase>(serviceProvider =>
         {
@@ -226,14 +226,14 @@ public class Program
         });
     }
 
-    private static void InitializeMongoDb(WebApplication app)
+    private static async Task InitializeMongoDbAsync(IHost app)
     {
         var database = app.Services.GetRequiredService<IMongoDatabase>();
         var mongoDbSettings = app.Services.GetRequiredService<IMongoDbSettings>();
-        MongoDbInitializer.InitializeCollections(database, mongoDbSettings);
+        await MongoDbInitializer.InitializeCollectionsAsync(database, mongoDbSettings);
     }
 
-    private static void ConfigureApplication(WebApplication app)
+    private static async Task ConfigureApplication(WebApplication app)
     {
         if (app.Environment.IsDevelopment())
         {
@@ -250,6 +250,6 @@ public class Program
         app.UseCors("AllowSpecificOrigin");
 
 
-        InitializeMongoDb(app);
+        await InitializeMongoDbAsync(app);
     }
 }

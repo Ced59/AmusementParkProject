@@ -7,4 +7,5 @@ public interface IMongoDbSettings
     string Username { get; }
     string Password { get; }
     string UsersCollectionName { get; }
+    string ParksCollectionName { get; }
 }

@@ -24,6 +24,8 @@ import {LanguageInterceptor} from "./interceptors/language.interceptor";
 import {TooltipModule} from "primeng/tooltip";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
+import {MessagesModule} from "primeng/messages";
+import {MessageModule} from "primeng/message";
 
 // Fonction pour créer un nouveau TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -65,6 +67,9 @@ export function initializeApp(translationService: TranslationService): () => Pro
     InputTextModule,
     CardModule,
     TooltipModule,
+    ToastModule,
+    MessagesModule,
+    MessageModule,
     ToastModule
   ],
   providers: [

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {UserCredentials} from "../../../models/users/user_credentials";
 import {ApiService} from "../../../services/api.service";
+import {ToastMessageService} from "../../../services/messages/toast-message.service";
 
 @Component({
   selector: 'app-login-form',
@@ -11,7 +12,7 @@ export class LoginFormComponent {
   loginEmail: string;
   loginPassword: string;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private messageService: ToastMessageService) {
     this.loginEmail = "";
     this.loginPassword = "";
   }
@@ -27,6 +28,23 @@ export class LoginFormComponent {
       console.log(result);
     });
 
+
+    this.apiService.login(userCredentials).subscribe({
+      next: (result) => {
+        // Gérer la connexion réussie
+        this.messageService.add('success', 'Succès', 'Connexion réussie !');
+      },
+      error: (error) => {
+        if (error.status === 403 && error.error && error.error) {
+          this.messageService.add('error', 'Erreur', error.error);
+        } else {
+          this.messageService.add('error', 'Erreur', "Une erreur inattendue est survenue.");
+        }
+      },
+      complete: () => {
+        // Logique à exécuter lorsque l'Observable est terminé (optionnel)
+      }
+    });
 
   }
 }
