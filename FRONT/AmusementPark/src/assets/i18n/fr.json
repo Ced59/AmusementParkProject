@@ -1,6 +1,7 @@
 {
   "topbar": {
-    "login_header": "Connexion / Inscription"
+    "login_header": "Connexion / Inscription",
+    "hello": "Bonjour"
   },
   "auth": {
     "login": {

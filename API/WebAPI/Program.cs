@@ -83,7 +83,8 @@ public class Program
             options.AddPolicy("AllowSpecificOrigin",
                 builderCors => builderCors.WithOrigins("http://localhost:4200")
                     .AllowAnyHeader()
-                    .AllowAnyMethod());
+                    .AllowAnyMethod()
+                    .AllowCredentials());
         });
     }
 
@@ -246,10 +247,10 @@ public class Program
         //app.UseMiddleware<JwtMiddleware>();
         app.UseIpRateLimiting();
         app.UseHttpsRedirection();
+        app.UseCors("AllowSpecificOrigin");
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
-        app.UseCors("AllowSpecificOrigin");
 
 
         await InitializeMongoDbAsync(app);

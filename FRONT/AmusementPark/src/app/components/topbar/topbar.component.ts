@@ -1,9 +1,11 @@
+// Importations
 import { Component, OnInit } from '@angular/core';
-import { TranslationService } from '../../services/translation.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import {LANGUAGES} from "../../commons/languages";
-import {ApiService} from "../../services/api.service";
+import { LANGUAGES } from "../../commons/languages";
+import { ApiService } from "../../services/api.service";
+import {AuthService} from "../../services/auth/auth.service";
+import {TranslationService} from "../../services/translation.service";
 
 @Component({
   selector: 'app-topbar',
@@ -11,19 +13,21 @@ import {ApiService} from "../../services/api.service";
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
-  languages = LANGUAGES
-
+  languages = LANGUAGES;
   selectedLanguage: string | undefined;
   displayLoginModal: boolean = false;
+  isLoggedIn: boolean = false;
+  userEmail: string | undefined;
 
   constructor(
+    private authService: AuthService,
     private translationService: TranslationService,
     private router: Router,
     private apiService: ApiService
   ) {}
 
   ngOnInit() {
-    // Écouter les événements de navigation pour mettre à jour la langue sélectionnée
+    this.checkLoginStatus();
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -34,17 +38,20 @@ export class TopbarComponent implements OnInit {
         error: (err) => console.error('Error loading language:', err)
       });
     });
+  }
 
-    this.apiService.getUsers().subscribe(users => {
-      console.log(users);
-    });
+  checkLoginStatus() {
+    this.isLoggedIn = this.authService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const decodedToken = this.authService.getTokenDecoded();
+      this.userEmail = decodedToken ? decodedToken.email : undefined;
+    }
   }
 
   changeLanguage(lang: string) {
     this.translationService.useLang(lang).subscribe({
       next: () => {
         this.selectedLanguage = lang;
-        // Mettre à jour l'URL
         this.router.navigate([lang, 'home']);
       },
       error: (err) => console.error('Error changing language:', err)

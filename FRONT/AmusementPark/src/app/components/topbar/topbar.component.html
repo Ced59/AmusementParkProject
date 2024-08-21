@@ -22,7 +22,6 @@
           </div>
         </ng-template>
 
-
         <ng-template let-language pTemplate="item">
           <div class="p-d-flex p-ai-center">
             <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="">
@@ -31,7 +30,14 @@
         </ng-template>
       </p-dropdown>
     </div>
-    <button pButton type="button" [label]="('topbar.login_header' | translate)" icon="pi pi-user" class="p-button-primary top-bar-button" (click)="openLoginModal()"></button>
+
+    <!-- Gérer l'affichage conditionnel du bouton de connexion ou du message de bienvenue -->
+    <div *ngIf="isLoggedIn; else loginTemplate">
+      <span>{{ 'topbar.hello' | translate }} {{ userEmail }}</span>
+    </div>
+    <ng-template #loginTemplate>
+      <button pButton type="button" [label]="('topbar.login_header' | translate)" icon="pi pi-user" class="p-button-primary top-bar-button" (click)="openLoginModal()"></button>
+    </ng-template>
   </ng-template>
 
 

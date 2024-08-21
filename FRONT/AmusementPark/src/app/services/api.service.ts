@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {API_ENDPOINTS} from "../api/api-endpoints";
 import {UserCredentials} from "../models/users/user_credentials";
+import {Observable} from "rxjs";
+import {UserToken} from "../models/users/user_token";
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +13,16 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  login(credentials: UserCredentials) {
+  login(credentials: UserCredentials) : Observable<UserToken> {
     const url = `${environment.baseUrl}${API_ENDPOINTS.postLogin}`;
-    return this.http.post(url, credentials);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post<UserToken>(url, JSON.stringify(credentials), httpOptions);
   }
+
 
 
 

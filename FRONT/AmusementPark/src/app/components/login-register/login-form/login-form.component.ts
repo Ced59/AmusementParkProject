@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {UserCredentials} from "../../../models/users/user_credentials";
 import {ApiService} from "../../../services/api.service";
 import {ToastMessageService} from "../../../services/messages/toast-message.service";
+import {UserToken} from "../../../models/users/user_token";
 
 @Component({
   selector: 'app-login-form',
@@ -24,14 +25,10 @@ export class LoginFormComponent {
 
     let userCredentials = new UserCredentials(this.loginEmail, this.loginPassword);
 
-    this.apiService.login(userCredentials).subscribe(result => {
-      console.log(result);
-    });
-
-
     this.apiService.login(userCredentials).subscribe({
-      next: (result) => {
+      next: (result: UserToken) => {
         // Gérer la connexion réussie
+        localStorage.setItem('auth_token', result.token)
         this.messageService.add('success', 'Succès', 'Connexion réussie !');
       },
       error: (error) => {
@@ -40,9 +37,6 @@ export class LoginFormComponent {
         } else {
           this.messageService.add('error', 'Erreur', "Une erreur inattendue est survenue.");
         }
-      },
-      complete: () => {
-        // Logique à exécuter lorsque l'Observable est terminé (optionnel)
       }
     });
 

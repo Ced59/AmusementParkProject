@@ -1,7 +1,7 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { isPlatformBrowser } from '@angular/common';
-import {Observable, of, firstValueFrom, forkJoin} from 'rxjs';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {isPlatformBrowser} from '@angular/common';
+import {firstValueFrom, forkJoin, Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {LANGUAGES} from "../commons/languages";
 
@@ -29,7 +29,6 @@ export class TranslationService {
         console.error(`Error loading language ${lang}:`, error);
         // Fallback to English if the requested language fails
         if (lang !== 'en') {
-          console.log('Falling back to English');
           return this.translate.use('en');
         }
         return of(null);
@@ -47,9 +46,7 @@ export class TranslationService {
   }
 
   getCurrentLang(): string {
-    let currentLang = this.translate.currentLang;
-    console.log(currentLang);
-    return currentLang;
+    return this.translate.currentLang;
   }
 
   getCurrentLangCode(): string {
