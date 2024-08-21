@@ -16,8 +16,11 @@ public class Park : ModelBase
         get => _latitude;
         set
         {
-            _latitude = value;
-            UpdateLocation();
+            if (IsValidLatitude(value))
+            {
+                _latitude = value;
+                UpdateLocation();
+            }
         }
     }
 
@@ -26,8 +29,11 @@ public class Park : ModelBase
         get => _longitude;
         set
         {
-            _longitude = value;
-            UpdateLocation();
+            if (IsValidLongitude(value))
+            {
+                _longitude = value;
+                UpdateLocation();
+            }
         }
     }
 
@@ -35,10 +41,20 @@ public class Park : ModelBase
 
     private void UpdateLocation()
     {
-        // Assurez-vous que les valeurs de latitude et de longitude sont valides avant de mettre à jour Location
-        if (_latitude != 0 && _longitude != 0)
+        if (IsValidLatitude(_latitude) && IsValidLongitude(_longitude))
         {
-            Location = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(new GeoJson2DGeographicCoordinates(_longitude, _latitude));
+            Location = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
+                new GeoJson2DGeographicCoordinates(_longitude, _latitude));
         }
+    }
+
+    private static bool IsValidLatitude(double latitude)
+    {
+        return latitude is >= -90 and <= 90;
+    }
+
+    private static bool IsValidLongitude(double longitude)
+    {
+        return longitude is >= -180 and <= 180;
     }
 }

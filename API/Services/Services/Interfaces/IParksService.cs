@@ -2,6 +2,7 @@
 using Dtos.Parks.Creating;
 using Dtos.Parks.ParkGet;
 using Dtos.Parks.Parks;
+using Entities.Model.Parks;
 using OneOf;
 using static Entities.Model.Errors.ErrorCodes;
 
@@ -37,6 +38,6 @@ public interface IParksService
     /// <param name="latitude">Latitude of center location</param>
     /// <param name="longitude">Longitude of center location</param>
     /// <param name="radius">Radius in kilometers of searched parks above center</param>
-    /// <returns></returns>
-    Task<OneOf<object, ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius);
+    /// <returns>List of parks in location parameters</returns>
+    Task<OneOf<IEnumerable<ParkDto>, ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius);
 }

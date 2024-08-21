@@ -20,9 +20,35 @@ public class ParksService : IParksService
         _parksQueryHandler = parksQueryHandler;
     }
 
-    public Task<OneOf<ParkCreatedDto, ErrorDetail>>? CreateParkAsync(ParkCreateDto park)
+    public async Task<OneOf<ParkCreatedDto, ErrorDetail>>? CreateParkAsync(ParkCreateDto parkDto)
     {
-        throw new NotImplementedException();
+        var park = new Park
+        {
+            Id = Guid.NewGuid().ToString(),
+            CreatedAt = DateTime.Now,
+            UpdatedAt = DateTime.Now,
+            Name = parkDto.Name,
+            CountryCode = parkDto.CountryCode,
+            Latitude = parkDto.Latitude,
+            Longitude = parkDto.Longitude
+        };
+
+        var createdPark = await _parksQueryHandler.CreateParkAsync(park);
+
+        if (createdPark == null)
+        {
+            return ErrorCreatingPark;
+        }
+
+        var parkCreatedDto = new ParkCreatedDto()
+        {
+            Name = createdPark.Name,
+            CountryCode = createdPark.CountryCode,
+            Latitude = createdPark.Latitude,
+            Longitude = createdPark.Longitude
+        };
+
+        return parkCreatedDto;
     }
 
     public async Task<OneOf<ParkGettedDto, ErrorDetail>>? GetParkByIdAsync(ParkGetByIdDto id)
@@ -48,14 +74,43 @@ public class ParksService : IParksService
     }
 
 
-    public Task<(IEnumerable<ParkDto>, PaginationDto)>? GetListParkPaginatedAsync(int page, int pageSize)
+    public async Task<(IEnumerable<ParkDto>, PaginationDto)>? GetListParkPaginatedAsync(int page, int pageSize)
     {
-        throw new NotImplementedException();
+        var totalItems = await _parksQueryHandler.GetTotalParksCountAsync();
+
+        var paginationInfo = PaginationDto.Create(Convert.ToInt32(totalItems), page, pageSize);
+
+        var parks = await _parksQueryHandler.GetParksPaginatedAsync(page, pageSize);
+
+        var parkDtos = parks.Select(park => new ParkDto
+        {
+            Name = park.Name,
+            CountryCode = park.CountryCode,
+            Latitude = park.Latitude,
+            Longitude = park.Longitude
+        }).ToList();
+
+        return (parkDtos, paginationInfo);
     }
 
-    public async Task<OneOf<IEnumerable<Park>, ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius)
+    public async Task<OneOf<IEnumerable<ParkDto>, ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius)
     {
+        var parks = await _parksQueryHandler.GetParksByLocationAsync(latitude, longitude, radius);
 
-        return await _parksQueryHandler.GetParksByLocationAsync(latitude, longitude, radius);
+        if (parks == null || !parks.Any())
+        {
+            return NoParkInThisLocation;
+        }
+
+        var parksDtos = parks.Select(park => new ParkDto
+        {
+            CountryCode = park.CountryCode,
+            Latitude = park.Latitude,
+            Longitude = park.Longitude,
+            Name = park.Name
+        }).ToList();
+
+        return parksDtos;
     }
+
 }

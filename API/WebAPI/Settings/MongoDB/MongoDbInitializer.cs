@@ -53,6 +53,10 @@ public static class MongoDbInitializer
 
             var parksJson = JsonSerializer.Deserialize<List<ParkJson>>(json, options);
 
+            // Création de l'index de géolocalisation sur la collection Park
+            parksCollection.Indexes.CreateOne(new CreateIndexModel<Park>(
+                Builders<Park>.IndexKeys.Geo2DSphere(park => park.Location)));
+
             var parks = new List<Park>();
 
             foreach (var parkJson in parksJson)
@@ -60,7 +64,9 @@ public static class MongoDbInitializer
                 var park = new Park
                 {
                     Name = parkJson.Name,
-                    CountryCode = ExtractCountryCode(parkJson.Country.Name)
+                    CountryCode = ExtractCountryCode(parkJson.Country.Name),
+                    Latitude = parkJson.Latitude,
+                    Longitude = parkJson.Longitude
                 };
 
                 parks.Add(park);

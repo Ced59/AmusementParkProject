@@ -35,6 +35,8 @@ public static class ErrorCodes
     public static readonly ErrorDetail ChangePasswordFailed = new(500, "Change Password Failed");
 
     public static readonly ErrorDetail ParkNotExists = new(404, "Park not exists");
+    public static readonly ErrorDetail NoParkInThisLocation = new(404, "They are no park in this location");
+    public static readonly ErrorDetail ErrorCreatingPark = new(500, "Error while creating park");
 
     public readonly struct ErrorDetail
     {

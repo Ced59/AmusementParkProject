@@ -1,5 +1,7 @@
 ﻿using Entities.Model.Parks;
+using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.GeoJsonObjectModel;
 using Repositories.Interfaces;
 
 namespace Repositories.Implementations;
@@ -31,13 +33,34 @@ public class ParksQueryHandler : IParksQueryHandler
         return await _parksCollection.CountDocumentsAsync(_ => true);
     }
 
-    public Task<Park?> CreateParkAsync(Park park)
+    public async Task<Park?> CreateParkAsync(Park park)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _parksCollection.InsertOneAsync(park);
+            return park;
+        }
+        catch
+        {
+            return null;
+        }
     }
 
-    public Task<IEnumerable<Park>> GetParksByLocationAsync(double latitude, double longitude, double radius)
+    public async Task<IEnumerable<Park>> GetParksByLocationAsync(double latitude, double longitude, double maxDistanceInMeters)
     {
-        throw new NotImplementedException();
+        var filter = new BsonDocument("Location", new BsonDocument("$nearSphere", new BsonDocument
+        {
+            { "$geometry", new BsonDocument
+                {
+                    { "type", "Point" },
+                    { "coordinates", new BsonArray { longitude, latitude } }
+                }
+            },
+            { "$maxDistance", maxDistanceInMeters }
+        }));
+
+        var parks = await _parksCollection.Find(filter).ToListAsync();
+        return parks;
     }
+
 }
