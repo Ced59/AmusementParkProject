@@ -64,5 +64,6 @@ export class TopbarComponent implements OnInit {
 
   closeLoginModal() {
     this.displayLoginModal = false;
+    this.checkLoginStatus();
   }
 }
