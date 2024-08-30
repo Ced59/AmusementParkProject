@@ -5,28 +5,21 @@
   </ng-template>
 
   <ng-template pTemplate="center">
-    <p-dialog [header]="('topbar.login_header' | translate)" [(visible)]="displayLoginModal" [modal]="true">
-      <app-auth-modal (closeModal)="closeLoginModal()"></app-auth-modal>
+    <p-dialog [header]="('topbar.choose_langage' | translate)" [(visible)]="displayLanguageModal" [modal]="true">
+      <div class="languages-container">
+        <button *ngFor="let language of languages" pButton class="language-button" (click)="selectLanguage(language.value)">
+          <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="{{ language.label }}">
+          <span>{{ language.label }}</span>
+        </button>
+      </div>
     </p-dialog>
   </ng-template>
 
   <ng-template pTemplate="end">
     <div class="menu-language">
-      <p-dropdown class="dropdown-language" [options]="languages" [(ngModel)]="selectedLanguage" (onChange)="changeLanguage($event.value)">
-        <ng-template let-language pTemplate="selectedItem">
-          <div class="p-d-flex p-ai-center">
-            <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="">
-            <span>{{language.label}}</span>
-          </div>
-        </ng-template>
-
-        <ng-template let-language pTemplate="item">
-          <div class="p-d-flex p-ai-center">
-            <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="">
-            <span>{{language.label}}</span>
-          </div>
-        </ng-template>
-      </p-dropdown>
+      <button pButton class="language-button" (click)="openLanguageModal()">
+        <img [src]="'assets/flags/' + selectedLanguage + '.png'" class="flag" alt="Language">
+      </button>
     </div>
 
     <div *ngIf="isLoggedIn; else loginTemplate">

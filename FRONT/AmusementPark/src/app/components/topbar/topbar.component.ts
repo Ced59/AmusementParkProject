@@ -1,11 +1,10 @@
-// Importations
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { LANGUAGES } from "../../commons/languages";
 import { ApiService } from "../../services/api.service";
-import {AuthService} from "../../services/auth/auth.service";
-import {TranslationService} from "../../services/translation.service";
+import { AuthService } from "../../services/auth/auth.service";
+import { TranslationService } from "../../services/translation.service";
 
 @Component({
   selector: 'app-topbar',
@@ -16,6 +15,7 @@ export class TopbarComponent implements OnInit {
   languages = LANGUAGES;
   selectedLanguage: string | undefined;
   displayLoginModal: boolean = false;
+  displayLanguageModal: boolean = false; // Ajout pour la gestion de la modal des langues
   isLoggedIn: boolean = false;
   userEmail: string | undefined;
 
@@ -31,7 +31,7 @@ export class TopbarComponent implements OnInit {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      const currentLang = this.router.url.split('/')[1] || 'en'; // Assurez-vous que la structure de l'URL correspond à vos routes
+      const currentLang = this.router.url.split('/')[1] || 'en';
       this.selectedLanguage = currentLang;
       this.translationService.useLang(currentLang).subscribe({
         next: () => {},
@@ -48,16 +48,6 @@ export class TopbarComponent implements OnInit {
     }
   }
 
-  changeLanguage(lang: string) {
-    this.translationService.useLang(lang).subscribe({
-      next: () => {
-        this.selectedLanguage = lang;
-        this.router.navigate([lang, 'home']);
-      },
-      error: (err) => console.error('Error changing language:', err)
-    });
-  }
-
   openLoginModal() {
     this.displayLoginModal = true;
   }
@@ -65,5 +55,20 @@ export class TopbarComponent implements OnInit {
   closeLoginModal() {
     this.displayLoginModal = false;
     this.checkLoginStatus();
+  }
+
+  openLanguageModal() {
+    this.displayLanguageModal = true; // Ouvre la modal des langues
+  }
+
+  selectLanguage(lang: string) {
+    this.translationService.useLang(lang).subscribe({
+      next: () => {
+        this.selectedLanguage = lang;
+        this.router.navigate([lang, 'home']);
+        this.displayLanguageModal = false; // Ferme la modal après la sélection
+      },
+      error: (err) => console.error('Error changing language:', err)
+    });
   }
 }
