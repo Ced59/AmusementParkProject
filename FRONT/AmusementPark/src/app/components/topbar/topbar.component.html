@@ -4,29 +4,37 @@
     <span class="fun-text">Amusement Parks</span>
   </ng-template>
 
-  <ng-template pTemplate="center">
-    <p-dialog [header]="('topbar.choose_langage' | translate)" [(visible)]="displayLanguageModal" [modal]="true">
-      <div class="languages-container">
-        <button *ngFor="let language of languages" pButton class="language-button" (click)="selectLanguage(language.value)">
-          <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="{{ language.label }}">
-          <span>{{ language.label }}</span>
-        </button>
-      </div>
-    </p-dialog>
-  </ng-template>
-
+  <!-- Zone pour le drapeau de sélection de langue -->
   <ng-template pTemplate="end">
-    <div class="menu-language">
-      <button pButton class="language-button" (click)="openLanguageModal()">
-        <img [src]="'assets/flags/' + selectedLanguage + '.png'" class="flag" alt="Language">
-      </button>
-    </div>
 
     <div *ngIf="isLoggedIn; else loginTemplate">
       <span>{{ 'topbar.hello' | translate }} {{ userEmail }}</span>
     </div>
     <ng-template #loginTemplate>
-      <button pButton type="button" [label]="('topbar.login_header' | translate)" icon="pi pi-user" class="p-button-primary top-bar-button" (click)="openLoginModal()"></button>
+      <button pButton type="button" [label]="('topbar.login_header' | translate)" icon="pi pi-user"
+              class="p-button-primary top-bar-button" (click)="openLoginModal()"></button>
     </ng-template>
+
+    <div class="menu-language">
+      <button pButton class="language-button" (click)="openLanguageModal()">
+        <img [src]="'assets/flags/' + selectedLanguage + '.png'" class="flag" alt="Language">
+      </button>
+    </div>
   </ng-template>
+
 </p-toolbar>
+
+<!-- Modal de Changement de Langue -->
+<p-dialog [header]="('topbar.choose_language' | translate)" [(visible)]="displayLanguageModal" [modal]="true">
+  <div class="languages-container">
+    <button *ngFor="let language of languages" pButton class="language-button" (click)="selectLanguage(language.value)">
+      <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="{{ language.label }}">
+      <span>{{ language.label }}</span>
+    </button>
+  </div>
+</p-dialog>
+
+<!-- Modal de Connexion -->
+<p-dialog [header]="('topbar.login_header' | translate)" [(visible)]="displayLoginModal" [modal]="true">
+  <app-auth-modal (closeModal)="closeLoginModal()"></app-auth-modal>
+</p-dialog>

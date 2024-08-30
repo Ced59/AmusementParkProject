@@ -5,5 +5,6 @@ export const API_ENDPOINTS = {
 
   getUsers: 'users/list',
   getUserById: (id: string) => `users/${id}`,
-  // Ajoutez d'autres endpoints ici
+
+  getParksPaginated: (page: number, size: number) => `parks/list?page=${page}&size=${size}`
 };

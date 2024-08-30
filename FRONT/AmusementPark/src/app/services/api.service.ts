@@ -33,4 +33,9 @@ export class ApiService {
   getUserById(id: string) {
     return this.http.get(`${environment.baseUrl}${API_ENDPOINTS.getUserById(id)}`);
   }
+
+
+  getParksPaginated(page: number, size: number) {
+    return this.http.get(`${environment.baseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`)
+  }
 }

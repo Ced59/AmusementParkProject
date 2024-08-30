@@ -46,15 +46,9 @@
 }
 
 .top-bar-button{
-  height: 40px;
+  height: 36px;
 }
 
-
-.flag {
-  width: 24px;
-  height: auto;
-  margin-right: 5px;
-}
 
 .languages-container {
   display: flex;
@@ -81,8 +75,9 @@
 }
 
 .flag {
-  width: 36px;
-  height: auto;
-  margin-right: 10px;
+  width: auto;
+  height: 26px;
+  margin-left: 10px;
+  margin-right: 0;
   vertical-align: middle;
 }

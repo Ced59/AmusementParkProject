@@ -2,7 +2,7 @@
   "topbar": {
     "login_header": "Connexion / Inscription",
     "hello": "Bonjour",
-    "choose_langage":"Choisissez votre langue:"
+    "choose_language":"Choisissez votre langue:"
   },
   "auth": {
     "login": {
