@@ -1,5 +1,5 @@
-.custom-toolbar {
-  background-color: #f4f4f4;  /* Couleur de fond claire */
+p-toolbar.custom-toolbar {
+  background-color: #000e16 !important;  /* Couleur de fond claire */
   border-bottom: 1px solid #ccc; /* Ligne de séparation subtile */
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombre légère pour un effet de profondeur */
   padding: 10px 20px; /* Espacement interne */
@@ -9,6 +9,7 @@
 .logo {
   width: 40px;
   height: 40px;
+  border-radius: 3rem;
 }
 
 .flag {
@@ -27,6 +28,8 @@
 
 .p-button {
   height: 40px;
+  border-radius: 3rem;
+  background-color: #5a8dbd;
 }
 
 
@@ -35,7 +38,7 @@
   font-family: 'Bangers-Regular', sans-serif;
   font-size:30px;
   margin-left: 20px;
-  color: #ffffff;
+  color: #d4f1f9;
 }
 
 @font-face {
@@ -75,9 +78,10 @@
 }
 
 .flag {
-  width: auto;
-  height: 26px;
+  width: 40px;
+  height: 40px;
   margin-left: 10px;
   margin-right: 0;
   vertical-align: middle;
+  border-radius: 3rem;
 }
