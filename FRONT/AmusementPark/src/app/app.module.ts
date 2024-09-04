@@ -1,6 +1,6 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withFetch} from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
@@ -26,13 +26,12 @@ import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {MessagesModule} from "primeng/messages";
 import {MessageModule} from "primeng/message";
+import {AvatarModule} from "primeng/avatar";
 
-// Fonction pour créer un nouveau TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-// Initializer function
 export function initializeApp(translationService: TranslationService): () => Promise<any> {
   return () => translationService.initializeLanguage();
 }
@@ -70,9 +69,11 @@ export function initializeApp(translationService: TranslationService): () => Pro
     ToastModule,
     MessagesModule,
     MessageModule,
-    ToastModule
+    ToastModule,
+    AvatarModule
   ],
   providers: [
+    provideHttpClient(withFetch()),
     {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,

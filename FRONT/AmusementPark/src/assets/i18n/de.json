@@ -6,7 +6,7 @@
   },
   "auth": {
     "login": {
-      "title": "Klassische Anmeldung",
+      "title": "Klassische Authentifizierung",
       "title_email": "E-Mail",
       "mail_placeholder": "Geben Sie Ihre E-Mail ein",
       "title_password": "Passwort",
@@ -14,7 +14,7 @@
       "btn_text": "Anmelden"
     },
     "register": {
-      "title": "Klassische Authentifizierung",
+      "title": "Klassische Anmeldung",
       "title_email": "E-Mail",
       "mail_placeholder": "Geben Sie Ihre E-Mail ein",
       "title_password": "Passwort",

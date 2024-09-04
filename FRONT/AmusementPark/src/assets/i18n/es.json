@@ -6,7 +6,7 @@
   },
   "auth": {
     "login": {
-      "title": "Registro Clásico",
+      "title": "Autenticación Clásica",
       "title_email": "Correo Electrónico",
       "mail_placeholder": "Introduce tu correo electrónico",
       "title_password": "Contraseña",
@@ -14,7 +14,7 @@
       "btn_text": "Iniciar sesión"
     },
     "register": {
-      "title": "Autenticación Clásica",
+      "title": "Registro Clásico",
       "title_email": "Correo Electrónico",
       "mail_placeholder": "Introduce tu correo electrónico",
       "title_password": "Contraseña",

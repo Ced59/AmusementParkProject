@@ -2,6 +2,7 @@
 
 import {Injectable} from '@angular/core';
 import {jwtDecode} from 'jwt-decode';
+import {JwtPayload} from "../../models/users/jwt_payload";
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +23,11 @@ export class AuthService {
     localStorage.setItem('auth_token', token);
   }
 
-  getTokenDecoded(): any {
+  getTokenDecoded(): JwtPayload | null {
     const token = this.getToken();
     if (token) {
       try {
-        return jwtDecode(token);
+        return jwtDecode<JwtPayload>(token);
       } catch (error) {
         console.error('Error decoding token:', error);
         return null;

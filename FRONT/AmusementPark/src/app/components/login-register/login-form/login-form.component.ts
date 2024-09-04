@@ -1,8 +1,9 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { UserCredentials } from "../../../models/users/user_credentials";
-import { ApiService } from "../../../services/api.service";
-import { ToastMessageService } from "../../../services/messages/toast-message.service";
-import { UserToken } from "../../../models/users/user_token";
+import {Component, Output, EventEmitter} from '@angular/core';
+import {UserCredentials} from "../../../models/users/user_credentials";
+import {ApiService} from "../../../services/api.service";
+import {ToastMessageService} from "../../../services/messages/toast-message.service";
+import {UserToken} from "../../../models/users/user_token";
+import {AuthService} from "../../../services/auth/auth.service";
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +16,9 @@ export class LoginFormComponent {
 
   @Output() loginSuccess = new EventEmitter<UserToken>();
 
-  constructor(private apiService: ApiService, private messageService: ToastMessageService) {
+  constructor(private apiService: ApiService,
+              private messageService: ToastMessageService,
+              private authService: AuthService) {
     this.loginEmail = "";
     this.loginPassword = "";
   }
@@ -28,7 +31,7 @@ export class LoginFormComponent {
 
     this.apiService.login(userCredentials).subscribe({
       next: (result: UserToken) => {
-        localStorage.setItem('auth_token', result.token);
+        this.authService.setToken(result.token);
         this.messageService.add('success', 'Succès', 'Connexion réussie !');
         this.loginSuccess.emit(result); // Émettre l'événement de succès
       },

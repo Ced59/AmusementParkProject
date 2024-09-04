@@ -1,27 +1,39 @@
-<p-toolbar styleClass="bg-gray-900 shadow-2" [style]="{ 'border-radius': '3rem', 'background-image': 'linear-gradient(to left, #000e16, var(--bluegray-800))' }">
+<p-toolbar styleClass="bg-gray-900 shadow-2"
+           [style]="{ 'border-radius': '3rem', 'background-image': 'linear-gradient(to left, #000e16, var(--bluegray-800))' }">
   <ng-template pTemplate="start">
-    <img src="assets/general-icon/logo-amusementpark.png" alt="Logo" class="logo">
+    <a routerLink="{{selectedLanguage}}/home" class="profile-link">
+      <img src="assets/general-icon/logo-amusementpark.png" alt="Logo" class="logo">
+    </a>
     <span class="fun-text">Amusement Parks</span>
   </ng-template>
 
-  <!-- Zone pour le drapeau de sélection de langue -->
-  <ng-template pTemplate="end">
 
+  <ng-template pTemplate="end">
     <div *ngIf="isLoggedIn; else loginTemplate">
-      <span>{{ 'topbar.hello' | translate }} {{ userEmail }}</span>
+      <div class="flex align-items-center gap-2">
+        <!-- Lien vers le profil -->
+        <a routerLink="{{selectedLanguage}}/profile" class="profile-link">
+          <!-- Avatar si disponible -->
+          <!--          <p-avatar *ngIf="userProfile?.image" [image]="userProfile.image" shape="circle"></p-avatar>-->
+          <!-- Nom ou Email -->
+          <span class="login-message">
+        {{ 'topbar.hello' | translate }} {{ userProfile?.firstname || userProfile?.email }}
+      </span>
+        </a>
+      </div>
     </div>
+
     <ng-template #loginTemplate>
       <button pButton type="button" [label]="('topbar.login_header' | translate)" icon="pi pi-user"
               class="p-button-primary top-bar-button" (click)="openLoginModal()"></button>
+
+      <div class="menu-language">
+        <button pButton class="language-button" (click)="openLanguageModal()">
+          <img [src]="'assets/flags/' + selectedLanguage + '.png'" class="flag" alt="Language">
+        </button>
+      </div>
     </ng-template>
-
-    <div class="menu-language">
-      <button pButton class="language-button" (click)="openLanguageModal()">
-        <img [src]="'assets/flags/' + selectedLanguage + '.png'" class="flag" alt="Language">
-      </button>
-    </div>
   </ng-template>
-
 </p-toolbar>
 
 <!-- Modal de Changement de Langue -->

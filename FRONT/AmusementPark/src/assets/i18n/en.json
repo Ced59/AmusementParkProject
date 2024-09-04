@@ -6,7 +6,7 @@
   },
   "auth": {
     "login": {
-      "title": "Standard Registration",
+      "title": "Standard Login",
       "title_email": "Email",
       "mail_placeholder": "Enter your email",
       "title_password": "Password",
@@ -14,7 +14,7 @@
       "btn_text": "Login"
     },
     "register": {
-      "title": "Standard Login",
+      "title": "Standard Registration",
       "title_email": "Email",
       "mail_placeholder": "Enter your email",
       "title_password": "Password",
