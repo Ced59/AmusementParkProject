@@ -247,6 +247,7 @@ public class Program
         //app.UseMiddleware<JwtMiddleware>();
         app.UseIpRateLimiting();
         app.UseHttpsRedirection();
+        app.UseStaticFiles();
         app.UseCors("AllowSpecificOrigin");
         app.UseAuthentication();
         app.UseAuthorization();

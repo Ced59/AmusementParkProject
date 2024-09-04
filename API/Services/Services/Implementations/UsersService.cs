@@ -77,7 +77,8 @@ public class UsersService : IUsersService
             IsActivated = userCreated.IsActivated,
             IsBlocked = userCreated.IsBlocked,
             Roles = userCreated.Roles,
-            PreferredLanguage = userCreated.PreferredLanguage
+            PreferredLanguage = userCreated.PreferredLanguage,
+            AvatarUrl = userCreated.AvatarUrl
         };
     }
 
@@ -101,7 +102,8 @@ public class UsersService : IUsersService
             Roles = user.Roles,
             PreferredLanguage = user.PreferredLanguage,
             FirstName = user.FirstName,
-            LastName = user.LastName
+            LastName = user.LastName,
+            AvatarUrl = user.AvatarUrl
         };
     }
 
@@ -126,7 +128,8 @@ public class UsersService : IUsersService
             Roles = user.Roles,
             PreferredLanguage = user.PreferredLanguage,
             FirstName = user.FirstName,
-            LastName = user.LastName
+            LastName = user.LastName,
+            AvatarUrl = user.AvatarUrl
         };
     }
 
@@ -346,7 +349,8 @@ public class UsersService : IUsersService
             Id = user.Id,
             IsBlocked = user.IsBlocked,
             LastLogin = user.LastLogin,
-            PreferredLanguage = user.PreferredLanguage
+            PreferredLanguage = user.PreferredLanguage,
+            AvatarUrl = user.AvatarUrl
         });
 
         return (usersDto, pagination);

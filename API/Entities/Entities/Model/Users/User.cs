@@ -12,6 +12,7 @@ public class User : ModelBase
     public bool IsActivated { get; set; }
     public bool IsBlocked { get; set; }
     public string? PreferredLanguage { get; set; }
+    public string? AvatarUrl { get; set; }
     public List<Role> Roles { get; set; } = new();
     public DateTime LastLogin { get; set; }
     public DateTime LastActivity { get; set; }

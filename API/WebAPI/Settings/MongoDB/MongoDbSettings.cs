@@ -10,4 +10,5 @@ public class MongoDbSettings : IMongoDbSettings
     public string Password { get; set; } = string.Empty;
     public string UsersCollectionName { get; set; } = string.Empty;
     public string ParksCollectionName { get; set; } = string.Empty;
+    public string ImagesCollectionName { get; set; } = string.Empty;
 }

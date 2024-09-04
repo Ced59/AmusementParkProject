@@ -14,7 +14,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   login(credentials: UserCredentials) : Observable<UserToken> {
-    const url = `${environment.baseUrl}${API_ENDPOINTS.postLogin}`;
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.postLogin}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -27,15 +27,15 @@ export class ApiService {
 
 
   getUsers() {
-    return this.http.get(`${environment.baseUrl}${API_ENDPOINTS.getUsers}`);
+    return this.http.get(`${environment.apiBaseUrl}${API_ENDPOINTS.getUsers}`);
   }
 
   getUserById(id: string) {
-    return this.http.get(`${environment.baseUrl}${API_ENDPOINTS.getUserById(id)}`);
+    return this.http.get(`${environment.apiBaseUrl}${API_ENDPOINTS.getUserById(id)}`);
   }
 
 
   getParksPaginated(page: number, size: number) {
-    return this.http.get(`${environment.baseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`)
+    return this.http.get(`${environment.apiBaseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`)
   }
 }

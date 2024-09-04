@@ -14,4 +14,5 @@ public class UserDto : ModelBase
     public List<Role> Roles { get; set; } = new();
     public DateTime LastLogin { get; set; }
     public DateTime LastActivity { get; set; }
+    public string? AvatarUrl { get; set; }
 }
