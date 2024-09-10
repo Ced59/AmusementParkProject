@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserDto} from "../../../../models/users/user_dto";
 import {ApiService} from "../../../../services/api.service";
 import {AuthService} from "../../../../services/auth/auth.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {environment} from "../../../../../environments/environment";
 
 @Component({
@@ -16,7 +16,8 @@ export class ProfilePageComponent implements OnInit{
   constructor(
     private apiService: ApiService,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +32,11 @@ export class ProfilePageComponent implements OnInit{
   editField(field: string): void {
     // Ajoutez ici la logique pour modifier le champ spécifié
     console.log(`Modifier le champ: ${field}`);
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/home']);
   }
 
   protected readonly environment = environment;

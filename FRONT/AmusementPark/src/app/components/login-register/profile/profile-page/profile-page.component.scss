@@ -56,6 +56,13 @@ button.p-button-text {
   margin-left: 10px;
 }
 
+.logout-container {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 768px) {
   .profile-card {
     width: 90%;
