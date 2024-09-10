@@ -28,6 +28,14 @@
       }
     }
   },
+  "user-profile": {
+    "title": "Perfil del Usuario",
+    "name": "Nombre",
+    "firstname": "Nombre de Pila",
+    "email": "Correo Electrónico",
+    "preferred_language": "Idioma Preferido",
+    "modify": "Modificar"
+  },
   "title": "Bienvenido",
   "description": "Esta es una descripción en Español."
 }

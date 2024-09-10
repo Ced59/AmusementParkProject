@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <Folder Include="Extensions\" />
-    <Folder Include="wwwroot\images\user-avatar\" />
   </ItemGroup>
 
   <ItemGroup>

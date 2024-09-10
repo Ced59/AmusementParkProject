@@ -5,6 +5,7 @@ export interface JwtPayload {
   nameidentifier: string;
   firstname: string;
   lastname: string;
+  avatar: string;
   lastlogin: string;
   roles: string[];
   exp: number;

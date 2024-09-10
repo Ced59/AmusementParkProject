@@ -13,9 +13,9 @@
       <div class="flex align-items-center gap-2">
         <!-- Lien vers le profil -->
         <a routerLink="{{selectedLanguage}}/profile" class="profile-link">
-          <!-- Avatar si disponible -->
-          <!--          <p-avatar *ngIf="userProfile?.avatar" [image]="userProfile.avatar" shape="circle"></p-avatar>-->
-          <!-- Nom ou Email -->
+
+          <p-avatar *ngIf="userProfile?.avatar" [image]="userProfile?.avatar" shape="circle"></p-avatar>
+
           <span class="login-message">
         {{ 'topbar.hello' | translate }} {{ userProfile?.firstname || userProfile?.email }}
       </span>

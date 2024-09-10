@@ -9,7 +9,8 @@ import {JwtPayload} from "../../models/users/jwt_payload";
 })
 export class AuthService {
 
-  constructor() { }
+  constructor() {
+  }
 
   getToken(): string | null {
     if (typeof window !== 'undefined') {
@@ -41,6 +42,15 @@ export class AuthService {
     const decoded = this.getTokenDecoded();
     return !!(decoded && Date.now() < decoded.exp * 1000);
 
+  }
+
+  getUserIdFromToken(): string | null {
+    const decoded = this.getTokenDecoded();
+    if (decoded){
+      return decoded.sub;
+    } else {
+      return null;
+    }
   }
 
   logout(): void {

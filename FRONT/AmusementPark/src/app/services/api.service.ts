@@ -5,6 +5,7 @@ import {API_ENDPOINTS} from "../api/api-endpoints";
 import {UserCredentials} from "../models/users/user_credentials";
 import {Observable} from "rxjs";
 import {UserToken} from "../models/users/user_token";
+import {UserDto} from "../models/users/user_dto";
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class ApiService {
   }
 
   getUserById(id: string) {
-    return this.http.get(`${environment.apiBaseUrl}${API_ENDPOINTS.getUserById(id)}`);
+    return this.http.get<UserDto>(`${environment.apiBaseUrl}${API_ENDPOINTS.getUserById(id)}`);
   }
 
 

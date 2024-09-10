@@ -22,7 +22,8 @@ public static class JwtHelper
             new(ClaimTypes.NameIdentifier, user.Id),
             new("firstname", user.FirstName ?? ""),
             new("lastname", user.LastName ?? ""),
-            new("lastlogin", user.LastLogin.ToString("o"))
+            new("lastlogin", user.LastLogin.ToString("o")),
+            new("avatar", user.AvatarUrl ?? "")
         };
         claims.AddRange(user.Roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
 

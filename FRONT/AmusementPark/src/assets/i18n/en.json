@@ -28,6 +28,14 @@
       }
     }
   },
+  "user-profile": {
+    "title": "User Profile",
+    "name": "Name",
+    "firstname": "First Name",
+    "email": "Email",
+    "preferred_language": "Preferred Language",
+    "modify": "Edit"
+  },
   "title": "Welcome",
   "description": "This is a description in English."
 }
