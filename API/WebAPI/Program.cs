@@ -194,7 +194,7 @@ public class Program
                 options.SignInScheme = "ExternalCookies";
                 options.ClientId = configuration["Authentication:Google:ClientId"];
                 options.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-                options.CallbackPath = new PathString("/login/auth/google-response");
+                options.CallbackPath = new PathString("/auth/google-response");
             })
             .AddFacebook("Facebook", options =>
             {

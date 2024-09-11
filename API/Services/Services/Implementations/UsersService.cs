@@ -141,13 +141,21 @@ public class UsersService : IUsersService
     /// <returns>User updated or error</returns>
     public async Task<OneOf<UserUpdatedDto, ErrorDetail>> UpdateUser(string id, UserUpdateDto userUpdate)
     {
-        if (!IsValidEmail(userUpdate.Email)) return InvalidEmailAddress;
+        if (!IsValidEmail(userUpdate.Email) || (userUpdate.NewEmail != null && !IsValidEmail(userUpdate.NewEmail)))
+            return InvalidEmailAddress;
 
         var userToUpdate = await _userQueryHandler.GetUserByIdAsync(id);
-
         if (userToUpdate == null) return UserNotExists;
 
-        userToUpdate.Email = userUpdate.Email;
+        if (userUpdate.NewEmail != null && userUpdate.Email != userUpdate.NewEmail)
+        {
+            var existingUser = await _userQueryHandler.GetUserByEmailAsync(userUpdate.NewEmail);
+            if (existingUser != null) return UserUpdateFailed;  
+
+            userToUpdate.IsActivated = false;
+            userToUpdate.Email = userUpdate.NewEmail;  
+        }
+
         userToUpdate.LastName = userUpdate.LastName;
         userToUpdate.FirstName = userUpdate.FirstName;
         userToUpdate.UpdatedAt = DateTime.UtcNow;
@@ -155,7 +163,6 @@ public class UsersService : IUsersService
         userToUpdate.LastActivity = DateTime.UtcNow;
 
         var userUpdated = await _userQueryHandler.UpdateUserAsync(userToUpdate);
-
         if (userUpdated == null) return UserUpdateFailed;
 
         var userUpdatedDto = new UserUpdatedDto
@@ -174,6 +181,7 @@ public class UsersService : IUsersService
 
         return userUpdatedDto;
     }
+
 
     /// <summary>
     ///     Login
