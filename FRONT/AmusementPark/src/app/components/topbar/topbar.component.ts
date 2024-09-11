@@ -8,6 +8,7 @@ import {TranslationService} from "../../services/translation.service";
 import {JwtPayload} from "../../models/users/jwt_payload";
 import {ModalService} from "../../services/modal/modal.service";
 import {Subscription} from "rxjs";
+import {SharedService} from "../../services/shared/shared.service";
 
 @Component({
   selector: 'app-topbar',
@@ -28,21 +29,35 @@ export class TopbarComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private translationService: TranslationService,
     private router: Router,
-    private apiService: ApiService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit() {
     this.checkLoginStatus();
 
-    // Abonnement pour contrôler l'affichage de la modal de connexion
-    this.subscriptions.add(
-      this.modalService.displayLoginModal$.subscribe(show => {
-        this.displayLoginModal = show;
-      })
-    );
+    const loginModalStatus$ = this.modalService.getModalStatus('loginModal');
+    if (loginModalStatus$) {
+      this.subscriptions.add(
+        loginModalStatus$.subscribe((status: boolean) => {
+          this.displayLoginModal = status;
+        })
+      );
+    } else {
+      console.error('loginModal status observable is null');
+    }
 
-    // Abonnement aux changements de route pour mettre à jour la langue sélectionnée
+    const languageModalStatus$ = this.modalService.getModalStatus('languageModal');
+    if (languageModalStatus$) {
+      this.subscriptions.add(
+        languageModalStatus$.subscribe((status: boolean) => {
+          this.displayLanguageModal = status;
+        })
+      );
+    } else {
+      console.error('languageModal status observable is null');
+    }
+
     this.subscriptions.add(
       this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
         const currentLang = this.router.url.split('/')[1] || 'en';
@@ -53,6 +68,51 @@ export class TopbarComponent implements OnInit, OnDestroy {
         });
       })
     );
+
+    this.subscriptions.add(
+      this.sharedService.getLoginStatusListener().subscribe(() => {
+        this.checkLoginStatus();
+      })
+    );
+  }
+
+  openModal(modalName: string) {
+    this.modalService.openModal(modalName);
+  }
+
+  closeModal(modalName: string) {
+    this.modalService.closeModal(modalName);
+    if (modalName === 'loginModal') {
+      this.checkLoginStatus();
+    }
+  }
+
+  selectLanguage(lang: string) {
+    this.translationService.useLang(lang).subscribe({
+      next: () => {
+        this.selectedLanguage = lang;
+        this.updateUrlWithNewLang(lang);
+        this.closeModal('languageModal');
+      },
+      error: (err) => console.error('Error changing language:', err)
+    });
+  }
+
+  private updateUrlWithNewLang(newLang: string): void {
+
+    const urlSegments = this.router.url.split('/');
+
+    if (urlSegments.length > 1 && LANGUAGES.some(lang => lang.value === urlSegments[1])) {
+      urlSegments[1] = newLang;
+    } else {
+      urlSegments.splice(1, 0, newLang);
+    }
+
+    this.router.navigateByUrl(urlSegments.join('/')).catch(err => console.error('Failed to navigate:', err));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
 
@@ -61,33 +121,5 @@ export class TopbarComponent implements OnInit, OnDestroy {
     if (this.isLoggedIn) {
       this.userProfile = this.authService.getTokenDecoded();
     }
-  }
-
-  openLoginModal() {
-    this.modalService.openLoginModal();
-  }
-
-  closeLoginModal() {
-    this.modalService.closeLoginModal();
-    this.checkLoginStatus();
-  }
-
-  openLanguageModal() {
-    this.displayLanguageModal = true;
-  }
-
-  selectLanguage(lang: string) {
-    this.translationService.useLang(lang).subscribe({
-      next: () => {
-        this.selectedLanguage = lang;
-        this.router.navigate([lang, 'home']);
-        this.displayLanguageModal = false;
-      },
-      error: (err) => console.error('Error changing language:', err)
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
   }
 }

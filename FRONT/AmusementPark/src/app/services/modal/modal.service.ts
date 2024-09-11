@@ -5,16 +5,38 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ModalService {
-  private displayLoginModalSource = new BehaviorSubject<boolean>(false);
-  displayLoginModal$ = this.displayLoginModalSource.asObservable();
+  private modals: any = {
+    loginModal: new BehaviorSubject<boolean>(false),
+    languageModal: new BehaviorSubject<boolean>(false)
+  };
 
   constructor() {}
 
-  openLoginModal() {
-    this.displayLoginModalSource.next(true);
+  openModal(modalName: string) {
+    const modal = this.modals[modalName];
+    if (modal) {
+      modal.next(true);
+    } else {
+      console.error(`No modal found with the name '${modalName}'`);
+    }
   }
 
-  closeLoginModal() {
-    this.displayLoginModalSource.next(false);
+  closeModal(modalName: string) {
+    const modal = this.modals[modalName];
+    if (modal) {
+      modal.next(false);
+    } else {
+      console.error(`No modal found with the name '${modalName}'`);
+    }
+  }
+
+  getModalStatus(modalName: string) {
+    const modal = this.modals[modalName];
+    if (modal) {
+      return modal.asObservable();
+    } else {
+      console.error(`No modal found with the name '${modalName}'`);
+      return null;
+    }
   }
 }

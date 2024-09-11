@@ -15,17 +15,16 @@ export class AuthGuard {
     private authService: AuthService,
     private modalService: ModalService,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
   ) {}
 
   canActivate: CanActivateFn = () => {
     if (!this.authService.isLoggedIn()) {
       if (isPlatformBrowser(this.platformId)) {
-        // Si nous sommes côté client, ouvrez la modal
-        this.modalService.openLoginModal();
+        this.modalService.openModal('loginModal')
       } else {
-        // Si nous sommes côté serveur, redirigez vers la page d'accueil
-        this.router.navigate(['/']); // Assurez-vous que cette route est correctement configurée
+        const currentLang = this.router.url.split('/')[1] || 'en';
+        this.router.navigate([currentLang, 'home']);
       }
       return false;
     }

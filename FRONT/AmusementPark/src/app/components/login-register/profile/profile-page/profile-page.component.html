@@ -22,7 +22,7 @@
     <div class="profile-row" *ngIf="user">
       <span class="profile-label">{{ 'user-profile.preferred_language' | translate }} :</span>
       <span class="profile-value">{{ user.preferredLanguage }}</span>
-      <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editField('preferredLanguage')"></button>
+      <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editPreferredLanguage()"></button>
     </div>
   </div>
   <!-- Bouton de déconnexion -->

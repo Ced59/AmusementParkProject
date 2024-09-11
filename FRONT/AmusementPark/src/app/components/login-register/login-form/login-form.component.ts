@@ -24,16 +24,13 @@ export class LoginFormComponent {
   }
 
   onSubmit() {
-    console.log('Email:', this.loginEmail);
-    console.log('Password:', this.loginPassword);
-
     let userCredentials = new UserCredentials(this.loginEmail, this.loginPassword);
 
     this.apiService.login(userCredentials).subscribe({
       next: (result: UserToken) => {
         this.authService.setToken(result.token);
         this.messageService.add('success', 'Succès', 'Connexion réussie !');
-        this.loginSuccess.emit(result); // Émettre l'événement de succès
+        this.loginSuccess.emit(result);
       },
       error: (error) => {
         if (error.status === 403 && error.error) {

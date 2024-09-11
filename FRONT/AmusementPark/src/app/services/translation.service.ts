@@ -1,7 +1,7 @@
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {EventEmitter, Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {isPlatformBrowser} from '@angular/common';
-import {firstValueFrom, forkJoin, Observable, of} from 'rxjs';
+import {firstValueFrom, forkJoin, Observable, of, tap} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {LANGUAGES} from "../commons/languages";
 
@@ -10,6 +10,7 @@ import {LANGUAGES} from "../commons/languages";
 })
 export class TranslationService {
   private validLangs = LANGUAGES.map(lang => lang.value);
+  public languageChanged = new EventEmitter<string>();
 
   constructor(
     private translate: TranslateService,
@@ -27,12 +28,12 @@ export class TranslationService {
     return this.translate.use(lang).pipe(
       catchError(error => {
         console.error(`Error loading language ${lang}:`, error);
-        // Fallback to English if the requested language fails
         if (lang !== 'en') {
           return this.translate.use('en');
         }
         return of(null);
-      })
+      }),
+      tap(() => this.languageChanged.emit(lang))
     );
   }
 

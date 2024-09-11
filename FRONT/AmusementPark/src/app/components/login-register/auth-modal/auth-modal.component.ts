@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
+import {ApiService} from "../../../services/api.service";
 
 @Component({
   selector: 'app-auth-modal',
@@ -8,7 +9,16 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class AuthModalComponent {
   @Output() closeModal = new EventEmitter<void>();
 
+  constructor(private apiService: ApiService) {
+  }
+
   onLoginSuccess() {
     this.closeModal.emit();
+  }
+
+  signInWithGoogle() {
+    this.apiService.initiateGoogleLogin().subscribe((response) => {
+      window.open(response.url, 'googleLogin', 'width=500,height=600');
+    });
   }
 }

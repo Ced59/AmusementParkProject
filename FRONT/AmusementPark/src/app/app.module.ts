@@ -27,6 +27,7 @@ import {MessageService} from "primeng/api";
 import {MessagesModule} from "primeng/messages";
 import {MessageModule} from "primeng/message";
 import {AvatarModule} from "primeng/avatar";
+import {AuthInterceptor} from "./interceptors/auth.interceptor";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -83,6 +84,11 @@ export function initializeApp(translationService: TranslationService): () => Pro
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LanguageInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     },
     MessageService

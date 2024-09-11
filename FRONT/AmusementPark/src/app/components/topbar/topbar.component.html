@@ -25,10 +25,10 @@
 
     <ng-template #loginTemplate>
       <button pButton type="button" [label]="('topbar.login_header' | translate)" icon="pi pi-user"
-              class="p-button-primary top-bar-button" (click)="openLoginModal()"></button>
+              class="p-button-primary top-bar-button" (click)="openModal('loginModal')"></button>
 
       <div class="menu-language">
-        <button pButton class="language-button" (click)="openLanguageModal()">
+        <button pButton class="language-button" (click)="openModal('languageModal')">
           <img [src]="'assets/flags/' + selectedLanguage + '.png'" class="flag" alt="Language">
         </button>
       </div>
@@ -48,5 +48,5 @@
 
 <!-- Modal de Connexion -->
 <p-dialog [header]="('topbar.login_header' | translate)" [(visible)]="displayLoginModal" [modal]="true">
-  <app-auth-modal (closeModal)="closeLoginModal()"></app-auth-modal>
+  <app-auth-modal (closeModal)="closeModal('loginModal')"></app-auth-modal>
 </p-dialog>
