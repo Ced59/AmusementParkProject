@@ -77,6 +77,14 @@ public class Program
         builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
         builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+        builder.Services.AddDistributedMemoryCache(); 
+        builder.Services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(30); 
+            options.Cookie.HttpOnly = true; 
+            options.Cookie.IsEssential = true; 
+        });
+
         // Configure CORS
         builder.Services.AddCors(options =>
         {
@@ -142,6 +150,12 @@ public class Program
             {
                 options.DefaultAuthenticateScheme = "JwtBearer";
                 options.DefaultChallengeScheme = "JwtBearer";
+            }).AddCookie("ExternalCookies", options =>
+            {
+                options.Cookie.Name = "ExternalAuth.Cookie";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             })
             .AddJwtBearer("JwtBearer", options =>
             {
@@ -202,13 +216,6 @@ public class Program
                 options.AppId = configuration["Authentication:Facebook:AppId"];
                 options.AppSecret = configuration["Authentication:Facebook:AppSecret"];
                 options.CallbackPath = new PathString("/login/auth/facebook-response");
-            })
-            .AddCookie("ExternalCookies", options =>
-            {
-                options.Cookie.Name = "ExternalAuth.Cookie";
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             });
     }
 
@@ -249,6 +256,7 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseCors("AllowSpecificOrigin");
+        app.UseSession();
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();

@@ -40,7 +40,13 @@ public class AuthController : ControllerBase
     [HttpGet("google")]
     public IActionResult AuthenticateGoogle()
     {
-        var authenticationProperties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
+        string state = GenerateRandomString();
+        HttpContext.Session.SetString("oauth_state", state);
+        var authenticationProperties = new AuthenticationProperties
+        {
+            RedirectUri = Url.Action("GoogleResponse"),
+            Items = { { "state", state } }
+        };
         return Challenge(authenticationProperties, GoogleDefaults.AuthenticationScheme);
     }
 
@@ -56,11 +62,23 @@ public class AuthController : ControllerBase
     {
         var result = await HttpContext.AuthenticateAsync(GoogleDefaults.AuthenticationScheme);
         if (!result.Succeeded)
+        {
             return BadRequest("Error from Google authentication");
+        }
 
-        // Traiter l'authentification réussie ici
+        // Récupération de l'état de la session
+        var expectedState = HttpContext.Session.GetString("oauth_state");
+        if (result.Properties.Items["state"] != expectedState)
+        {
+            return BadRequest("Invalid state parameter");
+        }
+
+        // Traitement supplémentaire
         return Ok();
     }
+
+
+
 
     [HttpGet("facebook-response")]
     public async Task<IActionResult> FacebookResponse()
@@ -72,4 +90,17 @@ public class AuthController : ControllerBase
         // Traiter l'authentification réussie ici
         return Ok();
     }
+
+
+
+    private string GenerateRandomString(int length = 32)
+    {
+        using (var randomNumberGenerator = new System.Security.Cryptography.RNGCryptoServiceProvider())
+        {
+            var randomBytes = new byte[length];
+            randomNumberGenerator.GetBytes(randomBytes);
+            return Convert.ToBase64String(randomBytes);
+        }
+    }
+
 }
