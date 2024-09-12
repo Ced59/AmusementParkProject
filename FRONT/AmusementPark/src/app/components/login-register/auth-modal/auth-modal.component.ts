@@ -26,6 +26,7 @@ export class AuthModalComponent {
     window.open(authUrl, 'googleAuth', 'width=500,height=600,left=200,top=200');
   }
 
+
   generateRandomString() {
     const randomPool = new Uint8Array(32);
     crypto.getRandomValues(randomPool);

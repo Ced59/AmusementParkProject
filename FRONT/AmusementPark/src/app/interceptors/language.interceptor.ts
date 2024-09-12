@@ -1,4 +1,4 @@
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpInterceptorFn, HttpRequest} from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import {Injectable} from "@angular/core";
 import {TranslationService} from "../services/translation.service";
 import {Observable} from "rxjs";
