@@ -1,4 +1,4 @@
-﻿namespace Services.Interfaces;
+﻿namespace Services.Interfaces.Settings;
 
 public interface IJwtSettings
 {

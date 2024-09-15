@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using System.Text.RegularExpressions;
+using Amazon.SecurityToken.Model;
 using Common.Users;
 using Dtos.Pagination;
 using Dtos.Users.ChangePassword;
@@ -16,6 +17,7 @@ using Entities.Model.Users;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces;
+using Services.Interfaces.Settings;
 using Services.Security;
 using static Entities.Model.Errors.ErrorCodes;
 
@@ -82,6 +84,7 @@ public class UsersService : IUsersService
         };
     }
 
+
     /// <summary>
     ///     Get user by email
     /// </summary>
@@ -139,7 +142,7 @@ public class UsersService : IUsersService
     /// <param name="id">Id of user</param>
     /// <param name="userUpdate">User updated</param>
     /// <returns>User updated or error</returns>
-    public async Task<OneOf<UserUpdatedDto, ErrorDetail>> UpdateUser(string id, UserUpdateDto userUpdate)
+    public async Task<OneOf<UserUpdatedDto, ErrorDetail>> UpdateUserAsync(string id, UserUpdateDto userUpdate)
     {
         if (!IsValidEmail(userUpdate.Email) || (userUpdate.NewEmail != null && !IsValidEmail(userUpdate.NewEmail)))
             return InvalidEmailAddress;
@@ -198,6 +201,61 @@ public class UsersService : IUsersService
         await _userQueryHandler.UpdateLastLoginAndActivityAsync(user.Id);
 
         return new UserLoggedDto { Token = token };
+    }
+
+
+    /// <summary>
+    ///     Login by external providers
+    /// </summary>
+    /// <param name="email">Email of user</param>
+    /// <returns>Jwt token or error</returns>
+    public async Task<OneOf<UserLoggedDto, ErrorDetail>> LoginExternalAsync(string email)
+    {
+        var user = await _userQueryHandler.GetUserByEmailAsync(email);
+        if (user == null) return LoginFailed;
+
+        var token = JwtHelper.GenerateToken(user, _jwtSettings);
+
+        await _userQueryHandler.UpdateLastLoginAndActivityAsync(user.Id);
+
+        return new UserLoggedDto { Token = token };
+    }
+
+
+    public async Task<OneOf<UserLoggedDto, ErrorDetail>>? CreateUserByInfosAsync(UserSocialCreate user)
+    {
+        var userToCreate = new User
+        {
+            Id = Guid.NewGuid().ToString(),
+            Email = user.Email,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            PreferredLanguage = "EN",
+            AvatarUrl = user.AvatarUrl,
+            IsActivated = true,
+            IsBlocked = false,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Roles = new List<Role>
+            {
+                Role.USER
+            },
+            HashedPassword = ""
+        };
+
+        var userCreated = await _userQueryHandler.CreateUserAsync(userToCreate);
+
+        if (userCreated == null) return LoginFailed;
+
+        var userLogin = await _userQueryHandler.GetUserByEmailAsync(userCreated.Email);
+        if (userLogin == null) return LoginFailed;
+
+        var token = JwtHelper.GenerateToken(userLogin, _jwtSettings);
+
+        await _userQueryHandler.UpdateLastLoginAndActivityAsync(userLogin.Id);
+
+        return new UserLoggedDto { Token = token };
+
     }
 
 

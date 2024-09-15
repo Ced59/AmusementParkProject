@@ -8,6 +8,7 @@ using Dtos.Users.Roles;
 using Dtos.Users.Updating;
 using Dtos.Users.UserGet;
 using Dtos.Users.Users;
+using Entities.Model.Users;
 using OneOf;
 using static Entities.Model.Errors.ErrorCodes;
 
@@ -23,10 +24,17 @@ public interface IUsersService
     Task<OneOf<UserCreatedDto, ErrorDetail>>? CreateUserAsync(UserCreateDto user);
 
     /// <summary>
+    ///     Create User by informations
+    /// </summary>
+    /// <param name="user">User to create</param>
+    /// <returns>Confirmation created or error</returns>
+    Task<OneOf<UserLoggedDto, ErrorDetail>>? CreateUserByInfosAsync(UserSocialCreate user);
+
+    /// <summary>
     ///     Get user by email
     /// </summary>
     /// <param name="email">Email of user</param>
-    /// <returns>User or error</returns>
+    /// <returns>Token or error</returns>
     Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByEmailAsync(string email);
 
     /// <summary>
@@ -42,7 +50,7 @@ public interface IUsersService
     /// <param name="id">Id of user</param>
     /// <param name="userUpdate">User updated</param>
     /// <returns>User updated or error</returns>
-    Task<OneOf<UserUpdatedDto, ErrorDetail>> UpdateUser(string id, UserUpdateDto userUpdate);
+    Task<OneOf<UserUpdatedDto, ErrorDetail>> UpdateUserAsync(string id, UserUpdateDto userUpdate);
 
     /// <summary>
     ///     Login
@@ -50,6 +58,13 @@ public interface IUsersService
     /// <param name="credentials">Credentials of users</param>
     /// <returns>Jwt Token or error</returns>
     Task<OneOf<UserLoggedDto, ErrorDetail>> LoginAsync(UserLoginDto credentials);
+
+    /// <summary>
+    ///     Login by external providers
+    /// </summary>
+    /// <param name="email">Email of user</param>
+    /// <returns>Jwt token or error</returns>
+    Task<OneOf<UserLoggedDto, ErrorDetail>> LoginExternalAsync(string email);
 
     /// <summary>
     ///     Refresh Token

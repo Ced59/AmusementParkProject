@@ -5,6 +5,11 @@
   </div>
   <div class="profile-details">
     <div class="profile-row" *ngIf="user">
+      <span class="profile-label">{{ 'user-profile.email' | translate }} :</span>
+      <span class="profile-value">{{ user.email }}</span>
+      <span></span>
+    </div>
+    <div class="profile-row" *ngIf="user">
       <span class="profile-label">{{ 'user-profile.name' | translate }} :</span>
       <span class="profile-value">{{ user.lastName }}</span>
       <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editField('lastName')"></button>
@@ -13,11 +18,6 @@
       <span class="profile-label">{{ 'user-profile.firstname' | translate }} :</span>
       <span class="profile-value">{{ user.firstName }}</span>
       <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editField('firstName')"></button>
-    </div>
-    <div class="profile-row" *ngIf="user">
-      <span class="profile-label">{{ 'user-profile.email' | translate }} :</span>
-      <span class="profile-value">{{ user.email }}</span>
-      <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editField('email')"></button>
     </div>
     <div class="profile-row" *ngIf="user">
       <span class="profile-label">{{ 'user-profile.preferred_language' | translate }} :</span>

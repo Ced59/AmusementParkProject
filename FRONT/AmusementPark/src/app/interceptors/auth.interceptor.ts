@@ -8,7 +8,11 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (typeof localStorage === 'undefined' || req.url.endsWith('/login')) {
+    if (
+      typeof localStorage === 'undefined'
+      || req.url.endsWith('/login')
+      || req.url.includes('google-response')
+    ) {
       return next.handle(req);
     }
 

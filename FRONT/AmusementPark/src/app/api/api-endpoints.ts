@@ -1,7 +1,7 @@
 export const API_ENDPOINTS = {
 
   postLogin: 'auth/login',
-  googleLogin: 'auth/google',
+  googleLogin: `auth/google-response`,
 
 
   getUsers: 'users/list',

@@ -1,4 +1,4 @@
-﻿using Services.Interfaces;
+﻿using Services.Interfaces.Settings;
 
 namespace WebAPI.Settings.Security;
 

@@ -13,9 +13,11 @@ using Repositories.Implementations;
 using Repositories.Interfaces;
 using Services.Implementations;
 using Services.Interfaces;
+using Services.Interfaces.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebAPI.Settings.Attributes;
 using WebAPI.Settings.MongoDB;
+using WebAPI.Settings.OAuth;
 using WebAPI.Settings.Security;
 
 //using WebAPI.Middlewares;
@@ -40,6 +42,7 @@ public class Program
         // Base Services
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddHttpClient();
         ConfigureSwagger(builder.Services);
 
         // Authentication
@@ -50,15 +53,22 @@ public class Program
         builder.Services.AddSingleton<IJwtSettings>(jwtSettings);
         ValidateJwtSettings(jwtSettings);
 
+        // Google OAuth Settings
+        var googleAuthSettings = builder.Configuration.GetSection("Authentication:Google").Get<GoogleOAuthSettings>();
+        builder.Services.AddSingleton<IGoogleOAuthSettings>(googleAuthSettings);
+
         // MongoDB Settings
         var mongoDbSettings = builder.Configuration.GetSection("MongoDB").Get<MongoDbSettings>();
         builder.Services.AddSingleton<IMongoDbSettings>(mongoDbSettings);
         ConfigureMongoDb(builder.Services, mongoDbSettings);
 
+
         // Services
         builder.Services.AddScoped<IUsersService, UsersService>();
         builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
         builder.Services.AddScoped<IParksService, ParksService>();
+
+        builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
         builder.Services.AddScoped<IParksQueryHandler, ParksQueryHandler>();
 
         // Other Configurations
@@ -202,13 +212,6 @@ public class Program
                             { message = "You do not have permission to access this resource." }));
                     }
                 };
-            })
-            .AddGoogle("Google", options =>
-            {
-                options.SignInScheme = "ExternalCookies";
-                options.ClientId = configuration["Authentication:Google:ClientId"];
-                options.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-                options.CallbackPath = new PathString("/auth/google-response");
             })
             .AddFacebook("Facebook", options =>
             {

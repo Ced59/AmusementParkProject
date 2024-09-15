@@ -17,7 +17,7 @@ export const languageGuard: CanActivateFn = (route) => {
     map(() => true),
     catchError(async () => {
       await router.navigate(['en/home']);
-      return false; // Rediriger vers la langue par défaut en cas d'erreur
+      return false;
     })
   );
 };

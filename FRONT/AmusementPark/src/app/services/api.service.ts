@@ -25,9 +25,9 @@ export class ApiService {
     return this.http.post<UserToken>(url, JSON.stringify(credentials), httpOptions);
   }
 
-  initiateGoogleLogin(): Observable<any> {
+  googleLogin(code: string): Observable<any> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.googleLogin}`;
-    return this.http.get(url);
+    return this.http.post(url, { code });
   }
 
 

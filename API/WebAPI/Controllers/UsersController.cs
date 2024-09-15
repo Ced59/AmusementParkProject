@@ -77,7 +77,7 @@ public class UsersController : ControllerBase
         if (currentUserId != id && !User.IsInRoles(Role.ADMIN, Role.MODERATOR))
             return ApiResponseHandler.HandleResponse(UserCannotUpdateOtherUser);
 
-        var userUpdated = await _usersService.UpdateUser(id, userUpdate);
+        var userUpdated = await _usersService.UpdateUserAsync(id, userUpdate);
 
         return ApiResponseHandler.HandleResponse(userUpdated);
     }

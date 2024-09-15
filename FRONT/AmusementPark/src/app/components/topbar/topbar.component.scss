@@ -80,8 +80,15 @@
 
 .login-message {
   color: #d4f1f9;
+  margin-right:15px;
 }
 
-.profile-link {
 
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.align-items-center {
+  align-items: center;
 }
