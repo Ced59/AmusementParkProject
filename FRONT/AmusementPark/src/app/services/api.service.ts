@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
 import {UserToken} from "../models/users/user_token";
 import {UserDto} from "../models/users/user_dto";
 import {UserPut} from "../models/users/user_put";
+import {ParksApiResponse} from "../models/parks/parks_api_response";
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,6 @@ export class ApiService {
 
 
   getParksPaginated(page: number, size: number) {
-    return this.http.get(`${environment.apiBaseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`)
+    return this.http.get<ParksApiResponse>(`${environment.apiBaseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`)
   }
 }

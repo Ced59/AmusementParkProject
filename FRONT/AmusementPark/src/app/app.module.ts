@@ -35,6 +35,7 @@ import {MessageModule} from "primeng/message";
 import {AvatarModule} from "primeng/avatar";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import { SigninGoogleComponent } from './components/login-register/signin-google/signin-google.component';
+import {PaginatorModule} from "primeng/paginator";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -57,28 +58,28 @@ export function initializeApp(translationService: TranslationService): () => Pro
       SigninGoogleComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
-      AppRoutingModule,
-      TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-        }
-      }),
-      BrowserAnimationsModule,
-      DropdownModule,
-      ToolbarModule,
-      ButtonModule,
-      FormsModule,
-      DialogModule,
-      InputTextModule,
-      CardModule,
-      TooltipModule,
-      ToastModule,
-      MessagesModule,
-      MessageModule,
-      ToastModule,
-      AvatarModule], providers: [
+          AppRoutingModule,
+          TranslateModule.forRoot({
+              loader: {
+                  provide: TranslateLoader,
+                  useFactory: HttpLoaderFactory,
+                  deps: [HttpClient]
+              }
+          }),
+          BrowserAnimationsModule,
+          DropdownModule,
+          ToolbarModule,
+          ButtonModule,
+          FormsModule,
+          DialogModule,
+          InputTextModule,
+          CardModule,
+          TooltipModule,
+          ToastModule,
+          MessagesModule,
+          MessageModule,
+          ToastModule,
+          AvatarModule, PaginatorModule], providers: [
       provideHttpClient(withFetch()),
       {
         provide: APP_INITIALIZER,

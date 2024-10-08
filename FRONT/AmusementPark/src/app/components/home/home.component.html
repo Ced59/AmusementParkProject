@@ -1,6 +1,11 @@
+<div class="p-grid">
+  <div *ngFor="let park of parks" class="p-col-12 p-md-6 p-lg-4 p-xl-3">
+    <p-card [header]="park.name" [subheader]="park.countryCode">
+      <p>Coordinates: {{ park.latitude }}, {{ park.longitude }}</p>
+    </p-card>
+  </div>
+</div>
 
-<p>Home Works</p>
-
-<h1>{{ 'title' | translate }}</h1>
-<p>{{ 'description' | translate }}</p>
-
+<p-paginator [rows]="pagination?.itemsPerPage" [totalRecords]="pagination?.totalItems"
+             [rowsPerPageOptions]="[5, 10, 50, 100]" [pageLinkSize]="3"
+             (onPageChange)="onPageChange($event)" styleClass="paginator-custom"></p-paginator>
