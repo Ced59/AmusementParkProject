@@ -1,7 +1,5 @@
 import {Park} from "./park";
 import {Pagination} from "../shared/pagination";
+import {ApiResponse} from "../shared/api_reponse";
 
-export interface ParksApiResponse {
-  data: Park[];
-  pagination: Pagination;
-}
+export type ParksApiResponse = ApiResponse<Park>;
