@@ -36,6 +36,8 @@ import {AvatarModule} from "primeng/avatar";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import { SigninGoogleComponent } from './components/login-register/signin-google/signin-google.component';
 import {PaginatorModule} from "primeng/paginator";
+import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
+import {ThemeService} from "./services/themes/themes.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -55,7 +57,8 @@ export function initializeApp(translationService: TranslationService): () => Pro
       LoginFormComponent,
       AuthModalComponent,
       RegisterFormComponent,
-      SigninGoogleComponent
+      SigninGoogleComponent,
+      ThemeSwitcherComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
           AppRoutingModule,
