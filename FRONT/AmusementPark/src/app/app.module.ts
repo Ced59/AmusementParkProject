@@ -79,7 +79,8 @@ export function initializeApp(translationService: TranslationService): () => Pro
           MessagesModule,
           MessageModule,
           ToastModule,
-          AvatarModule, PaginatorModule], providers: [
+          AvatarModule, PaginatorModule],
+    providers: [
       provideHttpClient(withFetch()),
       {
         provide: APP_INITIALIZER,

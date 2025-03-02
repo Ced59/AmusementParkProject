@@ -84,6 +84,7 @@ public class ParksService : IParksService
 
         var parkDtos = parks.Select(park => new ParkDto
         {
+            Id = park.Id,
             Name = park.Name,
             CountryCode = park.CountryCode,
             Latitude = park.Latitude,
