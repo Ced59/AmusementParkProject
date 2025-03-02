@@ -8,5 +8,6 @@ export const API_ENDPOINTS = {
   getUserById: (id: string) => `users?Id=${id}`,
   putUserById: (id: string | null) => `users/${id}`,
 
-  getParksPaginated: (page: number, size: number) => `parks/list?page=${page}&size=${size}`
+  getParksPaginated: (page: number, size: number) => `parks/list?page=${page}&size=${size}`,
+  getParkById: (id: string) => `parks?id=${id}`,
 };

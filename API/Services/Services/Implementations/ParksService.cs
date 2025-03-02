@@ -53,12 +53,12 @@ public class ParksService : IParksService
 
     public async Task<OneOf<ParkGettedDto, ErrorDetail>>? GetParkByIdAsync(ParkGetByIdDto id)
     {
-        if (id.Value == null)
+        if (id.Id == null)
         {
             return ParkNotExists;
         }
 
-        var park = await _parksQueryHandler.GetParkByIdAsync(id.Value);
+        var park = await _parksQueryHandler.GetParkByIdAsync(id.Id);
         if (park == null)
         {
             return ParkNotExists;

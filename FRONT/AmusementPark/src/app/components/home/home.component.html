@@ -2,9 +2,11 @@
   <!-- Grille des cards centrée horizontalement -->
   <div class="grid gap-3 justify-content-center">
     <div *ngFor="let park of parks" class="col-12 md:col-5 lg:col-3">
-      <p-card [header]="park.name" [subheader]="park.countryCode">
-        <p>Coordinates: {{ park.latitude }}, {{ park.longitude }}</p>
-      </p-card>
+      <a *ngIf="park.id && park.name" [routerLink]="['/', currentLang, 'park', park.id, slugify(park.name)]">
+        <p-card [header]="park.name" [subheader]="park.countryCode" styleClass="modern-card">
+          <p>Coordinates: {{ park.latitude }}, {{ park.longitude }}</p>
+        </p-card>
+      </a>
     </div>
   </div>
 

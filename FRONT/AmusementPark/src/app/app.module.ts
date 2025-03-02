@@ -38,6 +38,7 @@ import { SigninGoogleComponent } from './components/login-register/signin-google
 import {PaginatorModule} from "primeng/paginator";
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import {ThemeService} from "./services/themes/themes.service";
+import { ParkDetailComponent } from './components/park-detail/park-detail.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -58,7 +59,8 @@ export function initializeApp(translationService: TranslationService): () => Pro
       AuthModalComponent,
       RegisterFormComponent,
       SigninGoogleComponent,
-      ThemeSwitcherComponent
+      ThemeSwitcherComponent,
+      ParkDetailComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
           AppRoutingModule,

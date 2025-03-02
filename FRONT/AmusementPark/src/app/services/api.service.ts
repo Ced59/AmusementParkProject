@@ -8,6 +8,7 @@ import {UserToken} from "../models/users/user_token";
 import {UserDto} from "../models/users/user_dto";
 import {UserPut} from "../models/users/user_put";
 import {ParksApiResponse} from "../models/parks/parks_api_response";
+import {Park} from "../models/parks/park";
 
 @Injectable({
   providedIn: 'root'
@@ -56,5 +57,10 @@ export class ApiService {
 
   getParksPaginated(page: number, size: number) {
     return this.http.get<ParksApiResponse>(`${environment.apiBaseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`)
+  }
+
+  getParkById(id: string): Observable<Park> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkById(id)}`;
+    return this.http.get<Park>(url);
   }
 }
