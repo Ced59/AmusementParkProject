@@ -4,12 +4,11 @@
 </button>
 
 <!-- Boîte de dialogue pour changer le thème -->
-<p-dialog header="Changer le thème" [(visible)]="displayThemeDialog" [modal]="true" [closable]="true" [style]="{'width': '300px'}">
+<p-dialog header="{{ 'theme.change' | translate }}" [(visible)]="displayThemeDialog" [modal]="true" [closable]="true" [style]="{'width': '300px'}">
   <div class="theme-dialog-content">
-    <p>Choisissez votre thème :</p>
     <div class="theme-options">
-      <button pButton label="Thème Clair" (click)="changeTheme('light')" icon="pi pi-sun"></button>
-      <button pButton label="Thème Sombre" (click)="changeTheme('dark')" icon="pi pi-moon"></button>
+      <button pButton label="{{ 'theme.light' | translate }}" (click)="changeTheme('light')" icon="pi pi-sun"></button>
+      <button pButton label="{{ 'theme.dark' | translate }}" (click)="changeTheme('dark')" icon="pi pi-moon"></button>
     </div>
   </div>
 </p-dialog>

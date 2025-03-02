@@ -36,6 +36,11 @@
     "preferred_language": "Langue préférée",
     "modify": "Modifier"
   },
+  "theme": {
+    "change": "Changer le thème",
+    "light": "Thème Clair",
+    "dark": "Thème Sombre"
+  },
   "title": "Bienvenue",
   "description": "Ceci est une description en français."
 }

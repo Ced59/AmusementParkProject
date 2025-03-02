@@ -36,6 +36,11 @@
     "preferred_language": "Preferred Language",
     "modify": "Edit"
   },
+  "theme": {
+    "change": "Change Theme",
+    "light": "Light Theme",
+    "dark": "Dark Theme"
+  },
   "title": "Welcome",
   "description": "This is a description in English."
 }
