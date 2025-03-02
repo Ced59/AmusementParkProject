@@ -3,14 +3,13 @@ import {ApiService} from "../../services/api.service";
 import {Park} from "../../models/parks/park";
 import {Pagination} from "../../models/shared/pagination";
 import {TranslationService} from "../../services/translation.service";
-import {filter} from "rxjs/operators";
-import {NavigationEnd, Router} from "@angular/router";
-import {Subscription} from "rxjs";
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  host: { 'class': 'home-component' }
 })
 export class HomeComponent implements OnInit{
   parks: Park[] = [];
@@ -49,5 +48,4 @@ export class HomeComponent implements OnInit{
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '');
   }
-
 }

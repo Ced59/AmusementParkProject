@@ -31,6 +31,14 @@ export class ThemeService {
     if (isPlatformBrowser(this.platformId) && this.themeLinkElement) {
       const themeDir = this.themeMap[genericTheme] || this.themeMap['light'];
       this.themeLinkElement.href = `assets/themes/${themeDir}/theme.css`;
+
+      if (genericTheme === 'light') {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+      } else {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+      }
     }
   }
 }

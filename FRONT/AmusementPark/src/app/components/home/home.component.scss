@@ -1,24 +1,8 @@
-.modern-card {
-  /* Suppression des décorateurs par défaut */
-  border: none;
-  box-shadow: none;
-  background: transparent;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  /* Ajustement du padding si nécessaire */
-  .p-card-content {
-    padding: 1rem;
-  }
-}
 
-/* S'assurer que le lien n'ajoute pas de style inattendu */
-a .modern-card {
+a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Effet de hover moderne */
-.modern-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
+
