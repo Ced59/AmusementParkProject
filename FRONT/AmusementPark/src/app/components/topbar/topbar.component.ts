@@ -120,7 +120,6 @@ export class TopbarComponent implements OnInit, OnDestroy {
     this.isLoggedIn = this.authService.isLoggedIn();
     if (this.isLoggedIn) {
       this.userProfile = this.authService.getTokenDecoded();
-      console.log(this.userProfile);
     }
   }
 
