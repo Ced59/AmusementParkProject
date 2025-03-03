@@ -1,18 +1,19 @@
-<!-- app.component.html -->
+<!-- Le conteneur global -->
+<div class="layout-container">
+  <!-- Barre du haut -->
+  <app-topbar></app-topbar>
 
-<app-topbar *ngIf="showTopbar"></app-topbar>
+  <!-- Section principale : sidebar + contenu -->
+  <div class="layout-main">
+    <!-- La sidebar collable -->
+    <app-sidebar></app-sidebar>
 
-<div *ngIf="isLoading" class="loader">
-  Loading...
-</div>
-<div *ngIf="!isLoading">
-  <div class="container">
-    <router-outlet></router-outlet>
+    <!-- Le contenu principal à droite -->
+    <div class="layout-content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
 
+
 <p-toast position="bottom-right"></p-toast>
-
-
-
-

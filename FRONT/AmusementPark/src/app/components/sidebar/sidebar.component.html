@@ -1,0 +1,34 @@
+<nav class="sidenav" [ngClass]="{ 'collapsed': isCollapsed }">
+  <!-- Bouton pour rétracter/étendre -->
+  <div class="sidenav-header">
+    <!-- Icône ou logo -->
+    <div class="logo">
+      <i class="pi pi-compass"></i>
+      <span class="logo-text" *ngIf="!isCollapsed">Amusement Parks</span>
+    </div>
+    <button pButton icon="pi pi-bars" class="collapse-btn" (click)="toggleCollapse()"></button>
+  </div>
+
+  <!-- Liens de navigation (verticaux) -->
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a routerLink="/home" class="nav-link">
+        <i class="pi pi-home"></i>
+        <span class="link-text" *ngIf="!isCollapsed">Accueil</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/about" class="nav-link">
+        <i class="pi pi-info-circle"></i>
+        <span class="link-text" *ngIf="!isCollapsed">À propos</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/profile" class="nav-link">
+        <i class="pi pi-user"></i>
+        <span class="link-text" *ngIf="!isCollapsed">Profil</span>
+      </a>
+    </li>
+    <!-- Ajoutez d'autres liens si nécessaire -->
+  </ul>
+</nav>
