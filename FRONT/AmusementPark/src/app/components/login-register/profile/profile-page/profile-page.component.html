@@ -1,6 +1,6 @@
 <p-card header="{{ 'user-profile.title' | translate }}" class="profile-card">
   <div class="profile-avatar-container">
-    <img [src]="user?.avatarUrl || environment.apiImagePath + '/user-avatar/no-user-image.png'" class="profile-avatar">
+    <img [src]="environment.apiBaseUrl + user?.avatarUrl || environment.apiImagePath + '/commons/no-user-image.png'" class="profile-avatar">
     <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text edit-avatar-button" (click)="editField('avatar')"></button>
   </div>
   <div class="profile-details">

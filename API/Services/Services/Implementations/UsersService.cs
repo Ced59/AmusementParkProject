@@ -164,6 +164,7 @@ public class UsersService : IUsersService
         userToUpdate.UpdatedAt = DateTime.UtcNow;
         userToUpdate.PreferredLanguage = userUpdate.PreferredLanguage;
         userToUpdate.LastActivity = DateTime.UtcNow;
+        userToUpdate.AvatarUrl = userUpdate.AvatarUrl;
 
         var userUpdated = await _userQueryHandler.UpdateUserAsync(userToUpdate);
         if (userUpdated == null) return UserUpdateFailed;
@@ -492,5 +493,36 @@ public class UsersService : IUsersService
         var passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$";
         return Regex.IsMatch(password, passwordPattern);
     }
+
+    /// <summary>
+    /// Telecharge l'avatar et l'enregistre dans l'API.
+    /// </summary>
+    /// <param name="imageUrl">URL source de l'image.</param>
+    /// <param name="userId">Id du User.</param>
+    /// <returns>Chemin de l'image dans l'API.</returns>
+    public async Task<string> DownloadAndSaveUserAvatar(string imageUrl, string userId)
+    {
+        try
+        {
+            using var httpClient = new HttpClient();
+            var imageBytes = await httpClient.GetByteArrayAsync(imageUrl);
+
+            if (imageBytes.Length == 0)
+                return "";
+
+            var fileName = $"{userId}.jpg"; // On nomme le fichier avec l'ID utilisateur
+            var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/user-avatar/", fileName);
+
+            await File.WriteAllBytesAsync(savePath, imageBytes);
+
+            return $"/images/user-avatar/{fileName}"; // Retourne le chemin relatif
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erreur lors du téléchargement de l'avatar : {ex.Message}");
+            return "";
+        }
+    }
+
 
 }

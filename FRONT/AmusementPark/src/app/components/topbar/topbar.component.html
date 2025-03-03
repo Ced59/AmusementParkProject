@@ -14,7 +14,7 @@
         <a routerLink="{{selectedLanguage}}/profile" class="profile-link">
           <div class="flex align-items-center">
             <span class="login-message">{{ 'topbar.hello' | translate }} {{ userProfile?.firstname || userProfile?.email }}</span>
-            <p-avatar *ngIf="userProfile?.avatar" [image]="userProfile?.avatar" shape="circle"></p-avatar>
+            <p-avatar *ngIf="userProfile?.avatar" [image]="environment.apiBaseUrl + userProfile?.avatar" shape="circle"></p-avatar>
           </div>
         </a>
       </ng-container>

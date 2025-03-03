@@ -9,6 +9,7 @@ import {JwtPayload} from "../../models/users/jwt_payload";
 import {ModalService} from "../../services/modal/modal.service";
 import {Subscription} from "rxjs";
 import {SharedService} from "../../services/shared/shared.service";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-topbar',
@@ -115,11 +116,13 @@ export class TopbarComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-
   checkLoginStatus() {
     this.isLoggedIn = this.authService.isLoggedIn();
     if (this.isLoggedIn) {
       this.userProfile = this.authService.getTokenDecoded();
+      console.log(this.userProfile);
     }
   }
+
+  protected readonly environment = environment;
 }

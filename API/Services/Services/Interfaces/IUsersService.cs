@@ -119,4 +119,12 @@ public interface IUsersService
     /// <param name="changeToSameUser">The change password process id for the user who demands</param>
     /// <returns></returns>
     Task<OneOf<PasswordChangedDto, ErrorDetail>> ChangeUserPassword(string idUser, ChangePasswordDto changePasswordDto, bool changeToSameUser);
+
+    /// <summary>
+    /// Telecharge l'avatar et l'enregistre dans l'API.
+    /// </summary>
+    /// <param name="imageUrl">URL source de l'image.</param>
+    /// <param name="userId">Id du User.</param>
+    /// <returns>Chemin de l'image dans l'API.</returns>
+    Task<string> DownloadAndSaveUserAvatar(string imageUrl, string userId);
 }

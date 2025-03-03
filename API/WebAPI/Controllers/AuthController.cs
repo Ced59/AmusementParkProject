@@ -15,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using WebAPI.ResponseHandlers;
 using WebAPI.Settings.Attributes;
 using OneOf.Types;
+using Dtos.Users.Updating;
 
 namespace WebAPI.Controllers;
 
@@ -62,7 +63,7 @@ public class AuthController : ControllerBase
 
         try
         {
-            if (!model.Code.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(model.Code))
             {
                 var accessToken = await _socialAuthService.ExchangeGoogleCodeForToken(provider, model.Code);
                 var userInfo = await _socialAuthService.GetGoogleUserInfo(provider, accessToken);
@@ -71,39 +72,60 @@ public class AuthController : ControllerBase
 
                 if (userLogged.IsT0)
                 {
-                    var userToLog = await _usersService.LoginExternalAsync(userLogged.AsT0.Email);
+                    var existingUser = userLogged.AsT0;
+
+                    // Vérifier si l'utilisateur n'a pas encore d'avatar
+                    if (string.IsNullOrEmpty(existingUser.AvatarUrl) && !string.IsNullOrEmpty(userInfo.Picture))
+                    {
+                        var avatarPath = await _usersService.DownloadAndSaveUserAvatar(userInfo.Picture, existingUser.Id);
+                        if (!string.IsNullOrEmpty(avatarPath))
+                        {
+                            // Mettre à jour l'utilisateur avec le nouvel avatar
+                            var updateDto = new UserUpdateDto
+                            {
+                                Email = existingUser.Email,
+                                FirstName = existingUser.FirstName,
+                                LastName = existingUser.LastName,
+                                PreferredLanguage = existingUser.PreferredLanguage,
+                                AvatarUrl = avatarPath
+                            };
+                            await _usersService.UpdateUserAsync(existingUser.Id, updateDto);
+                        }
+                    }
+
+                    var userToLog = await _usersService.LoginExternalAsync(existingUser.Email);
                     return ApiResponseHandler.HandleResponse(userToLog);
                 }
 
                 if (userLogged.AsT1.StatusCode == ErrorCodes.UserNotExists.StatusCode)
                 {
+                    var avatarPath = !string.IsNullOrEmpty(userInfo.Picture)
+                        ? await _usersService.DownloadAndSaveUserAvatar(userInfo.Picture, Guid.NewGuid().ToString())
+                        : "";
+
                     var userToCreate = new UserSocialCreate
                     {
                         Email = userInfo.Email,
-                        AvatarUrl = userInfo.Picture,
+                        AvatarUrl = avatarPath,
                         FirstName = userInfo.GivenName,
                         LastName = userInfo.FamilyName
                     };
 
                     var created = await _usersService.CreateUserByInfosAsync(userToCreate);
                     return ApiResponseHandler.HandleResponse(created);
+                }
 
-                }
-                else
-                {
-                    return ApiResponseHandler.HandleResponse(ErrorCodes.LoginFailed);
-                }
+                return ApiResponseHandler.HandleResponse(ErrorCodes.LoginFailed);
             }
 
-
-            return BadRequest($"An error occurred.");
-            // Vous pouvez renvoyer les informations de l'utilisateur ou une autre réponse appropriée
+            return BadRequest("An error occurred.");
         }
         catch (Exception ex)
         {
             return BadRequest($"An error occurred: {ex.Message}");
         }
     }
+
 
     public class CodeModel
     {
