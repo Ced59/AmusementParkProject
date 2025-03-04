@@ -10,6 +10,12 @@
   border-radius: 10px;
 }
 
+@media (max-width: 767px) {
+  .sidenav {
+    margin-right: 10px;
+  }
+}
+
 // Mode rétracté
 .sidenav.collapsed {
   width: 60px; /* Se réduit à 60px */
