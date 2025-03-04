@@ -42,6 +42,7 @@
       font-size: 1.25rem;
       font-weight: 600;
       transition: transform 0.3s ease, opacity 0.3s ease;
+      white-space: nowrap; /* Empêche le retour à la ligne */
     }
   }
 }
@@ -78,6 +79,7 @@
       .link-text {
         font-size: 1rem;
         transition: transform 0.3s ease, opacity 0.3s ease;
+        white-space: nowrap; /* Force le label à rester sur une seule ligne */
       }
     }
   }
