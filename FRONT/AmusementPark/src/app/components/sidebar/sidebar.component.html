@@ -8,19 +8,19 @@
     <button pButton icon="pi pi-bars" class="collapse-btn" (click)="toggleCollapse()"></button>
   </div>
   <ul class="nav-list">
-    <li class="nav-item">
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       <a [routerLink]="['/', currentLang, 'home']" class="nav-link" (click)="handleNavClick($event)">
         <i class="pi pi-home"></i>
         <span class="link-text">Accueil</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       <a [routerLink]="['/', currentLang, 'about']" class="nav-link" (click)="handleNavClick($event)">
         <i class="pi pi-info-circle"></i>
         <span class="link-text">À propos</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       <a [routerLink]="['/', currentLang, 'profile']" class="nav-link" (click)="handleNavClick($event)">
         <i class="pi pi-user"></i>
         <span class="link-text">Profil</span>
