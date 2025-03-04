@@ -1,34 +1,30 @@
 <nav class="sidenav" [ngClass]="{ 'collapsed': isCollapsed }">
   <!-- Bouton pour rétracter/étendre -->
   <div class="sidenav-header">
-    <!-- Icône ou logo -->
     <div class="logo">
       <i class="pi pi-compass"></i>
       <span class="logo-text">Amusement Parks</span>
     </div>
     <button pButton icon="pi pi-bars" class="collapse-btn" (click)="toggleCollapse()"></button>
   </div>
-
-  <!-- Liens de navigation (verticaux) -->
   <ul class="nav-list">
     <li class="nav-item">
-      <a routerLink="/{{currentLang}}/home" class="nav-link" (click)="handleNavClick($event)">
+      <a [routerLink]="['/', currentLang, 'home']" class="nav-link" (click)="handleNavClick($event)">
         <i class="pi pi-home"></i>
         <span class="link-text">Accueil</span>
       </a>
     </li>
     <li class="nav-item">
-      <a routerLink="/about" class="nav-link" (click)="handleNavClick($event)">
+      <a [routerLink]="['/', currentLang, 'about']" class="nav-link" (click)="handleNavClick($event)">
         <i class="pi pi-info-circle"></i>
         <span class="link-text">À propos</span>
       </a>
     </li>
     <li class="nav-item">
-      <a routerLink="/{{currentLang}}/profile" class="nav-link" (click)="handleNavClick($event)">
+      <a [routerLink]="['/', currentLang, 'profile']" class="nav-link" (click)="handleNavClick($event)">
         <i class="pi pi-user"></i>
         <span class="link-text">Profil</span>
       </a>
     </li>
-    <!-- Ajoutez d'autres liens si nécessaire -->
   </ul>
 </nav>
