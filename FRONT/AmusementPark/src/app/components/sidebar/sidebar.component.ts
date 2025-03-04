@@ -19,7 +19,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentLang = this.translationService.getCurrentLang() || 'en';
-    // Utiliser languageChanged (EventEmitter<string>) et typer le paramètre
     this.langSub = this.translationService.languageChanged.subscribe((lang: string) => {
       this.currentLang = lang;
     });
@@ -31,23 +30,16 @@ export class SidebarComponent implements OnInit, OnDestroy {
     }
   }
 
-  toggleCollapse(): void {
-    this.isCollapsed = !this.isCollapsed;
-  }
-
   handleNavClick(event: Event): void {
-    if (this.isCollapsed && window.innerWidth < 768) {
-      event.preventDefault();
-      this.toggleCollapse();
+    if (window.innerWidth < 768) {
+      this.isCollapsed = true;
     }
   }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
-    if (window.innerWidth < 768 && !this.isCollapsed) {
-      if (!this.elRef.nativeElement.contains(event.target)) {
-        this.isCollapsed = true;
-      }
+    if (window.innerWidth < 768 && !this.isCollapsed && !this.elRef.nativeElement.contains(event.target)) {
+      this.isCollapsed = true;
     }
   }
 }

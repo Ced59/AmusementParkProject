@@ -1,11 +1,10 @@
 <nav class="sidenav" [ngClass]="{ 'collapsed': isCollapsed }">
-  <!-- Bouton pour rétracter/étendre -->
+  <!-- En-tête : logo uniquement (bouton hamburger supprimé) -->
   <div class="sidenav-header">
     <div class="logo">
       <i class="pi pi-compass"></i>
       <span class="logo-text">Amusement Parks</span>
     </div>
-    <button pButton icon="pi pi-bars" class="collapse-btn" (click)="toggleCollapse()"></button>
   </div>
   <ul class="nav-list">
     <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
