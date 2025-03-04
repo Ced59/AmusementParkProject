@@ -4,7 +4,7 @@
     <!-- Icône ou logo -->
     <div class="logo">
       <i class="pi pi-compass"></i>
-      <span class="logo-text" *ngIf="!isCollapsed">Amusement Parks</span>
+      <span class="logo-text">Amusement Parks</span>
     </div>
     <button pButton icon="pi pi-bars" class="collapse-btn" (click)="toggleCollapse()"></button>
   </div>
@@ -12,21 +12,21 @@
   <!-- Liens de navigation (verticaux) -->
   <ul class="nav-list">
     <li class="nav-item">
-      <a routerLink="/home" class="nav-link">
+      <a routerLink="/{{currentLang}}/home" class="nav-link" (click)="handleNavClick($event)">
         <i class="pi pi-home"></i>
-        <span class="link-text" *ngIf="!isCollapsed">Accueil</span>
+        <span class="link-text">Accueil</span>
       </a>
     </li>
     <li class="nav-item">
-      <a routerLink="/about" class="nav-link">
+      <a routerLink="/about" class="nav-link" (click)="handleNavClick($event)">
         <i class="pi pi-info-circle"></i>
-        <span class="link-text" *ngIf="!isCollapsed">À propos</span>
+        <span class="link-text">À propos</span>
       </a>
     </li>
     <li class="nav-item">
-      <a routerLink="/profile" class="nav-link">
+      <a routerLink="/{{currentLang}}/profile" class="nav-link" (click)="handleNavClick($event)">
         <i class="pi pi-user"></i>
-        <span class="link-text" *ngIf="!isCollapsed">Profil</span>
+        <span class="link-text">Profil</span>
       </a>
     </li>
     <!-- Ajoutez d'autres liens si nécessaire -->

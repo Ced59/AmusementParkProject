@@ -7,7 +7,8 @@ import { TranslationService } from '../../services/translation.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  isCollapsed: boolean = false;
+  // La sidebar sera collapsée par défaut
+  isCollapsed: boolean = true;
   currentLang: string = 'en';
 
   constructor(private translationService: TranslationService) {
@@ -16,5 +17,13 @@ export class SidebarComponent {
 
   toggleCollapse(): void {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  // Gestionnaire pour les clics sur les liens de navigation
+  handleNavClick(event: Event): void {
+    if (this.isCollapsed && window.innerWidth < 768) {
+      event.preventDefault();
+      this.toggleCollapse();
+    }
   }
 }
