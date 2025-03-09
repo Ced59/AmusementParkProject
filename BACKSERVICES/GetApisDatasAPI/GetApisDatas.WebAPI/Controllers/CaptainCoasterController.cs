@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace GetDatasAPI.WebAPI.Controllers
+namespace GetApisDatas.WebAPI.Controllers
 {
     public class CaptainCoasterController : Controller
     {

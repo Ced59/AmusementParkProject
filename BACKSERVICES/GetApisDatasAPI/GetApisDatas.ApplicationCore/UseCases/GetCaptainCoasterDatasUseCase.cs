@@ -1,6 +1,6 @@
-﻿using GetDatas.ApplicationCore.Interfaces.UseCases;
+﻿using GetApisDatas.ApplicationCore.Interfaces.UseCases;
 
-namespace GetDatas.ApplicationCore.UseCases
+namespace GetApisDatas.ApplicationCore.UseCases
 {
     /// <inheritdoc/>
     public class GetCaptainCoasterDatasUseCase : IGetCaptainCoasterDatasUseCase

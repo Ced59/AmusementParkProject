@@ -1,5 +1,5 @@
 
-namespace GetDatasAPI.API
+namespace GetApisDatas.WebAPI
 {
     public class Program
     {

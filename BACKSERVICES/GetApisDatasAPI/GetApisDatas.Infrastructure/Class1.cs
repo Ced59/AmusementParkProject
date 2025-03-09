@@ -1,4 +1,4 @@
-﻿namespace GetDatas.Infrastructure
+﻿namespace GetApisDatas.Infrastructure
 {
     public class Class1
     {

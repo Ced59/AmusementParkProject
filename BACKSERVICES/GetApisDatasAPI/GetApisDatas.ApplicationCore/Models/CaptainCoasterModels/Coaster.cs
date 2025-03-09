@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace Models
+namespace GetApisDatas.ApplicationCore.Models.CaptainCoasterModels
 {
     public class Coaster
     {

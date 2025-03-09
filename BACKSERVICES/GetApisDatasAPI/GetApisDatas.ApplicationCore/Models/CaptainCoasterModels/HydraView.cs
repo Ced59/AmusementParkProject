@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Models
+namespace GetApisDatas.ApplicationCore.Models.CaptainCoasterModels
 {
     public class HydraView
     {
