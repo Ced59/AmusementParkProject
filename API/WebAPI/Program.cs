@@ -20,8 +20,6 @@ using WebAPI.Settings.MongoDB;
 using WebAPI.Settings.OAuth;
 using WebAPI.Settings.Security;
 
-//using WebAPI.Middlewares;
-
 namespace WebAPI;
 
 public class Program

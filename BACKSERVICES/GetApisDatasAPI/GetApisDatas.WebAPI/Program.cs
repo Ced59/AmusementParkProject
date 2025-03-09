@@ -1,4 +1,9 @@
 
+using System.Reflection;
+using GetApisDatas.WebAPI.Settings;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
+
 namespace GetApisDatas.WebAPI
 {
     public class Program
@@ -12,7 +17,11 @@ namespace GetApisDatas.WebAPI
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddHttpClient();
+
+            ConfigureSwagger(builder.Services);
+
+            builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
 
             var app = builder.Build();
 
@@ -31,6 +40,25 @@ namespace GetApisDatas.WebAPI
             app.MapControllers();
 
             app.Run();
+        }
+
+        private static void ConfigureSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Get Apis Datas Web API", Version = "v1" });
+                c.OrderActionsBy(apiDesc =>
+                {
+                    var orderAttr = apiDesc.CustomAttributes().OfType<SwaggerOrderAttribute>().FirstOrDefault();
+                    return orderAttr != null ? orderAttr.Order.ToString() : int.MaxValue.ToString();
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                if (File.Exists(xmlPath)) c.IncludeXmlComments(xmlPath);
+
+            });
+
         }
     }
 }

@@ -3,7 +3,7 @@
 namespace GetApisDatas.ApplicationCore.UseCases
 {
     /// <inheritdoc/>
-    public class GetCaptainCoasterDatasUseCase : IGetCaptainCoasterDatasUseCase
+    public class GetAllCaptainCoasterDatasUseCase : IGetCaptainCoasterDatasUseCase
     {
         public void Execute()
         {
