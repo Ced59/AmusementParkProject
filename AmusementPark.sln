@@ -28,13 +28,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "API\CommonStatus\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BACKSERVICES", "BACKSERVICES", "{5EDAC9EB-5B38-491A-B06E-D9AF1C28FFC1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GetDatasAPI", "GetDatasAPI", "{3E5DBD78-A461-4BB0-AA92-1BB3C3F31930}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GetApisDatas", "GetApisDatas", "{3E5DBD78-A461-4BB0-AA92-1BB3C3F31930}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetDatasAPI.WebAPI", "BACKSERVICES\GetDatasAPI\GetDatasAPI.WebAPI\GetDatasAPI.WebAPI.csproj", "{834863E0-2F2A-4915-958A-83B72434D8E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetApisDatas.WebAPI", "BACKSERVICES\GetApisDatasAPI\GetApisDatas.WebAPI\GetApisDatas.WebAPI.csproj", "{834863E0-2F2A-4915-958A-83B72434D8E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetDatas.ApplicationCore", "GetDatas.ApplicationCore\GetDatas.ApplicationCore.csproj", "{B9CB5BAF-6191-4022-B664-2C5E567E6F20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetApisDatas.ApplicationCore", "BACKSERVICES\GetApisDatasAPI\GetApisDatas.ApplicationCore\GetApisDatas.ApplicationCore.csproj", "{B9CB5BAF-6191-4022-B664-2C5E567E6F20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetDatas.Infrastructure", "GetDatas.Infrastructure\GetDatas.Infrastructure.csproj", "{0D9D6D93-5403-4D2F-BA94-7A48C9FF0748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetApisDatas.Infrastructure", "BACKSERVICES\GetApisDatasAPI\GetApisDatas.Infrastructure\GetApisDatas.Infrastructure.csproj", "{0D9D6D93-5403-4D2F-BA94-7A48C9FF0748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
