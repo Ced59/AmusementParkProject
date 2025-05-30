@@ -41,6 +41,7 @@ import {ThemeService} from "./services/themes/themes.service";
 import { ParkDetailComponent } from './components/park-detail/park-detail.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {SidebarModule} from "primeng/sidebar";
+import { ParkListComponent } from './components/park-list/park-list.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -64,7 +65,8 @@ export function initializeApp(translationService: TranslationService): () => Pro
       ThemeSwitcherComponent,
       ParkDetailComponent,
       SidebarComponent,
-      SidebarComponent
+      SidebarComponent,
+      ParkListComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
       AppRoutingModule,

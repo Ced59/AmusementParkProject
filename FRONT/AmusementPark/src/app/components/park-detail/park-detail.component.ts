@@ -32,6 +32,6 @@ export class ParkDetailComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate([`/${this.currentLang}/home`]);
+    this.router.navigate([`/${this.currentLang}/parks`]);
   }
 }

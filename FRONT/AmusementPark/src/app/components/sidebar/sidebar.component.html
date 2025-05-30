@@ -14,6 +14,12 @@
       </a>
     </li>
     <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a [routerLink]="['/', currentLang, 'parks']" class="nav-link" (click)="handleNavClick($event)">
+        <i class="pi pi-list"></i>
+        <span class="link-text">Parcs</span>
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       <a [routerLink]="['/', currentLang, 'about']" class="nav-link" (click)="handleNavClick($event)">
         <i class="pi pi-info-circle"></i>
         <span class="link-text">À propos</span>
