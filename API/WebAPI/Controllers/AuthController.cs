@@ -15,7 +15,7 @@ using OneOf;
 namespace WebAPI.Controllers;
 
 [ApiController]
-[SwaggerOrder(1)]
+[SwaggerOrder(2)]
 [Route("[controller]")]
 public class AuthController : ControllerBase
 {

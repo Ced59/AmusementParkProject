@@ -22,7 +22,7 @@ using static Entities.Model.Errors.ErrorCodes;
 namespace WebAPI.Controllers;
 
 [ApiController]
-[SwaggerOrder(2)]
+[SwaggerOrder(3)]
 [Route("[controller]")]
 public class UsersController : ControllerBase
 {

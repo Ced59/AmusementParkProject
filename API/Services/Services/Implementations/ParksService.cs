@@ -7,6 +7,7 @@ using Entities.Model.Searching;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces;
+using Services.Interfaces.Searching;
 using static Entities.Model.Errors.ErrorCodes;
 
 namespace Services.Implementations;

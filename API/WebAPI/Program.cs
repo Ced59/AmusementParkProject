@@ -11,7 +11,9 @@ using MongoDB.Driver;
 using Repositories.Implementations;
 using Repositories.Interfaces;
 using Services.Implementations;
+using Services.Implementations.Searching;
 using Services.Interfaces;
+using Services.Interfaces.Searching;
 using Services.Interfaces.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebAPI.Settings.Attributes;
@@ -44,13 +46,16 @@ public class Program
 
         // Services
         builder.Services.AddScoped<IUsersService, UsersService>();
-        builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
         builder.Services.AddScoped<IParksService, ParksService>();
 
         builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
-        builder.Services.AddScoped<IParksQueryHandler, ParksQueryHandler>();
 
         builder.Services.AddScoped<ISearchIndexService, SearchIndexService>();
+        builder.Services.AddScoped<ISearchService, SearchService>();
+
+        builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
+        builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
+        builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
 
         // Authentication
         ConfigureAuthentication(builder.Services, builder.Configuration);

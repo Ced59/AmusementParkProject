@@ -2,7 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Repositories.Interfaces;
-using Services.Interfaces;
+using Services.Interfaces.Searching;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using WebAPI.Resources.InitializingDatas;

@@ -14,7 +14,7 @@ using WebAPI.Settings.Attributes;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [SwaggerOrder(3)]
+    [SwaggerOrder(1)]
     [Route("[controller]")]
     public class ParksController : ControllerBase
     {

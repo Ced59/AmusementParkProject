@@ -3,9 +3,9 @@ using Entities.Model.Searching;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GeoJsonObjectModel;
-using Services.Interfaces;
+using Services.Interfaces.Searching;
 
-namespace Services.Implementations
+namespace Services.Implementations.Searching
 {
     public class SearchIndexService : ISearchIndexService
     {

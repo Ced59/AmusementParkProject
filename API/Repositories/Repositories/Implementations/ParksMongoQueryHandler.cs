@@ -5,11 +5,11 @@ using Repositories.Interfaces;
 
 namespace Repositories.Implementations;
 
-public class ParksQueryHandler : IParksQueryHandler
+public class ParksMongoQueryHandler : IParksQueryHandler
 {
     private readonly IMongoCollection<Park> _parksCollection;
 
-    public ParksQueryHandler(IMongoDatabase database, IMongoDbSettings settings)
+    public ParksMongoQueryHandler(IMongoDatabase database, IMongoDbSettings settings)
     {
         _parksCollection = database.GetCollection<Park>(settings.ParksCollectionName);
     }

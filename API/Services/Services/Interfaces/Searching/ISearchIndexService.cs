@@ -2,7 +2,7 @@
 using Entities.Model.Searching;
 using MongoDB.Driver;
 
-namespace Services.Interfaces
+namespace Services.Interfaces.Searching
 {
     /// <summary>
     /// Service pour peupler / maintenir la collection SearchItems.
