@@ -66,7 +66,6 @@ export function initializeApp(translationService: TranslationService): () => Pro
       ThemeSwitcherComponent,
       ParkDetailComponent,
       SidebarComponent,
-      SidebarComponent,
       ParkListComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,

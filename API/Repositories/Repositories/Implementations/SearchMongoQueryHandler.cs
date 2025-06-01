@@ -1,8 +1,10 @@
-﻿using Entities.Model.Searching;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Entities.Model.Searching;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Repositories.Interfaces;
-using System.Text.RegularExpressions;
 
 namespace Repositories.Implementations
 {
@@ -10,9 +12,12 @@ namespace Repositories.Implementations
     {
         private readonly IMongoCollection<SearchItem> _searchCollection;
 
-        public SearchMongoQueryHandler(IMongoDatabase database, IMongoDbSettings settings)
+        public SearchMongoQueryHandler(
+            IMongoDatabase database,
+            IMongoDbSettings settings)
         {
-            _searchCollection = database.GetCollection<SearchItem>(settings.SearchItemCollectionName);
+            _searchCollection = database
+                .GetCollection<SearchItem>(settings.SearchItemCollectionName);
         }
 
         public async Task<(IEnumerable<SearchItem> Items, long TotalCount)> SearchAsync(
@@ -21,42 +26,58 @@ namespace Repositories.Implementations
             int page,
             int pageSize)
         {
-            // 1) Filtre initial vide
-            FilterDefinition<SearchItem> filter = Builders<SearchItem>.Filter.Empty;
+            // 1) Filtre initial “match all”
+            FilterDefinition<SearchItem> filter =
+                Builders<SearchItem>.Filter.Empty;
 
-            // 2) Si query non vide, on utilise une regex insensible à la casse sur Title
+            // 2) Si l’utilisateur a saisi quelque chose, on ajoute le filtre
+            //    “Title contient la sous-chaîne (case insensible)”
             if (!string.IsNullOrWhiteSpace(query))
             {
-                // Échapper les caractères spéciaux dans la chaîne de recherche
-                var escaped = Regex.Escape(query.Trim());
-                // Filtre : Title contient la sous-chaîne (case-insensitive)
-                BsonRegularExpression regex = new BsonRegularExpression($".*{escaped}.*", "i");
-                filter = Builders<SearchItem>.Filter.Regex(si => si.Title, regex);
+                string escaped = Regex.Escape(query.Trim());
+                BsonRegularExpression regex =
+                    new BsonRegularExpression($".*{escaped}.*", "i");
+
+                filter = Builders<SearchItem>
+                    .Filter.Regex(si => si.Title, regex);
             }
 
-            // 3) Si catégories fournies, on filtre dessus
+            // 3) Si des catégories sont fournies, on ajoute un seul Filter.In.
+            //    Cela correspond à une requête “Category == cat1 OR Category == cat2 OR …”
             if (categories != null && categories.Length > 0)
             {
-                FilterDefinition<SearchItem>? catFilter = Builders<SearchItem>.Filter.In(x => x.Category, categories);
+                FilterDefinition<SearchItem> catFilter =
+                    Builders<SearchItem>
+                        .Filter.In(si => si.Category, categories);
+
+                // On combine le filtre texte (s’il y en a un) ET le catFilter
                 filter = filter & catFilter;
             }
 
-            // 4) Calculer le total avant pagination
-            var totalCount = await _searchCollection.CountDocumentsAsync(filter);
+            // 4) Calcul du nombre total de documents correspondant (avant pagination)
+            long totalCount =
+                await _searchCollection
+                    .CountDocumentsAsync(filter);
 
-            // 5) Définir le tri : par UpdatedAt décroissant (on ne peut pas trier par score textuel ici)
-            SortDefinition<SearchItem>? sort = Builders<SearchItem>.Sort.Descending(x => x.UpdatedAt);
+            // 5) Définition du tri : par UpdatedAt décroissant
+            SortDefinition<SearchItem> sort =
+                Builders<SearchItem>
+                    .Sort.Descending(si => si.UpdatedAt);
 
-            // 6) Appliquer pagination
-            FindOptions<SearchItem> findOptions = new FindOptions<SearchItem>
+            // 6) Application de la pagination
+            FindOptions<SearchItem> findOptions = new()
             {
                 Sort = sort,
                 Skip = (page - 1) * pageSize,
                 Limit = pageSize
             };
 
-            IAsyncCursor<SearchItem>? cursor = await _searchCollection.FindAsync(filter, findOptions);
-            List<SearchItem>? items = await cursor.ToListAsync();
+            IAsyncCursor<SearchItem> cursor =
+                await _searchCollection.FindAsync(filter, findOptions);
+
+            List<SearchItem> items =
+                await cursor.ToListAsync();
+
             return (items, totalCount);
         }
     }

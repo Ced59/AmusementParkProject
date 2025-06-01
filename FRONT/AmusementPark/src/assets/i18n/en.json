@@ -1,4 +1,15 @@
 {
+  "home": {
+    "home_title": "Your next adventure starts here",
+    "placeholder_search": "Search for a park, a ride, a hotel…",
+    "placeholder_category": "Search type",
+    "no_results": "No results for",
+    "in_category": "in",
+    "categories": {
+      "park": "Parks",
+      "attractions": "Rides"
+    }
+  },
   "topbar": {
     "login_header": "Login / Registration",
     "hello": "Hello",

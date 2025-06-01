@@ -9,6 +9,7 @@ import {UserDto} from "../models/users/user_dto";
 import {UserPut} from "../models/users/user_put";
 import {ParksApiResponse} from "../models/parks/parks_api_response";
 import {Park} from "../models/parks/park";
+import {SearchApiResponse} from "../models/search/search-api-response";
 
 @Injectable({
   providedIn: 'root'
@@ -62,5 +63,16 @@ export class ApiService {
   getParkById(id: string): Observable<Park> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkById(id)}`;
     return this.http.get<Park>(url);
+  }
+
+  getSearch(
+    query: string,
+    categories: string[],
+    page: number,
+    size: number
+  ): Observable<SearchApiResponse> {
+    const url =
+      `${environment.apiBaseUrl}${API_ENDPOINTS.getSearch(query, categories, page, size)}`;
+    return this.http.get<SearchApiResponse>(url);
   }
 }

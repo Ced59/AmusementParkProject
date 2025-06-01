@@ -1,13 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject, Subscription, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, map } from 'rxjs/operators';
+// src/app/components/home/home.component.ts
 
-interface Item {
-  id: number;
-  title: string;
-  description: string;
-  type: 'parc' | 'coaster' | 'autre'; // vous pourrez ajouter d’autres valeurs plus tard
-}
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription, EMPTY } from 'rxjs';
+import { debounceTime, switchMap, catchError } from 'rxjs/operators';
+import { ApiService } from '../../services/api.service';
+import { SearchResultItem } from '../../models/search/search-result-item';
+import { SearchApiResponse } from '../../models/search/search-api-response';
+import { Pagination } from '../../models/shared/pagination';
 
 @Component({
   selector: 'app-home',
@@ -15,45 +14,56 @@ interface Item {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  // Texte saisi dans la barre de recherche
   searchTerm: string = '';
+  selectedCategory: string = '';
 
-  // Tableau des catégories sélectionnées (values)
-  selectedCategories: string[] = [];
-
-  // Options à afficher dans le MultiSelect
-  categoryOptions: { label: string; value: string }[] = [
-    { label: 'Parcs',    value: 'parc' },
-    { label: 'Coasters', value: 'coaster' },
-    // Par la suite, si vous ajoutez “Restaurants”, “Hôtels”, etc. :
-    // { label: 'Restaurants', value: 'restaurant' }, etc.
+  // On ne met plus de texte fixe ici, juste la clé de traduction et la value réelle
+  categoryOptions: { labelKey: string; value: string }[] = [
+    { labelKey: 'home.categories.park',    value: 'park' },
+    { labelKey: 'home.categories.attractions', value: 'attractions' }
   ];
 
   private searchSubject = new Subject<string>();
   private subscription$!: Subscription;
 
-  results: Item[] = [];
+  results: SearchResultItem[] = [];
+  pagination: Pagination | null = null;
 
-  // Exemple de “base de données” en dur
-  private allItems: Item[] = [
-    { id: 1, title: 'Parc Asterix',     description: 'Parc à thème français.',           type: 'parc' },
-    { id: 2, title: 'Disneyland Paris', description: 'Le parc magique.',                    type: 'parc' },
-    { id: 3, title: 'Magic Coaster',    description: 'Montagnes russes vertigineuses.',     type: 'coaster' },
-    { id: 4, title: 'Roller Fun',       description: 'Une expérience à sensations.',         type: 'coaster' },
-    { id: 5, title: 'Parc Astérix Pro', description: 'Zone repas & attractions.',          type: 'parc' },
-    // … vous pouvez ajouter d’autres “type: 'restaurant'” ou “type: 'hotel'” plus tard
-  ];
+  currentPage = 1;
+  pageSize = 10;
+
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.subscription$ = this.searchSubject
-      .pipe(
-        debounceTime(300),
-        distinctUntilChanged(),
-        switchMap((term: string) => of(term).pipe(map((t) => this.filterItems(t))))
-      )
-      .subscribe((filtered: Item[]) => {
-        this.results = filtered;
-      });
+    this.subscription$ = this.searchSubject.pipe(
+      debounceTime(300),
+      switchMap((term: string) => {
+        if (!term && !this.selectedCategory) {
+          this.results = [];
+          this.pagination = null;
+          return EMPTY;
+        }
+        this.currentPage = 1;
+        const categoriesToSend: string[] = this.selectedCategory
+          ? [this.selectedCategory]
+          : [];
+        return this.apiService.getSearch(
+          term,
+          categoriesToSend,
+          this.currentPage,
+          this.pageSize
+        ).pipe(
+          catchError(() => {
+            this.results = [];
+            this.pagination = null;
+            return EMPTY;
+          })
+        );
+      })
+    ).subscribe((response: SearchApiResponse) => {
+      this.results = response.data;
+      this.pagination = response.pagination;
+    });
   }
 
   ngOnDestroy(): void {
@@ -62,48 +72,35 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  /**
-   * Appelé à chaque frappe sur l’input
-   */
-  onSearchInput(value: string) {
+  onSearchInput(value: string): void {
     this.searchTerm = value.trim();
     this.searchSubject.next(this.searchTerm);
   }
 
-  /**
-   * Appelé à chaque changement dans le MultiSelect
-   */
-  onFilterChange() {
-    // On repart du même terme de recherche actuel
+  onCategoryChange(): void {
     this.searchSubject.next(this.searchTerm);
   }
 
-  /**
-   * Filtrage combiné : texte + catégories
-   */
-  private filterItems(term: string): Item[] {
-    // Si aucun terme et aucune catégorie sélectionnée, on n'affiche rien
-    if (!term && this.selectedCategories.length === 0) {
-      return [];
-    }
-
-    const lower = term.toLowerCase();
-
-    return this.allItems.filter((item) => {
-      // 1) Filtrer par texte (si term non vide)
-      const matchesText =
-        !term ||
-        item.title.toLowerCase().includes(lower) ||
-        item.description.toLowerCase().includes(lower);
-
-      // 2) Filtrer par catégories (si en a sélectionné au moins une)
-      let matchesCategory = true;
-      if (this.selectedCategories.length > 0) {
-        // Si l’item.type (ex. 'parc') figure dans selectedCategories (['parc','coaster']), alors true
-        matchesCategory = this.selectedCategories.includes(item.type);
-      }
-
-      return matchesText && matchesCategory;
+  onPageChange(event: any): void {
+    this.currentPage = event.page + 1;
+    this.pageSize = event.rows;
+    const categoriesToSend: string[] = this.selectedCategory
+      ? [this.selectedCategory]
+      : [];
+    this.apiService.getSearch(
+      this.searchTerm,
+      categoriesToSend,
+      this.currentPage,
+      this.pageSize
+    ).pipe(
+      catchError(() => {
+        this.results = [];
+        this.pagination = null;
+        return EMPTY;
+      })
+    ).subscribe((response: SearchApiResponse) => {
+      this.results = response.data;
+      this.pagination = response.pagination;
     });
   }
 }

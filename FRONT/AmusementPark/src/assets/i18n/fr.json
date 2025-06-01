@@ -1,4 +1,15 @@
 {
+  "home": {
+    "home_title": "Votre prochaine aventure commence ici",
+    "placeholder_search": "Rechercher un parc, une attraction, un hôtel…",
+    "placeholder_category": "Type de recherche",
+    "no_results": "Aucun résultat pour",
+    "in_category": "dans",
+    "categories": {
+      "park": "Parcs",
+      "attractions": "Attractions"
+    }
+  },
   "topbar": {
     "login_header": "Connexion / Inscription",
     "hello": "Bonjour",
