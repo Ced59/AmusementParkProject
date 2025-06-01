@@ -26,10 +26,10 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
         ConfigureServices(builder);
-        var app = builder.Build();
+        WebApplication app = builder.Build();
         await ConfigureApplication(app);
 
         await app.RunAsync();
@@ -57,16 +57,16 @@ public class Program
         ConfigureAuthentication(builder.Services, builder.Configuration);
 
         // JWT Settings
-        var jwtSettings = builder.Configuration.GetSection("Authentication:Jwt").Get<JwtSettings>();
+        JwtSettings? jwtSettings = builder.Configuration.GetSection("Authentication:Jwt").Get<JwtSettings>();
         builder.Services.AddSingleton<IJwtSettings>(jwtSettings);
         ValidateJwtSettings(jwtSettings);
 
         // Google OAuth Settings
-        var googleAuthSettings = builder.Configuration.GetSection("Authentication:Google").Get<GoogleOAuthSettings>();
+        GoogleOAuthSettings? googleAuthSettings = builder.Configuration.GetSection("Authentication:Google").Get<GoogleOAuthSettings>();
         builder.Services.AddSingleton<IGoogleOAuthSettings>(googleAuthSettings);
 
         // MongoDB Settings
-        var mongoDbSettings = builder.Configuration.GetSection("MongoDB").Get<MongoDbSettings>();
+        MongoDbSettings? mongoDbSettings = builder.Configuration.GetSection("MongoDB").Get<MongoDbSettings>();
         builder.Services.AddSingleton<IMongoDbSettings>(mongoDbSettings);
         ConfigureMongoDb(builder.Services, mongoDbSettings);
 
@@ -112,7 +112,7 @@ public class Program
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Amusement Parks Web API", Version = "v1" });
             c.OrderActionsBy(apiDesc =>
             {
-                var orderAttr = apiDesc.CustomAttributes().OfType<SwaggerOrderAttribute>().FirstOrDefault();
+                SwaggerOrderAttribute? orderAttr = apiDesc.CustomAttributes().OfType<SwaggerOrderAttribute>().FirstOrDefault();
                 return orderAttr != null ? orderAttr.Order.ToString() : int.MaxValue.ToString();
             });
             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -142,8 +142,8 @@ public class Program
                 }
             });
 
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             if (File.Exists(xmlPath)) c.IncludeXmlComments(xmlPath);
 
             // Add authorization filter to mark protected endpoints
@@ -233,7 +233,7 @@ public class Program
     {
         services.AddSingleton<IMongoDatabase>(serviceProvider =>
         {
-            var client = new MongoClient(settings.Url);
+            MongoClient client = new MongoClient(settings.Url);
             return client.GetDatabase(settings.DatabaseName);
         });
     }
@@ -241,11 +241,11 @@ public class Program
     private static async Task InitializeMongoDbAsync(IHost app)
     {
         // Crée un scope pour résoudre ISearchIndexService (scoped)
-        using var scope = app.Services.CreateScope();
+        using IServiceScope scope = app.Services.CreateScope();
 
-        var database = scope.ServiceProvider.GetRequiredService<IMongoDatabase>();
-        var mongoDbSettings = scope.ServiceProvider.GetRequiredService<IMongoDbSettings>();
-        var searchItemService = scope.ServiceProvider.GetRequiredService<ISearchIndexService>();
+        IMongoDatabase database = scope.ServiceProvider.GetRequiredService<IMongoDatabase>();
+        IMongoDbSettings mongoDbSettings = scope.ServiceProvider.GetRequiredService<IMongoDbSettings>();
+        ISearchIndexService searchItemService = scope.ServiceProvider.GetRequiredService<ISearchIndexService>();
 
         await MongoDbInitializer.InitializeCollectionsAsync(
             database,

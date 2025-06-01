@@ -10,7 +10,7 @@ namespace GetApisDatas.WebAPI
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
 
@@ -23,7 +23,7 @@ namespace GetApisDatas.WebAPI
 
             builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
 
-            var app = builder.Build();
+            WebApplication app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -49,12 +49,12 @@ namespace GetApisDatas.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Get Apis Datas Web API", Version = "v1" });
                 c.OrderActionsBy(apiDesc =>
                 {
-                    var orderAttr = apiDesc.CustomAttributes().OfType<SwaggerOrderAttribute>().FirstOrDefault();
+                    SwaggerOrderAttribute? orderAttr = apiDesc.CustomAttributes().OfType<SwaggerOrderAttribute>().FirstOrDefault();
                     return orderAttr != null ? orderAttr.Order.ToString() : int.MaxValue.ToString();
                 });
 
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 if (File.Exists(xmlPath)) c.IncludeXmlComments(xmlPath);
 
             });

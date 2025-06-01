@@ -22,7 +22,7 @@ public class ParksService : IParksService
 
     public async Task<OneOf<ParkCreatedDto, ErrorDetail>>? CreateParkAsync(ParkCreateDto parkDto)
     {
-        var park = new Park
+        Park park = new Park
         {
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now,
@@ -32,14 +32,14 @@ public class ParksService : IParksService
             Longitude = parkDto.Longitude
         };
 
-        var createdPark = await _parksQueryHandler.CreateParkAsync(park);
+        Park? createdPark = await _parksQueryHandler.CreateParkAsync(park);
 
         if (createdPark == null)
         {
             return ErrorCreatingPark;
         }
 
-        var parkCreatedDto = new ParkCreatedDto()
+        ParkCreatedDto parkCreatedDto = new ParkCreatedDto()
         {
             Name = createdPark.Name,
             CountryCode = createdPark.CountryCode,
@@ -57,7 +57,7 @@ public class ParksService : IParksService
             return ParkNotExists;
         }
 
-        var park = await _parksQueryHandler.GetParkByIdAsync(id.Id);
+        Park? park = await _parksQueryHandler.GetParkByIdAsync(id.Id);
         if (park == null)
         {
             return ParkNotExists;
@@ -75,13 +75,13 @@ public class ParksService : IParksService
 
     public async Task<(IEnumerable<ParkDto>, PaginationDto)>? GetListParkPaginatedAsync(int page, int pageSize)
     {
-        var totalItems = await _parksQueryHandler.GetTotalParksCountAsync();
+        long totalItems = await _parksQueryHandler.GetTotalParksCountAsync();
 
-        var paginationInfo = PaginationDto.Create(Convert.ToInt32(totalItems), page, pageSize);
+        PaginationDto paginationInfo = PaginationDto.Create(Convert.ToInt32(totalItems), page, pageSize);
 
-        var parks = await _parksQueryHandler.GetParksPaginatedAsync(page, pageSize);
+        IEnumerable<Park> parks = await _parksQueryHandler.GetParksPaginatedAsync(page, pageSize);
 
-        var parkDtos = parks.Select(park => new ParkDto
+        List<ParkDto> parkDtos = parks.Select(park => new ParkDto
         {
             Id = park.Id,
             Name = park.Name,
@@ -95,14 +95,14 @@ public class ParksService : IParksService
 
     public async Task<OneOf<IEnumerable<ParkDto>, ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius)
     {
-        var parks = await _parksQueryHandler.GetParksByLocationAsync(latitude, longitude, radius);
+        IEnumerable<Park>? parks = await _parksQueryHandler.GetParksByLocationAsync(latitude, longitude, radius);
 
         if (parks == null || !parks.Any())
         {
             return NoParkInThisLocation;
         }
 
-        var parksDtos = parks.Select(park => new ParkDto
+        List<ParkDto> parksDtos = parks.Select(park => new ParkDto
         {
             CountryCode = park.CountryCode,
             Latitude = park.Latitude,

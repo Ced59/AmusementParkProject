@@ -16,6 +16,8 @@ using WebAPI.ResponseHandlers;
 using WebAPI.Settings.Attributes;
 using OneOf.Types;
 using Dtos.Users.Updating;
+using Dtos.Users.UserGet;
+using OneOf;
 
 namespace WebAPI.Controllers;
 
@@ -36,14 +38,14 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> LoginAsync([FromBody] UserLoginDto userLoginDto)
     {
-        var userLogged = await _usersService.LoginAsync(userLoginDto);
+        OneOf<UserLoggedDto, ErrorCodes.ErrorDetail> userLogged = await _usersService.LoginAsync(userLoginDto);
         return ApiResponseHandler.HandleResponse(userLogged);
     }
 
     [HttpPost("refresh-token")]
     public async Task<IActionResult> RefreshTokenAsync([FromBody] RefreshTokenRequestDto token)
     {
-        var tokenRefreshed = await _usersService.RefreshTokenAsync(token);
+        OneOf<RefreshTokenResponseDto, ErrorCodes.ErrorDetail> tokenRefreshed = await _usersService.RefreshTokenAsync(token);
 
         return ApiResponseHandler.HandleResponse(tokenRefreshed);
     }
@@ -52,36 +54,36 @@ public class AuthController : ControllerBase
     [HttpGet("facebook")]
     public IActionResult AuthenticateFacebook()
     {
-        var authenticationProperties = new AuthenticationProperties { RedirectUri = Url.Action("FacebookResponse") };
+        AuthenticationProperties authenticationProperties = new AuthenticationProperties { RedirectUri = Url.Action("FacebookResponse") };
         return Challenge(authenticationProperties, FacebookDefaults.AuthenticationScheme);
     }
 
     [HttpPost("google-response")]
     public async Task<IActionResult> GoogleResponse([FromBody] CodeModel model)
     {
-        var provider = "Google";
+        string provider = "Google";
 
         try
         {
             if (!string.IsNullOrEmpty(model.Code))
             {
-                var accessToken = await _socialAuthService.ExchangeGoogleCodeForToken(provider, model.Code);
-                var userInfo = await _socialAuthService.GetGoogleUserInfo(provider, accessToken);
+                string accessToken = await _socialAuthService.ExchangeGoogleCodeForToken(provider, model.Code);
+                UserGoogleInfos userInfo = await _socialAuthService.GetGoogleUserInfo(provider, accessToken);
 
-                var userLogged = await _usersService.GetUserByEmailAsync(userInfo.Email);
+                OneOf<UserGettedDto, ErrorCodes.ErrorDetail> userLogged = await _usersService.GetUserByEmailAsync(userInfo.Email);
 
                 if (userLogged.IsT0)
                 {
-                    var existingUser = userLogged.AsT0;
+                    UserGettedDto? existingUser = userLogged.AsT0;
 
                     // Vérifier si l'utilisateur n'a pas encore d'avatar
                     if (string.IsNullOrEmpty(existingUser.AvatarUrl) && !string.IsNullOrEmpty(userInfo.Picture))
                     {
-                        var avatarPath = await _usersService.DownloadAndSaveUserAvatar(userInfo.Picture, existingUser.Id);
+                        string avatarPath = await _usersService.DownloadAndSaveUserAvatar(userInfo.Picture, existingUser.Id);
                         if (!string.IsNullOrEmpty(avatarPath))
                         {
                             // Mettre à jour l'utilisateur avec le nouvel avatar
-                            var updateDto = new UserUpdateDto
+                            UserUpdateDto updateDto = new UserUpdateDto
                             {
                                 Email = existingUser.Email,
                                 FirstName = existingUser.FirstName,
@@ -93,17 +95,17 @@ public class AuthController : ControllerBase
                         }
                     }
 
-                    var userToLog = await _usersService.LoginExternalAsync(existingUser.Email);
+                    OneOf<UserLoggedDto, ErrorCodes.ErrorDetail> userToLog = await _usersService.LoginExternalAsync(existingUser.Email);
                     return ApiResponseHandler.HandleResponse(userToLog);
                 }
 
                 if (userLogged.AsT1.StatusCode == ErrorCodes.UserNotExists.StatusCode)
                 {
-                    var avatarPath = !string.IsNullOrEmpty(userInfo.Picture)
+                    string avatarPath = !string.IsNullOrEmpty(userInfo.Picture)
                         ? await _usersService.DownloadAndSaveUserAvatar(userInfo.Picture, Guid.NewGuid().ToString())
                         : "";
 
-                    var userToCreate = new UserSocialCreate
+                    UserSocialCreate userToCreate = new UserSocialCreate
                     {
                         Email = userInfo.Email,
                         AvatarUrl = avatarPath,
@@ -111,7 +113,7 @@ public class AuthController : ControllerBase
                         LastName = userInfo.FamilyName
                     };
 
-                    var created = await _usersService.CreateUserByInfosAsync(userToCreate);
+                    OneOf<UserLoggedDto, ErrorCodes.ErrorDetail> created = await _usersService.CreateUserByInfosAsync(userToCreate);
                     return ApiResponseHandler.HandleResponse(created);
                 }
 
@@ -137,7 +139,7 @@ public class AuthController : ControllerBase
     [HttpGet("facebook-response")]
     public async Task<IActionResult> FacebookResponse()
     {
-        var result = await HttpContext.AuthenticateAsync(FacebookDefaults.AuthenticationScheme);
+        AuthenticateResult result = await HttpContext.AuthenticateAsync(FacebookDefaults.AuthenticationScheme);
         if (!result.Succeeded)
             return BadRequest("Error from Facebook authentication");
 

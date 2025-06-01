@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 
 namespace Services.Implementations
 {
@@ -26,28 +27,28 @@ namespace Services.Implementations
         public async Task InitializeFromParksAsync(IMongoDatabase database, string parksCollectionName, string searchItemCollectionName)
         {
             // 1) S’assurer que la collection SearchItems existe
-            var filterColl = new MongoDB.Bson.BsonDocument("name", searchItemCollectionName);
-            var collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filterColl });
-            var exists = await collections.AnyAsync();
+            BsonDocument filterColl = new MongoDB.Bson.BsonDocument("name", searchItemCollectionName);
+            IAsyncCursor<BsonDocument>? collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filterColl });
+            bool exists = await collections.AnyAsync();
             if (!exists)
             {
                 await database.CreateCollectionAsync(searchItemCollectionName);
             }
 
             // 2) Récupérer la collection Park et la collection SearchItem
-            var parksColl = database.GetCollection<Park>(parksCollectionName);
-            var searchColl = database.GetCollection<SearchItem>(searchItemCollectionName);
+            IMongoCollection<Park>? parksColl = database.GetCollection<Park>(parksCollectionName);
+            IMongoCollection<SearchItem>? searchColl = database.GetCollection<SearchItem>(searchItemCollectionName);
 
             // 3) Créer l’index géospatial sur SearchItems (sur le champ “location”)
-            var geoIndexKeys = Builders<SearchItem>.IndexKeys.Geo2DSphere(x => x.Location);
+            IndexKeysDefinition<SearchItem>? geoIndexKeys = Builders<SearchItem>.IndexKeys.Geo2DSphere(x => x.Location);
             await searchColl.Indexes.CreateOneAsync(new CreateIndexModel<SearchItem>(geoIndexKeys));
 
             // 4) Créer l’index texte sur SearchItems (title, description, keywords)
-            var textIndexKeys = Builders<SearchItem>.IndexKeys
+            IndexKeysDefinition<SearchItem>? textIndexKeys = Builders<SearchItem>.IndexKeys
                 .Text(x => x.Title)
                 .Text(x => x.Description)
                 .Text(x => x.Keywords);
-            var textIndexOptions = new CreateIndexOptions
+            CreateIndexOptions textIndexOptions = new CreateIndexOptions
             {
                 DefaultLanguage = "french",
                 Name = "Idx_SearchItem_Text"
@@ -55,19 +56,19 @@ namespace Services.Implementations
             await searchColl.Indexes.CreateOneAsync(new CreateIndexModel<SearchItem>(textIndexKeys, textIndexOptions));
 
             // 5) Extraire tous les Parks existants et générer une liste de SearchItems
-            var allParks = await parksColl.Find(_ => true).ToListAsync();
+            List<Park>? allParks = await parksColl.Find(_ => true).ToListAsync();
             if (allParks == null || allParks.Count == 0)
             {
                 return; // rien à insérer
             }
 
-            var bulkOps = new List<WriteModel<SearchItem>>();
+            List<WriteModel<SearchItem>> bulkOps = new List<WriteModel<SearchItem>>();
 
-            foreach (var park in allParks)
+            foreach (Park park in allParks)
             {
-                var searchItem = ConvertParkToSearchItem(park);
-                var filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, searchItem.OriginalId);
-                var upsertOne = new ReplaceOneModel<SearchItem>(filter, searchItem)
+                SearchItem searchItem = ConvertParkToSearchItem(park);
+                FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, searchItem.OriginalId);
+                ReplaceOneModel<SearchItem> upsertOne = new ReplaceOneModel<SearchItem>(filter, searchItem)
                 {
                     IsUpsert = true
                 };
@@ -90,17 +91,17 @@ namespace Services.Implementations
             if (park == null) throw new ArgumentNullException(nameof(park));
 
             // On peut mettre “park_{id}” pour identifier l'origine
-            var originalId = $"park_{park.Id}";
+            string originalId = $"park_{park.Id}";
 
             // Keywords : on peut y mettre le nom du parc + le code pays
-            var keywords = new List<string>();
+            List<string> keywords = new List<string>();
             if (!string.IsNullOrWhiteSpace(park.Name))
                 keywords.Add(park.Name.Trim().ToLowerInvariant());
             if (!string.IsNullOrWhiteSpace(park.CountryCode))
                 keywords.Add(park.CountryCode.Trim().ToLowerInvariant());
 
             // Création du SearchItem
-            var item = new SearchItem
+            SearchItem item = new SearchItem
             {
                 // ModelBase (Id, CreatedAt, UpdatedAt) sera géré par MongoDB automatiquement
                 OriginalId = originalId,
@@ -124,9 +125,9 @@ namespace Services.Implementations
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
 
-            var searchColl = _database.GetCollection<SearchItem>(searchItemCollectionName);
-            var filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, item.OriginalId);
-            var options = new ReplaceOptions { IsUpsert = true };
+            IMongoCollection<SearchItem>? searchColl = _database.GetCollection<SearchItem>(searchItemCollectionName);
+            FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, item.OriginalId);
+            ReplaceOptions options = new ReplaceOptions { IsUpsert = true };
             await searchColl.ReplaceOneAsync(filter, item, options);
         }
 
@@ -137,8 +138,8 @@ namespace Services.Implementations
         {
             if (string.IsNullOrWhiteSpace(originalId)) throw new ArgumentException("originalId cannot be null or whitespace.", nameof(originalId));
 
-            var searchColl = _database.GetCollection<SearchItem>(searchItemCollectionName);
-            var filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, originalId);
+            IMongoCollection<SearchItem>? searchColl = _database.GetCollection<SearchItem>(searchItemCollectionName);
+            FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, originalId);
             await searchColl.DeleteOneAsync(filter);
         }
     }

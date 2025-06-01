@@ -16,7 +16,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
 
     public async Task<bool> ExistsByEmailAsync(string? email)
     {
-        var count = await _usersCollection.CountDocumentsAsync(user => user.Email == email);
+        long count = await _usersCollection.CountDocumentsAsync(user => user.Email == email);
         return count > 0;
     }
 
@@ -51,8 +51,8 @@ public class UsersMongoQueryHandler : IUserQueryHandler
 
     public async Task<User?> UpdateUserAsync(User user)
     {
-        var filter = Builders<User>.Filter.Eq(u => u.Id, user.Id);
-        var options = new FindOneAndReplaceOptions<User>
+        FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, user.Id);
+        FindOneAndReplaceOptions<User> options = new FindOneAndReplaceOptions<User>
         {
             ReturnDocument = ReturnDocument.After,
             IsUpsert = false
@@ -76,10 +76,10 @@ public class UsersMongoQueryHandler : IUserQueryHandler
 
     public async Task UpdateLastLoginAndActivityAsync(string userId)
     {
-        var now = DateTime.UtcNow;
+        DateTime now = DateTime.UtcNow;
 
-        var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
-        var update = Builders<User>.Update
+        FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+        UpdateDefinition<User>? update = Builders<User>.Update
             .Set(u => u.LastLogin, now)
             .Set(u => u.LastActivity, now);
 
@@ -89,10 +89,10 @@ public class UsersMongoQueryHandler : IUserQueryHandler
 
     public async Task UpdateLastActivityAsync(string userId)
     {
-        var now = DateTime.UtcNow;
+        DateTime now = DateTime.UtcNow;
 
-        var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
-        var update = Builders<User>.Update
+        FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+        UpdateDefinition<User>? update = Builders<User>.Update
             .Set(u => u.LastActivity, now);
 
 
@@ -101,70 +101,70 @@ public class UsersMongoQueryHandler : IUserQueryHandler
 
     public async Task<User?> AssignRoleAsync(string userId, Role role)
     {
-        var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
-        var update = Builders<User>.Update.AddToSet(u => u.Roles, role);
+        FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+        UpdateDefinition<User>? update = Builders<User>.Update.AddToSet(u => u.Roles, role);
 
-        var options = new FindOneAndUpdateOptions<User>
+        FindOneAndUpdateOptions<User> options = new FindOneAndUpdateOptions<User>
         {
             ReturnDocument = ReturnDocument.After
         };
 
-        var updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+        User? updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
 
         return updatedUser;
     }
 
     public async Task<User?> RemoveRoleAsync(string userId, Role role)
     {
-        var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
-        var update = Builders<User>.Update.Pull(u => u.Roles, role);
+        FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+        UpdateDefinition<User>? update = Builders<User>.Update.Pull(u => u.Roles, role);
 
-        var options = new FindOneAndUpdateOptions<User>
+        FindOneAndUpdateOptions<User> options = new FindOneAndUpdateOptions<User>
         {
             ReturnDocument = ReturnDocument.After
         };
 
-        var updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+        User? updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
 
         return updatedUser;
     }
 
     public async Task<User?> LockUser(string userId)
     {
-        var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
-        var update = Builders<User>.Update.Set(u => u.IsBlocked, true);
+        FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+        UpdateDefinition<User>? update = Builders<User>.Update.Set(u => u.IsBlocked, true);
 
-        var options = new FindOneAndUpdateOptions<User>
+        FindOneAndUpdateOptions<User> options = new FindOneAndUpdateOptions<User>
         {
             ReturnDocument = ReturnDocument.After
         };
 
-        var updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+        User? updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
 
         return updatedUser;
     }
 
     public async Task<User?> UnlockUser(string userId)
     {
-        var filter = Builders<User>.Filter.Eq(u => u.Id, userId);
-        var update = Builders<User>.Update.Set(u => u.IsBlocked, false);
+        FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
+        UpdateDefinition<User>? update = Builders<User>.Update.Set(u => u.IsBlocked, false);
 
-        var options = new FindOneAndUpdateOptions<User>
+        FindOneAndUpdateOptions<User> options = new FindOneAndUpdateOptions<User>
         {
             ReturnDocument = ReturnDocument.After
         };
 
-        var updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+        User? updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
 
         return updatedUser;
     }
 
     public async Task<bool> ChangePassword(string idUser, string newHashedPassword)
     {
-        var filter = Builders<User>.Filter.Eq(u => u.Id, idUser);
-        var update = Builders<User>.Update.Set(u => u.HashedPassword, newHashedPassword);
+        FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, idUser);
+        UpdateDefinition<User>? update = Builders<User>.Update.Set(u => u.HashedPassword, newHashedPassword);
 
-        var result = await _usersCollection.UpdateOneAsync(filter, update);
+        UpdateResult? result = await _usersCollection.UpdateOneAsync(filter, update);
 
         return result.ModifiedCount == 1;
 

@@ -1,7 +1,9 @@
 ﻿using System.Security.Claims;
+using Dtos.Users.UserGet;
 using Entities.Model.Errors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using OneOf;
 using Services.Interfaces;
 using WebAPI.ResponseHandlers;
 
@@ -11,8 +13,8 @@ public class RequireActivatedUnblockedUserAttribute : ActionFilterAttribute, IAs
 {
     public new async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
-        var userService = context.HttpContext.RequestServices.GetService<IUsersService>();
-        var userId = context.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        IUsersService? userService = context.HttpContext.RequestServices.GetService<IUsersService>();
+        string? userId = context.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
         if (string.IsNullOrEmpty(userId))
         {
@@ -20,7 +22,7 @@ public class RequireActivatedUnblockedUserAttribute : ActionFilterAttribute, IAs
             return;
         }
 
-        var result = await userService!.GetUserByIdAsync(userId);
+        OneOf<UserGettedDto, ErrorCodes.ErrorDetail> result = await userService!.GetUserByIdAsync(userId);
 
         result.Switch(
             user =>

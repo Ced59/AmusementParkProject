@@ -12,7 +12,7 @@ public class PaginationDto
     {
         if (totalItems.HasValue && currentPage.HasValue && itemsPerPage.HasValue && totalItems.Value > 0)
         {
-            var totalPages = (totalItems.Value + itemsPerPage.Value - 1) / itemsPerPage.Value;
+            int totalPages = (totalItems.Value + itemsPerPage.Value - 1) / itemsPerPage.Value;
             return new PaginationDto
             {
                 TotalItems = totalItems,

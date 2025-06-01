@@ -9,17 +9,17 @@ public class AddJwtBearerAuthorizationFilter : IOperationFilter
 {
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
-        var descriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;
+        ControllerActionDescriptor? descriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;
         if (descriptor != null)
         {
-            var hasAuthorize = descriptor.MethodInfo.GetCustomAttributes(typeof(AuthorizeAttribute), true).Any()
-                               || descriptor.ControllerTypeInfo.GetCustomAttributes(typeof(AuthorizeAttribute), true)
-                                   .Any();
+            bool hasAuthorize = descriptor.MethodInfo.GetCustomAttributes(typeof(AuthorizeAttribute), true).Any()
+                                || descriptor.ControllerTypeInfo.GetCustomAttributes(typeof(AuthorizeAttribute), true)
+                                    .Any();
 
             if (hasAuthorize)
             {
                 operation.Security = new List<OpenApiSecurityRequirement>();
-                var securityScheme = new OpenApiSecurityScheme
+                OpenApiSecurityScheme securityScheme = new OpenApiSecurityScheme
                 {
                     Reference = new OpenApiReference
                     {

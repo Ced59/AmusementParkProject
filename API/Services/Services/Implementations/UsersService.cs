@@ -49,9 +49,9 @@ public class UsersService : IUsersService
 
         if (!IsValidPassword(user.Password)) return InvalidPassword;
 
-        var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+        string? hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-        var userToCreate = new User
+        User userToCreate = new User
         {
             Email = user.Email,
             CreatedAt = DateTime.UtcNow,
@@ -68,7 +68,7 @@ public class UsersService : IUsersService
             LastActivity = DateTime.UtcNow
         };
 
-        var userCreated = await _userQueryHandler.CreateUserAsync(userToCreate);
+        User? userCreated = await _userQueryHandler.CreateUserAsync(userToCreate);
 
         return new UserCreatedDto
         {
@@ -91,7 +91,7 @@ public class UsersService : IUsersService
     /// <returns>User or error</returns>
     public async Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByEmailAsync(string email)
     {
-        var user = await _userQueryHandler.GetUserByEmailAsync(email);
+        User? user = await _userQueryHandler.GetUserByEmailAsync(email);
         if (user == null) return UserNotExists;
 
         return new UserGettedDto
@@ -116,7 +116,7 @@ public class UsersService : IUsersService
     /// <returns>User or error</returns>
     public async Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByIdAsync(string id)
     {
-        var user = await _userQueryHandler.GetUserByIdAsync(id);
+        User? user = await _userQueryHandler.GetUserByIdAsync(id);
 
         if (user == null) return UserNotExists;
 
@@ -146,12 +146,12 @@ public class UsersService : IUsersService
         if (!IsValidEmail(userUpdate.Email) || (userUpdate.NewEmail != null && !IsValidEmail(userUpdate.NewEmail)))
             return InvalidEmailAddress;
 
-        var userToUpdate = await _userQueryHandler.GetUserByIdAsync(id);
+        User? userToUpdate = await _userQueryHandler.GetUserByIdAsync(id);
         if (userToUpdate == null) return UserNotExists;
 
         if (userUpdate.NewEmail != null && userUpdate.Email != userUpdate.NewEmail)
         {
-            var existingUser = await _userQueryHandler.GetUserByEmailAsync(userUpdate.NewEmail);
+            User? existingUser = await _userQueryHandler.GetUserByEmailAsync(userUpdate.NewEmail);
             if (existingUser != null) return UserUpdateFailed;  
 
             userToUpdate.IsActivated = false;
@@ -165,10 +165,10 @@ public class UsersService : IUsersService
         userToUpdate.LastActivity = DateTime.UtcNow;
         userToUpdate.AvatarUrl = userUpdate.AvatarUrl;
 
-        var userUpdated = await _userQueryHandler.UpdateUserAsync(userToUpdate);
+        User? userUpdated = await _userQueryHandler.UpdateUserAsync(userToUpdate);
         if (userUpdated == null) return UserUpdateFailed;
 
-        var userUpdatedDto = new UserUpdatedDto
+        UserUpdatedDto userUpdatedDto = new UserUpdatedDto
         {
             CreatedAt = userUpdated.CreatedAt,
             Email = userUpdated.Email,
@@ -193,10 +193,10 @@ public class UsersService : IUsersService
     /// <returns>Jwt token or error</returns>
     public async Task<OneOf<UserLoggedDto, ErrorDetail>> LoginAsync(UserLoginDto credentials)
     {
-        var user = await _userQueryHandler.GetUserByEmailAsync(credentials.Email);
+        User? user = await _userQueryHandler.GetUserByEmailAsync(credentials.Email);
         if (user == null || !BCrypt.Net.BCrypt.Verify(credentials.Password, user.HashedPassword)) return LoginFailed;
 
-        var token = JwtHelper.GenerateToken(user, _jwtSettings);
+        string token = JwtHelper.GenerateToken(user, _jwtSettings);
 
         await _userQueryHandler.UpdateLastLoginAndActivityAsync(user.Id);
 
@@ -211,10 +211,10 @@ public class UsersService : IUsersService
     /// <returns>Jwt token or error</returns>
     public async Task<OneOf<UserLoggedDto, ErrorDetail>> LoginExternalAsync(string email)
     {
-        var user = await _userQueryHandler.GetUserByEmailAsync(email);
+        User? user = await _userQueryHandler.GetUserByEmailAsync(email);
         if (user == null) return LoginFailed;
 
-        var token = JwtHelper.GenerateToken(user, _jwtSettings);
+        string token = JwtHelper.GenerateToken(user, _jwtSettings);
 
         await _userQueryHandler.UpdateLastLoginAndActivityAsync(user.Id);
 
@@ -224,7 +224,7 @@ public class UsersService : IUsersService
 
     public async Task<OneOf<UserLoggedDto, ErrorDetail>>? CreateUserByInfosAsync(UserSocialCreate user)
     {
-        var userToCreate = new User
+        User userToCreate = new User
         {
             Email = user.Email,
             CreatedAt = DateTime.UtcNow,
@@ -242,14 +242,14 @@ public class UsersService : IUsersService
             HashedPassword = ""
         };
 
-        var userCreated = await _userQueryHandler.CreateUserAsync(userToCreate);
+        User? userCreated = await _userQueryHandler.CreateUserAsync(userToCreate);
 
         if (userCreated == null) return LoginFailed;
 
-        var userLogin = await _userQueryHandler.GetUserByEmailAsync(userCreated.Email);
+        User? userLogin = await _userQueryHandler.GetUserByEmailAsync(userCreated.Email);
         if (userLogin == null) return LoginFailed;
 
-        var token = JwtHelper.GenerateToken(userLogin, _jwtSettings);
+        string token = JwtHelper.GenerateToken(userLogin, _jwtSettings);
 
         await _userQueryHandler.UpdateLastLoginAndActivityAsync(userLogin.Id);
 
@@ -265,18 +265,18 @@ public class UsersService : IUsersService
     /// <returns>Token refreshed or error</returns>
     public async Task<OneOf<RefreshTokenResponseDto, ErrorDetail>> RefreshTokenAsync(RefreshTokenRequestDto token)
     {
-        var result = JwtHelper.ValidateToken(token.RefreshToken, false, _jwtSettings);
+        JwtHelper.ValidationResult result = JwtHelper.ValidateToken(token.RefreshToken, false, _jwtSettings);
 
         if (result.IsValid)
         {
-            var idUser = result.Token.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
-            var user = await _userQueryHandler.GetUserByIdAsync(idUser.Value);
+            Claim? idUser = result.Token.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
+            User? user = await _userQueryHandler.GetUserByIdAsync(idUser.Value);
 
             if (user is null) return TokenRefreshFailed;
 
-            var refreshLimit = _jwtSettings.TokenRefreshLimitMinutes;
+            int refreshLimit = _jwtSettings.TokenRefreshLimitMinutes;
 
-            var expireAt = user.LastActivity + TimeSpan.FromMinutes(refreshLimit);
+            DateTime expireAt = user.LastActivity + TimeSpan.FromMinutes(refreshLimit);
 
             if (DateTime.UtcNow <= expireAt)
                 return new RefreshTokenResponseDto
@@ -298,13 +298,13 @@ public class UsersService : IUsersService
     /// <returns>All roles of user or error</returns>
     public async Task<OneOf<RoleAssignedDto, ErrorDetail>> AssignRoleAsync(string userId, RoleAssignDto roleToAssign)
     {
-        var user = await _userQueryHandler.GetUserByIdAsync(userId);
+        User? user = await _userQueryHandler.GetUserByIdAsync(userId);
 
         if (user == null) return UserNotExists;
 
         if (user.Roles.Contains(roleToAssign.Role)) return RoleAlreadyAssigned;
 
-        var updatedUser = await _userQueryHandler.AssignRoleAsync(userId, roleToAssign.Role);
+        User? updatedUser = await _userQueryHandler.AssignRoleAsync(userId, roleToAssign.Role);
 
         if (updatedUser is null) return AssignRoleFailed;
 
@@ -324,13 +324,13 @@ public class UsersService : IUsersService
     /// <returns>All roles of user or error</returns>
     public async Task<OneOf<RoleRemovedDto, ErrorDetail>> RemoveRoleAsync(string userId, RoleRemoveDto roleToRemove)
     {
-        var user = await _userQueryHandler.GetUserByIdAsync(userId);
+        User? user = await _userQueryHandler.GetUserByIdAsync(userId);
 
         if (user == null) return UserNotExists;
 
         if (!user.Roles.Contains(roleToRemove.Role)) return RoleNotAssigned;
 
-        var updatedUser = await _userQueryHandler.RemoveRoleAsync(userId, roleToRemove.Role);
+        User? updatedUser = await _userQueryHandler.RemoveRoleAsync(userId, roleToRemove.Role);
 
         if (updatedUser is null) return RemoveRoleFailed;
 
@@ -349,11 +349,11 @@ public class UsersService : IUsersService
     /// <returns>User locked</returns>
     public async Task<OneOf<UserLockedDto, ErrorDetail>> LockUser(UserToLockDto userToLock)
     {
-        var user = await _userQueryHandler.GetUserByIdAsync(userToLock.IdUser);
+        User? user = await _userQueryHandler.GetUserByIdAsync(userToLock.IdUser);
 
         if (user == null) return UserNotExists;
 
-        var userLocked = await _userQueryHandler.LockUser(userToLock.IdUser);
+        User? userLocked = await _userQueryHandler.LockUser(userToLock.IdUser);
 
         if (userLocked is null) return CannotLockUser;
 
@@ -372,11 +372,11 @@ public class UsersService : IUsersService
     /// <returns>User unlocked</returns>
     public async Task<OneOf<UserUnlockedDto, ErrorDetail>> UnlockUser(UserToUnlockDto userToUnlock)
     {
-        var user = await _userQueryHandler.GetUserByIdAsync(userToUnlock.IdUser);
+        User? user = await _userQueryHandler.GetUserByIdAsync(userToUnlock.IdUser);
 
         if (user == null) return UserNotExists;
 
-        var userLocked = await _userQueryHandler.UnlockUser(userToUnlock.IdUser);
+        User? userLocked = await _userQueryHandler.UnlockUser(userToUnlock.IdUser);
 
         if (userLocked is null) return CannotUnlockUser;
 
@@ -396,12 +396,12 @@ public class UsersService : IUsersService
     /// <returns>Get list of users</returns>
     public async Task<(IEnumerable<UserDto>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize)
     {
-        var totalItems = await _userQueryHandler.GetTotalUsersCountAsync();
-        var users = await _userQueryHandler.GetUsersPaginatedAsync(page, pageSize);
+        long totalItems = await _userQueryHandler.GetTotalUsersCountAsync();
+        IEnumerable<User> users = await _userQueryHandler.GetUsersPaginatedAsync(page, pageSize);
 
-        var pagination = PaginationDto.Create((int)totalItems, page, pageSize);
+        PaginationDto pagination = PaginationDto.Create((int)totalItems, page, pageSize);
 
-        var usersDto = users.Select(user => new UserDto
+        IEnumerable<UserDto> usersDto = users.Select(user => new UserDto
         {
             CreatedAt = user.CreatedAt,
             IsActivated = user.IsActivated,
@@ -430,7 +430,7 @@ public class UsersService : IUsersService
     /// <returns></returns>
     public async Task<OneOf<PasswordChangedDto, ErrorDetail>> ChangeUserPassword(string idUser, ChangePasswordDto changePasswordDto, bool isSelfChanged)
     {
-        var user = await _userQueryHandler.GetUserByIdAsync(idUser);
+        User? user = await _userQueryHandler.GetUserByIdAsync(idUser);
 
         if (user == null)
         {
@@ -442,9 +442,9 @@ public class UsersService : IUsersService
             return IncorrectPassword;
         }
 
-        var hashedPassword = BCrypt.Net.BCrypt.HashPassword(changePasswordDto.NewPassword);
+        string? hashedPassword = BCrypt.Net.BCrypt.HashPassword(changePasswordDto.NewPassword);
 
-        var changePasswordOk = await _userQueryHandler.ChangePassword(idUser, hashedPassword);
+        bool changePasswordOk = await _userQueryHandler.ChangePassword(idUser, hashedPassword);
 
         if (changePasswordOk)
         {
@@ -488,7 +488,7 @@ public class UsersService : IUsersService
     private bool IsValidPassword(string password)
     {
         // Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial
-        var passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$";
+        string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$";
         return Regex.IsMatch(password, passwordPattern);
     }
 
@@ -502,14 +502,14 @@ public class UsersService : IUsersService
     {
         try
         {
-            using var httpClient = new HttpClient();
-            var imageBytes = await httpClient.GetByteArrayAsync(imageUrl);
+            using HttpClient httpClient = new HttpClient();
+            byte[] imageBytes = await httpClient.GetByteArrayAsync(imageUrl);
 
             if (imageBytes.Length == 0)
                 return "";
 
-            var fileName = $"{userId}.jpg"; // On nomme le fichier avec l'ID utilisateur
-            var savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/user-avatar/", fileName);
+            string fileName = $"{userId}.jpg"; // On nomme le fichier avec l'ID utilisateur
+            string savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/user-avatar/", fileName);
 
             await File.WriteAllBytesAsync(savePath, imageBytes);
 

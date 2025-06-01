@@ -7,7 +7,7 @@ public static class ClaimsPrincipalExtensions
 {
     public static bool IsInRoles(this ClaimsPrincipal user, params Role[] roles)
     {
-        var userRoles = user.FindAll(ClaimTypes.Role)
+        List<Role> userRoles = user.FindAll(ClaimTypes.Role)
             .Select(r => Enum.Parse<Role>(r.Value, true))
             .ToList();
         return userRoles.Any(roles.Contains);

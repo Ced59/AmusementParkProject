@@ -21,12 +21,12 @@ public class SocialAuthService : ISocialAuthService
     public async Task<string> ExchangeGoogleCodeForToken(string provider, string code)
     {
         // Exemple de récupération des configurations spécifiques au fournisseur
-        var clientId = _configuration.ClientId;
-        var clientSecret = _configuration.ClientSecret;
-        var redirectUri = _configuration.RedirectUri;
-        var tokenEndpoint = _configuration.TokenExchangeEndpoint;
+        string clientId = _configuration.ClientId;
+        string clientSecret = _configuration.ClientSecret;
+        string redirectUri = _configuration.RedirectUri;
+        string tokenEndpoint = _configuration.TokenExchangeEndpoint;
 
-        var values = new Dictionary<string, string>
+        Dictionary<string, string> values = new Dictionary<string, string>
         {
             { "code", code },
             { "client_id", clientId },
@@ -35,25 +35,25 @@ public class SocialAuthService : ISocialAuthService
             { "grant_type", "authorization_code" }
         };
 
-        var content = new FormUrlEncodedContent(values);
-        var response = await _httpClient.PostAsync(tokenEndpoint, content);
-        var responseString = await response.Content.ReadAsStringAsync();
+        FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+        HttpResponseMessage response = await _httpClient.PostAsync(tokenEndpoint, content);
+        string responseString = await response.Content.ReadAsStringAsync();
 
         if (!response.IsSuccessStatusCode)
             throw new Exception($"Could not retrieve the access token for {provider}");
 
-        var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(responseString);
+        TokenResponse? tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(responseString);
         return tokenResponse.AccessToken;
     }
 
     public async Task<UserGoogleInfos> GetGoogleUserInfo(string provider, string accessToken)
     {
-        var userInfoEndpoint = _configuration.UserInfosEndpoint;
+        string userInfoEndpoint = _configuration.UserInfosEndpoint;
 
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-        var response = await _httpClient.GetAsync(userInfoEndpoint);
+        HttpResponseMessage response = await _httpClient.GetAsync(userInfoEndpoint);
 
-        var responseString = await response.Content.ReadAsStringAsync();
+        string responseString = await response.Content.ReadAsStringAsync();
         if (!response.IsSuccessStatusCode)
             throw new Exception($"Could not retrieve user info for {provider}");
 

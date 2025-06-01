@@ -1,8 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Dtos.Pagination;
 using Dtos.Parks.Creating;
 using Dtos.Parks.ParkGet;
+using Dtos.Parks.Parks;
+using Entities.Model.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OneOf;
 using Services.Interfaces;
 using WebAPI.ResponseHandlers;
 using WebAPI.Settings.Attributes;
@@ -27,7 +31,7 @@ namespace WebAPI.Controllers
         [RequireActivatedUnblockedUser]
         public async Task<IActionResult> CreateParkAsync([FromBody] ParkCreateDto park)
         {
-            var parkCreated = await _parksService.CreateParkAsync(park)!;
+            OneOf<ParkCreatedDto, ErrorCodes.ErrorDetail> parkCreated = await _parksService.CreateParkAsync(park)!;
 
             return ApiResponseHandler.HandleResponse(parkCreated);
         }
@@ -35,8 +39,8 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetParkById([FromQuery] string id)
         {
-            var dtoId = new ParkGetByIdDto { Id = id };
-            var park = await _parksService.GetParkByIdAsync(dtoId)!;
+            ParkGetByIdDto dtoId = new ParkGetByIdDto { Id = id };
+            OneOf<ParkGettedDto, ErrorCodes.ErrorDetail> park = await _parksService.GetParkByIdAsync(dtoId)!;
 
             return ApiResponseHandler.HandleResponse(park);
         }
@@ -48,7 +52,7 @@ namespace WebAPI.Controllers
             [FromQuery] [Range(1, 100, ErrorMessage = "Size must be between 1 and 100")]
             int size = 10)
         {
-            var (parks, pagination) = await _parksService.GetListParkPaginatedAsync(page, size)!;
+            (IEnumerable<ParkDto> parks, PaginationDto pagination) = await _parksService.GetListParkPaginatedAsync(page, size)!;
             return ApiResponseHandler.HandleResponse(parks, pagination);
         }
 
@@ -58,7 +62,7 @@ namespace WebAPI.Controllers
             [FromQuery] double longitude,
             [FromQuery] double radius)
         {
-            var parks = await _parksService.SearchParksByLocationAsync(latitude, longitude, radius);
+            OneOf<IEnumerable<ParkDto>, ErrorCodes.ErrorDetail> parks = await _parksService.SearchParksByLocationAsync(latitude, longitude, radius);
             return ApiResponseHandler.HandleResponse(parks);
         }
 

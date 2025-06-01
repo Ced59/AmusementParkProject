@@ -11,10 +11,10 @@ public static class JwtHelper
 {
     public static string GenerateToken(User user, IJwtSettings jwtSettings)
     {
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key));
-        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key));
+        SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-        var claims = new List<Claim>
+        List<Claim> claims = new List<Claim>
         {
             new(JwtRegisteredClaimNames.Sub, user.Id),
             new(JwtRegisteredClaimNames.Email, user.Email),
@@ -27,7 +27,7 @@ public static class JwtHelper
         };
         claims.AddRange(user.Roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
 
-        var token = new JwtSecurityToken(
+        JwtSecurityToken token = new JwtSecurityToken(
             jwtSettings.Issuer,
             jwtSettings.Audience,
             claims,
@@ -40,8 +40,8 @@ public static class JwtHelper
 
     public static ValidationResult ValidateToken(string token, bool withExp, IJwtSettings jwtSettings)
     {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var validationParameters = new TokenValidationParameters
+        JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+        TokenValidationParameters validationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)),
@@ -55,7 +55,7 @@ public static class JwtHelper
 
         try
         {
-            tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
+            tokenHandler.ValidateToken(token, validationParameters, out SecurityToken? validatedToken);
             return new ValidationResult(true, (JwtSecurityToken)validatedToken);
         }
         catch (Exception ex)
