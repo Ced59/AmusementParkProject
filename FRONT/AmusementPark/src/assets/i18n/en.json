@@ -53,5 +53,12 @@
     "dark": "Dark Theme"
   },
   "title": "Welcome",
-  "description": "This is a description in English."
+  "description": "This is a description in English.",
+  "sidebar": {
+    "logo_text": "Amusement Parks",
+    "home": "Home",
+    "parks": "Parks",
+    "about": "About",
+    "profile": "Profile"
+  }
 }

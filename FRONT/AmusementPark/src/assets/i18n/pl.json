@@ -53,5 +53,12 @@
     "dark": "Ciemny motyw"
   },
   "title": "Witamy",
-  "description": "To jest opis po polsku."
+  "description": "To jest opis po polsku.",
+  "sidebar": {
+    "logo_text": "Parki Rozrywki",
+    "home": "Strona główna",
+    "parks": "Parki",
+    "about": "O nas",
+    "profile": "Profil"
+  }
 }

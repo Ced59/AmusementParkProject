@@ -53,5 +53,12 @@
     "dark": "Dunkles Thema"
   },
   "title": "Willkommen",
-  "description": "Dies ist eine Beschreibung auf Deutsch."
+  "description": "Dies ist eine Beschreibung auf Deutsch.",
+  "sidebar": {
+    "logo_text": "Freizeitparks",
+    "home": "Startseite",
+    "parks": "Parks",
+    "about": "Über uns",
+    "profile": "Profil"
+  }
 }

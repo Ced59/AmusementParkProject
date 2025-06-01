@@ -53,5 +53,12 @@
     "dark": "Thème Sombre"
   },
   "title": "Bienvenue",
-  "description": "Ceci est une description en français."
+  "description": "Ceci est une description en français.",
+  "sidebar": {
+    "logo_text": "Parcs d’attractions",
+    "home": "Accueil",
+    "parks": "Parcs",
+    "about": "À propos",
+    "profile": "Profil"
+  }
 }

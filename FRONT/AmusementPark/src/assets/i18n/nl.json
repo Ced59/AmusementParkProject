@@ -53,5 +53,12 @@
     "dark": "Donker thema"
   },
   "title": "Welkom",
-  "description": "Dit is een beschrijving in het Nederlands."
+  "description": "Dit is een beschrijving in het Nederlands.",
+  "sidebar": {
+    "logo_text": "Pretparken",
+    "home": "Startpagina",
+    "parks": "Parken",
+    "about": "Over ons",
+    "profile": "Profiel"
+  }
 }

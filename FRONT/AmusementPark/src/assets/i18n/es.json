@@ -53,5 +53,12 @@
     "dark": "Tema oscuro"
   },
   "title": "Bienvenido",
-  "description": "Esta es una descripción en Español."
+  "description": "Esta es una descripción en Español.",
+  "sidebar": {
+    "logo_text": "Parques de Atracciones",
+    "home": "Inicio",
+    "parks": "Parques",
+    "about": "Acerca de",
+    "profile": "Perfil"
+  }
 }

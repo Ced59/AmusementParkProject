@@ -53,5 +53,12 @@
     "dark": "Tema Escuro"
   },
   "title": "Bem-vindo",
-  "description": "Isto é uma descrição em português."
+  "description": "Isto é uma descrição em português.",
+  "sidebar": {
+    "logo_text": "Parques de Diversões",
+    "home": "Início",
+    "parks": "Parques",
+    "about": "Sobre nós",
+    "profile": "Perfil"
+  }
 }

@@ -1,34 +1,70 @@
 <nav class="sidenav" [ngClass]="{ 'collapsed': isCollapsed }">
-  <!-- En-tête : logo uniquement (bouton hamburger supprimé) -->
+  <!-- En-tête : logo + texte depuis la traduction -->
   <div class="sidenav-header">
     <div class="logo">
       <i class="pi pi-compass"></i>
-      <span class="logo-text">Amusement Parks</span>
+      <span class="logo-text">{{ 'sidebar.logo_text' | translate }}</span>
     </div>
   </div>
+
   <ul class="nav-list">
-    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <a [routerLink]="['/', currentLang, 'home']" class="nav-link" (click)="handleNavClick($event)">
+    <li
+      class="nav-item"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a
+        [routerLink]="['/', currentLang, 'home']"
+        class="nav-link"
+        (click)="handleNavClick($event)"
+      >
         <i class="pi pi-home"></i>
-        <span class="link-text">Accueil</span>
+        <span class="link-text">{{ 'sidebar.home' | translate }}</span>
       </a>
     </li>
-    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <a [routerLink]="['/', currentLang, 'parks']" class="nav-link" (click)="handleNavClick($event)">
+
+    <li
+      class="nav-item"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a
+        [routerLink]="['/', currentLang, 'parks']"
+        class="nav-link"
+        (click)="handleNavClick($event)"
+      >
         <i class="pi pi-list"></i>
-        <span class="link-text">Parcs</span>
+        <span class="link-text">{{ 'sidebar.parks' | translate }}</span>
       </a>
     </li>
-    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <a [routerLink]="['/', currentLang, 'about']" class="nav-link" (click)="handleNavClick($event)">
+
+    <li
+      class="nav-item"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a
+        [routerLink]="['/', currentLang, 'about']"
+        class="nav-link"
+        (click)="handleNavClick($event)"
+      >
         <i class="pi pi-info-circle"></i>
-        <span class="link-text">À propos</span>
+        <span class="link-text">{{ 'sidebar.about' | translate }}</span>
       </a>
     </li>
-    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <a [routerLink]="['/', currentLang, 'profile']" class="nav-link" (click)="handleNavClick($event)">
+
+    <li
+      class="nav-item"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a
+        [routerLink]="['/', currentLang, 'profile']"
+        class="nav-link"
+        (click)="handleNavClick($event)"
+      >
         <i class="pi pi-user"></i>
-        <span class="link-text">Profil</span>
+        <span class="link-text">{{ 'sidebar.profile' | translate }}</span>
       </a>
     </li>
   </ul>

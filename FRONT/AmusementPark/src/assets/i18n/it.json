@@ -53,5 +53,12 @@
     "dark": "Tema Scuro"
   },
   "title": "Benvenuto",
-  "description": "Questa è una descrizione in italiano."
+  "description": "Questa è una descrizione in italiano.",
+  "sidebar": {
+    "logo_text": "Parchi di Divertimento",
+    "home": "Inizio",
+    "parks": "Parchi",
+    "about": "Informazioni",
+    "profile": "Profilo"
+  }
 }
