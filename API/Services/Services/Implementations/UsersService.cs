@@ -53,7 +53,6 @@ public class UsersService : IUsersService
 
         var userToCreate = new User
         {
-            Id = Guid.NewGuid().ToString(),
             Email = user.Email,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
@@ -227,7 +226,6 @@ public class UsersService : IUsersService
     {
         var userToCreate = new User
         {
-            Id = Guid.NewGuid().ToString(),
             Email = user.Email,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,

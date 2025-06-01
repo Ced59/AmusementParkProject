@@ -43,6 +43,16 @@ public class Program
         builder.Services.AddHttpClient();
         ConfigureSwagger(builder.Services);
 
+        // Services
+        builder.Services.AddScoped<IUsersService, UsersService>();
+        builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
+        builder.Services.AddScoped<IParksService, ParksService>();
+
+        builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
+        builder.Services.AddScoped<IParksQueryHandler, ParksQueryHandler>();
+
+        builder.Services.AddScoped<ISearchIndexService, SearchIndexService>();
+
         // Authentication
         ConfigureAuthentication(builder.Services, builder.Configuration);
 
@@ -59,15 +69,6 @@ public class Program
         var mongoDbSettings = builder.Configuration.GetSection("MongoDB").Get<MongoDbSettings>();
         builder.Services.AddSingleton<IMongoDbSettings>(mongoDbSettings);
         ConfigureMongoDb(builder.Services, mongoDbSettings);
-
-
-        // Services
-        builder.Services.AddScoped<IUsersService, UsersService>();
-        builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
-        builder.Services.AddScoped<IParksService, ParksService>();
-
-        builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
-        builder.Services.AddScoped<IParksQueryHandler, ParksQueryHandler>();
 
         // Other Configurations
         builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
@@ -239,9 +240,18 @@ public class Program
 
     private static async Task InitializeMongoDbAsync(IHost app)
     {
-        var database = app.Services.GetRequiredService<IMongoDatabase>();
-        var mongoDbSettings = app.Services.GetRequiredService<IMongoDbSettings>();
-        await MongoDbInitializer.InitializeCollectionsAsync(database, mongoDbSettings);
+        // Crée un scope pour résoudre ISearchIndexService (scoped)
+        using var scope = app.Services.CreateScope();
+
+        var database = scope.ServiceProvider.GetRequiredService<IMongoDatabase>();
+        var mongoDbSettings = scope.ServiceProvider.GetRequiredService<IMongoDbSettings>();
+        var searchItemService = scope.ServiceProvider.GetRequiredService<ISearchIndexService>();
+
+        await MongoDbInitializer.InitializeCollectionsAsync(
+            database,
+            mongoDbSettings,
+            searchItemService
+        );
     }
 
     private static async Task ConfigureApplication(WebApplication app)

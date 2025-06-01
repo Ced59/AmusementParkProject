@@ -24,7 +24,6 @@ public class ParksService : IParksService
     {
         var park = new Park
         {
-            Id = Guid.NewGuid().ToString(),
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now,
             Name = parkDto.Name,
