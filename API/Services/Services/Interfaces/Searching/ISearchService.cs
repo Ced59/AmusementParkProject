@@ -1,6 +1,5 @@
 ﻿using Dtos.Pagination;
 using Dtos.Searching;
-using Entities.Model.Errors;
 using OneOf;
 using static Entities.Model.Errors.ErrorCodes;
 
