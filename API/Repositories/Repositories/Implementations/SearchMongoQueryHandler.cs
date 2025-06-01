@@ -35,8 +35,7 @@ namespace Repositories.Implementations
             if (!string.IsNullOrWhiteSpace(query))
             {
                 string escaped = Regex.Escape(query.Trim());
-                BsonRegularExpression regex =
-                    new BsonRegularExpression($".*{escaped}.*", "i");
+                BsonRegularExpression regex = new($".*{escaped}.*", "i");
 
                 filter = Builders<SearchItem>
                     .Filter.Regex(si => si.Title, regex);
