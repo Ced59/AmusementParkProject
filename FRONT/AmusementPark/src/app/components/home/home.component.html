@@ -1,3 +1,44 @@
 <div class="flex flex-column align-items-center mt-5">
-  <p>Home Works</p>
+  <h2 class="mb-4">Home Works</h2>
+
+  <div class="flex flex-column sm:flex-row align-items-center gap-3 w-11 sm:w-8">
+    <input
+      #searchInput
+      type="text"
+      class="p-inputtext p-component p-fluid flex-1"
+      placeholder="Rechercher un parc, une coaster…"
+      (input)="onSearchInput(searchInput.value)"
+    />
+
+    <p-multiSelect
+      [options]="categoryOptions"
+      [(ngModel)]="selectedCategories"
+      placeholder="Type de recherche"
+      display="comma"
+      class="w-full sm:w-auto"
+      (onChange)="onFilterChange()"
+    ></p-multiSelect>
+  </div>
+
+  <!-- ===== Résultats ===== -->
+  <div class="grid grid-nogutter mt-5 w-full sm:w-8">
+    <ng-container *ngIf="results?.length; else noResults">
+      <div *ngFor="let item of results" class="col-12 sm:col-6 lg:col-4 xl:col-3 p-2">
+        <p-card [header]="item.title" class="h-full">
+          <ng-template pTemplate="content">
+            <p>{{ item.description }}</p>
+          </ng-template>
+        </p-card>
+      </div>
+    </ng-container>
+
+    <ng-template #noResults>
+      <p *ngIf="searchTerm || selectedCategories?.length">
+        Aucun résultat pour “{{ searchTerm }}”
+        <ng-container *ngIf="selectedCategories?.length">
+          dans {{ selectedCategories.join(', ') | titlecase }}
+        </ng-container>
+      </p>
+    </ng-template>
+  </div>
 </div>

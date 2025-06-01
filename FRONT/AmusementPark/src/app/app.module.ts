@@ -42,6 +42,7 @@ import { ParkDetailComponent } from './components/park-detail/park-detail.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {SidebarModule} from "primeng/sidebar";
 import { ParkListComponent } from './components/park-list/park-list.component';
+import {MultiSelectModule} from "primeng/multiselect";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -90,7 +91,7 @@ export function initializeApp(translationService: TranslationService): () => Pro
       MessagesModule,
       MessageModule,
       ToastModule,
-      AvatarModule, PaginatorModule, SidebarModule],
+      AvatarModule, PaginatorModule, SidebarModule, MultiSelectModule],
     exports: [
       SidebarComponent
     ],
