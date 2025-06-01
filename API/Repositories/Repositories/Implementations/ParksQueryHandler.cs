@@ -48,7 +48,7 @@ public class ParksQueryHandler : IParksQueryHandler
 
     public async Task<IEnumerable<Park>> GetParksByLocationAsync(double latitude, double longitude, double maxDistanceInMeters)
     {
-        BsonDocument filter = new BsonDocument("Location", new BsonDocument("$nearSphere", new BsonDocument
+        BsonDocument filter = new("Location", new BsonDocument("$nearSphere", new BsonDocument
         {
             { "$geometry", new BsonDocument
                 {

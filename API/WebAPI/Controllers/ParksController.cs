@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetParkById([FromQuery] string id)
         {
-            ParkGetByIdDto dtoId = new ParkGetByIdDto { Id = id };
+            ParkGetByIdDto dtoId = new() { Id = id };
             OneOf<ParkGettedDto, ErrorCodes.ErrorDetail> park = await _parksService.GetParkByIdAsync(dtoId)!;
 
             return ApiResponseHandler.HandleResponse(park);

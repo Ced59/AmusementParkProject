@@ -111,7 +111,7 @@ public class UsersController : ControllerBase
     [HttpPost("forgot-password")]
     public async Task<IActionResult> ForgotPasswordAsync([FromBody] ForgotPasswordDto forgotPasswordDto)
     {
-        EmailPasswordSendedDto passwordReinitialized = new EmailPasswordSendedDto();
+        EmailPasswordSendedDto passwordReinitialized = new();
         return ApiResponseHandler.HandleResponse(
             OneOf<EmailPasswordSendedDto, ErrorDetail>.FromT0(passwordReinitialized));
     }
@@ -119,7 +119,7 @@ public class UsersController : ControllerBase
     [HttpPost("reset-password")]
     public async Task<IActionResult> ResetPasswordAsync([FromBody] ResetPasswordDto resetPasswordDto)
     {
-        PasswordResetedDto passwordResetted = new PasswordResetedDto();
+        PasswordResetedDto passwordResetted = new();
         return ApiResponseHandler.HandleResponse(OneOf<PasswordResetedDto, ErrorDetail>.FromT0(passwordResetted));
     }
 

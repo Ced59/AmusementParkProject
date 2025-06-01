@@ -11,10 +11,10 @@ public static class JwtHelper
 {
     public static string GenerateToken(User user, IJwtSettings jwtSettings)
     {
-        SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key));
-        SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(jwtSettings.Key));
+        SigningCredentials credentials = new(securityKey, SecurityAlgorithms.HmacSha256);
 
-        List<Claim> claims = new List<Claim>
+        List<Claim> claims = new()
         {
             new(JwtRegisteredClaimNames.Sub, user.Id),
             new(JwtRegisteredClaimNames.Email, user.Email),
@@ -27,7 +27,7 @@ public static class JwtHelper
         };
         claims.AddRange(user.Roles.Select(role => new Claim(ClaimTypes.Role, role.ToString())));
 
-        JwtSecurityToken token = new JwtSecurityToken(
+        JwtSecurityToken token = new(
             jwtSettings.Issuer,
             jwtSettings.Audience,
             claims,
@@ -40,8 +40,8 @@ public static class JwtHelper
 
     public static ValidationResult ValidateToken(string token, bool withExp, IJwtSettings jwtSettings)
     {
-        JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-        TokenValidationParameters validationParameters = new TokenValidationParameters
+        JwtSecurityTokenHandler tokenHandler = new();
+        TokenValidationParameters validationParameters = new()
         {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)),

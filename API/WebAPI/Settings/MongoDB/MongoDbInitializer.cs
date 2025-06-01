@@ -24,7 +24,7 @@ public static class MongoDbInitializer
 
     private static async Task EnsureCollectionExistsAsync(IMongoDatabase database, string collectionName)
     {
-        BsonDocument filter = new BsonDocument("name", collectionName);
+        BsonDocument filter = new("name", collectionName);
         IAsyncCursor<BsonDocument>? collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
         bool exists = await collections.AnyAsync();
 
@@ -33,7 +33,7 @@ public static class MongoDbInitializer
 
     private static async Task InitializeParksCollection(IMongoDatabase database, string collectionName, string jsonFilePath)
     {
-        BsonDocument filter = new BsonDocument("name", collectionName);
+        BsonDocument filter = new("name", collectionName);
         IAsyncCursor<BsonDocument>? collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
         bool exists = await collections.AnyAsync();
 
@@ -51,7 +51,7 @@ public static class MongoDbInitializer
             // Lire le fichier JSON et déséchapper les caractères spéciaux
             string json = await File.ReadAllTextAsync(jsonFilePath);
 
-            JsonSerializerOptions options = new JsonSerializerOptions
+            JsonSerializerOptions options = new()
             {
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                 PropertyNameCaseInsensitive = true
@@ -63,11 +63,11 @@ public static class MongoDbInitializer
             parksCollection.Indexes.CreateOne(new CreateIndexModel<Park>(
                 Builders<Park>.IndexKeys.Geo2DSphere(park => park.Location)));
 
-            List<Park> parks = new List<Park>();
+            List<Park> parks = new();
 
             foreach (ParkJson parkJson in parksJson)
             {
-                Park park = new Park
+                Park park = new()
                 {
                     Name = parkJson.Name,
                     CountryCode = ExtractCountryCode(parkJson.Country.Name),
@@ -96,7 +96,7 @@ public static class MongoDbInitializer
     }
 
 
-    private static readonly Dictionary<string, string> CountryToCode = new Dictionary<string, string>
+    private static readonly Dictionary<string, string> CountryToCode = new()
     {
         // List of countries without prefix
         {"Albania", "AL"},

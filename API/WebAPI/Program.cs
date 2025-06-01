@@ -233,7 +233,7 @@ public class Program
     {
         services.AddSingleton<IMongoDatabase>(serviceProvider =>
         {
-            MongoClient client = new MongoClient(settings.Url);
+            MongoClient client = new(settings.Url);
             return client.GetDatabase(settings.DatabaseName);
         });
     }

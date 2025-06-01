@@ -26,7 +26,7 @@ public class SocialAuthService : ISocialAuthService
         string redirectUri = _configuration.RedirectUri;
         string tokenEndpoint = _configuration.TokenExchangeEndpoint;
 
-        Dictionary<string, string> values = new Dictionary<string, string>
+        Dictionary<string, string> values = new()
         {
             { "code", code },
             { "client_id", clientId },
@@ -35,7 +35,7 @@ public class SocialAuthService : ISocialAuthService
             { "grant_type", "authorization_code" }
         };
 
-        FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+        FormUrlEncodedContent content = new(values);
         HttpResponseMessage response = await _httpClient.PostAsync(tokenEndpoint, content);
         string responseString = await response.Content.ReadAsStringAsync();
 

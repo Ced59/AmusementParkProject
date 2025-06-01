@@ -22,7 +22,7 @@ public class ParksService : IParksService
 
     public async Task<OneOf<ParkCreatedDto, ErrorDetail>>? CreateParkAsync(ParkCreateDto parkDto)
     {
-        Park park = new Park
+        Park park = new()
         {
             CreatedAt = DateTime.Now,
             UpdatedAt = DateTime.Now,
@@ -39,7 +39,7 @@ public class ParksService : IParksService
             return ErrorCreatingPark;
         }
 
-        ParkCreatedDto parkCreatedDto = new ParkCreatedDto()
+        ParkCreatedDto parkCreatedDto = new()
         {
             Name = createdPark.Name,
             CountryCode = createdPark.CountryCode,

@@ -27,7 +27,7 @@ namespace Services.Implementations
         public async Task InitializeFromParksAsync(IMongoDatabase database, string parksCollectionName, string searchItemCollectionName)
         {
             // 1) S’assurer que la collection SearchItems existe
-            BsonDocument filterColl = new MongoDB.Bson.BsonDocument("name", searchItemCollectionName);
+            BsonDocument filterColl = new("name", searchItemCollectionName);
             IAsyncCursor<BsonDocument>? collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filterColl });
             bool exists = await collections.AnyAsync();
             if (!exists)
@@ -48,7 +48,7 @@ namespace Services.Implementations
                 .Text(x => x.Title)
                 .Text(x => x.Description)
                 .Text(x => x.Keywords);
-            CreateIndexOptions textIndexOptions = new CreateIndexOptions
+            CreateIndexOptions textIndexOptions = new()
             {
                 DefaultLanguage = "french",
                 Name = "Idx_SearchItem_Text"
@@ -62,13 +62,13 @@ namespace Services.Implementations
                 return; // rien à insérer
             }
 
-            List<WriteModel<SearchItem>> bulkOps = new List<WriteModel<SearchItem>>();
+            List<WriteModel<SearchItem>> bulkOps = new();
 
             foreach (Park park in allParks)
             {
                 SearchItem searchItem = ConvertParkToSearchItem(park);
                 FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, searchItem.OriginalId);
-                ReplaceOneModel<SearchItem> upsertOne = new ReplaceOneModel<SearchItem>(filter, searchItem)
+                ReplaceOneModel<SearchItem> upsertOne = new(filter, searchItem)
                 {
                     IsUpsert = true
                 };
@@ -94,14 +94,14 @@ namespace Services.Implementations
             string originalId = $"park_{park.Id}";
 
             // Keywords : on peut y mettre le nom du parc + le code pays
-            List<string> keywords = new List<string>();
+            List<string> keywords = new();
             if (!string.IsNullOrWhiteSpace(park.Name))
                 keywords.Add(park.Name.Trim().ToLowerInvariant());
             if (!string.IsNullOrWhiteSpace(park.CountryCode))
                 keywords.Add(park.CountryCode.Trim().ToLowerInvariant());
 
             // Création du SearchItem
-            SearchItem item = new SearchItem
+            SearchItem item = new()
             {
                 // ModelBase (Id, CreatedAt, UpdatedAt) sera géré par MongoDB automatiquement
                 OriginalId = originalId,
@@ -127,7 +127,7 @@ namespace Services.Implementations
 
             IMongoCollection<SearchItem>? searchColl = _database.GetCollection<SearchItem>(searchItemCollectionName);
             FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, item.OriginalId);
-            ReplaceOptions options = new ReplaceOptions { IsUpsert = true };
+            ReplaceOptions options = new() { IsUpsert = true };
             await searchColl.ReplaceOneAsync(filter, item, options);
         }
 

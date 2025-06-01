@@ -54,7 +54,7 @@ public class AuthController : ControllerBase
     [HttpGet("facebook")]
     public IActionResult AuthenticateFacebook()
     {
-        AuthenticationProperties authenticationProperties = new AuthenticationProperties { RedirectUri = Url.Action("FacebookResponse") };
+        AuthenticationProperties authenticationProperties = new() { RedirectUri = Url.Action("FacebookResponse") };
         return Challenge(authenticationProperties, FacebookDefaults.AuthenticationScheme);
     }
 
@@ -83,7 +83,7 @@ public class AuthController : ControllerBase
                         if (!string.IsNullOrEmpty(avatarPath))
                         {
                             // Mettre à jour l'utilisateur avec le nouvel avatar
-                            UserUpdateDto updateDto = new UserUpdateDto
+                            UserUpdateDto updateDto = new()
                             {
                                 Email = existingUser.Email,
                                 FirstName = existingUser.FirstName,
@@ -105,7 +105,7 @@ public class AuthController : ControllerBase
                         ? await _usersService.DownloadAndSaveUserAvatar(userInfo.Picture, Guid.NewGuid().ToString())
                         : "";
 
-                    UserSocialCreate userToCreate = new UserSocialCreate
+                    UserSocialCreate userToCreate = new()
                     {
                         Email = userInfo.Email,
                         AvatarUrl = avatarPath,

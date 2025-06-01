@@ -51,7 +51,7 @@ public class UsersService : IUsersService
 
         string? hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-        User userToCreate = new User
+        User userToCreate = new()
         {
             Email = user.Email,
             CreatedAt = DateTime.UtcNow,
@@ -168,7 +168,7 @@ public class UsersService : IUsersService
         User? userUpdated = await _userQueryHandler.UpdateUserAsync(userToUpdate);
         if (userUpdated == null) return UserUpdateFailed;
 
-        UserUpdatedDto userUpdatedDto = new UserUpdatedDto
+        UserUpdatedDto userUpdatedDto = new()
         {
             CreatedAt = userUpdated.CreatedAt,
             Email = userUpdated.Email,
@@ -224,7 +224,7 @@ public class UsersService : IUsersService
 
     public async Task<OneOf<UserLoggedDto, ErrorDetail>>? CreateUserByInfosAsync(UserSocialCreate user)
     {
-        User userToCreate = new User
+        User userToCreate = new()
         {
             Email = user.Email,
             CreatedAt = DateTime.UtcNow,
@@ -502,7 +502,7 @@ public class UsersService : IUsersService
     {
         try
         {
-            using HttpClient httpClient = new HttpClient();
+            using HttpClient httpClient = new();
             byte[] imageBytes = await httpClient.GetByteArrayAsync(imageUrl);
 
             if (imageBytes.Length == 0)

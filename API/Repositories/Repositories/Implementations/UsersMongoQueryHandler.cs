@@ -52,7 +52,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
     public async Task<User?> UpdateUserAsync(User user)
     {
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, user.Id);
-        FindOneAndReplaceOptions<User> options = new FindOneAndReplaceOptions<User>
+        FindOneAndReplaceOptions<User> options = new()
         {
             ReturnDocument = ReturnDocument.After,
             IsUpsert = false
@@ -104,7 +104,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
         UpdateDefinition<User>? update = Builders<User>.Update.AddToSet(u => u.Roles, role);
 
-        FindOneAndUpdateOptions<User> options = new FindOneAndUpdateOptions<User>
+        FindOneAndUpdateOptions<User> options = new()
         {
             ReturnDocument = ReturnDocument.After
         };
@@ -119,7 +119,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
         UpdateDefinition<User>? update = Builders<User>.Update.Pull(u => u.Roles, role);
 
-        FindOneAndUpdateOptions<User> options = new FindOneAndUpdateOptions<User>
+        FindOneAndUpdateOptions<User> options = new()
         {
             ReturnDocument = ReturnDocument.After
         };
@@ -134,7 +134,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
         UpdateDefinition<User>? update = Builders<User>.Update.Set(u => u.IsBlocked, true);
 
-        FindOneAndUpdateOptions<User> options = new FindOneAndUpdateOptions<User>
+        FindOneAndUpdateOptions<User> options = new()
         {
             ReturnDocument = ReturnDocument.After
         };
@@ -149,7 +149,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
         UpdateDefinition<User>? update = Builders<User>.Update.Set(u => u.IsBlocked, false);
 
-        FindOneAndUpdateOptions<User> options = new FindOneAndUpdateOptions<User>
+        FindOneAndUpdateOptions<User> options = new()
         {
             ReturnDocument = ReturnDocument.After
         };

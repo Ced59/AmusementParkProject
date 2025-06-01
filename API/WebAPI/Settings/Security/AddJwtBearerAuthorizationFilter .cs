@@ -19,7 +19,7 @@ public class AddJwtBearerAuthorizationFilter : IOperationFilter
             if (hasAuthorize)
             {
                 operation.Security = new List<OpenApiSecurityRequirement>();
-                OpenApiSecurityScheme securityScheme = new OpenApiSecurityScheme
+                OpenApiSecurityScheme securityScheme = new()
                 {
                     Reference = new OpenApiReference
                     {
