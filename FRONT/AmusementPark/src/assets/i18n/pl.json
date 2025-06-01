@@ -1,0 +1,57 @@
+{
+  "home": {
+    "home_title": "Twoja następna przygoda zaczyna się tutaj",
+    "placeholder_search": "Szukaj parku, atrakcji, hotelu…",
+    "placeholder_category": "Typ wyszukiwania",
+    "no_results": "Brak wyników dla",
+    "in_category": "w",
+    "categories": {
+      "park": "Parki",
+      "attractions": "Atrakcje"
+    }
+  },
+  "topbar": {
+    "login_header": "Logowanie / Rejestracja",
+    "hello": "Witaj",
+    "choose_language": "Wybierz swój język:"
+  },
+  "auth": {
+    "login": {
+      "title": "Standardowe logowanie",
+      "title_email": "Email",
+      "mail_placeholder": "Wpisz swój email",
+      "title_password": "Hasło",
+      "password_placeholder": "Wpisz swoje hasło",
+      "btn_text": "Zaloguj się"
+    },
+    "register": {
+      "title": "Standardowa rejestracja",
+      "title_email": "Email",
+      "mail_placeholder": "Wpisz swój email",
+      "title_password": "Hasło",
+      "password_placeholder": "Wpisz swoje hasło",
+      "password_info": "Twoje hasło musi zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą literę i jedną cyfrę.",
+      "password_confirm_placeholder": "Potwierdź swoje hasło",
+      "btn_text": "Zarejestruj się",
+      "errors": {
+        "password_error_summary": "Błąd hasła",
+        "password_error": "Hasło musi zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą literę i jedną cyfrę."
+      }
+    }
+  },
+  "user-profile": {
+    "title": "Profil użytkownika",
+    "name": "Nazwisko",
+    "firstname": "Imię",
+    "email": "Email",
+    "preferred_language": "Preferowany język",
+    "modify": "Edytuj"
+  },
+  "theme": {
+    "change": "Zmień motyw",
+    "light": "Jasny motyw",
+    "dark": "Ciemny motyw"
+  },
+  "title": "Witamy",
+  "description": "To jest opis po polsku."
+}

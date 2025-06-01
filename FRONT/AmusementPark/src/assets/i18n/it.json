@@ -1,0 +1,57 @@
+{
+  "home": {
+    "home_title": "La tua prossima avventura inizia qui",
+    "placeholder_search": "Cerca un parco, una giostra, un hotel…",
+    "placeholder_category": "Tipo di ricerca",
+    "no_results": "Nessun risultato per",
+    "in_category": "in",
+    "categories": {
+      "park": "Parchi",
+      "attractions": "Attrazioni"
+    }
+  },
+  "topbar": {
+    "login_header": "Accesso / Registrazione",
+    "hello": "Ciao",
+    "choose_language": "Scegli la tua lingua:"
+  },
+  "auth": {
+    "login": {
+      "title": "Accesso",
+      "title_email": "Email",
+      "mail_placeholder": "Inserisci la tua email",
+      "title_password": "Password",
+      "password_placeholder": "Inserisci la tua password",
+      "btn_text": "Accedi"
+    },
+    "register": {
+      "title": "Registrazione",
+      "title_email": "Email",
+      "mail_placeholder": "Inserisci la tua email",
+      "title_password": "Password",
+      "password_placeholder": "Inserisci la tua password",
+      "password_info": "La tua password deve contenere almeno 8 caratteri, una lettera maiuscola, una lettera minuscola e una cifra.",
+      "password_confirm_placeholder": "Conferma la tua password",
+      "btn_text": "Registrati",
+      "errors": {
+        "password_error_summary": "Errore Password",
+        "password_error": "La password deve contenere almeno 8 caratteri, una lettera maiuscola, una lettera minuscola e una cifra."
+      }
+    }
+  },
+  "user-profile": {
+    "title": "Profilo Utente",
+    "name": "Cognome",
+    "firstname": "Nome",
+    "email": "Email",
+    "preferred_language": "Lingua Preferita",
+    "modify": "Modifica"
+  },
+  "theme": {
+    "change": "Cambia Tema",
+    "light": "Tema Chiaro",
+    "dark": "Tema Scuro"
+  },
+  "title": "Benvenuto",
+  "description": "Questa è una descrizione in italiano."
+}

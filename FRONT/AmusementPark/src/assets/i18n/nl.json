@@ -1,0 +1,57 @@
+{
+  "home": {
+    "home_title": "Je volgende avontuur begint hier",
+    "placeholder_search": "Zoek een park, een attractie, een hotel…",
+    "placeholder_category": "Zoektype",
+    "no_results": "Geen resultaten voor",
+    "in_category": "in",
+    "categories": {
+      "park": "Parken",
+      "attractions": "Attracties"
+    }
+  },
+  "topbar": {
+    "login_header": "Inloggen / Registreren",
+    "hello": "Hallo",
+    "choose_language": "Kies je taal:"
+  },
+  "auth": {
+    "login": {
+      "title": "Standaard inloggen",
+      "title_email": "Email",
+      "mail_placeholder": "Voer je email in",
+      "title_password": "Wachtwoord",
+      "password_placeholder": "Voer je wachtwoord in",
+      "btn_text": "Inloggen"
+    },
+    "register": {
+      "title": "Standaard registratie",
+      "title_email": "Email",
+      "mail_placeholder": "Voer je email in",
+      "title_password": "Wachtwoord",
+      "password_placeholder": "Voer je wachtwoord in",
+      "password_info": "Je wachtwoord moet minimaal 8 tekens bevatten, één hoofdletter, één kleine letter en één cijfer.",
+      "password_confirm_placeholder": "Bevestig je wachtwoord",
+      "btn_text": "Registreren",
+      "errors": {
+        "password_error_summary": "Wachtwoordfout",
+        "password_error": "Het wachtwoord moet minimaal 8 tekens bevatten, één hoofdletter, één kleine letter en één cijfer."
+      }
+    }
+  },
+  "user-profile": {
+    "title": "Gebruikersprofiel",
+    "name": "Achternaam",
+    "firstname": "Voornaam",
+    "email": "Email",
+    "preferred_language": "Voorkeurstaal",
+    "modify": "Bewerken"
+  },
+  "theme": {
+    "change": "Wijzig thema",
+    "light": "Licht thema",
+    "dark": "Donker thema"
+  },
+  "title": "Welkom",
+  "description": "Dit is een beschrijving in het Nederlands."
+}

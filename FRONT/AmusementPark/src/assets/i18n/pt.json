@@ -1,0 +1,57 @@
+{
+  "home": {
+    "home_title": "A sua próxima aventura começa aqui",
+    "placeholder_search": "Pesquise um parque, uma atração, um hotel…",
+    "placeholder_category": "Tipo de pesquisa",
+    "no_results": "Sem resultados para",
+    "in_category": "em",
+    "categories": {
+      "park": "Parques",
+      "attractions": "Atrações"
+    }
+  },
+  "topbar": {
+    "login_header": "Iniciar sessão / Registo",
+    "hello": "Olá",
+    "choose_language": "Escolha o seu idioma:"
+  },
+  "auth": {
+    "login": {
+      "title": "Iniciar sessão padrão",
+      "title_email": "Email",
+      "mail_placeholder": "Introduza o seu email",
+      "title_password": "Password",
+      "password_placeholder": "Introduza a sua password",
+      "btn_text": "Iniciar sessão"
+    },
+    "register": {
+      "title": "Registo padrão",
+      "title_email": "Email",
+      "mail_placeholder": "Introduza o seu email",
+      "title_password": "Password",
+      "password_placeholder": "Introduza a sua password",
+      "password_info": "A sua password deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um dígito.",
+      "password_confirm_placeholder": "Confirme a sua password",
+      "btn_text": "Registar",
+      "errors": {
+        "password_error_summary": "Erro de password",
+        "password_error": "A password deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um dígito."
+      }
+    }
+  },
+  "user-profile": {
+    "title": "Perfil do Utilizador",
+    "name": "Sobrenome",
+    "firstname": "Nome",
+    "email": "Email",
+    "preferred_language": "Idioma preferido",
+    "modify": "Editar"
+  },
+  "theme": {
+    "change": "Mudar Tema",
+    "light": "Tema Claro",
+    "dark": "Tema Escuro"
+  },
+  "title": "Bem-vindo",
+  "description": "Isto é uma descrição em português."
+}
