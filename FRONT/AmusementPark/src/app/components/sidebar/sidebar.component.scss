@@ -1,0 +1,109 @@
+.sidenav {
+  margin-top: 2rem;
+  width: 250px;              /* Largeur en mode étendu */
+  background-color: #2c3e50; /* Fond sombre */
+  color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  overflow: hidden;          /* Pour éviter le débordement */
+  border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+  .sidenav {
+    margin-right: 10px;
+  }
+}
+
+// Mode rétracté
+.sidenav.collapsed {
+  width: 60px; /* Se réduit à 60px */
+}
+
+// Header de la sidebar : logo uniquement (bouton collapse supprimé)
+.sidenav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border-bottom: 1px solid #34495e;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    i {
+      font-size: 1.5rem;
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      white-space: nowrap; /* Empêche le retour à la ligne */
+    }
+  }
+}
+
+// Liste des liens de navigation
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem;
+
+  .nav-item {
+    margin: 0.5rem 0;
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #ecf0f1;
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+      box-sizing: border-box;
+      height: 48px;  /* Hauteur fixe pour constance entre les modes */
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      i {
+        font-size: 1.25rem;
+      }
+
+      .link-text {
+        font-size: 1rem;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        white-space: nowrap; /* Force le label à rester sur une seule ligne */
+      }
+    }
+  }
+}
+
+// En mode collapsed, cache les textes (logo et liens)
+.sidenav.collapsed .logo .logo-text,
+.sidenav.collapsed .nav-list .nav-link .link-text {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+// Au survol de la sidebar collapsée, on l'étend et on affiche les textes
+.sidenav.collapsed:hover {
+  width: 250px;
+}
+
+.sidenav.collapsed:hover .logo .logo-text,
+.sidenav.collapsed:hover .nav-list .nav-link .link-text {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Mise en surbrillance de l'item actif */
+.nav-item.active .nav-link {
+  background-color: rgba(255, 255, 255, 0.1);
+}

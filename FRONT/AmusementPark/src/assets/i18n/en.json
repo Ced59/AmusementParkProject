@@ -1,0 +1,57 @@
+{
+  "home": {
+    "home_title": "Your next adventure starts here",
+    "placeholder_search": "Search for a park, a ride, a hotel…",
+    "placeholder_category": "Search type",
+    "no_results": "No results for",
+    "in_category": "in",
+    "categories": {
+      "park": "Parks",
+      "attractions": "Rides"
+    }
+  },
+  "topbar": {
+    "login_header": "Login / Registration",
+    "hello": "Hello",
+    "choose_language":"Choose your language:"
+  },
+  "auth": {
+    "login": {
+      "title": "Standard Login",
+      "title_email": "Email",
+      "mail_placeholder": "Enter your email",
+      "title_password": "Password",
+      "password_placeholder": "Enter your password",
+      "btn_text": "Login"
+    },
+    "register": {
+      "title": "Standard Registration",
+      "title_email": "Email",
+      "mail_placeholder": "Enter your email",
+      "title_password": "Password",
+      "password_placeholder": "Enter your password",
+      "password_info":"Your password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one digit.",
+      "password_confirm_placeholder": "Confirm your password",
+      "btn_text": "Register",
+      "errors": {
+        "password_error_summary": "Password Error",
+        "password_error": "The password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one digit."
+      }
+    }
+  },
+  "user-profile": {
+    "title": "User Profile",
+    "name": "Name",
+    "firstname": "First Name",
+    "email": "Email",
+    "preferred_language": "Preferred Language",
+    "modify": "Edit"
+  },
+  "theme": {
+    "change": "Change Theme",
+    "light": "Light Theme",
+    "dark": "Dark Theme"
+  },
+  "title": "Welcome",
+  "description": "This is a description in English."
+}

@@ -1,0 +1,53 @@
+<p-toolbar styleClass="bg-gray-900 shadow-2"
+           [style]="{ 'border-radius': '3rem', 'background-image': 'linear-gradient(to left, #000e16, var(--bluegray-800))' }">
+  <ng-template pTemplate="start">
+    <a routerLink="{{selectedLanguage}}/home" class="profile-link">
+      <img src="assets/general-icon/logo-amusementpark.png" alt="Logo" class="logo">
+    </a>
+    <span class="fun-text">Amusement Parks</span>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <div class="flex align-items-center gap-2">
+      <ng-container *ngIf="isLoggedIn; else loginTemplate">
+        <!-- Lien vers le profil pour utilisateur connecté -->
+        <a routerLink="{{selectedLanguage}}/profile" class="profile-link">
+          <div class="flex align-items-center">
+            <span class="login-message">{{ 'topbar.hello' | translate }} {{ userProfile?.firstname || userProfile?.email }}</span>
+            <p-avatar *ngIf="userProfile?.avatar" [image]="environment.apiBaseUrl + userProfile?.avatar" shape="circle"></p-avatar>
+          </div>
+        </a>
+      </ng-container>
+
+      <ng-template #loginTemplate>
+        <!-- Bouton de connexion et sélection de langue pour utilisateur non connecté -->
+        <button pButton type="button" [label]="('topbar.login_header' | translate)" icon="pi pi-user"
+                class="p-button-primary top-bar-button" (click)="openModal('loginModal')"></button>
+
+        <div class="menu-language">
+          <button pButton class="language-button" (click)="openModal('languageModal')">
+            <img [src]="'assets/flags/' + selectedLanguage + '.png'" class="flag" alt="Language">
+          </button>
+        </div>
+      </ng-template>
+
+      <app-theme-switcher></app-theme-switcher>
+
+    </div>
+  </ng-template>
+</p-toolbar>
+
+
+<p-dialog [header]="('topbar.choose_language' | translate)" [(visible)]="displayLanguageModal" [modal]="true">
+  <div class="languages-container">
+    <button *ngFor="let language of languages" pButton class="language-button" (click)="selectLanguage(language.value)">
+      <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="{{ language.label }}">
+      <span>{{ language.label }}</span>
+    </button>
+  </div>
+</p-dialog>
+
+<!-- Modal de Connexion -->
+<p-dialog [header]="('topbar.login_header' | translate)" [(visible)]="displayLoginModal" [modal]="true">
+  <app-auth-modal (closeModal)="closeModal('loginModal')"></app-auth-modal>
+</p-dialog>

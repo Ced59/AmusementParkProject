@@ -1,0 +1,35 @@
+<nav class="sidenav" [ngClass]="{ 'collapsed': isCollapsed }">
+  <!-- En-tête : logo uniquement (bouton hamburger supprimé) -->
+  <div class="sidenav-header">
+    <div class="logo">
+      <i class="pi pi-compass"></i>
+      <span class="logo-text">Amusement Parks</span>
+    </div>
+  </div>
+  <ul class="nav-list">
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a [routerLink]="['/', currentLang, 'home']" class="nav-link" (click)="handleNavClick($event)">
+        <i class="pi pi-home"></i>
+        <span class="link-text">Accueil</span>
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a [routerLink]="['/', currentLang, 'parks']" class="nav-link" (click)="handleNavClick($event)">
+        <i class="pi pi-list"></i>
+        <span class="link-text">Parcs</span>
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a [routerLink]="['/', currentLang, 'about']" class="nav-link" (click)="handleNavClick($event)">
+        <i class="pi pi-info-circle"></i>
+        <span class="link-text">À propos</span>
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a [routerLink]="['/', currentLang, 'profile']" class="nav-link" (click)="handleNavClick($event)">
+        <i class="pi pi-user"></i>
+        <span class="link-text">Profil</span>
+      </a>
+    </li>
+  </ul>
+</nav>

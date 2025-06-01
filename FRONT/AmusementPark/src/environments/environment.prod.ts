@@ -1,9 +1,7 @@
-import { apiConfig } from "./api.config";
-
 export const environment = {
   production: true,
-  api: {
-    ...apiConfig,
-    baseUrl: "https://your-production-api-url.com" // URL de production
-  }
+  baseUrl: 'https://yourproductionapi.com/',
+  apiImagePath: 'https://yourproductionapi.com/images/',
+  googleClientId: '819235253823-lj2de5lllhlngr4rpt5iq0m5mgmmltaj.apps.googleusercontent.com',
+  redirectOAuthUri: 'https://localhost:44390/auth/google-response'
 };

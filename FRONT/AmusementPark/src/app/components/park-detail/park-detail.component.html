@@ -1,0 +1,12 @@
+<div class="park-detail" *ngIf="park; else loading">
+  <h1>{{ park.name }}</h1>
+  <p><strong>Country Code:</strong> {{ park.countryCode }}</p>
+  <p><strong>Latitude:</strong> {{ park.latitude }}</p>
+  <p><strong>Longitude:</strong> {{ park.longitude }}</p>
+
+  <button pButton type="button" label="Retour" icon="pi pi-arrow-left" (click)="goBack()"></button>
+</div>
+
+<ng-template #loading>
+  <p>Chargement du parc...</p>
+</ng-template>

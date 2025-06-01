@@ -1,21 +1,32 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./home-page/home/home.component";
-
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './components/home/home.component';
+import {AboutComponent} from './components/about/about.component';
+import {languageGuard} from './guards/language.guard';
+import {SigninGoogleComponent} from "./components/login-register/signin-google/signin-google.component";
+import {ParkDetailComponent} from "./components/park-detail/park-detail.component";
+import {ParkListComponent} from "./components/park-list/park-list.component";
 
 const routes: Routes = [
-  { path: "home", component: HomeComponent },
-  { path: "", redirectTo: "/home", pathMatch: "full" } // redirect to `home`
+  {
+    path: ':lang',
+    canActivate: [languageGuard],
+    children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'parks', component: ParkListComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'signin-google', component: SigninGoogleComponent },
+      { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then(m => m.ProfileModule) },
+      { path: 'park/:id/:slug', component: ParkDetailComponent },
+      {path: '', redirectTo: 'home', pathMatch: 'full'}
+    ]
+  },
+  {path: '**', redirectTo: 'en/home', pathMatch: 'full'} // Fallback route
 ];
 
-
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(routes)
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

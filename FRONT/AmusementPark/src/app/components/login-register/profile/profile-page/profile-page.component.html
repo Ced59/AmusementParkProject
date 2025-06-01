@@ -1,0 +1,32 @@
+<p-card header="{{ 'user-profile.title' | translate }}" class="profile-card">
+  <div class="profile-avatar-container">
+    <img [src]="environment.apiBaseUrl + user?.avatarUrl || environment.apiImagePath + '/commons/no-user-image.png'" class="profile-avatar">
+    <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text edit-avatar-button" (click)="editField('avatar')"></button>
+  </div>
+  <div class="profile-details">
+    <div class="profile-row" *ngIf="user">
+      <span class="profile-label">{{ 'user-profile.email' | translate }} :</span>
+      <span class="profile-value">{{ user.email }}</span>
+      <span></span>
+    </div>
+    <div class="profile-row" *ngIf="user">
+      <span class="profile-label">{{ 'user-profile.name' | translate }} :</span>
+      <span class="profile-value">{{ user.lastName }}</span>
+      <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editField('lastName')"></button>
+    </div>
+    <div class="profile-row" *ngIf="user">
+      <span class="profile-label">{{ 'user-profile.firstname' | translate }} :</span>
+      <span class="profile-value">{{ user.firstName }}</span>
+      <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editField('firstName')"></button>
+    </div>
+    <div class="profile-row" *ngIf="user">
+      <span class="profile-label">{{ 'user-profile.preferred_language' | translate }} :</span>
+      <span class="profile-value">{{ user.preferredLanguage }}</span>
+      <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editPreferredLanguage()"></button>
+    </div>
+  </div>
+  <!-- Bouton de déconnexion -->
+  <div class="logout-container">
+    <button pButton type="button" label="Logout" class="p-button-danger" (click)="logout()"></button>
+  </div>
+</p-card>

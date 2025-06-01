@@ -1,0 +1,94 @@
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 3rem;
+}
+
+.flag {
+  width: 20px;
+  margin-right: 8px;
+}
+
+.menu-language {
+  margin-right: 10px;
+  height: 40px;
+}
+
+.dropdown-language {
+  border: none;
+}
+
+.p-button {
+  height: 40px;
+  border-radius: 3rem;
+  background-color: #5a8dbd;
+}
+
+
+
+.fun-text {
+  font-family: 'Bangers-Regular', sans-serif;
+  font-size:30px;
+  margin-left: 20px;
+  color: #d4f1f9;
+}
+
+@font-face {
+  font-family: 'Bangers-Regular';
+  src: url('/assets/fonts/Bangers-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.top-bar-button{
+  height: 36px;
+}
+
+
+.languages-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.menu-language {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.language-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.flag {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 0;
+  vertical-align: middle;
+  border-radius: 3rem;
+}
+
+.login-message {
+  color: #d4f1f9;
+  margin-right:15px;
+}
+
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.align-items-center {
+  align-items: center;
+}

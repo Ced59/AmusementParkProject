@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="OneOf" Version="3.0.263" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Dtos\Dtos\Dtos.csproj" />
+    <ProjectReference Include="..\..\Entities\Entities\Entities.csproj" />
+    <ProjectReference Include="..\..\Repositories\Repositories\Repositories.csproj" />
+  </ItemGroup>
+
 </Project>

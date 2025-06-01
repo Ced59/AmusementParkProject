@@ -1,67 +1,282 @@
-using System.Globalization;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
+using Repositories.Implementations;
+using Repositories.Interfaces;
+using Services.Implementations;
+using Services.Implementations.Searching;
+using Services.Interfaces;
+using Services.Interfaces.Searching;
+using Services.Interfaces.Settings;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using WebAPI.Settings.Attributes;
+using WebAPI.Settings.MongoDB;
+using WebAPI.Settings.OAuth;
+using WebAPI.Settings.Security;
 
-namespace WebAPI
+namespace WebAPI;
+
+public class Program
 {
-    public class Program
+    public static async Task Main(string[] args)
     {
-        public static void Main(string[] args)
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+        ConfigureServices(builder);
+        WebApplication app = builder.Build();
+        await ConfigureApplication(app);
+
+        await app.RunAsync();
+    }
+
+    private static void ConfigureServices(WebApplicationBuilder builder)
+    {
+        // Base Services
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddHttpClient();
+        ConfigureSwagger(builder.Services);
+
+        // Services
+        builder.Services.AddScoped<IUsersService, UsersService>();
+        builder.Services.AddScoped<IParksService, ParksService>();
+
+        builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
+
+        builder.Services.AddScoped<ISearchIndexService, SearchIndexService>();
+        builder.Services.AddScoped<ISearchService, SearchService>();
+
+        builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
+        builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
+        builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
+
+        // Authentication
+        ConfigureAuthentication(builder.Services, builder.Configuration);
+
+        // JWT Settings
+        JwtSettings? jwtSettings = builder.Configuration.GetSection("Authentication:Jwt").Get<JwtSettings>();
+        builder.Services.AddSingleton<IJwtSettings>(jwtSettings);
+        ValidateJwtSettings(jwtSettings);
+
+        // Google OAuth Settings
+        GoogleOAuthSettings? googleAuthSettings = builder.Configuration.GetSection("Authentication:Google").Get<GoogleOAuthSettings>();
+        builder.Services.AddSingleton<IGoogleOAuthSettings>(googleAuthSettings);
+
+        // MongoDB Settings
+        MongoDbSettings? mongoDbSettings = builder.Configuration.GetSection("MongoDB").Get<MongoDbSettings>();
+        builder.Services.AddSingleton<IMongoDbSettings>(mongoDbSettings);
+        ConfigureMongoDb(builder.Services, mongoDbSettings);
+
+        // Other Configurations
+        builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+        builder.Services.AddControllers().AddJsonOptions(options =>
         {
-            var builder = WebApplication.CreateBuilder(args);
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        });
 
-            // Liste des cultures supportées
-            var supportedCultures = new List<CultureInfo> { new("en-US"), new("fr-FR"), new("de-DE"), new("es-ES") };
+        // Configure IpRateLimiting
+        builder.Services.AddMemoryCache();
+        builder.Services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+        builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
+        builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+        builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+        builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+        builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+        builder.Services.AddDistributedMemoryCache(); 
+        builder.Services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(30); 
+            options.Cookie.HttpOnly = true; 
+            options.Cookie.IsEssential = true; 
+        });
 
-            // Ajout des ressources statiques de traduction
-            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+        // Configure CORS
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigin",
+                builderCors => builderCors.WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials());
+        });
+    }
 
-            // Ajout du service de localisation
-            builder.Services.Configure<RequestLocalizationOptions>(options =>
+    private static void ConfigureSwagger(IServiceCollection services)
+    {
+        services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Amusement Parks Web API", Version = "v1" });
+            c.OrderActionsBy(apiDesc =>
             {
-                options.DefaultRequestCulture = new RequestCulture("en-US");
-                options.SupportedCultures = supportedCultures;
-                options.SupportedUICultures = supportedCultures;
+                SwaggerOrderAttribute? orderAttr = apiDesc.CustomAttributes().OfType<SwaggerOrderAttribute>().FirstOrDefault();
+                return orderAttr != null ? orderAttr.Order.ToString() : int.MaxValue.ToString();
+            });
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                In = ParameterLocation.Header,
+                Description =
+                    "Please enter JWT bearer token in the Authorization header using the Bearer scheme. Example: Bearer {token}",
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey,
+                Scheme = "Bearer"
+            });
+            c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        },
+                        Scheme = "oauth2",
+                        Name = "Bearer",
+                        In = ParameterLocation.Header
+                    },
+                    new List<string>()
+                }
             });
 
-            // Ajout de la prise en charge des routes en minuscule
-            builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+            string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            if (File.Exists(xmlPath)) c.IncludeXmlComments(xmlPath);
 
-            var app = builder.Build();
+            // Add authorization filter to mark protected endpoints
+            c.OperationFilter<AddJwtBearerAuthorizationFilter>();
+        });
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+        services.AddScoped<IOperationFilter, AddJwtBearerAuthorizationFilter>();
+    }
+
+    public static void ConfigureAuthentication(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddAuthentication(options =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-            app.MapControllers();
-
-            // MiddleWare pour sélectionner automatiquement la culture en fonction de la langue du navigateur ou de la langue selectionnée
-            app.UseRequestLocalization(options =>
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
+            }).AddCookie("ExternalCookies", options =>
             {
-                options.SupportedCultures = supportedCultures;
-                options.SupportedUICultures = supportedCultures;
+                options.Cookie.Name = "ExternalAuth.Cookie";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            })
+            .AddJwtBearer("JwtBearer", options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey =
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Authentication:Jwt:Key"])),
+                    ValidateIssuer = true,
+                    ValidIssuer = configuration["Authentication:Jwt:Issuer"],
+                    ValidateAudience = true,
+                    ValidAudience = configuration["Authentication:Jwt:Audience"],
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero,
+                    NameClaimType = ClaimTypes.NameIdentifier
+                };
 
-                options.ApplyCurrentCultureToResponseHeaders = true; // Ajout de l'entête Content-Language avec la culture par défaut du navigateur
+                options.Events = new JwtBearerEvents
+                {
+                    OnAuthenticationFailed = context =>
+                    {
+                        context.Response.StatusCode = 401;
+                        context.Response.ContentType = "application/json";
+                        return context.Response.WriteAsync(JsonSerializer.Serialize(new
+                            { message = "Authentication failed" }));
+                    },
+                    OnChallenge = context =>
+                    {
+                        if (!context.Response.HasStarted)
+                        {
+                            context.Response.StatusCode = 401;
+                            context.Response.ContentType = "application/json";
+                            return context.Response.WriteAsync(JsonSerializer.Serialize(new
+                                { message = "Access denied. You must be logged in." }));
+                        }
 
-                options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider()); // Culture par query string
-                options.RequestCultureProviders.Insert(1, new CookieRequestCultureProvider()); // Culture par cookie
-
-                options.DefaultRequestCulture = new RequestCulture("en-US"); // Culture par défaut
+                        return Task.CompletedTask;
+                    },
+                    OnForbidden = context =>
+                    {
+                        context.Response.StatusCode = 403;
+                        context.Response.ContentType = "application/json";
+                        return context.Response.WriteAsync(JsonSerializer.Serialize(new
+                            { message = "You do not have permission to access this resource." }));
+                    }
+                };
+            })
+            .AddFacebook("Facebook", options =>
+            {
+                options.SignInScheme = "ExternalCookies";
+                options.AppId = configuration["Authentication:Facebook:AppId"];
+                options.AppSecret = configuration["Authentication:Facebook:AppSecret"];
+                options.CallbackPath = new PathString("/login/auth/facebook-response");
             });
+    }
 
-            app.Run();
+
+    private static void ValidateJwtSettings(IJwtSettings settings)
+    {
+        if (string.IsNullOrEmpty(settings.Key) || string.IsNullOrEmpty(settings.Issuer) ||
+            string.IsNullOrEmpty(settings.Audience))
+            throw new InvalidOperationException("JWT settings are not properly configured.");
+    }
+
+    private static void ConfigureMongoDb(IServiceCollection services, IMongoDbSettings settings)
+    {
+        services.AddSingleton<IMongoDatabase>(serviceProvider =>
+        {
+            MongoClient client = new(settings.Url);
+            return client.GetDatabase(settings.DatabaseName);
+        });
+    }
+
+    private static async Task InitializeMongoDbAsync(IHost app)
+    {
+        // Crée un scope pour résoudre ISearchIndexService (scoped)
+        using IServiceScope scope = app.Services.CreateScope();
+
+        IMongoDatabase database = scope.ServiceProvider.GetRequiredService<IMongoDatabase>();
+        IMongoDbSettings mongoDbSettings = scope.ServiceProvider.GetRequiredService<IMongoDbSettings>();
+        ISearchIndexService searchItemService = scope.ServiceProvider.GetRequiredService<ISearchIndexService>();
+
+        await MongoDbInitializer.InitializeCollectionsAsync(
+            database,
+            mongoDbSettings,
+            searchItemService
+        );
+    }
+
+    private static async Task ConfigureApplication(WebApplication app)
+    {
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
+
+        //app.UseMiddleware<JwtMiddleware>();
+        app.UseIpRateLimiting();
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+        app.UseCors("AllowSpecificOrigin");
+        app.UseSession();
+        app.UseAuthentication();
+        app.UseAuthorization();
+        app.MapControllers();
+
+
+        await InitializeMongoDbAsync(app);
     }
 }

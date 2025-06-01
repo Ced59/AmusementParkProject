@@ -1,0 +1,29 @@
+.social-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  margin-top: 12px;
+}
+
+.google-button {
+  border-radius: 20px;
+  background-color: red;
+  margin-right: 16px;
+}
+
+.facebook-button {
+  border-radius: 20px;
+  background-color: #007bff;
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.register-form, .login-form {
+  width: 100%; /* Full width on small screens */
+}
+
+

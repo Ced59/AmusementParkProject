@@ -1,0 +1,57 @@
+{
+  "home": {
+    "home_title": "Tu próxima aventura comienza aquí",
+    "placeholder_search": "Busca un parque, una atracción, un hotel…",
+    "placeholder_category": "Tipo de búsqueda",
+    "no_results": "Sin resultados para",
+    "in_category": "en",
+    "categories": {
+      "park": "Parques",
+      "attractions": "Atracciones"
+    }
+  },
+  "topbar": {
+    "login_header": "Iniciar sesión / Registro",
+    "hello": "Hola",
+    "choose_language":"Elige tu idioma:"
+  },
+  "auth": {
+    "login": {
+      "title": "Autenticación Clásica",
+      "title_email": "Correo Electrónico",
+      "mail_placeholder": "Introduce tu correo electrónico",
+      "title_password": "Contraseña",
+      "password_placeholder": "Introduce tu contraseña",
+      "btn_text": "Iniciar sesión"
+    },
+    "register": {
+      "title": "Registro Clásico",
+      "title_email": "Correo Electrónico",
+      "mail_placeholder": "Introduce tu correo electrónico",
+      "title_password": "Contraseña",
+      "password_placeholder": "Introduce tu contraseña",
+      "password_info": "Tu contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula y un dígito.",
+      "password_confirm_placeholder": "Confirma tu contraseña",
+      "btn_text": "Registrarse",
+      "errors": {
+        "password_error_summary": "Error de contraseña",
+        "password_error": "La contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula y un dígito."
+      }
+    }
+  },
+  "user-profile": {
+    "title": "Perfil del Usuario",
+    "name": "Nombre",
+    "firstname": "Nombre de Pila",
+    "email": "Correo Electrónico",
+    "preferred_language": "Idioma Preferido",
+    "modify": "Modificar"
+  },
+  "theme": {
+    "change": "Cambiar tema",
+    "light": "Tema claro",
+    "dark": "Tema oscuro"
+  },
+  "title": "Bienvenido",
+  "description": "Esta es una descripción en Español."
+}

@@ -1,0 +1,32 @@
+@import "../node_modules/primeflex/primeflex.scss";
+
+/* Fond du body pour le thème light */
+body.light-mode {
+  background-color: #b4c7dc; /* Bleu clair pour le thème light */
+}
+
+/* Styles de base pour les cartes du home component */
+.home-component .modern-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Au survol, on applique la translation et le scale */
+.home-component a:hover .modern-card {
+  transform: translateY(-8px) scale(1.03);
+}
+
+/* Ombre de hover pour le thème light */
+body.light-mode .home-component a:hover .modern-card {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Ombre de hover pour le thème dark (cas par défaut, sans la classe light-mode) */
+body:not(.light-mode) .home-component a:hover .modern-card {
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.1);
+}
+
+/* Supprimer la décoration de lien et conserver l'héritage de la couleur */
+.home-component a {
+  text-decoration: none;
+  color: inherit;
+}
