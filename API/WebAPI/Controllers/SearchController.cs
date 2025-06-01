@@ -1,4 +1,5 @@
-﻿using Dtos.Searching;
+﻿using Dtos.Pagination;
+using Dtos.Searching;
 using Entities.Model.Errors;
 using Microsoft.AspNetCore.Mvc;
 using OneOf;
@@ -30,8 +31,12 @@ namespace WebAPI.Controllers
             if (string.IsNullOrWhiteSpace(query) && (categories == null || categories.Length == 0))
                 return BadRequest("Vous devez fournir un terme de recherche ou au moins une catégorie.");
 
-            OneOf<SearchResultDto, ErrorCodes.ErrorDetail> result = await _searchService.SearchAsync(query, categories, page, pageSize);
-            return ApiResponseHandler.HandleResponse(result);
+            OneOf<(IEnumerable<SearchResultDto> Data, PaginationDto Pagination), ErrorCodes.ErrorDetail> result = await _searchService.SearchAsync(query, categories, page, pageSize);
+
+            return result.Match(
+                success => ApiResponseHandler.HandleResponse(success.Data, success.Pagination),
+                ApiResponseHandler.HandleResponse
+            );
         }
     }
 }
