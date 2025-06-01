@@ -2,6 +2,7 @@
 
 public class ParkCreatedDto
 {
+    public string? Id { get; set; }
     public string? Name { get; set; }
     public string? CountryCode { get; set; }
     public double Latitude { get; set; }

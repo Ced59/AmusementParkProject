@@ -1,13 +1,9 @@
 ﻿using Entities.Model.Parks;
 using Entities.Model.Searching;
-using MongoDB.Driver;
-using Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Driver.GeoJsonObjectModel;
+using Services.Interfaces;
 
 namespace Services.Implementations
 {
@@ -21,10 +17,13 @@ namespace Services.Implementations
         }
 
         /// <summary>
-        /// Initialise la collection SearchItems à partir des documents Park.
-        /// S’assure que la collection existe, crée les index, puis insère tous les SearchItem générés.
+        /// Initialise la collection SearchItems à partir de tous les documents Park existants,
+        /// en utilisant des opérations "UpdateOne" avec upsert pour ne jamais altérer _id.
         /// </summary>
-        public async Task InitializeFromParksAsync(IMongoDatabase database, string parksCollectionName, string searchItemCollectionName)
+        public async Task InitializeFromParksAsync(
+            IMongoDatabase database,
+            string parksCollectionName,
+            string searchItemCollectionName)
         {
             // 1) S’assurer que la collection SearchItems existe
             BsonDocument filterColl = new("name", searchItemCollectionName);
@@ -35,15 +34,16 @@ namespace Services.Implementations
                 await database.CreateCollectionAsync(searchItemCollectionName);
             }
 
-            // 2) Récupérer la collection Park et la collection SearchItem
+            // 2) Références aux collections Parks et SearchItems
             IMongoCollection<Park>? parksColl = database.GetCollection<Park>(parksCollectionName);
             IMongoCollection<SearchItem>? searchColl = database.GetCollection<SearchItem>(searchItemCollectionName);
 
-            // 3) Créer l’index géospatial sur SearchItems (sur le champ “location”)
+            // 3) Créer les index s’ils n’existent pas encore
+            //    - Geo index 2dsphere sur "location"
             IndexKeysDefinition<SearchItem>? geoIndexKeys = Builders<SearchItem>.IndexKeys.Geo2DSphere(x => x.Location);
             await searchColl.Indexes.CreateOneAsync(new CreateIndexModel<SearchItem>(geoIndexKeys));
 
-            // 4) Créer l’index texte sur SearchItems (title, description, keywords)
+            //    - Text index sur (title, description, keywords)
             IndexKeysDefinition<SearchItem>? textIndexKeys = Builders<SearchItem>.IndexKeys
                 .Text(x => x.Title)
                 .Text(x => x.Description)
@@ -55,88 +55,123 @@ namespace Services.Implementations
             };
             await searchColl.Indexes.CreateOneAsync(new CreateIndexModel<SearchItem>(textIndexKeys, textIndexOptions));
 
-            // 5) Extraire tous les Parks existants et générer une liste de SearchItems
+            // 4) Lire tous les Parks existants
             List<Park>? allParks = await parksColl.Find(_ => true).ToListAsync();
             if (allParks == null || allParks.Count == 0)
             {
                 return; // rien à insérer
             }
 
+            // 5) Préparer les opérations bulk (UpdateOneModel avec Upsert)
             List<WriteModel<SearchItem>> bulkOps = new();
 
             foreach (Park park in allParks)
             {
-                SearchItem searchItem = ConvertParkToSearchItem(park);
-                FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, searchItem.OriginalId);
-                ReplaceOneModel<SearchItem> upsertOne = new(filter, searchItem)
+                // 5.1) Construire OriginalId
+                string originalId = $"park_{park.Id}";
+
+                // 5.2) Créer le filtre sur OriginalId (non modifiable)
+                FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, originalId);
+
+                // 5.3) Construire les champs à mettre à jour
+                //      - On met à jour category, title, description, keywords, latitude, longitude, updatedAt.
+                //      - Si on insère (upsert), on souhaite définir createdAt avec la date actuelle Windows UTC.
+                UpdateDefinition<SearchItem>? update = Builders<SearchItem>.Update
+                    .Set(si => si.Category, "park")
+                    .Set(si => si.Title, park.Name ?? string.Empty)
+                    .Set(si => si.Description, $"{park.Name} ({park.CountryCode})")
+                    .Set(si => si.Keywords, new List<string>
+                    {
+                        park.Name?.Trim().ToLowerInvariant() ?? string.Empty,
+                        park.CountryCode?.Trim().ToLowerInvariant() ?? string.Empty
+                    })
+                    .Set(si => si.Latitude, park.Latitude)
+                    .Set(si => si.Longitude, park.Longitude)
+                    .Set(si => si.UpdatedAt, park.UpdatedAt)
+                    // Si on souhaite remplir CreatedAt seulement lors d'un insert
+                    .SetOnInsert(si => si.CreatedAt, DateTime.UtcNow);
+
+                // 5.4) Conserver aussi la géolocalisation (Location) via Set(si => si.Location, …)
+                //      Mais GeoJsonPoint est généré automatiquement dans le setter de Latitude/Longitude, 
+                //      donc ce Set(n’est pas forcément nécessaire si les propriétés lat/long s’écrivent)
+                update = update.Set(si => si.Location,
+                    new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
+                        new GeoJson2DGeographicCoordinates(park.Longitude, park.Latitude)));
+
+                // 5.5) Construire le modèle Bulk : UpdateOneModel avec Upsert = true
+                UpdateOneModel<SearchItem> upsertOne = new(filter, update)
                 {
                     IsUpsert = true
                 };
+
                 bulkOps.Add(upsertOne);
             }
 
+            // 6) Exécuter le bulk write en une seule fois
             if (bulkOps.Count > 0)
             {
-                // 6) BulkWrite pour gagner en performance si plusieurs centaines de docs
                 await searchColl.BulkWriteAsync(bulkOps);
             }
         }
 
         /// <summary>
-        /// Construit un SearchItem à partir d’un Park.
-        /// On y inclut le nom, le code pays, la géolocalisation, etc.
+        /// Convertit un Park en SearchItem (pour appels ultérieurs Create/Update individuels).
         /// </summary>
         public SearchItem ConvertParkToSearchItem(Park park)
         {
             if (park == null) throw new ArgumentNullException(nameof(park));
 
-            // On peut mettre “park_{id}” pour identifier l'origine
             string originalId = $"park_{park.Id}";
-
-            // Keywords : on peut y mettre le nom du parc + le code pays
             List<string> keywords = new();
             if (!string.IsNullOrWhiteSpace(park.Name))
                 keywords.Add(park.Name.Trim().ToLowerInvariant());
             if (!string.IsNullOrWhiteSpace(park.CountryCode))
                 keywords.Add(park.CountryCode.Trim().ToLowerInvariant());
 
-            // Création du SearchItem
             SearchItem item = new()
             {
-                // ModelBase (Id, CreatedAt, UpdatedAt) sera géré par MongoDB automatiquement
                 OriginalId = originalId,
                 Category = "park",
                 Title = park.Name ?? string.Empty,
-                Description = $"{park.Name} ({park.CountryCode})", // ou ajustez selon votre besoin
+                Description = $"{park.Name} ({park.CountryCode})",
                 Keywords = keywords,
-                CompositeScore = 0.0, // si vous voulez un score par défaut
+                CompositeScore = 0.0,
                 Latitude = park.Latitude,
                 Longitude = park.Longitude,
-                // Location est remplie par GeolocatedEntity.UpdateLocation()
+                CreatedAt = park.CreatedAt,
+                UpdatedAt = park.UpdatedAt
             };
-
             return item;
         }
 
-        /// <summary>
-        /// Upserte (insert ou update) le SearchItem correspondant dans la collection.
-        /// </summary>
         public async Task UpsertSearchItemAsync(SearchItem item, string searchItemCollectionName)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
 
             IMongoCollection<SearchItem>? searchColl = _database.GetCollection<SearchItem>(searchItemCollectionName);
             FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, item.OriginalId);
-            ReplaceOptions options = new() { IsUpsert = true };
-            await searchColl.ReplaceOneAsync(filter, item, options);
+
+            // Construire un UpdateDefinition similaire à InitializeFromParksAsync
+            UpdateDefinition<SearchItem>? update = Builders<SearchItem>.Update
+                .Set(si => si.Category, item.Category)
+                .Set(si => si.Title, item.Title)
+                .Set(si => si.Description, item.Description)
+                .Set(si => si.Keywords, item.Keywords)
+                .Set(si => si.Latitude, item.Latitude)
+                .Set(si => si.Longitude, item.Longitude)
+                .Set(si => si.UpdatedAt, item.UpdatedAt)
+                .SetOnInsert(si => si.CreatedAt, item.CreatedAt)
+                .Set(si => si.CompositeScore, item.CompositeScore)
+                .Set(si => si.Location, new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
+                    new GeoJson2DGeographicCoordinates(item.Longitude, item.Latitude)));
+
+            UpdateOptions options = new() { IsUpsert = true };
+            await searchColl.UpdateOneAsync(filter, update, options);
         }
 
-        /// <summary>
-        /// Supprime un SearchItem d’après son originalId (ex. "park_...").
-        /// </summary>
         public async Task DeleteSearchItemAsync(string originalId, string searchItemCollectionName)
         {
-            if (string.IsNullOrWhiteSpace(originalId)) throw new ArgumentException("originalId cannot be null or whitespace.", nameof(originalId));
+            if (string.IsNullOrWhiteSpace(originalId)) throw new ArgumentException(nameof(originalId));
 
             IMongoCollection<SearchItem>? searchColl = _database.GetCollection<SearchItem>(searchItemCollectionName);
             FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, originalId);

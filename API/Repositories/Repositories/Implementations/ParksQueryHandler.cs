@@ -1,7 +1,6 @@
 ﻿using Entities.Model.Parks;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.GeoJsonObjectModel;
 using Repositories.Interfaces;
 
 namespace Repositories.Implementations;

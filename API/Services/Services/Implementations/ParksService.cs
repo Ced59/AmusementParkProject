@@ -2,8 +2,8 @@
 using Dtos.Parks.Creating;
 using Dtos.Parks.ParkGet;
 using Dtos.Parks.Parks;
-using Entities.Model.Errors;
 using Entities.Model.Parks;
+using Entities.Model.Searching;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces;
@@ -14,10 +14,14 @@ namespace Services.Implementations;
 public class ParksService : IParksService
 {
     private readonly IParksQueryHandler _parksQueryHandler;
+    private readonly ISearchIndexService _searchIndexService;
+    private readonly IMongoDbSettings _mongoDbSettings;
 
-    public ParksService(IParksQueryHandler parksQueryHandler)
+    public ParksService(IParksQueryHandler parksQueryHandler, ISearchIndexService searchIndexService ,IMongoDbSettings mongoDbSettings)
     {
         _parksQueryHandler = parksQueryHandler;
+        _searchIndexService = searchIndexService;
+        _mongoDbSettings = mongoDbSettings;
     }
 
     public async Task<OneOf<ParkCreatedDto, ErrorDetail>>? CreateParkAsync(ParkCreateDto parkDto)
@@ -39,8 +43,13 @@ public class ParksService : IParksService
             return ErrorCreatingPark;
         }
 
+        SearchItem searchItem = _searchIndexService.ConvertParkToSearchItem(createdPark);
+
+        await _searchIndexService.UpsertSearchItemAsync(searchItem, _mongoDbSettings.SearchItemCollectionName);
+
         ParkCreatedDto parkCreatedDto = new()
         {
+            Id = createdPark.Id,
             Name = createdPark.Name,
             CountryCode = createdPark.CountryCode,
             Latitude = createdPark.Latitude,

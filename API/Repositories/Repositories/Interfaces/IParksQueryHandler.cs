@@ -1,5 +1,4 @@
-﻿using Entities.Model.Errors;
-using Entities.Model.Parks;
+﻿using Entities.Model.Parks;
 
 namespace Repositories.Interfaces;
 

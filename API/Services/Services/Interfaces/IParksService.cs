@@ -2,7 +2,6 @@
 using Dtos.Parks.Creating;
 using Dtos.Parks.ParkGet;
 using Dtos.Parks.Parks;
-using Entities.Model.Parks;
 using OneOf;
 using static Entities.Model.Errors.ErrorCodes;
 

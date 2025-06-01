@@ -1,9 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Driver.GeoJsonObjectModel;
 using Common.General;
-using System;
-using System.Collections.Generic;
 
 namespace Entities.Model.Searching
 {

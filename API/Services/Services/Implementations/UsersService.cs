@@ -1,6 +1,5 @@
 ﻿using System.Security.Claims;
 using System.Text.RegularExpressions;
-using Amazon.SecurityToken.Model;
 using Common.Users;
 using Dtos.Pagination;
 using Dtos.Users.ChangePassword;
@@ -12,7 +11,6 @@ using Dtos.Users.Roles;
 using Dtos.Users.Updating;
 using Dtos.Users.UserGet;
 using Dtos.Users.Users;
-using Entities.Model.Errors;
 using Entities.Model.Users;
 using OneOf;
 using Repositories.Interfaces;
