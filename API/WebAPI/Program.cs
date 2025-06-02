@@ -7,12 +7,15 @@ using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Minio;
 using MongoDB.Driver;
 using Repositories.Implementations;
 using Repositories.Interfaces;
 using Services.Implementations;
+using Services.Implementations.Images;
 using Services.Implementations.Searching;
 using Services.Interfaces;
+using Services.Interfaces.Images;
 using Services.Interfaces.Searching;
 using Services.Interfaces.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -56,6 +59,17 @@ public class Program
         builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
         builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
         builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
+
+        // Images
+        builder.Services.AddSingleton<IMinioClient>(sp =>
+            new MinioClient()
+                .WithEndpoint("localhost:9000")
+                .WithCredentials("minioadmin", "minioadmin")
+                .WithSSL(false)
+                .Build());
+
+        builder.Services.AddScoped<IImageCompressorService, ImageCompressorService>();
+        builder.Services.AddScoped<IImageStorageService, MinioImageStorageService>();
 
         // Authentication
         ConfigureAuthentication(builder.Services, builder.Configuration);

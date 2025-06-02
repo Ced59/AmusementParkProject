@@ -29,7 +29,7 @@ namespace Services.Implementations.Searching
             try
             {
                 // 2) Interroger le query handler
-                (IEnumerable<SearchItem>? searchItems, var totalCount) = await _queryHandler.SearchAsync(query, categories, page, pageSize);
+                (IEnumerable<SearchItem>? searchItems, long totalCount) = await _queryHandler.SearchAsync(query, categories, page, pageSize);
 
                 // 3) Si aucun résultat trouvé
                 if (totalCount == 0 || searchItems == null || !searchItems.Any())
