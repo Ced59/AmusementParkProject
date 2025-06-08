@@ -10,11 +10,11 @@ namespace Services.Implementations.Searching
 {
     public class SearchService : ISearchService
     {
-        private ISearchQueryHandler _queryHandler;
+        private ISearchQueryHandler queryHandler;
 
         public SearchService(ISearchQueryHandler queryHandler)
         {
-            _queryHandler = queryHandler;
+            this.queryHandler = queryHandler;
         }
 
         public async Task<OneOf<(IEnumerable<SearchResultDto> Data, PaginationDto Pagination), ErrorDetail>>
@@ -29,7 +29,7 @@ namespace Services.Implementations.Searching
             try
             {
                 // 2) Interroger le query handler
-                (IEnumerable<SearchItem>? searchItems, long totalCount) = await _queryHandler.SearchAsync(query, categories, page, pageSize);
+                (IEnumerable<SearchItem>? searchItems, long totalCount) = await queryHandler.SearchAsync(query, categories, page, pageSize);
 
                 // 3) Si aucun résultat trouvé
                 if (totalCount == 0 || searchItems == null || !searchItems.Any())

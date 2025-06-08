@@ -26,17 +26,17 @@ namespace WebAPI.Controllers;
 [Route("[controller]")]
 public class UsersController : ControllerBase
 {
-    private readonly IUsersService _usersService;
+    private readonly IUsersService usersService;
 
     public UsersController(IUsersService usersService)
     {
-        _usersService = usersService;
+        this.usersService = usersService;
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateUserAsync([FromBody] UserCreateDto user)
     {
-        OneOf<UserCreatedDto, ErrorDetail> userCreated = await _usersService.CreateUserAsync(user)!;
+        OneOf<UserCreatedDto, ErrorDetail> userCreated = await usersService.CreateUserAsync(user)!;
 
         return ApiResponseHandler.HandleResponse(userCreated);
     }
@@ -45,7 +45,7 @@ public class UsersController : ControllerBase
     [Route("by-email")]
     public async Task<IActionResult> GetUserByEmailAsync([FromQuery] UserGetByEmailDto userByEmail)
     {
-        OneOf<UserGettedDto, ErrorDetail> user = await _usersService.GetUserByEmailAsync(userByEmail.Email);
+        OneOf<UserGettedDto, ErrorDetail> user = await usersService.GetUserByEmailAsync(userByEmail.Email);
 
         return ApiResponseHandler.HandleResponse(user);
     }
@@ -53,7 +53,7 @@ public class UsersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetUserByIdAsync([FromQuery] UserGetByIdDto userById)
     {
-        OneOf<UserGettedDto, ErrorDetail> user = await _usersService.GetUserByIdAsync(userById.Id);
+        OneOf<UserGettedDto, ErrorDetail> user = await usersService.GetUserByIdAsync(userById.Id);
         return ApiResponseHandler.HandleResponse(user);
     }
 
@@ -64,7 +64,7 @@ public class UsersController : ControllerBase
         [FromQuery] [Range(1, 100, ErrorMessage = "Size must be between 1 and 100")]
         int size = 10)
     {
-        (IEnumerable<UserDto> users, PaginationDto pagination) = await _usersService.GetAllUsersPaginatedAsync(page, size);
+        (IEnumerable<UserDto> users, PaginationDto pagination) = await usersService.GetAllUsersPaginatedAsync(page, size);
         return ApiResponseHandler.HandleResponse(users, pagination);
     }
 
@@ -79,7 +79,7 @@ public class UsersController : ControllerBase
         if (currentUserId != id && !User.IsInRoles(Role.ADMIN, Role.MODERATOR))
             return ApiResponseHandler.HandleResponse(UserCannotUpdateOtherUser);
 
-        OneOf<UserUpdatedDto, ErrorDetail> userUpdated = await _usersService.UpdateUserAsync(id, userUpdate);
+        OneOf<UserUpdatedDto, ErrorDetail> userUpdated = await usersService.UpdateUserAsync(id, userUpdate);
 
         return ApiResponseHandler.HandleResponse(userUpdated);
     }
@@ -104,7 +104,7 @@ public class UsersController : ControllerBase
         }
 
         bool isSelfChange = currentUserId == idUser;
-        OneOf<PasswordChangedDto, ErrorDetail> userPasswordChanged = await _usersService.ChangeUserPassword(idUser, changePasswordDto, isSelfChange);
+        OneOf<PasswordChangedDto, ErrorDetail> userPasswordChanged = await usersService.ChangeUserPassword(idUser, changePasswordDto, isSelfChange);
         return ApiResponseHandler.HandleResponse(userPasswordChanged);
     }
 
@@ -128,7 +128,7 @@ public class UsersController : ControllerBase
     [RequireActivatedUnblockedUser]
     public async Task<IActionResult> AssignRoleAsync(string userId, [FromBody] RoleAssignDto roleAssignDto)
     {
-        OneOf<RoleAssignedDto, ErrorDetail> roleAssigned = await _usersService.AssignRoleAsync(userId, roleAssignDto);
+        OneOf<RoleAssignedDto, ErrorDetail> roleAssigned = await usersService.AssignRoleAsync(userId, roleAssignDto);
         return ApiResponseHandler.HandleResponse(roleAssigned);
     }
 
@@ -137,7 +137,7 @@ public class UsersController : ControllerBase
     [RequireActivatedUnblockedUser]
     public async Task<IActionResult> RemoveRoleAsync(string userId, [FromBody] RoleRemoveDto roleRemoveDto)
     {
-        OneOf<RoleRemovedDto, ErrorDetail> roleRemoved = await _usersService.RemoveRoleAsync(userId, roleRemoveDto);
+        OneOf<RoleRemovedDto, ErrorDetail> roleRemoved = await usersService.RemoveRoleAsync(userId, roleRemoveDto);
         return ApiResponseHandler.HandleResponse(roleRemoved);
     }
 
@@ -146,7 +146,7 @@ public class UsersController : ControllerBase
     [RequireActivatedUnblockedUser]
     public async Task<IActionResult> LockUserAsync(UserToLockDto userToLock)
     {
-        OneOf<UserLockedDto, ErrorDetail> userLocked = await _usersService.LockUser(userToLock);
+        OneOf<UserLockedDto, ErrorDetail> userLocked = await usersService.LockUser(userToLock);
         return ApiResponseHandler.HandleResponse(userLocked);
     }
 
@@ -155,7 +155,7 @@ public class UsersController : ControllerBase
     [RequireActivatedUnblockedUser]
     public async Task<IActionResult> UnlockUserAsync(UserToUnlockDto userToUnlock)
     {
-        OneOf<UserUnlockedDto, ErrorDetail> userUnlocked = await _usersService.UnlockUser(userToUnlock);
+        OneOf<UserUnlockedDto, ErrorDetail> userUnlocked = await usersService.UnlockUser(userToUnlock);
         return ApiResponseHandler.HandleResponse(userUnlocked);
     }
 }

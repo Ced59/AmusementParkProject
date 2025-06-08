@@ -6,28 +6,28 @@ namespace Services.Implementations.Images;
 
 public class MinioImageStorageService : IImageStorageService
 {
-    private readonly IMinioClient _minioClient;
+    private readonly IMinioClient minioClient;
 
     public MinioImageStorageService(IMinioClient minioClient)
     {
-        _minioClient = minioClient;
+        this.minioClient = minioClient;
     }
 
     public async Task StoreAsync(Dictionary<string, byte[]> images, string bucketName)
     {
         BucketExistsArgs? bucketExistsArgs = new BucketExistsArgs().WithBucket(bucketName);
-        var exists = await _minioClient.BucketExistsAsync(bucketExistsArgs);
+        var exists = await minioClient.BucketExistsAsync(bucketExistsArgs);
 
         if (!exists)
         {
-            await _minioClient.MakeBucketAsync(new MakeBucketArgs().WithBucket(bucketName));
+            await minioClient.MakeBucketAsync(new MakeBucketArgs().WithBucket(bucketName));
         }
 
         foreach (var (fileName, content) in images)
         {
             using MemoryStream stream = new(content);
 
-            await _minioClient.PutObjectAsync(new PutObjectArgs()
+            await minioClient.PutObjectAsync(new PutObjectArgs()
                 .WithBucket(bucketName)
                 .WithObject(fileName)
                 .WithStreamData(stream)

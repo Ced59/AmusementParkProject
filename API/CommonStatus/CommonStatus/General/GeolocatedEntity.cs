@@ -6,8 +6,8 @@ namespace Common.General;
 
 public class GeolocatedEntity : ModelBase
 {
-    private double _latitude;
-    private double _longitude;
+    private double latitude;
+    private double longitude;
 
     /// <summary>
     /// Latitude du point (entre -90 et 90). Lorsqu’on l’assigne, UpdateLocation() reconstruit le champ GeoJSON “location”.
@@ -16,12 +16,12 @@ public class GeolocatedEntity : ModelBase
     [BsonRepresentation(BsonType.Double)]
     public double Latitude
     {
-        get => _latitude;
+        get => latitude;
         set
         {
             if (IsValidLatitude(value))
             {
-                _latitude = value;
+                latitude = value;
                 UpdateLocation();
             }
         }
@@ -34,12 +34,12 @@ public class GeolocatedEntity : ModelBase
     [BsonRepresentation(BsonType.Double)]
     public double Longitude
     {
-        get => _longitude;
+        get => longitude;
         set
         {
             if (IsValidLongitude(value))
             {
-                _longitude = value;
+                longitude = value;
                 UpdateLocation();
             }
         }
@@ -54,10 +54,10 @@ public class GeolocatedEntity : ModelBase
 
     protected void UpdateLocation()
     {
-        if (IsValidLatitude(_latitude) && IsValidLongitude(_longitude))
+        if (IsValidLatitude(latitude) && IsValidLongitude(longitude))
         {
             Location = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
-                new GeoJson2DGeographicCoordinates(_longitude, _latitude));
+                new GeoJson2DGeographicCoordinates(longitude, latitude));
         }
     }
 

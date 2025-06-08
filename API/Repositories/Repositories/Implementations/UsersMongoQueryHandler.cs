@@ -7,40 +7,40 @@ namespace Repositories.Implementations;
 
 public class UsersMongoQueryHandler : IUserQueryHandler
 {
-    private readonly IMongoCollection<User> _usersCollection;
+    private readonly IMongoCollection<User> usersCollection;
 
     public UsersMongoQueryHandler(IMongoDatabase database, IMongoDbSettings settings)
     {
-        _usersCollection = database.GetCollection<User>(settings.UsersCollectionName);
+        usersCollection = database.GetCollection<User>(settings.UsersCollectionName);
     }
 
     public async Task<bool> ExistsByEmailAsync(string? email)
     {
-        long count = await _usersCollection.CountDocumentsAsync(user => user.Email == email);
+        long count = await usersCollection.CountDocumentsAsync(user => user.Email == email);
         return count > 0;
     }
 
     public async Task<User?> GetUserByIdAsync(string id)
     {
-        return await _usersCollection.Find(user => user.Id == id).FirstOrDefaultAsync();
+        return await usersCollection.Find(user => user.Id == id).FirstOrDefaultAsync();
     }
 
     public async Task<User?> GetUserByEmailAsync(string? email)
     {
-        return await _usersCollection.Find(user => user.Email == email).FirstOrDefaultAsync();
+        return await usersCollection.Find(user => user.Email == email).FirstOrDefaultAsync();
     }
 
 
     public async Task<IEnumerable<User>> GetAllUsersAsync()
     {
-        return await _usersCollection.Find(user => true).ToListAsync();
+        return await usersCollection.Find(user => true).ToListAsync();
     }
 
     public async Task<User?> CreateUserAsync(User user)
     {
         try
         {
-            await _usersCollection.InsertOneAsync(user);
+            await usersCollection.InsertOneAsync(user);
             return user;
         }
         catch (Exception)
@@ -60,7 +60,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
 
         try
         {
-            return await _usersCollection.FindOneAndReplaceAsync(filter, user, options);
+            return await usersCollection.FindOneAndReplaceAsync(filter, user, options);
         }
         catch (Exception)
         {
@@ -71,7 +71,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
 
     public async Task DeleteUserAsync(string id)
     {
-        await _usersCollection.DeleteOneAsync(user => user.Id == id);
+        await usersCollection.DeleteOneAsync(user => user.Id == id);
     }
 
     public async Task UpdateLastLoginAndActivityAsync(string userId)
@@ -84,7 +84,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
             .Set(u => u.LastActivity, now);
 
 
-        await _usersCollection.UpdateOneAsync(filter, update);
+        await usersCollection.UpdateOneAsync(filter, update);
     }
 
     public async Task UpdateLastActivityAsync(string userId)
@@ -96,7 +96,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
             .Set(u => u.LastActivity, now);
 
 
-        await _usersCollection.UpdateOneAsync(filter, update);
+        await usersCollection.UpdateOneAsync(filter, update);
     }
 
     public async Task<User?> AssignRoleAsync(string userId, Role role)
@@ -109,7 +109,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
             ReturnDocument = ReturnDocument.After
         };
 
-        User? updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+        User? updatedUser = await usersCollection.FindOneAndUpdateAsync(filter, update, options);
 
         return updatedUser;
     }
@@ -124,7 +124,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
             ReturnDocument = ReturnDocument.After
         };
 
-        User? updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+        User? updatedUser = await usersCollection.FindOneAndUpdateAsync(filter, update, options);
 
         return updatedUser;
     }
@@ -139,7 +139,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
             ReturnDocument = ReturnDocument.After
         };
 
-        User? updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+        User? updatedUser = await usersCollection.FindOneAndUpdateAsync(filter, update, options);
 
         return updatedUser;
     }
@@ -154,7 +154,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
             ReturnDocument = ReturnDocument.After
         };
 
-        User? updatedUser = await _usersCollection.FindOneAndUpdateAsync(filter, update, options);
+        User? updatedUser = await usersCollection.FindOneAndUpdateAsync(filter, update, options);
 
         return updatedUser;
     }
@@ -164,7 +164,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, idUser);
         UpdateDefinition<User>? update = Builders<User>.Update.Set(u => u.HashedPassword, newHashedPassword);
 
-        UpdateResult? result = await _usersCollection.UpdateOneAsync(filter, update);
+        UpdateResult? result = await usersCollection.UpdateOneAsync(filter, update);
 
         return result.ModifiedCount == 1;
 
@@ -172,7 +172,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
 
     public async Task<IEnumerable<User>> GetUsersPaginatedAsync(int page, int pageSize)
     {
-        return await _usersCollection.Find(_ => true)
+        return await usersCollection.Find(_ => true)
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync();
@@ -180,6 +180,6 @@ public class UsersMongoQueryHandler : IUserQueryHandler
 
     public async Task<long> GetTotalUsersCountAsync()
     {
-        return await _usersCollection.CountDocumentsAsync(_ => true);
+        return await usersCollection.CountDocumentsAsync(_ => true);
     }
 }

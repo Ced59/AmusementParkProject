@@ -14,15 +14,15 @@ namespace Services.Implementations;
 
 public class ParksService : IParksService
 {
-    private readonly IParksQueryHandler _parksQueryHandler;
-    private readonly ISearchIndexService _searchIndexService;
-    private readonly IMongoDbSettings _mongoDbSettings;
+    private readonly IParksQueryHandler parksQueryHandler;
+    private readonly ISearchIndexService searchIndexService;
+    private readonly IMongoDbSettings mongoDbSettings;
 
     public ParksService(IParksQueryHandler parksQueryHandler, ISearchIndexService searchIndexService ,IMongoDbSettings mongoDbSettings)
     {
-        _parksQueryHandler = parksQueryHandler;
-        _searchIndexService = searchIndexService;
-        _mongoDbSettings = mongoDbSettings;
+        this.parksQueryHandler = parksQueryHandler;
+        this.searchIndexService = searchIndexService;
+        this.mongoDbSettings = mongoDbSettings;
     }
 
     public async Task<OneOf<ParkCreatedDto, ErrorDetail>>? CreateParkAsync(ParkCreateDto parkDto)
@@ -37,16 +37,16 @@ public class ParksService : IParksService
             Longitude = parkDto.Longitude
         };
 
-        Park? createdPark = await _parksQueryHandler.CreateParkAsync(park);
+        Park? createdPark = await parksQueryHandler.CreateParkAsync(park);
 
         if (createdPark == null)
         {
             return ErrorCreatingPark;
         }
 
-        SearchItem searchItem = _searchIndexService.ConvertParkToSearchItem(createdPark);
+        SearchItem searchItem = searchIndexService.ConvertParkToSearchItem(createdPark);
 
-        await _searchIndexService.UpsertSearchItemAsync(searchItem, _mongoDbSettings.SearchItemCollectionName);
+        await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
 
         ParkCreatedDto parkCreatedDto = new()
         {
@@ -67,7 +67,7 @@ public class ParksService : IParksService
             return ParkNotExists;
         }
 
-        Park? park = await _parksQueryHandler.GetParkByIdAsync(id.Id);
+        Park? park = await parksQueryHandler.GetParkByIdAsync(id.Id);
         if (park == null)
         {
             return ParkNotExists;
@@ -85,11 +85,11 @@ public class ParksService : IParksService
 
     public async Task<(IEnumerable<ParkDto>, PaginationDto)>? GetListParkPaginatedAsync(int page, int pageSize)
     {
-        long totalItems = await _parksQueryHandler.GetTotalParksCountAsync();
+        long totalItems = await parksQueryHandler.GetTotalParksCountAsync();
 
         PaginationDto paginationInfo = PaginationDto.Create(Convert.ToInt32(totalItems), page, pageSize);
 
-        IEnumerable<Park> parks = await _parksQueryHandler.GetParksPaginatedAsync(page, pageSize);
+        IEnumerable<Park> parks = await parksQueryHandler.GetParksPaginatedAsync(page, pageSize);
 
         List<ParkDto> parkDtos = parks.Select(park => new ParkDto
         {
@@ -105,7 +105,7 @@ public class ParksService : IParksService
 
     public async Task<OneOf<IEnumerable<ParkDto>, ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius)
     {
-        IEnumerable<Park>? parks = await _parksQueryHandler.GetParksByLocationAsync(latitude, longitude, radius);
+        IEnumerable<Park>? parks = await parksQueryHandler.GetParksByLocationAsync(latitude, longitude, radius);
 
         if (parks == null || !parks.Any())
         {

@@ -9,11 +9,11 @@ namespace Services.Implementations.Searching
 {
     public class SearchIndexService : ISearchIndexService
     {
-        private readonly IMongoDatabase _database;
+        private readonly IMongoDatabase database;
 
         public SearchIndexService(IMongoDatabase database)
         {
-            _database = database;
+            this.database = database;
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Services.Implementations.Searching
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
 
-            IMongoCollection<SearchItem>? searchColl = _database.GetCollection<SearchItem>(searchItemCollectionName);
+            IMongoCollection<SearchItem>? searchColl = database.GetCollection<SearchItem>(searchItemCollectionName);
             FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, item.OriginalId);
 
             // Construire un UpdateDefinition similaire à InitializeFromParksAsync
@@ -173,7 +173,7 @@ namespace Services.Implementations.Searching
         {
             if (string.IsNullOrWhiteSpace(originalId)) throw new ArgumentException(nameof(originalId));
 
-            IMongoCollection<SearchItem>? searchColl = _database.GetCollection<SearchItem>(searchItemCollectionName);
+            IMongoCollection<SearchItem>? searchColl = database.GetCollection<SearchItem>(searchItemCollectionName);
             FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, originalId);
             await searchColl.DeleteOneAsync(filter);
         }

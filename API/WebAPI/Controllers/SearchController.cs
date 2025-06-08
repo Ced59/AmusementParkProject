@@ -14,11 +14,11 @@ namespace WebAPI.Controllers
     [Route("[controller]")]
     public class SearchController : ControllerBase
     {
-        private readonly ISearchService _searchService;
+        private readonly ISearchService searchService;
 
         public SearchController(ISearchService searchService)
         {
-            _searchService = searchService;
+            this.searchService = searchService;
         }
 
         [HttpGet]
@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
             if (string.IsNullOrWhiteSpace(query) && (categories == null || categories.Length == 0))
                 return BadRequest("Vous devez fournir un terme de recherche ou au moins une catégorie.");
 
-            OneOf<(IEnumerable<SearchResultDto> Data, PaginationDto Pagination), ErrorCodes.ErrorDetail> result = await _searchService.SearchAsync(query, categories, page, pageSize);
+            OneOf<(IEnumerable<SearchResultDto> Data, PaginationDto Pagination), ErrorCodes.ErrorDetail> result = await searchService.SearchAsync(query, categories, page, pageSize);
 
             return result.Match(
                 success => ApiResponseHandler.HandleResponse(success.Data, success.Pagination),

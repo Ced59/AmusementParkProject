@@ -19,26 +19,26 @@ namespace WebAPI.Controllers;
 [Route("[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly IUsersService _usersService;
-    private readonly ISocialAuthService _socialAuthService;
+    private readonly IUsersService usersService;
+    private readonly ISocialAuthService socialAuthService;
 
     public AuthController(IUsersService usersService, ISocialAuthService socialAuthService)
     {
-        _usersService = usersService;
-        _socialAuthService = socialAuthService;
+        this.usersService = usersService;
+        this.socialAuthService = socialAuthService;
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> LoginAsync([FromBody] UserLoginDto userLoginDto)
     {
-        OneOf<UserLoggedDto, ErrorCodes.ErrorDetail> userLogged = await _usersService.LoginAsync(userLoginDto);
+        OneOf<UserLoggedDto, ErrorCodes.ErrorDetail> userLogged = await usersService.LoginAsync(userLoginDto);
         return ApiResponseHandler.HandleResponse(userLogged);
     }
 
     [HttpPost("refresh-token")]
     public async Task<IActionResult> RefreshTokenAsync([FromBody] RefreshTokenRequestDto token)
     {
-        OneOf<RefreshTokenResponseDto, ErrorCodes.ErrorDetail> tokenRefreshed = await _usersService.RefreshTokenAsync(token);
+        OneOf<RefreshTokenResponseDto, ErrorCodes.ErrorDetail> tokenRefreshed = await usersService.RefreshTokenAsync(token);
 
         return ApiResponseHandler.HandleResponse(tokenRefreshed);
     }
@@ -60,10 +60,10 @@ public class AuthController : ControllerBase
         {
             if (!string.IsNullOrEmpty(model.Code))
             {
-                string accessToken = await _socialAuthService.ExchangeGoogleCodeForToken(provider, model.Code);
-                UserGoogleInfos userInfo = await _socialAuthService.GetGoogleUserInfo(provider, accessToken);
+                string accessToken = await socialAuthService.ExchangeGoogleCodeForToken(provider, model.Code);
+                UserGoogleInfos userInfo = await socialAuthService.GetGoogleUserInfo(provider, accessToken);
 
-                OneOf<UserGettedDto, ErrorCodes.ErrorDetail> userLogged = await _usersService.GetUserByEmailAsync(userInfo.Email);
+                OneOf<UserGettedDto, ErrorCodes.ErrorDetail> userLogged = await usersService.GetUserByEmailAsync(userInfo.Email);
 
                 if (userLogged.IsT0)
                 {
@@ -72,7 +72,7 @@ public class AuthController : ControllerBase
                     // Vérifier si l'utilisateur n'a pas encore d'avatar
                     if (string.IsNullOrEmpty(existingUser.AvatarUrl) && !string.IsNullOrEmpty(userInfo.Picture))
                     {
-                        string avatarPath = await _usersService.DownloadAndSaveUserAvatar(userInfo.Picture, existingUser.Id);
+                        string avatarPath = await usersService.DownloadAndSaveUserAvatar(userInfo.Picture, existingUser.Id);
                         if (!string.IsNullOrEmpty(avatarPath))
                         {
                             // Mettre à jour l'utilisateur avec le nouvel avatar
@@ -84,18 +84,18 @@ public class AuthController : ControllerBase
                                 PreferredLanguage = existingUser.PreferredLanguage,
                                 AvatarUrl = avatarPath
                             };
-                            await _usersService.UpdateUserAsync(existingUser.Id, updateDto);
+                            await usersService.UpdateUserAsync(existingUser.Id, updateDto);
                         }
                     }
 
-                    OneOf<UserLoggedDto, ErrorCodes.ErrorDetail> userToLog = await _usersService.LoginExternalAsync(existingUser.Email);
+                    OneOf<UserLoggedDto, ErrorCodes.ErrorDetail> userToLog = await usersService.LoginExternalAsync(existingUser.Email);
                     return ApiResponseHandler.HandleResponse(userToLog);
                 }
 
                 if (userLogged.AsT1.StatusCode == ErrorCodes.UserNotExists.StatusCode)
                 {
                     string avatarPath = !string.IsNullOrEmpty(userInfo.Picture)
-                        ? await _usersService.DownloadAndSaveUserAvatar(userInfo.Picture, Guid.NewGuid().ToString())
+                        ? await usersService.DownloadAndSaveUserAvatar(userInfo.Picture, Guid.NewGuid().ToString())
                         : "";
 
                     UserSocialCreate userToCreate = new()
@@ -106,7 +106,7 @@ public class AuthController : ControllerBase
                         LastName = userInfo.FamilyName
                     };
 
-                    OneOf<UserLoggedDto, ErrorCodes.ErrorDetail> created = await _usersService.CreateUserByInfosAsync(userToCreate);
+                    OneOf<UserLoggedDto, ErrorCodes.ErrorDetail> created = await usersService.CreateUserByInfosAsync(userToCreate);
                     return ApiResponseHandler.HandleResponse(created);
                 }
 

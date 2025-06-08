@@ -8,13 +8,13 @@ namespace Repositories.Implementations
 {
     public class SearchMongoQueryHandler : ISearchQueryHandler
     {
-        private readonly IMongoCollection<SearchItem> _searchCollection;
+        private readonly IMongoCollection<SearchItem> searchCollection;
 
         public SearchMongoQueryHandler(
             IMongoDatabase database,
             IMongoDbSettings settings)
         {
-            _searchCollection = database
+            searchCollection = database
                 .GetCollection<SearchItem>(settings.SearchItemCollectionName);
         }
 
@@ -53,7 +53,7 @@ namespace Repositories.Implementations
 
             // 4) Calcul du nombre total de documents correspondant (avant pagination)
             long totalCount =
-                await _searchCollection
+                await searchCollection
                     .CountDocumentsAsync(filter);
 
             // 5) Définition du tri : par UpdatedAt décroissant
@@ -70,7 +70,7 @@ namespace Repositories.Implementations
             };
 
             IAsyncCursor<SearchItem> cursor =
-                await _searchCollection.FindAsync(filter, findOptions);
+                await searchCollection.FindAsync(filter, findOptions);
 
             List<SearchItem> items =
                 await cursor.ToListAsync();

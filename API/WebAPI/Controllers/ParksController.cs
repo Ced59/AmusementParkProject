@@ -18,11 +18,11 @@ namespace WebAPI.Controllers
     [Route("[controller]")]
     public class ParksController : ControllerBase
     {
-        private readonly IParksService _parksService;
+        private readonly IParksService parksService;
 
         public ParksController(IParksService parksService)
         {
-            _parksService = parksService;
+            this.parksService = parksService;
         }
 
 
@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
         [RequireActivatedUnblockedUser]
         public async Task<IActionResult> CreateParkAsync([FromBody] ParkCreateDto park)
         {
-            OneOf<ParkCreatedDto, ErrorCodes.ErrorDetail> parkCreated = await _parksService.CreateParkAsync(park)!;
+            OneOf<ParkCreatedDto, ErrorCodes.ErrorDetail> parkCreated = await parksService.CreateParkAsync(park)!;
 
             return ApiResponseHandler.HandleResponse(parkCreated);
         }
@@ -40,7 +40,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetParkById([FromQuery] string id)
         {
             ParkGetByIdDto dtoId = new() { Id = id };
-            OneOf<ParkGettedDto, ErrorCodes.ErrorDetail> park = await _parksService.GetParkByIdAsync(dtoId)!;
+            OneOf<ParkGettedDto, ErrorCodes.ErrorDetail> park = await parksService.GetParkByIdAsync(dtoId)!;
 
             return ApiResponseHandler.HandleResponse(park);
         }
@@ -52,7 +52,7 @@ namespace WebAPI.Controllers
             [FromQuery] [Range(1, 100, ErrorMessage = "Size must be between 1 and 100")]
             int size = 10)
         {
-            (IEnumerable<ParkDto> parks, PaginationDto pagination) = await _parksService.GetListParkPaginatedAsync(page, size)!;
+            (IEnumerable<ParkDto> parks, PaginationDto pagination) = await parksService.GetListParkPaginatedAsync(page, size)!;
             return ApiResponseHandler.HandleResponse(parks, pagination);
         }
 
@@ -62,7 +62,7 @@ namespace WebAPI.Controllers
             [FromQuery] double longitude,
             [FromQuery] double radius)
         {
-            OneOf<IEnumerable<ParkDto>, ErrorCodes.ErrorDetail> parks = await _parksService.SearchParksByLocationAsync(latitude, longitude, radius);
+            OneOf<IEnumerable<ParkDto>, ErrorCodes.ErrorDetail> parks = await parksService.SearchParksByLocationAsync(latitude, longitude, radius);
             return ApiResponseHandler.HandleResponse(parks);
         }
 
