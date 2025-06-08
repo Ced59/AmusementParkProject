@@ -2,5 +2,5 @@
 
 public interface IImageStorageService
 {
-    Task<IEnumerable<string>> StoreAsync(Dictionary<string, byte[]> images, string bucketName, string category);
+    Task<IEnumerable<string>> StoreAsync(Dictionary<string, byte[]> images, string category);
 }

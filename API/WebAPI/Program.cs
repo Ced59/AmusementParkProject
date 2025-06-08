@@ -20,6 +20,7 @@ using Services.Interfaces.Searching;
 using Services.Interfaces.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebAPI.Settings.Attributes;
+using WebAPI.Settings.Images;
 using WebAPI.Settings.MongoDB;
 using WebAPI.Settings.OAuth;
 using WebAPI.Settings.Security;
@@ -60,16 +61,21 @@ public class Program
         builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
         builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
 
+        // MinIO Settings
+        MinIoSettings? minioSettings = builder.Configuration.GetSection("Images:MinIo").Get<MinIoSettings>();
+        builder.Services.AddSingleton<IImageStorageSettings>(minioSettings);
+
         // Images
         builder.Services.AddSingleton<IMinioClient>(sp =>
             new MinioClient()
-                .WithEndpoint("localhost:9000")
-                .WithCredentials("minioadmin", "minioadmin")
-                .WithSSL(false)
+                .WithEndpoint(minioSettings.Endpoint)
+                .WithCredentials(minioSettings.AccessKey, minioSettings.SecretKey)
+                .WithSSL(bool.Parse(minioSettings.WithSsl))
                 .Build());
 
         builder.Services.AddScoped<IImageCompressorService, ImageCompressorService>();
         builder.Services.AddScoped<IImageStorageService, MinioImageStorageService>();
+        builder.Services.AddScoped<ISavingImageService, SavingImageService>();
 
         // Authentication
         ConfigureAuthentication(builder.Services, builder.Configuration);

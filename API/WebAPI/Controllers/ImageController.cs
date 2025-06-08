@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Dtos.Images.Creating;
+using Entities.Model.Errors;
+using Microsoft.AspNetCore.Mvc;
+using OneOf;
 using Services.Interfaces.Images;
+using WebAPI.ResponseHandlers;
 
 namespace WebAPI.Controllers
 {
@@ -7,38 +11,22 @@ namespace WebAPI.Controllers
     [Route("images")]
     public class ImageController : ControllerBase
     {
-        private readonly IImageCompressorService compressor;
-        private readonly IImageStorageService storage;
+        private readonly ISavingImageService savingImageService;
         private readonly ILogger<ImageController> logger;
 
-        public ImageController(IImageCompressorService compressor, IImageStorageService storage, ILogger<ImageController> logger)
+        public ImageController(ISavingImageService savingImageService, ILogger<ImageController> logger)
         {
-            this.compressor = compressor;
-            this.storage = storage;
+            this.savingImageService = savingImageService;
             this.logger = logger;
         }
 
         [HttpPost("upload")]
-        public async Task<IActionResult> UploadAsync(IFormFile? file, string category)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UploadAsync([FromForm] ImageCreateDto image)
         {
-            if (file == null || file.Length == 0)
-                return BadRequest(new { Error = "Fichier manquant ou vide." });
+            OneOf<ImageCreatedDto, ErrorCodes.ErrorDetail> result = await savingImageService.SaveAsync(image);
 
-            try
-            {
-                string baseName = Path.GetFileNameWithoutExtension(file.FileName);
-                await using Stream stream = file.OpenReadStream();
-
-                Dictionary<string, byte[]> images = await compressor.CompressAsync(stream, baseName);
-                IEnumerable<string> savedListFile = await storage.StoreAsync(images, "amusement-park-images", category);
-
-                return Ok(new { Success = true, Files = savedListFile });
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Erreur pendant l'upload ou la compression.");
-                return StatusCode(500, new { Error = "Erreur lors du traitement de l'image." });
-            }
+            return ApiResponseHandler.HandleResponse(result);
         }
     }
 }

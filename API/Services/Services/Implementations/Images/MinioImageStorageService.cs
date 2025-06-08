@@ -1,26 +1,30 @@
 ﻿using Minio;
 using Minio.DataModel.Args;
 using Services.Interfaces.Images;
+using Services.Interfaces.Settings;
 
 namespace Services.Implementations.Images;
 
 public class MinioImageStorageService : IImageStorageService
 {
     private readonly IMinioClient minioClient;
+    private readonly IImageStorageSettings settings;
 
-    public MinioImageStorageService(IMinioClient minioClient)
+
+    public MinioImageStorageService(IMinioClient minioClient, IImageStorageSettings settings)
     {
         this.minioClient = minioClient;
+        this.settings = settings;
     }
 
-    public async Task<IEnumerable<string>> StoreAsync(Dictionary<string, byte[]> images, string bucketName, string category)
+    public async Task<IEnumerable<string>> StoreAsync(Dictionary<string, byte[]> images, string category)
     {
-        BucketExistsArgs? bucketExistsArgs = new BucketExistsArgs().WithBucket(bucketName);
+        BucketExistsArgs? bucketExistsArgs = new BucketExistsArgs().WithBucket(settings.Bucket);
         bool exists = await minioClient.BucketExistsAsync(bucketExistsArgs);
 
         if (!exists)
         {
-            await minioClient.MakeBucketAsync(new MakeBucketArgs().WithBucket(bucketName));
+            await minioClient.MakeBucketAsync(new MakeBucketArgs().WithBucket(settings.Bucket));
         }
 
         List<string> savedListFiles = new List<string>();
@@ -32,7 +36,7 @@ public class MinioImageStorageService : IImageStorageService
             string savedFileName = category + '-' + fileName;
 
             await minioClient.PutObjectAsync(new PutObjectArgs()
-                .WithBucket(bucketName)
+                .WithBucket(settings.Bucket)
                 .WithObject(savedFileName)
                 .WithStreamData(stream)
                 .WithObjectSize(stream.Length));
