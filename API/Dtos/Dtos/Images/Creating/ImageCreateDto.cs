@@ -4,7 +4,7 @@ namespace Dtos.Images.Creating
 {
     public class ImageCreateDto
     {
-        public string? Category { get; set; }
+        public ImageCategoryDto Category { get; set; }
 
         public IFormFile? File { get; set; }
     }

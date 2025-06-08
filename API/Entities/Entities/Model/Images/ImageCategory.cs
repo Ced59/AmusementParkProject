@@ -1,6 +1,6 @@
 ﻿namespace Entities.Model.Images;
 
-public enum ImageType
+public enum ImageCategory
 {
     AVATAR,
     PARK,

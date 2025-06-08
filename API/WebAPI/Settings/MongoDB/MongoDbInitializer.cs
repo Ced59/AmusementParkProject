@@ -14,6 +14,7 @@ public static class MongoDbInitializer
     public static async Task InitializeCollectionsAsync(IMongoDatabase database, IMongoDbSettings settings, ISearchIndexService searchIndexService)
     {
         await EnsureCollectionExistsAsync(database, settings.UsersCollectionName);
+        await EnsureCollectionExistsAsync(database, settings.ImagesCollectionName);
         await InitializeParksCollection(database, settings.ParksCollectionName, @"C:\Users\ccaud\Source\Repos\Ced59\AmusementParkProject\API\WebAPI\Resources\InitializingDatas\parks.json");
         await searchIndexService.InitializeFromParksAsync(
             database, 
@@ -60,7 +61,7 @@ public static class MongoDbInitializer
             List<ParkJson>? parksJson = JsonSerializer.Deserialize<List<ParkJson>>(json, options);
 
             // Création de l'index de géolocalisation sur la collection Park
-            parksCollection.Indexes.CreateOne(new CreateIndexModel<Park>(
+            await parksCollection.Indexes.CreateOneAsync(new CreateIndexModel<Park>(
                 Builders<Park>.IndexKeys.Geo2DSphere(park => park.Location)));
 
             List<Park> parks = new();

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Common.Extensions;
 using Services.Interfaces.Images;
 using Dtos.Images.Creating;
 using Entities.Model.Errors;
@@ -28,7 +29,7 @@ namespace Services.Implementations.Images
             if (imageCreateDto.File == null || string.IsNullOrWhiteSpace(imageCreateDto.File.FileName))
                 return ErrorCodes.NoImageFileProvided;
 
-            if (string.IsNullOrWhiteSpace(imageCreateDto.Category))
+            if (string.IsNullOrWhiteSpace(imageCreateDto.Category.ToEnumString()))
                 return ErrorCodes.NoImageCategoryProvided;
 
             try
@@ -39,7 +40,7 @@ namespace Services.Implementations.Images
 
                 Dictionary<string, byte[]> images = await imageCompressorService.CompressAsync(stream, baseName);
 
-                IEnumerable<string> savedListFile = await imageStorageService.StoreAsync(images, imageCreateDto.Category);
+                IEnumerable<string> savedListFile = await imageStorageService.StoreAsync(images, imageCreateDto.Category.ToEnumMinusString());
 
                 return new ImageCreatedDto
                 {
