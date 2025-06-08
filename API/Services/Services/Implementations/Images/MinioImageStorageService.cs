@@ -13,25 +13,33 @@ public class MinioImageStorageService : IImageStorageService
         this.minioClient = minioClient;
     }
 
-    public async Task StoreAsync(Dictionary<string, byte[]> images, string bucketName)
+    public async Task<IEnumerable<string>> StoreAsync(Dictionary<string, byte[]> images, string bucketName, string category)
     {
         BucketExistsArgs? bucketExistsArgs = new BucketExistsArgs().WithBucket(bucketName);
-        var exists = await minioClient.BucketExistsAsync(bucketExistsArgs);
+        bool exists = await minioClient.BucketExistsAsync(bucketExistsArgs);
 
         if (!exists)
         {
             await minioClient.MakeBucketAsync(new MakeBucketArgs().WithBucket(bucketName));
         }
 
-        foreach (var (fileName, content) in images)
+        List<string> savedListFiles = new List<string>();
+
+        foreach ((string fileName, byte[] content) in images)
         {
             using MemoryStream stream = new(content);
 
+            string savedFileName = category + '-' + fileName;
+
             await minioClient.PutObjectAsync(new PutObjectArgs()
                 .WithBucket(bucketName)
-                .WithObject(fileName)
+                .WithObject(savedFileName)
                 .WithStreamData(stream)
                 .WithObjectSize(stream.Length));
+
+            savedListFiles.Add(savedFileName);
         }
+
+        return savedListFiles;
     }
 }
