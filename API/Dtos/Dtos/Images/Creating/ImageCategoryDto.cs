@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dtos.Images.Creating
+﻿namespace Dtos.Images.Creating
 {
     public enum ImageCategoryDto
     {
+        AVATAR,
         PARK_LOGO,
         PARK,
         ATTRACTION

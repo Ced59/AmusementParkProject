@@ -33,5 +33,20 @@
                 $"La valeur « {value} » n'est pas valide pour l'énumération {typeof(TEnum).Name}.",
                 nameof(value));
         }
+
+        /// <summary>
+        /// Convertit n'importe quelle enum-source en enum-destination en se basant sur le nom de la valeur.
+        /// </summary>
+        public static TDestination MapTo<TSource, TDestination>(this TSource source)
+            where TSource : struct, Enum
+            where TDestination : struct, Enum
+        {
+            var name = source.ToString();
+            if (Enum.TryParse<TDestination>(name, ignoreCase: true, out TDestination dest))
+                return dest;
+
+            throw new ArgumentException(
+                $"Impossible de mapper la valeur « {name} » ({typeof(TSource).Name}) vers {typeof(TDestination).Name}");
+        }
     }
 }

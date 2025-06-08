@@ -3,6 +3,7 @@ using Common.Extensions;
 using Services.Interfaces.Images;
 using Dtos.Images.Creating;
 using Entities.Model.Errors;
+using Entities.Model.Images;
 using Microsoft.Extensions.Logging;
 using OneOf;
 using ZstdSharp;
@@ -32,20 +33,33 @@ namespace Services.Implementations.Images
             if (string.IsNullOrWhiteSpace(imageCreateDto.Category.ToEnumString()))
                 return ErrorCodes.NoImageCategoryProvided;
 
+            Image imageToProcess = new()
+            {
+                Category = imageCreateDto.Category.MapTo<ImageCategoryDto, ImageCategory>(),
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                Id = Guid.NewGuid().ToString(),
+                Path = imageCreateDto.File.FileName,
+                Description = imageCreateDto.Description,
+                Longitude = 0,
+                Latitude = 0
+            };
+
+            // TODO Créer le service d'extraction de métadonnées pour la latitude et longitude en envoyant l'entité métier
+
+            // TODO Créer le respository pour l'enregistrement des images et enregistrer en envoyant l'entité métier. Faire les relations pour les MAJ dans les différentes collections.
+
             try
             {
-                string baseName = Path.GetFileNameWithoutExtension(imageCreateDto.File.FileName);
-
-                await using Stream stream = imageCreateDto.File.OpenReadStream();
-
-                Dictionary<string, byte[]> images = await imageCompressorService.CompressAsync(stream, baseName);
-
-                IEnumerable<string> savedListFile = await imageStorageService.StoreAsync(images, imageCreateDto.Category.ToEnumMinusString());
+                IEnumerable<string> savedListFile = await CompressAndStoreImage(imageCreateDto);
 
                 return new ImageCreatedDto
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    SavedListFile = savedListFile
+                    Id = imageToProcess.Id,
+                    SavedListFile = savedListFile,
+                    Category = imageToProcess.Category.MapTo<ImageCategory, ImageCategoryDto>(),
+                    Latitude = imageToProcess.Latitude,
+                    Longitude = imageToProcess.Longitude
                 };
             }
             catch (Exception ex)
@@ -53,6 +67,18 @@ namespace Services.Implementations.Images
                 logger.LogError(ex, "Erreur pendant l'upload ou la compression d'images.");
                 return ErrorCodes.ImageServorInternalError;
             }
+        }
+
+        private async Task<IEnumerable<string>> CompressAndStoreImage(ImageCreateDto imageCreateDto)
+        {
+            string baseName = Path.GetFileNameWithoutExtension(imageCreateDto.File!.FileName);
+
+            await using Stream stream = imageCreateDto.File!.OpenReadStream();
+
+            Dictionary<string, byte[]> images = await imageCompressorService.CompressAsync(stream, baseName);
+
+            IEnumerable<string> savedListFile = await imageStorageService.StoreAsync(images, imageCreateDto.Category.ToEnumMinusString());
+            return savedListFile;
         }
     }
 }

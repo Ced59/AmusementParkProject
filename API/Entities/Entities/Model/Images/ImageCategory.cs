@@ -1,8 +1,10 @@
-﻿namespace Entities.Model.Images;
-
-public enum ImageCategory
+﻿namespace Entities.Model.Images
 {
-    AVATAR,
-    PARK,
-    ATTRACTION
+    public enum ImageCategory
+    {
+        AVATAR,
+        PARK_LOGO,
+        PARK,
+        ATTRACTION
+    }
 }
