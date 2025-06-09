@@ -33,7 +33,7 @@ public class MinioImageStorageService : IImageStorageService
         {
             using MemoryStream stream = new(content);
 
-            string savedFileName = category + '-' + fileName;
+            string savedFileName = $"{category}/{Guid.NewGuid()}-{fileName}";
 
             await minioClient.PutObjectAsync(new PutObjectArgs()
                 .WithBucket(settings.Bucket)

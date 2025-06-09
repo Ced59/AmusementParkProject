@@ -1,84 +1,111 @@
-﻿using System.ComponentModel;
-using Common.Extensions;
-using Services.Interfaces.Images;
+﻿using Common.Extensions;
 using Dtos.Images.Creating;
 using Entities.Model.Errors;
 using Entities.Model.Images;
 using Microsoft.Extensions.Logging;
 using OneOf;
-using ZstdSharp;
+using Services.Interfaces.Images;
 
 namespace Services.Implementations.Images
 {
     public class SavingImageService : ISavingImageService
     {
+        private const string WatermarkText = "amusement-park.fun";
+
         private readonly IImageCompressorService imageCompressorService;
-
         private readonly IImageStorageService imageStorageService;
-
+        private readonly IWaterMarkService waterMarkService;
+        private readonly IImageMetadataExtractorService imageMetadataExtractorService;
         private readonly ILogger<SavingImageService> logger;
 
-        public SavingImageService(IImageCompressorService imageCompressorService, IImageStorageService imageStorageService, ILogger<SavingImageService> logger)
+        public SavingImageService(
+            IImageCompressorService imageCompressorService,
+            IImageStorageService imageStorageService,
+            IWaterMarkService waterMarkService,
+            IImageMetadataExtractorService imageMetadataExtractorService,
+            ILogger<SavingImageService> logger)
         {
             this.imageCompressorService = imageCompressorService;
             this.imageStorageService = imageStorageService;
+            this.waterMarkService = waterMarkService;
+            this.imageMetadataExtractorService = imageMetadataExtractorService;
             this.logger = logger;
         }
 
-        public async Task<OneOf<ImageCreatedDto, ErrorCodes.ErrorDetail>> SaveAsync(ImageCreateDto imageCreateDto)
+        public async Task<OneOf<ImageCreatedDto, ErrorCodes.ErrorDetail>> SaveAsync(
+            ImageCreateDto dto)
         {
-            if (imageCreateDto.File == null || string.IsNullOrWhiteSpace(imageCreateDto.File.FileName))
+            if (dto.File == null || string.IsNullOrWhiteSpace(dto.File.FileName))
                 return ErrorCodes.NoImageFileProvided;
 
-            if (string.IsNullOrWhiteSpace(imageCreateDto.Category.ToEnumString()))
+            if (string.IsNullOrWhiteSpace(dto.Category.ToEnumString()))
                 return ErrorCodes.NoImageCategoryProvided;
 
-            Image imageToProcess = new()
+            string baseName = Path.GetFileNameWithoutExtension(dto.File.FileName);
+            Stream sourceStream = dto.File.OpenReadStream();
+
+            (double? latitude, double? longitude) = await imageMetadataExtractorService.ExtractGeoCoordinatesAsync(sourceStream);
+
+            // Préparation de l'entité métier
+            Image imageEntity = new Image
             {
-                Category = imageCreateDto.Category.MapTo<ImageCategoryDto, ImageCategory>(),
+                Id = Guid.NewGuid().ToString(),
+                Category = dto.Category.MapTo<ImageCategoryDto, ImageCategory>(),
+                Path = dto.File.FileName,
+                Description = dto.Description,
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
-                Id = Guid.NewGuid().ToString(),
-                Path = imageCreateDto.File.FileName,
-                Description = imageCreateDto.Description,
-                Longitude = 0,
-                Latitude = 0
+                Latitude = latitude ?? 0 ,
+                Longitude = longitude ?? 0
             };
-
-            // TODO Créer le service d'extraction de métadonnées pour la latitude et longitude en envoyant l'entité métier
-
-            // TODO Créer le respository pour l'enregistrement des images et enregistrer en envoyant l'entité métier. Faire les relations pour les MAJ dans les différentes collections.
 
             try
             {
-                IEnumerable<string> savedListFile = await CompressAndStoreImage(imageCreateDto);
+                if (dto.WithWatermark)
+                {
+                    
+                    sourceStream = await waterMarkService.ApplyWatermarkAsync(sourceStream, WatermarkText);
+                    sourceStream.Position = 0;
+
+                    await using (FileStream debugStream = File.Create("test_watermarked.png"))
+                    {
+                        sourceStream.Position = 0;
+                        await sourceStream.CopyToAsync(debugStream);
+                    }
+
+                }
+
+                IEnumerable<string> savedFiles = await ProcessAndStoreAsync(sourceStream, baseName, dto.Category.ToEnumMinusString());
 
                 return new ImageCreatedDto
                 {
-                    Id = imageToProcess.Id,
-                    SavedListFile = savedListFile,
-                    Category = imageToProcess.Category.MapTo<ImageCategory, ImageCategoryDto>(),
-                    Latitude = imageToProcess.Latitude,
-                    Longitude = imageToProcess.Longitude
+                    Id = imageEntity.Id,
+                    SavedListFile = savedFiles,
+                    Category = imageEntity.Category.MapTo<ImageCategory, ImageCategoryDto>(),
+                    Latitude = imageEntity.Latitude,
+                    Longitude = imageEntity.Longitude
                 };
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Erreur pendant l'upload ou la compression d'images.");
+                logger.LogError(ex, "Erreur pendant le traitement de l'image.");
                 return ErrorCodes.ImageServorInternalError;
             }
         }
 
-        private async Task<IEnumerable<string>> CompressAndStoreImage(ImageCreateDto imageCreateDto)
+        /// <summary>
+        /// Compresse et stocke l'image depuis le flux fourni.
+        /// </summary>
+        private async Task<IEnumerable<string>> ProcessAndStoreAsync(
+            Stream imageStream,
+            string baseName,
+            string category)
         {
-            string baseName = Path.GetFileNameWithoutExtension(imageCreateDto.File!.FileName);
-
-            await using Stream stream = imageCreateDto.File!.OpenReadStream();
-
-            Dictionary<string, byte[]> images = await imageCompressorService.CompressAsync(stream, baseName);
-
-            IEnumerable<string> savedListFile = await imageStorageService.StoreAsync(images, imageCreateDto.Category.ToEnumMinusString());
-            return savedListFile;
+            await using (imageStream)
+            {
+                Dictionary<string, byte[]> images = await imageCompressorService.CompressAsync(imageStream, baseName);
+                return await imageStorageService.StoreAsync(images, category);
+            }
         }
     }
 }

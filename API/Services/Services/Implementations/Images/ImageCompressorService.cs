@@ -13,6 +13,8 @@ public class ImageCompressorService : IImageCompressorService
 
     public async Task<Dictionary<string, byte[]>> CompressAsync(Stream originalImageStream, string baseFileName)
     {
+        originalImageStream.Position = 0;
+
         using Image image = await Image.LoadAsync(originalImageStream);
 
         (string ext, Func<int, IImageEncoder> encoderFactory)[] formats = new (string ext, Func<int, IImageEncoder> encoderFactory)[]

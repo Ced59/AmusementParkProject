@@ -41,7 +41,7 @@
             where TSource : struct, Enum
             where TDestination : struct, Enum
         {
-            var name = source.ToString();
+            string name = source.ToString();
             if (Enum.TryParse<TDestination>(name, ignoreCase: true, out TDestination dest))
                 return dest;
 

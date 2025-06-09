@@ -61,21 +61,7 @@ public class Program
         builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
         builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
 
-        // MinIO Settings
-        MinIoSettings? minioSettings = builder.Configuration.GetSection("Images:MinIo").Get<MinIoSettings>();
-        builder.Services.AddSingleton<IImageStorageSettings>(minioSettings);
-
-        // Images
-        builder.Services.AddSingleton<IMinioClient>(sp =>
-            new MinioClient()
-                .WithEndpoint(minioSettings.Endpoint)
-                .WithCredentials(minioSettings.AccessKey, minioSettings.SecretKey)
-                .WithSSL(bool.Parse(minioSettings.WithSsl))
-                .Build());
-
-        builder.Services.AddScoped<IImageCompressorService, ImageCompressorService>();
-        builder.Services.AddScoped<IImageStorageService, MinioImageStorageService>();
-        builder.Services.AddScoped<ISavingImageService, SavingImageService>();
+        InjectImagesServices(builder);
 
         // Authentication
         ConfigureAuthentication(builder.Services, builder.Configuration);
@@ -127,6 +113,33 @@ public class Program
                     .AllowAnyMethod()
                     .AllowCredentials());
         });
+    }
+
+    private static void InjectImagesServices(WebApplicationBuilder builder)
+    {
+        // MinIO Settings
+        MinIoSettings? minioSettings = builder.Configuration.GetSection("Images:MinIo").Get<MinIoSettings>();
+        builder.Services.AddSingleton<IImageStorageSettings>(minioSettings);
+
+        // Images
+        builder.Services.AddSingleton<IMinioClient>(sp =>
+            new MinioClient()
+                .WithEndpoint(minioSettings.Endpoint)
+                .WithCredentials(minioSettings.AccessKey, minioSettings.SecretKey)
+                .WithSSL(bool.Parse(minioSettings.WithSsl))
+                .Build());
+
+        builder.Services.AddScoped<IImageCompressorService, ImageCompressorService>();
+        builder.Services.AddScoped<IImageStorageService, MinioImageStorageService>();
+        builder.Services.AddScoped<ISavingImageService, SavingImageService>();
+        builder.Services.AddScoped<IImageMetadataExtractorService, ImageMetadataExtractorService>();
+
+        builder.Services.AddSingleton<IWaterMarkService, WatermarkService>(sp =>
+            new WatermarkService(
+                fontFamilyName: "Arial",
+                fontSize: 24f,
+                fontColor: SixLabors.ImageSharp.Color.LightGray,
+                margin: 15));
     }
 
     private static void ConfigureSwagger(IServiceCollection services)
