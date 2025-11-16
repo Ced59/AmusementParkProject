@@ -41,6 +41,9 @@ public class RequireActivatedUnblockedUserAttribute : ActionFilterAttribute, IAs
             error => { context.Result = new ObjectResult(error.Message) { StatusCode = error.StatusCode }; }
         );
 
-        if (context.Result == null) await next();
+        if (context.Result == null)
+        {
+            await next();
+        }
     }
 }

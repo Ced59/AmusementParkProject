@@ -77,7 +77,9 @@ public class UsersController : ControllerBase
         string? currentUserId = User.GetUserId();
 
         if (currentUserId != id && !User.IsInRoles(Role.ADMIN, Role.MODERATOR))
+        {
             return ApiResponseHandler.HandleResponse(UserCannotUpdateOtherUser);
+        }
 
         OneOf<UserUpdatedDto, ErrorDetail> userUpdated = await usersService.UpdateUserAsync(id, userUpdate);
 

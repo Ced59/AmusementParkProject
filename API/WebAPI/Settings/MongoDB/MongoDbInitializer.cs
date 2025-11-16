@@ -29,7 +29,10 @@ public static class MongoDbInitializer
         IAsyncCursor<BsonDocument>? collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
         bool exists = await collections.AnyAsync();
 
-        if (!exists) await database.CreateCollectionAsync(collectionName);
+        if (!exists)
+        {
+            await database.CreateCollectionAsync(collectionName);
+        }
     }
 
     private static async Task InitializeParksCollection(IMongoDatabase database, string collectionName, string jsonFilePath)

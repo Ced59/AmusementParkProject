@@ -29,7 +29,9 @@ namespace WebAPI.Controllers
             [FromQuery] int pageSize = 10)
         {
             if (string.IsNullOrWhiteSpace(query) && (categories == null || categories.Length == 0))
+            {
                 return BadRequest("Vous devez fournir un terme de recherche ou au moins une catégorie.");
+            }
 
             OneOf<(IEnumerable<SearchResultDto> Data, PaginationDto Pagination), ErrorCodes.ErrorDetail> result = await searchService.SearchAsync(query, categories, page, pageSize);
 

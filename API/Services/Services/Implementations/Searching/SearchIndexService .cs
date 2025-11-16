@@ -119,14 +119,22 @@ namespace Services.Implementations.Searching
         /// </summary>
         public SearchItem ConvertParkToSearchItem(Park park)
         {
-            if (park == null) throw new ArgumentNullException(nameof(park));
+            if (park == null)
+            {
+                throw new ArgumentNullException(nameof(park));
+            }
 
             string originalId = $"park_{park.Id}";
             List<string> keywords = new();
             if (!string.IsNullOrWhiteSpace(park.Name))
+            {
                 keywords.Add(park.Name.Trim().ToLowerInvariant());
+            }
+
             if (!string.IsNullOrWhiteSpace(park.CountryCode))
+            {
                 keywords.Add(park.CountryCode.Trim().ToLowerInvariant());
+            }
 
             SearchItem item = new()
             {
@@ -146,7 +154,10 @@ namespace Services.Implementations.Searching
 
         public async Task UpsertSearchItemAsync(SearchItem item, string searchItemCollectionName)
         {
-            if (item == null) throw new ArgumentNullException(nameof(item));
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
 
             IMongoCollection<SearchItem>? searchColl = database.GetCollection<SearchItem>(searchItemCollectionName);
             FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, item.OriginalId);
@@ -171,7 +182,10 @@ namespace Services.Implementations.Searching
 
         public async Task DeleteSearchItemAsync(string originalId, string searchItemCollectionName)
         {
-            if (string.IsNullOrWhiteSpace(originalId)) throw new ArgumentException(nameof(originalId));
+            if (string.IsNullOrWhiteSpace(originalId))
+            {
+                throw new ArgumentException(nameof(originalId));
+            }
 
             IMongoCollection<SearchItem>? searchColl = database.GetCollection<SearchItem>(searchItemCollectionName);
             FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, originalId);

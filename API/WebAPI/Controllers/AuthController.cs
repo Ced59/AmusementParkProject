@@ -134,7 +134,9 @@ public class AuthController : ControllerBase
     {
         AuthenticateResult result = await HttpContext.AuthenticateAsync(FacebookDefaults.AuthenticationScheme);
         if (!result.Succeeded)
+        {
             return BadRequest("Error from Facebook authentication");
+        }
 
         // Traiter l'authentification réussie ici
         return Ok();

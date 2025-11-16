@@ -15,14 +15,16 @@ public class ImageCompressorService : IImageCompressorService
     public async Task<Dictionary<string, byte[]>> CompressAsync(Stream originalImageStream, string baseFileName)
     {
         if (originalImageStream.CanSeek)
+        {
             originalImageStream.Position = 0;
+        }
 
         using Image image = await Image.LoadAsync(originalImageStream);
 
         // On redimensionne en place si nécessaire
         ResizeInPlaceIfNeeded(image);
 
-        var formats = new (string Ext, Func<int, IImageEncoder> EncoderFactory)[]
+        (string Ext, Func<int, IImageEncoder> EncoderFactory)[] formats =
         {
             ("webp", q => new WebpEncoder { Quality = q }),
             ("jpg",  q => new JpegEncoder { Quality = q })
@@ -47,7 +49,9 @@ public class ImageCompressorService : IImageCompressorService
         int longestEdge = Math.Max(image.Width, image.Height);
 
         if (longestEdge <= MaxLongEdge)
+        {
             return;
+        }
 
         float scale = (float)MaxLongEdge / longestEdge;
         int targetWidth = (int)(image.Width * scale);
@@ -86,10 +90,12 @@ public class ImageCompressorService : IImageCompressorService
             lastAttempt = ms.ToArray();
 
             if (ms.Length <= maxKb * 1024)
+            {
                 return lastAttempt;
+            }
         }
 
-        // Si aucune qualité n'a atteint la limite, on renvoie la dernière tentative
+        // Si aucune qualité n'atteint la limite, on renvoie la dernière tentative
         return lastAttempt ?? throw new InvalidOperationException("Échec de la compression de l'image.");
     }
 }

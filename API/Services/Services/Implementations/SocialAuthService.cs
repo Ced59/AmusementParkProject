@@ -40,7 +40,9 @@ public class SocialAuthService : ISocialAuthService
         string responseString = await response.Content.ReadAsStringAsync();
 
         if (!response.IsSuccessStatusCode)
+        {
             throw new Exception($"Could not retrieve the access token for {provider}");
+        }
 
         TokenResponse? tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(responseString);
         return tokenResponse.AccessToken;
@@ -55,7 +57,9 @@ public class SocialAuthService : ISocialAuthService
 
         string responseString = await response.Content.ReadAsStringAsync();
         if (!response.IsSuccessStatusCode)
+        {
             throw new Exception($"Could not retrieve user info for {provider}");
+        }
 
         return JsonConvert.DeserializeObject<UserGoogleInfos>(responseString);
     }

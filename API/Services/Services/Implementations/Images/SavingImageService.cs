@@ -36,31 +36,39 @@ namespace Services.Implementations.Images
             ImageCreateDto dto)
         {
             if (dto.File == null || string.IsNullOrWhiteSpace(dto.File.FileName))
+            {
                 return ErrorCodes.NoImageFileProvided;
+            }
 
-            // Ça dépend de ton implémentation de ToEnumString, mais ça ne détecte pas forcément "aucune catégorie".
             if (string.IsNullOrWhiteSpace(dto.Category.ToEnumString()))
+            {
                 return ErrorCodes.NoImageCategoryProvided;
+            }
 
-            string baseName = Path.GetFileNameWithoutExtension(dto.File.FileName);
+            // GUID logique commun pour toutes les variantes (webp/jpg)
+            string imageId = Guid.NewGuid().ToString("N");
+            string categorySlug = dto.Category.ToEnumMinusString();
 
             await using Stream sourceStream = dto.File.OpenReadStream();
 
             try
             {
-                // 1. Métadonnées EXIF
+                // 1. Métadonnées GPS
                 (double? latitude, double? longitude) =
                     await imageMetadataExtractorService.ExtractGeoCoordinatesAsync(sourceStream);
 
-                // On remet explicitement à zéro pour la suite du pipeline
-                sourceStream.Position = 0;
+                if (sourceStream.CanSeek)
+                {
+                    sourceStream.Position = 0;
+                }
 
-                // 2. Préparation de l'entité métier
+                // 2. Entité métier (à persister en Mongo dans un autre service)
                 Image imageEntity = new()
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    Id = imageId,
                     Category = dto.Category.MapTo<ImageCategoryDto, ImageCategory>(),
-                    Path = dto.File.FileName,
+                    // On stocke la base de la clé de stockage, sans extension
+                    Path = $"{categorySlug}/{imageId}",
                     Description = dto.Description,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
@@ -68,7 +76,7 @@ namespace Services.Implementations.Images
                     Longitude = longitude ?? 0
                 };
 
-                // 3. Choix du flux à compresser : original ou filigrané
+                // 3. Choix du flux à utiliser pour la compression
                 Stream processingStream = sourceStream;
                 Stream? watermarkedStream = null;
 
@@ -76,28 +84,23 @@ namespace Services.Implementations.Images
                 {
                     watermarkedStream = await waterMarkService.ApplyWatermarkAsync(sourceStream, WatermarkText);
                     processingStream = watermarkedStream;
-                    processingStream.Position = 0;
 
-#if DEBUG
-                    // Debug : on enregistre l'image filigranée pour inspection
-                    await using (FileStream debugStream = File.Create("test_watermarked.jpg"))
+                    if (processingStream.CanSeek)
                     {
                         processingStream.Position = 0;
-                        await processingStream.CopyToAsync(debugStream);
-                        processingStream.Position = 0;
                     }
-#endif
                 }
 
                 // 4. Compression + stockage Minio
                 IEnumerable<string> savedFiles =
-                    await ProcessAndStoreAsync(processingStream, baseName, dto.Category.ToEnumMinusString());
+                    await ProcessAndStoreAsync(processingStream, imageId, categorySlug);
 
-                // On nettoie le flux filigrané éventuel
                 if (watermarkedStream is not null)
+                {
                     await watermarkedStream.DisposeAsync();
+                }
 
-                // 5. Résultat
+                // 5. Résultat renvoyé à l'appelant
                 return new ImageCreatedDto
                 {
                     Id = imageEntity.Id,
@@ -116,16 +119,17 @@ namespace Services.Implementations.Images
 
         /// <summary>
         /// Compresse et stocke l'image depuis le flux fourni.
-        /// Le flux n'est PAS disposé ici (c'est le rôle de l'appelant).
+        /// Le flux n'est PAS disposé ici : c'est la responsabilité de l'appelant.
         /// </summary>
         private async Task<IEnumerable<string>> ProcessAndStoreAsync(
             Stream imageStream,
             string baseName,
             string category)
         {
-            // On s'assure juste d'être au début
             if (imageStream.CanSeek)
+            {
                 imageStream.Position = 0;
+            }
 
             Dictionary<string, byte[]> images =
                 await imageCompressorService.CompressAsync(imageStream, baseName);

@@ -181,7 +181,10 @@ public class Program
 
             string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            if (File.Exists(xmlPath)) c.IncludeXmlComments(xmlPath);
+            if (File.Exists(xmlPath))
+            {
+                c.IncludeXmlComments(xmlPath);
+            }
 
             // Add authorization filter to mark protected endpoints
             c.OperationFilter<AddJwtBearerAuthorizationFilter>();
@@ -263,7 +266,9 @@ public class Program
     {
         if (string.IsNullOrEmpty(settings.Key) || string.IsNullOrEmpty(settings.Issuer) ||
             string.IsNullOrEmpty(settings.Audience))
+        {
             throw new InvalidOperationException("JWT settings are not properly configured.");
+        }
     }
 
     private static void ConfigureMongoDb(IServiceCollection services, IMongoDbSettings settings)

@@ -13,7 +13,9 @@ namespace Services.Implementations.Images
 
             ExifProfile? exif = image.Metadata.ExifProfile;
             if (exif == null)
+            {
                 return (null, null);
+            }
 
             IExifValue? latTag = exif.Values.FirstOrDefault(v => v.Tag == ExifTag.GPSLatitude);
             IExifValue? latRefTag = exif.Values.FirstOrDefault(v => v.Tag == ExifTag.GPSLatitudeRef);
@@ -29,7 +31,9 @@ namespace Services.Implementations.Images
         private double? ParseGpsCoordinate(Rational[]? values, string? direction)
         {
             if (values is not { Length: 3 } || string.IsNullOrWhiteSpace(direction))
+            {
                 return null;
+            }
 
             double degrees = values[0].ToDouble();
             double minutes = values[1].ToDouble();
@@ -38,7 +42,9 @@ namespace Services.Implementations.Images
             double result = degrees + (minutes / 60.0) + (seconds / 3600.0);
 
             if (direction is "S" or "W")
+            {
                 result *= -1;
+            }
 
             return result;
         }

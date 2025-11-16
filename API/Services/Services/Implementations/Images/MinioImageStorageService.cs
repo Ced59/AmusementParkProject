@@ -3,63 +3,62 @@ using Minio.DataModel.Args;
 using Services.Interfaces.Images;
 using Services.Interfaces.Settings;
 
-namespace Services.Implementations.Images
+namespace Services.Implementations.Images;
+
+public class MinioImageStorageService : IImageStorageService
 {
-    public class MinioImageStorageService : IImageStorageService
+    private readonly IMinioClient minioClient;
+    private readonly IImageStorageSettings settings;
+
+    public MinioImageStorageService(IMinioClient minioClient, IImageStorageSettings settings)
     {
-        private readonly IMinioClient minioClient;
-        private readonly IImageStorageSettings settings;
+        this.minioClient = minioClient;
+        this.settings = settings;
+    }
 
-        public MinioImageStorageService(IMinioClient minioClient, IImageStorageSettings settings)
+    public async Task<IEnumerable<string>> StoreAsync(Dictionary<string, byte[]> images, string category)
+    {
+        BucketExistsArgs bucketExistsArgs = new BucketExistsArgs().WithBucket(settings.Bucket);
+        bool exists = await minioClient.BucketExistsAsync(bucketExistsArgs);
+
+        if (!exists)
         {
-            this.minioClient = minioClient;
-            this.settings = settings;
+            await minioClient.MakeBucketAsync(new MakeBucketArgs().WithBucket(settings.Bucket));
         }
 
-        public async Task<IEnumerable<string>> StoreAsync(Dictionary<string, byte[]> images, string category)
+        List<string> savedListFiles = new();
+
+        foreach ((string fileName, byte[] content) in images)
         {
-            BucketExistsArgs bucketExistsArgs = new BucketExistsArgs().WithBucket(settings.Bucket);
-            bool exists = await minioClient.BucketExistsAsync(bucketExistsArgs);
+            await using MemoryStream stream = new(content);
 
-            if (!exists)
-            {
-                await minioClient.MakeBucketAsync(new MakeBucketArgs().WithBucket(settings.Bucket));
-            }
+            string savedFileName = $"{category}/{fileName}";
 
-            List<string> savedListFiles = new();
+            string contentType = GetContentTypeFromExtension(fileName);
 
-            foreach ((string fileName, byte[] content) in images)
-            {
-                await using MemoryStream stream = new(content);
+            await minioClient.PutObjectAsync(new PutObjectArgs()
+                .WithBucket(settings.Bucket)
+                .WithObject(savedFileName)
+                .WithStreamData(stream)
+                .WithObjectSize(stream.Length)
+                .WithContentType(contentType));
 
-                string savedFileName = $"{category}/{Guid.NewGuid()}-{fileName}";
-
-                string contentType = GetContentTypeFromExtension(fileName);
-
-                await minioClient.PutObjectAsync(new PutObjectArgs()
-                    .WithBucket(settings.Bucket)
-                    .WithObject(savedFileName)
-                    .WithStreamData(stream)
-                    .WithObjectSize(stream.Length)
-                    .WithContentType(contentType));
-
-                savedListFiles.Add(savedFileName);
-            }
-
-            return savedListFiles;
+            savedListFiles.Add(savedFileName);
         }
 
-        private static string GetContentTypeFromExtension(string fileName)
-        {
-            string ext = Path.GetExtension(fileName).ToLowerInvariant();
+        return savedListFiles;
+    }
 
-            return ext switch
-            {
-                ".webp" => "image/webp",
-                ".jpg" or ".jpeg" => "image/jpeg",
-                ".png" => "image/png",
-                _ => "application/octet-stream"
-            };
-        }
+    private static string GetContentTypeFromExtension(string fileName)
+    {
+        string ext = Path.GetExtension(fileName).ToLowerInvariant();
+
+        return ext switch
+        {
+            ".webp" => "image/webp",
+            ".jpg" or ".jpeg" => "image/jpeg",
+            ".png" => "image/png",
+            _ => "application/octet-stream"
+        };
     }
 }

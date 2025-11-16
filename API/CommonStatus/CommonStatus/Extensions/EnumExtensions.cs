@@ -24,10 +24,14 @@
             where TEnum : struct, Enum
         {
             if (string.IsNullOrWhiteSpace(value))
+            {
                 throw new ArgumentNullException(nameof(value), "La chaîne ne peut pas être nulle ou vide.");
+            }
 
             if (Enum.TryParse<TEnum>(value, ignoreCase: true, out TEnum result))
+            {
                 return result;
+            }
 
             throw new ArgumentException(
                 $"La valeur « {value} » n'est pas valide pour l'énumération {typeof(TEnum).Name}.",
@@ -43,7 +47,9 @@
         {
             string name = source.ToString();
             if (Enum.TryParse<TDestination>(name, ignoreCase: true, out TDestination dest))
+            {
                 return dest;
+            }
 
             throw new ArgumentException(
                 $"Impossible de mapper la valeur « {name} » ({typeof(TSource).Name}) vers {typeof(TDestination).Name}");
