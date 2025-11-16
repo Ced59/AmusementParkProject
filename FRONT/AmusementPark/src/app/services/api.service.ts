@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import {API_ENDPOINTS} from "../api/api-endpoints";
-import {UserCredentials} from "../models/users/user_credentials";
-import {Observable} from "rxjs";
-import {UserToken} from "../models/users/user_token";
-import {UserDto} from "../models/users/user_dto";
-import {UserPut} from "../models/users/user_put";
-import {ParksApiResponse} from "../models/parks/parks_api_response";
-import {Park} from "../models/parks/park";
-import {SearchApiResponse} from "../models/search/search-api-response";
+import { environment } from "../../environments/environment";
+import { API_ENDPOINTS } from "../api/api-endpoints";
+import { UserCredentials } from "../models/users/user_credentials";
+import { Observable } from "rxjs";
+import { UserToken } from "../models/users/user_token";
+import { UserDto } from "../models/users/user_dto";
+import { UserPut } from "../models/users/user_put";
+import { ParksApiResponse } from "../models/parks/parks_api_response";
+import { Park } from "../models/parks/park";
+import { SearchApiResponse } from "../models/search/search-api-response";
+import {UsersApiResponse} from "../models/users/users_api_response";
 
 @Injectable({
   providedIn: 'root'
@@ -33,11 +34,9 @@ export class ApiService {
     return this.http.post(url, { code });
   }
 
-
-
-
-  getUsers() {
-    return this.http.get(`${environment.apiBaseUrl}${API_ENDPOINTS.getUsers}`);
+  getUsers(page: number = 1, size: number = 10) {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getUsers}?page=${page}&size=${size}`;
+    return this.http.get<UsersApiResponse>(url);
   }
 
   getUserById(id: string) {
@@ -54,7 +53,6 @@ export class ApiService {
 
     return this.http.put<UserDto>(url, JSON.stringify(user), httpOptions)
   }
-
 
   getParksPaginated(page: number, size: number) {
     return this.http.get<ParksApiResponse>(`${environment.apiBaseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`)

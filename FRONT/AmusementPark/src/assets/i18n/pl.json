@@ -68,6 +68,18 @@
       "users": "Użytkownicy",
       "parks": "Parki",
       "site": "Witryna"
+    },
+    "users": {
+      "total": "Łączna liczba użytkowników: {{count}}",
+      "empty": "Nie znaleziono użytkowników."
+    },
+    "parks": {
+      "total": "Łączna liczba parków: {{count}}",
+      "empty": "Nie znaleziono parków.",
+      "name": "Park",
+      "country": "Kraj",
+      "actions": "Akcje",
+      "edit": "Edytuj"
     }
   }
 }

@@ -68,6 +68,19 @@
       "users": "Gebruikers",
       "parks": "Parken",
       "site": "Website"
+    },
+    "users": {
+      "total": "Totaal aantal gebruikers: {{count}}",
+      "empty": "Geen gebruikers gevonden."
+    },
+    "parks": {
+      "total": "Totaal aantal parken: {{count}}",
+      "empty": "Geen parken gevonden.",
+      "name": "Park",
+      "country": "Land",
+      "actions": "Acties",
+      "edit": "Bewerken"
     }
   }
+
 }

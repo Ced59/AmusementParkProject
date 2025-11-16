@@ -63,12 +63,23 @@
     "admin": "Admin"
   },
   "admin": {
-  "title": "Panel de administración",
-  "tabs": {
-    "users": "Usuarios",
-    "parks": "Parques",
-    "site": "Sitio"
+    "title": "Panel de administración",
+    "tabs": {
+      "users": "Usuarios",
+      "parks": "Parques",
+      "site": "Sitio"
+    },
+    "users": {
+      "total": "Número total de usuarios: {{count}}",
+      "empty": "No se encontraron usuarios."
+    },
+    "parks": {
+      "total": "Número total de parques: {{count}}",
+      "empty": "No se encontraron parques.",
+      "name": "Parque",
+      "country": "País",
+      "actions": "Acciones",
+      "edit": "Editar"
+    }
   }
-}
-
 }

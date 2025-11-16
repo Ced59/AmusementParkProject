@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+p-card {
+  width: 100%;
+}
+
+.p-tag {
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .total {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+}

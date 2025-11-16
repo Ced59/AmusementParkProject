@@ -1,1 +1,53 @@
-<p>admin-parks works!</p>
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="header-row">
+      <span class="total" *ngIf="!loading">
+        {{ 'admin.parks.total' | translate:{ count: totalRecords } }}
+      </span>
+    </div>
+  </ng-template>
+
+  <p-table
+    [value]="parks"
+    [loading]="loading"
+    [paginator]="true"
+    [rows]="pageSize"
+    [totalRecords]="totalRecords"
+    [lazy]="true"
+    (onLazyLoad)="onPageChanged($event)"
+    [responsiveLayout]="'scroll'"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'admin.parks.name' | translate }}</th>
+        <th>{{ 'admin.parks.country' | translate }}</th>
+        <th>{{ 'admin.parks.actions' | translate }}</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-park>
+      <tr>
+        <td>{{ park.name }}</td>
+        <td>{{ park.countryCode }}</td>
+        <td>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-text p-button-sm"
+            [label]="'admin.parks.edit' | translate"
+            (click)="$event.stopPropagation()"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="3">
+          {{ 'admin.parks.empty' | translate }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

@@ -1,1 +1,54 @@
-<p>admin-users works!</p>
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="header-row">
+      <span class="total" *ngIf="!loading">
+        {{ 'admin.users.total' | translate:{ count: totalRecords } }}
+      </span>
+    </div>
+  </ng-template>
+
+  <p-table
+    [value]="users"
+    [loading]="loading"
+    [paginator]="true"
+    [rows]="pageSize"
+    [totalRecords]="totalRecords"
+    [lazy]="true"
+    (onLazyLoad)="onPageChanged($event)"
+    [responsiveLayout]="'scroll'"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Roles</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>
+          <p-tag
+            *ngFor="let role of user.roles"
+            [value]="role"
+            class="mr-1"
+          ></p-tag>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">
+          {{ 'admin.users.empty' | translate }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

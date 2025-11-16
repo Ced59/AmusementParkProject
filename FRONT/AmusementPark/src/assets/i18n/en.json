@@ -63,12 +63,23 @@
     "admin": "Admin"
   },
   "admin": {
-  "title": "Admin Panel",
-  "tabs": {
-    "users": "Users",
-    "parks": "Parks",
-    "site": "Site"
+    "title": "Admin Panel",
+    "tabs": {
+      "users": "Users",
+      "parks": "Parks",
+      "site": "Site"
+    },
+    "users": {
+      "total": "Total users: {{count}}",
+      "empty": "No users found."
+    },
+    "parks": {
+      "total": "Total parks: {{count}}",
+      "empty": "No parks found.",
+      "name": "Park",
+      "country": "Country",
+      "actions": "Actions",
+      "edit": "Edit"
+    }
   }
-}
-
 }
