@@ -1,8 +1,8 @@
 ﻿using Services.Interfaces.Images;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Formats.Jpeg;
 using SixLabors.ImageSharp.Formats.Webp;
-using SixLabors.ImageSharp.Formats;
 using SixLabors.ImageSharp.Processing;
 
 namespace Services.Implementations.Images;
@@ -10,14 +10,19 @@ namespace Services.Implementations.Images;
 public class ImageCompressorService : IImageCompressorService
 {
     private const int MaxFileSizeKb = 300;
+    private const int MaxLongEdge = 1920; // plus grand côté max (ajuste selon ton besoin)
 
     public async Task<Dictionary<string, byte[]>> CompressAsync(Stream originalImageStream, string baseFileName)
     {
-        originalImageStream.Position = 0;
+        if (originalImageStream.CanSeek)
+            originalImageStream.Position = 0;
 
         using Image image = await Image.LoadAsync(originalImageStream);
 
-        (string ext, Func<int, IImageEncoder> encoderFactory)[] formats = new (string ext, Func<int, IImageEncoder> encoderFactory)[]
+        // On redimensionne en place si nécessaire
+        ResizeInPlaceIfNeeded(image);
+
+        var formats = new (string Ext, Func<int, IImageEncoder> EncoderFactory)[]
         {
             ("webp", q => new WebpEncoder { Quality = q }),
             ("jpg",  q => new JpegEncoder { Quality = q })
@@ -27,55 +32,64 @@ public class ImageCompressorService : IImageCompressorService
 
         foreach ((string ext, Func<int, IImageEncoder> encoderFactory) in formats)
         {
-            byte[] compressed = await CompressToMaxSize(image, encoderFactory, MaxFileSizeKb);
+            byte[] compressed = await EncodeWithSizeLimitAsync(image, encoderFactory, MaxFileSizeKb);
             result.Add($"{baseFileName}.{ext}", compressed);
         }
 
         return result;
     }
 
-    private async Task<byte[]> CompressToMaxSize(Image original, Func<int, IImageEncoder> encoderFactory, int maxKb)
+    /// <summary>
+    /// Redimensionne l'image en place si le plus grand côté dépasse MaxLongEdge.
+    /// </summary>
+    private static void ResizeInPlaceIfNeeded(Image image)
     {
-        int quality = 85;
-        int minQuality = 40;
-        byte[]? lastValid = null;
+        int longestEdge = Math.Max(image.Width, image.Height);
 
-        // Phase 1 – Compression par qualité uniquement
-        for (; quality >= minQuality; quality -= 5)
-        {
-            using MemoryStream ms = new MemoryStream();
-            await original.SaveAsync(ms, encoderFactory(quality));
+        if (longestEdge <= MaxLongEdge)
+            return;
 
-            if (ms.Length <= maxKb * 1024)
-                return ms.ToArray(); // Compression réussie
+        float scale = (float)MaxLongEdge / longestEdge;
+        int targetWidth = (int)(image.Width * scale);
+        int targetHeight = (int)(image.Height * scale);
 
-            lastValid = ms.ToArray(); // Stocke la meilleure tentative même si > max
-        }
-
-        // Phase 2 – Resize + qualité basse si toujours trop gros
-        double scale = 0.9;
-        int width = original.Width;
-        int height = original.Height;
-
-        for (int i = 0; i < 5; i++) // max 5 essais avec redimensionnement
-        {
-            width = (int)(width * scale);
-            height = (int)(height * scale);
-
-            using Image resized = original.Clone(ctx => ctx.Resize(new ResizeOptions
+        image.Mutate(ctx =>
+            ctx.Resize(new ResizeOptions
             {
-                Size = new Size(width, height),
+                Size = new Size(targetWidth, targetHeight),
                 Mode = ResizeMode.Max
             }));
+    }
 
-            using MemoryStream ms = new MemoryStream();
-            await resized.SaveAsync(ms, encoderFactory(minQuality));
+    /// <summary>
+    /// Encode l'image avec quelques qualités prédéfinies,
+    /// en s'arrêtant dès que la taille est sous la limite.
+    /// </summary>
+    private static async Task<byte[]> EncodeWithSizeLimitAsync(
+        Image image,
+        Func<int, IImageEncoder> encoderFactory,
+        int maxKb)
+    {
+        int[] qualities = { 80, 70, 60 }; // 3 tentatives max
+
+        byte[]? lastAttempt = null;
+        using MemoryStream ms = new();
+
+        foreach (int quality in qualities)
+        {
+            ms.Position = 0;
+            ms.SetLength(0);
+
+            IImageEncoder encoder = encoderFactory(quality);
+
+            await image.SaveAsync(ms, encoder);
+            lastAttempt = ms.ToArray();
 
             if (ms.Length <= maxKb * 1024)
-                return ms.ToArray();
+                return lastAttempt;
         }
 
-        // Dernier recours : retourne le meilleur résultat, même s’il dépasse la limite
-        return lastValid ?? throw new InvalidOperationException("Échec de compression.");
+        // Si aucune qualité n'a atteint la limite, on renvoie la dernière tentative
+        return lastAttempt ?? throw new InvalidOperationException("Échec de la compression de l'image.");
     }
 }
