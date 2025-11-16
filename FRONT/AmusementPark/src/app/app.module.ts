@@ -43,6 +43,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {SidebarModule} from "primeng/sidebar";
 import { ParkListComponent } from './components/park-list/park-list.component';
 import {MultiSelectModule} from "primeng/multiselect";
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -66,7 +67,8 @@ export function initializeApp(translationService: TranslationService): () => Pro
       ThemeSwitcherComponent,
       ParkDetailComponent,
       SidebarComponent,
-      ParkListComponent
+      ParkListComponent,
+      AdminDashboardComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
       AppRoutingModule,

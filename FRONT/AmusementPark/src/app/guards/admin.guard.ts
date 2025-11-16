@@ -3,30 +3,34 @@ import { CanActivateFn, Router } from '@angular/router';
 import { PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { AuthService } from '../services/auth/auth.service';
-import { ModalService } from '../services/modal/modal.service';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const adminGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
-  const modalService = inject(ModalService);
   const router = inject(Router);
   const platformId = inject(PLATFORM_ID);
 
-  // Déjà loggué → ok
-  if (authService.isLoggedIn()) {
+  // Si pas loggué, on laisse authGuard gérer ça normalement,
+  // mais au cas où il n'est pas enchaîné, on protège quand même :
+  if (!authService.isLoggedIn()) {
+    return redirectToHome(router, state);
+  }
+
+  // Check du rôle ADMIN
+  if (authService.hasRole('ADMIN')) {
     return true;
   }
 
-  // Pas loggué
   if (isPlatformBrowser(platformId)) {
-    // En browser : on ouvre le modal de login
-    modalService.openModal('loginModal');
-    return false;
+    console.warn('Access denied: user is not admin.');
+    // ici tu peux plugger un toast "Access denied"
   }
 
-  // En SSR : on redirige vers /<lang>/home
+  return redirectToHome(router, state);
+};
+
+function redirectToHome(router: Router, state: any) {
   const url = state.url || router.url || '/en/home';
   const segments = url.split('/').filter(Boolean);
   const lang = segments[0] || 'en';
-
   return router.createUrlTree([`/${lang}/home`]);
-};
+}

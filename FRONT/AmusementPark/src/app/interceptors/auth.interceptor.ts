@@ -1,41 +1,42 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
+import {
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest
+} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (
-      typeof localStorage === 'undefined'
-      || req.url.endsWith('/login')
-      || req.url.includes('google-response')
+      typeof window === 'undefined' ||
+      req.url.endsWith('/login') ||
+      req.url.includes('google-response')
     ) {
       return next.handle(req);
     }
 
-    const authToken = localStorage.getItem('auth_token');
-
-    if (authToken) {
-
-      if (!this.isTokenExpired(authToken)) {
-        const authReq = req.clone({
-          headers: req.headers.set('Authorization', `Bearer ${authToken}`)
-        });
-
-        return next.handle(authReq);
-      }
+    const token = this.authService.getToken();
+    if (!token) {
+      return next.handle(req);
     }
 
-    return next.handle(req);
-  }
+    const decoded = this.authService.getTokenDecoded();
+    if (!decoded || !decoded.exp || Date.now() >= decoded.exp * 1000) {
+      // éventuellement : this.authService.logout();
+      return next.handle(req);
+    }
 
-  private isTokenExpired(token: string): boolean {
+    const authReq = req.clone({
+      headers: req.headers.set('Authorization', `Bearer ${token}`)
+    });
 
-    const decodedToken = JSON.parse(atob(token.split('.')[1]));
-    const expirationDate = new Date(decodedToken.exp * 1000);
-    return expirationDate < new Date();
+    return next.handle(authReq);
   }
 }
