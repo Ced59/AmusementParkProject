@@ -1,1 +1,46 @@
-<p>admin-dashboard works!</p>
+<div class="admin-dashboard">
+  <header class="admin-header">
+    <h1>{{ 'admin.title' | translate }}</h1>
+    <p class="subtitle">
+      {{ 'admin.subtitle' | translate }}
+    </p>
+  </header>
+
+  <!-- Onglets de navigation -->
+  <nav class="admin-tabs">
+    <button
+      pButton
+      class="admin-tab"
+      [routerLink]="['users']"
+      routerLinkActive="active-tab"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [label]="'admin.tabs.users' | translate"
+      icon="pi pi-users"
+    ></button>
+
+    <button
+      pButton
+      class="admin-tab"
+      [routerLink]="['parks']"
+      routerLinkActive="active-tab"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [label]="'admin.tabs.parks' | translate"
+      icon="pi pi-compass"
+    ></button>
+
+    <button
+      pButton
+      class="admin-tab"
+      [routerLink]="['site']"
+      routerLinkActive="active-tab"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [label]="'admin.tabs.site' | translate"
+      icon="pi pi-cog"
+    ></button>
+  </nav>
+
+  <!-- Contenu des sous-routes -->
+  <section class="admin-content">
+    <router-outlet></router-outlet>
+  </section>
+</div>

@@ -61,5 +61,13 @@
     "about": "Informazioni",
     "profile": "Profilo",
     "admin": "Admin"
+  },
+  "admin": {
+    "title": "Pannello di amministrazione",
+    "tabs": {
+      "users": "Utenti",
+      "parks": "Parchi",
+      "site": "Sito"
+    }
   }
 }

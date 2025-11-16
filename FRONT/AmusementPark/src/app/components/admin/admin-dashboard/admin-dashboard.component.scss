@@ -1,0 +1,40 @@
+.admin-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    margin: 0;
+    opacity: 0.8;
+  }
+}
+
+.admin-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.admin-tab {
+  border-radius: 999px;
+}
+
+.active-tab {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.admin-content {
+  min-height: 300px;
+}

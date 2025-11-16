@@ -61,5 +61,13 @@
     "about": "Over ons",
     "profile": "Profiel",
     "admin": "Admin"
+  },
+  "admin": {
+    "title": "Beheerpaneel",
+    "tabs": {
+      "users": "Gebruikers",
+      "parks": "Parken",
+      "site": "Website"
+    }
   }
 }

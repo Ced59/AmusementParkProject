@@ -61,5 +61,14 @@
     "about": "About",
     "profile": "Profile",
     "admin": "Admin"
+  },
+  "admin": {
+  "title": "Admin Panel",
+  "tabs": {
+    "users": "Users",
+    "parks": "Parks",
+    "site": "Site"
   }
+}
+
 }

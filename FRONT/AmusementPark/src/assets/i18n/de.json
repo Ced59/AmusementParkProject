@@ -61,5 +61,13 @@
     "about": "Über uns",
     "profile": "Profil",
     "admin": "Admin"
+  },
+  "admin": {
+    "title": "Admin-Bereich",
+    "tabs": {
+      "users": "Benutzer",
+      "parks": "Parks",
+      "site": "Website"
+    }
   }
 }

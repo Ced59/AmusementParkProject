@@ -26,7 +26,28 @@ const routes: Routes = [
       {
         path: 'admin',
         component: AdminDashboardComponent,
-        canActivate: [authGuard, adminGuard]
+        canActivate: [authGuard, adminGuard],
+        children: [
+          {
+            path: 'users',
+            loadChildren: () =>
+              import('./components/admin/users/admin-users/admin-users.module')
+                .then(m => m.AdminUsersModule)
+          },
+          {
+            path: 'parks',
+            loadChildren: () =>
+              import('./components/admin/parks/admin-parks/admin-parks.module')
+                .then(m => m.AdminParksModule)
+          },
+          {
+            path: 'site',
+            loadChildren: () =>
+              import('./components/admin/site/admin-site/admin-site.module')
+                .then(m => m.AdminSiteModule)
+          },
+          { path: '', redirectTo: 'users', pathMatch: 'full' }
+        ]
       },
 
       { path: '', redirectTo: 'home', pathMatch: 'full' }
