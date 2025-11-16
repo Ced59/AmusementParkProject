@@ -34,32 +34,48 @@ public class ImageCompressorService : IImageCompressorService
         return result;
     }
 
-    private async Task<byte[]> CompressToMaxSize(Image image, Func<int, IImageEncoder> encoderFactory, int maxKb)
+    private async Task<byte[]> CompressToMaxSize(Image original, Func<int, IImageEncoder> encoderFactory, int maxKb)
     {
-        int width = image.Width;
-        int height = image.Height;
         int quality = 85;
+        int minQuality = 40;
+        byte[]? lastValid = null;
 
-        for (int i = 0; i < 10; i++)
+        // Phase 1 – Compression par qualité uniquement
+        for (; quality >= minQuality; quality -= 5)
         {
-            using MemoryStream ms = new();
-            Image clone = image.Clone(ctx => ctx.Resize(new ResizeOptions
+            using MemoryStream ms = new MemoryStream();
+            await original.SaveAsync(ms, encoderFactory(quality));
+
+            if (ms.Length <= maxKb * 1024)
+                return ms.ToArray(); // Compression réussie
+
+            lastValid = ms.ToArray(); // Stocke la meilleure tentative même si > max
+        }
+
+        // Phase 2 – Resize + qualité basse si toujours trop gros
+        double scale = 0.9;
+        int width = original.Width;
+        int height = original.Height;
+
+        for (int i = 0; i < 5; i++) // max 5 essais avec redimensionnement
+        {
+            width = (int)(width * scale);
+            height = (int)(height * scale);
+
+            using Image resized = original.Clone(ctx => ctx.Resize(new ResizeOptions
             {
                 Size = new Size(width, height),
                 Mode = ResizeMode.Max
             }));
 
-            IImageEncoder encoder = encoderFactory(quality);
+            using MemoryStream ms = new MemoryStream();
+            await resized.SaveAsync(ms, encoderFactory(minQuality));
 
-            await clone.SaveAsync(ms, encoder);
             if (ms.Length <= maxKb * 1024)
                 return ms.ToArray();
-
-            width = (int)(width * 0.9);
-            height = (int)(height * 0.9);
-            quality -= 5;
         }
 
-        throw new InvalidOperationException("Impossible de compresser l'image sous 300 Ko.");
+        // Dernier recours : retourne le meilleur résultat, même s’il dépasse la limite
+        return lastValid ?? throw new InvalidOperationException("Échec de compression.");
     }
 }
