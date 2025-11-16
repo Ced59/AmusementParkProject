@@ -67,5 +67,22 @@
         <span class="link-text">{{ 'sidebar.profile' | translate }}</span>
       </a>
     </li>
+
+    <!-- 🔒 Lien Admin, visible seulement si loggé + admin -->
+    <li
+      class="nav-item"
+      *ngIf="isLoggedIn && isAdmin"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a
+        [routerLink]="['/', currentLang, 'admin']"
+        class="nav-link"
+        (click)="handleNavClick($event)"
+      >
+        <i class="pi pi-shield"></i>
+        <span class="link-text">{{ 'sidebar.admin' | translate }}</span>
+      </a>
+    </li>
   </ul>
 </nav>
