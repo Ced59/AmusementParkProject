@@ -4,6 +4,7 @@ using Entities.Model.Errors;
 using Entities.Model.Images;
 using Microsoft.Extensions.Logging;
 using OneOf;
+using Repositories.Interfaces;
 using Services.Interfaces.Images;
 
 namespace Services.Implementations.Images
@@ -16,6 +17,7 @@ namespace Services.Implementations.Images
         private readonly IImageStorageService imageStorageService;
         private readonly IWaterMarkService waterMarkService;
         private readonly IImageMetadataExtractorService imageMetadataExtractorService;
+        private readonly IImagesQueryHandler imagesQueryHandler;
         private readonly ILogger<SavingImageService> logger;
 
         public SavingImageService(
@@ -23,12 +25,14 @@ namespace Services.Implementations.Images
             IImageStorageService imageStorageService,
             IWaterMarkService waterMarkService,
             IImageMetadataExtractorService imageMetadataExtractorService,
+            IImagesQueryHandler imagesQueryHandler,
             ILogger<SavingImageService> logger)
         {
             this.imageCompressorService = imageCompressorService;
             this.imageStorageService = imageStorageService;
             this.waterMarkService = waterMarkService;
             this.imageMetadataExtractorService = imageMetadataExtractorService;
+            this.imagesQueryHandler = imagesQueryHandler;
             this.logger = logger;
         }
 
@@ -36,14 +40,10 @@ namespace Services.Implementations.Images
             ImageCreateDto dto)
         {
             if (dto.File == null || string.IsNullOrWhiteSpace(dto.File.FileName))
-            {
                 return ErrorCodes.NoImageFileProvided;
-            }
 
             if (string.IsNullOrWhiteSpace(dto.Category.ToEnumString()))
-            {
                 return ErrorCodes.NoImageCategoryProvided;
-            }
 
             // GUID logique commun pour toutes les variantes (webp/jpg)
             string imageId = Guid.NewGuid().ToString("N");
@@ -58,16 +58,14 @@ namespace Services.Implementations.Images
                     await imageMetadataExtractorService.ExtractGeoCoordinatesAsync(sourceStream);
 
                 if (sourceStream.CanSeek)
-                {
                     sourceStream.Position = 0;
-                }
 
-                // 2. Entité métier (à persister en Mongo dans un autre service)
+                // 2. Entité métier (sera persistée en Mongo)
                 Image imageEntity = new()
                 {
                     Id = imageId,
                     Category = dto.Category.MapTo<ImageCategoryDto, ImageCategory>(),
-                    // On stocke la base de la clé de stockage, sans extension
+                    // On stocke la "base" sans extension : ex. "attraction/{imageId}"
                     Path = $"{categorySlug}/{imageId}",
                     Description = dto.Description,
                     CreatedAt = DateTime.UtcNow,
@@ -86,9 +84,25 @@ namespace Services.Implementations.Images
                     processingStream = watermarkedStream;
 
                     if (processingStream.CanSeek)
-                    {
                         processingStream.Position = 0;
+
+#if DEBUG
+                    // Debug : on sauvegarde l'image filigranée pour contrôle local
+                    string debugDir = Path.Combine(Directory.GetCurrentDirectory(), "debug-images");
+                    Directory.CreateDirectory(debugDir);
+                    string debugPath = Path.Combine(debugDir, $"{imageId}_watermarked.jpg");
+
+                    await using (FileStream debugStream = File.Create(debugPath))
+                    {
+                        if (processingStream.CanSeek)
+                            processingStream.Position = 0;
+
+                        await processingStream.CopyToAsync(debugStream);
+
+                        if (processingStream.CanSeek)
+                            processingStream.Position = 0;
                     }
+#endif
                 }
 
                 // 4. Compression + stockage Minio
@@ -96,18 +110,29 @@ namespace Services.Implementations.Images
                     await ProcessAndStoreAsync(processingStream, imageId, categorySlug);
 
                 if (watermarkedStream is not null)
-                {
                     await watermarkedStream.DisposeAsync();
+
+                // 5. Persistance Mongo
+                Image? savedImage = await imagesQueryHandler.CreateImageAsync(imageEntity);
+                if (savedImage is null)
+                {
+                    logger.LogError(
+                        "Échec de la persistance Mongo pour l'image {ImageId} (category={Category}, path={Path})",
+                        imageEntity.Id,
+                        imageEntity.Category,
+                        imageEntity.Path);
+
+                    return ErrorCodes.ImageServorInternalError;
                 }
 
-                // 5. Résultat renvoyé à l'appelant
+                // 6. Résultat renvoyé à l'appelant
                 return new ImageCreatedDto
                 {
-                    Id = imageEntity.Id,
+                    Id = savedImage.Id,
                     SavedListFile = savedFiles,
-                    Category = imageEntity.Category.MapTo<ImageCategory, ImageCategoryDto>(),
-                    Latitude = imageEntity.Latitude,
-                    Longitude = imageEntity.Longitude
+                    Category = savedImage.Category.MapTo<ImageCategory, ImageCategoryDto>(),
+                    Latitude = savedImage.Latitude,
+                    Longitude = savedImage.Longitude
                 };
             }
             catch (Exception ex)
@@ -127,9 +152,7 @@ namespace Services.Implementations.Images
             string category)
         {
             if (imageStream.CanSeek)
-            {
                 imageStream.Position = 0;
-            }
 
             Dictionary<string, byte[]> images =
                 await imageCompressorService.CompressAsync(imageStream, baseName);

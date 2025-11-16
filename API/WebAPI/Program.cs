@@ -60,6 +60,7 @@ public class Program
         builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
         builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
         builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
+        builder.Services.AddScoped<IImagesQueryHandler, ImagesMongoQueryHandler>();
 
         InjectImagesServices(builder);
 
