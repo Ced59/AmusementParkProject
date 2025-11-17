@@ -32,6 +32,15 @@ public interface IParksService
     Task<(IEnumerable<ParkDto>, PaginationDto)>? GetListParkPaginatedAsync(int page, int pageSize);
 
     /// <summary>
+    /// Recherche paginée de parcs par nom (contient, case-insensitive).
+    /// </summary>
+    /// <param name="name">Terme de recherche sur le nom du parc</param>
+    /// <param name="page">Numéro de page (1-based)</param>
+    /// <param name="pageSize">Taille de page</param>
+    /// <returns>Liste de ParkDto + info de pagination</returns>
+    Task<(IEnumerable<ParkDto>, PaginationDto)>? SearchParksByNamePaginatedAsync(string name, int page, int pageSize);
+
+    /// <summary>
     /// Search park by location
     /// </summary>
     /// <param name="latitude">Latitude of center location</param>
@@ -39,4 +48,12 @@ public interface IParksService
     /// <param name="radius">Radius in kilometers of searched parks above center</param>
     /// <returns>List of parks in location parameters</returns>
     Task<OneOf<IEnumerable<ParkDto>, ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius);
+
+    /// <summary>
+    /// Met à jour la visibilité d’un parc.
+    /// </summary>
+    /// <param name="id">Id du parc</param>
+    /// <param name="isVisible">Nouvelle valeur de visibilité</param>
+    /// <returns>ParkDto mis à jour ou erreur</returns>
+    Task<OneOf<ParkDto, ErrorDetail>>? UpdateParkVisibilityAsync(string id, bool isVisible);
 }

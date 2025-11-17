@@ -62,4 +62,44 @@ public class ParksMongoQueryHandler : IParksQueryHandler
         return parks;
     }
 
+    public async Task<long> GetTotalParksCountByNameAsync(string name)
+    {
+        // filtre : name contient "name", insensible à la casse
+        FilterDefinition<Park>? filter = Builders<Park>.Filter.Regex(
+            p => p.Name,
+            new BsonRegularExpression(name, "i"));
+
+        return await parksCollection.CountDocumentsAsync(filter);
+    }
+
+    public async Task<IEnumerable<Park>> GetParksByNamePaginatedAsync(string name, int page, int pageSize)
+    {
+        FilterDefinition<Park>? filter = Builders<Park>.Filter.Regex(
+            p => p.Name,
+            new BsonRegularExpression(name, "i"));
+
+        return await parksCollection
+            .Find(filter)
+            .Skip((page - 1) * pageSize)
+            .Limit(pageSize)
+            .ToListAsync();
+    }
+
+    public async Task<Park?> UpdateParkVisibilityAsync(string id, bool isVisible)
+    {
+        var filter = Builders<Park>.Filter.Eq(p => p.Id, id);
+
+        var update = Builders<Park>.Update
+            .Set(p => p.IsVisible, isVisible)
+            .Set(p => p.UpdatedAt, DateTime.UtcNow);
+
+        var options = new FindOneAndUpdateOptions<Park>
+        {
+            ReturnDocument = ReturnDocument.After // on récupère la version après update
+        };
+
+        Park? updated = await parksCollection.FindOneAndUpdateAsync(filter, update, options);
+
+        return updated;
+    }
 }

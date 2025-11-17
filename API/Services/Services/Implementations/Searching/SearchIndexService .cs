@@ -147,7 +147,8 @@ namespace Services.Implementations.Searching
                 Latitude = park.Latitude,
                 Longitude = park.Longitude,
                 CreatedAt = park.CreatedAt,
-                UpdatedAt = park.UpdatedAt
+                UpdatedAt = park.UpdatedAt,
+                IsVisible = park.IsVisible
             };
             return item;
         }
@@ -173,6 +174,7 @@ namespace Services.Implementations.Searching
                 .Set(si => si.UpdatedAt, item.UpdatedAt)
                 .SetOnInsert(si => si.CreatedAt, item.CreatedAt)
                 .Set(si => si.CompositeScore, item.CompositeScore)
+                .Set(si => si.IsVisible, item.IsVisible)
                 .Set(si => si.Location, new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
                     new GeoJson2DGeographicCoordinates(item.Longitude, item.Latitude)));
 

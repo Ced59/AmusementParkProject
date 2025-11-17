@@ -55,12 +55,25 @@ export class ApiService {
   }
 
   getParksPaginated(page: number, size: number) {
-    return this.http.get<ParksApiResponse>(`${environment.apiBaseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`)
+    return this.http.get<ParksApiResponse>(
+      `${environment.apiBaseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`
+    );
   }
 
   getParkById(id: string): Observable<Park> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkById(id)}`;
     return this.http.get<Park>(url);
+  }
+
+  searchParks(name: string, page: number, size: number) {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.searchParks(name, page, size)}`;
+    return this.http.get<ParksApiResponse>(url);
+  }
+
+  updateParkVisibility(parkId: string, isVisible: boolean) {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateParkVisibility(parkId)}`;
+    const body = { isVisible };
+    return this.http.patch<Park>(url, body);
   }
 
   getSearch(

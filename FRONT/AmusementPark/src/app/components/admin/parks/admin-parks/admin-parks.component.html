@@ -7,6 +7,35 @@
     </div>
   </ng-template>
 
+  <!-- 🔎 Zone de recherche inchangée -->
+  <div class="search-row">
+    <input
+      pInputText
+      type="text"
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="onSearch()"
+      [placeholder]="'admin.parks.searchPlaceholder' | translate"
+    />
+
+    <button
+      pButton
+      type="button"
+      icon="pi pi-search"
+      class="p-button-sm"
+      (click)="onSearch()"
+    ></button>
+
+    <button
+      *ngIf="searchQuery.trim()"
+      pButton
+      type="button"
+      icon="pi pi-times"
+      class="p-button-text p-button-sm"
+      (click)="clearSearch()"
+      [label]="'admin.parks.clear' | translate"
+    ></button>
+  </div>
+
   <p-table
     [value]="parks"
     [loading]="loading"
@@ -21,6 +50,7 @@
       <tr>
         <th>{{ 'admin.parks.name' | translate }}</th>
         <th>{{ 'admin.parks.country' | translate }}</th>
+        <th>{{ 'admin.parks.visible' | translate }}</th> <!-- 🔹 nouvelle colonne -->
         <th>{{ 'admin.parks.actions' | translate }}</th>
       </tr>
     </ng-template>
@@ -29,6 +59,15 @@
       <tr>
         <td>{{ park.name }}</td>
         <td>{{ park.countryCode }}</td>
+
+        <!-- 🔹 Colonne Visible avec un switch -->
+        <td>
+          <p-inputSwitch
+            [(ngModel)]="park.isVisible"
+            (onChange)="onVisibilityChange(park)"
+          ></p-inputSwitch>
+        </td>
+
         <td>
           <button
             pButton
@@ -44,7 +83,7 @@
 
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="3">
+        <td colspan="4">
           {{ 'admin.parks.empty' | translate }}
         </td>
       </tr>

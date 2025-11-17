@@ -79,7 +79,9 @@
       "name": "Park",
       "country": "Land",
       "actions": "Acties",
-      "edit": "Bewerken"
+      "edit": "Bewerken",
+      "searchPlaceholder": "Een park zoeken...",
+      "clear": "Wissen"
     }
   }
 

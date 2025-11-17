@@ -48,5 +48,12 @@ namespace Entities.Model.Searching
         [BsonElement("compositeScore")]
         [BsonRepresentation(BsonType.Double)]
         public double CompositeScore { get; set; } = 0.0;
+
+        /// <summary>
+        /// Visibilité publique de l'élément
+        /// </summary>
+        [BsonElement("isVisible")]
+        [BsonRepresentation(BsonType.Boolean)]
+        public bool IsVisible { get; set; } = false;
     }
 }

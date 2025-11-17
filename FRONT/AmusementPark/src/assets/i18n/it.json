@@ -79,7 +79,9 @@
       "name": "Parco",
       "country": "Paese",
       "actions": "Azioni",
-      "edit": "Modifica"
+      "edit": "Modifica",
+      "searchPlaceholder": "Cerca un parco...",
+      "clear": "Cancella"
     }
   }
 

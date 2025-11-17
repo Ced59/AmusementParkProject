@@ -16,3 +16,20 @@ p-card {
     opacity: 0.8;
   }
 }
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem 0;
+
+  input[pInputText] {
+    max-width: 300px;
+    width: 100%;
+  }
+}
+
+.visibility-toggle {
+  display: flex;
+  justify-content: center;
+}

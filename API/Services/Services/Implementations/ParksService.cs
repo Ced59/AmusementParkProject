@@ -34,7 +34,8 @@ public class ParksService : IParksService
             Name = parkDto.Name,
             CountryCode = parkDto.CountryCode,
             Latitude = parkDto.Latitude,
-            Longitude = parkDto.Longitude
+            Longitude = parkDto.Longitude,
+            IsVisible = parkDto.IsVisible
         };
 
         Park? createdPark = await parksQueryHandler.CreateParkAsync(park);
@@ -54,7 +55,8 @@ public class ParksService : IParksService
             Name = createdPark.Name,
             CountryCode = createdPark.CountryCode,
             Latitude = createdPark.Latitude,
-            Longitude = createdPark.Longitude
+            Longitude = createdPark.Longitude,
+            IsVisible = createdPark.IsVisible
         };
 
         return parkCreatedDto;
@@ -78,7 +80,8 @@ public class ParksService : IParksService
             Name = park.Name,
             CountryCode = park.CountryCode,
             Latitude = park.Latitude,
-            Longitude = park.Longitude
+            Longitude = park.Longitude,
+            IsVisible = park.IsVisible,
         };
     }
 
@@ -97,7 +100,37 @@ public class ParksService : IParksService
             Name = park.Name,
             CountryCode = park.CountryCode,
             Latitude = park.Latitude,
-            Longitude = park.Longitude
+            Longitude = park.Longitude,
+            IsVisible = park.IsVisible,
+        }).ToList();
+
+        return (parkDtos, paginationInfo);
+    }
+
+    public async Task<(IEnumerable<ParkDto>, PaginationDto)>? SearchParksByNamePaginatedAsync(string name, int page, int pageSize)
+    {
+        string trimmed = name?.Trim() ?? string.Empty;
+
+        if (string.IsNullOrWhiteSpace(trimmed))
+        {
+            // Fallback au comportement de la liste si pas de critère
+            return await GetListParkPaginatedAsync(page, pageSize);
+        }
+
+        long totalItems = await parksQueryHandler.GetTotalParksCountByNameAsync(trimmed);
+
+        PaginationDto paginationInfo = PaginationDto.Create(Convert.ToInt32(totalItems), page, pageSize);
+
+        IEnumerable<Park> parks = await parksQueryHandler.GetParksByNamePaginatedAsync(trimmed, page, pageSize);
+
+        List<ParkDto> parkDtos = parks.Select(park => new ParkDto
+        {
+            Id = park.Id,
+            Name = park.Name,
+            CountryCode = park.CountryCode,
+            Latitude = park.Latitude,
+            Longitude = park.Longitude,
+            IsVisible = park.IsVisible,
         }).ToList();
 
         return (parkDtos, paginationInfo);
@@ -117,10 +150,42 @@ public class ParksService : IParksService
             CountryCode = park.CountryCode,
             Latitude = park.Latitude,
             Longitude = park.Longitude,
-            Name = park.Name
+            Name = park.Name,
+            IsVisible = park.IsVisible
         }).ToList();
 
         return parksDtos;
     }
 
+    public async Task<OneOf<ParkDto, ErrorDetail>>? UpdateParkVisibilityAsync(string id, bool isVisible)
+    {
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            return ParkNotExists;
+        }
+
+        Park? updatedPark = await parksQueryHandler.UpdateParkVisibilityAsync(id, isVisible);
+
+        if (updatedPark == null)
+        {
+            return ParkNotExists;
+        }
+
+        var searchItem = searchIndexService.ConvertParkToSearchItem(updatedPark);
+        await searchIndexService.UpsertSearchItemAsync(
+            searchItem,
+            mongoDbSettings.SearchItemCollectionName);
+
+        ParkDto dto = new()
+        {
+            Id = updatedPark.Id,
+            Name = updatedPark.Name,
+            CountryCode = updatedPark.CountryCode,
+            Latitude = updatedPark.Latitude,
+            Longitude = updatedPark.Longitude,
+            IsVisible = updatedPark.IsVisible
+        };
+
+        return dto;
+    }
 }

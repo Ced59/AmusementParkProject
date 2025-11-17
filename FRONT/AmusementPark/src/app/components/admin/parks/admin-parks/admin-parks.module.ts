@@ -7,6 +7,9 @@ import {TranslateModule} from "@ngx-translate/core";
 import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
 import {CardModule} from "primeng/card";
+import {InputTextModule} from "primeng/inputtext";
+import {FormsModule} from "@angular/forms";
+import {InputSwitchModule} from "primeng/inputswitch";
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import {CardModule} from "primeng/card";
     CardModule,
     TableModule,
     ButtonModule,
-    TranslateModule
+    TranslateModule,
+    InputTextModule,
+    FormsModule,
+    InputSwitchModule
   ]
 })
 export class AdminParksModule { }

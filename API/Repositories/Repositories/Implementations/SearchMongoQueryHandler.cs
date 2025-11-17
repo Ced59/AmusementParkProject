@@ -28,8 +28,7 @@ namespace Repositories.Implementations
             FilterDefinition<SearchItem> filter =
                 Builders<SearchItem>.Filter.Empty;
 
-            // 2) Si l’utilisateur a saisi quelque chose, on ajoute le filtre
-            //    “Title contient la sous-chaîne (case insensible)”
+            // 2) Filtre texte
             if (!string.IsNullOrWhiteSpace(query))
             {
                 string escaped = Regex.Escape(query.Trim());
@@ -39,29 +38,30 @@ namespace Repositories.Implementations
                     .Filter.Regex(si => si.Title, regex);
             }
 
-            // 3) Si des catégories sont fournies, on ajoute un seul Filter.In.
-            //    Cela correspond à une requête “Category == cat1 OR Category == cat2 OR …”
+            // 3) Filtre catégories
             if (categories != null && categories.Length > 0)
             {
                 FilterDefinition<SearchItem> catFilter =
                     Builders<SearchItem>
                         .Filter.In(si => si.Category, categories);
 
-                // On combine le filtre texte (s’il y en a un) ET le catFilter
                 filter = filter & catFilter;
             }
 
-            // 4) Calcul du nombre total de documents correspondant (avant pagination)
+            // 4) 🔹 Filtre visibilité publique : uniquement les items visibles
+            filter = filter & Builders<SearchItem>
+                .Filter.Eq(si => si.IsVisible, true);
+
+            // 5) Count total
             long totalCount =
                 await searchCollection
                     .CountDocumentsAsync(filter);
 
-            // 5) Définition du tri : par UpdatedAt décroissant
+            // 6) Tri + pagination
             SortDefinition<SearchItem> sort =
                 Builders<SearchItem>
                     .Sort.Descending(si => si.UpdatedAt);
 
-            // 6) Application de la pagination
             FindOptions<SearchItem> findOptions = new()
             {
                 Sort = sort,
@@ -77,5 +77,6 @@ namespace Repositories.Implementations
 
             return (items, totalCount);
         }
+
     }
 }

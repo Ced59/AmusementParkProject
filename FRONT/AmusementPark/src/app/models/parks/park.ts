@@ -4,4 +4,5 @@ export interface Park {
   countryCode?: string;
   latitude: number;
   longitude: number;
+  isVisible?: boolean;
 }
