@@ -14,6 +14,10 @@ import { AdminParkEditComponent } from './admin-park-edit/admin-park-edit.compon
 import {DropdownModule} from "primeng/dropdown";
 import {TagModule} from "primeng/tag";
 import {SharedModule} from "../../../shared/shared.module";
+import {PaginatorModule} from "primeng/paginator";
+import {PanelModule} from "primeng/panel";
+import {DividerModule} from "primeng/divider";
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 
 
 @NgModule({
@@ -34,7 +38,11 @@ import {SharedModule} from "../../../shared/shared.module";
     DropdownModule,
     TagModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    PaginatorModule,
+    PanelModule,
+    DividerModule,
+    ProgressSpinnerModule
   ]
 })
 export class AdminParksModule { }

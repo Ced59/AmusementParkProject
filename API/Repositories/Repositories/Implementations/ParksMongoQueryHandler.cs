@@ -164,5 +164,17 @@ namespace Repositories.Implementations
             // On renvoie l'instance modifiée en mémoire (elle est déjà à jour)
             return park;
         }
+
+        public async Task<bool> UpdateCurrentLogoAsync(string parkId, string? logoImageId)
+        {
+            var filter = Builders<Park>.Filter.Eq(p => p.Id, parkId);
+            var update = Builders<Park>.Update
+                .Set(p => p.CurrentLogoImageId, logoImageId)
+                .Set(p => p.UpdatedAt, DateTime.UtcNow);
+
+            var result = await parksCollection.UpdateOneAsync(filter, update);
+            return result.MatchedCount > 0;
+        }
+
     }
 }

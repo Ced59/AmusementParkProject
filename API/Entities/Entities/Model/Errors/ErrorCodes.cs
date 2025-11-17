@@ -39,6 +39,8 @@
         public static readonly ErrorDetail NoImageCategoryProvided = new(404, "No image category provided.");
         public static readonly ErrorDetail ImageServorInternalError = new(500, "Image processing Internal Server Error");
 
+        public static readonly ErrorDetail ParkLogoNotExists = new(404, "The requested park logo does not exist.");
+
 
         public readonly struct ErrorDetail
         {

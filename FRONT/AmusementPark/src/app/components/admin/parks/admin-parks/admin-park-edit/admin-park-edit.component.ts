@@ -5,6 +5,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "../../../../../services/api.service";
 import {Park} from "../../../../../models/parks/park";
 import {CountryDto} from "../../../../../models/countries/country-dto";
+import {ParkLogoViewModel} from "../../../../../models/parks/park-logo-viewmodel";
+import {ParkLogoDto} from "../../../../../models/parks/park-logo";
+import {UploadedImage} from "../../../../../models/images/uploaded-image";
 
 interface MapMarker {
   id: string;
@@ -33,6 +36,18 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   mapZoom = 16;
   mapMarkers: MapMarker[] = [];
 
+  // Logos
+  parkLogos: ParkLogoViewModel[] = [];
+  currentLogo: ParkLogoViewModel | null = null;
+
+  logosLoading = false;
+  logosUploading = false;
+  logosPage = 0;
+  logosPageSize = 8;
+
+  selectedLogoFile: File | null = null;
+  newLogoDescription: string = '';
+
   private subscriptions = new Subscription();
 
   constructor(
@@ -54,6 +69,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
 
     if (this.isEditMode && this.parkId) {
       this.loadPark(this.parkId);
+      this.loadLogos(this.parkId);
     } else {
       this.updateMarkerFromForm();
     }
@@ -242,6 +258,104 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     this.navigateToList();
   }
 
+  onLogoFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (!input.files || input.files.length === 0) {
+      this.selectedLogoFile = null;
+      return;
+    }
+    this.selectedLogoFile = input.files[0];
+  }
+
+  onUploadLogo(): void {
+    if (!this.parkId || !this.selectedLogoFile) {
+      return;
+    }
+
+    this.logosUploading = true;
+
+    this.apiService.uploadImage(this.selectedLogoFile).subscribe({
+      next: (uploaded: UploadedImage) => {
+        const imageId = uploaded.id;
+
+        this.apiService.createParkLogo(this.parkId!, imageId, this.newLogoDescription || undefined)
+          .subscribe({
+            next: (logoDto: ParkLogoDto) => {
+              const vm = this.toLogoViewModel(logoDto);
+
+              // Mise à jour locale : le nouveau logo est current
+              this.parkLogos.forEach(l => l.isCurrent = l.id === vm.id ? vm.isCurrent : false);
+              const existingIndex = this.parkLogos.findIndex(l => l.id === vm.id);
+              if (existingIndex >= 0) {
+                this.parkLogos[existingIndex] = vm;
+              } else {
+                // on insère en début pour voir le plus récent en premier
+                this.parkLogos.unshift(vm);
+              }
+
+              this.currentLogo = vm;
+              this.selectedLogoFile = null;
+              this.newLogoDescription = '';
+              this.logosUploading = false;
+            },
+            error: err => {
+              console.error('Error creating park logo', err);
+              this.logosUploading = false;
+            }
+          });
+      },
+      error: err => {
+        console.error('Error uploading logo image', err);
+        this.logosUploading = false;
+      }
+    });
+  }
+
+  onSetCurrentLogo(logo: ParkLogoViewModel): void {
+    if (!this.parkId || logo.isCurrent) {
+      return;
+    }
+
+    this.apiService.setCurrentParkLogo(this.parkId, logo.id).subscribe({
+      next: (updatedDto: ParkLogoDto) => {
+        const updatedVm = this.toLogoViewModel(updatedDto);
+
+        this.parkLogos = this.parkLogos.map(l => ({
+          ...l,
+          isCurrent: l.id === updatedVm.id
+        }));
+
+        this.currentLogo = updatedVm;
+      },
+      error: err => {
+        console.error('Error setting current park logo', err);
+      }
+    });
+  }
+
+  onDeleteLogo(logo: ParkLogoViewModel): void {
+    if (!this.parkId) {
+      return;
+    }
+
+    if (!confirm('Supprimer ce logo ?')) {
+      return;
+    }
+
+    this.apiService.deleteParkLogo(this.parkId, logo.id).subscribe({
+      next: () => {
+        this.parkLogos = this.parkLogos.filter(l => l.id !== logo.id);
+        if (this.currentLogo?.id === logo.id) {
+          this.currentLogo = this.parkLogos.find(l => l.isCurrent) ?? null;
+        }
+      },
+      error: err => {
+        console.error('Error deleting park logo', err);
+      }
+    });
+  }
+
+
   private navigateToList(): void {
     // On remonte jusqu'à la racine pour récupérer le :lang
     const lang =
@@ -250,5 +364,37 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       'en';
 
     this.router.navigate(['/', lang, 'admin', 'parks']);
+  }
+
+  private loadLogos(parkId: string): void {
+    this.logosLoading = true;
+    this.apiService.getParkLogos(parkId).subscribe({
+      next: (dtos: ParkLogoDto[]) => {
+        this.parkLogos = dtos.map(dto => this.toLogoViewModel(dto));
+        this.currentLogo = this.parkLogos.find(l => l.isCurrent) ?? null;
+        this.logosLoading = false;
+      },
+      error: err => {
+        console.error('Error loading park logos', err);
+        this.logosLoading = false;
+      }
+    });
+  }
+
+  private toLogoViewModel(dto: ParkLogoDto): ParkLogoViewModel {
+    return {
+      ...dto,
+      imageUrl: this.apiService.buildLogoUrl(dto.imageId)
+    };
+  }
+
+  get pagedLogos(): ParkLogoViewModel[] {
+    const start = this.logosPage * this.logosPageSize;
+    return this.parkLogos.slice(start, start + this.logosPageSize);
+  }
+
+  onLogosPageChange(event: any): void {
+    this.logosPage = event.page;
+    this.logosPageSize = event.rows;
   }
 }

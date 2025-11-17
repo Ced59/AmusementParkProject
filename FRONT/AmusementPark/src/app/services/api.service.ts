@@ -12,11 +12,17 @@ import { Park } from "../models/parks/park";
 import { SearchApiResponse } from "../models/search/search-api-response";
 import {UsersApiResponse} from "../models/users/users_api_response";
 import {CountryDto} from "../models/countries/country-dto";
+import {ParkLogoDto} from "../models/parks/park-logo";
+import {UploadedImage} from "../models/images/uploaded-image";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  private get imagesBaseUrl(): string {
+    return (environment as any).imagesBaseUrl ?? '';
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -114,4 +120,47 @@ export class ApiService {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getCountries(lang)}`;
     return this.http.get<CountryDto[]>(url);
   }
+
+  uploadImage(file: File): Observable<UploadedImage> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.uploadImage}`;
+    const formData = new FormData();
+    formData.append('file', file); // adapte au nom attendu côté API
+
+    return this.http.post<UploadedImage>(url, formData);
+  }
+
+  createParkLogo(parkId: string, imageId: string, description?: string): Observable<ParkLogoDto> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createParkLogo(parkId)}`;
+    const body = { imageId, description };
+    return this.http.post<ParkLogoDto>(url, body);
+  }
+
+  getParkLogos(parkId: string): Observable<ParkLogoDto[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkLogos(parkId)}`;
+    return this.http.get<ParkLogoDto[]>(url);
+  }
+
+  setCurrentParkLogo(parkId: string, logoId: string): Observable<ParkLogoDto> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.setCurrentParkLogo(parkId, logoId)}`;
+    return this.http.put<ParkLogoDto>(url, {});
+  }
+
+  deleteParkLogo(parkId: string, logoId: string): Observable<boolean> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.deleteParkLogo(parkId, logoId)}`;
+    return this.http.delete<boolean>(url);
+  }
+
+  /**
+   * Construit l'URL d'affichage d'un logo
+   * (basée sur la convention imageId -> fichier)
+   */
+  buildLogoUrl(imageId: string): string {
+    if (!this.imagesBaseUrl) {
+      return '';
+    }
+    // adapte l'extension si besoin (.webp, .jpg, etc.)
+    return `${this.imagesBaseUrl}/${imageId}.webp`;
+  }
+
+
 }

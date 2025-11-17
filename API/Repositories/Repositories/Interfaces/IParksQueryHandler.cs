@@ -28,5 +28,7 @@ namespace Repositories.Interfaces
         Task<Park?> UpdateParkVisibilityAsync(string id, bool isVisible);
 
         Task<Park?> UpdateParkAsync(Park park);
+
+        Task<bool> UpdateCurrentLogoAsync(string parkId, string? logoImageId);
     }
 }

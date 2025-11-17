@@ -13,9 +13,11 @@ using Repositories.Implementations;
 using Repositories.Interfaces;
 using Services.Implementations;
 using Services.Implementations.Images;
+using Services.Implementations.Images.Logos;
 using Services.Implementations.Searching;
 using Services.Interfaces;
 using Services.Interfaces.Images;
+using Services.Interfaces.Images.Logos;
 using Services.Interfaces.Searching;
 using Services.Interfaces.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -57,12 +59,14 @@ namespace WebAPI
             builder.Services.AddScoped<ISearchIndexService, SearchIndexService>();
             builder.Services.AddScoped<ISearchService, SearchService>();
             builder.Services.AddScoped<ICountriesService, CountriesService>();
+            builder.Services.AddScoped<IParkLogosService, ParkLogosService>();
 
             builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
             builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
             builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
             builder.Services.AddScoped<IImagesQueryHandler, ImagesMongoQueryHandler>();
             builder.Services.AddScoped<ICountriesQueryHandler, CountriesMongoQueryHandler>();
+            builder.Services.AddScoped<IParkLogosQueryHandler, ParkLogosMongoQueryHandler>();
 
             InjectImagesServices(builder);
 

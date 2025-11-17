@@ -20,6 +20,7 @@ namespace WebAPI.Settings.MongoDB
             // Collections "techniques"
             await EnsureCollectionExistsAsync(database, settings.UsersCollectionName);
             await EnsureCollectionExistsAsync(database, settings.ImagesCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.ParkLogosCollectionName);
 
             // 🔹 Countries
             await EnsureCollectionExistsAsync(database, settings.CountriesCollectionName);

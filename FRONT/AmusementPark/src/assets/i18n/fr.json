@@ -104,6 +104,17 @@
         "createTitle": "Créer un nouveau parc",
         "updateTitle": "Modifier le parc « {{name}} »",
         "subtitle": "Gérez ici les informations de base et la visibilité du parc."
+      },
+      "logos": {
+        "sectionTitle": "Logos du parc",
+        "currentTitle": "Logo actuel",
+        "noCurrent": "Aucun logo actuel défini.",
+        "uploadTitle": "Ajouter un nouveau logo",
+        "descriptionPlaceholder": "Description du logo (optionnel)",
+        "uploadButton": "Uploader et définir comme logo actuel",
+        "historyTitle": "Historique des logos",
+        "empty": "Aucun logo n'a encore été ajouté pour ce parc.",
+        "noDescription": "Sans description"
       }
     }
   },

@@ -27,5 +27,12 @@ namespace Entities.Model.Parks
 
         [BsonElement("postalCode")]
         public string? PostalCode { get; set; }
+
+        /// <summary>
+        /// Id de l'image actuellement utilisée comme logo.
+        /// Permet un accès ultra rapide côté front sans requête supplémentaire.
+        /// </summary>
+        [BsonElement("currentLogoImageId")]
+        public string? CurrentLogoImageId { get; set; }
     }
 }
