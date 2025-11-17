@@ -11,6 +11,7 @@ using Minio;
 using MongoDB.Driver;
 using Repositories.Implementations;
 using Repositories.Interfaces;
+using Services.Configuration;
 using Services.Implementations;
 using Services.Implementations.Images;
 using Services.Implementations.Images.Logos;

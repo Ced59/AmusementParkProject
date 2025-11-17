@@ -181,9 +181,9 @@
 
               <div class="flex flex-column align-items-center">
                 <img *ngIf="currentLogo"
-                     [src]="currentLogo.imageUrl"
+                     [src]="apiService.buildLogoUrl(currentLogo.imageId)"
                      alt="Logo"
-                     class="logo-preview mb-2" />
+                     class="logo-preview" />
                 <span *ngIf="!currentLogo" class="text-color-secondary">
                   {{ 'admin.parks.logos.noCurrent' | translate }}
                 </span>

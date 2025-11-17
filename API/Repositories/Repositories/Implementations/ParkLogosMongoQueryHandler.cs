@@ -50,14 +50,14 @@ namespace Repositories.Implementations
 
         public async Task UnsetCurrentForParkAsync(string parkId, string? excludeLogoId = null)
         {
-            var filter = Builders<ParkLogo>.Filter.Eq(l => l.ParkId, parkId);
+            FilterDefinition<ParkLogo>? filter = Builders<ParkLogo>.Filter.Eq(l => l.ParkId, parkId);
 
             if (!string.IsNullOrWhiteSpace(excludeLogoId))
             {
                 filter &= Builders<ParkLogo>.Filter.Ne(l => l.Id, excludeLogoId);
             }
 
-            var update = Builders<ParkLogo>.Update
+            UpdateDefinition<ParkLogo>? update = Builders<ParkLogo>.Update
                 .Set(l => l.IsCurrent, false);
 
             await parkLogosCollection.UpdateManyAsync(filter, update);

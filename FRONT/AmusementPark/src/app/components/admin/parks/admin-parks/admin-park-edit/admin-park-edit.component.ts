@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -8,6 +8,7 @@ import {CountryDto} from "../../../../../models/countries/country-dto";
 import {ParkLogoViewModel} from "../../../../../models/parks/park-logo-viewmodel";
 import {ParkLogoDto} from "../../../../../models/parks/park-logo";
 import {UploadedImage} from "../../../../../models/images/uploaded-image";
+import {ImageCategory} from "../../../../../models/images/image-category";
 
 interface MapMarker {
   id: string;
@@ -54,7 +55,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService
+    protected readonly apiService: ApiService
   ) {}
 
   ngOnInit(): void {
@@ -274,7 +275,9 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
 
     this.logosUploading = true;
 
-    this.apiService.uploadImage(this.selectedLogoFile).subscribe({
+    this.apiService
+      .uploadImage(this.selectedLogoFile, ImageCategory.PARK_LOGO, false, `${this.form.get('name')?.value || ''}`)
+      .subscribe({
       next: (uploaded: UploadedImage) => {
         const imageId = uploaded.id;
 

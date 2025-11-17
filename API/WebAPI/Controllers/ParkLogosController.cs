@@ -1,12 +1,11 @@
 ﻿using Dtos.Parks.Logos;
+using Entities.Model.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OneOf;
-using Services.Interfaces;
 using Services.Interfaces.Images.Logos;
 using WebAPI.ResponseHandlers;
 using WebAPI.Settings.Attributes;
-using static Entities.Model.Errors.ErrorCodes;
 
 namespace WebAPI.Controllers
 {
@@ -31,7 +30,7 @@ namespace WebAPI.Controllers
             [FromRoute] string parkId,
             [FromBody] ParkLogoCreateDto request)
         {
-            var result = await parkLogosService.AddLogoAsync(parkId, request);
+            OneOf<ParkLogoDto, ErrorCodes.ErrorDetail> result = await parkLogosService.AddLogoAsync(parkId, request);
             return ApiResponseHandler.HandleResponse(result);
         }
 
@@ -41,7 +40,7 @@ namespace WebAPI.Controllers
         [HttpGet("current")]
         public async Task<IActionResult> GetCurrentLogoAsync([FromRoute] string parkId)
         {
-            var result = await parkLogosService.GetCurrentLogoAsync(parkId);
+            OneOf<ParkLogoDto, ErrorCodes.ErrorDetail> result = await parkLogosService.GetCurrentLogoAsync(parkId);
             return ApiResponseHandler.HandleResponse(result);
         }
 
@@ -51,7 +50,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetLogosHistoryAsync([FromRoute] string parkId)
         {
-            var result = await parkLogosService.GetLogosHistoryAsync(parkId);
+            OneOf<IEnumerable<ParkLogoDto>, ErrorCodes.ErrorDetail> result = await parkLogosService.GetLogosHistoryAsync(parkId);
             return ApiResponseHandler.HandleResponse(result);
         }
 
@@ -64,7 +63,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> SetCurrentLogoAsync([FromRoute] string parkId, [FromRoute] string logoId)
         {
             // parkId n'est pas utilisé dans le service, mais on l'a dans la route
-            var result = await parkLogosService.SetCurrentLogoAsync(logoId);
+            OneOf<ParkLogoDto, ErrorCodes.ErrorDetail> result = await parkLogosService.SetCurrentLogoAsync(logoId);
             return ApiResponseHandler.HandleResponse(result);
         }
 
@@ -77,7 +76,7 @@ namespace WebAPI.Controllers
         [RequireActivatedUnblockedUser]
         public async Task<IActionResult> DeleteLogoAsync([FromRoute] string parkId, [FromRoute] string logoId)
         {
-            var result = await parkLogosService.DeleteLogoAsync(logoId);
+            OneOf<bool, ErrorCodes.ErrorDetail> result = await parkLogosService.DeleteLogoAsync(logoId);
             return ApiResponseHandler.HandleResponse(result);
         }
     }

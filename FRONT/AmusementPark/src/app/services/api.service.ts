@@ -14,6 +14,7 @@ import {UsersApiResponse} from "../models/users/users_api_response";
 import {CountryDto} from "../models/countries/country-dto";
 import {ParkLogoDto} from "../models/parks/park-logo";
 import {UploadedImage} from "../models/images/uploaded-image";
+import {ImageCategory} from "../models/images/image-category";
 
 @Injectable({
   providedIn: 'root'
@@ -121,10 +122,22 @@ export class ApiService {
     return this.http.get<CountryDto[]>(url);
   }
 
-  uploadImage(file: File): Observable<UploadedImage> {
+  uploadImage(
+    file: File,
+    category: ImageCategory,
+    withWatermark: boolean = true,
+    description?: string
+  ): Observable<UploadedImage> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.uploadImage}`;
     const formData = new FormData();
-    formData.append('file', file); // adapte au nom attendu côté API
+
+    formData.append('File', file); // case-insensitive côté ASP.NET, mais autant rester propre
+    formData.append('Category', category); // "PARK_LOGO", "AVATAR", etc.
+    formData.append('WithWatermark', String(withWatermark)); // "true"/"false"
+
+    if (description) {
+      formData.append('Description', description);
+    }
 
     return this.http.post<UploadedImage>(url, formData);
   }
@@ -155,12 +168,6 @@ export class ApiService {
    * (basée sur la convention imageId -> fichier)
    */
   buildLogoUrl(imageId: string): string {
-    if (!this.imagesBaseUrl) {
-      return '';
-    }
-    // adapte l'extension si besoin (.webp, .jpg, etc.)
-    return `${this.imagesBaseUrl}/${imageId}.webp`;
+    return `${environment.imagesBaseUrl}/${imageId}`;
   }
-
-
 }

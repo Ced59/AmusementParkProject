@@ -167,12 +167,12 @@ namespace Repositories.Implementations
 
         public async Task<bool> UpdateCurrentLogoAsync(string parkId, string? logoImageId)
         {
-            var filter = Builders<Park>.Filter.Eq(p => p.Id, parkId);
-            var update = Builders<Park>.Update
+            FilterDefinition<Park>? filter = Builders<Park>.Filter.Eq(p => p.Id, parkId);
+            UpdateDefinition<Park>? update = Builders<Park>.Update
                 .Set(p => p.CurrentLogoImageId, logoImageId)
                 .Set(p => p.UpdatedAt, DateTime.UtcNow);
 
-            var result = await parksCollection.UpdateOneAsync(filter, update);
+            UpdateResult? result = await parksCollection.UpdateOneAsync(filter, update);
             return result.MatchedCount > 0;
         }
 

@@ -1,4 +1,5 @@
-﻿using Minio;
+﻿using Microsoft.Extensions.Options;
+using Minio;
 using Minio.DataModel.Args;
 using Services.Interfaces.Images;
 using Services.Interfaces.Settings;
@@ -47,6 +48,86 @@ namespace Services.Implementations.Images
             }
 
             return savedListFiles;
+        }
+
+        public async Task<(Stream Stream, string ContentType)?> GetBestImageAsync(
+            string imagePathWithoutExtension,
+            string? acceptHeader,
+            CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrWhiteSpace(imagePathWithoutExtension))
+            {
+                return null;
+            }
+
+            bool clientSupportsWebp = !string.IsNullOrWhiteSpace(acceptHeader)
+                                      && acceptHeader.Contains("image/webp", StringComparison.OrdinalIgnoreCase);
+
+            if (clientSupportsWebp)
+            {
+                var webp = await TryGetObjectAsync(
+                    $"{imagePathWithoutExtension}.webp",
+                    "image/webp",
+                    cancellationToken);
+
+                if (webp != null)
+                {
+                    return webp;
+                }
+            }
+
+            var jpg = await TryGetObjectAsync(
+                $"{imagePathWithoutExtension}.jpg",
+                "image/jpeg",
+                cancellationToken);
+
+            if (jpg != null)
+            {
+                return jpg;
+            }
+
+            var png = await TryGetObjectAsync(
+                $"{imagePathWithoutExtension}.png",
+                "image/png",
+                cancellationToken);
+
+            if (png != null)
+            {
+                return png;
+            }
+
+            return null;
+        }
+
+        private async Task<(Stream Stream, string ContentType)?> TryGetObjectAsync(
+            string objectName,
+            string contentType,
+            CancellationToken cancellationToken)
+        {
+            try
+            {
+                await minioClient.StatObjectAsync(
+                new StatObjectArgs()
+                        .WithBucket(settings.Bucket)
+                        .WithObject(objectName),
+                    cancellationToken);
+
+                MemoryStream ms = new MemoryStream();
+
+                await minioClient.GetObjectAsync(
+                new GetObjectArgs()
+                        .WithBucket(settings.Bucket)
+                        .WithObject(objectName)
+                        .WithCallbackStream(s => s.CopyTo(ms)),
+                    cancellationToken);
+
+                ms.Position = 0;
+                return (ms, contentType);
+            }
+            catch (Minio.Exceptions.ObjectNotFoundException)
+            {
+                return null;
+            }
         }
 
         private static string GetContentTypeFromExtension(string fileName)
