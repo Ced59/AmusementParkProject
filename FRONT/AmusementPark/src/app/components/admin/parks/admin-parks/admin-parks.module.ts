@@ -8,13 +8,17 @@ import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
 import {CardModule} from "primeng/card";
 import {InputTextModule} from "primeng/inputtext";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputSwitchModule} from "primeng/inputswitch";
+import { AdminParkEditComponent } from './admin-park-edit/admin-park-edit.component';
+import {DropdownModule} from "primeng/dropdown";
+import {TagModule} from "primeng/tag";
 
 
 @NgModule({
   declarations: [
-    AdminParksComponent
+    AdminParksComponent,
+    AdminParkEditComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,10 @@ import {InputSwitchModule} from "primeng/inputswitch";
     TranslateModule,
     InputTextModule,
     FormsModule,
-    InputSwitchModule
+    InputSwitchModule,
+    DropdownModule,
+    TagModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminParksModule { }

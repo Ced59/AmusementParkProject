@@ -1,7 +1,7 @@
 {
   "home": {
     "home_title": "La tua prossima avventura inizia qui",
-    "placeholder_search": "Cerca un parco, una giostra, un hotel…",
+    "placeholder_search": "Cerca un parco, un'attrazione, un hotel…",
     "placeholder_category": "Tipo di ricerca",
     "no_results": "Nessun risultato per",
     "in_category": "in",
@@ -17,7 +17,7 @@
   },
   "auth": {
     "login": {
-      "title": "Accesso",
+      "title": "Autenticazione classica",
       "title_email": "Email",
       "mail_placeholder": "Inserisci la tua email",
       "title_password": "Password",
@@ -25,38 +25,38 @@
       "btn_text": "Accedi"
     },
     "register": {
-      "title": "Registrazione",
+      "title": "Registrazione classica",
       "title_email": "Email",
       "mail_placeholder": "Inserisci la tua email",
       "title_password": "Password",
       "password_placeholder": "Inserisci la tua password",
-      "password_info": "La tua password deve contenere almeno 8 caratteri, una lettera maiuscola, una lettera minuscola e una cifra.",
-      "password_confirm_placeholder": "Conferma la tua password",
+      "password_info": "La password deve contenere almeno 8 caratteri, una maiuscola, una minuscola e un numero.",
+      "password_confirm_placeholder": "Conferma password",
       "btn_text": "Registrati",
       "errors": {
-        "password_error_summary": "Errore Password",
-        "password_error": "La password deve contenere almeno 8 caratteri, una lettera maiuscola, una lettera minuscola e una cifra."
+        "password_error_summary": "Errore di password",
+        "password_error": "La password deve contenere almeno 8 caratteri, una maiuscola, una minuscola e un numero."
       }
     }
   },
   "user-profile": {
-    "title": "Profilo Utente",
+    "title": "Profilo utente",
     "name": "Cognome",
     "firstname": "Nome",
     "email": "Email",
-    "preferred_language": "Lingua Preferita",
+    "preferred_language": "Lingua preferita",
     "modify": "Modifica"
   },
   "theme": {
-    "change": "Cambia Tema",
-    "light": "Tema Chiaro",
-    "dark": "Tema Scuro"
+    "change": "Cambia tema",
+    "light": "Tema chiaro",
+    "dark": "Tema scuro"
   },
   "title": "Benvenuto",
   "description": "Questa è una descrizione in italiano.",
   "sidebar": {
     "logo_text": "Menu",
-    "home": "Inizio",
+    "home": "Home",
     "parks": "Parchi",
     "about": "Informazioni",
     "profile": "Profilo",
@@ -81,8 +81,27 @@
       "actions": "Azioni",
       "edit": "Modifica",
       "searchPlaceholder": "Cerca un parco...",
-      "clear": "Cancella"
+      "clear": "Pulisci",
+      "visible": "Visibile",
+      "hidden": "Nascosto",
+      "create": "Crea parco",
+      "latitude": "Latitudine",
+      "longitude": "Longitudine",
+      "visibleOn": "Visibile sul sito pubblico",
+      "visibleOff": "Nascosto sul sito pubblico",
+      "countryPlaceholder": "Seleziona un paese",
+      "editPage": {
+        "createTitle": "Crea un nuovo parco",
+        "updateTitle": "Modifica il parco \"{{name}}\"",
+        "subtitle": "Gestisci qui le informazioni di base e la visibilità del parco."
+      }
     }
+  },
+  "validation": {
+    "required": "Questo campo è obbligatorio"
+  },
+  "actions": {
+    "cancel": "Annulla",
+    "save": "Salva"
   }
-
 }

@@ -1,6 +1,7 @@
-﻿namespace Dtos.Users.UserGet;
-
-public class UserGetByIdDto
+﻿namespace Dtos.Users.UserGet
 {
-    public string Id { get; set; } = string.Empty;
+    public class UserGetByIdDto
+    {
+        public string Id { get; set; } = string.Empty;
+    }
 }

@@ -1,6 +1,7 @@
-﻿namespace Dtos.Parks.ParkGet;
-
-public class ParkGetByIdDto
+﻿namespace Dtos.Parks.ParkGet
 {
-    public string? Id { get; set; }
+    public class ParkGetByIdDto
+    {
+        public string? Id { get; set; }
+    }
 }

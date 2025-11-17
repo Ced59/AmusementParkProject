@@ -1,6 +1,7 @@
-﻿namespace Dtos.Users.LockUser;
-
-public class UserToLockDto
+﻿namespace Dtos.Users.LockUser
 {
-    public string IdUser { get; set; } = string.Empty;
+    public class UserToLockDto
+    {
+        public string IdUser { get; set; } = string.Empty;
+    }
 }

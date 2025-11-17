@@ -1,11 +1,11 @@
 ﻿using System.Security.Claims;
 using Common.Users;
 
-namespace WebAPI.Extensions;
-
-public static class ClaimsPrincipalExtensions
+namespace WebAPI.Extensions
 {
-    public static bool IsInRoles(this ClaimsPrincipal user, params Role[] roles)
+    public static class ClaimsPrincipalExtensions
+    {
+        public static bool IsInRoles(this ClaimsPrincipal user, params Role[] roles)
     {
         List<Role> userRoles = user.FindAll(ClaimTypes.Role)
             .Select(r => Enum.Parse<Role>(r.Value, true))
@@ -13,8 +13,9 @@ public static class ClaimsPrincipalExtensions
         return userRoles.Any(roles.Contains);
     }
 
-    public static string? GetUserId(this ClaimsPrincipal user)
+        public static string? GetUserId(this ClaimsPrincipal user)
     {
         return user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    }
     }
 }

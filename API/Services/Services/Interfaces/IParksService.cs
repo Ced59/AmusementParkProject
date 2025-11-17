@@ -2,58 +2,64 @@
 using Dtos.Parks.Creating;
 using Dtos.Parks.ParkGet;
 using Dtos.Parks.Parks;
+using Dtos.Parks.Updating;
+using Entities.Model.Errors;
 using OneOf;
-using static Entities.Model.Errors.ErrorCodes;
 
-namespace Services.Interfaces;
-
-public interface IParksService
+namespace Services.Interfaces
 {
-    /// <summary>
-    ///     Create Park
-    /// </summary>
-    /// <param name="park">Park to create Infos</param>
-    /// <returns>Confirmation created or error</returns>
-    Task<OneOf<ParkCreatedDto, ErrorDetail>>? CreateParkAsync(ParkCreateDto park);
+    public interface IParksService
+    {
+        /// <summary>
+        ///     Create Park
+        /// </summary>
+        /// <param name="park">Park to create Infos</param>
+        /// <returns>Confirmation created or error</returns>
+        Task<OneOf<ParkCreatedDto, ErrorCodes.ErrorDetail>>? CreateParkAsync(ParkCreateDto park);
 
-    /// <summary>
-    ///     Get Park by Id
-    /// </summary>
-    /// <param name="id">Id Guid</param>
-    /// <returns>Park or error</returns>
-    Task<OneOf<ParkGettedDto, ErrorDetail>>? GetParkByIdAsync(ParkGetByIdDto id);
+        /// <summary>
+        ///     Get Park by Id
+        /// </summary>
+        /// <param name="id">Id Guid</param>
+        /// <returns>Park or error</returns>
+        Task<OneOf<ParkGettedDto, ErrorCodes.ErrorDetail>>? GetParkByIdAsync(ParkGetByIdDto id);
 
-    /// <summary>
-    ///     Get paginated list of parks
-    /// </summary>
-    /// <param name="page">Number of page</param>
-    /// <param name="pageSize">Size of page</param>
-    /// <returns>List of Parks with pagination</returns>
-    Task<(IEnumerable<ParkDto>, PaginationDto)>? GetListParkPaginatedAsync(int page, int pageSize);
+        /// <summary>
+        /// Liste paginée des parcs.
+        /// includeNonVisible = true => inclut les parcs isVisible = false (ADMIN/MODERATOR)
+        /// </summary>
+        Task<(IEnumerable<ParkDto>, PaginationDto)>? GetListParkPaginatedAsync(
+            int page,
+            int pageSize,
+            bool includeNonVisible = false);
 
-    /// <summary>
-    /// Recherche paginée de parcs par nom (contient, case-insensitive).
-    /// </summary>
-    /// <param name="name">Terme de recherche sur le nom du parc</param>
-    /// <param name="page">Numéro de page (1-based)</param>
-    /// <param name="pageSize">Taille de page</param>
-    /// <returns>Liste de ParkDto + info de pagination</returns>
-    Task<(IEnumerable<ParkDto>, PaginationDto)>? SearchParksByNamePaginatedAsync(string name, int page, int pageSize);
+        /// <summary>
+        /// Recherche paginée de parcs par nom.
+        /// includeNonVisible = true => inclut isVisible = false (ADMIN/MODERATOR)
+        /// </summary>
+        Task<(IEnumerable<ParkDto>, PaginationDto)>? SearchParksByNamePaginatedAsync(
+            string name,
+            int page,
+            int pageSize,
+            bool includeNonVisible = false);
 
-    /// <summary>
-    /// Search park by location
-    /// </summary>
-    /// <param name="latitude">Latitude of center location</param>
-    /// <param name="longitude">Longitude of center location</param>
-    /// <param name="radius">Radius in kilometers of searched parks above center</param>
-    /// <returns>List of parks in location parameters</returns>
-    Task<OneOf<IEnumerable<ParkDto>, ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius);
+        /// <summary>
+        /// Search park by location
+        /// </summary>
+        /// <param name="latitude">Latitude of center location</param>
+        /// <param name="longitude">Longitude of center location</param>
+        /// <param name="radius">Radius in kilometers of searched parks above center</param>
+        /// <returns>List of parks in location parameters</returns>
+        Task<OneOf<IEnumerable<ParkDto>, ErrorCodes.ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius);
 
-    /// <summary>
-    /// Met à jour la visibilité d’un parc.
-    /// </summary>
-    /// <param name="id">Id du parc</param>
-    /// <param name="isVisible">Nouvelle valeur de visibilité</param>
-    /// <returns>ParkDto mis à jour ou erreur</returns>
-    Task<OneOf<ParkDto, ErrorDetail>>? UpdateParkVisibilityAsync(string id, bool isVisible);
+        /// <summary>
+        /// Met à jour la visibilité d’un parc.
+        /// </summary>
+        /// <param name="id">Id du parc</param>
+        /// <param name="isVisible">Nouvelle valeur de visibilité</param>
+        /// <returns>ParkDto mis à jour ou erreur</returns>
+        Task<OneOf<ParkDto, ErrorCodes.ErrorDetail>>? UpdateParkVisibilityAsync(string id, bool isVisible);
+
+        Task<OneOf<ParkDto, ErrorCodes.ErrorDetail>> UpdateParkAsync(string id, ParkUpdateDto dto);
+    }
 }

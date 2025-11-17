@@ -1,5 +1,6 @@
-﻿namespace Dtos.Users.ForgotPassword;
-
-public class ForgotPasswordDto
+﻿namespace Dtos.Users.ForgotPassword
 {
+    public class ForgotPasswordDto
+    {
+    }
 }

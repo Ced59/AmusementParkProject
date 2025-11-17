@@ -2,35 +2,36 @@
 using MongoDB.Driver;
 using Repositories.Interfaces;
 
-namespace Repositories.Implementations;
-
-public class ImagesMongoQueryHandler : IImagesQueryHandler
+namespace Repositories.Implementations
 {
-    private readonly IMongoCollection<Image> imagesCollection;
-
-    public ImagesMongoQueryHandler(IMongoDatabase database, IMongoDbSettings settings)
+    public class ImagesMongoQueryHandler : IImagesQueryHandler
     {
-        imagesCollection = database.GetCollection<Image>(settings.ImagesCollectionName);
-    }
+        private readonly IMongoCollection<Image> imagesCollection;
 
-    public async Task<Image?> GetImageByIdAsync(string id)
-    {
-        return await imagesCollection
-            .Find(img => img.Id == id)
-            .FirstOrDefaultAsync();
-    }
-
-    public async Task<Image?> CreateImageAsync(Image image)
-    {
-        try
+        public ImagesMongoQueryHandler(IMongoDatabase database, IMongoDbSettings settings)
         {
-            await imagesCollection.InsertOneAsync(image);
-            return image;
+            imagesCollection = database.GetCollection<Image>(settings.ImagesCollectionName);
         }
-        catch
+
+        public async Task<Image?> GetImageByIdAsync(string id)
         {
-            // Tu pourras logger plus finement si besoin
-            return null;
+            return await imagesCollection
+                .Find(img => img.Id == id)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<Image?> CreateImageAsync(Image image)
+        {
+            try
+            {
+                await imagesCollection.InsertOneAsync(image);
+                return image;
+            }
+            catch
+            {
+                // Tu pourras logger plus finement si besoin
+                return null;
+            }
         }
     }
 }

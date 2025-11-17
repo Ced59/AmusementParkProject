@@ -1,12 +1,13 @@
-﻿namespace WebAPI.Settings.Attributes;
-
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-public class SwaggerOrderAttribute : Attribute
+﻿namespace WebAPI.Settings.Attributes
 {
-    public SwaggerOrderAttribute(int order)
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public class SwaggerOrderAttribute : Attribute
+    {
+        public SwaggerOrderAttribute(int order)
     {
         Order = order;
     }
 
-    public int Order { get; private set; }
+        public int Order { get; private set; }
+    }
 }

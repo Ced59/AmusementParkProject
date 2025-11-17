@@ -1,8 +1,9 @@
-﻿namespace Dtos.Users.LockUser;
-
-public class UserUnlockedDto
+﻿namespace Dtos.Users.LockUser
 {
-    public string UserId { get; set; } = string.Empty;
-    public string? FirstName { get; set; } = string.Empty;
-    public string? LastName { get; set; } = string.Empty;
+    public class UserUnlockedDto
+    {
+        public string UserId { get; set; } = string.Empty;
+        public string? FirstName { get; set; } = string.Empty;
+        public string? LastName { get; set; } = string.Empty;
+    }
 }

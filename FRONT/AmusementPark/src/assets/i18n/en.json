@@ -1,56 +1,56 @@
 {
   "home": {
     "home_title": "Your next adventure starts here",
-    "placeholder_search": "Search for a park, a ride, a hotel…",
-    "placeholder_category": "Search type",
+    "placeholder_search": "Search for a park, ride, hotel…",
+    "placeholder_category": "Type of search",
     "no_results": "No results for",
     "in_category": "in",
     "categories": {
       "park": "Parks",
-      "attractions": "Rides"
+      "attractions": "Attractions"
     }
   },
   "topbar": {
-    "login_header": "Login / Registration",
+    "login_header": "Login / Register",
     "hello": "Hello",
-    "choose_language":"Choose your language:"
+    "choose_language": "Choose your language:"
   },
   "auth": {
     "login": {
-      "title": "Standard Login",
+      "title": "Standard authentication",
       "title_email": "Email",
       "mail_placeholder": "Enter your email",
       "title_password": "Password",
       "password_placeholder": "Enter your password",
-      "btn_text": "Login"
+      "btn_text": "Log in"
     },
     "register": {
-      "title": "Standard Registration",
+      "title": "Standard registration",
       "title_email": "Email",
       "mail_placeholder": "Enter your email",
       "title_password": "Password",
       "password_placeholder": "Enter your password",
-      "password_info":"Your password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one digit.",
-      "password_confirm_placeholder": "Confirm your password",
+      "password_info": "Your password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one digit.",
+      "password_confirm_placeholder": "Confirm password",
       "btn_text": "Register",
       "errors": {
-        "password_error_summary": "Password Error",
+        "password_error_summary": "Password error",
         "password_error": "The password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one digit."
       }
     }
   },
   "user-profile": {
-    "title": "User Profile",
-    "name": "Name",
-    "firstname": "First Name",
+    "title": "User profile",
+    "name": "Last name",
+    "firstname": "First name",
     "email": "Email",
-    "preferred_language": "Preferred Language",
+    "preferred_language": "Preferred language",
     "modify": "Edit"
   },
   "theme": {
-    "change": "Change Theme",
-    "light": "Light Theme",
-    "dark": "Dark Theme"
+    "change": "Change theme",
+    "light": "Light theme",
+    "dark": "Dark theme"
   },
   "title": "Welcome",
   "description": "This is a description in English.",
@@ -63,25 +63,45 @@
     "admin": "Admin"
   },
   "admin": {
-    "title": "Admin Panel",
+    "title": "Administration panel",
     "tabs": {
       "users": "Users",
       "parks": "Parks",
       "site": "Site"
     },
     "users": {
-      "total": "Total users: {{count}}",
+      "total": "Total number of users: {{count}}",
       "empty": "No users found."
     },
     "parks": {
-      "total": "Total parks: {{count}}",
+      "total": "Total number of parks: {{count}}",
       "empty": "No parks found.",
       "name": "Park",
       "country": "Country",
       "actions": "Actions",
       "edit": "Edit",
-      "searchPlaceholder": "Search for a park...",
-      "clear": "Clear"
+      "searchPlaceholder": "Search a park...",
+      "clear": "Clear",
+      "visible": "Visible",
+      "hidden": "Hidden",
+      "create": "Create a park",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "visibleOn": "Visible on the public site",
+      "visibleOff": "Hidden from the public site",
+      "countryPlaceholder": "Select a country",
+      "editPage": {
+        "createTitle": "Create a new park",
+        "updateTitle": "Edit park \"{{name}}\"",
+        "subtitle": "Manage the park's basic information and visibility here."
+      }
     }
+  },
+  "validation": {
+    "required": "This field is required"
+  },
+  "actions": {
+    "cancel": "Cancel",
+    "save": "Save"
   }
 }

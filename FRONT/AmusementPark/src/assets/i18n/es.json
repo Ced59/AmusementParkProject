@@ -1,7 +1,7 @@
 {
   "home": {
-    "home_title": "Tu próxima aventura comienza aquí",
-    "placeholder_search": "Busca un parque, una atracción, un hotel…",
+    "home_title": "Tu próxima aventura empieza aquí",
+    "placeholder_search": "Buscar un parque, una atracción, un hotel…",
     "placeholder_category": "Tipo de búsqueda",
     "no_results": "Sin resultados para",
     "in_category": "en",
@@ -11,40 +11,40 @@
     }
   },
   "topbar": {
-    "login_header": "Iniciar sesión / Registro",
+    "login_header": "Inicio de sesión / Registro",
     "hello": "Hola",
-    "choose_language":"Elige tu idioma:"
+    "choose_language": "Elige tu idioma:"
   },
   "auth": {
     "login": {
-      "title": "Autenticación Clásica",
-      "title_email": "Correo Electrónico",
-      "mail_placeholder": "Introduce tu correo electrónico",
+      "title": "Autenticación clásica",
+      "title_email": "Correo electrónico",
+      "mail_placeholder": "Introduce tu correo",
       "title_password": "Contraseña",
       "password_placeholder": "Introduce tu contraseña",
       "btn_text": "Iniciar sesión"
     },
     "register": {
-      "title": "Registro Clásico",
-      "title_email": "Correo Electrónico",
-      "mail_placeholder": "Introduce tu correo electrónico",
+      "title": "Registro clásico",
+      "title_email": "Correo electrónico",
+      "mail_placeholder": "Introduce tu correo",
       "title_password": "Contraseña",
       "password_placeholder": "Introduce tu contraseña",
-      "password_info": "Tu contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula y un dígito.",
-      "password_confirm_placeholder": "Confirma tu contraseña",
+      "password_info": "Tu contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula y un número.",
+      "password_confirm_placeholder": "Confirmar contraseña",
       "btn_text": "Registrarse",
       "errors": {
         "password_error_summary": "Error de contraseña",
-        "password_error": "La contraseña debe contener al menos 8 caracteres, una letra mayúscula, una letra minúscula y un dígito."
+        "password_error": "La contraseña debe contener como mínimo 8 caracteres, una mayúscula, una minúscula y un número."
       }
     }
   },
   "user-profile": {
-    "title": "Perfil del Usuario",
-    "name": "Nombre",
-    "firstname": "Nombre de Pila",
-    "email": "Correo Electrónico",
-    "preferred_language": "Idioma Preferido",
+    "title": "Perfil de usuario",
+    "name": "Apellido",
+    "firstname": "Nombre",
+    "email": "Correo",
+    "preferred_language": "Idioma preferido",
     "modify": "Modificar"
   },
   "theme": {
@@ -53,7 +53,7 @@
     "dark": "Tema oscuro"
   },
   "title": "Bienvenido",
-  "description": "Esta es una descripción en Español.",
+  "description": "Esta es una descripción en español.",
   "sidebar": {
     "logo_text": "Menú",
     "home": "Inicio",
@@ -81,7 +81,27 @@
       "actions": "Acciones",
       "edit": "Editar",
       "searchPlaceholder": "Buscar un parque...",
-      "clear": "Borrar"
+      "clear": "Limpiar",
+      "visible": "Visible",
+      "hidden": "Oculto",
+      "create": "Crear parque",
+      "latitude": "Latitud",
+      "longitude": "Longitud",
+      "visibleOn": "Visible en el sitio público",
+      "visibleOff": "Oculto en el sitio público",
+      "countryPlaceholder": "Selecciona un país",
+      "editPage": {
+        "createTitle": "Crear un nuevo parque",
+        "updateTitle": "Editar parque \"{{name}}\"",
+        "subtitle": "Gestiona aquí la información básica y la visibilidad del parque."
+      }
     }
+  },
+  "validation": {
+    "required": "Este campo es obligatorio"
+  },
+  "actions": {
+    "cancel": "Cancelar",
+    "save": "Guardar"
   }
 }

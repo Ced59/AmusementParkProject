@@ -1,6 +1,7 @@
-﻿namespace Dtos.Parks.Updating;
-
-public class ParkVisibilityUpdateDto
+﻿namespace Dtos.Parks.Updating
 {
-    public bool IsVisible { get; set; }
+    public class ParkVisibilityUpdateDto
+    {
+        public bool IsVisible { get; set; }
+    }
 }

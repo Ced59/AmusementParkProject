@@ -1,6 +1,7 @@
-﻿namespace Dtos.Users.UserGet;
-
-public class UserGetByEmailDto
+﻿namespace Dtos.Users.UserGet
 {
-    public string Email { get; set; } = string.Empty;
+    public class UserGetByEmailDto
+    {
+        public string Email { get; set; } = string.Empty;
+    }
 }

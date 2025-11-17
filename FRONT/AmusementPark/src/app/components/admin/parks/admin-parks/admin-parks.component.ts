@@ -3,6 +3,7 @@ import {Park} from "../../../../models/parks/park";
 import {Pagination} from "../../../../models/shared/pagination";
 import {ApiService} from "../../../../services/api.service";
 import {ParksApiResponse} from "../../../../models/parks/parks_api_response";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-parks',
@@ -21,7 +22,11 @@ export class AdminParksComponent implements OnInit {
 
   searchQuery = '';
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.loadParks(this.currentPage, this.pageSize);

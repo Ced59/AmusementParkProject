@@ -5,20 +5,20 @@ using Entities.Model.Users;
 using Google.Apis.Auth.OAuth2.Responses;
 using Services.Interfaces.Settings;
 
-namespace Services.Implementations;
-
-public class SocialAuthService : ISocialAuthService
+namespace Services.Implementations
 {
-    private readonly HttpClient httpClient;
-    private readonly IGoogleOAuthSettings configuration;
+    public class SocialAuthService : ISocialAuthService
+    {
+        private readonly HttpClient httpClient;
+        private readonly IGoogleOAuthSettings configuration;
 
-    public SocialAuthService(HttpClient httpClient, IGoogleOAuthSettings configuration)
+        public SocialAuthService(HttpClient httpClient, IGoogleOAuthSettings configuration)
     {
         this.httpClient = httpClient;
         this.configuration = configuration;
     }
 
-    public async Task<string> ExchangeGoogleCodeForToken(string provider, string code)
+        public async Task<string> ExchangeGoogleCodeForToken(string provider, string code)
     {
         // Exemple de récupération des configurations spécifiques au fournisseur
         string clientId = configuration.ClientId;
@@ -48,7 +48,7 @@ public class SocialAuthService : ISocialAuthService
         return tokenResponse.AccessToken;
     }
 
-    public async Task<UserGoogleInfos> GetGoogleUserInfo(string provider, string accessToken)
+        public async Task<UserGoogleInfos> GetGoogleUserInfo(string provider, string accessToken)
     {
         string userInfoEndpoint = configuration.UserInfosEndpoint;
 
@@ -62,6 +62,7 @@ public class SocialAuthService : ISocialAuthService
         }
 
         return JsonConvert.DeserializeObject<UserGoogleInfos>(responseString);
+    }
     }
 }
 

@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace WebAPI.Settings.Security;
-
-public class AddJwtBearerAuthorizationFilter : IOperationFilter
+namespace WebAPI.Settings.Security
 {
-    public void Apply(OpenApiOperation operation, OperationFilterContext context)
+    public class AddJwtBearerAuthorizationFilter : IOperationFilter
+    {
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         ControllerActionDescriptor? descriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;
         if (descriptor != null)
@@ -37,5 +37,6 @@ public class AddJwtBearerAuthorizationFilter : IOperationFilter
                 });
             }
         }
+    }
     }
 }

@@ -5,11 +5,11 @@ using Entities.Model.Users;
 using Microsoft.IdentityModel.Tokens;
 using Services.Interfaces.Settings;
 
-namespace Services.Security;
-
-public static class JwtHelper
+namespace Services.Security
 {
-    public static string GenerateToken(User user, IJwtSettings jwtSettings)
+    public static class JwtHelper
+    {
+        public static string GenerateToken(User user, IJwtSettings jwtSettings)
     {
         SymmetricSecurityKey securityKey = new(Encoding.UTF8.GetBytes(jwtSettings.Key));
         SigningCredentials credentials = new(securityKey, SecurityAlgorithms.HmacSha256);
@@ -38,7 +38,7 @@ public static class JwtHelper
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
-    public static ValidationResult ValidateToken(string token, bool withExp, IJwtSettings jwtSettings)
+        public static ValidationResult ValidateToken(string token, bool withExp, IJwtSettings jwtSettings)
     {
         JwtSecurityTokenHandler tokenHandler = new();
         TokenValidationParameters validationParameters = new()
@@ -65,5 +65,6 @@ public static class JwtHelper
     }
 
 
-    public record ValidationResult(bool IsValid, JwtSecurityToken? Token);
+        public record ValidationResult(bool IsValid, JwtSecurityToken? Token);
+    }
 }

@@ -1,6 +1,7 @@
-﻿namespace Services.Interfaces.Images;
-
-public interface IImageStorageService
+﻿namespace Services.Interfaces.Images
 {
-    Task<IEnumerable<string>> StoreAsync(Dictionary<string, byte[]> images, string category);
+    public interface IImageStorageService
+    {
+        Task<IEnumerable<string>> StoreAsync(Dictionary<string, byte[]> images, string category);
+    }
 }

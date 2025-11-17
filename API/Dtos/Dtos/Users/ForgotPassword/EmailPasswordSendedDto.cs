@@ -1,5 +1,6 @@
-﻿namespace Dtos.Users.ForgotPassword;
-
-public class EmailPasswordSendedDto
+﻿namespace Dtos.Users.ForgotPassword
 {
+    public class EmailPasswordSendedDto
+    {
+    }
 }

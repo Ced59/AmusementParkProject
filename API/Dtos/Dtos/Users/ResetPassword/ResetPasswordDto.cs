@@ -1,5 +1,6 @@
-﻿namespace Dtos.Users.ResetPassword;
-
-public class ResetPasswordDto
+﻿namespace Dtos.Users.ResetPassword
 {
+    public class ResetPasswordDto
+    {
+    }
 }

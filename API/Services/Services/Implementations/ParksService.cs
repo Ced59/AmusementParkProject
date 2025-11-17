@@ -2,6 +2,7 @@
 using Dtos.Parks.Creating;
 using Dtos.Parks.ParkGet;
 using Dtos.Parks.Parks;
+using Dtos.Parks.Updating;
 using Entities.Model.Parks;
 using Entities.Model.Searching;
 using OneOf;
@@ -10,182 +11,255 @@ using Services.Interfaces;
 using Services.Interfaces.Searching;
 using static Entities.Model.Errors.ErrorCodes;
 
-namespace Services.Implementations;
-
-public class ParksService : IParksService
+namespace Services.Implementations
 {
-    private readonly IParksQueryHandler parksQueryHandler;
-    private readonly ISearchIndexService searchIndexService;
-    private readonly IMongoDbSettings mongoDbSettings;
-
-    public ParksService(IParksQueryHandler parksQueryHandler, ISearchIndexService searchIndexService ,IMongoDbSettings mongoDbSettings)
+    public class ParksService : IParksService
     {
-        this.parksQueryHandler = parksQueryHandler;
-        this.searchIndexService = searchIndexService;
-        this.mongoDbSettings = mongoDbSettings;
-    }
+        private readonly IParksQueryHandler parksQueryHandler;
+        private readonly ISearchIndexService searchIndexService;
+        private readonly IMongoDbSettings mongoDbSettings;
 
-    public async Task<OneOf<ParkCreatedDto, ErrorDetail>>? CreateParkAsync(ParkCreateDto parkDto)
-    {
-        Park park = new()
+        public ParksService(IParksQueryHandler parksQueryHandler, ISearchIndexService searchIndexService ,IMongoDbSettings mongoDbSettings)
         {
-            CreatedAt = DateTime.Now,
-            UpdatedAt = DateTime.Now,
-            Name = parkDto.Name,
-            CountryCode = parkDto.CountryCode,
-            Latitude = parkDto.Latitude,
-            Longitude = parkDto.Longitude,
-            IsVisible = parkDto.IsVisible
-        };
-
-        Park? createdPark = await parksQueryHandler.CreateParkAsync(park);
-
-        if (createdPark == null)
-        {
-            return ErrorCreatingPark;
+            this.parksQueryHandler = parksQueryHandler;
+            this.searchIndexService = searchIndexService;
+            this.mongoDbSettings = mongoDbSettings;
         }
 
-        SearchItem searchItem = searchIndexService.ConvertParkToSearchItem(createdPark);
-
-        await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
-
-        ParkCreatedDto parkCreatedDto = new()
+        public async Task<OneOf<ParkCreatedDto, ErrorDetail>>? CreateParkAsync(ParkCreateDto parkDto)
         {
-            Id = createdPark.Id,
-            Name = createdPark.Name,
-            CountryCode = createdPark.CountryCode,
-            Latitude = createdPark.Latitude,
-            Longitude = createdPark.Longitude,
-            IsVisible = createdPark.IsVisible
-        };
+            Park park = new()
+            {
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                Name = parkDto.Name,
+                CountryCode = parkDto.CountryCode,
+                Latitude = parkDto.Latitude,
+                Longitude = parkDto.Longitude,
+                IsVisible = parkDto.IsVisible
+            };
 
-        return parkCreatedDto;
-    }
+            Park? createdPark = await parksQueryHandler.CreateParkAsync(park);
 
-    public async Task<OneOf<ParkGettedDto, ErrorDetail>>? GetParkByIdAsync(ParkGetByIdDto id)
-    {
-        if (id.Id == null)
-        {
-            return ParkNotExists;
+            if (createdPark == null)
+            {
+                return ErrorCreatingPark;
+            }
+
+            SearchItem searchItem = searchIndexService.ConvertParkToSearchItem(createdPark);
+
+            await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
+
+            ParkCreatedDto parkCreatedDto = new()
+            {
+                Id = createdPark.Id,
+                Name = createdPark.Name,
+                CountryCode = createdPark.CountryCode,
+                Latitude = createdPark.Latitude,
+                Longitude = createdPark.Longitude,
+                IsVisible = createdPark.IsVisible
+            };
+
+            return parkCreatedDto;
         }
 
-        Park? park = await parksQueryHandler.GetParkByIdAsync(id.Id);
-        if (park == null)
+        public async Task<OneOf<ParkGettedDto, ErrorDetail>>? GetParkByIdAsync(ParkGetByIdDto id)
         {
-            return ParkNotExists;
+            if (id.Id == null)
+            {
+                return ParkNotExists;
+            }
+
+            Park? park = await parksQueryHandler.GetParkByIdAsync(id.Id);
+            if (park == null)
+            {
+                return ParkNotExists;
+            }
+
+            return new ParkGettedDto()
+            {
+                Name = park.Name,
+                CountryCode = park.CountryCode,
+                Latitude = park.Latitude,
+                Longitude = park.Longitude,
+                IsVisible = park.IsVisible,
+            };
         }
 
-        return new ParkGettedDto()
+
+        public async Task<(IEnumerable<ParkDto>, PaginationDto)>? GetListParkPaginatedAsync(
+            int page,
+            int pageSize,
+            bool includeNonVisible = false)
         {
-            Name = park.Name,
-            CountryCode = park.CountryCode,
-            Latitude = park.Latitude,
-            Longitude = park.Longitude,
-            IsVisible = park.IsVisible,
-        };
-    }
+            long totalItems = await parksQueryHandler.GetTotalParksCountAsync(includeNonVisible);
 
+            PaginationDto paginationInfo = PaginationDto.Create(
+                Convert.ToInt32(totalItems),
+                page,
+                pageSize);
 
-    public async Task<(IEnumerable<ParkDto>, PaginationDto)>? GetListParkPaginatedAsync(int page, int pageSize)
-    {
-        long totalItems = await parksQueryHandler.GetTotalParksCountAsync();
+            IEnumerable<Park> parks = await parksQueryHandler.GetParksPaginatedAsync(
+                page,
+                pageSize,
+                includeNonVisible);
 
-        PaginationDto paginationInfo = PaginationDto.Create(Convert.ToInt32(totalItems), page, pageSize);
+            List<ParkDto> parkDtos = parks.Select(park => new ParkDto
+            {
+                Id = park.Id,
+                Name = park.Name,
+                CountryCode = park.CountryCode,
+                Latitude = park.Latitude,
+                Longitude = park.Longitude,
+                IsVisible = park.IsVisible
+            }).ToList();
 
-        IEnumerable<Park> parks = await parksQueryHandler.GetParksPaginatedAsync(page, pageSize);
-
-        List<ParkDto> parkDtos = parks.Select(park => new ParkDto
-        {
-            Id = park.Id,
-            Name = park.Name,
-            CountryCode = park.CountryCode,
-            Latitude = park.Latitude,
-            Longitude = park.Longitude,
-            IsVisible = park.IsVisible,
-        }).ToList();
-
-        return (parkDtos, paginationInfo);
-    }
-
-    public async Task<(IEnumerable<ParkDto>, PaginationDto)>? SearchParksByNamePaginatedAsync(string name, int page, int pageSize)
-    {
-        string trimmed = name?.Trim() ?? string.Empty;
-
-        if (string.IsNullOrWhiteSpace(trimmed))
-        {
-            // Fallback au comportement de la liste si pas de critère
-            return await GetListParkPaginatedAsync(page, pageSize);
+            return (parkDtos, paginationInfo);
         }
 
-        long totalItems = await parksQueryHandler.GetTotalParksCountByNameAsync(trimmed);
-
-        PaginationDto paginationInfo = PaginationDto.Create(Convert.ToInt32(totalItems), page, pageSize);
-
-        IEnumerable<Park> parks = await parksQueryHandler.GetParksByNamePaginatedAsync(trimmed, page, pageSize);
-
-        List<ParkDto> parkDtos = parks.Select(park => new ParkDto
+        public async Task<(IEnumerable<ParkDto>, PaginationDto)>? SearchParksByNamePaginatedAsync(
+            string name,
+            int page,
+            int pageSize,
+            bool includeNonVisible = false)
         {
-            Id = park.Id,
-            Name = park.Name,
-            CountryCode = park.CountryCode,
-            Latitude = park.Latitude,
-            Longitude = park.Longitude,
-            IsVisible = park.IsVisible,
-        }).ToList();
+            string trimmed = name?.Trim() ?? string.Empty;
 
-        return (parkDtos, paginationInfo);
-    }
+            if (string.IsNullOrWhiteSpace(trimmed))
+            {
+                // Fallback sur la liste avec le même includeNonVisible
+                return await GetListParkPaginatedAsync(page, pageSize, includeNonVisible);
+            }
 
-    public async Task<OneOf<IEnumerable<ParkDto>, ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius)
-    {
-        IEnumerable<Park>? parks = await parksQueryHandler.GetParksByLocationAsync(latitude, longitude, radius);
+            long totalItems = await parksQueryHandler.GetTotalParksCountByNameAsync(trimmed, includeNonVisible);
 
-        if (parks == null || !parks.Any())
-        {
-            return NoParkInThisLocation;
+            PaginationDto paginationInfo = PaginationDto.Create(
+                Convert.ToInt32(totalItems),
+                page,
+                pageSize);
+
+            IEnumerable<Park> parks = await parksQueryHandler.GetParksByNamePaginatedAsync(
+                trimmed,
+                page,
+                pageSize,
+                includeNonVisible);
+
+            List<ParkDto> parkDtos = parks.Select(park => new ParkDto
+            {
+                Id = park.Id,
+                Name = park.Name,
+                CountryCode = park.CountryCode,
+                Latitude = park.Latitude,
+                Longitude = park.Longitude,
+                IsVisible = park.IsVisible
+            }).ToList();
+
+            return (parkDtos, paginationInfo);
         }
 
-        List<ParkDto> parksDtos = parks.Select(park => new ParkDto
-        {
-            CountryCode = park.CountryCode,
-            Latitude = park.Latitude,
-            Longitude = park.Longitude,
-            Name = park.Name,
-            IsVisible = park.IsVisible
-        }).ToList();
 
-        return parksDtos;
-    }
-
-    public async Task<OneOf<ParkDto, ErrorDetail>>? UpdateParkVisibilityAsync(string id, bool isVisible)
-    {
-        if (string.IsNullOrWhiteSpace(id))
+        public async Task<OneOf<IEnumerable<ParkDto>, ErrorDetail>> SearchParksByLocationAsync(double latitude, double longitude, double radius)
         {
-            return ParkNotExists;
+            IEnumerable<Park>? parks = await parksQueryHandler.GetParksByLocationAsync(latitude, longitude, radius);
+
+            if (parks == null || !parks.Any())
+            {
+                return NoParkInThisLocation;
+            }
+
+            List<ParkDto> parksDtos = parks.Select(park => new ParkDto
+            {
+                CountryCode = park.CountryCode,
+                Latitude = park.Latitude,
+                Longitude = park.Longitude,
+                Name = park.Name,
+                IsVisible = park.IsVisible
+            }).ToList();
+
+            return parksDtos;
         }
 
-        Park? updatedPark = await parksQueryHandler.UpdateParkVisibilityAsync(id, isVisible);
-
-        if (updatedPark == null)
+        public async Task<OneOf<ParkDto, ErrorDetail>> UpdateParkAsync(string id, ParkUpdateDto dto)
         {
-            return ParkNotExists;
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return ParkNotExists;
+            }
+
+            // On récupère le parc existant
+            Park? existing = await parksQueryHandler.GetParkByIdAsync(id);
+            if (existing == null)
+            {
+                return ParkNotExists;
+            }
+
+            // On met à jour les champs autorisés
+            existing.Name = dto.Name;
+            existing.CountryCode = dto.CountryCode;
+            existing.Latitude = dto.Latitude;
+            existing.Longitude = dto.Longitude;
+            existing.IsVisible = dto.IsVisible;
+            existing.UpdatedAt = DateTime.UtcNow;
+
+            // Persistance
+            Park? updatedPark = await parksQueryHandler.UpdateParkAsync(existing);
+
+            if (updatedPark == null)
+            {
+                // On reste cohérent avec UpdateParkVisibilityAsync : null => ParkNotExists
+                return ParkNotExists;
+            }
+
+            // 🔹 MAJ index de recherche (comme pour Create / UpdateVisibility)
+            SearchItem searchItem = searchIndexService.ConvertParkToSearchItem(updatedPark);
+            await searchIndexService.UpsertSearchItemAsync(
+                searchItem,
+                mongoDbSettings.SearchItemCollectionName);
+
+            ParkDto dtoResult = new()
+            {
+                Id = updatedPark.Id,
+                Name = updatedPark.Name,
+                CountryCode = updatedPark.CountryCode,
+                Latitude = updatedPark.Latitude,
+                Longitude = updatedPark.Longitude,
+                IsVisible = updatedPark.IsVisible
+            };
+
+            return dtoResult;
         }
 
-        var searchItem = searchIndexService.ConvertParkToSearchItem(updatedPark);
-        await searchIndexService.UpsertSearchItemAsync(
-            searchItem,
-            mongoDbSettings.SearchItemCollectionName);
 
-        ParkDto dto = new()
+        public async Task<OneOf<ParkDto, ErrorDetail>>? UpdateParkVisibilityAsync(string id, bool isVisible)
         {
-            Id = updatedPark.Id,
-            Name = updatedPark.Name,
-            CountryCode = updatedPark.CountryCode,
-            Latitude = updatedPark.Latitude,
-            Longitude = updatedPark.Longitude,
-            IsVisible = updatedPark.IsVisible
-        };
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return ParkNotExists;
+            }
 
-        return dto;
+            Park? updatedPark = await parksQueryHandler.UpdateParkVisibilityAsync(id, isVisible);
+
+            if (updatedPark == null)
+            {
+                return ParkNotExists;
+            }
+
+            SearchItem searchItem = searchIndexService.ConvertParkToSearchItem(updatedPark);
+            await searchIndexService.UpsertSearchItemAsync(
+                searchItem,
+                mongoDbSettings.SearchItemCollectionName);
+
+            ParkDto dto = new()
+            {
+                Id = updatedPark.Id,
+                Name = updatedPark.Name,
+                CountryCode = updatedPark.CountryCode,
+                Latitude = updatedPark.Latitude,
+                Longitude = updatedPark.Longitude,
+                IsVisible = updatedPark.IsVisible
+            };
+
+            return dto;
+        }
     }
 }

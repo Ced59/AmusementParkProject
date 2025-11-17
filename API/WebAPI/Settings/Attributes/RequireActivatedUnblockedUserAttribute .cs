@@ -7,11 +7,11 @@ using OneOf;
 using Services.Interfaces;
 using WebAPI.ResponseHandlers;
 
-namespace WebAPI.Settings.Attributes;
-
-public class RequireActivatedUnblockedUserAttribute : ActionFilterAttribute, IAsyncActionFilter
+namespace WebAPI.Settings.Attributes
 {
-    public new async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+    public class RequireActivatedUnblockedUserAttribute : ActionFilterAttribute, IAsyncActionFilter
+    {
+        public new async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
         IUsersService? userService = context.HttpContext.RequestServices.GetService<IUsersService>();
         string? userId = context.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -45,5 +45,6 @@ public class RequireActivatedUnblockedUserAttribute : ActionFilterAttribute, IAs
         {
             await next();
         }
+    }
     }
 }

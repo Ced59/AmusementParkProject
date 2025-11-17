@@ -19,25 +19,25 @@ using Services.Interfaces.Settings;
 using Services.Security;
 using static Entities.Model.Errors.ErrorCodes;
 
-namespace Services.Implementations;
-
-public class UsersService : IUsersService
+namespace Services.Implementations
 {
-    private readonly IJwtSettings jwtSettings;
-    private readonly IUserQueryHandler userQueryHandler;
+    public class UsersService : IUsersService
+    {
+        private readonly IJwtSettings jwtSettings;
+        private readonly IUserQueryHandler userQueryHandler;
 
-    public UsersService(IUserQueryHandler userQueryHandler, IJwtSettings jwtSettings)
+        public UsersService(IUserQueryHandler userQueryHandler, IJwtSettings jwtSettings)
     {
         this.userQueryHandler = userQueryHandler;
         this.jwtSettings = jwtSettings;
     }
 
-    /// <summary>
-    ///     Create User
-    /// </summary>
-    /// <param name="user">User to create</param>
-    /// <returns>Confirmation created or error</returns>
-    public async Task<OneOf<UserCreatedDto, ErrorDetail>>? CreateUserAsync(UserCreateDto user)
+        /// <summary>
+        ///     Create User
+        /// </summary>
+        /// <param name="user">User to create</param>
+        /// <returns>Confirmation created or error</returns>
+        public async Task<OneOf<UserCreatedDto, ErrorDetail>>? CreateUserAsync(UserCreateDto user)
     {
         if (user.Password != user.VerifyPassword)
         {
@@ -94,12 +94,12 @@ public class UsersService : IUsersService
     }
 
 
-    /// <summary>
-    ///     Get user by email
-    /// </summary>
-    /// <param name="email">Email of user</param>
-    /// <returns>User or error</returns>
-    public async Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByEmailAsync(string email)
+        /// <summary>
+        ///     Get user by email
+        /// </summary>
+        /// <param name="email">Email of user</param>
+        /// <returns>User or error</returns>
+        public async Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByEmailAsync(string email)
     {
         User? user = await userQueryHandler.GetUserByEmailAsync(email);
         if (user == null)
@@ -122,12 +122,12 @@ public class UsersService : IUsersService
         };
     }
 
-    /// <summary>
-    ///     Get user by id
-    /// </summary>
-    /// <param name="id">Id of user</param>
-    /// <returns>User or error</returns>
-    public async Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByIdAsync(string id)
+        /// <summary>
+        ///     Get user by id
+        /// </summary>
+        /// <param name="id">Id of user</param>
+        /// <returns>User or error</returns>
+        public async Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByIdAsync(string id)
     {
         User? user = await userQueryHandler.GetUserByIdAsync(id);
 
@@ -151,13 +151,13 @@ public class UsersService : IUsersService
         };
     }
 
-    /// <summary>
-    ///     Update user
-    /// </summary>
-    /// <param name="id">Id of user</param>
-    /// <param name="userUpdate">User updated</param>
-    /// <returns>User updated or error</returns>
-    public async Task<OneOf<UserUpdatedDto, ErrorDetail>> UpdateUserAsync(string id, UserUpdateDto userUpdate)
+        /// <summary>
+        ///     Update user
+        /// </summary>
+        /// <param name="id">Id of user</param>
+        /// <param name="userUpdate">User updated</param>
+        /// <returns>User updated or error</returns>
+        public async Task<OneOf<UserUpdatedDto, ErrorDetail>> UpdateUserAsync(string id, UserUpdateDto userUpdate)
     {
         if (!IsValidEmail(userUpdate.Email) || (userUpdate.NewEmail != null && !IsValidEmail(userUpdate.NewEmail)))
         {
@@ -213,12 +213,12 @@ public class UsersService : IUsersService
     }
 
 
-    /// <summary>
-    ///     Login
-    /// </summary>
-    /// <param name="credentials">Credentials to login</param>
-    /// <returns>Jwt token or error</returns>
-    public async Task<OneOf<UserLoggedDto, ErrorDetail>> LoginAsync(UserLoginDto credentials)
+        /// <summary>
+        ///     Login
+        /// </summary>
+        /// <param name="credentials">Credentials to login</param>
+        /// <returns>Jwt token or error</returns>
+        public async Task<OneOf<UserLoggedDto, ErrorDetail>> LoginAsync(UserLoginDto credentials)
     {
         User? user = await userQueryHandler.GetUserByEmailAsync(credentials.Email);
         if (user == null || !BCrypt.Net.BCrypt.Verify(credentials.Password, user.HashedPassword))
@@ -234,12 +234,12 @@ public class UsersService : IUsersService
     }
 
 
-    /// <summary>
-    ///     Login by external providers
-    /// </summary>
-    /// <param name="email">Email of user</param>
-    /// <returns>Jwt token or error</returns>
-    public async Task<OneOf<UserLoggedDto, ErrorDetail>> LoginExternalAsync(string email)
+        /// <summary>
+        ///     Login by external providers
+        /// </summary>
+        /// <param name="email">Email of user</param>
+        /// <returns>Jwt token or error</returns>
+        public async Task<OneOf<UserLoggedDto, ErrorDetail>> LoginExternalAsync(string email)
     {
         User? user = await userQueryHandler.GetUserByEmailAsync(email);
         if (user == null)
@@ -255,7 +255,7 @@ public class UsersService : IUsersService
     }
 
 
-    public async Task<OneOf<UserLoggedDto, ErrorDetail>>? CreateUserByInfosAsync(UserSocialCreate user)
+        public async Task<OneOf<UserLoggedDto, ErrorDetail>>? CreateUserByInfosAsync(UserSocialCreate user)
     {
         User userToCreate = new()
         {
@@ -297,12 +297,12 @@ public class UsersService : IUsersService
     }
 
 
-    /// <summary>
-    ///     Refresh token
-    /// </summary>
-    /// <param name="token">Token to refresh</param>
-    /// <returns>Token refreshed or error</returns>
-    public async Task<OneOf<RefreshTokenResponseDto, ErrorDetail>> RefreshTokenAsync(RefreshTokenRequestDto token)
+        /// <summary>
+        ///     Refresh token
+        /// </summary>
+        /// <param name="token">Token to refresh</param>
+        /// <returns>Token refreshed or error</returns>
+        public async Task<OneOf<RefreshTokenResponseDto, ErrorDetail>> RefreshTokenAsync(RefreshTokenRequestDto token)
     {
         JwtHelper.ValidationResult result = JwtHelper.ValidateToken(token.RefreshToken, false, jwtSettings);
 
@@ -334,13 +334,13 @@ public class UsersService : IUsersService
         return TokenRefreshFailed;
     }
 
-    /// <summary>
-    ///     Assign role to User
-    /// </summary>
-    /// <param name="userId">Id user</param>
-    /// <param name="roleToAssign">Role to assign</param>
-    /// <returns>All roles of user or error</returns>
-    public async Task<OneOf<RoleAssignedDto, ErrorDetail>> AssignRoleAsync(string userId, RoleAssignDto roleToAssign)
+        /// <summary>
+        ///     Assign role to User
+        /// </summary>
+        /// <param name="userId">Id user</param>
+        /// <param name="roleToAssign">Role to assign</param>
+        /// <returns>All roles of user or error</returns>
+        public async Task<OneOf<RoleAssignedDto, ErrorDetail>> AssignRoleAsync(string userId, RoleAssignDto roleToAssign)
     {
         User? user = await userQueryHandler.GetUserByIdAsync(userId);
 
@@ -369,13 +369,13 @@ public class UsersService : IUsersService
     }
 
 
-    /// <summary>
-    ///     Remove role from User
-    /// </summary>
-    /// <param name="userId">ID of the user</param>
-    /// <param name="roleToRemove">Role to remove</param>
-    /// <returns>All roles of user or error</returns>
-    public async Task<OneOf<RoleRemovedDto, ErrorDetail>> RemoveRoleAsync(string userId, RoleRemoveDto roleToRemove)
+        /// <summary>
+        ///     Remove role from User
+        /// </summary>
+        /// <param name="userId">ID of the user</param>
+        /// <param name="roleToRemove">Role to remove</param>
+        /// <returns>All roles of user or error</returns>
+        public async Task<OneOf<RoleRemovedDto, ErrorDetail>> RemoveRoleAsync(string userId, RoleRemoveDto roleToRemove)
     {
         User? user = await userQueryHandler.GetUserByIdAsync(userId);
 
@@ -404,12 +404,12 @@ public class UsersService : IUsersService
     }
 
 
-    /// <summary>
-    ///     Lock user
-    /// </summary>
-    /// <param name="userToLock">User to lock</param>
-    /// <returns>User locked</returns>
-    public async Task<OneOf<UserLockedDto, ErrorDetail>> LockUser(UserToLockDto userToLock)
+        /// <summary>
+        ///     Lock user
+        /// </summary>
+        /// <param name="userToLock">User to lock</param>
+        /// <returns>User locked</returns>
+        public async Task<OneOf<UserLockedDto, ErrorDetail>> LockUser(UserToLockDto userToLock)
     {
         User? user = await userQueryHandler.GetUserByIdAsync(userToLock.IdUser);
 
@@ -433,12 +433,12 @@ public class UsersService : IUsersService
         };
     }
 
-    /// <summary>
-    ///     Unlock user
-    /// </summary>
-    /// <param name="userToUnlock">User to unlock</param>
-    /// <returns>User unlocked</returns>
-    public async Task<OneOf<UserUnlockedDto, ErrorDetail>> UnlockUser(UserToUnlockDto userToUnlock)
+        /// <summary>
+        ///     Unlock user
+        /// </summary>
+        /// <param name="userToUnlock">User to unlock</param>
+        /// <returns>User unlocked</returns>
+        public async Task<OneOf<UserUnlockedDto, ErrorDetail>> UnlockUser(UserToUnlockDto userToUnlock)
     {
         User? user = await userQueryHandler.GetUserByIdAsync(userToUnlock.IdUser);
 
@@ -462,13 +462,13 @@ public class UsersService : IUsersService
         };
     }
 
-    /// <summary>
-    ///     Get list of Users
-    /// </summary>
-    /// <param name="page">Number of page got in pagination</param>
-    /// <param name="pageSize">Page size for pagination</param>
-    /// <returns>Get list of users</returns>
-    public async Task<(IEnumerable<UserDto>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize)
+        /// <summary>
+        ///     Get list of Users
+        /// </summary>
+        /// <param name="page">Number of page got in pagination</param>
+        /// <param name="pageSize">Page size for pagination</param>
+        /// <returns>Get list of users</returns>
+        public async Task<(IEnumerable<UserDto>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize)
     {
         long totalItems = await userQueryHandler.GetTotalUsersCountAsync();
         IEnumerable<User> users = await userQueryHandler.GetUsersPaginatedAsync(page, pageSize);
@@ -495,14 +495,14 @@ public class UsersService : IUsersService
         return (usersDto, pagination);
     }
 
-    /// <summary>
-    ///     Change user password
-    /// </summary>
-    /// <param name="idUser">User to change password</param>
-    /// <param name="changePasswordDto">OldPassword and/or new password & confirmation</param>
-    /// <param name="isSelfChanged">The change password process id for the user who demands</param>
-    /// <returns></returns>
-    public async Task<OneOf<PasswordChangedDto, ErrorDetail>> ChangeUserPassword(string idUser, ChangePasswordDto changePasswordDto, bool isSelfChanged)
+        /// <summary>
+        ///     Change user password
+        /// </summary>
+        /// <param name="idUser">User to change password</param>
+        /// <param name="changePasswordDto">OldPassword and/or new password & confirmation</param>
+        /// <param name="isSelfChanged">The change password process id for the user who demands</param>
+        /// <returns></returns>
+        public async Task<OneOf<PasswordChangedDto, ErrorDetail>> ChangeUserPassword(string idUser, ChangePasswordDto changePasswordDto, bool isSelfChanged)
     {
         User? user = await userQueryHandler.GetUserByIdAsync(idUser);
 
@@ -532,12 +532,12 @@ public class UsersService : IUsersService
     }
 
 
-    /// <summary>
-    ///     Validation email
-    /// </summary>
-    /// <param name="email">Email to validate</param>
-    /// <returns>True or false</returns>
-    private static bool IsValidEmail(string? email)
+        /// <summary>
+        ///     Validation email
+        /// </summary>
+        /// <param name="email">Email to validate</param>
+        /// <returns>True or false</returns>
+        private static bool IsValidEmail(string? email)
     {
         if (string.IsNullOrWhiteSpace(email))
         {
@@ -556,25 +556,25 @@ public class UsersService : IUsersService
         }
     }
 
-    /// <summary>
-    ///     Validation password
-    /// </summary>
-    /// <param name="password">Password to validate</param>
-    /// <returns>True or false</returns>
-    private bool IsValidPassword(string password)
+        /// <summary>
+        ///     Validation password
+        /// </summary>
+        /// <param name="password">Password to validate</param>
+        /// <returns>True or false</returns>
+        private bool IsValidPassword(string password)
     {
         // Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial
         string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$";
         return Regex.IsMatch(password, passwordPattern);
     }
 
-    /// <summary>
-    /// Telecharge l'avatar et l'enregistre dans l'API.
-    /// </summary>
-    /// <param name="imageUrl">URL source de l'image.</param>
-    /// <param name="userId">Id du User.</param>
-    /// <returns>Chemin de l'image dans l'API.</returns>
-    public async Task<string> DownloadAndSaveUserAvatar(string imageUrl, string userId)
+        /// <summary>
+        /// Telecharge l'avatar et l'enregistre dans l'API.
+        /// </summary>
+        /// <param name="imageUrl">URL source de l'image.</param>
+        /// <param name="userId">Id du User.</param>
+        /// <returns>Chemin de l'image dans l'API.</returns>
+        public async Task<string> DownloadAndSaveUserAvatar(string imageUrl, string userId)
     {
         try
         {
@@ -601,4 +601,5 @@ public class UsersService : IUsersService
     }
 
 
+    }
 }

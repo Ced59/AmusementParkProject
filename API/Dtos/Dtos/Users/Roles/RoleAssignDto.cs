@@ -1,8 +1,9 @@
 ﻿using Common.Users;
 
-namespace Dtos.Users.Roles;
-
-public class RoleAssignDto
+namespace Dtos.Users.Roles
 {
-    public Role Role { get; set; } = new();
+    public class RoleAssignDto
+    {
+        public Role Role { get; set; } = new();
+    }
 }

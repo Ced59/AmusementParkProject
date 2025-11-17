@@ -76,6 +76,28 @@ export class ApiService {
     return this.http.patch<Park>(url, body);
   }
 
+  createPark(park: Park) {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createPark}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post<Park>(url, JSON.stringify(park), httpOptions);
+  }
+
+  updatePark(id: string, park: Park) {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updatePark(id)}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.put<Park>(url, JSON.stringify(park), httpOptions);
+  }
+
   getSearch(
     query: string,
     categories: string[],

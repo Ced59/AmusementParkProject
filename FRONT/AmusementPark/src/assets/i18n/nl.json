@@ -1,8 +1,8 @@
 {
   "home": {
     "home_title": "Je volgende avontuur begint hier",
-    "placeholder_search": "Zoek een park, een attractie, een hotel…",
-    "placeholder_category": "Zoektype",
+    "placeholder_search": "Zoek een park, attractie, hotel…",
+    "placeholder_category": "Soort zoekopdracht",
     "no_results": "Geen resultaten voor",
     "in_category": "in",
     "categories": {
@@ -17,25 +17,25 @@
   },
   "auth": {
     "login": {
-      "title": "Standaard inloggen",
-      "title_email": "Email",
-      "mail_placeholder": "Voer je email in",
+      "title": "Standaard authenticatie",
+      "title_email": "E-mail",
+      "mail_placeholder": "Vul je e-mail in",
       "title_password": "Wachtwoord",
-      "password_placeholder": "Voer je wachtwoord in",
+      "password_placeholder": "Vul je wachtwoord in",
       "btn_text": "Inloggen"
     },
     "register": {
       "title": "Standaard registratie",
-      "title_email": "Email",
-      "mail_placeholder": "Voer je email in",
+      "title_email": "E-mail",
+      "mail_placeholder": "Vul je e-mail in",
       "title_password": "Wachtwoord",
-      "password_placeholder": "Voer je wachtwoord in",
-      "password_info": "Je wachtwoord moet minimaal 8 tekens bevatten, één hoofdletter, één kleine letter en één cijfer.",
-      "password_confirm_placeholder": "Bevestig je wachtwoord",
+      "password_placeholder": "Vul je wachtwoord in",
+      "password_info": "Je wachtwoord moet minstens 8 tekens, één hoofdletter, één kleine letter en één cijfer bevatten.",
+      "password_confirm_placeholder": "Bevestig wachtwoord",
       "btn_text": "Registreren",
       "errors": {
         "password_error_summary": "Wachtwoordfout",
-        "password_error": "Het wachtwoord moet minimaal 8 tekens bevatten, één hoofdletter, één kleine letter en één cijfer."
+        "password_error": "Het wachtwoord moet minstens 8 tekens, één hoofdletter, één kleine letter en één cijfer bevatten."
       }
     }
   },
@@ -43,12 +43,12 @@
     "title": "Gebruikersprofiel",
     "name": "Achternaam",
     "firstname": "Voornaam",
-    "email": "Email",
+    "email": "E-mail",
     "preferred_language": "Voorkeurstaal",
     "modify": "Bewerken"
   },
   "theme": {
-    "change": "Wijzig thema",
+    "change": "Thema wijzigen",
     "light": "Licht thema",
     "dark": "Donker thema"
   },
@@ -56,9 +56,9 @@
   "description": "Dit is een beschrijving in het Nederlands.",
   "sidebar": {
     "logo_text": "Menu",
-    "home": "Startpagina",
+    "home": "Home",
     "parks": "Parken",
-    "about": "Over ons",
+    "about": "Over",
     "profile": "Profiel",
     "admin": "Admin"
   },
@@ -67,7 +67,7 @@
     "tabs": {
       "users": "Gebruikers",
       "parks": "Parken",
-      "site": "Website"
+      "site": "Site"
     },
     "users": {
       "total": "Totaal aantal gebruikers: {{count}}",
@@ -80,9 +80,28 @@
       "country": "Land",
       "actions": "Acties",
       "edit": "Bewerken",
-      "searchPlaceholder": "Een park zoeken...",
-      "clear": "Wissen"
+      "searchPlaceholder": "Zoek een park...",
+      "clear": "Wissen",
+      "visible": "Zichtbaar",
+      "hidden": "Verborgen",
+      "create": "Park aanmaken",
+      "latitude": "Breedtegraad",
+      "longitude": "Lengtegraad",
+      "visibleOn": "Zichtbaar op de publieke site",
+      "visibleOff": "Verborgen op de publieke site",
+      "countryPlaceholder": "Selecteer een land",
+      "editPage": {
+        "createTitle": "Nieuw park aanmaken",
+        "updateTitle": "Park \"{{name}}\" bewerken",
+        "subtitle": "Beheer hier de basisinformatie en zichtbaarheid van het park."
+      }
     }
+  },
+  "validation": {
+    "required": "Dit veld is verplicht"
+  },
+  "actions": {
+    "cancel": "Annuleren",
+    "save": "Opslaan"
   }
-
 }

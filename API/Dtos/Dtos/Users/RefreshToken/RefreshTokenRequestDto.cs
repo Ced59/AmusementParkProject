@@ -1,6 +1,7 @@
-﻿namespace Dtos.Users.RefreshToken;
-
-public class RefreshTokenRequestDto
+﻿namespace Dtos.Users.RefreshToken
 {
-    public string RefreshToken { get; set; } = string.Empty;
+    public class RefreshTokenRequestDto
+    {
+        public string RefreshToken { get; set; } = string.Empty;
+    }
 }

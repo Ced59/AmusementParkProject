@@ -1,6 +1,7 @@
-﻿namespace Services.Interfaces.Images;
-
-public interface IWaterMarkService
+﻿namespace Services.Interfaces.Images
 {
-    Task<Stream> ApplyWatermarkAsync(Stream imageStream, string watermarkText);
+    public interface IWaterMarkService
+    {
+        Task<Stream> ApplyWatermarkAsync(Stream imageStream, string watermarkText);
+    }
 }

@@ -1,6 +1,7 @@
-﻿namespace Dtos.Users.Login;
-
-public class UserLoggedDto
+﻿namespace Dtos.Users.Login
 {
-    public string Token { get; set; } = string.Empty;
+    public class UserLoggedDto
+    {
+        public string Token { get; set; } = string.Empty;
+    }
 }

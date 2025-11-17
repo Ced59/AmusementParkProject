@@ -16,6 +16,9 @@ export const API_ENDPOINTS = {
 
   updateParkVisibility: (id: string) => `parks/${id}/visibility`,
 
+  createPark: 'parks',
+  updatePark: (id: string) => `parks/${id}`,
+
   getSearch: (query: string, categories: string[], page: number, size: number) => {
     const catsParam = categories && categories.length > 0
       ? `&categories=${categories.join(',')}`

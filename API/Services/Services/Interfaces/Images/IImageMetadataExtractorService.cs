@@ -1,6 +1,7 @@
-﻿namespace Services.Interfaces.Images;
-
-public interface IImageMetadataExtractorService
+﻿namespace Services.Interfaces.Images
 {
-    Task<(double? latitude, double? longitude)> ExtractGeoCoordinatesAsync(Stream imageStream);
+    public interface IImageMetadataExtractorService
+    {
+        Task<(double? latitude, double? longitude)> ExtractGeoCoordinatesAsync(Stream imageStream);
+    }
 }

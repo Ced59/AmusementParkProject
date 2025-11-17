@@ -12,31 +12,31 @@ using Dtos.Users.Updating;
 using Dtos.Users.UserGet;
 using OneOf;
 
-namespace WebAPI.Controllers;
-
-[ApiController]
-[SwaggerOrder(2)]
-[Route("[controller]")]
-public class AuthController : ControllerBase
+namespace WebAPI.Controllers
 {
-    private readonly IUsersService usersService;
-    private readonly ISocialAuthService socialAuthService;
+    [ApiController]
+    [SwaggerOrder(2)]
+    [Route("[controller]")]
+    public class AuthController : ControllerBase
+    {
+        private readonly IUsersService usersService;
+        private readonly ISocialAuthService socialAuthService;
 
-    public AuthController(IUsersService usersService, ISocialAuthService socialAuthService)
+        public AuthController(IUsersService usersService, ISocialAuthService socialAuthService)
     {
         this.usersService = usersService;
         this.socialAuthService = socialAuthService;
     }
 
-    [HttpPost("login")]
-    public async Task<IActionResult> LoginAsync([FromBody] UserLoginDto userLoginDto)
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginAsync([FromBody] UserLoginDto userLoginDto)
     {
         OneOf<UserLoggedDto, ErrorCodes.ErrorDetail> userLogged = await usersService.LoginAsync(userLoginDto);
         return ApiResponseHandler.HandleResponse(userLogged);
     }
 
-    [HttpPost("refresh-token")]
-    public async Task<IActionResult> RefreshTokenAsync([FromBody] RefreshTokenRequestDto token)
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshTokenAsync([FromBody] RefreshTokenRequestDto token)
     {
         OneOf<RefreshTokenResponseDto, ErrorCodes.ErrorDetail> tokenRefreshed = await usersService.RefreshTokenAsync(token);
 
@@ -44,15 +44,15 @@ public class AuthController : ControllerBase
     }
 
 
-    [HttpGet("facebook")]
-    public IActionResult AuthenticateFacebook()
+        [HttpGet("facebook")]
+        public IActionResult AuthenticateFacebook()
     {
         AuthenticationProperties authenticationProperties = new() { RedirectUri = Url.Action("FacebookResponse") };
         return Challenge(authenticationProperties, FacebookDefaults.AuthenticationScheme);
     }
 
-    [HttpPost("google-response")]
-    public async Task<IActionResult> GoogleResponse([FromBody] CodeModel model)
+        [HttpPost("google-response")]
+        public async Task<IActionResult> GoogleResponse([FromBody] CodeModel model)
     {
         string provider = "Google";
 
@@ -122,15 +122,15 @@ public class AuthController : ControllerBase
     }
 
 
-    public class CodeModel
-    {
-        public string? Code { get; set; }
-    }
+        public class CodeModel
+        {
+            public string? Code { get; set; }
+        }
 
 
 
-    [HttpGet("facebook-response")]
-    public async Task<IActionResult> FacebookResponse()
+        [HttpGet("facebook-response")]
+        public async Task<IActionResult> FacebookResponse()
     {
         AuthenticateResult result = await HttpContext.AuthenticateAsync(FacebookDefaults.AuthenticationScheme);
         if (!result.Succeeded)
@@ -142,4 +142,5 @@ public class AuthController : ControllerBase
         return Ok();
     }
 
+    }
 }

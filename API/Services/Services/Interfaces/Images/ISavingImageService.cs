@@ -2,9 +2,10 @@
 using Entities.Model.Errors;
 using OneOf;
 
-namespace Services.Interfaces.Images;
-
-public interface ISavingImageService
+namespace Services.Interfaces.Images
 {
-    public Task<OneOf<ImageCreatedDto, ErrorCodes.ErrorDetail>> SaveAsync(ImageCreateDto imageCreateDto);
+    public interface ISavingImageService
+    {
+        public Task<OneOf<ImageCreatedDto, ErrorCodes.ErrorDetail>> SaveAsync(ImageCreateDto imageCreateDto);
+    }
 }

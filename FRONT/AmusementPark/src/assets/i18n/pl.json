@@ -12,12 +12,12 @@
   },
   "topbar": {
     "login_header": "Logowanie / Rejestracja",
-    "hello": "Witaj",
+    "hello": "Cześć",
     "choose_language": "Wybierz swój język:"
   },
   "auth": {
     "login": {
-      "title": "Standardowe logowanie",
+      "title": "Klasyczne logowanie",
       "title_email": "Email",
       "mail_placeholder": "Wpisz swój email",
       "title_password": "Hasło",
@@ -25,13 +25,13 @@
       "btn_text": "Zaloguj się"
     },
     "register": {
-      "title": "Standardowa rejestracja",
+      "title": "Klasyczna rejestracja",
       "title_email": "Email",
       "mail_placeholder": "Wpisz swój email",
       "title_password": "Hasło",
       "password_placeholder": "Wpisz swoje hasło",
-      "password_info": "Twoje hasło musi zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą literę i jedną cyfrę.",
-      "password_confirm_placeholder": "Potwierdź swoje hasło",
+      "password_info": "Hasło musi zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą literę i jedną cyfrę.",
+      "password_confirm_placeholder": "Potwierdź hasło",
       "btn_text": "Zarejestruj się",
       "errors": {
         "password_error_summary": "Błąd hasła",
@@ -53,7 +53,7 @@
     "dark": "Ciemny motyw"
   },
   "title": "Witamy",
-  "description": "To jest opis po polsku.",
+  "description": "To jest opis w języku polskim.",
   "sidebar": {
     "logo_text": "Menu",
     "home": "Strona główna",
@@ -67,7 +67,7 @@
     "tabs": {
       "users": "Użytkownicy",
       "parks": "Parki",
-      "site": "Witryna"
+      "site": "Strona"
     },
     "users": {
       "total": "Łączna liczba użytkowników: {{count}}",
@@ -80,8 +80,28 @@
       "country": "Kraj",
       "actions": "Akcje",
       "edit": "Edytuj",
-      "searchPlaceholder": "Wyszukaj park...",
-      "clear": "Wyczyść"
+      "searchPlaceholder": "Szukaj parku...",
+      "clear": "Wyczyść",
+      "visible": "Widoczny",
+      "hidden": "Ukryty",
+      "create": "Utwórz park",
+      "latitude": "Szerokość geograficzna",
+      "longitude": "Długość geograficzna",
+      "visibleOn": "Widoczny w serwisie publicznym",
+      "visibleOff": "Ukryty w serwisie publicznym",
+      "countryPlaceholder": "Wybierz kraj",
+      "editPage": {
+        "createTitle": "Utwórz nowy park",
+        "updateTitle": "Edytuj park „{{name}}”",
+        "subtitle": "Tutaj zarządzasz podstawowymi informacjami i widocznością parku."
+      }
     }
+  },
+  "validation": {
+    "required": "To pole jest obowiązkowe"
+  },
+  "actions": {
+    "cancel": "Anuluj",
+    "save": "Zapisz"
   }
 }

@@ -26,6 +26,12 @@ namespace WebAPI.Controllers
             this.parksService = parksService;
         }
 
+        // 🔹 helper : est-ce que l’utilisateur peut voir les parcs non visibles ?
+        private bool UserCanSeeNonVisible()
+        {
+            return User?.IsInRole("ADMIN") == true
+                   || User?.IsInRole("MODERATOR") == true;
+        }
 
         [HttpPost]
         [Authorize(Roles = "MODERATOR,ADMIN")]
@@ -48,12 +54,16 @@ namespace WebAPI.Controllers
 
         [HttpGet("list")]
         public async Task<IActionResult> GetListPaginatedParksAsync(
-            [FromQuery] [Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")]
+            [FromQuery][Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")]
             int page = 1,
-            [FromQuery] [Range(1, 100, ErrorMessage = "Size must be between 1 and 100")]
+            [FromQuery][Range(1, 100, ErrorMessage = "Size must be between 1 and 100")]
             int size = 10)
         {
-            (IEnumerable<ParkDto> parks, PaginationDto pagination) = await parksService.GetListParkPaginatedAsync(page, size)!;
+            bool includeNonVisible = UserCanSeeNonVisible();
+
+            (IEnumerable<ParkDto> parks, PaginationDto pagination) =
+                await parksService.GetListParkPaginatedAsync(page, size, includeNonVisible)!;
+
             return ApiResponseHandler.HandleResponse(parks, pagination);
         }
 
@@ -63,18 +73,18 @@ namespace WebAPI.Controllers
             [FromQuery][Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")] int page = 1,
             [FromQuery][Range(1, 100, ErrorMessage = "Size must be between 1 and 100")] int size = 10)
         {
-            // Si pas de terme de recherche, on peut soit renvoyer une 400,
-            // soit fallback sur la liste paginée. Ici on fait un fallback simple.
+            bool includeNonVisible = UserCanSeeNonVisible();
+
             if (string.IsNullOrWhiteSpace(name))
             {
                 (IEnumerable<ParkDto> parksFallback, PaginationDto paginationFallback) =
-                    await parksService.GetListParkPaginatedAsync(page, size)!;
+                    await parksService.GetListParkPaginatedAsync(page, size, includeNonVisible)!;
 
                 return ApiResponseHandler.HandleResponse(parksFallback, paginationFallback);
             }
 
             (IEnumerable<ParkDto> parks, PaginationDto pagination) =
-                await parksService.SearchParksByNamePaginatedAsync(name, page, size)!;
+                await parksService.SearchParksByNamePaginatedAsync(name, page, size, includeNonVisible)!;
 
             return ApiResponseHandler.HandleResponse(parks, pagination);
         }
@@ -85,9 +95,11 @@ namespace WebAPI.Controllers
             [FromQuery] double longitude,
             [FromQuery] double radius)
         {
-            OneOf<IEnumerable<ParkDto>, ErrorCodes.ErrorDetail> parks = await parksService.SearchParksByLocationAsync(latitude, longitude, radius);
+            OneOf<IEnumerable<ParkDto>, ErrorCodes.ErrorDetail> parks =
+                await parksService.SearchParksByLocationAsync(latitude, longitude, radius);
             return ApiResponseHandler.HandleResponse(parks);
         }
+
 
         [HttpPatch("{id}/visibility")]
         [Authorize(Roles = "MODERATOR,ADMIN")]
@@ -98,6 +110,19 @@ namespace WebAPI.Controllers
         {
             OneOf<ParkDto, ErrorCodes.ErrorDetail> result =
                 await parksService.UpdateParkVisibilityAsync(id, request.IsVisible)!;
+
+            return ApiResponseHandler.HandleResponse(result);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "MODERATOR,ADMIN")]
+        [RequireActivatedUnblockedUser]
+        public async Task<IActionResult> UpdateParkAsync(
+            [FromRoute] string id,
+            [FromBody] ParkUpdateDto park)
+        {
+            OneOf<ParkDto, ErrorCodes.ErrorDetail> result =
+                await parksService.UpdateParkAsync(id, park)!;
 
             return ApiResponseHandler.HandleResponse(result);
         }

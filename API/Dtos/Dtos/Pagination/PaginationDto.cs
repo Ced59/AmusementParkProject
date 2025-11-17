@@ -1,14 +1,14 @@
-﻿namespace Dtos.Pagination;
-
-public class PaginationDto
+﻿namespace Dtos.Pagination
 {
-    public int? TotalItems { get; set; }
-    public int? TotalPages { get; set; }
-    public int? CurrentPage { get; set; }
-    public int? ItemsPerPage { get; set; }
+    public class PaginationDto
+    {
+        public int? TotalItems { get; set; }
+        public int? TotalPages { get; set; }
+        public int? CurrentPage { get; set; }
+        public int? ItemsPerPage { get; set; }
 
 
-    public static PaginationDto Create(int? totalItems, int? currentPage, int? itemsPerPage)
+        public static PaginationDto Create(int? totalItems, int? currentPage, int? itemsPerPage)
     {
         if (totalItems.HasValue && currentPage.HasValue && itemsPerPage.HasValue && totalItems.Value > 0)
         {
@@ -23,5 +23,6 @@ public class PaginationDto
         }
 
         return null;
+    }
     }
 }

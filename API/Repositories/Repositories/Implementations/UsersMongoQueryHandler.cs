@@ -3,40 +3,40 @@ using Entities.Model.Users;
 using MongoDB.Driver;
 using Repositories.Interfaces;
 
-namespace Repositories.Implementations;
-
-public class UsersMongoQueryHandler : IUserQueryHandler
+namespace Repositories.Implementations
 {
-    private readonly IMongoCollection<User> usersCollection;
+    public class UsersMongoQueryHandler : IUserQueryHandler
+    {
+        private readonly IMongoCollection<User> usersCollection;
 
-    public UsersMongoQueryHandler(IMongoDatabase database, IMongoDbSettings settings)
+        public UsersMongoQueryHandler(IMongoDatabase database, IMongoDbSettings settings)
     {
         usersCollection = database.GetCollection<User>(settings.UsersCollectionName);
     }
 
-    public async Task<bool> ExistsByEmailAsync(string? email)
+        public async Task<bool> ExistsByEmailAsync(string? email)
     {
         long count = await usersCollection.CountDocumentsAsync(user => user.Email == email);
         return count > 0;
     }
 
-    public async Task<User?> GetUserByIdAsync(string id)
+        public async Task<User?> GetUserByIdAsync(string id)
     {
         return await usersCollection.Find(user => user.Id == id).FirstOrDefaultAsync();
     }
 
-    public async Task<User?> GetUserByEmailAsync(string? email)
+        public async Task<User?> GetUserByEmailAsync(string? email)
     {
         return await usersCollection.Find(user => user.Email == email).FirstOrDefaultAsync();
     }
 
 
-    public async Task<IEnumerable<User>> GetAllUsersAsync()
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
     {
         return await usersCollection.Find(user => true).ToListAsync();
     }
 
-    public async Task<User?> CreateUserAsync(User user)
+        public async Task<User?> CreateUserAsync(User user)
     {
         try
         {
@@ -49,7 +49,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         }
     }
 
-    public async Task<User?> UpdateUserAsync(User user)
+        public async Task<User?> UpdateUserAsync(User user)
     {
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, user.Id);
         FindOneAndReplaceOptions<User> options = new()
@@ -69,12 +69,12 @@ public class UsersMongoQueryHandler : IUserQueryHandler
     }
 
 
-    public async Task DeleteUserAsync(string id)
+        public async Task DeleteUserAsync(string id)
     {
         await usersCollection.DeleteOneAsync(user => user.Id == id);
     }
 
-    public async Task UpdateLastLoginAndActivityAsync(string userId)
+        public async Task UpdateLastLoginAndActivityAsync(string userId)
     {
         DateTime now = DateTime.UtcNow;
 
@@ -87,7 +87,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         await usersCollection.UpdateOneAsync(filter, update);
     }
 
-    public async Task UpdateLastActivityAsync(string userId)
+        public async Task UpdateLastActivityAsync(string userId)
     {
         DateTime now = DateTime.UtcNow;
 
@@ -99,7 +99,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         await usersCollection.UpdateOneAsync(filter, update);
     }
 
-    public async Task<User?> AssignRoleAsync(string userId, Role role)
+        public async Task<User?> AssignRoleAsync(string userId, Role role)
     {
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
         UpdateDefinition<User>? update = Builders<User>.Update.AddToSet(u => u.Roles, role);
@@ -114,7 +114,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         return updatedUser;
     }
 
-    public async Task<User?> RemoveRoleAsync(string userId, Role role)
+        public async Task<User?> RemoveRoleAsync(string userId, Role role)
     {
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
         UpdateDefinition<User>? update = Builders<User>.Update.Pull(u => u.Roles, role);
@@ -129,7 +129,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         return updatedUser;
     }
 
-    public async Task<User?> LockUser(string userId)
+        public async Task<User?> LockUser(string userId)
     {
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
         UpdateDefinition<User>? update = Builders<User>.Update.Set(u => u.IsBlocked, true);
@@ -144,7 +144,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         return updatedUser;
     }
 
-    public async Task<User?> UnlockUser(string userId)
+        public async Task<User?> UnlockUser(string userId)
     {
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, userId);
         UpdateDefinition<User>? update = Builders<User>.Update.Set(u => u.IsBlocked, false);
@@ -159,7 +159,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
         return updatedUser;
     }
 
-    public async Task<bool> ChangePassword(string idUser, string newHashedPassword)
+        public async Task<bool> ChangePassword(string idUser, string newHashedPassword)
     {
         FilterDefinition<User>? filter = Builders<User>.Filter.Eq(u => u.Id, idUser);
         UpdateDefinition<User>? update = Builders<User>.Update.Set(u => u.HashedPassword, newHashedPassword);
@@ -170,7 +170,7 @@ public class UsersMongoQueryHandler : IUserQueryHandler
 
     }
 
-    public async Task<IEnumerable<User>> GetUsersPaginatedAsync(int page, int pageSize)
+        public async Task<IEnumerable<User>> GetUsersPaginatedAsync(int page, int pageSize)
     {
         return await usersCollection.Find(_ => true)
             .Skip((page - 1) * pageSize)
@@ -178,8 +178,9 @@ public class UsersMongoQueryHandler : IUserQueryHandler
             .ToListAsync();
     }
 
-    public async Task<long> GetTotalUsersCountAsync()
+        public async Task<long> GetTotalUsersCountAsync()
     {
         return await usersCollection.CountDocumentsAsync(_ => true);
+    }
     }
 }
