@@ -12,5 +12,6 @@ namespace WebAPI.Settings.MongoDB
         public string ParksCollectionName { get; set; } = string.Empty;
         public string SearchItemCollectionName { get; set; } = string.Empty;
         public string ImagesCollectionName { get; set; } = string.Empty;
+        public string CountriesCollectionName { get; set; } = string.Empty;
     }
 }

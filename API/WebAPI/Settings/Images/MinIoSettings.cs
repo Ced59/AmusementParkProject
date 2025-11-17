@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Services.Interfaces.Settings;
+﻿using Services.Interfaces.Settings;
 
 namespace WebAPI.Settings.Images
 {

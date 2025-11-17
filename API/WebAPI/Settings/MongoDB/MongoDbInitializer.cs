@@ -5,99 +5,138 @@ using Repositories.Interfaces;
 using Services.Interfaces.Searching;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using Entities.Model.Countries;
 using WebAPI.Resources.InitializingDatas;
 
 namespace WebAPI.Settings.MongoDB
 {
     public static class MongoDbInitializer
     {
-        public static async Task InitializeCollectionsAsync(IMongoDatabase database, IMongoDbSettings settings, ISearchIndexService searchIndexService)
-    {
-        await EnsureCollectionExistsAsync(database, settings.UsersCollectionName);
-        await EnsureCollectionExistsAsync(database, settings.ImagesCollectionName);
-        await InitializeParksCollection(database, settings.ParksCollectionName, @"C:\Users\ccaud\Source\Repos\Ced59\AmusementParkProject\API\WebAPI\Resources\InitializingDatas\parks.json");
-        await searchIndexService.InitializeFromParksAsync(
-            database, 
-            settings.ParksCollectionName,
-            settings.SearchItemCollectionName
+        public static async Task InitializeCollectionsAsync(
+            IMongoDatabase database,
+            IMongoDbSettings settings,
+            ISearchIndexService searchIndexService)
+        {
+            // Collections "techniques"
+            await EnsureCollectionExistsAsync(database, settings.UsersCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.ImagesCollectionName);
+
+            // 🔹 Countries
+            await EnsureCollectionExistsAsync(database, settings.CountriesCollectionName);
+            await InitializeCountriesCollection(
+                database,
+                settings.CountriesCollectionName,
+                // adapte ce chemin si besoin
+                @"C:\Users\ccaud\Source\Repos\Ced59\AmusementParkProject\API\WebAPI\Resources\InitializingDatas\countries.seed.json"
             );
-    }
+
+            // 🔹 Parks
+            await EnsureCollectionExistsAsync(database, settings.ParksCollectionName);
+            await InitializeParksCollection(
+                database,
+                settings.ParksCollectionName,
+                @"C:\Users\ccaud\Source\Repos\Ced59\AmusementParkProject\API\WebAPI\Resources\InitializingDatas\parks.json"
+            );
+
+            // 🔹 Index de recherche
+            await searchIndexService.InitializeFromParksAsync(
+                database,
+                settings.ParksCollectionName,
+                settings.SearchItemCollectionName
+            );
+        }
 
         private static async Task EnsureCollectionExistsAsync(IMongoDatabase database, string collectionName)
-    {
-        BsonDocument filter = new("name", collectionName);
-        IAsyncCursor<BsonDocument>? collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
-        bool exists = await collections.AnyAsync();
-
-        if (!exists)
         {
-            await database.CreateCollectionAsync(collectionName);
-        }
-    }
+            BsonDocument filter = new("name", collectionName);
+            IAsyncCursor<BsonDocument>? collections =
+                await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
+            bool exists = await collections.AnyAsync();
 
-        private static async Task InitializeParksCollection(IMongoDatabase database, string collectionName, string jsonFilePath)
-    {
-        BsonDocument filter = new("name", collectionName);
-        IAsyncCursor<BsonDocument>? collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
-        bool exists = await collections.AnyAsync();
-
-        if (!exists)
-        {
-            await database.CreateCollectionAsync(collectionName);
+            if (!exists)
+            {
+                await database.CreateCollectionAsync(collectionName);
+            }
         }
 
-        IMongoCollection<Park>? parksCollection = database.GetCollection<Park>(collectionName);
+        // ==================== INITIALISATION PARKS ====================
 
-        long documentCount = await parksCollection.CountDocumentsAsync(new BsonDocument());
-
-        if (documentCount == 0)
+        private static async Task InitializeParksCollection(
+            IMongoDatabase database,
+            string collectionName,
+            string jsonFilePath)
         {
-            // Lire le fichier JSON et déséchapper les caractères spéciaux
-            string json = await File.ReadAllTextAsync(jsonFilePath);
+            BsonDocument filter = new("name", collectionName);
+            IAsyncCursor<BsonDocument>? collections =
+                await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
+            bool exists = await collections.AnyAsync();
 
-            JsonSerializerOptions options = new()
+            if (!exists)
             {
-                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                PropertyNameCaseInsensitive = true
-            };
+                await database.CreateCollectionAsync(collectionName);
+            }
 
-            List<ParkJson>? parksJson = JsonSerializer.Deserialize<List<ParkJson>>(json, options);
+            IMongoCollection<Park>? parksCollection = database.GetCollection<Park>(collectionName);
 
-            // Création de l'index de géolocalisation sur la collection Park
-            await parksCollection.Indexes.CreateOneAsync(new CreateIndexModel<Park>(
-                Builders<Park>.IndexKeys.Geo2DSphere(park => park.Location)));
+            long documentCount = await parksCollection.CountDocumentsAsync(new BsonDocument());
 
-            List<Park> parks = new();
-
-            foreach (ParkJson parkJson in parksJson)
+            if (documentCount == 0)
             {
-                Park park = new()
+                if (!File.Exists(jsonFilePath))
                 {
-                    Name = parkJson.Name,
-                    CountryCode = ExtractCountryCode(parkJson.Country.Name),
-                    Latitude = parkJson.Latitude,
-                    Longitude = parkJson.Longitude
+                    // À toi de voir : log, throw, etc.
+                    Console.WriteLine($"[MongoDbInitializer] Fichier parks JSON introuvable : {jsonFilePath}");
+                    return;
+                }
+
+                string json = await File.ReadAllTextAsync(jsonFilePath);
+
+                JsonSerializerOptions options = new()
+                {
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    PropertyNameCaseInsensitive = true
                 };
 
-                parks.Add(park);
-            }
+                List<ParkJson>? parksJson = JsonSerializer.Deserialize<List<ParkJson>>(json, options);
 
-            if (parks is { Count: > 0 })
-            {
-                // Insérer les parcs dans la collection MongoDB
-                await parksCollection.InsertManyAsync(parks);
+                // Index 2dsphere sur la collection Park
+                await parksCollection.Indexes.CreateOneAsync(new CreateIndexModel<Park>(
+                    Builders<Park>.IndexKeys.Geo2DSphere(park => park.Location)));
+
+                List<Park> parks = new();
+
+                if (parksJson is not null)
+                {
+                    foreach (ParkJson parkJson in parksJson)
+                    {
+                        Park park = new()
+                        {
+                            Name = parkJson.Name,
+                            CountryCode = ExtractCountryCode(parkJson.Country.Name),
+                            Latitude = parkJson.Latitude,
+                            Longitude = parkJson.Longitude
+                        };
+
+                        parks.Add(park);
+                    }
+                }
+
+                if (parks is { Count: > 0 })
+                {
+                    await parksCollection.InsertManyAsync(parks);
+                }
             }
         }
-    }
 
         private static string ExtractCountryCode(string? countryName)
-    {
-        if (string.IsNullOrEmpty(countryName) || !CountryToCode.TryGetValue(countryName, out string? code))
         {
-            return "Unknown"; // Code par défaut si le pays n'est pas trouvé ou si la chaîne est vide
+            if (string.IsNullOrEmpty(countryName) ||
+                !CountryToCode.TryGetValue(countryName, out string? code))
+            {
+                return "Unknown";
+            }
+            return code;
         }
-        return code;
-    }
 
 
         private static readonly Dictionary<string, string> CountryToCode = new()
@@ -193,5 +232,61 @@ namespace WebAPI.Settings.MongoDB
             {"country.usa", "US"},
             {"country.vietnam", "VN"}
         };
+
+        private static async Task InitializeCountriesCollection(
+                  IMongoDatabase database,
+                  string collectionName,
+                  string jsonFilePath)
+        {
+            // Vérifier/Créer la collection
+            BsonDocument filter = new("name", collectionName);
+            IAsyncCursor<BsonDocument>? collections =
+                await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
+            bool exists = await collections.AnyAsync();
+
+            if (!exists)
+            {
+                await database.CreateCollectionAsync(collectionName);
+            }
+
+            IMongoCollection<Country>? countriesCollection =
+                database.GetCollection<Country>(collectionName);
+
+            long documentCount =
+                await countriesCollection.CountDocumentsAsync(new BsonDocument());
+
+            // On ne remplit que si la collection est vide
+            if (documentCount > 0)
+            {
+                return;
+            }
+
+            if (!File.Exists(jsonFilePath))
+            {
+                Console.WriteLine($"[MongoDbInitializer] Fichier countries JSON introuvable : {jsonFilePath}");
+                return;
+            }
+
+            string json = await File.ReadAllTextAsync(jsonFilePath);
+
+            JsonSerializerOptions options = new()
+            {
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                PropertyNameCaseInsensitive = true
+            };
+
+            // 🔹 Si ton JSON est déjà au format Country (isoCode, names[ { languageCode, value } ])
+            List<Country>? countries =
+                JsonSerializer.Deserialize<List<Country>>(json, options);
+
+            if (countries is { Count: > 0 })
+            {
+                await countriesCollection.InsertManyAsync(countries);
+            }
+            else
+            {
+                Console.WriteLine("[MongoDbInitializer] Aucun pays désérialisé depuis le JSON.");
+            }
+        }
     }
 }

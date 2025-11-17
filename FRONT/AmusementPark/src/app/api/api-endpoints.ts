@@ -25,4 +25,6 @@ export const API_ENDPOINTS = {
       : '';
     return `search?query=${encodeURIComponent(query)}${catsParam}&page=${page}&pageSize=${size}`;
   },
+
+  getCountries: (lang: string) => `countries?lang=${lang}`,
 };

@@ -11,6 +11,7 @@ import { ParksApiResponse } from "../models/parks/parks_api_response";
 import { Park } from "../models/parks/park";
 import { SearchApiResponse } from "../models/search/search-api-response";
 import {UsersApiResponse} from "../models/users/users_api_response";
+import {CountryDto} from "../models/countries/country-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -107,5 +108,10 @@ export class ApiService {
     const url =
       `${environment.apiBaseUrl}${API_ENDPOINTS.getSearch(query, categories, page, size)}`;
     return this.http.get<SearchApiResponse>(url);
+  }
+
+  getCountries(lang: string) {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getCountries(lang)}`;
+    return this.http.get<CountryDto[]>(url);
   }
 }

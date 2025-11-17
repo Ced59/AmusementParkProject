@@ -56,11 +56,13 @@ namespace WebAPI
 
             builder.Services.AddScoped<ISearchIndexService, SearchIndexService>();
             builder.Services.AddScoped<ISearchService, SearchService>();
+            builder.Services.AddScoped<ICountriesService, CountriesService>();
 
             builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
             builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
             builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
             builder.Services.AddScoped<IImagesQueryHandler, ImagesMongoQueryHandler>();
+            builder.Services.AddScoped<ICountriesQueryHandler, CountriesMongoQueryHandler>();
 
             InjectImagesServices(builder);
 

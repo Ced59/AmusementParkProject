@@ -10,5 +10,6 @@
         string ParksCollectionName { get; }
         string SearchItemCollectionName { get; }
         string ImagesCollectionName { get; }
+        string CountriesCollectionName { get; }
     }
 }

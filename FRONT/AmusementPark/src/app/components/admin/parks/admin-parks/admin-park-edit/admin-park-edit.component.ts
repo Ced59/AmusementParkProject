@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "../../../../../services/api.service";
 import {Park} from "../../../../../models/parks/park";
-
+import {CountryDto} from "../../../../../models/countries/country-dto";
 
 @Component({
   selector: 'app-admin-park-edit',
@@ -16,11 +16,9 @@ export class AdminParkEditComponent implements OnInit {
   isEditMode = false;
   parkId: string | null = null;
 
-  countryOptions = [
-    { code: 'FR', label: 'France' },
-    { code: 'US', label: 'United States' },
-    { code: 'JP', label: 'Japan' }
-  ];
+  // 🔹 options pour le dropdown pays
+  countryOptions: { code: string; label: string }[] = [];
+  countriesLoading = false;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -34,6 +32,9 @@ export class AdminParkEditComponent implements OnInit {
 
     this.parkId = this.route.snapshot.paramMap.get('idPark');
     this.isEditMode = !!this.parkId;
+
+    // Charger la liste des pays (en langue courante)
+    this.loadCountries();
 
     if (this.isEditMode && this.parkId) {
       this.loadPark(this.parkId);
@@ -60,10 +61,36 @@ export class AdminParkEditComponent implements OnInit {
     });
   }
 
+  private loadCountries(): void {
+    this.countriesLoading = true;
+
+    // Récupère la langue depuis la route racine `:lang`
+    // /:lang/admin/parks/...
+    const root = this.route.root;
+    const lang =
+      root.firstChild?.snapshot.params['lang'] ??
+      this.route.snapshot.params['lang'] ??
+      'en';
+
+    this.apiService.getCountries(lang).subscribe({
+      next: (countries: CountryDto[]) => {
+        this.countryOptions = countries.map(c => ({
+          code: c.isoCode,
+          label: c.name
+        }));
+        this.countriesLoading = false;
+      },
+      error: err => {
+        console.error('Error loading countries', err);
+        this.countryOptions = [];
+        this.countriesLoading = false;
+      }
+    });
+  }
+
   private loadPark(id: string): void {
     this.apiService.getParkById(id).subscribe({
       next: (park: Park) => {
-        // sécurité basique si l’API renvoie des null
         this.form.patchValue({
           id: park.id,
           name: park.name ?? '',
@@ -91,6 +118,9 @@ export class AdminParkEditComponent implements OnInit {
   }
   get isVisibleControl() {
     return this.form.get('isVisible')!;
+  }
+  get countryCodeControl() {
+    return this.form.get('countryCode')!;
   }
 
   private buildPayload(): Park {
@@ -146,7 +176,6 @@ export class AdminParkEditComponent implements OnInit {
   }
 
   private navigateToList(): void {
-    // retourne sur /:lang/admin/parks
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

@@ -15,4 +15,8 @@
     <ProjectReference Include="..\..\CommonStatus\CommonStatus\Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Model\Countries\" />
+  </ItemGroup>
+
 </Project>
