@@ -90,6 +90,18 @@
       "visibleOn": "Visibile sul sito pubblico",
       "visibleOff": "Nascosto sul sito pubblico",
       "countryPlaceholder": "Seleziona un paese",
+      "website": "Sito web",
+      "websitePlaceholder": "https://www.esempio.com",
+      "visibleField": "Visibilità",
+      "street": "Indirizzo",
+      "streetPlaceholder": "Indirizzo completo",
+
+      "city": "Città",
+      "cityPlaceholder": "Nome della città",
+
+      "postalCode": "CAP",
+      "postalCodePlaceholder": "Codice postale",
+
       "editPage": {
         "createTitle": "Crea un nuovo parco",
         "updateTitle": "Modifica il parco \"{{name}}\"",

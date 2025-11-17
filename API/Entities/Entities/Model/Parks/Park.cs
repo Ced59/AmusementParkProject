@@ -15,5 +15,17 @@ namespace Entities.Model.Parks
         [BsonElement("isVisible")]
         [BsonRepresentation(BsonType.Boolean)]
         public bool IsVisible { get; set; } = false;
+
+        [BsonElement("websiteUrl")]
+        public string? WebSiteUrl { get; set; }
+
+        [BsonElement("street")]
+        public string? Street { get; set; }
+
+        [BsonElement("city")]
+        public string? City { get; set; }
+
+        [BsonElement("postalCode")]
+        public string? PostalCode { get; set; }
     }
 }

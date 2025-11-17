@@ -90,6 +90,18 @@
       "visibleOn": "Visible en el sitio público",
       "visibleOff": "Oculto en el sitio público",
       "countryPlaceholder": "Selecciona un país",
+      "website": "Sitio web",
+      "websitePlaceholder": "https://www.ejemplo.com",
+      "visibleField": "Visibilidad",
+      "street": "Dirección",
+      "streetPlaceholder": "Dirección completa",
+
+      "city": "Ciudad",
+      "cityPlaceholder": "Nombre de la ciudad",
+
+      "postalCode": "Código postal",
+      "postalCodePlaceholder": "Código postal",
+
       "editPage": {
         "createTitle": "Crear un nuevo parque",
         "updateTitle": "Editar parque \"{{name}}\"",

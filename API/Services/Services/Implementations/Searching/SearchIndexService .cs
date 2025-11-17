@@ -137,6 +137,16 @@ namespace Services.Implementations.Searching
                 keywords.Add(park.CountryCode.Trim().ToLowerInvariant());
             }
 
+            if (!string.IsNullOrWhiteSpace(park.City))
+            {
+                keywords.Add(park.City.Trim().ToLowerInvariant());
+            }
+
+            if (!string.IsNullOrWhiteSpace(park.PostalCode))
+            {
+                keywords.Add(park.PostalCode.Trim().ToLowerInvariant());
+            }
+
             SearchItem item = new()
             {
                 OriginalId = originalId,

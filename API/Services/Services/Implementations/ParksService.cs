@@ -36,7 +36,11 @@ namespace Services.Implementations
                 CountryCode = parkDto.CountryCode,
                 Latitude = parkDto.Latitude,
                 Longitude = parkDto.Longitude,
-                IsVisible = parkDto.IsVisible
+                IsVisible = parkDto.IsVisible,
+                WebSiteUrl = parkDto.WebsiteUrl,
+                Street = parkDto.Street,
+                City = parkDto.City,
+                PostalCode = parkDto.PostalCode
             };
 
             Park? createdPark = await parksQueryHandler.CreateParkAsync(park);
@@ -57,7 +61,11 @@ namespace Services.Implementations
                 CountryCode = createdPark.CountryCode,
                 Latitude = createdPark.Latitude,
                 Longitude = createdPark.Longitude,
-                IsVisible = createdPark.IsVisible
+                IsVisible = createdPark.IsVisible,
+                WebSiteUrl = createdPark.WebSiteUrl,
+                Street = createdPark.Street,
+                City = createdPark.City,
+                PostalCode = createdPark.PostalCode
             };
 
             return parkCreatedDto;
@@ -83,6 +91,10 @@ namespace Services.Implementations
                 Latitude = park.Latitude,
                 Longitude = park.Longitude,
                 IsVisible = park.IsVisible,
+                WebSiteUrl = park.WebSiteUrl,
+                Street = park.Street,
+                City = park.City,
+                PostalCode = park.PostalCode
             };
         }
 
@@ -111,7 +123,11 @@ namespace Services.Implementations
                 CountryCode = park.CountryCode,
                 Latitude = park.Latitude,
                 Longitude = park.Longitude,
-                IsVisible = park.IsVisible
+                IsVisible = park.IsVisible,
+                WebSiteUrl = park.WebSiteUrl,
+                Street = park.Street,
+                City = park.City,
+                PostalCode = park.PostalCode
             }).ToList();
 
             return (parkDtos, paginationInfo);
@@ -151,7 +167,11 @@ namespace Services.Implementations
                 CountryCode = park.CountryCode,
                 Latitude = park.Latitude,
                 Longitude = park.Longitude,
-                IsVisible = park.IsVisible
+                IsVisible = park.IsVisible,
+                WebSiteUrl = park.WebSiteUrl,
+                Street = park.Street,
+                City = park.City,
+                PostalCode = park.PostalCode
             }).ToList();
 
             return (parkDtos, paginationInfo);
@@ -173,7 +193,11 @@ namespace Services.Implementations
                 Latitude = park.Latitude,
                 Longitude = park.Longitude,
                 Name = park.Name,
-                IsVisible = park.IsVisible
+                IsVisible = park.IsVisible,
+                WebSiteUrl = park.WebSiteUrl,
+                Street = park.Street,
+                City = park.City,
+                PostalCode = park.PostalCode
             }).ToList();
 
             return parksDtos;
@@ -200,6 +224,10 @@ namespace Services.Implementations
             existing.Longitude = dto.Longitude;
             existing.IsVisible = dto.IsVisible;
             existing.UpdatedAt = DateTime.UtcNow;
+            existing.WebSiteUrl = dto.WebsiteUrl;
+            existing.Street = dto.Street;
+            existing.City = dto.City;
+            existing.PostalCode = dto.PostalCode;
 
             // Persistance
             Park? updatedPark = await parksQueryHandler.UpdateParkAsync(existing);
@@ -223,7 +251,11 @@ namespace Services.Implementations
                 CountryCode = updatedPark.CountryCode,
                 Latitude = updatedPark.Latitude,
                 Longitude = updatedPark.Longitude,
-                IsVisible = updatedPark.IsVisible
+                IsVisible = updatedPark.IsVisible,
+                WebSiteUrl = updatedPark.WebSiteUrl,
+                Street = updatedPark.Street,
+                City = updatedPark.City,
+                PostalCode = updatedPark.PostalCode
             };
 
             return dtoResult;
@@ -256,7 +288,11 @@ namespace Services.Implementations
                 CountryCode = updatedPark.CountryCode,
                 Latitude = updatedPark.Latitude,
                 Longitude = updatedPark.Longitude,
-                IsVisible = updatedPark.IsVisible
+                IsVisible = updatedPark.IsVisible,
+                WebSiteUrl = updatedPark.WebSiteUrl,
+                Street = updatedPark.Street,
+                City = updatedPark.City,
+                PostalCode = updatedPark.PostalCode
             };
 
             return dto;

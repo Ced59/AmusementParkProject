@@ -89,6 +89,18 @@
       "longitude": "Längengrad",
       "visibleOn": "Auf der öffentlichen Seite sichtbar",
       "visibleOff": "Auf der öffentlichen Seite verborgen",
+      "website": "Webseite",
+      "websitePlaceholder": "https://www.beispiel.de",
+      "visibleField": "Sichtbarkeit",
+      "street": "Adresse",
+      "streetPlaceholder": "Vollständige Adresse",
+
+      "city": "Stadt",
+      "cityPlaceholder": "Stadtname",
+
+      "postalCode": "Postleitzahl",
+      "postalCodePlaceholder": "PLZ",
+
       "countryPlaceholder": "Land auswählen",
       "editPage": {
         "createTitle": "Neuen Park erstellen",

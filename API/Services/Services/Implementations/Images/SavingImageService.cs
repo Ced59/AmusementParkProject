@@ -40,10 +40,14 @@ namespace Services.Implementations.Images
             ImageCreateDto dto)
         {
             if (dto.File == null || string.IsNullOrWhiteSpace(dto.File.FileName))
+            {
                 return ErrorCodes.NoImageFileProvided;
+            }
 
             if (string.IsNullOrWhiteSpace(dto.Category.ToEnumString()))
+            {
                 return ErrorCodes.NoImageCategoryProvided;
+            }
 
             // GUID logique commun pour toutes les variantes (webp/jpg)
             string imageId = Guid.NewGuid().ToString("N");
@@ -58,7 +62,9 @@ namespace Services.Implementations.Images
                     await imageMetadataExtractorService.ExtractGeoCoordinatesAsync(sourceStream);
 
                 if (sourceStream.CanSeek)
+                {
                     sourceStream.Position = 0;
+                }
 
                 // 2. Entité métier (sera persistée en Mongo)
                 Image imageEntity = new()
@@ -84,7 +90,9 @@ namespace Services.Implementations.Images
                     processingStream = watermarkedStream;
 
                     if (processingStream.CanSeek)
+                    {
                         processingStream.Position = 0;
+                    }
 
 #if DEBUG
                     // Debug : on sauvegarde l'image filigranée pour contrôle local
@@ -95,12 +103,16 @@ namespace Services.Implementations.Images
                     await using (FileStream debugStream = File.Create(debugPath))
                     {
                         if (processingStream.CanSeek)
+                        {
                             processingStream.Position = 0;
+                        }
 
                         await processingStream.CopyToAsync(debugStream);
 
                         if (processingStream.CanSeek)
+                        {
                             processingStream.Position = 0;
+                        }
                     }
 #endif
                 }
@@ -110,7 +122,9 @@ namespace Services.Implementations.Images
                     await ProcessAndStoreAsync(processingStream, imageId, categorySlug);
 
                 if (watermarkedStream is not null)
+                {
                     await watermarkedStream.DisposeAsync();
+                }
 
                 // 5. Persistance Mongo
                 Image? savedImage = await imagesQueryHandler.CreateImageAsync(imageEntity);
@@ -152,7 +166,9 @@ namespace Services.Implementations.Images
             string category)
         {
             if (imageStream.CanSeek)
+            {
                 imageStream.Position = 0;
+            }
 
             Dictionary<string, byte[]> images =
                 await imageCompressorService.CompressAsync(imageStream, baseName);

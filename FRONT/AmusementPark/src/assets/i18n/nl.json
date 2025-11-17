@@ -90,6 +90,18 @@
       "visibleOn": "Zichtbaar op de publieke site",
       "visibleOff": "Verborgen op de publieke site",
       "countryPlaceholder": "Selecteer een land",
+      "website": "Website",
+      "websitePlaceholder": "https://www.voorbeeld.nl",
+      "visibleField": "Zichtbaarheid",
+      "street": "Adres",
+      "streetPlaceholder": "Volledig adres",
+
+      "city": "Stad",
+      "cityPlaceholder": "Naam van de stad",
+
+      "postalCode": "Postcode",
+      "postalCodePlaceholder": "Postcode",
+
       "editPage": {
         "createTitle": "Nieuw park aanmaken",
         "updateTitle": "Park \"{{name}}\" bewerken",

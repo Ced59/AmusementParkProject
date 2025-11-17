@@ -79,7 +79,11 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       countryCode: [initial.countryCode],
       latitude: [initial.latitude, Validators.required],
       longitude: [initial.longitude, Validators.required],
-      isVisible: [initial.isVisible]
+      isVisible: [initial.isVisible],
+      websiteUrl: [initial.webSiteUrl ?? ''],
+      street: [initial.street ?? ''],
+      city: [initial.city ?? ''],
+      postalCode: [initial.postalCode ?? '']
     });
 
     this.mapCenter = [initial.latitude, initial.longitude];
@@ -121,7 +125,11 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
           countryCode: park.countryCode ?? '',
           latitude: park.latitude,
           longitude: park.longitude,
-          isVisible: park.isVisible ?? true
+          isVisible: park.isVisible ?? true,
+          websiteUrl: park.webSiteUrl ?? '',
+          street: park.street ?? '',
+          city: park.city ?? '',
+          postalCode: park.postalCode ?? ''
         });
 
         this.mapCenter = [park.latitude, park.longitude];
@@ -191,7 +199,11 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       countryCode: raw.countryCode || undefined,
       latitude: Number(raw.latitude),
       longitude: Number(raw.longitude),
-      isVisible: raw.isVisible
+      isVisible: raw.isVisible,
+      webSiteUrl: raw.websiteUrl || undefined,
+      street: raw.street || undefined,
+      city: raw.city || undefined,
+      postalCode: raw.postalCode || undefined
     } as Park;
   }
 

@@ -5,4 +5,8 @@ export interface Park {
   latitude: number;
   longitude: number;
   isVisible?: boolean;
+  webSiteUrl?: string;
+  street?: string;
+  city?: string;
+  postalCode?: string;
 }

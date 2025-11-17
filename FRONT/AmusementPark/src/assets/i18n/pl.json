@@ -90,6 +90,18 @@
       "visibleOn": "Widoczny w serwisie publicznym",
       "visibleOff": "Ukryty w serwisie publicznym",
       "countryPlaceholder": "Wybierz kraj",
+      "website": "Strona internetowa",
+      "websitePlaceholder": "https://www.przyklad.pl",
+      "visibleField": "Widoczność",
+      "street": "Adres",
+      "streetPlaceholder": "Pełny adres",
+
+      "city": "Miasto",
+      "cityPlaceholder": "Nazwa miasta",
+
+      "postalCode": "Kod pocztowy",
+      "postalCodePlaceholder": "Kod pocztowy",
+
       "editPage": {
         "createTitle": "Utwórz nowy park",
         "updateTitle": "Edytuj park „{{name}}”",

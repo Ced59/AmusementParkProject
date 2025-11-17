@@ -18,5 +18,13 @@ namespace Dtos.Parks.Updating
         public double Longitude { get; set; }
 
         public bool IsVisible { get; set; }
+
+        public string? WebsiteUrl { get; set; }
+
+        public string? Street { get; set; }
+
+        public string? City { get; set; }
+
+        public string? PostalCode { get; set; }
     }
 }
