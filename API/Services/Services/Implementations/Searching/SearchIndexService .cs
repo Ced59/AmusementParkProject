@@ -89,7 +89,8 @@ namespace Services.Implementations.Searching
                     .Set(si => si.Longitude, park.Longitude)
                     .Set(si => si.UpdatedAt, park.UpdatedAt)
                     // Si on souhaite remplir CreatedAt seulement lors d'un insert
-                    .SetOnInsert(si => si.CreatedAt, DateTime.UtcNow);
+                    .SetOnInsert(si => si.CreatedAt, DateTime.UtcNow)
+                    .SetOnInsert(si => si.Id, Guid.NewGuid().ToString());
 
                 // 5.4) Conserver aussi la géolocalisation (Location) via Set(si => si.Location, …)
                 //      Mais GeoJsonPoint est généré automatiquement dans le setter de Latitude/Longitude, 
@@ -176,7 +177,8 @@ namespace Services.Implementations.Searching
                 .Set(si => si.CompositeScore, item.CompositeScore)
                 .Set(si => si.IsVisible, item.IsVisible)
                 .Set(si => si.Location, new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
-                    new GeoJson2DGeographicCoordinates(item.Longitude, item.Latitude)));
+                    new GeoJson2DGeographicCoordinates(item.Longitude, item.Latitude)))
+                .SetOnInsert(si => si.Id, item.Id); ;
 
             UpdateOptions options = new() { IsUpsert = true };
             await searchColl.UpdateOneAsync(filter, update, options);
