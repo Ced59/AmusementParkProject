@@ -1,24 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "../../../../../services/api.service";
 import {Park} from "../../../../../models/parks/park";
 import {CountryDto} from "../../../../../models/countries/country-dto";
+
+interface MapMarker {
+  id: string;
+  lat: number;
+  lng: number;
+  draggable?: boolean;
+}
 
 @Component({
   selector: 'app-admin-park-edit',
   templateUrl: './admin-park-edit.component.html',
   styleUrls: ['./admin-park-edit.component.scss']
 })
-export class AdminParkEditComponent implements OnInit {
+export class AdminParkEditComponent implements OnInit, OnDestroy {
+
   form!: FormGroup;
 
   isEditMode = false;
   parkId: string | null = null;
 
-  // 🔹 options pour le dropdown pays
   countryOptions: { code: string; label: string }[] = [];
   countriesLoading = false;
+
+  // Carte
+  mapCenter: [number, number] = [48.8566, 2.3522]; // Paris par défaut
+  mapZoom = 16;
+  mapMarkers: MapMarker[] = [];
+
+  private subscriptions = new Subscription();
 
   constructor(
     private readonly fb: FormBuilder,
@@ -33,12 +48,19 @@ export class AdminParkEditComponent implements OnInit {
     this.parkId = this.route.snapshot.paramMap.get('idPark');
     this.isEditMode = !!this.parkId;
 
-    // Charger la liste des pays (en langue courante)
     this.loadCountries();
+
+    this.setupFormMapSync();
 
     if (this.isEditMode && this.parkId) {
       this.loadPark(this.parkId);
+    } else {
+      this.updateMarkerFromForm();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   private buildForm(): void {
@@ -46,8 +68,8 @@ export class AdminParkEditComponent implements OnInit {
       id: undefined,
       name: '',
       countryCode: '',
-      latitude: 0,
-      longitude: 0,
+      latitude: 48.8566,
+      longitude: 2.3522,
       isVisible: true
     };
 
@@ -59,13 +81,14 @@ export class AdminParkEditComponent implements OnInit {
       longitude: [initial.longitude, Validators.required],
       isVisible: [initial.isVisible]
     });
+
+    this.mapCenter = [initial.latitude, initial.longitude];
   }
 
   private loadCountries(): void {
     this.countriesLoading = true;
+    this.form.get('countryCode')?.disable({ emitEvent: false });
 
-    // Récupère la langue depuis la route racine `:lang`
-    // /:lang/admin/parks/...
     const root = this.route.root;
     const lang =
       root.firstChild?.snapshot.params['lang'] ??
@@ -79,11 +102,12 @@ export class AdminParkEditComponent implements OnInit {
           label: c.name
         }));
         this.countriesLoading = false;
+        this.form.get('countryCode')?.enable({ emitEvent: false });
       },
       error: err => {
         console.error('Error loading countries', err);
-        this.countryOptions = [];
         this.countriesLoading = false;
+        this.form.get('countryCode')?.enable({ emitEvent: false });
       }
     });
   }
@@ -99,33 +123,68 @@ export class AdminParkEditComponent implements OnInit {
           longitude: park.longitude,
           isVisible: park.isVisible ?? true
         });
+
+        this.mapCenter = [park.latitude, park.longitude];
+        this.updateMarkerFromForm();
       },
-      error: (err) => {
+      error: err => {
         console.error('Error loading park', err);
         this.navigateToList();
       }
     });
   }
 
-  get nameControl() {
-    return this.form.get('name')!;
+  private setupFormMapSync(): void {
+    const subLat = this.form.get('latitude')!.valueChanges.subscribe(() => {
+      this.updateMarkerFromForm();
+    });
+    const subLng = this.form.get('longitude')!.valueChanges.subscribe(() => {
+      this.updateMarkerFromForm();
+    });
+
+    this.subscriptions.add(subLat);
+    this.subscriptions.add(subLng);
   }
-  get latitudeControl() {
-    return this.form.get('latitude')!;
+
+  private updateMarkerFromForm(): void {
+    const lat = Number(this.form.get('latitude')!.value);
+    const lng = Number(this.form.get('longitude')!.value);
+
+    if (isNaN(lat) || isNaN(lng)) {
+      return;
+    }
+
+    this.mapMarkers = [
+      {
+        id: 'park-marker',
+        lat,
+        lng,
+        draggable: true
+      }
+    ];
+
+    this.mapCenter = [lat, lng];
   }
-  get longitudeControl() {
-    return this.form.get('longitude')!;
+
+  onMapPositionChange(pos: { lat: number; lng: number }): void {
+    this.form.patchValue(
+      {
+        latitude: pos.lat,
+        longitude: pos.lng
+      },
+      { emitEvent: true }
+    );
   }
-  get isVisibleControl() {
-    return this.form.get('isVisible')!;
-  }
-  get countryCodeControl() {
-    return this.form.get('countryCode')!;
-  }
+
+  // Getters form
+  get nameControl() { return this.form.get('name')!; }
+  get latitudeControl() { return this.form.get('latitude')!; }
+  get longitudeControl() { return this.form.get('longitude')!; }
+  get isVisibleControl() { return this.form.get('isVisible')!; }
+  get countryCodeControl() { return this.form.get('countryCode')!; }
 
   private buildPayload(): Park {
     const raw = this.form.value;
-
     return {
       id: raw.id,
       name: raw.name,
@@ -151,22 +210,18 @@ export class AdminParkEditComponent implements OnInit {
             this.navigateToList();
           }
         },
-        error: (err) => {
-          console.error('Error updating park', err);
-        }
+        error: err => console.error('Error updating park', err)
       });
     } else {
       this.apiService.createPark(payload).subscribe({
-        next: (created: Park) => {
+        next: created => {
           if (navigateBack) {
             this.navigateToList();
           } else if (created.id) {
             this.router.navigate(['../edit', created.id], { relativeTo: this.route });
           }
         },
-        error: (err) => {
-          console.error('Error creating park', err);
-        }
+        error: err => console.error('Error creating park', err)
       });
     }
   }
@@ -176,6 +231,12 @@ export class AdminParkEditComponent implements OnInit {
   }
 
   private navigateToList(): void {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    // On remonte jusqu'à la racine pour récupérer le :lang
+    const lang =
+      this.route.root.firstChild?.snapshot.params['lang'] ??
+      this.route.snapshot.params['lang'] ??
+      'en';
+
+    this.router.navigate(['/', lang, 'admin', 'parks']);
   }
 }

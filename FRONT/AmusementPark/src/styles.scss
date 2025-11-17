@@ -1,4 +1,5 @@
 @import "../node_modules/primeflex/primeflex.scss";
+@import "leaflet/dist/leaflet.css";
 
 /* Fond du body pour le thème light */
 body.light-mode {
@@ -29,4 +30,9 @@ body:not(.light-mode) .home-component a:hover .modern-card {
 .home-component a {
   text-decoration: none;
   color: inherit;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 400px; // on ajustera au besoin
 }

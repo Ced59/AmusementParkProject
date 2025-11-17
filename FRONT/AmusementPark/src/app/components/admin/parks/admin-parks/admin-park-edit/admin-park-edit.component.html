@@ -27,114 +27,106 @@
     </div>
   </div>
 
-  <!-- Card -->
-  <p-card>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <!-- Infos principales -->
-      <div class="grid formgrid">
-        <div class="col-12 md:col-8">
-          <label for="name" class="block mb-1 font-medium">
-            {{ 'admin.parks.name' | translate }}
-          </label>
-          <input
-            id="name"
-            type="text"
-            pInputText
-            formControlName="name"
-            [ngClass]="{ 'ng-invalid ng-dirty': nameControl.invalid && nameControl.touched }" />
-          <small class="p-error" *ngIf="nameControl.invalid && nameControl.touched">
-            {{ 'validation.required' | translate }}
-          </small>
-        </div>
+<p-card>
+  <ng-template pTemplate="header">
+    {{ isEditMode ? ('admin.parks.edit' | translate) : ('admin.parks.create' | translate) }}
+  </ng-template>
 
-        <div class="col-12 md:col-4">
-          <label for="isVisible" class="block mb-1 font-medium">
-            {{ 'admin.parks.visible' | translate }}
-          </label>
-          <div class="flex align-items-center gap-2">
-            <p-inputSwitch id="isVisible" formControlName="isVisible"></p-inputSwitch>
-            <span>
-              {{
-                isVisibleControl.value
-                  ? ('admin.parks.visibleOn' | translate)
-                  : ('admin.parks.visibleOff' | translate)
-              }}
-            </span>
-          </div>
-        </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- Nom -->
+    <div class="field">
+      <label for="name">{{ 'admin.parks.name' | translate }}</label>
+      <input
+        id="name"
+        type="text"
+        pInputText
+        formControlName="name" />
+      <small class="p-error"
+             *ngIf="nameControl.invalid && (nameControl.dirty || nameControl.touched)">
+        {{ 'validation.required' | translate }}
+      </small>
+    </div>
+
+    <!-- Carte -->
+    <div class="field">
+      <label>{{ 'admin.parks.location' | translate }}</label>
+      <app-leaflet-map
+        [center]="mapCenter"
+        [zoom]="mapZoom"
+        [markers]="mapMarkers"
+        [editable]="true"
+        (positionChange)="onMapPositionChange($event)">
+      </app-leaflet-map>
+    </div>
+
+    <!-- Coordonnées -->
+    <div class="p-fluid formgrid grid">
+      <div class="field col-12 md:col-6">
+        <label for="latitude">{{ 'admin.parks.latitude' | translate }}</label>
+        <input
+          id="latitude"
+          type="number"
+          pInputText
+          formControlName="latitude"
+          step="0.000001" />
+        <small class="p-error"
+               *ngIf="latitudeControl.invalid && (latitudeControl.dirty || latitudeControl.touched)">
+          {{ 'validation.required' | translate }}
+        </small>
       </div>
 
-      <!-- Pays / Ville -->
-      <div class="grid formgrid mt-3">
-        <div class="col-12 md:col-6">
-          <label for="countryCode" class="block mb-1 font-medium">
-            {{ 'admin.parks.country' | translate }}
-          </label>
-          <p-dropdown
-            id="countryCode"
-            formControlName="countryCode"
-            [options]="countryOptions"
-            optionLabel="label"
-            optionValue="code"
-            [showClear]="true"
-            [filter]="true"
-            [placeholder]="'admin.parks.countryPlaceholder' | translate">
-          </p-dropdown>
-        </div>
+      <div class="field col-12 md:col-6">
+        <label for="longitude">{{ 'admin.parks.longitude' | translate }}</label>
+        <input
+          id="longitude"
+          type="number"
+          pInputText
+          formControlName="longitude"
+          step="0.000001" />
+        <small class="p-error"
+               *ngIf="longitudeControl.invalid && (longitudeControl.dirty || longitudeControl.touched)">
+          {{ 'validation.required' | translate }}
+        </small>
       </div>
+    </div>
 
-      <!-- Localisation -->
-      <div class="grid formgrid mt-4">
-        <div class="col-12 md:col-6">
-          <label for="latitude" class="block mb-1 font-medium">
-            {{ 'admin.parks.latitude' | translate }}
-          </label>
-          <input
-            id="latitude"
-            type="number"
-            pInputText
-            formControlName="latitude"
-            step="0.000001"
-            [ngClass]="{ 'ng-invalid ng-dirty': latitudeControl.invalid && latitudeControl.touched }" />
-          <small class="p-error" *ngIf="latitudeControl.invalid && latitudeControl.touched">
-            {{ 'validation.required' | translate }}
-          </small>
-        </div>
+    <!-- Pays -->
+    <div class="field col-12 md:col-6">
+      <label for="countryCode">{{ 'admin.parks.country' | translate }}</label>
+      <p-dropdown
+        inputId="countryCode"
+        formControlName="countryCode"
+        [options]="countryOptions"
+        optionLabel="label"
+        optionValue="code"
+        [showClear]="true"
+        [filter]="true"
+        [placeholder]="'admin.parks.countryPlaceholder' | translate">
+      </p-dropdown>
+    </div>
 
-        <div class="col-12 md:col-6">
-          <label for="longitude" class="block mb-1 font-medium">
-            {{ 'admin.parks.longitude' | translate }}
-          </label>
-          <input
-            id="longitude"
-            type="number"
-            pInputText
-            formControlName="longitude"
-            step="0.000001"
-            [ngClass]="{ 'ng-invalid ng-dirty': longitudeControl.invalid && longitudeControl.touched }" />
-          <small class="p-error" *ngIf="longitudeControl.invalid && longitudeControl.touched">
-            {{ 'validation.required' | translate }}
-          </small>
-        </div>
+    <!-- Visible -->
+    <div class="field col-12">
+      <div class="flex align-items-center gap-2">
+        <p-inputSwitch formControlName="isVisible"></p-inputSwitch>
+        <span *ngIf="isVisibleControl.value">
+          {{ 'admin.parks.visible' | translate }}
+        </span>
+        <span *ngIf="!isVisibleControl.value">
+          {{ 'admin.parks.hidden' | translate }}
+        </span>
       </div>
+    </div>
 
-      <!-- Footer actions -->
-      <div class="flex justify-content-end gap-2 mt-4">
-        <button
-          pButton
-          type="button"
-          class="p-button-text"
-          (click)="onCancel()"
-          [label]="'actions.cancel' | translate">
-        </button>
-
-        <button
-          pButton
-          type="submit"
-          class="p-button-primary"
-          [label]="'actions.save' | translate">
-        </button>
-      </div>
-    </form>
-  </p-card>
-</div>
+    <!-- Boutons -->
+    <div class="flex justify-content-end gap-2 mt-3">
+      <button pButton type="button" class="p-button-secondary" (click)="onCancel()">
+        {{ 'actions.cancel' | translate }}
+      </button>
+      <button pButton type="submit" class="p-button-primary">
+        {{ 'actions.save' | translate }}
+      </button>
+    </div>
+  </form>
+</p-card>

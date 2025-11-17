@@ -44,6 +44,8 @@ import {SidebarModule} from "primeng/sidebar";
 import { ParkListComponent } from './components/park-list/park-list.component';
 import {MultiSelectModule} from "primeng/multiselect";
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { LeafletMapComponent } from './components/shared/leaflet-map/leaflet-map.component';
+import {SharedModule} from "./components/shared/shared.module";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -70,8 +72,11 @@ export function initializeApp(translationService: TranslationService): () => Pro
       ParkListComponent,
       AdminDashboardComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent],
+    imports: [
+      BrowserModule,
       AppRoutingModule,
+      SharedModule,
       TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,

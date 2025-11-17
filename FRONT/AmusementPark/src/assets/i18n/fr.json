@@ -90,6 +90,7 @@
       "visibleOn": "Visible sur le site public",
       "visibleOff": "Masqué du site public",
       "countryPlaceholder": "Sélectionnez un pays",
+      "location": "Localisation",
       "editPage": {
         "createTitle": "Créer un nouveau parc",
         "updateTitle": "Modifier le parc « {{name}} »",

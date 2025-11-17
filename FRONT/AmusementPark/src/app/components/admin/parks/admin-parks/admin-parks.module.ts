@@ -13,6 +13,7 @@ import {InputSwitchModule} from "primeng/inputswitch";
 import { AdminParkEditComponent } from './admin-park-edit/admin-park-edit.component';
 import {DropdownModule} from "primeng/dropdown";
 import {TagModule} from "primeng/tag";
+import {SharedModule} from "../../../shared/shared.module";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {TagModule} from "primeng/tag";
     InputSwitchModule,
     DropdownModule,
     TagModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class AdminParksModule { }
