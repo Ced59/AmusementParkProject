@@ -20,7 +20,7 @@ namespace WebAPI.Settings.MongoDB
             // Collections "techniques"
             await EnsureCollectionExistsAsync(database, settings.UsersCollectionName);
             await EnsureCollectionExistsAsync(database, settings.ImagesCollectionName);
-            await EnsureCollectionExistsAsync(database, settings.ParkLogosCollectionName);
+            await InitializeImagesIndexesAsync(database, settings.ImagesCollectionName);
 
             // 🔹 Countries
             await EnsureCollectionExistsAsync(database, settings.CountriesCollectionName);
@@ -288,6 +288,32 @@ namespace WebAPI.Settings.MongoDB
             {
                 Console.WriteLine("[MongoDbInitializer] Aucun pays désérialisé depuis le JSON.");
             }
+        }
+        
+        private static async Task InitializeImagesIndexesAsync(
+            IMongoDatabase database,
+            string collectionName)
+        {
+            IMongoCollection<Entities.Model.Images.Image> imagesCollection =
+                database.GetCollection<Entities.Model.Images.Image>(collectionName);
+
+            await imagesCollection.Indexes.CreateManyAsync(new[]
+            {
+                new CreateIndexModel<Entities.Model.Images.Image>(
+                    Builders<Entities.Model.Images.Image>.IndexKeys
+                        .Ascending(img => img.OwnerType)
+                        .Ascending(img => img.OwnerId)
+                        .Ascending(img => img.Category)
+                        .Ascending(img => img.IsCurrent)),
+
+                new CreateIndexModel<Entities.Model.Images.Image>(
+                    Builders<Entities.Model.Images.Image>.IndexKeys
+                        .Ascending(img => img.Category)),
+
+                new CreateIndexModel<Entities.Model.Images.Image>(
+                    Builders<Entities.Model.Images.Image>.IndexKeys
+                        .Ascending(img => img.CreatedAt))
+            });
         }
     }
 }

@@ -11,6 +11,5 @@
         string SearchItemCollectionName { get; }
         string ImagesCollectionName { get; }
         string CountriesCollectionName { get; }
-        string ParkLogosCollectionName { get; }
     }
 }

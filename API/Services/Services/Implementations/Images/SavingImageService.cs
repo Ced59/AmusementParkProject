@@ -77,7 +77,9 @@ namespace Services.Implementations.Images
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
                     Latitude = latitude ?? 0,
-                    Longitude = longitude ?? 0
+                    Longitude = longitude ?? 0,
+                    OriginalFileName = string.IsNullOrWhiteSpace(dto.File.FileName) ? null : dto.File.FileName,
+                    ContentType = string.IsNullOrWhiteSpace(dto.File.ContentType) ? null : dto.File.ContentType
                 };
 
                 // 3. Choix du flux à utiliser pour la compression

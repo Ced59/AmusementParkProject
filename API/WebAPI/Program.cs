@@ -14,11 +14,9 @@ using Repositories.Interfaces;
 using Services.Configuration;
 using Services.Implementations;
 using Services.Implementations.Images;
-using Services.Implementations.Images.Logos;
 using Services.Implementations.Searching;
 using Services.Interfaces;
 using Services.Interfaces.Images;
-using Services.Interfaces.Images.Logos;
 using Services.Interfaces.Searching;
 using Services.Interfaces.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -60,14 +58,12 @@ namespace WebAPI
             builder.Services.AddScoped<ISearchIndexService, SearchIndexService>();
             builder.Services.AddScoped<ISearchService, SearchService>();
             builder.Services.AddScoped<ICountriesService, CountriesService>();
-            builder.Services.AddScoped<IParkLogosService, ParkLogosService>();
 
             builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
             builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
             builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
             builder.Services.AddScoped<IImagesQueryHandler, ImagesMongoQueryHandler>();
             builder.Services.AddScoped<ICountriesQueryHandler, CountriesMongoQueryHandler>();
-            builder.Services.AddScoped<IParkLogosQueryHandler, ParkLogosMongoQueryHandler>();
 
             InjectImagesServices(builder);
 
@@ -141,6 +137,7 @@ namespace WebAPI
             builder.Services.AddScoped<IImageStorageService, MinioImageStorageService>();
             builder.Services.AddScoped<ISavingImageService, SavingImageService>();
             builder.Services.AddScoped<IImageMetadataExtractorService, ImageMetadataExtractorService>();
+            builder.Services.AddScoped<IImageLinksService, ImageLinksService>();
 
             builder.Services.AddSingleton<IWaterMarkService, WatermarkService>(sp =>
                 new WatermarkService(
@@ -290,7 +287,7 @@ namespace WebAPI
 
         private static async Task InitializeMongoDbAsync(IHost app)
         {
-            // Crée un scope pour résoudre ISearchIndexService (scoped)
+            // Crï¿½e un scope pour rï¿½soudre ISearchIndexService (scoped)
             using IServiceScope scope = app.Services.CreateScope();
 
             IMongoDatabase database = scope.ServiceProvider.GetRequiredService<IMongoDatabase>();

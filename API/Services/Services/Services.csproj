@@ -23,9 +23,4 @@
     <ProjectReference Include="..\..\Repositories\Repositories\Repositories.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Implementations\Images\Logos\" />
-    <Folder Include="Interfaces\Images\Logos\" />
-  </ItemGroup>
-
 </Project>

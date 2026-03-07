@@ -39,8 +39,11 @@
         public static readonly ErrorDetail NoImageCategoryProvided = new(404, "No image category provided.");
         public static readonly ErrorDetail ImageServorInternalError = new(500, "Image processing Internal Server Error");
 
-        public static readonly ErrorDetail ParkLogoNotExists = new(404, "The requested park logo does not exist.");
-
+        public static readonly ErrorDetail ImageNotExists = new(404, "Image does not exist.");
+        public static readonly ErrorDetail ImageNotLinkedToOwner = new(400, "Image is not linked to any owner.");
+        public static readonly ErrorDetail ErrorUpdatingImageLink = new(500, "Error while updating image link.");
+        public static readonly ErrorDetail ErrorSettingCurrentImage = new(500, "Error while setting current image.");
+        public static readonly ErrorDetail ErrorDeletingImage = new(500, "Error while deleting image.");
 
         public readonly struct ErrorDetail
         {
