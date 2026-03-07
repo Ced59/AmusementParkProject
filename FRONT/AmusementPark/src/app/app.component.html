@@ -1,19 +1,15 @@
-<!-- Le conteneur global -->
 <div class="layout-container">
-  <!-- Barre du haut -->
   <app-topbar></app-topbar>
 
-  <!-- Section principale : sidebar + contenu -->
   <div class="layout-main">
-    <!-- La sidebar collable -->
     <app-sidebar></app-sidebar>
 
-    <!-- Le contenu principal à droite -->
     <div class="layout-content">
-      <router-outlet></router-outlet>
+      <div class="page-shell">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>
-
 
 <p-toast position="bottom-right"></p-toast>

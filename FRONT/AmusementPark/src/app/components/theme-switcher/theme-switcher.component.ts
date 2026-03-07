@@ -8,19 +8,17 @@ import { ThemeService } from '../../services/themes/themes.service';
   styleUrls: ['./theme-switcher.component.scss']
 })
 export class ThemeSwitcherComponent implements OnInit {
-  currentTheme = 'light';
+  currentTheme: 'light' | 'dark' = 'dark';
   displayThemeDialog = false;
 
-  constructor(private themeService: ThemeService, @Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    private themeService: ThemeService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      const themeLink = document.getElementById('theme-css') as HTMLLinkElement;
-      if (themeLink && themeLink.href.includes('dark')) {
-        this.currentTheme = 'dark';
-      } else {
-        this.currentTheme = 'light';
-      }
+      this.currentTheme = this.themeService.getCurrentTheme();
     }
   }
 
@@ -28,7 +26,7 @@ export class ThemeSwitcherComponent implements OnInit {
     this.displayThemeDialog = true;
   }
 
-  changeTheme(themeName: string): void {
+  changeTheme(themeName: 'light' | 'dark'): void {
     this.currentTheme = themeName;
     this.themeService.changeTheme(themeName);
     this.displayThemeDialog = false;

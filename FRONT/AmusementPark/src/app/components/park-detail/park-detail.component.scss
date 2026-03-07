@@ -1,0 +1,24 @@
+.park-detail {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.detail-card {
+  border-radius: var(--app-radius-lg);
+  border: 1px solid var(--app-border);
+  background: var(--app-surface-2);
+  padding: 1rem;
+}
+
+.detail-label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--app-text-muted);
+  margin-bottom: 0.4rem;
+}

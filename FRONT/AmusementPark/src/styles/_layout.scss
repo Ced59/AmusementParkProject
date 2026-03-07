@@ -1,0 +1,78 @@
+@use "mixins" as m;
+
+.layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-main {
+  width: min(100% - 1.5rem, calc(var(--app-content-max-width) + 8rem));
+  margin: 1rem auto 2rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.layout-content {
+  min-width: 0;
+  min-height: calc(100vh - var(--app-topbar-height) - 3rem);
+}
+
+.page-shell {
+  border-radius: var(--app-radius-xl);
+  border: var(--app-border-width) solid var(--app-border);
+  background: var(--app-page-surface);
+  box-shadow: var(--app-shadow-1);
+  padding: 1.5rem;
+}
+
+.page-section {
+  margin-bottom: 1.5rem;
+}
+
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.page-subtitle {
+  margin: 0.5rem 0 0;
+  max-width: 70ch;
+}
+
+@mixin page-shell-reset {
+  border-radius: var(--app-radius-xl);
+  border: var(--app-border-width) solid var(--app-border);
+  background: var(--app-page-surface);
+  box-shadow: var(--app-shadow-1);
+  padding: 1.5rem;
+}
+
+@include m.tablet {
+  .layout-main {
+    width: min(100% - 1rem, calc(var(--app-content-max-width) + 2rem));
+    grid-template-columns: 1fr;
+  }
+}
+
+@include m.mobile {
+  .page-shell {
+    padding: 1rem;
+    border-radius: var(--app-radius-lg);
+  }
+
+  .layout-main {
+    margin-top: 0.5rem;
+  }
+}

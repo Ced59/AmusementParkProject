@@ -1,38 +1,32 @@
 :host {
-  display: inline-block;  /* Permet au composant de s'intégrer dans la ligne */
-  margin-left: 0.5rem;      /* Espace entre le ThemeSwitcher et l'élément précédent */
-  z-index: 0;              /* Assurez-vous qu'il ne chevauche pas les autres éléments */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .theme-icon-button {
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  /* Vous pouvez ajuster la couleur et la bordure selon vos besoins */
-  background-color: transparent;
-  border: none;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  background: var(--app-surface-2) !important;
+  border: 1px solid var(--app-border) !important;
+  color: var(--app-heading) !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
+.theme-icon-button .p-button-label {
+  display: none;
+}
+
+.theme-icon-button .p-button-icon,
 .theme-icon-button i {
-  font-size: 1.5rem;
-}
-
-/* Styles pour la boîte de dialogue */
-.theme-dialog-content {
-  text-align: center;
-}
-
-.theme-options {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.theme-icon-button i.pi-moon {
-  color: #353E4A; // Couleur claire pour rendre la lune plus visible
+  margin: 0 !important;
+  font-size: 1.1rem;
+  line-height: 1;
 }

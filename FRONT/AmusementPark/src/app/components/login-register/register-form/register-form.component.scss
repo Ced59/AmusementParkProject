@@ -1,18 +1,18 @@
 .form-style .form-group {
-  margin-bottom: 8px;
+  margin-bottom: 0.85rem;
 }
 
 .form-style input {
   width: 100%;
-  padding: 8px;
-  margin-top: 4px;
+  padding: 0.8rem 1rem;
+  margin-top: 0.35rem;
+  border-radius: var(--app-radius-pill);
+  border: 1px solid var(--app-border);
+  background: var(--app-surface);
+  color: var(--app-text);
 }
 
-.error {
-  border: 2px solid red;
-}
-
+.error,
 input.ng-invalid {
-  border: 2px solid red;
+  border-color: var(--app-danger) !important;
 }
-

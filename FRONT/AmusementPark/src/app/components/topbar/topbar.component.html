@@ -1,53 +1,85 @@
-<p-toolbar styleClass="bg-gray-900 shadow-2"
-           [style]="{ 'border-radius': '3rem', 'background-image': 'linear-gradient(to left, #000e16, var(--bluegray-800))' }">
+<p-toolbar styleClass="app-topbar">
   <ng-template pTemplate="start">
-    <a routerLink="{{selectedLanguage}}/home" class="profile-link">
-      <img src="assets/general-icon/logo-amusementpark.png" alt="Logo" class="logo">
+    <a [routerLink]="['/', selectedLanguage || 'en', 'home']" class="brand-link">
+      <img src="assets/general-icon/logo-amusementpark.png" alt="Logo" class="logo" />
+      <div class="brand-copy">
+        <span class="brand-title">Amusement Parks</span>
+        <span class="brand-subtitle">{{ 'home.home_title' | translate }}</span>
+      </div>
     </a>
-    <span class="fun-text">Amusement Parks</span>
   </ng-template>
 
   <ng-template pTemplate="end">
-    <div class="flex align-items-center gap-2">
-      <ng-container *ngIf="isLoggedIn; else loginTemplate">
-        <!-- Lien vers le profil pour utilisateur connecté -->
-        <a routerLink="{{selectedLanguage}}/profile" class="profile-link">
-          <div class="flex align-items-center">
-            <span class="login-message">{{ 'topbar.hello' | translate }} {{ userProfile?.firstname || userProfile?.email }}</span>
-            <p-avatar *ngIf="userProfile?.avatar" [image]="environment.apiBaseUrl + userProfile?.avatar" shape="circle"></p-avatar>
+    <div class="topbar-actions">
+      <ng-container *ngIf="isLoggedIn; else guestActions">
+        <a [routerLink]="['/', selectedLanguage || 'en', 'profile']" class="profile-link">
+          <div class="profile-copy">
+            <span class="profile-kicker">{{ 'topbar.hello' | translate }}</span>
+            <span class="profile-name">{{ userProfile?.firstname || userProfile?.email }}</span>
+          </div>
+
+          <p-avatar
+            *ngIf="userProfile?.avatar"
+            [image]="environment.apiBaseUrl + userProfile?.avatar"
+            shape="circle">
+          </p-avatar>
+
+          <div *ngIf="!userProfile?.avatar" class="profile-fallback">
+            <i class="pi pi-user"></i>
           </div>
         </a>
       </ng-container>
 
-      <ng-template #loginTemplate>
-        <!-- Bouton de connexion et sélection de langue pour utilisateur non connecté -->
-        <button pButton type="button" [label]="('topbar.login_header' | translate)" icon="pi pi-user"
-                class="p-button-primary top-bar-button" (click)="openModal('loginModal')"></button>
-
-        <div class="menu-language">
-          <button pButton class="language-button" (click)="openModal('languageModal')">
-            <img [src]="'assets/flags/' + selectedLanguage + '.png'" class="flag" alt="Language">
-          </button>
-        </div>
+      <ng-template #guestActions>
+        <button
+          pButton
+          type="button"
+          [label]="('topbar.login_header' | translate)"
+          icon="pi pi-user"
+          class="p-button-primary app-cta-button"
+          (click)="openModal('loginModal')">
+        </button>
       </ng-template>
 
-      <app-theme-switcher></app-theme-switcher>
+      <button
+        pButton
+        type="button"
+        class="p-button-text language-trigger"
+        (click)="openModal('languageModal')">
+        <img [src]="'assets/flags/' + selectedLanguage + '.png'" class="flag" alt="Language" />
+      </button>
 
+      <app-theme-switcher></app-theme-switcher>
     </div>
   </ng-template>
 </p-toolbar>
 
-
-<p-dialog [header]="('topbar.choose_language' | translate)" [(visible)]="displayLanguageModal" [modal]="true">
-  <div class="languages-container">
-    <button *ngFor="let language of languages" pButton class="language-button" (click)="selectLanguage(language.value)">
-      <img [src]="'assets/flags/' + language.value + '.png'" class="flag" alt="{{ language.label }}">
+<p-dialog
+  [header]="('topbar.choose_language' | translate)"
+  [(visible)]="displayLanguageModal"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: 'min(92vw, 34rem)' }">
+  <div class="languages-grid">
+    <button
+      *ngFor="let language of languages"
+      pButton
+      type="button"
+      class="language-option"
+      (click)="selectLanguage(language.value)">
+      <img [src]="'assets/flags/' + language.value + '.png'" class="flag flag-large" alt="{{ language.label }}" />
       <span>{{ language.label }}</span>
     </button>
   </div>
 </p-dialog>
 
-<!-- Modal de Connexion -->
-<p-dialog [header]="('topbar.login_header' | translate)" [(visible)]="displayLoginModal" [modal]="true">
+<p-dialog
+  [header]="('topbar.login_header' | translate)"
+  [(visible)]="displayLoginModal"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: 'min(96vw, 64rem)' }">
   <app-auth-modal (closeModal)="closeModal('loginModal')"></app-auth-modal>
 </p-dialog>

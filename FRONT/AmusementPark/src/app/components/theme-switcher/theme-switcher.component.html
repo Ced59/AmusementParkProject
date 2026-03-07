@@ -1,14 +1,34 @@
-
-<button pButton class="theme-icon-button" (click)="openThemeDialog()">
+<button pButton type="button" class="theme-icon-button" (click)="openThemeDialog()">
   <i class="pi" [ngClass]="currentTheme === 'light' ? 'pi-sun' : 'pi-moon'"></i>
 </button>
 
-<!-- Boîte de dialogue pour changer le thème -->
-<p-dialog header="{{ 'theme.change' | translate }}" [(visible)]="displayThemeDialog" [modal]="true" [closable]="true" [style]="{'width': '300px'}">
+<p-dialog
+  header="{{ 'theme.change' | translate }}"
+  [(visible)]="displayThemeDialog"
+  [modal]="true"
+  [closable]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [appendTo]="'body'"
+  [baseZIndex]="12000"
+  [style]="{ width: 'min(92vw, 24rem)' }">
   <div class="theme-dialog-content">
-    <div class="theme-options">
-      <button pButton label="{{ 'theme.light' | translate }}" (click)="changeTheme('light')" icon="pi pi-sun"></button>
-      <button pButton label="{{ 'theme.dark' | translate }}" (click)="changeTheme('dark')" icon="pi pi-moon"></button>
-    </div>
+    <button
+      pButton
+      type="button"
+      [label]="'theme.light' | translate"
+      icon="pi pi-sun"
+      class="theme-option"
+      (click)="changeTheme('light')">
+    </button>
+
+    <button
+      pButton
+      type="button"
+      [label]="'theme.dark' | translate"
+      icon="pi pi-moon"
+      class="theme-option"
+      (click)="changeTheme('dark')">
+    </button>
   </div>
 </p-dialog>
