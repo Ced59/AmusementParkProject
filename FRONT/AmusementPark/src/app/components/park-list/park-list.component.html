@@ -1,17 +1,53 @@
-<div class="flex flex-column align-items-center mt-5">
-  <div class="grid gap-3 justify-content-center">
-    <div *ngFor="let park of parks" class="col-12 md:col-5 lg:col-3">
-      <a *ngIf="park.id && park.name" [routerLink]="['/', currentLang, 'park', park.id, slugify(park.name)]">
-        <p-card [header]="park.name" [subheader]="park.countryCode" styleClass="modern-card shadow-0 transition-all">
-          <p>Coordinates: {{ park.latitude }}, {{ park.longitude }}</p>
-        </p-card>
-      </a>
+<section class="parks-page">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Parks</h1>
+      <p class="page-subtitle">
+        Browse all available parks and open a detailed page for each destination.
+      </p>
     </div>
   </div>
 
-  <div class="mt-3">
-    <p-paginator [rows]="pagination?.itemsPerPage" [totalRecords]="pagination?.totalItems"
-                 [rowsPerPageOptions]="[5, 10, 50, 100]" [pageLinkSize]="3"
-                 (onPageChange)="onPageChange($event)" styleClass="paginator-custom"></p-paginator>
+  <div class="app-grid-cards">
+    <a
+      *ngFor="let park of parks"
+      class="park-link"
+      [routerLink]="park.id && park.name ? ['/', currentLang, 'park', park.id, slugify(park.name)] : null">
+      <p-card
+        *ngIf="park.id && park.name"
+        [header]="park.name"
+        [subheader]="park.countryCode"
+        styleClass="park-card">
+        <ng-template pTemplate="content">
+          <div class="park-card-content">
+            <span class="app-chip">
+              <i class="pi pi-map-marker"></i>
+              {{ park.countryCode }}
+            </span>
+
+            <div class="park-meta">
+              <div>
+                <span class="meta-label">Latitude</span>
+                <strong>{{ park.latitude }}</strong>
+              </div>
+              <div>
+                <span class="meta-label">Longitude</span>
+                <strong>{{ park.longitude }}</strong>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-card>
+    </a>
   </div>
-</div>
+
+  <div class="pagination-wrap" *ngIf="pagination">
+    <p-paginator
+      [rows]="pagination?.itemsPerPage"
+      [totalRecords]="pagination?.totalItems"
+      [rowsPerPageOptions]="[5, 10, 50, 100]"
+      [pageLinkSize]="3"
+      (onPageChange)="onPageChange($event)">
+    </p-paginator>
+  </div>
+</section>

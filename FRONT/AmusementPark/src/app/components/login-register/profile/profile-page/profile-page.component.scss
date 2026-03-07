@@ -1,94 +1,66 @@
 .profile-card {
-  max-width: 600px;
+  max-width: 760px;
   margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+  border-radius: var(--app-radius-xl);
+  border: 1px solid var(--app-border);
+  background: var(--app-surface);
+  box-shadow: var(--app-shadow-1);
 }
 
 .profile-avatar-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
 }
 
 .profile-avatar {
-  width: 100px;
-  height: 100px;
+  width: 112px;
+  height: 112px;
   border-radius: 50%;
   display: block;
-}
-
-.edit-avatar-button {
-  margin-top: 10px;
+  object-fit: cover;
 }
 
 .profile-details {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  gap: 0.6rem;
 }
 
 .profile-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  gap: 0.75rem;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: var(--app-radius-md);
+  border: 1px solid var(--app-border);
+  background: var(--app-surface-2);
 }
 
 .profile-label {
-  font-weight: bold;
-  flex: 1;
-  padding-right: 10px;
+  font-weight: 700;
 }
 
 .profile-value {
-  flex: 2;
-  text-align: right;
-  padding: 0 10px;
-}
-
-button.p-button-text {
-  margin-left: 10px;
+  text-align: left;
 }
 
 .logout-container {
-  margin-top: 20px;
-  width: 100%;
   display: flex;
   justify-content: center;
 }
 
 @media (max-width: 768px) {
-  .profile-card {
-    width: 90%;
-  }
-
-  .profile-details {
-    flex-direction: column;
-  }
-
   .profile-row {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
     text-align: center;
-  }
-
-  .profile-label, .profile-value, button.p-button-text {
-    padding: 5px 0;
-    width: 100%;
   }
 
   .profile-value {
     text-align: center;
-  }
-
-  button.p-button-text {
-    margin-left: 0;
-    margin-top: 5px;
   }
 }

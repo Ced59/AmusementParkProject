@@ -167,64 +167,69 @@
       </div>
 
       <!-- ================== LOGOS DU PARC ================== -->
-      <div *ngIf="isEditMode" class="mt-4">
+      <div *ngIf="isEditMode" class="mt-4 logos-section">
         <h3 class="mb-3">{{ 'admin.parks.logos.sectionTitle' | translate }}</h3>
 
         <div class="grid">
 
           <!-- Logo actuel -->
           <div class="col-12 md:col-4">
-            <p-card>
-              <ng-template pTemplate="header">
-                {{ 'admin.parks.logos.currentTitle' | translate }}
-              </ng-template>
+            <p-card styleClass="logo-card">
+              <div class="logo-card__header">
+                <h4>{{ 'admin.parks.logos.currentTitle' | translate }}</h4>
+              </div>
 
-              <div class="flex flex-column align-items-center">
-                <img *ngIf="currentLogo"
-                     [src]="apiService.buildLogoUrl(currentLogo.imageId)"
-                     alt="Logo"
-                     class="logo-preview" />
-                <span *ngIf="!currentLogo" class="text-color-secondary">
-                  {{ 'admin.parks.logos.noCurrent' | translate }}
-                </span>
+              <div class="logo-card__body">
+                <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
+                  <img *ngIf="currentLogo"
+                       [src]="currentLogo.imageUrl"
+                       alt="Logo"
+                       class="logo-preview" />
 
-                <small *ngIf="currentLogo" class="text-color-secondary">
-                  {{ currentLogo.createdAt | date:'shortDate' }}
-                </small>
+                  <span *ngIf="!currentLogo" class="text-color-secondary text-center logo-empty-text">
+                    {{ 'admin.parks.logos.noCurrent' | translate }}
+                  </span>
+
+                  <small *ngIf="currentLogo" class="text-color-secondary">
+                    {{ currentLogo.createdAt | date:'shortDate' }}
+                  </small>
+                </div>
               </div>
             </p-card>
           </div>
 
           <!-- Upload nouveau logo -->
           <div class="col-12 md:col-8">
-            <p-card>
-              <ng-template pTemplate="header">
-                {{ 'admin.parks.logos.uploadTitle' | translate }}
-              </ng-template>
+            <p-card styleClass="logo-card">
+              <div class="logo-card__header">
+                <h4>{{ 'admin.parks.logos.uploadTitle' | translate }}</h4>
+              </div>
 
-              <div class="flex flex-column gap-2">
-                <input type="file"
-                       (change)="onLogoFileSelected($event)"
-                       accept="image/*" />
+              <div class="logo-card__body">
+                <div class="flex flex-column gap-3">
+                  <input type="file"
+                         (change)="onLogoFileSelected($event)"
+                         accept="image/*" />
 
-                <input
-                  pInputText
-                  type="text"
-                  [(ngModel)]="newLogoDescription"
-                  [ngModelOptions]="{standalone: true}"
-                  [placeholder]="'admin.parks.logos.descriptionPlaceholder' | translate" />
+                  <input
+                    pInputText
+                    type="text"
+                    [(ngModel)]="newLogoDescription"
+                    [ngModelOptions]="{standalone: true}"
+                    [placeholder]="'admin.parks.logos.descriptionPlaceholder' | translate" />
 
-                <div class="flex justify-content-end">
-                  <button pButton type="button"
-                          (click)="onUploadLogo()"
-                          [disabled]="!selectedLogoFile || logosUploading">
-                    <span *ngIf="!logosUploading">
-                      {{ 'admin.parks.logos.uploadButton' | translate }}
-                    </span>
-                    <span *ngIf="logosUploading">
-                      {{ 'admin.loading' | translate }}
-                    </span>
-                  </button>
+                  <div class="flex justify-content-end">
+                    <button pButton type="button"
+                            (click)="onUploadLogo()"
+                            [disabled]="!selectedLogoFile || logosUploading">
+                      <span *ngIf="!logosUploading">
+                        {{ 'admin.parks.logos.uploadButton' | translate }}
+                      </span>
+                      <span *ngIf="logosUploading">
+                        {{ 'admin.loading' | translate }}
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </p-card>
@@ -259,7 +264,7 @@
                       {{ logo.createdAt | date:'short' }}
                     </small>
 
-                    <small class="text-color-secondary mb-2">
+                    <small class="text-color-secondary mb-2 text-center">
                       {{ logo.description || ('admin.parks.logos.noDescription' | translate) }}
                     </small>
 
@@ -289,8 +294,6 @@
           </div>
         </p-panel>
       </div>
-
-
 
       <!-- ================== BOUTONS ================== -->
       <div class="flex justify-content-end gap-2 mt-3">

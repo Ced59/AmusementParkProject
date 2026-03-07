@@ -1,0 +1,48 @@
+@mixin app-container {
+  width: min(100% - 2rem, var(--app-content-max-width));
+  margin-inline: auto;
+}
+
+@mixin app-card {
+  border-radius: var(--app-radius-lg);
+  border: var(--app-border-width) solid var(--app-border);
+  background: var(--app-surface);
+  box-shadow: var(--app-shadow-1);
+  backdrop-filter: blur(10px);
+}
+
+@mixin app-surface-2 {
+  border-radius: var(--app-radius-md);
+  border: var(--app-border-width) solid var(--app-border);
+  background: var(--app-surface-2);
+}
+
+@mixin app-hover-lift {
+  transition:
+          transform var(--app-transition-base),
+          box-shadow var(--app-transition-base),
+          border-color var(--app-transition-base),
+          background-color var(--app-transition-base);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--app-shadow-2);
+  }
+}
+
+@mixin focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--app-focus-ring);
+}
+
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}

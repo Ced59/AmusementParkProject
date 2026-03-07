@@ -1,12 +1,40 @@
-<div class="park-detail" *ngIf="park; else loading">
-  <h1>{{ park.name }}</h1>
-  <p><strong>Country Code:</strong> {{ park.countryCode }}</p>
-  <p><strong>Latitude:</strong> {{ park.latitude }}</p>
-  <p><strong>Longitude:</strong> {{ park.longitude }}</p>
+<div class="park-detail page-shell" *ngIf="park; else loading">
+  <div class="page-header">
+    <div>
+      <span class="app-chip">
+        <i class="pi pi-compass"></i>
+        {{ park.countryCode }}
+      </span>
+      <h1 class="page-title">{{ park.name }}</h1>
+      <p class="page-subtitle">
+        Detailed information about this park and its geographic location.
+      </p>
+    </div>
 
-  <button pButton type="button" label="Retour" icon="pi pi-arrow-left" (click)="goBack()"></button>
+    <button pButton type="button" label="Retour" icon="pi pi-arrow-left" (click)="goBack()"></button>
+  </div>
+
+  <div class="detail-grid">
+    <div class="detail-card">
+      <span class="detail-label">Country Code</span>
+      <strong>{{ park.countryCode }}</strong>
+    </div>
+
+    <div class="detail-card">
+      <span class="detail-label">Latitude</span>
+      <strong>{{ park.latitude }}</strong>
+    </div>
+
+    <div class="detail-card">
+      <span class="detail-label">Longitude</span>
+      <strong>{{ park.longitude }}</strong>
+    </div>
+  </div>
 </div>
 
 <ng-template #loading>
-  <p>Chargement du parc...</p>
+  <div class="app-empty-state">
+    <i class="pi pi-spin pi-spinner"></i>
+    <h3>Chargement du parc...</h3>
+  </div>
 </ng-template>

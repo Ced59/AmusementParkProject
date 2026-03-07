@@ -1,8 +1,6 @@
 export const API_ENDPOINTS = {
-
   postLogin: 'auth/login',
-  googleLogin: `auth/google-response`,
-
+  googleLogin: 'auth/google-response',
 
   getUsers: 'users/list',
   getUserById: (id: string) => `users?Id=${id}`,
@@ -28,10 +26,12 @@ export const API_ENDPOINTS = {
 
   getCountries: (lang: string) => `countries?lang=${lang}`,
 
-  uploadImage: 'images/upload',
-
-  getParkLogos: (parkId: string) => `parks/${parkId}/logos`,
-  setCurrentParkLogo: (parkId: string, logoId: string) => `parks/${parkId}/logos/${logoId}/set-current`,
-  deleteParkLogo: (parkId: string, logoId: string) => `parks/${parkId}/logos/${logoId}`,
-  createParkLogo: (parkId: string) => `parks/${parkId}/logos`,
+  uploadImage: 'images',
+  linkImage: 'images/links',
+  getImages: (ownerType: string, ownerId: string, category: string) =>
+    `images/${ownerType}/${ownerId}/${category}`,
+  getCurrentImage: (ownerType: string, ownerId: string, category: string) =>
+    `images/${ownerType}/${ownerId}/${category}/current`,
+  setCurrentImage: (imageId: string) => `images/${imageId}/current`,
+  deleteImage: (imageId: string) => `images/${imageId}`,
 };

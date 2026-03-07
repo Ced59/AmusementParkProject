@@ -1,39 +1,43 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { environment } from "../../environments/environment";
-import { API_ENDPOINTS } from "../api/api-endpoints";
-import { UserCredentials } from "../models/users/user_credentials";
-import { Observable } from "rxjs";
-import { UserToken } from "../models/users/user_token";
-import { UserDto } from "../models/users/user_dto";
-import { UserPut } from "../models/users/user_put";
-import { ParksApiResponse } from "../models/parks/parks_api_response";
-import { Park } from "../models/parks/park";
-import { SearchApiResponse } from "../models/search/search-api-response";
-import {UsersApiResponse} from "../models/users/users_api_response";
-import {CountryDto} from "../models/countries/country-dto";
-import {ParkLogoDto} from "../models/parks/park-logo";
-import {UploadedImage} from "../models/images/uploaded-image";
-import {ImageCategory} from "../models/images/image-category";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { environment } from '../../environments/environment';
+import { API_ENDPOINTS } from '../api/api-endpoints';
+
+import { UserCredentials } from '../models/users/user_credentials';
+import { UserToken } from '../models/users/user_token';
+import { UserDto } from '../models/users/user_dto';
+import { UserPut } from '../models/users/user_put';
+import { UsersApiResponse } from '../models/users/users_api_response';
+
+import { ParksApiResponse } from '../models/parks/parks_api_response';
+import { Park } from '../models/parks/park';
+
+import { SearchApiResponse } from '../models/search/search-api-response';
+import { CountryDto } from '../models/countries/country-dto';
+
+import { UploadedImage } from '../models/images/uploaded-image';
+import { ImageCategory } from '../models/images/image-category';
+import { ImageDto } from '../models/images/image-dto';
+import { ImageOwnerType } from '../models/images/image-owner-type';
+import { LinkImageToOwner } from '../models/images/link-image-to-owner';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-
-  private get imagesBaseUrl(): string {
-    return (environment as any).imagesBaseUrl ?? '';
+  constructor(private readonly http: HttpClient) {
   }
 
-  constructor(private http: HttpClient) { }
-
-  login(credentials: UserCredentials) : Observable<UserToken> {
+  login(credentials: UserCredentials): Observable<UserToken> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.postLogin}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
+
     return this.http.post<UserToken>(url, JSON.stringify(credentials), httpOptions);
   }
 
@@ -42,16 +46,16 @@ export class ApiService {
     return this.http.post(url, { code });
   }
 
-  getUsers(page: number = 1, size: number = 10) {
+  getUsers(page: number = 1, size: number = 10): Observable<UsersApiResponse> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getUsers}?page=${page}&size=${size}`;
     return this.http.get<UsersApiResponse>(url);
   }
 
-  getUserById(id: string) {
+  getUserById(id: string): Observable<UserDto> {
     return this.http.get<UserDto>(`${environment.apiBaseUrl}${API_ENDPOINTS.getUserById(id)}`);
   }
 
-  putUserById(id: string | null, user: UserPut | null){
+  putUserById(id: string | null, user: UserPut | null): Observable<UserDto> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.putUserById(id)}`;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -59,10 +63,10 @@ export class ApiService {
       })
     };
 
-    return this.http.put<UserDto>(url, JSON.stringify(user), httpOptions)
+    return this.http.put<UserDto>(url, JSON.stringify(user), httpOptions);
   }
 
-  getParksPaginated(page: number, size: number) {
+  getParksPaginated(page: number, size: number): Observable<ParksApiResponse> {
     return this.http.get<ParksApiResponse>(
       `${environment.apiBaseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`
     );
@@ -73,18 +77,18 @@ export class ApiService {
     return this.http.get<Park>(url);
   }
 
-  searchParks(name: string, page: number, size: number) {
+  searchParks(name: string, page: number, size: number): Observable<ParksApiResponse> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.searchParks(name, page, size)}`;
     return this.http.get<ParksApiResponse>(url);
   }
 
-  updateParkVisibility(parkId: string, isVisible: boolean) {
+  updateParkVisibility(parkId: string, isVisible: boolean): Observable<Park> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateParkVisibility(parkId)}`;
     const body = { isVisible };
     return this.http.patch<Park>(url, body);
   }
 
-  createPark(park: Park) {
+  createPark(park: Park): Observable<Park> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createPark}`;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -95,7 +99,7 @@ export class ApiService {
     return this.http.post<Park>(url, JSON.stringify(park), httpOptions);
   }
 
-  updatePark(id: string, park: Park) {
+  updatePark(id: string, park: Park): Observable<Park> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updatePark(id)}`;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -117,7 +121,7 @@ export class ApiService {
     return this.http.get<SearchApiResponse>(url);
   }
 
-  getCountries(lang: string) {
+  getCountries(lang: string): Observable<CountryDto[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getCountries(lang)}`;
     return this.http.get<CountryDto[]>(url);
   }
@@ -131,9 +135,9 @@ export class ApiService {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.uploadImage}`;
     const formData = new FormData();
 
-    formData.append('File', file); // case-insensitive côté ASP.NET, mais autant rester propre
-    formData.append('Category', category); // "PARK_LOGO", "AVATAR", etc.
-    formData.append('WithWatermark', String(withWatermark)); // "true"/"false"
+    formData.append('File', file);
+    formData.append('Category', category);
+    formData.append('WithWatermark', String(withWatermark));
 
     if (description) {
       formData.append('Description', description);
@@ -142,32 +146,32 @@ export class ApiService {
     return this.http.post<UploadedImage>(url, formData);
   }
 
-  createParkLogo(parkId: string, imageId: string, description?: string): Observable<ParkLogoDto> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createParkLogo(parkId)}`;
-    const body = { imageId, description };
-    return this.http.post<ParkLogoDto>(url, body);
+  linkImage(request: LinkImageToOwner): Observable<ImageDto> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.linkImage}`;
+    return this.http.post<ImageDto>(url, request);
   }
 
-  getParkLogos(parkId: string): Observable<ParkLogoDto[]> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkLogos(parkId)}`;
-    return this.http.get<ParkLogoDto[]>(url);
+  getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory): Observable<ImageDto[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getImages(ownerType, ownerId, category)}`;
+    return this.http.get<ImageDto[]>(url);
   }
 
-  setCurrentParkLogo(parkId: string, logoId: string): Observable<ParkLogoDto> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.setCurrentParkLogo(parkId, logoId)}`;
-    return this.http.put<ParkLogoDto>(url, {});
+  getCurrentImage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory): Observable<ImageDto> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getCurrentImage(ownerType, ownerId, category)}`;
+    return this.http.get<ImageDto>(url);
   }
 
-  deleteParkLogo(parkId: string, logoId: string): Observable<boolean> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.deleteParkLogo(parkId, logoId)}`;
+  setCurrentImage(imageId: string): Observable<ImageDto> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.setCurrentImage(imageId)}`;
+    return this.http.put<ImageDto>(url, {});
+  }
+
+  deleteImage(imageId: string): Observable<boolean> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.deleteImage(imageId)}`;
     return this.http.delete<boolean>(url);
   }
 
-  /**
-   * Construit l'URL d'affichage d'un logo
-   * (basée sur la convention imageId -> fichier)
-   */
-  buildLogoUrl(imageId: string): string {
+  buildImageUrl(imageId: string): string {
     return `${environment.imagesBaseUrl}/${imageId}`;
   }
 }

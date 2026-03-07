@@ -1,109 +1,240 @@
 .sidenav {
-  margin-top: 2rem;
-  width: 250px;              /* Largeur en mode étendu */
-  background-color: #2c3e50; /* Fond sombre */
-  color: #ecf0f1;
-  display: flex;
-  flex-direction: column;
-  transition: width 0.3s ease;
-  overflow: hidden;          /* Pour éviter le débordement */
-  border-radius: 10px;
+  width: var(--app-sidebar-width);
+  border-radius: var(--app-radius-xl);
+  border: 1px solid var(--app-border);
+  background: var(--app-sidebar-bg);
+  box-shadow: var(--app-shadow-1);
+  backdrop-filter: blur(12px);
+  color: var(--app-text);
+  overflow: hidden;
+  transition:
+    width var(--app-transition-slow),
+    transform var(--app-transition-slow);
 }
 
-@media (max-width: 767px) {
-  .sidenav {
-    margin-right: 10px;
-  }
-}
-
-// Mode rétracté
 .sidenav.collapsed {
-  width: 60px; /* Se réduit à 60px */
+  width: var(--app-sidebar-collapsed-width);
 }
 
-// Header de la sidebar : logo uniquement (bouton collapse supprimé)
 .sidenav-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.logo {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem;
-  border-bottom: 1px solid #34495e;
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    i {
-      font-size: 1.5rem;
-    }
-
-    .logo-text {
-      font-size: 1.25rem;
-      font-weight: 600;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      white-space: nowrap; /* Empêche le retour à la ligne */
-    }
-  }
+  gap: 0.85rem;
 }
 
-// Liste des liens de navigation
+.logo-badge {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--app-primary-soft);
+  color: var(--app-primary-strong);
+  flex-shrink: 0;
+}
+
+.logo-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.logo-text {
+  font-weight: 700;
+  color: var(--app-heading);
+}
+
+.logo-subtext {
+  font-size: 0.82rem;
+  color: var(--app-text-muted);
+}
+
 .nav-list {
   list-style: none;
+  padding: 0.85rem;
   margin: 0;
-  padding: 0.75rem;
-
-  .nav-item {
-    margin: 0.5rem 0;
-
-    .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      color: #ecf0f1;
-      text-decoration: none;
-      padding: 0.5rem;
-      border-radius: 4px;
-      transition: background-color 0.2s ease;
-      box-sizing: border-box;
-      height: 48px;  /* Hauteur fixe pour constance entre les modes */
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-
-      i {
-        font-size: 1.25rem;
-      }
-
-      .link-text {
-        font-size: 1rem;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        white-space: nowrap; /* Force le label à rester sur une seule ligne */
-      }
-    }
-  }
+  display: grid;
+  gap: 0.45rem;
 }
 
-// En mode collapsed, cache les textes (logo et liens)
-.sidenav.collapsed .logo .logo-text,
-.sidenav.collapsed .nav-list .nav-link .link-text {
-  transform: translateX(-100%);
-  opacity: 0;
+.nav-item {
+  margin: 0;
 }
 
-// Au survol de la sidebar collapsée, on l'étend et on affiche les textes
-.sidenav.collapsed:hover {
-  width: 250px;
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 50px;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--app-radius-md);
+  color: var(--app-text);
+  transition:
+    background-color var(--app-transition-base),
+    transform var(--app-transition-base),
+    border-color var(--app-transition-base),
+    width var(--app-transition-base),
+    margin var(--app-transition-base),
+    padding var(--app-transition-base);
+  border: 1px solid transparent;
 }
 
-.sidenav.collapsed:hover .logo .logo-text,
-.sidenav.collapsed:hover .nav-list .nav-link .link-text {
-  transform: translateX(0);
-  opacity: 1;
+.nav-link:hover {
+  background: var(--app-surface-2);
+  border-color: var(--app-border);
+  transform: translateX(2px);
 }
 
-/* Mise en surbrillance de l'item actif */
+.nav-link i {
+  width: 20px;
+  text-align: center;
+  color: var(--app-primary);
+  flex-shrink: 0;
+}
+
+.link-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .nav-item.active .nav-link {
-  background-color: rgba(255, 255, 255, 0.1);
+  background: var(--app-primary-soft);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--app-heading);
+}
+
+/* Mode replié : cache les textes */
+.sidenav.collapsed .logo-copy,
+.sidenav.collapsed .link-text {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+/* Mode replié : centre chaque item */
+.sidenav.collapsed .nav-item {
+  display: flex;
+  justify-content: center;
+}
+
+.sidenav.collapsed .nav-link {
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  width: 50px;
+  min-height: 50px;
+  margin-inline: auto;
+  border-radius: 18px;
+}
+
+.sidenav.collapsed .nav-link i {
+  width: auto;
+  margin: 0;
+}
+
+/* Hover en mode replié : on garde le centrage tant que la sidebar n'est pas déployée */
+.sidenav.collapsed .nav-link:hover {
+  transform: none;
+}
+
+/* Item actif en mode replié : parfaitement centré */
+.sidenav.collapsed .nav-item.active .nav-link {
+  width: 50px;
+  min-height: 50px;
+  margin-inline: auto;
+  border-radius: 18px;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+/* Au survol de la sidebar repliée : elle se déplie */
+.sidenav.collapsed:hover {
+  width: var(--app-sidebar-width);
+}
+
+.sidenav.collapsed:hover .logo-copy,
+.sidenav.collapsed:hover .link-text {
+  opacity: 1;
+  width: auto;
+}
+
+/* Une fois dépliée au hover, on revient au layout normal */
+.sidenav.collapsed:hover .nav-item {
+  display: block;
+}
+
+.sidenav.collapsed:hover .nav-link {
+  width: 100%;
+  min-height: 50px;
+  margin-inline: 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--app-radius-md);
+  justify-content: flex-start;
+  gap: 0.9rem;
+}
+
+.sidenav.collapsed:hover .nav-link i {
+  width: 20px;
+}
+
+.sidenav.collapsed:hover .nav-link:hover {
+  transform: translateX(2px);
+}
+
+.sidenav.collapsed:hover .nav-item.active .nav-link {
+  width: 100%;
+  margin-inline: 0;
+  border-radius: var(--app-radius-md);
+}
+
+@media (max-width: 1024px) {
+  .sidenav {
+    width: 100%;
+  }
+
+  .sidenav.collapsed {
+    width: 100%;
+  }
+
+  .sidenav.collapsed .logo-copy,
+  .sidenav.collapsed .link-text {
+    opacity: 1;
+    width: auto;
+  }
+
+  .sidenav.collapsed .nav-item {
+    display: block;
+  }
+
+  .sidenav.collapsed .nav-link {
+    width: 100%;
+    min-height: 50px;
+    margin-inline: 0;
+    padding: 0.75rem 0.9rem;
+    border-radius: var(--app-radius-md);
+    justify-content: flex-start;
+    gap: 0.9rem;
+  }
+
+  .sidenav.collapsed .nav-link i {
+    width: 20px;
+  }
+
+  .sidenav.collapsed .nav-link:hover {
+    transform: translateX(2px);
+  }
+
+  .sidenav.collapsed .nav-item.active .nav-link {
+    width: 100%;
+    margin-inline: 0;
+    border-radius: var(--app-radius-md);
+  }
 }

@@ -1,5 +1,37 @@
-
-a {
+.park-link {
   text-decoration: none;
   color: inherit;
+}
+
+.park-card {
+  height: 100%;
+  transition:
+    transform var(--app-transition-base),
+    box-shadow var(--app-transition-base);
+}
+
+.park-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--app-shadow-2) !important;
+}
+
+.park-card-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.park-meta {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--app-text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.pagination-wrap {
+  margin-top: 1.5rem;
 }

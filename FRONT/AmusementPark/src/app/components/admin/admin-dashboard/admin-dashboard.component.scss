@@ -1,40 +1,35 @@
 .admin-dashboard {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
+  display: grid;
+  gap: 1.5rem;
 }
 
 .admin-header {
-  text-align: center;
-  margin-bottom: 2rem;
+  text-align: left;
 
   h1 {
-    margin: 0 0 0.5rem;
-    font-size: 2rem;
-  }
-
-  .subtitle {
     margin: 0;
-    opacity: 0.8;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
   }
 }
 
 .admin-tabs {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
   flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .admin-tab {
-  border-radius: 999px;
+  border-radius: var(--app-radius-pill) !important;
 }
 
 .active-tab {
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 3px var(--app-focus-ring);
 }
 
 .admin-content {
-  min-height: 300px;
+  min-height: 320px;
+  border-radius: var(--app-radius-lg);
+  border: 1px solid var(--app-border);
+  background: var(--app-surface);
+  padding: 1rem;
 }
