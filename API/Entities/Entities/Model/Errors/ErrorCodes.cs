@@ -43,6 +43,17 @@
         public static readonly ErrorDetail ErrorCreatingParkOperator = new(500, "Error while creating park operator");
         public static readonly ErrorDetail ErrorUpdatingParkOperator = new(500, "Error while updating park operator");
 
+
+        public static readonly ErrorDetail ParkZoneNotExists = new(404, "Park zone not exists");
+        public static readonly ErrorDetail ErrorCreatingParkZone = new(500, "Error while creating park zone");
+        public static readonly ErrorDetail ErrorUpdatingParkZone = new(500, "Error while updating park zone");
+        public static readonly ErrorDetail ErrorDeletingParkZone = new(500, "Error while deleting park zone");
+
+        public static readonly ErrorDetail ParkItemNotExists = new(404, "Park item not exists");
+        public static readonly ErrorDetail ErrorCreatingParkItem = new(500, "Error while creating park item");
+        public static readonly ErrorDetail ErrorUpdatingParkItem = new(500, "Error while updating park item");
+        public static readonly ErrorDetail ErrorDeletingParkItem = new(500, "Error while deleting park item");
+
         public static readonly ErrorDetail NoImageFileProvided = new(404, "No image filename provided.");
         public static readonly ErrorDetail NoImageCategoryProvided = new(404, "No image category provided.");
         public static readonly ErrorDetail ImageServorInternalError = new(500, "Image processing Internal Server Error");

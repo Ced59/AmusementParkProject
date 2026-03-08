@@ -141,6 +141,27 @@
         "currentLabel": "Aktualne",
         "alt": "Logo parku",
         "deleteConfirm": "Usunąć to logo?"
+      },
+      "zones": {
+        "manage": "Zarządzaj strefami",
+        "title": "Strefy parku",
+        "create": "Utwórz strefę",
+        "createTitle": "Utwórz strefę parku",
+        "editTitle": "Edytuj strefę parku",
+        "name": "Nazwa strefy",
+        "sortOrder": "Kolejność wyświetlania",
+        "description": "Opis lokalizowany"
+      },
+      "items": {
+        "manage": "Zarządzaj elementami parku",
+        "title": "Elementy parku",
+        "create": "Utwórz element",
+        "createTitle": "Utwórz element parku",
+        "editTitle": "Edytuj element parku",
+        "category": "Kategoria",
+        "type": "Typ",
+        "subtype": "Podtyp",
+        "zone": "Strefa"
       }
     },
     "loading": "Ładowanie...",
@@ -173,9 +194,55 @@
   },
   "actions": {
     "cancel": "Anuluj",
-    "save": "Zapisz"
+    "save": "Zapisz",
+    "backToPark": "Powrót do parku",
+    "backToList": "Powrót"
   },
   "parkDetail": {
-    "descriptionTitle": "Opis"
+    "descriptionTitle": "Opis",
+    "subtitle": "Szczegółowe informacje o tym parku i jego położeniu geograficznym.",
+    "exploreButton": "Odkrywaj park",
+    "countryCode": "Kod kraju",
+    "latitude": "Szerokość geograficzna",
+    "longitude": "Długość geograficzna",
+    "loading": "Ładowanie parku..."
+  },
+  "parkExplorer": {
+    "headerChip": "Eksploracja parku",
+    "subtitle": "Przeglądaj park poprzez jego strefy i główne kategorie elementów, które zawiera.",
+    "overviewTitle": "Cały park",
+    "unassignedTitle": "Elementy bez strefy",
+    "totalItems": "{{count}} element(y/ów)",
+    "byCategory": "Według kategorii",
+    "byType": "Według typu",
+    "loading": "Ładowanie eksploracji...",
+    "categories": {
+      "attraction": "Atrakcje",
+      "restaurant": "Restauracje",
+      "hotel": "Hotele",
+      "animal": "Zwierzęta",
+      "show": "Pokazy",
+      "shop": "Sklepy",
+      "service": "Usługi",
+      "transport": "Transport",
+      "other": "Inne"
+    },
+    "types": {
+      "rollerCoaster": "Kolejki górskie",
+      "waterRide": "Atrakcje wodne",
+      "flatRide": "Atrakcje płaskie",
+      "darkRide": "Dark ride",
+      "familyRide": "Atrakcje rodzinne",
+      "thrillRide": "Atrakcje ekstremalne",
+      "animalExhibit": "Strefy zwierząt",
+      "restaurant": "Restauracje",
+      "snack": "Przekąski",
+      "hotel": "Hotele",
+      "show": "Pokazy",
+      "shop": "Sklepy",
+      "service": "Usługi",
+      "transport": "Transport",
+      "other": "Inne"
+    }
   }
 }

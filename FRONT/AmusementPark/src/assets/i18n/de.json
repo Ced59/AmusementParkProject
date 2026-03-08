@@ -124,7 +124,7 @@
         "waterPark": "Wasserpark",
         "zoo": "Zoo",
         "animalPark": "Tierpark",
-        "amusementPark": "Freizeitpark",
+        "amusementPark": "Vergnügungspark",
         "resort": "Resort",
         "notSpecified": "Nicht angegeben"
       },
@@ -141,6 +141,27 @@
         "currentLabel": "Aktuell",
         "alt": "Parklogo",
         "deleteConfirm": "Dieses Logo löschen?"
+      },
+      "zones": {
+        "manage": "Bereiche verwalten",
+        "title": "Parkbereiche",
+        "create": "Bereich erstellen",
+        "createTitle": "Parkbereich erstellen",
+        "editTitle": "Parkbereich bearbeiten",
+        "name": "Name des Bereichs",
+        "sortOrder": "Anzeigereihenfolge",
+        "description": "Lokalisierte Beschreibung"
+      },
+      "items": {
+        "manage": "Parkelemente verwalten",
+        "title": "Parkelemente",
+        "create": "Element erstellen",
+        "createTitle": "Parkelement erstellen",
+        "editTitle": "Parkelement bearbeiten",
+        "category": "Kategorie",
+        "type": "Typ",
+        "subtype": "Untertyp",
+        "zone": "Bereich"
       }
     },
     "loading": "Laden...",
@@ -173,9 +194,55 @@
   },
   "actions": {
     "cancel": "Abbrechen",
-    "save": "Speichern"
+    "save": "Speichern",
+    "backToPark": "Zurück zum Park",
+    "backToList": "Zurück"
   },
   "parkDetail": {
-    "descriptionTitle": "Beschreibung"
+    "descriptionTitle": "Beschreibung",
+    "subtitle": "Detaillierte Informationen über diesen Park und seine geografische Lage.",
+    "exploreButton": "Park entdecken",
+    "countryCode": "Ländercode",
+    "latitude": "Breitengrad",
+    "longitude": "Längengrad",
+    "loading": "Park wird geladen..."
+  },
+  "parkExplorer": {
+    "headerChip": "Parkerkundung",
+    "subtitle": "Erkunde den Park über seine Bereiche und die wichtigsten darin enthaltenen Elementkategorien.",
+    "overviewTitle": "Gesamter Park",
+    "unassignedTitle": "Nicht zugewiesene Elemente",
+    "totalItems": "{{count}} Element(e)",
+    "byCategory": "Nach Kategorie",
+    "byType": "Nach Typ",
+    "loading": "Erkundung wird geladen...",
+    "categories": {
+      "attraction": "Attraktionen",
+      "restaurant": "Restaurants",
+      "hotel": "Hotels",
+      "animal": "Tiere",
+      "show": "Shows",
+      "shop": "Geschäfte",
+      "service": "Services",
+      "transport": "Transport",
+      "other": "Sonstiges"
+    },
+    "types": {
+      "rollerCoaster": "Achterbahnen",
+      "waterRide": "Wasserattraktionen",
+      "flatRide": "Flachfahrgeschäfte",
+      "darkRide": "Dark Rides",
+      "familyRide": "Familienattraktionen",
+      "thrillRide": "Thrill Rides",
+      "animalExhibit": "Tierbereiche",
+      "restaurant": "Restaurants",
+      "snack": "Snacks",
+      "hotel": "Hotels",
+      "show": "Shows",
+      "shop": "Geschäfte",
+      "service": "Services",
+      "transport": "Transport",
+      "other": "Sonstiges"
+    }
   }
 }

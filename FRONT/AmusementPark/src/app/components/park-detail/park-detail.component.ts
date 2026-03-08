@@ -63,6 +63,21 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
     this.router.navigate([`/${this.currentLang}/parks`]);
   }
 
+  goToExplore(): void {
+    if (!this.park?.id || !this.park?.name) {
+      return;
+    }
+
+    const slug: string = this.park.name
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+    this.router.navigate(['/', this.currentLang, 'park', this.park.id, slug, 'explore']);
+  }
+
   private loadPark(id: string): void {
     this.apiService.getParkById(id).subscribe((park: Park) => {
       this.park = park;

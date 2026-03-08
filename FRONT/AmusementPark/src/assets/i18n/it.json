@@ -123,7 +123,7 @@
         "themePark": "Parco tematico",
         "waterPark": "Parco acquatico",
         "zoo": "Zoo",
-        "animalPark": "Parco faunistico",
+        "animalPark": "Parco animale",
         "amusementPark": "Parco divertimenti",
         "resort": "Resort",
         "notSpecified": "Non specificato"
@@ -141,6 +141,27 @@
         "currentLabel": "Attuale",
         "alt": "Logo del parco",
         "deleteConfirm": "Eliminare questo logo?"
+      },
+      "zones": {
+        "manage": "Gestisci le zone",
+        "title": "Zone del parco",
+        "create": "Crea una zona",
+        "createTitle": "Crea una zona del parco",
+        "editTitle": "Modifica una zona del parco",
+        "name": "Nome della zona",
+        "sortOrder": "Ordine di visualizzazione",
+        "description": "Descrizione localizzata"
+      },
+      "items": {
+        "manage": "Gestisci gli elementi del parco",
+        "title": "Elementi del parco",
+        "create": "Crea un elemento",
+        "createTitle": "Crea un elemento del parco",
+        "editTitle": "Modifica un elemento del parco",
+        "category": "Categoria",
+        "type": "Tipo",
+        "subtype": "Sottotipo",
+        "zone": "Zona"
       }
     },
     "loading": "Caricamento...",
@@ -173,9 +194,55 @@
   },
   "actions": {
     "cancel": "Annulla",
-    "save": "Salva"
+    "save": "Salva",
+    "backToPark": "Torna al parco",
+    "backToList": "Indietro"
   },
   "parkDetail": {
-    "descriptionTitle": "Descrizione"
+    "descriptionTitle": "Descrizione",
+    "subtitle": "Informazioni dettagliate su questo parco e sulla sua posizione geografica.",
+    "exploreButton": "Esplora il parco",
+    "countryCode": "Codice paese",
+    "latitude": "Latitudine",
+    "longitude": "Longitudine",
+    "loading": "Caricamento del parco..."
+  },
+  "parkExplorer": {
+    "headerChip": "Esplorazione del parco",
+    "subtitle": "Esplora il parco attraverso le sue zone e le principali categorie di elementi che contiene.",
+    "overviewTitle": "Tutto il parco",
+    "unassignedTitle": "Elementi non assegnati",
+    "totalItems": "{{count}} elemento/i",
+    "byCategory": "Per categoria",
+    "byType": "Per tipo",
+    "loading": "Caricamento dell’esplorazione...",
+    "categories": {
+      "attraction": "Attrazioni",
+      "restaurant": "Ristoranti",
+      "hotel": "Hotel",
+      "animal": "Animali",
+      "show": "Spettacoli",
+      "shop": "Negozi",
+      "service": "Servizi",
+      "transport": "Trasporti",
+      "other": "Altro"
+    },
+    "types": {
+      "rollerCoaster": "Montagne russe",
+      "waterRide": "Attrazioni acquatiche",
+      "flatRide": "Giostre a piatto",
+      "darkRide": "Dark ride",
+      "familyRide": "Attrazioni per famiglie",
+      "thrillRide": "Attrazioni adrenaliniche",
+      "animalExhibit": "Aree animali",
+      "restaurant": "Ristoranti",
+      "snack": "Snack",
+      "hotel": "Hotel",
+      "show": "Spettacoli",
+      "shop": "Negozi",
+      "service": "Servizi",
+      "transport": "Trasporti",
+      "other": "Altro"
+    }
   }
 }

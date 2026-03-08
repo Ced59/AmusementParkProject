@@ -10,6 +10,8 @@
         string ParksCollectionName { get; }
         string ParkFoundersCollectionName { get; }
         string ParkOperatorsCollectionName { get; }
+        string ParkZonesCollectionName { get; }
+        string ParkItemsCollectionName { get; }
         string SearchItemCollectionName { get; }
         string ImagesCollectionName { get; }
         string CountriesCollectionName { get; }

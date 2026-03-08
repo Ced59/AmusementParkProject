@@ -28,6 +28,26 @@
 
   <p-card>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div *ngIf="isEditMode && parkId" class="management-links mb-4">
+        <button
+          pButton
+          type="button"
+          class="p-button-outlined"
+          icon="pi pi-sitemap"
+          [label]="'admin.parks.zones.manage' | translate"
+          [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'zones']">
+        </button>
+
+        <button
+          pButton
+          type="button"
+          class="p-button-outlined"
+          icon="pi pi-map-marker"
+          [label]="'admin.parks.items.manage' | translate"
+          [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'items']">
+        </button>
+      </div>
       <div class="p-fluid formgrid grid">
         <div class="field col-12 md:col-6">
           <label for="name">{{ 'admin.parks.name' | translate }}</label>

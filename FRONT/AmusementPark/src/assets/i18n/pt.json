@@ -122,7 +122,7 @@
       "types": {
         "themePark": "Parque temático",
         "waterPark": "Parque aquático",
-        "zoo": "Jardim zoológico",
+        "zoo": "Zoo",
         "animalPark": "Parque animal",
         "amusementPark": "Parque de diversões",
         "resort": "Resort",
@@ -141,6 +141,27 @@
         "currentLabel": "Atual",
         "alt": "Logótipo do parque",
         "deleteConfirm": "Eliminar este logótipo?"
+      },
+      "zones": {
+        "manage": "Gerir zonas",
+        "title": "Zonas do parque",
+        "create": "Criar uma zona",
+        "createTitle": "Criar uma zona do parque",
+        "editTitle": "Editar uma zona do parque",
+        "name": "Nome da zona",
+        "sortOrder": "Ordem de apresentação",
+        "description": "Descrição localizada"
+      },
+      "items": {
+        "manage": "Gerir elementos do parque",
+        "title": "Elementos do parque",
+        "create": "Criar um elemento",
+        "createTitle": "Criar um elemento do parque",
+        "editTitle": "Editar um elemento do parque",
+        "category": "Categoria",
+        "type": "Tipo",
+        "subtype": "Subtipo",
+        "zone": "Zona"
       }
     },
     "loading": "A carregar...",
@@ -173,9 +194,55 @@
   },
   "actions": {
     "cancel": "Cancelar",
-    "save": "Guardar"
+    "save": "Guardar",
+    "backToPark": "Voltar ao parque",
+    "backToList": "Voltar"
   },
   "parkDetail": {
-    "descriptionTitle": "Descrição"
+    "descriptionTitle": "Descrição",
+    "subtitle": "Informações detalhadas sobre este parque e a sua localização geográfica.",
+    "exploreButton": "Explorar o parque",
+    "countryCode": "Código do país",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "loading": "A carregar parque..."
+  },
+  "parkExplorer": {
+    "headerChip": "Exploração do parque",
+    "subtitle": "Explore o parque através das suas zonas e das principais categorias de elementos que contém.",
+    "overviewTitle": "Todo o parque",
+    "unassignedTitle": "Elementos sem zona",
+    "totalItems": "{{count}} elemento(s)",
+    "byCategory": "Por categoria",
+    "byType": "Por tipo",
+    "loading": "A carregar exploração...",
+    "categories": {
+      "attraction": "Atrações",
+      "restaurant": "Restaurantes",
+      "hotel": "Hotéis",
+      "animal": "Animais",
+      "show": "Espetáculos",
+      "shop": "Lojas",
+      "service": "Serviços",
+      "transport": "Transportes",
+      "other": "Outros"
+    },
+    "types": {
+      "rollerCoaster": "Montanhas-russas",
+      "waterRide": "Atrações aquáticas",
+      "flatRide": "Atrações planas",
+      "darkRide": "Dark rides",
+      "familyRide": "Atrações familiares",
+      "thrillRide": "Atrações radicais",
+      "animalExhibit": "Áreas de animais",
+      "restaurant": "Restaurantes",
+      "snack": "Snacks",
+      "hotel": "Hotéis",
+      "show": "Espetáculos",
+      "shop": "Lojas",
+      "service": "Serviços",
+      "transport": "Transportes",
+      "other": "Outro"
+    }
   }
 }

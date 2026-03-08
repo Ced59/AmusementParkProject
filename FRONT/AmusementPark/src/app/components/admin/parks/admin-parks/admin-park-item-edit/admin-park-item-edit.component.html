@@ -1,0 +1,64 @@
+<p-card>
+  <h2>{{ (isEditMode ? 'admin.parks.items.editTitle' : 'admin.parks.items.createTitle') | translate }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
+    <div class="field">
+      <label for="name">{{ 'admin.parks.name' | translate }}</label>
+      <input id="name" pInputText formControlName="name" />
+    </div>
+
+    <div class="grid formgrid">
+      <div class="field col-12 md:col-6">
+        <label>{{ 'admin.parks.items.category' | translate }}</label>
+        <p-dropdown formControlName="category" [options]="categoryOptions" optionLabel="labelKey" optionValue="value">
+          <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+          <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+        </p-dropdown>
+      </div>
+      <div class="field col-12 md:col-6">
+        <label>{{ 'admin.parks.items.type' | translate }}</label>
+        <p-dropdown formControlName="type" [options]="typeOptions" optionLabel="labelKey" optionValue="value">
+          <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+          <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+        </p-dropdown>
+      </div>
+    </div>
+
+    <div class="grid formgrid">
+      <div class="field col-12 md:col-6">
+        <label>{{ 'admin.parks.items.subtype' | translate }}</label>
+        <input pInputText formControlName="subtype" />
+      </div>
+      <div class="field col-12 md:col-6">
+        <label>{{ 'admin.parks.items.zone' | translate }}</label>
+        <p-dropdown formControlName="zoneId" [options]="zones" optionLabel="label" optionValue="id" [showClear]="true"></p-dropdown>
+      </div>
+    </div>
+
+    <div class="grid formgrid">
+      <div class="field col-12 md:col-6">
+        <label>{{ 'admin.parks.latitude' | translate }}</label>
+        <input pInputText type="number" formControlName="latitude" />
+      </div>
+      <div class="field col-12 md:col-6">
+        <label>{{ 'admin.parks.longitude' | translate }}</label>
+        <input pInputText type="number" formControlName="longitude" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>{{ 'admin.parks.descriptions.sectionTitle' | translate }}</label>
+      <app-localized-rich-text-editor formControlName="descriptions"></app-localized-rich-text-editor>
+    </div>
+
+    <div class="field">
+      <label>{{ 'admin.parks.visibleField' | translate }}</label>
+      <p-inputSwitch formControlName="isVisible"></p-inputSwitch>
+    </div>
+
+    <div class="actions-row">
+      <button pButton type="button" class="p-button-secondary" (click)="goBack()" [label]="'actions.cancel' | translate"></button>
+      <button pButton type="submit" [label]="'actions.save' | translate"></button>
+    </div>
+  </form>
+</p-card>

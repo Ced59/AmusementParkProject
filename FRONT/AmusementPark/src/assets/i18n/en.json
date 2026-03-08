@@ -141,6 +141,27 @@
         "currentLabel": "Current",
         "alt": "Park logo",
         "deleteConfirm": "Delete this logo?"
+      },
+      "zones": {
+        "manage": "Manage zones",
+        "title": "Park zones",
+        "create": "Create a zone",
+        "createTitle": "Create a park zone",
+        "editTitle": "Edit a park zone",
+        "name": "Zone name",
+        "sortOrder": "Display order",
+        "description": "Localized description"
+      },
+      "items": {
+        "manage": "Manage park items",
+        "title": "Park items",
+        "create": "Create an item",
+        "createTitle": "Create a park item",
+        "editTitle": "Edit a park item",
+        "category": "Category",
+        "type": "Type",
+        "subtype": "Subtype",
+        "zone": "Zone"
       }
     },
     "loading": "Loading...",
@@ -173,9 +194,55 @@
   },
   "actions": {
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "backToPark": "Back to park",
+    "backToList": "Back"
   },
   "parkDetail": {
-    "descriptionTitle": "Description"
+    "descriptionTitle": "Description",
+    "subtitle": "Detailed information about this park and its geographic location.",
+    "exploreButton": "Explore the park",
+    "countryCode": "Country code",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "loading": "Loading park..."
+  },
+  "parkExplorer": {
+    "headerChip": "Park exploration",
+    "subtitle": "Browse the park through its zones and the main categories of items it contains.",
+    "overviewTitle": "Whole park",
+    "unassignedTitle": "Unassigned items",
+    "totalItems": "{{count}} item(s)",
+    "byCategory": "By category",
+    "byType": "By type",
+    "loading": "Loading exploration...",
+    "categories": {
+      "attraction": "Attractions",
+      "restaurant": "Restaurants",
+      "hotel": "Hotels",
+      "animal": "Animals",
+      "show": "Shows",
+      "shop": "Shops",
+      "service": "Services",
+      "transport": "Transport",
+      "other": "Other"
+    },
+    "types": {
+      "rollerCoaster": "Roller coasters",
+      "waterRide": "Water rides",
+      "flatRide": "Flat rides",
+      "darkRide": "Dark rides",
+      "familyRide": "Family rides",
+      "thrillRide": "Thrill rides",
+      "animalExhibit": "Animal exhibits",
+      "restaurant": "Restaurants",
+      "snack": "Snacks",
+      "hotel": "Hotels",
+      "show": "Shows",
+      "shop": "Shops",
+      "service": "Services",
+      "transport": "Transport",
+      "other": "Other"
+    }
   }
 }

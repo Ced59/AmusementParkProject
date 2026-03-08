@@ -23,6 +23,19 @@ export const API_ENDPOINTS = {
   updateParkFounder: (id: string) => `park-founders/${id}`,
 
   getParkOperators: 'park-operators/list',
+
+  getParkZonesByParkId: (parkId: string) => `park-zones/park/${parkId}`,
+  getParkZoneById: (id: string) => `park-zones/${id}`,
+  createParkZone: 'park-zones',
+  updateParkZone: (id: string) => `park-zones/${id}`,
+  deleteParkZone: (id: string) => `park-zones/${id}`,
+  getParkExplorer: (parkId: string) => `park-zones/park/${parkId}/explorer`,
+
+  getParkItemsByParkId: (parkId: string) => `park-items/park/${parkId}`,
+  getParkItemById: (id: string) => `park-items/${id}`,
+  createParkItem: 'park-items',
+  updateParkItem: (id: string) => `park-items/${id}`,
+  deleteParkItem: (id: string) => `park-items/${id}`,
   getParkOperatorById: (id: string) => `park-operators/${id}`,
   createParkOperator: 'park-operators',
   updateParkOperator: (id: string) => `park-operators/${id}`,

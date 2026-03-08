@@ -15,6 +15,9 @@ import { ParksApiResponse } from '../models/parks/parks_api_response';
 import { Park } from '../models/parks/park';
 import { ParkFounder } from '../models/parks/park-founder';
 import { ParkOperator } from '../models/parks/park-operator';
+import { ParkZone } from '../models/parks/park-zone';
+import { ParkItem } from '../models/parks/park-item';
+import { ParkExplorer } from '../models/parks/park-explorer';
 
 import { SearchApiResponse } from '../models/search/search-api-response';
 import { CountryDto } from '../models/countries/country-dto';
@@ -174,6 +177,63 @@ export class ApiService {
     };
 
     return this.http.put<ParkOperator>(url, JSON.stringify(parkOperator), httpOptions);
+  }
+
+
+
+  getParkZonesByParkId(parkId: string): Observable<ParkZone[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkZonesByParkId(parkId)}`;
+    return this.http.get<ParkZone[]>(url);
+  }
+
+  getParkZoneById(id: string): Observable<ParkZone> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkZoneById(id)}`;
+    return this.http.get<ParkZone>(url);
+  }
+
+  createParkZone(zone: ParkZone): Observable<ParkZone> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createParkZone}`;
+    return this.http.post<ParkZone>(url, zone);
+  }
+
+  updateParkZone(id: string, zone: ParkZone): Observable<ParkZone> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateParkZone(id)}`;
+    return this.http.put<ParkZone>(url, zone);
+  }
+
+  deleteParkZone(id: string): Observable<boolean> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.deleteParkZone(id)}`;
+    return this.http.delete<boolean>(url);
+  }
+
+  getParkExplorer(parkId: string): Observable<ParkExplorer> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkExplorer(parkId)}`;
+    return this.http.get<ParkExplorer>(url);
+  }
+
+  getParkItemsByParkId(parkId: string): Observable<ParkItem[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkItemsByParkId(parkId)}`;
+    return this.http.get<ParkItem[]>(url);
+  }
+
+  getParkItemById(id: string): Observable<ParkItem> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkItemById(id)}`;
+    return this.http.get<ParkItem>(url);
+  }
+
+  createParkItem(item: ParkItem): Observable<ParkItem> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createParkItem}`;
+    return this.http.post<ParkItem>(url, item);
+  }
+
+  updateParkItem(id: string, item: ParkItem): Observable<ParkItem> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateParkItem(id)}`;
+    return this.http.put<ParkItem>(url, item);
+  }
+
+  deleteParkItem(id: string): Observable<boolean> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.deleteParkItem(id)}`;
+    return this.http.delete<boolean>(url);
   }
 
   getSearch(

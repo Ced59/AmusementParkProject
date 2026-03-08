@@ -141,6 +141,27 @@
         "currentLabel": "Huidig",
         "alt": "Parklogo",
         "deleteConfirm": "Dit logo verwijderen?"
+      },
+      "zones": {
+        "manage": "Zones beheren",
+        "title": "Parkzones",
+        "create": "Zone aanmaken",
+        "createTitle": "Parkzone aanmaken",
+        "editTitle": "Parkzone bewerken",
+        "name": "Zonenaam",
+        "sortOrder": "Weergavevolgorde",
+        "description": "Gelokaliseerde beschrijving"
+      },
+      "items": {
+        "manage": "Parkitems beheren",
+        "title": "Parkitems",
+        "create": "Item aanmaken",
+        "createTitle": "Parkitem aanmaken",
+        "editTitle": "Parkitem bewerken",
+        "category": "Categorie",
+        "type": "Type",
+        "subtype": "Subtype",
+        "zone": "Zone"
       }
     },
     "loading": "Laden...",
@@ -173,9 +194,55 @@
   },
   "actions": {
     "cancel": "Annuleren",
-    "save": "Opslaan"
+    "save": "Opslaan",
+    "backToPark": "Terug naar het park",
+    "backToList": "Terug"
   },
   "parkDetail": {
-    "descriptionTitle": "Beschrijving"
+    "descriptionTitle": "Beschrijving",
+    "subtitle": "Gedetailleerde informatie over dit park en zijn geografische locatie.",
+    "exploreButton": "Verken het park",
+    "countryCode": "Landcode",
+    "latitude": "Breedtegraad",
+    "longitude": "Lengtegraad",
+    "loading": "Park wordt geladen..."
+  },
+  "parkExplorer": {
+    "headerChip": "Parkverkenning",
+    "subtitle": "Verken het park via de zones en de belangrijkste categorieën elementen die het bevat.",
+    "overviewTitle": "Hele park",
+    "unassignedTitle": "Niet-toegewezen items",
+    "totalItems": "{{count}} item(s)",
+    "byCategory": "Per categorie",
+    "byType": "Per type",
+    "loading": "Verkenning wordt geladen...",
+    "categories": {
+      "attraction": "Attracties",
+      "restaurant": "Restaurants",
+      "hotel": "Hotels",
+      "animal": "Dieren",
+      "show": "Shows",
+      "shop": "Winkels",
+      "service": "Diensten",
+      "transport": "Transport",
+      "other": "Overig"
+    },
+    "types": {
+      "rollerCoaster": "Achtbanen",
+      "waterRide": "Waterattracties",
+      "flatRide": "Vlakke attracties",
+      "darkRide": "Dark rides",
+      "familyRide": "Familieattracties",
+      "thrillRide": "Thrillattracties",
+      "animalExhibit": "Dierenzones",
+      "restaurant": "Restaurants",
+      "snack": "Snacks",
+      "hotel": "Hotels",
+      "show": "Shows",
+      "shop": "Winkels",
+      "service": "Diensten",
+      "transport": "Transport",
+      "other": "Overig"
+    }
   }
 }

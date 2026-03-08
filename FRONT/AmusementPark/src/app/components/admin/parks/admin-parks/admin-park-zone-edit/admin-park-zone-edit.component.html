@@ -1,0 +1,30 @@
+<p-card>
+  <h2>{{ (isEditMode ? 'admin.parks.zones.editTitle' : 'admin.parks.zones.createTitle') | translate }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
+    <div class="field">
+      <label for="name">{{ 'admin.parks.zones.name' | translate }}</label>
+      <input id="name" pInputText formControlName="name" />
+    </div>
+
+    <div class="field">
+      <label for="sortOrder">{{ 'admin.parks.zones.sortOrder' | translate }}</label>
+      <input id="sortOrder" type="number" pInputText formControlName="sortOrder" />
+    </div>
+
+    <div class="field">
+      <label>{{ 'admin.parks.visibleField' | translate }}</label>
+      <p-inputSwitch formControlName="isVisible"></p-inputSwitch>
+    </div>
+
+    <div class="field">
+      <label>{{ 'admin.parks.zones.description' | translate }}</label>
+      <app-localized-rich-text-editor formControlName="descriptions"></app-localized-rich-text-editor>
+    </div>
+
+    <div class="actions-row">
+      <button pButton type="button" class="p-button-secondary" (click)="goBack()" [label]="'actions.cancel' | translate"></button>
+      <button pButton type="submit" [label]="'actions.save' | translate"></button>
+    </div>
+  </form>
+</p-card>

@@ -7,26 +7,30 @@
       </span>
       <h1 class="page-title">{{ park.name }}</h1>
       <p class="page-subtitle">
-        Detailed information about this park and its geographic location.
+        {{ 'parkDetail.subtitle' | translate }}
       </p>
     </div>
 
-    <button pButton type="button" label="Retour" icon="pi pi-arrow-left" (click)="goBack()"></button>
+    <button pButton type="button" [label]="'actions.backToList' | translate" icon="pi pi-arrow-left" (click)="goBack()"></button>
+  </div>
+
+  <div class="detail-actions">
+    <button pButton type="button" icon="pi pi-sitemap" class="p-button-outlined" [label]="'parkDetail.exploreButton' | translate" (click)="goToExplore()"></button>
   </div>
 
   <div class="detail-grid">
     <div class="detail-card">
-      <span class="detail-label">Country Code</span>
+      <span class="detail-label">{{ 'parkDetail.countryCode' | translate }}</span>
       <strong>{{ park.countryCode }}</strong>
     </div>
 
     <div class="detail-card">
-      <span class="detail-label">Latitude</span>
+      <span class="detail-label">{{ 'parkDetail.latitude' | translate }}</span>
       <strong>{{ park.latitude }}</strong>
     </div>
 
     <div class="detail-card">
-      <span class="detail-label">Longitude</span>
+      <span class="detail-label">{{ 'parkDetail.longitude' | translate }}</span>
       <strong>{{ park.longitude }}</strong>
     </div>
   </div>
@@ -40,6 +44,6 @@
 <ng-template #loading>
   <div class="app-empty-state">
     <i class="pi pi-spin pi-spinner"></i>
-    <h3>Chargement du parc...</h3>
+    <h3>{{ 'parkDetail.loading' | translate }}</h3>
   </div>
 </ng-template>

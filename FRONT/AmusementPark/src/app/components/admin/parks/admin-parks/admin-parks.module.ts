@@ -19,12 +19,20 @@ import { PanelModule } from 'primeng/panel';
 import { DividerModule } from 'primeng/divider';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import {AdminFounderEditComponent} from "../../operators/admin-founder-edit/admin-founder-edit.component";
+import { AdminParkZonesComponent } from './admin-park-zones/admin-park-zones.component';
+import { AdminParkZoneEditComponent } from './admin-park-zone-edit/admin-park-zone-edit.component';
+import { AdminParkItemsComponent } from './admin-park-items/admin-park-items.component';
+import { AdminParkItemEditComponent } from './admin-park-item-edit/admin-park-item-edit.component';
 
 @NgModule({
   declarations: [
     AdminParksComponent,
     AdminParkEditComponent,
-    AdminFounderEditComponent
+    AdminFounderEditComponent,
+    AdminParkZonesComponent,
+    AdminParkZoneEditComponent,
+    AdminParkItemsComponent,
+    AdminParkItemEditComponent
   ],
   imports: [
     CommonModule,

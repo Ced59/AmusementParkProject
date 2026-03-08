@@ -42,6 +42,7 @@ import { ParkDetailComponent } from './components/park-detail/park-detail.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {SidebarModule} from "primeng/sidebar";
 import { ParkListComponent } from './components/park-list/park-list.component';
+import { ParkExplorerComponent } from './components/park-explorer/park-explorer.component';
 import {MultiSelectModule} from "primeng/multiselect";
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { LeafletMapComponent } from './components/shared/leaflet-map/leaflet-map.component';
@@ -70,6 +71,7 @@ export function initializeApp(translationService: TranslationService): () => Pro
       ParkDetailComponent,
       SidebarComponent,
       ParkListComponent,
+      ParkExplorerComponent,
       AdminDashboardComponent
     ],
     bootstrap: [AppComponent],

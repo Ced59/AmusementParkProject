@@ -42,6 +42,9 @@ namespace WebAPI.Settings.MongoDB
             // 🔹 Park founders / operators
             await EnsureCollectionExistsAsync(database, settings.ParkFoundersCollectionName);
             await EnsureCollectionExistsAsync(database, settings.ParkOperatorsCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.ParkZonesCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.ParkItemsCollectionName);
+            await InitializeParkItemsIndexesAsync(database, settings.ParkItemsCollectionName);
 
             // 🔹 Index de recherche
             await searchIndexService.InitializeFromParksAsync(
@@ -294,6 +297,21 @@ namespace WebAPI.Settings.MongoDB
             }
         }
         
+
+        private static async Task InitializeParkItemsIndexesAsync(
+            IMongoDatabase database,
+            string collectionName)
+        {
+            IMongoCollection<ParkItem> itemsCollection = database.GetCollection<ParkItem>(collectionName);
+
+            await itemsCollection.Indexes.CreateManyAsync(new[]
+            {
+                new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Ascending(item => item.ParkId)),
+                new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Ascending(item => item.ZoneId)),
+                new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Geo2DSphere(item => item.Location))
+            });
+        }
+
         private static async Task InitializeImagesIndexesAsync(
             IMongoDatabase database,
             string collectionName)

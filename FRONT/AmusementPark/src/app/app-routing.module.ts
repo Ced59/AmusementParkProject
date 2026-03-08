@@ -6,6 +6,7 @@ import { languageGuard } from './guards/language.guard';
 import { SigninGoogleComponent } from './components/login-register/signin-google/signin-google.component';
 import { ParkDetailComponent } from './components/park-detail/park-detail.component';
 import { ParkListComponent } from './components/park-list/park-list.component';
+import { ParkExplorerComponent } from './components/park-explorer/park-explorer.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'signin-google', component: SigninGoogleComponent },
       { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then(m => m.ProfileModule) },
+      { path: 'park/:id/:slug/explore', component: ParkExplorerComponent },
       { path: 'park/:id/:slug', component: ParkDetailComponent },
       {
         path: 'admin',

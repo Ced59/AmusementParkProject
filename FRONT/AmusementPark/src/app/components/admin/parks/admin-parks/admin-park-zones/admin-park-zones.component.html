@@ -1,0 +1,49 @@
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="header-row">
+      <h2>{{ 'admin.parks.zones.title' | translate }}</h2>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-plus"
+        [label]="'admin.parks.zones.create' | translate"
+        [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'zones', 'new']">
+      </button>
+    </div>
+  </ng-template>
+
+  <p-table [value]="zones" [loading]="loading" [responsiveLayout]="'scroll'">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'admin.parks.zones.name' | translate }}</th>
+        <th>{{ 'admin.parks.visible' | translate }}</th>
+        <th>{{ 'admin.parks.zones.sortOrder' | translate }}</th>
+        <th>{{ 'admin.parks.actions' | translate }}</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-zone>
+      <tr>
+        <td>{{ zone.name }}</td>
+        <td>{{ (zone.isVisible ? 'admin.parks.visible' : 'admin.parks.hidden') | translate }}</td>
+        <td>{{ zone.sortOrder ?? 0 }}</td>
+        <td class="actions-cell">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-text"
+            [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'zones', zone.id]">
+          </button>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-text p-button-danger"
+            (click)="deleteZone(zone)">
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

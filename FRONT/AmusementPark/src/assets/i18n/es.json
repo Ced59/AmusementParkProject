@@ -141,6 +141,27 @@
         "currentLabel": "Actual",
         "alt": "Logotipo del parque",
         "deleteConfirm": "¿Eliminar este logotipo?"
+      },
+      "zones": {
+        "manage": "Gestionar zonas",
+        "title": "Zonas del parque",
+        "create": "Crear una zona",
+        "createTitle": "Crear una zona del parque",
+        "editTitle": "Editar una zona del parque",
+        "name": "Nombre de la zona",
+        "sortOrder": "Orden de visualización",
+        "description": "Descripción localizada"
+      },
+      "items": {
+        "manage": "Gestionar elementos del parque",
+        "title": "Elementos del parque",
+        "create": "Crear un elemento",
+        "createTitle": "Crear un elemento del parque",
+        "editTitle": "Editar un elemento del parque",
+        "category": "Categoría",
+        "type": "Tipo",
+        "subtype": "Subtipo",
+        "zone": "Zona"
       }
     },
     "loading": "Cargando...",
@@ -173,9 +194,55 @@
   },
   "actions": {
     "cancel": "Cancelar",
-    "save": "Guardar"
+    "save": "Guardar",
+    "backToPark": "Volver al parque",
+    "backToList": "Volver"
   },
   "parkDetail": {
-    "descriptionTitle": "Descripción"
+    "descriptionTitle": "Descripción",
+    "subtitle": "Información detallada sobre este parque y su ubicación geográfica.",
+    "exploreButton": "Explorar el parque",
+    "countryCode": "Código del país",
+    "latitude": "Latitud",
+    "longitude": "Longitud",
+    "loading": "Cargando parque..."
+  },
+  "parkExplorer": {
+    "headerChip": "Exploración del parque",
+    "subtitle": "Explora el parque a través de sus zonas y las principales categorías de elementos que contiene.",
+    "overviewTitle": "Todo el parque",
+    "unassignedTitle": "Elementos sin zona",
+    "totalItems": "{{count}} elemento(s)",
+    "byCategory": "Por categoría",
+    "byType": "Por tipo",
+    "loading": "Cargando exploración...",
+    "categories": {
+      "attraction": "Atracciones",
+      "restaurant": "Restaurantes",
+      "hotel": "Hoteles",
+      "animal": "Animales",
+      "show": "Espectáculos",
+      "shop": "Tiendas",
+      "service": "Servicios",
+      "transport": "Transporte",
+      "other": "Otros"
+    },
+    "types": {
+      "rollerCoaster": "Montañas rusas",
+      "waterRide": "Atracciones acuáticas",
+      "flatRide": "Atracciones plans",
+      "darkRide": "Dark rides",
+      "familyRide": "Atracciones familiares",
+      "thrillRide": "Atracciones intensas",
+      "animalExhibit": "Espacios animales",
+      "restaurant": "Restaurantes",
+      "snack": "Snacks",
+      "hotel": "Hoteles",
+      "show": "Espectáculos",
+      "shop": "Tiendas",
+      "service": "Servicios",
+      "transport": "Transporte",
+      "other": "Otro"
+    }
   }
 }

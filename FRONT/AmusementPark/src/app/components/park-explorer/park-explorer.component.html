@@ -1,0 +1,65 @@
+<div class="park-explorer page-shell" *ngIf="park && explorer; else loading">
+  <div class="page-header">
+    <div>
+      <span class="app-chip">
+        <i class="pi pi-sitemap"></i>
+        {{ 'parkExplorer.headerChip' | translate }}
+      </span>
+      <h1 class="page-title">{{ park.name }}</h1>
+      <p class="page-subtitle">{{ 'parkExplorer.subtitle' | translate }}</p>
+    </div>
+
+    <button pButton type="button" icon="pi pi-arrow-left" [label]="'actions.backToPark' | translate" (click)="goBack()"></button>
+  </div>
+
+  <div class="overview-card">
+    <h2>{{ 'parkExplorer.overviewTitle' | translate }}</h2>
+    <p>{{ 'parkExplorer.totalItems' | translate:{ count: explorer.overview.totalItems } }}</p>
+  </div>
+
+  <div class="bucket-grid">
+    <div class="bucket-card" *ngFor="let bucket of buckets">
+      <div class="bucket-card__header">
+        <h3>
+          <ng-container *ngIf="bucket.isVirtual && bucket.name === 'overview'">
+            {{ 'parkExplorer.overviewTitle' | translate }}
+          </ng-container>
+          <ng-container *ngIf="bucket.isVirtual && bucket.name === 'unassigned'">
+            {{ 'parkExplorer.unassignedTitle' | translate }}
+          </ng-container>
+          <ng-container *ngIf="!bucket.isVirtual">
+            {{ bucket.name }}
+          </ng-container>
+        </h3>
+        <span class="bucket-total">{{ 'parkExplorer.totalItems' | translate:{ count: bucket.totalItems } }}</span>
+      </div>
+
+      <div class="bucket-section">
+        <h4>{{ 'parkExplorer.byCategory' | translate }}</h4>
+        <ul>
+          <li *ngFor="let count of bucket.countsByCategory">
+            <span>{{ getCategoryKey(count.key) | translate }}</span>
+            <strong>{{ count.count }}</strong>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bucket-section" *ngIf="bucket.countsByType.length > 0">
+        <h4>{{ 'parkExplorer.byType' | translate }}</h4>
+        <ul>
+          <li *ngFor="let count of bucket.countsByType">
+            <span>{{ getTypeKey(count.key) | translate }}</span>
+            <strong>{{ count.count }}</strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="app-empty-state">
+    <i class="pi pi-spin pi-spinner"></i>
+    <h3>{{ 'parkExplorer.loading' | translate }}</h3>
+  </div>
+</ng-template>
