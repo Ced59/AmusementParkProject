@@ -2,6 +2,16 @@
   display: block;
 }
 
+.localized-text-input__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 :host ::ng-deep .localized-text-input .p-inputtext {
   width: 100%;
+}
+
+.localized-text-input__copy-all-button {
+  align-self: flex-start;
 }

@@ -24,6 +24,7 @@ interface LocalizedTextEntry {
 })
 export class LocalizedTextInputComponent implements ControlValueAccessor {
   @Input() placeholderKey: string = 'admin.parks.zones.namePlaceholder';
+  @Input() copyAllButtonLabel: string = 'Appliquer à toutes les langues';
 
   activeTabIndex: number = 0;
   entries: LocalizedTextEntry[] = this.buildEntries([]);
@@ -53,6 +54,33 @@ export class LocalizedTextInputComponent implements ControlValueAccessor {
   }
 
   onEntryValueChange(): void {
+    this.propagateChanges();
+    this.onTouched();
+  }
+
+  canApplyValueToAllLanguages(value: string): boolean {
+    const normalizedValue: string = value.trim();
+
+    if (normalizedValue.length === 0) {
+      return false;
+    }
+
+    return !this.entries.every((entry: LocalizedTextEntry) => entry.value.trim() === normalizedValue);
+  }
+
+  applyValueToAllLanguages(value: string): void {
+    const normalizedValue: string = value.trim();
+
+    if (normalizedValue.length === 0) {
+      return;
+    }
+
+    this.entries = this.entries.map((entry: LocalizedTextEntry) => ({
+      languageCode: entry.languageCode,
+      languageLabel: entry.languageLabel,
+      value: normalizedValue
+    }));
+
     this.propagateChanges();
     this.onTouched();
   }
