@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminParksComponent } from './admin-parks.component';
 import { AdminParkEditComponent } from './admin-park-edit/admin-park-edit.component';
-import {AdminFounderEditComponent} from "../../operators/admin-founder-edit/dmin-founder-edit.component";
+import {AdminFounderEditComponent} from "../../operators/admin-founder-edit/admin-founder-edit.component";
 
 const routes: Routes = [
   { path: '', component: AdminParksComponent },

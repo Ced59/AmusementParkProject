@@ -33,7 +33,7 @@ interface ParkLogoItem {
 }
 
 interface ParkTypeOption {
-  label: string;
+  labelKey: string;
   value: ParkType;
 }
 

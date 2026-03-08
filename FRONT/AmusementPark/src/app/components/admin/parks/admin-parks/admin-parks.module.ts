@@ -18,7 +18,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
 import { DividerModule } from 'primeng/divider';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import {AdminFounderEditComponent} from "../../operators/admin-founder-edit/dmin-founder-edit.component";
+import {AdminFounderEditComponent} from "../../operators/admin-founder-edit/admin-founder-edit.component";
 
 @NgModule({
   declarations: [
