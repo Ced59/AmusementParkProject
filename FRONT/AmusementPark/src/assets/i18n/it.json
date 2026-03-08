@@ -67,7 +67,8 @@
     "tabs": {
       "users": "Utenti",
       "parks": "Parchi",
-      "site": "Sito"
+      "site": "Sito",
+      "operators": "Gestori"
     },
     "users": {
       "total": "Numero totale di utenti: {{count}}",
@@ -95,17 +96,75 @@
       "visibleField": "Visibilità",
       "street": "Indirizzo",
       "streetPlaceholder": "Indirizzo completo",
-
       "city": "Città",
       "cityPlaceholder": "Nome della città",
-
       "postalCode": "CAP",
       "postalCodePlaceholder": "Codice postale",
-
       "editPage": {
         "createTitle": "Crea un nuovo parco",
         "updateTitle": "Modifica il parco \"{{name}}\"",
         "subtitle": "Gestisci qui le informazioni di base e la visibilità del parco."
+      },
+      "descriptions": {
+        "sectionTitle": "Descrizione localizzata",
+        "subtitle": "Scrivi la descrizione del parco in ogni lingua disponibile con formattazione avanzata.",
+        "placeholder": "Scrivi la descrizione in {{language}}"
+      },
+      "type": "Tipo",
+      "typePlaceholder": "Seleziona un tipo di parco",
+      "founder": "Fondatore",
+      "founderPlaceholder": "Seleziona un fondatore",
+      "addFounder": "Aggiungi un fondatore",
+      "operator": "Gestore",
+      "operatorPlaceholder": "Seleziona un gestore",
+      "addOperator": "Aggiungi un gestore",
+      "location": "Posizione",
+      "types": {
+        "themePark": "Parco tematico",
+        "waterPark": "Parco acquatico",
+        "zoo": "Zoo",
+        "animalPark": "Parco faunistico",
+        "amusementPark": "Parco divertimenti",
+        "resort": "Resort",
+        "notSpecified": "Non specificato"
+      },
+      "logos": {
+        "sectionTitle": "Loghi del parco",
+        "currentTitle": "Logo attuale",
+        "noCurrent": "Nessun logo attuale definito.",
+        "uploadTitle": "Aggiungi un nuovo logo",
+        "descriptionPlaceholder": "Descrizione del logo (facoltativa)",
+        "uploadButton": "Carica e imposta come logo attuale",
+        "historyTitle": "Cronologia dei loghi",
+        "empty": "Non è ancora stato aggiunto alcun logo per questo parco.",
+        "noDescription": "Senza descrizione",
+        "currentLabel": "Attuale",
+        "alt": "Logo del parco",
+        "deleteConfirm": "Eliminare questo logo?"
+      }
+    },
+    "loading": "Caricamento...",
+    "operators": {
+      "total": "Gestori: {{count}}",
+      "searchPlaceholder": "Cerca un gestore",
+      "create": "Crea un gestore",
+      "name": "Nome",
+      "actions": "Azioni",
+      "edit": "Modifica",
+      "empty": "Nessun gestore trovato.",
+      "editPage": {
+        "createTitle": "Crea un gestore",
+        "updateTitle": "Modifica il gestore",
+        "name": "Nome",
+        "description": "Descrizione"
+      }
+    },
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Crea un fondatore",
+        "updateTitle": "Modifica il fondatore",
+        "name": "Nome",
+        "biography": "Biografia"
       }
     }
   },
@@ -115,5 +174,8 @@
   "actions": {
     "cancel": "Annulla",
     "save": "Salva"
+  },
+  "parkDetail": {
+    "descriptionTitle": "Descrizione"
   }
 }

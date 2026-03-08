@@ -39,6 +39,10 @@ namespace WebAPI.Settings.MongoDB
                 @"C:\Users\ccaud\Source\Repos\Ced59\AmusementParkProject\API\WebAPI\Resources\InitializingDatas\parks.json"
             );
 
+            // 🔹 Park founders / operators
+            await EnsureCollectionExistsAsync(database, settings.ParkFoundersCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.ParkOperatorsCollectionName);
+
             // 🔹 Index de recherche
             await searchIndexService.InitializeFromParksAsync(
                 database,

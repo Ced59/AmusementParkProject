@@ -1,0 +1,22 @@
+.localized-rich-text-editor {
+  display: block;
+}
+
+.localized-rich-text-editor__panel {
+  display: block;
+}
+
+:host ::ng-deep {
+  .p-editor-container {
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .p-editor-toolbar {
+    border-bottom: 1px solid var(--surface-border);
+  }
+
+  .p-editor-content {
+    min-height: 16rem;
+  }
+}

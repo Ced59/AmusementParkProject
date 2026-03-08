@@ -30,6 +30,11 @@
       <strong>{{ park.longitude }}</strong>
     </div>
   </div>
+
+  <div class="detail-card detail-card--description mt-4" *ngIf="localizedDescription">
+    <span class="detail-label">{{ 'parkDetail.descriptionTitle' | translate }}</span>
+    <div class="park-description" [innerHTML]="localizedDescription"></div>
+  </div>
 </div>
 
 <ng-template #loading>

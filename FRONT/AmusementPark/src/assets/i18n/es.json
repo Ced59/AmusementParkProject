@@ -67,7 +67,8 @@
     "tabs": {
       "users": "Usuarios",
       "parks": "Parques",
-      "site": "Sitio"
+      "site": "Sitio",
+      "operators": "Operadores"
     },
     "users": {
       "total": "Número total de usuarios: {{count}}",
@@ -95,17 +96,75 @@
       "visibleField": "Visibilidad",
       "street": "Dirección",
       "streetPlaceholder": "Dirección completa",
-
       "city": "Ciudad",
       "cityPlaceholder": "Nombre de la ciudad",
-
       "postalCode": "Código postal",
       "postalCodePlaceholder": "Código postal",
-
       "editPage": {
         "createTitle": "Crear un nuevo parque",
         "updateTitle": "Editar parque \"{{name}}\"",
         "subtitle": "Gestiona aquí la información básica y la visibilidad del parque."
+      },
+      "descriptions": {
+        "sectionTitle": "Descripción localizada",
+        "subtitle": "Redacta la descripción del parque en cada idioma disponible con formato enriquecido.",
+        "placeholder": "Escribe la descripción en {{language}}"
+      },
+      "type": "Tipo",
+      "typePlaceholder": "Selecciona un tipo de parque",
+      "founder": "Fundador",
+      "founderPlaceholder": "Selecciona un fundador",
+      "addFounder": "Añadir un fundador",
+      "operator": "Operador",
+      "operatorPlaceholder": "Selecciona un operador",
+      "addOperator": "Añadir un operador",
+      "location": "Ubicación",
+      "types": {
+        "themePark": "Parque temático",
+        "waterPark": "Parque acuático",
+        "zoo": "Zoo",
+        "animalPark": "Parque animal",
+        "amusementPark": "Parque de atracciones",
+        "resort": "Resort",
+        "notSpecified": "No definido"
+      },
+      "logos": {
+        "sectionTitle": "Logotipos del parque",
+        "currentTitle": "Logotipo actual",
+        "noCurrent": "No hay ningún logotipo actual definido.",
+        "uploadTitle": "Añadir un nuevo logotipo",
+        "descriptionPlaceholder": "Descripción del logotipo (opcional)",
+        "uploadButton": "Subir y establecer como logotipo actual",
+        "historyTitle": "Historial de logotipos",
+        "empty": "Todavía no se ha añadido ningún logotipo para este parque.",
+        "noDescription": "Sin descripción",
+        "currentLabel": "Actual",
+        "alt": "Logotipo del parque",
+        "deleteConfirm": "¿Eliminar este logotipo?"
+      }
+    },
+    "loading": "Cargando...",
+    "operators": {
+      "total": "Operadores: {{count}}",
+      "searchPlaceholder": "Buscar un operador",
+      "create": "Crear un operador",
+      "name": "Nombre",
+      "actions": "Acciones",
+      "edit": "Editar",
+      "empty": "No se ha encontrado ningún operador.",
+      "editPage": {
+        "createTitle": "Crear un operador",
+        "updateTitle": "Editar el operador",
+        "name": "Nombre",
+        "description": "Descripción"
+      }
+    },
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Crear un fundador",
+        "updateTitle": "Editar el fundador",
+        "name": "Nombre",
+        "biography": "Biografía"
       }
     }
   },
@@ -115,5 +174,8 @@
   "actions": {
     "cancel": "Cancelar",
     "save": "Guardar"
+  },
+  "parkDetail": {
+    "descriptionTitle": "Descripción"
   }
 }

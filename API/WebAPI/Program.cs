@@ -52,6 +52,8 @@ namespace WebAPI
             // Services
             builder.Services.AddScoped<IUsersService, UsersService>();
             builder.Services.AddScoped<IParksService, ParksService>();
+            builder.Services.AddScoped<IParkFoundersService, ParkFoundersService>();
+            builder.Services.AddScoped<IParkOperatorsService, ParkOperatorsService>();
 
             builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
 
@@ -61,6 +63,8 @@ namespace WebAPI
 
             builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
             builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
+            builder.Services.AddScoped<IParkFoundersQueryHandler, ParkFoundersMongoQueryHandler>();
+            builder.Services.AddScoped<IParkOperatorsQueryHandler, ParkOperatorsMongoQueryHandler>();
             builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
             builder.Services.AddScoped<IImagesQueryHandler, ImagesMongoQueryHandler>();
             builder.Services.AddScoped<ICountriesQueryHandler, CountriesMongoQueryHandler>();

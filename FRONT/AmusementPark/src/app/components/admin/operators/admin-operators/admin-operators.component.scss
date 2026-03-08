@@ -1,0 +1,11 @@
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}

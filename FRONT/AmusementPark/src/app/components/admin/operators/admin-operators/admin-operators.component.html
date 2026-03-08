@@ -1,0 +1,63 @@
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="header-row">
+      <span class="total">
+        {{ 'admin.operators.total' | translate:{ count: filteredOperators.length } }}
+      </span>
+    </div>
+  </ng-template>
+
+  <div class="search-row">
+    <input
+      pInputText
+      type="text"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="applyFilter()"
+      [placeholder]="'admin.operators.searchPlaceholder' | translate" />
+
+    <a
+      pButton
+      type="button"
+      icon="pi pi-plus"
+      class="p-button-primary"
+      [routerLink]="['/', currentLang, 'admin', 'operators', 'new']"
+      [label]="'admin.operators.create' | translate">
+    </a>
+  </div>
+
+  <p-table
+    [value]="filteredOperators"
+    [loading]="loading"
+    [responsiveLayout]="'scroll'">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'admin.operators.name' | translate }}</th>
+        <th>{{ 'admin.operators.actions' | translate }}</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-parkOperator>
+      <tr>
+        <td>{{ parkOperator.name }}</td>
+        <td>
+          <a
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-text p-button-sm"
+            [routerLink]="['/', currentLang, 'admin', 'operators', 'edit', parkOperator.id]"
+            [label]="'admin.operators.edit' | translate">
+          </a>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="2">
+          {{ 'admin.operators.empty' | translate }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

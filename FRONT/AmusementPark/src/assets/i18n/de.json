@@ -67,7 +67,8 @@
     "tabs": {
       "users": "Benutzer",
       "parks": "Parks",
-      "site": "Seite"
+      "site": "Seite",
+      "operators": "Betreiber"
     },
     "users": {
       "total": "Gesamtzahl der Benutzer: {{count}}",
@@ -94,18 +95,76 @@
       "visibleField": "Sichtbarkeit",
       "street": "Adresse",
       "streetPlaceholder": "Vollständige Adresse",
-
       "city": "Stadt",
       "cityPlaceholder": "Stadtname",
-
       "postalCode": "Postleitzahl",
       "postalCodePlaceholder": "PLZ",
-
       "countryPlaceholder": "Land auswählen",
       "editPage": {
         "createTitle": "Neuen Park erstellen",
         "updateTitle": "Park „{{name}}“ bearbeiten",
         "subtitle": "Verwalte hier die Basisinformationen und die Sichtbarkeit des Parks."
+      },
+      "descriptions": {
+        "sectionTitle": "Lokalisierte Beschreibung",
+        "subtitle": "Verfassen Sie die Parkbeschreibung in jeder verfügbaren Sprache mit Rich-Text-Formatierung.",
+        "placeholder": "Beschreibung auf {{language}} verfassen"
+      },
+      "type": "Typ",
+      "typePlaceholder": "Parktyp auswählen",
+      "founder": "Gründer",
+      "founderPlaceholder": "Einen Gründer auswählen",
+      "addFounder": "Gründer hinzufügen",
+      "operator": "Betreiber",
+      "operatorPlaceholder": "Einen Betreiber auswählen",
+      "addOperator": "Betreiber hinzufügen",
+      "location": "Standort",
+      "types": {
+        "themePark": "Themenpark",
+        "waterPark": "Wasserpark",
+        "zoo": "Zoo",
+        "animalPark": "Tierpark",
+        "amusementPark": "Freizeitpark",
+        "resort": "Resort",
+        "notSpecified": "Nicht angegeben"
+      },
+      "logos": {
+        "sectionTitle": "Parklogos",
+        "currentTitle": "Aktuelles Logo",
+        "noCurrent": "Derzeit ist kein Logo festgelegt.",
+        "uploadTitle": "Neues Logo hinzufügen",
+        "descriptionPlaceholder": "Logobeschreibung (optional)",
+        "uploadButton": "Hochladen und als aktuelles Logo festlegen",
+        "historyTitle": "Logo-Verlauf",
+        "empty": "Für diesen Park wurde noch kein Logo hinzugefügt.",
+        "noDescription": "Keine Beschreibung",
+        "currentLabel": "Aktuell",
+        "alt": "Parklogo",
+        "deleteConfirm": "Dieses Logo löschen?"
+      }
+    },
+    "loading": "Laden...",
+    "operators": {
+      "total": "Betreiber: {{count}}",
+      "searchPlaceholder": "Einen Betreiber suchen",
+      "create": "Betreiber erstellen",
+      "name": "Name",
+      "actions": "Aktionen",
+      "edit": "Bearbeiten",
+      "empty": "Keine Betreiber gefunden.",
+      "editPage": {
+        "createTitle": "Betreiber erstellen",
+        "updateTitle": "Betreiber bearbeiten",
+        "name": "Name",
+        "description": "Beschreibung"
+      }
+    },
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Gründer erstellen",
+        "updateTitle": "Gründer bearbeiten",
+        "name": "Name",
+        "biography": "Biografie"
       }
     }
   },
@@ -115,5 +174,8 @@
   "actions": {
     "cancel": "Abbrechen",
     "save": "Speichern"
+  },
+  "parkDetail": {
+    "descriptionTitle": "Beschreibung"
   }
 }
