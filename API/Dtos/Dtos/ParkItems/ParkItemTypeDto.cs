@@ -2,12 +2,18 @@ namespace Dtos.ParkItems
 {
     public enum ParkItemTypeDto
     {
+        Attraction,
         RollerCoaster,
         WaterRide,
         FlatRide,
         DarkRide,
         FamilyRide,
         ThrillRide,
+        TransportRide,
+        WalkThrough,
+        Playground,
+        InteractiveExperience,
+        ObservationRide,
         AnimalExhibit,
         Restaurant,
         Snack,

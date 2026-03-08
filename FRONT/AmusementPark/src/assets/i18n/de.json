@@ -164,7 +164,59 @@
         "type": "Typ",
         "subtype": "Untertyp",
         "zone": "Bereich",
-        "deleteConfirm": "Dieses Element löschen?"
+        "deleteConfirm": "Dieses Element löschen?",
+        "itemName": "Item name",
+        "generalLocation": "General location",
+        "generalLocationHelp": "Main point of the item in the park. Specific attraction points can be filled in below.",
+        "saveBeforePhotos": "Save the attraction first before attaching photos.",
+        "attractionSectionTitle": "Attraction configuration",
+        "attractionSectionDescription": "This section is only displayed for items in the Attraction category. Every field is optional.",
+        "locationsTitle": "Specific locations",
+        "locationsHelp": "Lets you store separate coordinates for entrance, exit, fast pass entrance and reduced mobility entrance.",
+        "details": {
+          "manufacturer": "Manufacturer",
+          "model": "Model",
+          "openingDate": "Opening date",
+          "closingDate": "Closing date",
+          "durationInSeconds": "Duration (seconds)",
+          "capacityPerHour": "Capacity per hour",
+          "heightInMeters": "Height (m)",
+          "lengthInMeters": "Length (m)",
+          "speedInKmH": "Speed (km/h)",
+          "dropInMeters": "Drop (m)",
+          "inversionCount": "Inversion count",
+          "minimumHeightInCm": "Minimum height (cm)",
+          "maximumHeightInCm": "Maximum height (cm)",
+          "minimumAge": "Minimum age",
+          "trainCount": "Train count",
+          "carsPerTrain": "Cars per train",
+          "ridersPerVehicle": "Riders per vehicle",
+          "hasSingleRider": "Single rider queue",
+          "hasFastPass": "Fast pass available",
+          "isAccessibleForReducedMobility": "Reduced mobility accessible",
+          "isIndoor": "Indoor attraction",
+          "isWaterAttraction": "Water attraction"
+        },
+        "locationFields": {
+          "entrance": "Entrance",
+          "exit": "Exit",
+          "fastPassEntrance": "Fast pass entrance",
+          "reducedMobilityEntrance": "Reduced mobility entrance"
+        },
+        "photos": {
+          "sectionTitle": "Attraction photos",
+          "currentTitle": "Current photo",
+          "uploadTitle": "Add a photo",
+          "uploadButton": "Upload photo",
+          "historyTitle": "Photo history",
+          "empty": "No photo for this attraction yet.",
+          "noCurrent": "No current photo selected.",
+          "currentLabel": "Current",
+          "noDescription": "No description",
+          "alt": "Attraction photo",
+          "descriptionPlaceholder": "Optional photo description",
+          "deleteConfirm": "Delete this photo?"
+        }
       }
     },
     "loading": "Laden...",
@@ -245,7 +297,13 @@
       "shop": "Geschäfte",
       "service": "Services",
       "transport": "Transport",
-      "other": "Sonstiges"
+      "other": "Sonstiges",
+      "attraction": "Generic attraction",
+      "transportRide": "Transport rides",
+      "walkThrough": "Walkthrough attractions",
+      "playground": "Playgrounds",
+      "interactiveExperience": "Interactive experiences",
+      "observationRide": "Observation rides"
     }
   }
 }

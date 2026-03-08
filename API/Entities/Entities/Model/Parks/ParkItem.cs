@@ -5,6 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Entities.Model.Parks
 {
+    [BsonIgnoreExtraElements]
     public class ParkItem : GeolocatedEntity
     {
         [BsonElement("parkId")]
@@ -32,6 +33,14 @@ namespace Entities.Model.Parks
 
         [BsonElement("descriptions")]
         public List<LocalizedItem<string>> Descriptions { get; set; } = new();
+
+        [BsonElement("attractionDetails")]
+        [BsonIgnoreIfNull]
+        public AttractionDetails? AttractionDetails { get; set; }
+
+        [BsonElement("attractionLocations")]
+        [BsonIgnoreIfNull]
+        public AttractionLocations? AttractionLocations { get; set; }
 
         [BsonElement("isVisible")]
         public bool IsVisible { get; set; } = true;

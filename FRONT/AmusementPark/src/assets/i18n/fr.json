@@ -164,7 +164,59 @@
         "type": "Type",
         "subtype": "Sous-type",
         "zone": "Zone",
-        "deleteConfirm": "Supprimer cet élément ?"
+        "deleteConfirm": "Supprimer cet élément ?",
+        "itemName": "Nom de l’élément",
+        "generalLocation": "Localisation générale",
+        "generalLocationHelp": "Point principal de l’élément dans le parc. Les points spécifiques de l’attraction se renseignent plus bas.",
+        "saveBeforePhotos": "Enregistre d’abord l’attraction pour pouvoir lui associer des photos.",
+        "attractionSectionTitle": "Configuration de l’attraction",
+        "attractionSectionDescription": "Cette section n’apparaît que pour les éléments de catégorie Attraction. Tous les champs sont optionnels.",
+        "locationsTitle": "Localisations spécifiques",
+        "locationsHelp": "Permet de renseigner séparément l’entrée, la sortie, l’entrée fast pass et l’entrée PMR.",
+        "details": {
+          "manufacturer": "Constructeur",
+          "model": "Modèle",
+          "openingDate": "Date d’ouverture",
+          "closingDate": "Date de fermeture",
+          "durationInSeconds": "Durée (secondes)",
+          "capacityPerHour": "Capacité par heure",
+          "heightInMeters": "Hauteur (m)",
+          "lengthInMeters": "Longueur (m)",
+          "speedInKmH": "Vitesse (km/h)",
+          "dropInMeters": "Chute (m)",
+          "inversionCount": "Nombre d’inversions",
+          "minimumHeightInCm": "Taille minimale (cm)",
+          "maximumHeightInCm": "Taille maximale (cm)",
+          "minimumAge": "Âge minimum",
+          "trainCount": "Nombre de trains",
+          "carsPerTrain": "Wagons par train",
+          "ridersPerVehicle": "Passagers par véhicule",
+          "hasSingleRider": "File single rider",
+          "hasFastPass": "Accès fast pass",
+          "isAccessibleForReducedMobility": "Accessible PMR",
+          "isIndoor": "En intérieur",
+          "isWaterAttraction": "Attraction aquatique"
+        },
+        "locationFields": {
+          "entrance": "Entrée",
+          "exit": "Sortie",
+          "fastPassEntrance": "Entrée fast pass",
+          "reducedMobilityEntrance": "Entrée PMR"
+        },
+        "photos": {
+          "sectionTitle": "Photos de l’attraction",
+          "currentTitle": "Photo actuelle",
+          "uploadTitle": "Ajouter une photo",
+          "uploadButton": "Uploader la photo",
+          "historyTitle": "Historique des photos",
+          "empty": "Aucune photo pour cette attraction.",
+          "noCurrent": "Aucune photo actuelle définie.",
+          "currentLabel": "Actuelle",
+          "noDescription": "Aucune description",
+          "alt": "Photo de l’attraction",
+          "descriptionPlaceholder": "Description optionnelle de la photo",
+          "deleteConfirm": "Supprimer cette photo ?"
+        }
       }
     },
     "loading": "Chargement...",
@@ -245,7 +297,13 @@
       "shop": "Boutiques",
       "service": "Services",
       "transport": "Transports",
-      "other": "Autre"
+      "other": "Autre",
+      "attraction": "Attraction générique",
+      "transportRide": "Attractions de transport",
+      "walkThrough": "Parcours à pied",
+      "playground": "Aires de jeux",
+      "interactiveExperience": "Expériences interactives",
+      "observationRide": "Attractions d’observation"
     }
   }
 }
