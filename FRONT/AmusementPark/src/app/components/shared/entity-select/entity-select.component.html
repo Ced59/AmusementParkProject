@@ -1,0 +1,29 @@
+<div class="entity-select">
+  <label *ngIf="label" class="entity-select__label">{{ label }}</label>
+
+  <div class="entity-select__row">
+    <p-dropdown
+      [ngModel]="value"
+      (ngModelChange)="onValueChange($event)"
+      [options]="options"
+      optionLabel="label"
+      optionValue="id"
+      [showClear]="true"
+      [filter]="true"
+      [disabled]="isDisabled || loading"
+      [placeholder]="placeholder"
+      styleClass="w-full">
+    </p-dropdown>
+
+    <button
+      *ngIf="addLink"
+      pButton
+      type="button"
+      class="p-button-outlined"
+      [routerLink]="addLink"
+      [queryParams]="addQueryParams"
+      [label]="addButtonLabel"
+      icon="pi pi-plus">
+    </button>
+  </div>
+</div>

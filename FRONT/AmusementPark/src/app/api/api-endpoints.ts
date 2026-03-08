@@ -17,6 +17,16 @@ export const API_ENDPOINTS = {
   createPark: 'parks',
   updatePark: (id: string) => `parks/${id}`,
 
+  getParkFounders: 'park-founders/list',
+  getParkFounderById: (id: string) => `park-founders/${id}`,
+  createParkFounder: 'park-founders',
+  updateParkFounder: (id: string) => `park-founders/${id}`,
+
+  getParkOperators: 'park-operators/list',
+  getParkOperatorById: (id: string) => `park-operators/${id}`,
+  createParkOperator: 'park-operators',
+  updateParkOperator: (id: string) => `park-operators/${id}`,
+
   getSearch: (query: string, categories: string[], page: number, size: number) => {
     const catsParam = categories && categories.length > 0
       ? `&categories=${categories.join(',')}`

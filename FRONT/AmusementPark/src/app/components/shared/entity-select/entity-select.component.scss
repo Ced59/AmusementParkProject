@@ -1,0 +1,16 @@
+.entity-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.entity-select__label {
+  font-weight: 600;
+}
+
+.entity-select__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+}

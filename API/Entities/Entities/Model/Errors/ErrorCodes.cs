@@ -35,6 +35,14 @@
         public static readonly ErrorDetail NoParkInThisLocation = new(404, "They are no park in this location");
         public static readonly ErrorDetail ErrorCreatingPark = new(500, "Error while creating park");
 
+        public static readonly ErrorDetail ParkFounderNotExists = new(404, "Park founder not exists");
+        public static readonly ErrorDetail ErrorCreatingParkFounder = new(500, "Error while creating park founder");
+        public static readonly ErrorDetail ErrorUpdatingParkFounder = new(500, "Error while updating park founder");
+
+        public static readonly ErrorDetail ParkOperatorNotExists = new(404, "Park operator not exists");
+        public static readonly ErrorDetail ErrorCreatingParkOperator = new(500, "Error while creating park operator");
+        public static readonly ErrorDetail ErrorUpdatingParkOperator = new(500, "Error while updating park operator");
+
         public static readonly ErrorDetail NoImageFileProvided = new(404, "No image filename provided.");
         public static readonly ErrorDetail NoImageCategoryProvided = new(404, "No image category provided.");
         public static readonly ErrorDetail ImageServorInternalError = new(500, "Image processing Internal Server Error");
@@ -51,10 +59,10 @@
             public string Message { get; }
 
             public ErrorDetail(int statusCode, string message)
-        {
-            StatusCode = statusCode;
-            Message = message;
-        }
+            {
+                StatusCode = statusCode;
+                Message = message;
+            }
         }
     }
 }

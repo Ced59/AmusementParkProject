@@ -3,7 +3,6 @@
     <h1>{{ 'admin.title' | translate }}</h1>
   </header>
 
-  <!-- Onglets de navigation -->
   <nav class="admin-tabs">
     <button
       pButton
@@ -28,6 +27,16 @@
     <button
       pButton
       class="admin-tab"
+      [routerLink]="['operators']"
+      routerLinkActive="active-tab"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [label]="'admin.tabs.operators' | translate"
+      icon="pi pi-building"
+    ></button>
+
+    <button
+      pButton
+      class="admin-tab"
       [routerLink]="['site']"
       routerLinkActive="active-tab"
       [routerLinkActiveOptions]="{ exact: true }"
@@ -36,7 +45,6 @@
     ></button>
   </nav>
 
-  <!-- Contenu des sous-routes -->
   <section class="admin-content">
     <router-outlet></router-outlet>
   </section>

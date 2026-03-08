@@ -67,7 +67,8 @@
     "tabs": {
       "users": "Utilisateurs",
       "parks": "Parcs",
-      "site": "Site"
+      "site": "Site",
+      "operators": "Exploitants"
     },
     "users": {
       "total": "Nombre total d'utilisateurs : {{count}}",
@@ -114,7 +115,56 @@
         "uploadButton": "Uploader et définir comme logo actuel",
         "historyTitle": "Historique des logos",
         "empty": "Aucun logo n'a encore été ajouté pour ce parc.",
-        "noDescription": "Sans description"
+        "noDescription": "Sans description",
+        "currentLabel": "Actuel",
+        "alt": "Logo du parc",
+        "deleteConfirm": "Supprimer ce logo ?"
+      },
+      "descriptions": {
+        "sectionTitle": "Description localisée",
+        "subtitle": "Rédigez la description du parc dans chaque langue disponible avec une mise en forme enrichie.",
+        "placeholder": "Rédigez la description en {{language}}"
+      },
+      "type": "Type",
+      "typePlaceholder": "Sélectionner un type de parc",
+      "founder": "Fondateur",
+      "founderPlaceholder": "Sélectionner un fondateur",
+      "addFounder": "Ajouter un fondateur",
+      "operator": "Exploitant",
+      "operatorPlaceholder": "Sélectionner un exploitant",
+      "addOperator": "Ajouter un exploitant",
+      "types": {
+        "themePark": "Parc à thème",
+        "waterPark": "Parc aquatique",
+        "zoo": "Zoo",
+        "animalPark": "Parc animalier",
+        "amusementPark": "Parc d'attractions",
+        "resort": "Resort",
+        "notSpecified": "Non défini"
+      }
+    },
+    "loading": "Chargement...",
+    "operators": {
+      "total": "Exploitants : {{count}}",
+      "searchPlaceholder": "Rechercher un exploitant",
+      "create": "Créer un exploitant",
+      "name": "Nom",
+      "actions": "Actions",
+      "edit": "Modifier",
+      "empty": "Aucun exploitant trouvé.",
+      "editPage": {
+        "createTitle": "Créer un exploitant",
+        "updateTitle": "Modifier l'exploitant",
+        "name": "Nom",
+        "description": "Description"
+      }
+    },
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Créer un fondateur",
+        "updateTitle": "Modifier le fondateur",
+        "name": "Nom",
+        "biography": "Biographie"
       }
     }
   },
@@ -124,5 +174,8 @@
   "actions": {
     "cancel": "Annuler",
     "save": "Enregistrer"
+  },
+  "parkDetail": {
+    "descriptionTitle": "Description"
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 import { ApiService } from '../../../../../services/api.service';
 import { Park } from '../../../../../models/parks/park';
@@ -10,6 +11,11 @@ import { UploadedImage } from '../../../../../models/images/uploaded-image';
 import { ImageCategory } from '../../../../../models/images/image-category';
 import { ImageDto } from '../../../../../models/images/image-dto';
 import { ImageOwnerType } from '../../../../../models/images/image-owner-type';
+import { LocalizedItem } from '../../../../../models/shared/localized-item';
+import { EntitySelectOption } from '../../../../../models/shared/entity-select-option';
+import { ParkFounder } from '../../../../../models/parks/park-founder';
+import { ParkOperator } from '../../../../../models/parks/park-operator';
+import { ParkType } from '../../../../../models/parks/park-type';
 
 interface MapMarker {
   id: string;
@@ -26,6 +32,11 @@ interface ParkLogoItem {
   createdAt: string;
 }
 
+interface ParkTypeOption {
+  label: string;
+  value: ParkType;
+}
+
 @Component({
   selector: 'app-admin-park-edit',
   templateUrl: './admin-park-edit.component.html',
@@ -34,50 +45,74 @@ interface ParkLogoItem {
 export class AdminParkEditComponent implements OnInit, OnDestroy {
   form!: FormGroup;
 
-  isEditMode = false;
+  isEditMode: boolean = false;
   parkId: string | null = null;
+  currentLang: string = 'en';
 
   countryOptions: { code: string; label: string }[] = [];
-  countriesLoading = false;
+  countriesLoading: boolean = false;
+
+  founderOptions: EntitySelectOption[] = [];
+  operatorOptions: EntitySelectOption[] = [];
+  foundersLoading: boolean = false;
+  operatorsLoading: boolean = false;
+
+  parkTypeOptions: ParkTypeOption[] = [
+    { labelKey: 'admin.parks.types.themePark', value: 'ThemePark' },
+    { labelKey: 'admin.parks.types.waterPark', value: 'WaterPark' },
+    { labelKey: 'admin.parks.types.zoo', value: 'Zoo' },
+    { labelKey: 'admin.parks.types.animalPark', value: 'AnimalPark' },
+    { labelKey: 'admin.parks.types.amusementPark', value: 'AmusementPark' },
+    { labelKey: 'admin.parks.types.resort', value: 'Resort' }
+  ];
 
   mapCenter: [number, number] = [48.8566, 2.3522];
-  mapZoom = 16;
+  mapZoom: number = 16;
   mapMarkers: MapMarker[] = [];
 
   parkLogos: ParkLogoItem[] = [];
   currentLogo: ParkLogoItem | null = null;
 
-  logosLoading = false;
-  logosUploading = false;
-  logosPage = 0;
-  logosPageSize = 8;
+  logosLoading: boolean = false;
+  logosUploading: boolean = false;
+  logosPage: number = 0;
+  logosPageSize: number = 8;
 
   selectedLogoFile: File | null = null;
   newLogoDescription: string = '';
 
-  private readonly subscriptions = new Subscription();
+  private readonly subscriptions: Subscription = new Subscription();
 
   constructor(
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    protected readonly apiService: ApiService
+    protected readonly apiService: ApiService,
+    private readonly translate: TranslateService
   ) {
   }
 
   ngOnInit(): void {
+    this.currentLang =
+      this.route.root.firstChild?.snapshot.params['lang'] ??
+      this.route.snapshot.params['lang'] ??
+      'en';
+
     this.buildForm();
 
     this.parkId = this.route.snapshot.paramMap.get('idPark');
     this.isEditMode = !!this.parkId;
 
     this.loadCountries();
+    this.loadFounders();
+    this.loadOperators();
     this.setupFormMapSync();
 
     if (this.isEditMode && this.parkId) {
       this.loadPark(this.parkId);
       this.loadLogos(this.parkId);
     } else {
+      this.applySelectionOverridesFromQueryParams();
       this.updateMarkerFromForm();
     }
   }
@@ -91,6 +126,9 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       id: undefined,
       name: '',
       countryCode: '',
+      type: null,
+      founderId: null,
+      operatorId: null,
       latitude: 48.8566,
       longitude: 2.3522,
       isVisible: true
@@ -100,9 +138,13 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       id: [initial.id],
       name: [initial.name, Validators.required],
       countryCode: [initial.countryCode],
+      type: [initial.type],
+      founderId: [initial.founderId],
+      operatorId: [initial.operatorId],
       latitude: [initial.latitude, Validators.required],
       longitude: [initial.longitude, Validators.required],
       isVisible: [initial.isVisible],
+      descriptions: [initial.descriptions ?? []],
       websiteUrl: [initial.webSiteUrl ?? ''],
       street: [initial.street ?? ''],
       city: [initial.city ?? ''],
@@ -116,26 +158,56 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     this.countriesLoading = true;
     this.form.get('countryCode')?.disable({ emitEvent: false });
 
-    const root = this.route.root;
-    const lang =
-      root.firstChild?.snapshot.params['lang'] ??
-      this.route.snapshot.params['lang'] ??
-      'en';
-
-    this.apiService.getCountries(lang).subscribe({
+    this.apiService.getCountries(this.currentLang).subscribe({
       next: (countries: CountryDto[]) => {
-        this.countryOptions = countries.map((c: CountryDto) => ({
-          code: c.isoCode,
-          label: c.name
+        this.countryOptions = countries.map((country: CountryDto) => ({
+          code: country.isoCode,
+          label: country.name
         }));
 
         this.countriesLoading = false;
         this.form.get('countryCode')?.enable({ emitEvent: false });
       },
-      error: (err: unknown) => {
-        console.error('Error loading countries', err);
+      error: (error: unknown) => {
+        console.error('Error loading countries', error);
         this.countriesLoading = false;
         this.form.get('countryCode')?.enable({ emitEvent: false });
+      }
+    });
+  }
+
+  private loadFounders(): void {
+    this.foundersLoading = true;
+
+    this.apiService.getParkFounders().subscribe({
+      next: (founders: ParkFounder[]) => {
+        this.founderOptions = founders.map((founder: ParkFounder) => ({
+          id: founder.id ?? '',
+          label: founder.name
+        }));
+        this.foundersLoading = false;
+      },
+      error: (error: unknown) => {
+        console.error('Error loading founders', error);
+        this.foundersLoading = false;
+      }
+    });
+  }
+
+  private loadOperators(): void {
+    this.operatorsLoading = true;
+
+    this.apiService.getParkOperators().subscribe({
+      next: (operators: ParkOperator[]) => {
+        this.operatorOptions = operators.map((parkOperator: ParkOperator) => ({
+          id: parkOperator.id ?? '',
+          label: parkOperator.name
+        }));
+        this.operatorsLoading = false;
+      },
+      error: (error: unknown) => {
+        console.error('Error loading operators', error);
+        this.operatorsLoading = false;
       }
     });
   }
@@ -147,23 +219,41 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
           id: park.id,
           name: park.name ?? '',
           countryCode: park.countryCode ?? '',
+          type: park.type ?? null,
+          founderId: park.founderId ?? null,
+          operatorId: park.operatorId ?? null,
           latitude: park.latitude,
           longitude: park.longitude,
           isVisible: park.isVisible ?? true,
+          descriptions: park.descriptions ?? [],
           websiteUrl: park.webSiteUrl ?? '',
           street: park.street ?? '',
           city: park.city ?? '',
           postalCode: park.postalCode ?? ''
         });
 
+        this.applySelectionOverridesFromQueryParams();
         this.mapCenter = [park.latitude, park.longitude];
         this.updateMarkerFromForm();
       },
-      error: (err: unknown) => {
-        console.error('Error loading park', err);
+      error: (error: unknown) => {
+        console.error('Error loading park', error);
         this.navigateToList();
       }
     });
+  }
+
+  private applySelectionOverridesFromQueryParams(): void {
+    const founderId: string | null = this.route.snapshot.queryParamMap.get('founderId');
+    const operatorId: string | null = this.route.snapshot.queryParamMap.get('operatorId');
+
+    if (founderId) {
+      this.form.patchValue({ founderId });
+    }
+
+    if (operatorId) {
+      this.form.patchValue({ operatorId });
+    }
   }
 
   private setupFormMapSync(): void {
@@ -185,8 +275,8 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   }
 
   private updateMarkerFromForm(): void {
-    const lat = Number(this.form.get('latitude')?.value);
-    const lng = Number(this.form.get('longitude')?.value);
+    const lat: number = Number(this.form.get('latitude')?.value);
+    const lng: number = Number(this.form.get('longitude')?.value);
 
     if (isNaN(lat) || isNaN(lng)) {
       return;
@@ -241,9 +331,13 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       id: raw.id,
       name: raw.name,
       countryCode: raw.countryCode || undefined,
+      type: raw.type || null,
+      founderId: raw.founderId || null,
+      operatorId: raw.operatorId || null,
       latitude: Number(raw.latitude),
       longitude: Number(raw.longitude),
       isVisible: raw.isVisible,
+      descriptions: (raw.descriptions ?? []) as LocalizedItem<string>[],
       webSiteUrl: raw.websiteUrl || undefined,
       street: raw.street || undefined,
       city: raw.city || undefined,
@@ -257,7 +351,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const payload = this.buildPayload();
+    const payload: Park = this.buildPayload();
 
     if (this.isEditMode && this.parkId) {
       this.apiService.updatePark(this.parkId, payload).subscribe({
@@ -266,8 +360,8 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
             this.navigateToList();
           }
         },
-        error: (err: unknown) => {
-          console.error('Error updating park', err);
+        error: (error: unknown) => {
+          console.error('Error updating park', error);
         }
       });
     } else {
@@ -279,8 +373,8 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
             this.router.navigate(['../edit', created.id], { relativeTo: this.route });
           }
         },
-        error: (err: unknown) => {
-          console.error('Error creating park', err);
+        error: (error: unknown) => {
+          console.error('Error creating park', error);
         }
       });
     }
@@ -325,14 +419,14 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
             setAsCurrent: true
           }).subscribe({
             next: (image: ImageDto) => {
-              const item = this.toParkLogoItem(image);
+              const item: ParkLogoItem = this.toParkLogoItem(image);
 
               this.parkLogos = this.parkLogos.map((logo: ParkLogoItem) => ({
                 ...logo,
                 isCurrent: logo.id === item.id
               }));
 
-              const existingIndex = this.parkLogos.findIndex((logo: ParkLogoItem) => logo.id === item.id);
+              const existingIndex: number = this.parkLogos.findIndex((logo: ParkLogoItem) => logo.id === item.id);
 
               if (existingIndex >= 0) {
                 this.parkLogos[existingIndex] = item;
@@ -345,14 +439,14 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
               this.newLogoDescription = '';
               this.logosUploading = false;
             },
-            error: (err: unknown) => {
-              console.error('Error linking uploaded image', err);
+            error: (error: unknown) => {
+              console.error('Error linking uploaded image', error);
               this.logosUploading = false;
             }
           });
         },
-        error: (err: unknown) => {
-          console.error('Error uploading logo image', err);
+        error: (error: unknown) => {
+          console.error('Error uploading logo image', error);
           this.logosUploading = false;
         }
       });
@@ -365,7 +459,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
 
     this.apiService.setCurrentImage(logo.id).subscribe({
       next: (image: ImageDto) => {
-        const updated = this.toParkLogoItem(image);
+        const updated: ParkLogoItem = this.toParkLogoItem(image);
 
         this.parkLogos = this.parkLogos.map((item: ParkLogoItem) => ({
           ...item,
@@ -374,14 +468,14 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
 
         this.currentLogo = updated;
       },
-      error: (err: unknown) => {
-        console.error('Error setting current image', err);
+      error: (error: unknown) => {
+        console.error('Error setting current image', error);
       }
     });
   }
 
   onDeleteLogo(logo: ParkLogoItem): void {
-    if (!confirm('Supprimer ce logo ?')) {
+    if (!confirm(this.translate.instant('admin.parks.logos.deleteConfirm'))) {
       return;
     }
 
@@ -390,19 +484,14 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
         this.parkLogos = this.parkLogos.filter((item: ParkLogoItem) => item.id !== logo.id);
         this.currentLogo = this.parkLogos.find((item: ParkLogoItem) => item.isCurrent) ?? null;
       },
-      error: (err: unknown) => {
-        console.error('Error deleting image', err);
+      error: (error: unknown) => {
+        console.error('Error deleting image', error);
       }
     });
   }
 
   private navigateToList(): void {
-    const lang =
-      this.route.root.firstChild?.snapshot.params['lang'] ??
-      this.route.snapshot.params['lang'] ??
-      'en';
-
-    this.router.navigate(['/', lang, 'admin', 'parks']);
+    this.router.navigate(['/', this.currentLang, 'admin', 'parks']);
   }
 
   private loadLogos(parkId: string): void {
@@ -414,8 +503,8 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
         this.currentLogo = this.parkLogos.find((item: ParkLogoItem) => item.isCurrent) ?? null;
         this.logosLoading = false;
       },
-      error: (err: unknown) => {
-        console.error('Error loading logos', err);
+      error: (error: unknown) => {
+        console.error('Error loading logos', error);
         this.logosLoading = false;
       }
     });
@@ -432,12 +521,24 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   }
 
   get pagedLogos(): ParkLogoItem[] {
-    const start = this.logosPage * this.logosPageSize;
+    const start: number = this.logosPage * this.logosPageSize;
     return this.parkLogos.slice(start, start + this.logosPageSize);
   }
 
   onLogosPageChange(event: any): void {
     this.logosPage = event.page;
     this.logosPageSize = event.rows;
+  }
+
+  get founderCreateLinkQueryParams(): { returnUrl: string } {
+    return {
+      returnUrl: this.router.url.split('?')[0]
+    };
+  }
+
+  get operatorCreateLinkQueryParams(): { returnUrl: string } {
+    return {
+      returnUrl: this.router.url.split('?')[0]
+    };
   }
 }

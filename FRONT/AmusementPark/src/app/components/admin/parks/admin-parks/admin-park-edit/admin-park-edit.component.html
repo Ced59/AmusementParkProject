@@ -1,5 +1,4 @@
 <div class="admin-park-edit p-3">
-  <!-- Header -->
   <div class="flex justify-content-between align-items-center mb-3">
     <div>
       <h2 *ngIf="!isEditMode">
@@ -27,13 +26,9 @@
     </div>
   </div>
 
-  <!-- Card -->
   <p-card>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-
-      <!-- ================== INFOS GÉNÉRALES ================== -->
       <div class="p-fluid formgrid grid">
-        <!-- Nom -->
         <div class="field col-12 md:col-6">
           <label for="name">{{ 'admin.parks.name' | translate }}</label>
           <input
@@ -47,7 +42,6 @@
           </small>
         </div>
 
-        <!-- Site web -->
         <div class="field col-12 md:col-6">
           <label for="websiteUrl">{{ 'admin.parks.website' | translate }}</label>
           <input
@@ -59,7 +53,75 @@
         </div>
       </div>
 
-      <!-- ================== LOCALISATION ================== -->
+      <div class="p-fluid formgrid grid">
+        <div class="field col-12 md:col-6">
+          <label for="parkType">{{ 'admin.parks.type' | translate }}</label>
+          <p-dropdown
+            inputId="parkType"
+            formControlName="type"
+            [options]="parkTypeOptions"
+            optionValue="value"
+            [showClear]="true"
+            [placeholder]="'admin.parks.typePlaceholder' | translate">
+
+            <ng-template let-option pTemplate="item">
+              {{ option.labelKey | translate }}
+            </ng-template>
+
+            <ng-template let-option pTemplate="selectedItem">
+              <ng-container *ngIf="option; else parkTypePlaceholder">
+                {{ option.labelKey | translate }}
+              </ng-container>
+              <ng-template #parkTypePlaceholder>
+                {{ 'admin.parks.typePlaceholder' | translate }}
+              </ng-template>
+            </ng-template>
+          </p-dropdown>
+        </div>
+
+        <div class="field col-12 md:col-6">
+          <label for="countryCode">{{ 'admin.parks.country' | translate }}</label>
+          <p-dropdown
+            inputId="countryCode"
+            formControlName="countryCode"
+            [options]="countryOptions"
+            optionLabel="label"
+            optionValue="code"
+            [showClear]="true"
+            [filter]="true"
+            [placeholder]="'admin.parks.countryPlaceholder' | translate">
+          </p-dropdown>
+        </div>
+      </div>
+
+      <div class="p-fluid formgrid grid">
+        <div class="field col-12 md:col-6">
+          <app-entity-select
+            formControlName="founderId"
+            [label]="'admin.parks.founder' | translate"
+            [placeholder]="'admin.parks.founderPlaceholder' | translate"
+            [options]="founderOptions"
+            [loading]="foundersLoading"
+            [addLink]="['/', currentLang, 'admin', 'parks', 'founders', 'new']"
+            [addQueryParams]="founderCreateLinkQueryParams"
+            [addButtonLabel]="'admin.parks.addFounder' | translate">
+          </app-entity-select>
+        </div>
+
+        <div class="field col-12 md:col-6">
+          <app-entity-select
+            formControlName="operatorId"
+            [label]="'admin.parks.operator' | translate"
+            [placeholder]="'admin.parks.operatorPlaceholder' | translate"
+            [options]="operatorOptions"
+            [loading]="operatorsLoading"
+            [addLink]="['/', currentLang, 'admin', 'operators', 'new']"
+            [addQueryParams]="operatorCreateLinkQueryParams"
+            [addButtonLabel]="'admin.parks.addOperator' | translate">
+          </app-entity-select>
+        </div>
+      </div>
+
       <div class="field">
         <label>{{ 'admin.parks.location' | translate }}</label>
         <app-leaflet-map
@@ -101,7 +163,6 @@
         </div>
       </div>
 
-      <!-- ================== ADRESSE ================== -->
       <div class="p-fluid formgrid grid">
         <div class="field col-12">
           <label for="street">{{ 'admin.parks.street' | translate }}</label>
@@ -134,24 +195,7 @@
         </div>
       </div>
 
-      <!-- ================== PAYS & VISIBILITÉ ================== -->
       <div class="p-fluid formgrid grid">
-        <!-- Pays -->
-        <div class="field col-12 md:col-6">
-          <label for="countryCode">{{ 'admin.parks.country' | translate }}</label>
-          <p-dropdown
-            inputId="countryCode"
-            formControlName="countryCode"
-            [options]="countryOptions"
-            optionLabel="label"
-            optionValue="code"
-            [showClear]="true"
-            [filter]="true"
-            [placeholder]="'admin.parks.countryPlaceholder' | translate">
-          </p-dropdown>
-        </div>
-
-        <!-- Visible -->
         <div class="field col-12 md:col-6">
           <label>{{ 'admin.parks.visibleField' | translate }}</label>
           <div class="flex align-items-center gap-2 mt-2">
@@ -166,13 +210,22 @@
         </div>
       </div>
 
-      <!-- ================== LOGOS DU PARC ================== -->
+      <div class="mt-4">
+        <h3 class="mb-2">{{ 'admin.parks.descriptions.sectionTitle' | translate }}</h3>
+        <p class="text-color-secondary mb-3">
+          {{ 'admin.parks.descriptions.subtitle' | translate }}
+        </p>
+
+        <app-localized-rich-text-editor
+          formControlName="descriptions"
+          [placeholderKey]="'admin.parks.descriptions.placeholder'">
+        </app-localized-rich-text-editor>
+      </div>
+
       <div *ngIf="isEditMode" class="mt-4 logos-section">
         <h3 class="mb-3">{{ 'admin.parks.logos.sectionTitle' | translate }}</h3>
 
         <div class="grid">
-
-          <!-- Logo actuel -->
           <div class="col-12 md:col-4">
             <p-card styleClass="logo-card">
               <div class="logo-card__header">
@@ -183,7 +236,7 @@
                 <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
                   <img *ngIf="currentLogo"
                        [src]="currentLogo.imageUrl"
-                       alt="Logo"
+                       [alt]="'admin.parks.logos.alt' | translate"
                        class="logo-preview" />
 
                   <span *ngIf="!currentLogo" class="text-color-secondary text-center logo-empty-text">
@@ -198,7 +251,6 @@
             </p-card>
           </div>
 
-          <!-- Upload nouveau logo -->
           <div class="col-12 md:col-8">
             <p-card styleClass="logo-card">
               <div class="logo-card__header">
@@ -234,12 +286,10 @@
               </div>
             </p-card>
           </div>
-
         </div>
 
         <p-divider></p-divider>
 
-        <!-- Historique des logos -->
         <p-panel [toggleable]="true" [collapsed]="true"
                  header="{{ 'admin.parks.logos.historyTitle' | translate }}">
           <div *ngIf="logosLoading" class="text-center py-3">
@@ -257,14 +307,21 @@
                 <p-card [ngClass]="{'border-primary': logo.isCurrent}">
                   <div class="flex flex-column align-items-center">
                     <img [src]="logo.imageUrl"
-                         alt="Logo"
-                         class="logo-thumb mb-2" />
+                         [alt]="'admin.parks.logos.alt' | translate"
+                         class="logo-history-preview mb-2" />
 
-                    <small class="mb-1">
+                    <p-tag
+                      *ngIf="logo.isCurrent"
+                      [value]="'admin.parks.logos.currentLabel' | translate"
+                      severity="success"
+                      class="mb-2">
+                    </p-tag>
+
+                    <small class="text-color-secondary mb-2">
                       {{ logo.createdAt | date:'short' }}
                     </small>
 
-                    <small class="text-color-secondary mb-2 text-center">
+                    <small class="mb-2 text-center">
                       {{ logo.description || ('admin.parks.logos.noDescription' | translate) }}
                     </small>
 
@@ -295,7 +352,6 @@
         </p-panel>
       </div>
 
-      <!-- ================== BOUTONS ================== -->
       <div class="flex justify-content-end gap-2 mt-3">
         <button pButton type="button" class="p-button-secondary" (click)="onCancel()">
           {{ 'actions.cancel' | translate }}
@@ -304,7 +360,6 @@
           {{ 'actions.save' | translate }}
         </button>
       </div>
-
     </form>
   </p-card>
 </div>

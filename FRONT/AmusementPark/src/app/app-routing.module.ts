@@ -21,8 +21,6 @@ const routes: Routes = [
       { path: 'signin-google', component: SigninGoogleComponent },
       { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then(m => m.ProfileModule) },
       { path: 'park/:id/:slug', component: ParkDetailComponent },
-
-      // 🔒 Espace d'administration → loggué + ADMIN
       {
         path: 'admin',
         component: AdminDashboardComponent,
@@ -41,6 +39,12 @@ const routes: Routes = [
                 .then(m => m.AdminParksModule)
           },
           {
+            path: 'operators',
+            loadChildren: () =>
+              import('./components/admin/operators/admin-operators/admin-operators.module')
+                .then(m => m.AdminOperatorsModule)
+          },
+          {
             path: 'site',
             loadChildren: () =>
               import('./components/admin/site/admin-site/admin-site.module')
@@ -49,7 +53,6 @@ const routes: Routes = [
           { path: '', redirectTo: 'users', pathMatch: 'full' }
         ]
       },
-
       { path: '', redirectTo: 'home', pathMatch: 'full' }
     ]
   },

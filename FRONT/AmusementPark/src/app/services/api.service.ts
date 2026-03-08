@@ -13,6 +13,8 @@ import { UsersApiResponse } from '../models/users/users_api_response';
 
 import { ParksApiResponse } from '../models/parks/parks_api_response';
 import { Park } from '../models/parks/park';
+import { ParkFounder } from '../models/parks/park-founder';
+import { ParkOperator } from '../models/parks/park-operator';
 
 import { SearchApiResponse } from '../models/search/search-api-response';
 import { CountryDto } from '../models/countries/country-dto';
@@ -108,6 +110,70 @@ export class ApiService {
     };
 
     return this.http.put<Park>(url, JSON.stringify(park), httpOptions);
+  }
+
+  getParkFounders(): Observable<ParkFounder[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkFounders}`;
+    return this.http.get<ParkFounder[]>(url);
+  }
+
+  getParkFounderById(id: string): Observable<ParkFounder> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkFounderById(id)}`;
+    return this.http.get<ParkFounder>(url);
+  }
+
+  createParkFounder(founder: ParkFounder): Observable<ParkFounder> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createParkFounder}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post<ParkFounder>(url, JSON.stringify(founder), httpOptions);
+  }
+
+  updateParkFounder(id: string, founder: ParkFounder): Observable<ParkFounder> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateParkFounder(id)}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.put<ParkFounder>(url, JSON.stringify(founder), httpOptions);
+  }
+
+  getParkOperators(): Observable<ParkOperator[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkOperators}`;
+    return this.http.get<ParkOperator[]>(url);
+  }
+
+  getParkOperatorById(id: string): Observable<ParkOperator> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkOperatorById(id)}`;
+    return this.http.get<ParkOperator>(url);
+  }
+
+  createParkOperator(parkOperator: ParkOperator): Observable<ParkOperator> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createParkOperator}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post<ParkOperator>(url, JSON.stringify(parkOperator), httpOptions);
+  }
+
+  updateParkOperator(id: string, parkOperator: ParkOperator): Observable<ParkOperator> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateParkOperator(id)}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.put<ParkOperator>(url, JSON.stringify(parkOperator), httpOptions);
   }
 
   getSearch(

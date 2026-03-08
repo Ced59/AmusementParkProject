@@ -67,7 +67,8 @@
     "tabs": {
       "users": "Gebruikers",
       "parks": "Parken",
-      "site": "Site"
+      "site": "Site",
+      "operators": "Exploitanten"
     },
     "users": {
       "total": "Totaal aantal gebruikers: {{count}}",
@@ -95,17 +96,75 @@
       "visibleField": "Zichtbaarheid",
       "street": "Adres",
       "streetPlaceholder": "Volledig adres",
-
       "city": "Stad",
       "cityPlaceholder": "Naam van de stad",
-
       "postalCode": "Postcode",
       "postalCodePlaceholder": "Postcode",
-
       "editPage": {
         "createTitle": "Nieuw park aanmaken",
         "updateTitle": "Park \"{{name}}\" bewerken",
         "subtitle": "Beheer hier de basisinformatie en zichtbaarheid van het park."
+      },
+      "descriptions": {
+        "sectionTitle": "Gelokaliseerde beschrijving",
+        "subtitle": "Schrijf de parkbeschrijving in elke beschikbare taal met opgemaakte rijke tekst.",
+        "placeholder": "Schrijf de beschrijving in het {{language}}"
+      },
+      "type": "Type",
+      "typePlaceholder": "Selecteer een parktype",
+      "founder": "Oprichter",
+      "founderPlaceholder": "Selecteer een oprichter",
+      "addFounder": "Oprichter toevoegen",
+      "operator": "Exploitant",
+      "operatorPlaceholder": "Selecteer een exploitant",
+      "addOperator": "Exploitant toevoegen",
+      "location": "Locatie",
+      "types": {
+        "themePark": "Themapark",
+        "waterPark": "Waterpark",
+        "zoo": "Dierentuin",
+        "animalPark": "Dierenpark",
+        "amusementPark": "Pretpark",
+        "resort": "Resort",
+        "notSpecified": "Niet opgegeven"
+      },
+      "logos": {
+        "sectionTitle": "Parklogo's",
+        "currentTitle": "Huidig logo",
+        "noCurrent": "Er is momenteel geen logo ingesteld.",
+        "uploadTitle": "Nieuw logo toevoegen",
+        "descriptionPlaceholder": "Logobeschrijving (optioneel)",
+        "uploadButton": "Uploaden en als huidig logo instellen",
+        "historyTitle": "Logogeschiedenis",
+        "empty": "Er is nog geen logo toegevoegd voor dit park.",
+        "noDescription": "Geen beschrijving",
+        "currentLabel": "Huidig",
+        "alt": "Parklogo",
+        "deleteConfirm": "Dit logo verwijderen?"
+      }
+    },
+    "loading": "Laden...",
+    "operators": {
+      "total": "Exploitanten: {{count}}",
+      "searchPlaceholder": "Zoek een exploitant",
+      "create": "Exploitant aanmaken",
+      "name": "Naam",
+      "actions": "Acties",
+      "edit": "Bewerken",
+      "empty": "Geen exploitanten gevonden.",
+      "editPage": {
+        "createTitle": "Exploitant aanmaken",
+        "updateTitle": "Exploitant bewerken",
+        "name": "Naam",
+        "description": "Beschrijving"
+      }
+    },
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Oprichter aanmaken",
+        "updateTitle": "Oprichter bewerken",
+        "name": "Naam",
+        "biography": "Biografie"
       }
     }
   },
@@ -115,5 +174,8 @@
   "actions": {
     "cancel": "Annuleren",
     "save": "Opslaan"
+  },
+  "parkDetail": {
+    "descriptionTitle": "Beschrijving"
   }
 }

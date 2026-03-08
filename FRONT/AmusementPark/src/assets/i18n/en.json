@@ -67,7 +67,8 @@
     "tabs": {
       "users": "Users",
       "parks": "Parks",
-      "site": "Site"
+      "site": "Site",
+      "operators": "Operators"
     },
     "users": {
       "total": "Total number of users: {{count}}",
@@ -95,17 +96,75 @@
       "visibleField": "Visibility",
       "street": "Street",
       "streetPlaceholder": "Full address",
-
       "city": "City",
       "cityPlaceholder": "City name",
-
       "postalCode": "Postal code",
       "postalCodePlaceholder": "Postal code",
-
       "editPage": {
         "createTitle": "Create a new park",
         "updateTitle": "Edit park \"{{name}}\"",
         "subtitle": "Manage the park's basic information and visibility here."
+      },
+      "descriptions": {
+        "sectionTitle": "Localized description",
+        "subtitle": "Write the park description in each available language with rich text formatting.",
+        "placeholder": "Write the description in {{language}}"
+      },
+      "type": "Type",
+      "typePlaceholder": "Select a park type",
+      "founder": "Founder",
+      "founderPlaceholder": "Select a founder",
+      "addFounder": "Add founder",
+      "operator": "Operator",
+      "operatorPlaceholder": "Select an operator",
+      "addOperator": "Add operator",
+      "location": "Location",
+      "types": {
+        "themePark": "Theme park",
+        "waterPark": "Water park",
+        "zoo": "Zoo",
+        "animalPark": "Animal park",
+        "amusementPark": "Amusement park",
+        "resort": "Resort",
+        "notSpecified": "Not specified"
+      },
+      "logos": {
+        "sectionTitle": "Park logos",
+        "currentTitle": "Current logo",
+        "noCurrent": "No current logo is defined.",
+        "uploadTitle": "Add a new logo",
+        "descriptionPlaceholder": "Logo description (optional)",
+        "uploadButton": "Upload and set as current logo",
+        "historyTitle": "Logo history",
+        "empty": "No logo has been added for this park yet.",
+        "noDescription": "No description",
+        "currentLabel": "Current",
+        "alt": "Park logo",
+        "deleteConfirm": "Delete this logo?"
+      }
+    },
+    "loading": "Loading...",
+    "operators": {
+      "total": "Operators: {{count}}",
+      "searchPlaceholder": "Search an operator",
+      "create": "Create operator",
+      "name": "Name",
+      "actions": "Actions",
+      "edit": "Edit",
+      "empty": "No operators found.",
+      "editPage": {
+        "createTitle": "Create operator",
+        "updateTitle": "Edit operator",
+        "name": "Name",
+        "description": "Description"
+      }
+    },
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Create founder",
+        "updateTitle": "Edit founder",
+        "name": "Name",
+        "biography": "Biography"
       }
     }
   },
@@ -115,5 +174,8 @@
   "actions": {
     "cancel": "Cancel",
     "save": "Save"
+  },
+  "parkDetail": {
+    "descriptionTitle": "Description"
   }
 }

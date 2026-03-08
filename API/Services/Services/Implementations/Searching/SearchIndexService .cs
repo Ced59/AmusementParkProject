@@ -1,4 +1,5 @@
-﻿using Entities.Model.Parks;
+﻿using Common.General.Localization;
+using Entities.Model.Parks;
 using Entities.Model.Searching;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -79,7 +80,7 @@ namespace Services.Implementations.Searching
                 UpdateDefinition<SearchItem>? update = Builders<SearchItem>.Update
                     .Set(si => si.Category, "park")
                     .Set(si => si.Title, park.Name ?? string.Empty)
-                    .Set(si => si.Description, $"{park.Name} ({park.CountryCode})")
+                    .Set(si => si.Description, park.Descriptions.Resolve("en", "en") ?? $"{park.Name} ({park.CountryCode})")
                     .Set(si => si.Keywords, new List<string>
                     {
                         park.Name?.Trim().ToLowerInvariant() ?? string.Empty,
@@ -152,7 +153,7 @@ namespace Services.Implementations.Searching
                 OriginalId = originalId,
                 Category = "park",
                 Title = park.Name ?? string.Empty,
-                Description = $"{park.Name} ({park.CountryCode})",
+                Description = park.Descriptions.Resolve("en", "en") ?? $"{park.Name} ({park.CountryCode})",
                 Keywords = keywords,
                 CompositeScore = 0.0,
                 Latitude = park.Latitude,

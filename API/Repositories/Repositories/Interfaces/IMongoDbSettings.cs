@@ -8,6 +8,8 @@
         string Password { get; }
         string UsersCollectionName { get; }
         string ParksCollectionName { get; }
+        string ParkFoundersCollectionName { get; }
+        string ParkOperatorsCollectionName { get; }
         string SearchItemCollectionName { get; }
         string ImagesCollectionName { get; }
         string CountriesCollectionName { get; }
