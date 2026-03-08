@@ -14,6 +14,6 @@ namespace Services.Interfaces
         Task<OneOf<ParkZoneDto, ErrorCodes.ErrorDetail>> CreateAsync(ParkZoneCreateDto dto);
         Task<OneOf<ParkZoneDto, ErrorCodes.ErrorDetail>> UpdateAsync(string id, ParkZoneUpdateDto dto);
         Task<OneOf<bool, ErrorCodes.ErrorDetail>> DeleteAsync(string id);
-        Task<OneOf<ParkExplorerDto, ErrorCodes.ErrorDetail>> GetExplorerAsync(string parkId, bool includeNonVisible = false);
+        Task<OneOf<ParkExplorerDto, ErrorCodes.ErrorDetail>> GetExplorerAsync(string parkId, bool includeHidden = false);
     }
 }

@@ -1,0 +1,7 @@
+.localized-text-input {
+  display: block;
+}
+
+:host ::ng-deep .localized-text-input .p-inputtext {
+  width: 100%;
+}

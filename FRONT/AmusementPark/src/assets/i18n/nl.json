@@ -150,7 +150,9 @@
         "editTitle": "Parkzone bewerken",
         "name": "Zonenaam",
         "sortOrder": "Weergavevolgorde",
-        "description": "Gelokaliseerde beschrijving"
+        "description": "Gelokaliseerde beschrijving",
+        "namePlaceholder": "Zonenaam in {{language}}",
+        "deleteConfirm": "Deze zone verwijderen?"
       },
       "items": {
         "manage": "Parkitems beheren",
@@ -161,7 +163,8 @@
         "category": "Categorie",
         "type": "Type",
         "subtype": "Subtype",
-        "zone": "Zone"
+        "zone": "Zone",
+        "deleteConfirm": "Dit item verwijderen?"
       }
     },
     "loading": "Laden...",

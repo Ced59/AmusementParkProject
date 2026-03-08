@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { resolveLocalizedValue } from '../../commons/localized-item.utils';
 import { Park } from '../../models/parks/park';
 import { ParkExplorer, ParkExplorerBucket } from '../../models/parks/park-explorer';
 import { ApiService } from '../../services/api.service';
@@ -84,16 +85,16 @@ export class ParkExplorerComponent implements OnInit, OnDestroy {
     return `parkExplorer.types.${this.toCamelCase(type)}`;
   }
 
-  getBucketTitle(bucket: ParkExplorerBucket): string {
+  getBucketLabel(bucket: ParkExplorerBucket): string {
     if (bucket.isVirtual && bucket.name === 'overview') {
-      return this.translationService.getCurrentLang() ? 'parkExplorer.overviewTitle' : 'parkExplorer.overviewTitle';
+      return 'parkExplorer.overviewTitle';
     }
 
     if (bucket.isVirtual && bucket.name === 'unassigned') {
       return 'parkExplorer.unassignedTitle';
     }
 
-    return bucket.name;
+    return resolveLocalizedValue(bucket.names, this.currentLang) ?? bucket.name;
   }
 
   private loadData(parkId: string): void {

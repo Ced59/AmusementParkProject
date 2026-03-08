@@ -150,7 +150,9 @@
         "editTitle": "Edytuj strefę parku",
         "name": "Nazwa strefy",
         "sortOrder": "Kolejność wyświetlania",
-        "description": "Opis lokalizowany"
+        "description": "Opis lokalizowany",
+        "namePlaceholder": "Nazwa strefy w języku {{language}}",
+        "deleteConfirm": "Usunąć tę strefę?"
       },
       "items": {
         "manage": "Zarządzaj elementami parku",
@@ -161,7 +163,8 @@
         "category": "Kategoria",
         "type": "Typ",
         "subtype": "Podtyp",
-        "zone": "Strefa"
+        "zone": "Strefa",
+        "deleteConfirm": "Usunąć ten element?"
       }
     },
     "loading": "Ładowanie...",

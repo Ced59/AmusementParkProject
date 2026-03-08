@@ -3,8 +3,8 @@
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
     <div class="field">
-      <label for="name">{{ 'admin.parks.zones.name' | translate }}</label>
-      <input id="name" pInputText formControlName="name" />
+      <label>{{ 'admin.parks.zones.name' | translate }}</label>
+      <app-localized-text-input formControlName="names"></app-localized-text-input>
     </div>
 
     <div class="field">

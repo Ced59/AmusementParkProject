@@ -150,7 +150,9 @@
         "editTitle": "Editar una zona del parque",
         "name": "Nombre de la zona",
         "sortOrder": "Orden de visualización",
-        "description": "Descripción localizada"
+        "description": "Descripción localizada",
+        "namePlaceholder": "Nombre de la zona en {{language}}",
+        "deleteConfirm": "¿Eliminar esta zona?"
       },
       "items": {
         "manage": "Gestionar elementos del parque",
@@ -161,7 +163,8 @@
         "category": "Categoría",
         "type": "Tipo",
         "subtype": "Subtipo",
-        "zone": "Zona"
+        "zone": "Zona",
+        "deleteConfirm": "¿Eliminar este elemento?"
       }
     },
     "loading": "Cargando...",

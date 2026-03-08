@@ -150,7 +150,9 @@
         "editTitle": "Edit a park zone",
         "name": "Zone name",
         "sortOrder": "Display order",
-        "description": "Localized description"
+        "description": "Localized description",
+        "namePlaceholder": "Zone name in {{language}}",
+        "deleteConfirm": "Delete this zone?"
       },
       "items": {
         "manage": "Manage park items",
@@ -161,7 +163,8 @@
         "category": "Category",
         "type": "Type",
         "subtype": "Subtype",
-        "zone": "Zone"
+        "zone": "Zone",
+        "deleteConfirm": "Delete this item?"
       }
     },
     "loading": "Loading...",

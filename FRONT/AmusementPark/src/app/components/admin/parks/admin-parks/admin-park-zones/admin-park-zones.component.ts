@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
 import { ParkZone } from '../../../../../models/parks/park-zone';
 import { ApiService } from '../../../../../services/api.service';
 
@@ -16,7 +18,8 @@ export class AdminParkZonesComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly apiService: ApiService
+    private readonly apiService: ApiService,
+    private readonly translateService: TranslateService
   ) {
   }
 
@@ -45,7 +48,7 @@ export class AdminParkZonesComponent implements OnInit {
   }
 
   deleteZone(zone: ParkZone): void {
-    if (!zone.id || !confirm('Delete this zone?')) {
+    if (!zone.id || !confirm(this.translateService.instant('admin.parks.zones.deleteConfirm'))) {
       return;
     }
 
@@ -53,5 +56,9 @@ export class AdminParkZonesComponent implements OnInit {
       next: () => this.loadZones(),
       error: (error: unknown) => console.error('Error deleting zone', error)
     });
+  }
+
+  getZoneDisplayName(zone: ParkZone): string {
+    return resolveLocalizedValue(zone.names, this.currentLang) ?? zone.name ?? '—';
   }
 }

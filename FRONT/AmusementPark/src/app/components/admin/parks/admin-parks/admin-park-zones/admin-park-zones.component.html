@@ -24,7 +24,7 @@
 
     <ng-template pTemplate="body" let-zone>
       <tr>
-        <td>{{ zone.name }}</td>
+        <td>{{ getZoneDisplayName(zone) }}</td>
         <td>{{ (zone.isVisible ? 'admin.parks.visible' : 'admin.parks.hidden') | translate }}</td>
         <td>{{ zone.sortOrder ?? 0 }}</td>
         <td class="actions-cell">

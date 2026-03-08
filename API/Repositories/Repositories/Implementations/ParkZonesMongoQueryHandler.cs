@@ -15,9 +15,11 @@ namespace Repositories.Implementations
 
         public async Task<IEnumerable<ParkZone>> GetByParkIdAsync(string parkId)
         {
-            return await zonesCollection.Find(zone => zone.ParkId == parkId)
+            return await zonesCollection
+                .Find(zone => zone.ParkId == parkId)
                 .SortBy(zone => zone.SortOrder)
                 .ThenBy(zone => zone.Name)
+                .ThenBy(zone => zone.Id)
                 .ToListAsync();
         }
 

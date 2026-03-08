@@ -43,8 +43,8 @@
 
   <div class="pagination-wrap" *ngIf="pagination">
     <p-paginator
-      [rows]="pagination?.itemsPerPage"
-      [totalRecords]="pagination?.totalItems"
+      [rows]="pagination.itemsPerPage"
+      [totalRecords]="pagination.totalItems"
       [rowsPerPageOptions]="[5, 10, 50, 100]"
       [pageLinkSize]="3"
       (onPageChange)="onPageChange($event)">

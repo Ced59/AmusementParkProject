@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
 import { ParkItem } from '../../../../../models/parks/park-item';
 import { ParkZone } from '../../../../../models/parks/park-zone';
 import { ApiService } from '../../../../../services/api.service';
@@ -18,7 +20,8 @@ export class AdminParkItemsComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly apiService: ApiService
+    private readonly apiService: ApiService,
+    private readonly translateService: TranslateService
   ) {
   }
 
@@ -55,11 +58,12 @@ export class AdminParkItemsComponent implements OnInit {
       return '—';
     }
 
-    return this.zones.find((zone: ParkZone) => zone.id === zoneId)?.name ?? '—';
+    const zone: ParkZone | undefined = this.zones.find((item: ParkZone) => item.id === zoneId);
+    return resolveLocalizedValue(zone?.names, this.currentLang) ?? zone?.name ?? '—';
   }
 
   deleteItem(item: ParkItem): void {
-    if (!item.id || !confirm('Delete this item?')) {
+    if (!item.id || !confirm(this.translateService.instant('admin.parks.items.deleteConfirm'))) {
       return;
     }
 

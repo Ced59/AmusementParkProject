@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
 import { ParkItem } from '../../../../../models/parks/park-item';
 import { ParkItemCategory } from '../../../../../models/parks/park-item-category';
 import { ParkItemType } from '../../../../../models/parks/park-item-type';
@@ -87,7 +88,10 @@ export class AdminParkItemEditComponent implements OnInit {
     this.apiService.getParkZonesByParkId(this.parkId).subscribe((zones: ParkZone[]) => {
       this.zones = zones
         .filter((zone: ParkZone) => !!zone.id)
-        .map((zone: ParkZone) => ({ id: zone.id!, label: zone.name }));
+        .map((zone: ParkZone) => ({
+          id: zone.id!,
+          label: resolveLocalizedValue(zone.names, this.currentLang) ?? zone.name ?? zone.id!
+        }));
     });
 
     if (this.itemId) {

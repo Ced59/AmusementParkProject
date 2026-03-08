@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalizedItem } from '../../../../../models/shared/localized-item';
 import { ParkZone } from '../../../../../models/parks/park-zone';
 import { ApiService } from '../../../../../services/api.service';
 
@@ -34,7 +35,7 @@ export class AdminParkZoneEditComponent implements OnInit {
 
     this.form = this.fb.group({
       parkId: [this.parkId, Validators.required],
-      name: ['', Validators.required],
+      names: [[], Validators.required],
       descriptions: [[]],
       isVisible: [true],
       sortOrder: [0]
@@ -44,7 +45,7 @@ export class AdminParkZoneEditComponent implements OnInit {
       this.apiService.getParkZoneById(this.zoneId).subscribe((zone: ParkZone) => {
         this.form.patchValue({
           parkId: zone.parkId,
-          name: zone.name,
+          names: this.getInitialNames(zone),
           descriptions: zone.descriptions ?? [],
           isVisible: zone.isVisible ?? true,
           sortOrder: zone.sortOrder ?? 0
@@ -71,5 +72,17 @@ export class AdminParkZoneEditComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/', this.currentLang, 'admin', 'parks', 'edit', this.parkId, 'zones']);
+  }
+
+  private getInitialNames(zone: ParkZone): LocalizedItem<string>[] {
+    if (zone.names && zone.names.length > 0) {
+      return zone.names;
+    }
+
+    if (zone.name) {
+      return [{ languageCode: 'en', value: zone.name }];
+    }
+
+    return [];
   }
 }

@@ -150,7 +150,9 @@
         "editTitle": "Parkbereich bearbeiten",
         "name": "Name des Bereichs",
         "sortOrder": "Anzeigereihenfolge",
-        "description": "Lokalisierte Beschreibung"
+        "description": "Lokalisierte Beschreibung",
+        "namePlaceholder": "Bereichsname auf {{language}}",
+        "deleteConfirm": "Diesen Bereich löschen?"
       },
       "items": {
         "manage": "Parkelemente verwalten",
@@ -161,7 +163,8 @@
         "category": "Kategorie",
         "type": "Typ",
         "subtype": "Untertyp",
-        "zone": "Bereich"
+        "zone": "Bereich",
+        "deleteConfirm": "Dieses Element löschen?"
       }
     },
     "loading": "Laden...",

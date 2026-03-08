@@ -21,15 +21,12 @@
     <div class="bucket-card" *ngFor="let bucket of buckets">
       <div class="bucket-card__header">
         <h3>
-          <ng-container *ngIf="bucket.isVirtual && bucket.name === 'overview'">
-            {{ 'parkExplorer.overviewTitle' | translate }}
+          <ng-container *ngIf="bucket.isVirtual; else zoneTitle">
+            {{ getBucketLabel(bucket) | translate }}
           </ng-container>
-          <ng-container *ngIf="bucket.isVirtual && bucket.name === 'unassigned'">
-            {{ 'parkExplorer.unassignedTitle' | translate }}
-          </ng-container>
-          <ng-container *ngIf="!bucket.isVirtual">
-            {{ bucket.name }}
-          </ng-container>
+          <ng-template #zoneTitle>
+            {{ getBucketLabel(bucket) }}
+          </ng-template>
         </h3>
         <span class="bucket-total">{{ 'parkExplorer.totalItems' | translate:{ count: bucket.totalItems } }}</span>
       </div>

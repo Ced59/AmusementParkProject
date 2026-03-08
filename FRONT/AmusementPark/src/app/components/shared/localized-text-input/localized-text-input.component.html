@@ -1,0 +1,16 @@
+<div class="localized-text-input">
+  <p-tabView [(activeIndex)]="activeTabIndex">
+    <p-tabPanel
+      *ngFor="let entry of entries; trackBy: trackByLanguageCode"
+      [header]="entry.languageLabel">
+      <input
+        pInputText
+        type="text"
+        [(ngModel)]="entry.value"
+        [ngModelOptions]="{ standalone: true }"
+        [disabled]="isDisabled"
+        [placeholder]="placeholderKey ? (placeholderKey | translate:{ language: entry.languageLabel }) : ''"
+        (ngModelChange)="onEntryValueChange()" />
+    </p-tabPanel>
+  </p-tabView>
+</div>
