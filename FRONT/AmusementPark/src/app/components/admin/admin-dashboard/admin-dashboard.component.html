@@ -24,6 +24,17 @@
       icon="pi pi-compass"
     ></button>
 
+
+    <button
+      pButton
+      class="admin-tab"
+      [routerLink]="['items']"
+      routerLinkActive="active-tab"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [label]="'admin.tabs.parkItems' | translate"
+      icon="pi pi-map"
+    ></button>
+
     <button
       pButton
       class="admin-tab"

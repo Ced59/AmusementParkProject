@@ -49,9 +49,10 @@
   </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
-    <p-tabView [(activeIndex)]="activeTabIndex">
+    <p-tabView [(activeIndex)]="activeTabIndex" (activeIndexChange)="onTabChange($event)">
       <p-tabPanel [header]="'admin.parks.items.tabs.general' | translate">
-        <div class="tab-section">
+        <ng-container *ngIf="activeTabIndex === 0">
+          <div class="tab-section">
           <div class="field">
             <label for="name">{{ 'admin.parks.items.itemName' | translate }}</label>
             <input id="name" pInputText formControlName="name" />
@@ -134,11 +135,13 @@
           </div>
 
           <ng-container *ngTemplateOutlet="sectionActionsTemplate"></ng-container>
-        </div>
+          </div>
+        </ng-container>
       </p-tabPanel>
 
       <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.details' | translate">
-        <div class="tab-section" formGroupName="attractionDetails">
+        <ng-container *ngIf="activeTabIndex === 1">
+          <div class="tab-section" formGroupName="attractionDetails">
           <div class="section-header mb-3">
             <h3>{{ 'admin.parks.items.attractionConfigurationTitle' | translate }}</h3>
             <small class="text-color-secondary">{{ 'admin.parks.items.attractionConfigurationHelp' | translate }}</small>
@@ -248,11 +251,13 @@
           </div>
 
           <ng-container *ngTemplateOutlet="sectionActionsTemplate"></ng-container>
-        </div>
+          </div>
+        </ng-container>
       </p-tabPanel>
 
       <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.accessConditions' | translate">
-        <div class="tab-section" formGroupName="attractionDetails">
+        <ng-container *ngIf="activeTabIndex === 2">
+          <div class="tab-section" formGroupName="attractionDetails">
           <div class="section-header mb-3">
             <h3>{{ 'admin.parks.items.accessConditionsTitle' | translate }}</h3>
             <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionsHelp' | translate }}</small>
@@ -379,11 +384,13 @@
           </div>
 
           <ng-container *ngTemplateOutlet="sectionActionsTemplate"></ng-container>
-        </div>
+          </div>
+        </ng-container>
       </p-tabPanel>
 
       <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.locations' | translate">
-        <div class="tab-section" formGroupName="attractionLocations">
+        <ng-container *ngIf="activeTabIndex === 3">
+          <div class="tab-section" formGroupName="attractionLocations">
           <div class="section-header mb-3">
             <h3>{{ 'admin.parks.items.locationsTitle' | translate }}</h3>
             <small class="text-color-secondary">{{ 'admin.parks.items.locationsHelp' | translate }}</small>
@@ -488,11 +495,13 @@
           </div>
 
           <ng-container *ngTemplateOutlet="sectionActionsTemplate"></ng-container>
-        </div>
+          </div>
+        </ng-container>
       </p-tabPanel>
 
       <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.photos' | translate">
-        <div class="tab-section attraction-photos-section">
+        <ng-container *ngIf="activeTabIndex === 4">
+          <div class="tab-section attraction-photos-section">
           <h3 class="mb-3">{{ 'admin.parks.items.photos.sectionTitle' | translate }}</h3>
 
           <div *ngIf="!isEditMode" class="text-color-secondary mb-3">
@@ -535,7 +544,12 @@
                   <div class="flex flex-column gap-3">
                     <input type="file"
                            (change)="onPhotoFileSelected($event)"
-                           accept="image/*" />
+                           accept="image/*"
+                           [multiple]="allowMultiplePhotoUpload" />
+
+                    <small *ngIf="selectedPhotoCount > 0" class="text-color-secondary">
+                      {{ 'admin.parks.items.photos.selectedCount' | translate:{ count: selectedPhotoCount } }}
+                    </small>
 
                     <input
                       pInputText
@@ -547,7 +561,7 @@
                     <div class="flex justify-content-end">
                       <button pButton type="button"
                               (click)="onUploadPhoto()"
-                              [disabled]="!selectedPhotoFile || photosUploading">
+                              [disabled]="selectedPhotoCount === 0 || photosUploading">
                         <span *ngIf="!photosUploading">
                           {{ 'admin.parks.items.photos.uploadButton' | translate }}
                         </span>
@@ -624,40 +638,10 @@
           </p-panel>
 
           <ng-container *ngTemplateOutlet="sectionActionsTemplate"></ng-container>
-        </div>
+          </div>
+        </ng-container>
       </p-tabPanel>
     </p-tabView>
-
-    <div class="actions-row">
-      <button
-        pButton
-        type="button"
-        class="p-button-secondary p-button-outlined"
-        icon="pi pi-list"
-        (click)="goBack()"
-        [disabled]="isSaving"
-        [label]="'admin.parks.items.editorActions.backToItems' | translate">
-      </button>
-      <button
-        pButton
-        type="button"
-        class="p-button-secondary"
-        icon="pi pi-save"
-        (click)="saveAll()"
-        [loading]="isSaving"
-        [disabled]="isSaving"
-        [label]="'admin.parks.items.editorActions.saveAll' | translate">
-      </button>
-      <button
-        pButton
-        type="button"
-        icon="pi pi-check"
-        (click)="saveAndClose()"
-        [loading]="isSaving"
-        [disabled]="isSaving"
-        [label]="'admin.parks.items.editorActions.saveAndClose' | translate">
-      </button>
-    </div>
 
     <ng-template #sectionActionsTemplate>
       <div class="section-actions">
@@ -670,17 +654,6 @@
           [loading]="isSaving"
           [disabled]="isSaving"
           [label]="'admin.parks.items.editorActions.saveSection' | translate">
-        </button>
-
-        <button
-          pButton
-          type="button"
-          class="p-button-secondary"
-          icon="pi pi-save"
-          (click)="saveAll()"
-          [loading]="isSaving"
-          [disabled]="isSaving"
-          [label]="'admin.parks.items.editorActions.saveAll' | translate">
         </button>
       </div>
     </ng-template>

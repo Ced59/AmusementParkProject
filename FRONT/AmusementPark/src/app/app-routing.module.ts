@@ -41,6 +41,12 @@ const routes: Routes = [
                 .then(m => m.AdminParksModule)
           },
           {
+            path: 'items',
+            loadChildren: () =>
+              import('./components/admin/park-items/admin-park-items-index/admin-park-items-index.module')
+                .then(m => m.AdminParkItemsIndexModule)
+          },
+          {
             path: 'operators',
             loadChildren: () =>
               import('./components/admin/operators/admin-operators/admin-operators.module')

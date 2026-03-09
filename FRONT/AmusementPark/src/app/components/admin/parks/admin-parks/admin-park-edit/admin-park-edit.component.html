@@ -281,7 +281,12 @@
                 <div class="flex flex-column gap-3">
                   <input type="file"
                          (change)="onLogoFileSelected($event)"
-                         accept="image/*" />
+                         accept="image/*"
+                         [multiple]="allowMultipleLogoUpload" />
+
+                  <small *ngIf="selectedLogoCount > 0" class="text-color-secondary">
+                    {{ 'admin.parks.logos.selectedCount' | translate:{ count: selectedLogoCount } }}
+                  </small>
 
                   <input
                     pInputText
@@ -293,7 +298,7 @@
                   <div class="flex justify-content-end">
                     <button pButton type="button"
                             (click)="onUploadLogo()"
-                            [disabled]="!selectedLogoFile || logosUploading">
+                            [disabled]="selectedLogoCount === 0 || logosUploading">
                       <span *ngIf="!logosUploading">
                         {{ 'admin.parks.logos.uploadButton' | translate }}
                       </span>

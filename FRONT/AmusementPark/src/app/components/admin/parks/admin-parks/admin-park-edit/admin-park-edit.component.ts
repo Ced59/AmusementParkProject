@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { firstValueFrom, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -16,6 +16,7 @@ import { EntitySelectOption } from '../../../../../models/shared/entity-select-o
 import { ParkFounder } from '../../../../../models/parks/park-founder';
 import { ParkOperator } from '../../../../../models/parks/park-operator';
 import { ParkType } from '../../../../../models/parks/park-type';
+import { ToastMessageService } from '../../../../../services/messages/toast-message.service';
 
 interface MapMarker {
   id: string;
@@ -78,8 +79,13 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   logosPage: number = 0;
   logosPageSize: number = 8;
 
-  selectedLogoFile: File | null = null;
+  selectedLogoFiles: File[] = [];
+  allowMultipleLogoUpload: boolean = true;
   newLogoDescription: string = '';
+
+  get selectedLogoCount(): number {
+    return this.selectedLogoFiles.length;
+  }
 
   private readonly subscriptions: Subscription = new Subscription();
 
@@ -88,7 +94,8 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     protected readonly apiService: ApiService,
-    private readonly translate: TranslateService
+    private readonly translate: TranslateService,
+    private readonly toastMessageService: ToastMessageService
   ) {
   }
 
@@ -385,71 +392,78 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   }
 
   onLogoFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
+    const input: HTMLInputElement = event.target as HTMLInputElement;
 
     if (!input.files || input.files.length === 0) {
-      this.selectedLogoFile = null;
+      this.selectedLogoFiles = [];
       return;
     }
 
-    this.selectedLogoFile = input.files[0];
+    this.selectedLogoFiles = Array.from(input.files);
   }
 
-  onUploadLogo(): void {
-    if (!this.parkId || !this.selectedLogoFile) {
+  async onUploadLogo(): Promise<void> {
+    if (!this.parkId || this.selectedLogoFiles.length === 0 || this.logosUploading) {
       return;
     }
 
     this.logosUploading = true;
+    const files: File[] = [...this.selectedLogoFiles];
+    let uploadedCount: number = 0;
 
-    this.apiService
-      .uploadImage(
-        this.selectedLogoFile,
+    try {
+      for (let index: number = 0; index < files.length; index++) {
+        await this.uploadLogoAsync(files[index], true);
+        uploadedCount++;
+      }
+
+      this.selectedLogoFiles = [];
+      this.newLogoDescription = '';
+      this.toastMessageService.add('success', 'Succès', this.translate.instant('admin.parks.logos.uploadSuccess', { count: uploadedCount }));
+    } catch (error: unknown) {
+      console.error('Error uploading logo images', error);
+      this.toastMessageService.add('error', 'Erreur', this.translate.instant('admin.parks.logos.uploadError', { count: uploadedCount }));
+    } finally {
+      this.logosUploading = false;
+    }
+  }
+
+  private async uploadLogoAsync(file: File, setAsCurrent: boolean): Promise<void> {
+    const uploaded: UploadedImage = await firstValueFrom(
+      this.apiService.uploadImage(
+        file,
         ImageCategory.PARK_LOGO,
         false,
         `${this.form.get('name')?.value || ''}`
       )
-      .subscribe({
-        next: (uploaded: UploadedImage) => {
-          this.apiService.linkImage({
-            imageId: uploaded.id,
-            ownerType: ImageOwnerType.PARK,
-            ownerId: this.parkId as string,
-            description: this.newLogoDescription || undefined,
-            setAsCurrent: true
-          }).subscribe({
-            next: (image: ImageDto) => {
-              const item: ParkLogoItem = this.toParkLogoItem(image);
+    );
 
-              this.parkLogos = this.parkLogos.map((logo: ParkLogoItem) => ({
-                ...logo,
-                isCurrent: logo.id === item.id
-              }));
+    const image: ImageDto = await firstValueFrom(
+      this.apiService.linkImage({
+        imageId: uploaded.id,
+        ownerType: ImageOwnerType.PARK,
+        ownerId: this.parkId as string,
+        description: this.newLogoDescription || undefined,
+        setAsCurrent
+      })
+    );
 
-              const existingIndex: number = this.parkLogos.findIndex((logo: ParkLogoItem) => logo.id === item.id);
+    const item: ParkLogoItem = this.toParkLogoItem(image);
 
-              if (existingIndex >= 0) {
-                this.parkLogos[existingIndex] = item;
-              } else {
-                this.parkLogos.unshift(item);
-              }
+    this.parkLogos = this.parkLogos.map((logo: ParkLogoItem) => ({
+      ...logo,
+      isCurrent: logo.id === item.id
+    }));
 
-              this.currentLogo = item;
-              this.selectedLogoFile = null;
-              this.newLogoDescription = '';
-              this.logosUploading = false;
-            },
-            error: (error: unknown) => {
-              console.error('Error linking uploaded image', error);
-              this.logosUploading = false;
-            }
-          });
-        },
-        error: (error: unknown) => {
-          console.error('Error uploading logo image', error);
-          this.logosUploading = false;
-        }
-      });
+    const existingIndex: number = this.parkLogos.findIndex((logo: ParkLogoItem) => logo.id === item.id);
+
+    if (existingIndex >= 0) {
+      this.parkLogos[existingIndex] = item;
+    } else {
+      this.parkLogos.unshift(item);
+    }
+
+    this.currentLogo = item;
   }
 
   onSetCurrentLogo(logo: ParkLogoItem): void {
@@ -467,6 +481,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
         }));
 
         this.currentLogo = updated;
+        this.toastMessageService.add('success', 'Succès', this.translate.instant('admin.parks.logos.currentSetSuccess'));
       },
       error: (error: unknown) => {
         console.error('Error setting current image', error);
@@ -483,6 +498,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       next: () => {
         this.parkLogos = this.parkLogos.filter((item: ParkLogoItem) => item.id !== logo.id);
         this.currentLogo = this.parkLogos.find((item: ParkLogoItem) => item.isCurrent) ?? null;
+        this.toastMessageService.add('success', 'Succès', this.translate.instant('admin.parks.logos.deleteSuccess'));
       },
       error: (error: unknown) => {
         console.error('Error deleting image', error);

@@ -69,7 +69,8 @@
       "parks": "Parques",
       "site": "Site",
       "operators": "Operadores",
-      "manufacturers": "Manufacturers"
+      "manufacturers": "Manufacturers",
+      "parkItems": "Items"
     },
     "users": {
       "total": "Número total de utilizadores: {{count}}",
@@ -141,7 +142,12 @@
         "noDescription": "Sem descrição",
         "currentLabel": "Atual",
         "alt": "Logótipo do parque",
-        "deleteConfirm": "Eliminar este logótipo?"
+        "deleteConfirm": "Eliminar este logótipo?",
+        "selectedCount": "{{count}} file(s) selected",
+        "uploadSuccess": "{{count}} logo(s) uploaded successfully.",
+        "uploadError": "An error occurred after {{count}} upload(s).",
+        "currentSetSuccess": "Current logo updated.",
+        "deleteSuccess": "Logo deleted."
       },
       "zones": {
         "manage": "Gerir zonas",
@@ -219,7 +225,12 @@
           "noDescription": "No description",
           "alt": "Attraction photo",
           "descriptionPlaceholder": "Optional photo description",
-          "deleteConfirm": "Delete this photo?"
+          "deleteConfirm": "Delete this photo?",
+          "selectedCount": "{{count}} file(s) selected",
+          "uploadSuccess": "{{count}} photo(s) uploaded successfully.",
+          "uploadError": "An error occurred after {{count}} upload(s).",
+          "currentSetSuccess": "Current photo updated.",
+          "deleteSuccess": "Photo deleted."
         },
         "attractionConfigurationTitle": "Attraction configuration",
         "attractionConfigurationHelp": "This section is only displayed for Attraction items. All fields are optional.",
@@ -342,6 +353,21 @@
         "name": "Name",
         "biography": "Biography"
       }
+    },
+    "parkItems": {
+      "title": "Park items",
+      "subtitle": "Cross-park view of every park item for faster editing.",
+      "searchPlaceholder": "Search a park, item or type",
+      "parkFilter": "Filter by park",
+      "empty": "No items found.",
+      "columns": {
+        "park": "Park",
+        "item": "Item",
+        "type": "Type",
+        "visibility": "Visibility",
+        "actions": "Actions"
+      },
+      "allParks": "All parks"
     }
   },
   "validation": {

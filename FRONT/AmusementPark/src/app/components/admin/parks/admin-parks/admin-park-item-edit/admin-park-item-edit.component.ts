@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastMessageService } from '../../../../../services/messages/toast-message.service';
-import { Subscription } from 'rxjs';
+import { firstValueFrom, Subscription } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
 import { LANGUAGES } from '../../../../../commons/languages';
 import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
@@ -78,7 +78,8 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   locationMapZoom: number = 19;
   locationMapMarkers: MapMarker[] = [];
 
-  selectedPhotoFile: File | null = null;
+  selectedPhotoFiles: File[] = [];
+  allowMultiplePhotoUpload: boolean = true;
   newPhotoDescription: string = '';
   photosUploading: boolean = false;
   photosLoading: boolean = false;
@@ -90,6 +91,9 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   selectedAccessConditionPreset: AttractionAccessConditionType = 'MinHeight';
 
   isSaving: boolean = false;
+  hasPendingChanges: boolean = false;
+  private lastSavedSnapshot: string = '';
+  private isInitializing: boolean = false;
   parkLocationDefault: AttractionLocationPoint | null = null;
   private generalLocationManuallyChanged: boolean = false;
   private isApplyingGeneralLocationProgrammatically: boolean = false;
@@ -323,7 +327,11 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   }
 
   get isFormDirty(): boolean {
-    return !!this.form && this.form.dirty;
+    return this.hasPendingChanges;
+  }
+
+  get selectedPhotoCount(): number {
+    return this.selectedPhotoFiles.length;
   }
 
   constructor(
@@ -340,8 +348,9 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     this.currentLang = this.route.root.firstChild?.snapshot.params['lang'] ?? 'en';
     this.parkId = this.route.snapshot.paramMap.get('idPark') ?? '';
     this.itemId = this.route.snapshot.paramMap.get('idItem');
+    this.isInitializing = true;
 
-    const requestedTabIndex: number = Number(this.route.snapshot.queryParamMap.get('tab') ?? 0);
+    const requestedTabIndex: number = Number(this.route.snapshot.queryParamMap.get('returnTab') ?? this.route.snapshot.queryParamMap.get('tab') ?? 0);
     this.activeTabIndex = Number.isFinite(requestedTabIndex) && requestedTabIndex >= 0
       ? requestedTabIndex
       : 0;
@@ -390,7 +399,6 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     this.applyCategorySelection(this.form.get('category')?.value as ParkItemCategory);
     this.setupFormSync();
     this.loadManufacturers();
-    this.applyManufacturerSelectionOverride();
 
     this.apiService.getParkZonesByParkId(this.parkId).subscribe((zones: ParkZone[]) => {
       this.zones = zones
@@ -416,7 +424,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
           longitude: item.longitude,
           descriptions: item.descriptions ?? [],
           isVisible: item.isVisible ?? true
-        });
+        }, { emitEvent: false });
 
         this.patchAttractionDetails(item.attractionDetails ?? null);
         this.patchAttractionLocations(item.attractionLocations ?? null);
@@ -424,6 +432,8 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
         this.applyCategorySelection(item.category);
         this.generalLocationManuallyChanged = true;
         this.refreshAllMapStates();
+        this.finalizeLoadedFormState();
+        this.applyManufacturerSelectionOverride();
 
         if (item.category === 'Attraction') {
           this.loadAttractionPhotos();
@@ -434,6 +444,8 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     }
 
     this.refreshAllMapStates();
+    this.finalizeLoadedFormState();
+    this.applyManufacturerSelectionOverride();
   }
 
   ngOnDestroy(): void {
@@ -478,6 +490,20 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   selectLocationEditor(locationKey: AttractionLocationKey): void {
     this.selectedLocationKey = locationKey;
     this.updateLocationMapState();
+
+    window.setTimeout((): void => {
+      this.updateLocationMapState();
+    }, 80);
+  }
+
+  onTabChange(index: number): void {
+    this.activeTabIndex = index;
+
+    if (index === 0 || index === 3) {
+      window.setTimeout((): void => {
+        this.refreshAllMapStates();
+      }, 80);
+    }
   }
 
   onSpecificLocationMapPositionChange(position: { lat: number; lng: number }): void {
@@ -611,70 +637,86 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     const input: HTMLInputElement = event.target as HTMLInputElement;
 
     if (!input.files || input.files.length === 0) {
-      this.selectedPhotoFile = null;
+      this.selectedPhotoFiles = [];
       return;
     }
 
-    this.selectedPhotoFile = input.files[0];
+    this.selectedPhotoFiles = Array.from(input.files);
   }
 
-  onUploadPhoto(): void {
-    if (!this.itemId || !this.selectedPhotoFile || !this.isAttractionCategory) {
+  async onUploadPhoto(): Promise<void> {
+    if (!this.itemId || this.selectedPhotoFiles.length === 0 || !this.isAttractionCategory || this.photosUploading) {
       return;
     }
 
     this.photosUploading = true;
 
-    this.apiService
-      .uploadImage(
-        this.selectedPhotoFile,
+    const files: File[] = [...this.selectedPhotoFiles];
+    const hadNoPhotoInitially: boolean = this.attractionPhotos.length === 0;
+    let uploadedCount: number = 0;
+
+    try {
+      for (let index: number = 0; index < files.length; index++) {
+        const shouldSetCurrent: boolean = hadNoPhotoInitially && index === 0;
+        await this.uploadAttractionPhotoAsync(files[index], shouldSetCurrent);
+        uploadedCount++;
+      }
+
+      this.selectedPhotoFiles = [];
+      this.newPhotoDescription = '';
+      this.showUploadSuccessMessage(
+        this.translateService.instant('admin.parks.items.photos.uploadSuccess', { count: uploadedCount })
+      );
+    } catch (error: unknown) {
+      console.error('Error uploading attraction images', error);
+      this.showUploadErrorMessage(
+        this.translateService.instant('admin.parks.items.photos.uploadError', { count: uploadedCount })
+      );
+    } finally {
+      this.photosUploading = false;
+    }
+  }
+
+  private async uploadAttractionPhotoAsync(file: File, setAsCurrent: boolean): Promise<void> {
+    const uploaded: UploadedImage = await firstValueFrom(
+      this.apiService.uploadImage(
+        file,
         ImageCategory.ATTRACTION,
         false,
         `${this.form.get('name')?.value || ''}`
       )
-      .subscribe({
-        next: (uploaded: UploadedImage) => {
-          this.apiService.linkImage({
-            imageId: uploaded.id,
-            ownerType: ImageOwnerType.ATTRACTION,
-            ownerId: this.itemId as string,
-            description: this.newPhotoDescription || undefined,
-            setAsCurrent: this.attractionPhotos.length === 0
-          }).subscribe({
-            next: (image: ImageDto) => {
-              const item: AttractionPhotoItem = this.toAttractionPhotoItem(image);
+    );
 
-              if (image.isCurrent) {
-                this.attractionPhotos = this.attractionPhotos.map((photo: AttractionPhotoItem) => ({
-                  ...photo,
-                  isCurrent: photo.id === item.id
-                }));
-              }
+    const image: ImageDto = await firstValueFrom(
+      this.apiService.linkImage({
+        imageId: uploaded.id,
+        ownerType: ImageOwnerType.ATTRACTION,
+        ownerId: this.itemId as string,
+        description: this.newPhotoDescription || undefined,
+        setAsCurrent
+      })
+    );
 
-              const existingIndex: number = this.attractionPhotos.findIndex((photo: AttractionPhotoItem) => photo.id === item.id);
+    this.upsertAttractionPhoto(this.toAttractionPhotoItem(image));
+  }
 
-              if (existingIndex >= 0) {
-                this.attractionPhotos[existingIndex] = item;
-              } else {
-                this.attractionPhotos.unshift(item);
-              }
+  private upsertAttractionPhoto(item: AttractionPhotoItem): void {
+    if (item.isCurrent) {
+      this.attractionPhotos = this.attractionPhotos.map((photo: AttractionPhotoItem) => ({
+        ...photo,
+        isCurrent: photo.id === item.id
+      }));
+    }
 
-              this.currentPhoto = this.attractionPhotos.find((photo: AttractionPhotoItem) => photo.isCurrent) ?? item;
-              this.selectedPhotoFile = null;
-              this.newPhotoDescription = '';
-              this.photosUploading = false;
-            },
-            error: (error: unknown) => {
-              console.error('Error linking uploaded attraction image', error);
-              this.photosUploading = false;
-            }
-          });
-        },
-        error: (error: unknown) => {
-          console.error('Error uploading attraction image', error);
-          this.photosUploading = false;
-        }
-      });
+    const existingIndex: number = this.attractionPhotos.findIndex((photo: AttractionPhotoItem) => photo.id === item.id);
+
+    if (existingIndex >= 0) {
+      this.attractionPhotos[existingIndex] = item;
+    } else {
+      this.attractionPhotos.unshift(item);
+    }
+
+    this.currentPhoto = this.attractionPhotos.find((photo: AttractionPhotoItem) => photo.isCurrent) ?? item;
   }
 
   onSetCurrentPhoto(photo: AttractionPhotoItem): void {
@@ -692,6 +734,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
         }));
 
         this.currentPhoto = updated;
+        this.showUploadSuccessMessage(this.translateService.instant('admin.parks.items.photos.currentSetSuccess'));
       },
       error: (error: unknown) => {
         console.error('Error setting current attraction image', error);
@@ -708,6 +751,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       next: () => {
         this.attractionPhotos = this.attractionPhotos.filter((item: AttractionPhotoItem) => item.id !== photo.id);
         this.currentPhoto = this.attractionPhotos.find((item: AttractionPhotoItem) => item.isCurrent) ?? null;
+        this.showUploadSuccessMessage(this.translateService.instant('admin.parks.items.photos.deleteSuccess'));
       },
       error: (error: unknown) => {
         console.error('Error deleting attraction image', error);
@@ -767,10 +811,19 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       this.updateLocationMapState();
     });
 
+    const formSubscription: Subscription = this.form.valueChanges.subscribe(() => {
+      if (this.isInitializing) {
+        return;
+      }
+
+      this.updatePendingChanges();
+    });
+
     this.subscriptions.add(categorySubscription);
     this.subscriptions.add(generalLatitudeSubscription);
     this.subscriptions.add(generalLongitudeSubscription);
     this.subscriptions.add(locationSubscription);
+    this.subscriptions.add(formSubscription);
   }
 
   private loadParkLocationDefault(): void {
@@ -787,7 +840,11 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
 
         if (!this.generalLocationManuallyChanged) {
           this.applyGeneralLocation(park.latitude, park.longitude);
+          this.finalizeLoadedFormState();
+          return;
         }
+
+        this.updatePendingChanges();
       },
       error: (error: unknown) => {
         console.error('Error loading default park location for item editor', error);
@@ -918,7 +975,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   private afterSuccessfulSave(savedItem: ParkItem, mode: SaveMode, scope: SaveScope): void {
     const wasEditMode: boolean = !!this.itemId;
 
-    this.form.markAsPristine();
+    this.captureCurrentSnapshot();
     this.showSaveSuccessMessage(scope, wasEditMode);
 
     if (!this.itemId && savedItem.id) {
@@ -964,14 +1021,55 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     );
   }
 
+  private finalizeLoadedFormState(): void {
+    this.isInitializing = false;
+    this.captureCurrentSnapshot();
+  }
+
+  private captureCurrentSnapshot(): void {
+    this.lastSavedSnapshot = this.buildComparableSnapshot();
+    this.hasPendingChanges = false;
+    this.form.markAsPristine();
+    this.form.markAsUntouched();
+  }
+
+  private updatePendingChanges(): void {
+    if (this.isInitializing) {
+      return;
+    }
+
+    this.hasPendingChanges = this.buildComparableSnapshot() !== this.lastSavedSnapshot;
+  }
+
+  private buildComparableSnapshot(): string {
+    return JSON.stringify(this.buildPayload());
+  }
+
+  private showUploadSuccessMessage(detail: string): void {
+    this.toastMessageService.add(
+      'success',
+      this.translateService.instant('admin.parks.items.saveMessages.successSummary'),
+      detail
+    );
+  }
+
+  private showUploadErrorMessage(detail: string): void {
+    this.toastMessageService.add(
+      'error',
+      this.translateService.instant('admin.parks.items.saveMessages.errorSummary'),
+      detail
+    );
+  }
+
   private applyGeneralLocation(latitude: number, longitude: number): void {
     this.isApplyingGeneralLocationProgrammatically = true;
     this.form.patchValue({
       latitude,
       longitude
-    });
+    }, { emitEvent: false });
     this.isApplyingGeneralLocationProgrammatically = false;
     this.refreshAllMapStates();
+    this.updatePendingChanges();
   }
 
   private getLocationGroup(locationKey: AttractionLocationKey): FormGroup {
@@ -1045,7 +1143,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       isAccessibleForReducedMobility: details?.isAccessibleForReducedMobility ?? false,
       isIndoor: details?.isIndoor ?? false,
       waterExposureLevel: details?.waterExposureLevel ?? null
-    });
+    }, { emitEvent: false });
 
     this.setAccessConditions(details?.accessConditions ?? null);
   }
@@ -1079,7 +1177,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     this.form.get(['attractionLocations', controlName])?.patchValue({
       latitude: point?.latitude ?? null,
       longitude: point?.longitude ?? null
-    });
+    }, { emitEvent: false });
   }
 
   private buildPayload(): ParkItem {
@@ -1230,9 +1328,12 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   private applyManufacturerSelectionOverride(): void {
     const manufacturerId: string | null = this.route.snapshot.queryParamMap.get('manufacturerId');
 
-    if (manufacturerId) {
-      this.form.get(['attractionDetails', 'manufacturerId'])?.setValue(manufacturerId);
+    if (!manufacturerId) {
+      return;
     }
+
+    this.form.get(['attractionDetails', 'manufacturerId'])?.setValue(manufacturerId);
+    this.updatePendingChanges();
   }
 
   private hasAtLeastOneAccessConditionValue(condition: AttractionAccessCondition): boolean {

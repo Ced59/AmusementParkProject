@@ -1,0 +1,93 @@
+<p-card>
+  <div class="page-header">
+    <div>
+      <h2>{{ 'admin.parkItems.title' | translate }}</h2>
+      <small class="text-color-secondary">{{ 'admin.parkItems.subtitle' | translate }}</small>
+    </div>
+  </div>
+
+  <div class="filters-row">
+    <span class="p-input-icon-left search-box">
+      <i class="pi pi-search"></i>
+      <input
+        pInputText
+        type="text"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="applyFilters()"
+        [placeholder]="'admin.parkItems.searchPlaceholder' | translate" />
+    </span>
+
+    <p-dropdown
+      [(ngModel)]="selectedParkId"
+      [options]="parkOptions"
+      optionLabel="label"
+      optionValue="value"
+      [showClear]="true"
+      (onChange)="applyFilters()"
+      [placeholder]="'admin.parkItems.parkFilter' | translate">
+    </p-dropdown>
+  </div>
+
+  <p-table
+    [value]="filteredRows"
+    [loading]="loading"
+    [paginator]="true"
+    [rows]="20"
+    [rowsPerPageOptions]="[10, 20, 50, 100]"
+    responsiveLayout="scroll"
+    sortField="parkName"
+    [sortOrder]="1">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="parkName">
+          {{ 'admin.parkItems.columns.park' | translate }}
+          <p-sortIcon field="parkName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="itemName">
+          {{ 'admin.parkItems.columns.item' | translate }}
+          <p-sortIcon field="itemName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="itemType">
+          {{ 'admin.parkItems.columns.type' | translate }}
+          <p-sortIcon field="itemType"></p-sortIcon>
+        </th>
+        <th>
+          {{ 'admin.parkItems.columns.visibility' | translate }}
+        </th>
+        <th>
+          {{ 'admin.parkItems.columns.actions' | translate }}
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-row>
+      <tr>
+        <td>{{ row.parkName }}</td>
+        <td>{{ row.itemName }}</td>
+        <td>{{ getTypeLabelKey(row.itemType) | translate }}</td>
+        <td>
+          <p-tag
+            [value]="row.isVisible ? ('admin.visible' | translate) : ('admin.hidden' | translate)"
+            [severity]="row.isVisible ? 'success' : 'warning'">
+          </p-tag>
+        </td>
+        <td>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-sm"
+            (click)="goToEdit(row)"
+            [label]="'actions.edit' | translate">
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">{{ 'admin.parkItems.empty' | translate }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

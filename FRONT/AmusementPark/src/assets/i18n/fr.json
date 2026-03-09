@@ -69,7 +69,8 @@
       "parks": "Parcs",
       "site": "Site",
       "operators": "Exploitants",
-      "manufacturers": "Constructeurs"
+      "manufacturers": "Constructeurs",
+      "parkItems": "Éléments"
     },
     "users": {
       "total": "Nombre total d'utilisateurs : {{count}}",
@@ -119,7 +120,12 @@
         "noDescription": "Sans description",
         "currentLabel": "Actuel",
         "alt": "Logo du parc",
-        "deleteConfirm": "Supprimer ce logo ?"
+        "deleteConfirm": "Supprimer ce logo ?",
+        "selectedCount": "{{count}} fichier(s) sélectionné(s)",
+        "uploadSuccess": "{{count}} logo(s) importé(s) avec succès.",
+        "uploadError": "Une erreur est survenue après {{count}} import(s).",
+        "currentSetSuccess": "Le logo courant a été mis à jour.",
+        "deleteSuccess": "Le logo a été supprimé."
       },
       "descriptions": {
         "sectionTitle": "Description localisée",
@@ -219,7 +225,12 @@
           "noDescription": "Aucune description",
           "alt": "Photo de l’attraction",
           "descriptionPlaceholder": "Description optionnelle de la photo",
-          "deleteConfirm": "Supprimer cette photo ?"
+          "deleteConfirm": "Supprimer cette photo ?",
+          "selectedCount": "{{count}} fichier(s) sélectionné(s)",
+          "uploadSuccess": "{{count}} photo(s) importée(s) avec succès.",
+          "uploadError": "Une erreur est survenue après {{count}} import(s).",
+          "currentSetSuccess": "La photo courante a été mise à jour.",
+          "deleteSuccess": "La photo a été supprimée."
         },
         "attractionConfigurationTitle": "Configuration de l’attraction",
         "attractionConfigurationHelp": "Cette section n’apparaît que pour les éléments de catégorie Attraction. Tous les champs sont optionnels.",
@@ -342,6 +353,21 @@
         "name": "Nom",
         "biography": "Biographie"
       }
+    },
+    "parkItems": {
+      "title": "Éléments de parc",
+      "subtitle": "Vue transversale de tous les éléments du parc pour éditer rapidement les données.",
+      "searchPlaceholder": "Rechercher un parc, un élément ou un type",
+      "parkFilter": "Filtrer par parc",
+      "empty": "Aucun élément trouvé.",
+      "columns": {
+        "park": "Parc",
+        "item": "Élément",
+        "type": "Type",
+        "visibility": "Visibilité",
+        "actions": "Actions"
+      },
+      "allParks": "Tous les parcs"
     }
   },
   "validation": {
