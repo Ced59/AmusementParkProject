@@ -6,9 +6,10 @@ namespace Entities.Model.Parks
     [BsonIgnoreExtraElements]
     public class AttractionDetails
     {
-        [BsonElement("manufacturer")]
+        [BsonElement("manufacturerId")]
         [BsonIgnoreIfNull]
-        public string? Manufacturer { get; set; }
+        [BsonRepresentation(BsonType.String)]
+        public string? ManufacturerId { get; set; }
 
         [BsonElement("model")]
         [BsonIgnoreIfNull]
@@ -90,9 +91,10 @@ namespace Entities.Model.Parks
         [BsonIgnoreIfNull]
         public bool? IsIndoor { get; set; }
 
-        [BsonElement("isWaterAttraction")]
+        [BsonElement("waterExposureLevel")]
         [BsonIgnoreIfNull]
-        public bool? IsWaterAttraction { get; set; }
+        [BsonRepresentation(BsonType.String)]
+        public AttractionWaterExposureLevel? WaterExposureLevel { get; set; }
 
         [BsonElement("accessConditions")]
         [BsonIgnoreIfNull]

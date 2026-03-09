@@ -68,7 +68,8 @@
       "users": "Users",
       "parks": "Parks",
       "site": "Site",
-      "operators": "Operators"
+      "operators": "Operators",
+      "manufacturers": "Manufacturers"
     },
     "users": {
       "total": "Total number of users: {{count}}",
@@ -195,7 +196,10 @@
           "hasFastPass": "Fast pass available",
           "isAccessibleForReducedMobility": "Reduced mobility accessible",
           "isIndoor": "Indoor attraction",
-          "isWaterAttraction": "Water attraction"
+          "isWaterAttraction": "Water attraction",
+          "manufacturerPlaceholder": "Select a manufacturer",
+          "waterExposureLevel": "Water exposure level",
+          "waterExposureLevelPlaceholder": "Select a level"
         },
         "locationFields": {
           "entrance": "Entrance",
@@ -252,7 +256,31 @@
           "description": "Localized description",
           "labelPlaceholder": "Condition label in {{language}}",
           "descriptionPlaceholder": "Condition description in {{language}}"
-        }
+        },
+        "waterExposureLevels": {
+          "none": "None",
+          "splash": "Light splash",
+          "moderate": "Moderate",
+          "soaking": "Soaking"
+        },
+        "refactorHint": "The editor is now split into thematic sections to keep the form lighter and easier to navigate.",
+        "tabs": {
+          "general": "General",
+          "details": "Technical details",
+          "accessConditions": "Access conditions",
+          "locations": "Specific locations",
+          "photos": "Photos"
+        },
+        "accessConditionsCount": "{{count}} access condition(s)",
+        "accessConditionsSummary": "Manage the detailed rules in this dedicated section instead of keeping everything on the main form.",
+        "locationSummary": "{{count}} / {{total}} specific location(s) defined",
+        "locationSummaryHelp": "Each point can stay empty. Use the map to place only the coordinates that are really useful.",
+        "locationEditorTitle": "Map editor · {{location}}",
+        "locationEditorHelp": "Click on the map to create or move the selected point. Manual coordinates remain available as a fallback.",
+        "locationDefined": "Defined",
+        "locationNotDefined": "Not defined",
+        "useGeneralLocation": "Use general location",
+        "clearSelectedLocation": "Clear selected point"
       }
     },
     "loading": "Loading...",
@@ -275,6 +303,22 @@
       "editPage": {
         "createTitle": "Create founder",
         "updateTitle": "Edit founder",
+        "name": "Name",
+        "biography": "Biography"
+      }
+    },
+    "manufacturers": {
+      "total": "Manufacturers: {{count}}",
+      "searchPlaceholder": "Search a manufacturer",
+      "create": "Create a manufacturer",
+      "name": "Name",
+      "attractionCount": "Attached attractions",
+      "actions": "Actions",
+      "edit": "Edit",
+      "empty": "No manufacturer found.",
+      "editPage": {
+        "createTitle": "Create a manufacturer",
+        "updateTitle": "Edit manufacturer",
         "name": "Name",
         "biography": "Biography"
       }

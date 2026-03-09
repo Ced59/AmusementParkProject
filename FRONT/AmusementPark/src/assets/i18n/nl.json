@@ -68,7 +68,8 @@
       "users": "Gebruikers",
       "parks": "Parken",
       "site": "Site",
-      "operators": "Exploitanten"
+      "operators": "Exploitanten",
+      "manufacturers": "Manufacturers"
     },
     "users": {
       "total": "Totaal aantal gebruikers: {{count}}",
@@ -195,7 +196,10 @@
           "hasFastPass": "Fast pass available",
           "isAccessibleForReducedMobility": "Reduced mobility accessible",
           "isIndoor": "Indoor attraction",
-          "isWaterAttraction": "Water attraction"
+          "isWaterAttraction": "Water attraction",
+          "manufacturerPlaceholder": "Select a manufacturer",
+          "waterExposureLevel": "Water exposure level",
+          "waterExposureLevelPlaceholder": "Select a level"
         },
         "locationFields": {
           "entrance": "Entrance",
@@ -252,7 +256,31 @@
           "description": "Localized description",
           "labelPlaceholder": "Condition label in {{language}}",
           "descriptionPlaceholder": "Condition description in {{language}}"
-        }
+        },
+        "waterExposureLevels": {
+          "none": "None",
+          "splash": "Light splash",
+          "moderate": "Moderate",
+          "soaking": "Soaking"
+        },
+        "refactorHint": "De editor is nu opgesplitst in thematische secties om de pagina lichter en overzichtelijker te maken.",
+        "tabs": {
+          "general": "Algemeen",
+          "details": "Technische details",
+          "accessConditions": "Toegangsvoorwaarden",
+          "locations": "Specifieke locaties",
+          "photos": "Foto's"
+        },
+        "accessConditionsCount": "{{count}} toegangsvoorwaarde(n)",
+        "accessConditionsSummary": "Beheer de gedetailleerde regels hier in plaats van het hoofdformulier te overladen.",
+        "locationSummary": "{{count}} / {{total}} specifieke locatie(s) gedefinieerd",
+        "locationSummaryHelp": "Elk punt kan leeg blijven. Gebruik de kaart alleen voor echt nuttige coördinaten.",
+        "locationEditorTitle": "Kaarteditor · {{location}}",
+        "locationEditorHelp": "Klik op de kaart om het geselecteerde punt te maken of te verplaatsen. Handmatige coördinaten blijven als fallback beschikbaar.",
+        "locationDefined": "Gedefinieerd",
+        "locationNotDefined": "Niet gedefinieerd",
+        "useGeneralLocation": "Algemene locatie gebruiken",
+        "clearSelectedLocation": "Geselecteerd punt wissen"
       }
     },
     "loading": "Laden...",
@@ -277,6 +305,22 @@
         "updateTitle": "Oprichter bewerken",
         "name": "Naam",
         "biography": "Biografie"
+      }
+    },
+    "manufacturers": {
+      "total": "Manufacturers: {{count}}",
+      "searchPlaceholder": "Search a manufacturer",
+      "create": "Create a manufacturer",
+      "name": "Name",
+      "attractionCount": "Attached attractions",
+      "actions": "Actions",
+      "edit": "Edit",
+      "empty": "No manufacturer found.",
+      "editPage": {
+        "createTitle": "Create a manufacturer",
+        "updateTitle": "Edit manufacturer",
+        "name": "Name",
+        "biography": "Biography"
       }
     }
   },

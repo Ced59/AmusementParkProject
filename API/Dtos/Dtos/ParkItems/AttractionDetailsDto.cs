@@ -2,7 +2,7 @@ namespace Dtos.ParkItems
 {
     public class AttractionDetailsDto
     {
-        public string? Manufacturer { get; set; }
+        public string? ManufacturerId { get; set; }
         public string? Model { get; set; }
         public DateTime? OpeningDate { get; set; }
         public DateTime? ClosingDate { get; set; }
@@ -20,7 +20,7 @@ namespace Dtos.ParkItems
         public bool? HasFastPass { get; set; }
         public bool? IsAccessibleForReducedMobility { get; set; }
         public bool? IsIndoor { get; set; }
-        public bool? IsWaterAttraction { get; set; }
+        public AttractionWaterExposureLevelDto? WaterExposureLevel { get; set; }
         public List<AttractionAccessConditionDto>? AccessConditions { get; set; }
     }
 }

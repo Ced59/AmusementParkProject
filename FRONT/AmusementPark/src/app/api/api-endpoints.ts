@@ -23,6 +23,7 @@ export const API_ENDPOINTS = {
   updateParkFounder: (id: string) => `park-founders/${id}`,
 
   getParkOperators: 'park-operators/list',
+  getAttractionManufacturers: 'attraction-manufacturers/list',
 
   getParkZonesByParkId: (parkId: string) => `park-zones/park/${parkId}`,
   getParkZoneById: (id: string) => `park-zones/${id}`,
@@ -39,6 +40,9 @@ export const API_ENDPOINTS = {
   getParkOperatorById: (id: string) => `park-operators/${id}`,
   createParkOperator: 'park-operators',
   updateParkOperator: (id: string) => `park-operators/${id}`,
+  getAttractionManufacturerById: (id: string) => `attraction-manufacturers/${id}`,
+  createAttractionManufacturer: 'attraction-manufacturers',
+  updateAttractionManufacturer: (id: string) => `attraction-manufacturers/${id}`,
 
   getSearch: (query: string, categories: string[], page: number, size: number) => {
     const catsParam = categories && categories.length > 0

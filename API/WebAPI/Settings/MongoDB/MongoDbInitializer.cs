@@ -42,6 +42,7 @@ namespace WebAPI.Settings.MongoDB
             // 🔹 Park founders / operators
             await EnsureCollectionExistsAsync(database, settings.ParkFoundersCollectionName);
             await EnsureCollectionExistsAsync(database, settings.ParkOperatorsCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.AttractionManufacturersCollectionName);
             await EnsureCollectionExistsAsync(database, settings.ParkZonesCollectionName);
             await EnsureCollectionExistsAsync(database, settings.ParkItemsCollectionName);
             await InitializeParkItemsIndexesAsync(database, settings.ParkItemsCollectionName);
@@ -308,6 +309,7 @@ namespace WebAPI.Settings.MongoDB
             {
                 new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Ascending(item => item.ParkId)),
                 new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Ascending(item => item.ZoneId)),
+                new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Ascending("attractionDetails.manufacturerId")),
                 new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Geo2DSphere(item => item.Location))
             });
         }

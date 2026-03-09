@@ -10,5 +10,6 @@ namespace Repositories.Interfaces
         Task<ParkItem?> UpdateAsync(ParkItem item);
         Task<bool> DeleteAsync(string id);
         Task<long> ClearZoneAsync(string zoneId);
+        Task<Dictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds);
     }
 }

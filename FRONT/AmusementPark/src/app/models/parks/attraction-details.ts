@@ -1,7 +1,8 @@
 import { AttractionAccessCondition } from './attraction-access-condition';
+import { AttractionWaterExposureLevel } from './attraction-water-exposure-level';
 
 export interface AttractionDetails {
-  manufacturer?: string | null;
+  manufacturerId?: string | null;
   model?: string | null;
   openingDate?: string | null;
   closingDate?: string | null;
@@ -19,6 +20,6 @@ export interface AttractionDetails {
   hasFastPass?: boolean | null;
   isAccessibleForReducedMobility?: boolean | null;
   isIndoor?: boolean | null;
-  isWaterAttraction?: boolean | null;
+  waterExposureLevel?: AttractionWaterExposureLevel | null;
   accessConditions?: AttractionAccessCondition[] | null;
 }

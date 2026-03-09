@@ -1,480 +1,570 @@
 <p-card>
-  <h2>{{ (isEditMode ? 'admin.parks.items.editTitle' : 'admin.parks.items.createTitle') | translate }}</h2>
+  <div class="page-header">
+    <div>
+      <h2>{{ (isEditMode ? 'admin.parks.items.editTitle' : 'admin.parks.items.createTitle') | translate }}</h2>
+      <small class="text-color-secondary">
+        {{ 'admin.parks.items.refactorHint' | translate }}
+      </small>
+    </div>
+  </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
-    <div class="field">
-      <label for="name">{{ 'admin.parks.items.itemName' | translate }}</label>
-      <input id="name" pInputText formControlName="name" />
-    </div>
+    <p-tabView [(activeIndex)]="activeTabIndex">
+      <p-tabPanel [header]="'admin.parks.items.tabs.general' | translate">
+        <div class="tab-section">
+          <div class="field">
+            <label for="name">{{ 'admin.parks.items.itemName' | translate }}</label>
+            <input id="name" pInputText formControlName="name" />
+          </div>
 
-    <div class="grid formgrid">
-      <div class="field col-12 md:col-6">
-        <label>{{ 'admin.parks.items.category' | translate }}</label>
-        <p-dropdown formControlName="category" [options]="categoryOptions" optionLabel="labelKey" optionValue="value">
-          <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
-          <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
-        </p-dropdown>
-      </div>
-      <div class="field col-12 md:col-6">
-        <label>{{ 'admin.parks.items.type' | translate }}</label>
-        <p-dropdown formControlName="type" [options]="filteredTypeOptions" optionLabel="labelKey" optionValue="value">
-          <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
-          <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
-        </p-dropdown>
-      </div>
-    </div>
+          <div class="grid formgrid">
+            <div class="field col-12 md:col-6">
+              <label>{{ 'admin.parks.items.category' | translate }}</label>
+              <p-dropdown formControlName="category" [options]="categoryOptions" optionLabel="labelKey" optionValue="value">
+                <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+                <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+              </p-dropdown>
+            </div>
+            <div class="field col-12 md:col-6">
+              <label>{{ 'admin.parks.items.type' | translate }}</label>
+              <p-dropdown formControlName="type" [options]="filteredTypeOptions" optionLabel="labelKey" optionValue="value">
+                <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+                <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+              </p-dropdown>
+            </div>
+          </div>
 
-    <div class="grid formgrid">
-      <div class="field col-12 md:col-6">
-        <label>{{ 'admin.parks.items.subtype' | translate }}</label>
-        <input pInputText formControlName="subtype" />
-      </div>
-      <div class="field col-12 md:col-6">
-        <label>{{ 'admin.parks.items.zone' | translate }}</label>
-        <p-dropdown formControlName="zoneId" [options]="zones" optionLabel="label" optionValue="id" [showClear]="true"></p-dropdown>
-      </div>
-    </div>
+          <div class="grid formgrid">
+            <div class="field col-12 md:col-6">
+              <label>{{ 'admin.parks.items.subtype' | translate }}</label>
+              <input pInputText formControlName="subtype" />
+            </div>
+            <div class="field col-12 md:col-6">
+              <label>{{ 'admin.parks.items.zone' | translate }}</label>
+              <p-dropdown formControlName="zoneId" [options]="zones" optionLabel="label" optionValue="id" [showClear]="true"></p-dropdown>
+            </div>
+          </div>
 
-    <div class="grid formgrid">
-      <div class="field col-12 md:col-6">
-        <label>{{ 'admin.parks.latitude' | translate }}</label>
-        <input pInputText type="number" formControlName="latitude" />
-      </div>
-      <div class="field col-12 md:col-6">
-        <label>{{ 'admin.parks.longitude' | translate }}</label>
-        <input pInputText type="number" formControlName="longitude" />
-      </div>
-    </div>
+          <p-card styleClass="inner-card">
+            <div class="section-header mb-3">
+              <h3>{{ 'admin.parks.items.generalLocation' | translate }}</h3>
+              <small class="text-color-secondary">{{ 'admin.parks.items.generalLocationHelp' | translate }}</small>
+            </div>
 
-    <div class="field">
-      <label>{{ 'admin.parks.descriptions.sectionTitle' | translate }}</label>
-      <app-localized-rich-text-editor formControlName="descriptions"></app-localized-rich-text-editor>
-    </div>
+            <app-leaflet-map
+              [center]="generalMapCenter"
+              [zoom]="generalMapZoom"
+              [markers]="generalMapMarkers"
+              [editable]="true"
+              (positionChange)="onGeneralMapPositionChange($event)">
+            </app-leaflet-map>
 
-    <div *ngIf="isAttractionCategory" class="attraction-section">
-      <div formGroupName="attractionDetails">
-        <p-divider></p-divider>
+            <div class="grid formgrid mt-3">
+              <div class="field col-12 md:col-6">
+                <label>{{ 'admin.parks.latitude' | translate }}</label>
+                <input pInputText type="number" formControlName="latitude" step="0.000001" />
+              </div>
+              <div class="field col-12 md:col-6">
+                <label>{{ 'admin.parks.longitude' | translate }}</label>
+                <input pInputText type="number" formControlName="longitude" step="0.000001" />
+              </div>
+            </div>
+          </p-card>
 
-        <div class="section-header mb-3">
-          <h3>{{ 'admin.parks.items.attractionConfigurationTitle' | translate }}</h3>
-          <small class="text-color-secondary">{{ 'admin.parks.items.attractionConfigurationHelp' | translate }}</small>
-        </div>
+          <div class="field mt-3">
+            <label>{{ 'admin.parks.descriptions.sectionTitle' | translate }}</label>
+            <app-localized-rich-text-editor formControlName="descriptions"></app-localized-rich-text-editor>
+          </div>
 
-        <div class="grid formgrid">
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.manufacturer' | translate }}</label>
-            <input pInputText formControlName="manufacturer" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.model' | translate }}</label>
-            <input pInputText formControlName="model" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.openingDate' | translate }}</label>
-            <input pInputText type="date" formControlName="openingDate" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.closingDate' | translate }}</label>
-            <input pInputText type="date" formControlName="closingDate" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.durationInSeconds' | translate }}</label>
-            <input pInputText type="number" formControlName="durationInSeconds" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.capacityPerHour' | translate }}</label>
-            <input pInputText type="number" formControlName="capacityPerHour" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.heightInMeters' | translate }}</label>
-            <input pInputText type="number" formControlName="heightInMeters" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.lengthInMeters' | translate }}</label>
-            <input pInputText type="number" formControlName="lengthInMeters" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.speedInKmH' | translate }}</label>
-            <input pInputText type="number" formControlName="speedInKmH" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.dropInMeters' | translate }}</label>
-            <input pInputText type="number" formControlName="dropInMeters" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.inversionCount' | translate }}</label>
-            <input pInputText type="number" formControlName="inversionCount" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.trainCount' | translate }}</label>
-            <input pInputText type="number" formControlName="trainCount" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.carsPerTrain' | translate }}</label>
-            <input pInputText type="number" formControlName="carsPerTrain" />
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4">
-            <label>{{ 'admin.parks.items.details.ridersPerVehicle' | translate }}</label>
-            <input pInputText type="number" formControlName="ridersPerVehicle" />
+          <div class="field visibility-field">
+            <label>{{ 'admin.parks.visibleField' | translate }}</label>
+            <p-inputSwitch formControlName="isVisible"></p-inputSwitch>
           </div>
         </div>
+      </p-tabPanel>
 
-        <div class="grid formgrid switches-grid">
-          <div class="field col-12 md:col-6 lg:col-4 switch-field">
-            <label>{{ 'admin.parks.items.details.hasSingleRider' | translate }}</label>
-            <p-inputSwitch formControlName="hasSingleRider"></p-inputSwitch>
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4 switch-field">
-            <label>{{ 'admin.parks.items.details.hasFastPass' | translate }}</label>
-            <p-inputSwitch formControlName="hasFastPass"></p-inputSwitch>
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4 switch-field">
-            <label>{{ 'admin.parks.items.details.isAccessibleForReducedMobility' | translate }}</label>
-            <p-inputSwitch formControlName="isAccessibleForReducedMobility"></p-inputSwitch>
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4 switch-field">
-            <label>{{ 'admin.parks.items.details.isIndoor' | translate }}</label>
-            <p-inputSwitch formControlName="isIndoor"></p-inputSwitch>
-          </div>
-          <div class="field col-12 md:col-6 lg:col-4 switch-field">
-            <label>{{ 'admin.parks.items.details.isWaterAttraction' | translate }}</label>
-            <p-inputSwitch formControlName="isWaterAttraction"></p-inputSwitch>
-          </div>
-        </div>
-
-        <p-divider></p-divider>
-
-        <div class="section-header mb-3">
-          <h3>{{ 'admin.parks.items.accessConditionsTitle' | translate }}</h3>
-          <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionsHelp' | translate }}</small>
-        </div>
-
-        <div class="grid formgrid mb-3 access-condition-add-row">
-          <div class="field col-12 md:col-8 lg:col-6">
-            <label>{{ 'admin.parks.items.accessConditionsPreset' | translate }}</label>
-            <p-dropdown
-              [(ngModel)]="selectedAccessConditionPreset"
-              [ngModelOptions]="{ standalone: true }"
-              [options]="accessConditionPresetOptions"
-              optionLabel="labelKey"
-              optionValue="value">
-              <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
-              <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
-            </p-dropdown>
-          </div>
-          <div class="field col-12 md:col-4 lg:col-3 flex align-items-end">
-            <button
-              pButton
-              type="button"
-              icon="pi pi-plus"
-              (click)="addAccessCondition()"
-              [label]="'admin.parks.items.addAccessCondition' | translate">
-            </button>
-          </div>
-        </div>
-
-        <div formArrayName="accessConditions">
-          <div *ngIf="accessConditions.length === 0" class="text-color-secondary mb-3">
-            {{ 'admin.parks.items.accessConditionsEmpty' | translate }}
+      <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.details' | translate">
+        <div class="tab-section" formGroupName="attractionDetails">
+          <div class="section-header mb-3">
+            <h3>{{ 'admin.parks.items.attractionConfigurationTitle' | translate }}</h3>
+            <small class="text-color-secondary">{{ 'admin.parks.items.attractionConfigurationHelp' | translate }}</small>
           </div>
 
-          <div class="access-condition-list">
-            <div
-              class="access-condition-card"
-              *ngFor="let accessCondition of accessConditions.controls; let i = index"
-              [formGroupName]="i">
-              <p-card>
-                <ng-template pTemplate="header">
-                  <div class="access-condition-card__header">
-                    <div>
-                      <h4>{{ getAccessConditionTitle(i) }}</h4>
-                      <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionIndex' | translate:{ index: i + 1 } }}</small>
-                    </div>
+          <div class="grid formgrid">
+            <div class="field col-12 md:col-6 lg:col-4">
+              <app-entity-select
+                formControlName="manufacturerId"
+                [label]="'admin.parks.items.details.manufacturer' | translate"
+                [placeholder]="'admin.parks.items.details.manufacturerPlaceholder' | translate"
+                [options]="manufacturerOptions"
+                [loading]="manufacturersLoading"
+                [addLink]="['/', currentLang, 'admin', 'manufacturers', 'new']"
+                [addQueryParams]="manufacturerCreateLinkQueryParams"
+                [addButtonLabel]="'admin.manufacturers.create' | translate">
+              </app-entity-select>
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.model' | translate }}</label>
+              <input pInputText formControlName="model" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.openingDate' | translate }}</label>
+              <input pInputText type="date" formControlName="openingDate" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.closingDate' | translate }}</label>
+              <input pInputText type="date" formControlName="closingDate" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.durationInSeconds' | translate }}</label>
+              <input pInputText type="number" formControlName="durationInSeconds" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.capacityPerHour' | translate }}</label>
+              <input pInputText type="number" formControlName="capacityPerHour" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.heightInMeters' | translate }}</label>
+              <input pInputText type="number" formControlName="heightInMeters" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.lengthInMeters' | translate }}</label>
+              <input pInputText type="number" formControlName="lengthInMeters" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.speedInKmH' | translate }}</label>
+              <input pInputText type="number" formControlName="speedInKmH" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.dropInMeters' | translate }}</label>
+              <input pInputText type="number" formControlName="dropInMeters" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.inversionCount' | translate }}</label>
+              <input pInputText type="number" formControlName="inversionCount" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.trainCount' | translate }}</label>
+              <input pInputText type="number" formControlName="trainCount" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.carsPerTrain' | translate }}</label>
+              <input pInputText type="number" formControlName="carsPerTrain" />
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.ridersPerVehicle' | translate }}</label>
+              <input pInputText type="number" formControlName="ridersPerVehicle" />
+            </div>
+          </div>
 
-                    <div class="access-condition-card__actions">
-                      <button pButton type="button" icon="pi pi-arrow-up" class="p-button-text p-button-sm" (click)="moveAccessConditionUp(i)" [disabled]="i === 0"></button>
-                      <button pButton type="button" icon="pi pi-arrow-down" class="p-button-text p-button-sm" (click)="moveAccessConditionDown(i)" [disabled]="i === accessConditions.length - 1"></button>
-                      <button pButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" (click)="removeAccessCondition(i)"></button>
-                    </div>
-                  </div>
+          <div class="grid formgrid switches-grid">
+            <div class="field col-12 md:col-6 lg:col-4 switch-field">
+              <label>{{ 'admin.parks.items.details.hasSingleRider' | translate }}</label>
+              <p-inputSwitch formControlName="hasSingleRider"></p-inputSwitch>
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4 switch-field">
+              <label>{{ 'admin.parks.items.details.hasFastPass' | translate }}</label>
+              <p-inputSwitch formControlName="hasFastPass"></p-inputSwitch>
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4 switch-field">
+              <label>{{ 'admin.parks.items.details.isAccessibleForReducedMobility' | translate }}</label>
+              <p-inputSwitch formControlName="isAccessibleForReducedMobility"></p-inputSwitch>
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4 switch-field">
+              <label>{{ 'admin.parks.items.details.isIndoor' | translate }}</label>
+              <p-inputSwitch formControlName="isIndoor"></p-inputSwitch>
+            </div>
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.details.waterExposureLevel' | translate }}</label>
+              <p-dropdown
+                formControlName="waterExposureLevel"
+                [options]="waterExposureLevelOptions"
+                optionLabel="labelKey"
+                optionValue="value"
+                [showClear]="true"
+                [placeholder]="'admin.parks.items.details.waterExposureLevelPlaceholder' | translate">
+                <ng-template let-option pTemplate="item">
+                  {{ option.labelKey | translate }}
                 </ng-template>
+                <ng-template let-selected pTemplate="selectedItem">
+                  {{ selected?.labelKey ? (selected.labelKey | translate) : ('admin.parks.items.details.waterExposureLevelPlaceholder' | translate) }}
+                </ng-template>
+              </p-dropdown>
+            </div>
+          </div>
+        </div>
+      </p-tabPanel>
 
-                <div class="grid formgrid">
-                  <div class="field col-12 md:col-6 lg:col-4">
-                    <label>{{ 'admin.parks.items.accessConditionFields.type' | translate }}</label>
-                    <p-dropdown
-                      formControlName="type"
-                      [options]="accessConditionPresetOptions"
-                      optionLabel="labelKey"
-                      optionValue="value"
-                      (onChange)="onAccessConditionTypeChanged(i)">
-                      <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
-                      <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
-                    </p-dropdown>
+      <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.accessConditions' | translate">
+        <div class="tab-section" formGroupName="attractionDetails">
+          <div class="section-header mb-3">
+            <h3>{{ 'admin.parks.items.accessConditionsTitle' | translate }}</h3>
+            <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionsHelp' | translate }}</small>
+          </div>
+
+          <p-card styleClass="inner-card mb-3">
+            <div class="access-summary">
+              <strong>{{ 'admin.parks.items.accessConditionsCount' | translate:{ count: accessConditions.length } }}</strong>
+              <span class="text-color-secondary">{{ 'admin.parks.items.accessConditionsSummary' | translate }}</span>
+            </div>
+          </p-card>
+
+          <div class="grid formgrid mb-3 access-condition-add-row">
+            <div class="field col-12 md:col-8 lg:col-6">
+              <label>{{ 'admin.parks.items.accessConditionsPreset' | translate }}</label>
+              <p-dropdown
+                [(ngModel)]="selectedAccessConditionPreset"
+                [ngModelOptions]="{ standalone: true }"
+                [options]="accessConditionPresetOptions"
+                optionLabel="labelKey"
+                optionValue="value">
+                <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+                <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+              </p-dropdown>
+            </div>
+            <div class="field col-12 md:col-4 lg:col-3 flex align-items-end">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-plus"
+                (click)="addAccessCondition()"
+                [label]="'admin.parks.items.addAccessCondition' | translate">
+              </button>
+            </div>
+          </div>
+
+          <div formArrayName="accessConditions">
+            <div *ngIf="accessConditions.length === 0" class="text-color-secondary mb-3">
+              {{ 'admin.parks.items.accessConditionsEmpty' | translate }}
+            </div>
+
+            <div class="access-condition-list">
+              <div
+                class="access-condition-card"
+                *ngFor="let accessCondition of accessConditions.controls; let i = index"
+                [formGroupName]="i">
+                <p-card>
+                  <ng-template pTemplate="header">
+                    <div class="access-condition-card__header">
+                      <div>
+                        <h4>{{ getAccessConditionTitle(i) }}</h4>
+                        <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionIndex' | translate:{ index: i + 1 } }}</small>
+                      </div>
+
+                      <div class="access-condition-card__actions">
+                        <button pButton type="button" icon="pi pi-arrow-up" class="p-button-text p-button-sm" (click)="moveAccessConditionUp(i)" [disabled]="i === 0"></button>
+                        <button pButton type="button" icon="pi pi-arrow-down" class="p-button-text p-button-sm" (click)="moveAccessConditionDown(i)" [disabled]="i === accessConditions.length - 1"></button>
+                        <button pButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" (click)="removeAccessCondition(i)"></button>
+                      </div>
+                    </div>
+                  </ng-template>
+
+                  <div class="grid formgrid">
+                    <div class="field col-12 md:col-6 lg:col-4">
+                      <label>{{ 'admin.parks.items.accessConditionFields.type' | translate }}</label>
+                      <p-dropdown
+                        formControlName="type"
+                        [options]="accessConditionPresetOptions"
+                        optionLabel="labelKey"
+                        optionValue="value"
+                        (onChange)="onAccessConditionTypeChanged(i)">
+                        <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+                        <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+                      </p-dropdown>
+                    </div>
+
+                    <div class="field col-12 md:col-6 lg:col-4">
+                      <label>{{ 'admin.parks.items.accessConditionFields.value' | translate }}</label>
+                      <input pInputText type="number" formControlName="value" />
+                    </div>
+
+                    <div class="field col-12 md:col-6 lg:col-4">
+                      <label>{{ 'admin.parks.items.accessConditionFields.unit' | translate }}</label>
+                      <p-dropdown
+                        formControlName="unit"
+                        [options]="accessConditionUnitOptions"
+                        optionLabel="labelKey"
+                        optionValue="value"
+                        [showClear]="true">
+                        <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+                        <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+                      </p-dropdown>
+                    </div>
+
+                    <div class="field col-12 md:col-6 lg:col-4 switch-field">
+                      <label>{{ 'admin.parks.items.accessConditionFields.requiresAccompaniment' | translate }}</label>
+                      <p-inputSwitch formControlName="requiresAccompaniment"></p-inputSwitch>
+                    </div>
+
+                    <div class="field col-12 md:col-6 lg:col-4">
+                      <label>{{ 'admin.parks.items.accessConditionFields.minimumCompanionAge' | translate }}</label>
+                      <input pInputText type="number" formControlName="minimumCompanionAge" />
+                    </div>
+
+                    <div class="field col-12">
+                      <label>{{ 'admin.parks.items.accessConditionFields.label' | translate }}</label>
+                      <app-localized-text-input
+                        formControlName="label"
+                        [placeholderKey]="'admin.parks.items.accessConditionFields.labelPlaceholder'">
+                      </app-localized-text-input>
+                    </div>
+
+                    <div class="field col-12">
+                      <label>{{ 'admin.parks.items.accessConditionFields.description' | translate }}</label>
+                      <app-localized-text-input
+                        formControlName="description"
+                        [placeholderKey]="'admin.parks.items.accessConditionFields.descriptionPlaceholder'">
+                      </app-localized-text-input>
+                    </div>
+                  </div>
+                </p-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-tabPanel>
+
+      <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.locations' | translate">
+        <div class="tab-section" formGroupName="attractionLocations">
+          <div class="section-header mb-3">
+            <h3>{{ 'admin.parks.items.locationsTitle' | translate }}</h3>
+            <small class="text-color-secondary">{{ 'admin.parks.items.locationsHelp' | translate }}</small>
+          </div>
+
+          <p-card styleClass="inner-card mb-3">
+            <div class="locations-summary">
+              <strong>{{ 'admin.parks.items.locationSummary' | translate:{ count: getDefinedLocationCount(), total: attractionLocationOptions.length } }}</strong>
+              <span class="text-color-secondary">{{ 'admin.parks.items.locationSummaryHelp' | translate }}</span>
+            </div>
+          </p-card>
+
+          <div class="locations-layout">
+            <div class="locations-sidebar">
+              <div
+                class="location-card-wrapper"
+                *ngFor="let locationOption of attractionLocationOptions">
+                <p-card [styleClass]="selectedLocationKey === locationOption.key ? 'location-card location-card--active' : 'location-card'">
+                  <div class="location-card__header">
+                    <div>
+                      <h4>{{ locationOption.labelKey | translate }}</h4>
+                      <small class="text-color-secondary">{{ getLocationCoordinatesLabel(locationOption.key) }}</small>
+                    </div>
+
+                    <div class="location-card__actions">
+                      <button
+                        pButton
+                        type="button"
+                        class="p-button-text p-button-sm"
+                        icon="pi pi-map-marker"
+                        (click)="selectLocationEditor(locationOption.key)">
+                      </button>
+                      <button
+                        pButton
+                        type="button"
+                        class="p-button-text p-button-danger p-button-sm"
+                        icon="pi pi-times"
+                        [disabled]="!hasLocationPoint(locationOption.key)"
+                        (click)="clearLocationPoint(locationOption.key)">
+                      </button>
+                    </div>
                   </div>
 
-                  <div class="field col-12 md:col-6 lg:col-4">
-                    <label>{{ 'admin.parks.items.accessConditionFields.value' | translate }}</label>
-                    <input pInputText type="number" formControlName="value" />
+                  <div class="location-card__summary mt-2">
+                    <span class="location-card__status" [ngClass]="{'is-defined': hasLocationPoint(locationOption.key)}">
+                      {{ hasLocationPoint(locationOption.key) ? ('admin.parks.items.locationDefined' | translate) : ('admin.parks.items.locationNotDefined' | translate) }}
+                    </span>
                   </div>
+                </p-card>
+              </div>
+            </div>
 
-                  <div class="field col-12 md:col-6 lg:col-4">
-                    <label>{{ 'admin.parks.items.accessConditionFields.unit' | translate }}</label>
-                    <p-dropdown
-                      formControlName="unit"
-                      [options]="accessConditionUnitOptions"
-                      optionLabel="labelKey"
-                      optionValue="value"
-                      [showClear]="true">
-                      <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
-                      <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
-                    </p-dropdown>
+            <div class="locations-editor">
+              <p-card styleClass="inner-card">
+                <div class="section-header mb-3">
+                  <h3>
+                    {{ 'admin.parks.items.locationEditorTitle' | translate:{ location: (getSelectedLocationLabelKey() | translate) } }}
+                  </h3>
+                  <small class="text-color-secondary">{{ 'admin.parks.items.locationEditorHelp' | translate }}</small>
+                </div>
+
+                <app-leaflet-map
+                  [center]="locationMapCenter"
+                  [zoom]="locationMapZoom"
+                  [markers]="locationMapMarkers"
+                  [editable]="true"
+                  (positionChange)="onSpecificLocationMapPositionChange($event)">
+                </app-leaflet-map>
+
+                <div class="location-editor-actions mt-3">
+                  <button
+                    pButton
+                    type="button"
+                    icon="pi pi-compass"
+                    class="p-button-secondary"
+                    (click)="useGeneralLocationForSelectedPoint()"
+                    [label]="'admin.parks.items.useGeneralLocation' | translate">
+                  </button>
+                  <button
+                    pButton
+                    type="button"
+                    icon="pi pi-trash"
+                    class="p-button-outlined p-button-danger"
+                    [disabled]="!hasLocationPoint(selectedLocationKey)"
+                    (click)="clearSelectedLocationPoint()"
+                    [label]="'admin.parks.items.clearSelectedLocation' | translate">
+                  </button>
+                </div>
+
+                <div class="grid formgrid mt-3" [formGroupName]="selectedLocationKey">
+                  <div class="field col-12 md:col-6">
+                    <label>{{ 'admin.parks.latitude' | translate }}</label>
+                    <input pInputText type="number" formControlName="latitude" step="0.000001" />
                   </div>
-
-                  <div class="field col-12 md:col-6 lg:col-4 switch-field">
-                    <label>{{ 'admin.parks.items.accessConditionFields.requiresAccompaniment' | translate }}</label>
-                    <p-inputSwitch formControlName="requiresAccompaniment"></p-inputSwitch>
-                  </div>
-
-                  <div class="field col-12 md:col-6 lg:col-4">
-                    <label>{{ 'admin.parks.items.accessConditionFields.minimumCompanionAge' | translate }}</label>
-                    <input pInputText type="number" formControlName="minimumCompanionAge" />
-                  </div>
-
-                  <div class="field col-12">
-                    <label>{{ 'admin.parks.items.accessConditionFields.label' | translate }}</label>
-                    <app-localized-text-input
-                      formControlName="label"
-                      [placeholderKey]="'admin.parks.items.accessConditionFields.labelPlaceholder'">
-                    </app-localized-text-input>
-                  </div>
-
-                  <div class="field col-12">
-                    <label>{{ 'admin.parks.items.accessConditionFields.description' | translate }}</label>
-                    <app-localized-text-input
-                      formControlName="description"
-                      [placeholderKey]="'admin.parks.items.accessConditionFields.descriptionPlaceholder'">
-                    </app-localized-text-input>
+                  <div class="field col-12 md:col-6">
+                    <label>{{ 'admin.parks.longitude' | translate }}</label>
+                    <input pInputText type="number" formControlName="longitude" step="0.000001" />
                   </div>
                 </div>
               </p-card>
             </div>
           </div>
         </div>
-      </div>
+      </p-tabPanel>
 
-      <p-divider></p-divider>
+      <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.photos' | translate">
+        <div class="tab-section attraction-photos-section">
+          <h3 class="mb-3">{{ 'admin.parks.items.photos.sectionTitle' | translate }}</h3>
 
-      <div class="section-header mb-3">
-        <h3>{{ 'admin.parks.items.locationsTitle' | translate }}</h3>
-        <small class="text-color-secondary">{{ 'admin.parks.items.locationsHelp' | translate }}</small>
-      </div>
-
-      <div formGroupName="attractionLocations" class="grid">
-        <div class="col-12 md:col-6" formGroupName="entrance">
-          <p-card>
-            <h4>{{ 'admin.parks.items.locationFields.entrance' | translate }}</h4>
-            <div class="grid formgrid">
-              <div class="field col-12">
-                <label>{{ 'admin.parks.latitude' | translate }}</label>
-                <input pInputText type="number" formControlName="latitude" />
-              </div>
-              <div class="field col-12">
-                <label>{{ 'admin.parks.longitude' | translate }}</label>
-                <input pInputText type="number" formControlName="longitude" />
-              </div>
-            </div>
-          </p-card>
-        </div>
-
-        <div class="col-12 md:col-6" formGroupName="exit">
-          <p-card>
-            <h4>{{ 'admin.parks.items.locationFields.exit' | translate }}</h4>
-            <div class="grid formgrid">
-              <div class="field col-12">
-                <label>{{ 'admin.parks.latitude' | translate }}</label>
-                <input pInputText type="number" formControlName="latitude" />
-              </div>
-              <div class="field col-12">
-                <label>{{ 'admin.parks.longitude' | translate }}</label>
-                <input pInputText type="number" formControlName="longitude" />
-              </div>
-            </div>
-          </p-card>
-        </div>
-
-        <div class="col-12 md:col-6" formGroupName="fastPassEntrance">
-          <p-card>
-            <h4>{{ 'admin.parks.items.locationFields.fastPassEntrance' | translate }}</h4>
-            <div class="grid formgrid">
-              <div class="field col-12">
-                <label>{{ 'admin.parks.latitude' | translate }}</label>
-                <input pInputText type="number" formControlName="latitude" />
-              </div>
-              <div class="field col-12">
-                <label>{{ 'admin.parks.longitude' | translate }}</label>
-                <input pInputText type="number" formControlName="longitude" />
-              </div>
-            </div>
-          </p-card>
-        </div>
-
-        <div class="col-12 md:col-6" formGroupName="reducedMobilityEntrance">
-          <p-card>
-            <h4>{{ 'admin.parks.items.locationFields.reducedMobilityEntrance' | translate }}</h4>
-            <div class="grid formgrid">
-              <div class="field col-12">
-                <label>{{ 'admin.parks.latitude' | translate }}</label>
-                <input pInputText type="number" formControlName="latitude" />
-              </div>
-              <div class="field col-12">
-                <label>{{ 'admin.parks.longitude' | translate }}</label>
-                <input pInputText type="number" formControlName="longitude" />
-              </div>
-            </div>
-          </p-card>
-        </div>
-      </div>
-
-      <p-divider></p-divider>
-
-      <div class="attraction-photos-section">
-        <h3 class="mb-3">{{ 'admin.parks.items.photos.sectionTitle' | translate }}</h3>
-
-        <div *ngIf="!isEditMode" class="text-color-secondary mb-3">
-          {{ 'admin.parks.items.saveBeforePhotos' | translate }}
-        </div>
-
-        <div *ngIf="isEditMode" class="grid">
-          <div class="col-12 md:col-4">
-            <p-card styleClass="photo-card">
-              <div class="photo-card__header">
-                <h4>{{ 'admin.parks.items.photos.currentTitle' | translate }}</h4>
-              </div>
-
-              <div class="photo-card__body">
-                <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
-                  <img *ngIf="currentPhoto"
-                       [src]="currentPhoto.imageUrl"
-                       [alt]="'admin.parks.items.photos.alt' | translate"
-                       class="photo-preview" />
-
-                  <span *ngIf="!currentPhoto" class="text-color-secondary text-center photo-empty-text">
-                    {{ 'admin.parks.items.photos.noCurrent' | translate }}
-                  </span>
-
-                  <small *ngIf="currentPhoto" class="text-color-secondary">
-                    {{ currentPhoto.createdAt | date:'shortDate' }}
-                  </small>
-                </div>
-              </div>
-            </p-card>
+          <div *ngIf="!isEditMode" class="text-color-secondary mb-3">
+            {{ 'admin.parks.items.saveBeforePhotos' | translate }}
           </div>
 
-          <div class="col-12 md:col-8">
-            <p-card styleClass="photo-card">
-              <div class="photo-card__header">
-                <h4>{{ 'admin.parks.items.photos.uploadTitle' | translate }}</h4>
-              </div>
+          <div *ngIf="isEditMode" class="grid">
+            <div class="col-12 md:col-4">
+              <p-card styleClass="photo-card">
+                <div class="photo-card__header">
+                  <h4>{{ 'admin.parks.items.photos.currentTitle' | translate }}</h4>
+                </div>
 
-              <div class="photo-card__body">
-                <div class="flex flex-column gap-3">
-                  <input type="file"
-                         (change)="onPhotoFileSelected($event)"
-                         accept="image/*" />
+                <div class="photo-card__body">
+                  <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
+                    <img *ngIf="currentPhoto"
+                         [src]="currentPhoto.imageUrl"
+                         [alt]="'admin.parks.items.photos.alt' | translate"
+                         class="photo-preview" />
 
-                  <input
-                    pInputText
-                    type="text"
-                    [(ngModel)]="newPhotoDescription"
-                    [ngModelOptions]="{ standalone: true }"
-                    [placeholder]="'admin.parks.items.photos.descriptionPlaceholder' | translate" />
+                    <span *ngIf="!currentPhoto" class="text-color-secondary text-center photo-empty-text">
+                      {{ 'admin.parks.items.photos.noCurrent' | translate }}
+                    </span>
 
-                  <div class="flex justify-content-end">
-                    <button pButton type="button"
-                            (click)="onUploadPhoto()"
-                            [disabled]="!selectedPhotoFile || photosUploading">
-                      <span *ngIf="!photosUploading">
-                        {{ 'admin.parks.items.photos.uploadButton' | translate }}
-                      </span>
-                      <span *ngIf="photosUploading">
-                        {{ 'admin.loading' | translate }}
-                      </span>
-                    </button>
+                    <small *ngIf="currentPhoto" class="text-color-secondary">
+                      {{ currentPhoto.createdAt | date:'shortDate' }}
+                    </small>
                   </div>
                 </div>
-              </div>
-            </p-card>
-          </div>
-        </div>
+              </p-card>
+            </div>
 
-        <p-panel *ngIf="isEditMode" [toggleable]="true" [collapsed]="true"
-                 header="{{ 'admin.parks.items.photos.historyTitle' | translate }}">
-          <div *ngIf="photosLoading" class="text-center py-3">
-            <p-progressSpinner styleClass="w-2rem h-2rem"></p-progressSpinner>
-          </div>
+            <div class="col-12 md:col-8">
+              <p-card styleClass="photo-card">
+                <div class="photo-card__header">
+                  <h4>{{ 'admin.parks.items.photos.uploadTitle' | translate }}</h4>
+                </div>
 
-          <div *ngIf="!photosLoading && attractionPhotos.length === 0" class="text-color-secondary">
-            {{ 'admin.parks.items.photos.empty' | translate }}
-          </div>
+                <div class="photo-card__body">
+                  <div class="flex flex-column gap-3">
+                    <input type="file"
+                           (change)="onPhotoFileSelected($event)"
+                           accept="image/*" />
 
-          <div *ngIf="!photosLoading && attractionPhotos.length > 0">
-            <div class="grid">
-              <div class="col-12 md:col-4 lg:col-3"
-                   *ngFor="let photo of pagedPhotos">
-                <p-card [ngClass]="{'border-primary': photo.isCurrent}">
-                  <div class="flex flex-column align-items-center">
-                    <img [src]="photo.imageUrl"
-                         [alt]="'admin.parks.items.photos.alt' | translate"
-                         class="photo-history-preview mb-2" />
+                    <input
+                      pInputText
+                      type="text"
+                      [(ngModel)]="newPhotoDescription"
+                      [ngModelOptions]="{ standalone: true }"
+                      [placeholder]="'admin.parks.items.photos.descriptionPlaceholder' | translate" />
 
-                    <p-tag
-                      *ngIf="photo.isCurrent"
-                      [value]="'admin.parks.items.photos.currentLabel' | translate"
-                      severity="success"
-                      class="mb-2">
-                    </p-tag>
-
-                    <small class="text-color-secondary mb-2">
-                      {{ photo.createdAt | date:'short' }}
-                    </small>
-
-                    <small class="mb-2 text-center">
-                      {{ photo.description || ('admin.parks.items.photos.noDescription' | translate) }}
-                    </small>
-
-                    <div class="flex gap-2">
+                    <div class="flex justify-content-end">
                       <button pButton type="button"
-                              icon="pi pi-check"
-                              class="p-button-sm p-button-success"
-                              (click)="onSetCurrentPhoto(photo)"
-                              [disabled]="photo.isCurrent">
-                      </button>
-                      <button pButton type="button"
-                              icon="pi pi-trash"
-                              class="p-button-sm p-button-danger"
-                              (click)="onDeletePhoto(photo)">
+                              (click)="onUploadPhoto()"
+                              [disabled]="!selectedPhotoFile || photosUploading">
+                        <span *ngIf="!photosUploading">
+                          {{ 'admin.parks.items.photos.uploadButton' | translate }}
+                        </span>
+                        <span *ngIf="photosUploading">
+                          {{ 'admin.loading' | translate }}
+                        </span>
                       </button>
                     </div>
                   </div>
-                </p-card>
-              </div>
+                </div>
+              </p-card>
+            </div>
+          </div>
+
+          <p-panel *ngIf="isEditMode" [toggleable]="true" [collapsed]="true"
+                   header="{{ 'admin.parks.items.photos.historyTitle' | translate }}">
+            <div *ngIf="photosLoading" class="text-center py-3">
+              <p-progressSpinner styleClass="w-2rem h-2rem"></p-progressSpinner>
             </div>
 
-            <p-paginator
-              [rows]="photosPageSize"
-              [totalRecords]="attractionPhotos.length"
-              (onPageChange)="onPhotosPageChange($event)">
-            </p-paginator>
-          </div>
-        </p-panel>
-      </div>
-    </div>
+            <div *ngIf="!photosLoading && attractionPhotos.length === 0" class="text-color-secondary">
+              {{ 'admin.parks.items.photos.empty' | translate }}
+            </div>
 
-    <div class="field">
-      <label>{{ 'admin.parks.visibleField' | translate }}</label>
-      <p-inputSwitch formControlName="isVisible"></p-inputSwitch>
-    </div>
+            <div *ngIf="!photosLoading && attractionPhotos.length > 0">
+              <div class="grid">
+                <div class="col-12 md:col-4 lg:col-3"
+                     *ngFor="let photo of pagedPhotos">
+                  <p-card [ngClass]="{'border-primary': photo.isCurrent}">
+                    <div class="flex flex-column align-items-center">
+                      <img [src]="photo.imageUrl"
+                           [alt]="'admin.parks.items.photos.alt' | translate"
+                           class="photo-history-preview mb-2" />
+
+                      <p-tag
+                        *ngIf="photo.isCurrent"
+                        [value]="'admin.parks.items.photos.currentLabel' | translate"
+                        severity="success"
+                        class="mb-2">
+                      </p-tag>
+
+                      <small class="text-color-secondary mb-2">
+                        {{ photo.createdAt | date:'short' }}
+                      </small>
+
+                      <small class="mb-2 text-center">
+                        {{ photo.description || ('admin.parks.items.photos.noDescription' | translate) }}
+                      </small>
+
+                      <div class="flex gap-2">
+                        <button pButton type="button"
+                                icon="pi pi-check"
+                                class="p-button-sm p-button-success"
+                                (click)="onSetCurrentPhoto(photo)"
+                                [disabled]="photo.isCurrent">
+                        </button>
+                        <button pButton type="button"
+                                icon="pi pi-trash"
+                                class="p-button-sm p-button-danger"
+                                (click)="onDeletePhoto(photo)">
+                        </button>
+                      </div>
+                    </div>
+                  </p-card>
+                </div>
+              </div>
+
+              <p-paginator
+                [rows]="photosPageSize"
+                [totalRecords]="attractionPhotos.length"
+                (onPageChange)="onPhotosPageChange($event)">
+              </p-paginator>
+            </div>
+          </p-panel>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
 
     <div class="actions-row">
       <button pButton type="button" class="p-button-secondary" (click)="goBack()" [label]="'actions.cancel' | translate"></button>

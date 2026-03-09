@@ -1,0 +1,65 @@
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="header-row">
+      <span class="total">
+        {{ 'admin.manufacturers.total' | translate:{ count: filteredManufacturers.length } }}
+      </span>
+    </div>
+  </ng-template>
+
+  <div class="search-row">
+    <input
+      pInputText
+      type="text"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="applyFilter()"
+      [placeholder]="'admin.manufacturers.searchPlaceholder' | translate" />
+
+    <a
+      pButton
+      type="button"
+      icon="pi pi-plus"
+      class="p-button-primary"
+      [routerLink]="['/', currentLang, 'admin', 'manufacturers', 'new']"
+      [label]="'admin.manufacturers.create' | translate">
+    </a>
+  </div>
+
+  <p-table
+    [value]="filteredManufacturers"
+    [loading]="loading"
+    [responsiveLayout]="'scroll'">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'admin.manufacturers.name' | translate }}</th>
+        <th>{{ 'admin.manufacturers.attractionCount' | translate }}</th>
+        <th>{{ 'admin.manufacturers.actions' | translate }}</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-manufacturer>
+      <tr>
+        <td>{{ manufacturer.name }}</td>
+        <td>{{ manufacturer.attractionCount ?? 0 }}</td>
+        <td>
+          <a
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-text p-button-sm"
+            [routerLink]="['/', currentLang, 'admin', 'manufacturers', 'edit', manufacturer.id]"
+            [label]="'admin.manufacturers.edit' | translate">
+          </a>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="3">
+          {{ 'admin.manufacturers.empty' | translate }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
 import { LANGUAGES } from '../../../../../commons/languages';
 import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
@@ -9,16 +10,21 @@ import { ImageCategory } from '../../../../../models/images/image-category';
 import { ImageDto } from '../../../../../models/images/image-dto';
 import { ImageOwnerType } from '../../../../../models/images/image-owner-type';
 import { UploadedImage } from '../../../../../models/images/uploaded-image';
+import { MapMarker } from '../../../../../models/map/map-marker';
 import { AttractionAccessCondition } from '../../../../../models/parks/attraction-access-condition';
 import { AttractionAccessConditionType } from '../../../../../models/parks/attraction-access-condition-type';
 import { AttractionAccessConditionUnit } from '../../../../../models/parks/attraction-access-condition-unit';
 import { AttractionDetails } from '../../../../../models/parks/attraction-details';
 import { AttractionLocationPoint } from '../../../../../models/parks/attraction-location-point';
 import { AttractionLocations } from '../../../../../models/parks/attraction-locations';
+import { AttractionManufacturer } from '../../../../../models/parks/attraction-manufacturer';
+import { AttractionWaterExposureLevel } from '../../../../../models/parks/attraction-water-exposure-level';
+import { Park } from '../../../../../models/parks/park';
 import { ParkItem } from '../../../../../models/parks/park-item';
 import { ParkItemCategory } from '../../../../../models/parks/park-item-category';
 import { ParkItemType } from '../../../../../models/parks/park-item-type';
 import { ParkZone } from '../../../../../models/parks/park-zone';
+import { EntitySelectOption } from '../../../../../models/shared/entity-select-option';
 import { LocalizedItem } from '../../../../../models/shared/localized-item';
 import { ApiService } from '../../../../../services/api.service';
 
@@ -35,18 +41,38 @@ interface AttractionPhotoItem {
   createdAt: string;
 }
 
+type AttractionLocationKey = 'entrance' | 'exit' | 'fastPassEntrance' | 'reducedMobilityEntrance';
+
+interface AttractionLocationOption {
+  key: AttractionLocationKey;
+  labelKey: string;
+}
+
 @Component({
   selector: 'app-admin-park-item-edit',
   templateUrl: './admin-park-item-edit.component.html',
   styleUrls: ['./admin-park-item-edit.component.scss']
 })
-export class AdminParkItemEditComponent implements OnInit {
+export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   parkId: string = '';
   itemId: string | null = null;
   currentLang: string = 'en';
   zones: { id: string; label: string }[] = [];
   filteredTypeOptions: Option<ParkItemType>[] = [];
+  manufacturerOptions: EntitySelectOption[] = [];
+  manufacturersLoading: boolean = false;
+
+  activeTabIndex: number = 0;
+
+  generalMapCenter: [number, number] = [48.8566, 2.3522];
+  generalMapZoom: number = 18;
+  generalMapMarkers: MapMarker[] = [];
+
+  selectedLocationKey: AttractionLocationKey = 'entrance';
+  locationMapCenter: [number, number] = [48.8566, 2.3522];
+  locationMapZoom: number = 19;
+  locationMapMarkers: MapMarker[] = [];
 
   selectedPhotoFile: File | null = null;
   newPhotoDescription: string = '';
@@ -58,6 +84,15 @@ export class AdminParkItemEditComponent implements OnInit {
   photosPageSize: number = 8;
 
   selectedAccessConditionPreset: AttractionAccessConditionType = 'MinHeight';
+
+  private readonly subscriptions: Subscription = new Subscription();
+
+  readonly attractionLocationOptions: AttractionLocationOption[] = [
+    { key: 'entrance', labelKey: 'admin.parks.items.locationFields.entrance' },
+    { key: 'exit', labelKey: 'admin.parks.items.locationFields.exit' },
+    { key: 'fastPassEntrance', labelKey: 'admin.parks.items.locationFields.fastPassEntrance' },
+    { key: 'reducedMobilityEntrance', labelKey: 'admin.parks.items.locationFields.reducedMobilityEntrance' }
+  ];
 
   readonly categoryOptions: Option<ParkItemCategory>[] = [
     { labelKey: 'parkExplorer.categories.attraction', value: 'Attraction' },
@@ -127,6 +162,13 @@ export class AdminParkItemEditComponent implements OnInit {
     { labelKey: 'admin.parks.items.accessConditionTypes.wheelchairTransferRequired', value: 'WheelchairTransferRequired' },
     { labelKey: 'admin.parks.items.accessConditionTypes.accessPassRequired', value: 'AccessPassRequired' },
     { labelKey: 'admin.parks.items.accessConditionTypes.custom', value: 'Custom' }
+  ];
+
+  readonly waterExposureLevelOptions: Option<AttractionWaterExposureLevel>[] = [
+    { labelKey: 'admin.parks.items.waterExposureLevels.none', value: 'None' },
+    { labelKey: 'admin.parks.items.waterExposureLevels.splash', value: 'Splash' },
+    { labelKey: 'admin.parks.items.waterExposureLevels.moderate', value: 'Moderate' },
+    { labelKey: 'admin.parks.items.waterExposureLevels.soaking', value: 'Soaking' }
   ];
 
   readonly accessConditionUnitOptions: Option<AttractionAccessConditionUnit>[] = [
@@ -264,6 +306,10 @@ export class AdminParkItemEditComponent implements OnInit {
     return this.form.get(['attractionDetails', 'accessConditions']) as FormArray;
   }
 
+  get manufacturerCreateLinkQueryParams(): Record<string, string> {
+    return { returnUrl: this.router.url };
+  }
+
   constructor(
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
@@ -285,11 +331,11 @@ export class AdminParkItemEditComponent implements OnInit {
       category: ['Attraction', Validators.required],
       type: ['Attraction', Validators.required],
       subtype: [''],
-      latitude: [0, Validators.required],
-      longitude: [0, Validators.required],
+      latitude: [48.8566, Validators.required],
+      longitude: [2.3522, Validators.required],
       descriptions: [[]],
       attractionDetails: this.fb.group({
-        manufacturer: [''],
+        manufacturerId: [null],
         model: [''],
         openingDate: [''],
         closingDate: [''],
@@ -307,7 +353,7 @@ export class AdminParkItemEditComponent implements OnInit {
         hasFastPass: [false],
         isAccessibleForReducedMobility: [false],
         isIndoor: [false],
-        isWaterAttraction: [false],
+        waterExposureLevel: [null],
         accessConditions: this.fb.array([])
       }),
       attractionLocations: this.fb.group({
@@ -320,10 +366,9 @@ export class AdminParkItemEditComponent implements OnInit {
     });
 
     this.applyCategorySelection(this.form.get('category')?.value as ParkItemCategory);
-
-    this.form.get('category')?.valueChanges.subscribe((categoryValue: unknown) => {
-      this.applyCategorySelection(categoryValue as ParkItemCategory);
-    });
+    this.setupFormSync();
+    this.loadManufacturers();
+    this.applyManufacturerSelectionOverride();
 
     this.apiService.getParkZonesByParkId(this.parkId).subscribe((zones: ParkZone[]) => {
       this.zones = zones
@@ -351,13 +396,24 @@ export class AdminParkItemEditComponent implements OnInit {
 
         this.patchAttractionDetails(item.attractionDetails ?? null);
         this.patchAttractionLocations(item.attractionLocations ?? null);
+        this.applyManufacturerSelectionOverride();
         this.applyCategorySelection(item.category);
+        this.refreshAllMapStates();
 
         if (item.category === 'Attraction') {
           this.loadAttractionPhotos();
         }
       });
+
+      return;
     }
+
+    this.loadParkDefaultsForCreate();
+    this.refreshAllMapStates();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   onSubmit(): void {
@@ -376,10 +432,80 @@ export class AdminParkItemEditComponent implements OnInit {
     this.apiService.createParkItem(payload).subscribe(() => this.goBack());
   }
 
+  onGeneralMapPositionChange(position: { lat: number; lng: number }): void {
+    this.form.patchValue({
+      latitude: position.lat,
+      longitude: position.lng
+    });
+  }
+
+  selectLocationEditor(locationKey: AttractionLocationKey): void {
+    this.selectedLocationKey = locationKey;
+    this.updateLocationMapState();
+  }
+
+  onSpecificLocationMapPositionChange(position: { lat: number; lng: number }): void {
+    const group: FormGroup = this.getLocationGroup(this.selectedLocationKey);
+    group.patchValue({
+      latitude: position.lat,
+      longitude: position.lng
+    });
+  }
+
+  clearSelectedLocationPoint(): void {
+    this.clearLocationPoint(this.selectedLocationKey);
+  }
+
+  clearLocationPoint(locationKey: AttractionLocationKey): void {
+    const group: FormGroup = this.getLocationGroup(locationKey);
+    group.patchValue({
+      latitude: null,
+      longitude: null
+    });
+  }
+
+  useGeneralLocationForSelectedPoint(): void {
+    const latitude: number = this.toRequiredNumber(this.form.get('latitude')?.value);
+    const longitude: number = this.toRequiredNumber(this.form.get('longitude')?.value);
+
+    this.getLocationGroup(this.selectedLocationKey).patchValue({
+      latitude,
+      longitude
+    });
+  }
+
+  hasLocationPoint(locationKey: AttractionLocationKey): boolean {
+    return this.getLocationPoint(locationKey) !== null;
+  }
+
+  getLocationCoordinatesLabel(locationKey: AttractionLocationKey): string {
+    const point: AttractionLocationPoint | null = this.getLocationPoint(locationKey);
+
+    if (!point || point.latitude === null || point.longitude === null || point.latitude === undefined || point.longitude === undefined) {
+      return this.translateService.instant('admin.parks.items.locationNotDefined');
+    }
+
+    return `${point.latitude.toFixed(6)}, ${point.longitude.toFixed(6)}`;
+  }
+
+  getDefinedLocationCount(): number {
+    return this.attractionLocationOptions.filter((option: AttractionLocationOption) => this.hasLocationPoint(option.key)).length;
+  }
+
+  getLocationLabelKey(locationKey: AttractionLocationKey): string {
+    return this.attractionLocationOptions.find((option: AttractionLocationOption) => option.key === locationKey)?.labelKey
+      ?? 'admin.parks.items.locationFields.entrance';
+  }
+
+  getSelectedLocationLabelKey(): string {
+    return this.getLocationLabelKey(this.selectedLocationKey);
+  }
+
   addAccessCondition(type: AttractionAccessConditionType = this.selectedAccessConditionPreset): void {
     const condition: AttractionAccessCondition = this.buildDefaultAccessCondition(type);
     this.accessConditions.push(this.createAccessConditionGroup(condition));
     this.syncAccessConditionDisplayOrders();
+    this.activeTabIndex = this.isAttractionCategory ? 2 : 0;
   }
 
   removeAccessCondition(index: number): void {
@@ -562,6 +688,103 @@ export class AdminParkItemEditComponent implements OnInit {
     this.router.navigate(['/', this.currentLang, 'admin', 'parks', 'edit', this.parkId, 'items']);
   }
 
+  private setupFormSync(): void {
+    const categorySubscription: Subscription = this.form.get('category')!.valueChanges.subscribe((categoryValue: unknown) => {
+      this.applyCategorySelection(categoryValue as ParkItemCategory);
+
+      if (categoryValue !== 'Attraction') {
+        this.activeTabIndex = 0;
+      }
+    });
+
+    const generalLatitudeSubscription: Subscription = this.form.get('latitude')!.valueChanges.subscribe(() => {
+      this.updateGeneralMapState();
+      this.updateLocationMapState();
+    });
+
+    const generalLongitudeSubscription: Subscription = this.form.get('longitude')!.valueChanges.subscribe(() => {
+      this.updateGeneralMapState();
+      this.updateLocationMapState();
+    });
+
+    const locationSubscription: Subscription = this.form.get('attractionLocations')!.valueChanges.subscribe(() => {
+      this.updateLocationMapState();
+    });
+
+    this.subscriptions.add(categorySubscription);
+    this.subscriptions.add(generalLatitudeSubscription);
+    this.subscriptions.add(generalLongitudeSubscription);
+    this.subscriptions.add(locationSubscription);
+  }
+
+  private loadParkDefaultsForCreate(): void {
+    if (!this.parkId) {
+      return;
+    }
+
+    this.apiService.getParkById(this.parkId).subscribe({
+      next: (park: Park) => {
+        this.form.patchValue({
+          latitude: park.latitude,
+          longitude: park.longitude
+        });
+      },
+      error: (error: unknown) => {
+        console.error('Error loading park defaults for item creation', error);
+      }
+    });
+  }
+
+  private refreshAllMapStates(): void {
+    this.updateGeneralMapState();
+    this.updateLocationMapState();
+  }
+
+  private updateGeneralMapState(): void {
+    const latitude: number = this.toRequiredNumber(this.form.get('latitude')?.value);
+    const longitude: number = this.toRequiredNumber(this.form.get('longitude')?.value);
+
+    this.generalMapCenter = [latitude, longitude];
+    this.generalMapMarkers = [
+      {
+        id: 'general-location',
+        lat: latitude,
+        lng: longitude
+      }
+    ];
+  }
+
+  private updateLocationMapState(): void {
+    const point: AttractionLocationPoint | null = this.getLocationPoint(this.selectedLocationKey);
+
+    if (point && point.latitude !== null && point.longitude !== null && point.latitude !== undefined && point.longitude !== undefined) {
+      this.locationMapCenter = [point.latitude, point.longitude];
+      this.locationMapMarkers = [
+        {
+          id: this.selectedLocationKey,
+          lat: point.latitude,
+          lng: point.longitude
+        }
+      ];
+      return;
+    }
+
+    const latitude: number = this.toRequiredNumber(this.form.get('latitude')?.value);
+    const longitude: number = this.toRequiredNumber(this.form.get('longitude')?.value);
+
+    this.locationMapCenter = [latitude, longitude];
+    this.locationMapMarkers = [];
+  }
+
+  private getLocationGroup(locationKey: AttractionLocationKey): FormGroup {
+    return this.form.get(['attractionLocations', locationKey]) as FormGroup;
+  }
+
+  private getLocationPoint(locationKey: AttractionLocationKey): AttractionLocationPoint | null {
+    const groupValue: any = this.getLocationGroup(locationKey).getRawValue();
+    return this.buildLocationPoint(groupValue);
+  }
+
   private createLocationGroup(): FormGroup {
     return this.fb.group({
       latitude: [null],
@@ -605,10 +828,10 @@ export class AdminParkItemEditComponent implements OnInit {
 
   private patchAttractionDetails(details: AttractionDetails | null): void {
     this.form.get('attractionDetails')?.patchValue({
-      manufacturer: details?.manufacturer ?? '',
+      manufacturerId: details?.manufacturerId ?? null,
       model: details?.model ?? '',
-      openingDate: details?.openingDate ?? '',
-      closingDate: details?.closingDate ?? '',
+      openingDate: this.normalizeDateForInput(details?.openingDate),
+      closingDate: this.normalizeDateForInput(details?.closingDate),
       durationInSeconds: details?.durationInSeconds ?? null,
       capacityPerHour: details?.capacityPerHour ?? null,
       heightInMeters: details?.heightInMeters ?? null,
@@ -623,7 +846,7 @@ export class AdminParkItemEditComponent implements OnInit {
       hasFastPass: details?.hasFastPass ?? false,
       isAccessibleForReducedMobility: details?.isAccessibleForReducedMobility ?? false,
       isIndoor: details?.isIndoor ?? false,
-      isWaterAttraction: details?.isWaterAttraction ?? false
+      waterExposureLevel: details?.waterExposureLevel ?? null
     });
 
     this.setAccessConditions(details?.accessConditions ?? null);
@@ -654,7 +877,7 @@ export class AdminParkItemEditComponent implements OnInit {
     this.patchLocation('reducedMobilityEntrance', locations?.reducedMobilityEntrance ?? null);
   }
 
-  private patchLocation(controlName: string, point: AttractionLocationPoint | null): void {
+  private patchLocation(controlName: AttractionLocationKey, point: AttractionLocationPoint | null): void {
     this.form.get(['attractionLocations', controlName])?.patchValue({
       latitude: point?.latitude ?? null,
       longitude: point?.longitude ?? null
@@ -683,10 +906,10 @@ export class AdminParkItemEditComponent implements OnInit {
 
   private buildAttractionDetails(raw: any): AttractionDetails | null {
     const details: AttractionDetails = {
-      manufacturer: this.toNullableText(raw?.manufacturer),
+      manufacturerId: this.toNullableText(raw?.manufacturerId),
       model: this.toNullableText(raw?.model),
-      openingDate: this.toNullableText(raw?.openingDate),
-      closingDate: this.toNullableText(raw?.closingDate),
+      openingDate: this.toNullableDateText(raw?.openingDate),
+      closingDate: this.toNullableDateText(raw?.closingDate),
       durationInSeconds: this.toNullableInteger(raw?.durationInSeconds),
       capacityPerHour: this.toNullableInteger(raw?.capacityPerHour),
       heightInMeters: this.toNullableNumber(raw?.heightInMeters),
@@ -701,7 +924,7 @@ export class AdminParkItemEditComponent implements OnInit {
       hasFastPass: raw?.hasFastPass ?? false,
       isAccessibleForReducedMobility: raw?.isAccessibleForReducedMobility ?? false,
       isIndoor: raw?.isIndoor ?? false,
-      isWaterAttraction: raw?.isWaterAttraction ?? false,
+      waterExposureLevel: this.toNullableWaterExposureLevel(raw?.waterExposureLevel),
       accessConditions: this.buildAttractionAccessConditions(raw?.accessConditions)
     };
 
@@ -784,6 +1007,34 @@ export class AdminParkItemEditComponent implements OnInit {
 
       return value !== null && value !== undefined && value !== '';
     });
+  }
+
+  private loadManufacturers(): void {
+    this.manufacturersLoading = true;
+
+    this.apiService.getAttractionManufacturers().subscribe({
+      next: (manufacturers: AttractionManufacturer[]) => {
+        this.manufacturerOptions = manufacturers
+          .filter((manufacturer: AttractionManufacturer) => !!manufacturer.id)
+          .map((manufacturer: AttractionManufacturer) => ({
+            id: manufacturer.id ?? '',
+            label: manufacturer.name
+          }));
+        this.manufacturersLoading = false;
+      },
+      error: (error: unknown) => {
+        console.error('Error loading manufacturers', error);
+        this.manufacturersLoading = false;
+      }
+    });
+  }
+
+  private applyManufacturerSelectionOverride(): void {
+    const manufacturerId: string | null = this.route.snapshot.queryParamMap.get('manufacturerId');
+
+    if (manufacturerId) {
+      this.form.get(['attractionDetails', 'manufacturerId'])?.setValue(manufacturerId);
+    }
   }
 
   private hasAtLeastOneAccessConditionValue(condition: AttractionAccessCondition): boolean {
@@ -913,8 +1164,37 @@ export class AdminParkItemEditComponent implements OnInit {
     return normalized.length > 0 ? normalized : null;
   }
 
+  private normalizeDateForInput(value: unknown): string {
+    const normalized: string = String(value ?? '').trim();
+
+    if (normalized.length === 0) {
+      return '';
+    }
+
+    const isoDateMatch: RegExpMatchArray | null = normalized.match(/^(\d{4}-\d{2}-\d{2})/);
+    if (isoDateMatch) {
+      return isoDateMatch[1];
+    }
+
+    const parsedDate: Date = new Date(normalized);
+    if (Number.isNaN(parsedDate.getTime())) {
+      return '';
+    }
+
+    const year: string = String(parsedDate.getUTCFullYear()).padStart(4, '0');
+    const month: string = String(parsedDate.getUTCMonth() + 1).padStart(2, '0');
+    const day: string = String(parsedDate.getUTCDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  }
+
   private toNullableText(value: unknown): string | null {
     const normalized: string = String(value ?? '').trim();
+    return normalized.length > 0 ? normalized : null;
+  }
+
+  private toNullableDateText(value: unknown): string | null {
+    const normalized: string = this.normalizeDateForInput(value);
     return normalized.length > 0 ? normalized : null;
   }
 
@@ -938,6 +1218,12 @@ export class AdminParkItemEditComponent implements OnInit {
 
   private toNullableUnit(value: unknown): AttractionAccessConditionUnit | null {
     return value === 'Centimeter' || value === 'Year'
+      ? value
+      : null;
+  }
+
+  private toNullableWaterExposureLevel(value: unknown): AttractionWaterExposureLevel | null {
+    return value === 'None' || value === 'Splash' || value === 'Moderate' || value === 'Soaking'
       ? value
       : null;
   }

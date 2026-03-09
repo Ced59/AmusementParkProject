@@ -68,7 +68,8 @@
       "users": "Utenti",
       "parks": "Parchi",
       "site": "Sito",
-      "operators": "Gestori"
+      "operators": "Gestori",
+      "manufacturers": "Manufacturers"
     },
     "users": {
       "total": "Numero totale di utenti: {{count}}",
@@ -195,7 +196,10 @@
           "hasFastPass": "Fast pass available",
           "isAccessibleForReducedMobility": "Reduced mobility accessible",
           "isIndoor": "Indoor attraction",
-          "isWaterAttraction": "Water attraction"
+          "isWaterAttraction": "Water attraction",
+          "manufacturerPlaceholder": "Select a manufacturer",
+          "waterExposureLevel": "Water exposure level",
+          "waterExposureLevelPlaceholder": "Select a level"
         },
         "locationFields": {
           "entrance": "Entrance",
@@ -252,7 +256,31 @@
           "description": "Localized description",
           "labelPlaceholder": "Condition label in {{language}}",
           "descriptionPlaceholder": "Condition description in {{language}}"
-        }
+        },
+        "waterExposureLevels": {
+          "none": "None",
+          "splash": "Light splash",
+          "moderate": "Moderate",
+          "soaking": "Soaking"
+        },
+        "refactorHint": "L’editor è ora suddiviso in sezioni tematiche per alleggerire la pagina e renderla più chiara.",
+        "tabs": {
+          "general": "Generale",
+          "details": "Dettagli tecnici",
+          "accessConditions": "Condizioni di accesso",
+          "locations": "Posizioni specifiche",
+          "photos": "Foto"
+        },
+        "accessConditionsCount": "{{count}} condizione/i di accesso",
+        "accessConditionsSummary": "Gestisci qui le regole dettagliate invece di sovraccaricare il modulo principale.",
+        "locationSummary": "{{count}} / {{total}} posizione/i specifica/he definita/e",
+        "locationSummaryHelp": "Ogni punto può restare vuoto. Usa la mappa solo per le coordinate davvero utili.",
+        "locationEditorTitle": "Editor mappa · {{location}}",
+        "locationEditorHelp": "Clicca sulla mappa per creare o spostare il punto selezionato. Le coordinate manuali restano disponibili come alternativa.",
+        "locationDefined": "Definita",
+        "locationNotDefined": "Non definita",
+        "useGeneralLocation": "Usa posizione generale",
+        "clearSelectedLocation": "Cancella punto selezionato"
       }
     },
     "loading": "Caricamento...",
@@ -277,6 +305,22 @@
         "updateTitle": "Modifica il fondatore",
         "name": "Nome",
         "biography": "Biografia"
+      }
+    },
+    "manufacturers": {
+      "total": "Manufacturers: {{count}}",
+      "searchPlaceholder": "Search a manufacturer",
+      "create": "Create a manufacturer",
+      "name": "Name",
+      "attractionCount": "Attached attractions",
+      "actions": "Actions",
+      "edit": "Edit",
+      "empty": "No manufacturer found.",
+      "editPage": {
+        "createTitle": "Create a manufacturer",
+        "updateTitle": "Edit manufacturer",
+        "name": "Name",
+        "biography": "Biography"
       }
     }
   },

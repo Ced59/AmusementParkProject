@@ -16,15 +16,18 @@ namespace Services.Implementations
         private readonly IParkItemsQueryHandler itemsQueryHandler;
         private readonly IParksQueryHandler parksQueryHandler;
         private readonly IParkZonesQueryHandler zonesQueryHandler;
+        private readonly IAttractionManufacturersQueryHandler attractionManufacturersQueryHandler;
 
         public ParkItemsService(
             IParkItemsQueryHandler itemsQueryHandler,
             IParksQueryHandler parksQueryHandler,
-            IParkZonesQueryHandler zonesQueryHandler)
+            IParkZonesQueryHandler zonesQueryHandler,
+            IAttractionManufacturersQueryHandler attractionManufacturersQueryHandler)
         {
             this.itemsQueryHandler = itemsQueryHandler;
             this.parksQueryHandler = parksQueryHandler;
             this.zonesQueryHandler = zonesQueryHandler;
+            this.attractionManufacturersQueryHandler = attractionManufacturersQueryHandler;
         }
 
         public async Task<OneOf<IEnumerable<ParkItemDto>, ErrorCodes.ErrorDetail>> GetByParkIdAsync(string parkId, bool includeNonVisible = true)
@@ -35,7 +38,8 @@ namespace Services.Implementations
                 return ErrorCodes.ParkNotExists;
             }
 
-            return (await itemsQueryHandler.GetByParkIdAsync(parkId, includeNonVisible)).Select(MapToDto).ToList();
+            IEnumerable<ParkItem> items = await itemsQueryHandler.GetByParkIdAsync(parkId, includeNonVisible);
+            return items.Select(MapToDto).ToList();
         }
 
         public async Task<OneOf<ParkItemDto, ErrorCodes.ErrorDetail>> GetByIdAsync(string id)
@@ -52,13 +56,10 @@ namespace Services.Implementations
                 return ErrorCodes.ParkNotExists;
             }
 
-            if (!string.IsNullOrWhiteSpace(dto.ZoneId))
+            ErrorCodes.ErrorDetail? validationError = await ValidateReferencesAsync(dto.ParkId, dto.ZoneId, dto.Category, dto.AttractionDetails);
+            if (validationError.HasValue)
             {
-                ParkZone? zone = await zonesQueryHandler.GetByIdAsync(dto.ZoneId);
-                if (zone == null || zone.ParkId != dto.ParkId)
-                {
-                    return ErrorCodes.ParkZoneNotExists;
-                }
+                return validationError.Value;
             }
 
             ParkItem item = new()
@@ -91,13 +92,10 @@ namespace Services.Implementations
                 return ErrorCodes.ParkItemNotExists;
             }
 
-            if (!string.IsNullOrWhiteSpace(dto.ZoneId))
+            ErrorCodes.ErrorDetail? validationError = await ValidateReferencesAsync(dto.ParkId, dto.ZoneId, dto.Category, dto.AttractionDetails);
+            if (validationError.HasValue)
             {
-                ParkZone? zone = await zonesQueryHandler.GetByIdAsync(dto.ZoneId);
-                if (zone == null || zone.ParkId != dto.ParkId)
-                {
-                    return ErrorCodes.ParkZoneNotExists;
-                }
+                return validationError.Value;
             }
 
             existing.ParkId = dto.ParkId.Trim();
@@ -127,6 +125,37 @@ namespace Services.Implementations
             }
 
             return await itemsQueryHandler.DeleteAsync(id) ? true : ErrorCodes.ErrorDeletingParkItem;
+        }
+
+        private async Task<ErrorCodes.ErrorDetail?> ValidateReferencesAsync(
+            string parkId,
+            string? zoneId,
+            ParkItemCategoryDto category,
+            AttractionDetailsDto? attractionDetails)
+        {
+            if (!string.IsNullOrWhiteSpace(zoneId))
+            {
+                ParkZone? zone = await zonesQueryHandler.GetByIdAsync(zoneId);
+                if (zone == null || zone.ParkId != parkId)
+                {
+                    return ErrorCodes.ParkZoneNotExists;
+                }
+            }
+
+            if (category == ParkItemCategoryDto.Attraction)
+            {
+                string? manufacturerId = NormalizeOptionalText(attractionDetails?.ManufacturerId);
+                if (!string.IsNullOrWhiteSpace(manufacturerId))
+                {
+                    AttractionManufacturer? manufacturer = await attractionManufacturersQueryHandler.GetByIdAsync(manufacturerId);
+                    if (manufacturer == null)
+                    {
+                        return ErrorCodes.AttractionManufacturerNotExists;
+                    }
+                }
+            }
+
+            return null;
         }
 
         private static ParkItemDto MapToDto(ParkItem item)
@@ -170,6 +199,12 @@ namespace Services.Implementations
                 .ToList();
         }
 
+        private static List<LocalizedItem<string>>? NormalizeLocalizedTextList(IEnumerable<LocalizedItem<string>>? items)
+        {
+            List<LocalizedItem<string>> normalized = NormalizeLocalizedTextItems(items);
+            return normalized.Count > 0 ? normalized : null;
+        }
+
         private static string? NormalizeOptionalText(string? value)
         {
             return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
@@ -184,7 +219,7 @@ namespace Services.Implementations
 
             AttractionDetails normalized = new()
             {
-                Manufacturer = NormalizeOptionalText(details.Manufacturer),
+                ManufacturerId = NormalizeOptionalText(details.ManufacturerId),
                 Model = NormalizeOptionalText(details.Model),
                 OpeningDate = details.OpeningDate?.Date,
                 ClosingDate = details.ClosingDate?.Date,
@@ -202,7 +237,9 @@ namespace Services.Implementations
                 HasFastPass = details.HasFastPass,
                 IsAccessibleForReducedMobility = details.IsAccessibleForReducedMobility,
                 IsIndoor = details.IsIndoor,
-                IsWaterAttraction = details.IsWaterAttraction,
+                WaterExposureLevel = details.WaterExposureLevel.HasValue
+                    ? MapWaterExposureLevel(details.WaterExposureLevel.Value)
+                    : null,
                 AccessConditions = NormalizeAttractionAccessConditions(details.AccessConditions)
             };
 
@@ -257,12 +294,6 @@ namespace Services.Implementations
             }
 
             return normalized;
-        }
-
-        private static List<LocalizedItem<string>>? NormalizeLocalizedTextList(IEnumerable<LocalizedItem<string>>? items)
-        {
-            List<LocalizedItem<string>> normalized = NormalizeLocalizedTextItems(items);
-            return normalized.Count > 0 ? normalized : null;
         }
 
         private static bool HasAtLeastOneAccessConditionValue(AttractionAccessCondition condition)
@@ -334,7 +365,7 @@ namespace Services.Implementations
 
             return new AttractionDetailsDto
             {
-                Manufacturer = details.Manufacturer,
+                ManufacturerId = details.ManufacturerId,
                 Model = details.Model,
                 OpeningDate = details.OpeningDate,
                 ClosingDate = details.ClosingDate,
@@ -352,7 +383,9 @@ namespace Services.Implementations
                 HasFastPass = details.HasFastPass,
                 IsAccessibleForReducedMobility = details.IsAccessibleForReducedMobility,
                 IsIndoor = details.IsIndoor,
-                IsWaterAttraction = details.IsWaterAttraction,
+                WaterExposureLevel = details.WaterExposureLevel.HasValue
+                    ? MapWaterExposureLevel(details.WaterExposureLevel.Value)
+                    : null,
                 AccessConditions = MapAttractionAccessConditions(details.AccessConditions)
             };
         }
@@ -437,7 +470,7 @@ namespace Services.Implementations
 
         private static bool HasAtLeastOneAttractionDetail(AttractionDetails details)
         {
-            return !string.IsNullOrWhiteSpace(details.Manufacturer) ||
+            return !string.IsNullOrWhiteSpace(details.ManufacturerId) ||
                    !string.IsNullOrWhiteSpace(details.Model) ||
                    details.OpeningDate != null ||
                    details.ClosingDate != null ||
@@ -455,7 +488,7 @@ namespace Services.Implementations
                    details.HasFastPass == true ||
                    details.IsAccessibleForReducedMobility == true ||
                    details.IsIndoor == true ||
-                   details.IsWaterAttraction == true ||
+                   details.WaterExposureLevel != null ||
                    (details.AccessConditions != null && details.AccessConditions.Count > 0);
         }
 
@@ -523,6 +556,20 @@ namespace Services.Implementations
             return Enum.TryParse(unit.ToString(), out AttractionAccessConditionUnitDto parsed)
                 ? parsed
                 : AttractionAccessConditionUnitDto.Centimeter;
+        }
+
+        private static AttractionWaterExposureLevel MapWaterExposureLevel(AttractionWaterExposureLevelDto waterExposureLevel)
+        {
+            return Enum.TryParse(waterExposureLevel.ToString(), out AttractionWaterExposureLevel parsed)
+                ? parsed
+                : AttractionWaterExposureLevel.None;
+        }
+
+        private static AttractionWaterExposureLevelDto MapWaterExposureLevel(AttractionWaterExposureLevel waterExposureLevel)
+        {
+            return Enum.TryParse(waterExposureLevel.ToString(), out AttractionWaterExposureLevelDto parsed)
+                ? parsed
+                : AttractionWaterExposureLevelDto.None;
         }
     }
 }

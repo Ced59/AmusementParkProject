@@ -68,7 +68,8 @@
       "users": "Utilisateurs",
       "parks": "Parcs",
       "site": "Site",
-      "operators": "Exploitants"
+      "operators": "Exploitants",
+      "manufacturers": "Constructeurs"
     },
     "users": {
       "total": "Nombre total d'utilisateurs : {{count}}",
@@ -195,7 +196,10 @@
           "hasFastPass": "Accès fast pass",
           "isAccessibleForReducedMobility": "Accessible PMR",
           "isIndoor": "En intérieur",
-          "isWaterAttraction": "Attraction aquatique"
+          "isWaterAttraction": "Attraction aquatique",
+          "manufacturerPlaceholder": "Sélectionner un constructeur",
+          "waterExposureLevel": "Niveau d'exposition à l'eau",
+          "waterExposureLevelPlaceholder": "Sélectionner un niveau"
         },
         "locationFields": {
           "entrance": "Entrée",
@@ -252,7 +256,31 @@
           "description": "Description localisée",
           "labelPlaceholder": "Libellé de la condition en {{language}}",
           "descriptionPlaceholder": "Description de la condition en {{language}}"
-        }
+        },
+        "waterExposureLevels": {
+          "none": "Aucune",
+          "splash": "Éclaboussures légères",
+          "moderate": "Modéré",
+          "soaking": "Très mouillant"
+        },
+        "refactorHint": "L’éditeur est désormais découpé en sections thématiques pour alléger la page et mieux s’y retrouver.",
+        "tabs": {
+          "general": "Général",
+          "details": "Détails techniques",
+          "accessConditions": "Conditions d’accès",
+          "locations": "Localisations spécifiques",
+          "photos": "Photos"
+        },
+        "accessConditionsCount": "{{count}} condition(s) d’accès",
+        "accessConditionsSummary": "Les règles détaillées sont maintenant gérées dans cette section dédiée au lieu de surcharger le formulaire principal.",
+        "locationSummary": "{{count}} / {{total}} localisation(s) spécifique(s) définie(s)",
+        "locationSummaryHelp": "Chaque point peut rester vide. Utilise la carte pour ne positionner que les coordonnées réellement utiles.",
+        "locationEditorTitle": "Éditeur cartographique · {{location}}",
+        "locationEditorHelp": "Clique sur la carte pour créer ou déplacer le point sélectionné. Les coordonnées manuelles restent disponibles en secours.",
+        "locationDefined": "Définie",
+        "locationNotDefined": "Non définie",
+        "useGeneralLocation": "Utiliser la localisation générale",
+        "clearSelectedLocation": "Vider le point sélectionné"
       }
     },
     "loading": "Chargement...",
@@ -275,6 +303,22 @@
       "editPage": {
         "createTitle": "Créer un fondateur",
         "updateTitle": "Modifier le fondateur",
+        "name": "Nom",
+        "biography": "Biographie"
+      }
+    },
+    "manufacturers": {
+      "total": "Constructeurs : {{count}}",
+      "searchPlaceholder": "Rechercher un constructeur",
+      "create": "Créer un constructeur",
+      "name": "Nom",
+      "attractionCount": "Attractions rattachées",
+      "actions": "Actions",
+      "edit": "Modifier",
+      "empty": "Aucun constructeur trouvé.",
+      "editPage": {
+        "createTitle": "Créer un constructeur",
+        "updateTitle": "Modifier le constructeur",
         "name": "Nom",
         "biography": "Biographie"
       }

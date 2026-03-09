@@ -15,6 +15,7 @@ import { ParksApiResponse } from '../models/parks/parks_api_response';
 import { Park } from '../models/parks/park';
 import { ParkFounder } from '../models/parks/park-founder';
 import { ParkOperator } from '../models/parks/park-operator';
+import { AttractionManufacturer } from '../models/parks/attraction-manufacturer';
 import { ParkZone } from '../models/parks/park-zone';
 import { ParkItem } from '../models/parks/park-item';
 import { ParkExplorer } from '../models/parks/park-explorer';
@@ -179,7 +180,37 @@ export class ApiService {
     return this.http.put<ParkOperator>(url, JSON.stringify(parkOperator), httpOptions);
   }
 
+  getAttractionManufacturers(): Observable<AttractionManufacturer[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getAttractionManufacturers}`;
+    return this.http.get<AttractionManufacturer[]>(url);
+  }
 
+  getAttractionManufacturerById(id: string): Observable<AttractionManufacturer> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getAttractionManufacturerById(id)}`;
+    return this.http.get<AttractionManufacturer>(url);
+  }
+
+  createAttractionManufacturer(manufacturer: AttractionManufacturer): Observable<AttractionManufacturer> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createAttractionManufacturer}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post<AttractionManufacturer>(url, JSON.stringify(manufacturer), httpOptions);
+  }
+
+  updateAttractionManufacturer(id: string, manufacturer: AttractionManufacturer): Observable<AttractionManufacturer> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateAttractionManufacturer(id)}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.put<AttractionManufacturer>(url, JSON.stringify(manufacturer), httpOptions);
+  }
 
   getParkZonesByParkId(parkId: string): Observable<ParkZone[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkZonesByParkId(parkId)}`;

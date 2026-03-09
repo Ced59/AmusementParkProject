@@ -37,6 +37,16 @@
     <button
       pButton
       class="admin-tab"
+      [routerLink]="['manufacturers']"
+      routerLinkActive="active-tab"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [label]="'admin.tabs.manufacturers' | translate"
+      icon="pi pi-wrench"
+    ></button>
+
+    <button
+      pButton
+      class="admin-tab"
       [routerLink]="['site']"
       routerLinkActive="active-tab"
       [routerLinkActiveOptions]="{ exact: true }"

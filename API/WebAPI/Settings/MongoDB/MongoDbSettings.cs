@@ -12,6 +12,7 @@ namespace WebAPI.Settings.MongoDB
         public string ParksCollectionName { get; set; } = string.Empty;
         public string ParkFoundersCollectionName { get; set; } = string.Empty;
         public string ParkOperatorsCollectionName { get; set; } = string.Empty;
+        public string AttractionManufacturersCollectionName { get; set; } = string.Empty;
         public string ParkZonesCollectionName { get; set; } = string.Empty;
         public string ParkItemsCollectionName { get; set; } = string.Empty;
         public string SearchItemCollectionName { get; set; } = string.Empty;

@@ -68,7 +68,8 @@
       "users": "Usuarios",
       "parks": "Parques",
       "site": "Sitio",
-      "operators": "Operadores"
+      "operators": "Operadores",
+      "manufacturers": "Manufacturers"
     },
     "users": {
       "total": "Número total de usuarios: {{count}}",
@@ -195,7 +196,10 @@
           "hasFastPass": "Fast pass available",
           "isAccessibleForReducedMobility": "Reduced mobility accessible",
           "isIndoor": "Indoor attraction",
-          "isWaterAttraction": "Water attraction"
+          "isWaterAttraction": "Water attraction",
+          "manufacturerPlaceholder": "Select a manufacturer",
+          "waterExposureLevel": "Water exposure level",
+          "waterExposureLevelPlaceholder": "Select a level"
         },
         "locationFields": {
           "entrance": "Entrance",
@@ -252,7 +256,31 @@
           "description": "Localized description",
           "labelPlaceholder": "Condition label in {{language}}",
           "descriptionPlaceholder": "Condition description in {{language}}"
-        }
+        },
+        "waterExposureLevels": {
+          "none": "None",
+          "splash": "Light splash",
+          "moderate": "Moderate",
+          "soaking": "Soaking"
+        },
+        "refactorHint": "El editor ahora está dividido en secciones temáticas para aligerar la página y facilitar la navegación.",
+        "tabs": {
+          "general": "General",
+          "details": "Detalles técnicos",
+          "accessConditions": "Condiciones de acceso",
+          "locations": "Ubicaciones específicas",
+          "photos": "Fotos"
+        },
+        "accessConditionsCount": "{{count}} condición(es) de acceso",
+        "accessConditionsSummary": "Gestiona aquí las reglas detalladas en lugar de saturar el formulario principal.",
+        "locationSummary": "{{count}} / {{total}} ubicación(es) específica(s) definidas",
+        "locationSummaryHelp": "Cada punto puede permanecer vacío. Usa el mapa solo para las coordenadas realmente útiles.",
+        "locationEditorTitle": "Editor de mapa · {{location}}",
+        "locationEditorHelp": "Haz clic en el mapa para crear o mover el punto seleccionado. Las coordenadas manuales siguen disponibles como respaldo.",
+        "locationDefined": "Definida",
+        "locationNotDefined": "No definida",
+        "useGeneralLocation": "Usar ubicación general",
+        "clearSelectedLocation": "Borrar punto seleccionado"
       }
     },
     "loading": "Cargando...",
@@ -277,6 +305,22 @@
         "updateTitle": "Editar el fundador",
         "name": "Nombre",
         "biography": "Biografía"
+      }
+    },
+    "manufacturers": {
+      "total": "Manufacturers: {{count}}",
+      "searchPlaceholder": "Search a manufacturer",
+      "create": "Create a manufacturer",
+      "name": "Name",
+      "attractionCount": "Attached attractions",
+      "actions": "Actions",
+      "edit": "Edit",
+      "empty": "No manufacturer found.",
+      "editPage": {
+        "createTitle": "Create a manufacturer",
+        "updateTitle": "Edit manufacturer",
+        "name": "Name",
+        "biography": "Biography"
       }
     }
   },

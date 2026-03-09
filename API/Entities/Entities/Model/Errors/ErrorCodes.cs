@@ -43,6 +43,9 @@
         public static readonly ErrorDetail ErrorCreatingParkOperator = new(500, "Error while creating park operator");
         public static readonly ErrorDetail ErrorUpdatingParkOperator = new(500, "Error while updating park operator");
 
+        public static readonly ErrorDetail AttractionManufacturerNotExists = new(404, "Attraction manufacturer not exists");
+        public static readonly ErrorDetail ErrorCreatingAttractionManufacturer = new(500, "Error while creating attraction manufacturer");
+        public static readonly ErrorDetail ErrorUpdatingAttractionManufacturer = new(500, "Error while updating attraction manufacturer");
 
         public static readonly ErrorDetail ParkZoneNotExists = new(404, "Park zone not exists");
         public static readonly ErrorDetail ErrorCreatingParkZone = new(500, "Error while creating park zone");

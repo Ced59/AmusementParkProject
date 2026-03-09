@@ -47,6 +47,12 @@ const routes: Routes = [
                 .then(m => m.AdminOperatorsModule)
           },
           {
+            path: 'manufacturers',
+            loadChildren: () =>
+              import('./components/admin/manufacturers/admin-manufacturers/admin-manufacturers.module')
+                .then(m => m.AdminManufacturersModule)
+          },
+          {
             path: 'site',
             loadChildren: () =>
               import('./components/admin/site/admin-site/admin-site.module')

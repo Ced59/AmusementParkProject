@@ -1,4 +1,5 @@
 using Entities.Model.Parks;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Repositories.Interfaces;
 
@@ -73,6 +74,54 @@ namespace Repositories.Implementations
                     .Set(item => item.UpdatedAt, DateTime.UtcNow));
 
             return result.ModifiedCount;
+        }
+
+        public async Task<Dictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds)
+        {
+            List<string> ids = manufacturerIds
+                .Where(id => !string.IsNullOrWhiteSpace(id))
+                .Select(id => id.Trim())
+                .Distinct(StringComparer.Ordinal)
+                .ToList();
+
+            if (ids.Count == 0)
+            {
+                return new Dictionary<string, int>(StringComparer.Ordinal);
+            }
+
+            FilterDefinition<ParkItem> filter =
+                Builders<ParkItem>.Filter.Eq(item => item.Category, ParkItemCategory.Attraction) &
+                Builders<ParkItem>.Filter.In("attractionDetails.manufacturerId", ids);
+
+            List<BsonDocument> aggregationResults = await itemsCollection.Aggregate()
+                .Match(filter)
+                .Group(new BsonDocument
+                {
+                    { "_id", "$attractionDetails.manufacturerId" },
+                    { "count", new BsonDocument("$sum", 1) }
+                })
+                .ToListAsync();
+
+            Dictionary<string, int> counts = new(StringComparer.Ordinal);
+
+            foreach (BsonDocument document in aggregationResults)
+            {
+                BsonValue manufacturerIdValue = document.GetValue("_id", BsonNull.Value);
+                if (!manufacturerIdValue.IsString)
+                {
+                    continue;
+                }
+
+                string manufacturerId = manufacturerIdValue.AsString;
+                int count = document.GetValue("count", 0).ToInt32();
+
+                if (!string.IsNullOrWhiteSpace(manufacturerId))
+                {
+                    counts[manufacturerId] = count;
+                }
+            }
+
+            return counts;
         }
     }
 }
