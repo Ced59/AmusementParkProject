@@ -35,13 +35,6 @@
       </div>
     </div>
 
-    <p-divider></p-divider>
-
-    <div class="section-header">
-      <h3>{{ 'admin.parks.items.generalLocation' | translate }}</h3>
-      <small class="text-color-secondary">{{ 'admin.parks.items.generalLocationHelp' | translate }}</small>
-    </div>
-
     <div class="grid formgrid">
       <div class="field col-12 md:col-6">
         <label>{{ 'admin.parks.latitude' | translate }}</label>
@@ -59,104 +52,214 @@
     </div>
 
     <div *ngIf="isAttractionCategory" class="attraction-section">
-      <p-divider></p-divider>
+      <div formGroupName="attractionDetails">
+        <p-divider></p-divider>
 
-      <div class="section-header mb-3">
-        <h3>{{ 'admin.parks.items.attractionSectionTitle' | translate }}</h3>
-        <small class="text-color-secondary">{{ 'admin.parks.items.attractionSectionDescription' | translate }}</small>
-      </div>
+        <div class="section-header mb-3">
+          <h3>{{ 'admin.parks.items.attractionConfigurationTitle' | translate }}</h3>
+          <small class="text-color-secondary">{{ 'admin.parks.items.attractionConfigurationHelp' | translate }}</small>
+        </div>
 
-      <div formGroupName="attractionDetails" class="grid formgrid">
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.manufacturer' | translate }}</label>
-          <input pInputText formControlName="manufacturer" />
+        <div class="grid formgrid">
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.manufacturer' | translate }}</label>
+            <input pInputText formControlName="manufacturer" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.model' | translate }}</label>
+            <input pInputText formControlName="model" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.openingDate' | translate }}</label>
+            <input pInputText type="date" formControlName="openingDate" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.closingDate' | translate }}</label>
+            <input pInputText type="date" formControlName="closingDate" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.durationInSeconds' | translate }}</label>
+            <input pInputText type="number" formControlName="durationInSeconds" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.capacityPerHour' | translate }}</label>
+            <input pInputText type="number" formControlName="capacityPerHour" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.heightInMeters' | translate }}</label>
+            <input pInputText type="number" formControlName="heightInMeters" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.lengthInMeters' | translate }}</label>
+            <input pInputText type="number" formControlName="lengthInMeters" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.speedInKmH' | translate }}</label>
+            <input pInputText type="number" formControlName="speedInKmH" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.dropInMeters' | translate }}</label>
+            <input pInputText type="number" formControlName="dropInMeters" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.inversionCount' | translate }}</label>
+            <input pInputText type="number" formControlName="inversionCount" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.trainCount' | translate }}</label>
+            <input pInputText type="number" formControlName="trainCount" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.carsPerTrain' | translate }}</label>
+            <input pInputText type="number" formControlName="carsPerTrain" />
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4">
+            <label>{{ 'admin.parks.items.details.ridersPerVehicle' | translate }}</label>
+            <input pInputText type="number" formControlName="ridersPerVehicle" />
+          </div>
         </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.model' | translate }}</label>
-          <input pInputText formControlName="model" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.openingDate' | translate }}</label>
-          <input pInputText type="date" formControlName="openingDate" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.closingDate' | translate }}</label>
-          <input pInputText type="date" formControlName="closingDate" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.durationInSeconds' | translate }}</label>
-          <input pInputText type="number" formControlName="durationInSeconds" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.capacityPerHour' | translate }}</label>
-          <input pInputText type="number" formControlName="capacityPerHour" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.heightInMeters' | translate }}</label>
-          <input pInputText type="number" formControlName="heightInMeters" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.lengthInMeters' | translate }}</label>
-          <input pInputText type="number" formControlName="lengthInMeters" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.speedInKmH' | translate }}</label>
-          <input pInputText type="number" formControlName="speedInKmH" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.dropInMeters' | translate }}</label>
-          <input pInputText type="number" formControlName="dropInMeters" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.inversionCount' | translate }}</label>
-          <input pInputText type="number" formControlName="inversionCount" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.minimumHeightInCm' | translate }}</label>
-          <input pInputText type="number" formControlName="minimumHeightInCm" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.maximumHeightInCm' | translate }}</label>
-          <input pInputText type="number" formControlName="maximumHeightInCm" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.minimumAge' | translate }}</label>
-          <input pInputText type="number" formControlName="minimumAge" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.trainCount' | translate }}</label>
-          <input pInputText type="number" formControlName="trainCount" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.carsPerTrain' | translate }}</label>
-          <input pInputText type="number" formControlName="carsPerTrain" />
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4">
-          <label>{{ 'admin.parks.items.details.ridersPerVehicle' | translate }}</label>
-          <input pInputText type="number" formControlName="ridersPerVehicle" />
-        </div>
-      </div>
 
-      <div formGroupName="attractionDetails" class="grid formgrid mt-2 switches-grid">
-        <div class="field col-12 md:col-6 lg:col-4 switch-field">
-          <label>{{ 'admin.parks.items.details.hasSingleRider' | translate }}</label>
-          <p-inputSwitch formControlName="hasSingleRider"></p-inputSwitch>
+        <div class="grid formgrid switches-grid">
+          <div class="field col-12 md:col-6 lg:col-4 switch-field">
+            <label>{{ 'admin.parks.items.details.hasSingleRider' | translate }}</label>
+            <p-inputSwitch formControlName="hasSingleRider"></p-inputSwitch>
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4 switch-field">
+            <label>{{ 'admin.parks.items.details.hasFastPass' | translate }}</label>
+            <p-inputSwitch formControlName="hasFastPass"></p-inputSwitch>
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4 switch-field">
+            <label>{{ 'admin.parks.items.details.isAccessibleForReducedMobility' | translate }}</label>
+            <p-inputSwitch formControlName="isAccessibleForReducedMobility"></p-inputSwitch>
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4 switch-field">
+            <label>{{ 'admin.parks.items.details.isIndoor' | translate }}</label>
+            <p-inputSwitch formControlName="isIndoor"></p-inputSwitch>
+          </div>
+          <div class="field col-12 md:col-6 lg:col-4 switch-field">
+            <label>{{ 'admin.parks.items.details.isWaterAttraction' | translate }}</label>
+            <p-inputSwitch formControlName="isWaterAttraction"></p-inputSwitch>
+          </div>
         </div>
-        <div class="field col-12 md:col-6 lg:col-4 switch-field">
-          <label>{{ 'admin.parks.items.details.hasFastPass' | translate }}</label>
-          <p-inputSwitch formControlName="hasFastPass"></p-inputSwitch>
+
+        <p-divider></p-divider>
+
+        <div class="section-header mb-3">
+          <h3>{{ 'admin.parks.items.accessConditionsTitle' | translate }}</h3>
+          <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionsHelp' | translate }}</small>
         </div>
-        <div class="field col-12 md:col-6 lg:col-4 switch-field">
-          <label>{{ 'admin.parks.items.details.isAccessibleForReducedMobility' | translate }}</label>
-          <p-inputSwitch formControlName="isAccessibleForReducedMobility"></p-inputSwitch>
+
+        <div class="grid formgrid mb-3 access-condition-add-row">
+          <div class="field col-12 md:col-8 lg:col-6">
+            <label>{{ 'admin.parks.items.accessConditionsPreset' | translate }}</label>
+            <p-dropdown
+              [(ngModel)]="selectedAccessConditionPreset"
+              [ngModelOptions]="{ standalone: true }"
+              [options]="accessConditionPresetOptions"
+              optionLabel="labelKey"
+              optionValue="value">
+              <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+              <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+            </p-dropdown>
+          </div>
+          <div class="field col-12 md:col-4 lg:col-3 flex align-items-end">
+            <button
+              pButton
+              type="button"
+              icon="pi pi-plus"
+              (click)="addAccessCondition()"
+              [label]="'admin.parks.items.addAccessCondition' | translate">
+            </button>
+          </div>
         </div>
-        <div class="field col-12 md:col-6 lg:col-4 switch-field">
-          <label>{{ 'admin.parks.items.details.isIndoor' | translate }}</label>
-          <p-inputSwitch formControlName="isIndoor"></p-inputSwitch>
-        </div>
-        <div class="field col-12 md:col-6 lg:col-4 switch-field">
-          <label>{{ 'admin.parks.items.details.isWaterAttraction' | translate }}</label>
-          <p-inputSwitch formControlName="isWaterAttraction"></p-inputSwitch>
+
+        <div formArrayName="accessConditions">
+          <div *ngIf="accessConditions.length === 0" class="text-color-secondary mb-3">
+            {{ 'admin.parks.items.accessConditionsEmpty' | translate }}
+          </div>
+
+          <div class="access-condition-list">
+            <div
+              class="access-condition-card"
+              *ngFor="let accessCondition of accessConditions.controls; let i = index"
+              [formGroupName]="i">
+              <p-card>
+                <ng-template pTemplate="header">
+                  <div class="access-condition-card__header">
+                    <div>
+                      <h4>{{ getAccessConditionTitle(i) }}</h4>
+                      <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionIndex' | translate:{ index: i + 1 } }}</small>
+                    </div>
+
+                    <div class="access-condition-card__actions">
+                      <button pButton type="button" icon="pi pi-arrow-up" class="p-button-text p-button-sm" (click)="moveAccessConditionUp(i)" [disabled]="i === 0"></button>
+                      <button pButton type="button" icon="pi pi-arrow-down" class="p-button-text p-button-sm" (click)="moveAccessConditionDown(i)" [disabled]="i === accessConditions.length - 1"></button>
+                      <button pButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" (click)="removeAccessCondition(i)"></button>
+                    </div>
+                  </div>
+                </ng-template>
+
+                <div class="grid formgrid">
+                  <div class="field col-12 md:col-6 lg:col-4">
+                    <label>{{ 'admin.parks.items.accessConditionFields.type' | translate }}</label>
+                    <p-dropdown
+                      formControlName="type"
+                      [options]="accessConditionPresetOptions"
+                      optionLabel="labelKey"
+                      optionValue="value"
+                      (onChange)="onAccessConditionTypeChanged(i)">
+                      <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+                      <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+                    </p-dropdown>
+                  </div>
+
+                  <div class="field col-12 md:col-6 lg:col-4">
+                    <label>{{ 'admin.parks.items.accessConditionFields.value' | translate }}</label>
+                    <input pInputText type="number" formControlName="value" />
+                  </div>
+
+                  <div class="field col-12 md:col-6 lg:col-4">
+                    <label>{{ 'admin.parks.items.accessConditionFields.unit' | translate }}</label>
+                    <p-dropdown
+                      formControlName="unit"
+                      [options]="accessConditionUnitOptions"
+                      optionLabel="labelKey"
+                      optionValue="value"
+                      [showClear]="true">
+                      <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+                      <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+                    </p-dropdown>
+                  </div>
+
+                  <div class="field col-12 md:col-6 lg:col-4 switch-field">
+                    <label>{{ 'admin.parks.items.accessConditionFields.requiresAccompaniment' | translate }}</label>
+                    <p-inputSwitch formControlName="requiresAccompaniment"></p-inputSwitch>
+                  </div>
+
+                  <div class="field col-12 md:col-6 lg:col-4">
+                    <label>{{ 'admin.parks.items.accessConditionFields.minimumCompanionAge' | translate }}</label>
+                    <input pInputText type="number" formControlName="minimumCompanionAge" />
+                  </div>
+
+                  <div class="field col-12">
+                    <label>{{ 'admin.parks.items.accessConditionFields.label' | translate }}</label>
+                    <app-localized-text-input
+                      formControlName="label"
+                      [placeholderKey]="'admin.parks.items.accessConditionFields.labelPlaceholder'">
+                    </app-localized-text-input>
+                  </div>
+
+                  <div class="field col-12">
+                    <label>{{ 'admin.parks.items.accessConditionFields.description' | translate }}</label>
+                    <app-localized-text-input
+                      formControlName="description"
+                      [placeholderKey]="'admin.parks.items.accessConditionFields.descriptionPlaceholder'">
+                    </app-localized-text-input>
+                  </div>
+                </div>
+              </p-card>
+            </div>
+          </div>
         </div>
       </div>
 

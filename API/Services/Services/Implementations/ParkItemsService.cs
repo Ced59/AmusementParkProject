@@ -195,9 +195,6 @@ namespace Services.Implementations
                 SpeedInKmH = NormalizeNullableDouble(details.SpeedInKmH),
                 DropInMeters = NormalizeNullableDouble(details.DropInMeters),
                 InversionCount = NormalizeNullableInt(details.InversionCount),
-                MinimumHeightInCm = NormalizeNullableInt(details.MinimumHeightInCm),
-                MaximumHeightInCm = NormalizeNullableInt(details.MaximumHeightInCm),
-                MinimumAge = NormalizeNullableInt(details.MinimumAge),
                 TrainCount = NormalizeNullableInt(details.TrainCount),
                 CarsPerTrain = NormalizeNullableInt(details.CarsPerTrain),
                 RidersPerVehicle = NormalizeNullableInt(details.RidersPerVehicle),
@@ -205,7 +202,8 @@ namespace Services.Implementations
                 HasFastPass = details.HasFastPass,
                 IsAccessibleForReducedMobility = details.IsAccessibleForReducedMobility,
                 IsIndoor = details.IsIndoor,
-                IsWaterAttraction = details.IsWaterAttraction
+                IsWaterAttraction = details.IsWaterAttraction,
+                AccessConditions = NormalizeAttractionAccessConditions(details.AccessConditions)
             };
 
             if (!HasAtLeastOneAttractionDetail(normalized))
@@ -214,6 +212,72 @@ namespace Services.Implementations
             }
 
             return normalized;
+        }
+
+        private static List<AttractionAccessCondition>? NormalizeAttractionAccessConditions(IEnumerable<AttractionAccessConditionDto>? conditions)
+        {
+            if (conditions == null)
+            {
+                return null;
+            }
+
+            List<AttractionAccessCondition> normalized = conditions
+                .Where(condition => condition != null)
+                .Select(NormalizeAttractionAccessCondition)
+                .Where(condition => condition != null)
+                .Cast<AttractionAccessCondition>()
+                .OrderBy(condition => condition.DisplayOrder ?? int.MaxValue)
+                .ToList();
+
+            return normalized.Count > 0 ? normalized : null;
+        }
+
+        private static AttractionAccessCondition? NormalizeAttractionAccessCondition(AttractionAccessConditionDto dto)
+        {
+            AttractionAccessConditionType type = MapAccessConditionType(dto.Type);
+            List<LocalizedItem<string>>? label = NormalizeLocalizedTextList(dto.Label);
+            List<LocalizedItem<string>>? description = NormalizeLocalizedTextList(dto.Description);
+
+            AttractionAccessCondition normalized = new()
+            {
+                Type = type,
+                IsCustom = dto.IsCustom == true || type == AttractionAccessConditionType.Custom ? true : null,
+                Value = NormalizeNullableDouble(dto.Value),
+                Unit = dto.Unit.HasValue ? MapAccessConditionUnit(dto.Unit.Value) : null,
+                RequiresAccompaniment = dto.RequiresAccompaniment,
+                MinimumCompanionAge = NormalizeNullableInt(dto.MinimumCompanionAge),
+                Label = label,
+                Description = description,
+                DisplayOrder = NormalizeNullableInt(dto.DisplayOrder)
+            };
+
+            if (!HasAtLeastOneAccessConditionValue(normalized))
+            {
+                return null;
+            }
+
+            return normalized;
+        }
+
+        private static List<LocalizedItem<string>>? NormalizeLocalizedTextList(IEnumerable<LocalizedItem<string>>? items)
+        {
+            List<LocalizedItem<string>> normalized = NormalizeLocalizedTextItems(items);
+            return normalized.Count > 0 ? normalized : null;
+        }
+
+        private static bool HasAtLeastOneAccessConditionValue(AttractionAccessCondition condition)
+        {
+            if (condition.Type != AttractionAccessConditionType.Custom)
+            {
+                return true;
+            }
+
+            return condition.Value != null ||
+                   condition.Unit != null ||
+                   condition.RequiresAccompaniment == true ||
+                   condition.MinimumCompanionAge != null ||
+                   (condition.Label != null && condition.Label.Count > 0) ||
+                   (condition.Description != null && condition.Description.Count > 0);
         }
 
         private static AttractionLocations? NormalizeAttractionLocations(ParkItemCategoryDto category, AttractionLocationsDto? locations)
@@ -281,9 +345,6 @@ namespace Services.Implementations
                 SpeedInKmH = details.SpeedInKmH,
                 DropInMeters = details.DropInMeters,
                 InversionCount = details.InversionCount,
-                MinimumHeightInCm = details.MinimumHeightInCm,
-                MaximumHeightInCm = details.MaximumHeightInCm,
-                MinimumAge = details.MinimumAge,
                 TrainCount = details.TrainCount,
                 CarsPerTrain = details.CarsPerTrain,
                 RidersPerVehicle = details.RidersPerVehicle,
@@ -291,7 +352,46 @@ namespace Services.Implementations
                 HasFastPass = details.HasFastPass,
                 IsAccessibleForReducedMobility = details.IsAccessibleForReducedMobility,
                 IsIndoor = details.IsIndoor,
-                IsWaterAttraction = details.IsWaterAttraction
+                IsWaterAttraction = details.IsWaterAttraction,
+                AccessConditions = MapAttractionAccessConditions(details.AccessConditions)
+            };
+        }
+
+        private static List<AttractionAccessConditionDto>? MapAttractionAccessConditions(IEnumerable<AttractionAccessCondition>? conditions)
+        {
+            if (conditions == null)
+            {
+                return null;
+            }
+
+            List<AttractionAccessConditionDto> mapped = conditions
+                .Where(condition => condition != null)
+                .Select(MapAttractionAccessCondition)
+                .Where(condition => condition != null)
+                .Cast<AttractionAccessConditionDto>()
+                .ToList();
+
+            return mapped.Count > 0 ? mapped : null;
+        }
+
+        private static AttractionAccessConditionDto? MapAttractionAccessCondition(AttractionAccessCondition? condition)
+        {
+            if (condition == null)
+            {
+                return null;
+            }
+
+            return new AttractionAccessConditionDto
+            {
+                Type = MapAccessConditionType(condition.Type),
+                IsCustom = condition.IsCustom,
+                Value = condition.Value,
+                Unit = condition.Unit.HasValue ? MapAccessConditionUnit(condition.Unit.Value) : null,
+                RequiresAccompaniment = condition.RequiresAccompaniment,
+                MinimumCompanionAge = condition.MinimumCompanionAge,
+                Label = condition.Label,
+                Description = condition.Description,
+                DisplayOrder = condition.DisplayOrder
             };
         }
 
@@ -348,9 +448,6 @@ namespace Services.Implementations
                    details.SpeedInKmH != null ||
                    details.DropInMeters != null ||
                    details.InversionCount != null ||
-                   details.MinimumHeightInCm != null ||
-                   details.MaximumHeightInCm != null ||
-                   details.MinimumAge != null ||
                    details.TrainCount != null ||
                    details.CarsPerTrain != null ||
                    details.RidersPerVehicle != null ||
@@ -358,7 +455,8 @@ namespace Services.Implementations
                    details.HasFastPass == true ||
                    details.IsAccessibleForReducedMobility == true ||
                    details.IsIndoor == true ||
-                   details.IsWaterAttraction == true;
+                   details.IsWaterAttraction == true ||
+                   (details.AccessConditions != null && details.AccessConditions.Count > 0);
         }
 
         private static bool IsValidLatitude(double latitude)
@@ -397,6 +495,34 @@ namespace Services.Implementations
             return Enum.TryParse(type.ToString(), out ParkItemTypeDto parsed)
                 ? parsed
                 : ParkItemTypeDto.Other;
+        }
+
+        private static AttractionAccessConditionType MapAccessConditionType(AttractionAccessConditionTypeDto type)
+        {
+            return Enum.TryParse(type.ToString(), out AttractionAccessConditionType parsed)
+                ? parsed
+                : AttractionAccessConditionType.Custom;
+        }
+
+        private static AttractionAccessConditionTypeDto MapAccessConditionType(AttractionAccessConditionType type)
+        {
+            return Enum.TryParse(type.ToString(), out AttractionAccessConditionTypeDto parsed)
+                ? parsed
+                : AttractionAccessConditionTypeDto.Custom;
+        }
+
+        private static AttractionAccessConditionUnit MapAccessConditionUnit(AttractionAccessConditionUnitDto unit)
+        {
+            return Enum.TryParse(unit.ToString(), out AttractionAccessConditionUnit parsed)
+                ? parsed
+                : AttractionAccessConditionUnit.Centimeter;
+        }
+
+        private static AttractionAccessConditionUnitDto MapAccessConditionUnit(AttractionAccessConditionUnit unit)
+        {
+            return Enum.TryParse(unit.ToString(), out AttractionAccessConditionUnitDto parsed)
+                ? parsed
+                : AttractionAccessConditionUnitDto.Centimeter;
         }
     }
 }

@@ -216,6 +216,42 @@
           "alt": "Attraction photo",
           "descriptionPlaceholder": "Optional photo description",
           "deleteConfirm": "Delete this photo?"
+        },
+        "attractionConfigurationTitle": "Attraction configuration",
+        "attractionConfigurationHelp": "This section is only displayed for Attraction items. All fields are optional.",
+        "accessConditionsTitle": "Access conditions",
+        "accessConditionsHelp": "Add structured rules here for heights, ages, medical restrictions or special access. Labels remain customizable for each attraction.",
+        "accessConditionsPreset": "Condition type to add",
+        "addAccessCondition": "Add condition",
+        "accessConditionsEmpty": "No access condition defined yet.",
+        "accessConditionIndex": "Condition #{{index}}",
+        "accessConditionTypes": {
+          "minHeight": "Minimum height",
+          "minHeightAccompanied": "Minimum height with accompaniment",
+          "maxHeight": "Maximum height",
+          "minAge": "Minimum age",
+          "minAgeAccompanied": "Minimum age with accompaniment",
+          "pregnancyRestriction": "Pregnancy restriction",
+          "heartRestriction": "Cardiac restriction",
+          "backNeckRestriction": "Back or neck restriction",
+          "wheelchairTransferRequired": "Wheelchair transfer required",
+          "accessPassRequired": "Access pass required",
+          "custom": "Custom condition"
+        },
+        "accessConditionUnits": {
+          "centimeter": "Centimeters",
+          "year": "Years"
+        },
+        "accessConditionFields": {
+          "type": "Condition type",
+          "value": "Value",
+          "unit": "Unit",
+          "requiresAccompaniment": "Accompaniment required",
+          "minimumCompanionAge": "Minimum companion age",
+          "label": "Localized label",
+          "description": "Localized description",
+          "labelPlaceholder": "Condition label in {{language}}",
+          "descriptionPlaceholder": "Condition description in {{language}}"
         }
       }
     },

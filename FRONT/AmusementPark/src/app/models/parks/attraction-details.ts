@@ -1,3 +1,5 @@
+import { AttractionAccessCondition } from './attraction-access-condition';
+
 export interface AttractionDetails {
   manufacturer?: string | null;
   model?: string | null;
@@ -10,9 +12,6 @@ export interface AttractionDetails {
   speedInKmH?: number | null;
   dropInMeters?: number | null;
   inversionCount?: number | null;
-  minimumHeightInCm?: number | null;
-  maximumHeightInCm?: number | null;
-  minimumAge?: number | null;
   trainCount?: number | null;
   carsPerTrain?: number | null;
   ridersPerVehicle?: number | null;
@@ -21,4 +20,5 @@ export interface AttractionDetails {
   isAccessibleForReducedMobility?: boolean | null;
   isIndoor?: boolean | null;
   isWaterAttraction?: boolean | null;
+  accessConditions?: AttractionAccessCondition[] | null;
 }

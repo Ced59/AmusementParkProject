@@ -216,6 +216,42 @@
           "alt": "Photo de l’attraction",
           "descriptionPlaceholder": "Description optionnelle de la photo",
           "deleteConfirm": "Supprimer cette photo ?"
+        },
+        "attractionConfigurationTitle": "Configuration de l’attraction",
+        "attractionConfigurationHelp": "Cette section n’apparaît que pour les éléments de catégorie Attraction. Tous les champs sont optionnels.",
+        "accessConditionsTitle": "Conditions d’accès",
+        "accessConditionsHelp": "Ajoute ici des règles structurées pour les tailles, âges, restrictions médicales ou accès spécifiques. Les libellés restent personnalisables pour chaque attraction.",
+        "accessConditionsPreset": "Type de condition à ajouter",
+        "addAccessCondition": "Ajouter une condition",
+        "accessConditionsEmpty": "Aucune condition d’accès définie pour le moment.",
+        "accessConditionIndex": "Condition n°{{index}}",
+        "accessConditionTypes": {
+          "minHeight": "Taille minimale",
+          "minHeightAccompanied": "Taille minimale accompagné",
+          "maxHeight": "Taille maximale",
+          "minAge": "Âge minimum",
+          "minAgeAccompanied": "Âge minimum accompagné",
+          "pregnancyRestriction": "Restriction grossesse",
+          "heartRestriction": "Restriction cardiaque",
+          "backNeckRestriction": "Restriction dos ou nuque",
+          "wheelchairTransferRequired": "Transfert fauteuil requis",
+          "accessPassRequired": "Access pass requis",
+          "custom": "Condition personnalisée"
+        },
+        "accessConditionUnits": {
+          "centimeter": "Centimètres",
+          "year": "Ans"
+        },
+        "accessConditionFields": {
+          "type": "Type de condition",
+          "value": "Valeur",
+          "unit": "Unité",
+          "requiresAccompaniment": "Accompagnement requis",
+          "minimumCompanionAge": "Âge minimum de l’accompagnant",
+          "label": "Libellé localisé",
+          "description": "Description localisée",
+          "labelPlaceholder": "Libellé de la condition en {{language}}",
+          "descriptionPlaceholder": "Description de la condition en {{language}}"
         }
       }
     },

@@ -13,9 +13,6 @@ namespace Dtos.ParkItems
         public double? SpeedInKmH { get; set; }
         public double? DropInMeters { get; set; }
         public int? InversionCount { get; set; }
-        public int? MinimumHeightInCm { get; set; }
-        public int? MaximumHeightInCm { get; set; }
-        public int? MinimumAge { get; set; }
         public int? TrainCount { get; set; }
         public int? CarsPerTrain { get; set; }
         public int? RidersPerVehicle { get; set; }
@@ -24,5 +21,6 @@ namespace Dtos.ParkItems
         public bool? IsAccessibleForReducedMobility { get; set; }
         public bool? IsIndoor { get; set; }
         public bool? IsWaterAttraction { get; set; }
+        public List<AttractionAccessConditionDto>? AccessConditions { get; set; }
     }
 }

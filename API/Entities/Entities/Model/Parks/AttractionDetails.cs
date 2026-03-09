@@ -59,21 +59,6 @@ namespace Entities.Model.Parks
         [BsonRepresentation(BsonType.Int32)]
         public int? InversionCount { get; set; }
 
-        [BsonElement("minimumHeightInCm")]
-        [BsonIgnoreIfNull]
-        [BsonRepresentation(BsonType.Int32)]
-        public int? MinimumHeightInCm { get; set; }
-
-        [BsonElement("maximumHeightInCm")]
-        [BsonIgnoreIfNull]
-        [BsonRepresentation(BsonType.Int32)]
-        public int? MaximumHeightInCm { get; set; }
-
-        [BsonElement("minimumAge")]
-        [BsonIgnoreIfNull]
-        [BsonRepresentation(BsonType.Int32)]
-        public int? MinimumAge { get; set; }
-
         [BsonElement("trainCount")]
         [BsonIgnoreIfNull]
         [BsonRepresentation(BsonType.Int32)]
@@ -108,5 +93,9 @@ namespace Entities.Model.Parks
         [BsonElement("isWaterAttraction")]
         [BsonIgnoreIfNull]
         public bool? IsWaterAttraction { get; set; }
+
+        [BsonElement("accessConditions")]
+        [BsonIgnoreIfNull]
+        public List<AttractionAccessCondition>? AccessConditions { get; set; }
     }
 }

@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { PaginatorState } from 'primeng/paginator';
+import { LANGUAGES } from '../../../../../commons/languages';
 import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
 import { ImageCategory } from '../../../../../models/images/image-category';
 import { ImageDto } from '../../../../../models/images/image-dto';
 import { ImageOwnerType } from '../../../../../models/images/image-owner-type';
 import { UploadedImage } from '../../../../../models/images/uploaded-image';
+import { AttractionAccessCondition } from '../../../../../models/parks/attraction-access-condition';
+import { AttractionAccessConditionType } from '../../../../../models/parks/attraction-access-condition-type';
+import { AttractionAccessConditionUnit } from '../../../../../models/parks/attraction-access-condition-unit';
 import { AttractionDetails } from '../../../../../models/parks/attraction-details';
 import { AttractionLocationPoint } from '../../../../../models/parks/attraction-location-point';
 import { AttractionLocations } from '../../../../../models/parks/attraction-locations';
@@ -14,8 +19,8 @@ import { ParkItem } from '../../../../../models/parks/park-item';
 import { ParkItemCategory } from '../../../../../models/parks/park-item-category';
 import { ParkItemType } from '../../../../../models/parks/park-item-type';
 import { ParkZone } from '../../../../../models/parks/park-zone';
+import { LocalizedItem } from '../../../../../models/shared/localized-item';
 import { ApiService } from '../../../../../services/api.service';
-import {PaginatorState} from "primeng/paginator";
 
 interface Option<T> {
   labelKey: string;
@@ -51,6 +56,8 @@ export class AdminParkItemEditComponent implements OnInit {
   currentPhoto: AttractionPhotoItem | null = null;
   photosPage: number = 0;
   photosPageSize: number = 8;
+
+  selectedAccessConditionPreset: AttractionAccessConditionType = 'MinHeight';
 
   readonly categoryOptions: Option<ParkItemCategory>[] = [
     { labelKey: 'parkExplorer.categories.attraction', value: 'Attraction' },
@@ -108,6 +115,138 @@ export class AdminParkItemEditComponent implements OnInit {
     ]
   };
 
+  readonly accessConditionPresetOptions: Option<AttractionAccessConditionType>[] = [
+    { labelKey: 'admin.parks.items.accessConditionTypes.minHeight', value: 'MinHeight' },
+    { labelKey: 'admin.parks.items.accessConditionTypes.minHeightAccompanied', value: 'MinHeightAccompanied' },
+    { labelKey: 'admin.parks.items.accessConditionTypes.maxHeight', value: 'MaxHeight' },
+    { labelKey: 'admin.parks.items.accessConditionTypes.minAge', value: 'MinAge' },
+    { labelKey: 'admin.parks.items.accessConditionTypes.minAgeAccompanied', value: 'MinAgeAccompanied' },
+    { labelKey: 'admin.parks.items.accessConditionTypes.pregnancyRestriction', value: 'PregnancyRestriction' },
+    { labelKey: 'admin.parks.items.accessConditionTypes.heartRestriction', value: 'HeartRestriction' },
+    { labelKey: 'admin.parks.items.accessConditionTypes.backNeckRestriction', value: 'BackNeckRestriction' },
+    { labelKey: 'admin.parks.items.accessConditionTypes.wheelchairTransferRequired', value: 'WheelchairTransferRequired' },
+    { labelKey: 'admin.parks.items.accessConditionTypes.accessPassRequired', value: 'AccessPassRequired' },
+    { labelKey: 'admin.parks.items.accessConditionTypes.custom', value: 'Custom' }
+  ];
+
+  readonly accessConditionUnitOptions: Option<AttractionAccessConditionUnit>[] = [
+    { labelKey: 'admin.parks.items.accessConditionUnits.centimeter', value: 'Centimeter' },
+    { labelKey: 'admin.parks.items.accessConditionUnits.year', value: 'Year' }
+  ];
+
+  readonly accessConditionDefaultLabels: Record<AttractionAccessConditionType, Record<string, string>> = {
+    MinHeight: {
+      en: 'Minimum height',
+      fr: 'Taille minimale',
+      es: 'Altura mínima',
+      de: 'Mindestgröße',
+      it: 'Altezza minima',
+      pl: 'Minimalny wzrost',
+      nl: 'Minimumlengte',
+      pt: 'Altura mínima'
+    },
+    MinHeightAccompanied: {
+      en: 'Minimum height with accompaniment',
+      fr: 'Taille minimale accompagné',
+      es: 'Altura mínima acompañado',
+      de: 'Mindestgröße in Begleitung',
+      it: 'Altezza minima con accompagnatore',
+      pl: 'Minimalny wzrost z opiekunem',
+      nl: 'Minimumlengte met begeleiding',
+      pt: 'Altura mínima acompanhado'
+    },
+    MaxHeight: {
+      en: 'Maximum height',
+      fr: 'Taille maximale',
+      es: 'Altura máxima',
+      de: 'Maximalgröße',
+      it: 'Altezza massima',
+      pl: 'Maksymalny wzrost',
+      nl: 'Maximumlengte',
+      pt: 'Altura máxima'
+    },
+    MinAge: {
+      en: 'Minimum age',
+      fr: 'Âge minimum',
+      es: 'Edad mínima',
+      de: 'Mindestalter',
+      it: 'Età minima',
+      pl: 'Minimalny wiek',
+      nl: 'Minimumleeftijd',
+      pt: 'Idade mínima'
+    },
+    MinAgeAccompanied: {
+      en: 'Minimum age with accompaniment',
+      fr: 'Âge minimum accompagné',
+      es: 'Edad mínima acompañado',
+      de: 'Mindestalter in Begleitung',
+      it: 'Età minima con accompagnatore',
+      pl: 'Minimalny wiek z opiekunem',
+      nl: 'Minimumleeftijd met begeleiding',
+      pt: 'Idade mínima acompanhado'
+    },
+    PregnancyRestriction: {
+      en: 'Pregnancy restriction',
+      fr: 'Restriction grossesse',
+      es: 'Restricción embarazo',
+      de: 'Einschränkung Schwangerschaft',
+      it: 'Restrizione gravidanza',
+      pl: 'Ograniczenie ciąży',
+      nl: 'Zwangerschapsbeperking',
+      pt: 'Restrição gravidez'
+    },
+    HeartRestriction: {
+      en: 'Cardiac restriction',
+      fr: 'Restriction cardiaque',
+      es: 'Restricción cardíaca',
+      de: 'Herzbeschränkung',
+      it: 'Restrizione cardiaca',
+      pl: 'Ograniczenie kardiologiczne',
+      nl: 'Hartbeperking',
+      pt: 'Restrição cardíaca'
+    },
+    BackNeckRestriction: {
+      en: 'Back or neck restriction',
+      fr: 'Restriction dos ou nuque',
+      es: 'Restricción espalda o cuello',
+      de: 'Einschränkung Rücken oder Nacken',
+      it: 'Restrizione schiena o collo',
+      pl: 'Ograniczenie pleców lub szyi',
+      nl: 'Rug- of nekbeperking',
+      pt: 'Restrição costas ou pescoço'
+    },
+    WheelchairTransferRequired: {
+      en: 'Wheelchair transfer required',
+      fr: 'Transfert fauteuil requis',
+      es: 'Transferencia desde silla requerida',
+      de: 'Rollstuhltransfer erforderlich',
+      it: 'Trasferimento da sedia richiesto',
+      pl: 'Wymagany transfer z wózka',
+      nl: 'Transfer uit rolstoel vereist',
+      pt: 'Transferência da cadeira obrigatória'
+    },
+    AccessPassRequired: {
+      en: 'Access pass required',
+      fr: 'Access pass requis',
+      es: 'Access pass requerido',
+      de: 'Access Pass erforderlich',
+      it: 'Access pass richiesto',
+      pl: 'Wymagany access pass',
+      nl: 'Access pass vereist',
+      pt: 'Access pass obrigatório'
+    },
+    Custom: {
+      en: '',
+      fr: '',
+      es: '',
+      de: '',
+      it: '',
+      pl: '',
+      nl: '',
+      pt: ''
+    }
+  };
+
   get isEditMode(): boolean {
     return !!this.itemId;
   }
@@ -119,6 +258,10 @@ export class AdminParkItemEditComponent implements OnInit {
   get pagedPhotos(): AttractionPhotoItem[] {
     const start: number = this.photosPage * this.photosPageSize;
     return this.attractionPhotos.slice(start, start + this.photosPageSize);
+  }
+
+  get accessConditions(): FormArray {
+    return this.form.get(['attractionDetails', 'accessConditions']) as FormArray;
   }
 
   constructor(
@@ -157,9 +300,6 @@ export class AdminParkItemEditComponent implements OnInit {
         speedInKmH: [null],
         dropInMeters: [null],
         inversionCount: [null],
-        minimumHeightInCm: [null],
-        maximumHeightInCm: [null],
-        minimumAge: [null],
         trainCount: [null],
         carsPerTrain: [null],
         ridersPerVehicle: [null],
@@ -167,7 +307,8 @@ export class AdminParkItemEditComponent implements OnInit {
         hasFastPass: [false],
         isAccessibleForReducedMobility: [false],
         isIndoor: [false],
-        isWaterAttraction: [false]
+        isWaterAttraction: [false],
+        accessConditions: this.fb.array([])
       }),
       attractionLocations: this.fb.group({
         entrance: this.createLocationGroup(),
@@ -233,6 +374,75 @@ export class AdminParkItemEditComponent implements OnInit {
     }
 
     this.apiService.createParkItem(payload).subscribe(() => this.goBack());
+  }
+
+  addAccessCondition(type: AttractionAccessConditionType = this.selectedAccessConditionPreset): void {
+    const condition: AttractionAccessCondition = this.buildDefaultAccessCondition(type);
+    this.accessConditions.push(this.createAccessConditionGroup(condition));
+    this.syncAccessConditionDisplayOrders();
+  }
+
+  removeAccessCondition(index: number): void {
+    this.accessConditions.removeAt(index);
+    this.syncAccessConditionDisplayOrders();
+  }
+
+  moveAccessConditionUp(index: number): void {
+    if (index <= 0) {
+      return;
+    }
+
+    const control = this.accessConditions.at(index);
+    this.accessConditions.removeAt(index);
+    this.accessConditions.insert(index - 1, control);
+    this.syncAccessConditionDisplayOrders();
+  }
+
+  moveAccessConditionDown(index: number): void {
+    if (index >= this.accessConditions.length - 1) {
+      return;
+    }
+
+    const control = this.accessConditions.at(index);
+    this.accessConditions.removeAt(index);
+    this.accessConditions.insert(index + 1, control);
+    this.syncAccessConditionDisplayOrders();
+  }
+
+  onAccessConditionTypeChanged(index: number): void {
+    const group: FormGroup = this.getAccessConditionGroup(index);
+    const type: AttractionAccessConditionType = group.get('type')?.value as AttractionAccessConditionType;
+    const defaultCondition: AttractionAccessCondition = this.buildDefaultAccessCondition(type);
+    const currentLabel: LocalizedItem<string>[] | null = this.toLocalizedItems(group.get('label')?.value);
+    const shouldReplaceLabel: boolean = !this.hasLocalizedValues(currentLabel);
+
+    group.patchValue({
+      isCustom: type === 'Custom',
+      unit: defaultCondition.unit ?? null,
+      requiresAccompaniment: defaultCondition.requiresAccompaniment ?? false,
+      minimumCompanionAge: defaultCondition.minimumCompanionAge ?? null
+    });
+
+    if (shouldReplaceLabel) {
+      group.get('label')?.setValue(defaultCondition.label ?? []);
+    }
+  }
+
+  getAccessConditionGroup(index: number): FormGroup {
+    return this.accessConditions.at(index) as FormGroup;
+  }
+
+  getAccessConditionTitle(index: number): string {
+    const group: FormGroup = this.getAccessConditionGroup(index);
+    const label: LocalizedItem<string>[] | null = this.toLocalizedItems(group.get('label')?.value);
+    const resolvedLabel: string | undefined = resolveLocalizedValue(label ?? [], this.currentLang);
+
+    if (resolvedLabel && resolvedLabel.trim().length > 0) {
+      return resolvedLabel;
+    }
+
+    const type: AttractionAccessConditionType = group.get('type')?.value as AttractionAccessConditionType;
+    return this.translateService.instant(this.getAccessConditionLabelKey(type));
   }
 
   onPhotoFileSelected(event: Event): void {
@@ -359,6 +569,20 @@ export class AdminParkItemEditComponent implements OnInit {
     });
   }
 
+  private createAccessConditionGroup(condition?: AttractionAccessCondition): FormGroup {
+    return this.fb.group({
+      type: [condition?.type ?? 'Custom', Validators.required],
+      isCustom: [condition?.isCustom ?? (condition?.type === 'Custom')],
+      value: [condition?.value ?? null],
+      unit: [condition?.unit ?? null],
+      requiresAccompaniment: [condition?.requiresAccompaniment ?? false],
+      minimumCompanionAge: [condition?.minimumCompanionAge ?? null],
+      label: [condition?.label ?? []],
+      description: [condition?.description ?? []],
+      displayOrder: [condition?.displayOrder ?? null]
+    });
+  }
+
   private applyCategorySelection(category: ParkItemCategory): void {
     this.filteredTypeOptions = this.getTypeOptionsForCategory(category);
 
@@ -392,9 +616,6 @@ export class AdminParkItemEditComponent implements OnInit {
       speedInKmH: details?.speedInKmH ?? null,
       dropInMeters: details?.dropInMeters ?? null,
       inversionCount: details?.inversionCount ?? null,
-      minimumHeightInCm: details?.minimumHeightInCm ?? null,
-      maximumHeightInCm: details?.maximumHeightInCm ?? null,
-      minimumAge: details?.minimumAge ?? null,
       trainCount: details?.trainCount ?? null,
       carsPerTrain: details?.carsPerTrain ?? null,
       ridersPerVehicle: details?.ridersPerVehicle ?? null,
@@ -404,6 +625,26 @@ export class AdminParkItemEditComponent implements OnInit {
       isIndoor: details?.isIndoor ?? false,
       isWaterAttraction: details?.isWaterAttraction ?? false
     });
+
+    this.setAccessConditions(details?.accessConditions ?? null);
+  }
+
+  private setAccessConditions(conditions: AttractionAccessCondition[] | null): void {
+    while (this.accessConditions.length > 0) {
+      this.accessConditions.removeAt(0);
+    }
+
+    for (const condition of conditions ?? []) {
+      this.accessConditions.push(this.createAccessConditionGroup(condition));
+    }
+
+    this.syncAccessConditionDisplayOrders();
+  }
+
+  private syncAccessConditionDisplayOrders(): void {
+    for (let index: number = 0; index < this.accessConditions.length; index++) {
+      this.getAccessConditionGroup(index).get('displayOrder')?.setValue(index + 1, { emitEvent: false });
+    }
   }
 
   private patchAttractionLocations(locations: AttractionLocations | null): void {
@@ -453,9 +694,6 @@ export class AdminParkItemEditComponent implements OnInit {
       speedInKmH: this.toNullableNumber(raw?.speedInKmH),
       dropInMeters: this.toNullableNumber(raw?.dropInMeters),
       inversionCount: this.toNullableInteger(raw?.inversionCount),
-      minimumHeightInCm: this.toNullableInteger(raw?.minimumHeightInCm),
-      maximumHeightInCm: this.toNullableInteger(raw?.maximumHeightInCm),
-      minimumAge: this.toNullableInteger(raw?.minimumAge),
       trainCount: this.toNullableInteger(raw?.trainCount),
       carsPerTrain: this.toNullableInteger(raw?.carsPerTrain),
       ridersPerVehicle: this.toNullableInteger(raw?.ridersPerVehicle),
@@ -463,10 +701,46 @@ export class AdminParkItemEditComponent implements OnInit {
       hasFastPass: raw?.hasFastPass ?? false,
       isAccessibleForReducedMobility: raw?.isAccessibleForReducedMobility ?? false,
       isIndoor: raw?.isIndoor ?? false,
-      isWaterAttraction: raw?.isWaterAttraction ?? false
+      isWaterAttraction: raw?.isWaterAttraction ?? false,
+      accessConditions: this.buildAttractionAccessConditions(raw?.accessConditions)
     };
 
     return this.hasAtLeastOneAttractionDetail(details) ? details : null;
+  }
+
+  private buildAttractionAccessConditions(raw: any[] | null | undefined): AttractionAccessCondition[] | null {
+    if (!raw || raw.length === 0) {
+      return null;
+    }
+
+    const conditions: AttractionAccessCondition[] = raw
+      .map((item: any, index: number) => this.buildAttractionAccessCondition(item, index))
+      .filter((item: AttractionAccessCondition | null): item is AttractionAccessCondition => item !== null);
+
+    return conditions.length > 0 ? conditions : null;
+  }
+
+  private buildAttractionAccessCondition(raw: any, index: number): AttractionAccessCondition | null {
+    const type: AttractionAccessConditionType = (raw?.type as AttractionAccessConditionType) ?? 'Custom';
+    const label: LocalizedItem<string>[] | null = this.toLocalizedItems(raw?.label);
+    const description: LocalizedItem<string>[] | null = this.toLocalizedItems(raw?.description);
+    const condition: AttractionAccessCondition = {
+      type,
+      isCustom: type === 'Custom',
+      value: this.toNullableNumber(raw?.value),
+      unit: this.toNullableUnit(raw?.unit),
+      requiresAccompaniment: !!raw?.requiresAccompaniment,
+      minimumCompanionAge: this.toNullableInteger(raw?.minimumCompanionAge),
+      label,
+      description,
+      displayOrder: index + 1
+    };
+
+    if (!this.hasAtLeastOneAccessConditionValue(condition)) {
+      return null;
+    }
+
+    return condition;
   }
 
   private buildAttractionLocations(raw: any): AttractionLocations | null {
@@ -499,13 +773,98 @@ export class AdminParkItemEditComponent implements OnInit {
   }
 
   private hasAtLeastOneAttractionDetail(details: AttractionDetails): boolean {
-    return Object.values(details).some((value: string | number | boolean | null | undefined) => {
+    return Object.values(details).some((value: string | number | boolean | AttractionAccessCondition[] | null | undefined) => {
       if (typeof value === 'boolean') {
         return value === true;
       }
 
+      if (Array.isArray(value)) {
+        return value.length > 0;
+      }
+
       return value !== null && value !== undefined && value !== '';
     });
+  }
+
+  private hasAtLeastOneAccessConditionValue(condition: AttractionAccessCondition): boolean {
+    if (condition.type !== 'Custom') {
+      return true;
+    }
+
+    return condition.value !== null
+      || condition.unit !== null
+      || condition.requiresAccompaniment === true
+      || condition.minimumCompanionAge !== null
+      || this.hasLocalizedValues(condition.label)
+      || this.hasLocalizedValues(condition.description);
+  }
+
+  private hasLocalizedValues(items: LocalizedItem<string>[] | null | undefined): boolean {
+    return (items ?? []).some((item: LocalizedItem<string>) => !!item.value && item.value.trim().length > 0);
+  }
+
+  private buildDefaultAccessCondition(type: AttractionAccessConditionType): AttractionAccessCondition {
+    return {
+      type,
+      isCustom: type === 'Custom',
+      value: null,
+      unit: this.getDefaultUnit(type),
+      requiresAccompaniment: type === 'MinHeightAccompanied' || type === 'MinAgeAccompanied',
+      minimumCompanionAge: null,
+      label: this.buildDefaultLocalizedLabel(type),
+      description: [],
+      displayOrder: this.accessConditions.length + 1
+    };
+  }
+
+  private buildDefaultLocalizedLabel(type: AttractionAccessConditionType): LocalizedItem<string>[] {
+    return LANGUAGES
+      .map((language) => ({
+        languageCode: language.value,
+        value: this.accessConditionDefaultLabels[type][language.value] ?? ''
+      }))
+      .filter((item: LocalizedItem<string>) => item.value.trim().length > 0);
+  }
+
+  private getDefaultUnit(type: AttractionAccessConditionType): AttractionAccessConditionUnit | null {
+    switch (type) {
+      case 'MinHeight':
+      case 'MinHeightAccompanied':
+      case 'MaxHeight':
+        return 'Centimeter';
+      case 'MinAge':
+      case 'MinAgeAccompanied':
+        return 'Year';
+      default:
+        return null;
+    }
+  }
+
+  private getAccessConditionLabelKey(type: AttractionAccessConditionType): string {
+    switch (type) {
+      case 'MinHeight':
+        return 'admin.parks.items.accessConditionTypes.minHeight';
+      case 'MinHeightAccompanied':
+        return 'admin.parks.items.accessConditionTypes.minHeightAccompanied';
+      case 'MaxHeight':
+        return 'admin.parks.items.accessConditionTypes.maxHeight';
+      case 'MinAge':
+        return 'admin.parks.items.accessConditionTypes.minAge';
+      case 'MinAgeAccompanied':
+        return 'admin.parks.items.accessConditionTypes.minAgeAccompanied';
+      case 'PregnancyRestriction':
+        return 'admin.parks.items.accessConditionTypes.pregnancyRestriction';
+      case 'HeartRestriction':
+        return 'admin.parks.items.accessConditionTypes.heartRestriction';
+      case 'BackNeckRestriction':
+        return 'admin.parks.items.accessConditionTypes.backNeckRestriction';
+      case 'WheelchairTransferRequired':
+        return 'admin.parks.items.accessConditionTypes.wheelchairTransferRequired';
+      case 'AccessPassRequired':
+        return 'admin.parks.items.accessConditionTypes.accessPassRequired';
+      default:
+        return 'admin.parks.items.accessConditionTypes.custom';
+    }
   }
 
   private loadAttractionPhotos(): void {
@@ -538,6 +897,22 @@ export class AdminParkItemEditComponent implements OnInit {
     };
   }
 
+  private toLocalizedItems(value: unknown): LocalizedItem<string>[] | null {
+    if (!Array.isArray(value)) {
+      return null;
+    }
+
+    const normalized: LocalizedItem<string>[] = value
+      .filter((item: LocalizedItem<string>) => !!item && typeof item.languageCode === 'string')
+      .map((item: LocalizedItem<string>) => ({
+        languageCode: item.languageCode.trim().toLowerCase(),
+        value: String(item.value ?? '').trim()
+      }))
+      .filter((item: LocalizedItem<string>) => item.languageCode.length > 0 && item.value.length > 0);
+
+    return normalized.length > 0 ? normalized : null;
+  }
+
   private toNullableText(value: unknown): string | null {
     const normalized: string = String(value ?? '').trim();
     return normalized.length > 0 ? normalized : null;
@@ -559,6 +934,12 @@ export class AdminParkItemEditComponent implements OnInit {
 
     const parsed: number = Number(value);
     return Number.isFinite(parsed) ? parsed : null;
+  }
+
+  private toNullableUnit(value: unknown): AttractionAccessConditionUnit | null {
+    return value === 'Centimeter' || value === 'Year'
+      ? value
+      : null;
   }
 
   private toRequiredNumber(value: unknown): number {
