@@ -272,7 +272,8 @@
           "none": "None",
           "splash": "Light splash",
           "moderate": "Moderate",
-          "soaking": "Soaking"
+          "soaking": "Soaking",
+          "extremeSoaking": "Extremamente molhante"
         },
         "refactorHint": "O editor está agora dividido em secções temáticas para tornar a página mais leve e fácil de usar.",
         "tabs": {

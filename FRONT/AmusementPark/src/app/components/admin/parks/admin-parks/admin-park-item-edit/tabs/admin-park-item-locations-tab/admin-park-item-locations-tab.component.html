@@ -1,0 +1,115 @@
+<div class="tab-section" [formGroup]="formGroup">
+  <div class="section-header mb-3">
+    <h3>{{ 'admin.parks.items.locationsTitle' | translate }}</h3>
+    <small class="text-color-secondary">{{ 'admin.parks.items.locationsHelp' | translate }}</small>
+  </div>
+
+  <p-card styleClass="inner-card mb-3">
+    <div class="locations-summary">
+      <strong>{{ 'admin.parks.items.locationSummary' | translate:{ count: getDefinedLocationCount(), total: attractionLocationOptions.length } }}</strong>
+      <span class="text-color-secondary">{{ 'admin.parks.items.locationSummaryHelp' | translate }}</span>
+    </div>
+  </p-card>
+
+  <div class="locations-layout">
+    <div class="locations-sidebar">
+      <div class="location-card-wrapper" *ngFor="let locationOption of attractionLocationOptions">
+        <p-card [styleClass]="selectedLocationKey === locationOption.key ? 'location-card location-card--active' : 'location-card'">
+          <div class="location-card__header">
+            <div>
+              <h4>{{ locationOption.labelKey | translate }}</h4>
+              <small class="text-color-secondary">{{ getLocationCoordinatesLabel(locationOption.key) }}</small>
+            </div>
+
+            <div class="location-card__actions">
+              <button
+                pButton
+                type="button"
+                class="p-button-text p-button-sm"
+                icon="pi pi-map-marker"
+                (click)="selectedLocationKeyChange.emit(locationOption.key)">
+              </button>
+              <button
+                pButton
+                type="button"
+                class="p-button-text p-button-danger p-button-sm"
+                icon="pi pi-times"
+                [disabled]="!hasLocationPoint(locationOption.key)"
+                (click)="clearLocationPoint.emit(locationOption.key)">
+              </button>
+            </div>
+          </div>
+
+          <div class="location-card__summary mt-2">
+            <span class="location-card__status" [ngClass]="{'is-defined': hasLocationPoint(locationOption.key)}">
+              {{ hasLocationPoint(locationOption.key) ? ('admin.parks.items.locationDefined' | translate) : ('admin.parks.items.locationNotDefined' | translate) }}
+            </span>
+          </div>
+        </p-card>
+      </div>
+    </div>
+
+    <div class="locations-editor">
+      <p-card styleClass="inner-card">
+        <div class="section-header mb-3">
+          <h3>
+            {{ 'admin.parks.items.locationEditorTitle' | translate:{ location: (getSelectedLocationLabelKey() | translate) } }}
+          </h3>
+          <small class="text-color-secondary">{{ 'admin.parks.items.locationEditorHelp' | translate }}</small>
+        </div>
+
+        <app-leaflet-map
+          [center]="locationMapCenter"
+          [zoom]="locationMapZoom"
+          [markers]="locationMapMarkers"
+          [editable]="true"
+          (positionChange)="specificLocationMapPositionChange.emit($event)">
+        </app-leaflet-map>
+
+        <div class="location-editor-actions mt-3">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-compass"
+            class="p-button-secondary"
+            (click)="useGeneralLocation.emit()"
+            [label]="'admin.parks.items.useGeneralLocation' | translate">
+          </button>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-outlined p-button-danger"
+            [disabled]="!hasLocationPoint(selectedLocationKey)"
+            (click)="clearSelectedLocation.emit()"
+            [label]="'admin.parks.items.clearSelectedLocation' | translate">
+          </button>
+        </div>
+
+        <div class="grid formgrid mt-3" [formGroupName]="selectedLocationKey">
+          <div class="field col-12 md:col-6">
+            <label>{{ 'admin.parks.latitude' | translate }}</label>
+            <input pInputText type="number" formControlName="latitude" step="0.000001" />
+          </div>
+          <div class="field col-12 md:col-6">
+            <label>{{ 'admin.parks.longitude' | translate }}</label>
+            <input pInputText type="number" formControlName="longitude" step="0.000001" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="section-actions">
+    <button
+      pButton
+      type="button"
+      class="p-button-secondary p-button-outlined"
+      icon="pi pi-save"
+      (click)="saveSection.emit()"
+      [loading]="isSaving"
+      [disabled]="isSaving"
+      [label]="'admin.parks.items.editorActions.saveSection' | translate">
+    </button>
+  </div>
+</div>

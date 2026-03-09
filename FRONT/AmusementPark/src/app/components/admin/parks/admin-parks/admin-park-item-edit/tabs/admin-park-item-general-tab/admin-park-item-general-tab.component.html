@@ -1,0 +1,95 @@
+<div class="tab-section" [formGroup]="form">
+  <div class="field">
+    <label for="name">{{ 'admin.parks.items.itemName' | translate }}</label>
+    <input id="name" pInputText formControlName="name" />
+  </div>
+
+  <div class="grid formgrid">
+    <div class="field col-12 md:col-6">
+      <label>{{ 'admin.parks.items.category' | translate }}</label>
+      <p-dropdown formControlName="category" [options]="categoryOptions" optionLabel="labelKey" optionValue="value" [appendTo]="'body'">
+        <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+        <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+      </p-dropdown>
+    </div>
+    <div class="field col-12 md:col-6">
+      <label>{{ 'admin.parks.items.type' | translate }}</label>
+      <p-dropdown formControlName="type" [options]="filteredTypeOptions" optionLabel="labelKey" optionValue="value" [appendTo]="'body'">
+        <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+        <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+
+  <div class="grid formgrid">
+    <div class="field col-12 md:col-6">
+      <label>{{ 'admin.parks.items.subtype' | translate }}</label>
+      <input pInputText formControlName="subtype" />
+    </div>
+    <div class="field col-12 md:col-6">
+      <label>{{ 'admin.parks.items.zone' | translate }}</label>
+      <p-dropdown formControlName="zoneId" [options]="zones" optionLabel="label" optionValue="id" [showClear]="true" [appendTo]="'body'"></p-dropdown>
+    </div>
+  </div>
+
+  <p-card styleClass="inner-card">
+    <div class="section-header mb-3">
+      <h3>{{ 'admin.parks.items.generalLocation' | translate }}</h3>
+      <small class="text-color-secondary">{{ 'admin.parks.items.generalLocationHelp' | translate }}</small>
+    </div>
+
+    <app-leaflet-map
+      [center]="generalMapCenter"
+      [zoom]="generalMapZoom"
+      [markers]="generalMapMarkers"
+      [editable]="true"
+      (positionChange)="generalMapPositionChange.emit($event)">
+    </app-leaflet-map>
+
+    <div class="grid formgrid mt-3">
+      <div class="field col-12 md:col-6">
+        <label>{{ 'admin.parks.latitude' | translate }}</label>
+        <input pInputText type="number" formControlName="latitude" step="0.000001" />
+      </div>
+      <div class="field col-12 md:col-6">
+        <label>{{ 'admin.parks.longitude' | translate }}</label>
+        <input pInputText type="number" formControlName="longitude" step="0.000001" />
+      </div>
+    </div>
+
+    <div class="section-inline-actions mt-2">
+      <button
+        pButton
+        type="button"
+        class="p-button-outlined"
+        icon="pi pi-map-marker"
+        (click)="resetGeneralLocationToPark.emit()"
+        [disabled]="!canUseParkLocation || isSaving"
+        [label]="'admin.parks.items.editorActions.useParkLocation' | translate">
+      </button>
+    </div>
+  </p-card>
+
+  <div class="field mt-3">
+    <label>{{ 'admin.parks.descriptions.sectionTitle' | translate }}</label>
+    <app-localized-rich-text-editor formControlName="descriptions"></app-localized-rich-text-editor>
+  </div>
+
+  <div class="field visibility-field">
+    <label>{{ 'admin.parks.visibleField' | translate }}</label>
+    <p-inputSwitch formControlName="isVisible"></p-inputSwitch>
+  </div>
+
+  <div class="section-actions">
+    <button
+      pButton
+      type="button"
+      class="p-button-secondary p-button-outlined"
+      icon="pi pi-save"
+      (click)="saveSection.emit()"
+      [loading]="isSaving"
+      [disabled]="isSaving"
+      [label]="'admin.parks.items.editorActions.saveSection' | translate">
+    </button>
+  </div>
+</div>

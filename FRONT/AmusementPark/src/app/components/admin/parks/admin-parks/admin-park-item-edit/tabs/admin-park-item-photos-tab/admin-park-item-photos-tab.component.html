@@ -1,0 +1,149 @@
+<div class="tab-section attraction-photos-section">
+  <h3 class="mb-3">{{ 'admin.parks.items.photos.sectionTitle' | translate }}</h3>
+
+  <div *ngIf="!isEditMode" class="text-color-secondary mb-3">
+    {{ 'admin.parks.items.saveBeforePhotos' | translate }}
+  </div>
+
+  <div *ngIf="isEditMode" class="grid">
+    <div class="col-12 md:col-4">
+      <p-card styleClass="photo-card">
+        <div class="photo-card__header">
+          <h4>{{ 'admin.parks.items.photos.currentTitle' | translate }}</h4>
+        </div>
+
+        <div class="photo-card__body">
+          <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
+            <img *ngIf="currentPhoto"
+                 [src]="currentPhoto.imageUrl"
+                 [alt]="'admin.parks.items.photos.alt' | translate"
+                 class="photo-preview" />
+
+            <span *ngIf="!currentPhoto" class="text-color-secondary text-center photo-empty-text">
+              {{ 'admin.parks.items.photos.noCurrent' | translate }}
+            </span>
+
+            <small *ngIf="currentPhoto" class="text-color-secondary">
+              {{ currentPhoto.createdAt | date:'shortDate' }}
+            </small>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div class="col-12 md:col-8">
+      <p-card styleClass="photo-card">
+        <div class="photo-card__header">
+          <h4>{{ 'admin.parks.items.photos.uploadTitle' | translate }}</h4>
+        </div>
+
+        <div class="photo-card__body">
+          <div class="flex flex-column gap-3">
+            <input type="file"
+                   (change)="photoFileSelected.emit($event)"
+                   accept="image/*"
+                   [multiple]="allowMultiplePhotoUpload" />
+
+            <small *ngIf="selectedPhotoCount > 0" class="text-color-secondary">
+              {{ 'admin.parks.items.photos.selectedCount' | translate:{ count: selectedPhotoCount } }}
+            </small>
+
+            <input
+              pInputText
+              type="text"
+              [ngModel]="newPhotoDescription"
+              (ngModelChange)="newPhotoDescriptionChange.emit($event)"
+              [ngModelOptions]="{ standalone: true }"
+              [placeholder]="'admin.parks.items.photos.descriptionPlaceholder' | translate" />
+
+            <div class="flex justify-content-end">
+              <button pButton type="button"
+                      (click)="uploadPhoto.emit()"
+                      [disabled]="selectedPhotoCount === 0 || photosUploading">
+                <span *ngIf="!photosUploading">
+                  {{ 'admin.parks.items.photos.uploadButton' | translate }}
+                </span>
+                <span *ngIf="photosUploading">
+                  {{ 'admin.loading' | translate }}
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <p-panel *ngIf="isEditMode" [toggleable]="true" [collapsed]="true"
+           header="{{ 'admin.parks.items.photos.historyTitle' | translate }}">
+    <div *ngIf="photosLoading" class="text-center py-3">
+      <p-progressSpinner styleClass="w-2rem h-2rem"></p-progressSpinner>
+    </div>
+
+    <div *ngIf="!photosLoading && attractionPhotos.length === 0" class="text-color-secondary">
+      {{ 'admin.parks.items.photos.empty' | translate }}
+    </div>
+
+    <div *ngIf="!photosLoading && attractionPhotos.length > 0">
+      <div class="grid">
+        <div class="col-12 md:col-4 lg:col-3" *ngFor="let photo of pagedPhotos">
+          <p-card [ngClass]="{'border-primary': photo.isCurrent}">
+            <div class="flex flex-column align-items-center">
+              <img [src]="photo.imageUrl"
+                   [alt]="'admin.parks.items.photos.alt' | translate"
+                   class="photo-history-preview mb-2" />
+
+              <p-tag
+                *ngIf="photo.isCurrent"
+                [value]="'admin.parks.items.photos.currentLabel' | translate"
+                severity="success"
+                class="mb-2">
+              </p-tag>
+
+              <small class="text-color-secondary mb-2">
+                {{ photo.createdAt | date:'short' }}
+              </small>
+
+              <small class="mb-2 text-center">
+                {{ photo.description || ('admin.parks.items.photos.noDescription' | translate) }}
+              </small>
+
+              <div class="flex gap-2">
+                <button pButton type="button"
+                        icon="pi pi-check"
+                        class="p-button-sm p-button-success"
+                        (click)="setCurrentPhoto.emit(photo)"
+                        [disabled]="photo.isCurrent">
+                </button>
+                <button pButton type="button"
+                        icon="pi pi-trash"
+                        class="p-button-sm p-button-danger"
+                        (click)="deletePhoto.emit(photo)">
+                </button>
+              </div>
+            </div>
+          </p-card>
+        </div>
+      </div>
+
+      <p-paginator
+        [rows]="photosPageSize"
+        [totalRecords]="attractionPhotos.length"
+        (onPageChange)="photosPageChange.emit($event)">
+      </p-paginator>
+    </div>
+  </p-panel>
+
+  <div class="section-actions">
+    <button
+      pButton
+      type="button"
+      class="p-button-secondary p-button-outlined"
+      icon="pi pi-save"
+      (click)="saveSection.emit()"
+      [loading]="isSaving"
+      [disabled]="isSaving"
+      [label]="'admin.parks.items.editorActions.saveSection' | translate">
+    </button>
+  </div>
+</div>

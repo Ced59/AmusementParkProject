@@ -1,0 +1,143 @@
+<div class="tab-section" [formGroup]="formGroup">
+  <div class="section-header mb-3">
+    <h3>{{ 'admin.parks.items.accessConditionsTitle' | translate }}</h3>
+    <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionsHelp' | translate }}</small>
+  </div>
+
+  <p-card styleClass="inner-card mb-3">
+    <div class="access-summary">
+      <strong>{{ 'admin.parks.items.accessConditionsCount' | translate:{ count: accessConditions.length } }}</strong>
+      <span class="text-color-secondary">{{ 'admin.parks.items.accessConditionsSummary' | translate }}</span>
+    </div>
+  </p-card>
+
+  <div class="grid formgrid mb-3 access-condition-add-row">
+    <div class="field col-12 md:col-8 lg:col-6">
+      <label>{{ 'admin.parks.items.accessConditionsPreset' | translate }}</label>
+      <p-dropdown
+        [ngModel]="selectedAccessConditionPreset"
+        (ngModelChange)="onSelectedAccessConditionPresetChange($event)"
+        [ngModelOptions]="{ standalone: true }"
+        [options]="accessConditionPresetOptions"
+        optionLabel="labelKey"
+        optionValue="value"
+        [appendTo]="'body'">
+        <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+        <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+      </p-dropdown>
+    </div>
+    <div class="field col-12 md:col-4 lg:col-3 flex align-items-end">
+      <button
+        pButton
+        type="button"
+        icon="pi pi-plus"
+        (click)="addAccessCondition.emit(selectedAccessConditionPreset)"
+        [label]="'admin.parks.items.addAccessCondition' | translate">
+      </button>
+    </div>
+  </div>
+
+  <div formArrayName="accessConditions">
+    <div *ngIf="accessConditions.length === 0" class="text-color-secondary mb-3">
+      {{ 'admin.parks.items.accessConditionsEmpty' | translate }}
+    </div>
+
+    <div class="access-condition-list">
+      <div
+        class="access-condition-card"
+        *ngFor="let accessCondition of accessConditions.controls; let i = index"
+        [formGroupName]="i">
+        <p-card>
+          <ng-template pTemplate="header">
+            <div class="access-condition-card__header">
+              <div>
+                <h4>{{ getAccessConditionTitle(i) }}</h4>
+                <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionIndex' | translate:{ index: i + 1 } }}</small>
+              </div>
+
+              <div class="access-condition-card__actions">
+                <button pButton type="button" icon="pi pi-arrow-up" class="p-button-text p-button-sm" (click)="moveAccessConditionUp.emit(i)" [disabled]="i === 0"></button>
+                <button pButton type="button" icon="pi pi-arrow-down" class="p-button-text p-button-sm" (click)="moveAccessConditionDown.emit(i)" [disabled]="i === accessConditions.length - 1"></button>
+                <button pButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" (click)="removeAccessCondition.emit(i)"></button>
+              </div>
+            </div>
+          </ng-template>
+
+          <div class="grid formgrid">
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.accessConditionFields.type' | translate }}</label>
+              <p-dropdown
+                formControlName="type"
+                [options]="accessConditionPresetOptions"
+                optionLabel="labelKey"
+                optionValue="value"
+                [appendTo]="'body'"
+                (onChange)="accessConditionTypeChanged.emit(i)">
+                <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+                <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+              </p-dropdown>
+            </div>
+
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.accessConditionFields.value' | translate }}</label>
+              <input pInputText type="number" formControlName="value" />
+            </div>
+
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.accessConditionFields.unit' | translate }}</label>
+              <p-dropdown
+                formControlName="unit"
+                [options]="accessConditionUnitOptions"
+                optionLabel="labelKey"
+                optionValue="value"
+                [showClear]="true"
+                [appendTo]="'body'">
+                <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
+                <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
+              </p-dropdown>
+            </div>
+
+            <div class="field col-12 md:col-6 lg:col-4 switch-field">
+              <label>{{ 'admin.parks.items.accessConditionFields.requiresAccompaniment' | translate }}</label>
+              <p-inputSwitch formControlName="requiresAccompaniment"></p-inputSwitch>
+            </div>
+
+            <div class="field col-12 md:col-6 lg:col-4">
+              <label>{{ 'admin.parks.items.accessConditionFields.minimumCompanionAge' | translate }}</label>
+              <input pInputText type="number" formControlName="minimumCompanionAge" />
+            </div>
+
+            <div class="field col-12">
+              <label>{{ 'admin.parks.items.accessConditionFields.label' | translate }}</label>
+              <app-localized-text-input
+                formControlName="label"
+                [placeholderKey]="'admin.parks.items.accessConditionFields.labelPlaceholder'">
+              </app-localized-text-input>
+            </div>
+
+            <div class="field col-12">
+              <label>{{ 'admin.parks.items.accessConditionFields.description' | translate }}</label>
+              <app-localized-text-input
+                formControlName="description"
+                [placeholderKey]="'admin.parks.items.accessConditionFields.descriptionPlaceholder'">
+              </app-localized-text-input>
+            </div>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-actions">
+    <button
+      pButton
+      type="button"
+      class="p-button-secondary p-button-outlined"
+      icon="pi pi-save"
+      (click)="saveSection.emit()"
+      [loading]="isSaving"
+      [disabled]="isSaving"
+      [label]="'admin.parks.items.editorActions.saveSection' | translate">
+    </button>
+  </div>
+</div>

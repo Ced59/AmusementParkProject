@@ -7,7 +7,10 @@
     "in_category": "in",
     "categories": {
       "park": "Parks",
-      "attractions": "Attractions"
+      "parkItems": "Attractions / Restaurants / Hôtels ect...",
+      "manufacturers": "Manufacturers",
+      "operators": "Operators",
+      "everywhere": "All"
     }
   },
   "topbar": {
@@ -272,7 +275,8 @@
           "none": "None",
           "splash": "Light splash",
           "moderate": "Moderate",
-          "soaking": "Soaking"
+          "soaking": "Soaking",
+          "extremeSoaking": "Extremely soaking"
         },
         "refactorHint": "The editor is now split into thematic sections to keep the form lighter and easier to navigate.",
         "tabs": {

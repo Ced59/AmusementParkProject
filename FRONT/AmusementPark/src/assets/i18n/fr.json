@@ -7,7 +7,10 @@
     "in_category": "dans",
     "categories": {
       "park": "Parcs",
-      "attractions": "Attractions"
+      "parkItems": "Attractions / Restaurants / Hôtels ect...",
+      "manufacturers": "Constructeurs",
+      "operators": "Exploitants",
+      "everywhere": "Tout"
     }
   },
   "topbar": {
@@ -272,7 +275,8 @@
           "none": "Aucune",
           "splash": "Éclaboussures légères",
           "moderate": "Modéré",
-          "soaking": "Très mouillant"
+          "soaking": "Très mouillant",
+          "extremeSoaking": "Extrêmement mouillant"
         },
         "refactorHint": "L’éditeur est désormais découpé en sections thématiques pour alléger la page et mieux s’y retrouver.",
         "tabs": {

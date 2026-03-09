@@ -1,0 +1,80 @@
+.tab-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.section-header h3,
+.access-condition-card__header h4 {
+  margin: 0;
+}
+
+.switch-field {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.access-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.access-condition-add-row {
+  align-items: end;
+}
+
+.access-condition-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.access-condition-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1rem 0;
+}
+
+.access-condition-card__actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--surface-border);
+}
+
+:host ::ng-deep .inner-card .p-card-body {
+  padding: 1rem;
+}
+
+@media (max-width: 991px) {
+  .section-actions {
+    width: 100%;
+  }
+
+  :host ::ng-deep .section-actions .p-button {
+    width: 100%;
+  }
+}

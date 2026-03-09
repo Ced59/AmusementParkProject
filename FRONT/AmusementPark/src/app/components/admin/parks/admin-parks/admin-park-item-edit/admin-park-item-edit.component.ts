@@ -181,7 +181,8 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     { labelKey: 'admin.parks.items.waterExposureLevels.none', value: 'None' },
     { labelKey: 'admin.parks.items.waterExposureLevels.splash', value: 'Splash' },
     { labelKey: 'admin.parks.items.waterExposureLevels.moderate', value: 'Moderate' },
-    { labelKey: 'admin.parks.items.waterExposureLevels.soaking', value: 'Soaking' }
+    { labelKey: 'admin.parks.items.waterExposureLevels.soaking', value: 'Soaking' },
+    { labelKey: 'admin.parks.items.waterExposureLevels.extremeSoaking', value: 'ExtremeSoaking' }
   ];
 
   readonly accessConditionUnitOptions: Option<AttractionAccessConditionUnit>[] = [
@@ -313,6 +314,14 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   get pagedPhotos(): AttractionPhotoItem[] {
     const start: number = this.photosPage * this.photosPageSize;
     return this.attractionPhotos.slice(start, start + this.photosPageSize);
+  }
+
+  get attractionDetailsGroup(): FormGroup {
+    return this.form.get('attractionDetails') as FormGroup;
+  }
+
+  get attractionLocationsGroup(): FormGroup {
+    return this.form.get('attractionLocations') as FormGroup;
   }
 
   get accessConditions(): FormArray {
@@ -1522,7 +1531,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   }
 
   private toNullableWaterExposureLevel(value: unknown): AttractionWaterExposureLevel | null {
-    return value === 'None' || value === 'Splash' || value === 'Moderate' || value === 'Soaking'
+    return value === 'None' || value === 'Splash' || value === 'Moderate' || value === 'Soaking' || value === 'ExtremeSoaking'
       ? value
       : null;
   }
