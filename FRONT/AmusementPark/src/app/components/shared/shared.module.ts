@@ -13,13 +13,15 @@ import { LeafletMapComponent } from './leaflet-map/leaflet-map.component';
 import { LocalizedRichTextEditorComponent } from './localized-rich-text-editor/localized-rich-text-editor.component';
 import { LocalizedTextInputComponent } from './localized-text-input/localized-text-input.component';
 import { EntitySelectComponent } from './entity-select/entity-select.component';
+import { EditorSaveToolbarComponent } from './editor-save-toolbar/editor-save-toolbar.component';
 
 @NgModule({
   declarations: [
     LeafletMapComponent,
     LocalizedRichTextEditorComponent,
     LocalizedTextInputComponent,
-    EntitySelectComponent
+    EntitySelectComponent,
+    EditorSaveToolbarComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { EntitySelectComponent } from './entity-select/entity-select.component';
     LeafletMapComponent,
     LocalizedRichTextEditorComponent,
     LocalizedTextInputComponent,
-    EntitySelectComponent
+    EntitySelectComponent,
+    EditorSaveToolbarComponent
   ]
 })
 export class SharedModule { }

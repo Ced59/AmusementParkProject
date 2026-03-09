@@ -147,7 +147,9 @@
         "uploadSuccess": "{{count}} logo(s) uploaded successfully.",
         "uploadError": "An error occurred after {{count}} upload(s).",
         "currentSetSuccess": "Current logo updated.",
-        "deleteSuccess": "Logo deleted."
+        "deleteSuccess": "Logo deleted.",
+        "sectionHelp": "Verwalte hier das aktuelle Parklogo und seinen Verlauf.",
+        "saveBeforeUpload": "Speichere zuerst den Park, bevor du Logos zuordnest."
       },
       "zones": {
         "manage": "Bereiche verwalten",
@@ -313,6 +315,39 @@
           "errorSummary": "Speichern fehlgeschlagen",
           "errorDetail": "Beim Speichern des Parkelements ist ein Fehler aufgetreten."
         }
+      },
+      "refactorHint": "Der Editor ist jetzt in thematische Tabs aufgeteilt, damit die Seite leichter und übersichtlicher bleibt.",
+      "visibilityHelp": "Steuert, ob dieser Park in der öffentlichen Anwendung sichtbar ist.",
+      "locationSectionTitle": "Standort und Adresse",
+      "locationSectionHelp": "Definiere hier den Hauptpunkt des Parks und seine Postanschrift.",
+      "tabs": {
+        "general": "Allgemein",
+        "location": "Standort",
+        "descriptions": "Beschreibungen",
+        "logos": "Logos"
+      },
+      "editorStatus": {
+        "saving": "Speichern...",
+        "unsavedChanges": "Nicht gespeicherte Änderungen",
+        "upToDate": "Aktuell"
+      },
+      "editorActions": {
+        "backToParks": "Zurück zur Parkliste",
+        "saveAll": "Alles speichern",
+        "saveAndClose": "Speichern und beenden",
+        "saveSection": "Diesen Bereich speichern"
+      },
+      "saveMessages": {
+        "successSummary": "Gespeichert",
+        "sectionSaved": "Der aktuelle Bereich wurde gespeichert und du bleibst auf der Seite.",
+        "parkSaved": "Der Park wurde gespeichert.",
+        "parkCreated": "Der Park wurde erstellt und die Bearbeitung wird auf dieser Seite fortgesetzt.",
+        "errorSummary": "Speichern fehlgeschlagen",
+        "errorDetail": "Beim Speichern des Parks ist ein Fehler aufgetreten."
+      },
+      "management": {
+        "sectionTitle": "Verwaltung der Parkinhalte",
+        "sectionHelp": "Schneller Zugriff auf die Zonen und Elemente dieses Parks."
       }
     },
     "loading": "Laden...",

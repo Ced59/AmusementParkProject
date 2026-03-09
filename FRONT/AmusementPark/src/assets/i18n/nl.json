@@ -147,7 +147,9 @@
         "uploadSuccess": "{{count}} logo(s) uploaded successfully.",
         "uploadError": "An error occurred after {{count}} upload(s).",
         "currentSetSuccess": "Current logo updated.",
-        "deleteSuccess": "Logo deleted."
+        "deleteSuccess": "Logo deleted.",
+        "sectionHelp": "Beheer hier het huidige parklogo en de geschiedenis ervan.",
+        "saveBeforeUpload": "Sla eerst het park op voordat je logo’s koppelt."
       },
       "zones": {
         "manage": "Zones beheren",
@@ -313,6 +315,39 @@
           "errorSummary": "Opslaan mislukt",
           "errorDetail": "Er is een fout opgetreden bij het opslaan van het parkelement."
         }
+      },
+      "refactorHint": "De editor is nu opgesplitst in thematische tabbladen om de pagina lichter en overzichtelijker te maken.",
+      "visibilityHelp": "Bepaalt of dit park zichtbaar is in de publieke applicatie.",
+      "locationSectionTitle": "Locatie en adres",
+      "locationSectionHelp": "Definieer hier het hoofdpunt van het park en het postadres.",
+      "tabs": {
+        "general": "Algemeen",
+        "location": "Locatie",
+        "descriptions": "Beschrijvingen",
+        "logos": "Logo’s"
+      },
+      "editorStatus": {
+        "saving": "Opslaan...",
+        "unsavedChanges": "Niet-opgeslagen wijzigingen",
+        "upToDate": "Up-to-date"
+      },
+      "editorActions": {
+        "backToParks": "Terug naar de parklijst",
+        "saveAll": "Alles opslaan",
+        "saveAndClose": "Opslaan en afsluiten",
+        "saveSection": "Deze sectie opslaan"
+      },
+      "saveMessages": {
+        "successSummary": "Opgeslagen",
+        "sectionSaved": "De huidige sectie is opgeslagen en je blijft op de pagina.",
+        "parkSaved": "Het park is opgeslagen.",
+        "parkCreated": "Het park is aangemaakt en de bewerking gaat verder op deze pagina.",
+        "errorSummary": "Opslaan mislukt",
+        "errorDetail": "Er is een fout opgetreden tijdens het opslaan van het park."
+      },
+      "management": {
+        "sectionTitle": "Beheer van parkinhoud",
+        "sectionHelp": "Snelle toegang tot de zones en elementen die aan dit park zijn gekoppeld."
       }
     },
     "loading": "Laden...",

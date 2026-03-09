@@ -29,6 +29,10 @@ import { AdminParkItemDetailsTabComponent } from './admin-park-item-edit/tabs/ad
 import { AdminParkItemAccessConditionsTabComponent } from './admin-park-item-edit/tabs/admin-park-item-access-conditions-tab/admin-park-item-access-conditions-tab.component';
 import { AdminParkItemLocationsTabComponent } from './admin-park-item-edit/tabs/admin-park-item-locations-tab/admin-park-item-locations-tab.component';
 import { AdminParkItemPhotosTabComponent } from './admin-park-item-edit/tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component';
+import { AdminParkGeneralTabComponent } from './admin-park-edit/tabs/admin-park-general-tab/admin-park-general-tab.component';
+import { AdminParkLocationTabComponent } from './admin-park-edit/tabs/admin-park-location-tab/admin-park-location-tab.component';
+import { AdminParkDescriptionsTabComponent } from './admin-park-edit/tabs/admin-park-descriptions-tab/admin-park-descriptions-tab.component';
+import { AdminParkLogosTabComponent } from './admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { AdminParkItemPhotosTabComponent } from './admin-park-item-edit/tabs/adm
     AdminParkItemDetailsTabComponent,
     AdminParkItemAccessConditionsTabComponent,
     AdminParkItemLocationsTabComponent,
-    AdminParkItemPhotosTabComponent
+    AdminParkItemPhotosTabComponent,
+    AdminParkGeneralTabComponent,
+    AdminParkLocationTabComponent,
+    AdminParkDescriptionsTabComponent,
+    AdminParkLogosTabComponent
   ],
   imports: [
     CommonModule,

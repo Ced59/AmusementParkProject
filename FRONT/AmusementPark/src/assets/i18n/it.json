@@ -147,7 +147,9 @@
         "uploadSuccess": "{{count}} logo(s) uploaded successfully.",
         "uploadError": "An error occurred after {{count}} upload(s).",
         "currentSetSuccess": "Current logo updated.",
-        "deleteSuccess": "Logo deleted."
+        "deleteSuccess": "Logo deleted.",
+        "sectionHelp": "Gestisci qui il logo attuale del parco e il suo storico.",
+        "saveBeforeUpload": "Salva prima il parco per potergli associare dei loghi."
       },
       "zones": {
         "manage": "Gestisci le zone",
@@ -313,6 +315,39 @@
           "errorSummary": "Salvataggio non riuscito",
           "errorDetail": "Si è verificato un errore durante il salvataggio dell’elemento del parco."
         }
+      },
+      "refactorHint": "L’editor è ora suddiviso in schede tematiche per alleggerire la pagina e renderla più chiara.",
+      "visibilityHelp": "Controlla se questo parco è visibile nell’applicazione pubblica.",
+      "locationSectionTitle": "Posizione e indirizzo",
+      "locationSectionHelp": "Definisci qui il punto principale del parco e il suo indirizzo postale.",
+      "tabs": {
+        "general": "Generale",
+        "location": "Posizione",
+        "descriptions": "Descrizioni",
+        "logos": "Loghi"
+      },
+      "editorStatus": {
+        "saving": "Salvataggio...",
+        "unsavedChanges": "Modifiche non salvate",
+        "upToDate": "Aggiornato"
+      },
+      "editorActions": {
+        "backToParks": "Torna all’elenco dei parchi",
+        "saveAll": "Salva tutto",
+        "saveAndClose": "Salva e termina",
+        "saveSection": "Salva questa sezione"
+      },
+      "saveMessages": {
+        "successSummary": "Salvato",
+        "sectionSaved": "La sezione corrente è stata salvata e resti sulla pagina.",
+        "parkSaved": "Il parco è stato salvato.",
+        "parkCreated": "Il parco è stato creato e la modifica continua su questa pagina.",
+        "errorSummary": "Salvataggio non riuscito",
+        "errorDetail": "Si è verificato un errore durante il salvataggio del parco."
+      },
+      "management": {
+        "sectionTitle": "Gestione dei contenuti del parco",
+        "sectionHelp": "Accedi rapidamente alle zone e agli elementi collegati a questo parco."
       }
     },
     "loading": "Caricamento...",

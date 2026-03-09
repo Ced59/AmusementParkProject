@@ -7,45 +7,17 @@
       </small>
     </div>
 
-    <div class="editor-toolbar">
-      <div class="editor-toolbar__status" [class.is-dirty]="isFormDirty" [class.is-saving]="isSaving">
-        <i class="pi" [ngClass]="isSaving ? 'pi-spin pi-spinner' : (isFormDirty ? 'pi-pencil' : 'pi-check-circle')"></i>
-        <span>{{ getEditorStatusLabel() }}</span>
-      </div>
-
-      <div class="editor-toolbar__actions">
-        <button
-          pButton
-          type="button"
-          class="p-button-secondary p-button-outlined"
-          icon="pi pi-list"
-          (click)="goBack()"
-          [disabled]="isSaving"
-          [label]="'admin.parks.items.editorActions.backToItems' | translate">
-        </button>
-
-        <button
-          pButton
-          type="button"
-          icon="pi pi-save"
-          class="p-button-secondary"
-          (click)="saveAll()"
-          [loading]="isSaving"
-          [disabled]="isSaving"
-          [label]="'admin.parks.items.editorActions.saveAll' | translate">
-        </button>
-
-        <button
-          pButton
-          type="button"
-          icon="pi pi-check"
-          (click)="saveAndClose()"
-          [loading]="isSaving"
-          [disabled]="isSaving"
-          [label]="'admin.parks.items.editorActions.saveAndClose' | translate">
-        </button>
-      </div>
-    </div>
+    <app-editor-save-toolbar
+      [statusLabel]="getEditorStatusLabel()"
+      [isDirty]="isFormDirty"
+      [isSaving]="isSaving"
+      [backButtonLabel]="'admin.parks.items.editorActions.backToItems' | translate"
+      [saveAllButtonLabel]="'admin.parks.items.editorActions.saveAll' | translate"
+      [saveAndCloseButtonLabel]="'admin.parks.items.editorActions.saveAndClose' | translate"
+      (back)="goBack()"
+      (saveAll)="saveAll()"
+      (saveAndClose)="saveAndClose()">
+    </app-editor-save-toolbar>
   </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">

@@ -147,7 +147,9 @@
         "uploadSuccess": "{{count}} logo(s) uploaded successfully.",
         "uploadError": "An error occurred after {{count}} upload(s).",
         "currentSetSuccess": "Current logo updated.",
-        "deleteSuccess": "Logo deleted."
+        "deleteSuccess": "Logo deleted.",
+        "sectionHelp": "Zarządzaj tutaj aktualnym logo parku i jego historią.",
+        "saveBeforeUpload": "Najpierw zapisz park, aby móc dodać do niego logotypy."
       },
       "zones": {
         "manage": "Zarządzaj strefami",
@@ -313,6 +315,39 @@
           "errorSummary": "Zapisywanie nie powiodło się",
           "errorDetail": "Wystąpił błąd podczas zapisywania elementu parku."
         }
+      },
+      "refactorHint": "Edytor został teraz podzielony na tematyczne zakładki, aby strona była lżejsza i bardziej czytelna.",
+      "visibilityHelp": "Określa, czy ten park jest widoczny w publicznej aplikacji.",
+      "locationSectionTitle": "Lokalizacja i adres",
+      "locationSectionHelp": "Tutaj określisz główny punkt parku i jego adres pocztowy.",
+      "tabs": {
+        "general": "Ogólne",
+        "location": "Lokalizacja",
+        "descriptions": "Opisy",
+        "logos": "Logotypy"
+      },
+      "editorStatus": {
+        "saving": "Zapisywanie...",
+        "unsavedChanges": "Niezapisane zmiany",
+        "upToDate": "Aktualne"
+      },
+      "editorActions": {
+        "backToParks": "Powrót do listy parków",
+        "saveAll": "Zapisz wszystko",
+        "saveAndClose": "Zapisz i zakończ",
+        "saveSection": "Zapisz tę sekcję"
+      },
+      "saveMessages": {
+        "successSummary": "Zapisano",
+        "sectionSaved": "Bieżąca sekcja została zapisana i pozostajesz na stronie.",
+        "parkSaved": "Park został zapisany.",
+        "parkCreated": "Park został utworzony i edycja jest kontynuowana na tej stronie.",
+        "errorSummary": "Błąd zapisu",
+        "errorDetail": "Wystąpił błąd podczas zapisywania parku."
+      },
+      "management": {
+        "sectionTitle": "Zarządzanie zawartością parku",
+        "sectionHelp": "Szybki dostęp do stref i elementów powiązanych z tym parkiem."
       }
     },
     "loading": "Ładowanie...",

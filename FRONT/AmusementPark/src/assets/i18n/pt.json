@@ -147,7 +147,9 @@
         "uploadSuccess": "{{count}} logo(s) uploaded successfully.",
         "uploadError": "An error occurred after {{count}} upload(s).",
         "currentSetSuccess": "Current logo updated.",
-        "deleteSuccess": "Logo deleted."
+        "deleteSuccess": "Logo deleted.",
+        "sectionHelp": "Gere aqui o logótipo atual do parque e o seu histórico.",
+        "saveBeforeUpload": "Guarda primeiro o parque para lhe poderes associar logótipos."
       },
       "zones": {
         "manage": "Gerir zonas",
@@ -313,6 +315,39 @@
           "errorSummary": "Falha ao guardar",
           "errorDetail": "Ocorreu um erro ao guardar o elemento do parque."
         }
+      },
+      "refactorHint": "O editor está agora dividido em separadores temáticos para tornar a página mais leve e fácil de usar.",
+      "visibilityHelp": "Controla se este parque fica visível na aplicação pública.",
+      "locationSectionTitle": "Localização e endereço",
+      "locationSectionHelp": "Define aqui o ponto principal do parque e o seu endereço postal.",
+      "tabs": {
+        "general": "Geral",
+        "location": "Localização",
+        "descriptions": "Descrições",
+        "logos": "Logótipos"
+      },
+      "editorStatus": {
+        "saving": "A guardar...",
+        "unsavedChanges": "Alterações por guardar",
+        "upToDate": "Atualizado"
+      },
+      "editorActions": {
+        "backToParks": "Voltar à lista de parques",
+        "saveAll": "Guardar tudo",
+        "saveAndClose": "Guardar e terminar",
+        "saveSection": "Guardar esta secção"
+      },
+      "saveMessages": {
+        "successSummary": "Guardado",
+        "sectionSaved": "A secção atual foi guardada e continuas na página.",
+        "parkSaved": "O parque foi guardado.",
+        "parkCreated": "O parque foi criado e a edição continua nesta página.",
+        "errorSummary": "Falha ao guardar",
+        "errorDetail": "Ocorreu um erro ao guardar o parque."
+      },
+      "management": {
+        "sectionTitle": "Gestão do conteúdo do parque",
+        "sectionHelp": "Acede rapidamente às zonas e aos elementos associados a este parque."
       }
     },
     "loading": "A carregar...",

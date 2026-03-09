@@ -7,10 +7,7 @@
     "in_category": "in",
     "categories": {
       "park": "Parks",
-      "parkItems": "Attractions / Restaurants / Hôtels ect...",
-      "manufacturers": "Manufacturers",
-      "operators": "Operators",
-      "everywhere": "All"
+      "attractions": "Attractions"
     }
   },
   "topbar": {
@@ -150,7 +147,9 @@
         "uploadSuccess": "{{count}} logo(s) uploaded successfully.",
         "uploadError": "An error occurred after {{count}} upload(s).",
         "currentSetSuccess": "Current logo updated.",
-        "deleteSuccess": "Logo deleted."
+        "deleteSuccess": "Logo deleted.",
+        "sectionHelp": "Manage the current park logo and its history here.",
+        "saveBeforeUpload": "Save the park first before attaching logos."
       },
       "zones": {
         "manage": "Manage zones",
@@ -316,6 +315,39 @@
           "errorSummary": "Save failed",
           "errorDetail": "An error occurred while saving the park item."
         }
+      },
+      "refactorHint": "The editor is now split into thematic tabs to keep the page lighter and easier to navigate.",
+      "visibilityHelp": "Controls whether this park is visible in the public application.",
+      "locationSectionTitle": "Location and address",
+      "locationSectionHelp": "Define the park main point and postal address here.",
+      "tabs": {
+        "general": "General",
+        "location": "Location",
+        "descriptions": "Descriptions",
+        "logos": "Logos"
+      },
+      "editorStatus": {
+        "saving": "Saving...",
+        "unsavedChanges": "Unsaved changes",
+        "upToDate": "Up to date"
+      },
+      "editorActions": {
+        "backToParks": "Back to park list",
+        "saveAll": "Save all",
+        "saveAndClose": "Save and finish",
+        "saveSection": "Save this section"
+      },
+      "saveMessages": {
+        "successSummary": "Saved",
+        "sectionSaved": "The current section has been saved and you stay on the page.",
+        "parkSaved": "The park has been saved.",
+        "parkCreated": "The park has been created and you stay in edit mode.",
+        "errorSummary": "Save failed",
+        "errorDetail": "An error occurred while saving the park."
+      },
+      "management": {
+        "sectionTitle": "Park content management",
+        "sectionHelp": "Quick access to the zones and items attached to this park."
       }
     },
     "loading": "Loading...",
