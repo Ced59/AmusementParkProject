@@ -1,13 +1,16 @@
 using Common.General.Localization;
+using Dtos.Pagination;
 using Dtos.ParkItems;
 using Dtos.ParkItems.Creating;
 using Dtos.ParkItems.ParkItems;
 using Dtos.ParkItems.Updating;
 using Entities.Model.Errors;
 using Entities.Model.Parks;
+using Entities.Model.Searching;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces;
+using Services.Interfaces.Searching;
 
 namespace Services.Implementations
 {
@@ -17,17 +20,23 @@ namespace Services.Implementations
         private readonly IParksQueryHandler parksQueryHandler;
         private readonly IParkZonesQueryHandler zonesQueryHandler;
         private readonly IAttractionManufacturersQueryHandler attractionManufacturersQueryHandler;
+        private readonly ISearchIndexService searchIndexService;
+        private readonly IMongoDbSettings mongoDbSettings;
 
         public ParkItemsService(
             IParkItemsQueryHandler itemsQueryHandler,
             IParksQueryHandler parksQueryHandler,
             IParkZonesQueryHandler zonesQueryHandler,
-            IAttractionManufacturersQueryHandler attractionManufacturersQueryHandler)
+            IAttractionManufacturersQueryHandler attractionManufacturersQueryHandler,
+            ISearchIndexService searchIndexService,
+            IMongoDbSettings mongoDbSettings)
         {
             this.itemsQueryHandler = itemsQueryHandler;
             this.parksQueryHandler = parksQueryHandler;
             this.zonesQueryHandler = zonesQueryHandler;
             this.attractionManufacturersQueryHandler = attractionManufacturersQueryHandler;
+            this.searchIndexService = searchIndexService;
+            this.mongoDbSettings = mongoDbSettings;
         }
 
         public async Task<OneOf<IEnumerable<ParkItemDto>, ErrorCodes.ErrorDetail>> GetByParkIdAsync(string parkId, bool includeNonVisible = true)
@@ -40,6 +49,50 @@ namespace Services.Implementations
 
             IEnumerable<ParkItem> items = await itemsQueryHandler.GetByParkIdAsync(parkId, includeNonVisible);
             return items.Select(MapToDto).ToList();
+        }
+
+        public async Task<(IEnumerable<ParkItemAdminListDto> Data, PaginationDto Pagination)> GetPaginatedAsync(
+            int page,
+            int pageSize,
+            string? parkId,
+            string? search,
+            bool includeNonVisible = true)
+        {
+            (IEnumerable<ParkItem> items, long totalCount) = await itemsQueryHandler.GetPaginatedAsync(
+                page,
+                pageSize,
+                parkId,
+                search,
+                includeNonVisible);
+
+            List<ParkItem> itemsList = items.ToList();
+            List<string> parkIds = itemsList
+                .Where(item => !string.IsNullOrWhiteSpace(item.ParkId))
+                .Select(item => item.ParkId)
+                .Distinct(StringComparer.Ordinal)
+                .ToList();
+
+            IEnumerable<Park> parks = await parksQueryHandler.GetParksByIdsAsync(parkIds);
+            Dictionary<string, string> parkNamesById = parks
+                .Where(park => !string.IsNullOrWhiteSpace(park.Id))
+                .ToDictionary(
+                    park => park.Id!,
+                    park => park.Name ?? string.Empty,
+                    StringComparer.Ordinal);
+
+            List<ParkItemAdminListDto> data = itemsList.Select(item => new ParkItemAdminListDto
+            {
+                Id = item.Id ?? string.Empty,
+                ParkId = item.ParkId,
+                ParkName = parkNamesById.TryGetValue(item.ParkId, out string? parkName) ? parkName : string.Empty,
+                Name = item.Name,
+                Category = MapCategory(item.Category),
+                Type = MapType(item.Type),
+                IsVisible = item.IsVisible
+            }).ToList();
+
+            PaginationDto pagination = PaginationDto.Create(Convert.ToInt32(totalCount), page, pageSize);
+            return (data, pagination);
         }
 
         public async Task<OneOf<ParkItemDto, ErrorCodes.ErrorDetail>> GetByIdAsync(string id)
@@ -81,7 +134,16 @@ namespace Services.Implementations
             };
 
             ParkItem? created = await itemsQueryHandler.CreateAsync(item);
-            return created == null ? ErrorCodes.ErrorCreatingParkItem : MapToDto(created);
+            if (created == null)
+            {
+                return ErrorCodes.ErrorCreatingParkItem;
+            }
+
+            SearchItem searchItem = searchIndexService.ConvertParkItemToSearchItem(created, park.Name ?? string.Empty);
+            searchItem.IsVisible = park.IsVisible && created.IsVisible;
+            await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
+
+            return MapToDto(created);
         }
 
         public async Task<OneOf<ParkItemDto, ErrorCodes.ErrorDetail>> UpdateAsync(string id, ParkItemUpdateDto dto)
@@ -113,7 +175,17 @@ namespace Services.Implementations
             existing.UpdatedAt = DateTime.UtcNow;
 
             ParkItem? updated = await itemsQueryHandler.UpdateAsync(existing);
-            return updated == null ? ErrorCodes.ErrorUpdatingParkItem : MapToDto(updated);
+            if (updated == null)
+            {
+                return ErrorCodes.ErrorUpdatingParkItem;
+            }
+
+            Park? park = await parksQueryHandler.GetParkByIdAsync(updated.ParkId);
+            SearchItem searchItem = searchIndexService.ConvertParkItemToSearchItem(updated, park?.Name ?? string.Empty);
+            searchItem.IsVisible = (park?.IsVisible ?? true) && updated.IsVisible;
+            await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
+
+            return MapToDto(updated);
         }
 
         public async Task<OneOf<bool, ErrorCodes.ErrorDetail>> DeleteAsync(string id)
@@ -124,7 +196,14 @@ namespace Services.Implementations
                 return ErrorCodes.ParkItemNotExists;
             }
 
-            return await itemsQueryHandler.DeleteAsync(id) ? true : ErrorCodes.ErrorDeletingParkItem;
+            bool deleted = await itemsQueryHandler.DeleteAsync(id);
+            if (!deleted)
+            {
+                return ErrorCodes.ErrorDeletingParkItem;
+            }
+
+            await searchIndexService.DeleteSearchItemAsync($"parkItem_{id}", mongoDbSettings.SearchItemCollectionName);
+            return true;
         }
 
         private async Task<ErrorCodes.ErrorDetail?> ValidateReferencesAsync(

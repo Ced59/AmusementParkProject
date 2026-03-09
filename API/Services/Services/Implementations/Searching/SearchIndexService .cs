@@ -1,4 +1,4 @@
-﻿using Common.General.Localization;
+using Common.General.Localization;
 using Entities.Model.Parks;
 using Entities.Model.Searching;
 using MongoDB.Bson;
@@ -10,6 +10,14 @@ namespace Services.Implementations.Searching
 {
     public class SearchIndexService : ISearchIndexService
     {
+        private static readonly string[] SupportedCategories = new[]
+        {
+            "park",
+            "parkItems",
+            "operators",
+            "manufacturers"
+        };
+
         private readonly IMongoDatabase database;
 
         public SearchIndexService(IMongoDatabase database)
@@ -17,108 +25,58 @@ namespace Services.Implementations.Searching
             this.database = database;
         }
 
-        /// <summary>
-        /// Initialise la collection SearchItems à partir de tous les documents Park existants,
-        /// en utilisant des opérations "UpdateOne" avec upsert pour ne jamais altérer _id.
-        /// </summary>
-        public async Task InitializeFromParksAsync(
+        public async Task InitializeAsync(
             IMongoDatabase database,
             string parksCollectionName,
+            string parkItemsCollectionName,
+            string parkOperatorsCollectionName,
+            string attractionManufacturersCollectionName,
             string searchItemCollectionName)
         {
-            // 1) S’assurer que la collection SearchItems existe
-            BsonDocument filterColl = new("name", searchItemCollectionName);
-            IAsyncCursor<BsonDocument>? collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filterColl });
-            bool exists = await collections.AnyAsync();
-            if (!exists)
+            await EnsureSearchCollectionAsync(database, searchItemCollectionName);
+
+            IMongoCollection<Park> parksCollection = database.GetCollection<Park>(parksCollectionName);
+            IMongoCollection<ParkItem> parkItemsCollection = database.GetCollection<ParkItem>(parkItemsCollectionName);
+            IMongoCollection<ParkOperator> operatorsCollection = database.GetCollection<ParkOperator>(parkOperatorsCollectionName);
+            IMongoCollection<AttractionManufacturer> manufacturersCollection = database.GetCollection<AttractionManufacturer>(attractionManufacturersCollectionName);
+            IMongoCollection<SearchItem> searchCollection = database.GetCollection<SearchItem>(searchItemCollectionName);
+
+            await searchCollection.DeleteManyAsync(Builders<SearchItem>.Filter.In(item => item.Category, SupportedCategories));
+
+            List<Park> parks = await parksCollection.Find(_ => true).ToListAsync();
+            List<ParkItem> parkItems = await parkItemsCollection.Find(_ => true).ToListAsync();
+            List<ParkOperator> operators = await operatorsCollection.Find(_ => true).ToListAsync();
+            List<AttractionManufacturer> manufacturers = await manufacturersCollection.Find(_ => true).ToListAsync();
+
+            Dictionary<string, Park> parksById = parks
+                .Where(park => !string.IsNullOrWhiteSpace(park.Id))
+                .ToDictionary(park => park.Id!, park => park, StringComparer.Ordinal);
+
+            List<SearchItem> itemsToUpsert = new();
+            itemsToUpsert.AddRange(parks.Select(ConvertParkToSearchItem));
+            itemsToUpsert.AddRange(parkItems.Select(parkItem =>
             {
-                await database.CreateCollectionAsync(searchItemCollectionName);
+                Park? park = parksById.TryGetValue(parkItem.ParkId, out Park? resolvedPark) ? resolvedPark : null;
+                SearchItem searchItem = ConvertParkItemToSearchItem(parkItem, park?.Name ?? string.Empty);
+                searchItem.IsVisible = (park?.IsVisible ?? true) && parkItem.IsVisible;
+                return searchItem;
+            }));
+            itemsToUpsert.AddRange(operators.Select(ConvertParkOperatorToSearchItem));
+            itemsToUpsert.AddRange(manufacturers.Select(ConvertAttractionManufacturerToSearchItem));
+
+            if (itemsToUpsert.Count == 0)
+            {
+                return;
             }
 
-            // 2) Références aux collections Parks et SearchItems
-            IMongoCollection<Park>? parksColl = database.GetCollection<Park>(parksCollectionName);
-            IMongoCollection<SearchItem>? searchColl = database.GetCollection<SearchItem>(searchItemCollectionName);
+            List<WriteModel<SearchItem>> bulkOperations = itemsToUpsert
+                .Select(BuildUpsertModel)
+                .Cast<WriteModel<SearchItem>>()
+                .ToList();
 
-            // 3) Créer les index s’ils n’existent pas encore
-            //    - Geo index 2dsphere sur "location"
-            IndexKeysDefinition<SearchItem>? geoIndexKeys = Builders<SearchItem>.IndexKeys.Geo2DSphere(x => x.Location);
-            await searchColl.Indexes.CreateOneAsync(new CreateIndexModel<SearchItem>(geoIndexKeys));
-
-            //    - Text index sur (title, description, keywords)
-            IndexKeysDefinition<SearchItem>? textIndexKeys = Builders<SearchItem>.IndexKeys
-                .Text(x => x.Title)
-                .Text(x => x.Description)
-                .Text(x => x.Keywords);
-            CreateIndexOptions textIndexOptions = new()
-            {
-                DefaultLanguage = "french",
-                Name = "Idx_SearchItem_Text"
-            };
-            await searchColl.Indexes.CreateOneAsync(new CreateIndexModel<SearchItem>(textIndexKeys, textIndexOptions));
-
-            // 4) Lire tous les Parks existants
-            List<Park>? allParks = await parksColl.Find(_ => true).ToListAsync();
-            if (allParks == null || allParks.Count == 0)
-            {
-                return; // rien à insérer
-            }
-
-            // 5) Préparer les opérations bulk (UpdateOneModel avec Upsert)
-            List<WriteModel<SearchItem>> bulkOps = new();
-
-            foreach (Park park in allParks)
-            {
-                // 5.1) Construire OriginalId
-                string originalId = $"park_{park.Id}";
-
-                // 5.2) Créer le filtre sur OriginalId (non modifiable)
-                FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, originalId);
-
-                // 5.3) Construire les champs à mettre à jour
-                //      - On met à jour category, title, description, keywords, latitude, longitude, updatedAt.
-                //      - Si on insère (upsert), on souhaite définir createdAt avec la date actuelle Windows UTC.
-                UpdateDefinition<SearchItem>? update = Builders<SearchItem>.Update
-                    .Set(si => si.Category, "park")
-                    .Set(si => si.Title, park.Name ?? string.Empty)
-                    .Set(si => si.Description, park.Descriptions.Resolve("en", "en") ?? $"{park.Name} ({park.CountryCode})")
-                    .Set(si => si.Keywords, new List<string>
-                    {
-                        park.Name?.Trim().ToLowerInvariant() ?? string.Empty,
-                        park.CountryCode?.Trim().ToLowerInvariant() ?? string.Empty
-                    })
-                    .Set(si => si.Latitude, park.Latitude)
-                    .Set(si => si.Longitude, park.Longitude)
-                    .Set(si => si.UpdatedAt, park.UpdatedAt)
-                    // Si on souhaite remplir CreatedAt seulement lors d'un insert
-                    .SetOnInsert(si => si.CreatedAt, DateTime.UtcNow)
-                    .SetOnInsert(si => si.Id, Guid.NewGuid().ToString());
-
-                // 5.4) Conserver aussi la géolocalisation (Location) via Set(si => si.Location, …)
-                //      Mais GeoJsonPoint est généré automatiquement dans le setter de Latitude/Longitude, 
-                //      donc ce Set(n’est pas forcément nécessaire si les propriétés lat/long s’écrivent)
-                update = update.Set(si => si.Location,
-                    new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
-                        new GeoJson2DGeographicCoordinates(park.Longitude, park.Latitude)));
-
-                // 5.5) Construire le modèle Bulk : UpdateOneModel avec Upsert = true
-                UpdateOneModel<SearchItem> upsertOne = new(filter, update)
-                {
-                    IsUpsert = true
-                };
-
-                bulkOps.Add(upsertOne);
-            }
-
-            // 6) Exécuter le bulk write en une seule fois
-            if (bulkOps.Count > 0)
-            {
-                await searchColl.BulkWriteAsync(bulkOps);
-            }
+            await searchCollection.BulkWriteAsync(bulkOperations);
         }
 
-        /// <summary>
-        /// Convertit un Park en SearchItem (pour appels ultérieurs Create/Update individuels).
-        /// </summary>
         public SearchItem ConvertParkToSearchItem(Park park)
         {
             if (park == null)
@@ -126,34 +84,19 @@ namespace Services.Implementations.Searching
                 throw new ArgumentNullException(nameof(park));
             }
 
-            string originalId = $"park_{park.Id}";
             List<string> keywords = new();
-            if (!string.IsNullOrWhiteSpace(park.Name))
-            {
-                keywords.Add(park.Name.Trim().ToLowerInvariant());
-            }
+            AddKeyword(keywords, park.Name);
+            AddKeyword(keywords, park.CountryCode);
+            AddKeyword(keywords, park.City);
+            AddKeyword(keywords, park.PostalCode);
+            AddKeyword(keywords, park.Type?.ToString());
 
-            if (!string.IsNullOrWhiteSpace(park.CountryCode))
+            return new SearchItem
             {
-                keywords.Add(park.CountryCode.Trim().ToLowerInvariant());
-            }
-
-            if (!string.IsNullOrWhiteSpace(park.City))
-            {
-                keywords.Add(park.City.Trim().ToLowerInvariant());
-            }
-
-            if (!string.IsNullOrWhiteSpace(park.PostalCode))
-            {
-                keywords.Add(park.PostalCode.Trim().ToLowerInvariant());
-            }
-
-            SearchItem item = new()
-            {
-                OriginalId = originalId,
+                OriginalId = $"park_{park.Id}",
                 Category = "park",
                 Title = park.Name ?? string.Empty,
-                Description = park.Descriptions.Resolve("en", "en") ?? $"{park.Name} ({park.CountryCode})",
+                Description = ResolveLocalizedText(park.Descriptions) ?? BuildParkFallbackDescription(park),
                 Keywords = keywords,
                 CompositeScore = 0.0,
                 Latitude = park.Latitude,
@@ -162,7 +105,96 @@ namespace Services.Implementations.Searching
                 UpdatedAt = park.UpdatedAt,
                 IsVisible = park.IsVisible
             };
-            return item;
+        }
+
+        public SearchItem ConvertParkItemToSearchItem(ParkItem parkItem, string parkName)
+        {
+            if (parkItem == null)
+            {
+                throw new ArgumentNullException(nameof(parkItem));
+            }
+
+            List<string> keywords = new();
+            AddKeyword(keywords, parkItem.Name);
+            AddKeyword(keywords, parkItem.Subtype);
+            AddKeyword(keywords, parkItem.Type.ToString());
+            AddKeyword(keywords, parkItem.Category.ToString());
+            AddKeyword(keywords, parkName);
+            AddKeyword(keywords, parkItem.AttractionDetails?.Model);
+
+            string fallbackDescription = !string.IsNullOrWhiteSpace(parkName)
+                ? $"{parkName} • {parkItem.Type}"
+                : parkItem.Type.ToString();
+
+            return new SearchItem
+            {
+                OriginalId = $"parkItem_{parkItem.Id}",
+                Category = "parkItems",
+                Title = parkItem.Name,
+                Description = ResolveLocalizedText(parkItem.Descriptions) ?? fallbackDescription,
+                Keywords = keywords,
+                CompositeScore = 0.0,
+                Latitude = parkItem.Latitude,
+                Longitude = parkItem.Longitude,
+                CreatedAt = parkItem.CreatedAt,
+                UpdatedAt = parkItem.UpdatedAt,
+                IsVisible = parkItem.IsVisible
+            };
+        }
+
+        public SearchItem ConvertParkOperatorToSearchItem(ParkOperator parkOperator)
+        {
+            if (parkOperator == null)
+            {
+                throw new ArgumentNullException(nameof(parkOperator));
+            }
+
+            List<string> keywords = new();
+            AddKeyword(keywords, parkOperator.Name);
+            AddKeyword(keywords, "operator");
+
+            return new SearchItem
+            {
+                OriginalId = $"operator_{parkOperator.Id}",
+                Category = "operators",
+                Title = parkOperator.Name,
+                Description = ResolveLocalizedText(parkOperator.Description) ?? parkOperator.Name,
+                Keywords = keywords,
+                CompositeScore = 0.0,
+                Latitude = 0.0,
+                Longitude = 0.0,
+                CreatedAt = parkOperator.CreatedAt,
+                UpdatedAt = parkOperator.UpdatedAt,
+                IsVisible = true
+            };
+        }
+
+        public SearchItem ConvertAttractionManufacturerToSearchItem(AttractionManufacturer manufacturer)
+        {
+            if (manufacturer == null)
+            {
+                throw new ArgumentNullException(nameof(manufacturer));
+            }
+
+            List<string> keywords = new();
+            AddKeyword(keywords, manufacturer.Name);
+            AddKeyword(keywords, "manufacturer");
+            AddKeyword(keywords, "constructor");
+
+            return new SearchItem
+            {
+                OriginalId = $"manufacturer_{manufacturer.Id}",
+                Category = "manufacturers",
+                Title = manufacturer.Name,
+                Description = ResolveLocalizedText(manufacturer.Biography) ?? manufacturer.Name,
+                Keywords = keywords,
+                CompositeScore = 0.0,
+                Latitude = 0.0,
+                Longitude = 0.0,
+                CreatedAt = manufacturer.CreatedAt,
+                UpdatedAt = manufacturer.UpdatedAt,
+                IsVisible = true
+            };
         }
 
         public async Task UpsertSearchItemAsync(SearchItem item, string searchItemCollectionName)
@@ -172,27 +204,11 @@ namespace Services.Implementations.Searching
                 throw new ArgumentNullException(nameof(item));
             }
 
-            IMongoCollection<SearchItem>? searchColl = database.GetCollection<SearchItem>(searchItemCollectionName);
-            FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, item.OriginalId);
-
-            // Construire un UpdateDefinition similaire à InitializeFromParksAsync
-            UpdateDefinition<SearchItem>? update = Builders<SearchItem>.Update
-                .Set(si => si.Category, item.Category)
-                .Set(si => si.Title, item.Title)
-                .Set(si => si.Description, item.Description)
-                .Set(si => si.Keywords, item.Keywords)
-                .Set(si => si.Latitude, item.Latitude)
-                .Set(si => si.Longitude, item.Longitude)
-                .Set(si => si.UpdatedAt, item.UpdatedAt)
-                .SetOnInsert(si => si.CreatedAt, item.CreatedAt)
-                .Set(si => si.CompositeScore, item.CompositeScore)
-                .Set(si => si.IsVisible, item.IsVisible)
-                .Set(si => si.Location, new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
-                    new GeoJson2DGeographicCoordinates(item.Longitude, item.Latitude)))
-                .SetOnInsert(si => si.Id, item.Id); ;
-
+            IMongoCollection<SearchItem> searchCollection = database.GetCollection<SearchItem>(searchItemCollectionName);
+            FilterDefinition<SearchItem> filter = Builders<SearchItem>.Filter.Eq(searchItem => searchItem.OriginalId, item.OriginalId);
+            UpdateDefinition<SearchItem> update = BuildUpdateDefinition(item);
             UpdateOptions options = new() { IsUpsert = true };
-            await searchColl.UpdateOneAsync(filter, update, options);
+            await searchCollection.UpdateOneAsync(filter, update, options);
         }
 
         public async Task DeleteSearchItemAsync(string originalId, string searchItemCollectionName)
@@ -202,9 +218,106 @@ namespace Services.Implementations.Searching
                 throw new ArgumentException(nameof(originalId));
             }
 
-            IMongoCollection<SearchItem>? searchColl = database.GetCollection<SearchItem>(searchItemCollectionName);
-            FilterDefinition<SearchItem>? filter = Builders<SearchItem>.Filter.Eq(si => si.OriginalId, originalId);
-            await searchColl.DeleteOneAsync(filter);
+            IMongoCollection<SearchItem> searchCollection = database.GetCollection<SearchItem>(searchItemCollectionName);
+            FilterDefinition<SearchItem> filter = Builders<SearchItem>.Filter.Eq(searchItem => searchItem.OriginalId, originalId);
+            await searchCollection.DeleteOneAsync(filter);
+        }
+
+        private static async Task EnsureSearchCollectionAsync(IMongoDatabase database, string searchItemCollectionName)
+        {
+            BsonDocument collectionFilter = new("name", searchItemCollectionName);
+            IAsyncCursor<BsonDocument> collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = collectionFilter });
+            bool exists = await collections.AnyAsync();
+            if (!exists)
+            {
+                await database.CreateCollectionAsync(searchItemCollectionName);
+            }
+
+            IMongoCollection<SearchItem> searchCollection = database.GetCollection<SearchItem>(searchItemCollectionName);
+            IndexKeysDefinition<SearchItem> geoIndexKeys = Builders<SearchItem>.IndexKeys.Geo2DSphere(item => item.Location);
+            await searchCollection.Indexes.CreateOneAsync(new CreateIndexModel<SearchItem>(geoIndexKeys));
+
+            IndexKeysDefinition<SearchItem> textIndexKeys = Builders<SearchItem>.IndexKeys
+                .Text(item => item.Title)
+                .Text(item => item.Description)
+                .Text(item => item.Keywords);
+
+            CreateIndexOptions textIndexOptions = new()
+            {
+                DefaultLanguage = "french",
+                Name = "Idx_SearchItem_Text"
+            };
+
+            await searchCollection.Indexes.CreateOneAsync(new CreateIndexModel<SearchItem>(textIndexKeys, textIndexOptions));
+        }
+
+        private static UpdateOneModel<SearchItem> BuildUpsertModel(SearchItem item)
+        {
+            FilterDefinition<SearchItem> filter = Builders<SearchItem>.Filter.Eq(searchItem => searchItem.OriginalId, item.OriginalId);
+            UpdateDefinition<SearchItem> update = BuildUpdateDefinition(item);
+            return new UpdateOneModel<SearchItem>(filter, update)
+            {
+                IsUpsert = true
+            };
+        }
+
+        private static UpdateDefinition<SearchItem> BuildUpdateDefinition(SearchItem item)
+        {
+            return Builders<SearchItem>.Update
+                .Set(searchItem => searchItem.Category, item.Category)
+                .Set(searchItem => searchItem.Title, item.Title)
+                .Set(searchItem => searchItem.Description, item.Description)
+                .Set(searchItem => searchItem.Keywords, item.Keywords)
+                .Set(searchItem => searchItem.Latitude, item.Latitude)
+                .Set(searchItem => searchItem.Longitude, item.Longitude)
+                .Set(searchItem => searchItem.CompositeScore, item.CompositeScore)
+                .Set(searchItem => searchItem.UpdatedAt, item.UpdatedAt)
+                .Set(searchItem => searchItem.IsVisible, item.IsVisible)
+                .Set(searchItem => searchItem.Location, new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
+                    new GeoJson2DGeographicCoordinates(item.Longitude, item.Latitude)))
+                .SetOnInsert(searchItem => searchItem.Id, string.IsNullOrWhiteSpace(item.Id) ? Guid.NewGuid().ToString() : item.Id)
+                .SetOnInsert(searchItem => searchItem.CreatedAt, item.CreatedAt)
+                .SetOnInsert(searchItem => searchItem.OriginalId, item.OriginalId);
+        }
+
+        private static string? ResolveLocalizedText(IEnumerable<LocalizedItem<string>>? items)
+        {
+            if (items == null)
+            {
+                return null;
+            }
+
+            return items.Resolve("en", "fr");
+        }
+
+        private static string BuildParkFallbackDescription(Park park)
+        {
+            List<string> parts = new();
+            if (!string.IsNullOrWhiteSpace(park.City))
+            {
+                parts.Add(park.City.Trim());
+            }
+
+            if (!string.IsNullOrWhiteSpace(park.CountryCode))
+            {
+                parts.Add(park.CountryCode.Trim().ToUpperInvariant());
+            }
+
+            return parts.Count > 0 ? string.Join(" • ", parts) : (park.Name ?? string.Empty);
+        }
+
+        private static void AddKeyword(List<string> keywords, string? value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return;
+            }
+
+            string normalizedValue = value.Trim().ToLowerInvariant();
+            if (!keywords.Contains(normalizedValue, StringComparer.Ordinal))
+            {
+                keywords.Add(normalizedValue);
+            }
         }
     }
 }

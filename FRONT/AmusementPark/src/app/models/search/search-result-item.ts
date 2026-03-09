@@ -1,5 +1,6 @@
-// src/app/models/search/search-result-item.ts
 export interface SearchResultItem {
+  originalId: string;
+  category: string;
   title: string;
   description: string;
 }

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+using Dtos.Pagination;
 using Dtos.ParkItems.Creating;
 using Dtos.ParkItems.ParkItems;
 using Dtos.ParkItems.Updating;
@@ -26,9 +28,27 @@ namespace WebAPI.Controllers
         [HttpGet("park/{parkId}")]
         public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId)
         {
-            bool includeNonVisible = User?.IsInRole("ADMIN") == true || User?.IsInRole("MODERATOR") == true;
+            bool includeNonVisible = UserCanSeeNonVisible();
             OneOf<IEnumerable<ParkItemDto>, ErrorCodes.ErrorDetail> result = await parkItemsService.GetByParkIdAsync(parkId, includeNonVisible);
             return ApiResponseHandler.HandleResponse(result);
+        }
+
+        [HttpGet("list")]
+        public async Task<IActionResult> GetPaginatedAsync(
+            [FromQuery][Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")] int page = 1,
+            [FromQuery][Range(1, 100, ErrorMessage = "Size must be between 1 and 100")] int size = 20,
+            [FromQuery] string? parkId = null,
+            [FromQuery] string? search = null)
+        {
+            bool includeNonVisible = UserCanSeeNonVisible();
+            (IEnumerable<ParkItemAdminListDto> data, PaginationDto pagination) = await parkItemsService.GetPaginatedAsync(
+                page,
+                size,
+                parkId,
+                search,
+                includeNonVisible);
+
+            return ApiResponseHandler.HandleResponse(data, pagination);
         }
 
         [HttpGet("{id}")]
@@ -63,6 +83,11 @@ namespace WebAPI.Controllers
         {
             OneOf<bool, ErrorCodes.ErrorDetail> result = await parkItemsService.DeleteAsync(id);
             return ApiResponseHandler.HandleResponse(result);
+        }
+
+        private bool UserCanSeeNonVisible()
+        {
+            return User?.IsInRole("ADMIN") == true || User?.IsInRole("MODERATOR") == true;
         }
     }
 }

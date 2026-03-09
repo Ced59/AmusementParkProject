@@ -18,9 +18,11 @@ import { ParkOperator } from '../models/parks/park-operator';
 import { AttractionManufacturer } from '../models/parks/attraction-manufacturer';
 import { ParkZone } from '../models/parks/park-zone';
 import { ParkItem } from '../models/parks/park-item';
+import { ParkItemAdminRow } from '../models/parks/park-item-admin-row';
 import { ParkExplorer } from '../models/parks/park-explorer';
 
 import { SearchApiResponse } from '../models/search/search-api-response';
+import { ApiResponse } from '../models/shared/api_reponse';
 import { CountryDto } from '../models/countries/country-dto';
 
 import { UploadedImage } from '../models/images/uploaded-image';
@@ -245,6 +247,16 @@ export class ApiService {
   getParkItemsByParkId(parkId: string): Observable<ParkItem[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkItemsByParkId(parkId)}`;
     return this.http.get<ParkItem[]>(url);
+  }
+
+  getParkItemsPaginated(
+    page: number,
+    size: number,
+    parkId?: string | null,
+    search?: string | null
+  ): Observable<ApiResponse<ParkItemAdminRow>> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkItemsPaginated(page, size, parkId, search)}`;
+    return this.http.get<ApiResponse<ParkItemAdminRow>>(url);
   }
 
   getParkItemById(id: string): Observable<ParkItem> {

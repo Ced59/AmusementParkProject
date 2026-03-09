@@ -1,30 +1,38 @@
-﻿using Common.General.Localization;
+using Common.General.Localization;
 using Dtos.ParkOperators.Creating;
 using Dtos.ParkOperators.ParkOperators;
 using Dtos.ParkOperators.Updating;
 using Entities.Model.Errors;
 using Entities.Model.Parks;
+using Entities.Model.Searching;
+using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces;
-using OneOf;
+using Services.Interfaces.Searching;
 
-namespace Services.Implementations;
-
-public class ParkOperatorsService : IParkOperatorsService
+namespace Services.Implementations
+{
+    public class ParkOperatorsService : IParkOperatorsService
     {
         private readonly IParkOperatorsQueryHandler operatorsQueryHandler;
+        private readonly ISearchIndexService searchIndexService;
+        private readonly IMongoDbSettings mongoDbSettings;
 
-        public ParkOperatorsService(IParkOperatorsQueryHandler operatorsQueryHandler)
+        public ParkOperatorsService(
+            IParkOperatorsQueryHandler operatorsQueryHandler,
+            ISearchIndexService searchIndexService,
+            IMongoDbSettings mongoDbSettings)
         {
             this.operatorsQueryHandler = operatorsQueryHandler;
+            this.searchIndexService = searchIndexService;
+            this.mongoDbSettings = mongoDbSettings;
         }
 
         public async Task<OneOf<IEnumerable<ParkOperatorDto>, ErrorCodes.ErrorDetail>> GetAllAsync()
         {
             IEnumerable<ParkOperator> operators = await operatorsQueryHandler.GetAllAsync();
-
             List<ParkOperatorDto> result = operators.Select(MapToDto).ToList();
-            return OneOf.OneOf<IEnumerable<ParkOperatorDto>, ErrorCodes.ErrorDetail>.FromT0(result);
+            return OneOf<IEnumerable<ParkOperatorDto>, ErrorCodes.ErrorDetail>.FromT0(result);
         }
 
         public async Task<OneOf<ParkOperatorDto, ErrorCodes.ErrorDetail>> GetByIdAsync(string id)
@@ -35,7 +43,6 @@ public class ParkOperatorsService : IParkOperatorsService
             }
 
             ParkOperator? parkOperator = await operatorsQueryHandler.GetByIdAsync(id);
-
             if (parkOperator == null)
             {
                 return ErrorCodes.ParkOperatorNotExists;
@@ -55,11 +62,13 @@ public class ParkOperatorsService : IParkOperatorsService
             };
 
             ParkOperator? created = await operatorsQueryHandler.CreateAsync(parkOperator);
-
             if (created == null)
             {
                 return ErrorCodes.ErrorCreatingParkOperator;
             }
+
+            SearchItem searchItem = searchIndexService.ConvertParkOperatorToSearchItem(created);
+            await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
 
             return MapToDto(created);
         }
@@ -72,7 +81,6 @@ public class ParkOperatorsService : IParkOperatorsService
             }
 
             ParkOperator? existing = await operatorsQueryHandler.GetByIdAsync(id);
-
             if (existing == null)
             {
                 return ErrorCodes.ParkOperatorNotExists;
@@ -83,11 +91,13 @@ public class ParkOperatorsService : IParkOperatorsService
             existing.UpdatedAt = DateTime.UtcNow;
 
             ParkOperator? updated = await operatorsQueryHandler.UpdateAsync(existing);
-
             if (updated == null)
             {
                 return ErrorCodes.ErrorUpdatingParkOperator;
             }
+
+            SearchItem searchItem = searchIndexService.ConvertParkOperatorToSearchItem(updated);
+            await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
 
             return MapToDto(updated);
         }
@@ -123,4 +133,4 @@ public class ParkOperatorsService : IParkOperatorsService
                 .ToList();
         }
     }
-    
+}

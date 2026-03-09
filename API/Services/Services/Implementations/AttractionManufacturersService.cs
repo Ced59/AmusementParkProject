@@ -4,9 +4,11 @@ using Dtos.AttractionManufacturers.Creating;
 using Dtos.AttractionManufacturers.Updating;
 using Entities.Model.Errors;
 using Entities.Model.Parks;
+using Entities.Model.Searching;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces;
+using Services.Interfaces.Searching;
 
 namespace Services.Implementations
 {
@@ -14,13 +16,19 @@ namespace Services.Implementations
     {
         private readonly IAttractionManufacturersQueryHandler manufacturersQueryHandler;
         private readonly IParkItemsQueryHandler parkItemsQueryHandler;
+        private readonly ISearchIndexService searchIndexService;
+        private readonly IMongoDbSettings mongoDbSettings;
 
         public AttractionManufacturersService(
             IAttractionManufacturersQueryHandler manufacturersQueryHandler,
-            IParkItemsQueryHandler parkItemsQueryHandler)
+            IParkItemsQueryHandler parkItemsQueryHandler,
+            ISearchIndexService searchIndexService,
+            IMongoDbSettings mongoDbSettings)
         {
             this.manufacturersQueryHandler = manufacturersQueryHandler;
             this.parkItemsQueryHandler = parkItemsQueryHandler;
+            this.searchIndexService = searchIndexService;
+            this.mongoDbSettings = mongoDbSettings;
         }
 
         public async Task<OneOf<IEnumerable<AttractionManufacturerDto>, ErrorCodes.ErrorDetail>> GetAllAsync()
@@ -72,6 +80,9 @@ namespace Services.Implementations
                 return ErrorCodes.ErrorCreatingAttractionManufacturer;
             }
 
+            SearchItem searchItem = searchIndexService.ConvertAttractionManufacturerToSearchItem(created);
+            await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
+
             return MapToDto(created, new Dictionary<string, int>());
         }
 
@@ -97,6 +108,9 @@ namespace Services.Implementations
             {
                 return ErrorCodes.ErrorUpdatingAttractionManufacturer;
             }
+
+            SearchItem searchItem = searchIndexService.ConvertAttractionManufacturerToSearchItem(updated);
+            await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
 
             Dictionary<string, int> counts = await parkItemsQueryHandler.GetAttractionCountsByManufacturerIdsAsync(new[] { id });
             return MapToDto(updated, counts);

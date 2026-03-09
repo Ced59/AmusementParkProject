@@ -30,6 +30,61 @@ namespace Repositories.Implementations
                 .ToListAsync();
         }
 
+        public async Task<(IEnumerable<ParkItem> Items, long TotalCount)> GetPaginatedAsync(
+            int page,
+            int pageSize,
+            string? parkId,
+            string? search,
+            bool includeNonVisible = true)
+        {
+            FilterDefinition<ParkItem> filter = Builders<ParkItem>.Filter.Empty;
+
+            if (!string.IsNullOrWhiteSpace(parkId))
+            {
+                filter &= Builders<ParkItem>.Filter.Eq(item => item.ParkId, parkId.Trim());
+            }
+
+            if (!includeNonVisible)
+            {
+                filter &= Builders<ParkItem>.Filter.Eq(item => item.IsVisible, true);
+            }
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                string normalizedSearch = search.Trim();
+                BsonRegularExpression regex = new(normalizedSearch, "i");
+
+                List<FilterDefinition<ParkItem>> searchFilters = new()
+                {
+                    Builders<ParkItem>.Filter.Regex(item => item.Name, regex),
+                    Builders<ParkItem>.Filter.Regex(item => item.Subtype, regex)
+                };
+
+                if (Enum.TryParse(normalizedSearch, true, out ParkItemType parsedType))
+                {
+                    searchFilters.Add(Builders<ParkItem>.Filter.Eq(item => item.Type, parsedType));
+                }
+
+                if (Enum.TryParse(normalizedSearch, true, out ParkItemCategory parsedCategory))
+                {
+                    searchFilters.Add(Builders<ParkItem>.Filter.Eq(item => item.Category, parsedCategory));
+                }
+
+                filter &= Builders<ParkItem>.Filter.Or(searchFilters);
+            }
+
+            long totalCount = await itemsCollection.CountDocumentsAsync(filter);
+
+            List<ParkItem> items = await itemsCollection.Find(filter)
+                .SortBy(item => item.ParkId)
+                .ThenBy(item => item.Name)
+                .Skip((page - 1) * pageSize)
+                .Limit(pageSize)
+                .ToListAsync();
+
+            return (items, totalCount);
+        }
+
         public async Task<ParkItem?> GetByIdAsync(string id)
         {
             return await itemsCollection.Find(item => item.Id == id).FirstOrDefaultAsync();

@@ -1,12 +1,11 @@
-// src/app/components/home/home.component.ts
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { EMPTY, Observable, Subject, Subscription } from 'rxjs';
+import { catchError, debounceTime, switchMap } from 'rxjs/operators';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject, Subscription, EMPTY } from 'rxjs';
-import { debounceTime, switchMap, catchError } from 'rxjs/operators';
-import { ApiService } from '../../services/api.service';
-import { SearchResultItem } from '../../models/search/search-result-item';
 import { SearchApiResponse } from '../../models/search/search-api-response';
+import { SearchResultItem } from '../../models/search/search-result-item';
 import { Pagination } from '../../models/shared/pagination';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -16,49 +15,38 @@ import { Pagination } from '../../models/shared/pagination';
 export class HomeComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   selectedCategory: string = '';
-
-  // On ne met plus de texte fixe ici, juste la clé de traduction et la value réelle
   categoryOptions: { labelKey: string; value: string }[] = [
-    { labelKey: 'home.categories.park',    value: 'park' },
-    { labelKey: 'home.categories.attractions', value: 'attractions' }
+    { labelKey: 'home.categories.everywhere', value: '' },
+    { labelKey: 'home.categories.park', value: 'park' },
+    { labelKey: 'home.categories.parkItems', value: 'parkItems' },
+    { labelKey: 'home.categories.operators', value: 'operators' },
+    { labelKey: 'home.categories.manufacturers', value: 'manufacturers' }
   ];
 
-  private searchSubject = new Subject<string>();
+  private readonly searchSubject: Subject<string> = new Subject<string>();
   private subscription$!: Subscription;
 
   results: SearchResultItem[] = [];
   pagination: Pagination | null = null;
 
-  currentPage = 1;
-  pageSize = 10;
+  currentPage: number = 1;
+  pageSize: number = 10;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private readonly apiService: ApiService) {
+  }
 
   ngOnInit(): void {
     this.subscription$ = this.searchSubject.pipe(
       debounceTime(300),
-      switchMap((term: string) => {
-        if (!term && !this.selectedCategory) {
+      switchMap(() => {
+        if (!this.searchTerm && !this.selectedCategory) {
           this.results = [];
           this.pagination = null;
           return EMPTY;
         }
+
         this.currentPage = 1;
-        const categoriesToSend: string[] = this.selectedCategory
-          ? [this.selectedCategory]
-          : [];
-        return this.apiService.getSearch(
-          term,
-          categoriesToSend,
-          this.currentPage,
-          this.pageSize
-        ).pipe(
-          catchError(() => {
-            this.results = [];
-            this.pagination = null;
-            return EMPTY;
-          })
-        );
+        return this.executeSearch();
       })
     ).subscribe((response: SearchApiResponse) => {
       this.results = response.data;
@@ -81,13 +69,26 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.searchSubject.next(this.searchTerm);
   }
 
-  onPageChange(event: any): void {
-    this.currentPage = event.page + 1;
-    this.pageSize = event.rows;
+  onPageChange(event: { page?: number; rows?: number }): void {
+    this.currentPage = (event.page ?? 0) + 1;
+    this.pageSize = event.rows ?? this.pageSize;
+
+    this.executeSearch().subscribe((response: SearchApiResponse) => {
+      this.results = response.data;
+      this.pagination = response.pagination;
+    });
+  }
+
+  getCategoryLabelKey(category: string): string {
+    return `home.categories.${category}`;
+  }
+
+  private executeSearch(): Observable<SearchApiResponse> {
     const categoriesToSend: string[] = this.selectedCategory
       ? [this.selectedCategory]
       : [];
-    this.apiService.getSearch(
+
+    return this.apiService.getSearch(
       this.searchTerm,
       categoriesToSend,
       this.currentPage,
@@ -98,9 +99,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.pagination = null;
         return EMPTY;
       })
-    ).subscribe((response: SearchApiResponse) => {
-      this.results = response.data;
-      this.pagination = response.pagination;
-    });
+    );
   }
 }

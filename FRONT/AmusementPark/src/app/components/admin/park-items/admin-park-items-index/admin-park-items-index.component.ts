@@ -1,20 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 
 import { Park } from '../../../../models/parks/park';
-import { ParkItem } from '../../../../models/parks/park-item';
+import { ParkItemAdminRow } from '../../../../models/parks/park-item-admin-row';
+import { ParksApiResponse } from '../../../../models/parks/parks_api_response';
+import { ApiResponse } from '../../../../models/shared/api_reponse';
+import { Pagination } from '../../../../models/shared/pagination';
 import { ApiService } from '../../../../services/api.service';
-
-type ParkItemAdminRow = {
-  parkId: string;
-  parkName: string;
-  itemId: string;
-  itemName: string;
-  itemType: string;
-  isVisible: boolean;
-};
 
 @Component({
   selector: 'app-admin-park-items-index',
@@ -23,11 +17,13 @@ type ParkItemAdminRow = {
 })
 export class AdminParkItemsIndexComponent implements OnInit {
   rows: ParkItemAdminRow[] = [];
-  filteredRows: ParkItemAdminRow[] = [];
   parkOptions: { label: string; value: string | null }[] = [];
   loading: boolean = false;
   selectedParkId: string | null = null;
   searchTerm: string = '';
+  totalRecords: number = 0;
+  currentPage: number = 1;
+  pageSize: number = 20;
 
   constructor(
     private readonly apiService: ApiService,
@@ -37,85 +33,43 @@ export class AdminParkItemsIndexComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadParkOptions();
     this.loadRows();
   }
 
   loadRows(): void {
     this.loading = true;
 
-    this.apiService.getParksPaginated(1, 1000).subscribe({
-      next: (response: any) => {
-        const parks: Park[] = response?.data ?? response?.items ?? [];
-        const validParks: Park[] = parks.filter((park: Park) => !!park.id);
-
-        this.parkOptions = [
-          { label: this.translateService.instant('admin.parkItems.allParks'), value: null },
-          ...validParks.map((park: Park) => ({
-            label: park.name ?? '',
-            value: park.id ?? null
-          }))
-        ];
-
-        if (validParks.length === 0) {
-          this.rows = [];
-          this.applyFilters();
-          this.loading = false;
-          return;
-        }
-
-        const requests = validParks.map((park: Park) => this.apiService.getParkItemsByParkId(park.id ?? ''));
-
-        forkJoin(requests).subscribe({
-          next: (itemsByPark: ParkItem[][]) => {
-            this.rows = validParks.flatMap((park: Park, index: number) => {
-              const items: ParkItem[] = itemsByPark[index] ?? [];
-
-              return items
-                .filter((item: ParkItem) => !!item.id)
-                .map((item: ParkItem) => ({
-                  parkId: park.id ?? '',
-                  parkName: park.name ?? '',
-                  itemId: item.id ?? '',
-                  itemName: item.name,
-                  itemType: item.type,
-                  isVisible: item.isVisible ?? true
-                }));
-            });
-
-            this.applyFilters();
-            this.loading = false;
-          },
-          error: (error: unknown) => {
-            console.error('Error loading park items index', error);
-            this.rows = [];
-            this.applyFilters();
-            this.loading = false;
-          }
-        });
+    this.apiService.getParkItemsPaginated(
+      this.currentPage,
+      this.pageSize,
+      this.selectedParkId,
+      this.searchTerm
+    ).subscribe({
+      next: (response: ApiResponse<ParkItemAdminRow>) => {
+        this.rows = response.data ?? [];
+        this.totalRecords = response.pagination?.totalItems ?? this.rows.length;
+        this.loading = false;
       },
       error: (error: unknown) => {
-        console.error('Error loading parks for park items index', error);
+        console.error('Error loading park items index', error);
         this.rows = [];
-        this.applyFilters();
+        this.totalRecords = 0;
         this.loading = false;
       }
     });
   }
 
-  applyFilters(): void {
-    const normalizedSearch: string = this.searchTerm.trim().toLowerCase();
-
-    this.filteredRows = this.rows.filter((row: ParkItemAdminRow) => {
-      const matchesPark: boolean = !this.selectedParkId || row.parkId === this.selectedParkId;
-      const matchesSearch: boolean = normalizedSearch.length === 0
-        || row.parkName.toLowerCase().includes(normalizedSearch)
-        || row.itemName.toLowerCase().includes(normalizedSearch)
-        || row.itemType.toLowerCase().includes(normalizedSearch);
-
-      return matchesPark && matchesSearch;
-    });
+  onFiltersChanged(): void {
+    this.currentPage = 1;
+    this.loadRows();
   }
 
+  onPageChange(event: { page?: number; rows?: number }): void {
+    this.currentPage = (event.page ?? 0) + 1;
+    this.pageSize = event.rows ?? this.pageSize;
+    this.loadRows();
+  }
 
   getTypeLabelKey(itemType: string): string {
     if (!itemType || itemType.length === 0) {
@@ -129,6 +83,69 @@ export class AdminParkItemsIndexComponent implements OnInit {
     const url: string = this.router.url;
     const lang: string = url.split('/')[1] || 'en';
 
-    this.router.navigate(['/', lang, 'admin', 'parks', 'edit', row.parkId, 'items', row.itemId]);
+    this.router.navigate(['/', lang, 'admin', 'parks', 'edit', row.parkId, 'items', row.id]);
+  }
+
+  private loadParkOptions(): void {
+    this.getAllParks().subscribe({
+      next: (parks: Park[]) => {
+        const validParks: Park[] = parks.filter((park: Park) => !!park.id);
+        this.parkOptions = [
+          { label: this.translateService.instant('admin.parkItems.allParks'), value: null },
+          ...validParks.map((park: Park) => ({
+            label: park.name ?? '',
+            value: park.id ?? null
+          }))
+        ];
+      },
+      error: (error: unknown) => {
+        console.error('Error loading parks for park items filter', error);
+        this.parkOptions = [
+          { label: this.translateService.instant('admin.parkItems.allParks'), value: null }
+        ];
+      }
+    });
+  }
+
+  private getAllParks(): Observable<Park[]> {
+    return new Observable<Park[]>((observer) => {
+      this.apiService.getParksPaginated(1, 100).subscribe({
+        next: (firstResponse: ParksApiResponse) => {
+          const firstPageParks: Park[] = firstResponse.data ?? [];
+          const pagination: Pagination | undefined = firstResponse.pagination;
+          const totalPages: number = pagination?.totalPages ?? 1;
+
+          if (totalPages <= 1) {
+            observer.next(firstPageParks);
+            observer.complete();
+            return;
+          }
+
+          const requests: Observable<ParksApiResponse>[] = [];
+          for (let page: number = 2; page <= totalPages; page++) {
+            requests.push(this.apiService.getParksPaginated(page, 100));
+          }
+
+          forkJoin(requests).subscribe({
+            next: (responses: ParksApiResponse[]) => {
+              const allParks: Park[] = [...firstPageParks];
+
+              responses.forEach((response: ParksApiResponse) => {
+                allParks.push(...(response.data ?? []));
+              });
+
+              observer.next(allParks);
+              observer.complete();
+            },
+            error: (error: unknown) => {
+              observer.error(error);
+            }
+          });
+        },
+        error: (error: unknown) => {
+          observer.error(error);
+        }
+      });
+    });
   }
 }

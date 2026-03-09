@@ -48,9 +48,12 @@ namespace WebAPI.Settings.MongoDB
             await InitializeParkItemsIndexesAsync(database, settings.ParkItemsCollectionName);
 
             // 🔹 Index de recherche
-            await searchIndexService.InitializeFromParksAsync(
+            await searchIndexService.InitializeAsync(
                 database,
                 settings.ParksCollectionName,
+                settings.ParkItemsCollectionName,
+                settings.ParkOperatorsCollectionName,
+                settings.AttractionManufacturersCollectionName,
                 settings.SearchItemCollectionName
             );
         }

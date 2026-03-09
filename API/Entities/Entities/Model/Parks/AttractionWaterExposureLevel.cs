@@ -5,6 +5,7 @@ namespace Entities.Model.Parks
         None,
         Splash,
         Moderate,
-        Soaking
+        Soaking,
+        ExtremeSoaking
     }
 }

@@ -5,6 +5,7 @@ namespace Dtos.ParkItems
         None,
         Splash,
         Moderate,
-        Soaking
+        Soaking,
+        ExtremeSoaking
     }
 }

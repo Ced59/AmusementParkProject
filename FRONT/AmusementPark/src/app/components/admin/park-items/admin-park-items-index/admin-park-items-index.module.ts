@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
+import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 
@@ -22,6 +23,7 @@ import { AdminParkItemsIndexRoutingModule } from './admin-park-items-index-routi
     CardModule,
     DropdownModule,
     InputTextModule,
+    PaginatorModule,
     TableModule,
     TagModule,
     AdminParkItemsIndexRoutingModule

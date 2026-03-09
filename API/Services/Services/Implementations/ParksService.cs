@@ -20,12 +20,18 @@ namespace Services.Implementations
         private readonly IParksQueryHandler parksQueryHandler;
         private readonly ISearchIndexService searchIndexService;
         private readonly IMongoDbSettings mongoDbSettings;
+        private readonly IParkItemsQueryHandler parkItemsQueryHandler;
 
-        public ParksService(IParksQueryHandler parksQueryHandler, ISearchIndexService searchIndexService, IMongoDbSettings mongoDbSettings)
+        public ParksService(
+            IParksQueryHandler parksQueryHandler,
+            ISearchIndexService searchIndexService,
+            IMongoDbSettings mongoDbSettings,
+            IParkItemsQueryHandler parkItemsQueryHandler)
         {
             this.parksQueryHandler = parksQueryHandler;
             this.searchIndexService = searchIndexService;
             this.mongoDbSettings = mongoDbSettings;
+            this.parkItemsQueryHandler = parkItemsQueryHandler;
         }
 
         public async Task<OneOf<ParkCreatedDto, ErrorCodes.ErrorDetail>>? CreateParkAsync(ParkCreateDto parkDto)
@@ -178,6 +184,7 @@ namespace Services.Implementations
 
             SearchItem searchItem = searchIndexService.ConvertParkToSearchItem(updatedPark);
             await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
+            await RefreshParkItemSearchItemsAsync(updatedPark);
             return MapToDto(updatedPark);
         }
 
@@ -196,7 +203,20 @@ namespace Services.Implementations
 
             SearchItem searchItem = searchIndexService.ConvertParkToSearchItem(updatedPark);
             await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
+            await RefreshParkItemSearchItemsAsync(updatedPark);
             return MapToDto(updatedPark);
+        }
+
+        private async Task RefreshParkItemSearchItemsAsync(Park park)
+        {
+            IEnumerable<ParkItem> parkItems = await parkItemsQueryHandler.GetByParkIdAsync(park.Id, true);
+
+            foreach (ParkItem parkItem in parkItems)
+            {
+                SearchItem searchItem = searchIndexService.ConvertParkItemToSearchItem(parkItem, park.Name ?? string.Empty);
+                searchItem.IsVisible = park.IsVisible && parkItem.IsVisible;
+                await searchIndexService.UpsertSearchItemAsync(searchItem, mongoDbSettings.SearchItemCollectionName);
+            }
         }
 
         private static ParkDto MapToDto(Park park)

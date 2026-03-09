@@ -33,6 +33,11 @@ export const API_ENDPOINTS = {
   getParkExplorer: (parkId: string) => `park-zones/park/${parkId}/explorer`,
 
   getParkItemsByParkId: (parkId: string) => `park-items/park/${parkId}`,
+  getParkItemsPaginated: (page: number, size: number, parkId?: string | null, search?: string | null) => {
+    const parkIdQuery: string = parkId ? `&parkId=${encodeURIComponent(parkId)}` : '';
+    const searchQuery: string = search ? `&search=${encodeURIComponent(search)}` : '';
+    return `park-items/list?page=${page}&size=${size}${parkIdQuery}${searchQuery}`;
+  },
   getParkItemById: (id: string) => `park-items/${id}`,
   createParkItem: 'park-items',
   updateParkItem: (id: string) => `park-items/${id}`,
