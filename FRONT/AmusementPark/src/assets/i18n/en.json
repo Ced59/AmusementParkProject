@@ -280,7 +280,27 @@
         "locationDefined": "Defined",
         "locationNotDefined": "Not defined",
         "useGeneralLocation": "Use general location",
-        "clearSelectedLocation": "Clear selected point"
+        "clearSelectedLocation": "Clear selected point",
+        "editorStatus": {
+          "saving": "Saving...",
+          "unsavedChanges": "Unsaved changes",
+          "upToDate": "Up to date"
+        },
+        "editorActions": {
+          "backToItems": "Back to item list",
+          "saveAll": "Save all",
+          "saveAndClose": "Save and finish",
+          "saveSection": "Save this section",
+          "useParkLocation": "Use park location"
+        },
+        "saveMessages": {
+          "successSummary": "Saved",
+          "sectionSaved": "The current section has been saved and you stay on the page.",
+          "itemSaved": "The park item has been saved.",
+          "itemCreated": "The park item has been created and you stay in edit mode.",
+          "errorSummary": "Save failed",
+          "errorDetail": "An error occurred while saving the park item."
+        }
       }
     },
     "loading": "Loading...",

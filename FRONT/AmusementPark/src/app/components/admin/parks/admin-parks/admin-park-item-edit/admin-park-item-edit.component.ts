@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastMessageService } from '../../../../../services/messages/toast-message.service';
 import { Subscription } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
 import { LANGUAGES } from '../../../../../commons/languages';
@@ -48,6 +49,9 @@ interface AttractionLocationOption {
   labelKey: string;
 }
 
+type SaveMode = 'stay' | 'back';
+type SaveScope = 'section' | 'all';
+
 @Component({
   selector: 'app-admin-park-item-edit',
   templateUrl: './admin-park-item-edit.component.html',
@@ -84,6 +88,11 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   photosPageSize: number = 8;
 
   selectedAccessConditionPreset: AttractionAccessConditionType = 'MinHeight';
+
+  isSaving: boolean = false;
+  parkLocationDefault: AttractionLocationPoint | null = null;
+  private generalLocationManuallyChanged: boolean = false;
+  private isApplyingGeneralLocationProgrammatically: boolean = false;
 
   private readonly subscriptions: Subscription = new Subscription();
 
@@ -306,8 +315,15 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     return this.form.get(['attractionDetails', 'accessConditions']) as FormArray;
   }
 
-  get manufacturerCreateLinkQueryParams(): Record<string, string> {
-    return { returnUrl: this.router.url };
+  get manufacturerCreateLinkQueryParams(): Record<string, string | number> {
+    return {
+      returnUrl: this.router.url.split('?')[0],
+      returnTab: this.activeTabIndex
+    };
+  }
+
+  get isFormDirty(): boolean {
+    return !!this.form && this.form.dirty;
   }
 
   constructor(
@@ -315,7 +331,8 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly apiService: ApiService,
-    private readonly translateService: TranslateService
+    private readonly translateService: TranslateService,
+    private readonly toastMessageService: ToastMessageService
   ) {
   }
 
@@ -323,6 +340,11 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     this.currentLang = this.route.root.firstChild?.snapshot.params['lang'] ?? 'en';
     this.parkId = this.route.snapshot.paramMap.get('idPark') ?? '';
     this.itemId = this.route.snapshot.paramMap.get('idItem');
+
+    const requestedTabIndex: number = Number(this.route.snapshot.queryParamMap.get('tab') ?? 0);
+    this.activeTabIndex = Number.isFinite(requestedTabIndex) && requestedTabIndex >= 0
+      ? requestedTabIndex
+      : 0;
 
     this.form = this.fb.group({
       parkId: [this.parkId, Validators.required],
@@ -379,6 +401,8 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
         }));
     });
 
+    this.loadParkLocationDefault();
+
     if (this.itemId) {
       this.apiService.getParkItemById(this.itemId).subscribe((item: ParkItem) => {
         this.form.patchValue({
@@ -398,6 +422,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
         this.patchAttractionLocations(item.attractionLocations ?? null);
         this.applyManufacturerSelectionOverride();
         this.applyCategorySelection(item.category);
+        this.generalLocationManuallyChanged = true;
         this.refreshAllMapStates();
 
         if (item.category === 'Attraction') {
@@ -408,7 +433,6 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.loadParkDefaultsForCreate();
     this.refreshAllMapStates();
   }
 
@@ -417,26 +441,38 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
+    this.saveAll();
+  }
 
-    const payload: ParkItem = this.buildPayload();
+  saveSection(): void {
+    this.persistItem('stay', 'section');
+  }
 
-    if (this.itemId) {
-      this.apiService.updateParkItem(this.itemId, payload).subscribe(() => this.goBack());
-      return;
-    }
+  saveAll(): void {
+    this.persistItem('stay', 'all');
+  }
 
-    this.apiService.createParkItem(payload).subscribe(() => this.goBack());
+  saveAndClose(): void {
+    this.persistItem('back', 'all');
   }
 
   onGeneralMapPositionChange(position: { lat: number; lng: number }): void {
+    this.generalLocationManuallyChanged = true;
     this.form.patchValue({
       latitude: position.lat,
       longitude: position.lng
     });
+  }
+
+  resetGeneralLocationToPark(): void {
+    const parkLocation: { latitude: number; longitude: number } | null = this.getResolvedParkLocationDefault();
+
+    if (!parkLocation) {
+      return;
+    }
+
+    this.generalLocationManuallyChanged = false;
+    this.applyGeneralLocation(parkLocation.latitude, parkLocation.longitude);
   }
 
   selectLocationEditor(locationKey: AttractionLocationKey): void {
@@ -688,6 +724,18 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     this.router.navigate(['/', this.currentLang, 'admin', 'parks', 'edit', this.parkId, 'items']);
   }
 
+  getEditorStatusLabel(): string {
+    if (this.isSaving) {
+      return this.translateService.instant('admin.parks.items.editorStatus.saving');
+    }
+
+    if (this.isFormDirty) {
+      return this.translateService.instant('admin.parks.items.editorStatus.unsavedChanges');
+    }
+
+    return this.translateService.instant('admin.parks.items.editorStatus.upToDate');
+  }
+
   private setupFormSync(): void {
     const categorySubscription: Subscription = this.form.get('category')!.valueChanges.subscribe((categoryValue: unknown) => {
       this.applyCategorySelection(categoryValue as ParkItemCategory);
@@ -698,11 +746,19 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     });
 
     const generalLatitudeSubscription: Subscription = this.form.get('latitude')!.valueChanges.subscribe(() => {
+      if (!this.isApplyingGeneralLocationProgrammatically) {
+        this.generalLocationManuallyChanged = true;
+      }
+
       this.updateGeneralMapState();
       this.updateLocationMapState();
     });
 
     const generalLongitudeSubscription: Subscription = this.form.get('longitude')!.valueChanges.subscribe(() => {
+      if (!this.isApplyingGeneralLocationProgrammatically) {
+        this.generalLocationManuallyChanged = true;
+      }
+
       this.updateGeneralMapState();
       this.updateLocationMapState();
     });
@@ -717,20 +773,24 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     this.subscriptions.add(locationSubscription);
   }
 
-  private loadParkDefaultsForCreate(): void {
+  private loadParkLocationDefault(): void {
     if (!this.parkId) {
       return;
     }
 
     this.apiService.getParkById(this.parkId).subscribe({
       next: (park: Park) => {
-        this.form.patchValue({
+        this.parkLocationDefault = {
           latitude: park.latitude,
           longitude: park.longitude
-        });
+        };
+
+        if (!this.generalLocationManuallyChanged) {
+          this.applyGeneralLocation(park.latitude, park.longitude);
+        }
       },
       error: (error: unknown) => {
-        console.error('Error loading park defaults for item creation', error);
+        console.error('Error loading default park location for item editor', error);
       }
     });
   }
@@ -740,9 +800,37 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     this.updateLocationMapState();
   }
 
+  private getResolvedParkLocationDefault(): { latitude: number; longitude: number } | null {
+    const latitude: number | null | undefined = this.parkLocationDefault?.latitude;
+    const longitude: number | null | undefined = this.parkLocationDefault?.longitude;
+
+    if (typeof latitude !== 'number' || !Number.isFinite(latitude) || typeof longitude !== 'number' || !Number.isFinite(longitude)) {
+      return null;
+    }
+
+    return {
+      latitude,
+      longitude
+    };
+  }
+
   private updateGeneralMapState(): void {
     const latitude: number = this.toRequiredNumber(this.form.get('latitude')?.value);
     const longitude: number = this.toRequiredNumber(this.form.get('longitude')?.value);
+    const hasValidCoordinates: boolean = Number.isFinite(latitude) && Number.isFinite(longitude) && !(latitude === 0 && longitude === 0);
+    const parkLocation: { latitude: number; longitude: number } | null = this.getResolvedParkLocationDefault();
+
+    if (!hasValidCoordinates && parkLocation) {
+      this.generalMapCenter = [parkLocation.latitude, parkLocation.longitude];
+      this.generalMapMarkers = [
+        {
+          id: 'general-location-default',
+          lat: parkLocation.latitude,
+          lng: parkLocation.longitude
+        }
+      ];
+      return;
+    }
 
     this.generalMapCenter = [latitude, longitude];
     this.generalMapMarkers = [
@@ -771,9 +859,119 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
 
     const latitude: number = this.toRequiredNumber(this.form.get('latitude')?.value);
     const longitude: number = this.toRequiredNumber(this.form.get('longitude')?.value);
+    const hasGeneralCoordinates: boolean = Number.isFinite(latitude) && Number.isFinite(longitude) && !(latitude === 0 && longitude === 0);
+    const parkLocation: { latitude: number; longitude: number } | null = this.getResolvedParkLocationDefault();
+
+    if (!hasGeneralCoordinates && parkLocation) {
+      this.locationMapCenter = [parkLocation.latitude, parkLocation.longitude];
+      this.locationMapMarkers = [];
+      return;
+    }
 
     this.locationMapCenter = [latitude, longitude];
     this.locationMapMarkers = [];
+  }
+
+
+  private persistItem(mode: SaveMode, scope: SaveScope): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      this.activeTabIndex = 0;
+      return;
+    }
+
+    if (this.isSaving) {
+      return;
+    }
+
+    const payload: ParkItem = this.buildPayload();
+    this.isSaving = true;
+
+    if (this.itemId) {
+      this.apiService.updateParkItem(this.itemId, payload).subscribe({
+        next: (updated: ParkItem) => {
+          this.isSaving = false;
+          this.afterSuccessfulSave(updated, mode, scope);
+        },
+        error: (error: unknown) => {
+          console.error('Error updating park item', error);
+          this.isSaving = false;
+          this.showSaveErrorMessage();
+        }
+      });
+      return;
+    }
+
+    this.apiService.createParkItem(payload).subscribe({
+      next: (created: ParkItem) => {
+        this.isSaving = false;
+        this.afterSuccessfulSave(created, mode, scope);
+      },
+      error: (error: unknown) => {
+        console.error('Error creating park item', error);
+        this.isSaving = false;
+        this.showSaveErrorMessage();
+      }
+    });
+  }
+
+  private afterSuccessfulSave(savedItem: ParkItem, mode: SaveMode, scope: SaveScope): void {
+    const wasEditMode: boolean = !!this.itemId;
+
+    this.form.markAsPristine();
+    this.showSaveSuccessMessage(scope, wasEditMode);
+
+    if (!this.itemId && savedItem.id) {
+      this.itemId = savedItem.id;
+
+      if (mode === 'back') {
+        this.goBack();
+        return;
+      }
+
+      this.router.navigate(
+        ['/', this.currentLang, 'admin', 'parks', 'edit', this.parkId, 'items', savedItem.id],
+        {
+          replaceUrl: true,
+          queryParams: { tab: this.activeTabIndex }
+        }
+      );
+      return;
+    }
+
+    if (mode === 'back') {
+      this.goBack();
+    }
+  }
+
+  private showSaveSuccessMessage(scope: SaveScope, hasIdentifier: boolean): void {
+    const detailKey: string = scope === 'section'
+      ? 'admin.parks.items.saveMessages.sectionSaved'
+      : (hasIdentifier ? 'admin.parks.items.saveMessages.itemSaved' : 'admin.parks.items.saveMessages.itemCreated');
+
+    this.toastMessageService.add(
+      'success',
+      this.translateService.instant('admin.parks.items.saveMessages.successSummary'),
+      this.translateService.instant(detailKey)
+    );
+  }
+
+  private showSaveErrorMessage(): void {
+    this.toastMessageService.add(
+      'error',
+      this.translateService.instant('admin.parks.items.saveMessages.errorSummary'),
+      this.translateService.instant('admin.parks.items.saveMessages.errorDetail')
+    );
+  }
+
+  private applyGeneralLocation(latitude: number, longitude: number): void {
+    this.isApplyingGeneralLocationProgrammatically = true;
+    this.form.patchValue({
+      latitude,
+      longitude
+    });
+    this.isApplyingGeneralLocationProgrammatically = false;
+    this.refreshAllMapStates();
   }
 
   private getLocationGroup(locationKey: AttractionLocationKey): FormGroup {

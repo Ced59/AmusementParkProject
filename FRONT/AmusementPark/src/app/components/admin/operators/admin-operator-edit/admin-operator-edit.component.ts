@@ -88,15 +88,31 @@ export class AdminOperatorEditComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.navigateToList();
+    this.navigateBackToOrigin();
   }
 
   private navigateAfterSave(createdId: string | undefined): void {
     const returnUrl: string | null = this.route.snapshot.queryParamMap.get('returnUrl');
+    const returnTab: string | null = this.route.snapshot.queryParamMap.get('returnTab');
 
     if (returnUrl) {
       const separator: string = returnUrl.includes('?') ? '&' : '?';
-      this.router.navigateByUrl(`${returnUrl}${separator}operatorId=${createdId ?? ''}`);
+      const tabQuery: string = returnTab ? `&tab=${returnTab}` : '';
+      this.router.navigateByUrl(`${returnUrl}${separator}operatorId=${createdId ?? ''}${tabQuery}`);
+      return;
+    }
+
+    this.navigateToList();
+  }
+
+  private navigateBackToOrigin(): void {
+    const returnUrl: string | null = this.route.snapshot.queryParamMap.get('returnUrl');
+    const returnTab: string | null = this.route.snapshot.queryParamMap.get('returnTab');
+
+    if (returnUrl) {
+      const separator: string = returnUrl.includes('?') ? '&' : '?';
+      const tabQuery: string = returnTab ? `${separator}tab=${returnTab}` : '';
+      this.router.navigateByUrl(`${returnUrl}${tabQuery}`);
       return;
     }
 

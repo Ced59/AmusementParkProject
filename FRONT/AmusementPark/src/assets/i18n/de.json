@@ -280,7 +280,27 @@
         "locationDefined": "Definiert",
         "locationNotDefined": "Nicht definiert",
         "useGeneralLocation": "Allgemeine Position verwenden",
-        "clearSelectedLocation": "Ausgewählten Punkt leeren"
+        "clearSelectedLocation": "Ausgewählten Punkt leeren",
+        "editorStatus": {
+          "saving": "Speichern...",
+          "unsavedChanges": "Ungespeicherte Änderungen",
+          "upToDate": "Aktuell"
+        },
+        "editorActions": {
+          "backToItems": "Zur Elementliste zurück",
+          "saveAll": "Alles speichern",
+          "saveAndClose": "Speichern und beenden",
+          "saveSection": "Diesen Bereich speichern",
+          "useParkLocation": "Parkposition übernehmen"
+        },
+        "saveMessages": {
+          "successSummary": "Gespeichert",
+          "sectionSaved": "Der aktuelle Bereich wurde gespeichert und die Seite bleibt geöffnet.",
+          "itemSaved": "Das Parkelement wurde gespeichert.",
+          "itemCreated": "Das Parkelement wurde erstellt und bleibt im Bearbeitungsmodus geöffnet.",
+          "errorSummary": "Speichern fehlgeschlagen",
+          "errorDetail": "Beim Speichern des Parkelements ist ein Fehler aufgetreten."
+        }
       }
     },
     "loading": "Laden...",

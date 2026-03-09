@@ -280,7 +280,27 @@
         "locationDefined": "Gedefinieerd",
         "locationNotDefined": "Niet gedefinieerd",
         "useGeneralLocation": "Algemene locatie gebruiken",
-        "clearSelectedLocation": "Geselecteerd punt wissen"
+        "clearSelectedLocation": "Geselecteerd punt wissen",
+        "editorStatus": {
+          "saving": "Opslaan...",
+          "unsavedChanges": "Niet-opgeslagen wijzigingen",
+          "upToDate": "Bijgewerkt"
+        },
+        "editorActions": {
+          "backToItems": "Terug naar de elementenlijst",
+          "saveAll": "Alles opslaan",
+          "saveAndClose": "Opslaan en afronden",
+          "saveSection": "Deze sectie opslaan",
+          "useParkLocation": "Parklocatie gebruiken"
+        },
+        "saveMessages": {
+          "successSummary": "Opgeslagen",
+          "sectionSaved": "De huidige sectie is opgeslagen en je blijft op deze pagina.",
+          "itemSaved": "Het parkelement is opgeslagen.",
+          "itemCreated": "Het parkelement is aangemaakt en je blijft in de bewerkingsmodus.",
+          "errorSummary": "Opslaan mislukt",
+          "errorDetail": "Er is een fout opgetreden bij het opslaan van het parkelement."
+        }
       }
     },
     "loading": "Laden...",

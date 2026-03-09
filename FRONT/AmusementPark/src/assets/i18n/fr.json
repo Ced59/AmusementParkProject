@@ -280,7 +280,27 @@
         "locationDefined": "Définie",
         "locationNotDefined": "Non définie",
         "useGeneralLocation": "Utiliser la localisation générale",
-        "clearSelectedLocation": "Vider le point sélectionné"
+        "clearSelectedLocation": "Vider le point sélectionné",
+        "editorStatus": {
+          "saving": "Enregistrement en cours...",
+          "unsavedChanges": "Modifications non enregistrées",
+          "upToDate": "À jour"
+        },
+        "editorActions": {
+          "backToItems": "Retour à la liste des éléments",
+          "saveAll": "Enregistrer tout",
+          "saveAndClose": "Enregistrer et terminer",
+          "saveSection": "Enregistrer cette section",
+          "useParkLocation": "Reprendre la position du parc"
+        },
+        "saveMessages": {
+          "successSummary": "Enregistrement effectué",
+          "sectionSaved": "La section en cours a été enregistrée et tu restes sur la page.",
+          "itemSaved": "L’élément du parc a bien été enregistré.",
+          "itemCreated": "L’élément du parc a été créé et l’édition continue sur cette page.",
+          "errorSummary": "Échec de l’enregistrement",
+          "errorDetail": "Une erreur est survenue pendant l’enregistrement de l’élément du parc."
+        }
       }
     },
     "loading": "Chargement...",

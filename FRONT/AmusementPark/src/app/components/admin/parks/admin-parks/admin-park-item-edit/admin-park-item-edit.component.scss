@@ -1,3 +1,50 @@
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  background: var(--surface-50);
+}
+
+.editor-toolbar__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: var(--surface-100);
+  color: var(--text-color-secondary);
+  font-weight: 600;
+}
+
+.editor-toolbar__status.is-dirty {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+}
+
+.editor-toolbar__status.is-saving {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+}
+
+.editor-toolbar__actions,
+.section-actions,
+.section-inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.section-actions {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--surface-border);
+}
+
 .page-header {
   margin-bottom: 1rem;
 }
@@ -33,8 +80,11 @@
 .actions-row {
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--surface-border);
 }
 
 .section-header {
@@ -186,5 +236,23 @@
 @media (max-width: 991px) {
   .locations-layout {
     grid-template-columns: 1fr;
+  }
+
+  .editor-toolbar {
+    align-items: stretch;
+  }
+
+  .editor-toolbar__actions,
+  .section-actions,
+  .section-inline-actions,
+  .actions-row {
+    width: 100%;
+  }
+
+  :host ::ng-deep .editor-toolbar__actions .p-button,
+  :host ::ng-deep .section-actions .p-button,
+  :host ::ng-deep .section-inline-actions .p-button,
+  :host ::ng-deep .actions-row .p-button {
+    width: 100%;
   }
 }

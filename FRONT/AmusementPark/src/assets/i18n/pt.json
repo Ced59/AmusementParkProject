@@ -280,7 +280,27 @@
         "locationDefined": "Definida",
         "locationNotDefined": "Não definida",
         "useGeneralLocation": "Usar localização geral",
-        "clearSelectedLocation": "Limpar ponto selecionado"
+        "clearSelectedLocation": "Limpar ponto selecionado",
+        "editorStatus": {
+          "saving": "A guardar...",
+          "unsavedChanges": "Alterações não guardadas",
+          "upToDate": "Atualizado"
+        },
+        "editorActions": {
+          "backToItems": "Voltar à lista de elementos",
+          "saveAll": "Guardar tudo",
+          "saveAndClose": "Guardar e terminar",
+          "saveSection": "Guardar esta secção",
+          "useParkLocation": "Usar a localização do parque"
+        },
+        "saveMessages": {
+          "successSummary": "Guardado",
+          "sectionSaved": "A secção atual foi guardada e continuas na página.",
+          "itemSaved": "O elemento do parque foi guardado.",
+          "itemCreated": "O elemento do parque foi criado e continuas em modo de edição.",
+          "errorSummary": "Falha ao guardar",
+          "errorDetail": "Ocorreu um erro ao guardar o elemento do parque."
+        }
       }
     },
     "loading": "A carregar...",

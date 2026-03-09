@@ -6,6 +6,46 @@
         {{ 'admin.parks.items.refactorHint' | translate }}
       </small>
     </div>
+
+    <div class="editor-toolbar">
+      <div class="editor-toolbar__status" [class.is-dirty]="isFormDirty" [class.is-saving]="isSaving">
+        <i class="pi" [ngClass]="isSaving ? 'pi-spin pi-spinner' : (isFormDirty ? 'pi-pencil' : 'pi-check-circle')"></i>
+        <span>{{ getEditorStatusLabel() }}</span>
+      </div>
+
+      <div class="editor-toolbar__actions">
+        <button
+          pButton
+          type="button"
+          class="p-button-secondary p-button-outlined"
+          icon="pi pi-list"
+          (click)="goBack()"
+          [disabled]="isSaving"
+          [label]="'admin.parks.items.editorActions.backToItems' | translate">
+        </button>
+
+        <button
+          pButton
+          type="button"
+          icon="pi pi-save"
+          class="p-button-secondary"
+          (click)="saveAll()"
+          [loading]="isSaving"
+          [disabled]="isSaving"
+          [label]="'admin.parks.items.editorActions.saveAll' | translate">
+        </button>
+
+        <button
+          pButton
+          type="button"
+          icon="pi pi-check"
+          (click)="saveAndClose()"
+          [loading]="isSaving"
+          [disabled]="isSaving"
+          [label]="'admin.parks.items.editorActions.saveAndClose' | translate">
+        </button>
+      </div>
+    </div>
   </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
@@ -69,6 +109,18 @@
                 <input pInputText type="number" formControlName="longitude" step="0.000001" />
               </div>
             </div>
+
+            <div class="section-inline-actions mt-2">
+              <button
+                pButton
+                type="button"
+                class="p-button-outlined"
+                icon="pi pi-map-marker"
+                (click)="resetGeneralLocationToPark()"
+                [disabled]="!parkLocationDefault || isSaving"
+                [label]="'admin.parks.items.editorActions.useParkLocation' | translate">
+              </button>
+            </div>
           </p-card>
 
           <div class="field mt-3">
@@ -80,6 +132,8 @@
             <label>{{ 'admin.parks.visibleField' | translate }}</label>
             <p-inputSwitch formControlName="isVisible"></p-inputSwitch>
           </div>
+
+          <ng-container *ngTemplateOutlet="sectionActionsTemplate"></ng-container>
         </div>
       </p-tabPanel>
 
@@ -192,6 +246,8 @@
               </p-dropdown>
             </div>
           </div>
+
+          <ng-container *ngTemplateOutlet="sectionActionsTemplate"></ng-container>
         </div>
       </p-tabPanel>
 
@@ -321,6 +377,8 @@
               </div>
             </div>
           </div>
+
+          <ng-container *ngTemplateOutlet="sectionActionsTemplate"></ng-container>
         </div>
       </p-tabPanel>
 
@@ -428,6 +486,8 @@
               </p-card>
             </div>
           </div>
+
+          <ng-container *ngTemplateOutlet="sectionActionsTemplate"></ng-container>
         </div>
       </p-tabPanel>
 
@@ -562,13 +622,67 @@
               </p-paginator>
             </div>
           </p-panel>
+
+          <ng-container *ngTemplateOutlet="sectionActionsTemplate"></ng-container>
         </div>
       </p-tabPanel>
     </p-tabView>
 
     <div class="actions-row">
-      <button pButton type="button" class="p-button-secondary" (click)="goBack()" [label]="'actions.cancel' | translate"></button>
-      <button pButton type="submit" [label]="'actions.save' | translate"></button>
+      <button
+        pButton
+        type="button"
+        class="p-button-secondary p-button-outlined"
+        icon="pi pi-list"
+        (click)="goBack()"
+        [disabled]="isSaving"
+        [label]="'admin.parks.items.editorActions.backToItems' | translate">
+      </button>
+      <button
+        pButton
+        type="button"
+        class="p-button-secondary"
+        icon="pi pi-save"
+        (click)="saveAll()"
+        [loading]="isSaving"
+        [disabled]="isSaving"
+        [label]="'admin.parks.items.editorActions.saveAll' | translate">
+      </button>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-check"
+        (click)="saveAndClose()"
+        [loading]="isSaving"
+        [disabled]="isSaving"
+        [label]="'admin.parks.items.editorActions.saveAndClose' | translate">
+      </button>
     </div>
+
+    <ng-template #sectionActionsTemplate>
+      <div class="section-actions">
+        <button
+          pButton
+          type="button"
+          class="p-button-secondary p-button-outlined"
+          icon="pi pi-save"
+          (click)="saveSection()"
+          [loading]="isSaving"
+          [disabled]="isSaving"
+          [label]="'admin.parks.items.editorActions.saveSection' | translate">
+        </button>
+
+        <button
+          pButton
+          type="button"
+          class="p-button-secondary"
+          icon="pi pi-save"
+          (click)="saveAll()"
+          [loading]="isSaving"
+          [disabled]="isSaving"
+          [label]="'admin.parks.items.editorActions.saveAll' | translate">
+        </button>
+      </div>
+    </ng-template>
   </form>
 </p-card>

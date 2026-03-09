@@ -87,15 +87,31 @@ export class AdminFounderEditComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.navigateToParks();
+    this.navigateBackToOrigin();
   }
 
   private navigateAfterSave(createdId: string | undefined): void {
     const returnUrl: string | null = this.route.snapshot.queryParamMap.get('returnUrl');
+    const returnTab: string | null = this.route.snapshot.queryParamMap.get('returnTab');
 
     if (returnUrl) {
       const separator: string = returnUrl.includes('?') ? '&' : '?';
-      this.router.navigateByUrl(`${returnUrl}${separator}founderId=${createdId ?? ''}`);
+      const tabQuery: string = returnTab ? `&tab=${returnTab}` : '';
+      this.router.navigateByUrl(`${returnUrl}${separator}founderId=${createdId ?? ''}${tabQuery}`);
+      return;
+    }
+
+    this.navigateToParks();
+  }
+
+  private navigateBackToOrigin(): void {
+    const returnUrl: string | null = this.route.snapshot.queryParamMap.get('returnUrl');
+    const returnTab: string | null = this.route.snapshot.queryParamMap.get('returnTab');
+
+    if (returnUrl) {
+      const separator: string = returnUrl.includes('?') ? '&' : '?';
+      const tabQuery: string = returnTab ? `${separator}tab=${returnTab}` : '';
+      this.router.navigateByUrl(`${returnUrl}${tabQuery}`);
       return;
     }
 
