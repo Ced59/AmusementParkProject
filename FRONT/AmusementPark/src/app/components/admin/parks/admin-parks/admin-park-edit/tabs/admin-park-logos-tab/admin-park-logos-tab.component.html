@@ -1,0 +1,154 @@
+<div class="tab-section logos-section">
+  <div class="section-header">
+    <h3>{{ 'admin.parks.logos.sectionTitle' | translate }}</h3>
+    <small class="text-color-secondary">{{ 'admin.parks.logos.sectionHelp' | translate }}</small>
+  </div>
+
+  <div *ngIf="!isEditMode" class="text-color-secondary save-before-text">
+    {{ 'admin.parks.logos.saveBeforeUpload' | translate }}
+  </div>
+
+  <div *ngIf="isEditMode" class="grid">
+    <div class="col-12 md:col-4">
+      <p-card styleClass="logo-card">
+        <div class="logo-card__header">
+          <h4>{{ 'admin.parks.logos.currentTitle' | translate }}</h4>
+        </div>
+
+        <div class="logo-card__body">
+          <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
+            <img *ngIf="currentLogo"
+                 [src]="currentLogo.imageUrl"
+                 [alt]="'admin.parks.logos.alt' | translate"
+                 class="logo-preview" />
+
+            <span *ngIf="!currentLogo" class="text-color-secondary text-center logo-empty-text">
+              {{ 'admin.parks.logos.noCurrent' | translate }}
+            </span>
+
+            <small *ngIf="currentLogo" class="text-color-secondary">
+              {{ currentLogo.createdAt | date:'shortDate' }}
+            </small>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div class="col-12 md:col-8">
+      <p-card styleClass="logo-card">
+        <div class="logo-card__header">
+          <h4>{{ 'admin.parks.logos.uploadTitle' | translate }}</h4>
+        </div>
+
+        <div class="logo-card__body">
+          <div class="flex flex-column gap-3">
+            <input type="file"
+                   (change)="logoFileSelected.emit($event)"
+                   accept="image/*"
+                   [multiple]="allowMultipleLogoUpload" />
+
+            <small *ngIf="selectedLogoCount > 0" class="text-color-secondary">
+              {{ 'admin.parks.logos.selectedCount' | translate:{ count: selectedLogoCount } }}
+            </small>
+
+            <input
+              pInputText
+              type="text"
+              [ngModel]="newLogoDescription"
+              (ngModelChange)="newLogoDescriptionChange.emit($event)"
+              [ngModelOptions]="{ standalone: true }"
+              [placeholder]="'admin.parks.logos.descriptionPlaceholder' | translate" />
+
+            <div class="flex justify-content-end">
+              <button
+                pButton
+                type="button"
+                (click)="uploadLogo.emit()"
+                [disabled]="selectedLogoCount === 0 || logosUploading">
+                <span *ngIf="!logosUploading">
+                  {{ 'admin.parks.logos.uploadButton' | translate }}
+                </span>
+                <span *ngIf="logosUploading">
+                  {{ 'admin.loading' | translate }}
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <p-panel *ngIf="isEditMode" [toggleable]="true" [collapsed]="true"
+           header="{{ 'admin.parks.logos.historyTitle' | translate }}">
+    <div *ngIf="logosLoading" class="text-center py-3">
+      <p-progressSpinner styleClass="w-2rem h-2rem"></p-progressSpinner>
+    </div>
+
+    <div *ngIf="!logosLoading && parkLogos.length === 0" class="text-color-secondary">
+      {{ 'admin.parks.logos.empty' | translate }}
+    </div>
+
+    <div *ngIf="!logosLoading && parkLogos.length > 0">
+      <div class="grid">
+        <div class="col-12 md:col-4 lg:col-3" *ngFor="let logo of pagedLogos">
+          <p-card [ngClass]="{ 'border-primary': logo.isCurrent }">
+            <div class="flex flex-column align-items-center">
+              <img [src]="logo.imageUrl"
+                   [alt]="'admin.parks.logos.alt' | translate"
+                   class="logo-history-preview mb-2" />
+
+              <p-tag
+                *ngIf="logo.isCurrent"
+                [value]="'admin.parks.logos.currentLabel' | translate"
+                severity="success"
+                class="mb-2">
+              </p-tag>
+
+              <small class="text-color-secondary mb-2">
+                {{ logo.createdAt | date:'short' }}
+              </small>
+
+              <small class="mb-2 text-center">
+                {{ logo.description || ('admin.parks.logos.noDescription' | translate) }}
+              </small>
+
+              <div class="flex gap-2">
+                <button pButton type="button"
+                        icon="pi pi-check"
+                        class="p-button-sm p-button-success"
+                        (click)="setCurrentLogo.emit(logo)"
+                        [disabled]="logo.isCurrent">
+                </button>
+                <button pButton type="button"
+                        icon="pi pi-trash"
+                        class="p-button-sm p-button-danger"
+                        (click)="deleteLogo.emit(logo)">
+                </button>
+              </div>
+            </div>
+          </p-card>
+        </div>
+      </div>
+
+      <p-paginator
+        [rows]="logosPageSize"
+        [totalRecords]="parkLogos.length"
+        (onPageChange)="logosPageChange.emit($event)">
+      </p-paginator>
+    </div>
+  </p-panel>
+
+  <div class="section-actions">
+    <button
+      pButton
+      type="button"
+      class="p-button-secondary p-button-outlined"
+      icon="pi pi-save"
+      (click)="saveSection.emit()"
+      [loading]="isSaving"
+      [disabled]="isSaving"
+      [label]="'admin.parks.editorActions.saveSection' | translate">
+    </button>
+  </div>
+</div>

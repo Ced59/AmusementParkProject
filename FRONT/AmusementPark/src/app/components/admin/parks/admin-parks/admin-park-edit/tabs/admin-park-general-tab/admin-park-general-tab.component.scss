@@ -1,0 +1,75 @@
+.tab-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.section-header h3 {
+  margin: 0;
+}
+
+.management-links-card,
+.visibility-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--app-radius-lg, 1rem);
+  background: color-mix(in srgb, var(--surface-card) 94%, var(--primary-color) 6%);
+}
+
+.management-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.visibility-card__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+}
+
+.section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--surface-border);
+}
+
+@media (max-width: 991px) {
+  .management-links-card,
+  .visibility-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .management-links,
+  .visibility-card__toggle,
+  .section-actions {
+    width: 100%;
+  }
+
+  :host ::ng-deep .management-links .p-button,
+  :host ::ng-deep .section-actions .p-button {
+    width: 100%;
+  }
+}

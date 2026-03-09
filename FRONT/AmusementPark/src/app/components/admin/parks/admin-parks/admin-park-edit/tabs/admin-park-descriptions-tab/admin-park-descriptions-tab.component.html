@@ -1,0 +1,24 @@
+<div class="tab-section" [formGroup]="form">
+  <div class="section-header">
+    <h3>{{ 'admin.parks.descriptions.sectionTitle' | translate }}</h3>
+    <small class="text-color-secondary">{{ 'admin.parks.descriptions.subtitle' | translate }}</small>
+  </div>
+
+  <app-localized-rich-text-editor
+    formControlName="descriptions"
+    [placeholderKey]="'admin.parks.descriptions.placeholder'">
+  </app-localized-rich-text-editor>
+
+  <div class="section-actions">
+    <button
+      pButton
+      type="button"
+      class="p-button-secondary p-button-outlined"
+      icon="pi pi-save"
+      (click)="saveSection.emit()"
+      [loading]="isSaving"
+      [disabled]="isSaving"
+      [label]="'admin.parks.editorActions.saveSection' | translate">
+    </button>
+  </div>
+</div>

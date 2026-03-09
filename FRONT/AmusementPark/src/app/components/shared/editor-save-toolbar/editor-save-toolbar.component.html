@@ -1,0 +1,41 @@
+<div class="editor-toolbar">
+  <div class="editor-toolbar__status" [class.is-dirty]="isDirty" [class.is-saving]="isSaving">
+    <i class="pi" [ngClass]="isSaving ? 'pi-spin pi-spinner' : (isDirty ? 'pi-pencil' : 'pi-check-circle')"></i>
+    <span>{{ statusLabel }}</span>
+  </div>
+
+  <div class="editor-toolbar__actions">
+    <button
+      *ngIf="showBackButton"
+      pButton
+      type="button"
+      class="p-button-secondary p-button-outlined"
+      [icon]="backIcon"
+      (click)="back.emit()"
+      [disabled]="isSaving"
+      [label]="backButtonLabel">
+    </button>
+
+    <button
+      pButton
+      type="button"
+      class="p-button-secondary"
+      [icon]="saveAllIcon"
+      (click)="saveAll.emit()"
+      [loading]="isSaving"
+      [disabled]="isSaving"
+      [label]="saveAllButtonLabel">
+    </button>
+
+    <button
+      *ngIf="showSaveAndCloseButton"
+      pButton
+      type="button"
+      [icon]="saveAndCloseIcon"
+      (click)="saveAndClose.emit()"
+      [loading]="isSaving"
+      [disabled]="isSaving"
+      [label]="saveAndCloseButtonLabel">
+    </button>
+  </div>
+</div>

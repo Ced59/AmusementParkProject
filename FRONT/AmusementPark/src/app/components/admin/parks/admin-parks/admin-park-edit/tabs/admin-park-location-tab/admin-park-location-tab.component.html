@@ -1,0 +1,77 @@
+<div class="tab-section" [formGroup]="form">
+  <div class="section-header">
+    <h3>{{ 'admin.parks.locationSectionTitle' | translate }}</h3>
+    <small class="text-color-secondary">{{ 'admin.parks.locationSectionHelp' | translate }}</small>
+  </div>
+
+  <app-leaflet-map
+    [center]="mapCenter"
+    [zoom]="mapZoom"
+    [markers]="mapMarkers"
+    [editable]="true"
+    (positionChange)="mapPositionChange.emit($event)">
+  </app-leaflet-map>
+
+  <div class="grid formgrid mt-3">
+    <div class="field col-12 md:col-6">
+      <label for="latitude">{{ 'admin.parks.latitude' | translate }}</label>
+      <input id="latitude" type="number" pInputText formControlName="latitude" step="0.000001" />
+      <small class="p-error" *ngIf="latitudeControl?.invalid && (latitudeControl?.dirty || latitudeControl?.touched)">
+        {{ 'validation.required' | translate }}
+      </small>
+    </div>
+
+    <div class="field col-12 md:col-6">
+      <label for="longitude">{{ 'admin.parks.longitude' | translate }}</label>
+      <input id="longitude" type="number" pInputText formControlName="longitude" step="0.000001" />
+      <small class="p-error" *ngIf="longitudeControl?.invalid && (longitudeControl?.dirty || longitudeControl?.touched)">
+        {{ 'validation.required' | translate }}
+      </small>
+    </div>
+  </div>
+
+  <div class="grid formgrid">
+    <div class="field col-12">
+      <label for="street">{{ 'admin.parks.street' | translate }}</label>
+      <input
+        id="street"
+        type="text"
+        pInputText
+        formControlName="street"
+        [placeholder]="'admin.parks.streetPlaceholder' | translate" />
+    </div>
+
+    <div class="field col-12 md:col-4">
+      <label for="postalCode">{{ 'admin.parks.postalCode' | translate }}</label>
+      <input
+        id="postalCode"
+        type="text"
+        pInputText
+        formControlName="postalCode"
+        [placeholder]="'admin.parks.postalCodePlaceholder' | translate" />
+    </div>
+
+    <div class="field col-12 md:col-8">
+      <label for="city">{{ 'admin.parks.city' | translate }}</label>
+      <input
+        id="city"
+        type="text"
+        pInputText
+        formControlName="city"
+        [placeholder]="'admin.parks.cityPlaceholder' | translate" />
+    </div>
+  </div>
+
+  <div class="section-actions">
+    <button
+      pButton
+      type="button"
+      class="p-button-secondary p-button-outlined"
+      icon="pi pi-save"
+      (click)="saveSection.emit()"
+      [loading]="isSaving"
+      [disabled]="isSaving"
+      [label]="'admin.parks.editorActions.saveSection' | translate">
+    </button>
+  </div>
+</div>
