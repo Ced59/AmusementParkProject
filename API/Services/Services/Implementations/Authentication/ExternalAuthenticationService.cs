@@ -6,6 +6,7 @@ using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces;
 using Services.Interfaces.Authentication;
+using Services.Interfaces.Images;
 using Services.Interfaces.Settings;
 using Services.Models.Authentication;
 using Services.Security;
@@ -16,18 +17,18 @@ namespace Services.Implementations.Authentication
     {
         private readonly IReadOnlyDictionary<ExternalLoginProvider, IExternalIdentityProviderService> providerServices;
         private readonly IUserQueryHandler userQueryHandler;
-        private readonly IUsersService usersService;
+        private readonly IUserAvatarService userAvatarService;
         private readonly IJwtSettings jwtSettings;
 
         public ExternalAuthenticationService(
             IEnumerable<IExternalIdentityProviderService> providerServices,
             IUserQueryHandler userQueryHandler,
-            IUsersService usersService,
+            IUserAvatarService userAvatarService,
             IJwtSettings jwtSettings)
         {
             this.providerServices = providerServices.ToDictionary(service => service.Provider);
             this.userQueryHandler = userQueryHandler;
-            this.usersService = usersService;
+            this.userAvatarService = userAvatarService;
             this.jwtSettings = jwtSettings;
         }
 
@@ -167,7 +168,7 @@ namespace Services.Implementations.Authentication
         {
             if (string.IsNullOrWhiteSpace(user.AvatarUrl) && !string.IsNullOrWhiteSpace(identity.PictureUrl))
             {
-                string avatarPath = await usersService.DownloadAndSaveUserAvatar(identity.PictureUrl, user.Id);
+                string avatarPath = await userAvatarService.ImportExternalAvatarAsync(identity.PictureUrl, user.Id, identity.Provider);
                 if (!string.IsNullOrWhiteSpace(avatarPath))
                 {
                     user.AvatarUrl = avatarPath;
@@ -200,7 +201,7 @@ namespace Services.Implementations.Authentication
 
             if (string.IsNullOrWhiteSpace(user.AvatarUrl) && !string.IsNullOrWhiteSpace(identity.PictureUrl))
             {
-                string avatarPath = await usersService.DownloadAndSaveUserAvatar(identity.PictureUrl, user.Id);
+                string avatarPath = await userAvatarService.ImportExternalAvatarAsync(identity.PictureUrl, user.Id, identity.Provider);
                 if (!string.IsNullOrWhiteSpace(avatarPath))
                 {
                     user.AvatarUrl = avatarPath;

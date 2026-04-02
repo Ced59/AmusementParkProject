@@ -12,5 +12,6 @@ namespace Dtos.Users.Updating
         public bool? IsBlocked { get; set; }
         public List<Role> Roles { get; set; } = new();
         public string? PreferredLanguage { get; set; }
+        public string? AvatarUrl { get; set; }
     }
 }

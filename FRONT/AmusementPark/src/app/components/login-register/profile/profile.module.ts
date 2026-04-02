@@ -7,6 +7,7 @@ import {CardModule} from "primeng/card";
 import {TableModule} from "primeng/table";
 import {ButtonModule} from "primeng/button";
 import {TranslateModule} from "@ngx-translate/core";
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {TranslateModule} from "@ngx-translate/core";
     CardModule,
     TableModule,
     ButtonModule,
-    TranslateModule
+    TranslateModule,
+    SharedModule
   ]
 })
 export class ProfileModule { }

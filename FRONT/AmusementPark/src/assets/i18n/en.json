@@ -45,7 +45,19 @@
     "firstname": "First name",
     "email": "Email",
     "preferred_language": "Preferred language",
-    "modify": "Edit"
+    "modify": "Edit",
+    "avatar": {
+      "title": "Change avatar",
+      "choose": "Choose an avatar",
+      "upload": "Upload avatar",
+      "cancel": "Cancel",
+      "dragAndDrop": "Drag and drop your avatar here, or click to select an image.",
+      "selectedFile": "Selected file",
+      "invalidFile": "Please select a valid image file.",
+      "invalidSize": "The selected avatar is too large.",
+      "noImageSelected": "Please select an avatar before uploading.",
+      "uploading": "Uploading avatar..."
+    }
   },
   "theme": {
     "change": "Change theme",
@@ -466,6 +478,22 @@
       "playground": "Playgrounds",
       "interactiveExperience": "Interactive experiences",
       "observationRide": "Observation rides"
+    }
+  },
+  "shared": {
+    "imageUpload": {
+      "title": "Upload an image",
+      "choose": "Choose an image",
+      "upload": "Upload",
+      "cancel": "Cancel",
+      "dragAndDrop": "Drag and drop an image here, or click to select one.",
+      "selectedFile": "Selected file",
+      "invalidFile": "Please select a valid image file.",
+      "invalidSize": "The selected image is too large.",
+      "noImageSelected": "Please select an image before uploading.",
+      "uploading": "Uploading...",
+      "uploadError": "An error occurred while uploading the image.",
+      "descriptionPlaceholder": "Description"
     }
   }
 }

@@ -2,6 +2,7 @@
 using Dtos.Images.Creating;
 using Dtos.Images.Links;
 using Entities.Model.Images;
+using Entities.Model.Users;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces.Images;
@@ -12,10 +13,12 @@ namespace Services.Implementations.Images
     public class ImageLinksService : IImageLinksService
     {
         private readonly IImagesQueryHandler imagesQueryHandler;
+        private readonly IUserQueryHandler userQueryHandler;
 
-        public ImageLinksService(IImagesQueryHandler imagesQueryHandler)
+        public ImageLinksService(IImagesQueryHandler imagesQueryHandler, IUserQueryHandler userQueryHandler)
         {
             this.imagesQueryHandler = imagesQueryHandler;
+            this.userQueryHandler = userQueryHandler;
         }
 
         public async Task<OneOf<ImageDto, ErrorDetail>> LinkImageAsync(LinkImageToOwnerDto request)
@@ -50,6 +53,8 @@ namespace Services.Implementations.Images
             {
                 return ErrorUpdatingImageLink;
             }
+
+            await SynchronizeOwnerAfterCurrentImageChangeAsync(updated);
 
             return Map(updated);
         }
@@ -114,6 +119,8 @@ namespace Services.Implementations.Images
                 return ErrorSettingCurrentImage;
             }
 
+            await SynchronizeOwnerAfterCurrentImageChangeAsync(updated);
+
             return Map(updated);
         }
 
@@ -133,7 +140,81 @@ namespace Services.Implementations.Images
                 return ErrorDeletingImage;
             }
 
+            await SynchronizeOwnerAfterImageDeletionAsync(image);
+
             return true;
+        }
+
+        private async Task SynchronizeOwnerAfterCurrentImageChangeAsync(Image image)
+        {
+            if (!IsUserAvatar(image))
+            {
+                return;
+            }
+
+            User? user = await userQueryHandler.GetUserByIdAsync(image.OwnerId!);
+            if (user == null)
+            {
+                return;
+            }
+
+            user.AvatarUrl = image.IsCurrent ? BuildAvatarUrl(image.Id) : null;
+            user.UpdatedAt = DateTime.UtcNow;
+            await userQueryHandler.UpdateUserAsync(user);
+        }
+
+        private async Task SynchronizeOwnerAfterImageDeletionAsync(Image image)
+        {
+            if (!IsUserAvatar(image))
+            {
+                return;
+            }
+
+            User? user = await userQueryHandler.GetUserByIdAsync(image.OwnerId!);
+            if (user == null)
+            {
+                return;
+            }
+
+            IReadOnlyList<Image> remainingImages = await imagesQueryHandler.GetImagesByOwnerAsync(
+                ImageOwnerType.User,
+                image.OwnerId!,
+                ImageCategory.AVATAR);
+
+            Image? replacementCurrent = remainingImages.FirstOrDefault(img => img.IsCurrent);
+
+            if (replacementCurrent == null)
+            {
+                replacementCurrent = remainingImages.FirstOrDefault();
+                if (replacementCurrent != null)
+                {
+                    await imagesQueryHandler.UnsetCurrentImagesAsync(
+                        replacementCurrent.OwnerType,
+                        replacementCurrent.OwnerId!,
+                        replacementCurrent.Category,
+                        replacementCurrent.Id);
+
+                    replacementCurrent.IsCurrent = true;
+                    replacementCurrent.UpdatedAt = DateTime.UtcNow;
+                    replacementCurrent = await imagesQueryHandler.UpdateImageAsync(replacementCurrent);
+                }
+            }
+
+            user.AvatarUrl = replacementCurrent != null ? BuildAvatarUrl(replacementCurrent.Id) : null;
+            user.UpdatedAt = DateTime.UtcNow;
+            await userQueryHandler.UpdateUserAsync(user);
+        }
+
+        private static bool IsUserAvatar(Image image)
+        {
+            return image.OwnerType == ImageOwnerType.User
+                   && image.Category == ImageCategory.AVATAR
+                   && !string.IsNullOrWhiteSpace(image.OwnerId);
+        }
+
+        private static string BuildAvatarUrl(string imageId)
+        {
+            return $"/images/{imageId}";
         }
 
         private static ImageDto Map(Image image)

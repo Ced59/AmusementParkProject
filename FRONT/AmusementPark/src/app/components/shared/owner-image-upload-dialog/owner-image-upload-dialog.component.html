@@ -1,0 +1,93 @@
+<p-dialog
+  header="{{ titleKey | translate }}"
+  [(visible)]="visible"
+  [modal]="true"
+  [dismissableMask]="!isUploading"
+  [closable]="!isUploading"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '34rem', maxWidth: '95vw' }"
+  (onHide)="onDialogHide()">
+
+  <input
+    #fileInput
+    type="file"
+    accept="image/*"
+    class="hidden-file-input"
+    (change)="onFileInputChange($event)" />
+
+  <div class="dialog-body">
+    <div
+      class="drop-zone"
+      [class.drop-zone--dragging]="isDragging"
+      [class.drop-zone--disabled]="isUploading"
+      (click)="openFilePicker()"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)">
+      @if (!previewUrl) {
+        <div class="drop-zone__placeholder">
+          <i class="pi pi-image drop-zone__icon"></i>
+          <div>{{ dragAndDropHintKey | translate }}</div>
+          <button
+            pButton
+            type="button"
+            class="p-button-outlined"
+            [label]="chooseButtonKey | translate"
+            [disabled]="isUploading"
+            (click)="$event.stopPropagation(); openFilePicker()">
+          </button>
+        </div>
+      }
+
+      @if (previewUrl) {
+        <div class="preview-wrapper">
+          <img [src]="previewUrl" alt="Preview" class="preview-image" />
+        </div>
+      }
+    </div>
+
+    @if (selectedFile) {
+      <div class="selected-file-name">
+        {{ selectedFileLabelKey | translate }}: {{ selectedFile.name }}
+      </div>
+    }
+
+    @if (showDescription) {
+      <input
+        pInputText
+        type="text"
+        [(ngModel)]="description"
+        [placeholder]="descriptionPlaceholderKey | translate"
+        [disabled]="isUploading" />
+    }
+
+    @if (errorTranslationKey) {
+      <div class="upload-error">
+        {{ errorTranslationKey | translate }}
+      </div>
+    }
+  </div>
+
+  <ng-template pTemplate="footer">
+    <div class="dialog-footer">
+      <button
+        pButton
+        type="button"
+        class="p-button-text"
+        [label]="cancelButtonKey | translate"
+        [disabled]="isUploading"
+        (click)="cancel()">
+      </button>
+
+      <button
+        pButton
+        type="button"
+        [label]="(isUploading ? uploadingKey : uploadButtonKey) | translate"
+        [loading]="isUploading"
+        [disabled]="!selectedFile || isUploading || !ownerId"
+        (click)="upload()">
+      </button>
+    </div>
+  </ng-template>
+</p-dialog>

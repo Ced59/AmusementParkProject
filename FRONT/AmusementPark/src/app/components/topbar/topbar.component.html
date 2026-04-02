@@ -15,15 +15,15 @@
         <a [routerLink]="['/', selectedLanguage || 'en', 'profile']" class="profile-link">
           <div class="profile-copy">
             <span class="profile-kicker">{{ 'topbar.hello' | translate }}</span>
-            <span class="profile-name">{{ userProfile?.firstname || userProfile?.email }}</span>
+            <span class="profile-name">{{ userProfile?.firstName || userProfile?.email }}</span>
           </div>
-          @if (userProfile?.avatar) {
+          @if (getUserAvatarUrl()) {
             <p-avatar
-              [image]="environment.apiBaseUrl + userProfile?.avatar"
+              [image]="getUserAvatarUrl()!"
               shape="circle">
             </p-avatar>
           }
-          @if (!userProfile?.avatar) {
+          @if (!getUserAvatarUrl()) {
             <div class="profile-fallback">
               <i class="pi pi-user"></i>
             </div>
@@ -39,7 +39,6 @@
           (click)="openModal('loginModal')">
         </button>
       }
-
 
       <button
         pButton

@@ -15,6 +15,7 @@ using Entities.Model.Users;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces;
+using Services.Interfaces.Images;
 using Services.Interfaces.Settings;
 using Services.Security;
 using static Entities.Model.Errors.ErrorCodes;
@@ -25,11 +26,16 @@ namespace Services.Implementations
     {
         private readonly IJwtSettings jwtSettings;
         private readonly IUserQueryHandler userQueryHandler;
+        private readonly IUserAvatarService userAvatarService;
 
-        public UsersService(IUserQueryHandler userQueryHandler, IJwtSettings jwtSettings)
+        public UsersService(
+            IUserQueryHandler userQueryHandler,
+            IJwtSettings jwtSettings,
+            IUserAvatarService userAvatarService)
     {
         this.userQueryHandler = userQueryHandler;
         this.jwtSettings = jwtSettings;
+        this.userAvatarService = userAvatarService;
     }
 
         /// <summary>
@@ -187,7 +193,10 @@ namespace Services.Implementations
         userToUpdate.UpdatedAt = DateTime.UtcNow;
         userToUpdate.PreferredLanguage = userUpdate.PreferredLanguage;
         userToUpdate.LastActivity = DateTime.UtcNow;
-        userToUpdate.AvatarUrl = userUpdate.AvatarUrl;
+        if (userUpdate.AvatarUrl != null)
+        {
+            userToUpdate.AvatarUrl = userUpdate.AvatarUrl;
+        }
 
         User? userUpdated = await userQueryHandler.UpdateUserAsync(userToUpdate);
         if (userUpdated == null)
@@ -206,7 +215,8 @@ namespace Services.Implementations
             IsActivated = userUpdated.IsActivated,
             Id = userUpdated.Id,
             IsBlocked = userUpdated.IsBlocked,
-            Roles = userUpdated.Roles
+            Roles = userUpdated.Roles,
+            AvatarUrl = userUpdated.AvatarUrl
         };
 
         return userUpdatedDto;
@@ -576,28 +586,10 @@ namespace Services.Implementations
         /// <returns>Chemin de l'image dans l'API.</returns>
         public async Task<string> DownloadAndSaveUserAvatar(string imageUrl, string userId)
     {
-        try
-        {
-            using HttpClient httpClient = new();
-            byte[] imageBytes = await httpClient.GetByteArrayAsync(imageUrl);
-
-            if (imageBytes.Length == 0)
-            {
-                return "";
-            }
-
-            string fileName = $"{userId}.jpg"; // On nomme le fichier avec l'ID utilisateur
-            string savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/user-avatar/", fileName);
-
-            await File.WriteAllBytesAsync(savePath, imageBytes);
-
-            return $"/images/user-avatar/{fileName}"; // Retourne le chemin relatif
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Erreur lors du téléchargement de l'avatar : {ex.Message}");
-            return "";
-        }
+        return await userAvatarService.ImportExternalAvatarAsync(
+            imageUrl,
+            userId,
+            ExternalLoginProvider.Google);
     }
 
 

@@ -347,4 +347,22 @@ export class ApiService {
   buildImageUrl(imageId: string): string {
     return `${environment.imagesBaseUrl}/${imageId}`;
   }
+
+  resolveImageUrl(imagePathOrUrl?: string | null): string | null {
+    if (!imagePathOrUrl) {
+      return null;
+    }
+
+    if (/^https?:\/\//i.test(imagePathOrUrl)) {
+      return imagePathOrUrl;
+    }
+
+    if (imagePathOrUrl.startsWith('/images/')) {
+      const imageId: string = imagePathOrUrl.replace(/^\/images\//, '');
+      return this.buildImageUrl(imageId);
+    }
+
+    const normalizedPath: string = imagePathOrUrl.replace(/^\/+/, '');
+    return `${environment.apiBaseUrl}${normalizedPath}`;
+  }
 }

@@ -1,21 +1,21 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
-import {filter} from 'rxjs/operators';
-import {LANGUAGES} from "../../commons/languages";
-import {ApiService} from "../../services/api.service";
-import {AuthService} from "../../services/auth/auth.service";
-import {TranslationService} from "../../services/translation.service";
-import {JwtPayload} from "../../models/users/jwt_payload";
-import {ModalService} from "../../services/modal/modal.service";
-import {Subscription} from "rxjs";
-import {SharedService} from "../../services/shared/shared.service";
-import {environment} from "../../../environments/environment";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+
+import { LANGUAGES } from '../../commons/languages';
+import { UserDto } from '../../models/users/user_dto';
+import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth/auth.service';
+import { ModalService } from '../../services/modal/modal.service';
+import { SharedService } from '../../services/shared/shared.service';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
-    selector: 'app-topbar',
-    templateUrl: './topbar.component.html',
-    styleUrls: ['./topbar.component.scss'],
-    standalone: false
+  selector: 'app-topbar',
+  templateUrl: './topbar.component.html',
+  styleUrls: ['./topbar.component.scss'],
+  standalone: false
 })
 export class TopbarComponent implements OnInit, OnDestroy {
   languages = LANGUAGES;
@@ -23,19 +23,20 @@ export class TopbarComponent implements OnInit, OnDestroy {
   displayLoginModal: boolean = false;
   displayLanguageModal: boolean = false;
   isLoggedIn: boolean = false;
-  userProfile: JwtPayload | null = null;
-  private subscriptions: Subscription = new Subscription();
+  userProfile: UserDto | null = null;
 
+  private readonly subscriptions: Subscription = new Subscription();
 
   constructor(
-    private authService: AuthService,
-    private translationService: TranslationService,
-    private router: Router,
-    private modalService: ModalService,
-    private sharedService: SharedService
-  ) {}
+    private readonly apiService: ApiService,
+    private readonly authService: AuthService,
+    private readonly translationService: TranslationService,
+    private readonly router: Router,
+    private readonly modalService: ModalService,
+    private readonly sharedService: SharedService) {
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.checkLoginStatus();
 
     const loginModalStatus$ = this.modalService.getModalStatus('loginModal');
@@ -62,11 +63,12 @@ export class TopbarComponent implements OnInit, OnDestroy {
 
     this.subscriptions.add(
       this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
-        const currentLang = this.router.url.split('/')[1] || 'en';
+        const currentLang: string = this.router.url.split('/')[1] || 'en';
         this.selectedLanguage = currentLang;
         this.translationService.useLang(currentLang).subscribe({
-          next: () => {},
-          error: (err) => console.error('Error loading language:', err)
+          next: () => {
+          },
+          error: (err: unknown) => console.error('Error loading language:', err)
         });
       })
     );
@@ -78,31 +80,38 @@ export class TopbarComponent implements OnInit, OnDestroy {
     );
   }
 
-  openModal(modalName: string) {
+  openModal(modalName: string): void {
     this.modalService.openModal(modalName);
   }
 
-  closeModal(modalName: string) {
+  closeModal(modalName: string): void {
     this.modalService.closeModal(modalName);
     if (modalName === 'loginModal') {
       this.checkLoginStatus();
     }
   }
 
-  selectLanguage(lang: string) {
+  selectLanguage(lang: string): void {
     this.translationService.useLang(lang).subscribe({
       next: () => {
         this.selectedLanguage = lang;
         this.updateUrlWithNewLang(lang);
         this.closeModal('languageModal');
       },
-      error: (err) => console.error('Error changing language:', err)
+      error: (err: unknown) => console.error('Error changing language:', err)
     });
   }
 
-  private updateUrlWithNewLang(newLang: string): void {
+  getUserAvatarUrl(): string | null {
+    return this.apiService.resolveImageUrl(this.userProfile?.avatarUrl);
+  }
 
-    const urlSegments = this.router.url.split('/');
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+  private updateUrlWithNewLang(newLang: string): void {
+    const urlSegments: string[] = this.router.url.split('/');
 
     if (urlSegments.length > 1 && LANGUAGES.some(lang => lang.value === urlSegments[1])) {
       urlSegments[1] = newLang;
@@ -110,19 +119,31 @@ export class TopbarComponent implements OnInit, OnDestroy {
       urlSegments.splice(1, 0, newLang);
     }
 
-    this.router.navigateByUrl(urlSegments.join('/')).catch(err => console.error('Failed to navigate:', err));
+    this.router.navigateByUrl(urlSegments.join('/')).catch((err: unknown) => console.error('Failed to navigate:', err));
   }
 
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
-  }
-
-  checkLoginStatus() {
+  private checkLoginStatus(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
-    if (this.isLoggedIn) {
-      this.userProfile = this.authService.getTokenDecoded();
+    if (!this.isLoggedIn) {
+      this.userProfile = null;
+      return;
     }
-  }
 
-  protected readonly environment = environment;
+    const userId: string | null = this.authService.getUserIdFromToken();
+    if (!userId) {
+      this.userProfile = null;
+      return;
+    }
+
+    this.subscriptions.add(
+      this.apiService.getUserById(userId).subscribe({
+        next: (user: UserDto) => {
+          this.userProfile = user;
+        },
+        error: () => {
+          this.userProfile = null;
+        }
+      })
+    );
+  }
 }

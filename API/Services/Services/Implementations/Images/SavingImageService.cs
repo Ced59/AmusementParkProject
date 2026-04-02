@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces.Images;
+using Services.Models.Images;
 
 namespace Services.Implementations.Images
 {
@@ -36,59 +37,78 @@ namespace Services.Implementations.Images
             this.logger = logger;
         }
 
-        public async Task<OneOf<ImageCreatedDto, ErrorCodes.ErrorDetail>> SaveAsync(
-            ImageCreateDto dto)
+        public async Task<OneOf<ImageCreatedDto, ErrorCodes.ErrorDetail>> SaveAsync(ImageCreateDto dto)
         {
             if (dto.File == null || string.IsNullOrWhiteSpace(dto.File.FileName))
             {
                 return ErrorCodes.NoImageFileProvided;
             }
 
-            if (string.IsNullOrWhiteSpace(dto.Category.ToEnumString()))
+            await using Stream fileStream = dto.File.OpenReadStream();
+
+            ImageSaveRequest request = new()
+            {
+                FileStream = fileStream,
+                Category = dto.Category,
+                OriginalFileName = dto.File.FileName,
+                ContentType = dto.File.ContentType,
+                Description = dto.Description,
+                WithWatermark = dto.WithWatermark
+            };
+
+            return await SaveAsync(request);
+        }
+
+        public async Task<OneOf<ImageCreatedDto, ErrorCodes.ErrorDetail>> SaveAsync(ImageSaveRequest request)
+        {
+            if (request.FileStream == null)
+            {
+                return ErrorCodes.NoImageFileProvided;
+            }
+
+            if (string.IsNullOrWhiteSpace(request.Category.ToEnumString()))
             {
                 return ErrorCodes.NoImageCategoryProvided;
             }
 
-            // GUID logique commun pour toutes les variantes (webp/jpg)
             string imageId = Guid.NewGuid().ToString("N");
-            string categorySlug = dto.Category.ToEnumMinusString();
-
-            await using Stream sourceStream = dto.File.OpenReadStream();
+            string categorySlug = request.Category.ToEnumMinusString();
 
             try
             {
-                // 1. Métadonnées GPS
-                (double? latitude, double? longitude) =
-                    await imageMetadataExtractorService.ExtractGeoCoordinatesAsync(sourceStream);
-
-                if (sourceStream.CanSeek)
+                if (request.FileStream.CanSeek)
                 {
-                    sourceStream.Position = 0;
+                    request.FileStream.Position = 0;
                 }
 
-                // 2. Entité métier (sera persistée en Mongo)
+                (double? latitude, double? longitude) =
+                    await imageMetadataExtractorService.ExtractGeoCoordinatesAsync(request.FileStream);
+
+                if (request.FileStream.CanSeek)
+                {
+                    request.FileStream.Position = 0;
+                }
+
                 Image imageEntity = new()
                 {
                     Id = imageId,
-                    Category = dto.Category.MapTo<ImageCategoryDto, ImageCategory>(),
-                    // On stocke la "base" sans extension : ex. "attraction/{imageId}"
+                    Category = request.Category.MapTo<ImageCategoryDto, ImageCategory>(),
                     Path = $"{categorySlug}/{imageId}",
-                    Description = dto.Description,
+                    Description = request.Description,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
                     Latitude = latitude ?? 0,
                     Longitude = longitude ?? 0,
-                    OriginalFileName = string.IsNullOrWhiteSpace(dto.File.FileName) ? null : dto.File.FileName,
-                    ContentType = string.IsNullOrWhiteSpace(dto.File.ContentType) ? null : dto.File.ContentType
+                    OriginalFileName = string.IsNullOrWhiteSpace(request.OriginalFileName) ? null : request.OriginalFileName,
+                    ContentType = string.IsNullOrWhiteSpace(request.ContentType) ? null : request.ContentType
                 };
 
-                // 3. Choix du flux à utiliser pour la compression
-                Stream processingStream = sourceStream;
+                Stream processingStream = request.FileStream;
                 Stream? watermarkedStream = null;
 
-                if (dto.WithWatermark)
+                if (request.WithWatermark)
                 {
-                    watermarkedStream = await waterMarkService.ApplyWatermarkAsync(sourceStream, WatermarkText);
+                    watermarkedStream = await waterMarkService.ApplyWatermarkAsync(request.FileStream, WatermarkText);
                     processingStream = watermarkedStream;
 
                     if (processingStream.CanSeek)
@@ -97,7 +117,6 @@ namespace Services.Implementations.Images
                     }
 
 #if DEBUG
-                    // Debug : on sauvegarde l'image filigranée pour contrôle local
                     string debugDir = Path.Combine(Directory.GetCurrentDirectory(), "debug-images");
                     Directory.CreateDirectory(debugDir);
                     string debugPath = Path.Combine(debugDir, $"{imageId}_watermarked.jpg");
@@ -119,16 +138,13 @@ namespace Services.Implementations.Images
 #endif
                 }
 
-                // 4. Compression + stockage Minio
-                IEnumerable<string> savedFiles =
-                    await ProcessAndStoreAsync(processingStream, imageId, categorySlug);
+                IEnumerable<string> savedFiles = await ProcessAndStoreAsync(processingStream, imageId, categorySlug);
 
                 if (watermarkedStream is not null)
                 {
                     await watermarkedStream.DisposeAsync();
                 }
 
-                // 5. Persistance Mongo
                 Image? savedImage = await imagesQueryHandler.CreateImageAsync(imageEntity);
                 if (savedImage is null)
                 {
@@ -141,7 +157,6 @@ namespace Services.Implementations.Images
                     return ErrorCodes.ImageServorInternalError;
                 }
 
-                // 6. Résultat renvoyé à l'appelant
                 return new ImageCreatedDto
                 {
                     Id = savedImage.Id,
@@ -158,10 +173,6 @@ namespace Services.Implementations.Images
             }
         }
 
-        /// <summary>
-        /// Compresse et stocke l'image depuis le flux fourni.
-        /// Le flux n'est PAS disposé ici : c'est la responsabilité de l'appelant.
-        /// </summary>
         private async Task<IEnumerable<string>> ProcessAndStoreAsync(
             Stream imageStream,
             string baseName,

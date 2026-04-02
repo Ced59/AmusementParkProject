@@ -8,12 +8,14 @@ import { TabsModule } from 'primeng/tabs';
 import { ButtonModule } from 'primeng/button';
 import { SelectModule } from 'primeng/select';
 import { InputTextModule } from 'primeng/inputtext';
+import { DialogModule } from 'primeng/dialog';
 
 import { LeafletMapComponent } from './leaflet-map/leaflet-map.component';
 import { LocalizedRichTextEditorComponent } from './localized-rich-text-editor/localized-rich-text-editor.component';
 import { LocalizedTextInputComponent } from './localized-text-input/localized-text-input.component';
 import { EntitySelectComponent } from './entity-select/entity-select.component';
 import { EditorSaveToolbarComponent } from './editor-save-toolbar/editor-save-toolbar.component';
+import { OwnerImageUploadDialogComponent } from './owner-image-upload-dialog/owner-image-upload-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { EditorSaveToolbarComponent } from './editor-save-toolbar/editor-save-to
     LocalizedRichTextEditorComponent,
     LocalizedTextInputComponent,
     EntitySelectComponent,
-    EditorSaveToolbarComponent
+    EditorSaveToolbarComponent,
+    OwnerImageUploadDialogComponent
   ],
   imports: [
     CommonModule,
@@ -32,14 +35,16 @@ import { EditorSaveToolbarComponent } from './editor-save-toolbar/editor-save-to
     TabsModule,
     ButtonModule,
     SelectModule,
-    InputTextModule
+    InputTextModule,
+    DialogModule
   ],
   exports: [
     LeafletMapComponent,
     LocalizedRichTextEditorComponent,
     LocalizedTextInputComponent,
     EntitySelectComponent,
-    EditorSaveToolbarComponent
+    EditorSaveToolbarComponent,
+    OwnerImageUploadDialogComponent
   ]
 })
 export class SharedModule { }

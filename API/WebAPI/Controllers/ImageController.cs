@@ -1,11 +1,13 @@
 ﻿using Dtos.Images.Creating;
 using Entities.Model.Errors;
 using Entities.Model.Images;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces.Images;
 using WebAPI.ResponseHandlers;
+using WebAPI.Settings.Attributes;
 
 namespace WebAPI.Controllers
 {
@@ -31,6 +33,8 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "USER,MODERATOR,ADMIN")]
+        [RequireActivatedUnblockedUser]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> UploadAsync([FromForm] ImageCreateDto image)
         {

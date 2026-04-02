@@ -151,6 +151,7 @@ namespace WebAPI
             builder.Services.AddScoped<ISavingImageService, SavingImageService>();
             builder.Services.AddScoped<IImageMetadataExtractorService, ImageMetadataExtractorService>();
             builder.Services.AddScoped<IImageLinksService, ImageLinksService>();
+            builder.Services.AddScoped<IUserAvatarService, UserAvatarService>();
 
             builder.Services.AddSingleton<IWaterMarkService, WatermarkService>(sp =>
                 new WatermarkService(
