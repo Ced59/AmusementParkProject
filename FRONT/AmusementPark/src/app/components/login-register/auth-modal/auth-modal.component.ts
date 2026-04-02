@@ -1,45 +1,70 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {environment} from "../../../../environments/environment";
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { ApiService } from '../../../services/api.service';
+import { AuthService } from '../../../services/auth/auth.service';
+import { GoogleIdentityService } from '../../../services/auth/google-identity.service';
+import { ToastMessageService } from '../../../services/messages/toast-message.service';
+import { SharedService } from '../../../services/shared/shared.service';
+import { UserToken } from '../../../models/users/user_token';
 
 @Component({
-    selector: 'app-auth-modal',
-    templateUrl: './auth-modal.component.html',
-    styleUrls: ['./auth-modal.component.scss'] // Correction de styleUrl -> styleUrls
-    ,
-    standalone: false
+  selector: 'app-auth-modal',
+  templateUrl: './auth-modal.component.html',
+  styleUrls: ['./auth-modal.component.scss'],
+  standalone: false
 })
-export class AuthModalComponent {
-  @Output() closeModal = new EventEmitter<void>();
+export class AuthModalComponent implements AfterViewInit {
+  @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
+  @ViewChild('googleButtonContainer', { static: true })
+  private googleButtonContainer?: ElementRef<HTMLDivElement>;
 
-  constructor() {
+  constructor(
+    private readonly apiService: ApiService,
+    private readonly authService: AuthService,
+    private readonly googleIdentityService: GoogleIdentityService,
+    private readonly messageService: ToastMessageService,
+    private readonly sharedService: SharedService) {
   }
 
-  signInWithGoogle() {
-
-    localStorage.setItem('lastVisitedUrl', window.location.pathname + window.location.search);
-
-
-    const clientId = environment.googleClientId;
-    const redirectUri = encodeURIComponent(environment.redirectOAuthUri);
-    const responseType = 'code';
-    const state = encodeURIComponent(this.generateRandomString());
-    const scope = encodeURIComponent('openid profile email');
-    const prompt = 'select_account';
-    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}&state=${state}&prompt=${prompt}`;
+  async ngAfterViewInit(): Promise<void> {
+    await this.renderGoogleButtonAsync();
   }
 
-
-  generateRandomString() {
-    const randomPool = new Uint8Array(32);
-    crypto.getRandomValues(randomPool);
-    let hex = '';
-    for (let i = 0; i < randomPool.length; ++i) {
-      hex += randomPool[i].toString(16);
-    }
-    return hex;
-  }
-
-  onLoginSuccess() {
+  onLoginSuccess(): void {
     this.closeModal.emit();
+  }
+
+  private async renderGoogleButtonAsync(): Promise<void> {
+    if (!this.googleButtonContainer) {
+      return;
+    }
+
+    try {
+      await this.googleIdentityService.renderButtonAsync(
+        this.googleButtonContainer.nativeElement,
+        (response: GoogleCredentialResponse) => {
+          this.authenticateWithGoogle(response.credential);
+        });
+    } catch (error) {
+      console.error('Unable to render Google button.', error);
+      this.messageService.add('error', 'Erreur', 'La connexion Google est temporairement indisponible.');
+    }
+  }
+
+  private authenticateWithGoogle(idToken: string): void {
+    this.apiService.externalLogin('google', idToken).subscribe({
+      next: (result: UserToken) => {
+        this.authService.setToken(result.token);
+        this.messageService.add('success', 'Succès', 'Connexion avec Google réussie !');
+        this.sharedService.emitLoginStatusChange();
+        this.closeModal.emit();
+      },
+      error: (error: { error?: { Message?: string; message?: string; }; }): void => {
+        const errorMessage: string = error.error?.Message
+          ?? error.error?.message
+          ?? 'Une erreur inattendue est survenue.';
+
+        this.messageService.add('error', 'Erreur', errorMessage);
+      }
+    });
   }
 }

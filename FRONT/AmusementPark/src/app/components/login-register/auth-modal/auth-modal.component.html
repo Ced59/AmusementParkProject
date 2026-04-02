@@ -1,7 +1,6 @@
 <div class="social-buttons-container">
-
-  <button pButton type="button" label="Google" icon="pi pi-google" class="google-button" (click)="signInWithGoogle()"></button>
-  <button pButton type="button" label="Facebook" icon="pi pi-facebook" class="facebook-button"></button>
+  <div #googleButtonContainer class="google-button-host"></div>
+  <button pButton type="button" label="Facebook" icon="pi pi-facebook" class="facebook-button" [disabled]="true"></button>
 </div>
 
 <hr/>

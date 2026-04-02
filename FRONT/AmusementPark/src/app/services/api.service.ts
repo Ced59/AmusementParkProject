@@ -49,9 +49,13 @@ export class ApiService {
     return this.http.post<UserToken>(url, JSON.stringify(credentials), httpOptions);
   }
 
-  googleLogin(code: string): Observable<any> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.googleLogin}`;
-    return this.http.post(url, { code });
+  externalLogin(provider: string, token: string, nonce?: string): Observable<UserToken> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.externalLogin(provider)}`;
+    return this.http.post<UserToken>(url, { token, nonce });
+  }
+
+  googleLogin(token: string): Observable<UserToken> {
+    return this.externalLogin('google', token);
   }
 
   getUsers(page: number = 1, size: number = 10): Observable<UsersApiResponse> {

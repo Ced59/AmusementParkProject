@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { languageGuard } from './guards/language.guard';
-import { SigninGoogleComponent } from './components/login-register/signin-google/signin-google.component';
 import { ParkDetailComponent } from './components/park-detail/park-detail.component';
 import { ParkListComponent } from './components/park-list/park-list.component';
 import { ParkExplorerComponent } from './components/park-explorer/park-explorer.component';
@@ -19,7 +18,6 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'parks', component: ParkListComponent },
       { path: 'about', component: AboutComponent },
-      { path: 'signin-google', component: SigninGoogleComponent },
       { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then(m => m.ProfileModule) },
       { path: 'park/:id/:slug/explore', component: ParkExplorerComponent },
       { path: 'park/:id/:slug', component: ParkDetailComponent },

@@ -11,29 +11,30 @@ import { AuthService } from '../services/auth/auth.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {
+  }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (
-      typeof window === 'undefined' ||
-      req.url.endsWith('/login') ||
-      req.url.includes('google-response')
+      typeof window === 'undefined'
+      || req.url.endsWith('/login')
+      || req.url.includes('/auth/external/')
+      || req.url.includes('google-response')
     ) {
       return next.handle(req);
     }
 
-    const token = this.authService.getToken();
+    const token: string | null = this.authService.getToken();
     if (!token) {
       return next.handle(req);
     }
 
     const decoded = this.authService.getTokenDecoded();
     if (!decoded || !decoded.exp || Date.now() >= decoded.exp * 1000) {
-      // éventuellement : this.authService.logout();
       return next.handle(req);
     }
 
-    const authReq = req.clone({
+    const authReq: HttpRequest<unknown> = req.clone({
       headers: req.headers.set('Authorization', `Bearer ${token}`)
     });
 

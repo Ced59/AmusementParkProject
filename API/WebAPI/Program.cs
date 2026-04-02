@@ -13,9 +13,11 @@ using Repositories.Implementations;
 using Repositories.Interfaces;
 using Services.Configuration;
 using Services.Implementations;
+using Services.Implementations.Authentication;
 using Services.Implementations.Images;
 using Services.Implementations.Searching;
 using Services.Interfaces;
+using Services.Interfaces.Authentication;
 using Services.Interfaces.Images;
 using Services.Interfaces.Searching;
 using Services.Interfaces.Settings;
@@ -58,7 +60,8 @@ namespace WebAPI
             builder.Services.AddScoped<IParkZonesService, ParkZonesService>();
             builder.Services.AddScoped<IParkItemsService, ParkItemsService>();
 
-            builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
+            builder.Services.AddScoped<IExternalAuthenticationService, ExternalAuthenticationService>();
+            builder.Services.AddScoped<IExternalIdentityProviderService, GoogleExternalIdentityProviderService>();
 
             builder.Services.AddScoped<ISearchIndexService, SearchIndexService>();
             builder.Services.AddScoped<ISearchService, SearchService>();

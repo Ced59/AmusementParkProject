@@ -1,6 +1,6 @@
 export const API_ENDPOINTS = {
   postLogin: 'auth/login',
-  googleLogin: 'auth/google-response',
+  externalLogin: (provider: string) => `auth/external/${provider}`,
 
   getUsers: 'users/list',
   getUserById: (id: string) => `users?Id=${id}`,

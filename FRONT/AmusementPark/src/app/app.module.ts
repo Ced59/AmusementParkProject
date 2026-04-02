@@ -34,7 +34,6 @@ import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {AvatarModule} from "primeng/avatar";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
-import { SigninGoogleComponent } from './components/login-register/signin-google/signin-google.component';
 import {PaginatorModule} from "primeng/paginator";
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { ParkDetailComponent } from './components/park-detail/park-detail.component';
@@ -64,7 +63,6 @@ export function initializeApp(translationService: TranslationService): () => Pro
       LoginFormComponent,
       AuthModalComponent,
       RegisterFormComponent,
-      SigninGoogleComponent,
       ThemeSwitcherComponent,
       ParkDetailComponent,
       SidebarComponent,

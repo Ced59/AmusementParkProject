@@ -12,6 +12,9 @@
         public static readonly ErrorDetail UserUpdateFailed = new(500, "Update of the user failed.");
         public static readonly ErrorDetail UserCannotUpdateOtherUser = new(400, "You cannot update other user");
         public static readonly ErrorDetail LoginFailed = new(403, "Username or password invalid");
+        public static readonly ErrorDetail InvalidExternalIdentityToken = new(400, "Invalid external identity token.");
+        public static readonly ErrorDetail ExternalAuthenticationProviderNotSupported = new(400, "External authentication provider is not supported.");
+        public static readonly ErrorDetail ExternalLoginRequiresAccountLinking = new(409, "An account already exists with this email. Sign in with your existing method first, then link Google from your profile.");
         public static readonly ErrorDetail TokenRefreshFailed = new(400, "Refresh token failed");
 
         public static readonly ErrorDetail TokenRefreshFailedInactivity = new(400, "Refresh token failed due to inactivity");
