@@ -5,16 +5,17 @@
   </div>
 
   <div class="editor-toolbar__actions">
-    <button
-      *ngIf="showBackButton"
-      pButton
-      type="button"
-      class="p-button-secondary p-button-outlined"
-      [icon]="backIcon"
-      (click)="back.emit()"
-      [disabled]="isSaving"
-      [label]="backButtonLabel">
-    </button>
+    @if (showBackButton) {
+      <button
+        pButton
+        type="button"
+        class="p-button-secondary p-button-outlined"
+        [icon]="backIcon"
+        (click)="back.emit()"
+        [disabled]="isSaving"
+        [label]="backButtonLabel">
+      </button>
+    }
 
     <button
       pButton
@@ -27,15 +28,16 @@
       [label]="saveAllButtonLabel">
     </button>
 
-    <button
-      *ngIf="showSaveAndCloseButton"
-      pButton
-      type="button"
-      [icon]="saveAndCloseIcon"
-      (click)="saveAndClose.emit()"
-      [loading]="isSaving"
-      [disabled]="isSaving"
-      [label]="saveAndCloseButtonLabel">
-    </button>
+    @if (showSaveAndCloseButton) {
+      <button
+        pButton
+        type="button"
+        [icon]="saveAndCloseIcon"
+        (click)="saveAndClose.emit()"
+        [loading]="isSaving"
+        [disabled]="isSaving"
+        [label]="saveAndCloseButtonLabel">
+      </button>
+    }
   </div>
 </div>

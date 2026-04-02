@@ -1,5 +1,7 @@
 <div class="entity-select">
-  <label *ngIf="label" class="entity-select__label">{{ label }}</label>
+  @if (label) {
+    <label class="entity-select__label">{{ label }}</label>
+  }
 
   <div class="entity-select__row">
     <p-select
@@ -16,15 +18,16 @@
       styleClass="w-full">
     </p-select>
 
-    <button
-      *ngIf="addLink"
-      pButton
-      type="button"
-      class="p-button-outlined"
-      [routerLink]="addLink"
-      [queryParams]="addQueryParams"
-      [label]="addButtonLabel"
-      icon="pi pi-plus">
-    </button>
+    @if (addLink) {
+      <button
+        pButton
+        type="button"
+        class="p-button-outlined"
+        [routerLink]="addLink"
+        [queryParams]="addQueryParams"
+        [label]="addButtonLabel"
+        icon="pi pi-plus">
+      </button>
+    }
   </div>
 </div>

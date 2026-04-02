@@ -9,45 +9,48 @@
   </div>
 
   <div class="app-grid-cards">
-    <a
-      *ngFor="let park of parks"
-      class="park-link"
-      [routerLink]="park.id && park.name ? ['/', currentLang, 'park', park.id, slugify(park.name)] : null">
-      <p-card
-        *ngIf="park.id && park.name"
-        [header]="park.name"
-        [subheader]="park.countryCode"
-        styleClass="park-card">
-        <ng-template pTemplate="content">
-          <div class="park-card-content">
-            <span class="app-chip">
-              <i class="pi pi-map-marker"></i>
-              {{ park.countryCode }}
-            </span>
-
-            <div class="park-meta">
-              <div>
-                <span class="meta-label">Latitude</span>
-                <strong>{{ park.latitude }}</strong>
+    @for (park of parks; track park) {
+      <a
+        class="park-link"
+        [routerLink]="park.id && park.name ? ['/', currentLang, 'park', park.id, slugify(park.name)] : null">
+        @if (park.id && park.name) {
+          <p-card
+            [header]="park.name"
+            [subheader]="park.countryCode"
+            styleClass="park-card">
+            <ng-template pTemplate="content">
+              <div class="park-card-content">
+                <span class="app-chip">
+                  <i class="pi pi-map-marker"></i>
+                  {{ park.countryCode }}
+                </span>
+                <div class="park-meta">
+                  <div>
+                    <span class="meta-label">Latitude</span>
+                    <strong>{{ park.latitude }}</strong>
+                  </div>
+                  <div>
+                    <span class="meta-label">Longitude</span>
+                    <strong>{{ park.longitude }}</strong>
+                  </div>
+                </div>
               </div>
-              <div>
-                <span class="meta-label">Longitude</span>
-                <strong>{{ park.longitude }}</strong>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </p-card>
-    </a>
+            </ng-template>
+          </p-card>
+        }
+      </a>
+    }
   </div>
 
-  <div class="pagination-wrap" *ngIf="pagination">
-    <p-paginator
-      [rows]="pagination.itemsPerPage"
-      [totalRecords]="pagination.totalItems"
-      [rowsPerPageOptions]="[5, 10, 50, 100]"
-      [pageLinkSize]="3"
-      (onPageChange)="onPageChange($event)">
-    </p-paginator>
-  </div>
+  @if (pagination) {
+    <div class="pagination-wrap">
+      <p-paginator
+        [rows]="pagination.itemsPerPage"
+        [totalRecords]="pagination.totalItems"
+        [rowsPerPageOptions]="[5, 10, 50, 100]"
+        [pageLinkSize]="3"
+        (onPageChange)="onPageChange($event)">
+      </p-paginator>
+    </div>
+  }
 </section>

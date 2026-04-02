@@ -16,17 +16,21 @@
     <div class="field col-12 md:col-6">
       <label for="latitude">{{ 'admin.parks.latitude' | translate }}</label>
       <input id="latitude" type="number" pInputText formControlName="latitude" step="0.000001" />
-      <small class="p-error" *ngIf="latitudeControl?.invalid && (latitudeControl?.dirty || latitudeControl?.touched)">
-        {{ 'validation.required' | translate }}
-      </small>
+      @if (latitudeControl?.invalid && (latitudeControl?.dirty || latitudeControl?.touched)) {
+        <small class="p-error">
+          {{ 'validation.required' | translate }}
+        </small>
+      }
     </div>
 
     <div class="field col-12 md:col-6">
       <label for="longitude">{{ 'admin.parks.longitude' | translate }}</label>
       <input id="longitude" type="number" pInputText formControlName="longitude" step="0.000001" />
-      <small class="p-error" *ngIf="longitudeControl?.invalid && (longitudeControl?.dirty || longitudeControl?.touched)">
-        {{ 'validation.required' | translate }}
-      </small>
+      @if (longitudeControl?.invalid && (longitudeControl?.dirty || longitudeControl?.touched)) {
+        <small class="p-error">
+          {{ 'validation.required' | translate }}
+        </small>
+      }
     </div>
   </div>
 

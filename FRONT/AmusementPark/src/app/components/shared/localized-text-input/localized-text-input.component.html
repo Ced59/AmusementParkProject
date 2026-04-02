@@ -1,34 +1,38 @@
 <div class="localized-text-input">
   <p-tabs [(value)]="activeTabIndex">
     <p-tablist>
-      <p-tab *ngFor="let entry of entries; let index = index; trackBy: trackByLanguageCode" [value]="index">
-        {{ entry.languageLabel }}
-      </p-tab>
+      @for (entry of entries; track trackByLanguageCode(index, entry); let index = $index) {
+        <p-tab [value]="index">
+          {{ entry.languageLabel }}
+        </p-tab>
+      }
     </p-tablist>
 
     <p-tabpanels>
-      <p-tabpanel *ngFor="let entry of entries; let index = index; trackBy: trackByLanguageCode" [value]="index">
-        <div class="localized-text-input__content">
-          <input
-            pInputText
-            type="text"
-            [(ngModel)]="entry.value"
-            [ngModelOptions]="{ standalone: true }"
-            [disabled]="isDisabled"
-            [placeholder]="placeholderKey ? (placeholderKey | translate:{ language: entry.languageLabel }) : ''"
-            (ngModelChange)="onEntryValueChange()" />
-
-          <button
-            *ngIf="activeTabIndex === index"
-            pButton
-            type="button"
-            class="p-button-text p-button-sm localized-text-input__copy-all-button"
-            [disabled]="isDisabled || !canApplyValueToAllLanguages(entry.value)"
-            (click)="applyValueToAllLanguages(entry.value)">
-            {{ copyAllButtonLabel }}
-          </button>
-        </div>
-      </p-tabpanel>
+      @for (entry of entries; track trackByLanguageCode(index, entry); let index = $index) {
+        <p-tabpanel [value]="index">
+          <div class="localized-text-input__content">
+            <input
+              pInputText
+              type="text"
+              [(ngModel)]="entry.value"
+              [ngModelOptions]="{ standalone: true }"
+              [disabled]="isDisabled"
+              [placeholder]="placeholderKey ? (placeholderKey | translate:{ language: entry.languageLabel }) : ''"
+              (ngModelChange)="onEntryValueChange()" />
+            @if (activeTabIndex === index) {
+              <button
+                pButton
+                type="button"
+                class="p-button-text p-button-sm localized-text-input__copy-all-button"
+                [disabled]="isDisabled || !canApplyValueToAllLanguages(entry.value)"
+                (click)="applyValueToAllLanguages(entry.value)">
+                {{ copyAllButtonLabel }}
+              </button>
+            }
+          </div>
+        </p-tabpanel>
+      }
     </p-tabpanels>
   </p-tabs>
 </div>

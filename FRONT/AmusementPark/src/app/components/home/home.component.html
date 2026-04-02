@@ -55,38 +55,45 @@
       </div>
     </div>
 
-    <div class="app-grid-cards" *ngIf="results?.length; else noResults">
-      <p-card *ngFor="let item of results" [header]="item.title" styleClass="home-result-card">
-        <ng-template pTemplate="content">
-          <div class="result-meta">
-            <span class="app-chip app-chip-sm">{{ getCategoryLabelKey(item.category) | translate }}</span>
-          </div>
-          <p>{{ item.description }}</p>
-        </ng-template>
-      </p-card>
-    </div>
-
-    <ng-template #noResults>
-      <div class="app-empty-state" *ngIf="searchTerm || selectedCategory">
-        <i class="pi pi-search empty-icon"></i>
-        <h3>{{ 'home.no_results' | translate }}</h3>
-        <p>
-          {{ 'home.no_results' | translate }} “{{ searchTerm }}”
-          <ng-container *ngIf="selectedCategory">
-            {{ 'home.in_category' | translate }}
-            {{ ('home.categories.' + selectedCategory) | translate }}
-          </ng-container>
-        </p>
+    @if (results?.length) {
+      <div class="app-grid-cards">
+        @for (item of results; track item) {
+          <p-card [header]="item.title" styleClass="home-result-card">
+            <ng-template pTemplate="content">
+              <div class="result-meta">
+                <span class="app-chip app-chip-sm">{{ getCategoryLabelKey(item.category) | translate }}</span>
+              </div>
+              <p>{{ item.description }}</p>
+            </ng-template>
+          </p-card>
+        }
       </div>
-    </ng-template>
+    } @else {
+      @if (searchTerm || selectedCategory) {
+        <div class="app-empty-state">
+          <i class="pi pi-search empty-icon"></i>
+          <h3>{{ 'home.no_results' | translate }}</h3>
+          <p>
+            {{ 'home.no_results' | translate }} “{{ searchTerm }}”
+            @if (selectedCategory) {
+              {{ 'home.in_category' | translate }}
+              {{ ('home.categories.' + selectedCategory) | translate }}
+            }
+          </p>
+        </div>
+      }
+    }
+
   </section>
 
-  <div class="pagination-wrap" *ngIf="pagination">
-    <p-paginator
-      [rows]="pagination.itemsPerPage"
-      [totalRecords]="pagination.totalItems"
-      [rowsPerPageOptions]="[5, 10, 20]"
-      (onPageChange)="onPageChange($event)">
-    </p-paginator>
-  </div>
+  @if (pagination) {
+    <div class="pagination-wrap">
+      <p-paginator
+        [rows]="pagination.itemsPerPage"
+        [totalRecords]="pagination.totalItems"
+        [rowsPerPageOptions]="[5, 10, 20]"
+        (onPageChange)="onPageChange($event)">
+      </p-paginator>
+    </div>
+  }
 </section>

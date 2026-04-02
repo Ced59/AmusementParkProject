@@ -1,9 +1,11 @@
 <p-card>
   <ng-template pTemplate="header">
     <div class="header-row">
-      <span class="total" *ngIf="!loading">
-        {{ 'admin.parks.total' | translate:{ count: totalRecords } }}
-      </span>
+      @if (!loading) {
+        <span class="total">
+          {{ 'admin.parks.total' | translate:{ count: totalRecords } }}
+        </span>
+      }
     </div>
   </ng-template>
 
@@ -23,15 +25,16 @@
       (click)="onSearch()">
     </button>
 
-    <button
-      *ngIf="searchQuery.trim()"
-      pButton
-      type="button"
-      icon="pi pi-times"
-      class="p-button-text p-button-sm"
-      (click)="clearSearch()"
-      [label]="'admin.parks.clear' | translate">
-    </button>
+    @if (searchQuery.trim()) {
+      <button
+        pButton
+        type="button"
+        icon="pi pi-times"
+        class="p-button-text p-button-sm"
+        (click)="clearSearch()"
+        [label]="'admin.parks.clear' | translate">
+      </button>
+    }
   </div>
 
   <p-table

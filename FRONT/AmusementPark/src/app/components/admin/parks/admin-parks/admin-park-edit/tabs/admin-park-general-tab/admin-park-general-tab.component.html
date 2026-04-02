@@ -1,38 +1,40 @@
 <div class="tab-section" [formGroup]="form">
-  <div *ngIf="isEditMode && parkId" class="management-links-card">
-    <div class="section-header mb-3">
-      <h3>{{ 'admin.parks.management.sectionTitle' | translate }}</h3>
-      <small class="text-color-secondary">{{ 'admin.parks.management.sectionHelp' | translate }}</small>
+  @if (isEditMode && parkId) {
+    <div class="management-links-card">
+      <div class="section-header mb-3">
+        <h3>{{ 'admin.parks.management.sectionTitle' | translate }}</h3>
+        <small class="text-color-secondary">{{ 'admin.parks.management.sectionHelp' | translate }}</small>
+      </div>
+      <div class="management-links">
+        <button
+          pButton
+          type="button"
+          class="p-button-outlined"
+          icon="pi pi-sitemap"
+          [label]="'admin.parks.zones.manage' | translate"
+          [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'zones']">
+        </button>
+        <button
+          pButton
+          type="button"
+          class="p-button-outlined"
+          icon="pi pi-map-marker"
+          [label]="'admin.parks.items.manage' | translate"
+          [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'items']">
+        </button>
+      </div>
     </div>
-
-    <div class="management-links">
-      <button
-        pButton
-        type="button"
-        class="p-button-outlined"
-        icon="pi pi-sitemap"
-        [label]="'admin.parks.zones.manage' | translate"
-        [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'zones']">
-      </button>
-
-      <button
-        pButton
-        type="button"
-        class="p-button-outlined"
-        icon="pi pi-map-marker"
-        [label]="'admin.parks.items.manage' | translate"
-        [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'items']">
-      </button>
-    </div>
-  </div>
+  }
 
   <div class="grid formgrid">
     <div class="field col-12 md:col-6">
       <label for="name">{{ 'admin.parks.name' | translate }}</label>
       <input id="name" type="text" pInputText formControlName="name" />
-      <small class="p-error" *ngIf="nameControl?.invalid && (nameControl?.dirty || nameControl?.touched)">
-        {{ 'validation.required' | translate }}
-      </small>
+      @if (nameControl?.invalid && (nameControl?.dirty || nameControl?.touched)) {
+        <small class="p-error">
+          {{ 'validation.required' | translate }}
+        </small>
+      }
     </div>
 
     <div class="field col-12 md:col-6">
@@ -61,12 +63,11 @@
           {{ option.labelKey | translate }}
         </ng-template>
         <ng-template let-option #selectedItem>
-          <ng-container *ngIf="option; else parkTypePlaceholder">
+          @if (option) {
             {{ option.labelKey | translate }}
-          </ng-container>
-          <ng-template #parkTypePlaceholder>
+          } @else {
             {{ 'admin.parks.typePlaceholder' | translate }}
-          </ng-template>
+          }
         </ng-template>
       </p-select>
     </div>
@@ -123,8 +124,12 @@
 
     <div class="visibility-card__toggle">
       <p-toggleswitch formControlName="isVisible"></p-toggleswitch>
-      <span *ngIf="isVisibleControl?.value">{{ 'admin.parks.visible' | translate }}</span>
-      <span *ngIf="!isVisibleControl?.value">{{ 'admin.parks.hidden' | translate }}</span>
+      @if (isVisibleControl?.value) {
+        <span>{{ 'admin.parks.visible' | translate }}</span>
+      }
+      @if (!isVisibleControl?.value) {
+        <span>{{ 'admin.parks.hidden' | translate }}</span>
+      }
     </div>
   </div>
 

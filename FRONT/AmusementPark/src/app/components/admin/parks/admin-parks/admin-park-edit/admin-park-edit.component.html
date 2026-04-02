@@ -1,30 +1,38 @@
 <div class="admin-park-edit p-3">
   <div class="page-header">
     <div>
-      <h2 *ngIf="!isEditMode">
-        {{ 'admin.parks.editPage.createTitle' | translate }}
-      </h2>
-      <h2 *ngIf="isEditMode">
-        {{ 'admin.parks.editPage.updateTitle' | translate:{ name: nameControl?.value || '—' } }}
-      </h2>
+      @if (!isEditMode) {
+        <h2>
+          {{ 'admin.parks.editPage.createTitle' | translate }}
+        </h2>
+      }
+      @if (isEditMode) {
+        <h2>
+          {{ 'admin.parks.editPage.updateTitle' | translate:{ name: nameControl?.value || '—' } }}
+        </h2>
+      }
       <small class="text-color-secondary">
         {{ 'admin.parks.refactorHint' | translate }}
       </small>
     </div>
 
     <div class="page-header__aside">
-      <div *ngIf="form">
-        <p-tag
-          *ngIf="isVisibleControl?.value"
-          severity="success"
-          [value]="'admin.parks.visible' | translate">
-        </p-tag>
-        <p-tag
-          *ngIf="!isVisibleControl?.value"
-          severity="warning"
-          [value]="'admin.parks.hidden' | translate">
-        </p-tag>
-      </div>
+      @if (form) {
+        <div>
+          @if (isVisibleControl?.value) {
+            <p-tag
+              severity="success"
+              [value]="'admin.parks.visible' | translate">
+            </p-tag>
+          }
+          @if (!isVisibleControl?.value) {
+            <p-tag
+              severity="warning"
+              [value]="'admin.parks.hidden' | translate">
+            </p-tag>
+          }
+        </div>
+      }
 
       <app-editor-save-toolbar
         [statusLabel]="getEditorStatusLabel()"
@@ -52,71 +60,75 @@
 
         <p-tabpanels>
           <p-tabpanel [value]="0">
-          <app-admin-park-general-tab
-            *ngIf="activeTabIndex === 0"
-            [form]="form"
-            [parkTypeOptions]="parkTypeOptions"
-            [countryOptions]="countryOptions"
-            [founderOptions]="founderOptions"
-            [operatorOptions]="operatorOptions"
-            [foundersLoading]="foundersLoading"
-            [operatorsLoading]="operatorsLoading"
-            [founderAddLink]="['/', currentLang, 'admin', 'parks', 'founders', 'new']"
-            [founderAddQueryParams]="founderCreateLinkQueryParams"
-            [operatorAddLink]="['/', currentLang, 'admin', 'operators', 'new']"
-            [operatorAddQueryParams]="operatorCreateLinkQueryParams"
-            [currentLang]="currentLang"
-            [parkId]="parkId"
-            [isEditMode]="isEditMode"
-            [isSaving]="isSaving"
-            (saveSection)="saveSection()">
-          </app-admin-park-general-tab>
+            @if (activeTabIndex === 0) {
+              <app-admin-park-general-tab
+                [form]="form"
+                [parkTypeOptions]="parkTypeOptions"
+                [countryOptions]="countryOptions"
+                [founderOptions]="founderOptions"
+                [operatorOptions]="operatorOptions"
+                [foundersLoading]="foundersLoading"
+                [operatorsLoading]="operatorsLoading"
+                [founderAddLink]="['/', currentLang, 'admin', 'parks', 'founders', 'new']"
+                [founderAddQueryParams]="founderCreateLinkQueryParams"
+                [operatorAddLink]="['/', currentLang, 'admin', 'operators', 'new']"
+                [operatorAddQueryParams]="operatorCreateLinkQueryParams"
+                [currentLang]="currentLang"
+                [parkId]="parkId"
+                [isEditMode]="isEditMode"
+                [isSaving]="isSaving"
+                (saveSection)="saveSection()">
+              </app-admin-park-general-tab>
+            }
           </p-tabpanel>
 
           <p-tabpanel [value]="1">
-          <app-admin-park-location-tab
-            *ngIf="activeTabIndex === 1"
-            [form]="form"
-            [mapCenter]="mapCenter"
-            [mapZoom]="mapZoom"
-            [mapMarkers]="mapMarkers"
-            [isSaving]="isSaving"
-            (mapPositionChange)="onMapPositionChange($event)"
-            (saveSection)="saveSection()">
-          </app-admin-park-location-tab>
+            @if (activeTabIndex === 1) {
+              <app-admin-park-location-tab
+                [form]="form"
+                [mapCenter]="mapCenter"
+                [mapZoom]="mapZoom"
+                [mapMarkers]="mapMarkers"
+                [isSaving]="isSaving"
+                (mapPositionChange)="onMapPositionChange($event)"
+                (saveSection)="saveSection()">
+              </app-admin-park-location-tab>
+            }
           </p-tabpanel>
 
           <p-tabpanel [value]="2">
-          <app-admin-park-descriptions-tab
-            *ngIf="activeTabIndex === 2"
-            [form]="form"
-            [isSaving]="isSaving"
-            (saveSection)="saveSection()">
-          </app-admin-park-descriptions-tab>
+            @if (activeTabIndex === 2) {
+              <app-admin-park-descriptions-tab
+                [form]="form"
+                [isSaving]="isSaving"
+                (saveSection)="saveSection()">
+              </app-admin-park-descriptions-tab>
+            }
           </p-tabpanel>
 
           <p-tabpanel [value]="3">
-          <app-admin-park-logos-tab
-            *ngIf="activeTabIndex === 3"
-            [isEditMode]="isEditMode"
-            [currentLogo]="currentLogo"
-            [allowMultipleLogoUpload]="allowMultipleLogoUpload"
-            [selectedLogoCount]="selectedLogoCount"
-            [newLogoDescription]="newLogoDescription"
-            [logosUploading]="logosUploading"
-            [logosLoading]="logosLoading"
-            [parkLogos]="parkLogos"
-            [pagedLogos]="pagedLogos"
-            [logosPageSize]="logosPageSize"
-            [isSaving]="isSaving"
-            (logoFileSelected)="onLogoFileSelected($event)"
-            (newLogoDescriptionChange)="newLogoDescription = $event"
-            (uploadLogo)="onUploadLogo()"
-            (setCurrentLogo)="onSetCurrentLogo($event)"
-            (deleteLogo)="onDeleteLogo($event)"
-            (logosPageChange)="onLogosPageChange($event)"
-            (saveSection)="saveSection()">
-          </app-admin-park-logos-tab>
+            @if (activeTabIndex === 3) {
+              <app-admin-park-logos-tab
+                [isEditMode]="isEditMode"
+                [currentLogo]="currentLogo"
+                [allowMultipleLogoUpload]="allowMultipleLogoUpload"
+                [selectedLogoCount]="selectedLogoCount"
+                [newLogoDescription]="newLogoDescription"
+                [logosUploading]="logosUploading"
+                [logosLoading]="logosLoading"
+                [parkLogos]="parkLogos"
+                [pagedLogos]="pagedLogos"
+                [logosPageSize]="logosPageSize"
+                [isSaving]="isSaving"
+                (logoFileSelected)="onLogoFileSelected($event)"
+                (newLogoDescriptionChange)="newLogoDescription = $event"
+                (uploadLogo)="onUploadLogo()"
+                (setCurrentLogo)="onSetCurrentLogo($event)"
+                (deleteLogo)="onDeleteLogo($event)"
+                (logosPageChange)="onLogosPageChange($event)"
+                (saveSection)="saveSection()">
+              </app-admin-park-logos-tab>
+            }
           </p-tabpanel>
         </p-tabpanels>
       </p-tabs>

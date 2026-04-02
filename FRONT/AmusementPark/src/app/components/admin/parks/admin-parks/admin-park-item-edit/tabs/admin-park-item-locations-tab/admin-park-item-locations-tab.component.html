@@ -13,40 +13,40 @@
 
   <div class="locations-layout">
     <div class="locations-sidebar">
-      <div class="location-card-wrapper" *ngFor="let locationOption of attractionLocationOptions">
-        <p-card [styleClass]="selectedLocationKey === locationOption.key ? 'location-card location-card--active' : 'location-card'">
-          <div class="location-card__header">
-            <div>
-              <h4>{{ locationOption.labelKey | translate }}</h4>
-              <small class="text-color-secondary">{{ getLocationCoordinatesLabel(locationOption.key) }}</small>
+      @for (locationOption of attractionLocationOptions; track locationOption) {
+        <div class="location-card-wrapper">
+          <p-card [styleClass]="selectedLocationKey === locationOption.key ? 'location-card location-card--active' : 'location-card'">
+            <div class="location-card__header">
+              <div>
+                <h4>{{ locationOption.labelKey | translate }}</h4>
+                <small class="text-color-secondary">{{ getLocationCoordinatesLabel(locationOption.key) }}</small>
+              </div>
+              <div class="location-card__actions">
+                <button
+                  pButton
+                  type="button"
+                  class="p-button-text p-button-sm"
+                  icon="pi pi-map-marker"
+                  (click)="selectedLocationKeyChange.emit(locationOption.key)">
+                </button>
+                <button
+                  pButton
+                  type="button"
+                  class="p-button-text p-button-danger p-button-sm"
+                  icon="pi pi-times"
+                  [disabled]="!hasLocationPoint(locationOption.key)"
+                  (click)="clearLocationPoint.emit(locationOption.key)">
+                </button>
+              </div>
             </div>
-
-            <div class="location-card__actions">
-              <button
-                pButton
-                type="button"
-                class="p-button-text p-button-sm"
-                icon="pi pi-map-marker"
-                (click)="selectedLocationKeyChange.emit(locationOption.key)">
-              </button>
-              <button
-                pButton
-                type="button"
-                class="p-button-text p-button-danger p-button-sm"
-                icon="pi pi-times"
-                [disabled]="!hasLocationPoint(locationOption.key)"
-                (click)="clearLocationPoint.emit(locationOption.key)">
-              </button>
+            <div class="location-card__summary mt-2">
+              <span class="location-card__status" [ngClass]="{'is-defined': hasLocationPoint(locationOption.key)}">
+                {{ hasLocationPoint(locationOption.key) ? ('admin.parks.items.locationDefined' | translate) : ('admin.parks.items.locationNotDefined' | translate) }}
+              </span>
             </div>
-          </div>
-
-          <div class="location-card__summary mt-2">
-            <span class="location-card__status" [ngClass]="{'is-defined': hasLocationPoint(locationOption.key)}">
-              {{ hasLocationPoint(locationOption.key) ? ('admin.parks.items.locationDefined' | translate) : ('admin.parks.items.locationNotDefined' | translate) }}
-            </span>
-          </div>
-        </p-card>
-      </div>
+          </p-card>
+        </div>
+      }
     </div>
 
     <div class="locations-editor">

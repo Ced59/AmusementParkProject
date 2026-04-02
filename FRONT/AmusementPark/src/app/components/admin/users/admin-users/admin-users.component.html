@@ -1,9 +1,11 @@
 <p-card>
   <ng-template pTemplate="header">
     <div class="header-row">
-      <span class="total" *ngIf="!loading">
-        {{ 'admin.users.total' | translate:{ count: totalRecords } }}
-      </span>
+      @if (!loading) {
+        <span class="total">
+          {{ 'admin.users.total' | translate:{ count: totalRecords } }}
+        </span>
+      }
     </div>
   </ng-template>
 
@@ -16,7 +18,7 @@
     [lazy]="true"
     (onLazyLoad)="onPageChanged($event)"
     [responsiveLayout]="'scroll'"
-  >
+    >
     <ng-template pTemplate="header">
       <tr>
         <th>ID</th>
@@ -34,11 +36,12 @@
         <td>{{ user.firstname }}</td>
         <td>{{ user.lastname }}</td>
         <td>
-          <p-tag
-            *ngFor="let role of user.roles"
-            [value]="role"
-            class="mr-1"
-          ></p-tag>
+          @for (role of user.roles; track role) {
+            <p-tag
+              [value]="role"
+              class="mr-1"
+            ></p-tag>
+          }
         </td>
       </tr>
     </ng-template>
