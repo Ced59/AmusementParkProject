@@ -21,6 +21,10 @@ namespace Repositories.Interfaces
 
         Task<User?> GetUserByExternalLoginAsync(ExternalLoginProvider provider, string providerUserId);
 
+        Task<User?> GetUserByEmailConfirmationTokenHashAsync(string tokenHash);
+
+        Task<User?> GetUserByPasswordResetTokenHashAsync(string tokenHash);
+
         Task UpdateLastLoginAndActivityAsync(string userId);
 
         Task UpdateLastActivityAsync(string userId);

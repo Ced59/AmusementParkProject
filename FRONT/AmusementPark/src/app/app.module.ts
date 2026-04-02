@@ -42,6 +42,9 @@ import { ParkListComponent } from './components/park-list/park-list.component';
 import { ParkExplorerComponent } from './components/park-explorer/park-explorer.component';
 import {MultiSelectModule} from "primeng/multiselect";
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { ConfirmAccountPageComponent } from './components/login-register/confirm-account-page/confirm-account-page.component';
+import { ForgotPasswordPageComponent } from './components/login-register/forgot-password-page/forgot-password-page.component';
+import { ResetPasswordPageComponent } from './components/login-register/reset-password-page/reset-password-page.component';
 import { LeafletMapComponent } from './components/shared/leaflet-map/leaflet-map.component';
 import {SharedModule} from "./components/shared/shared.module";
 
@@ -63,6 +66,9 @@ export function initializeApp(translationService: TranslationService): () => Pro
       LoginFormComponent,
       AuthModalComponent,
       RegisterFormComponent,
+      ConfirmAccountPageComponent,
+      ForgotPasswordPageComponent,
+      ResetPasswordPageComponent,
       ThemeSwitcherComponent,
       ParkDetailComponent,
       SidebarComponent,

@@ -7,6 +7,9 @@ import { ParkDetailComponent } from './components/park-detail/park-detail.compon
 import { ParkListComponent } from './components/park-list/park-list.component';
 import { ParkExplorerComponent } from './components/park-explorer/park-explorer.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { ConfirmAccountPageComponent } from './components/login-register/confirm-account-page/confirm-account-page.component';
+import { ForgotPasswordPageComponent } from './components/login-register/forgot-password-page/forgot-password-page.component';
+import { ResetPasswordPageComponent } from './components/login-register/reset-password-page/reset-password-page.component';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
 
@@ -19,6 +22,9 @@ const routes: Routes = [
       { path: 'parks', component: ParkListComponent },
       { path: 'about', component: AboutComponent },
       { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then(m => m.ProfileModule) },
+      { path: 'confirm-account', component: ConfirmAccountPageComponent },
+      { path: 'forgot-password', component: ForgotPasswordPageComponent },
+      { path: 'reset-password', component: ResetPasswordPageComponent },
       { path: 'park/:id/:slug/explore', component: ParkExplorerComponent },
       { path: 'park/:id/:slug', component: ParkDetailComponent },
       {

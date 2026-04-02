@@ -28,5 +28,17 @@ namespace Entities.Model.Users
         public DateTime LastLogin { get; set; }
 
         public DateTime LastActivity { get; set; }
+
+        public string? EmailConfirmationTokenHash { get; set; }
+
+        public DateTime? EmailConfirmationTokenExpiresAt { get; set; }
+
+        public DateTime? EmailConfirmationSentAt { get; set; }
+
+        public string? PasswordResetTokenHash { get; set; }
+
+        public DateTime? PasswordResetTokenExpiresAt { get; set; }
+
+        public DateTime? PasswordResetSentAt { get; set; }
     }
 }

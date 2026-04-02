@@ -1,5 +1,10 @@
 export const API_ENDPOINTS = {
   postLogin: 'auth/login',
+  postRegister: 'users',
+  confirmEmail: 'users/confirm-email',
+  resendConfirmation: 'users/resend-confirmation',
+  forgotPassword: 'users/forgot-password',
+  resetPassword: 'users/reset-password',
   externalLogin: (provider: string) => `auth/external/${provider}`,
 
   getUsers: 'users/list',

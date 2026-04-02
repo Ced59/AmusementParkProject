@@ -39,6 +39,16 @@ namespace Repositories.Implementations
             return await usersCollection.Find(filter).FirstOrDefaultAsync();
         }
 
+        public async Task<User?> GetUserByEmailConfirmationTokenHashAsync(string tokenHash)
+        {
+            return await usersCollection.Find(user => user.EmailConfirmationTokenHash == tokenHash).FirstOrDefaultAsync();
+        }
+
+        public async Task<User?> GetUserByPasswordResetTokenHashAsync(string tokenHash)
+        {
+            return await usersCollection.Find(user => user.PasswordResetTokenHash == tokenHash).FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
             return await usersCollection.Find(user => true).ToListAsync();

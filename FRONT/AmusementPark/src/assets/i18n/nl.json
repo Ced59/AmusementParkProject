@@ -22,7 +22,8 @@
       "mail_placeholder": "Vul je e-mail in",
       "title_password": "Wachtwoord",
       "password_placeholder": "Vul je wachtwoord in",
-      "btn_text": "Inloggen"
+      "btn_text": "Inloggen",
+      "forgot_password": "Forgot password?"
     },
     "register": {
       "title": "Standaard registratie",
@@ -36,7 +37,26 @@
       "errors": {
         "password_error_summary": "Wachtwoordfout",
         "password_error": "Het wachtwoord moet minstens 8 tekens, één hoofdletter, één kleine letter en één cijfer bevatten."
-      }
+      },
+      "success_message": "Your account has been created. Open the confirmation link printed in the API console to activate it.",
+      "resend_confirmation": "Send confirmation link again"
+    },
+    "common": {
+      "back_home": "Back to home"
+    },
+    "confirm": {
+      "title": "Account confirmation",
+      "loading": "Account confirmation in progress..."
+    },
+    "forgot_password": {
+      "title": "Forgot password",
+      "description": "Enter your email address to receive a reset link.",
+      "submit": "Send reset link"
+    },
+    "reset_password": {
+      "title": "Reset password",
+      "invalid_link": "This reset link is invalid.",
+      "submit": "Reset password"
     }
   },
   "user-profile": {

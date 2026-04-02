@@ -10,7 +10,6 @@ import { AuthService } from '../services/auth/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
   constructor(private readonly authService: AuthService) {
   }
 
@@ -18,6 +17,11 @@ export class AuthInterceptor implements HttpInterceptor {
     if (
       typeof window === 'undefined'
       || req.url.endsWith('/login')
+      || req.url.endsWith('/users')
+      || req.url.endsWith('/users/confirm-email')
+      || req.url.endsWith('/users/resend-confirmation')
+      || req.url.endsWith('/users/forgot-password')
+      || req.url.endsWith('/users/reset-password')
       || req.url.includes('/auth/external/')
       || req.url.includes('google-response')
     ) {

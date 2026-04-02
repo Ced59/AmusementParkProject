@@ -34,6 +34,15 @@
         public static readonly ErrorDetail IncorrectPassword = new(403, "The actual password is incorrect");
         public static readonly ErrorDetail ChangePasswordFailed = new(500, "Change Password Failed");
 
+        public static readonly ErrorDetail LocalLoginNotAvailable = new(403, "Local login is not available for this account.");
+        public static readonly ErrorDetail EmailConfirmationTokenInvalid = new(400, "The email confirmation token is invalid.");
+        public static readonly ErrorDetail EmailConfirmationTokenExpired = new(400, "The email confirmation token has expired.");
+        public static readonly ErrorDetail AccountAlreadyActivated = new(400, "The account is already activated.");
+        public static readonly ErrorDetail ConfirmationEmailResendFailed = new(500, "The confirmation email could not be sent.");
+        public static readonly ErrorDetail PasswordResetTokenInvalid = new(400, "The password reset token is invalid.");
+        public static readonly ErrorDetail PasswordResetTokenExpired = new(400, "The password reset token has expired.");
+        public static readonly ErrorDetail PasswordResetEmailSendFailed = new(500, "The password reset email could not be sent.");
+        public static readonly ErrorDetail PasswordResetFailed = new(500, "Password reset failed.");
         public static readonly ErrorDetail ParkNotExists = new(404, "Park not exists");
         public static readonly ErrorDetail NoParkInThisLocation = new(404, "They are no park in this location");
         public static readonly ErrorDetail ErrorCreatingPark = new(500, "Error while creating park");

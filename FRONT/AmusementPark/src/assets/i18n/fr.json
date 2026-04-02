@@ -22,7 +22,8 @@
       "mail_placeholder": "Entrez votre email",
       "title_password": "Mot de passe",
       "password_placeholder": "Entrez votre mot de passe",
-      "btn_text": "Se connecter"
+      "btn_text": "Se connecter",
+      "forgot_password": "Mot de passe oublié ?"
     },
     "register": {
       "title": "Inscription classique",
@@ -36,7 +37,26 @@
       "errors": {
         "password_error_summary": "Erreur de mot de passe",
         "password_error": "Le mot de passe doit contenir au minimum 8 caractères, une majuscule, une minuscule, et un chiffre."
-      }
+      },
+      "success_message": "Votre compte a été créé. Ouvrez le lien de confirmation affiché dans la console de l’API pour l’activer.",
+      "resend_confirmation": "Renvoyer le lien de confirmation"
+    },
+    "common": {
+      "back_home": "Retour à l’accueil"
+    },
+    "confirm": {
+      "title": "Confirmation du compte",
+      "loading": "Confirmation du compte en cours..."
+    },
+    "forgot_password": {
+      "title": "Mot de passe oublié",
+      "description": "Saisissez votre adresse email pour recevoir un lien de réinitialisation.",
+      "submit": "Envoyer le lien de réinitialisation"
+    },
+    "reset_password": {
+      "title": "Réinitialiser le mot de passe",
+      "invalid_link": "Ce lien de réinitialisation est invalide.",
+      "submit": "Réinitialiser le mot de passe"
     }
   },
   "user-profile": {

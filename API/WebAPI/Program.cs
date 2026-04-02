@@ -23,6 +23,7 @@ using Services.Interfaces.Searching;
 using Services.Interfaces.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebAPI.Settings.Attributes;
+using WebAPI.Settings.Email;
 using WebAPI.Settings.Images;
 using WebAPI.Settings.MongoDB;
 using WebAPI.Settings.OAuth;
@@ -51,6 +52,17 @@ namespace WebAPI
             builder.Services.AddHttpClient();
             ConfigureSwagger(builder.Services);
 
+            // Settings
+            EmailSettings emailSettings = builder.Configuration.GetSection("Email").Get<EmailSettings>() ?? new EmailSettings();
+            LocalAuthenticationSettings localAuthenticationSettings = builder.Configuration.GetSection("Authentication:Local").Get<LocalAuthenticationSettings>() ?? new LocalAuthenticationSettings();
+            CorsSettings corsSettings = builder.Configuration.GetSection("Cors").Get<CorsSettings>() ?? new CorsSettings();
+
+            builder.Services.AddSingleton<IEmailSettings>(emailSettings);
+            builder.Services.AddSingleton<ILocalAuthenticationSettings>(localAuthenticationSettings);
+            builder.Services.AddSingleton<ICorsSettings>(corsSettings);
+
+            ValidateEmailSettings(emailSettings);
+
             // Services
             builder.Services.AddScoped<IUsersService, UsersService>();
             builder.Services.AddScoped<IParksService, ParksService>();
@@ -62,6 +74,9 @@ namespace WebAPI
 
             builder.Services.AddScoped<IExternalAuthenticationService, ExternalAuthenticationService>();
             builder.Services.AddScoped<IExternalIdentityProviderService, GoogleExternalIdentityProviderService>();
+            builder.Services.AddScoped<ILocalAccountTokenService, LocalAccountTokenService>();
+            builder.Services.AddScoped<ILocalAccountEmailService, LocalAccountEmailService>();
+            RegisterEmailSender(builder.Services, emailSettings);
 
             builder.Services.AddScoped<ISearchIndexService, SearchIndexService>();
             builder.Services.AddScoped<ISearchService, SearchService>();
@@ -124,11 +139,17 @@ namespace WebAPI
             // Configure CORS
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builderCors => builderCors.WithOrigins("http://localhost:4200")
+                options.AddPolicy("AllowSpecificOrigin", builderCors =>
+                {
+                    builderCors.WithOrigins(corsSettings.AllowedOrigins)
                         .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials());
+                        .AllowAnyMethod();
+
+                    if (corsSettings.AllowCredentials)
+                    {
+                        builderCors.AllowCredentials();
+                    }
+                });
             });
         }
 
@@ -278,6 +299,41 @@ namespace WebAPI
                     options.AppSecret = configuration["Authentication:Facebook:AppSecret"];
                     options.CallbackPath = new PathString("/login/auth/facebook-response");
                 });
+        }
+
+
+        private static void RegisterEmailSender(IServiceCollection services, IEmailSettings emailSettings)
+        {
+            if (string.Equals(emailSettings.Mode, "Smtp", StringComparison.OrdinalIgnoreCase))
+            {
+                services.AddScoped<IEmailSender, SmtpEmailSender>();
+                return;
+            }
+
+            services.AddScoped<IEmailSender, ConsoleEmailSender>();
+        }
+
+        private static void ValidateEmailSettings(IEmailSettings settings)
+        {
+            if (!string.Equals(settings.Mode, "Smtp", StringComparison.OrdinalIgnoreCase))
+            {
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(settings.Host))
+            {
+                throw new InvalidOperationException("Email SMTP host is not configured.");
+            }
+
+            if (settings.Port <= 0)
+            {
+                throw new InvalidOperationException("Email SMTP port is not configured.");
+            }
+
+            if (string.IsNullOrWhiteSpace(settings.FromAddress))
+            {
+                throw new InvalidOperationException("Email sender address is not configured.");
+            }
         }
 
 

@@ -18,14 +18,14 @@ namespace Services.Implementations.Images
             "image/webp",
             "image/gif"
         };
-        
+
+        private readonly IHttpClientFactory httpClientFactory;
         private readonly ISavingImageService savingImageService;
         private readonly IImageLinksService imageLinksService;
         private readonly ILogger<UserAvatarService> logger;
-        private readonly System.Net.Http.IHttpClientFactory httpClientFactory;
 
         public UserAvatarService(
-            System.Net.Http.IHttpClientFactory httpClientFactory,
+            IHttpClientFactory httpClientFactory,
             ISavingImageService savingImageService,
             IImageLinksService imageLinksService,
             ILogger<UserAvatarService> logger)
@@ -55,7 +55,7 @@ namespace Services.Implementations.Images
 
             try
             {
-                HttpClient httpClient = httpClientFactory.CreateClient(nameof(UserAvatarService));
+                HttpClient httpClient = httpClientFactory.CreateClient();
                 using HttpResponseMessage response = await httpClient.GetAsync(
                     imageUri,
                     HttpCompletionOption.ResponseHeadersRead,

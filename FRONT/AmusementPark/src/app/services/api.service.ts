@@ -8,6 +8,7 @@ import { API_ENDPOINTS } from '../api/api-endpoints';
 import { UserCredentials } from '../models/users/user_credentials';
 import { UserToken } from '../models/users/user_token';
 import { UserDto } from '../models/users/user_dto';
+import { UserRegister } from '../models/users/user-register';
 import { UserPut } from '../models/users/user_put';
 import { UsersApiResponse } from '../models/users/users_api_response';
 
@@ -30,6 +31,7 @@ import { ImageCategory } from '../models/images/image-category';
 import { ImageDto } from '../models/images/image-dto';
 import { ImageOwnerType } from '../models/images/image-owner-type';
 import { LinkImageToOwner } from '../models/images/link-image-to-owner';
+import { AuthMessageResponse } from '../models/auth/auth-message-response';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +51,31 @@ export class ApiService {
     return this.http.post<UserToken>(url, JSON.stringify(credentials), httpOptions);
   }
 
+
+  register(request: UserRegister): Observable<UserDto> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.postRegister}`;
+    return this.http.post<UserDto>(url, request);
+  }
+
+  confirmEmail(token: string): Observable<AuthMessageResponse> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.confirmEmail}`;
+    return this.http.post<AuthMessageResponse>(url, { token });
+  }
+
+  resendConfirmation(email: string): Observable<AuthMessageResponse> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.resendConfirmation}`;
+    return this.http.post<AuthMessageResponse>(url, { email });
+  }
+
+  forgotPassword(email: string): Observable<AuthMessageResponse> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.forgotPassword}`;
+    return this.http.post<AuthMessageResponse>(url, { email });
+  }
+
+  resetPassword(token: string, newPassword: string, newPasswordConfirm: string): Observable<AuthMessageResponse> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.resetPassword}`;
+    return this.http.post<AuthMessageResponse>(url, { token, newPassword, newPasswordConfirm });
+  }
   externalLogin(provider: string, token: string, nonce?: string): Observable<UserToken> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.externalLogin(provider)}`;
     return this.http.post<UserToken>(url, { token, nonce });
@@ -365,4 +392,5 @@ export class ApiService {
     const normalizedPath: string = imagePathOrUrl.replace(/^\/+/, '');
     return `${environment.apiBaseUrl}${normalizedPath}`;
   }
+
 }

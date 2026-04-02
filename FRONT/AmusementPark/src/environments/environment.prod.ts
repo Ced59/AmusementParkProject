@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://yourproductionapi.com/',
-  baseUrl: 'https://yourproductionapi.com/',
-  apiImagePath: 'https://yourproductionapi.com/images/',
+  apiBaseUrl: 'https://api.amusement-park.fun/',
+  baseUrl: 'https://amusement-park.fun/',
+  apiImagePath: 'https://api.amusement-park.fun/images/',
   googleClientId: '819235253823-lj2de5lllhlngr4rpt5iq0m5mgmmltaj.apps.googleusercontent.com',
-  redirectOAuthUri: 'https://localhost:44390/auth/google-response',
-  imagesBaseUrl: 'https://cdn.amusement-parks.fun/images'
+  redirectOAuthUri: 'https://amusement-park.fun/en/signin-google',
+  imagesBaseUrl: 'https://api.amusement-park.fun/images'
 };

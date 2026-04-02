@@ -22,7 +22,8 @@
       "mail_placeholder": "Introduce tu correo",
       "title_password": "Contraseña",
       "password_placeholder": "Introduce tu contraseña",
-      "btn_text": "Iniciar sesión"
+      "btn_text": "Iniciar sesión",
+      "forgot_password": "Forgot password?"
     },
     "register": {
       "title": "Registro clásico",
@@ -36,7 +37,26 @@
       "errors": {
         "password_error_summary": "Error de contraseña",
         "password_error": "La contraseña debe contener como mínimo 8 caracteres, una mayúscula, una minúscula y un número."
-      }
+      },
+      "success_message": "Your account has been created. Open the confirmation link printed in the API console to activate it.",
+      "resend_confirmation": "Send confirmation link again"
+    },
+    "common": {
+      "back_home": "Back to home"
+    },
+    "confirm": {
+      "title": "Account confirmation",
+      "loading": "Account confirmation in progress..."
+    },
+    "forgot_password": {
+      "title": "Forgot password",
+      "description": "Enter your email address to receive a reset link.",
+      "submit": "Send reset link"
+    },
+    "reset_password": {
+      "title": "Reset password",
+      "invalid_link": "This reset link is invalid.",
+      "submit": "Reset password"
     }
   },
   "user-profile": {
