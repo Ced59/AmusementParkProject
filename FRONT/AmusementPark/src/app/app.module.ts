@@ -1,4 +1,6 @@
 import { NgModule, inject, provideAppInitializer } from '@angular/core';
+import { providePrimeNG } from 'primeng/config';
+import AmusementParkPreset from './config/primeng-preset';
 import {BrowserModule} from '@angular/platform-browser';
 import {
   HttpClient,
@@ -15,7 +17,7 @@ import {HomeComponent} from './components/home/home.component';
 import {AboutComponent} from './components/about/about.component';
 import {TranslationService} from './services/translation.service';
 import {TopbarComponent} from './components/topbar/topbar.component';
-import {DropdownModule} from "primeng/dropdown";
+import { SelectModule } from 'primeng/select';
 import {ToolbarModule} from "primeng/toolbar";
 import {ButtonModule} from "primeng/button";
 import {FormsModule} from "@angular/forms";
@@ -30,17 +32,13 @@ import {LanguageInterceptor} from "./interceptors/language.interceptor";
 import {TooltipModule} from "primeng/tooltip";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
-import {MessagesModule} from "primeng/messages";
-import {MessageModule} from "primeng/message";
 import {AvatarModule} from "primeng/avatar";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import { SigninGoogleComponent } from './components/login-register/signin-google/signin-google.component';
 import {PaginatorModule} from "primeng/paginator";
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
-import {ThemeService} from "./services/themes/themes.service";
 import { ParkDetailComponent } from './components/park-detail/park-detail.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import {SidebarModule} from "primeng/sidebar";
 import { ParkListComponent } from './components/park-list/park-list.component';
 import { ParkExplorerComponent } from './components/park-explorer/park-explorer.component';
 import {MultiSelectModule} from "primeng/multiselect";
@@ -87,7 +85,7 @@ export function initializeApp(translationService: TranslationService): () => Pro
         }
       }),
       BrowserAnimationsModule,
-      DropdownModule,
+      SelectModule,
       ToolbarModule,
       ButtonModule,
       FormsModule,
@@ -96,10 +94,8 @@ export function initializeApp(translationService: TranslationService): () => Pro
       CardModule,
       TooltipModule,
       ToastModule,
-      MessagesModule,
-      MessageModule,
       ToastModule,
-      AvatarModule, PaginatorModule, SidebarModule, MultiSelectModule],
+      AvatarModule, PaginatorModule, MultiSelectModule],
     exports: [
       SidebarComponent
     ],
@@ -120,6 +116,14 @@ export function initializeApp(translationService: TranslationService): () => Pro
         multi: true
       },
       MessageService,
+      providePrimeNG({
+        theme: {
+          preset: AmusementParkPreset,
+          options: {
+            darkModeSelector: '.dark-mode'
+          }
+        }
+      }),
       provideHttpClient(withInterceptorsFromDi())
     ]
   })

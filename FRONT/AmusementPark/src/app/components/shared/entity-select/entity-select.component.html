@@ -2,7 +2,7 @@
   <label *ngIf="label" class="entity-select__label">{{ label }}</label>
 
   <div class="entity-select__row">
-    <p-dropdown
+    <p-select
       [ngModel]="value"
       (ngModelChange)="onValueChange($event)"
       [options]="options"
@@ -14,7 +14,7 @@
       [placeholder]="placeholder"
       [appendTo]="'body'"
       styleClass="w-full">
-    </p-dropdown>
+    </p-select>
 
     <button
       *ngIf="addLink"

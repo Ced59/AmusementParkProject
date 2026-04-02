@@ -59,10 +59,10 @@
         <td>{{ getTypeTranslationKey(park.type) | translate }}</td>
         <td>{{ park.countryCode }}</td>
         <td>
-          <p-inputSwitch
+          <p-toggleswitch
             [(ngModel)]="park.isVisible"
-            (onChange)="onVisibilityChange(park)">
-          </p-inputSwitch>
+            (ngModelChange)="onVisibilityChange(park)">
+          </p-toggleswitch>
         </td>
         <td>
           <button

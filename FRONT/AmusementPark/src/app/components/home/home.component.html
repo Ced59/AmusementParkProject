@@ -27,20 +27,20 @@
 
       <div class="search-field">
         <label class="field-label">{{ 'home.placeholder_category' | translate }}</label>
-        <p-dropdown
+        <p-select
           [options]="categoryOptions"
           [(ngModel)]="selectedCategory"
           optionLabel="labelKey"
           optionValue="value"
           (onChange)="onCategoryChange()">
-          <ng-template let-opt pTemplate="selectedItem">
+          <ng-template let-opt #selectedItem>
             {{ opt?.labelKey ? (opt.labelKey | translate) : ('home.placeholder_category' | translate) }}
           </ng-template>
 
-          <ng-template let-opt pTemplate="item">
+          <ng-template let-opt #item>
             {{ opt.labelKey | translate }}
           </ng-template>
-        </p-dropdown>
+        </p-select>
       </div>
     </div>
   </div>

@@ -506,10 +506,12 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     }, 80);
   }
 
-  onTabChange(index: number): void {
-    this.activeTabIndex = index;
+  onTabChange(index: number | string): void {
+    const normalizedIndex: number = typeof index === 'string' ? Number(index) : index;
 
-    if (index === 0 || index === 3) {
+    this.activeTabIndex = Number.isFinite(normalizedIndex) ? normalizedIndex : 0;
+
+    if (this.activeTabIndex === 0 || this.activeTabIndex === 3) {
       window.setTimeout((): void => {
         this.refreshAllMapStates();
       }, 80);

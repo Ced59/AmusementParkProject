@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { EditorModule } from 'primeng/editor';
-import { TabViewModule } from 'primeng/tabview';
+import { TabsModule } from 'primeng/tabs';
 import { ButtonModule } from 'primeng/button';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { LeafletMapComponent } from './leaflet-map/leaflet-map.component';
@@ -29,9 +29,9 @@ import { EditorSaveToolbarComponent } from './editor-save-toolbar/editor-save-to
     RouterModule,
     TranslateModule,
     EditorModule,
-    TabViewModule,
+    TabsModule,
     ButtonModule,
-    DropdownModule,
+    SelectModule,
     InputTextModule
   ],
   exports: [

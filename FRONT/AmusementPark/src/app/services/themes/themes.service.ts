@@ -1,22 +1,14 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private themeLinkElement: HTMLLinkElement | null = null;
+  private readonly storageKey: string = 'amusement-park-theme';
 
-  private readonly themeMap: Record<string, string> = {
-    light: 'lara-light-purple',
-    dark: 'lara-dark-purple'
-  };
-
-  private readonly storageKey = 'amusement-park-theme';
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {
     if (isPlatformBrowser(this.platformId)) {
-      this.themeLinkElement = document.getElementById('theme-css') as HTMLLinkElement | null;
       this.initializeTheme();
     }
   }
@@ -26,7 +18,7 @@ export class ThemeService {
       return;
     }
 
-    const savedTheme = localStorage.getItem(this.storageKey);
+    const savedTheme: string | null = localStorage.getItem(this.storageKey);
 
     if (savedTheme === 'light' || savedTheme === 'dark') {
       this.changeTheme(savedTheme);
@@ -41,30 +33,32 @@ export class ThemeService {
       return;
     }
 
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
     this.changeTheme(prefersDark ? 'dark' : 'light');
   }
 
   getCurrentTheme(): 'light' | 'dark' {
-    if (!isPlatformBrowser(this.platformId) || !this.themeLinkElement) {
+    if (!isPlatformBrowser(this.platformId)) {
       return 'dark';
     }
 
-    return this.themeLinkElement.href.includes('light') ? 'light' : 'dark';
+    return document.body.classList.contains('light-mode') ? 'light' : 'dark';
   }
 
   changeTheme(genericTheme: string): void {
-    if (!isPlatformBrowser(this.platformId) || !this.themeLinkElement) {
+    if (!isPlatformBrowser(this.platformId)) {
       return;
     }
 
-    const normalizedTheme = genericTheme === 'light' ? 'light' : 'dark';
-    const themeDir = this.themeMap[normalizedTheme];
+    const normalizedTheme: 'light' | 'dark' = genericTheme === 'light' ? 'light' : 'dark';
+    const documentElement: HTMLElement = document.documentElement;
+    const body: HTMLElement = document.body;
 
-    this.themeLinkElement.href = `assets/themes/${themeDir}/theme.css`;
+    documentElement.classList.remove('light-mode', 'dark-mode');
+    documentElement.classList.add(`${normalizedTheme}-mode`);
 
-    document.body.classList.remove('light-mode', 'dark-mode');
-    document.body.classList.add(`${normalizedTheme}-mode`);
+    body.classList.remove('light-mode', 'dark-mode');
+    body.classList.add(`${normalizedTheme}-mode`);
 
     localStorage.setItem(this.storageKey, normalizedTheme);
   }

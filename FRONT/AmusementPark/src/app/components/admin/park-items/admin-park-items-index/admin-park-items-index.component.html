@@ -17,7 +17,7 @@
         [placeholder]="'admin.parkItems.searchPlaceholder' | translate" />
     </span>
 
-    <p-dropdown
+    <p-select
       [(ngModel)]="selectedParkId"
       [options]="parkOptions"
       optionLabel="label"
@@ -25,7 +25,7 @@
       [showClear]="true"
       (onChange)="onFiltersChanged()"
       [placeholder]="'admin.parkItems.parkFilter' | translate">
-    </p-dropdown>
+    </p-select>
   </div>
 
   <p-table

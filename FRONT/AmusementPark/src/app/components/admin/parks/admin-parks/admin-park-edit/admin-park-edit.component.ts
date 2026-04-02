@@ -170,10 +170,12 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     this.navigateToList();
   }
 
-  onTabChange(index: number): void {
-    this.activeTabIndex = index;
+  onTabChange(index: number | string): void {
+    const normalizedIndex: number = typeof index === 'string' ? Number(index) : index;
 
-    if (index === 1) {
+    this.activeTabIndex = Number.isFinite(normalizedIndex) ? normalizedIndex : 0;
+
+    if (this.activeTabIndex === 1) {
       window.setTimeout((): void => {
         this.updateMarkerFromForm();
       }, 80);

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { InputTextModule } from 'primeng/inputtext';
 import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
@@ -21,7 +21,7 @@ import { AdminParkItemsIndexRoutingModule } from './admin-park-items-index-routi
     TranslateModule,
     ButtonModule,
     CardModule,
-    DropdownModule,
+    SelectModule,
     InputTextModule,
     PaginatorModule,
     TableModule,

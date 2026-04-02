@@ -74,23 +74,23 @@
   <div class="grid formgrid switches-grid">
     <div class="field col-12 md:col-6 lg:col-4 switch-field">
       <label>{{ 'admin.parks.items.details.hasSingleRider' | translate }}</label>
-      <p-inputSwitch formControlName="hasSingleRider"></p-inputSwitch>
+      <p-toggleswitch formControlName="hasSingleRider"></p-toggleswitch>
     </div>
     <div class="field col-12 md:col-6 lg:col-4 switch-field">
       <label>{{ 'admin.parks.items.details.hasFastPass' | translate }}</label>
-      <p-inputSwitch formControlName="hasFastPass"></p-inputSwitch>
+      <p-toggleswitch formControlName="hasFastPass"></p-toggleswitch>
     </div>
     <div class="field col-12 md:col-6 lg:col-4 switch-field">
       <label>{{ 'admin.parks.items.details.isAccessibleForReducedMobility' | translate }}</label>
-      <p-inputSwitch formControlName="isAccessibleForReducedMobility"></p-inputSwitch>
+      <p-toggleswitch formControlName="isAccessibleForReducedMobility"></p-toggleswitch>
     </div>
     <div class="field col-12 md:col-6 lg:col-4 switch-field">
       <label>{{ 'admin.parks.items.details.isIndoor' | translate }}</label>
-      <p-inputSwitch formControlName="isIndoor"></p-inputSwitch>
+      <p-toggleswitch formControlName="isIndoor"></p-toggleswitch>
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.waterExposureLevel' | translate }}</label>
-      <p-dropdown
+      <p-select
         formControlName="waterExposureLevel"
         [options]="waterExposureLevelOptions"
         optionLabel="labelKey"
@@ -98,13 +98,13 @@
         [showClear]="true"
         [appendTo]="'body'"
         [placeholder]="'admin.parks.items.details.waterExposureLevelPlaceholder' | translate">
-        <ng-template let-option pTemplate="item">
+        <ng-template let-option #item>
           {{ option.labelKey | translate }}
         </ng-template>
-        <ng-template let-selected pTemplate="selectedItem">
+        <ng-template let-selected #selectedItem>
           {{ selected?.labelKey ? (selected.labelKey | translate) : ('admin.parks.items.details.waterExposureLevelPlaceholder' | translate) }}
         </ng-template>
-      </p-dropdown>
+      </p-select>
     </div>
   </div>
 

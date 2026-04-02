@@ -14,7 +14,7 @@
   <div class="grid formgrid mb-3 access-condition-add-row">
     <div class="field col-12 md:col-8 lg:col-6">
       <label>{{ 'admin.parks.items.accessConditionsPreset' | translate }}</label>
-      <p-dropdown
+      <p-select
         [ngModel]="selectedAccessConditionPreset"
         (ngModelChange)="onSelectedAccessConditionPresetChange($event)"
         [ngModelOptions]="{ standalone: true }"
@@ -22,9 +22,9 @@
         optionLabel="labelKey"
         optionValue="value"
         [appendTo]="'body'">
-        <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
-        <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
-      </p-dropdown>
+        <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+        <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+      </p-select>
     </div>
     <div class="field col-12 md:col-4 lg:col-3 flex align-items-end">
       <button
@@ -66,16 +66,16 @@
           <div class="grid formgrid">
             <div class="field col-12 md:col-6 lg:col-4">
               <label>{{ 'admin.parks.items.accessConditionFields.type' | translate }}</label>
-              <p-dropdown
+              <p-select
                 formControlName="type"
                 [options]="accessConditionPresetOptions"
                 optionLabel="labelKey"
                 optionValue="value"
                 [appendTo]="'body'"
                 (onChange)="accessConditionTypeChanged.emit(i)">
-                <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
-                <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
-              </p-dropdown>
+                <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+                <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+              </p-select>
             </div>
 
             <div class="field col-12 md:col-6 lg:col-4">
@@ -85,21 +85,21 @@
 
             <div class="field col-12 md:col-6 lg:col-4">
               <label>{{ 'admin.parks.items.accessConditionFields.unit' | translate }}</label>
-              <p-dropdown
+              <p-select
                 formControlName="unit"
                 [options]="accessConditionUnitOptions"
                 optionLabel="labelKey"
                 optionValue="value"
                 [showClear]="true"
                 [appendTo]="'body'">
-                <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
-                <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
-              </p-dropdown>
+                <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+                <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+              </p-select>
             </div>
 
             <div class="field col-12 md:col-6 lg:col-4 switch-field">
               <label>{{ 'admin.parks.items.accessConditionFields.requiresAccompaniment' | translate }}</label>
-              <p-inputSwitch formControlName="requiresAccompaniment"></p-inputSwitch>
+              <p-toggleswitch formControlName="requiresAccompaniment"></p-toggleswitch>
             </div>
 
             <div class="field col-12 md:col-6 lg:col-4">

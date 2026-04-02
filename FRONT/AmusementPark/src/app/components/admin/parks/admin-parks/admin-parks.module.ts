@@ -9,16 +9,16 @@ import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InputSwitchModule } from 'primeng/inputswitch';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { AdminParkEditComponent } from './admin-park-edit/admin-park-edit.component';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { TagModule } from 'primeng/tag';
 import { SharedModule } from '../../../shared/shared.module';
 import { PaginatorModule } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
 import { DividerModule } from 'primeng/divider';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { TabViewModule } from 'primeng/tabview';
+import { TabsModule } from 'primeng/tabs';
 import {AdminFounderEditComponent} from "../../operators/admin-founder-edit/admin-founder-edit.component";
 import { AdminParkZonesComponent } from './admin-park-zones/admin-park-zones.component';
 import { AdminParkZoneEditComponent } from './admin-park-zone-edit/admin-park-zone-edit.component';
@@ -62,8 +62,8 @@ import { AdminParkLogosTabComponent } from './admin-park-edit/tabs/admin-park-lo
     TranslateModule,
     InputTextModule,
     FormsModule,
-    InputSwitchModule,
-    DropdownModule,
+    ToggleSwitchModule,
+    SelectModule,
     TagModule,
     ReactiveFormsModule,
     SharedModule,
@@ -71,7 +71,7 @@ import { AdminParkLogosTabComponent } from './admin-park-edit/tabs/admin-park-lo
     PanelModule,
     DividerModule,
     ProgressSpinnerModule,
-    TabViewModule
+    TabsModule
   ]
 })
 export class AdminParksModule { }

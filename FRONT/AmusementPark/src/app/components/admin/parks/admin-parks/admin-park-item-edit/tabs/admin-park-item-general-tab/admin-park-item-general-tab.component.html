@@ -7,17 +7,17 @@
   <div class="grid formgrid">
     <div class="field col-12 md:col-6">
       <label>{{ 'admin.parks.items.category' | translate }}</label>
-      <p-dropdown formControlName="category" [options]="categoryOptions" optionLabel="labelKey" optionValue="value" [appendTo]="'body'">
-        <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
-        <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
-      </p-dropdown>
+      <p-select formControlName="category" [options]="categoryOptions" optionLabel="labelKey" optionValue="value" [appendTo]="'body'">
+        <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+        <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+      </p-select>
     </div>
     <div class="field col-12 md:col-6">
       <label>{{ 'admin.parks.items.type' | translate }}</label>
-      <p-dropdown formControlName="type" [options]="filteredTypeOptions" optionLabel="labelKey" optionValue="value" [appendTo]="'body'">
-        <ng-template let-option pTemplate="item">{{ option.labelKey | translate }}</ng-template>
-        <ng-template let-option pTemplate="selectedItem">{{ option.labelKey | translate }}</ng-template>
-      </p-dropdown>
+      <p-select formControlName="type" [options]="filteredTypeOptions" optionLabel="labelKey" optionValue="value" [appendTo]="'body'">
+        <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+        <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+      </p-select>
     </div>
   </div>
 
@@ -28,7 +28,7 @@
     </div>
     <div class="field col-12 md:col-6">
       <label>{{ 'admin.parks.items.zone' | translate }}</label>
-      <p-dropdown formControlName="zoneId" [options]="zones" optionLabel="label" optionValue="id" [showClear]="true" [appendTo]="'body'"></p-dropdown>
+      <p-select formControlName="zoneId" [options]="zones" optionLabel="label" optionValue="id" [showClear]="true" [appendTo]="'body'"></p-select>
     </div>
   </div>
 
@@ -77,7 +77,7 @@
 
   <div class="field visibility-field">
     <label>{{ 'admin.parks.visibleField' | translate }}</label>
-    <p-inputSwitch formControlName="isVisible"></p-inputSwitch>
+    <p-toggleswitch formControlName="isVisible"></p-toggleswitch>
   </div>
 
   <div class="section-actions">

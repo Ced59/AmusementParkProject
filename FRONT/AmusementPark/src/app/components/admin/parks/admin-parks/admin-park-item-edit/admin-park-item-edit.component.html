@@ -21,8 +21,17 @@
   </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
-    <p-tabView [(activeIndex)]="activeTabIndex" (activeIndexChange)="onTabChange($event)">
-      <p-tabPanel [header]="'admin.parks.items.tabs.general' | translate">
+    <p-tabs [value]="activeTabIndex" (valueChange)="onTabChange($event)">
+      <p-tablist>
+        <p-tab [value]="0">{{ 'admin.parks.items.tabs.general' | translate }}</p-tab>
+        <p-tab *ngIf="isAttractionCategory" [value]="1">{{ 'admin.parks.items.tabs.details' | translate }}</p-tab>
+        <p-tab *ngIf="isAttractionCategory" [value]="2">{{ 'admin.parks.items.tabs.accessConditions' | translate }}</p-tab>
+        <p-tab *ngIf="isAttractionCategory" [value]="3">{{ 'admin.parks.items.tabs.locations' | translate }}</p-tab>
+        <p-tab *ngIf="isAttractionCategory" [value]="4">{{ 'admin.parks.items.tabs.photos' | translate }}</p-tab>
+      </p-tablist>
+
+      <p-tabpanels>
+        <p-tabpanel [value]="0">
         <app-admin-park-item-general-tab
           *ngIf="activeTabIndex === 0"
           [form]="form"
@@ -38,9 +47,9 @@
           (resetGeneralLocationToPark)="resetGeneralLocationToPark()"
           (saveSection)="saveSection()">
         </app-admin-park-item-general-tab>
-      </p-tabPanel>
+        </p-tabpanel>
 
-      <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.details' | translate">
+        <p-tabpanel *ngIf="isAttractionCategory" [value]="1">
         <app-admin-park-item-details-tab
           *ngIf="activeTabIndex === 1"
           [formGroup]="attractionDetailsGroup"
@@ -52,9 +61,9 @@
           [isSaving]="isSaving"
           (saveSection)="saveSection()">
         </app-admin-park-item-details-tab>
-      </p-tabPanel>
+        </p-tabpanel>
 
-      <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.accessConditions' | translate">
+        <p-tabpanel *ngIf="isAttractionCategory" [value]="2">
         <app-admin-park-item-access-conditions-tab
           *ngIf="activeTabIndex === 2"
           [formGroup]="attractionDetailsGroup"
@@ -71,9 +80,9 @@
           (accessConditionTypeChanged)="onAccessConditionTypeChanged($event)"
           (saveSection)="saveSection()">
         </app-admin-park-item-access-conditions-tab>
-      </p-tabPanel>
+        </p-tabpanel>
 
-      <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.locations' | translate">
+        <p-tabpanel *ngIf="isAttractionCategory" [value]="3">
         <app-admin-park-item-locations-tab
           *ngIf="activeTabIndex === 3"
           [formGroup]="attractionLocationsGroup"
@@ -90,9 +99,9 @@
           (clearSelectedLocation)="clearSelectedLocationPoint()"
           (saveSection)="saveSection()">
         </app-admin-park-item-locations-tab>
-      </p-tabPanel>
+        </p-tabpanel>
 
-      <p-tabPanel *ngIf="isAttractionCategory" [header]="'admin.parks.items.tabs.photos' | translate">
+        <p-tabpanel *ngIf="isAttractionCategory" [value]="4">
         <app-admin-park-item-photos-tab
           *ngIf="activeTabIndex === 4"
           [isEditMode]="isEditMode"
@@ -114,7 +123,8 @@
           (photosPageChange)="onPhotosPageChange($event)"
           (saveSection)="saveSection()">
         </app-admin-park-item-photos-tab>
-      </p-tabPanel>
-    </p-tabView>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
   </form>
 </p-card>

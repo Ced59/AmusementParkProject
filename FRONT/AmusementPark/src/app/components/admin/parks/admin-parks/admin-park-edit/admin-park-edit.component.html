@@ -42,8 +42,16 @@
 
   <p-card>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
-      <p-tabView [(activeIndex)]="activeTabIndex" (activeIndexChange)="onTabChange($event)">
-        <p-tabPanel [header]="'admin.parks.tabs.general' | translate">
+      <p-tabs [value]="activeTabIndex" (valueChange)="onTabChange($event)">
+        <p-tablist>
+          <p-tab [value]="0">{{ 'admin.parks.tabs.general' | translate }}</p-tab>
+          <p-tab [value]="1">{{ 'admin.parks.tabs.location' | translate }}</p-tab>
+          <p-tab [value]="2">{{ 'admin.parks.tabs.descriptions' | translate }}</p-tab>
+          <p-tab [value]="3">{{ 'admin.parks.tabs.logos' | translate }}</p-tab>
+        </p-tablist>
+
+        <p-tabpanels>
+          <p-tabpanel [value]="0">
           <app-admin-park-general-tab
             *ngIf="activeTabIndex === 0"
             [form]="form"
@@ -63,9 +71,9 @@
             [isSaving]="isSaving"
             (saveSection)="saveSection()">
           </app-admin-park-general-tab>
-        </p-tabPanel>
+          </p-tabpanel>
 
-        <p-tabPanel [header]="'admin.parks.tabs.location' | translate">
+          <p-tabpanel [value]="1">
           <app-admin-park-location-tab
             *ngIf="activeTabIndex === 1"
             [form]="form"
@@ -76,18 +84,18 @@
             (mapPositionChange)="onMapPositionChange($event)"
             (saveSection)="saveSection()">
           </app-admin-park-location-tab>
-        </p-tabPanel>
+          </p-tabpanel>
 
-        <p-tabPanel [header]="'admin.parks.tabs.descriptions' | translate">
+          <p-tabpanel [value]="2">
           <app-admin-park-descriptions-tab
             *ngIf="activeTabIndex === 2"
             [form]="form"
             [isSaving]="isSaving"
             (saveSection)="saveSection()">
           </app-admin-park-descriptions-tab>
-        </p-tabPanel>
+          </p-tabpanel>
 
-        <p-tabPanel [header]="'admin.parks.tabs.logos' | translate">
+          <p-tabpanel [value]="3">
           <app-admin-park-logos-tab
             *ngIf="activeTabIndex === 3"
             [isEditMode]="isEditMode"
@@ -109,8 +117,9 @@
             (logosPageChange)="onLogosPageChange($event)"
             (saveSection)="saveSection()">
           </app-admin-park-logos-tab>
-        </p-tabPanel>
-      </p-tabView>
+          </p-tabpanel>
+        </p-tabpanels>
+      </p-tabs>
     </form>
   </p-card>
 </div>

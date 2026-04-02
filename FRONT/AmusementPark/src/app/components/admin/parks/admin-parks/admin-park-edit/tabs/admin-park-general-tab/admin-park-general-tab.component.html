@@ -49,7 +49,7 @@
   <div class="grid formgrid">
     <div class="field col-12 md:col-6">
       <label for="parkType">{{ 'admin.parks.type' | translate }}</label>
-      <p-dropdown
+      <p-select
         inputId="parkType"
         formControlName="type"
         [options]="parkTypeOptions"
@@ -57,10 +57,10 @@
         [showClear]="true"
         [appendTo]="'body'"
         [placeholder]="'admin.parks.typePlaceholder' | translate">
-        <ng-template let-option pTemplate="item">
+        <ng-template let-option #item>
           {{ option.labelKey | translate }}
         </ng-template>
-        <ng-template let-option pTemplate="selectedItem">
+        <ng-template let-option #selectedItem>
           <ng-container *ngIf="option; else parkTypePlaceholder">
             {{ option.labelKey | translate }}
           </ng-container>
@@ -68,12 +68,12 @@
             {{ 'admin.parks.typePlaceholder' | translate }}
           </ng-template>
         </ng-template>
-      </p-dropdown>
+      </p-select>
     </div>
 
     <div class="field col-12 md:col-6">
       <label for="countryCode">{{ 'admin.parks.country' | translate }}</label>
-      <p-dropdown
+      <p-select
         inputId="countryCode"
         formControlName="countryCode"
         [options]="countryOptions"
@@ -83,7 +83,7 @@
         [filter]="true"
         [appendTo]="'body'"
         [placeholder]="'admin.parks.countryPlaceholder' | translate">
-      </p-dropdown>
+      </p-select>
     </div>
   </div>
 
@@ -122,7 +122,7 @@
     </div>
 
     <div class="visibility-card__toggle">
-      <p-inputSwitch formControlName="isVisible"></p-inputSwitch>
+      <p-toggleswitch formControlName="isVisible"></p-toggleswitch>
       <span *ngIf="isVisibleControl?.value">{{ 'admin.parks.visible' | translate }}</span>
       <span *ngIf="!isVisibleControl?.value">{{ 'admin.parks.hidden' | translate }}</span>
     </div>
