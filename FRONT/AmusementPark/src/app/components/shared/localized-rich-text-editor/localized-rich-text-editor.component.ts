@@ -12,16 +12,17 @@ interface LocalizedRichTextEntry {
 }
 
 @Component({
-  selector: 'app-localized-rich-text-editor',
-  templateUrl: './localized-rich-text-editor.component.html',
-  styleUrls: ['./localized-rich-text-editor.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => LocalizedRichTextEditorComponent),
-      multi: true
-    }
-  ]
+    selector: 'app-localized-rich-text-editor',
+    templateUrl: './localized-rich-text-editor.component.html',
+    styleUrls: ['./localized-rich-text-editor.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => LocalizedRichTextEditorComponent),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class LocalizedRichTextEditorComponent implements ControlValueAccessor {
   @Input() placeholderKey: string = 'admin.parks.descriptions.placeholder';

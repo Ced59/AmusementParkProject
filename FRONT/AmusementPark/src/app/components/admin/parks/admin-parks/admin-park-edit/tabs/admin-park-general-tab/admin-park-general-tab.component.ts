@@ -9,9 +9,10 @@ interface ParkTypeOption {
 }
 
 @Component({
-  selector: 'app-admin-park-general-tab',
-  templateUrl: './admin-park-general-tab.component.html',
-  styleUrls: ['./admin-park-general-tab.component.scss']
+    selector: 'app-admin-park-general-tab',
+    templateUrl: './admin-park-general-tab.component.html',
+    styleUrls: ['./admin-park-general-tab.component.scss'],
+    standalone: false
 })
 export class AdminParkGeneralTabComponent {
   @Input({ required: true }) form!: FormGroup;

@@ -13,9 +13,10 @@ import {MessageService} from "primeng/api";
 import {ToastMessageService} from "../../../../services/messages/toast-message.service";
 
 @Component({
-  selector: 'app-profile-page',
-  templateUrl: './profile-page.component.html',
-  styleUrl: './profile-page.component.scss'
+    selector: 'app-profile-page',
+    templateUrl: './profile-page.component.html',
+    styleUrl: './profile-page.component.scss',
+    standalone: false
 })
 export class ProfilePageComponent implements OnInit, OnDestroy{
   user: UserDto | null = null;

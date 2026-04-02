@@ -8,9 +8,10 @@ import { ToastMessageService } from "../../../services/messages/toast-message.se
 import {SharedService} from "../../../services/shared/shared.service";
 
 @Component({
-  selector: 'app-signin-google',
-  templateUrl: './signin-google.component.html',
-  styleUrls: ['./signin-google.component.scss']
+    selector: 'app-signin-google',
+    templateUrl: './signin-google.component.html',
+    styleUrls: ['./signin-google.component.scss'],
+    standalone: false
 })
 export class SigninGoogleComponent implements OnInit {
   user: any = null;

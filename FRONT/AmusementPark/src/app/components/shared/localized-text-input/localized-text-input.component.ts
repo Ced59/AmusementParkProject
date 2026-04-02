@@ -11,16 +11,17 @@ interface LocalizedTextEntry {
 }
 
 @Component({
-  selector: 'app-localized-text-input',
-  templateUrl: './localized-text-input.component.html',
-  styleUrls: ['./localized-text-input.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => LocalizedTextInputComponent),
-      multi: true
-    }
-  ]
+    selector: 'app-localized-text-input',
+    templateUrl: './localized-text-input.component.html',
+    styleUrls: ['./localized-text-input.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => LocalizedTextInputComponent),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class LocalizedTextInputComponent implements ControlValueAccessor {
   @Input() placeholderKey: string = 'admin.parks.zones.namePlaceholder';

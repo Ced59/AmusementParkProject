@@ -16,9 +16,10 @@ import { isPlatformBrowser } from '@angular/common';
 import {MapMarker} from "../../../models/map/map-marker";
 
 @Component({
-  selector: 'app-leaflet-map',
-  templateUrl: './leaflet-map.component.html',
-  styleUrls: ['./leaflet-map.component.scss']
+    selector: 'app-leaflet-map',
+    templateUrl: './leaflet-map.component.html',
+    styleUrls: ['./leaflet-map.component.scss'],
+    standalone: false
 })
 export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy {
 

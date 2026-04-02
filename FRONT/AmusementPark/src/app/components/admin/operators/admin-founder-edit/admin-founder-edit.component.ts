@@ -5,9 +5,10 @@ import {ApiService} from "../../../../services/api.service";
 import {ParkFounder} from "../../../../models/parks/park-founder";
 
 @Component({
-  selector: 'app-admin-founder-edit',
-  templateUrl: './admin-founder-edit.component.html',
-  styleUrls: ['./admin-founder-edit.component.scss']
+    selector: 'app-admin-founder-edit',
+    templateUrl: './admin-founder-edit.component.html',
+    styleUrls: ['./admin-founder-edit.component.scss'],
+    standalone: false
 })
 export class AdminFounderEditComponent implements OnInit {
   form!: FormGroup;

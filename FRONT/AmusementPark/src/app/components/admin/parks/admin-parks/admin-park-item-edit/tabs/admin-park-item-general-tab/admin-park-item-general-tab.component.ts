@@ -10,9 +10,10 @@ interface Option<T> {
 }
 
 @Component({
-  selector: 'app-admin-park-item-general-tab',
-  templateUrl: './admin-park-item-general-tab.component.html',
-  styleUrls: ['./admin-park-item-general-tab.component.scss']
+    selector: 'app-admin-park-item-general-tab',
+    templateUrl: './admin-park-item-general-tab.component.html',
+    styleUrls: ['./admin-park-item-general-tab.component.scss'],
+    standalone: false
 })
 export class AdminParkItemGeneralTabComponent {
   @Input({ required: true }) form!: FormGroup;

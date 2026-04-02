@@ -4,9 +4,10 @@ import { ApiService } from '../../../../services/api.service';
 import { ParkOperator } from '../../../../models/parks/park-operator';
 
 @Component({
-  selector: 'app-admin-operators',
-  templateUrl: './admin-operators.component.html',
-  styleUrls: ['./admin-operators.component.scss']
+    selector: 'app-admin-operators',
+    templateUrl: './admin-operators.component.html',
+    styleUrls: ['./admin-operators.component.scss'],
+    standalone: false
 })
 export class AdminOperatorsComponent implements OnInit {
   operators: ParkOperator[] = [];

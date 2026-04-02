@@ -3,9 +3,10 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 import { MapMarker } from '../../../../../../../models/map/map-marker';
 
 @Component({
-  selector: 'app-admin-park-location-tab',
-  templateUrl: './admin-park-location-tab.component.html',
-  styleUrls: ['./admin-park-location-tab.component.scss']
+    selector: 'app-admin-park-location-tab',
+    templateUrl: './admin-park-location-tab.component.html',
+    styleUrls: ['./admin-park-location-tab.component.scss'],
+    standalone: false
 })
 export class AdminParkLocationTabComponent {
   @Input({ required: true }) form!: FormGroup;

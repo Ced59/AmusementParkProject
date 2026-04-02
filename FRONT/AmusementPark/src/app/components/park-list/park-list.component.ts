@@ -5,9 +5,10 @@ import {ApiService} from "../../services/api.service";
 import {TranslationService} from "../../services/translation.service";
 
 @Component({
-  selector: 'app-park-list',
-  templateUrl: './park-list.component.html',
-  styleUrl: './park-list.component.scss'
+    selector: 'app-park-list',
+    templateUrl: './park-list.component.html',
+    styleUrl: './park-list.component.scss',
+    standalone: false
 })
 export class ParkListComponent implements OnInit {
   parks: Park[] = [];

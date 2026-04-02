@@ -7,9 +7,10 @@ import { AttractionAccessConditionUnit } from '../../../../../../../models/parks
 import { LocalizedItem } from '../../../../../../../models/shared/localized-item';
 
 @Component({
-  selector: 'app-admin-park-item-access-conditions-tab',
-  templateUrl: './admin-park-item-access-conditions-tab.component.html',
-  styleUrls: ['./admin-park-item-access-conditions-tab.component.scss']
+    selector: 'app-admin-park-item-access-conditions-tab',
+    templateUrl: './admin-park-item-access-conditions-tab.component.html',
+    styleUrls: ['./admin-park-item-access-conditions-tab.component.scss'],
+    standalone: false
 })
 export class AdminParkItemAccessConditionsTabComponent {
   @Input({ required: true }) formGroup!: FormGroup;

@@ -5,9 +5,10 @@ import { AttractionManufacturer } from '../../../../models/parks/attraction-manu
 import { ApiService } from '../../../../services/api.service';
 
 @Component({
-  selector: 'app-admin-manufacturer-edit',
-  templateUrl: './admin-manufacturer-edit.component.html',
-  styleUrls: ['./admin-manufacturer-edit.component.scss']
+    selector: 'app-admin-manufacturer-edit',
+    templateUrl: './admin-manufacturer-edit.component.html',
+    styleUrls: ['./admin-manufacturer-edit.component.scss'],
+    standalone: false
 })
 export class AdminManufacturerEditComponent implements OnInit {
   form!: FormGroup;

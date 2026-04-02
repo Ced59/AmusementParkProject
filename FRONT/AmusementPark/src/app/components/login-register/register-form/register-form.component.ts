@@ -3,9 +3,10 @@ import { MessageService } from 'primeng/api';
 import {TranslationService} from "../../../services/translation.service";
 
 @Component({
-  selector: 'app-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss']
+    selector: 'app-register-form',
+    templateUrl: './register-form.component.html',
+    styleUrls: ['./register-form.component.scss'],
+    standalone: false
 })
 export class RegisterFormComponent {
   registerEmail: string;

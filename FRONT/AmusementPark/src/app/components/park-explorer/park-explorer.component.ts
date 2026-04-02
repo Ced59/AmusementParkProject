@@ -8,9 +8,10 @@ import { ApiService } from '../../services/api.service';
 import { TranslationService } from '../../services/translation.service';
 
 @Component({
-  selector: 'app-park-explorer',
-  templateUrl: './park-explorer.component.html',
-  styleUrls: ['./park-explorer.component.scss']
+    selector: 'app-park-explorer',
+    templateUrl: './park-explorer.component.html',
+    styleUrls: ['./park-explorer.component.scss'],
+    standalone: false
 })
 export class ParkExplorerComponent implements OnInit, OnDestroy {
   park: Park | null = null;

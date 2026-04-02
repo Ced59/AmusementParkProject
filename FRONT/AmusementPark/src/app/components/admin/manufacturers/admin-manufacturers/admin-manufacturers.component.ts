@@ -4,9 +4,10 @@ import { AttractionManufacturer } from '../../../../models/parks/attraction-manu
 import { ApiService } from '../../../../services/api.service';
 
 @Component({
-  selector: 'app-admin-manufacturers',
-  templateUrl: './admin-manufacturers.component.html',
-  styleUrls: ['./admin-manufacturers.component.scss']
+    selector: 'app-admin-manufacturers',
+    templateUrl: './admin-manufacturers.component.html',
+    styleUrls: ['./admin-manufacturers.component.scss'],
+    standalone: false
 })
 export class AdminManufacturersComponent implements OnInit {
   manufacturers: AttractionManufacturer[] = [];

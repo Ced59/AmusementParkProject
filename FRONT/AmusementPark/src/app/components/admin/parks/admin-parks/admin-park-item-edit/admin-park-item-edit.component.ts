@@ -53,9 +53,10 @@ type SaveMode = 'stay' | 'back';
 type SaveScope = 'section' | 'all';
 
 @Component({
-  selector: 'app-admin-park-item-edit',
-  templateUrl: './admin-park-item-edit.component.html',
-  styleUrls: ['./admin-park-item-edit.component.scss']
+    selector: 'app-admin-park-item-edit',
+    templateUrl: './admin-park-item-edit.component.html',
+    styleUrls: ['./admin-park-item-edit.component.scss'],
+    standalone: false
 })
 export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   form!: FormGroup;

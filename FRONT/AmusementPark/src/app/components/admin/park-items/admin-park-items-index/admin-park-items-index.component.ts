@@ -11,9 +11,10 @@ import { Pagination } from '../../../../models/shared/pagination';
 import { ApiService } from '../../../../services/api.service';
 
 @Component({
-  selector: 'app-admin-park-items-index',
-  templateUrl: './admin-park-items-index.component.html',
-  styleUrls: ['./admin-park-items-index.component.scss']
+    selector: 'app-admin-park-items-index',
+    templateUrl: './admin-park-items-index.component.html',
+    styleUrls: ['./admin-park-items-index.component.scss'],
+    standalone: false
 })
 export class AdminParkItemsIndexComponent implements OnInit {
   rows: ParkItemAdminRow[] = [];

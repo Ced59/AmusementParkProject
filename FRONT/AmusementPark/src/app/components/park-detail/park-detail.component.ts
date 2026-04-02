@@ -7,9 +7,10 @@ import { ApiService } from '../../services/api.service';
 import { TranslationService } from '../../services/translation.service';
 
 @Component({
-  selector: 'app-park-detail',
-  templateUrl: './park-detail.component.html',
-  styleUrls: ['./park-detail.component.scss']
+    selector: 'app-park-detail',
+    templateUrl: './park-detail.component.html',
+    styleUrls: ['./park-detail.component.scss'],
+    standalone: false
 })
 export class ParkDetailComponent implements OnInit, OnDestroy {
   park: Park | undefined;

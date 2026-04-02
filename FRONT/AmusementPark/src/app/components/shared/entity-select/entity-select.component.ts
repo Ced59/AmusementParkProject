@@ -3,16 +3,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { EntitySelectOption } from '../../../models/shared/entity-select-option';
 
 @Component({
-  selector: 'app-entity-select',
-  templateUrl: './entity-select.component.html',
-  styleUrls: ['./entity-select.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => EntitySelectComponent),
-      multi: true
-    }
-  ]
+    selector: 'app-entity-select',
+    templateUrl: './entity-select.component.html',
+    styleUrls: ['./entity-select.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => EntitySelectComponent),
+            multi: true
+        }
+    ],
+    standalone: false
 })
 export class EntitySelectComponent implements ControlValueAccessor {
   @Input() label: string = '';

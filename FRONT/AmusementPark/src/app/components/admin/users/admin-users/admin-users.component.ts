@@ -6,9 +6,10 @@ import {UsersApiResponse} from "../../../../models/users/users_api_response";
 
 
 @Component({
-  selector: 'app-admin-users',
-  templateUrl: './admin-users.component.html',
-  styleUrls: ['./admin-users.component.scss']
+    selector: 'app-admin-users',
+    templateUrl: './admin-users.component.html',
+    styleUrls: ['./admin-users.component.scss'],
+    standalone: false
 })
 export class AdminUsersComponent implements OnInit {
 

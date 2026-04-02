@@ -6,9 +6,10 @@ import {UserToken} from "../../../models/users/user_token";
 import {AuthService} from "../../../services/auth/auth.service";
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+    selector: 'app-login-form',
+    templateUrl: './login-form.component.html',
+    styleUrls: ['./login-form.component.scss'],
+    standalone: false
 })
 export class LoginFormComponent {
   loginEmail: string;

@@ -7,9 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ParkType } from '../../../../models/parks/park-type';
 
 @Component({
-  selector: 'app-admin-parks',
-  templateUrl: './admin-parks.component.html',
-  styleUrls: ['./admin-parks.component.scss']
+    selector: 'app-admin-parks',
+    templateUrl: './admin-parks.component.html',
+    styleUrls: ['./admin-parks.component.scss'],
+    standalone: false
 })
 export class AdminParksComponent implements OnInit {
   parks: Park[] = [];

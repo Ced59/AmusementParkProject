@@ -10,9 +10,10 @@ interface ParkLogoItem {
 }
 
 @Component({
-  selector: 'app-admin-park-logos-tab',
-  templateUrl: './admin-park-logos-tab.component.html',
-  styleUrls: ['./admin-park-logos-tab.component.scss']
+    selector: 'app-admin-park-logos-tab',
+    templateUrl: './admin-park-logos-tab.component.html',
+    styleUrls: ['./admin-park-logos-tab.component.scss'],
+    standalone: false
 })
 export class AdminParkLogosTabComponent {
   @Input() isEditMode: boolean = false;

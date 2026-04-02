@@ -10,9 +10,10 @@ interface AttractionPhotoItem {
 }
 
 @Component({
-  selector: 'app-admin-park-item-photos-tab',
-  templateUrl: './admin-park-item-photos-tab.component.html',
-  styleUrls: ['./admin-park-item-photos-tab.component.scss']
+    selector: 'app-admin-park-item-photos-tab',
+    templateUrl: './admin-park-item-photos-tab.component.html',
+    styleUrls: ['./admin-park-item-photos-tab.component.scss'],
+    standalone: false
 })
 export class AdminParkItemPhotosTabComponent {
   @Input() isEditMode: boolean = false;

@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-editor-save-toolbar',
-  templateUrl: './editor-save-toolbar.component.html',
-  styleUrls: ['./editor-save-toolbar.component.scss']
+    selector: 'app-editor-save-toolbar',
+    templateUrl: './editor-save-toolbar.component.html',
+    styleUrls: ['./editor-save-toolbar.component.scss'],
+    standalone: false
 })
 export class EditorSaveToolbarComponent {
   @Input() statusLabel: string = '';

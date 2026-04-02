@@ -11,9 +11,10 @@ interface AttractionLocationOption {
 }
 
 @Component({
-  selector: 'app-admin-park-item-locations-tab',
-  templateUrl: './admin-park-item-locations-tab.component.html',
-  styleUrls: ['./admin-park-item-locations-tab.component.scss']
+    selector: 'app-admin-park-item-locations-tab',
+    templateUrl: './admin-park-item-locations-tab.component.html',
+    styleUrls: ['./admin-park-item-locations-tab.component.scss'],
+    standalone: false
 })
 export class AdminParkItemLocationsTabComponent {
   @Input({ required: true }) formGroup!: FormGroup;

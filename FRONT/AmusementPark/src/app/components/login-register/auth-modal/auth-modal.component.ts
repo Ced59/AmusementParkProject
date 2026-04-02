@@ -2,9 +2,11 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {environment} from "../../../../environments/environment";
 
 @Component({
-  selector: 'app-auth-modal',
-  templateUrl: './auth-modal.component.html',
-  styleUrls: ['./auth-modal.component.scss'] // Correction de styleUrl -> styleUrls
+    selector: 'app-auth-modal',
+    templateUrl: './auth-modal.component.html',
+    styleUrls: ['./auth-modal.component.scss'] // Correction de styleUrl -> styleUrls
+    ,
+    standalone: false
 })
 export class AuthModalComponent {
   @Output() closeModal = new EventEmitter<void>();

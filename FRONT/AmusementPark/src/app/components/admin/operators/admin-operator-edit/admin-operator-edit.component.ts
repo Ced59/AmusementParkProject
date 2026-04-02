@@ -6,9 +6,10 @@ import {ParkOperator} from "../../../../models/parks/park-operator";
 
 
 @Component({
-  selector: 'app-admin-operator-edit',
-  templateUrl: './admin-operator-edit.component.html',
-  styleUrls: ['./admin-operator-edit.component.scss']
+    selector: 'app-admin-operator-edit',
+    templateUrl: './admin-operator-edit.component.html',
+    styleUrls: ['./admin-operator-edit.component.scss'],
+    standalone: false
 })
 export class AdminOperatorEditComponent implements OnInit {
   form!: FormGroup;

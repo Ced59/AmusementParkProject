@@ -4,9 +4,10 @@ import { AttractionWaterExposureLevel } from '../../../../../../../models/parks/
 import { EntitySelectOption } from '../../../../../../../models/shared/entity-select-option';
 
 @Component({
-  selector: 'app-admin-park-item-details-tab',
-  templateUrl: './admin-park-item-details-tab.component.html',
-  styleUrls: ['./admin-park-item-details-tab.component.scss']
+    selector: 'app-admin-park-item-details-tab',
+    templateUrl: './admin-park-item-details-tab.component.html',
+    styleUrls: ['./admin-park-item-details-tab.component.scss'],
+    standalone: false
 })
 export class AdminParkItemDetailsTabComponent {
   @Input({ required: true }) formGroup!: FormGroup;

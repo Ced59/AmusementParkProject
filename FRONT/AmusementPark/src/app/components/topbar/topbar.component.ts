@@ -12,9 +12,10 @@ import {SharedService} from "../../services/shared/shared.service";
 import {environment} from "../../../environments/environment";
 
 @Component({
-  selector: 'app-topbar',
-  templateUrl: './topbar.component.html',
-  styleUrls: ['./topbar.component.scss']
+    selector: 'app-topbar',
+    templateUrl: './topbar.component.html',
+    styleUrls: ['./topbar.component.scss'],
+    standalone: false
 })
 export class TopbarComponent implements OnInit, OnDestroy {
   languages = LANGUAGES;

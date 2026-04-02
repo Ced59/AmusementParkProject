@@ -7,9 +7,10 @@ import { ParkZone } from '../../../../../models/parks/park-zone';
 import { ApiService } from '../../../../../services/api.service';
 
 @Component({
-  selector: 'app-admin-park-items',
-  templateUrl: './admin-park-items.component.html',
-  styleUrls: ['./admin-park-items.component.scss']
+    selector: 'app-admin-park-items',
+    templateUrl: './admin-park-items.component.html',
+    styleUrls: ['./admin-park-items.component.scss'],
+    standalone: false
 })
 export class AdminParkItemsComponent implements OnInit {
   parkId: string = '';

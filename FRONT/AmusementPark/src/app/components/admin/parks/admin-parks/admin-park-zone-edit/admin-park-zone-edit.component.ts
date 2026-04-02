@@ -6,9 +6,10 @@ import { ParkZone } from '../../../../../models/parks/park-zone';
 import { ApiService } from '../../../../../services/api.service';
 
 @Component({
-  selector: 'app-admin-park-zone-edit',
-  templateUrl: './admin-park-zone-edit.component.html',
-  styleUrls: ['./admin-park-zone-edit.component.scss']
+    selector: 'app-admin-park-zone-edit',
+    templateUrl: './admin-park-zone-edit.component.html',
+    styleUrls: ['./admin-park-zone-edit.component.scss'],
+    standalone: false
 })
 export class AdminParkZoneEditComponent implements OnInit {
   form!: FormGroup;

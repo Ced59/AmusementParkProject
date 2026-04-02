@@ -1,4 +1,4 @@
-import {NgModule, APP_INITIALIZER} from '@angular/core';
+import { NgModule, inject, provideAppInitializer } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {
   HttpClient,
@@ -105,12 +105,10 @@ export function initializeApp(translationService: TranslationService): () => Pro
     ],
     providers: [
       provideHttpClient(withFetch()),
-      {
-        provide: APP_INITIALIZER,
-        useFactory: initializeApp,
-        deps: [TranslationService],
-        multi: true
-      },
+      provideAppInitializer(() => {
+        const initializerFn = (initializeApp)(inject(TranslationService));
+        return initializerFn();
+      }),
       {
         provide: HTTP_INTERCEPTORS,
         useClass: LanguageInterceptor,
