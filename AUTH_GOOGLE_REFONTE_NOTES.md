@@ -91,7 +91,6 @@ Le `ClientSecret`, `RedirectUri`, `GrantType`, `TokenExchangeEndpoint` et `UserI
 - `FRONT/AmusementPark/src/app/services/api.service.ts`
 - `FRONT/AmusementPark/src/app/api/api-endpoints.ts`
 - `FRONT/AmusementPark/src/app/interceptors/auth.interceptor.ts`
-- `FRONT/AmusementPark/src/app/app-routing.module.ts`
 - `FRONT/AmusementPark/src/app/app.module.ts`
 - `FRONT/AmusementPark/src/app/app.component.ts`
 - `FRONT/AmusementPark/src/types/google-identity.d.ts`
