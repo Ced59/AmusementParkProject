@@ -13,7 +13,7 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { AdminParkEditComponent } from './admin-park-edit/admin-park-edit.component';
 import { SelectModule } from 'primeng/select';
 import { TagModule } from 'primeng/tag';
-import { SharedModule } from '../../../shared/shared.module';
+
 import { PaginatorModule } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
 import { DividerModule } from 'primeng/divider';
@@ -36,40 +36,39 @@ import { AdminParkLogosTabComponent } from './admin-park-edit/tabs/admin-park-lo
 
 @NgModule({
     imports: [
-        CommonModule,
-        AdminParksRoutingModule,
-        CardModule,
-        TableModule,
-        ButtonModule,
-        TranslateModule,
-        InputTextModule,
-        FormsModule,
-        ToggleSwitchModule,
-        SelectModule,
-        TagModule,
-        ReactiveFormsModule,
-        SharedModule,
-        PaginatorModule,
-        PanelModule,
-        DividerModule,
-        ProgressSpinnerModule,
-        TabsModule,
-        AdminParksComponent,
-        AdminParkEditComponent,
-        AdminFounderEditComponent,
-        AdminParkZonesComponent,
-        AdminParkZoneEditComponent,
-        AdminParkItemsComponent,
-        AdminParkItemEditComponent,
-        AdminParkItemGeneralTabComponent,
-        AdminParkItemDetailsTabComponent,
-        AdminParkItemAccessConditionsTabComponent,
-        AdminParkItemLocationsTabComponent,
-        AdminParkItemPhotosTabComponent,
-        AdminParkGeneralTabComponent,
-        AdminParkLocationTabComponent,
-        AdminParkDescriptionsTabComponent,
-        AdminParkLogosTabComponent
-    ]
+    CommonModule,
+    AdminParksRoutingModule,
+    CardModule,
+    TableModule,
+    ButtonModule,
+    TranslateModule,
+    InputTextModule,
+    FormsModule,
+    ToggleSwitchModule,
+    SelectModule,
+    TagModule,
+    ReactiveFormsModule,
+    PaginatorModule,
+    PanelModule,
+    DividerModule,
+    ProgressSpinnerModule,
+    TabsModule,
+    AdminParksComponent,
+    AdminParkEditComponent,
+    AdminFounderEditComponent,
+    AdminParkZonesComponent,
+    AdminParkZoneEditComponent,
+    AdminParkItemsComponent,
+    AdminParkItemEditComponent,
+    AdminParkItemGeneralTabComponent,
+    AdminParkItemDetailsTabComponent,
+    AdminParkItemAccessConditionsTabComponent,
+    AdminParkItemLocationsTabComponent,
+    AdminParkItemPhotosTabComponent,
+    AdminParkGeneralTabComponent,
+    AdminParkLocationTabComponent,
+    AdminParkDescriptionsTabComponent,
+    AdminParkLogosTabComponent
+]
 })
 export class AdminParksModule { }

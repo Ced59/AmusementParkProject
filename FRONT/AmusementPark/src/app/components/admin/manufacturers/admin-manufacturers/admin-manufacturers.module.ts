@@ -6,7 +6,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 
-import { SharedModule } from '../../../shared/shared.module';
+
 import { TranslateModule } from '@ngx-translate/core';
 import { AdminManufacturersRoutingModule } from './admin-manufacturers-routing.module';
 import { AdminManufacturersComponent } from './admin-manufacturers.component';
@@ -14,18 +14,17 @@ import { AdminManufacturerEditComponent } from '../admin-manufacturer-edit/admin
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        ButtonModule,
-        CardModule,
-        InputTextModule,
-        TableModule,
-        SharedModule,
-        TranslateModule,
-        AdminManufacturersRoutingModule,
-        AdminManufacturersComponent,
-        AdminManufacturerEditComponent
-    ]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    CardModule,
+    InputTextModule,
+    TableModule,
+    TranslateModule,
+    AdminManufacturersRoutingModule,
+    AdminManufacturersComponent,
+    AdminManufacturerEditComponent
+]
 })
 export class AdminManufacturersModule { }

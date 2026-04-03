@@ -45,8 +45,8 @@ import { AdminDashboardComponent } from './components/admin/admin-dashboard/admi
 import { ConfirmAccountPageComponent } from './components/login-register/confirm-account-page/confirm-account-page.component';
 import { ForgotPasswordPageComponent } from './components/login-register/forgot-password-page/forgot-password-page.component';
 import { ResetPasswordPageComponent } from './components/login-register/reset-password-page/reset-password-page.component';
-import { SharedModule } from './components/shared/shared.module';
-import { PublicModule } from './components/public/public.module';
+
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -60,46 +60,44 @@ export function initializeApp(translationService: TranslationService): () => Pro
     declarations: [AppComponent],
     bootstrap: [AppComponent],
     imports: [
-        BrowserModule,
-        AppRoutingModule,
-        SharedModule,
-        PublicModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-        BrowserAnimationsModule,
-        SelectModule,
-        ToolbarModule,
-        ButtonModule,
-        FormsModule,
-        DialogModule,
-        InputTextModule,
-        CardModule,
-        TooltipModule,
-        ToastModule,
-        AvatarModule,
-        PaginatorModule,
-        MultiSelectModule,
-        HomeComponent,
-        AboutComponent,
-        TopbarComponent,
-        LoginFormComponent,
-        AuthModalComponent,
-        RegisterFormComponent,
-        ConfirmAccountPageComponent,
-        ForgotPasswordPageComponent,
-        ResetPasswordPageComponent,
-        ThemeSwitcherComponent,
-        ParkDetailComponent,
-        SidebarComponent,
-        ParkListComponent,
-        ParkExplorerComponent,
-        AdminDashboardComponent
-    ],
+    BrowserModule,
+    AppRoutingModule,
+    TranslateModule.forRoot({
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+        }
+    }),
+    BrowserAnimationsModule,
+    SelectModule,
+    ToolbarModule,
+    ButtonModule,
+    FormsModule,
+    DialogModule,
+    InputTextModule,
+    CardModule,
+    TooltipModule,
+    ToastModule,
+    AvatarModule,
+    PaginatorModule,
+    MultiSelectModule,
+    HomeComponent,
+    AboutComponent,
+    TopbarComponent,
+    LoginFormComponent,
+    AuthModalComponent,
+    RegisterFormComponent,
+    ConfirmAccountPageComponent,
+    ForgotPasswordPageComponent,
+    ResetPasswordPageComponent,
+    ThemeSwitcherComponent,
+    ParkDetailComponent,
+    SidebarComponent,
+    ParkListComponent,
+    ParkExplorerComponent,
+    AdminDashboardComponent
+],
     exports: [
         SidebarComponent
     ],

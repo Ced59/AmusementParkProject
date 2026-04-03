@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminUsersRoutingModule } from './admin-users-routing.module';
 import { AdminUsersComponent } from './admin-users.component';
 import { AdminUserManagementComponent } from '../admin-user-management/admin-user-management.component';
-import { SharedModule } from '../../../shared/shared.module';
+
 import { TableModule } from 'primeng/table';
 import { TranslateModule } from '@ngx-translate/core';
 import { TagModule } from 'primeng/tag';
@@ -18,22 +18,21 @@ import { SelectModule } from 'primeng/select';
 
 @NgModule({
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        AdminUsersRoutingModule,
-        SharedModule,
-        TableModule,
-        TranslateModule,
-        TagModule,
-        CardModule,
-        ButtonModule,
-        AvatarModule,
-        TooltipModule,
-        InputTextModule,
-        SelectModule,
-        AdminUsersComponent,
-        AdminUserManagementComponent
-    ]
+    CommonModule,
+    ReactiveFormsModule,
+    AdminUsersRoutingModule,
+    TableModule,
+    TranslateModule,
+    TagModule,
+    CardModule,
+    ButtonModule,
+    AvatarModule,
+    TooltipModule,
+    InputTextModule,
+    SelectModule,
+    AdminUsersComponent,
+    AdminUserManagementComponent
+]
 })
 export class AdminUsersModule {
 }

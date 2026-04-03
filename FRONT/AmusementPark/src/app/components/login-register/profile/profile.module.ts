@@ -9,20 +9,19 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from '../../shared/shared.module';
+
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        ProfileRoutingModule,
-        CardModule,
-        TableModule,
-        ButtonModule,
-        InputTextModule,
-        TranslateModule,
-        SharedModule,
-        ProfilePageComponent
-    ]
+    CommonModule,
+    FormsModule,
+    ProfileRoutingModule,
+    CardModule,
+    TableModule,
+    ButtonModule,
+    InputTextModule,
+    TranslateModule,
+    ProfilePageComponent
+]
 })
 export class ProfileModule { }
