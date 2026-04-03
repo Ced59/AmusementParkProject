@@ -10,6 +10,7 @@ import { TagModule } from 'primeng/tag';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
+import {TooltipModule} from "primeng/tooltip";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AvatarModule } from 'primeng/avatar';
     TagModule,
     CardModule,
     ButtonModule,
-    AvatarModule
+    AvatarModule,
+    TooltipModule
   ]
 })
 export class AdminUsersModule {
