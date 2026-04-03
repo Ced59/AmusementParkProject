@@ -16,14 +16,11 @@ import { isPlatformBrowser } from '@angular/common';
 import {MapMarker} from "../../../models/map/map-marker";
 
 @Component({
-    selector: 'app-leaflet-map',
-    templateUrl: './leaflet-map.component.html',
-    styleUrls: ['./leaflet-map.component.scss'],
-    standalone: false
+  selector: 'app-leaflet-map',
+  templateUrl: './leaflet-map.component.html',
+  styleUrls: ['./leaflet-map.component.scss']
 })
 export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy {
-
-  private resizeObserver: ResizeObserver | null = null;
 
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
 
@@ -96,40 +93,22 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
     if (changes['markers']) {
       this.refreshMarkers();
-      this.refreshMapSize();
     }
 
     if (changes['center'] && !changes['center'].firstChange) {
       this.map.setView(this.center, this.zoom);
-      this.refreshMapSize();
     }
 
     if (changes['zoom'] && !changes['zoom'].firstChange) {
       this.map.setZoom(this.zoom);
-      this.refreshMapSize();
     }
   }
 
   ngOnDestroy(): void {
-    if (this.resizeObserver) {
-      this.resizeObserver.disconnect();
-      this.resizeObserver = null;
-    }
-
     if (this.map) {
       this.map.remove();
       this.map = null;
     }
-  }
-
-  public refreshMapSize(): void {
-    if (!this.map) {
-      return;
-    }
-
-    window.setTimeout((): void => {
-      this.map?.invalidateSize();
-    }, 50);
   }
 
   private initMap(): void {
@@ -150,14 +129,6 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     this.markerLayer = this.L.layerGroup().addTo(this.map);
 
     this.refreshMarkers();
-    this.refreshMapSize();
-
-    if (typeof ResizeObserver !== 'undefined') {
-      this.resizeObserver = new ResizeObserver((): void => {
-        this.refreshMapSize();
-      });
-      this.resizeObserver.observe(this.mapContainer.nativeElement);
-    }
 
     if (this.editable) {
       this.map.on('click', (e: any) => this.handleMapClick(e));

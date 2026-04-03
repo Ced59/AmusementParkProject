@@ -3,13 +3,30 @@
     <div class="hero-copy">
       <span class="app-chip">
         <i class="pi pi-compass"></i>
-        Theme parks discovery
+        {{ 'home.heroBadge' | translate }}
       </span>
 
       <h1 class="hero-title">{{ 'home.home_title' | translate }}</h1>
       <p class="hero-subtitle">
-        Explore parks, attractions, operators and manufacturers through a unified search experience.
+        {{ 'home.heroSubtitle' | translate }}
       </p>
+
+      <div class="hero-actions">
+        <a
+          pButton
+          [routerLink]="['/', currentLang, 'parks']"
+          icon="pi pi-map"
+          [label]="'home.ctaBrowseParks' | translate">
+        </a>
+
+        <a
+          pButton
+          class="p-button-text"
+          [routerLink]="['/', currentLang, 'about']"
+          icon="pi pi-info-circle"
+          [label]="'home.ctaLearnMore' | translate">
+        </a>
+      </div>
     </div>
   </div>
 
@@ -21,79 +38,103 @@
           #searchInput
           type="text"
           pInputText
-          placeholder="{{ 'home.placeholder_search' | translate }}"
+          [placeholder]="'home.placeholder_search' | translate"
           (input)="onSearchInput(searchInput.value)" />
       </div>
 
       <div class="search-field">
         <label class="field-label">{{ 'home.placeholder_category' | translate }}</label>
-        <p-select
+        <p-dropdown
           [options]="categoryOptions"
           [(ngModel)]="selectedCategory"
+          [placeholder]="'home.placeholder_category' | translate"
           optionLabel="labelKey"
           optionValue="value"
           (onChange)="onCategoryChange()">
-          <ng-template let-opt #selectedItem>
+          <ng-template let-opt pTemplate="selectedItem">
             {{ opt?.labelKey ? (opt.labelKey | translate) : ('home.placeholder_category' | translate) }}
           </ng-template>
 
-          <ng-template let-opt #item>
+          <ng-template let-opt pTemplate="item">
             {{ opt.labelKey | translate }}
           </ng-template>
-        </p-select>
+        </p-dropdown>
       </div>
     </div>
   </div>
 
-  <section class="results-section">
+  <section class="content-section">
     <div class="page-header">
       <div>
-        <h2 class="section-title">Featured results</h2>
+        <h2 class="section-title">{{ 'home.featured.title' | translate }}</h2>
         <p class="page-subtitle">
-          Search instantly across the whole catalog or narrow the search to a single entity type.
+          {{ 'home.featured.subtitle' | translate }}
         </p>
       </div>
     </div>
 
-    @if (results?.length) {
+    <app-page-state
+      [state]="featuredState()"
+      loadingTitleKey="home.featured.loadingTitle"
+      loadingMessageKey="home.featured.loadingMessage"
+      errorTitleKey="home.featured.errorTitle"
+      errorMessageKey="home.featured.errorMessage"
+      emptyTitleKey="home.featured.emptyTitle"
+      emptyMessageKey="home.featured.emptyMessage">
       <div class="app-grid-cards">
-        @for (item of results; track item) {
-          <p-card [header]="item.title" styleClass="home-result-card">
-            <ng-template pTemplate="content">
-              <div class="result-meta">
-                <span class="app-chip app-chip-sm">{{ getCategoryLabelKey(item.category) | translate }}</span>
-              </div>
-              <p>{{ item.description }}</p>
-            </ng-template>
-          </p-card>
-        }
+        <app-park-card
+          *ngFor="let park of featuredParks()"
+          [park]="park"
+          [currentLang]="currentLang">
+        </app-park-card>
       </div>
-    } @else {
-      @if (searchTerm || selectedCategory) {
-        <div class="app-empty-state">
-          <i class="pi pi-search empty-icon"></i>
-          <h3>{{ 'home.no_results' | translate }}</h3>
-          <p>
-            {{ 'home.no_results' | translate }} “{{ searchTerm }}”
-            @if (selectedCategory) {
-              {{ 'home.in_category' | translate }}
-              {{ ('home.categories.' + selectedCategory) | translate }}
-            }
-          </p>
-        </div>
-      }
-    }
-
+    </app-page-state>
   </section>
 
-  @if (pagination) {
-    <div class="pagination-wrap">
-      <p-paginator
-        [rows]="pagination.itemsPerPage"
-        [totalRecords]="pagination.totalItems"
-        [rowsPerPageOptions]="[5, 10, 20]"
-        (onPageChange)="onPageChange($event)">
-      </p-paginator>
+  <section class="content-section">
+    <div class="page-header">
+      <div>
+        <h2 class="section-title">{{ 'home.search.resultsTitle' | translate }}</h2>
+        <p class="page-subtitle">
+          {{ 'home.search.resultsSubtitle' | translate }}
+        </p>
+      </div>
     </div>
-  }
+
+    <ng-container *ngIf="hasPerformedSearch(); else searchHint">
+      <app-page-state
+        [state]="searchState()"
+        loadingTitleKey="home.search.loadingTitle"
+        loadingMessageKey="home.search.loadingMessage"
+        errorTitleKey="home.search.errorTitle"
+        errorMessageKey="home.search.errorMessage"
+        emptyTitleKey="home.search.emptyTitle"
+        emptyMessageKey="home.search.emptyMessage">
+        <div class="app-grid-cards">
+          <app-search-result-card
+            *ngFor="let item of results()"
+            [item]="item"
+            [currentLang]="currentLang">
+          </app-search-result-card>
+        </div>
+
+        <div class="pagination-wrap" *ngIf="pagination() as pageInfo">
+          <p-paginator
+            [rows]="pageInfo.itemsPerPage"
+            [totalRecords]="pageInfo.totalItems"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            (onPageChange)="onPageChange($event)">
+          </p-paginator>
+        </div>
+      </app-page-state>
+    </ng-container>
+
+    <ng-template #searchHint>
+      <div class="app-empty-state">
+        <i class="pi pi-search"></i>
+        <h3>{{ 'home.search.hintTitle' | translate }}</h3>
+        <p>{{ 'home.search.hintMessage' | translate }}</p>
+      </div>
+    </ng-template>
+  </section>
 </section>

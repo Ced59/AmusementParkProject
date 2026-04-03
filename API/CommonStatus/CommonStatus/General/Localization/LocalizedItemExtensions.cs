@@ -3,52 +3,34 @@
     public static class LocalizedItemExtensions
     {
         public static T? Resolve<T>(
-            this IEnumerable<LocalizedItem<T>>? items,
-            string? lang,
+            this IEnumerable<LocalizedItem<T>> items,
+            string lang,
             string defaultLang = "en")
         {
-            if (items is null)
-            {
-                return default;
-            }
+            string normalizedLang = lang.ToLowerInvariant();
+            string normalizedDefault = defaultLang.ToLowerInvariant();
 
-            string normalizedDefault = string.IsNullOrWhiteSpace(defaultLang)
-                ? "en"
-                : defaultLang.Trim().ToLowerInvariant();
-
-            string normalizedLang = string.IsNullOrWhiteSpace(lang)
-                ? normalizedDefault
-                : lang.Trim().ToLowerInvariant();
-
-            List<LocalizedItem<T>> safeItems = items
-                .Where(item => item is not null)
-                .Where(item => !string.IsNullOrWhiteSpace(item.LanguageCode))
-                .ToList();
-
-            LocalizedItem<T>? match = safeItems.FirstOrDefault(item =>
-                string.Equals(item.LanguageCode, normalizedLang, StringComparison.OrdinalIgnoreCase));
+            // 1. langue demandée
+            LocalizedItem<T>? match = items
+                .FirstOrDefault(i =>
+                    i.LanguageCode.Equals(normalizedLang, StringComparison.OrdinalIgnoreCase));
 
             if (match is not null)
             {
                 return match.Value;
             }
 
-            match = safeItems.FirstOrDefault(item =>
-                string.Equals(item.LanguageCode, normalizedDefault, StringComparison.OrdinalIgnoreCase));
+            // 2. langue par défaut
+            match = items.FirstOrDefault(i =>
+                i.LanguageCode.Equals(normalizedDefault, StringComparison.OrdinalIgnoreCase));
 
             if (match is not null)
             {
                 return match.Value;
             }
 
-            LocalizedItem<T>? firstItem = safeItems.FirstOrDefault();
-
-            if (firstItem is null)
-            {
-                return default;
-            }
-
-            return firstItem.Value;
+            // 3. fallback : premier dispo
+            return items.FirstOrDefault().Value;
         }
     }
 }

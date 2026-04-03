@@ -1,0 +1,211 @@
+// =============================================================================
+// Theme Aware - Gestion de la compatibilité PrimeNG
+// =============================================================================
+// Ce fichier assure l'intégration harmonieuse des thèmes PrimeNG
+// avec les styles personnalisés d'Amusement Park
+// =============================================================================
+
+@use 'variables' as *;
+
+// -----------------------------------------------------------------------------
+// 🎨 PrimeNG Theme Customization
+// -----------------------------------------------------------------------------
+
+// Override des variables PrimeNG pour s'aligner avec notre thème
+body {
+  font-family: var(--ap-font-main);
+  background-color: var(--ap-bg-main);
+  color: var(--ap-text-primary);
+  transition: background-color var(--ap-transition-normal),
+              color var(--ap-transition-normal);
+}
+
+// Mode light spécifique
+body.light-mode {
+  background-color: var(--ap-bg-main);
+}
+
+// -----------------------------------------------------------------------------
+// 🔧 PrimeNG Components Override
+// -----------------------------------------------------------------------------
+
+// Buttons PrimeNG
+.p-button {
+  border-radius: var(--ap-radius-full) !important;
+  transition: all var(--ap-transition-fast) !important;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Cards PrimeNG
+.p-card {
+  border-radius: var(--ap-radius-lg) !important;
+  box-shadow: var(--ap-shadow-md) !important;
+  transition: all var(--ap-transition-normal) !important;
+  background: var(--ap-surface) !important;
+  
+  .p-card-header {
+    border-radius: var(--ap-radius-lg) var(--ap-radius-lg) 0 0 !important;
+  }
+}
+
+// Dialogs PrimeNG
+.p-dialog {
+  border-radius: var(--ap-radius-xl) !important;
+  box-shadow: var(--ap-shadow-lg) !important;
+  
+  .p-dialog-header {
+    border-radius: var(--ap-radius-xl) var(--ap-radius-xl) 0 0 !important;
+  }
+}
+
+// Dropdown PrimeNG
+.p-dropdown {
+  border-radius: var(--ap-radius-md) !important;
+  
+  &:hover {
+    border-color: var(--ap-primary) !important;
+  }
+}
+
+// Input PrimeNG
+.p-inputtext {
+  border-radius: var(--ap-radius-md) !important;
+  transition: all var(--ap-transition-fast) !important;
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(90, 141, 189, 0.1) !important;
+  }
+}
+
+// Toolbar PrimeNG
+.p-toolbar {
+  border-radius: var(--ap-radius-full) !important;
+  padding: var(--ap-spacing-sm) var(--ap-spacing-lg) !important;
+}
+
+// Paginator PrimeNG
+.p-paginator {
+  border-radius: var(--ap-radius-lg) !important;
+  background: var(--ap-surface) !important;
+  
+  .p-paginator-page {
+    border-radius: var(--ap-radius-sm) !important;
+    transition: all var(--ap-transition-fast) !important;
+    
+    &:hover {
+      background-color: var(--ap-primary-light) !important;
+    }
+  }
+}
+
+// Toast PrimeNG
+.p-toast {
+  .p-toast-message {
+    border-radius: var(--ap-radius-lg) !important;
+    box-shadow: var(--ap-shadow-lg) !important;
+    backdrop-filter: blur(10px);
+  }
+}
+
+// Avatar PrimeNG
+.p-avatar {
+  border-radius: 50% !important;
+}
+
+// Sidebar PrimeNG (si utilisé)
+.p-sidebar {
+  background: var(--ap-sidebar-bg) !important;
+  color: var(--ap-sidebar-text) !important;
+}
+
+// -----------------------------------------------------------------------------
+// 🎭 Animation Classes PrimeNG
+// -----------------------------------------------------------------------------
+
+// Amélioration des animations d'entrée/sortie
+.p-component-overlay-enter {
+  animation: fadeIn var(--ap-transition-normal) ease-in;
+}
+
+.p-component-overlay-leave {
+  animation: fadeOut var(--ap-transition-normal) ease-out;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 📱 Responsive Adjustments
+// -----------------------------------------------------------------------------
+
+// Ajustements mobile pour les composants PrimeNG
+@media (max-width: $ap-breakpoint-sm) {
+  .p-dialog {
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+  
+  .p-dropdown {
+    width: 100% !important;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 🎨 Theme-specific utilities
+// -----------------------------------------------------------------------------
+
+// Classe utilitaire pour forcer le style light
+.force-light-theme {
+  background-color: var(--ap-surface) !important;
+  color: var(--ap-text-primary) !important;
+}
+
+// Classe utilitaire pour forcer le style dark
+.force-dark-theme {
+  background-color: var(--ap-surface) !important;
+  color: var(--ap-text-primary) !important;
+}
+
+// -----------------------------------------------------------------------------
+// 🔧 Scrollbar Styling
+// -----------------------------------------------------------------------------
+
+// Scrollbar personnalisée pour tous les thèmes
+* {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: var(--ap-border);
+    border-radius: var(--ap-radius-full);
+    
+    &:hover {
+      background: var(--ap-text-secondary);
+    }
+  }
+}
+
+// Firefox scrollbar
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ap-border) transparent;
+}

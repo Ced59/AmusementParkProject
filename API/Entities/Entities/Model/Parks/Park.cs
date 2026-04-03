@@ -1,5 +1,4 @@
-using Common.General;
-using Common.General.Localization;
+﻿using Common.General;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -12,24 +11,6 @@ namespace Entities.Model.Parks
 
         [BsonElement("countryCode")]
         public string? CountryCode { get; set; }
-
-        [BsonElement("type")]
-        [BsonIgnoreIfNull]
-        [BsonRepresentation(BsonType.String)]
-        public ParkType? Type { get; set; }
-
-        [BsonElement("founderId")]
-        [BsonIgnoreIfNull]
-        [BsonRepresentation(BsonType.String)]
-        public string? FounderId { get; set; }
-
-        [BsonElement("operatorId")]
-        [BsonIgnoreIfNull]
-        [BsonRepresentation(BsonType.String)]
-        public string? OperatorId { get; set; }
-
-        [BsonElement("descriptions")]
-        public List<LocalizedItem<string>> Descriptions { get; set; } = new();
 
         [BsonElement("isVisible")]
         [BsonRepresentation(BsonType.Boolean)]

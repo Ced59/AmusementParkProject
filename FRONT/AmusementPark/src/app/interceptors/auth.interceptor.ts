@@ -10,35 +10,30 @@ import { AuthService } from '../services/auth/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private readonly authService: AuthService) {
-  }
 
-  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  constructor(private authService: AuthService) {}
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (
-      typeof window === 'undefined'
-      || req.url.endsWith('/login')
-      || req.url.endsWith('/users')
-      || req.url.endsWith('/users/confirm-email')
-      || req.url.endsWith('/users/resend-confirmation')
-      || req.url.endsWith('/users/forgot-password')
-      || req.url.endsWith('/users/reset-password')
-      || req.url.includes('/auth/external/')
-      || req.url.includes('google-response')
+      typeof window === 'undefined' ||
+      req.url.endsWith('/login') ||
+      req.url.includes('google-response')
     ) {
       return next.handle(req);
     }
 
-    const token: string | null = this.authService.getToken();
+    const token = this.authService.getToken();
     if (!token) {
       return next.handle(req);
     }
 
     const decoded = this.authService.getTokenDecoded();
     if (!decoded || !decoded.exp || Date.now() >= decoded.exp * 1000) {
+      // éventuellement : this.authService.logout();
       return next.handle(req);
     }
 
-    const authReq: HttpRequest<unknown> = req.clone({
+    const authReq = req.clone({
       headers: req.headers.set('Authorization', `Bearer ${token}`)
     });
 

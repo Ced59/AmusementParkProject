@@ -1,6 +1,4 @@
 export interface JwtPayload {
-  [claim: string]: unknown;
-
   sub: string;
   email: string;
   jti: string;

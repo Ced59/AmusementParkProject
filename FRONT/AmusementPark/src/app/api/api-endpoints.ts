@@ -1,11 +1,6 @@
 export const API_ENDPOINTS = {
   postLogin: 'auth/login',
-  postRegister: 'users',
-  confirmEmail: 'users/confirm-email',
-  resendConfirmation: 'users/resend-confirmation',
-  forgotPassword: 'users/forgot-password',
-  resetPassword: 'users/reset-password',
-  externalLogin: (provider: string) => `auth/external/${provider}`,
+  googleLogin: 'auth/google-response',
 
   getUsers: 'users/list',
   getUserById: (id: string) => `users?Id=${id}`,
@@ -16,43 +11,13 @@ export const API_ENDPOINTS = {
 
   searchParks: (name: string, page: number, size: number) =>
     `parks/search?name=${encodeURIComponent(name)}&page=${page}&size=${size}`,
+  searchParksByLocation: (latitude: number, longitude: number, radius: number) =>
+    `parks/geo-search?latitude=${latitude}&longitude=${longitude}&radius=${radius}`,
 
   updateParkVisibility: (id: string) => `parks/${id}/visibility`,
 
   createPark: 'parks',
   updatePark: (id: string) => `parks/${id}`,
-
-  getParkFounders: 'park-founders/list',
-  getParkFounderById: (id: string) => `park-founders/${id}`,
-  createParkFounder: 'park-founders',
-  updateParkFounder: (id: string) => `park-founders/${id}`,
-
-  getParkOperators: 'park-operators/list',
-  getAttractionManufacturers: 'attraction-manufacturers/list',
-
-  getParkZonesByParkId: (parkId: string) => `park-zones/park/${parkId}`,
-  getParkZoneById: (id: string) => `park-zones/${id}`,
-  createParkZone: 'park-zones',
-  updateParkZone: (id: string) => `park-zones/${id}`,
-  deleteParkZone: (id: string) => `park-zones/${id}`,
-  getParkExplorer: (parkId: string) => `park-zones/park/${parkId}/explorer`,
-
-  getParkItemsByParkId: (parkId: string) => `park-items/park/${parkId}`,
-  getParkItemsPaginated: (page: number, size: number, parkId?: string | null, search?: string | null) => {
-    const parkIdQuery: string = parkId ? `&parkId=${encodeURIComponent(parkId)}` : '';
-    const searchQuery: string = search ? `&search=${encodeURIComponent(search)}` : '';
-    return `park-items/list?page=${page}&size=${size}${parkIdQuery}${searchQuery}`;
-  },
-  getParkItemById: (id: string) => `park-items/${id}`,
-  createParkItem: 'park-items',
-  updateParkItem: (id: string) => `park-items/${id}`,
-  deleteParkItem: (id: string) => `park-items/${id}`,
-  getParkOperatorById: (id: string) => `park-operators/${id}`,
-  createParkOperator: 'park-operators',
-  updateParkOperator: (id: string) => `park-operators/${id}`,
-  getAttractionManufacturerById: (id: string) => `attraction-manufacturers/${id}`,
-  createAttractionManufacturer: 'attraction-manufacturers',
-  updateAttractionManufacturer: (id: string) => `attraction-manufacturers/${id}`,
 
   getSearch: (query: string, categories: string[], page: number, size: number) => {
     const catsParam = categories && categories.length > 0

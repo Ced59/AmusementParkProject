@@ -1,7 +1,6 @@
-namespace Dtos.Users.ResetPassword
+﻿namespace Dtos.Users.ResetPassword
 {
     public class PasswordResetedDto
     {
-        public string Message { get; set; } = string.Empty;
     }
 }

@@ -1,0 +1,166 @@
+// =============================================================================
+// Variables SCSS - Amusement Park Theme
+// =============================================================================
+// Ce fichier définit toutes les variables CSS custom properties pour le thème
+// Compatible avec PrimeNG dark/light themes
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// 🎨 Palette de Couleurs - Thème Parc d'Attractions
+// -----------------------------------------------------------------------------
+
+:root {
+  // Couleurs principales du thème (light mode par défaut)
+  --ap-primary: #5a8dbd;              // Bleu principal
+  --ap-primary-hover: #4a7dad;         // Bleu hover
+  --ap-primary-light: #b4c7dc;         // Bleu clair fond
+  --ap-accent: #ff6b6b;                // Rouge accent (manèges)
+  --ap-accent-hover: #ff5252;          // Rouge hover
+  --ap-success: #51cf66;               // Vert succès
+  --ap-warning: #ffd43b;               // Jaune attention
+  
+  // Fond et surfaces
+  --ap-bg-main: #b4c7dc;               // Fond principal light
+  --ap-surface: rgba(255, 255, 255, 0.95); // Surface cards
+  --ap-surface-hover: rgba(255, 255, 255, 1);
+  --ap-overlay: rgba(0, 0, 0, 0.6);    // Overlay pour modals
+  
+  // Textes
+  --ap-text-primary: #2c3e50;          // Texte principal
+  --ap-text-secondary: #546e7a;        // Texte secondaire
+  --ap-text-light: #ffffff;            // Texte sur fond sombre
+  
+  // Borders & Shadows
+  --ap-border: rgba(0, 0, 0, 0.1);
+  --ap-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --ap-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --ap-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --ap-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.2);
+  
+  // Sidebar
+  --ap-sidebar-bg: #2c3e50;
+  --ap-sidebar-text: #ecf0f1;
+  --ap-sidebar-hover: rgba(255, 255, 255, 0.1);
+  --ap-sidebar-active: rgba(255, 255, 255, 0.15);
+  
+  // Topbar/Navbar
+  --ap-navbar-bg-start: #000e16;
+  --ap-navbar-bg-end: var(--bluegray-800);
+  --ap-navbar-text: #d4f1f9;
+  --ap-navbar-button-bg: #5a8dbd;
+  --ap-navbar-button-hover: #4a7dad;
+  
+  // Transitions
+  --ap-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ap-transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ap-transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Spacing (compatible PrimeNG)
+  --ap-spacing-xs: 0.25rem;   // 4px
+  --ap-spacing-sm: 0.5rem;    // 8px
+  --ap-spacing-md: 1rem;      // 16px
+  --ap-spacing-lg: 1.5rem;    // 24px
+  --ap-spacing-xl: 2rem;      // 32px
+  --ap-spacing-2xl: 3rem;     // 48px
+  
+  // Border Radius
+  --ap-radius-sm: 4px;
+  --ap-radius-md: 8px;
+  --ap-radius-lg: 12px;
+  --ap-radius-xl: 16px;
+  --ap-radius-full: 3rem;     // Pour éléments circulaires
+  
+  // Z-index layers
+  --ap-z-dropdown: 1000;
+  --ap-z-sticky: 1020;
+  --ap-z-fixed: 1030;
+  --ap-z-modal-backdrop: 1040;
+  --ap-z-modal: 1050;
+  --ap-z-popover: 1060;
+  --ap-z-tooltip: 1070;
+}
+
+// -----------------------------------------------------------------------------
+// 🌙 Dark Mode Override
+// -----------------------------------------------------------------------------
+body:not(.light-mode) {
+  // Couleurs principales ajustées pour dark mode
+  --ap-primary: #6b9fd9;
+  --ap-primary-hover: #5a8dbd;
+  --ap-primary-light: #1e2936;
+  --ap-accent: #ff8787;
+  --ap-accent-hover: #ff6b6b;
+  
+  // Fond et surfaces dark
+  --ap-bg-main: #0d1117;
+  --ap-surface: rgba(30, 41, 54, 0.95);
+  --ap-surface-hover: rgba(40, 51, 64, 1);
+  --ap-overlay: rgba(0, 0, 0, 0.8);
+  
+  // Textes dark mode
+  --ap-text-primary: #e6edf3;
+  --ap-text-secondary: #8b949e;
+  --ap-text-light: #ffffff;
+  
+  // Borders & Shadows dark
+  --ap-border: rgba(255, 255, 255, 0.1);
+  --ap-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --ap-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --ap-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --ap-shadow-hover: 0 12px 32px rgba(255, 255, 255, 0.1);
+  
+  // Sidebar dark
+  --ap-sidebar-bg: #161b22;
+  --ap-sidebar-text: #c9d1d9;
+  --ap-sidebar-hover: rgba(255, 255, 255, 0.08);
+  --ap-sidebar-active: rgba(255, 255, 255, 0.12);
+  
+  // Navbar dark
+  --ap-navbar-bg-start: #000000;
+  --ap-navbar-bg-end: #0d1117;
+  --ap-navbar-text: #c9d1d9;
+  --ap-navbar-button-bg: #21262d;
+  --ap-navbar-button-hover: #30363d;
+}
+
+// -----------------------------------------------------------------------------
+// 📐 Typography
+// -----------------------------------------------------------------------------
+:root {
+  // Font Families
+  --ap-font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --ap-font-heading: 'Bangers-Regular', cursive, sans-serif;
+  --ap-font-mono: 'Courier New', Courier, monospace;
+  
+  // Font Sizes
+  --ap-text-xs: 0.75rem;      // 12px
+  --ap-text-sm: 0.875rem;     // 14px
+  --ap-text-base: 1rem;       // 16px
+  --ap-text-lg: 1.125rem;     // 18px
+  --ap-text-xl: 1.25rem;      // 20px
+  --ap-text-2xl: 1.5rem;      // 24px
+  --ap-text-3xl: 1.875rem;    // 30px
+  --ap-text-4xl: 2.25rem;     // 36px
+  
+  // Font Weights
+  --ap-weight-light: 300;
+  --ap-weight-normal: 400;
+  --ap-weight-medium: 500;
+  --ap-weight-semibold: 600;
+  --ap-weight-bold: 700;
+  
+  // Line Heights
+  --ap-leading-tight: 1.25;
+  --ap-leading-normal: 1.5;
+  --ap-leading-relaxed: 1.75;
+}
+
+// -----------------------------------------------------------------------------
+// 📱 Breakpoints (compatibles PrimeFlex)
+// -----------------------------------------------------------------------------
+$ap-breakpoint-xs: 0;
+$ap-breakpoint-sm: 576px;
+$ap-breakpoint-md: 768px;
+$ap-breakpoint-lg: 992px;
+$ap-breakpoint-xl: 1200px;
+$ap-breakpoint-xxl: 1400px;

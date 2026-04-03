@@ -1,4 +1,4 @@
-using Entities.Model.Parks;
+﻿using Entities.Model.Parks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GeoJsonObjectModel;
@@ -25,9 +25,9 @@ namespace Repositories.Implementations
             int pageSize,
             bool includeNonVisible = false)
         {
-            FilterDefinition<Park> filter = includeNonVisible
+            FilterDefinition<Park>? filter = includeNonVisible
                 ? Builders<Park>.Filter.Empty
-                : Builders<Park>.Filter.Eq(park => park.IsVisible, true);
+                : Builders<Park>.Filter.Eq(p => p.IsVisible, true);
 
             return await parksCollection.Find(filter)
                 .Skip((page - 1) * pageSize)
@@ -35,29 +35,11 @@ namespace Repositories.Implementations
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Park>> GetParksByIdsAsync(IEnumerable<string> ids)
-        {
-            List<string> normalizedIds = ids
-                .Where(id => !string.IsNullOrWhiteSpace(id))
-                .Select(id => id.Trim())
-                .Distinct(StringComparer.Ordinal)
-                .ToList();
-
-            if (normalizedIds.Count == 0)
-            {
-                return new List<Park>();
-            }
-
-            FilterDefinition<Park> filter = Builders<Park>.Filter.In(park => park.Id, normalizedIds);
-
-            return await parksCollection.Find(filter).ToListAsync();
-        }
-
         public async Task<long> GetTotalParksCountAsync(bool includeNonVisible = false)
         {
-            FilterDefinition<Park> filter = includeNonVisible
+            FilterDefinition<Park>? filter = includeNonVisible
                 ? Builders<Park>.Filter.Empty
-                : Builders<Park>.Filter.Eq(park => park.IsVisible, true);
+                : Builders<Park>.Filter.Eq(p => p.IsVisible, true);
 
             return await parksCollection.CountDocumentsAsync(filter);
         }
@@ -80,33 +62,41 @@ namespace Repositories.Implementations
             double longitude,
             double maxDistanceInMeters)
         {
-            FilterDefinition<Park> geoFilter = Builders<Park>.Filter.NearSphere(
-                park => park.Location,
+            FilterDefinition<Park>? geoFilter = Builders<Park>.Filter.NearSphere(
+                p => p.Location,
                 new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
                     new GeoJson2DGeographicCoordinates(longitude, latitude)),
-                maxDistance: maxDistanceInMeters);
+                maxDistance: maxDistanceInMeters
+            );
 
-            FilterDefinition<Park> visibleFilter = Builders<Park>.Filter.Eq(park => park.IsVisible, true);
-            FilterDefinition<Park> filter = Builders<Park>.Filter.And(geoFilter, visibleFilter);
+            // Filtre de visibilité publique
+            FilterDefinition<Park>? visibleFilter = Builders<Park>.Filter.Eq(p => p.IsVisible, true);
 
-            List<Park> parks = await parksCollection.Find(filter).ToListAsync();
+            // 🔹 On combine les deux : proche + visible
+            FilterDefinition<Park>? filter = Builders<Park>.Filter.And(geoFilter, visibleFilter);
+
+            List<Park>? parks = await parksCollection
+                .Find(filter)
+                .ToListAsync();
+
             return parks;
         }
+
 
         public async Task<long> GetTotalParksCountByNameAsync(
             string name,
             bool includeNonVisible = false)
         {
-            FilterDefinition<Park> nameFilter = Builders<Park>.Filter.Regex(
-                park => park.Name,
+            FilterDefinition<Park>? nameFilter = Builders<Park>.Filter.Regex(
+                p => p.Name,
                 new BsonRegularExpression(name, "i"));
 
-            FilterDefinition<Park> filter = nameFilter;
+            FilterDefinition<Park>? filter = nameFilter;
 
             if (!includeNonVisible)
             {
-                FilterDefinition<Park> visibleFilter = Builders<Park>.Filter.Eq(park => park.IsVisible, true);
-                filter &= visibleFilter;
+                FilterDefinition<Park>? visibleFilter = Builders<Park>.Filter.Eq(p => p.IsVisible, true);
+                filter = filter & visibleFilter;
             }
 
             return await parksCollection.CountDocumentsAsync(filter);
@@ -118,16 +108,16 @@ namespace Repositories.Implementations
             int pageSize,
             bool includeNonVisible = false)
         {
-            FilterDefinition<Park> nameFilter = Builders<Park>.Filter.Regex(
-                park => park.Name,
+            FilterDefinition<Park>? nameFilter = Builders<Park>.Filter.Regex(
+                p => p.Name,
                 new BsonRegularExpression(name, "i"));
 
-            FilterDefinition<Park> filter = nameFilter;
+            FilterDefinition<Park>? filter = nameFilter;
 
             if (!includeNonVisible)
             {
-                FilterDefinition<Park> visibleFilter = Builders<Park>.Filter.Eq(park => park.IsVisible, true);
-                filter &= visibleFilter;
+                FilterDefinition<Park>? visibleFilter = Builders<Park>.Filter.Eq(p => p.IsVisible, true);
+                filter = filter & visibleFilter;
             }
 
             return await parksCollection.Find(filter)
@@ -136,20 +126,22 @@ namespace Repositories.Implementations
                 .ToListAsync();
         }
 
+
         public async Task<Park?> UpdateParkVisibilityAsync(string id, bool isVisible)
         {
-            FilterDefinition<Park> filter = Builders<Park>.Filter.Eq(park => park.Id, id);
+            FilterDefinition<Park>? filter = Builders<Park>.Filter.Eq(p => p.Id, id);
 
-            UpdateDefinition<Park> update = Builders<Park>.Update
-                .Set(park => park.IsVisible, isVisible)
-                .Set(park => park.UpdatedAt, DateTime.UtcNow);
+            UpdateDefinition<Park>? update = Builders<Park>.Update
+                .Set(p => p.IsVisible, isVisible)
+                .Set(p => p.UpdatedAt, DateTime.UtcNow);
 
-            FindOneAndUpdateOptions<Park> options = new()
+            FindOneAndUpdateOptions<Park> options = new FindOneAndUpdateOptions<Park>
             {
-                ReturnDocument = ReturnDocument.After
+                ReturnDocument = ReturnDocument.After // on récupère la version après update
             };
 
             Park? updated = await parksCollection.FindOneAndUpdateAsync(filter, update, options);
+
             return updated;
         }
 
@@ -160,7 +152,8 @@ namespace Repositories.Implementations
                 return null;
             }
 
-            FilterDefinition<Park> filter = Builders<Park>.Filter.Eq(existingPark => existingPark.Id, park.Id);
+            FilterDefinition<Park> filter = Builders<Park>.Filter.Eq(p => p.Id, park.Id);
+
             ReplaceOneResult result = await parksCollection.ReplaceOneAsync(filter, park);
 
             if (result.MatchedCount == 0)
@@ -168,18 +161,20 @@ namespace Repositories.Implementations
                 return null;
             }
 
+            // On renvoie l'instance modifiée en mémoire (elle est déjà à jour)
             return park;
         }
 
         public async Task<bool> UpdateCurrentLogoAsync(string parkId, string? logoImageId)
         {
-            FilterDefinition<Park> filter = Builders<Park>.Filter.Eq(park => park.Id, parkId);
-            UpdateDefinition<Park> update = Builders<Park>.Update
-                .Set(park => park.CurrentLogoImageId, logoImageId)
-                .Set(park => park.UpdatedAt, DateTime.UtcNow);
+            FilterDefinition<Park>? filter = Builders<Park>.Filter.Eq(p => p.Id, parkId);
+            UpdateDefinition<Park>? update = Builders<Park>.Update
+                .Set(p => p.CurrentLogoImageId, logoImageId)
+                .Set(p => p.UpdatedAt, DateTime.UtcNow);
 
-            UpdateResult result = await parksCollection.UpdateOneAsync(filter, update);
+            UpdateResult? result = await parksCollection.UpdateOneAsync(filter, update);
             return result.MatchedCount > 0;
         }
+
     }
 }

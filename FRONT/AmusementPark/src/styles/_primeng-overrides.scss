@@ -47,15 +47,12 @@
 
 .p-inputtext,
 .p-dropdown,
-.p-select,
 .p-multiselect,
 .p-dialog,
 .p-paginator,
 .p-sidebar,
-.p-drawer,
 .p-datatable,
 .p-tabview-nav,
-.p-tablist,
 .p-panel,
 .p-toast-message {
   border-radius: var(--app-radius-md);
@@ -63,7 +60,6 @@
 
 .p-inputtext,
 .p-dropdown,
-.p-select,
 .p-multiselect {
   width: 100%;
   border-radius: var(--app-radius-pill) !important;
@@ -74,7 +70,6 @@
 
 .p-inputtext:enabled:focus,
 .p-dropdown:not(.p-disabled).p-focus,
-.p-select:not(.p-disabled).p-focus,
 .p-multiselect:not(.p-disabled).p-focus {
   box-shadow: 0 0 0 3px var(--app-focus-ring) !important;
   border-color: var(--app-primary) !important;
@@ -99,15 +94,13 @@
 }
 
 .p-dropdown-panel,
-.p-select-overlay,
 .p-multiselect-panel {
   background: var(--app-surface) !important;
   border: 1px solid var(--app-border) !important;
   box-shadow: var(--app-shadow-2) !important;
 }
 
-.p-sidebar,
-.p-drawer {
+.p-sidebar {
   background: var(--app-surface) !important;
   border-left: 1px solid var(--app-border) !important;
 }
@@ -116,13 +109,11 @@
   backdrop-filter: blur(10px);
 }
 
-.p-dialog-mask,
-.p-drawer-mask {
+.p-dialog-mask {
   z-index: 12000 !important;
 }
 
-.p-dialog,
-.p-drawer {
+.p-dialog {
   z-index: 12001 !important;
 }
 

@@ -3,65 +3,14 @@
   gap: 1.5rem;
 }
 
-.detail-grid {
+.park-detail__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
-.detail-card {
-  border-radius: var(--app-radius-lg);
-  border: 1px solid var(--app-border);
-  background: var(--app-surface-2);
-  padding: 1rem;
-}
-
-.detail-label {
-  display: block;
-  font-size: 0.82rem;
-  color: var(--app-text-muted);
-  margin-bottom: 0.4rem;
-}
-
-
-.detail-card--description {
-  overflow: hidden;
-}
-
-.park-description {
-  width: 100%;
-  max-width: 100%;
-  color: var(--app-text);
-  line-height: 1.7;
-  white-space: pre-line;
-  overflow-wrap: anywhere;
-  word-break: normal;
-
-  p,
-  ul,
-  ol {
-    margin: 0 0 1rem 0;
-  }
-
-  p:last-child,
-  ul:last-child,
-  ol:last-child {
-    margin-bottom: 0;
-  }
-
-  ul,
-  ol {
-    padding-left: 1.25rem;
-  }
-
-  a {
-    color: var(--app-primary);
-  }
-
-  img,
-  iframe,
-  video,
-  table {
-    max-width: 100%;
+@media (max-width: 960px) {
+  .park-detail__grid {
+    grid-template-columns: 1fr;
   }
 }

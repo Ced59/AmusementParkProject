@@ -2,17 +2,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   gap: 0.85rem;
   margin: 0 0 1.5rem;
 }
 
-.google-button-host {
-  min-width: 260px;
-  display: flex;
-  justify-content: center;
-}
-
+.google-button,
 .facebook-button {
   min-width: 180px;
 }
@@ -34,9 +28,5 @@
 @media (max-width: 767px) {
   .form-container {
     grid-template-columns: 1fr;
-  }
-
-  .google-button-host {
-    min-width: 100%;
   }
 }

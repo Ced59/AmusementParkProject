@@ -1,0 +1,26 @@
+<section class="park-nearby">
+  <div class="park-section-header">
+    <div>
+      <h2>{{ 'parks.detail.nearby.title' | translate }}</h2>
+      <p>{{ 'parks.detail.nearby.subtitle' | translate }}</p>
+    </div>
+  </div>
+
+  <app-page-state
+    [state]="state"
+    loadingTitleKey="parks.detail.nearby.loadingTitle"
+    loadingMessageKey="parks.detail.nearby.loadingMessage"
+    errorTitleKey="parks.detail.nearby.errorTitle"
+    errorMessageKey="parks.detail.nearby.errorMessage"
+    emptyTitleKey="parks.detail.nearby.emptyTitle"
+    emptyMessageKey="parks.detail.nearby.emptyMessage">
+    <div class="park-nearby__grid">
+      <app-park-card
+        *ngFor="let park of parks"
+        [park]="park"
+        [currentLang]="currentLang"
+        [compact]="true">
+      </app-park-card>
+    </div>
+  </app-page-state>
+</section>

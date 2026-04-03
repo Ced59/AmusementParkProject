@@ -1,57 +1,50 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserCredentials } from '../../../models/users/user_credentials';
-import { UserToken } from '../../../models/users/user_token';
-import { ApiService } from '../../../services/api.service';
-import { AuthService } from '../../../services/auth/auth.service';
-import { ToastMessageService } from '../../../services/messages/toast-message.service';
-import { SharedService } from '../../../services/shared/shared.service';
-import { ModalService } from '../../../services/modal/modal.service';
+import {Component, Output, EventEmitter} from '@angular/core';
+import {UserCredentials} from "../../../models/users/user_credentials";
+import {ApiService} from "../../../services/api.service";
+import {ToastMessageService} from "../../../services/messages/toast-message.service";
+import {UserToken} from "../../../models/users/user_token";
+import {AuthService} from "../../../services/auth/auth.service";
+import {CurrentUserService} from '../../../services/users/current-user.service';
+import {SharedService} from '../../../services/shared/shared.service';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss'],
-  standalone: false
+  styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent {
-  loginEmail: string = '';
-  loginPassword: string = '';
+  loginEmail: string;
+  loginPassword: string;
 
-  @Output() loginSuccess: EventEmitter<UserToken> = new EventEmitter<UserToken>();
+  @Output() loginSuccess = new EventEmitter<UserToken>();
 
-  constructor(
-    private readonly apiService: ApiService,
-    private readonly messageService: ToastMessageService,
-    private readonly authService: AuthService,
-    private readonly sharedService: SharedService,
-    private readonly router: Router,
-    private readonly modalService: ModalService) {
+  constructor(private apiService: ApiService,
+              private messageService: ToastMessageService,
+              private authService: AuthService,
+              private currentUserService: CurrentUserService,
+              private sharedService: SharedService) {
+    this.loginEmail = "";
+    this.loginPassword = "";
   }
 
-  onSubmit(): void {
-    const userCredentials: UserCredentials = new UserCredentials(this.loginEmail, this.loginPassword);
+  onSubmit() {
+    let userCredentials = new UserCredentials(this.loginEmail, this.loginPassword);
 
     this.apiService.login(userCredentials).subscribe({
       next: (result: UserToken) => {
         this.authService.setToken(result.token);
-        this.messageService.add('success', 'Succès', 'Connexion réussie !');
+        this.currentUserService.refreshCurrentUser();
         this.sharedService.emitLoginStatusChange();
+        this.messageService.add('success', 'Succès', 'Connexion réussie !');
         this.loginSuccess.emit(result);
       },
-      error: (error: { error?: { message?: string; Message?: string; }; }): void => {
-        const errorMessage: string = error.error?.message
-          ?? error.error?.Message
-          ?? 'Une erreur inattendue est survenue.';
-
-        this.messageService.add('error', 'Erreur', errorMessage);
+      error: (error) => {
+        if (error.status === 403 && error.error) {
+          this.messageService.add('error', 'Erreur', error.error);
+        } else {
+          this.messageService.add('error', 'Erreur', "Une erreur inattendue est survenue.");
+        }
       }
     });
-  }
-
-  navigateToForgotPassword(): void {
-    const currentLanguage: string = this.router.url.split('/')[1] || 'en';
-    this.modalService.closeModal('loginModal');
-    this.router.navigate(['/', currentLanguage, 'forgot-password']);
   }
 }

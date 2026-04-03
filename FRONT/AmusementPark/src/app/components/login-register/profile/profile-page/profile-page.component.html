@@ -1,70 +1,102 @@
-<p-card header="{{ 'user-profile.title' | translate }}" class="profile-card">
-  <div class="profile-avatar-container">
-    <img [src]="getAvatarUrl()" class="profile-avatar" alt="Avatar" />
-    <button
-      pButton
-      type="button"
-      label="{{ 'user-profile.modify' | translate }}"
-      class="p-button-text edit-avatar-button"
-      (click)="editField('avatar')">
-    </button>
-  </div>
+<app-page-state
+  [state]="pageState()"
+  loadingTitleKey="user-profile.loadingTitle"
+  loadingMessageKey="user-profile.loadingMessage"
+  errorTitleKey="user-profile.errorTitle"
+  errorMessageKey="user-profile.errorMessage">
+  <p-card header="{{ 'user-profile.title' | translate }}" class="profile-card">
+    <div class="profile-avatar-container">
+      <img [src]="getAvatarUrl()" class="profile-avatar" alt="Profile avatar">
+    </div>
 
-  <div class="profile-details">
-    @if (user) {
+    <form class="profile-details" *ngIf="user() as currentUser" [formGroup]="identityForm">
       <div class="profile-row">
         <span class="profile-label">{{ 'user-profile.email' | translate }} :</span>
-        <span class="profile-value">{{ user.email }}</span>
+        <span class="profile-value">{{ currentUser.email }}</span>
         <span></span>
       </div>
-    }
 
-    @if (user) {
       <div class="profile-row">
         <span class="profile-label">{{ 'user-profile.name' | translate }} :</span>
-        <span class="profile-value">{{ user.lastName }}</span>
-        <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editField('lastName')"></button>
-      </div>
-    }
 
-    @if (user) {
+        <ng-container *ngIf="isEditingIdentity(); else lastNameReadonly">
+          <input
+            pInputText
+            type="text"
+            class="profile-input"
+            formControlName="lastName"
+            />
+        </ng-container>
+
+        <ng-template #lastNameReadonly>
+          <span class="profile-value">{{ currentUser.lastName }}</span>
+        </ng-template>
+
+        <button
+          *ngIf="!isEditingIdentity()"
+          pButton
+          type="button"
+          label="{{ 'user-profile.modify' | translate }}"
+          class="p-button-text"
+          (click)="startIdentityEdition()"></button>
+      </div>
+
       <div class="profile-row">
         <span class="profile-label">{{ 'user-profile.firstname' | translate }} :</span>
-        <span class="profile-value">{{ user.firstName }}</span>
-        <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editField('firstName')"></button>
-      </div>
-    }
 
-    @if (user) {
+        <ng-container *ngIf="isEditingIdentity(); else firstNameReadonly">
+          <input
+            pInputText
+            type="text"
+            class="profile-input"
+            formControlName="firstName"
+            />
+        </ng-container>
+
+        <ng-template #firstNameReadonly>
+          <span class="profile-value">{{ currentUser.firstName }}</span>
+        </ng-template>
+
+        <button
+          *ngIf="!isEditingIdentity()"
+          pButton
+          type="button"
+          label="{{ 'user-profile.modify' | translate }}"
+          class="p-button-text"
+          (click)="startIdentityEdition()"></button>
+      </div>
+
+      <div class="profile-actions" *ngIf="isEditingIdentity()">
+        <button
+          pButton
+          type="button"
+          class="p-button-text"
+          [label]="'actions.cancel' | translate"
+          (click)="cancelIdentityEdition()"
+          [disabled]="savingIdentity()"></button>
+
+        <button
+          pButton
+          type="button"
+          [label]="savingIdentity() ? ('common.saving' | translate) : ('actions.save' | translate)"
+          (click)="saveIdentity()"
+          [disabled]="savingIdentity()"></button>
+      </div>
+
       <div class="profile-row">
         <span class="profile-label">{{ 'user-profile.preferred_language' | translate }} :</span>
-        <span class="profile-value">{{ user.preferredLanguage }}</span>
-        <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editPreferredLanguage()"></button>
+        <span class="profile-value">{{ currentUser.preferredLanguage }}</span>
+        <button
+          pButton
+          type="button"
+          label="{{ 'user-profile.modify' | translate }}"
+          class="p-button-text"
+          (click)="editPreferredLanguage()"></button>
       </div>
-    }
-  </div>
+    </form>
 
-  <div class="logout-container">
-    <button pButton type="button" label="Logout" class="p-button-danger" (click)="logout()"></button>
-  </div>
-</p-card>
-
-<app-owner-image-upload-dialog
-  [(visible)]="displayAvatarUploadDialog"
-  [ownerId]="currentUserId || ''"
-  [ownerType]="userOwnerType"
-  [category]="avatarCategory"
-  [titleKey]="'user-profile.avatar.title'"
-  [dragAndDropHintKey]="'user-profile.avatar.dragAndDrop'"
-  [chooseButtonKey]="'user-profile.avatar.choose'"
-  [uploadButtonKey]="'user-profile.avatar.upload'"
-  [cancelButtonKey]="'user-profile.avatar.cancel'"
-  [selectedFileLabelKey]="'user-profile.avatar.selectedFile'"
-  [invalidFileKey]="'user-profile.avatar.invalidFile'"
-  [invalidSizeKey]="'user-profile.avatar.invalidSize'"
-  [noImageSelectedKey]="'user-profile.avatar.noImageSelected'"
-  [uploadingKey]="'user-profile.avatar.uploading'"
-  [withWatermark]="false"
-  (visibleChange)="onAvatarUploadDialogVisibleChange($event)"
-  (uploaded)="onAvatarUploaded($event)">
-</app-owner-image-upload-dialog>
+    <div class="logout-container">
+      <button pButton type="button" label="Logout" class="p-button-danger" (click)="logout()"></button>
+    </div>
+  </p-card>
+</app-page-state>

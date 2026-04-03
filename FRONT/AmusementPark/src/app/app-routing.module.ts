@@ -3,13 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { languageGuard } from './guards/language.guard';
+import { SigninGoogleComponent } from './components/login-register/signin-google/signin-google.component';
 import { ParkDetailComponent } from './components/park-detail/park-detail.component';
 import { ParkListComponent } from './components/park-list/park-list.component';
-import { ParkExplorerComponent } from './components/park-explorer/park-explorer.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
-import { ConfirmAccountPageComponent } from './components/login-register/confirm-account-page/confirm-account-page.component';
-import { ForgotPasswordPageComponent } from './components/login-register/forgot-password-page/forgot-password-page.component';
-import { ResetPasswordPageComponent } from './components/login-register/reset-password-page/reset-password-page.component';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
 
@@ -21,12 +18,11 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'parks', component: ParkListComponent },
       { path: 'about', component: AboutComponent },
+      { path: 'signin-google', component: SigninGoogleComponent },
       { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then(m => m.ProfileModule) },
-      { path: 'confirm-account', component: ConfirmAccountPageComponent },
-      { path: 'forgot-password', component: ForgotPasswordPageComponent },
-      { path: 'reset-password', component: ResetPasswordPageComponent },
-      { path: 'park/:id/:slug/explore', component: ParkExplorerComponent },
       { path: 'park/:id/:slug', component: ParkDetailComponent },
+
+      // 🔒 Espace d'administration → loggué + ADMIN
       {
         path: 'admin',
         component: AdminDashboardComponent,
@@ -45,24 +41,6 @@ const routes: Routes = [
                 .then(m => m.AdminParksModule)
           },
           {
-            path: 'items',
-            loadChildren: () =>
-              import('./components/admin/park-items/admin-park-items-index/admin-park-items-index.module')
-                .then(m => m.AdminParkItemsIndexModule)
-          },
-          {
-            path: 'operators',
-            loadChildren: () =>
-              import('./components/admin/operators/admin-operators/admin-operators.module')
-                .then(m => m.AdminOperatorsModule)
-          },
-          {
-            path: 'manufacturers',
-            loadChildren: () =>
-              import('./components/admin/manufacturers/admin-manufacturers/admin-manufacturers.module')
-                .then(m => m.AdminManufacturersModule)
-          },
-          {
             path: 'site',
             loadChildren: () =>
               import('./components/admin/site/admin-site/admin-site.module')
@@ -71,6 +49,7 @@ const routes: Routes = [
           { path: '', redirectTo: 'users', pathMatch: 'full' }
         ]
       },
+
       { path: '', redirectTo: 'home', pathMatch: 'full' }
     ]
   },

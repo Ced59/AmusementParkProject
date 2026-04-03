@@ -1,81 +1,69 @@
 import { Component } from '@angular/core';
-import { UserRegister } from '../../../models/users/user-register';
-import { ApiService } from '../../../services/api.service';
-import { ToastMessageService } from '../../../services/messages/toast-message.service';
-import { TranslationService } from '../../../services/translation.service';
+import { MessageService } from 'primeng/api';
+import {TranslationService} from "../../../services/translation.service";
 
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss'],
-  standalone: false
+  styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent {
-  registerEmail: string = '';
-  registerPassword: string = '';
-  confirmPassword: string = '';
-  registrationCompleted: boolean = false;
+  registerEmail: string;
+  registerPassword: string;
+  confirmPassword: string;
 
   constructor(
-    private readonly apiService: ApiService,
-    private readonly messageService: ToastMessageService,
-    private readonly translateService: TranslationService) {
+    private messageService: MessageService,
+    private translateService: TranslationService
+  ) {
+    this.registerEmail = '';
+    this.registerPassword = '';
+    this.confirmPassword = '';
   }
 
-  onSubmit(): void {
+  onSubmit() {
     if (!this.isValidPassword() || !this.isValidEmail() || !this.passwordsMatch()) {
-      this.messageService.add('error', 'Erreur', 'Le formulaire d’inscription contient des erreurs.');
+      this.translateService.getTranslations([
+        'auth.register.errors.password_error_summary',
+        'auth.register.errors.password_error',
+        'auth.register.errors.email_error'
+      ]).subscribe(translations => {
+        if (!this.isValidEmail()) {
+          this.messageService.add({
+            severity: 'error',
+            summary: translations['auth.register.errors.email_error_summary'],
+            detail: translations['auth.register.errors.email_error']
+          });
+        }
+        if (!this.isValidPassword() || !this.passwordsMatch()) {
+          this.messageService.add({
+            severity: 'error',
+            summary: translations['auth.register.errors.password_error_summary'],
+            detail: translations['auth.register.errors.password_error']
+          });
+        }
+      });
       return;
     }
-
-    const request: UserRegister = {
-      email: this.registerEmail,
-      password: this.registerPassword,
-      verifyPassword: this.confirmPassword,
-      preferredLanguage: this.translateService.getCurrentLang().toUpperCase()
-    };
-
-    this.apiService.register(request).subscribe({
-      next: () => {
-        this.registrationCompleted = true;
-        this.messageService.add('success', 'Succès', 'Compte créé. Vérifie le lien de confirmation envoyé dans la console de l’API.');
-      },
-      error: (error: { error?: { message?: string; Message?: string; }; }): void => {
-        const errorMessage: string = error.error?.message
-          ?? error.error?.Message
-          ?? 'Une erreur inattendue est survenue.';
-
-        this.messageService.add('error', 'Erreur', errorMessage);
-      }
-    });
+    // Process registration here
   }
 
-  resendConfirmation(): void {
-    this.apiService.resendConfirmation(this.registerEmail).subscribe({
-      next: (response) => {
-        this.messageService.add('success', 'Succès', response.message);
-      },
-      error: (error: { error?: { message?: string; Message?: string; }; }): void => {
-        const errorMessage: string = error.error?.message
-          ?? error.error?.Message
-          ?? 'Une erreur inattendue est survenue.';
 
-        this.messageService.add('error', 'Erreur', errorMessage);
-      }
-    });
-  }
 
   isValidPassword(): boolean {
-    const regex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$/;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     return regex.test(this.registerPassword);
   }
 
   isValidEmail(): boolean {
-    const emailRegex: RegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return emailRegex.test(this.registerEmail);
   }
 
   passwordsMatch(): boolean {
     return this.registerPassword === this.confirmPassword;
   }
+
+
+
 }

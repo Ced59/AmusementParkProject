@@ -1,30 +1,29 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { JwtPayload } from '../../models/users/jwt_payload';
-import { GoogleIdentityService } from './google-identity.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private readonly googleIdentityService: GoogleIdentityService) {
-  }
+  constructor() {}
 
   getToken(): string | null {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('auth_token');
     }
-
     return null;
   }
 
   setToken(token: string): void {
-    localStorage.setItem('auth_token', token);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('auth_token', token);
+    }
   }
 
   getTokenDecoded(): JwtPayload | null {
-    const token: string | null = this.getToken();
+    const token = this.getToken();
     if (token) {
       try {
         return jwtDecode<JwtPayload>(token);
@@ -33,45 +32,45 @@ export class AuthService {
         return null;
       }
     }
-
     return null;
   }
 
   isLoggedIn(): boolean {
-    const decoded: JwtPayload | null = this.getTokenDecoded();
+    const decoded = this.getTokenDecoded();
     return !!(decoded && decoded.exp && Date.now() < decoded.exp * 1000);
   }
 
   getUserIdFromToken(): string | null {
-    const decoded: JwtPayload | null = this.getTokenDecoded();
+    const decoded = this.getTokenDecoded();
     if (decoded) {
       return decoded.sub;
+    } else {
+      return null;
     }
-
-    return null;
   }
 
   logout(): void {
-    localStorage.removeItem('auth_token');
-    this.googleIdentityService.disableAutoSelect();
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('auth_token');
+    }
   }
 
   hasRole(expectedRole: string): boolean {
-    const decoded: JwtPayload | null = this.getTokenDecoded();
+    const decoded = this.getTokenDecoded();
     if (!decoded) {
       return false;
     }
 
-    const possibleClaims: string[] = [
+    const possibleClaims = [
       'role',
       'roles',
       'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
     ];
 
-    let roles: unknown = null;
+    let roles: any = null;
 
     for (const key of possibleClaims) {
-      const value: unknown = (decoded as Record<string, unknown>)[key];
+      const value = (decoded as any)[key];
       if (value) {
         roles = value;
         break;
@@ -87,6 +86,7 @@ export class AuthService {
     }
 
     if (typeof roles === 'string') {
+      // "ADMIN", ou "ADMIN,USER", ou "ADMIN USER"
       return roles.split(/[ ,]/).includes(expectedRole);
     }
 

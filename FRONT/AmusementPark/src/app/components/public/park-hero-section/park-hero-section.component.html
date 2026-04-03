@@ -1,0 +1,40 @@
+<section class="park-hero" *ngIf="park as currentPark">
+  <div class="park-hero__copy">
+    <span class="app-chip" *ngIf="currentPark.countryCode">
+      <i class="pi pi-compass"></i>
+      {{ currentPark.countryCode }}
+    </span>
+
+    <h1 class="park-hero__title">{{ currentPark.name }}</h1>
+
+    <p class="park-hero__subtitle" *ngIf="locationLine">
+      {{ locationLine }}
+    </p>
+
+    <p class="park-hero__description">
+      {{ 'parks.detail.heroDescription' | translate }}
+    </p>
+
+    <div class="park-hero__meta">
+      <div class="park-hero__meta-item" *ngIf="addressLine">
+        <span>{{ 'parks.fields.address' | translate }}</span>
+        <strong>{{ addressLine }}</strong>
+      </div>
+
+      <div class="park-hero__meta-item" *ngIf="currentPark.webSiteUrl">
+        <span>{{ 'parks.fields.website' | translate }}</span>
+        <a [href]="currentPark.webSiteUrl" target="_blank" rel="noreferrer noopener">
+          {{ currentPark.webSiteUrl }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="park-hero__visual" [class.park-hero__visual--placeholder]="!logoUrl">
+    <img *ngIf="logoUrl" [src]="logoUrl" [alt]="currentPark.name || 'Park logo'" />
+
+    <div *ngIf="!logoUrl" class="park-hero__fallback">
+      <i class="pi pi-image"></i>
+    </div>
+  </div>
+</section>

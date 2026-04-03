@@ -1,11 +1,6 @@
-namespace Dtos.Users.ResetPassword
+﻿namespace Dtos.Users.ResetPassword
 {
     public class ResetPasswordDto
     {
-        public string Token { get; set; } = string.Empty;
-
-        public string NewPassword { get; set; } = string.Empty;
-
-        public string NewPasswordConfirm { get; set; } = string.Empty;
     }
 }

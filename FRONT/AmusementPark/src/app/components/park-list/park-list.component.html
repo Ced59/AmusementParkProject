@@ -1,56 +1,64 @@
 <section class="parks-page">
-  <div class="page-header">
+  <div class="parks-hero">
     <div>
-      <h1 class="page-title">Parks</h1>
+      <span class="app-chip">
+        <i class="pi pi-map"></i>
+        {{ 'parks.heroBadge' | translate }}
+      </span>
+
+      <h1 class="page-title">{{ 'parks.title' | translate }}</h1>
       <p class="page-subtitle">
-        Browse all available parks and open a detailed page for each destination.
+        {{ 'parks.subtitle' | translate }}
       </p>
     </div>
   </div>
 
-  <div class="app-grid-cards">
-    @for (park of parks; track park) {
-      <a
-        class="park-link"
-        [routerLink]="park.id && park.name ? ['/', currentLang, 'park', park.id, slugify(park.name)] : null">
-        @if (park.id && park.name) {
-          <p-card
-            [header]="park.name"
-            [subheader]="park.countryCode"
-            styleClass="park-card">
-            <ng-template pTemplate="content">
-              <div class="park-card-content">
-                <span class="app-chip">
-                  <i class="pi pi-map-marker"></i>
-                  {{ park.countryCode }}
-                </span>
-                <div class="park-meta">
-                  <div>
-                    <span class="meta-label">Latitude</span>
-                    <strong>{{ park.latitude }}</strong>
-                  </div>
-                  <div>
-                    <span class="meta-label">Longitude</span>
-                    <strong>{{ park.longitude }}</strong>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </p-card>
-        }
-      </a>
-    }
+  <div class="parks-toolbar">
+    <div class="parks-toolbar__search">
+      <label class="parks-toolbar__label">{{ 'parks.search.label' | translate }}</label>
+      <input
+        #parkSearchInput
+        type="text"
+        pInputText
+        [value]="searchTerm"
+        [placeholder]="'parks.search.placeholder' | translate"
+        (input)="onSearchInput(parkSearchInput.value)" />
+    </div>
+
+    <button
+      pButton
+      type="button"
+      class="p-button-text"
+      icon="pi pi-times"
+      [label]="'parks.search.clear' | translate"
+      (click)="clearSearch()">
+    </button>
   </div>
 
-  @if (pagination) {
-    <div class="pagination-wrap">
+  <app-page-state
+    [state]="pageState()"
+    loadingTitleKey="parks.loadingTitle"
+    loadingMessageKey="parks.loadingMessage"
+    errorTitleKey="parks.errorTitle"
+    errorMessageKey="parks.errorMessage"
+    emptyTitleKey="parks.emptyTitle"
+    emptyMessageKey="parks.emptyMessage">
+    <div class="app-grid-cards">
+      <app-park-card
+        *ngFor="let park of parks()"
+        [park]="park"
+        [currentLang]="currentLang">
+      </app-park-card>
+    </div>
+
+    <div class="pagination-wrap" *ngIf="pagination() as pageInfo">
       <p-paginator
-        [rows]="pagination.itemsPerPage"
-        [totalRecords]="pagination.totalItems"
-        [rowsPerPageOptions]="[5, 10, 50, 100]"
+        [rows]="pageInfo.itemsPerPage"
+        [totalRecords]="pageInfo.totalItems"
+        [rowsPerPageOptions]="[6, 9, 18, 36]"
         [pageLinkSize]="3"
         (onPageChange)="onPageChange($event)">
       </p-paginator>
     </div>
-  }
+  </app-page-state>
 </section>

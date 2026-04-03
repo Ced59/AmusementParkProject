@@ -3,13 +3,10 @@ using System.Text.RegularExpressions;
 using Common.Users;
 using Dtos.Pagination;
 using Dtos.Users.ChangePassword;
-using Dtos.Users.ConfirmEmail;
 using Dtos.Users.Creating;
-using Dtos.Users.ForgotPassword;
 using Dtos.Users.LockUser;
 using Dtos.Users.Login;
 using Dtos.Users.RefreshToken;
-using Dtos.Users.ResetPassword;
 using Dtos.Users.Roles;
 using Dtos.Users.Updating;
 using Dtos.Users.UserGet;
@@ -18,8 +15,6 @@ using Entities.Model.Users;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces;
-using Services.Interfaces.Authentication;
-using Services.Interfaces.Images;
 using Services.Interfaces.Settings;
 using Services.Security;
 using static Entities.Model.Errors.ErrorCodes;
@@ -29,700 +24,583 @@ namespace Services.Implementations
     public class UsersService : IUsersService
     {
         private readonly IJwtSettings jwtSettings;
-        private readonly ILocalAuthenticationSettings localAuthenticationSettings;
         private readonly IUserQueryHandler userQueryHandler;
-        private readonly IUserAvatarService userAvatarService;
-        private readonly ILocalAccountTokenService localAccountTokenService;
-        private readonly ILocalAccountEmailService localAccountEmailService;
 
-        public UsersService(
-            IUserQueryHandler userQueryHandler,
-            IJwtSettings jwtSettings,
-            IUserAvatarService userAvatarService,
-            ILocalAuthenticationSettings localAuthenticationSettings,
-            ILocalAccountTokenService localAccountTokenService,
-            ILocalAccountEmailService localAccountEmailService)
+        public UsersService(IUserQueryHandler userQueryHandler, IJwtSettings jwtSettings)
+    {
+        this.userQueryHandler = userQueryHandler;
+        this.jwtSettings = jwtSettings;
+    }
+
+        /// <summary>
+        ///     Create User
+        /// </summary>
+        /// <param name="user">User to create</param>
+        /// <returns>Confirmation created or error</returns>
+        public async Task<OneOf<UserCreatedDto, ErrorDetail>>? CreateUserAsync(UserCreateDto user)
+    {
+        if (user.Password != user.VerifyPassword)
         {
-            this.userQueryHandler = userQueryHandler;
-            this.jwtSettings = jwtSettings;
-            this.userAvatarService = userAvatarService;
-            this.localAuthenticationSettings = localAuthenticationSettings;
-            this.localAccountTokenService = localAccountTokenService;
-            this.localAccountEmailService = localAccountEmailService;
+            return PasswordsNotSames;
         }
 
-        public async Task<OneOf<UserCreatedDto, ErrorDetail>> CreateUserAsync(UserCreateDto user)
+        if (!IsValidEmail(user.Email))
         {
-            if (user.Password != user.VerifyPassword)
-            {
-                return PasswordsNotSames;
-            }
-
-            string? normalizedEmail = NormalizeEmail(user.Email);
-            if (!IsValidEmail(normalizedEmail))
-            {
-                return InvalidEmailAddress;
-            }
-
-            if (await userQueryHandler.ExistsByEmailAsync(normalizedEmail))
-            {
-                return UserAlreadyExists;
-            }
-
-            if (string.IsNullOrWhiteSpace(user.Password) || !IsValidPassword(user.Password))
-            {
-                return InvalidPassword;
-            }
-
-            DateTime now = DateTime.UtcNow;
-            string confirmationToken = localAccountTokenService.GenerateToken();
-
-            User userToCreate = new()
-            {
-                Email = normalizedEmail,
-                CreatedAt = now,
-                UpdatedAt = now,
-                PreferredLanguage = string.IsNullOrWhiteSpace(user.PreferredLanguage)
-                    ? "EN"
-                    : user.PreferredLanguage.Trim().ToUpperInvariant(),
-                IsActivated = false,
-                IsBlocked = false,
-                Roles = new List<Role>
-                {
-                    Role.USER
-                },
-                HashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password),
-                LastLogin = now,
-                LastActivity = now,
-                EmailConfirmationTokenHash = localAccountTokenService.ComputeHash(confirmationToken),
-                EmailConfirmationTokenExpiresAt = now.AddHours(localAuthenticationSettings.EmailConfirmationTokenExpirationHours),
-                EmailConfirmationSentAt = now
-            };
-
-            User? userCreated = await userQueryHandler.CreateUserAsync(userToCreate);
-            if (userCreated is null)
-            {
-                return UserUpdateFailed;
-            }
-
-            await localAccountEmailService.SendEmailConfirmationAsync(userCreated, confirmationToken);
-
-            return MapToCreatedDto(userCreated);
+            return InvalidEmailAddress;
         }
 
-        public async Task<OneOf<UserLoggedDto, ErrorDetail>> CreateUserByInfosAsync(UserSocialCreate user)
+        if (await userQueryHandler.ExistsByEmailAsync(user.Email))
         {
-            User userToCreate = new()
-            {
-                Email = NormalizeEmail(user.Email),
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow,
-                PreferredLanguage = "EN",
-                AvatarUrl = user.AvatarUrl,
-                IsActivated = true,
-                IsBlocked = false,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Roles = new List<Role>
-                {
-                    Role.USER
-                },
-                HashedPassword = string.Empty
-            };
-
-            User? userCreated = await userQueryHandler.CreateUserAsync(userToCreate);
-            if (userCreated is null)
-            {
-                return LoginFailed;
-            }
-
-            User? userLogin = await userQueryHandler.GetUserByEmailAsync(userCreated.Email);
-            if (userLogin is null)
-            {
-                return LoginFailed;
-            }
-
-            string token = JwtHelper.GenerateToken(userLogin, jwtSettings);
-            await userQueryHandler.UpdateLastLoginAndActivityAsync(userLogin.Id);
-            return new UserLoggedDto { Token = token };
+            return UserAlreadyExists;
         }
 
+        if (!IsValidPassword(user.Password))
+        {
+            return InvalidPassword;
+        }
+
+        string? hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
+        User userToCreate = new()
+        {
+            Email = user.Email,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            PreferredLanguage = user.PreferredLanguage,
+            IsActivated = false,
+            IsBlocked = false,
+            Roles = new List<Role>
+            {
+                Role.USER
+            },
+            HashedPassword = hashedPassword,
+            LastLogin = DateTime.UtcNow,
+            LastActivity = DateTime.UtcNow
+        };
+
+        User? userCreated = await userQueryHandler.CreateUserAsync(userToCreate);
+
+        return new UserCreatedDto
+        {
+            CreatedAt = userCreated.CreatedAt,
+            Email = userCreated.Email,
+            Id = userCreated.Id,
+            IsActivated = userCreated.IsActivated,
+            IsBlocked = userCreated.IsBlocked,
+            Roles = userCreated.Roles,
+            PreferredLanguage = userCreated.PreferredLanguage,
+            AvatarUrl = userCreated.AvatarUrl
+        };
+    }
+
+
+        /// <summary>
+        ///     Get user by email
+        /// </summary>
+        /// <param name="email">Email of user</param>
+        /// <returns>User or error</returns>
         public async Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByEmailAsync(string email)
+    {
+        User? user = await userQueryHandler.GetUserByEmailAsync(email);
+        if (user == null)
         {
-            User? user = await userQueryHandler.GetUserByEmailAsync(NormalizeEmail(email));
-            if (user is null)
-            {
-                return UserNotExists;
-            }
-
-            return MapToGetDto(user);
+            return UserNotExists;
         }
 
+        return new UserGettedDto
+        {
+            CreatedAt = user.CreatedAt,
+            Email = user.Email,
+            Id = user.Id,
+            IsActivated = user.IsActivated,
+            IsBlocked = user.IsBlocked,
+            Roles = user.Roles,
+            PreferredLanguage = user.PreferredLanguage,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            AvatarUrl = user.AvatarUrl
+        };
+    }
+
+        /// <summary>
+        ///     Get user by id
+        /// </summary>
+        /// <param name="id">Id of user</param>
+        /// <returns>User or error</returns>
         public async Task<OneOf<UserGettedDto, ErrorDetail>> GetUserByIdAsync(string id)
-        {
-            User? user = await userQueryHandler.GetUserByIdAsync(id);
-            if (user is null)
-            {
-                return UserNotExists;
-            }
+    {
+        User? user = await userQueryHandler.GetUserByIdAsync(id);
 
-            return MapToGetDto(user);
+        if (user == null)
+        {
+            return UserNotExists;
         }
 
+        return new UserGettedDto
+        {
+            CreatedAt = user.CreatedAt,
+            Email = user.Email,
+            Id = user.Id,
+            IsActivated = user.IsActivated,
+            IsBlocked = user.IsBlocked,
+            Roles = user.Roles,
+            PreferredLanguage = user.PreferredLanguage,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            AvatarUrl = user.AvatarUrl
+        };
+    }
+
+        /// <summary>
+        ///     Update user
+        /// </summary>
+        /// <param name="id">Id of user</param>
+        /// <param name="userUpdate">User updated</param>
+        /// <returns>User updated or error</returns>
         public async Task<OneOf<UserUpdatedDto, ErrorDetail>> UpdateUserAsync(string id, UserUpdateDto userUpdate)
+    {
+        if (!IsValidEmail(userUpdate.Email) || (userUpdate.NewEmail != null && !IsValidEmail(userUpdate.NewEmail)))
         {
-            string? currentEmail = NormalizeEmail(userUpdate.Email);
-            string? newEmail = NormalizeEmail(userUpdate.NewEmail);
+            return InvalidEmailAddress;
+        }
 
-            if (!IsValidEmail(currentEmail) || (newEmail is not null && !IsValidEmail(newEmail)))
-            {
-                return InvalidEmailAddress;
-            }
+        User? userToUpdate = await userQueryHandler.GetUserByIdAsync(id);
+        if (userToUpdate == null)
+        {
+            return UserNotExists;
+        }
 
-            User? userToUpdate = await userQueryHandler.GetUserByIdAsync(id);
-            if (userToUpdate is null)
-            {
-                return UserNotExists;
-            }
-
-            string? confirmationToken = null;
-            bool emailChanged = !string.IsNullOrWhiteSpace(newEmail) && !string.Equals(userToUpdate.Email, newEmail, StringComparison.OrdinalIgnoreCase);
-            if (emailChanged)
-            {
-                User? existingUser = await userQueryHandler.GetUserByEmailAsync(newEmail);
-                if (existingUser is not null && existingUser.Id != userToUpdate.Id)
-                {
-                    return UserUpdateFailed;
-                }
-
-                userToUpdate.Email = newEmail;
-                userToUpdate.IsActivated = false;
-                PrepareEmailConfirmation(userToUpdate, out confirmationToken);
-            }
-
-            userToUpdate.LastName = userUpdate.LastName;
-            userToUpdate.FirstName = userUpdate.FirstName;
-            userToUpdate.UpdatedAt = DateTime.UtcNow;
-            userToUpdate.PreferredLanguage = userUpdate.PreferredLanguage;
-            userToUpdate.LastActivity = DateTime.UtcNow;
-            if (userUpdate.AvatarUrl is not null)
-            {
-                userToUpdate.AvatarUrl = userUpdate.AvatarUrl;
-            }
-
-            User? userUpdated = await userQueryHandler.UpdateUserAsync(userToUpdate);
-            if (userUpdated is null)
+        if (userUpdate.NewEmail != null && userUpdate.Email != userUpdate.NewEmail)
+        {
+            User? existingUser = await userQueryHandler.GetUserByEmailAsync(userUpdate.NewEmail);
+            if (existingUser != null)
             {
                 return UserUpdateFailed;
             }
 
-            if (!string.IsNullOrWhiteSpace(confirmationToken))
-            {
-                await localAccountEmailService.SendEmailConfirmationAsync(userUpdated, confirmationToken);
-            }
-
-            return MapToUpdatedDto(userUpdated);
+            userToUpdate.IsActivated = false;
+            userToUpdate.Email = userUpdate.NewEmail;  
         }
 
+        userToUpdate.LastName = userUpdate.LastName;
+        userToUpdate.FirstName = userUpdate.FirstName;
+        userToUpdate.UpdatedAt = DateTime.UtcNow;
+        userToUpdate.PreferredLanguage = userUpdate.PreferredLanguage;
+        userToUpdate.LastActivity = DateTime.UtcNow;
+        userToUpdate.AvatarUrl = userUpdate.AvatarUrl;
+
+        User? userUpdated = await userQueryHandler.UpdateUserAsync(userToUpdate);
+        if (userUpdated == null)
+        {
+            return UserUpdateFailed;
+        }
+
+        UserUpdatedDto userUpdatedDto = new()
+        {
+            CreatedAt = userUpdated.CreatedAt,
+            Email = userUpdated.Email,
+            FirstName = userUpdated.FirstName,
+            LastName = userUpdated.LastName,
+            UpdatedAt = userUpdated.UpdatedAt,
+            PreferredLanguage = userUpdated.PreferredLanguage,
+            IsActivated = userUpdated.IsActivated,
+            Id = userUpdated.Id,
+            IsBlocked = userUpdated.IsBlocked,
+            Roles = userUpdated.Roles,
+            AvatarUrl = userUpdated.AvatarUrl
+        };
+
+        return userUpdatedDto;
+    }
+
+
+        /// <summary>
+        ///     Login
+        /// </summary>
+        /// <param name="credentials">Credentials to login</param>
+        /// <returns>Jwt token or error</returns>
         public async Task<OneOf<UserLoggedDto, ErrorDetail>> LoginAsync(UserLoginDto credentials)
+    {
+        User? user = await userQueryHandler.GetUserByEmailAsync(credentials.Email);
+        if (user == null || !BCrypt.Net.BCrypt.Verify(credentials.Password, user.HashedPassword))
         {
-            string? normalizedEmail = NormalizeEmail(credentials.Email);
-            User? user = await userQueryHandler.GetUserByEmailAsync(normalizedEmail);
-            if (user is null)
-            {
-                return LoginFailed;
-            }
-
-            if (string.IsNullOrWhiteSpace(user.HashedPassword))
-            {
-                return LocalLoginNotAvailable;
-            }
-
-            if (!BCrypt.Net.BCrypt.Verify(credentials.Password, user.HashedPassword))
-            {
-                return LoginFailed;
-            }
-
-            if (!user.IsActivated)
-            {
-                return UserNotActivated;
-            }
-
-            if (user.IsBlocked)
-            {
-                return UserBlocked;
-            }
-
-            string token = JwtHelper.GenerateToken(user, jwtSettings);
-            await userQueryHandler.UpdateLastLoginAndActivityAsync(user.Id);
-            return new UserLoggedDto { Token = token };
+            return LoginFailed;
         }
 
+        string token = JwtHelper.GenerateToken(user, jwtSettings);
+
+        await userQueryHandler.UpdateLastLoginAndActivityAsync(user.Id);
+
+        return new UserLoggedDto { Token = token };
+    }
+
+
+        /// <summary>
+        ///     Login by external providers
+        /// </summary>
+        /// <param name="email">Email of user</param>
+        /// <returns>Jwt token or error</returns>
         public async Task<OneOf<UserLoggedDto, ErrorDetail>> LoginExternalAsync(string email)
+    {
+        User? user = await userQueryHandler.GetUserByEmailAsync(email);
+        if (user == null)
         {
-            User? user = await userQueryHandler.GetUserByEmailAsync(NormalizeEmail(email));
-            if (user is null)
-            {
-                return LoginFailed;
-            }
-
-            string token = JwtHelper.GenerateToken(user, jwtSettings);
-            await userQueryHandler.UpdateLastLoginAndActivityAsync(user.Id);
-            return new UserLoggedDto { Token = token };
+            return LoginFailed;
         }
 
+        string token = JwtHelper.GenerateToken(user, jwtSettings);
+
+        await userQueryHandler.UpdateLastLoginAndActivityAsync(user.Id);
+
+        return new UserLoggedDto { Token = token };
+    }
+
+
+        public async Task<OneOf<UserLoggedDto, ErrorDetail>>? CreateUserByInfosAsync(UserSocialCreate user)
+    {
+        User userToCreate = new()
+        {
+            Email = user.Email,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            PreferredLanguage = "EN",
+            AvatarUrl = user.AvatarUrl,
+            IsActivated = true,
+            IsBlocked = false,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Roles = new List<Role>
+            {
+                Role.USER
+            },
+            HashedPassword = ""
+        };
+
+        User? userCreated = await userQueryHandler.CreateUserAsync(userToCreate);
+
+        if (userCreated == null)
+        {
+            return LoginFailed;
+        }
+
+        User? userLogin = await userQueryHandler.GetUserByEmailAsync(userCreated.Email);
+        if (userLogin == null)
+        {
+            return LoginFailed;
+        }
+
+        string token = JwtHelper.GenerateToken(userLogin, jwtSettings);
+
+        await userQueryHandler.UpdateLastLoginAndActivityAsync(userLogin.Id);
+
+        return new UserLoggedDto { Token = token };
+
+    }
+
+
+        /// <summary>
+        ///     Refresh token
+        /// </summary>
+        /// <param name="token">Token to refresh</param>
+        /// <returns>Token refreshed or error</returns>
         public async Task<OneOf<RefreshTokenResponseDto, ErrorDetail>> RefreshTokenAsync(RefreshTokenRequestDto token)
-        {
-            JwtHelper.ValidationResult result = JwtHelper.ValidateToken(token.RefreshToken, false, jwtSettings);
-            if (!result.IsValid || result.Token is null)
-            {
-                return TokenRefreshFailed;
-            }
+    {
+        JwtHelper.ValidationResult result = JwtHelper.ValidateToken(token.RefreshToken, false, jwtSettings);
 
+        if (result.IsValid)
+        {
             Claim? idUser = result.Token.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
-            if (idUser is null)
-            {
-                return TokenRefreshFailed;
-            }
-
             User? user = await userQueryHandler.GetUserByIdAsync(idUser.Value);
+
             if (user is null)
             {
                 return TokenRefreshFailed;
             }
 
-            DateTime expireAt = user.LastActivity + TimeSpan.FromMinutes(jwtSettings.TokenRefreshLimitMinutes);
-            if (DateTime.UtcNow > expireAt)
-            {
-                return TokenRefreshFailedInactivity;
-            }
+            int refreshLimit = jwtSettings.TokenRefreshLimitMinutes;
 
-            return new RefreshTokenResponseDto
-            {
-                RefreshToken = JwtHelper.GenerateToken(user, jwtSettings)
-            };
-        }
+            DateTime expireAt = user.LastActivity + TimeSpan.FromMinutes(refreshLimit);
 
-        public async Task<OneOf<EmailConfirmedDto, ErrorDetail>> ConfirmEmailAsync(string token)
-        {
-            if (string.IsNullOrWhiteSpace(token))
+            if (DateTime.UtcNow <= expireAt)
             {
-                return EmailConfirmationTokenInvalid;
-            }
-
-            string tokenHash = localAccountTokenService.ComputeHash(token);
-            User? user = await userQueryHandler.GetUserByEmailConfirmationTokenHashAsync(tokenHash);
-            if (user is null)
-            {
-                return EmailConfirmationTokenInvalid;
-            }
-
-            if (user.IsActivated)
-            {
-                return AccountAlreadyActivated;
-            }
-
-            if (!user.EmailConfirmationTokenExpiresAt.HasValue || user.EmailConfirmationTokenExpiresAt.Value < DateTime.UtcNow)
-            {
-                return EmailConfirmationTokenExpired;
-            }
-
-            user.IsActivated = true;
-            user.UpdatedAt = DateTime.UtcNow;
-            ClearEmailConfirmation(user);
-
-            User? updatedUser = await userQueryHandler.UpdateUserAsync(user);
-            if (updatedUser is null)
-            {
-                return UserUpdateFailed;
-            }
-
-            return new EmailConfirmedDto
-            {
-                Message = "Account successfully activated."
-            };
-        }
-
-        public async Task<OneOf<ConfirmationEmailResentDto, ErrorDetail>> ResendConfirmationEmailAsync(ResendConfirmationEmailDto request)
-        {
-            string? normalizedEmail = NormalizeEmail(request.Email);
-            if (!IsValidEmail(normalizedEmail))
-            {
-                return InvalidEmailAddress;
-            }
-
-            User? user = await userQueryHandler.GetUserByEmailAsync(normalizedEmail);
-            if (user is not null && !user.IsActivated)
-            {
-                string confirmationToken;
-                PrepareEmailConfirmation(user, out confirmationToken);
-                User? updatedUser = await userQueryHandler.UpdateUserAsync(user);
-                if (updatedUser is null)
+                return new RefreshTokenResponseDto
                 {
-                    return ConfirmationEmailResendFailed;
-                }
-
-                await localAccountEmailService.SendEmailConfirmationAsync(updatedUser, confirmationToken);
+                    RefreshToken = JwtHelper.GenerateToken(user, jwtSettings)
+                };
             }
 
-            return new ConfirmationEmailResentDto
-            {
-                Message = "If the account exists and is not yet activated, a new confirmation email has been sent."
-            };
+            return TokenRefreshFailedInactivity;
         }
 
-        public async Task<OneOf<EmailPasswordSendedDto, ErrorDetail>> ForgotPasswordAsync(ForgotPasswordDto request)
-        {
-            string? normalizedEmail = NormalizeEmail(request.Email);
-            if (!IsValidEmail(normalizedEmail))
-            {
-                return InvalidEmailAddress;
-            }
+        return TokenRefreshFailed;
+    }
 
-            User? user = await userQueryHandler.GetUserByEmailAsync(normalizedEmail);
-            if (user is not null && user.IsActivated && !string.IsNullOrWhiteSpace(user.HashedPassword))
-            {
-                string resetToken;
-                PreparePasswordReset(user, out resetToken);
-                User? updatedUser = await userQueryHandler.UpdateUserAsync(user);
-                if (updatedUser is null)
-                {
-                    return PasswordResetEmailSendFailed;
-                }
-
-                await localAccountEmailService.SendPasswordResetAsync(updatedUser, resetToken);
-            }
-
-            return new EmailPasswordSendedDto
-            {
-                Message = "If the account exists, a password reset email has been sent."
-            };
-        }
-
-        public async Task<OneOf<PasswordResetedDto, ErrorDetail>> ResetPasswordAsync(ResetPasswordDto request)
-        {
-            if (request.NewPassword != request.NewPasswordConfirm)
-            {
-                return PasswordsNotSames;
-            }
-
-            if (!IsValidPassword(request.NewPassword))
-            {
-                return InvalidPassword;
-            }
-
-            if (string.IsNullOrWhiteSpace(request.Token))
-            {
-                return PasswordResetTokenInvalid;
-            }
-
-            string tokenHash = localAccountTokenService.ComputeHash(request.Token);
-            User? user = await userQueryHandler.GetUserByPasswordResetTokenHashAsync(tokenHash);
-            if (user is null)
-            {
-                return PasswordResetTokenInvalid;
-            }
-
-            if (!user.PasswordResetTokenExpiresAt.HasValue || user.PasswordResetTokenExpiresAt.Value < DateTime.UtcNow)
-            {
-                return PasswordResetTokenExpired;
-            }
-
-            user.HashedPassword = BCrypt.Net.BCrypt.HashPassword(request.NewPassword);
-            user.UpdatedAt = DateTime.UtcNow;
-            user.LastActivity = DateTime.UtcNow;
-            ClearPasswordReset(user);
-
-            User? updatedUser = await userQueryHandler.UpdateUserAsync(user);
-            if (updatedUser is null)
-            {
-                return PasswordResetFailed;
-            }
-
-            return new PasswordResetedDto
-            {
-                Message = "Password has been reset successfully."
-            };
-        }
-
+        /// <summary>
+        ///     Assign role to User
+        /// </summary>
+        /// <param name="userId">Id user</param>
+        /// <param name="roleToAssign">Role to assign</param>
+        /// <returns>All roles of user or error</returns>
         public async Task<OneOf<RoleAssignedDto, ErrorDetail>> AssignRoleAsync(string userId, RoleAssignDto roleToAssign)
+    {
+        User? user = await userQueryHandler.GetUserByIdAsync(userId);
+
+        if (user == null)
         {
-            User? user = await userQueryHandler.GetUserByIdAsync(userId);
-            if (user is null)
-            {
-                return UserNotExists;
-            }
-
-            if (user.Roles.Contains(roleToAssign.Role))
-            {
-                return RoleAlreadyAssigned;
-            }
-
-            User? updatedUser = await userQueryHandler.AssignRoleAsync(userId, roleToAssign.Role);
-            if (updatedUser is null)
-            {
-                return AssignRoleFailed;
-            }
-
-            return new RoleAssignedDto
-            {
-                UserId = updatedUser.Id,
-                Roles = updatedUser.Roles
-            };
+            return UserNotExists;
         }
 
+        if (user.Roles.Contains(roleToAssign.Role))
+        {
+            return RoleAlreadyAssigned;
+        }
+
+        User? updatedUser = await userQueryHandler.AssignRoleAsync(userId, roleToAssign.Role);
+
+        if (updatedUser is null)
+        {
+            return AssignRoleFailed;
+        }
+
+        return new RoleAssignedDto
+        {
+            UserId = updatedUser.Id,
+            Roles = updatedUser.Roles
+        };
+    }
+
+
+        /// <summary>
+        ///     Remove role from User
+        /// </summary>
+        /// <param name="userId">ID of the user</param>
+        /// <param name="roleToRemove">Role to remove</param>
+        /// <returns>All roles of user or error</returns>
         public async Task<OneOf<RoleRemovedDto, ErrorDetail>> RemoveRoleAsync(string userId, RoleRemoveDto roleToRemove)
+    {
+        User? user = await userQueryHandler.GetUserByIdAsync(userId);
+
+        if (user == null)
         {
-            User? user = await userQueryHandler.GetUserByIdAsync(userId);
-            if (user is null)
-            {
-                return UserNotExists;
-            }
-
-            if (!user.Roles.Contains(roleToRemove.Role))
-            {
-                return RoleNotAssigned;
-            }
-
-            User? updatedUser = await userQueryHandler.RemoveRoleAsync(userId, roleToRemove.Role);
-            if (updatedUser is null)
-            {
-                return RemoveRoleFailed;
-            }
-
-            return new RoleRemovedDto
-            {
-                UserId = updatedUser.Id,
-                Roles = updatedUser.Roles
-            };
+            return UserNotExists;
         }
 
+        if (!user.Roles.Contains(roleToRemove.Role))
+        {
+            return RoleNotAssigned;
+        }
+
+        User? updatedUser = await userQueryHandler.RemoveRoleAsync(userId, roleToRemove.Role);
+
+        if (updatedUser is null)
+        {
+            return RemoveRoleFailed;
+        }
+
+        return new RoleRemovedDto
+        {
+            UserId = updatedUser.Id,
+            Roles = updatedUser.Roles
+        };
+    }
+
+
+        /// <summary>
+        ///     Lock user
+        /// </summary>
+        /// <param name="userToLock">User to lock</param>
+        /// <returns>User locked</returns>
         public async Task<OneOf<UserLockedDto, ErrorDetail>> LockUser(UserToLockDto userToLock)
+    {
+        User? user = await userQueryHandler.GetUserByIdAsync(userToLock.IdUser);
+
+        if (user == null)
         {
-            User? user = await userQueryHandler.GetUserByIdAsync(userToLock.IdUser);
-            if (user is null)
-            {
-                return UserNotExists;
-            }
-
-            User? userLocked = await userQueryHandler.LockUser(userToLock.IdUser);
-            if (userLocked is null)
-            {
-                return CannotLockUser;
-            }
-
-            return new UserLockedDto
-            {
-                FirstName = userLocked.FirstName,
-                LastName = userLocked.LastName,
-                UserId = userLocked.Id
-            };
+            return UserNotExists;
         }
 
+        User? userLocked = await userQueryHandler.LockUser(userToLock.IdUser);
+
+        if (userLocked is null)
+        {
+            return CannotLockUser;
+        }
+
+        return new UserLockedDto
+        {
+            FirstName = userLocked.FirstName,
+            LastName = userLocked.LastName,
+            UserId = userLocked.Id
+        };
+    }
+
+        /// <summary>
+        ///     Unlock user
+        /// </summary>
+        /// <param name="userToUnlock">User to unlock</param>
+        /// <returns>User unlocked</returns>
         public async Task<OneOf<UserUnlockedDto, ErrorDetail>> UnlockUser(UserToUnlockDto userToUnlock)
+    {
+        User? user = await userQueryHandler.GetUserByIdAsync(userToUnlock.IdUser);
+
+        if (user == null)
         {
-            User? user = await userQueryHandler.GetUserByIdAsync(userToUnlock.IdUser);
-            if (user is null)
-            {
-                return UserNotExists;
-            }
-
-            User? userUnlocked = await userQueryHandler.UnlockUser(userToUnlock.IdUser);
-            if (userUnlocked is null)
-            {
-                return CannotUnlockUser;
-            }
-
-            return new UserUnlockedDto
-            {
-                FirstName = userUnlocked.FirstName,
-                LastName = userUnlocked.LastName,
-                UserId = userUnlocked.Id
-            };
+            return UserNotExists;
         }
 
+        User? userLocked = await userQueryHandler.UnlockUser(userToUnlock.IdUser);
+
+        if (userLocked is null)
+        {
+            return CannotUnlockUser;
+        }
+
+        return new UserUnlockedDto
+        {
+            FirstName = userLocked.FirstName,
+            LastName = userLocked.LastName,
+            UserId = userLocked.Id
+        };
+    }
+
+        /// <summary>
+        ///     Get list of Users
+        /// </summary>
+        /// <param name="page">Number of page got in pagination</param>
+        /// <param name="pageSize">Page size for pagination</param>
+        /// <returns>Get list of users</returns>
         public async Task<(IEnumerable<UserDto>, PaginationDto)> GetAllUsersPaginatedAsync(int page, int pageSize)
+    {
+        long totalItems = await userQueryHandler.GetTotalUsersCountAsync();
+        IEnumerable<User> users = await userQueryHandler.GetUsersPaginatedAsync(page, pageSize);
+
+        PaginationDto pagination = PaginationDto.Create((int)totalItems, page, pageSize);
+
+        IEnumerable<UserDto> usersDto = users.Select(user => new UserDto
         {
-            long totalItems = await userQueryHandler.GetTotalUsersCountAsync();
-            IEnumerable<User> users = await userQueryHandler.GetUsersPaginatedAsync(page, pageSize);
-            PaginationDto pagination = PaginationDto.Create((int)totalItems, page, pageSize);
+            CreatedAt = user.CreatedAt,
+            IsActivated = user.IsActivated,
+            UpdatedAt = user.UpdatedAt,
+            LastActivity = user.LastActivity,
+            LastName = user.LastName,
+            FirstName = user.FirstName,
+            Email = user.Email,
+            Roles = user.Roles,
+            Id = user.Id,
+            IsBlocked = user.IsBlocked,
+            LastLogin = user.LastLogin,
+            PreferredLanguage = user.PreferredLanguage,
+            AvatarUrl = user.AvatarUrl
+        });
 
-            IEnumerable<UserDto> usersDto = users.Select(user => new UserDto
-            {
-                CreatedAt = user.CreatedAt,
-                IsActivated = user.IsActivated,
-                UpdatedAt = user.UpdatedAt,
-                LastActivity = user.LastActivity,
-                LastName = user.LastName,
-                FirstName = user.FirstName,
-                Email = user.Email,
-                Roles = user.Roles,
-                Id = user.Id,
-                IsBlocked = user.IsBlocked,
-                LastLogin = user.LastLogin,
-                PreferredLanguage = user.PreferredLanguage,
-                AvatarUrl = user.AvatarUrl
-            });
+        return (usersDto, pagination);
+    }
 
-            return (usersDto, pagination);
+        /// <summary>
+        ///     Change user password
+        /// </summary>
+        /// <param name="idUser">User to change password</param>
+        /// <param name="changePasswordDto">OldPassword and/or new password & confirmation</param>
+        /// <param name="isSelfChanged">The change password process id for the user who demands</param>
+        /// <returns></returns>
+        public async Task<OneOf<PasswordChangedDto, ErrorDetail>> ChangeUserPassword(string idUser, ChangePasswordDto changePasswordDto, bool isSelfChanged)
+    {
+        User? user = await userQueryHandler.GetUserByIdAsync(idUser);
+
+        if (user == null)
+        {
+            return UserNotExists;
         }
 
-        public async Task<OneOf<PasswordChangedDto, ErrorDetail>> ChangeUserPassword(string idUser, ChangePasswordDto changePasswordDto, bool isSelfChanged)
+        if (isSelfChanged && !BCrypt.Net.BCrypt.Verify(changePasswordDto.ActualPassword, user.HashedPassword))
         {
-            User? user = await userQueryHandler.GetUserByIdAsync(idUser);
-            if (user is null)
-            {
-                return UserNotExists;
-            }
+            return IncorrectPassword;
+        }
 
-            if (!IsValidPassword(changePasswordDto.NewPassword))
-            {
-                return InvalidPassword;
-            }
+        string? hashedPassword = BCrypt.Net.BCrypt.HashPassword(changePasswordDto.NewPassword);
 
-            bool hasLocalPassword = !string.IsNullOrWhiteSpace(user.HashedPassword);
-            if (isSelfChanged && hasLocalPassword && !BCrypt.Net.BCrypt.Verify(changePasswordDto.ActualPassword, user.HashedPassword))
-            {
-                return IncorrectPassword;
-            }
+        bool changePasswordOk = await userQueryHandler.ChangePassword(idUser, hashedPassword);
 
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(changePasswordDto.NewPassword);
-            bool changePasswordOk = await userQueryHandler.ChangePassword(idUser, hashedPassword);
-            if (!changePasswordOk)
-            {
-                return ChangePasswordFailed;
-            }
-
+        if (changePasswordOk)
+        {
             return new PasswordChangedDto
             {
                 Message = $"Password of user {idUser} successfully changed"
             };
         }
 
-        public async Task<string> DownloadAndSaveUserAvatar(string imageUrl, string userId)
-        {
-            return await userAvatarService.ImportExternalAvatarAsync(
-                imageUrl,
-                userId,
-                ExternalLoginProvider.Google);
-        }
+        return ChangePasswordFailed;
+    }
 
-        private static UserCreatedDto MapToCreatedDto(User user)
-        {
-            return new UserCreatedDto
-            {
-                CreatedAt = user.CreatedAt,
-                Email = user.Email,
-                Id = user.Id,
-                IsActivated = user.IsActivated,
-                IsBlocked = user.IsBlocked,
-                Roles = user.Roles,
-                PreferredLanguage = user.PreferredLanguage,
-                AvatarUrl = user.AvatarUrl
-            };
-        }
 
-        private static UserGettedDto MapToGetDto(User user)
-        {
-            return new UserGettedDto
-            {
-                CreatedAt = user.CreatedAt,
-                Email = user.Email,
-                Id = user.Id,
-                IsActivated = user.IsActivated,
-                IsBlocked = user.IsBlocked,
-                Roles = user.Roles,
-                PreferredLanguage = user.PreferredLanguage,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                AvatarUrl = user.AvatarUrl
-            };
-        }
-
-        private static UserUpdatedDto MapToUpdatedDto(User user)
-        {
-            return new UserUpdatedDto
-            {
-                CreatedAt = user.CreatedAt,
-                Email = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                UpdatedAt = user.UpdatedAt,
-                PreferredLanguage = user.PreferredLanguage,
-                IsActivated = user.IsActivated,
-                Id = user.Id,
-                IsBlocked = user.IsBlocked,
-                Roles = user.Roles,
-                AvatarUrl = user.AvatarUrl
-            };
-        }
-
-        private void PrepareEmailConfirmation(User user, out string confirmationToken)
-        {
-            DateTime now = DateTime.UtcNow;
-            confirmationToken = localAccountTokenService.GenerateToken();
-            user.EmailConfirmationTokenHash = localAccountTokenService.ComputeHash(confirmationToken);
-            user.EmailConfirmationTokenExpiresAt = now.AddHours(localAuthenticationSettings.EmailConfirmationTokenExpirationHours);
-            user.EmailConfirmationSentAt = now;
-            user.UpdatedAt = now;
-        }
-
-        private void PreparePasswordReset(User user, out string resetToken)
-        {
-            DateTime now = DateTime.UtcNow;
-            resetToken = localAccountTokenService.GenerateToken();
-            user.PasswordResetTokenHash = localAccountTokenService.ComputeHash(resetToken);
-            user.PasswordResetTokenExpiresAt = now.AddMinutes(localAuthenticationSettings.PasswordResetTokenExpirationMinutes);
-            user.PasswordResetSentAt = now;
-            user.UpdatedAt = now;
-        }
-
-        private static void ClearEmailConfirmation(User user)
-        {
-            user.EmailConfirmationTokenHash = null;
-            user.EmailConfirmationTokenExpiresAt = null;
-            user.EmailConfirmationSentAt = null;
-        }
-
-        private static void ClearPasswordReset(User user)
-        {
-            user.PasswordResetTokenHash = null;
-            user.PasswordResetTokenExpiresAt = null;
-            user.PasswordResetSentAt = null;
-        }
-
+        /// <summary>
+        ///     Validation email
+        /// </summary>
+        /// <param name="email">Email to validate</param>
+        /// <returns>True or false</returns>
         private static bool IsValidEmail(string? email)
+    {
+        if (string.IsNullOrWhiteSpace(email))
         {
-            if (string.IsNullOrWhiteSpace(email))
-            {
-                return false;
-            }
-
-            try
-            {
-                return Regex.IsMatch(
-                    email,
-                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-                    RegexOptions.IgnoreCase,
-                    TimeSpan.FromMilliseconds(250));
-            }
-            catch (RegexMatchTimeoutException)
-            {
-                return false;
-            }
+            return false;
         }
 
-        private static bool IsValidPassword(string password)
+        try
         {
-            string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$";
-            return Regex.IsMatch(password ?? string.Empty, passwordPattern);
+            return Regex.IsMatch(email,
+                @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
         }
+        catch (RegexMatchTimeoutException)
+        {
+            return false;
+        }
+    }
 
-        private static string? NormalizeEmail(string? email)
+        /// <summary>
+        ///     Validation password
+        /// </summary>
+        /// <param name="password">Password to validate</param>
+        /// <returns>True or false</returns>
+        private bool IsValidPassword(string password)
+    {
+        // Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, un chiffre et un caractère spécial
+        string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$";
+        return Regex.IsMatch(password, passwordPattern);
+    }
+
+        /// <summary>
+        /// Telecharge l'avatar et l'enregistre dans l'API.
+        /// </summary>
+        /// <param name="imageUrl">URL source de l'image.</param>
+        /// <param name="userId">Id du User.</param>
+        /// <returns>Chemin de l'image dans l'API.</returns>
+        public async Task<string> DownloadAndSaveUserAvatar(string imageUrl, string userId)
+    {
+        try
         {
-            return string.IsNullOrWhiteSpace(email)
-                ? null
-                : email.Trim().ToLowerInvariant();
+            using HttpClient httpClient = new();
+            byte[] imageBytes = await httpClient.GetByteArrayAsync(imageUrl);
+
+            if (imageBytes.Length == 0)
+            {
+                return "";
+            }
+
+            string fileName = $"{userId}.jpg"; // On nomme le fichier avec l'ID utilisateur
+            string savePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/user-avatar/", fileName);
+
+            await File.WriteAllBytesAsync(savePath, imageBytes);
+
+            return $"/images/user-avatar/{fileName}"; // Retourne le chemin relatif
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erreur lors du téléchargement de l'avatar : {ex.Message}");
+            return "";
+        }
+    }
+
+
     }
 }

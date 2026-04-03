@@ -1,102 +1,99 @@
-<p-card>
-  <ng-template pTemplate="header">
-    <div class="header-row">
-      @if (!loading) {
+<app-page-state
+  [state]="viewState()"
+  loadingTitleKey="admin.parks.loadingTitle"
+  loadingMessageKey="admin.parks.loadingMessage"
+  errorTitleKey="admin.parks.errorTitle"
+  errorMessageKey="admin.parks.errorMessage"
+  emptyTitleKey="admin.parks.emptyTitle"
+  emptyMessageKey="admin.parks.emptyMessage">
+  <p-card>
+    <ng-template pTemplate="header">
+      <div class="header-row">
         <span class="total">
           {{ 'admin.parks.total' | translate:{ count: totalRecords } }}
         </span>
-      }
-    </div>
-  </ng-template>
+      </div>
+    </ng-template>
 
-  <div class="search-row">
-    <input
-      pInputText
-      type="text"
-      [(ngModel)]="searchQuery"
-      (keyup.enter)="onSearch()"
-      [placeholder]="'admin.parks.searchPlaceholder' | translate" />
+    <div class="search-row">
+      <input
+        pInputText
+        type="text"
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="onSearch()"
+        [placeholder]="'admin.parks.searchPlaceholder' | translate" />
 
-    <button
-      pButton
-      type="button"
-      icon="pi pi-search"
-      class="p-button-sm"
-      (click)="onSearch()">
-    </button>
-
-    @if (searchQuery.trim()) {
       <button
+        pButton
+        type="button"
+        icon="pi pi-search"
+        class="p-button-sm"
+        (click)="onSearch()"></button>
+
+      <button
+        *ngIf="searchQuery.trim()"
         pButton
         type="button"
         icon="pi pi-times"
         class="p-button-text p-button-sm"
         (click)="clearSearch()"
-        [label]="'admin.parks.clear' | translate">
-      </button>
-    }
-  </div>
+        [label]="'admin.parks.clear' | translate"></button>
+    </div>
 
-  <p-table
-    [value]="parks"
-    [loading]="loading"
-    [paginator]="true"
-    [rows]="pageSize"
-    [totalRecords]="totalRecords"
-    [lazy]="true"
-    (onLazyLoad)="onPageChanged($event)"
-    [responsiveLayout]="'scroll'">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>{{ 'admin.parks.name' | translate }}</th>
-        <th>{{ 'admin.parks.type' | translate }}</th>
-        <th>{{ 'admin.parks.country' | translate }}</th>
-        <th>{{ 'admin.parks.visible' | translate }}</th>
-        <th>{{ 'admin.parks.actions' | translate }}</th>
-      </tr>
-    </ng-template>
+    <p-table
+      [value]="parks()"
+      [paginator]="true"
+      [rows]="pageSize"
+      [totalRecords]="totalRecords"
+      [lazy]="true"
+      (onLazyLoad)="onPageChanged($event)"
+      [responsiveLayout]="'scroll'">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>{{ 'admin.parks.name' | translate }}</th>
+          <th>{{ 'admin.parks.country' | translate }}</th>
+          <th>{{ 'admin.parks.visible' | translate }}</th>
+          <th>{{ 'admin.parks.actions' | translate }}</th>
+        </tr>
+      </ng-template>
 
-    <ng-template pTemplate="body" let-park>
-      <tr>
-        <td>{{ park.name }}</td>
-        <td>{{ getTypeTranslationKey(park.type) | translate }}</td>
-        <td>{{ park.countryCode }}</td>
-        <td>
-          <p-toggleswitch
-            [(ngModel)]="park.isVisible"
-            (ngModelChange)="onVisibilityChange(park)">
-          </p-toggleswitch>
-        </td>
-        <td>
-          <button
-            pButton
-            type="button"
-            icon="pi pi-pencil"
-            class="p-button-text p-button-sm"
-            [label]="'admin.parks.edit' | translate"
-            [routerLink]="['./edit', park.id]">
-          </button>
-        </td>
-      </tr>
-    </ng-template>
+      <ng-template pTemplate="body" let-park>
+        <tr>
+          <td>{{ park.name }}</td>
+          <td>{{ park.countryCode }}</td>
+          <td>
+            <p-inputSwitch
+              [(ngModel)]="park.isVisible"
+              (onChange)="onVisibilityChange(park)"></p-inputSwitch>
+          </td>
+          <td>
+            <button
+              pButton
+              type="button"
+              icon="pi pi-pencil"
+              class="p-button-text p-button-sm"
+              [label]="'admin.parks.edit' | translate"
+              [routerLink]="['./edit', park.id]"></button>
+          </td>
+        </tr>
+      </ng-template>
+    
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">{{ 'admin.parks.empty' | translate }}</td>
+        </tr>
+      </ng-template>
 
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="5">
-          {{ 'admin.parks.empty' | translate }}
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+    </p-table>
 
-  <div class="create-park-container">
-    <button
-      pButton
-      type="button"
-      icon="pi pi-plus"
-      class="p-button-primary"
-      [label]="'admin.parks.create' | translate"
-      [routerLink]="['./new']">
-    </button>
-  </div>
-</p-card>
+    <div class="create-park-container">
+      <button
+        pButton
+        type="button"
+        icon="pi pi-plus"
+        class="p-button-primary"
+        [label]="'admin.parks.create' | translate"
+        [routerLink]="['./new']"></button>
+    </div>
+  </p-card>
+</app-page-state>

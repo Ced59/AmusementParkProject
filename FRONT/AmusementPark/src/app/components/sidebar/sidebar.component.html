@@ -40,16 +40,15 @@
       </a>
     </li>
 
-    @if (isLoggedIn && isAdmin) {
-      <li
-        class="nav-item"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">
-        <a [routerLink]="['/', currentLang, 'admin']" class="nav-link" (click)="handleNavClick($event)">
-          <i class="pi pi-shield"></i>
-          <span class="link-text">{{ 'sidebar.admin' | translate }}</span>
-        </a>
-      </li>
-    }
+    <li
+      class="nav-item"
+      *ngIf="isLoggedIn && isAdmin"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <a [routerLink]="['/', currentLang, 'admin']" class="nav-link" (click)="handleNavClick($event)">
+        <i class="pi pi-shield"></i>
+        <span class="link-text">{{ 'sidebar.admin' | translate }}</span>
+      </a>
+    </li>
   </ul>
 </nav>

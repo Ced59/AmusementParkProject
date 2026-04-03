@@ -1,87 +1,113 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { resolveLocalizedValue } from '../../commons/localized-item.utils';
-import { Park } from '../../models/parks/park';
+import { Component, OnInit, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
-import { TranslationService } from '../../services/translation.service';
+import { Park } from '../../models/parks/park';
+import { ViewState } from '../../models/shared/view-state';
 
 @Component({
-    selector: 'app-park-detail',
-    templateUrl: './park-detail.component.html',
-    styleUrls: ['./park-detail.component.scss'],
-    standalone: false
+  selector: 'app-park-detail',
+  templateUrl: './park-detail.component.html',
+  styleUrls: ['./park-detail.component.scss']
 })
-export class ParkDetailComponent implements OnInit, OnDestroy {
-  park: Park | undefined;
-  currentLang: string = 'en';
+export class ParkDetailComponent implements OnInit {
+  readonly park = signal<Park | null>(null);
+  readonly pageState = signal<ViewState>(ViewState.Loading);
+  readonly nearbyParks = signal<Park[]>([]);
+  readonly nearbyState = signal<ViewState>(ViewState.Loading);
 
-  private readonly subscriptions: Subscription = new Subscription();
-
-  get localizedDescription(): string | undefined {
-    return resolveLocalizedValue(this.park?.descriptions, this.currentLang);
-  }
+  currentLang = 'en';
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService,
-    private readonly translationService: TranslationService
-  ) {}
-
-  ngOnInit(): void {
-    this.subscriptions.add(
-      this.route.paramMap.subscribe((params: ParamMap) => {
-        const id: string | null = params.get('id');
-
-        if (id && this.park?.id !== id) {
-          this.loadPark(id);
-        }
-      })
-    );
-
-    if (this.route.parent) {
-      this.subscriptions.add(
-        this.route.parent.paramMap.subscribe((params: ParamMap) => {
-          const lang: string = params.get('lang') ?? 'en';
-          this.currentLang = lang;
-        })
-      );
-    }
-
-    this.subscriptions.add(
-      this.translationService.languageChanged.subscribe((lang: string) => {
-        this.currentLang = lang;
-      })
-    );
+    private readonly apiService: ApiService
+  ) {
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    const lang = this.route.snapshot.paramMap.get('lang') || this.route.parent?.snapshot.paramMap.get('lang');
+
+    if (lang) {
+      this.currentLang = lang;
+    }
+
+    if (!id) {
+      this.pageState.set(ViewState.Error);
+      return;
+    }
+
+    this.pageState.set(ViewState.Loading);
+
+    this.apiService.getParkById(id).subscribe({
+      next: (park: Park) => {
+        this.park.set(park);
+        this.pageState.set(ViewState.Ready);
+        this.loadNearbyParks(park);
+      },
+      error: (error: unknown) => {
+        console.error('Error loading park details', error);
+        this.pageState.set(ViewState.Error);
+      }
+    });
   }
 
   goBack(): void {
     this.router.navigate([`/${this.currentLang}/parks`]);
   }
 
-  goToExplore(): void {
-    if (!this.park?.id || !this.park?.name) {
+  hasPracticalInfo(park: Park | null): boolean {
+    if (!park) {
+      return false;
+    }
+
+    return !!park.countryCode || !!park.city || !!park.street || !!park.postalCode || !!park.webSiteUrl;
+  }
+
+  hasLocationInfo(park: Park | null): boolean {
+    if (!park) {
+      return false;
+    }
+
+    return Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
+  }
+
+  private loadNearbyParks(park: Park): void {
+    if (!this.hasValidCoordinates(park)) {
+      this.nearbyState.set(ViewState.Empty);
+      this.nearbyParks.set([]);
       return;
     }
 
-    const slug: string = this.park.name
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
+    this.nearbyState.set(ViewState.Loading);
 
-    this.router.navigate(['/', this.currentLang, 'park', this.park.id, slug, 'explore']);
+    this.apiService.getParksByLocation(park.latitude, park.longitude, 150).subscribe({
+      next: (parks: Park[]) => {
+        const nearby = parks
+          .filter((candidate: Park) => candidate.id !== park.id)
+          .slice(0, 4);
+
+        this.nearbyParks.set(nearby);
+        this.nearbyState.set(nearby.length > 0 ? ViewState.Ready : ViewState.Empty);
+      },
+      error: (error: unknown) => {
+        const errorStatus = typeof error === 'object' && error !== null && 'status' in error
+          ? Number((error as { status?: number }).status)
+          : 0;
+
+        if (errorStatus === 404) {
+          this.nearbyParks.set([]);
+          this.nearbyState.set(ViewState.Empty);
+          return;
+        }
+
+        console.error('Error loading nearby parks', error);
+        this.nearbyState.set(ViewState.Error);
+      }
+    });
   }
 
-  private loadPark(id: string): void {
-    this.apiService.getParkById(id).subscribe((park: Park) => {
-      this.park = park;
-    });
+  private hasValidCoordinates(park: Park): boolean {
+    return Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
   }
 }

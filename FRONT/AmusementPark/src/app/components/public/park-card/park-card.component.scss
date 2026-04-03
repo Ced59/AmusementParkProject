@@ -1,0 +1,114 @@
+.park-card {
+  display: grid;
+  gap: 1rem;
+  height: 100%;
+  padding: 1rem;
+  border-radius: var(--app-radius-lg);
+  border: 1px solid var(--app-border);
+  background: linear-gradient(180deg, var(--app-surface), var(--app-surface-2));
+  box-shadow: var(--app-shadow-1);
+  transition:
+    transform var(--app-transition-base),
+    box-shadow var(--app-transition-base),
+    border-color var(--app-transition-base);
+}
+
+.park-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--app-shadow-2);
+  border-color: var(--app-border-strong);
+}
+
+.park-card--compact {
+  gap: 0.85rem;
+}
+
+.park-card__visual {
+  min-height: 9rem;
+  border-radius: calc(var(--app-radius-lg) - 0.4rem);
+  border: 1px solid var(--app-border);
+  background:
+    radial-gradient(circle at top, var(--app-primary-soft), transparent 60%),
+    rgba(255, 255, 255, 0.02);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.park-card__visual--placeholder {
+  background:
+    radial-gradient(circle at top, var(--app-primary-soft), transparent 60%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+}
+
+.park-card__logo {
+  width: min(100%, 220px);
+  max-height: 6rem;
+  object-fit: contain;
+}
+
+.park-card__fallback {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--app-primary-soft);
+  color: var(--app-heading);
+  font-size: 1.4rem;
+}
+
+.park-card__body {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.park-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.park-card__city {
+  color: var(--app-text-muted);
+  font-size: 0.92rem;
+}
+
+.park-card__title {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.park-card__subtitle {
+  margin: 0;
+}
+
+.park-card__details {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.park-card__detail {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.park-card__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--app-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.park-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.park-card--compact .park-card__visual {
+  min-height: 7rem;
+}

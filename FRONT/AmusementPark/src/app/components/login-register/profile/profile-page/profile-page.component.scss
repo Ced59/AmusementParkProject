@@ -41,12 +41,23 @@
   background: var(--app-surface-2);
 }
 
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 0.25rem 0;
+}
+
 .profile-label {
   font-weight: 700;
 }
 
 .profile-value {
   text-align: left;
+}
+
+.profile-input {
+  width: 100%;
 }
 
 .logout-container {
@@ -62,5 +73,10 @@
 
   .profile-value {
     text-align: center;
+  }
+
+  .profile-actions {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }

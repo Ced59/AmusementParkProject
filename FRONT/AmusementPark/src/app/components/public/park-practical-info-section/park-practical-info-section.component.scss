@@ -1,0 +1,44 @@
+.park-info {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: var(--app-radius-lg);
+  border: 1px solid var(--app-border);
+  background: var(--app-surface);
+  box-shadow: var(--app-shadow-1);
+}
+
+.park-section-header h2 {
+  margin: 0;
+}
+
+.park-section-header p {
+  margin: 0.35rem 0 0;
+}
+
+.park-info__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.park-info__card {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem;
+  border-radius: var(--app-radius-md);
+  border: 1px solid var(--app-border);
+  background: var(--app-surface-2);
+}
+
+.park-info__card span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--app-text-muted);
+}
+
+.park-info__card a {
+  color: var(--app-heading);
+  text-decoration: underline;
+}

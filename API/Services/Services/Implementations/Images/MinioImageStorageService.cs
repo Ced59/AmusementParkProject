@@ -65,7 +65,7 @@ namespace Services.Implementations.Images
 
             if (clientSupportsWebp)
             {
-                (Stream Stream, string ContentType)? webp = await TryGetObjectAsync(
+                var webp = await TryGetObjectAsync(
                     $"{imagePathWithoutExtension}.webp",
                     "image/webp",
                     cancellationToken);
@@ -76,7 +76,7 @@ namespace Services.Implementations.Images
                 }
             }
 
-            (Stream Stream, string ContentType)? jpg = await TryGetObjectAsync(
+            var jpg = await TryGetObjectAsync(
                 $"{imagePathWithoutExtension}.jpg",
                 "image/jpeg",
                 cancellationToken);
@@ -86,7 +86,7 @@ namespace Services.Implementations.Images
                 return jpg;
             }
 
-            (Stream Stream, string ContentType)? png = await TryGetObjectAsync(
+            var png = await TryGetObjectAsync(
                 $"{imagePathWithoutExtension}.png",
                 "image/png",
                 cancellationToken);

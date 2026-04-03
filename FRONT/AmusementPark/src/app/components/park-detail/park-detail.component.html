@@ -1,46 +1,38 @@
-@if (park) {
-  <div class="park-detail page-shell">
+<app-page-state
+  [state]="pageState()"
+  loadingTitleKey="parks.detail.loadingTitle"
+  loadingMessageKey="parks.detail.loadingMessage"
+  errorTitleKey="parks.detail.errorTitle"
+  errorMessageKey="parks.detail.errorMessage">
+  <div class="park-detail" *ngIf="park() as currentPark">
     <div class="page-header">
       <div>
         <span class="app-chip">
           <i class="pi pi-compass"></i>
-          {{ park.countryCode }}
+          {{ 'parks.detail.heroBadge' | translate }}
         </span>
-        <h1 class="page-title">{{ park.name }}</h1>
-        <p class="page-subtitle">
-          {{ 'parkDetail.subtitle' | translate }}
-        </p>
       </div>
-      <button pButton type="button" [label]="'actions.backToList' | translate" icon="pi pi-arrow-left" (click)="goBack()"></button>
-    </div>
-    <div class="detail-actions">
-      <button pButton type="button" icon="pi pi-sitemap" class="p-button-outlined" [label]="'parkDetail.exploreButton' | translate" (click)="goToExplore()"></button>
-    </div>
-    <div class="detail-grid">
-      <div class="detail-card">
-        <span class="detail-label">{{ 'parkDetail.countryCode' | translate }}</span>
-        <strong>{{ park.countryCode }}</strong>
-      </div>
-      <div class="detail-card">
-        <span class="detail-label">{{ 'parkDetail.latitude' | translate }}</span>
-        <strong>{{ park.latitude }}</strong>
-      </div>
-      <div class="detail-card">
-        <span class="detail-label">{{ 'parkDetail.longitude' | translate }}</span>
-        <strong>{{ park.longitude }}</strong>
-      </div>
-    </div>
-    @if (localizedDescription) {
-      <div class="detail-card detail-card--description mt-4">
-        <span class="detail-label">{{ 'parkDetail.descriptionTitle' | translate }}</span>
-        <div class="park-description" [innerHTML]="localizedDescription"></div>
-      </div>
-    }
-  </div>
-} @else {
-  <div class="app-empty-state">
-    <i class="pi pi-spin pi-spinner"></i>
-    <h3>{{ 'parkDetail.loading' | translate }}</h3>
-  </div>
-}
 
+      <button
+        pButton
+        type="button"
+        icon="pi pi-arrow-left"
+        [label]="'parks.actions.backToList' | translate"
+        (click)="goBack()">
+      </button>
+    </div>
+
+    <app-park-hero-section [park]="currentPark"></app-park-hero-section>
+
+    <div class="park-detail__grid">
+      <app-park-practical-info-section *ngIf="hasPracticalInfo(currentPark)" [park]="currentPark"></app-park-practical-info-section>
+      <app-park-location-section *ngIf="hasLocationInfo(currentPark)" [park]="currentPark"></app-park-location-section>
+    </div>
+
+    <app-park-nearby-section
+      [parks]="nearbyParks()"
+      [currentLang]="currentLang"
+      [state]="nearbyState()">
+    </app-park-nearby-section>
+  </div>
+</app-page-state>

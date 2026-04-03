@@ -11,25 +11,28 @@
 
   <ng-template pTemplate="end">
     <div class="topbar-actions">
-      @if (isLoggedIn) {
+      <ng-container *ngIf="isLoggedIn(); else guestActions">
         <a [routerLink]="['/', selectedLanguage || 'en', 'profile']" class="profile-link">
           <div class="profile-copy">
             <span class="profile-kicker">{{ 'topbar.hello' | translate }}</span>
-            <span class="profile-name">{{ userProfile?.firstName || userProfile?.email }}</span>
+            <span class="profile-name">{{ currentUser()?.firstName || currentUser()?.email }}</span>
           </div>
-          @if (getUserAvatarUrl()) {
-            <p-avatar
-              [image]="getUserAvatarUrl()!"
-              shape="circle">
-            </p-avatar>
-          }
-          @if (!getUserAvatarUrl()) {
+
+          <p-avatar
+            *ngIf="getProfileImageUrl(); else defaultAvatar"
+            [image]="getProfileImageUrl()!"
+            shape="circle">
+          </p-avatar>
+
+          <ng-template #defaultAvatar>
             <div class="profile-fallback">
               <i class="pi pi-user"></i>
             </div>
-          }
+          </ng-template>
         </a>
-      } @else {
+      </ng-container>
+
+      <ng-template #guestActions>
         <button
           pButton
           type="button"
@@ -38,7 +41,7 @@
           class="p-button-primary app-cta-button"
           (click)="openModal('loginModal')">
         </button>
-      }
+      </ng-template>
 
       <button
         pButton
@@ -61,16 +64,15 @@
   [resizable]="false"
   [style]="{ width: 'min(92vw, 34rem)' }">
   <div class="languages-grid">
-    @for (language of languages; track language) {
-      <button
-        pButton
-        type="button"
-        class="language-option"
-        (click)="selectLanguage(language.value)">
-        <img [src]="'assets/flags/' + language.value + '.png'" class="flag flag-large" alt="{{ language.label }}" />
-        <span>{{ language.label }}</span>
-      </button>
-    }
+    <button
+      *ngFor="let language of languages"
+      pButton
+      type="button"
+      class="language-option"
+      (click)="selectLanguage(language.value)">
+      <img [src]="'assets/flags/' + language.value + '.png'" class="flag flag-large" alt="{{ language.label }}" />
+      <span>{{ language.label }}</span>
+    </button>
   </div>
 </p-dialog>
 
