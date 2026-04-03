@@ -8,16 +8,22 @@ import { API_ENDPOINTS } from '../api/api-endpoints';
 import { UserCredentials } from '../models/users/user_credentials';
 import { UserToken } from '../models/users/user_token';
 import { UserDto } from '../models/users/user_dto';
+import { UserRegister } from '../models/users/user-register';
 import { UserPut } from '../models/users/user_put';
 import { UsersApiResponse } from '../models/users/users_api_response';
-import { UserRoleRequest } from '../models/users/user-role-request';
-import { UserLockRequest } from '../models/users/user-lock-request';
-import { UserPasswordChange } from '../models/users/user-password-change';
 
 import { ParksApiResponse } from '../models/parks/parks_api_response';
 import { Park } from '../models/parks/park';
+import { ParkFounder } from '../models/parks/park-founder';
+import { ParkOperator } from '../models/parks/park-operator';
+import { AttractionManufacturer } from '../models/parks/attraction-manufacturer';
+import { ParkZone } from '../models/parks/park-zone';
+import { ParkItem } from '../models/parks/park-item';
+import { ParkItemAdminRow } from '../models/parks/park-item-admin-row';
+import { ParkExplorer } from '../models/parks/park-explorer';
 
 import { SearchApiResponse } from '../models/search/search-api-response';
+import { ApiResponse } from '../models/shared/api_reponse';
 import { CountryDto } from '../models/countries/country-dto';
 
 import { UploadedImage } from '../models/images/uploaded-image';
@@ -25,6 +31,7 @@ import { ImageCategory } from '../models/images/image-category';
 import { ImageDto } from '../models/images/image-dto';
 import { ImageOwnerType } from '../models/images/image-owner-type';
 import { LinkImageToOwner } from '../models/images/link-image-to-owner';
+import { AuthMessageResponse } from '../models/auth/auth-message-response';
 
 @Injectable({
   providedIn: 'root'
@@ -44,9 +51,38 @@ export class ApiService {
     return this.http.post<UserToken>(url, JSON.stringify(credentials), httpOptions);
   }
 
-  googleLogin(code: string): Observable<any> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.googleLogin}`;
-    return this.http.post(url, { code });
+
+  register(request: UserRegister): Observable<UserDto> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.postRegister}`;
+    return this.http.post<UserDto>(url, request);
+  }
+
+  confirmEmail(token: string): Observable<AuthMessageResponse> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.confirmEmail}`;
+    return this.http.post<AuthMessageResponse>(url, { token });
+  }
+
+  resendConfirmation(email: string): Observable<AuthMessageResponse> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.resendConfirmation}`;
+    return this.http.post<AuthMessageResponse>(url, { email });
+  }
+
+  forgotPassword(email: string): Observable<AuthMessageResponse> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.forgotPassword}`;
+    return this.http.post<AuthMessageResponse>(url, { email });
+  }
+
+  resetPassword(token: string, newPassword: string, newPasswordConfirm: string): Observable<AuthMessageResponse> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.resetPassword}`;
+    return this.http.post<AuthMessageResponse>(url, { token, newPassword, newPasswordConfirm });
+  }
+  externalLogin(provider: string, token: string, nonce?: string): Observable<UserToken> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.externalLogin(provider)}`;
+    return this.http.post<UserToken>(url, { token, nonce });
+  }
+
+  googleLogin(token: string): Observable<UserToken> {
+    return this.externalLogin('google', token);
   }
 
   getUsers(page: number = 1, size: number = 10): Observable<UsersApiResponse> {
@@ -69,31 +105,6 @@ export class ApiService {
     return this.http.put<UserDto>(url, JSON.stringify(user), httpOptions);
   }
 
-  assignRoleToUser(id: string, payload: UserRoleRequest): Observable<any> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.assignRoleToUser(id)}`;
-    return this.http.post(url, payload);
-  }
-
-  removeRoleFromUser(id: string, payload: UserRoleRequest): Observable<any> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.removeRoleFromUser(id)}`;
-    return this.http.delete(url, { body: payload });
-  }
-
-  lockUser(payload: UserLockRequest): Observable<any> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.lockUser}`;
-    return this.http.post(url, payload);
-  }
-
-  unlockUser(payload: UserLockRequest): Observable<any> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.unlockUser}`;
-    return this.http.post(url, payload);
-  }
-
-  changeUserPassword(id: string, payload: UserPasswordChange): Observable<any> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.changeUserPassword(id)}`;
-    return this.http.post(url, payload);
-  }
-
   getParksPaginated(page: number, size: number): Observable<ParksApiResponse> {
     return this.http.get<ParksApiResponse>(
       `${environment.apiBaseUrl}${API_ENDPOINTS.getParksPaginated(page, size)}`
@@ -108,6 +119,11 @@ export class ApiService {
   searchParks(name: string, page: number, size: number): Observable<ParksApiResponse> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.searchParks(name, page, size)}`;
     return this.http.get<ParksApiResponse>(url);
+  }
+
+  getParksByLocation(latitude: number, longitude: number, radius: number): Observable<Park[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParksByLocation(latitude, longitude, radius)}`;
+    return this.http.get<Park[]>(url);
   }
 
   updateParkVisibility(parkId: string, isVisible: boolean): Observable<Park> {
@@ -136,6 +152,167 @@ export class ApiService {
     };
 
     return this.http.put<Park>(url, JSON.stringify(park), httpOptions);
+  }
+
+  getParkFounders(): Observable<ParkFounder[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkFounders}`;
+    return this.http.get<ParkFounder[]>(url);
+  }
+
+  getParkFounderById(id: string): Observable<ParkFounder> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkFounderById(id)}`;
+    return this.http.get<ParkFounder>(url);
+  }
+
+  createParkFounder(founder: ParkFounder): Observable<ParkFounder> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createParkFounder}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post<ParkFounder>(url, JSON.stringify(founder), httpOptions);
+  }
+
+  updateParkFounder(id: string, founder: ParkFounder): Observable<ParkFounder> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateParkFounder(id)}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.put<ParkFounder>(url, JSON.stringify(founder), httpOptions);
+  }
+
+  getParkOperators(): Observable<ParkOperator[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkOperators}`;
+    return this.http.get<ParkOperator[]>(url);
+  }
+
+  getParkOperatorById(id: string): Observable<ParkOperator> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkOperatorById(id)}`;
+    return this.http.get<ParkOperator>(url);
+  }
+
+  createParkOperator(parkOperator: ParkOperator): Observable<ParkOperator> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createParkOperator}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post<ParkOperator>(url, JSON.stringify(parkOperator), httpOptions);
+  }
+
+  updateParkOperator(id: string, parkOperator: ParkOperator): Observable<ParkOperator> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateParkOperator(id)}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.put<ParkOperator>(url, JSON.stringify(parkOperator), httpOptions);
+  }
+
+  getAttractionManufacturers(): Observable<AttractionManufacturer[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getAttractionManufacturers}`;
+    return this.http.get<AttractionManufacturer[]>(url);
+  }
+
+  getAttractionManufacturerById(id: string): Observable<AttractionManufacturer> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getAttractionManufacturerById(id)}`;
+    return this.http.get<AttractionManufacturer>(url);
+  }
+
+  createAttractionManufacturer(manufacturer: AttractionManufacturer): Observable<AttractionManufacturer> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createAttractionManufacturer}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post<AttractionManufacturer>(url, JSON.stringify(manufacturer), httpOptions);
+  }
+
+  updateAttractionManufacturer(id: string, manufacturer: AttractionManufacturer): Observable<AttractionManufacturer> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateAttractionManufacturer(id)}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.put<AttractionManufacturer>(url, JSON.stringify(manufacturer), httpOptions);
+  }
+
+  getParkZonesByParkId(parkId: string): Observable<ParkZone[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkZonesByParkId(parkId)}`;
+    return this.http.get<ParkZone[]>(url);
+  }
+
+  getParkZoneById(id: string): Observable<ParkZone> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkZoneById(id)}`;
+    return this.http.get<ParkZone>(url);
+  }
+
+  createParkZone(zone: ParkZone): Observable<ParkZone> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createParkZone}`;
+    return this.http.post<ParkZone>(url, zone);
+  }
+
+  updateParkZone(id: string, zone: ParkZone): Observable<ParkZone> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateParkZone(id)}`;
+    return this.http.put<ParkZone>(url, zone);
+  }
+
+  deleteParkZone(id: string): Observable<boolean> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.deleteParkZone(id)}`;
+    return this.http.delete<boolean>(url);
+  }
+
+  getParkExplorer(parkId: string): Observable<ParkExplorer> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkExplorer(parkId)}`;
+    return this.http.get<ParkExplorer>(url);
+  }
+
+  getParkItemsByParkId(parkId: string): Observable<ParkItem[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkItemsByParkId(parkId)}`;
+    return this.http.get<ParkItem[]>(url);
+  }
+
+  getParkItemsPaginated(
+    page: number,
+    size: number,
+    parkId?: string | null,
+    search?: string | null
+  ): Observable<ApiResponse<ParkItemAdminRow>> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkItemsPaginated(page, size, parkId, search)}`;
+    return this.http.get<ApiResponse<ParkItemAdminRow>>(url);
+  }
+
+  getParkItemById(id: string): Observable<ParkItem> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkItemById(id)}`;
+    return this.http.get<ParkItem>(url);
+  }
+
+  createParkItem(item: ParkItem): Observable<ParkItem> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createParkItem}`;
+    return this.http.post<ParkItem>(url, item);
+  }
+
+  updateParkItem(id: string, item: ParkItem): Observable<ParkItem> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateParkItem(id)}`;
+    return this.http.put<ParkItem>(url, item);
+  }
+
+  deleteParkItem(id: string): Observable<boolean> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.deleteParkItem(id)}`;
+    return this.http.delete<boolean>(url);
   }
 
   getSearch(
@@ -202,4 +379,23 @@ export class ApiService {
   buildImageUrl(imageId: string): string {
     return `${environment.imagesBaseUrl}/${imageId}`;
   }
+
+  resolveImageUrl(imagePathOrUrl?: string | null): string | null {
+    if (!imagePathOrUrl) {
+      return null;
+    }
+
+    if (/^https?:\/\//i.test(imagePathOrUrl)) {
+      return imagePathOrUrl;
+    }
+
+    if (imagePathOrUrl.startsWith('/images/')) {
+      const imageId: string = imagePathOrUrl.replace(/^\/images\//, '');
+      return this.buildImageUrl(imageId);
+    }
+
+    const normalizedPath: string = imagePathOrUrl.replace(/^\/+/, '');
+    return `${environment.apiBaseUrl}${normalizedPath}`;
+  }
+
 }

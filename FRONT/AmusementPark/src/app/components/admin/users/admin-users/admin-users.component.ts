@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TableLazyLoadEvent } from 'primeng/table';
-
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../models/shared/pagination';
 import { UserDto } from '../../../../models/users/user_dto';
-import { UsersApiResponse } from '../../../../models/users/users_api_response';
 import { ApiService } from '../../../../services/api.service';
+import { UsersApiResponse } from '../../../../models/users/users_api_response';
 
 @Component({
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
-  styleUrls: ['./admin-users.component.scss']
+  styleUrls: ['./admin-users.component.scss'],
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminUsersComponent implements OnInit {
+
   users: UserDto[] = [];
   loading = false;
 
@@ -23,9 +23,8 @@ export class AdminUsersComponent implements OnInit {
 
   constructor(
     private readonly apiService: ApiService,
-    private readonly router: Router
-  ) {
-  }
+    private readonly cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.loadUsers(this.currentPage, this.pageSize);
@@ -33,6 +32,7 @@ export class AdminUsersComponent implements OnInit {
 
   loadUsers(page: number, size: number): void {
     this.loading = true;
+    this.cdr.markForCheck();
 
     this.apiService.getUsers(page, size).subscribe({
       next: (response: UsersApiResponse) => {
@@ -44,24 +44,20 @@ export class AdminUsersComponent implements OnInit {
         this.currentPage = this.pagination?.currentPage ?? page;
 
         this.loading = false;
+        this.cdr.markForCheck();
       },
-      error: (err: unknown) => {
+      error: (err) => {
         console.error('Error loading users', err);
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }
 
-  onPageChanged(event: TableLazyLoadEvent): void {
+  onPageChanged(event: any): void {
     const rows = event.rows ?? this.pageSize;
     const first = event.first ?? 0;
     const page = Math.floor(first / rows) + 1;
-
     this.loadUsers(page, rows);
-  }
-
-  openUserProfile(userId: string): void {
-    const lang = this.router.url.split('/')[1] || 'en';
-    this.router.navigate(['/', lang, 'admin', 'users', userId]);
   }
 }

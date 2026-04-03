@@ -1,9 +1,11 @@
 <p-card>
   <ng-template pTemplate="header">
     <div class="header-row">
-      <span class="total" *ngIf="!loading">
-        {{ 'admin.users.total' | translate:{ count: totalRecords } }}
-      </span>
+      @if (!loading) {
+        <span class="total">
+          {{ 'admin.users.total' | translate:{ count: totalRecords } }}
+        </span>
+      }
     </div>
   </ng-template>
 
@@ -16,53 +18,37 @@
     [lazy]="true"
     (onLazyLoad)="onPageChanged($event)"
     [responsiveLayout]="'scroll'"
-  >
+    >
     <ng-template pTemplate="header">
       <tr>
-        <th>{{ 'admin.users.columns.email' | translate }}</th>
-        <th>{{ 'admin.users.columns.firstName' | translate }}</th>
-        <th>{{ 'admin.users.columns.lastName' | translate }}</th>
-        <th>{{ 'admin.users.columns.status' | translate }}</th>
-        <th>{{ 'admin.users.columns.roles' | translate }}</th>
-        <th>{{ 'admin.users.columns.actions' | translate }}</th>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Roles</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-user>
       <tr>
+        <td>{{ user.id }}</td>
         <td>{{ user.email }}</td>
-        <td>{{ user.firstName || '—' }}</td>
-        <td>{{ user.lastName || '—' }}</td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
         <td>
-          <p-tag
-            [severity]="user.isBlocked ? 'danger' : 'success'"
-            [value]="(user.isBlocked ? 'admin.users.status.blocked' : 'admin.users.status.active') | translate"
-          ></p-tag>
-        </td>
-        <td>
-          <div class="roles-cell">
+          @for (role of user.roles; track role) {
             <p-tag
-              *ngFor="let role of user.roles"
               [value]="role"
               class="mr-1"
             ></p-tag>
-          </div>
-        </td>
-        <td>
-          <button
-            pButton
-            type="button"
-            icon="pi pi-user-edit"
-            [label]="'admin.users.manage' | translate"
-            (click)="openUserProfile(user.id)"
-          ></button>
+          }
         </td>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="6">
+        <td colspan="5">
           {{ 'admin.users.empty' | translate }}
         </td>
       </tr>
