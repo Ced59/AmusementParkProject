@@ -1,13 +1,13 @@
 export interface UserDto {
-  "email": string;
-  "firstName": string;
-  "lastName": string;
-  "isActivated": string;
-  "isBlocked": string;
-  "roles": string[];
-  "preferredLanguage": string;
-  "avatarUrl": string;
-  "id": string;
-  "createdAt": boolean;
-  "updatedAt": boolean;
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  isActivated: boolean;
+  isBlocked: boolean;
+  roles: string[];
+  preferredLanguage: string;
+  avatarUrl: string;
+  createdAt: string;
+  updatedAt: string;
 }

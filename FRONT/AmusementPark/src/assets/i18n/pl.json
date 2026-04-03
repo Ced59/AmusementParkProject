@@ -116,7 +116,9 @@
     "loadingTitle": "Loading profile",
     "loadingMessage": "The user profile is being loaded.",
     "errorTitle": "Unable to load profile",
-    "errorMessage": "The profile could not be loaded."
+    "errorMessage": "The profile could not be loaded.",
+    "back": "Wróć",
+    "logout": "Wyloguj"
   },
   "theme": {
     "change": "Zmień motyw",
@@ -145,7 +147,37 @@
     },
     "users": {
       "total": "Łączna liczba użytkowników: {{count}}",
-      "empty": "Nie znaleziono użytkowników."
+      "empty": "Nie znaleziono użytkowników.",
+      "columns": {
+        "email": "Email",
+        "firstName": "Imię",
+        "lastName": "Nazwisko",
+        "roles": "Role",
+        "status": "Status",
+        "actions": "Akcje"
+      },
+      "manage": "Zarządzaj użytkownikiem",
+      "profileTitle": "Zarządzanie użytkownikiem",
+      "backToList": "Wróć do listy użytkowników",
+      "newEmail": "Nowy email",
+      "status": {
+        "blocked": "Zablokowany",
+        "active": "Aktywny"
+      },
+      "rolesTitle": "Zarządzanie rolami",
+      "roleAssigned": "Aktualnie przypisana",
+      "roleNotAssigned": "Nieprzypisana",
+      "addRole": "Przypisz",
+      "removeRole": "Usuń",
+      "securityTitle": "Bezpieczeństwo",
+      "blockingTitle": "Blokada konta",
+      "blockedDescription": "To konto jest zablokowane.",
+      "activeDescription": "To konto jest aktywne.",
+      "block": "Zablokuj",
+      "unlock": "Odblokuj",
+      "password": "Nowe hasło",
+      "passwordConfirm": "Potwierdź hasło",
+      "changePassword": "Zmień hasło"
     },
     "parks": {
       "total": "Łączna liczba parków: {{count}}",

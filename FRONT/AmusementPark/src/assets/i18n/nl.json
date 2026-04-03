@@ -116,7 +116,9 @@
     "loadingTitle": "Loading profile",
     "loadingMessage": "The user profile is being loaded.",
     "errorTitle": "Unable to load profile",
-    "errorMessage": "The profile could not be loaded."
+    "errorMessage": "The profile could not be loaded.",
+    "back": "Terug",
+    "logout": "Uitloggen"
   },
   "theme": {
     "change": "Thema wijzigen",
@@ -145,7 +147,37 @@
     },
     "users": {
       "total": "Totaal aantal gebruikers: {{count}}",
-      "empty": "Geen gebruikers gevonden."
+      "empty": "Geen gebruikers gevonden.",
+      "columns": {
+        "email": "E-mail",
+        "firstName": "Voornaam",
+        "lastName": "Achternaam",
+        "roles": "Rollen",
+        "status": "Status",
+        "actions": "Acties"
+      },
+      "manage": "Gebruiker beheren",
+      "profileTitle": "Gebruikersbeheer",
+      "backToList": "Terug naar gebruikerslijst",
+      "newEmail": "Nieuw e-mailadres",
+      "status": {
+        "blocked": "Geblokkeerd",
+        "active": "Actief"
+      },
+      "rolesTitle": "Rollenbeheer",
+      "roleAssigned": "Momenteel toegewezen",
+      "roleNotAssigned": "Niet toegewezen",
+      "addRole": "Toewijzen",
+      "removeRole": "Verwijderen",
+      "securityTitle": "Beveiliging",
+      "blockingTitle": "Accountblokkering",
+      "blockedDescription": "Dit account is geblokkeerd.",
+      "activeDescription": "Dit account is actief.",
+      "block": "Blokkeren",
+      "unlock": "Deblokkeren",
+      "password": "Nieuw wachtwoord",
+      "passwordConfirm": "Wachtwoord bevestigen",
+      "changePassword": "Wachtwoord wijzigen"
     },
     "parks": {
       "total": "Totaal aantal parken: {{count}}",

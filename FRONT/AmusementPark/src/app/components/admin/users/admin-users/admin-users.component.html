@@ -18,23 +18,32 @@
     [lazy]="true"
     (onLazyLoad)="onPageChanged($event)"
     [responsiveLayout]="'scroll'"
+    selectionMode="single"
     >
     <ng-template pTemplate="header">
       <tr>
-        <th>ID</th>
-        <th>Email</th>
-        <th>Prénom</th>
-        <th>Nom</th>
-        <th>Roles</th>
+        <th class="col-avatar"></th>
+        <th>{{ 'admin.users.columns.email' | translate }}</th>
+        <th>{{ 'admin.users.columns.firstName' | translate }}</th>
+        <th>{{ 'admin.users.columns.lastName' | translate }}</th>
+        <th>{{ 'admin.users.columns.roles' | translate }}</th>
+        <th>{{ 'admin.users.columns.status' | translate }}</th>
+        <th class="col-actions">{{ 'admin.users.columns.actions' | translate }}</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-user>
-      <tr>
-        <td>{{ user.id }}</td>
+      <tr class="clickable-row" (click)="openUserProfile(user.id)">
+        <td class="col-avatar">
+          <p-avatar
+            [image]="resolveAvatarUrl(user.avatarUrl)"
+            shape="circle"
+            size="normal"
+          ></p-avatar>
+        </td>
         <td>{{ user.email }}</td>
-        <td>{{ user.firstname }}</td>
-        <td>{{ user.lastname }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
         <td>
           @for (role of user.roles; track role) {
             <p-tag
@@ -43,12 +52,28 @@
             ></p-tag>
           }
         </td>
+        <td>
+          <p-tag
+            [severity]="user.isBlocked ? 'danger' : 'success'"
+            [value]="(user.isBlocked ? 'admin.users.status.blocked' : 'admin.users.status.active') | translate"
+          ></p-tag>
+        </td>
+        <td class="col-actions">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-text p-button-sm"
+            [pTooltip]="'admin.users.manage' | translate"
+            (click)="openUserProfile(user.id); $event.stopPropagation()"
+          ></button>
+        </td>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="5">
+        <td colspan="7">
           {{ 'admin.users.empty' | translate }}
         </td>
       </tr>

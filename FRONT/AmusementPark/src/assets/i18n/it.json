@@ -116,7 +116,9 @@
     "loadingTitle": "Loading profile",
     "loadingMessage": "The user profile is being loaded.",
     "errorTitle": "Unable to load profile",
-    "errorMessage": "The profile could not be loaded."
+    "errorMessage": "The profile could not be loaded.",
+    "back": "Indietro",
+    "logout": "Esci"
   },
   "theme": {
     "change": "Cambia tema",
@@ -145,7 +147,37 @@
     },
     "users": {
       "total": "Numero totale di utenti: {{count}}",
-      "empty": "Nessun utente trovato."
+      "empty": "Nessun utente trovato.",
+      "columns": {
+        "email": "Email",
+        "firstName": "Nome",
+        "lastName": "Cognome",
+        "roles": "Ruoli",
+        "status": "Stato",
+        "actions": "Azioni"
+      },
+      "manage": "Gestisci utente",
+      "profileTitle": "Gestione dell'utente",
+      "backToList": "Torna alla lista utenti",
+      "newEmail": "Nuova email",
+      "status": {
+        "blocked": "Bloccato",
+        "active": "Attivo"
+      },
+      "rolesTitle": "Gestione ruoli",
+      "roleAssigned": "Attualmente assegnato",
+      "roleNotAssigned": "Non assegnato",
+      "addRole": "Assegna",
+      "removeRole": "Rimuovi",
+      "securityTitle": "Sicurezza",
+      "blockingTitle": "Blocco dell'account",
+      "blockedDescription": "Questo account è attualmente bloccato.",
+      "activeDescription": "Questo account è attivo.",
+      "block": "Blocca",
+      "unlock": "Sblocca",
+      "password": "Nuova password",
+      "passwordConfirm": "Conferma password",
+      "changePassword": "Cambia password"
     },
     "parks": {
       "total": "Numero totale di parchi: {{count}}",

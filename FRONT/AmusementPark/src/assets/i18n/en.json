@@ -116,7 +116,9 @@
     "loadingTitle": "Loading profile",
     "loadingMessage": "The user profile is being loaded.",
     "errorTitle": "Unable to load profile",
-    "errorMessage": "The profile could not be loaded."
+    "errorMessage": "The profile could not be loaded.",
+    "back": "Back",
+    "logout": "Log out"
   },
   "theme": {
     "change": "Change theme",
@@ -145,7 +147,37 @@
     },
     "users": {
       "total": "Total number of users: {{count}}",
-      "empty": "No users found."
+      "empty": "No users found.",
+      "columns": {
+        "email": "Email",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "roles": "Roles",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "manage": "Manage user",
+      "profileTitle": "User management",
+      "backToList": "Back to user list",
+      "newEmail": "New email",
+      "status": {
+        "blocked": "Blocked",
+        "active": "Active"
+      },
+      "rolesTitle": "Role management",
+      "roleAssigned": "Currently assigned",
+      "roleNotAssigned": "Not assigned",
+      "addRole": "Assign",
+      "removeRole": "Remove",
+      "securityTitle": "Security",
+      "blockingTitle": "Account blocking",
+      "blockedDescription": "This account is currently blocked. The user cannot log in.",
+      "activeDescription": "This account is active. The user can log in normally.",
+      "block": "Block",
+      "unlock": "Unblock",
+      "password": "New password",
+      "passwordConfirm": "Confirm password",
+      "changePassword": "Change password"
     },
     "parks": {
       "total": "Total number of parks: {{count}}",

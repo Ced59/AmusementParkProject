@@ -21,3 +21,22 @@ p-card {
     opacity: 0.8;
   }
 }
+
+.clickable-row {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--app-surface-2, rgba(0, 0, 0, 0.04));
+  }
+}
+
+.col-avatar {
+  width: 56px;
+  text-align: center;
+}
+
+.col-actions {
+  width: 80px;
+  text-align: center;
+}
