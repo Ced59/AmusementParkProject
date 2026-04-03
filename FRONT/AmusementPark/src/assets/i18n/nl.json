@@ -6,39 +6,8 @@
     "no_results": "Geen resultaten voor",
     "in_category": "in",
     "categories": {
-      "park": "Parks",
-      "attractions": "Attractions",
-      "everywhere": "Everywhere",
-      "parkItems": "Attractions",
-      "operators": "Operators",
-      "manufacturers": "Manufacturers"
-    },
-    "heroBadge": "Theme parks discovery",
-    "heroSubtitle": "Explore parks and discover the most useful information already managed in the administration area.",
-    "ctaBrowseParks": "Browse parks",
-    "ctaLearnMore": "Learn more",
-    "featured": {
-      "title": "Featured parks",
-      "subtitle": "Start with a selection of parks highlighted on the public experience.",
-      "loadingTitle": "Loading featured parks",
-      "loadingMessage": "The highlighted parks are being loaded.",
-      "errorTitle": "Unable to load featured parks",
-      "errorMessage": "The featured parks could not be loaded.",
-      "emptyTitle": "No featured park",
-      "emptyMessage": "There is no park to highlight yet."
-    },
-    "search": {
-      "resultsTitle": "Search results",
-      "resultsSubtitle": "Search across the public catalog and open park pages directly from the results.",
-      "loadingTitle": "Searching",
-      "loadingMessage": "The search results are being loaded.",
-      "errorTitle": "Search failed",
-      "errorMessage": "The search results could not be loaded.",
-      "emptyTitle": "No result found",
-      "emptyMessage": "No public content matches your search.",
-      "hintTitle": "Start a search",
-      "hintMessage": "Search for a park or filter the catalog by category.",
-      "openResult": "Open"
+      "park": "Parken",
+      "attractions": "Attracties"
     }
   },
   "topbar": {
@@ -53,8 +22,7 @@
       "mail_placeholder": "Vul je e-mail in",
       "title_password": "Wachtwoord",
       "password_placeholder": "Vul je wachtwoord in",
-      "btn_text": "Inloggen",
-      "forgot_password": "Forgot password?"
+      "btn_text": "Inloggen"
     },
     "register": {
       "title": "Standaard registratie",
@@ -68,26 +36,7 @@
       "errors": {
         "password_error_summary": "Wachtwoordfout",
         "password_error": "Het wachtwoord moet minstens 8 tekens, één hoofdletter, één kleine letter en één cijfer bevatten."
-      },
-      "success_message": "Your account has been created. Open the confirmation link printed in the API console to activate it.",
-      "resend_confirmation": "Send confirmation link again"
-    },
-    "common": {
-      "back_home": "Back to home"
-    },
-    "confirm": {
-      "title": "Account confirmation",
-      "loading": "Account confirmation in progress..."
-    },
-    "forgot_password": {
-      "title": "Forgot password",
-      "description": "Enter your email address to receive a reset link.",
-      "submit": "Send reset link"
-    },
-    "reset_password": {
-      "title": "Reset password",
-      "invalid_link": "This reset link is invalid.",
-      "submit": "Reset password"
+      }
     }
   },
   "user-profile": {
@@ -97,26 +46,8 @@
     "email": "E-mail",
     "preferred_language": "Voorkeurstaal",
     "modify": "Bewerken",
-    "avatar": {
-      "title": "Change avatar",
-      "choose": "Choose an avatar",
-      "upload": "Upload avatar",
-      "cancel": "Cancel",
-      "dragAndDrop": "Drag and drop your avatar here, or click to select an image.",
-      "selectedFile": "Selected file",
-      "invalidFile": "Please select a valid image file.",
-      "invalidSize": "The selected avatar is too large.",
-      "noImageSelected": "Please select an avatar before uploading.",
-      "uploading": "Uploading avatar..."
-    },
-    "identity": "Identity",
-    "save": "Save",
-    "cancel": "Cancel",
-    "saving": "Saving...",
-    "loadingTitle": "Loading profile",
-    "loadingMessage": "The user profile is being loaded.",
-    "errorTitle": "Unable to load profile",
-    "errorMessage": "The profile could not be loaded."
+    "back": "Back",
+    "logout": "Logout"
   },
   "theme": {
     "change": "Thema wijzigen",
@@ -138,14 +69,41 @@
     "tabs": {
       "users": "Gebruikers",
       "parks": "Parken",
-      "site": "Site",
-      "operators": "Exploitanten",
-      "manufacturers": "Manufacturers",
-      "parkItems": "Items"
+      "site": "Site"
     },
     "users": {
       "total": "Totaal aantal gebruikers: {{count}}",
-      "empty": "Geen gebruikers gevonden."
+      "empty": "Geen gebruikers gevonden.",
+      "manage": "Manage",
+      "backToList": "Back to list",
+      "profileTitle": "User management",
+      "newEmail": "New email",
+      "rolesTitle": "Role management",
+      "securityTitle": "Security and access",
+      "roleAssigned": "Role already assigned",
+      "roleNotAssigned": "Role not assigned",
+      "addRole": "Add",
+      "removeRole": "Remove",
+      "blockingTitle": "Account blocking",
+      "blockedDescription": "This account is currently blocked.",
+      "activeDescription": "This account is currently active.",
+      "unlock": "Unlock",
+      "block": "Block",
+      "password": "New password",
+      "passwordConfirm": "Confirm password",
+      "changePassword": "Change password",
+      "columns": {
+        "email": "Email",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "status": "Status",
+        "roles": "Roles",
+        "actions": "Actions"
+      },
+      "status": {
+        "active": "Active",
+        "blocked": "Blocked"
+      }
     },
     "parks": {
       "total": "Totaal aantal parken: {{count}}",
@@ -177,446 +135,15 @@
         "createTitle": "Nieuw park aanmaken",
         "updateTitle": "Park \"{{name}}\" bewerken",
         "subtitle": "Beheer hier de basisinformatie en zichtbaarheid van het park."
-      },
-      "descriptions": {
-        "sectionTitle": "Gelokaliseerde beschrijving",
-        "subtitle": "Schrijf de parkbeschrijving in elke beschikbare taal met opgemaakte rijke tekst.",
-        "placeholder": "Schrijf de beschrijving in het {{language}}"
-      },
-      "type": "Type",
-      "typePlaceholder": "Selecteer een parktype",
-      "founder": "Oprichter",
-      "founderPlaceholder": "Selecteer een oprichter",
-      "addFounder": "Oprichter toevoegen",
-      "operator": "Exploitant",
-      "operatorPlaceholder": "Selecteer een exploitant",
-      "addOperator": "Exploitant toevoegen",
-      "location": "Locatie",
-      "types": {
-        "themePark": "Themapark",
-        "waterPark": "Waterpark",
-        "zoo": "Dierentuin",
-        "animalPark": "Dierenpark",
-        "amusementPark": "Pretpark",
-        "resort": "Resort",
-        "notSpecified": "Niet opgegeven"
-      },
-      "logos": {
-        "sectionTitle": "Parklogo's",
-        "currentTitle": "Huidig logo",
-        "noCurrent": "Er is momenteel geen logo ingesteld.",
-        "uploadTitle": "Nieuw logo toevoegen",
-        "descriptionPlaceholder": "Logobeschrijving (optioneel)",
-        "uploadButton": "Uploaden en als huidig logo instellen",
-        "historyTitle": "Logogeschiedenis",
-        "empty": "Er is nog geen logo toegevoegd voor dit park.",
-        "noDescription": "Geen beschrijving",
-        "currentLabel": "Huidig",
-        "alt": "Parklogo",
-        "deleteConfirm": "Dit logo verwijderen?",
-        "selectedCount": "{{count}} file(s) selected",
-        "uploadSuccess": "{{count}} logo(s) uploaded successfully.",
-        "uploadError": "An error occurred after {{count}} upload(s).",
-        "currentSetSuccess": "Current logo updated.",
-        "deleteSuccess": "Logo deleted.",
-        "sectionHelp": "Beheer hier het huidige parklogo en de geschiedenis ervan.",
-        "saveBeforeUpload": "Sla eerst het park op voordat je logo’s koppelt."
-      },
-      "zones": {
-        "manage": "Zones beheren",
-        "title": "Parkzones",
-        "create": "Zone aanmaken",
-        "createTitle": "Parkzone aanmaken",
-        "editTitle": "Parkzone bewerken",
-        "name": "Zonenaam",
-        "sortOrder": "Weergavevolgorde",
-        "description": "Gelokaliseerde beschrijving",
-        "namePlaceholder": "Zonenaam in {{language}}",
-        "deleteConfirm": "Deze zone verwijderen?"
-      },
-      "items": {
-        "manage": "Parkitems beheren",
-        "title": "Parkitems",
-        "create": "Item aanmaken",
-        "createTitle": "Parkitem aanmaken",
-        "editTitle": "Parkitem bewerken",
-        "category": "Categorie",
-        "type": "Type",
-        "subtype": "Subtype",
-        "zone": "Zone",
-        "deleteConfirm": "Dit item verwijderen?",
-        "itemName": "Item name",
-        "generalLocation": "General location",
-        "generalLocationHelp": "Main point of the item in the park. Specific attraction points can be filled in below.",
-        "saveBeforePhotos": "Save the attraction first before attaching photos.",
-        "attractionSectionTitle": "Attraction configuration",
-        "attractionSectionDescription": "This section is only displayed for items in the Attraction category. Every field is optional.",
-        "locationsTitle": "Specific locations",
-        "locationsHelp": "Lets you store separate coordinates for entrance, exit, fast pass entrance and reduced mobility entrance.",
-        "details": {
-          "manufacturer": "Manufacturer",
-          "model": "Model",
-          "openingDate": "Opening date",
-          "closingDate": "Closing date",
-          "durationInSeconds": "Duration (seconds)",
-          "capacityPerHour": "Capacity per hour",
-          "heightInMeters": "Height (m)",
-          "lengthInMeters": "Length (m)",
-          "speedInKmH": "Speed (km/h)",
-          "dropInMeters": "Drop (m)",
-          "inversionCount": "Inversion count",
-          "minimumHeightInCm": "Minimum height (cm)",
-          "maximumHeightInCm": "Maximum height (cm)",
-          "minimumAge": "Minimum age",
-          "trainCount": "Train count",
-          "carsPerTrain": "Cars per train",
-          "ridersPerVehicle": "Riders per vehicle",
-          "hasSingleRider": "Single rider queue",
-          "hasFastPass": "Fast pass available",
-          "isAccessibleForReducedMobility": "Reduced mobility accessible",
-          "isIndoor": "Indoor attraction",
-          "isWaterAttraction": "Water attraction",
-          "manufacturerPlaceholder": "Select a manufacturer",
-          "waterExposureLevel": "Water exposure level",
-          "waterExposureLevelPlaceholder": "Select a level"
-        },
-        "locationFields": {
-          "entrance": "Entrance",
-          "exit": "Exit",
-          "fastPassEntrance": "Fast pass entrance",
-          "reducedMobilityEntrance": "Reduced mobility entrance"
-        },
-        "photos": {
-          "sectionTitle": "Attraction photos",
-          "currentTitle": "Current photo",
-          "uploadTitle": "Add a photo",
-          "uploadButton": "Upload photo",
-          "historyTitle": "Photo history",
-          "empty": "No photo for this attraction yet.",
-          "noCurrent": "No current photo selected.",
-          "currentLabel": "Current",
-          "noDescription": "No description",
-          "alt": "Attraction photo",
-          "descriptionPlaceholder": "Optional photo description",
-          "deleteConfirm": "Delete this photo?",
-          "selectedCount": "{{count}} file(s) selected",
-          "uploadSuccess": "{{count}} photo(s) uploaded successfully.",
-          "uploadError": "An error occurred after {{count}} upload(s).",
-          "currentSetSuccess": "Current photo updated.",
-          "deleteSuccess": "Photo deleted."
-        },
-        "attractionConfigurationTitle": "Attraction configuration",
-        "attractionConfigurationHelp": "This section is only displayed for Attraction items. All fields are optional.",
-        "accessConditionsTitle": "Access conditions",
-        "accessConditionsHelp": "Add structured rules here for heights, ages, medical restrictions or special access. Labels remain customizable for each attraction.",
-        "accessConditionsPreset": "Condition type to add",
-        "addAccessCondition": "Add condition",
-        "accessConditionsEmpty": "No access condition defined yet.",
-        "accessConditionIndex": "Condition #{{index}}",
-        "accessConditionTypes": {
-          "minHeight": "Minimum height",
-          "minHeightAccompanied": "Minimum height with accompaniment",
-          "maxHeight": "Maximum height",
-          "minAge": "Minimum age",
-          "minAgeAccompanied": "Minimum age with accompaniment",
-          "pregnancyRestriction": "Pregnancy restriction",
-          "heartRestriction": "Cardiac restriction",
-          "backNeckRestriction": "Back or neck restriction",
-          "wheelchairTransferRequired": "Wheelchair transfer required",
-          "accessPassRequired": "Access pass required",
-          "custom": "Custom condition"
-        },
-        "accessConditionUnits": {
-          "centimeter": "Centimeters",
-          "year": "Years"
-        },
-        "accessConditionFields": {
-          "type": "Condition type",
-          "value": "Value",
-          "unit": "Unit",
-          "requiresAccompaniment": "Accompaniment required",
-          "minimumCompanionAge": "Minimum companion age",
-          "label": "Localized label",
-          "description": "Localized description",
-          "labelPlaceholder": "Condition label in {{language}}",
-          "descriptionPlaceholder": "Condition description in {{language}}"
-        },
-        "waterExposureLevels": {
-          "none": "None",
-          "splash": "Light splash",
-          "moderate": "Moderate",
-          "soaking": "Soaking",
-          "extremeSoaking": "Extreem natmakend"
-        },
-        "refactorHint": "De editor is nu opgesplitst in thematische secties om de pagina lichter en overzichtelijker te maken.",
-        "tabs": {
-          "general": "Algemeen",
-          "details": "Technische details",
-          "accessConditions": "Toegangsvoorwaarden",
-          "locations": "Specifieke locaties",
-          "photos": "Foto's"
-        },
-        "accessConditionsCount": "{{count}} toegangsvoorwaarde(n)",
-        "accessConditionsSummary": "Beheer de gedetailleerde regels hier in plaats van het hoofdformulier te overladen.",
-        "locationSummary": "{{count}} / {{total}} specifieke locatie(s) gedefinieerd",
-        "locationSummaryHelp": "Elk punt kan leeg blijven. Gebruik de kaart alleen voor echt nuttige coördinaten.",
-        "locationEditorTitle": "Kaarteditor · {{location}}",
-        "locationEditorHelp": "Klik op de kaart om het geselecteerde punt te maken of te verplaatsen. Handmatige coördinaten blijven als fallback beschikbaar.",
-        "locationDefined": "Gedefinieerd",
-        "locationNotDefined": "Niet gedefinieerd",
-        "useGeneralLocation": "Algemene locatie gebruiken",
-        "clearSelectedLocation": "Geselecteerd punt wissen",
-        "editorStatus": {
-          "saving": "Opslaan...",
-          "unsavedChanges": "Niet-opgeslagen wijzigingen",
-          "upToDate": "Bijgewerkt"
-        },
-        "editorActions": {
-          "backToItems": "Terug naar de elementenlijst",
-          "saveAll": "Alles opslaan",
-          "saveAndClose": "Opslaan en afronden",
-          "saveSection": "Deze sectie opslaan",
-          "useParkLocation": "Parklocatie gebruiken"
-        },
-        "saveMessages": {
-          "successSummary": "Opgeslagen",
-          "sectionSaved": "De huidige sectie is opgeslagen en je blijft op deze pagina.",
-          "itemSaved": "Het parkelement is opgeslagen.",
-          "itemCreated": "Het parkelement is aangemaakt en je blijft in de bewerkingsmodus.",
-          "errorSummary": "Opslaan mislukt",
-          "errorDetail": "Er is een fout opgetreden bij het opslaan van het parkelement."
-        }
-      },
-      "refactorHint": "De editor is nu opgesplitst in thematische tabbladen om de pagina lichter en overzichtelijker te maken.",
-      "visibilityHelp": "Bepaalt of dit park zichtbaar is in de publieke applicatie.",
-      "locationSectionTitle": "Locatie en adres",
-      "locationSectionHelp": "Definieer hier het hoofdpunt van het park en het postadres.",
-      "tabs": {
-        "general": "Algemeen",
-        "location": "Locatie",
-        "descriptions": "Beschrijvingen",
-        "logos": "Logo’s"
-      },
-      "editorStatus": {
-        "saving": "Opslaan...",
-        "unsavedChanges": "Niet-opgeslagen wijzigingen",
-        "upToDate": "Up-to-date"
-      },
-      "editorActions": {
-        "backToParks": "Terug naar de parklijst",
-        "saveAll": "Alles opslaan",
-        "saveAndClose": "Opslaan en afsluiten",
-        "saveSection": "Deze sectie opslaan"
-      },
-      "saveMessages": {
-        "successSummary": "Opgeslagen",
-        "sectionSaved": "De huidige sectie is opgeslagen en je blijft op de pagina.",
-        "parkSaved": "Het park is opgeslagen.",
-        "parkCreated": "Het park is aangemaakt en de bewerking gaat verder op deze pagina.",
-        "errorSummary": "Opslaan mislukt",
-        "errorDetail": "Er is een fout opgetreden tijdens het opslaan van het park."
-      },
-      "management": {
-        "sectionTitle": "Beheer van parkinhoud",
-        "sectionHelp": "Snelle toegang tot de zones en elementen die aan dit park zijn gekoppeld."
       }
     },
-    "loading": "Laden...",
-    "operators": {
-      "total": "Exploitanten: {{count}}",
-      "searchPlaceholder": "Zoek een exploitant",
-      "create": "Exploitant aanmaken",
-      "name": "Naam",
-      "actions": "Acties",
-      "edit": "Bewerken",
-      "empty": "Geen exploitanten gevonden.",
-      "editPage": {
-        "createTitle": "Exploitant aanmaken",
-        "updateTitle": "Exploitant bewerken",
-        "name": "Naam",
-        "description": "Beschrijving"
-      }
-    },
-    "parkFounders": {
-      "editPage": {
-        "createTitle": "Oprichter aanmaken",
-        "updateTitle": "Oprichter bewerken",
-        "name": "Naam",
-        "biography": "Biografie"
-      }
-    },
-    "manufacturers": {
-      "total": "Manufacturers: {{count}}",
-      "searchPlaceholder": "Search a manufacturer",
-      "create": "Create a manufacturer",
-      "name": "Name",
-      "attractionCount": "Attached attractions",
-      "actions": "Actions",
-      "edit": "Edit",
-      "empty": "No manufacturer found.",
-      "editPage": {
-        "createTitle": "Create a manufacturer",
-        "updateTitle": "Edit manufacturer",
-        "name": "Name",
-        "biography": "Biography"
-      }
-    },
-    "parkItems": {
-      "title": "Park items",
-      "subtitle": "Cross-park view of every park item for faster editing.",
-      "searchPlaceholder": "Search a park, item or type",
-      "parkFilter": "Filter by park",
-      "empty": "No items found.",
-      "columns": {
-        "park": "Park",
-        "item": "Item",
-        "type": "Type",
-        "visibility": "Visibility",
-        "actions": "Actions"
-      },
-      "allParks": "All parks"
-    }
+    "loading": "Loading..."
   },
   "validation": {
     "required": "Dit veld is verplicht"
   },
   "actions": {
     "cancel": "Annuleren",
-    "save": "Opslaan",
-    "backToPark": "Terug naar het park",
-    "backToList": "Terug"
-  },
-  "parkDetail": {
-    "descriptionTitle": "Beschrijving",
-    "subtitle": "Gedetailleerde informatie over dit park en zijn geografische locatie.",
-    "exploreButton": "Verken het park",
-    "countryCode": "Landcode",
-    "latitude": "Breedtegraad",
-    "longitude": "Lengtegraad",
-    "loading": "Park wordt geladen..."
-  },
-  "parkExplorer": {
-    "headerChip": "Parkverkenning",
-    "subtitle": "Verken het park via de zones en de belangrijkste categorieën elementen die het bevat.",
-    "overviewTitle": "Hele park",
-    "unassignedTitle": "Niet-toegewezen items",
-    "totalItems": "{{count}} item(s)",
-    "byCategory": "Per categorie",
-    "byType": "Per type",
-    "loading": "Verkenning wordt geladen...",
-    "categories": {
-      "attraction": "Attracties",
-      "restaurant": "Restaurants",
-      "hotel": "Hotels",
-      "animal": "Dieren",
-      "show": "Shows",
-      "shop": "Winkels",
-      "service": "Diensten",
-      "transport": "Transport",
-      "other": "Overig"
-    },
-    "types": {
-      "rollerCoaster": "Achtbanen",
-      "waterRide": "Waterattracties",
-      "flatRide": "Vlakke attracties",
-      "darkRide": "Dark rides",
-      "familyRide": "Familieattracties",
-      "thrillRide": "Thrillattracties",
-      "animalExhibit": "Dierenzones",
-      "restaurant": "Restaurants",
-      "snack": "Snacks",
-      "hotel": "Hotels",
-      "show": "Shows",
-      "shop": "Winkels",
-      "service": "Diensten",
-      "transport": "Transport",
-      "other": "Overig",
-      "attraction": "Generic attraction",
-      "transportRide": "Transport rides",
-      "walkThrough": "Walkthrough attractions",
-      "playground": "Playgrounds",
-      "interactiveExperience": "Interactive experiences",
-      "observationRide": "Observation rides"
-    }
-  },
-  "shared": {
-    "imageUpload": {
-      "title": "Upload an image",
-      "choose": "Choose an image",
-      "upload": "Upload",
-      "cancel": "Cancel",
-      "dragAndDrop": "Drag and drop an image here, or click to select one.",
-      "selectedFile": "Selected file",
-      "invalidFile": "Please select a valid image file.",
-      "invalidSize": "The selected image is too large.",
-      "noImageSelected": "Please select an image before uploading.",
-      "uploading": "Uploading...",
-      "uploadError": "An error occurred while uploading the image.",
-      "descriptionPlaceholder": "Description"
-    }
-  },
-  "common": {
-    "loadingTitle": "Loading",
-    "loadingMessage": "Content is loading.",
-    "errorTitle": "An error occurred",
-    "errorMessage": "The requested content could not be loaded.",
-    "emptyTitle": "Nothing to display",
-    "emptyMessage": "No content is available at the moment."
-  },
-  "parks": {
-    "heroBadge": "Public catalog",
-    "title": "Parks",
-    "subtitle": "Browse the parks already managed in the administration area and explore their public details.",
-    "loadingTitle": "Loading parks",
-    "loadingMessage": "The parks list is being loaded.",
-    "errorTitle": "Unable to load parks",
-    "errorMessage": "The parks list could not be loaded.",
-    "emptyTitle": "No park available",
-    "emptyMessage": "No park is available for display.",
-    "search": {
-      "label": "Search",
-      "placeholder": "Search a park by name",
-      "clear": "Clear"
-    },
-    "fields": {
-      "country": "Country",
-      "city": "City",
-      "address": "Address",
-      "website": "Website",
-      "coordinates": "Coordinates",
-      "latitude": "Latitude",
-      "longitude": "Longitude"
-    },
-    "actions": {
-      "viewDetails": "View details",
-      "website": "Website",
-      "backToList": "Back to list"
-    },
-    "detail": {
-      "heroBadge": "Park overview",
-      "heroDescription": "Discover the practical information currently available for this park.",
-      "loadingTitle": "Loading park",
-      "loadingMessage": "The park page is being loaded.",
-      "errorTitle": "Unable to load the park",
-      "errorMessage": "The requested park could not be loaded.",
-      "practical": {
-        "title": "Practical information",
-        "subtitle": "The visitor essentials currently available for this park."
-      },
-      "location": {
-        "title": "Location",
-        "subtitle": "Find the park on the map and review its coordinates."
-      },
-      "nearby": {
-        "title": "Nearby parks",
-        "subtitle": "Continue your discovery with parks located around this destination.",
-        "loadingTitle": "Loading nearby parks",
-        "loadingMessage": "Nearby parks are being loaded.",
-        "errorTitle": "Unable to load nearby parks",
-        "errorMessage": "Nearby parks could not be loaded.",
-        "emptyTitle": "No nearby park",
-        "emptyMessage": "No nearby park has been found around this destination."
-      }
-    }
+    "save": "Opslaan"
   }
 }

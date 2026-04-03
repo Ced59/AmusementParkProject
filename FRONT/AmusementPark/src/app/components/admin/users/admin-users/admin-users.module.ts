@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { AdminUsersRoutingModule } from './admin-users-routing.module';
 import { AdminUsersComponent } from './admin-users.component';
-import {TableModule} from "primeng/table";
-import {TranslateModule} from "@ngx-translate/core";
-import {TagModule} from "primeng/tag";
-import {CardModule} from "primeng/card";
-
+import { ProfilePageModule } from '../../../login-register/profile/profile-page.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,10 @@ import {CardModule} from "primeng/card";
     TableModule,
     TranslateModule,
     TagModule,
-    CardModule
+    CardModule,
+    ButtonModule,
+    ProfilePageModule
   ]
 })
-export class AdminUsersModule { }
+export class AdminUsersModule {
+}

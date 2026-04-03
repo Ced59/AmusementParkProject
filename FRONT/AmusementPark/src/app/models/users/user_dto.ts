@@ -1,13 +1,15 @@
+import { AppRole } from './app-role';
+
 export interface UserDto {
-  "email": string;
-  "firstName": string;
-  "lastName": string;
-  "isActivated": string;
-  "isBlocked": string;
-  "roles": string[];
-  "preferredLanguage": string;
-  "avatarUrl": string;
-  "id": string;
-  "createdAt": boolean;
-  "updatedAt": boolean;
+  email: string;
+  firstName: string | null;
+  lastName: string | null;
+  isActivated: boolean;
+  isBlocked: boolean;
+  roles: AppRole[];
+  preferredLanguage: string | null;
+  avatarUrl: string | null;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
 }
