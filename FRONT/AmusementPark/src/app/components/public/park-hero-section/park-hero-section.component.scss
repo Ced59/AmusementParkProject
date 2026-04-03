@@ -60,7 +60,8 @@
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
 }
 
-.park-hero__visual img {
+/* Ciblage de l'<img> rendu à l'intérieur du composant app-image-display */
+:host ::ng-deep .park-hero__visual img {
   width: min(100%, 320px);
   max-height: 10rem;
   object-fit: contain;
@@ -72,7 +73,8 @@
     linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
 }
 
-.park-hero__fallback {
+/* Ciblage du placeholder rendu à l'intérieur du composant app-image-display */
+:host ::ng-deep .park-hero__visual .image-display__placeholder {
   width: 5rem;
   height: 5rem;
   border-radius: 999px;
@@ -80,7 +82,11 @@
   place-items: center;
   background: var(--app-primary-soft);
   color: var(--app-heading);
-  font-size: 1.8rem;
+
+  i {
+    opacity: 1;
+    font-size: 1.8rem;
+  }
 }
 
 @media (max-width: 900px) {

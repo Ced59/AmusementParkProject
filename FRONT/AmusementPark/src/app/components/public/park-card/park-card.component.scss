@@ -41,13 +41,15 @@
     linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
 }
 
-.park-card__logo {
+/* Ciblage de l'<img> rendu à l'intérieur du composant app-image-display */
+:host ::ng-deep .park-card__logo {
   width: min(100%, 220px);
   max-height: 6rem;
   object-fit: contain;
 }
 
-.park-card__fallback {
+/* Ciblage du placeholder rendu à l'intérieur du composant app-image-display */
+:host ::ng-deep .park-card__visual .image-display__placeholder {
   width: 4rem;
   height: 4rem;
   border-radius: 999px;
@@ -56,6 +58,11 @@
   background: var(--app-primary-soft);
   color: var(--app-heading);
   font-size: 1.4rem;
+
+  i {
+    opacity: 1;
+    font-size: 1.4rem;
+  }
 }
 
 .park-card__body {

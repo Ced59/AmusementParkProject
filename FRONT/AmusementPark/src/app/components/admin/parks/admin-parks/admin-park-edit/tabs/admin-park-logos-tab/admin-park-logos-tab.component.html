@@ -20,10 +20,11 @@
           <div class="logo-card__body">
             <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
               @if (currentLogo) {
-                <img
-                  [src]="currentLogo.imageUrl"
+                <app-image-display
+                  [imageId]="currentLogo.id"
                   [alt]="'admin.parks.logos.alt' | translate"
-                  class="logo-preview" />
+                  imgClass="logo-preview">
+                </app-image-display>
               }
               @if (!currentLogo) {
                 <span class="text-color-secondary text-center logo-empty-text">
@@ -107,9 +108,11 @@
               <div class="col-12 md:col-4 lg:col-3">
                 <p-card [ngClass]="{ 'border-primary': logo.isCurrent }">
                   <div class="flex flex-column align-items-center">
-                    <img [src]="logo.imageUrl"
+                    <app-image-display
+                      [imageId]="logo.id"
                       [alt]="'admin.parks.logos.alt' | translate"
-                      class="logo-history-preview mb-2" />
+                      imgClass="logo-history-preview">
+                    </app-image-display>
                     @if (logo.isCurrent) {
                       <p-tag
                         [value]="'admin.parks.logos.currentLabel' | translate"

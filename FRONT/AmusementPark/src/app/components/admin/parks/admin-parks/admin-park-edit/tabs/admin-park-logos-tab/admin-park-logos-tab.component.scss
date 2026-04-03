@@ -21,18 +21,32 @@
   border-radius: var(--app-radius-lg, 1rem);
 }
 
-.logo-preview {
+/* Ciblage de l'<img> logo courant rendu dans app-image-display */
+:host ::ng-deep .logo-preview {
   max-width: 100%;
   max-height: 150px;
   object-fit: contain;
   display: block;
 }
 
-.logo-history-preview {
+/* Ciblage de l'<img> logo historique rendu dans app-image-display */
+:host ::ng-deep .logo-history-preview {
   max-width: 100%;
   max-height: 80px;
   object-fit: contain;
   display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Placeholder dans le contexte du logo courant */
+:host ::ng-deep .logo-card__body .image-display__placeholder {
+  min-height: 80px;
+}
+
+/* Placeholder dans le contexte de l'historique */
+:host ::ng-deep .p-card .image-display__placeholder {
+  min-height: 60px;
+  margin-bottom: 0.5rem;
 }
 
 .logo-card {

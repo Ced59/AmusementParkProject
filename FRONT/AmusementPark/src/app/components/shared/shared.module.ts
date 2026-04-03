@@ -17,6 +17,7 @@ import { EntitySelectComponent } from './entity-select/entity-select.component';
 import { EditorSaveToolbarComponent } from './editor-save-toolbar/editor-save-toolbar.component';
 import { OwnerImageUploadDialogComponent } from './owner-image-upload-dialog/owner-image-upload-dialog.component';
 import { PageStateComponent } from './page-state/page-state.component';
+import { ImageDisplayComponent } from './image-display/image-display.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PageStateComponent } from './page-state/page-state.component';
     EntitySelectComponent,
     EditorSaveToolbarComponent,
     OwnerImageUploadDialogComponent,
-    PageStateComponent
+    PageStateComponent,
+    ImageDisplayComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { PageStateComponent } from './page-state/page-state.component';
     EntitySelectComponent,
     EditorSaveToolbarComponent,
     OwnerImageUploadDialogComponent,
-    PageStateComponent
+    PageStateComponent,
+    ImageDisplayComponent
   ]
 })
 export class SharedModule { }

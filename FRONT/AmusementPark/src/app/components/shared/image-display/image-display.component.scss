@@ -1,0 +1,15 @@
+:host {
+  display: contents;
+}
+
+.image-display__placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+
+  i {
+    font-size: 2rem;
+    opacity: 0.4;
+  }
+}

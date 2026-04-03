@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
 import { Park } from '../../../models/parks/park';
 import { resolveLocalizedValue } from '../../../commons/localized-item.utils';
 import { buildParkAddressLine, buildParkLocationLine } from '../../../commons/park-presentation.utils';
@@ -14,12 +13,8 @@ export class ParkHeroSectionComponent {
   @Input() park: Park | null = null;
   @Input() currentLang = 'en';
 
-  constructor(private readonly apiService: ApiService) {
-  }
-
-  get logoUrl(): string | null {
-    const imageId: string | undefined = this.park?.currentLogoImageId?.trim();
-    return imageId ? this.apiService.buildImageUrl(imageId) : null;
+  get hasLogoImageId(): boolean {
+    return !!this.park?.currentLogoImageId?.trim();
   }
 
   get locationLine(): string | null {

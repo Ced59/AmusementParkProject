@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
 import { Park } from '../../../models/parks/park';
 import { stripHtml, resolveLocalizedValue } from '../../../commons/localized-item.utils';
 import { buildParkAddressLine, buildParkLocationLine, buildParkSlug } from '../../../commons/park-presentation.utils';
@@ -15,9 +14,6 @@ export class ParkCardComponent {
   @Input() currentLang = 'en';
   @Input() compact = false;
 
-  constructor(private readonly apiService: ApiService) {
-  }
-
   get parkLink(): string[] | null {
     if (!this.park?.id || !this.park?.name) {
       return null;
@@ -26,9 +22,8 @@ export class ParkCardComponent {
     return ['/', this.currentLang, 'park', this.park.id, buildParkSlug(this.park.name)];
   }
 
-  get logoUrl(): string | null {
-    const imageId: string | undefined = this.park?.currentLogoImageId?.trim();
-    return imageId ? this.apiService.buildImageUrl(imageId) : null;
+  get hasLogoImageId(): boolean {
+    return !!this.park?.currentLogoImageId?.trim();
   }
 
   get locationLine(): string | null {

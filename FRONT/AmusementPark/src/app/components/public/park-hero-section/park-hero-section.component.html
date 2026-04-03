@@ -31,11 +31,10 @@
     </div>
   </div>
 
-  <div class="park-hero__visual" [class.park-hero__visual--placeholder]="!logoUrl">
-    <img *ngIf="logoUrl" [src]="logoUrl" [alt]="currentPark.name || 'Park logo'" />
-
-    <div *ngIf="!logoUrl" class="park-hero__fallback">
-      <i class="pi pi-image"></i>
-    </div>
+  <div class="park-hero__visual" [class.park-hero__visual--placeholder]="!hasLogoImageId">
+    <app-image-display
+      [imageId]="currentPark.currentLogoImageId ?? null"
+      [alt]="currentPark.name || 'Park logo'">
+    </app-image-display>
   </div>
 </section>
