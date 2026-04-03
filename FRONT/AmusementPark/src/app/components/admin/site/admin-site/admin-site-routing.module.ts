@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AdminSiteComponent} from "./admin-site.component";
+
 
 const routes: Routes = [
-  { path: '', component: AdminSiteComponent }
+  { path: '', loadComponent: () => import('./admin-site.component').then(m => m.AdminSiteComponent) }
 ];
 
 @NgModule({

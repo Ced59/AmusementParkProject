@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { AboutComponent } from './components/about/about.component';
+
+
 import { languageGuard } from './guards/language.guard';
-import { ParkDetailComponent } from './components/park-detail/park-detail.component';
-import { ParkListComponent } from './components/park-list/park-list.component';
-import { ParkExplorerComponent } from './components/park-explorer/park-explorer.component';
-import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
-import { ConfirmAccountPageComponent } from './components/login-register/confirm-account-page/confirm-account-page.component';
-import { ForgotPasswordPageComponent } from './components/login-register/forgot-password-page/forgot-password-page.component';
-import { ResetPasswordPageComponent } from './components/login-register/reset-password-page/reset-password-page.component';
+
+
+
+
+
+
+
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
 
@@ -18,18 +18,18 @@ const routes: Routes = [
     path: ':lang',
     canActivate: [languageGuard],
     children: [
-      { path: 'home', component: HomeComponent },
-      { path: 'parks', component: ParkListComponent },
-      { path: 'about', component: AboutComponent },
+      { path: 'home', loadComponent: () => import('./components/home/home.component').then(m => m.HomeComponent) },
+      { path: 'parks', loadComponent: () => import('./components/park-list/park-list.component').then(m => m.ParkListComponent) },
+      { path: 'about', loadComponent: () => import('./components/about/about.component').then(m => m.AboutComponent) },
       { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then(m => m.ProfileModule) },
-      { path: 'confirm-account', component: ConfirmAccountPageComponent },
-      { path: 'forgot-password', component: ForgotPasswordPageComponent },
-      { path: 'reset-password', component: ResetPasswordPageComponent },
-      { path: 'park/:id/:slug/explore', component: ParkExplorerComponent },
-      { path: 'park/:id/:slug', component: ParkDetailComponent },
+      { path: 'confirm-account', loadComponent: () => import('./components/login-register/confirm-account-page/confirm-account-page.component').then(m => m.ConfirmAccountPageComponent) },
+      { path: 'forgot-password', loadComponent: () => import('./components/login-register/forgot-password-page/forgot-password-page.component').then(m => m.ForgotPasswordPageComponent) },
+      { path: 'reset-password', loadComponent: () => import('./components/login-register/reset-password-page/reset-password-page.component').then(m => m.ResetPasswordPageComponent) },
+      { path: 'park/:id/:slug/explore', loadComponent: () => import('./components/park-explorer/park-explorer.component').then(m => m.ParkExplorerComponent) },
+      { path: 'park/:id/:slug', loadComponent: () => import('./components/park-detail/park-detail.component').then(m => m.ParkDetailComponent) },
       {
         path: 'admin',
-        component: AdminDashboardComponent,
+        loadComponent: () => import('./components/admin/admin-dashboard/admin-dashboard.component').then(m => m.AdminDashboardComponent),
         canActivate: [authGuard, adminGuard],
         children: [
           {

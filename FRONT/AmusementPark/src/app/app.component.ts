@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslationService } from './services/translation.service';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { Bind } from 'primeng/bind';
+import { Toast } from 'primeng/toast';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: false
+    imports: [TopbarComponent, SidebarComponent, RouterOutlet, Bind, Toast]
 })
 export class AppComponent implements OnInit {
   title = 'Amusement Parks';

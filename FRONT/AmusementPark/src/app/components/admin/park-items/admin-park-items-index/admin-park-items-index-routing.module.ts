@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdminParkItemsIndexComponent } from './admin-park-items-index.component';
+
 
 const routes: Routes = [
-  { path: '', component: AdminParkItemsIndexComponent }
+  { path: '', loadComponent: () => import('./admin-park-items-index.component').then(m => m.AdminParkItemsIndexComponent) }
 ];
 
 @NgModule({

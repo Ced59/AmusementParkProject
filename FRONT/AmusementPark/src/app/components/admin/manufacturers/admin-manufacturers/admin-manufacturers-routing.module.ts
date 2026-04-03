@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminManufacturersComponent } from './admin-manufacturers.component';
-import { AdminManufacturerEditComponent } from '../admin-manufacturer-edit/admin-manufacturer-edit.component';
+
+
 
 const routes: Routes = [
-  { path: '', component: AdminManufacturersComponent },
-  { path: 'new', component: AdminManufacturerEditComponent },
-  { path: 'edit/:id', component: AdminManufacturerEditComponent }
+  { path: '', loadComponent: () => import('./admin-manufacturers.component').then(m => m.AdminManufacturersComponent) },
+  { path: 'new', loadComponent: () => import('../admin-manufacturer-edit/admin-manufacturer-edit.component').then(m => m.AdminManufacturerEditComponent) },
+  { path: 'edit/:id', loadComponent: () => import('../admin-manufacturer-edit/admin-manufacturer-edit.component').then(m => m.AdminManufacturerEditComponent) }
 ];
 
 @NgModule({

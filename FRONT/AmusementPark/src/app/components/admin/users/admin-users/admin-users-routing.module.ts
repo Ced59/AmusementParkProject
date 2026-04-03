@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdminUsersComponent } from './admin-users.component';
-import { AdminUserManagementComponent } from '../admin-user-management/admin-user-management.component';
+
+
 
 const routes: Routes = [
-  { path: '', component: AdminUsersComponent },
-  { path: ':id', component: AdminUserManagementComponent }
+  { path: '', loadComponent: () => import('./admin-users.component').then(m => m.AdminUsersComponent) },
+  { path: ':id', loadComponent: () => import('../admin-user-management/admin-user-management.component').then(m => m.AdminUserManagementComponent) }
 ];
 
 @NgModule({

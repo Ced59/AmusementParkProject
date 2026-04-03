@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminOperatorsComponent } from './admin-operators.component';
-import {AdminOperatorEditComponent} from "../admin-operator-edit/admin-operator-edit.component";
+
+
 
 
 const routes: Routes = [
-  { path: '', component: AdminOperatorsComponent },
-  { path: 'new', component: AdminOperatorEditComponent },
-  { path: 'edit/:id', component: AdminOperatorEditComponent }
+  { path: '', loadComponent: () => import('./admin-operators.component').then(m => m.AdminOperatorsComponent) },
+  { path: 'new', loadComponent: () => import('../admin-operator-edit/admin-operator-edit.component').then(m => m.AdminOperatorEditComponent) },
+  { path: 'edit/:id', loadComponent: () => import('../admin-operator-edit/admin-operator-edit.component').then(m => m.AdminOperatorEditComponent) }
 ];
 
 @NgModule({
