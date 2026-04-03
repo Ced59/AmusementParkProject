@@ -1,0 +1,146 @@
+:host {
+  display: block;
+}
+
+.admin-user-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-user-toolbar {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.admin-user-card {
+  border-radius: var(--app-radius-xl);
+}
+
+.profile-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.profile-avatar-container {
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+}
+
+.profile-avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  border: 1px solid var(--app-border);
+}
+
+.profile-meta {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.profile-name-block {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.profile-name-block h2 {
+  margin: 0;
+}
+
+.profile-email {
+  opacity: 0.8;
+}
+
+.profile-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.profile-form,
+.password-form,
+.security-actions {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.field-full {
+  grid-column: 1 / -1;
+}
+
+.field input,
+.field ::ng-deep .p-select {
+  width: 100%;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.role-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.role-item,
+.security-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--app-radius-md);
+  border: 1px solid var(--app-border);
+  background: var(--app-surface-2);
+}
+
+.role-state {
+  opacity: 0.8;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .profile-header,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-header {
+    text-align: center;
+  }
+
+  .role-item,
+  .security-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-actions {
+    justify-content: stretch;
+  }
+
+  .form-actions button,
+  .role-item button,
+  .security-row button {
+    width: 100%;
+  }
+}

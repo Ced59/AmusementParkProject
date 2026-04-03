@@ -1,0 +1,196 @@
+<app-page-state
+  [state]="pageState"
+  loadingTitleKey="admin.loading"
+  loadingMessageKey="admin.loading"
+  errorTitleKey="user-profile.errorTitle"
+  errorMessageKey="user-profile.errorMessage">
+
+  <div class="admin-user-page">
+    <div class="admin-user-toolbar">
+      <button
+        pButton
+        type="button"
+        icon="pi pi-arrow-left"
+        class="p-button-text"
+        [label]="'admin.users.backToList' | translate"
+        (click)="navigateBack()">
+      </button>
+    </div>
+
+    <p-card
+      *ngIf="user as currentUser"
+      [header]="'admin.users.profileTitle' | translate"
+      class="admin-user-card">
+
+      <div class="profile-header">
+        <div class="profile-avatar-container">
+          <img [src]="avatarUrl" class="profile-avatar" alt="User avatar">
+          <button
+            pButton
+            type="button"
+            [label]="'user-profile.modify' | translate"
+            class="p-button-text p-button-sm"
+            (click)="openAvatarDialog()">
+          </button>
+        </div>
+
+        <div class="profile-meta">
+          <div class="profile-name-block">
+            <h2>{{ currentUser.firstName }} {{ currentUser.lastName }}</h2>
+            <span class="profile-email">{{ currentUser.email }}</span>
+          </div>
+
+          <div class="profile-badges">
+            <p-tag
+              [severity]="currentUser.isBlocked ? 'danger' : 'success'"
+              [value]="(currentUser.isBlocked ? 'admin.users.status.blocked' : 'admin.users.status.active') | translate">
+            </p-tag>
+            <ng-container *ngFor="let role of currentUser.roles">
+              <p-tag [value]="role"></p-tag>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+      <form [formGroup]="profileForm" class="profile-form" (ngSubmit)="saveProfile()">
+        <div class="form-grid">
+          <div class="field">
+            <label for="admin-email">{{ 'user-profile.email' | translate }}</label>
+            <input id="admin-email" type="email" pInputText formControlName="email">
+          </div>
+
+          <div class="field">
+            <label for="admin-newEmail">{{ 'admin.users.newEmail' | translate }}</label>
+            <input id="admin-newEmail" type="email" pInputText formControlName="newEmail">
+          </div>
+
+          <div class="field">
+            <label for="admin-firstName">{{ 'user-profile.firstname' | translate }}</label>
+            <input id="admin-firstName" type="text" pInputText formControlName="firstName">
+          </div>
+
+          <div class="field">
+            <label for="admin-lastName">{{ 'user-profile.name' | translate }}</label>
+            <input id="admin-lastName" type="text" pInputText formControlName="lastName">
+          </div>
+
+          <div class="field field-full">
+            <label for="admin-preferredLanguage">{{ 'user-profile.preferred_language' | translate }}</label>
+            <p-select
+              inputId="admin-preferredLanguage"
+              [options]="languageOptions"
+              optionLabel="label"
+              optionValue="value"
+              formControlName="preferredLanguage"
+              appendTo="body">
+            </p-select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button
+            pButton
+            type="submit"
+            icon="pi pi-save"
+            [label]="'actions.save' | translate"
+            [loading]="savingProfile">
+          </button>
+        </div>
+      </form>
+    </p-card>
+
+    <p-card *ngIf="user" [header]="'admin.users.rolesTitle' | translate" class="admin-user-card">
+      <div class="role-grid">
+        <div class="role-item" *ngFor="let role of roleOptions">
+          <div>
+            <strong>{{ role }}</strong>
+            <div class="role-state">
+              {{ (hasRole(role) ? 'admin.users.roleAssigned' : 'admin.users.roleNotAssigned') | translate }}
+            </div>
+          </div>
+
+          <button
+            pButton
+            type="button"
+            [icon]="hasRole(role) ? 'pi pi-minus' : 'pi pi-plus'"
+            [label]="(hasRole(role) ? 'admin.users.removeRole' : 'admin.users.addRole') | translate"
+            [loading]="processingRole === role"
+            (click)="toggleRole(role)">
+          </button>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card *ngIf="user" [header]="'admin.users.securityTitle' | translate" class="admin-user-card">
+      <div class="security-actions">
+        <div class="security-row">
+          <div>
+            <strong>{{ 'admin.users.blockingTitle' | translate }}</strong>
+            <div class="role-state">
+              {{ (user.isBlocked ? 'admin.users.blockedDescription' : 'admin.users.activeDescription') | translate }}
+            </div>
+          </div>
+
+          <button
+            *ngIf="canBlockUser"
+            pButton
+            type="button"
+            [severity]="user.isBlocked ? 'success' : 'danger'"
+            [label]="(user.isBlocked ? 'admin.users.unlock' : 'admin.users.block') | translate"
+            [loading]="blockingActionInProgress"
+            (click)="toggleBlockedStatus()">
+          </button>
+        </div>
+
+        <form
+          *ngIf="canManagePassword"
+          [formGroup]="passwordForm"
+          class="password-form"
+          (ngSubmit)="changePassword()">
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="admin-newPassword">{{ 'admin.users.password' | translate }}</label>
+              <input id="admin-newPassword" type="password" pInputText formControlName="newPassword">
+            </div>
+
+            <div class="field">
+              <label for="admin-newPasswordConfirm">{{ 'admin.users.passwordConfirm' | translate }}</label>
+              <input id="admin-newPasswordConfirm" type="password" pInputText formControlName="newPasswordConfirm">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button
+              pButton
+              type="submit"
+              icon="pi pi-key"
+              [label]="'admin.users.changePassword' | translate"
+              [loading]="savingPassword">
+            </button>
+          </div>
+        </form>
+      </div>
+    </p-card>
+  </div>
+</app-page-state>
+
+<app-owner-image-upload-dialog
+  [(visible)]="displayAvatarUploadDialog"
+  [ownerId]="user?.id || ''"
+  [ownerType]="userOwnerType"
+  [category]="avatarCategory"
+  [titleKey]="'user-profile.avatar.title'"
+  [dragAndDropHintKey]="'user-profile.avatar.dragAndDrop'"
+  [chooseButtonKey]="'user-profile.avatar.choose'"
+  [uploadButtonKey]="'user-profile.avatar.upload'"
+  [cancelButtonKey]="'user-profile.avatar.cancel'"
+  [selectedFileLabelKey]="'user-profile.avatar.selectedFile'"
+  [invalidFileKey]="'user-profile.avatar.invalidFile'"
+  [invalidSizeKey]="'user-profile.avatar.invalidSize'"
+  [noImageSelectedKey]="'user-profile.avatar.noImageSelected'"
+  [uploadingKey]="'user-profile.avatar.uploading'"
+  [withWatermark]="false"
+  (visibleChange)="onAvatarUploadDialogVisibleChange($event)"
+  (uploaded)="onAvatarUploaded($event)">
+</app-owner-image-upload-dialog>

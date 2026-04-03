@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TableLazyLoadEvent } from 'primeng/table';
 
@@ -11,16 +11,17 @@ import { ApiService } from '../../../../services/api.service';
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
   standalone: false,
-  styleUrls: ['./admin-users.component.scss']
+  styleUrls: ['./admin-users.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminUsersComponent implements OnInit {
   users: UserDto[] = [];
-  loading = false;
+  loading: boolean = false;
 
   pagination: Pagination | null = null;
-  totalRecords = 0;
-  pageSize = 10;
-  currentPage = 1;
+  totalRecords: number = 0;
+  pageSize: number = 10;
+  currentPage: number = 1;
 
   private static readonly DEFAULT_AVATAR: string =
     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">'
@@ -30,7 +31,8 @@ export class AdminUsersComponent implements OnInit {
 
   constructor(
     private readonly apiService: ApiService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -40,6 +42,7 @@ export class AdminUsersComponent implements OnInit {
 
   loadUsers(page: number, size: number): void {
     this.loading = true;
+    this.cdr.markForCheck();
 
     this.apiService.getUsers(page, size).subscribe({
       next: (response: UsersApiResponse) => {
@@ -51,10 +54,12 @@ export class AdminUsersComponent implements OnInit {
         this.currentPage = this.pagination?.currentPage ?? page;
 
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: (err: unknown) => {
         console.error('Error loading users', err);
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }
