@@ -15,12 +15,21 @@ import { ModalService } from '../../../../services/modal/modal.service';
 import { SharedService } from '../../../../services/shared/shared.service';
 import { TranslationService } from '../../../../services/translation.service';
 import { commitViewUpdate } from '../../../../utils/change-detection.utils';
+import { PageStateComponent } from '../../../shared/page-state/page-state.component';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { ButtonDirective } from 'primeng/button';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { InputText } from 'primeng/inputtext';
+import { OwnerImageUploadDialogComponent } from '../../../shared/owner-image-upload-dialog/owner-image-upload-dialog.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-profile-page',
-  templateUrl: './profile-page.component.html',
-  styleUrl: './profile-page.component.scss',
-  standalone: false
+    selector: 'app-profile-page',
+    templateUrl: './profile-page.component.html',
+    styleUrl: './profile-page.component.scss',
+    imports: [PageStateComponent, Bind, Card, ButtonDirective, NgIf, FormsModule, InputText, OwnerImageUploadDialogComponent, TranslateModule]
 })
 export class ProfilePageComponent implements OnInit, OnDestroy {
   user: UserDto | null = null;

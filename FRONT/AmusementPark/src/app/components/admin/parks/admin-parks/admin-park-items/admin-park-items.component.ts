@@ -1,17 +1,22 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
 import { ParkItem } from '../../../../../models/parks/park-item';
 import { ParkZone } from '../../../../../models/parks/park-zone';
 import { ApiService } from '../../../../../services/api.service';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { PrimeTemplate } from 'primeng/api';
+import { ButtonDirective } from 'primeng/button';
+import { TableModule } from 'primeng/table';
 
 @Component({
-  selector: 'app-admin-park-items',
-  templateUrl: './admin-park-items.component.html',
-  styleUrls: ['./admin-park-items.component.scss'],
-  standalone: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-admin-park-items',
+    templateUrl: './admin-park-items.component.html',
+    styleUrls: ['./admin-park-items.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [Bind, Card, PrimeTemplate, ButtonDirective, RouterLink, TableModule, TranslateModule]
 })
 export class AdminParkItemsComponent implements OnInit {
   parkId: string = '';

@@ -1,15 +1,21 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../../../services/api.service';
 import { ParkFounder } from '../../../../models/parks/park-founder';
 import { commitViewUpdate } from '../../../../utils/change-detection.utils';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { InputText } from 'primeng/inputtext';
+import { LocalizedRichTextEditorComponent } from '../../../shared/localized-rich-text-editor/localized-rich-text-editor.component';
+import { ButtonDirective } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-admin-founder-edit',
-  templateUrl: './admin-founder-edit.component.html',
-  styleUrls: ['./admin-founder-edit.component.scss'],
-  standalone: false
+    selector: 'app-admin-founder-edit',
+    templateUrl: './admin-founder-edit.component.html',
+    styleUrls: ['./admin-founder-edit.component.scss'],
+    imports: [Bind, Card, FormsModule, ReactiveFormsModule, InputText, LocalizedRichTextEditorComponent, ButtonDirective, TranslateModule]
 })
 export class AdminFounderEditComponent implements OnInit {
   form!: FormGroup;

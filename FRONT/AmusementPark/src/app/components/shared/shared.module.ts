@@ -20,37 +20,35 @@ import { PageStateComponent } from './page-state/page-state.component';
 import { ImageDisplayComponent } from './image-display/image-display.component';
 
 @NgModule({
-  declarations: [
-    LeafletMapComponent,
-    LocalizedRichTextEditorComponent,
-    LocalizedTextInputComponent,
-    EntitySelectComponent,
-    EditorSaveToolbarComponent,
-    OwnerImageUploadDialogComponent,
-    PageStateComponent,
-    ImageDisplayComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    TranslateModule,
-    EditorModule,
-    TabsModule,
-    ButtonModule,
-    SelectModule,
-    InputTextModule,
-    DialogModule
-  ],
-  exports: [
-    LeafletMapComponent,
-    LocalizedRichTextEditorComponent,
-    LocalizedTextInputComponent,
-    EntitySelectComponent,
-    EditorSaveToolbarComponent,
-    OwnerImageUploadDialogComponent,
-    PageStateComponent,
-    ImageDisplayComponent
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        RouterModule,
+        TranslateModule,
+        EditorModule,
+        TabsModule,
+        ButtonModule,
+        SelectModule,
+        InputTextModule,
+        DialogModule,
+        LeafletMapComponent,
+        LocalizedRichTextEditorComponent,
+        LocalizedTextInputComponent,
+        EntitySelectComponent,
+        EditorSaveToolbarComponent,
+        OwnerImageUploadDialogComponent,
+        PageStateComponent,
+        ImageDisplayComponent
+    ],
+    exports: [
+        LeafletMapComponent,
+        LocalizedRichTextEditorComponent,
+        LocalizedTextInputComponent,
+        EntitySelectComponent,
+        EditorSaveToolbarComponent,
+        OwnerImageUploadDialogComponent,
+        PageStateComponent,
+        ImageDisplayComponent
+    ]
 })
 export class SharedModule { }

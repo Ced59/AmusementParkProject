@@ -5,12 +5,16 @@ import { GoogleIdentityService } from '../../../services/auth/google-identity.se
 import { ToastMessageService } from '../../../services/messages/toast-message.service';
 import { SharedService } from '../../../services/shared/shared.service';
 import { UserToken } from '../../../models/users/user_token';
+import { Bind } from 'primeng/bind';
+import { ButtonDirective } from 'primeng/button';
+import { RegisterFormComponent } from '../register-form/register-form.component';
+import { LoginFormComponent } from '../login-form/login-form.component';
 
 @Component({
-  selector: 'app-auth-modal',
-  templateUrl: './auth-modal.component.html',
-  styleUrls: ['./auth-modal.component.scss'],
-  standalone: false
+    selector: 'app-auth-modal',
+    templateUrl: './auth-modal.component.html',
+    styleUrls: ['./auth-modal.component.scss'],
+    imports: [Bind, ButtonDirective, RegisterFormComponent, LoginFormComponent]
 })
 export class AuthModalComponent implements AfterViewInit {
   @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();

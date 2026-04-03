@@ -8,8 +8,8 @@ describe('SigninGoogleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SigninGoogleComponent]
-    })
+    imports: [SigninGoogleComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(SigninGoogleComponent);

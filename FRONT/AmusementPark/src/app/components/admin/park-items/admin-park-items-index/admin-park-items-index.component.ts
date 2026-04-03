@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { forkJoin, Observable } from 'rxjs';
 
 import { Park } from '../../../../models/parks/park';
@@ -9,13 +9,23 @@ import { ParksApiResponse } from '../../../../models/parks/parks_api_response';
 import { ApiResponse } from '../../../../models/shared/api_reponse';
 import { Pagination } from '../../../../models/shared/pagination';
 import { ApiService } from '../../../../services/api.service';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { FormsModule } from '@angular/forms';
+import { InputText } from 'primeng/inputtext';
+import { Select } from 'primeng/select';
+import { TableModule } from 'primeng/table';
+import { PrimeTemplate } from 'primeng/api';
+import { Tag } from 'primeng/tag';
+import { ButtonDirective } from 'primeng/button';
+import { Paginator } from 'primeng/paginator';
 
 @Component({
-  selector: 'app-admin-park-items-index',
-  templateUrl: './admin-park-items-index.component.html',
-  styleUrls: ['./admin-park-items-index.component.scss'],
-  standalone: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-admin-park-items-index',
+    templateUrl: './admin-park-items-index.component.html',
+    styleUrls: ['./admin-park-items-index.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [Bind, Card, FormsModule, InputText, Select, TableModule, PrimeTemplate, Tag, ButtonDirective, Paginator, TranslateModule]
 })
 export class AdminParkItemsIndexComponent implements OnInit {
   rows: ParkItemAdminRow[] = [];

@@ -1,12 +1,17 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapMarker } from '../../../../../../../models/map/map-marker';
+import { LeafletMapComponent } from '../../../../../../shared/leaflet-map/leaflet-map.component';
+import { Bind } from 'primeng/bind';
+import { InputText } from 'primeng/inputtext';
+import { ButtonDirective } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-admin-park-location-tab',
     templateUrl: './admin-park-location-tab.component.html',
     styleUrls: ['./admin-park-location-tab.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, LeafletMapComponent, Bind, InputText, ButtonDirective, TranslateModule]
 })
 export class AdminParkLocationTabComponent {
   @Input({ required: true }) form!: FormGroup;

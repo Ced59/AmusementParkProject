@@ -1,9 +1,15 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
 import { LANGUAGES } from '../../../commons/languages';
 import { isRichTextEmpty } from '../../../commons/localized-item.utils';
 import { LocalizedItem } from '../../../models/shared/localized-item';
+import { Bind } from 'primeng/bind';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
+import { Ripple } from 'primeng/ripple';
+import { Editor } from 'primeng/editor';
+import { PrimeTemplate } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface LocalizedRichTextEntry {
   languageCode: string;
@@ -22,7 +28,7 @@ interface LocalizedRichTextEntry {
             multi: true
         }
     ],
-    standalone: false
+    imports: [Bind, Tabs, TabList, Ripple, Tab, TabPanels, TabPanel, Editor, FormsModule, PrimeTemplate, TranslateModule]
 })
 export class LocalizedRichTextEditorComponent implements ControlValueAccessor {
   @Input() placeholderKey: string = 'admin.parks.descriptions.placeholder';

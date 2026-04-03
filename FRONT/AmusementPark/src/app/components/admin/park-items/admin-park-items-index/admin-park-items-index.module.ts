@@ -14,19 +14,19 @@ import { AdminParkItemsIndexComponent } from './admin-park-items-index.component
 import { AdminParkItemsIndexRoutingModule } from './admin-park-items-index-routing.module';
 
 @NgModule({
-  declarations: [AdminParkItemsIndexComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    TranslateModule,
-    ButtonModule,
-    CardModule,
-    SelectModule,
-    InputTextModule,
-    PaginatorModule,
-    TableModule,
-    TagModule,
-    AdminParkItemsIndexRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        TranslateModule,
+        ButtonModule,
+        CardModule,
+        SelectModule,
+        InputTextModule,
+        PaginatorModule,
+        TableModule,
+        TagModule,
+        AdminParkItemsIndexRoutingModule,
+        AdminParkItemsIndexComponent
+    ]
 })
 export class AdminParkItemsIndexModule { }

@@ -3,15 +3,24 @@ import { Park } from '../../../../models/parks/park';
 import { Pagination } from '../../../../models/shared/pagination';
 import { ApiService } from '../../../../services/api.service';
 import { ParksApiResponse } from '../../../../models/parks/parks_api_response';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ParkType } from '../../../../models/parks/park-type';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { PrimeTemplate } from 'primeng/api';
+import { FormsModule } from '@angular/forms';
+import { InputText } from 'primeng/inputtext';
+import { ButtonDirective } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { ToggleSwitch } from 'primeng/toggleswitch';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-admin-parks',
-  templateUrl: './admin-parks.component.html',
-  styleUrls: ['./admin-parks.component.scss'],
-  standalone: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-admin-parks',
+    templateUrl: './admin-parks.component.html',
+    styleUrls: ['./admin-parks.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, TableModule, ToggleSwitch, RouterLink, TranslateModule]
 })
 export class AdminParksComponent implements OnInit {
   parks: Park[] = [];

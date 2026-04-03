@@ -12,19 +12,17 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    ProfilePageComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ProfileRoutingModule,
-    CardModule,
-    TableModule,
-    ButtonModule,
-    InputTextModule,
-    TranslateModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ProfileRoutingModule,
+        CardModule,
+        TableModule,
+        ButtonModule,
+        InputTextModule,
+        TranslateModule,
+        SharedModule,
+        ProfilePageComponent
+    ]
 })
 export class ProfileModule { }

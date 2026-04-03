@@ -13,29 +13,27 @@ import { ParkLocationSectionComponent } from './park-location-section/park-locat
 import { ParkNearbySectionComponent } from './park-nearby-section/park-nearby-section.component';
 
 @NgModule({
-  declarations: [
-    ParkCardComponent,
-    SearchResultCardComponent,
-    ParkHeroSectionComponent,
-    ParkPracticalInfoSectionComponent,
-    ParkLocationSectionComponent,
-    ParkNearbySectionComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    TranslateModule,
-    ButtonModule,
-    SharedModule
-  ],
-  exports: [
-    ParkCardComponent,
-    SearchResultCardComponent,
-    ParkHeroSectionComponent,
-    ParkPracticalInfoSectionComponent,
-    ParkLocationSectionComponent,
-    ParkNearbySectionComponent
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        TranslateModule,
+        ButtonModule,
+        SharedModule,
+        ParkCardComponent,
+        SearchResultCardComponent,
+        ParkHeroSectionComponent,
+        ParkPracticalInfoSectionComponent,
+        ParkLocationSectionComponent,
+        ParkNearbySectionComponent
+    ],
+    exports: [
+        ParkCardComponent,
+        SearchResultCardComponent,
+        ParkHeroSectionComponent,
+        ParkPracticalInfoSectionComponent,
+        ParkLocationSectionComponent,
+        ParkNearbySectionComponent
+    ]
 })
 export class PublicModule {
 }

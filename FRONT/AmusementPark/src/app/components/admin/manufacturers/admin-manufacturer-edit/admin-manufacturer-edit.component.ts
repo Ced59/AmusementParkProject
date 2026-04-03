@@ -1,15 +1,21 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AttractionManufacturer } from '../../../../models/parks/attraction-manufacturer';
 import { ApiService } from '../../../../services/api.service';
 import { commitViewUpdate } from '../../../../utils/change-detection.utils';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { InputText } from 'primeng/inputtext';
+import { LocalizedRichTextEditorComponent } from '../../../shared/localized-rich-text-editor/localized-rich-text-editor.component';
+import { ButtonDirective } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-admin-manufacturer-edit',
-  templateUrl: './admin-manufacturer-edit.component.html',
-  styleUrls: ['./admin-manufacturer-edit.component.scss'],
-  standalone: false
+    selector: 'app-admin-manufacturer-edit',
+    templateUrl: './admin-manufacturer-edit.component.html',
+    styleUrls: ['./admin-manufacturer-edit.component.scss'],
+    imports: [Bind, Card, FormsModule, ReactiveFormsModule, InputText, LocalizedRichTextEditorComponent, ButtonDirective, TranslateModule]
 })
 export class AdminManufacturerEditComponent implements OnInit {
   form!: FormGroup;

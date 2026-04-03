@@ -8,8 +8,8 @@ describe('EntitySelectComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EntitySelectComponent]
-    })
+    imports: [EntitySelectComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(EntitySelectComponent);

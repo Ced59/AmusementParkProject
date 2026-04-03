@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { LANGUAGES } from '../../../../commons/languages';
@@ -16,13 +16,23 @@ import { AuthService } from '../../../../services/auth/auth.service';
 import { ToastMessageService } from '../../../../services/messages/toast-message.service';
 import { UserAdminApiService } from '../../../../services/users/user-admin-api.service';
 import { commitViewUpdate } from '../../../../utils/change-detection.utils';
+import { PageStateComponent } from '../../../shared/page-state/page-state.component';
+import { Bind } from 'primeng/bind';
+import { ButtonDirective } from 'primeng/button';
+import { NgIf, NgFor } from '@angular/common';
+import { Card } from 'primeng/card';
+import { Tag } from 'primeng/tag';
+import { InputText } from 'primeng/inputtext';
+import { Select } from 'primeng/select';
+import { OwnerImageUploadDialogComponent } from '../../../shared/owner-image-upload-dialog/owner-image-upload-dialog.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-admin-user-management',
-  templateUrl: './admin-user-management.component.html',
-  styleUrls: ['./admin-user-management.component.scss'],
-  standalone: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-admin-user-management',
+    templateUrl: './admin-user-management.component.html',
+    styleUrls: ['./admin-user-management.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [PageStateComponent, Bind, ButtonDirective, NgIf, Card, Tag, NgFor, FormsModule, ReactiveFormsModule, InputText, Select, OwnerImageUploadDialogComponent, TranslateModule]
 })
 export class AdminUserManagementComponent implements OnInit, OnDestroy {
   readonly roleOptions: AppRole[] = APP_ROLES;

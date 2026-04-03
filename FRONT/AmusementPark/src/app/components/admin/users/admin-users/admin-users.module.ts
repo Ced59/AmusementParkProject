@@ -17,25 +17,23 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 
 @NgModule({
-  declarations: [
-    AdminUsersComponent,
-    AdminUserManagementComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    AdminUsersRoutingModule,
-    SharedModule,
-    TableModule,
-    TranslateModule,
-    TagModule,
-    CardModule,
-    ButtonModule,
-    AvatarModule,
-    TooltipModule,
-    InputTextModule,
-    SelectModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        AdminUsersRoutingModule,
+        SharedModule,
+        TableModule,
+        TranslateModule,
+        TagModule,
+        CardModule,
+        ButtonModule,
+        AvatarModule,
+        TooltipModule,
+        InputTextModule,
+        SelectModule,
+        AdminUsersComponent,
+        AdminUserManagementComponent
+    ]
 })
 export class AdminUsersModule {
 }

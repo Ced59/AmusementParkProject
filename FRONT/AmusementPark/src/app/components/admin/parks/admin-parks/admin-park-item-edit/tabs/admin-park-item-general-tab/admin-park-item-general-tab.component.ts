@@ -1,8 +1,17 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapMarker } from '../../../../../../../models/map/map-marker';
 import { ParkItemCategory } from '../../../../../../../models/parks/park-item-category';
 import { ParkItemType } from '../../../../../../../models/parks/park-item-type';
+import { Bind } from 'primeng/bind';
+import { InputText } from 'primeng/inputtext';
+import { Select } from 'primeng/select';
+import { Card } from 'primeng/card';
+import { LeafletMapComponent } from '../../../../../../shared/leaflet-map/leaflet-map.component';
+import { ButtonDirective } from 'primeng/button';
+import { LocalizedRichTextEditorComponent } from '../../../../../../shared/localized-rich-text-editor/localized-rich-text-editor.component';
+import { ToggleSwitch } from 'primeng/toggleswitch';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Option<T> {
   labelKey: string;
@@ -13,7 +22,7 @@ interface Option<T> {
     selector: 'app-admin-park-item-general-tab',
     templateUrl: './admin-park-item-general-tab.component.html',
     styleUrls: ['./admin-park-item-general-tab.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, Bind, InputText, Select, Card, LeafletMapComponent, ButtonDirective, LocalizedRichTextEditorComponent, ToggleSwitch, TranslateModule]
 })
 export class AdminParkItemGeneralTabComponent {
   @Input({ required: true }) form!: FormGroup;

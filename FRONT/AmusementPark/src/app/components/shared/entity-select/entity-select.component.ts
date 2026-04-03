@@ -1,6 +1,10 @@
 import { Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import { EntitySelectOption } from '../../../models/shared/entity-select-option';
+import { Bind } from 'primeng/bind';
+import { Select } from 'primeng/select';
+import { ButtonDirective } from 'primeng/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-entity-select',
@@ -13,7 +17,7 @@ import { EntitySelectOption } from '../../../models/shared/entity-select-option'
             multi: true
         }
     ],
-    standalone: false
+    imports: [Bind, Select, FormsModule, ButtonDirective, RouterLink]
 })
 export class EntitySelectComponent implements ControlValueAccessor {
   @Input() label: string = '';

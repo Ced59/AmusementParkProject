@@ -1,16 +1,25 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
+import { FormArray, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { resolveLocalizedValue } from '../../../../../../../commons/localized-item.utils';
 import { AttractionAccessConditionType } from '../../../../../../../models/parks/attraction-access-condition-type';
 import { AttractionAccessConditionUnit } from '../../../../../../../models/parks/attraction-access-condition-unit';
 import { LocalizedItem } from '../../../../../../../models/shared/localized-item';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { Select } from 'primeng/select';
+import { ButtonDirective } from 'primeng/button';
+import { NgIf, NgFor } from '@angular/common';
+import { PrimeTemplate } from 'primeng/api';
+import { InputText } from 'primeng/inputtext';
+import { ToggleSwitch } from 'primeng/toggleswitch';
+import { LocalizedTextInputComponent } from '../../../../../../shared/localized-text-input/localized-text-input.component';
 
 @Component({
     selector: 'app-admin-park-item-access-conditions-tab',
     templateUrl: './admin-park-item-access-conditions-tab.component.html',
     styleUrls: ['./admin-park-item-access-conditions-tab.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, Bind, Card, Select, ButtonDirective, NgIf, NgFor, PrimeTemplate, InputText, ToggleSwitch, LocalizedTextInputComponent, TranslateModule]
 })
 export class AdminParkItemAccessConditionsTabComponent {
   @Input({ required: true }) formGroup!: FormGroup;

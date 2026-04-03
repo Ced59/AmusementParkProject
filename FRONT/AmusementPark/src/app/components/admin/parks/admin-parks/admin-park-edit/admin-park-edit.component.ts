@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { firstValueFrom, Subscription } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
 
@@ -19,6 +19,16 @@ import { Park } from '../../../../../models/parks/park';
 import { ParkType } from '../../../../../models/parks/park-type';
 import { EntitySelectOption } from '../../../../../models/shared/entity-select-option';
 import { LocalizedItem } from '../../../../../models/shared/localized-item';
+import { Bind } from 'primeng/bind';
+import { Tag } from 'primeng/tag';
+import { EditorSaveToolbarComponent } from '../../../../shared/editor-save-toolbar/editor-save-toolbar.component';
+import { Card } from 'primeng/card';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
+import { Ripple } from 'primeng/ripple';
+import { AdminParkGeneralTabComponent } from './tabs/admin-park-general-tab/admin-park-general-tab.component';
+import { AdminParkLocationTabComponent } from './tabs/admin-park-location-tab/admin-park-location-tab.component';
+import { AdminParkDescriptionsTabComponent } from './tabs/admin-park-descriptions-tab/admin-park-descriptions-tab.component';
+import { AdminParkLogosTabComponent } from './tabs/admin-park-logos-tab/admin-park-logos-tab.component';
 
 interface ParkLogoItem {
   id: string;
@@ -40,8 +50,8 @@ type SaveScope = 'section' | 'all';
     selector: 'app-admin-park-edit',
     templateUrl: './admin-park-edit.component.html',
     styleUrls: ['./admin-park-edit.component.scss'],
-    standalone: false,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [Bind, Tag, EditorSaveToolbarComponent, Card, FormsModule, ReactiveFormsModule, Tabs, TabList, Ripple, Tab, TabPanels, TabPanel, AdminParkGeneralTabComponent, AdminParkLocationTabComponent, AdminParkDescriptionsTabComponent, AdminParkLogosTabComponent, TranslateModule]
 })
 export class AdminParkEditComponent implements OnInit, OnDestroy {
   form!: FormGroup;

@@ -8,12 +8,21 @@ import { ApiService } from '../../services/api.service';
 import { TranslationService } from '../../services/translation.service';
 import { buildParkSlug } from '../../commons/park-presentation.utils';
 import { commitViewUpdate } from '../../utils/change-detection.utils';
+import { PageStateComponent } from '../shared/page-state/page-state.component';
+import { NgIf } from '@angular/common';
+import { Bind } from 'primeng/bind';
+import { ButtonDirective } from 'primeng/button';
+import { ParkHeroSectionComponent } from '../public/park-hero-section/park-hero-section.component';
+import { ParkPracticalInfoSectionComponent } from '../public/park-practical-info-section/park-practical-info-section.component';
+import { ParkLocationSectionComponent } from '../public/park-location-section/park-location-section.component';
+import { ParkNearbySectionComponent } from '../public/park-nearby-section/park-nearby-section.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-park-detail',
-  templateUrl: './park-detail.component.html',
-  styleUrls: ['./park-detail.component.scss'],
-  standalone: false
+    selector: 'app-park-detail',
+    templateUrl: './park-detail.component.html',
+    styleUrls: ['./park-detail.component.scss'],
+    imports: [PageStateComponent, NgIf, Bind, ButtonDirective, ParkHeroSectionComponent, ParkPracticalInfoSectionComponent, ParkLocationSectionComponent, ParkNearbySectionComponent, TranslateModule]
 })
 export class ParkDetailComponent implements OnInit, OnDestroy {
   park: Park | null = null;

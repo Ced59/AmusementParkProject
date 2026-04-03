@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-confirm-account-page',
-  templateUrl: './confirm-account-page.component.html',
-  styleUrls: ['./confirm-account-page.component.scss'],
-  standalone: false
+    selector: 'app-confirm-account-page',
+    templateUrl: './confirm-account-page.component.html',
+    styleUrls: ['./confirm-account-page.component.scss'],
+    imports: [Bind, Card, RouterLink, TranslateModule]
 })
 export class ConfirmAccountPageComponent implements OnInit {
   currentLanguage: string = 'en';

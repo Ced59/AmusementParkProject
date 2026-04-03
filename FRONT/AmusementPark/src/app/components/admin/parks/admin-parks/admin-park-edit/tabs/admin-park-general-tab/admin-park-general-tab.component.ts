@@ -1,7 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EntitySelectOption } from '../../../../../../../models/shared/entity-select-option';
 import { ParkType } from '../../../../../../../models/parks/park-type';
+import { Bind } from 'primeng/bind';
+import { ButtonDirective } from 'primeng/button';
+import { RouterLink } from '@angular/router';
+import { InputText } from 'primeng/inputtext';
+import { Select } from 'primeng/select';
+import { EntitySelectComponent } from '../../../../../../shared/entity-select/entity-select.component';
+import { ToggleSwitch } from 'primeng/toggleswitch';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface ParkTypeOption {
   labelKey: string;
@@ -12,7 +20,7 @@ interface ParkTypeOption {
     selector: 'app-admin-park-general-tab',
     templateUrl: './admin-park-general-tab.component.html',
     styleUrls: ['./admin-park-general-tab.component.scss'],
-    standalone: false
+    imports: [FormsModule, ReactiveFormsModule, Bind, ButtonDirective, RouterLink, InputText, Select, EntitySelectComponent, ToggleSwitch, TranslateModule]
 })
 export class AdminParkGeneralTabComponent {
   @Input({ required: true }) form!: FormGroup;

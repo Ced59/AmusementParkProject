@@ -2,12 +2,15 @@ import { Component, Input } from '@angular/core';
 import { Park } from '../../../models/parks/park';
 import { resolveLocalizedValue } from '../../../commons/localized-item.utils';
 import { buildParkAddressLine, buildParkLocationLine } from '../../../commons/park-presentation.utils';
+import { NgIf } from '@angular/common';
+import { ImageDisplayComponent } from '../../shared/image-display/image-display.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-park-hero-section',
-  templateUrl: './park-hero-section.component.html',
-  styleUrls: ['./park-hero-section.component.scss'],
-  standalone: false
+    selector: 'app-park-hero-section',
+    templateUrl: './park-hero-section.component.html',
+    styleUrls: ['./park-hero-section.component.scss'],
+    imports: [NgIf, ImageDisplayComponent, TranslateModule]
 })
 export class ParkHeroSectionComponent {
   @Input() park: Park | null = null;

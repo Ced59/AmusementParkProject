@@ -7,12 +7,15 @@ import { ParkExplorer, ParkExplorerBucket } from '../../models/parks/park-explor
 import { ApiService } from '../../services/api.service';
 import { TranslationService } from '../../services/translation.service';
 import { commitViewUpdate } from '../../utils/change-detection.utils';
+import { Bind } from 'primeng/bind';
+import { ButtonDirective } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-park-explorer',
-  templateUrl: './park-explorer.component.html',
-  styleUrls: ['./park-explorer.component.scss'],
-  standalone: false
+    selector: 'app-park-explorer',
+    templateUrl: './park-explorer.component.html',
+    styleUrls: ['./park-explorer.component.scss'],
+    imports: [Bind, ButtonDirective, TranslateModule]
 })
 export class ParkExplorerComponent implements OnInit, OnDestroy {
   park: Park | null = null;

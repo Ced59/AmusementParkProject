@@ -6,12 +6,10 @@ import { AdminSiteComponent } from './admin-site.component';
 
 
 @NgModule({
-  declarations: [
-    AdminSiteComponent
-  ],
-  imports: [
-    CommonModule,
-    AdminSiteRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        AdminSiteRoutingModule,
+        AdminSiteComponent
+    ]
 })
 export class AdminSiteModule { }

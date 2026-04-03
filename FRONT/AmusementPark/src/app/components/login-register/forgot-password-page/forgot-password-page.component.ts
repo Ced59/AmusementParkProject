@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { FormsModule } from '@angular/forms';
+import { InputText } from 'primeng/inputtext';
+import { ButtonDirective } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-forgot-password-page',
-  templateUrl: './forgot-password-page.component.html',
-  styleUrls: ['./forgot-password-page.component.scss'],
-  standalone: false
+    selector: 'app-forgot-password-page',
+    templateUrl: './forgot-password-page.component.html',
+    styleUrls: ['./forgot-password-page.component.scss'],
+    imports: [Bind, Card, FormsModule, InputText, ButtonDirective, TranslateModule]
 })
 export class ForgotPasswordPageComponent {
   email: string = '';

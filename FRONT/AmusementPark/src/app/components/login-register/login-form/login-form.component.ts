@@ -7,12 +7,17 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { ToastMessageService } from '../../../services/messages/toast-message.service';
 import { SharedService } from '../../../services/shared/shared.service';
 import { ModalService } from '../../../services/modal/modal.service';
+import { FormsModule } from '@angular/forms';
+import { Bind } from 'primeng/bind';
+import { InputText } from 'primeng/inputtext';
+import { ButtonDirective } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss'],
-  standalone: false
+    selector: 'app-login-form',
+    templateUrl: './login-form.component.html',
+    styleUrls: ['./login-form.component.scss'],
+    imports: [FormsModule, Bind, InputText, ButtonDirective, TranslateModule]
 })
 export class LoginFormComponent {
   loginEmail: string = '';

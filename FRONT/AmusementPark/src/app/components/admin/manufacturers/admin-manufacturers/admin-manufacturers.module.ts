@@ -13,21 +13,19 @@ import { AdminManufacturersComponent } from './admin-manufacturers.component';
 import { AdminManufacturerEditComponent } from '../admin-manufacturer-edit/admin-manufacturer-edit.component';
 
 @NgModule({
-  declarations: [
-    AdminManufacturersComponent,
-    AdminManufacturerEditComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ButtonModule,
-    CardModule,
-    InputTextModule,
-    TableModule,
-    SharedModule,
-    TranslateModule,
-    AdminManufacturersRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ButtonModule,
+        CardModule,
+        InputTextModule,
+        TableModule,
+        SharedModule,
+        TranslateModule,
+        AdminManufacturersRoutingModule,
+        AdminManufacturersComponent,
+        AdminManufacturerEditComponent
+    ]
 })
 export class AdminManufacturersModule { }

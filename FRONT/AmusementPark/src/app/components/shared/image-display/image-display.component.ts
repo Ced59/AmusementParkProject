@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
+import { NgIf, NgClass } from '@angular/common';
 
 /**
  * Composant partagé d'affichage d'image.
@@ -14,10 +15,10 @@ import { ApiService } from '../../../services/api.service';
  * le supporte, sinon JPG) via l'en-tête Accept, de façon transparente pour ce composant.
  */
 @Component({
-  selector: 'app-image-display',
-  templateUrl: './image-display.component.html',
-  styleUrls: ['./image-display.component.scss'],
-  standalone: false
+    selector: 'app-image-display',
+    templateUrl: './image-display.component.html',
+    styleUrls: ['./image-display.component.scss'],
+    imports: [NgIf, NgClass]
 })
 export class ImageDisplayComponent implements OnChanges {
 

@@ -1,11 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { ViewState } from '../../../models/shared/view-state';
+import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-page-state',
-  templateUrl: './page-state.component.html',
-  styleUrls: ['./page-state.component.scss'],
-  standalone: false
+    selector: 'app-page-state',
+    templateUrl: './page-state.component.html',
+    styleUrls: ['./page-state.component.scss'],
+    imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, TranslateModule]
 })
 export class PageStateComponent {
   @Input() state: ViewState = ViewState.Ready;

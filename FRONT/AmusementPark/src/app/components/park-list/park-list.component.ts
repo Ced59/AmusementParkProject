@@ -7,13 +7,21 @@ import { Pagination } from '../../models/shared/pagination';
 import { ViewState } from '../../models/shared/view-state';
 import { ApiService } from '../../services/api.service';
 import { TranslationService } from '../../services/translation.service';
+import { Bind } from 'primeng/bind';
+import { InputText } from 'primeng/inputtext';
+import { ButtonDirective } from 'primeng/button';
+import { PageStateComponent } from '../shared/page-state/page-state.component';
+import { NgFor, NgIf } from '@angular/common';
+import { ParkCardComponent } from '../public/park-card/park-card.component';
+import { Paginator } from 'primeng/paginator';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-park-list',
-  templateUrl: './park-list.component.html',
-  styleUrls: ['./park-list.component.scss'],
-  standalone: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-park-list',
+    templateUrl: './park-list.component.html',
+    styleUrls: ['./park-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [Bind, InputText, ButtonDirective, PageStateComponent, NgFor, ParkCardComponent, NgIf, Paginator, TranslateModule]
 })
 export class ParkListComponent implements OnInit, OnDestroy {
   parks: Park[] = [];

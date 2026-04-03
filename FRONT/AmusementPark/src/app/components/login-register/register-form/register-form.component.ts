@@ -3,12 +3,18 @@ import { UserRegister } from '../../../models/users/user-register';
 import { ApiService } from '../../../services/api.service';
 import { ToastMessageService } from '../../../services/messages/toast-message.service';
 import { TranslationService } from '../../../services/translation.service';
+import { FormsModule } from '@angular/forms';
+import { Bind } from 'primeng/bind';
+import { InputText } from 'primeng/inputtext';
+import { NgClass } from '@angular/common';
+import { ButtonDirective } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss'],
-  standalone: false
+    selector: 'app-register-form',
+    templateUrl: './register-form.component.html',
+    styleUrls: ['./register-form.component.scss'],
+    imports: [FormsModule, Bind, InputText, NgClass, ButtonDirective, TranslateModule]
 })
 export class RegisterFormComponent {
   registerEmail: string = '';

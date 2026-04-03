@@ -1,5 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorState, Paginator } from 'primeng/paginator';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { ImageDisplayComponent } from '../../../../../../shared/image-display/image-display.component';
+import { FormsModule } from '@angular/forms';
+import { InputText } from 'primeng/inputtext';
+import { ButtonDirective } from 'primeng/button';
+import { Panel } from 'primeng/panel';
+import { ProgressSpinner } from 'primeng/progressspinner';
+import { NgClass, DatePipe } from '@angular/common';
+import { Tag } from 'primeng/tag';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface ParkLogoItem {
   id: string;
@@ -13,7 +24,7 @@ interface ParkLogoItem {
     selector: 'app-admin-park-logos-tab',
     templateUrl: './admin-park-logos-tab.component.html',
     styleUrls: ['./admin-park-logos-tab.component.scss'],
-    standalone: false
+    imports: [Bind, Card, ImageDisplayComponent, FormsModule, InputText, ButtonDirective, Panel, ProgressSpinner, NgClass, Tag, Paginator, DatePipe, TranslateModule]
 })
 export class AdminParkLogosTabComponent {
   @Input() isEditMode: boolean = false;

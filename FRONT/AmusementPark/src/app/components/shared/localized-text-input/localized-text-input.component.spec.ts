@@ -8,8 +8,8 @@ describe('LocalizedTextInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LocalizedTextInputComponent]
-    })
+    imports: [LocalizedTextInputComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(LocalizedTextInputComponent);

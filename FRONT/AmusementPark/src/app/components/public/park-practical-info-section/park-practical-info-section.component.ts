@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { Park } from '../../../models/parks/park';
 import { buildParkAddressLine } from '../../../commons/park-presentation.utils';
+import { NgIf } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-park-practical-info-section',
-  templateUrl: './park-practical-info-section.component.html',
-  styleUrls: ['./park-practical-info-section.component.scss'],
-  standalone: false
+    selector: 'app-park-practical-info-section',
+    templateUrl: './park-practical-info-section.component.html',
+    styleUrls: ['./park-practical-info-section.component.scss'],
+    imports: [NgIf, TranslateModule]
 })
 export class ParkPracticalInfoSectionComponent {
   @Input() park: Park | null = null;

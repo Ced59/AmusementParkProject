@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { ToastMessageService } from '../../../../../services/messages/toast-message.service';
 import { firstValueFrom, Subscription } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
@@ -28,6 +28,16 @@ import { ParkZone } from '../../../../../models/parks/park-zone';
 import { EntitySelectOption } from '../../../../../models/shared/entity-select-option';
 import { LocalizedItem } from '../../../../../models/shared/localized-item';
 import { ApiService } from '../../../../../services/api.service';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { EditorSaveToolbarComponent } from '../../../../shared/editor-save-toolbar/editor-save-toolbar.component';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
+import { Ripple } from 'primeng/ripple';
+import { AdminParkItemGeneralTabComponent } from './tabs/admin-park-item-general-tab/admin-park-item-general-tab.component';
+import { AdminParkItemDetailsTabComponent } from './tabs/admin-park-item-details-tab/admin-park-item-details-tab.component';
+import { AdminParkItemAccessConditionsTabComponent } from './tabs/admin-park-item-access-conditions-tab/admin-park-item-access-conditions-tab.component';
+import { AdminParkItemLocationsTabComponent } from './tabs/admin-park-item-locations-tab/admin-park-item-locations-tab.component';
+import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component';
 
 interface Option<T> {
   labelKey: string;
@@ -56,8 +66,8 @@ type SaveScope = 'section' | 'all';
     selector: 'app-admin-park-item-edit',
     templateUrl: './admin-park-item-edit.component.html',
     styleUrls: ['./admin-park-item-edit.component.scss'],
-    standalone: false,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [Bind, Card, EditorSaveToolbarComponent, FormsModule, ReactiveFormsModule, Tabs, TabList, Ripple, Tab, TabPanels, TabPanel, AdminParkItemGeneralTabComponent, AdminParkItemDetailsTabComponent, AdminParkItemAccessConditionsTabComponent, AdminParkItemLocationsTabComponent, AdminParkItemPhotosTabComponent, TranslateModule]
 })
 export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   form!: FormGroup;

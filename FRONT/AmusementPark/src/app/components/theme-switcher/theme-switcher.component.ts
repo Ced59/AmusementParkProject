@@ -1,12 +1,16 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgClass } from '@angular/common';
 import { ThemeService } from '../../services/themes/themes.service';
+import { Bind } from 'primeng/bind';
+import { ButtonDirective } from 'primeng/button';
+import { Dialog } from 'primeng/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-theme-switcher',
     templateUrl: './theme-switcher.component.html',
     styleUrls: ['./theme-switcher.component.scss'],
-    standalone: false
+    imports: [Bind, ButtonDirective, NgClass, Dialog, TranslateModule]
 })
 export class ThemeSwitcherComponent implements OnInit {
   currentTheme: 'light' | 'dark' = 'dark';

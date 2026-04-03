@@ -14,21 +14,19 @@ import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
-  declarations: [
-    AdminOperatorsComponent,
-    AdminOperatorEditComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ButtonModule,
-    CardModule,
-    InputTextModule,
-    TableModule,
-    SharedModule,
-    AdminOperatorsRoutingModule,
-    TranslateModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ButtonModule,
+        CardModule,
+        InputTextModule,
+        TableModule,
+        SharedModule,
+        AdminOperatorsRoutingModule,
+        TranslateModule,
+        AdminOperatorsComponent,
+        AdminOperatorEditComponent
+    ]
 })
 export class AdminOperatorsModule { }

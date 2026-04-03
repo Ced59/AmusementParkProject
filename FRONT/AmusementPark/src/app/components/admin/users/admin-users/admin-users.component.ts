@@ -1,18 +1,26 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TableLazyLoadEvent } from 'primeng/table';
+import { TableLazyLoadEvent, TableModule } from 'primeng/table';
 
 import { Pagination } from '../../../../models/shared/pagination';
 import { UserDto } from '../../../../models/users/user_dto';
 import { UsersApiResponse } from '../../../../models/users/users_api_response';
 import { ApiService } from '../../../../services/api.service';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { PrimeTemplate } from 'primeng/api';
+import { Avatar } from 'primeng/avatar';
+import { Tag } from 'primeng/tag';
+import { ButtonDirective } from 'primeng/button';
+import { Tooltip } from 'primeng/tooltip';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-admin-users',
-  templateUrl: './admin-users.component.html',
-  standalone: false,
-  styleUrls: ['./admin-users.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-admin-users',
+    templateUrl: './admin-users.component.html',
+    styleUrls: ['./admin-users.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [Bind, Card, PrimeTemplate, TableModule, Avatar, Tag, ButtonDirective, Tooltip, TranslateModule]
 })
 export class AdminUsersComponent implements OnInit {
   users: UserDto[] = [];

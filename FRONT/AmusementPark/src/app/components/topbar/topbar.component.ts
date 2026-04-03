@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -10,13 +10,22 @@ import { AuthService } from '../../services/auth/auth.service';
 import { ModalService } from '../../services/modal/modal.service';
 import { SharedService } from '../../services/shared/shared.service';
 import { TranslationService } from '../../services/translation.service';
+import { Bind } from 'primeng/bind';
+import { Toolbar } from 'primeng/toolbar';
+import { PrimeTemplate } from 'primeng/api';
+import { Avatar } from 'primeng/avatar';
+import { ButtonDirective } from 'primeng/button';
+import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
+import { Dialog } from 'primeng/dialog';
+import { AuthModalComponent } from '../login-register/auth-modal/auth-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-topbar',
-  templateUrl: './topbar.component.html',
-  styleUrls: ['./topbar.component.scss'],
-  standalone: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-topbar',
+    templateUrl: './topbar.component.html',
+    styleUrls: ['./topbar.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [Bind, Toolbar, PrimeTemplate, RouterLink, Avatar, ButtonDirective, ThemeSwitcherComponent, Dialog, AuthModalComponent, TranslateModule]
 })
 export class TopbarComponent implements OnInit, OnDestroy {
   languages = LANGUAGES;

@@ -9,13 +9,25 @@ import { ViewState } from '../../models/shared/view-state';
 import { Park } from '../../models/parks/park';
 import { ApiService } from '../../services/api.service';
 import { TranslationService } from '../../services/translation.service';
+import { Bind } from 'primeng/bind';
+import { ButtonDirective } from 'primeng/button';
+import { RouterLink } from '@angular/router';
+import { InputText } from 'primeng/inputtext';
+import { Select } from 'primeng/select';
+import { FormsModule } from '@angular/forms';
+import { PageStateComponent } from '../shared/page-state/page-state.component';
+import { NgFor, NgIf } from '@angular/common';
+import { ParkCardComponent } from '../public/park-card/park-card.component';
+import { SearchResultCardComponent } from '../public/search-result-card/search-result-card.component';
+import { Paginator } from 'primeng/paginator';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  standalone: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [Bind, ButtonDirective, RouterLink, InputText, Select, FormsModule, PageStateComponent, NgFor, ParkCardComponent, NgIf, SearchResultCardComponent, Paginator, TranslateModule]
 })
 export class HomeComponent implements OnInit, OnDestroy {
   searchTerm: string = '';

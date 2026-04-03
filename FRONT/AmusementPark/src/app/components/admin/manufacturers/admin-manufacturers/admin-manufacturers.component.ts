@@ -1,14 +1,22 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AttractionManufacturer } from '../../../../models/parks/attraction-manufacturer';
 import { ApiService } from '../../../../services/api.service';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { PrimeTemplate } from 'primeng/api';
+import { FormsModule } from '@angular/forms';
+import { InputText } from 'primeng/inputtext';
+import { ButtonDirective } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-admin-manufacturers',
-  templateUrl: './admin-manufacturers.component.html',
-  styleUrls: ['./admin-manufacturers.component.scss'],
-  standalone: false,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-admin-manufacturers',
+    templateUrl: './admin-manufacturers.component.html',
+    styleUrls: ['./admin-manufacturers.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, TranslateModule]
 })
 export class AdminManufacturersComponent implements OnInit {
   manufacturers: AttractionManufacturer[] = [];

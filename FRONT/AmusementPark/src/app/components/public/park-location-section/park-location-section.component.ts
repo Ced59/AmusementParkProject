@@ -1,12 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { Park } from '../../../models/parks/park';
 import { MapMarker } from '../../../models/map/map-marker';
+import { NgIf } from '@angular/common';
+import { LeafletMapComponent } from '../../shared/leaflet-map/leaflet-map.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-park-location-section',
-  templateUrl: './park-location-section.component.html',
-  styleUrls: ['./park-location-section.component.scss'],
-  standalone: false
+    selector: 'app-park-location-section',
+    templateUrl: './park-location-section.component.html',
+    styleUrls: ['./park-location-section.component.scss'],
+    imports: [NgIf, LeafletMapComponent, TranslateModule]
 })
 export class ParkLocationSectionComponent {
   @Input() park: Park | null = null;

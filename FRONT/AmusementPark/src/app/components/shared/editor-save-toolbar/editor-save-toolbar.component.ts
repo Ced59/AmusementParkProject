@@ -1,10 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Bind } from 'primeng/bind';
+import { ButtonDirective } from 'primeng/button';
 
 @Component({
     selector: 'app-editor-save-toolbar',
     templateUrl: './editor-save-toolbar.component.html',
     styleUrls: ['./editor-save-toolbar.component.scss'],
-    standalone: false
+    imports: [NgClass, Bind, ButtonDirective]
 })
 export class EditorSaveToolbarComponent {
   @Input() statusLabel: string = '';

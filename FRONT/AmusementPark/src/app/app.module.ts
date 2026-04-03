@@ -57,80 +57,78 @@ export function initializeApp(translationService: TranslationService): () => Pro
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    TopbarComponent,
-    LoginFormComponent,
-    AuthModalComponent,
-    RegisterFormComponent,
-    ConfirmAccountPageComponent,
-    ForgotPasswordPageComponent,
-    ResetPasswordPageComponent,
-    ThemeSwitcherComponent,
-    ParkDetailComponent,
-    SidebarComponent,
-    ParkListComponent,
-    ParkExplorerComponent,
-    AdminDashboardComponent
-  ],
-  bootstrap: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SharedModule,
-    PublicModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    BrowserAnimationsModule,
-    SelectModule,
-    ToolbarModule,
-    ButtonModule,
-    FormsModule,
-    DialogModule,
-    InputTextModule,
-    CardModule,
-    TooltipModule,
-    ToastModule,
-    AvatarModule,
-    PaginatorModule,
-    MultiSelectModule
-  ],
-  exports: [
-    SidebarComponent
-  ],
-  providers: [
-    provideHttpClient(withFetch(), withInterceptorsFromDi()),
-    provideAppInitializer(() => {
-      const initializerFn = initializeApp(inject(TranslationService));
-      return initializerFn();
-    }),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LanguageInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    MessageService,
-    providePrimeNG({
-      theme: {
-        preset: AmusementParkPreset,
-        options: {
-          darkModeSelector: '.dark-mode'
-        }
-      }
-    })
-  ]
+    declarations: [AppComponent],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        SharedModule,
+        PublicModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        BrowserAnimationsModule,
+        SelectModule,
+        ToolbarModule,
+        ButtonModule,
+        FormsModule,
+        DialogModule,
+        InputTextModule,
+        CardModule,
+        TooltipModule,
+        ToastModule,
+        AvatarModule,
+        PaginatorModule,
+        MultiSelectModule,
+        HomeComponent,
+        AboutComponent,
+        TopbarComponent,
+        LoginFormComponent,
+        AuthModalComponent,
+        RegisterFormComponent,
+        ConfirmAccountPageComponent,
+        ForgotPasswordPageComponent,
+        ResetPasswordPageComponent,
+        ThemeSwitcherComponent,
+        ParkDetailComponent,
+        SidebarComponent,
+        ParkListComponent,
+        ParkExplorerComponent,
+        AdminDashboardComponent
+    ],
+    exports: [
+        SidebarComponent
+    ],
+    providers: [
+        provideHttpClient(withFetch(), withInterceptorsFromDi()),
+        provideAppInitializer(() => {
+            const initializerFn = initializeApp(inject(TranslationService));
+            return initializerFn();
+        }),
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: LanguageInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        },
+        MessageService,
+        providePrimeNG({
+            theme: {
+                preset: AmusementParkPreset,
+                options: {
+                    darkModeSelector: '.dark-mode'
+                }
+            }
+        })
+    ]
 })
 export class AppModule {
 }
