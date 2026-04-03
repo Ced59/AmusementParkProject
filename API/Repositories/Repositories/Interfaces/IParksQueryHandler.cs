@@ -1,4 +1,6 @@
-﻿using Entities.Model.Parks;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Entities.Model.Parks;
 
 namespace Repositories.Interfaces
 {
@@ -9,6 +11,7 @@ namespace Repositories.Interfaces
             int page,
             int pageSize,
             bool includeNonVisible = false);
+        Task<IEnumerable<Park>> GetParksByIdsAsync(IEnumerable<string> ids);
         Task<long> GetTotalParksCountAsync(
             bool includeNonVisible = false);
         Task<Park?> CreateParkAsync(Park park);
@@ -21,14 +24,8 @@ namespace Repositories.Interfaces
             int page,
             int pageSize,
             bool includeNonVisible = false);
-
-        /// <summary>
-        /// Met à jour la visibilité d’un parc et renvoie la version mise à jour.
-        /// </summary>
         Task<Park?> UpdateParkVisibilityAsync(string id, bool isVisible);
-
         Task<Park?> UpdateParkAsync(Park park);
-
         Task<bool> UpdateCurrentLogoAsync(string parkId, string? logoImageId);
     }
 }

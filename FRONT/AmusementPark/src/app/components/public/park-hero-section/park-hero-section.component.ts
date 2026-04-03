@@ -1,34 +1,36 @@
 import { Component, Input } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { Park } from '../../../models/parks/park';
+import { resolveLocalizedValue } from '../../../commons/localized-item.utils';
+import { buildParkAddressLine, buildParkLocationLine } from '../../../commons/park-presentation.utils';
 
 @Component({
   selector: 'app-park-hero-section',
   templateUrl: './park-hero-section.component.html',
-  styleUrls: ['./park-hero-section.component.scss']
+  styleUrls: ['./park-hero-section.component.scss'],
+  standalone: false
 })
 export class ParkHeroSectionComponent {
   @Input() park: Park | null = null;
+  @Input() currentLang = 'en';
 
   constructor(private readonly apiService: ApiService) {
   }
 
   get logoUrl(): string | null {
-    const imageId = this.park?.currentLogoImageId?.trim();
+    const imageId: string | undefined = this.park?.currentLogoImageId?.trim();
     return imageId ? this.apiService.buildImageUrl(imageId) : null;
   }
 
   get locationLine(): string | null {
-    const parts = [this.park?.city, this.park?.countryCode]
-      .filter((part: string | undefined): part is string => !!part?.trim());
-
-    return parts.length > 0 ? parts.join(' · ') : null;
+    return buildParkLocationLine(this.park);
   }
 
   get addressLine(): string | null {
-    const parts = [this.park?.street, this.park?.postalCode, this.park?.city]
-      .filter((part: string | undefined): part is string => !!part?.trim());
+    return buildParkAddressLine(this.park);
+  }
 
-    return parts.length > 0 ? parts.join(', ') : null;
+  get description(): string | null {
+    return resolveLocalizedValue(this.park?.descriptions, this.currentLang) ?? null;
   }
 }

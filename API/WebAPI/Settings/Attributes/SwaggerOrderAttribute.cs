@@ -1,4 +1,6 @@
-﻿namespace WebAPI.Settings.Attributes
+﻿using System;
+
+namespace WebAPI.Settings.Attributes
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class SwaggerOrderAttribute : Attribute

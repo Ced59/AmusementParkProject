@@ -1,3 +1,9 @@
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 .park-detail {
   display: grid;
   gap: 1.5rem;

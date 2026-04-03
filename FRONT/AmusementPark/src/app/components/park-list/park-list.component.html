@@ -36,7 +36,7 @@
   </div>
 
   <app-page-state
-    [state]="pageState()"
+    [state]="pageState"
     loadingTitleKey="parks.loadingTitle"
     loadingMessageKey="parks.loadingMessage"
     errorTitleKey="parks.errorTitle"
@@ -45,16 +45,16 @@
     emptyMessageKey="parks.emptyMessage">
     <div class="app-grid-cards">
       <app-park-card
-        *ngFor="let park of parks()"
+        *ngFor="let park of parks"
         [park]="park"
         [currentLang]="currentLang">
       </app-park-card>
     </div>
 
-    <div class="pagination-wrap" *ngIf="pagination() as pageInfo">
+    <div class="pagination-wrap" *ngIf="pagination">
       <p-paginator
-        [rows]="pageInfo.itemsPerPage"
-        [totalRecords]="pageInfo.totalItems"
+        [rows]="pagination.itemsPerPage"
+        [totalRecords]="pagination.totalItems"
         [rowsPerPageOptions]="[6, 9, 18, 36]"
         [pageLinkSize]="3"
         (onPageChange)="onPageChange($event)">

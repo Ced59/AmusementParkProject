@@ -11,9 +11,10 @@
       {{ locationLine }}
     </p>
 
-    <p class="park-hero__description">
-      {{ 'parks.detail.heroDescription' | translate }}
-    </p>
+    <div class="park-hero__description" *ngIf="description; else fallbackDescription" [innerHTML]="description"></div>
+    <ng-template #fallbackDescription>
+      <p class="park-hero__description">{{ 'parks.detail.heroDescription' | translate }}</p>
+    </ng-template>
 
     <div class="park-hero__meta">
       <div class="park-hero__meta-item" *ngIf="addressLine">

@@ -1,4 +1,6 @@
-﻿namespace Dtos.Images.Creating
+﻿using System.Collections.Generic;
+
+namespace Dtos.Images.Creating
 {
     public class ImageCreatedDto
     {

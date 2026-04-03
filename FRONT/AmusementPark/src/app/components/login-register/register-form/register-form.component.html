@@ -1,21 +1,28 @@
 <h5>{{ 'auth.register.title' | translate }}</h5>
-<p-toast></p-toast>
-<form class="form-style" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="registerEmail">{{ 'auth.register.title_email' | translate }}</label>
-    <input type="email" id="registerEmail" name="registerEmail" pInputText
-           [placeholder]="('auth.register.mail_placeholder' | translate)"
-           [(ngModel)]="registerEmail">
-  </div>
-  <div class="form-group">
-    <label for="registerPassword">{{ 'auth.register.title_password' | translate }}</label>
-    <input type="password" id="registerPassword" name="registerPassword" pInputText
-           [placeholder]="('auth.register.password_placeholder' | translate)"
-           [(ngModel)]="registerPassword" [ngClass]="{'error': !isValidPassword() && registerPassword}">
-    <input type="password" id="confirmPassword" name="confirmPassword" pInputText
-           [placeholder]="('auth.register.password_confirm_placeholder' | translate)"
-           [(ngModel)]="confirmPassword" [ngClass]="{'error': !isValidPassword() && confirmPassword}">
-  </div>
-  <button pButton type="submit" [label]="('auth.register.btn_text' | translate)" [disabled]="!isValidEmail() || !isValidPassword() || !passwordsMatch()"></button>
 
-</form>
+@if (!registrationCompleted) {
+  <form class="form-style" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="registerEmail">{{ 'auth.register.title_email' | translate }}</label>
+      <input type="email" id="registerEmail" name="registerEmail" pInputText
+             [placeholder]="('auth.register.mail_placeholder' | translate)"
+             [(ngModel)]="registerEmail">
+    </div>
+    <div class="form-group">
+      <label for="registerPassword">{{ 'auth.register.title_password' | translate }}</label>
+      <input type="password" id="registerPassword" name="registerPassword" pInputText
+             [placeholder]="('auth.register.password_placeholder' | translate)"
+             [(ngModel)]="registerPassword" [ngClass]="{'error': !isValidPassword() && registerPassword}">
+      <small class="field-help">{{ 'auth.register.password_info' | translate }}</small>
+      <input type="password" id="confirmPassword" name="confirmPassword" pInputText
+             [placeholder]="('auth.register.password_confirm_placeholder' | translate)"
+             [(ngModel)]="confirmPassword" [ngClass]="{'error': !passwordsMatch() && confirmPassword}">
+    </div>
+    <button pButton type="submit" [label]="('auth.register.btn_text' | translate)" [disabled]="!isValidEmail() || !isValidPassword() || !passwordsMatch()"></button>
+  </form>
+} @else {
+  <div class="register-success-box">
+    <p>{{ 'auth.register.success_message' | translate }}</p>
+    <button pButton type="button" [label]="('auth.register.resend_confirmation' | translate)" (click)="resendConfirmation()"></button>
+  </div>
+}

@@ -1,4 +1,6 @@
-﻿using Entities.Model.Parks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Entities.Model.Parks;
 
 namespace Repositories.Interfaces;
 

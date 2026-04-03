@@ -1,4 +1,5 @@
-﻿using Common.General;
+﻿using System.Collections.Generic;
+using Common.General;
 using Common.Users;
 
 namespace Dtos.Users.Updating

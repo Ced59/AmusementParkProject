@@ -4,7 +4,8 @@ import { ViewState } from '../../../models/shared/view-state';
 @Component({
   selector: 'app-page-state',
   templateUrl: './page-state.component.html',
-  styleUrls: ['./page-state.component.scss']
+  styleUrls: ['./page-state.component.scss'],
+  standalone: false
 })
 export class PageStateComponent {
   @Input() state: ViewState = ViewState.Ready;

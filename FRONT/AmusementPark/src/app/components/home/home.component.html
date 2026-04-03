@@ -44,21 +44,20 @@
 
       <div class="search-field">
         <label class="field-label">{{ 'home.placeholder_category' | translate }}</label>
-        <p-dropdown
+        <p-select
           [options]="categoryOptions"
           [(ngModel)]="selectedCategory"
-          [placeholder]="'home.placeholder_category' | translate"
           optionLabel="labelKey"
           optionValue="value"
           (onChange)="onCategoryChange()">
-          <ng-template let-opt pTemplate="selectedItem">
+          <ng-template let-opt #selectedItem>
             {{ opt?.labelKey ? (opt.labelKey | translate) : ('home.placeholder_category' | translate) }}
           </ng-template>
 
-          <ng-template let-opt pTemplate="item">
+          <ng-template let-opt #item>
             {{ opt.labelKey | translate }}
           </ng-template>
-        </p-dropdown>
+        </p-select>
       </div>
     </div>
   </div>
@@ -74,7 +73,7 @@
     </div>
 
     <app-page-state
-      [state]="featuredState()"
+      [state]="featuredState"
       loadingTitleKey="home.featured.loadingTitle"
       loadingMessageKey="home.featured.loadingMessage"
       errorTitleKey="home.featured.errorTitle"
@@ -83,7 +82,7 @@
       emptyMessageKey="home.featured.emptyMessage">
       <div class="app-grid-cards">
         <app-park-card
-          *ngFor="let park of featuredParks()"
+          *ngFor="let park of featuredParks"
           [park]="park"
           [currentLang]="currentLang">
         </app-park-card>
@@ -101,9 +100,9 @@
       </div>
     </div>
 
-    <ng-container *ngIf="hasPerformedSearch(); else searchHint">
+    <ng-container *ngIf="hasPerformedSearch; else searchHint">
       <app-page-state
-        [state]="searchState()"
+        [state]="searchState"
         loadingTitleKey="home.search.loadingTitle"
         loadingMessageKey="home.search.loadingMessage"
         errorTitleKey="home.search.errorTitle"
@@ -112,16 +111,16 @@
         emptyMessageKey="home.search.emptyMessage">
         <div class="app-grid-cards">
           <app-search-result-card
-            *ngFor="let item of results()"
+            *ngFor="let item of results"
             [item]="item"
             [currentLang]="currentLang">
           </app-search-result-card>
         </div>
 
-        <div class="pagination-wrap" *ngIf="pagination() as pageInfo">
+        <div class="pagination-wrap" *ngIf="pagination">
           <p-paginator
-            [rows]="pageInfo.itemsPerPage"
-            [totalRecords]="pageInfo.totalItems"
+            [rows]="pagination.itemsPerPage"
+            [totalRecords]="pagination.totalItems"
             [rowsPerPageOptions]="[5, 10, 20]"
             (onPageChange)="onPageChange($event)">
           </p-paginator>

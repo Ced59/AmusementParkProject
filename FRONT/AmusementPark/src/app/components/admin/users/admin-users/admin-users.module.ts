@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-import { CardModule } from 'primeng/card';
-import { TableModule } from 'primeng/table';
-import { TagModule } from 'primeng/tag';
-import { SharedModule } from '../../../shared/shared.module';
+
 import { AdminUsersRoutingModule } from './admin-users-routing.module';
 import { AdminUsersComponent } from './admin-users.component';
+import {TableModule} from "primeng/table";
+import {TranslateModule} from "@ngx-translate/core";
+import {TagModule} from "primeng/tag";
+import {CardModule} from "primeng/card";
+
 
 @NgModule({
   declarations: [
@@ -18,9 +19,7 @@ import { AdminUsersComponent } from './admin-users.component';
     TableModule,
     TranslateModule,
     TagModule,
-    CardModule,
-    SharedModule
+    CardModule
   ]
 })
-export class AdminUsersModule {
-}
+export class AdminUsersModule { }

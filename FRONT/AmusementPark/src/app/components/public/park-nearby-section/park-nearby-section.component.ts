@@ -5,7 +5,8 @@ import { ViewState } from '../../../models/shared/view-state';
 @Component({
   selector: 'app-park-nearby-section',
   templateUrl: './park-nearby-section.component.html',
-  styleUrls: ['./park-nearby-section.component.scss']
+  styleUrls: ['./park-nearby-section.component.scss'],
+  standalone: false
 })
 export class ParkNearbySectionComponent {
   @Input() parks: Park[] = [];

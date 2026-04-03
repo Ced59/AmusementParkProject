@@ -29,6 +29,10 @@
       {{ locationLine }}
     </p>
 
+    <p class="park-card__description" *ngIf="shortDescription && !compact">
+      {{ shortDescription }}
+    </p>
+
     <div class="park-card__details">
       <div class="park-card__detail" *ngIf="addressLine">
         <span class="park-card__label">{{ 'parks.fields.address' | translate }}</span>

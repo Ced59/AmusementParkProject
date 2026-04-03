@@ -1,11 +1,17 @@
-﻿using Dtos.Images.Creating;
+﻿using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Dtos.Images.Creating;
 using Entities.Model.Errors;
 using Entities.Model.Images;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces.Images;
 using WebAPI.ResponseHandlers;
+using WebAPI.Settings.Attributes;
 
 namespace WebAPI.Controllers
 {
@@ -17,6 +23,7 @@ namespace WebAPI.Controllers
         private readonly ILogger<ImageController> logger;
         private readonly IImageStorageService imageStorageService;
         private readonly IImagesQueryHandler imagesQueryHandler;
+
         public ImageController(
             ISavingImageService savingImageService,
             ILogger<ImageController> logger,
@@ -29,7 +36,9 @@ namespace WebAPI.Controllers
             this.imagesQueryHandler = imagesQueryHandler;
         }
 
-        [HttpPost("upload")]
+        [HttpPost]
+        [Authorize(Roles = "USER,MODERATOR,ADMIN")]
+        [RequireActivatedUnblockedUser]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> UploadAsync([FromForm] ImageCreateDto image)
         {
@@ -39,11 +48,6 @@ namespace WebAPI.Controllers
             return ApiResponseHandler.HandleResponse(result);
         }
 
-        /// <summary>
-        /// Stream l'image à partir de MinIO, en choisissant le meilleur format
-        /// (webp si supporté, sinon jpg/png).
-        /// URL: GET /images/{imageId}
-        /// </summary>
         [HttpGet("{imageId}")]
         [ResponseCache(Duration = 3600, Location = ResponseCacheLocation.Any, NoStore = false)]
         public async Task<IActionResult> GetImageAsync([FromRoute] string imageId, CancellationToken cancellationToken)
@@ -63,7 +67,6 @@ namespace WebAPI.Controllers
             }
 
             string pathWithoutExtension = image.Path;
-
             string? acceptHeader = Request.Headers["Accept"].ToString();
 
             (Stream Stream, string ContentType)? result = await imageStorageService.GetBestImageAsync(

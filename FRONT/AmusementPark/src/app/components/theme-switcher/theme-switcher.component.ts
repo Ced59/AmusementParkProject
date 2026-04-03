@@ -3,9 +3,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { ThemeService } from '../../services/themes/themes.service';
 
 @Component({
-  selector: 'app-theme-switcher',
-  templateUrl: './theme-switcher.component.html',
-  styleUrls: ['./theme-switcher.component.scss']
+    selector: 'app-theme-switcher',
+    templateUrl: './theme-switcher.component.html',
+    styleUrls: ['./theme-switcher.component.scss'],
+    standalone: false
 })
 export class ThemeSwitcherComponent implements OnInit {
   currentTheme: 'light' | 'dark' = 'dark';

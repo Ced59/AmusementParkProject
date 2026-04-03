@@ -5,7 +5,8 @@ import { MapMarker } from '../../../models/map/map-marker';
 @Component({
   selector: 'app-park-location-section',
   templateUrl: './park-location-section.component.html',
-  styleUrls: ['./park-location-section.component.scss']
+  styleUrls: ['./park-location-section.component.scss'],
+  standalone: false
 })
 export class ParkLocationSectionComponent {
   @Input() park: Park | null = null;

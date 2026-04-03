@@ -1,60 +1,57 @@
-<app-page-state
-  [state]="viewState()"
-  loadingTitleKey="admin.users.loadingTitle"
-  loadingMessageKey="admin.users.loadingMessage"
-  errorTitleKey="admin.users.errorTitle"
-  errorMessageKey="admin.users.errorMessage"
-  emptyTitleKey="admin.users.emptyTitle"
-  emptyMessageKey="admin.users.emptyMessage">
-  <p-card>
-    <ng-template pTemplate="header">
-      <div class="header-row">
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="header-row">
+      @if (!loading) {
         <span class="total">
           {{ 'admin.users.total' | translate:{ count: totalRecords } }}
         </span>
-      </div>
+      }
+    </div>
+  </ng-template>
+
+  <p-table
+    [value]="users"
+    [loading]="loading"
+    [paginator]="true"
+    [rows]="pageSize"
+    [totalRecords]="totalRecords"
+    [lazy]="true"
+    (onLazyLoad)="onPageChanged($event)"
+    [responsiveLayout]="'scroll'"
+    >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Roles</th>
+      </tr>
     </ng-template>
 
-    <p-table
-      [value]="users()"
-      [paginator]="true"
-      [rows]="pageSize"
-      [totalRecords]="totalRecords"
-      [lazy]="true"
-      (onLazyLoad)="onPageChanged($event)"
-      [responsiveLayout]="'scroll'">
-      <ng-template pTemplate="header">
-        <tr>
-          <th>ID</th>
-          <th>Email</th>
-          <th>Prénom</th>
-          <th>Nom</th>
-          <th>Roles</th>
-        </tr>
-      </ng-template>
-
-      <ng-template pTemplate="body" let-user>
-        <tr>
-          <td>{{ user.id }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.firstName }}</td>
-          <td>{{ user.lastName }}</td>
-          <td>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>
+          @for (role of user.roles; track role) {
             <p-tag
-              *ngFor="let role of user.roles"
               [value]="role"
-              class="mr-1">
-            </p-tag>
-          </td>
-        </tr>
-      </ng-template>
-    
-      <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="5">{{ 'admin.users.empty' | translate }}</td>
-        </tr>
-      </ng-template>
+              class="mr-1"
+            ></p-tag>
+          }
+        </td>
+      </tr>
+    </ng-template>
 
-    </p-table>
-  </p-card>
-</app-page-state>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">
+          {{ 'admin.users.empty' | translate }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

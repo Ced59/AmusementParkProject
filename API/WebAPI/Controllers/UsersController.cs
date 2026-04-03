@@ -1,7 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using Common.Users;
 using Dtos.Pagination;
 using Dtos.Users.ChangePassword;
+using Dtos.Users.ConfirmEmail;
 using Dtos.Users.Creating;
 using Dtos.Users.ForgotPassword;
 using Dtos.Users.LockUser;
@@ -110,19 +113,32 @@ namespace WebAPI.Controllers
         return ApiResponseHandler.HandleResponse(userPasswordChanged);
     }
 
+        [HttpPost("confirm-email")]
+        public async Task<IActionResult> ConfirmEmailAsync([FromBody] ConfirmEmailRequestDto confirmEmailRequestDto)
+    {
+        OneOf<EmailConfirmedDto, ErrorDetail> confirmationResult = await usersService.ConfirmEmailAsync(confirmEmailRequestDto.Token);
+        return ApiResponseHandler.HandleResponse(confirmationResult);
+    }
+
+        [HttpPost("resend-confirmation")]
+        public async Task<IActionResult> ResendConfirmationAsync([FromBody] ResendConfirmationEmailDto resendConfirmationEmailDto)
+    {
+        OneOf<ConfirmationEmailResentDto, ErrorDetail> resendResult = await usersService.ResendConfirmationEmailAsync(resendConfirmationEmailDto);
+        return ApiResponseHandler.HandleResponse(resendResult);
+    }
+
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPasswordAsync([FromBody] ForgotPasswordDto forgotPasswordDto)
     {
-        EmailPasswordSendedDto passwordReinitialized = new();
-        return ApiResponseHandler.HandleResponse(
-            OneOf<EmailPasswordSendedDto, ErrorDetail>.FromT0(passwordReinitialized));
+        OneOf<EmailPasswordSendedDto, ErrorDetail> passwordReinitialized = await usersService.ForgotPasswordAsync(forgotPasswordDto);
+        return ApiResponseHandler.HandleResponse(passwordReinitialized);
     }
 
         [HttpPost("reset-password")]
         public async Task<IActionResult> ResetPasswordAsync([FromBody] ResetPasswordDto resetPasswordDto)
     {
-        PasswordResetedDto passwordResetted = new();
-        return ApiResponseHandler.HandleResponse(OneOf<PasswordResetedDto, ErrorDetail>.FromT0(passwordResetted));
+        OneOf<PasswordResetedDto, ErrorDetail> passwordResetted = await usersService.ResetPasswordAsync(resetPasswordDto);
+        return ApiResponseHandler.HandleResponse(passwordResetted);
     }
 
         [HttpPost("roles/assign/{userId}")]

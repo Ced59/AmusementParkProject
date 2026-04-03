@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using Common.General.Localization;
+using Dtos.Parks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Dtos.Parks.Updating
 {
@@ -11,11 +14,19 @@ namespace Dtos.Parks.Updating
         [MaxLength(10)]
         public string? CountryCode { get; set; }
 
+        public ParkTypeDto? Type { get; set; }
+
+        public string? FounderId { get; set; }
+
+        public string? OperatorId { get; set; }
+
         [Required]
         public double Latitude { get; set; }
 
         [Required]
         public double Longitude { get; set; }
+
+        public List<LocalizedItem<string>> Descriptions { get; set; } = new();
 
         public bool IsVisible { get; set; }
 

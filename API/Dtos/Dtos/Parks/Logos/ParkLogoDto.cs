@@ -1,4 +1,6 @@
-﻿namespace Dtos.Parks.Logos
+﻿using System;
+
+namespace Dtos.Parks.Logos
 {
     public sealed class ParkLogoDto
     {

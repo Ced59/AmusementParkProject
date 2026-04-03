@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace Dtos.ParkItems
 {
     public class AttractionDetailsDto

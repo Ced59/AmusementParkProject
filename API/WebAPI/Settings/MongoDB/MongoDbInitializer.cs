@@ -1,10 +1,13 @@
-﻿using Entities.Model.Parks;
+﻿using System;
+using System.Collections.Generic;
+using Entities.Model.Parks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Repositories.Interfaces;
 using Services.Interfaces.Searching;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Entities.Model.Countries;
 using WebAPI.Resources.InitializingDatas;
 
@@ -20,7 +23,7 @@ namespace WebAPI.Settings.MongoDB
             // Collections "techniques"
             await EnsureCollectionExistsAsync(database, settings.UsersCollectionName);
             await EnsureCollectionExistsAsync(database, settings.ImagesCollectionName);
-            await EnsureCollectionExistsAsync(database, settings.ParkLogosCollectionName);
+            await InitializeImagesIndexesAsync(database, settings.ImagesCollectionName);
 
             // 🔹 Countries
             await EnsureCollectionExistsAsync(database, settings.CountriesCollectionName);
@@ -39,10 +42,21 @@ namespace WebAPI.Settings.MongoDB
                 @"C:\Users\ccaud\Source\Repos\Ced59\AmusementParkProject\API\WebAPI\Resources\InitializingDatas\parks.json"
             );
 
+            // 🔹 Park founders / operators
+            await EnsureCollectionExistsAsync(database, settings.ParkFoundersCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.ParkOperatorsCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.AttractionManufacturersCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.ParkZonesCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.ParkItemsCollectionName);
+            await InitializeParkItemsIndexesAsync(database, settings.ParkItemsCollectionName);
+
             // 🔹 Index de recherche
-            await searchIndexService.InitializeFromParksAsync(
+            await searchIndexService.InitializeAsync(
                 database,
                 settings.ParksCollectionName,
+                settings.ParkItemsCollectionName,
+                settings.ParkOperatorsCollectionName,
+                settings.AttractionManufacturersCollectionName,
                 settings.SearchItemCollectionName
             );
         }
@@ -288,6 +302,48 @@ namespace WebAPI.Settings.MongoDB
             {
                 Console.WriteLine("[MongoDbInitializer] Aucun pays désérialisé depuis le JSON.");
             }
+        }
+        
+
+        private static async Task InitializeParkItemsIndexesAsync(
+            IMongoDatabase database,
+            string collectionName)
+        {
+            IMongoCollection<ParkItem> itemsCollection = database.GetCollection<ParkItem>(collectionName);
+
+            await itemsCollection.Indexes.CreateManyAsync(new[]
+            {
+                new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Ascending(item => item.ParkId)),
+                new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Ascending(item => item.ZoneId)),
+                new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Ascending("attractionDetails.manufacturerId")),
+                new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Geo2DSphere(item => item.Location))
+            });
+        }
+
+        private static async Task InitializeImagesIndexesAsync(
+            IMongoDatabase database,
+            string collectionName)
+        {
+            IMongoCollection<Entities.Model.Images.Image> imagesCollection =
+                database.GetCollection<Entities.Model.Images.Image>(collectionName);
+
+            await imagesCollection.Indexes.CreateManyAsync(new[]
+            {
+                new CreateIndexModel<Entities.Model.Images.Image>(
+                    Builders<Entities.Model.Images.Image>.IndexKeys
+                        .Ascending(img => img.OwnerType)
+                        .Ascending(img => img.OwnerId)
+                        .Ascending(img => img.Category)
+                        .Ascending(img => img.IsCurrent)),
+
+                new CreateIndexModel<Entities.Model.Images.Image>(
+                    Builders<Entities.Model.Images.Image>.IndexKeys
+                        .Ascending(img => img.Category)),
+
+                new CreateIndexModel<Entities.Model.Images.Image>(
+                    Builders<Entities.Model.Images.Image>.IndexKeys
+                        .Ascending(img => img.CreatedAt))
+            });
         }
     }
 }

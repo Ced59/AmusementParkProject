@@ -1,4 +1,8 @@
-﻿using System.Text.RegularExpressions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Entities.Model.Searching;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -14,8 +18,7 @@ namespace Repositories.Implementations
             IMongoDatabase database,
             IMongoDbSettings settings)
         {
-            searchCollection = database
-                .GetCollection<SearchItem>(settings.SearchItemCollectionName);
+            searchCollection = database.GetCollection<SearchItem>(settings.SearchItemCollectionName);
         }
 
         public async Task<(IEnumerable<SearchItem> Items, long TotalCount)> SearchAsync(
@@ -24,44 +27,41 @@ namespace Repositories.Implementations
             int page,
             int pageSize)
         {
-            // 1) Filtre initial “match all”
-            FilterDefinition<SearchItem> filter =
-                Builders<SearchItem>.Filter.Empty;
+            FilterDefinition<SearchItem> filter = Builders<SearchItem>.Filter.Empty;
 
-            // 2) Filtre texte
             if (!string.IsNullOrWhiteSpace(query))
             {
-                string escaped = Regex.Escape(query.Trim());
-                BsonRegularExpression regex = new($".*{escaped}.*", "i");
+                string escapedQuery = Regex.Escape(query.Trim());
+                BsonRegularExpression regex = new($".*{escapedQuery}.*", "i");
 
-                filter = Builders<SearchItem>
-                    .Filter.Regex(si => si.Title, regex);
+                FilterDefinition<SearchItem> queryFilter = Builders<SearchItem>.Filter.Or(
+                    Builders<SearchItem>.Filter.Regex(searchItem => searchItem.Title, regex),
+                    Builders<SearchItem>.Filter.Regex(searchItem => searchItem.Description, regex),
+                    Builders<SearchItem>.Filter.Regex("keywords", regex));
+
+                filter &= queryFilter;
             }
 
-            // 3) Filtre catégories
             if (categories != null && categories.Length > 0)
             {
-                FilterDefinition<SearchItem> catFilter =
-                    Builders<SearchItem>
-                        .Filter.In(si => si.Category, categories);
+                string[] normalizedCategories = categories
+                    .Where(category => !string.IsNullOrWhiteSpace(category))
+                    .Select(category => category.Trim())
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .ToArray();
 
-                filter = filter & catFilter;
+                if (normalizedCategories.Length > 0)
+                {
+                    FilterDefinition<SearchItem> categoryFilter = Builders<SearchItem>.Filter.In(searchItem => searchItem.Category, normalizedCategories);
+                    filter &= categoryFilter;
+                }
             }
 
-            // 4) 🔹 Filtre visibilité publique : uniquement les items visibles
-            filter = filter & Builders<SearchItem>
-                .Filter.Eq(si => si.IsVisible, true);
+            filter &= Builders<SearchItem>.Filter.Eq(searchItem => searchItem.IsVisible, true);
 
-            // 5) Count total
-            long totalCount =
-                await searchCollection
-                    .CountDocumentsAsync(filter);
+            long totalCount = await searchCollection.CountDocumentsAsync(filter);
 
-            // 6) Tri + pagination
-            SortDefinition<SearchItem> sort =
-                Builders<SearchItem>
-                    .Sort.Descending(si => si.UpdatedAt);
-
+            SortDefinition<SearchItem> sort = Builders<SearchItem>.Sort.Descending(searchItem => searchItem.UpdatedAt);
             FindOptions<SearchItem> findOptions = new()
             {
                 Sort = sort,
@@ -69,14 +69,10 @@ namespace Repositories.Implementations
                 Limit = pageSize
             };
 
-            IAsyncCursor<SearchItem> cursor =
-                await searchCollection.FindAsync(filter, findOptions);
-
-            List<SearchItem> items =
-                await cursor.ToListAsync();
+            IAsyncCursor<SearchItem> cursor = await searchCollection.FindAsync(filter, findOptions);
+            List<SearchItem> items = await cursor.ToListAsync();
 
             return (items, totalCount);
         }
-
     }
 }

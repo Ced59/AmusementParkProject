@@ -1,35 +1,75 @@
-import { Component, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Park } from '../../../../models/parks/park';
-import { ParksApiResponse } from '../../../../models/parks/parks_api_response';
 import { Pagination } from '../../../../models/shared/pagination';
-import { ViewState } from '../../../../models/shared/view-state';
 import { ApiService } from '../../../../services/api.service';
+import { ParksApiResponse } from '../../../../models/parks/parks_api_response';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ParkType } from '../../../../models/parks/park-type';
 
 @Component({
-  selector: 'app-admin-parks',
-  templateUrl: './admin-parks.component.html',
-  styleUrls: ['./admin-parks.component.scss']
+    selector: 'app-admin-parks',
+    templateUrl: './admin-parks.component.html',
+    styleUrls: ['./admin-parks.component.scss'],
+    standalone: false
 })
 export class AdminParksComponent implements OnInit {
-  readonly parks = signal<Park[]>([]);
-  readonly pagination = signal<Pagination | null>(null);
-  readonly viewState = signal<ViewState>(ViewState.Loading);
+  parks: Park[] = [];
+  loading: boolean = false;
 
-  totalRecords = 0;
-  pageSize = 10;
-  currentPage = 1;
-  searchQuery = '';
+  pagination: Pagination | null = null;
+  totalRecords: number = 0;
+  pageSize: number = 10;
+  currentPage: number = 1;
+
+  searchQuery: string = '';
 
   constructor(
     private readonly apiService: ApiService,
     private readonly router: Router,
     private readonly route: ActivatedRoute
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.loadParks(this.currentPage, this.pageSize);
+  }
+
+  loadParks(page: number, size: number): void {
+    this.loading = true;
+
+    const trimmedQuery: string = this.searchQuery.trim();
+
+    const handleResponse = (response: ParksApiResponse, currentPage: number, currentSize: number) => {
+      const rawParks: Park[] = response.data ?? [];
+
+      this.parks = rawParks.map((park: Park) => ({
+        ...park,
+        isVisible: park.isVisible ?? false
+      }));
+
+      this.pagination = response.pagination ?? null;
+      this.totalRecords = this.pagination?.totalItems ?? this.parks.length;
+      this.pageSize = this.pagination?.itemsPerPage ?? currentSize;
+      this.currentPage = this.pagination?.currentPage ?? currentPage;
+      this.loading = false;
+    };
+
+    if (trimmedQuery.length > 0) {
+      this.apiService.searchParks(trimmedQuery, page, size).subscribe({
+        next: (response: ParksApiResponse) => handleResponse(response, page, size),
+        error: (error: unknown) => {
+          console.error('Error searching parks', error);
+          this.loading = false;
+        }
+      });
+    } else {
+      this.apiService.getParksPaginated(page, size).subscribe({
+        next: (response: ParksApiResponse) => handleResponse(response, page, size),
+        error: (error: unknown) => {
+          console.error('Error loading parks', error);
+          this.loading = false;
+        }
+      });
+    }
   }
 
   onSearch(): void {
@@ -48,9 +88,9 @@ export class AdminParksComponent implements OnInit {
   }
 
   onPageChanged(event: any): void {
-    const rows = event.rows ?? this.pageSize;
-    const first = event.first ?? 0;
-    const page = Math.floor(first / rows) + 1;
+    const rows: number = event.rows ?? this.pageSize;
+    const first: number = event.first ?? 0;
+    const page: number = Math.floor(first / rows) + 1;
     this.loadParks(page, rows);
   }
 
@@ -59,44 +99,34 @@ export class AdminParksComponent implements OnInit {
       return;
     }
 
-    const newValue = !!park.isVisible;
+    const newValue: boolean = !!park.isVisible;
 
     this.apiService.updateParkVisibility(park.id, newValue).subscribe({
-      error: (err: unknown) => {
-        console.error('Error updating park visibility', err);
+      next: () => {
+      },
+      error: (error: unknown) => {
+        console.error('Error updating park visibility', error);
         park.isVisible = !newValue;
       }
     });
   }
 
-  private loadParks(page: number, size: number): void {
-    this.viewState.set(ViewState.Loading);
-
-    const trimmedQuery = this.searchQuery.trim();
-    const request$ = trimmedQuery.length > 0
-      ? this.apiService.searchParks(trimmedQuery, page, size)
-      : this.apiService.getParksPaginated(page, size);
-
-    request$.subscribe({
-      next: (response: ParksApiResponse) => {
-        const parks = (response.data ?? []).map((park) => ({
-          ...park,
-          isVisible: park.isVisible ?? false
-        }));
-
-        const pagination = response.pagination ?? null;
-
-        this.parks.set(parks);
-        this.pagination.set(pagination);
-        this.totalRecords = pagination?.totalItems ?? parks.length;
-        this.pageSize = pagination?.itemsPerPage ?? size;
-        this.currentPage = pagination?.currentPage ?? page;
-        this.viewState.set(ViewState.Ready);
-      },
-      error: (err: unknown) => {
-        console.error('Error loading parks', err);
-        this.viewState.set(ViewState.Error);
-      }
-    });
+  getTypeTranslationKey(type: ParkType | null | undefined): string {
+    switch (type) {
+      case 'ThemePark':
+        return 'admin.parks.types.themePark';
+      case 'WaterPark':
+        return 'admin.parks.types.waterPark';
+      case 'Zoo':
+        return 'admin.parks.types.zoo';
+      case 'AnimalPark':
+        return 'admin.parks.types.animalPark';
+      case 'AmusementPark':
+        return 'admin.parks.types.amusementPark';
+      case 'Resort':
+        return 'admin.parks.types.resort';
+      default:
+        return 'admin.parks.types.notSpecified';
+    }
   }
 }

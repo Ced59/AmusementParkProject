@@ -112,3 +112,8 @@
 .park-card--compact .park-card__visual {
   min-height: 7rem;
 }
+
+.park-card__description {
+  margin: 0;
+  color: var(--app-text);
+}

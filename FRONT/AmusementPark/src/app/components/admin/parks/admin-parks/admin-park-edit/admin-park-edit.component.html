@@ -1,318 +1,137 @@
-<app-page-state
-  [state]="pageState()"
-  loadingTitleKey="admin.parks.editPage.loadingTitle"
-  loadingMessageKey="admin.parks.editPage.loadingMessage"
-  errorTitleKey="admin.parks.editPage.errorTitle"
-  errorMessageKey="admin.parks.editPage.errorMessage">
 <div class="admin-park-edit p-3">
-  <!-- Header -->
-  <div class="flex justify-content-between align-items-center mb-3">
+  <div class="page-header">
     <div>
-      <h2 *ngIf="!isEditMode">
-        {{ 'admin.parks.editPage.createTitle' | translate }}
-      </h2>
-      <h2 *ngIf="isEditMode">
-        {{ 'admin.parks.editPage.updateTitle' | translate:{ name: nameControl.value || '—' } }}
-      </h2>
-      <p class="text-color-secondary">
-        {{ 'admin.parks.editPage.subtitle' | translate }}
-      </p>
+      @if (!isEditMode) {
+        <h2>
+          {{ 'admin.parks.editPage.createTitle' | translate }}
+        </h2>
+      }
+      @if (isEditMode) {
+        <h2>
+          {{ 'admin.parks.editPage.updateTitle' | translate:{ name: nameControl?.value || '—' } }}
+        </h2>
+      }
+      <small class="text-color-secondary">
+        {{ 'admin.parks.refactorHint' | translate }}
+      </small>
     </div>
 
-    <div *ngIf="form">
-      <p-tag
-        *ngIf="isVisibleControl.value"
-        severity="success"
-        [value]="'admin.parks.visible' | translate">
-      </p-tag>
-      <p-tag
-        *ngIf="!isVisibleControl.value"
-        severity="warning"
-        [value]="'admin.parks.hidden' | translate">
-      </p-tag>
+    <div class="page-header__aside">
+      @if (form) {
+        <div>
+          @if (isVisibleControl?.value) {
+            <p-tag
+              severity="success"
+              [value]="'admin.parks.visible' | translate">
+            </p-tag>
+          }
+          @if (!isVisibleControl?.value) {
+            <p-tag
+              severity="warn"
+              [value]="'admin.parks.hidden' | translate">
+            </p-tag>
+          }
+        </div>
+      }
+
+      <app-editor-save-toolbar
+        [statusLabel]="getEditorStatusLabel()"
+        [isDirty]="isFormDirty"
+        [isSaving]="isSaving"
+        [backButtonLabel]="'admin.parks.editorActions.backToParks' | translate"
+        [saveAllButtonLabel]="'admin.parks.editorActions.saveAll' | translate"
+        [saveAndCloseButtonLabel]="'admin.parks.editorActions.saveAndClose' | translate"
+        (back)="goBack()"
+        (saveAll)="saveAll()"
+        (saveAndClose)="saveAndClose()">
+      </app-editor-save-toolbar>
     </div>
   </div>
 
-  <!-- Card -->
   <p-card>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
+      <p-tabs [value]="activeTabIndex" (valueChange)="onTabChange($event)">
+        <p-tablist>
+          <p-tab [value]="0">{{ 'admin.parks.tabs.general' | translate }}</p-tab>
+          <p-tab [value]="1">{{ 'admin.parks.tabs.location' | translate }}</p-tab>
+          <p-tab [value]="2">{{ 'admin.parks.tabs.descriptions' | translate }}</p-tab>
+          <p-tab [value]="3">{{ 'admin.parks.tabs.logos' | translate }}</p-tab>
+        </p-tablist>
 
-      <!-- ================== INFOS GÉNÉRALES ================== -->
-      <div class="p-fluid formgrid grid">
-        <!-- Nom -->
-        <div class="field col-12 md:col-6">
-          <label for="name">{{ 'admin.parks.name' | translate }}</label>
-          <input
-            id="name"
-            type="text"
-            pInputText
-            formControlName="name" />
-          <small class="p-error"
-                 *ngIf="nameControl.invalid && (nameControl.dirty || nameControl.touched)">
-            {{ 'validation.required' | translate }}
-          </small>
-        </div>
+        <p-tabpanels>
+          <p-tabpanel [value]="0">
+            @if (activeTabIndex === 0) {
+              <app-admin-park-general-tab
+                [form]="form"
+                [parkTypeOptions]="parkTypeOptions"
+                [countryOptions]="countryOptions"
+                [founderOptions]="founderOptions"
+                [operatorOptions]="operatorOptions"
+                [foundersLoading]="foundersLoading"
+                [operatorsLoading]="operatorsLoading"
+                [founderAddLink]="['/', currentLang, 'admin', 'parks', 'founders', 'new']"
+                [founderAddQueryParams]="founderCreateLinkQueryParams"
+                [operatorAddLink]="['/', currentLang, 'admin', 'operators', 'new']"
+                [operatorAddQueryParams]="operatorCreateLinkQueryParams"
+                [currentLang]="currentLang"
+                [parkId]="parkId"
+                [isEditMode]="isEditMode"
+                [isSaving]="isSaving"
+                (saveSection)="saveSection()">
+              </app-admin-park-general-tab>
+            }
+          </p-tabpanel>
 
-        <!-- Site web -->
-        <div class="field col-12 md:col-6">
-          <label for="websiteUrl">{{ 'admin.parks.website' | translate }}</label>
-          <input
-            id="websiteUrl"
-            type="url"
-            pInputText
-            formControlName="websiteUrl"
-            [placeholder]="'admin.parks.websitePlaceholder' | translate" />
-        </div>
-      </div>
+          <p-tabpanel [value]="1">
+            @if (activeTabIndex === 1) {
+              <app-admin-park-location-tab
+                [form]="form"
+                [mapCenter]="mapCenter"
+                [mapZoom]="mapZoom"
+                [mapMarkers]="mapMarkers"
+                [isSaving]="isSaving"
+                (mapPositionChange)="onMapPositionChange($event)"
+                (saveSection)="saveSection()">
+              </app-admin-park-location-tab>
+            }
+          </p-tabpanel>
 
-      <!-- ================== LOCALISATION ================== -->
-      <div class="field">
-        <label>{{ 'admin.parks.location' | translate }}</label>
-        <app-leaflet-map
-          [center]="mapCenter"
-          [zoom]="mapZoom"
-          [markers]="mapMarkers"
-          [editable]="true"
-          (positionChange)="onMapPositionChange($event)">
-        </app-leaflet-map>
-      </div>
+          <p-tabpanel [value]="2">
+            @if (activeTabIndex === 2) {
+              <app-admin-park-descriptions-tab
+                [form]="form"
+                [isSaving]="isSaving"
+                (saveSection)="saveSection()">
+              </app-admin-park-descriptions-tab>
+            }
+          </p-tabpanel>
 
-      <div class="p-fluid formgrid grid">
-        <div class="field col-12 md:col-6">
-          <label for="latitude">{{ 'admin.parks.latitude' | translate }}</label>
-          <input
-            id="latitude"
-            type="number"
-            pInputText
-            formControlName="latitude"
-            step="0.000001" />
-          <small class="p-error"
-                 *ngIf="latitudeControl.invalid && (latitudeControl.dirty || latitudeControl.touched)">
-            {{ 'validation.required' | translate }}
-          </small>
-        </div>
-
-        <div class="field col-12 md:col-6">
-          <label for="longitude">{{ 'admin.parks.longitude' | translate }}</label>
-          <input
-            id="longitude"
-            type="number"
-            pInputText
-            formControlName="longitude"
-            step="0.000001" />
-          <small class="p-error"
-                 *ngIf="longitudeControl.invalid && (longitudeControl.dirty || longitudeControl.touched)">
-            {{ 'validation.required' | translate }}
-          </small>
-        </div>
-      </div>
-
-      <!-- ================== ADRESSE ================== -->
-      <div class="p-fluid formgrid grid">
-        <div class="field col-12">
-          <label for="street">{{ 'admin.parks.street' | translate }}</label>
-          <input
-            id="street"
-            type="text"
-            pInputText
-            formControlName="street"
-            [placeholder]="'admin.parks.streetPlaceholder' | translate" />
-        </div>
-
-        <div class="field col-12 md:col-4">
-          <label for="postalCode">{{ 'admin.parks.postalCode' | translate }}</label>
-          <input
-            id="postalCode"
-            type="text"
-            pInputText
-            formControlName="postalCode"
-            [placeholder]="'admin.parks.postalCodePlaceholder' | translate" />
-        </div>
-
-        <div class="field col-12 md:col-8">
-          <label for="city">{{ 'admin.parks.city' | translate }}</label>
-          <input
-            id="city"
-            type="text"
-            pInputText
-            formControlName="city"
-            [placeholder]="'admin.parks.cityPlaceholder' | translate" />
-        </div>
-      </div>
-
-      <!-- ================== PAYS & VISIBILITÉ ================== -->
-      <div class="p-fluid formgrid grid">
-        <!-- Pays -->
-        <div class="field col-12 md:col-6">
-          <label for="countryCode">{{ 'admin.parks.country' | translate }}</label>
-          <p-dropdown
-            inputId="countryCode"
-            formControlName="countryCode"
-            [options]="countryOptions"
-            optionLabel="label"
-            optionValue="code"
-            [showClear]="true"
-            [filter]="true"
-            [placeholder]="'admin.parks.countryPlaceholder' | translate">
-          </p-dropdown>
-        </div>
-
-        <!-- Visible -->
-        <div class="field col-12 md:col-6">
-          <label>{{ 'admin.parks.visibleField' | translate }}</label>
-          <div class="flex align-items-center gap-2 mt-2">
-            <p-inputSwitch formControlName="isVisible"></p-inputSwitch>
-            <span *ngIf="isVisibleControl.value">
-              {{ 'admin.parks.visible' | translate }}
-            </span>
-            <span *ngIf="!isVisibleControl.value">
-              {{ 'admin.parks.hidden' | translate }}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================== LOGOS DU PARC ================== -->
-      <div *ngIf="isEditMode" class="mt-4 logos-section">
-        <h3 class="mb-3">{{ 'admin.parks.logos.sectionTitle' | translate }}</h3>
-
-        <div class="grid">
-
-          <!-- Logo actuel -->
-          <div class="col-12 md:col-4">
-            <p-card styleClass="logo-card">
-              <div class="logo-card__header">
-                <h4>{{ 'admin.parks.logos.currentTitle' | translate }}</h4>
-              </div>
-
-              <div class="logo-card__body">
-                <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
-                  <img *ngIf="currentLogo"
-                       [src]="currentLogo.imageUrl"
-                       alt="Logo"
-                       class="logo-preview" />
-
-                  <span *ngIf="!currentLogo" class="text-color-secondary text-center logo-empty-text">
-                    {{ 'admin.parks.logos.noCurrent' | translate }}
-                  </span>
-
-                  <small *ngIf="currentLogo" class="text-color-secondary">
-                    {{ currentLogo.createdAt | date:'shortDate' }}
-                  </small>
-                </div>
-              </div>
-            </p-card>
-          </div>
-
-          <!-- Upload nouveau logo -->
-          <div class="col-12 md:col-8">
-            <p-card styleClass="logo-card">
-              <div class="logo-card__header">
-                <h4>{{ 'admin.parks.logos.uploadTitle' | translate }}</h4>
-              </div>
-
-              <div class="logo-card__body">
-                <div class="flex flex-column gap-3">
-                  <input type="file"
-                         (change)="onLogoFileSelected($event)"
-                         accept="image/*" />
-
-                  <input
-                    pInputText
-                    type="text"
-                    [(ngModel)]="newLogoDescription"
-                    [ngModelOptions]="{standalone: true}"
-                    [placeholder]="'admin.parks.logos.descriptionPlaceholder' | translate" />
-
-                  <div class="flex justify-content-end">
-                    <button pButton type="button"
-                            (click)="onUploadLogo()"
-                            [disabled]="!selectedLogoFile || logosUploading">
-                      <span *ngIf="!logosUploading">
-                        {{ 'admin.parks.logos.uploadButton' | translate }}
-                      </span>
-                      <span *ngIf="logosUploading">
-                        {{ 'admin.loading' | translate }}
-                      </span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </p-card>
-          </div>
-
-        </div>
-
-        <p-divider></p-divider>
-
-        <!-- Historique des logos -->
-        <p-panel [toggleable]="true" [collapsed]="true"
-                 header="{{ 'admin.parks.logos.historyTitle' | translate }}">
-          <div *ngIf="logosLoading" class="text-center py-3">
-            <p-progressSpinner styleClass="w-2rem h-2rem"></p-progressSpinner>
-          </div>
-
-          <div *ngIf="!logosLoading && parkLogos.length === 0" class="text-color-secondary">
-            {{ 'admin.parks.logos.empty' | translate }}
-          </div>
-
-          <div *ngIf="!logosLoading && parkLogos.length > 0">
-            <div class="grid">
-              <div class="col-12 md:col-4 lg:col-3"
-                   *ngFor="let logo of pagedLogos">
-                <p-card [ngClass]="{'border-primary': logo.isCurrent}">
-                  <div class="flex flex-column align-items-center">
-                    <img [src]="logo.imageUrl"
-                         alt="Logo"
-                         class="logo-thumb mb-2" />
-
-                    <small class="mb-1">
-                      {{ logo.createdAt | date:'short' }}
-                    </small>
-
-                    <small class="text-color-secondary mb-2 text-center">
-                      {{ logo.description || ('admin.parks.logos.noDescription' | translate) }}
-                    </small>
-
-                    <div class="flex gap-2">
-                      <button pButton type="button"
-                              icon="pi pi-check"
-                              class="p-button-sm p-button-success"
-                              (click)="onSetCurrentLogo(logo)"
-                              [disabled]="logo.isCurrent">
-                      </button>
-                      <button pButton type="button"
-                              icon="pi pi-trash"
-                              class="p-button-sm p-button-danger"
-                              (click)="onDeleteLogo(logo)">
-                      </button>
-                    </div>
-                  </div>
-                </p-card>
-              </div>
-            </div>
-
-            <p-paginator
-              [rows]="logosPageSize"
-              [totalRecords]="parkLogos.length"
-              (onPageChange)="onLogosPageChange($event)">
-            </p-paginator>
-          </div>
-        </p-panel>
-      </div>
-
-      <!-- ================== BOUTONS ================== -->
-      <div class="flex justify-content-end gap-2 mt-3">
-        <button pButton type="button" class="p-button-secondary" (click)="onCancel()">
-          {{ 'actions.cancel' | translate }}
-        </button>
-        <button pButton type="submit" class="p-button-primary">
-          {{ 'actions.save' | translate }}
-        </button>
-      </div>
-
+          <p-tabpanel [value]="3">
+            @if (activeTabIndex === 3) {
+              <app-admin-park-logos-tab
+                [isEditMode]="isEditMode"
+                [currentLogo]="currentLogo"
+                [allowMultipleLogoUpload]="allowMultipleLogoUpload"
+                [selectedLogoCount]="selectedLogoCount"
+                [newLogoDescription]="newLogoDescription"
+                [logosUploading]="logosUploading"
+                [logosLoading]="logosLoading"
+                [parkLogos]="parkLogos"
+                [pagedLogos]="pagedLogos"
+                [logosPageSize]="logosPageSize"
+                [isSaving]="isSaving"
+                (logoFileSelected)="onLogoFileSelected($event)"
+                (newLogoDescriptionChange)="newLogoDescription = $event"
+                (uploadLogo)="onUploadLogo()"
+                (setCurrentLogo)="onSetCurrentLogo($event)"
+                (deleteLogo)="onDeleteLogo($event)"
+                (logosPageChange)="onLogosPageChange($event)"
+                (saveSection)="saveSection()">
+              </app-admin-park-logos-tab>
+            }
+          </p-tabpanel>
+        </p-tabpanels>
+      </p-tabs>
     </form>
   </p-card>
 </div>
-
-</app-page-state>

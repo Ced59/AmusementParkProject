@@ -1,11 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { Park } from '../../../models/parks/park';
+import { stripHtml, resolveLocalizedValue } from '../../../commons/localized-item.utils';
+import { buildParkAddressLine, buildParkLocationLine, buildParkSlug } from '../../../commons/park-presentation.utils';
 
 @Component({
   selector: 'app-park-card',
   templateUrl: './park-card.component.html',
-  styleUrls: ['./park-card.component.scss']
+  styleUrls: ['./park-card.component.scss'],
+  standalone: false
 })
 export class ParkCardComponent {
   @Input() park: Park | null = null;
@@ -20,26 +23,20 @@ export class ParkCardComponent {
       return null;
     }
 
-    return ['/', this.currentLang, 'park', this.park.id, this.slugify(this.park.name)];
+    return ['/', this.currentLang, 'park', this.park.id, buildParkSlug(this.park.name)];
   }
 
   get logoUrl(): string | null {
-    const imageId = this.park?.currentLogoImageId?.trim();
+    const imageId: string | undefined = this.park?.currentLogoImageId?.trim();
     return imageId ? this.apiService.buildImageUrl(imageId) : null;
   }
 
   get locationLine(): string | null {
-    const parts = [this.park?.city, this.park?.countryCode]
-      .filter((part: string | undefined): part is string => !!part?.trim());
-
-    return parts.length > 0 ? parts.join(' · ') : null;
+    return buildParkLocationLine(this.park);
   }
 
   get addressLine(): string | null {
-    const parts = [this.park?.street, this.park?.postalCode, this.park?.city]
-      .filter((part: string | undefined): part is string => !!part?.trim());
-
-    return parts.length > 0 ? parts.join(', ') : null;
+    return buildParkAddressLine(this.park);
   }
 
   get coordinatesLine(): string | null {
@@ -50,11 +47,18 @@ export class ParkCardComponent {
     return `${this.park.latitude.toFixed(3)}, ${this.park.longitude.toFixed(3)}`;
   }
 
-  private slugify(text: string): string {
-    return text
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
+  get shortDescription(): string | null {
+    const localizedDescription: string | undefined = resolveLocalizedValue(this.park?.descriptions, this.currentLang);
+    const plainText: string = stripHtml(localizedDescription);
+
+    if (!plainText) {
+      return null;
+    }
+
+    if (plainText.length <= 140) {
+      return plainText;
+    }
+
+    return `${plainText.slice(0, 137).trimEnd()}...`;
   }
 }

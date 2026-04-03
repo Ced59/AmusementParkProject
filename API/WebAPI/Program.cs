@@ -1,10 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Minio;
@@ -13,16 +23,17 @@ using Repositories.Implementations;
 using Repositories.Interfaces;
 using Services.Configuration;
 using Services.Implementations;
+using Services.Implementations.Authentication;
 using Services.Implementations.Images;
-using Services.Implementations.Images.Logos;
 using Services.Implementations.Searching;
 using Services.Interfaces;
+using Services.Interfaces.Authentication;
 using Services.Interfaces.Images;
-using Services.Interfaces.Images.Logos;
 using Services.Interfaces.Searching;
 using Services.Interfaces.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebAPI.Settings.Attributes;
+using WebAPI.Settings.Email;
 using WebAPI.Settings.Images;
 using WebAPI.Settings.MongoDB;
 using WebAPI.Settings.OAuth;
@@ -51,23 +62,46 @@ namespace WebAPI
             builder.Services.AddHttpClient();
             ConfigureSwagger(builder.Services);
 
+            // Settings
+            EmailSettings emailSettings = builder.Configuration.GetSection("Email").Get<EmailSettings>() ?? new EmailSettings();
+            LocalAuthenticationSettings localAuthenticationSettings = builder.Configuration.GetSection("Authentication:Local").Get<LocalAuthenticationSettings>() ?? new LocalAuthenticationSettings();
+            CorsSettings corsSettings = builder.Configuration.GetSection("Cors").Get<CorsSettings>() ?? new CorsSettings();
+
+            builder.Services.AddSingleton<IEmailSettings>(emailSettings);
+            builder.Services.AddSingleton<ILocalAuthenticationSettings>(localAuthenticationSettings);
+            builder.Services.AddSingleton<ICorsSettings>(corsSettings);
+
+            ValidateEmailSettings(emailSettings);
+
             // Services
             builder.Services.AddScoped<IUsersService, UsersService>();
             builder.Services.AddScoped<IParksService, ParksService>();
+            builder.Services.AddScoped<IParkFoundersService, ParkFoundersService>();
+            builder.Services.AddScoped<IParkOperatorsService, ParkOperatorsService>();
+            builder.Services.AddScoped<IAttractionManufacturersService, AttractionManufacturersService>();
+            builder.Services.AddScoped<IParkZonesService, ParkZonesService>();
+            builder.Services.AddScoped<IParkItemsService, ParkItemsService>();
 
-            builder.Services.AddScoped<ISocialAuthService, SocialAuthService>();
+            builder.Services.AddScoped<IExternalAuthenticationService, ExternalAuthenticationService>();
+            builder.Services.AddScoped<IExternalIdentityProviderService, GoogleExternalIdentityProviderService>();
+            builder.Services.AddScoped<ILocalAccountTokenService, LocalAccountTokenService>();
+            builder.Services.AddScoped<ILocalAccountEmailService, LocalAccountEmailService>();
+            RegisterEmailSender(builder.Services, emailSettings);
 
             builder.Services.AddScoped<ISearchIndexService, SearchIndexService>();
             builder.Services.AddScoped<ISearchService, SearchService>();
             builder.Services.AddScoped<ICountriesService, CountriesService>();
-            builder.Services.AddScoped<IParkLogosService, ParkLogosService>();
 
             builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
             builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
+            builder.Services.AddScoped<IParkFoundersQueryHandler, ParkFoundersMongoQueryHandler>();
+            builder.Services.AddScoped<IParkOperatorsQueryHandler, ParkOperatorsMongoQueryHandler>();
+            builder.Services.AddScoped<IAttractionManufacturersQueryHandler, AttractionManufacturersMongoQueryHandler>();
+            builder.Services.AddScoped<IParkZonesQueryHandler, ParkZonesMongoQueryHandler>();
+            builder.Services.AddScoped<IParkItemsQueryHandler, ParkItemsMongoQueryHandler>();
             builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
             builder.Services.AddScoped<IImagesQueryHandler, ImagesMongoQueryHandler>();
             builder.Services.AddScoped<ICountriesQueryHandler, CountriesMongoQueryHandler>();
-            builder.Services.AddScoped<IParkLogosQueryHandler, ParkLogosMongoQueryHandler>();
 
             InjectImagesServices(builder);
 
@@ -115,11 +149,17 @@ namespace WebAPI
             // Configure CORS
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builderCors => builderCors.WithOrigins("http://localhost:4200")
+                options.AddPolicy("AllowSpecificOrigin", builderCors =>
+                {
+                    builderCors.WithOrigins(corsSettings.AllowedOrigins)
                         .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials());
+                        .AllowAnyMethod();
+
+                    if (corsSettings.AllowCredentials)
+                    {
+                        builderCors.AllowCredentials();
+                    }
+                });
             });
         }
 
@@ -141,6 +181,8 @@ namespace WebAPI
             builder.Services.AddScoped<IImageStorageService, MinioImageStorageService>();
             builder.Services.AddScoped<ISavingImageService, SavingImageService>();
             builder.Services.AddScoped<IImageMetadataExtractorService, ImageMetadataExtractorService>();
+            builder.Services.AddScoped<IImageLinksService, ImageLinksService>();
+            builder.Services.AddScoped<IUserAvatarService, UserAvatarService>();
 
             builder.Services.AddSingleton<IWaterMarkService, WatermarkService>(sp =>
                 new WatermarkService(
@@ -270,6 +312,41 @@ namespace WebAPI
         }
 
 
+        private static void RegisterEmailSender(IServiceCollection services, IEmailSettings emailSettings)
+        {
+            if (string.Equals(emailSettings.Mode, "Smtp", StringComparison.OrdinalIgnoreCase))
+            {
+                services.AddScoped<IEmailSender, SmtpEmailSender>();
+                return;
+            }
+
+            services.AddScoped<IEmailSender, ConsoleEmailSender>();
+        }
+
+        private static void ValidateEmailSettings(IEmailSettings settings)
+        {
+            if (!string.Equals(settings.Mode, "Smtp", StringComparison.OrdinalIgnoreCase))
+            {
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(settings.Host))
+            {
+                throw new InvalidOperationException("Email SMTP host is not configured.");
+            }
+
+            if (settings.Port <= 0)
+            {
+                throw new InvalidOperationException("Email SMTP port is not configured.");
+            }
+
+            if (string.IsNullOrWhiteSpace(settings.FromAddress))
+            {
+                throw new InvalidOperationException("Email sender address is not configured.");
+            }
+        }
+
+
         private static void ValidateJwtSettings(IJwtSettings settings)
         {
             if (string.IsNullOrEmpty(settings.Key) || string.IsNullOrEmpty(settings.Issuer) ||
@@ -290,7 +367,7 @@ namespace WebAPI
 
         private static async Task InitializeMongoDbAsync(IHost app)
         {
-            // Crée un scope pour résoudre ISearchIndexService (scoped)
+            // Crï¿½e un scope pour rï¿½soudre ISearchIndexService (scoped)
             using IServiceScope scope = app.Services.CreateScope();
 
             IMongoDatabase database = scope.ServiceProvider.GetRequiredService<IMongoDatabase>();

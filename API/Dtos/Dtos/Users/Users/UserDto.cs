@@ -1,4 +1,6 @@
-﻿using Common.General;
+﻿using System;
+using System.Collections.Generic;
+using Common.General;
 using Common.Users;
 
 namespace Dtos.Users.Users

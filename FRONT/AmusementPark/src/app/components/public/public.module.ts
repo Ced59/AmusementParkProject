@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+
 import { SharedModule } from '../shared/shared.module';
 import { ParkCardComponent } from './park-card/park-card.component';
 import { SearchResultCardComponent } from './search-result-card/search-result-card.component';
@@ -25,7 +25,6 @@ import { ParkNearbySectionComponent } from './park-nearby-section/park-nearby-se
     CommonModule,
     RouterModule,
     TranslateModule,
-    CardModule,
     ButtonModule,
     SharedModule
   ],

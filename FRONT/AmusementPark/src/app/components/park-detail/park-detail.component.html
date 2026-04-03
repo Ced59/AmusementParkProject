@@ -1,10 +1,10 @@
 <app-page-state
-  [state]="pageState()"
+  [state]="pageState"
   loadingTitleKey="parks.detail.loadingTitle"
   loadingMessageKey="parks.detail.loadingMessage"
   errorTitleKey="parks.detail.errorTitle"
   errorMessageKey="parks.detail.errorMessage">
-  <div class="park-detail" *ngIf="park() as currentPark">
+  <div class="park-detail" *ngIf="park as currentPark">
     <div class="page-header">
       <div>
         <span class="app-chip">
@@ -13,26 +13,42 @@
         </span>
       </div>
 
-      <button
-        pButton
-        type="button"
-        icon="pi pi-arrow-left"
-        [label]="'parks.actions.backToList' | translate"
-        (click)="goBack()">
-      </button>
+      <div class="detail-actions">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-arrow-left"
+          [label]="'parks.actions.backToList' | translate"
+          (click)="goBack()"></button>
+
+        <button
+          pButton
+          type="button"
+          icon="pi pi-sitemap"
+          class="p-button-outlined"
+          [label]="'parkDetail.exploreButton' | translate"
+          (click)="goToExplore()"></button>
+      </div>
     </div>
 
-    <app-park-hero-section [park]="currentPark"></app-park-hero-section>
+    <app-park-hero-section [park]="currentPark" [currentLang]="currentLang"></app-park-hero-section>
 
     <div class="park-detail__grid">
-      <app-park-practical-info-section *ngIf="hasPracticalInfo(currentPark)" [park]="currentPark"></app-park-practical-info-section>
-      <app-park-location-section *ngIf="hasLocationInfo(currentPark)" [park]="currentPark"></app-park-location-section>
+      <app-park-practical-info-section
+        *ngIf="hasPracticalInfo(currentPark)"
+        [park]="currentPark">
+      </app-park-practical-info-section>
+
+      <app-park-location-section
+        *ngIf="hasLocationInfo(currentPark)"
+        [park]="currentPark">
+      </app-park-location-section>
     </div>
 
     <app-park-nearby-section
-      [parks]="nearbyParks()"
+      [parks]="nearbyParks"
       [currentLang]="currentLang"
-      [state]="nearbyState()">
+      [state]="nearbyState">
     </app-park-nearby-section>
   </div>
 </app-page-state>

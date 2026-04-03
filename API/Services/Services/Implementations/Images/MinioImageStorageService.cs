@@ -1,4 +1,9 @@
-﻿using Microsoft.Extensions.Options;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Minio;
 using Minio.DataModel.Args;
 using Services.Interfaces.Images;
@@ -65,7 +70,7 @@ namespace Services.Implementations.Images
 
             if (clientSupportsWebp)
             {
-                var webp = await TryGetObjectAsync(
+                (Stream Stream, string ContentType)? webp = await TryGetObjectAsync(
                     $"{imagePathWithoutExtension}.webp",
                     "image/webp",
                     cancellationToken);
@@ -76,7 +81,7 @@ namespace Services.Implementations.Images
                 }
             }
 
-            var jpg = await TryGetObjectAsync(
+            (Stream Stream, string ContentType)? jpg = await TryGetObjectAsync(
                 $"{imagePathWithoutExtension}.jpg",
                 "image/jpeg",
                 cancellationToken);
@@ -86,7 +91,7 @@ namespace Services.Implementations.Images
                 return jpg;
             }
 
-            var png = await TryGetObjectAsync(
+            (Stream Stream, string ContentType)? png = await TryGetObjectAsync(
                 $"{imagePathWithoutExtension}.png",
                 "image/png",
                 cancellationToken);

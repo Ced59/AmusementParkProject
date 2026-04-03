@@ -1,4 +1,5 @@
-﻿using Entities.Model.Users;
+﻿using System.Threading.Tasks;
+using Entities.Model.Users;
 
 namespace Services.Interfaces
 {

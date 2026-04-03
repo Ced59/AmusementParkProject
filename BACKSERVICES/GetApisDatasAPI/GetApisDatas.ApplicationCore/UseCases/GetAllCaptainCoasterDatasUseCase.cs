@@ -1,4 +1,5 @@
-﻿using GetApisDatas.ApplicationCore.Interfaces.UseCases;
+﻿using System;
+using GetApisDatas.ApplicationCore.Interfaces.UseCases;
 
 namespace GetApisDatas.ApplicationCore.UseCases
 {
