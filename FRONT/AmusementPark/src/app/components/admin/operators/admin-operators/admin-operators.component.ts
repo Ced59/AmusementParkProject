@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../../../services/api.service';
 import { ParkOperator } from '../../../../models/parks/park-operator';
 
 @Component({
-    selector: 'app-admin-operators',
-    templateUrl: './admin-operators.component.html',
-    styleUrls: ['./admin-operators.component.scss'],
-    standalone: false
+  selector: 'app-admin-operators',
+  templateUrl: './admin-operators.component.html',
+  styleUrls: ['./admin-operators.component.scss'],
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminOperatorsComponent implements OnInit {
   operators: ParkOperator[] = [];
@@ -18,7 +19,8 @@ export class AdminOperatorsComponent implements OnInit {
 
   constructor(
     private readonly apiService: ApiService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -33,16 +35,19 @@ export class AdminOperatorsComponent implements OnInit {
 
   loadOperators(): void {
     this.loading = true;
+    this.cdr.markForCheck();
 
     this.apiService.getParkOperators().subscribe({
       next: (operators: ParkOperator[]) => {
         this.operators = operators;
         this.applyFilter();
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading operators', error);
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }

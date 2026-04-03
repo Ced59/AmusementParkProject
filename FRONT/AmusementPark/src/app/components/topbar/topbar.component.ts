@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -15,7 +15,8 @@ import { TranslationService } from '../../services/translation.service';
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss'],
-  standalone: false
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopbarComponent implements OnInit, OnDestroy {
   languages = LANGUAGES;
@@ -33,7 +34,8 @@ export class TopbarComponent implements OnInit, OnDestroy {
     private readonly translationService: TranslationService,
     private readonly router: Router,
     private readonly modalService: ModalService,
-    private readonly sharedService: SharedService) {
+    private readonly sharedService: SharedService,
+    private readonly cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
       this.subscriptions.add(
         loginModalStatus$.subscribe((status: boolean) => {
           this.displayLoginModal = status;
+          this.cdr.markForCheck();
         })
       );
     } else {
@@ -55,6 +58,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
       this.subscriptions.add(
         languageModalStatus$.subscribe((status: boolean) => {
           this.displayLanguageModal = status;
+          this.cdr.markForCheck();
         })
       );
     } else {
@@ -65,6 +69,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
       this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
         const currentLang: string = this.router.url.split('/')[1] || 'en';
         this.selectedLanguage = currentLang;
+        this.cdr.markForCheck();
         this.translationService.useLang(currentLang).subscribe({
           next: () => {
           },
@@ -97,6 +102,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
         this.selectedLanguage = lang;
         this.updateUrlWithNewLang(lang);
         this.closeModal('languageModal');
+        this.cdr.markForCheck();
       },
       error: (err: unknown) => console.error('Error changing language:', err)
     });
@@ -126,12 +132,14 @@ export class TopbarComponent implements OnInit, OnDestroy {
     this.isLoggedIn = this.authService.isLoggedIn();
     if (!this.isLoggedIn) {
       this.userProfile = null;
+      this.cdr.markForCheck();
       return;
     }
 
     const userId: string | null = this.authService.getUserIdFromToken();
     if (!userId) {
       this.userProfile = null;
+      this.cdr.markForCheck();
       return;
     }
 
@@ -139,9 +147,11 @@ export class TopbarComponent implements OnInit, OnDestroy {
       this.apiService.getUserById(userId).subscribe({
         next: (user: UserDto) => {
           this.userProfile = user;
+          this.cdr.markForCheck();
         },
         error: () => {
           this.userProfile = null;
+          this.cdr.markForCheck();
         }
       })
     );

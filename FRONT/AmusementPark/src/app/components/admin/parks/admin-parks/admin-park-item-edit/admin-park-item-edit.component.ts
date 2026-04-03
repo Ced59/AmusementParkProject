@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -56,7 +56,8 @@ type SaveScope = 'section' | 'all';
     selector: 'app-admin-park-item-edit',
     templateUrl: './admin-park-item-edit.component.html',
     styleUrls: ['./admin-park-item-edit.component.scss'],
-    standalone: false
+    standalone: false,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   form!: FormGroup;
@@ -350,7 +351,8 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     private readonly router: Router,
     private readonly apiService: ApiService,
     private readonly translateService: TranslateService,
-    private readonly toastMessageService: ToastMessageService
+    private readonly toastMessageService: ToastMessageService,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -417,6 +419,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
           id: zone.id!,
           label: resolveLocalizedValue(zone.names, this.currentLang) ?? zone.name ?? zone.id!
         }));
+      this.cdr.markForCheck();
     });
 
     this.loadParkLocationDefault();
@@ -448,6 +451,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
         if (item.category === 'Attraction') {
           this.loadAttractionPhotos();
         }
+        this.cdr.markForCheck();
       });
 
       return;
@@ -691,6 +695,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       );
     } finally {
       this.photosUploading = false;
+      this.cdr.markForCheck();
     }
   }
 
@@ -734,6 +739,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     }
 
     this.currentPhoto = this.attractionPhotos.find((photo: AttractionPhotoItem) => photo.isCurrent) ?? item;
+    this.cdr.markForCheck();
   }
 
   onSetCurrentPhoto(photo: AttractionPhotoItem): void {
@@ -752,6 +758,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
 
         this.currentPhoto = updated;
         this.showUploadSuccessMessage(this.translateService.instant('admin.parks.items.photos.currentSetSuccess'));
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error setting current attraction image', error);
@@ -769,6 +776,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
         this.attractionPhotos = this.attractionPhotos.filter((item: AttractionPhotoItem) => item.id !== photo.id);
         this.currentPhoto = this.attractionPhotos.find((item: AttractionPhotoItem) => item.isCurrent) ?? null;
         this.showUploadSuccessMessage(this.translateService.instant('admin.parks.items.photos.deleteSuccess'));
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error deleting attraction image', error);
@@ -858,10 +866,12 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
         if (!this.generalLocationManuallyChanged) {
           this.applyGeneralLocation(park.latitude, park.longitude);
           this.finalizeLoadedFormState();
+          this.cdr.markForCheck();
           return;
         }
 
         this.updatePendingChanges();
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading default park location for item editor', error);
@@ -966,11 +976,13 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
         next: (updated: ParkItem) => {
           this.isSaving = false;
           this.afterSuccessfulSave(updated, mode, scope);
+          this.cdr.markForCheck();
         },
         error: (error: unknown) => {
           console.error('Error updating park item', error);
           this.isSaving = false;
           this.showSaveErrorMessage();
+          this.cdr.markForCheck();
         }
       });
       return;
@@ -1334,10 +1346,12 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
             label: manufacturer.name
           }));
         this.manufacturersLoading = false;
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading manufacturers', error);
         this.manufacturersLoading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -1446,10 +1460,12 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
         this.attractionPhotos = images.map((image: ImageDto) => this.toAttractionPhotoItem(image));
         this.currentPhoto = this.attractionPhotos.find((item: AttractionPhotoItem) => item.isCurrent) ?? null;
         this.photosLoading = false;
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading attraction photos', error);
         this.photosLoading = false;
+        this.cdr.markForCheck();
       }
     });
   }

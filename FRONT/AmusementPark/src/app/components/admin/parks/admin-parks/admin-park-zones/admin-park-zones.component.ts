@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
@@ -6,10 +6,11 @@ import { ParkZone } from '../../../../../models/parks/park-zone';
 import { ApiService } from '../../../../../services/api.service';
 
 @Component({
-    selector: 'app-admin-park-zones',
-    templateUrl: './admin-park-zones.component.html',
-    styleUrls: ['./admin-park-zones.component.scss'],
-    standalone: false
+  selector: 'app-admin-park-zones',
+  templateUrl: './admin-park-zones.component.html',
+  styleUrls: ['./admin-park-zones.component.scss'],
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminParkZonesComponent implements OnInit {
   parkId: string = '';
@@ -20,7 +21,8 @@ export class AdminParkZonesComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly apiService: ApiService,
-    private readonly translateService: TranslateService
+    private readonly translateService: TranslateService,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -36,14 +38,18 @@ export class AdminParkZonesComponent implements OnInit {
     }
 
     this.loading = true;
+    this.cdr.markForCheck();
+
     this.apiService.getParkZonesByParkId(this.parkId).subscribe({
       next: (zones: ParkZone[]) => {
         this.zones = zones;
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading zones', error);
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }

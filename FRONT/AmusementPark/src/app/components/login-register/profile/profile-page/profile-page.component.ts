@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { distinctUntilChanged, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,7 @@ import { ToastMessageService } from '../../../../services/messages/toast-message
 import { ModalService } from '../../../../services/modal/modal.service';
 import { SharedService } from '../../../../services/shared/shared.service';
 import { TranslationService } from '../../../../services/translation.service';
+import { commitViewUpdate } from '../../../../utils/change-detection.utils';
 
 @Component({
   selector: 'app-profile-page',
@@ -47,7 +48,10 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     private readonly sharedService: SharedService,
     private readonly modalService: ModalService,
     private readonly translationService: TranslationService,
-    private readonly messageService: ToastMessageService) {
+    private readonly messageService: ToastMessageService,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {
+    void this.modalService;
   }
 
   ngOnInit(): void {
@@ -56,7 +60,9 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     if (this.currentUserId) {
       this.loadUserProfile(this.currentUserId);
     } else {
-      this.pageState = ViewState.Error;
+      commitViewUpdate(this.changeDetectorRef, () => {
+        this.pageState = ViewState.Error;
+      });
     }
 
     this.subscriptions.add(
@@ -64,7 +70,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         .pipe(distinctUntilChanged())
         .subscribe((lang: string) => {
           this.updatePreferredLanguage(lang);
-        }));
+        })
+    );
   }
 
   editField(field: string): void {
@@ -129,26 +136,30 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.apiService.putUserById(this.currentUserId, payload).subscribe({
         next: (user: UserDto) => {
-          this.user = user;
-          this.userPut = {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            preferredLanguage: user.preferredLanguage,
-            newEmail: user.email
-          };
-          this.identityDraft = {
-            firstName: user.firstName ?? '',
-            lastName: user.lastName ?? ''
-          };
-          this.isEditingIdentity = false;
-          this.savingIdentity = false;
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.user = user;
+            this.userPut = {
+              firstName: user.firstName,
+              lastName: user.lastName,
+              email: user.email,
+              preferredLanguage: user.preferredLanguage,
+              newEmail: user.email
+            };
+            this.identityDraft = {
+              firstName: user.firstName ?? '',
+              lastName: user.lastName ?? ''
+            };
+            this.isEditingIdentity = false;
+            this.savingIdentity = false;
+          });
           this.sharedService.emitLoginStatusChange();
           this.messageService.add('success', 'Succès', 'Profil mis à jour avec succès !');
         },
         error: (error: unknown) => {
           console.error('Error updating profile identity', error);
-          this.savingIdentity = false;
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.savingIdentity = false;
+          });
           this.messageService.add('error', 'Erreur', 'La mise à jour du profil a échoué.');
         }
       })
@@ -197,25 +208,30 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.apiService.getUserById(userId).subscribe({
         next: (user: UserDto) => {
-          this.user = user;
-          this.userPut = {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            preferredLanguage: user.preferredLanguage,
-            newEmail: user.email
-          };
-          this.identityDraft = {
-            firstName: user.firstName ?? '',
-            lastName: user.lastName ?? ''
-          };
-          this.pageState = ViewState.Ready;
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.user = user;
+            this.userPut = {
+              firstName: user.firstName,
+              lastName: user.lastName,
+              email: user.email,
+              preferredLanguage: user.preferredLanguage,
+              newEmail: user.email
+            };
+            this.identityDraft = {
+              firstName: user.firstName ?? '',
+              lastName: user.lastName ?? ''
+            };
+            this.pageState = ViewState.Ready;
+          });
         },
         error: (error: unknown) => {
           console.error('Error loading user profile', error);
-          this.pageState = ViewState.Error;
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.pageState = ViewState.Error;
+          });
         }
-      }));
+      })
+    );
   }
 
   private updatePreferredLanguage(lang: string): void {
@@ -230,20 +246,17 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
     this.subscriptions.add(
       this.apiService.putUserById(this.currentUserId, this.userPut).subscribe((user: UserDto) => {
-        this.user = user;
-        this.userPut = {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: user.email,
-          preferredLanguage: user.preferredLanguage,
-          newEmail: user.email
-        };
-        this.identityDraft = {
-          firstName: user.firstName ?? '',
-          lastName: user.lastName ?? ''
-        };
-        this.messageService.add('success', 'Succès', 'Mise à jour de l\'utilisateur réussie !');
-        this.sharedService.emitLoginStatusChange();
-      }));
+        commitViewUpdate(this.changeDetectorRef, () => {
+          this.user = user;
+          this.userPut = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            preferredLanguage: user.preferredLanguage,
+            newEmail: user.email
+          };
+        });
+      })
+    );
   }
 }

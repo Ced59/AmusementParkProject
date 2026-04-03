@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AttractionManufacturer } from '../../../../models/parks/attraction-manufacturer';
 import { ApiService } from '../../../../services/api.service';
 
 @Component({
-    selector: 'app-admin-manufacturers',
-    templateUrl: './admin-manufacturers.component.html',
-    styleUrls: ['./admin-manufacturers.component.scss'],
-    standalone: false
+  selector: 'app-admin-manufacturers',
+  templateUrl: './admin-manufacturers.component.html',
+  styleUrls: ['./admin-manufacturers.component.scss'],
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminManufacturersComponent implements OnInit {
   manufacturers: AttractionManufacturer[] = [];
@@ -18,7 +19,8 @@ export class AdminManufacturersComponent implements OnInit {
 
   constructor(
     private readonly apiService: ApiService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -33,16 +35,19 @@ export class AdminManufacturersComponent implements OnInit {
 
   loadManufacturers(): void {
     this.loading = true;
+    this.cdr.markForCheck();
 
     this.apiService.getAttractionManufacturers().subscribe({
       next: (manufacturers: AttractionManufacturer[]) => {
         this.manufacturers = manufacturers;
         this.applyFilter();
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading manufacturers', error);
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
@@ -7,10 +7,11 @@ import { ParkZone } from '../../../../../models/parks/park-zone';
 import { ApiService } from '../../../../../services/api.service';
 
 @Component({
-    selector: 'app-admin-park-items',
-    templateUrl: './admin-park-items.component.html',
-    styleUrls: ['./admin-park-items.component.scss'],
-    standalone: false
+  selector: 'app-admin-park-items',
+  templateUrl: './admin-park-items.component.html',
+  styleUrls: ['./admin-park-items.component.scss'],
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminParkItemsComponent implements OnInit {
   parkId: string = '';
@@ -22,7 +23,8 @@ export class AdminParkItemsComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly apiService: ApiService,
-    private readonly translateService: TranslateService
+    private readonly translateService: TranslateService,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -38,18 +40,23 @@ export class AdminParkItemsComponent implements OnInit {
     }
 
     this.loading = true;
+    this.cdr.markForCheck();
+
     this.apiService.getParkZonesByParkId(this.parkId).subscribe((zones: ParkZone[]) => {
       this.zones = zones;
+      this.cdr.markForCheck();
     });
 
     this.apiService.getParkItemsByParkId(this.parkId).subscribe({
       next: (items: ParkItem[]) => {
         this.items = items;
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading park items', error);
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }

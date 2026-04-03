@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {ApiService} from "../../../../services/api.service";
-import {ParkFounder} from "../../../../models/parks/park-founder";
+import { ApiService } from '../../../../services/api.service';
+import { ParkFounder } from '../../../../models/parks/park-founder';
+import { commitViewUpdate } from '../../../../utils/change-detection.utils';
 
 @Component({
-    selector: 'app-admin-founder-edit',
-    templateUrl: './admin-founder-edit.component.html',
-    styleUrls: ['./admin-founder-edit.component.scss'],
-    standalone: false
+  selector: 'app-admin-founder-edit',
+  templateUrl: './admin-founder-edit.component.html',
+  styleUrls: ['./admin-founder-edit.component.scss'],
+  standalone: false
 })
 export class AdminFounderEditComponent implements OnInit {
   form!: FormGroup;
@@ -20,7 +21,8 @@ export class AdminFounderEditComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly apiService: ApiService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {
   }
 
@@ -41,9 +43,11 @@ export class AdminFounderEditComponent implements OnInit {
     if (this.founderId) {
       this.apiService.getParkFounderById(this.founderId).subscribe({
         next: (founder: ParkFounder) => {
-          this.form.patchValue({
-            name: founder.name,
-            biography: founder.biography ?? []
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.form.patchValue({
+              name: founder.name,
+              biography: founder.biography ?? []
+            });
           });
         },
         error: (error: unknown) => {

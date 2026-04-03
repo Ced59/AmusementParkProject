@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -7,6 +7,7 @@ import { ViewState } from '../../models/shared/view-state';
 import { ApiService } from '../../services/api.service';
 import { TranslationService } from '../../services/translation.service';
 import { buildParkSlug } from '../../commons/park-presentation.utils';
+import { commitViewUpdate } from '../../utils/change-detection.utils';
 
 @Component({
   selector: 'app-park-detail',
@@ -27,7 +28,8 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly apiService: ApiService,
-    private readonly translationService: TranslationService
+    private readonly translationService: TranslationService,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {
   }
 
@@ -37,7 +39,9 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
         const id: string | null = params.get('id');
 
         if (!id) {
-          this.pageState = ViewState.Error;
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.pageState = ViewState.Error;
+          });
           return;
         }
 
@@ -50,14 +54,18 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
     if (this.route.parent) {
       this.subscriptions.add(
         this.route.parent.paramMap.subscribe((params: ParamMap) => {
-          this.currentLang = params.get('lang') ?? 'en';
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.currentLang = params.get('lang') ?? 'en';
+          });
         })
       );
     }
 
     this.subscriptions.add(
       this.translationService.languageChanged.subscribe((lang: string) => {
-        this.currentLang = lang;
+        commitViewUpdate(this.changeDetectorRef, () => {
+          this.currentLang = lang;
+        });
       })
     );
   }
@@ -95,13 +103,17 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.apiService.getParkById(id).subscribe({
         next: (park: Park) => {
-          this.park = park;
-          this.pageState = ViewState.Ready;
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.park = park;
+            this.pageState = ViewState.Ready;
+          });
           this.loadNearbyParks(park);
         },
         error: (error: unknown) => {
           console.error('Error loading park details', error);
-          this.pageState = ViewState.Error;
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.pageState = ViewState.Error;
+          });
         }
       })
     );
@@ -109,8 +121,10 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
 
   private loadNearbyParks(park: Park): void {
     if (!this.hasLocationInfo(park)) {
-      this.nearbyState = ViewState.Empty;
-      this.nearbyParks = [];
+      commitViewUpdate(this.changeDetectorRef, () => {
+        this.nearbyState = ViewState.Empty;
+        this.nearbyParks = [];
+      });
       return;
     }
 
@@ -119,8 +133,10 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.apiService.getParksByLocation(park.latitude, park.longitude, 150).subscribe({
         next: (parks: Park[]) => {
-          this.nearbyParks = parks.filter((candidate: Park) => candidate.id !== park.id).slice(0, 4);
-          this.nearbyState = this.nearbyParks.length > 0 ? ViewState.Ready : ViewState.Empty;
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.nearbyParks = parks.filter((candidate: Park) => candidate.id !== park.id).slice(0, 4);
+            this.nearbyState = this.nearbyParks.length > 0 ? ViewState.Ready : ViewState.Empty;
+          });
         },
         error: (error: unknown) => {
           const status: number = typeof error === 'object' && error !== null && 'status' in error
@@ -128,13 +144,17 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
             : 0;
 
           if (status === 404) {
-            this.nearbyParks = [];
-            this.nearbyState = ViewState.Empty;
+            commitViewUpdate(this.changeDetectorRef, () => {
+              this.nearbyParks = [];
+              this.nearbyState = ViewState.Empty;
+            });
             return;
           }
 
           console.error('Error loading nearby parks', error);
-          this.nearbyState = ViewState.Error;
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.nearbyState = ViewState.Error;
+          });
         }
       })
     );

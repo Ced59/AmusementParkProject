@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { resolveLocalizedValue } from '../../commons/localized-item.utils';
@@ -6,12 +6,13 @@ import { Park } from '../../models/parks/park';
 import { ParkExplorer, ParkExplorerBucket } from '../../models/parks/park-explorer';
 import { ApiService } from '../../services/api.service';
 import { TranslationService } from '../../services/translation.service';
+import { commitViewUpdate } from '../../utils/change-detection.utils';
 
 @Component({
-    selector: 'app-park-explorer',
-    templateUrl: './park-explorer.component.html',
-    styleUrls: ['./park-explorer.component.scss'],
-    standalone: false
+  selector: 'app-park-explorer',
+  templateUrl: './park-explorer.component.html',
+  styleUrls: ['./park-explorer.component.scss'],
+  standalone: false
 })
 export class ParkExplorerComponent implements OnInit, OnDestroy {
   park: Park | null = null;
@@ -24,7 +25,8 @@ export class ParkExplorerComponent implements OnInit, OnDestroy {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly apiService: ApiService,
-    private readonly translationService: TranslationService
+    private readonly translationService: TranslationService,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {
   }
 
@@ -38,12 +40,16 @@ export class ParkExplorerComponent implements OnInit, OnDestroy {
 
     if (this.route.parent) {
       this.subscriptions.add(this.route.parent.paramMap.subscribe((params: ParamMap) => {
-        this.currentLang = params.get('lang') ?? 'en';
+        commitViewUpdate(this.changeDetectorRef, () => {
+          this.currentLang = params.get('lang') ?? 'en';
+        });
       }));
     }
 
     this.subscriptions.add(this.translationService.languageChanged.subscribe((lang: string) => {
-      this.currentLang = lang;
+      commitViewUpdate(this.changeDetectorRef, () => {
+        this.currentLang = lang;
+      });
     }));
   }
 
@@ -100,11 +106,15 @@ export class ParkExplorerComponent implements OnInit, OnDestroy {
 
   private loadData(parkId: string): void {
     this.apiService.getParkById(parkId).subscribe((park: Park) => {
-      this.park = park;
+      commitViewUpdate(this.changeDetectorRef, () => {
+        this.park = park;
+      });
     });
 
     this.apiService.getParkExplorer(parkId).subscribe((explorer: ParkExplorer) => {
-      this.explorer = explorer;
+      commitViewUpdate(this.changeDetectorRef, () => {
+        this.explorer = explorer;
+      });
     });
   }
 

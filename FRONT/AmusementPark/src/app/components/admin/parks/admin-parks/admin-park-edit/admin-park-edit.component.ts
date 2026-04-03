@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -40,7 +40,8 @@ type SaveScope = 'section' | 'all';
     selector: 'app-admin-park-edit',
     templateUrl: './admin-park-edit.component.html',
     styleUrls: ['./admin-park-edit.component.scss'],
-    standalone: false
+    standalone: false,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminParkEditComponent implements OnInit, OnDestroy {
   form!: FormGroup;
@@ -94,7 +95,8 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     private readonly router: Router,
     protected readonly apiService: ApiService,
     private readonly translate: TranslateService,
-    private readonly toastMessageService: ToastMessageService
+    private readonly toastMessageService: ToastMessageService,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -239,6 +241,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       );
     } finally {
       this.logosUploading = false;
+      this.cdr.markForCheck();
     }
   }
 
@@ -262,6 +265,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
           this.translate.instant('admin.parks.saveMessages.successSummary'),
           this.translate.instant('admin.parks.logos.currentSetSuccess')
         );
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error setting current park logo', error);
@@ -283,6 +287,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
           this.translate.instant('admin.parks.saveMessages.successSummary'),
           this.translate.instant('admin.parks.logos.deleteSuccess')
         );
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error deleting park logo', error);
@@ -372,11 +377,13 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
 
         this.countriesLoading = false;
         this.form.get('countryCode')?.enable({ emitEvent: false });
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading countries', error);
         this.countriesLoading = false;
         this.form.get('countryCode')?.enable({ emitEvent: false });
+        this.cdr.markForCheck();
       }
     });
   }
@@ -391,10 +398,12 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
           label: founder.name
         }));
         this.foundersLoading = false;
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading founders', error);
         this.foundersLoading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -409,10 +418,12 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
           label: parkOperator.name
         }));
         this.operatorsLoading = false;
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading operators', error);
         this.operatorsLoading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -441,6 +452,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
         this.mapCenter = [park.latitude, park.longitude];
         this.updateMarkerFromForm();
         this.finalizeLoadedFormState();
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading park', error);
@@ -550,11 +562,13 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
         next: (updated: Park) => {
           this.isSaving = false;
           this.afterSuccessfulSave(updated, mode, scope);
+          this.cdr.markForCheck();
         },
         error: (error: unknown) => {
           console.error('Error updating park', error);
           this.isSaving = false;
           this.showSaveErrorMessage();
+          this.cdr.markForCheck();
         }
       });
       return;
@@ -670,10 +684,12 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
         this.parkLogos = images.map((image: ImageDto) => this.toParkLogoItem(image));
         this.currentLogo = this.parkLogos.find((item: ParkLogoItem) => item.isCurrent) ?? null;
         this.logosLoading = false;
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading logos', error);
         this.logosLoading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -714,6 +730,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     }
 
     this.currentLogo = item;
+    this.cdr.markForCheck();
   }
 
   private toParkLogoItem(image: ImageDto): ParkLogoItem {

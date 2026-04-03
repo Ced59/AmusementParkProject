@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { forkJoin, Observable } from 'rxjs';
@@ -11,10 +11,11 @@ import { Pagination } from '../../../../models/shared/pagination';
 import { ApiService } from '../../../../services/api.service';
 
 @Component({
-    selector: 'app-admin-park-items-index',
-    templateUrl: './admin-park-items-index.component.html',
-    styleUrls: ['./admin-park-items-index.component.scss'],
-    standalone: false
+  selector: 'app-admin-park-items-index',
+  templateUrl: './admin-park-items-index.component.html',
+  styleUrls: ['./admin-park-items-index.component.scss'],
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminParkItemsIndexComponent implements OnInit {
   rows: ParkItemAdminRow[] = [];
@@ -29,7 +30,8 @@ export class AdminParkItemsIndexComponent implements OnInit {
   constructor(
     private readonly apiService: ApiService,
     private readonly router: Router,
-    private readonly translateService: TranslateService
+    private readonly translateService: TranslateService,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -40,6 +42,7 @@ export class AdminParkItemsIndexComponent implements OnInit {
 
   loadRows(): void {
     this.loading = true;
+    this.cdr.markForCheck();
 
     this.apiService.getParkItemsPaginated(
       this.currentPage,
@@ -51,12 +54,14 @@ export class AdminParkItemsIndexComponent implements OnInit {
         this.rows = response.data ?? [];
         this.totalRecords = response.pagination?.totalItems ?? this.rows.length;
         this.loading = false;
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading park items index', error);
         this.rows = [];
         this.totalRecords = 0;
         this.loading = false;
+        this.cdr.markForCheck();
       }
     });
   }
@@ -98,12 +103,14 @@ export class AdminParkItemsIndexComponent implements OnInit {
             value: park.id ?? null
           }))
         ];
+        this.cdr.markForCheck();
       },
       error: (error: unknown) => {
         console.error('Error loading parks for park items filter', error);
         this.parkOptions = [
           { label: this.translateService.instant('admin.parkItems.allParks'), value: null }
         ];
+        this.cdr.markForCheck();
       }
     });
   }

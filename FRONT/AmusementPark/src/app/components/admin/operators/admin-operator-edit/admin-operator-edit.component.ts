@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {ApiService} from "../../../../services/api.service";
-import {ParkOperator} from "../../../../models/parks/park-operator";
-
+import { ApiService } from '../../../../services/api.service';
+import { ParkOperator } from '../../../../models/parks/park-operator';
+import { commitViewUpdate } from '../../../../utils/change-detection.utils';
 
 @Component({
-    selector: 'app-admin-operator-edit',
-    templateUrl: './admin-operator-edit.component.html',
-    styleUrls: ['./admin-operator-edit.component.scss'],
-    standalone: false
+  selector: 'app-admin-operator-edit',
+  templateUrl: './admin-operator-edit.component.html',
+  styleUrls: ['./admin-operator-edit.component.scss'],
+  standalone: false
 })
 export class AdminOperatorEditComponent implements OnInit {
   form!: FormGroup;
@@ -21,7 +21,8 @@ export class AdminOperatorEditComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly apiService: ApiService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {
   }
 
@@ -42,9 +43,11 @@ export class AdminOperatorEditComponent implements OnInit {
     if (this.operatorId) {
       this.apiService.getParkOperatorById(this.operatorId).subscribe({
         next: (parkOperator: ParkOperator) => {
-          this.form.patchValue({
-            name: parkOperator.name,
-            description: parkOperator.description ?? []
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.form.patchValue({
+              name: parkOperator.name,
+              description: parkOperator.description ?? []
+            });
           });
         },
         error: (error: unknown) => {

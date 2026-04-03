@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AttractionManufacturer } from '../../../../models/parks/attraction-manufacturer';
 import { ApiService } from '../../../../services/api.service';
+import { commitViewUpdate } from '../../../../utils/change-detection.utils';
 
 @Component({
-    selector: 'app-admin-manufacturer-edit',
-    templateUrl: './admin-manufacturer-edit.component.html',
-    styleUrls: ['./admin-manufacturer-edit.component.scss'],
-    standalone: false
+  selector: 'app-admin-manufacturer-edit',
+  templateUrl: './admin-manufacturer-edit.component.html',
+  styleUrls: ['./admin-manufacturer-edit.component.scss'],
+  standalone: false
 })
 export class AdminManufacturerEditComponent implements OnInit {
   form!: FormGroup;
@@ -20,7 +21,8 @@ export class AdminManufacturerEditComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly apiService: ApiService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {
   }
 
@@ -41,9 +43,11 @@ export class AdminManufacturerEditComponent implements OnInit {
     if (this.manufacturerId) {
       this.apiService.getAttractionManufacturerById(this.manufacturerId).subscribe({
         next: (manufacturer: AttractionManufacturer) => {
-          this.form.patchValue({
-            name: manufacturer.name,
-            biography: manufacturer.biography ?? []
+          commitViewUpdate(this.changeDetectorRef, () => {
+            this.form.patchValue({
+              name: manufacturer.name,
+              biography: manufacturer.biography ?? []
+            });
           });
         },
         error: (error: unknown) => {

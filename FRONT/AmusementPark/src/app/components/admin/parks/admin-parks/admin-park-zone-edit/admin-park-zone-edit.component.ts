@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalizedItem } from '../../../../../models/shared/localized-item';
 import { ParkZone } from '../../../../../models/parks/park-zone';
 import { ApiService } from '../../../../../services/api.service';
+import { commitViewUpdate } from '../../../../../utils/change-detection.utils';
 
 @Component({
-    selector: 'app-admin-park-zone-edit',
-    templateUrl: './admin-park-zone-edit.component.html',
-    styleUrls: ['./admin-park-zone-edit.component.scss'],
-    standalone: false
+  selector: 'app-admin-park-zone-edit',
+  templateUrl: './admin-park-zone-edit.component.html',
+  styleUrls: ['./admin-park-zone-edit.component.scss'],
+  standalone: false
 })
 export class AdminParkZoneEditComponent implements OnInit {
   form!: FormGroup;
@@ -25,7 +26,8 @@ export class AdminParkZoneEditComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService
+    private readonly apiService: ApiService,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {
   }
 
@@ -44,12 +46,14 @@ export class AdminParkZoneEditComponent implements OnInit {
 
     if (this.zoneId) {
       this.apiService.getParkZoneById(this.zoneId).subscribe((zone: ParkZone) => {
-        this.form.patchValue({
-          parkId: zone.parkId,
-          names: this.getInitialNames(zone),
-          descriptions: zone.descriptions ?? [],
-          isVisible: zone.isVisible ?? true,
-          sortOrder: zone.sortOrder ?? 0
+        commitViewUpdate(this.changeDetectorRef, () => {
+          this.form.patchValue({
+            parkId: zone.parkId,
+            names: this.getInitialNames(zone),
+            descriptions: zone.descriptions ?? [],
+            isVisible: zone.isVisible ?? true,
+            sortOrder: zone.sortOrder ?? 0
+          });
         });
       });
     }

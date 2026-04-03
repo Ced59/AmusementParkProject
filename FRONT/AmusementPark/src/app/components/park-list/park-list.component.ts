@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -12,7 +12,8 @@ import { TranslationService } from '../../services/translation.service';
   selector: 'app-park-list',
   templateUrl: './park-list.component.html',
   styleUrls: ['./park-list.component.scss'],
-  standalone: false
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ParkListComponent implements OnInit, OnDestroy {
   parks: Park[] = [];
@@ -28,7 +29,8 @@ export class ParkListComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly apiService: ApiService,
-    private readonly translationService: TranslationService
+    private readonly translationService: TranslationService,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -67,6 +69,7 @@ export class ParkListComponent implements OnInit, OnDestroy {
 
   private loadParks(page: number, size: number, term: string): void {
     this.pageState = ViewState.Loading;
+    this.cdr.markForCheck();
 
     const request$ = term
       ? this.apiService.searchParks(term, page, size)
@@ -78,10 +81,12 @@ export class ParkListComponent implements OnInit, OnDestroy {
           this.parks = response.data ?? [];
           this.pagination = response.pagination ?? null;
           this.pageState = this.parks.length > 0 ? ViewState.Ready : ViewState.Empty;
+          this.cdr.markForCheck();
         },
         error: (error: unknown) => {
           console.error('Error fetching parks:', error);
           this.pageState = ViewState.Error;
+          this.cdr.markForCheck();
         }
       })
     );

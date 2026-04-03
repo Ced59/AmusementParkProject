@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Park } from '../../../../models/parks/park';
 import { Pagination } from '../../../../models/shared/pagination';
 import { ApiService } from '../../../../services/api.service';
@@ -7,10 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ParkType } from '../../../../models/parks/park-type';
 
 @Component({
-    selector: 'app-admin-parks',
-    templateUrl: './admin-parks.component.html',
-    styleUrls: ['./admin-parks.component.scss'],
-    standalone: false
+  selector: 'app-admin-parks',
+  templateUrl: './admin-parks.component.html',
+  styleUrls: ['./admin-parks.component.scss'],
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminParksComponent implements OnInit {
   parks: Park[] = [];
@@ -26,7 +27,8 @@ export class AdminParksComponent implements OnInit {
   constructor(
     private readonly apiService: ApiService,
     private readonly router: Router,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +37,7 @@ export class AdminParksComponent implements OnInit {
 
   loadParks(page: number, size: number): void {
     this.loading = true;
+    this.cdr.markForCheck();
 
     const trimmedQuery: string = this.searchQuery.trim();
 
@@ -51,6 +54,7 @@ export class AdminParksComponent implements OnInit {
       this.pageSize = this.pagination?.itemsPerPage ?? currentSize;
       this.currentPage = this.pagination?.currentPage ?? currentPage;
       this.loading = false;
+      this.cdr.markForCheck();
     };
 
     if (trimmedQuery.length > 0) {
@@ -59,6 +63,7 @@ export class AdminParksComponent implements OnInit {
         error: (error: unknown) => {
           console.error('Error searching parks', error);
           this.loading = false;
+          this.cdr.markForCheck();
         }
       });
     } else {
@@ -67,6 +72,7 @@ export class AdminParksComponent implements OnInit {
         error: (error: unknown) => {
           console.error('Error loading parks', error);
           this.loading = false;
+          this.cdr.markForCheck();
         }
       });
     }
@@ -107,6 +113,7 @@ export class AdminParksComponent implements OnInit {
       error: (error: unknown) => {
         console.error('Error updating park visibility', error);
         park.isVisible = !newValue;
+        this.cdr.markForCheck();
       }
     });
   }

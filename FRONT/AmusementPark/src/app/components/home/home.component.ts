@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { EMPTY, Subject, Subscription } from 'rxjs';
 import { catchError, debounceTime, switchMap } from 'rxjs/operators';
 
@@ -14,7 +14,8 @@ import { TranslationService } from '../../services/translation.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  standalone: false
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
@@ -45,7 +46,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly apiService: ApiService,
-    private readonly translationService: TranslationService
+    private readonly translationService: TranslationService,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -62,12 +64,14 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.pagination = null;
             this.hasPerformedSearch = false;
             this.searchState = ViewState.Ready;
+            this.cdr.markForCheck();
             return EMPTY;
           }
 
           this.currentPage = 1;
           this.hasPerformedSearch = true;
           this.searchState = ViewState.Loading;
+          this.cdr.markForCheck();
 
           return this.executeSearch();
         })
@@ -75,6 +79,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.results = response.data ?? [];
         this.pagination = response.pagination ?? null;
         this.searchState = this.results.length > 0 ? ViewState.Ready : ViewState.Empty;
+        this.cdr.markForCheck();
       })
     );
   }
@@ -97,12 +102,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.pageSize = event.rows ?? this.pageSize;
     this.hasPerformedSearch = true;
     this.searchState = ViewState.Loading;
+    this.cdr.markForCheck();
 
     this.subscriptions.add(
       this.executeSearch().subscribe((response: SearchApiResponse) => {
         this.results = response.data ?? [];
         this.pagination = response.pagination ?? null;
         this.searchState = this.results.length > 0 ? ViewState.Ready : ViewState.Empty;
+        this.cdr.markForCheck();
       })
     );
   }
@@ -121,6 +128,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.results = [];
         this.pagination = null;
         this.searchState = ViewState.Error;
+        this.cdr.markForCheck();
         return EMPTY;
       })
     );
@@ -134,10 +142,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         next: (response) => {
           this.featuredParks = response.data ?? [];
           this.featuredState = this.featuredParks.length > 0 ? ViewState.Ready : ViewState.Empty;
+          this.cdr.markForCheck();
         },
         error: (error: unknown) => {
           console.error('Error loading featured parks', error);
           this.featuredState = ViewState.Error;
+          this.cdr.markForCheck();
         }
       })
     );

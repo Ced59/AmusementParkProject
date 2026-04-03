@@ -1,9 +1,4 @@
-import {
-  NgModule,
-  inject,
-  provideAppInitializer,
-  provideZonelessChangeDetection
-} from '@angular/core';
+import { NgModule, inject, provideAppInitializer } from '@angular/core';
 import { providePrimeNG } from 'primeng/config';
 import AmusementParkPreset from './config/primeng-preset';
 import { BrowserModule } from '@angular/platform-browser';
@@ -39,7 +34,6 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { AvatarModule } from 'primeng/avatar';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { ZonelessHttpRefreshInterceptor } from './interceptors/zoneless-http-refresh.interceptor';
 import { PaginatorModule } from 'primeng/paginator';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { ParkDetailComponent } from './components/park-detail/park-detail.component';
@@ -112,7 +106,6 @@ export function initializeApp(translationService: TranslationService): () => Pro
     SidebarComponent
   ],
   providers: [
-    provideZonelessChangeDetection(),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
     provideAppInitializer(() => {
       const initializerFn = initializeApp(inject(TranslationService));
@@ -126,11 +119,6 @@ export function initializeApp(translationService: TranslationService): () => Pro
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ZonelessHttpRefreshInterceptor,
       multi: true
     },
     MessageService,
