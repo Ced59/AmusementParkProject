@@ -4,113 +4,55 @@
     <p class="message message--success" *ngIf="successMessage()">{{ successMessage() }}</p>
   </div>
 
-  <p-card header="Gestion des données externes">
-    <p class="intro-text">
-      Ce nouvel espace est prévu pour piloter plusieurs sources de données à terme. Pour l’instant,
-      la première source intégrée est Captain Coaster via import de fichiers JSON déjà scrapés.
-    </p>
-
-    <p-table [value]="sources()" responsiveLayout="scroll">
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Source</th>
-          <th>Mode</th>
-          <th>Activée</th>
-          <th>Dernier import</th>
-          <th>Parcs</th>
-          <th>Coasters</th>
-          <th>Différences</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-row>
-        <tr>
-          <td>
-            <div class="table-primary-cell">
-              <strong>{{ row.displayName }}</strong>
-              <small>{{ row.description }}</small>
-            </div>
-          </td>
-          <td>{{ row.inputMode }}</td>
-          <td>{{ row.isEnabled ? 'Oui' : 'Non' }}</td>
-          <td>{{ row.lastSuccessfulImportUtc ? (row.lastSuccessfulImportUtc | date:'short') : 'Jamais' }}</td>
-          <td>{{ row.lastImportedParkCount }}</td>
-          <td>{{ row.lastImportedCoasterCount }}</td>
-          <td>{{ row.lastComparisonResultCount }}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </p-card>
-
   <p-tabs value="0">
     <p-tablist>
-      <p-tab value="0">Source</p-tab>
-      <p-tab value="1">Import JSON</p-tab>
-      <p-tab value="2">Run</p-tab>
-      <p-tab value="3">Comparaison</p-tab>
+      <p-tab value="0">Captain Coaster</p-tab>
+      <p-tab value="1">Synchronisation</p-tab>
+      <p-tab value="2">Comparaison</p-tab>
     </p-tablist>
 
     <p-tabpanels>
       <p-tabpanel value="0">
         <p-card header="Configuration de la source Captain Coaster">
-          <div class="settings-form" [formGroup]="settingsForm">
+          <form class="settings-form" [formGroup]="settingsForm">
+            <div class="field-row">
+              <label for="baseUrl">Base URL</label>
+              <input id="baseUrl" pInputText formControlName="baseUrl" />
+            </div>
+
+            <div class="field-row">
+              <label for="apiKey">Nouvelle clé API</label>
+              <input id="apiKey" pInputText formControlName="apiKey" type="password" />
+              <small>Clé actuelle : {{ settings()?.apiKeyMasked || 'non configurée' }}</small>
+            </div>
+
             <div class="field-row field-row--inline">
               <p-checkbox inputId="isEnabled" formControlName="isEnabled" [binary]="true"></p-checkbox>
               <label for="isEnabled">Source activée</label>
             </div>
 
-            <div class="field-row">
-              <label>Mode d’entrée</label>
-              <strong>{{ settings()?.inputMode || 'JsonImport' }}</strong>
-            </div>
-
-            <div class="field-row">
-              <label>Fichiers attendus</label>
-              <div class="expected-files">
-                <span class="expected-file" *ngFor="let fileName of settings()?.expectedFiles ?? []">{{ fileName }}</span>
-              </div>
-            </div>
-
             <div class="field-row field-row--actions">
               <button pButton type="button" label="Enregistrer" icon="pi pi-save" [disabled]="isBusy()" (click)="saveSettingsAsync()"></button>
+            </div>
+          </form>
+
+          <div class="summary-grid" *ngIf="settings() as currentSettings">
+            <div class="summary-card">
+              <span class="summary-label">Source</span>
+              <strong>{{ currentSettings.source }}</strong>
+            </div>
+            <div class="summary-card">
+              <span class="summary-label">Dernière synchro réussie</span>
+              <strong>{{ currentSettings.lastSuccessfulSyncUtc ? (currentSettings.lastSuccessfulSyncUtc | date:'short') : 'Jamais' }}</strong>
             </div>
           </div>
         </p-card>
       </p-tabpanel>
 
       <p-tabpanel value="1">
-        <p-card header="Import manuel des JSON Captain Coaster">
-          <div class="field-row">
-            <label for="captainCoasterFiles">Sélection des fichiers</label>
-            <input
-              id="captainCoasterFiles"
-              type="file"
-              multiple
-              accept=".json,.txt"
-              (change)="onFilesSelected($event)" />
-            <small>
-              Upload multi-fichiers. Le back attend au minimum <strong>coasters.json</strong> et
-              <strong>detected-parks.json</strong>.
-            </small>
-          </div>
-
-          <div class="selected-files" *ngIf="selectedFiles().length > 0">
-            <div class="selected-file" *ngFor="let fileName of selectedFileNames()">
-              <span>{{ fileName }}</span>
-              <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" (click)="removeSelectedFile(fileName)"></button>
-            </div>
-          </div>
-
-          <div class="field-row field-row--actions">
-            <button pButton type="button" label="Lancer l’import" icon="pi pi-upload" [disabled]="isBusy() || selectedFiles().length === 0" (click)="importJsonAsync()"></button>
-            <span>{{ selectedFiles().length }} fichier(s) prêt(s)</span>
-          </div>
-        </p-card>
-      </p-tabpanel>
-
-      <p-tabpanel value="2">
-        <p-card header="Dernier run d’import">
+        <p-card header="Synchronisation manuelle">
           <div class="sync-actions">
-            <button pButton type="button" label="Actualiser" icon="pi pi-refresh" [disabled]="isBusy()" (click)="refreshLatestSessionAsync()"></button>
+            <button pButton type="button" label="Lancer la synchronisation" icon="pi pi-refresh" [disabled]="isBusy()" (click)="startSyncAsync()"></button>
           </div>
 
           <div *ngIf="latestSession() as session" class="sync-session">
@@ -121,19 +63,14 @@
 
             <p-progressBar [value]="session.progressPercentage"></p-progressBar>
             <p class="session-message">{{ session.message }}</p>
-            <p class="manifest-summary" *ngIf="session.manifestSummary">{{ session.manifestSummary }}</p>
 
             <div class="summary-grid">
               <div class="summary-card">
-                <span class="summary-label">Fichiers importés</span>
-                <strong>{{ session.sourceFileCount }}</strong>
-              </div>
-              <div class="summary-card">
-                <span class="summary-label">Parcs détectés</span>
+                <span class="summary-label">Parcs récupérés</span>
                 <strong>{{ session.parksFetched }}</strong>
               </div>
               <div class="summary-card">
-                <span class="summary-label">Coasters détectés</span>
+                <span class="summary-label">Coasters récupérés</span>
                 <strong>{{ session.coastersFetched }}</strong>
               </div>
               <div class="summary-card">
@@ -146,14 +83,7 @@
               </div>
             </div>
 
-            <div class="field-row" *ngIf="session.sourceFileNames.length > 0">
-              <label>Fichiers du run</label>
-              <div class="expected-files">
-                <span class="expected-file" *ngFor="let fileName of session.sourceFileNames">{{ fileName }}</span>
-              </div>
-            </div>
-
-            <div class="logs-panel" *ngIf="session.logs.length > 0">
+            <div class="logs-panel">
               <h3>Journal</h3>
               <div class="log-entry" *ngFor="let log of session.logs">
                 <span class="log-date">{{ log.occurredAtUtc | date:'shortTime' }}</span>
@@ -162,12 +92,10 @@
               </div>
             </div>
           </div>
-
-          <p *ngIf="!latestSession()" class="empty-state">Aucun import n’a encore été exécuté pour cette source.</p>
         </p-card>
       </p-tabpanel>
 
-      <p-tabpanel value="3">
+      <p-tabpanel value="2">
         <p-card header="Comparaison entre Amusement Park et Captain Coaster">
           <div class="comparison-toolbar">
             <div class="summary-grid summary-grid--compact">

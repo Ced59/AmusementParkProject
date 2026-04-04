@@ -1,51 +1,26 @@
 namespace WebAPI.Features.CaptainCoaster.Contracts
 {
-    public sealed class AdminDataSourceSummaryResponse
+    public sealed class CaptainCoasterDataSourceStatusResponse
     {
-        public string SourceKey { get; set; } = string.Empty;
-        public string DisplayName { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public string InputMode { get; set; } = string.Empty;
+        public string Source { get; set; } = "CaptainCoaster";
         public bool IsEnabled { get; set; }
         public DateTime? LastSuccessfulImportUtc { get; set; }
-        public int LastImportedParkCount { get; set; }
-        public int LastImportedCoasterCount { get; set; }
-        public int LastComparisonResultCount { get; set; }
-    }
-
-    public sealed class CaptainCoasterSettingsResponse
-    {
-        public string SourceKey { get; set; } = "captain-coaster";
-        public string DisplayName { get; set; } = "Captain Coaster";
-        public string Description { get; set; } = "Import de données JSON Captain Coaster avec staging, analyse et application sélective.";
-        public string InputMode { get; set; } = "JsonImport";
-        public bool IsEnabled { get; set; }
-        public DateTime? LastSuccessfulImportUtc { get; set; }
-        public IReadOnlyCollection<string> ExpectedFiles { get; set; } = Array.Empty<string>();
-    }
-
-    public sealed class UpdateCaptainCoasterSettingsRequest
-    {
-        public bool IsEnabled { get; set; } = true;
+        public int TotalSessionsCount { get; set; }
     }
 
     public sealed class CaptainCoasterSyncSessionResponse
     {
         public string Id { get; set; } = string.Empty;
-        public string SourceKey { get; set; } = "captain-coaster";
         public string Status { get; set; } = string.Empty;
         public int ProgressPercentage { get; set; }
         public string CurrentStep { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
         public DateTime StartedAtUtc { get; set; }
         public DateTime? CompletedAtUtc { get; set; }
-        public int SourceFileCount { get; set; }
-        public IReadOnlyCollection<string> SourceFileNames { get; set; } = Array.Empty<string>();
         public int ParksFetched { get; set; }
         public int CoastersFetched { get; set; }
         public int ComparisonResults { get; set; }
         public int AppliedChanges { get; set; }
-        public string? ManifestSummary { get; set; }
         public IReadOnlyCollection<CaptainCoasterSyncLogResponse> Logs { get; set; } = Array.Empty<CaptainCoasterSyncLogResponse>();
     }
 
@@ -54,6 +29,24 @@ namespace WebAPI.Features.CaptainCoaster.Contracts
         public DateTime OccurredAtUtc { get; set; }
         public string Level { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// Résultat paginé de la comparaison. Contient les compteurs globaux (toujours depuis le back)
+    /// pour éviter de charger toutes les lignes côté client.
+    /// </summary>
+    public sealed class CaptainCoasterComparisonPagedResponse
+    {
+        public IReadOnlyCollection<CaptainCoasterComparisonResultResponse> Items { get; set; } = Array.Empty<CaptainCoasterComparisonResultResponse>();
+        public int TotalCount { get; set; }
+        public int Page { get; set; }
+        public int PageSize { get; set; }
+        /// <summary>Nombre total d'Updated dans la session (indépendant de la page courante).</summary>
+        public int SessionUpdatedCount { get; set; }
+        /// <summary>Nombre total de MissingLocal dans la session.</summary>
+        public int SessionMissingCount { get; set; }
+        /// <summary>Nombre total déjà appliqués dans la session.</summary>
+        public int SessionAppliedCount { get; set; }
     }
 
     public sealed class CaptainCoasterComparisonResultResponse
@@ -79,6 +72,20 @@ namespace WebAPI.Features.CaptainCoaster.Contracts
 
     public sealed class ApplyCaptainCoasterComparisonRequest
     {
+        /// <summary>IDs spécifiques à appliquer.</summary>
         public IReadOnlyCollection<string> ComparisonResultIds { get; set; } = Array.Empty<string>();
+        /// <summary>Si true, applique tous les résultats non encore appliqués de la session.</summary>
+        public bool ApplyAll { get; set; }
+        /// <summary>Session ciblée pour ApplyAll (null = dernière session).</summary>
+        public string? SessionId { get; set; }
+        /// <summary>Filtre optionnel sur EntityType pour ApplyAll.</summary>
+        public string? EntityTypeFilter { get; set; }
+        /// <summary>Filtre optionnel sur ChangeType pour ApplyAll.</summary>
+        public string? ChangeTypeFilter { get; set; }
+    }
+
+    public sealed class ApplyCaptainCoasterComparisonResponse
+    {
+        public int AppliedCount { get; set; }
     }
 }

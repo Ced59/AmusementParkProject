@@ -19,77 +19,67 @@ namespace WebAPI.Features.CaptainCoaster.Controllers
             this.captainCoasterAdminService = captainCoasterAdminService;
         }
 
-        [HttpGet("/admin/data/sources")]
-        public async Task<ActionResult<IReadOnlyCollection<AdminDataSourceSummaryResponse>>> GetSourcesAsync()
+        [HttpGet("status")]
+        public async Task<ActionResult<CaptainCoasterDataSourceStatusResponse>> GetStatusAsync()
         {
-            IReadOnlyCollection<AdminDataSourceSummaryResponse> response = await captainCoasterAdminService.GetSourcesAsync();
+            CaptainCoasterDataSourceStatusResponse response = await captainCoasterAdminService.GetStatusAsync();
             return Ok(response);
         }
 
-        [HttpGet("settings")]
-        public async Task<ActionResult<CaptainCoasterSettingsResponse>> GetSettingsAsync()
-        {
-            CaptainCoasterSettingsResponse response = await captainCoasterAdminService.GetSettingsAsync();
-            return Ok(response);
-        }
-
-        [HttpPut("settings")]
-        public async Task<ActionResult<CaptainCoasterSettingsResponse>> UpdateSettingsAsync([FromBody] UpdateCaptainCoasterSettingsRequest request)
-        {
-            CaptainCoasterSettingsResponse response = await captainCoasterAdminService.UpdateSettingsAsync(request);
-            return Ok(response);
-        }
-
-        [HttpGet("imports/latest")]
+        [HttpGet("sessions/latest")]
         public async Task<ActionResult<CaptainCoasterSyncSessionResponse>> GetLatestSessionAsync()
         {
             CaptainCoasterSyncSessionResponse? response = await captainCoasterAdminService.GetLatestSessionAsync();
-            if (response == null)
-            {
-                return NoContent();
-            }
-
+            if (response == null) { return NoContent(); }
             return Ok(response);
         }
 
-        [HttpPost("import-json")]
-        [RequestFormLimits(MultipartBodyLengthLimit = 100_000_000)]
-        [RequestSizeLimit(100_000_000)]
-        public async Task<ActionResult<CaptainCoasterSyncSessionResponse>> ImportJsonAsync([FromForm] List<IFormFile> files, CancellationToken cancellationToken)
+        [HttpPost("import")]
+        [RequestSizeLimit(200 * 1024 * 1024)]
+        public async Task<ActionResult<CaptainCoasterSyncSessionResponse>> ImportFromFilesAsync(
+            IFormFile parksFile,
+            IFormFile coastersFile,
+            CancellationToken cancellationToken)
         {
-            if (files == null || files.Count == 0)
+            if (parksFile == null || parksFile.Length == 0)
             {
-                return BadRequest(new { message = "Aucun fichier JSON n'a été fourni." });
+                return BadRequest(new { message = "Le fichier detected-parks.json est requis." });
+            }
+            if (coastersFile == null || coastersFile.Length == 0)
+            {
+                return BadRequest(new { message = "Le fichier coasters.json est requis." });
             }
 
-            List<CaptainCoasterImportedFile> importedFiles = new();
-            foreach (IFormFile file in files)
-            {
-                using StreamReader reader = new(file.OpenReadStream());
-                string content = await reader.ReadToEndAsync(cancellationToken);
-                importedFiles.Add(new CaptainCoasterImportedFile
-                {
-                    FileName = file.FileName,
-                    Content = content
-                });
-            }
+            await using Stream parksStream = parksFile.OpenReadStream();
+            await using Stream coastersStream = coastersFile.OpenReadStream();
 
-            CaptainCoasterSyncSessionResponse response = await captainCoasterAdminService.ImportJsonAsync(importedFiles, cancellationToken);
+            CaptainCoasterSyncSessionResponse response = await captainCoasterAdminService.StartImportFromFilesAsync(
+                parksStream, coastersStream, cancellationToken);
+
             return Accepted(response);
         }
 
         [HttpGet("comparison-results")]
-        public async Task<ActionResult<IReadOnlyCollection<CaptainCoasterComparisonResultResponse>>> GetComparisonResultsAsync([FromQuery] string? sessionId)
+        public async Task<ActionResult<CaptainCoasterComparisonPagedResponse>> GetComparisonResultsAsync(
+            [FromQuery] string? sessionId,
+            [FromQuery] string? entityType,
+            [FromQuery] string? changeType,
+            [FromQuery] bool? isApplied,
+            [FromQuery] int page = 0,
+            [FromQuery] int pageSize = 50)
         {
-            IReadOnlyCollection<CaptainCoasterComparisonResultResponse> response = await captainCoasterAdminService.GetComparisonResultsAsync(sessionId);
+            CaptainCoasterComparisonPagedResponse response = await captainCoasterAdminService.GetComparisonResultsAsync(
+                sessionId, entityType, changeType, isApplied, page, pageSize);
             return Ok(response);
         }
 
         [HttpPost("apply")]
-        public async Task<ActionResult<object>> ApplyAsync([FromBody] ApplyCaptainCoasterComparisonRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<ApplyCaptainCoasterComparisonResponse>> ApplyAsync(
+            [FromBody] ApplyCaptainCoasterComparisonRequest request,
+            CancellationToken cancellationToken)
         {
             int appliedCount = await captainCoasterAdminService.ApplyComparisonResultsAsync(request, cancellationToken);
-            return Ok(new { appliedCount });
+            return Ok(new ApplyCaptainCoasterComparisonResponse { AppliedCount = appliedCount });
         }
     }
 }

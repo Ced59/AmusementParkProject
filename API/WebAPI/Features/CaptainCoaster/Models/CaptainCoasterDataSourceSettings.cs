@@ -8,21 +8,15 @@ namespace WebAPI.Features.CaptainCoaster.Models
         [BsonElement("source")]
         public string Source { get; set; } = "CaptainCoaster";
 
-        [BsonElement("sourceKey")]
-        public string SourceKey { get; set; } = "captain-coaster";
+        [BsonElement("apiKey")]
+        public string ApiKey { get; set; } = string.Empty;
 
-        [BsonElement("displayName")]
-        public string DisplayName { get; set; } = "Captain Coaster";
+        [BsonElement("baseUrl")]
+        public string BaseUrl { get; set; } = "https://captaincoaster.com/api";
 
-        [BsonElement("description")]
-        public string Description { get; set; } = "Import de données JSON Captain Coaster avec staging, analyse et application sélective.";
-
-        [BsonElement("inputMode")]
-        public string InputMode { get; set; } = "JsonImport";
-
-        [BsonElement("lastSuccessfulImportUtc")]
+        [BsonElement("lastSuccessfulSyncUtc")]
         [BsonIgnoreIfNull]
-        public DateTime? LastSuccessfulImportUtc { get; set; }
+        public DateTime? LastSuccessfulSyncUtc { get; set; }
 
         [BsonElement("isEnabled")]
         public bool IsEnabled { get; set; } = true;

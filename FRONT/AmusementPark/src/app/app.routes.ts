@@ -65,13 +65,14 @@ export const routes: Routes = [
           {
             path: 'data',
             loadChildren: () =>
-              import('./components/admin/site/admin-site/admin-site.module')
-                .then((m) => m.AdminSiteModule)
+              import('./components/admin/data/admin-data/admin-data.module')
+                .then((m) => m.AdminDataModule)
           },
           {
             path: 'site',
-            redirectTo: 'data',
-            pathMatch: 'full'
+            loadChildren: () =>
+              import('./components/admin/site/admin-site/admin-site.module')
+                .then((m) => m.AdminSiteModule)
           },
           { path: '', redirectTo: 'users', pathMatch: 'full' }
         ]

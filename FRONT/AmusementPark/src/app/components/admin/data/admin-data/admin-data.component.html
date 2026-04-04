@@ -1,0 +1,306 @@
+<div class="admin-data-page">
+
+  <!-- ===================================================  SOURCES  === -->
+  <ng-container *ngIf="selectedSourceKey() === null">
+    <div class="page-header">
+      <h2 class="page-title"><i class="pi pi-database"></i> Gestion des données externes</h2>
+      <p class="page-subtitle">Pilotez les sources de données qui alimentent l'application.</p>
+    </div>
+
+    <p-card header="Sources de données configurées">
+      <p-table [value]="dataSources()" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Source</th><th>Description</th><th>Dernier import</th>
+            <th>Sessions</th><th>Statut</th><th>Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-source>
+          <tr>
+            <td><div class="source-label"><i [class]="source.icon"></i><strong>{{ source.label }}</strong></div></td>
+            <td class="source-description">{{ source.description }}</td>
+            <td>{{ source.lastImportUtc ? (source.lastImportUtc | date:'short') : 'Jamais' }}</td>
+            <td>{{ source.totalSessions }}</td>
+            <td><p-tag [value]="source.statusLabel" [severity]="source.lastImportUtc ? 'success' : 'secondary'"></p-tag></td>
+            <td>
+              <button pButton type="button" label="Gérer" icon="pi pi-cog" class="p-button-sm" (click)="selectSource(source.key)"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </ng-container>
+
+  <!-- ===================================================  CAPTAIN COASTER  === -->
+  <ng-container *ngIf="selectedSourceKey() === 'captain-coaster'">
+
+    <div class="page-header">
+      <button pButton type="button" label="Retour aux sources" icon="pi pi-arrow-left" class="p-button-text p-button-sm" (click)="backToSources()"></button>
+      <h2 class="page-title"><i class="pi pi-cloud-download"></i> Captain Coaster — Intégration JSON</h2>
+    </div>
+
+    <div class="messages" *ngIf="ccErrorMessage() || ccSuccessMessage()">
+      <p class="message message--error" *ngIf="ccErrorMessage()">{{ ccErrorMessage() }}</p>
+      <p class="message message--success" *ngIf="ccSuccessMessage()">{{ ccSuccessMessage() }}</p>
+    </div>
+
+    <p-tabs value="0">
+      <p-tablist>
+        <p-tab value="0"><i class="pi pi-upload"></i> Import JSON</p-tab>
+        <p-tab value="1" [disabled]="ccSession() === null">
+          <i class="pi pi-chart-bar"></i> Progression
+          <span *ngIf="ccIsSessionRunning()" class="tab-pulse">●</span>
+        </p-tab>
+        <p-tab value="2">
+          <i class="pi pi-list"></i> Comparaison
+          <span *ngIf="ccTotalCount() > 0" class="tab-badge">{{ ccTotalCount() }}</span>
+        </p-tab>
+      </p-tablist>
+
+      <p-tabpanels>
+
+        <!-- ── TAB 1 : IMPORT ─────────────────────────────────────────── -->
+        <p-tabpanel value="0">
+          <p-card header="Importer les fichiers JSON du scraper Captain Coaster">
+            <p class="import-description">
+              Fournissez les deux fichiers JSON générés par le scraper Captain Coaster.
+              Les données seront comparées aux données locales — aucune modification ne sera
+              appliquée sans votre validation dans l'onglet <strong>Comparaison</strong>.
+            </p>
+
+            <div class="import-form">
+              <div class="file-field">
+                <label class="file-label">
+                  <span class="file-label__text"><i class="pi pi-map-marker"></i> <code>detected-parks.json</code></span>
+                  <span class="file-label__hint">Liste des parcs détectés par le scraper</span>
+                </label>
+                <div class="file-input-row">
+                  <input type="file" accept=".json" class="file-input" (change)="onParksFileSelected($event)" />
+                  <span class="file-selected" *ngIf="ccParksFile()">
+                    <i class="pi pi-check-circle"></i> {{ ccParksFile()!.name }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="file-field">
+                <label class="file-label">
+                  <span class="file-label__text"><i class="pi pi-ticket"></i> <code>coasters.json</code></span>
+                  <span class="file-label__hint">Liste des coasters avec leurs caractéristiques</span>
+                </label>
+                <div class="file-input-row">
+                  <input type="file" accept=".json" class="file-input" (change)="onCoastersFileSelected($event)" />
+                  <span class="file-selected" *ngIf="ccCoastersFile()">
+                    <i class="pi pi-check-circle"></i> {{ ccCoastersFile()!.name }}
+                  </span>
+                </div>
+              </div>
+
+              <button pButton type="button" label="Lancer l'import et la comparaison" icon="pi pi-play"
+                [disabled]="!ccCanImport()" (click)="startImportAsync()"></button>
+            </div>
+
+            <div class="status-grid" *ngIf="ccStatus() as s">
+              <div class="status-card">
+                <span class="status-card__label">Dernier import réussi</span>
+                <strong>{{ s.lastSuccessfulImportUtc ? (s.lastSuccessfulImportUtc | date:'short') : 'Jamais' }}</strong>
+              </div>
+              <div class="status-card">
+                <span class="status-card__label">Total des sessions</span>
+                <strong>{{ s.totalSessionsCount }}</strong>
+              </div>
+            </div>
+          </p-card>
+        </p-tabpanel>
+
+        <!-- ── TAB 2 : PROGRESSION ──────────────────────────────────────── -->
+        <p-tabpanel value="1">
+          <p-card header="Progression de l'import">
+            <div *ngIf="ccSession() as session" class="session-panel">
+              <div class="session-topline">
+                <p-tag [value]="session.status" [severity]="getSessionStatusSeverity(session.status)"></p-tag>
+                <span>{{ session.currentStep }}</span>
+                <span *ngIf="ccIsSessionRunning()" class="running-hint">
+                  <i class="pi pi-spin pi-spinner"></i> En cours...
+                </span>
+              </div>
+
+              <p-progressBar [value]="session.progressPercentage"></p-progressBar>
+              <p class="session-message">{{ session.message }}</p>
+
+              <div class="metrics-grid">
+                <div class="metric-card"><span class="metric-card__label">Parcs parsés</span><strong>{{ session.parksFetched }}</strong></div>
+                <div class="metric-card"><span class="metric-card__label">Coasters parsés</span><strong>{{ session.coastersFetched }}</strong></div>
+                <div class="metric-card"><span class="metric-card__label">Différences</span><strong>{{ session.comparisonResults }}</strong></div>
+                <div class="metric-card"><span class="metric-card__label">Appliqués</span><strong>{{ session.appliedChanges }}</strong></div>
+              </div>
+
+              <div class="logs-panel" *ngIf="session.logs.length > 0">
+                <h3>Journal</h3>
+                <div class="log-list">
+                  <div class="log-entry" [class.log-entry--error]="log.level === 'Error'" *ngFor="let log of session.logs">
+                    <span class="log-entry__time">{{ log.occurredAtUtc | date:'HH:mm:ss' }}</span>
+                    <span class="log-entry__level" [class.log-entry__level--error]="log.level === 'Error'">{{ log.level }}</span>
+                    <span class="log-entry__message">{{ log.message }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </p-card>
+        </p-tabpanel>
+
+        <!-- ── TAB 3 : COMPARAISON ──────────────────────────────────────── -->
+        <p-tabpanel value="2">
+          <p-card>
+            <ng-template pTemplate="header">
+              <div class="card-header-row">
+                <span>Résultats de comparaison</span>
+                <button pButton type="button"
+                  [label]="ccComparisonLoaded() ? 'Actualiser' : 'Charger les résultats'"
+                  [icon]="ccIsLoadingPage() ? 'pi pi-spin pi-spinner' : (ccComparisonLoaded() ? 'pi pi-refresh' : 'pi pi-download')"
+                  class="p-button-sm"
+                  [disabled]="ccIsLoadingPage() || ccSession() === null"
+                  (click)="loadComparisonAsync()">
+                </button>
+              </div>
+            </ng-template>
+
+            <!-- Pas encore chargé -->
+            <div *ngIf="!ccComparisonLoaded()" class="not-loaded-hint">
+              <i class="pi pi-info-circle"></i>
+              Cliquez sur <strong>"Charger les résultats"</strong> pour afficher les différences détectées.
+              <span *ngIf="ccSession()?.comparisonResults">
+                ({{ ccSession()!.comparisonResults | number }} résultats à charger par pages de {{ ccPageSize() }})
+              </span>
+            </div>
+
+            <ng-container *ngIf="ccComparisonLoaded()">
+              <!-- Compteurs globaux session -->
+              <div class="session-stats">
+                <div class="stat-badge stat-badge--warn"><i class="pi pi-pencil"></i> {{ ccSessionUpdated() | number }} modifiés</div>
+                <div class="stat-badge stat-badge--info"><i class="pi pi-plus"></i> {{ ccSessionMissing() | number }} nouveaux</div>
+                <div class="stat-badge stat-badge--ok"><i class="pi pi-check"></i> {{ ccSessionApplied() | number }} appliqués</div>
+              </div>
+
+              <!-- Filtres -->
+              <div class="filters-bar">
+                <p-select
+                  [options]="entityTypeOptions"
+                  [ngModel]="ccFilters().entityType"
+                  (ngModelChange)="setEntityTypeFilter($event)"
+                  optionLabel="label" optionValue="value"
+                  placeholder="Type"
+                  class="filter-select">
+                </p-select>
+                <p-select
+                  [options]="changeTypeOptions"
+                  [ngModel]="ccFilters().changeType"
+                  (ngModelChange)="setChangeTypeFilter($event)"
+                  optionLabel="label" optionValue="value"
+                  placeholder="Changement"
+                  class="filter-select">
+                </p-select>
+                <p-select
+                  [options]="appliedOptions"
+                  [ngModel]="ccFilters().isApplied"
+                  (ngModelChange)="setAppliedFilter($event)"
+                  optionLabel="label" optionValue="value"
+                  placeholder="Appliqué"
+                  class="filter-select">
+                </p-select>
+                <span class="filter-total">{{ ccTotalCount() | number }} résultats filtrés</span>
+              </div>
+
+              <!-- Actions en masse -->
+              <div class="bulk-actions">
+                <div class="bulk-actions__selection">
+                  <p-checkbox [binary]="true" [ngModel]="ccAllPageSelected()"
+                    (ngModelChange)="toggleSelectPage($event)" inputId="selectPage"></p-checkbox>
+                  <label for="selectPage">Page ({{ ccCurrentItems().length }})</label>
+                  <span *ngIf="ccSelectedCount() > 0" class="selected-count">
+                    {{ ccSelectedCount() }} sélectionné(s)
+                  </span>
+                </div>
+                <div class="bulk-actions__buttons">
+                  <button pButton type="button" label="Appliquer la sélection" icon="pi pi-check"
+                    class="p-button-sm"
+                    [disabled]="ccIsBusy() || ccSelectedCount() === 0"
+                    (click)="applySelectionAsync()">
+                  </button>
+                  <button pButton type="button"
+                    label="Tout appliquer (filtre actuel)"
+                    icon="pi pi-check-circle"
+                    class="p-button-sm p-button-outlined p-button-warn"
+                    [disabled]="ccIsBusy() || ccTotalCount() === 0"
+                    (click)="applyAllAsync(ccFilters().entityType, ccFilters().changeType)">
+                  </button>
+                </div>
+              </div>
+
+              <!-- Tableau — uniquement la page courante dans le DOM -->
+              <div class="table-wrapper" [class.table-wrapper--loading]="ccIsLoadingPage()">
+                <p-table
+                  [value]="ccCurrentItems()"
+                  responsiveLayout="scroll"
+                  styleClass="p-datatable-sm">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th style="width:3rem"></th>
+                      <th style="width:6rem">Type</th>
+                      <th>Nom</th>
+                      <th style="width:8rem">Changement</th>
+                      <th style="width:6rem">Confiance</th>
+                      <th>Champs</th>
+                      <th style="width:4rem">Fait</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-row>
+                    <tr [class.row--applied]="row.isApplied">
+                      <td>
+                        <p-checkbox [binary]="true"
+                          [ngModel]="isSelected(row.id)"
+                          (ngModelChange)="toggleSelection(row.id, $event)"
+                          [disabled]="row.isApplied">
+                        </p-checkbox>
+                      </td>
+                      <td><p-tag [value]="row.entityType" severity="secondary"></p-tag></td>
+                      <td class="col-name" [title]="row.displayName">{{ row.displayName }}</td>
+                      <td><p-tag [value]="row.changeType" [severity]="getChangeTypeSeverity(row.changeType)"></p-tag></td>
+                      <td class="col-confidence">{{ row.matchConfidence }}</td>
+                      <td>
+                        <div class="change-list">
+                          <div class="change-item" *ngFor="let ch of row.changes" [class.change-item--diff]="ch.isDifferent">
+                            <span class="change-item__field">{{ ch.field }}</span>
+                            <span class="change-item__local">{{ ch.localValue || '∅' }}</span>
+                            <i class="pi pi-arrow-right"></i>
+                            <span class="change-item__ext">{{ ch.externalValue || '∅' }}</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td><i [class]="row.isApplied ? 'pi pi-check-circle applied-icon' : 'pi pi-circle pending-icon'"></i></td>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="emptymessage">
+                    <tr><td colspan="7" style="text-align:center;padding:2rem;opacity:.6">Aucun résultat pour ces filtres.</td></tr>
+                  </ng-template>
+                </p-table>
+              </div>
+
+              <!-- Paginateur PrimeNG -->
+              <p-paginator
+                [rows]="ccPageSize()"
+                [totalRecords]="ccTotalCount()"
+                [first]="ccCurrentPage() * ccPageSize()"
+                [rowsPerPageOptions]="[25, 50, 100, 200]"
+                (onPageChange)="onPageChange($event)"
+                [showCurrentPageReport]="true"
+                currentPageReportTemplate="{first} – {last} sur {totalRecords}">
+              </p-paginator>
+            </ng-container>
+          </p-card>
+        </p-tabpanel>
+
+      </p-tabpanels>
+    </p-tabs>
+  </ng-container>
+
+</div>

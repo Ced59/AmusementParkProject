@@ -276,7 +276,6 @@ namespace WebAPI
 
                     options.Events = new JwtBearerEvents
                     {
-                        OnMessageReceived = _ => Task.CompletedTask,
                         OnAuthenticationFailed = context =>
                         {
                             context.Response.StatusCode = 401;

@@ -39,7 +39,6 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin/items', renderMode: RenderMode.Server },
   { path: ':lang/admin/operators', renderMode: RenderMode.Server },
   { path: ':lang/admin/manufacturers', renderMode: RenderMode.Server },
-  { path: ':lang/admin/data', renderMode: RenderMode.Server },
   { path: ':lang/admin/site', renderMode: RenderMode.Server },
 
   // Pages de parc dynamiques => SSR

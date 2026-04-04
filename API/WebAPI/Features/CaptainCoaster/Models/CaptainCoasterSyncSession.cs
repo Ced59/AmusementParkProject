@@ -5,9 +5,6 @@ namespace WebAPI.Features.CaptainCoaster.Models
 {
     public sealed class CaptainCoasterSyncSession : ModelBase
     {
-        [BsonElement("sourceKey")]
-        public string SourceKey { get; set; } = "captain-coaster";
-
         [BsonElement("status")]
         public string Status { get; set; } = "Pending";
 
@@ -29,16 +26,6 @@ namespace WebAPI.Features.CaptainCoaster.Models
 
         [BsonElement("metrics")]
         public CaptainCoasterSyncMetrics Metrics { get; set; } = new CaptainCoasterSyncMetrics();
-
-        [BsonElement("sourceFileCount")]
-        public int SourceFileCount { get; set; }
-
-        [BsonElement("sourceFileNames")]
-        public List<string> SourceFileNames { get; set; } = new List<string>();
-
-        [BsonElement("manifestSummary")]
-        [BsonIgnoreIfNull]
-        public string? ManifestSummary { get; set; }
 
         [BsonElement("logs")]
         public List<CaptainCoasterSyncLogEntry> Logs { get; set; } = new List<CaptainCoasterSyncLogEntry>();

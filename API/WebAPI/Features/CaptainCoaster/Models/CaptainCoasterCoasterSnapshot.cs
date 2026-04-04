@@ -8,8 +8,9 @@ namespace WebAPI.Features.CaptainCoaster.Models
         [BsonElement("syncSessionId")]
         public string SyncSessionId { get; set; } = string.Empty;
 
-        [BsonElement("externalSource")]
-        public string ExternalSource { get; set; } = "CaptainCoaster";
+        // -----------------------------------------------------------------------
+        // Identité
+        // -----------------------------------------------------------------------
 
         [BsonElement("captainCoasterId")]
         public string CaptainCoasterId { get; set; } = string.Empty;
@@ -25,6 +26,10 @@ namespace WebAPI.Features.CaptainCoaster.Models
         [BsonIgnoreIfNull]
         public string? SourceUrl { get; set; }
 
+        // -----------------------------------------------------------------------
+        // Parc d'appartenance
+        // -----------------------------------------------------------------------
+
         [BsonElement("parkCaptainCoasterId")]
         [BsonIgnoreIfNull]
         public string? ParkCaptainCoasterId { get; set; }
@@ -33,13 +38,9 @@ namespace WebAPI.Features.CaptainCoaster.Models
         [BsonIgnoreIfNull]
         public string? ParkName { get; set; }
 
-        [BsonElement("parkSlug")]
-        [BsonIgnoreIfNull]
-        public string? ParkSlug { get; set; }
-
-        [BsonElement("country")]
-        [BsonIgnoreIfNull]
-        public string? Country { get; set; }
+        // -----------------------------------------------------------------------
+        // Caractéristiques techniques (staging uniquement)
+        // -----------------------------------------------------------------------
 
         [BsonElement("manufacturer")]
         [BsonIgnoreIfNull]
@@ -57,41 +58,39 @@ namespace WebAPI.Features.CaptainCoaster.Models
         [BsonIgnoreIfNull]
         public string? SeatingType { get; set; }
 
+        /// <summary>
+        /// Type de système de lancement (ex : "Propulsion électrique", "Lift à pneus", "LSM", …).
+        /// Donnée technique du scraper, stockée en staging.
+        /// </summary>
         [BsonElement("launchType")]
         [BsonIgnoreIfNull]
         public string? LaunchType { get; set; }
 
-        [BsonElement("restraintType")]
+        [BsonElement("restraint")]
         [BsonIgnoreIfNull]
-        public string? RestraintType { get; set; }
+        public string? Restraint { get; set; }
 
+        /// <summary>
+        /// Indique si le coaster est à lancement propulsé (vs gravité / lift classique).
+        /// </summary>
         [BsonElement("isLaunched")]
-        [BsonIgnoreIfNull]
-        public bool? IsLaunched { get; set; }
+        public bool IsLaunched { get; set; }
 
-        [BsonElement("heightInFeet")]
+        // -----------------------------------------------------------------------
+        // Dimensions et performances
+        // -----------------------------------------------------------------------
+
+        [BsonElement("speedInKmH")]
         [BsonIgnoreIfNull]
-        public double? HeightInFeet { get; set; }
+        public double? SpeedInKmH { get; set; }
 
         [BsonElement("heightInMeters")]
         [BsonIgnoreIfNull]
         public double? HeightInMeters { get; set; }
 
-        [BsonElement("lengthInFeet")]
-        [BsonIgnoreIfNull]
-        public double? LengthInFeet { get; set; }
-
         [BsonElement("lengthInMeters")]
         [BsonIgnoreIfNull]
         public double? LengthInMeters { get; set; }
-
-        [BsonElement("speedInMph")]
-        [BsonIgnoreIfNull]
-        public double? SpeedInMph { get; set; }
-
-        [BsonElement("speedInKmH")]
-        [BsonIgnoreIfNull]
-        public double? SpeedInKmH { get; set; }
 
         [BsonElement("dropInMeters")]
         [BsonIgnoreIfNull]
@@ -101,32 +100,35 @@ namespace WebAPI.Features.CaptainCoaster.Models
         [BsonIgnoreIfNull]
         public int? InversionCount { get; set; }
 
-        [BsonElement("openingDateText")]
-        [BsonIgnoreIfNull]
-        public string? OpeningDateText { get; set; }
-
-        [BsonElement("closingDateText")]
-        [BsonIgnoreIfNull]
-        public string? ClosingDateText { get; set; }
-
-        [BsonElement("openingDate")]
-        [BsonIgnoreIfNull]
-        public DateTime? OpeningDate { get; set; }
-
-        [BsonElement("closingDate")]
-        [BsonIgnoreIfNull]
-        public DateTime? ClosingDate { get; set; }
+        // -----------------------------------------------------------------------
+        // Statut et dates
+        // Converties depuis le texte brut du scraper via PartialDateParser.
+        // -----------------------------------------------------------------------
 
         [BsonElement("status")]
         [BsonIgnoreIfNull]
         public string? Status { get; set; }
 
+        /// <summary>
+        /// Date d'ouverture parsée depuis le texte brut.
+        /// Dates partielles (année seule, mois/année) converties au 1er jour de la période.
+        /// </summary>
+        [BsonElement("openingDate")]
+        [BsonIgnoreIfNull]
+        public DateTime? OpeningDate { get; set; }
+
+        /// <summary>
+        /// Date de fermeture parsée depuis le texte brut.
+        /// </summary>
+        [BsonElement("closingDate")]
+        [BsonIgnoreIfNull]
+        public DateTime? ClosingDate { get; set; }
+
+        /// <summary>
+        /// Horodatage du scraping de cette fiche.
+        /// </summary>
         [BsonElement("scrapedAtUtc")]
         [BsonIgnoreIfNull]
         public DateTime? ScrapedAtUtc { get; set; }
-
-        [BsonElement("rawAttributes")]
-        [BsonIgnoreIfNull]
-        public Dictionary<string, string>? RawAttributes { get; set; }
     }
 }

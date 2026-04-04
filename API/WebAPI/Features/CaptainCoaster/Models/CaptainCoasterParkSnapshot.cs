@@ -8,8 +8,9 @@ namespace WebAPI.Features.CaptainCoaster.Models
         [BsonElement("syncSessionId")]
         public string SyncSessionId { get; set; } = string.Empty;
 
-        [BsonElement("externalSource")]
-        public string ExternalSource { get; set; } = "CaptainCoaster";
+        // -----------------------------------------------------------------------
+        // Identité
+        // -----------------------------------------------------------------------
 
         [BsonElement("captainCoasterId")]
         public string CaptainCoasterId { get; set; } = string.Empty;
@@ -25,6 +26,11 @@ namespace WebAPI.Features.CaptainCoaster.Models
         [BsonIgnoreIfNull]
         public string? SourceUrl { get; set; }
 
+        // -----------------------------------------------------------------------
+        // Localisation (héritée : Latitude / Longitude depuis GeolocatedEntity)
+        // Valeur par défaut (0, 0) quand le scraper ne fournit pas de coordonnées.
+        // -----------------------------------------------------------------------
+
         [BsonElement("countryCode")]
         [BsonIgnoreIfNull]
         public string? CountryCode { get; set; }
@@ -33,13 +39,25 @@ namespace WebAPI.Features.CaptainCoaster.Models
         [BsonIgnoreIfNull]
         public string? CountryRaw { get; set; }
 
-        [BsonElement("coasterCount")]
-        [BsonIgnoreIfNull]
-        public int? CoasterCount { get; set; }
+        // -----------------------------------------------------------------------
+        // Statistiques issues du scraper (staging uniquement)
+        // -----------------------------------------------------------------------
 
+        /// <summary>
+        /// Nombre de coasters recensés dans ce parc par le scraper.
+        /// </summary>
+        [BsonElement("coasterCount")]
+        public int CoasterCount { get; set; }
+
+        /// <summary>
+        /// Échantillon de noms de coasters fourni par le scraper pour faciliter le rapprochement.
+        /// </summary>
         [BsonElement("sampleCoasterNames")]
         public List<string> SampleCoasterNames { get; set; } = new List<string>();
 
+        /// <summary>
+        /// Horodatage du scraping de cette fiche.
+        /// </summary>
         [BsonElement("scrapedAtUtc")]
         [BsonIgnoreIfNull]
         public DateTime? ScrapedAtUtc { get; set; }
