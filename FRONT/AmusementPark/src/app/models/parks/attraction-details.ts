@@ -4,12 +4,26 @@ import { AttractionWaterExposureLevel } from './attraction-water-exposure-level'
 export interface AttractionDetails {
   manufacturerId?: string | null;
   model?: string | null;
+  externalSource?: string | null;
+  externalId?: string | null;
+  sourceUrl?: string | null;
+  status?: string | null;
+  materialType?: string | null;
+  seatingType?: string | null;
+  launchType?: string | null;
+  restraintType?: string | null;
+  isLaunched?: boolean | null;
+  openingDateText?: string | null;
+  closingDateText?: string | null;
   openingDate?: string | null;
   closingDate?: string | null;
   durationInSeconds?: number | null;
   capacityPerHour?: number | null;
+  heightInFeet?: number | null;
   heightInMeters?: number | null;
+  lengthInFeet?: number | null;
   lengthInMeters?: number | null;
+  speedInMph?: number | null;
   speedInKmH?: number | null;
   dropInMeters?: number | null;
   inversionCount?: number | null;

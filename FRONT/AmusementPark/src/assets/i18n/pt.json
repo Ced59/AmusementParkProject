@@ -311,7 +311,21 @@
           "isWaterAttraction": "Water attraction",
           "manufacturerPlaceholder": "Select a manufacturer",
           "waterExposureLevel": "Water exposure level",
-          "waterExposureLevelPlaceholder": "Select a level"
+          "waterExposureLevelPlaceholder": "Select a level",
+          "externalSource": "Fonte externa",
+          "externalId": "ID externo",
+          "sourceUrl": "URL de origem",
+          "status": "Estado",
+          "materialType": "Tipo de material",
+          "seatingType": "Tipo de trem",
+          "launchType": "Tipo de lançamento",
+          "restraintType": "Tipo de restrição",
+          "isLaunched": "Montanha-russa lançada",
+          "openingDateText": "Texto da data de abertura",
+          "closingDateText": "Texto da data de encerramento",
+          "heightInFeet": "Altura (ft)",
+          "lengthInFeet": "Comprimento (ft)",
+          "speedInMph": "Velocidade (mph)"
         },
         "locationFields": {
           "entrance": "Entrance",

@@ -17,6 +17,50 @@ namespace Entities.Model.Parks
         [BsonIgnoreIfNull]
         public string? Model { get; set; }
 
+        [BsonElement("externalSource")]
+        [BsonIgnoreIfNull]
+        public string? ExternalSource { get; set; }
+
+        [BsonElement("externalId")]
+        [BsonIgnoreIfNull]
+        public string? ExternalId { get; set; }
+
+        [BsonElement("sourceUrl")]
+        [BsonIgnoreIfNull]
+        public string? SourceUrl { get; set; }
+
+        [BsonElement("status")]
+        [BsonIgnoreIfNull]
+        public string? Status { get; set; }
+
+        [BsonElement("materialType")]
+        [BsonIgnoreIfNull]
+        public string? MaterialType { get; set; }
+
+        [BsonElement("seatingType")]
+        [BsonIgnoreIfNull]
+        public string? SeatingType { get; set; }
+
+        [BsonElement("launchType")]
+        [BsonIgnoreIfNull]
+        public string? LaunchType { get; set; }
+
+        [BsonElement("restraintType")]
+        [BsonIgnoreIfNull]
+        public string? RestraintType { get; set; }
+
+        [BsonElement("isLaunched")]
+        [BsonIgnoreIfNull]
+        public bool? IsLaunched { get; set; }
+
+        [BsonElement("openingDateText")]
+        [BsonIgnoreIfNull]
+        public string? OpeningDateText { get; set; }
+
+        [BsonElement("closingDateText")]
+        [BsonIgnoreIfNull]
+        public string? ClosingDateText { get; set; }
+
         [BsonElement("openingDate")]
         [BsonIgnoreIfNull]
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
@@ -37,15 +81,30 @@ namespace Entities.Model.Parks
         [BsonRepresentation(BsonType.Int32)]
         public int? CapacityPerHour { get; set; }
 
+        [BsonElement("heightInFeet")]
+        [BsonIgnoreIfNull]
+        [BsonRepresentation(BsonType.Double)]
+        public double? HeightInFeet { get; set; }
+
         [BsonElement("heightInMeters")]
         [BsonIgnoreIfNull]
         [BsonRepresentation(BsonType.Double)]
         public double? HeightInMeters { get; set; }
 
+        [BsonElement("lengthInFeet")]
+        [BsonIgnoreIfNull]
+        [BsonRepresentation(BsonType.Double)]
+        public double? LengthInFeet { get; set; }
+
         [BsonElement("lengthInMeters")]
         [BsonIgnoreIfNull]
         [BsonRepresentation(BsonType.Double)]
         public double? LengthInMeters { get; set; }
+
+        [BsonElement("speedInMph")]
+        [BsonIgnoreIfNull]
+        [BsonRepresentation(BsonType.Double)]
+        public double? SpeedInMph { get; set; }
 
         [BsonElement("speedInKmH")]
         [BsonIgnoreIfNull]

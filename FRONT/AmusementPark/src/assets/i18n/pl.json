@@ -311,7 +311,21 @@
           "isWaterAttraction": "Water attraction",
           "manufacturerPlaceholder": "Select a manufacturer",
           "waterExposureLevel": "Water exposure level",
-          "waterExposureLevelPlaceholder": "Select a level"
+          "waterExposureLevelPlaceholder": "Select a level",
+          "externalSource": "Źródło zewnętrzne",
+          "externalId": "Zewnętrzne ID",
+          "sourceUrl": "URL źródła",
+          "status": "Status",
+          "materialType": "Typ materiału",
+          "seatingType": "Typ pociągu",
+          "launchType": "Typ startu",
+          "restraintType": "Typ zabezpieczenia",
+          "isLaunched": "Kolejka startowa",
+          "openingDateText": "Tekst daty otwarcia",
+          "closingDateText": "Tekst daty zamknięcia",
+          "heightInFeet": "Wysokość (ft)",
+          "lengthInFeet": "Długość (ft)",
+          "speedInMph": "Prędkość (mph)"
         },
         "locationFields": {
           "entrance": "Entrance",

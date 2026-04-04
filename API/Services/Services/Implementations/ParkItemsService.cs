@@ -304,12 +304,26 @@ namespace Services.Implementations
             {
                 ManufacturerId = NormalizeOptionalText(details.ManufacturerId),
                 Model = NormalizeOptionalText(details.Model),
+                ExternalSource = NormalizeOptionalText(details.ExternalSource),
+                ExternalId = NormalizeOptionalText(details.ExternalId),
+                SourceUrl = NormalizeOptionalText(details.SourceUrl),
+                Status = NormalizeOptionalText(details.Status),
+                MaterialType = NormalizeOptionalText(details.MaterialType),
+                SeatingType = NormalizeOptionalText(details.SeatingType),
+                LaunchType = NormalizeOptionalText(details.LaunchType),
+                RestraintType = NormalizeOptionalText(details.RestraintType),
+                IsLaunched = details.IsLaunched,
+                OpeningDateText = NormalizeOptionalText(details.OpeningDateText),
+                ClosingDateText = NormalizeOptionalText(details.ClosingDateText),
                 OpeningDate = details.OpeningDate?.Date,
                 ClosingDate = details.ClosingDate?.Date,
                 DurationInSeconds = NormalizeNullableInt(details.DurationInSeconds),
                 CapacityPerHour = NormalizeNullableInt(details.CapacityPerHour),
+                HeightInFeet = NormalizeNullableDouble(details.HeightInFeet),
                 HeightInMeters = NormalizeNullableDouble(details.HeightInMeters),
+                LengthInFeet = NormalizeNullableDouble(details.LengthInFeet),
                 LengthInMeters = NormalizeNullableDouble(details.LengthInMeters),
+                SpeedInMph = NormalizeNullableDouble(details.SpeedInMph),
                 SpeedInKmH = NormalizeNullableDouble(details.SpeedInKmH),
                 DropInMeters = NormalizeNullableDouble(details.DropInMeters),
                 InversionCount = NormalizeNullableInt(details.InversionCount),
@@ -450,12 +464,26 @@ namespace Services.Implementations
             {
                 ManufacturerId = details.ManufacturerId,
                 Model = details.Model,
+                ExternalSource = details.ExternalSource,
+                ExternalId = details.ExternalId,
+                SourceUrl = details.SourceUrl,
+                Status = details.Status,
+                MaterialType = details.MaterialType,
+                SeatingType = details.SeatingType,
+                LaunchType = details.LaunchType,
+                RestraintType = details.RestraintType,
+                IsLaunched = details.IsLaunched,
+                OpeningDateText = details.OpeningDateText,
+                ClosingDateText = details.ClosingDateText,
                 OpeningDate = details.OpeningDate,
                 ClosingDate = details.ClosingDate,
                 DurationInSeconds = details.DurationInSeconds,
                 CapacityPerHour = details.CapacityPerHour,
+                HeightInFeet = details.HeightInFeet,
                 HeightInMeters = details.HeightInMeters,
+                LengthInFeet = details.LengthInFeet,
                 LengthInMeters = details.LengthInMeters,
+                SpeedInMph = details.SpeedInMph,
                 SpeedInKmH = details.SpeedInKmH,
                 DropInMeters = details.DropInMeters,
                 InversionCount = details.InversionCount,
@@ -555,12 +583,26 @@ namespace Services.Implementations
         {
             return !string.IsNullOrWhiteSpace(details.ManufacturerId) ||
                    !string.IsNullOrWhiteSpace(details.Model) ||
+                   !string.IsNullOrWhiteSpace(details.ExternalSource) ||
+                   !string.IsNullOrWhiteSpace(details.ExternalId) ||
+                   !string.IsNullOrWhiteSpace(details.SourceUrl) ||
+                   !string.IsNullOrWhiteSpace(details.Status) ||
+                   !string.IsNullOrWhiteSpace(details.MaterialType) ||
+                   !string.IsNullOrWhiteSpace(details.SeatingType) ||
+                   !string.IsNullOrWhiteSpace(details.LaunchType) ||
+                   !string.IsNullOrWhiteSpace(details.RestraintType) ||
+                   details.IsLaunched == true ||
+                   !string.IsNullOrWhiteSpace(details.OpeningDateText) ||
+                   !string.IsNullOrWhiteSpace(details.ClosingDateText) ||
                    details.OpeningDate != null ||
                    details.ClosingDate != null ||
                    details.DurationInSeconds != null ||
                    details.CapacityPerHour != null ||
+                   details.HeightInFeet != null ||
                    details.HeightInMeters != null ||
+                   details.LengthInFeet != null ||
                    details.LengthInMeters != null ||
+                   details.SpeedInMph != null ||
                    details.SpeedInKmH != null ||
                    details.DropInMeters != null ||
                    details.InversionCount != null ||

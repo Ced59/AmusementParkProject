@@ -311,7 +311,21 @@
           "isWaterAttraction": "Water attraction",
           "manufacturerPlaceholder": "Select a manufacturer",
           "waterExposureLevel": "Water exposure level",
-          "waterExposureLevelPlaceholder": "Select a level"
+          "waterExposureLevelPlaceholder": "Select a level",
+          "externalSource": "Fonte esterna",
+          "externalId": "ID esterno",
+          "sourceUrl": "URL sorgente",
+          "status": "Stato",
+          "materialType": "Tipo di materiale",
+          "seatingType": "Tipo di treno",
+          "launchType": "Tipo di lancio",
+          "restraintType": "Tipo di ritenuta",
+          "isLaunched": "Coaster lanciato",
+          "openingDateText": "Testo data apertura",
+          "closingDateText": "Testo data chiusura",
+          "heightInFeet": "Altezza (ft)",
+          "lengthInFeet": "Lunghezza (ft)",
+          "speedInMph": "Velocità (mph)"
         },
         "locationFields": {
           "entrance": "Entrance",

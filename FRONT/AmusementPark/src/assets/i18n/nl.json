@@ -311,7 +311,21 @@
           "isWaterAttraction": "Water attraction",
           "manufacturerPlaceholder": "Select a manufacturer",
           "waterExposureLevel": "Water exposure level",
-          "waterExposureLevelPlaceholder": "Select a level"
+          "waterExposureLevelPlaceholder": "Select a level",
+          "externalSource": "Externe bron",
+          "externalId": "Externe ID",
+          "sourceUrl": "Bron-URL",
+          "status": "Status",
+          "materialType": "Materiaaltype",
+          "seatingType": "Treintype",
+          "launchType": "Lanceertype",
+          "restraintType": "Beugelsysteem",
+          "isLaunched": "Gelanceerde coaster",
+          "openingDateText": "Tekst openingsdatum",
+          "closingDateText": "Tekst sluitingsdatum",
+          "heightInFeet": "Hoogte (ft)",
+          "lengthInFeet": "Lengte (ft)",
+          "speedInMph": "Snelheid (mph)"
         },
         "locationFields": {
           "entrance": "Entrance",
