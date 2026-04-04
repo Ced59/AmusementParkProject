@@ -49,6 +49,11 @@ namespace WebAPI.Settings.MongoDB
             await EnsureCollectionExistsAsync(database, settings.ParkZonesCollectionName);
             await EnsureCollectionExistsAsync(database, settings.ParkItemsCollectionName);
             await InitializeParkItemsIndexesAsync(database, settings.ParkItemsCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.CaptainCoasterSettingsCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.CaptainCoasterParksCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.CaptainCoasterCoastersCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.CaptainCoasterSyncSessionsCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.CaptainCoasterComparisonResultsCollectionName);
 
             // 🔹 Index de recherche
             await searchIndexService.InitializeAsync(

@@ -33,6 +33,7 @@ using Services.Interfaces.Searching;
 using Services.Interfaces.Settings;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebAPI.Settings.Attributes;
+using WebAPI.Features.CaptainCoaster.Services;
 using WebAPI.Settings.Email;
 using WebAPI.Settings.Images;
 using WebAPI.Settings.MongoDB;
@@ -91,6 +92,7 @@ namespace WebAPI
             builder.Services.AddScoped<ISearchIndexService, SearchIndexService>();
             builder.Services.AddScoped<ISearchService, SearchService>();
             builder.Services.AddScoped<ICountriesService, CountriesService>();
+            builder.Services.AddSingleton<ICaptainCoasterAdminService, CaptainCoasterAdminService>();
 
             builder.Services.AddScoped<IUserQueryHandler, UsersMongoQueryHandler>();
             builder.Services.AddScoped<IParksQueryHandler, ParksMongoQueryHandler>();
@@ -274,6 +276,7 @@ namespace WebAPI
 
                     options.Events = new JwtBearerEvents
                     {
+                        OnMessageReceived = _ => Task.CompletedTask,
                         OnAuthenticationFailed = context =>
                         {
                             context.Response.StatusCode = 401;
@@ -398,7 +401,6 @@ namespace WebAPI
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
-
 
             await InitializeMongoDbAsync(app);
         }

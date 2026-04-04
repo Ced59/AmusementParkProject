@@ -7,12 +7,24 @@ namespace Dtos.ParkItems
     {
         public string? ManufacturerId { get; set; }
         public string? Model { get; set; }
+        public string? ExternalSource { get; set; }
+        public string? ExternalId { get; set; }
+        public string? SourceUrl { get; set; }
+        public string? Status { get; set; }
+        public string? MaterialType { get; set; }
+        public string? SeatingType { get; set; }
+        public string? LaunchType { get; set; }
+        public string? RestraintType { get; set; }
+        public bool? IsLaunched { get; set; }
         public DateTime? OpeningDate { get; set; }
         public DateTime? ClosingDate { get; set; }
         public int? DurationInSeconds { get; set; }
         public int? CapacityPerHour { get; set; }
+        public double? HeightInFeet { get; set; }
         public double? HeightInMeters { get; set; }
+        public double? LengthInFeet { get; set; }
         public double? LengthInMeters { get; set; }
+        public double? SpeedInMph { get; set; }
         public double? SpeedInKmH { get; set; }
         public double? DropInMeters { get; set; }
         public int? InversionCount { get; set; }

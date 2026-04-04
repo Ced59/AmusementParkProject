@@ -18,5 +18,10 @@ namespace WebAPI.Settings.MongoDB
         public string SearchItemCollectionName { get; set; } = string.Empty;
         public string ImagesCollectionName { get; set; } = string.Empty;
         public string CountriesCollectionName { get; set; } = string.Empty;
+        public string CaptainCoasterSettingsCollectionName { get; set; } = string.Empty;
+        public string CaptainCoasterParksCollectionName { get; set; } = string.Empty;
+        public string CaptainCoasterCoastersCollectionName { get; set; } = string.Empty;
+        public string CaptainCoasterSyncSessionsCollectionName { get; set; } = string.Empty;
+        public string CaptainCoasterComparisonResultsCollectionName { get; set; } = string.Empty;
     }
 }

@@ -63,10 +63,15 @@ export const routes: Routes = [
                 .then((m) => m.AdminManufacturersModule)
           },
           {
-            path: 'site',
+            path: 'data',
             loadChildren: () =>
               import('./components/admin/site/admin-site/admin-site.module')
                 .then((m) => m.AdminSiteModule)
+          },
+          {
+            path: 'site',
+            redirectTo: 'data',
+            pathMatch: 'full'
           },
           { path: '', redirectTo: 'users', pathMatch: 'full' }
         ]

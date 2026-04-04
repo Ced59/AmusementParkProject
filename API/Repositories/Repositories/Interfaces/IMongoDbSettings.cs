@@ -16,5 +16,10 @@
         string SearchItemCollectionName { get; }
         string ImagesCollectionName { get; }
         string CountriesCollectionName { get; }
+        string CaptainCoasterSettingsCollectionName { get; }
+        string CaptainCoasterParksCollectionName { get; }
+        string CaptainCoasterCoastersCollectionName { get; }
+        string CaptainCoasterSyncSessionsCollectionName { get; }
+        string CaptainCoasterComparisonResultsCollectionName { get; }
     }
 }

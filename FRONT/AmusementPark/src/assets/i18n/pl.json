@@ -143,7 +143,8 @@
       "site": "Strona",
       "operators": "Operatorzy",
       "manufacturers": "Manufacturers",
-      "parkItems": "Items"
+      "parkItems": "Items",
+      "data": "Data"
     },
     "users": {
       "total": "Łączna liczba użytkowników: {{count}}",
@@ -310,7 +311,19 @@
           "isWaterAttraction": "Water attraction",
           "manufacturerPlaceholder": "Select a manufacturer",
           "waterExposureLevel": "Water exposure level",
-          "waterExposureLevelPlaceholder": "Select a level"
+          "waterExposureLevelPlaceholder": "Select a level",
+          "externalSource": "External source",
+          "externalId": "External ID",
+          "sourceUrl": "Source URL",
+          "status": "Status",
+          "materialType": "Material type",
+          "seatingType": "Seating type",
+          "launchType": "Launch type",
+          "restraintType": "Restraint type",
+          "isLaunched": "Launched",
+          "heightInFeet": "Height (ft)",
+          "lengthInFeet": "Length (ft)",
+          "speedInMph": "Speed (mph)"
         },
         "locationFields": {
           "entrance": "Entrance",
