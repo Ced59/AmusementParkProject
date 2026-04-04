@@ -24,7 +24,8 @@ export const routes: Routes = [
       { path: 'forgot-password', loadComponent: () => import('./components/login-register/forgot-password-page/forgot-password-page.component').then((m) => m.ForgotPasswordPageComponent) },
       { path: 'reset-password', loadComponent: () => import('./components/login-register/reset-password-page/reset-password-page.component').then((m) => m.ResetPasswordPageComponent) },
 
-      { path: 'park/:id/:slug/explore', loadComponent: () => import('./components/park-explorer/park-explorer.component').then((m) => m.ParkExplorerComponent) },
+      { path: 'park/:id/:slug/items', loadComponent: () => import('./components/public/park-items-page/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
+      { path: 'park/:id/:slug/item/:itemId/:itemSlug', loadComponent: () => import('./components/public/park-item-detail/park-item-detail.component').then((m) => m.ParkItemDetailComponent) },
       { path: 'park/:id/:slug', loadComponent: () => import('./components/park-detail/park-detail.component').then((m) => m.ParkDetailComponent) },
 
       {

@@ -311,21 +311,7 @@
           "isWaterAttraction": "Water attraction",
           "manufacturerPlaceholder": "Select a manufacturer",
           "waterExposureLevel": "Water exposure level",
-          "waterExposureLevelPlaceholder": "Select a level",
-          "externalSource": "External source",
-          "externalId": "External ID",
-          "sourceUrl": "Source URL",
-          "status": "Status",
-          "materialType": "Material type",
-          "seatingType": "Seating type",
-          "launchType": "Launch type",
-          "restraintType": "Restraint type",
-          "isLaunched": "Launched coaster",
-          "openingDateText": "Opening date text",
-          "closingDateText": "Closing date text",
-          "heightInFeet": "Height (ft)",
-          "lengthInFeet": "Length (ft)",
-          "speedInMph": "Speed (mph)"
+          "waterExposureLevelPlaceholder": "Select a level"
         },
         "locationFields": {
           "entrance": "Entrance",
@@ -664,6 +650,91 @@
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
       }
+    }
+  },
+  "parkVisitor": {
+    "summary": {
+      "badge": "Park content",
+      "title": "Explore what this park contains",
+      "subtitle": "Use this summary to jump to the right category without overloading the park page.",
+      "viewAllItems": "Browse all items",
+      "totalItems": "Total items",
+      "unassignedItems": "Unassigned items"
+    }
+  },
+  "parkItems": {
+    "actions": {
+      "viewDetails": "View item",
+      "backToItems": "Back to items",
+      "backToPark": "Back to park"
+    },
+    "filters": {
+      "search": "Search",
+      "searchPlaceholder": "Search by name, description, manufacturer or status",
+      "category": "Category",
+      "type": "Type",
+      "zone": "Zone",
+      "clear": "Clear filters",
+      "allCategories": "All categories",
+      "allTypes": "All types",
+      "allZones": "All zones"
+    },
+    "list": {
+      "subtitle": "Browse the park content through its generic ParkItem model and drill down into each item.",
+      "loadingTitle": "Loading park items",
+      "loadingMessage": "The park content is being loaded.",
+      "errorTitle": "Unable to load park items",
+      "errorMessage": "The park content could not be loaded.",
+      "emptyTitle": "No item available",
+      "emptyMessage": "No public item is currently available for this park.",
+      "emptyFilteredTitle": "No matching item",
+      "emptyFilteredMessage": "Try broadening your filters or clear them to see more content.",
+      "filteredResults": "Filtered results",
+      "resultsCount": "Showing {{start}}-{{end}} of {{total}} item(s)"
+    },
+    "detail": {
+      "loadingTitle": "Loading item",
+      "loadingMessage": "The item page is being loaded.",
+      "errorTitle": "Unable to load the item",
+      "errorMessage": "The requested item could not be loaded.",
+      "descriptionTitle": "Description",
+      "specificationsTitle": "Specifications",
+      "sourceTitle": "Source",
+      "summaryTitle": "At a glance"
+    },
+    "fields": {
+      "category": "Category",
+      "type": "Type",
+      "park": "Park",
+      "zone": "Zone",
+      "manufacturer": "Manufacturer",
+      "model": "Model",
+      "status": "Status",
+      "materialType": "Material",
+      "seatingType": "Seating",
+      "launchType": "Launch",
+      "restraintType": "Restraint",
+      "openingDate": "Opening date",
+      "closingDate": "Closing date",
+      "heightInMeters": "Height",
+      "heightInFeet": "Height (ft)",
+      "lengthInMeters": "Length",
+      "lengthInFeet": "Length (ft)",
+      "speedInKmH": "Speed",
+      "speedInMph": "Speed (mph)",
+      "dropInMeters": "Drop",
+      "inversionCount": "Inversions",
+      "capacityPerHour": "Capacity / hour",
+      "durationInSeconds": "Duration (sec)",
+      "trainCount": "Train count",
+      "carsPerTrain": "Cars / train",
+      "ridersPerVehicle": "Riders / vehicle",
+      "hasSingleRider": "Single rider",
+      "hasFastPass": "Fast pass",
+      "isAccessibleForReducedMobility": "Reduced mobility access",
+      "isIndoor": "Indoor",
+      "isLaunched": "Launched",
+      "waterExposureLevel": "Water exposure"
     }
   }
 }

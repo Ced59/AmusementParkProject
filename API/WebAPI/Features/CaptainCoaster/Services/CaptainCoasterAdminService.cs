@@ -405,48 +405,34 @@ namespace WebAPI.Features.CaptainCoaster.Services
                 string name = ReadString(element, "name") ?? string.Empty;
                 if (string.IsNullOrWhiteSpace(externalId) || string.IsNullOrWhiteSpace(name)) { continue; }
 
-                Dictionary<string, string>? rawAttributes = ReadStringDictionary(element, "rawAttributes");
-                CaptainCoasterCoasterSnapshot item = new CaptainCoasterCoasterSnapshot
+                result.Add(new CaptainCoasterCoasterSnapshot
                 {
                     SyncSessionId = sessionId,
-                    ExternalSource = ReadString(element, "externalSource") ?? "CaptainCoaster",
                     CaptainCoasterId = externalId.Trim(),
                     Name = name.Trim(),
                     Slug = ReadString(element, "slug"),
                     SourceUrl = ReadString(element, "sourceUrl"),
                     ParkCaptainCoasterId = ReadString(element, "parkSlug"),
                     ParkName = ReadString(element, "parkName"),
-                    ParkSlug = ReadString(element, "parkSlug"),
-                    Country = ReadString(element, "country"),
                     Manufacturer = NormalizeManufacturer(ReadString(element, "manufacturer")),
                     Model = ReadString(element, "model"),
                     MaterialType = ReadString(element, "materialType"),
                     SeatingType = ReadString(element, "seatingType"),
                     LaunchType = ReadString(element, "launchType"),
-                    RestraintType = ReadString(element, "restraintType"),
-                    IsLaunched = ReadBool(element, "isLaunched"),
-                    HeightInFeet = ReadDouble(element, "heightInFeet"),
+                    Restraint = ReadString(element, "restraintType"),
+                    IsLaunched = ReadBool(element, "isLaunched") ?? false,
                     HeightInMeters = ReadDouble(element, "heightInMeters"),
-                    LengthInFeet = ReadDouble(element, "lengthInFeet"),
                     LengthInMeters = ReadDouble(element, "lengthInMeters"),
-                    SpeedInMph = ReadDouble(element, "speedInMph"),
                     SpeedInKmH = ReadDouble(element, "speedInKmH"),
                     DropInMeters = null,
                     InversionCount = ReadInt(element, "inversionCount"),
                     Status = ReadString(element, "status"),
-                    OpeningDateText = ReadString(element, "openingDateText"),
-                    ClosingDateText = ReadString(element, "closingDateText"),
                     OpeningDate = PartialDateParser.Parse(ReadString(element, "openingDateText")),
                     ClosingDate = PartialDateParser.Parse(ReadString(element, "closingDateText")),
                     ScrapedAtUtc = ReadDateTime(element, "scrapedAtUtc"),
-                    RawAttributes = rawAttributes,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow
-                };
-
-                EnrichCoasterMetricsFromRawAttributes(item, rawAttributes);
-                PopulateImperialMetrics(item);
-                result.Add(item);
+                });
             }
             return result;
         }
@@ -472,10 +458,6 @@ namespace WebAPI.Features.CaptainCoaster.Services
             List<CaptainCoasterComparisonResult> results = new List<CaptainCoasterComparisonResult>();
             List<Park> localParks = await localParksCollection.Find(Builders<Park>.Filter.Empty).ToListAsync(cancellationToken);
             List<ParkItem> localCoasters = await localParkItemsCollection.Find(item => item.Category == ParkItemCategory.Attraction).ToListAsync(cancellationToken);
-            List<AttractionManufacturer> manufacturers = await manufacturersCollection.Find(Builders<AttractionManufacturer>.Filter.Empty).ToListAsync(cancellationToken);
-            Dictionary<string, AttractionManufacturer> manufacturersById = manufacturers
-                .Where(item => !string.IsNullOrWhiteSpace(item.Id))
-                .ToDictionary(item => item.Id, item => item, StringComparer.Ordinal);
 
             foreach (CaptainCoasterParkSnapshot externalPark in externalParks)
             {
@@ -490,7 +472,7 @@ namespace WebAPI.Features.CaptainCoaster.Services
             foreach (CaptainCoasterCoasterSnapshot externalCoaster in externalCoasters)
             {
                 ParkItem? localCoaster = MatchCoaster(localCoasters, localParks, externalCoaster);
-                CaptainCoasterComparisonResult compResult = BuildCoasterComparison(sessionId, localCoaster, externalCoaster, manufacturersById);
+                CaptainCoasterComparisonResult compResult = BuildCoasterComparison(sessionId, localCoaster, externalCoaster);
                 if (!string.Equals(compResult.ChangeType, "Identical", StringComparison.Ordinal))
                 {
                     results.Add(compResult);
@@ -524,35 +506,28 @@ namespace WebAPI.Features.CaptainCoaster.Services
             };
         }
 
-        private static CaptainCoasterComparisonResult BuildCoasterComparison(
-            string sessionId,
-            ParkItem? localCoaster,
-            CaptainCoasterCoasterSnapshot externalCoaster,
-            IReadOnlyDictionary<string, AttractionManufacturer> manufacturersById)
+        private static CaptainCoasterComparisonResult BuildCoasterComparison(string sessionId, ParkItem? localCoaster, CaptainCoasterCoasterSnapshot externalCoaster)
         {
             List<CaptainCoasterFieldChange> changes = new List<CaptainCoasterFieldChange>();
-            string? localManufacturerName = ResolveManufacturerName(localCoaster?.AttractionDetails?.ManufacturerId, manufacturersById);
             AddChange(changes, "name", localCoaster?.Name, externalCoaster.Name);
-            AddChange(changes, "manufacturer", localManufacturerName, externalCoaster.Manufacturer);
+            AddChange(changes, "manufacturer", localCoaster?.AttractionDetails?.ManufacturerId, externalCoaster.Manufacturer);
             AddChange(changes, "model", localCoaster?.AttractionDetails?.Model, externalCoaster.Model);
-            AddChange(changes, "externalSource", localCoaster?.AttractionDetails?.ExternalSource, externalCoaster.ExternalSource);
+            AddChange(changes, "externalSource", localCoaster?.AttractionDetails?.ExternalSource, "CaptainCoaster");
             AddChange(changes, "externalId", localCoaster?.AttractionDetails?.ExternalId, externalCoaster.CaptainCoasterId);
             AddChange(changes, "sourceUrl", localCoaster?.AttractionDetails?.SourceUrl, externalCoaster.SourceUrl);
             AddChange(changes, "status", localCoaster?.AttractionDetails?.Status, externalCoaster.Status);
             AddChange(changes, "materialType", localCoaster?.AttractionDetails?.MaterialType, externalCoaster.MaterialType);
             AddChange(changes, "seatingType", localCoaster?.AttractionDetails?.SeatingType, externalCoaster.SeatingType);
             AddChange(changes, "launchType", localCoaster?.AttractionDetails?.LaunchType, externalCoaster.LaunchType);
-            AddChange(changes, "restraintType", localCoaster?.AttractionDetails?.RestraintType, externalCoaster.RestraintType);
+            AddChange(changes, "restraintType", localCoaster?.AttractionDetails?.RestraintType, externalCoaster.Restraint);
             AddChange(changes, "isLaunched", FormatBool(localCoaster?.AttractionDetails?.IsLaunched), FormatBool(externalCoaster.IsLaunched));
-            AddChange(changes, "openingDateText", localCoaster?.AttractionDetails?.OpeningDateText, externalCoaster.OpeningDateText);
-            AddChange(changes, "closingDateText", localCoaster?.AttractionDetails?.ClosingDateText, externalCoaster.ClosingDateText);
             AddChange(changes, "openingDate", FormatDate(localCoaster?.AttractionDetails?.OpeningDate), FormatDate(externalCoaster.OpeningDate));
             AddChange(changes, "closingDate", FormatDate(localCoaster?.AttractionDetails?.ClosingDate), FormatDate(externalCoaster.ClosingDate));
-            AddChange(changes, "heightInFeet", FormatDouble(localCoaster?.AttractionDetails?.HeightInFeet), FormatDouble(externalCoaster.HeightInFeet));
+            AddChange(changes, "heightInFeet", FormatDouble(localCoaster?.AttractionDetails?.HeightInFeet), FormatDouble(ConvertMetersToFeet(externalCoaster.HeightInMeters)));
             AddChange(changes, "heightInMeters", FormatDouble(localCoaster?.AttractionDetails?.HeightInMeters), FormatDouble(externalCoaster.HeightInMeters));
-            AddChange(changes, "lengthInFeet", FormatDouble(localCoaster?.AttractionDetails?.LengthInFeet), FormatDouble(externalCoaster.LengthInFeet));
+            AddChange(changes, "lengthInFeet", FormatDouble(localCoaster?.AttractionDetails?.LengthInFeet), FormatDouble(ConvertMetersToFeet(externalCoaster.LengthInMeters)));
             AddChange(changes, "lengthInMeters", FormatDouble(localCoaster?.AttractionDetails?.LengthInMeters), FormatDouble(externalCoaster.LengthInMeters));
-            AddChange(changes, "speedInMph", FormatDouble(localCoaster?.AttractionDetails?.SpeedInMph), FormatDouble(externalCoaster.SpeedInMph));
+            AddChange(changes, "speedInMph", FormatDouble(localCoaster?.AttractionDetails?.SpeedInMph), FormatDouble(ConvertKmHToMph(externalCoaster.SpeedInKmH)));
             AddChange(changes, "speedInKmH", FormatDouble(localCoaster?.AttractionDetails?.SpeedInKmH), FormatDouble(externalCoaster.SpeedInKmH));
             AddChange(changes, "inversionCount", localCoaster?.AttractionDetails?.InversionCount?.ToString(CultureInfo.InvariantCulture), externalCoaster.InversionCount?.ToString(CultureInfo.InvariantCulture));
 
@@ -678,24 +653,22 @@ namespace WebAPI.Features.CaptainCoaster.Services
             AttractionDetails attractionDetails = localCoaster?.AttractionDetails ?? new AttractionDetails();
             attractionDetails.ManufacturerId = manufacturer?.Id;
             attractionDetails.Model = externalCoaster.Model;
-            attractionDetails.ExternalSource = externalCoaster.ExternalSource;
+            attractionDetails.ExternalSource = "CaptainCoaster";
             attractionDetails.ExternalId = externalCoaster.CaptainCoasterId;
             attractionDetails.SourceUrl = externalCoaster.SourceUrl;
             attractionDetails.Status = externalCoaster.Status;
             attractionDetails.MaterialType = externalCoaster.MaterialType;
             attractionDetails.SeatingType = externalCoaster.SeatingType;
             attractionDetails.LaunchType = externalCoaster.LaunchType;
-            attractionDetails.RestraintType = externalCoaster.RestraintType;
+            attractionDetails.RestraintType = externalCoaster.Restraint;
             attractionDetails.IsLaunched = externalCoaster.IsLaunched;
-            attractionDetails.OpeningDateText = externalCoaster.OpeningDateText;
-            attractionDetails.ClosingDateText = externalCoaster.ClosingDateText;
             attractionDetails.OpeningDate = externalCoaster.OpeningDate;
             attractionDetails.ClosingDate = externalCoaster.ClosingDate;
-            attractionDetails.HeightInFeet = externalCoaster.HeightInFeet;
+            attractionDetails.HeightInFeet = ConvertMetersToFeet(externalCoaster.HeightInMeters);
             attractionDetails.HeightInMeters = externalCoaster.HeightInMeters;
-            attractionDetails.LengthInFeet = externalCoaster.LengthInFeet;
+            attractionDetails.LengthInFeet = ConvertMetersToFeet(externalCoaster.LengthInMeters);
             attractionDetails.LengthInMeters = externalCoaster.LengthInMeters;
-            attractionDetails.SpeedInMph = externalCoaster.SpeedInMph;
+            attractionDetails.SpeedInMph = ConvertKmHToMph(externalCoaster.SpeedInKmH);
             attractionDetails.SpeedInKmH = externalCoaster.SpeedInKmH;
             attractionDetails.InversionCount = externalCoaster.InversionCount;
 
@@ -845,24 +818,6 @@ namespace WebAPI.Features.CaptainCoaster.Services
             return result;
         }
 
-        private static Dictionary<string, string>? ReadStringDictionary(JsonElement element, string propertyName)
-        {
-            if (!element.TryGetProperty(propertyName, out JsonElement value) || value.ValueKind != JsonValueKind.Object)
-            {
-                return null;
-            }
-
-            Dictionary<string, string> items = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            foreach (JsonProperty property in value.EnumerateObject())
-            {
-                items[property.Name] = property.Value.ValueKind == JsonValueKind.String
-                    ? property.Value.GetString() ?? string.Empty
-                    : property.Value.ToString();
-            }
-
-            return items.Count > 0 ? items : null;
-        }
-
         private static async Task<byte[]> ReadStreamToBytesAsync(Stream stream, CancellationToken cancellationToken)
         {
             using MemoryStream ms = new MemoryStream();
@@ -884,92 +839,11 @@ namespace WebAPI.Features.CaptainCoaster.Services
             return builder.ToString();
         }
 
+        private static double? ConvertMetersToFeet(double? value) => value == null ? null : Math.Round(value.Value * 3.28084d, 2, MidpointRounding.AwayFromZero);
+        private static double? ConvertKmHToMph(double? value) => value == null ? null : Math.Round(value.Value * 0.621371d, 2, MidpointRounding.AwayFromZero);
         private static string? FormatDouble(double? value) => value?.ToString(CultureInfo.InvariantCulture);
         private static string? FormatDate(DateTime? value) => value?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
         private static string? FormatBool(bool? value) => value?.ToString();
-
-        private static string? ResolveManufacturerName(string? manufacturerId, IReadOnlyDictionary<string, AttractionManufacturer> manufacturersById)
-        {
-            if (string.IsNullOrWhiteSpace(manufacturerId))
-            {
-                return null;
-            }
-
-            return manufacturersById.TryGetValue(manufacturerId, out AttractionManufacturer? manufacturer)
-                ? manufacturer.Name
-                : manufacturerId;
-        }
-
-        private static void EnrichCoasterMetricsFromRawAttributes(CaptainCoasterCoasterSnapshot item, IReadOnlyDictionary<string, string>? rawAttributes)
-        {
-            if (rawAttributes == null || !rawAttributes.TryGetValue("topMetrics", out string? topMetrics) || string.IsNullOrWhiteSpace(topMetrics))
-            {
-                return;
-            }
-
-            string[] parts = topMetrics.Split('|', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
-            if (parts.Length > 0 && item.HeightInMeters == null)
-            {
-                item.HeightInMeters = ParseMetricValue(parts[0], "m");
-            }
-
-            if (parts.Length > 1 && item.SpeedInKmH == null)
-            {
-                item.SpeedInKmH = ParseMetricValue(parts[1], "km/h");
-            }
-
-            if (parts.Length > 2 && item.LengthInMeters == null)
-            {
-                item.LengthInMeters = ParseMetricValue(parts[2], "m");
-            }
-
-            if (parts.Length > 3 && item.InversionCount == null)
-            {
-                item.InversionCount = ParseMetricInt(parts[3]);
-            }
-        }
-
-        private static void PopulateImperialMetrics(CaptainCoasterCoasterSnapshot item)
-        {
-            item.HeightInFeet ??= ConvertMetersToFeet(item.HeightInMeters);
-            item.LengthInFeet ??= ConvertMetersToFeet(item.LengthInMeters);
-            item.SpeedInMph ??= ConvertKmHToMph(item.SpeedInKmH);
-        }
-
-        private static double? ParseMetricValue(string? rawValue, string expectedUnit)
-        {
-            if (string.IsNullOrWhiteSpace(rawValue) || rawValue.Contains("<empty>", StringComparison.OrdinalIgnoreCase))
-            {
-                return null;
-            }
-
-            string normalized = rawValue.Replace(expectedUnit, string.Empty, StringComparison.OrdinalIgnoreCase).Trim();
-            return double.TryParse(normalized, NumberStyles.Any, CultureInfo.InvariantCulture, out double value)
-                ? value
-                : null;
-        }
-
-        private static int? ParseMetricInt(string? rawValue)
-        {
-            if (string.IsNullOrWhiteSpace(rawValue) || rawValue.Contains("<empty>", StringComparison.OrdinalIgnoreCase))
-            {
-                return null;
-            }
-
-            return int.TryParse(rawValue.Trim(), NumberStyles.Integer, CultureInfo.InvariantCulture, out int value)
-                ? value
-                : null;
-        }
-
-        private static double? ConvertMetersToFeet(double? meters)
-        {
-            return meters == null ? null : Math.Round(meters.Value * 3.28084d, 2, MidpointRounding.AwayFromZero);
-        }
-
-        private static double? ConvertKmHToMph(double? kmh)
-        {
-            return kmh == null ? null : Math.Round(kmh.Value * 0.621371d, 2, MidpointRounding.AwayFromZero);
-        }
 
         private static CaptainCoasterSyncSessionResponse MapSession(CaptainCoasterSyncSession session) =>
             new CaptainCoasterSyncSessionResponse

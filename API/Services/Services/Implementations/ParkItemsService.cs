@@ -313,10 +313,10 @@ namespace Services.Implementations
                 LaunchType = NormalizeOptionalText(details.LaunchType),
                 RestraintType = NormalizeOptionalText(details.RestraintType),
                 IsLaunched = details.IsLaunched,
-                OpeningDateText = NormalizeOptionalText(details.OpeningDateText),
-                ClosingDateText = NormalizeOptionalText(details.ClosingDateText),
                 OpeningDate = details.OpeningDate?.Date,
                 ClosingDate = details.ClosingDate?.Date,
+                OpeningDateText = NormalizeOptionalText(details.OpeningDateText),
+                ClosingDateText = NormalizeOptionalText(details.ClosingDateText),
                 DurationInSeconds = NormalizeNullableInt(details.DurationInSeconds),
                 CapacityPerHour = NormalizeNullableInt(details.CapacityPerHour),
                 HeightInFeet = NormalizeNullableDouble(details.HeightInFeet),
@@ -473,10 +473,10 @@ namespace Services.Implementations
                 LaunchType = details.LaunchType,
                 RestraintType = details.RestraintType,
                 IsLaunched = details.IsLaunched,
-                OpeningDateText = details.OpeningDateText,
-                ClosingDateText = details.ClosingDateText,
                 OpeningDate = details.OpeningDate,
                 ClosingDate = details.ClosingDate,
+                OpeningDateText = details.OpeningDateText,
+                ClosingDateText = details.ClosingDateText,
                 DurationInSeconds = details.DurationInSeconds,
                 CapacityPerHour = details.CapacityPerHour,
                 HeightInFeet = details.HeightInFeet,
@@ -592,10 +592,10 @@ namespace Services.Implementations
                    !string.IsNullOrWhiteSpace(details.LaunchType) ||
                    !string.IsNullOrWhiteSpace(details.RestraintType) ||
                    details.IsLaunched == true ||
-                   !string.IsNullOrWhiteSpace(details.OpeningDateText) ||
-                   !string.IsNullOrWhiteSpace(details.ClosingDateText) ||
                    details.OpeningDate != null ||
                    details.ClosingDate != null ||
+                   !string.IsNullOrWhiteSpace(details.OpeningDateText) ||
+                   !string.IsNullOrWhiteSpace(details.ClosingDateText) ||
                    details.DurationInSeconds != null ||
                    details.CapacityPerHour != null ||
                    details.HeightInFeet != null ||

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { NgFor, NgIf, SlicePipe } from '@angular/common';
-import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
+import { NgFor, NgIf } from '@angular/common';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription, forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
@@ -9,19 +9,20 @@ import { Paginator } from 'primeng/paginator';
 import { ButtonDirective } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { Park } from '../../models/parks/park';
-import { ParkExplorer, ParkExplorerBucket } from '../../models/parks/park-explorer';
-import { ParkItem } from '../../models/parks/park-item';
-import { ParkZone } from '../../models/parks/park-zone';
-import { AttractionManufacturer } from '../../models/parks/attraction-manufacturer';
-import { ViewState } from '../../models/shared/view-state';
-import { ApiService } from '../../services/api.service';
-import { TranslationService } from '../../services/translation.service';
-import { commitViewUpdate } from '../../utils/change-detection.utils';
-import { buildParkSlug } from '../../commons/park-presentation.utils';
-import { resolveParkItemDescription } from '../../commons/park-item-presentation.utils';
-import { PageStateComponent } from '../shared/page-state/page-state.component';
-import { ParkItemCardComponent } from '../public/park-item-card/park-item-card.component';
+import { Park } from '../../../models/parks/park';
+import { ParkExplorer, ParkExplorerBucket } from '../../../models/parks/park-explorer';
+import { ParkItem } from '../../../models/parks/park-item';
+import { ParkZone } from '../../../models/parks/park-zone';
+import { AttractionManufacturer } from '../../../models/parks/attraction-manufacturer';
+import { ViewState } from '../../../models/shared/view-state';
+import { ApiService } from '../../../services/api.service';
+import { TranslationService } from '../../../services/translation.service';
+import { commitViewUpdate } from '../../../utils/change-detection.utils';
+import { buildParkSlug } from '../../../commons/park-presentation.utils';
+import { resolveParkItemDescription } from '../../../commons/park-item-presentation.utils';
+import { resolveLocalizedValue } from '../../../commons/localized-item.utils';
+import { PageStateComponent } from '../../shared/page-state/page-state.component';
+import { ParkItemCardComponent } from '../park-item-card/park-item-card.component';
 
 interface SelectOption {
   labelKey?: string;
@@ -30,14 +31,12 @@ interface SelectOption {
 }
 
 @Component({
-  selector: 'app-park-explorer',
-  templateUrl: './park-explorer.component.html',
-  styleUrls: ['./park-explorer.component.scss'],
+  selector: 'app-park-items-page',
+  templateUrl: './park-items-page.component.html',
+  styleUrls: ['./park-items-page.component.scss'],
   imports: [
     NgFor,
     NgIf,
-    SlicePipe,
-    RouterLink,
     FormsModule,
     InputText,
     Paginator,
@@ -47,7 +46,7 @@ interface SelectOption {
     ParkItemCardComponent
   ]
 })
-export class ParkExplorerComponent implements OnInit, OnDestroy {
+export class ParkItemsPageComponent implements OnInit, OnDestroy {
   park: Park | null = null;
   explorer: ParkExplorer | null = null;
   pageState: ViewState = ViewState.Loading;
@@ -124,22 +123,34 @@ export class ParkExplorerComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  get buckets(): ParkExplorerBucket[] {
+  get bucketCards(): ParkExplorerBucket[] {
     if (!this.explorer) {
       return [];
     }
 
     const buckets: ParkExplorerBucket[] = [...this.explorer.zones];
 
-    if (this.explorer.unassigned && (this.explorer.hasZones || this.explorer.unassigned.totalItems > 0)) {
+    if (this.explorer.unassigned && this.explorer.unassigned.totalItems > 0) {
       buckets.push(this.explorer.unassigned);
     }
 
-    if (!this.explorer.hasZones) {
-      return [this.explorer.overview];
+    return buckets;
+  }
+
+  get hasZones(): boolean {
+    return this.bucketCards.length > 0;
+  }
+
+  get activeZoneLabel(): string | null {
+    if (!this.selectedZoneId) {
+      return null;
     }
 
-    return buckets;
+    if (this.selectedZoneId === '__unassigned__') {
+      return 'parkVisitor.summary.unassignedItems';
+    }
+
+    return this.zonesById[this.selectedZoneId] ?? null;
   }
 
   get categoryOptions(): SelectOption[] {
@@ -204,33 +215,32 @@ export class ParkExplorerComponent implements OnInit, OnDestroy {
     return ['/', this.currentLang, 'park', this.park.id, buildParkSlug(this.park.name)];
   }
 
-  goBack(): void {
-    if (this.parkLink) {
-      this.router.navigate(this.parkLink);
-      return;
+  getParkZoneDisplayName(bucket: ParkExplorerBucket): string {
+    if (bucket.isVirtual && bucket.name === 'unassigned') {
+      return 'parkVisitor.summary.unassignedItems';
     }
 
-    this.router.navigate(['/', this.currentLang, 'parks']);
+    const localizedName: string | undefined = resolveLocalizedValue(bucket.names, this.currentLang);
+    return localizedName ?? bucket.name;
   }
 
-  getCategoryKey(category: string): string {
-    return `parkExplorer.categories.${this.toCamelCase(category)}`;
+  getZoneCardButtonLabel(bucket: ParkExplorerBucket): string {
+    if (bucket.totalItems <= 1) {
+      return 'parkItems.actions.viewDetails';
+    }
+
+    return 'parkItems.filters.zone';
   }
+
+  getZoneCardTypeHighlights(bucket: ParkExplorerBucket): Array<{ key: string; count: number }> {
+    return [...bucket.countsByType]
+      .sort((left, right) => right.count - left.count)
+      .slice(0, 3);
+  }
+
 
   getTypeKey(type: string): string {
     return `parkExplorer.types.${this.toCamelCase(type)}`;
-  }
-
-  getBucketLabel(bucket: ParkExplorerBucket): string {
-    if (bucket.isVirtual && bucket.name === 'overview') {
-      return 'parkExplorer.overviewTitle';
-    }
-
-    if (bucket.isVirtual && bucket.name === 'unassigned') {
-      return 'parkExplorer.unassignedTitle';
-    }
-
-    return bucket.name;
   }
 
   getManufacturerName(item: ParkItem): string | null {
@@ -248,6 +258,34 @@ export class ParkExplorerComponent implements OnInit, OnDestroy {
     }
 
     return this.zonesById[item.zoneId] ?? null;
+  }
+
+  isZoneSelected(bucket: ParkExplorerBucket): boolean {
+    const bucketZoneId: string | null = bucket.isVirtual
+      ? bucket.name === 'unassigned' ? '__unassigned__' : null
+      : bucket.id ?? null;
+
+    return this.selectedZoneId === bucketZoneId;
+  }
+
+  selectZone(bucket: ParkExplorerBucket): void {
+    if (bucket.isVirtual) {
+      this.selectedZoneId = bucket.name === 'unassigned' ? '__unassigned__' : null;
+    } else {
+      this.selectedZoneId = bucket.id ?? null;
+    }
+
+    this.currentPage = 1;
+    this.updateQueryParams();
+  }
+
+  goBack(): void {
+    if (this.parkLink) {
+      this.router.navigate(this.parkLink);
+      return;
+    }
+
+    this.router.navigate(['/', this.currentLang, 'parks']);
   }
 
   onFiltersChanged(): void {
@@ -297,8 +335,9 @@ export class ParkExplorerComponent implements OnInit, OnDestroy {
         }, {} as Record<string, string>);
 
         const zonesById: Record<string, string> = zones.reduce((accumulator, current) => {
-          if (current.id && current.name) {
-            accumulator[current.id] = current.name;
+          const localizedName: string | undefined = resolveLocalizedValue(current.names, this.currentLang);
+          if (current.id) {
+            accumulator[current.id] = localizedName ?? current.name ?? current.id;
           }
           return accumulator;
         }, {} as Record<string, string>);
@@ -309,12 +348,12 @@ export class ParkExplorerComponent implements OnInit, OnDestroy {
           this.allItems = items;
           this.manufacturersById = manufacturersById;
           this.zonesById = zonesById;
-          this.pageState = items.length > 0 ? ViewState.Ready : ViewState.Empty;
+          this.pageState = ViewState.Ready;
           this.applyFilters();
         });
       },
       error: (error: unknown) => {
-        console.error('Error loading park exploration data', error);
+        console.error('Error loading park items page', error);
         commitViewUpdate(this.changeDetectorRef, () => {
           this.pageState = ViewState.Error;
         });

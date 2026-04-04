@@ -311,21 +311,7 @@
           "isWaterAttraction": "Attraction aquatique",
           "manufacturerPlaceholder": "Sélectionner un constructeur",
           "waterExposureLevel": "Niveau d'exposition à l'eau",
-          "waterExposureLevelPlaceholder": "Sélectionner un niveau",
-          "externalSource": "Source externe",
-          "externalId": "Identifiant externe",
-          "sourceUrl": "URL source",
-          "status": "Statut",
-          "materialType": "Type de matériau",
-          "seatingType": "Type de train",
-          "launchType": "Type de lancement",
-          "restraintType": "Type de retenue",
-          "isLaunched": "Coaster lancé",
-          "openingDateText": "Texte date d'ouverture",
-          "closingDateText": "Texte date de fermeture",
-          "heightInFeet": "Hauteur (ft)",
-          "lengthInFeet": "Longueur (ft)",
-          "speedInMph": "Vitesse (mph)"
+          "waterExposureLevelPlaceholder": "Sélectionner un niveau"
         },
         "locationFields": {
           "entrance": "Entrée",
@@ -664,6 +650,91 @@
         "emptyTitle": "Aucun parc à proximité",
         "emptyMessage": "Aucun parc proche n’a été trouvé autour de cette destination."
       }
+    }
+  },
+  "parkVisitor": {
+    "summary": {
+      "badge": "Contenu du parc",
+      "title": "Explorer ce que contient ce parc",
+      "subtitle": "Utilisez ce récapitulatif pour aller directement vers la bonne catégorie sans surcharger la page parc.",
+      "viewAllItems": "Parcourir tous les éléments",
+      "totalItems": "Éléments au total",
+      "unassignedItems": "Éléments non affectés"
+    }
+  },
+  "parkItems": {
+    "actions": {
+      "viewDetails": "Voir la fiche",
+      "backToItems": "Retour aux éléments",
+      "backToPark": "Retour au parc"
+    },
+    "filters": {
+      "search": "Recherche",
+      "searchPlaceholder": "Rechercher par nom, description, constructeur ou statut",
+      "category": "Catégorie",
+      "type": "Type",
+      "zone": "Zone",
+      "clear": "Réinitialiser les filtres",
+      "allCategories": "Toutes les catégories",
+      "allTypes": "Tous les types",
+      "allZones": "Toutes les zones"
+    },
+    "list": {
+      "subtitle": "Parcourez le contenu du parc via le modèle générique ParkItem puis ouvrez la fiche détaillée de chaque élément.",
+      "loadingTitle": "Chargement des éléments du parc",
+      "loadingMessage": "Le contenu du parc est en cours de chargement.",
+      "errorTitle": "Impossible de charger les éléments du parc",
+      "errorMessage": "Le contenu du parc n'a pas pu être chargé.",
+      "emptyTitle": "Aucun élément disponible",
+      "emptyMessage": "Aucun élément public n'est actuellement disponible pour ce parc.",
+      "emptyFilteredTitle": "Aucun élément correspondant",
+      "emptyFilteredMessage": "Essayez d'élargir vos filtres ou réinitialisez-les pour voir plus de contenu.",
+      "filteredResults": "Résultats filtrés",
+      "resultsCount": "Affichage de {{start}} à {{end}} sur {{total}} élément(s)"
+    },
+    "detail": {
+      "loadingTitle": "Chargement de l'élément",
+      "loadingMessage": "La fiche de l'élément est en cours de chargement.",
+      "errorTitle": "Impossible de charger l'élément",
+      "errorMessage": "L'élément demandé n'a pas pu être chargé.",
+      "descriptionTitle": "Description",
+      "specificationsTitle": "Caractéristiques",
+      "sourceTitle": "Source",
+      "summaryTitle": "En un coup d'œil"
+    },
+    "fields": {
+      "category": "Catégorie",
+      "type": "Type",
+      "park": "Parc",
+      "zone": "Zone",
+      "manufacturer": "Constructeur",
+      "model": "Modèle",
+      "status": "Statut",
+      "materialType": "Matériau",
+      "seatingType": "Type de sièges",
+      "launchType": "Type de lancement",
+      "restraintType": "Harnais",
+      "openingDate": "Date d'ouverture",
+      "closingDate": "Date de fermeture",
+      "heightInMeters": "Hauteur",
+      "heightInFeet": "Hauteur (ft)",
+      "lengthInMeters": "Longueur",
+      "lengthInFeet": "Longueur (ft)",
+      "speedInKmH": "Vitesse",
+      "speedInMph": "Vitesse (mph)",
+      "dropInMeters": "Drop",
+      "inversionCount": "Inversions",
+      "capacityPerHour": "Capacité / heure",
+      "durationInSeconds": "Durée (sec)",
+      "trainCount": "Nombre de trains",
+      "carsPerTrain": "Voitures / train",
+      "ridersPerVehicle": "Passagers / véhicule",
+      "hasSingleRider": "Single rider",
+      "hasFastPass": "Fast pass",
+      "isAccessibleForReducedMobility": "Accès PMR",
+      "isIndoor": "Indoor",
+      "isLaunched": "Propulsé",
+      "waterExposureLevel": "Niveau d'exposition à l'eau"
     }
   }
 }

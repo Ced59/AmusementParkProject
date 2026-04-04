@@ -53,14 +53,6 @@ namespace Entities.Model.Parks
         [BsonIgnoreIfNull]
         public bool? IsLaunched { get; set; }
 
-        [BsonElement("openingDateText")]
-        [BsonIgnoreIfNull]
-        public string? OpeningDateText { get; set; }
-
-        [BsonElement("closingDateText")]
-        [BsonIgnoreIfNull]
-        public string? ClosingDateText { get; set; }
-
         [BsonElement("openingDate")]
         [BsonIgnoreIfNull]
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
@@ -70,6 +62,14 @@ namespace Entities.Model.Parks
         [BsonIgnoreIfNull]
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime? ClosingDate { get; set; }
+
+        [BsonElement("openingDateText")]
+        [BsonIgnoreIfNull]
+        public string? OpeningDateText { get; set; }
+
+        [BsonElement("closingDateText")]
+        [BsonIgnoreIfNull]
+        public string? ClosingDateText { get; set; }
 
         [BsonElement("durationInSeconds")]
         [BsonIgnoreIfNull]

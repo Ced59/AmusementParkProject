@@ -1,0 +1,39 @@
+<article class="park-item-card" *ngIf="item as currentItem">
+  <div class="park-item-card__header">
+    <div class="park-item-card__chips">
+      <span class="app-chip">
+        {{ categoryLabelKey | translate }}
+      </span>
+
+      <span class="app-chip app-chip--soft">
+        {{ typeLabelKey | translate }}
+      </span>
+
+      <span class="park-item-card__zone" *ngIf="zoneName">
+        {{ zoneName }}
+      </span>
+    </div>
+
+    <h3 class="park-item-card__title">{{ currentItem.name }}</h3>
+  </div>
+
+  <p class="park-item-card__description" *ngIf="description">
+    {{ description }}
+  </p>
+
+  <div class="park-item-card__highlights" *ngIf="highlightValues.length > 0">
+    <span class="park-item-card__highlight" *ngFor="let value of highlightValues">
+      {{ value }}
+    </span>
+  </div>
+
+  <div class="park-item-card__footer">
+    <a
+      *ngIf="itemLink"
+      pButton
+      [routerLink]="itemLink"
+      icon="pi pi-arrow-right"
+      [label]="'parkItems.actions.viewDetails' | translate">
+    </a>
+  </div>
+</article>

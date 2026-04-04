@@ -16,10 +16,10 @@ namespace Dtos.ParkItems
         public string? LaunchType { get; set; }
         public string? RestraintType { get; set; }
         public bool? IsLaunched { get; set; }
-        public string? OpeningDateText { get; set; }
-        public string? ClosingDateText { get; set; }
         public DateTime? OpeningDate { get; set; }
         public DateTime? ClosingDate { get; set; }
+        public string? OpeningDateText { get; set; }
+        public string? ClosingDateText { get; set; }
         public int? DurationInSeconds { get; set; }
         public int? CapacityPerHour { get; set; }
         public double? HeightInFeet { get; set; }

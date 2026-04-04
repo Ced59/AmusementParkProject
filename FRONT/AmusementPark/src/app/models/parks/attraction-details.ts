@@ -13,10 +13,10 @@ export interface AttractionDetails {
   launchType?: string | null;
   restraintType?: string | null;
   isLaunched?: boolean | null;
-  openingDateText?: string | null;
-  closingDateText?: string | null;
   openingDate?: string | null;
   closingDate?: string | null;
+  openingDateText?: string | null;
+  closingDateText?: string | null;
   durationInSeconds?: number | null;
   capacityPerHour?: number | null;
   heightInFeet?: number | null;

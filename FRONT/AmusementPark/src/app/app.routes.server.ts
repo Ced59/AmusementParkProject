@@ -43,7 +43,8 @@ export const serverRoutes: ServerRoute[] = [
 
   // Pages de parc dynamiques => SSR
   { path: ':lang/park/:id/:slug', renderMode: RenderMode.Server },
-  { path: ':lang/park/:id/:slug/explore', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug/items', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug', renderMode: RenderMode.Server },
 
   // Fallback
   { path: '**', renderMode: RenderMode.Server }
