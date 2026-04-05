@@ -29,6 +29,15 @@ body.light-mode {
   --app-sidebar-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(236, 243, 255, 0.92));
 
   --app-background-illustration-opacity: 0.06;
+
+  --app-accent-cyan: #0ea5e9;
+  --app-accent-pink: #d946ef;
+  --app-accent-gold: #f59e0b;
+  --app-surface-hero: linear-gradient(140deg, rgba(255, 255, 255, 0.92), rgba(236, 244, 255, 0.88));
+  --app-surface-glow: rgba(99, 102, 241, 0.16);
+  --app-card-highlight: rgba(109, 93, 252, 0.1);
+  --app-card-highlight-strong: rgba(14, 165, 233, 0.16);
+  --app-card-noise: rgba(255, 255, 255, 0.42);
 }
 
 body.dark-mode,
@@ -63,4 +72,13 @@ body:not(.light-mode) {
   --app-sidebar-bg: linear-gradient(180deg, rgba(10, 18, 30, 0.94), rgba(20, 30, 46, 0.9));
 
   --app-background-illustration-opacity: 0.12;
+
+  --app-accent-cyan: #38bdf8;
+  --app-accent-pink: #f472b6;
+  --app-accent-gold: #fbbf24;
+  --app-surface-hero: linear-gradient(140deg, rgba(9, 16, 28, 0.95), rgba(19, 31, 52, 0.9));
+  --app-surface-glow: rgba(167, 139, 250, 0.18);
+  --app-card-highlight: rgba(139, 92, 246, 0.16);
+  --app-card-highlight-strong: rgba(56, 189, 248, 0.18);
+  --app-card-noise: rgba(255, 255, 255, 0.06);
 }

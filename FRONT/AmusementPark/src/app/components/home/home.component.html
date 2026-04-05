@@ -1,17 +1,41 @@
-<section class="home-page">
-  <div class="hero">
-    <div class="hero-copy">
-      <span class="app-chip">
+<section class="public-page home-page">
+  <section class="public-hero public-hero--split home-hero">
+    <div class="public-hero__content">
+      <span class="public-kicker">
         <i class="pi pi-compass"></i>
         {{ 'home.heroBadge' | translate }}
       </span>
 
-      <h1 class="hero-title">{{ 'home.home_title' | translate }}</h1>
-      <p class="hero-subtitle">
-        {{ 'home.heroSubtitle' | translate }}
-      </p>
+      <div>
+        <h1 class="page-title home-hero__title">{{ 'home.home_title' | translate }}</h1>
+        <p class="public-lead home-hero__lead">
+          {{ 'home.heroSubtitle' | translate }}
+        </p>
+      </div>
 
-      <div class="hero-actions">
+      <div class="public-stat-grid home-hero__stats">
+        <article class="public-stat-card public-stat-card--accent">
+          <span class="public-stat-card__label">{{ 'home.featured.title' | translate }}</span>
+          <strong class="public-stat-card__value">{{ featuredParks.length }}</strong>
+          <span class="public-stat-card__hint">{{ 'home.featured.subtitle' | translate }}</span>
+        </article>
+
+        <article class="public-stat-card">
+          <span class="public-stat-card__label">{{ 'home.search.resultsTitle' | translate }}</span>
+          <strong class="public-stat-card__value">{{ searchResultsTotal }}</strong>
+          <span class="public-stat-card__hint">
+            {{ searchResultsHintKey | translate }}
+          </span>
+        </article>
+
+        <article class="public-stat-card">
+          <span class="public-stat-card__label">{{ 'parks.title' | translate }}</span>
+          <strong class="public-stat-card__value">{{ categoryOptions.length - 1 }}</strong>
+          <span class="public-stat-card__hint">{{ 'home.placeholder_category' | translate }}</span>
+        </article>
+      </div>
+
+      <div class="public-cta-row">
         <a
           pButton
           [routerLink]="['/', currentLang, 'parks']"
@@ -21,29 +45,62 @@
 
         <a
           pButton
-          class="p-button-text"
+          class="p-button-outlined"
           [routerLink]="['/', currentLang, 'about']"
           icon="pi pi-info-circle"
           [label]="'home.ctaLearnMore' | translate">
         </a>
       </div>
     </div>
-  </div>
 
-  <div class="search-panel">
-    <div class="search-grid">
-      <div class="search-field">
-        <label class="field-label">{{ 'home.placeholder_search' | translate }}</label>
+    <div class="public-hero__media home-hero__media">
+      <article class="public-feature-card home-feature-card">
+        <span class="public-feature-card__eyebrow">
+          <i class="pi pi-bolt"></i>
+          {{ 'parkVisitor.summary.badge' | translate }}
+        </span>
+        <h2 class="public-feature-card__title">{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
+        <p class="public-feature-card__text">{{ 'parkVisitor.summary.subtitle' | translate }}</p>
+      </article>
+
+      <article class="public-feature-card home-feature-card home-feature-card--accent">
+        <span class="public-feature-card__eyebrow">
+          <i class="pi pi-search"></i>
+          {{ 'home.search.resultsTitle' | translate }}
+        </span>
+        <h2 class="public-feature-card__title">{{ 'home.placeholder_search' | translate }}</h2>
+        <p class="public-feature-card__text">{{ 'home.search.hintMessage' | translate }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="public-filter-panel home-search-panel">
+    <div class="public-section-header home-search-panel__header">
+      <div>
+        <span class="public-kicker">
+          <i class="pi pi-search"></i>
+          {{ 'home.search.resultsTitle' | translate }}
+        </span>
+        <h2 class="public-section-header__title">{{ 'home.placeholder_search' | translate }}</h2>
+        <p class="public-section-header__subtitle">{{ 'home.search.resultsSubtitle' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="public-filter-grid home-search-grid">
+      <div class="public-field home-search-grid__field--search">
+        <label class="public-field__label">{{ 'home.placeholder_search' | translate }}</label>
         <input
           #searchInput
           type="text"
           pInputText
+          class="public-input"
           [placeholder]="'home.placeholder_search' | translate"
+          [value]="searchTerm"
           (input)="onSearchInput(searchInput.value)" />
       </div>
 
-      <div class="search-field">
-        <label class="field-label">{{ 'home.placeholder_category' | translate }}</label>
+      <div class="public-field">
+        <label class="public-field__label">{{ 'home.placeholder_category' | translate }}</label>
         <p-select
           [options]="categoryOptions"
           [(ngModel)]="selectedCategory"
@@ -60,43 +117,17 @@
         </p-select>
       </div>
     </div>
-  </div>
-
-  <section class="content-section">
-    <div class="page-header">
-      <div>
-        <h2 class="section-title">{{ 'home.featured.title' | translate }}</h2>
-        <p class="page-subtitle">
-          {{ 'home.featured.subtitle' | translate }}
-        </p>
-      </div>
-    </div>
-
-    <app-page-state
-      [state]="featuredState"
-      loadingTitleKey="home.featured.loadingTitle"
-      loadingMessageKey="home.featured.loadingMessage"
-      errorTitleKey="home.featured.errorTitle"
-      errorMessageKey="home.featured.errorMessage"
-      emptyTitleKey="home.featured.emptyTitle"
-      emptyMessageKey="home.featured.emptyMessage">
-      <div class="app-grid-cards">
-        <app-park-card
-          *ngFor="let park of featuredParks"
-          [park]="park"
-          [currentLang]="currentLang">
-        </app-park-card>
-      </div>
-    </app-page-state>
   </section>
 
-  <section class="content-section">
-    <div class="page-header">
+  <section class="public-panel content-section">
+    <div class="public-section-header">
       <div>
-        <h2 class="section-title">{{ 'home.search.resultsTitle' | translate }}</h2>
-        <p class="page-subtitle">
-          {{ 'home.search.resultsSubtitle' | translate }}
-        </p>
+        <span class="public-kicker">
+          <i class="pi pi-star"></i>
+          {{ 'home.search.resultsTitle' | translate }}
+        </span>
+        <h2 class="public-section-header__title">{{ 'home.search.resultsTitle' | translate }}</h2>
+        <p class="public-section-header__subtitle">{{ 'home.search.resultsSubtitle' | translate }}</p>
       </div>
     </div>
 
@@ -129,11 +160,41 @@
     </ng-container>
 
     <ng-template #searchHint>
-      <div class="app-empty-state">
+      <div class="public-empty-state home-hint-state">
         <i class="pi pi-search"></i>
         <h3>{{ 'home.search.hintTitle' | translate }}</h3>
         <p>{{ 'home.search.hintMessage' | translate }}</p>
       </div>
     </ng-template>
+  </section>
+
+  <section class="public-panel content-section">
+    <div class="public-section-header">
+      <div>
+        <span class="public-kicker">
+          <i class="pi pi-star"></i>
+          {{ 'home.featured.title' | translate }}
+        </span>
+        <h2 class="public-section-header__title">{{ 'home.featured.title' | translate }}</h2>
+        <p class="public-section-header__subtitle">{{ 'home.featured.subtitle' | translate }}</p>
+      </div>
+    </div>
+
+    <app-page-state
+      [state]="featuredState"
+      loadingTitleKey="home.featured.loadingTitle"
+      loadingMessageKey="home.featured.loadingMessage"
+      errorTitleKey="home.featured.errorTitle"
+      errorMessageKey="home.featured.errorMessage"
+      emptyTitleKey="home.featured.emptyTitle"
+      emptyMessageKey="home.featured.emptyMessage">
+      <div class="app-grid-cards">
+        <app-park-card
+          *ngFor="let park of featuredParks"
+          [park]="park"
+          [currentLang]="currentLang">
+        </app-park-card>
+      </div>
+    </app-page-state>
   </section>
 </section>

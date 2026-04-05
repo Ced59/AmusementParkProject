@@ -6,92 +6,67 @@
   errorMessageKey="parkItems.list.errorMessage"
   emptyTitleKey="parkItems.list.emptyTitle"
   emptyMessageKey="parkItems.list.emptyMessage">
-  <section class="park-items-page page-shell" *ngIf="park && explorer">
-    <div class="page-header">
-      <div>
-        <span class="app-chip">
+  <section class="park-items-page public-page page-shell" *ngIf="park && explorer">
+    <section class="public-hero public-hero--split park-items-hero">
+      <div class="public-hero__content">
+        <span class="public-kicker">
           <i class="pi pi-sitemap"></i>
           {{ 'parkVisitor.summary.badge' | translate }}
         </span>
-        <h1 class="page-title">{{ park.name }}</h1>
-        <p class="page-subtitle">{{ 'parkItems.list.subtitle' | translate }}</p>
-      </div>
 
-      <div class="header-actions">
-        <button
-          pButton
-          type="button"
-          icon="pi pi-arrow-left"
-          class="p-button-outlined"
-          [label]="'actions.backToPark' | translate"
-          (click)="goBack()"></button>
-      </div>
-    </div>
-
-    <section class="page-section summary-strip">
-      <article class="summary-card summary-card--accent">
-        <span class="summary-card__label">{{ 'parkVisitor.summary.totalItems' | translate }}</span>
-        <strong class="summary-card__count">{{ explorer.overview.totalItems }}</strong>
-      </article>
-
-      <article class="summary-card" *ngIf="selectedZoneId">
-        <span class="summary-card__label">{{ 'parkItems.filters.zone' | translate }}</span>
-        <strong class="summary-card__count summary-card__count--sm">
-          <ng-container *ngIf="selectedZoneId === '__unassigned__'; else activeZoneText">
-            {{ 'parkVisitor.summary.unassignedItems' | translate }}
-          </ng-container>
-          <ng-template #activeZoneText>{{ activeZoneLabel }}</ng-template>
-        </strong>
-      </article>
-
-      <article class="summary-card" *ngIf="filteredItems.length !== explorer.overview.totalItems">
-        <span class="summary-card__label">{{ 'parkItems.list.filteredResults' | translate }}</span>
-        <strong class="summary-card__count">{{ filteredItems.length }}</strong>
-      </article>
-    </section>
-
-    <section class="page-section zones-section" *ngIf="hasZones">
-      <div class="section-heading">
         <div>
-          <h2>{{ 'parkItems.filters.zone' | translate }}</h2>
-          <p class="app-muted">{{ 'parkExplorer.subtitle' | translate }}</p>
+          <h1 class="page-title park-items-hero__title">{{ park.name }}</h1>
+          <p class="public-lead park-items-hero__lead">{{ 'parkItems.list.subtitle' | translate }}</p>
         </div>
 
-        <button
-          pButton
-          type="button"
-          class="p-button-text"
-          icon="pi pi-compass"
-          [label]="'parkVisitor.summary.viewAllItems' | translate"
-          (click)="clearFilters()"></button>
+        <div class="public-stat-grid park-items-hero__stats">
+          <article class="public-stat-card public-stat-card--accent">
+            <span class="public-stat-card__label">{{ 'parkVisitor.summary.totalItems' | translate }}</span>
+            <strong class="public-stat-card__value">{{ explorer.overview.totalItems }}</strong>
+            <span class="public-stat-card__hint">{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+          </article>
+
+          <article class="public-stat-card" *ngIf="filteredItems.length !== explorer.overview.totalItems">
+            <span class="public-stat-card__label">{{ 'parkItems.list.filteredResults' | translate }}</span>
+            <strong class="public-stat-card__value">{{ filteredItems.length }}</strong>
+            <span class="public-stat-card__hint">{{ 'parkItems.filters.clear' | translate }}</span>
+          </article>
+
+          <article class="public-stat-card" *ngIf="hasZones">
+            <span class="public-stat-card__label">{{ 'parkItems.filters.zone' | translate }}</span>
+            <strong class="public-stat-card__value">{{ bucketCards.length }}</strong>
+            <span class="public-stat-card__hint">{{ activeZoneLabel ? activeZoneLabel : ('parkItems.filters.allZones' | translate) }}</span>
+          </article>
+        </div>
+
+        <div class="public-cta-row">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-arrow-left"
+            class="p-button-outlined"
+            [label]="'parkItems.actions.backToPark' | translate"
+            (click)="goBack()"></button>
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-filter-slash"
+            class="p-button-outlined"
+            [label]="'parkItems.filters.clear' | translate"
+            (click)="clearFilters()"></button>
+        </div>
       </div>
 
-      <div class="zone-grid">
-        <article
-          class="zone-card"
-          *ngFor="let bucket of bucketCards"
-          [class.zone-card--active]="isZoneSelected(bucket)">
-          <div class="zone-card__header">
-            <div>
-              <h3>
-                <ng-container *ngIf="bucket.isVirtual && bucket.name === 'unassigned'; else bucketName">
-                  {{ 'parkVisitor.summary.unassignedItems' | translate }}
-                </ng-container>
-                <ng-template #bucketName>{{ getParkZoneDisplayName(bucket) }}</ng-template>
-              </h3>
-              <p>{{ 'parkExplorer.totalItems' | translate:{ count: bucket.totalItems } }}</p>
-            </div>
-
-            <button
-              pButton
-              type="button"
-              icon="pi pi-arrow-right"
-              [label]="'parkItems.filters.zone' | translate"
-              (click)="selectZone(bucket)"></button>
-          </div>
-
-          <div class="zone-card__meta" *ngIf="getZoneCardTypeHighlights(bucket).length > 0">
-            <span class="zone-chip" *ngFor="let typeCount of getZoneCardTypeHighlights(bucket)">
+      <div class="public-hero__media park-items-hero__media">
+        <article class="public-feature-card" *ngIf="topTypeHighlights.length > 0">
+          <span class="public-feature-card__eyebrow">
+            <i class="pi pi-star"></i>
+            {{ 'parkItems.filters.type' | translate }}
+          </span>
+          <h2 class="public-feature-card__title">{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
+          <div class="public-pill-list park-items-hero__pill-list">
+            <span class="public-pill public-pill--soft" *ngFor="let typeCount of topTypeHighlights">
               {{ getTypeKey(typeCount.key) | translate }} · {{ typeCount.count }}
             </span>
           </div>
@@ -99,56 +74,94 @@
       </div>
     </section>
 
-    <section class="page-section filters-card" id="park-items-results">
-      <div class="section-heading section-heading--compact">
+    <section class="public-panel park-items-zones" *ngIf="hasZones">
+      <div class="public-section-header park-items-zones__header">
         <div>
-          <h2>{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
-          <p class="app-muted">
+          <span class="public-kicker">
+            <i class="pi pi-map"></i>
+            {{ 'parkItems.filters.zone' | translate }}
+          </span>
+          <h2 class="public-section-header__title">{{ 'parkItems.filters.zone' | translate }}</h2>
+          <p class="public-section-header__subtitle">{{ 'parkExplorer.subtitle' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="zone-grid">
+        <article
+          class="public-zone-card zone-card"
+          *ngFor="let bucket of bucketCards"
+          [class.zone-card--active]="isZoneSelected(bucket)">
+          <div class="zone-card__header">
+            <div>
+              <h3>{{ getParkZoneDisplayName(bucket) }}</h3>
+              <p>{{ 'parkExplorer.totalItems' | translate:{ count: bucket.totalItems } }}</p>
+            </div>
+
+            <button
+              pButton
+              type="button"
+              icon="pi pi-arrow-right"
+              class="p-button-outlined p-button-sm"
+              [label]="'parkItems.filters.zone' | translate"
+              (click)="selectZone(bucket)"></button>
+          </div>
+
+          <div class="zone-card__meta" *ngIf="getZoneCardTypeHighlights(bucket).length > 0">
+            <span class="public-pill public-pill--soft" *ngFor="let typeCount of getZoneCardTypeHighlights(bucket)">
+              {{ getTypeKey(typeCount.key) | translate }} · {{ typeCount.count }}
+            </span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="public-filter-panel park-items-filters" id="park-items-results">
+      <div class="public-section-header park-items-filters__header">
+        <div>
+          <span class="public-kicker">
+            <i class="pi pi-sliders-h"></i>
+            {{ 'parkVisitor.summary.viewAllItems' | translate }}
+          </span>
+          <h2 class="public-section-header__title">{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
+          <p class="public-section-header__subtitle">
             {{ 'parkItems.list.resultsCount' | translate:{ start: rangeStart, end: rangeEnd, total: totalResults } }}
           </p>
         </div>
-
-        <button
-          pButton
-          type="button"
-          class="p-button-text"
-          icon="pi pi-filter-slash"
-          [label]="'parkItems.filters.clear' | translate"
-          (click)="clearFilters()"></button>
       </div>
 
-      <div class="filters-grid">
-        <div class="field">
-          <label>{{ 'parkItems.filters.search' | translate }}</label>
+      <div class="public-filter-grid">
+        <div class="public-field park-items-filters__search-field">
+          <label class="public-field__label">{{ 'parkItems.filters.search' | translate }}</label>
           <input
             pInputText
             type="text"
+            class="public-input"
             [(ngModel)]="searchTerm"
             [placeholder]="'parkItems.filters.searchPlaceholder' | translate"
             (ngModelChange)="onFiltersChanged()" />
         </div>
 
-        <div class="field">
-          <label>{{ 'parkItems.filters.category' | translate }}</label>
-          <select class="filter-select" [(ngModel)]="selectedCategory" (ngModelChange)="onFiltersChanged()">
+        <div class="public-field">
+          <label class="public-field__label">{{ 'parkItems.filters.category' | translate }}</label>
+          <select class="public-select" [(ngModel)]="selectedCategory" (ngModelChange)="onFiltersChanged()">
             <option *ngFor="let option of categoryOptions" [ngValue]="option.value">
               {{ option.labelKey ? (option.labelKey | translate) : option.label }}
             </option>
           </select>
         </div>
 
-        <div class="field">
-          <label>{{ 'parkItems.filters.type' | translate }}</label>
-          <select class="filter-select" [(ngModel)]="selectedType" (ngModelChange)="onFiltersChanged()">
+        <div class="public-field">
+          <label class="public-field__label">{{ 'parkItems.filters.type' | translate }}</label>
+          <select class="public-select" [(ngModel)]="selectedType" (ngModelChange)="onFiltersChanged()">
             <option *ngFor="let option of typeOptions" [ngValue]="option.value">
               {{ option.labelKey ? (option.labelKey | translate) : option.label }}
             </option>
           </select>
         </div>
 
-        <div class="field">
-          <label>{{ 'parkItems.filters.zone' | translate }}</label>
-          <select class="filter-select" [(ngModel)]="selectedZoneId" (ngModelChange)="onFiltersChanged()">
+        <div class="public-field" *ngIf="hasZones">
+          <label class="public-field__label">{{ 'parkItems.filters.zone' | translate }}</label>
+          <select class="public-select" [(ngModel)]="selectedZoneId" (ngModelChange)="onFiltersChanged()">
             <option *ngFor="let option of zoneOptions" [ngValue]="option.value">
               {{ option.labelKey ? (option.labelKey | translate) : option.label }}
             </option>
@@ -169,7 +182,7 @@
     </div>
 
     <ng-template #emptyFilteredState>
-      <div class="app-empty-state compact-empty-state">
+      <div class="public-empty-state compact-empty-state">
         <i class="pi pi-inbox"></i>
         <h3>{{ 'parkItems.list.emptyFilteredTitle' | translate }}</h3>
         <p>{{ 'parkItems.list.emptyFilteredMessage' | translate }}</p>

@@ -1,82 +1,55 @@
 .home-page {
-  display: grid;
-  gap: 1.5rem;
+  align-content: start;
 }
 
-.hero {
-  border-radius: var(--app-radius-xl);
-  padding: 2rem;
-  background:
-    linear-gradient(135deg, var(--app-primary-soft), transparent 60%),
-    var(--app-surface);
-  border: 1px solid var(--app-border);
-  box-shadow: var(--app-shadow-1);
+.home-hero {
+  min-height: 100%;
 }
 
-.hero-copy {
-  max-width: 760px;
+.home-hero__title {
+  margin-bottom: 0.75rem;
 }
 
-.hero-title {
-  margin: 1rem 0 0.75rem;
-  font-size: clamp(2rem, 4vw, 3.6rem);
+.home-hero__lead {
+  max-width: 60ch;
 }
 
-.hero-subtitle {
-  font-size: 1.02rem;
-  max-width: 64ch;
+.home-feature-card {
+  min-height: 10.5rem;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
+.home-feature-card--accent {
+  background: linear-gradient(160deg, color-mix(in srgb, var(--app-accent-cyan) 16%, var(--app-surface)), color-mix(in srgb, var(--app-primary) 14%, var(--app-surface-2)));
 }
 
-.search-panel,
+.home-search-panel__header {
+  margin-bottom: 1rem;
+}
+
+.home-search-grid__field--search {
+  grid-column: 1 / -1;
+}
+
 .content-section {
-  border-radius: var(--app-radius-xl);
-  padding: 1.25rem;
-  background: var(--app-surface);
-  border: 1px solid var(--app-border);
-  box-shadow: var(--app-shadow-1);
+  padding: 1rem;
 }
 
-.search-grid {
-  display: grid;
-  grid-template-columns: 1.7fr 1fr;
-  gap: 1rem;
-}
-
-.search-field {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.field-label {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--app-text-muted);
-}
-
-.section-title {
-  margin: 0;
-  font-size: 1.5rem;
+.home-hint-state {
+  padding: 2rem 1.25rem;
 }
 
 .pagination-wrap {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
-@media (max-width: 767px) {
-  .hero,
-  .search-panel,
+@media (min-width: 768px) {
   .content-section {
-    padding: 1rem;
+    padding: 1.25rem;
   }
+}
 
-  .search-grid {
-    grid-template-columns: 1fr;
+@media (min-width: 1100px) {
+  .home-search-grid__field--search {
+    grid-column: auto;
   }
 }

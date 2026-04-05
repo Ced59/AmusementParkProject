@@ -1,44 +1,45 @@
 .parks-page {
-  display: grid;
-  gap: 1.5rem;
+  align-content: start;
 }
 
-.parks-hero,
-.parks-toolbar {
-  border-radius: var(--app-radius-xl);
-  border: 1px solid var(--app-border);
-  background: var(--app-surface);
-  box-shadow: var(--app-shadow-1);
+.parks-feature-card {
+  min-height: 100%;
 }
 
-.parks-hero {
-  padding: 1.5rem;
-  background:
-    linear-gradient(135deg, var(--app-primary-soft), transparent 55%),
-    var(--app-surface);
-}
-
-.parks-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+.parks-toolbar__grid {
   align-items: end;
-  justify-content: space-between;
-  padding: 1rem 1.25rem;
 }
 
 .parks-toolbar__search {
-  flex: 1 1 420px;
-  display: grid;
-  gap: 0.5rem;
+  grid-column: 1 / -1;
 }
 
-.parks-toolbar__label {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--app-text-muted);
+.parks-toolbar__actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: end;
+}
+
+.parks-results {
+  padding: 1rem;
 }
 
 .pagination-wrap {
   margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .parks-results {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .parks-toolbar__search {
+    grid-column: auto;
+  }
+
+  .parks-toolbar__actions {
+    justify-content: flex-end;
+  }
 }

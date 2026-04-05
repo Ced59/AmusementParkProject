@@ -1,12 +1,12 @@
 <section class="park-content-summary" *ngIf="park && explorer && itemsLink">
-  <div class="section-heading">
+  <div class="public-section-header park-content-summary__header">
     <div>
-      <span class="app-chip">
+      <span class="public-kicker">
         <i class="pi pi-sitemap"></i>
         {{ 'parkVisitor.summary.badge' | translate }}
       </span>
-      <h2>{{ 'parkVisitor.summary.title' | translate }}</h2>
-      <p>{{ 'parkVisitor.summary.subtitle' | translate }}</p>
+      <h2 class="public-section-header__title">{{ 'parkVisitor.summary.title' | translate }}</h2>
+      <p class="public-section-header__subtitle">{{ 'parkVisitor.summary.subtitle' | translate }}</p>
     </div>
 
     <a

@@ -128,13 +128,7 @@ export class ParkItemsPageComponent implements OnInit, OnDestroy {
       return [];
     }
 
-    const buckets: ParkExplorerBucket[] = [...this.explorer.zones];
-
-    if (this.explorer.unassigned && this.explorer.unassigned.totalItems > 0) {
-      buckets.push(this.explorer.unassigned);
-    }
-
-    return buckets;
+    return [...this.explorer.zones].filter((bucket: ParkExplorerBucket) => bucket.totalItems > 0);
   }
 
   get hasZones(): boolean {
@@ -144,10 +138,6 @@ export class ParkItemsPageComponent implements OnInit, OnDestroy {
   get activeZoneLabel(): string | null {
     if (!this.selectedZoneId) {
       return null;
-    }
-
-    if (this.selectedZoneId === '__unassigned__') {
-      return 'parkVisitor.summary.unassignedItems';
     }
 
     return this.zonesById[this.selectedZoneId] ?? null;
@@ -183,12 +173,17 @@ export class ParkItemsPageComponent implements OnInit, OnDestroy {
       .map(([value, label]: [string, string]) => ({ value, label }))
       .sort((left: SelectOption, right: SelectOption) => (left.label ?? '').localeCompare(right.label ?? ''));
 
-    const hasUnassigned: boolean = this.allItems.some((item: ParkItem) => !item.zoneId);
-    if (hasUnassigned) {
-      values.push({ labelKey: 'parkVisitor.summary.unassignedItems', value: '__unassigned__' });
+    return base.concat(values);
+  }
+
+  get topTypeHighlights(): Array<{ key: string; count: number }> {
+    if (!this.explorer) {
+      return [];
     }
 
-    return base.concat(values);
+    return [...this.explorer.overview.countsByType]
+      .sort((left, right) => right.count - left.count)
+      .slice(0, 4);
   }
 
   get totalResults(): number {
@@ -216,20 +211,8 @@ export class ParkItemsPageComponent implements OnInit, OnDestroy {
   }
 
   getParkZoneDisplayName(bucket: ParkExplorerBucket): string {
-    if (bucket.isVirtual && bucket.name === 'unassigned') {
-      return 'parkVisitor.summary.unassignedItems';
-    }
-
     const localizedName: string | undefined = resolveLocalizedValue(bucket.names, this.currentLang);
     return localizedName ?? bucket.name;
-  }
-
-  getZoneCardButtonLabel(bucket: ParkExplorerBucket): string {
-    if (bucket.totalItems <= 1) {
-      return 'parkItems.actions.viewDetails';
-    }
-
-    return 'parkItems.filters.zone';
   }
 
   getZoneCardTypeHighlights(bucket: ParkExplorerBucket): Array<{ key: string; count: number }> {
@@ -237,7 +220,6 @@ export class ParkItemsPageComponent implements OnInit, OnDestroy {
       .sort((left, right) => right.count - left.count)
       .slice(0, 3);
   }
-
 
   getTypeKey(type: string): string {
     return `parkExplorer.types.${this.toCamelCase(type)}`;
@@ -261,20 +243,11 @@ export class ParkItemsPageComponent implements OnInit, OnDestroy {
   }
 
   isZoneSelected(bucket: ParkExplorerBucket): boolean {
-    const bucketZoneId: string | null = bucket.isVirtual
-      ? bucket.name === 'unassigned' ? '__unassigned__' : null
-      : bucket.id ?? null;
-
-    return this.selectedZoneId === bucketZoneId;
+    return this.selectedZoneId === (bucket.id ?? null);
   }
 
   selectZone(bucket: ParkExplorerBucket): void {
-    if (bucket.isVirtual) {
-      this.selectedZoneId = bucket.name === 'unassigned' ? '__unassigned__' : null;
-    } else {
-      this.selectedZoneId = bucket.id ?? null;
-    }
-
+    this.selectedZoneId = bucket.id ?? null;
     this.currentPage = 1;
     this.updateQueryParams();
   }
@@ -349,6 +322,11 @@ export class ParkItemsPageComponent implements OnInit, OnDestroy {
           this.manufacturersById = manufacturersById;
           this.zonesById = zonesById;
           this.pageState = ViewState.Ready;
+
+          if (this.selectedZoneId && !this.zonesById[this.selectedZoneId]) {
+            this.selectedZoneId = null;
+          }
+
           this.applyFilters();
         });
       },
@@ -379,11 +357,7 @@ export class ParkItemsPageComponent implements OnInit, OnDestroy {
         return false;
       }
 
-      if (this.selectedZoneId === '__unassigned__' && item.zoneId) {
-        return false;
-      }
-
-      if (this.selectedZoneId && this.selectedZoneId !== '__unassigned__' && item.zoneId !== this.selectedZoneId) {
+      if (this.selectedZoneId && item.zoneId !== this.selectedZoneId) {
         return false;
       }
 

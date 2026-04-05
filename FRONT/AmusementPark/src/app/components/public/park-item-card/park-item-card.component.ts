@@ -56,6 +56,21 @@ export class ParkItemCardComponent {
     return getParkItemTypeTranslationKey(this.item?.type);
   }
 
+  get typeIconClass(): string {
+    switch (this.item?.type) {
+      case 'RollerCoaster':
+        return 'pi pi-bolt';
+      case 'WaterRide':
+        return 'pi pi-compass';
+      case 'FlatRide':
+        return 'pi pi-sync';
+      case 'DarkRide':
+        return 'pi pi-moon';
+      default:
+        return 'pi pi-star';
+    }
+  }
+
   get highlightValues(): string[] {
     if (!this.item) {
       return [];

@@ -4,50 +4,84 @@
   loadingMessageKey="parkItems.detail.loadingMessage"
   errorTitleKey="parkItems.detail.errorTitle"
   errorMessageKey="parkItems.detail.errorMessage">
-  <section class="park-item-detail" *ngIf="item as currentItem">
-    <div class="page-header">
-      <div>
-        <div class="detail-chips">
-          <span class="app-chip">{{ categoryLabelKey | translate }}</span>
-          <span class="app-chip app-chip--soft">{{ typeLabelKey | translate }}</span>
-          <span class="app-chip app-chip--soft" *ngIf="zoneName">{{ zoneName }}</span>
+  <section class="park-item-detail public-page" *ngIf="item as currentItem">
+    <section class="public-hero public-hero--split park-item-detail__hero">
+      <div class="public-hero__content">
+        <div class="public-pill-list detail-chips">
+          <span class="public-pill">{{ categoryLabelKey | translate }}</span>
+          <span class="public-pill public-pill--soft">{{ typeLabelKey | translate }}</span>
+          <span class="public-pill public-pill--soft" *ngIf="zoneName">{{ zoneName }}</span>
         </div>
 
-        <h1 class="page-title">{{ currentItem.name }}</h1>
-        <p class="page-subtitle">
-          <a *ngIf="parkLink && park?.name" [routerLink]="parkLink">{{ park?.name }}</a>
-        </p>
+        <div>
+          <h1 class="page-title">{{ currentItem.name }}</h1>
+          <p class="public-lead park-item-detail__lead">
+            <a *ngIf="parkLink && park?.name" class="public-inline-link" [routerLink]="parkLink">{{ park?.name }}</a>
+          </p>
+        </div>
+
+        <div class="public-pill-list">
+          <span class="public-pill public-pill--soft" *ngIf="manufacturerName">{{ manufacturerName }}</span>
+          <span class="public-pill public-pill--soft" *ngIf="currentItem.attractionDetails?.model">{{ currentItem.attractionDetails?.model }}</span>
+          <span class="public-pill public-pill--cyan" *ngIf="currentItem.attractionDetails?.status">{{ currentItem.attractionDetails?.status }}</span>
+        </div>
+
+        <div class="public-cta-row detail-actions">
+          <button
+            pButton
+            type="button"
+            class="p-button-outlined"
+            icon="pi pi-arrow-left"
+            [label]="'parkItems.actions.backToItems' | translate"
+            (click)="goBackToItems()"></button>
+
+          <a
+            *ngIf="parkLink"
+            pButton
+            class="p-button-outlined"
+            [routerLink]="parkLink"
+            icon="pi pi-map"
+            [label]="'parkItems.actions.backToPark' | translate"></a>
+        </div>
       </div>
 
-      <div class="detail-actions">
-        <button
-          pButton
-          type="button"
-          class="p-button-outlined"
-          icon="pi pi-arrow-left"
-          [label]="'parkItems.actions.backToItems' | translate"
-          (click)="goBackToItems()"></button>
-
-        <a
-          *ngIf="parkLink"
-          pButton
-          [routerLink]="parkLink"
-          icon="pi pi-map"
-          [label]="'parkItems.actions.backToPark' | translate"></a>
+      <div class="public-hero__media">
+        <div class="public-stat-grid" *ngIf="spotlightRows.length > 0">
+          <article class="public-stat-card" *ngFor="let row of spotlightRows">
+            <span class="public-stat-card__label">{{ row.labelKey | translate }}</span>
+            <strong class="public-stat-card__value park-item-detail__stat-value">{{ row.value }}</strong>
+          </article>
+        </div>
       </div>
-    </div>
+    </section>
 
     <div class="detail-layout">
       <div class="detail-main">
         <section class="detail-panel" *ngIf="description">
-          <h2>{{ 'parkItems.detail.descriptionTitle' | translate }}</h2>
+          <div class="public-section-header">
+            <div>
+              <span class="public-kicker">
+                <i class="pi pi-align-left"></i>
+                {{ 'parkItems.detail.descriptionTitle' | translate }}
+              </span>
+              <h2 class="public-section-header__title">{{ 'parkItems.detail.descriptionTitle' | translate }}</h2>
+            </div>
+          </div>
           <p>{{ description }}</p>
         </section>
 
-        <section class="detail-panel" *ngIf="specRows.length > 0">
-          <h2>{{ 'parkItems.detail.specificationsTitle' | translate }}</h2>
+        <section class="detail-panel" *ngIf="secondaryRows.length > 0">
+          <div class="public-section-header">
+            <div>
+              <span class="public-kicker">
+                <i class="pi pi-sliders-h"></i>
+                {{ 'parkItems.detail.specificationsTitle' | translate }}
+              </span>
+              <h2 class="public-section-header__title">{{ 'parkItems.detail.specificationsTitle' | translate }}</h2>
+            </div>
+          </div>
           <div class="spec-grid">
-            <div class="spec-row" *ngFor="let row of specRows">
+            <div class="spec-row" *ngFor="let row of secondaryRows">
               <span>{{ row.labelKey | translate }}</span>
               <strong>{{ row.value }}</strong>
             </div>
@@ -55,8 +89,16 @@
         </section>
 
         <section class="detail-panel" *ngIf="currentItem.attractionDetails?.sourceUrl">
-          <h2>{{ 'parkItems.detail.sourceTitle' | translate }}</h2>
-          <a [href]="currentItem.attractionDetails?.sourceUrl" target="_blank" rel="noreferrer noopener">
+          <div class="public-section-header">
+            <div>
+              <span class="public-kicker">
+                <i class="pi pi-link"></i>
+                {{ 'parkItems.detail.sourceTitle' | translate }}
+              </span>
+              <h2 class="public-section-header__title">{{ 'parkItems.detail.sourceTitle' | translate }}</h2>
+            </div>
+          </div>
+          <a class="public-inline-link" [href]="currentItem.attractionDetails?.sourceUrl" target="_blank" rel="noreferrer noopener">
             {{ currentItem.attractionDetails?.sourceUrl }}
           </a>
         </section>
@@ -64,7 +106,16 @@
 
       <aside class="detail-sidebar">
         <section class="detail-panel">
-          <h2>{{ 'parkItems.detail.summaryTitle' | translate }}</h2>
+          <div class="public-section-header">
+            <div>
+              <span class="public-kicker">
+                <i class="pi pi-eye"></i>
+                {{ 'parkItems.detail.summaryTitle' | translate }}
+              </span>
+              <h2 class="public-section-header__title">{{ 'parkItems.detail.summaryTitle' | translate }}</h2>
+            </div>
+          </div>
+
           <div class="sidebar-row">
             <span>{{ 'parkItems.fields.category' | translate }}</span>
             <strong>{{ categoryLabelKey | translate }}</strong>

@@ -20,6 +20,11 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonDirective } from 'primeng/button';
 
+interface ParkItemDetailRow {
+  labelKey: string;
+  value: string;
+}
+
 @Component({
   selector: 'app-park-item-detail',
   templateUrl: './park-item-detail.component.html',
@@ -114,17 +119,13 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
     return ['/', this.currentLang, 'park', this.park.id, buildParkSlug(this.park.name), 'item', this.item.id, buildEntitySlug(this.item.name)];
   }
 
-  get hasAttractionDetails(): boolean {
-    return !!this.item?.attractionDetails;
-  }
-
-  get specRows(): Array<{ labelKey: string; value: string }> {
+  get specRows(): ParkItemDetailRow[] {
     if (!this.item?.attractionDetails) {
       return [];
     }
 
     const details = this.item.attractionDetails;
-    const rows: Array<{ labelKey: string; value: string }> = [];
+    const rows: ParkItemDetailRow[] = [];
 
     this.pushRow(rows, 'parkItems.fields.manufacturer', this.manufacturerName);
     this.pushRow(rows, 'parkItems.fields.model', details.model);
@@ -133,8 +134,8 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
     this.pushRow(rows, 'parkItems.fields.seatingType', details.seatingType);
     this.pushRow(rows, 'parkItems.fields.launchType', details.launchType);
     this.pushRow(rows, 'parkItems.fields.restraintType', details.restraintType);
-    this.pushRow(rows, 'parkItems.fields.openingDate', this.formatDate(details.openingDate));
-    this.pushRow(rows, 'parkItems.fields.closingDate', this.formatDate(details.closingDate));
+    this.pushRow(rows, 'parkItems.fields.openingDate', this.formatDate(details.openingDate ?? details.openingDateText));
+    this.pushRow(rows, 'parkItems.fields.closingDate', this.formatDate(details.closingDate ?? details.closingDateText));
     this.pushRow(rows, 'parkItems.fields.heightInMeters', this.formatNumberWithUnit(details.heightInMeters, 'm'));
     this.pushRow(rows, 'parkItems.fields.heightInFeet', this.formatNumberWithUnit(details.heightInFeet, 'ft'));
     this.pushRow(rows, 'parkItems.fields.lengthInMeters', this.formatNumberWithUnit(details.lengthInMeters, 'm'));
@@ -156,6 +157,22 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
     this.pushRow(rows, 'parkItems.fields.waterExposureLevel', details.waterExposureLevel ?? null);
 
     return rows;
+  }
+
+  get spotlightRows(): ParkItemDetailRow[] {
+    const priorityKeys: string[] = [
+      'parkItems.fields.status',
+      'parkItems.fields.heightInMeters',
+      'parkItems.fields.speedInKmH',
+      'parkItems.fields.inversionCount'
+    ];
+
+    return this.specRows.filter((row: ParkItemDetailRow) => priorityKeys.includes(row.labelKey)).slice(0, 4);
+  }
+
+  get secondaryRows(): ParkItemDetailRow[] {
+    const spotlightKeys: Set<string> = new Set(this.spotlightRows.map((row: ParkItemDetailRow) => row.labelKey));
+    return this.specRows.filter((row: ParkItemDetailRow) => !spotlightKeys.has(row.labelKey));
   }
 
   goBackToItems(): void {
@@ -243,11 +260,7 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  private pushRow(
-    rows: Array<{ labelKey: string; value: string }>,
-    labelKey: string,
-    value: string | null | undefined
-  ): void {
+  private pushRow(rows: ParkItemDetailRow[], labelKey: string, value: string | null | undefined): void {
     if (value == null || value.trim() === '') {
       return;
     }
@@ -260,7 +273,7 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
       return null;
     }
 
-    return value.slice(0, 10);
+    return value.length >= 10 ? value.slice(0, 10) : value;
   }
 
   private formatNumberWithUnit(value: number | null | undefined, unit: string): string | null {

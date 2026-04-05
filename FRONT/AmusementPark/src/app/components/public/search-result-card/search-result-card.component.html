@@ -1,6 +1,6 @@
 <article class="search-result-card" *ngIf="item as currentItem">
   <div class="search-result-card__header">
-    <span class="app-chip">
+    <span class="public-kicker">
       <i class="pi pi-search"></i>
       {{ categoryLabelKey | translate }}
     </span>
@@ -15,7 +15,7 @@
     <a
       pButton
       [routerLink]="parkLink"
-      class="p-button-rounded"
+      class="p-button-outlined"
       icon="pi pi-arrow-right"
       [label]="'home.search.openResult' | translate">
     </a>

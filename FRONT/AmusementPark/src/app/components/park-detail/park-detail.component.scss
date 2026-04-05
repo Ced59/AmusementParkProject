@@ -5,18 +5,27 @@
 }
 
 .park-detail {
-  display: grid;
-  gap: 1.5rem;
+  align-content: start;
 }
 
+.park-detail__summary-grid,
 .park-detail__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
-@media (max-width: 960px) {
+.park-detail__quick-actions {
+  min-height: 100%;
+}
+
+.park-detail__quick-title {
+  margin: 0.75rem 0 0.35rem;
+  font-size: 1.45rem;
+}
+
+@media (min-width: 960px) {
+  .park-detail__summary-grid,
   .park-detail__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

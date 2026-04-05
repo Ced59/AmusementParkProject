@@ -1,8 +1,12 @@
 <section class="park-location" *ngIf="park as currentPark">
-  <div class="park-section-header">
+  <div class="public-section-header park-section-header">
     <div>
-      <h2>{{ 'parks.detail.location.title' | translate }}</h2>
-      <p>{{ 'parks.detail.location.subtitle' | translate }}</p>
+      <span class="public-kicker">
+        <i class="pi pi-map"></i>
+        {{ 'parks.detail.location.title' | translate }}
+      </span>
+      <h2 class="public-section-header__title">{{ 'parks.detail.location.title' | translate }}</h2>
+      <p class="public-section-header__subtitle">{{ 'parks.detail.location.subtitle' | translate }}</p>
     </div>
   </div>
 

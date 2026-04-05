@@ -77,7 +77,7 @@ export class ParkContentSummaryComponent {
       {
         labelKey: 'parkExplorer.categories.restaurant',
         count: categoryCounts.get('Restaurant') ?? 0,
-        icon: 'pi pi-shop',
+        icon: 'pi pi-shopping-cart',
         queryParams: { category: 'Restaurant' }
       },
       {

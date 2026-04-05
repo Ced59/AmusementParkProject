@@ -1,19 +1,14 @@
 .park-item-detail {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 1.5rem;
 }
 
-.detail-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+.park-item-detail__lead {
+  margin-top: 0.5rem;
 }
 
-.app-chip--soft {
-  background: var(--app-surface-2);
-  color: var(--app-text);
+.detail-chips {
+  margin-bottom: 0.35rem;
 }
 
 .detail-actions {
@@ -24,42 +19,33 @@
 
 .detail-layout {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .detail-main,
 .detail-sidebar {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 1rem;
 }
 
 .detail-panel {
-  background: var(--app-surface);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-card-highlight) 75%, var(--app-surface)), var(--app-surface-2));
   border-radius: var(--app-radius-xl);
-  padding: 1.25rem;
+  padding: 1rem;
   border: 1px solid var(--app-border);
   box-shadow: var(--app-shadow-1);
 }
 
-.detail-panel h2 {
-  margin-top: 0;
-}
-
 .spec-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0.75rem;
 }
 
 .spec-row,
 .sidebar-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.7rem 0;
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.8rem 0;
   border-bottom: 1px solid var(--app-border);
 }
 
@@ -68,8 +54,37 @@
   border-bottom: none;
 }
 
-@media (max-width: 960px) {
+.spec-row span,
+.sidebar-row span {
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.park-item-detail__stat-value {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+@media (min-width: 768px) {
+  .detail-panel {
+    padding: 1.25rem;
+  }
+
+  .spec-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
   .detail-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1.8fr) minmax(280px, 0.95fr);
+    align-items: start;
+  }
+
+  .detail-sidebar {
+    position: sticky;
+    top: 1rem;
   }
 }

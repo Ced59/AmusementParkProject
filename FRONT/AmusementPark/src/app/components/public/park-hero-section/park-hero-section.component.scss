@@ -1,47 +1,66 @@
 .park-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.9fr);
-  gap: 1.5rem;
-  padding: 1.5rem;
+  gap: 1rem;
+  padding: 1rem;
   border-radius: var(--app-radius-xl);
   border: 1px solid var(--app-border);
-  background:
-    linear-gradient(135deg, var(--app-primary-soft), transparent 55%),
-    var(--app-surface);
+  background: var(--app-surface-hero);
   box-shadow: var(--app-shadow-1);
+  position: relative;
+  overflow: hidden;
+}
+
+.park-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top right, var(--app-surface-glow), transparent 38%),
+    linear-gradient(180deg, var(--app-card-noise), transparent 55%);
+}
+
+.park-hero__copy,
+.park-hero__visual {
+  position: relative;
+  z-index: 1;
 }
 
 .park-hero__copy {
   display: grid;
   gap: 1rem;
-  align-content: center;
 }
 
 .park-hero__title {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.3rem);
+  font-size: clamp(2rem, 5vw, 3.6rem);
 }
 
-.park-hero__subtitle,
-.park-hero__description {
-  margin: 0;
+.park-hero__subtitle {
+  margin: 0.75rem 0 0;
+  color: var(--app-text);
 }
 
-.park-hero__meta {
+.park-hero__meta-grid {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.75rem;
 }
 
 .park-hero__meta-item {
   display: grid;
   gap: 0.3rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--app-radius-lg);
+  border: 1px solid var(--app-border);
+  background: color-mix(in srgb, var(--app-card-highlight) 85%, var(--app-surface));
 }
 
 .park-hero__meta-item span {
   font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--app-text-muted);
+  font-weight: 700;
 }
 
 .park-hero__meta-item a {
@@ -51,29 +70,33 @@
 }
 
 .park-hero__visual {
-  min-height: 16rem;
   display: grid;
   place-items: center;
-  padding: 1.5rem;
-  border-radius: calc(var(--app-radius-xl) - 0.4rem);
-  border: 1px solid var(--app-border);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
 }
 
-/* Ciblage de l'<img> rendu à l'intérieur du composant app-image-display */
+.park-hero__visual-shell {
+  min-height: 14rem;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  border-radius: calc(var(--app-radius-xl) - 0.35rem);
+  border: 1px solid var(--app-border);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--app-card-highlight-strong) 52%, var(--app-surface)), color-mix(in srgb, var(--app-card-highlight) 82%, var(--app-surface-2)));
+}
+
 :host ::ng-deep .park-hero__visual img {
   width: min(100%, 320px);
-  max-height: 10rem;
+  max-height: 11rem;
   object-fit: contain;
 }
 
-.park-hero__visual--placeholder {
+.park-hero__visual--placeholder .park-hero__visual-shell {
   background:
-    radial-gradient(circle at top, var(--app-primary-soft), transparent 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    radial-gradient(circle at top, color-mix(in srgb, var(--app-primary) 24%, transparent), transparent 58%),
+    linear-gradient(160deg, color-mix(in srgb, var(--app-card-highlight) 88%, var(--app-surface)), var(--app-surface-2));
 }
 
-/* Ciblage du placeholder rendu à l'intérieur du composant app-image-display */
 :host ::ng-deep .park-hero__visual .image-display__placeholder {
   width: 5rem;
   height: 5rem;
@@ -89,8 +112,14 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (min-width: 960px) {
   .park-hero {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.95fr);
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .park-hero__meta-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

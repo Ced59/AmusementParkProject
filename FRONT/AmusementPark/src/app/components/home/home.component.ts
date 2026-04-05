@@ -109,6 +109,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.searchSubject.next(this.searchTerm);
   }
 
+
+  get searchResultsTotal(): number {
+    return this.pagination?.totalItems ?? this.results.length;
+  }
+
+  get searchResultsHintKey(): string {
+    return this.hasPerformedSearch ? 'home.search.resultsSubtitle' : 'home.search.hintMessage';
+  }
+
   onPageChange(event: { page?: number; rows?: number }): void {
     this.currentPage = (event.page ?? 0) + 1;
     this.pageSize = event.rows ?? this.pageSize;
