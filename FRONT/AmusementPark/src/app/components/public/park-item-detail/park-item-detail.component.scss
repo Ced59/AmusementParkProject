@@ -29,11 +29,16 @@
 }
 
 .detail-panel {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-card-highlight) 75%, var(--app-surface)), var(--app-surface-2));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
   border-radius: var(--app-radius-xl);
   padding: 1rem;
   border: 1px solid var(--app-border);
   box-shadow: var(--app-shadow-1);
+}
+
+.detail-panel p {
+  color: var(--app-text-muted);
+  line-height: 1.7;
 }
 
 .spec-grid {
@@ -45,7 +50,7 @@
 .sidebar-row {
   display: grid;
   gap: 0.35rem;
-  padding: 0.8rem 0;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--app-border);
 }
 
@@ -57,7 +62,7 @@
 .spec-row span,
 .sidebar-row span {
   color: var(--app-text-muted);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;

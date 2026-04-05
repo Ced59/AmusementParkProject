@@ -19,12 +19,12 @@
 
 .zone-card {
   padding: 1rem;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-card-highlight) 78%, var(--app-surface)), var(--app-surface-2));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
 }
 
 .zone-card--active {
-  border-color: color-mix(in srgb, var(--app-primary) 55%, white);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--app-primary) 30%, transparent), var(--app-shadow-1);
+  border-color: color-mix(in srgb, var(--app-primary) 40%, var(--app-border));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--app-primary) 14%, transparent), var(--app-shadow-1);
 }
 
 .zone-card__header {
@@ -34,10 +34,12 @@
 
 .zone-card__header h3 {
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .zone-card__header p {
   margin: 0.35rem 0 0;
+  color: var(--app-text-muted);
 }
 
 .zone-card__meta {

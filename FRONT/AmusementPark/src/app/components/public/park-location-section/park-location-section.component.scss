@@ -4,7 +4,7 @@
   padding: 1rem;
   border-radius: var(--app-radius-xl);
   border: 1px solid var(--app-border);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-card-highlight-strong) 68%, var(--app-surface)), var(--app-surface-2));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
   box-shadow: var(--app-shadow-1);
 }
 
@@ -19,7 +19,7 @@
   padding: 1rem;
   border-radius: var(--app-radius-lg);
   border: 1px solid var(--app-border);
-  background: color-mix(in srgb, var(--app-surface-2) 92%, transparent);
+  background: color-mix(in srgb, var(--app-surface-2) 94%, transparent);
 }
 
 .park-location__stat span {

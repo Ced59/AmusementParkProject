@@ -20,20 +20,10 @@
   box-shadow: var(--app-shadow-1);
 }
 
-.public-hero::before,
-.public-panel::before,
-.public-stat-card::before,
-.public-feature-card::before,
-.public-zone-card::before,
-.public-filter-panel::before,
-.public-shell-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at top right, var(--app-surface-glow), transparent 38%),
-    linear-gradient(180deg, var(--app-card-noise), transparent 58%);
+.public-hero,
+.public-panel,
+.public-filter-panel {
+  backdrop-filter: blur(16px);
 }
 
 .public-hero {
@@ -67,16 +57,18 @@
   min-height: 2rem;
   padding: 0.45rem 0.8rem;
   border-radius: var(--app-radius-pill);
-  background: color-mix(in srgb, var(--app-primary-soft) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--app-primary-soft) 82%, var(--app-border));
+  background: color-mix(in srgb, var(--app-primary-soft) 72%, transparent);
   color: var(--app-heading);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
 .public-lead {
   margin: 0;
-  font-size: 0.98rem;
+  font-size: 0.99rem;
+  line-height: 1.7;
   color: var(--app-text);
 }
 
@@ -97,39 +89,35 @@
 }
 
 .public-stat-card {
-  padding: 0.95rem 1rem;
-  background: linear-gradient(160deg, color-mix(in srgb, var(--app-card-highlight) 90%, var(--app-surface)), var(--app-surface-2));
+  padding: 1rem 1.05rem;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
 }
 
 .public-stat-card--accent {
-  background: linear-gradient(140deg, color-mix(in srgb, var(--app-primary) 18%, var(--app-surface)), color-mix(in srgb, var(--app-accent-cyan) 12%, var(--app-surface-2)));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--app-primary) 10%, var(--app-surface)), color-mix(in srgb, var(--app-accent-cyan) 8%, var(--app-surface-2)));
 }
 
 .public-stat-card__label {
-  position: relative;
-  z-index: 1;
   display: block;
   color: var(--app-text-muted);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .public-stat-card__value {
-  position: relative;
-  z-index: 1;
   display: block;
-  margin-top: 0.4rem;
+  margin-top: 0.45rem;
   color: var(--app-heading);
-  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-size: clamp(1.25rem, 4vw, 2rem);
   font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
 .public-stat-card__hint {
-  position: relative;
-  z-index: 1;
-  margin-top: 0.35rem;
+  display: block;
+  margin-top: 0.3rem;
   color: var(--app-text-muted);
   font-size: 0.88rem;
 }
@@ -143,7 +131,7 @@
 .public-feature-card,
 .public-shell-card {
   padding: 1rem;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-card-highlight) 75%, var(--app-surface)), var(--app-surface-2));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 88%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
 }
 
 .public-feature-card__eyebrow {
@@ -151,20 +139,22 @@
   align-items: center;
   gap: 0.45rem;
   color: var(--app-text-muted);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .public-feature-card__title {
-  margin: 0.75rem 0 0.35rem;
-  font-size: 1.05rem;
+  margin: 0.8rem 0 0.35rem;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
 }
 
 .public-feature-card__text {
   margin: 0;
   color: var(--app-text-muted);
+  line-height: 1.6;
 }
 
 .public-section-header {
@@ -175,16 +165,19 @@
 .public-section-header__title {
   margin: 0;
   font-size: clamp(1.2rem, 3vw, 1.8rem);
+  letter-spacing: -0.03em;
 }
 
 .public-section-header__subtitle {
   margin: 0.25rem 0 0;
   max-width: 68ch;
+  line-height: 1.65;
+  color: var(--app-text-muted);
 }
 
 .public-filter-panel {
   padding: 1rem;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-card-highlight) 70%, var(--app-surface)), var(--app-surface-2));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 86%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
 }
 
 .public-filter-grid {
@@ -198,9 +191,9 @@
 }
 
 .public-field__label {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: var(--app-text-muted);
   text-transform: uppercase;
 }
@@ -211,7 +204,7 @@
   min-height: 3rem;
   border-radius: var(--app-radius-lg);
   border: 1px solid var(--app-border);
-  background: color-mix(in srgb, var(--app-surface-2) 94%, transparent);
+  background: color-mix(in srgb, var(--app-surface-2) 96%, transparent);
   color: var(--app-text);
   padding: 0.8rem 0.95rem;
   transition: border-color var(--app-transition-fast), box-shadow var(--app-transition-fast), background-color var(--app-transition-fast);
@@ -220,7 +213,7 @@
 .public-input:focus,
 .public-select:focus {
   outline: none;
-  border-color: color-mix(in srgb, var(--app-primary) 55%, var(--app-border));
+  border-color: color-mix(in srgb, var(--app-primary) 40%, var(--app-border));
   box-shadow: 0 0 0 3px var(--app-focus-ring);
 }
 
@@ -244,26 +237,26 @@
   padding: 0.42rem 0.78rem;
   border-radius: var(--app-radius-pill);
   border: 1px solid color-mix(in srgb, var(--app-primary-soft) 70%, var(--app-border));
-  background: color-mix(in srgb, var(--app-primary-soft) 80%, transparent);
+  background: color-mix(in srgb, var(--app-primary-soft) 72%, transparent);
   color: var(--app-heading);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 700;
 }
 
 .public-pill--soft {
-  background: color-mix(in srgb, var(--app-surface-2) 90%, transparent);
+  background: color-mix(in srgb, var(--app-surface-2) 94%, transparent);
   border-color: var(--app-border);
   color: var(--app-text);
 }
 
 .public-pill--cyan {
-  background: color-mix(in srgb, var(--app-accent-cyan) 18%, transparent);
-  border-color: color-mix(in srgb, var(--app-accent-cyan) 32%, var(--app-border));
+  background: color-mix(in srgb, var(--app-accent-cyan) 14%, transparent);
+  border-color: color-mix(in srgb, var(--app-accent-cyan) 24%, var(--app-border));
 }
 
 .public-pill--gold {
-  background: color-mix(in srgb, var(--app-accent-gold) 18%, transparent);
-  border-color: color-mix(in srgb, var(--app-accent-gold) 32%, var(--app-border));
+  background: color-mix(in srgb, var(--app-accent-gold) 14%, transparent);
+  border-color: color-mix(in srgb, var(--app-accent-gold) 26%, var(--app-border));
 }
 
 .public-inline-link {
@@ -275,8 +268,8 @@
 .public-empty-state {
   border-radius: var(--app-radius-xl);
   border: 1px dashed var(--app-border-strong);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface-2) 95%, transparent), color-mix(in srgb, var(--app-card-highlight) 35%, transparent));
-  padding: 1.4rem;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 88%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
+  padding: 1.5rem;
   text-align: center;
 }
 
@@ -291,6 +284,7 @@
 
 .public-empty-state p {
   margin: 0;
+  color: var(--app-text-muted);
 }
 
 @media (min-width: 768px) {
@@ -299,12 +293,12 @@
   }
 
   .public-hero {
-    padding: 1.5rem;
+    padding: 1.4rem;
   }
 
   .public-hero--split {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.95fr);
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.95fr);
     gap: 1.25rem;
     align-items: stretch;
   }

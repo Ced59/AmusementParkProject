@@ -6,16 +6,13 @@
   padding: 1rem;
   border-radius: var(--app-radius-xl);
   border: 1px solid var(--app-border);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-card-highlight) 78%, var(--app-surface)), var(--app-surface-2));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
   box-shadow: var(--app-shadow-1);
-  transition:
-    transform var(--app-transition-base),
-    box-shadow var(--app-transition-base),
-    border-color var(--app-transition-base);
+  transition: transform var(--app-transition-base), box-shadow var(--app-transition-base), border-color var(--app-transition-base);
 }
 
 .park-item-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--app-shadow-2);
   border-color: var(--app-border-strong);
 }
@@ -26,7 +23,7 @@
   padding: 1rem;
   border-radius: calc(var(--app-radius-xl) - 0.35rem);
   border: 1px solid var(--app-border);
-  background: linear-gradient(160deg, color-mix(in srgb, var(--app-primary) 12%, var(--app-surface)), color-mix(in srgb, var(--app-card-highlight-strong) 70%, var(--app-surface-2)));
+  background: linear-gradient(160deg, color-mix(in srgb, var(--app-primary-soft) 58%, var(--app-surface)), color-mix(in srgb, var(--app-card-highlight-strong) 38%, var(--app-surface-2)));
 }
 
 .park-item-card__icon {
@@ -61,6 +58,7 @@
   margin: 0;
   font-size: 1.25rem;
   color: var(--app-heading);
+  letter-spacing: -0.02em;
 }
 
 .park-item-card__subtitle {
@@ -71,7 +69,7 @@
 .park-item-card__description {
   margin: 0;
   color: var(--app-text-muted);
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .park-item-card__highlights {
@@ -85,9 +83,9 @@
   align-items: center;
   padding: 0.45rem 0.75rem;
   border-radius: var(--app-radius-pill);
-  background: color-mix(in srgb, var(--app-primary-soft) 82%, transparent);
+  background: color-mix(in srgb, var(--app-primary-soft) 72%, transparent);
   color: var(--app-heading);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 700;
 }
 

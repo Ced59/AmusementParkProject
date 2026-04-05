@@ -1,6 +1,6 @@
 <nav class="sidenav" [ngClass]="{ 'collapsed': isCollapsed }">
   <div class="sidenav-header">
-    <div class="logo">
+    <div class="logo" [attr.title]="'sidebar.logo_text' | translate">
       <div class="logo-badge">
         <i class="pi pi-compass"></i>
       </div>
@@ -13,39 +13,51 @@
 
   <ul class="nav-list">
     <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <a [routerLink]="['/', currentLang, 'home']" class="nav-link" (click)="handleNavClick($event)">
+      <a [routerLink]="['/', currentLang, 'home']" class="nav-link" (click)="handleNavClick($event)"
+         [attr.title]="'sidebar.home' | translate"
+         [attr.data-tooltip]="'sidebar.home' | translate"
+         [attr.aria-label]="'sidebar.home' | translate">
         <i class="pi pi-home"></i>
         <span class="link-text">{{ 'sidebar.home' | translate }}</span>
       </a>
     </li>
 
     <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <a [routerLink]="['/', currentLang, 'parks']" class="nav-link" (click)="handleNavClick($event)">
+      <a [routerLink]="['/', currentLang, 'parks']" class="nav-link" (click)="handleNavClick($event)"
+         [attr.title]="'sidebar.parks' | translate"
+         [attr.data-tooltip]="'sidebar.parks' | translate"
+         [attr.aria-label]="'sidebar.parks' | translate">
         <i class="pi pi-map"></i>
         <span class="link-text">{{ 'sidebar.parks' | translate }}</span>
       </a>
     </li>
 
     <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <a [routerLink]="['/', currentLang, 'about']" class="nav-link" (click)="handleNavClick($event)">
+      <a [routerLink]="['/', currentLang, 'about']" class="nav-link" (click)="handleNavClick($event)"
+         [attr.title]="'sidebar.about' | translate"
+         [attr.data-tooltip]="'sidebar.about' | translate"
+         [attr.aria-label]="'sidebar.about' | translate">
         <i class="pi pi-info-circle"></i>
         <span class="link-text">{{ 'sidebar.about' | translate }}</span>
       </a>
     </li>
 
     <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <a [routerLink]="['/', currentLang, 'profile']" class="nav-link" (click)="handleNavClick($event)">
+      <a [routerLink]="['/', currentLang, 'profile']" class="nav-link" (click)="handleNavClick($event)"
+         [attr.title]="'sidebar.profile' | translate"
+         [attr.data-tooltip]="'sidebar.profile' | translate"
+         [attr.aria-label]="'sidebar.profile' | translate">
         <i class="pi pi-user"></i>
         <span class="link-text">{{ 'sidebar.profile' | translate }}</span>
       </a>
     </li>
 
     @if (isLoggedIn && isAdmin) {
-      <li
-        class="nav-item"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">
-        <a [routerLink]="['/', currentLang, 'admin']" class="nav-link" (click)="handleNavClick($event)">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="['/', currentLang, 'admin']" class="nav-link" (click)="handleNavClick($event)"
+           [attr.title]="'sidebar.admin' | translate"
+           [attr.data-tooltip]="'sidebar.admin' | translate"
+           [attr.aria-label]="'sidebar.admin' | translate">
           <i class="pi pi-shield"></i>
           <span class="link-text">{{ 'sidebar.admin' | translate }}</span>
         </a>

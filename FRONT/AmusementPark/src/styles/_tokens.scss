@@ -9,9 +9,9 @@
   --app-radius-xl: 2rem;
   --app-radius-pill: 999px;
 
-  --app-shadow-1: 0 8px 24px rgba(15, 23, 42, 0.08);
-  --app-shadow-2: 0 16px 40px rgba(15, 23, 42, 0.14);
-  --app-shadow-3: 0 24px 60px rgba(15, 23, 42, 0.18);
+  --app-shadow-1: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --app-shadow-2: 0 18px 48px rgba(15, 23, 42, 0.12);
+  --app-shadow-3: 0 28px 72px rgba(15, 23, 42, 0.16);
 
   --app-border-width: 1px;
 
@@ -29,10 +29,11 @@
   --app-transition-base: 220ms ease;
   --app-transition-slow: 320ms ease;
 
-  --app-content-max-width: 1320px;
+  --app-content-max-width: 1340px;
   --app-sidebar-width: 260px;
-  --app-sidebar-collapsed-width: 74px;
+  --app-sidebar-collapsed-width: 76px;
   --app-topbar-height: 84px;
+  --app-bottom-nav-height: 84px;
 }
 
 @font-face {

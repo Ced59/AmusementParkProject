@@ -7,7 +7,7 @@
 }
 
 .home-hero__title {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.8rem;
 }
 
 .home-hero__lead {
@@ -19,7 +19,7 @@
 }
 
 .home-feature-card--accent {
-  background: linear-gradient(160deg, color-mix(in srgb, var(--app-accent-cyan) 16%, var(--app-surface)), color-mix(in srgb, var(--app-primary) 14%, var(--app-surface-2)));
+  background: linear-gradient(160deg, color-mix(in srgb, var(--app-accent-cyan) 10%, var(--app-surface)), color-mix(in srgb, var(--app-primary) 8%, var(--app-surface-2)));
 }
 
 .home-search-panel__header {
