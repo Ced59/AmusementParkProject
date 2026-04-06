@@ -13,10 +13,6 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("architecture")]
 public sealed class ArchitectureController : ControllerBase
 {
-    /// <summary>
-    /// Retourne un état simple de la structure cible à quatre projets.
-    /// </summary>
-    /// <returns>État de la structure cible.</returns>
     [HttpGet("phase-1")]
     public IActionResult GetPhase1Status()
     {
@@ -38,10 +34,6 @@ public sealed class ArchitectureController : ControllerBase
         });
     }
 
-    /// <summary>
-    /// Retourne l'état de la phase 3 d'extraction du Core pur.
-    /// </summary>
-    /// <returns>État du domaine pur extrait.</returns>
     [HttpGet("phase-3")]
     public IActionResult GetPhase3Status()
     {
@@ -59,10 +51,6 @@ public sealed class ArchitectureController : ControllerBase
         });
     }
 
-    /// <summary>
-    /// Retourne l'état de la phase 4 de structuration de la couche Application.
-    /// </summary>
-    /// <returns>État des use cases et ports applicatifs créés.</returns>
     [HttpGet("phase-4")]
     public IActionResult GetPhase4Status()
     {
@@ -76,10 +64,6 @@ public sealed class ArchitectureController : ControllerBase
         });
     }
 
-    /// <summary>
-    /// Retourne l'état de la phase 5 de branchement Mongo dans Infrastructure.
-    /// </summary>
-    /// <returns>État des adapters Mongo créés.</returns>
     [HttpGet("phase-5")]
     public IActionResult GetPhase5Status()
     {
@@ -122,10 +106,6 @@ public sealed class ArchitectureController : ControllerBase
         });
     }
 
-    /// <summary>
-    /// Retourne l'état de la phase 6 avec les premières features câblées de bout en bout.
-    /// </summary>
-    /// <returns>État des features simples migrées.</returns>
     [HttpGet("phase-6")]
     public IActionResult GetPhase6Status()
     {
@@ -155,6 +135,46 @@ public sealed class ArchitectureController : ControllerBase
                 "GET /attraction-manufacturers/{id}",
                 "POST /attraction-manufacturers",
                 "PUT /attraction-manufacturers/{id}",
+            },
+        });
+    }
+
+    [HttpGet("phase-7")]
+    public IActionResult GetPhase7Status()
+    {
+        return Ok(new
+        {
+            phase = 7,
+            goal = "Migration Parks et ParkZones de bout en bout",
+            migratedFeatures = new[]
+            {
+                "Countries",
+                "ParkFounders",
+                "ParkOperators",
+                "AttractionManufacturers",
+                "Parks",
+                "ParkZones",
+            },
+            preservedRoutes = new[]
+            {
+                "POST /Parks",
+                "GET /Parks/{id}",
+                "GET /Parks?page=&size=&name=",
+                "GET /Parks/geo-search?latitude=&longitude=&radius=",
+                "PATCH /Parks/{id}/visibility",
+                "PUT /Parks/{id}",
+                "GET /park-zones/park/{parkId}",
+                "GET /park-zones/{id}",
+                "GET /park-zones/park/{parkId}/explorer",
+                "POST /park-zones",
+                "PUT /park-zones/{id}",
+                "DELETE /park-zones/{id}",
+            },
+            notes = new[]
+            {
+                "currentLogoImageId conservé dans le contrat Park",
+                "explorer ParkZones restitué au format legacy avec overview/zones/unassigned",
+                "projection search parks et parkItems rafraîchie lors des mutations de visibilité ou de contenu des parcs",
             },
         });
     }

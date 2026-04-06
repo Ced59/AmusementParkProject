@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkZones.Commands;
 using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkZones.Handlers;
 
@@ -18,15 +19,28 @@ public sealed class DeleteParkZoneCommandHandler : ICommandHandler<DeleteParkZon
     {
         if (string.IsNullOrWhiteSpace(command.ZoneId))
         {
-            return ApplicationResult.Failure(ApplicationErrors.Required(nameof(command.ZoneId)));
+            return ApplicationResult.Failure(ParkZoneApplicationErrors.ParkZoneNotExists());
         }
 
-        bool deleted = await this.parkZoneRepository.DeleteAsync(command.ZoneId, cancellationToken);
-        if (!deleted)
+        ParkZone? existing = await this.parkZoneRepository.GetByIdAsync(command.ZoneId.Trim(), cancellationToken);
+        if (existing is null)
         {
-            return ApplicationResult.Failure(ApplicationErrors.EntityNotFound("ParkZone", command.ZoneId));
+            return ApplicationResult.Failure(ParkZoneApplicationErrors.ParkZoneNotExists());
         }
 
-        return ApplicationResult.Success();
+        try
+        {
+            bool deleted = await this.parkZoneRepository.DeleteAsync(command.ZoneId.Trim(), cancellationToken);
+            if (!deleted)
+            {
+                return ApplicationResult.Failure(ParkZoneApplicationErrors.ErrorDeletingParkZone());
+            }
+
+            return ApplicationResult.Success();
+        }
+        catch
+        {
+            return ApplicationResult.Failure(ParkZoneApplicationErrors.ErrorDeletingParkZone());
+        }
     }
 }

@@ -22,13 +22,13 @@ public sealed class GetParkByIdQueryHandler : IQueryHandler<GetParkByIdQuery, Ap
     {
         if (string.IsNullOrWhiteSpace(query.ParkId))
         {
-            return ApplicationResult<Park>.Failure(ApplicationErrors.Required(nameof(query.ParkId)));
+            return ApplicationResult<Park>.Failure(ParkApplicationErrors.ParkNotExists());
         }
 
-        Park? park = await this.parkRepository.GetByIdAsync(query.ParkId, query.IncludeHidden, cancellationToken);
+        Park? park = await this.parkRepository.GetByIdAsync(query.ParkId.Trim(), query.IncludeHidden, cancellationToken);
         if (park is null)
         {
-            return ApplicationResult<Park>.Failure(ApplicationErrors.EntityNotFound("Park", query.ParkId));
+            return ApplicationResult<Park>.Failure(ParkApplicationErrors.ParkNotExists());
         }
 
         return ApplicationResult<Park>.Success(park);

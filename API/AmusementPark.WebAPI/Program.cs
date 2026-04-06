@@ -17,7 +17,9 @@ builder.Services.AddApplicationHandlers(static type =>
     return namespaceName.Contains(".Features.Countries.", StringComparison.Ordinal) ||
            namespaceName.Contains(".Features.ParkFounders.", StringComparison.Ordinal) ||
            namespaceName.Contains(".Features.ParkOperators.", StringComparison.Ordinal) ||
-           namespaceName.Contains(".Features.AttractionManufacturers.", StringComparison.Ordinal);
+           namespaceName.Contains(".Features.AttractionManufacturers.", StringComparison.Ordinal) ||
+           namespaceName.Contains(".Features.Parks.", StringComparison.Ordinal) ||
+           namespaceName.Contains(".Features.ParkZones.", StringComparison.Ordinal);
 });
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddControllers();
@@ -36,7 +38,7 @@ app.MapControllers();
 app.MapGet("/health", () => Results.Ok(new
 {
     status = "ok",
-    architecture = "clean-architecture-phase-6",
+    architecture = "clean-architecture-phase-7",
     application = AmusementPark.Application.ArchitecturePhase.Current,
     infrastructure = AmusementPark.Infrastructure.ArchitecturePhase.Current,
     project = "AmusementPark.WebAPI",
@@ -46,6 +48,8 @@ app.MapGet("/health", () => Results.Ok(new
         "ParkFounders",
         "ParkOperators",
         "AttractionManufacturers",
+        "Parks",
+        "ParkZones",
     },
 }));
 

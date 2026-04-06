@@ -19,13 +19,13 @@ public sealed class GetParkZoneByIdQueryHandler : IQueryHandler<GetParkZoneByIdQ
     {
         if (string.IsNullOrWhiteSpace(query.ZoneId))
         {
-            return ApplicationResult<ParkZone>.Failure(ApplicationErrors.Required(nameof(query.ZoneId)));
+            return ApplicationResult<ParkZone>.Failure(ParkZoneApplicationErrors.ParkZoneNotExists());
         }
 
-        ParkZone? zone = await this.parkZoneRepository.GetByIdAsync(query.ZoneId, cancellationToken);
+        ParkZone? zone = await this.parkZoneRepository.GetByIdAsync(query.ZoneId.Trim(), cancellationToken);
         if (zone is null)
         {
-            return ApplicationResult<ParkZone>.Failure(ApplicationErrors.EntityNotFound("ParkZone", query.ZoneId));
+            return ApplicationResult<ParkZone>.Failure(ParkZoneApplicationErrors.ParkZoneNotExists());
         }
 
         return ApplicationResult<ParkZone>.Success(zone);

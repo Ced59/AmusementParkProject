@@ -18,7 +18,24 @@ internal static class ApplicationResultHttpExtensions
             return controller.Ok(result.Value);
         }
 
-        ApplicationError error = result.Errors.First();
+        return controller.ToActionResult(result.Errors.First());
+    }
+
+    public static IActionResult ToActionResult(this ControllerBase controller, ApplicationResult result)
+    {
+        ArgumentNullException.ThrowIfNull(controller);
+        ArgumentNullException.ThrowIfNull(result);
+
+        if (result.IsSuccess)
+        {
+            return controller.Ok();
+        }
+
+        return controller.ToActionResult(result.Errors.First());
+    }
+
+    private static IActionResult ToActionResult(this ControllerBase controller, ApplicationError error)
+    {
         int statusCode = error.Type switch
         {
             ApplicationErrorType.Validation => StatusCodes.Status400BadRequest,

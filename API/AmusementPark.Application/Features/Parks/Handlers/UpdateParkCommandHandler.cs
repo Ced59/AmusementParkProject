@@ -1,7 +1,9 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Parks.Handlers;
@@ -12,17 +14,21 @@ namespace AmusementPark.Application.Features.Parks.Handlers;
 public sealed class UpdateParkCommandHandler : ICommandHandler<UpdateParkCommand, ApplicationResult<Park>>
 {
     private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
-    public UpdateParkCommandHandler(IParkRepository parkRepository)
+    public UpdateParkCommandHandler(IParkRepository parkRepository, IParkItemRepository parkItemRepository, ISearchProjectionWriter searchProjectionWriter)
     {
         this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     public async Task<ApplicationResult<Park>> HandleAsync(UpdateParkCommand command, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(command.ParkId))
         {
-            return ApplicationResult<Park>.Failure(ApplicationErrors.Required(nameof(command.ParkId)));
+            return ApplicationResult<Park>.Failure(ParkApplicationErrors.ParkNotExists());
         }
 
         if (command.Park is null)
@@ -30,12 +36,36 @@ public sealed class UpdateParkCommandHandler : ICommandHandler<UpdateParkCommand
             return ApplicationResult<Park>.Failure(ApplicationErrors.Required(nameof(command.Park)));
         }
 
-        Park? updated = await this.parkRepository.UpdateAsync(command.ParkId, command.Park, cancellationToken);
-        if (updated is null)
+        try
         {
-            return ApplicationResult<Park>.Failure(ApplicationErrors.EntityNotFound("Park", command.ParkId));
-        }
+            Park? existing = await this.parkRepository.GetByIdAsync(command.ParkId.Trim(), true, cancellationToken);
+            if (existing is null)
+            {
+                return ApplicationResult<Park>.Failure(ParkApplicationErrors.ParkNotExists());
+            }
 
-        return ApplicationResult<Park>.Success(updated);
+            command.Park.Id = existing.Id;
+            command.Park.CreatedAtUtc = existing.CreatedAtUtc;
+            command.Park.CurrentLogoImageId = existing.CurrentLogoImageId;
+
+            Park? updated = await this.parkRepository.UpdateAsync(command.ParkId.Trim(), command.Park, cancellationToken);
+            if (updated is null)
+            {
+                return ApplicationResult<Park>.Failure(ParkApplicationErrors.ParkNotExists());
+            }
+
+            await this.searchProjectionWriter.UpsertAsync("parks", updated.Id, cancellationToken);
+            IReadOnlyCollection<ParkItem> parkItems = await this.parkItemRepository.GetByParkIdAsync(updated.Id, true, cancellationToken);
+            foreach (ParkItem parkItem in parkItems)
+            {
+                await this.searchProjectionWriter.UpsertAsync("parkItems", parkItem.Id, cancellationToken);
+            }
+
+            return ApplicationResult<Park>.Success(updated);
+        }
+        catch
+        {
+            return ApplicationResult<Park>.Failure(ParkApplicationErrors.ErrorUpdatingPark());
+        }
     }
 }
