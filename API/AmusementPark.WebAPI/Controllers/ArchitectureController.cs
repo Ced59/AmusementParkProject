@@ -1,9 +1,10 @@
+using AmusementPark.Core.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmusementPark.WebAPI.Controllers;
 
 /// <summary>
-/// Contrôleur minimal de vérification du squelette phase 1.
+/// Contrôleur minimal de vérification des paliers d'architecture.
 /// </summary>
 [ApiController]
 [Route("architecture")]
@@ -23,14 +24,35 @@ public sealed class ArchitectureController : ControllerBase
                 "AmusementPark.Core",
                 "AmusementPark.Application",
                 "AmusementPark.Infrastructure",
-                "AmusementPark.WebAPI"
+                "AmusementPark.WebAPI",
             },
             dependencies = new[]
             {
                 "Application -> Core",
                 "Infrastructure -> Application + Core",
-                "WebAPI -> Application + Infrastructure"
-            }
+                "WebAPI -> Application + Infrastructure",
+            },
+        });
+    }
+
+    /// <summary>
+    /// Retourne l'état de la phase 3 d'extraction du Core pur.
+    /// </summary>
+    /// <returns>État du domaine pur extrait.</returns>
+    [HttpGet("phase-3")]
+    public IActionResult GetPhase3Status()
+    {
+        return Ok(new
+        {
+            phase = 3,
+            goal = "Core pur extrait",
+            constraints = new[]
+            {
+                "No Mongo in Core",
+                "No AspNetCore in Core",
+                "No MinIO/MailKit/ImageSharp in Core",
+            },
+            extractedTypes = DomainCatalog.ExtractedTypes,
         });
     }
 }

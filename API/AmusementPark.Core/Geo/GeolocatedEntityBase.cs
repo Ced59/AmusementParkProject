@@ -5,10 +5,10 @@ namespace AmusementPark.Core.Geo;
 /// <summary>
 /// Entité de domaine localisable géographiquement.
 /// </summary>
-public abstract class GeolocatedEntityBase : EntityBase
+public abstract class GeolocatedEntityBase : AuditableEntity
 {
     /// <summary>
-    /// Point géographique associé à l'entité.
+    /// Position géographique associée à l'entité.
     /// </summary>
     public GeoPoint? Position { get; private set; }
 
@@ -20,7 +20,17 @@ public abstract class GeolocatedEntityBase : EntityBase
     public void SetPosition(double latitude, double longitude)
     {
         Position = new GeoPoint(latitude, longitude);
-        UpdatedAtUtc = DateTime.UtcNow;
+        Touch();
+    }
+
+    /// <summary>
+    /// Définit la position de l'entité.
+    /// </summary>
+    /// <param name="position">Position à appliquer.</param>
+    public void SetPosition(GeoPoint? position)
+    {
+        Position = position;
+        Touch();
     }
 
     /// <summary>
@@ -29,6 +39,6 @@ public abstract class GeolocatedEntityBase : EntityBase
     public void ClearPosition()
     {
         Position = null;
-        UpdatedAtUtc = DateTime.UtcNow;
+        Touch();
     }
 }

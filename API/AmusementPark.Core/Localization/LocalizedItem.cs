@@ -4,7 +4,7 @@ namespace AmusementPark.Core.Localization;
 /// Représente une valeur localisée indépendante de la couche de persistance.
 /// </summary>
 /// <typeparam name="T">Type de valeur transportée.</typeparam>
-public sealed class LocalizedItem<T>
+public class LocalizedItem<T>
 {
     /// <summary>
     /// Code langue ISO porté par la valeur.

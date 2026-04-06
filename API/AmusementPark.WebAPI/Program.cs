@@ -21,8 +21,8 @@ app.MapControllers();
 app.MapGet("/health", () => Results.Ok(new
 {
     status = "ok",
-    architecture = "clean-architecture-phase-1",
-    project = "AmusementPark.WebAPI"
+    architecture = "clean-architecture-phase-3",
+    project = "AmusementPark.WebAPI",
 }));
 
 app.Run();
