@@ -1,3 +1,6 @@
+using System.Reflection;
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Validation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AmusementPark.Application.DependencyInjection;
@@ -15,6 +18,32 @@ public static class ApplicationServiceCollectionExtensions
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
+
+        services.AddSingleton<PagedQueryValidator>();
+        RegisterHandlers(services, typeof(ApplicationServiceCollectionExtensions).Assembly);
         return services;
+    }
+
+    private static void RegisterHandlers(IServiceCollection services, Assembly assembly)
+    {
+        IEnumerable<Type> implementationTypes = assembly
+            .GetTypes()
+            .Where(static type => type is { IsAbstract: false, IsInterface: false });
+
+        foreach (Type implementationType in implementationTypes)
+        {
+            IEnumerable<Type> serviceTypes = implementationType
+                .GetInterfaces()
+                .Where(static type => type.IsGenericType)
+                .Where(static type =>
+                    type.GetGenericTypeDefinition() == typeof(ICommandHandler<,>) ||
+                    type.GetGenericTypeDefinition() == typeof(IQueryHandler<,>) ||
+                    type.GetGenericTypeDefinition() == typeof(IApplicationValidator<>));
+
+            foreach (Type serviceType in serviceTypes)
+            {
+                services.AddScoped(serviceType, implementationType);
+            }
+        }
     }
 }

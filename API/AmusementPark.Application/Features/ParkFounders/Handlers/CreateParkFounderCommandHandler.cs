@@ -1,0 +1,35 @@
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.ParkFounders.Commands;
+using AmusementPark.Application.Features.ParkFounders.Ports;
+using AmusementPark.Core.Domain.Parks;
+
+namespace AmusementPark.Application.Features.ParkFounders.Handlers;
+
+/// <summary>
+/// Handler de création d'un park founder.
+/// </summary>
+public sealed class CreateParkFounderCommandHandler : ICommandHandler<CreateParkFounderCommand, ApplicationResult<ParkFounder>>
+{
+    private readonly IParkFounderRepository repository;
+
+    /// <summary>
+    /// Initialise une nouvelle instance de la classe <see cref="CreateParkFounderCommandHandler"/>.
+    /// </summary>
+    public CreateParkFounderCommandHandler(IParkFounderRepository repository)
+    {
+        this.repository = repository;
+    }
+
+    /// <inheritdoc />
+    public async Task<ApplicationResult<ParkFounder>> HandleAsync(CreateParkFounderCommand command, CancellationToken cancellationToken = default)
+    {
+        if (command.ParkFounder is null)
+        {
+            return ApplicationResult<ParkFounder>.Failure(ApplicationErrors.Required(nameof(command.ParkFounder)));
+        }
+
+        ParkFounder created = await this.repository.CreateAsync(command.ParkFounder, cancellationToken);
+        return ApplicationResult<ParkFounder>.Success(created);
+    }
+}

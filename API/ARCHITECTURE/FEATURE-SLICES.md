@@ -13,6 +13,10 @@ Chaque feature migrée doit suivre une structure homogène :
 
 ## Features cibles
 
+- `Countries`
+- `ParkFounders`
+- `ParkOperators`
+- `AttractionManufacturers`
 - `Users`
 - `Parks`
 - `ParkZones`
@@ -28,3 +32,4 @@ Chaque feature migrée doit suivre une structure homogène :
 - les modèles web restent dans `AmusementPark.WebAPI`
 - les modèles BSON restent dans `AmusementPark.Infrastructure`
 - les handlers applicatifs manipulent des résultats applicatifs, pas des `IActionResult`
+- les handlers simples peuvent être implémentés avant les adapters infrastructure, tant qu'ils ne dépendent que de ports applicatifs

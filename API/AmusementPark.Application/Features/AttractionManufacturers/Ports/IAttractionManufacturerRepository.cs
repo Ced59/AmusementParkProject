@@ -1,0 +1,29 @@
+using AmusementPark.Core.Domain.Parks;
+
+namespace AmusementPark.Application.Features.AttractionManufacturers.Ports;
+
+/// <summary>
+/// Port applicatif de persistance des attraction manufacturers.
+/// </summary>
+public interface IAttractionManufacturerRepository
+{
+    /// <summary>
+    /// Retourne tous les attraction manufacturers.
+    /// </summary>
+    Task<IReadOnlyCollection<AttractionManufacturer>> GetAllAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne un attraction manufacturer par identifiant.
+    /// </summary>
+    Task<AttractionManufacturer?> GetByIdAsync(string id, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Crée un attraction manufacturer.
+    /// </summary>
+    Task<AttractionManufacturer> CreateAsync(AttractionManufacturer entity, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Met à jour un attraction manufacturer existant.
+    /// </summary>
+    Task<AttractionManufacturer?> UpdateAsync(string id, AttractionManufacturer entity, CancellationToken cancellationToken);
+}

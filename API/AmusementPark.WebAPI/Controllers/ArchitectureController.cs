@@ -1,3 +1,5 @@
+using AmusementPark.Application;
+using AmusementPark.Application.Architecture;
 using AmusementPark.Core.Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -53,6 +55,23 @@ public sealed class ArchitectureController : ControllerBase
                 "No MinIO/MailKit/ImageSharp in Core",
             },
             extractedTypes = DomainCatalog.ExtractedTypes,
+        });
+    }
+
+    /// <summary>
+    /// Retourne l'état de la phase 4 de structuration de la couche Application.
+    /// </summary>
+    /// <returns>État des use cases et ports applicatifs créés.</returns>
+    [HttpGet("phase-4")]
+    public IActionResult GetPhase4Status()
+    {
+        return Ok(new
+        {
+            phase = 4,
+            label = ArchitecturePhase.Current,
+            rules = ArchitectureRules.All,
+            features = FeatureCatalog.All,
+            useCases = UseCaseCatalog.ByFeature,
         });
     }
 }

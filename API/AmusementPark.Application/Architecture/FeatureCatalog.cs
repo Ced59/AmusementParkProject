@@ -10,13 +10,17 @@ namespace AmusementPark.Application.Architecture
         /// </summary>
         public static IReadOnlyList<FeatureSlice> All { get; } = new List<FeatureSlice>
         {
-            new FeatureSlice("Users", 1, "Comptes, authentification, rôles, profil, email et avatar."),
-            new FeatureSlice("Parks", 2, "Parcs, visibilité, lecture et écriture des agrégats principaux."),
-            new FeatureSlice("ParkZones", 3, "Zones de parc et rattachements au parc."),
-            new FeatureSlice("ParkItems", 4, "Attractions et autres park items avec leurs détails métiers."),
-            new FeatureSlice("Images", 5, "Images, liens d'ownership, tags, compression, watermark et métadonnées."),
-            new FeatureSlice("Search", 6, "Projection technique pour la recherche et l'indexation."),
-            new FeatureSlice("CaptainCoaster", 7, "Import, comparaison, résolution de doublons et application des changements."),
+            new FeatureSlice("Countries", 1, "Référentiel pays utilisé par les cas d'usage publics et d'administration."),
+            new FeatureSlice("ParkFounders", 2, "Fondateurs de parc et référentiel d'administration."),
+            new FeatureSlice("ParkOperators", 3, "Exploitants de parc et référentiel d'administration."),
+            new FeatureSlice("AttractionManufacturers", 4, "Constructeurs d'attractions et référentiel d'administration."),
+            new FeatureSlice("Users", 5, "Comptes, authentification, rôles, profil, email et avatar."),
+            new FeatureSlice("Parks", 6, "Parcs, visibilité, lecture et écriture des agrégats principaux."),
+            new FeatureSlice("ParkZones", 7, "Zones de parc et rattachements au parc."),
+            new FeatureSlice("ParkItems", 8, "Attractions et autres park items avec leurs détails métiers."),
+            new FeatureSlice("Images", 9, "Images, liens d'ownership, tags, compression, watermark et métadonnées."),
+            new FeatureSlice("Search", 10, "Projection technique pour la recherche et l'indexation."),
+            new FeatureSlice("CaptainCoaster", 11, "Import, comparaison, résolution de doublons et application des changements."),
         };
     }
 }
