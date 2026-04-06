@@ -54,7 +54,7 @@ public sealed class CountryReadRepository : ICountryReadRepository
 /// <summary>
 /// Base factorisée des repositories Mongo CRUD simples.
 /// </summary>
-internal abstract class MongoCrudRepositoryBase<TDomain, TDocument>
+public abstract class MongoCrudRepositoryBase<TDomain, TDocument>
     where TDocument : AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common.MongoDocumentBase
 {
     private readonly IMongoCollection<TDocument> collection;
