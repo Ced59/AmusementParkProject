@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Common.Extensions;
+using Common.General.Localization;
 using Dtos.Images.Creating;
 using Entities.Model.Errors;
 using Entities.Model.Images;
@@ -85,8 +87,7 @@ namespace Services.Implementations.Images
                     request.FileStream.Position = 0;
                 }
 
-                (double? latitude, double? longitude) =
-                    await imageMetadataExtractorService.ExtractGeoCoordinatesAsync(request.FileStream);
+                ExtractedImageMetadata metadata = await imageMetadataExtractorService.ExtractMetadataAsync(request.FileStream);
 
                 if (request.FileStream.CanSeek)
                 {
@@ -101,10 +102,18 @@ namespace Services.Implementations.Images
                     Description = request.Description,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
-                    Latitude = latitude ?? 0,
-                    Longitude = longitude ?? 0,
                     OriginalFileName = string.IsNullOrWhiteSpace(request.OriginalFileName) ? null : request.OriginalFileName,
-                    ContentType = string.IsNullOrWhiteSpace(request.ContentType) ? null : request.ContentType
+                    ContentType = string.IsNullOrWhiteSpace(request.ContentType) ? null : request.ContentType,
+                    Width = metadata.Width,
+                    Height = metadata.Height,
+                    SizeInBytes = metadata.SizeInBytes,
+                    ExifMetadata = metadata.ExifMetadata,
+                    GeoLocation = metadata.Latitude.HasValue && metadata.Longitude.HasValue
+                        ? new ImageGeoLocation { Latitude = metadata.Latitude.Value, Longitude = metadata.Longitude.Value }
+                        : null,
+                    Captions = string.IsNullOrWhiteSpace(request.Description)
+                        ? new List<LocalizedItem<string>>()
+                        : new List<LocalizedItem<string>> { new() { LanguageCode = "fr", Value = request.Description } }
                 };
 
                 Stream processingStream = request.FileStream;
@@ -119,27 +128,6 @@ namespace Services.Implementations.Images
                     {
                         processingStream.Position = 0;
                     }
-
-#if DEBUG
-                    string debugDir = Path.Combine(Directory.GetCurrentDirectory(), "debug-images");
-                    Directory.CreateDirectory(debugDir);
-                    string debugPath = Path.Combine(debugDir, $"{imageId}_watermarked.jpg");
-
-                    await using (FileStream debugStream = File.Create(debugPath))
-                    {
-                        if (processingStream.CanSeek)
-                        {
-                            processingStream.Position = 0;
-                        }
-
-                        await processingStream.CopyToAsync(debugStream);
-
-                        if (processingStream.CanSeek)
-                        {
-                            processingStream.Position = 0;
-                        }
-                    }
-#endif
                 }
 
                 IEnumerable<string> savedFiles = await ProcessAndStoreAsync(processingStream, imageId, categorySlug);
@@ -152,12 +140,7 @@ namespace Services.Implementations.Images
                 Image? savedImage = await imagesQueryHandler.CreateImageAsync(imageEntity);
                 if (savedImage is null)
                 {
-                    logger.LogError(
-                        "Échec de la persistance Mongo pour l'image {ImageId} (category={Category}, path={Path})",
-                        imageEntity.Id,
-                        imageEntity.Category,
-                        imageEntity.Path);
-
+                    logger.LogError("Échec de la persistance Mongo pour l'image {ImageId} (category={Category}, path={Path})", imageEntity.Id, imageEntity.Category, imageEntity.Path);
                     return ErrorCodes.ImageServorInternalError;
                 }
 
@@ -166,8 +149,11 @@ namespace Services.Implementations.Images
                     Id = savedImage.Id,
                     SavedListFile = savedFiles,
                     Category = savedImage.Category.MapTo<ImageCategory, ImageCategoryDto>(),
-                    Latitude = savedImage.Latitude,
-                    Longitude = savedImage.Longitude
+                    Latitude = savedImage.GeoLocation?.Latitude,
+                    Longitude = savedImage.GeoLocation?.Longitude,
+                    Width = savedImage.Width,
+                    Height = savedImage.Height,
+                    SizeInBytes = savedImage.SizeInBytes
                 };
             }
             catch (Exception ex)
@@ -177,19 +163,14 @@ namespace Services.Implementations.Images
             }
         }
 
-        private async Task<IEnumerable<string>> ProcessAndStoreAsync(
-            Stream imageStream,
-            string baseName,
-            string category)
+        private async Task<IEnumerable<string>> ProcessAndStoreAsync(Stream imageStream, string baseName, string category)
         {
             if (imageStream.CanSeek)
             {
                 imageStream.Position = 0;
             }
 
-            Dictionary<string, byte[]> images =
-                await imageCompressorService.CompressAsync(imageStream, baseName);
-
+            Dictionary<string, byte[]> images = await imageCompressorService.CompressAsync(imageStream, baseName);
             return await imageStorageService.StoreAsync(images, category);
         }
     }

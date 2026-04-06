@@ -24,6 +24,8 @@ namespace WebAPI.Settings.MongoDB
             await EnsureCollectionExistsAsync(database, settings.UsersCollectionName);
             await EnsureCollectionExistsAsync(database, settings.ImagesCollectionName);
             await InitializeImagesIndexesAsync(database, settings.ImagesCollectionName);
+            await EnsureCollectionExistsAsync(database, settings.ImageTagsCollectionName);
+            await InitializeImageTagsIndexesAsync(database, settings.ImageTagsCollectionName);
 
             // 🔹 Countries
             await EnsureCollectionExistsAsync(database, settings.CountriesCollectionName);
@@ -322,6 +324,19 @@ namespace WebAPI.Settings.MongoDB
                 new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Ascending(item => item.ZoneId)),
                 new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Ascending("attractionDetails.manufacturerId")),
                 new CreateIndexModel<ParkItem>(Builders<ParkItem>.IndexKeys.Geo2DSphere(item => item.Location))
+            });
+        }
+
+        private static async Task InitializeImageTagsIndexesAsync(
+            IMongoDatabase database,
+            string collectionName)
+        {
+            IMongoCollection<Entities.Model.Images.ImageTag> tagsCollection = database.GetCollection<Entities.Model.Images.ImageTag>(collectionName);
+
+            await tagsCollection.Indexes.CreateManyAsync(new[]
+            {
+                new CreateIndexModel<Entities.Model.Images.ImageTag>(Builders<Entities.Model.Images.ImageTag>.IndexKeys.Ascending(x => x.Slug), new CreateIndexOptions { Unique = true }),
+                new CreateIndexModel<Entities.Model.Images.ImageTag>(Builders<Entities.Model.Images.ImageTag>.IndexKeys.Ascending(x => x.IsActive))
             });
         }
 

@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
             this.attractionManufacturersService = attractionManufacturersService;
         }
 
-        [HttpGet("list")]
+        [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
             OneOf<IEnumerable<AttractionManufacturerDto>, ErrorCodes.ErrorDetail> result = await attractionManufacturersService.GetAllAsync();

@@ -1,152 +1,46 @@
-<div class="admin-site-page">
-  <div class="messages" *ngIf="errorMessage() || successMessage()">
-    <p class="message message--error" *ngIf="errorMessage()">{{ errorMessage() }}</p>
-    <p class="message message--success" *ngIf="successMessage()">{{ successMessage() }}</p>
+<div class="admin-images-page">
+  <h2>Image library</h2>
+  @if (loading) {
+    <p>Loading...</p>
+  }
+  <div class="admin-images-layout">
+    <div class="images-list">
+      @for (image of images; track trackById($index, image)) {
+        <button type="button" class="image-list-item" (click)="selectImage(image)">
+          <img [src]="apiService.buildImageUrl(image.id)" [alt]="image.description || image.originalFileName || image.id">
+          <div>
+            <strong>{{ image.originalFileName || image.id }}</strong>
+            <div>{{ image.width }} × {{ image.height }}</div>
+            <div>{{ image.contentType }}</div>
+          </div>
+        </button>
+      }
+    </div>
+    <div class="image-editor">
+      @if (selectedImage) {
+        <h3>{{ selectedImage.originalFileName || selectedImage.id }}</h3>
+        <img class="selected-preview" [src]="apiService.buildImageUrl(selectedImage.id)" [alt]="selectedImage.description || selectedImage.id">
+        <label>Description</label>
+        <input [(ngModel)]="selectedImage.description">
+        <label>Published</label>
+        <input type="checkbox" [(ngModel)]="selectedImage.isPublished">
+        <label>Latitude</label>
+        <input type="number" [(ngModel)]="selectedImage.geoLocation.latitude">
+        <label>Longitude</label>
+        <input type="number" [(ngModel)]="selectedImage.geoLocation.longitude">
+        <h4>Tags</h4>
+        <div class="tags-grid">
+          @for (tag of tags; track trackById($index, tag)) {
+            <label><input type="checkbox" [checked]="selectedImage.tagIds?.includes(tag.id)" (change)="toggleTag(tag.id, $any($event.target).checked)"> {{ tag.slug }}</label>
+          }
+        </div>
+        <button type="button" (click)="saveImage()">Save image</button>
+      }
+      <div class="tag-create">
+        <h3>Create tag</h3>
+        <input [(ngModel)]="newTagSlug" placeholder="tag slug">
+        <button type="button" (click)="createTag()">Create tag</button>
+      </div>
+    </div>
   </div>
-
-  <p-tabs value="0">
-    <p-tablist>
-      <p-tab value="0">Captain Coaster</p-tab>
-      <p-tab value="1">Synchronisation</p-tab>
-      <p-tab value="2">Comparaison</p-tab>
-    </p-tablist>
-
-    <p-tabpanels>
-      <p-tabpanel value="0">
-        <p-card header="Configuration de la source Captain Coaster">
-          <form class="settings-form" [formGroup]="settingsForm">
-            <div class="field-row">
-              <label for="baseUrl">Base URL</label>
-              <input id="baseUrl" pInputText formControlName="baseUrl" />
-            </div>
-
-            <div class="field-row">
-              <label for="apiKey">Nouvelle clé API</label>
-              <input id="apiKey" pInputText formControlName="apiKey" type="password" />
-              <small>Clé actuelle : {{ settings()?.apiKeyMasked || 'non configurée' }}</small>
-            </div>
-
-            <div class="field-row field-row--inline">
-              <p-checkbox inputId="isEnabled" formControlName="isEnabled" [binary]="true"></p-checkbox>
-              <label for="isEnabled">Source activée</label>
-            </div>
-
-            <div class="field-row field-row--actions">
-              <button pButton type="button" label="Enregistrer" icon="pi pi-save" [disabled]="isBusy()" (click)="saveSettingsAsync()"></button>
-            </div>
-          </form>
-
-          <div class="summary-grid" *ngIf="settings() as currentSettings">
-            <div class="summary-card">
-              <span class="summary-label">Source</span>
-              <strong>{{ currentSettings.source }}</strong>
-            </div>
-            <div class="summary-card">
-              <span class="summary-label">Dernière synchro réussie</span>
-              <strong>{{ currentSettings.lastSuccessfulSyncUtc ? (currentSettings.lastSuccessfulSyncUtc | date:'short') : 'Jamais' }}</strong>
-            </div>
-          </div>
-        </p-card>
-      </p-tabpanel>
-
-      <p-tabpanel value="1">
-        <p-card header="Synchronisation manuelle">
-          <div class="sync-actions">
-            <button pButton type="button" label="Lancer la synchronisation" icon="pi pi-refresh" [disabled]="isBusy()" (click)="startSyncAsync()"></button>
-          </div>
-
-          <div *ngIf="latestSession() as session" class="sync-session">
-            <div class="session-topline">
-              <p-tag [value]="session.status"></p-tag>
-              <span>{{ session.currentStep }}</span>
-            </div>
-
-            <p-progressBar [value]="session.progressPercentage"></p-progressBar>
-            <p class="session-message">{{ session.message }}</p>
-
-            <div class="summary-grid">
-              <div class="summary-card">
-                <span class="summary-label">Parcs récupérés</span>
-                <strong>{{ session.parksFetched }}</strong>
-              </div>
-              <div class="summary-card">
-                <span class="summary-label">Coasters récupérés</span>
-                <strong>{{ session.coastersFetched }}</strong>
-              </div>
-              <div class="summary-card">
-                <span class="summary-label">Différences détectées</span>
-                <strong>{{ session.comparisonResults }}</strong>
-              </div>
-              <div class="summary-card">
-                <span class="summary-label">Changements appliqués</span>
-                <strong>{{ session.appliedChanges }}</strong>
-              </div>
-            </div>
-
-            <div class="logs-panel">
-              <h3>Journal</h3>
-              <div class="log-entry" *ngFor="let log of session.logs">
-                <span class="log-date">{{ log.occurredAtUtc | date:'shortTime' }}</span>
-                <strong>{{ log.level }}</strong>
-                <span>{{ log.message }}</span>
-              </div>
-            </div>
-          </div>
-        </p-card>
-      </p-tabpanel>
-
-      <p-tabpanel value="2">
-        <p-card header="Comparaison entre Amusement Park et Captain Coaster">
-          <div class="comparison-toolbar">
-            <div class="summary-grid summary-grid--compact">
-              <div class="summary-card">
-                <span class="summary-label">Éléments modifiés</span>
-                <strong>{{ updatedCount() }}</strong>
-              </div>
-              <div class="summary-card">
-                <span class="summary-label">Éléments manquants</span>
-                <strong>{{ missingCount() }}</strong>
-              </div>
-            </div>
-
-            <button pButton type="button" label="Appliquer la sélection" icon="pi pi-check" [disabled]="isBusy() || selectedComparisonIds().length === 0" (click)="applySelectionAsync()"></button>
-          </div>
-
-          <p-table [value]="comparisonResults()" responsiveLayout="scroll">
-            <ng-template pTemplate="header">
-              <tr>
-                <th></th>
-                <th>Type</th>
-                <th>Nom</th>
-                <th>Changement</th>
-                <th>Confiance</th>
-                <th>Détails</th>
-                <th>Appliqué</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-row>
-              <tr>
-                <td>
-                  <p-checkbox [binary]="true" [ngModel]="isSelected(row.id)" (ngModelChange)="toggleSelection(row.id, $event)"></p-checkbox>
-                </td>
-                <td>{{ row.entityType }}</td>
-                <td>{{ row.displayName }}</td>
-                <td><p-tag [value]="row.changeType"></p-tag></td>
-                <td>{{ row.matchConfidence }}</td>
-                <td>
-                  <div class="change-list">
-                    <div class="change-list__item" *ngFor="let change of row.changes">
-                      <strong>{{ change.field }}</strong>
-                      <span>{{ change.localValue || '∅' }} → {{ change.externalValue || '∅' }}</span>
-                    </div>
-                  </div>
-                </td>
-                <td>{{ row.isApplied ? 'Oui' : 'Non' }}</td>
-              </tr>
-            </ng-template>
-          </p-table>
-        </p-card>
-      </p-tabpanel>
-    </p-tabpanels>
-  </p-tabs>
 </div>

@@ -103,6 +103,7 @@ namespace WebAPI
             builder.Services.AddScoped<IParkItemsQueryHandler, ParkItemsMongoQueryHandler>();
             builder.Services.AddScoped<ISearchQueryHandler, SearchMongoQueryHandler>();
             builder.Services.AddScoped<IImagesQueryHandler, ImagesMongoQueryHandler>();
+            builder.Services.AddScoped<IImageTagsQueryHandler, ImageTagsMongoQueryHandler>();
             builder.Services.AddScoped<ICountriesQueryHandler, CountriesMongoQueryHandler>();
 
             InjectImagesServices(builder);

@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
             this.parkFoundersService = parkFoundersService;
         }
 
-        [HttpGet("list")]
+        [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
             OneOf<IEnumerable<ParkFounderDto>, ErrorCodes.ErrorDetail> result = await parkFoundersService.GetAllAsync();

@@ -53,14 +53,14 @@ namespace WebAPI.Controllers
         return ApiResponseHandler.HandleResponse(user);
     }
 
-        [HttpGet]
-        public async Task<IActionResult> GetUserByIdAsync([FromQuery] UserGetByIdDto userById)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserByIdAsync([FromRoute] string id)
     {
-        OneOf<UserGettedDto, ErrorDetail> user = await usersService.GetUserByIdAsync(userById.Id);
+        OneOf<UserGettedDto, ErrorDetail> user = await usersService.GetUserByIdAsync(id);
         return ApiResponseHandler.HandleResponse(user);
     }
 
-        [HttpGet("list")]
+        [HttpGet]
         public async Task<IActionResult> ListUsersAsync(
             [FromQuery] [Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")]
             int page = 1,
@@ -73,7 +73,7 @@ namespace WebAPI.Controllers
 
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "USER")]
+        [Authorize(Roles = "USER,MODERATOR,ADMIN")]
         [RequireActivatedUnblockedUser]
         public async Task<IActionResult> UpdateUserAsync(string id, [FromBody] UserUpdateDto userUpdate)
     {
@@ -91,7 +91,7 @@ namespace WebAPI.Controllers
 
 
         [HttpPost("change-password")]
-        [Authorize(Roles = "USER")]
+        [Authorize(Roles = "USER,MODERATOR,ADMIN")]
         [RequireActivatedUnblockedUser]
         public async Task<IActionResult> ChangePasswordAsync(string idUser, [FromBody] ChangePasswordDto changePasswordDto)
     {

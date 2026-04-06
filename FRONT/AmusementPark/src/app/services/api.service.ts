@@ -31,6 +31,9 @@ import { ImageCategory } from '../models/images/image-category';
 import { ImageDto } from '../models/images/image-dto';
 import { ImageOwnerType } from '../models/images/image-owner-type';
 import { LinkImageToOwner } from '../models/images/link-image-to-owner';
+import { ImageTagDto } from '../models/images/image-tag-dto';
+import { LocalizedItemDto } from '../models/shared/localized-item-dto';
+import { ImageGeoLocation } from '../models/images/image-geo-location';
 import { AuthMessageResponse } from '../models/auth/auth-message-response';
 
 @Injectable({
@@ -86,7 +89,7 @@ export class ApiService {
   }
 
   getUsers(page: number = 1, size: number = 10): Observable<UsersApiResponse> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getUsers}?page=${page}&size=${size}`;
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getUsers(page, size)}`;
     return this.http.get<UsersApiResponse>(url);
   }
 
@@ -396,6 +399,39 @@ export class ApiService {
 
     const normalizedPath: string = imagePathOrUrl.replace(/^\/+/, '');
     return `${environment.apiBaseUrl}${normalizedPath}`;
+  }
+
+  getAdminImages(): Observable<ImageDto[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getAdminImages}`;
+    return this.http.get<ImageDto[]>(url);
+  }
+
+  updateAdminImage(id: string, request: {
+    description?: string;
+    geoLocation?: ImageGeoLocation | null;
+    altTexts: LocalizedItemDto<string>[];
+    captions: LocalizedItemDto<string>[];
+    credits: LocalizedItemDto<string>[];
+    tagIds: string[];
+    isPublished: boolean;
+  }): Observable<ImageDto> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateAdminImage(id)}`;
+    return this.http.put<ImageDto>(url, request);
+  }
+
+  getAdminImageTags(): Observable<ImageTagDto[]> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getAdminImageTags}`;
+    return this.http.get<ImageTagDto[]>(url);
+  }
+
+  createAdminImageTag(request: { slug: string; labels: LocalizedItemDto<string>[]; descriptions: LocalizedItemDto<string>[]; }): Observable<ImageTagDto> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.createAdminImageTag}`;
+    return this.http.post<ImageTagDto>(url, request);
+  }
+
+  updateAdminImageTag(id: string, request: { slug: string; labels: LocalizedItemDto<string>[]; descriptions: LocalizedItemDto<string>[]; isActive: boolean; }): Observable<ImageTagDto> {
+    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.updateAdminImageTag(id)}`;
+    return this.http.put<ImageTagDto>(url, request);
   }
 
 }

@@ -45,8 +45,8 @@ namespace WebAPI.Controllers
             return ApiResponseHandler.HandleResponse(parkCreated);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetParkById([FromQuery] string id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetParkById([FromRoute] string id)
         {
             ParkGetByIdDto dtoId = new() { Id = id };
             OneOf<ParkGettedDto, ErrorCodes.ErrorDetail> park = await parksService.GetParkByIdAsync(dtoId)!;
@@ -54,26 +54,13 @@ namespace WebAPI.Controllers
             return ApiResponseHandler.HandleResponse(park);
         }
 
-        [HttpGet("list")]
-        public async Task<IActionResult> GetListPaginatedParksAsync(
+        [HttpGet]
+        public async Task<IActionResult> GetParksAsync(
             [FromQuery][Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")]
             int page = 1,
             [FromQuery][Range(1, 100, ErrorMessage = "Size must be between 1 and 100")]
-            int size = 10)
-        {
-            bool includeNonVisible = UserCanSeeNonVisible();
-
-            (IEnumerable<ParkDto> parks, PaginationDto pagination) =
-                await parksService.GetListParkPaginatedAsync(page, size, includeNonVisible)!;
-
-            return ApiResponseHandler.HandleResponse(parks, pagination);
-        }
-
-        [HttpGet("search")]
-        public async Task<IActionResult> SearchParksByNameAsync(
-            [FromQuery][Required] string name,
-            [FromQuery][Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")] int page = 1,
-            [FromQuery][Range(1, 100, ErrorMessage = "Size must be between 1 and 100")] int size = 10)
+            int size = 10,
+            [FromQuery] string? name = null)
         {
             bool includeNonVisible = UserCanSeeNonVisible();
 

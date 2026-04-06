@@ -7,15 +7,15 @@ export const API_ENDPOINTS = {
   resetPassword: 'users/reset-password',
   externalLogin: (provider: string) => `auth/external/${provider}`,
 
-  getUsers: 'users/list',
-  getUserById: (id: string) => `users?Id=${id}`,
+  getUsers: (page: number, size: number) => `users?page=${page}&size=${size}`,
+  getUserById: (id: string) => `users/${id}`,
   putUserById: (id: string | null) => `users/${id}`,
 
-  getParksPaginated: (page: number, size: number) => `parks/list?page=${page}&size=${size}`,
-  getParkById: (id: string) => `parks?id=${id}`,
+  getParksPaginated: (page: number, size: number) => `parks?page=${page}&size=${size}`,
+  getParkById: (id: string) => `parks/${id}`,
 
   searchParks: (name: string, page: number, size: number) =>
-    `parks/search?name=${encodeURIComponent(name)}&page=${page}&size=${size}`,
+    `parks?page=${page}&size=${size}&name=${encodeURIComponent(name)}`,
 
   getParksByLocation: (latitude: number, longitude: number, radius: number) =>
     `parks/geo-search?latitude=${latitude}&longitude=${longitude}&radius=${radius}`,
@@ -25,13 +25,13 @@ export const API_ENDPOINTS = {
   createPark: 'parks',
   updatePark: (id: string) => `parks/${id}`,
 
-  getParkFounders: 'park-founders/list',
+  getParkFounders: 'park-founders',
   getParkFounderById: (id: string) => `park-founders/${id}`,
   createParkFounder: 'park-founders',
   updateParkFounder: (id: string) => `park-founders/${id}`,
 
-  getParkOperators: 'park-operators/list',
-  getAttractionManufacturers: 'attraction-manufacturers/list',
+  getParkOperators: 'park-operators',
+  getAttractionManufacturers: 'attraction-manufacturers',
 
   getParkZonesByParkId: (parkId: string) => `park-zones/park/${parkId}`,
   getParkZoneById: (id: string) => `park-zones/${id}`,
@@ -44,7 +44,7 @@ export const API_ENDPOINTS = {
   getParkItemsPaginated: (page: number, size: number, parkId?: string | null, search?: string | null) => {
     const parkIdQuery: string = parkId ? `&parkId=${encodeURIComponent(parkId)}` : '';
     const searchQuery: string = search ? `&search=${encodeURIComponent(search)}` : '';
-    return `park-items/list?page=${page}&size=${size}${parkIdQuery}${searchQuery}`;
+    return `park-items?page=${page}&size=${size}${parkIdQuery}${searchQuery}`;
   },
   getParkItemById: (id: string) => `park-items/${id}`,
   createParkItem: 'park-items',
@@ -74,4 +74,10 @@ export const API_ENDPOINTS = {
     `images/${ownerType}/${ownerId}/${category}/current`,
   setCurrentImage: (imageId: string) => `images/${imageId}/current`,
   deleteImage: (imageId: string) => `images/${imageId}`,
+  getAdminImages: 'images',
+  getAdminImageById: (id: string) => `images/${id}/metadata`,
+  updateAdminImage: (id: string) => `images/${id}/metadata`,
+  getAdminImageTags: 'images/tags',
+  createAdminImageTag: 'images/tags',
+  updateAdminImageTag: (id: string) => `images/tags/${id}`
 };

@@ -15,6 +15,7 @@
         string ParkItemsCollectionName { get; }
         string SearchItemCollectionName { get; }
         string ImagesCollectionName { get; }
+        string ImageTagsCollectionName { get; }
         string CountriesCollectionName { get; }
         string CaptainCoasterSettingsCollectionName { get; }
         string CaptainCoasterParksCollectionName { get; }

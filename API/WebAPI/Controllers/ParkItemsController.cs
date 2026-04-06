@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
             return ApiResponseHandler.HandleResponse(result);
         }
 
-        [HttpGet("list")]
+        [HttpGet]
         public async Task<IActionResult> GetPaginatedAsync(
             [FromQuery][Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")] int page = 1,
             [FromQuery][Range(1, 100, ErrorMessage = "Size must be between 1 and 100")] int size = 20,

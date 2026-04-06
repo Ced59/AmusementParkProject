@@ -308,7 +308,23 @@ namespace Services.Implementations.Images
                 Path = image.Path,
                 Description = image.Description,
                 IsCurrent = image.IsCurrent,
-                CreatedAt = image.CreatedAt
+                IsPublished = image.IsPublished,
+                Width = image.Width,
+                Height = image.Height,
+                SizeInBytes = image.SizeInBytes,
+                OriginalFileName = image.OriginalFileName,
+                ContentType = image.ContentType,
+                GeoLocation = image.GeoLocation == null ? null : new Dtos.Images.ImageGeoLocationDto
+                {
+                    Latitude = image.GeoLocation.Latitude,
+                    Longitude = image.GeoLocation.Longitude
+                },
+                AltTexts = image.AltTexts.Select(x => new Dtos.Shared.LocalizedItemDto<string> { LanguageCode = x.LanguageCode, Value = x.Value }).ToList(),
+                Captions = image.Captions.Select(x => new Dtos.Shared.LocalizedItemDto<string> { LanguageCode = x.LanguageCode, Value = x.Value }).ToList(),
+                Credits = image.Credits.Select(x => new Dtos.Shared.LocalizedItemDto<string> { LanguageCode = x.LanguageCode, Value = x.Value }).ToList(),
+                TagIds = image.TagIds.ToList(),
+                CreatedAt = image.CreatedAt,
+                UpdatedAt = image.UpdatedAt
             };
         }
 
