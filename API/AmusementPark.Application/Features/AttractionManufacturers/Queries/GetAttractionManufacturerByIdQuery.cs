@@ -1,6 +1,6 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
-using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Application.Features.AttractionManufacturers.Results;
 
 namespace AmusementPark.Application.Features.AttractionManufacturers.Queries;
 
@@ -8,4 +8,4 @@ namespace AmusementPark.Application.Features.AttractionManufacturers.Queries;
 /// Récupère un attraction manufacturer par identifiant.
 /// </summary>
 /// <param name="Id">Identifiant métier.</param>
-public sealed record GetAttractionManufacturerByIdQuery(string Id) : IQuery<ApplicationResult<AttractionManufacturer>>;
+public sealed record GetAttractionManufacturerByIdQuery(string Id) : IQuery<ApplicationResult<AttractionManufacturerResult>>;

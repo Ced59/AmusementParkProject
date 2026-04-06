@@ -9,7 +9,9 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Application.Ports;
 using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -56,6 +58,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
         services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();
+        services.AddScoped<ISearchProjectionWriter, MongoSearchProjectionWriter>();
 
         return services;
     }

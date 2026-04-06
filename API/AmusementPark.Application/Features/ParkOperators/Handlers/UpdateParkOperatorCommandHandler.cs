@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkOperators.Commands;
 using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkOperators.Handlers;
@@ -12,13 +13,15 @@ namespace AmusementPark.Application.Features.ParkOperators.Handlers;
 public sealed class UpdateParkOperatorCommandHandler : ICommandHandler<UpdateParkOperatorCommand, ApplicationResult<ParkOperator>>
 {
     private readonly IParkOperatorRepository repository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
     /// <summary>
     /// Initialise une nouvelle instance de la classe <see cref="UpdateParkOperatorCommandHandler"/>.
     /// </summary>
-    public UpdateParkOperatorCommandHandler(IParkOperatorRepository repository)
+    public UpdateParkOperatorCommandHandler(IParkOperatorRepository repository, ISearchProjectionWriter searchProjectionWriter)
     {
         this.repository = repository;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     /// <inheritdoc />
@@ -26,7 +29,7 @@ public sealed class UpdateParkOperatorCommandHandler : ICommandHandler<UpdatePar
     {
         if (string.IsNullOrWhiteSpace(command.Id))
         {
-            return ApplicationResult<ParkOperator>.Failure(ApplicationErrors.Required(nameof(command.Id)));
+            return ApplicationResult<ParkOperator>.Failure(ApplicationError.NotFound("park-operator.not-found", "Park operator not exists"));
         }
 
         if (command.ParkOperator is null)
@@ -34,12 +37,20 @@ public sealed class UpdateParkOperatorCommandHandler : ICommandHandler<UpdatePar
             return ApplicationResult<ParkOperator>.Failure(ApplicationErrors.Required(nameof(command.ParkOperator)));
         }
 
-        ParkOperator? updated = await this.repository.UpdateAsync(command.Id, command.ParkOperator, cancellationToken);
-        if (updated is null)
+        try
         {
-            return ApplicationResult<ParkOperator>.Failure(ApplicationErrors.EntityNotFound("ParkOperator", command.Id));
-        }
+            ParkOperator? updated = await this.repository.UpdateAsync(command.Id, command.ParkOperator, cancellationToken);
+            if (updated is null)
+            {
+                return ApplicationResult<ParkOperator>.Failure(ApplicationError.NotFound("park-operator.not-found", "Park operator not exists"));
+            }
 
-        return ApplicationResult<ParkOperator>.Success(updated);
+            await this.searchProjectionWriter.UpsertAsync("operators", updated.Id, cancellationToken);
+            return ApplicationResult<ParkOperator>.Success(updated);
+        }
+        catch
+        {
+            return ApplicationResult<ParkOperator>.Failure(ApplicationError.Technical("park-operator.update.failed", "Error while updating park operator"));
+        }
     }
 }

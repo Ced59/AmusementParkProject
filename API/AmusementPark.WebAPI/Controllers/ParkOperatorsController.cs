@@ -1,0 +1,92 @@
+using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.ParkOperators.Commands;
+using AmusementPark.Application.Features.ParkOperators.Queries;
+using AmusementPark.Core.Domain.Parks;
+using AmusementPark.WebAPI.Contracts.ParkOperators;
+using AmusementPark.WebAPI.Mappers;
+using AmusementPark.WebAPI.Responses;
+using Microsoft.AspNetCore.Mvc;
+
+namespace AmusementPark.WebAPI.Controllers;
+
+/// <summary>
+/// Contrôleur Clean Architecture de la feature ParkOperators migrée en phase 6.
+/// </summary>
+[ApiController]
+[Route("park-operators")]
+public sealed class ParkOperatorsController : ControllerBase
+{
+    private readonly IQueryHandler<GetParkOperatorsQuery, ApplicationResult<IReadOnlyCollection<ParkOperator>>> getParkOperatorsQueryHandler;
+    private readonly IQueryHandler<GetParkOperatorByIdQuery, ApplicationResult<ParkOperator>> getParkOperatorByIdQueryHandler;
+    private readonly ICommandHandler<CreateParkOperatorCommand, ApplicationResult<ParkOperator>> createParkOperatorCommandHandler;
+    private readonly ICommandHandler<UpdateParkOperatorCommand, ApplicationResult<ParkOperator>> updateParkOperatorCommandHandler;
+
+    /// <summary>
+    /// Initialise une nouvelle instance de la classe <see cref="ParkOperatorsController"/>.
+    /// </summary>
+    public ParkOperatorsController(
+        IQueryHandler<GetParkOperatorsQuery, ApplicationResult<IReadOnlyCollection<ParkOperator>>> getParkOperatorsQueryHandler,
+        IQueryHandler<GetParkOperatorByIdQuery, ApplicationResult<ParkOperator>> getParkOperatorByIdQueryHandler,
+        ICommandHandler<CreateParkOperatorCommand, ApplicationResult<ParkOperator>> createParkOperatorCommandHandler,
+        ICommandHandler<UpdateParkOperatorCommand, ApplicationResult<ParkOperator>> updateParkOperatorCommandHandler)
+    {
+        this.getParkOperatorsQueryHandler = getParkOperatorsQueryHandler;
+        this.getParkOperatorByIdQueryHandler = getParkOperatorByIdQueryHandler;
+        this.createParkOperatorCommandHandler = createParkOperatorCommandHandler;
+        this.updateParkOperatorCommandHandler = updateParkOperatorCommandHandler;
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<ParkOperatorDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<IReadOnlyCollection<ParkOperator>> result = await this.getParkOperatorsQueryHandler.HandleAsync(new GetParkOperatorsQuery(), cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        List<ParkOperatorDto> response = result.Value.Select(static value => value.ToHttp()).ToList();
+        return this.Ok(response);
+    }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(ParkOperatorDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetByIdAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkOperator> result = await this.getParkOperatorByIdQueryHandler.HandleAsync(new GetParkOperatorByIdQuery(id), cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(ParkOperatorDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> CreateAsync([FromBody] ParkOperatorCreateDto dto, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkOperator> result = await this.createParkOperatorCommandHandler.HandleAsync(new CreateParkOperatorCommand(dto.ToDomain()), cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPut("{id}")]
+    [ProducesResponseType(typeof(ParkOperatorDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateAsync([FromRoute] string id, [FromBody] ParkOperatorUpdateDto dto, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkOperator> result = await this.updateParkOperatorCommandHandler.HandleAsync(new UpdateParkOperatorCommand(id, dto.ToDomain()), cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+}

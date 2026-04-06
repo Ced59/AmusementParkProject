@@ -14,4 +14,5 @@ public interface IParkItemRepository
     Task<ParkItem> CreateAsync(ParkItem parkItem, CancellationToken cancellationToken);
     Task<ParkItem?> UpdateAsync(string parkItemId, ParkItem parkItem, CancellationToken cancellationToken);
     Task<bool> DeleteAsync(string parkItemId, CancellationToken cancellationToken);
+    Task<IReadOnlyDictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds, CancellationToken cancellationToken);
 }

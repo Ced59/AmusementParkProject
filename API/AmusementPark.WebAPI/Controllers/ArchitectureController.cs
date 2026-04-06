@@ -121,4 +121,41 @@ public sealed class ArchitectureController : ControllerBase
             },
         });
     }
+
+    /// <summary>
+    /// Retourne l'état de la phase 6 avec les premières features câblées de bout en bout.
+    /// </summary>
+    /// <returns>État des features simples migrées.</returns>
+    [HttpGet("phase-6")]
+    public IActionResult GetPhase6Status()
+    {
+        return Ok(new
+        {
+            phase = 6,
+            goal = "Features simples migrées de bout en bout",
+            migratedFeatures = new[]
+            {
+                "Countries",
+                "ParkFounders",
+                "ParkOperators",
+                "AttractionManufacturers",
+            },
+            preservedRoutes = new[]
+            {
+                "GET /Countries",
+                "GET /park-founders",
+                "GET /park-founders/{id}",
+                "POST /park-founders",
+                "PUT /park-founders/{id}",
+                "GET /park-operators",
+                "GET /park-operators/{id}",
+                "POST /park-operators",
+                "PUT /park-operators/{id}",
+                "GET /attraction-manufacturers",
+                "GET /attraction-manufacturers/{id}",
+                "POST /attraction-manufacturers",
+                "PUT /attraction-manufacturers/{id}",
+            },
+        });
+    }
 }

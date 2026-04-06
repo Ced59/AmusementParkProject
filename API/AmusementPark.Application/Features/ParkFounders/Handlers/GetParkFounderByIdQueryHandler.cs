@@ -26,13 +26,13 @@ public sealed class GetParkFounderByIdQueryHandler : IQueryHandler<GetParkFounde
     {
         if (string.IsNullOrWhiteSpace(query.Id))
         {
-            return ApplicationResult<ParkFounder>.Failure(ApplicationErrors.Required(nameof(query.Id)));
+            return ApplicationResult<ParkFounder>.Failure(ApplicationError.NotFound("park-founder.not-found", "Park founder not exists"));
         }
 
         ParkFounder? entity = await this.repository.GetByIdAsync(query.Id, cancellationToken);
         if (entity is null)
         {
-            return ApplicationResult<ParkFounder>.Failure(ApplicationErrors.EntityNotFound("ParkFounder", query.Id));
+            return ApplicationResult<ParkFounder>.Failure(ApplicationError.NotFound("park-founder.not-found", "Park founder not exists"));
         }
 
         return ApplicationResult<ParkFounder>.Success(entity);

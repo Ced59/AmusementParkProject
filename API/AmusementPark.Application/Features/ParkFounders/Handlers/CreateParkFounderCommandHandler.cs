@@ -29,7 +29,14 @@ public sealed class CreateParkFounderCommandHandler : ICommandHandler<CreatePark
             return ApplicationResult<ParkFounder>.Failure(ApplicationErrors.Required(nameof(command.ParkFounder)));
         }
 
-        ParkFounder created = await this.repository.CreateAsync(command.ParkFounder, cancellationToken);
-        return ApplicationResult<ParkFounder>.Success(created);
+        try
+        {
+            ParkFounder created = await this.repository.CreateAsync(command.ParkFounder, cancellationToken);
+            return ApplicationResult<ParkFounder>.Success(created);
+        }
+        catch
+        {
+            return ApplicationResult<ParkFounder>.Failure(ApplicationError.Technical("park-founder.create.failed", "Error while creating park founder"));
+        }
     }
 }

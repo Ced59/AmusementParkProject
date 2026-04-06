@@ -26,13 +26,13 @@ public sealed class GetParkOperatorByIdQueryHandler : IQueryHandler<GetParkOpera
     {
         if (string.IsNullOrWhiteSpace(query.Id))
         {
-            return ApplicationResult<ParkOperator>.Failure(ApplicationErrors.Required(nameof(query.Id)));
+            return ApplicationResult<ParkOperator>.Failure(ApplicationError.NotFound("park-operator.not-found", "Park operator not exists"));
         }
 
         ParkOperator? entity = await this.repository.GetByIdAsync(query.Id, cancellationToken);
         if (entity is null)
         {
-            return ApplicationResult<ParkOperator>.Failure(ApplicationErrors.EntityNotFound("ParkOperator", query.Id));
+            return ApplicationResult<ParkOperator>.Failure(ApplicationError.NotFound("park-operator.not-found", "Park operator not exists"));
         }
 
         return ApplicationResult<ParkOperator>.Success(entity);

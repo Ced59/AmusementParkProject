@@ -26,7 +26,7 @@ public sealed class UpdateParkFounderCommandHandler : ICommandHandler<UpdatePark
     {
         if (string.IsNullOrWhiteSpace(command.Id))
         {
-            return ApplicationResult<ParkFounder>.Failure(ApplicationErrors.Required(nameof(command.Id)));
+            return ApplicationResult<ParkFounder>.Failure(ApplicationError.NotFound("park-founder.not-found", "Park founder not exists"));
         }
 
         if (command.ParkFounder is null)
@@ -34,12 +34,19 @@ public sealed class UpdateParkFounderCommandHandler : ICommandHandler<UpdatePark
             return ApplicationResult<ParkFounder>.Failure(ApplicationErrors.Required(nameof(command.ParkFounder)));
         }
 
-        ParkFounder? updated = await this.repository.UpdateAsync(command.Id, command.ParkFounder, cancellationToken);
-        if (updated is null)
+        try
         {
-            return ApplicationResult<ParkFounder>.Failure(ApplicationErrors.EntityNotFound("ParkFounder", command.Id));
-        }
+            ParkFounder? updated = await this.repository.UpdateAsync(command.Id, command.ParkFounder, cancellationToken);
+            if (updated is null)
+            {
+                return ApplicationResult<ParkFounder>.Failure(ApplicationError.NotFound("park-founder.not-found", "Park founder not exists"));
+            }
 
-        return ApplicationResult<ParkFounder>.Success(updated);
+            return ApplicationResult<ParkFounder>.Success(updated);
+        }
+        catch
+        {
+            return ApplicationResult<ParkFounder>.Failure(ApplicationError.Technical("park-founder.update.failed", "Error while updating park founder"));
+        }
     }
 }

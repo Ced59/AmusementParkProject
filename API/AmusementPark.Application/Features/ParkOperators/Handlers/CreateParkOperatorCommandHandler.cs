@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkOperators.Commands;
 using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkOperators.Handlers;
@@ -12,13 +13,15 @@ namespace AmusementPark.Application.Features.ParkOperators.Handlers;
 public sealed class CreateParkOperatorCommandHandler : ICommandHandler<CreateParkOperatorCommand, ApplicationResult<ParkOperator>>
 {
     private readonly IParkOperatorRepository repository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
     /// <summary>
     /// Initialise une nouvelle instance de la classe <see cref="CreateParkOperatorCommandHandler"/>.
     /// </summary>
-    public CreateParkOperatorCommandHandler(IParkOperatorRepository repository)
+    public CreateParkOperatorCommandHandler(IParkOperatorRepository repository, ISearchProjectionWriter searchProjectionWriter)
     {
         this.repository = repository;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     /// <inheritdoc />
@@ -29,7 +32,15 @@ public sealed class CreateParkOperatorCommandHandler : ICommandHandler<CreatePar
             return ApplicationResult<ParkOperator>.Failure(ApplicationErrors.Required(nameof(command.ParkOperator)));
         }
 
-        ParkOperator created = await this.repository.CreateAsync(command.ParkOperator, cancellationToken);
-        return ApplicationResult<ParkOperator>.Success(created);
+        try
+        {
+            ParkOperator created = await this.repository.CreateAsync(command.ParkOperator, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync("operators", created.Id, cancellationToken);
+            return ApplicationResult<ParkOperator>.Success(created);
+        }
+        catch
+        {
+            return ApplicationResult<ParkOperator>.Failure(ApplicationError.Technical("park-operator.create.failed", "Error while creating park operator"));
+        }
     }
 }

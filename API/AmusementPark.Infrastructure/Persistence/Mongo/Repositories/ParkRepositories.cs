@@ -389,4 +389,52 @@ public sealed class ParkItemRepository : IParkItemRepository
         DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == parkItemId, cancellationToken: cancellationToken);
         return result.DeletedCount > 0;
     }
+
+    public async Task<IReadOnlyDictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds, CancellationToken cancellationToken)
+    {
+        List<string> normalizedManufacturerIds = manufacturerIds
+            .Where(static manufacturerId => !string.IsNullOrWhiteSpace(manufacturerId))
+            .Select(static manufacturerId => manufacturerId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedManufacturerIds.Count == 0)
+        {
+            return new Dictionary<string, int>(StringComparer.Ordinal);
+        }
+
+        FilterDefinition<ParkItemDocument> filter =
+            Builders<ParkItemDocument>.Filter.Eq(document => document.Category, ParkItemCategory.Attraction) &
+            Builders<ParkItemDocument>.Filter.In("attractionDetails.manufacturerId", normalizedManufacturerIds);
+
+        List<BsonDocument> aggregationResults = await this.collection.Aggregate()
+            .Match(filter)
+            .Group(new BsonDocument
+            {
+                { "_id", "$attractionDetails.manufacturerId" },
+                { "count", new BsonDocument("$sum", 1) },
+            })
+            .ToListAsync(cancellationToken);
+
+        Dictionary<string, int> counts = new Dictionary<string, int>(StringComparer.Ordinal);
+
+        foreach (BsonDocument aggregationResult in aggregationResults)
+        {
+            BsonValue manufacturerIdValue = aggregationResult.GetValue("_id", BsonNull.Value);
+            if (!manufacturerIdValue.IsString)
+            {
+                continue;
+            }
+
+            string manufacturerId = manufacturerIdValue.AsString;
+            if (string.IsNullOrWhiteSpace(manufacturerId))
+            {
+                continue;
+            }
+
+            counts[manufacturerId] = aggregationResult.GetValue("count", 0).ToInt32();
+        }
+
+        return counts;
+    }
 }

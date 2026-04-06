@@ -69,6 +69,7 @@ public abstract class MongoCrudRepositoryBase<TDomain, TDocument>
     protected async Task<IReadOnlyCollection<TDomain>> GetAllAsync(Func<TDocument, TDomain> mapper, CancellationToken cancellationToken)
     {
         List<TDocument> documents = await this.collection.Find(Builders<TDocument>.Filter.Empty)
+            .Sort(Builders<TDocument>.Sort.Ascending("name").Ascending("_id"))
             .ToListAsync(cancellationToken);
 
         return documents.Select(mapper).ToList();
