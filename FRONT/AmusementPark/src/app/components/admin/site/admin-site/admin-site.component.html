@@ -1,5 +1,5 @@
 <div class="admin-images-page">
-  <h2>Image library</h2>
+  <h2>Gestion des images</h2>
   @if (loading) {
     <p>Loading...</p>
   }
@@ -24,10 +24,12 @@
         <input [(ngModel)]="selectedImage.description">
         <label>Published</label>
         <input type="checkbox" [(ngModel)]="selectedImage.isPublished">
-        <label>Latitude</label>
-        <input type="number" [(ngModel)]="selectedImage.geoLocation.latitude">
-        <label>Longitude</label>
-        <input type="number" [(ngModel)]="selectedImage.geoLocation.longitude">
+        @if (selectedImage.geoLocation) {
+          <label>Latitude</label>
+          <input type="number" [(ngModel)]="selectedImage.geoLocation.latitude">
+          <label>Longitude</label>
+          <input type="number" [(ngModel)]="selectedImage.geoLocation.longitude">
+        }
         <h4>Tags</h4>
         <div class="tags-grid">
           @for (tag of tags; track trackById($index, tag)) {

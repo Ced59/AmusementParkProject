@@ -5,6 +5,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using Repositories.Interfaces;
 using Services.Interfaces.Searching;
+using System.IO;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -32,8 +33,7 @@ namespace WebAPI.Settings.MongoDB
             await InitializeCountriesCollection(
                 database,
                 settings.CountriesCollectionName,
-                // adapte ce chemin si besoin
-                @"C:\Users\ccaud\Source\Repos\Ced59\AmusementParkProject\API\WebAPI\Resources\InitializingDatas\countries.seed.json"
+                GetSeedFilePath("countries.seed.json")
             );
 
             // 🔹 Parks
@@ -41,7 +41,7 @@ namespace WebAPI.Settings.MongoDB
             await InitializeParksCollection(
                 database,
                 settings.ParksCollectionName,
-                @"C:\Users\ccaud\Source\Repos\Ced59\AmusementParkProject\API\WebAPI\Resources\InitializingDatas\parks.json"
+                GetSeedFilePath("parks.json")
             );
 
             // 🔹 Park founders / operators
@@ -66,6 +66,11 @@ namespace WebAPI.Settings.MongoDB
                 settings.AttractionManufacturersCollectionName,
                 settings.SearchItemCollectionName
             );
+        }
+
+        private static string GetSeedFilePath(string fileName)
+        {
+            return Path.Combine(AppContext.BaseDirectory, "Resources", "InitializingDatas", fileName);
         }
 
         private static async Task EnsureCollectionExistsAsync(IMongoDatabase database, string collectionName)
@@ -100,7 +105,7 @@ namespace WebAPI.Settings.MongoDB
 
             IMongoCollection<Park>? parksCollection = database.GetCollection<Park>(collectionName);
 
-            long documentCount = await parksCollection.CountDocumentsAsync(new BsonDocument());
+            long documentCount = await parksCollection.EstimatedDocumentCountAsync();
 
             if (documentCount == 0)
             {
@@ -275,7 +280,7 @@ namespace WebAPI.Settings.MongoDB
                 database.GetCollection<Country>(collectionName);
 
             long documentCount =
-                await countriesCollection.CountDocumentsAsync(new BsonDocument());
+                await countriesCollection.EstimatedDocumentCountAsync();
 
             // On ne remplit que si la collection est vide
             if (documentCount > 0)

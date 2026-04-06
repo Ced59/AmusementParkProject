@@ -5,9 +5,10 @@
 
   <nav class="admin-tabs">
     <button
+      type="button"
       pButton
       class="admin-tab"
-      [routerLink]="['users']"
+      [routerLink]="buildAdminRoute('users')"
       routerLinkActive="active-tab"
       [routerLinkActiveOptions]="{ exact: true }"
       [label]="'admin.tabs.users' | translate"
@@ -15,9 +16,10 @@
     ></button>
 
     <button
+      type="button"
       pButton
       class="admin-tab"
-      [routerLink]="['parks']"
+      [routerLink]="buildAdminRoute('parks')"
       routerLinkActive="active-tab"
       [routerLinkActiveOptions]="{ exact: true }"
       [label]="'admin.tabs.parks' | translate"
@@ -26,9 +28,10 @@
 
 
     <button
+      type="button"
       pButton
       class="admin-tab"
-      [routerLink]="['items']"
+      [routerLink]="buildAdminRoute('items')"
       routerLinkActive="active-tab"
       [routerLinkActiveOptions]="{ exact: true }"
       [label]="'admin.tabs.parkItems' | translate"
@@ -36,9 +39,10 @@
     ></button>
 
     <button
+      type="button"
       pButton
       class="admin-tab"
-      [routerLink]="['operators']"
+      [routerLink]="buildAdminRoute('operators')"
       routerLinkActive="active-tab"
       [routerLinkActiveOptions]="{ exact: true }"
       [label]="'admin.tabs.operators' | translate"
@@ -46,9 +50,10 @@
     ></button>
 
     <button
+      type="button"
       pButton
       class="admin-tab"
-      [routerLink]="['manufacturers']"
+      [routerLink]="buildAdminRoute('manufacturers')"
       routerLinkActive="active-tab"
       [routerLinkActiveOptions]="{ exact: true }"
       [label]="'admin.tabs.manufacturers' | translate"
@@ -56,13 +61,25 @@
     ></button>
 
     <button
+      type="button"
       pButton
       class="admin-tab"
-      [routerLink]="['data']"
+      [routerLink]="buildAdminRoute('data')"
       routerLinkActive="active-tab"
       [routerLinkActiveOptions]="{ exact: true }"
       [label]="'admin.tabs.data' | translate"
       icon="pi pi-database"
+    ></button>
+
+    <button
+      type="button"
+      pButton
+      class="admin-tab"
+      [routerLink]="buildAdminRoute('images')"
+      routerLinkActive="active-tab"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [label]="'admin.tabs.images' | translate"
+      icon="pi pi-images"
     ></button>
   </nav>
 

@@ -70,10 +70,15 @@ export const routes: Routes = [
                 .then((m) => m.AdminDataModule)
           },
           {
-            path: 'site',
+            path: 'images',
             loadChildren: () =>
               import('./components/admin/site/admin-site/admin-site.module')
                 .then((m) => m.AdminSiteModule)
+          },
+          {
+            path: 'site',
+            redirectTo: 'images',
+            pathMatch: 'full'
           },
           { path: '', redirectTo: 'users', pathMatch: 'full' }
         ]

@@ -37,15 +37,18 @@ namespace Services.Implementations.Searching
             string attractionManufacturersCollectionName,
             string searchItemCollectionName)
         {
-            await EnsureSearchCollectionAsync(database, searchItemCollectionName);
+            IMongoCollection<SearchItem> searchCollection = await EnsureSearchCollectionAsync(database, searchItemCollectionName);
+
+            long existingCount = await searchCollection.EstimatedDocumentCountAsync();
+            if (existingCount > 0)
+            {
+                return;
+            }
 
             IMongoCollection<Park> parksCollection = database.GetCollection<Park>(parksCollectionName);
             IMongoCollection<ParkItem> parkItemsCollection = database.GetCollection<ParkItem>(parkItemsCollectionName);
             IMongoCollection<ParkOperator> operatorsCollection = database.GetCollection<ParkOperator>(parkOperatorsCollectionName);
             IMongoCollection<AttractionManufacturer> manufacturersCollection = database.GetCollection<AttractionManufacturer>(attractionManufacturersCollectionName);
-            IMongoCollection<SearchItem> searchCollection = database.GetCollection<SearchItem>(searchItemCollectionName);
-
-            await searchCollection.DeleteManyAsync(Builders<SearchItem>.Filter.In(item => item.Category, SupportedCategories));
 
             List<Park> parks = await parksCollection.Find(_ => true).ToListAsync();
             List<ParkItem> parkItems = await parkItemsCollection.Find(_ => true).ToListAsync();
@@ -227,7 +230,7 @@ namespace Services.Implementations.Searching
             await searchCollection.DeleteOneAsync(filter);
         }
 
-        private static async Task EnsureSearchCollectionAsync(IMongoDatabase database, string searchItemCollectionName)
+        private static async Task<IMongoCollection<SearchItem>> EnsureSearchCollectionAsync(IMongoDatabase database, string searchItemCollectionName)
         {
             BsonDocument collectionFilter = new("name", searchItemCollectionName);
             IAsyncCursor<BsonDocument> collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = collectionFilter });
@@ -253,6 +256,8 @@ namespace Services.Implementations.Searching
             };
 
             await searchCollection.Indexes.CreateOneAsync(new CreateIndexModel<SearchItem>(textIndexKeys, textIndexOptions));
+
+            return searchCollection;
         }
 
         private static UpdateOneModel<SearchItem> BuildUpsertModel(SearchItem item)

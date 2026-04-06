@@ -38,6 +38,9 @@
     <Resource Include="Resources\InitializingDatas\parks.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\InitializingDatas\countries.seed.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
