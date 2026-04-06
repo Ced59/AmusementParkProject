@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { forkJoin } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
@@ -8,13 +8,15 @@ import { ImageTagDto } from '../../../../models/images/image-tag-dto';
 import { ViewState } from '../../../../models/shared/view-state';
 import { ApiService } from '../../../../services/api.service';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
+import { commitViewUpdate } from '../../../../utils/change-detection.utils';
 
 @Component({
   selector: 'app-admin-site',
   standalone: true,
   imports: [CommonModule, FormsModule, TranslateModule, PageStateComponent],
   templateUrl: './admin-site.component.html',
-  styleUrl: './admin-site.component.scss'
+  styleUrl: './admin-site.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminSiteComponent implements OnInit {
   images: ImageDto[] = [];
@@ -23,34 +25,43 @@ export class AdminSiteComponent implements OnInit {
   newTagSlug: string = '';
   pageState: ViewState = ViewState.Loading;
 
-  constructor(public readonly apiService: ApiService) {}
+  constructor(
+    public readonly apiService: ApiService,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.reload();
   }
 
   reload(): void {
-    this.pageState = ViewState.Loading;
+    commitViewUpdate(this.changeDetectorRef, () => {
+      this.pageState = ViewState.Loading;
+    });
 
     forkJoin({
       images: this.apiService.getAdminImages(),
       tags: this.apiService.getAdminImageTags()
     }).subscribe({
       next: ({ images, tags }) => {
-        this.images = images;
-        this.tags = tags;
+        commitViewUpdate(this.changeDetectorRef, () => {
+          this.images = images;
+          this.tags = tags;
 
-        if (this.selectedImage) {
-          const refreshedSelection: ImageDto | undefined = images.find((image: ImageDto) => image.id === this.selectedImage?.id);
-          this.selectedImage = refreshedSelection ? this.cloneImage(refreshedSelection) : (images[0] ? this.cloneImage(images[0]) : null);
-        } else {
-          this.selectedImage = images[0] ? this.cloneImage(images[0]) : null;
-        }
+          if (this.selectedImage) {
+            const refreshedSelection: ImageDto | undefined = images.find((image: ImageDto) => image.id === this.selectedImage?.id);
+            this.selectedImage = refreshedSelection ? this.cloneImage(refreshedSelection) : (images[0] ? this.cloneImage(images[0]) : null);
+          } else {
+            this.selectedImage = images[0] ? this.cloneImage(images[0]) : null;
+          }
 
-        this.pageState = ViewState.Ready;
+          this.pageState = ViewState.Ready;
+        });
       },
       error: () => {
-        this.pageState = ViewState.Error;
+        commitViewUpdate(this.changeDetectorRef, () => {
+          this.pageState = ViewState.Error;
+        });
       }
     });
   }
@@ -77,7 +88,9 @@ export class AdminSiteComponent implements OnInit {
         this.reload();
       },
       error: () => {
-        this.pageState = ViewState.Error;
+        commitViewUpdate(this.changeDetectorRef, () => {
+          this.pageState = ViewState.Error;
+        });
       }
     });
   }
@@ -99,7 +112,9 @@ export class AdminSiteComponent implements OnInit {
         this.reload();
       },
       error: () => {
-        this.pageState = ViewState.Error;
+        commitViewUpdate(this.changeDetectorRef, () => {
+          this.pageState = ViewState.Error;
+        });
       }
     });
   }
