@@ -25,7 +25,7 @@ public sealed class GetParkItemByIdQueryHandler : IQueryHandler<GetParkItemByIdQ
         ParkItem? item = await this.parkItemRepository.GetByIdAsync(query.ParkItemId, cancellationToken);
         if (item is null)
         {
-            return ApplicationResult<ParkItem>.Failure(ApplicationErrors.EntityNotFound("ParkItem", query.ParkItemId));
+            return ApplicationResult<ParkItem>.Failure(ParkItemApplicationErrors.ParkItemNotExists());
         }
 
         return ApplicationResult<ParkItem>.Success(item);

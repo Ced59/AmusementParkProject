@@ -39,6 +39,24 @@ public sealed class ParkRepository : IParkRepository
         return document?.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<Park>> GetByIdsAsync(IEnumerable<string> parkIds, CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedParkIds.Count == 0)
+        {
+            return Array.Empty<Park>();
+        }
+
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.In(document => document.Id, normalizedParkIds);
+        List<ParkDocument> documents = await this.collection.Find(filter).ToListAsync(cancellationToken);
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
     public async Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> filter = includeHidden

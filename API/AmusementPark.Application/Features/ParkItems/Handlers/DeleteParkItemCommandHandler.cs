@@ -2,16 +2,19 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Ports;
 
 namespace AmusementPark.Application.Features.ParkItems.Handlers;
 
 public sealed class DeleteParkItemCommandHandler : ICommandHandler<DeleteParkItemCommand, ApplicationResult>
 {
     private readonly IParkItemRepository parkItemRepository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
-    public DeleteParkItemCommandHandler(IParkItemRepository parkItemRepository)
+    public DeleteParkItemCommandHandler(IParkItemRepository parkItemRepository, ISearchProjectionWriter searchProjectionWriter)
     {
         this.parkItemRepository = parkItemRepository;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     public async Task<ApplicationResult> HandleAsync(DeleteParkItemCommand command, CancellationToken cancellationToken = default)
@@ -21,12 +24,20 @@ public sealed class DeleteParkItemCommandHandler : ICommandHandler<DeleteParkIte
             return ApplicationResult.Failure(ApplicationErrors.Required(nameof(command.ParkItemId)));
         }
 
-        bool deleted = await this.parkItemRepository.DeleteAsync(command.ParkItemId, cancellationToken);
-        if (!deleted)
+        try
         {
-            return ApplicationResult.Failure(ApplicationErrors.EntityNotFound("ParkItem", command.ParkItemId));
-        }
+            bool deleted = await this.parkItemRepository.DeleteAsync(command.ParkItemId, cancellationToken);
+            if (!deleted)
+            {
+                return ApplicationResult.Failure(ParkItemApplicationErrors.ParkItemNotExists());
+            }
 
-        return ApplicationResult.Success();
+            await this.searchProjectionWriter.DeleteAsync("parkItems", command.ParkItemId, cancellationToken);
+            return ApplicationResult.Success();
+        }
+        catch
+        {
+            return ApplicationResult.Failure(ParkItemApplicationErrors.ErrorDeletingParkItem());
+        }
     }
 }

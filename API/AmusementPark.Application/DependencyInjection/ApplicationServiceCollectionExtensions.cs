@@ -1,5 +1,6 @@
 using System.Reflection;
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Validation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,6 +28,7 @@ public static class ApplicationServiceCollectionExtensions
 
         services.AddSingleton<PagedQueryValidator>();
         services.AddSingleton<IApplicationValidator<AmusementPark.Application.Common.Requests.PagedQuery>, PagedQueryValidator>();
+        services.AddScoped<ParkItemReferenceValidator>();
         return services;
     }
 

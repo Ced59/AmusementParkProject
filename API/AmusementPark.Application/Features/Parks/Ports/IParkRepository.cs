@@ -14,6 +14,11 @@ public interface IParkRepository
     Task<Park?> GetByIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne plusieurs parcs par identifiants.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetByIdsAsync(IEnumerable<string> parkIds, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Retourne une page de parcs.
     /// </summary>
     Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, CancellationToken cancellationToken);

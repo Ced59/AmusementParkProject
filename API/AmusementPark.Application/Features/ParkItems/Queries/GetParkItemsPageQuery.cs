@@ -2,7 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
-using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Application.Features.ParkItems.Results;
 
 namespace AmusementPark.Application.Features.ParkItems.Queries;
 
@@ -13,4 +13,4 @@ namespace AmusementPark.Application.Features.ParkItems.Queries;
 /// <param name="ParkId">Filtre par parc éventuel.</param>
 /// <param name="Search">Texte de recherche éventuel.</param>
 /// <param name="IncludeHidden">Indique si les éléments non visibles doivent être inclus.</param>
-public sealed record GetParkItemsPageQuery(PagedQuery Paging, string? ParkId, string? Search, bool IncludeHidden = true) : IQuery<ApplicationResult<PagedResult<ParkItem>>>;
+public sealed record GetParkItemsPageQuery(PagedQuery Paging, string? ParkId, string? Search, bool IncludeHidden = true) : IQuery<ApplicationResult<PagedResult<ParkItemAdminListResult>>>;

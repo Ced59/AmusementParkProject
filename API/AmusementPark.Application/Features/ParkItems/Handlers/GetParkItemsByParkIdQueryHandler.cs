@@ -9,10 +9,12 @@ namespace AmusementPark.Application.Features.ParkItems.Handlers;
 public sealed class GetParkItemsByParkIdQueryHandler : IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>>
 {
     private readonly IParkItemRepository parkItemRepository;
+    private readonly ParkItemReferenceValidator parkItemReferenceValidator;
 
-    public GetParkItemsByParkIdQueryHandler(IParkItemRepository parkItemRepository)
+    public GetParkItemsByParkIdQueryHandler(IParkItemRepository parkItemRepository, ParkItemReferenceValidator parkItemReferenceValidator)
     {
         this.parkItemRepository = parkItemRepository;
+        this.parkItemReferenceValidator = parkItemReferenceValidator;
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<ParkItem>>> HandleAsync(GetParkItemsByParkIdQuery query, CancellationToken cancellationToken = default)
@@ -22,7 +24,13 @@ public sealed class GetParkItemsByParkIdQueryHandler : IQueryHandler<GetParkItem
             return ApplicationResult<IReadOnlyCollection<ParkItem>>.Failure(ApplicationErrors.Required(nameof(query.ParkId)));
         }
 
-        IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetByParkIdAsync(query.ParkId, query.IncludeHidden, cancellationToken);
+        ApplicationError? parkError = await this.parkItemReferenceValidator.EnsureParkExistsAsync(query.ParkId, cancellationToken);
+        if (parkError is not null)
+        {
+            return ApplicationResult<IReadOnlyCollection<ParkItem>>.Failure(parkError);
+        }
+
+        IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetByParkIdAsync(query.ParkId.Trim(), query.IncludeHidden, cancellationToken);
         return ApplicationResult<IReadOnlyCollection<ParkItem>>.Success(items);
     }
 }
