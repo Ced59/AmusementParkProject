@@ -1,5 +1,6 @@
 using AmusementPark.Application;
 using AmusementPark.Application.DependencyInjection;
+using AmusementPark.Infrastructure;
 using AmusementPark.Infrastructure.DependencyInjection;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -22,8 +23,9 @@ app.MapControllers();
 app.MapGet("/health", () => Results.Ok(new
 {
     status = "ok",
-    architecture = "clean-architecture-phase-4",
-    application = ArchitecturePhase.Current,
+    architecture = "clean-architecture-phase-5",
+    application = AmusementPark.Application.ArchitecturePhase.Current,
+    infrastructure = AmusementPark.Infrastructure.ArchitecturePhase.Current,
     project = "AmusementPark.WebAPI",
 }));
 

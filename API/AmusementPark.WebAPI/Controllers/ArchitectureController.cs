@@ -1,6 +1,7 @@
 using AmusementPark.Application;
 using AmusementPark.Application.Architecture;
 using AmusementPark.Core.Domain;
+using AmusementPark.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmusementPark.WebAPI.Controllers;
@@ -68,10 +69,56 @@ public sealed class ArchitectureController : ControllerBase
         return Ok(new
         {
             phase = 4,
-            label = ArchitecturePhase.Current,
+            label = AmusementPark.Application.ArchitecturePhase.Current,
             rules = ArchitectureRules.All,
             features = FeatureCatalog.All,
             useCases = UseCaseCatalog.ByFeature,
+        });
+    }
+
+    /// <summary>
+    /// Retourne l'état de la phase 5 de branchement Mongo dans Infrastructure.
+    /// </summary>
+    /// <returns>État des adapters Mongo créés.</returns>
+    [HttpGet("phase-5")]
+    public IActionResult GetPhase5Status()
+    {
+        return Ok(new
+        {
+            phase = 5,
+            label = AmusementPark.Infrastructure.ArchitecturePhase.Current,
+            documents = new[]
+            {
+                "CountryDocument",
+                "ParkDocument",
+                "ParkZoneDocument",
+                "ParkItemDocument",
+                "ParkFounderDocument",
+                "ParkOperatorDocument",
+                "AttractionManufacturerDocument",
+                "ImageDocument",
+                "ImageTagDocument",
+                "UserDocument",
+                "SearchItemDocument",
+                "CaptainCoasterSettingsDocument",
+                "CaptainCoasterSyncSessionDocument",
+            },
+            adapters = new[]
+            {
+                "CountryReadRepository",
+                "ParkFounderRepository",
+                "ParkOperatorRepository",
+                "AttractionManufacturerRepository",
+                "ParkRepository",
+                "ParkZoneRepository",
+                "ParkItemRepository",
+                "SearchReadRepository",
+                "ImageRepository",
+                "ImageTagRepository",
+                "UserRepository",
+                "CaptainCoasterSettingsRepository",
+                "CaptainCoasterSessionRepository",
+            },
         });
     }
 }

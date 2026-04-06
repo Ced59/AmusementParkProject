@@ -1,5 +1,19 @@
+using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.CaptainCoaster.Ports;
+using AmusementPark.Application.Features.Countries.Ports;
+using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.ParkFounders.Ports;
+using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkOperators.Ports;
+using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.DependencyInjection;
 
@@ -18,6 +32,31 @@ public static class InfrastructureServiceCollectionExtensions
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
+
+        MongoDbSettings mongoDbSettings = MongoDbSettings.Bind(configuration);
+        services.AddSingleton(mongoDbSettings);
+
+        services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoDbSettings.Url));
+        services.AddScoped<IMongoDatabase>(serviceProvider =>
+        {
+            IMongoClient client = serviceProvider.GetRequiredService<IMongoClient>();
+            return client.GetDatabase(mongoDbSettings.DatabaseName);
+        });
+
+        services.AddScoped<ICountryReadRepository, CountryReadRepository>();
+        services.AddScoped<IParkFounderRepository, ParkFounderRepository>();
+        services.AddScoped<IParkOperatorRepository, ParkOperatorRepository>();
+        services.AddScoped<IAttractionManufacturerRepository, AttractionManufacturerRepository>();
+        services.AddScoped<IParkRepository, ParkRepository>();
+        services.AddScoped<IParkZoneRepository, ParkZoneRepository>();
+        services.AddScoped<IParkItemRepository, ParkItemRepository>();
+        services.AddScoped<ISearchReadRepository, SearchReadRepository>();
+        services.AddScoped<IImageRepository, ImageRepository>();
+        services.AddScoped<IImageTagRepository, ImageTagRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
+        services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();
+
         return services;
     }
 }
