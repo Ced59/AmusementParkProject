@@ -26,11 +26,20 @@ import { CaptainCoasterDataService } from '../../../../services/admin/data/capta
 import {
   CaptainCoasterComparisonPagedResponse,
   CaptainCoasterComparisonResultResponse,
+  CaptainCoasterDuplicateResolutionRequest,
+  CaptainCoasterExternalVariantResponse,
+  CaptainCoasterFieldResolutionRequest,
   CaptainCoasterSessionResponse,
   CaptainCoasterStatusResponse,
   ComparisonFilters,
   DataSourceSummary
 } from '../../../../models/admin/data/data-management.models';
+
+interface DuplicateResolutionState {
+  strategy: 'SelectVariant' | 'Merge';
+  selectedExternalVariantId: string | null;
+  fieldSelections: Record<string, string>;
+}
 
 @Component({
   selector: 'app-admin-data',
@@ -53,15 +62,9 @@ import {
 })
 export class AdminDataComponent implements OnInit, OnDestroy {
 
-  // -----------------------------------------------------------------------
-  // Sources list
-  // -----------------------------------------------------------------------
   protected readonly dataSources = signal<DataSourceSummary[]>([]);
   protected readonly selectedSourceKey = signal<string | null>(null);
 
-  // -----------------------------------------------------------------------
-  // Captain Coaster — état global
-  // -----------------------------------------------------------------------
   protected readonly ccStatus = signal<CaptainCoasterStatusResponse | null>(null);
   protected readonly ccSession = signal<CaptainCoasterSessionResponse | null>(null);
   protected readonly ccIsBusy = signal<boolean>(false);
@@ -82,37 +85,30 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     !this.ccIsSessionRunning()
   );
 
-  // -----------------------------------------------------------------------
-  // Captain Coaster — comparaison (chargée à la demande uniquement)
-  // -----------------------------------------------------------------------
   protected readonly ccComparisonLoaded = signal<boolean>(false);
   protected readonly ccPagedResult = signal<CaptainCoasterComparisonPagedResponse | null>(null);
   protected readonly ccIsLoadingPage = signal<boolean>(false);
 
-  // Pagination
   protected readonly ccCurrentPage = signal<number>(0);
   protected readonly ccPageSize = signal<number>(50);
 
-  // Filtres
   protected readonly ccFilters = signal<ComparisonFilters>({
     entityType: null,
     changeType: null,
     isApplied: null
   });
 
-  // Sélection — utilise un Set pour O(1) lookup
-  private selectedIdsSet = new Set<string>();
+  private selectedIdsSet: Set<string> = new Set<string>();
   protected readonly ccSelectedCount = signal<number>(0);
   protected readonly ccAllPageSelected = signal<boolean>(false);
 
-  // Computed depuis le résultat paginé (pas de scan côté client)
   protected readonly ccSessionUpdated = computed(() => this.ccPagedResult()?.sessionUpdatedCount ?? 0);
   protected readonly ccSessionMissing = computed(() => this.ccPagedResult()?.sessionMissingCount ?? 0);
+  protected readonly ccSessionDuplicate = computed(() => this.ccPagedResult()?.sessionDuplicateCount ?? 0);
   protected readonly ccSessionApplied = computed(() => this.ccPagedResult()?.sessionAppliedCount ?? 0);
   protected readonly ccTotalCount = computed(() => this.ccPagedResult()?.totalCount ?? 0);
   protected readonly ccCurrentItems = computed(() => this.ccPagedResult()?.items ?? []);
 
-  // Dropdown options
   protected readonly entityTypeOptions = [
     { label: 'Tous les types', value: null },
     { label: 'Parc', value: 'Park' },
@@ -122,7 +118,8 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   protected readonly changeTypeOptions = [
     { label: 'Tous les changements', value: null },
     { label: 'Nouveaux', value: 'MissingLocal' },
-    { label: 'Modifiés', value: 'Updated' }
+    { label: 'Modifiés', value: 'Updated' },
+    { label: 'Doublons externes', value: 'DuplicateExternal' }
   ];
 
   protected readonly appliedOptions = [
@@ -132,6 +129,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   ];
 
   private pollingSubscription: Subscription | null = null;
+  private readonly duplicateResolutionStateByResultId: Map<string, DuplicateResolutionState> = new Map<string, DuplicateResolutionState>();
 
   constructor(
     private readonly captainCoasterDataService: CaptainCoasterDataService,
@@ -146,10 +144,6 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.stopPolling();
   }
 
-  // -----------------------------------------------------------------------
-  // Navigation sources
-  // -----------------------------------------------------------------------
-
   protected async selectSource(key: string): Promise<void> {
     this.selectedSourceKey.set(key);
     if (key === 'captain-coaster') {
@@ -163,11 +157,8 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.ccComparisonLoaded.set(false);
     this.ccPagedResult.set(null);
     this.resetSelection();
+    this.duplicateResolutionStateByResultId.clear();
   }
-
-  // -----------------------------------------------------------------------
-  // Import : sélection de fichiers
-  // -----------------------------------------------------------------------
 
   protected onParksFileSelected(event: Event): void {
     const input: HTMLInputElement = event.target as HTMLInputElement;
@@ -178,10 +169,6 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     const input: HTMLInputElement = event.target as HTMLInputElement;
     this.ccCoastersFile.set(input.files?.[0] ?? null);
   }
-
-  // -----------------------------------------------------------------------
-  // Import : démarrage
-  // -----------------------------------------------------------------------
 
   protected async startImportAsync(): Promise<void> {
     const parksFile: File | null = this.ccParksFile();
@@ -197,6 +184,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.ccComparisonLoaded.set(false);
     this.ccPagedResult.set(null);
     this.resetSelection();
+    this.duplicateResolutionStateByResultId.clear();
 
     try {
       const session: CaptainCoasterSessionResponse = await firstValueFrom(
@@ -211,10 +199,6 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       this.ccIsBusy.set(false);
     }
   }
-
-  // -----------------------------------------------------------------------
-  // Comparaison : chargement à la demande
-  // -----------------------------------------------------------------------
 
   protected async loadComparisonAsync(): Promise<void> {
     const sessionId: string | null = this.ccSession()?.id ?? null;
@@ -238,12 +222,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   protected async onFilterChange(): Promise<void> {
     this.ccCurrentPage.set(0);
     this.resetSelection();
-    await this.fetchPageAsync(
-      this.ccSession()?.id ?? null,
-      this.ccFilters(),
-      0,
-      this.ccPageSize()
-    );
+    await this.fetchPageAsync(this.ccSession()?.id ?? null, this.ccFilters(), 0, this.ccPageSize());
   }
 
   protected setEntityTypeFilter(value: string | null): void {
@@ -263,10 +242,6 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.ccFilters.set({ ...current, isApplied: value });
     void this.onFilterChange();
   }
-
-  // -----------------------------------------------------------------------
-  // Sélection — O(1) avec Set
-  // -----------------------------------------------------------------------
 
   protected toggleSelection(id: string, checked: boolean): void {
     if (checked) {
@@ -291,13 +266,17 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.syncSelectionSignals();
   }
 
-  // -----------------------------------------------------------------------
-  // Apply
-  // -----------------------------------------------------------------------
-
   protected async applySelectionAsync(): Promise<void> {
     if (this.selectedIdsSet.size === 0) {
       this.ccErrorMessage.set('Sélectionnez au moins une ligne.');
+      return;
+    }
+
+    const selectedRows: CaptainCoasterComparisonResultResponse[] = this.ccCurrentItems()
+      .filter(item => this.selectedIdsSet.has(item.id));
+    const duplicateResolutions: CaptainCoasterDuplicateResolutionRequest[] = this.buildDuplicateResolutions(selectedRows);
+    if (selectedRows.some(item => item.requiresManualResolution) && duplicateResolutions.length === 0) {
+      this.ccErrorMessage.set('Résolvez les doublons sélectionnés avant de lancer l’application.');
       return;
     }
 
@@ -307,7 +286,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
 
     try {
       const response: { appliedCount: number } = await firstValueFrom(
-        this.captainCoasterDataService.applySelectedIds(Array.from(this.selectedIdsSet))
+        this.captainCoasterDataService.applySelectedIds(Array.from(this.selectedIdsSet), duplicateResolutions)
       );
       this.ccSuccessMessage.set(`${response.appliedCount} changement(s) appliqué(s).`);
       this.resetSelection();
@@ -326,6 +305,11 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   }
 
   protected async applyAllAsync(entityTypeFilter: string | null = null, changeTypeFilter: string | null = null): Promise<void> {
+    if (changeTypeFilter === 'DuplicateExternal') {
+      this.ccErrorMessage.set('Les doublons externes nécessitent une résolution manuelle ligne par ligne.');
+      return;
+    }
+
     this.ccIsBusy.set(true);
     this.ccErrorMessage.set('');
     this.ccSuccessMessage.set('');
@@ -338,7 +322,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
           changeTypeFilter
         )
       );
-      this.ccSuccessMessage.set(`${response.appliedCount} changement(s) appliqué(s) au total.`);
+      this.ccSuccessMessage.set(`${response.appliedCount} changement(s) appliqué(s) au total. Les doublons externes restent à arbitrer manuellement.`);
       this.resetSelection();
       await this.fetchPageAsync(
         this.ccSession()?.id ?? null,
@@ -354,13 +338,10 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     }
   }
 
-  // -----------------------------------------------------------------------
-  // Helpers template
-  // -----------------------------------------------------------------------
-
   protected getChangeTypeSeverity(changeType: string): 'success' | 'info' | 'warn' | 'danger' | 'secondary' {
     if (changeType === 'Updated') { return 'warn'; }
     if (changeType === 'MissingLocal') { return 'info'; }
+    if (changeType === 'DuplicateExternal') { return 'danger'; }
     return 'secondary';
   }
 
@@ -374,9 +355,116 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     return item.id;
   }
 
-  // -----------------------------------------------------------------------
-  // Private
-  // -----------------------------------------------------------------------
+  protected isDuplicateRow(item: CaptainCoasterComparisonResultResponse): boolean {
+    return item.requiresManualResolution || item.hasExternalDuplicates;
+  }
+
+  protected getDuplicateState(item: CaptainCoasterComparisonResultResponse): DuplicateResolutionState {
+    this.ensureDuplicateResolutionState(item);
+    return this.duplicateResolutionStateByResultId.get(item.id)!;
+  }
+
+  protected setDuplicateStrategy(item: CaptainCoasterComparisonResultResponse, strategy: 'SelectVariant' | 'Merge'): void {
+    const state: DuplicateResolutionState = this.getDuplicateState(item);
+    state.strategy = strategy;
+    if (state.selectedExternalVariantId === null) {
+      state.selectedExternalVariantId = this.getSuggestedVariantId(item);
+    }
+    this.cdr.markForCheck();
+  }
+
+  protected setSelectedVariant(item: CaptainCoasterComparisonResultResponse, value: string | null): void {
+    const state: DuplicateResolutionState = this.getDuplicateState(item);
+    state.selectedExternalVariantId = value;
+
+    if (value !== null) {
+      const fields: string[] = this.getMergeEligibleFields(item);
+      for (const field of fields) {
+        if (!(field in state.fieldSelections)) {
+          state.fieldSelections[field] = `variant:${value}`;
+        }
+      }
+    }
+
+    this.cdr.markForCheck();
+  }
+
+  protected getMergeEligibleFields(item: CaptainCoasterComparisonResultResponse): string[] {
+    const fields: Set<string> = new Set<string>();
+    for (const variant of item.externalVariants) {
+      for (const change of variant.changes) {
+        if (this.isMergeEligibleField(change.field)) {
+          fields.add(change.field);
+        }
+      }
+    }
+
+    const order: string[] = [
+      'name',
+      'countryCode',
+      'parkName',
+      'manufacturer',
+      'model',
+      'sourceUrl',
+      'status',
+      'materialType',
+      'seatingType',
+      'launchType',
+      'restraintType',
+      'isLaunched',
+      'openingDate',
+      'closingDate',
+      'heightInMeters',
+      'lengthInMeters',
+      'speedInKmH',
+      'inversionCount'
+    ];
+
+    return Array.from(fields).sort((left: string, right: string) => {
+      const leftIndex: number = order.indexOf(left);
+      const rightIndex: number = order.indexOf(right);
+      const safeLeftIndex: number = leftIndex === -1 ? 999 : leftIndex;
+      const safeRightIndex: number = rightIndex === -1 ? 999 : rightIndex;
+      if (safeLeftIndex !== safeRightIndex) {
+        return safeLeftIndex - safeRightIndex;
+      }
+      return left.localeCompare(right);
+    });
+  }
+
+  protected getMergeSelection(item: CaptainCoasterComparisonResultResponse, field: string): string {
+    const state: DuplicateResolutionState = this.getDuplicateState(item);
+    return state.fieldSelections[field] ?? `variant:${this.getSuggestedVariantId(item) ?? ''}`;
+  }
+
+  protected setMergeSelection(item: CaptainCoasterComparisonResultResponse, field: string, value: string): void {
+    const state: DuplicateResolutionState = this.getDuplicateState(item);
+    state.fieldSelections[field] = value;
+    this.cdr.markForCheck();
+  }
+
+  protected getMergeOptions(item: CaptainCoasterComparisonResultResponse, field: string): { label: string; value: string }[] {
+    const options: { label: string; value: string }[] = [{ label: 'Conserver la valeur locale', value: 'local' }];
+    for (const variant of item.externalVariants) {
+      const preview: string = this.getExternalFieldValue(variant, field) ?? '∅';
+      options.push({
+        label: `${variant.displayLabel} → ${preview}`,
+        value: `variant:${variant.externalVariantId}`
+      });
+    }
+    return options;
+  }
+
+  protected getResolutionSummary(item: CaptainCoasterComparisonResultResponse): string {
+    const state: DuplicateResolutionState = this.getDuplicateState(item);
+    if (state.strategy === 'SelectVariant') {
+      const variant: CaptainCoasterExternalVariantResponse | undefined = item.externalVariants
+        .find(entry => entry.externalVariantId === state.selectedExternalVariantId);
+      return variant?.displayLabel ?? 'Aucune variante sélectionnée';
+    }
+
+    return `Fusion (${this.getMergeEligibleFields(item).length} champ(s))`;
+  }
 
   private async loadCaptainCoasterInitAsync(): Promise<void> {
     this.ccIsBusy.set(true);
@@ -418,6 +506,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
         this.captainCoasterDataService.getComparisonResults(sessionId, filters, page, pageSize)
       );
       this.ccPagedResult.set(result);
+      this.ensureDuplicateResolutionStates(result.items);
       this.cdr.markForCheck();
     } finally {
       this.ccIsLoadingPage.set(false);
@@ -458,6 +547,16 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       this.captainCoasterDataService.getStatus()
     );
     this.ccStatus.set(status);
+
+    try {
+      const session: CaptainCoasterSessionResponse = await firstValueFrom(
+        this.captainCoasterDataService.getLatestSession()
+      );
+      this.ccSession.set(session);
+    } catch {
+      // no-op
+    }
+
     await this.refreshSourcesTableAsync();
   }
 
@@ -468,7 +567,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
         this.captainCoasterDataService.getLatestSession().pipe(catchError(() => of(null)))
       )
     ).subscribe((session: CaptainCoasterSessionResponse | null) => {
-      if (session === null) { return; }
+      if (session === null || session.id !== sessionId) { return; }
       this.ccSession.set(session);
       this.cdr.markForCheck();
 
@@ -478,7 +577,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
         if (session.status === 'Completed') {
           this.ccSuccessMessage.set(
             `Import terminé : ${session.parksFetched} parcs, ${session.coastersFetched} coasters, ` +
-            `${session.comparisonResults} différences. Cliquez sur "Charger les résultats" pour les consulter.`
+            `${session.comparisonResults} différences, dont ${session.duplicateConflicts} conflit(s) à arbitrer.`
           );
         } else {
           this.ccErrorMessage.set(`L'import a échoué : ${session.message}`);
@@ -509,10 +608,125 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.cdr.markForCheck();
   }
 
+  private ensureDuplicateResolutionStates(items: CaptainCoasterComparisonResultResponse[]): void {
+    for (const item of items) {
+      this.ensureDuplicateResolutionState(item);
+    }
+  }
+
+  private ensureDuplicateResolutionState(item: CaptainCoasterComparisonResultResponse): void {
+    if (!item.requiresManualResolution) {
+      return;
+    }
+    if (this.duplicateResolutionStateByResultId.has(item.id)) {
+      return;
+    }
+
+    const suggestedVariantId: string | null = this.getSuggestedVariantId(item);
+    const fieldSelections: Record<string, string> = {};
+    for (const field of this.getMergeEligibleFields(item)) {
+      fieldSelections[field] = suggestedVariantId === null ? 'local' : `variant:${suggestedVariantId}`;
+    }
+
+    this.duplicateResolutionStateByResultId.set(item.id, {
+      strategy: 'SelectVariant',
+      selectedExternalVariantId: suggestedVariantId,
+      fieldSelections
+    });
+  }
+
+  private getSuggestedVariantId(item: CaptainCoasterComparisonResultResponse): string | null {
+    return item.externalVariants.find(variant => variant.isSuggested)?.externalVariantId
+      ?? item.externalVariants[0]?.externalVariantId
+      ?? null;
+  }
+
+  private isMergeEligibleField(field: string): boolean {
+    return field !== 'duplicateVariants'
+      && field !== 'externalId'
+      && field !== 'externalSource'
+      && field !== 'heightInFeet'
+      && field !== 'lengthInFeet'
+      && field !== 'speedInMph';
+  }
+
+  private getExternalFieldValue(variant: CaptainCoasterExternalVariantResponse, field: string): string | null {
+    const change = variant.changes.find(item => item.field === field);
+    return change?.externalValue ?? null;
+  }
+
+  private buildDuplicateResolutions(
+    items: CaptainCoasterComparisonResultResponse[]
+  ): CaptainCoasterDuplicateResolutionRequest[] {
+    const resolutions: CaptainCoasterDuplicateResolutionRequest[] = [];
+
+    for (const item of items) {
+      if (!item.requiresManualResolution) {
+        continue;
+      }
+
+      const state: DuplicateResolutionState | undefined = this.duplicateResolutionStateByResultId.get(item.id);
+      if (!state) {
+        continue;
+      }
+
+      if (state.strategy === 'SelectVariant') {
+        if (state.selectedExternalVariantId === null) {
+          continue;
+        }
+
+        resolutions.push({
+          comparisonResultId: item.id,
+          strategy: 'SelectVariant',
+          selectedExternalVariantId: state.selectedExternalVariantId,
+          fieldResolutions: []
+        });
+        continue;
+      }
+
+      const fieldResolutions: CaptainCoasterFieldResolutionRequest[] = this.getMergeEligibleFields(item)
+        .map((field: string) => this.buildFieldResolution(field, state.fieldSelections[field] ?? 'local'));
+
+      resolutions.push({
+        comparisonResultId: item.id,
+        strategy: 'Merge',
+        selectedExternalVariantId: state.selectedExternalVariantId,
+        fieldResolutions
+      });
+    }
+
+    return resolutions;
+  }
+
+  private buildFieldResolution(field: string, rawSelection: string): CaptainCoasterFieldResolutionRequest {
+    if (rawSelection === 'local') {
+      return {
+        field,
+        sourceType: 'Local',
+        externalVariantId: null
+      };
+    }
+
+    const variantId: string = rawSelection.replace('variant:', '');
+    return {
+      field,
+      sourceType: 'Variant',
+      externalVariantId: variantId
+    };
+  }
+
   private extractErrorMessage(error: unknown): string {
     if (typeof error === 'object' && error !== null && 'error' in error) {
-      const payload: Record<string, unknown> = (error as Record<string, unknown>)['error'] as Record<string, unknown>;
-      if (typeof payload?.['message'] === 'string') { return payload['message']; }
+      const payload: unknown = (error as { error: unknown }).error;
+      if (typeof payload === 'string' && payload.trim().length > 0) {
+        return payload;
+      }
+      if (typeof payload === 'object' && payload !== null && 'message' in payload) {
+        const message: unknown = (payload as { message?: unknown }).message;
+        if (typeof message === 'string' && message.trim().length > 0) {
+          return message;
+        }
+      }
     }
     return 'Une erreur est survenue.';
   }

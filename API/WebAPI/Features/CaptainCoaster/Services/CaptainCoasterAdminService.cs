@@ -87,7 +87,6 @@ namespace WebAPI.Features.CaptainCoaster.Services
             int page,
             int pageSize)
         {
-            // Clamp page size pour éviter les abus
             int effectivePageSize = Math.Clamp(pageSize, 10, 200);
             int effectivePage = Math.Max(0, page);
 
@@ -106,19 +105,18 @@ namespace WebAPI.Features.CaptainCoaster.Services
                 return new CaptainCoasterComparisonPagedResponse { Page = effectivePage, PageSize = effectivePageSize };
             }
 
-            // Filtre de session — base pour tous les compteurs
             FilterDefinition<CaptainCoasterComparisonResult> sessionFilter =
                 Builders<CaptainCoasterComparisonResult>.Filter.Eq(item => item.SyncSessionId, effectiveSessionId);
 
-            // Compteurs globaux de la session (indépendants des filtres page)
             Task<long> updatedTask = comparisonCollection.CountDocumentsAsync(
                 sessionFilter & Builders<CaptainCoasterComparisonResult>.Filter.Eq(item => item.ChangeType, "Updated"));
             Task<long> missingTask = comparisonCollection.CountDocumentsAsync(
                 sessionFilter & Builders<CaptainCoasterComparisonResult>.Filter.Eq(item => item.ChangeType, "MissingLocal"));
+            Task<long> duplicateTask = comparisonCollection.CountDocumentsAsync(
+                sessionFilter & Builders<CaptainCoasterComparisonResult>.Filter.Eq(item => item.ChangeType, "DuplicateExternal"));
             Task<long> appliedTask = comparisonCollection.CountDocumentsAsync(
                 sessionFilter & Builders<CaptainCoasterComparisonResult>.Filter.Eq(item => item.IsApplied, true));
 
-            // Filtre paginé (avec filtres optionnels)
             FilterDefinition<CaptainCoasterComparisonResult> pagedFilter = sessionFilter;
             if (!string.IsNullOrWhiteSpace(entityType))
             {
@@ -135,8 +133,7 @@ namespace WebAPI.Features.CaptainCoaster.Services
 
             Task<long> totalTask = comparisonCollection.CountDocumentsAsync(pagedFilter);
 
-            // Lancer tous les Count en parallèle
-            await Task.WhenAll(updatedTask, missingTask, appliedTask, totalTask);
+            await Task.WhenAll(updatedTask, missingTask, duplicateTask, appliedTask, totalTask);
 
             List<CaptainCoasterComparisonResult> items = await comparisonCollection
                 .Find(pagedFilter)
@@ -155,6 +152,7 @@ namespace WebAPI.Features.CaptainCoaster.Services
                 PageSize = effectivePageSize,
                 SessionUpdatedCount = (int)updatedTask.Result,
                 SessionMissingCount = (int)missingTask.Result,
+                SessionDuplicateCount = (int)duplicateTask.Result,
                 SessionAppliedCount = (int)appliedTask.Result
             };
         }
@@ -208,7 +206,6 @@ namespace WebAPI.Features.CaptainCoaster.Services
 
             if (request.ApplyAll)
             {
-                // Mode "tout appliquer" : on charge depuis la base avec les filtres fournis
                 string? effectiveSessionId = request.SessionId;
                 if (string.IsNullOrWhiteSpace(effectiveSessionId))
                 {
@@ -226,7 +223,8 @@ namespace WebAPI.Features.CaptainCoaster.Services
 
                 FilterDefinition<CaptainCoasterComparisonResult> filter =
                     Builders<CaptainCoasterComparisonResult>.Filter.Eq(item => item.SyncSessionId, effectiveSessionId)
-                    & Builders<CaptainCoasterComparisonResult>.Filter.Eq(item => item.IsApplied, false);
+                    & Builders<CaptainCoasterComparisonResult>.Filter.Eq(item => item.IsApplied, false)
+                    & Builders<CaptainCoasterComparisonResult>.Filter.Eq(item => item.RequiresManualResolution, false);
 
                 if (!string.IsNullOrWhiteSpace(request.EntityTypeFilter))
                 {
@@ -241,7 +239,6 @@ namespace WebAPI.Features.CaptainCoaster.Services
             }
             else
             {
-                // Mode sélection : IDs spécifiques
                 List<string> ids = request.ComparisonResultIds
                     .Where(item => !string.IsNullOrWhiteSpace(item))
                     .Select(item => item.Trim())
@@ -256,32 +253,50 @@ namespace WebAPI.Features.CaptainCoaster.Services
                 results = await comparisonCollection.Find(item => ids.Contains(item.Id)).ToListAsync(cancellationToken);
             }
 
+            Dictionary<string, CaptainCoasterDuplicateResolutionRequest> resolutionsByResultId = request.DuplicateResolutions
+                .Where(item => !string.IsNullOrWhiteSpace(item.ComparisonResultId))
+                .GroupBy(item => item.ComparisonResultId.Trim(), StringComparer.Ordinal)
+                .ToDictionary(group => group.Key, group => group.Last(), StringComparer.Ordinal);
+
+            List<CaptainCoasterComparisonResult> orderedResults = results
+                .OrderBy(item => GetEntityApplyPriority(item.EntityType))
+                .ThenBy(item => item.RequiresManualResolution ? 1 : 0)
+                .ThenBy(item => item.DisplayName)
+                .ToList();
+
             int appliedCount = 0;
 
-            foreach (CaptainCoasterComparisonResult result in results)
+            foreach (CaptainCoasterComparisonResult result in orderedResults)
             {
+                resolutionsByResultId.TryGetValue(result.Id, out CaptainCoasterDuplicateResolutionRequest? resolution);
+                bool applied = false;
+
                 if (string.Equals(result.EntityType, "Park", StringComparison.OrdinalIgnoreCase))
                 {
-                    bool applied = await ApplyParkResultAsync(result, cancellationToken);
-                    if (applied) { appliedCount++; }
+                    applied = await ApplyParkResultAsync(result, resolution, cancellationToken);
                 }
                 else if (string.Equals(result.EntityType, "Coaster", StringComparison.OrdinalIgnoreCase))
                 {
-                    bool applied = await ApplyCoasterResultAsync(result, cancellationToken);
-                    if (applied) { appliedCount++; }
+                    applied = await ApplyCoasterResultAsync(result, resolution, cancellationToken);
+                }
+
+                if (applied)
+                {
+                    appliedCount++;
                 }
             }
 
-            if (results.Count > 0)
+            if (orderedResults.Count > 0)
             {
                 CaptainCoasterSyncSession? session = await sessionsCollection
-                    .Find(item => item.Id == results[0].SyncSessionId)
+                    .Find(item => item.Id == orderedResults[0].SyncSessionId)
                     .FirstOrDefaultAsync(cancellationToken);
 
                 if (session != null)
                 {
                     session.Metrics.AppliedChanges += appliedCount;
                     session.UpdatedAt = DateTime.UtcNow;
+                    AddLog(session, "Info", $"Application manuelle : {appliedCount} changement(s) appliqué(s).");
                     await sessionsCollection.ReplaceOneAsync(item => item.Id == session.Id, session, cancellationToken: cancellationToken);
                 }
             }
@@ -304,6 +319,11 @@ namespace WebAPI.Features.CaptainCoaster.Services
                 await parksCollection.DeleteManyAsync(item => item.SyncSessionId == sessionId, cancellationToken);
                 if (parks.Count > 0) { await parksCollection.InsertManyAsync(parks, cancellationToken: cancellationToken); }
                 session.Metrics.ParksFetched = parks.Count;
+                int parkDuplicateGroups = CountDuplicateGroups(parks.Select(item => item.CaptainCoasterId));
+                if (parkDuplicateGroups > 0)
+                {
+                    AddLog(session, "Warn", $"{parkDuplicateGroups} doublon(s) d'identifiant parc détecté(s) dans le staging. Une résolution humaine sera demandée.");
+                }
                 AddLog(session, "Info", $"{parks.Count} parc(s) parsé(s).");
                 await PersistSessionAsync(session, cancellationToken);
 
@@ -312,6 +332,11 @@ namespace WebAPI.Features.CaptainCoaster.Services
                 await coastersCollection.DeleteManyAsync(item => item.SyncSessionId == sessionId, cancellationToken);
                 if (coasters.Count > 0) { await coastersCollection.InsertManyAsync(coasters, cancellationToken: cancellationToken); }
                 session.Metrics.CoastersFetched = coasters.Count;
+                int coasterDuplicateGroups = CountDuplicateGroups(coasters.Select(item => item.CaptainCoasterId));
+                if (coasterDuplicateGroups > 0)
+                {
+                    AddLog(session, "Warn", $"{coasterDuplicateGroups} doublon(s) d'identifiant coaster détecté(s) dans le staging. Une résolution humaine sera demandée.");
+                }
                 AddLog(session, "Info", $"{coasters.Count} coaster(s) parsé(s).");
                 await PersistSessionAsync(session, cancellationToken);
 
@@ -320,7 +345,8 @@ namespace WebAPI.Features.CaptainCoaster.Services
                 await comparisonCollection.DeleteManyAsync(item => item.SyncSessionId == sessionId, cancellationToken);
                 if (comparisonResults.Count > 0) { await comparisonCollection.InsertManyAsync(comparisonResults, cancellationToken: cancellationToken); }
                 session.Metrics.ComparisonResults = comparisonResults.Count;
-                AddLog(session, "Info", $"{comparisonResults.Count} différence(s) détectée(s).");
+                session.Metrics.DuplicateConflicts = comparisonResults.Count(item => item.RequiresManualResolution);
+                AddLog(session, "Info", $"{comparisonResults.Count} différence(s) détectée(s), dont {session.Metrics.DuplicateConflicts} conflit(s) nécessitant une résolution humaine.");
                 await PersistSessionAsync(session, cancellationToken);
 
                 CaptainCoasterDataSourceSettings settings = await GetOrCreateSettingsAsync();
@@ -458,24 +484,48 @@ namespace WebAPI.Features.CaptainCoaster.Services
             List<CaptainCoasterComparisonResult> results = new List<CaptainCoasterComparisonResult>();
             List<Park> localParks = await localParksCollection.Find(Builders<Park>.Filter.Empty).ToListAsync(cancellationToken);
             List<ParkItem> localCoasters = await localParkItemsCollection.Find(item => item.Category == ParkItemCategory.Attraction).ToListAsync(cancellationToken);
+            List<AttractionManufacturer> manufacturers = await manufacturersCollection.Find(Builders<AttractionManufacturer>.Filter.Empty).ToListAsync(cancellationToken);
+            Dictionary<string, AttractionManufacturer> manufacturersById = manufacturers.ToDictionary(item => item.Id, item => item, StringComparer.Ordinal);
 
-            foreach (CaptainCoasterParkSnapshot externalPark in externalParks)
+            IEnumerable<IGrouping<string, CaptainCoasterParkSnapshot>> parkGroups = externalParks
+                .GroupBy(item => item.CaptainCoasterId, StringComparer.Ordinal);
+            foreach (IGrouping<string, CaptainCoasterParkSnapshot> group in parkGroups)
             {
-                Park? localPark = MatchPark(localParks, externalPark);
-                CaptainCoasterComparisonResult compResult = BuildParkComparison(sessionId, localPark, externalPark);
-                if (!string.Equals(compResult.ChangeType, "Identical", StringComparison.Ordinal))
+                List<CaptainCoasterParkSnapshot> variants = group.ToList();
+                if (variants.Count == 1)
                 {
-                    results.Add(compResult);
+                    CaptainCoasterParkSnapshot externalPark = variants[0];
+                    Park? localPark = MatchPark(localParks, externalPark);
+                    CaptainCoasterComparisonResult compResult = BuildParkComparison(sessionId, localPark, externalPark);
+                    if (!string.Equals(compResult.ChangeType, "Identical", StringComparison.Ordinal))
+                    {
+                        results.Add(compResult);
+                    }
+                }
+                else
+                {
+                    results.Add(BuildDuplicateParkComparison(sessionId, localParks, variants));
                 }
             }
 
-            foreach (CaptainCoasterCoasterSnapshot externalCoaster in externalCoasters)
+            IEnumerable<IGrouping<string, CaptainCoasterCoasterSnapshot>> coasterGroups = externalCoasters
+                .GroupBy(item => item.CaptainCoasterId, StringComparer.Ordinal);
+            foreach (IGrouping<string, CaptainCoasterCoasterSnapshot> group in coasterGroups)
             {
-                ParkItem? localCoaster = MatchCoaster(localCoasters, localParks, externalCoaster);
-                CaptainCoasterComparisonResult compResult = BuildCoasterComparison(sessionId, localCoaster, externalCoaster);
-                if (!string.Equals(compResult.ChangeType, "Identical", StringComparison.Ordinal))
+                List<CaptainCoasterCoasterSnapshot> variants = group.ToList();
+                if (variants.Count == 1)
                 {
-                    results.Add(compResult);
+                    CaptainCoasterCoasterSnapshot externalCoaster = variants[0];
+                    ParkItem? localCoaster = MatchCoaster(localCoasters, localParks, externalCoaster);
+                    CaptainCoasterComparisonResult compResult = BuildCoasterComparison(sessionId, localCoaster, externalCoaster, manufacturersById);
+                    if (!string.Equals(compResult.ChangeType, "Identical", StringComparison.Ordinal))
+                    {
+                        results.Add(compResult);
+                    }
+                }
+                else
+                {
+                    results.Add(BuildDuplicateCoasterComparison(sessionId, localCoasters, localParks, manufacturersById, variants));
                 }
             }
 
@@ -484,10 +534,7 @@ namespace WebAPI.Features.CaptainCoaster.Services
 
         private static CaptainCoasterComparisonResult BuildParkComparison(string sessionId, Park? localPark, CaptainCoasterParkSnapshot externalPark)
         {
-            List<CaptainCoasterFieldChange> changes = new List<CaptainCoasterFieldChange>();
-            AddChange(changes, "name", localPark?.Name, externalPark.Name);
-            AddChange(changes, "countryCode", localPark?.CountryCode, externalPark.CountryCode);
-
+            List<CaptainCoasterFieldChange> changes = BuildParkChanges(localPark, externalPark);
             string changeType = localPark == null ? "MissingLocal" : (changes.Any(item => item.IsDifferent) ? "Updated" : "Identical");
             string matchConfidence = localPark == null ? "None" : "High";
 
@@ -501,16 +548,206 @@ namespace WebAPI.Features.CaptainCoaster.Services
                 ExternalEntityId = externalPark.CaptainCoasterId,
                 MatchConfidence = matchConfidence,
                 Changes = changes,
+                HasExternalDuplicates = false,
+                RequiresManualResolution = false,
+                ResolutionStatus = "NotRequired",
+                ExternalVariants = new List<CaptainCoasterExternalVariantOption>
+                {
+                    new CaptainCoasterExternalVariantOption
+                    {
+                        ExternalVariantId = externalPark.Id,
+                        DisplayLabel = BuildParkVariantLabel(externalPark),
+                        CandidateLocalEntityId = localPark?.Id,
+                        SourceUrl = externalPark.SourceUrl,
+                        IsSuggested = true,
+                        Changes = changes
+                    }
+                },
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
             };
         }
 
-        private static CaptainCoasterComparisonResult BuildCoasterComparison(string sessionId, ParkItem? localCoaster, CaptainCoasterCoasterSnapshot externalCoaster)
+        private static CaptainCoasterComparisonResult BuildDuplicateParkComparison(
+            string sessionId,
+            IReadOnlyCollection<Park> localParks,
+            IReadOnlyCollection<CaptainCoasterParkSnapshot> variants)
+        {
+            List<CaptainCoasterExternalVariantOption> options = variants
+                .Select(variant => BuildParkVariantOption(localParks, variant))
+                .ToList();
+            MarkSuggestedVariant(options);
+
+            CaptainCoasterExternalVariantOption? suggested = options.FirstOrDefault(item => item.IsSuggested) ?? options.FirstOrDefault();
+            List<CaptainCoasterFieldChange> summaryChanges = new List<CaptainCoasterFieldChange>();
+            AddChange(summaryChanges, "duplicateVariants", null, variants.Count.ToString(CultureInfo.InvariantCulture));
+
+            return new CaptainCoasterComparisonResult
+            {
+                SyncSessionId = sessionId,
+                EntityType = "Park",
+                ChangeType = "DuplicateExternal",
+                DisplayName = string.Join(" / ", variants.Select(item => item.Name).Distinct(StringComparer.Ordinal)),
+                LocalEntityId = suggested?.CandidateLocalEntityId,
+                ExternalEntityId = variants.ToList()[0].CaptainCoasterId,
+                MatchConfidence = "Manual",
+                Changes = summaryChanges,
+                HasExternalDuplicates = true,
+                RequiresManualResolution = true,
+                ResolutionStatus = "Pending",
+                ExternalVariants = options,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            };
+        }
+
+        private static CaptainCoasterComparisonResult BuildCoasterComparison(string sessionId, ParkItem? localCoaster, CaptainCoasterCoasterSnapshot externalCoaster, IReadOnlyDictionary<string, AttractionManufacturer> manufacturersById)
+        {
+            List<CaptainCoasterFieldChange> changes = BuildCoasterChanges(localCoaster, externalCoaster, manufacturersById);
+            string changeType = localCoaster == null ? "MissingLocal" : (changes.Any(item => item.IsDifferent) ? "Updated" : "Identical");
+            string matchConfidence = localCoaster == null ? "None" : "Medium";
+
+            return new CaptainCoasterComparisonResult
+            {
+                SyncSessionId = sessionId,
+                EntityType = "Coaster",
+                ChangeType = changeType,
+                DisplayName = externalCoaster.Name,
+                LocalEntityId = localCoaster?.Id,
+                ExternalEntityId = externalCoaster.CaptainCoasterId,
+                MatchConfidence = matchConfidence,
+                Changes = changes,
+                HasExternalDuplicates = false,
+                RequiresManualResolution = false,
+                ResolutionStatus = "NotRequired",
+                ExternalVariants = new List<CaptainCoasterExternalVariantOption>
+                {
+                    new CaptainCoasterExternalVariantOption
+                    {
+                        ExternalVariantId = externalCoaster.Id,
+                        DisplayLabel = BuildCoasterVariantLabel(externalCoaster),
+                        CandidateLocalEntityId = localCoaster?.Id,
+                        SourceUrl = externalCoaster.SourceUrl,
+                        IsSuggested = true,
+                        Changes = changes
+                    }
+                },
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            };
+        }
+
+        private static CaptainCoasterComparisonResult BuildDuplicateCoasterComparison(
+            string sessionId,
+            IReadOnlyCollection<ParkItem> localCoasters,
+            IReadOnlyCollection<Park> localParks,
+            IReadOnlyDictionary<string, AttractionManufacturer> manufacturersById,
+            IReadOnlyCollection<CaptainCoasterCoasterSnapshot> variants)
+        {
+            List<CaptainCoasterExternalVariantOption> options = variants
+                .Select(variant => BuildCoasterVariantOption(localCoasters, localParks, manufacturersById, variant))
+                .ToList();
+            MarkSuggestedVariant(options);
+
+            CaptainCoasterExternalVariantOption? suggested = options.FirstOrDefault(item => item.IsSuggested) ?? options.FirstOrDefault();
+            List<CaptainCoasterFieldChange> summaryChanges = new List<CaptainCoasterFieldChange>();
+            AddChange(summaryChanges, "duplicateVariants", null, variants.Count.ToString(CultureInfo.InvariantCulture));
+
+            return new CaptainCoasterComparisonResult
+            {
+                SyncSessionId = sessionId,
+                EntityType = "Coaster",
+                ChangeType = "DuplicateExternal",
+                DisplayName = string.Join(" / ", variants.Select(item => item.Name).Distinct(StringComparer.Ordinal)),
+                LocalEntityId = suggested?.CandidateLocalEntityId,
+                ExternalEntityId = variants.ToList()[0].CaptainCoasterId,
+                MatchConfidence = "Manual",
+                Changes = summaryChanges,
+                HasExternalDuplicates = true,
+                RequiresManualResolution = true,
+                ResolutionStatus = "Pending",
+                ExternalVariants = options,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            };
+        }
+
+        private static CaptainCoasterExternalVariantOption BuildParkVariantOption(
+            IReadOnlyCollection<Park> localParks,
+            CaptainCoasterParkSnapshot variant)
+        {
+            Park? localPark = MatchPark(localParks, variant);
+            return new CaptainCoasterExternalVariantOption
+            {
+                ExternalVariantId = variant.Id,
+                DisplayLabel = BuildParkVariantLabel(variant),
+                CandidateLocalEntityId = localPark?.Id,
+                SourceUrl = variant.SourceUrl,
+                Changes = BuildParkChanges(localPark, variant)
+            };
+        }
+
+        private static CaptainCoasterExternalVariantOption BuildCoasterVariantOption(
+            IReadOnlyCollection<ParkItem> localCoasters,
+            IReadOnlyCollection<Park> localParks,
+            IReadOnlyDictionary<string, AttractionManufacturer> manufacturersById,
+            CaptainCoasterCoasterSnapshot variant)
+        {
+            ParkItem? localCoaster = MatchCoaster(localCoasters, localParks, variant);
+            return new CaptainCoasterExternalVariantOption
+            {
+                ExternalVariantId = variant.Id,
+                DisplayLabel = BuildCoasterVariantLabel(variant),
+                CandidateLocalEntityId = localCoaster?.Id,
+                SourceUrl = variant.SourceUrl,
+                Changes = BuildCoasterChanges(localCoaster, variant, manufacturersById)
+            };
+        }
+
+        private static void MarkSuggestedVariant(List<CaptainCoasterExternalVariantOption> options)
+        {
+            if (options.Count == 0)
+            {
+                return;
+            }
+
+            List<CaptainCoasterExternalVariantOption> matchingLocal = options
+                .Where(item => !string.IsNullOrWhiteSpace(item.CandidateLocalEntityId))
+                .ToList();
+
+            CaptainCoasterExternalVariantOption? suggested = null;
+            if (matchingLocal.Count == 1)
+            {
+                suggested = matchingLocal[0];
+            }
+            else
+            {
+                suggested = options
+                    .OrderBy(item => item.Changes.Count(change => change.IsDifferent))
+                    .ThenBy(item => item.DisplayLabel)
+                    .FirstOrDefault();
+            }
+
+            if (suggested != null)
+            {
+                suggested.IsSuggested = true;
+            }
+        }
+
+        private static List<CaptainCoasterFieldChange> BuildParkChanges(Park? localPark, CaptainCoasterParkSnapshot externalPark)
+        {
+            List<CaptainCoasterFieldChange> changes = new List<CaptainCoasterFieldChange>();
+            AddChange(changes, "name", localPark?.Name, externalPark.Name);
+            AddChange(changes, "countryCode", localPark?.CountryCode, externalPark.CountryCode);
+            return changes;
+        }
+
+        private static List<CaptainCoasterFieldChange> BuildCoasterChanges(ParkItem? localCoaster, CaptainCoasterCoasterSnapshot externalCoaster, IReadOnlyDictionary<string, AttractionManufacturer> manufacturersById)
         {
             List<CaptainCoasterFieldChange> changes = new List<CaptainCoasterFieldChange>();
             AddChange(changes, "name", localCoaster?.Name, externalCoaster.Name);
-            AddChange(changes, "manufacturer", localCoaster?.AttractionDetails?.ManufacturerId, externalCoaster.Manufacturer);
+            string? localManufacturerName = ResolveManufacturerName(localCoaster?.AttractionDetails?.ManufacturerId, manufacturersById);
+            AddChange(changes, "manufacturer", localManufacturerName, externalCoaster.Manufacturer);
             AddChange(changes, "model", localCoaster?.AttractionDetails?.Model, externalCoaster.Model);
             AddChange(changes, "externalSource", localCoaster?.AttractionDetails?.ExternalSource, "CaptainCoaster");
             AddChange(changes, "externalId", localCoaster?.AttractionDetails?.ExternalId, externalCoaster.CaptainCoasterId);
@@ -530,23 +767,32 @@ namespace WebAPI.Features.CaptainCoaster.Services
             AddChange(changes, "speedInMph", FormatDouble(localCoaster?.AttractionDetails?.SpeedInMph), FormatDouble(ConvertKmHToMph(externalCoaster.SpeedInKmH)));
             AddChange(changes, "speedInKmH", FormatDouble(localCoaster?.AttractionDetails?.SpeedInKmH), FormatDouble(externalCoaster.SpeedInKmH));
             AddChange(changes, "inversionCount", localCoaster?.AttractionDetails?.InversionCount?.ToString(CultureInfo.InvariantCulture), externalCoaster.InversionCount?.ToString(CultureInfo.InvariantCulture));
+            return changes;
+        }
 
-            string changeType = localCoaster == null ? "MissingLocal" : (changes.Any(item => item.IsDifferent) ? "Updated" : "Identical");
-            string matchConfidence = localCoaster == null ? "None" : "Medium";
+        private static string BuildParkVariantLabel(CaptainCoasterParkSnapshot externalPark)
+        {
+            string country = string.IsNullOrWhiteSpace(externalPark.CountryCode) ? externalPark.CountryRaw ?? "?" : externalPark.CountryCode;
+            return $"{externalPark.Name} — {country}";
+        }
 
-            return new CaptainCoasterComparisonResult
+        private static string? ResolveManufacturerName(string? manufacturerId, IReadOnlyDictionary<string, AttractionManufacturer> manufacturersById)
+        {
+            if (string.IsNullOrWhiteSpace(manufacturerId))
             {
-                SyncSessionId = sessionId,
-                EntityType = "Coaster",
-                ChangeType = changeType,
-                DisplayName = externalCoaster.Name,
-                LocalEntityId = localCoaster?.Id,
-                ExternalEntityId = externalCoaster.CaptainCoasterId,
-                MatchConfidence = matchConfidence,
-                Changes = changes,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
-            };
+                return null;
+            }
+
+            return manufacturersById.TryGetValue(manufacturerId, out AttractionManufacturer? manufacturer)
+                ? manufacturer.Name
+                : manufacturerId;
+        }
+
+        private static string BuildCoasterVariantLabel(CaptainCoasterCoasterSnapshot externalCoaster)
+        {
+            string parkName = string.IsNullOrWhiteSpace(externalCoaster.ParkName) ? "Parc inconnu" : externalCoaster.ParkName;
+            string manufacturer = string.IsNullOrWhiteSpace(externalCoaster.Manufacturer) ? "Constructeur inconnu" : externalCoaster.Manufacturer;
+            return $"{externalCoaster.Name} — {parkName} — {manufacturer}";
         }
 
         private static Park? MatchPark(IEnumerable<Park> localParks, CaptainCoasterParkSnapshot externalPark)
@@ -574,20 +820,24 @@ namespace WebAPI.Features.CaptainCoaster.Services
         // Apply
         // -----------------------------------------------------------------------
 
-        private async Task<bool> ApplyParkResultAsync(CaptainCoasterComparisonResult result, CancellationToken cancellationToken)
+        private async Task<bool> ApplyParkResultAsync(
+            CaptainCoasterComparisonResult result,
+            CaptainCoasterDuplicateResolutionRequest? resolution,
+            CancellationToken cancellationToken)
         {
-            if (string.IsNullOrWhiteSpace(result.ExternalEntityId)) { return false; }
+            CaptainCoasterParkSnapshot? externalPark = await ResolveParkSnapshotAsync(result, resolution, cancellationToken);
+            if (externalPark == null)
+            {
+                return false;
+            }
 
-            CaptainCoasterParkSnapshot? externalPark = await parksCollection
-                .Find(item => item.CaptainCoasterId == result.ExternalEntityId && item.SyncSessionId == result.SyncSessionId)
-                .FirstOrDefaultAsync(cancellationToken);
-            if (externalPark == null) { return false; }
-
+            List<Park> localParks = await localParksCollection.Find(Builders<Park>.Filter.Empty).ToListAsync(cancellationToken);
             Park? localPark = null;
             if (!string.IsNullOrWhiteSpace(result.LocalEntityId))
             {
-                localPark = await localParksCollection.Find(item => item.Id == result.LocalEntityId).FirstOrDefaultAsync(cancellationToken);
+                localPark = localParks.FirstOrDefault(item => item.Id == result.LocalEntityId);
             }
+            localPark ??= MatchPark(localParks, externalPark);
 
             if (localPark == null)
             {
@@ -607,48 +857,50 @@ namespace WebAPI.Features.CaptainCoaster.Services
             {
                 localPark.Name = externalPark.Name;
                 localPark.CountryCode = externalPark.CountryCode;
+                localPark.Latitude = externalPark.Latitude;
+                localPark.Longitude = externalPark.Longitude;
                 localPark.UpdatedAt = DateTime.UtcNow;
                 await localParksCollection.ReplaceOneAsync(item => item.Id == localPark.Id, localPark, cancellationToken: cancellationToken);
             }
 
             result.IsApplied = true;
+            result.LocalEntityId = localPark.Id;
+            result.AppliedExternalVariantId = externalPark.Id;
+            result.ResolutionStatus = result.RequiresManualResolution ? (resolution?.Strategy ?? "SelectVariant") : "Applied";
             result.UpdatedAt = DateTime.UtcNow;
             await comparisonCollection.ReplaceOneAsync(item => item.Id == result.Id, result, cancellationToken: cancellationToken);
             return true;
         }
 
-        private async Task<bool> ApplyCoasterResultAsync(CaptainCoasterComparisonResult result, CancellationToken cancellationToken)
+        private async Task<bool> ApplyCoasterResultAsync(
+            CaptainCoasterComparisonResult result,
+            CaptainCoasterDuplicateResolutionRequest? resolution,
+            CancellationToken cancellationToken)
         {
-            if (string.IsNullOrWhiteSpace(result.ExternalEntityId)) { return false; }
-
-            CaptainCoasterCoasterSnapshot? externalCoaster = await coastersCollection
-                .Find(item => item.CaptainCoasterId == result.ExternalEntityId && item.SyncSessionId == result.SyncSessionId)
-                .FirstOrDefaultAsync(cancellationToken);
-            if (externalCoaster == null) { return false; }
-
-            Park? park = null;
-            if (!string.IsNullOrWhiteSpace(externalCoaster.ParkName))
+            CaptainCoasterCoasterSnapshot? externalCoaster = await ResolveCoasterSnapshotAsync(result, resolution, cancellationToken);
+            if (externalCoaster == null)
             {
-                park = await localParksCollection.Find(item => item.Name == externalCoaster.ParkName).FirstOrDefaultAsync(cancellationToken);
+                return false;
             }
-            if (park == null) { return false; }
 
-            AttractionManufacturer? manufacturer = null;
-            if (!string.IsNullOrWhiteSpace(externalCoaster.Manufacturer))
+            Park? park = await ResolveOrCreateLocalParkForCoasterAsync(result.SyncSessionId, externalCoaster, cancellationToken);
+            if (park == null)
             {
-                manufacturer = await manufacturersCollection.Find(item => item.Name == externalCoaster.Manufacturer).FirstOrDefaultAsync(cancellationToken);
-                if (manufacturer == null)
-                {
-                    manufacturer = new AttractionManufacturer { Name = externalCoaster.Manufacturer, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow };
-                    await manufacturersCollection.InsertOneAsync(manufacturer, cancellationToken: cancellationToken);
-                }
+                return false;
             }
+
+            AttractionManufacturer? manufacturer = await ResolveManufacturerAsync(externalCoaster.Manufacturer, cancellationToken);
+            List<Park> localParks = await localParksCollection.Find(Builders<Park>.Filter.Empty).ToListAsync(cancellationToken);
+            List<ParkItem> localCoasters = await localParkItemsCollection
+                .Find(item => item.Category == ParkItemCategory.Attraction)
+                .ToListAsync(cancellationToken);
 
             ParkItem? localCoaster = null;
             if (!string.IsNullOrWhiteSpace(result.LocalEntityId))
             {
-                localCoaster = await localParkItemsCollection.Find(item => item.Id == result.LocalEntityId).FirstOrDefaultAsync(cancellationToken);
+                localCoaster = localCoasters.FirstOrDefault(item => item.Id == result.LocalEntityId);
             }
+            localCoaster ??= MatchCoaster(localCoasters, localParks, externalCoaster);
 
             AttractionDetails attractionDetails = localCoaster?.AttractionDetails ?? new AttractionDetails();
             attractionDetails.ManufacturerId = manufacturer?.Id;
@@ -697,11 +949,446 @@ namespace WebAPI.Features.CaptainCoaster.Services
             }
 
             result.IsApplied = true;
+            result.LocalEntityId = localCoaster.Id;
+            result.AppliedExternalVariantId = externalCoaster.Id;
+            result.ResolutionStatus = result.RequiresManualResolution ? (resolution?.Strategy ?? "SelectVariant") : "Applied";
             result.UpdatedAt = DateTime.UtcNow;
             await comparisonCollection.ReplaceOneAsync(item => item.Id == result.Id, result, cancellationToken: cancellationToken);
             return true;
         }
 
+        private async Task<CaptainCoasterParkSnapshot?> ResolveParkSnapshotAsync(
+            CaptainCoasterComparisonResult result,
+            CaptainCoasterDuplicateResolutionRequest? resolution,
+            CancellationToken cancellationToken)
+        {
+            if (!result.RequiresManualResolution)
+            {
+                string? snapshotId = result.ExternalVariants.FirstOrDefault()?.ExternalVariantId;
+                if (!string.IsNullOrWhiteSpace(snapshotId))
+                {
+                    return await parksCollection.Find(item => item.Id == snapshotId).FirstOrDefaultAsync(cancellationToken);
+                }
+
+                return await parksCollection
+                    .Find(item => item.CaptainCoasterId == result.ExternalEntityId && item.SyncSessionId == result.SyncSessionId)
+                    .FirstOrDefaultAsync(cancellationToken);
+            }
+
+            if (resolution == null)
+            {
+                return null;
+            }
+
+            List<CaptainCoasterParkSnapshot> parkVariants = await parksCollection
+                .Find(item => item.SyncSessionId == result.SyncSessionId && item.CaptainCoasterId == result.ExternalEntityId)
+                .ToListAsync(cancellationToken);
+            Dictionary<string, CaptainCoasterParkSnapshot> variantsById = parkVariants
+                .ToDictionary(item => item.Id, item => item, StringComparer.Ordinal);
+
+            if (variantsById.Count == 0)
+            {
+                return null;
+            }
+
+            if (string.Equals(resolution.Strategy, "Merge", StringComparison.OrdinalIgnoreCase))
+            {
+                Park? localPark = null;
+                if (!string.IsNullOrWhiteSpace(result.LocalEntityId))
+                {
+                    localPark = await localParksCollection.Find(item => item.Id == result.LocalEntityId).FirstOrDefaultAsync(cancellationToken);
+                }
+                return BuildMergedParkSnapshot(result, resolution, variantsById, localPark);
+            }
+
+            if (string.IsNullOrWhiteSpace(resolution.SelectedExternalVariantId))
+            {
+                return null;
+            }
+
+            variantsById.TryGetValue(resolution.SelectedExternalVariantId, out CaptainCoasterParkSnapshot? selected);
+            return selected;
+        }
+
+        private async Task<CaptainCoasterCoasterSnapshot?> ResolveCoasterSnapshotAsync(
+            CaptainCoasterComparisonResult result,
+            CaptainCoasterDuplicateResolutionRequest? resolution,
+            CancellationToken cancellationToken)
+        {
+            if (!result.RequiresManualResolution)
+            {
+                string? snapshotId = result.ExternalVariants.FirstOrDefault()?.ExternalVariantId;
+                if (!string.IsNullOrWhiteSpace(snapshotId))
+                {
+                    return await coastersCollection.Find(item => item.Id == snapshotId).FirstOrDefaultAsync(cancellationToken);
+                }
+
+                return await coastersCollection
+                    .Find(item => item.CaptainCoasterId == result.ExternalEntityId && item.SyncSessionId == result.SyncSessionId)
+                    .FirstOrDefaultAsync(cancellationToken);
+            }
+
+            if (resolution == null)
+            {
+                return null;
+            }
+
+            List<CaptainCoasterCoasterSnapshot> coasterVariants = await coastersCollection
+                .Find(item => item.SyncSessionId == result.SyncSessionId && item.CaptainCoasterId == result.ExternalEntityId)
+                .ToListAsync(cancellationToken);
+            Dictionary<string, CaptainCoasterCoasterSnapshot> variantsById = coasterVariants
+                .ToDictionary(item => item.Id, item => item, StringComparer.Ordinal);
+
+            if (variantsById.Count == 0)
+            {
+                return null;
+            }
+
+            if (string.Equals(resolution.Strategy, "Merge", StringComparison.OrdinalIgnoreCase))
+            {
+                ParkItem? localCoaster = null;
+                if (!string.IsNullOrWhiteSpace(result.LocalEntityId))
+                {
+                    localCoaster = await localParkItemsCollection.Find(item => item.Id == result.LocalEntityId).FirstOrDefaultAsync(cancellationToken);
+                }
+                return BuildMergedCoasterSnapshot(result, resolution, variantsById, localCoaster);
+            }
+
+            if (string.IsNullOrWhiteSpace(resolution.SelectedExternalVariantId))
+            {
+                return null;
+            }
+
+            variantsById.TryGetValue(resolution.SelectedExternalVariantId, out CaptainCoasterCoasterSnapshot? selected);
+            return selected;
+        }
+
+        private static CaptainCoasterParkSnapshot? BuildMergedParkSnapshot(
+            CaptainCoasterComparisonResult result,
+            CaptainCoasterDuplicateResolutionRequest resolution,
+            IReadOnlyDictionary<string, CaptainCoasterParkSnapshot> variantsById,
+            Park? localPark)
+        {
+            CaptainCoasterParkSnapshot? baseVariant = GetBaseParkVariant(result, resolution, variantsById);
+            if (baseVariant == null)
+            {
+                return null;
+            }
+
+            CaptainCoasterParkSnapshot merged = CloneParkSnapshot(baseVariant);
+            foreach (CaptainCoasterFieldResolutionRequest fieldResolution in resolution.FieldResolutions)
+            {
+                ApplyParkFieldResolution(merged, fieldResolution, variantsById, localPark);
+            }
+
+            merged.Id = Guid.NewGuid().ToString();
+            merged.CreatedAt = DateTime.UtcNow;
+            merged.UpdatedAt = DateTime.UtcNow;
+            return merged;
+        }
+
+        private static CaptainCoasterCoasterSnapshot? BuildMergedCoasterSnapshot(
+            CaptainCoasterComparisonResult result,
+            CaptainCoasterDuplicateResolutionRequest resolution,
+            IReadOnlyDictionary<string, CaptainCoasterCoasterSnapshot> variantsById,
+            ParkItem? localCoaster)
+        {
+            CaptainCoasterCoasterSnapshot? baseVariant = GetBaseCoasterVariant(result, resolution, variantsById);
+            if (baseVariant == null)
+            {
+                return null;
+            }
+
+            CaptainCoasterCoasterSnapshot merged = CloneCoasterSnapshot(baseVariant);
+            foreach (CaptainCoasterFieldResolutionRequest fieldResolution in resolution.FieldResolutions)
+            {
+                ApplyCoasterFieldResolution(merged, fieldResolution, variantsById, localCoaster);
+            }
+
+            merged.Id = Guid.NewGuid().ToString();
+            merged.CreatedAt = DateTime.UtcNow;
+            merged.UpdatedAt = DateTime.UtcNow;
+            return merged;
+        }
+
+        private static CaptainCoasterParkSnapshot? GetBaseParkVariant(
+            CaptainCoasterComparisonResult result,
+            CaptainCoasterDuplicateResolutionRequest resolution,
+            IReadOnlyDictionary<string, CaptainCoasterParkSnapshot> variantsById)
+        {
+            string? candidateId = resolution.SelectedExternalVariantId
+                ?? result.ExternalVariants.FirstOrDefault(item => item.IsSuggested)?.ExternalVariantId
+                ?? result.ExternalVariants.FirstOrDefault()?.ExternalVariantId;
+            if (string.IsNullOrWhiteSpace(candidateId))
+            {
+                return null;
+            }
+
+            variantsById.TryGetValue(candidateId, out CaptainCoasterParkSnapshot? variant);
+            return variant;
+        }
+
+        private static CaptainCoasterCoasterSnapshot? GetBaseCoasterVariant(
+            CaptainCoasterComparisonResult result,
+            CaptainCoasterDuplicateResolutionRequest resolution,
+            IReadOnlyDictionary<string, CaptainCoasterCoasterSnapshot> variantsById)
+        {
+            string? candidateId = resolution.SelectedExternalVariantId
+                ?? result.ExternalVariants.FirstOrDefault(item => item.IsSuggested)?.ExternalVariantId
+                ?? result.ExternalVariants.FirstOrDefault()?.ExternalVariantId;
+            if (string.IsNullOrWhiteSpace(candidateId))
+            {
+                return null;
+            }
+
+            variantsById.TryGetValue(candidateId, out CaptainCoasterCoasterSnapshot? variant);
+            return variant;
+        }
+
+        private static CaptainCoasterParkSnapshot CloneParkSnapshot(CaptainCoasterParkSnapshot source)
+        {
+            return new CaptainCoasterParkSnapshot
+            {
+                SyncSessionId = source.SyncSessionId,
+                CaptainCoasterId = source.CaptainCoasterId,
+                Name = source.Name,
+                Slug = source.Slug,
+                SourceUrl = source.SourceUrl,
+                CountryCode = source.CountryCode,
+                CountryRaw = source.CountryRaw,
+                Latitude = source.Latitude,
+                Longitude = source.Longitude,
+                CoasterCount = source.CoasterCount,
+                SampleCoasterNames = source.SampleCoasterNames.ToList(),
+                ScrapedAtUtc = source.ScrapedAtUtc
+            };
+        }
+
+        private static CaptainCoasterCoasterSnapshot CloneCoasterSnapshot(CaptainCoasterCoasterSnapshot source)
+        {
+            return new CaptainCoasterCoasterSnapshot
+            {
+                SyncSessionId = source.SyncSessionId,
+                CaptainCoasterId = source.CaptainCoasterId,
+                Name = source.Name,
+                Slug = source.Slug,
+                SourceUrl = source.SourceUrl,
+                ParkCaptainCoasterId = source.ParkCaptainCoasterId,
+                ParkName = source.ParkName,
+                Manufacturer = source.Manufacturer,
+                Model = source.Model,
+                MaterialType = source.MaterialType,
+                SeatingType = source.SeatingType,
+                LaunchType = source.LaunchType,
+                Restraint = source.Restraint,
+                IsLaunched = source.IsLaunched,
+                SpeedInKmH = source.SpeedInKmH,
+                HeightInMeters = source.HeightInMeters,
+                LengthInMeters = source.LengthInMeters,
+                DropInMeters = source.DropInMeters,
+                InversionCount = source.InversionCount,
+                Status = source.Status,
+                OpeningDate = source.OpeningDate,
+                ClosingDate = source.ClosingDate,
+                ScrapedAtUtc = source.ScrapedAtUtc
+            };
+        }
+
+        private static void ApplyParkFieldResolution(
+            CaptainCoasterParkSnapshot target,
+            CaptainCoasterFieldResolutionRequest fieldResolution,
+            IReadOnlyDictionary<string, CaptainCoasterParkSnapshot> variantsById,
+            Park? localPark)
+        {
+            if (string.Equals(fieldResolution.SourceType, "Local", StringComparison.OrdinalIgnoreCase))
+            {
+                if (string.Equals(fieldResolution.Field, "name", StringComparison.OrdinalIgnoreCase))
+                {
+                    target.Name = localPark?.Name ?? target.Name;
+                }
+                else if (string.Equals(fieldResolution.Field, "countryCode", StringComparison.OrdinalIgnoreCase))
+                {
+                    target.CountryCode = localPark?.CountryCode ?? target.CountryCode;
+                }
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(fieldResolution.ExternalVariantId))
+            {
+                return;
+            }
+            if (!variantsById.TryGetValue(fieldResolution.ExternalVariantId, out CaptainCoasterParkSnapshot? source))
+            {
+                return;
+            }
+
+            if (string.Equals(fieldResolution.Field, "name", StringComparison.OrdinalIgnoreCase))
+            {
+                target.Name = source.Name;
+            }
+            else if (string.Equals(fieldResolution.Field, "countryCode", StringComparison.OrdinalIgnoreCase))
+            {
+                target.CountryCode = source.CountryCode;
+            }
+        }
+
+        private static void ApplyCoasterFieldResolution(
+            CaptainCoasterCoasterSnapshot target,
+            CaptainCoasterFieldResolutionRequest fieldResolution,
+            IReadOnlyDictionary<string, CaptainCoasterCoasterSnapshot> variantsById,
+            ParkItem? localCoaster)
+        {
+            if (string.Equals(fieldResolution.SourceType, "Local", StringComparison.OrdinalIgnoreCase))
+            {
+                ApplyLocalCoasterField(target, fieldResolution.Field, localCoaster);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(fieldResolution.ExternalVariantId))
+            {
+                return;
+            }
+            if (!variantsById.TryGetValue(fieldResolution.ExternalVariantId, out CaptainCoasterCoasterSnapshot? source))
+            {
+                return;
+            }
+
+            ApplyExternalCoasterField(target, fieldResolution.Field, source);
+        }
+
+        private static void ApplyLocalCoasterField(CaptainCoasterCoasterSnapshot target, string field, ParkItem? localCoaster)
+        {
+            AttractionDetails? details = localCoaster?.AttractionDetails;
+            if (string.Equals(field, "name", StringComparison.OrdinalIgnoreCase)) { target.Name = localCoaster?.Name ?? target.Name; }
+            else if (string.Equals(field, "model", StringComparison.OrdinalIgnoreCase)) { target.Model = details?.Model; }
+            else if (string.Equals(field, "sourceUrl", StringComparison.OrdinalIgnoreCase)) { target.SourceUrl = details?.SourceUrl; }
+            else if (string.Equals(field, "status", StringComparison.OrdinalIgnoreCase)) { target.Status = details?.Status; }
+            else if (string.Equals(field, "materialType", StringComparison.OrdinalIgnoreCase)) { target.MaterialType = details?.MaterialType; }
+            else if (string.Equals(field, "seatingType", StringComparison.OrdinalIgnoreCase)) { target.SeatingType = details?.SeatingType; }
+            else if (string.Equals(field, "launchType", StringComparison.OrdinalIgnoreCase)) { target.LaunchType = details?.LaunchType; }
+            else if (string.Equals(field, "restraintType", StringComparison.OrdinalIgnoreCase)) { target.Restraint = details?.RestraintType; }
+            else if (string.Equals(field, "isLaunched", StringComparison.OrdinalIgnoreCase)) { target.IsLaunched = details?.IsLaunched ?? target.IsLaunched; }
+            else if (string.Equals(field, "openingDate", StringComparison.OrdinalIgnoreCase)) { target.OpeningDate = details?.OpeningDate; }
+            else if (string.Equals(field, "closingDate", StringComparison.OrdinalIgnoreCase)) { target.ClosingDate = details?.ClosingDate; }
+            else if (string.Equals(field, "heightInMeters", StringComparison.OrdinalIgnoreCase)) { target.HeightInMeters = details?.HeightInMeters; }
+            else if (string.Equals(field, "lengthInMeters", StringComparison.OrdinalIgnoreCase)) { target.LengthInMeters = details?.LengthInMeters; }
+            else if (string.Equals(field, "speedInKmH", StringComparison.OrdinalIgnoreCase)) { target.SpeedInKmH = details?.SpeedInKmH; }
+            else if (string.Equals(field, "inversionCount", StringComparison.OrdinalIgnoreCase)) { target.InversionCount = details?.InversionCount; }
+        }
+
+        private static void ApplyExternalCoasterField(CaptainCoasterCoasterSnapshot target, string field, CaptainCoasterCoasterSnapshot source)
+        {
+            if (string.Equals(field, "parkName", StringComparison.OrdinalIgnoreCase)) { target.ParkName = source.ParkName; target.ParkCaptainCoasterId = source.ParkCaptainCoasterId; }
+            else if (string.Equals(field, "name", StringComparison.OrdinalIgnoreCase)) { target.Name = source.Name; }
+            else if (string.Equals(field, "manufacturer", StringComparison.OrdinalIgnoreCase)) { target.Manufacturer = source.Manufacturer; }
+            else if (string.Equals(field, "model", StringComparison.OrdinalIgnoreCase)) { target.Model = source.Model; }
+            else if (string.Equals(field, "sourceUrl", StringComparison.OrdinalIgnoreCase)) { target.SourceUrl = source.SourceUrl; }
+            else if (string.Equals(field, "status", StringComparison.OrdinalIgnoreCase)) { target.Status = source.Status; }
+            else if (string.Equals(field, "materialType", StringComparison.OrdinalIgnoreCase)) { target.MaterialType = source.MaterialType; }
+            else if (string.Equals(field, "seatingType", StringComparison.OrdinalIgnoreCase)) { target.SeatingType = source.SeatingType; }
+            else if (string.Equals(field, "launchType", StringComparison.OrdinalIgnoreCase)) { target.LaunchType = source.LaunchType; }
+            else if (string.Equals(field, "restraintType", StringComparison.OrdinalIgnoreCase)) { target.Restraint = source.Restraint; }
+            else if (string.Equals(field, "isLaunched", StringComparison.OrdinalIgnoreCase)) { target.IsLaunched = source.IsLaunched; }
+            else if (string.Equals(field, "openingDate", StringComparison.OrdinalIgnoreCase)) { target.OpeningDate = source.OpeningDate; }
+            else if (string.Equals(field, "closingDate", StringComparison.OrdinalIgnoreCase)) { target.ClosingDate = source.ClosingDate; }
+            else if (string.Equals(field, "heightInMeters", StringComparison.OrdinalIgnoreCase)) { target.HeightInMeters = source.HeightInMeters; }
+            else if (string.Equals(field, "lengthInMeters", StringComparison.OrdinalIgnoreCase)) { target.LengthInMeters = source.LengthInMeters; }
+            else if (string.Equals(field, "speedInKmH", StringComparison.OrdinalIgnoreCase)) { target.SpeedInKmH = source.SpeedInKmH; }
+            else if (string.Equals(field, "inversionCount", StringComparison.OrdinalIgnoreCase)) { target.InversionCount = source.InversionCount; }
+        }
+
+        private async Task<Park?> ResolveOrCreateLocalParkForCoasterAsync(
+            string sessionId,
+            CaptainCoasterCoasterSnapshot externalCoaster,
+            CancellationToken cancellationToken)
+        {
+            List<Park> localParks = await localParksCollection.Find(Builders<Park>.Filter.Empty).ToListAsync(cancellationToken);
+            Park? localPark = null;
+
+            if (!string.IsNullOrWhiteSpace(externalCoaster.ParkCaptainCoasterId))
+            {
+                CaptainCoasterParkSnapshot? externalPark = await parksCollection
+                    .Find(item => item.SyncSessionId == sessionId && item.CaptainCoasterId == externalCoaster.ParkCaptainCoasterId)
+                    .FirstOrDefaultAsync(cancellationToken);
+                if (externalPark != null)
+                {
+                    localPark = MatchPark(localParks, externalPark);
+                    if (localPark == null)
+                    {
+                        localPark = new Park
+                        {
+                            Name = externalPark.Name,
+                            CountryCode = externalPark.CountryCode,
+                            Latitude = externalPark.Latitude,
+                            Longitude = externalPark.Longitude,
+                            IsVisible = false,
+                            CreatedAt = DateTime.UtcNow,
+                            UpdatedAt = DateTime.UtcNow
+                        };
+                        await localParksCollection.InsertOneAsync(localPark, cancellationToken: cancellationToken);
+                    }
+                }
+            }
+
+            if (localPark == null && !string.IsNullOrWhiteSpace(externalCoaster.ParkName))
+            {
+                localPark = localParks.FirstOrDefault(item => Normalize(item.Name) == Normalize(externalCoaster.ParkName));
+            }
+
+            if (localPark == null && !string.IsNullOrWhiteSpace(externalCoaster.ParkName))
+            {
+                localPark = new Park
+                {
+                    Name = externalCoaster.ParkName,
+                    CountryCode = null,
+                    Latitude = 0d,
+                    Longitude = 0d,
+                    IsVisible = false,
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                };
+                await localParksCollection.InsertOneAsync(localPark, cancellationToken: cancellationToken);
+            }
+
+            return localPark;
+        }
+
+        private async Task<AttractionManufacturer?> ResolveManufacturerAsync(string? manufacturerName, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(manufacturerName))
+            {
+                return null;
+            }
+
+            List<AttractionManufacturer> manufacturers = await manufacturersCollection.Find(Builders<AttractionManufacturer>.Filter.Empty).ToListAsync(cancellationToken);
+            AttractionManufacturer? manufacturer = manufacturers.FirstOrDefault(item => Normalize(item.Name) == Normalize(manufacturerName));
+            if (manufacturer != null)
+            {
+                return manufacturer;
+            }
+
+            manufacturer = new AttractionManufacturer
+            {
+                Name = manufacturerName.Trim(),
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            };
+            await manufacturersCollection.InsertOneAsync(manufacturer, cancellationToken: cancellationToken);
+            return manufacturer;
+        }
+
+        private static int GetEntityApplyPriority(string entityType)
+        {
+            if (string.Equals(entityType, "Park", StringComparison.OrdinalIgnoreCase))
+            {
+                return 0;
+            }
+            if (string.Equals(entityType, "Coaster", StringComparison.OrdinalIgnoreCase))
+            {
+                return 1;
+            }
+            return 99;
+        }
         // -----------------------------------------------------------------------
         // Session helpers
         // -----------------------------------------------------------------------
@@ -839,6 +1526,14 @@ namespace WebAPI.Features.CaptainCoaster.Services
             return builder.ToString();
         }
 
+        private static int CountDuplicateGroups(IEnumerable<string> values)
+        {
+            return values
+                .Where(item => !string.IsNullOrWhiteSpace(item))
+                .GroupBy(item => item.Trim(), StringComparer.Ordinal)
+                .Count(group => group.Count() > 1);
+        }
+
         private static double? ConvertMetersToFeet(double? value) => value == null ? null : Math.Round(value.Value * 3.28084d, 2, MidpointRounding.AwayFromZero);
         private static double? ConvertKmHToMph(double? value) => value == null ? null : Math.Round(value.Value * 0.621371d, 2, MidpointRounding.AwayFromZero);
         private static string? FormatDouble(double? value) => value?.ToString(CultureInfo.InvariantCulture);
@@ -859,6 +1554,7 @@ namespace WebAPI.Features.CaptainCoaster.Services
                 CoastersFetched = session.Metrics.CoastersFetched,
                 ComparisonResults = session.Metrics.ComparisonResults,
                 AppliedChanges = session.Metrics.AppliedChanges,
+                DuplicateConflicts = session.Metrics.DuplicateConflicts,
                 Logs = session.Logs.Select(item => new CaptainCoasterSyncLogResponse
                 {
                     OccurredAtUtc = item.OccurredAtUtc,
@@ -878,12 +1574,31 @@ namespace WebAPI.Features.CaptainCoaster.Services
                 ExternalEntityId = item.ExternalEntityId,
                 MatchConfidence = item.MatchConfidence,
                 IsApplied = item.IsApplied,
+                HasExternalDuplicates = item.HasExternalDuplicates,
+                RequiresManualResolution = item.RequiresManualResolution,
+                ResolutionStatus = item.ResolutionStatus,
+                AppliedExternalVariantId = item.AppliedExternalVariantId,
                 Changes = item.Changes.Select(change => new CaptainCoasterFieldChangeResponse
                 {
                     Field = change.Field,
                     LocalValue = change.LocalValue,
                     ExternalValue = change.ExternalValue,
                     IsDifferent = change.IsDifferent
+                }).ToList(),
+                ExternalVariants = item.ExternalVariants.Select(variant => new CaptainCoasterExternalVariantResponse
+                {
+                    ExternalVariantId = variant.ExternalVariantId,
+                    DisplayLabel = variant.DisplayLabel,
+                    CandidateLocalEntityId = variant.CandidateLocalEntityId,
+                    SourceUrl = variant.SourceUrl,
+                    IsSuggested = variant.IsSuggested,
+                    Changes = variant.Changes.Select(change => new CaptainCoasterFieldChangeResponse
+                    {
+                        Field = change.Field,
+                        LocalValue = change.LocalValue,
+                        ExternalValue = change.ExternalValue,
+                        IsDifferent = change.IsDifferent
+                    }).ToList()
                 }).ToList()
             };
     }

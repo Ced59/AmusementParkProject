@@ -28,6 +28,7 @@ export interface CaptainCoasterSessionResponse {
   coastersFetched: number;
   comparisonResults: number;
   appliedChanges: number;
+  duplicateConflicts: number;
   logs: CaptainCoasterSessionLogResponse[];
 }
 
@@ -44,6 +45,7 @@ export interface CaptainCoasterComparisonPagedResponse {
   pageSize: number;
   sessionUpdatedCount: number;
   sessionMissingCount: number;
+  sessionDuplicateCount: number;
   sessionAppliedCount: number;
 }
 
@@ -56,6 +58,20 @@ export interface CaptainCoasterComparisonResultResponse {
   externalEntityId: string | null;
   matchConfidence: string;
   isApplied: boolean;
+  hasExternalDuplicates: boolean;
+  requiresManualResolution: boolean;
+  resolutionStatus: string;
+  appliedExternalVariantId: string | null;
+  changes: CaptainCoasterFieldChangeResponse[];
+  externalVariants: CaptainCoasterExternalVariantResponse[];
+}
+
+export interface CaptainCoasterExternalVariantResponse {
+  externalVariantId: string;
+  displayLabel: string;
+  candidateLocalEntityId: string | null;
+  sourceUrl: string | null;
+  isSuggested: boolean;
   changes: CaptainCoasterFieldChangeResponse[];
 }
 
@@ -64,6 +80,19 @@ export interface CaptainCoasterFieldChangeResponse {
   localValue: string | null;
   externalValue: string | null;
   isDifferent: boolean;
+}
+
+export interface CaptainCoasterDuplicateResolutionRequest {
+  comparisonResultId: string;
+  strategy: 'SelectVariant' | 'Merge';
+  selectedExternalVariantId: string | null;
+  fieldResolutions: CaptainCoasterFieldResolutionRequest[];
+}
+
+export interface CaptainCoasterFieldResolutionRequest {
+  field: string;
+  sourceType: 'Variant' | 'Local';
+  externalVariantId: string | null;
 }
 
 export interface ComparisonFilters {

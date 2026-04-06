@@ -21,6 +21,7 @@ namespace WebAPI.Features.CaptainCoaster.Contracts
         public int CoastersFetched { get; set; }
         public int ComparisonResults { get; set; }
         public int AppliedChanges { get; set; }
+        public int DuplicateConflicts { get; set; }
         public IReadOnlyCollection<CaptainCoasterSyncLogResponse> Logs { get; set; } = Array.Empty<CaptainCoasterSyncLogResponse>();
     }
 
@@ -45,6 +46,8 @@ namespace WebAPI.Features.CaptainCoaster.Contracts
         public int SessionUpdatedCount { get; set; }
         /// <summary>Nombre total de MissingLocal dans la session.</summary>
         public int SessionMissingCount { get; set; }
+        /// <summary>Nombre total de DuplicateExternal dans la session.</summary>
+        public int SessionDuplicateCount { get; set; }
         /// <summary>Nombre total déjà appliqués dans la session.</summary>
         public int SessionAppliedCount { get; set; }
     }
@@ -59,6 +62,21 @@ namespace WebAPI.Features.CaptainCoaster.Contracts
         public string? ExternalEntityId { get; set; }
         public string MatchConfidence { get; set; } = string.Empty;
         public bool IsApplied { get; set; }
+        public bool HasExternalDuplicates { get; set; }
+        public bool RequiresManualResolution { get; set; }
+        public string ResolutionStatus { get; set; } = "NotRequired";
+        public string? AppliedExternalVariantId { get; set; }
+        public IReadOnlyCollection<CaptainCoasterFieldChangeResponse> Changes { get; set; } = Array.Empty<CaptainCoasterFieldChangeResponse>();
+        public IReadOnlyCollection<CaptainCoasterExternalVariantResponse> ExternalVariants { get; set; } = Array.Empty<CaptainCoasterExternalVariantResponse>();
+    }
+
+    public sealed class CaptainCoasterExternalVariantResponse
+    {
+        public string ExternalVariantId { get; set; } = string.Empty;
+        public string DisplayLabel { get; set; } = string.Empty;
+        public string? CandidateLocalEntityId { get; set; }
+        public string? SourceUrl { get; set; }
+        public bool IsSuggested { get; set; }
         public IReadOnlyCollection<CaptainCoasterFieldChangeResponse> Changes { get; set; } = Array.Empty<CaptainCoasterFieldChangeResponse>();
     }
 
@@ -82,6 +100,23 @@ namespace WebAPI.Features.CaptainCoaster.Contracts
         public string? EntityTypeFilter { get; set; }
         /// <summary>Filtre optionnel sur ChangeType pour ApplyAll.</summary>
         public string? ChangeTypeFilter { get; set; }
+        /// <summary>Résolutions humaines à appliquer pour les lignes en doublon externe.</summary>
+        public IReadOnlyCollection<CaptainCoasterDuplicateResolutionRequest> DuplicateResolutions { get; set; } = Array.Empty<CaptainCoasterDuplicateResolutionRequest>();
+    }
+
+    public sealed class CaptainCoasterDuplicateResolutionRequest
+    {
+        public string ComparisonResultId { get; set; } = string.Empty;
+        public string Strategy { get; set; } = "SelectVariant";
+        public string? SelectedExternalVariantId { get; set; }
+        public IReadOnlyCollection<CaptainCoasterFieldResolutionRequest> FieldResolutions { get; set; } = Array.Empty<CaptainCoasterFieldResolutionRequest>();
+    }
+
+    public sealed class CaptainCoasterFieldResolutionRequest
+    {
+        public string Field { get; set; } = string.Empty;
+        public string SourceType { get; set; } = "Variant";
+        public string? ExternalVariantId { get; set; }
     }
 
     public sealed class ApplyCaptainCoasterComparisonResponse

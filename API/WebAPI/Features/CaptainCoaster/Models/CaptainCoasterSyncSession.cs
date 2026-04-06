@@ -44,6 +44,9 @@ namespace WebAPI.Features.CaptainCoaster.Models
 
         [BsonElement("appliedChanges")]
         public int AppliedChanges { get; set; }
+
+        [BsonElement("duplicateConflicts")]
+        public int DuplicateConflicts { get; set; }
     }
 
     public sealed class CaptainCoasterSyncLogEntry

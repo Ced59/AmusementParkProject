@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import {
   CaptainCoasterComparisonPagedResponse,
+  CaptainCoasterDuplicateResolutionRequest,
   CaptainCoasterSessionResponse,
   CaptainCoasterStatusResponse,
   ComparisonFilters
@@ -63,20 +64,29 @@ export class CaptainCoasterDataService {
     );
   }
 
-  applySelectedIds(ids: string[]): Observable<{ appliedCount: number }> {
+  applySelectedIds(
+    ids: string[],
+    duplicateResolutions: CaptainCoasterDuplicateResolutionRequest[]
+  ): Observable<{ appliedCount: number }> {
     return this.http.post<{ appliedCount: number }>(`${this.baseUrl}/apply`, {
       comparisonResultIds: ids,
-      applyAll: false
+      applyAll: false,
+      duplicateResolutions
     });
   }
 
-  applyAll(sessionId: string | null, entityTypeFilter: string | null, changeTypeFilter: string | null): Observable<{ appliedCount: number }> {
+  applyAll(
+    sessionId: string | null,
+    entityTypeFilter: string | null,
+    changeTypeFilter: string | null
+  ): Observable<{ appliedCount: number }> {
     return this.http.post<{ appliedCount: number }>(`${this.baseUrl}/apply`, {
       comparisonResultIds: [],
       applyAll: true,
       sessionId,
       entityTypeFilter,
-      changeTypeFilter
+      changeTypeFilter,
+      duplicateResolutions: []
     });
   }
 }

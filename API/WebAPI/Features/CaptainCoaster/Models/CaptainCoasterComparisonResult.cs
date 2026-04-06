@@ -33,6 +33,45 @@ namespace WebAPI.Features.CaptainCoaster.Models
 
         [BsonElement("isApplied")]
         public bool IsApplied { get; set; }
+
+        [BsonElement("hasExternalDuplicates")]
+        public bool HasExternalDuplicates { get; set; }
+
+        [BsonElement("requiresManualResolution")]
+        public bool RequiresManualResolution { get; set; }
+
+        [BsonElement("resolutionStatus")]
+        public string ResolutionStatus { get; set; } = "NotRequired";
+
+        [BsonElement("appliedExternalVariantId")]
+        [BsonIgnoreIfNull]
+        public string? AppliedExternalVariantId { get; set; }
+
+        [BsonElement("externalVariants")]
+        public List<CaptainCoasterExternalVariantOption> ExternalVariants { get; set; } = new List<CaptainCoasterExternalVariantOption>();
+    }
+
+    public sealed class CaptainCoasterExternalVariantOption
+    {
+        [BsonElement("externalVariantId")]
+        public string ExternalVariantId { get; set; } = string.Empty;
+
+        [BsonElement("displayLabel")]
+        public string DisplayLabel { get; set; } = string.Empty;
+
+        [BsonElement("candidateLocalEntityId")]
+        [BsonIgnoreIfNull]
+        public string? CandidateLocalEntityId { get; set; }
+
+        [BsonElement("sourceUrl")]
+        [BsonIgnoreIfNull]
+        public string? SourceUrl { get; set; }
+
+        [BsonElement("isSuggested")]
+        public bool IsSuggested { get; set; }
+
+        [BsonElement("changes")]
+        public List<CaptainCoasterFieldChange> Changes { get; set; } = new List<CaptainCoasterFieldChange>();
     }
 
     public sealed class CaptainCoasterFieldChange

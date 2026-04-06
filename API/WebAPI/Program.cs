@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -67,10 +68,12 @@ namespace WebAPI
             EmailSettings emailSettings = builder.Configuration.GetSection("Email").Get<EmailSettings>() ?? new EmailSettings();
             LocalAuthenticationSettings localAuthenticationSettings = builder.Configuration.GetSection("Authentication:Local").Get<LocalAuthenticationSettings>() ?? new LocalAuthenticationSettings();
             CorsSettings corsSettings = builder.Configuration.GetSection("Cors").Get<CorsSettings>() ?? new CorsSettings();
+            AdminSeedSettings adminSeedSettings = builder.Configuration.GetSection("Initialization:AdminUser").Get<AdminSeedSettings>() ?? new AdminSeedSettings();
 
             builder.Services.AddSingleton<IEmailSettings>(emailSettings);
             builder.Services.AddSingleton<ILocalAuthenticationSettings>(localAuthenticationSettings);
             builder.Services.AddSingleton<ICorsSettings>(corsSettings);
+            builder.Services.AddSingleton(adminSeedSettings);
 
             ValidateEmailSettings(emailSettings);
 
@@ -248,7 +251,13 @@ namespace WebAPI
 
         public static void ConfigureAuthentication(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddAuthentication(options =>
+            string jwtKey = GetRequiredConfigurationValue(configuration, "Authentication:Jwt:Key");
+            string jwtIssuer = GetRequiredConfigurationValue(configuration, "Authentication:Jwt:Issuer");
+            string jwtAudience = GetRequiredConfigurationValue(configuration, "Authentication:Jwt:Audience");
+            string? facebookAppId = configuration["Authentication:Facebook:AppId"];
+            string? facebookAppSecret = configuration["Authentication:Facebook:AppSecret"];
+
+            AuthenticationBuilder authenticationBuilder = services.AddAuthentication(options =>
                 {
                     options.DefaultAuthenticateScheme = "JwtBearer";
                     options.DefaultChallengeScheme = "JwtBearer";
@@ -264,12 +273,11 @@ namespace WebAPI
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey =
-                            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Authentication:Jwt:Key"])),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
                         ValidateIssuer = true,
-                        ValidIssuer = configuration["Authentication:Jwt:Issuer"],
+                        ValidIssuer = jwtIssuer,
                         ValidateAudience = true,
-                        ValidAudience = configuration["Authentication:Jwt:Audience"],
+                        ValidAudience = jwtAudience,
                         ValidateLifetime = true,
                         ClockSkew = TimeSpan.Zero,
                         NameClaimType = ClaimTypes.NameIdentifier
@@ -304,14 +312,23 @@ namespace WebAPI
                                 { message = "You do not have permission to access this resource." }));
                         }
                     };
-                })
-                .AddFacebook("Facebook", options =>
+                });
+
+            if (!string.IsNullOrWhiteSpace(facebookAppId) && !string.IsNullOrWhiteSpace(facebookAppSecret))
+            {
+                authenticationBuilder.AddFacebook("Facebook", options =>
                 {
                     options.SignInScheme = "ExternalCookies";
-                    options.AppId = configuration["Authentication:Facebook:AppId"];
-                    options.AppSecret = configuration["Authentication:Facebook:AppSecret"];
+                    options.AppId = facebookAppId;
+                    options.AppSecret = facebookAppSecret;
                     options.CallbackPath = new PathString("/login/auth/facebook-response");
                 });
+            }
+        }
+
+        private static string GetRequiredConfigurationValue(IConfiguration configuration, string key)
+        {
+            return configuration[key] ?? throw new InvalidOperationException($"Configuration value '{key}' is required.");
         }
 
 
@@ -370,17 +387,16 @@ namespace WebAPI
 
         private static async Task InitializeMongoDbAsync(IHost app)
         {
-            // Cr�e un scope pour r�soudre ISearchIndexService (scoped)
             using IServiceScope scope = app.Services.CreateScope();
 
             IMongoDatabase database = scope.ServiceProvider.GetRequiredService<IMongoDatabase>();
             IMongoDbSettings mongoDbSettings = scope.ServiceProvider.GetRequiredService<IMongoDbSettings>();
-            ISearchIndexService searchItemService = scope.ServiceProvider.GetRequiredService<ISearchIndexService>();
+            AdminSeedSettings adminSeedSettings = scope.ServiceProvider.GetRequiredService<AdminSeedSettings>();
 
             await MongoDbInitializer.InitializeCollectionsAsync(
                 database,
                 mongoDbSettings,
-                searchItemService
+                adminSeedSettings
             );
         }
 

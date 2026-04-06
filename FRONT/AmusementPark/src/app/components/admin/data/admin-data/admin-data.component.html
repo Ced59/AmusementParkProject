@@ -1,6 +1,5 @@
 <div class="admin-data-page">
 
-  <!-- ===================================================  SOURCES  === -->
   <ng-container *ngIf="selectedSourceKey() === null">
     <div class="page-header">
       <h2 class="page-title"><i class="pi pi-database"></i> Gestion des données externes</h2>
@@ -11,8 +10,12 @@
       <p-table [value]="dataSources()" responsiveLayout="scroll">
         <ng-template pTemplate="header">
           <tr>
-            <th>Source</th><th>Description</th><th>Dernier import</th>
-            <th>Sessions</th><th>Statut</th><th>Actions</th>
+            <th>Source</th>
+            <th>Description</th>
+            <th>Dernier import</th>
+            <th>Sessions</th>
+            <th>Statut</th>
+            <th>Actions</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-source>
@@ -31,9 +34,7 @@
     </p-card>
   </ng-container>
 
-  <!-- ===================================================  CAPTAIN COASTER  === -->
   <ng-container *ngIf="selectedSourceKey() === 'captain-coaster'">
-
     <div class="page-header">
       <button pButton type="button" label="Retour aux sources" icon="pi pi-arrow-left" class="p-button-text p-button-sm" (click)="backToSources()"></button>
       <h2 class="page-title"><i class="pi pi-cloud-download"></i> Captain Coaster — Intégration JSON</h2>
@@ -58,14 +59,12 @@
       </p-tablist>
 
       <p-tabpanels>
-
-        <!-- ── TAB 1 : IMPORT ─────────────────────────────────────────── -->
         <p-tabpanel value="0">
           <p-card header="Importer les fichiers JSON du scraper Captain Coaster">
             <p class="import-description">
               Fournissez les deux fichiers JSON générés par le scraper Captain Coaster.
-              Les données seront comparées aux données locales — aucune modification ne sera
-              appliquée sans votre validation dans l'onglet <strong>Comparaison</strong>.
+              Les données seront comparées aux données locales et les doublons externes resteront arbitré(s)
+              par un humain dans l'onglet <strong>Comparaison</strong>.
             </p>
 
             <div class="import-form">
@@ -112,7 +111,6 @@
           </p-card>
         </p-tabpanel>
 
-        <!-- ── TAB 2 : PROGRESSION ──────────────────────────────────────── -->
         <p-tabpanel value="1">
           <p-card header="Progression de l'import">
             <div *ngIf="ccSession() as session" class="session-panel">
@@ -131,6 +129,7 @@
                 <div class="metric-card"><span class="metric-card__label">Parcs parsés</span><strong>{{ session.parksFetched }}</strong></div>
                 <div class="metric-card"><span class="metric-card__label">Coasters parsés</span><strong>{{ session.coastersFetched }}</strong></div>
                 <div class="metric-card"><span class="metric-card__label">Différences</span><strong>{{ session.comparisonResults }}</strong></div>
+                <div class="metric-card"><span class="metric-card__label">Doublons à arbitrer</span><strong>{{ session.duplicateConflicts }}</strong></div>
                 <div class="metric-card"><span class="metric-card__label">Appliqués</span><strong>{{ session.appliedChanges }}</strong></div>
               </div>
 
@@ -148,7 +147,6 @@
           </p-card>
         </p-tabpanel>
 
-        <!-- ── TAB 3 : COMPARAISON ──────────────────────────────────────── -->
         <p-tabpanel value="2">
           <p-card>
             <ng-template pTemplate="header">
@@ -164,7 +162,6 @@
               </div>
             </ng-template>
 
-            <!-- Pas encore chargé -->
             <div *ngIf="!ccComparisonLoaded()" class="not-loaded-hint">
               <i class="pi pi-info-circle"></i>
               Cliquez sur <strong>"Charger les résultats"</strong> pour afficher les différences détectées.
@@ -174,14 +171,13 @@
             </div>
 
             <ng-container *ngIf="ccComparisonLoaded()">
-              <!-- Compteurs globaux session -->
               <div class="session-stats">
                 <div class="stat-badge stat-badge--warn"><i class="pi pi-pencil"></i> {{ ccSessionUpdated() | number }} modifiés</div>
                 <div class="stat-badge stat-badge--info"><i class="pi pi-plus"></i> {{ ccSessionMissing() | number }} nouveaux</div>
+                <div class="stat-badge stat-badge--danger"><i class="pi pi-clone"></i> {{ ccSessionDuplicate() | number }} doublons</div>
                 <div class="stat-badge stat-badge--ok"><i class="pi pi-check"></i> {{ ccSessionApplied() | number }} appliqués</div>
               </div>
 
-              <!-- Filtres -->
               <div class="filters-bar">
                 <p-select
                   [options]="entityTypeOptions"
@@ -210,7 +206,6 @@
                 <span class="filter-total">{{ ccTotalCount() | number }} résultats filtrés</span>
               </div>
 
-              <!-- Actions en masse -->
               <div class="bulk-actions">
                 <div class="bulk-actions__selection">
                   <p-checkbox [binary]="true" [ngModel]="ccAllPageSelected()"
@@ -236,25 +231,21 @@
                 </div>
               </div>
 
-              <!-- Tableau — uniquement la page courante dans le DOM -->
               <div class="table-wrapper" [class.table-wrapper--loading]="ccIsLoadingPage()">
-                <p-table
-                  [value]="ccCurrentItems()"
-                  responsiveLayout="scroll"
-                  styleClass="p-datatable-sm">
+                <p-table [value]="ccCurrentItems()" responsiveLayout="scroll" styleClass="p-datatable-sm">
                   <ng-template pTemplate="header">
                     <tr>
                       <th style="width:3rem"></th>
                       <th style="width:6rem">Type</th>
                       <th>Nom</th>
                       <th style="width:8rem">Changement</th>
-                      <th style="width:6rem">Confiance</th>
-                      <th>Champs</th>
+                      <th style="width:7rem">Confiance</th>
+                      <th>Analyse / résolution</th>
                       <th style="width:4rem">Fait</th>
                     </tr>
                   </ng-template>
                   <ng-template pTemplate="body" let-row>
-                    <tr [class.row--applied]="row.isApplied">
+                    <tr [class.row--applied]="row.isApplied" [class.row--duplicate]="isDuplicateRow(row)">
                       <td>
                         <p-checkbox [binary]="true"
                           [ngModel]="isSelected(row.id)"
@@ -267,40 +258,103 @@
                       <td><p-tag [value]="row.changeType" [severity]="getChangeTypeSeverity(row.changeType)"></p-tag></td>
                       <td class="col-confidence">{{ row.matchConfidence }}</td>
                       <td>
-                        <div class="change-list">
-                          <div class="change-item" *ngFor="let ch of row.changes" [class.change-item--diff]="ch.isDifferent">
-                            <span class="change-item__field">{{ ch.field }}</span>
-                            <span class="change-item__local">{{ ch.localValue || '∅' }}</span>
-                            <i class="pi pi-arrow-right"></i>
-                            <span class="change-item__ext">{{ ch.externalValue || '∅' }}</span>
+                        <ng-container *ngIf="!isDuplicateRow(row)">
+                          <div class="change-list">
+                            <div class="change-item" *ngFor="let ch of row.changes" [class.change-item--diff]="ch.isDifferent">
+                              <span class="change-item__field">{{ ch.field }}</span>
+                              <span class="change-item__local">{{ ch.localValue || '∅' }}</span>
+                              <i class="pi pi-arrow-right"></i>
+                              <span class="change-item__ext">{{ ch.externalValue || '∅' }}</span>
+                            </div>
                           </div>
-                        </div>
+                        </ng-container>
+
+                        <ng-container *ngIf="isDuplicateRow(row)">
+                          <div class="duplicate-panel">
+                            <div class="duplicate-panel__intro">
+                              <p-tag value="Arbitrage requis" severity="danger"></p-tag>
+                              <span>{{ row.externalVariants.length }} variante(s) conservent le même identifiant externe.</span>
+                            </div>
+
+                            <div class="duplicate-panel__strategy">
+                              <label>
+                                <input type="radio"
+                                  [name]="'strategy-' + row.id"
+                                  [checked]="getDuplicateState(row).strategy === 'SelectVariant'"
+                                  (change)="setDuplicateStrategy(row, 'SelectVariant')" />
+                                Choisir une variante complète
+                              </label>
+                              <label>
+                                <input type="radio"
+                                  [name]="'strategy-' + row.id"
+                                  [checked]="getDuplicateState(row).strategy === 'Merge'"
+                                  (change)="setDuplicateStrategy(row, 'Merge')" />
+                                Fusionner champ par champ
+                              </label>
+                            </div>
+
+                            <div class="duplicate-variants">
+                              <label class="duplicate-variant-card"
+                                *ngFor="let variant of row.externalVariants"
+                                [class.duplicate-variant-card--selected]="getDuplicateState(row).selectedExternalVariantId === variant.externalVariantId"
+                                [class.duplicate-variant-card--suggested]="variant.isSuggested">
+                                <div class="duplicate-variant-card__header">
+                                  <div>
+                                    <input type="radio"
+                                      [name]="'variant-' + row.id"
+                                      [checked]="getDuplicateState(row).selectedExternalVariantId === variant.externalVariantId"
+                                      (change)="setSelectedVariant(row, variant.externalVariantId)" />
+                                    <strong>{{ variant.displayLabel }}</strong>
+                                  </div>
+                                  <span class="duplicate-variant-card__badge" *ngIf="variant.isSuggested">Suggéré</span>
+                                </div>
+                                <div class="change-list">
+                                  <div class="change-item" *ngFor="let ch of variant.changes" [class.change-item--diff]="ch.isDifferent">
+                                    <span class="change-item__field">{{ ch.field }}</span>
+                                    <span class="change-item__local">{{ ch.localValue || '∅' }}</span>
+                                    <i class="pi pi-arrow-right"></i>
+                                    <span class="change-item__ext">{{ ch.externalValue || '∅' }}</span>
+                                  </div>
+                                </div>
+                              </label>
+                            </div>
+
+                            <div class="merge-panel" *ngIf="getDuplicateState(row).strategy === 'Merge'">
+                              <div class="merge-row" *ngFor="let field of getMergeEligibleFields(row)">
+                                <span class="merge-row__field">{{ field }}</span>
+                                <select class="merge-row__select"
+                                  [ngModel]="getMergeSelection(row, field)"
+                                  (ngModelChange)="setMergeSelection(row, field, $event)">
+                                  <option *ngFor="let option of getMergeOptions(row, field)" [ngValue]="option.value">
+                                    {{ option.label }}
+                                  </option>
+                                </select>
+                              </div>
+                            </div>
+
+                            <div class="duplicate-panel__summary">
+                              Résolution prête : {{ getResolutionSummary(row) }}
+                            </div>
+                          </div>
+                        </ng-container>
                       </td>
                       <td><i [class]="row.isApplied ? 'pi pi-check-circle applied-icon' : 'pi pi-circle pending-icon'"></i></td>
                     </tr>
                   </ng-template>
-                  <ng-template pTemplate="emptymessage">
-                    <tr><td colspan="7" style="text-align:center;padding:2rem;opacity:.6">Aucun résultat pour ces filtres.</td></tr>
-                  </ng-template>
                 </p-table>
               </div>
 
-              <!-- Paginateur PrimeNG -->
               <p-paginator
                 [rows]="ccPageSize()"
-                [totalRecords]="ccTotalCount()"
                 [first]="ccCurrentPage() * ccPageSize()"
+                [totalRecords]="ccTotalCount()"
                 [rowsPerPageOptions]="[25, 50, 100, 200]"
-                (onPageChange)="onPageChange($event)"
-                [showCurrentPageReport]="true"
-                currentPageReportTemplate="{first} – {last} sur {totalRecords}">
+                (onPageChange)="onPageChange($event)">
               </p-paginator>
             </ng-container>
           </p-card>
         </p-tabpanel>
-
       </p-tabpanels>
     </p-tabs>
   </ng-container>
-
 </div>
