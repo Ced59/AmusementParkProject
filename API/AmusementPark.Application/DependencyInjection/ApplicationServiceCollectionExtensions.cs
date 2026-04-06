@@ -11,8 +11,14 @@ namespace AmusementPark.Application.DependencyInjection;
 public static class ApplicationServiceCollectionExtensions
 {
     /// <summary>
-    /// Enregistre la couche Application.
+    /// Enregistre la couche Application en mode minimal.
     /// </summary>
+    /// <remarks>
+    /// Cette surcharge n'enregistre volontairement pas tous les handlers automatiquement.
+    /// Pendant la migration progressive du legacy vers la Clean Architecture,
+    /// seuls les services applicatifs sans dépendances Infrastructure obligatoires
+    /// doivent être activés explicitement via <see cref="AddApplicationHandlers"/>.
+    /// </remarks>
     /// <param name="services">Conteneur d'injection de dépendances.</param>
     /// <returns>Le même conteneur pour chaînage.</returns>
     public static IServiceCollection AddApplication(this IServiceCollection services)
@@ -20,15 +26,30 @@ public static class ApplicationServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(services);
 
         services.AddSingleton<PagedQueryValidator>();
-        RegisterHandlers(services, typeof(ApplicationServiceCollectionExtensions).Assembly);
+        services.AddSingleton<IApplicationValidator<AmusementPark.Application.Common.Requests.PagedQuery>, PagedQueryValidator>();
         return services;
     }
 
-    private static void RegisterHandlers(IServiceCollection services, Assembly assembly)
+    /// <summary>
+    /// Enregistre explicitement les handlers Application sélectionnés.
+    /// </summary>
+    /// <param name="services">Conteneur d'injection de dépendances.</param>
+    /// <param name="predicate">Filtre optionnel permettant d'activer seulement certains handlers.</param>
+    /// <returns>Le même conteneur pour chaînage.</returns>
+    public static IServiceCollection AddApplicationHandlers(this IServiceCollection services, Func<Type, bool>? predicate = null)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+
+        RegisterHandlers(services, typeof(ApplicationServiceCollectionExtensions).Assembly, predicate);
+        return services;
+    }
+
+    private static void RegisterHandlers(IServiceCollection services, Assembly assembly, Func<Type, bool>? predicate)
     {
         IEnumerable<Type> implementationTypes = assembly
             .GetTypes()
-            .Where(static type => type is { IsAbstract: false, IsInterface: false });
+            .Where(static type => type is { IsAbstract: false, IsInterface: false })
+            .Where(type => predicate == null || predicate(type));
 
         foreach (Type implementationType in implementationTypes)
         {
