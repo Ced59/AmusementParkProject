@@ -26,13 +26,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "API\Reposit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "API\CommonStatus\CommonStatus\Common.csproj", "{6A96C298-4137-426B-AC14-FE53AD70A64B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmusementPark.WebAPI", "API\AmusementPark.WebAPI\AmusementPark.WebAPI.csproj", "{085FEC06-324D-42E3-BD2F-97E47D1CB660}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.WebAPI", "API\AmusementPark.WebAPI\AmusementPark.WebAPI.csproj", "{085FEC06-324D-42E3-BD2F-97E47D1CB660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmusementPark.Infrastructure", "API\AmusementPark.Infrastructure\AmusementPark.Infrastructure.csproj", "{DA66BAC2-25D1-495F-8955-9AEAC5CD4767}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.Infrastructure", "API\AmusementPark.Infrastructure\AmusementPark.Infrastructure.csproj", "{DA66BAC2-25D1-495F-8955-9AEAC5CD4767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmusementPark.Application", "API\AmusementPark.Application\AmusementPark.Application.csproj", "{E9858229-546D-4FCA-A467-6D360EDB06BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.Application", "API\AmusementPark.Application\AmusementPark.Application.csproj", "{E9858229-546D-4FCA-A467-6D360EDB06BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmusementPark.Core", "API\AmusementPark.Core\AmusementPark.Core.csproj", "{49307D70-9C32-4ABC-8FA6-19531D7B3C23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.Core", "API\AmusementPark.Core\AmusementPark.Core.csproj", "{49307D70-9C32-4ABC-8FA6-19531D7B3C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

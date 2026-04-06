@@ -1,0 +1,87 @@
+<Project>
+  <Target Name="ValidateAmusementParkArchitecture" BeforeTargets="PrepareForBuild" Condition="$([System.String]::Copy('$(MSBuildProjectName)').StartsWith('AmusementPark.'))">
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'AmusementPark.Core'">
+      <InvalidProjectReference Include="@(ProjectReference)" Condition="$([System.String]::Copy('%(Identity)').Contains('AmusementPark.'))" />
+      <ForbiddenPackageReference Include="@(PackageReference)"
+                                 Condition="'%(Identity)' == 'MongoDB.Driver'
+                                 Or '%(Identity)' == 'Minio'
+                                 Or '%(Identity)' == 'MailKit'
+                                 Or '%(Identity)' == 'Google.Apis.Auth'
+                                 Or '%(Identity)' == 'Swashbuckle.AspNetCore'
+                                 Or '%(Identity)' == 'SixLabors.ImageSharp'
+                                 Or '%(Identity)' == 'SixLabors.ImageSharp.Drawing'
+                                 Or '%(Identity)' == 'SixLabors.Fonts'
+                                 Or $([System.String]::Copy('%(Identity)').StartsWith('Microsoft.AspNetCore'))" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'AmusementPark.Application'">
+      <InvalidProjectReference Include="@(ProjectReference)"
+                               Condition="$([System.String]::Copy('%(Identity)').Contains('AmusementPark.Infrastructure'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('AmusementPark.WebAPI'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/CommonStatus/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\CommonStatus\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Dtos/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Dtos\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Entities/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Entities\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Repositories/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Repositories\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Services/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Services\'))" />
+      <ForbiddenPackageReference Include="@(PackageReference)"
+                                 Condition="'%(Identity)' == 'MongoDB.Driver'
+                                 Or '%(Identity)' == 'Minio'
+                                 Or '%(Identity)' == 'MailKit'
+                                 Or '%(Identity)' == 'Google.Apis.Auth'
+                                 Or '%(Identity)' == 'Swashbuckle.AspNetCore'
+                                 Or '%(Identity)' == 'SixLabors.ImageSharp'
+                                 Or '%(Identity)' == 'SixLabors.ImageSharp.Drawing'
+                                 Or '%(Identity)' == 'SixLabors.Fonts'
+                                 Or '%(Identity)' == 'Microsoft.AspNetCore.Http.Features'
+                                 Or $([System.String]::Copy('%(Identity)').StartsWith('Microsoft.AspNetCore'))" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'AmusementPark.Infrastructure'">
+      <InvalidProjectReference Include="@(ProjectReference)"
+                               Condition="$([System.String]::Copy('%(Identity)').Contains('AmusementPark.WebAPI'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/CommonStatus/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\CommonStatus\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Dtos/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Dtos\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Entities/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Entities\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Repositories/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Repositories\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Services/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Services\'))" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'AmusementPark.WebAPI'">
+      <InvalidProjectReference Include="@(ProjectReference)"
+                               Condition="$([System.String]::Copy('%(Identity)').Contains('AmusementPark.Core'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/CommonStatus/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\CommonStatus\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Dtos/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Dtos\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Entities/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Entities\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Repositories/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Repositories\'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('/Services/'))
+                               Or $([System.String]::Copy('%(Identity)').Contains('\Services\'))" />
+      <ForbiddenPackageReference Include="@(PackageReference)"
+                                 Condition="'%(Identity)' == 'MongoDB.Driver'
+                                 Or '%(Identity)' == 'Minio'
+                                 Or '%(Identity)' == 'MailKit'
+                                 Or '%(Identity)' == 'Google.Apis.Auth'
+                                 Or '%(Identity)' == 'SixLabors.ImageSharp'
+                                 Or '%(Identity)' == 'SixLabors.ImageSharp.Drawing'
+                                 Or '%(Identity)' == 'SixLabors.Fonts'" />
+    </ItemGroup>
+
+    <Error Condition="'@(InvalidProjectReference)' != ''"
+           Text="Architecture violation in $(MSBuildProjectName): invalid project reference(s): @(InvalidProjectReference, ', ')." />
+    <Error Condition="'@(ForbiddenPackageReference)' != ''"
+           Text="Architecture violation in $(MSBuildProjectName): forbidden package reference(s): @(ForbiddenPackageReference, ', ')." />
+  </Target>
+</Project>
