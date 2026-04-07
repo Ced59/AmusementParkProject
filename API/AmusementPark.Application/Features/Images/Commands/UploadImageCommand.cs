@@ -1,7 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Contracts;
-using AmusementPark.Core.Domain.Images;
+using AmusementPark.Application.Features.Images.Results;
 
 namespace AmusementPark.Application.Features.Images.Commands;
 
@@ -9,4 +9,4 @@ namespace AmusementPark.Application.Features.Images.Commands;
 /// Upload une nouvelle image.
 /// </summary>
 /// <param name="Request">Données d'upload applicatives.</param>
-public sealed record UploadImageCommand(ImageUploadRequest Request) : ICommand<ApplicationResult<Image>>;
+public sealed record UploadImageCommand(ImageUploadRequest Request) : ICommand<ApplicationResult<UploadedImageResult>>;

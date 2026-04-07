@@ -18,7 +18,7 @@ public static class UseCaseCatalog
             ["Parks"] = new[] { "CreatePark", "GetParkById", "GetParksPage", "SearchParksByName", "SearchParksByLocation", "UpdatePark", "UpdateParkVisibility" },
             ["ParkZones"] = new[] { "GetParkZonesByParkId", "GetParkZoneById", "CreateParkZone", "UpdateParkZone", "DeleteParkZone", "GetParkExplorer" },
             ["ParkItems"] = new[] { "GetParkItemsByParkId", "GetParkItemsPage", "GetParkItemById", "CreateParkItem", "UpdateParkItem", "DeleteParkItem" },
-            ["Images"] = new[] { "UploadImage", "LinkImage", "SetCurrentImage", "DeleteImage", "GetImageById", "UpdateImageMetadata", "ListImageTags", "CreateImageTag", "UpdateImageTag" },
+            ["Images"] = new[] { "UploadImage", "LinkImage", "SetCurrentImage", "DeleteImage", "GetImageById", "GetCurrentImage", "GetImagesByOwner", "GetAllImages", "UpdateImageMetadata", "ListImageTags", "CreateImageTag", "UpdateImageTag" },
             ["Users"] = new[] { "RegisterLocalUser", "ProvisionExternalUser", "GetUserByEmail", "GetUserById", "UpdateUserProfile", "Login", "LoginExternal", "RefreshToken", "ConfirmEmail", "ResendConfirmationEmail", "ForgotPassword", "ResetPassword", "AssignRole", "RemoveRole", "LockUser", "UnlockUser", "GetUsersPage", "ChangePassword", "SynchronizeUserAvatar" },
             ["Search"] = new[] { "Search" },
             ["CaptainCoaster"] = new[] { "GetCaptainCoasterSettings", "UpdateCaptainCoasterSettings", "PreviewCaptainCoasterComparison", "StartCaptainCoasterImport", "ApplyCaptainCoasterChanges", "GetCaptainCoasterSession" },

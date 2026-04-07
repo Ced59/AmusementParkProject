@@ -8,6 +8,8 @@ namespace AmusementPark.Application.Features.Images.Contracts;
 /// </summary>
 public sealed class ImageUploadRequest
 {
+    public string? ImageId { get; init; }
+
     public ImageCategory Category { get; init; }
 
     public FilePayload File { get; init; } = new();
@@ -19,4 +21,16 @@ public sealed class ImageUploadRequest
     public ImageOwnerType OwnerType { get; init; } = ImageOwnerType.None;
 
     public string? OwnerId { get; init; }
+
+    public string? StoragePath { get; init; }
+
+    public int Width { get; init; }
+
+    public int Height { get; init; }
+
+    public long SizeInBytes { get; init; }
+
+    public GeoPointValue? GeoLocation { get; init; }
+
+    public ImageExifMetadata? ExifMetadata { get; init; }
 }

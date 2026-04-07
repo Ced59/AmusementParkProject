@@ -1,5 +1,4 @@
 using AmusementPark.Application.Features.Images.Contracts;
-using AmusementPark.Core.Domain.Images;
 
 namespace AmusementPark.Application.Features.Images.Ports;
 
@@ -14,7 +13,7 @@ public interface IImageProcessingPipeline
     Task<ImageUploadRequest> ProcessAsync(ImageUploadRequest request, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Extrait des métadonnées depuis un contenu image brut.
+    /// Extrait les métadonnées depuis un contenu image brut.
     /// </summary>
-    Task<ImageExifMetadata?> ExtractMetadataAsync(ImageUploadRequest request, CancellationToken cancellationToken);
+    Task<ImageProcessingMetadata?> ExtractMetadataAsync(ImageUploadRequest request, CancellationToken cancellationToken);
 }

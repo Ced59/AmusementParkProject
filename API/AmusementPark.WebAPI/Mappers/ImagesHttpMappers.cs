@@ -1,0 +1,183 @@
+using AmusementPark.Application.Common.Contracts;
+using AmusementPark.Application.Features.Images.Contracts;
+using AmusementPark.Application.Features.Images.Results;
+using AmusementPark.Core.Domain.Images;
+using AmusementPark.WebAPI.Contracts.Common;
+using AmusementPark.WebAPI.Contracts.Images;
+using AmusementPark.WebAPI.Contracts.Parks.Logos;
+
+namespace AmusementPark.WebAPI.Mappers;
+
+/// <summary>
+/// Helpers de mapping HTTP pour la feature Images.
+/// </summary>
+internal static class ImagesHttpMappers
+{
+    public static ImageCategory ToDomain(this ImageCategoryDto value)
+    {
+        return value switch
+        {
+            ImageCategoryDto.AVATAR => ImageCategory.Avatar,
+            ImageCategoryDto.PARK_LOGO => ImageCategory.ParkLogo,
+            ImageCategoryDto.PARK => ImageCategory.Park,
+            ImageCategoryDto.ATTRACTION => ImageCategory.Attraction,
+            _ => ImageCategory.Park,
+        };
+    }
+
+    public static ImageOwnerType ToDomain(this ImageOwnerTypeDto value)
+    {
+        return value switch
+        {
+            ImageOwnerTypeDto.PARK => ImageOwnerType.Park,
+            ImageOwnerTypeDto.USER => ImageOwnerType.User,
+            ImageOwnerTypeDto.ATTRACTION => ImageOwnerType.Attraction,
+            _ => ImageOwnerType.None,
+        };
+    }
+
+    public static ImageCategoryDto ToHttp(this ImageCategory value)
+    {
+        return value switch
+        {
+            ImageCategory.Avatar => ImageCategoryDto.AVATAR,
+            ImageCategory.ParkLogo => ImageCategoryDto.PARK_LOGO,
+            ImageCategory.Park => ImageCategoryDto.PARK,
+            _ => ImageCategoryDto.ATTRACTION,
+        };
+    }
+
+    public static ImageOwnerTypeDto ToHttp(this ImageOwnerType value)
+    {
+        return value switch
+        {
+            ImageOwnerType.Park => ImageOwnerTypeDto.PARK,
+            ImageOwnerType.User => ImageOwnerTypeDto.USER,
+            ImageOwnerType.Attraction => ImageOwnerTypeDto.ATTRACTION,
+            _ => ImageOwnerTypeDto.NONE,
+        };
+    }
+
+    public static ImageUploadRequest ToApplication(this ImageCreateDto value, FilePayload file)
+    {
+        return new ImageUploadRequest
+        {
+            Category = value.Category.ToDomain(),
+            File = file,
+            Description = value.Description,
+            WithWatermark = value.WithWatermark,
+        };
+    }
+
+    public static ImageMetadataUpdate ToApplication(this UpdateImageAssetRequest value, ImageCategory category)
+    {
+        return new ImageMetadataUpdate
+        {
+            Description = value.Description,
+            GeoLocation = value.GeoLocation == null ? null : new GeoPointValue(value.GeoLocation.Latitude, value.GeoLocation.Longitude),
+            AltTexts = value.AltTexts.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
+            Captions = value.Captions.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
+            Credits = value.Credits.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
+            TagIds = value.TagIds.Distinct(StringComparer.Ordinal).ToList(),
+            Category = category,
+            IsPublished = value.IsPublished,
+        };
+    }
+
+    public static ImageTagWriteModel ToApplication(this CreateImageTagRequest value)
+    {
+        return new ImageTagWriteModel
+        {
+            Slug = value.Slug,
+            Labels = value.Labels.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
+            Descriptions = value.Descriptions.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
+            IsActive = true,
+        };
+    }
+
+    public static ImageTagWriteModel ToApplication(this UpdateImageTagRequest value)
+    {
+        return new ImageTagWriteModel
+        {
+            Slug = value.Slug,
+            Labels = value.Labels.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
+            Descriptions = value.Descriptions.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
+            IsActive = value.IsActive,
+        };
+    }
+
+    public static ImageCreatedDto ToHttp(this UploadedImageResult value)
+    {
+        return new ImageCreatedDto
+        {
+            Id = value.Image.Id,
+            SavedListFile = value.SavedFiles,
+            Category = value.Image.Category.ToHttp(),
+            Latitude = value.Image.GeoLocation?.Latitude,
+            Longitude = value.Image.GeoLocation?.Longitude,
+            Width = value.Image.Width,
+            Height = value.Image.Height,
+            SizeInBytes = value.Image.SizeInBytes,
+        };
+    }
+
+    public static ImageDto ToHttp(this Image value)
+    {
+        return new ImageDto
+        {
+            Id = value.Id,
+            Category = value.Category.ToHttp(),
+            OwnerType = value.OwnerType.ToHttp(),
+            OwnerId = value.OwnerId,
+            Path = value.Path,
+            Description = value.Description,
+            IsCurrent = value.IsCurrent,
+            IsPublished = value.IsPublished,
+            Width = value.Width,
+            Height = value.Height,
+            SizeInBytes = value.SizeInBytes,
+            OriginalFileName = value.OriginalFileName,
+            ContentType = value.ContentType,
+            GeoLocation = value.GeoLocation == null
+                ? null
+                : new ImageGeoLocationDto
+                {
+                    Latitude = value.GeoLocation.Latitude,
+                    Longitude = value.GeoLocation.Longitude,
+                },
+            AltTexts = value.AltTexts.ToHttp(),
+            Captions = value.Captions.ToHttp(),
+            Credits = value.Credits.ToHttp(),
+            TagIds = value.TagIds.ToList(),
+            CreatedAt = value.CreatedAtUtc,
+            UpdatedAt = value.UpdatedAtUtc,
+        };
+    }
+
+    public static ImageTagDto ToHttp(this ImageTag value)
+    {
+        return new ImageTagDto
+        {
+            Id = value.Id,
+            Slug = value.Slug,
+            Labels = value.Labels.ToHttp(),
+            Descriptions = value.Descriptions.ToHttp(),
+            IsActive = value.IsActive,
+            CreatedAt = value.CreatedAtUtc,
+            UpdatedAt = value.UpdatedAtUtc,
+        };
+    }
+
+    public static ParkLogoDto ToParkLogoHttp(this Image value)
+    {
+        return new ParkLogoDto
+        {
+            Id = value.Id,
+            ParkId = value.OwnerId ?? string.Empty,
+            ImageId = value.Id,
+            Description = value.Description,
+            IsCurrent = value.IsCurrent,
+            CreatedAt = value.CreatedAtUtc,
+        };
+    }
+}

@@ -9,6 +9,8 @@ namespace AmusementPark.Application.Features.Images.Ports;
 public interface IImageTagRepository
 {
     Task<IReadOnlyCollection<ImageTag>> GetAllAsync(CancellationToken cancellationToken);
+    Task<ImageTag?> GetByIdAsync(string tagId, CancellationToken cancellationToken);
+    Task<ImageTag?> GetBySlugAsync(string slug, CancellationToken cancellationToken);
     Task<ImageTag> CreateAsync(ImageTagWriteModel tag, CancellationToken cancellationToken);
     Task<ImageTag?> UpdateAsync(string tagId, ImageTagWriteModel tag, CancellationToken cancellationToken);
 }

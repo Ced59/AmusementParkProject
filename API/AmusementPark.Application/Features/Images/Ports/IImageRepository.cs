@@ -8,7 +8,10 @@ namespace AmusementPark.Application.Features.Images.Ports;
 /// </summary>
 public interface IImageRepository
 {
+    Task<IReadOnlyCollection<Image>> GetAllAsync(CancellationToken cancellationToken);
     Task<Image?> GetByIdAsync(string imageId, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Image>> GetByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory? category, CancellationToken cancellationToken);
+    Task<Image?> GetCurrentByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory category, CancellationToken cancellationToken);
     Task<Image> CreateAsync(ImageUploadRequest request, CancellationToken cancellationToken);
     Task<Image?> LinkAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);
     Task<Image?> SetCurrentAsync(string imageId, ImageOwnerType ownerType, string ownerId, CancellationToken cancellationToken);

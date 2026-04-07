@@ -10,6 +10,8 @@ public sealed class ImageMetadataUpdate
 {
     public string? Description { get; init; }
 
+    public GeoPointValue? GeoLocation { get; init; }
+
     public IReadOnlyCollection<LocalizedTextValue> AltTexts { get; init; } = Array.Empty<LocalizedTextValue>();
 
     public IReadOnlyCollection<LocalizedTextValue> Captions { get; init; } = Array.Empty<LocalizedTextValue>();
