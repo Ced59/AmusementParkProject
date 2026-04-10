@@ -1,7 +1,4 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Entities.Model.Users;
-using AmusementPark.Application.Ports;
 
 namespace Services.Interfaces.Authentication
 {

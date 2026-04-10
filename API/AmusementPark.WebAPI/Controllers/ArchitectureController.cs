@@ -1,7 +1,5 @@
-using AmusementPark.Application;
 using AmusementPark.Application.Architecture;
 using AmusementPark.Core.Domain;
-using AmusementPark.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmusementPark.WebAPI.Controllers;
@@ -255,4 +253,39 @@ public sealed class ArchitectureController : ControllerBase
             },
         });
     }
+
+
+    [HttpGet("phase-12")]
+    public IActionResult GetPhase12Status()
+    {
+        return this.Ok(new
+        {
+            phase = 12,
+            goal = "Extraire Captain Coaster hors WebAPI via un module générique de sources externes",
+            migratedFeatures = new[]
+            {
+                "DataSources",
+                "CaptainCoaster",
+            },
+            newRoutes = new[]
+            {
+                "GET /admin/data-sources",
+                "GET /admin/data-sources/{sourceKey}/status",
+                "GET /admin/data-sources/{sourceKey}/settings",
+                "PUT /admin/data-sources/{sourceKey}/settings",
+                "GET /admin/data-sources/{sourceKey}/sessions/latest",
+                "GET /admin/data-sources/{sourceKey}/sessions/{sessionId}",
+                "POST /admin/data-sources/{sourceKey}/import",
+                "GET /admin/data-sources/{sourceKey}/comparison-results",
+                "POST /admin/data-sources/{sourceKey}/apply",
+            },
+            notes = new[]
+            {
+                "Captain Coaster est désormais branché comme provider concret derrière un socle générique multi-sources",
+                "Le pipeline legacy est conservé : import JSON, staging Mongo, calcul du diff, application manuelle des changements",
+                "Le déclenchement reste manuel, mais l'exécution passe désormais par une file interne et un BackgroundService au lieu d'un Task.Run fire-and-forget",
+            },
+        });
+    }
+
 }

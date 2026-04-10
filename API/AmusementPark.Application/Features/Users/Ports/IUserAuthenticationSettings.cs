@@ -1,4 +1,3 @@
-using AmusementPark.Application.Ports;
 namespace AmusementPark.Application.Features.Users.Ports;
 
 /// <summary>

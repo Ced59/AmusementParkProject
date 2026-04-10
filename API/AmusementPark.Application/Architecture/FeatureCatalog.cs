@@ -20,7 +20,7 @@ namespace AmusementPark.Application.Architecture
             new FeatureSlice("ParkItems", 8, "Attractions et autres park items avec leurs détails métiers."),
             new FeatureSlice("Images", 9, "Images, liens d'ownership, tags, compression, watermark et métadonnées."),
             new FeatureSlice("Search", 10, "Projection technique pour la recherche et l'indexation."),
-            new FeatureSlice("CaptainCoaster", 11, "Import, comparaison, résolution de doublons et application des changements."),
+            new FeatureSlice("DataSources", 11, "Socle générique d'ingestion et de synchronisation de sources externes, avec Captain Coaster comme premier provider."),
         };
     }
 }

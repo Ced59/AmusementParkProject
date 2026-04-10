@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Common.General.Localization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;

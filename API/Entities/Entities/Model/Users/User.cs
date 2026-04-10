@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Common.General;
+﻿using Common.General;
 using Common.Users;
 
 namespace Entities.Model.Users

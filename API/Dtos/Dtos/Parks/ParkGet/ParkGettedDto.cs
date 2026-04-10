@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Common.General.Localization;
-using Dtos.Parks;
 
 namespace Dtos.Parks.ParkGet
 {

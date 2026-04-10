@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Entities.Model.Countries;
+﻿using Entities.Model.Countries;
 
 namespace Repositories.Interfaces
 {

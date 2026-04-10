@@ -1,4 +1,3 @@
-using System.IO;
 using Dtos.Images.Creating;
 
 namespace Services.Models.Images

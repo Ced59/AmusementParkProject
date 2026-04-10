@@ -1,8 +1,5 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Services.Interfaces.Authentication;
-using AmusementPark.Application.Ports;
 
 namespace Services.Implementations.Authentication
 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using Minio;
+﻿using Minio;
 using Minio.DataModel.Args;
 using Services.Interfaces.Images;
 using Services.Interfaces.Settings;

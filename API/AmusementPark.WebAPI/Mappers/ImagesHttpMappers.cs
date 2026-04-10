@@ -2,7 +2,6 @@ using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Results;
 using AmusementPark.Core.Domain.Images;
-using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Images;
 using AmusementPark.WebAPI.Contracts.Parks.Logos;
 

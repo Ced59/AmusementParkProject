@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Common.General.Localization;
-using Dtos.Parks;
 using System.ComponentModel.DataAnnotations;
 
 namespace Dtos.Parks.Updating

@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Dtos.Users.ExternalLogin;
+﻿using Dtos.Users.ExternalLogin;
 using Dtos.Users.Login;
 using Dtos.Users.RefreshToken;
 using Microsoft.AspNetCore.Authentication;

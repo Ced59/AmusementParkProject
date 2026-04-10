@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-using System.Threading.Tasks;
 using Dtos.Users.UserGet;
 using Entities.Model.Errors;
 using Microsoft.AspNetCore.Mvc;

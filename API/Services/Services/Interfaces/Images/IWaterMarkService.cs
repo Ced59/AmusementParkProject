@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-
-namespace Services.Interfaces.Images
+﻿namespace Services.Interfaces.Images
 {
     public interface IWaterMarkService
     {

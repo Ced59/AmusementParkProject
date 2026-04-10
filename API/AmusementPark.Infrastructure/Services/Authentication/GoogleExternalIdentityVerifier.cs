@@ -3,7 +3,6 @@ using AmusementPark.Application.Features.Users.Results;
 using AmusementPark.Core.Domain.Users;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using Google.Apis.Auth;
-using AmusementPark.Application.Ports;
 
 namespace AmusementPark.Infrastructure.Services.Authentication;
 

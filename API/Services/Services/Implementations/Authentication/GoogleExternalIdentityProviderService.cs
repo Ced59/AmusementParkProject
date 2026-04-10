@@ -1,6 +1,3 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Entities.Model.Users;
 using Google.Apis.Auth;
 using Services.Interfaces.Authentication;

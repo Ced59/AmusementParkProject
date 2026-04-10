@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Linq;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;

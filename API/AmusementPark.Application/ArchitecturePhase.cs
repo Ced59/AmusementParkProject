@@ -8,5 +8,5 @@ public static class ArchitecturePhase
     /// <summary>
     /// Libellé de la phase d'architecture actuellement préparée dans ce projet.
     /// </summary>
-    public const string Current = "Phase 11 - Search migré comme projection technique transverse";
+    public const string Current = "Phase 12 - Module générique de sources externes avec provider Captain Coaster";
 }

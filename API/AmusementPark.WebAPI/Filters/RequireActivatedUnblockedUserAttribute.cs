@@ -3,7 +3,6 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Users.Queries;
 using AmusementPark.Core.Domain.Users;
-using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

@@ -7,7 +7,6 @@ using MongoDB.Driver;
 using Repositories.Interfaces;
 using WebAPI.Features.CaptainCoaster.Contracts;
 using WebAPI.Features.CaptainCoaster.Models;
-using WebAPI.Settings.MongoDB;
 
 namespace WebAPI.Features.CaptainCoaster.Services
 {

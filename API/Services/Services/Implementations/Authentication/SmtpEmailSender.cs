@@ -1,12 +1,9 @@
-using System.Threading;
-using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Logging;
 using MimeKit;
 using Services.Interfaces.Authentication;
 using Services.Interfaces.Settings;
-using AmusementPark.Application.Ports;
 
 namespace Services.Implementations.Authentication
 {

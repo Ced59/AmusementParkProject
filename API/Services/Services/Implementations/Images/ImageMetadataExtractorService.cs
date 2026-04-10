@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Linq;
 using Services.Interfaces.Images;
 using Services.Models.Images;
 using SixLaborsImage = SixLabors.ImageSharp.Image;

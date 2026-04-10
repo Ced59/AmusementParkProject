@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Common.General;
+﻿using Common.General;
 using Common.Users;
 
 namespace Dtos.Users.UserGet

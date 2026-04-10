@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Entities.Model.Users;
 using Services.Models.Authentication;
 

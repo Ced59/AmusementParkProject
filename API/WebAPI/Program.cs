@@ -1,28 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Minio;
 using MongoDB.Driver;
 using Repositories.Implementations;
 using Repositories.Interfaces;
-using Services.Configuration;
 using Services.Implementations;
 using Services.Implementations.Authentication;
 using Services.Implementations.Images;
@@ -40,7 +29,6 @@ using WebAPI.Settings.Images;
 using WebAPI.Settings.MongoDB;
 using WebAPI.Settings.OAuth;
 using WebAPI.Settings.Security;
-using AmusementPark.Application.Ports;
 
 namespace WebAPI
 {

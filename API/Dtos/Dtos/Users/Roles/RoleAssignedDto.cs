@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Common.Users;
+﻿using Common.Users;
 
 namespace Dtos.Users.Roles
 {

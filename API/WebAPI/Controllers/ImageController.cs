@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using Common.General.Localization;
 using Dtos.Images;
 using Dtos.Images.Creating;
@@ -13,7 +7,6 @@ using Entities.Model.Errors;
 using Entities.Model.Images;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using OneOf;
 using Repositories.Interfaces;
 using Services.Interfaces.Images;

@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Services.Interfaces.Images
+﻿namespace Services.Interfaces.Images
 {
     public interface IImageStorageService
     {

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Dtos.ParkZones
 {
     public class ParkExplorerDto

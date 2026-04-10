@@ -1,5 +1,3 @@
-using System;
-
 namespace WebAPI.Settings.Security
 {
     public sealed class AdminSeedSettings

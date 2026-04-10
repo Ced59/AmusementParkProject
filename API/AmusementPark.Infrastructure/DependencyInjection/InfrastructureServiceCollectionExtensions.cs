@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.CaptainCoaster.Ports;
 using AmusementPark.Application.Features.Countries.Ports;
+using AmusementPark.Application.Features.DataSources.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -11,11 +12,14 @@ using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Infrastructure.Configuration.Authentication;
+using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using AmusementPark.Infrastructure.Services.Authentication;
+using AmusementPark.Infrastructure.Services.DataSources;
 using AmusementPark.Infrastructure.Services.Images;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,6 +59,9 @@ public static class InfrastructureServiceCollectionExtensions
         UserAuthenticationSettings userAuthenticationSettings = UserAuthenticationSettings.Bind(configuration);
         services.AddSingleton<IUserAuthenticationSettings>(userAuthenticationSettings);
 
+        AdminSeedSettings adminSeedSettings = configuration.GetSection("Initialization:AdminUser").Get<AdminSeedSettings>() ?? new AdminSeedSettings();
+        services.AddSingleton(adminSeedSettings);
+
         services.AddHttpClient();
         services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoDbSettings.Url));
         services.AddSingleton<IMinioClient>(_ =>
@@ -85,7 +92,13 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
         services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();
+        services.AddSingleton<IDataSourceImportJobQueue, InMemoryDataSourceImportJobQueue>();
+        services.AddScoped<IDataSourceImportJobProcessor, DataSourceImportJobProcessor>();
+        services.AddScoped<IDataSourceProvider, CaptainCoasterDataSourceProvider>();
+        services.AddScoped<IDataSourceAdministrationService, DataSourceAdministrationService>();
+        services.AddHostedService<DataSourceImportBackgroundService>();
         services.AddScoped<ISearchProjectionWriter, MongoSearchProjectionWriter>();
+        services.AddScoped<MongoDatabaseInitializer>();
         services.AddScoped<MongoSearchProjectionInitializer>();
 
         services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();

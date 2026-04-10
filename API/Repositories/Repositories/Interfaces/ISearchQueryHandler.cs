@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Entities.Model.Searching;
+﻿using Entities.Model.Searching;
 
 namespace Repositories.Interfaces
 {

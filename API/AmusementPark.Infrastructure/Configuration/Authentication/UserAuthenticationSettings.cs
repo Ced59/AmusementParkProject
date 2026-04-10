@@ -1,6 +1,5 @@
 using AmusementPark.Application.Features.Users.Ports;
 using Microsoft.Extensions.Configuration;
-using AmusementPark.Application.Ports;
 
 namespace AmusementPark.Infrastructure.Configuration.Authentication;
 

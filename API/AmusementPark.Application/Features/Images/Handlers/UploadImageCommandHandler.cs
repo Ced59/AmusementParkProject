@@ -1,5 +1,4 @@
 using AmusementPark.Application.Abstractions;
-using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Commands;
 using AmusementPark.Application.Features.Images.Contracts;

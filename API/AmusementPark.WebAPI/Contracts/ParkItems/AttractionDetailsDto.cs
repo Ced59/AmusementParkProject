@@ -1,5 +1,3 @@
-using AmusementPark.WebAPI.Contracts.Common;
-
 namespace AmusementPark.WebAPI.Contracts.ParkItems;
 
 /// <summary>

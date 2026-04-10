@@ -1,5 +1,4 @@
 using AmusementPark.Application.Errors;
-using Microsoft.AspNetCore.Http;
 
 namespace AmusementPark.WebAPI.Architecture
 {

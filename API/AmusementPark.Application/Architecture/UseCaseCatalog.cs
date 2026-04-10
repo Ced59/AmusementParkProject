@@ -21,6 +21,6 @@ public static class UseCaseCatalog
             ["Images"] = new[] { "UploadImage", "LinkImage", "SetCurrentImage", "DeleteImage", "GetImageById", "GetCurrentImage", "GetImagesByOwner", "GetAllImages", "UpdateImageMetadata", "ListImageTags", "CreateImageTag", "UpdateImageTag" },
             ["Users"] = new[] { "RegisterLocalUser", "ProvisionExternalUser", "GetUserByEmail", "GetUserById", "UpdateUserProfile", "Login", "LoginExternal", "RefreshToken", "ConfirmEmail", "ResendConfirmationEmail", "ForgotPassword", "ResetPassword", "AssignRole", "RemoveRole", "LockUser", "UnlockUser", "GetUsersPage", "ChangePassword", "SynchronizeUserAvatar" },
             ["Search"] = new[] { "Search" },
-            ["CaptainCoaster"] = new[] { "GetCaptainCoasterSettings", "UpdateCaptainCoasterSettings", "PreviewCaptainCoasterComparison", "StartCaptainCoasterImport", "ApplyCaptainCoasterChanges", "GetCaptainCoasterSession" },
+            ["DataSources"] = new[] { "ListDataSources", "GetDataSourceStatus", "GetDataSourceSettings", "UpdateDataSourceSettings", "GetLatestDataSourceSession", "GetDataSourceSession", "GetDataSourceComparisonResults", "StartDataSourceImport", "ApplyDataSourceComparison" },
         };
 }

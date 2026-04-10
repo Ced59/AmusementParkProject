@@ -1,0 +1,424 @@
+using AmusementPark.Application.Features.DataSources.Contracts;
+using AmusementPark.Application.Features.DataSources.Results;
+using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using MongoDB.Driver;
+
+namespace AmusementPark.Infrastructure.Services.DataSources;
+
+internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProvider, IDataSourceImportExecutor
+{
+    private const string SourceKeyValue = "captain-coaster";
+    private const string DisplayNameValue = "Captain Coaster";
+    private const string LegacyExternalSourceValue = "CaptainCoaster";
+
+    private readonly IMongoCollection<CaptainCoasterSettingsDocument> settingsCollection;
+    private readonly IMongoCollection<CaptainCoasterParkSnapshotDocument> parksCollection;
+    private readonly IMongoCollection<CaptainCoasterCoasterSnapshotDocument> coastersCollection;
+    private readonly IMongoCollection<CaptainCoasterSyncSessionDocument> sessionsCollection;
+    private readonly IMongoCollection<CaptainCoasterComparisonResultDocument> comparisonCollection;
+    private readonly IMongoCollection<ParkDocument> localParksCollection;
+    private readonly IMongoCollection<ParkItemDocument> localParkItemsCollection;
+    private readonly IMongoCollection<AttractionManufacturerDocument> manufacturersCollection;
+    private readonly IDataSourceImportJobQueue queue;
+
+    public CaptainCoasterDataSourceProvider(IMongoDatabase database, MongoDbSettings mongoDbSettings, IDataSourceImportJobQueue queue)
+    {
+        this.settingsCollection = database.GetCollection<CaptainCoasterSettingsDocument>(mongoDbSettings.CaptainCoasterSettingsCollectionName);
+        this.parksCollection = database.GetCollection<CaptainCoasterParkSnapshotDocument>(mongoDbSettings.CaptainCoasterParksCollectionName);
+        this.coastersCollection = database.GetCollection<CaptainCoasterCoasterSnapshotDocument>(mongoDbSettings.CaptainCoasterCoastersCollectionName);
+        this.sessionsCollection = database.GetCollection<CaptainCoasterSyncSessionDocument>(mongoDbSettings.CaptainCoasterSyncSessionsCollectionName);
+        this.comparisonCollection = database.GetCollection<CaptainCoasterComparisonResultDocument>(mongoDbSettings.CaptainCoasterComparisonResultsCollectionName);
+        this.localParksCollection = database.GetCollection<ParkDocument>(mongoDbSettings.ParksCollectionName);
+        this.localParkItemsCollection = database.GetCollection<ParkItemDocument>(mongoDbSettings.ParkItemsCollectionName);
+        this.manufacturersCollection = database.GetCollection<AttractionManufacturerDocument>(mongoDbSettings.AttractionManufacturersCollectionName);
+        this.queue = queue;
+    }
+
+    public string SourceKey => SourceKeyValue;
+
+    public async Task<DataSourceStatusResult> GetStatusAsync(CancellationToken cancellationToken)
+    {
+        CaptainCoasterSettingsDocument settings = await this.GetOrCreateSettingsAsync();
+        FilterDefinition<CaptainCoasterSyncSessionDocument> filter = Builders<CaptainCoasterSyncSessionDocument>.Filter.Eq(item => item.SourceKey, SourceKeyValue);
+        long totalSessions = await this.sessionsCollection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+
+        return new DataSourceStatusResult
+        {
+            SourceKey = SourceKeyValue,
+            DisplayName = DisplayNameValue,
+            IsEnabled = settings.IsEnabled,
+            LastSuccessfulImportUtc = settings.LastSuccessfulSyncUtc,
+            TotalSessionsCount = (int)totalSessions,
+        };
+    }
+
+    public async Task<DataSourceSettingsResult> GetSettingsAsync(CancellationToken cancellationToken)
+    {
+        CaptainCoasterSettingsDocument settings = await this.GetOrCreateSettingsAsync();
+        return MapSettings(settings);
+    }
+
+    public async Task<DataSourceSettingsResult> UpdateSettingsAsync(DataSourceSettingsResult settings, CancellationToken cancellationToken)
+    {
+        CaptainCoasterSettingsDocument document = await this.GetOrCreateSettingsAsync();
+        document.IsEnabled = settings.IsEnabled;
+        document.DataDirectoryPath = GetOption(settings.Options, "dataDirectoryPath");
+        document.HtmlDirectoryPath = GetOption(settings.Options, "htmlDirectoryPath");
+        document.UseOfflineMode = TryParseBool(GetOption(settings.Options, "useOfflineMode"));
+
+        string? baseUrl = GetOption(settings.Options, "baseUrl");
+        if (!string.IsNullOrWhiteSpace(baseUrl))
+        {
+            document.BaseUrl = baseUrl.Trim();
+        }
+
+        string? apiKey = GetOption(settings.Options, "apiKey");
+        if (apiKey != null)
+        {
+            document.ApiKey = apiKey;
+        }
+
+        document.Source = LegacyExternalSourceValue;
+        document.UpdatedAt = DateTime.UtcNow;
+        ReplaceOptions options = new ReplaceOptions { IsUpsert = true };
+        await this.settingsCollection.ReplaceOneAsync(item => item.Id == document.Id, document, options, cancellationToken);
+        return MapSettings(document);
+    }
+
+    public async Task<DataSourceSessionResult?> GetLatestSessionAsync(CancellationToken cancellationToken)
+    {
+        CaptainCoasterSyncSessionDocument? session = await this.sessionsCollection
+            .Find(item => item.SourceKey == SourceKeyValue)
+            .SortByDescending(item => item.StartedAtUtc)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        return session == null ? null : MapSession(session);
+    }
+
+    public async Task<DataSourceSessionResult?> GetSessionByIdAsync(string sessionId, CancellationToken cancellationToken)
+    {
+        CaptainCoasterSyncSessionDocument? session = await this.sessionsCollection
+            .Find(item => item.Id == sessionId && item.SourceKey == SourceKeyValue)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        return session == null ? null : MapSession(session);
+    }
+
+    public async Task<DataSourceComparisonPageResult> GetComparisonResultsAsync(
+        string? sessionId,
+        string? entityType,
+        string? changeType,
+        bool? isApplied,
+        int page,
+        int pageSize,
+        CancellationToken cancellationToken)
+    {
+        int effectivePageSize = Math.Clamp(pageSize, 10, 200);
+        int effectivePage = Math.Max(0, page);
+
+        string? effectiveSessionId = sessionId;
+        if (string.IsNullOrWhiteSpace(effectiveSessionId))
+        {
+            CaptainCoasterSyncSessionDocument? latest = await this.sessionsCollection
+                .Find(item => item.SourceKey == SourceKeyValue)
+                .SortByDescending(item => item.StartedAtUtc)
+                .FirstOrDefaultAsync(cancellationToken);
+            effectiveSessionId = latest?.Id;
+        }
+
+        if (string.IsNullOrWhiteSpace(effectiveSessionId))
+        {
+            return new DataSourceComparisonPageResult
+            {
+                Page = effectivePage,
+                PageSize = effectivePageSize,
+            };
+        }
+
+        FilterDefinition<CaptainCoasterComparisonResultDocument> sessionFilter =
+            Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.SyncSessionId, effectiveSessionId)
+            & Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.SourceKey, SourceKeyValue);
+
+        Task<long> updatedTask = this.comparisonCollection.CountDocumentsAsync(
+            sessionFilter & Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.ChangeType, "Updated"),
+            cancellationToken: cancellationToken);
+        Task<long> missingTask = this.comparisonCollection.CountDocumentsAsync(
+            sessionFilter & Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.ChangeType, "MissingLocal"),
+            cancellationToken: cancellationToken);
+        Task<long> duplicateTask = this.comparisonCollection.CountDocumentsAsync(
+            sessionFilter & Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.ChangeType, "DuplicateExternal"),
+            cancellationToken: cancellationToken);
+        Task<long> appliedTask = this.comparisonCollection.CountDocumentsAsync(
+            sessionFilter & Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.IsApplied, true),
+            cancellationToken: cancellationToken);
+
+        FilterDefinition<CaptainCoasterComparisonResultDocument> pagedFilter = sessionFilter;
+        if (!string.IsNullOrWhiteSpace(entityType))
+        {
+            pagedFilter &= Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.EntityType, entityType);
+        }
+        if (!string.IsNullOrWhiteSpace(changeType))
+        {
+            pagedFilter &= Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.ChangeType, changeType);
+        }
+        if (isApplied.HasValue)
+        {
+            pagedFilter &= Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.IsApplied, isApplied.Value);
+        }
+
+        Task<long> totalTask = this.comparisonCollection.CountDocumentsAsync(pagedFilter, cancellationToken: cancellationToken);
+        await Task.WhenAll(updatedTask, missingTask, duplicateTask, appliedTask, totalTask);
+
+        List<CaptainCoasterComparisonResultDocument> items = await this.comparisonCollection
+            .Find(pagedFilter)
+            .SortBy(item => item.EntityType)
+            .ThenBy(item => item.ChangeType)
+            .ThenBy(item => item.DisplayName)
+            .Skip(effectivePage * effectivePageSize)
+            .Limit(effectivePageSize)
+            .ToListAsync(cancellationToken);
+
+        return new DataSourceComparisonPageResult
+        {
+            Items = items.Select(MapComparison).ToList(),
+            TotalCount = (int)totalTask.Result,
+            Page = effectivePage,
+            PageSize = effectivePageSize,
+            SessionUpdatedCount = (int)updatedTask.Result,
+            SessionMissingCount = (int)missingTask.Result,
+            SessionDuplicateCount = (int)duplicateTask.Result,
+            SessionAppliedCount = (int)appliedTask.Result,
+        };
+    }
+
+    public async Task<DataSourceSessionResult> StartImportAsync(DataSourceImportDescriptor importDescriptor, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(importDescriptor);
+
+        CaptainCoasterImportFiles inputFiles = ResolveInputFiles(importDescriptor);
+        CaptainCoasterSettingsDocument settings = await this.GetOrCreateSettingsAsync();
+        if (!settings.IsEnabled)
+        {
+            throw new InvalidOperationException("La source Captain Coaster est désactivée.");
+        }
+
+        FilterDefinition<CaptainCoasterSyncSessionDocument> runningFilter =
+            Builders<CaptainCoasterSyncSessionDocument>.Filter.Eq(item => item.SourceKey, SourceKeyValue)
+            & Builders<CaptainCoasterSyncSessionDocument>.Filter.Eq(item => item.CompletedAtUtc, null);
+        long runningCount = await this.sessionsCollection.CountDocumentsAsync(runningFilter, cancellationToken: cancellationToken);
+        if (runningCount > 0)
+        {
+            throw new InvalidOperationException("Un import Captain Coaster est déjà en cours.");
+        }
+
+        CaptainCoasterSyncSessionDocument session = new CaptainCoasterSyncSessionDocument
+        {
+            SourceKey = SourceKeyValue,
+            Status = "Pending",
+            CurrentStep = "Queued",
+            Message = "Import mis en file d'attente.",
+            ProgressPercentage = 0,
+            StartedAtUtc = DateTime.UtcNow,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+        };
+        AddLog(session, "Info", "Import JSON Captain Coaster planifié.");
+
+        await this.sessionsCollection.InsertOneAsync(session, cancellationToken: cancellationToken);
+        await this.queue.EnqueueAsync(new DataSourceImportJob(SourceKeyValue, session.Id, importDescriptor), cancellationToken);
+        return MapSession(session);
+    }
+
+    public async Task<DataSourceApplyResult> ApplyComparisonAsync(DataSourceApplyRequest request, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+
+        List<CaptainCoasterComparisonResultDocument> results;
+
+        if (request.ApplyAll)
+        {
+            string? effectiveSessionId = request.SessionId;
+            if (string.IsNullOrWhiteSpace(effectiveSessionId))
+            {
+                CaptainCoasterSyncSessionDocument? latest = await this.sessionsCollection
+                    .Find(item => item.SourceKey == SourceKeyValue)
+                    .SortByDescending(item => item.StartedAtUtc)
+                    .FirstOrDefaultAsync(cancellationToken);
+                effectiveSessionId = latest?.Id;
+            }
+
+            if (string.IsNullOrWhiteSpace(effectiveSessionId))
+            {
+                return new DataSourceApplyResult { AppliedCount = 0 };
+            }
+
+            FilterDefinition<CaptainCoasterComparisonResultDocument> filter =
+                Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.SyncSessionId, effectiveSessionId)
+                & Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.SourceKey, SourceKeyValue)
+                & Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.IsApplied, false)
+                & Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.RequiresManualResolution, false);
+
+            if (!string.IsNullOrWhiteSpace(request.EntityTypeFilter))
+            {
+                filter &= Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.EntityType, request.EntityTypeFilter);
+            }
+            if (!string.IsNullOrWhiteSpace(request.ChangeTypeFilter))
+            {
+                filter &= Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.ChangeType, request.ChangeTypeFilter);
+            }
+
+            results = await this.comparisonCollection.Find(filter).ToListAsync(cancellationToken);
+        }
+        else
+        {
+            List<string> ids = request.ComparisonResultIds
+                .Where(item => !string.IsNullOrWhiteSpace(item))
+                .Select(item => item.Trim())
+                .Distinct(StringComparer.Ordinal)
+                .ToList();
+
+            if (ids.Count == 0)
+            {
+                return new DataSourceApplyResult { AppliedCount = 0 };
+            }
+
+            results = await this.comparisonCollection.Find(item => item.SourceKey == SourceKeyValue && ids.Contains(item.Id)).ToListAsync(cancellationToken);
+        }
+
+        Dictionary<string, DataSourceDuplicateResolution> resolutionsByResultId = request.DuplicateResolutions
+            .Where(item => !string.IsNullOrWhiteSpace(item.ComparisonResultId))
+            .GroupBy(item => item.ComparisonResultId.Trim(), StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.Last(), StringComparer.Ordinal);
+
+        List<CaptainCoasterComparisonResultDocument> orderedResults = results
+            .OrderBy(item => GetEntityApplyPriority(item.EntityType))
+            .ThenBy(item => item.RequiresManualResolution ? 1 : 0)
+            .ThenBy(item => item.DisplayName)
+            .ToList();
+
+        int appliedCount = 0;
+        foreach (CaptainCoasterComparisonResultDocument result in orderedResults)
+        {
+            resolutionsByResultId.TryGetValue(result.Id, out DataSourceDuplicateResolution? resolution);
+            bool applied = false;
+            if (string.Equals(result.EntityType, "Park", StringComparison.OrdinalIgnoreCase))
+            {
+                applied = await this.ApplyParkResultAsync(result, resolution, cancellationToken);
+            }
+            else if (string.Equals(result.EntityType, "Coaster", StringComparison.OrdinalIgnoreCase))
+            {
+                applied = await this.ApplyCoasterResultAsync(result, resolution, cancellationToken);
+            }
+
+            if (applied)
+            {
+                appliedCount++;
+            }
+        }
+
+        if (orderedResults.Count > 0)
+        {
+            CaptainCoasterSyncSessionDocument? session = await this.sessionsCollection
+                .Find(item => item.Id == orderedResults[0].SyncSessionId)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (session != null)
+            {
+                session.Metrics.AppliedChanges += appliedCount;
+                session.UpdatedAt = DateTime.UtcNow;
+                AddLog(session, "Info", $"Application manuelle : {appliedCount} changement(s) appliqué(s).");
+                await this.sessionsCollection.ReplaceOneAsync(item => item.Id == session.Id, session, cancellationToken: cancellationToken);
+            }
+        }
+
+        return new DataSourceApplyResult { AppliedCount = appliedCount };
+    }
+
+    public async Task ExecuteImportAsync(DataSourceImportJob job, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(job);
+
+        CaptainCoasterImportFiles inputFiles = ResolveInputFiles(job.ImportDescriptor);
+        byte[] parksBytes = await File.ReadAllBytesAsync(inputFiles.ParksFilePath, cancellationToken);
+        byte[] coastersBytes = await File.ReadAllBytesAsync(inputFiles.CoastersFilePath, cancellationToken);
+
+        CaptainCoasterSyncSessionDocument session = await this.sessionsCollection.Find(item => item.Id == job.SessionId).FirstAsync(cancellationToken);
+
+        try
+        {
+            await this.UpdateSessionAsync(session, "ParsingParks", "Analyse du fichier detected-parks.json.", 10, cancellationToken);
+            List<CaptainCoasterParkSnapshotDocument> parks = ParseParksFromJson(job.SessionId, parksBytes);
+            await this.parksCollection.DeleteManyAsync(item => item.SyncSessionId == job.SessionId, cancellationToken);
+            if (parks.Count > 0)
+            {
+                await this.parksCollection.InsertManyAsync(parks, cancellationToken: cancellationToken);
+            }
+            session.Metrics.ParksFetched = parks.Count;
+            int parkDuplicateGroups = CountDuplicateGroups(parks.Select(item => item.CaptainCoasterId));
+            if (parkDuplicateGroups > 0)
+            {
+                AddLog(session, "Warn", $"{parkDuplicateGroups} doublon(s) d'identifiant parc détecté(s) dans le staging. Une résolution humaine sera demandée.");
+            }
+            AddLog(session, "Info", $"{parks.Count} parc(s) parsé(s).");
+            await this.PersistSessionAsync(session, cancellationToken);
+
+            await this.UpdateSessionAsync(session, "ParsingCoasters", "Analyse du fichier coasters.json.", 40, cancellationToken);
+            List<CaptainCoasterCoasterSnapshotDocument> coasters = ParseCoastersFromJson(job.SessionId, coastersBytes);
+            await this.coastersCollection.DeleteManyAsync(item => item.SyncSessionId == job.SessionId, cancellationToken);
+            if (coasters.Count > 0)
+            {
+                await this.coastersCollection.InsertManyAsync(coasters, cancellationToken: cancellationToken);
+            }
+            session.Metrics.CoastersFetched = coasters.Count;
+            int coasterDuplicateGroups = CountDuplicateGroups(coasters.Select(item => item.CaptainCoasterId));
+            if (coasterDuplicateGroups > 0)
+            {
+                AddLog(session, "Warn", $"{coasterDuplicateGroups} doublon(s) d'identifiant coaster détecté(s) dans le staging. Une résolution humaine sera demandée.");
+            }
+            AddLog(session, "Info", $"{coasters.Count} coaster(s) parsé(s).");
+            await this.PersistSessionAsync(session, cancellationToken);
+
+            await this.UpdateSessionAsync(session, "BuildingComparison", "Construction du rapport de comparaison.", 70, cancellationToken);
+            List<CaptainCoasterComparisonResultDocument> comparisonResults = await this.BuildComparisonResultsAsync(job.SessionId, parks, coasters, cancellationToken);
+            await this.comparisonCollection.DeleteManyAsync(item => item.SyncSessionId == job.SessionId, cancellationToken);
+            if (comparisonResults.Count > 0)
+            {
+                await this.comparisonCollection.InsertManyAsync(comparisonResults, cancellationToken: cancellationToken);
+            }
+            session.Metrics.ComparisonResults = comparisonResults.Count;
+            session.Metrics.DuplicateConflicts = comparisonResults.Count(item => item.RequiresManualResolution);
+            AddLog(session, "Info", $"{comparisonResults.Count} différence(s) détectée(s), dont {session.Metrics.DuplicateConflicts} conflit(s) nécessitant une résolution humaine.");
+            await this.PersistSessionAsync(session, cancellationToken);
+
+            CaptainCoasterSettingsDocument settings = await this.GetOrCreateSettingsAsync();
+            settings.LastSuccessfulSyncUtc = DateTime.UtcNow;
+            settings.UpdatedAt = DateTime.UtcNow;
+            await this.settingsCollection.ReplaceOneAsync(item => item.Id == settings.Id, settings, new ReplaceOptions { IsUpsert = true }, cancellationToken);
+
+            session.Status = "Completed";
+            session.CurrentStep = "Completed";
+            session.Message = "Import Captain Coaster terminé avec succès.";
+            session.ProgressPercentage = 100;
+            session.CompletedAtUtc = DateTime.UtcNow;
+            session.UpdatedAt = DateTime.UtcNow;
+            AddLog(session, "Info", $"Terminé : {session.Metrics.ParksFetched} parcs, {session.Metrics.CoastersFetched} coasters, {session.Metrics.ComparisonResults} résultats.");
+            await this.PersistSessionAsync(session, cancellationToken);
+        }
+        catch (Exception exception)
+        {
+            session.Status = "Failed";
+            session.CurrentStep = "Failed";
+            session.Message = exception.Message;
+            session.CompletedAtUtc = DateTime.UtcNow;
+            session.UpdatedAt = DateTime.UtcNow;
+            AddLog(session, "Error", exception.ToString());
+            await this.PersistSessionAsync(session, cancellationToken);
+        }
+        finally
+        {
+            DeleteWorkingDirectorySafe(job.ImportDescriptor.WorkingDirectoryPath);
+        }
+    }
+}

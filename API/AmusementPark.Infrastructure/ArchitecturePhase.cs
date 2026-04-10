@@ -8,5 +8,5 @@ public static class ArchitecturePhase
     /// <summary>
     /// Libellé de la phase d'architecture actuellement préparée dans ce projet.
     /// </summary>
-    public const string Current = "Phase 11 - Projection Mongo de recherche et reindexation automatique";
+    public const string Current = "Phase 12 - Provider Captain Coaster générique, queue interne et worker d'import";
 }

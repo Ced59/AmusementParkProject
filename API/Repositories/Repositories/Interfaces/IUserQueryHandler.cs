@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Common.Users;
+﻿using Common.Users;
 using Entities.Model.Users;
 
 namespace Repositories.Interfaces

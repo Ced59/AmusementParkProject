@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Common.General.Localization;
+﻿using Common.General.Localization;
 
 namespace Dtos.ParkOperators.ParkOperators
 {

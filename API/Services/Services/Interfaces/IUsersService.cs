@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Dtos.Pagination;
+﻿using Dtos.Pagination;
 using Dtos.Users.ChangePassword;
 using Dtos.Users.ConfirmEmail;
 using Dtos.Users.Creating;

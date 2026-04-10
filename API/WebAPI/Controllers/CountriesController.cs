@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Dtos.Countries;
+﻿using Dtos.Countries;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 
