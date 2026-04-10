@@ -52,7 +52,7 @@ public sealed class JwtTokenService : ITokenService
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
-    public TokenValidationResult ValidateToken(string token, bool validateLifetime)
+    public Application.Ports.TokenValidationResult ValidateToken(string token, bool validateLifetime)
     {
         JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
         TokenValidationParameters validationParameters = new TokenValidationParameters
@@ -71,7 +71,7 @@ public sealed class JwtTokenService : ITokenService
         {
             ClaimsPrincipal principal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
             JwtSecurityToken jwtSecurityToken = (JwtSecurityToken)validatedToken;
-            return new TokenValidationResult
+            return new Application.Ports.TokenValidationResult
             {
                 IsValid = true,
                 Subject = jwtSecurityToken.Claims.FirstOrDefault(static claim => claim.Type == JwtRegisteredClaimNames.Sub)?.Value,
@@ -80,7 +80,7 @@ public sealed class JwtTokenService : ITokenService
         }
         catch
         {
-            return new TokenValidationResult
+            return new Application.Ports.TokenValidationResult
             {
                 IsValid = false,
             };

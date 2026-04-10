@@ -18,10 +18,7 @@ public sealed class ConsoleEmailSender : IEmailSender
     public Task SendAsync(string to, string subject, string htmlBody, CancellationToken cancellationToken)
     {
         this.logger.LogInformation(
-            "Mock email sent. To: {To}
-Subject: {Subject}
-Body:
-{Body}",
+            "Mock email sent. To: {To} Subject: {Subject} Body: {Body}",
             to,
             subject,
             htmlBody);
