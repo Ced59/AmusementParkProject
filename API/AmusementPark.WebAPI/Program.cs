@@ -4,6 +4,7 @@ using AmusementPark.Application.DependencyInjection;
 using AmusementPark.Infrastructure;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using AmusementPark.Infrastructure.DependencyInjection;
+using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -27,7 +28,8 @@ builder.Services.AddApplicationHandlers(static type =>
            namespaceName.Contains(".Features.ParkZones.", StringComparison.Ordinal) ||
            namespaceName.Contains(".Features.ParkItems.", StringComparison.Ordinal) ||
            namespaceName.Contains(".Features.Images.", StringComparison.Ordinal) ||
-           namespaceName.Contains(".Features.Users.", StringComparison.Ordinal);
+           namespaceName.Contains(".Features.Users.", StringComparison.Ordinal) ||
+           namespaceName.Contains(".Features.Search.", StringComparison.Ordinal);
 });
 builder.Services.AddInfrastructure(builder.Configuration);
 
@@ -82,6 +84,12 @@ builder.Services.AddSwaggerGen();
 
 WebApplication app = builder.Build();
 
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    MongoSearchProjectionInitializer searchProjectionInitializer = scope.ServiceProvider.GetRequiredService<MongoSearchProjectionInitializer>();
+    await searchProjectionInitializer.InitializeAsync(CancellationToken.None);
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -95,7 +103,7 @@ app.MapControllers();
 app.MapGet("/health", () => Results.Ok(new
 {
     status = "ok",
-    architecture = "clean-architecture-phase-10",
+    architecture = "clean-architecture-phase-11",
     application = AmusementPark.Application.ArchitecturePhase.Current,
     infrastructure = AmusementPark.Infrastructure.ArchitecturePhase.Current,
     project = "AmusementPark.WebAPI",
@@ -111,6 +119,7 @@ app.MapGet("/health", () => Results.Ok(new
         "Images",
         "Users",
         "Auth",
+        "Search",
     },
 }));
 

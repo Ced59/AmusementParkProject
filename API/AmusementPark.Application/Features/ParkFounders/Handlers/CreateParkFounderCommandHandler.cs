@@ -2,6 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkFounders.Commands;
 using AmusementPark.Application.Features.ParkFounders.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkFounders.Handlers;
@@ -12,13 +14,15 @@ namespace AmusementPark.Application.Features.ParkFounders.Handlers;
 public sealed class CreateParkFounderCommandHandler : ICommandHandler<CreateParkFounderCommand, ApplicationResult<ParkFounder>>
 {
     private readonly IParkFounderRepository repository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
     /// <summary>
     /// Initialise une nouvelle instance de la classe <see cref="CreateParkFounderCommandHandler"/>.
     /// </summary>
-    public CreateParkFounderCommandHandler(IParkFounderRepository repository)
+    public CreateParkFounderCommandHandler(IParkFounderRepository repository, ISearchProjectionWriter searchProjectionWriter)
     {
         this.repository = repository;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     /// <inheritdoc />
@@ -32,6 +36,7 @@ public sealed class CreateParkFounderCommandHandler : ICommandHandler<CreatePark
         try
         {
             ParkFounder created = await this.repository.CreateAsync(command.ParkFounder, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Founders, created.Id, cancellationToken);
             return ApplicationResult<ParkFounder>.Success(created);
         }
         catch

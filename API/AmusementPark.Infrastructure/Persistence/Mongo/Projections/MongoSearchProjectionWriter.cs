@@ -1,10 +1,11 @@
-using AmusementPark.Application.Ports;
+using System.Text.RegularExpressions;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Search;
 using MongoDB.Driver;
-using MongoDB.Driver.GeoJsonObjectModel;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 
@@ -16,6 +17,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
     private readonly IMongoCollection<SearchItemDocument> searchCollection;
     private readonly IMongoCollection<ParkDocument> parksCollection;
     private readonly IMongoCollection<ParkItemDocument> parkItemsCollection;
+    private readonly IMongoCollection<ParkFounderDocument> parkFoundersCollection;
     private readonly IMongoCollection<ParkOperatorDocument> parkOperatorsCollection;
     private readonly IMongoCollection<AttractionManufacturerDocument> attractionManufacturersCollection;
 
@@ -27,6 +29,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         this.searchCollection = database.GetCollection<SearchItemDocument>(settings.SearchItemCollectionName);
         this.parksCollection = database.GetCollection<ParkDocument>(settings.ParksCollectionName);
         this.parkItemsCollection = database.GetCollection<ParkItemDocument>(settings.ParkItemsCollectionName);
+        this.parkFoundersCollection = database.GetCollection<ParkFounderDocument>(settings.ParkFoundersCollectionName);
         this.parkOperatorsCollection = database.GetCollection<ParkOperatorDocument>(settings.ParkOperatorsCollectionName);
         this.attractionManufacturersCollection = database.GetCollection<AttractionManufacturerDocument>(settings.AttractionManufacturersCollectionName);
     }
@@ -46,10 +49,11 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
 
         SearchItemDocument document = resourceType switch
         {
-            "parks" => await this.BuildParkSearchItemAsync(resourceId, cancellationToken),
-            "parkItems" => await this.BuildParkItemSearchItemAsync(resourceId, cancellationToken),
-            "operators" => await this.BuildParkOperatorSearchItemAsync(resourceId, cancellationToken),
-            "manufacturers" => await this.BuildAttractionManufacturerSearchItemAsync(resourceId, cancellationToken),
+            SearchProjectionResourceTypes.Parks => await this.BuildParkSearchItemAsync(resourceId, cancellationToken),
+            SearchProjectionResourceTypes.ParkItems => await this.BuildParkItemSearchItemAsync(resourceId, cancellationToken),
+            SearchProjectionResourceTypes.Operators => await this.BuildParkOperatorSearchItemAsync(resourceId, cancellationToken),
+            SearchProjectionResourceTypes.Manufacturers => await this.BuildAttractionManufacturerSearchItemAsync(resourceId, cancellationToken),
+            SearchProjectionResourceTypes.Founders => await this.BuildParkFounderSearchItemAsync(resourceId, cancellationToken),
             _ => throw new InvalidOperationException($"Unsupported search projection resource type '{resourceType}'."),
         };
 
@@ -75,10 +79,11 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
 
         string originalId = resourceType switch
         {
-            "parks" => $"park_{resourceId}",
-            "parkItems" => $"parkItem_{resourceId}",
-            "operators" => $"operator_{resourceId}",
-            "manufacturers" => $"manufacturer_{resourceId}",
+            SearchProjectionResourceTypes.Parks => $"park_{resourceId}",
+            SearchProjectionResourceTypes.ParkItems => $"parkItem_{resourceId}",
+            SearchProjectionResourceTypes.Operators => $"operator_{resourceId}",
+            SearchProjectionResourceTypes.Manufacturers => $"manufacturer_{resourceId}",
+            SearchProjectionResourceTypes.Founders => $"founder_{resourceId}",
             _ => string.Empty,
         };
 
@@ -105,14 +110,14 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             Id = Guid.NewGuid().ToString(),
             OriginalId = $"park_{source.Id}",
             Category = "park",
-            ResourceType = "parks",
+            ResourceType = SearchProjectionResourceTypes.Parks,
             Title = source.Name ?? string.Empty,
+            Subtitle = BuildParkSubtitle(source),
             Description = this.ResolveLocalizedText(source.Descriptions) ?? this.BuildParkFallbackDescription(source),
             Keywords = keywords,
             CompositeScore = 0.0,
-            Latitude = source.Latitude ?? 0.0,
-            Longitude = source.Longitude ?? 0.0,
-            Location = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(new GeoJson2DGeographicCoordinates(source.Longitude ?? 0.0, source.Latitude ?? 0.0)),
+            Latitude = source.Latitude,
+            Longitude = source.Longitude,
             CreatedAt = source.CreatedAt,
             UpdatedAt = source.UpdatedAt,
             IsVisible = source.IsVisible,
@@ -129,28 +134,52 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
 
         ParkDocument? park = await this.parksCollection.Find(value => value.Id == source.ParkId).FirstOrDefaultAsync(cancellationToken);
         string parkName = park?.Name ?? string.Empty;
+        string category = ToSearchCategory(source.Category.ToString());
+        string typeTag = HumanizeValue(source.Type.ToString());
 
-        List<string> keywords = this.BuildKeywords(source.Name, source.Subtype, source.Type.ToString(), source.Category.ToString(), parkName, source.AttractionDetails?.Model);
-        string fallbackDescription = !string.IsNullOrWhiteSpace(parkName)
-            ? $"{parkName} • {source.Type}"
-            : source.Type.ToString();
+        List<string> keywords = this.BuildKeywords(source.Name, source.Subtype, source.Type.ToString(), typeTag, source.Category.ToString(), category, parkName, source.AttractionDetails?.Model);
+        string fallbackDescription = BuildParkItemFallbackDescription(parkName, category, typeTag, source.Subtype);
 
         return new SearchItemDocument
         {
             Id = Guid.NewGuid().ToString(),
             OriginalId = $"parkItem_{source.Id}",
-            Category = "parkItems",
-            ResourceType = "parkItems",
+            Category = category,
+            ResourceType = SearchProjectionResourceTypes.ParkItems,
             Title = source.Name,
+            Subtitle = string.IsNullOrWhiteSpace(parkName) ? HumanizeValue(source.Category.ToString()) : parkName,
             Description = this.ResolveLocalizedText(source.Descriptions) ?? fallbackDescription,
             Keywords = keywords,
             CompositeScore = 0.0,
-            Latitude = source.Latitude ?? 0.0,
-            Longitude = source.Longitude ?? 0.0,
-            Location = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(new GeoJson2DGeographicCoordinates(source.Longitude ?? 0.0, source.Latitude ?? 0.0)),
+            Latitude = source.Latitude,
+            Longitude = source.Longitude,
             CreatedAt = source.CreatedAt,
             UpdatedAt = source.UpdatedAt,
             IsVisible = (park?.IsVisible ?? true) && source.IsVisible,
+        };
+    }
+
+    private async Task<SearchItemDocument> BuildParkFounderSearchItemAsync(string resourceId, CancellationToken cancellationToken)
+    {
+        ParkFounderDocument? source = await this.parkFoundersCollection.Find(value => value.Id == resourceId).FirstOrDefaultAsync(cancellationToken);
+        if (source is null)
+        {
+            throw new InvalidOperationException($"Park founder '{resourceId}' not found for search projection.");
+        }
+
+        return new SearchItemDocument
+        {
+            Id = Guid.NewGuid().ToString(),
+            OriginalId = $"founder_{source.Id}",
+            Category = "founders",
+            ResourceType = SearchProjectionResourceTypes.Founders,
+            Title = source.Name,
+            Description = this.ResolveLocalizedText(source.Biography) ?? source.Name,
+            Keywords = this.BuildKeywords(source.Name, "founder", "fondateur"),
+            CompositeScore = 0.0,
+            CreatedAt = source.CreatedAt,
+            UpdatedAt = source.UpdatedAt,
+            IsVisible = true,
         };
     }
 
@@ -167,14 +196,11 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             Id = Guid.NewGuid().ToString(),
             OriginalId = $"operator_{source.Id}",
             Category = "operators",
-            ResourceType = "operators",
+            ResourceType = SearchProjectionResourceTypes.Operators,
             Title = source.Name,
             Description = this.ResolveLocalizedText(source.Description) ?? source.Name,
-            Keywords = this.BuildKeywords(source.Name, "operator"),
+            Keywords = this.BuildKeywords(source.Name, "operator", "exploitant"),
             CompositeScore = 0.0,
-            Latitude = 0.0,
-            Longitude = 0.0,
-            Location = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(new GeoJson2DGeographicCoordinates(0.0, 0.0)),
             CreatedAt = source.CreatedAt,
             UpdatedAt = source.UpdatedAt,
             IsVisible = true,
@@ -194,14 +220,11 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             Id = Guid.NewGuid().ToString(),
             OriginalId = $"manufacturer_{source.Id}",
             Category = "manufacturers",
-            ResourceType = "manufacturers",
+            ResourceType = SearchProjectionResourceTypes.Manufacturers,
             Title = source.Name,
             Description = this.ResolveLocalizedText(source.Biography) ?? source.Name,
-            Keywords = this.BuildKeywords(source.Name, "manufacturer", "constructor"),
+            Keywords = this.BuildKeywords(source.Name, "manufacturer", "constructor", "fabricant"),
             CompositeScore = 0.0,
-            Latitude = 0.0,
-            Longitude = 0.0,
-            Location = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(new GeoJson2DGeographicCoordinates(0.0, 0.0)),
             CreatedAt = source.CreatedAt,
             UpdatedAt = source.UpdatedAt,
             IsVisible = true,
@@ -219,14 +242,40 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
                 continue;
             }
 
-            string normalized = value.Trim().ToLowerInvariant();
-            if (!keywords.Contains(normalized, StringComparer.Ordinal))
+            foreach (string keyword in ExpandKeywordVariants(value))
             {
-                keywords.Add(normalized);
+                if (!keywords.Contains(keyword, StringComparer.Ordinal))
+                {
+                    keywords.Add(keyword);
+                }
             }
         }
 
         return keywords;
+    }
+
+    private static IEnumerable<string> ExpandKeywordVariants(string value)
+    {
+        string raw = value.Trim();
+        if (string.IsNullOrWhiteSpace(raw))
+        {
+            yield break;
+        }
+
+        string normalized = raw.ToLowerInvariant();
+        yield return normalized;
+
+        string humanized = HumanizeValue(raw);
+        if (!string.Equals(humanized, normalized, StringComparison.Ordinal))
+        {
+            yield return humanized;
+        }
+
+        string compact = humanized.Replace(" ", string.Empty, StringComparison.Ordinal);
+        if (!string.Equals(compact, normalized, StringComparison.Ordinal) && !string.Equals(compact, humanized, StringComparison.Ordinal))
+        {
+            yield return compact;
+        }
     }
 
     private string? ResolveLocalizedText(IEnumerable<LocalizedTextDocument>? values)
@@ -272,5 +321,64 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         }
 
         return parts.Count > 0 ? string.Join(" • ", parts) : (park.Name ?? string.Empty);
+    }
+
+    private static string? BuildParkSubtitle(ParkDocument source)
+    {
+        List<string> parts = new List<string>();
+
+        if (!string.IsNullOrWhiteSpace(source.City))
+        {
+            parts.Add(source.City.Trim());
+        }
+
+        if (!string.IsNullOrWhiteSpace(source.CountryCode))
+        {
+            parts.Add(source.CountryCode.Trim().ToUpperInvariant());
+        }
+
+        if (parts.Count == 0)
+        {
+            return null;
+        }
+
+        return string.Join(" • ", parts);
+    }
+
+    private static string BuildParkItemFallbackDescription(string parkName, string category, string typeTag, string? subtype)
+    {
+        List<string> parts = new List<string>();
+
+        if (!string.IsNullOrWhiteSpace(parkName))
+        {
+            parts.Add(parkName.Trim());
+        }
+
+        parts.Add(typeTag);
+
+        if (!string.IsNullOrWhiteSpace(subtype))
+        {
+            parts.Add(subtype.Trim());
+        }
+        else if (!string.Equals(category, typeTag, StringComparison.OrdinalIgnoreCase))
+        {
+            parts.Add(category);
+        }
+
+        return string.Join(" • ", parts);
+    }
+
+    private static string ToSearchCategory(string value)
+    {
+        return HumanizeValue(value);
+    }
+
+    private static string HumanizeValue(string value)
+    {
+        string normalized = Regex.Replace(value.Trim(), "([a-z0-9])([A-Z])", "$1 $2");
+        normalized = normalized.Replace("_", " ", StringComparison.Ordinal);
+        normalized = normalized.Replace("-", " ", StringComparison.Ordinal);
+        normalized = Regex.Replace(normalized, "\\s+", " ").Trim().ToLowerInvariant();
+        return normalized;
     }
 }

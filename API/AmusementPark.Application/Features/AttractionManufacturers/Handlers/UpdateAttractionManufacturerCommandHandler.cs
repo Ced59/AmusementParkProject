@@ -4,7 +4,8 @@ using AmusementPark.Application.Features.AttractionManufacturers.Commands;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.AttractionManufacturers.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
-using AmusementPark.Application.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.AttractionManufacturers.Handlers;
@@ -49,7 +50,7 @@ public sealed class UpdateAttractionManufacturerCommandHandler : ICommandHandler
                 return ApplicationResult<AttractionManufacturerResult>.Failure(ApplicationError.NotFound("attraction-manufacturer.not-found", "Attraction manufacturer not exists"));
             }
 
-            await this.searchProjectionWriter.UpsertAsync("manufacturers", updated.Id, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, updated.Id, cancellationToken);
             IReadOnlyDictionary<string, int> counts = await this.parkItemRepository.GetAttractionCountsByManufacturerIdsAsync(new[] { command.Id }, cancellationToken);
             int attractionCount = counts.TryGetValue(command.Id, out int value) ? value : 0;
 

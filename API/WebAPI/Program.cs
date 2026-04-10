@@ -40,6 +40,7 @@ using WebAPI.Settings.Images;
 using WebAPI.Settings.MongoDB;
 using WebAPI.Settings.OAuth;
 using WebAPI.Settings.Security;
+using AmusementPark.Application.Ports;
 
 namespace WebAPI
 {

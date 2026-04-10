@@ -3,7 +3,8 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Commands;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.AttractionManufacturers.Results;
-using AmusementPark.Application.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.AttractionManufacturers.Handlers;
@@ -36,7 +37,7 @@ public sealed class CreateAttractionManufacturerCommandHandler : ICommandHandler
         try
         {
             AttractionManufacturer created = await this.repository.CreateAsync(command.AttractionManufacturer, cancellationToken);
-            await this.searchProjectionWriter.UpsertAsync("manufacturers", created.Id, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, created.Id, cancellationToken);
             return ApplicationResult<AttractionManufacturerResult>.Success(new AttractionManufacturerResult
             {
                 Id = created.Id,

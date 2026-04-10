@@ -15,6 +15,19 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 /// </summary>
 public sealed class SearchReadRepository : ISearchReadRepository
 {
+    private static readonly string[] ParkItemCategories = new[]
+    {
+        "attraction",
+        "restaurant",
+        "hotel",
+        "animal",
+        "show",
+        "shop",
+        "service",
+        "transport",
+        "other",
+    };
+
     private readonly IMongoCollection<SearchItemDocument> collection;
 
     public SearchReadRepository(IMongoDatabase database, MongoDbSettings settings)
@@ -40,18 +53,22 @@ public sealed class SearchReadRepository : ISearchReadRepository
             filter &= textFilter;
         }
 
-        if (categories.Count > 0)
+        (string[] normalizedCategories, string[] normalizedResourceTypes) = NormalizeRequestedCategories(categories);
+        if (normalizedCategories.Length > 0 || normalizedResourceTypes.Length > 0)
         {
-            string[] normalizedCategories = categories
-                .Where(value => !string.IsNullOrWhiteSpace(value))
-                .Select(value => value.Trim())
-                .Distinct(StringComparer.OrdinalIgnoreCase)
-                .ToArray();
+            List<FilterDefinition<SearchItemDocument>> categoryFilters = new List<FilterDefinition<SearchItemDocument>>();
 
             if (normalizedCategories.Length > 0)
             {
-                filter &= Builders<SearchItemDocument>.Filter.In(document => document.Category, normalizedCategories);
+                categoryFilters.Add(Builders<SearchItemDocument>.Filter.In(document => document.Category, normalizedCategories));
             }
+
+            if (normalizedResourceTypes.Length > 0)
+            {
+                categoryFilters.Add(Builders<SearchItemDocument>.Filter.In(document => document.ResourceType, normalizedResourceTypes));
+            }
+
+            filter &= Builders<SearchItemDocument>.Filter.Or(categoryFilters);
         }
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
@@ -68,5 +85,129 @@ public sealed class SearchReadRepository : ISearchReadRepository
             page,
             pageSize,
             totalItems);
+    }
+
+    private static (string[] Categories, string[] ResourceTypes) NormalizeRequestedCategories(IReadOnlyCollection<string> categories)
+    {
+        HashSet<string> normalizedCategories = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        HashSet<string> normalizedResourceTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (string category in categories)
+        {
+            if (string.IsNullOrWhiteSpace(category))
+            {
+                continue;
+            }
+
+            string normalized = category.Trim().ToLowerInvariant();
+            switch (normalized)
+            {
+                case "park":
+                case "parks":
+                    normalizedCategories.Add("park");
+                    normalizedResourceTypes.Add("parks");
+                    break;
+
+                case "parkitem":
+                case "parkitems":
+                    AddRange(normalizedCategories, ParkItemCategories);
+                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "attraction":
+                case "attractions":
+                    normalizedCategories.Add("attraction");
+                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "restaurant":
+                case "restaurants":
+                case "resto":
+                case "restos":
+                    normalizedCategories.Add("restaurant");
+                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "hotel":
+                case "hotels":
+                    normalizedCategories.Add("hotel");
+                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "animal":
+                case "animals":
+                    normalizedCategories.Add("animal");
+                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "show":
+                case "shows":
+                    normalizedCategories.Add("show");
+                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "shop":
+                case "shops":
+                    normalizedCategories.Add("shop");
+                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "service":
+                case "services":
+                    normalizedCategories.Add("service");
+                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "transport":
+                case "transports":
+                    normalizedCategories.Add("transport");
+                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "other":
+                case "others":
+                    normalizedCategories.Add("other");
+                    normalizedResourceTypes.Add("parkItems");
+                    break;
+
+                case "operator":
+                case "operators":
+                    normalizedCategories.Add("operators");
+                    normalizedResourceTypes.Add("operators");
+                    break;
+
+                case "manufacturer":
+                case "manufacturers":
+                case "constructor":
+                case "constructors":
+                case "fabricant":
+                case "fabricants":
+                    normalizedCategories.Add("manufacturers");
+                    normalizedResourceTypes.Add("manufacturers");
+                    break;
+
+                case "founder":
+                case "founders":
+                case "fondateur":
+                case "fondateurs":
+                    normalizedCategories.Add("founders");
+                    normalizedResourceTypes.Add("founders");
+                    break;
+
+                default:
+                    normalizedCategories.Add(normalized);
+                    break;
+            }
+        }
+
+        return (normalizedCategories.ToArray(), normalizedResourceTypes.ToArray());
+    }
+
+    private static void AddRange(HashSet<string> target, IEnumerable<string> values)
+    {
+        foreach (string value in values)
+        {
+            target.Add(value);
+        }
     }
 }

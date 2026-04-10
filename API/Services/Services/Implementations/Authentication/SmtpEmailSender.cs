@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using MimeKit;
 using Services.Interfaces.Authentication;
 using Services.Interfaces.Settings;
+using AmusementPark.Application.Ports;
 
 namespace Services.Implementations.Authentication
 {

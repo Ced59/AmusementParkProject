@@ -3,8 +3,8 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Users.Commands;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Users.Results;
-using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Users;
+using AmusementPark.Application.Ports;
 
 namespace AmusementPark.Application.Features.Users.Handlers;
 

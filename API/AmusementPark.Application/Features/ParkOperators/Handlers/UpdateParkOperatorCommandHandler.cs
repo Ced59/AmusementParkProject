@@ -2,7 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkOperators.Commands;
 using AmusementPark.Application.Features.ParkOperators.Ports;
-using AmusementPark.Application.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkOperators.Handlers;
@@ -45,7 +46,7 @@ public sealed class UpdateParkOperatorCommandHandler : ICommandHandler<UpdatePar
                 return ApplicationResult<ParkOperator>.Failure(ApplicationError.NotFound("park-operator.not-found", "Park operator not exists"));
             }
 
-            await this.searchProjectionWriter.UpsertAsync("operators", updated.Id, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Operators, updated.Id, cancellationToken);
             return ApplicationResult<ParkOperator>.Success(updated);
         }
         catch

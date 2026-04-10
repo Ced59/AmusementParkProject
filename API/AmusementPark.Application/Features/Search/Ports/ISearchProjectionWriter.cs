@@ -1,4 +1,4 @@
-namespace AmusementPark.Application.Ports
+namespace AmusementPark.Application.Features.Search.Ports
 {
     /// <summary>
     /// Port applicatif de projection technique pour la recherche.

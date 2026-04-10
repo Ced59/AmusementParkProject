@@ -86,6 +86,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
         services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();
         services.AddScoped<ISearchProjectionWriter, MongoSearchProjectionWriter>();
+        services.AddScoped<MongoSearchProjectionInitializer>();
 
         services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
         services.AddScoped<IRefreshTokenFactory, LocalAccountTokenFactory>();

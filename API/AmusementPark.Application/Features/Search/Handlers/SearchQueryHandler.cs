@@ -24,7 +24,10 @@ public sealed class SearchQueryHandler : IQueryHandler<SearchQuery, ApplicationR
 
     public async Task<ApplicationResult<SearchResultPage<SearchHitResult>>> HandleAsync(SearchQuery query, CancellationToken cancellationToken = default)
     {
-        if (string.IsNullOrWhiteSpace(query.Text))
+        bool hasText = !string.IsNullOrWhiteSpace(query.Text);
+        bool hasCategories = query.Categories.Count > 0 && query.Categories.Any(static value => !string.IsNullOrWhiteSpace(value));
+
+        if (!hasText && !hasCategories)
         {
             return ApplicationResult<SearchResultPage<SearchHitResult>>.Failure(ApplicationErrors.Required(nameof(query.Text)));
         }
@@ -35,7 +38,12 @@ public sealed class SearchQueryHandler : IQueryHandler<SearchQuery, ApplicationR
             return ApplicationResult<SearchResultPage<SearchHitResult>>.Failure(errors);
         }
 
-        SearchResultPage<SearchHitResult> page = await this.searchReadRepository.SearchAsync(query.Text, query.Categories, query.Paging.Page, query.Paging.PageSize, cancellationToken);
+        SearchResultPage<SearchHitResult> page = await this.searchReadRepository.SearchAsync(query.Text ?? string.Empty, query.Categories, query.Paging.Page, query.Paging.PageSize, cancellationToken);
+        if (page.TotalItems <= 0)
+        {
+            return ApplicationResult<SearchResultPage<SearchHitResult>>.Failure(ApplicationError.NotFound("search.no-results", "Aucun résultat pour cette recherche."));
+        }
+
         return ApplicationResult<SearchResultPage<SearchHitResult>>.Success(page);
     }
 }

@@ -2,7 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Ports;
-using AmusementPark.Application.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkItems.Handlers;
@@ -62,7 +63,7 @@ public sealed class UpdateParkItemCommandHandler : ICommandHandler<UpdateParkIte
                 return ApplicationResult<ParkItem>.Failure(ParkItemApplicationErrors.ParkItemNotExists());
             }
 
-            await this.searchProjectionWriter.UpsertAsync("parkItems", updated.Id, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, updated.Id, cancellationToken);
             return ApplicationResult<ParkItem>.Success(updated);
         }
         catch

@@ -1,6 +1,6 @@
 using AmusementPark.Application.Features.Users.Ports;
-using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Users;
+using AmusementPark.Application.Ports;
 
 namespace AmusementPark.Infrastructure.Services.Authentication;
 

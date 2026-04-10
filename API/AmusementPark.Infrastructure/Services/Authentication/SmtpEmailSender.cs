@@ -1,9 +1,9 @@
-using AmusementPark.Application.Ports;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Logging;
 using MimeKit;
+using AmusementPark.Application.Ports;
 
 namespace AmusementPark.Infrastructure.Services.Authentication;
 

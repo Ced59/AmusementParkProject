@@ -2,7 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Ports;
-using AmusementPark.Application.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 
 namespace AmusementPark.Application.Features.ParkItems.Handlers;
 
@@ -32,7 +33,7 @@ public sealed class DeleteParkItemCommandHandler : ICommandHandler<DeleteParkIte
                 return ApplicationResult.Failure(ParkItemApplicationErrors.ParkItemNotExists());
             }
 
-            await this.searchProjectionWriter.DeleteAsync("parkItems", command.ParkItemId, cancellationToken);
+            await this.searchProjectionWriter.DeleteAsync(SearchProjectionResourceTypes.ParkItems, command.ParkItemId, cancellationToken);
             return ApplicationResult.Success();
         }
         catch

@@ -16,7 +16,7 @@ public sealed class ArchitectureController : ControllerBase
     [HttpGet("phase-1")]
     public IActionResult GetPhase1Status()
     {
-        return Ok(new
+        return this.Ok(new
         {
             projects = new[]
             {
@@ -37,7 +37,7 @@ public sealed class ArchitectureController : ControllerBase
     [HttpGet("phase-3")]
     public IActionResult GetPhase3Status()
     {
-        return Ok(new
+        return this.Ok(new
         {
             phase = 3,
             goal = "Core pur extrait",
@@ -54,7 +54,7 @@ public sealed class ArchitectureController : ControllerBase
     [HttpGet("phase-4")]
     public IActionResult GetPhase4Status()
     {
-        return Ok(new
+        return this.Ok(new
         {
             phase = 4,
             label = AmusementPark.Application.ArchitecturePhase.Current,
@@ -67,7 +67,7 @@ public sealed class ArchitectureController : ControllerBase
     [HttpGet("phase-5")]
     public IActionResult GetPhase5Status()
     {
-        return Ok(new
+        return this.Ok(new
         {
             phase = 5,
             label = AmusementPark.Infrastructure.ArchitecturePhase.Current,
@@ -102,6 +102,7 @@ public sealed class ArchitectureController : ControllerBase
                 "UserRepository",
                 "CaptainCoasterSettingsRepository",
                 "CaptainCoasterSessionRepository",
+                "MongoSearchProjectionWriter",
             },
         });
     }
@@ -109,7 +110,7 @@ public sealed class ArchitectureController : ControllerBase
     [HttpGet("phase-6")]
     public IActionResult GetPhase6Status()
     {
-        return Ok(new
+        return this.Ok(new
         {
             phase = 6,
             goal = "Features simples migrées de bout en bout",
@@ -142,7 +143,7 @@ public sealed class ArchitectureController : ControllerBase
     [HttpGet("phase-7")]
     public IActionResult GetPhase7Status()
     {
-        return Ok(new
+        return this.Ok(new
         {
             phase = 7,
             goal = "Migration Parks et ParkZones de bout en bout",
@@ -182,7 +183,7 @@ public sealed class ArchitectureController : ControllerBase
     [HttpGet("phase-10")]
     public IActionResult GetPhase10Status()
     {
-        return Ok(new
+        return this.Ok(new
         {
             phase = 10,
             goal = "Migration Users / Auth / Email / Avatar",
@@ -218,6 +219,39 @@ public sealed class ArchitectureController : ControllerBase
                 "UsersService éclaté en handlers Application dédiés",
                 "JWT, hashage, email et avatar externe déplacés derrière des ports Infrastructure",
                 "Routes et payloads HTTP legacy conservés côté WebAPI",
+            },
+        });
+    }
+
+    [HttpGet("phase-11")]
+    public IActionResult GetPhase11Status()
+    {
+        return this.Ok(new
+        {
+            phase = 11,
+            goal = "Refondre Search comme projection technique transverse",
+            migratedFeatures = new[]
+            {
+                "Search",
+            },
+            preservedRoutes = new[]
+            {
+                "GET /Search?query=&categories=&page=&pageSize=",
+            },
+            coveredResources = new[]
+            {
+                "Parks",
+                "ParkItems (attractions, restaurants, hotels, services, etc.)",
+                "ParkFounders",
+                "ParkOperators",
+                "AttractionManufacturers",
+            },
+            notes = new[]
+            {
+                "Le contrôleur Search passe désormais par SearchQueryHandler et SearchReadRepository de la nouvelle architecture",
+                "Le port ISearchProjectionWriter a été recentré dans la feature Search",
+                "Le search index est reconstruit au démarrage pour réindexer les données existantes",
+                "Les créations et mises à jour des entités concernées rafraîchissent aussi la projection au fil de l'eau",
             },
         });
     }

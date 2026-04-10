@@ -1,10 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Users;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using Microsoft.IdentityModel.Tokens;
+using AmusementPark.Application.Ports;
 
 namespace AmusementPark.Infrastructure.Services.Authentication;
 

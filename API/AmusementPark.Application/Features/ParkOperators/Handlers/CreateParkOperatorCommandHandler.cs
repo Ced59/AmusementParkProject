@@ -2,7 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkOperators.Commands;
 using AmusementPark.Application.Features.ParkOperators.Ports;
-using AmusementPark.Application.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkOperators.Handlers;
@@ -35,7 +36,7 @@ public sealed class CreateParkOperatorCommandHandler : ICommandHandler<CreatePar
         try
         {
             ParkOperator created = await this.repository.CreateAsync(command.ParkOperator, cancellationToken);
-            await this.searchProjectionWriter.UpsertAsync("operators", created.Id, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Operators, created.Id, cancellationToken);
             return ApplicationResult<ParkOperator>.Success(created);
         }
         catch

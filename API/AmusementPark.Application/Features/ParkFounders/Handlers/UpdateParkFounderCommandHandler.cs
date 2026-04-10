@@ -2,6 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkFounders.Commands;
 using AmusementPark.Application.Features.ParkFounders.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkFounders.Handlers;
@@ -12,13 +14,15 @@ namespace AmusementPark.Application.Features.ParkFounders.Handlers;
 public sealed class UpdateParkFounderCommandHandler : ICommandHandler<UpdateParkFounderCommand, ApplicationResult<ParkFounder>>
 {
     private readonly IParkFounderRepository repository;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
     /// <summary>
     /// Initialise une nouvelle instance de la classe <see cref="UpdateParkFounderCommandHandler"/>.
     /// </summary>
-    public UpdateParkFounderCommandHandler(IParkFounderRepository repository)
+    public UpdateParkFounderCommandHandler(IParkFounderRepository repository, ISearchProjectionWriter searchProjectionWriter)
     {
         this.repository = repository;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     /// <inheritdoc />
@@ -42,6 +46,7 @@ public sealed class UpdateParkFounderCommandHandler : ICommandHandler<UpdatePark
                 return ApplicationResult<ParkFounder>.Failure(ApplicationError.NotFound("park-founder.not-found", "Park founder not exists"));
             }
 
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Founders, updated.Id, cancellationToken);
             return ApplicationResult<ParkFounder>.Success(updated);
         }
         catch

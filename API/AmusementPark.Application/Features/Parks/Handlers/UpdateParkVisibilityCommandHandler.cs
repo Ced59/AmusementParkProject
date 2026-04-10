@@ -3,7 +3,8 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Ports;
-using AmusementPark.Application.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Parks.Handlers;
@@ -39,11 +40,11 @@ public sealed class UpdateParkVisibilityCommandHandler : ICommandHandler<UpdateP
                 return ApplicationResult<Park>.Failure(ParkApplicationErrors.ParkNotExists());
             }
 
-            await this.searchProjectionWriter.UpsertAsync("parks", updated.Id, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, updated.Id, cancellationToken);
             IReadOnlyCollection<ParkItem> parkItems = await this.parkItemRepository.GetByParkIdAsync(updated.Id, true, cancellationToken);
             foreach (ParkItem parkItem in parkItems)
             {
-                await this.searchProjectionWriter.UpsertAsync("parkItems", parkItem.Id, cancellationToken);
+                await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, parkItem.Id, cancellationToken);
             }
 
             return ApplicationResult<Park>.Success(updated);

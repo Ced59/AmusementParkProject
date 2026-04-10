@@ -1,5 +1,5 @@
-using AmusementPark.Application.Ports;
 using Microsoft.Extensions.Logging;
+using AmusementPark.Application.Ports;
 
 namespace AmusementPark.Infrastructure.Services.Authentication;
 

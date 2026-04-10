@@ -1,9 +1,9 @@
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
-using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Images;
 using Microsoft.Extensions.Logging;
+using AmusementPark.Application.Ports;
 
 namespace AmusementPark.Infrastructure.Services.Images;
 

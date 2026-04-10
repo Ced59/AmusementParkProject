@@ -3,7 +3,8 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Ports;
-using AmusementPark.Application.Ports;
+using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Parks.Handlers;
@@ -32,7 +33,7 @@ public sealed class CreateParkCommandHandler : ICommandHandler<CreateParkCommand
         try
         {
             Park created = await this.parkRepository.CreateAsync(command.Park, cancellationToken);
-            await this.searchProjectionWriter.UpsertAsync("parks", created.Id, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, created.Id, cancellationToken);
             return ApplicationResult<Park>.Success(created);
         }
         catch
