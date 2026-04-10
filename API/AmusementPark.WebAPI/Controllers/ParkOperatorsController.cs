@@ -3,6 +3,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkOperators.Commands;
 using AmusementPark.Application.Features.ParkOperators.Queries;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.ParkOperators;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
@@ -38,8 +39,8 @@ public sealed class ParkOperatorsController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<ParkOperatorDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken = default)
+    [ProducesResponseType(typeof(PagedResponseDto<ParkOperatorDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
         ApplicationResult<IReadOnlyCollection<ParkOperator>> result = await this.getParkOperatorsQueryHandler.HandleAsync(new GetParkOperatorsQuery(), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
@@ -47,7 +48,7 @@ public sealed class ParkOperatorsController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<ParkOperatorDto> response = result.Value.Select(static value => value.ToHttp()).ToList();
+        PagedResponseDto<ParkOperatorDto> response = pagination.ToPagedResponse(result.Value, static value => value.ToHttp());
         return this.Ok(response);
     }
 

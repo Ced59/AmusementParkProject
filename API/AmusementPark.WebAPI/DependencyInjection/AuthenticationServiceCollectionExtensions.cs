@@ -34,7 +34,9 @@ public static class AuthenticationServiceCollectionExtensions
                 options.Cookie.Name = "ExternalAuth.Cookie";
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
                 options.Cookie.HttpOnly = true;
+                options.Cookie.SameSite = SameSiteMode.Lax;
                 options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                options.SlidingExpiration = false;
             })
             .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
             {

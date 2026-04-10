@@ -477,11 +477,11 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       this.ccStatus.set(status);
 
       try {
-        const session: CaptainCoasterSessionResponse = await firstValueFrom(
+        const session: CaptainCoasterSessionResponse | null = await firstValueFrom(
           this.captainCoasterDataService.getLatestSession()
         );
         this.ccSession.set(session);
-        if (session.status !== 'Completed' && session.status !== 'Failed') {
+        if (session !== null && session.status !== 'Completed' && session.status !== 'Failed') {
           this.startPolling(session.id);
         }
       } catch {
@@ -515,19 +515,10 @@ export class AdminDataComponent implements OnInit, OnDestroy {
 
   private async refreshSourcesTableAsync(): Promise<void> {
     try {
-      const status: CaptainCoasterStatusResponse = await firstValueFrom(
-        this.captainCoasterDataService.getStatus()
+      const sources: DataSourceSummary[] = await firstValueFrom(
+        this.captainCoasterDataService.listSources()
       );
-      this.dataSources.set([{
-        key: 'captain-coaster',
-        label: 'Captain Coaster',
-        description: 'Données de coasters et parcs depuis le scraper Captain Coaster (JSON)',
-        icon: 'pi pi-cloud-download',
-        isEnabled: status.isEnabled,
-        lastImportUtc: status.lastSuccessfulImportUtc,
-        totalSessions: status.totalSessionsCount,
-        statusLabel: status.lastSuccessfulImportUtc ? 'Actif' : 'Jamais importé'
-      }]);
+      this.dataSources.set(sources);
     } catch {
       this.dataSources.set([{
         key: 'captain-coaster',
@@ -549,7 +540,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.ccStatus.set(status);
 
     try {
-      const session: CaptainCoasterSessionResponse = await firstValueFrom(
+      const session: CaptainCoasterSessionResponse | null = await firstValueFrom(
         this.captainCoasterDataService.getLatestSession()
       );
       this.ccSession.set(session);

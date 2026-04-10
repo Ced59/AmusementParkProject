@@ -114,13 +114,10 @@ public sealed class UsersController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(PagedResponseDto<UserDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> ListUsersAsync(
-        [FromQuery] [Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")] int page = 1,
-        [FromQuery] [Range(1, 100, ErrorMessage = "Size must be between 1 and 100")] int size = 10,
-        CancellationToken cancellationToken = default)
+    public async Task<IActionResult> ListUsersAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
         ApplicationResult<PagedResult<User>> result = await this.getUsersPageQueryHandler.HandleAsync(
-            new GetUsersPageQuery((page, size).ToApplication()),
+            new GetUsersPageQuery(pagination.ToApplication()),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -128,7 +125,7 @@ public sealed class UsersController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        return this.Ok(result.Value.ToHttp());
+        return this.Ok(result.Value.ToPagedResponse(static user => user.ToListDto()));
     }
 
     [HttpPut("{id}")]

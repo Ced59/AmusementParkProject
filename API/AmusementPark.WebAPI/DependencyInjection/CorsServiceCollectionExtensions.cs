@@ -21,13 +21,17 @@ public static class CorsServiceCollectionExtensions
         {
             options.AddPolicy(PolicyName, policyBuilder =>
             {
-                if (corsSettings.AllowedOrigins.Length == 0)
+                string[] allowedOrigins = corsSettings.AllowedOrigins
+                    .Where(static origin => !string.IsNullOrWhiteSpace(origin))
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .ToArray();
+
+                if (allowedOrigins.Length == 0)
                 {
-                    policyBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-                    return;
+                    allowedOrigins = ["http://localhost:4200"];
                 }
 
-                policyBuilder.WithOrigins(corsSettings.AllowedOrigins)
+                policyBuilder.WithOrigins(allowedOrigins)
                     .AllowAnyHeader()
                     .AllowAnyMethod();
 

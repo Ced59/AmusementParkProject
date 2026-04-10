@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
@@ -46,8 +45,8 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpGet("park/{parkId}")]
-    [ProducesResponseType(typeof(IEnumerable<ParkItemDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId, CancellationToken cancellationToken = default)
+    [ProducesResponseType(typeof(PagedResponseDto<ParkItemDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
         ApplicationResult<IReadOnlyCollection<ParkItem>> result = await this.getParkItemsByParkIdQueryHandler.HandleAsync(
             new GetParkItemsByParkIdQuery(parkId, this.UserCanSeeNonVisible()),
@@ -58,20 +57,15 @@ public sealed class ParkItemsController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<ParkItemDto> response = result.Value.Select(static item => item.ToHttp()).ToList();
+        PagedResponseDto<ParkItemDto> response = pagination.ToPagedResponse(result.Value, static item => item.ToHttp());
         return this.Ok(response);
     }
 
     [HttpGet]
     [ProducesResponseType(typeof(PagedResponseDto<ParkItemAdminListDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetPaginatedAsync(
-        [FromQuery][Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")] int page = 1,
-        [FromQuery][Range(1, 100, ErrorMessage = "Size must be between 1 and 100")] int size = 20,
-        [FromQuery] string? parkId = null,
-        [FromQuery] string? search = null,
-        CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetPaginatedAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? parkId = null, [FromQuery] string? search = null, CancellationToken cancellationToken = default)
     {
-        PagedQuery paging = new PagedQuery(page, size);
+        PagedQuery paging = pagination.ToApplication();
         ApplicationResult<PagedResult<ParkItemAdminListResult>> result = await this.getParkItemsPageQueryHandler.HandleAsync(
             new GetParkItemsPageQuery(paging, parkId, search, this.UserCanSeeNonVisible()),
             cancellationToken);
@@ -81,11 +75,7 @@ public sealed class ParkItemsController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<ParkItemAdminListDto> response = new PagedResponseDto<ParkItemAdminListDto>
-        {
-            Data = result.Value.Items.Select(static item => item.ToHttp()).ToList(),
-            Pagination = result.Value.ToHttp(),
-        };
+        PagedResponseDto<ParkItemAdminListDto> response = result.Value.ToPagedResponse(static item => item.ToHttp());
 
         return this.Ok(response);
     }

@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.ParkZones.Commands;
 using AmusementPark.Application.Features.ParkZones.Queries;
 using AmusementPark.Application.Features.ParkZones.Results;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.ParkZones;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
@@ -42,8 +43,8 @@ public sealed class ParkZonesController : ControllerBase
     }
 
     [HttpGet("park/{parkId}")]
-    [ProducesResponseType(typeof(IEnumerable<ParkZoneDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId, CancellationToken cancellationToken = default)
+    [ProducesResponseType(typeof(PagedResponseDto<ParkZoneDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
         ApplicationResult<IReadOnlyCollection<ParkZone>> result = await this.getParkZonesByParkIdQueryHandler.HandleAsync(new GetParkZonesByParkIdQuery(parkId), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
@@ -51,12 +52,12 @@ public sealed class ParkZonesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<ParkZoneDto> response = result.Value
+        IReadOnlyCollection<ParkZone> orderedZones = result.Value
             .OrderBy(static zone => zone.SortOrder)
             .ThenBy(static zone => zone.Name, StringComparer.OrdinalIgnoreCase)
-            .Select(static zone => zone.ToHttp())
             .ToList();
 
+        PagedResponseDto<ParkZoneDto> response = pagination.ToPagedResponse(orderedZones, static zone => zone.ToHttp());
         return this.Ok(response);
     }
 

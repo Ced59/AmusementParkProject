@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Countries.Queries;
 using AmusementPark.Core.Domain.Countries;
+using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Countries;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
@@ -30,8 +31,8 @@ public sealed class CountriesController : ControllerBase
     /// Retourne la liste des pays avec le nom localisé.
     /// </summary>
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<CountryDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetCountries([FromQuery] string? lang = null, CancellationToken cancellationToken = default)
+    [ProducesResponseType(typeof(PagedResponseDto<CountryDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetCountries([FromQuery] string? lang = null, [FromQuery] PaginationRequestDto? pagination = null, CancellationToken cancellationToken = default)
     {
         ApplicationResult<IReadOnlyCollection<Country>> result = await this.getCountriesQueryHandler.HandleAsync(new GetCountriesQuery(lang), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
@@ -39,7 +40,8 @@ public sealed class CountriesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<CountryDto> response = result.Value.Select(country => country.ToHttp(lang)).ToList();
+        PaginationRequestDto effectivePagination = pagination ?? new PaginationRequestDto();
+        PagedResponseDto<CountryDto> response = effectivePagination.ToPagedResponse(result.Value, country => country.ToHttp(lang));
         return this.Ok(response);
     }
 }

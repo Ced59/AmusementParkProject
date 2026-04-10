@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.Images.Queries;
 using AmusementPark.Application.Features.Images.Results;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Core.Domain.Images;
+using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Images;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
@@ -138,8 +139,8 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpGet("{ownerType}/{ownerId}/{category}")]
-    [ProducesResponseType(typeof(IEnumerable<ImageDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetImagesAsync([FromRoute] string ownerType, [FromRoute] string ownerId, [FromRoute] string category, CancellationToken cancellationToken = default)
+    [ProducesResponseType(typeof(PagedResponseDto<ImageDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetImagesAsync([FromRoute] string ownerType, [FromRoute] string ownerId, [FromRoute] string category, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
         if (!Enum.TryParse<ImageOwnerTypeDto>(ownerType, true, out ImageOwnerTypeDto parsedOwnerType))
         {
@@ -160,7 +161,7 @@ public sealed class ImagesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<ImageDto> response = result.Value.Select(static imageValue => imageValue.ToHttp()).ToList();
+        PagedResponseDto<ImageDto> response = pagination.ToPagedResponse(result.Value, static imageValue => imageValue.ToHttp());
         return this.Ok(response);
     }
 
@@ -190,8 +191,8 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<ImageDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken = default)
+    [ProducesResponseType(typeof(PagedResponseDto<ImageDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
         ApplicationResult<IReadOnlyCollection<Image>> result = await this.getAllImagesQueryHandler.HandleAsync(new GetAllImagesQuery(), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
@@ -199,13 +200,13 @@ public sealed class ImagesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<ImageDto> response = result.Value.Select(static imageValue => imageValue.ToHttp()).ToList();
+        PagedResponseDto<ImageDto> response = pagination.ToPagedResponse(result.Value, static imageValue => imageValue.ToHttp());
         return this.Ok(response);
     }
 
     [HttpGet("tags")]
-    [ProducesResponseType(typeof(IEnumerable<ImageTagDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetTagsAsync(CancellationToken cancellationToken = default)
+    [ProducesResponseType(typeof(PagedResponseDto<ImageTagDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetTagsAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
         ApplicationResult<IReadOnlyCollection<ImageTag>> result = await this.listImageTagsQueryHandler.HandleAsync(new ListImageTagsQuery(), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
@@ -213,7 +214,7 @@ public sealed class ImagesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<ImageTagDto> response = result.Value.Select(static value => value.ToHttp()).ToList();
+        PagedResponseDto<ImageTagDto> response = pagination.ToPagedResponse(result.Value, static value => value.ToHttp());
         return this.Ok(response);
     }
 

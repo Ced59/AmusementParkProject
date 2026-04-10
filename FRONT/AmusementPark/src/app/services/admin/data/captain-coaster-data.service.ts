@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import {
@@ -8,31 +8,87 @@ import {
   CaptainCoasterDuplicateResolutionRequest,
   CaptainCoasterSessionResponse,
   CaptainCoasterStatusResponse,
-  ComparisonFilters
+  ComparisonFilters,
+  DataSourceSummary
 } from '../../../models/admin/data/data-management.models';
+
+interface DataSourceStatusApiDto {
+  sourceKey: string;
+  displayName: string;
+  isEnabled: boolean;
+  lastSuccessfulImportUtc: string | null;
+  totalSessionsCount: number;
+}
+
+interface DataSourceSessionApiDto {
+  sessionId: string;
+  sourceKey: string;
+  status: string;
+  progressPercentage: number;
+  currentStep: string;
+  message: string;
+  startedAtUtc: string;
+  completedAtUtc: string | null;
+  metrics: {
+    itemsFetchedPrimary: number;
+    itemsFetchedSecondary: number;
+    comparisonResults: number;
+    appliedChanges: number;
+    duplicateConflicts: number;
+  };
+  logs: Array<{
+    occurredAtUtc: string;
+    level: string;
+    message: string;
+  }>;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class CaptainCoasterDataService {
-
-  private readonly baseUrl: string = `${environment.apiBaseUrl}admin/data/captain-coaster`;
+  private readonly sourcesUrl: string = `${environment.apiBaseUrl}admin/data-sources`;
+  private readonly baseUrl: string = `${this.sourcesUrl}/captain-coaster`;
 
   constructor(private readonly http: HttpClient) {}
 
-  getStatus(): Observable<CaptainCoasterStatusResponse> {
-    return this.http.get<CaptainCoasterStatusResponse>(`${this.baseUrl}/status`);
+  listSources(): Observable<DataSourceSummary[]> {
+    return this.http.get<DataSourceStatusApiDto[]>(this.sourcesUrl).pipe(
+      map((sources: DataSourceStatusApiDto[]) =>
+        sources.map((source: DataSourceStatusApiDto) => this.mapSourceSummary(source))
+      )
+    );
   }
 
-  getLatestSession(): Observable<CaptainCoasterSessionResponse> {
-    return this.http.get<CaptainCoasterSessionResponse>(`${this.baseUrl}/sessions/latest`);
+  getStatus(): Observable<CaptainCoasterStatusResponse> {
+    return this.http.get<DataSourceStatusApiDto>(`${this.baseUrl}/status`).pipe(
+      map((status: DataSourceStatusApiDto) => this.mapStatus(status))
+    );
+  }
+
+  getLatestSession(): Observable<CaptainCoasterSessionResponse | null> {
+    return this.http.get<DataSourceSessionApiDto | null>(`${this.baseUrl}/sessions/latest`, {
+      observe: 'response'
+    }).pipe(
+      map((response: HttpResponse<DataSourceSessionApiDto | null>) => {
+        if (response.status === 204 || response.body === null) {
+          return null;
+        }
+
+        return this.mapSession(response.body);
+      })
+    );
   }
 
   importFromFiles(parksFile: File, coastersFile: File): Observable<CaptainCoasterSessionResponse> {
     const formData: FormData = new FormData();
-    formData.append('parksFile', parksFile, parksFile.name);
-    formData.append('coastersFile', coastersFile, coastersFile.name);
-    return this.http.post<CaptainCoasterSessionResponse>(`${this.baseUrl}/import`, formData);
+    formData.append('importKind', 'json-files');
+    formData.append('files', parksFile, 'detected-parks.json');
+    formData.append('files', coastersFile, 'coasters.json');
+
+    return this.http.post<DataSourceSessionApiDto>(`${this.baseUrl}/import`, formData).pipe(
+      map((session: DataSourceSessionApiDto) => this.mapSession(session))
+    );
   }
 
   getComparisonResults(
@@ -88,5 +144,73 @@ export class CaptainCoasterDataService {
       changeTypeFilter,
       duplicateResolutions: []
     });
+  }
+
+  private mapSourceSummary(source: DataSourceStatusApiDto): DataSourceSummary {
+    return {
+      key: source.sourceKey,
+      label: source.displayName,
+      description: this.resolveSourceDescription(source.sourceKey),
+      icon: this.resolveSourceIcon(source.sourceKey),
+      isEnabled: source.isEnabled,
+      lastImportUtc: source.lastSuccessfulImportUtc,
+      totalSessions: source.totalSessionsCount,
+      statusLabel: this.resolveSourceStatusLabel(source)
+    };
+  }
+
+  private mapStatus(status: DataSourceStatusApiDto): CaptainCoasterStatusResponse {
+    return {
+      source: status.sourceKey,
+      isEnabled: status.isEnabled,
+      lastSuccessfulImportUtc: status.lastSuccessfulImportUtc,
+      totalSessionsCount: status.totalSessionsCount
+    };
+  }
+
+  private mapSession(session: DataSourceSessionApiDto): CaptainCoasterSessionResponse {
+    return {
+      id: session.sessionId,
+      status: session.status,
+      progressPercentage: session.progressPercentage,
+      currentStep: session.currentStep,
+      message: session.message,
+      startedAtUtc: session.startedAtUtc,
+      completedAtUtc: session.completedAtUtc,
+      parksFetched: session.metrics?.itemsFetchedPrimary ?? 0,
+      coastersFetched: session.metrics?.itemsFetchedSecondary ?? 0,
+      comparisonResults: session.metrics?.comparisonResults ?? 0,
+      appliedChanges: session.metrics?.appliedChanges ?? 0,
+      duplicateConflicts: session.metrics?.duplicateConflicts ?? 0,
+      logs: session.logs ?? []
+    };
+  }
+
+  private resolveSourceDescription(sourceKey: string): string {
+    if (sourceKey === 'captain-coaster') {
+      return 'Données de coasters et parcs depuis le scraper Captain Coaster (JSON)';
+    }
+
+    return 'Source de données externe.';
+  }
+
+  private resolveSourceIcon(sourceKey: string): string {
+    if (sourceKey === 'captain-coaster') {
+      return 'pi pi-cloud-download';
+    }
+
+    return 'pi pi-database';
+  }
+
+  private resolveSourceStatusLabel(source: DataSourceStatusApiDto): string {
+    if (!source.isEnabled) {
+      return 'Désactivée';
+    }
+
+    if (source.lastSuccessfulImportUtc) {
+      return 'Active';
+    }
+
+    return 'Jamais importée';
   }
 }

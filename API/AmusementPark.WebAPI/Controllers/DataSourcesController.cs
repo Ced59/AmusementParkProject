@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.DataSources.Commands;
 using AmusementPark.Application.Features.DataSources.Contracts;
 using AmusementPark.Application.Features.DataSources.Queries;
 using AmusementPark.Application.Features.DataSources.Results;
+using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.DataSources;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
@@ -55,8 +56,8 @@ public sealed class DataSourcesController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(IReadOnlyCollection<DataSourceStatusDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> ListAsync(CancellationToken cancellationToken = default)
+    [ProducesResponseType(typeof(PagedResponseDto<DataSourceStatusDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> ListAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
         ApplicationResult<IReadOnlyCollection<DataSourceStatusResult>> result = await this.listDataSourcesQueryHandler.HandleAsync(new ListDataSourcesQuery(), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
@@ -64,7 +65,7 @@ public sealed class DataSourcesController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<DataSourceStatusDto> response = result.Value.Select(static item => item.ToHttp()).ToList();
+        PagedResponseDto<DataSourceStatusDto> response = pagination.ToPagedResponse(result.Value, static item => item.ToHttp());
         return this.Ok(response);
     }
 

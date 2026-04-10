@@ -9,6 +9,34 @@ public static class WebApplicationPipelineExtensions
     {
         ArgumentNullException.ThrowIfNull(app);
 
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseHsts();
+        }
+
+        app.UseHttpsRedirection();
+        app.Use(async (context, next) =>
+        {
+            context.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
+            context.Response.Headers.TryAdd("X-Frame-Options", "DENY");
+            context.Response.Headers.TryAdd("Referrer-Policy", "strict-origin-when-cross-origin");
+            context.Response.Headers.TryAdd("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+            await next();
+        });
+        app.UseExceptionHandler(static errorApp =>
+        {
+            errorApp.Run(async context =>
+            {
+                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsJsonAsync(new
+                {
+                    StatusCode = StatusCodes.Status500InternalServerError,
+                    Message = "An unexpected error occurred.",
+                });
+            });
+        });
+
         app.UseApiCors();
         app.UseApiRateLimiting();
         app.UseAuthentication();

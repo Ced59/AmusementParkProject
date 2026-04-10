@@ -31,8 +31,8 @@ public sealed class SearchController : ControllerBase
     public async Task<IActionResult> SearchAsync(
         [FromQuery] string? query,
         [FromQuery] string[]? categories,
-        [FromQuery] int page = 1,
-        [FromQuery] int pageSize = 10,
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery(Name = "pageSize")] int? legacyPageSize = null,
         CancellationToken cancellationToken = default)
     {
         string[] normalizedCategories = (categories ?? Array.Empty<string>())
@@ -45,8 +45,10 @@ public sealed class SearchController : ControllerBase
             return this.BadRequest("Vous devez fournir un terme de recherche ou au moins une catégorie.");
         }
 
+        PaginationRequestDto effectivePagination = pagination.Override(size: legacyPageSize);
+
         ApplicationResult<SearchResultPage<SearchHitResult>> result = await this.searchQueryHandler.HandleAsync(
-            new SearchQuery(query ?? string.Empty, normalizedCategories, new PagedQuery(page, pageSize)),
+            new SearchQuery(query ?? string.Empty, normalizedCategories, effectivePagination.ToApplication()),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -54,6 +56,6 @@ public sealed class SearchController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        return this.Ok(result.Value.ToHttp());
+        return this.Ok(result.Value.ToPagedResponse(static item => item.ToHttp()));
     }
 }

@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
@@ -75,16 +74,10 @@ public sealed class ParksController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(PagedResponseDto<ParkDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetParksAsync(
-        [FromQuery][Range(1, int.MaxValue, ErrorMessage = "Page must be greater than 0")]
-        int page = 1,
-        [FromQuery][Range(1, 100, ErrorMessage = "Size must be between 1 and 100")]
-        int size = 10,
-        [FromQuery] string? name = null,
-        CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetParksAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? name = null, CancellationToken cancellationToken = default)
     {
         bool includeNonVisible = this.UserCanSeeNonVisible();
-        PagedQuery paging = new PagedQuery(page, size);
+        PagedQuery paging = pagination.ToApplication();
 
         ApplicationResult<PagedResult<Park>> result = string.IsNullOrWhiteSpace(name)
             ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible), cancellationToken)
@@ -95,21 +88,18 @@ public sealed class ParksController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<ParkDto> response = new PagedResponseDto<ParkDto>
-        {
-            Data = result.Value.Items.Select(static park => park.ToHttp()).ToList(),
-            Pagination = result.Value.ToHttp(),
-        };
+        PagedResponseDto<ParkDto> response = result.Value.ToPagedResponse(static park => park.ToHttp());
 
         return this.Ok(response);
     }
 
     [HttpGet("geo-search")]
-    [ProducesResponseType(typeof(IEnumerable<ParkDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PagedResponseDto<ParkDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> SearchParksByLocationAsync(
         [FromQuery] double latitude,
         [FromQuery] double longitude,
         [FromQuery] double radius,
+        [FromQuery] PaginationRequestDto pagination,
         CancellationToken cancellationToken = default)
     {
         double radiusInKilometers = radius / 1000d;
@@ -122,7 +112,7 @@ public sealed class ParksController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<ParkDto> response = result.Value.Select(static park => park.ToHttp()).ToList();
+        PagedResponseDto<ParkDto> response = pagination.ToPagedResponse(result.Value, static park => park.ToHttp());
         return this.Ok(response);
     }
 
