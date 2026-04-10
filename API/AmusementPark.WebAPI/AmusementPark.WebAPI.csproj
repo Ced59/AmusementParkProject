@@ -7,6 +7,7 @@
     <NoWarn>$(NoWarn);1591</NoWarn>
     <RootNamespace>AmusementPark.WebAPI</RootNamespace>
     <AssemblyName>AmusementPark.WebAPI</AssemblyName>
+    <UserSecretsId>14b48495-4f9d-4a0d-b6ae-48bec54a4772</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

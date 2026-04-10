@@ -87,12 +87,16 @@ export class AdminParkItemsIndexComponent implements OnInit {
     this.loadRows();
   }
 
-  getTypeLabelKey(itemType: string): string {
-    if (!itemType || itemType.length === 0) {
+  getTypeLabelKey(itemType: string | number | null | undefined): string {
+    const normalizedType: string | null = typeof itemType === 'string'
+      ? itemType
+      : null;
+
+    if (!normalizedType || normalizedType.length === 0) {
       return 'parkExplorer.types.other';
     }
 
-    return `parkExplorer.types.${itemType.charAt(0).toLowerCase()}${itemType.slice(1)}`;
+    return `parkExplorer.types.${normalizedType.charAt(0).toLowerCase()}${normalizedType.slice(1)}`;
   }
 
   goToEdit(row: ParkItemAdminRow): void {

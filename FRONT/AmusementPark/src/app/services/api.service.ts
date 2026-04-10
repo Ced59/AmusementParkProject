@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { API_ENDPOINTS } from '../api/api-endpoints';
@@ -35,6 +35,12 @@ import { ImageTagDto } from '../models/images/image-tag-dto';
 import { LocalizedItemDto } from '../models/shared/localized-item-dto';
 import { ImageGeoLocation } from '../models/images/image-geo-location';
 import { AuthMessageResponse } from '../models/auth/auth-message-response';
+
+interface PagedCollectionResponse<T> {
+  data?: T[];
+  pagination?: unknown;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -159,7 +165,9 @@ export class ApiService {
 
   getParkFounders(): Observable<ParkFounder[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkFounders}`;
-    return this.http.get<ParkFounder[]>(url);
+    return this.http.get<ParkFounder[] | PagedCollectionResponse<ParkFounder>>(url).pipe(
+      map((response: ParkFounder[] | PagedCollectionResponse<ParkFounder>) => this.unwrapCollection<ParkFounder>(response))
+    );
   }
 
   getParkFounderById(id: string): Observable<ParkFounder> {
@@ -191,7 +199,9 @@ export class ApiService {
 
   getParkOperators(): Observable<ParkOperator[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkOperators}`;
-    return this.http.get<ParkOperator[]>(url);
+    return this.http.get<ParkOperator[] | PagedCollectionResponse<ParkOperator>>(url).pipe(
+      map((response: ParkOperator[] | PagedCollectionResponse<ParkOperator>) => this.unwrapCollection<ParkOperator>(response))
+    );
   }
 
   getParkOperatorById(id: string): Observable<ParkOperator> {
@@ -223,7 +233,9 @@ export class ApiService {
 
   getAttractionManufacturers(): Observable<AttractionManufacturer[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getAttractionManufacturers}`;
-    return this.http.get<AttractionManufacturer[]>(url);
+    return this.http.get<AttractionManufacturer[] | PagedCollectionResponse<AttractionManufacturer>>(url).pipe(
+      map((response: AttractionManufacturer[] | PagedCollectionResponse<AttractionManufacturer>) => this.unwrapCollection<AttractionManufacturer>(response))
+    );
   }
 
   getAttractionManufacturerById(id: string): Observable<AttractionManufacturer> {
@@ -255,7 +267,9 @@ export class ApiService {
 
   getParkZonesByParkId(parkId: string): Observable<ParkZone[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkZonesByParkId(parkId)}`;
-    return this.http.get<ParkZone[]>(url);
+    return this.http.get<ParkZone[] | PagedCollectionResponse<ParkZone>>(url).pipe(
+      map((response: ParkZone[] | PagedCollectionResponse<ParkZone>) => this.unwrapCollection<ParkZone>(response))
+    );
   }
 
   getParkZoneById(id: string): Observable<ParkZone> {
@@ -285,7 +299,9 @@ export class ApiService {
 
   getParkItemsByParkId(parkId: string): Observable<ParkItem[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkItemsByParkId(parkId)}`;
-    return this.http.get<ParkItem[]>(url);
+    return this.http.get<ParkItem[] | PagedCollectionResponse<ParkItem>>(url).pipe(
+      map((response: ParkItem[] | PagedCollectionResponse<ParkItem>) => this.unwrapCollection<ParkItem>(response).map((item: ParkItem) => this.normalizeParkItem(item)))
+    );
   }
 
   getParkItemsPaginated(
@@ -295,12 +311,19 @@ export class ApiService {
     search?: string | null
   ): Observable<ApiResponse<ParkItemAdminRow>> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkItemsPaginated(page, size, parkId, search)}`;
-    return this.http.get<ApiResponse<ParkItemAdminRow>>(url);
+    return this.http.get<ApiResponse<ParkItemAdminRow>>(url).pipe(
+      map((response: ApiResponse<ParkItemAdminRow>) => ({
+        ...response,
+        data: (response.data ?? []).map((row: ParkItemAdminRow) => this.normalizeParkItemAdminRow(row))
+      }))
+    );
   }
 
   getParkItemById(id: string): Observable<ParkItem> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getParkItemById(id)}`;
-    return this.http.get<ParkItem>(url);
+    return this.http.get<ParkItem>(url).pipe(
+      map((item: ParkItem) => this.normalizeParkItem(item))
+    );
   }
 
   createParkItem(item: ParkItem): Observable<ParkItem> {
@@ -331,7 +354,9 @@ export class ApiService {
 
   getCountries(lang: string): Observable<CountryDto[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getCountries(lang)}`;
-    return this.http.get<CountryDto[]>(url);
+    return this.http.get<CountryDto[] | PagedCollectionResponse<CountryDto>>(url).pipe(
+      map((response: CountryDto[] | PagedCollectionResponse<CountryDto>) => this.unwrapCollection<CountryDto>(response))
+    );
   }
 
   uploadImage(
@@ -344,7 +369,7 @@ export class ApiService {
     const formData = new FormData();
 
     formData.append('File', file);
-    formData.append('Category', category);
+    formData.append('Category', String(this.toImageCategoryApiValue(category)));
     formData.append('WithWatermark', String(withWatermark));
 
     if (description) {
@@ -356,12 +381,17 @@ export class ApiService {
 
   linkImage(request: LinkImageToOwner): Observable<ImageDto> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.linkImage}`;
-    return this.http.post<ImageDto>(url, request);
+    return this.http.post<ImageDto>(url, {
+      ...request,
+      ownerType: this.toImageOwnerTypeApiValue(request.ownerType)
+    });
   }
 
   getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory): Observable<ImageDto[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getImages(ownerType, ownerId, category)}`;
-    return this.http.get<ImageDto[]>(url);
+    return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url).pipe(
+      map((response: ImageDto[] | PagedCollectionResponse<ImageDto>) => this.unwrapCollection<ImageDto>(response))
+    );
   }
 
   getCurrentImage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory): Observable<ImageDto> {
@@ -403,7 +433,9 @@ export class ApiService {
 
   getAdminImages(): Observable<ImageDto[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getAdminImages}`;
-    return this.http.get<ImageDto[]>(url);
+    return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url).pipe(
+      map((response: ImageDto[] | PagedCollectionResponse<ImageDto>) => this.unwrapCollection<ImageDto>(response))
+    );
   }
 
   updateAdminImage(id: string, request: {
@@ -421,7 +453,9 @@ export class ApiService {
 
   getAdminImageTags(): Observable<ImageTagDto[]> {
     const url = `${environment.apiBaseUrl}${API_ENDPOINTS.getAdminImageTags}`;
-    return this.http.get<ImageTagDto[]>(url);
+    return this.http.get<ImageTagDto[] | PagedCollectionResponse<ImageTagDto>>(url).pipe(
+      map((response: ImageTagDto[] | PagedCollectionResponse<ImageTagDto>) => this.unwrapCollection<ImageTagDto>(response))
+    );
   }
 
   createAdminImageTag(request: { slug: string; labels: LocalizedItemDto<string>[]; descriptions: LocalizedItemDto<string>[]; }): Observable<ImageTagDto> {
@@ -434,4 +468,137 @@ export class ApiService {
     return this.http.put<ImageTagDto>(url, request);
   }
 
+  private unwrapCollection<T>(response: T[] | PagedCollectionResponse<T> | null | undefined): T[] {
+    if (Array.isArray(response)) {
+      return response;
+    }
+
+    if (response && Array.isArray(response.data)) {
+      return response.data;
+    }
+
+    return [];
+  }
+
+  private normalizeParkItem(item: ParkItem): ParkItem {
+    return {
+      ...item,
+      category: this.toParkItemCategory(item.category),
+      type: this.toParkItemType(item.type)
+    };
+  }
+
+  private normalizeParkItemAdminRow(row: ParkItemAdminRow): ParkItemAdminRow {
+    return {
+      ...row,
+      category: this.toParkItemCategory(row.category),
+      type: this.toParkItemType(row.type)
+    };
+  }
+
+  private toParkItemCategory(value: ParkItem['category'] | ParkItemAdminRow['category'] | number | null | undefined): ParkItem['category'] {
+    if (typeof value === 'string') {
+      return value as ParkItem['category'];
+    }
+
+    switch (value) {
+      case 0:
+        return 'Attraction';
+      case 1:
+        return 'Restaurant';
+      case 2:
+        return 'Hotel';
+      case 3:
+        return 'Animal';
+      case 4:
+        return 'Show';
+      case 5:
+        return 'Shop';
+      case 6:
+        return 'Service';
+      case 7:
+        return 'Transport';
+      default:
+        return 'Other';
+    }
+  }
+
+  private toParkItemType(value: ParkItem['type'] | ParkItemAdminRow['type'] | number | null | undefined): ParkItem['type'] {
+    if (typeof value === 'string') {
+      return value as ParkItem['type'];
+    }
+
+    switch (value) {
+      case 0:
+        return 'Attraction';
+      case 1:
+        return 'RollerCoaster';
+      case 2:
+        return 'WaterRide';
+      case 3:
+        return 'FlatRide';
+      case 4:
+        return 'DarkRide';
+      case 5:
+        return 'FamilyRide';
+      case 6:
+        return 'ThrillRide';
+      case 7:
+        return 'TransportRide';
+      case 8:
+        return 'WalkThrough';
+      case 9:
+        return 'Playground';
+      case 10:
+        return 'InteractiveExperience';
+      case 11:
+        return 'ObservationRide';
+      case 12:
+        return 'AnimalExhibit';
+      case 13:
+        return 'Restaurant';
+      case 14:
+        return 'Snack';
+      case 15:
+        return 'Hotel';
+      case 16:
+        return 'Show';
+      case 17:
+        return 'Shop';
+      case 18:
+        return 'Service';
+      case 19:
+        return 'Transport';
+      default:
+        return 'Other';
+    }
+  }
+
+  private toImageOwnerTypeApiValue(value: ImageOwnerType): number {
+    switch (value) {
+      case ImageOwnerType.PARK:
+        return 1;
+      case ImageOwnerType.USER:
+        return 2;
+      case ImageOwnerType.ATTRACTION:
+        return 3;
+      default:
+        return 0;
+    }
+  }
+
+  private toImageCategoryApiValue(value: ImageCategory): number {
+    switch (value) {
+      case ImageCategory.AVATAR:
+        return 0;
+      case ImageCategory.PARK_LOGO:
+        return 1;
+      case ImageCategory.PARK:
+        return 2;
+      case ImageCategory.ATTRACTION:
+        return 3;
+      default:
+        return 2;
+    }
+  }
 }
