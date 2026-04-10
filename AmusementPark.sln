@@ -3,20 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "API\WebAPI\WebAPI.csproj", "{BD518101-2995-431D-9AD4-30FD07E575F4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F6275A80-5435-44C9-BE3D-33DB5D18A16C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "API\Entities\Entities\Entities.csproj", "{1B12CFB1-BFF5-4D6F-B8E8-E4986CDAAF3E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dtos", "API\Dtos\Dtos\Dtos.csproj", "{6057AC59-DC71-4A5E-BC40-49F6FEAF38C3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "API\Services\Services\Services.csproj", "{F7784A87-0737-40E9-8E93-1673978CD958}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "API\Repositories\Repositories\Repositories.csproj", "{EB2E9389-7D8D-4F95-BE0F-73193D0B54C7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "API\CommonStatus\CommonStatus\Common.csproj", "{6A96C298-4137-426B-AC14-FE53AD70A64B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.WebAPI", "API\AmusementPark.WebAPI\AmusementPark.WebAPI.csproj", "{085FEC06-324D-42E3-BD2F-97E47D1CB660}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.Infrastructure", "API\AmusementPark.Infrastructure\AmusementPark.Infrastructure.csproj", "{DA66BAC2-25D1-495F-8955-9AEAC5CD4767}"
