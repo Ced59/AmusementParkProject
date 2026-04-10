@@ -3,15 +3,15 @@ using AmusementPark.Core.Domain.Users;
 namespace AmusementPark.Application.Features.Users.Contracts;
 
 /// <summary>
-/// Données applicatives de provisionnement d'un utilisateur externe.
+/// Données applicatives d'authentification / provisionnement externe.
 /// </summary>
 public sealed class ProvisionExternalUserRequest
 {
     public ExternalLoginProvider Provider { get; init; }
 
-    public string ProviderToken { get; init; } = string.Empty;
+    public string Token { get; init; } = string.Empty;
 
-    public string Email { get; init; } = string.Empty;
+    public string? Nonce { get; init; }
 
     public string? PreferredLanguage { get; init; }
 }

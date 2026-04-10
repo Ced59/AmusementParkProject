@@ -32,6 +32,28 @@ public sealed class UserRepository : IUserRepository
         return document?.ToDomain();
     }
 
+    public async Task<User?> GetByExternalLoginAsync(ExternalLoginProvider provider, string providerUserId, CancellationToken cancellationToken)
+    {
+        FilterDefinition<UserDocument> filter = Builders<UserDocument>.Filter.ElemMatch(
+            document => document.ExternalLogins,
+            login => login.Provider == provider && login.ProviderUserId == providerUserId);
+
+        UserDocument? document = await this.collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
+    public async Task<User?> GetByEmailConfirmationTokenHashAsync(string tokenHash, CancellationToken cancellationToken)
+    {
+        UserDocument? document = await this.collection.Find(document => document.EmailConfirmationTokenHash == tokenHash).FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
+    public async Task<User?> GetByPasswordResetTokenHashAsync(string tokenHash, CancellationToken cancellationToken)
+    {
+        UserDocument? document = await this.collection.Find(document => document.PasswordResetTokenHash == tokenHash).FirstOrDefaultAsync(cancellationToken);
+        return document?.ToDomain();
+    }
+
     public async Task<PagedResult<User>> GetPageAsync(int page, int pageSize, CancellationToken cancellationToken)
     {
         FilterDefinition<UserDocument> filter = Builders<UserDocument>.Filter.Empty;
@@ -54,8 +76,8 @@ public sealed class UserRepository : IUserRepository
     public async Task<User> CreateAsync(User user, CancellationToken cancellationToken)
     {
         UserDocument document = user.ToDocument();
-        document.CreatedAt = DateTime.UtcNow;
-        document.UpdatedAt = document.CreatedAt;
+        document.CreatedAt = user.CreatedAtUtc == default ? DateTime.UtcNow : user.CreatedAtUtc;
+        document.UpdatedAt = user.UpdatedAtUtc == default ? document.CreatedAt : user.UpdatedAtUtc;
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
         return document.ToDomain();
@@ -78,6 +100,29 @@ public sealed class UserRepository : IUserRepository
         }
 
         return document.ToDomain();
+    }
+
+    public async Task UpdateLastLoginAndActivityAsync(string userId, CancellationToken cancellationToken)
+    {
+        DateTime now = DateTime.UtcNow;
+        await this.collection.UpdateOneAsync(
+            document => document.Id == userId,
+            Builders<UserDocument>.Update
+                .Set(document => document.LastLoginUtc, now)
+                .Set(document => document.LastActivityUtc, now)
+                .Set(document => document.UpdatedAt, now),
+            cancellationToken: cancellationToken);
+    }
+
+    public async Task UpdateLastActivityAsync(string userId, CancellationToken cancellationToken)
+    {
+        DateTime now = DateTime.UtcNow;
+        await this.collection.UpdateOneAsync(
+            document => document.Id == userId,
+            Builders<UserDocument>.Update
+                .Set(document => document.LastActivityUtc, now)
+                .Set(document => document.UpdatedAt, now),
+            cancellationToken: cancellationToken);
     }
 
     public Task<User?> AssignRoleAsync(string userId, Role role, CancellationToken cancellationToken)

@@ -1,17 +1,17 @@
 namespace AmusementPark.Application.Ports;
 
 /// <summary>
-/// Port applicatif de hachage de mot de passe.
+/// Port applicatif de hashage et de vérification de mots de passe.
 /// </summary>
 public interface IPasswordHasher
 {
     /// <summary>
-    /// Hache un mot de passe en clair.
+    /// Hash un mot de passe en clair.
     /// </summary>
-    string Hash(string password);
+    string HashPassword(string password);
 
     /// <summary>
-    /// Vérifie un mot de passe en clair contre un hash.
+    /// Vérifie un mot de passe en clair face à un hash stocké.
     /// </summary>
-    bool Verify(string password, string hash);
+    bool VerifyPassword(string password, string passwordHash);
 }

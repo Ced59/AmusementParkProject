@@ -178,4 +178,47 @@ public sealed class ArchitectureController : ControllerBase
             },
         });
     }
+
+    [HttpGet("phase-10")]
+    public IActionResult GetPhase10Status()
+    {
+        return Ok(new
+        {
+            phase = 10,
+            goal = "Migration Users / Auth / Email / Avatar",
+            migratedFeatures = new[]
+            {
+                "Users",
+                "Auth",
+            },
+            preservedRoutes = new[]
+            {
+                "POST /auth/login",
+                "POST /auth/refresh-token",
+                "POST /auth/external/{provider}",
+                "GET /auth/facebook",
+                "GET /auth/facebook-response",
+                "POST /users",
+                "GET /users/by-email?email=",
+                "GET /users/{id}",
+                "GET /users?page=&size=",
+                "PUT /users/{id}",
+                "POST /users/change-password?idUser=",
+                "POST /users/confirm-email",
+                "POST /users/resend-confirmation",
+                "POST /users/forgot-password",
+                "POST /users/reset-password",
+                "POST /users/roles/assign/{userId}",
+                "DELETE /users/roles/remove/{userId}",
+                "POST /users/lock",
+                "POST /users/unlock",
+            },
+            notes = new[]
+            {
+                "UsersService éclaté en handlers Application dédiés",
+                "JWT, hashage, email et avatar externe déplacés derrière des ports Infrastructure",
+                "Routes et payloads HTTP legacy conservés côté WebAPI",
+            },
+        });
+    }
 }

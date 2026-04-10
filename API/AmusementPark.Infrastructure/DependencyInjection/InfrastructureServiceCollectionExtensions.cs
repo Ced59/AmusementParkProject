@@ -10,10 +10,12 @@ using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Ports;
+using AmusementPark.Infrastructure.Configuration.Authentication;
 using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
+using AmusementPark.Infrastructure.Services.Authentication;
 using AmusementPark.Infrastructure.Services.Images;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,9 +32,6 @@ public static class InfrastructureServiceCollectionExtensions
     /// <summary>
     /// Enregistre la couche Infrastructure.
     /// </summary>
-    /// <param name="services">Conteneur d'injection de dépendances.</param>
-    /// <param name="configuration">Configuration applicative.</param>
-    /// <returns>Le même conteneur pour chaînage.</returns>
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
@@ -44,6 +43,19 @@ public static class InfrastructureServiceCollectionExtensions
         MinioImageStorageSettings minioSettings = configuration.GetSection(MinioImageStorageSettings.SectionName).Get<MinioImageStorageSettings>() ?? new MinioImageStorageSettings();
         services.AddSingleton(minioSettings);
 
+        JwtSettings jwtSettings = configuration.GetSection("Authentication:Jwt").Get<JwtSettings>() ?? new JwtSettings();
+        services.AddSingleton(jwtSettings);
+
+        EmailSettings emailSettings = configuration.GetSection("Email").Get<EmailSettings>() ?? new EmailSettings();
+        services.AddSingleton(emailSettings);
+
+        GoogleOAuthSettings googleOAuthSettings = configuration.GetSection("Authentication:Google").Get<GoogleOAuthSettings>() ?? new GoogleOAuthSettings();
+        services.AddSingleton(googleOAuthSettings);
+
+        UserAuthenticationSettings userAuthenticationSettings = UserAuthenticationSettings.Bind(configuration);
+        services.AddSingleton<IUserAuthenticationSettings>(userAuthenticationSettings);
+
+        services.AddHttpClient();
         services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoDbSettings.Url));
         services.AddSingleton<IMinioClient>(_ =>
             new MinioClient()
@@ -74,6 +86,22 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
         services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();
         services.AddScoped<ISearchProjectionWriter, MongoSearchProjectionWriter>();
+
+        services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
+        services.AddScoped<IRefreshTokenFactory, LocalAccountTokenFactory>();
+        services.AddScoped<ITokenService, JwtTokenService>();
+        services.AddScoped<ILocalAccountEmailService, LocalAccountEmailService>();
+        services.AddScoped<IExternalIdentityVerifier, GoogleExternalIdentityVerifier>();
+        services.AddScoped<IUserAvatarImporter, UserAvatarImporter>();
+
+        if (string.Equals(emailSettings.Mode, "Smtp", StringComparison.OrdinalIgnoreCase))
+        {
+            services.AddScoped<IEmailSender, SmtpEmailSender>();
+        }
+        else
+        {
+            services.AddScoped<IEmailSender, ConsoleEmailSender>();
+        }
 
         return services;
     }
