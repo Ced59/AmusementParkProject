@@ -288,4 +288,43 @@ public sealed class ArchitectureController : ControllerBase
         });
     }
 
+
+    [HttpGet("phase-13")]
+    public IActionResult GetPhase13Status()
+    {
+        return this.Ok(new
+        {
+            phase = 13,
+            goal = "Nettoyer le composition root et les cross-cutting concerns",
+            extractedRegistrations = new[]
+            {
+                "AddApplicationModules",
+                "AddInfrastructure",
+                "AddMongoInitialization",
+                "AddApiAuthentication",
+                "AddApiCors",
+                "AddApiRateLimiting",
+                "AddApiSwagger",
+                "AddHttpApi",
+            },
+            pipeline = new[]
+            {
+                "UseApiSwagger (development)",
+                "InitializeMongoAsync",
+                "UseApiCors",
+                "UseApiRateLimiting",
+                "UseAuthentication",
+                "UseAuthorization",
+                "MapControllers",
+                "Map /health",
+            },
+            notes = new[]
+            {
+                "Program.cs est réduit au bootstrap et au pipeline HTTP",
+                "L'ancien filtre RequireActivatedUnblockedUser est remplacé par une policy d'autorisation dédiée",
+                "Les initialiseurs Mongo sont enregistrés séparément du reste de l'infrastructure",
+            },
+        });
+    }
+
 }

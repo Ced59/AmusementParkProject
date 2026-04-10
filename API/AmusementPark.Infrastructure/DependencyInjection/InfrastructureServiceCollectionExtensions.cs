@@ -15,7 +15,6 @@ using AmusementPark.Infrastructure.Configuration.Authentication;
 using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
-using AmusementPark.Infrastructure.Persistence.Mongo.Initialization;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using AmusementPark.Infrastructure.Services.Authentication;
@@ -98,8 +97,6 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IDataSourceAdministrationService, DataSourceAdministrationService>();
         services.AddHostedService<DataSourceImportBackgroundService>();
         services.AddScoped<ISearchProjectionWriter, MongoSearchProjectionWriter>();
-        services.AddScoped<MongoDatabaseInitializer>();
-        services.AddScoped<MongoSearchProjectionInitializer>();
 
         services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
         services.AddScoped<IRefreshTokenFactory, LocalAccountTokenFactory>();
