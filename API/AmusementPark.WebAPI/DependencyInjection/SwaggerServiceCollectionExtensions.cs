@@ -1,4 +1,4 @@
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 
 namespace AmusementPark.WebAPI.DependencyInjection;
 
@@ -29,19 +29,9 @@ public static class SwaggerServiceCollectionExtensions
                 Description = "JWT Authorization header using the Bearer scheme.",
             });
 
-            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
             {
-                {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer",
-                        },
-                    },
-                    Array.Empty<string>()
-                },
+                [new OpenApiSecuritySchemeReference("Bearer", document)] = []
             });
 
             string xmlFile = $"{typeof(Program).Assembly.GetName().Name}.xml";
@@ -58,8 +48,14 @@ public static class SwaggerServiceCollectionExtensions
     public static IApplicationBuilder UseApiSwagger(this IApplicationBuilder app)
     {
         ArgumentNullException.ThrowIfNull(app);
-        app.UseSwagger();
+
+        app.UseSwagger(static options =>
+        {
+            options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1;
+        });
+
         app.UseSwaggerUI();
+
         return app;
     }
 }
