@@ -1,12 +1,12 @@
 namespace AmusementPark.Core;
 
 /// <summary>
-/// Marqueur de projet utilisé pour la phase 3 de la refonte Clean Architecture.
+/// Marqueur cœur métier aligné sur la nouvelle roadmap de migration.
 /// </summary>
 public static class ArchitecturePhase
 {
     /// <summary>
-    /// Libellé de la phase d'architecture actuellement préparée dans ce projet.
+    /// Libellé du palier de migration actuellement préparé dans ce projet.
     /// </summary>
-    public const string Current = "Phase 3 - Core pur extrait";
+    public const string Current = "P00 - Socle métier conservé comme fondation stable de la migration";
 }

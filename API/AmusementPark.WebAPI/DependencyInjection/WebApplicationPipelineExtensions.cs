@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using AmusementPark.WebAPI.Diagnostics;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
@@ -55,30 +55,7 @@ public static class WebApplicationPipelineExtensions
         ArgumentNullException.ThrowIfNull(app);
 
         app.MapControllers();
-        app.MapGet("/health", () => Results.Ok(new
-        {
-            status = "ok",
-            architecture = "clean-architecture-phase-13",
-            application = AmusementPark.Application.ArchitecturePhase.Current,
-            infrastructure = AmusementPark.Infrastructure.ArchitecturePhase.Current,
-            project = "AmusementPark.WebAPI",
-            migratedFeatures = new[]
-            {
-                "Countries",
-                "ParkFounders",
-                "ParkOperators",
-                "AttractionManufacturers",
-                "Parks",
-                "ParkZones",
-                "ParkItems",
-                "Images",
-                "Users",
-                "Auth",
-                "Search",
-                "DataSources",
-                "CaptainCoaster",
-            },
-        }));
+        app.MapGet("/health", () => Results.Ok(MigrationDiagnostics.CreateHealthPayload()));
 
         return app;
     }
