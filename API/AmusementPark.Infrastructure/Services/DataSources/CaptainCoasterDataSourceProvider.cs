@@ -311,25 +311,33 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
     {
         ArgumentNullException.ThrowIfNull(request);
 
-        List<CaptainCoasterComparisonResultDocument> results;
+        string? effectiveSessionId = request.SessionId;
+        if (string.IsNullOrWhiteSpace(effectiveSessionId))
+        {
+            CaptainCoasterSyncSessionDocument? latestSession = await this.sessionsCollection
+                .Find(item => item.SourceKey == SourceKeyValue)
+                .SortByDescending(item => item.StartedAtUtc)
+                .FirstOrDefaultAsync(cancellationToken);
+            effectiveSessionId = latestSession?.Id;
+        }
 
+        if (string.IsNullOrWhiteSpace(effectiveSessionId))
+        {
+            return new DataSourceApplyResult { AppliedCount = 0 };
+        }
+
+        CaptainCoasterSyncSessionDocument? session = await this.sessionsCollection
+            .Find(item => item.Id == effectiveSessionId && item.SourceKey == SourceKeyValue)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (session == null)
+        {
+            return new DataSourceApplyResult { AppliedCount = 0 };
+        }
+
+        List<CaptainCoasterComparisonResultDocument> results;
         if (request.ApplyAll)
         {
-            string? effectiveSessionId = request.SessionId;
-            if (string.IsNullOrWhiteSpace(effectiveSessionId))
-            {
-                CaptainCoasterSyncSessionDocument? latest = await this.sessionsCollection
-                    .Find(item => item.SourceKey == SourceKeyValue)
-                    .SortByDescending(item => item.StartedAtUtc)
-                    .FirstOrDefaultAsync(cancellationToken);
-                effectiveSessionId = latest?.Id;
-            }
-
-            if (string.IsNullOrWhiteSpace(effectiveSessionId))
-            {
-                return new DataSourceApplyResult { AppliedCount = 0 };
-            }
-
             FilterDefinition<CaptainCoasterComparisonResultDocument> filter =
                 Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.SyncSessionId, effectiveSessionId)
                 & Builders<CaptainCoasterComparisonResultDocument>.Filter.Eq(item => item.SourceKey, SourceKeyValue)
@@ -360,7 +368,14 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 return new DataSourceApplyResult { AppliedCount = 0 };
             }
 
-            results = await this.comparisonCollection.Find(item => item.SourceKey == SourceKeyValue && ids.Contains(item.Id)).ToListAsync(cancellationToken);
+            results = await this.comparisonCollection
+                .Find(item => item.SourceKey == SourceKeyValue && item.SyncSessionId == effectiveSessionId && ids.Contains(item.Id))
+                .ToListAsync(cancellationToken);
+        }
+
+        if (results.Count == 0)
+        {
+            return new DataSourceApplyResult { AppliedCount = 0 };
         }
 
         Dictionary<string, DataSourceDuplicateResolution> resolutionsByResultId = request.DuplicateResolutions
@@ -374,62 +389,119 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             .ThenBy(item => item.DisplayName)
             .ToList();
 
+        CaptainCoasterSettingsDocument settings = await this.GetOrCreateSettingsAsync();
+        int batchSize = NormalizePositiveBounded(settings.CoasterWriteBatchSize, 100, 10, 500);
+        int progressSaveInterval = NormalizePositiveBounded(settings.ProgressSaveInterval, 25, 1, 500);
+        CaptainCoasterApplyExecutionContext context = await this.BuildApplyExecutionContextAsync(session.Id, cancellationToken);
+
+        int startingAppliedChanges = session.Metrics.AppliedChanges;
         int appliedCount = 0;
-        HashSet<string> affectedParkIds = new HashSet<string>(StringComparer.Ordinal);
-        HashSet<string> affectedParkItemIds = new HashSet<string>(StringComparer.Ordinal);
+        int failedCount = 0;
+        int processedCount = 0;
+        int totalCount = orderedResults.Count;
 
-        foreach (CaptainCoasterComparisonResultDocument result in orderedResults)
+        session.Status = "Applying";
+        session.CurrentStep = "ApplyComparison";
+        session.Message = $"Application métier en cours : 0/{totalCount} élément(s) traité(s).";
+        session.ProgressPercentage = 0;
+        session.CanResume = false;
+        session.CompletedAtUtc = null;
+        session.UpdatedAt = DateTime.UtcNow;
+        AddLog(session, "Info", $"Application métier démarrée : {totalCount} changement(s) à traiter.");
+        await this.PersistSessionAsync(session, cancellationToken);
+
+        try
         {
-            resolutionsByResultId.TryGetValue(result.Id, out DataSourceDuplicateResolution? resolution);
-            CaptainCoasterApplyImpact impact = new CaptainCoasterApplyImpact { Applied = false };
-            if (string.Equals(result.EntityType, "Park", StringComparison.OrdinalIgnoreCase))
+            foreach (CaptainCoasterComparisonResultDocument result in orderedResults)
             {
-                impact = await this.ApplyParkResultAsync(result, resolution, cancellationToken);
-            }
-            else if (string.Equals(result.EntityType, "Coaster", StringComparison.OrdinalIgnoreCase))
-            {
-                impact = await this.ApplyCoasterResultAsync(result, resolution, cancellationToken);
+                cancellationToken.ThrowIfCancellationRequested();
+                processedCount++;
+
+                try
+                {
+                    resolutionsByResultId.TryGetValue(result.Id, out DataSourceDuplicateResolution? resolution);
+                    DateTime utcNow = DateTime.UtcNow;
+                    CaptainCoasterApplyImpact impact = new CaptainCoasterApplyImpact { Applied = false };
+                    if (string.Equals(result.EntityType, "Park", StringComparison.OrdinalIgnoreCase))
+                    {
+                        impact = this.ApplyParkResultWithContext(result, resolution, context, utcNow);
+                    }
+                    else if (string.Equals(result.EntityType, "Coaster", StringComparison.OrdinalIgnoreCase))
+                    {
+                        impact = this.ApplyCoasterResultWithContext(result, resolution, context, utcNow);
+                    }
+
+                    if (impact.Applied)
+                    {
+                        appliedCount++;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    failedCount++;
+                    AddLog(session, "Warn", $"Échec de l'application pour '{result.DisplayName}' : {exception.Message}");
+                }
+
+                if (HasPendingApplyWrites(context, batchSize))
+                {
+                    await this.FlushApplyWritesAsync(context, cancellationToken);
+                }
+
+                if (processedCount % progressSaveInterval == 0 || processedCount == totalCount)
+                {
+                    await this.FlushApplyWritesAsync(context, cancellationToken);
+                    session.Metrics.AppliedChanges = startingAppliedChanges + appliedCount;
+                    session.ProgressPercentage = (int)Math.Round((double)processedCount * 100d / Math.Max(1, totalCount));
+                    session.Message = $"Application métier en cours : {processedCount}/{totalCount} élément(s) traité(s), {appliedCount} appliqué(s), {failedCount} en échec.";
+                    session.UpdatedAt = DateTime.UtcNow;
+                    AddLog(session, "Info", session.Message);
+                    await this.PersistSessionAsync(session, cancellationToken);
+                }
             }
 
-            if (!impact.Applied)
-            {
-                continue;
-            }
+            await this.FlushApplyWritesAsync(context, cancellationToken);
 
-            appliedCount++;
+            session.CurrentStep = "RefreshSearchIndex";
+            session.Message = "Rafraîchissement de l'index de recherche après application métier.";
+            session.ProgressPercentage = 99;
+            session.UpdatedAt = DateTime.UtcNow;
+            AddLog(session, "Info", session.Message);
+            await this.PersistSessionAsync(session, cancellationToken);
 
-            if (!string.IsNullOrWhiteSpace(impact.ParkId))
-            {
-                affectedParkIds.Add(impact.ParkId.Trim());
-            }
+            await this.RefreshSearchProjectionAsync(
+                session,
+                context.AffectedParkIds.ToList(),
+                context.AffectedParkItemIds.ToList(),
+                cancellationToken);
 
-            if (!string.IsNullOrWhiteSpace(impact.ParkItemId))
-            {
-                affectedParkItemIds.Add(impact.ParkItemId.Trim());
-            }
+            session.Metrics.AppliedChanges = startingAppliedChanges + appliedCount;
+            session.Status = "Completed";
+            session.CurrentStep = "Completed";
+            session.LastCompletedStep = "ApplyComparison";
+            session.Message = $"Application métier terminée : {appliedCount}/{totalCount} changement(s) appliqué(s), {failedCount} en échec.";
+            session.ProgressPercentage = 100;
+            session.CompletedAtUtc = DateTime.UtcNow;
+            session.UpdatedAt = DateTime.UtcNow;
+            session.CanResume = true;
+            AddLog(session, "Info", session.Message);
+            await this.PersistSessionAsync(session, cancellationToken);
+
+            return new DataSourceApplyResult { AppliedCount = appliedCount };
         }
-
-        if (orderedResults.Count > 0)
+        catch (Exception exception)
         {
-            CaptainCoasterSyncSessionDocument? session = await this.sessionsCollection
-                .Find(item => item.Id == orderedResults[0].SyncSessionId)
-                .FirstOrDefaultAsync(cancellationToken);
-
-            if (session != null)
-            {
-                session.Metrics.AppliedChanges += appliedCount;
-                session.UpdatedAt = DateTime.UtcNow;
-                AddLog(session, "Info", $"Application manuelle : {appliedCount} changement(s) appliqué(s).");
-                await this.RefreshSearchProjectionAsync(session, affectedParkIds.ToList(), affectedParkItemIds.ToList(), cancellationToken);
-                await this.PersistSessionAsync(session, cancellationToken);
-            }
-            else if (affectedParkIds.Count > 0 || affectedParkItemIds.Count > 0)
-            {
-                await this.RefreshSearchProjectionAsync(null, affectedParkIds.ToList(), affectedParkItemIds.ToList(), cancellationToken);
-            }
+            session.Status = "Failed";
+            session.CurrentStep = "ApplyComparison";
+            session.Message = $"Échec de l'application métier : {exception.Message}";
+            session.ProgressPercentage = Math.Min(session.ProgressPercentage, 99);
+            session.CompletedAtUtc = DateTime.UtcNow;
+            session.UpdatedAt = DateTime.UtcNow;
+            session.CanResume = true;
+            session.Metrics.AppliedChanges = startingAppliedChanges + appliedCount;
+            AddLog(session, "Error", exception.ToString());
+            await this.PersistSessionAsync(session, cancellationToken);
+            throw;
         }
-
-        return new DataSourceApplyResult { AppliedCount = appliedCount };
     }
 
     public async Task ExecuteImportAsync(DataSourceImportJob job, CancellationToken cancellationToken)
@@ -503,11 +575,6 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             AddLog(session, "Info", $"{comparisonResults.Count} différence(s) détectée(s), dont {session.Metrics.DuplicateConflicts} conflit(s) nécessitant une résolution humaine.");
             await this.PersistSessionAsync(session, cancellationToken);
 
-            await this.UpdateSessionAsync(session, "RefreshSearchIndex", "Rafraîchissement de l'index de recherche technique.", 95, cancellationToken);
-            await this.RefreshSearchIndexFromComparisonAsync(session, cancellationToken);
-            session.LastCompletedStep = "RefreshSearchIndex";
-            await this.PersistSessionAsync(session, cancellationToken);
-
             CaptainCoasterSettingsDocument settings = await this.GetOrCreateSettingsAsync();
             settings.LastSuccessfulSyncUtc = DateTime.UtcNow;
             settings.UpdatedAt = DateTime.UtcNow;
@@ -515,12 +582,12 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
             session.Status = "Completed";
             session.CurrentStep = "Completed";
-            session.Message = "Import Captain Coaster terminé avec succès.";
+            session.Message = "Import Captain Coaster terminé. Les changements sont prêts pour validation manuelle.";
             session.ProgressPercentage = 100;
             session.CompletedAtUtc = DateTime.UtcNow;
             session.UpdatedAt = DateTime.UtcNow;
             session.CanResume = true;
-            AddLog(session, "Info", $"Terminé : {session.Metrics.ParksFetched} parcs, {session.Metrics.CoastersFetched} coasters, {session.Metrics.ComparisonResults} résultats.");
+            AddLog(session, "Info", $"Terminé : {session.Metrics.ParksFetched} parcs, {session.Metrics.CoastersFetched} coasters, {session.Metrics.ComparisonResults} résultats. Les changements restent en attente de validation manuelle avant intégration métier.");
             await this.PersistSessionAsync(session, cancellationToken);
         }
         catch (Exception exception)

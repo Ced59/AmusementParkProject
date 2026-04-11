@@ -248,6 +248,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   ];
 
   private pollingSubscription: Subscription | null = null;
+  private currentPollingMode: 'import' | 'apply' | null = null;
   private readonly duplicateResolutionStateByResultId: Map<string, DuplicateResolutionState> = new Map<string, DuplicateResolutionState>();
 
   constructor(
@@ -402,7 +403,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       );
       this.ccSession.set(session);
       this.ccSuccessMessage.set('Pipeline démarré. Suivez la progression dans l\'onglet "Progression".');
-      this.startPolling(session.id);
+      this.startPolling(session.id, 'import');
     } catch (error: unknown) {
       this.ccErrorMessage.set(this.extractErrorMessage(error));
     } finally {
@@ -483,6 +484,12 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       return;
     }
 
+    const sessionId: string | null = this.ccSession()?.id ?? null;
+    if (sessionId === null) {
+      this.ccErrorMessage.set('Aucune session Captain Coaster sélectionnée.');
+      return;
+    }
+
     const selectedRows: CaptainCoasterComparisonResultResponse[] = this.ccCurrentItems()
       .filter((item: CaptainCoasterComparisonResultResponse) => this.selectedIdsSet.has(item.id));
     const duplicateResolutions: CaptainCoasterDuplicateResolutionRequest[] = this.buildDuplicateResolutions(selectedRows);
@@ -494,6 +501,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.ccIsBusy.set(true);
     this.ccErrorMessage.set('');
     this.ccSuccessMessage.set('');
+    this.startPolling(sessionId, 'apply');
 
     try {
       const response: { appliedCount: number } = await firstValueFrom(
@@ -502,13 +510,14 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       this.ccSuccessMessage.set(`${response.appliedCount} changement(s) appliqué(s).`);
       this.resetSelection();
       await this.fetchPageAsync(
-        this.ccSession()?.id ?? null,
+        sessionId,
         this.ccFilters(),
         this.ccCurrentPage(),
         this.ccPageSize()
       );
       await this.refreshStatusAsync();
     } catch (error: unknown) {
+      this.stopPolling();
       this.ccErrorMessage.set(this.extractErrorMessage(error));
     } finally {
       this.ccIsBusy.set(false);
@@ -521,14 +530,21 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       return;
     }
 
+    const sessionId: string | null = this.ccSession()?.id ?? null;
+    if (sessionId === null) {
+      this.ccErrorMessage.set('Aucune session Captain Coaster sélectionnée.');
+      return;
+    }
+
     this.ccIsBusy.set(true);
     this.ccErrorMessage.set('');
     this.ccSuccessMessage.set('');
+    this.startPolling(sessionId, 'apply');
 
     try {
       const response: { appliedCount: number } = await firstValueFrom(
         this.captainCoasterDataService.applyAll(
-          this.ccSession()?.id ?? null,
+          sessionId,
           entityTypeFilter,
           changeTypeFilter
         )
@@ -536,13 +552,14 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       this.ccSuccessMessage.set(`${response.appliedCount} changement(s) appliqué(s) au total. Les doublons externes restent à arbitrer manuellement.`);
       this.resetSelection();
       await this.fetchPageAsync(
-        this.ccSession()?.id ?? null,
+        sessionId,
         this.ccFilters(),
         this.ccCurrentPage(),
         this.ccPageSize()
       );
       await this.refreshStatusAsync();
     } catch (error: unknown) {
+      this.stopPolling();
       this.ccErrorMessage.set(this.extractErrorMessage(error));
     } finally {
       this.ccIsBusy.set(false);
@@ -701,7 +718,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
           this.ccStartAtStep.set(session.availableSteps?.[0] ?? 'DiscoverUrls');
         }
         if (session !== null && session.status !== 'Completed' && session.status !== 'Failed') {
-          this.startPolling(session.id);
+          this.startPolling(session.id, 'import');
         }
       } catch {
         this.ccSession.set(null);
@@ -770,11 +787,12 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     await this.refreshSourcesTableAsync();
   }
 
-  private startPolling(sessionId: string): void {
+  private startPolling(sessionId: string, mode: 'import' | 'apply'): void {
     this.stopPolling();
+    this.currentPollingMode = mode;
     this.pollingSubscription = interval(3000).pipe(
       switchMap(() =>
-        this.captainCoasterDataService.getLatestSession().pipe(catchError(() => of(null)))
+        this.captainCoasterDataService.getSessionById(sessionId).pipe(catchError(() => of(null)))
       )
     ).subscribe((session: CaptainCoasterSessionResponse | null) => {
       if (session === null || session.id !== sessionId) {
@@ -784,15 +802,22 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       this.cdr.markForCheck();
 
       if (session.status === 'Completed' || session.status === 'Failed') {
+        const completedMode: 'import' | 'apply' | null = this.currentPollingMode;
         this.stopPolling();
         void this.refreshStatusAsync();
         if (session.status === 'Completed') {
-          this.ccSuccessMessage.set(
-            `Pipeline terminé : ${session.discoveredItems} URL(s) découvertes, ${session.processedItems} fiche(s) traitée(s), ` +
-            `${session.comparisonResults} différence(s), dont ${session.duplicateConflicts} conflit(s) à arbitrer.`
-          );
+          if (completedMode === 'apply' || session.lastCompletedStep === 'ApplyComparison') {
+            this.ccSuccessMessage.set(session.message || `Application métier terminée : ${session.appliedChanges} changement(s) appliqué(s).`);
+          } else {
+            this.ccSuccessMessage.set(
+              `Pipeline terminé : ${session.discoveredItems} URL(s) découvertes, ${session.processedItems} fiche(s) traitée(s), ` +
+              `${session.comparisonResults} différence(s), dont ${session.duplicateConflicts} conflit(s) à arbitrer.`
+            );
+          }
         } else {
-          this.ccErrorMessage.set(`Le pipeline a échoué : ${session.message}`);
+          this.ccErrorMessage.set(completedMode === 'apply'
+            ? `L'application métier a échoué : ${session.message}`
+            : `Le pipeline a échoué : ${session.message}`);
         }
         this.cdr.markForCheck();
       }
@@ -804,6 +829,8 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       this.pollingSubscription.unsubscribe();
       this.pollingSubscription = null;
     }
+
+    this.currentPollingMode = null;
   }
 
   private resetSelection(): void {

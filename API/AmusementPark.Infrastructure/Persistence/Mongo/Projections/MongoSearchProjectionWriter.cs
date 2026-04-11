@@ -84,6 +84,23 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             .Select(static item => item.Trim())
             .ToHashSet(StringComparer.Ordinal);
 
+        if (distinctIds.Count == 0)
+        {
+            return;
+        }
+
+        if (string.Equals(resourceType, SearchProjectionResourceTypes.Parks, StringComparison.Ordinal))
+        {
+            await this.UpsertManyParksAsync(distinctIds, cancellationToken);
+            return;
+        }
+
+        if (string.Equals(resourceType, SearchProjectionResourceTypes.ParkItems, StringComparison.Ordinal))
+        {
+            await this.UpsertManyParkItemsAsync(distinctIds, cancellationToken);
+            return;
+        }
+
         foreach (string resourceId in distinctIds)
         {
             await this.UpsertAsync(resourceType, resourceId, cancellationToken);
@@ -116,14 +133,106 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         await this.searchCollection.DeleteOneAsync(value => value.OriginalId == originalId, cancellationToken);
     }
 
-    private async Task<SearchItemDocument> BuildParkSearchItemAsync(string resourceId, CancellationToken cancellationToken)
+    private async Task UpsertManyParksAsync(IReadOnlyCollection<string> resourceIds, CancellationToken cancellationToken)
     {
-        ParkDocument? source = await this.parksCollection.Find(value => value.Id == resourceId).FirstOrDefaultAsync(cancellationToken);
-        if (source is null)
+        List<ParkDocument> parks = await this.parksCollection
+            .Find(item => resourceIds.Contains(item.Id))
+            .ToListAsync(cancellationToken);
+
+        if (parks.Count == 0)
         {
-            throw new InvalidOperationException($"Park '{resourceId}' not found for search projection.");
+            return;
         }
 
+        List<string> originalIds = parks.Select(item => $"park_{item.Id}").ToList();
+        Dictionary<string, SearchItemDocument> existingByOriginalId = await this.LoadExistingSearchItemsByOriginalIdsAsync(originalIds, cancellationToken);
+        List<WriteModel<SearchItemDocument>> writes = new List<WriteModel<SearchItemDocument>>(parks.Count);
+
+        foreach (ParkDocument park in parks)
+        {
+            SearchItemDocument document = this.BuildParkSearchItem(park);
+            if (existingByOriginalId.TryGetValue(document.OriginalId, out SearchItemDocument? existing))
+            {
+                document.Id = existing.Id;
+                document.CreatedAt = existing.CreatedAt;
+            }
+
+            document.RefreshLocation();
+            writes.Add(
+                new ReplaceOneModel<SearchItemDocument>(
+                    Builders<SearchItemDocument>.Filter.Eq(item => item.OriginalId, document.OriginalId),
+                    document)
+                {
+                    IsUpsert = true,
+                });
+        }
+
+        await this.searchCollection.BulkWriteAsync(writes, new BulkWriteOptions { IsOrdered = false }, cancellationToken);
+    }
+
+    private async Task UpsertManyParkItemsAsync(IReadOnlyCollection<string> resourceIds, CancellationToken cancellationToken)
+    {
+        List<ParkItemDocument> parkItems = await this.parkItemsCollection
+            .Find(item => resourceIds.Contains(item.Id))
+            .ToListAsync(cancellationToken);
+
+        if (parkItems.Count == 0)
+        {
+            return;
+        }
+
+        HashSet<string> parkIds = parkItems
+            .Where(item => !string.IsNullOrWhiteSpace(item.ParkId))
+            .Select(item => item.ParkId)
+            .ToHashSet(StringComparer.Ordinal);
+
+        List<ParkDocument> parks = await this.parksCollection
+            .Find(item => parkIds.Contains(item.Id))
+            .ToListAsync(cancellationToken);
+
+        Dictionary<string, ParkDocument> parksById = parks
+            .ToDictionary(item => item.Id, item => item, StringComparer.Ordinal);
+
+        List<string> originalIds = parkItems.Select(item => $"parkItem_{item.Id}").ToList();
+        Dictionary<string, SearchItemDocument> existingByOriginalId = await this.LoadExistingSearchItemsByOriginalIdsAsync(originalIds, cancellationToken);
+        List<WriteModel<SearchItemDocument>> writes = new List<WriteModel<SearchItemDocument>>(parkItems.Count);
+
+        foreach (ParkItemDocument parkItem in parkItems)
+        {
+            parksById.TryGetValue(parkItem.ParkId, out ParkDocument? park);
+            SearchItemDocument document = this.BuildParkItemSearchItem(parkItem, park);
+            if (existingByOriginalId.TryGetValue(document.OriginalId, out SearchItemDocument? existing))
+            {
+                document.Id = existing.Id;
+                document.CreatedAt = existing.CreatedAt;
+            }
+
+            document.RefreshLocation();
+            writes.Add(
+                new ReplaceOneModel<SearchItemDocument>(
+                    Builders<SearchItemDocument>.Filter.Eq(item => item.OriginalId, document.OriginalId),
+                    document)
+                {
+                    IsUpsert = true,
+                });
+        }
+
+        await this.searchCollection.BulkWriteAsync(writes, new BulkWriteOptions { IsOrdered = false }, cancellationToken);
+    }
+
+    private async Task<Dictionary<string, SearchItemDocument>> LoadExistingSearchItemsByOriginalIdsAsync(
+        IReadOnlyCollection<string> originalIds,
+        CancellationToken cancellationToken)
+    {
+        List<SearchItemDocument> existingItems = await this.searchCollection
+            .Find(item => originalIds.Contains(item.OriginalId))
+            .ToListAsync(cancellationToken);
+
+        return existingItems.ToDictionary(item => item.OriginalId, item => item, StringComparer.Ordinal);
+    }
+
+    private SearchItemDocument BuildParkSearchItem(ParkDocument source)
+    {
         List<string> keywords = this.BuildKeywords(source.Name, source.CountryCode, source.City, source.PostalCode, source.Type?.ToString());
 
         return new SearchItemDocument
@@ -145,15 +254,8 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         };
     }
 
-    private async Task<SearchItemDocument> BuildParkItemSearchItemAsync(string resourceId, CancellationToken cancellationToken)
+    private SearchItemDocument BuildParkItemSearchItem(ParkItemDocument source, ParkDocument? park)
     {
-        ParkItemDocument? source = await this.parkItemsCollection.Find(value => value.Id == resourceId).FirstOrDefaultAsync(cancellationToken);
-        if (source is null)
-        {
-            throw new InvalidOperationException($"Park item '{resourceId}' not found for search projection.");
-        }
-
-        ParkDocument? park = await this.parksCollection.Find(value => value.Id == source.ParkId).FirstOrDefaultAsync(cancellationToken);
         string parkName = park?.Name ?? string.Empty;
         string category = ToSearchCategory(source.Category.ToString());
         string typeTag = HumanizeValue(source.Type.ToString());
@@ -178,6 +280,29 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             UpdatedAt = source.UpdatedAt,
             IsVisible = (park?.IsVisible ?? true) && source.IsVisible,
         };
+    }
+
+    private async Task<SearchItemDocument> BuildParkSearchItemAsync(string resourceId, CancellationToken cancellationToken)
+    {
+        ParkDocument? source = await this.parksCollection.Find(value => value.Id == resourceId).FirstOrDefaultAsync(cancellationToken);
+        if (source is null)
+        {
+            throw new InvalidOperationException($"Park '{resourceId}' not found for search projection.");
+        }
+
+        return this.BuildParkSearchItem(source);
+    }
+
+    private async Task<SearchItemDocument> BuildParkItemSearchItemAsync(string resourceId, CancellationToken cancellationToken)
+    {
+        ParkItemDocument? source = await this.parkItemsCollection.Find(value => value.Id == resourceId).FirstOrDefaultAsync(cancellationToken);
+        if (source is null)
+        {
+            throw new InvalidOperationException($"Park item '{resourceId}' not found for search projection.");
+        }
+
+        ParkDocument? park = await this.parksCollection.Find(value => value.Id == source.ParkId).FirstOrDefaultAsync(cancellationToken);
+        return this.BuildParkItemSearchItem(source, park);
     }
 
     private async Task<SearchItemDocument> BuildParkFounderSearchItemAsync(string resourceId, CancellationToken cancellationToken)

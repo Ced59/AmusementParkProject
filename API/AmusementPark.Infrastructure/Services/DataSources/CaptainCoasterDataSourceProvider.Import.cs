@@ -8,8 +8,8 @@ namespace AmusementPark.Infrastructure.Services.DataSources;
 
 internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProvider, IDataSourceImportExecutor
 {
-    private static readonly IReadOnlyCollection<string> JsonImportSteps = new[] { "ParsingParks", "ParsingCoasters", "BuildComparison", "RefreshSearchIndex" };
-    private static readonly IReadOnlyCollection<string> ScrapingImportSteps = new[] { "DiscoverUrls", "FetchCoasters", "EnrichParkCoordinates", "BuildComparison", "RefreshSearchIndex" };
+    private static readonly IReadOnlyCollection<string> JsonImportSteps = new[] { "ParsingParks", "ParsingCoasters", "BuildComparison" };
+    private static readonly IReadOnlyCollection<string> ScrapingImportSteps = new[] { "DiscoverUrls", "FetchCoasters", "EnrichParkCoordinates", "BuildComparison" };
 
     private static CaptainCoasterImportFiles ResolveInputFiles(DataSourceImportDescriptor importDescriptor)
     {

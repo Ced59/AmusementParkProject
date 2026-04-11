@@ -7,22 +7,6 @@ namespace AmusementPark.Infrastructure.Services.DataSources;
 
 internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProvider, IDataSourceImportExecutor
 {
-    private async Task RefreshSearchIndexFromComparisonAsync(CaptainCoasterSyncSessionDocument session, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(session);
-
-        List<string> parkIds = await this.comparisonCollection
-            .Find(item => item.SyncSessionId == session.Id && item.SourceKey == SourceKeyValue && item.EntityType == "Park" && item.LocalEntityId != null)
-            .Project(item => item.LocalEntityId!)
-            .ToListAsync(cancellationToken);
-
-        List<string> parkItemIds = await this.comparisonCollection
-            .Find(item => item.SyncSessionId == session.Id && item.SourceKey == SourceKeyValue && item.EntityType == "Coaster" && item.LocalEntityId != null)
-            .Project(item => item.LocalEntityId!)
-            .ToListAsync(cancellationToken);
-
-        await this.RefreshSearchProjectionAsync(session, parkIds, parkItemIds, cancellationToken);
-    }
 
     private async Task RefreshSearchProjectionAsync(
         CaptainCoasterSyncSessionDocument? session,

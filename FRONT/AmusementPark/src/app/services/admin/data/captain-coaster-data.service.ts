@@ -130,6 +130,20 @@ export class CaptainCoasterDataService {
     );
   }
 
+  getSessionById(sessionId: string): Observable<CaptainCoasterSessionResponse | null> {
+    return this.http.get<DataSourceSessionApiDto | null>(`${this.baseUrl}/sessions/${sessionId}`, {
+      observe: 'response'
+    }).pipe(
+      map((response: HttpResponse<DataSourceSessionApiDto | null>) => {
+        if (response.status === 204 || response.body === null) {
+          return null;
+        }
+
+        return this.mapSession(response.body);
+      })
+    );
+  }
+
   startImport(request: StartCaptainCoasterImportRequest): Observable<CaptainCoasterSessionResponse> {
     return this.http.post<DataSourceSessionApiDto>(`${this.baseUrl}/import`, request).pipe(
       map((session: DataSourceSessionApiDto) => this.mapSession(session))

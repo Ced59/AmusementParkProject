@@ -55,26 +55,18 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             await BuildComparisonFromStagingAsync(session, cancellationToken);
         }
 
-        if (ShouldRunStep(startAtStep, "RefreshSearchIndex"))
-        {
-            await this.UpdateSessionAsync(session, "RefreshSearchIndex", "Rafraîchissement de l'index de recherche technique.", 95, cancellationToken);
-            await this.RefreshSearchIndexFromComparisonAsync(session, cancellationToken);
-            session.LastCompletedStep = "RefreshSearchIndex";
-            await this.PersistSessionAsync(session, cancellationToken);
-        }
-
         settingsDocument.LastSuccessfulSyncUtc = DateTime.UtcNow;
         settingsDocument.UpdatedAt = DateTime.UtcNow;
         await this.settingsCollection.ReplaceOneAsync(item => item.Id == settingsDocument.Id, settingsDocument, new ReplaceOptions { IsUpsert = true }, cancellationToken);
 
         session.Status = "Completed";
         session.CurrentStep = "Completed";
-        session.Message = "Import Captain Coaster terminé avec succès.";
+        session.Message = "Import Captain Coaster terminé. Les changements sont prêts pour validation manuelle.";
         session.ProgressPercentage = 100;
         session.CompletedAtUtc = DateTime.UtcNow;
         session.CanResume = true;
         session.UpdatedAt = DateTime.UtcNow;
-        AddLog(session, "Info", $"Terminé : {session.Metrics.ParksFetched} parc(s), {session.Metrics.CoastersFetched} coaster(s), {session.Metrics.ComparisonResults} résultat(s). ");
+        AddLog(session, "Info", $"Terminé : {session.Metrics.ParksFetched} parc(s), {session.Metrics.CoastersFetched} coaster(s), {session.Metrics.ComparisonResults} résultat(s). Les changements restent en attente de validation manuelle avant intégration métier.");
         await this.PersistSessionAsync(session, cancellationToken);
     }
 
@@ -331,6 +323,11 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             return "EnrichParkCoordinates";
         }
 
+        if (string.Equals(trimmed, "RefreshSearchIndex", StringComparison.OrdinalIgnoreCase))
+        {
+            return "BuildComparison";
+        }
+
         return trimmed;
     }
 
@@ -352,11 +349,6 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         {
             return 3;
         }
-        if (string.Equals(step, "RefreshSearchIndex", StringComparison.OrdinalIgnoreCase))
-        {
-            return 4;
-        }
-
         return 0;
     }
 
