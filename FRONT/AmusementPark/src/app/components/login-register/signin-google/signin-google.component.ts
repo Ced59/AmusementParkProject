@@ -55,7 +55,7 @@ export class SigninGoogleComponent implements OnInit {
 
     this.authApiService.googleLogin(code).subscribe({
       next: (result: UserToken) => {
-        this.authService.setToken(result.token);
+        this.authService.setAuthenticatedSession(result);
         this.currentUserService.refreshCurrentUser();
         this.messageService.add('success', 'Succès', 'Connexion avec Google réussie !');
         this.sharedService.emitLoginStatusChange();

@@ -56,6 +56,8 @@ public sealed class AuthController : ControllerBase
         return this.Ok(new UserLoggedDto
         {
             Token = result.Value.AccessToken,
+            RefreshToken = result.Value.RefreshToken,
+            RefreshTokenExpiresAtUtc = result.Value.RefreshTokenExpiresAtUtc,
         });
     }
 
@@ -74,7 +76,9 @@ public sealed class AuthController : ControllerBase
 
         return this.Ok(new RefreshTokenResponseDto
         {
+            AccessToken = result.Value.AccessToken,
             RefreshToken = result.Value.RefreshToken,
+            RefreshTokenExpiresAtUtc = result.Value.RefreshTokenExpiresAtUtc,
         });
     }
 
@@ -106,6 +110,8 @@ public sealed class AuthController : ControllerBase
         return this.Ok(new UserLoggedDto
         {
             Token = result.Value.AccessToken,
+            RefreshToken = result.Value.RefreshToken,
+            RefreshTokenExpiresAtUtc = result.Value.RefreshTokenExpiresAtUtc,
         });
     }
 

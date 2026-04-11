@@ -575,6 +575,42 @@ internal static class EntityMongoMappers
         };
     }
 
+    public static RefreshToken ToDomain(this RefreshTokenDocument document)
+    {
+        RefreshToken entity = new RefreshToken
+        {
+            Id = document.Id,
+            UserId = document.UserId,
+            TokenHash = document.TokenHash,
+            ExpiresAtUtc = document.ExpiresAtUtc,
+            LastUsedAtUtc = document.LastUsedAtUtc,
+            RevokedAtUtc = document.RevokedAtUtc,
+            ReplacedByTokenHash = document.ReplacedByTokenHash,
+            RevocationReason = document.RevocationReason,
+        };
+
+        entity.CreatedAtUtc = document.CreatedAt;
+        entity.UpdatedAtUtc = document.UpdatedAt;
+        return entity;
+    }
+
+    public static RefreshTokenDocument ToDocument(this RefreshToken entity)
+    {
+        return new RefreshTokenDocument
+        {
+            Id = entity.Id,
+            UserId = entity.UserId,
+            TokenHash = entity.TokenHash,
+            ExpiresAtUtc = entity.ExpiresAtUtc,
+            LastUsedAtUtc = entity.LastUsedAtUtc,
+            RevokedAtUtc = entity.RevokedAtUtc,
+            ReplacedByTokenHash = entity.ReplacedByTokenHash,
+            RevocationReason = entity.RevocationReason,
+            CreatedAt = entity.CreatedAtUtc,
+            UpdatedAt = entity.UpdatedAtUtc,
+        };
+    }
+
     public static ExternalLogin ToDomain(this ExternalLoginDocument document)
     {
         return new ExternalLogin

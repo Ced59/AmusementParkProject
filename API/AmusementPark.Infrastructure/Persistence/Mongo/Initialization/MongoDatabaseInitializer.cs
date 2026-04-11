@@ -43,6 +43,9 @@ public sealed class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.UsersCollectionName, cancellationToken);
         await this.InitializeUsersIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.RefreshTokensCollectionName, cancellationToken);
+        await this.InitializeRefreshTokensIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.ImagesCollectionName, cancellationToken);
         await this.InitializeImagesIndexesAsync(cancellationToken);
 
@@ -109,6 +112,37 @@ public sealed class MongoDatabaseInitializer
         {
             await this.database.CreateCollectionAsync(collectionName, cancellationToken: cancellationToken);
         }
+    }
+
+    private async Task InitializeRefreshTokensIndexesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<RefreshTokenDocument> collection = this.database.GetCollection<RefreshTokenDocument>(this.settings.RefreshTokensCollectionName);
+
+        List<CreateIndexModel<RefreshTokenDocument>> indexes = new List<CreateIndexModel<RefreshTokenDocument>>
+        {
+            new CreateIndexModel<RefreshTokenDocument>(
+                Builders<RefreshTokenDocument>.IndexKeys.Ascending(item => item.TokenHash),
+                new CreateIndexOptions
+                {
+                    Unique = true,
+                    Name = "ux_refresh_tokens_tokenHash",
+                }),
+            new CreateIndexModel<RefreshTokenDocument>(
+                Builders<RefreshTokenDocument>.IndexKeys.Ascending(item => item.UserId).Descending(item => item.ExpiresAtUtc),
+                new CreateIndexOptions
+                {
+                    Name = "ix_refresh_tokens_userId_expiresAtUtc",
+                }),
+            new CreateIndexModel<RefreshTokenDocument>(
+                Builders<RefreshTokenDocument>.IndexKeys.Ascending(item => item.ExpiresAtUtc),
+                new CreateIndexOptions
+                {
+                    Name = "ix_refresh_tokens_expiresAtUtc_ttl",
+                    ExpireAfter = TimeSpan.Zero,
+                }),
+        };
+
+        await collection.Indexes.CreateManyAsync(indexes, cancellationToken);
     }
 
     private async Task InitializeAdminUserAsync(CancellationToken cancellationToken)

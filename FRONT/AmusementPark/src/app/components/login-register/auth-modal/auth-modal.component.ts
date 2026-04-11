@@ -57,7 +57,7 @@ export class AuthModalComponent implements AfterViewInit {
   private authenticateWithGoogle(idToken: string): void {
     this.authApiService.externalLogin('google', idToken).subscribe({
       next: (result: UserToken) => {
-        this.authService.setToken(result.token);
+        this.authService.setAuthenticatedSession(result);
         this.messageService.add('success', 'Succès', 'Connexion avec Google réussie !');
         this.sharedService.emitLoginStatusChange();
         this.closeModal.emit();

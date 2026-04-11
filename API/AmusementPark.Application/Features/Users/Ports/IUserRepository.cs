@@ -27,5 +27,4 @@ public interface IUserRepository
     Task<bool> RequestPasswordResetAsync(string email, CancellationToken cancellationToken);
     Task<bool> ResetPasswordAsync(string token, string newPasswordHash, CancellationToken cancellationToken);
     Task<User?> ChangePasswordAsync(string userId, string newPasswordHash, CancellationToken cancellationToken);
-    Task<bool> ValidateRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken);
 }

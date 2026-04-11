@@ -5,7 +5,7 @@ import {
   HttpRequest
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 
 import { AuthService } from '../../../services/auth/auth.service';
 import { shouldSkipAuthorizationHeader } from '../auth/auth-request-policy';
@@ -20,20 +20,18 @@ export class AuthInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
-    const token: string | null = this.authService.getToken();
-    if (!token) {
-      return next.handle(req);
-    }
+    return this.authService.ensureValidAccessToken().pipe(
+      switchMap((token: string | null) => {
+        if (!token) {
+          return next.handle(req);
+        }
 
-    const decoded = this.authService.getTokenDecoded();
-    if (!decoded || !decoded.exp || Date.now() >= decoded.exp * 1000) {
-      return next.handle(req);
-    }
+        const authReq: HttpRequest<unknown> = req.clone({
+          headers: req.headers.set('Authorization', `Bearer ${token}`)
+        });
 
-    const authReq: HttpRequest<unknown> = req.clone({
-      headers: req.headers.set('Authorization', `Bearer ${token}`)
-    });
-
-    return next.handle(authReq);
+        return next.handle(authReq);
+      })
+    );
   }
 }

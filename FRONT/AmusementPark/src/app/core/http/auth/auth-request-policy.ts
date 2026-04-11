@@ -5,6 +5,7 @@ const ANONYMOUS_AUTH_ROUTE_PATTERNS: readonly string[] = [
   '/users/resend-confirmation',
   '/users/forgot-password',
   '/users/reset-password',
+  '/refresh-token',
   '/auth/external/',
   'google-response'
 ];

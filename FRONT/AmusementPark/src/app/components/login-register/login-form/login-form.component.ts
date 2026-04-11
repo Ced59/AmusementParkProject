@@ -39,7 +39,7 @@ export class LoginFormComponent {
 
     this.authApiService.login(userCredentials).subscribe({
       next: (result: UserToken) => {
-        this.authService.setToken(result.token);
+        this.authService.setAuthenticatedSession(result);
         this.messageService.add('success', 'Succès', 'Connexion réussie !');
         this.sharedService.emitLoginStatusChange();
         this.loginSuccess.emit(result);

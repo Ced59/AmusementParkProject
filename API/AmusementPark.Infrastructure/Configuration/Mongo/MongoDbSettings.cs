@@ -22,6 +22,8 @@ public sealed class MongoDbSettings
 
     public string UsersCollectionName { get; set; } = "users";
 
+    public string RefreshTokensCollectionName { get; set; } = "refreshTokens";
+
     public string ParksCollectionName { get; set; } = "parks";
 
     public string ParkFoundersCollectionName { get; set; } = "parkFounders";

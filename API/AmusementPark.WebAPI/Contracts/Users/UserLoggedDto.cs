@@ -6,4 +6,8 @@ namespace AmusementPark.WebAPI.Contracts.Users;
 public sealed class UserLoggedDto
 {
     public string Token { get; set; } = string.Empty;
+
+    public string RefreshToken { get; set; } = string.Empty;
+
+    public DateTime RefreshTokenExpiresAtUtc { get; set; }
 }
