@@ -1,7 +1,5 @@
-import { SearchResultItem } from './search-result-item';
-import { Pagination } from '../shared/pagination';
+import { CollectionResponse } from '@shared/models/contracts';
 
-export interface SearchApiResponse {
-  data: SearchResultItem[];
-  pagination: Pagination;
-}
+import { SearchResultItem } from './search-result-item';
+
+export type SearchApiResponse = CollectionResponse<SearchResultItem>;

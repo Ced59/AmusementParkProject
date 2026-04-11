@@ -21,10 +21,10 @@ public static class MigrationDiagnostics
             {
                 roadmap = "front-back-roadmap-v3-detailed-phases",
                 status = "in-progress",
-                currentPhase = "P02",
-                currentPhaseTitle = "Fondation de l'architecture front — structure cible",
-                nextPhase = "P03",
-                referenceDocument = "API/ARCHITECTURE/P02-FRONT-TARGET-ARCHITECTURE.md",
+                currentPhase = "P03",
+                currentPhaseTitle = "Fondation de l'architecture front — contrats transverses",
+                nextPhase = "P04",
+                referenceDocument = "API/ARCHITECTURE/P03-FRONT-CROSS-CUTTING-CONTRACTS.md",
                 principles = new[]
                 {
                     "Iso-fonctionnel obligatoire",
@@ -45,8 +45,8 @@ public static class MigrationDiagnostics
                 {
                     new { code = "P00", title = "Cadre de migration et gel des conventions", state = "done" },
                     new { code = "P01", title = "Durcissement back — exposition des endpoints Users", state = "done" },
-                    new { code = "P02", title = "Fondation de l'architecture front — structure cible", state = "current" },
-                    new { code = "P03", title = "Fondation de l'architecture front — contrats transverses", state = "planned" },
+                    new { code = "P02", title = "Fondation de l'architecture front — structure cible", state = "done" },
+                    new { code = "P03", title = "Fondation de l'architecture front — contrats transverses", state = "current" },
                     new { code = "P04", title = "Refactor du socle HTTP front — extraction Auth API", state = "planned" },
                     new { code = "P05", title = "Refactor du socle HTTP front — extraction des API domain services", state = "planned" },
                     new { code = "P06", title = "Back — vraie refonte du refresh token", state = "planned" },

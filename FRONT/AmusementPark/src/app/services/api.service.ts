@@ -24,6 +24,8 @@ import { ParkExplorer } from '../models/parks/park-explorer';
 
 import { SearchApiResponse } from '../models/search/search-api-response';
 import { ApiResponse } from '../models/shared/api_reponse';
+import { PaginationContract } from '@shared/models/contracts';
+import { coalesceArray, mapArray } from '@shared/utils/mapping';
 import { CountryDto } from '../models/countries/country-dto';
 
 import { UploadedImage } from '../models/images/uploaded-image';
@@ -38,7 +40,7 @@ import { AuthMessageResponse } from '../models/auth/auth-message-response';
 
 interface PagedCollectionResponse<T> {
   data?: T[];
-  pagination?: unknown;
+  pagination?: PaginationContract | null;
 }
 
 
@@ -314,7 +316,7 @@ export class ApiService {
     return this.http.get<ApiResponse<ParkItemAdminRow>>(url).pipe(
       map((response: ApiResponse<ParkItemAdminRow>) => ({
         ...response,
-        data: (response.data ?? []).map((row: ParkItemAdminRow) => this.normalizeParkItemAdminRow(row))
+        data: mapArray(response.data, (row: ParkItemAdminRow) => this.normalizeParkItemAdminRow(row))
       }))
     );
   }
@@ -474,7 +476,7 @@ export class ApiService {
     }
 
     if (response && Array.isArray(response.data)) {
-      return response.data;
+      return coalesceArray(response.data);
     }
 
     return [];

@@ -1,6 +1,3 @@
-export interface Pagination {
-  totalItems: number;
-  totalPages: number;
-  currentPage: number;
-  itemsPerPage: number;
-}
+import { PaginationContract } from '@shared/models/contracts';
+
+export type Pagination = PaginationContract;

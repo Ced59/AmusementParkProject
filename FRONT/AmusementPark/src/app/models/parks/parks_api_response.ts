@@ -1,5 +1,5 @@
-import {Park} from "./park";
-import {Pagination} from "../shared/pagination";
-import {ApiResponse} from "../shared/api_reponse";
+import { CollectionResponse } from '@shared/models/contracts';
 
-export type ParksApiResponse = ApiResponse<Park>;
+import { Park } from './park';
+
+export type ParksApiResponse = CollectionResponse<Park>;

@@ -10,3 +10,6 @@ On y place progressivement :
 - payloads techniques.
 
 La logique d'écran et l'orchestration de page n'y ont pas leur place.
+
+À partir de **P03**, les réponses paginées et contrats transverses doivent réutiliser en priorité
+les types partagés de `@shared/models/contracts` au lieu de recréer des formes concurrentes.
