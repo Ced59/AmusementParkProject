@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
-import { ParkOperator } from '../../../../models/parks/park-operator';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';
@@ -10,25 +8,25 @@ import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TranslateModule } from '@ngx-translate/core';
+import { AdminOperatorsStateFacade } from '@features/admin/operators/state/admin-operators-state.facade';
 
 @Component({
     selector: 'app-admin-operators',
     templateUrl: './admin-operators.component.html',
     styleUrls: ['./admin-operators.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [AdminOperatorsStateFacade],
     imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, TranslateModule]
 })
 export class AdminOperatorsComponent implements OnInit {
-  operators: ParkOperator[] = [];
-  filteredOperators: ParkOperator[] = [];
-  loading: boolean = false;
-  searchQuery: string = '';
+  protected readonly filteredOperators = this.stateFacade.filteredOperators;
+  protected readonly loading = this.stateFacade.loading;
+  protected readonly totalCount = this.stateFacade.totalCount;
   currentLang: string = 'en';
 
   constructor(
-    private readonly parkOperatorsApiService: ParkOperatorsApiService,
-    private readonly route: ActivatedRoute,
-    private readonly cdr: ChangeDetectorRef
+    protected readonly stateFacade: AdminOperatorsStateFacade,
+    private readonly route: ActivatedRoute
   ) {
   }
 
@@ -38,37 +36,10 @@ export class AdminOperatorsComponent implements OnInit {
       this.route.snapshot.params['lang'] ??
       'en';
 
-    this.loadOperators();
+    this.stateFacade.loadOperators();
   }
 
-  loadOperators(): void {
-    this.loading = true;
-    this.cdr.markForCheck();
-
-    this.parkOperatorsApiService.getParkOperators().subscribe({
-      next: (operators: ParkOperator[]) => {
-        this.operators = operators;
-        this.applyFilter();
-        this.loading = false;
-        this.cdr.markForCheck();
-      },
-      error: (error: unknown) => {
-        console.error('Error loading operators', error);
-        this.loading = false;
-        this.cdr.markForCheck();
-      }
-    });
-  }
-
-  applyFilter(): void {
-    const normalizedQuery: string = this.searchQuery.trim().toLowerCase();
-
-    if (!normalizedQuery) {
-      this.filteredOperators = [...this.operators];
-      return;
-    }
-
-    this.filteredOperators = this.operators.filter((parkOperator: ParkOperator) =>
-      parkOperator.name.toLowerCase().includes(normalizedQuery));
+  onSearchQueryChanged(searchQuery: string): void {
+    this.stateFacade.setSearchQuery(searchQuery);
   }
 }

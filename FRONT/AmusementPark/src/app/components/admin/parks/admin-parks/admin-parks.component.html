@@ -1,9 +1,9 @@
 <p-card>
   <ng-template pTemplate="header">
     <div class="header-row">
-      @if (!loading) {
+      @if (canShowHeaderTotal()) {
         <span class="total">
-          {{ 'admin.parks.total' | translate:{ count: totalRecords } }}
+          {{ 'admin.parks.total' | translate:{ count: totalRecords() } }}
         </span>
       }
     </div>
@@ -13,7 +13,8 @@
     <input
       pInputText
       type="text"
-      [(ngModel)]="searchQuery"
+      [ngModel]="searchQuery()"
+      (ngModelChange)="onSearchQueryChanged($event)"
       (keyup.enter)="onSearch()"
       [placeholder]="'admin.parks.searchPlaceholder' | translate" />
 
@@ -25,7 +26,7 @@
       (click)="onSearch()">
     </button>
 
-    @if (searchQuery.trim()) {
+    @if (canClearSearch()) {
       <button
         pButton
         type="button"
@@ -38,11 +39,11 @@
   </div>
 
   <p-table
-    [value]="parks"
-    [loading]="loading"
+    [value]="parks()"
+    [loading]="loading()"
     [paginator]="true"
-    [rows]="pageSize"
-    [totalRecords]="totalRecords"
+    [rows]="pageSize()"
+    [totalRecords]="totalRecords()"
     [lazy]="true"
     (onLazyLoad)="onPageChanged($event)"
     [responsiveLayout]="'scroll'">

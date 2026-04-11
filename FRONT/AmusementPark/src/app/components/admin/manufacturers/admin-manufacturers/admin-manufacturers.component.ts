@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { AttractionManufacturer } from '../../../../models/parks/attraction-manufacturer';
-import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';
@@ -10,25 +8,25 @@ import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TranslateModule } from '@ngx-translate/core';
+import { AdminManufacturersStateFacade } from '@features/admin/manufacturers/state/admin-manufacturers-state.facade';
 
 @Component({
     selector: 'app-admin-manufacturers',
     templateUrl: './admin-manufacturers.component.html',
     styleUrls: ['./admin-manufacturers.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [AdminManufacturersStateFacade],
     imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, TranslateModule]
 })
 export class AdminManufacturersComponent implements OnInit {
-  manufacturers: AttractionManufacturer[] = [];
-  filteredManufacturers: AttractionManufacturer[] = [];
-  loading: boolean = false;
-  searchQuery: string = '';
+  protected readonly filteredManufacturers = this.stateFacade.filteredManufacturers;
+  protected readonly loading = this.stateFacade.loading;
+  protected readonly totalCount = this.stateFacade.totalCount;
   currentLang: string = 'en';
 
   constructor(
-    private readonly manufacturersApiService: ManufacturersApiService,
-    private readonly route: ActivatedRoute,
-    private readonly cdr: ChangeDetectorRef
+    protected readonly stateFacade: AdminManufacturersStateFacade,
+    private readonly route: ActivatedRoute
   ) {
   }
 
@@ -38,37 +36,10 @@ export class AdminManufacturersComponent implements OnInit {
       this.route.snapshot.params['lang'] ??
       'en';
 
-    this.loadManufacturers();
+    this.stateFacade.loadManufacturers();
   }
 
-  loadManufacturers(): void {
-    this.loading = true;
-    this.cdr.markForCheck();
-
-    this.manufacturersApiService.getAttractionManufacturers().subscribe({
-      next: (manufacturers: AttractionManufacturer[]) => {
-        this.manufacturers = manufacturers;
-        this.applyFilter();
-        this.loading = false;
-        this.cdr.markForCheck();
-      },
-      error: (error: unknown) => {
-        console.error('Error loading manufacturers', error);
-        this.loading = false;
-        this.cdr.markForCheck();
-      }
-    });
-  }
-
-  applyFilter(): void {
-    const normalizedQuery: string = this.searchQuery.trim().toLowerCase();
-
-    if (!normalizedQuery) {
-      this.filteredManufacturers = [...this.manufacturers];
-      return;
-    }
-
-    this.filteredManufacturers = this.manufacturers.filter((manufacturer: AttractionManufacturer) =>
-      manufacturer.name.toLowerCase().includes(normalizedQuery));
+  onSearchQueryChanged(searchQuery: string): void {
+    this.stateFacade.setSearchQuery(searchQuery);
   }
 }

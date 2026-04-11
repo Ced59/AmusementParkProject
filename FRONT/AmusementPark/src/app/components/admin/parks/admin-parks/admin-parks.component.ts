@@ -1,112 +1,71 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
 import { Park } from '../../../../models/parks/park';
-import { Pagination } from '../../../../models/shared/pagination';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { ParksApiResponse } from '../../../../models/parks/parks_api_response';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ParkType } from '../../../../models/parks/park-type';
+import { TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
-import { TableModule } from 'primeng/table';
 import { ToggleSwitch } from 'primeng/toggleswitch';
 import { TranslateModule } from '@ngx-translate/core';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { AdminParksStateFacade } from '@features/admin/parks/state/admin-parks-state.facade';
 
 @Component({
     selector: 'app-admin-parks',
     templateUrl: './admin-parks.component.html',
     styleUrls: ['./admin-parks.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [AdminParksStateFacade],
     imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, TableModule, ToggleSwitch, RouterLink, TranslateModule]
 })
 export class AdminParksComponent implements OnInit {
-  parks: Park[] = [];
-  loading: boolean = false;
-
-  pagination: Pagination | null = null;
-  totalRecords: number = 0;
-  pageSize: number = 10;
-  currentPage: number = 1;
-
-  searchQuery: string = '';
+  protected readonly parks = this.stateFacade.parks;
+  protected readonly loading = this.stateFacade.loading;
+  protected readonly totalRecords = this.stateFacade.totalRecords;
+  protected readonly pageSize = this.stateFacade.pageSize;
+  protected readonly currentPage = this.stateFacade.currentPage;
+  protected readonly searchQuery = this.stateFacade.searchQuery;
+  protected readonly canShowHeaderTotal = computed(() => !this.loading());
+  protected readonly canClearSearch = computed(() => this.searchQuery().trim().length > 0);
 
   constructor(
+    protected readonly stateFacade: AdminParksStateFacade,
     private readonly parksApiService: ParksApiService,
     private readonly router: Router,
-    private readonly route: ActivatedRoute,
-    private readonly cdr: ChangeDetectorRef
+    private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.loadParks(this.currentPage, this.pageSize);
+    this.stateFacade.loadParks(this.currentPage(), this.pageSize());
   }
 
-  loadParks(page: number, size: number): void {
-    this.loading = true;
-    this.cdr.markForCheck();
-
-    const trimmedQuery: string = this.searchQuery.trim();
-
-    const handleResponse = (response: ParksApiResponse, currentPage: number, currentSize: number) => {
-      const rawParks: Park[] = response.data ?? [];
-
-      this.parks = rawParks.map((park: Park) => ({
-        ...park,
-        isVisible: park.isVisible ?? false
-      }));
-
-      this.pagination = response.pagination ?? null;
-      this.totalRecords = this.pagination?.totalItems ?? this.parks.length;
-      this.pageSize = this.pagination?.itemsPerPage ?? currentSize;
-      this.currentPage = this.pagination?.currentPage ?? currentPage;
-      this.loading = false;
-      this.cdr.markForCheck();
-    };
-
-    if (trimmedQuery.length > 0) {
-      this.parksApiService.searchParks(trimmedQuery, page, size).subscribe({
-        next: (response: ParksApiResponse) => handleResponse(response, page, size),
-        error: (error: unknown) => {
-          console.error('Error searching parks', error);
-          this.loading = false;
-          this.cdr.markForCheck();
-        }
-      });
-    } else {
-      this.parksApiService.getParksPaginated(page, size).subscribe({
-        next: (response: ParksApiResponse) => handleResponse(response, page, size),
-        error: (error: unknown) => {
-          console.error('Error loading parks', error);
-          this.loading = false;
-          this.cdr.markForCheck();
-        }
-      });
-    }
+  onSearchQueryChanged(searchQuery: string): void {
+    this.stateFacade.setSearchQuery(searchQuery);
   }
 
   onSearch(): void {
-    this.currentPage = 1;
-    this.loadParks(this.currentPage, this.pageSize);
+    this.stateFacade.loadParks(1, this.pageSize());
   }
 
   clearSearch(): void {
-    if (!this.searchQuery.trim()) {
+    if (!this.canClearSearch()) {
       return;
     }
 
-    this.searchQuery = '';
-    this.currentPage = 1;
-    this.loadParks(this.currentPage, this.pageSize);
+    this.stateFacade.clearSearchQuery();
+    this.stateFacade.loadParks(1, this.pageSize());
   }
 
-  onPageChanged(event: any): void {
-    const rows: number = event.rows ?? this.pageSize;
+  onPageChanged(event: TableLazyLoadEvent): void {
+    const rows: number = event.rows ?? this.pageSize();
     const first: number = event.first ?? 0;
     const page: number = Math.floor(first / rows) + 1;
-    this.loadParks(page, rows);
+
+    this.stateFacade.loadParks(page, rows);
   }
 
   onVisibilityChange(park: Park): void {
@@ -122,7 +81,7 @@ export class AdminParksComponent implements OnInit {
       error: (error: unknown) => {
         console.error('Error updating park visibility', error);
         park.isVisible = !newValue;
-        this.cdr.markForCheck();
+        this.stateFacade.loadParks(this.currentPage(), this.pageSize());
       }
     });
   }
