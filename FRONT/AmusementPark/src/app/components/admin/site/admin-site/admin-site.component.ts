@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ImageDto } from '../../../../models/images/image-dto';
 import { ImageTagDto } from '../../../../models/images/image-tag-dto';
 import { ViewState } from '../../../../models/shared/view-state';
-import { ApiService } from '../../../../services/api.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
 import { commitViewUpdate } from '../../../../utils/change-detection.utils';
 
@@ -26,7 +26,7 @@ export class AdminSiteComponent implements OnInit {
   pageState: ViewState = ViewState.Loading;
 
   constructor(
-    public readonly apiService: ApiService,
+    public readonly imagesApiService: ImagesApiService,
     private readonly changeDetectorRef: ChangeDetectorRef
   ) {}
 
@@ -40,8 +40,8 @@ export class AdminSiteComponent implements OnInit {
     });
 
     forkJoin({
-      images: this.apiService.getAdminImages(),
-      tags: this.apiService.getAdminImageTags()
+      images: this.imagesApiService.getAdminImages(),
+      tags: this.imagesApiService.getAdminImageTags()
     }).subscribe({
       next: ({ images, tags }) => {
         commitViewUpdate(this.changeDetectorRef, () => {
@@ -75,7 +75,7 @@ export class AdminSiteComponent implements OnInit {
       return;
     }
 
-    this.apiService.updateAdminImage(this.selectedImage.id, {
+    this.imagesApiService.updateAdminImage(this.selectedImage.id, {
       description: this.selectedImage.description,
       geoLocation: this.selectedImage.geoLocation ?? null,
       altTexts: this.selectedImage.altTexts ?? [],
@@ -102,7 +102,7 @@ export class AdminSiteComponent implements OnInit {
       return;
     }
 
-    this.apiService.createAdminImageTag({
+    this.imagesApiService.createAdminImageTag({
       slug,
       labels: [{ languageCode: 'fr', value: slug }],
       descriptions: []

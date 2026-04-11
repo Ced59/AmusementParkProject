@@ -15,7 +15,10 @@ import { ParkItem } from '../../../models/parks/park-item';
 import { ParkZone } from '../../../models/parks/park-zone';
 import { AttractionManufacturer } from '../../../models/parks/attraction-manufacturer';
 import { ViewState } from '../../../models/shared/view-state';
-import { ApiService } from '../../../services/api.service';
+import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
+import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { TranslationService } from '../../../services/translation.service';
 import { commitViewUpdate } from '../../../utils/change-detection.utils';
 import { buildParkSlug } from '../../../commons/park-presentation.utils';
@@ -72,7 +75,10 @@ export class ParkItemsPageComponent implements OnInit, OnDestroy {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService,
+    private readonly parksApiService: ParksApiService,
+    private readonly parkItemsApiService: ParkItemsApiService,
+    private readonly manufacturersApiService: ManufacturersApiService,
+    private readonly parkZonesApiService: ParkZonesApiService,
     private readonly translationService: TranslationService,
     private readonly changeDetectorRef: ChangeDetectorRef
   ) {
@@ -293,11 +299,11 @@ export class ParkItemsPageComponent implements OnInit, OnDestroy {
     this.zonesById = {};
 
     this.subscriptions.add(forkJoin({
-      park: this.apiService.getParkById(parkId),
-      explorer: this.apiService.getParkExplorer(parkId),
-      items: this.apiService.getParkItemsByParkId(parkId),
-      manufacturers: this.apiService.getAttractionManufacturers().pipe(catchError(() => of([] as AttractionManufacturer[]))),
-      zones: this.apiService.getParkZonesByParkId(parkId).pipe(catchError(() => of([] as ParkZone[])))
+      park: this.parksApiService.getParkById(parkId),
+      explorer: this.parksApiService.getParkExplorer(parkId),
+      items: this.parkItemsApiService.getParkItemsByParkId(parkId),
+      manufacturers: this.manufacturersApiService.getAttractionManufacturers().pipe(catchError(() => of([] as AttractionManufacturer[]))),
+      zones: this.parkZonesApiService.getParkZonesByParkId(parkId).pipe(catchError(() => of([] as ParkZone[])))
     }).subscribe({
       next: ({ park, explorer, items, manufacturers, zones }) => {
         const manufacturersById: Record<string, string> = manufacturers.reduce((accumulator, current) => {

@@ -5,7 +5,8 @@ import { TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { Pagination } from '../../../../models/shared/pagination';
 import { UserDto } from '../../../../models/users/user_dto';
 import { UsersApiResponse } from '../../../../models/users/users_api_response';
-import { ApiService } from '../../../../services/api.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
+import { UsersApiService } from '@data-access/users/users-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';
@@ -38,7 +39,8 @@ export class AdminUsersComponent implements OnInit {
     + '<path d="M8 33c2-6 7-9 12-9s10 3 12 9" fill="%2394a3b8"/></svg>';
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly usersApiService: UsersApiService,
+    private readonly imagesApiService: ImagesApiService,
     private readonly router: Router,
     private readonly cdr: ChangeDetectorRef
   ) {
@@ -52,7 +54,7 @@ export class AdminUsersComponent implements OnInit {
     this.loading = true;
     this.cdr.markForCheck();
 
-    this.apiService.getUsers(page, size).subscribe({
+    this.usersApiService.getUsers(page, size).subscribe({
       next: (response: UsersApiResponse) => {
         this.users = response.data ?? [];
         this.pagination = response.pagination ?? null;
@@ -86,7 +88,7 @@ export class AdminUsersComponent implements OnInit {
   }
 
   resolveAvatarUrl(avatarUrl: string | null | undefined): string {
-    const resolved: string | null = this.apiService.resolveImageUrl(avatarUrl);
+    const resolved: string | null = this.imagesApiService.resolveImageUrl(avatarUrl);
 
     if (resolved) {
       return resolved;

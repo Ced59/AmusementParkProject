@@ -8,7 +8,8 @@ import { ParkItemAdminRow } from '../../../../models/parks/park-item-admin-row';
 import { ParksApiResponse } from '../../../../models/parks/parks_api_response';
 import { ApiResponse } from '../../../../models/shared/api_reponse';
 import { Pagination } from '../../../../models/shared/pagination';
-import { ApiService } from '../../../../services/api.service';
+import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
@@ -38,7 +39,8 @@ export class AdminParkItemsIndexComponent implements OnInit {
   pageSize: number = 20;
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly parkItemsApiService: ParkItemsApiService,
+    private readonly parksApiService: ParksApiService,
     private readonly router: Router,
     private readonly translateService: TranslateService,
     private readonly cdr: ChangeDetectorRef
@@ -54,7 +56,7 @@ export class AdminParkItemsIndexComponent implements OnInit {
     this.loading = true;
     this.cdr.markForCheck();
 
-    this.apiService.getParkItemsPaginated(
+    this.parkItemsApiService.getParkItemsPaginated(
       this.currentPage,
       this.pageSize,
       this.selectedParkId,
@@ -131,7 +133,7 @@ export class AdminParkItemsIndexComponent implements OnInit {
 
   private getAllParks(): Observable<Park[]> {
     return new Observable<Park[]>((observer) => {
-      this.apiService.getParksPaginated(1, 100).subscribe({
+      this.parksApiService.getParksPaginated(1, 100).subscribe({
         next: (firstResponse: ParksApiResponse) => {
           const firstPageParks: Park[] = firstResponse.data ?? [];
           const pagination: Pagination | undefined = firstResponse.pagination;
@@ -145,7 +147,7 @@ export class AdminParkItemsIndexComponent implements OnInit {
 
           const requests: Observable<ParksApiResponse>[] = [];
           for (let page: number = 2; page <= totalPages; page++) {
-            requests.push(this.apiService.getParksPaginated(page, 100));
+            requests.push(this.parksApiService.getParksPaginated(page, 100));
           }
 
           forkJoin(requests).subscribe({

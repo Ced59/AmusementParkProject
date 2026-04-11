@@ -27,7 +27,11 @@ import { ParkItemType } from '../../../../../models/parks/park-item-type';
 import { ParkZone } from '../../../../../models/parks/park-zone';
 import { EntitySelectOption } from '../../../../../models/shared/entity-select-option';
 import { LocalizedItem } from '../../../../../models/shared/localized-item';
-import { ApiService } from '../../../../../services/api.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
+import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
+import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { EditorSaveToolbarComponent } from '../../../../shared/editor-save-toolbar/editor-save-toolbar.component';
@@ -359,7 +363,11 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService,
+    private readonly parkZonesApiService: ParkZonesApiService,
+    private readonly parkItemsApiService: ParkItemsApiService,
+    private readonly imagesApiService: ImagesApiService,
+    private readonly parksApiService: ParksApiService,
+    private readonly manufacturersApiService: ManufacturersApiService,
     private readonly translateService: TranslateService,
     private readonly toastMessageService: ToastMessageService,
     private readonly cdr: ChangeDetectorRef
@@ -422,7 +430,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     this.setupFormSync();
     this.loadManufacturers();
 
-    this.apiService.getParkZonesByParkId(this.parkId).subscribe((zones: ParkZone[]) => {
+    this.parkZonesApiService.getParkZonesByParkId(this.parkId).subscribe((zones: ParkZone[]) => {
       this.zones = zones
         .filter((zone: ParkZone) => !!zone.id)
         .map((zone: ParkZone) => ({
@@ -435,7 +443,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     this.loadParkLocationDefault();
 
     if (this.itemId) {
-      this.apiService.getParkItemById(this.itemId).subscribe((item: ParkItem) => {
+      this.parkItemsApiService.getParkItemById(this.itemId).subscribe((item: ParkItem) => {
         this.form.patchValue({
           parkId: item.parkId,
           zoneId: item.zoneId ?? null,
@@ -711,7 +719,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
 
   private async uploadAttractionPhotoAsync(file: File, setAsCurrent: boolean): Promise<void> {
     const uploaded: UploadedImage = await firstValueFrom(
-      this.apiService.uploadImage(
+      this.imagesApiService.uploadImage(
         file,
         ImageCategory.ATTRACTION,
         false,
@@ -720,7 +728,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     );
 
     const image: ImageDto = await firstValueFrom(
-      this.apiService.linkImage({
+      this.imagesApiService.linkImage({
         imageId: uploaded.id,
         ownerType: ImageOwnerType.ATTRACTION,
         ownerId: this.itemId as string,
@@ -757,7 +765,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.apiService.setCurrentImage(photo.id).subscribe({
+    this.imagesApiService.setCurrentImage(photo.id).subscribe({
       next: (image: ImageDto) => {
         const updated: AttractionPhotoItem = this.toAttractionPhotoItem(image);
 
@@ -781,7 +789,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.apiService.deleteImage(photo.id).subscribe({
+    this.imagesApiService.deleteImage(photo.id).subscribe({
       next: () => {
         this.attractionPhotos = this.attractionPhotos.filter((item: AttractionPhotoItem) => item.id !== photo.id);
         this.currentPhoto = this.attractionPhotos.find((item: AttractionPhotoItem) => item.isCurrent) ?? null;
@@ -866,7 +874,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.apiService.getParkById(this.parkId).subscribe({
+    this.parksApiService.getParkById(this.parkId).subscribe({
       next: (park: Park) => {
         this.parkLocationDefault = {
           latitude: park.latitude,
@@ -982,7 +990,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     this.isSaving = true;
 
     if (this.itemId) {
-      this.apiService.updateParkItem(this.itemId, payload).subscribe({
+      this.parkItemsApiService.updateParkItem(this.itemId, payload).subscribe({
         next: (updated: ParkItem) => {
           this.isSaving = false;
           this.afterSuccessfulSave(updated, mode, scope);
@@ -998,7 +1006,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.apiService.createParkItem(payload).subscribe({
+    this.parkItemsApiService.createParkItem(payload).subscribe({
       next: (created: ParkItem) => {
         this.isSaving = false;
         this.afterSuccessfulSave(created, mode, scope);
@@ -1347,7 +1355,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   private loadManufacturers(): void {
     this.manufacturersLoading = true;
 
-    this.apiService.getAttractionManufacturers().subscribe({
+    this.manufacturersApiService.getAttractionManufacturers().subscribe({
       next: (manufacturers: AttractionManufacturer[]) => {
         this.manufacturerOptions = manufacturers
           .filter((manufacturer: AttractionManufacturer) => !!manufacturer.id)
@@ -1465,7 +1473,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
 
     this.photosLoading = true;
 
-    this.apiService.getImages(ImageOwnerType.ATTRACTION, this.itemId, ImageCategory.ATTRACTION).subscribe({
+    this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, this.itemId, ImageCategory.ATTRACTION).subscribe({
       next: (images: ImageDto[]) => {
         this.attractionPhotos = images.map((image: ImageDto) => this.toAttractionPhotoItem(image));
         this.currentPhoto = this.attractionPhotos.find((item: AttractionPhotoItem) => item.isCurrent) ?? null;
@@ -1483,7 +1491,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   private toAttractionPhotoItem(image: ImageDto): AttractionPhotoItem {
     return {
       id: image.id,
-      imageUrl: this.apiService.buildImageUrl(image.id),
+      imageUrl: this.imagesApiService.buildImageUrl(image.id),
       description: image.description,
       isCurrent: image.isCurrent,
       createdAt: image.createdAt

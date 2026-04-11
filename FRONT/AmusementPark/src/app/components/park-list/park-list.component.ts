@@ -5,7 +5,7 @@ import { debounceTime } from 'rxjs/operators';
 import { Park } from '../../models/parks/park';
 import { Pagination } from '../../models/shared/pagination';
 import { ViewState } from '../../models/shared/view-state';
-import { ApiService } from '../../services/api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { TranslationService } from '../../services/translation.service';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';
@@ -36,7 +36,7 @@ export class ParkListComponent implements OnInit, OnDestroy {
   private readonly subscriptions: Subscription = new Subscription();
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly parksApiService: ParksApiService,
     private readonly translationService: TranslationService,
     private readonly cdr: ChangeDetectorRef
   ) {
@@ -80,8 +80,8 @@ export class ParkListComponent implements OnInit, OnDestroy {
     this.cdr.markForCheck();
 
     const request$ = term
-      ? this.apiService.searchParks(term, page, size)
-      : this.apiService.getParksPaginated(page, size);
+      ? this.parksApiService.searchParks(term, page, size)
+      : this.parksApiService.getParksPaginated(page, size);
 
     this.subscriptions.add(
       request$.subscribe({

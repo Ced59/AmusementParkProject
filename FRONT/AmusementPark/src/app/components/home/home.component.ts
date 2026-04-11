@@ -7,7 +7,8 @@ import { SearchResultItem } from '../../models/search/search-result-item';
 import { Pagination } from '../../models/shared/pagination';
 import { ViewState } from '../../models/shared/view-state';
 import { Park } from '../../models/parks/park';
-import { ApiService } from '../../services/api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { SearchApiService } from '@data-access/search/search-api.service';
 import { TranslationService } from '../../services/translation.service';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';
@@ -57,7 +58,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   private readonly subscriptions: Subscription = new Subscription();
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly parksApiService: ParksApiService,
+    private readonly searchApiService: SearchApiService,
     private readonly translationService: TranslationService,
     private readonly cdr: ChangeDetectorRef
   ) {
@@ -138,7 +140,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private executeSearch() {
     const categoriesToSend: string[] = this.selectedCategory ? [this.selectedCategory] : [];
 
-    return this.apiService.getSearch(
+    return this.searchApiService.getSearch(
       this.searchTerm,
       categoriesToSend,
       this.currentPage,
@@ -159,7 +161,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.featuredState = ViewState.Loading;
 
     this.subscriptions.add(
-      this.apiService.getParksPaginated(1, 6).subscribe({
+      this.parksApiService.getParksPaginated(1, 6).subscribe({
         next: (response) => {
           this.featuredParks = response.data ?? [];
           this.featuredState = this.featuredParks.length > 0 ? ViewState.Ready : ViewState.Empty;

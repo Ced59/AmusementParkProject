@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } 
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalizedItem } from '../../../../../models/shared/localized-item';
 import { ParkZone } from '../../../../../models/parks/park-zone';
-import { ApiService } from '../../../../../services/api.service';
+import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { commitViewUpdate } from '../../../../../utils/change-detection.utils';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
@@ -34,7 +34,7 @@ export class AdminParkZoneEditComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService,
+    private readonly parkZonesApiService: ParkZonesApiService,
     private readonly changeDetectorRef: ChangeDetectorRef
   ) {
   }
@@ -53,7 +53,7 @@ export class AdminParkZoneEditComponent implements OnInit {
     });
 
     if (this.zoneId) {
-      this.apiService.getParkZoneById(this.zoneId).subscribe((zone: ParkZone) => {
+      this.parkZonesApiService.getParkZoneById(this.zoneId).subscribe((zone: ParkZone) => {
         commitViewUpdate(this.changeDetectorRef, () => {
           this.form.patchValue({
             parkId: zone.parkId,
@@ -76,11 +76,11 @@ export class AdminParkZoneEditComponent implements OnInit {
     const payload: ParkZone = this.form.value as ParkZone;
 
     if (this.zoneId) {
-      this.apiService.updateParkZone(this.zoneId, payload).subscribe(() => this.goBack());
+      this.parkZonesApiService.updateParkZone(this.zoneId, payload).subscribe(() => this.goBack());
       return;
     }
 
-    this.apiService.createParkZone(payload).subscribe(() => this.goBack());
+    this.parkZonesApiService.createParkZone(payload).subscribe(() => this.goBack());
   }
 
   goBack(): void {

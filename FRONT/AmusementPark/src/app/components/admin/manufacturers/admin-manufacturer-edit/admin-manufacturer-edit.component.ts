@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AttractionManufacturer } from '../../../../models/parks/attraction-manufacturer';
-import { ApiService } from '../../../../services/api.service';
+import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { commitViewUpdate } from '../../../../utils/change-detection.utils';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
@@ -25,7 +25,7 @@ export class AdminManufacturerEditComponent implements OnInit {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly apiService: ApiService,
+    private readonly manufacturersApiService: ManufacturersApiService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly changeDetectorRef: ChangeDetectorRef
@@ -47,7 +47,7 @@ export class AdminManufacturerEditComponent implements OnInit {
     });
 
     if (this.manufacturerId) {
-      this.apiService.getAttractionManufacturerById(this.manufacturerId).subscribe({
+      this.manufacturersApiService.getAttractionManufacturerById(this.manufacturerId).subscribe({
         next: (manufacturer: AttractionManufacturer) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.form.patchValue({
@@ -76,7 +76,7 @@ export class AdminManufacturerEditComponent implements OnInit {
     };
 
     if (this.isEditMode && this.manufacturerId) {
-      this.apiService.updateAttractionManufacturer(this.manufacturerId, payload).subscribe({
+      this.manufacturersApiService.updateAttractionManufacturer(this.manufacturerId, payload).subscribe({
         next: (updated: AttractionManufacturer) => {
           this.navigateAfterSave(updated.id);
         },
@@ -87,7 +87,7 @@ export class AdminManufacturerEditComponent implements OnInit {
       return;
     }
 
-    this.apiService.createAttractionManufacturer(payload).subscribe({
+    this.manufacturersApiService.createAttractionManufacturer(payload).subscribe({
       next: (created: AttractionManufacturer) => {
         this.navigateAfterSave(created.id);
       },

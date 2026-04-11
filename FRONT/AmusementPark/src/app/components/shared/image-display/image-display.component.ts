@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { NgIf, NgClass } from '@angular/common';
 
 /**
@@ -36,7 +36,7 @@ export class ImageDisplayComponent implements OnChanges {
 
   imageLoadFailed: boolean = false;
 
-  constructor(private readonly apiService: ApiService) {}
+  constructor(private readonly imagesApiService: ImagesApiService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['imageId']) {
@@ -57,10 +57,10 @@ export class ImageDisplayComponent implements OnChanges {
 
     if (rawValue.startsWith('/images/')) {
       const entityId: string = rawValue.replace(/^\/images\//, '');
-      return this.apiService.buildImageUrl(entityId);
+      return this.imagesApiService.buildImageUrl(entityId);
     }
 
-    return this.apiService.buildImageUrl(rawValue);
+    return this.imagesApiService.buildImageUrl(rawValue);
   }
 
   get showImage(): boolean {

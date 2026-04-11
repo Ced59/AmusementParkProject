@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { finalize, Subscription, switchMap } from 'rxjs';
 
-import { ApiService } from '../../../services/api.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ImageCategory } from '../../../models/images/image-category';
 import { ImageOwnerType } from '../../../models/images/image-owner-type';
 import { ImageDto } from '../../../models/images/image-dto';
@@ -55,7 +55,7 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
 
   private uploadSubscription: Subscription | null = null;
 
-  constructor(private readonly apiService: ApiService) {
+  constructor(private readonly imagesApiService: ImagesApiService) {
   }
 
   ngOnDestroy(): void {
@@ -129,14 +129,14 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     this.isUploading = true;
 
     this.uploadSubscription?.unsubscribe();
-    this.uploadSubscription = this.apiService.uploadImage(
+    this.uploadSubscription = this.imagesApiService.uploadImage(
       this.selectedFile,
       this.category,
       this.withWatermark,
       this.showDescription ? this.description : undefined)
       .pipe(
         switchMap((uploadedImage: UploadedImage) => {
-          return this.apiService.linkImage({
+          return this.imagesApiService.linkImage({
             imageId: uploadedImage.id,
             ownerType: this.ownerType,
             ownerId: this.ownerId,

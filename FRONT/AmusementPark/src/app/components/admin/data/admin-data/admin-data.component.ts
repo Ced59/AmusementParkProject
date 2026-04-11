@@ -22,7 +22,7 @@ import { Tag } from 'primeng/tag';
 import { TabsModule } from 'primeng/tabs';
 import { PaginatorModule } from 'primeng/paginator';
 
-import { CaptainCoasterDataService } from '../../../../services/admin/data/captain-coaster-data.service';
+import { DataSourcesApiService } from '@data-access/admin/data-sources-api.service';
 import {
   CaptainCoasterComparisonPagedResponse,
   CaptainCoasterComparisonResultResponse,
@@ -252,7 +252,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   private readonly duplicateResolutionStateByResultId: Map<string, DuplicateResolutionState> = new Map<string, DuplicateResolutionState>();
 
   constructor(
-    private readonly captainCoasterDataService: CaptainCoasterDataService,
+    private readonly dataSourcesApiService: DataSourcesApiService,
     private readonly cdr: ChangeDetectorRef
   ) {}
 
@@ -345,7 +345,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
         options: settings.options
       };
       const updated: CaptainCoasterSettingsResponse = await firstValueFrom(
-        this.captainCoasterDataService.updateSettings(request)
+        this.dataSourcesApiService.updateSettings(request)
       );
       this.ccSettings.set(updated);
       if (showSuccessMessage) {
@@ -385,7 +385,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
         options: settings.options
       };
       const updatedSettings: CaptainCoasterSettingsResponse = await firstValueFrom(
-        this.captainCoasterDataService.updateSettings(saveRequest)
+        this.dataSourcesApiService.updateSettings(saveRequest)
       );
       this.ccSettings.set(updatedSettings);
 
@@ -399,7 +399,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       };
 
       const session: CaptainCoasterSessionResponse = await firstValueFrom(
-        this.captainCoasterDataService.startImport(request)
+        this.dataSourcesApiService.startImport(request)
       );
       this.ccSession.set(session);
       this.ccSuccessMessage.set('Pipeline démarré. Suivez la progression dans l\'onglet "Progression".');
@@ -505,7 +505,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
 
     try {
       const response: { appliedCount: number } = await firstValueFrom(
-        this.captainCoasterDataService.applySelectedIds(Array.from(this.selectedIdsSet), duplicateResolutions)
+        this.dataSourcesApiService.applySelectedIds(Array.from(this.selectedIdsSet), duplicateResolutions)
       );
       this.ccSuccessMessage.set(`${response.appliedCount} changement(s) appliqué(s).`);
       this.resetSelection();
@@ -543,7 +543,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
 
     try {
       const response: { appliedCount: number } = await firstValueFrom(
-        this.captainCoasterDataService.applyAll(
+        this.dataSourcesApiService.applyAll(
           sessionId,
           entityTypeFilter,
           changeTypeFilter
@@ -700,17 +700,17 @@ export class AdminDataComponent implements OnInit, OnDestroy {
 
     try {
       const status: CaptainCoasterStatusResponse = await firstValueFrom(
-        this.captainCoasterDataService.getStatus()
+        this.dataSourcesApiService.getStatus()
       );
       const settings: CaptainCoasterSettingsResponse = await firstValueFrom(
-        this.captainCoasterDataService.getSettings()
+        this.dataSourcesApiService.getSettings()
       );
       this.ccStatus.set(status);
       this.ccSettings.set(settings);
 
       try {
         const session: CaptainCoasterSessionResponse | null = await firstValueFrom(
-          this.captainCoasterDataService.getLatestSession()
+          this.dataSourcesApiService.getLatestSession()
         );
         this.ccSession.set(session);
         if (session !== null) {
@@ -739,7 +739,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.ccIsLoadingPage.set(true);
     try {
       const result: CaptainCoasterComparisonPagedResponse = await firstValueFrom(
-        this.captainCoasterDataService.getComparisonResults(sessionId, filters, page, pageSize)
+        this.dataSourcesApiService.getComparisonResults(sessionId, filters, page, pageSize)
       );
       this.ccPagedResult.set(result);
       this.ensureDuplicateResolutionStates(result.items);
@@ -752,7 +752,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   private async refreshSourcesTableAsync(): Promise<void> {
     try {
       const sources: DataSourceSummary[] = await firstValueFrom(
-        this.captainCoasterDataService.listSources()
+        this.dataSourcesApiService.listSources()
       );
       this.dataSources.set(sources);
     } catch {
@@ -771,13 +771,13 @@ export class AdminDataComponent implements OnInit, OnDestroy {
 
   private async refreshStatusAsync(): Promise<void> {
     const status: CaptainCoasterStatusResponse = await firstValueFrom(
-      this.captainCoasterDataService.getStatus()
+      this.dataSourcesApiService.getStatus()
     );
     this.ccStatus.set(status);
 
     try {
       const session: CaptainCoasterSessionResponse | null = await firstValueFrom(
-        this.captainCoasterDataService.getLatestSession()
+        this.dataSourcesApiService.getLatestSession()
       );
       this.ccSession.set(session);
     } catch {
@@ -792,7 +792,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.currentPollingMode = mode;
     this.pollingSubscription = interval(3000).pipe(
       switchMap(() =>
-        this.captainCoasterDataService.getSessionById(sessionId).pipe(catchError(() => of(null)))
+        this.dataSourcesApiService.getSessionById(sessionId).pipe(catchError(() => of(null)))
       )
     ).subscribe((session: CaptainCoasterSessionResponse | null) => {
       if (session === null || session.id !== sessionId) {

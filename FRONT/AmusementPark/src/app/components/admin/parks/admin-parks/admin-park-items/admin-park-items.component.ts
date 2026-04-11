@@ -4,7 +4,8 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
 import { ParkItem } from '../../../../../models/parks/park-item';
 import { ParkZone } from '../../../../../models/parks/park-zone';
-import { ApiService } from '../../../../../services/api.service';
+import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
+import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';
@@ -27,7 +28,8 @@ export class AdminParkItemsComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly apiService: ApiService,
+    private readonly parkZonesApiService: ParkZonesApiService,
+    private readonly parkItemsApiService: ParkItemsApiService,
     private readonly translateService: TranslateService,
     private readonly cdr: ChangeDetectorRef
   ) {
@@ -47,12 +49,12 @@ export class AdminParkItemsComponent implements OnInit {
     this.loading = true;
     this.cdr.markForCheck();
 
-    this.apiService.getParkZonesByParkId(this.parkId).subscribe((zones: ParkZone[]) => {
+    this.parkZonesApiService.getParkZonesByParkId(this.parkId).subscribe((zones: ParkZone[]) => {
       this.zones = zones;
       this.cdr.markForCheck();
     });
 
-    this.apiService.getParkItemsByParkId(this.parkId).subscribe({
+    this.parkItemsApiService.getParkItemsByParkId(this.parkId).subscribe({
       next: (items: ParkItem[]) => {
         this.items = items;
         this.loading = false;
@@ -80,7 +82,7 @@ export class AdminParkItemsComponent implements OnInit {
       return;
     }
 
-    this.apiService.deleteParkItem(item.id).subscribe({
+    this.parkItemsApiService.deleteParkItem(item.id).subscribe({
       next: () => this.loadData(),
       error: (error: unknown) => console.error('Error deleting park item', error)
     });

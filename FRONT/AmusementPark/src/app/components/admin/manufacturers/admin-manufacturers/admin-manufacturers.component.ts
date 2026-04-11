@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AttractionManufacturer } from '../../../../models/parks/attraction-manufacturer';
-import { ApiService } from '../../../../services/api.service';
+import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';
@@ -26,7 +26,7 @@ export class AdminManufacturersComponent implements OnInit {
   currentLang: string = 'en';
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly manufacturersApiService: ManufacturersApiService,
     private readonly route: ActivatedRoute,
     private readonly cdr: ChangeDetectorRef
   ) {
@@ -45,7 +45,7 @@ export class AdminManufacturersComponent implements OnInit {
     this.loading = true;
     this.cdr.markForCheck();
 
-    this.apiService.getAttractionManufacturers().subscribe({
+    this.manufacturersApiService.getAttractionManufacturers().subscribe({
       next: (manufacturers: AttractionManufacturer[]) => {
         this.manufacturers = manufacturers;
         this.applyFilter();

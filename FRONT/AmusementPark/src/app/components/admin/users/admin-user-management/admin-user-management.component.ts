@@ -11,10 +11,11 @@ import { ImageOwnerType } from '../../../../models/images/image-owner-type';
 import { UserDto } from '../../../../models/users/user_dto';
 import { UserPut } from '../../../../models/users/user_put';
 import { ViewState } from '../../../../models/shared/view-state';
-import { ApiService } from '../../../../services/api.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
+import { UsersApiService } from '@data-access/users/users-api.service';
 import { AuthService } from '../../../../services/auth/auth.service';
 import { ToastMessageService } from '../../../../services/messages/toast-message.service';
-import { UserAdminApiService } from '../../../../services/users/user-admin-api.service';
+import { UserAdminApiService } from '@data-access/users/user-admin-api.service';
 import { commitViewUpdate } from '../../../../utils/change-detection.utils';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
 import { Bind } from 'primeng/bind';
@@ -64,7 +65,8 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService,
+    private readonly usersApiService: UsersApiService,
+    private readonly imagesApiService: ImagesApiService,
     private readonly userAdminApiService: UserAdminApiService,
     private readonly authService: AuthService,
     private readonly messageService: ToastMessageService,
@@ -107,7 +109,7 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
   }
 
   get avatarUrl(): string {
-    const resolved: string | null = this.apiService.resolveImageUrl(this.user?.avatarUrl);
+    const resolved: string | null = this.imagesApiService.resolveImageUrl(this.user?.avatarUrl);
     if (resolved) {
       return resolved;
     }
@@ -149,7 +151,7 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
     this.savingProfile = true;
 
     this.subscriptions.add(
-      this.apiService.putUserById(this.targetUserId, payload).subscribe({
+      this.usersApiService.putUserById(this.targetUserId, payload).subscribe({
         next: (updatedUser: UserDto) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.user = updatedUser;
@@ -313,7 +315,7 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
     this.pageState = ViewState.Loading;
 
     this.subscriptions.add(
-      this.apiService.getUserById(userId).subscribe({
+      this.usersApiService.getUserById(userId).subscribe({
         next: (user: UserDto) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.user = user;

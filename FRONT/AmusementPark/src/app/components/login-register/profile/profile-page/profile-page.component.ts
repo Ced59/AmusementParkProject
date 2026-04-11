@@ -8,7 +8,8 @@ import { ImageDto } from '../../../../models/images/image-dto';
 import { ImageCategory } from '../../../../models/images/image-category';
 import { ImageOwnerType } from '../../../../models/images/image-owner-type';
 import { ViewState } from '../../../../models/shared/view-state';
-import { ApiService } from '../../../../services/api.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
+import { UsersApiService } from '@data-access/users/users-api.service';
 import { AuthService } from '../../../../services/auth/auth.service';
 import { ToastMessageService } from '../../../../services/messages/toast-message.service';
 import { ModalService } from '../../../../services/modal/modal.service';
@@ -51,7 +52,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   protected currentUserId: string | null = null;
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly usersApiService: UsersApiService,
+    private readonly imagesApiService: ImagesApiService,
     private readonly authService: AuthService,
     private readonly router: Router,
     private readonly sharedService: SharedService,
@@ -143,7 +145,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     };
 
     this.subscriptions.add(
-      this.apiService.putUserById(this.currentUserId, payload).subscribe({
+      this.usersApiService.putUserById(this.currentUserId, payload).subscribe({
         next: (user: UserDto) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.user = user;
@@ -192,7 +194,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   }
 
   getAvatarUrl(): string {
-    const avatarUrl: string | null = this.apiService.resolveImageUrl(this.user?.avatarUrl);
+    const avatarUrl: string | null = this.imagesApiService.resolveImageUrl(this.user?.avatarUrl);
     if (avatarUrl) {
       return avatarUrl;
     }
@@ -215,7 +217,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     this.pageState = ViewState.Loading;
 
     this.subscriptions.add(
-      this.apiService.getUserById(userId).subscribe({
+      this.usersApiService.getUserById(userId).subscribe({
         next: (user: UserDto) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.user = user;
@@ -254,7 +256,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     this.userPut.preferredLanguage = lang.toUpperCase();
 
     this.subscriptions.add(
-      this.apiService.putUserById(this.currentUserId, this.userPut).subscribe((user: UserDto) => {
+      this.usersApiService.putUserById(this.currentUserId, this.userPut).subscribe((user: UserDto) => {
         commitViewUpdate(this.changeDetectorRef, () => {
           this.user = user;
           this.userPut = {

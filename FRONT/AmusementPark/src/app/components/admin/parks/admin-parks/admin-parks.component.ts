@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Park } from '../../../../models/parks/park';
 import { Pagination } from '../../../../models/shared/pagination';
-import { ApiService } from '../../../../services/api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParksApiResponse } from '../../../../models/parks/parks_api_response';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ParkType } from '../../../../models/parks/park-type';
@@ -34,7 +34,7 @@ export class AdminParksComponent implements OnInit {
   searchQuery: string = '';
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly parksApiService: ParksApiService,
     private readonly router: Router,
     private readonly route: ActivatedRoute,
     private readonly cdr: ChangeDetectorRef
@@ -67,7 +67,7 @@ export class AdminParksComponent implements OnInit {
     };
 
     if (trimmedQuery.length > 0) {
-      this.apiService.searchParks(trimmedQuery, page, size).subscribe({
+      this.parksApiService.searchParks(trimmedQuery, page, size).subscribe({
         next: (response: ParksApiResponse) => handleResponse(response, page, size),
         error: (error: unknown) => {
           console.error('Error searching parks', error);
@@ -76,7 +76,7 @@ export class AdminParksComponent implements OnInit {
         }
       });
     } else {
-      this.apiService.getParksPaginated(page, size).subscribe({
+      this.parksApiService.getParksPaginated(page, size).subscribe({
         next: (response: ParksApiResponse) => handleResponse(response, page, size),
         error: (error: unknown) => {
           console.error('Error loading parks', error);
@@ -116,7 +116,7 @@ export class AdminParksComponent implements OnInit {
 
     const newValue: boolean = !!park.isVisible;
 
-    this.apiService.updateParkVisibility(park.id, newValue).subscribe({
+    this.parksApiService.updateParkVisibility(park.id, newValue).subscribe({
       next: () => {
       },
       error: (error: unknown) => {

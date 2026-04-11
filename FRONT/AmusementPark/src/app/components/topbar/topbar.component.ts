@@ -5,7 +5,7 @@ import { filter } from 'rxjs/operators';
 
 import { LANGUAGES } from '../../commons/languages';
 import { UserDto } from '../../models/users/user_dto';
-import { ApiService } from '../../services/api.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { ModalService } from '../../services/modal/modal.service';
@@ -39,7 +39,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
   private readonly subscriptions: Subscription = new Subscription();
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly imagesApiService: ImagesApiService,
     private readonly authApiService: AuthApiService,
     private readonly authService: AuthService,
     private readonly translationService: TranslationService,
@@ -120,7 +120,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
   }
 
   getUserAvatarUrl(): string | null {
-    return this.apiService.resolveImageUrl(this.userProfile?.avatarUrl);
+    return this.imagesApiService.resolveImageUrl(this.userProfile?.avatarUrl);
   }
 
   ngOnDestroy(): void {

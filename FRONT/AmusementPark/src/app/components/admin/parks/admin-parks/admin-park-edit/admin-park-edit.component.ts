@@ -5,7 +5,11 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { firstValueFrom, Subscription } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
 
-import { ApiService } from '../../../../../services/api.service';
+import { CountriesApiService } from '@data-access/countries/countries-api.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
+import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
+import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ToastMessageService } from '../../../../../services/messages/toast-message.service';
 import { CountryDto } from '../../../../../models/countries/country-dto';
 import { UploadedImage } from '../../../../../models/images/uploaded-image';
@@ -103,7 +107,11 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    protected readonly apiService: ApiService,
+    protected readonly imagesApiService: ImagesApiService,
+    private readonly countriesApiService: CountriesApiService,
+    private readonly parkFoundersApiService: ParkFoundersApiService,
+    private readonly parkOperatorsApiService: ParkOperatorsApiService,
+    private readonly parksApiService: ParksApiService,
     private readonly translate: TranslateService,
     private readonly toastMessageService: ToastMessageService,
     private readonly cdr: ChangeDetectorRef
@@ -260,7 +268,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.apiService.setCurrentImage(logo.id).subscribe({
+    this.imagesApiService.setCurrentImage(logo.id).subscribe({
       next: (image: ImageDto) => {
         const updated: ParkLogoItem = this.toParkLogoItem(image);
 
@@ -288,7 +296,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.apiService.deleteImage(logo.id).subscribe({
+    this.imagesApiService.deleteImage(logo.id).subscribe({
       next: () => {
         this.parkLogos = this.parkLogos.filter((item: ParkLogoItem) => item.id !== logo.id);
         this.currentLogo = this.parkLogos.find((item: ParkLogoItem) => item.isCurrent) ?? null;
@@ -378,7 +386,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     this.countriesLoading = true;
     this.form.get('countryCode')?.disable({ emitEvent: false });
 
-    this.apiService.getCountries(this.currentLang).subscribe({
+    this.countriesApiService.getCountries(this.currentLang).subscribe({
       next: (countries: CountryDto[]) => {
         this.countryOptions = countries.map((country: CountryDto) => ({
           code: country.isoCode,
@@ -401,7 +409,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   private loadFounders(): void {
     this.foundersLoading = true;
 
-    this.apiService.getParkFounders().subscribe({
+    this.parkFoundersApiService.getParkFounders().subscribe({
       next: (founders: ParkFounder[]) => {
         this.founderOptions = founders.map((founder: ParkFounder) => ({
           id: founder.id ?? '',
@@ -421,7 +429,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   private loadOperators(): void {
     this.operatorsLoading = true;
 
-    this.apiService.getParkOperators().subscribe({
+    this.parkOperatorsApiService.getParkOperators().subscribe({
       next: (operators: ParkOperator[]) => {
         this.operatorOptions = operators.map((parkOperator: ParkOperator) => ({
           id: parkOperator.id ?? '',
@@ -439,7 +447,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   }
 
   private loadPark(id: string): void {
-    this.apiService.getParkById(id).subscribe({
+    this.parksApiService.getParkById(id).subscribe({
       next: (park: Park) => {
         this.form.patchValue({
           id: park.id,
@@ -568,7 +576,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     this.isSaving = true;
 
     if (this.isEditMode && this.parkId) {
-      this.apiService.updatePark(this.parkId, payload).subscribe({
+      this.parksApiService.updatePark(this.parkId, payload).subscribe({
         next: (updated: Park) => {
           this.isSaving = false;
           this.afterSuccessfulSave(updated, mode, scope);
@@ -584,7 +592,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.apiService.createPark(payload).subscribe({
+    this.parksApiService.createPark(payload).subscribe({
       next: (created: Park) => {
         this.isSaving = false;
         this.afterSuccessfulSave(created, mode, scope);
@@ -689,7 +697,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   private loadLogos(parkId: string): void {
     this.logosLoading = true;
 
-    this.apiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK_LOGO).subscribe({
+    this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK_LOGO).subscribe({
       next: (images: ImageDto[]) => {
         this.parkLogos = images.map((image: ImageDto) => this.toParkLogoItem(image));
         this.currentLogo = this.parkLogos.find((item: ParkLogoItem) => item.isCurrent) ?? null;
@@ -706,7 +714,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
 
   private async uploadLogoAsync(file: File, setAsCurrent: boolean): Promise<void> {
     const uploaded: UploadedImage = await firstValueFrom(
-      this.apiService.uploadImage(
+      this.imagesApiService.uploadImage(
         file,
         ImageCategory.PARK_LOGO,
         false,
@@ -715,7 +723,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     );
 
     const image: ImageDto = await firstValueFrom(
-      this.apiService.linkImage({
+      this.imagesApiService.linkImage({
         imageId: uploaded.id,
         ownerType: ImageOwnerType.PARK,
         ownerId: this.parkId as string,
@@ -746,7 +754,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   private toParkLogoItem(image: ImageDto): ParkLogoItem {
     return {
       id: image.id,
-      imageUrl: this.apiService.buildImageUrl(image.id),
+      imageUrl: this.imagesApiService.buildImageUrl(image.id),
       description: image.description,
       isCurrent: image.isCurrent,
       createdAt: image.createdAt

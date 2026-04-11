@@ -5,14 +5,13 @@ import {AuthService} from "../../services/auth/auth.service";
 import {SharedService} from "../../services/shared/shared.service";
 import { NgClass } from '@angular/common';
 import { RouterLinkActive, RouterLink } from '@angular/router';
-import { HomeComponent } from '../home/home.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss'],
-    imports: [NgClass, RouterLinkActive, RouterLink, HomeComponent, TranslateModule]
+    imports: [NgClass, RouterLinkActive, RouterLink, TranslateModule]
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   isCollapsed: boolean = true;

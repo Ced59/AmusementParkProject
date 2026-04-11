@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../../../../services/api.service';
+import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
 import { ParkFounder } from '../../../../models/parks/park-founder';
 import { commitViewUpdate } from '../../../../utils/change-detection.utils';
 import { Bind } from 'primeng/bind';
@@ -25,7 +25,7 @@ export class AdminFounderEditComponent implements OnInit {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly apiService: ApiService,
+    private readonly parkFoundersApiService: ParkFoundersApiService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly changeDetectorRef: ChangeDetectorRef
@@ -47,7 +47,7 @@ export class AdminFounderEditComponent implements OnInit {
     });
 
     if (this.founderId) {
-      this.apiService.getParkFounderById(this.founderId).subscribe({
+      this.parkFoundersApiService.getParkFounderById(this.founderId).subscribe({
         next: (founder: ParkFounder) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.form.patchValue({
@@ -76,7 +76,7 @@ export class AdminFounderEditComponent implements OnInit {
     };
 
     if (this.isEditMode && this.founderId) {
-      this.apiService.updateParkFounder(this.founderId, payload).subscribe({
+      this.parkFoundersApiService.updateParkFounder(this.founderId, payload).subscribe({
         next: (updated: ParkFounder) => {
           this.navigateAfterSave(updated.id);
         },
@@ -87,7 +87,7 @@ export class AdminFounderEditComponent implements OnInit {
       return;
     }
 
-    this.apiService.createParkFounder(payload).subscribe({
+    this.parkFoundersApiService.createParkFounder(payload).subscribe({
       next: (created: ParkFounder) => {
         this.navigateAfterSave(created.id);
       },

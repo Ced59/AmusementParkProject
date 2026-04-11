@@ -7,7 +7,10 @@ import { PageStateComponent } from '../../shared/page-state/page-state.component
 import { Park } from '../../../models/parks/park';
 import { ParkItem } from '../../../models/parks/park-item';
 import { ViewState } from '../../../models/shared/view-state';
-import { ApiService } from '../../../services/api.service';
+import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
+import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { TranslationService } from '../../../services/translation.service';
 import { commitViewUpdate } from '../../../utils/change-detection.utils';
 import { buildParkSlug } from '../../../commons/park-presentation.utils';
@@ -45,7 +48,10 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService,
+    private readonly parkItemsApiService: ParkItemsApiService,
+    private readonly parksApiService: ParksApiService,
+    private readonly manufacturersApiService: ManufacturersApiService,
+    private readonly parkZonesApiService: ParkZonesApiService,
     private readonly translationService: TranslationService,
     private readonly changeDetectorRef: ChangeDetectorRef
   ) {
@@ -196,7 +202,7 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
     this.manufacturerName = null;
     this.zoneName = null;
 
-    this.subscriptions.add(this.apiService.getParkItemById(itemId).subscribe({
+    this.subscriptions.add(this.parkItemsApiService.getParkItemById(itemId).subscribe({
       next: (item: ParkItem) => {
         commitViewUpdate(this.changeDetectorRef, () => {
           this.item = item;
@@ -214,7 +220,7 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
   }
 
   private loadRelatedData(item: ParkItem): void {
-    this.subscriptions.add(this.apiService.getParkById(item.parkId).subscribe({
+    this.subscriptions.add(this.parksApiService.getParkById(item.parkId).subscribe({
       next: (park: Park) => {
         commitViewUpdate(this.changeDetectorRef, () => {
           this.park = park;
@@ -230,7 +236,7 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
     }));
 
     if (item.attractionDetails?.manufacturerId) {
-      this.subscriptions.add(this.apiService.getAttractionManufacturerById(item.attractionDetails.manufacturerId).subscribe({
+      this.subscriptions.add(this.manufacturersApiService.getAttractionManufacturerById(item.attractionDetails.manufacturerId).subscribe({
         next: (manufacturer) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.manufacturerName = manufacturer.name ?? null;
@@ -245,7 +251,7 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
     }
 
     if (item.zoneId) {
-      this.subscriptions.add(this.apiService.getParkZoneById(item.zoneId).subscribe({
+      this.subscriptions.add(this.parkZonesApiService.getParkZoneById(item.zoneId).subscribe({
         next: (zone) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.zoneName = zone.name ?? null;

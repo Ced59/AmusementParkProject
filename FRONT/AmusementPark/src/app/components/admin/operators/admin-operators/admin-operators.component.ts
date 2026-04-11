@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ApiService } from '../../../../services/api.service';
+import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
 import { ParkOperator } from '../../../../models/parks/park-operator';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
@@ -26,7 +26,7 @@ export class AdminOperatorsComponent implements OnInit {
   currentLang: string = 'en';
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly parkOperatorsApiService: ParkOperatorsApiService,
     private readonly route: ActivatedRoute,
     private readonly cdr: ChangeDetectorRef
   ) {
@@ -45,7 +45,7 @@ export class AdminOperatorsComponent implements OnInit {
     this.loading = true;
     this.cdr.markForCheck();
 
-    this.apiService.getParkOperators().subscribe({
+    this.parkOperatorsApiService.getParkOperators().subscribe({
       next: (operators: ParkOperator[]) => {
         this.operators = operators;
         this.applyFilter();

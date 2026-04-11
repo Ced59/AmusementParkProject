@@ -4,7 +4,8 @@ import { Subscription } from 'rxjs';
 
 import { Park } from '../../models/parks/park';
 import { ViewState } from '../../models/shared/view-state';
-import { ApiService } from '../../services/api.service';
+import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { TranslationService } from '../../services/translation.service';
 import { buildParkSlug } from '../../commons/park-presentation.utils';
 import { commitViewUpdate } from '../../utils/change-detection.utils';
@@ -40,7 +41,8 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService,
+    private readonly parksApiService: ParksApiService,
+    private readonly parkItemsApiService: ParkItemsApiService,
     private readonly translationService: TranslationService,
     private readonly changeDetectorRef: ChangeDetectorRef
   ) {
@@ -115,7 +117,7 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
     this.nearbyState = ViewState.Empty;
 
     this.subscriptions.add(
-      this.apiService.getParkById(id).subscribe({
+      this.parksApiService.getParkById(id).subscribe({
         next: (park: Park) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.park = park;
@@ -137,7 +139,7 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
 
   private loadExplorerSummary(parkId: string): void {
     this.subscriptions.add(
-      this.apiService.getParkExplorer(parkId).subscribe({
+      this.parksApiService.getParkExplorer(parkId).subscribe({
         next: (explorer: ParkExplorer) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.explorer = explorer;
@@ -153,7 +155,7 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
 
   private loadFallbackExplorerSummary(parkId: string): void {
     this.subscriptions.add(
-      this.apiService.getParkItemsByParkId(parkId).subscribe({
+      this.parkItemsApiService.getParkItemsByParkId(parkId).subscribe({
         next: (items: ParkItem[]) => {
           const countsByCategory: ParkExplorerCount[] = this.buildCounts(items.map((item: ParkItem) => item.category));
           const countsByType: ParkExplorerCount[] = this.buildCounts(items.map((item: ParkItem) => item.type));
@@ -206,7 +208,7 @@ export class ParkDetailComponent implements OnInit, OnDestroy {
     this.nearbyState = ViewState.Loading;
 
     this.subscriptions.add(
-      this.apiService.getParksByLocation(park.latitude, park.longitude, 150).subscribe({
+      this.parksApiService.getParksByLocation(park.latitude, park.longitude, 150).subscribe({
         next: (parks: Park[]) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.nearbyParks = parks.filter((candidate: Park) => candidate.id !== park.id).slice(0, 4);

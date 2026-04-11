@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
 import { ParkZone } from '../../../../../models/parks/park-zone';
-import { ApiService } from '../../../../../services/api.service';
+import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';
@@ -25,7 +25,7 @@ export class AdminParkZonesComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly apiService: ApiService,
+    private readonly parkZonesApiService: ParkZonesApiService,
     private readonly translateService: TranslateService,
     private readonly cdr: ChangeDetectorRef
   ) {
@@ -45,7 +45,7 @@ export class AdminParkZonesComponent implements OnInit {
     this.loading = true;
     this.cdr.markForCheck();
 
-    this.apiService.getParkZonesByParkId(this.parkId).subscribe({
+    this.parkZonesApiService.getParkZonesByParkId(this.parkId).subscribe({
       next: (zones: ParkZone[]) => {
         this.zones = zones;
         this.loading = false;
@@ -64,7 +64,7 @@ export class AdminParkZonesComponent implements OnInit {
       return;
     }
 
-    this.apiService.deleteParkZone(zone.id).subscribe({
+    this.parkZonesApiService.deleteParkZone(zone.id).subscribe({
       next: () => this.loadZones(),
       error: (error: unknown) => console.error('Error deleting zone', error)
     });
