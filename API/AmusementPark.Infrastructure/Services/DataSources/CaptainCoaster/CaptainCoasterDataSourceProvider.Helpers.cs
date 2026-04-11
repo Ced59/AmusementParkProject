@@ -3,12 +3,12 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Features.DataSources.Results;
-using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
-using AmusementPark.Infrastructure.Services.DataSources.CaptainCoasterScraping;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
+using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
+using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
 using MongoDB.Driver;
 
-namespace AmusementPark.Infrastructure.Services.DataSources;
+namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
 
 internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProvider, IDataSourceImportExecutor
 {

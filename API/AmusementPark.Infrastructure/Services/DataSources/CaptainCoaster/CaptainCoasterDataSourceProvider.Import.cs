@@ -4,7 +4,7 @@ using AmusementPark.Application.Features.DataSources.Contracts;
 using AmusementPark.Application.Features.DataSources.Results;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
 
-namespace AmusementPark.Infrastructure.Services.DataSources;
+namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
 
 internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProvider, IDataSourceImportExecutor
 {

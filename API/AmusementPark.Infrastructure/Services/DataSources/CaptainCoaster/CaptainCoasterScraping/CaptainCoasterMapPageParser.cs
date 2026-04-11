@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
-namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoasterScraping;
+namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
 
 internal interface ICaptainCoasterMapPageParser
 {

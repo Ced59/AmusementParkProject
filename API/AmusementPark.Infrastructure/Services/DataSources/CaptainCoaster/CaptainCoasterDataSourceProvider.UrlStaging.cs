@@ -1,9 +1,8 @@
-
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
-using AmusementPark.Infrastructure.Services.DataSources.CaptainCoasterScraping;
+using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
 using MongoDB.Driver;
 
-namespace AmusementPark.Infrastructure.Services.DataSources;
+namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
 
 internal sealed partial class CaptainCoasterDataSourceProvider
 {
