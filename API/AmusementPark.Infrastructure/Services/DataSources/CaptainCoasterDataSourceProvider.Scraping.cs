@@ -20,7 +20,8 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         {
             await this.UpdateSessionAsync(session, "DiscoverUrls", "Découverte des URLs à analyser.", 5, cancellationToken);
             discoveredUrls = await DiscoverUrlsAsync(job.ImportDescriptor, scrapingSettings, cancellationToken);
-            session.DiscoveredUrls = discoveredUrls.Select(static item => item.Url).ToList();
+            await this.StageDiscoveredUrlsAsync(session.Id, discoveredUrls, cancellationToken);
+            session.DiscoveredUrls = null;
             session.Metrics.DiscoveredItems = discoveredUrls.Count;
             session.LastCompletedStep = "DiscoverUrls";
             AddLog(session, "Info", $"{discoveredUrls.Count} URL(s) retenue(s) pour le traitement.");
@@ -28,11 +29,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         }
         else
         {
-            discoveredUrls = session.DiscoveredUrls
-                .Select(url => CaptainCoasterScrapingUrlParser.TryParse(url, scrapingSettings.Language))
-                .Where(static item => item is not null)
-                .Cast<CaptainCoasterDiscoveredUrl>()
-                .ToList();
+            discoveredUrls = await this.LoadDiscoveredUrlsAsync(session, scrapingSettings.Language, cancellationToken);
 
             if (discoveredUrls.Count == 0)
             {
@@ -97,12 +94,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             string sitemapContent = await this.dataAcquisitionHttpFetcher.GetStringAsync(
                 scrapingSettings.SitemapUrl,
                 scrapingSettings.Language + ";q=1.0,en;q=0.8",
-                new DataAcquisitionRequestOptions
-                {
-                    DelayBetweenRequestsMs = scrapingSettings.DelayBetweenRequestsMs,
-                    TimeoutSeconds = scrapingSettings.TimeoutSeconds,
-                    MaxRetryCount = scrapingSettings.MaxRetryCount,
-                },
+                BuildRequestOptions(scrapingSettings),
                 cancellationToken);
 
             IReadOnlyCollection<string> sitemapUrls = this.xmlSitemapUrlDiscoveryService.ReadUrls(sitemapContent);
@@ -133,95 +125,6 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         return orderedUrls;
     }
 
-    private async Task ProcessCoasterPagesAsync(
-        CaptainCoasterSyncSessionDocument session,
-        IReadOnlyCollection<CaptainCoasterDiscoveredUrl> discoveredUrls,
-        CaptainCoasterScrapingSettings scrapingSettings,
-        CancellationToken cancellationToken)
-    {
-        List<CaptainCoasterCoasterSnapshotDocument> existingStagedCoasters = await this.coastersCollection
-            .Find(item => item.SyncSessionId == session.Id)
-            .ToListAsync(cancellationToken);
-        HashSet<string> existingIds = existingStagedCoasters
-            .Select(static item => item.CaptainCoasterId)
-            .Where(static item => !string.IsNullOrWhiteSpace(item))
-            .ToHashSet(StringComparer.OrdinalIgnoreCase);
-
-        int totalCount = discoveredUrls.Count;
-        int processedCount = existingIds.Count;
-        int skippedCount = 0;
-        int failedCount = 0;
-
-        foreach (CaptainCoasterDiscoveredUrl discoveredUrl in discoveredUrls)
-        {
-            if (existingIds.Contains(discoveredUrl.CaptainCoasterId))
-            {
-                skippedCount++;
-                continue;
-            }
-
-            try
-            {
-                string html = await this.dataAcquisitionHttpFetcher.GetStringAsync(
-                    discoveredUrl.Url,
-                    scrapingSettings.Language + ";q=1.0,en;q=0.8",
-                    new DataAcquisitionRequestOptions
-                    {
-                        DelayBetweenRequestsMs = scrapingSettings.DelayBetweenRequestsMs,
-                        TimeoutSeconds = scrapingSettings.TimeoutSeconds,
-                        MaxRetryCount = scrapingSettings.MaxRetryCount,
-                    },
-                    cancellationToken);
-
-                CaptainCoasterParsedCoaster parsed = this.coasterPageParser.Parse(discoveredUrl, html, scrapingSettings);
-                CaptainCoasterCoasterSnapshotDocument document = MapParsedCoaster(session.Id, parsed);
-                await this.coastersCollection.ReplaceOneAsync(
-                    item => item.SyncSessionId == session.Id && item.CaptainCoasterId == document.CaptainCoasterId,
-                    document,
-                    new ReplaceOptions { IsUpsert = true },
-                    cancellationToken);
-
-                processedCount++;
-                existingIds.Add(discoveredUrl.CaptainCoasterId);
-                session.Metrics.ProcessedItems = processedCount;
-                session.Metrics.FailedItems = failedCount;
-                session.Metrics.SkippedItems = skippedCount;
-                session.Metrics.CoastersFetched = processedCount;
-                session.ProgressPercentage = CalculateFetchProgress(processedCount + skippedCount + failedCount, totalCount);
-                session.Message = $"Pages coaster traitées : {processedCount}/{totalCount}.";
-                session.UpdatedAt = DateTime.UtcNow;
-
-                if (processedCount % 10 == 0)
-                {
-                    AddLog(session, "Info", session.Message);
-                    await this.PersistSessionAsync(session, cancellationToken);
-                }
-            }
-            catch (Exception exception)
-            {
-                failedCount++;
-                session.Metrics.FailedItems = failedCount;
-                AddLog(session, "Error", $"Échec sur {discoveredUrl.Url}: {exception.Message}");
-                await this.PersistSessionAsync(session, cancellationToken);
-            }
-        }
-
-        List<CaptainCoasterCoasterSnapshotDocument> stagedCoasters = await this.coastersCollection
-            .Find(item => item.SyncSessionId == session.Id)
-            .ToListAsync(cancellationToken);
-        List<CaptainCoasterParkSnapshotDocument> stagedParks = BuildParkSnapshots(session.Id, stagedCoasters);
-        await this.parksCollection.DeleteManyAsync(item => item.SyncSessionId == session.Id, cancellationToken);
-        if (stagedParks.Count > 0)
-        {
-            await this.parksCollection.InsertManyAsync(stagedParks, cancellationToken: cancellationToken);
-        }
-
-        session.Metrics.CoastersFetched = stagedCoasters.Count;
-        session.Metrics.ParksFetched = stagedParks.Count;
-        session.LastCompletedStep = "FetchCoasters";
-        AddLog(session, "Info", $"Staging reconstruit : {stagedParks.Count} parc(s), {stagedCoasters.Count} coaster(s).");
-        await this.PersistSessionAsync(session, cancellationToken);
-    }
 
     private async Task EnrichParkCoordinatesAsync(CaptainCoasterSyncSessionDocument session, CaptainCoasterScrapingSettings scrapingSettings, CancellationToken cancellationToken)
     {
@@ -240,12 +143,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         string html = await this.dataAcquisitionHttpFetcher.GetStringAsync(
             scrapingSettings.MapPageUrl,
             scrapingSettings.Language + ";q=1.0,en;q=0.8",
-            new DataAcquisitionRequestOptions
-            {
-                DelayBetweenRequestsMs = scrapingSettings.DelayBetweenRequestsMs,
-                TimeoutSeconds = scrapingSettings.TimeoutSeconds,
-                MaxRetryCount = scrapingSettings.MaxRetryCount,
-            },
+            BuildRequestOptions(scrapingSettings),
             cancellationToken);
 
         IReadOnlyCollection<CaptainCoasterParkCoordinate> coordinates = this.mapPageParser.Parse(scrapingSettings.MapPageUrl, html, scrapingSettings.MapMarkersAttributeName);
@@ -266,10 +164,22 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             }
         }
 
-        foreach (CaptainCoasterParkSnapshotDocument park in parks)
+        if (parks.Count > 0)
         {
-            park.RefreshLocation();
-            await this.parksCollection.ReplaceOneAsync(item => item.Id == park.Id, park, cancellationToken: cancellationToken);
+            List<WriteModel<CaptainCoasterParkSnapshotDocument>> operations = parks
+                .Select(park =>
+                {
+                    park.RefreshLocation();
+                    return (WriteModel<CaptainCoasterParkSnapshotDocument>)new ReplaceOneModel<CaptainCoasterParkSnapshotDocument>(
+                        Builders<CaptainCoasterParkSnapshotDocument>.Filter.Eq(item => item.Id, park.Id),
+                        park)
+                    {
+                        IsUpsert = false,
+                    };
+                })
+                .ToList();
+
+            await this.parksCollection.BulkWriteAsync(operations, new BulkWriteOptions { IsOrdered = false }, cancellationToken);
         }
 
         session.LastCompletedStep = "EnrichParkCoordinates";
@@ -368,6 +278,9 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         int? delayOverride = TryParseInt(GetOption(importDescriptor.Options, "delayBetweenRequestsMs"));
         int? timeoutOverride = TryParseInt(GetOption(importDescriptor.Options, "httpTimeoutSeconds"));
         int? retryOverride = TryParseInt(GetOption(importDescriptor.Options, "maxRetryCount"));
+        int? concurrentOverride = TryParseInt(GetOption(importDescriptor.Options, "maxConcurrentRequests"));
+        int? writeBatchOverride = TryParseInt(GetOption(importDescriptor.Options, "coasterWriteBatchSize"));
+        int? progressSaveOverride = TryParseInt(GetOption(importDescriptor.Options, "progressSaveInterval"));
 
         return new CaptainCoasterScrapingSettings
         {
@@ -377,6 +290,9 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             DelayBetweenRequestsMs = Math.Max(0, delayOverride ?? settings.DelayBetweenRequestsMs),
             TimeoutSeconds = Math.Max(5, timeoutOverride ?? settings.HttpTimeoutSeconds),
             MaxRetryCount = Math.Max(1, retryOverride ?? settings.MaxRetryCount),
+            MaxConcurrentRequests = Math.Clamp(concurrentOverride ?? settings.MaxConcurrentRequests, 1, 16),
+            CoasterWriteBatchSize = Math.Clamp(writeBatchOverride ?? settings.CoasterWriteBatchSize, 5, 500),
+            ProgressSaveInterval = Math.Clamp(progressSaveOverride ?? settings.ProgressSaveInterval, 1, 500),
             MaxCoasterCount = maxCoasterCountOverride ?? settings.MaxCoasterCount,
             SkipCoasterCount = Math.Max(0, skipCountOverride ?? settings.SkipCoasterCount),
             EnrichParkCoordinates = GetOption(importDescriptor.Options, "enrichParkCoordinates") is string value ? TryParseBool(value) : settings.EnrichParkCoordinates,

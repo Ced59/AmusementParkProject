@@ -52,6 +52,15 @@ public sealed class CaptainCoasterSettingsDocument : MongoDocumentBase
     [BsonElement("maxRetryCount")]
     public int MaxRetryCount { get; set; } = 3;
 
+    [BsonElement("maxConcurrentRequests")]
+    public int MaxConcurrentRequests { get; set; } = 4;
+
+    [BsonElement("coasterWriteBatchSize")]
+    public int CoasterWriteBatchSize { get; set; } = 50;
+
+    [BsonElement("progressSaveInterval")]
+    public int ProgressSaveInterval { get; set; } = 25;
+
     [BsonElement("maxCoasterCount")]
     [BsonIgnoreIfNull]
     public int? MaxCoasterCount { get; set; }
@@ -122,7 +131,8 @@ public sealed class CaptainCoasterSyncSessionDocument : MongoDocumentBase
     public bool CanResume { get; set; }
 
     [BsonElement("discoveredUrls")]
-    public List<string> DiscoveredUrls { get; set; } = new List<string>();
+    [BsonIgnoreIfNull]
+    public List<string>? DiscoveredUrls { get; set; }
 
     [BsonElement("metrics")]
     public CaptainCoasterSyncMetricsDocument Metrics { get; set; } = new CaptainCoasterSyncMetricsDocument();
@@ -159,6 +169,30 @@ public sealed class CaptainCoasterSyncMetricsDocument
 
     [BsonElement("skippedItems")]
     public int SkippedItems { get; set; }
+}
+
+public sealed class CaptainCoasterDiscoveredUrlDocument : MongoDocumentBase
+{
+    [BsonElement("sourceKey")]
+    public string SourceKey { get; set; } = "captain-coaster";
+
+    [BsonElement("syncSessionId")]
+    public string SyncSessionId { get; set; } = string.Empty;
+
+    [BsonElement("captainCoasterId")]
+    public string CaptainCoasterId { get; set; } = string.Empty;
+
+    [BsonElement("language")]
+    public string Language { get; set; } = "fr";
+
+    [BsonElement("url")]
+    public string Url { get; set; } = string.Empty;
+
+    [BsonElement("sequence")]
+    public int Sequence { get; set; }
+
+    [BsonElement("discoveredAtUtc")]
+    public DateTime DiscoveredAtUtc { get; set; } = DateTime.UtcNow;
 }
 
 public sealed class CaptainCoasterSyncLogEntryDocument

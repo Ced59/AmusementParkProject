@@ -48,6 +48,8 @@ public sealed class MongoDbSettings
 
     public string CaptainCoasterCoastersCollectionName { get; set; } = "captainCoasterCoasters";
 
+    public string CaptainCoasterDiscoveredUrlsCollectionName { get; set; } = "captainCoasterDiscoveredUrls";
+
     public string CaptainCoasterSyncSessionsCollectionName { get; set; } = "captainCoasterSyncSessions";
 
     public string CaptainCoasterComparisonResultsCollectionName { get; set; } = "captainCoasterComparisonResults";

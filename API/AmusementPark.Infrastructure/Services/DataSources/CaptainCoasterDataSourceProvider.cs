@@ -18,6 +18,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
     private readonly IMongoCollection<CaptainCoasterSettingsDocument> settingsCollection;
     private readonly IMongoCollection<CaptainCoasterParkSnapshotDocument> parksCollection;
     private readonly IMongoCollection<CaptainCoasterCoasterSnapshotDocument> coastersCollection;
+    private readonly IMongoCollection<CaptainCoasterDiscoveredUrlDocument> discoveredUrlsCollection;
     private readonly IMongoCollection<CaptainCoasterSyncSessionDocument> sessionsCollection;
     private readonly IMongoCollection<CaptainCoasterComparisonResultDocument> comparisonCollection;
     private readonly IMongoCollection<ParkDocument> localParksCollection;
@@ -41,6 +42,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         this.settingsCollection = database.GetCollection<CaptainCoasterSettingsDocument>(mongoDbSettings.CaptainCoasterSettingsCollectionName);
         this.parksCollection = database.GetCollection<CaptainCoasterParkSnapshotDocument>(mongoDbSettings.CaptainCoasterParksCollectionName);
         this.coastersCollection = database.GetCollection<CaptainCoasterCoasterSnapshotDocument>(mongoDbSettings.CaptainCoasterCoastersCollectionName);
+        this.discoveredUrlsCollection = database.GetCollection<CaptainCoasterDiscoveredUrlDocument>(mongoDbSettings.CaptainCoasterDiscoveredUrlsCollectionName);
         this.sessionsCollection = database.GetCollection<CaptainCoasterSyncSessionDocument>(mongoDbSettings.CaptainCoasterSyncSessionsCollectionName);
         this.comparisonCollection = database.GetCollection<CaptainCoasterComparisonResultDocument>(mongoDbSettings.CaptainCoasterComparisonResultsCollectionName);
         this.localParksCollection = database.GetCollection<ParkDocument>(mongoDbSettings.ParksCollectionName);
@@ -102,6 +104,9 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         document.DelayBetweenRequestsMs = Math.Max(0, TryParseInt(GetOption(settings.Options, "delayBetweenRequestsMs")) ?? document.DelayBetweenRequestsMs);
         document.HttpTimeoutSeconds = Math.Max(5, TryParseInt(GetOption(settings.Options, "httpTimeoutSeconds")) ?? document.HttpTimeoutSeconds);
         document.MaxRetryCount = Math.Max(1, TryParseInt(GetOption(settings.Options, "maxRetryCount")) ?? document.MaxRetryCount);
+        document.MaxConcurrentRequests = Math.Clamp(TryParseInt(GetOption(settings.Options, "maxConcurrentRequests")) ?? document.MaxConcurrentRequests, 1, 16);
+        document.CoasterWriteBatchSize = Math.Clamp(TryParseInt(GetOption(settings.Options, "coasterWriteBatchSize")) ?? document.CoasterWriteBatchSize, 5, 500);
+        document.ProgressSaveInterval = Math.Clamp(TryParseInt(GetOption(settings.Options, "progressSaveInterval")) ?? document.ProgressSaveInterval, 1, 500);
         document.MaxCoasterCount = TryParseInt(GetOption(settings.Options, "maxCoasterCount")) ?? document.MaxCoasterCount;
         document.SkipCoasterCount = Math.Max(0, TryParseInt(GetOption(settings.Options, "skipCoasterCount")) ?? document.SkipCoasterCount);
         document.EnrichParkCoordinates = GetOption(settings.Options, "enrichParkCoordinates") is string enrichValue ? TryParseBool(enrichValue) : document.EnrichParkCoordinates;

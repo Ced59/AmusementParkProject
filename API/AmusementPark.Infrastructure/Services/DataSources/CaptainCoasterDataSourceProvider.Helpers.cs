@@ -3,6 +3,8 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Features.DataSources.Results;
+using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
+using AmusementPark.Infrastructure.Services.DataSources.CaptainCoasterScraping;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
 using MongoDB.Driver;
 
@@ -36,7 +38,74 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
         private async Task PersistSessionAsync(CaptainCoasterSyncSessionDocument session, CancellationToken cancellationToken)
         {
-            await sessionsCollection.ReplaceOneAsync(item => item.Id == session.Id, session, cancellationToken: cancellationToken);
+            UpdateDefinition<CaptainCoasterSyncSessionDocument> update = Builders<CaptainCoasterSyncSessionDocument>.Update
+                .Set(item => item.Id, session.Id)
+                .Set(item => item.SourceKey, session.SourceKey)
+                .Set(item => item.Status, session.Status)
+                .Set(item => item.StartedAtUtc, session.StartedAtUtc)
+                .Set(item => item.CompletedAtUtc, session.CompletedAtUtc)
+                .Set(item => item.ProgressPercentage, session.ProgressPercentage)
+                .Set(item => item.CurrentStep, session.CurrentStep)
+                .Set(item => item.Message, session.Message)
+                .Set(item => item.ImportKind, session.ImportKind)
+                .Set(item => item.LastCompletedStep, session.LastCompletedStep)
+                .Set(item => item.AvailableSteps, session.AvailableSteps)
+                .Set(item => item.CanResume, session.CanResume)
+                .Set(item => item.Metrics, session.Metrics)
+                .Set(item => item.Logs, session.Logs)
+                .Set(item => item.CreatedAt, session.CreatedAt)
+                .Set(item => item.UpdatedAt, session.UpdatedAt)
+                .Unset(item => item.DiscoveredUrls);
+
+            await this.sessionsCollection.UpdateOneAsync(
+                item => item.Id == session.Id,
+                update,
+                new UpdateOptions { IsUpsert = true },
+                cancellationToken);
+        }
+
+        private static DataAcquisitionRequestOptions BuildRequestOptions(CaptainCoasterScrapingSettings scrapingSettings)
+        {
+            return new DataAcquisitionRequestOptions
+            {
+                DelayBetweenRequestsMs = scrapingSettings.DelayBetweenRequestsMs,
+                TimeoutSeconds = scrapingSettings.TimeoutSeconds,
+                MaxRetryCount = scrapingSettings.MaxRetryCount,
+            };
+        }
+
+        private static int NormalizePositiveBounded(int value, int fallback, int minValue, int maxValue)
+        {
+            int effective = value <= 0 ? fallback : value;
+            return Math.Clamp(effective, minValue, maxValue);
+        }
+
+        private static List<List<TItem>> ChunkItems<TItem>(IReadOnlyCollection<TItem> items, int chunkSize)
+        {
+            List<List<TItem>> result = new List<List<TItem>>();
+            if (items.Count == 0)
+            {
+                return result;
+            }
+
+            int effectiveChunkSize = Math.Max(1, chunkSize);
+            List<TItem> current = new List<TItem>(effectiveChunkSize);
+            foreach (TItem item in items)
+            {
+                current.Add(item);
+                if (current.Count >= effectiveChunkSize)
+                {
+                    result.Add(current);
+                    current = new List<TItem>(effectiveChunkSize);
+                }
+            }
+
+            if (current.Count > 0)
+            {
+                result.Add(current);
+            }
+
+            return result;
         }
 
         private static void AddLog(CaptainCoasterSyncSessionDocument session, string level, string message)

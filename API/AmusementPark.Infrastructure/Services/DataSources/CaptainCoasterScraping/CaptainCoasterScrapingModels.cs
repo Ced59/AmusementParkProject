@@ -19,6 +19,12 @@ internal sealed class CaptainCoasterScrapingSettings
 
     public int MaxRetryCount { get; init; } = 3;
 
+    public int MaxConcurrentRequests { get; init; } = 4;
+
+    public int CoasterWriteBatchSize { get; init; } = 50;
+
+    public int ProgressSaveInterval { get; init; } = 25;
+
     public int? MaxCoasterCount { get; init; }
 
     public int SkipCoasterCount { get; init; }

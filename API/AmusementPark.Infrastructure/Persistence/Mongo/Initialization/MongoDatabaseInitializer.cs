@@ -82,6 +82,9 @@ public sealed class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.CaptainCoasterCoastersCollectionName, cancellationToken);
         await this.InitializeCaptainCoasterCoastersIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.CaptainCoasterDiscoveredUrlsCollectionName, cancellationToken);
+        await this.InitializeCaptainCoasterDiscoveredUrlsIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.CaptainCoasterSyncSessionsCollectionName, cancellationToken);
         await this.InitializeCaptainCoasterSyncSessionsIndexesAsync(cancellationToken);
 
@@ -483,6 +486,22 @@ public sealed class MongoDatabaseInitializer
             new CreateIndexModel<CaptainCoasterCoasterSnapshotDocument>(
                 Builders<CaptainCoasterCoasterSnapshotDocument>.IndexKeys.Ascending(item => item.Manufacturer),
                 new CreateIndexOptions { Name = "idx_cc_coasters_manufacturer" }),
+        };
+
+        await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
+    }
+
+    private async Task InitializeCaptainCoasterDiscoveredUrlsIndexesAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<CaptainCoasterDiscoveredUrlDocument> collection = this.database.GetCollection<CaptainCoasterDiscoveredUrlDocument>(this.settings.CaptainCoasterDiscoveredUrlsCollectionName);
+        List<CreateIndexModel<CaptainCoasterDiscoveredUrlDocument>> indexes = new List<CreateIndexModel<CaptainCoasterDiscoveredUrlDocument>>
+        {
+            new CreateIndexModel<CaptainCoasterDiscoveredUrlDocument>(
+                Builders<CaptainCoasterDiscoveredUrlDocument>.IndexKeys.Ascending(item => item.SyncSessionId).Ascending(item => item.Sequence),
+                new CreateIndexOptions { Name = "idx_cc_discovered_urls_session_sequence" }),
+            new CreateIndexModel<CaptainCoasterDiscoveredUrlDocument>(
+                Builders<CaptainCoasterDiscoveredUrlDocument>.IndexKeys.Ascending(item => item.SyncSessionId).Ascending(item => item.CaptainCoasterId),
+                new CreateIndexOptions { Name = "idx_cc_discovered_urls_session_external_id" }),
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);

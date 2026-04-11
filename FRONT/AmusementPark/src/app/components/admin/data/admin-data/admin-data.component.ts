@@ -148,6 +148,105 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     { label: 'Construction de la comparaison', value: 'BuildComparison' }
   ];
 
+
+  protected readonly scrapingThrottleFields = [
+    {
+      key: 'delayBetweenRequestsMs',
+      type: 'number',
+      label: 'Pause entre deux téléchargements (ms)',
+      placeholder: '0',
+      hint: 'Temps d’attente volontaire entre deux requêtes HTTP. 0 = débit maximal.'
+    },
+    {
+      key: 'httpTimeoutSeconds',
+      type: 'number',
+      label: 'Timeout HTTP par page (s)',
+      placeholder: '30',
+      hint: 'Temps maximum d’attente pour une page avant de la considérer en échec.'
+    },
+    {
+      key: 'maxRetryCount',
+      type: 'number',
+      label: 'Nombre maximum de tentatives',
+      placeholder: '1',
+      hint: 'Nombre d’essais par URL avant abandon.'
+    },
+    {
+      key: 'maxConcurrentRequests',
+      type: 'number',
+      label: 'Téléchargements parallèles maximum',
+      placeholder: '4',
+      hint: 'Parallélisme borné pour accélérer le scraping sans saturer le serveur ni Mongo.'
+    },
+    {
+      key: 'coasterWriteBatchSize',
+      type: 'number',
+      label: 'Taille des lots d’écriture Mongo',
+      placeholder: '50',
+      hint: 'Nombre de coasters regroupés avant écriture en base.'
+    },
+    {
+      key: 'progressSaveInterval',
+      type: 'number',
+      label: 'Fréquence de sauvegarde de progression',
+      placeholder: '25',
+      hint: 'Nombre d’éléments traités entre deux sauvegardes/logs de session.'
+    },
+    {
+      key: 'skipCoasterCount',
+      type: 'number',
+      label: 'Nombre d’URLs à ignorer au départ',
+      placeholder: '0',
+      hint: 'Utile pour reprendre un import ciblé ou tester plus vite.'
+    },
+    {
+      key: 'maxCoasterCount',
+      type: 'number',
+      label: 'Nombre maximum d’URLs à traiter',
+      placeholder: 'Vide = aucune limite',
+      hint: 'Permet de limiter volontairement le volume traité pendant un lancement.'
+    }
+  ];
+
+  protected readonly scrapingSelectorFields = [
+    {
+      key: 'mapMarkersAttributeName',
+      label: 'Attribut HTML contenant les marqueurs de la carte',
+      placeholder: 'data-map-markers-value',
+      hint: 'Utilisé pour récupérer les coordonnées des parcs depuis la page carte Captain Coaster.'
+    },
+    {
+      key: 'coasterTitleXPath',
+      label: 'XPath du titre principal de la fiche coaster',
+      placeholder: '//h1',
+      hint: 'Sélecteur du nom principal affiché sur la page coaster.'
+    },
+    {
+      key: 'characteristicsItemXPath',
+      label: 'XPath du bloc des caractéristiques techniques',
+      placeholder: "//div[contains(@class,'list-group-item')]",
+      hint: 'Bloc racine répété contenant les informations techniques comme hauteur, vitesse, etc.'
+    },
+    {
+      key: 'characteristicLabelXPath',
+      label: 'XPath du libellé d’une caractéristique',
+      placeholder: './/label',
+      hint: 'Sélecteur du texte de gauche : hauteur, vitesse, inversions, etc.'
+    },
+    {
+      key: 'characteristicValueXPath',
+      label: 'XPath de la valeur d’une caractéristique',
+      placeholder: ".//div[contains(@class,'pull-right')]",
+      hint: 'Sélecteur de la valeur correspondant au libellé technique.'
+    },
+    {
+      key: 'topMetricXPath',
+      label: 'XPath des métriques mises en avant en haut de page',
+      placeholder: "//button[contains(@class,'btn-float-lg')]//div[contains(@class,'text-bold')]",
+      hint: 'Bloc utilisé pour certaines valeurs affichées dans les boutons de synthèse.'
+    }
+  ];
+
   private pollingSubscription: Subscription | null = null;
   private readonly duplicateResolutionStateByResultId: Map<string, DuplicateResolutionState> = new Map<string, DuplicateResolutionState>();
 

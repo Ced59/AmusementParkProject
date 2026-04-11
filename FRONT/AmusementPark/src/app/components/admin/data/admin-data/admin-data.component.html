@@ -151,35 +151,47 @@
 
               <div class="file-field">
                 <label class="file-label">
-                  <span class="file-label__text"><i class="pi pi-sliders-h"></i> Limites & temporisation</span>
-                  <span class="file-label__hint">Valeurs persistées en base pour ajuster le scraping.</span>
+                  <span class="file-label__text"><i class="pi pi-sliders-h"></i> Cadence, limites et persistance</span>
+                  <span class="file-label__hint">Paramètres avancés utilisés pendant le scraping et la sauvegarde de progression.</span>
                 </label>
-                <div class="file-input-row">
-                  <input type="number" class="file-input" [ngModel]="getSettingValue('delayBetweenRequestsMs')" (ngModelChange)="setSettingValue('delayBetweenRequestsMs', $event)" placeholder="Délai ms" />
-                  <input type="number" class="file-input" [ngModel]="getSettingValue('httpTimeoutSeconds')" (ngModelChange)="setSettingValue('httpTimeoutSeconds', $event)" placeholder="Timeout s" />
-                  <input type="number" class="file-input" [ngModel]="getSettingValue('maxRetryCount')" (ngModelChange)="setSettingValue('maxRetryCount', $event)" placeholder="Retries" />
-                  <input type="number" class="file-input" [ngModel]="getSettingValue('skipCoasterCount')" (ngModelChange)="setSettingValue('skipCoasterCount', $event)" placeholder="Skip" />
-                  <input type="number" class="file-input" [ngModel]="getSettingValue('maxCoasterCount')" (ngModelChange)="setSettingValue('maxCoasterCount', $event)" placeholder="Max" />
+                <div class="settings-grid">
+                  <div class="setting-card" *ngFor="let field of scrapingThrottleFields">
+                    <label class="setting-card__label">{{ field.label }}</label>
+                    <input
+                      [type]="field.type"
+                      class="file-input"
+                      [ngModel]="getSettingValue(field.key)"
+                      (ngModelChange)="setSettingValue(field.key, $event)"
+                      [placeholder]="field.placeholder" />
+                    <span class="setting-card__hint">{{ field.hint }}</span>
+                  </div>
                 </div>
               </div>
 
               <div class="file-field">
                 <label class="file-label">
                   <span class="file-label__text"><i class="pi pi-code"></i> Sélecteurs HTML / XPath</span>
-                  <span class="file-label__hint">Paramètres modifiables sans redéploiement.</span>
+                  <span class="file-label__hint">Ces champs indiquent précisément où lire les données dans le HTML Captain Coaster.</span>
                 </label>
-                <div class="file-input-row file-input-row--stacked">
-                  <input type="text" class="file-input" [ngModel]="getSettingValue('mapMarkersAttributeName')" (ngModelChange)="setSettingValue('mapMarkersAttributeName', $event)" placeholder="Attribut markers map" />
-                  <input type="text" class="file-input" [ngModel]="getSettingValue('coasterTitleXPath')" (ngModelChange)="setSettingValue('coasterTitleXPath', $event)" placeholder="XPath titre" />
-                  <input type="text" class="file-input" [ngModel]="getSettingValue('characteristicsItemXPath')" (ngModelChange)="setSettingValue('characteristicsItemXPath', $event)" placeholder="XPath bloc caractéristiques" />
-                  <input type="text" class="file-input" [ngModel]="getSettingValue('characteristicLabelXPath')" (ngModelChange)="setSettingValue('characteristicLabelXPath', $event)" placeholder="XPath label caractéristique" />
-                  <input type="text" class="file-input" [ngModel]="getSettingValue('characteristicValueXPath')" (ngModelChange)="setSettingValue('characteristicValueXPath', $event)" placeholder="XPath valeur caractéristique" />
-                  <input type="text" class="file-input" [ngModel]="getSettingValue('topMetricXPath')" (ngModelChange)="setSettingValue('topMetricXPath', $event)" placeholder="XPath métriques haut de page" />
-                  <label class="checkbox-inline">
-                    <p-checkbox [binary]="true" [ngModel]="getSettingValue('enrichParkCoordinates') === 'True' || getSettingValue('enrichParkCoordinates') === 'true'"
-                      (ngModelChange)="setSettingValue('enrichParkCoordinates', $event ? 'true' : 'false')"></p-checkbox>
-                    <span>Enrichir automatiquement les coordonnées des parcs</span>
-                  </label>
+                <div class="settings-grid">
+                  <div class="setting-card" *ngFor="let field of scrapingSelectorFields">
+                    <label class="setting-card__label">{{ field.label }}</label>
+                    <input
+                      type="text"
+                      class="file-input"
+                      [ngModel]="getSettingValue(field.key)"
+                      (ngModelChange)="setSettingValue(field.key, $event)"
+                      [placeholder]="field.placeholder" />
+                    <span class="setting-card__hint">{{ field.hint }}</span>
+                  </div>
+                  <div class="setting-card setting-card--checkbox">
+                    <label class="setting-card__label">Enrichir automatiquement les coordonnées des parcs</label>
+                    <label class="checkbox-inline">
+                      <p-checkbox [binary]="true" [ngModel]="getSettingValue('enrichParkCoordinates') === 'True' || getSettingValue('enrichParkCoordinates') === 'true'"
+                        (ngModelChange)="setSettingValue('enrichParkCoordinates', $event ? 'true' : 'false')"></p-checkbox>
+                      <span>Active la lecture de la page carte pour compléter latitude et longitude.</span>
+                    </label>
+                  </div>
                 </div>
               </div>
 
