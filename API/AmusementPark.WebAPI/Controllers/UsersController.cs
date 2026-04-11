@@ -8,6 +8,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Users.Commands;
 using AmusementPark.Application.Features.Users.Queries;
 using AmusementPark.Core.Domain.Users;
+using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Users;
 using AmusementPark.WebAPI.Extensions;
@@ -91,6 +92,8 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpGet("by-email")]
+    [Authorize(Roles = AuthorizationRoleGroups.ModeratorAdmin)]
+    [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(UserGettedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetUserByEmailAsync([FromQuery] UserGetByEmailDto userByEmail, CancellationToken cancellationToken = default)
     {
@@ -104,9 +107,17 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
+    [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(UserGettedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetUserByIdAsync([FromRoute] string id, CancellationToken cancellationToken = default)
     {
+        string? currentUserId = this.User.GetUserId();
+        if (currentUserId != id && !this.User.IsInRoles(UserRoleDto.ADMIN, UserRoleDto.MODERATOR))
+        {
+            return CreateLegacyError(StatusCodes.Status403Forbidden, "You cannot access other user");
+        }
+
         ApplicationResult<User> result = await this.getUserByIdQueryHandler.HandleAsync(new GetUserByIdQuery(id), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
@@ -117,6 +128,8 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Roles = AuthorizationRoleGroups.ModeratorAdmin)]
+    [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(PagedResponseDto<UserDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> ListUsersAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
@@ -133,7 +146,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    [Authorize(Roles = "USER,MODERATOR,ADMIN")]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(UserUpdatedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateUserAsync([FromRoute] string id, [FromBody] UserUpdateDto userUpdate, CancellationToken cancellationToken = default)
@@ -141,7 +154,7 @@ public sealed class UsersController : ControllerBase
         string? currentUserId = this.User.GetUserId();
         if (currentUserId != id && !this.User.IsInRoles(UserRoleDto.ADMIN, UserRoleDto.MODERATOR))
         {
-            return CreateLegacyError(StatusCodes.Status400BadRequest, "You cannot update other user");
+            return CreateLegacyError(StatusCodes.Status403Forbidden, "You cannot update other user");
         }
 
         ApplicationResult<User> result = await this.updateUserProfileCommandHandler.HandleAsync(
@@ -157,7 +170,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("change-password")]
-    [Authorize(Roles = "USER,MODERATOR,ADMIN")]
+    [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(PasswordChangedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ChangePasswordAsync([FromQuery] string idUser, [FromBody] ChangePasswordDto changePasswordDto, CancellationToken cancellationToken = default)
@@ -267,7 +280,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("roles/assign/{userId}")]
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = AuthorizationRoleGroups.Admin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(RoleAssignedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> AssignRoleAsync([FromRoute] string userId, [FromBody] RoleAssignDto roleAssignDto, CancellationToken cancellationToken = default)
@@ -285,7 +298,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpDelete("roles/remove/{userId}")]
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = AuthorizationRoleGroups.Admin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(RoleRemovedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> RemoveRoleAsync([FromRoute] string userId, [FromBody] RoleRemoveDto roleRemoveDto, CancellationToken cancellationToken = default)
@@ -303,7 +316,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("lock")]
-    [Authorize(Roles = "MODERATOR,ADMIN")]
+    [Authorize(Roles = AuthorizationRoleGroups.ModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(UserLockedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> LockUserAsync([FromBody] UserToLockDto userToLock, CancellationToken cancellationToken = default)
@@ -318,7 +331,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("unlock")]
-    [Authorize(Roles = "MODERATOR,ADMIN")]
+    [Authorize(Roles = AuthorizationRoleGroups.ModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(UserUnlockedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UnlockUserAsync([FromBody] UserToUnlockDto userToUnlock, CancellationToken cancellationToken = default)

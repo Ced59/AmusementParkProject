@@ -153,8 +153,6 @@ public static class UsersHttpMappers
             IsBlocked = user.IsBlocked,
             PreferredLanguage = user.PreferredLanguage,
             Roles = user.Roles.Select(ToHttp).ToList(),
-            LastLogin = user.LastLoginUtc,
-            LastActivity = user.LastActivityUtc,
             AvatarUrl = user.AvatarUrl,
         };
     }
