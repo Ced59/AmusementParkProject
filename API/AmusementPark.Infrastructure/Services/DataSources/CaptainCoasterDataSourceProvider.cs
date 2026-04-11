@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.DataSources.Contracts;
 using AmusementPark.Application.Features.DataSources.Results;
+using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
@@ -29,6 +30,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
     private readonly IXmlSitemapUrlDiscoveryService xmlSitemapUrlDiscoveryService;
     private readonly ICaptainCoasterCoasterPageParser coasterPageParser;
     private readonly ICaptainCoasterMapPageParser mapPageParser;
+    private readonly ISearchProjectionWriter searchProjectionWriter;
 
     public CaptainCoasterDataSourceProvider(
         IMongoDatabase database,
@@ -37,7 +39,8 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         IDataAcquisitionHttpFetcher dataAcquisitionHttpFetcher,
         IXmlSitemapUrlDiscoveryService xmlSitemapUrlDiscoveryService,
         ICaptainCoasterCoasterPageParser coasterPageParser,
-        ICaptainCoasterMapPageParser mapPageParser)
+        ICaptainCoasterMapPageParser mapPageParser,
+        ISearchProjectionWriter searchProjectionWriter)
     {
         this.settingsCollection = database.GetCollection<CaptainCoasterSettingsDocument>(mongoDbSettings.CaptainCoasterSettingsCollectionName);
         this.parksCollection = database.GetCollection<CaptainCoasterParkSnapshotDocument>(mongoDbSettings.CaptainCoasterParksCollectionName);
@@ -53,6 +56,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         this.xmlSitemapUrlDiscoveryService = xmlSitemapUrlDiscoveryService;
         this.coasterPageParser = coasterPageParser;
         this.mapPageParser = mapPageParser;
+        this.searchProjectionWriter = searchProjectionWriter;
     }
 
     public string SourceKey => SourceKeyValue;
@@ -371,22 +375,37 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             .ToList();
 
         int appliedCount = 0;
+        HashSet<string> affectedParkIds = new HashSet<string>(StringComparer.Ordinal);
+        HashSet<string> affectedParkItemIds = new HashSet<string>(StringComparer.Ordinal);
+
         foreach (CaptainCoasterComparisonResultDocument result in orderedResults)
         {
             resolutionsByResultId.TryGetValue(result.Id, out DataSourceDuplicateResolution? resolution);
-            bool applied = false;
+            CaptainCoasterApplyImpact impact = new CaptainCoasterApplyImpact { Applied = false };
             if (string.Equals(result.EntityType, "Park", StringComparison.OrdinalIgnoreCase))
             {
-                applied = await this.ApplyParkResultAsync(result, resolution, cancellationToken);
+                impact = await this.ApplyParkResultAsync(result, resolution, cancellationToken);
             }
             else if (string.Equals(result.EntityType, "Coaster", StringComparison.OrdinalIgnoreCase))
             {
-                applied = await this.ApplyCoasterResultAsync(result, resolution, cancellationToken);
+                impact = await this.ApplyCoasterResultAsync(result, resolution, cancellationToken);
             }
 
-            if (applied)
+            if (!impact.Applied)
             {
-                appliedCount++;
+                continue;
+            }
+
+            appliedCount++;
+
+            if (!string.IsNullOrWhiteSpace(impact.ParkId))
+            {
+                affectedParkIds.Add(impact.ParkId.Trim());
+            }
+
+            if (!string.IsNullOrWhiteSpace(impact.ParkItemId))
+            {
+                affectedParkItemIds.Add(impact.ParkItemId.Trim());
             }
         }
 
@@ -401,7 +420,12 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 session.Metrics.AppliedChanges += appliedCount;
                 session.UpdatedAt = DateTime.UtcNow;
                 AddLog(session, "Info", $"Application manuelle : {appliedCount} changement(s) appliqué(s).");
-                await this.sessionsCollection.ReplaceOneAsync(item => item.Id == session.Id, session, cancellationToken: cancellationToken);
+                await this.RefreshSearchProjectionAsync(session, affectedParkIds.ToList(), affectedParkItemIds.ToList(), cancellationToken);
+                await this.PersistSessionAsync(session, cancellationToken);
+            }
+            else if (affectedParkIds.Count > 0 || affectedParkItemIds.Count > 0)
+            {
+                await this.RefreshSearchProjectionAsync(null, affectedParkIds.ToList(), affectedParkItemIds.ToList(), cancellationToken);
             }
         }
 
@@ -477,6 +501,11 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             session.Metrics.DuplicateConflicts = comparisonResults.Count(item => item.RequiresManualResolution);
             session.LastCompletedStep = "BuildComparison";
             AddLog(session, "Info", $"{comparisonResults.Count} différence(s) détectée(s), dont {session.Metrics.DuplicateConflicts} conflit(s) nécessitant une résolution humaine.");
+            await this.PersistSessionAsync(session, cancellationToken);
+
+            await this.UpdateSessionAsync(session, "RefreshSearchIndex", "Rafraîchissement de l'index de recherche technique.", 95, cancellationToken);
+            await this.RefreshSearchIndexFromComparisonAsync(session, cancellationToken);
+            session.LastCompletedStep = "RefreshSearchIndex";
             await this.PersistSessionAsync(session, cancellationToken);
 
             CaptainCoasterSettingsDocument settings = await this.GetOrCreateSettingsAsync();

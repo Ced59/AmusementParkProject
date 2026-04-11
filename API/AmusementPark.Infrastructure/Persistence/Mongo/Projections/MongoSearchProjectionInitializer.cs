@@ -59,6 +59,12 @@ public sealed class MongoSearchProjectionInitializer
                 Builders<SearchItemDocument>.IndexKeys.Ascending(item => item.Category).Ascending(item => item.IsVisible).Descending(item => item.UpdatedAt),
                 new CreateIndexOptions { Name = "idx_search_items_category_visibility_updated" }),
             new CreateIndexModel<SearchItemDocument>(
+                Builders<SearchItemDocument>.IndexKeys.Ascending(item => item.IsVisible).Descending(item => item.CompositeScore).Descending(item => item.UpdatedAt),
+                new CreateIndexOptions { Name = "idx_search_items_visibility_score_updated" }),
+            new CreateIndexModel<SearchItemDocument>(
+                Builders<SearchItemDocument>.IndexKeys.Ascending(item => item.ResourceType).Ascending(item => item.IsVisible).Descending(item => item.CompositeScore).Descending(item => item.UpdatedAt),
+                new CreateIndexOptions { Name = "idx_search_items_resource_type_visibility_score_updated" }),
+            new CreateIndexModel<SearchItemDocument>(
                 textIndexKeys,
                 new CreateIndexOptions { DefaultLanguage = "french", Name = "Idx_SearchItem_Text" }),
         };
@@ -103,14 +109,17 @@ public sealed class MongoSearchProjectionInitializer
 
     private async Task UpsertAllAsync(IEnumerable<string> ids, string resourceType, CancellationToken cancellationToken)
     {
-        foreach (string id in ids)
-        {
-            if (string.IsNullOrWhiteSpace(id))
-            {
-                continue;
-            }
+        List<string> normalizedIds = ids
+            .Where(static item => !string.IsNullOrWhiteSpace(item))
+            .Select(static item => item.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
 
-            await this.searchProjectionWriter.UpsertAsync(resourceType, id, cancellationToken);
+        if (normalizedIds.Count == 0)
+        {
+            return;
         }
+
+        await this.searchProjectionWriter.UpsertManyAsync(resourceType, normalizedIds, cancellationToken);
     }
 }

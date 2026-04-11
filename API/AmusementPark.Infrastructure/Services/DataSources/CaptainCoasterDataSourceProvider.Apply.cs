@@ -12,7 +12,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         // Apply
         // -----------------------------------------------------------------------
 
-        private async Task<bool> ApplyParkResultAsync(
+        private async Task<CaptainCoasterApplyImpact> ApplyParkResultAsync(
             CaptainCoasterComparisonResultDocument result,
             DataSourceDuplicateResolution? resolution,
             CancellationToken cancellationToken)
@@ -20,7 +20,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             CaptainCoasterParkSnapshotDocument? externalParkDocument = await ResolveParkSnapshotAsync(result, resolution, cancellationToken);
             if (externalParkDocument == null)
             {
-                return false;
+                return new CaptainCoasterApplyImpact { Applied = false };
             }
 
             List<ParkDocument> localParks = await localParksCollection.Find(Builders<ParkDocument>.Filter.Empty).ToListAsync(cancellationToken);
@@ -61,10 +61,14 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             result.ResolutionStatus = result.RequiresManualResolution ? (resolution?.Strategy ?? "SelectVariant") : "Applied";
             result.UpdatedAt = DateTime.UtcNow;
             await comparisonCollection.ReplaceOneAsync(item => item.Id == result.Id, result, cancellationToken: cancellationToken);
-            return true;
+            return new CaptainCoasterApplyImpact
+            {
+                Applied = true,
+                ParkId = localParkDocument.Id,
+            };
         }
 
-        private async Task<bool> ApplyCoasterResultAsync(
+        private async Task<CaptainCoasterApplyImpact> ApplyCoasterResultAsync(
             CaptainCoasterComparisonResultDocument result,
             DataSourceDuplicateResolution? resolution,
             CancellationToken cancellationToken)
@@ -72,13 +76,13 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             CaptainCoasterCoasterSnapshotDocument? externalCoaster = await ResolveCoasterSnapshotAsync(result, resolution, cancellationToken);
             if (externalCoaster == null)
             {
-                return false;
+                return new CaptainCoasterApplyImpact { Applied = false };
             }
 
             ParkDocument? park = await ResolveOrCreateLocalParkForCoasterAsync(result.SyncSessionId, externalCoaster, cancellationToken);
             if (park == null)
             {
-                return false;
+                return new CaptainCoasterApplyImpact { Applied = false };
             }
 
             AttractionManufacturerDocument? manufacturer = await ResolveManufacturerAsync(externalCoaster.Manufacturer, cancellationToken);
@@ -146,7 +150,12 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             result.ResolutionStatus = result.RequiresManualResolution ? (resolution?.Strategy ?? "SelectVariant") : "Applied";
             result.UpdatedAt = DateTime.UtcNow;
             await comparisonCollection.ReplaceOneAsync(item => item.Id == result.Id, result, cancellationToken: cancellationToken);
-            return true;
+            return new CaptainCoasterApplyImpact
+            {
+                Applied = true,
+                ParkId = park.Id,
+                ParkItemId = localCoaster.Id,
+            };
         }
 
         private async Task<CaptainCoasterParkSnapshotDocument?> ResolveParkSnapshotAsync(

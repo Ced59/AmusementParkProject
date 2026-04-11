@@ -55,6 +55,14 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             await BuildComparisonFromStagingAsync(session, cancellationToken);
         }
 
+        if (ShouldRunStep(startAtStep, "RefreshSearchIndex"))
+        {
+            await this.UpdateSessionAsync(session, "RefreshSearchIndex", "Rafraîchissement de l'index de recherche technique.", 95, cancellationToken);
+            await this.RefreshSearchIndexFromComparisonAsync(session, cancellationToken);
+            session.LastCompletedStep = "RefreshSearchIndex";
+            await this.PersistSessionAsync(session, cancellationToken);
+        }
+
         settingsDocument.LastSuccessfulSyncUtc = DateTime.UtcNow;
         settingsDocument.UpdatedAt = DateTime.UtcNow;
         await this.settingsCollection.ReplaceOneAsync(item => item.Id == settingsDocument.Id, settingsDocument, new ReplaceOptions { IsUpsert = true }, cancellationToken);
@@ -343,6 +351,10 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         if (string.Equals(step, "BuildComparison", StringComparison.OrdinalIgnoreCase))
         {
             return 3;
+        }
+        if (string.Equals(step, "RefreshSearchIndex", StringComparison.OrdinalIgnoreCase))
+        {
+            return 4;
         }
 
         return 0;

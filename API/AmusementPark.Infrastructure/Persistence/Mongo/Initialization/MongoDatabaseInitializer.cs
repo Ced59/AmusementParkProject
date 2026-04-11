@@ -272,6 +272,25 @@ public sealed class MongoDatabaseInitializer
             new CreateIndexModel<UserDocument>(
                 Builders<UserDocument>.IndexKeys.Descending(item => item.LastActivityUtc),
                 new CreateIndexOptions { Name = "idx_users_last_activity_desc" }),
+            new CreateIndexModel<UserDocument>(
+                Builders<UserDocument>.IndexKeys
+                    .Ascending("externalLogins.provider")
+                    .Ascending("externalLogins.providerUserId"),
+                new CreateIndexOptions { Name = "idx_users_external_login" }),
+            new CreateIndexModel<UserDocument>(
+                Builders<UserDocument>.IndexKeys.Ascending(item => item.EmailConfirmationTokenHash),
+                new CreateIndexOptions<UserDocument>
+                {
+                    Name = "idx_users_email_confirmation_token_hash",
+                    PartialFilterExpression = Builders<UserDocument>.Filter.Type(item => item.EmailConfirmationTokenHash, BsonType.String),
+                }),
+            new CreateIndexModel<UserDocument>(
+                Builders<UserDocument>.IndexKeys.Ascending(item => item.PasswordResetTokenHash),
+                new CreateIndexOptions<UserDocument>
+                {
+                    Name = "idx_users_password_reset_token_hash",
+                    PartialFilterExpression = Builders<UserDocument>.Filter.Type(item => item.PasswordResetTokenHash, BsonType.String),
+                }),
         };
 
         await usersCollection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
@@ -304,6 +323,9 @@ public sealed class MongoDatabaseInitializer
             new CreateIndexModel<ParkDocument>(
                 Builders<ParkDocument>.IndexKeys.Ascending(item => item.IsVisible).Descending(item => item.UpdatedAt),
                 new CreateIndexOptions { Name = "idx_parks_visibility_updated" }),
+            new CreateIndexModel<ParkDocument>(
+                Builders<ParkDocument>.IndexKeys.Ascending(item => item.IsVisible).Ascending(item => item.Name).Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_parks_visibility_name_id" }),
             new CreateIndexModel<ParkDocument>(
                 Builders<ParkDocument>.IndexKeys.Geo2DSphere(item => item.Location),
                 new CreateIndexOptions { Name = "idx_parks_location" }),
@@ -363,6 +385,13 @@ public sealed class MongoDatabaseInitializer
                 Builders<ParkZoneDocument>.IndexKeys.Ascending(item => item.ParkId).Ascending(item => item.Slug),
                 new CreateIndexOptions { Name = "idx_park_zones_park_slug" }),
             new CreateIndexModel<ParkZoneDocument>(
+                Builders<ParkZoneDocument>.IndexKeys
+                    .Ascending(item => item.ParkId)
+                    .Ascending(item => item.SortOrder)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_park_zones_park_sort_name" }),
+            new CreateIndexModel<ParkZoneDocument>(
                 Builders<ParkZoneDocument>.IndexKeys.Geo2DSphere(item => item.Location),
                 new CreateIndexOptions { Name = "idx_park_zones_location" }),
         };
@@ -382,8 +411,21 @@ public sealed class MongoDatabaseInitializer
                 Builders<ParkItemDocument>.IndexKeys.Ascending(item => item.ParkId).Ascending(item => item.ZoneId),
                 new CreateIndexOptions { Name = "idx_park_items_park_zone" }),
             new CreateIndexModel<ParkItemDocument>(
+                Builders<ParkItemDocument>.IndexKeys
+                    .Ascending(item => item.ParkId)
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.Type)
+                    .Ascending(item => item.Name),
+                new CreateIndexOptions { Name = "idx_park_items_park_category_type_name" }),
+            new CreateIndexModel<ParkItemDocument>(
+                Builders<ParkItemDocument>.IndexKeys.Ascending(item => item.ZoneId),
+                new CreateIndexOptions { Name = "idx_park_items_zone_id" }),
+            new CreateIndexModel<ParkItemDocument>(
                 Builders<ParkItemDocument>.IndexKeys.Ascending(item => item.Category).Ascending(item => item.IsVisible).Descending(item => item.UpdatedAt),
                 new CreateIndexOptions { Name = "idx_park_items_category_visibility_updated" }),
+            new CreateIndexModel<ParkItemDocument>(
+                Builders<ParkItemDocument>.IndexKeys.Ascending(item => item.Category).Ascending("attractionDetails.manufacturerId"),
+                new CreateIndexOptions { Name = "idx_park_items_attraction_manufacturer" }),
             new CreateIndexModel<ParkItemDocument>(
                 Builders<ParkItemDocument>.IndexKeys.Geo2DSphere(item => item.Location),
                 new CreateIndexOptions { Name = "idx_park_items_location" }),
@@ -403,6 +445,16 @@ public sealed class MongoDatabaseInitializer
             new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys.Ascending(item => item.OwnerType).Ascending(item => item.OwnerId),
                 new CreateIndexOptions { Name = "idx_images_owner" }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys.Ascending(item => item.OwnerType).Ascending(item => item.OwnerId).Descending(item => item.CreatedAt),
+                new CreateIndexOptions { Name = "idx_images_owner_created_at_desc" }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
+                    .Ascending(item => item.OwnerType)
+                    .Ascending(item => item.OwnerId)
+                    .Ascending(item => item.Category)
+                    .Descending(item => item.CreatedAt),
+                new CreateIndexOptions { Name = "idx_images_owner_category_created_at_desc" }),
             new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys.Ascending(item => item.Category),
                 new CreateIndexOptions { Name = "idx_images_category" }),
@@ -518,6 +570,12 @@ public sealed class MongoDatabaseInitializer
             new CreateIndexModel<CaptainCoasterSyncSessionDocument>(
                 Builders<CaptainCoasterSyncSessionDocument>.IndexKeys.Ascending(item => item.Status).Descending(item => item.StartedAtUtc),
                 new CreateIndexOptions { Name = "idx_cc_sessions_status_started_at" }),
+            new CreateIndexModel<CaptainCoasterSyncSessionDocument>(
+                Builders<CaptainCoasterSyncSessionDocument>.IndexKeys.Ascending(item => item.SourceKey).Descending(item => item.StartedAtUtc),
+                new CreateIndexOptions { Name = "idx_cc_sessions_source_started_at" }),
+            new CreateIndexModel<CaptainCoasterSyncSessionDocument>(
+                Builders<CaptainCoasterSyncSessionDocument>.IndexKeys.Ascending(item => item.SourceKey).Ascending(item => item.Status).Descending(item => item.StartedAtUtc),
+                new CreateIndexOptions { Name = "idx_cc_sessions_source_status_started_at" }),
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);

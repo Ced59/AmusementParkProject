@@ -70,6 +70,27 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
     }
 
     /// <inheritdoc />
+    public async Task UpsertManyAsync(string resourceType, IReadOnlyCollection<string> resourceIds, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(resourceType))
+        {
+            throw new ArgumentException("resourceType");
+        }
+
+        ArgumentNullException.ThrowIfNull(resourceIds);
+
+        HashSet<string> distinctIds = resourceIds
+            .Where(static item => !string.IsNullOrWhiteSpace(item))
+            .Select(static item => item.Trim())
+            .ToHashSet(StringComparer.Ordinal);
+
+        foreach (string resourceId in distinctIds)
+        {
+            await this.UpsertAsync(resourceType, resourceId, cancellationToken);
+        }
+    }
+
+    /// <inheritdoc />
     public async Task DeleteAsync(string resourceType, string resourceId, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(resourceType) || string.IsNullOrWhiteSpace(resourceId))
