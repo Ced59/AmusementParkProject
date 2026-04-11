@@ -1,6 +1,7 @@
 import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, catchError, finalize, map, of, shareReplay } from 'rxjs';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Observable, catchError, finalize, firstValueFrom, map, of, shareReplay } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 
 import { environment } from '../../../environments/environment';
@@ -14,41 +15,41 @@ import { GoogleIdentityService } from './google-identity.service';
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly accessTokenStorageKey: string = 'auth_token';
-  private readonly refreshTokenStorageKey: string = 'refresh_token';
-  private readonly refreshTokenExpiresAtStorageKey: string = 'refresh_token_expires_at';
   private readonly rawHttpClient: HttpClient;
   private refreshAccessTokenRequest$: Observable<string | null> | null = null;
+  private accessToken: string | null = null;
+  private hasServerRefreshSession: boolean = false;
+  private hasInitializedSession: boolean = false;
 
   constructor(
     private readonly googleIdentityService: GoogleIdentityService,
+    @Inject(PLATFORM_ID) private readonly platformId: object,
     httpBackend: HttpBackend
   ) {
     this.rawHttpClient = new HttpClient(httpBackend);
   }
 
-  getToken(): string | null {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem(this.accessTokenStorageKey);
-    }
-
-    return null;
-  }
-
-  getRefreshToken(): string | null {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem(this.refreshTokenStorageKey);
-    }
-
-    return null;
-  }
-
-  setToken(token: string): void {
-    if (typeof window === 'undefined') {
+  async initializeSession(): Promise<void> {
+    if (!isPlatformBrowser(this.platformId) || this.hasInitializedSession) {
+      this.hasInitializedSession = true;
       return;
     }
 
-    localStorage.setItem(this.accessTokenStorageKey, token);
+    try {
+      await firstValueFrom(this.ensureValidAccessToken(true));
+    } catch (_error) {
+      this.clearSession(false);
+    } finally {
+      this.hasInitializedSession = true;
+    }
+  }
+
+  getToken(): string | null {
+    return this.accessToken;
+  }
+
+  setToken(token: string | null): void {
+    this.accessToken = token;
   }
 
   setAuthenticatedSession(result: UserToken | RefreshTokenResponse): void {
@@ -58,22 +59,8 @@ export class AuthService {
     }
 
     this.setToken(accessToken);
-
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    if (result.refreshToken) {
-      localStorage.setItem(this.refreshTokenStorageKey, result.refreshToken);
-    } else {
-      localStorage.removeItem(this.refreshTokenStorageKey);
-    }
-
-    if (result.refreshTokenExpiresAtUtc) {
-      localStorage.setItem(this.refreshTokenExpiresAtStorageKey, result.refreshTokenExpiresAtUtc);
-    } else {
-      localStorage.removeItem(this.refreshTokenExpiresAtStorageKey);
-    }
+    this.hasServerRefreshSession = true;
+    this.hasInitializedSession = true;
   }
 
   getTokenDecoded(): JwtPayload | null {
@@ -91,7 +78,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return this.hasValidAccessToken() || this.hasUsableRefreshToken();
+    return this.hasValidAccessToken();
   }
 
   getUserIdFromToken(): string | null {
@@ -107,13 +94,17 @@ export class AuthService {
     return null;
   }
 
-  ensureValidAccessToken(): Observable<string | null> {
+  ensureValidAccessToken(forceRefreshAttempt: boolean = false): Observable<string | null> {
     const token: string | null = this.getToken();
     if (this.hasValidAccessToken() && token) {
       return of(token);
     }
 
-    if (!this.hasUsableRefreshToken()) {
+    if (!isPlatformBrowser(this.platformId)) {
+      return of(null);
+    }
+
+    if (!forceRefreshAttempt && !this.hasServerRefreshSession) {
       return of(null);
     }
 
@@ -121,20 +112,16 @@ export class AuthService {
       return this.refreshAccessTokenRequest$;
     }
 
-    const refreshToken: string | null = this.getRefreshToken();
-    if (!refreshToken) {
-      return of(null);
-    }
-
     const url: string = `${environment.apiBaseUrl}${AUTH_API_ENDPOINTS.refreshToken}`;
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      })
+      }),
+      withCredentials: true
     };
 
     this.refreshAccessTokenRequest$ = this.rawHttpClient
-      .post<RefreshTokenResponse>(url, { refreshToken }, options)
+      .post<RefreshTokenResponse>(url, {}, options)
       .pipe(
         map((response: RefreshTokenResponse) => {
           this.setAuthenticatedSession(response);
@@ -142,7 +129,7 @@ export class AuthService {
         }),
         catchError((error: unknown) => {
           console.error('Error refreshing access token:', error);
-          this.logout();
+          this.clearSession(false);
           return of(null);
         }),
         finalize(() => {
@@ -155,13 +142,25 @@ export class AuthService {
   }
 
   logout(): void {
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem(this.accessTokenStorageKey);
-      localStorage.removeItem(this.refreshTokenStorageKey);
-      localStorage.removeItem(this.refreshTokenExpiresAtStorageKey);
-    }
+    const shouldNotifyServer: boolean = isPlatformBrowser(this.platformId) && this.hasServerRefreshSession;
 
-    this.googleIdentityService.disableAutoSelect();
+    this.clearSession(true);
+
+    if (shouldNotifyServer) {
+      const url: string = `${environment.apiBaseUrl}${AUTH_API_ENDPOINTS.logout}`;
+      const options = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        }),
+        withCredentials: true
+      };
+
+      this.rawHttpClient.post<void>(url, {}, options).subscribe({
+        error: (error: unknown) => {
+          console.error('Error logging out from server session:', error);
+        }
+      });
+    }
   }
 
   hasRole(expectedRole: string): boolean {
@@ -210,25 +209,12 @@ export class AuthService {
     return !!(decoded && decoded.exp && Date.now() < decoded.exp * 1000);
   }
 
-  private hasUsableRefreshToken(): boolean {
-    const refreshToken: string | null = this.getRefreshToken();
-    if (!refreshToken) {
-      return false;
+  private clearSession(disableAutoSelect: boolean): void {
+    this.accessToken = null;
+    this.hasServerRefreshSession = false;
+
+    if (disableAutoSelect) {
+      this.googleIdentityService.disableAutoSelect();
     }
-
-    const refreshTokenExpiresAtUtc: string | null = typeof window !== 'undefined'
-      ? localStorage.getItem(this.refreshTokenExpiresAtStorageKey)
-      : null;
-
-    if (!refreshTokenExpiresAtUtc) {
-      return true;
-    }
-
-    const expiration: number = Date.parse(refreshTokenExpiresAtUtc);
-    if (Number.isNaN(expiration)) {
-      return true;
-    }
-
-    return Date.now() < expiration;
   }
 }

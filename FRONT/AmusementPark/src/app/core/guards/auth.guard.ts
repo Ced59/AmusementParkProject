@@ -1,28 +1,33 @@
 import { isPlatformBrowser } from '@angular/common';
 import { inject, PLATFORM_ID } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
+import { map, Observable } from 'rxjs';
 
 import { AuthService } from '../../services/auth/auth.service';
 import { ModalService } from '../../services/modal/modal.service';
 
-export const authGuard: CanActivateFn = (_route, state) => {
+export const authGuard: CanActivateFn = (_route, state): Observable<boolean | UrlTree> | boolean | UrlTree => {
   const authService = inject(AuthService);
   const modalService = inject(ModalService);
   const router = inject(Router);
   const platformId = inject(PLATFORM_ID);
 
-  if (authService.isLoggedIn()) {
-    return true;
-  }
+  return authService.ensureValidAccessToken().pipe(
+    map((token: string | null) => {
+      if (token) {
+        return true;
+      }
 
-  if (isPlatformBrowser(platformId)) {
-    modalService.openModal('loginModal');
-    return false;
-  }
+      if (isPlatformBrowser(platformId)) {
+        modalService.openModal('loginModal');
+        return false;
+      }
 
-  const url: string = state.url || router.url || '/en/home';
-  const segments: string[] = url.split('/').filter(Boolean);
-  const lang: string = segments[0] || 'en';
+      const url: string = state.url || router.url || '/en/home';
+      const segments: string[] = url.split('/').filter(Boolean);
+      const lang: string = segments[0] || 'en';
 
-  return router.createUrlTree([`/${lang}/home`]);
+      return router.createUrlTree([`/${lang}/home`]);
+    })
+  );
 };

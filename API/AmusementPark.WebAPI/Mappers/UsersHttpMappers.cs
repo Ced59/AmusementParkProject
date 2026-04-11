@@ -33,11 +33,11 @@ public static class UsersHttpMappers
         };
     }
 
-    public static RefreshTokenRequest ToApplication(this RefreshTokenRequestDto request)
+    public static RefreshTokenRequest ToApplication(this RefreshTokenRequestDto? request)
     {
         return new RefreshTokenRequest
         {
-            RefreshToken = request.RefreshToken,
+            RefreshToken = request?.RefreshToken ?? string.Empty,
         };
     }
 

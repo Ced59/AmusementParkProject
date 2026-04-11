@@ -1,6 +1,7 @@
 export const AUTH_API_ENDPOINTS = {
   login: 'auth/login',
   refreshToken: 'auth/refresh-token',
+  logout: 'auth/logout',
   register: 'users',
   confirmEmail: 'users/confirm-email',
   resendConfirmation: 'users/resend-confirmation',

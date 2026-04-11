@@ -21,17 +21,27 @@ export class AuthApiService {
     })
   };
 
+  private readonly credentialedJsonHttpOptions = {
+    ...this.jsonHttpOptions,
+    withCredentials: true
+  };
+
   constructor(private readonly http: HttpClient) {
   }
 
   login(credentials: UserCredentials): Observable<UserToken> {
     const url: string = `${environment.apiBaseUrl}${AUTH_API_ENDPOINTS.login}`;
-    return this.http.post<UserToken>(url, JSON.stringify(credentials), this.jsonHttpOptions);
+    return this.http.post<UserToken>(url, JSON.stringify(credentials), this.credentialedJsonHttpOptions);
   }
 
-  refreshToken(refreshToken: string): Observable<RefreshTokenResponse> {
+  refreshToken(): Observable<RefreshTokenResponse> {
     const url: string = `${environment.apiBaseUrl}${AUTH_API_ENDPOINTS.refreshToken}`;
-    return this.http.post<RefreshTokenResponse>(url, { refreshToken }, this.jsonHttpOptions);
+    return this.http.post<RefreshTokenResponse>(url, {}, this.credentialedJsonHttpOptions);
+  }
+
+  logout(): Observable<void> {
+    const url: string = `${environment.apiBaseUrl}${AUTH_API_ENDPOINTS.logout}`;
+    return this.http.post<void>(url, {}, this.credentialedJsonHttpOptions);
   }
 
   register(request: UserRegister): Observable<UserDto> {
@@ -61,7 +71,7 @@ export class AuthApiService {
 
   externalLogin(provider: string, token: string, nonce?: string): Observable<UserToken> {
     const url: string = `${environment.apiBaseUrl}${AUTH_API_ENDPOINTS.externalLogin(provider)}`;
-    return this.http.post<UserToken>(url, { token, nonce }, this.jsonHttpOptions);
+    return this.http.post<UserToken>(url, { token, nonce }, this.credentialedJsonHttpOptions);
   }
 
   googleLogin(token: string): Observable<UserToken> {
