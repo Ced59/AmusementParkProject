@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
@@ -18,11 +18,11 @@ export class ForgotPasswordPageComponent {
   isSubmitted: boolean = false;
   message: string = '';
 
-  constructor(private readonly apiService: ApiService) {
+  constructor(private readonly authApiService: AuthApiService) {
   }
 
   onSubmit(): void {
-    this.apiService.forgotPassword(this.email).subscribe({
+    this.authApiService.forgotPassword(this.email).subscribe({
       next: (response) => {
         this.isSubmitted = true;
         this.message = response.message;

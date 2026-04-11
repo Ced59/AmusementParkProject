@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '../../../services/api.service';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +23,7 @@ export class ResetPasswordPageComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly apiService: ApiService) {
+    private readonly authApiService: AuthApiService) {
   }
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class ResetPasswordPageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.apiService.resetPassword(this.token, this.newPassword, this.confirmPassword).subscribe({
+    this.authApiService.resetPassword(this.token, this.newPassword, this.confirmPassword).subscribe({
       next: (response) => {
         this.isSubmitted = true;
         this.message = response.message;

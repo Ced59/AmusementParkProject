@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../../../services/api.service';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { UserToken } from '../../../models/users/user_token';
 import { AuthService } from '../../../services/auth/auth.service';
 import { ToastMessageService } from '../../../services/messages/toast-message.service';
@@ -20,7 +20,7 @@ export class SigninGoogleComponent implements OnInit {
   lastVisitedUrl: string | null = null;
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly authApiService: AuthApiService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly messageService: ToastMessageService,
@@ -53,7 +53,7 @@ export class SigninGoogleComponent implements OnInit {
   private exchangeCodeForToken(code: string): void {
     this.viewState.set(ViewState.Loading);
 
-    this.apiService.googleLogin(code).subscribe({
+    this.authApiService.googleLogin(code).subscribe({
       next: (result: UserToken) => {
         this.authService.setToken(result.token);
         this.currentUserService.refreshCurrentUser();

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserRegister } from '../../../models/users/user-register';
-import { ApiService } from '../../../services/api.service';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { ToastMessageService } from '../../../services/messages/toast-message.service';
 import { TranslationService } from '../../../services/translation.service';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +23,7 @@ export class RegisterFormComponent {
   registrationCompleted: boolean = false;
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly authApiService: AuthApiService,
     private readonly messageService: ToastMessageService,
     private readonly translateService: TranslationService) {
   }
@@ -41,7 +41,7 @@ export class RegisterFormComponent {
       preferredLanguage: this.translateService.getCurrentLang().toUpperCase()
     };
 
-    this.apiService.register(request).subscribe({
+    this.authApiService.register(request).subscribe({
       next: () => {
         this.registrationCompleted = true;
         this.messageService.add('success', 'Succès', 'Compte créé. Vérifie le lien de confirmation envoyé dans la console de l’API.');
@@ -57,7 +57,7 @@ export class RegisterFormComponent {
   }
 
   resendConfirmation(): void {
-    this.apiService.resendConfirmation(this.registerEmail).subscribe({
+    this.authApiService.resendConfirmation(this.registerEmail).subscribe({
       next: (response) => {
         this.messageService.add('success', 'Succès', response.message);
       },

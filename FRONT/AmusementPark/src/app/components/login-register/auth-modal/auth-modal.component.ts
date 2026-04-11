@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { AuthService } from '../../../services/auth/auth.service';
 import { GoogleIdentityService } from '../../../services/auth/google-identity.service';
 import { ToastMessageService } from '../../../services/messages/toast-message.service';
@@ -22,7 +22,7 @@ export class AuthModalComponent implements AfterViewInit {
   private googleButtonContainer?: ElementRef<HTMLDivElement>;
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly authApiService: AuthApiService,
     private readonly authService: AuthService,
     private readonly googleIdentityService: GoogleIdentityService,
     private readonly messageService: ToastMessageService,
@@ -55,7 +55,7 @@ export class AuthModalComponent implements AfterViewInit {
   }
 
   private authenticateWithGoogle(idToken: string): void {
-    this.apiService.externalLogin('google', idToken).subscribe({
+    this.authApiService.externalLogin('google', idToken).subscribe({
       next: (result: UserToken) => {
         this.authService.setToken(result.token);
         this.messageService.add('success', 'Succès', 'Connexion avec Google réussie !');

@@ -1,6 +1,6 @@
 import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ApiService } from '../api.service';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { AuthService } from '../auth/auth.service';
 import { UserDto } from '../../models/users/user_dto';
 
@@ -12,7 +12,7 @@ export class CurrentUserService {
   readonly loading = signal<boolean>(false);
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly authApiService: AuthApiService,
     private readonly authService: AuthService,
     @Inject(PLATFORM_ID) private readonly platformId: object
   ) {
@@ -32,7 +32,7 @@ export class CurrentUserService {
 
     this.loading.set(true);
 
-    this.apiService.getUserById(userId).subscribe({
+    this.authApiService.getCurrentUserById(userId).subscribe({
       next: (user: UserDto) => {
         this.currentUser.set(user);
         this.loading.set(false);

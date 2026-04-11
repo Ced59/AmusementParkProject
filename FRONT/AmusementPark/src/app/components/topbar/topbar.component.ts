@@ -6,6 +6,7 @@ import { filter } from 'rxjs/operators';
 import { LANGUAGES } from '../../commons/languages';
 import { UserDto } from '../../models/users/user_dto';
 import { ApiService } from '../../services/api.service';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { ModalService } from '../../services/modal/modal.service';
 import { SharedService } from '../../services/shared/shared.service';
@@ -39,6 +40,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly apiService: ApiService,
+    private readonly authApiService: AuthApiService,
     private readonly authService: AuthService,
     private readonly translationService: TranslationService,
     private readonly router: Router,
@@ -153,7 +155,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
     }
 
     this.subscriptions.add(
-      this.apiService.getUserById(userId).subscribe({
+      this.authApiService.getCurrentUserById(userId).subscribe({
         next: (user: UserDto) => {
           this.userProfile = user;
           this.cdr.markForCheck();

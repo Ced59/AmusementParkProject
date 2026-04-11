@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ApiService } from '../../../services/api.service';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { TranslateModule } from '@ngx-translate/core';
@@ -19,7 +19,7 @@ export class ConfirmAccountPageComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly apiService: ApiService) {
+    private readonly authApiService: AuthApiService) {
   }
 
   ngOnInit(): void {
@@ -33,7 +33,7 @@ export class ConfirmAccountPageComponent implements OnInit {
       return;
     }
 
-    this.apiService.confirmEmail(token).subscribe({
+    this.authApiService.confirmEmail(token).subscribe({
       next: (response) => {
         this.isLoading = false;
         this.isSuccess = true;

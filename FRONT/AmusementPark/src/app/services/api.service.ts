@@ -37,6 +37,8 @@ import { ImageTagDto } from '../models/images/image-tag-dto';
 import { LocalizedItemDto } from '../models/shared/localized-item-dto';
 import { ImageGeoLocation } from '../models/images/image-geo-location';
 import { AuthMessageResponse } from '../models/auth/auth-message-response';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
+import { RefreshTokenResponse } from '@data-access/auth/models/api/refresh-token-response.model';
 
 interface PagedCollectionResponse<T> {
   data?: T[];
@@ -48,52 +50,46 @@ interface PagedCollectionResponse<T> {
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private readonly http: HttpClient) {
+  constructor(
+    private readonly http: HttpClient,
+    private readonly authApiService: AuthApiService
+  ) {
   }
 
   login(credentials: UserCredentials): Observable<UserToken> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.postLogin}`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-
-    return this.http.post<UserToken>(url, JSON.stringify(credentials), httpOptions);
+    return this.authApiService.login(credentials);
   }
 
+  refreshToken(refreshToken: string): Observable<RefreshTokenResponse> {
+    return this.authApiService.refreshToken(refreshToken);
+  }
 
   register(request: UserRegister): Observable<UserDto> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.postRegister}`;
-    return this.http.post<UserDto>(url, request);
+    return this.authApiService.register(request);
   }
 
   confirmEmail(token: string): Observable<AuthMessageResponse> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.confirmEmail}`;
-    return this.http.post<AuthMessageResponse>(url, { token });
+    return this.authApiService.confirmEmail(token);
   }
 
   resendConfirmation(email: string): Observable<AuthMessageResponse> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.resendConfirmation}`;
-    return this.http.post<AuthMessageResponse>(url, { email });
+    return this.authApiService.resendConfirmation(email);
   }
 
   forgotPassword(email: string): Observable<AuthMessageResponse> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.forgotPassword}`;
-    return this.http.post<AuthMessageResponse>(url, { email });
+    return this.authApiService.forgotPassword(email);
   }
 
   resetPassword(token: string, newPassword: string, newPasswordConfirm: string): Observable<AuthMessageResponse> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.resetPassword}`;
-    return this.http.post<AuthMessageResponse>(url, { token, newPassword, newPasswordConfirm });
+    return this.authApiService.resetPassword(token, newPassword, newPasswordConfirm);
   }
+
   externalLogin(provider: string, token: string, nonce?: string): Observable<UserToken> {
-    const url = `${environment.apiBaseUrl}${API_ENDPOINTS.externalLogin(provider)}`;
-    return this.http.post<UserToken>(url, { token, nonce });
+    return this.authApiService.externalLogin(provider, token, nonce);
   }
 
   googleLogin(token: string): Observable<UserToken> {
-    return this.externalLogin('google', token);
+    return this.authApiService.googleLogin(token);
   }
 
   getUsers(page: number = 1, size: number = 10): Observable<UsersApiResponse> {

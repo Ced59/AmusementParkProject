@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserCredentials } from '../../../models/users/user_credentials';
 import { UserToken } from '../../../models/users/user_token';
-import { ApiService } from '../../../services/api.service';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { AuthService } from '../../../services/auth/auth.service';
 import { ToastMessageService } from '../../../services/messages/toast-message.service';
 import { SharedService } from '../../../services/shared/shared.service';
@@ -26,7 +26,7 @@ export class LoginFormComponent {
   @Output() loginSuccess: EventEmitter<UserToken> = new EventEmitter<UserToken>();
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly authApiService: AuthApiService,
     private readonly messageService: ToastMessageService,
     private readonly authService: AuthService,
     private readonly sharedService: SharedService,
@@ -37,7 +37,7 @@ export class LoginFormComponent {
   onSubmit(): void {
     const userCredentials: UserCredentials = new UserCredentials(this.loginEmail, this.loginPassword);
 
-    this.apiService.login(userCredentials).subscribe({
+    this.authApiService.login(userCredentials).subscribe({
       next: (result: UserToken) => {
         this.authService.setToken(result.token);
         this.messageService.add('success', 'Succès', 'Connexion réussie !');
