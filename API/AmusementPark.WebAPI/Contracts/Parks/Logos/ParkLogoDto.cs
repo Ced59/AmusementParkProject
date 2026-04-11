@@ -1,3 +1,5 @@
+using System;
+
 namespace AmusementPark.WebAPI.Contracts.Parks.Logos;
 
 /// <summary>

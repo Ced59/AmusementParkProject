@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace AmusementPark.WebAPI.Contracts.ParkZones;
 
 public sealed class ParkExplorerDto

@@ -41,11 +41,19 @@ public sealed class DataSourceSessionResult
 
     public string Status { get; init; } = string.Empty;
 
+    public string ImportKind { get; init; } = string.Empty;
+
     public int ProgressPercentage { get; init; }
 
     public string CurrentStep { get; init; } = string.Empty;
 
+    public string? LastCompletedStep { get; init; }
+
     public string Message { get; init; } = string.Empty;
+
+    public bool CanResume { get; init; }
+
+    public IReadOnlyCollection<string> AvailableSteps { get; init; } = Array.Empty<string>();
 
     public DateTime StartedAtUtc { get; init; }
 
@@ -70,6 +78,14 @@ public sealed class DataSourceMetricsResult
     public int AppliedChanges { get; init; }
 
     public int DuplicateConflicts { get; init; }
+
+    public int DiscoveredItems { get; init; }
+
+    public int ProcessedItems { get; init; }
+
+    public int FailedItems { get; init; }
+
+    public int SkippedItems { get; init; }
 }
 
 /// <summary>

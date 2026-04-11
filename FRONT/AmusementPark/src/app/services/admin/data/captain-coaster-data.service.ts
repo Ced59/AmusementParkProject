@@ -7,10 +7,23 @@ import {
   CaptainCoasterComparisonPagedResponse,
   CaptainCoasterDuplicateResolutionRequest,
   CaptainCoasterSessionResponse,
+  CaptainCoasterSettingsResponse,
   CaptainCoasterStatusResponse,
   ComparisonFilters,
-  DataSourceSummary
+  DataSourceSummary,
+  StartCaptainCoasterImportRequest,
+  UpdateCaptainCoasterSettingsRequest
 } from '../../../models/admin/data/data-management.models';
+
+interface PagedResponseDto<TItem> {
+  data: TItem[];
+  pagination?: {
+    totalItems: number;
+    totalPages: number;
+    currentPage: number;
+    itemsPerPage: number;
+  };
+}
 
 interface DataSourceStatusApiDto {
   sourceKey: string;
@@ -20,13 +33,24 @@ interface DataSourceStatusApiDto {
   totalSessionsCount: number;
 }
 
+interface DataSourceSettingsApiDto {
+  sourceKey: string;
+  displayName: string;
+  isEnabled: boolean;
+  options: Record<string, string | null>;
+}
+
 interface DataSourceSessionApiDto {
   sessionId: string;
   sourceKey: string;
   status: string;
+  importKind: string;
   progressPercentage: number;
   currentStep: string;
+  lastCompletedStep: string | null;
   message: string;
+  canResume: boolean;
+  availableSteps: string[];
   startedAtUtc: string;
   completedAtUtc: string | null;
   metrics: {
@@ -35,6 +59,10 @@ interface DataSourceSessionApiDto {
     comparisonResults: number;
     appliedChanges: number;
     duplicateConflicts: number;
+    discoveredItems: number;
+    processedItems: number;
+    failedItems: number;
+    skippedItems: number;
   };
   logs: Array<{
     occurredAtUtc: string;
@@ -53,9 +81,9 @@ export class CaptainCoasterDataService {
   constructor(private readonly http: HttpClient) {}
 
   listSources(): Observable<DataSourceSummary[]> {
-    return this.http.get<DataSourceStatusApiDto[]>(this.sourcesUrl).pipe(
-      map((sources: DataSourceStatusApiDto[]) =>
-        sources.map((source: DataSourceStatusApiDto) => this.mapSourceSummary(source))
+    return this.http.get<PagedResponseDto<DataSourceStatusApiDto>>(this.sourcesUrl).pipe(
+      map((response: PagedResponseDto<DataSourceStatusApiDto>) =>
+        (response.data ?? []).map((source: DataSourceStatusApiDto) => this.mapSourceSummary(source))
       )
     );
   }
@@ -63,6 +91,28 @@ export class CaptainCoasterDataService {
   getStatus(): Observable<CaptainCoasterStatusResponse> {
     return this.http.get<DataSourceStatusApiDto>(`${this.baseUrl}/status`).pipe(
       map((status: DataSourceStatusApiDto) => this.mapStatus(status))
+    );
+  }
+
+  getSettings(): Observable<CaptainCoasterSettingsResponse> {
+    return this.http.get<DataSourceSettingsApiDto>(`${this.baseUrl}/settings`).pipe(
+      map((settings: DataSourceSettingsApiDto) => ({
+        sourceKey: settings.sourceKey,
+        displayName: settings.displayName,
+        isEnabled: settings.isEnabled,
+        options: settings.options ?? {}
+      }))
+    );
+  }
+
+  updateSettings(request: UpdateCaptainCoasterSettingsRequest): Observable<CaptainCoasterSettingsResponse> {
+    return this.http.put<DataSourceSettingsApiDto>(`${this.baseUrl}/settings`, request).pipe(
+      map((settings: DataSourceSettingsApiDto) => ({
+        sourceKey: settings.sourceKey,
+        displayName: settings.displayName,
+        isEnabled: settings.isEnabled,
+        options: settings.options ?? {}
+      }))
     );
   }
 
@@ -80,13 +130,8 @@ export class CaptainCoasterDataService {
     );
   }
 
-  importFromFiles(parksFile: File, coastersFile: File): Observable<CaptainCoasterSessionResponse> {
-    const formData: FormData = new FormData();
-    formData.append('importKind', 'json-files');
-    formData.append('files', parksFile, 'detected-parks.json');
-    formData.append('files', coastersFile, 'coasters.json');
-
-    return this.http.post<DataSourceSessionApiDto>(`${this.baseUrl}/import`, formData).pipe(
+  startImport(request: StartCaptainCoasterImportRequest): Observable<CaptainCoasterSessionResponse> {
+    return this.http.post<DataSourceSessionApiDto>(`${this.baseUrl}/import`, request).pipe(
       map((session: DataSourceSessionApiDto) => this.mapSession(session))
     );
   }
@@ -172,9 +217,13 @@ export class CaptainCoasterDataService {
     return {
       id: session.sessionId,
       status: session.status,
+      importKind: session.importKind,
       progressPercentage: session.progressPercentage,
       currentStep: session.currentStep,
+      lastCompletedStep: session.lastCompletedStep,
       message: session.message,
+      canResume: session.canResume,
+      availableSteps: session.availableSteps ?? [],
       startedAtUtc: session.startedAtUtc,
       completedAtUtc: session.completedAtUtc,
       parksFetched: session.metrics?.itemsFetchedPrimary ?? 0,
@@ -182,13 +231,17 @@ export class CaptainCoasterDataService {
       comparisonResults: session.metrics?.comparisonResults ?? 0,
       appliedChanges: session.metrics?.appliedChanges ?? 0,
       duplicateConflicts: session.metrics?.duplicateConflicts ?? 0,
+      discoveredItems: session.metrics?.discoveredItems ?? 0,
+      processedItems: session.metrics?.processedItems ?? 0,
+      failedItems: session.metrics?.failedItems ?? 0,
+      skippedItems: session.metrics?.skippedItems ?? 0,
       logs: session.logs ?? []
     };
   }
 
   private resolveSourceDescription(sourceKey: string): string {
     if (sourceKey === 'captain-coaster') {
-      return 'Données de coasters et parcs depuis le scraper Captain Coaster (JSON)';
+      return 'Acquisition automatisée Captain Coaster via sitemap, URLs ciblées et pipeline de comparaison.';
     }
 
     return 'Source de données externe.';

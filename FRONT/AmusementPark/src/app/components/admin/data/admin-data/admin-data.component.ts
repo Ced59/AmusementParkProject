@@ -30,9 +30,12 @@ import {
   CaptainCoasterExternalVariantResponse,
   CaptainCoasterFieldResolutionRequest,
   CaptainCoasterSessionResponse,
+  CaptainCoasterSettingsResponse,
   CaptainCoasterStatusResponse,
   ComparisonFilters,
-  DataSourceSummary
+  DataSourceSummary,
+  StartCaptainCoasterImportRequest,
+  UpdateCaptainCoasterSettingsRequest
 } from '../../../../models/admin/data/data-management.models';
 
 interface DuplicateResolutionState {
@@ -61,29 +64,39 @@ interface DuplicateResolutionState {
   ]
 })
 export class AdminDataComponent implements OnInit, OnDestroy {
-
   protected readonly dataSources = signal<DataSourceSummary[]>([]);
   protected readonly selectedSourceKey = signal<string | null>(null);
 
   protected readonly ccStatus = signal<CaptainCoasterStatusResponse | null>(null);
+  protected readonly ccSettings = signal<CaptainCoasterSettingsResponse | null>(null);
   protected readonly ccSession = signal<CaptainCoasterSessionResponse | null>(null);
   protected readonly ccIsBusy = signal<boolean>(false);
   protected readonly ccErrorMessage = signal<string>('');
   protected readonly ccSuccessMessage = signal<string>('');
-  protected readonly ccParksFile = signal<File | null>(null);
-  protected readonly ccCoastersFile = signal<File | null>(null);
+
+  protected readonly ccImportKind = signal<'sitemap' | 'manual-urls'>('sitemap');
+  protected readonly ccManualUrlsText = signal<string>('');
+  protected readonly ccStartAtStep = signal<string>('DiscoverUrls');
+  protected readonly ccResumeLatestSession = signal<boolean>(false);
 
   protected readonly ccIsSessionRunning = computed(() => {
     const session: CaptainCoasterSessionResponse | null = this.ccSession();
     return session !== null && session.status !== 'Completed' && session.status !== 'Failed';
   });
 
-  protected readonly ccCanImport = computed(() =>
-    this.ccParksFile() !== null &&
-    this.ccCoastersFile() !== null &&
-    !this.ccIsBusy() &&
-    !this.ccIsSessionRunning()
-  );
+  protected readonly ccManualUrlCount = computed(() => this.parseManualUrls().length);
+
+  protected readonly ccCanImport = computed(() => {
+    if (this.ccIsBusy() || this.ccIsSessionRunning()) {
+      return false;
+    }
+
+    if (this.ccImportKind() === 'manual-urls') {
+      return this.ccManualUrlCount() > 0;
+    }
+
+    return true;
+  });
 
   protected readonly ccComparisonLoaded = signal<boolean>(false);
   protected readonly ccPagedResult = signal<CaptainCoasterComparisonPagedResponse | null>(null);
@@ -128,6 +141,13 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     { label: 'Déjà appliqués', value: true }
   ];
 
+  protected readonly scrapingStepOptions = [
+    { label: 'Découverte des URLs', value: 'DiscoverUrls' },
+    { label: 'Analyse des fiches coaster', value: 'FetchCoasters' },
+    { label: 'Coordonnées des parcs', value: 'EnrichParkCoordinates' },
+    { label: 'Construction de la comparaison', value: 'BuildComparison' }
+  ];
+
   private pollingSubscription: Subscription | null = null;
   private readonly duplicateResolutionStateByResultId: Map<string, DuplicateResolutionState> = new Map<string, DuplicateResolutionState>();
 
@@ -160,21 +180,94 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.duplicateResolutionStateByResultId.clear();
   }
 
-  protected onParksFileSelected(event: Event): void {
-    const input: HTMLInputElement = event.target as HTMLInputElement;
-    this.ccParksFile.set(input.files?.[0] ?? null);
+  protected setImportKind(value: 'sitemap' | 'manual-urls'): void {
+    this.ccImportKind.set(value);
+    if (value === 'sitemap' && this.ccStartAtStep() === 'FetchCoasters') {
+      this.ccStartAtStep.set('DiscoverUrls');
+    }
   }
 
-  protected onCoastersFileSelected(event: Event): void {
-    const input: HTMLInputElement = event.target as HTMLInputElement;
-    this.ccCoastersFile.set(input.files?.[0] ?? null);
+  protected setManualUrlsText(value: string): void {
+    this.ccManualUrlsText.set(value);
+  }
+
+  protected setStartAtStep(value: string): void {
+    this.ccStartAtStep.set(value);
+  }
+
+  protected setResumeLatestSession(value: boolean): void {
+    this.ccResumeLatestSession.set(value);
+  }
+
+  protected getSettingValue(key: string): string {
+    return this.ccSettings()?.options?.[key] ?? '';
+  }
+
+  protected setSettingValue(key: string, value: string): void {
+    const current: CaptainCoasterSettingsResponse | null = this.ccSettings();
+    if (current === null) {
+      return;
+    }
+
+    this.ccSettings.set({
+      ...current,
+      options: {
+        ...current.options,
+        [key]: value
+      }
+    });
+  }
+
+  protected setSettingsEnabled(value: boolean): void {
+    const current: CaptainCoasterSettingsResponse | null = this.ccSettings();
+    if (current === null) {
+      return;
+    }
+
+    this.ccSettings.set({
+      ...current,
+      isEnabled: value
+    });
+  }
+
+  protected async saveSettingsAsync(showSuccessMessage: boolean = true): Promise<void> {
+    const settings: CaptainCoasterSettingsResponse | null = this.ccSettings();
+    if (settings === null) {
+      return;
+    }
+
+    this.ccIsBusy.set(true);
+    this.ccErrorMessage.set('');
+
+    try {
+      const request: UpdateCaptainCoasterSettingsRequest = {
+        isEnabled: settings.isEnabled,
+        options: settings.options
+      };
+      const updated: CaptainCoasterSettingsResponse = await firstValueFrom(
+        this.captainCoasterDataService.updateSettings(request)
+      );
+      this.ccSettings.set(updated);
+      if (showSuccessMessage) {
+        this.ccSuccessMessage.set('Paramètres enregistrés.');
+      }
+      await this.refreshStatusAsync();
+    } catch (error: unknown) {
+      this.ccErrorMessage.set(this.extractErrorMessage(error));
+    } finally {
+      this.ccIsBusy.set(false);
+    }
   }
 
   protected async startImportAsync(): Promise<void> {
-    const parksFile: File | null = this.ccParksFile();
-    const coastersFile: File | null = this.ccCoastersFile();
-    if (parksFile === null || coastersFile === null) {
-      this.ccErrorMessage.set('Veuillez sélectionner les deux fichiers JSON.');
+    if (!this.ccCanImport()) {
+      this.ccErrorMessage.set('Complétez les paramètres requis avant de lancer le pipeline.');
+      return;
+    }
+
+    const settings: CaptainCoasterSettingsResponse | null = this.ccSettings();
+    if (settings === null) {
+      this.ccErrorMessage.set('Les paramètres de la source ne sont pas encore chargés.');
       return;
     }
 
@@ -187,11 +280,29 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     this.duplicateResolutionStateByResultId.clear();
 
     try {
+      const saveRequest: UpdateCaptainCoasterSettingsRequest = {
+        isEnabled: settings.isEnabled,
+        options: settings.options
+      };
+      const updatedSettings: CaptainCoasterSettingsResponse = await firstValueFrom(
+        this.captainCoasterDataService.updateSettings(saveRequest)
+      );
+      this.ccSettings.set(updatedSettings);
+
+      const request: StartCaptainCoasterImportRequest = {
+        importKind: this.ccImportKind(),
+        urls: this.parseManualUrls(),
+        options: {
+          startAtStep: this.ccStartAtStep()
+        },
+        resumeSessionId: this.resolveResumeSessionId()
+      };
+
       const session: CaptainCoasterSessionResponse = await firstValueFrom(
-        this.captainCoasterDataService.importFromFiles(parksFile, coastersFile)
+        this.captainCoasterDataService.startImport(request)
       );
       this.ccSession.set(session);
-      this.ccSuccessMessage.set('Import démarré. Suivez la progression dans l\'onglet "Progression".');
+      this.ccSuccessMessage.set('Pipeline démarré. Suivez la progression dans l\'onglet "Progression".');
       this.startPolling(session.id);
     } catch (error: unknown) {
       this.ccErrorMessage.set(this.extractErrorMessage(error));
@@ -259,9 +370,10 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   protected toggleSelectPage(checked: boolean): void {
     const items: CaptainCoasterComparisonResultResponse[] = this.ccCurrentItems();
     if (checked) {
-      items.filter(item => !item.isApplied).forEach(item => this.selectedIdsSet.add(item.id));
+      items.filter((item: CaptainCoasterComparisonResultResponse) => !item.isApplied)
+        .forEach((item: CaptainCoasterComparisonResultResponse) => this.selectedIdsSet.add(item.id));
     } else {
-      items.forEach(item => this.selectedIdsSet.delete(item.id));
+      items.forEach((item: CaptainCoasterComparisonResultResponse) => this.selectedIdsSet.delete(item.id));
     }
     this.syncSelectionSignals();
   }
@@ -273,9 +385,9 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     }
 
     const selectedRows: CaptainCoasterComparisonResultResponse[] = this.ccCurrentItems()
-      .filter(item => this.selectedIdsSet.has(item.id));
+      .filter((item: CaptainCoasterComparisonResultResponse) => this.selectedIdsSet.has(item.id));
     const duplicateResolutions: CaptainCoasterDuplicateResolutionRequest[] = this.buildDuplicateResolutions(selectedRows);
-    if (selectedRows.some(item => item.requiresManualResolution) && duplicateResolutions.length === 0) {
+    if (selectedRows.some((item: CaptainCoasterComparisonResultResponse) => item.requiresManualResolution) && duplicateResolutions.length === 0) {
       this.ccErrorMessage.set('Résolvez les doublons sélectionnés avant de lancer l’application.');
       return;
     }
@@ -459,7 +571,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
     const state: DuplicateResolutionState = this.getDuplicateState(item);
     if (state.strategy === 'SelectVariant') {
       const variant: CaptainCoasterExternalVariantResponse | undefined = item.externalVariants
-        .find(entry => entry.externalVariantId === state.selectedExternalVariantId);
+        .find((entry: CaptainCoasterExternalVariantResponse) => entry.externalVariantId === state.selectedExternalVariantId);
       return variant?.displayLabel ?? 'Aucune variante sélectionnée';
     }
 
@@ -474,13 +586,21 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       const status: CaptainCoasterStatusResponse = await firstValueFrom(
         this.captainCoasterDataService.getStatus()
       );
+      const settings: CaptainCoasterSettingsResponse = await firstValueFrom(
+        this.captainCoasterDataService.getSettings()
+      );
       this.ccStatus.set(status);
+      this.ccSettings.set(settings);
 
       try {
         const session: CaptainCoasterSessionResponse | null = await firstValueFrom(
           this.captainCoasterDataService.getLatestSession()
         );
         this.ccSession.set(session);
+        if (session !== null) {
+          this.ccImportKind.set(session.importKind === 'manual-urls' ? 'manual-urls' : 'sitemap');
+          this.ccStartAtStep.set(session.availableSteps?.[0] ?? 'DiscoverUrls');
+        }
         if (session !== null && session.status !== 'Completed' && session.status !== 'Failed') {
           this.startPolling(session.id);
         }
@@ -523,7 +643,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       this.dataSources.set([{
         key: 'captain-coaster',
         label: 'Captain Coaster',
-        description: 'Données de coasters et parcs depuis le scraper Captain Coaster (JSON)',
+        description: 'Acquisition automatisée Captain Coaster via sitemap, URLs ciblées et pipeline de comparaison.',
         icon: 'pi pi-cloud-download',
         isEnabled: false,
         lastImportUtc: null,
@@ -558,7 +678,9 @@ export class AdminDataComponent implements OnInit, OnDestroy {
         this.captainCoasterDataService.getLatestSession().pipe(catchError(() => of(null)))
       )
     ).subscribe((session: CaptainCoasterSessionResponse | null) => {
-      if (session === null || session.id !== sessionId) { return; }
+      if (session === null || session.id !== sessionId) {
+        return;
+      }
       this.ccSession.set(session);
       this.cdr.markForCheck();
 
@@ -567,11 +689,11 @@ export class AdminDataComponent implements OnInit, OnDestroy {
         void this.refreshStatusAsync();
         if (session.status === 'Completed') {
           this.ccSuccessMessage.set(
-            `Import terminé : ${session.parksFetched} parcs, ${session.coastersFetched} coasters, ` +
-            `${session.comparisonResults} différences, dont ${session.duplicateConflicts} conflit(s) à arbitrer.`
+            `Pipeline terminé : ${session.discoveredItems} URL(s) découvertes, ${session.processedItems} fiche(s) traitée(s), ` +
+            `${session.comparisonResults} différence(s), dont ${session.duplicateConflicts} conflit(s) à arbitrer.`
           );
         } else {
-          this.ccErrorMessage.set(`L'import a échoué : ${session.message}`);
+          this.ccErrorMessage.set(`Le pipeline a échoué : ${session.message}`);
         }
         this.cdr.markForCheck();
       }
@@ -593,8 +715,8 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   private syncSelectionSignals(): void {
     this.ccSelectedCount.set(this.selectedIdsSet.size);
     const items: CaptainCoasterComparisonResultResponse[] = this.ccCurrentItems();
-    const unapplied: CaptainCoasterComparisonResultResponse[] = items.filter(item => !item.isApplied);
-    const allPageSelected: boolean = unapplied.length > 0 && unapplied.every(item => this.selectedIdsSet.has(item.id));
+    const unapplied: CaptainCoasterComparisonResultResponse[] = items.filter((item: CaptainCoasterComparisonResultResponse) => !item.isApplied);
+    const allPageSelected: boolean = unapplied.length > 0 && unapplied.every((item: CaptainCoasterComparisonResultResponse) => this.selectedIdsSet.has(item.id));
     this.ccAllPageSelected.set(allPageSelected);
     this.cdr.markForCheck();
   }
@@ -627,7 +749,7 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   }
 
   private getSuggestedVariantId(item: CaptainCoasterComparisonResultResponse): string | null {
-    return item.externalVariants.find(variant => variant.isSuggested)?.externalVariantId
+    return item.externalVariants.find((variant: CaptainCoasterExternalVariantResponse) => variant.isSuggested)?.externalVariantId
       ?? item.externalVariants[0]?.externalVariantId
       ?? null;
   }
@@ -642,13 +764,11 @@ export class AdminDataComponent implements OnInit, OnDestroy {
   }
 
   private getExternalFieldValue(variant: CaptainCoasterExternalVariantResponse, field: string): string | null {
-    const change = variant.changes.find(item => item.field === field);
+    const change: { externalValue: string | null } | undefined = variant.changes.find((item) => item.field === field);
     return change?.externalValue ?? null;
   }
 
-  private buildDuplicateResolutions(
-    items: CaptainCoasterComparisonResultResponse[]
-  ): CaptainCoasterDuplicateResolutionRequest[] {
+  private buildDuplicateResolutions(items: CaptainCoasterComparisonResultResponse[]): CaptainCoasterDuplicateResolutionRequest[] {
     const resolutions: CaptainCoasterDuplicateResolutionRequest[] = [];
 
     for (const item of items) {
@@ -704,6 +824,23 @@ export class AdminDataComponent implements OnInit, OnDestroy {
       sourceType: 'Variant',
       externalVariantId: variantId
     };
+  }
+
+  private resolveResumeSessionId(): string | null {
+    const session: CaptainCoasterSessionResponse | null = this.ccSession();
+    if (!this.ccResumeLatestSession() || session === null || !session.canResume) {
+      return null;
+    }
+
+    return session.id;
+  }
+
+  private parseManualUrls(): string[] {
+    const content: string = this.ccManualUrlsText();
+    return content
+      .split(/\r?\n/g)
+      .map((item: string) => item.trim())
+      .filter((item: string) => item.length > 0);
   }
 
   private extractErrorMessage(error: unknown): string {

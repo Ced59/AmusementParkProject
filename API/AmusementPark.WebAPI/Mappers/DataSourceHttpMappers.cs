@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using AmusementPark.Application.Features.DataSources.Contracts;
 using AmusementPark.Application.Features.DataSources.Results;
 using AmusementPark.WebAPI.Contracts.DataSources;
@@ -40,6 +43,22 @@ internal static class DataSourceHttpMappers
         };
     }
 
+    public static DataSourceImportDescriptor ToApplication(this StartDataSourceImportRequestDto dto, string workingDirectoryPath)
+    {
+        return new DataSourceImportDescriptor
+        {
+            ImportKind = string.IsNullOrWhiteSpace(dto.ImportKind) ? "sitemap" : dto.ImportKind.Trim(),
+            WorkingDirectoryPath = workingDirectoryPath,
+            Urls = dto.Urls
+                .Where(static item => !string.IsNullOrWhiteSpace(item))
+                .Select(static item => item.Trim())
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToList(),
+            Options = new Dictionary<string, string?>(dto.Options, StringComparer.OrdinalIgnoreCase),
+            ResumeSessionId = string.IsNullOrWhiteSpace(dto.ResumeSessionId) ? null : dto.ResumeSessionId.Trim(),
+        };
+    }
+
     public static DataSourceSessionDto ToHttp(this DataSourceSessionResult result)
     {
         return new DataSourceSessionDto
@@ -47,9 +66,13 @@ internal static class DataSourceHttpMappers
             SessionId = result.SessionId,
             SourceKey = result.SourceKey,
             Status = result.Status,
+            ImportKind = result.ImportKind,
             ProgressPercentage = result.ProgressPercentage,
             CurrentStep = result.CurrentStep,
+            LastCompletedStep = result.LastCompletedStep,
             Message = result.Message,
+            CanResume = result.CanResume,
+            AvailableSteps = result.AvailableSteps,
             StartedAtUtc = result.StartedAtUtc,
             CompletedAtUtc = result.CompletedAtUtc,
             Metrics = new DataSourceMetricsDto
@@ -59,6 +82,10 @@ internal static class DataSourceHttpMappers
                 ComparisonResults = result.Metrics.ComparisonResults,
                 AppliedChanges = result.Metrics.AppliedChanges,
                 DuplicateConflicts = result.Metrics.DuplicateConflicts,
+                DiscoveredItems = result.Metrics.DiscoveredItems,
+                ProcessedItems = result.Metrics.ProcessedItems,
+                FailedItems = result.Metrics.FailedItems,
+                SkippedItems = result.Metrics.SkippedItems,
             },
             Logs = result.Logs.Select(log => new DataSourceLogDto
             {

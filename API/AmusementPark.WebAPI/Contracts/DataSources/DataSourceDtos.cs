@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AmusementPark.WebAPI.Contracts.DataSources;
@@ -33,6 +35,18 @@ public sealed class UpdateDataSourceSettingsDto
     public Dictionary<string, string?> Options { get; set; } = new Dictionary<string, string?>(StringComparer.OrdinalIgnoreCase);
 }
 
+public sealed class StartDataSourceImportRequestDto
+{
+    [Required]
+    public string ImportKind { get; set; } = "sitemap";
+
+    public List<string> Urls { get; set; } = new List<string>();
+
+    public Dictionary<string, string?> Options { get; set; } = new Dictionary<string, string?>(StringComparer.OrdinalIgnoreCase);
+
+    public string? ResumeSessionId { get; set; }
+}
+
 public sealed class DataSourceSessionDto
 {
     public string SessionId { get; set; } = string.Empty;
@@ -41,11 +55,19 @@ public sealed class DataSourceSessionDto
 
     public string Status { get; set; } = string.Empty;
 
+    public string ImportKind { get; set; } = string.Empty;
+
     public int ProgressPercentage { get; set; }
 
     public string CurrentStep { get; set; } = string.Empty;
 
+    public string? LastCompletedStep { get; set; }
+
     public string Message { get; set; } = string.Empty;
+
+    public bool CanResume { get; set; }
+
+    public IReadOnlyCollection<string> AvailableSteps { get; set; } = Array.Empty<string>();
 
     public DateTime StartedAtUtc { get; set; }
 
@@ -67,6 +89,14 @@ public sealed class DataSourceMetricsDto
     public int AppliedChanges { get; set; }
 
     public int DuplicateConflicts { get; set; }
+
+    public int DiscoveredItems { get; set; }
+
+    public int ProcessedItems { get; set; }
+
+    public int FailedItems { get; set; }
+
+    public int SkippedItems { get; set; }
 }
 
 public sealed class DataSourceLogDto
@@ -158,7 +188,7 @@ public sealed class ApplyDataSourceComparisonRequestDto
 {
     public string? SessionId { get; set; }
 
-    public IReadOnlyCollection<string> ComparisonResultIds { get; set; } = Array.Empty<string>();
+    public List<string> ComparisonResultIds { get; set; } = new List<string>();
 
     public bool ApplyAll { get; set; }
 
@@ -166,24 +196,22 @@ public sealed class ApplyDataSourceComparisonRequestDto
 
     public string? ChangeTypeFilter { get; set; }
 
-    public IReadOnlyCollection<DataSourceDuplicateResolutionDto> DuplicateResolutions { get; set; } = Array.Empty<DataSourceDuplicateResolutionDto>();
+    public List<DataSourceDuplicateResolutionDto> DuplicateResolutions { get; set; } = new List<DataSourceDuplicateResolutionDto>();
 }
 
 public sealed class DataSourceDuplicateResolutionDto
 {
-    [Required]
     public string ComparisonResultId { get; set; } = string.Empty;
 
     public string Strategy { get; set; } = "SelectVariant";
 
     public string? SelectedExternalVariantId { get; set; }
 
-    public IReadOnlyCollection<DataSourceFieldResolutionDto> FieldResolutions { get; set; } = Array.Empty<DataSourceFieldResolutionDto>();
+    public List<DataSourceFieldResolutionDto> FieldResolutions { get; set; } = new List<DataSourceFieldResolutionDto>();
 }
 
 public sealed class DataSourceFieldResolutionDto
 {
-    [Required]
     public string Field { get; set; } = string.Empty;
 
     public string SourceType { get; set; } = "Variant";

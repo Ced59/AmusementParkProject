@@ -1,4 +1,7 @@
+using System;
+using System.Linq;
 using AmusementPark.Application.Errors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmusementPark.WebAPI.Responses;

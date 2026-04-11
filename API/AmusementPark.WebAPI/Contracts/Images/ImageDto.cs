@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using AmusementPark.WebAPI.Contracts.Common;
 
 namespace AmusementPark.WebAPI.Contracts.Images;

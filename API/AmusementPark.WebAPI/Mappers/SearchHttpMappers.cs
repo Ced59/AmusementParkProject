@@ -1,3 +1,4 @@
+using System;
 using AmusementPark.Application.Features.Search.Results;
 using AmusementPark.WebAPI.Contracts.Searching;
 

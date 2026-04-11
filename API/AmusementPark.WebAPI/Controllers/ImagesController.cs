@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Errors;
@@ -10,6 +14,7 @@ using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Images;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmusementPark.WebAPI.Controllers;
@@ -75,7 +80,7 @@ public sealed class ImagesController : ControllerBase
             return this.BadRequest(new { StatusCode = 400, Message = "No image filename provided." });
         }
 
-        await using Stream content = image.File.OpenReadStream();
+        await using System.IO.Stream content = image.File.OpenReadStream();
         FilePayload file = new FilePayload
         {
             FileName = image.File.FileName,
@@ -293,7 +298,7 @@ public sealed class ImagesController : ControllerBase
             return this.NotFound();
         }
 
-        (Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetBestAsync(result.Value.Path, this.Request.Headers.Accept.ToString(), cancellationToken);
+        (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetBestAsync(result.Value.Path, this.Request.Headers.Accept.ToString(), cancellationToken);
         if (binary is null)
         {
             return this.NotFound();

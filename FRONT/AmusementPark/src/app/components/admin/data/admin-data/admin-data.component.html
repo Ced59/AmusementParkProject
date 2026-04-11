@@ -37,7 +37,7 @@
   <ng-container *ngIf="selectedSourceKey() === 'captain-coaster'">
     <div class="page-header">
       <button pButton type="button" label="Retour aux sources" icon="pi pi-arrow-left" class="p-button-text p-button-sm" (click)="backToSources()"></button>
-      <h2 class="page-title"><i class="pi pi-cloud-download"></i> Captain Coaster — Intégration JSON</h2>
+      <h2 class="page-title"><i class="pi pi-cloud-download"></i> Captain Coaster — Acquisition automatisée</h2>
     </div>
 
     <div class="messages" *ngIf="ccErrorMessage() || ccSuccessMessage()">
@@ -47,7 +47,7 @@
 
     <p-tabs value="0">
       <p-tablist>
-        <p-tab value="0"><i class="pi pi-upload"></i> Import JSON</p-tab>
+        <p-tab value="0"><i class="pi pi-cog"></i> Acquisition</p-tab>
         <p-tab value="1" [disabled]="ccSession() === null">
           <i class="pi pi-chart-bar"></i> Progression
           <span *ngIf="ccIsSessionRunning()" class="tab-pulse">●</span>
@@ -60,43 +60,12 @@
 
       <p-tabpanels>
         <p-tabpanel value="0">
-          <p-card header="Importer les fichiers JSON du scraper Captain Coaster">
+          <p-card header="Configurer et lancer le pipeline Captain Coaster">
             <p class="import-description">
-              Fournissez les deux fichiers JSON générés par le scraper Captain Coaster.
-              Les données seront comparées aux données locales et les doublons externes resteront arbitré(s)
-              par un humain dans l'onglet <strong>Comparaison</strong>.
+              Le pipeline récupère automatiquement les URLs depuis le sitemap ou une liste ciblée,
+              télécharge chaque page à la volée, l'analyse, enrichit les coordonnées des parcs depuis la carte,
+              puis construit la comparaison avec les données locales. Les pages HTML sont traitées en flux et ne sont pas conservées durablement sur le serveur.
             </p>
-
-            <div class="import-form">
-              <div class="file-field">
-                <label class="file-label">
-                  <span class="file-label__text"><i class="pi pi-map-marker"></i> <code>detected-parks.json</code></span>
-                  <span class="file-label__hint">Liste des parcs détectés par le scraper</span>
-                </label>
-                <div class="file-input-row">
-                  <input type="file" accept=".json" class="file-input" (change)="onParksFileSelected($event)" />
-                  <span class="file-selected" *ngIf="ccParksFile()">
-                    <i class="pi pi-check-circle"></i> {{ ccParksFile()!.name }}
-                  </span>
-                </div>
-              </div>
-
-              <div class="file-field">
-                <label class="file-label">
-                  <span class="file-label__text"><i class="pi pi-ticket"></i> <code>coasters.json</code></span>
-                  <span class="file-label__hint">Liste des coasters avec leurs caractéristiques</span>
-                </label>
-                <div class="file-input-row">
-                  <input type="file" accept=".json" class="file-input" (change)="onCoastersFileSelected($event)" />
-                  <span class="file-selected" *ngIf="ccCoastersFile()">
-                    <i class="pi pi-check-circle"></i> {{ ccCoastersFile()!.name }}
-                  </span>
-                </div>
-              </div>
-
-              <button pButton type="button" label="Lancer l'import et la comparaison" icon="pi pi-play"
-                [disabled]="!ccCanImport()" (click)="startImportAsync()"></button>
-            </div>
 
             <div class="status-grid" *ngIf="ccStatus() as s">
               <div class="status-card">
@@ -108,15 +77,135 @@
                 <strong>{{ s.totalSessionsCount }}</strong>
               </div>
             </div>
+
+            <div *ngIf="ccSettings() as settings" class="import-form">
+              <div class="file-field">
+                <label class="file-label">
+                  <span class="file-label__text"><i class="pi pi-power-off"></i> Source active</span>
+                  <span class="file-label__hint">Désactivez la source pour empêcher les lancements.</span>
+                </label>
+                <div class="file-input-row">
+                  <p-checkbox [binary]="true" [ngModel]="settings.isEnabled" (ngModelChange)="setSettingsEnabled($event)"></p-checkbox>
+                  <span class="file-selected">{{ settings.isEnabled ? 'Activée' : 'Désactivée' }}</span>
+                </div>
+              </div>
+
+              <div class="file-field">
+                <label class="file-label">
+                  <span class="file-label__text"><i class="pi pi-sitemap"></i> Mode d'acquisition</span>
+                  <span class="file-label__hint">Choisissez entre sitemap complet et URLs ciblées.</span>
+                </label>
+                <div class="file-input-row">
+                  <select class="merge-row__select" [ngModel]="ccImportKind()" (ngModelChange)="setImportKind($event)">
+                    <option value="sitemap">Sitemap complet</option>
+                    <option value="manual-urls">URLs ciblées</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="file-field" *ngIf="ccImportKind() === 'manual-urls'">
+                <label class="file-label">
+                  <span class="file-label__text"><i class="pi pi-link"></i> URLs à analyser</span>
+                  <span class="file-label__hint">Une URL par ligne dans le textarea.</span>
+                </label>
+                <div class="file-input-row file-input-row--stacked">
+                  <textarea
+                    rows="8"
+                    class="file-input"
+                    [ngModel]="ccManualUrlsText()"
+                    (ngModelChange)="setManualUrlsText($event)"
+                    placeholder="https://captaincoaster.com/fr/coasters/...&#10;https://captaincoaster.com/fr/coasters/...">
+                  </textarea>
+                  <span class="file-selected" *ngIf="ccManualUrlCount() > 0">
+                    <i class="pi pi-check-circle"></i> {{ ccManualUrlCount() }} URL(s) prête(s) à être analysée(s)
+                  </span>
+                </div>
+              </div>
+
+              <div class="file-field">
+                <label class="file-label">
+                  <span class="file-label__text"><i class="pi pi-step-forward"></i> Démarrer à l'étape</span>
+                  <span class="file-label__hint">Permet de reprendre à l'étape souhaitée.</span>
+                </label>
+                <div class="file-input-row">
+                  <select class="merge-row__select" [ngModel]="ccStartAtStep()" (ngModelChange)="setStartAtStep($event)">
+                    <option *ngFor="let option of scrapingStepOptions" [ngValue]="option.value">{{ option.label }}</option>
+                  </select>
+                  <label class="checkbox-inline">
+                    <p-checkbox [binary]="true" [ngModel]="ccResumeLatestSession()" (ngModelChange)="setResumeLatestSession($event)"></p-checkbox>
+                    <span>Reprendre la dernière session si possible</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="file-field">
+                <label class="file-label">
+                  <span class="file-label__text"><i class="pi pi-map"></i> Sitemap & carte</span>
+                  <span class="file-label__hint">URLs principales utilisées par le provider.</span>
+                </label>
+                <div class="file-input-row file-input-row--stacked">
+                  <input type="text" class="file-input" [ngModel]="getSettingValue('sitemapUrl')" (ngModelChange)="setSettingValue('sitemapUrl', $event)" placeholder="https://captaincoaster.com/sitemap.xml" />
+                  <input type="text" class="file-input" [ngModel]="getSettingValue('mapPageUrl')" (ngModelChange)="setSettingValue('mapPageUrl', $event)" placeholder="https://captaincoaster.com/fr/map/" />
+                </div>
+              </div>
+
+              <div class="file-field">
+                <label class="file-label">
+                  <span class="file-label__text"><i class="pi pi-sliders-h"></i> Limites & temporisation</span>
+                  <span class="file-label__hint">Valeurs persistées en base pour ajuster le scraping.</span>
+                </label>
+                <div class="file-input-row">
+                  <input type="number" class="file-input" [ngModel]="getSettingValue('delayBetweenRequestsMs')" (ngModelChange)="setSettingValue('delayBetweenRequestsMs', $event)" placeholder="Délai ms" />
+                  <input type="number" class="file-input" [ngModel]="getSettingValue('httpTimeoutSeconds')" (ngModelChange)="setSettingValue('httpTimeoutSeconds', $event)" placeholder="Timeout s" />
+                  <input type="number" class="file-input" [ngModel]="getSettingValue('maxRetryCount')" (ngModelChange)="setSettingValue('maxRetryCount', $event)" placeholder="Retries" />
+                  <input type="number" class="file-input" [ngModel]="getSettingValue('skipCoasterCount')" (ngModelChange)="setSettingValue('skipCoasterCount', $event)" placeholder="Skip" />
+                  <input type="number" class="file-input" [ngModel]="getSettingValue('maxCoasterCount')" (ngModelChange)="setSettingValue('maxCoasterCount', $event)" placeholder="Max" />
+                </div>
+              </div>
+
+              <div class="file-field">
+                <label class="file-label">
+                  <span class="file-label__text"><i class="pi pi-code"></i> Sélecteurs HTML / XPath</span>
+                  <span class="file-label__hint">Paramètres modifiables sans redéploiement.</span>
+                </label>
+                <div class="file-input-row file-input-row--stacked">
+                  <input type="text" class="file-input" [ngModel]="getSettingValue('mapMarkersAttributeName')" (ngModelChange)="setSettingValue('mapMarkersAttributeName', $event)" placeholder="Attribut markers map" />
+                  <input type="text" class="file-input" [ngModel]="getSettingValue('coasterTitleXPath')" (ngModelChange)="setSettingValue('coasterTitleXPath', $event)" placeholder="XPath titre" />
+                  <input type="text" class="file-input" [ngModel]="getSettingValue('characteristicsItemXPath')" (ngModelChange)="setSettingValue('characteristicsItemXPath', $event)" placeholder="XPath bloc caractéristiques" />
+                  <input type="text" class="file-input" [ngModel]="getSettingValue('characteristicLabelXPath')" (ngModelChange)="setSettingValue('characteristicLabelXPath', $event)" placeholder="XPath label caractéristique" />
+                  <input type="text" class="file-input" [ngModel]="getSettingValue('characteristicValueXPath')" (ngModelChange)="setSettingValue('characteristicValueXPath', $event)" placeholder="XPath valeur caractéristique" />
+                  <input type="text" class="file-input" [ngModel]="getSettingValue('topMetricXPath')" (ngModelChange)="setSettingValue('topMetricXPath', $event)" placeholder="XPath métriques haut de page" />
+                  <label class="checkbox-inline">
+                    <p-checkbox [binary]="true" [ngModel]="getSettingValue('enrichParkCoordinates') === 'True' || getSettingValue('enrichParkCoordinates') === 'true'"
+                      (ngModelChange)="setSettingValue('enrichParkCoordinates', $event ? 'true' : 'false')"></p-checkbox>
+                    <span>Enrichir automatiquement les coordonnées des parcs</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="bulk-actions__buttons">
+                <button pButton type="button" label="Enregistrer les paramètres" icon="pi pi-save"
+                  class="p-button-sm p-button-outlined"
+                  [disabled]="ccIsBusy()"
+                  (click)="saveSettingsAsync()"></button>
+                <button pButton type="button" label="Lancer le pipeline" icon="pi pi-play"
+                  class="p-button-sm"
+                  [disabled]="!ccCanImport()"
+                  (click)="startImportAsync()"></button>
+              </div>
+            </div>
           </p-card>
         </p-tabpanel>
 
         <p-tabpanel value="1">
-          <p-card header="Progression de l'import">
+          <p-card header="Progression du pipeline">
             <div *ngIf="ccSession() as session" class="session-panel">
               <div class="session-topline">
                 <p-tag [value]="session.status" [severity]="getSessionStatusSeverity(session.status)"></p-tag>
                 <span>{{ session.currentStep }}</span>
+                <span class="running-hint" *ngIf="session.importKind">
+                  Mode : {{ session.importKind }}
+                </span>
                 <span *ngIf="ccIsSessionRunning()" class="running-hint">
                   <i class="pi pi-spin pi-spinner"></i> En cours...
                 </span>
@@ -126,11 +215,26 @@
               <p class="session-message">{{ session.message }}</p>
 
               <div class="metrics-grid">
-                <div class="metric-card"><span class="metric-card__label">Parcs parsés</span><strong>{{ session.parksFetched }}</strong></div>
+                <div class="metric-card"><span class="metric-card__label">URLs découvertes</span><strong>{{ session.discoveredItems }}</strong></div>
+                <div class="metric-card"><span class="metric-card__label">Fiches traitées</span><strong>{{ session.processedItems }}</strong></div>
+                <div class="metric-card"><span class="metric-card__label">Parcs dérivés</span><strong>{{ session.parksFetched }}</strong></div>
                 <div class="metric-card"><span class="metric-card__label">Coasters parsés</span><strong>{{ session.coastersFetched }}</strong></div>
                 <div class="metric-card"><span class="metric-card__label">Différences</span><strong>{{ session.comparisonResults }}</strong></div>
                 <div class="metric-card"><span class="metric-card__label">Doublons à arbitrer</span><strong>{{ session.duplicateConflicts }}</strong></div>
+                <div class="metric-card"><span class="metric-card__label">Échecs</span><strong>{{ session.failedItems }}</strong></div>
+                <div class="metric-card"><span class="metric-card__label">Ignorés</span><strong>{{ session.skippedItems }}</strong></div>
                 <div class="metric-card"><span class="metric-card__label">Appliqués</span><strong>{{ session.appliedChanges }}</strong></div>
+              </div>
+
+              <div class="status-grid" *ngIf="session.availableSteps.length > 0">
+                <div class="status-card">
+                  <span class="status-card__label">Étapes disponibles</span>
+                  <strong>{{ session.availableSteps.join(' → ') }}</strong>
+                </div>
+                <div class="status-card">
+                  <span class="status-card__label">Dernière étape terminée</span>
+                  <strong>{{ session.lastCompletedStep || 'Aucune' }}</strong>
+                </div>
               </div>
 
               <div class="logs-panel" *ngIf="session.logs.length > 0">

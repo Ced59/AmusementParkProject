@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.DataSources.Commands;
@@ -10,6 +15,7 @@ using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmusementPark.WebAPI.Controllers;
@@ -168,13 +174,10 @@ public sealed class DataSourcesController : ControllerBase
     }
 
     [HttpPost("{sourceKey}/import")]
-    [Consumes("multipart/form-data")]
-    [RequestSizeLimit(200 * 1024 * 1024)]
     [ProducesResponseType(typeof(DataSourceSessionDto), StatusCodes.Status202Accepted)]
     public async Task<IActionResult> StartImportAsync(
         [FromRoute] string sourceKey,
-        [FromForm] string? importKind,
-        [FromForm] List<IFormFile>? files,
+        [FromBody] StartDataSourceImportRequestDto dto,
         CancellationToken cancellationToken = default)
     {
         string workingDirectoryPath = Path.Combine(Path.GetTempPath(), "amusement-park", "data-sources", sourceKey, Guid.NewGuid().ToString("N"));
@@ -182,7 +185,7 @@ public sealed class DataSourcesController : ControllerBase
 
         try
         {
-            DataSourceImportDescriptor descriptor = await BuildImportDescriptorAsync(importKind, files, workingDirectoryPath, cancellationToken);
+            DataSourceImportDescriptor descriptor = dto.ToApplication(workingDirectoryPath);
             ApplicationResult<DataSourceSessionResult> result = await this.startDataSourceImportCommandHandler.HandleAsync(
                 new StartDataSourceImportCommand(sourceKey, descriptor),
                 cancellationToken);
@@ -219,48 +222,6 @@ public sealed class DataSourcesController : ControllerBase
         {
             AppliedCount = result.Value.AppliedCount,
         });
-    }
-
-    private static async Task<DataSourceImportDescriptor> BuildImportDescriptorAsync(string? importKind, IReadOnlyCollection<IFormFile>? files, string workingDirectoryPath, CancellationToken cancellationToken)
-    {
-        List<DataSourceInputFileDescriptor> fileDescriptors = new List<DataSourceInputFileDescriptor>();
-        IReadOnlyCollection<IFormFile> effectiveFiles = files ?? Array.Empty<IFormFile>();
-        int index = 0;
-
-        foreach (IFormFile file in effectiveFiles)
-        {
-            string originalFileName = string.IsNullOrWhiteSpace(file.FileName)
-                ? $"file-{index + 1}"
-                : Path.GetFileName(file.FileName);
-
-            string storedFileName = $"{index:D2}_{originalFileName}";
-            string storedFilePath = Path.Combine(workingDirectoryPath, storedFileName);
-
-            await using (FileStream outputStream = System.IO.File.Create(storedFilePath))
-            {
-                await file.CopyToAsync(outputStream, cancellationToken);
-            }
-
-            string key = !string.IsNullOrWhiteSpace(file.Name)
-                ? file.Name
-                : Path.GetFileNameWithoutExtension(originalFileName);
-
-            fileDescriptors.Add(new DataSourceInputFileDescriptor
-            {
-                Key = key,
-                OriginalFileName = originalFileName,
-                StoredFilePath = storedFilePath,
-            });
-
-            index++;
-        }
-
-        return new DataSourceImportDescriptor
-        {
-            ImportKind = string.IsNullOrWhiteSpace(importKind) ? "json-files" : importKind.Trim(),
-            WorkingDirectoryPath = workingDirectoryPath,
-            Files = fileDescriptors,
-        };
     }
 
     private static void DeleteWorkingDirectorySafe(string workingDirectoryPath)

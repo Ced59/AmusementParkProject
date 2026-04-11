@@ -1,9 +1,12 @@
 using System.Security.Claims;
+using System.Threading;
+using System.Threading.Tasks;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Users.Queries;
 using AmusementPark.Core.Domain.Users;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace AmusementPark.WebAPI.Authorization;
 

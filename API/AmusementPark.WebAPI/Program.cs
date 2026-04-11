@@ -1,5 +1,7 @@
 using AmusementPark.Infrastructure.DependencyInjection;
 using AmusementPark.WebAPI.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

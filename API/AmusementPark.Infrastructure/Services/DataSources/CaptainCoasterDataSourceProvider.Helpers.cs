@@ -169,9 +169,13 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             SessionId = session.Id,
             SourceKey = SourceKeyValue,
             Status = session.Status,
+            ImportKind = session.ImportKind,
             ProgressPercentage = session.ProgressPercentage,
             CurrentStep = session.CurrentStep,
+            LastCompletedStep = session.LastCompletedStep,
             Message = session.Message,
+            CanResume = session.CanResume,
+            AvailableSteps = session.AvailableSteps,
             StartedAtUtc = session.StartedAtUtc,
             CompletedAtUtc = session.CompletedAtUtc,
             Metrics = new DataSourceMetricsResult
@@ -181,6 +185,10 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 ComparisonResults = session.Metrics.ComparisonResults,
                 AppliedChanges = session.Metrics.AppliedChanges,
                 DuplicateConflicts = session.Metrics.DuplicateConflicts,
+                DiscoveredItems = session.Metrics.DiscoveredItems,
+                ProcessedItems = session.Metrics.ProcessedItems,
+                FailedItems = session.Metrics.FailedItems,
+                SkippedItems = session.Metrics.SkippedItems,
             },
             Logs = session.Logs.Select(item => new DataSourceLogResult
             {

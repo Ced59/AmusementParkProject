@@ -16,12 +16,37 @@ export interface CaptainCoasterStatusResponse {
   totalSessionsCount: number;
 }
 
+export interface CaptainCoasterSettingsResponse {
+  sourceKey: string;
+  displayName: string;
+  isEnabled: boolean;
+  options: Record<string, string | null>;
+}
+
+export interface UpdateCaptainCoasterSettingsRequest {
+  isEnabled: boolean;
+  options: Record<string, string | null>;
+}
+
+export type CaptainCoasterImportKind = 'sitemap' | 'manual-urls' | 'json-files';
+
+export interface StartCaptainCoasterImportRequest {
+  importKind: CaptainCoasterImportKind;
+  urls: string[];
+  options: Record<string, string | null>;
+  resumeSessionId: string | null;
+}
+
 export interface CaptainCoasterSessionResponse {
   id: string;
   status: string;
+  importKind: string;
   progressPercentage: number;
   currentStep: string;
+  lastCompletedStep: string | null;
   message: string;
+  canResume: boolean;
+  availableSteps: string[];
   startedAtUtc: string;
   completedAtUtc: string | null;
   parksFetched: number;
@@ -29,6 +54,10 @@ export interface CaptainCoasterSessionResponse {
   comparisonResults: number;
   appliedChanges: number;
   duplicateConflicts: number;
+  discoveredItems: number;
+  processedItems: number;
+  failedItems: number;
+  skippedItems: number;
   logs: CaptainCoasterSessionLogResponse[];
 }
 

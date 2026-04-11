@@ -1,3 +1,4 @@
+using System.Linq;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Users.Contracts;

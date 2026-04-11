@@ -34,6 +34,51 @@ public sealed class CaptainCoasterSettingsDocument : MongoDocumentBase
     [BsonElement("lastSuccessfulSyncUtc")]
     [BsonIgnoreIfNull]
     public DateTime? LastSuccessfulSyncUtc { get; set; }
+
+    [BsonElement("sitemapUrl")]
+    [BsonIgnoreIfNull]
+    public string? SitemapUrl { get; set; }
+
+    [BsonElement("mapPageUrl")]
+    [BsonIgnoreIfNull]
+    public string? MapPageUrl { get; set; }
+
+    [BsonElement("delayBetweenRequestsMs")]
+    public int DelayBetweenRequestsMs { get; set; } = 1200;
+
+    [BsonElement("httpTimeoutSeconds")]
+    public int HttpTimeoutSeconds { get; set; } = 30;
+
+    [BsonElement("maxRetryCount")]
+    public int MaxRetryCount { get; set; } = 3;
+
+    [BsonElement("maxCoasterCount")]
+    [BsonIgnoreIfNull]
+    public int? MaxCoasterCount { get; set; }
+
+    [BsonElement("skipCoasterCount")]
+    public int SkipCoasterCount { get; set; }
+
+    [BsonElement("enrichParkCoordinates")]
+    public bool EnrichParkCoordinates { get; set; } = true;
+
+    [BsonElement("mapMarkersAttributeName")]
+    public string MapMarkersAttributeName { get; set; } = "data-map-markers-value";
+
+    [BsonElement("coasterTitleXPath")]
+    public string CoasterTitleXPath { get; set; } = "//h1";
+
+    [BsonElement("characteristicsItemXPath")]
+    public string CharacteristicsItemXPath { get; set; } = "//div[contains(@class,'list-group-item')]";
+
+    [BsonElement("characteristicLabelXPath")]
+    public string CharacteristicLabelXPath { get; set; } = ".//label";
+
+    [BsonElement("characteristicValueXPath")]
+    public string CharacteristicValueXPath { get; set; } = ".//div[contains(@class,'pull-right')]";
+
+    [BsonElement("topMetricXPath")]
+    public string TopMetricXPath { get; set; } = "//button[contains(@class,'btn-float-lg')]//div[contains(@class,'text-bold')]";
 }
 
 /// <summary>
@@ -63,6 +108,22 @@ public sealed class CaptainCoasterSyncSessionDocument : MongoDocumentBase
     [BsonElement("message")]
     public string Message { get; set; } = string.Empty;
 
+    [BsonElement("importKind")]
+    public string ImportKind { get; set; } = string.Empty;
+
+    [BsonElement("lastCompletedStep")]
+    [BsonIgnoreIfNull]
+    public string? LastCompletedStep { get; set; }
+
+    [BsonElement("availableSteps")]
+    public List<string> AvailableSteps { get; set; } = new List<string>();
+
+    [BsonElement("canResume")]
+    public bool CanResume { get; set; }
+
+    [BsonElement("discoveredUrls")]
+    public List<string> DiscoveredUrls { get; set; } = new List<string>();
+
     [BsonElement("metrics")]
     public CaptainCoasterSyncMetricsDocument Metrics { get; set; } = new CaptainCoasterSyncMetricsDocument();
 
@@ -86,6 +147,18 @@ public sealed class CaptainCoasterSyncMetricsDocument
 
     [BsonElement("duplicateConflicts")]
     public int DuplicateConflicts { get; set; }
+
+    [BsonElement("discoveredItems")]
+    public int DiscoveredItems { get; set; }
+
+    [BsonElement("processedItems")]
+    public int ProcessedItems { get; set; }
+
+    [BsonElement("failedItems")]
+    public int FailedItems { get; set; }
+
+    [BsonElement("skippedItems")]
+    public int SkippedItems { get; set; }
 }
 
 public sealed class CaptainCoasterSyncLogEntryDocument

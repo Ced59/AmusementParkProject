@@ -1,4 +1,7 @@
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.Threading;
+using System.Threading.Tasks;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
@@ -12,6 +15,7 @@ using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmusementPark.WebAPI.Controllers;

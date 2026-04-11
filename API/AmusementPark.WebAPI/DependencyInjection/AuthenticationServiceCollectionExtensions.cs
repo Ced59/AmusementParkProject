@@ -1,8 +1,12 @@
+using System;
 using System.Text;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using AmusementPark.WebAPI.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
 namespace AmusementPark.WebAPI.DependencyInjection;
