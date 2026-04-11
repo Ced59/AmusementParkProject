@@ -1,5 +1,5 @@
 <app-page-state
-  [state]="pageState"
+  [state]="state().kind"
   loadingTitleKey="admin.loading"
   loadingMessageKey="admin.loading"
   errorTitleKey="common.errorTitle"
@@ -10,11 +10,11 @@
 
     <div class="admin-images-layout">
       <div class="images-list">
-        @if (images.length === 0) {
+        @if (images().length === 0) {
           <p>{{ 'common.emptyMessage' | translate }}</p>
         }
 
-        @for (image of images; track trackById($index, image)) {
+        @for (image of images(); track trackById($index, image)) {
           <button type="button" class="image-list-item" (click)="selectImage(image)">
             <img [src]="imagesApiService.buildImageUrl(image.id)" [alt]="image.description || image.originalFileName || image.id">
             <div>
@@ -27,29 +27,29 @@
       </div>
 
       <div class="image-editor">
-        @if (selectedImage) {
-          <h3>{{ selectedImage.originalFileName || selectedImage.id }}</h3>
-          <img class="selected-preview" [src]="imagesApiService.buildImageUrl(selectedImage.id)" [alt]="selectedImage.description || selectedImage.id">
+        <ng-container *ngIf="selectedImage() as currentImage">
+          <h3>{{ currentImage.originalFileName || currentImage.id }}</h3>
+          <img class="selected-preview" [src]="imagesApiService.buildImageUrl(currentImage.id)" [alt]="currentImage.description || currentImage.id">
           <label>Description</label>
-          <input [(ngModel)]="selectedImage.description">
+          <input [ngModel]="currentImage.description" (ngModelChange)="updateSelectedImageDescription($event)">
           <label>Published</label>
-          <input type="checkbox" [(ngModel)]="selectedImage.isPublished">
+          <input type="checkbox" [ngModel]="currentImage.isPublished" (ngModelChange)="updateSelectedImagePublished($event)">
 
-          @if (selectedImage.geoLocation) {
+          @if (currentImage.geoLocation) {
             <label>Latitude</label>
-            <input type="number" [(ngModel)]="selectedImage.geoLocation.latitude">
+            <input type="number" [ngModel]="currentImage.geoLocation.latitude" (ngModelChange)="updateSelectedImageLatitude($event)">
             <label>Longitude</label>
-            <input type="number" [(ngModel)]="selectedImage.geoLocation.longitude">
+            <input type="number" [ngModel]="currentImage.geoLocation.longitude" (ngModelChange)="updateSelectedImageLongitude($event)">
           }
 
           <h4>Tags</h4>
           <div class="tags-grid">
-            @for (tag of tags; track trackById($index, tag)) {
-              <label><input type="checkbox" [checked]="selectedImage.tagIds.includes(tag.id)" (change)="toggleTag(tag.id, $any($event.target).checked)"> {{ tag.slug }}</label>
+            @for (tag of tags(); track trackById($index, tag)) {
+              <label><input type="checkbox" [checked]="currentImage.tagIds.includes(tag.id)" (change)="toggleTag(tag.id, $any($event.target).checked)"> {{ tag.slug }}</label>
             }
           </div>
           <button type="button" (click)="saveImage()">Save image</button>
-        }
+        </ng-container>
 
         <div class="tag-create">
           <h3>Create tag</h3>

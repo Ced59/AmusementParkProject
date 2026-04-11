@@ -1,18 +1,12 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { PageStateComponent } from '../../shared/page-state/page-state.component';
 import { Park } from '../../../models/parks/park';
 import { ParkItem } from '../../../models/parks/park-item';
-import { ViewState } from '../../../models/shared/view-state';
-import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
-import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { TranslationService } from '../../../services/translation.service';
-import { commitViewUpdate } from '../../../utils/change-detection.utils';
 import { buildParkSlug } from '../../../commons/park-presentation.utils';
 import {
   buildEntitySlug,
@@ -22,6 +16,7 @@ import {
 } from '../../../commons/park-item-presentation.utils';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonDirective } from 'primeng/button';
+import { ParkItemDetailStateFacade } from '@features/public/park-items/state/park-item-detail-state.facade';
 
 interface ParkItemDetailRow {
   labelKey: string;
@@ -32,108 +27,104 @@ interface ParkItemDetailRow {
   selector: 'app-park-item-detail',
   templateUrl: './park-item-detail.component.html',
   styleUrls: ['./park-item-detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ParkItemDetailStateFacade],
   imports: [NgFor, NgIf, RouterLink, PageStateComponent, TranslateModule, ButtonDirective]
 })
-export class ParkItemDetailComponent implements OnInit, OnDestroy {
-  pageState: ViewState = ViewState.Loading;
-  currentLang: string = 'en';
+export class ParkItemDetailComponent implements OnInit {
+  protected readonly state = this.stateFacade.state;
+  protected readonly item = this.stateFacade.item;
+  protected readonly park = this.stateFacade.park;
+  protected readonly manufacturerName = this.stateFacade.manufacturerName;
+  protected readonly zoneName = this.stateFacade.zoneName;
+  protected readonly currentLang = signal<string>('en');
 
-  item: ParkItem | null = null;
-  park: Park | null = null;
-  manufacturerName: string | null = null;
-  zoneName: string | null = null;
-
-  private readonly subscriptions: Subscription = new Subscription();
+  private readonly destroyRef: DestroyRef = inject(DestroyRef);
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly parkItemsApiService: ParkItemsApiService,
-    private readonly parksApiService: ParksApiService,
-    private readonly manufacturersApiService: ManufacturersApiService,
-    private readonly parkZonesApiService: ParkZonesApiService,
     private readonly translationService: TranslationService,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly stateFacade: ParkItemDetailStateFacade
   ) {
   }
 
   ngOnInit(): void {
     if (this.route.parent) {
-      this.subscriptions.add(this.route.parent.paramMap.subscribe((params: ParamMap) => {
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.currentLang = params.get('lang') ?? 'en';
-        });
-      }));
+      this.route.parent.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {
+        this.currentLang.set(params.get('lang') ?? 'en');
+      });
     }
 
-    this.subscriptions.add(this.translationService.languageChanged.subscribe((lang: string) => {
-      commitViewUpdate(this.changeDetectorRef, () => {
-        this.currentLang = lang;
-      });
-    }));
+    this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((lang: string) => {
+      this.currentLang.set(lang);
+    });
 
-    this.subscriptions.add(this.route.paramMap.subscribe((params: ParamMap) => {
+    this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {
       const itemId: string | null = params.get('itemId');
+
       if (!itemId) {
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.pageState = ViewState.Error;
-        });
         return;
       }
 
-      this.loadItem(itemId);
-    }));
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+      this.stateFacade.loadItem(itemId);
+    });
   }
 
   get categoryLabelKey(): string {
-    return getParkItemCategoryTranslationKey(this.item?.category);
+    return getParkItemCategoryTranslationKey(this.item()?.category);
   }
 
   get typeLabelKey(): string {
-    return getParkItemTypeTranslationKey(this.item?.type);
+    return getParkItemTypeTranslationKey(this.item()?.type);
   }
 
   get description(): string | null {
-    return resolveParkItemDescription(this.item, this.currentLang);
+    return resolveParkItemDescription(this.item(), this.currentLang());
   }
 
   get parkLink(): string[] | null {
-    if (!this.park?.id || !this.park?.name) {
+    const currentPark: Park | null = this.park();
+
+    if (!currentPark?.id || !currentPark?.name) {
       return null;
     }
 
-    return ['/', this.currentLang, 'park', this.park.id, buildParkSlug(this.park.name)];
+    return ['/', this.currentLang(), 'park', currentPark.id, buildParkSlug(currentPark.name)];
   }
 
   get itemsLink(): string[] | null {
-    if (!this.park?.id || !this.park?.name) {
+    const currentPark: Park | null = this.park();
+
+    if (!currentPark?.id || !currentPark?.name) {
       return null;
     }
 
-    return ['/', this.currentLang, 'park', this.park.id, buildParkSlug(this.park.name), 'items'];
+    return ['/', this.currentLang(), 'park', currentPark.id, buildParkSlug(currentPark.name), 'items'];
   }
 
   get itemLink(): string[] | null {
-    if (!this.park?.id || !this.park?.name || !this.item?.id || !this.item?.name) {
+    const currentPark: Park | null = this.park();
+    const currentItem: ParkItem | null = this.item();
+
+    if (!currentPark?.id || !currentPark?.name || !currentItem?.id || !currentItem?.name) {
       return null;
     }
 
-    return ['/', this.currentLang, 'park', this.park.id, buildParkSlug(this.park.name), 'item', this.item.id, buildEntitySlug(this.item.name)];
+    return ['/', this.currentLang(), 'park', currentPark.id, buildParkSlug(currentPark.name), 'item', currentItem.id, buildEntitySlug(currentItem.name)];
   }
 
   get specRows(): ParkItemDetailRow[] {
-    if (!this.item?.attractionDetails) {
+    const currentItem: ParkItem | null = this.item();
+
+    if (!currentItem?.attractionDetails) {
       return [];
     }
 
-    const details = this.item.attractionDetails;
+    const details = currentItem.attractionDetails;
     const rows: ParkItemDetailRow[] = [];
 
-    this.pushRow(rows, 'parkItems.fields.manufacturer', this.manufacturerName);
+    this.pushRow(rows, 'parkItems.fields.manufacturer', this.manufacturerName());
     this.pushRow(rows, 'parkItems.fields.model', details.model);
     this.pushRow(rows, 'parkItems.fields.status', details.status);
     this.pushRow(rows, 'parkItems.fields.materialType', details.materialType);
@@ -192,78 +183,7 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.router.navigate(['/', this.currentLang, 'parks']);
-  }
-
-  private loadItem(itemId: string): void {
-    this.pageState = ViewState.Loading;
-    this.item = null;
-    this.park = null;
-    this.manufacturerName = null;
-    this.zoneName = null;
-
-    this.subscriptions.add(this.parkItemsApiService.getParkItemById(itemId).subscribe({
-      next: (item: ParkItem) => {
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.item = item;
-        });
-
-        this.loadRelatedData(item);
-      },
-      error: (error: unknown) => {
-        console.error('Error loading park item', error);
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.pageState = ViewState.Error;
-        });
-      }
-    }));
-  }
-
-  private loadRelatedData(item: ParkItem): void {
-    this.subscriptions.add(this.parksApiService.getParkById(item.parkId).subscribe({
-      next: (park: Park) => {
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.park = park;
-          this.pageState = ViewState.Ready;
-        });
-      },
-      error: (error: unknown) => {
-        console.error('Error loading park for item', error);
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.pageState = ViewState.Error;
-        });
-      }
-    }));
-
-    if (item.attractionDetails?.manufacturerId) {
-      this.subscriptions.add(this.manufacturersApiService.getAttractionManufacturerById(item.attractionDetails.manufacturerId).subscribe({
-        next: (manufacturer) => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.manufacturerName = manufacturer.name ?? null;
-          });
-        },
-        error: () => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.manufacturerName = null;
-          });
-        }
-      }));
-    }
-
-    if (item.zoneId) {
-      this.subscriptions.add(this.parkZonesApiService.getParkZoneById(item.zoneId).subscribe({
-        next: (zone) => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.zoneName = zone.name ?? null;
-          });
-        },
-        error: () => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.zoneName = null;
-          });
-        }
-      }));
-    }
+    this.router.navigate(['/', this.currentLang(), 'parks']);
   }
 
   private pushRow(rows: ParkItemDetailRow[], labelKey: string, value: string | null | undefined): void {
@@ -299,7 +219,7 @@ export class ParkItemDetailComponent implements OnInit, OnDestroy {
       return null;
     }
 
-    if (this.currentLang === 'fr') {
+    if (this.currentLang() === 'fr') {
       return value ? 'Oui' : 'Non';
     }
 

@@ -1,27 +1,27 @@
 <app-page-state
-  [state]="pageState"
+  [state]="state().kind"
   loadingTitleKey="parkItems.detail.loadingTitle"
   loadingMessageKey="parkItems.detail.loadingMessage"
   errorTitleKey="parkItems.detail.errorTitle"
   errorMessageKey="parkItems.detail.errorMessage">
-  <section class="park-item-detail public-page" *ngIf="item as currentItem">
+  <section class="park-item-detail public-page" *ngIf="item() as currentItem">
     <section class="public-hero public-hero--split park-item-detail__hero">
       <div class="public-hero__content">
         <div class="public-pill-list detail-chips">
           <span class="public-pill">{{ categoryLabelKey | translate }}</span>
           <span class="public-pill public-pill--soft">{{ typeLabelKey | translate }}</span>
-          <span class="public-pill public-pill--soft" *ngIf="zoneName">{{ zoneName }}</span>
+          <span class="public-pill public-pill--soft" *ngIf="zoneName()">{{ zoneName() }}</span>
         </div>
 
         <div>
           <h1 class="page-title">{{ currentItem.name }}</h1>
           <p class="public-lead park-item-detail__lead">
-            <a *ngIf="parkLink && park?.name" class="public-inline-link" [routerLink]="parkLink">{{ park?.name }}</a>
+            <a *ngIf="parkLink && park()?.name" class="public-inline-link" [routerLink]="parkLink">{{ park()?.name }}</a>
           </p>
         </div>
 
         <div class="public-pill-list">
-          <span class="public-pill public-pill--soft" *ngIf="manufacturerName">{{ manufacturerName }}</span>
+          <span class="public-pill public-pill--soft" *ngIf="manufacturerName()">{{ manufacturerName() }}</span>
           <span class="public-pill public-pill--soft" *ngIf="currentItem.attractionDetails?.model">{{ currentItem.attractionDetails?.model }}</span>
           <span class="public-pill public-pill--cyan" *ngIf="currentItem.attractionDetails?.status">{{ currentItem.attractionDetails?.status }}</span>
         </div>
@@ -124,13 +124,13 @@
             <span>{{ 'parkItems.fields.type' | translate }}</span>
             <strong>{{ typeLabelKey | translate }}</strong>
           </div>
-          <div class="sidebar-row" *ngIf="park?.name">
+          <div class="sidebar-row" *ngIf="park()?.name">
             <span>{{ 'parkItems.fields.park' | translate }}</span>
-            <strong>{{ park?.name }}</strong>
+            <strong>{{ park()?.name }}</strong>
           </div>
-          <div class="sidebar-row" *ngIf="zoneName">
+          <div class="sidebar-row" *ngIf="zoneName()">
             <span>{{ 'parkItems.fields.zone' | translate }}</span>
-            <strong>{{ zoneName }}</strong>
+            <strong>{{ zoneName() }}</strong>
           </div>
         </section>
       </aside>

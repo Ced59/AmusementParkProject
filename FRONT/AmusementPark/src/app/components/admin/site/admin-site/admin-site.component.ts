@@ -1,14 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { forkJoin } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { ImageDto } from '../../../../models/images/image-dto';
-import { ImageTagDto } from '../../../../models/images/image-tag-dto';
-import { ViewState } from '../../../../models/shared/view-state';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
-import { commitViewUpdate } from '../../../../utils/change-detection.utils';
+import { AdminSiteStateFacade } from '@features/admin/site/state/admin-site-state.facade';
 
 @Component({
   selector: 'app-admin-site',
@@ -16,81 +13,55 @@ import { commitViewUpdate } from '../../../../utils/change-detection.utils';
   imports: [CommonModule, FormsModule, TranslateModule, PageStateComponent],
   templateUrl: './admin-site.component.html',
   styleUrl: './admin-site.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AdminSiteStateFacade]
 })
 export class AdminSiteComponent implements OnInit {
-  images: ImageDto[] = [];
-  tags: ImageTagDto[] = [];
-  selectedImage: ImageDto | null = null;
+  protected readonly state = this.stateFacade.state;
+  protected readonly images = this.stateFacade.images;
+  protected readonly tags = this.stateFacade.tags;
+  protected readonly selectedImage = this.stateFacade.selectedImage;
   newTagSlug: string = '';
-  pageState: ViewState = ViewState.Loading;
 
   constructor(
     public readonly imagesApiService: ImagesApiService,
-    private readonly changeDetectorRef: ChangeDetectorRef
-  ) {}
+    private readonly stateFacade: AdminSiteStateFacade
+  ) {
+  }
 
   ngOnInit(): void {
     this.reload();
   }
 
   reload(): void {
-    commitViewUpdate(this.changeDetectorRef, () => {
-      this.pageState = ViewState.Loading;
-    });
-
-    forkJoin({
-      images: this.imagesApiService.getAdminImages(),
-      tags: this.imagesApiService.getAdminImageTags()
-    }).subscribe({
-      next: ({ images, tags }) => {
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.images = images;
-          this.tags = tags;
-
-          if (this.selectedImage) {
-            const refreshedSelection: ImageDto | undefined = images.find((image: ImageDto) => image.id === this.selectedImage?.id);
-            this.selectedImage = refreshedSelection ? this.cloneImage(refreshedSelection) : (images[0] ? this.cloneImage(images[0]) : null);
-          } else {
-            this.selectedImage = images[0] ? this.cloneImage(images[0]) : null;
-          }
-
-          this.pageState = ViewState.Ready;
-        });
-      },
-      error: () => {
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.pageState = ViewState.Error;
-        });
-      }
-    });
+    this.stateFacade.reload();
   }
 
   selectImage(image: ImageDto): void {
-    this.selectedImage = this.cloneImage(image);
+    this.stateFacade.selectImage(image);
   }
 
   saveImage(): void {
-    if (!this.selectedImage) {
+    const selectedImage: ImageDto | null = this.selectedImage();
+
+    if (!selectedImage) {
       return;
     }
 
-    this.imagesApiService.updateAdminImage(this.selectedImage.id, {
-      description: this.selectedImage.description,
-      geoLocation: this.selectedImage.geoLocation ?? null,
-      altTexts: this.selectedImage.altTexts ?? [],
-      captions: this.selectedImage.captions ?? [],
-      credits: this.selectedImage.credits ?? [],
-      tagIds: this.selectedImage.tagIds ?? [],
-      isPublished: this.selectedImage.isPublished
+    this.imagesApiService.updateAdminImage(selectedImage.id, {
+      description: selectedImage.description,
+      geoLocation: selectedImage.geoLocation ?? null,
+      altTexts: selectedImage.altTexts ?? [],
+      captions: selectedImage.captions ?? [],
+      credits: selectedImage.credits ?? [],
+      tagIds: selectedImage.tagIds ?? [],
+      isPublished: selectedImage.isPublished
     }).subscribe({
       next: () => {
         this.reload();
       },
       error: () => {
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.pageState = ViewState.Error;
-        });
+        this.stateFacade.setError();
       }
     });
   }
@@ -112,40 +83,54 @@ export class AdminSiteComponent implements OnInit {
         this.reload();
       },
       error: () => {
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.pageState = ViewState.Error;
-        });
+        this.stateFacade.setError();
+      }
+    });
+  }
+
+  updateSelectedImageDescription(value: string): void {
+    this.stateFacade.updateSelectedImage({ description: value });
+  }
+
+  updateSelectedImagePublished(isPublished: boolean): void {
+    this.stateFacade.updateSelectedImage({ isPublished });
+  }
+
+  updateSelectedImageLatitude(latitude: number): void {
+    const selectedImage: ImageDto | null = this.selectedImage();
+
+    if (!selectedImage?.geoLocation) {
+      return;
+    }
+
+    this.stateFacade.updateSelectedImage({
+      geoLocation: {
+        ...selectedImage.geoLocation,
+        latitude
+      }
+    });
+  }
+
+  updateSelectedImageLongitude(longitude: number): void {
+    const selectedImage: ImageDto | null = this.selectedImage();
+
+    if (!selectedImage?.geoLocation) {
+      return;
+    }
+
+    this.stateFacade.updateSelectedImage({
+      geoLocation: {
+        ...selectedImage.geoLocation,
+        longitude
       }
     });
   }
 
   toggleTag(tagId: string, checked: boolean): void {
-    if (!this.selectedImage) {
-      return;
-    }
-
-    const current: Set<string> = new Set(this.selectedImage.tagIds ?? []);
-
-    if (checked) {
-      current.add(tagId);
-    } else {
-      current.delete(tagId);
-    }
-
-    this.selectedImage.tagIds = Array.from(current);
+    this.stateFacade.toggleTag(tagId, checked);
   }
 
   trackById(_: number, item: { id: string }): string {
     return item.id;
-  }
-
-  private cloneImage(image: ImageDto): ImageDto {
-    const clonedImage: ImageDto = JSON.parse(JSON.stringify(image)) as ImageDto;
-
-    if (!clonedImage.geoLocation) {
-      clonedImage.geoLocation = { latitude: 0, longitude: 0 };
-    }
-
-    return clonedImage;
   }
 }

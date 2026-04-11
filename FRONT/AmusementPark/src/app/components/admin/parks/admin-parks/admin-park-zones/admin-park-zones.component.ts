@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
@@ -9,25 +9,28 @@ import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';
 import { ButtonDirective } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { PageStateComponent } from '../../../../shared/page-state/page-state.component';
+import { AdminParkZonesStateFacade } from '@features/admin/parks/state/admin-park-zones-state.facade';
 
 @Component({
     selector: 'app-admin-park-zones',
     templateUrl: './admin-park-zones.component.html',
     styleUrls: ['./admin-park-zones.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [Bind, Card, PrimeTemplate, ButtonDirective, RouterLink, TableModule, TranslateModule]
+    providers: [AdminParkZonesStateFacade],
+    imports: [Bind, Card, PrimeTemplate, ButtonDirective, RouterLink, TableModule, TranslateModule, PageStateComponent]
 })
 export class AdminParkZonesComponent implements OnInit {
   parkId: string = '';
   currentLang: string = 'en';
-  zones: ParkZone[] = [];
-  loading: boolean = false;
+  protected readonly state = this.stateFacade.state;
+  protected readonly zones = this.stateFacade.zones;
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly parkZonesApiService: ParkZonesApiService,
     private readonly translateService: TranslateService,
-    private readonly cdr: ChangeDetectorRef
+    private readonly stateFacade: AdminParkZonesStateFacade
   ) {
   }
 
@@ -42,21 +45,7 @@ export class AdminParkZonesComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
-    this.cdr.markForCheck();
-
-    this.parkZonesApiService.getParkZonesByParkId(this.parkId).subscribe({
-      next: (zones: ParkZone[]) => {
-        this.zones = zones;
-        this.loading = false;
-        this.cdr.markForCheck();
-      },
-      error: (error: unknown) => {
-        console.error('Error loading zones', error);
-        this.loading = false;
-        this.cdr.markForCheck();
-      }
-    });
+    this.stateFacade.loadZones(this.parkId);
   }
 
   deleteZone(zone: ParkZone): void {

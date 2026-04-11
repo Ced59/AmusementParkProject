@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ViewState } from '../../../models/shared/view-state';
 import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { ScreenStateKind } from '@shared/models/contracts/screen-state.model';
 
 @Component({
     selector: 'app-page-state',
@@ -10,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
     imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, TranslateModule]
 })
 export class PageStateComponent {
-  @Input() state: ViewState = ViewState.Ready;
+  @Input() state: ViewState | ScreenStateKind = ViewState.Ready;
 
   @Input() loadingTitleKey: string = 'common.loadingTitle';
   @Input() loadingMessageKey: string = 'common.loadingMessage';

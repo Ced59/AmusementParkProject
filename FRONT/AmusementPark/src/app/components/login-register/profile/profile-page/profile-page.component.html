@@ -1,5 +1,5 @@
 <app-page-state
-  [state]="pageState"
+  [state]="state().kind"
   loadingTitleKey="user-profile.loadingTitle"
   loadingMessageKey="user-profile.loadingMessage"
   errorTitleKey="user-profile.errorTitle"
@@ -16,10 +16,10 @@
       </button>
     </div>
 
-    <div class="profile-details" *ngIf="user">
+    <div class="profile-details" *ngIf="user() as currentUser">
       <div class="profile-row">
         <span class="profile-label">{{ 'user-profile.email' | translate }} :</span>
-        <span class="profile-value">{{ user.email }}</span>
+        <span class="profile-value">{{ currentUser.email }}</span>
         <span></span>
       </div>
 
@@ -27,8 +27,8 @@
         <span class="profile-label">{{ 'user-profile.identity' | translate }} :</span>
 
         <div class="profile-value" *ngIf="!isEditingIdentity; else identityEditor">
-          <strong>{{ user.firstName }}</strong>
-          <span>{{ user.lastName }}</span>
+          <strong>{{ currentUser.firstName }}</strong>
+          <span>{{ currentUser.lastName }}</span>
         </div>
 
         <div class="profile-actions" *ngIf="!isEditingIdentity">
@@ -88,7 +88,7 @@
 
       <div class="profile-row">
         <span class="profile-label">{{ 'user-profile.preferred_language' | translate }} :</span>
-        <span class="profile-value">{{ user.preferredLanguage }}</span>
+        <span class="profile-value">{{ currentUser.preferredLanguage }}</span>
         <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editPreferredLanguage()"></button>
       </div>
     </div>

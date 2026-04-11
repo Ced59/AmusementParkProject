@@ -16,7 +16,7 @@
       <div class="public-stat-grid home-hero__stats">
         <article class="public-stat-card public-stat-card--accent">
           <span class="public-stat-card__label">{{ 'home.featured.title' | translate }}</span>
-          <strong class="public-stat-card__value">{{ featuredParks.length }}</strong>
+          <strong class="public-stat-card__value">{{ featuredParks().length }}</strong>
           <span class="public-stat-card__hint">{{ 'home.featured.subtitle' | translate }}</span>
         </article>
 
@@ -38,7 +38,7 @@
       <div class="public-cta-row">
         <a
           pButton
-          [routerLink]="['/', currentLang, 'parks']"
+          [routerLink]="['/', currentLang(), 'parks']"
           icon="pi pi-map"
           [label]="'home.ctaBrowseParks' | translate">
         </a>
@@ -46,7 +46,7 @@
         <a
           pButton
           class="p-button-outlined"
-          [routerLink]="['/', currentLang, 'about']"
+          [routerLink]="['/', currentLang(), 'about']"
           icon="pi pi-info-circle"
           [label]="'home.ctaLearnMore' | translate">
         </a>
@@ -95,7 +95,7 @@
           pInputText
           class="public-input"
           [placeholder]="'home.placeholder_search' | translate"
-          [value]="searchTerm"
+          [value]="searchTerm()"
           (input)="onSearchInput(searchInput.value)" />
       </div>
 
@@ -103,10 +103,10 @@
         <label class="public-field__label">{{ 'home.placeholder_category' | translate }}</label>
         <p-select
           [options]="categoryOptions"
-          [(ngModel)]="selectedCategory"
+          [ngModel]="selectedCategory()"
           optionLabel="labelKey"
           optionValue="value"
-          (onChange)="onCategoryChange()">
+          (ngModelChange)="onCategoryChange($event)">
           <ng-template let-opt #selectedItem>
             {{ opt?.labelKey ? (opt.labelKey | translate) : ('home.placeholder_category' | translate) }}
           </ng-template>
@@ -131,9 +131,9 @@
       </div>
     </div>
 
-    <ng-container *ngIf="hasPerformedSearch; else searchHint">
+    <ng-container *ngIf="hasPerformedSearch(); else searchHint">
       <app-page-state
-        [state]="searchState"
+        [state]="searchState().kind"
         loadingTitleKey="home.search.loadingTitle"
         loadingMessageKey="home.search.loadingMessage"
         errorTitleKey="home.search.errorTitle"
@@ -142,16 +142,16 @@
         emptyMessageKey="home.search.emptyMessage">
         <div class="app-grid-cards">
           <app-search-result-card
-            *ngFor="let item of results"
+            *ngFor="let item of results()"
             [item]="item"
-            [currentLang]="currentLang">
+            [currentLang]="currentLang()">
           </app-search-result-card>
         </div>
 
-        <div class="pagination-wrap" *ngIf="pagination">
+        <div class="pagination-wrap" *ngIf="pagination() as pageInfo">
           <p-paginator
-            [rows]="pagination.itemsPerPage"
-            [totalRecords]="pagination.totalItems"
+            [rows]="pageInfo.itemsPerPage"
+            [totalRecords]="pageInfo.totalItems"
             [rowsPerPageOptions]="[5, 10, 20]"
             (onPageChange)="onPageChange($event)">
           </p-paginator>
@@ -181,7 +181,7 @@
     </div>
 
     <app-page-state
-      [state]="featuredState"
+      [state]="featuredState().kind"
       loadingTitleKey="home.featured.loadingTitle"
       loadingMessageKey="home.featured.loadingMessage"
       errorTitleKey="home.featured.errorTitle"
@@ -190,9 +190,9 @@
       emptyMessageKey="home.featured.emptyMessage">
       <div class="app-grid-cards">
         <app-park-card
-          *ngFor="let park of featuredParks"
+          *ngFor="let park of featuredParks()"
           [park]="park"
-          [currentLang]="currentLang">
+          [currentLang]="currentLang()">
         </app-park-card>
       </div>
     </app-page-state>

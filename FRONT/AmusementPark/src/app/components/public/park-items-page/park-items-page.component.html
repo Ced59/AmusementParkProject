@@ -1,13 +1,13 @@
 <app-page-state
-  [state]="pageState"
+  [state]="state().kind"
   loadingTitleKey="parkItems.list.loadingTitle"
   loadingMessageKey="parkItems.list.loadingMessage"
   errorTitleKey="parkItems.list.errorTitle"
   errorMessageKey="parkItems.list.errorMessage"
   emptyTitleKey="parkItems.list.emptyTitle"
   emptyMessageKey="parkItems.list.emptyMessage">
-  <section class="park-items-page public-page page-shell" *ngIf="park && explorer">
-    <section class="public-hero public-hero--split park-items-hero">
+  <section class="park-items-page public-page page-shell" *ngIf="park() as currentPark">
+    <section class="public-hero public-hero--split park-items-hero" *ngIf="explorer() as explorerData">
       <div class="public-hero__content">
         <span class="public-kicker">
           <i class="pi pi-sitemap"></i>
@@ -15,27 +15,27 @@
         </span>
 
         <div>
-          <h1 class="page-title park-items-hero__title">{{ park.name }}</h1>
+          <h1 class="page-title park-items-hero__title">{{ currentPark.name }}</h1>
           <p class="public-lead park-items-hero__lead">{{ 'parkItems.list.subtitle' | translate }}</p>
         </div>
 
         <div class="public-stat-grid park-items-hero__stats">
           <article class="public-stat-card public-stat-card--accent">
             <span class="public-stat-card__label">{{ 'parkVisitor.summary.totalItems' | translate }}</span>
-            <strong class="public-stat-card__value">{{ explorer.overview.totalItems }}</strong>
+            <strong class="public-stat-card__value">{{ explorerData.overview.totalItems }}</strong>
             <span class="public-stat-card__hint">{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
           </article>
 
-          <article class="public-stat-card" *ngIf="filteredItems.length !== explorer.overview.totalItems">
+          <article class="public-stat-card" *ngIf="totalResults() !== explorerData.overview.totalItems">
             <span class="public-stat-card__label">{{ 'parkItems.list.filteredResults' | translate }}</span>
-            <strong class="public-stat-card__value">{{ filteredItems.length }}</strong>
+            <strong class="public-stat-card__value">{{ totalResults() }}</strong>
             <span class="public-stat-card__hint">{{ 'parkItems.filters.clear' | translate }}</span>
           </article>
 
-          <article class="public-stat-card" *ngIf="hasZones">
+          <article class="public-stat-card" *ngIf="hasZones()">
             <span class="public-stat-card__label">{{ 'parkItems.filters.zone' | translate }}</span>
-            <strong class="public-stat-card__value">{{ bucketCards.length }}</strong>
-            <span class="public-stat-card__hint">{{ activeZoneLabel ? activeZoneLabel : ('parkItems.filters.allZones' | translate) }}</span>
+            <strong class="public-stat-card__value">{{ bucketCards().length }}</strong>
+            <span class="public-stat-card__hint">{{ activeZoneLabel() ? activeZoneLabel() : ('parkItems.filters.allZones' | translate) }}</span>
           </article>
         </div>
 
@@ -59,14 +59,14 @@
       </div>
 
       <div class="public-hero__media park-items-hero__media">
-        <article class="public-feature-card" *ngIf="topTypeHighlights.length > 0">
+        <article class="public-feature-card" *ngIf="topTypeHighlights().length > 0">
           <span class="public-feature-card__eyebrow">
             <i class="pi pi-star"></i>
             {{ 'parkItems.filters.type' | translate }}
           </span>
           <h2 class="public-feature-card__title">{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
           <div class="public-pill-list park-items-hero__pill-list">
-            <span class="public-pill public-pill--soft" *ngFor="let typeCount of topTypeHighlights">
+            <span class="public-pill public-pill--soft" *ngFor="let typeCount of topTypeHighlights()">
               {{ getTypeKey(typeCount.key) | translate }} · {{ typeCount.count }}
             </span>
           </div>
@@ -74,7 +74,7 @@
       </div>
     </section>
 
-    <section class="public-panel park-items-zones" *ngIf="hasZones">
+    <section class="public-panel park-items-zones" *ngIf="hasZones()">
       <div class="public-section-header park-items-zones__header">
         <div>
           <span class="public-kicker">
@@ -89,7 +89,7 @@
       <div class="zone-grid">
         <article
           class="public-zone-card zone-card"
-          *ngFor="let bucket of bucketCards"
+          *ngFor="let bucket of bucketCards()"
           [class.zone-card--active]="isZoneSelected(bucket)">
           <div class="zone-card__header">
             <div>
@@ -124,7 +124,7 @@
           </span>
           <h2 class="public-section-header__title">{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
           <p class="public-section-header__subtitle">
-            {{ 'parkItems.list.resultsCount' | translate:{ start: rangeStart, end: rangeEnd, total: totalResults } }}
+            {{ 'parkItems.list.resultsCount' | translate:{ start: rangeStart(), end: rangeEnd(), total: totalResults() } }}
           </p>
         </div>
       </div>
@@ -136,46 +136,46 @@
             pInputText
             type="text"
             class="public-input"
-            [(ngModel)]="searchTerm"
+            [ngModel]="searchTerm()"
             [placeholder]="'parkItems.filters.searchPlaceholder' | translate"
-            (ngModelChange)="onFiltersChanged()" />
+            (ngModelChange)="onSearchChanged($event)" />
         </div>
 
         <div class="public-field">
           <label class="public-field__label">{{ 'parkItems.filters.category' | translate }}</label>
-          <select class="public-select" [(ngModel)]="selectedCategory" (ngModelChange)="onFiltersChanged()">
-            <option *ngFor="let option of categoryOptions" [ngValue]="option.value">
-              {{ option.labelKey ? (option.labelKey | translate) : option.label }}
+          <select class="public-select" [ngModel]="selectedCategory()" (ngModelChange)="onCategoryChanged($event)">
+            <option *ngFor="let option of categoryOptions()" [ngValue]="option.value">
+              {{ resolveOptionLabel(option, 'parkItems.filters.allCategories') | translate }}
             </option>
           </select>
         </div>
 
         <div class="public-field">
           <label class="public-field__label">{{ 'parkItems.filters.type' | translate }}</label>
-          <select class="public-select" [(ngModel)]="selectedType" (ngModelChange)="onFiltersChanged()">
-            <option *ngFor="let option of typeOptions" [ngValue]="option.value">
-              {{ option.labelKey ? (option.labelKey | translate) : option.label }}
+          <select class="public-select" [ngModel]="selectedType()" (ngModelChange)="onTypeChanged($event)">
+            <option *ngFor="let option of typeOptions()" [ngValue]="option.value">
+              {{ resolveOptionLabel(option, 'parkItems.filters.allTypes') | translate }}
             </option>
           </select>
         </div>
 
-        <div class="public-field" *ngIf="hasZones">
+        <div class="public-field" *ngIf="hasZones()">
           <label class="public-field__label">{{ 'parkItems.filters.zone' | translate }}</label>
-          <select class="public-select" [(ngModel)]="selectedZoneId" (ngModelChange)="onFiltersChanged()">
-            <option *ngFor="let option of zoneOptions" [ngValue]="option.value">
-              {{ option.labelKey ? (option.labelKey | translate) : option.label }}
+          <select class="public-select" [ngModel]="selectedZoneId()" (ngModelChange)="onZoneChanged($event)">
+            <option *ngFor="let option of zoneOptions()" [ngValue]="option.value">
+              {{ resolveOptionLabel(option, 'parkItems.filters.allZones') | translate }}
             </option>
           </select>
         </div>
       </div>
     </section>
 
-    <div class="items-grid" *ngIf="pagedItems.length > 0; else emptyFilteredState">
+    <div class="items-grid" *ngIf="pagedItems().length > 0; else emptyFilteredState">
       <app-park-item-card
-        *ngFor="let item of pagedItems"
+        *ngFor="let item of pagedItems()"
         [item]="item"
-        [park]="park"
-        [currentLang]="currentLang"
+        [park]="currentPark"
+        [currentLang]="currentLang()"
         [manufacturerName]="getManufacturerName(item)"
         [zoneName]="getZoneName(item)">
       </app-park-item-card>
@@ -189,11 +189,11 @@
       </div>
     </ng-template>
 
-    <div class="pagination-wrap" *ngIf="filteredItems.length > pageSize">
+    <div class="pagination-wrap" *ngIf="totalResults() > pageSize()">
       <p-paginator
-        [first]="(currentPage - 1) * pageSize"
-        [rows]="pageSize"
-        [totalRecords]="filteredItems.length"
+        [first]="(currentPage() - 1) * pageSize()"
+        [rows]="pageSize()"
+        [totalRecords]="totalResults()"
         [rowsPerPageOptions]="[6, 12, 24, 48]"
         [pageLinkSize]="3"
         (onPageChange)="onPageChange($event)">

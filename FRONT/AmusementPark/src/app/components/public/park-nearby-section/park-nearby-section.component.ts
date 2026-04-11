@@ -5,6 +5,7 @@ import { PageStateComponent } from '../../shared/page-state/page-state.component
 import { NgFor } from '@angular/common';
 import { ParkCardComponent } from '../park-card/park-card.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { ScreenStateKind } from '@shared/models/contracts/screen-state.model';
 
 @Component({
     selector: 'app-park-nearby-section',
@@ -14,6 +15,6 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class ParkNearbySectionComponent {
   @Input() parks: Park[] = [];
-  @Input() currentLang = 'en';
-  @Input() state: ViewState = ViewState.Empty;
+  @Input() currentLang: string = 'en';
+  @Input() state: ViewState | ScreenStateKind = ViewState.Empty;
 }

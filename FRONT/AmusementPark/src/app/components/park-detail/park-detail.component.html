@@ -1,10 +1,10 @@
 <app-page-state
-  [state]="pageState"
+  [state]="state().kind"
   loadingTitleKey="parks.detail.loadingTitle"
   loadingMessageKey="parks.detail.loadingMessage"
   errorTitleKey="parks.detail.errorTitle"
   errorMessageKey="parks.detail.errorMessage">
-  <section class="park-detail public-page page-shell" *ngIf="park as currentPark">
+  <section class="park-detail public-page page-shell" *ngIf="park() as currentPark">
     <div class="page-header park-detail__header">
       <div>
         <span class="public-kicker">
@@ -31,13 +31,13 @@
       </div>
     </div>
 
-    <app-park-hero-section [park]="currentPark" [currentLang]="currentLang"></app-park-hero-section>
+    <app-park-hero-section [park]="currentPark" [currentLang]="currentLang()"></app-park-hero-section>
 
-    <div class="park-detail__summary-grid" *ngIf="explorer">
+    <div class="park-detail__summary-grid" *ngIf="explorer() as explorerData">
       <app-park-content-summary
         [park]="currentPark"
-        [explorer]="explorer"
-        [currentLang]="currentLang">
+        [explorer]="explorerData"
+        [currentLang]="currentLang()">
       </app-park-content-summary>
 
       <section class="public-shell-card park-detail__quick-actions">
@@ -102,9 +102,9 @@
     </div>
 
     <app-park-nearby-section
-      [parks]="nearbyParks"
-      [currentLang]="currentLang"
-      [state]="nearbyState">
+      [parks]="nearbyParks()"
+      [currentLang]="currentLang()"
+      [state]="nearbyState()">
     </app-park-nearby-section>
   </section>
 </app-page-state>

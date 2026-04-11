@@ -20,7 +20,7 @@
         </span>
         <span class="public-pill public-pill--soft">
           <i class="pi pi-eye"></i>
-          {{ pagination?.totalItems ?? parks.length }}
+          {{ pagination()?.totalItems ?? parks().length }}
         </span>
       </div>
     </div>
@@ -46,7 +46,7 @@
           type="text"
           pInputText
           class="public-input"
-          [value]="searchTerm"
+          [value]="searchTerm()"
           [placeholder]="'parks.search.placeholder' | translate"
           (input)="onSearchInput(parkSearchInput.value)" />
       </div>
@@ -66,7 +66,7 @@
 
   <section class="public-panel parks-results">
     <app-page-state
-      [state]="pageState"
+      [state]="state().kind"
       loadingTitleKey="parks.loadingTitle"
       loadingMessageKey="parks.loadingMessage"
       errorTitleKey="parks.errorTitle"
@@ -75,16 +75,16 @@
       emptyMessageKey="parks.emptyMessage">
       <div class="app-grid-cards">
         <app-park-card
-          *ngFor="let park of parks"
+          *ngFor="let park of parks()"
           [park]="park"
-          [currentLang]="currentLang">
+          [currentLang]="currentLang()">
         </app-park-card>
       </div>
 
-      <div class="pagination-wrap" *ngIf="pagination">
+      <div class="pagination-wrap" *ngIf="pagination() as pageInfo">
         <p-paginator
-          [rows]="pagination.itemsPerPage"
-          [totalRecords]="pagination.totalItems"
+          [rows]="pageInfo.itemsPerPage"
+          [totalRecords]="pageInfo.totalItems"
           [rowsPerPageOptions]="[6, 9, 18, 36]"
           [pageLinkSize]="3"
           (onPageChange)="onPageChange($event)">
