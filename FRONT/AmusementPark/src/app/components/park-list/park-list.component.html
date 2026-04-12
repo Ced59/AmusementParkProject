@@ -1,95 +1,10 @@
-<section class="public-page parks-page">
-  <section class="public-hero public-hero--split parks-hero">
-    <div class="public-hero__content">
-      <span class="public-kicker">
-        <i class="pi pi-map"></i>
-        {{ 'parks.heroBadge' | translate }}
-      </span>
-
-      <div>
-        <h1 class="page-title parks-hero__title">{{ 'parks.title' | translate }}</h1>
-        <p class="public-lead parks-hero__lead">
-          {{ 'parks.subtitle' | translate }}
-        </p>
-      </div>
-
-      <div class="public-cta-row parks-hero__chips">
-        <span class="public-pill public-pill--cyan">
-          <i class="pi pi-compass"></i>
-          {{ 'parks.search.label' | translate }}
-        </span>
-        <span class="public-pill public-pill--soft">
-          <i class="pi pi-eye"></i>
-          {{ pagination()?.totalItems ?? parks().length }}
-        </span>
-      </div>
-    </div>
-
-    <div class="public-hero__media">
-      <article class="public-feature-card parks-feature-card">
-        <span class="public-feature-card__eyebrow">
-          <i class="pi pi-search"></i>
-          {{ 'parks.search.label' | translate }}
-        </span>
-        <h2 class="public-feature-card__title">{{ 'parks.search.placeholder' | translate }}</h2>
-        <p class="public-feature-card__text">{{ 'parks.subtitle' | translate }}</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="public-filter-panel parks-toolbar">
-    <div class="public-filter-grid parks-toolbar__grid">
-      <div class="public-field parks-toolbar__search">
-        <label class="public-field__label">{{ 'parks.search.label' | translate }}</label>
-        <input
-          #parkSearchInput
-          type="text"
-          pInputText
-          class="public-input"
-          [value]="searchTerm()"
-          [placeholder]="'parks.search.placeholder' | translate"
-          (input)="onSearchInput(parkSearchInput.value)" />
-      </div>
-
-      <div class="parks-toolbar__actions">
-        <button
-          pButton
-          type="button"
-          class="p-button-outlined"
-          icon="pi pi-times"
-          [label]="'parks.search.clear' | translate"
-          (click)="clearSearch()">
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section class="public-panel parks-results">
-    <app-page-state
-      [state]="state().kind"
-      loadingTitleKey="parks.loadingTitle"
-      loadingMessageKey="parks.loadingMessage"
-      errorTitleKey="parks.errorTitle"
-      errorMessageKey="parks.errorMessage"
-      emptyTitleKey="parks.emptyTitle"
-      emptyMessageKey="parks.emptyMessage">
-      <div class="app-grid-cards">
-        <app-park-card
-          *ngFor="let park of parks()"
-          [park]="park"
-          [currentLang]="currentLang()">
-        </app-park-card>
-      </div>
-
-      <div class="pagination-wrap" *ngIf="pagination() as pageInfo">
-        <p-paginator
-          [rows]="pageInfo.itemsPerPage"
-          [totalRecords]="pageInfo.totalItems"
-          [rowsPerPageOptions]="[6, 9, 18, 36]"
-          [pageLinkSize]="3"
-          (onPageChange)="onPageChange($event)">
-        </p-paginator>
-      </div>
-    </app-page-state>
-  </section>
-</section>
+<app-park-list-view
+  [state]="state"
+  [parks]="parks"
+  [pagination]="pagination"
+  [currentLang]="currentLang"
+  [searchTerm]="searchTerm"
+  (searchInputChanged)="onSearchInput($event)"
+  (clearSearchClicked)="clearSearch()"
+  (pageChanged)="onPageChange($event)">
+</app-park-list-view>

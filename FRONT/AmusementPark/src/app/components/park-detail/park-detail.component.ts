@@ -3,27 +3,18 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { Park } from '../../models/parks/park';
-import { PageStateComponent } from '../shared/page-state/page-state.component';
-import { NgIf } from '@angular/common';
-import { Bind } from 'primeng/bind';
-import { ButtonDirective } from 'primeng/button';
-import { ParkHeroSectionComponent } from '../public/park-hero-section/park-hero-section.component';
-import { ParkPracticalInfoSectionComponent } from '../public/park-practical-info-section/park-practical-info-section.component';
-import { ParkLocationSectionComponent } from '../public/park-location-section/park-location-section.component';
-import { ParkNearbySectionComponent } from '../public/park-nearby-section/park-nearby-section.component';
-import { TranslateModule } from '@ngx-translate/core';
-import { ParkContentSummaryComponent } from '../public/park-content-summary/park-content-summary.component';
 import { TranslationService } from '../../services/translation.service';
 import { buildParkSlug } from '../../commons/park-presentation.utils';
 import { ParkDetailStateFacade } from '@features/public/parks/state/park-detail-state.facade';
+import { ParkDetailViewComponent } from './park-detail-view.component';
 
 @Component({
-    selector: 'app-park-detail',
-    templateUrl: './park-detail.component.html',
-    styleUrls: ['./park-detail.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ParkDetailStateFacade],
-    imports: [PageStateComponent, NgIf, Bind, ButtonDirective, ParkHeroSectionComponent, ParkPracticalInfoSectionComponent, ParkLocationSectionComponent, ParkNearbySectionComponent, ParkContentSummaryComponent, TranslateModule]
+  selector: 'app-park-detail',
+  templateUrl: './park-detail.component.html',
+  styleUrls: ['./park-detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ParkDetailStateFacade],
+  imports: [ParkDetailViewComponent]
 })
 export class ParkDetailComponent implements OnInit {
   protected readonly state = this.stateFacade.state;

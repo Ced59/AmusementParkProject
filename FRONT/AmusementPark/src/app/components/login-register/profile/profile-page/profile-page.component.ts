@@ -15,15 +15,7 @@ import { ToastMessageService } from '../../../../services/messages/toast-message
 import { ModalService } from '../../../../services/modal/modal.service';
 import { SharedService } from '../../../../services/shared/shared.service';
 import { TranslationService } from '../../../../services/translation.service';
-import { PageStateComponent } from '../../../shared/page-state/page-state.component';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { ButtonDirective } from 'primeng/button';
-import { NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
-import { OwnerImageUploadDialogComponent } from '../../../shared/owner-image-upload-dialog/owner-image-upload-dialog.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { ProfilePageViewComponent } from './profile-page-view.component';
 import { ProfilePageStateFacade } from '@features/profile/state/profile-page-state.facade';
 
 @Component({
@@ -32,7 +24,7 @@ import { ProfilePageStateFacade } from '@features/profile/state/profile-page-sta
     styleUrl: './profile-page.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ProfilePageStateFacade],
-    imports: [PageStateComponent, Bind, Card, ButtonDirective, NgIf, FormsModule, InputText, OwnerImageUploadDialogComponent, TranslateModule]
+    imports: [ProfilePageViewComponent]
 })
 export class ProfilePageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;

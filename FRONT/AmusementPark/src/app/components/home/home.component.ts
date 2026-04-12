@@ -4,27 +4,16 @@ import { debounceTime, switchMap } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '../../services/translation.service';
-import { Bind } from 'primeng/bind';
-import { ButtonDirective } from 'primeng/button';
-import { RouterLink } from '@angular/router';
-import { InputText } from 'primeng/inputtext';
-import { Select } from 'primeng/select';
-import { FormsModule } from '@angular/forms';
-import { PageStateComponent } from '../shared/page-state/page-state.component';
-import { NgFor, NgIf } from '@angular/common';
-import { ParkCardComponent } from '../public/park-card/park-card.component';
-import { SearchResultCardComponent } from '../public/search-result-card/search-result-card.component';
-import { Paginator } from 'primeng/paginator';
-import { TranslateModule } from '@ngx-translate/core';
 import { HomeStateFacade } from '@features/public/home/state/home-state.facade';
+import { HomeViewComponent } from './home-view.component';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [HomeStateFacade],
-    imports: [Bind, ButtonDirective, RouterLink, InputText, Select, FormsModule, PageStateComponent, NgFor, ParkCardComponent, NgIf, SearchResultCardComponent, Paginator, TranslateModule]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [HomeStateFacade],
+  imports: [HomeViewComponent]
 })
 export class HomeComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');
@@ -69,6 +58,14 @@ export class HomeComponent implements OnInit {
     ).subscribe();
   }
 
+  get searchResultsTotal(): number {
+    return this.pagination()?.totalItems ?? this.results().length;
+  }
+
+  get searchResultsHintKey(): string {
+    return this.hasPerformedSearch() ? 'home.search.resultsSubtitle' : 'home.search.hintMessage';
+  }
+
   onSearchInput(value: string): void {
     this.searchTerm.set(value.trim());
     this.searchSubject.next();
@@ -77,14 +74,6 @@ export class HomeComponent implements OnInit {
   onCategoryChange(value: string): void {
     this.selectedCategory.set(value ?? '');
     this.searchSubject.next();
-  }
-
-  get searchResultsTotal(): number {
-    return this.pagination()?.totalItems ?? this.results().length;
-  }
-
-  get searchResultsHintKey(): string {
-    return this.hasPerformedSearch() ? 'home.search.resultsSubtitle' : 'home.search.hintMessage';
   }
 
   onPageChange(event: { page?: number; rows?: number }): void {

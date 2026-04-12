@@ -1,26 +1,18 @@
 import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
 import { Park } from '../../../../models/parks/park';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ParkType } from '../../../../models/parks/park-type';
-import { TableLazyLoadEvent, TableModule } from 'primeng/table';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { PrimeTemplate } from 'primeng/api';
-import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
-import { ButtonDirective } from 'primeng/button';
-import { ToggleSwitch } from 'primeng/toggleswitch';
-import { TranslateModule } from '@ngx-translate/core';
+import { TableLazyLoadEvent } from 'primeng/table';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { AdminParksStateFacade } from '@features/admin/parks/state/admin-parks-state.facade';
+import { AdminParksViewComponent } from './admin-parks-view.component';
 
 @Component({
-    selector: 'app-admin-parks',
-    templateUrl: './admin-parks.component.html',
-    styleUrls: ['./admin-parks.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [AdminParksStateFacade],
-    imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, TableModule, ToggleSwitch, RouterLink, TranslateModule]
+  selector: 'app-admin-parks',
+  templateUrl: './admin-parks.component.html',
+  styleUrls: ['./admin-parks.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AdminParksStateFacade],
+  imports: [AdminParksViewComponent]
 })
 export class AdminParksComponent implements OnInit {
   protected readonly parks = this.stateFacade.parks;
@@ -34,10 +26,9 @@ export class AdminParksComponent implements OnInit {
 
   constructor(
     protected readonly stateFacade: AdminParksStateFacade,
-    private readonly parksApiService: ParksApiService,
-    private readonly router: Router,
-    private readonly route: ActivatedRoute
-  ) {}
+    private readonly parksApiService: ParksApiService
+  ) {
+  }
 
   ngOnInit(): void {
     this.stateFacade.loadParks(this.currentPage(), this.pageSize());
@@ -86,7 +77,7 @@ export class AdminParksComponent implements OnInit {
     });
   }
 
-  getTypeTranslationKey(type: ParkType | null | undefined): string {
+  getTypeTranslationKey(type: string | null | undefined): string {
     switch (type) {
       case 'ThemePark':
         return 'admin.parks.types.themePark';

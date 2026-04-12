@@ -1,28 +1,18 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 import { ParkItemAdminRow } from '../../../../models/parks/park-item-admin-row';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
-import { Select } from 'primeng/select';
-import { TableModule } from 'primeng/table';
-import { PrimeTemplate } from 'primeng/api';
-import { Tag } from 'primeng/tag';
-import { ButtonDirective } from 'primeng/button';
-import { Paginator } from 'primeng/paginator';
-import { PageStateComponent } from '../../../shared/page-state/page-state.component';
 import { AdminParkItemsIndexStateFacade } from '@features/admin/park-items/state/admin-park-items-index-state.facade';
+import { AdminParkItemsIndexViewComponent } from './admin-park-items-index-view.component';
 
 @Component({
-    selector: 'app-admin-park-items-index',
-    templateUrl: './admin-park-items-index.component.html',
-    styleUrls: ['./admin-park-items-index.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [AdminParkItemsIndexStateFacade],
-    imports: [Bind, Card, FormsModule, InputText, Select, TableModule, PrimeTemplate, Tag, ButtonDirective, Paginator, TranslateModule, PageStateComponent]
+  selector: 'app-admin-park-items-index',
+  templateUrl: './admin-park-items-index.component.html',
+  styleUrls: ['./admin-park-items-index.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AdminParkItemsIndexStateFacade],
+  imports: [AdminParkItemsIndexViewComponent]
 })
 export class AdminParkItemsIndexComponent implements OnInit {
   protected readonly state = this.stateFacade.state;

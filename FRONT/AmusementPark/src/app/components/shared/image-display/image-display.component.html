@@ -1,12 +1,7 @@
-<img
-  *ngIf="showImage"
-  [src]="resolvedImageUrl"
+<app-image-display-view
+  [showImage]="showImage"
+  [resolvedImageUrl]="resolvedImageUrl"
   [alt]="alt"
-  [ngClass]="imgClass"
-  (error)="onImageError()" />
-
-<div
-  *ngIf="!showImage"
-  class="image-display__placeholder">
-  <i class="pi pi-image"></i>
-</div>
+  [imgClass]="imgClass"
+  (imageError)="onImageError()">
+</app-image-display-view>

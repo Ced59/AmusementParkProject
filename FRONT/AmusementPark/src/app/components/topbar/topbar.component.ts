@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -11,22 +11,14 @@ import { AuthService } from '../../services/auth/auth.service';
 import { ModalService } from '../../services/modal/modal.service';
 import { SharedService } from '../../services/shared/shared.service';
 import { TranslationService } from '../../services/translation.service';
-import { Bind } from 'primeng/bind';
-import { Toolbar } from 'primeng/toolbar';
-import { PrimeTemplate } from 'primeng/api';
-import { Avatar } from 'primeng/avatar';
-import { ButtonDirective } from 'primeng/button';
-import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
-import { Dialog } from 'primeng/dialog';
-import { AuthModalComponent } from '../login-register/auth-modal/auth-modal.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TopbarViewComponent } from './topbar-view.component';
 
 @Component({
-    selector: 'app-topbar',
-    templateUrl: './topbar.component.html',
-    styleUrls: ['./topbar.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [Bind, Toolbar, PrimeTemplate, RouterLink, Avatar, ButtonDirective, ThemeSwitcherComponent, Dialog, AuthModalComponent, TranslateModule]
+  selector: 'app-topbar',
+  templateUrl: './topbar.component.html',
+  styleUrls: ['./topbar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [TopbarViewComponent]
 })
 export class TopbarComponent implements OnInit, OnDestroy {
   languages = LANGUAGES;
@@ -49,6 +41,10 @@ export class TopbarComponent implements OnInit, OnDestroy {
     private readonly cdr: ChangeDetectorRef) {
   }
 
+  get userAvatarUrl(): string | null {
+    return this.imagesApiService.resolveImageUrl(this.userProfile?.avatarUrl);
+  }
+
   ngOnInit(): void {
     this.checkLoginStatus();
 
@@ -60,8 +56,6 @@ export class TopbarComponent implements OnInit, OnDestroy {
           this.cdr.markForCheck();
         })
       );
-    } else {
-      console.error('loginModal status observable is null');
     }
 
     const languageModalStatus$ = this.modalService.getModalStatus('languageModal');
@@ -72,12 +66,10 @@ export class TopbarComponent implements OnInit, OnDestroy {
           this.cdr.markForCheck();
         })
       );
-    } else {
-      console.error('languageModal status observable is null');
     }
 
     this.subscriptions.add(
-      this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
+      this.router.events.pipe(filter((event: unknown) => event instanceof NavigationEnd)).subscribe(() => {
         const currentLang: string = this.router.url.split('/')[1] || 'en';
         this.selectedLanguage = currentLang;
         this.cdr.markForCheck();
@@ -119,10 +111,6 @@ export class TopbarComponent implements OnInit, OnDestroy {
     });
   }
 
-  getUserAvatarUrl(): string | null {
-    return this.imagesApiService.resolveImageUrl(this.userProfile?.avatarUrl);
-  }
-
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
@@ -130,7 +118,7 @@ export class TopbarComponent implements OnInit, OnDestroy {
   private updateUrlWithNewLang(newLang: string): void {
     const urlSegments: string[] = this.router.url.split('/');
 
-    if (urlSegments.length > 1 && LANGUAGES.some(lang => lang.value === urlSegments[1])) {
+    if (urlSegments.length > 1 && LANGUAGES.some((lang) => lang.value === urlSegments[1])) {
       urlSegments[1] = newLang;
     } else {
       urlSegments.splice(1, 0, newLang);

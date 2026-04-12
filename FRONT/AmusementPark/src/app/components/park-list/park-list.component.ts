@@ -4,23 +4,16 @@ import { debounceTime } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '../../services/translation.service';
-import { Bind } from 'primeng/bind';
-import { InputText } from 'primeng/inputtext';
-import { ButtonDirective } from 'primeng/button';
-import { PageStateComponent } from '../shared/page-state/page-state.component';
-import { NgFor, NgIf } from '@angular/common';
-import { ParkCardComponent } from '../public/park-card/park-card.component';
-import { Paginator } from 'primeng/paginator';
-import { TranslateModule } from '@ngx-translate/core';
 import { ParkListStateFacade } from '@features/public/parks/state/park-list-state.facade';
+import { ParkListViewComponent } from './park-list-view.component';
 
 @Component({
-    selector: 'app-park-list',
-    templateUrl: './park-list.component.html',
-    styleUrls: ['./park-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [ParkListStateFacade],
-    imports: [Bind, InputText, ButtonDirective, PageStateComponent, NgFor, ParkCardComponent, NgIf, Paginator, TranslateModule]
+  selector: 'app-park-list',
+  templateUrl: './park-list.component.html',
+  styleUrls: ['./park-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ParkListStateFacade],
+  imports: [ParkListViewComponent]
 })
 export class ParkListComponent implements OnInit {
   protected readonly state = this.stateFacade.state;

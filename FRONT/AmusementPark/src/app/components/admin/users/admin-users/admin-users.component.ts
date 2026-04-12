@@ -1,26 +1,19 @@
 import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
 import { Router } from '@angular/router';
-import { TableLazyLoadEvent, TableModule } from 'primeng/table';
+import { TableLazyLoadEvent } from 'primeng/table';
 
 import { UserDto } from '../../../../models/users/user_dto';
 import { ImagesApiService } from '@data-access/images/images-api.service';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { PrimeTemplate } from 'primeng/api';
-import { Avatar } from 'primeng/avatar';
-import { Tag } from 'primeng/tag';
-import { ButtonDirective } from 'primeng/button';
-import { Tooltip } from 'primeng/tooltip';
-import { TranslateModule } from '@ngx-translate/core';
 import { AdminUsersStateFacade } from '@features/admin/users/state/admin-users-state.facade';
+import { AdminUsersViewComponent } from './admin-users-view.component';
 
 @Component({
-    selector: 'app-admin-users',
-    templateUrl: './admin-users.component.html',
-    styleUrls: ['./admin-users.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [AdminUsersStateFacade],
-    imports: [Bind, Card, PrimeTemplate, TableModule, Avatar, Tag, ButtonDirective, Tooltip, TranslateModule]
+  selector: 'app-admin-users',
+  templateUrl: './admin-users.component.html',
+  styleUrls: ['./admin-users.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AdminUsersStateFacade],
+  imports: [AdminUsersViewComponent]
 })
 export class AdminUsersComponent implements OnInit {
   private static readonly DEFAULT_AVATAR: string =

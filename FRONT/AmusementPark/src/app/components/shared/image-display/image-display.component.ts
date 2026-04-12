@@ -1,42 +1,23 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ImagesApiService } from '@data-access/images/images-api.service';
-import { NgIf, NgClass } from '@angular/common';
+import { ImageDisplayViewComponent } from './image-display-view.component';
 
-/**
- * Composant partagé d'affichage d'image.
- *
- * Centralise :
- *  - la résolution de l'URL réelle à partir d'un imageId (ID d'entité Image),
- *    d'un chemin relatif (/images/{id}) ou d'une URL absolue ;
- *  - le fallback automatique vers l'image par défaut en cas d'erreur de chargement ;
- *  - l'affichage d'une image par défaut (placeholder) quand aucun imageId n'est fourni.
- *
- * Le serveur backend gère nativement la négociation de format (WebP si le navigateur
- * le supporte, sinon JPG) via l'en-tête Accept, de façon transparente pour ce composant.
- */
 @Component({
-    selector: 'app-image-display',
-    templateUrl: './image-display.component.html',
-    styleUrls: ['./image-display.component.scss'],
-    imports: [NgIf, NgClass]
+  selector: 'app-image-display',
+  templateUrl: './image-display.component.html',
+  styleUrls: ['./image-display.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ImageDisplayViewComponent]
 })
 export class ImageDisplayComponent implements OnChanges {
-
-  /** ID de l'entité Image, chemin relatif (/images/…) ou URL absolue. */
   @Input() imageId: string | null = null;
-
-  /** Texte alternatif pour l'attribut alt de l'image. */
   @Input() alt: string = '';
-
-  /**
-   * Classe(s) CSS à appliquer à la balise <img>.
-   * Utiliser :host ::ng-deep .<classe> dans le SCSS du composant hôte.
-   */
   @Input() imgClass: string = '';
 
   imageLoadFailed: boolean = false;
 
-  constructor(private readonly imagesApiService: ImagesApiService) {}
+  constructor(private readonly imagesApiService: ImagesApiService) {
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['imageId']) {

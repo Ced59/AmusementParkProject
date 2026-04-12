@@ -1,33 +1,32 @@
 import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TranslationService } from '../../services/translation.service';
-import {AuthService} from "../../services/auth/auth.service";
-import {SharedService} from "../../services/shared/shared.service";
-import { NgClass } from '@angular/common';
-import { RouterLinkActive, RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { AuthService } from '../../services/auth/auth.service';
+import { SharedService } from '../../services/shared/shared.service';
+import { SidebarViewComponent } from './sidebar-view.component';
 
 @Component({
-    selector: 'app-sidebar',
-    templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.scss'],
-    imports: [NgClass, RouterLinkActive, RouterLink, TranslateModule]
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
+  imports: [SidebarViewComponent]
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   isCollapsed: boolean = true;
   currentLang: string = 'en';
-  isLoggedIn = false;
-  isAdmin = false;
+  isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
   private langSub!: Subscription;
 
   private subscriptions = new Subscription();
 
   constructor(
-    private translationService: TranslationService,
-    private authService: AuthService,
-    private sharedService: SharedService,
-    private elRef: ElementRef
-  ) {}
+    private readonly translationService: TranslationService,
+    private readonly authService: AuthService,
+    private readonly sharedService: SharedService,
+    private readonly elRef: ElementRef
+  ) {
+  }
 
   ngOnInit(): void {
     this.currentLang = this.translationService.getCurrentLang() || 'en';
@@ -48,9 +47,13 @@ export class SidebarComponent implements OnInit, OnDestroy {
     if (this.langSub) {
       this.langSub.unsubscribe();
     }
+
+    this.subscriptions.unsubscribe();
   }
 
   handleNavClick(event: Event): void {
+    void event;
+
     if (window.innerWidth < 768) {
       this.isCollapsed = true;
     }
