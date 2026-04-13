@@ -1,20 +1,26 @@
 <ng-container [ngSwitch]="state">
-  <div *ngSwitchCase="viewState.Loading" class="app-empty-state app-page-state">
-    <i class="pi pi-spin pi-spinner app-page-state__icon"></i>
-    <h3>{{ loadingTitleKey | translate }}</h3>
-    <p>{{ loadingMessageKey | translate }}</p>
+  <div *ngSwitchCase="viewState.Loading" class="app-page-state">
+    <app-empty-state
+      iconClass="pi pi-spin pi-spinner app-page-state__icon"
+      [titleKey]="resolvedLoadingTitleKey"
+      [messageKey]="resolvedLoadingMessageKey">
+    </app-empty-state>
   </div>
 
-  <div *ngSwitchCase="viewState.Error" class="app-empty-state app-page-state">
-    <i class="pi pi-exclamation-circle app-page-state__icon"></i>
-    <h3>{{ errorTitleKey | translate }}</h3>
-    <p>{{ errorMessageKey | translate }}</p>
+  <div *ngSwitchCase="viewState.Error" class="app-page-state">
+    <app-empty-state
+      iconClass="pi pi-exclamation-circle app-page-state__icon"
+      [titleKey]="resolvedErrorTitleKey"
+      [messageKey]="resolvedErrorMessageKey">
+    </app-empty-state>
   </div>
 
-  <div *ngSwitchCase="viewState.Empty" class="app-empty-state app-page-state">
-    <i class="pi pi-inbox app-page-state__icon"></i>
-    <h3>{{ emptyTitleKey | translate }}</h3>
-    <p>{{ emptyMessageKey | translate }}</p>
+  <div *ngSwitchCase="viewState.Empty" class="app-page-state">
+    <app-empty-state
+      iconClass="pi pi-inbox app-page-state__icon"
+      [titleKey]="resolvedEmptyTitleKey"
+      [messageKey]="resolvedEmptyMessageKey">
+    </app-empty-state>
   </div>
 
   <ng-content *ngSwitchDefault></ng-content>

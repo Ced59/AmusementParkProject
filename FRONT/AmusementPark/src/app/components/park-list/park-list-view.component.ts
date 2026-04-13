@@ -3,12 +3,12 @@ import { NgFor, NgIf } from '@angular/common';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
-import { Paginator } from 'primeng/paginator';
 import { TranslateModule } from '@ngx-translate/core';
 import { Park } from '../../models/parks/park';
 import { PaginationContract } from '@shared/models/contracts';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { PageStateComponent } from '../shared/page-state/page-state.component';
+import { PaginationComponent } from '../shared/pagination/pagination.component';
 import { ParkCardComponent } from '../public/park-card/park-card.component';
 
 @Component({
@@ -16,7 +16,7 @@ import { ParkCardComponent } from '../public/park-card/park-card.component';
   templateUrl: './park-list-view.component.html',
   styleUrls: ['./park-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, InputText, ButtonDirective, PageStateComponent, NgFor, ParkCardComponent, NgIf, Paginator, TranslateModule]
+  imports: [Bind, InputText, ButtonDirective, PageStateComponent, PaginationComponent, NgFor, ParkCardComponent, NgIf, TranslateModule]
 })
 export class ParkListViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;

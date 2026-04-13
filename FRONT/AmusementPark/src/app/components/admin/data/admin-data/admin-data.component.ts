@@ -20,7 +20,7 @@ import { SelectModule } from 'primeng/select';
 import { TableModule } from 'primeng/table';
 import { Tag } from 'primeng/tag';
 import { TabsModule } from 'primeng/tabs';
-import { PaginatorModule } from 'primeng/paginator';
+import { PaginationComponent } from '../../../shared/pagination/pagination.component';
 
 import { DataSourcesApiService } from '@data-access/admin/data-sources-api.service';
 import {
@@ -60,7 +60,7 @@ interface DuplicateResolutionState {
     TableModule,
     Tag,
     TabsModule,
-    PaginatorModule
+    PaginationComponent
   ]
 })
 export class AdminDataComponent implements OnInit, OnDestroy {

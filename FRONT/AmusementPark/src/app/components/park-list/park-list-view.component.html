@@ -67,12 +67,14 @@
   <section class="public-panel parks-results">
     <app-page-state
       [state]="state().kind"
-      loadingTitleKey="parks.loadingTitle"
-      loadingMessageKey="parks.loadingMessage"
-      errorTitleKey="parks.errorTitle"
-      errorMessageKey="parks.errorMessage"
-      emptyTitleKey="parks.emptyTitle"
-      emptyMessageKey="parks.emptyMessage">
+      [messages]="{
+        loadingTitleKey: 'parks.loadingTitle',
+        loadingMessageKey: 'parks.loadingMessage',
+        errorTitleKey: 'parks.errorTitle',
+        errorMessageKey: 'parks.errorMessage',
+        emptyTitleKey: 'parks.emptyTitle',
+        emptyMessageKey: 'parks.emptyMessage'
+      }">
       <div class="app-grid-cards">
         <app-park-card
           *ngFor="let park of parks()"
@@ -81,15 +83,12 @@
         </app-park-card>
       </div>
 
-      <div class="pagination-wrap" *ngIf="pagination() as pageInfo">
-        <p-paginator
-          [rows]="pageInfo.itemsPerPage"
-          [totalRecords]="pageInfo.totalItems"
-          [rowsPerPageOptions]="[6, 9, 18, 36]"
-          [pageLinkSize]="3"
-          (onPageChange)="onPageChange($event)">
-        </p-paginator>
-      </div>
+      <app-pagination
+        [pagination]="pagination()"
+        [rowsPerPageOptions]="[6, 9, 18, 36]"
+        [pageLinkSize]="3"
+        (pageChanged)="onPageChange($event)">
+      </app-pagination>
     </app-page-state>
   </section>
 </section>

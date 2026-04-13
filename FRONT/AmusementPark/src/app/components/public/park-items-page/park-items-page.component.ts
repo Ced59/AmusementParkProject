@@ -3,7 +3,6 @@ import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
-import { Paginator } from 'primeng/paginator';
 import { ButtonDirective } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -13,6 +12,8 @@ import { ParkItem } from '../../../models/parks/park-item';
 import { TranslationService } from '../../../services/translation.service';
 import { buildParkSlug } from '../../../commons/park-presentation.utils';
 import { PageStateComponent } from '../../shared/page-state/page-state.component';
+import { PaginationComponent } from '../../shared/pagination/pagination.component';
+import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
 import { ParkItemCardComponent } from '../park-item-card/park-item-card.component';
 import { ParkItemsPageStateFacade, SelectOption } from '@features/public/park-items/state/park-items-page-state.facade';
 
@@ -27,10 +28,11 @@ import { ParkItemsPageStateFacade, SelectOption } from '@features/public/park-it
     NgIf,
     FormsModule,
     InputText,
-    Paginator,
     ButtonDirective,
     TranslateModule,
     PageStateComponent,
+    PaginationComponent,
+    EmptyStateComponent,
     ParkItemCardComponent
   ]
 })

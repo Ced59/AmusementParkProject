@@ -1,9 +1,11 @@
 <app-page-state
   [state]="state().kind"
-  loadingTitleKey="admin.loading"
-  loadingMessageKey="admin.loading"
-  errorTitleKey="user-profile.errorTitle"
-  errorMessageKey="user-profile.errorMessage">
+  [messages]="{
+    loadingTitleKey: 'admin.loading',
+    loadingMessageKey: 'admin.loading',
+    errorTitleKey: 'user-profile.errorTitle',
+    errorMessageKey: 'user-profile.errorMessage'
+  }">
 
   <div class="admin-user-page">
     <div class="admin-user-toolbar">

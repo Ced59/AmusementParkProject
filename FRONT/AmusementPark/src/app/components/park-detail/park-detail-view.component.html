@@ -1,9 +1,11 @@
 <app-page-state
   [state]="state().kind"
-  loadingTitleKey="parks.detail.loadingTitle"
-  loadingMessageKey="parks.detail.loadingMessage"
-  errorTitleKey="parks.detail.errorTitle"
-  errorMessageKey="parks.detail.errorMessage">
+  [messages]="{
+    loadingTitleKey: 'parks.detail.loadingTitle',
+    loadingMessageKey: 'parks.detail.loadingMessage',
+    errorTitleKey: 'parks.detail.errorTitle',
+    errorMessageKey: 'parks.detail.errorMessage'
+  }">
   <section class="park-detail public-page page-shell" *ngIf="park() as currentPark">
     <div class="page-header park-detail__header">
       <div>

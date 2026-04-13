@@ -53,11 +53,14 @@
         </td>
       </tr>
     </ng-template>
-
     <ng-template pTemplate="emptymessage">
       <tr>
         <td colspan="3">
-          {{ 'admin.manufacturers.empty' | translate }}
+          <app-empty-state
+            [compact]="true"
+            titleKey="common.emptyTitle"
+            messageKey="admin.manufacturers.empty">
+          </app-empty-state>
         </td>
       </tr>
     </ng-template>

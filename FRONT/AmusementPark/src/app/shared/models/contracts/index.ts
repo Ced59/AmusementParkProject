@@ -7,3 +7,4 @@ export * from './paged-result.model';
 export * from './pagination.model';
 export * from './screen-state.model';
 export * from './sort-definition.model';
+export * from './page-state-messages.model';

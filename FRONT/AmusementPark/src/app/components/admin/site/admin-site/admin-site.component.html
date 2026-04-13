@@ -1,9 +1,11 @@
 <app-page-state
   [state]="state().kind"
-  loadingTitleKey="admin.loading"
-  loadingMessageKey="admin.loading"
-  errorTitleKey="common.errorTitle"
-  errorMessageKey="common.errorMessage">
+  [messages]="{
+    loadingTitleKey: 'admin.loading',
+    loadingMessageKey: 'admin.loading',
+    errorTitleKey: 'common.errorTitle',
+    errorMessageKey: 'common.errorMessage'
+  }">
 
   <div class="admin-images-page">
     <h2>{{ 'admin.tabs.images' | translate }}</h2>

@@ -9,6 +9,7 @@ import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
 import { ToggleSwitch } from 'primeng/toggleswitch';
 import { TranslateModule } from '@ngx-translate/core';
+import { EmptyStateComponent } from '../../../shared/empty-state/empty-state.component';
 import { Park } from '../../../../models/parks/park';
 
 @Component({
@@ -16,7 +17,7 @@ import { Park } from '../../../../models/parks/park';
   templateUrl: './admin-parks-view.component.html',
   styleUrls: ['./admin-parks.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, TableModule, ToggleSwitch, RouterLink, TranslateModule]
+  imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, TableModule, ToggleSwitch, RouterLink, TranslateModule, EmptyStateComponent]
 })
 export class AdminParksViewComponent {
   @Input() parks!: Signal<Park[]>;

@@ -9,13 +9,14 @@ import { Tag } from 'primeng/tag';
 import { ButtonDirective } from 'primeng/button';
 import { Tooltip } from 'primeng/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
+import { EmptyStateComponent } from '../../../shared/empty-state/empty-state.component';
 
 @Component({
   selector: 'app-admin-users-view',
   templateUrl: './admin-users-view.component.html',
   styleUrls: ['./admin-users.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, Card, PrimeTemplate, TableModule, Avatar, Tag, ButtonDirective, Tooltip, TranslateModule]
+  imports: [Bind, Card, PrimeTemplate, TableModule, Avatar, Tag, ButtonDirective, Tooltip, TranslateModule, EmptyStateComponent]
 })
 export class AdminUsersViewComponent {
   @Input() users!: Signal<UserDto[]>;

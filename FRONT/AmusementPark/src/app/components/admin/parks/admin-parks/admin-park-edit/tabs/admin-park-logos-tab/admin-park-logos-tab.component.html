@@ -144,11 +144,11 @@
               </div>
             }
           </div>
-          <p-paginator
+          <app-pagination
             [rows]="logosPageSize"
             [totalRecords]="parkLogos.length"
-            (onPageChange)="logosPageChange.emit($event)">
-          </p-paginator>
+            (pageChanged)="logosPageChange.emit($event)">
+          </app-pagination>
         </div>
       }
     </p-panel>

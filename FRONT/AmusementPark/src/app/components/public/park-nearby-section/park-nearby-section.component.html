@@ -12,12 +12,14 @@
 
   <app-page-state
     [state]="state"
-    loadingTitleKey="parks.detail.nearby.loadingTitle"
-    loadingMessageKey="parks.detail.nearby.loadingMessage"
-    errorTitleKey="parks.detail.nearby.errorTitle"
-    errorMessageKey="parks.detail.nearby.errorMessage"
-    emptyTitleKey="parks.detail.nearby.emptyTitle"
-    emptyMessageKey="parks.detail.nearby.emptyMessage">
+    [messages]="{
+      loadingTitleKey: 'parks.detail.nearby.loadingTitle',
+      loadingMessageKey: 'parks.detail.nearby.loadingMessage',
+      errorTitleKey: 'parks.detail.nearby.errorTitle',
+      errorMessageKey: 'parks.detail.nearby.errorMessage',
+      emptyTitleKey: 'parks.detail.nearby.emptyTitle',
+      emptyMessageKey: 'parks.detail.nearby.emptyMessage'
+    }">
     <div class="park-nearby__grid">
       <app-park-card
         *ngFor="let park of parks"

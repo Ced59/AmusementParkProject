@@ -6,13 +6,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
-import { Paginator } from 'primeng/paginator';
 import { Select } from 'primeng/select';
 import { SearchResultItem } from '../../models/search/search-result-item';
 import { Park } from '../../models/parks/park';
 import { PaginationContract } from '@shared/models/contracts';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { PageStateComponent } from '../shared/page-state/page-state.component';
+import { PaginationComponent } from '../shared/pagination/pagination.component';
+import { EmptyStateComponent } from '../shared/empty-state/empty-state.component';
 import { ParkCardComponent } from '../public/park-card/park-card.component';
 import { SearchResultCardComponent } from '../public/search-result-card/search-result-card.component';
 
@@ -21,7 +22,7 @@ import { SearchResultCardComponent } from '../public/search-result-card/search-r
   templateUrl: './home-view.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, ButtonDirective, RouterLink, InputText, Select, FormsModule, PageStateComponent, NgFor, ParkCardComponent, NgIf, SearchResultCardComponent, Paginator, TranslateModule]
+  imports: [Bind, ButtonDirective, RouterLink, InputText, Select, FormsModule, PageStateComponent, PaginationComponent, EmptyStateComponent, NgFor, ParkCardComponent, NgIf, SearchResultCardComponent, TranslateModule]
 })
 export class HomeViewComponent {
   @Input() currentLang!: Signal<string>;

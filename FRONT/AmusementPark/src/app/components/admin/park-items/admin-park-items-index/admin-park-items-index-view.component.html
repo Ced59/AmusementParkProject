@@ -1,4 +1,13 @@
-<app-page-state [state]="state().kind">
+<app-page-state
+  [state]="state().kind"
+  [messages]="{
+    loadingTitleKey: 'admin.loading',
+    loadingMessageKey: 'common.loadingMessage',
+    errorTitleKey: 'common.errorTitle',
+    errorMessageKey: 'common.errorMessage',
+    emptyTitleKey: 'common.emptyTitle',
+    emptyMessageKey: 'admin.parkItems.empty'
+  }">
   <p-card>
     <div class="page-header">
       <div>
@@ -81,19 +90,24 @@
           </td>
         </tr>
       </ng-template>
-
-      <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="5">{{ 'admin.parkItems.empty' | translate }}</td>
-        </tr>
-      </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">
+          <app-empty-state
+            [compact]="true"
+            titleKey="common.emptyTitle"
+            messageKey="admin.parkItems.empty">
+          </app-empty-state>
+        </td>
+      </tr>
+    </ng-template>
     </p-table>
 
-    <p-paginator
+    <app-pagination
       [rows]="pageSize"
       [totalRecords]="totalRecords()"
       [rowsPerPageOptions]="[10, 20, 50, 100]"
-      (onPageChange)="onPageChange($event)">
-    </p-paginator>
+      (pageChanged)="onPageChange($event)">
+    </app-pagination>
   </p-card>
 </app-page-state>

@@ -1,11 +1,13 @@
 <app-page-state
   [state]="state().kind"
-  loadingTitleKey="parkItems.list.loadingTitle"
-  loadingMessageKey="parkItems.list.loadingMessage"
-  errorTitleKey="parkItems.list.errorTitle"
-  errorMessageKey="parkItems.list.errorMessage"
-  emptyTitleKey="parkItems.list.emptyTitle"
-  emptyMessageKey="parkItems.list.emptyMessage">
+  [messages]="{
+    loadingTitleKey: 'parkItems.list.loadingTitle',
+    loadingMessageKey: 'parkItems.list.loadingMessage',
+    errorTitleKey: 'parkItems.list.errorTitle',
+    errorMessageKey: 'parkItems.list.errorMessage',
+    emptyTitleKey: 'parkItems.list.emptyTitle',
+    emptyMessageKey: 'parkItems.list.emptyMessage'
+  }">
   <section class="park-items-page public-page page-shell" *ngIf="park() as currentPark">
     <section class="public-hero public-hero--split park-items-hero" *ngIf="explorer() as explorerData">
       <div class="public-hero__content">
@@ -182,22 +184,22 @@
     </div>
 
     <ng-template #emptyFilteredState>
-      <div class="public-empty-state compact-empty-state">
-        <i class="pi pi-inbox"></i>
-        <h3>{{ 'parkItems.list.emptyFilteredTitle' | translate }}</h3>
-        <p>{{ 'parkItems.list.emptyFilteredMessage' | translate }}</p>
-      </div>
+      <app-empty-state
+        class="compact-empty-state"
+        variant="public"
+        iconClass="pi pi-inbox"
+        titleKey="parkItems.list.emptyFilteredTitle"
+        messageKey="parkItems.list.emptyFilteredMessage">
+      </app-empty-state>
     </ng-template>
 
-    <div class="pagination-wrap" *ngIf="totalResults() > pageSize()">
-      <p-paginator
-        [first]="(currentPage() - 1) * pageSize()"
-        [rows]="pageSize()"
-        [totalRecords]="totalResults()"
-        [rowsPerPageOptions]="[6, 12, 24, 48]"
-        [pageLinkSize]="3"
-        (onPageChange)="onPageChange($event)">
-      </p-paginator>
-    </div>
+    <app-pagination
+      [first]="(currentPage() - 1) * pageSize()"
+      [rows]="pageSize()"
+      [totalRecords]="totalResults()"
+      [rowsPerPageOptions]="[6, 12, 24, 48]"
+      [pageLinkSize]="3"
+      (pageChanged)="onPageChange($event)">
+    </app-pagination>
   </section>
 </app-page-state>

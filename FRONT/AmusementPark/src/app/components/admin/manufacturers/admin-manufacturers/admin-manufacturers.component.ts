@@ -8,6 +8,7 @@ import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TranslateModule } from '@ngx-translate/core';
+import { EmptyStateComponent } from '../../../shared/empty-state/empty-state.component';
 import { AdminManufacturersStateFacade } from '@features/admin/manufacturers/state/admin-manufacturers-state.facade';
 
 @Component({
@@ -16,7 +17,7 @@ import { AdminManufacturersStateFacade } from '@features/admin/manufacturers/sta
     styleUrls: ['./admin-manufacturers.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [AdminManufacturersStateFacade],
-    imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, TranslateModule]
+    imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, TranslateModule, EmptyStateComponent]
 })
 export class AdminManufacturersComponent implements OnInit {
   protected readonly filteredManufacturers = this.stateFacade.filteredManufacturers;

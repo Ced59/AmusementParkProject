@@ -1,9 +1,11 @@
 <app-page-state
   [state]="state().kind"
-  loadingTitleKey="user-profile.loadingTitle"
-  loadingMessageKey="user-profile.loadingMessage"
-  errorTitleKey="user-profile.errorTitle"
-  errorMessageKey="user-profile.errorMessage">
+  [messages]="{
+    loadingTitleKey: 'user-profile.loadingTitle',
+    loadingMessageKey: 'user-profile.loadingMessage',
+    errorTitleKey: 'user-profile.errorTitle',
+    errorMessageKey: 'user-profile.errorMessage'
+  }">
   <p-card header="{{ 'user-profile.title' | translate }}" class="profile-card">
     <div class="profile-avatar-container">
       <img [src]="avatarUrl" class="profile-avatar" alt="Avatar" />

@@ -1,9 +1,11 @@
 <app-page-state
   [state]="state().kind"
-  loadingTitleKey="parkItems.detail.loadingTitle"
-  loadingMessageKey="parkItems.detail.loadingMessage"
-  errorTitleKey="parkItems.detail.errorTitle"
-  errorMessageKey="parkItems.detail.errorMessage">
+  [messages]="{
+    loadingTitleKey: 'parkItems.detail.loadingTitle',
+    loadingMessageKey: 'parkItems.detail.loadingMessage',
+    errorTitleKey: 'parkItems.detail.errorTitle',
+    errorMessageKey: 'parkItems.detail.errorMessage'
+  }">
   <section class="park-item-detail public-page" *ngIf="item() as currentItem">
     <section class="public-hero public-hero--split park-item-detail__hero">
       <div class="public-hero__content">

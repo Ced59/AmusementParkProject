@@ -460,13 +460,14 @@
                 </p-table>
               </div>
 
-              <p-paginator
+              <app-pagination
                 [rows]="ccPageSize()"
                 [first]="ccCurrentPage() * ccPageSize()"
                 [totalRecords]="ccTotalCount()"
                 [rowsPerPageOptions]="[25, 50, 100, 200]"
-                (onPageChange)="onPageChange($event)">
-              </p-paginator>
+                [alwaysShow]="true"
+                (pageChanged)="onPageChange($event)">
+              </app-pagination>
             </ng-container>
           </p-card>
         </p-tabpanel>

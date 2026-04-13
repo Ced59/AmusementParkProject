@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { PaginatorState, Paginator } from 'primeng/paginator';
+import { PaginatorState } from 'primeng/paginator';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { ProgressSpinner } from 'primeng/progressspinner';
 import { NgClass, DatePipe } from '@angular/common';
 import { Tag } from 'primeng/tag';
 import { TranslateModule } from '@ngx-translate/core';
+import { PaginationComponent } from '../../../../../../shared/pagination/pagination.component';
 
 interface AttractionPhotoItem {
   id: string;
@@ -23,7 +24,7 @@ interface AttractionPhotoItem {
     selector: 'app-admin-park-item-photos-tab',
     templateUrl: './admin-park-item-photos-tab.component.html',
     styleUrls: ['./admin-park-item-photos-tab.component.scss'],
-    imports: [Bind, Card, FormsModule, InputText, ButtonDirective, Panel, ProgressSpinner, NgClass, Tag, Paginator, DatePipe, TranslateModule]
+    imports: [Bind, Card, FormsModule, InputText, ButtonDirective, Panel, ProgressSpinner, NgClass, Tag, DatePipe, TranslateModule, PaginationComponent]
 })
 export class AdminParkItemPhotosTabComponent {
   @Input() isEditMode: boolean = false;

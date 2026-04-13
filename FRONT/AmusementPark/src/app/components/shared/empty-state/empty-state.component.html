@@ -1,0 +1,11 @@
+<div
+  [ngClass]="{
+    'app-empty-state': variant === 'app',
+    'public-empty-state': variant === 'public',
+    'app-empty-state--compact': compact,
+    'public-empty-state--compact': compact
+  }">
+  <i [class]="iconClass"></i>
+  <h3 *ngIf="titleKey">{{ titleKey | translate }}</h3>
+  <p *ngIf="messageKey">{{ messageKey | translate }}</p>
+</div>

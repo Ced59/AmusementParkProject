@@ -136,11 +136,11 @@
               </div>
             }
           </div>
-          <p-paginator
+          <app-pagination
             [rows]="photosPageSize"
             [totalRecords]="attractionPhotos.length"
-            (onPageChange)="photosPageChange.emit($event)">
-          </p-paginator>
+            (pageChanged)="photosPageChange.emit($event)">
+          </app-pagination>
         </div>
       }
     </p-panel>

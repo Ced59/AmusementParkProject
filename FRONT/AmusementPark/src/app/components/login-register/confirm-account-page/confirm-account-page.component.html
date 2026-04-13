@@ -3,8 +3,10 @@
 
   <app-page-state
     [state]="state().kind"
-    loadingTitleKey="auth.confirm.title"
-    loadingMessageKey="auth.confirm.loading">
+    [messages]="{
+      loadingTitleKey: 'auth.confirm.title',
+      loadingMessageKey: 'auth.confirm.loading'
+    }">
     <p [class.auth-success]="isSuccess()" [class.auth-error]="!isSuccess()">{{ message() }}</p>
     <a [routerLink]="['/', currentLanguage(), 'home']" class="app-link-reset">{{ 'auth.common.back_home' | translate }}</a>
   </app-page-state>

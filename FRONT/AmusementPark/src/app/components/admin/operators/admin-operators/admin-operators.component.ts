@@ -8,6 +8,7 @@ import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TranslateModule } from '@ngx-translate/core';
+import { EmptyStateComponent } from '../../../shared/empty-state/empty-state.component';
 import { AdminOperatorsStateFacade } from '@features/admin/operators/state/admin-operators-state.facade';
 
 @Component({
@@ -16,7 +17,7 @@ import { AdminOperatorsStateFacade } from '@features/admin/operators/state/admin
     styleUrls: ['./admin-operators.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [AdminOperatorsStateFacade],
-    imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, TranslateModule]
+    imports: [Bind, Card, PrimeTemplate, FormsModule, InputText, ButtonDirective, RouterLink, TableModule, TranslateModule, EmptyStateComponent]
 })
 export class AdminOperatorsComponent implements OnInit {
   protected readonly filteredOperators = this.stateFacade.filteredOperators;

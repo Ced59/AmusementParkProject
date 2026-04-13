@@ -9,8 +9,9 @@ import { TableModule } from 'primeng/table';
 import { PrimeTemplate } from 'primeng/api';
 import { Tag } from 'primeng/tag';
 import { ButtonDirective } from 'primeng/button';
-import { Paginator } from 'primeng/paginator';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
+import { PaginationComponent } from '../../../shared/pagination/pagination.component';
+import { EmptyStateComponent } from '../../../shared/empty-state/empty-state.component';
 import { ParkItemAdminRow } from '../../../../models/parks/park-item-admin-row';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 
@@ -19,7 +20,7 @@ import { ScreenState } from '@shared/models/contracts/screen-state.model';
   templateUrl: './admin-park-items-index-view.component.html',
   styleUrls: ['./admin-park-items-index.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, Card, FormsModule, InputText, Select, TableModule, PrimeTemplate, Tag, ButtonDirective, Paginator, TranslateModule, PageStateComponent]
+  imports: [Bind, Card, FormsModule, InputText, Select, TableModule, PrimeTemplate, Tag, ButtonDirective, TranslateModule, PageStateComponent, PaginationComponent, EmptyStateComponent]
 })
 export class AdminParkItemsIndexViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;
