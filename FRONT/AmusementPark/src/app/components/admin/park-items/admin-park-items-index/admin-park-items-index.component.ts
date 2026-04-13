@@ -20,10 +20,9 @@ export class AdminParkItemsIndexComponent implements OnInit {
   protected readonly rows = this.stateFacade.rows;
   protected readonly parkOptions = this.stateFacade.parkOptions;
   protected readonly totalRecords = this.stateFacade.totalRecords;
-  selectedParkId: string | null = null;
-  searchTerm: string = '';
-  currentPage: number = 1;
-  pageSize: number = 20;
+  protected readonly selectedParkId = this.stateFacade.selectedParkId;
+  protected readonly searchTerm = this.stateFacade.searchTerm;
+  protected readonly pageSize = this.stateFacade.pageSize;
 
   constructor(
     private readonly stateFacade: AdminParkItemsIndexStateFacade,
@@ -33,28 +32,15 @@ export class AdminParkItemsIndexComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadRows();
+    this.stateFacade.initialize(this.translateService.instant('admin.parkItems.allParks'));
   }
 
-  loadRows(): void {
-    this.stateFacade.loadData(
-      this.currentPage,
-      this.pageSize,
-      this.selectedParkId,
-      this.searchTerm,
-      this.translateService.instant('admin.parkItems.allParks')
-    );
-  }
-
-  onFiltersChanged(): void {
-    this.currentPage = 1;
-    this.loadRows();
+  onFiltersChanged(filters: { selectedParkId: string | null; searchTerm: string }): void {
+    this.stateFacade.updateFilters(filters.selectedParkId, filters.searchTerm);
   }
 
   onPageChange(event: { page?: number; rows?: number }): void {
-    this.currentPage = (event.page ?? 0) + 1;
-    this.pageSize = event.rows ?? this.pageSize;
-    this.loadRows();
+    this.stateFacade.updatePage(event);
   }
 
   getTypeLabelKey(itemType: string | number | null | undefined): string {

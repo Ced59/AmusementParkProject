@@ -20,7 +20,7 @@ export class AdminParkItemDetailsTabComponent {
   @Input({ required: true }) formGroup!: FormGroup;
   @Input() manufacturerOptions: EntitySelectOption[] = [];
   @Input() manufacturersLoading: boolean = false;
-  @Input() manufacturerAddLink: any[] | string | null = null;
+  @Input() manufacturerAddLink: unknown[] | string | null = null;
   @Input() manufacturerAddQueryParams: Record<string, string | number | boolean | null | undefined> | null = null;
   @Input() waterExposureLevelOptions: Array<{ labelKey: string; value: AttractionWaterExposureLevel }> = [];
   @Input() isSaving: boolean = false;

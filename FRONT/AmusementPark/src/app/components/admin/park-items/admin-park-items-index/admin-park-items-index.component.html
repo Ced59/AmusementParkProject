@@ -3,13 +3,11 @@
   [rows]="rows"
   [parkOptions]="parkOptions"
   [totalRecords]="totalRecords"
-  [selectedParkId]="selectedParkId"
-  [searchTerm]="searchTerm"
-  [pageSize]="pageSize"
+  [selectedParkId]="selectedParkId()"
+  [searchTerm]="searchTerm()"
+  [pageSize]="pageSize()"
   [getTypeLabelKeyFn]="getTypeLabelKey.bind(this)"
-  (selectedParkIdChange)="selectedParkId = $event"
-  (searchTermChange)="searchTerm = $event"
-  (filtersChanged)="onFiltersChanged()"
+  (filtersChanged)="onFiltersChanged($event)"
   (pageChanged)="onPageChange($event)"
   (editClicked)="goToEdit($event)">
 </app-admin-park-items-index-view>

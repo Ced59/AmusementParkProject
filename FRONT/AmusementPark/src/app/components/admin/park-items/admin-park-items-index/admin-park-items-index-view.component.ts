@@ -32,20 +32,18 @@ export class AdminParkItemsIndexViewComponent {
   @Input() pageSize: number = 20;
   @Input() getTypeLabelKeyFn: (itemType: string | number | null | undefined) => string = () => 'parkExplorer.types.other';
 
-  @Output() selectedParkIdChange: EventEmitter<string | null> = new EventEmitter<string | null>();
-  @Output() searchTermChange: EventEmitter<string> = new EventEmitter<string>();
-  @Output() filtersChanged: EventEmitter<void> = new EventEmitter<void>();
+  @Output() filtersChanged: EventEmitter<{ selectedParkId: string | null; searchTerm: string }> = new EventEmitter<{ selectedParkId: string | null; searchTerm: string }>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
   @Output() editClicked: EventEmitter<ParkItemAdminRow> = new EventEmitter<ParkItemAdminRow>();
 
   onSelectedParkIdChange(value: string | null): void {
-    this.selectedParkIdChange.emit(value);
-    this.filtersChanged.emit();
+    this.selectedParkId = value;
+    this.emitFiltersChanged();
   }
 
   onSearchTermChanged(value: string): void {
-    this.searchTermChange.emit(value);
-    this.filtersChanged.emit();
+    this.searchTerm = value;
+    this.emitFiltersChanged();
   }
 
   onPageChange(event: { page?: number; rows?: number }): void {
@@ -58,5 +56,12 @@ export class AdminParkItemsIndexViewComponent {
 
   goToEdit(row: ParkItemAdminRow): void {
     this.editClicked.emit(row);
+  }
+
+  private emitFiltersChanged(): void {
+    this.filtersChanged.emit({
+      selectedParkId: this.selectedParkId,
+      searchTerm: this.searchTerm
+    });
   }
 }
