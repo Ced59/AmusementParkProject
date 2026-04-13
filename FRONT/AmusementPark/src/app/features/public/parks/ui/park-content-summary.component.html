@@ -1,4 +1,4 @@
-<section class="park-content-summary" *ngIf="park && explorer && itemsLink">
+<section class="park-content-summary" *ngIf="summary && summary.itemsLink">
   <div class="public-section-header park-content-summary__header">
     <div>
       <span class="public-kicker">
@@ -12,7 +12,7 @@
     <a
       pButton
       class="p-button-outlined"
-      [routerLink]="itemsLink"
+      [routerLink]="summary.itemsLink"
       [label]="'parkVisitor.summary.viewAllItems' | translate"
       icon="pi pi-arrow-right">
     </a>
@@ -21,8 +21,8 @@
   <div class="summary-grid">
     <a
       class="summary-card"
-      *ngFor="let entry of summaryEntries"
-      [routerLink]="itemsLink"
+      *ngFor="let entry of summary.entries"
+      [routerLink]="summary.itemsLink"
       [queryParams]="entry.queryParams ?? null">
       <div class="summary-card__icon">
         <i [class]="entry.icon"></i>

@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Park } from '@app/models/parks/park';
-import { MapMarker } from '@app/models/map/map-marker';
 import { NgIf } from '@angular/common';
-import { LeafletMapComponent } from '../../shared/leaflet-map/leaflet-map.component';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
+import { MapMarker } from '@app/models/map/map-marker';
+import { ParkDetailViewModel } from '../models/park-detail-view.model';
 
 @Component({
     selector: 'app-park-location-section',
@@ -12,18 +13,14 @@ import { TranslateModule } from '@ngx-translate/core';
     imports: [NgIf, LeafletMapComponent, TranslateModule]
 })
 export class ParkLocationSectionComponent {
-  @Input() park: Park | null = null;
+  @Input() park: ParkDetailViewModel | null = null;
 
   get hasCoordinates(): boolean {
-    if (!this.park) {
-      return false;
-    }
-
-    return Number.isFinite(this.park.latitude) && Number.isFinite(this.park.longitude);
+    return this.park?.hasLocationInfo ?? false;
   }
 
   get center(): [number, number] {
-    if (!this.park) {
+    if (!this.park?.hasLocationInfo || this.park.latitude == null || this.park.longitude == null) {
       return [0, 0];
     }
 
@@ -31,7 +28,7 @@ export class ParkLocationSectionComponent {
   }
 
   get markers(): MapMarker[] {
-    if (!this.park || !this.hasCoordinates) {
+    if (!this.park?.hasLocationInfo || this.park.latitude == null || this.park.longitude == null) {
       return [];
     }
 

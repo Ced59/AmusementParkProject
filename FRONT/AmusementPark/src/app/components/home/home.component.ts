@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentLang.set(this.translationService.getCurrentLang() || 'en');
-    this.stateFacade.loadFeaturedParks();
+    this.stateFacade.loadFeaturedParks(this.currentLang());
 
     this.searchSubject.pipe(
       debounceTime(300),

@@ -1,3 +1,10 @@
 # features/parks
 
-Zone cible de la future refonte clean archi de la feature Parks prévue en P10.
+Feature parks désormais réellement engagée dans la refonte P10 :
+
+- pages dédiées ;
+- composants de présentation dédiés ;
+- façade d'état ;
+- modèles UI ;
+- mappers ;
+- réutilisation du data-access existant.

@@ -1,13 +1,20 @@
-import { Injectable, Signal, computed } from '@angular/core';
-import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { ScreenStateKind } from '@shared/models/contracts/screen-state.model';
-import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { Injectable, Signal, computed, signal } from '@angular/core';
+
 import { Park } from '@app/models/parks/park';
 import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
 import { ParkItem } from '@app/models/parks/park-item';
+import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { ScreenStateKind } from '@shared/models/contracts/screen-state.model';
+import { ParkCardModel } from '@shared/models/parks/park-card.model';
+import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { mapArray, mapNullable, mapParkToCardModel } from '@shared/utils/mapping';
+import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
+import { mapParkToDetailViewModel } from '../mappers/park-detail-view.mapper';
+import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
+import { ParkDetailViewModel } from '../models/park-detail-view.model';
 
-interface ParkDetailViewModel {
+interface ParkDetailSourceData {
   park: Park;
   explorer: ParkExplorer | null;
   nearbyParks: Park[];
@@ -16,12 +23,19 @@ interface ParkDetailViewModel {
 
 @Injectable()
 export class ParkDetailStateFacade {
-  private readonly screenStateStore = new SignalScreenStateStore<ParkDetailViewModel>();
+  private readonly screenStateStore = new SignalScreenStateStore<ParkDetailSourceData>();
+  private readonly currentLanguageSignal = signal('en');
 
   public readonly state = this.screenStateStore.state;
-  public readonly park: Signal<Park | null> = computed(() => this.screenStateStore.data()?.park ?? null);
-  public readonly explorer: Signal<ParkExplorer | null> = computed(() => this.screenStateStore.data()?.explorer ?? null);
-  public readonly nearbyParks: Signal<Park[]> = computed(() => this.screenStateStore.data()?.nearbyParks ?? []);
+  public readonly park: Signal<ParkDetailViewModel | null> = computed(() => {
+    return mapNullable(this.screenStateStore.data()?.park, (park: Park) => mapParkToDetailViewModel(park, this.currentLanguageSignal()));
+  });
+  public readonly summary: Signal<ParkContentSummaryViewModel | null> = computed(() => {
+    return mapParkContentSummaryViewModel(this.park(), this.screenStateStore.data()?.explorer ?? null);
+  });
+  public readonly nearbyParks: Signal<ParkCardModel[]> = computed(() => {
+    return mapArray(this.screenStateStore.data()?.nearbyParks, (park: Park) => mapParkToCardModel(park, this.currentLanguageSignal()));
+  });
   public readonly nearbyState = computed(() => this.screenStateStore.data()?.nearbyState ?? 'empty');
 
   constructor(
@@ -30,20 +44,24 @@ export class ParkDetailStateFacade {
   ) {
   }
 
+  setCurrentLanguage(language: string): void {
+    this.currentLanguageSignal.set(language || 'en');
+  }
+
   loadPark(id: string): void {
-    const previousData: ParkDetailViewModel | undefined = this.screenStateStore.data();
+    const previousData: ParkDetailSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
     this.parksApiService.getParkById(id).subscribe({
       next: (park: Park) => {
-        const viewModel: ParkDetailViewModel = {
+        const sourceData: ParkDetailSourceData = {
           park,
           explorer: null,
           nearbyParks: [],
           nearbyState: 'empty'
         };
 
-        this.screenStateStore.setReady(viewModel);
+        this.screenStateStore.setReady(sourceData);
         this.loadNearbyParks(park);
         this.loadExplorerSummary(park.id ?? id);
       },
@@ -57,7 +75,7 @@ export class ParkDetailStateFacade {
   private loadExplorerSummary(parkId: string): void {
     this.parksApiService.getParkExplorer(parkId).subscribe({
       next: (explorer: ParkExplorer) => {
-        this.updateReadyData((current: ParkDetailViewModel) => ({
+        this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
           explorer
         }));
@@ -75,7 +93,7 @@ export class ParkDetailStateFacade {
         const countsByCategory: ParkExplorerCount[] = this.buildCounts(items.map((item: ParkItem) => item.category));
         const countsByType: ParkExplorerCount[] = this.buildCounts(items.map((item: ParkItem) => item.type));
 
-        this.updateReadyData((current: ParkDetailViewModel) => ({
+        this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
           explorer: {
             parkId,
@@ -93,7 +111,7 @@ export class ParkDetailStateFacade {
         }));
       },
       error: () => {
-        this.updateReadyData((current: ParkDetailViewModel) => ({
+        this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
           explorer: null
         }));
@@ -115,7 +133,7 @@ export class ParkDetailStateFacade {
 
   private loadNearbyParks(park: Park): void {
     if (!this.hasLocationInfo(park)) {
-      this.updateReadyData((current: ParkDetailViewModel) => ({
+      this.updateReadyData((current: ParkDetailSourceData) => ({
         ...current,
         nearbyParks: [],
         nearbyState: 'empty'
@@ -123,7 +141,7 @@ export class ParkDetailStateFacade {
       return;
     }
 
-    this.updateReadyData((current: ParkDetailViewModel) => ({
+    this.updateReadyData((current: ParkDetailSourceData) => ({
       ...current,
       nearbyState: 'loading'
     }));
@@ -131,7 +149,7 @@ export class ParkDetailStateFacade {
     this.parksApiService.getParksByLocation(park.latitude, park.longitude, 150).subscribe({
       next: (parks: Park[]) => {
         const nearbyParks: Park[] = parks.filter((candidate: Park) => candidate.id !== park.id).slice(0, 4);
-        this.updateReadyData((current: ParkDetailViewModel) => ({
+        this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
           nearbyParks,
           nearbyState: nearbyParks.length > 0 ? 'ready' : 'empty'
@@ -143,7 +161,7 @@ export class ParkDetailStateFacade {
           : 0;
 
         if (status === 404) {
-          this.updateReadyData((current: ParkDetailViewModel) => ({
+          this.updateReadyData((current: ParkDetailSourceData) => ({
             ...current,
             nearbyParks: [],
             nearbyState: 'empty'
@@ -152,7 +170,7 @@ export class ParkDetailStateFacade {
         }
 
         console.error('Error loading nearby parks', error);
-        this.updateReadyData((current: ParkDetailViewModel) => ({
+        this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
           nearbyState: 'error'
         }));
@@ -164,8 +182,8 @@ export class ParkDetailStateFacade {
     return !!park && Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
   }
 
-  private updateReadyData(updater: (current: ParkDetailViewModel) => ParkDetailViewModel): void {
-    const currentData: ParkDetailViewModel | undefined = this.screenStateStore.data();
+  private updateReadyData(updater: (current: ParkDetailSourceData) => ParkDetailSourceData): void {
+    const currentData: ParkDetailSourceData | undefined = this.screenStateStore.data();
 
     if (!currentData) {
       return;

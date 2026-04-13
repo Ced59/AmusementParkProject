@@ -25,6 +25,7 @@
           (click)="goBack()"></button>
 
         <button
+          *ngIf="currentPark.exploreLink"
           pButton
           type="button"
           icon="pi pi-sitemap"
@@ -33,14 +34,10 @@
       </div>
     </div>
 
-    <app-park-hero-section [park]="currentPark" [currentLang]="currentLang()"></app-park-hero-section>
+    <app-park-hero-section [park]="currentPark"></app-park-hero-section>
 
-    <div class="park-detail__summary-grid" *ngIf="explorer() as explorerData">
-      <app-park-content-summary
-        [park]="currentPark"
-        [explorer]="explorerData"
-        [currentLang]="currentLang()">
-      </app-park-content-summary>
+    <div class="park-detail__summary-grid" *ngIf="summary() as currentSummary">
+      <app-park-content-summary [summary]="currentSummary"></app-park-content-summary>
 
       <section class="public-shell-card park-detail__quick-actions">
         <div class="public-panel__content public-shell-stack">
@@ -62,7 +59,7 @@
               <i class="pi pi-building"></i>
               {{ currentPark.city }}
             </span>
-            <span class="public-pill public-pill--gold" *ngIf="hasLocationInfo(currentPark)">
+            <span class="public-pill public-pill--gold" *ngIf="currentPark.hasLocationInfo">
               <i class="pi pi-map"></i>
               {{ 'parks.detail.location.title' | translate }}
             </span>
@@ -70,6 +67,7 @@
 
           <div class="public-cta-row">
             <button
+              *ngIf="currentPark.exploreLink"
               pButton
               type="button"
               icon="pi pi-sitemap"
@@ -77,11 +75,11 @@
               (click)="goToExplore()"></button>
 
             <a
-              *ngIf="currentPark.webSiteUrl"
+              *ngIf="currentPark.websiteUrl"
               pButton
               class="p-button-outlined"
               icon="pi pi-external-link"
-              [href]="currentPark.webSiteUrl"
+              [href]="currentPark.websiteUrl"
               target="_blank"
               rel="noreferrer noopener"
               [label]="'parks.actions.website' | translate">
@@ -93,12 +91,12 @@
 
     <div class="park-detail__grid">
       <app-park-practical-info-section
-        *ngIf="hasPracticalInfo(currentPark)"
+        *ngIf="currentPark.hasPracticalInfo"
         [park]="currentPark">
       </app-park-practical-info-section>
 
       <app-park-location-section
-        *ngIf="hasLocationInfo(currentPark)"
+        *ngIf="currentPark.hasLocationInfo"
         [park]="currentPark">
       </app-park-location-section>
     </div>

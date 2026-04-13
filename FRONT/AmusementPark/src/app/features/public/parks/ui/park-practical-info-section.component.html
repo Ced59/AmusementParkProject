@@ -21,14 +21,14 @@
       <strong>{{ currentPark.city }}</strong>
     </article>
 
-    <article class="park-info__card" *ngIf="addressLine">
+    <article class="park-info__card" *ngIf="currentPark.addressLine">
       <span>{{ 'parks.fields.address' | translate }}</span>
-      <strong>{{ addressLine }}</strong>
+      <strong>{{ currentPark.addressLine }}</strong>
     </article>
 
-    <article class="park-info__card" *ngIf="currentPark.webSiteUrl">
+    <article class="park-info__card" *ngIf="currentPark.websiteUrl">
       <span>{{ 'parks.fields.website' | translate }}</span>
-      <a [href]="currentPark.webSiteUrl" target="_blank" rel="noreferrer noopener">
+      <a [href]="currentPark.websiteUrl" target="_blank" rel="noreferrer noopener">
         {{ 'parks.actions.website' | translate }}
       </a>
     </article>

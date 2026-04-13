@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Park } from '@app/models/parks/park';
-import { buildParkAddressLine } from '@app/commons/park-presentation.utils';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { ParkDetailViewModel } from '../models/park-detail-view.model';
 
 @Component({
     selector: 'app-park-practical-info-section',
@@ -11,9 +11,5 @@ import { TranslateModule } from '@ngx-translate/core';
     imports: [NgIf, TranslateModule]
 })
 export class ParkPracticalInfoSectionComponent {
-  @Input() park: Park | null = null;
-
-  get addressLine(): string | null {
-    return buildParkAddressLine(this.park);
-  }
+  @Input() park: ParkDetailViewModel | null = null;
 }

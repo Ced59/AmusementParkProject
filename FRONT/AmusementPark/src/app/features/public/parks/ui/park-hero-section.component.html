@@ -5,16 +5,16 @@
         <i class="pi pi-compass"></i>
         {{ currentPark.countryCode }}
       </span>
-      <span class="public-pill public-pill--soft" *ngIf="locationLine">
+      <span class="public-pill public-pill--soft" *ngIf="currentPark.locationLine">
         <i class="pi pi-map-marker"></i>
-        {{ locationLine }}
+        {{ currentPark.locationLine }}
       </span>
     </div>
 
     <div>
       <h1 class="park-hero__title">{{ currentPark.name }}</h1>
-      <p class="park-hero__subtitle" *ngIf="description; else fallbackDescription">
-        <span [innerHTML]="description"></span>
+      <p class="park-hero__subtitle" *ngIf="currentPark.description; else fallbackDescription">
+        <span [innerHTML]="currentPark.description"></span>
       </p>
       <ng-template #fallbackDescription>
         <p class="park-hero__subtitle">{{ 'parks.detail.heroDescription' | translate }}</p>
@@ -22,9 +22,9 @@
     </div>
 
     <div class="park-hero__meta-grid">
-      <article class="park-hero__meta-item" *ngIf="addressLine">
+      <article class="park-hero__meta-item" *ngIf="currentPark.addressLine">
         <span>{{ 'parks.fields.address' | translate }}</span>
-        <strong>{{ addressLine }}</strong>
+        <strong>{{ currentPark.addressLine }}</strong>
       </article>
 
       <article class="park-hero__meta-item" *ngIf="currentPark.city">
@@ -32,9 +32,9 @@
         <strong>{{ currentPark.city }}</strong>
       </article>
 
-      <article class="park-hero__meta-item" *ngIf="currentPark.webSiteUrl">
+      <article class="park-hero__meta-item" *ngIf="currentPark.websiteUrl">
         <span>{{ 'parks.fields.website' | translate }}</span>
-        <a [href]="currentPark.webSiteUrl" target="_blank" rel="noreferrer noopener">
+        <a [href]="currentPark.websiteUrl" target="_blank" rel="noreferrer noopener">
           {{ 'parks.actions.website' | translate }}
         </a>
       </article>
@@ -44,7 +44,7 @@
   <div class="park-hero__visual" [class.park-hero__visual--placeholder]="!hasLogoImageId">
     <div class="park-hero__visual-shell">
       <app-image-display
-        [imageId]="currentPark.currentLogoImageId ?? null"
+        [imageId]="currentPark.logoImageId"
         [alt]="currentPark.name || 'Park logo'">
       </app-image-display>
     </div>

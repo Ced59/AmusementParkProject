@@ -1,21 +1,22 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
-import { ParkListStateFacade } from '@features/public/parks/state/park-list-state.facade';
-import { ParkListViewComponent } from './park-list-view.component';
+import { ParkListStateFacade } from '../state/park-list-state.facade';
+import { ParkListViewComponent } from '../ui/park-list-view.component';
 
 @Component({
-  selector: 'app-park-list',
-  templateUrl: './park-list.component.html',
-  styleUrls: ['./park-list.component.scss'],
+  selector: 'app-park-list-page',
+  templateUrl: './park-list-page.component.html',
+  styleUrls: ['./park-list-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ParkListStateFacade],
   imports: [ParkListViewComponent]
 })
-export class ParkListComponent implements OnInit {
+export class ParkListPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly parks = this.stateFacade.parks;
   protected readonly pagination = this.stateFacade.pagination;
@@ -26,13 +27,32 @@ export class ParkListComponent implements OnInit {
   private readonly searchSubject: Subject<string> = new Subject<string>();
 
   constructor(
+    private readonly route: ActivatedRoute,
     private readonly stateFacade: ParkListStateFacade,
     private readonly translationService: TranslationService
   ) {
   }
 
   ngOnInit(): void {
-    this.currentLang.set(this.translationService.getCurrentLang() || 'en');
+    const initialLanguage: string = this.route.parent?.snapshot.paramMap.get('lang')
+      ?? this.translationService.getCurrentLang()
+      ?? 'en';
+
+    this.currentLang.set(initialLanguage);
+    this.stateFacade.setCurrentLanguage(initialLanguage);
+
+    if (this.route.parent) {
+      this.route.parent.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
+        const language: string = params.get('lang') ?? 'en';
+        this.currentLang.set(language);
+        this.stateFacade.setCurrentLanguage(language);
+      });
+    }
+
+    this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
+      this.currentLang.set(language);
+      this.stateFacade.setCurrentLanguage(language);
+    });
 
     this.searchSubject.pipe(
       debounceTime(300),

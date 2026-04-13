@@ -1,14 +1,17 @@
 import { Injectable, Signal, computed, signal } from '@angular/core';
-import { SearchApiService } from '@data-access/search/search-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+
 import { Park } from '@app/models/parks/park';
 import { SearchApiResponse } from '@app/models/search/search-api-response';
 import { SearchResultItem } from '@app/models/search/search-result-item';
+import { SearchApiService } from '@data-access/search/search-api.service';
+import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { Pagination } from '@app/models/shared/pagination';
+import { ParkCardModel } from '@shared/models/parks/park-card.model';
+import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { mapArray, mapParkToCardModel } from '@shared/utils/mapping';
 
 interface HomeFeaturedViewModel {
-  parks: Park[];
+  parks: ParkCardModel[];
 }
 
 interface HomeSearchViewModel {
@@ -25,7 +28,7 @@ export class HomeStateFacade {
   private readonly pageSizeSignal = signal(10);
 
   public readonly featuredState = this.featuredStateStore.state;
-  public readonly featuredParks: Signal<Park[]> = computed(() => this.featuredStateStore.data()?.parks ?? []);
+  public readonly featuredParks: Signal<ParkCardModel[]> = computed(() => this.featuredStateStore.data()?.parks ?? []);
 
   public readonly searchState = this.searchStateStore.state;
   public readonly searchResults: Signal<SearchResultItem[]> = computed(() => this.searchStateStore.data()?.results ?? []);
@@ -45,13 +48,13 @@ export class HomeStateFacade {
     });
   }
 
-  loadFeaturedParks(): void {
+  loadFeaturedParks(currentLanguage: string): void {
     const previousData: HomeFeaturedViewModel | undefined = this.featuredStateStore.data();
     this.featuredStateStore.setLoading(previousData);
 
     this.parksApiService.getParksPaginated(1, 6).subscribe({
       next: (response: { data?: Park[] | null }) => {
-        const parks: Park[] = response.data ?? [];
+        const parks: ParkCardModel[] = mapArray(response.data, (park: Park) => mapParkToCardModel(park, currentLanguage));
         const viewModel: HomeFeaturedViewModel = {
           parks
         };

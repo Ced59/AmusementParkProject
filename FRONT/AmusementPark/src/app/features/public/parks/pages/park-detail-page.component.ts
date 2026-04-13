@@ -2,24 +2,22 @@ import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal 
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { Park } from '@app/models/parks/park';
 import { TranslationService } from '@app/services/translation.service';
-import { buildParkSlug } from '@app/commons/park-presentation.utils';
-import { ParkDetailStateFacade } from '@features/public/parks/state/park-detail-state.facade';
-import { ParkDetailViewComponent } from './park-detail-view.component';
+import { ParkDetailStateFacade } from '../state/park-detail-state.facade';
+import { ParkDetailViewComponent } from '../ui/park-detail-view.component';
 
 @Component({
-  selector: 'app-park-detail',
-  templateUrl: './park-detail.component.html',
-  styleUrls: ['./park-detail.component.scss'],
+  selector: 'app-park-detail-page',
+  templateUrl: './park-detail-page.component.html',
+  styleUrls: ['./park-detail-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ParkDetailStateFacade],
   imports: [ParkDetailViewComponent]
 })
-export class ParkDetailComponent implements OnInit {
+export class ParkDetailPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly park = this.stateFacade.park;
-  protected readonly explorer = this.stateFacade.explorer;
+  protected readonly summary = this.stateFacade.summary;
   protected readonly nearbyParks = this.stateFacade.nearbyParks;
   protected readonly nearbyState = this.stateFacade.nearbyState;
   protected readonly currentLang = signal<string>('en');
@@ -35,6 +33,13 @@ export class ParkDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const initialLanguage: string = this.route.parent?.snapshot.paramMap.get('lang')
+      ?? this.translationService.getCurrentLang()
+      ?? 'en';
+
+    this.currentLang.set(initialLanguage);
+    this.stateFacade.setCurrentLanguage(initialLanguage);
+
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {
       const id: string | null = params.get('id');
 
@@ -47,12 +52,15 @@ export class ParkDetailComponent implements OnInit {
 
     if (this.route.parent) {
       this.route.parent.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {
-        this.currentLang.set(params.get('lang') ?? 'en');
+        const language: string = params.get('lang') ?? 'en';
+        this.currentLang.set(language);
+        this.stateFacade.setCurrentLanguage(language);
       });
     }
 
-    this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((lang: string) => {
-      this.currentLang.set(lang);
+    this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
+      this.currentLang.set(language);
+      this.stateFacade.setCurrentLanguage(language);
     });
   }
 
@@ -61,20 +69,12 @@ export class ParkDetailComponent implements OnInit {
   }
 
   goToExplore(): void {
-    const currentPark: Park | null = this.park();
+    const exploreLink: string[] | null = this.park()?.exploreLink ?? null;
 
-    if (!currentPark?.id || !currentPark?.name) {
+    if (!exploreLink) {
       return;
     }
 
-    this.router.navigate(['/', this.currentLang(), 'park', currentPark.id, buildParkSlug(currentPark.name), 'items']);
-  }
-
-  hasPracticalInfo(park: Park | null): boolean {
-    return !!park?.countryCode || !!park?.city || !!park?.street || !!park?.postalCode || !!park?.webSiteUrl;
-  }
-
-  hasLocationInfo(park: Park | null): boolean {
-    return !!park && Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
+    this.router.navigate(exploreLink);
   }
 }

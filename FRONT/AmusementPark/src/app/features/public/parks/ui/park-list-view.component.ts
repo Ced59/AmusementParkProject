@@ -1,26 +1,27 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
-import { Bind } from 'primeng/bind';
-import { InputText } from 'primeng/inputtext';
-import { ButtonDirective } from 'primeng/button';
+import { NgFor } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { Park } from '@app/models/parks/park';
+import { Bind } from 'primeng/bind';
+import { ButtonDirective } from 'primeng/button';
+import { InputText } from 'primeng/inputtext';
+
+import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
+import { PaginationComponent } from '@app/components/shared/pagination/pagination.component';
+import { ParkCardComponent } from '@app/components/public/park-card/park-card.component';
 import { PaginationContract } from '@shared/models/contracts';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
-import { PageStateComponent } from '../shared/page-state/page-state.component';
-import { PaginationComponent } from '../shared/pagination/pagination.component';
-import { ParkCardComponent } from '../public/park-card/park-card.component';
+import { ParkCardModel } from '@shared/models/parks/park-card.model';
 
 @Component({
   selector: 'app-park-list-view',
   templateUrl: './park-list-view.component.html',
-  styleUrls: ['./park-list.component.scss'],
+  styleUrls: ['./park-list-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, InputText, ButtonDirective, PageStateComponent, PaginationComponent, NgFor, ParkCardComponent, NgIf, TranslateModule]
+  imports: [Bind, InputText, ButtonDirective, PageStateComponent, PaginationComponent, NgFor, ParkCardComponent, TranslateModule]
 })
 export class ParkListViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;
-  @Input() parks!: Signal<Park[]>;
+  @Input() parks!: Signal<ParkCardModel[]>;
   @Input() pagination!: Signal<PaginationContract | null>;
   @Input() currentLang!: Signal<string>;
   @Input() searchTerm!: Signal<string>;
