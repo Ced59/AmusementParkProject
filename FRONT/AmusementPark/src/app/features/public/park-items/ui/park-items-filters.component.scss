@@ -1,0 +1,19 @@
+.park-items-filters {
+  padding: 1rem;
+}
+
+.park-items-filters__search-field {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+  .park-items-filters {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .park-items-filters__search-field {
+    grid-column: auto;
+  }
+}

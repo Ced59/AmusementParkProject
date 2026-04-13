@@ -1,5 +1,11 @@
 import { Injectable, Signal, computed, signal } from '@angular/core';
 import { catchError, forkJoin, of } from 'rxjs';
+
+import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
+import { Park } from '@app/models/parks/park';
+import { ParkExplorer, ParkExplorerBucket } from '@app/models/parks/park-explorer';
+import { ParkItem } from '@app/models/parks/park-item';
+import { ParkZone } from '@app/models/parks/park-zone';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
@@ -7,21 +13,18 @@ import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemDescription } from '@app/commons/park-item-presentation.utils';
-import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
-import { Park } from '@app/models/parks/park';
-import { ParkExplorer, ParkExplorerBucket } from '@app/models/parks/park-explorer';
-import { ParkItem } from '@app/models/parks/park-item';
-import { ParkZone } from '@app/models/parks/park-zone';
-import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { buildTranslationOptions } from '@shared/utils/display/display-options';
+import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { mapParkItemToCardViewModel } from '../mappers/park-item-card.mapper';
+import {
+  mapParkExplorerBucketToZoneCardViewModel,
+  mapParkItemsPageViewModel
+} from '../mappers/park-items-page-view.mapper';
+import { ParkItemCardViewModel } from '../models/park-item-card.model';
+import { SelectOption } from '../models/select-option.model';
+import { ParkItemsPageViewModel, ParkItemZoneCardViewModel } from '../models/park-items-page-view.model';
 
-export interface SelectOption {
-  labelKey?: string;
-  label?: string;
-  value: string | null;
-}
-
-interface ParkItemsPageViewModel {
+interface ParkItemsPageSourceData {
   park: Park;
   explorer: ParkExplorer;
   allItems: ParkItem[];
@@ -29,7 +32,7 @@ interface ParkItemsPageViewModel {
   zones: ParkZone[];
 }
 
-interface ParkItemsPageFilters {
+export interface ParkItemsPageFilters {
   searchTerm: string;
   selectedCategory: string | null;
   selectedType: string | null;
@@ -40,8 +43,8 @@ interface ParkItemsPageFilters {
 
 @Injectable()
 export class ParkItemsPageStateFacade {
-  private readonly screenStateStore = new SignalScreenStateStore<ParkItemsPageViewModel>();
-  private readonly currentLangSignal = signal('en');
+  private readonly screenStateStore = new SignalScreenStateStore<ParkItemsPageSourceData>();
+  private readonly currentLanguageSignal = signal('en');
   private readonly searchTermSignal = signal('');
   private readonly selectedCategorySignal = signal<string | null>(null);
   private readonly selectedTypeSignal = signal<string | null>(null);
@@ -50,47 +53,15 @@ export class ParkItemsPageStateFacade {
   private readonly pageSizeSignal = signal(12);
 
   public readonly state = this.screenStateStore.state;
-  public readonly park: Signal<Park | null> = computed(() => this.screenStateStore.data()?.park ?? null);
-  public readonly explorer: Signal<ParkExplorer | null> = computed(() => this.screenStateStore.data()?.explorer ?? null);
-  public readonly allItems: Signal<ParkItem[]> = computed(() => this.screenStateStore.data()?.allItems ?? []);
-  public readonly manufacturersById = computed(() => {
-    const manufacturers: AttractionManufacturer[] = this.screenStateStore.data()?.manufacturers ?? [];
-    return manufacturers.reduce((accumulator: Record<string, string>, current: AttractionManufacturer) => {
-      if (current.id && current.name) {
-        accumulator[current.id] = current.name;
-      }
-      return accumulator;
-    }, {} as Record<string, string>);
-  });
-  public readonly zonesById = computed(() => {
-    const zones: ParkZone[] = this.screenStateStore.data()?.zones ?? [];
-    const currentLang: string = this.currentLangSignal();
-    return zones.reduce((accumulator: Record<string, string>, current: ParkZone) => {
-      const localizedName: string | undefined = resolveLocalizedValue(current.names, currentLang);
-      if (current.id) {
-        accumulator[current.id] = localizedName ?? current.name ?? current.id;
-      }
-      return accumulator;
-    }, {} as Record<string, string>);
-  });
-  public readonly bucketCards: Signal<ParkExplorerBucket[]> = computed(() => {
-    const explorer: ParkExplorer | null = this.explorer();
-
-    if (!explorer) {
-      return [];
-    }
-
-    return [...explorer.zones].filter((bucket: ParkExplorerBucket) => bucket.totalItems > 0);
-  });
-  public readonly hasZones = computed(() => this.bucketCards().length > 0);
-  public readonly activeZoneLabel = computed(() => {
-    const selectedZoneId: string | null = this.selectedZoneIdSignal();
-
-    if (!selectedZoneId) {
-      return null;
-    }
-
-    return this.zonesById()[selectedZoneId] ?? null;
+  public readonly pageView: Signal<ParkItemsPageViewModel | null> = computed(() => {
+    return mapParkItemsPageViewModel(
+      this.park(),
+      this.explorer(),
+      this.currentLanguageSignal(),
+      this.totalResults(),
+      this.activeZoneLabel(),
+      this.hasZones()
+    );
   });
   public readonly categoryOptions: Signal<SelectOption[]> = computed(() => {
     const base: SelectOption[] = [{ labelKey: 'parkItems.filters.allCategories', value: null }];
@@ -114,74 +85,34 @@ export class ParkItemsPageStateFacade {
 
     return base.concat(values);
   });
-  public readonly topTypeHighlights: Signal<Array<{ key: string; count: number }>> = computed(() => {
+  public readonly zoneCards: Signal<ParkItemZoneCardViewModel[]> = computed(() => {
     const explorer: ParkExplorer | null = this.explorer();
 
     if (!explorer) {
       return [];
     }
 
-    return [...explorer.overview.countsByType]
-      .sort((left, right) => right.count - left.count)
-      .slice(0, 4);
+    return [...explorer.zones]
+      .filter((bucket: ParkExplorerBucket) => bucket.totalItems > 0)
+      .map((bucket: ParkExplorerBucket) => mapParkExplorerBucketToZoneCardViewModel(
+        bucket,
+        this.currentLanguageSignal(),
+        this.selectedZoneIdSignal()
+      ));
   });
-  public readonly filteredItems: Signal<ParkItem[]> = computed(() => {
-    const allItems: ParkItem[] = this.allItems();
-
-    if (allItems.length === 0) {
-      return [];
-    }
-
-    const normalizedSearchTerm: string = this.searchTermSignal().trim().toLowerCase();
-    const selectedCategory: string | null = this.selectedCategorySignal();
-    const selectedType: string | null = this.selectedTypeSignal();
-    const selectedZoneId: string | null = this.selectedZoneIdSignal();
-    const currentLang: string = this.currentLangSignal();
-    const manufacturersById: Record<string, string> = this.manufacturersById();
-    const zonesById: Record<string, string> = this.zonesById();
-
-    return allItems.filter((item: ParkItem) => {
-      if (selectedCategory && item.category !== selectedCategory) {
-        return false;
-      }
-
-      if (selectedType && item.type !== selectedType) {
-        return false;
-      }
-
-      if (selectedZoneId && item.zoneId !== selectedZoneId) {
-        return false;
-      }
-
-      if (!normalizedSearchTerm) {
-        return true;
-      }
-
-      const manufacturerName: string | null = item.attractionDetails?.manufacturerId
-        ? manufacturersById[item.attractionDetails.manufacturerId] ?? null
-        : null;
-      const zoneName: string | null = item.zoneId ? zonesById[item.zoneId] ?? null : null;
-      const description: string = resolveParkItemDescription(item, currentLang) ?? '';
-      const haystack: string = [
-        item.name,
-        item.subtype,
-        description,
-        manufacturerName,
-        item.attractionDetails?.model,
-        item.attractionDetails?.status,
-        zoneName
-      ]
-        .filter((value: string | null | undefined): value is string => !!value)
-        .join(' ')
-        .toLowerCase();
-
-      return haystack.includes(normalizedSearchTerm);
-    }).sort((left: ParkItem, right: ParkItem) => left.name.localeCompare(right.name));
-  });
-  public readonly pagedItems: Signal<ParkItem[]> = computed(() => {
-    const filteredItems: ParkItem[] = this.filteredItems();
+  public readonly pagedItems: Signal<ParkItemCardViewModel[]> = computed(() => {
+    const park: Park | null = this.park();
     const firstIndex: number = (this.currentPageSignal() - 1) * this.pageSizeSignal();
-    return filteredItems.slice(firstIndex, firstIndex + this.pageSizeSignal());
+
+    return this.filteredItems()
+      .slice(firstIndex, firstIndex + this.pageSizeSignal())
+      .map((item: ParkItem) => mapParkItemToCardViewModel(
+        item,
+        park,
+        this.currentLanguageSignal(),
+        this.resolveManufacturerName(item),
+        this.resolveZoneName(item)
+      ));
   });
   public readonly totalResults = computed(() => this.filteredItems().length);
   public readonly rangeStart = computed(() => {
@@ -195,6 +126,103 @@ export class ParkItemsPageStateFacade {
   public readonly currentPage = this.currentPageSignal.asReadonly();
   public readonly pageSize = this.pageSizeSignal.asReadonly();
   public readonly selectedZoneId = this.selectedZoneIdSignal.asReadonly();
+  public readonly searchTerm = this.searchTermSignal.asReadonly();
+  public readonly selectedCategory = this.selectedCategorySignal.asReadonly();
+  public readonly selectedType = this.selectedTypeSignal.asReadonly();
+
+  private readonly park: Signal<Park | null> = computed(() => this.screenStateStore.data()?.park ?? null);
+  private readonly explorer: Signal<ParkExplorer | null> = computed(() => this.screenStateStore.data()?.explorer ?? null);
+  private readonly allItems: Signal<ParkItem[]> = computed(() => this.screenStateStore.data()?.allItems ?? []);
+  private readonly manufacturersById = computed(() => {
+    const manufacturers: AttractionManufacturer[] = this.screenStateStore.data()?.manufacturers ?? [];
+
+    return manufacturers.reduce((accumulator: Record<string, string>, current: AttractionManufacturer) => {
+      if (current.id && current.name) {
+        accumulator[current.id] = current.name;
+      }
+
+      return accumulator;
+    }, {} as Record<string, string>);
+  });
+  private readonly zonesById = computed(() => {
+    const zones: ParkZone[] = this.screenStateStore.data()?.zones ?? [];
+    const currentLanguage: string = this.currentLanguageSignal();
+
+    return zones.reduce((accumulator: Record<string, string>, current: ParkZone) => {
+      const localizedName: string | undefined = resolveLocalizedValue(current.names, currentLanguage);
+
+      if (current.id) {
+        accumulator[current.id] = localizedName ?? current.name ?? current.id;
+      }
+
+      return accumulator;
+    }, {} as Record<string, string>);
+  });
+  private readonly activeZoneLabel = computed(() => {
+    const selectedZoneId: string | null = this.selectedZoneIdSignal();
+
+    if (!selectedZoneId) {
+      return null;
+    }
+
+    return this.zonesById()[selectedZoneId] ?? null;
+  });
+  private readonly hasZones = computed(() => this.zoneCards().length > 0);
+  private readonly filteredItems: Signal<ParkItem[]> = computed(() => {
+    const allItems: ParkItem[] = this.allItems();
+
+    if (allItems.length === 0) {
+      return [];
+    }
+
+    const normalizedSearchTerm: string = this.searchTermSignal().trim().toLowerCase();
+    const selectedCategory: string | null = this.selectedCategorySignal();
+    const selectedType: string | null = this.selectedTypeSignal();
+    const selectedZoneId: string | null = this.selectedZoneIdSignal();
+    const currentLanguage: string = this.currentLanguageSignal();
+    const manufacturersById: Record<string, string> = this.manufacturersById();
+    const zonesById: Record<string, string> = this.zonesById();
+
+    return allItems
+      .filter((item: ParkItem) => {
+        if (selectedCategory && item.category !== selectedCategory) {
+          return false;
+        }
+
+        if (selectedType && item.type !== selectedType) {
+          return false;
+        }
+
+        if (selectedZoneId && item.zoneId !== selectedZoneId) {
+          return false;
+        }
+
+        if (!normalizedSearchTerm) {
+          return true;
+        }
+
+        const manufacturerName: string | null = item.attractionDetails?.manufacturerId
+          ? manufacturersById[item.attractionDetails.manufacturerId] ?? null
+          : null;
+        const zoneName: string | null = item.zoneId ? zonesById[item.zoneId] ?? null : null;
+        const description: string = resolveParkItemDescription(item, currentLanguage) ?? '';
+        const haystack: string = [
+          item.name,
+          item.subtype,
+          description,
+          manufacturerName,
+          item.attractionDetails?.model,
+          item.attractionDetails?.status,
+          zoneName
+        ]
+          .filter((value: string | null | undefined): value is string => !!value)
+          .join(' ')
+          .toLowerCase();
+
+        return haystack.includes(normalizedSearchTerm);
+      })
+      .sort((left: ParkItem, right: ParkItem) => left.name.localeCompare(right.name));
+  });
 
   constructor(
     private readonly parksApiService: ParksApiService,
@@ -204,8 +232,8 @@ export class ParkItemsPageStateFacade {
   ) {
   }
 
-  setCurrentLanguage(lang: string): void {
-    this.currentLangSignal.set(lang);
+  setCurrentLanguage(language: string): void {
+    this.currentLanguageSignal.set(language || 'en');
     this.normalizeFilters();
   }
 
@@ -219,10 +247,10 @@ export class ParkItemsPageStateFacade {
     this.normalizeFilters();
   }
 
-  loadData(parkId: string, currentLang: string): void {
-    this.currentLangSignal.set(currentLang);
+  loadData(parkId: string, currentLanguage: string): void {
+    this.currentLanguageSignal.set(currentLanguage);
 
-    const previousData: ParkItemsPageViewModel | undefined = this.screenStateStore.data();
+    const previousData: ParkItemsPageSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
     forkJoin({
@@ -261,22 +289,7 @@ export class ParkItemsPageStateFacade {
     });
   }
 
-  getParkZoneDisplayName(bucket: ParkExplorerBucket): string {
-    const localizedName: string | undefined = resolveLocalizedValue(bucket.names, this.currentLangSignal());
-    return localizedName ?? bucket.name;
-  }
-
-  getZoneCardTypeHighlights(bucket: ParkExplorerBucket): Array<{ key: string; count: number }> {
-    return [...bucket.countsByType]
-      .sort((left, right) => right.count - left.count)
-      .slice(0, 3);
-  }
-
-  getTypeKey(type: string): string {
-    return getParkItemTypeTranslationKey(type);
-  }
-
-  getManufacturerName(item: ParkItem): string | null {
+  private resolveManufacturerName(item: ParkItem): string | null {
     const manufacturerId: string | null | undefined = item.attractionDetails?.manufacturerId;
 
     if (!manufacturerId) {
@@ -286,7 +299,7 @@ export class ParkItemsPageStateFacade {
     return this.manufacturersById()[manufacturerId] ?? null;
   }
 
-  getZoneName(item: ParkItem): string | null {
+  private resolveZoneName(item: ParkItem): string | null {
     if (!item.zoneId) {
       return null;
     }
@@ -294,14 +307,12 @@ export class ParkItemsPageStateFacade {
     return this.zonesById()[item.zoneId] ?? null;
   }
 
-  isZoneSelected(bucket: ParkExplorerBucket): boolean {
-    return this.selectedZoneIdSignal() === (bucket.id ?? null);
-  }
-
   private normalizeFilters(): void {
     const selectedZoneId: string | null = this.selectedZoneIdSignal();
+    const sourceData: ParkItemsPageSourceData | undefined = this.screenStateStore.data();
+    const availableZoneIds: string[] = Object.keys(this.zonesById());
 
-    if (selectedZoneId && !this.zonesById()[selectedZoneId]) {
+    if (selectedZoneId && sourceData && (availableZoneIds.length === 0 || !this.zonesById()[selectedZoneId])) {
       this.selectedZoneIdSignal.set(null);
     }
 
@@ -314,5 +325,4 @@ export class ParkItemsPageStateFacade {
       this.currentPageSignal.set(1);
     }
   }
-
 }

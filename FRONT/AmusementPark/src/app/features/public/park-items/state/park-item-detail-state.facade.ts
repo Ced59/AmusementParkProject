@@ -1,13 +1,16 @@
-import { Injectable, Signal, computed } from '@angular/core';
+import { Injectable, Signal, computed, signal } from '@angular/core';
+
+import { Park } from '@app/models/parks/park';
+import { ParkItem } from '@app/models/parks/park-item';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
-import { Park } from '@app/models/parks/park';
-import { ParkItem } from '@app/models/parks/park-item';
+import { mapParkItemToDetailViewModel } from '../mappers/park-item-detail-view.mapper';
+import { ParkItemDetailViewModel } from '../models/park-item-detail-view.model';
 
-interface ParkItemDetailViewModel {
+interface ParkItemDetailSourceData {
   item: ParkItem;
   park: Park | null;
   manufacturerName: string | null;
@@ -16,13 +19,21 @@ interface ParkItemDetailViewModel {
 
 @Injectable()
 export class ParkItemDetailStateFacade {
-  private readonly screenStateStore = new SignalScreenStateStore<ParkItemDetailViewModel>();
+  private readonly screenStateStore = new SignalScreenStateStore<ParkItemDetailSourceData>();
+  private readonly currentLanguageSignal = signal('en');
 
   public readonly state = this.screenStateStore.state;
-  public readonly item: Signal<ParkItem | null> = computed(() => this.screenStateStore.data()?.item ?? null);
-  public readonly park: Signal<Park | null> = computed(() => this.screenStateStore.data()?.park ?? null);
-  public readonly manufacturerName: Signal<string | null> = computed(() => this.screenStateStore.data()?.manufacturerName ?? null);
-  public readonly zoneName: Signal<string | null> = computed(() => this.screenStateStore.data()?.zoneName ?? null);
+  public readonly detail: Signal<ParkItemDetailViewModel | null> = computed(() => {
+    const sourceData: ParkItemDetailSourceData | undefined = this.screenStateStore.data();
+
+    return mapParkItemToDetailViewModel(
+      sourceData?.item ?? null,
+      sourceData?.park ?? null,
+      sourceData?.manufacturerName ?? null,
+      sourceData?.zoneName ?? null,
+      this.currentLanguageSignal()
+    );
+  });
 
   constructor(
     private readonly parkItemsApiService: ParkItemsApiService,
@@ -32,8 +43,12 @@ export class ParkItemDetailStateFacade {
   ) {
   }
 
+  setCurrentLanguage(language: string): void {
+    this.currentLanguageSignal.set(language || 'en');
+  }
+
   loadItem(itemId: string): void {
-    const previousData: ParkItemDetailViewModel | undefined = this.screenStateStore.data();
+    const previousData: ParkItemDetailSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
     this.parkItemsApiService.getParkItemById(itemId).subscribe({
@@ -57,7 +72,7 @@ export class ParkItemDetailStateFacade {
   private loadRelatedData(item: ParkItem): void {
     this.parksApiService.getParkById(item.parkId).subscribe({
       next: (park: Park) => {
-        this.updateReadyData((current: ParkItemDetailViewModel) => ({
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
           ...current,
           park
         }));
@@ -71,13 +86,13 @@ export class ParkItemDetailStateFacade {
     if (item.attractionDetails?.manufacturerId) {
       this.manufacturersApiService.getAttractionManufacturerById(item.attractionDetails.manufacturerId).subscribe({
         next: (manufacturer: { name?: string | null }) => {
-          this.updateReadyData((current: ParkItemDetailViewModel) => ({
+          this.updateReadyData((current: ParkItemDetailSourceData) => ({
             ...current,
             manufacturerName: manufacturer.name ?? null
           }));
         },
         error: () => {
-          this.updateReadyData((current: ParkItemDetailViewModel) => ({
+          this.updateReadyData((current: ParkItemDetailSourceData) => ({
             ...current,
             manufacturerName: null
           }));
@@ -88,13 +103,13 @@ export class ParkItemDetailStateFacade {
     if (item.zoneId) {
       this.parkZonesApiService.getParkZoneById(item.zoneId).subscribe({
         next: (zone: { name?: string | null }) => {
-          this.updateReadyData((current: ParkItemDetailViewModel) => ({
+          this.updateReadyData((current: ParkItemDetailSourceData) => ({
             ...current,
             zoneName: zone.name ?? null
           }));
         },
         error: () => {
-          this.updateReadyData((current: ParkItemDetailViewModel) => ({
+          this.updateReadyData((current: ParkItemDetailSourceData) => ({
             ...current,
             zoneName: null
           }));
@@ -103,8 +118,8 @@ export class ParkItemDetailStateFacade {
     }
   }
 
-  private updateReadyData(updater: (current: ParkItemDetailViewModel) => ParkItemDetailViewModel): void {
-    const currentData: ParkItemDetailViewModel | undefined = this.screenStateStore.data();
+  private updateReadyData(updater: (current: ParkItemDetailSourceData) => ParkItemDetailSourceData): void {
+    const currentData: ParkItemDetailSourceData | undefined = this.screenStateStore.data();
 
     if (!currentData) {
       return;

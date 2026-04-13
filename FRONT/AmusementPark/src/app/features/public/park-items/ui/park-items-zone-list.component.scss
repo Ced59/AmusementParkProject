@@ -1,18 +1,8 @@
-.park-items-page {
-  align-content: start;
-}
-
-.park-items-hero__pill-list {
-  margin-top: 1rem;
-}
-
-.park-items-zones,
-.park-items-filters {
+.park-items-zones {
   padding: 1rem;
 }
 
-.zone-grid,
-.items-grid {
+.zone-grid {
   display: grid;
   gap: 1rem;
 }
@@ -49,38 +39,18 @@
   margin-top: 1rem;
 }
 
-.park-items-filters__search-field {
-  grid-column: 1 / -1;
-}
-
-.compact-empty-state {
-  padding: 2rem 1.25rem;
-}
-
-app-pagination {
-  display: block;
-  margin-top: 0.5rem;
-}
-
 @media (min-width: 768px) {
-  .park-items-zones,
-  .park-items-filters {
+  .park-items-zones {
     padding: 1.25rem;
   }
 
-  .zone-grid,
-  .items-grid {
+  .zone-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1100px) {
-  .zone-grid,
-  .items-grid {
+  .zone-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .park-items-filters__search-field {
-    grid-column: auto;
   }
 }

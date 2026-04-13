@@ -1,0 +1,32 @@
+<section class="park-nearby public-page">
+  <div class="public-section-header park-section-header">
+    <div>
+      <span class="public-kicker">
+        <i class="pi pi-map-marker"></i>
+        {{ 'parks.detail.nearby.title' | translate }}
+      </span>
+      <h2 class="public-section-header__title">{{ 'parks.detail.nearby.title' | translate }}</h2>
+      <p class="public-section-header__subtitle">{{ 'parks.detail.nearby.subtitle' | translate }}</p>
+    </div>
+  </div>
+
+  <app-page-state
+    [state]="state"
+    [messages]="{
+      loadingTitleKey: 'parks.detail.nearby.loadingTitle',
+      loadingMessageKey: 'parks.detail.nearby.loadingMessage',
+      errorTitleKey: 'parks.detail.nearby.errorTitle',
+      errorMessageKey: 'parks.detail.nearby.errorMessage',
+      emptyTitleKey: 'parks.detail.nearby.emptyTitle',
+      emptyMessageKey: 'parks.detail.nearby.emptyMessage'
+    }">
+    <div class="park-nearby__grid">
+      <app-park-card
+        *ngFor="let park of parks"
+        [park]="park"
+        [currentLang]="currentLang"
+        [compact]="true">
+      </app-park-card>
+    </div>
+  </app-page-state>
+</section>

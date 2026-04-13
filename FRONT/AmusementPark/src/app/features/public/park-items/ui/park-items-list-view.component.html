@@ -1,0 +1,130 @@
+<app-page-state
+  [state]="state().kind"
+  [messages]="{
+    loadingTitleKey: 'parkItems.list.loadingTitle',
+    loadingMessageKey: 'parkItems.list.loadingMessage',
+    errorTitleKey: 'parkItems.list.errorTitle',
+    errorMessageKey: 'parkItems.list.errorMessage',
+    emptyTitleKey: 'parkItems.list.emptyTitle',
+    emptyMessageKey: 'parkItems.list.emptyMessage'
+  }">
+  <section class="park-items-page public-page page-shell" *ngIf="pageView() as currentView">
+    <section class="public-hero public-hero--split park-items-hero">
+      <div class="public-hero__content">
+        <span class="public-kicker">
+          <i class="pi pi-sitemap"></i>
+          {{ 'parkVisitor.summary.badge' | translate }}
+        </span>
+
+        <div>
+          <h1 class="page-title park-items-hero__title">{{ currentView.parkName }}</h1>
+          <p class="public-lead park-items-hero__lead">{{ 'parkItems.list.subtitle' | translate }}</p>
+        </div>
+
+        <div class="public-stat-grid park-items-hero__stats">
+          <article class="public-stat-card public-stat-card--accent">
+            <span class="public-stat-card__label">{{ 'parkVisitor.summary.totalItems' | translate }}</span>
+            <strong class="public-stat-card__value">{{ currentView.totalItems }}</strong>
+            <span class="public-stat-card__hint">{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+          </article>
+
+          <article class="public-stat-card" *ngIf="currentView.totalResults !== currentView.totalItems">
+            <span class="public-stat-card__label">{{ 'parkItems.list.filteredResults' | translate }}</span>
+            <strong class="public-stat-card__value">{{ currentView.totalResults }}</strong>
+            <span class="public-stat-card__hint">{{ 'parkItems.filters.clear' | translate }}</span>
+          </article>
+
+          <article class="public-stat-card" *ngIf="currentView.hasZones">
+            <span class="public-stat-card__label">{{ 'parkItems.filters.zone' | translate }}</span>
+            <strong class="public-stat-card__value">{{ currentView.zoneCount }}</strong>
+            <span class="public-stat-card__hint">
+              {{ currentView.activeZoneLabel ? currentView.activeZoneLabel : ('parkItems.filters.allZones' | translate) }}
+            </span>
+          </article>
+        </div>
+
+        <div class="public-cta-row">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-arrow-left"
+            class="p-button-outlined"
+            [label]="'parkItems.actions.backToPark' | translate"
+            (click)="onBackClicked()"></button>
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-filter-slash"
+            class="p-button-outlined"
+            [label]="'parkItems.filters.clear' | translate"
+            (click)="clearFilters()"></button>
+        </div>
+      </div>
+
+      <div class="public-hero__media park-items-hero__media">
+        <article class="public-feature-card" *ngIf="currentView.topTypeHighlights.length > 0">
+          <span class="public-feature-card__eyebrow">
+            <i class="pi pi-star"></i>
+            {{ 'parkItems.filters.type' | translate }}
+          </span>
+          <h2 class="public-feature-card__title">{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
+          <div class="public-pill-list park-items-hero__pill-list">
+            <span class="public-pill public-pill--soft" *ngFor="let typeCount of currentView.topTypeHighlights">
+              {{ typeCount.labelKey | translate }} · {{ typeCount.count }}
+            </span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <app-park-items-zone-list
+      [zoneCards]="zoneCards"
+      (zoneSelected)="onZoneSelected($event)">
+    </app-park-items-zone-list>
+
+    <app-park-items-filters
+      [searchTerm]="searchTerm"
+      [selectedCategory]="selectedCategory"
+      [selectedType]="selectedType"
+      [selectedZoneId]="selectedZoneId"
+      [categoryOptions]="categoryOptions"
+      [typeOptions]="typeOptions"
+      [zoneOptions]="zoneOptions"
+      [hasZones]="hasZones"
+      (searchChanged)="onSearchChanged($event)"
+      (categoryChanged)="onCategoryChanged($event)"
+      (typeChanged)="onTypeChanged($event)"
+      (zoneChanged)="onZoneChanged($event)">
+      <p filters-subtitle class="public-section-header__subtitle">
+        {{ 'parkItems.list.resultsCount' | translate:{ start: rangeStart(), end: rangeEnd(), total: totalResults() } }}
+      </p>
+    </app-park-items-filters>
+
+    <div class="items-grid" *ngIf="pagedItems().length > 0; else emptyFilteredState">
+      <app-park-item-card-view
+        *ngFor="let card of pagedItems()"
+        [card]="card">
+      </app-park-item-card-view>
+    </div>
+
+    <ng-template #emptyFilteredState>
+      <app-empty-state
+        class="compact-empty-state"
+        variant="public"
+        iconClass="pi pi-inbox"
+        titleKey="parkItems.list.emptyFilteredTitle"
+        messageKey="parkItems.list.emptyFilteredMessage">
+      </app-empty-state>
+    </ng-template>
+
+    <app-pagination
+      [first]="(currentPage() - 1) * pageSize()"
+      [rows]="pageSize()"
+      [totalRecords]="totalResults()"
+      [rowsPerPageOptions]="[6, 12, 24, 48]"
+      [pageLinkSize]="3"
+      (pageChanged)="onPageChanged($event)">
+    </app-pagination>
+  </section>
+</app-page-state>
