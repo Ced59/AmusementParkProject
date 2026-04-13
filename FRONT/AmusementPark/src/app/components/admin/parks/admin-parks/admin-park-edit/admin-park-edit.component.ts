@@ -16,6 +16,7 @@ import { UploadedImage } from '../../../../../models/images/uploaded-image';
 import { ImageCategory } from '../../../../../models/images/image-category';
 import { ImageDto } from '../../../../../models/images/image-dto';
 import { ImageOwnerType } from '../../../../../models/images/image-owner-type';
+import { ImageTagDto } from '../../../../../models/images/image-tag-dto';
 import { MapMarker } from '../../../../../models/map/map-marker';
 import { ParkFounder } from '../../../../../models/parks/park-founder';
 import { ParkOperator } from '../../../../../models/parks/park-operator';
@@ -33,14 +34,8 @@ import { AdminParkGeneralTabComponent } from './tabs/admin-park-general-tab/admi
 import { AdminParkLocationTabComponent } from './tabs/admin-park-location-tab/admin-park-location-tab.component';
 import { AdminParkDescriptionsTabComponent } from './tabs/admin-park-descriptions-tab/admin-park-descriptions-tab.component';
 import { AdminParkLogosTabComponent } from './tabs/admin-park-logos-tab/admin-park-logos-tab.component';
-
-interface ParkLogoItem {
-  id: string;
-  imageUrl: string;
-  description?: string;
-  isCurrent: boolean;
-  createdAt: string;
-}
+import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
+import { mapImageDtoToOwnedImageItem } from '@shared/utils/images/owned-image-item.mapper';
 
 interface ParkTypeOption {
   labelKey: string;
@@ -86,8 +81,8 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   mapZoom: number = 16;
   mapMarkers: MapMarker[] = [];
 
-  parkLogos: ParkLogoItem[] = [];
-  currentLogo: ParkLogoItem | null = null;
+  parkLogos: OwnedImageItem[] = [];
+  currentLogo: OwnedImageItem | null = null;
   logosLoading: boolean = false;
   logosUploading: boolean = false;
   logosPage: number = 0;
@@ -263,16 +258,16 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSetCurrentLogo(logo: ParkLogoItem): void {
+  onSetCurrentLogo(logo: OwnedImageItem): void {
     if (!this.parkId || logo.isCurrent) {
       return;
     }
 
     this.imagesApiService.setCurrentImage(logo.id).subscribe({
       next: (image: ImageDto) => {
-        const updated: ParkLogoItem = this.toParkLogoItem(image);
+        const updated: OwnedImageItem = this.toOwnedImageItem(image);
 
-        this.parkLogos = this.parkLogos.map((item: ParkLogoItem) => ({
+        this.parkLogos = this.parkLogos.map((item: OwnedImageItem) => ({
           ...item,
           isCurrent: item.id === updated.id
         }));
@@ -291,15 +286,15 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDeleteLogo(logo: ParkLogoItem): void {
+  onDeleteLogo(logo: OwnedImageItem): void {
     if (!confirm(this.translate.instant('admin.parks.logos.deleteConfirm'))) {
       return;
     }
 
     this.imagesApiService.deleteImage(logo.id).subscribe({
       next: () => {
-        this.parkLogos = this.parkLogos.filter((item: ParkLogoItem) => item.id !== logo.id);
-        this.currentLogo = this.parkLogos.find((item: ParkLogoItem) => item.isCurrent) ?? null;
+        this.parkLogos = this.parkLogos.filter((item: OwnedImageItem) => item.id !== logo.id);
+        this.currentLogo = this.parkLogos.find((item: OwnedImageItem) => item.isCurrent) ?? null;
         this.toastMessageService.add(
           'success',
           this.translate.instant('admin.parks.saveMessages.successSummary'),
@@ -318,7 +313,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     this.logosPageSize = event.rows ?? this.logosPageSize;
   }
 
-  get pagedLogos(): ParkLogoItem[] {
+  get pagedLogos(): OwnedImageItem[] {
     const start: number = this.logosPage * this.logosPageSize;
     return this.parkLogos.slice(start, start + this.logosPageSize);
   }
@@ -699,8 +694,8 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
 
     this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK_LOGO).subscribe({
       next: (images: ImageDto[]) => {
-        this.parkLogos = images.map((image: ImageDto) => this.toParkLogoItem(image));
-        this.currentLogo = this.parkLogos.find((item: ParkLogoItem) => item.isCurrent) ?? null;
+        this.parkLogos = images.map((image: ImageDto) => this.toOwnedImageItem(image));
+        this.currentLogo = this.parkLogos.find((item: OwnedImageItem) => item.isCurrent) ?? null;
         this.logosLoading = false;
         this.cdr.markForCheck();
       },
@@ -722,7 +717,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       )
     );
 
-    const image: ImageDto = await firstValueFrom(
+    const linkedImage: ImageDto = await firstValueFrom(
       this.imagesApiService.linkImage({
         imageId: uploaded.id,
         ownerType: ImageOwnerType.PARK,
@@ -732,14 +727,15 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
       })
     );
 
-    const item: ParkLogoItem = this.toParkLogoItem(image);
+    const taggedImage: ImageDto = await this.tryApplyLogoTagAsync(linkedImage);
+    const item: OwnedImageItem = this.toOwnedImageItem(taggedImage);
 
-    this.parkLogos = this.parkLogos.map((logo: ParkLogoItem) => ({
+    this.parkLogos = this.parkLogos.map((logo: OwnedImageItem) => ({
       ...logo,
       isCurrent: logo.id === item.id
     }));
 
-    const existingIndex: number = this.parkLogos.findIndex((logo: ParkLogoItem) => logo.id === item.id);
+    const existingIndex: number = this.parkLogos.findIndex((logo: OwnedImageItem) => logo.id === item.id);
 
     if (existingIndex >= 0) {
       this.parkLogos[existingIndex] = item;
@@ -751,13 +747,42 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
     this.cdr.markForCheck();
   }
 
-  private toParkLogoItem(image: ImageDto): ParkLogoItem {
-    return {
-      id: image.id,
-      imageUrl: this.imagesApiService.buildImageUrl(image.id),
-      description: image.description,
-      isCurrent: image.isCurrent,
-      createdAt: image.createdAt
-    };
+  private async tryApplyLogoTagAsync(image: ImageDto): Promise<ImageDto> {
+    try {
+      let logoTag: ImageTagDto | undefined = (await firstValueFrom(this.imagesApiService.getAdminImageTags()))
+        .find((tag: ImageTagDto) => tag.slug.trim().toLowerCase() === 'logo');
+
+      if (!logoTag) {
+        logoTag = await firstValueFrom(this.imagesApiService.createAdminImageTag({
+          slug: 'logo',
+          labels: [
+            { languageCode: 'fr', value: 'Logo' },
+            { languageCode: 'en', value: 'Logo' }
+          ],
+          descriptions: []
+        }));
+      }
+
+      if (image.tagIds.includes(logoTag.id)) {
+        return image;
+      }
+
+      return await firstValueFrom(this.imagesApiService.updateAdminImage(image.id, {
+        description: image.description,
+        geoLocation: image.geoLocation ?? null,
+        altTexts: image.altTexts ?? [],
+        captions: image.captions ?? [],
+        credits: image.credits ?? [],
+        tagIds: [...image.tagIds, logoTag.id],
+        isPublished: image.isPublished
+      }));
+    } catch (error: unknown) {
+      console.warn('Unable to apply logo tag to image.', error);
+      return image;
+    }
+  }
+
+  private toOwnedImageItem(image: ImageDto): OwnedImageItem {
+    return mapImageDtoToOwnedImageItem(image, this.currentLang);
   }
 }

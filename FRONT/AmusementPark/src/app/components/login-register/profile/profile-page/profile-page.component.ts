@@ -175,13 +175,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   getAvatarUrl(): string {
-    const avatarUrl: string | null = this.imagesApiService.resolveImageUrl(this.user()?.avatarUrl);
-
-    if (avatarUrl) {
-      return avatarUrl;
-    }
-
-    return 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="%23e5e7eb"/><circle cx="64" cy="46" r="22" fill="%239ca3af"/><path d="M24 110c8-18 24-28 40-28s32 10 40 28" fill="%239ca3af"/></svg>';
+    return this.imagesApiService.resolveImageUrl(this.user()?.avatarUrl) ?? '';
   }
 
   logout(): void {

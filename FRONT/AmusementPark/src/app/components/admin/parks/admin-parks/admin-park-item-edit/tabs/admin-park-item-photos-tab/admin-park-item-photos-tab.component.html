@@ -17,10 +17,13 @@
           <div class="photo-card__body">
             <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
               @if (currentPhoto) {
-                <img
-                  [src]="currentPhoto.imageUrl"
-                  [alt]="'admin.parks.items.photos.alt' | translate"
-                  class="photo-preview" />
+                <app-image-display
+                  [imageId]="currentPhoto.imageId"
+                  [alt]="currentPhoto.alt || ('admin.parks.items.photos.alt' | translate)"
+                  imgClass="photo-preview"
+                  placeholderClass="photo-preview photo-preview--placeholder"
+                  placeholderIconClass="pi pi-image">
+                </app-image-display>
               }
               @if (!currentPhoto) {
                 <span class="text-color-secondary text-center photo-empty-text">
@@ -102,9 +105,13 @@
               <div class="col-12 md:col-4 lg:col-3">
                 <p-card [ngClass]="{'border-primary': photo.isCurrent}">
                   <div class="flex flex-column align-items-center">
-                    <img [src]="photo.imageUrl"
-                      [alt]="'admin.parks.items.photos.alt' | translate"
-                      class="photo-history-preview mb-2" />
+                    <app-image-display
+                      [imageId]="photo.imageId"
+                      [alt]="photo.alt || ('admin.parks.items.photos.alt' | translate)"
+                      imgClass="photo-history-preview mb-2"
+                      placeholderClass="photo-history-preview photo-history-preview--placeholder mb-2"
+                      placeholderIconClass="pi pi-image">
+                    </app-image-display>
                     @if (photo.isCurrent) {
                       <p-tag
                         [value]="'admin.parks.items.photos.currentLabel' | translate"

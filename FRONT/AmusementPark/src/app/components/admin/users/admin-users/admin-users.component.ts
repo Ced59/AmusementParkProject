@@ -16,12 +16,6 @@ import { AdminUsersViewComponent } from './admin-users-view.component';
   imports: [AdminUsersViewComponent]
 })
 export class AdminUsersComponent implements OnInit {
-  private static readonly DEFAULT_AVATAR: string =
-    'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">'
-    + '<rect width="40" height="40" rx="20" fill="%23f1f5f9"/>'
-    + '<circle cx="20" cy="16" r="7" fill="%2394a3b8"/>'
-    + '<path d="M8 33c2-6 7-9 12-9s10 3 12 9" fill="%2394a3b8"/></svg>';
-
   protected readonly users = this.stateFacade.users;
   protected readonly loading = this.stateFacade.loading;
   protected readonly totalRecords = this.stateFacade.totalRecords;
@@ -54,13 +48,7 @@ export class AdminUsersComponent implements OnInit {
   }
 
   resolveAvatarUrl(avatarUrl: string | null | undefined): string {
-    const resolved: string | null = this.imagesApiService.resolveImageUrl(avatarUrl);
-
-    if (resolved) {
-      return resolved;
-    }
-
-    return AdminUsersComponent.DEFAULT_AVATAR;
+    return this.imagesApiService.resolveAvatarUrl(avatarUrl);
   }
 
   trackByUserId(_: number, user: UserDto): string {

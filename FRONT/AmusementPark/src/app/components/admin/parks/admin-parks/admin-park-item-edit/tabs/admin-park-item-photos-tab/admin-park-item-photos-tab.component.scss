@@ -49,3 +49,8 @@
     width: 100%;
   }
 }
+
+:host ::ng-deep .photo-preview--placeholder,
+:host ::ng-deep .photo-history-preview--placeholder {
+  object-fit: initial;
+}

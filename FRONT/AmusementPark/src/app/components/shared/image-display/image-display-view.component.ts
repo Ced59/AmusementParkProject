@@ -13,6 +13,8 @@ export class ImageDisplayViewComponent {
   @Input() resolvedImageUrl: string | null = null;
   @Input() alt: string = '';
   @Input() imgClass: string = '';
+  @Input() placeholderClass: string = '';
+  @Input() placeholderIconClass: string = 'pi pi-image';
 
   @Output() imageError: EventEmitter<void> = new EventEmitter<void>();
 

@@ -26,7 +26,13 @@
 
       <div class="profile-header">
         <div class="profile-avatar-container">
-          <img [src]="avatarUrl" class="profile-avatar" alt="User avatar">
+          <app-image-display
+            [imagePathOrUrl]="avatarUrl"
+            alt="User avatar"
+            imgClass="profile-avatar"
+            placeholderClass="profile-avatar profile-avatar--placeholder"
+            placeholderIconClass="pi pi-user">
+          </app-image-display>
           <button
             pButton
             type="button"

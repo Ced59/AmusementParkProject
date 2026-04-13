@@ -81,21 +81,45 @@ export class ImagesApiService {
   }
 
   resolveImageUrl(imagePathOrUrl?: string | null): string | null {
-    if (!imagePathOrUrl) {
+    const rawValue: string | undefined = imagePathOrUrl?.trim();
+
+    if (!rawValue) {
       return null;
     }
 
-    if (/^https?:\/\//i.test(imagePathOrUrl)) {
-      return imagePathOrUrl;
+    if (/^data:/i.test(rawValue) || /^https?:\/\//i.test(rawValue)) {
+      return rawValue;
     }
 
-    if (imagePathOrUrl.startsWith('/images/')) {
-      const imageId: string = imagePathOrUrl.replace(/^\/images\//, '');
+    if (rawValue.startsWith('/images/')) {
+      const imageId: string = rawValue.replace(/^\/images\//, '');
       return this.buildImageUrl(imageId);
     }
 
-    const normalizedPath: string = imagePathOrUrl.replace(/^\/+/, '');
-    return `${environment.apiBaseUrl}${normalizedPath}`;
+    if (rawValue.startsWith('images/')) {
+      const imageId: string = rawValue.replace(/^images\//, '');
+      return this.buildImageUrl(imageId);
+    }
+
+    if (!rawValue.includes('/')) {
+      return this.buildImageUrl(rawValue);
+    }
+
+    const normalizedPath: string = rawValue.replace(/^\/+/, '');
+    const normalizedApiBaseUrl: string = environment.apiBaseUrl.endsWith('/')
+      ? environment.apiBaseUrl
+      : `${environment.apiBaseUrl}/`;
+
+    return `${normalizedApiBaseUrl}${normalizedPath}`;
+  }
+
+  buildAvatarFallbackDataUrl(size: number = 128): string {
+    const svg: string = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="#e5e7eb"/><circle cx="64" cy="46" r="22" fill="#9ca3af"/><path d="M24 110c8-18 24-28 40-28s32 10 40 28" fill="#9ca3af"/></svg>`;
+    return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+  }
+
+  resolveAvatarUrl(imagePathOrUrl?: string | null): string {
+    return this.resolveImageUrl(imagePathOrUrl) ?? this.buildAvatarFallbackDataUrl();
   }
 
   getAdminImages(): Observable<ImageDto[]> {

@@ -42,7 +42,13 @@
 
       @if (previewUrl) {
         <div class="preview-wrapper">
-          <img [src]="previewUrl" alt="Preview" class="preview-image" />
+          <app-image-display
+            [imagePathOrUrl]="previewUrl"
+            alt="Preview"
+            imgClass="preview-image"
+            placeholderClass="preview-image preview-image--placeholder"
+            placeholderIconClass="pi pi-image">
+          </app-image-display>
         </div>
       }
     </div>

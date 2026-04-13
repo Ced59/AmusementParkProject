@@ -11,8 +11,11 @@ import { ImageDisplayViewComponent } from './image-display-view.component';
 })
 export class ImageDisplayComponent implements OnChanges {
   @Input() imageId: string | null = null;
+  @Input() imagePathOrUrl: string | null = null;
   @Input() alt: string = '';
   @Input() imgClass: string = '';
+  @Input() placeholderClass: string = '';
+  @Input() placeholderIconClass: string = 'pi pi-image';
 
   imageLoadFailed: boolean = false;
 
@@ -20,28 +23,19 @@ export class ImageDisplayComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['imageId']) {
+    if (changes['imageId'] || changes['imagePathOrUrl']) {
       this.imageLoadFailed = false;
     }
   }
 
   get resolvedImageUrl(): string | null {
-    const rawValue: string | undefined = this.imageId?.trim();
+    const rawValue: string | undefined = this.imagePathOrUrl?.trim() || this.imageId?.trim();
 
     if (!rawValue) {
       return null;
     }
 
-    if (/^https?:\/\//i.test(rawValue)) {
-      return rawValue;
-    }
-
-    if (rawValue.startsWith('/images/')) {
-      const entityId: string = rawValue.replace(/^\/images\//, '');
-      return this.imagesApiService.buildImageUrl(entityId);
-    }
-
-    return this.imagesApiService.buildImageUrl(rawValue);
+    return this.imagesApiService.resolveImageUrl(rawValue);
   }
 
   get showImage(): boolean {

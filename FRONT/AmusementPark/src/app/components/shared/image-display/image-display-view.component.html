@@ -7,6 +7,7 @@
 
 <div
   *ngIf="!showImage"
-  class="image-display__placeholder">
-  <i class="pi pi-image"></i>
+  class="image-display__placeholder"
+  [ngClass]="placeholderClass">
+  <i [ngClass]="placeholderIconClass"></i>
 </div>

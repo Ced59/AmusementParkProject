@@ -13,12 +13,13 @@ import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
 import { PrimeTemplate } from 'primeng/api';
 import { TranslateModule } from '@ngx-translate/core';
+import { ImageDisplayComponent } from '../image-display/image-display.component';
 
 @Component({
     selector: 'app-owner-image-upload-dialog',
     templateUrl: './owner-image-upload-dialog.component.html',
     styleUrls: ['./owner-image-upload-dialog.component.scss'],
-    imports: [Bind, Dialog, ButtonDirective, FormsModule, InputText, PrimeTemplate, TranslateModule]
+    imports: [Bind, Dialog, ButtonDirective, FormsModule, InputText, PrimeTemplate, TranslateModule, ImageDisplayComponent]
 })
 export class OwnerImageUploadDialogComponent implements OnDestroy {
   @Input() visible: boolean = false;

@@ -42,18 +42,12 @@ import { AdminParkItemDetailsTabComponent } from './tabs/admin-park-item-details
 import { AdminParkItemAccessConditionsTabComponent } from './tabs/admin-park-item-access-conditions-tab/admin-park-item-access-conditions-tab.component';
 import { AdminParkItemLocationsTabComponent } from './tabs/admin-park-item-locations-tab/admin-park-item-locations-tab.component';
 import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component';
+import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
+import { mapImageDtoToOwnedImageItem } from '@shared/utils/images/owned-image-item.mapper';
 
 interface Option<T> {
   labelKey: string;
   value: T;
-}
-
-interface AttractionPhotoItem {
-  id: string;
-  imageUrl: string;
-  description?: string;
-  isCurrent: boolean;
-  createdAt: string;
 }
 
 type AttractionLocationKey = 'entrance' | 'exit' | 'fastPassEntrance' | 'reducedMobilityEntrance';
@@ -99,8 +93,8 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
   newPhotoDescription: string = '';
   photosUploading: boolean = false;
   photosLoading: boolean = false;
-  attractionPhotos: AttractionPhotoItem[] = [];
-  currentPhoto: AttractionPhotoItem | null = null;
+  attractionPhotos: OwnedImageItem[] = [];
+  currentPhoto: OwnedImageItem | null = null;
   photosPage: number = 0;
   photosPageSize: number = 8;
 
@@ -327,7 +321,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     return this.form?.get('category')?.value === 'Attraction';
   }
 
-  get pagedPhotos(): AttractionPhotoItem[] {
+  get pagedPhotos(): OwnedImageItem[] {
     const start: number = this.photosPage * this.photosPageSize;
     return this.attractionPhotos.slice(start, start + this.photosPageSize);
   }
@@ -737,18 +731,18 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       })
     );
 
-    this.upsertAttractionPhoto(this.toAttractionPhotoItem(image));
+    this.upsertAttractionPhoto(this.toOwnedImageItem(image));
   }
 
-  private upsertAttractionPhoto(item: AttractionPhotoItem): void {
+  private upsertAttractionPhoto(item: OwnedImageItem): void {
     if (item.isCurrent) {
-      this.attractionPhotos = this.attractionPhotos.map((photo: AttractionPhotoItem) => ({
+      this.attractionPhotos = this.attractionPhotos.map((photo: OwnedImageItem) => ({
         ...photo,
         isCurrent: photo.id === item.id
       }));
     }
 
-    const existingIndex: number = this.attractionPhotos.findIndex((photo: AttractionPhotoItem) => photo.id === item.id);
+    const existingIndex: number = this.attractionPhotos.findIndex((photo: OwnedImageItem) => photo.id === item.id);
 
     if (existingIndex >= 0) {
       this.attractionPhotos[existingIndex] = item;
@@ -756,20 +750,20 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
       this.attractionPhotos.unshift(item);
     }
 
-    this.currentPhoto = this.attractionPhotos.find((photo: AttractionPhotoItem) => photo.isCurrent) ?? item;
+    this.currentPhoto = this.attractionPhotos.find((photo: OwnedImageItem) => photo.isCurrent) ?? item;
     this.cdr.markForCheck();
   }
 
-  onSetCurrentPhoto(photo: AttractionPhotoItem): void {
+  onSetCurrentPhoto(photo: OwnedImageItem): void {
     if (!this.itemId || photo.isCurrent) {
       return;
     }
 
     this.imagesApiService.setCurrentImage(photo.id).subscribe({
       next: (image: ImageDto) => {
-        const updated: AttractionPhotoItem = this.toAttractionPhotoItem(image);
+        const updated: OwnedImageItem = this.toOwnedImageItem(image);
 
-        this.attractionPhotos = this.attractionPhotos.map((item: AttractionPhotoItem) => ({
+        this.attractionPhotos = this.attractionPhotos.map((item: OwnedImageItem) => ({
           ...item,
           isCurrent: item.id === updated.id
         }));
@@ -784,15 +778,15 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDeletePhoto(photo: AttractionPhotoItem): void {
+  onDeletePhoto(photo: OwnedImageItem): void {
     if (!confirm(this.translateService.instant('admin.parks.items.photos.deleteConfirm'))) {
       return;
     }
 
     this.imagesApiService.deleteImage(photo.id).subscribe({
       next: () => {
-        this.attractionPhotos = this.attractionPhotos.filter((item: AttractionPhotoItem) => item.id !== photo.id);
-        this.currentPhoto = this.attractionPhotos.find((item: AttractionPhotoItem) => item.isCurrent) ?? null;
+        this.attractionPhotos = this.attractionPhotos.filter((item: OwnedImageItem) => item.id !== photo.id);
+        this.currentPhoto = this.attractionPhotos.find((item: OwnedImageItem) => item.isCurrent) ?? null;
         this.showUploadSuccessMessage(this.translateService.instant('admin.parks.items.photos.deleteSuccess'));
         this.cdr.markForCheck();
       },
@@ -1475,8 +1469,8 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
 
     this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, this.itemId, ImageCategory.ATTRACTION).subscribe({
       next: (images: ImageDto[]) => {
-        this.attractionPhotos = images.map((image: ImageDto) => this.toAttractionPhotoItem(image));
-        this.currentPhoto = this.attractionPhotos.find((item: AttractionPhotoItem) => item.isCurrent) ?? null;
+        this.attractionPhotos = images.map((image: ImageDto) => this.toOwnedImageItem(image));
+        this.currentPhoto = this.attractionPhotos.find((item: OwnedImageItem) => item.isCurrent) ?? null;
         this.photosLoading = false;
         this.cdr.markForCheck();
       },
@@ -1488,14 +1482,8 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  private toAttractionPhotoItem(image: ImageDto): AttractionPhotoItem {
-    return {
-      id: image.id,
-      imageUrl: this.imagesApiService.buildImageUrl(image.id),
-      description: image.description,
-      isCurrent: image.isCurrent,
-      createdAt: image.createdAt
-    };
+  private toOwnedImageItem(image: ImageDto): OwnedImageItem {
+    return mapImageDtoToOwnedImageItem(image, this.currentLang);
   }
 
   private toLocalizedItems(value: unknown): LocalizedItem<string>[] | null {

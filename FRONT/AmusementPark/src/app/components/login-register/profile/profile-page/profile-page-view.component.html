@@ -8,7 +8,13 @@
   }">
   <p-card header="{{ 'user-profile.title' | translate }}" class="profile-card">
     <div class="profile-avatar-container">
-      <img [src]="avatarUrl" class="profile-avatar" alt="Avatar" />
+      <app-image-display
+        [imagePathOrUrl]="avatarUrl"
+        alt="Avatar"
+        imgClass="profile-avatar"
+        placeholderClass="profile-avatar profile-avatar--placeholder"
+        placeholderIconClass="pi pi-user">
+      </app-image-display>
       <button
         pButton
         type="button"

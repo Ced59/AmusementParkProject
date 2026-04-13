@@ -21,9 +21,11 @@
             <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
               @if (currentLogo) {
                 <app-image-display
-                  [imageId]="currentLogo.id"
-                  [alt]="'admin.parks.logos.alt' | translate"
-                  imgClass="logo-preview">
+                  [imageId]="currentLogo.imageId"
+                  [alt]="currentLogo.alt || ('admin.parks.logos.alt' | translate)"
+                  imgClass="logo-preview"
+                  placeholderClass="logo-preview logo-preview--placeholder"
+                  placeholderIconClass="pi pi-image">
                 </app-image-display>
               }
               @if (!currentLogo) {
@@ -109,9 +111,11 @@
                 <p-card [ngClass]="{ 'border-primary': logo.isCurrent }">
                   <div class="flex flex-column align-items-center">
                     <app-image-display
-                      [imageId]="logo.id"
-                      [alt]="'admin.parks.logos.alt' | translate"
-                      imgClass="logo-history-preview">
+                      [imageId]="logo.imageId"
+                      [alt]="logo.alt || ('admin.parks.logos.alt' | translate)"
+                      imgClass="logo-history-preview"
+                      placeholderClass="logo-history-preview logo-history-preview--placeholder"
+                      placeholderIconClass="pi pi-image">
                     </app-image-display>
                     @if (logo.isCurrent) {
                       <p-tag

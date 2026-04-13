@@ -5,12 +5,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ImageDto } from '../../../../models/images/image-dto';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
+import { ImageDisplayComponent } from '../../../shared/image-display/image-display.component';
 import { AdminSiteStateFacade } from '@features/admin/site/state/admin-site-state.facade';
 
 @Component({
   selector: 'app-admin-site',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule, PageStateComponent],
+  imports: [CommonModule, FormsModule, TranslateModule, PageStateComponent, ImageDisplayComponent],
   templateUrl: './admin-site.component.html',
   styleUrl: './admin-site.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

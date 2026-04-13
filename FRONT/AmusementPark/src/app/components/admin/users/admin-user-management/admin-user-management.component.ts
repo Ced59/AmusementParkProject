@@ -24,6 +24,7 @@ import { Tag } from 'primeng/tag';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
 import { OwnerImageUploadDialogComponent } from '../../../shared/owner-image-upload-dialog/owner-image-upload-dialog.component';
+import { ImageDisplayComponent } from '../../../shared/image-display/image-display.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { AdminUserManagementStateFacade } from '@features/admin/users/state/admin-user-management-state.facade';
 
@@ -33,7 +34,7 @@ import { AdminUserManagementStateFacade } from '@features/admin/users/state/admi
     styleUrls: ['./admin-user-management.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [AdminUserManagementStateFacade],
-    imports: [PageStateComponent, Bind, ButtonDirective, NgIf, Card, Tag, NgFor, FormsModule, ReactiveFormsModule, InputText, Select, OwnerImageUploadDialogComponent, TranslateModule]
+    imports: [PageStateComponent, Bind, ButtonDirective, NgIf, Card, Tag, NgFor, FormsModule, ReactiveFormsModule, InputText, Select, OwnerImageUploadDialogComponent, TranslateModule, ImageDisplayComponent]
 })
 export class AdminUserManagementComponent implements OnInit {
   readonly roleOptions: AppRole[] = APP_ROLES;
@@ -111,13 +112,7 @@ export class AdminUserManagementComponent implements OnInit {
   }
 
   get avatarUrl(): string {
-    const resolved: string | null = this.imagesApiService.resolveImageUrl(this.user()?.avatarUrl);
-
-    if (resolved) {
-      return resolved;
-    }
-
-    return 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="%23e5e7eb"/><circle cx="64" cy="46" r="22" fill="%239ca3af"/><path d="M24 110c8-18 24-28 40-28s32 10 40 28" fill="%239ca3af"/></svg>';
+    return this.imagesApiService.resolveImageUrl(this.user()?.avatarUrl) ?? '';
   }
 
   get isOwnProfile(): boolean {

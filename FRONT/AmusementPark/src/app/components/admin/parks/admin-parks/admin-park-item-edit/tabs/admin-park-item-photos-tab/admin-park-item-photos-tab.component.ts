@@ -11,39 +11,33 @@ import { NgClass, DatePipe } from '@angular/common';
 import { Tag } from 'primeng/tag';
 import { TranslateModule } from '@ngx-translate/core';
 import { PaginationComponent } from '../../../../../../shared/pagination/pagination.component';
-
-interface AttractionPhotoItem {
-  id: string;
-  imageUrl: string;
-  description?: string;
-  isCurrent: boolean;
-  createdAt: string;
-}
+import { ImageDisplayComponent } from '../../../../../../shared/image-display/image-display.component';
+import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 
 @Component({
     selector: 'app-admin-park-item-photos-tab',
     templateUrl: './admin-park-item-photos-tab.component.html',
     styleUrls: ['./admin-park-item-photos-tab.component.scss'],
-    imports: [Bind, Card, FormsModule, InputText, ButtonDirective, Panel, ProgressSpinner, NgClass, Tag, DatePipe, TranslateModule, PaginationComponent]
+    imports: [Bind, Card, FormsModule, InputText, ButtonDirective, Panel, ProgressSpinner, NgClass, Tag, DatePipe, TranslateModule, PaginationComponent, ImageDisplayComponent]
 })
 export class AdminParkItemPhotosTabComponent {
   @Input() isEditMode: boolean = false;
-  @Input() currentPhoto: AttractionPhotoItem | null = null;
+  @Input() currentPhoto: OwnedImageItem | null = null;
   @Input() allowMultiplePhotoUpload: boolean = true;
   @Input() selectedPhotoCount: number = 0;
   @Input() newPhotoDescription: string = '';
   @Input() photosUploading: boolean = false;
   @Input() photosLoading: boolean = false;
-  @Input() attractionPhotos: AttractionPhotoItem[] = [];
-  @Input() pagedPhotos: AttractionPhotoItem[] = [];
+  @Input() attractionPhotos: OwnedImageItem[] = [];
+  @Input() pagedPhotos: OwnedImageItem[] = [];
   @Input() photosPageSize: number = 8;
   @Input() isSaving: boolean = false;
 
   @Output() photoFileSelected: EventEmitter<Event> = new EventEmitter<Event>();
   @Output() newPhotoDescriptionChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() uploadPhoto: EventEmitter<void> = new EventEmitter<void>();
-  @Output() setCurrentPhoto: EventEmitter<AttractionPhotoItem> = new EventEmitter<AttractionPhotoItem>();
-  @Output() deletePhoto: EventEmitter<AttractionPhotoItem> = new EventEmitter<AttractionPhotoItem>();
+  @Output() setCurrentPhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
+  @Output() deletePhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() photosPageChange: EventEmitter<PaginatorState> = new EventEmitter<PaginatorState>();
   @Output() saveSection: EventEmitter<void> = new EventEmitter<void>();
 }
