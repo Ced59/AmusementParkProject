@@ -3,7 +3,7 @@ import { EMPTY, Subject } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { TranslationService } from '../../services/translation.service';
+import { TranslationService } from '@app/services/translation.service';
 import { HomeStateFacade } from '@features/public/home/state/home-state.facade';
 import { HomeViewComponent } from './home-view.component';
 

@@ -27,8 +27,8 @@
       <ng-template pTemplate="body" let-item>
         <tr>
           <td>{{ item.name }}</td>
-          <td>{{ ('parkExplorer.categories.' + (item.category.charAt(0).toLowerCase() + item.category.slice(1))) | translate }}</td>
-          <td>{{ ('parkExplorer.types.' + (item.type.charAt(0).toLowerCase() + item.type.slice(1))) | translate }}</td>
+          <td>{{ getCategoryLabelKey(item.category) | translate }}</td>
+          <td>{{ getTypeLabelKey(item.type) | translate }}</td>
           <td>{{ getZoneName(item.zoneId) }}</td>
           <td class="actions-cell">
             <button pButton type="button" icon="pi pi-pencil" class="p-button-text" [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'items', item.id]"></button>

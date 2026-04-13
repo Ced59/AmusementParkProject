@@ -10,20 +10,20 @@ import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
 import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { ToastMessageService } from '../../../../../services/messages/toast-message.service';
-import { CountryDto } from '../../../../../models/countries/country-dto';
-import { UploadedImage } from '../../../../../models/images/uploaded-image';
-import { ImageCategory } from '../../../../../models/images/image-category';
-import { ImageDto } from '../../../../../models/images/image-dto';
-import { ImageOwnerType } from '../../../../../models/images/image-owner-type';
-import { ImageTagDto } from '../../../../../models/images/image-tag-dto';
-import { MapMarker } from '../../../../../models/map/map-marker';
-import { ParkFounder } from '../../../../../models/parks/park-founder';
-import { ParkOperator } from '../../../../../models/parks/park-operator';
-import { Park } from '../../../../../models/parks/park';
-import { ParkType } from '../../../../../models/parks/park-type';
-import { EntitySelectOption } from '../../../../../models/shared/entity-select-option';
-import { LocalizedItem } from '../../../../../models/shared/localized-item';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { CountryDto } from '@app/models/countries/country-dto';
+import { UploadedImage } from '@app/models/images/uploaded-image';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImageTagDto } from '@app/models/images/image-tag-dto';
+import { MapMarker } from '@app/models/map/map-marker';
+import { ParkFounder } from '@app/models/parks/park-founder';
+import { ParkOperator } from '@app/models/parks/park-operator';
+import { Park } from '@app/models/parks/park';
+import { ParkType } from '@app/models/parks/park-type';
+import { EntitySelectOption } from '@app/models/shared/entity-select-option';
+import { LocalizedItem } from '@app/models/shared/localized-item';
 import { Bind } from 'primeng/bind';
 import { Tag } from 'primeng/tag';
 import { EditorSaveToolbarComponent } from '../../../../shared/editor-save-toolbar/editor-save-toolbar.component';
@@ -36,6 +36,7 @@ import { AdminParkDescriptionsTabComponent } from './tabs/admin-park-description
 import { AdminParkLogosTabComponent } from './tabs/admin-park-logos-tab/admin-park-logos-tab.component';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { mapImageDtoToOwnedImageItem } from '@shared/utils/images/owned-image-item.mapper';
+import { PARK_TYPE_OPTIONS } from '@shared/utils/display/display-options';
 
 interface ParkTypeOption {
   labelKey: string;
@@ -68,14 +69,7 @@ export class AdminParkEditComponent implements OnInit, OnDestroy {
   foundersLoading: boolean = false;
   operatorsLoading: boolean = false;
 
-  parkTypeOptions: ParkTypeOption[] = [
-    { labelKey: 'admin.parks.types.themePark', value: 'ThemePark' },
-    { labelKey: 'admin.parks.types.waterPark', value: 'WaterPark' },
-    { labelKey: 'admin.parks.types.zoo', value: 'Zoo' },
-    { labelKey: 'admin.parks.types.animalPark', value: 'AnimalPark' },
-    { labelKey: 'admin.parks.types.amusementPark', value: 'AmusementPark' },
-    { labelKey: 'admin.parks.types.resort', value: 'Resort' }
-  ];
+  parkTypeOptions: ParkTypeOption[] = [...PARK_TYPE_OPTIONS];
 
   mapCenter: [number, number] = [48.8566, 2.3522];
   mapZoom: number = 16;

@@ -1,7 +1,7 @@
 import { Injectable, Signal, computed, signal } from '@angular/core';
-import { Pagination } from '../../../../models/shared/pagination';
-import { UserDto } from '../../../../models/users/user_dto';
-import { UsersApiResponse } from '../../../../models/users/users_api_response';
+import { Pagination } from '@app/models/shared/pagination';
+import { UserDto } from '@app/models/users/user_dto';
+import { UsersApiResponse } from '@app/models/users/users_api_response';
 import { UsersApiService } from '@data-access/users/users-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 

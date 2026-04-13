@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { CountryDto } from '../../models/countries/country-dto';
+import { CountryDto } from '@app/models/countries/country-dto';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
 import { COUNTRIES_API_ENDPOINTS } from './countries-api-endpoints';
 

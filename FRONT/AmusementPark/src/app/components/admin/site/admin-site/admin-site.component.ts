@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { ImageDto } from '../../../../models/images/image-dto';
+import { ImageDto } from '@app/models/images/image-dto';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
 import { ImageDisplayComponent } from '../../../shared/image-display/image-display.component';

@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { ParkItemAdminRow } from '../../models/parks/park-item-admin-row';
-import { ParkItem } from '../../models/parks/park-item';
-import { ApiResponse } from '../../models/shared/api_reponse';
+import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
+import { ParkItem } from '@app/models/parks/park-item';
+import { ApiResponse } from '@app/models/shared/api_reponse';
 import {
   normalizeParkItem,
   normalizeParkItemAdminRows,

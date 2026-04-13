@@ -3,18 +3,18 @@ import { distinctUntilChanged } from 'rxjs';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { UserDto } from '../../../../models/users/user_dto';
-import { UserPut } from '../../../../models/users/user_put';
-import { ImageDto } from '../../../../models/images/image-dto';
-import { ImageCategory } from '../../../../models/images/image-category';
-import { ImageOwnerType } from '../../../../models/images/image-owner-type';
+import { UserDto } from '@app/models/users/user_dto';
+import { UserPut } from '@app/models/users/user_put';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { UsersApiService } from '@data-access/users/users-api.service';
-import { AuthService } from '../../../../services/auth/auth.service';
-import { ToastMessageService } from '../../../../services/messages/toast-message.service';
-import { ModalService } from '../../../../services/modal/modal.service';
-import { SharedService } from '../../../../services/shared/shared.service';
-import { TranslationService } from '../../../../services/translation.service';
+import { AuthService } from '@app/services/auth/auth.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { ModalService } from '@app/services/modal/modal.service';
+import { SharedService } from '@app/services/shared/shared.service';
+import { TranslationService } from '@app/services/translation.service';
 import { ProfilePageViewComponent } from './profile-page-view.component';
 import { ProfilePageStateFacade } from '@features/profile/state/profile-page-state.facade';
 

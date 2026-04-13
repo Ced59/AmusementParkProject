@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PaginatorState } from 'primeng/paginator';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
-import { ImageDisplayComponent } from '../../../../../../shared/image-display/image-display.component';
+import { ImageDisplayComponent } from '@app/components/shared/image-display/image-display.component';
 import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
@@ -11,7 +11,7 @@ import { ProgressSpinner } from 'primeng/progressspinner';
 import { NgClass, DatePipe } from '@angular/common';
 import { Tag } from 'primeng/tag';
 import { TranslateModule } from '@ngx-translate/core';
-import { PaginationComponent } from '../../../../../../shared/pagination/pagination.component';
+import { PaginationComponent } from '@app/components/shared/pagination/pagination.component';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 
 @Component({

@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { USER_ADMIN_API_ENDPOINTS } from '../../api/user-admin-api-endpoints';
-import { AuthMessageResponse } from '../../models/auth/auth-message-response';
-import { UserLockRequest } from '../../models/users/user-lock-request';
-import { UserPasswordChange } from '../../models/users/user-password-change';
-import { UserRoleRequest } from '../../models/users/user-role-request';
-import { UserLockStateResponse, UserRolesUpdateResponse } from '../../models/users/user-admin-responses';
+import { AuthMessageResponse } from '@app/models/auth/auth-message-response';
+import { UserLockRequest } from '@app/models/users/user-lock-request';
+import { UserPasswordChange } from '@app/models/users/user-password-change';
+import { UserRoleRequest } from '@app/models/users/user-role-request';
+import { UserLockStateResponse, UserRolesUpdateResponse } from '@app/models/users/user-admin-responses';
 
 @Injectable({
   providedIn: 'root'

@@ -3,14 +3,14 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { LANGUAGES } from '../../commons/languages';
-import { UserDto } from '../../models/users/user_dto';
+import { LANGUAGES } from '@app/commons/languages';
+import { UserDto } from '@app/models/users/user_dto';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
-import { AuthService } from '../../services/auth/auth.service';
-import { ModalService } from '../../services/modal/modal.service';
-import { SharedService } from '../../services/shared/shared.service';
-import { TranslationService } from '../../services/translation.service';
+import { AuthService } from '@app/services/auth/auth.service';
+import { ModalService } from '@app/services/modal/modal.service';
+import { SharedService } from '@app/services/shared/shared.service';
+import { TranslationService } from '@app/services/translation.service';
 import { TopbarViewComponent } from './topbar-view.component';
 
 @Component({

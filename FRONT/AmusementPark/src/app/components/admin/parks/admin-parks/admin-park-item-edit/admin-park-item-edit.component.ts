@@ -2,31 +2,31 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { FormArray, FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { ToastMessageService } from '../../../../../services/messages/toast-message.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { firstValueFrom, Subscription } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
-import { LANGUAGES } from '../../../../../commons/languages';
-import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
-import { ImageCategory } from '../../../../../models/images/image-category';
-import { ImageDto } from '../../../../../models/images/image-dto';
-import { ImageOwnerType } from '../../../../../models/images/image-owner-type';
-import { UploadedImage } from '../../../../../models/images/uploaded-image';
-import { MapMarker } from '../../../../../models/map/map-marker';
-import { AttractionAccessCondition } from '../../../../../models/parks/attraction-access-condition';
-import { AttractionAccessConditionType } from '../../../../../models/parks/attraction-access-condition-type';
-import { AttractionAccessConditionUnit } from '../../../../../models/parks/attraction-access-condition-unit';
-import { AttractionDetails } from '../../../../../models/parks/attraction-details';
-import { AttractionLocationPoint } from '../../../../../models/parks/attraction-location-point';
-import { AttractionLocations } from '../../../../../models/parks/attraction-locations';
-import { AttractionManufacturer } from '../../../../../models/parks/attraction-manufacturer';
-import { AttractionWaterExposureLevel } from '../../../../../models/parks/attraction-water-exposure-level';
-import { Park } from '../../../../../models/parks/park';
-import { ParkItem } from '../../../../../models/parks/park-item';
-import { ParkItemCategory } from '../../../../../models/parks/park-item-category';
-import { ParkItemType } from '../../../../../models/parks/park-item-type';
-import { ParkZone } from '../../../../../models/parks/park-zone';
-import { EntitySelectOption } from '../../../../../models/shared/entity-select-option';
-import { LocalizedItem } from '../../../../../models/shared/localized-item';
+import { LANGUAGES } from '@app/commons/languages';
+import { resolveLocalizedValue } from '@app/commons/localized-item.utils';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { UploadedImage } from '@app/models/images/uploaded-image';
+import { MapMarker } from '@app/models/map/map-marker';
+import { AttractionAccessCondition } from '@app/models/parks/attraction-access-condition';
+import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
+import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';
+import { AttractionDetails } from '@app/models/parks/attraction-details';
+import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
+import { AttractionLocations } from '@app/models/parks/attraction-locations';
+import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
+import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water-exposure-level';
+import { Park } from '@app/models/parks/park';
+import { ParkItem } from '@app/models/parks/park-item';
+import { ParkItemCategory } from '@app/models/parks/park-item-category';
+import { ParkItemType } from '@app/models/parks/park-item-type';
+import { ParkZone } from '@app/models/parks/park-zone';
+import { EntitySelectOption } from '@app/models/shared/entity-select-option';
+import { LocalizedItem } from '@app/models/shared/localized-item';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
@@ -44,6 +44,14 @@ import { AdminParkItemLocationsTabComponent } from './tabs/admin-park-item-locat
 import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { mapImageDtoToOwnedImageItem } from '@shared/utils/images/owned-image-item.mapper';
+import {
+  ATTRACTION_ACCESS_CONDITION_PRESET_OPTIONS,
+  ATTRACTION_ACCESS_CONDITION_UNIT_OPTIONS,
+  ATTRACTION_TYPE_OPTIONS,
+  ATTRACTION_WATER_EXPOSURE_LEVEL_OPTIONS,
+  NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY,
+  PARK_ITEM_CATEGORY_OPTIONS
+} from '@shared/utils/display/display-options';
 
 interface Option<T> {
   labelKey: string;
@@ -117,88 +125,26 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     { key: 'reducedMobilityEntrance', labelKey: 'admin.parks.items.locationFields.reducedMobilityEntrance' }
   ];
 
-  readonly categoryOptions: Option<ParkItemCategory>[] = [
-    { labelKey: 'parkExplorer.categories.attraction', value: 'Attraction' },
-    { labelKey: 'parkExplorer.categories.restaurant', value: 'Restaurant' },
-    { labelKey: 'parkExplorer.categories.hotel', value: 'Hotel' },
-    { labelKey: 'parkExplorer.categories.animal', value: 'Animal' },
-    { labelKey: 'parkExplorer.categories.show', value: 'Show' },
-    { labelKey: 'parkExplorer.categories.shop', value: 'Shop' },
-    { labelKey: 'parkExplorer.categories.service', value: 'Service' },
-    { labelKey: 'parkExplorer.categories.transport', value: 'Transport' },
-    { labelKey: 'parkExplorer.categories.other', value: 'Other' }
-  ];
+  readonly categoryOptions: Option<ParkItemCategory>[] = [...PARK_ITEM_CATEGORY_OPTIONS];
 
-  readonly attractionTypeOptions: Option<ParkItemType>[] = [
-    { labelKey: 'parkExplorer.types.attraction', value: 'Attraction' },
-    { labelKey: 'parkExplorer.types.rollerCoaster', value: 'RollerCoaster' },
-    { labelKey: 'parkExplorer.types.waterRide', value: 'WaterRide' },
-    { labelKey: 'parkExplorer.types.flatRide', value: 'FlatRide' },
-    { labelKey: 'parkExplorer.types.darkRide', value: 'DarkRide' },
-    { labelKey: 'parkExplorer.types.familyRide', value: 'FamilyRide' },
-    { labelKey: 'parkExplorer.types.thrillRide', value: 'ThrillRide' },
-    { labelKey: 'parkExplorer.types.transportRide', value: 'TransportRide' },
-    { labelKey: 'parkExplorer.types.walkThrough', value: 'WalkThrough' },
-    { labelKey: 'parkExplorer.types.playground', value: 'Playground' },
-    { labelKey: 'parkExplorer.types.interactiveExperience', value: 'InteractiveExperience' },
-    { labelKey: 'parkExplorer.types.observationRide', value: 'ObservationRide' },
-    { labelKey: 'parkExplorer.types.other', value: 'Other' }
-  ];
+  readonly attractionTypeOptions: Option<ParkItemType>[] = [...ATTRACTION_TYPE_OPTIONS];
 
   readonly nonAttractionTypeOptionsByCategory: Record<Exclude<ParkItemCategory, 'Attraction'>, Option<ParkItemType>[]> = {
-    Restaurant: [
-      { labelKey: 'parkExplorer.types.restaurant', value: 'Restaurant' },
-      { labelKey: 'parkExplorer.types.snack', value: 'Snack' }
-    ],
-    Hotel: [
-      { labelKey: 'parkExplorer.types.hotel', value: 'Hotel' }
-    ],
-    Animal: [
-      { labelKey: 'parkExplorer.types.animalExhibit', value: 'AnimalExhibit' }
-    ],
-    Show: [
-      { labelKey: 'parkExplorer.types.show', value: 'Show' }
-    ],
-    Shop: [
-      { labelKey: 'parkExplorer.types.shop', value: 'Shop' }
-    ],
-    Service: [
-      { labelKey: 'parkExplorer.types.service', value: 'Service' }
-    ],
-    Transport: [
-      { labelKey: 'parkExplorer.types.transport', value: 'Transport' }
-    ],
-    Other: [
-      { labelKey: 'parkExplorer.types.other', value: 'Other' }
-    ]
+    Restaurant: [...NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY.Restaurant],
+    Hotel: [...NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY.Hotel],
+    Animal: [...NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY.Animal],
+    Show: [...NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY.Show],
+    Shop: [...NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY.Shop],
+    Service: [...NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY.Service],
+    Transport: [...NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY.Transport],
+    Other: [...NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY.Other]
   };
 
-  readonly accessConditionPresetOptions: Option<AttractionAccessConditionType>[] = [
-    { labelKey: 'admin.parks.items.accessConditionTypes.minHeight', value: 'MinHeight' },
-    { labelKey: 'admin.parks.items.accessConditionTypes.minHeightAccompanied', value: 'MinHeightAccompanied' },
-    { labelKey: 'admin.parks.items.accessConditionTypes.maxHeight', value: 'MaxHeight' },
-    { labelKey: 'admin.parks.items.accessConditionTypes.minAge', value: 'MinAge' },
-    { labelKey: 'admin.parks.items.accessConditionTypes.minAgeAccompanied', value: 'MinAgeAccompanied' },
-    { labelKey: 'admin.parks.items.accessConditionTypes.pregnancyRestriction', value: 'PregnancyRestriction' },
-    { labelKey: 'admin.parks.items.accessConditionTypes.heartRestriction', value: 'HeartRestriction' },
-    { labelKey: 'admin.parks.items.accessConditionTypes.backNeckRestriction', value: 'BackNeckRestriction' },
-    { labelKey: 'admin.parks.items.accessConditionTypes.wheelchairTransferRequired', value: 'WheelchairTransferRequired' },
-    { labelKey: 'admin.parks.items.accessConditionTypes.accessPassRequired', value: 'AccessPassRequired' },
-    { labelKey: 'admin.parks.items.accessConditionTypes.custom', value: 'Custom' }
-  ];
+  readonly accessConditionPresetOptions: Option<AttractionAccessConditionType>[] = [...ATTRACTION_ACCESS_CONDITION_PRESET_OPTIONS];
 
-  readonly waterExposureLevelOptions: Option<AttractionWaterExposureLevel>[] = [
-    { labelKey: 'admin.parks.items.waterExposureLevels.none', value: 'None' },
-    { labelKey: 'admin.parks.items.waterExposureLevels.splash', value: 'Splash' },
-    { labelKey: 'admin.parks.items.waterExposureLevels.moderate', value: 'Moderate' },
-    { labelKey: 'admin.parks.items.waterExposureLevels.soaking', value: 'Soaking' },
-    { labelKey: 'admin.parks.items.waterExposureLevels.extremeSoaking', value: 'ExtremeSoaking' }
-  ];
+  readonly waterExposureLevelOptions: Option<AttractionWaterExposureLevel>[] = [...ATTRACTION_WATER_EXPOSURE_LEVEL_OPTIONS];
 
-  readonly accessConditionUnitOptions: Option<AttractionAccessConditionUnit>[] = [
-    { labelKey: 'admin.parks.items.accessConditionUnits.centimeter', value: 'Centimeter' },
-    { labelKey: 'admin.parks.items.accessConditionUnits.year', value: 'Year' }
-  ];
+  readonly accessConditionUnitOptions: Option<AttractionAccessConditionUnit>[] = [...ATTRACTION_ACCESS_CONDITION_UNIT_OPTIONS];
 
   readonly accessConditionDefaultLabels: Record<AttractionAccessConditionType, Record<string, string>> = {
     MinHeight: {
@@ -1160,7 +1106,7 @@ export class AdminParkItemEditComponent implements OnInit, OnDestroy {
     }
 
     return this.nonAttractionTypeOptionsByCategory[category as Exclude<ParkItemCategory, 'Attraction'>]
-      ?? [{ labelKey: 'parkExplorer.types.other', value: 'Other' }];
+      ?? [...NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY.Other];
   }
 
   private patchAttractionDetails(details: AttractionDetails | null): void {

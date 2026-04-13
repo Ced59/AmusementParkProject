@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
 import { TableLazyLoadEvent, TableModule } from 'primeng/table';
-import { UserDto } from '../../../../models/users/user_dto';
+import { UserDto } from '@app/models/users/user_dto';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';

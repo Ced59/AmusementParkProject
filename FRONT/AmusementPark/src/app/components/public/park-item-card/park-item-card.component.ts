@@ -4,15 +4,15 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonDirective } from 'primeng/button';
 
-import { Park } from '../../../models/parks/park';
-import { ParkItem } from '../../../models/parks/park-item';
-import { buildParkSlug } from '../../../commons/park-presentation.utils';
+import { Park } from '@app/models/parks/park';
+import { ParkItem } from '@app/models/parks/park-item';
+import { buildParkSlug } from '@app/commons/park-presentation.utils';
 import {
   buildEntitySlug,
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
   resolveParkItemDescription
-} from '../../../commons/park-item-presentation.utils';
+} from '@app/commons/park-item-presentation.utils';
 
 @Component({
   selector: 'app-park-item-card',

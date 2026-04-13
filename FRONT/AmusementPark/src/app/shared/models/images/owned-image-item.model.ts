@@ -1,4 +1,4 @@
-import { ImageCategory } from '../../../models/images/image-category';
+import { ImageCategory } from '@app/models/images/image-category';
 
 export interface OwnedImageItem {
   id: string;

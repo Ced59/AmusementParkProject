@@ -1,5 +1,5 @@
-import { resolveLocalizedValue } from '../../../commons/localized-item.utils';
-import { ImageDto } from '../../../models/images/image-dto';
+import { resolveLocalizedValue } from '@app/commons/localized-item.utils';
+import { ImageDto } from '@app/models/images/image-dto';
 import { OwnedImageItem } from '../../models/images/owned-image-item.model';
 
 export function mapImageDtoToOwnedImageItem(image: ImageDto, languageCode: string = 'en'): OwnedImageItem {

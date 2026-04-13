@@ -1,5 +1,5 @@
 import { Injectable, Signal, computed, signal } from '@angular/core';
-import { ParkOperator } from '../../../../models/parks/park-operator';
+import { ParkOperator } from '@app/models/parks/park-operator';
 import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 

@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { AuthMessageResponse } from '../../models/auth/auth-message-response';
-import { UserCredentials } from '../../models/users/user_credentials';
-import { UserDto } from '../../models/users/user_dto';
-import { UserRegister } from '../../models/users/user-register';
-import { UserToken } from '../../models/users/user_token';
+import { AuthMessageResponse } from '@app/models/auth/auth-message-response';
+import { UserCredentials } from '@app/models/users/user_credentials';
+import { UserDto } from '@app/models/users/user_dto';
+import { UserRegister } from '@app/models/users/user-register';
+import { UserToken } from '@app/models/users/user_token';
 import { AUTH_API_ENDPOINTS } from './auth-api-endpoints';
 import { RefreshTokenResponse } from './models/api/refresh-token-response.model';
 

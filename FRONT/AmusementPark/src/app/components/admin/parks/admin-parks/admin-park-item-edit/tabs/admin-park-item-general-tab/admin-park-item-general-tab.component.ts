@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MapMarker } from '../../../../../../../models/map/map-marker';
-import { ParkItemCategory } from '../../../../../../../models/parks/park-item-category';
-import { ParkItemType } from '../../../../../../../models/parks/park-item-type';
+import { MapMarker } from '@app/models/map/map-marker';
+import { ParkItemCategory } from '@app/models/parks/park-item-category';
+import { ParkItemType } from '@app/models/parks/park-item-type';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
 import { Card } from 'primeng/card';
-import { LeafletMapComponent } from '../../../../../../shared/leaflet-map/leaflet-map.component';
+import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
 import { ButtonDirective } from 'primeng/button';
-import { LocalizedRichTextEditorComponent } from '../../../../../../shared/localized-rich-text-editor/localized-rich-text-editor.component';
+import { LocalizedRichTextEditorComponent } from '@app/components/shared/localized-rich-text-editor/localized-rich-text-editor.component';
 import { ToggleSwitch } from 'primeng/toggleswitch';
 import { TranslateModule } from '@ngx-translate/core';
 

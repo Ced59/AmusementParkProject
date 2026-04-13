@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { ParkZone } from '../../models/parks/park-zone';
+import { ParkZone } from '@app/models/parks/park-zone';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
 import { PARK_ZONES_API_ENDPOINTS } from './park-zones-api-endpoints';
 

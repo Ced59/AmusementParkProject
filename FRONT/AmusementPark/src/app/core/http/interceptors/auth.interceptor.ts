@@ -7,7 +7,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
 
-import { AuthService } from '../../../services/auth/auth.service';
+import { AuthService } from '@app/services/auth/auth.service';
 import { shouldSkipAuthorizationHeader } from '../auth/auth-request-policy';
 
 @Injectable()

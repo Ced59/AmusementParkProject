@@ -3,8 +3,8 @@ import { inject, PLATFORM_ID } from '@angular/core';
 import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { map, Observable } from 'rxjs';
 
-import { AuthService } from '../../services/auth/auth.service';
-import { ModalService } from '../../services/modal/modal.service';
+import { AuthService } from '@app/services/auth/auth.service';
+import { ModalService } from '@app/services/modal/modal.service';
 
 export const authGuard: CanActivateFn = (_route, state): Observable<boolean | UrlTree> | boolean | UrlTree => {
   const authService = inject(AuthService);

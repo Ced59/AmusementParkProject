@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { ParkExplorer } from '../../models/parks/park-explorer';
-import { Park } from '../../models/parks/park';
-import { ParksApiResponse } from '../../models/parks/parks_api_response';
+import { ParkExplorer } from '@app/models/parks/park-explorer';
+import { Park } from '@app/models/parks/park';
+import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { PARKS_API_ENDPOINTS } from './parks-api-endpoints';
 
 @Injectable({

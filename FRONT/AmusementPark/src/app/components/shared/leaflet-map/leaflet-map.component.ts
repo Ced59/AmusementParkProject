@@ -13,7 +13,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import {MapMarker} from "../../../models/map/map-marker";
+import {MapMarker} from "@app/models/map/map-marker";
 
 @Component({
     selector: 'app-leaflet-map',

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Park } from '../../../models/parks/park';
-import { stripHtml, resolveLocalizedValue } from '../../../commons/localized-item.utils';
-import { buildParkAddressLine, buildParkLocationLine, buildParkSlug } from '../../../commons/park-presentation.utils';
+import { Park } from '@app/models/parks/park';
+import { stripHtml, resolveLocalizedValue } from '@app/commons/localized-item.utils';
+import { buildParkAddressLine, buildParkLocationLine, buildParkSlug } from '@app/commons/park-presentation.utils';
 import { NgIf } from '@angular/common';
 import { ImageDisplayComponent } from '../../shared/image-display/image-display.component';
 import { Bind } from 'primeng/bind';

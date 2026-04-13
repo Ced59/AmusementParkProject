@@ -1,5 +1,5 @@
 import { Injectable, Signal, computed, signal } from '@angular/core';
-import { AttractionManufacturer } from '../../../../models/parks/attraction-manufacturer';
+import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 

@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserCredentials } from '../../../models/users/user_credentials';
-import { UserToken } from '../../../models/users/user_token';
+import { UserCredentials } from '@app/models/users/user_credentials';
+import { UserToken } from '@app/models/users/user_token';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
-import { AuthService } from '../../../services/auth/auth.service';
-import { ToastMessageService } from '../../../services/messages/toast-message.service';
-import { SharedService } from '../../../services/shared/shared.service';
-import { ModalService } from '../../../services/modal/modal.service';
+import { AuthService } from '@app/services/auth/auth.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { SharedService } from '@app/services/shared/shared.service';
+import { ModalService } from '@app/services/modal/modal.service';
 import { FormsModule } from '@angular/forms';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';

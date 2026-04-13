@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { TranslationService } from '../../services/translation.service';
+import { TranslationService } from '@app/services/translation.service';
 import { ParkListStateFacade } from '@features/public/parks/state/park-list-state.facade';
 import { ParkListViewComponent } from './park-list-view.component';
 

@@ -7,8 +7,8 @@ import { jwtDecode } from 'jwt-decode';
 import { environment } from '../../../environments/environment';
 import { AUTH_API_ENDPOINTS } from '@data-access/auth/auth-api-endpoints';
 import { RefreshTokenResponse } from '@data-access/auth/models/api/refresh-token-response.model';
-import { JwtPayload } from '../../models/users/jwt_payload';
-import { UserToken } from '../../models/users/user_token';
+import { JwtPayload } from '@app/models/users/jwt_payload';
+import { UserToken } from '@app/models/users/user_token';
 import { GoogleIdentityService } from './google-identity.service';
 
 @Injectable({

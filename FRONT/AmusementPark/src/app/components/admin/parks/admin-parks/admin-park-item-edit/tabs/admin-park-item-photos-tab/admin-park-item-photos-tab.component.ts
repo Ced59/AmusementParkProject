@@ -10,8 +10,8 @@ import { ProgressSpinner } from 'primeng/progressspinner';
 import { NgClass, DatePipe } from '@angular/common';
 import { Tag } from 'primeng/tag';
 import { TranslateModule } from '@ngx-translate/core';
-import { PaginationComponent } from '../../../../../../shared/pagination/pagination.component';
-import { ImageDisplayComponent } from '../../../../../../shared/image-display/image-display.component';
+import { PaginationComponent } from '@app/components/shared/pagination/pagination.component';
+import { ImageDisplayComponent } from '@app/components/shared/image-display/image-display.component';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 
 @Component({

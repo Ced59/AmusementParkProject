@@ -4,7 +4,7 @@ import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
-import { Park } from '../../models/parks/park';
+import { Park } from '@app/models/parks/park';
 import { PaginationContract } from '@shared/models/contracts';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { PageStateComponent } from '../shared/page-state/page-state.component';

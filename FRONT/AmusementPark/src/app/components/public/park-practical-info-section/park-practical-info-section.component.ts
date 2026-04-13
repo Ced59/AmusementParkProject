@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Park } from '../../../models/parks/park';
-import { buildParkAddressLine } from '../../../commons/park-presentation.utils';
+import { Park } from '@app/models/parks/park';
+import { buildParkAddressLine } from '@app/commons/park-presentation.utils';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 

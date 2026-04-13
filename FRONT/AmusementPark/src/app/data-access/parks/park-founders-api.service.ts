@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { ParkFounder } from '../../models/parks/park-founder';
+import { ParkFounder } from '@app/models/parks/park-founder';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
 import { PARK_FOUNDERS_API_ENDPOINTS } from './park-founders-api-endpoints';
 

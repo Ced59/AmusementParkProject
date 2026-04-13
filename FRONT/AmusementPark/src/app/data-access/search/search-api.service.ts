@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { SearchApiResponse } from '../../models/search/search-api-response';
+import { SearchApiResponse } from '@app/models/search/search-api-response';
 import { SEARCH_API_ENDPOINTS } from './search-api-endpoints';
 
 @Injectable({

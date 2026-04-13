@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AttractionManufacturer } from '../../../../models/parks/attraction-manufacturer';
+import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
-import { commitViewUpdate } from '../../../../utils/change-detection.utils';
+import { commitViewUpdate } from '@app/utils/change-detection.utils';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { InputText } from 'primeng/inputtext';

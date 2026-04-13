@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { UserRegister } from '../../../models/users/user-register';
+import { UserRegister } from '@app/models/users/user-register';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
-import { ToastMessageService } from '../../../services/messages/toast-message.service';
-import { TranslationService } from '../../../services/translation.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { TranslationService } from '@app/services/translation.service';
 import { FormsModule } from '@angular/forms';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';

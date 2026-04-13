@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Park } from '../../../models/parks/park';
-import { ViewState } from '../../../models/shared/view-state';
+import { Park } from '@app/models/parks/park';
+import { ViewState } from '@app/models/shared/view-state';
 import { PageStateComponent } from '../../shared/page-state/page-state.component';
 import { NgFor } from '@angular/common';
 import { ParkCardComponent } from '../park-card/park-card.component';

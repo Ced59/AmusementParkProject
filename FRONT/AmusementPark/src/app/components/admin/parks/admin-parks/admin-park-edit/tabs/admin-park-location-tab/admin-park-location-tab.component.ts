@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MapMarker } from '../../../../../../../models/map/map-marker';
-import { LeafletMapComponent } from '../../../../../../shared/leaflet-map/leaflet-map.component';
+import { MapMarker } from '@app/models/map/map-marker';
+import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';

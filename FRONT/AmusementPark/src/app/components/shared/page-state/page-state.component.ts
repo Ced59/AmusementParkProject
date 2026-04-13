@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ViewState } from '../../../models/shared/view-state';
+import { ViewState } from '@app/models/shared/view-state';
 import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { EmptyStateComponent } from '../empty-state/empty-state.component';
 import { PageStateMessages, ScreenStateKind } from '@shared/models/contracts';

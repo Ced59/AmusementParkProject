@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { ImageCategory } from '../../models/images/image-category';
-import { ImageDto } from '../../models/images/image-dto';
-import { ImageGeoLocation } from '../../models/images/image-geo-location';
-import { ImageOwnerType } from '../../models/images/image-owner-type';
-import { ImageTagDto } from '../../models/images/image-tag-dto';
-import { LinkImageToOwner } from '../../models/images/link-image-to-owner';
-import { UploadedImage } from '../../models/images/uploaded-image';
-import { LocalizedItemDto } from '../../models/shared/localized-item-dto';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageGeoLocation } from '@app/models/images/image-geo-location';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImageTagDto } from '@app/models/images/image-tag-dto';
+import { LinkImageToOwner } from '@app/models/images/link-image-to-owner';
+import { UploadedImage } from '@app/models/images/uploaded-image';
+import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
 import {
   PagedCollectionResponse,
   toImageCategoryApiValue,

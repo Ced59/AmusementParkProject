@@ -12,7 +12,7 @@ import { ButtonDirective } from 'primeng/button';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
 import { PaginationComponent } from '../../../shared/pagination/pagination.component';
 import { EmptyStateComponent } from '../../../shared/empty-state/empty-state.component';
-import { ParkItemAdminRow } from '../../../../models/parks/park-item-admin-row';
+import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 
 @Component({

@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MapMarker } from '../../../../../../../models/map/map-marker';
-import { AttractionLocationPoint } from '../../../../../../../models/parks/attraction-location-point';
+import { MapMarker } from '@app/models/map/map-marker';
+import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { ButtonDirective } from 'primeng/button';
 import { NgClass } from '@angular/common';
-import { LeafletMapComponent } from '../../../../../../shared/leaflet-map/leaflet-map.component';
+import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
 import { InputText } from 'primeng/inputtext';
 import { TranslateModule } from '@ngx-translate/core';
 

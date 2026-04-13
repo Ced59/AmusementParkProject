@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { EmptyStateComponent } from '../../../../shared/empty-state/empty-state.component';
-import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
-import { ParkItem } from '../../../../../models/parks/park-item';
-import { ParkZone } from '../../../../../models/parks/park-zone';
+import { resolveLocalizedValue } from '@app/commons/localized-item.utils';
+import { ParkItem } from '@app/models/parks/park-item';
+import { ParkZone } from '@app/models/parks/park-zone';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
@@ -13,6 +13,10 @@ import { ButtonDirective } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { PageStateComponent } from '../../../../shared/page-state/page-state.component';
 import { AdminParkItemsStateFacade } from '@features/admin/parks/state/admin-park-items-state.facade';
+import {
+  getParkItemCategoryTranslationKey,
+  getParkItemTypeTranslationKey
+} from '@shared/utils/display/display-label.helpers';
 
 @Component({
     selector: 'app-admin-park-items',
@@ -58,6 +62,14 @@ export class AdminParkItemsComponent implements OnInit {
 
     const zone: ParkZone | undefined = this.zones().find((item: ParkZone) => item.id === zoneId);
     return resolveLocalizedValue(zone?.names, this.currentLang) ?? zone?.name ?? '—';
+  }
+
+  getCategoryLabelKey(category: string | null | undefined): string {
+    return getParkItemCategoryTranslationKey(category);
+  }
+
+  getTypeLabelKey(type: string | null | undefined): string {
+    return getParkItemTypeTranslationKey(type);
   }
 
   deleteItem(item: ParkItem): void {

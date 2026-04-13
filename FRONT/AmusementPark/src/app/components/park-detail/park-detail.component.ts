@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal 
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { Park } from '../../models/parks/park';
-import { TranslationService } from '../../services/translation.service';
-import { buildParkSlug } from '../../commons/park-presentation.utils';
+import { Park } from '@app/models/parks/park';
+import { TranslationService } from '@app/services/translation.service';
+import { buildParkSlug } from '@app/commons/park-presentation.utils';
 import { ParkDetailStateFacade } from '@features/public/parks/state/park-detail-state.facade';
 import { ParkDetailViewComponent } from './park-detail-view.component';
 

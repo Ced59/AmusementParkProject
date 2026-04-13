@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { UserDto } from '../../models/users/user_dto';
-import { UserPut } from '../../models/users/user_put';
-import { UsersApiResponse } from '../../models/users/users_api_response';
+import { UserDto } from '@app/models/users/user_dto';
+import { UserPut } from '@app/models/users/user_put';
+import { UsersApiResponse } from '@app/models/users/users_api_response';
 import { USERS_API_ENDPOINTS } from './users-api-endpoints';
 
 @Injectable({

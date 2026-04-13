@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AttractionWaterExposureLevel } from '../../../../../../../models/parks/attraction-water-exposure-level';
-import { EntitySelectOption } from '../../../../../../../models/shared/entity-select-option';
-import { EntitySelectComponent } from '../../../../../../shared/entity-select/entity-select.component';
+import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water-exposure-level';
+import { EntitySelectOption } from '@app/models/shared/entity-select-option';
+import { EntitySelectComponent } from '@app/components/shared/entity-select/entity-select.component';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';
 import { ToggleSwitch } from 'primeng/toggleswitch';

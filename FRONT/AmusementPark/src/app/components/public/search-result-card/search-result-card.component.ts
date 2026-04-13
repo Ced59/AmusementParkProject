@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { SearchResultItem } from '../../../models/search/search-result-item';
-import { buildParkSlug } from '../../../commons/park-presentation.utils';
+import { SearchResultItem } from '@app/models/search/search-result-item';
+import { buildParkSlug } from '@app/commons/park-presentation.utils';
 import { NgIf } from '@angular/common';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { getSearchCategoryTranslationKey } from '@shared/utils/display/display-label.helpers';
 
 @Component({
     selector: 'app-search-result-card',
@@ -18,8 +19,7 @@ export class SearchResultCardComponent {
   @Input() currentLang = 'en';
 
   get categoryLabelKey(): string {
-    const category: string | undefined = this.item?.category?.trim();
-    return category ? `home.categories.${category}` : 'home.categories.park';
+    return getSearchCategoryTranslationKey(this.item?.category);
   }
 
   get parkLink(): string[] | null {

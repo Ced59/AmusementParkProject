@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
-import { AuthService } from '../../../services/auth/auth.service';
-import { GoogleIdentityService } from '../../../services/auth/google-identity.service';
-import { ToastMessageService } from '../../../services/messages/toast-message.service';
-import { SharedService } from '../../../services/shared/shared.service';
-import { UserToken } from '../../../models/users/user_token';
+import { AuthService } from '@app/services/auth/auth.service';
+import { GoogleIdentityService } from '@app/services/auth/google-identity.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { SharedService } from '@app/services/shared/shared.service';
+import { UserToken } from '@app/models/users/user_token';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';
 import { RegisterFormComponent } from '../register-form/register-form.component';

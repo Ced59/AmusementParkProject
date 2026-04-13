@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
-import { EntitySelectOption } from '../../../models/shared/entity-select-option';
+import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { Bind } from 'primeng/bind';
 import { Select } from 'primeng/select';
 import { ButtonDirective } from 'primeng/button';

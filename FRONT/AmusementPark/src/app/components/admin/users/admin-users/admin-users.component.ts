@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/c
 import { Router } from '@angular/router';
 import { TableLazyLoadEvent } from 'primeng/table';
 
-import { UserDto } from '../../../../models/users/user_dto';
+import { UserDto } from '@app/models/users/user_dto';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { AdminUsersStateFacade } from '@features/admin/users/state/admin-users-state.facade';
 import { AdminUsersViewComponent } from './admin-users-view.component';

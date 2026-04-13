@@ -17,7 +17,7 @@ import { initializeApp, HttpLoaderFactory } from './app.module';
 import { TranslationService } from './services/translation.service';
 import { AuthService } from './services/auth/auth.service';
 import { LanguageInterceptor } from './interceptors/language.interceptor';
-import { AuthInterceptor } from './core/http/interceptors/auth.interceptor';
+import { AuthInterceptor } from '@core/http/interceptors/auth.interceptor';
 import AmusementParkPreset from './config/primeng-preset';
 
 import { SelectModule } from 'primeng/select';

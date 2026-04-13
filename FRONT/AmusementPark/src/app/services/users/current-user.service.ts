@@ -2,7 +2,7 @@ import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { AuthService } from '../auth/auth.service';
-import { UserDto } from '../../models/users/user_dto';
+import { UserDto } from '@app/models/users/user_dto';
 
 @Injectable({
   providedIn: 'root'

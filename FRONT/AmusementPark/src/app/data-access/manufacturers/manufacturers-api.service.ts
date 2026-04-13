@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { AttractionManufacturer } from '../../models/parks/attraction-manufacturer';
+import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
 import { MANUFACTURERS_API_ENDPOINTS } from './manufacturers-api-endpoints';
 

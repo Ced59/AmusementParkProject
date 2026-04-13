@@ -1,9 +1,9 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-import { LANGUAGES } from '../../../commons/languages';
-import { isRichTextEmpty } from '../../../commons/localized-item.utils';
-import { LocalizedItem } from '../../../models/shared/localized-item';
+import { LANGUAGES } from '@app/commons/languages';
+import { isRichTextEmpty } from '@app/commons/localized-item.utils';
+import { LocalizedItem } from '@app/models/shared/localized-item';
 import { Bind } from 'primeng/bind';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
 import { Ripple } from 'primeng/ripple';

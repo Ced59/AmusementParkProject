@@ -2,10 +2,10 @@ import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChil
 import { finalize, Subscription, switchMap } from 'rxjs';
 
 import { ImagesApiService } from '@data-access/images/images-api.service';
-import { ImageCategory } from '../../../models/images/image-category';
-import { ImageOwnerType } from '../../../models/images/image-owner-type';
-import { ImageDto } from '../../../models/images/image-dto';
-import { UploadedImage } from '../../../models/images/uploaded-image';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImageDto } from '@app/models/images/image-dto';
+import { UploadedImage } from '@app/models/images/uploaded-image';
 import { Bind } from 'primeng/bind';
 import { Dialog } from 'primeng/dialog';
 import { ButtonDirective } from 'primeng/button';

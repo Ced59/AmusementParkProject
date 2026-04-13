@@ -1,10 +1,10 @@
 import { PaginationContract } from '@shared/models/contracts';
 import { coalesceArray, mapArray } from '@shared/utils/mapping';
 
-import { ImageCategory } from '../../models/images/image-category';
-import { ImageOwnerType } from '../../models/images/image-owner-type';
-import { ParkItem } from '../../models/parks/park-item';
-import { ParkItemAdminRow } from '../../models/parks/park-item-admin-row';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ParkItem } from '@app/models/parks/park-item';
+import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 
 export interface PagedCollectionResponse<T> {
   data?: T[];

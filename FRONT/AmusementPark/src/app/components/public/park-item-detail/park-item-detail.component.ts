@@ -4,19 +4,20 @@ import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { PageStateComponent } from '../../shared/page-state/page-state.component';
-import { Park } from '../../../models/parks/park';
-import { ParkItem } from '../../../models/parks/park-item';
-import { TranslationService } from '../../../services/translation.service';
-import { buildParkSlug } from '../../../commons/park-presentation.utils';
+import { Park } from '@app/models/parks/park';
+import { ParkItem } from '@app/models/parks/park-item';
+import { TranslationService } from '@app/services/translation.service';
+import { buildParkSlug } from '@app/commons/park-presentation.utils';
 import {
   buildEntitySlug,
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
   resolveParkItemDescription
-} from '../../../commons/park-item-presentation.utils';
+} from '@app/commons/park-item-presentation.utils';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonDirective } from 'primeng/button';
 import { ParkItemDetailStateFacade } from '@features/public/park-items/state/park-item-detail-state.facade';
+import { getLocalizedBooleanDisplay } from '@shared/utils/display/display-label.helpers';
 
 interface ParkItemDetailRow {
   labelKey: string;
@@ -215,14 +216,6 @@ export class ParkItemDetailComponent implements OnInit {
   }
 
   private formatBoolean(value: boolean | null | undefined): string | null {
-    if (value == null) {
-      return null;
-    }
-
-    if (this.currentLang() === 'fr') {
-      return value ? 'Oui' : 'Non';
-    }
-
-    return value ? 'Yes' : 'No';
+    return getLocalizedBooleanDisplay(value, this.currentLang());
   }
 }

@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-import { ParkItemAdminRow } from '../../../../models/parks/park-item-admin-row';
+import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { AdminParkItemsIndexStateFacade } from '@features/admin/park-items/state/admin-park-items-index-state.facade';
 import { AdminParkItemsIndexViewComponent } from './admin-park-items-index-view.component';
+import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 
 @Component({
   selector: 'app-admin-park-items-index',
@@ -57,15 +58,9 @@ export class AdminParkItemsIndexComponent implements OnInit {
   }
 
   getTypeLabelKey(itemType: string | number | null | undefined): string {
-    const normalizedType: string | null = typeof itemType === 'string'
-      ? itemType
-      : null;
-
-    if (!normalizedType || normalizedType.length === 0) {
-      return 'parkExplorer.types.other';
-    }
-
-    return `parkExplorer.types.${normalizedType.charAt(0).toLowerCase()}${normalizedType.slice(1)}`;
+    return typeof itemType === 'string'
+      ? getParkItemTypeTranslationKey(itemType)
+      : getParkItemTypeTranslationKey(null);
   }
 
   goToEdit(row: ParkItemAdminRow): void {

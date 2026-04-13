@@ -36,7 +36,7 @@ import {
   DataSourceSummary,
   StartCaptainCoasterImportRequest,
   UpdateCaptainCoasterSettingsRequest
-} from '../../../../models/admin/data/data-management.models';
+} from '@app/models/admin/data/data-management.models';
 
 interface DuplicateResolutionState {
   strategy: 'SelectVariant' | 'Merge';

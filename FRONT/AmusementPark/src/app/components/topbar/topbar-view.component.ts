@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { UserDto } from '../../models/users/user_dto';
+import { UserDto } from '@app/models/users/user_dto';
 import { Bind } from 'primeng/bind';
 import { Toolbar } from 'primeng/toolbar';
 import { PrimeTemplate } from 'primeng/api';

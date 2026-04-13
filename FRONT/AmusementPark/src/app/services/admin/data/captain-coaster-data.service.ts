@@ -13,7 +13,7 @@ import {
   DataSourceSummary,
   StartCaptainCoasterImportRequest,
   UpdateCaptainCoasterSettingsRequest
-} from '../../../models/admin/data/data-management.models';
+} from '@app/models/admin/data/data-management.models';
 
 interface PagedResponseDto<TItem> {
   data: TItem[];

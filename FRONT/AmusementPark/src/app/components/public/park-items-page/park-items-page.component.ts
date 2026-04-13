@@ -7,10 +7,10 @@ import { ButtonDirective } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { ParkExplorerBucket } from '../../../models/parks/park-explorer';
-import { ParkItem } from '../../../models/parks/park-item';
-import { TranslationService } from '../../../services/translation.service';
-import { buildParkSlug } from '../../../commons/park-presentation.utils';
+import { ParkExplorerBucket } from '@app/models/parks/park-explorer';
+import { ParkItem } from '@app/models/parks/park-item';
+import { TranslationService } from '@app/services/translation.service';
+import { buildParkSlug } from '@app/commons/park-presentation.utils';
 import { PageStateComponent } from '../../shared/page-state/page-state.component';
 import { PaginationComponent } from '../../shared/pagination/pagination.component';
 import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';

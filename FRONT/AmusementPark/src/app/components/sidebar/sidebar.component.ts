@@ -1,8 +1,8 @@
 import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { TranslationService } from '../../services/translation.service';
-import { AuthService } from '../../services/auth/auth.service';
-import { SharedService } from '../../services/shared/shared.service';
+import { TranslationService } from '@app/services/translation.service';
+import { AuthService } from '@app/services/auth/auth.service';
+import { SharedService } from '@app/services/shared/shared.service';
 import { SidebarViewComponent } from './sidebar-view.component';
 
 @Component({

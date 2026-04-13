@@ -10,7 +10,7 @@ import { ButtonDirective } from 'primeng/button';
 import { ToggleSwitch } from 'primeng/toggleswitch';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmptyStateComponent } from '../../../shared/empty-state/empty-state.component';
-import { Park } from '../../../../models/parks/park';
+import { Park } from '@app/models/parks/park';
 
 @Component({
   selector: 'app-admin-parks-view',

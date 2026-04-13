@@ -12,6 +12,8 @@ import { Park } from '@app/models/parks/park';
 import { ParkExplorer, ParkExplorerBucket } from '@app/models/parks/park-explorer';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
+import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { buildTranslationOptions } from '@shared/utils/display/display-options';
 
 export interface SelectOption {
   labelKey?: string;
@@ -95,20 +97,14 @@ export class ParkItemsPageStateFacade {
     const categoryValues: string[] = Array.from(new Set(this.allItems().map((item: ParkItem) => item.category)))
       .sort((left: string, right: string) => left.localeCompare(right));
 
-    return base.concat(categoryValues.map((value: string) => ({
-      value,
-      labelKey: `parkExplorer.categories.${this.toCamelCase(value)}`
-    })));
+    return base.concat(buildTranslationOptions(categoryValues, getParkItemCategoryTranslationKey));
   });
   public readonly typeOptions: Signal<SelectOption[]> = computed(() => {
     const base: SelectOption[] = [{ labelKey: 'parkItems.filters.allTypes', value: null }];
     const typeValues: string[] = Array.from(new Set(this.allItems().map((item: ParkItem) => item.type)))
       .sort((left: string, right: string) => left.localeCompare(right));
 
-    return base.concat(typeValues.map((value: string) => ({
-      value,
-      labelKey: `parkExplorer.types.${this.toCamelCase(value)}`
-    })));
+    return base.concat(buildTranslationOptions(typeValues, getParkItemTypeTranslationKey));
   });
   public readonly zoneOptions: Signal<SelectOption[]> = computed(() => {
     const base: SelectOption[] = [{ labelKey: 'parkItems.filters.allZones', value: null }];
@@ -277,7 +273,7 @@ export class ParkItemsPageStateFacade {
   }
 
   getTypeKey(type: string): string {
-    return `parkExplorer.types.${this.toCamelCase(type)}`;
+    return getParkItemTypeTranslationKey(type);
   }
 
   getManufacturerName(item: ParkItem): string | null {
@@ -319,7 +315,4 @@ export class ParkItemsPageStateFacade {
     }
   }
 
-  private toCamelCase(value: string): string {
-    return value.charAt(0).toLowerCase() + value.slice(1);
-  }
 }

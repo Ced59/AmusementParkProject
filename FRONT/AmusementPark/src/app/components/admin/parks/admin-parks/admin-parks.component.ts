@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
-import { Park } from '../../../../models/parks/park';
-import { ParkType } from '../../../../models/parks/park-type';
+import { Park } from '@app/models/parks/park';
+import { ParkType } from '@app/models/parks/park-type';
 import { TableLazyLoadEvent } from 'primeng/table';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { AdminParksStateFacade } from '@features/admin/parks/state/admin-parks-state.facade';
 import { AdminParksViewComponent } from './admin-parks-view.component';
+import { getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 
 @Component({
   selector: 'app-admin-parks',
@@ -78,21 +79,6 @@ export class AdminParksComponent implements OnInit {
   }
 
   getTypeTranslationKey(type: string | null | undefined): string {
-    switch (type) {
-      case 'ThemePark':
-        return 'admin.parks.types.themePark';
-      case 'WaterPark':
-        return 'admin.parks.types.waterPark';
-      case 'Zoo':
-        return 'admin.parks.types.zoo';
-      case 'AnimalPark':
-        return 'admin.parks.types.animalPark';
-      case 'AmusementPark':
-        return 'admin.parks.types.amusementPark';
-      case 'Resort':
-        return 'admin.parks.types.resort';
-      default:
-        return 'admin.parks.types.notSpecified';
-    }
+    return getParkTypeTranslationKey(type);
   }
 }
