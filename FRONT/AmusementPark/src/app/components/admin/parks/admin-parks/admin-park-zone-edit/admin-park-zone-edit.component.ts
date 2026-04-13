@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
-import { commitViewUpdate } from '@app/utils/change-detection.utils';
+import { commitViewUpdate } from '@shared/utils/angular';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { LocalizedTextInputComponent } from '../../../../shared/localized-text-input/localized-text-input.component';

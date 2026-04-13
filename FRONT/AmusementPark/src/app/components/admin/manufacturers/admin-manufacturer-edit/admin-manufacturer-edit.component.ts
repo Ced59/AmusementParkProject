@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } 
 import { ActivatedRoute, Router } from '@angular/router';
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
-import { commitViewUpdate } from '@app/utils/change-detection.utils';
+import { commitViewUpdate } from '@shared/utils/angular';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { InputText } from 'primeng/inputtext';

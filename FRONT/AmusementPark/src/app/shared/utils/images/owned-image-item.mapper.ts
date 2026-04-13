@@ -1,4 +1,4 @@
-import { resolveLocalizedValue } from '@app/commons/localized-item.utils';
+import { resolveLocalizedValue } from '@shared/utils/localization';
 import { ImageDto } from '@app/models/images/image-dto';
 import { OwnedImageItem } from '../../models/images/owned-image-item.model';
 

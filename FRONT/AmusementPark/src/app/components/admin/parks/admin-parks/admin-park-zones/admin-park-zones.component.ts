@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { EmptyStateComponent } from '../../../../shared/empty-state/empty-state.component';
-import { resolveLocalizedValue } from '@app/commons/localized-item.utils';
+import { resolveLocalizedValue } from '@shared/utils/localization';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { Bind } from 'primeng/bind';

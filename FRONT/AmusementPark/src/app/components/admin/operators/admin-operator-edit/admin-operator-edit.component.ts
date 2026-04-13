@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } 
 import { ActivatedRoute, Router } from '@angular/router';
 import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
 import { ParkOperator } from '@app/models/parks/park-operator';
-import { commitViewUpdate } from '@app/utils/change-detection.utils';
+import { commitViewUpdate } from '@shared/utils/angular';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { InputText } from 'primeng/inputtext';

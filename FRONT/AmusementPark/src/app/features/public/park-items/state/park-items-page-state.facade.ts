@@ -5,7 +5,7 @@ import { ParkItemsApiService } from '@data-access/park-items/park-items-api.serv
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
-import { resolveLocalizedValue } from '@app/commons/localized-item.utils';
+import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemDescription } from '@app/commons/park-item-presentation.utils';
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { Park } from '@app/models/parks/park';

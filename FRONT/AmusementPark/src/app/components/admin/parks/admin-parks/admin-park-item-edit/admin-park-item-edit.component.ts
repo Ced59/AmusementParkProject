@@ -6,7 +6,7 @@ import { ToastMessageService } from '@app/services/messages/toast-message.servic
 import { firstValueFrom, Subscription } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
 import { LANGUAGES } from '@app/commons/languages';
-import { resolveLocalizedValue } from '@app/commons/localized-item.utils';
+import { resolveLocalizedValue } from '@shared/utils/localization';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';

@@ -1,7 +1,7 @@
 import { ParkItem } from '../models/parks/park-item';
 import { ParkItemCategory } from '../models/parks/park-item-category';
 import { ParkItemType } from '../models/parks/park-item-type';
-import { resolveLocalizedValue, stripHtml } from './localized-item.utils';
+import { resolveLocalizedValue, stripHtml } from '@shared/utils/localization';
 import {
   getParkItemCategoryTranslationKey as getSharedParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey as getSharedParkItemTypeTranslationKey

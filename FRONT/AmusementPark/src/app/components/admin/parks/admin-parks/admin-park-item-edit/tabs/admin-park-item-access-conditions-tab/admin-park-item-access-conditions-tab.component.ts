@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { resolveLocalizedValue } from '@app/commons/localized-item.utils';
+import { resolveLocalizedValue } from '@shared/utils/localization';
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
 import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';
 import { LocalizedItem } from '@app/models/shared/localized-item';
