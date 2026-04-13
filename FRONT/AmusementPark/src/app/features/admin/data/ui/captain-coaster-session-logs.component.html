@@ -1,0 +1,10 @@
+<div class="logs-panel">
+  <h3>Journal</h3>
+  <div class="log-list">
+    <div class="log-entry" [class.log-entry--error]="log.level === 'Error'" *ngFor="let log of logs">
+      <span class="log-entry__time">{{ log.occurredAtUtc | date:'HH:mm:ss' }}</span>
+      <span class="log-entry__level" [class.log-entry__level--error]="log.level === 'Error'">{{ log.level }}</span>
+      <span class="log-entry__message">{{ log.message }}</span>
+    </div>
+  </div>
+</div>

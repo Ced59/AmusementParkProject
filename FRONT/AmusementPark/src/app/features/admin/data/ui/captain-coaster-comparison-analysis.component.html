@@ -1,0 +1,84 @@
+<ng-container *ngIf="!captainCoasterComparisonFacade.isDuplicateRow(row)">
+  <div class="change-list">
+    <div class="change-item" *ngFor="let change of row.changes" [class.change-item--diff]="change.isDifferent">
+      <span class="change-item__field">{{ change.field }}</span>
+      <span class="change-item__local">{{ change.localValue || '∅' }}</span>
+      <i class="pi pi-arrow-right"></i>
+      <span class="change-item__ext">{{ change.externalValue || '∅' }}</span>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="captainCoasterComparisonFacade.isDuplicateRow(row)">
+  <div class="duplicate-panel">
+    <div class="duplicate-panel__intro">
+      <p-tag value="Arbitrage requis" severity="danger"></p-tag>
+      <span>{{ row.externalVariants.length }} variante(s) conservent le même identifiant externe.</span>
+    </div>
+
+    <div class="duplicate-panel__strategy">
+      <label>
+        <input
+          type="radio"
+          [name]="'strategy-' + row.id"
+          [checked]="captainCoasterComparisonFacade.getDuplicateState(row).strategy === 'SelectVariant'"
+          (change)="captainCoasterComparisonFacade.setDuplicateStrategy(row, 'SelectVariant')" />
+        Choisir une variante complète
+      </label>
+      <label>
+        <input
+          type="radio"
+          [name]="'strategy-' + row.id"
+          [checked]="captainCoasterComparisonFacade.getDuplicateState(row).strategy === 'Merge'"
+          (change)="captainCoasterComparisonFacade.setDuplicateStrategy(row, 'Merge')" />
+        Fusionner champ par champ
+      </label>
+    </div>
+
+    <div class="duplicate-variants">
+      <label
+        class="duplicate-variant-card"
+        *ngFor="let variant of row.externalVariants"
+        [class.duplicate-variant-card--selected]="captainCoasterComparisonFacade.getDuplicateState(row).selectedExternalVariantId === variant.externalVariantId"
+        [class.duplicate-variant-card--suggested]="variant.isSuggested">
+        <div class="duplicate-variant-card__header">
+          <div>
+            <input
+              type="radio"
+              [name]="'variant-' + row.id"
+              [checked]="captainCoasterComparisonFacade.getDuplicateState(row).selectedExternalVariantId === variant.externalVariantId"
+              (change)="captainCoasterComparisonFacade.setSelectedVariant(row, variant.externalVariantId)" />
+            <strong>{{ variant.displayLabel }}</strong>
+          </div>
+          <span class="duplicate-variant-card__badge" *ngIf="variant.isSuggested">Suggéré</span>
+        </div>
+        <div class="change-list">
+          <div class="change-item" *ngFor="let change of variant.changes" [class.change-item--diff]="change.isDifferent">
+            <span class="change-item__field">{{ change.field }}</span>
+            <span class="change-item__local">{{ change.localValue || '∅' }}</span>
+            <i class="pi pi-arrow-right"></i>
+            <span class="change-item__ext">{{ change.externalValue || '∅' }}</span>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <div class="merge-panel" *ngIf="captainCoasterComparisonFacade.getDuplicateState(row).strategy === 'Merge'">
+      <div class="merge-row" *ngFor="let field of captainCoasterComparisonFacade.getMergeEligibleFields(row)">
+        <span class="merge-row__field">{{ field }}</span>
+        <select
+          class="merge-row__select"
+          [ngModel]="captainCoasterComparisonFacade.getMergeSelection(row, field)"
+          (ngModelChange)="captainCoasterComparisonFacade.setMergeSelection(row, field, $event)">
+          <option *ngFor="let option of captainCoasterComparisonFacade.getMergeOptions(row, field)" [ngValue]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="duplicate-panel__summary">
+      Résolution prête : {{ captainCoasterComparisonFacade.getResolutionSummary(row) }}
+    </div>
+  </div>
+</ng-container>

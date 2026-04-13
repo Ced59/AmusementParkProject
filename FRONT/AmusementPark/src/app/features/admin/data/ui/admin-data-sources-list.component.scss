@@ -1,0 +1,14 @@
+.source-label {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+
+  i {
+    color: var(--primary-color, #3b82f6);
+  }
+}
+
+.source-description {
+  font-size: .85rem;
+  opacity: .8;
+}

@@ -1,0 +1,40 @@
+<p-card header="Sources de données configurées">
+  <p-table [value]="sources" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Source</th>
+        <th>Description</th>
+        <th>Dernier import</th>
+        <th>Sessions</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-source>
+      <tr>
+        <td>
+          <div class="source-label">
+            <i [class]="source.icon"></i>
+            <strong>{{ source.label }}</strong>
+          </div>
+        </td>
+        <td class="source-description">{{ source.description }}</td>
+        <td>{{ source.lastImportUtc ? (source.lastImportUtc | date:'short') : 'Jamais' }}</td>
+        <td>{{ source.totalSessions }}</td>
+        <td>
+          <p-tag [value]="source.statusLabel" [severity]="getSeverity(source)"></p-tag>
+        </td>
+        <td>
+          <button
+            pButton
+            type="button"
+            label="Gérer"
+            icon="pi pi-cog"
+            class="p-button-sm"
+            (click)="manageSource.emit(source.key)">
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

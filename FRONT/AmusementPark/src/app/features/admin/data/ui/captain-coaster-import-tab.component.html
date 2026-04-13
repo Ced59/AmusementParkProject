@@ -1,0 +1,184 @@
+<p-card header="Configurer et lancer le pipeline Captain Coaster">
+  <p class="import-description">
+    Le pipeline récupère automatiquement les URLs depuis le sitemap ou une liste ciblée,
+    télécharge chaque page à la volée, l'analyse, enrichit les coordonnées des parcs depuis la carte,
+    puis construit la comparaison avec les données locales. Les pages HTML sont traitées en flux et ne sont pas conservées durablement sur le serveur.
+  </p>
+
+  <div class="status-grid" *ngIf="status() as currentStatus">
+    <div class="status-card">
+      <span class="status-card__label">Dernier import réussi</span>
+      <strong>{{ currentStatus.lastSuccessfulImportUtc ? (currentStatus.lastSuccessfulImportUtc | date:'short') : 'Jamais' }}</strong>
+    </div>
+    <div class="status-card">
+      <span class="status-card__label">Total des sessions</span>
+      <strong>{{ currentStatus.totalSessionsCount }}</strong>
+    </div>
+  </div>
+
+  <div *ngIf="settings() as currentSettings" class="import-form">
+    <div class="file-field">
+      <label class="file-label">
+        <span class="file-label__text"><i class="pi pi-power-off"></i> Source active</span>
+        <span class="file-label__hint">Désactivez la source pour empêcher les lancements.</span>
+      </label>
+      <div class="file-input-row">
+        <p-checkbox
+          [binary]="true"
+          [ngModel]="currentSettings.isEnabled"
+          (ngModelChange)="captainCoasterPipelineFacade.setSettingsEnabled($event)">
+        </p-checkbox>
+        <span class="file-selected">{{ currentSettings.isEnabled ? 'Activée' : 'Désactivée' }}</span>
+      </div>
+    </div>
+
+    <div class="file-field">
+      <label class="file-label">
+        <span class="file-label__text"><i class="pi pi-sitemap"></i> Mode d'acquisition</span>
+        <span class="file-label__hint">Choisissez entre sitemap complet et URLs ciblées.</span>
+      </label>
+      <div class="file-input-row">
+        <select
+          class="merge-row__select"
+          [ngModel]="importKind()"
+          (ngModelChange)="captainCoasterPipelineFacade.setImportKind($event)">
+          <option value="sitemap">Sitemap complet</option>
+          <option value="manual-urls">URLs ciblées</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="file-field" *ngIf="importKind() === 'manual-urls'">
+      <label class="file-label">
+        <span class="file-label__text"><i class="pi pi-link"></i> URLs à analyser</span>
+        <span class="file-label__hint">Une URL par ligne dans le textarea.</span>
+      </label>
+      <div class="file-input-row file-input-row--stacked">
+        <textarea
+          rows="8"
+          class="file-input"
+          [ngModel]="manualUrlsText()"
+          (ngModelChange)="captainCoasterPipelineFacade.setManualUrlsText($event)"
+          placeholder="https://captaincoaster.com/fr/coasters/...&#10;https://captaincoaster.com/fr/coasters/...">
+        </textarea>
+        <span class="file-selected" *ngIf="manualUrlCount() > 0">
+          <i class="pi pi-check-circle"></i> {{ manualUrlCount() }} URL(s) prête(s) à être analysée(s)
+        </span>
+      </div>
+    </div>
+
+    <div class="file-field">
+      <label class="file-label">
+        <span class="file-label__text"><i class="pi pi-step-forward"></i> Démarrer à l'étape</span>
+        <span class="file-label__hint">Permet de reprendre à l'étape souhaitée.</span>
+      </label>
+      <div class="file-input-row">
+        <select
+          class="merge-row__select"
+          [ngModel]="startAtStep()"
+          (ngModelChange)="captainCoasterPipelineFacade.setStartAtStep($event)">
+          <option *ngFor="let option of scrapingStepOptions" [ngValue]="option.value">{{ option.label }}</option>
+        </select>
+        <label class="checkbox-inline">
+          <p-checkbox
+            [binary]="true"
+            [ngModel]="resumeLatestSession()"
+            (ngModelChange)="captainCoasterPipelineFacade.setResumeLatestSession($event)">
+          </p-checkbox>
+          <span>Reprendre la dernière session si possible</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="file-field">
+      <label class="file-label">
+        <span class="file-label__text"><i class="pi pi-map"></i> Sitemap & carte</span>
+        <span class="file-label__hint">URLs principales utilisées par le provider.</span>
+      </label>
+      <div class="file-input-row file-input-row--stacked">
+        <input
+          type="text"
+          class="file-input"
+          [ngModel]="captainCoasterPipelineFacade.getSettingValue('sitemapUrl')"
+          (ngModelChange)="captainCoasterPipelineFacade.setSettingValue('sitemapUrl', $event)"
+          placeholder="https://captaincoaster.com/sitemap.xml" />
+        <input
+          type="text"
+          class="file-input"
+          [ngModel]="captainCoasterPipelineFacade.getSettingValue('mapPageUrl')"
+          (ngModelChange)="captainCoasterPipelineFacade.setSettingValue('mapPageUrl', $event)"
+          placeholder="https://captaincoaster.com/fr/map/" />
+      </div>
+    </div>
+
+    <div class="file-field">
+      <label class="file-label">
+        <span class="file-label__text"><i class="pi pi-sliders-h"></i> Cadence, limites et persistance</span>
+        <span class="file-label__hint">Paramètres avancés utilisés pendant le scraping et la sauvegarde de progression.</span>
+      </label>
+      <div class="settings-grid">
+        <div class="setting-card" *ngFor="let field of scrapingThrottleFields">
+          <label class="setting-card__label">{{ field.label }}</label>
+          <input
+            [type]="field.type ?? 'text'"
+            class="file-input"
+            [ngModel]="captainCoasterPipelineFacade.getSettingValue(field.key)"
+            (ngModelChange)="captainCoasterPipelineFacade.setSettingValue(field.key, $event)"
+            [placeholder]="field.placeholder" />
+          <span class="setting-card__hint">{{ field.hint }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="file-field">
+      <label class="file-label">
+        <span class="file-label__text"><i class="pi pi-code"></i> Sélecteurs HTML / XPath</span>
+        <span class="file-label__hint">Ces champs indiquent précisément où lire les données dans le HTML Captain Coaster.</span>
+      </label>
+      <div class="settings-grid">
+        <div class="setting-card" *ngFor="let field of scrapingSelectorFields">
+          <label class="setting-card__label">{{ field.label }}</label>
+          <input
+            type="text"
+            class="file-input"
+            [ngModel]="captainCoasterPipelineFacade.getSettingValue(field.key)"
+            (ngModelChange)="captainCoasterPipelineFacade.setSettingValue(field.key, $event)"
+            [placeholder]="field.placeholder" />
+          <span class="setting-card__hint">{{ field.hint }}</span>
+        </div>
+        <div class="setting-card setting-card--checkbox">
+          <label class="setting-card__label">Enrichir automatiquement les coordonnées des parcs</label>
+          <label class="checkbox-inline">
+            <p-checkbox
+              [binary]="true"
+              [ngModel]="captainCoasterPipelineFacade.getSettingValue('enrichParkCoordinates') === 'True' || captainCoasterPipelineFacade.getSettingValue('enrichParkCoordinates') === 'true'"
+              (ngModelChange)="captainCoasterPipelineFacade.setSettingValue('enrichParkCoordinates', $event ? 'true' : 'false')">
+            </p-checkbox>
+            <span>Active la lecture de la page carte pour compléter latitude et longitude.</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="bulk-actions__buttons">
+      <button
+        pButton
+        type="button"
+        label="Enregistrer les paramètres"
+        icon="pi pi-save"
+        class="p-button-sm p-button-outlined"
+        [disabled]="isBusy()"
+        (click)="captainCoasterPipelineFacade.saveSettingsAsync()">
+      </button>
+      <button
+        pButton
+        type="button"
+        label="Lancer le pipeline"
+        icon="pi pi-play"
+        class="p-button-sm"
+        [disabled]="!canImport()"
+        (click)="captainCoasterPipelineFacade.startImportAsync()">
+      </button>
+    </div>
+  </div>
+</p-card>

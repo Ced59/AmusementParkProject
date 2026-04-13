@@ -1,0 +1,66 @@
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+
+  i {
+    color: var(--primary-color, #3b82f6);
+  }
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.message {
+  margin: 0;
+  padding: .75rem 1rem;
+  border-radius: .75rem;
+}
+
+.message--error {
+  background: rgba(220, 38, 38, .12);
+  color: #991b1b;
+}
+
+.message--success {
+  background: rgba(22, 163, 74, .12);
+  color: #166534;
+}
+
+.tab-pulse {
+  color: #f59e0b;
+  margin-left: .3rem;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.tab-badge {
+  background: var(--primary-color, #3b82f6);
+  color: #fff;
+  border-radius: 2rem;
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 0 .35rem;
+  margin-left: .3rem;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .2;
+  }
+}
