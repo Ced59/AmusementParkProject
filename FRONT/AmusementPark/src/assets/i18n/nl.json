@@ -1,6 +1,6 @@
 {
   "home": {
-    "home_title": "Je volgende avontuur begint hier",
+    "home_title": "Vind je perfecte sensatie",
     "placeholder_search": "Zoek een park, attractie, hotel…",
     "placeholder_category": "Soort zoekopdracht",
     "no_results": "Geen resultaten voor",
@@ -13,10 +13,10 @@
       "operators": "Operators",
       "manufacturers": "Manufacturers"
     },
-    "heroBadge": "Theme parks discovery",
-    "heroSubtitle": "Explore parks and discover the most useful information already managed in the administration area.",
-    "ctaBrowseParks": "Browse parks",
-    "ctaLearnMore": "Learn more",
+    "heroBadge": "Kaart van sensaties",
+    "heroSubtitle": "Duizenden attracties in honderden parken wereldwijd. Je volgende adrenalinekick is maar één klik weg.",
+    "ctaBrowseParks": "Parken verkennen",
+    "ctaLearnMore": "Hoe het werkt",
     "featured": {
       "title": "Featured parks",
       "subtitle": "Start with a selection of parks highlighted on the public experience.",
@@ -38,7 +38,38 @@
       "emptyMessage": "No public content matches your search.",
       "hintTitle": "Start a search",
       "hintMessage": "Search for a park or filter the catalog by category.",
-      "openResult": "Open"
+      "openResult": "Open",
+      "kicker": "Smart search",
+      "commandTitle": "Find the right park faster",
+      "commandSubtitle": "Search the real public catalog, filter by content type, then open the matching pages without leaving the MVP experience."
+    },
+    "experience": {
+      "mapKicker": "Map ready",
+      "mapTitle": "A visual space already prepared for geolocation",
+      "mapText": "The home keeps the mockup's map-oriented identity while the real distance and map features remain isolated in the dedicated map components.",
+      "catalogKicker": "Public catalog",
+      "catalogTitle": "Parks, attractions and operators in one coherent journey",
+      "catalogText": "The page reuses the shared design primitives so the next public screens can keep the same visual language without duplicating CSS."
+    },
+    "heroTitleFind": "Vind",
+    "heroTitleYour": "jouw",
+    "heroTitleThrill": "sensatie",
+    "heroTitlePerfect": "perfect",
+    "stats": {
+      "ariaLabel": "Statistieken van de publieke catalogus",
+      "parks": "Geregistreerde parken",
+      "attractions": "Attracties",
+      "countries": "Landen gedekt",
+      "errorMessage": "De publieke statistieken konden niet worden geladen."
+    },
+    "heroCards": {
+      "ariaLabel": "Voorbeeld van uitgelichte parken",
+      "featured": "Selectie",
+      "sensations": "Sensaties",
+      "family": "Familie",
+      "locationFallback": "Bestemming om te ontdekken",
+      "placeholderTitle": "Catalogus in voorbereiding",
+      "placeholderSubtitle": "Uitgelichte parken verschijnen hier."
     }
   },
   "topbar": {

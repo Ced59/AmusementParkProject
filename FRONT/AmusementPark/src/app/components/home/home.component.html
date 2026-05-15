@@ -1,10 +1,12 @@
 <app-home-view
   [currentLang]="currentLang"
   [searchTerm]="searchTerm"
-  [selectedCategory]="selectedCategory"
-  [categoryOptions]="categoryOptions"
+  [searchFilters]="searchFilters"
+  [statsState]="statsState"
+  [homeStats]="homeStats"
   [featuredState]="featuredState"
   [featuredParks]="featuredParks"
+  [heroFeaturedParks]="heroFeaturedParks"
   [searchState]="searchState"
   [results]="results"
   [pagination]="pagination"
@@ -13,5 +15,6 @@
   [searchResultsHintKey]="searchResultsHintKey"
   (searchInputChanged)="onSearchInput($event)"
   (categoryChanged)="onCategoryChange($event)"
+  (searchCleared)="onClearSearch()"
   (pageChanged)="onPageChange($event)">
 </app-home-view>

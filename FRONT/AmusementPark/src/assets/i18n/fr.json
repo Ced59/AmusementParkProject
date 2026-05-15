@@ -1,6 +1,6 @@
 {
   "home": {
-    "home_title": "Votre prochaine aventure commence ici",
+    "home_title": "Trouve ton frisson parfait",
     "placeholder_search": "Rechercher un parc, une attraction, un hôtel…",
     "placeholder_category": "Type de recherche",
     "no_results": "Aucun résultat pour",
@@ -13,10 +13,10 @@
       "operators": "Exploitants",
       "manufacturers": "Constructeurs"
     },
-    "heroBadge": "Découverte de parcs",
-    "heroSubtitle": "Explore les parcs et découvre les informations les plus utiles déjà gérées dans l’administration.",
-    "ctaBrowseParks": "Voir les parcs",
-    "ctaLearnMore": "En savoir plus",
+    "heroBadge": "Cartographie des sensations",
+    "heroSubtitle": "Des milliers d'attractions recensées dans des centaines de parcs à travers le monde. Ton prochain vertige est à portée de clic.",
+    "ctaBrowseParks": "Explorer les parcs",
+    "ctaLearnMore": "Comment ça marche",
     "featured": {
       "title": "Parcs mis en avant",
       "subtitle": "Commence avec une sélection de parcs valorisés dans l’expérience publique.",
@@ -38,7 +38,38 @@
       "emptyMessage": "Aucun contenu public ne correspond à votre recherche.",
       "hintTitle": "Commence une recherche",
       "hintMessage": "Recherche un parc ou filtre le catalogue par catégorie.",
-      "openResult": "Ouvrir"
+      "openResult": "Ouvrir",
+      "kicker": "Recherche intelligente",
+      "commandTitle": "Trouver le bon parc plus vite",
+      "commandSubtitle": "Recherche dans le vrai catalogue public, filtre par type de contenu, puis ouvre les pages correspondantes sans sortir de l’expérience MVP."
+    },
+    "experience": {
+      "mapKicker": "Carte prête",
+      "mapTitle": "Un espace visuel déjà préparé pour la géolocalisation",
+      "mapText": "La home conserve l’identité orientée carte de la maquette pendant que les futures distances et cartes réelles restent isolées dans les composants dédiés.",
+      "catalogKicker": "Catalogue public",
+      "catalogTitle": "Parcs, attractions et exploitants dans un parcours cohérent",
+      "catalogText": "La page réutilise les primitives design partagées pour que les prochains écrans publics gardent le même langage visuel sans dupliquer de CSS."
+    },
+    "heroTitleFind": "Trouve",
+    "heroTitleYour": "ton",
+    "heroTitleThrill": "frisson",
+    "heroTitlePerfect": "parfait",
+    "stats": {
+      "ariaLabel": "Statistiques du catalogue public",
+      "parks": "Parcs référencés",
+      "attractions": "Attractions",
+      "countries": "Pays couverts",
+      "errorMessage": "Les statistiques publiques n’ont pas pu être chargées."
+    },
+    "heroCards": {
+      "ariaLabel": "Aperçu des parcs mis en avant",
+      "featured": "Sélection",
+      "sensations": "Sensations",
+      "family": "Famille",
+      "locationFallback": "Destination à découvrir",
+      "placeholderTitle": "Catalogue en préparation",
+      "placeholderSubtitle": "Les parcs mis en avant apparaîtront ici."
     }
   },
   "topbar": {

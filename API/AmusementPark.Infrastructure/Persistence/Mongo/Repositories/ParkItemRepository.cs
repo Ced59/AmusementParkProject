@@ -98,6 +98,44 @@ public sealed class ParkItemRepository : IParkItemRepository
             totalItems);
     }
 
+    public async Task<long> CountByCategoryAsync(ParkItemCategory category, bool includeHidden, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.Category, category);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+    }
+
+
+    public async Task<long> CountByCategoryForParkIdsAsync(ParkItemCategory category, IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedParkIds.Count == 0)
+        {
+            return 0;
+        }
+
+        FilterDefinition<ParkItemDocument> filter =
+            Builders<ParkItemDocument>.Filter.Eq(document => document.Category, category) &
+            Builders<ParkItemDocument>.Filter.In(document => document.ParkId, normalizedParkIds);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+    }
+
     public async Task<ParkItem?> GetByIdAsync(string parkItemId, CancellationToken cancellationToken)
     {
         ParkItemDocument? document = await this.collection.Find(document => document.Id == parkItemId)

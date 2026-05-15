@@ -79,6 +79,47 @@ public sealed class ParkRepository : IParkRepository
             totalItems);
     }
 
+    public async Task<long> CountAsync(bool includeHidden, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden);
+        return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+    }
+
+
+    public async Task<IReadOnlyCollection<string>> GetVisibleParkIdsAsync(CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
+
+        List<string> parkIds = await this.collection.Find(filter)
+            .Project(document => document.Id)
+            .ToListAsync(cancellationToken);
+
+        return parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+    }
+
+    public async Task<int> CountDistinctCountryCodesAsync(bool includeHidden, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden)
+            & Builders<ParkDocument>.Filter.Ne(document => document.CountryCode, null)
+            & Builders<ParkDocument>.Filter.Ne(document => document.CountryCode, string.Empty);
+
+        IAsyncCursor<string?> cursor = await this.collection.DistinctAsync(
+            document => document.CountryCode,
+            filter,
+            cancellationToken: cancellationToken);
+
+        List<string?> countryCodes = await cursor.ToListAsync(cancellationToken);
+        return countryCodes
+            .Where(static countryCode => !string.IsNullOrWhiteSpace(countryCode))
+            .Select(static countryCode => countryCode.Trim().ToUpperInvariant())
+            .Distinct(StringComparer.Ordinal)
+            .Count();
+    }
+
     public async Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
     {
         string escapedName = Regex.Escape(name.Trim());
@@ -169,5 +210,12 @@ public sealed class ParkRepository : IParkRepository
 
         ParkDocument? updated = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
         return updated?.ToDomain();
+    }
+
+    private FilterDefinition<ParkDocument> BuildVisibilityFilter(bool includeHidden)
+    {
+        return includeHidden
+            ? Builders<ParkDocument>.Filter.Empty
+            : Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
     }
 }

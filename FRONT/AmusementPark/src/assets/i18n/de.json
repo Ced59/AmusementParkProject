@@ -1,6 +1,6 @@
 {
   "home": {
-    "home_title": "Dein nächstes Abenteuer beginnt hier",
+    "home_title": "Finde deinen perfekten Nervenkitzel",
     "placeholder_search": "Suche nach einem Park, einer Attraktion, einem Hotel…",
     "placeholder_category": "Suchtyp",
     "no_results": "Keine Ergebnisse für",
@@ -13,10 +13,10 @@
       "operators": "Operators",
       "manufacturers": "Manufacturers"
     },
-    "heroBadge": "Theme parks discovery",
-    "heroSubtitle": "Explore parks and discover the most useful information already managed in the administration area.",
-    "ctaBrowseParks": "Browse parks",
-    "ctaLearnMore": "Learn more",
+    "heroBadge": "Karte der Sensationen",
+    "heroSubtitle": "Tausende Attraktionen in Hunderten von Parks weltweit. Dein nächster Adrenalinschub ist nur einen Klick entfernt.",
+    "ctaBrowseParks": "Parks entdecken",
+    "ctaLearnMore": "So funktioniert es",
     "featured": {
       "title": "Featured parks",
       "subtitle": "Start with a selection of parks highlighted on the public experience.",
@@ -38,7 +38,38 @@
       "emptyMessage": "No public content matches your search.",
       "hintTitle": "Start a search",
       "hintMessage": "Search for a park or filter the catalog by category.",
-      "openResult": "Open"
+      "openResult": "Open",
+      "kicker": "Smart search",
+      "commandTitle": "Find the right park faster",
+      "commandSubtitle": "Search the real public catalog, filter by content type, then open the matching pages without leaving the MVP experience."
+    },
+    "experience": {
+      "mapKicker": "Map ready",
+      "mapTitle": "A visual space already prepared for geolocation",
+      "mapText": "The home keeps the mockup's map-oriented identity while the real distance and map features remain isolated in the dedicated map components.",
+      "catalogKicker": "Public catalog",
+      "catalogTitle": "Parks, attractions and operators in one coherent journey",
+      "catalogText": "The page reuses the shared design primitives so the next public screens can keep the same visual language without duplicating CSS."
+    },
+    "heroTitleFind": "Finde",
+    "heroTitleYour": "deinen",
+    "heroTitleThrill": "Kick",
+    "heroTitlePerfect": "perfekt",
+    "stats": {
+      "ariaLabel": "Statistiken des öffentlichen Katalogs",
+      "parks": "Erfasste Parks",
+      "attractions": "Attraktionen",
+      "countries": "Länder abgedeckt",
+      "errorMessage": "Die öffentlichen Statistiken konnten nicht geladen werden."
+    },
+    "heroCards": {
+      "ariaLabel": "Vorschau ausgewählter Parks",
+      "featured": "Auswahl",
+      "sensations": "Nervenkitzel",
+      "family": "Familie",
+      "locationFallback": "Reiseziel entdecken",
+      "placeholderTitle": "Katalog wird vorbereitet",
+      "placeholderSubtitle": "Ausgewählte Parks erscheinen hier."
     }
   },
   "topbar": {

@@ -1,6 +1,6 @@
 {
   "home": {
-    "home_title": "Your next adventure starts here",
+    "home_title": "Find your perfect thrill",
     "placeholder_search": "Search for a park, ride, hotel…",
     "placeholder_category": "Type of search",
     "no_results": "No results for",
@@ -13,10 +13,10 @@
       "operators": "Operators",
       "manufacturers": "Manufacturers"
     },
-    "heroBadge": "Theme parks discovery",
-    "heroSubtitle": "Explore parks and discover the most useful information already managed in the administration area.",
-    "ctaBrowseParks": "Browse parks",
-    "ctaLearnMore": "Learn more",
+    "heroBadge": "Map of thrills",
+    "heroSubtitle": "Thousands of attractions listed across hundreds of parks worldwide. Your next rush is only one click away.",
+    "ctaBrowseParks": "Explore parks",
+    "ctaLearnMore": "How it works",
     "featured": {
       "title": "Featured parks",
       "subtitle": "Start with a selection of parks highlighted on the public experience.",
@@ -38,7 +38,38 @@
       "emptyMessage": "No public content matches your search.",
       "hintTitle": "Start a search",
       "hintMessage": "Search for a park or filter the catalog by category.",
-      "openResult": "Open"
+      "openResult": "Open",
+      "kicker": "Smart search",
+      "commandTitle": "Find the right park faster",
+      "commandSubtitle": "Search the real public catalog, filter by content type, then open the matching pages without leaving the MVP experience."
+    },
+    "experience": {
+      "mapKicker": "Map ready",
+      "mapTitle": "A visual space already prepared for geolocation",
+      "mapText": "The home keeps the mockup's map-oriented identity while the real distance and map features remain isolated in the dedicated map components.",
+      "catalogKicker": "Public catalog",
+      "catalogTitle": "Parks, attractions and operators in one coherent journey",
+      "catalogText": "The page reuses the shared design primitives so the next public screens can keep the same visual language without duplicating CSS."
+    },
+    "heroTitleFind": "Find",
+    "heroTitleYour": "your",
+    "heroTitleThrill": "thrill",
+    "heroTitlePerfect": "perfect",
+    "stats": {
+      "ariaLabel": "Public catalog statistics",
+      "parks": "Listed parks",
+      "attractions": "Attractions",
+      "countries": "Countries covered",
+      "errorMessage": "Public statistics could not be loaded."
+    },
+    "heroCards": {
+      "ariaLabel": "Featured parks preview",
+      "featured": "Featured",
+      "sensations": "Thrills",
+      "family": "Family",
+      "locationFallback": "Destination to discover",
+      "placeholderTitle": "Catalog warming up",
+      "placeholderSubtitle": "Featured parks will appear here."
     }
   },
   "topbar": {

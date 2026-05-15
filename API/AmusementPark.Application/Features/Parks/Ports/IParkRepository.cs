@@ -24,6 +24,21 @@ public interface IParkRepository
     Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Compte les parcs.
+    /// </summary>
+    Task<long> CountAsync(bool includeHidden, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne les identifiants des parcs visibles publiquement.
+    /// </summary>
+    Task<IReadOnlyCollection<string>> GetVisibleParkIdsAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Compte les pays réellement couverts par les parcs.
+    /// </summary>
+    Task<int> CountDistinctCountryCodesAsync(bool includeHidden, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Recherche des parcs par nom.
     /// </summary>
     Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken);

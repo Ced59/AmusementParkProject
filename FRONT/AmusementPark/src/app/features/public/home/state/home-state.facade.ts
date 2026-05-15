@@ -6,7 +6,9 @@ import { SearchApiResponse } from '@app/models/search/search-api-response';
 import { SearchResultItem } from '@app/models/search/search-result-item';
 import { SearchApiService } from '@data-access/search/search-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { HomeApiService } from '@data-access/home/home-api.service';
 import { Pagination } from '@app/models/shared/pagination';
+import { HomeStatsModel } from '@app/models/home/home-stats.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { mapArray, mapParkToCardModel } from '@shared/utils/mapping';
@@ -21,15 +23,23 @@ interface HomeSearchViewModel {
   hasPerformedSearch: boolean;
 }
 
+interface HomeStatsViewModel {
+  stats: HomeStatsModel;
+}
+
 @Injectable()
 export class HomeStateFacade {
   private readonly featuredStateStore = new SignalScreenStateStore<HomeFeaturedViewModel>();
   private readonly searchStateStore = new SignalScreenStateStore<HomeSearchViewModel>();
+  private readonly statsStateStore = new SignalScreenStateStore<HomeStatsViewModel>();
   private readonly currentPageSignal = signal(1);
   private readonly pageSizeSignal = signal(10);
 
   public readonly featuredState = this.featuredStateStore.state;
   public readonly featuredParks: Signal<ParkCardModel[]> = computed(() => this.featuredStateStore.data()?.parks ?? []);
+
+  public readonly statsState = this.statsStateStore.state;
+  public readonly homeStats: Signal<HomeStatsModel | null> = computed(() => this.statsStateStore.data()?.stats ?? null);
 
   public readonly searchState = this.searchStateStore.state;
   public readonly searchResults: Signal<SearchResultItem[]> = computed(() => this.searchStateStore.data()?.results ?? []);
@@ -41,12 +51,28 @@ export class HomeStateFacade {
   constructor(
     private readonly parksApiService: ParksApiService,
     private readonly searchApiService: SearchApiService,
+    private readonly homeApiService: HomeApiService,
     private readonly destroyRef: DestroyRef
   ) {
     this.searchStateStore.setReady({
       results: [],
       pagination: null,
       hasPerformedSearch: false
+    });
+  }
+
+  loadHomeStats(): void {
+    const previousData: HomeStatsViewModel | undefined = this.statsStateStore.data();
+    this.statsStateStore.setLoading(previousData);
+
+    this.homeApiService.getHomeStats().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (stats: HomeStatsModel) => {
+        this.statsStateStore.setReady({ stats });
+      },
+      error: (error: unknown) => {
+        console.error('Error loading home stats', error);
+        this.statsStateStore.setError('home.stats.errorMessage', previousData);
+      }
     });
   }
 
