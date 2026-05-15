@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { ButtonDirective } from 'primeng/button';
 
 import { EmptyStateComponent } from '@app/components/shared/empty-state/empty-state.component';
 import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
@@ -13,6 +12,7 @@ import { ParkItemsPageViewModel, ParkItemZoneCardViewModel } from '../models/par
 import { ParkItemCardComponent } from './park-item-card.component';
 import { ParkItemsFiltersComponent } from './park-items-filters.component';
 import { ParkItemsZoneListComponent } from './park-items-zone-list.component';
+import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective } from '@ui/primitives';
 
 @Component({
   selector: 'app-park-items-list-view',
@@ -23,13 +23,17 @@ import { ParkItemsZoneListComponent } from './park-items-zone-list.component';
     NgIf,
     NgFor,
     TranslateModule,
-    ButtonDirective,
     EmptyStateComponent,
     PageStateComponent,
     PaginationComponent,
     ParkItemCardComponent,
     ParkItemsFiltersComponent,
-    ParkItemsZoneListComponent
+    ParkItemsZoneListComponent,
+    UiButtonDirective,
+    UiChipComponent,
+    UiKickerComponent,
+    UiStatCardComponent,
+    UiSurfaceDirective
   ]
 })
 export class ParkItemsListViewComponent {

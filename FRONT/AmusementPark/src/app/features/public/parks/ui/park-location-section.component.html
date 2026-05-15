@@ -1,14 +1,11 @@
 <section class="park-location" *ngIf="park as currentPark">
-  <div class="public-section-header park-section-header">
-    <div>
-      <span class="public-kicker">
-        <i class="pi pi-map"></i>
-        {{ 'parks.detail.location.title' | translate }}
-      </span>
-      <h2 class="public-section-header__title">{{ 'parks.detail.location.title' | translate }}</h2>
-      <p class="public-section-header__subtitle">{{ 'parks.detail.location.subtitle' | translate }}</p>
-    </div>
-  </div>
+  <app-ui-section-header
+    class="park-section-header"
+    kickerIconClass="pi pi-map"
+    kickerLabelKey="parks.detail.location.title"
+    titleKey="parks.detail.location.title"
+    subtitleKey="parks.detail.location.subtitle">
+  </app-ui-section-header>
 
   <div class="park-location__stats">
     <article class="park-location__stat">

@@ -3,18 +3,17 @@ import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SafeExternalUrlPipe } from '@shared/pipes';
-import { Bind } from 'primeng/bind';
-import { ButtonDirective } from 'primeng/button';
 
 import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ImageDisplayComponent } from '../../shared/image-display/image-display.component';
+import { UiButtonDirective, UiChipComponent } from '@ui/primitives';
 
 @Component({
     selector: 'app-park-card',
     templateUrl: './park-card.component.html',
     styleUrls: ['./park-card.component.scss'],
-    imports: [NgIf, ImageDisplayComponent, Bind, ButtonDirective, RouterLink, TranslateModule, SafeExternalUrlPipe]
+    imports: [NgIf, ImageDisplayComponent, RouterLink, TranslateModule, SafeExternalUrlPipe, UiButtonDirective, UiChipComponent]
 })
 export class ParkCardComponent {
   @Input() park: ParkCardModel | null = null;

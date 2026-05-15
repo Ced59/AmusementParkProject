@@ -9,12 +9,11 @@
     emptyMessageKey: 'parkItems.list.emptyMessage'
   }">
   <section class="park-items-page public-page page-shell" *ngIf="pageView() as currentView">
-    <section class="public-hero public-hero--split park-items-hero">
+    <section class="public-hero public-hero--split park-items-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
       <div class="public-hero__content">
-        <span class="public-kicker">
-          <i class="pi pi-sitemap"></i>
+        <app-ui-kicker iconClass="pi pi-sitemap">
           {{ 'parkVisitor.summary.badge' | translate }}
-        </span>
+        </app-ui-kicker>
 
         <div>
           <h1 class="page-title park-items-hero__title">{{ currentView.parkName }}</h1>
@@ -22,57 +21,51 @@
         </div>
 
         <div class="public-stat-grid park-items-hero__stats">
-          <article class="public-stat-card public-stat-card--accent">
-            <span class="public-stat-card__label">{{ 'parkVisitor.summary.totalItems' | translate }}</span>
-            <strong class="public-stat-card__value">{{ currentView.totalItems }}</strong>
-            <span class="public-stat-card__hint">{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
-          </article>
+          <app-ui-stat-card
+            tone="primary"
+            labelKey="parkVisitor.summary.totalItems"
+            [value]="currentView.totalItems"
+            hintKey="parkVisitor.summary.viewAllItems">
+          </app-ui-stat-card>
 
-          <article class="public-stat-card" *ngIf="currentView.totalResults !== currentView.totalItems">
-            <span class="public-stat-card__label">{{ 'parkItems.list.filteredResults' | translate }}</span>
-            <strong class="public-stat-card__value">{{ currentView.totalResults }}</strong>
-            <span class="public-stat-card__hint">{{ 'parkItems.filters.clear' | translate }}</span>
-          </article>
+          <app-ui-stat-card
+            *ngIf="currentView.totalResults !== currentView.totalItems"
+            labelKey="parkItems.list.filteredResults"
+            [value]="currentView.totalResults"
+            hintKey="parkItems.filters.clear">
+          </app-ui-stat-card>
 
-          <article class="public-stat-card" *ngIf="currentView.hasZones">
-            <span class="public-stat-card__label">{{ 'parkItems.filters.zone' | translate }}</span>
-            <strong class="public-stat-card__value">{{ currentView.zoneCount }}</strong>
-            <span class="public-stat-card__hint">
-              {{ currentView.activeZoneLabel ? currentView.activeZoneLabel : ('parkItems.filters.allZones' | translate) }}
-            </span>
-          </article>
+          <app-ui-stat-card
+            *ngIf="currentView.hasZones"
+            labelKey="parkItems.filters.zone"
+            [value]="currentView.zoneCount"
+            [hintText]="currentView.activeZoneLabel ? currentView.activeZoneLabel : ('parkItems.filters.allZones' | translate)">
+          </app-ui-stat-card>
         </div>
 
         <div class="public-cta-row">
-          <button
-            pButton
-            type="button"
-            icon="pi pi-arrow-left"
-            class="p-button-outlined"
-            [label]="'parkItems.actions.backToPark' | translate"
-            (click)="onBackClicked()"></button>
+          <button appUiButton="ghost" type="button" (click)="onBackClicked()">
+            <i class="pi pi-arrow-left" aria-hidden="true"></i>
+            <span>{{ 'parkItems.actions.backToPark' | translate }}</span>
+          </button>
 
-          <button
-            pButton
-            type="button"
-            icon="pi pi-filter-slash"
-            class="p-button-outlined"
-            [label]="'parkItems.filters.clear' | translate"
-            (click)="clearFilters()"></button>
+          <button appUiButton="ghost" type="button" (click)="clearFilters()">
+            <i class="pi pi-filter-slash" aria-hidden="true"></i>
+            <span>{{ 'parkItems.filters.clear' | translate }}</span>
+          </button>
         </div>
       </div>
 
       <div class="public-hero__media park-items-hero__media">
         <article class="public-feature-card" *ngIf="currentView.topTypeHighlights.length > 0">
-          <span class="public-feature-card__eyebrow">
-            <i class="pi pi-star"></i>
+          <app-ui-kicker tone="gold" iconClass="pi pi-star">
             {{ 'parkItems.filters.type' | translate }}
-          </span>
+          </app-ui-kicker>
           <h2 class="public-feature-card__title">{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
           <div class="public-pill-list park-items-hero__pill-list">
-            <span class="public-pill public-pill--soft" *ngFor="let typeCount of currentView.topTypeHighlights">
+            <app-ui-chip tone="soft" *ngFor="let typeCount of currentView.topTypeHighlights">
               {{ typeCount.labelKey | translate }} · {{ typeCount.count }}
-            </span>
+            </app-ui-chip>
           </div>
         </article>
       </div>
@@ -96,7 +89,7 @@
       (categoryChanged)="onCategoryChanged($event)"
       (typeChanged)="onTypeChanged($event)"
       (zoneChanged)="onZoneChanged($event)">
-      <p filters-subtitle class="public-section-header__subtitle">
+      <p filters-subtitle class="app-section-header__subtitle">
         {{ 'parkItems.list.resultsCount' | translate:{ start: rangeStart(), end: rangeEnd(), total: totalResults() } }}
       </p>
     </app-park-items-filters>

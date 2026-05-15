@@ -1,14 +1,11 @@
 <section class="park-nearby public-page">
-  <div class="public-section-header park-section-header">
-    <div>
-      <span class="public-kicker">
-        <i class="pi pi-map-marker"></i>
-        {{ 'parks.detail.nearby.title' | translate }}
-      </span>
-      <h2 class="public-section-header__title">{{ 'parks.detail.nearby.title' | translate }}</h2>
-      <p class="public-section-header__subtitle">{{ 'parks.detail.nearby.subtitle' | translate }}</p>
-    </div>
-  </div>
+  <app-ui-section-header
+    class="park-section-header"
+    kickerIconClass="pi pi-map-marker"
+    kickerLabelKey="parks.detail.nearby.title"
+    titleKey="parks.detail.nearby.title"
+    subtitleKey="parks.detail.nearby.subtitle">
+  </app-ui-section-header>
 
   <app-page-state
     [state]="state"

@@ -1,0 +1,39 @@
+<div class="app-section-header__body">
+  @if (hasKicker()) {
+    <app-ui-kicker [tone]="kickerTone" [iconClass]="kickerIconClass">
+      @if (kickerLabelKey) {
+        {{ kickerLabelKey | translate }}
+      } @else {
+        {{ kickerText }}
+      }
+    </app-ui-kicker>
+  }
+
+  @if (titleKey || titleText) {
+    <h2 class="app-section-header__title">
+      @if (titleKey) {
+        {{ titleKey | translate }}
+      } @else {
+        {{ titleText }}
+      }
+    </h2>
+  } @else {
+    <ng-content select="[uiSectionTitle]"></ng-content>
+  }
+
+  @if (hasSubtitle()) {
+    <p class="app-section-header__subtitle">
+      @if (subtitleKey) {
+        {{ subtitleKey | translate }}
+      } @else {
+        {{ subtitleText }}
+      }
+    </p>
+  }
+
+  <ng-content select="[uiSectionSubtitle], [filters-subtitle]"></ng-content>
+</div>
+
+<div class="app-section-header__actions">
+  <ng-content select="[uiSectionActions]"></ng-content>
+</div>

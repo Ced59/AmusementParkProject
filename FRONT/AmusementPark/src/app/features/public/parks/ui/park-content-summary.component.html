@@ -1,22 +1,15 @@
 <section class="park-content-summary" *ngIf="summary && summary.itemsLink">
-  <div class="public-section-header park-content-summary__header">
-    <div>
-      <span class="public-kicker">
-        <i class="pi pi-sitemap"></i>
-        {{ 'parkVisitor.summary.badge' | translate }}
-      </span>
-      <h2 class="public-section-header__title">{{ 'parkVisitor.summary.title' | translate }}</h2>
-      <p class="public-section-header__subtitle">{{ 'parkVisitor.summary.subtitle' | translate }}</p>
-    </div>
-
-    <a
-      pButton
-      class="p-button-outlined"
-      [routerLink]="summary.itemsLink"
-      [label]="'parkVisitor.summary.viewAllItems' | translate"
-      icon="pi pi-arrow-right">
+  <app-ui-section-header
+    class="park-content-summary__header"
+    kickerIconClass="pi pi-sitemap"
+    kickerLabelKey="parkVisitor.summary.badge"
+    titleKey="parkVisitor.summary.title"
+    subtitleKey="parkVisitor.summary.subtitle">
+    <a uiSectionActions appUiButton="ghost" [routerLink]="summary.itemsLink">
+      <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+      <i class="pi pi-arrow-right" aria-hidden="true"></i>
     </a>
-  </div>
+  </app-ui-section-header>
 
   <div class="summary-grid">
     <a

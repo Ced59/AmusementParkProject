@@ -1,9 +1,8 @@
 <article class="search-result-card" *ngIf="item as currentItem">
   <div class="search-result-card__header">
-    <span class="public-kicker">
-      <i class="pi pi-search"></i>
+    <app-ui-kicker iconClass="pi pi-search">
       {{ categoryLabelKey | translate }}
-    </span>
+    </app-ui-kicker>
   </div>
 
   <div class="search-result-card__body">
@@ -12,12 +11,9 @@
   </div>
 
   <div class="search-result-card__footer" *ngIf="parkLink">
-    <a
-      pButton
-      [routerLink]="parkLink"
-      class="p-button-outlined"
-      icon="pi pi-arrow-right"
-      [label]="'home.search.openResult' | translate">
+    <a appUiButton="ghost" [routerLink]="parkLink">
+      <span>{{ 'home.search.openResult' | translate }}</span>
+      <i class="pi pi-arrow-right" aria-hidden="true"></i>
     </a>
   </div>
 </article>

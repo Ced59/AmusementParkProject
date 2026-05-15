@@ -5,13 +5,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import { InputText } from 'primeng/inputtext';
 
 import { SelectOption } from '../models/select-option.model';
+import { UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 
 @Component({
   selector: 'app-park-items-filters',
   templateUrl: './park-items-filters.component.html',
   styleUrls: ['./park-items-filters.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgFor, FormsModule, InputText, TranslateModule]
+  imports: [NgIf, NgFor, FormsModule, InputText, TranslateModule, UiSectionHeaderComponent, UiSurfaceDirective]
 })
 export class ParkItemsFiltersComponent {
   @Input({ required: true }) searchTerm!: Signal<string>;

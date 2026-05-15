@@ -9,28 +9,21 @@
   <section class="park-detail public-page page-shell" *ngIf="park() as currentPark">
     <div class="page-header park-detail__header">
       <div>
-        <span class="public-kicker">
-          <i class="pi pi-compass"></i>
+        <app-ui-kicker iconClass="pi pi-compass">
           {{ 'parks.detail.heroBadge' | translate }}
-        </span>
+        </app-ui-kicker>
       </div>
 
       <div class="detail-actions">
-        <button
-          pButton
-          type="button"
-          icon="pi pi-arrow-left"
-          class="p-button-outlined"
-          [label]="'parks.actions.backToList' | translate"
-          (click)="goBack()"></button>
+        <button appUiButton="ghost" type="button" (click)="goBack()">
+          <i class="pi pi-arrow-left" aria-hidden="true"></i>
+          <span>{{ 'parks.actions.backToList' | translate }}</span>
+        </button>
 
-        <button
-          *ngIf="currentPark.exploreLink"
-          pButton
-          type="button"
-          icon="pi pi-sitemap"
-          [label]="'parkVisitor.summary.viewAllItems' | translate"
-          (click)="goToExplore()"></button>
+        <button *ngIf="currentPark.exploreLink" appUiButton="primary" type="button" (click)="goToExplore()">
+          <i class="pi pi-sitemap" aria-hidden="true"></i>
+          <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+        </button>
       </div>
     </div>
 
@@ -39,50 +32,42 @@
     <div class="park-detail__summary-grid" *ngIf="summary() as currentSummary">
       <app-park-content-summary [summary]="currentSummary"></app-park-content-summary>
 
-      <section class="public-shell-card park-detail__quick-actions">
+      <section class="public-shell-card park-detail__quick-actions" appUiSurface="shell" appUiSurfacePadding="regular">
         <div class="public-panel__content public-shell-stack">
           <div>
-            <span class="public-kicker">
-              <i class="pi pi-star"></i>
+            <app-ui-kicker iconClass="pi pi-star">
               {{ 'parks.detail.heroBadge' | translate }}
-            </span>
+            </app-ui-kicker>
             <h2 class="park-detail__quick-title">{{ 'parkVisitor.summary.title' | translate }}</h2>
             <p class="public-muted">{{ 'parkVisitor.summary.subtitle' | translate }}</p>
           </div>
 
           <div class="public-pill-list">
-            <span class="public-pill public-pill--soft" *ngIf="currentPark.countryCode">
-              <i class="pi pi-map-marker"></i>
+            <app-ui-chip tone="soft" iconClass="pi pi-map-marker" *ngIf="currentPark.countryCode">
               {{ currentPark.countryCode }}
-            </span>
-            <span class="public-pill public-pill--soft" *ngIf="currentPark.city">
-              <i class="pi pi-building"></i>
+            </app-ui-chip>
+            <app-ui-chip tone="soft" iconClass="pi pi-building" *ngIf="currentPark.city">
               {{ currentPark.city }}
-            </span>
-            <span class="public-pill public-pill--gold" *ngIf="currentPark.hasLocationInfo">
-              <i class="pi pi-map"></i>
+            </app-ui-chip>
+            <app-ui-chip tone="gold" iconClass="pi pi-map" *ngIf="currentPark.hasLocationInfo">
               {{ 'parks.detail.location.title' | translate }}
-            </span>
+            </app-ui-chip>
           </div>
 
           <div class="public-cta-row">
-            <button
-              *ngIf="currentPark.exploreLink"
-              pButton
-              type="button"
-              icon="pi pi-sitemap"
-              [label]="'parkVisitor.summary.viewAllItems' | translate"
-              (click)="goToExplore()"></button>
+            <button *ngIf="currentPark.exploreLink" appUiButton="primary" type="button" (click)="goToExplore()">
+              <i class="pi pi-sitemap" aria-hidden="true"></i>
+              <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+            </button>
 
             <a
               *ngIf="currentPark.websiteUrl"
-              pButton
-              class="p-button-outlined"
-              icon="pi pi-external-link"
+              appUiButton="ghost"
               [href]="currentPark.websiteUrl | safeExternalUrl"
               target="_blank"
-              rel="noreferrer noopener"
-              [label]="'parks.actions.website' | translate">
+              rel="noreferrer noopener">
+              <i class="pi pi-external-link" aria-hidden="true"></i>
+              <span>{{ 'parks.actions.website' | translate }}</span>
             </a>
           </div>
         </div>

@@ -1,14 +1,11 @@
 <section class="park-info" *ngIf="park as currentPark">
-  <div class="public-section-header park-section-header">
-    <div>
-      <span class="public-kicker">
-        <i class="pi pi-info-circle"></i>
-        {{ 'parks.detail.practical.title' | translate }}
-      </span>
-      <h2 class="public-section-header__title">{{ 'parks.detail.practical.title' | translate }}</h2>
-      <p class="public-section-header__subtitle">{{ 'parks.detail.practical.subtitle' | translate }}</p>
-    </div>
-  </div>
+  <app-ui-section-header
+    class="park-section-header"
+    kickerIconClass="pi pi-info-circle"
+    kickerLabelKey="parks.detail.practical.title"
+    titleKey="parks.detail.practical.title"
+    subtitleKey="parks.detail.practical.subtitle">
+  </app-ui-section-header>
 
   <div class="park-info__grid">
     <article class="park-info__card" *ngIf="currentPark.countryCode">

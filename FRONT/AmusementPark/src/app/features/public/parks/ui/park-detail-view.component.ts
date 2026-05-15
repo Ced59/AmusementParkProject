@@ -2,8 +2,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { SafeExternalUrlPipe } from '@shared/pipes';
-import { Bind } from 'primeng/bind';
-import { ButtonDirective } from 'primeng/button';
 
 import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
@@ -15,13 +13,14 @@ import { ParkHeroSectionComponent } from './park-hero-section.component';
 import { ParkLocationSectionComponent } from './park-location-section.component';
 import { ParkNearbySectionComponent } from './park-nearby-section.component';
 import { ParkPracticalInfoSectionComponent } from './park-practical-info-section.component';
+import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 
 @Component({
   selector: 'app-park-detail-view',
   templateUrl: './park-detail-view.component.html',
   styleUrls: ['./park-detail-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, NgIf, Bind, ButtonDirective, ParkHeroSectionComponent, ParkPracticalInfoSectionComponent, ParkLocationSectionComponent, ParkNearbySectionComponent, ParkContentSummaryComponent, TranslateModule, SafeExternalUrlPipe]
+  imports: [PageStateComponent, NgIf, ParkHeroSectionComponent, ParkPracticalInfoSectionComponent, ParkLocationSectionComponent, ParkNearbySectionComponent, ParkContentSummaryComponent, TranslateModule, SafeExternalUrlPipe, UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective]
 })
 export class ParkDetailViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;

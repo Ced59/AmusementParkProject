@@ -38,6 +38,29 @@
   background: rgba(255, 77, 139, 0.12);
 }
 
+.kicker--gold,
+.app-kicker--gold {
+  color: var(--c-gold);
+  border-color: rgba(255, 182, 39, 0.2);
+  background: rgba(255, 182, 39, 0.1);
+}
+
+.kicker--purple,
+.app-kicker--purple {
+  color: var(--c-purple);
+  border-color: rgba(155, 93, 229, 0.2);
+  background: rgba(155, 93, 229, 0.1);
+}
+
+.kicker--ghost,
+.app-kicker--ghost,
+.kicker--soft,
+.app-kicker--soft {
+  color: var(--app-text-muted);
+  border-color: var(--app-border);
+  background: rgba(255, 210, 140, 0.06);
+}
+
 .chips,
 .app-chip-list,
 .public-chip-list,
@@ -67,6 +90,20 @@
 .app-chip--orange {
   color: var(--c-orange-2);
   background: rgba(255, 90, 31, 0.14);
+}
+
+.chip--primary,
+.app-chip--primary,
+.public-pill {
+  color: var(--c-orange-2);
+  background: rgba(255, 90, 31, 0.14);
+}
+
+.chip--ghost,
+.app-chip--ghost {
+  color: var(--app-text);
+  border: 1px solid var(--app-border-strong);
+  background: transparent;
 }
 
 .chip--lime,
@@ -99,6 +136,14 @@
 .app-chip--purple {
   color: var(--c-purple);
   background: rgba(155, 93, 229, 0.12);
+}
+
+.app-chip i,
+.app-kicker i,
+.public-pill i,
+.public-kicker i {
+  font-size: 0.95em;
+  line-height: 1;
 }
 
 .chip--soft,

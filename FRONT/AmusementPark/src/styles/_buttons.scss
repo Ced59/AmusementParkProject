@@ -55,6 +55,78 @@
   background: var(--c-lime-2);
 }
 
+.btn--sky,
+.app-button--sky {
+  color: #000000;
+  background: var(--c-sky);
+  box-shadow: 0 0 16px rgba(56, 197, 245, 0.14);
+}
+
+.btn--sky:hover,
+.app-button--sky:hover {
+  transform: translateY(-2px);
+  background: var(--c-sky-2);
+}
+
+.btn--rose,
+.app-button--rose {
+  color: #000000;
+  background: var(--c-rose);
+  box-shadow: 0 0 16px rgba(255, 77, 139, 0.16);
+}
+
+.btn--rose:hover,
+.app-button--rose:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--c-rose) 82%, #ffffff);
+}
+
+.btn--gold,
+.app-button--gold {
+  color: #000000;
+  background: var(--c-gold);
+  box-shadow: 0 0 16px rgba(255, 182, 39, 0.16);
+}
+
+.btn--gold:hover,
+.app-button--gold:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--c-gold) 82%, #ffffff);
+}
+
+.btn--purple,
+.app-button--purple {
+  color: #ffffff;
+  background: var(--c-purple);
+  box-shadow: 0 0 16px rgba(155, 93, 229, 0.16);
+}
+
+.btn--purple:hover,
+.app-button--purple:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--c-purple) 82%, #ffffff);
+}
+
+.btn--soft,
+.app-button--soft {
+  color: var(--app-text-muted);
+  border: 1px solid var(--app-border);
+  background: rgba(255, 210, 140, 0.06);
+}
+
+.btn--soft:hover,
+.app-button--soft:hover {
+  color: var(--app-heading);
+  border-color: var(--app-border-stronger);
+  background: rgba(255, 210, 140, 0.1);
+}
+
+.app-button--disabled,
+.app-button[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.55;
+}
+
 .btn--ghost,
 .app-button--ghost {
   color: var(--app-text);

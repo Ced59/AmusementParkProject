@@ -1,10 +1,9 @@
 <section class="public-page home-page">
-  <section class="public-hero public-hero--split home-hero">
+  <section class="public-hero public-hero--split home-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
     <div class="public-hero__content">
-      <span class="public-kicker">
-        <i class="pi pi-compass"></i>
+      <app-ui-kicker iconClass="pi pi-compass">
         {{ 'home.heroBadge' | translate }}
-      </span>
+      </app-ui-kicker>
 
       <div>
         <h1 class="page-title home-hero__title">{{ 'home.home_title' | translate }}</h1>
@@ -14,77 +13,66 @@
       </div>
 
       <div class="public-stat-grid home-hero__stats">
-        <article class="public-stat-card public-stat-card--accent">
-          <span class="public-stat-card__label">{{ 'home.featured.title' | translate }}</span>
-          <strong class="public-stat-card__value">{{ featuredParks().length }}</strong>
-          <span class="public-stat-card__hint">{{ 'home.featured.subtitle' | translate }}</span>
-        </article>
+        <app-ui-stat-card
+          tone="primary"
+          labelKey="home.featured.title"
+          [value]="featuredParks().length"
+          hintKey="home.featured.subtitle">
+        </app-ui-stat-card>
 
-        <article class="public-stat-card">
-          <span class="public-stat-card__label">{{ 'home.search.resultsTitle' | translate }}</span>
-          <strong class="public-stat-card__value">{{ searchResultsTotal }}</strong>
-          <span class="public-stat-card__hint">
-            {{ searchResultsHintKey | translate }}
-          </span>
-        </article>
+        <app-ui-stat-card
+          labelKey="home.search.resultsTitle"
+          [value]="searchResultsTotal"
+          [hintKey]="searchResultsHintKey">
+        </app-ui-stat-card>
 
-        <article class="public-stat-card">
-          <span class="public-stat-card__label">{{ 'parks.title' | translate }}</span>
-          <strong class="public-stat-card__value">{{ categoryOptions.length - 1 }}</strong>
-          <span class="public-stat-card__hint">{{ 'home.placeholder_category' | translate }}</span>
-        </article>
+        <app-ui-stat-card
+          labelKey="parks.title"
+          [value]="categoryOptions.length - 1"
+          hintKey="home.placeholder_category">
+        </app-ui-stat-card>
       </div>
 
       <div class="public-cta-row">
-        <a
-          pButton
-          [routerLink]="['/', currentLang(), 'parks']"
-          icon="pi pi-map"
-          [label]="'home.ctaBrowseParks' | translate">
+        <a appUiButton="primary" [routerLink]="['/', currentLang(), 'parks']">
+          <i class="pi pi-map" aria-hidden="true"></i>
+          <span>{{ 'home.ctaBrowseParks' | translate }}</span>
         </a>
 
-        <a
-          pButton
-          class="p-button-outlined"
-          [routerLink]="['/', currentLang(), 'about']"
-          icon="pi pi-info-circle"
-          [label]="'home.ctaLearnMore' | translate">
+        <a appUiButton="ghost" [routerLink]="['/', currentLang(), 'about']">
+          <i class="pi pi-info-circle" aria-hidden="true"></i>
+          <span>{{ 'home.ctaLearnMore' | translate }}</span>
         </a>
       </div>
     </div>
 
     <div class="public-hero__media home-hero__media">
       <article class="public-feature-card home-feature-card">
-        <span class="public-feature-card__eyebrow">
-          <i class="pi pi-bolt"></i>
+        <app-ui-kicker tone="lime" iconClass="pi pi-bolt">
           {{ 'parkVisitor.summary.badge' | translate }}
-        </span>
+        </app-ui-kicker>
         <h2 class="public-feature-card__title">{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
         <p class="public-feature-card__text">{{ 'parkVisitor.summary.subtitle' | translate }}</p>
       </article>
 
       <article class="public-feature-card home-feature-card home-feature-card--accent">
-        <span class="public-feature-card__eyebrow">
-          <i class="pi pi-search"></i>
+        <app-ui-kicker tone="sky" iconClass="pi pi-search">
           {{ 'home.search.resultsTitle' | translate }}
-        </span>
+        </app-ui-kicker>
         <h2 class="public-feature-card__title">{{ 'home.placeholder_search' | translate }}</h2>
         <p class="public-feature-card__text">{{ 'home.search.hintMessage' | translate }}</p>
       </article>
     </div>
   </section>
 
-  <section class="public-filter-panel home-search-panel">
-    <div class="public-section-header home-search-panel__header">
-      <div>
-        <span class="public-kicker">
-          <i class="pi pi-search"></i>
-          {{ 'home.search.resultsTitle' | translate }}
-        </span>
-        <h2 class="public-section-header__title">{{ 'home.placeholder_search' | translate }}</h2>
-        <p class="public-section-header__subtitle">{{ 'home.search.resultsSubtitle' | translate }}</p>
-      </div>
-    </div>
+  <section class="public-filter-panel home-search-panel" appUiSurface="filter" appUiSurfacePadding="regular">
+    <app-ui-section-header
+      class="home-search-panel__header"
+      kickerIconClass="pi pi-search"
+      kickerLabelKey="home.search.resultsTitle"
+      titleKey="home.placeholder_search"
+      subtitleKey="home.search.resultsSubtitle">
+    </app-ui-section-header>
 
     <div class="public-filter-grid home-search-grid">
       <div class="public-field home-search-grid__field--search">
@@ -119,17 +107,13 @@
     </div>
   </section>
 
-  <section class="public-panel content-section">
-    <div class="public-section-header">
-      <div>
-        <span class="public-kicker">
-          <i class="pi pi-star"></i>
-          {{ 'home.search.resultsTitle' | translate }}
-        </span>
-        <h2 class="public-section-header__title">{{ 'home.search.resultsTitle' | translate }}</h2>
-        <p class="public-section-header__subtitle">{{ 'home.search.resultsSubtitle' | translate }}</p>
-      </div>
-    </div>
+  <section class="public-panel content-section" appUiSurface="panel" appUiSurfacePadding="regular">
+    <app-ui-section-header
+      kickerIconClass="pi pi-star"
+      kickerLabelKey="home.search.resultsTitle"
+      titleKey="home.search.resultsTitle"
+      subtitleKey="home.search.resultsSubtitle">
+    </app-ui-section-header>
 
     <ng-container *ngIf="hasPerformedSearch(); else searchHint">
       <app-page-state
@@ -169,17 +153,13 @@
     </ng-template>
   </section>
 
-  <section class="public-panel content-section">
-    <div class="public-section-header">
-      <div>
-        <span class="public-kicker">
-          <i class="pi pi-star"></i>
-          {{ 'home.featured.title' | translate }}
-        </span>
-        <h2 class="public-section-header__title">{{ 'home.featured.title' | translate }}</h2>
-        <p class="public-section-header__subtitle">{{ 'home.featured.subtitle' | translate }}</p>
-      </div>
-    </div>
+  <section class="public-panel content-section" appUiSurface="panel" appUiSurfacePadding="regular">
+    <app-ui-section-header
+      kickerIconClass="pi pi-star"
+      kickerLabelKey="home.featured.title"
+      titleKey="home.featured.title"
+      subtitleKey="home.featured.subtitle">
+    </app-ui-section-header>
 
     <app-page-state
       [state]="featuredState().kind"

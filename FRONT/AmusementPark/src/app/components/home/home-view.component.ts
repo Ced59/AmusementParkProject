@@ -3,8 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { Bind } from 'primeng/bind';
-import { ButtonDirective } from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
 
@@ -17,13 +15,14 @@ import { SearchResultCardComponent } from '../public/search-result-card/search-r
 import { PaginationContract } from '@shared/models/contracts';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
+import { UiButtonDirective, UiKickerComponent, UiSectionHeaderComponent, UiStatCardComponent, UiSurfaceDirective } from '@ui/primitives';
 
 @Component({
   selector: 'app-home-view',
   templateUrl: './home-view.component.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, ButtonDirective, RouterLink, InputText, Select, FormsModule, PageStateComponent, PaginationComponent, EmptyStateComponent, NgFor, ParkCardComponent, NgIf, SearchResultCardComponent, TranslateModule]
+  imports: [RouterLink, InputText, Select, FormsModule, PageStateComponent, PaginationComponent, EmptyStateComponent, NgFor, ParkCardComponent, NgIf, SearchResultCardComponent, TranslateModule, UiButtonDirective, UiKickerComponent, UiSectionHeaderComponent, UiStatCardComponent, UiSurfaceDirective]
 })
 export class HomeViewComponent {
   @Input() currentLang!: Signal<string>;

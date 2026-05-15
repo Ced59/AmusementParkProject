@@ -1,14 +1,12 @@
 <section class="park-hero" *ngIf="park as currentPark">
   <div class="park-hero__copy">
     <div class="public-pill-list park-hero__pills">
-      <span class="public-pill" *ngIf="currentPark.countryCode">
-        <i class="pi pi-compass"></i>
+      <app-ui-chip tone="primary" iconClass="pi pi-compass" *ngIf="currentPark.countryCode">
         {{ currentPark.countryCode }}
-      </span>
-      <span class="public-pill public-pill--soft" *ngIf="currentPark.locationLine">
-        <i class="pi pi-map-marker"></i>
+      </app-ui-chip>
+      <app-ui-chip tone="soft" iconClass="pi pi-map-marker" *ngIf="currentPark.locationLine">
         {{ currentPark.locationLine }}
-      </span>
+      </app-ui-chip>
     </div>
 
     <div>

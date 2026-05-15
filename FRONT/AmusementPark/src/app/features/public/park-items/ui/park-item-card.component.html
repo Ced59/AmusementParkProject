@@ -5,9 +5,9 @@
     </span>
 
     <div class="park-item-card__chips">
-      <span class="public-pill">{{ card.categoryLabelKey | translate }}</span>
-      <span class="public-pill public-pill--soft">{{ card.typeLabelKey | translate }}</span>
-      <span class="public-pill public-pill--soft" *ngIf="card.zoneName">{{ card.zoneName }}</span>
+      <app-ui-chip tone="primary">{{ card.categoryLabelKey | translate }}</app-ui-chip>
+      <app-ui-chip tone="soft">{{ card.typeLabelKey | translate }}</app-ui-chip>
+      <app-ui-chip tone="soft" *ngIf="card.zoneName">{{ card.zoneName }}</app-ui-chip>
     </div>
   </div>
 
@@ -27,13 +27,9 @@
   </div>
 
   <div class="park-item-card__footer">
-    <a
-      *ngIf="card.itemLink"
-      pButton
-      [routerLink]="card.itemLink"
-      class="p-button-outlined"
-      icon="pi pi-arrow-right"
-      [label]="'parkItems.actions.viewDetails' | translate">
+    <a *ngIf="card.itemLink" appUiButton="ghost" [routerLink]="card.itemLink">
+      <i class="pi pi-arrow-right" aria-hidden="true"></i>
+      <span>{{ 'parkItems.actions.viewDetails' | translate }}</span>
     </a>
   </div>
 </article>

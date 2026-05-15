@@ -106,3 +106,59 @@
   color: var(--app-text-muted);
   line-height: 1.65;
 }
+
+
+.app-surface--panel,
+.app-surface--filter,
+.app-surface--shell,
+.app-surface--detail {
+  backdrop-filter: blur(16px);
+}
+
+.app-surface--filter {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 86%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
+}
+
+.app-surface--shell,
+.app-surface--detail {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 88%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+}
+
+.app-surface--padding-none {
+  padding: 0;
+}
+
+.app-surface--padding-compact {
+  padding: 1rem;
+}
+
+.app-surface--padding-regular {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.app-surface--padding-spacious {
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.app-section-header__body {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.app-section-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.app-section-header:has(.app-section-header__actions:not(:empty)) {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+@media (max-width: 680px) {
+  .app-section-header:has(.app-section-header__actions:not(:empty)) {
+    grid-template-columns: 1fr;
+  }
+}

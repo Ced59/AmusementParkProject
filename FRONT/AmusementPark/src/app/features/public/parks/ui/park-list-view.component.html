@@ -1,10 +1,9 @@
 <section class="public-page parks-page">
-  <section class="public-hero public-hero--split parks-hero">
+  <section class="public-hero public-hero--split parks-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
     <div class="public-hero__content">
-      <span class="public-kicker">
-        <i class="pi pi-map"></i>
+      <app-ui-kicker iconClass="pi pi-map">
         {{ 'parks.heroBadge' | translate }}
-      </span>
+      </app-ui-kicker>
 
       <div>
         <h1 class="page-title parks-hero__title">{{ 'parks.title' | translate }}</h1>
@@ -14,30 +13,27 @@
       </div>
 
       <div class="public-cta-row parks-hero__chips">
-        <span class="public-pill public-pill--cyan">
-          <i class="pi pi-compass"></i>
+        <app-ui-chip tone="sky" iconClass="pi pi-compass">
           {{ 'parks.search.label' | translate }}
-        </span>
-        <span class="public-pill public-pill--soft">
-          <i class="pi pi-eye"></i>
+        </app-ui-chip>
+        <app-ui-chip tone="soft" iconClass="pi pi-eye">
           {{ pagination()?.totalItems ?? parks().length }}
-        </span>
+        </app-ui-chip>
       </div>
     </div>
 
     <div class="public-hero__media">
       <article class="public-feature-card parks-feature-card">
-        <span class="public-feature-card__eyebrow">
-          <i class="pi pi-search"></i>
+        <app-ui-kicker tone="sky" iconClass="pi pi-search">
           {{ 'parks.search.label' | translate }}
-        </span>
+        </app-ui-kicker>
         <h2 class="public-feature-card__title">{{ 'parks.search.placeholder' | translate }}</h2>
         <p class="public-feature-card__text">{{ 'parks.subtitle' | translate }}</p>
       </article>
     </div>
   </section>
 
-  <section class="public-filter-panel parks-toolbar">
+  <section class="public-filter-panel parks-toolbar" appUiSurface="filter" appUiSurfacePadding="regular">
     <div class="public-filter-grid parks-toolbar__grid">
       <div class="public-field parks-toolbar__search">
         <label class="public-field__label">{{ 'parks.search.label' | translate }}</label>
@@ -52,19 +48,15 @@
       </div>
 
       <div class="parks-toolbar__actions">
-        <button
-          pButton
-          type="button"
-          class="p-button-outlined"
-          icon="pi pi-times"
-          [label]="'parks.search.clear' | translate"
-          (click)="clearSearch()">
+        <button appUiButton="ghost" type="button" (click)="clearSearch()">
+          <i class="pi pi-times" aria-hidden="true"></i>
+          <span>{{ 'parks.search.clear' | translate }}</span>
         </button>
       </div>
     </div>
   </section>
 
-  <section class="public-panel parks-results">
+  <section class="public-panel parks-results" appUiSurface="panel" appUiSurfacePadding="compact">
     <app-page-state
       [state]="state().kind"
       [messages]="{

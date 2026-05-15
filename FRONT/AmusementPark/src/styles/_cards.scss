@@ -111,3 +111,24 @@ a.public-feature-card:hover {
   color: var(--app-text-muted);
   line-height: 1.6;
 }
+
+
+.app-stat-card--lime {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c-lime) 9%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+}
+
+.app-stat-card--sky {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c-sky) 10%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+}
+
+.app-stat-card--rose {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c-rose) 10%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+}
+
+.app-stat-card--gold {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c-gold) 10%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+}
+
+.app-stat-card--purple {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c-purple) 10%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+}

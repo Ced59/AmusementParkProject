@@ -1,14 +1,13 @@
 <article class="park-card" [class.park-card--compact]="compact" *ngIf="park as currentPark">
   <div class="park-card__visual" [class.park-card__visual--placeholder]="!hasLogoImageId">
     <div class="park-card__visual-badges">
-      <span class="public-pill public-pill--soft" *ngIf="currentPark.countryCode">
-        <i class="pi pi-map-marker"></i>
+      <app-ui-chip tone="soft" iconClass="pi pi-map-marker" *ngIf="currentPark.countryCode">
         {{ currentPark.countryCode }}
-      </span>
+      </app-ui-chip>
 
-      <span class="public-pill public-pill--cyan" *ngIf="currentPark.city && !compact">
+      <app-ui-chip tone="sky" *ngIf="currentPark.city && !compact">
         {{ currentPark.city }}
-      </span>
+      </app-ui-chip>
     </div>
 
     <app-image-display
@@ -42,24 +41,20 @@
   </div>
 
   <div class="park-card__footer">
-    <a
-      *ngIf="parkLink"
-      pButton
-      [routerLink]="parkLink"
-      class="park-card__cta"
-      icon="pi pi-arrow-right"
-      [label]="'parks.actions.viewDetails' | translate">
+    <a *ngIf="parkLink" appUiButton="primary" [routerLink]="parkLink" class="park-card__cta">
+      <span>{{ 'parks.actions.viewDetails' | translate }}</span>
+      <i class="pi pi-arrow-right" aria-hidden="true"></i>
     </a>
 
     <a
       *ngIf="currentPark.websiteUrl"
-      pButton
-      class="p-button-text park-card__secondary-cta"
-      icon="pi pi-external-link"
+      appUiButton="soft"
+      class="park-card__secondary-cta"
       [href]="currentPark.websiteUrl | safeExternalUrl"
       target="_blank"
-      rel="noreferrer noopener"
-      [label]="'parks.actions.website' | translate">
+      rel="noreferrer noopener">
+      <i class="pi pi-external-link" aria-hidden="true"></i>
+      <span>{{ 'parks.actions.website' | translate }}</span>
     </a>
   </div>
 </article>
