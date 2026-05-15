@@ -10,6 +10,7 @@ import { NgClass } from '@angular/common';
 import { ButtonDirective } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
 @Component({
     selector: 'app-register-form',
     templateUrl: './register-form.component.html',
@@ -46,11 +47,8 @@ export class RegisterFormComponent {
         this.registrationCompleted = true;
         this.messageService.add('success', 'Succès', 'Compte créé. Vérifie le lien de confirmation envoyé dans la console de l’API.');
       },
-      error: (error: { error?: { message?: string; Message?: string; }; }): void => {
-        const errorMessage: string = error.error?.message
-          ?? error.error?.Message
-          ?? 'Une erreur inattendue est survenue.';
-
+      error: (error: unknown): void => {
+        const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
         this.messageService.add('error', 'Erreur', errorMessage);
       }
     });
@@ -61,11 +59,8 @@ export class RegisterFormComponent {
       next: (response) => {
         this.messageService.add('success', 'Succès', response.message);
       },
-      error: (error: { error?: { message?: string; Message?: string; }; }): void => {
-        const errorMessage: string = error.error?.message
-          ?? error.error?.Message
-          ?? 'Une erreur inattendue est survenue.';
-
+      error: (error: unknown): void => {
+        const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
         this.messageService.add('error', 'Erreur', errorMessage);
       }
     });

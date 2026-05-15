@@ -13,6 +13,7 @@ import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
 @Component({
     selector: 'app-login-form',
     templateUrl: './login-form.component.html',
@@ -44,11 +45,8 @@ export class LoginFormComponent {
         this.sharedService.emitLoginStatusChange();
         this.loginSuccess.emit(result);
       },
-      error: (error: { error?: { message?: string; Message?: string; }; }): void => {
-        const errorMessage: string = error.error?.message
-          ?? error.error?.Message
-          ?? 'Une erreur inattendue est survenue.';
-
+      error: (error: unknown): void => {
+        const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
         this.messageService.add('error', 'Erreur', errorMessage);
       }
     });

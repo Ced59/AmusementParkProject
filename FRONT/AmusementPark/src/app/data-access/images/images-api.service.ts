@@ -11,6 +11,7 @@ import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { LinkImageToOwner } from '@app/models/images/link-image-to-owner';
 import { UploadedImage } from '@app/models/images/uploaded-image';
 import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
+import { UrlSecurityService } from '@shared/utils/security';
 import {
   PagedCollectionResponse,
   toImageCategoryApiValue,
@@ -23,7 +24,10 @@ import { IMAGES_API_ENDPOINTS } from './images-api-endpoints';
   providedIn: 'root'
 })
 export class ImagesApiService {
-  constructor(private readonly http: HttpClient) {
+  constructor(
+    private readonly http: HttpClient,
+    private readonly urlSecurityService: UrlSecurityService
+  ) {
   }
 
   uploadImage(
@@ -87,8 +91,8 @@ export class ImagesApiService {
       return null;
     }
 
-    if (/^data:/i.test(rawValue) || /^https?:\/\//i.test(rawValue)) {
-      return rawValue;
+    if (/^data:/i.test(rawValue) || /^blob:/i.test(rawValue) || /^https?:\/\//i.test(rawValue)) {
+      return this.urlSecurityService.sanitizeImageUrl(rawValue);
     }
 
     if (rawValue.startsWith('/images/')) {

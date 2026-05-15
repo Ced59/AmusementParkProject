@@ -3,6 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/f
 
 import { LANGUAGES } from '@app/commons/languages';
 import { isRichTextEmpty } from '@shared/utils/localization';
+import { HtmlSecurityService } from '@shared/utils/security';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { Bind } from 'primeng/bind';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
@@ -41,8 +42,16 @@ export class LocalizedRichTextEditorComponent implements ControlValueAccessor {
   private onChange: (value: LocalizedItem<string>[]) => void = () => {};
   private onTouched: () => void = () => {};
 
+  constructor(private readonly htmlSecurityService: HtmlSecurityService) {
+  }
+
   writeValue(value: LocalizedItem<string>[] | null): void {
-    this.entries = this.buildEntries(value ?? []);
+    const sanitizedItems: LocalizedItem<string>[] = (value ?? []).map((item: LocalizedItem<string>) => ({
+      languageCode: item.languageCode,
+      value: this.htmlSecurityService.sanitizeRichHtml(item.value)
+    }));
+
+    this.entries = this.buildEntries(sanitizedItems);
   }
 
   registerOnChange(fn: (value: LocalizedItem<string>[]) => void): void {
@@ -71,7 +80,7 @@ export class LocalizedRichTextEditorComponent implements ControlValueAccessor {
       .filter((entry: LocalizedRichTextEntry) => !isRichTextEmpty(entry.value))
       .map((entry: LocalizedRichTextEntry) => ({
         languageCode: entry.languageCode,
-        value: entry.value
+        value: this.htmlSecurityService.sanitizeRichHtml(entry.value)
       }));
 
     this.onChange(values);

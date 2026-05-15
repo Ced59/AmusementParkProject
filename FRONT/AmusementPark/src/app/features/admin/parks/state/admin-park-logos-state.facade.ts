@@ -12,6 +12,7 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { mapImageDtoToOwnedImageItem } from '@shared/utils/images/owned-image-item.mapper';
+import { ImageUploadSecurityService } from '@shared/utils/security';
 
 @Injectable()
 export class AdminParkLogosStateFacade {
@@ -40,7 +41,8 @@ export class AdminParkLogosStateFacade {
   constructor(
     private readonly imagesApiService: ImagesApiService,
     private readonly translateService: TranslateService,
-    private readonly toastMessageService: ToastMessageService
+    private readonly toastMessageService: ToastMessageService,
+    private readonly imageUploadSecurityService: ImageUploadSecurityService
   ) {
   }
 
@@ -84,7 +86,19 @@ export class AdminParkLogosStateFacade {
       return;
     }
 
-    this.selectedLogoFilesSignal.set(Array.from(inputElement.files));
+    const files: File[] = Array.from(inputElement.files);
+    const validFiles: File[] = this.imageUploadSecurityService.filterValidImageFiles(files);
+
+    if (validFiles.length !== files.length) {
+      this.toastMessageService.add(
+        'warn',
+        this.translateService.instant('common.security.uploadRejectedSummary'),
+        this.translateService.instant('common.security.invalidImageUploadMessage')
+      );
+    }
+
+    this.selectedLogoFilesSignal.set(validFiles);
+    inputElement.value = '';
   }
 
   setNewLogoDescription(description: string): void {

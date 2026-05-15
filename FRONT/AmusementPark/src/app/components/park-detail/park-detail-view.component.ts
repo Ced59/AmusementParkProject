@@ -3,6 +3,7 @@ import { NgIf } from '@angular/common';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
+import { SafeExternalUrlPipe } from '@shared/pipes';
 import { Park } from '@app/models/parks/park';
 import { ParkExplorer } from '@app/models/parks/park-explorer';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
@@ -18,7 +19,7 @@ import { ParkContentSummaryComponent } from '../public/park-content-summary/park
   templateUrl: './park-detail-view.component.html',
   styleUrls: ['./park-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, NgIf, Bind, ButtonDirective, ParkHeroSectionComponent, ParkPracticalInfoSectionComponent, ParkLocationSectionComponent, ParkNearbySectionComponent, ParkContentSummaryComponent, TranslateModule]
+  imports: [PageStateComponent, NgIf, Bind, ButtonDirective, ParkHeroSectionComponent, ParkPracticalInfoSectionComponent, ParkLocationSectionComponent, ParkNearbySectionComponent, ParkContentSummaryComponent, TranslateModule, SafeExternalUrlPipe]
 })
 export class ParkDetailViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;

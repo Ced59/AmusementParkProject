@@ -81,7 +81,7 @@
               pButton
               class="p-button-outlined"
               icon="pi pi-external-link"
-              [href]="currentPark.webSiteUrl"
+              [href]="currentPark.webSiteUrl | safeExternalUrl"
               target="_blank"
               rel="noreferrer noopener"
               [label]="'parks.actions.website' | translate">

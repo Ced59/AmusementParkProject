@@ -14,6 +14,7 @@ import { InputText } from 'primeng/inputtext';
 import { PrimeTemplate } from 'primeng/api';
 import { TranslateModule } from '@ngx-translate/core';
 import { ImageDisplayComponent } from '../image-display/image-display.component';
+import { ImageUploadSecurityService } from '@shared/utils/security';
 
 @Component({
     selector: 'app-owner-image-upload-dialog',
@@ -56,7 +57,10 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
 
   private uploadSubscription: Subscription | null = null;
 
-  constructor(private readonly imagesApiService: ImagesApiService) {
+  constructor(
+    private readonly imagesApiService: ImagesApiService,
+    private readonly imageUploadSecurityService: ImageUploadSecurityService
+  ) {
   }
 
   ngOnDestroy(): void {
@@ -174,17 +178,13 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
       return;
     }
 
-    if (!file.type.startsWith('image/')) {
+    const validationResult = this.imageUploadSecurityService.validateImageFile(file, this.maxFileSizeBytes);
+    if (!validationResult.isValid) {
       this.selectedFile = null;
       this.cleanupPreviewUrl();
-      this.errorTranslationKey = this.invalidFileKey;
-      return;
-    }
-
-    if (file.size > this.maxFileSizeBytes) {
-      this.selectedFile = null;
-      this.cleanupPreviewUrl();
-      this.errorTranslationKey = this.invalidSizeKey;
+      this.errorTranslationKey = validationResult.errorKey === 'shared.imageUpload.invalidSize'
+        ? this.invalidSizeKey
+        : this.invalidFileKey;
       return;
     }
 

@@ -51,7 +51,7 @@
             <div class="flex flex-column gap-3">
               <input type="file"
                 (change)="logoFileSelected.emit($event)"
-                accept="image/*"
+                accept="image/jpeg,image/png,image/webp,image/gif"
                 [multiple]="allowMultipleLogoUpload" />
               @if (selectedLogoCount > 0) {
                 <small class="text-color-secondary">

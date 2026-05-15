@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { SafeExternalUrlPipe } from '@shared/pipes';
 import { ButtonDirective } from 'primeng/button';
 
 import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
@@ -13,7 +14,7 @@ import { ParkItemDetailViewModel } from '../models/park-item-detail-view.model';
   templateUrl: './park-item-detail-view.component.html',
   styleUrls: ['./park-item-detail-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgFor, RouterLink, PageStateComponent, TranslateModule, ButtonDirective]
+  imports: [NgIf, NgFor, RouterLink, PageStateComponent, TranslateModule, ButtonDirective, SafeExternalUrlPipe]
 })
 export class ParkItemDetailViewComponent {
   @Input({ required: true }) state!: Signal<ScreenState<unknown, string>>;

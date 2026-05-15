@@ -10,6 +10,7 @@ import { ButtonDirective } from 'primeng/button';
 import { RegisterFormComponent } from '../register-form/register-form.component';
 import { LoginFormComponent } from '../login-form/login-form.component';
 
+import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
 @Component({
     selector: 'app-auth-modal',
     templateUrl: './auth-modal.component.html',
@@ -62,11 +63,8 @@ export class AuthModalComponent implements AfterViewInit {
         this.sharedService.emitLoginStatusChange();
         this.closeModal.emit();
       },
-      error: (error: { error?: { Message?: string; message?: string; }; }): void => {
-        const errorMessage: string = error.error?.Message
-          ?? error.error?.message
-          ?? 'Une erreur inattendue est survenue.';
-
+      error: (error: unknown): void => {
+        const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
         this.messageService.add('error', 'Erreur', errorMessage);
       }
     });

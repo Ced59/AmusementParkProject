@@ -4,7 +4,8 @@ import {
   HttpInterceptor,
   HttpRequest
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
 
 import { AuthService } from '@app/services/auth/auth.service';
@@ -12,11 +13,14 @@ import { shouldSkipAuthorizationHeader } from '../auth/auth-request-policy';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private readonly authService: AuthService) {
+  constructor(
+    private readonly authService: AuthService,
+    @Inject(PLATFORM_ID) private readonly platformId: object
+  ) {
   }
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (typeof window === 'undefined' || shouldSkipAuthorizationHeader(req.url)) {
+    if (!isPlatformBrowser(this.platformId) || shouldSkipAuthorizationHeader(req.url)) {
       return next.handle(req);
     }
 

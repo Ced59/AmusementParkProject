@@ -11,6 +11,7 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { mapImageDtoToOwnedImageItem } from '@shared/utils/images/owned-image-item.mapper';
+import { ImageUploadSecurityService } from '@shared/utils/security';
 
 @Injectable()
 export class AdminParkItemPhotosStateFacade {
@@ -39,7 +40,8 @@ export class AdminParkItemPhotosStateFacade {
   constructor(
     private readonly imagesApiService: ImagesApiService,
     private readonly translateService: TranslateService,
-    private readonly toastMessageService: ToastMessageService
+    private readonly toastMessageService: ToastMessageService,
+    private readonly imageUploadSecurityService: ImageUploadSecurityService
   ) {
   }
 
@@ -84,7 +86,19 @@ export class AdminParkItemPhotosStateFacade {
       return;
     }
 
-    this.selectedPhotoFilesSignal.set(Array.from(inputElement.files));
+    const files: File[] = Array.from(inputElement.files);
+    const validFiles: File[] = this.imageUploadSecurityService.filterValidImageFiles(files);
+
+    if (validFiles.length !== files.length) {
+      this.toastMessageService.add(
+        'warn',
+        this.translateService.instant('common.security.uploadRejectedSummary'),
+        this.translateService.instant('common.security.invalidImageUploadMessage')
+      );
+    }
+
+    this.selectedPhotoFilesSignal.set(validFiles);
+    inputElement.value = '';
   }
 
   setNewPhotoDescription(description: string): void {

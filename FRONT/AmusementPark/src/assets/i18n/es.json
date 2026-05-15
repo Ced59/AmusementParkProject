@@ -595,7 +595,11 @@
     "errorTitle": "An error occurred",
     "errorMessage": "The requested content could not be loaded.",
     "emptyTitle": "Nothing to display",
-    "emptyMessage": "No content is available at the moment."
+    "emptyMessage": "No content is available at the moment.",
+    "security": {
+      "uploadRejectedSummary": "Archivo rechazado",
+      "invalidImageUploadMessage": "Solo se aceptan imágenes JPEG, PNG, WebP o GIF de menos de 10 MB."
+    }
   },
   "parks": {
     "heroBadge": "Public catalog",

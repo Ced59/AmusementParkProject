@@ -5,12 +5,13 @@ import { buildParkAddressLine, buildParkLocationLine } from '@app/commons/park-p
 import { NgIf } from '@angular/common';
 import { ImageDisplayComponent } from '../../shared/image-display/image-display.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { SafeExternalUrlPipe, SafeRichHtmlPipe } from '@shared/pipes';
 
 @Component({
     selector: 'app-park-hero-section',
     templateUrl: './park-hero-section.component.html',
     styleUrls: ['./park-hero-section.component.scss'],
-    imports: [NgIf, ImageDisplayComponent, TranslateModule]
+    imports: [NgIf, ImageDisplayComponent, TranslateModule, SafeExternalUrlPipe, SafeRichHtmlPipe]
 })
 export class ParkHeroSectionComponent {
   @Input() park: Park | null = null;

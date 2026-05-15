@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { SafeExternalUrlPipe } from '@shared/pipes';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';
 
@@ -20,7 +21,7 @@ import { ParkPracticalInfoSectionComponent } from './park-practical-info-section
   templateUrl: './park-detail-view.component.html',
   styleUrls: ['./park-detail-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, NgIf, Bind, ButtonDirective, ParkHeroSectionComponent, ParkPracticalInfoSectionComponent, ParkLocationSectionComponent, ParkNearbySectionComponent, ParkContentSummaryComponent, TranslateModule]
+  imports: [PageStateComponent, NgIf, Bind, ButtonDirective, ParkHeroSectionComponent, ParkPracticalInfoSectionComponent, ParkLocationSectionComponent, ParkNearbySectionComponent, ParkContentSummaryComponent, TranslateModule, SafeExternalUrlPipe]
 })
 export class ParkDetailViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;

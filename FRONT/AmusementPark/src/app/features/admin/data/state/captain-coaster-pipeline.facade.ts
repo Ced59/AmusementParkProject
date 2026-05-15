@@ -12,6 +12,8 @@ import {
 import { DataSourcesApiService } from '@data-access/admin/data-sources-api.service';
 import { AdminDataSourcesFacade } from './admin-data-sources.facade';
 
+import { extractSafeDisplayErrorMessage, sanitizeDisplayMessage } from '@shared/utils/security';
+
 interface CaptainCoasterSettingField {
   key: string;
   type?: 'text' | 'number';
@@ -375,7 +377,7 @@ export class CaptainCoasterPipelineFacade implements OnDestroy {
         if (session.status === 'Completed') {
           if (completedMode === 'apply' || session.lastCompletedStep === 'ApplyComparison') {
             this.successMessageSignal.set(
-              session.message || `Application métier terminée : ${session.appliedChanges} changement(s) appliqué(s).`
+              sanitizeDisplayMessage(session.message, '') || `Application métier terminée : ${session.appliedChanges} changement(s) appliqué(s).`
             );
           } else {
             this.successMessageSignal.set(
@@ -385,8 +387,8 @@ export class CaptainCoasterPipelineFacade implements OnDestroy {
           }
         } else {
           this.errorMessageSignal.set(completedMode === 'apply'
-            ? `L'application métier a échoué : ${session.message}`
-            : `Le pipeline a échoué : ${session.message}`);
+            ? `L'application métier a échoué : ${sanitizeDisplayMessage(session.message, 'une erreur est survenue')}`
+            : `Le pipeline a échoué : ${sanitizeDisplayMessage(session.message, 'une erreur est survenue')}`);
         }
       }
     });
@@ -411,11 +413,11 @@ export class CaptainCoasterPipelineFacade implements OnDestroy {
   }
 
   setErrorMessage(message: string): void {
-    this.errorMessageSignal.set(message);
+    this.errorMessageSignal.set(sanitizeDisplayMessage(message));
   }
 
   setSuccessMessage(message: string): void {
-    this.successMessageSignal.set(message);
+    this.successMessageSignal.set(sanitizeDisplayMessage(message, ''));
   }
 
   getSessionStatusSeverity(status: string): 'success' | 'info' | 'warn' | 'danger' | 'secondary' {
@@ -447,20 +449,6 @@ export class CaptainCoasterPipelineFacade implements OnDestroy {
   }
 
   private extractErrorMessage(error: unknown): string {
-    if (typeof error === 'object' && error !== null && 'error' in error) {
-      const payload: unknown = (error as { error: unknown }).error;
-      if (typeof payload === 'string' && payload.trim().length > 0) {
-        return payload;
-      }
-
-      if (typeof payload === 'object' && payload !== null && 'message' in payload) {
-        const message: unknown = (payload as { message?: unknown }).message;
-        if (typeof message === 'string' && message.trim().length > 0) {
-          return message;
-        }
-      }
-    }
-
-    return 'Une erreur est survenue.';
+    return extractSafeDisplayErrorMessage(error);
   }
 }

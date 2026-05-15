@@ -102,7 +102,7 @@
               <h2 class="public-section-header__title">{{ 'parkItems.detail.sourceTitle' | translate }}</h2>
             </div>
           </div>
-          <a class="public-inline-link" [href]="currentDetail.sourceUrl" target="_blank" rel="noreferrer noopener">
+          <a class="public-inline-link" [href]="currentDetail.sourceUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener">
             {{ currentDetail.sourceUrl }}
           </a>
         </section>

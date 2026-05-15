@@ -14,7 +14,7 @@
     <div>
       <h1 class="park-hero__title">{{ currentPark.name }}</h1>
       <p class="park-hero__subtitle" *ngIf="currentPark.description; else fallbackDescription">
-        <span [innerHTML]="currentPark.description"></span>
+        <span [innerHTML]="currentPark.description | safeRichHtml"></span>
       </p>
       <ng-template #fallbackDescription>
         <p class="park-hero__subtitle">{{ 'parks.detail.heroDescription' | translate }}</p>
@@ -34,7 +34,7 @@
 
       <article class="park-hero__meta-item" *ngIf="currentPark.websiteUrl">
         <span>{{ 'parks.fields.website' | translate }}</span>
-        <a [href]="currentPark.websiteUrl" target="_blank" rel="noreferrer noopener">
+        <a [href]="currentPark.websiteUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener">
           {{ 'parks.actions.website' | translate }}
         </a>
       </article>
