@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { USER_ADMIN_API_ENDPOINTS } from '../../api/user-admin-api-endpoints';
+import { USER_ADMIN_API_ENDPOINTS } from '@data-access/users/user-admin-api-endpoints';
 import { AuthMessageResponse } from '@app/models/auth/auth-message-response';
 import { UserLockRequest } from '@app/models/users/user-lock-request';
 import { UserPasswordChange } from '@app/models/users/user-password-change';

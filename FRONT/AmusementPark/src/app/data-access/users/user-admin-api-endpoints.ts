@@ -1,7 +1,7 @@
 export const USER_ADMIN_API_ENDPOINTS = {
-  assignRoleToUser: (id: string) => `users/${id}/roles`,
-  removeRoleFromUser: (id: string) => `users/${id}/roles`,
+  assignRoleToUser: (id: string) => `users/roles/assign/${encodeURIComponent(id)}`,
+  removeRoleFromUser: (id: string) => `users/roles/remove/${encodeURIComponent(id)}`,
   lockUser: 'users/lock',
   unlockUser: 'users/unlock',
-  changeUserPassword: (id: string) => `users/${id}/password`
+  changeUserPassword: (id: string) => `users/change-password?idUser=${encodeURIComponent(id)}`
 };
