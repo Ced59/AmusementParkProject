@@ -1,0 +1,18 @@
+@if (tree().isAvailable && tree().items.length > 0) {
+  <nav class="app-public-park-trail" [attr.aria-label]="'publicNavigation.treeAriaLabel' | translate">
+    @for (item of tree().items; track item.id; let last = $last) {
+      <a
+        class="app-public-park-trail__item"
+        [class.app-public-park-trail__item--current]="item.isCurrent"
+        [routerLink]="item.routeCommands"
+        [queryParams]="item.queryParams">
+        <span class="app-public-park-trail__icon" aria-hidden="true"><i [class]="item.icon"></i></span>
+        <span class="app-public-park-trail__label">{{ item.label }}</span>
+      </a>
+
+      @if (!last) {
+        <span class="app-public-park-trail__separator" aria-hidden="true">›</span>
+      }
+    }
+  </nav>
+}

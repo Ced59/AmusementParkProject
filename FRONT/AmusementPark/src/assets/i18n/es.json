@@ -741,5 +741,9 @@
       "isLaunched": "Launched",
       "waterExposureLevel": "Water exposure"
     }
+  },
+  "publicNavigation": {
+    "youAreHere": "Estás aquí",
+    "treeAriaLabel": "Árbol de navegación de parques"
   }
 }

@@ -4,7 +4,7 @@
     <span class="app-mobile-bottom-nav__label">{{ 'sidebar.home' | translate }}</span>
   </a>
 
-  <a class="app-mobile-bottom-nav__item" [routerLink]="['/', currentLang(), 'parks']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+  <a class="app-mobile-bottom-nav__item" [routerLink]="['/', currentLang(), 'parks']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" [class.active]="isParksSectionActive()">
     <span class="app-mobile-bottom-nav__icon" aria-hidden="true"><i class="pi pi-map"></i></span>
     <span class="app-mobile-bottom-nav__label">{{ 'sidebar.parks' | translate }}</span>
   </a>

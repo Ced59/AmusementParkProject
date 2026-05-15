@@ -19,6 +19,8 @@ import { ModalName, ModalService } from '@app/services/modal/modal.service';
 import { SharedService } from '@app/services/shared/shared.service';
 import { TranslationService } from '@app/services/translation.service';
 import { LANGUAGES, LanguageOption } from '@shared/models/localization';
+import { PublicParkNavigationTreeFacade } from '@features/public/navigation/state/public-park-navigation-tree.facade';
+import { PublicParkNavigationTreeViewModel } from '@features/public/navigation/models/public-park-navigation-tree.model';
 
 @Component({
   selector: 'app-public-header',
@@ -38,8 +40,11 @@ import { LANGUAGES, LanguageOption } from '@shared/models/localization';
 export class PublicHeaderComponent implements OnInit {
   protected readonly languages: readonly LanguageOption[] = LANGUAGES;
   protected readonly selectedLanguage = signal<string>('en');
+  protected readonly currentUrl = signal<string>('');
   protected readonly displayLoginModal = signal<boolean>(false);
   protected readonly displayLanguageModal = signal<boolean>(false);
+  protected readonly isParksNavigationOpen = signal<boolean>(false);
+  protected readonly parkNavigationTree: Signal<PublicParkNavigationTreeViewModel> = this.publicParkNavigationTreeFacade.tree;
   protected readonly isLoggedIn = signal<boolean>(false);
   protected readonly isAdmin = signal<boolean>(false);
   protected readonly userProfile = signal<UserDto | null>(null);
@@ -52,6 +57,7 @@ export class PublicHeaderComponent implements OnInit {
     private readonly authApiService: AuthApiService,
     private readonly authService: AuthService,
     private readonly translationService: TranslationService,
+    private readonly publicParkNavigationTreeFacade: PublicParkNavigationTreeFacade,
     private readonly router: Router,
     private readonly modalService: ModalService,
     private readonly sharedService: SharedService,
@@ -61,6 +67,7 @@ export class PublicHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedLanguage.set(this.getLanguageFromUrl());
+    this.currentUrl.set(this.router.url);
     this.checkLoginStatus();
 
     this.modalService.getModalStatus('loginModal')
@@ -79,6 +86,8 @@ export class PublicHeaderComponent implements OnInit {
       filter((event: unknown): event is NavigationEnd => event instanceof NavigationEnd),
       tap((): void => {
         this.selectedLanguage.set(this.getLanguageFromUrl());
+        this.currentUrl.set(this.router.url);
+        this.closeParksNavigation();
       }),
       switchMap(() => this.translationService.useLang(this.selectedLanguage()).pipe(
         catchError((error: unknown) => {
@@ -96,6 +105,19 @@ export class PublicHeaderComponent implements OnInit {
       });
   }
 
+
+  protected toggleParksNavigation(): void {
+    if (!this.parkNavigationTree().isAvailable) {
+      return;
+    }
+
+    this.isParksNavigationOpen.update((value: boolean) => !value);
+  }
+
+  protected closeParksNavigation(): void {
+    this.isParksNavigationOpen.set(false);
+  }
+
   protected openModal(modalName: ModalName): void {
     this.modalService.openModal(modalName);
   }
@@ -106,6 +128,14 @@ export class PublicHeaderComponent implements OnInit {
     if (modalName === 'loginModal') {
       this.checkLoginStatus();
     }
+  }
+
+  protected isParksSectionActive(): boolean {
+    const urlWithoutQuery: string = this.currentUrl().split('?')[0] ?? '';
+    const segments: string[] = urlWithoutQuery.split('/').filter((segment: string) => segment.length > 0);
+    const publicSection: string | undefined = segments[1];
+
+    return publicSection === 'parks' || publicSection === 'park';
   }
 
   protected selectLanguage(lang: string): void {

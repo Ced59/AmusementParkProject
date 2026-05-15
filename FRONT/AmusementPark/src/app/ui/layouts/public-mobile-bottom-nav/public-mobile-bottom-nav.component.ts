@@ -17,6 +17,7 @@ import { TranslationService } from '@app/services/translation.service';
 })
 export class PublicMobileBottomNavComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');
+  protected readonly currentUrl = signal<string>('');
   protected readonly isLoggedIn = signal<boolean>(false);
   protected readonly isAdmin = signal<boolean>(false);
 
@@ -31,6 +32,7 @@ export class PublicMobileBottomNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentLang.set(this.getLanguageFromUrl());
+    this.currentUrl.set(this.router.url);
     this.checkAuthStatus();
 
     this.translationService.languageChanged
@@ -44,6 +46,7 @@ export class PublicMobileBottomNavComponent implements OnInit {
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((): void => {
       this.currentLang.set(this.getLanguageFromUrl());
+      this.currentUrl.set(this.router.url);
     });
 
     this.sharedService.getLoginStatusListener()
@@ -51,6 +54,14 @@ export class PublicMobileBottomNavComponent implements OnInit {
       .subscribe((): void => {
         this.checkAuthStatus();
       });
+  }
+
+  protected isParksSectionActive(): boolean {
+    const urlWithoutQuery: string = this.currentUrl().split('?')[0] ?? '';
+    const segments: string[] = urlWithoutQuery.split('/').filter((segment: string) => segment.length > 0);
+    const publicSection: string | undefined = segments[1];
+
+    return publicSection === 'parks' || publicSection === 'park';
   }
 
   private checkAuthStatus(): void {

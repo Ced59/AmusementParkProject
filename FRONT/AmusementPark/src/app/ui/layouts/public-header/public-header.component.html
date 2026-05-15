@@ -2,7 +2,7 @@
   <div class="app-public-nav__inner">
     <a class="app-public-nav__logo" [routerLink]="['/', selectedLanguage(), 'home']" aria-label="AmusementPark">
       <span class="app-public-nav__logo-icon" aria-hidden="true">🎢</span>
-      <span>AmusementPark</span>
+      <span class="app-public-nav__logo-text">AmusementPark</span>
     </a>
 
     <ul class="app-public-nav__links">
@@ -12,11 +12,54 @@
           <span>{{ 'sidebar.home' | translate }}</span>
         </a>
       </li>
-      <li>
-        <a [routerLink]="['/', selectedLanguage(), 'parks']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <i class="pi pi-map" aria-hidden="true"></i>
-          <span>{{ 'sidebar.parks' | translate }}</span>
-        </a>
+      <li class="app-public-nav__parks-node" [class.app-public-nav__parks-node--open]="isParksNavigationOpen()">
+        @if (parkNavigationTree().isAvailable) {
+          <button
+            type="button"
+            class="app-public-nav__tree-trigger active"
+            [attr.aria-expanded]="isParksNavigationOpen()"
+            aria-haspopup="true"
+            (click)="toggleParksNavigation()">
+            <i class="pi pi-map" aria-hidden="true"></i>
+            <span>{{ 'sidebar.parks' | translate }}</span>
+            <i class="pi pi-chevron-down app-public-nav__tree-trigger-chevron" aria-hidden="true"></i>
+          </button>
+
+          @if (isParksNavigationOpen()) {
+            <div class="app-public-park-tree" role="menu" [attr.aria-label]="'publicNavigation.treeAriaLabel' | translate">
+              <div class="app-public-park-tree__header">
+                <span class="app-public-park-tree__kicker">{{ 'publicNavigation.youAreHere' | translate }}</span>
+                <strong>{{ 'sidebar.parks' | translate }}</strong>
+              </div>
+
+              <div class="app-public-park-tree__items">
+                @for (item of parkNavigationTree().items; track item.id) {
+                  <a
+                    class="app-public-park-tree__item"
+                    [class.app-public-park-tree__item--level-1]="item.level === 1"
+                    [class.app-public-park-tree__item--level-2]="item.level === 2"
+                    [class.app-public-park-tree__item--level-3]="item.level === 3"
+                    [class.app-public-park-tree__item--current]="item.isCurrent"
+                    [routerLink]="item.routeCommands"
+                    [queryParams]="item.queryParams"
+                    role="menuitem"
+                    (click)="closeParksNavigation()">
+                    @if (item.level > 0) {
+                      <span class="app-public-park-tree__branch" aria-hidden="true">└</span>
+                    }
+                    <span class="app-public-park-tree__icon" aria-hidden="true"><i [class]="item.icon"></i></span>
+                    <span class="app-public-park-tree__label">{{ item.label }}</span>
+                  </a>
+                }
+              </div>
+            </div>
+          }
+        } @else {
+          <a [routerLink]="['/', selectedLanguage(), 'parks']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" [class.active]="isParksSectionActive()">
+            <i class="pi pi-map" aria-hidden="true"></i>
+            <span>{{ 'sidebar.parks' | translate }}</span>
+          </a>
+        }
       </li>
       <li>
         <a [routerLink]="['/', selectedLanguage(), 'about']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
@@ -43,7 +86,7 @@
             <span class="app-public-nav__profile-name">{{ userProfile()?.firstName || userProfile()?.email }}</span>
           </span>
           @if (userAvatarUrl()) {
-            <p-avatar [image]="userAvatarUrl() || undefined" shape="circle"></p-avatar>
+            <p-avatar [image]="userAvatarUrl() || undefined" shape="circle" styleClass="app-public-nav__profile-avatar"></p-avatar>
           } @else {
             <span class="app-public-nav__profile-fallback" aria-hidden="true">
               <i class="pi pi-user"></i>
