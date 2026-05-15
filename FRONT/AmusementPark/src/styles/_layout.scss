@@ -85,3 +85,110 @@
     margin-bottom: calc(var(--app-bottom-nav-height) + 1.25rem);
   }
 }
+
+.app-route-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+}
+
+.app-layout-main {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 1.5rem, var(--content-max-width));
+  margin: 1rem auto 2rem;
+  flex: 1 0 auto;
+}
+
+.app-public-layout__content,
+.app-account-layout__content {
+  min-height: calc(100vh - var(--topbar-height) - 9rem);
+}
+
+.app-account-layout__main {
+  width: min(100% - 1.5rem, 980px);
+}
+
+.app-admin-layout {
+  background: var(--app-page-bg);
+}
+
+.app-admin-layout__header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem max(1.25rem, calc((100vw - var(--content-wide-max-width)) / 2));
+  border-bottom: 1px solid var(--app-border);
+  background: var(--app-topbar-bg);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+
+.app-admin-layout__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--app-heading);
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.app-admin-layout__brand-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  color: #000000;
+  background: var(--c-orange);
+  box-shadow: var(--shadow-soft-orange);
+}
+
+.app-admin-layout__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.app-admin-layout__main {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 1.5rem, var(--content-wide-max-width));
+  margin: 1rem auto 2rem;
+  flex: 1 0 auto;
+}
+
+@media (max-width: 960px) {
+  .app-admin-layout__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .app-admin-layout__actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-layout-main,
+  .app-account-layout__main,
+  .app-admin-layout__main {
+    width: min(100% - 1rem, var(--content-max-width));
+    margin-top: 0.75rem;
+  }
+
+  .app-public-layout__main,
+  .app-account-layout__main {
+    margin-bottom: calc(var(--bottom-nav-height) + 1.35rem);
+  }
+}

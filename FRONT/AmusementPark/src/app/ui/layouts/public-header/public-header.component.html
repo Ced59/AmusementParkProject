@@ -1,0 +1,100 @@
+<header class="app-public-nav" aria-label="Navigation principale">
+  <div class="app-public-nav__inner">
+    <a class="app-public-nav__logo" [routerLink]="['/', selectedLanguage(), 'home']" aria-label="AmusementPark">
+      <span class="app-public-nav__logo-icon" aria-hidden="true">🎢</span>
+      <span>AmusementPark</span>
+    </a>
+
+    <ul class="app-public-nav__links">
+      <li>
+        <a [routerLink]="['/', selectedLanguage(), 'home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="pi pi-home" aria-hidden="true"></i>
+          <span>{{ 'sidebar.home' | translate }}</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/', selectedLanguage(), 'parks']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="pi pi-map" aria-hidden="true"></i>
+          <span>{{ 'sidebar.parks' | translate }}</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/', selectedLanguage(), 'about']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="pi pi-info-circle" aria-hidden="true"></i>
+          <span>{{ 'sidebar.about' | translate }}</span>
+        </a>
+      </li>
+
+      @if (isLoggedIn() && isAdmin()) {
+        <li>
+          <a [routerLink]="['/', selectedLanguage(), 'admin']" routerLinkActive="active">
+            <i class="pi pi-shield" aria-hidden="true"></i>
+            <span>{{ 'sidebar.admin' | translate }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="app-public-nav__right">
+      @if (isLoggedIn()) {
+        <a [routerLink]="['/', selectedLanguage(), 'profile']" class="app-public-nav__profile">
+          <span class="app-public-nav__profile-copy">
+            <span class="app-public-nav__profile-kicker">{{ 'topbar.hello' | translate }}</span>
+            <span class="app-public-nav__profile-name">{{ userProfile()?.firstName || userProfile()?.email }}</span>
+          </span>
+          @if (userAvatarUrl()) {
+            <p-avatar [image]="userAvatarUrl() || undefined" shape="circle"></p-avatar>
+          } @else {
+            <span class="app-public-nav__profile-fallback" aria-hidden="true">
+              <i class="pi pi-user"></i>
+            </span>
+          }
+        </a>
+      } @else {
+        <button type="button" class="btn-nav btn-nav--primary" (click)="openModal('loginModal')">
+          <i class="pi pi-user" aria-hidden="true"></i>
+          <span>{{ 'topbar.login_header' | translate }}</span>
+        </button>
+      }
+
+      <button type="button" class="btn-nav btn-nav--ghost app-public-nav__language" (click)="openModal('languageModal')" [attr.aria-label]="'topbar.choose_language' | translate">
+        <img [src]="'assets/flags/' + selectedLanguage() + '.png'" class="app-public-nav__flag" alt="" />
+      </button>
+
+      <app-theme-switcher></app-theme-switcher>
+    </div>
+  </div>
+</header>
+
+<p-dialog
+  [header]="'topbar.choose_language' | translate"
+  [visible]="displayLanguageModal()"
+  (visibleChange)="closeModal('languageModal')"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: 'min(92vw, 34rem)' }">
+  <div class="languages-grid">
+    @for (language of languages; track language.value) {
+      <button
+        pButton
+        type="button"
+        class="language-option"
+        (click)="selectLanguage(language.value)">
+        <img [src]="'assets/flags/' + language.value + '.png'" class="flag flag-large" alt="{{ language.label }}" />
+        <span>{{ language.label }}</span>
+      </button>
+    }
+  </div>
+</p-dialog>
+
+<p-dialog
+  [header]="'topbar.login_header' | translate"
+  [visible]="displayLoginModal()"
+  (visibleChange)="closeModal('loginModal')"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: 'min(96vw, 64rem)' }">
+  <app-auth-modal (closeModal)="closeModal('loginModal')"></app-auth-modal>
+</p-dialog>

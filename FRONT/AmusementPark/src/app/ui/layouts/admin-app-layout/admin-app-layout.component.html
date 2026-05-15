@@ -1,0 +1,20 @@
+<div class="app-route-layout app-admin-layout admin-shell">
+  <header class="app-admin-layout__header">
+    <a class="app-admin-layout__brand" [routerLink]="['/', currentLang, 'home']" aria-label="AmusementPark">
+      <span class="app-admin-layout__brand-icon" aria-hidden="true">🎢</span>
+      <span>AmusementPark</span>
+    </a>
+
+    <div class="app-admin-layout__actions">
+      <span class="chip chip--soft">{{ 'admin.title' | translate }}</span>
+      <a class="btn-nav btn-nav--ghost" [routerLink]="['/', currentLang, 'home']">
+        <i class="pi pi-arrow-left" aria-hidden="true"></i>
+        <span>{{ 'auth.common.back_home' | translate }}</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="app-admin-layout__main">
+    <router-outlet></router-outlet>
+  </main>
+</div>

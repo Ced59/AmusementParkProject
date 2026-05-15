@@ -5,8 +5,6 @@ import { EMPTY, switchMap } from 'rxjs';
 import { catchError, filter, tap } from 'rxjs/operators';
 
 import { TranslationService } from '@app/services/translation.service';
-import { TopbarComponent } from '@app/components/topbar/topbar.component';
-import { SidebarComponent } from '@app/components/sidebar/sidebar.component';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
 
@@ -14,12 +12,11 @@ import { Toast } from 'primeng/toast';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [TopbarComponent, SidebarComponent, RouterOutlet, Bind, Toast]
+  imports: [RouterOutlet, Bind, Toast]
 })
 export class AppComponent implements OnInit {
   title: string = 'Amusement Parks';
   isLoading: boolean = true;
-  showTopbar: boolean = true;
 
   constructor(
     private readonly translationService: TranslationService,

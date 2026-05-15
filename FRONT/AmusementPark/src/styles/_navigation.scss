@@ -172,3 +172,148 @@
     display: flex;
   }
 }
+
+.app-public-nav__profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.7rem;
+  padding: 0.38rem 0.5rem 0.38rem 0.85rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--app-surface-2) 94%, transparent);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.app-public-nav__profile:hover {
+  transform: translateY(-1px);
+  border-color: var(--app-border-stronger);
+  background: color-mix(in srgb, var(--app-surface-2) 98%, transparent);
+}
+
+.app-public-nav__profile-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.app-public-nav__profile-kicker {
+  color: var(--app-text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.app-public-nav__profile-name {
+  max-width: 180px;
+  overflow: hidden;
+  color: var(--app-heading);
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-public-nav__profile-fallback {
+  width: 2.15rem;
+  height: 2.15rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--app-primary-strong);
+  background: var(--app-primary-soft);
+}
+
+.app-public-nav__right .app-public-nav__language {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--app-surface-2) !important;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-public-nav__right .app-public-nav__language:hover {
+  background: var(--app-surface-2) !important;
+}
+
+.app-public-nav__flag {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.flag {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.flag-large {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.9rem;
+}
+
+.language-option {
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 3.5rem;
+}
+
+.app-public-footer {
+  position: relative;
+  z-index: 2;
+  padding: 1.8rem 1rem 2.2rem;
+  color: var(--app-text-faint);
+  text-align: center;
+}
+
+.app-public-footer__inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 680px) {
+  .app-public-nav__profile-copy,
+  .app-public-nav .btn-nav--primary span {
+    display: none;
+  }
+
+  .app-public-nav__right {
+    gap: 0.45rem;
+  }
+
+  .app-public-nav__logo {
+    font-size: 1.55rem;
+  }
+
+  .app-public-nav__logo-icon {
+    width: 34px;
+    height: 34px;
+  }
+}
