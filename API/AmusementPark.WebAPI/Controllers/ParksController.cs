@@ -29,6 +29,7 @@ public sealed class ParksController : ControllerBase
     private readonly IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<Park>>> getParksPageQueryHandler;
     private readonly IQueryHandler<SearchParksByNameQuery, ApplicationResult<PagedResult<Park>>> searchParksByNameQueryHandler;
     private readonly IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler;
+    private readonly IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler;
     private readonly ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkCommandHandler;
     private readonly ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler;
 
@@ -38,6 +39,7 @@ public sealed class ParksController : ControllerBase
         IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<Park>>> getParksPageQueryHandler,
         IQueryHandler<SearchParksByNameQuery, ApplicationResult<PagedResult<Park>>> searchParksByNameQueryHandler,
         IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler,
+        IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler,
         ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkCommandHandler,
         ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler)
     {
@@ -46,6 +48,7 @@ public sealed class ParksController : ControllerBase
         this.getParksPageQueryHandler = getParksPageQueryHandler;
         this.searchParksByNameQueryHandler = searchParksByNameQueryHandler;
         this.searchParksByLocationQueryHandler = searchParksByLocationQueryHandler;
+        this.getRandomVisibleParksQueryHandler = getRandomVisibleParksQueryHandler;
         this.updateParkCommandHandler = updateParkCommandHandler;
         this.updateParkVisibilityCommandHandler = updateParkVisibilityCommandHandler;
     }
@@ -61,6 +64,23 @@ public sealed class ParksController : ControllerBase
         }
 
         return this.Ok(result.Value.ToCreatedHttp());
+    }
+
+    [HttpGet("random-visible")]
+    [ProducesResponseType(typeof(IReadOnlyCollection<ParkDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetRandomVisibleParksAsync([FromQuery] int limit = 4, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<IReadOnlyCollection<Park>> result = await this.getRandomVisibleParksQueryHandler.HandleAsync(
+            new GetRandomVisibleParksQuery(limit),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        List<ParkDto> response = result.Value.Select(static park => park.ToHttp()).ToList();
+        return this.Ok(response);
     }
 
     [HttpGet("{id}")]

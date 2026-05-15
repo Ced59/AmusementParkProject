@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   protected readonly homeStats = this.stateFacade.homeStats;
   protected readonly featuredState = this.stateFacade.featuredState;
   protected readonly featuredParks = this.stateFacade.featuredParks;
-  protected readonly heroFeaturedParks = computed<ParkCardModel[]>(() => this.featuredParks().slice(0, 3));
+  protected readonly heroFeaturedParks = computed<ParkCardModel[]>(() => this.featuredParks().slice(0, 4));
   protected readonly searchState = this.stateFacade.searchState;
   protected readonly results = this.stateFacade.searchResults;
   protected readonly pagination = this.stateFacade.searchPagination;

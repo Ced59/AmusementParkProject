@@ -101,6 +101,23 @@ public sealed class ParkRepository : IParkRepository
             .ToList();
     }
 
+    public async Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken)
+    {
+        if (limit <= 0)
+        {
+            return Array.Empty<Park>();
+        }
+
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
+
+        List<ParkDocument> documents = await this.collection.Aggregate()
+            .Match(filter)
+            .Sample(limit)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
     public async Task<int> CountDistinctCountryCodesAsync(bool includeHidden, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden)

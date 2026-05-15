@@ -44,6 +44,11 @@ export class ParksApiService {
     return this.http.get<ParksApiResponse>(url);
   }
 
+  getRandomVisibleParks(limit: number = 4): Observable<Park[]> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getRandomVisibleParks(limit)}`;
+    return this.http.get<Park[]>(url);
+  }
+
   getParkById(id: string): Observable<Park> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkById(id)}`;
     return this.http.get<Park>(url);

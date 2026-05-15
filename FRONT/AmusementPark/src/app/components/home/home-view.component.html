@@ -67,29 +67,59 @@
                     <span>{{ park.locationLine || park.countryCode || ('home.heroCards.locationFallback' | translate) }}</span>
                   </span>
                   <span class="home-hero-card__tag">{{ getHeroCardStyle(index).tagKey | translate }}</span>
-                  <span class="home-hero-card__line" aria-hidden="true"></span>
+                  <span class="home-hero-card__bar" aria-hidden="true">
+                    <span class="home-hero-card__bar-fill"></span>
+                  </span>
                 </a>
               }
             }
           } @else {
-            <article class="home-hero-card home-hero-card--primary home-hero-card--placeholder">
+            <article class="home-hero-card home-hero-card--1 home-hero-card--primary home-hero-card--placeholder">
               <span class="home-hero-card__icon"><i class="pi pi-map" aria-hidden="true"></i></span>
               <span class="home-hero-card__content">
                 <strong>{{ 'home.heroCards.placeholderTitle' | translate }}</strong>
                 <span>{{ 'home.heroCards.placeholderSubtitle' | translate }}</span>
               </span>
               <span class="home-hero-card__tag">{{ 'home.heroCards.featured' | translate }}</span>
-              <span class="home-hero-card__line" aria-hidden="true"></span>
+              <span class="home-hero-card__bar" aria-hidden="true">
+                <span class="home-hero-card__bar-fill"></span>
+              </span>
             </article>
 
-            <article class="home-hero-card home-hero-card--sky home-hero-card--placeholder">
+            <article class="home-hero-card home-hero-card--2 home-hero-card--lime home-hero-card--placeholder">
               <span class="home-hero-card__icon"><i class="pi pi-bolt" aria-hidden="true"></i></span>
               <span class="home-hero-card__content">
                 <strong>{{ 'home.search.commandTitle' | translate }}</strong>
                 <span>{{ 'home.search.hintMessage' | translate }}</span>
               </span>
               <span class="home-hero-card__tag">{{ 'home.heroCards.sensations' | translate }}</span>
-              <span class="home-hero-card__line" aria-hidden="true"></span>
+              <span class="home-hero-card__bar" aria-hidden="true">
+                <span class="home-hero-card__bar-fill"></span>
+              </span>
+            </article>
+
+            <article class="home-hero-card home-hero-card--3 home-hero-card--sky home-hero-card--placeholder">
+              <span class="home-hero-card__icon"><i class="pi pi-bolt" aria-hidden="true"></i></span>
+              <span class="home-hero-card__content">
+                <strong>{{ 'home.heroCards.placeholderTitle' | translate }}</strong>
+                <span>{{ 'home.heroCards.placeholderSubtitle' | translate }}</span>
+              </span>
+              <span class="home-hero-card__tag">{{ 'home.heroCards.featured' | translate }}</span>
+              <span class="home-hero-card__bar" aria-hidden="true">
+                <span class="home-hero-card__bar-fill"></span>
+              </span>
+            </article>
+
+            <article class="home-hero-card home-hero-card--4 home-hero-card--rose home-hero-card--placeholder">
+              <span class="home-hero-card__icon"><i class="pi pi-sparkles" aria-hidden="true"></i></span>
+              <span class="home-hero-card__content">
+                <strong>{{ 'home.search.commandTitle' | translate }}</strong>
+                <span>{{ 'home.search.hintMessage' | translate }}</span>
+              </span>
+              <span class="home-hero-card__tag">{{ 'home.heroCards.family' | translate }}</span>
+              <span class="home-hero-card__bar" aria-hidden="true">
+                <span class="home-hero-card__bar-fill"></span>
+              </span>
             </article>
           }
         </div>
@@ -137,7 +167,7 @@
           emptyTitleKey: 'home.search.emptyTitle',
           emptyMessageKey: 'home.search.emptyMessage'
         }">
-        <div class="app-grid-cards home-results__grid">
+        <div class="home-results__grid">
           @for (item of results(); track item.originalId) {
             <app-search-result-card
               [item]="item"
@@ -154,34 +184,6 @@
       </app-page-state>
     </section>
   }
-
-  <section class="home-experience-grid">
-    <article class="home-experience-card home-experience-card--map" appUiSurface="shell" appUiSurfacePadding="regular">
-      <app-ui-kicker tone="sky" iconClass="pi pi-map-marker">
-        {{ 'home.experience.mapKicker' | translate }}
-      </app-ui-kicker>
-      <h2>{{ 'home.experience.mapTitle' | translate }}</h2>
-      <p>{{ 'home.experience.mapText' | translate }}</p>
-      <div class="home-experience-card__map-preview" aria-hidden="true">
-        <span class="home-map-dot home-map-dot--primary"></span>
-        <span class="home-map-dot home-map-dot--secondary"></span>
-        <span class="home-map-dot home-map-dot--tertiary"></span>
-      </div>
-    </article>
-
-    <article class="home-experience-card" appUiSurface="shell" appUiSurfacePadding="regular">
-      <app-ui-kicker tone="lime" iconClass="pi pi-sitemap">
-        {{ 'home.experience.catalogKicker' | translate }}
-      </app-ui-kicker>
-      <h2>{{ 'home.experience.catalogTitle' | translate }}</h2>
-      <p>{{ 'home.experience.catalogText' | translate }}</p>
-      <div class="public-pill-list">
-        <app-ui-chip tone="primary" iconClass="pi pi-map">{{ 'home.categories.park' | translate }}</app-ui-chip>
-        <app-ui-chip tone="sky" iconClass="pi pi-bolt">{{ 'home.categories.parkItems' | translate }}</app-ui-chip>
-        <app-ui-chip tone="soft" iconClass="pi pi-building">{{ 'home.categories.operators' | translate }}</app-ui-chip>
-      </div>
-    </article>
-  </section>
 
   <section class="public-panel home-featured" appUiSurface="panel" appUiSurfacePadding="regular">
     <app-ui-section-header

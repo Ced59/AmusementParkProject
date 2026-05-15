@@ -15,7 +15,7 @@ import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import { UiSearchPanelSelectFilterModel } from '@ui/forms/models/ui-search-panel.model';
 import { UiSearchPanelComponent } from '@ui/forms';
-import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiButtonDirective, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 
 @Component({
   selector: 'app-home-view',
@@ -31,8 +31,6 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSectionHeaderC
     SearchResultCardComponent,
     TranslateModule,
     UiButtonDirective,
-    UiChipComponent,
-    UiKickerComponent,
     UiSearchPanelComponent,
     UiSectionHeaderComponent,
     UiSurfaceDirective
@@ -40,8 +38,9 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSectionHeaderC
 })
 export class HomeViewComponent {
   protected readonly heroCardStyles: { tone: string; iconClass: string; tagKey: string }[] = [
-    { tone: 'primary', iconClass: 'pi pi-chart-line', tagKey: 'home.heroCards.featured' },
-    { tone: 'sky', iconClass: 'pi pi-bolt', tagKey: 'home.heroCards.sensations' },
+    { tone: 'primary', iconClass: 'pi pi-map-marker', tagKey: 'home.heroCards.featured' },
+    { tone: 'lime', iconClass: 'pi pi-compass', tagKey: 'home.heroCards.sensations' },
+    { tone: 'sky', iconClass: 'pi pi-bolt', tagKey: 'home.heroCards.featured' },
     { tone: 'rose', iconClass: 'pi pi-sparkles', tagKey: 'home.heroCards.family' }
   ];
 
@@ -70,7 +69,7 @@ export class HomeViewComponent {
   }
 
   protected getHeroCardClass(index: number): string {
-    return `home-hero-card home-hero-card--${this.getHeroCardStyle(index).tone}`;
+    return `home-hero-card home-hero-card--${index + 1} home-hero-card--${this.getHeroCardStyle(index).tone}`;
   }
 
   protected buildParkLink(park: ParkCardModel): string[] | null {

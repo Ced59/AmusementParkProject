@@ -80,9 +80,9 @@ export class HomeStateFacade {
     const previousData: HomeFeaturedViewModel | undefined = this.featuredStateStore.data();
     this.featuredStateStore.setLoading(previousData);
 
-    this.parksApiService.getParksPaginated(1, 6).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (response: { data?: Park[] | null }) => {
-        const parks: ParkCardModel[] = mapArray(response.data, (park: Park) => mapParkToCardModel(park, currentLanguage));
+    this.parksApiService.getRandomVisibleParks(4).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (response: Park[]) => {
+        const parks: ParkCardModel[] = mapArray(response, (park: Park) => mapParkToCardModel(park, currentLanguage));
         const viewModel: HomeFeaturedViewModel = {
           parks
         };
