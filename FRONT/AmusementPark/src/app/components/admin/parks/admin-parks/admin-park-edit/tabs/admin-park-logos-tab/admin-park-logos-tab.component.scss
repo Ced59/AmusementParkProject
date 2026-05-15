@@ -119,3 +119,36 @@
 :host ::ng-deep .logo-history-preview--placeholder {
   object-fit: initial;
 }
+
+.logo-upload-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-upload-picker__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.logo-upload-picker__status {
+  color: var(--app-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 575px) {
+  .logo-upload-picker {
+    align-items: stretch;
+  }
+
+  .logo-upload-picker__status {
+    width: 100%;
+  }
+}

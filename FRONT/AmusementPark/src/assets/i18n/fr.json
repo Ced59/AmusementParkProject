@@ -263,7 +263,9 @@
         "currentSetSuccess": "Le logo courant a été mis à jour.",
         "deleteSuccess": "Le logo a été supprimé.",
         "sectionHelp": "Gère ici le logo actuel du parc ainsi que son historique.",
-        "saveBeforeUpload": "Enregistre d’abord le parc pour pouvoir lui associer des logos."
+        "saveBeforeUpload": "Enregistre d’abord le parc pour pouvoir lui associer des logos.",
+        "chooseFilesButton": "Choisir un fichier",
+        "noFileSelected": "Aucun fichier choisi"
       },
       "descriptions": {
         "sectionTitle": "Description localisée",

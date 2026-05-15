@@ -1,8 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace AmusementPark.WebAPI.Contracts.ParkItems;
 
 /// <summary>
 /// Type HTTP détaillé d'un park item.
 /// </summary>
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum ParkItemTypeDto
 {
     Attraction,

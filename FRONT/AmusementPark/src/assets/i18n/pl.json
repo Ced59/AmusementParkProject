@@ -285,7 +285,9 @@
         "currentSetSuccess": "Current logo updated.",
         "deleteSuccess": "Logo deleted.",
         "sectionHelp": "Zarządzaj tutaj aktualnym logo parku i jego historią.",
-        "saveBeforeUpload": "Najpierw zapisz park, aby móc dodać do niego logotypy."
+        "saveBeforeUpload": "Najpierw zapisz park, aby móc dodać do niego logotypy.",
+        "chooseFilesButton": "Wybierz pliki",
+        "noFileSelected": "Nie wybrano pliku"
       },
       "zones": {
         "manage": "Zarządzaj strefami",

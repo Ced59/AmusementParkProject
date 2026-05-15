@@ -33,7 +33,7 @@ public sealed class GetPublicHomeStatsQueryHandler : IQueryHandler<GetPublicHome
             visibleParkIds,
             includeHidden,
             cancellationToken);
-        int countriesCount = await this.parkRepository.CountDistinctCountryCodesAsync(includeHidden, cancellationToken);
+        int countriesCount = await this.parkRepository.CountDistinctCountryCodesForParkIdsAsync(visibleParkIds, cancellationToken);
 
         PublicHomeStatsResult result = new PublicHomeStatsResult(parksCount, attractionsCount, countriesCount);
         return ApplicationResult<PublicHomeStatsResult>.Success(result);

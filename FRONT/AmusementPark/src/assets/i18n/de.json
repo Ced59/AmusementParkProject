@@ -285,7 +285,9 @@
         "currentSetSuccess": "Current logo updated.",
         "deleteSuccess": "Logo deleted.",
         "sectionHelp": "Verwalte hier das aktuelle Parklogo und seinen Verlauf.",
-        "saveBeforeUpload": "Speichere zuerst den Park, bevor du Logos zuordnest."
+        "saveBeforeUpload": "Speichere zuerst den Park, bevor du Logos zuordnest.",
+        "chooseFilesButton": "Dateien auswählen",
+        "noFileSelected": "Keine Datei ausgewählt"
       },
       "zones": {
         "manage": "Bereiche verwalten",

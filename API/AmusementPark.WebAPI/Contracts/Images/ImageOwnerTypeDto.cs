@@ -1,8 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace AmusementPark.WebAPI.Contracts.Images;
 
 /// <summary>
 /// Type de propriétaire HTTP d'image.
 /// </summary>
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum ImageOwnerTypeDto
 {
     NONE = 0,

@@ -120,6 +120,36 @@ public sealed class ParkRepository : IParkRepository
             .Count();
     }
 
+    public async Task<int> CountDistinctCountryCodesForParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkIds = parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedParkIds.Count == 0)
+        {
+            return 0;
+        }
+
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.In(document => document.Id, normalizedParkIds)
+            & Builders<ParkDocument>.Filter.Ne(document => document.CountryCode, null)
+            & Builders<ParkDocument>.Filter.Ne(document => document.CountryCode, string.Empty);
+
+        IAsyncCursor<string?> cursor = await this.collection.DistinctAsync(
+            document => document.CountryCode,
+            filter,
+            cancellationToken: cancellationToken);
+
+        List<string?> countryCodes = await cursor.ToListAsync(cancellationToken);
+        return countryCodes
+            .Where(static countryCode => !string.IsNullOrWhiteSpace(countryCode))
+            .Select(static countryCode => countryCode.Trim().ToUpperInvariant())
+            .Distinct(StringComparer.Ordinal)
+            .Count();
+    }
+
     public async Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
     {
         string escapedName = Regex.Escape(name.Trim());

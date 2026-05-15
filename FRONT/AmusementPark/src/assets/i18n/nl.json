@@ -285,7 +285,9 @@
         "currentSetSuccess": "Current logo updated.",
         "deleteSuccess": "Logo deleted.",
         "sectionHelp": "Beheer hier het huidige parklogo en de geschiedenis ervan.",
-        "saveBeforeUpload": "Sla eerst het park op voordat je logo’s koppelt."
+        "saveBeforeUpload": "Sla eerst het park op voordat je logo’s koppelt.",
+        "chooseFilesButton": "Bestanden kiezen",
+        "noFileSelected": "Geen bestand gekozen"
       },
       "zones": {
         "manage": "Zones beheren",

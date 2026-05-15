@@ -285,7 +285,9 @@
         "currentSetSuccess": "Current logo updated.",
         "deleteSuccess": "Logo deleted.",
         "sectionHelp": "Manage the current park logo and its history here.",
-        "saveBeforeUpload": "Save the park first before attaching logos."
+        "saveBeforeUpload": "Save the park first before attaching logos.",
+        "chooseFilesButton": "Choose files",
+        "noFileSelected": "No file selected"
       },
       "zones": {
         "manage": "Manage zones",

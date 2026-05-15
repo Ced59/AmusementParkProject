@@ -39,6 +39,11 @@ public interface IParkRepository
     Task<int> CountDistinctCountryCodesAsync(bool includeHidden, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Compte les pays réellement couverts par une sélection explicite de parcs.
+    /// </summary>
+    Task<int> CountDistinctCountryCodesForParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Recherche des parcs par nom.
     /// </summary>
     Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken);
