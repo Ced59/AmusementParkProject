@@ -198,7 +198,12 @@ public sealed class DataSourcesController : ControllerBase
 
             return this.Accepted(result.Value.ToHttp());
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            DeleteWorkingDirectorySafe(workingDirectoryPath);
+            throw;
+        }
+        catch (Exception)
         {
             DeleteWorkingDirectorySafe(workingDirectoryPath);
             throw;
@@ -233,7 +238,10 @@ public sealed class DataSourcesController : ControllerBase
                 Directory.Delete(workingDirectoryPath, true);
             }
         }
-        catch
+        catch (UnauthorizedAccessException)
+        {
+        }
+        catch (IOException)
         {
         }
     }

@@ -46,7 +46,11 @@ public sealed class CreateAttractionManufacturerCommandHandler : ICommandHandler
                 AttractionCount = 0,
             });
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<AttractionManufacturerResult>.Failure(ApplicationError.Technical("attraction-manufacturer.create.failed", "Error while creating attraction manufacturer"));
         }

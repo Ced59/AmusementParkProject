@@ -81,7 +81,10 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 Directory.Delete(workingDirectoryPath, true);
             }
         }
-        catch
+        catch (UnauthorizedAccessException)
+        {
+        }
+        catch (IOException)
         {
         }
     }

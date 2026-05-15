@@ -1,8 +1,11 @@
 using System;
 using AmusementPark.WebAPI.Diagnostics;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace AmusementPark.WebAPI.DependencyInjection;
 
@@ -33,6 +36,16 @@ public static class WebApplicationPipelineExtensions
         {
             errorApp.Run(async context =>
             {
+                Exception? exception = context.Features.Get<IExceptionHandlerFeature>()?.Error;
+                ILogger logger = context.RequestServices
+                    .GetRequiredService<ILoggerFactory>()
+                    .CreateLogger("AmusementPark.WebAPI.UnhandledException");
+
+                if (exception is not null)
+                {
+                    logger.LogError(exception, "Unhandled API exception for {Method} {Path}.", context.Request.Method, context.Request.Path);
+                }
+
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                 context.Response.ContentType = "application/json";
                 await context.Response.WriteAsJsonAsync(new

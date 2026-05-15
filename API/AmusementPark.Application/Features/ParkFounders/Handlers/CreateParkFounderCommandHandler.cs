@@ -39,7 +39,11 @@ public sealed class CreateParkFounderCommandHandler : ICommandHandler<CreatePark
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Founders, created.Id, cancellationToken);
             return ApplicationResult<ParkFounder>.Success(created);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<ParkFounder>.Failure(ApplicationError.Technical("park-founder.create.failed", "Error while creating park founder"));
         }

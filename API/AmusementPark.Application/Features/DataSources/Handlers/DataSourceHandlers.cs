@@ -108,6 +108,11 @@ public sealed class GetDataSourceComparisonResultsQueryHandler : IQueryHandler<G
 
     public Task<ApplicationResult<DataSourceComparisonPageResult>> HandleAsync(GetDataSourceComparisonResultsQuery query, CancellationToken cancellationToken)
     {
+        if (query.Page < 0 || query.PageSize <= 0)
+        {
+            return Task.FromResult(ApplicationResult<DataSourceComparisonPageResult>.Failure(ApplicationErrors.InvalidPagination()));
+        }
+
         return this.service.GetComparisonResultsAsync(
             query.SourceKey,
             query.SessionId,

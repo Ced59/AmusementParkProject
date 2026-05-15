@@ -17,7 +17,7 @@ namespace AmusementPark.WebAPI.Architecture
             {
                 ApplicationErrorType.Validation => StatusCodes.Status400BadRequest,
                 ApplicationErrorType.NotFound => StatusCodes.Status404NotFound,
-                ApplicationErrorType.RuleViolation => StatusCodes.Status422UnprocessableEntity,
+                ApplicationErrorType.RuleViolation => StatusCodes.Status400BadRequest,
                 ApplicationErrorType.Conflict => StatusCodes.Status409Conflict,
                 ApplicationErrorType.Unauthorized => StatusCodes.Status401Unauthorized,
                 ApplicationErrorType.Forbidden => StatusCodes.Status403Forbidden,

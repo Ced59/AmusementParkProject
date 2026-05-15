@@ -87,7 +87,11 @@ public sealed class RegisterLocalUserCommandHandler : ICommandHandler<RegisterLo
             await this.localAccountEmailService.SendEmailConfirmationAsync(createdUser, confirmationToken, cancellationToken);
             return ApplicationResult<User>.Success(createdUser);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.UserUpdateFailed());
         }

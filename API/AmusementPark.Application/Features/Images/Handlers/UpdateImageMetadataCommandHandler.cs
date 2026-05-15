@@ -40,7 +40,11 @@ public sealed class UpdateImageMetadataCommandHandler : ICommandHandler<UpdateIm
 
             return ApplicationResult<Image>.Success(updated);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<Image>.Failure(ImageApplicationErrors.ImageProcessingFailed());
         }

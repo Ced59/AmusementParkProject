@@ -35,7 +35,11 @@ public sealed class CreateParkCommandHandler : ICommandHandler<CreateParkCommand
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, created.Id, cancellationToken);
             return ApplicationResult<Park>.Success(created);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<Park>.Failure(ParkApplicationErrors.ErrorCreatingPark());
         }

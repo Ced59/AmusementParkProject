@@ -11,6 +11,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Users;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -25,17 +26,20 @@ public sealed partial class MongoDatabaseInitializer
     private readonly MongoDbSettings settings;
     private readonly AdminSeedSettings adminSeedSettings;
     private readonly IHostEnvironment hostEnvironment;
+    private readonly ILogger<MongoDatabaseInitializer> logger;
 
     public MongoDatabaseInitializer(
         IMongoDatabase database,
         MongoDbSettings settings,
         AdminSeedSettings adminSeedSettings,
-        IHostEnvironment hostEnvironment)
+        IHostEnvironment hostEnvironment,
+        ILogger<MongoDatabaseInitializer> logger)
     {
         this.database = database;
         this.settings = settings;
         this.adminSeedSettings = adminSeedSettings;
         this.hostEnvironment = hostEnvironment;
+        this.logger = logger;
     }
 
     public async Task InitializeAsync(CancellationToken cancellationToken)

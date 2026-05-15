@@ -66,7 +66,11 @@ public sealed class UpdateParkItemCommandHandler : ICommandHandler<UpdateParkIte
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, updated.Id, cancellationToken);
             return ApplicationResult<ParkItem>.Success(updated);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<ParkItem>.Failure(ParkItemApplicationErrors.ErrorUpdatingParkItem());
         }

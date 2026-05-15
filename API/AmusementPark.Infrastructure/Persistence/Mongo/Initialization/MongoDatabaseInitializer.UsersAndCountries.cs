@@ -11,6 +11,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Users;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -54,8 +55,21 @@ public sealed partial class MongoDatabaseInitializer
 
     private async Task InitializeAdminUserAsync(CancellationToken cancellationToken)
     {
-        if (!this.adminSeedSettings.Enabled || string.IsNullOrWhiteSpace(this.adminSeedSettings.Email))
+        if (!this.adminSeedSettings.Enabled)
         {
+            this.logger.LogDebug("Admin seed is disabled.");
+            return;
+        }
+
+        if (!this.hostEnvironment.IsDevelopment())
+        {
+            this.logger.LogWarning("Admin seed is enabled but ignored because the current environment is {EnvironmentName}. Admin seed is reserved for local development.", this.hostEnvironment.EnvironmentName);
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(this.adminSeedSettings.Email))
+        {
+            this.logger.LogWarning("Admin seed ignored because Initialization:AdminUser:Email is empty.");
             return;
         }
 
@@ -70,7 +84,7 @@ public sealed partial class MongoDatabaseInitializer
         {
             if (string.IsNullOrWhiteSpace(this.adminSeedSettings.Password))
             {
-                Console.WriteLine("[MongoDatabaseInitializer] Admin seed ignoré car Initialization:AdminUser:Password est vide.");
+                this.logger.LogWarning("Admin seed ignored because Initialization:AdminUser:Password is empty. Configure it through user-secrets or environment variables when local admin seeding is required.");
                 return;
             }
 
@@ -78,8 +92,8 @@ public sealed partial class MongoDatabaseInitializer
             UserDocument adminUser = new UserDocument
             {
                 Email = normalizedEmail,
-                FirstName = string.IsNullOrWhiteSpace(this.adminSeedSettings.FirstName) ? "Ced" : this.adminSeedSettings.FirstName.Trim(),
-                LastName = string.IsNullOrWhiteSpace(this.adminSeedSettings.LastName) ? "Caudron" : this.adminSeedSettings.LastName.Trim(),
+                FirstName = string.IsNullOrWhiteSpace(this.adminSeedSettings.FirstName) ? "Admin" : this.adminSeedSettings.FirstName.Trim(),
+                LastName = string.IsNullOrWhiteSpace(this.adminSeedSettings.LastName) ? "User" : this.adminSeedSettings.LastName.Trim(),
                 PreferredLanguage = string.IsNullOrWhiteSpace(this.adminSeedSettings.PreferredLanguage)
                     ? "FR"
                     : this.adminSeedSettings.PreferredLanguage.Trim().ToUpperInvariant(),
@@ -151,7 +165,7 @@ public sealed partial class MongoDatabaseInitializer
         string jsonFilePath = this.ResolveCountriesSeedPath();
         if (!File.Exists(jsonFilePath))
         {
-            Console.WriteLine($"[MongoDatabaseInitializer] Fichier countries JSON introuvable : {jsonFilePath}");
+            this.logger.LogWarning("Countries seed JSON file was not found at path {JsonFilePath}.", jsonFilePath);
             return;
         }
 
@@ -166,7 +180,7 @@ public sealed partial class MongoDatabaseInitializer
         List<CountrySeedItem>? seedItems = JsonSerializer.Deserialize<List<CountrySeedItem>>(json, options);
         if (seedItems is null || seedItems.Count == 0)
         {
-            Console.WriteLine("[MongoDatabaseInitializer] Aucun pays désérialisé depuis le JSON.");
+            this.logger.LogWarning("Countries seed JSON file did not contain any deserializable country.");
             return;
         }
 

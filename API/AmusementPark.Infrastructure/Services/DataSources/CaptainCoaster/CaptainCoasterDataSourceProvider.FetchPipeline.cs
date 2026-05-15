@@ -1,6 +1,7 @@
 using System.Threading.Channels;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
 using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
+using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
@@ -77,8 +78,13 @@ internal sealed partial class CaptainCoasterDataSourceProvider
                             CaptainCoasterCoasterSnapshotDocument document = MapParsedCoaster(session.Id, parsed);
                             await channel.Writer.WriteAsync(CaptainCoasterFetchOutcome.Success(document), ct);
                         }
+                        catch (OperationCanceledException) when (ct.IsCancellationRequested)
+                        {
+                            throw;
+                        }
                         catch (Exception exception)
                         {
+                            this.logger.LogWarning(exception, "Unable to fetch Captain Coaster URL {Url} for session {SessionId}.", discoveredUrl.Url, session.Id);
                             await channel.Writer.WriteAsync(CaptainCoasterFetchOutcome.Failure(discoveredUrl, exception.Message), ct);
                         }
                     });

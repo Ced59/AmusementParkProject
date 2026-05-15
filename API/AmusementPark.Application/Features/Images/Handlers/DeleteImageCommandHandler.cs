@@ -61,7 +61,11 @@ public sealed class DeleteImageCommandHandler : ICommandHandler<DeleteImageComma
             await SynchronizeAfterDeletionAsync(image, this.imageRepository, this.parkRepository, this.userRepository, cancellationToken);
             return ApplicationResult.Success();
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult.Failure(ImageApplicationErrors.ErrorDeletingImage());
         }

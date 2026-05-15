@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
+using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
@@ -75,8 +76,13 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 );
             }
         }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
         catch (Exception exception)
         {
+            this.logger.LogWarning(exception, "Unable to refresh Captain Coaster search projection for session {SessionId}.", session?.Id);
             if (session != null)
             {
                 AddLog(session, "Warn", $"Échec du rafraîchissement de l'index de recherche : {exception.Message}");

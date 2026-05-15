@@ -5,15 +5,15 @@ namespace AmusementPark.Infrastructure.Configuration.Initialization;
 /// </summary>
 public sealed class AdminSeedSettings
 {
-    public bool Enabled { get; set; } = true;
+    public bool Enabled { get; set; } = false;
 
-    public string Email { get; set; } = "c.caudron59@gmail.com";
+    public string Email { get; set; } = string.Empty;
 
     public string Password { get; set; } = string.Empty;
 
-    public string FirstName { get; set; } = "Ced";
+    public string FirstName { get; set; } = "Admin";
 
-    public string LastName { get; set; } = "Caudron";
+    public string LastName { get; set; } = "User";
 
     public string PreferredLanguage { get; set; } = "FR";
 }

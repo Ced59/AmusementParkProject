@@ -83,7 +83,11 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 SavedFiles = savedFiles,
             });
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<UploadedImageResult>.Failure(ImageApplicationErrors.ImageProcessingFailed());
         }

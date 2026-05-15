@@ -62,7 +62,11 @@ public sealed class UpdateAttractionManufacturerCommandHandler : ICommandHandler
                 AttractionCount = attractionCount,
             });
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<AttractionManufacturerResult>.Failure(ApplicationError.Technical("attraction-manufacturer.update.failed", "Error while updating attraction manufacturer"));
         }
