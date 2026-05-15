@@ -1,0 +1,113 @@
+.app-card,
+.public-feature-card,
+.public-shell-card,
+.public-stat-card {
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 88%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  box-shadow: var(--shadow-card);
+}
+
+.app-card--interactive,
+.public-feature-card[href],
+a.public-feature-card {
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+.app-card--interactive:hover,
+.public-feature-card[href]:hover,
+a.public-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--app-border-stronger);
+  box-shadow: var(--shadow-lift);
+}
+
+.public-stat-grid,
+.app-stat-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.public-stat-card,
+.app-stat-card {
+  padding: 1rem 1.05rem;
+}
+
+.public-stat-card--accent,
+.app-stat-card--accent {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c-orange) 10%, var(--app-surface)), color-mix(in srgb, var(--c-sky) 8%, var(--app-surface-2)));
+}
+
+.public-stat-card__label,
+.app-stat-card__label {
+  display: block;
+  color: var(--app-text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.public-stat-card__value,
+.app-stat-card__value {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.public-stat-card__hint,
+.app-stat-card__hint {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--app-text-muted);
+  font-size: 0.88rem;
+}
+
+.public-feature-stack,
+.public-shell-stack,
+.app-card-stack {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.public-feature-card,
+.public-shell-card,
+.app-info-card {
+  padding: 1rem;
+}
+
+.public-feature-card__eyebrow,
+.app-info-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--app-text-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.public-feature-card__title,
+.app-info-card__title {
+  margin: 0.8rem 0 0.35rem;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.public-feature-card__text,
+.app-info-card__text {
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.6;
+}

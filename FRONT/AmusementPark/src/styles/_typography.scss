@@ -1,0 +1,39 @@
+.app-display-title,
+.display-title {
+  font-family: var(--font-display);
+  color: var(--app-heading);
+  line-height: 0.92;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.app-section-title,
+.section-title {
+  font-family: var(--font-display);
+  color: var(--app-heading);
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  line-height: 0.92;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.app-lead,
+.public-lead {
+  margin: 0;
+  color: var(--app-text-muted);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.app-muted,
+.public-muted {
+  color: var(--app-text-muted);
+}
+
+.app-eyebrow {
+  color: var(--app-text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

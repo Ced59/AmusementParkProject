@@ -1,5 +1,15 @@
+$breakpoint-wide: 1180px;
+$breakpoint-tablet: 960px;
+$breakpoint-mobile: 680px;
+$breakpoint-phone: 480px;
+
 @mixin app-container {
   width: min(100% - 2rem, var(--app-content-max-width));
+  margin-inline: auto;
+}
+
+@mixin app-wide-container {
+  width: min(100% - 2rem, var(--app-content-wide-max-width));
   margin-inline: auto;
 }
 
@@ -19,10 +29,10 @@
 
 @mixin app-hover-lift {
   transition:
-          transform var(--app-transition-base),
-          box-shadow var(--app-transition-base),
-          border-color var(--app-transition-base),
-          background-color var(--app-transition-base);
+    transform var(--app-transition-base),
+    box-shadow var(--app-transition-base),
+    border-color var(--app-transition-base),
+    background-color var(--app-transition-base);
 
   &:hover {
     transform: translateY(-4px);
@@ -35,8 +45,57 @@
   box-shadow: 0 0 0 3px var(--app-focus-ring);
 }
 
+@mixin down($breakpoint) {
+  @if $breakpoint == wide {
+    @media (max-width: $breakpoint-wide) {
+      @content;
+    }
+  } @else if $breakpoint == tablet or $breakpoint == md {
+    @media (max-width: $breakpoint-tablet) {
+      @content;
+    }
+  } @else if $breakpoint == mobile or $breakpoint == sm {
+    @media (max-width: $breakpoint-mobile) {
+      @content;
+    }
+  } @else if $breakpoint == phone or $breakpoint == xs {
+    @media (max-width: $breakpoint-phone) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin wide-down {
+  @media (max-width: $breakpoint-wide) {
+    @content;
+  }
+}
+
+@mixin tablet-down {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile-down {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin phone-down {
+  @media (max-width: $breakpoint-phone) {
+    @content;
+  }
+}
+
+/* Backward-compatible aliases used by existing styles. */
 @mixin mobile {
-  @media (max-width: 767px) {
+  @include mobile-down {
     @content;
   }
 }

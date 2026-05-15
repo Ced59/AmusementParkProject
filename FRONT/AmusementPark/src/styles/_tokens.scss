@@ -1,39 +1,100 @@
 :root {
-  --app-font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-  --app-font-family-display: "Bangers-Regular", var(--app-font-family);
+  /* Legacy app-* aliases. New code should prefer canonical tokens from _design-tokens.scss. */
+  --app-font-family: var(--font-body);
+  --app-font-family-display: var(--font-display);
+  --app-font-family-heading: var(--font-heading);
+  --app-font-family-mono: var(--font-mono);
 
-  --app-radius-xs: 0.5rem;
-  --app-radius-sm: 0.75rem;
-  --app-radius-md: 1rem;
-  --app-radius-lg: 1.5rem;
-  --app-radius-xl: 2rem;
-  --app-radius-pill: 999px;
+  --app-radius-xs: var(--radius-xs);
+  --app-radius-sm: var(--radius-sm);
+  --app-radius-md: var(--radius-md);
+  --app-radius-lg: var(--radius-lg);
+  --app-radius-xl: var(--radius-xl);
+  --app-radius-2xl: var(--radius-2xl);
+  --app-radius-pill: var(--radius-pill);
 
-  --app-shadow-1: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --app-shadow-2: 0 18px 48px rgba(15, 23, 42, 0.12);
-  --app-shadow-3: 0 28px 72px rgba(15, 23, 42, 0.16);
+  --app-shadow-1: var(--shadow-card);
+  --app-shadow-2: var(--shadow-lift);
+  --app-shadow-3: 0 28px 72px rgba(0, 0, 0, 0.28);
+  --app-shadow-soft-orange: var(--shadow-soft-orange);
+  --app-shadow-soft-lime: var(--shadow-soft-lime);
 
   --app-border-width: 1px;
 
-  --app-space-1: 0.25rem;
-  --app-space-2: 0.5rem;
-  --app-space-3: 0.75rem;
-  --app-space-4: 1rem;
-  --app-space-5: 1.25rem;
-  --app-space-6: 1.5rem;
-  --app-space-8: 2rem;
-  --app-space-10: 2.5rem;
-  --app-space-12: 3rem;
+  --app-space-1: var(--space-1);
+  --app-space-2: var(--space-2);
+  --app-space-3: var(--space-3);
+  --app-space-4: var(--space-4);
+  --app-space-5: var(--space-5);
+  --app-space-6: var(--space-6);
+  --app-space-8: var(--space-8);
+  --app-space-10: var(--space-10);
+  --app-space-12: var(--space-12);
 
-  --app-transition-fast: 160ms ease;
-  --app-transition-base: 220ms ease;
-  --app-transition-slow: 320ms ease;
+  --app-transition-fast: var(--transition-fast);
+  --app-transition-base: var(--transition);
+  --app-transition-slow: var(--transition-slow);
 
-  --app-content-max-width: 1340px;
-  --app-sidebar-width: 260px;
-  --app-sidebar-collapsed-width: 76px;
-  --app-topbar-height: 84px;
-  --app-bottom-nav-height: 84px;
+  --app-content-max-width: var(--content-max-width);
+  --app-content-wide-max-width: var(--content-wide-max-width);
+  --app-sidebar-width: var(--sidebar-width);
+  --app-sidebar-collapsed-width: var(--sidebar-collapsed-width);
+  --app-topbar-height: var(--topbar-height);
+  --app-bottom-nav-height: var(--bottom-nav-height);
+
+  --ap-radius: var(--radius-md);
+  --ap-radius-sm: var(--radius-sm);
+  --ap-radius-md: var(--radius-md);
+  --ap-radius-lg: var(--radius-lg);
+  --ap-radius-xl: var(--radius-xl);
+  --ap-radius-full: var(--radius-pill);
+  --ap-transition-fast: var(--transition-fast);
+  --ap-transition-normal: var(--transition);
+  --ap-transition-slow: var(--transition-slow);
+  --ap-spacing-xs: var(--space-1);
+  --ap-spacing-sm: var(--space-2);
+  --ap-spacing-md: var(--space-4);
+  --ap-spacing-lg: var(--space-6);
+  --ap-spacing-xl: var(--space-8);
+  --ap-spacing-2xl: var(--space-12);
+  --ap-font-main: var(--font-body);
+  --ap-font-heading: var(--font-display);
+  --ap-font-mono: var(--font-mono);
+  --ap-weight-normal: 400;
+  --ap-weight-medium: 500;
+  --ap-weight-semibold: 600;
+  --ap-weight-bold: 700;
+  --ap-leading-tight: 1.25;
+  --ap-leading-normal: 1.5;
+  --ap-leading-relaxed: 1.75;
+  --ap-text-xs: 0.75rem;
+  --ap-text-sm: 0.875rem;
+  --ap-text-base: 1rem;
+  --ap-text-lg: 1.125rem;
+  --ap-text-xl: 1.25rem;
+  --ap-text-2xl: 1.5rem;
+  --ap-text-3xl: 1.875rem;
+  --ap-text-4xl: 2.25rem;
+  --ap-content-max: var(--content-max-width);
+  --ap-content-max-wide: var(--content-wide-max-width);
+  --ap-content-padding: var(--space-5);
+  --ap-sidebar-width: var(--sidebar-width);
+  --ap-sidebar-collapsed: var(--sidebar-collapsed-width);
+  --ap-header-height: var(--topbar-height);
+  --ap-bottom-nav-height: var(--bottom-nav-height);
+  --ap-bg-opacity: 0;
+  --ap-bg-saturate: 1;
+  --ap-bg-contrast: 1;
+  --ap-bg-blur: 0;
+  --ap-focus-ring: var(--shadow-focus);
+
+  --ap-z-dropdown: 1000;
+  --ap-z-sticky: 1020;
+  --ap-z-fixed: 1030;
+  --ap-z-modal-backdrop: 1040;
+  --ap-z-modal: 1050;
+  --ap-z-popover: 1060;
+  --ap-z-tooltip: 1070;
 }
 
 @font-face {

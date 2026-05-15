@@ -1,0 +1,45 @@
+.map-shell-card,
+.app-map-shell,
+.map-slot,
+.app-map-slot {
+  position: relative;
+  overflow: hidden;
+  min-height: 18rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(56, 197, 245, 0.12), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(196, 255, 39, 0.1), transparent 32%),
+    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  box-shadow: var(--shadow-card);
+}
+
+.map-shell-card::before,
+.app-map-shell::before,
+.map-slot::before,
+.app-map-slot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(var(--app-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--app-border) 1px, transparent 1px);
+  background-size: 34px 34px;
+  pointer-events: none;
+}
+
+.map-shell-card__content,
+.app-map-shell__content {
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+}
+
+.distance-panel,
+.app-distance-panel {
+  border: 1px solid rgba(56, 197, 245, 0.2);
+  border-radius: var(--radius-lg);
+  background: rgba(56, 197, 245, 0.075);
+  padding: 1rem;
+}

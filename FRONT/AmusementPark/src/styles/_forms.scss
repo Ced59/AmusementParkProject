@@ -1,0 +1,61 @@
+.search-panel,
+.app-search-panel,
+.public-filter-panel {
+  padding: clamp(1rem, 2.4vw, 1.4rem);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 86%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
+  box-shadow: var(--shadow-card);
+}
+
+.public-filter-grid,
+.app-form-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.public-field,
+.app-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.public-field__label,
+.app-field__label {
+  color: var(--app-text-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.public-input,
+.public-select,
+.app-input,
+.app-select {
+  width: 100%;
+  min-height: 3rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-surface-2) 96%, transparent);
+  color: var(--app-text);
+  padding: 0.8rem 0.95rem;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.public-input:focus,
+.public-select:focus,
+.app-input:focus,
+.app-select:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--app-primary) 40%, var(--app-border));
+  box-shadow: var(--shadow-focus);
+}
+
+.app-input::placeholder,
+.public-input::placeholder {
+  color: var(--app-text-faint);
+}
