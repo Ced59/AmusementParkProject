@@ -15,8 +15,9 @@ import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 import { initializeApp, HttpLoaderFactory } from './app.module';
 import { TranslationService } from './services/translation.service';
-import { LanguageInterceptor } from './interceptors/language.interceptor';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthService } from './services/auth/auth.service';
+import { LanguageInterceptor } from '@core/http/interceptors/language.interceptor';
+import { AuthInterceptor } from '@core/http/interceptors/auth.interceptor';
 import AmusementParkPreset from './config/primeng-preset';
 
 import { SelectModule } from 'primeng/select';
@@ -62,7 +63,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
 
     provideAppInitializer(() => {
-      const initializerFn = initializeApp(inject(TranslationService));
+      const initializerFn = initializeApp(inject(TranslationService), inject(AuthService));
       return initializerFn();
     }),
 

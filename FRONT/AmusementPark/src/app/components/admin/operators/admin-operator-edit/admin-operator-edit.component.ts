@@ -1,9 +1,10 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../../../../services/api.service';
-import { ParkOperator } from '../../../../models/parks/park-operator';
-import { commitViewUpdate } from '../../../../utils/change-detection.utils';
+import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
+import { ParkOperator } from '@app/models/parks/park-operator';
+import { commitViewUpdate } from '@shared/utils/angular';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { InputText } from 'primeng/inputtext';
@@ -25,10 +26,11 @@ export class AdminOperatorEditComponent implements OnInit {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly apiService: ApiService,
+    private readonly parkOperatorsApiService: ParkOperatorsApiService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -47,7 +49,7 @@ export class AdminOperatorEditComponent implements OnInit {
     });
 
     if (this.operatorId) {
-      this.apiService.getParkOperatorById(this.operatorId).subscribe({
+      this.parkOperatorsApiService.getParkOperatorById(this.operatorId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (parkOperator: ParkOperator) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.form.patchValue({
@@ -76,7 +78,7 @@ export class AdminOperatorEditComponent implements OnInit {
     };
 
     if (this.isEditMode && this.operatorId) {
-      this.apiService.updateParkOperator(this.operatorId, payload).subscribe({
+      this.parkOperatorsApiService.updateParkOperator(this.operatorId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (updated: ParkOperator) => {
           this.navigateAfterSave(updated.id);
         },
@@ -87,7 +89,7 @@ export class AdminOperatorEditComponent implements OnInit {
       return;
     }
 
-    this.apiService.createParkOperator(payload).subscribe({
+    this.parkOperatorsApiService.createParkOperator(payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (created: ParkOperator) => {
         this.navigateAfterSave(created.id);
       },

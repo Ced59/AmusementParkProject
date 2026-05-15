@@ -49,7 +49,11 @@ public sealed class UpdateParkFounderCommandHandler : ICommandHandler<UpdatePark
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Founders, updated.Id, cancellationToken);
             return ApplicationResult<ParkFounder>.Success(updated);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<ParkFounder>.Failure(ApplicationError.Technical("park-founder.update.failed", "Error while updating park founder"));
         }

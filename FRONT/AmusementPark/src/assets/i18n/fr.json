@@ -595,7 +595,11 @@
     "errorTitle": "Une erreur est survenue",
     "errorMessage": "Le contenu demandé n’a pas pu être chargé.",
     "emptyTitle": "Rien à afficher",
-    "emptyMessage": "Aucun contenu n’est disponible pour le moment."
+    "emptyMessage": "Aucun contenu n’est disponible pour le moment.",
+    "security": {
+      "uploadRejectedSummary": "Fichier refusé",
+      "invalidImageUploadMessage": "Seules les images JPEG, PNG, WebP ou GIF de moins de 10 Mo sont acceptées."
+    }
   },
   "parks": {
     "heroBadge": "Catalogue public",

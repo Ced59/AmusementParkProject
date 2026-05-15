@@ -1,6 +1,7 @@
 import { Component, forwardRef, Input } from '@angular/core';
+import { UrlTree } from '@angular/router';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
-import { EntitySelectOption } from '../../../models/shared/entity-select-option';
+import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { Bind } from 'primeng/bind';
 import { Select } from 'primeng/select';
 import { ButtonDirective } from 'primeng/button';
@@ -23,7 +24,7 @@ export class EntitySelectComponent implements ControlValueAccessor {
   @Input() label: string = '';
   @Input() placeholder: string = '';
   @Input() options: EntitySelectOption[] = [];
-  @Input() addLink: any[] | string | null = null;
+  @Input() addLink: readonly unknown[] | string | UrlTree | null = null;
   @Input() addQueryParams: Record<string, string | number | boolean | null | undefined> | null = null;
   @Input() addButtonLabel: string = '';
   @Input() loading: boolean = false;

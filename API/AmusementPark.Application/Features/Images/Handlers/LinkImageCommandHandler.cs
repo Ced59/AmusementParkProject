@@ -82,7 +82,11 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
             await SynchronizeOwnerAsync(updated, this.parkRepository, this.userRepository, cancellationToken);
             return ApplicationResult<Image>.Success(updated);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<Image>.Failure(ImageApplicationErrors.ErrorUpdatingImageLink());
         }

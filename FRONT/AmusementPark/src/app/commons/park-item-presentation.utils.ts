@@ -1,7 +1,11 @@
 import { ParkItem } from '../models/parks/park-item';
 import { ParkItemCategory } from '../models/parks/park-item-category';
 import { ParkItemType } from '../models/parks/park-item-type';
-import { resolveLocalizedValue, stripHtml } from './localized-item.utils';
+import { resolveLocalizedValue, stripHtml } from '@shared/utils/localization';
+import {
+  getParkItemCategoryTranslationKey as getSharedParkItemCategoryTranslationKey,
+  getParkItemTypeTranslationKey as getSharedParkItemTypeTranslationKey
+} from '@shared/utils/display/display-label.helpers';
 
 export function buildEntitySlug(value: string | null | undefined): string {
   return (value ?? '')
@@ -14,19 +18,15 @@ export function buildEntitySlug(value: string | null | undefined): string {
 }
 
 export function getParkItemCategoryTranslationKey(category: ParkItemCategory | string | null | undefined): string {
-  return `parkExplorer.categories.${toCamelCase(category ?? 'Other')}`;
+  return getSharedParkItemCategoryTranslationKey(category);
 }
 
 export function getParkItemTypeTranslationKey(type: ParkItemType | string | null | undefined): string {
-  return `parkExplorer.types.${toCamelCase(type ?? 'Other')}`;
+  return getSharedParkItemTypeTranslationKey(type);
 }
 
 export function resolveParkItemDescription(item: ParkItem | null | undefined, currentLang: string): string | null {
   const localizedDescription: string | undefined = resolveLocalizedValue(item?.descriptions, currentLang);
   const plainText: string = stripHtml(localizedDescription);
   return plainText.length > 0 ? plainText : null;
-}
-
-function toCamelCase(value: string): string {
-  return value.charAt(0).toLowerCase() + value.slice(1);
 }

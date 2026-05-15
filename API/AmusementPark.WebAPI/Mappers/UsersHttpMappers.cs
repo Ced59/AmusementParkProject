@@ -33,11 +33,11 @@ public static class UsersHttpMappers
         };
     }
 
-    public static RefreshTokenRequest ToApplication(this RefreshTokenRequestDto request)
+    public static RefreshTokenRequest ToApplication(this RefreshTokenRequestDto? request)
     {
         return new RefreshTokenRequest
         {
-            RefreshToken = request.RefreshToken,
+            RefreshToken = request?.RefreshToken ?? string.Empty,
         };
     }
 
@@ -153,8 +153,6 @@ public static class UsersHttpMappers
             IsBlocked = user.IsBlocked,
             PreferredLanguage = user.PreferredLanguage,
             Roles = user.Roles.Select(ToHttp).ToList(),
-            LastLogin = user.LastLoginUtc,
-            LastActivity = user.LastActivityUtc,
             AvatarUrl = user.AvatarUrl,
         };
     }

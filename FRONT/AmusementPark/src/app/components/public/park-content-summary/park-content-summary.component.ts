@@ -4,9 +4,9 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonDirective } from 'primeng/button';
 
-import { Park } from '../../../models/parks/park';
-import { ParkExplorer, ParkExplorerCount } from '../../../models/parks/park-explorer';
-import { buildParkSlug } from '../../../commons/park-presentation.utils';
+import { Park } from '@app/models/parks/park';
+import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
+import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 
 interface ParkContentSummaryEntry {
   labelKey: string;

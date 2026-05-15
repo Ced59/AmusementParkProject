@@ -1,49 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ApiService } from '../../../services/api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { TranslateModule } from '@ngx-translate/core';
+import { PageStateComponent } from '../../shared/page-state/page-state.component';
+import { ConfirmAccountPageStateFacade } from '@features/auth/state/confirm-account-page-state.facade';
 
 @Component({
     selector: 'app-confirm-account-page',
     templateUrl: './confirm-account-page.component.html',
     styleUrls: ['./confirm-account-page.component.scss'],
-    imports: [Bind, Card, RouterLink, TranslateModule]
+    providers: [ConfirmAccountPageStateFacade],
+    imports: [Bind, Card, RouterLink, TranslateModule, PageStateComponent]
 })
 export class ConfirmAccountPageComponent implements OnInit {
-  currentLanguage: string = 'en';
-  isLoading: boolean = true;
-  isSuccess: boolean = false;
-  message: string = '';
+  protected readonly state = this.stateFacade.state;
+  protected readonly currentLanguage = this.stateFacade.currentLanguage;
+  protected readonly isSuccess = this.stateFacade.isSuccess;
+  protected readonly message = this.stateFacade.message;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly apiService: ApiService) {
+    private readonly stateFacade: ConfirmAccountPageStateFacade
+  ) {
   }
 
   ngOnInit(): void {
-    this.currentLanguage = this.route.parent?.snapshot.paramMap.get('lang') ?? 'en';
-
+    const currentLanguage: string = this.route.parent?.snapshot.paramMap.get('lang') ?? 'en';
     const token: string = this.route.snapshot.queryParamMap.get('token') ?? '';
-    if (!token) {
-      this.isLoading = false;
-      this.isSuccess = false;
-      this.message = 'Le lien de confirmation est invalide.';
-      return;
-    }
 
-    this.apiService.confirmEmail(token).subscribe({
-      next: (response) => {
-        this.isLoading = false;
-        this.isSuccess = true;
-        this.message = response.message;
-      },
-      error: (error) => {
-        this.isLoading = false;
-        this.isSuccess = false;
-        this.message = error.error?.message ?? error.error?.Message ?? 'La confirmation du compte a échoué.';
-      }
-    });
+    this.stateFacade.confirmEmail(token, currentLanguage);
   }
 }

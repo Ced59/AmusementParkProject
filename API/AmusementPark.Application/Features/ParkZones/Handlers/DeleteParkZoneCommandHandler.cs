@@ -38,7 +38,11 @@ public sealed class DeleteParkZoneCommandHandler : ICommandHandler<DeleteParkZon
 
             return ApplicationResult.Success();
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult.Failure(ParkZoneApplicationErrors.ErrorDeletingParkZone());
         }

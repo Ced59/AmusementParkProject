@@ -111,3 +111,8 @@
     justify-content: center;
   }
 }
+
+:host ::ng-deep .profile-avatar--placeholder {
+  border: 1px solid var(--app-border);
+  background: var(--app-surface-2);
+}

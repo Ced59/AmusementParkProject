@@ -1,9 +1,10 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AttractionManufacturer } from '../../../../models/parks/attraction-manufacturer';
-import { ApiService } from '../../../../services/api.service';
-import { commitViewUpdate } from '../../../../utils/change-detection.utils';
+import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
+import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
+import { commitViewUpdate } from '@shared/utils/angular';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { InputText } from 'primeng/inputtext';
@@ -25,10 +26,11 @@ export class AdminManufacturerEditComponent implements OnInit {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly apiService: ApiService,
+    private readonly manufacturersApiService: ManufacturersApiService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -47,7 +49,7 @@ export class AdminManufacturerEditComponent implements OnInit {
     });
 
     if (this.manufacturerId) {
-      this.apiService.getAttractionManufacturerById(this.manufacturerId).subscribe({
+      this.manufacturersApiService.getAttractionManufacturerById(this.manufacturerId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (manufacturer: AttractionManufacturer) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.form.patchValue({
@@ -76,7 +78,7 @@ export class AdminManufacturerEditComponent implements OnInit {
     };
 
     if (this.isEditMode && this.manufacturerId) {
-      this.apiService.updateAttractionManufacturer(this.manufacturerId, payload).subscribe({
+      this.manufacturersApiService.updateAttractionManufacturer(this.manufacturerId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (updated: AttractionManufacturer) => {
           this.navigateAfterSave(updated.id);
         },
@@ -87,7 +89,7 @@ export class AdminManufacturerEditComponent implements OnInit {
       return;
     }
 
-    this.apiService.createAttractionManufacturer(payload).subscribe({
+    this.manufacturersApiService.createAttractionManufacturer(payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (created: AttractionManufacturer) => {
         this.navigateAfterSave(created.id);
       },

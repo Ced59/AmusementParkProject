@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { languageGuard } from './guards/language.guard';
-import { authGuard } from './guards/auth.guard';
-import { adminGuard } from './guards/admin.guard';
+import { languageGuard } from '@core/guards/language.guard';
+import { authGuard } from '@core/guards/auth.guard';
+import { adminGuard } from '@core/guards/admin.guard';
 
 export const routes: Routes = [
   {
@@ -15,7 +15,7 @@ export const routes: Routes = [
     canActivate: [languageGuard],
     children: [
       { path: 'home', loadComponent: () => import('./components/home/home.component').then((m) => m.HomeComponent) },
-      { path: 'parks', loadComponent: () => import('./components/park-list/park-list.component').then((m) => m.ParkListComponent) },
+      { path: 'parks', loadComponent: () => import('./features/public/parks/pages/park-list-page.component').then((m) => m.ParkListPageComponent) },
       { path: 'about', loadComponent: () => import('./components/about/about.component').then((m) => m.AboutComponent) },
 
       { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then((m) => m.ProfileModule) },
@@ -24,9 +24,9 @@ export const routes: Routes = [
       { path: 'forgot-password', loadComponent: () => import('./components/login-register/forgot-password-page/forgot-password-page.component').then((m) => m.ForgotPasswordPageComponent) },
       { path: 'reset-password', loadComponent: () => import('./components/login-register/reset-password-page/reset-password-page.component').then((m) => m.ResetPasswordPageComponent) },
 
-      { path: 'park/:id/:slug/items', loadComponent: () => import('./components/public/park-items-page/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
-      { path: 'park/:id/:slug/item/:itemId/:itemSlug', loadComponent: () => import('./components/public/park-item-detail/park-item-detail.component').then((m) => m.ParkItemDetailComponent) },
-      { path: 'park/:id/:slug', loadComponent: () => import('./components/park-detail/park-detail.component').then((m) => m.ParkDetailComponent) },
+      { path: 'park/:id/:slug/items', loadComponent: () => import('./features/public/park-items/pages/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
+      { path: 'park/:id/:slug/item/:itemId/:itemSlug', loadComponent: () => import('./features/public/park-items/pages/park-item-detail-page.component').then((m) => m.ParkItemDetailPageComponent) },
+      { path: 'park/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-detail-page.component').then((m) => m.ParkDetailPageComponent) },
 
       {
         path: 'admin',

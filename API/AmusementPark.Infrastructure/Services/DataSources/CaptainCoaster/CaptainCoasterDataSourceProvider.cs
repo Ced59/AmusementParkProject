@@ -6,6 +6,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
 using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
+using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
@@ -31,6 +32,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
     private readonly ICaptainCoasterCoasterPageParser coasterPageParser;
     private readonly ICaptainCoasterMapPageParser mapPageParser;
     private readonly ISearchProjectionWriter searchProjectionWriter;
+    private readonly ILogger<CaptainCoasterDataSourceProvider> logger;
 
     public CaptainCoasterDataSourceProvider(
         IMongoDatabase database,
@@ -40,7 +42,8 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         IXmlSitemapUrlDiscoveryService xmlSitemapUrlDiscoveryService,
         ICaptainCoasterCoasterPageParser coasterPageParser,
         ICaptainCoasterMapPageParser mapPageParser,
-        ISearchProjectionWriter searchProjectionWriter)
+        ISearchProjectionWriter searchProjectionWriter,
+        ILogger<CaptainCoasterDataSourceProvider> logger)
     {
         this.settingsCollection = database.GetCollection<CaptainCoasterSettingsDocument>(mongoDbSettings.CaptainCoasterSettingsCollectionName);
         this.parksCollection = database.GetCollection<CaptainCoasterParkSnapshotDocument>(mongoDbSettings.CaptainCoasterParksCollectionName);
@@ -57,6 +60,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         this.coasterPageParser = coasterPageParser;
         this.mapPageParser = mapPageParser;
         this.searchProjectionWriter = searchProjectionWriter;
+        this.logger = logger;
     }
 
     public string SourceKey => SourceKeyValue;
@@ -436,9 +440,14 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                         appliedCount++;
                     }
                 }
+                catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+                {
+                    throw;
+                }
                 catch (Exception exception)
                 {
                     failedCount++;
+                    this.logger.LogWarning(exception, "Unable to apply Captain Coaster comparison result {ComparisonResultId} for session {SessionId}.", result.Id, session.Id);
                     AddLog(session, "Warn", $"Échec de l'application pour '{result.DisplayName}' : {exception.Message}");
                 }
 
@@ -488,8 +497,13 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
             return new DataSourceApplyResult { AppliedCount = appliedCount };
         }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
         catch (Exception exception)
         {
+            this.logger.LogError(exception, "Captain Coaster apply failed for session {SessionId}.", session.Id);
             session.Status = "Failed";
             session.CurrentStep = "ApplyComparison";
             session.Message = $"Échec de l'application métier : {exception.Message}";
@@ -498,7 +512,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             session.UpdatedAt = DateTime.UtcNow;
             session.CanResume = true;
             session.Metrics.AppliedChanges = startingAppliedChanges + appliedCount;
-            AddLog(session, "Error", exception.ToString());
+            AddLog(session, "Error", $"Échec de l'application métier : {exception.Message}");
             await this.PersistSessionAsync(session, cancellationToken);
             throw;
         }
@@ -590,15 +604,28 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             AddLog(session, "Info", $"Terminé : {session.Metrics.ParksFetched} parcs, {session.Metrics.CoastersFetched} coasters, {session.Metrics.ComparisonResults} résultats. Les changements restent en attente de validation manuelle avant intégration métier.");
             await this.PersistSessionAsync(session, cancellationToken);
         }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            session.Status = "Canceled";
+            session.CurrentStep = "Canceled";
+            session.Message = "Import interrompu.";
+            session.CompletedAtUtc = DateTime.UtcNow;
+            session.UpdatedAt = DateTime.UtcNow;
+            session.CanResume = true;
+            AddLog(session, "Warn", session.Message);
+            await this.PersistSessionAsync(session, CancellationToken.None);
+            throw;
+        }
         catch (Exception exception)
         {
+            this.logger.LogError(exception, "Captain Coaster import failed for session {SessionId}.", session.Id);
             session.Status = "Failed";
             session.CurrentStep = "Failed";
             session.Message = exception.Message;
             session.CompletedAtUtc = DateTime.UtcNow;
             session.UpdatedAt = DateTime.UtcNow;
             session.CanResume = true;
-            AddLog(session, "Error", exception.ToString());
+            AddLog(session, "Error", $"Échec de l'import : {exception.Message}");
             await this.PersistSessionAsync(session, cancellationToken);
         }
         finally

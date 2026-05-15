@@ -225,10 +225,6 @@ public sealed class UserRepository : IUserRepository
         return document?.ToDomain();
     }
 
-    public Task<bool> ValidateRefreshTokenAsync(string refreshToken, CancellationToken cancellationToken)
-    {
-        return Task.FromResult(false);
-    }
 
     private async Task<User?> UpdateRolesAsync(string userId, Action<List<Role>> updateRoles, CancellationToken cancellationToken)
     {

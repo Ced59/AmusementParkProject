@@ -1,0 +1,151 @@
+<p-card>
+  <div class="page-header">
+    <div>
+      <h2>{{ (isEditMode ? 'admin.parks.items.editTitle' : 'admin.parks.items.createTitle') | translate }}</h2>
+      <small class="text-color-secondary">
+        {{ 'admin.parks.items.refactorHint' | translate }}
+      </small>
+    </div>
+
+    <app-editor-save-toolbar
+      [statusLabel]="statusLabel"
+      [isDirty]="isDirty"
+      [isSaving]="isSaving"
+      [backButtonLabel]="'admin.parks.items.editorActions.backToItems' | translate"
+      [saveAllButtonLabel]="'admin.parks.items.editorActions.saveAll' | translate"
+      [saveAndCloseButtonLabel]="'admin.parks.items.editorActions.saveAndClose' | translate"
+      (back)="back.emit()"
+      (saveAll)="saveAll.emit()"
+      (saveAndClose)="saveAndClose.emit()">
+    </app-editor-save-toolbar>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submitForm.emit()" class="p-fluid">
+    <p-tabs [value]="activeTabIndex" (valueChange)="tabChanged.emit($event)">
+      <p-tablist>
+        <p-tab [value]="0">{{ 'admin.parks.items.tabs.general' | translate }}</p-tab>
+        @if (isAttractionCategory) {
+          <p-tab [value]="1">{{ 'admin.parks.items.tabs.details' | translate }}</p-tab>
+        }
+        @if (isAttractionCategory) {
+          <p-tab [value]="2">{{ 'admin.parks.items.tabs.accessConditions' | translate }}</p-tab>
+        }
+        @if (isAttractionCategory) {
+          <p-tab [value]="3">{{ 'admin.parks.items.tabs.locations' | translate }}</p-tab>
+        }
+        @if (isAttractionCategory) {
+          <p-tab [value]="4">{{ 'admin.parks.items.tabs.photos' | translate }}</p-tab>
+        }
+      </p-tablist>
+
+      <p-tabpanels>
+        <p-tabpanel [value]="0">
+          @if (activeTabIndex === 0) {
+            <app-admin-park-item-general-tab
+              [form]="form"
+              [categoryOptions]="categoryOptions"
+              [filteredTypeOptions]="filteredTypeOptions"
+              [zones]="zones"
+              [generalMapCenter]="generalMapCenter"
+              [generalMapZoom]="generalMapZoom"
+              [generalMapMarkers]="generalMapMarkers"
+              [canUseParkLocation]="canUseParkLocation"
+              [isSaving]="isSaving"
+              (generalMapPositionChange)="generalMapPositionChange.emit($event)"
+              (resetGeneralLocationToPark)="resetGeneralLocationToPark.emit()"
+              (saveSection)="saveSection.emit()">
+            </app-admin-park-item-general-tab>
+          }
+        </p-tabpanel>
+
+        @if (isAttractionCategory) {
+          <p-tabpanel [value]="1">
+            @if (activeTabIndex === 1) {
+              <app-admin-park-item-details-tab
+                [formGroup]="attractionDetailsGroup"
+                [manufacturerOptions]="manufacturerOptions"
+                [manufacturersLoading]="manufacturersLoading"
+                [manufacturerAddLink]="manufacturerAddLink"
+                [manufacturerAddQueryParams]="manufacturerAddQueryParams"
+                [waterExposureLevelOptions]="waterExposureLevelOptions"
+                [isSaving]="isSaving"
+                (saveSection)="saveSection.emit()">
+              </app-admin-park-item-details-tab>
+            }
+          </p-tabpanel>
+        }
+
+        @if (isAttractionCategory) {
+          <p-tabpanel [value]="2">
+            @if (activeTabIndex === 2) {
+              <app-admin-park-item-access-conditions-tab
+                [formGroup]="attractionDetailsGroup"
+                [accessConditionPresetOptions]="accessConditionPresetOptions"
+                [accessConditionUnitOptions]="accessConditionUnitOptions"
+                [selectedAccessConditionPreset]="selectedAccessConditionPreset"
+                [currentLang]="currentLang"
+                [isSaving]="isSaving"
+                (selectedAccessConditionPresetChange)="selectedAccessConditionPresetChange.emit($event)"
+                (addAccessCondition)="addAccessCondition.emit($event)"
+                (removeAccessCondition)="removeAccessCondition.emit($event)"
+                (moveAccessConditionUp)="moveAccessConditionUp.emit($event)"
+                (moveAccessConditionDown)="moveAccessConditionDown.emit($event)"
+                (accessConditionTypeChanged)="accessConditionTypeChanged.emit($event)"
+                (saveSection)="saveSection.emit()">
+              </app-admin-park-item-access-conditions-tab>
+            }
+          </p-tabpanel>
+        }
+
+        @if (isAttractionCategory) {
+          <p-tabpanel [value]="3">
+            @if (activeTabIndex === 3) {
+              <app-admin-park-item-locations-tab
+                [formGroup]="attractionLocationsGroup"
+                [selectedLocationKey]="selectedLocationKey"
+                [attractionLocationOptions]="attractionLocationOptions"
+                [locationMapCenter]="locationMapCenter"
+                [locationMapZoom]="locationMapZoom"
+                [locationMapMarkers]="locationMapMarkers"
+                [isSaving]="isSaving"
+                (selectedLocationKeyChange)="selectedLocationKeyChange.emit($event)"
+                (specificLocationMapPositionChange)="specificLocationMapPositionChange.emit($event)"
+                (clearLocationPoint)="clearLocationPoint.emit($event)"
+                (useGeneralLocation)="useGeneralLocation.emit()"
+                (clearSelectedLocation)="clearSelectedLocation.emit()"
+                (saveSection)="saveSection.emit()">
+              </app-admin-park-item-locations-tab>
+            }
+          </p-tabpanel>
+        }
+
+        @if (isAttractionCategory) {
+          <p-tabpanel [value]="4">
+            @if (activeTabIndex === 4) {
+              <app-admin-park-item-photos-tab
+                [isEditMode]="isEditMode"
+                [currentPhoto]="currentPhoto"
+                [allowMultiplePhotoUpload]="allowMultiplePhotoUpload"
+                [selectedPhotoCount]="selectedPhotoCount"
+                [newPhotoDescription]="newPhotoDescription"
+                [photosUploading]="photosUploading"
+                [photosLoading]="photosLoading"
+                [attractionPhotos]="attractionPhotos"
+                [pagedPhotos]="pagedPhotos"
+                [photosPageSize]="photosPageSize"
+                [isSaving]="isSaving"
+                (photoFileSelected)="photoFileSelected.emit($event)"
+                (newPhotoDescriptionChange)="newPhotoDescriptionChange.emit($event)"
+                (uploadPhoto)="uploadPhoto.emit()"
+                (setCurrentPhoto)="setCurrentPhoto.emit($event)"
+                (deletePhoto)="deletePhoto.emit($event)"
+                (photosPageChange)="photosPageChange.emit($event)"
+                (saveSection)="saveSection.emit()">
+              </app-admin-park-item-photos-tab>
+            }
+          </p-tabpanel>
+        }
+      </p-tabpanels>
+    </p-tabs>
+  </form>
+</p-card>

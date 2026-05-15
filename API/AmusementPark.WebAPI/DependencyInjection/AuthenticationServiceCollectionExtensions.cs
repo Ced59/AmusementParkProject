@@ -2,6 +2,8 @@ using System;
 using System.Text;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using AmusementPark.WebAPI.Authorization;
+using AmusementPark.WebAPI.Configuration;
+using AmusementPark.WebAPI.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -24,8 +26,11 @@ public static class AuthenticationServiceCollectionExtensions
         JwtSettings jwtSettings = configuration.GetSection("Authentication:Jwt").Get<JwtSettings>() ?? new JwtSettings();
         string? facebookAppId = configuration["Authentication:Facebook:AppId"];
         string? facebookAppSecret = configuration["Authentication:Facebook:AppSecret"];
+        RefreshTokenCookieSettings refreshTokenCookieSettings = configuration.GetSection(RefreshTokenCookieSettings.SectionName).Get<RefreshTokenCookieSettings>() ?? new RefreshTokenCookieSettings();
 
         services.AddHttpContextAccessor();
+        services.AddSingleton(refreshTokenCookieSettings);
+        services.AddScoped<RefreshTokenCookieService>();
 
         Microsoft.AspNetCore.Authentication.AuthenticationBuilder authenticationBuilder = services
             .AddAuthentication(options =>

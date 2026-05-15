@@ -1,18 +1,20 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
-import { UserCredentials } from '../../../models/users/user_credentials';
-import { UserToken } from '../../../models/users/user_token';
-import { ApiService } from '../../../services/api.service';
-import { AuthService } from '../../../services/auth/auth.service';
-import { ToastMessageService } from '../../../services/messages/toast-message.service';
-import { SharedService } from '../../../services/shared/shared.service';
-import { ModalService } from '../../../services/modal/modal.service';
+import { UserCredentials } from '@app/models/users/user_credentials';
+import { UserToken } from '@app/models/users/user_token';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
+import { AuthService } from '@app/services/auth/auth.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { SharedService } from '@app/services/shared/shared.service';
+import { ModalService } from '@app/services/modal/modal.service';
 import { FormsModule } from '@angular/forms';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';
 import { ButtonDirective } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
 @Component({
     selector: 'app-login-form',
     templateUrl: './login-form.component.html',
@@ -26,7 +28,7 @@ export class LoginFormComponent {
   @Output() loginSuccess: EventEmitter<UserToken> = new EventEmitter<UserToken>();
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly authApiService: AuthApiService,
     private readonly messageService: ToastMessageService,
     private readonly authService: AuthService,
     private readonly sharedService: SharedService,
@@ -34,24 +36,19 @@ export class LoginFormComponent {
     private readonly modalService: ModalService) {
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     const userCredentials: UserCredentials = new UserCredentials(this.loginEmail, this.loginPassword);
 
-    this.apiService.login(userCredentials).subscribe({
-      next: (result: UserToken) => {
-        this.authService.setToken(result.token);
-        this.messageService.add('success', 'Succès', 'Connexion réussie !');
-        this.sharedService.emitLoginStatusChange();
-        this.loginSuccess.emit(result);
-      },
-      error: (error: { error?: { message?: string; Message?: string; }; }): void => {
-        const errorMessage: string = error.error?.message
-          ?? error.error?.Message
-          ?? 'Une erreur inattendue est survenue.';
-
-        this.messageService.add('error', 'Erreur', errorMessage);
-      }
-    });
+    try {
+      const result: UserToken = await firstValueFrom(this.authApiService.login(userCredentials));
+      this.authService.setAuthenticatedSession(result);
+      this.messageService.add('success', 'Succès', 'Connexion réussie !');
+      this.sharedService.emitLoginStatusChange();
+      this.loginSuccess.emit(result);
+    } catch (error: unknown) {
+      const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
+      this.messageService.add('error', 'Erreur', errorMessage);
+    }
   }
 
   navigateToForgotPassword(): void {

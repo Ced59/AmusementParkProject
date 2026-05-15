@@ -1,0 +1,69 @@
+.session-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.session-topline {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+.running-hint {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  color: var(--primary-color, #3b82f6);
+  font-size: .85rem;
+}
+
+.session-message {
+  margin: 0;
+  opacity: .75;
+  font-size: .9rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.metric-card {
+  padding: .75rem 1rem;
+  border: 1px solid var(--surface-border, #d1d5db);
+  border-radius: 1rem;
+  background: var(--surface-card, #fff);
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.metric-card__label {
+  font-size: .78rem;
+  opacity: .7;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: .25rem;
+}
+
+.status-card {
+  padding: 1rem;
+  border: 1px solid var(--surface-border, #d1d5db);
+  border-radius: 1rem;
+  background: var(--surface-card, #fff);
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.status-card__label {
+  font-size: .82rem;
+  opacity: .7;
+}

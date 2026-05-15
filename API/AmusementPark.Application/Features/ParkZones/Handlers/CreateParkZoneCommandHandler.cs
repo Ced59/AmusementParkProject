@@ -43,7 +43,11 @@ public sealed class CreateParkZoneCommandHandler : ICommandHandler<CreateParkZon
             ParkZone created = await this.parkZoneRepository.CreateAsync(command.Zone, cancellationToken);
             return ApplicationResult<ParkZone>.Success(created);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<ParkZone>.Failure(ParkZoneApplicationErrors.ErrorCreatingParkZone());
         }

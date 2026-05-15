@@ -1,0 +1,110 @@
+<app-page-state
+  [state]="state().kind"
+  [messages]="{
+    loadingTitleKey: 'parks.detail.loadingTitle',
+    loadingMessageKey: 'parks.detail.loadingMessage',
+    errorTitleKey: 'parks.detail.errorTitle',
+    errorMessageKey: 'parks.detail.errorMessage'
+  }">
+  <section class="park-detail public-page page-shell" *ngIf="park() as currentPark">
+    <div class="page-header park-detail__header">
+      <div>
+        <span class="public-kicker">
+          <i class="pi pi-compass"></i>
+          {{ 'parks.detail.heroBadge' | translate }}
+        </span>
+      </div>
+
+      <div class="detail-actions">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-arrow-left"
+          class="p-button-outlined"
+          [label]="'parks.actions.backToList' | translate"
+          (click)="goBack()"></button>
+
+        <button
+          *ngIf="currentPark.exploreLink"
+          pButton
+          type="button"
+          icon="pi pi-sitemap"
+          [label]="'parkVisitor.summary.viewAllItems' | translate"
+          (click)="goToExplore()"></button>
+      </div>
+    </div>
+
+    <app-park-hero-section [park]="currentPark"></app-park-hero-section>
+
+    <div class="park-detail__summary-grid" *ngIf="summary() as currentSummary">
+      <app-park-content-summary [summary]="currentSummary"></app-park-content-summary>
+
+      <section class="public-shell-card park-detail__quick-actions">
+        <div class="public-panel__content public-shell-stack">
+          <div>
+            <span class="public-kicker">
+              <i class="pi pi-star"></i>
+              {{ 'parks.detail.heroBadge' | translate }}
+            </span>
+            <h2 class="park-detail__quick-title">{{ 'parkVisitor.summary.title' | translate }}</h2>
+            <p class="public-muted">{{ 'parkVisitor.summary.subtitle' | translate }}</p>
+          </div>
+
+          <div class="public-pill-list">
+            <span class="public-pill public-pill--soft" *ngIf="currentPark.countryCode">
+              <i class="pi pi-map-marker"></i>
+              {{ currentPark.countryCode }}
+            </span>
+            <span class="public-pill public-pill--soft" *ngIf="currentPark.city">
+              <i class="pi pi-building"></i>
+              {{ currentPark.city }}
+            </span>
+            <span class="public-pill public-pill--gold" *ngIf="currentPark.hasLocationInfo">
+              <i class="pi pi-map"></i>
+              {{ 'parks.detail.location.title' | translate }}
+            </span>
+          </div>
+
+          <div class="public-cta-row">
+            <button
+              *ngIf="currentPark.exploreLink"
+              pButton
+              type="button"
+              icon="pi pi-sitemap"
+              [label]="'parkVisitor.summary.viewAllItems' | translate"
+              (click)="goToExplore()"></button>
+
+            <a
+              *ngIf="currentPark.websiteUrl"
+              pButton
+              class="p-button-outlined"
+              icon="pi pi-external-link"
+              [href]="currentPark.websiteUrl | safeExternalUrl"
+              target="_blank"
+              rel="noreferrer noopener"
+              [label]="'parks.actions.website' | translate">
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="park-detail__grid">
+      <app-park-practical-info-section
+        *ngIf="currentPark.hasPracticalInfo"
+        [park]="currentPark">
+      </app-park-practical-info-section>
+
+      <app-park-location-section
+        *ngIf="currentPark.hasLocationInfo"
+        [park]="currentPark">
+      </app-park-location-section>
+    </div>
+
+    <app-park-nearby-section
+      [parks]="nearbyParks()"
+      [currentLang]="currentLang()"
+      [state]="nearbyState()">
+    </app-park-nearby-section>
+  </section>
+</app-page-state>

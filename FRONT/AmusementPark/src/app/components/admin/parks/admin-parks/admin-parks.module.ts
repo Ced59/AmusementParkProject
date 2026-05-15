@@ -24,6 +24,7 @@ import { AdminParkZonesComponent } from './admin-park-zones/admin-park-zones.com
 import { AdminParkZoneEditComponent } from './admin-park-zone-edit/admin-park-zone-edit.component';
 import { AdminParkItemsComponent } from './admin-park-items/admin-park-items.component';
 import { AdminParkItemEditComponent } from './admin-park-item-edit/admin-park-item-edit.component';
+import { AdminParkItemEditFormComponent } from './admin-park-item-edit/admin-park-item-edit-form.component';
 import { AdminParkItemGeneralTabComponent } from './admin-park-item-edit/tabs/admin-park-item-general-tab/admin-park-item-general-tab.component';
 import { AdminParkItemDetailsTabComponent } from './admin-park-item-edit/tabs/admin-park-item-details-tab/admin-park-item-details-tab.component';
 import { AdminParkItemAccessConditionsTabComponent } from './admin-park-item-edit/tabs/admin-park-item-access-conditions-tab/admin-park-item-access-conditions-tab.component';
@@ -60,6 +61,7 @@ import { AdminParkLogosTabComponent } from './admin-park-edit/tabs/admin-park-lo
     AdminParkZoneEditComponent,
     AdminParkItemsComponent,
     AdminParkItemEditComponent,
+    AdminParkItemEditFormComponent,
     AdminParkItemGeneralTabComponent,
     AdminParkItemDetailsTabComponent,
     AdminParkItemAccessConditionsTabComponent,

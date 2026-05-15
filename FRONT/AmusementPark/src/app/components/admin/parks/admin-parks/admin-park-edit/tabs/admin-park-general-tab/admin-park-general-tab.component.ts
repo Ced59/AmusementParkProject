@@ -1,20 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EntitySelectOption } from '../../../../../../../models/shared/entity-select-option';
-import { ParkType } from '../../../../../../../models/parks/park-type';
+import { EntitySelectOption } from '@app/models/shared/entity-select-option';
+import { AdminParkTypeOption } from '@features/admin/parks/models/admin-park-edit.model';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';
 import { RouterLink } from '@angular/router';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
-import { EntitySelectComponent } from '../../../../../../shared/entity-select/entity-select.component';
+import { EntitySelectComponent } from '@app/components/shared/entity-select/entity-select.component';
 import { ToggleSwitch } from 'primeng/toggleswitch';
 import { TranslateModule } from '@ngx-translate/core';
 
-interface ParkTypeOption {
-  labelKey: string;
-  value: ParkType;
-}
 
 @Component({
     selector: 'app-admin-park-general-tab',
@@ -24,7 +20,7 @@ interface ParkTypeOption {
 })
 export class AdminParkGeneralTabComponent {
   @Input({ required: true }) form!: FormGroup;
-  @Input() parkTypeOptions: ParkTypeOption[] = [];
+  @Input() parkTypeOptions: AdminParkTypeOption[] = [];
   @Input() countryOptions: { code: string; label: string }[] = [];
   @Input() founderOptions: EntitySelectOption[] = [];
   @Input() operatorOptions: EntitySelectOption[] = [];

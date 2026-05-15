@@ -1,0 +1,48 @@
+<p-card header="Progression du pipeline">
+  <div *ngIf="session() as currentSession" class="session-panel">
+    <div class="session-topline">
+      <p-tag
+        [value]="currentSession.status"
+        [severity]="captainCoasterPipelineFacade.getSessionStatusSeverity(currentSession.status)">
+      </p-tag>
+      <span>{{ currentSession.currentStep }}</span>
+      <span class="running-hint" *ngIf="currentSession.importKind">
+        Mode : {{ currentSession.importKind }}
+      </span>
+      <span *ngIf="isSessionRunning()" class="running-hint">
+        <i class="pi pi-spin pi-spinner"></i> En cours...
+      </span>
+    </div>
+
+    <p-progressBar [value]="currentSession.progressPercentage"></p-progressBar>
+    <p class="session-message">{{ currentSession.message }}</p>
+
+    <div class="metrics-grid">
+      <div class="metric-card"><span class="metric-card__label">URLs découvertes</span><strong>{{ currentSession.discoveredItems }}</strong></div>
+      <div class="metric-card"><span class="metric-card__label">Fiches traitées</span><strong>{{ currentSession.processedItems }}</strong></div>
+      <div class="metric-card"><span class="metric-card__label">Parcs dérivés</span><strong>{{ currentSession.parksFetched }}</strong></div>
+      <div class="metric-card"><span class="metric-card__label">Coasters parsés</span><strong>{{ currentSession.coastersFetched }}</strong></div>
+      <div class="metric-card"><span class="metric-card__label">Différences</span><strong>{{ currentSession.comparisonResults }}</strong></div>
+      <div class="metric-card"><span class="metric-card__label">Doublons à arbitrer</span><strong>{{ currentSession.duplicateConflicts }}</strong></div>
+      <div class="metric-card"><span class="metric-card__label">Échecs</span><strong>{{ currentSession.failedItems }}</strong></div>
+      <div class="metric-card"><span class="metric-card__label">Ignorés</span><strong>{{ currentSession.skippedItems }}</strong></div>
+      <div class="metric-card"><span class="metric-card__label">Appliqués</span><strong>{{ currentSession.appliedChanges }}</strong></div>
+    </div>
+
+    <div class="status-grid" *ngIf="currentSession.availableSteps.length > 0">
+      <div class="status-card">
+        <span class="status-card__label">Étapes disponibles</span>
+        <strong>{{ currentSession.availableSteps.join(' → ') }}</strong>
+      </div>
+      <div class="status-card">
+        <span class="status-card__label">Dernière étape terminée</span>
+        <strong>{{ currentSession.lastCompletedStep || 'Aucune' }}</strong>
+      </div>
+    </div>
+
+    <app-captain-coaster-session-logs
+      *ngIf="currentSession.logs.length > 0"
+      [logs]="currentSession.logs">
+    </app-captain-coaster-session-logs>
+  </div>
+</p-card>

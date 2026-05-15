@@ -2,7 +2,7 @@
   <ng-template pTemplate="header">
     <div class="header-row">
       <span class="total">
-        {{ 'admin.operators.total' | translate:{ count: filteredOperators.length } }}
+        {{ 'admin.operators.total' | translate:{ count: totalCount() } }}
       </span>
     </div>
   </ng-template>
@@ -11,8 +11,8 @@
     <input
       pInputText
       type="text"
-      [(ngModel)]="searchQuery"
-      (ngModelChange)="applyFilter()"
+      [ngModel]="stateFacade.searchQuery()"
+      (ngModelChange)="onSearchQueryChanged($event)"
       [placeholder]="'admin.operators.searchPlaceholder' | translate" />
 
     <a
@@ -26,8 +26,8 @@
   </div>
 
   <p-table
-    [value]="filteredOperators"
-    [loading]="loading"
+    [value]="filteredOperators()"
+    [loading]="loading()"
     [responsiveLayout]="'scroll'">
     <ng-template pTemplate="header">
       <tr>
@@ -51,11 +51,14 @@
         </td>
       </tr>
     </ng-template>
-
     <ng-template pTemplate="emptymessage">
       <tr>
         <td colspan="2">
-          {{ 'admin.operators.empty' | translate }}
+          <app-empty-state
+            [compact]="true"
+            titleKey="common.emptyTitle"
+            messageKey="admin.operators.empty">
+          </app-empty-state>
         </td>
       </tr>
     </ng-template>

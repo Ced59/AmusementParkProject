@@ -12,7 +12,7 @@
     </div>
 
     <app-image-display
-      [imageId]="currentPark.currentLogoImageId ?? null"
+      [imageId]="currentPark.logoImageId"
       [alt]="currentPark.name || 'Park logo'"
       imgClass="park-card__logo">
     </app-image-display>
@@ -20,23 +20,23 @@
 
   <div class="park-card__body">
     <div class="park-card__headline">
-      <p class="park-card__eyebrow" *ngIf="locationLine">{{ locationLine }}</p>
+      <p class="park-card__eyebrow" *ngIf="currentPark.locationLine">{{ currentPark.locationLine }}</p>
       <h3 class="park-card__title">{{ currentPark.name }}</h3>
     </div>
 
-    <p class="park-card__description" *ngIf="shortDescription && !compact">
-      {{ shortDescription }}
+    <p class="park-card__description" *ngIf="currentPark.shortDescription && !compact">
+      {{ currentPark.shortDescription }}
     </p>
 
     <div class="park-card__details">
-      <div class="park-card__detail" *ngIf="addressLine">
+      <div class="park-card__detail" *ngIf="currentPark.addressLine">
         <span class="park-card__label">{{ 'parks.fields.address' | translate }}</span>
-        <strong>{{ addressLine }}</strong>
+        <strong>{{ currentPark.addressLine }}</strong>
       </div>
 
-      <div class="park-card__detail" *ngIf="coordinatesLine && !compact">
+      <div class="park-card__detail" *ngIf="currentPark.coordinatesLine && !compact">
         <span class="park-card__label">{{ 'parks.fields.coordinates' | translate }}</span>
-        <strong>{{ coordinatesLine }}</strong>
+        <strong>{{ currentPark.coordinatesLine }}</strong>
       </div>
     </div>
   </div>
@@ -52,11 +52,11 @@
     </a>
 
     <a
-      *ngIf="currentPark.webSiteUrl"
+      *ngIf="currentPark.websiteUrl"
       pButton
       class="p-button-text park-card__secondary-cta"
       icon="pi pi-external-link"
-      [href]="currentPark.webSiteUrl"
+      [href]="currentPark.websiteUrl | safeExternalUrl"
       target="_blank"
       rel="noreferrer noopener"
       [label]="'parks.actions.website' | translate">

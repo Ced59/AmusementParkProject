@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
-import { ThemeService } from '../../services/themes/themes.service';
+import { ThemeService } from '@app/services/themes/themes.service';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';

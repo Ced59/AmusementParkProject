@@ -1,35 +1,45 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { resolveLocalizedValue } from '../../../../../commons/localized-item.utils';
-import { ParkItem } from '../../../../../models/parks/park-item';
-import { ParkZone } from '../../../../../models/parks/park-zone';
-import { ApiService } from '../../../../../services/api.service';
+import { EmptyStateComponent } from '../../../../shared/empty-state/empty-state.component';
+import { resolveLocalizedValue } from '@shared/utils/localization';
+import { ParkItem } from '@app/models/parks/park-item';
+import { ParkZone } from '@app/models/parks/park-zone';
+import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { PrimeTemplate } from 'primeng/api';
 import { ButtonDirective } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { PageStateComponent } from '../../../../shared/page-state/page-state.component';
+import { AdminParkItemsStateFacade } from '@features/admin/parks/state/admin-park-items-state.facade';
+import {
+  getParkItemCategoryTranslationKey,
+  getParkItemTypeTranslationKey
+} from '@shared/utils/display/display-label.helpers';
 
 @Component({
     selector: 'app-admin-park-items',
     templateUrl: './admin-park-items.component.html',
     styleUrls: ['./admin-park-items.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [Bind, Card, PrimeTemplate, ButtonDirective, RouterLink, TableModule, TranslateModule]
+    providers: [AdminParkItemsStateFacade],
+    imports: [Bind, Card, PrimeTemplate, ButtonDirective, RouterLink, TableModule, TranslateModule, PageStateComponent, EmptyStateComponent]
 })
 export class AdminParkItemsComponent implements OnInit {
   parkId: string = '';
   currentLang: string = 'en';
-  items: ParkItem[] = [];
-  zones: ParkZone[] = [];
-  loading: boolean = false;
+  protected readonly state = this.stateFacade.state;
+  protected readonly items = this.stateFacade.items;
+  protected readonly zones = this.stateFacade.zones;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly apiService: ApiService,
+    private readonly parkItemsApiService: ParkItemsApiService,
     private readonly translateService: TranslateService,
-    private readonly cdr: ChangeDetectorRef
+    private readonly stateFacade: AdminParkItemsStateFacade,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -44,26 +54,7 @@ export class AdminParkItemsComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
-    this.cdr.markForCheck();
-
-    this.apiService.getParkZonesByParkId(this.parkId).subscribe((zones: ParkZone[]) => {
-      this.zones = zones;
-      this.cdr.markForCheck();
-    });
-
-    this.apiService.getParkItemsByParkId(this.parkId).subscribe({
-      next: (items: ParkItem[]) => {
-        this.items = items;
-        this.loading = false;
-        this.cdr.markForCheck();
-      },
-      error: (error: unknown) => {
-        console.error('Error loading park items', error);
-        this.loading = false;
-        this.cdr.markForCheck();
-      }
-    });
+    this.stateFacade.loadData(this.parkId);
   }
 
   getZoneName(zoneId?: string | null): string {
@@ -71,8 +62,16 @@ export class AdminParkItemsComponent implements OnInit {
       return '—';
     }
 
-    const zone: ParkZone | undefined = this.zones.find((item: ParkZone) => item.id === zoneId);
+    const zone: ParkZone | undefined = this.zones().find((item: ParkZone) => item.id === zoneId);
     return resolveLocalizedValue(zone?.names, this.currentLang) ?? zone?.name ?? '—';
+  }
+
+  getCategoryLabelKey(category: string | null | undefined): string {
+    return getParkItemCategoryTranslationKey(category);
+  }
+
+  getTypeLabelKey(type: string | null | undefined): string {
+    return getParkItemTypeTranslationKey(type);
   }
 
   deleteItem(item: ParkItem): void {
@@ -80,7 +79,7 @@ export class AdminParkItemsComponent implements OnInit {
       return;
     }
 
-    this.apiService.deleteParkItem(item.id).subscribe({
+    this.parkItemsApiService.deleteParkItem(item.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => this.loadData(),
       error: (error: unknown) => console.error('Error deleting park item', error)
     });

@@ -1,12 +1,12 @@
 namespace AmusementPark.Infrastructure;
 
 /// <summary>
-/// Marqueur de projet utilisé pour la phase 11 de la refonte Clean Architecture.
+/// Marqueur infrastructure aligné sur la nouvelle roadmap de migration.
 /// </summary>
 public static class ArchitecturePhase
 {
     /// <summary>
-    /// Libellé de la phase d'architecture actuellement préparée dans ce projet.
+    /// Libellé du palier de migration actuellement préparé dans ce projet.
     /// </summary>
-    public const string Current = "Phase 12 - Provider Captain Coaster générique, queue interne et worker d'import";
+    public const string Current = "P00 - Diagnostic unifié via health et socle de migration stabilisé";
 }

@@ -1,0 +1,113 @@
+<app-page-state
+  [state]="state().kind"
+  [messages]="{
+    loadingTitleKey: 'admin.loading',
+    loadingMessageKey: 'common.loadingMessage',
+    errorTitleKey: 'common.errorTitle',
+    errorMessageKey: 'common.errorMessage',
+    emptyTitleKey: 'common.emptyTitle',
+    emptyMessageKey: 'admin.parkItems.empty'
+  }">
+  <p-card>
+    <div class="page-header">
+      <div>
+        <h2>{{ 'admin.parkItems.title' | translate }}</h2>
+        <small class="text-color-secondary">{{ 'admin.parkItems.subtitle' | translate }}</small>
+      </div>
+    </div>
+
+    <div class="filters-row">
+      <span class="p-input-icon-left search-box">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          type="text"
+          [ngModel]="searchTerm"
+          (ngModelChange)="onSearchTermChanged($event)"
+          [placeholder]="'admin.parkItems.searchPlaceholder' | translate" />
+      </span>
+
+      <p-select
+        [ngModel]="selectedParkId"
+        [options]="parkOptions()"
+        optionLabel="label"
+        optionValue="value"
+        [showClear]="true"
+        (ngModelChange)="onSelectedParkIdChange($event)"
+        [placeholder]="'admin.parkItems.parkFilter' | translate">
+      </p-select>
+    </div>
+
+    <p-table
+      [value]="rows()"
+      [loading]="state().kind === 'loading'"
+      responsiveLayout="scroll"
+      sortField="parkName"
+      [sortOrder]="1">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="parkName">
+            {{ 'admin.parkItems.columns.park' | translate }}
+            <p-sortIcon field="parkName"></p-sortIcon>
+          </th>
+          <th pSortableColumn="name">
+            {{ 'admin.parkItems.columns.item' | translate }}
+            <p-sortIcon field="name"></p-sortIcon>
+          </th>
+          <th pSortableColumn="type">
+            {{ 'admin.parkItems.columns.type' | translate }}
+            <p-sortIcon field="type"></p-sortIcon>
+          </th>
+          <th>
+            {{ 'admin.parkItems.columns.visibility' | translate }}
+          </th>
+          <th>
+            {{ 'admin.parkItems.columns.actions' | translate }}
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-row>
+        <tr>
+          <td>{{ row.parkName }}</td>
+          <td>{{ row.name }}</td>
+          <td>{{ getTypeLabelKey(row.type) | translate }}</td>
+          <td>
+            <p-tag
+              [value]="row.isVisible ? ('admin.visible' | translate) : ('admin.hidden' | translate)"
+              [severity]="row.isVisible ? 'success' : 'warn'">
+            </p-tag>
+          </td>
+          <td>
+            <button
+              pButton
+              type="button"
+              icon="pi pi-pencil"
+              class="p-button-sm"
+              (click)="goToEdit(row)"
+              [label]="'actions.edit' | translate">
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">
+          <app-empty-state
+            [compact]="true"
+            titleKey="common.emptyTitle"
+            messageKey="admin.parkItems.empty">
+          </app-empty-state>
+        </td>
+      </tr>
+    </ng-template>
+    </p-table>
+
+    <app-pagination
+      [rows]="pageSize"
+      [totalRecords]="totalRecords()"
+      [rowsPerPageOptions]="[10, 20, 50, 100]"
+      (pageChanged)="onPageChange($event)">
+    </app-pagination>
+  </p-card>
+</app-page-state>

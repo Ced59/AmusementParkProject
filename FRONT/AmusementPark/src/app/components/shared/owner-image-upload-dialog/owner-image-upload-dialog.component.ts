@@ -1,11 +1,12 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize, Subscription, switchMap } from 'rxjs';
 
-import { ApiService } from '../../../services/api.service';
-import { ImageCategory } from '../../../models/images/image-category';
-import { ImageOwnerType } from '../../../models/images/image-owner-type';
-import { ImageDto } from '../../../models/images/image-dto';
-import { UploadedImage } from '../../../models/images/uploaded-image';
+import { ImagesApiService } from '@data-access/images/images-api.service';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImageDto } from '@app/models/images/image-dto';
+import { UploadedImage } from '@app/models/images/uploaded-image';
 import { Bind } from 'primeng/bind';
 import { Dialog } from 'primeng/dialog';
 import { ButtonDirective } from 'primeng/button';
@@ -13,12 +14,14 @@ import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
 import { PrimeTemplate } from 'primeng/api';
 import { TranslateModule } from '@ngx-translate/core';
+import { ImageDisplayComponent } from '../image-display/image-display.component';
+import { ImageUploadSecurityService } from '@shared/utils/security';
 
 @Component({
     selector: 'app-owner-image-upload-dialog',
     templateUrl: './owner-image-upload-dialog.component.html',
     styleUrls: ['./owner-image-upload-dialog.component.scss'],
-    imports: [Bind, Dialog, ButtonDirective, FormsModule, InputText, PrimeTemplate, TranslateModule]
+    imports: [Bind, Dialog, ButtonDirective, FormsModule, InputText, PrimeTemplate, TranslateModule, ImageDisplayComponent]
 })
 export class OwnerImageUploadDialogComponent implements OnDestroy {
   @Input() visible: boolean = false;
@@ -55,7 +58,11 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
 
   private uploadSubscription: Subscription | null = null;
 
-  constructor(private readonly apiService: ApiService) {
+  constructor(
+    private readonly imagesApiService: ImagesApiService,
+    private readonly imageUploadSecurityService: ImageUploadSecurityService,
+    private readonly destroyRef: DestroyRef
+  ) {
   }
 
   ngOnDestroy(): void {
@@ -129,14 +136,14 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     this.isUploading = true;
 
     this.uploadSubscription?.unsubscribe();
-    this.uploadSubscription = this.apiService.uploadImage(
+    this.uploadSubscription = this.imagesApiService.uploadImage(
       this.selectedFile,
       this.category,
       this.withWatermark,
       this.showDescription ? this.description : undefined)
       .pipe(
         switchMap((uploadedImage: UploadedImage) => {
-          return this.apiService.linkImage({
+          return this.imagesApiService.linkImage({
             imageId: uploadedImage.id,
             ownerType: this.ownerType,
             ownerId: this.ownerId,
@@ -147,7 +154,7 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
         finalize(() => {
           this.isUploading = false;
         }))
-      .subscribe({
+      .pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (image: ImageDto) => {
           this.uploaded.emit(image);
           this.resetAndClose();
@@ -173,17 +180,13 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
       return;
     }
 
-    if (!file.type.startsWith('image/')) {
+    const validationResult = this.imageUploadSecurityService.validateImageFile(file, this.maxFileSizeBytes);
+    if (!validationResult.isValid) {
       this.selectedFile = null;
       this.cleanupPreviewUrl();
-      this.errorTranslationKey = this.invalidFileKey;
-      return;
-    }
-
-    if (file.size > this.maxFileSizeBytes) {
-      this.selectedFile = null;
-      this.cleanupPreviewUrl();
-      this.errorTranslationKey = this.invalidSizeKey;
+      this.errorTranslationKey = validationResult.errorKey === 'shared.imageUpload.invalidSize'
+        ? this.invalidSizeKey
+        : this.invalidFileKey;
       return;
     }
 

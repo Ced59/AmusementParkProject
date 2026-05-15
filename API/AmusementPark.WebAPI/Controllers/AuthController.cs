@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AmusementPark.Application.Abstractions;
@@ -7,9 +8,11 @@ using AmusementPark.Application.Features.Users.Commands;
 using AmusementPark.Application.Features.Users.Contracts;
 using AmusementPark.Application.Features.Users.Results;
 using AmusementPark.Core.Domain.Users;
+using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Contracts.Users;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.Security;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,18 +29,27 @@ public sealed class AuthController : ControllerBase
     private readonly ICommandHandler<LoginCommand, ApplicationResult<AuthenticatedUserResult>> loginCommandHandler;
     private readonly ICommandHandler<RefreshTokenCommand, ApplicationResult<AuthenticatedUserResult>> refreshTokenCommandHandler;
     private readonly ICommandHandler<ProvisionExternalUserCommand, ApplicationResult<AuthenticatedUserResult>> provisionExternalUserCommandHandler;
+    private readonly ICommandHandler<RevokeRefreshTokenCommand, ApplicationResult> revokeRefreshTokenCommandHandler;
     private readonly IAuthenticationSchemeProvider authenticationSchemeProvider;
+    private readonly RefreshTokenCookieService refreshTokenCookieService;
+    private readonly CorsSettings corsSettings;
 
     public AuthController(
         ICommandHandler<LoginCommand, ApplicationResult<AuthenticatedUserResult>> loginCommandHandler,
         ICommandHandler<RefreshTokenCommand, ApplicationResult<AuthenticatedUserResult>> refreshTokenCommandHandler,
         ICommandHandler<ProvisionExternalUserCommand, ApplicationResult<AuthenticatedUserResult>> provisionExternalUserCommandHandler,
-        IAuthenticationSchemeProvider authenticationSchemeProvider)
+        ICommandHandler<RevokeRefreshTokenCommand, ApplicationResult> revokeRefreshTokenCommandHandler,
+        IAuthenticationSchemeProvider authenticationSchemeProvider,
+        RefreshTokenCookieService refreshTokenCookieService,
+        CorsSettings corsSettings)
     {
         this.loginCommandHandler = loginCommandHandler;
         this.refreshTokenCommandHandler = refreshTokenCommandHandler;
         this.provisionExternalUserCommandHandler = provisionExternalUserCommandHandler;
+        this.revokeRefreshTokenCommandHandler = revokeRefreshTokenCommandHandler;
         this.authenticationSchemeProvider = authenticationSchemeProvider;
+        this.refreshTokenCookieService = refreshTokenCookieService;
+        this.corsSettings = corsSettings;
     }
 
     [HttpPost("login")]
@@ -50,8 +62,11 @@ public sealed class AuthController : ControllerBase
 
         if (!result.IsSuccess || result.Value is null)
         {
+            this.refreshTokenCookieService.DeleteRefreshTokenCookie(this.Response);
             return this.ToActionResult(result);
         }
+
+        this.ApplyRefreshTokenCookie(result.Value);
 
         return this.Ok(new UserLoggedDto
         {
@@ -61,21 +76,60 @@ public sealed class AuthController : ControllerBase
 
     [HttpPost("refresh-token")]
     [ProducesResponseType(typeof(RefreshTokenResponseDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> RefreshTokenAsync([FromBody] RefreshTokenRequestDto token, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> RefreshTokenAsync([FromBody] RefreshTokenRequestDto? token, CancellationToken cancellationToken = default)
     {
+        if (!this.IsAllowedCredentialOrigin())
+        {
+            this.refreshTokenCookieService.DeleteRefreshTokenCookie(this.Response);
+            return CreateLegacyError(StatusCodes.Status403Forbidden, "Origin is not allowed for credentialed authentication requests.");
+        }
+
+        string? refreshTokenFromCookie = this.refreshTokenCookieService.GetRefreshToken(this.Request);
+        string refreshToken = !string.IsNullOrWhiteSpace(refreshTokenFromCookie)
+            ? refreshTokenFromCookie
+            : token?.RefreshToken ?? string.Empty;
+
         ApplicationResult<AuthenticatedUserResult> result = await this.refreshTokenCommandHandler.HandleAsync(
-            new RefreshTokenCommand(token.ToApplication()),
+            new RefreshTokenCommand(new RefreshTokenRequest
+            {
+                RefreshToken = refreshToken,
+            }),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
         {
+            this.refreshTokenCookieService.DeleteRefreshTokenCookie(this.Response);
             return this.ToActionResult(result);
         }
 
+        this.ApplyRefreshTokenCookie(result.Value);
+
         return this.Ok(new RefreshTokenResponseDto
         {
-            RefreshToken = result.Value.RefreshToken,
+            AccessToken = result.Value.AccessToken,
         });
+    }
+
+    [HttpPost("logout")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> Logout(CancellationToken cancellationToken = default)
+    {
+        if (!this.IsAllowedCredentialOrigin())
+        {
+            this.refreshTokenCookieService.DeleteRefreshTokenCookie(this.Response);
+            return CreateLegacyError(StatusCodes.Status403Forbidden, "Origin is not allowed for credentialed authentication requests.");
+        }
+
+        string? refreshToken = this.refreshTokenCookieService.GetRefreshToken(this.Request);
+        if (!string.IsNullOrWhiteSpace(refreshToken))
+        {
+            await this.revokeRefreshTokenCommandHandler.HandleAsync(
+                new RevokeRefreshTokenCommand(refreshToken, "UserLogout"),
+                cancellationToken);
+        }
+
+        this.refreshTokenCookieService.DeleteRefreshTokenCookie(this.Response);
+        return this.NoContent();
     }
 
     [HttpPost("external/{provider}")]
@@ -100,8 +154,11 @@ public sealed class AuthController : ControllerBase
 
         if (!result.IsSuccess || result.Value is null)
         {
+            this.refreshTokenCookieService.DeleteRefreshTokenCookie(this.Response);
             return this.ToActionResult(result);
         }
+
+        this.ApplyRefreshTokenCookie(result.Value);
 
         return this.Ok(new UserLoggedDto
         {
@@ -142,6 +199,43 @@ public sealed class AuthController : ControllerBase
         }
 
         return this.Ok();
+    }
+
+    private void ApplyRefreshTokenCookie(AuthenticatedUserResult result)
+    {
+        if (string.IsNullOrWhiteSpace(result.RefreshToken))
+        {
+            this.refreshTokenCookieService.DeleteRefreshTokenCookie(this.Response);
+            return;
+        }
+
+        this.refreshTokenCookieService.AppendRefreshTokenCookie(
+            this.Response,
+            result.RefreshToken,
+            result.RefreshTokenExpiresAtUtc);
+    }
+
+    private bool IsAllowedCredentialOrigin()
+    {
+        string? origin = this.Request.Headers.Origin;
+        if (string.IsNullOrWhiteSpace(origin))
+        {
+            return true;
+        }
+
+        string normalizedOrigin = origin.TrimEnd('/');
+        string[] allowedOrigins = this.corsSettings.AllowedOrigins
+            .Where(static item => !string.IsNullOrWhiteSpace(item))
+            .Select(static item => item.TrimEnd('/'))
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToArray();
+
+        if (allowedOrigins.Length == 0)
+        {
+            return true;
+        }
+
+        return allowedOrigins.Contains(normalizedOrigin, StringComparer.OrdinalIgnoreCase);
     }
 
     private static ObjectResult CreateLegacyError(int statusCode, string message)

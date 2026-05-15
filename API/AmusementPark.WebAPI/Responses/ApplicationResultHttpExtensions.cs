@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using AmusementPark.Application.Errors;
-using Microsoft.AspNetCore.Http;
+using AmusementPark.WebAPI.Architecture;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmusementPark.WebAPI.Responses;
@@ -39,16 +39,7 @@ internal static class ApplicationResultHttpExtensions
 
     private static IActionResult ToActionResult(this ControllerBase controller, ApplicationError error)
     {
-        int statusCode = error.Type switch
-        {
-            ApplicationErrorType.Validation => StatusCodes.Status400BadRequest,
-            ApplicationErrorType.NotFound => StatusCodes.Status404NotFound,
-            ApplicationErrorType.RuleViolation => StatusCodes.Status400BadRequest,
-            ApplicationErrorType.Conflict => StatusCodes.Status409Conflict,
-            ApplicationErrorType.Unauthorized => StatusCodes.Status401Unauthorized,
-            ApplicationErrorType.Forbidden => StatusCodes.Status403Forbidden,
-            _ => StatusCodes.Status500InternalServerError,
-        };
+        int statusCode = ApplicationResultHttpMapper.ToStatusCode(error.Type);
 
         return new ObjectResult(new
         {

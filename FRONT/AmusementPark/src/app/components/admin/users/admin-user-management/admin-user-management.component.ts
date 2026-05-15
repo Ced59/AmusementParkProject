@@ -1,21 +1,20 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Injector, OnInit, effect, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { LANGUAGES } from '../../../../commons/languages';
-import { AppRole, APP_ROLES } from '../../../../models/users/app-role';
-import { ImageCategory } from '../../../../models/images/image-category';
-import { ImageDto } from '../../../../models/images/image-dto';
-import { ImageOwnerType } from '../../../../models/images/image-owner-type';
-import { UserDto } from '../../../../models/users/user_dto';
-import { UserPut } from '../../../../models/users/user_put';
-import { ViewState } from '../../../../models/shared/view-state';
-import { ApiService } from '../../../../services/api.service';
-import { AuthService } from '../../../../services/auth/auth.service';
-import { ToastMessageService } from '../../../../services/messages/toast-message.service';
-import { UserAdminApiService } from '../../../../services/users/user-admin-api.service';
-import { commitViewUpdate } from '../../../../utils/change-detection.utils';
+import { LANGUAGES } from '@shared/models/localization';
+import { AppRole, APP_ROLES } from '@app/models/users/app-role';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { UserDto } from '@app/models/users/user_dto';
+import { UserPut } from '@app/models/users/user_put';
+import { ImagesApiService } from '@data-access/images/images-api.service';
+import { UsersApiService } from '@data-access/users/users-api.service';
+import { AuthService } from '@app/services/auth/auth.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { UserAdminApiService } from '@data-access/users/user-admin-api.service';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';
@@ -25,16 +24,19 @@ import { Tag } from 'primeng/tag';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
 import { OwnerImageUploadDialogComponent } from '../../../shared/owner-image-upload-dialog/owner-image-upload-dialog.component';
+import { ImageDisplayComponent } from '../../../shared/image-display/image-display.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { AdminUserManagementStateFacade } from '@features/admin/users/state/admin-user-management-state.facade';
 
 @Component({
     selector: 'app-admin-user-management',
     templateUrl: './admin-user-management.component.html',
     styleUrls: ['./admin-user-management.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [PageStateComponent, Bind, ButtonDirective, NgIf, Card, Tag, NgFor, FormsModule, ReactiveFormsModule, InputText, Select, OwnerImageUploadDialogComponent, TranslateModule]
+    providers: [AdminUserManagementStateFacade],
+    imports: [PageStateComponent, Bind, ButtonDirective, NgIf, Card, Tag, NgFor, FormsModule, ReactiveFormsModule, InputText, Select, OwnerImageUploadDialogComponent, TranslateModule, ImageDisplayComponent]
 })
-export class AdminUserManagementComponent implements OnInit, OnDestroy {
+export class AdminUserManagementComponent implements OnInit {
   readonly roleOptions: AppRole[] = APP_ROLES;
   readonly languageOptions = LANGUAGES.map((language: { label: string; value: string }) => ({
     label: language.label,
@@ -44,8 +46,8 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
   readonly profileForm: FormGroup;
   readonly passwordForm: FormGroup;
 
-  user: UserDto | null = null;
-  pageState: ViewState = ViewState.Loading;
+  protected readonly state = this.stateFacade.state;
+  protected readonly user = this.stateFacade.user;
   savingProfile: boolean = false;
   savingPassword: boolean = false;
   processingRole: AppRole | null = null;
@@ -54,21 +56,22 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
 
   protected readonly avatarCategory = ImageCategory.AVATAR;
   protected readonly userOwnerType = ImageOwnerType.USER;
-  protected readonly viewState = ViewState;
 
-  private targetUserId: string | null = null;
+  private readonly destroyRef: DestroyRef = inject(DestroyRef);
+  private readonly injector: Injector = inject(Injector);
+  protected targetUserId: string | null = null;
   private currentUserId: string | null = null;
-  private readonly subscriptions: Subscription = new Subscription();
 
   constructor(
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService,
+    private readonly stateFacade: AdminUserManagementStateFacade,
+    private readonly usersApiService: UsersApiService,
+    private readonly imagesApiService: ImagesApiService,
     private readonly userAdminApiService: UserAdminApiService,
     private readonly authService: AuthService,
-    private readonly messageService: ToastMessageService,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly messageService: ToastMessageService
   ) {
     this.profileForm = this.fb.group({
       firstName: ['', Validators.required],
@@ -87,32 +90,29 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.currentUserId = this.authService.getUserIdFromToken();
 
-    this.subscriptions.add(
-      this.route.paramMap.subscribe((params) => {
-        const userId: string | null = params.get('id');
+    this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
+      const userId: string | null = params.get('id');
 
-        if (!userId) {
-          this.navigateBack();
-          return;
-        }
+      if (!userId) {
+        this.navigateBack();
+        return;
+      }
 
-        this.targetUserId = userId;
-        this.loadUser(userId);
-      })
-    );
-  }
+      this.targetUserId = userId;
+      this.stateFacade.loadUser(userId);
+    });
 
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    effect(() => {
+      const currentUser: UserDto | null = this.user();
+
+      if (currentUser) {
+        this.patchProfileForm(currentUser);
+      }
+    }, { injector: this.injector });
   }
 
   get avatarUrl(): string {
-    const resolved: string | null = this.apiService.resolveImageUrl(this.user?.avatarUrl);
-    if (resolved) {
-      return resolved;
-    }
-
-    return 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="%23e5e7eb"/><circle cx="64" cy="46" r="22" fill="%239ca3af"/><path d="M24 110c8-18 24-28 40-28s32 10 40 28" fill="%239ca3af"/></svg>';
+    return this.imagesApiService.resolveImageUrl(this.user()?.avatarUrl) ?? '';
   }
 
   get isOwnProfile(): boolean {
@@ -128,7 +128,7 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
   }
 
   hasRole(role: AppRole): boolean {
-    return this.user?.roles?.includes(role) ?? false;
+    return this.user()?.roles?.includes(role) ?? false;
   }
 
   saveProfile(): void {
@@ -148,29 +148,25 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
 
     this.savingProfile = true;
 
-    this.subscriptions.add(
-      this.apiService.putUserById(this.targetUserId, payload).subscribe({
-        next: (updatedUser: UserDto) => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.user = updatedUser;
-            this.patchProfileForm(updatedUser);
-            this.savingProfile = false;
-          });
-          this.messageService.add('success', 'Succès', 'Utilisateur mis à jour avec succès.');
-        },
-        error: (error: unknown) => {
-          console.error('Error while updating user', error);
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.savingProfile = false;
-          });
-          this.messageService.add('error', 'Erreur', 'La mise à jour du profil a échoué.');
-        }
-      })
-    );
+    this.usersApiService.putUserById(this.targetUserId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (updatedUser: UserDto) => {
+        this.stateFacade.setUser(updatedUser);
+        this.patchProfileForm(updatedUser);
+        this.savingProfile = false;
+        this.messageService.add('success', 'Succès', 'Utilisateur mis à jour avec succès.');
+      },
+      error: (error: unknown) => {
+        console.error('Error while updating user', error);
+        this.savingProfile = false;
+        this.messageService.add('error', 'Erreur', 'La mise à jour du profil a échoué.');
+      }
+    });
   }
 
   toggleRole(role: AppRole): void {
-    if (!this.targetUserId || !this.user) {
+    const currentUser: UserDto | null = this.user();
+
+    if (!this.targetUserId || !currentUser) {
       return;
     }
 
@@ -181,69 +177,53 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
       ? this.userAdminApiService.removeRoleFromUser(this.targetUserId, request)
       : this.userAdminApiService.assignRoleToUser(this.targetUserId, request);
 
-    this.subscriptions.add(
-      request$.subscribe({
-        next: (response) => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            if (this.user) {
-              this.user = {
-                ...this.user,
-                roles: response.roles ?? this.user.roles
-              };
-            }
-            this.processingRole = null;
-          });
-          this.messageService.add('success', 'Succès', `Rôle ${role} mis à jour.`);
-        },
-        error: (error: unknown) => {
-          console.error('Error while updating role', error);
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.processingRole = null;
-          });
-          this.messageService.add('error', 'Erreur', `Impossible de mettre à jour le rôle ${role}.`);
-        }
-      })
-    );
+    request$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (response: { roles?: AppRole[] | null }) => {
+        this.stateFacade.setUser({
+          ...currentUser,
+          roles: response.roles ?? currentUser.roles
+        });
+        this.processingRole = null;
+        this.messageService.add('success', 'Succès', `Rôle ${role} mis à jour.`);
+      },
+      error: (error: unknown) => {
+        console.error('Error while updating role', error);
+        this.processingRole = null;
+        this.messageService.add('error', 'Erreur', `Impossible de mettre à jour le rôle ${role}.`);
+      }
+    });
   }
 
   toggleBlockedStatus(): void {
-    if (!this.targetUserId || !this.user || !this.canBlockUser) {
+    const currentUser: UserDto | null = this.user();
+
+    if (!this.targetUserId || !currentUser || !this.canBlockUser) {
       return;
     }
 
     this.blockingActionInProgress = true;
 
     const request = { idUser: this.targetUserId };
-    const request$ = this.user.isBlocked
+    const request$ = currentUser.isBlocked
       ? this.userAdminApiService.unlockUser(request)
       : this.userAdminApiService.lockUser(request);
 
-    this.subscriptions.add(
-      request$.subscribe({
-        next: () => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            const isBlockedNow: boolean = !this.user!.isBlocked;
-            this.user = {
-              ...this.user!,
-              isBlocked: isBlockedNow
-            };
-            this.blockingActionInProgress = false;
-          });
-          this.messageService.add(
-            'success',
-            'Succès',
-            this.user!.isBlocked ? 'Utilisateur bloqué.' : 'Utilisateur débloqué.'
-          );
-        },
-        error: (error: unknown) => {
-          console.error('Error while updating block status', error);
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.blockingActionInProgress = false;
-          });
-          this.messageService.add('error', 'Erreur', 'Impossible de modifier le statut de blocage.');
-        }
-      })
-    );
+    request$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: () => {
+        const updatedUser: UserDto = {
+          ...currentUser,
+          isBlocked: !currentUser.isBlocked
+        };
+        this.stateFacade.setUser(updatedUser);
+        this.blockingActionInProgress = false;
+        this.messageService.add('success', 'Succès', updatedUser.isBlocked ? 'Utilisateur bloqué.' : 'Utilisateur débloqué.');
+      },
+      error: (error: unknown) => {
+        console.error('Error while updating block status', error);
+        this.blockingActionInProgress = false;
+        this.messageService.add('error', 'Erreur', 'Impossible de modifier le statut de blocage.');
+      }
+    });
   }
 
   changePassword(): void {
@@ -261,28 +241,22 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
 
     this.savingPassword = true;
 
-    this.subscriptions.add(
-      this.userAdminApiService.changeUserPassword(this.targetUserId, {
-        actualPassword: '',
-        newPassword: formValue.newPassword,
-        newPasswordConfirm: formValue.newPasswordConfirm
-      }).subscribe({
-        next: () => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.passwordForm.reset({ newPassword: '', newPasswordConfirm: '' });
-            this.savingPassword = false;
-          });
-          this.messageService.add('success', 'Succès', 'Mot de passe mis à jour.');
-        },
-        error: (error: unknown) => {
-          console.error('Error while changing password', error);
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.savingPassword = false;
-          });
-          this.messageService.add('error', 'Erreur', 'Impossible de modifier le mot de passe.');
-        }
-      })
-    );
+    this.userAdminApiService.changeUserPassword(this.targetUserId, {
+      actualPassword: '',
+      newPassword: formValue.newPassword,
+      newPasswordConfirm: formValue.newPasswordConfirm
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: () => {
+        this.passwordForm.reset({ newPassword: '', newPasswordConfirm: '' });
+        this.savingPassword = false;
+        this.messageService.add('success', 'Succès', 'Mot de passe mis à jour.');
+      },
+      error: (error: unknown) => {
+        console.error('Error while changing password', error);
+        this.savingPassword = false;
+        this.messageService.add('error', 'Erreur', 'Impossible de modifier le mot de passe.');
+      }
+    });
   }
 
   openAvatarDialog(): void {
@@ -300,36 +274,13 @@ export class AdminUserManagementComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.loadUser(this.targetUserId);
+    this.stateFacade.loadUser(this.targetUserId);
     this.messageService.add('success', 'Succès', 'Avatar mis à jour avec succès !');
   }
 
   navigateBack(): void {
     const currentLang: string = this.router.url.split('/')[1] || 'en';
     this.router.navigate(['/', currentLang, 'admin', 'users']);
-  }
-
-  private loadUser(userId: string): void {
-    this.pageState = ViewState.Loading;
-
-    this.subscriptions.add(
-      this.apiService.getUserById(userId).subscribe({
-        next: (user: UserDto) => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.user = user;
-            this.patchProfileForm(user);
-            this.pageState = ViewState.Ready;
-          });
-        },
-        error: (error: unknown) => {
-          console.error('Error while loading user', error);
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.pageState = ViewState.Error;
-          });
-          this.messageService.add('error', 'Erreur', 'Impossible de charger le profil utilisateur.');
-        }
-      })
-    );
   }
 
   private patchProfileForm(user: UserDto): void {

@@ -49,7 +49,11 @@ public sealed class UpdateParkVisibilityCommandHandler : ICommandHandler<UpdateP
 
             return ApplicationResult<Park>.Success(updated);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<Park>.Failure(ParkApplicationErrors.ErrorUpdatingPark());
         }

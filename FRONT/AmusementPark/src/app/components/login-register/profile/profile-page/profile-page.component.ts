@@ -1,40 +1,34 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { distinctUntilChanged, Subscription } from 'rxjs';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { distinctUntilChanged } from 'rxjs';
 import { Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { UserDto } from '../../../../models/users/user_dto';
-import { UserPut } from '../../../../models/users/user_put';
-import { ImageDto } from '../../../../models/images/image-dto';
-import { ImageCategory } from '../../../../models/images/image-category';
-import { ImageOwnerType } from '../../../../models/images/image-owner-type';
-import { ViewState } from '../../../../models/shared/view-state';
-import { ApiService } from '../../../../services/api.service';
-import { AuthService } from '../../../../services/auth/auth.service';
-import { ToastMessageService } from '../../../../services/messages/toast-message.service';
-import { ModalService } from '../../../../services/modal/modal.service';
-import { SharedService } from '../../../../services/shared/shared.service';
-import { TranslationService } from '../../../../services/translation.service';
-import { commitViewUpdate } from '../../../../utils/change-detection.utils';
-import { PageStateComponent } from '../../../shared/page-state/page-state.component';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { ButtonDirective } from 'primeng/button';
-import { NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
-import { OwnerImageUploadDialogComponent } from '../../../shared/owner-image-upload-dialog/owner-image-upload-dialog.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { UserDto } from '@app/models/users/user_dto';
+import { UserPut } from '@app/models/users/user_put';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImagesApiService } from '@data-access/images/images-api.service';
+import { UsersApiService } from '@data-access/users/users-api.service';
+import { AuthService } from '@app/services/auth/auth.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { ModalService } from '@app/services/modal/modal.service';
+import { SharedService } from '@app/services/shared/shared.service';
+import { TranslationService } from '@app/services/translation.service';
+import { ProfilePageViewComponent } from './profile-page-view.component';
+import { ProfilePageStateFacade } from '@features/profile/state/profile-page-state.facade';
 
 @Component({
     selector: 'app-profile-page',
     templateUrl: './profile-page.component.html',
     styleUrl: './profile-page.component.scss',
-    imports: [PageStateComponent, Bind, Card, ButtonDirective, NgIf, FormsModule, InputText, OwnerImageUploadDialogComponent, TranslateModule]
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [ProfilePageStateFacade],
+    imports: [ProfilePageViewComponent]
 })
-export class ProfilePageComponent implements OnInit, OnDestroy {
-  user: UserDto | null = null;
-  userPut: UserPut | null = null;
-  pageState: ViewState = ViewState.Loading;
+export class ProfilePageComponent implements OnInit {
+  protected readonly state = this.stateFacade.state;
+  protected readonly user = this.stateFacade.user;
   displayAvatarUploadDialog: boolean = false;
   isEditingIdentity: boolean = false;
   savingIdentity: boolean = false;
@@ -45,42 +39,38 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
   protected readonly avatarCategory = ImageCategory.AVATAR;
   protected readonly userOwnerType = ImageOwnerType.USER;
-  protected readonly viewState = ViewState;
-
-  private readonly subscriptions: Subscription = new Subscription();
   protected currentUserId: string | null = null;
 
+  private readonly destroyRef: DestroyRef = inject(DestroyRef);
+
   constructor(
-    private readonly apiService: ApiService,
+    private readonly stateFacade: ProfilePageStateFacade,
+    private readonly usersApiService: UsersApiService,
+    private readonly imagesApiService: ImagesApiService,
     private readonly authService: AuthService,
     private readonly router: Router,
     private readonly sharedService: SharedService,
     private readonly modalService: ModalService,
     private readonly translationService: TranslationService,
-    private readonly messageService: ToastMessageService,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly messageService: ToastMessageService
   ) {
-    void this.modalService;
   }
 
   ngOnInit(): void {
     this.currentUserId = this.authService.getUserIdFromToken();
 
     if (this.currentUserId) {
-      this.loadUserProfile(this.currentUserId);
+      this.stateFacade.loadUserProfile(this.currentUserId);
     } else {
-      commitViewUpdate(this.changeDetectorRef, () => {
-        this.pageState = ViewState.Error;
-      });
+      this.stateFacade.setError();
     }
 
-    this.subscriptions.add(
-      this.translationService.languageChanged
-        .pipe(distinctUntilChanged())
-        .subscribe((lang: string) => {
-          this.updatePreferredLanguage(lang);
-        })
-    );
+    this.translationService.languageChanged.pipe(
+      distinctUntilChanged(),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((lang: string) => {
+      this.updatePreferredLanguage(lang);
+    });
   }
 
   editField(field: string): void {
@@ -99,28 +89,34 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   }
 
   startIdentityEdition(): void {
-    if (!this.user) {
+    const currentUser: UserDto | null = this.user();
+
+    if (!currentUser) {
       return;
     }
 
     this.identityDraft = {
-      firstName: this.user.firstName ?? '',
-      lastName: this.user.lastName ?? ''
+      firstName: currentUser.firstName ?? '',
+      lastName: currentUser.lastName ?? ''
     };
     this.isEditingIdentity = true;
   }
 
   cancelIdentityEdition(): void {
+    const currentUser: UserDto | null = this.user();
+
     this.isEditingIdentity = false;
     this.savingIdentity = false;
     this.identityDraft = {
-      firstName: this.user?.firstName ?? '',
-      lastName: this.user?.lastName ?? ''
+      firstName: currentUser?.firstName ?? '',
+      lastName: currentUser?.lastName ?? ''
     };
   }
 
   saveIdentity(): void {
-    if (!this.currentUserId || !this.userPut || !this.user) {
+    const currentUser: UserDto | null = this.user();
+
+    if (!this.currentUserId || !currentUser) {
       return;
     }
 
@@ -135,44 +131,31 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     this.savingIdentity = true;
 
     const payload: UserPut = {
-      firstName: firstName,
-      lastName: lastName,
-      email: this.user.email ?? '',
-      newEmail: this.user.email ?? '',
-      preferredLanguage: this.user.preferredLanguage ?? this.translationService.getCurrentLang().toUpperCase()
+      firstName,
+      lastName,
+      email: currentUser.email ?? '',
+      newEmail: currentUser.email ?? '',
+      preferredLanguage: currentUser.preferredLanguage ?? this.translationService.getCurrentLang().toUpperCase()
     };
 
-    this.subscriptions.add(
-      this.apiService.putUserById(this.currentUserId, payload).subscribe({
-        next: (user: UserDto) => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.user = user;
-            this.userPut = {
-              firstName: user.firstName,
-              lastName: user.lastName,
-              email: user.email,
-              preferredLanguage: user.preferredLanguage,
-              newEmail: user.email
-            };
-            this.identityDraft = {
-              firstName: user.firstName ?? '',
-              lastName: user.lastName ?? ''
-            };
-            this.isEditingIdentity = false;
-            this.savingIdentity = false;
-          });
-          this.sharedService.emitLoginStatusChange();
-          this.messageService.add('success', 'Succès', 'Profil mis à jour avec succès !');
-        },
-        error: (error: unknown) => {
-          console.error('Error updating profile identity', error);
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.savingIdentity = false;
-          });
-          this.messageService.add('error', 'Erreur', 'La mise à jour du profil a échoué.');
-        }
-      })
-    );
+    this.usersApiService.putUserById(this.currentUserId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (user: UserDto) => {
+        this.stateFacade.setUser(user);
+        this.identityDraft = {
+          firstName: user.firstName ?? '',
+          lastName: user.lastName ?? ''
+        };
+        this.isEditingIdentity = false;
+        this.savingIdentity = false;
+        this.sharedService.emitLoginStatusChange();
+        this.messageService.add('success', 'Succès', 'Profil mis à jour avec succès !');
+      },
+      error: (error: unknown) => {
+        console.error('Error updating profile identity', error);
+        this.savingIdentity = false;
+        this.messageService.add('error', 'Erreur', 'La mise à jour du profil a échoué.');
+      }
+    });
   }
 
   onAvatarUploadDialogVisibleChange(visible: boolean): void {
@@ -186,18 +169,13 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.loadUserProfile(this.currentUserId);
+    this.stateFacade.loadUserProfile(this.currentUserId);
     this.sharedService.emitLoginStatusChange();
     this.messageService.add('success', 'Succès', 'Avatar mis à jour avec succès !');
   }
 
   getAvatarUrl(): string {
-    const avatarUrl: string | null = this.apiService.resolveImageUrl(this.user?.avatarUrl);
-    if (avatarUrl) {
-      return avatarUrl;
-    }
-
-    return 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64" fill="%23e5e7eb"/><circle cx="64" cy="46" r="22" fill="%239ca3af"/><path d="M24 110c8-18 24-28 40-28s32 10 40 28" fill="%239ca3af"/></svg>';
+    return this.imagesApiService.resolveImageUrl(this.user()?.avatarUrl) ?? '';
   }
 
   logout(): void {
@@ -207,65 +185,25 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     this.router.navigate([currentLang, 'home']);
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
-  }
-
-  private loadUserProfile(userId: string): void {
-    this.pageState = ViewState.Loading;
-
-    this.subscriptions.add(
-      this.apiService.getUserById(userId).subscribe({
-        next: (user: UserDto) => {
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.user = user;
-            this.userPut = {
-              firstName: user.firstName,
-              lastName: user.lastName,
-              email: user.email,
-              preferredLanguage: user.preferredLanguage,
-              newEmail: user.email
-            };
-            this.identityDraft = {
-              firstName: user.firstName ?? '',
-              lastName: user.lastName ?? ''
-            };
-            this.pageState = ViewState.Ready;
-          });
-        },
-        error: (error: unknown) => {
-          console.error('Error loading user profile', error);
-          commitViewUpdate(this.changeDetectorRef, () => {
-            this.pageState = ViewState.Error;
-          });
-        }
-      })
-    );
-  }
-
   private updatePreferredLanguage(lang: string): void {
-    if (!this.currentUserId || !this.userPut || !this.user) {
+    const currentUser: UserDto | null = this.user();
+
+    if (!this.currentUserId || !currentUser) {
       return;
     }
 
-    this.userPut.lastName = this.user.lastName ?? '';
-    this.userPut.firstName = this.user.firstName ?? '';
-    this.userPut.email = this.user.email ?? '';
-    this.userPut.preferredLanguage = lang.toUpperCase();
+    const payload: UserPut = {
+      firstName: currentUser.firstName ?? '',
+      lastName: currentUser.lastName ?? '',
+      email: currentUser.email ?? '',
+      newEmail: currentUser.email ?? '',
+      preferredLanguage: lang.toUpperCase()
+    };
 
-    this.subscriptions.add(
-      this.apiService.putUserById(this.currentUserId, this.userPut).subscribe((user: UserDto) => {
-        commitViewUpdate(this.changeDetectorRef, () => {
-          this.user = user;
-          this.userPut = {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            preferredLanguage: user.preferredLanguage,
-            newEmail: user.email
-          };
-        });
-      })
-    );
+    this.usersApiService.putUserById(this.currentUserId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (user: UserDto) => {
+        this.stateFacade.setUser(user);
+      }
+    });
   }
 }

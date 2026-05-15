@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Park } from '../../../models/parks/park';
-import { MapMarker } from '../../../models/map/map-marker';
+import { Park } from '@app/models/parks/park';
+import { MapMarker } from '@app/models/map/map-marker';
 import { NgIf } from '@angular/common';
 import { LeafletMapComponent } from '../../shared/leaflet-map/leaflet-map.component';
 import { TranslateModule } from '@ngx-translate/core';

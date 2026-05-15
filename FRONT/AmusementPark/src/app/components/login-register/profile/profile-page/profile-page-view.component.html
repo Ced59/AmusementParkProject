@@ -1,0 +1,128 @@
+<app-page-state
+  [state]="state().kind"
+  [messages]="{
+    loadingTitleKey: 'user-profile.loadingTitle',
+    loadingMessageKey: 'user-profile.loadingMessage',
+    errorTitleKey: 'user-profile.errorTitle',
+    errorMessageKey: 'user-profile.errorMessage'
+  }">
+  <p-card header="{{ 'user-profile.title' | translate }}" class="profile-card">
+    <div class="profile-avatar-container">
+      <app-image-display
+        [imagePathOrUrl]="avatarUrl"
+        alt="Avatar"
+        imgClass="profile-avatar"
+        placeholderClass="profile-avatar profile-avatar--placeholder"
+        placeholderIconClass="pi pi-user">
+      </app-image-display>
+      <button
+        pButton
+        type="button"
+        label="{{ 'user-profile.modify' | translate }}"
+        class="p-button-text edit-avatar-button"
+        (click)="editField('avatar')">
+      </button>
+    </div>
+
+    <div class="profile-details" *ngIf="user() as currentUser">
+      <div class="profile-row">
+        <span class="profile-label">{{ 'user-profile.email' | translate }} :</span>
+        <span class="profile-value">{{ currentUser.email }}</span>
+        <span></span>
+      </div>
+
+      <div class="profile-row profile-row--identity">
+        <span class="profile-label">{{ 'user-profile.identity' | translate }} :</span>
+
+        <div class="profile-value" *ngIf="!isEditingIdentity; else identityEditor">
+          <strong>{{ currentUser.firstName }}</strong>
+          <span>{{ currentUser.lastName }}</span>
+        </div>
+
+        <div class="profile-actions" *ngIf="!isEditingIdentity">
+          <button
+            pButton
+            type="button"
+            label="{{ 'user-profile.modify' | translate }}"
+            class="p-button-text"
+            (click)="editField('identity')"></button>
+        </div>
+
+        <ng-template #identityEditor>
+          <div class="profile-identity-editor">
+            <div class="profile-identity-fields">
+              <div class="profile-inline-field">
+                <label for="profile-firstname">{{ 'user-profile.firstname' | translate }}</label>
+                <input
+                  id="profile-firstname"
+                  pInputText
+                  type="text"
+                  [(ngModel)]="identityDraft.firstName"
+                  [disabled]="savingIdentity" />
+              </div>
+
+              <div class="profile-inline-field">
+                <label for="profile-lastname">{{ 'user-profile.name' | translate }}</label>
+                <input
+                  id="profile-lastname"
+                  pInputText
+                  type="text"
+                  [(ngModel)]="identityDraft.lastName"
+                  [disabled]="savingIdentity" />
+              </div>
+            </div>
+
+            <div class="profile-actions profile-actions--editing">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-check"
+                [label]="savingIdentity ? ('user-profile.saving' | translate) : ('user-profile.save' | translate)"
+                [disabled]="savingIdentity"
+                (click)="saveIdentity()"></button>
+
+              <button
+                pButton
+                type="button"
+                class="p-button-text"
+                icon="pi pi-times"
+                [label]="'user-profile.cancel' | translate"
+                [disabled]="savingIdentity"
+                (click)="cancelIdentityEdition()"></button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="profile-row">
+        <span class="profile-label">{{ 'user-profile.preferred_language' | translate }} :</span>
+        <span class="profile-value">{{ currentUser.preferredLanguage }}</span>
+        <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editPreferredLanguage()"></button>
+      </div>
+    </div>
+
+    <div class="logout-container">
+      <button pButton type="button" label="Logout" class="p-button-danger" (click)="logout()"></button>
+    </div>
+  </p-card>
+</app-page-state>
+
+<app-owner-image-upload-dialog
+  [(visible)]="displayAvatarUploadDialog"
+  [ownerId]="currentUserId || ''"
+  [ownerType]="userOwnerType"
+  [category]="avatarCategory"
+  [titleKey]="'user-profile.avatar.title'"
+  [dragAndDropHintKey]="'user-profile.avatar.dragAndDrop'"
+  [chooseButtonKey]="'user-profile.avatar.choose'"
+  [uploadButtonKey]="'user-profile.avatar.upload'"
+  [cancelButtonKey]="'user-profile.avatar.cancel'"
+  [selectedFileLabelKey]="'user-profile.avatar.selectedFile'"
+  [invalidFileKey]="'user-profile.avatar.invalidFile'"
+  [invalidSizeKey]="'user-profile.avatar.invalidSize'"
+  [noImageSelectedKey]="'user-profile.avatar.noImageSelected'"
+  [uploadingKey]="'user-profile.avatar.uploading'"
+  [withWatermark]="false"
+  (visibleChange)="onAvatarUploadDialogVisibleChange($event)"
+  (uploaded)="onAvatarUploaded($event)">
+</app-owner-image-upload-dialog>

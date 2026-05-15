@@ -56,6 +56,10 @@ internal sealed class DataAcquisitionHttpFetcher : IDataAcquisitionHttpFetcher
 
                 return content;
             }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
             catch (Exception exception) when (attempt < Math.Max(1, options.MaxRetryCount))
             {
                 lastException = exception;

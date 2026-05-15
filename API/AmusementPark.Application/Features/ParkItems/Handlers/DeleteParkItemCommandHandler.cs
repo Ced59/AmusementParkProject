@@ -36,7 +36,11 @@ public sealed class DeleteParkItemCommandHandler : ICommandHandler<DeleteParkIte
             await this.searchProjectionWriter.DeleteAsync(SearchProjectionResourceTypes.ParkItems, command.ParkItemId, cancellationToken);
             return ApplicationResult.Success();
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult.Failure(ParkItemApplicationErrors.ErrorDeletingParkItem());
         }

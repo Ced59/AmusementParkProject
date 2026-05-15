@@ -49,7 +49,11 @@ public sealed class UpdateParkOperatorCommandHandler : ICommandHandler<UpdatePar
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Operators, updated.Id, cancellationToken);
             return ApplicationResult<ParkOperator>.Success(updated);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<ParkOperator>.Failure(ApplicationError.Technical("park-operator.update.failed", "Error while updating park operator"));
         }

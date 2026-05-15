@@ -1,0 +1,13 @@
+<img
+  *ngIf="showImage"
+  [src]="resolvedImageUrl"
+  [alt]="alt"
+  [ngClass]="imgClass"
+  (error)="onImageError()" />
+
+<div
+  *ngIf="!showImage"
+  class="image-display__placeholder"
+  [ngClass]="placeholderClass">
+  <i [ngClass]="placeholderIconClass"></i>
+</div>

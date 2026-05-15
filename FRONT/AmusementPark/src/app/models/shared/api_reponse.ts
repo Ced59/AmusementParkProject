@@ -1,6 +1,3 @@
-import {Pagination} from "./pagination";
+import { CollectionResponse } from '@shared/models/contracts';
 
-export interface ApiResponse<T> {
-  data: T[];
-  pagination: Pagination;
-}
+export type ApiResponse<T> = CollectionResponse<T>;

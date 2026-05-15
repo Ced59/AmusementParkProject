@@ -132,6 +132,10 @@ public sealed class UserAvatarImporter : IUserAvatarImporter
             bufferedStream.Dispose();
             return $"/images/{image.Id}";
         }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
         catch (Exception ex)
         {
             this.logger.LogError(ex, "Error while importing external avatar for user {UserId}.", userId);

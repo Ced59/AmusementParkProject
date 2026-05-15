@@ -39,7 +39,11 @@ public sealed class CreateParkOperatorCommandHandler : ICommandHandler<CreatePar
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Operators, created.Id, cancellationToken);
             return ApplicationResult<ParkOperator>.Success(created);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<ParkOperator>.Failure(ApplicationError.Technical("park-operator.create.failed", "Error while creating park operator"));
         }

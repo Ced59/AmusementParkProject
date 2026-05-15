@@ -1,12 +1,12 @@
 <div class="admin-park-edit p-3">
   <div class="page-header">
     <div>
-      @if (!isEditMode) {
+      @if (!isEditMode()) {
         <h2>
           {{ 'admin.parks.editPage.createTitle' | translate }}
         </h2>
       }
-      @if (isEditMode) {
+      @if (isEditMode()) {
         <h2>
           {{ 'admin.parks.editPage.updateTitle' | translate:{ name: nameControl?.value || '—' } }}
         </h2>
@@ -37,7 +37,7 @@
       <app-editor-save-toolbar
         [statusLabel]="getEditorStatusLabel()"
         [isDirty]="isFormDirty"
-        [isSaving]="isSaving"
+        [isSaving]="isSaving()"
         [backButtonLabel]="'admin.parks.editorActions.backToParks' | translate"
         [saveAllButtonLabel]="'admin.parks.editorActions.saveAll' | translate"
         [saveAndCloseButtonLabel]="'admin.parks.editorActions.saveAndClose' | translate"
@@ -50,7 +50,7 @@
 
   <p-card>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
-      <p-tabs [value]="activeTabIndex" (valueChange)="onTabChange($event)">
+      <p-tabs [value]="activeTabIndex()" (valueChange)="onTabChange($event)">
         <p-tablist>
           <p-tab [value]="0">{{ 'admin.parks.tabs.general' | translate }}</p-tab>
           <p-tab [value]="1">{{ 'admin.parks.tabs.location' | translate }}</p-tab>
@@ -60,36 +60,36 @@
 
         <p-tabpanels>
           <p-tabpanel [value]="0">
-            @if (activeTabIndex === 0) {
+            @if (activeTabIndex() === 0) {
               <app-admin-park-general-tab
                 [form]="form"
                 [parkTypeOptions]="parkTypeOptions"
-                [countryOptions]="countryOptions"
-                [founderOptions]="founderOptions"
-                [operatorOptions]="operatorOptions"
-                [foundersLoading]="foundersLoading"
-                [operatorsLoading]="operatorsLoading"
-                [founderAddLink]="['/', currentLang, 'admin', 'parks', 'founders', 'new']"
+                [countryOptions]="referenceData.countryOptions()"
+                [founderOptions]="referenceData.founderOptions()"
+                [operatorOptions]="referenceData.operatorOptions()"
+                [foundersLoading]="referenceData.foundersLoading()"
+                [operatorsLoading]="referenceData.operatorsLoading()"
+                [founderAddLink]="['/', currentLang(), 'admin', 'parks', 'founders', 'new']"
                 [founderAddQueryParams]="founderCreateLinkQueryParams"
-                [operatorAddLink]="['/', currentLang, 'admin', 'operators', 'new']"
+                [operatorAddLink]="['/', currentLang(), 'admin', 'operators', 'new']"
                 [operatorAddQueryParams]="operatorCreateLinkQueryParams"
-                [currentLang]="currentLang"
-                [parkId]="parkId"
-                [isEditMode]="isEditMode"
-                [isSaving]="isSaving"
+                [currentLang]="currentLang()"
+                [parkId]="parkId()"
+                [isEditMode]="isEditMode()"
+                [isSaving]="isSaving()"
                 (saveSection)="saveSection()">
               </app-admin-park-general-tab>
             }
           </p-tabpanel>
 
           <p-tabpanel [value]="1">
-            @if (activeTabIndex === 1) {
+            @if (activeTabIndex() === 1) {
               <app-admin-park-location-tab
                 [form]="form"
-                [mapCenter]="mapCenter"
-                [mapZoom]="mapZoom"
-                [mapMarkers]="mapMarkers"
-                [isSaving]="isSaving"
+                [mapCenter]="locationState.mapCenter()"
+                [mapZoom]="locationState.mapZoom()"
+                [mapMarkers]="locationState.mapMarkers()"
+                [isSaving]="isSaving()"
                 (mapPositionChange)="onMapPositionChange($event)"
                 (saveSection)="saveSection()">
               </app-admin-park-location-tab>
@@ -97,35 +97,35 @@
           </p-tabpanel>
 
           <p-tabpanel [value]="2">
-            @if (activeTabIndex === 2) {
+            @if (activeTabIndex() === 2) {
               <app-admin-park-descriptions-tab
                 [form]="form"
-                [isSaving]="isSaving"
+                [isSaving]="isSaving()"
                 (saveSection)="saveSection()">
               </app-admin-park-descriptions-tab>
             }
           </p-tabpanel>
 
           <p-tabpanel [value]="3">
-            @if (activeTabIndex === 3) {
+            @if (activeTabIndex() === 3) {
               <app-admin-park-logos-tab
-                [isEditMode]="isEditMode"
-                [currentLogo]="currentLogo"
+                [isEditMode]="isEditMode()"
+                [currentLogo]="logosState.currentLogo()"
                 [allowMultipleLogoUpload]="allowMultipleLogoUpload"
-                [selectedLogoCount]="selectedLogoCount"
-                [newLogoDescription]="newLogoDescription"
-                [logosUploading]="logosUploading"
-                [logosLoading]="logosLoading"
-                [parkLogos]="parkLogos"
-                [pagedLogos]="pagedLogos"
-                [logosPageSize]="logosPageSize"
-                [isSaving]="isSaving"
+                [selectedLogoCount]="logosState.selectedLogoCount()"
+                [newLogoDescription]="logosState.newLogoDescription()"
+                [logosUploading]="logosState.logosUploading()"
+                [logosLoading]="logosState.logosLoading()"
+                [parkLogos]="logosState.parkLogos()"
+                [pagedLogos]="logosState.pagedLogos()"
+                [logosPageSize]="logosState.logosPageSize()"
+                [isSaving]="isSaving()"
                 (logoFileSelected)="onLogoFileSelected($event)"
-                (newLogoDescriptionChange)="newLogoDescription = $event"
+                (newLogoDescriptionChange)="logosState.setNewLogoDescription($event)"
                 (uploadLogo)="onUploadLogo()"
                 (setCurrentLogo)="onSetCurrentLogo($event)"
                 (deleteLogo)="onDeleteLogo($event)"
-                (logosPageChange)="onLogosPageChange($event)"
+                (logosPageChange)="logosState.onLogosPageChange($event)"
                 (saveSection)="saveSection()">
               </app-admin-park-logos-tab>
             }

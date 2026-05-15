@@ -1,102 +1,52 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { forkJoin, Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
-import { Park } from '../../../../models/parks/park';
-import { ParkItemAdminRow } from '../../../../models/parks/park-item-admin-row';
-import { ParksApiResponse } from '../../../../models/parks/parks_api_response';
-import { ApiResponse } from '../../../../models/shared/api_reponse';
-import { Pagination } from '../../../../models/shared/pagination';
-import { ApiService } from '../../../../services/api.service';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
-import { Select } from 'primeng/select';
-import { TableModule } from 'primeng/table';
-import { PrimeTemplate } from 'primeng/api';
-import { Tag } from 'primeng/tag';
-import { ButtonDirective } from 'primeng/button';
-import { Paginator } from 'primeng/paginator';
+import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
+import { AdminParkItemsIndexStateFacade } from '@features/admin/park-items/state/admin-park-items-index-state.facade';
+import { AdminParkItemsIndexViewComponent } from './admin-park-items-index-view.component';
+import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 
 @Component({
-    selector: 'app-admin-park-items-index',
-    templateUrl: './admin-park-items-index.component.html',
-    styleUrls: ['./admin-park-items-index.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [Bind, Card, FormsModule, InputText, Select, TableModule, PrimeTemplate, Tag, ButtonDirective, Paginator, TranslateModule]
+  selector: 'app-admin-park-items-index',
+  templateUrl: './admin-park-items-index.component.html',
+  styleUrls: ['./admin-park-items-index.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [AdminParkItemsIndexStateFacade],
+  imports: [AdminParkItemsIndexViewComponent]
 })
 export class AdminParkItemsIndexComponent implements OnInit {
-  rows: ParkItemAdminRow[] = [];
-  parkOptions: { label: string; value: string | null }[] = [];
-  loading: boolean = false;
-  selectedParkId: string | null = null;
-  searchTerm: string = '';
-  totalRecords: number = 0;
-  currentPage: number = 1;
-  pageSize: number = 20;
+  protected readonly state = this.stateFacade.state;
+  protected readonly rows = this.stateFacade.rows;
+  protected readonly parkOptions = this.stateFacade.parkOptions;
+  protected readonly totalRecords = this.stateFacade.totalRecords;
+  protected readonly selectedParkId = this.stateFacade.selectedParkId;
+  protected readonly searchTerm = this.stateFacade.searchTerm;
+  protected readonly pageSize = this.stateFacade.pageSize;
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly stateFacade: AdminParkItemsIndexStateFacade,
     private readonly router: Router,
-    private readonly translateService: TranslateService,
-    private readonly cdr: ChangeDetectorRef
+    private readonly translateService: TranslateService
   ) {
   }
 
   ngOnInit(): void {
-    this.loadParkOptions();
-    this.loadRows();
+    this.stateFacade.initialize(this.translateService.instant('admin.parkItems.allParks'));
   }
 
-  loadRows(): void {
-    this.loading = true;
-    this.cdr.markForCheck();
-
-    this.apiService.getParkItemsPaginated(
-      this.currentPage,
-      this.pageSize,
-      this.selectedParkId,
-      this.searchTerm
-    ).subscribe({
-      next: (response: ApiResponse<ParkItemAdminRow>) => {
-        this.rows = response.data ?? [];
-        this.totalRecords = response.pagination?.totalItems ?? this.rows.length;
-        this.loading = false;
-        this.cdr.markForCheck();
-      },
-      error: (error: unknown) => {
-        console.error('Error loading park items index', error);
-        this.rows = [];
-        this.totalRecords = 0;
-        this.loading = false;
-        this.cdr.markForCheck();
-      }
-    });
-  }
-
-  onFiltersChanged(): void {
-    this.currentPage = 1;
-    this.loadRows();
+  onFiltersChanged(filters: { selectedParkId: string | null; searchTerm: string }): void {
+    this.stateFacade.updateFilters(filters.selectedParkId, filters.searchTerm);
   }
 
   onPageChange(event: { page?: number; rows?: number }): void {
-    this.currentPage = (event.page ?? 0) + 1;
-    this.pageSize = event.rows ?? this.pageSize;
-    this.loadRows();
+    this.stateFacade.updatePage(event);
   }
 
   getTypeLabelKey(itemType: string | number | null | undefined): string {
-    const normalizedType: string | null = typeof itemType === 'string'
-      ? itemType
-      : null;
-
-    if (!normalizedType || normalizedType.length === 0) {
-      return 'parkExplorer.types.other';
-    }
-
-    return `parkExplorer.types.${normalizedType.charAt(0).toLowerCase()}${normalizedType.slice(1)}`;
+    return typeof itemType === 'string'
+      ? getParkItemTypeTranslationKey(itemType)
+      : getParkItemTypeTranslationKey(null);
   }
 
   goToEdit(row: ParkItemAdminRow): void {
@@ -104,70 +54,5 @@ export class AdminParkItemsIndexComponent implements OnInit {
     const lang: string = url.split('/')[1] || 'en';
 
     this.router.navigate(['/', lang, 'admin', 'parks', 'edit', row.parkId, 'items', row.id]);
-  }
-
-  private loadParkOptions(): void {
-    this.getAllParks().subscribe({
-      next: (parks: Park[]) => {
-        const validParks: Park[] = parks.filter((park: Park) => !!park.id);
-        this.parkOptions = [
-          { label: this.translateService.instant('admin.parkItems.allParks'), value: null },
-          ...validParks.map((park: Park) => ({
-            label: park.name ?? '',
-            value: park.id ?? null
-          }))
-        ];
-        this.cdr.markForCheck();
-      },
-      error: (error: unknown) => {
-        console.error('Error loading parks for park items filter', error);
-        this.parkOptions = [
-          { label: this.translateService.instant('admin.parkItems.allParks'), value: null }
-        ];
-        this.cdr.markForCheck();
-      }
-    });
-  }
-
-  private getAllParks(): Observable<Park[]> {
-    return new Observable<Park[]>((observer) => {
-      this.apiService.getParksPaginated(1, 100).subscribe({
-        next: (firstResponse: ParksApiResponse) => {
-          const firstPageParks: Park[] = firstResponse.data ?? [];
-          const pagination: Pagination | undefined = firstResponse.pagination;
-          const totalPages: number = pagination?.totalPages ?? 1;
-
-          if (totalPages <= 1) {
-            observer.next(firstPageParks);
-            observer.complete();
-            return;
-          }
-
-          const requests: Observable<ParksApiResponse>[] = [];
-          for (let page: number = 2; page <= totalPages; page++) {
-            requests.push(this.apiService.getParksPaginated(page, 100));
-          }
-
-          forkJoin(requests).subscribe({
-            next: (responses: ParksApiResponse[]) => {
-              const allParks: Park[] = [...firstPageParks];
-
-              responses.forEach((response: ParksApiResponse) => {
-                allParks.push(...(response.data ?? []));
-              });
-
-              observer.next(allParks);
-              observer.complete();
-            },
-            error: (error: unknown) => {
-              observer.error(error);
-            }
-          });
-        },
-        error: (error: unknown) => {
-          observer.error(error);
-        }
-      });
-    });
   }
 }

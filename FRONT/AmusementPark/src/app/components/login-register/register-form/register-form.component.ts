@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { UserRegister } from '../../../models/users/user-register';
-import { ApiService } from '../../../services/api.service';
-import { ToastMessageService } from '../../../services/messages/toast-message.service';
-import { TranslationService } from '../../../services/translation.service';
+import { firstValueFrom } from 'rxjs';
+import { UserRegister } from '@app/models/users/user-register';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { TranslationService } from '@app/services/translation.service';
 import { FormsModule } from '@angular/forms';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';
@@ -10,6 +11,7 @@ import { NgClass } from '@angular/common';
 import { ButtonDirective } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
 @Component({
     selector: 'app-register-form',
     templateUrl: './register-form.component.html',
@@ -23,12 +25,12 @@ export class RegisterFormComponent {
   registrationCompleted: boolean = false;
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly authApiService: AuthApiService,
     private readonly messageService: ToastMessageService,
     private readonly translateService: TranslationService) {
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (!this.isValidPassword() || !this.isValidEmail() || !this.passwordsMatch()) {
       this.messageService.add('error', 'Erreur', 'Le formulaire d’inscription contient des erreurs.');
       return;
@@ -41,34 +43,24 @@ export class RegisterFormComponent {
       preferredLanguage: this.translateService.getCurrentLang().toUpperCase()
     };
 
-    this.apiService.register(request).subscribe({
-      next: () => {
-        this.registrationCompleted = true;
-        this.messageService.add('success', 'Succès', 'Compte créé. Vérifie le lien de confirmation envoyé dans la console de l’API.');
-      },
-      error: (error: { error?: { message?: string; Message?: string; }; }): void => {
-        const errorMessage: string = error.error?.message
-          ?? error.error?.Message
-          ?? 'Une erreur inattendue est survenue.';
-
-        this.messageService.add('error', 'Erreur', errorMessage);
-      }
-    });
+    try {
+      await firstValueFrom(this.authApiService.register(request));
+      this.registrationCompleted = true;
+      this.messageService.add('success', 'Succès', 'Compte créé. Vérifie le lien de confirmation envoyé dans la console de l’API.');
+    } catch (error: unknown) {
+      const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
+      this.messageService.add('error', 'Erreur', errorMessage);
+    }
   }
 
-  resendConfirmation(): void {
-    this.apiService.resendConfirmation(this.registerEmail).subscribe({
-      next: (response) => {
-        this.messageService.add('success', 'Succès', response.message);
-      },
-      error: (error: { error?: { message?: string; Message?: string; }; }): void => {
-        const errorMessage: string = error.error?.message
-          ?? error.error?.Message
-          ?? 'Une erreur inattendue est survenue.';
-
-        this.messageService.add('error', 'Erreur', errorMessage);
-      }
-    });
+  async resendConfirmation(): Promise<void> {
+    try {
+      const response: { message: string } = await firstValueFrom(this.authApiService.resendConfirmation(this.registerEmail));
+      this.messageService.add('success', 'Succès', response.message);
+    } catch (error: unknown) {
+      const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
+      this.messageService.add('error', 'Erreur', errorMessage);
+    }
   }
 
   isValidPassword(): boolean {

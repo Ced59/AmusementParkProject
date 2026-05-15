@@ -1,8 +1,9 @@
-import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { isPlatformBrowser } from '@angular/common';
-import { ApiService } from '../api.service';
+import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { AuthService } from '../auth/auth.service';
-import { UserDto } from '../../models/users/user_dto';
+import { UserDto } from '@app/models/users/user_dto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,10 @@ export class CurrentUserService {
   readonly loading = signal<boolean>(false);
 
   constructor(
-    private readonly apiService: ApiService,
+    private readonly authApiService: AuthApiService,
     private readonly authService: AuthService,
-    @Inject(PLATFORM_ID) private readonly platformId: object
+    @Inject(PLATFORM_ID) private readonly platformId: object,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -32,7 +34,7 @@ export class CurrentUserService {
 
     this.loading.set(true);
 
-    this.apiService.getUserById(userId).subscribe({
+    this.authApiService.getCurrentUserById(userId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (user: UserDto) => {
         this.currentUser.set(user);
         this.loading.set(false);

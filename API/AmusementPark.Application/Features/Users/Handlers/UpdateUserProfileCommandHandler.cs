@@ -99,7 +99,11 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
 
             return ApplicationResult<User>.Success(updatedUser);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<User>.Failure(UserApplicationErrors.UserUpdateFailed());
         }

@@ -1,6 +1,7 @@
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Infrastructure.Configuration.Images;
+using Microsoft.Extensions.Logging;
 using Minio;
 using Minio.DataModel.Args;
 using SixLabors.Fonts;
@@ -24,12 +25,17 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
 
     private readonly IMinioClient minioClient;
     private readonly MinioImageStorageSettings settings;
+    private readonly ILogger<MinioImageBinaryStorage> logger;
     private readonly Font watermarkFont;
 
-    public MinioImageBinaryStorage(IMinioClient minioClient, MinioImageStorageSettings settings)
+    public MinioImageBinaryStorage(
+        IMinioClient minioClient,
+        MinioImageStorageSettings settings,
+        ILogger<MinioImageBinaryStorage> logger)
     {
         this.minioClient = minioClient;
         this.settings = settings;
+        this.logger = logger;
         this.watermarkFont = ResolveWatermarkFont();
     }
 
@@ -135,8 +141,16 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
                         .WithBucket(this.settings.Bucket)
                         .WithObject(objectName));
             }
-            catch
+            catch (Minio.Exceptions.ObjectNotFoundException)
             {
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                throw;
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogWarning(exception, "Unable to delete image object {ObjectName} from MinIO bucket {Bucket}.", objectName, this.settings.Bucket);
             }
         }
     }

@@ -1,0 +1,36 @@
+<section class="park-info" *ngIf="park as currentPark">
+  <div class="public-section-header park-section-header">
+    <div>
+      <span class="public-kicker">
+        <i class="pi pi-info-circle"></i>
+        {{ 'parks.detail.practical.title' | translate }}
+      </span>
+      <h2 class="public-section-header__title">{{ 'parks.detail.practical.title' | translate }}</h2>
+      <p class="public-section-header__subtitle">{{ 'parks.detail.practical.subtitle' | translate }}</p>
+    </div>
+  </div>
+
+  <div class="park-info__grid">
+    <article class="park-info__card" *ngIf="currentPark.countryCode">
+      <span>{{ 'parks.fields.country' | translate }}</span>
+      <strong>{{ currentPark.countryCode }}</strong>
+    </article>
+
+    <article class="park-info__card" *ngIf="currentPark.city">
+      <span>{{ 'parks.fields.city' | translate }}</span>
+      <strong>{{ currentPark.city }}</strong>
+    </article>
+
+    <article class="park-info__card" *ngIf="currentPark.addressLine">
+      <span>{{ 'parks.fields.address' | translate }}</span>
+      <strong>{{ currentPark.addressLine }}</strong>
+    </article>
+
+    <article class="park-info__card" *ngIf="currentPark.websiteUrl">
+      <span>{{ 'parks.fields.website' | translate }}</span>
+      <a [href]="currentPark.websiteUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener">
+        {{ 'parks.actions.website' | translate }}
+      </a>
+    </article>
+  </div>
+</section>

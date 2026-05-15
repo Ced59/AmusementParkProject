@@ -28,9 +28,6 @@ public sealed class UserDto
 
     public List<UserRoleDto> Roles { get; set; } = new();
 
-    public DateTime LastLogin { get; set; }
-
-    public DateTime LastActivity { get; set; }
 
     public string? AvatarUrl { get; set; }
 }

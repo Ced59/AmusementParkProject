@@ -1,9 +1,11 @@
 <app-page-state
-  [state]="pageState"
-  loadingTitleKey="admin.loading"
-  loadingMessageKey="admin.loading"
-  errorTitleKey="user-profile.errorTitle"
-  errorMessageKey="user-profile.errorMessage">
+  [state]="state().kind"
+  [messages]="{
+    loadingTitleKey: 'admin.loading',
+    loadingMessageKey: 'admin.loading',
+    errorTitleKey: 'user-profile.errorTitle',
+    errorMessageKey: 'user-profile.errorMessage'
+  }">
 
   <div class="admin-user-page">
     <div class="admin-user-toolbar">
@@ -18,13 +20,19 @@
     </div>
 
     <p-card
-      *ngIf="user as currentUser"
+      *ngIf="user() as currentUser"
       [header]="'admin.users.profileTitle' | translate"
       class="admin-user-card">
 
       <div class="profile-header">
         <div class="profile-avatar-container">
-          <img [src]="avatarUrl" class="profile-avatar" alt="User avatar">
+          <app-image-display
+            [imagePathOrUrl]="avatarUrl"
+            alt="User avatar"
+            imgClass="profile-avatar"
+            placeholderClass="profile-avatar profile-avatar--placeholder"
+            placeholderIconClass="pi pi-user">
+          </app-image-display>
           <button
             pButton
             type="button"
@@ -74,15 +82,14 @@
             <input id="admin-lastName" type="text" pInputText formControlName="lastName">
           </div>
 
-          <div class="field field-full">
+          <div class="field">
             <label for="admin-preferredLanguage">{{ 'user-profile.preferred_language' | translate }}</label>
             <p-select
               inputId="admin-preferredLanguage"
               [options]="languageOptions"
               optionLabel="label"
               optionValue="value"
-              formControlName="preferredLanguage"
-              appendTo="body">
+              formControlName="preferredLanguage">
             </p-select>
           </div>
         </div>
@@ -99,63 +106,49 @@
       </form>
     </p-card>
 
-    <p-card *ngIf="user" [header]="'admin.users.rolesTitle' | translate" class="admin-user-card">
-      <div class="role-grid">
-        <div class="role-item" *ngFor="let role of roleOptions">
-          <div>
-            <strong>{{ role }}</strong>
-            <div class="role-state">
-              {{ (hasRole(role) ? 'admin.users.roleAssigned' : 'admin.users.roleNotAssigned') | translate }}
-            </div>
-          </div>
-
-          <button
-            pButton
-            type="button"
-            [icon]="hasRole(role) ? 'pi pi-minus' : 'pi pi-plus'"
-            [label]="(hasRole(role) ? 'admin.users.removeRole' : 'admin.users.addRole') | translate"
-            [loading]="processingRole === role"
-            (click)="toggleRole(role)">
-          </button>
-        </div>
+    <p-card *ngIf="user() as currentUser" [header]="'admin.users.rolesTitle' | translate" class="admin-user-card">
+      <div class="roles-grid">
+        <button
+          *ngFor="let role of roleOptions"
+          pButton
+          type="button"
+          class="p-button-outlined"
+          [severity]="hasRole(role) ? 'success' : 'secondary'"
+          [label]="role"
+          [loading]="processingRole === role"
+          (click)="toggleRole(role)">
+        </button>
       </div>
     </p-card>
 
-    <p-card *ngIf="user" [header]="'admin.users.securityTitle' | translate" class="admin-user-card">
-      <div class="security-actions">
-        <div class="security-row">
+    <p-card *ngIf="user() as currentUser" [header]="'admin.users.securityTitle' | translate" class="admin-user-card">
+      <div class="security-grid">
+        <div class="security-row" *ngIf="canBlockUser">
           <div>
-            <strong>{{ 'admin.users.blockingTitle' | translate }}</strong>
-            <div class="role-state">
-              {{ (user.isBlocked ? 'admin.users.blockedDescription' : 'admin.users.activeDescription') | translate }}
-            </div>
+            <h3>{{ 'admin.users.blockTitle' | translate }}</h3>
+            <p>
+              {{ (currentUser.isBlocked ? 'admin.users.blockedDescription' : 'admin.users.activeDescription') | translate }}
+            </p>
           </div>
-
           <button
-            *ngIf="canBlockUser"
             pButton
             type="button"
-            [severity]="user.isBlocked ? 'success' : 'danger'"
-            [label]="(user.isBlocked ? 'admin.users.unlock' : 'admin.users.block') | translate"
+            [severity]="currentUser.isBlocked ? 'success' : 'danger'"
+            [label]="(currentUser.isBlocked ? 'admin.users.unblockAction' : 'admin.users.blockAction') | translate"
             [loading]="blockingActionInProgress"
             (click)="toggleBlockedStatus()">
           </button>
         </div>
 
-        <form
-          *ngIf="canManagePassword"
-          [formGroup]="passwordForm"
-          class="password-form"
-          (ngSubmit)="changePassword()">
-
+        <form *ngIf="canManagePassword" [formGroup]="passwordForm" class="password-form" (ngSubmit)="changePassword()">
           <div class="form-grid">
             <div class="field">
-              <label for="admin-newPassword">{{ 'admin.users.password' | translate }}</label>
+              <label for="admin-newPassword">{{ 'admin.users.newPassword' | translate }}</label>
               <input id="admin-newPassword" type="password" pInputText formControlName="newPassword">
             </div>
 
             <div class="field">
-              <label for="admin-newPasswordConfirm">{{ 'admin.users.passwordConfirm' | translate }}</label>
+              <label for="admin-newPasswordConfirm">{{ 'admin.users.confirmPassword' | translate }}</label>
               <input id="admin-newPasswordConfirm" type="password" pInputText formControlName="newPasswordConfirm">
             </div>
           </div>
@@ -177,7 +170,7 @@
 
 <app-owner-image-upload-dialog
   [(visible)]="displayAvatarUploadDialog"
-  [ownerId]="user?.id || ''"
+  [ownerId]="targetUserId || ''"
   [ownerType]="userOwnerType"
   [category]="avatarCategory"
   [titleKey]="'user-profile.avatar.title'"

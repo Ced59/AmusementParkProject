@@ -114,3 +114,8 @@
     width: 100%;
   }
 }
+
+:host ::ng-deep .logo-preview--placeholder,
+:host ::ng-deep .logo-history-preview--placeholder {
+  object-fit: initial;
+}

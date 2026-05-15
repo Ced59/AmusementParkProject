@@ -1,8 +1,11 @@
 using System;
-using System.Collections.Generic;
+using AmusementPark.WebAPI.Diagnostics;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace AmusementPark.WebAPI.DependencyInjection;
 
@@ -33,6 +36,16 @@ public static class WebApplicationPipelineExtensions
         {
             errorApp.Run(async context =>
             {
+                Exception? exception = context.Features.Get<IExceptionHandlerFeature>()?.Error;
+                ILogger logger = context.RequestServices
+                    .GetRequiredService<ILoggerFactory>()
+                    .CreateLogger("AmusementPark.WebAPI.UnhandledException");
+
+                if (exception is not null)
+                {
+                    logger.LogError(exception, "Unhandled API exception for {Method} {Path}.", context.Request.Method, context.Request.Path);
+                }
+
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                 context.Response.ContentType = "application/json";
                 await context.Response.WriteAsJsonAsync(new
@@ -55,30 +68,7 @@ public static class WebApplicationPipelineExtensions
         ArgumentNullException.ThrowIfNull(app);
 
         app.MapControllers();
-        app.MapGet("/health", () => Results.Ok(new
-        {
-            status = "ok",
-            architecture = "clean-architecture-phase-13",
-            application = AmusementPark.Application.ArchitecturePhase.Current,
-            infrastructure = AmusementPark.Infrastructure.ArchitecturePhase.Current,
-            project = "AmusementPark.WebAPI",
-            migratedFeatures = new[]
-            {
-                "Countries",
-                "ParkFounders",
-                "ParkOperators",
-                "AttractionManufacturers",
-                "Parks",
-                "ParkZones",
-                "ParkItems",
-                "Images",
-                "Users",
-                "Auth",
-                "Search",
-                "DataSources",
-                "CaptainCoaster",
-            },
-        }));
+        app.MapGet("/health", () => Results.Ok(MigrationDiagnostics.CreateHealthPayload()));
 
         return app;
     }

@@ -61,7 +61,11 @@ public sealed class UpdateParkZoneCommandHandler : ICommandHandler<UpdateParkZon
 
             return ApplicationResult<ParkZone>.Success(updated);
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception)
         {
             return ApplicationResult<ParkZone>.Failure(ParkZoneApplicationErrors.ErrorUpdatingParkZone());
         }

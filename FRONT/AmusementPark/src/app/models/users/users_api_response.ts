@@ -1,4 +1,5 @@
-import {ApiResponse} from "../shared/api_reponse";
-import {UserDto} from "./user_dto";
+import { CollectionResponse } from '@shared/models/contracts';
 
-export type UsersApiResponse = ApiResponse<UserDto>;
+import { UserDto } from './user_dto';
+
+export type UsersApiResponse = CollectionResponse<UserDto>;

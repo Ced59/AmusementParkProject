@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LocalizedItem } from '../../../../../models/shared/localized-item';
-import { ParkZone } from '../../../../../models/parks/park-zone';
-import { ApiService } from '../../../../../services/api.service';
-import { commitViewUpdate } from '../../../../../utils/change-detection.utils';
+import { LocalizedItem } from '@app/models/shared/localized-item';
+import { ParkZone } from '@app/models/parks/park-zone';
+import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
+import { commitViewUpdate } from '@shared/utils/angular';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
 import { LocalizedTextInputComponent } from '../../../../shared/localized-text-input/localized-text-input.component';
@@ -34,8 +35,9 @@ export class AdminParkZoneEditComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly apiService: ApiService,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly parkZonesApiService: ParkZonesApiService,
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -53,7 +55,7 @@ export class AdminParkZoneEditComponent implements OnInit {
     });
 
     if (this.zoneId) {
-      this.apiService.getParkZoneById(this.zoneId).subscribe((zone: ParkZone) => {
+      this.parkZonesApiService.getParkZoneById(this.zoneId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe((zone: ParkZone) => {
         commitViewUpdate(this.changeDetectorRef, () => {
           this.form.patchValue({
             parkId: zone.parkId,
@@ -76,11 +78,11 @@ export class AdminParkZoneEditComponent implements OnInit {
     const payload: ParkZone = this.form.value as ParkZone;
 
     if (this.zoneId) {
-      this.apiService.updateParkZone(this.zoneId, payload).subscribe(() => this.goBack());
+      this.parkZonesApiService.updateParkZone(this.zoneId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.goBack());
       return;
     }
 
-    this.apiService.createParkZone(payload).subscribe(() => this.goBack());
+    this.parkZonesApiService.createParkZone(payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.goBack());
   }
 
   goBack(): void {

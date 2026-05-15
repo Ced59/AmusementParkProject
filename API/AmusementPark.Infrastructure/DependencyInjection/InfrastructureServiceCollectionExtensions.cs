@@ -92,6 +92,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IImageProcessingPipeline, ImageMetadataPipeline>();
         services.AddScoped<IImageBinaryStorage, MinioImageBinaryStorage>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
         services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();
         services.AddSingleton<IDataSourceImportJobQueue, InMemoryDataSourceImportJobQueue>();

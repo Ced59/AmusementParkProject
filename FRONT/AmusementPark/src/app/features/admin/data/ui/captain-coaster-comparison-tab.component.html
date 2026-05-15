@@ -1,0 +1,144 @@
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="card-header-row">
+      <span>Résultats de comparaison</span>
+      <button
+        pButton
+        type="button"
+        [label]="isLoaded() ? 'Actualiser' : 'Charger les résultats'"
+        [icon]="isLoadingPage() ? 'pi pi-spin pi-spinner' : (isLoaded() ? 'pi pi-refresh' : 'pi pi-download')"
+        class="p-button-sm"
+        [disabled]="isLoadingPage() || session() === null"
+        (click)="captainCoasterComparisonFacade.loadComparisonAsync()">
+      </button>
+    </div>
+  </ng-template>
+
+  <div *ngIf="!isLoaded()" class="not-loaded-hint">
+    <i class="pi pi-info-circle"></i>
+    Cliquez sur <strong>"Charger les résultats"</strong> pour afficher les différences détectées.
+    <span *ngIf="session()?.comparisonResults">
+      ({{ session()!.comparisonResults | number }} résultats à charger par pages de {{ pageSize() }})
+    </span>
+  </div>
+
+  <ng-container *ngIf="isLoaded()">
+    <div class="session-stats">
+      <div class="stat-badge stat-badge--warn"><i class="pi pi-pencil"></i> {{ sessionUpdated() | number }} modifiés</div>
+      <div class="stat-badge stat-badge--info"><i class="pi pi-plus"></i> {{ sessionMissing() | number }} nouveaux</div>
+      <div class="stat-badge stat-badge--danger"><i class="pi pi-clone"></i> {{ sessionDuplicate() | number }} doublons</div>
+      <div class="stat-badge stat-badge--ok"><i class="pi pi-check"></i> {{ sessionApplied() | number }} appliqués</div>
+    </div>
+
+    <div class="filters-bar">
+      <p-select
+        [options]="entityTypeOptions"
+        [ngModel]="filters().entityType"
+        (ngModelChange)="captainCoasterComparisonFacade.setEntityTypeFilter($event)"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Type"
+        class="filter-select">
+      </p-select>
+      <p-select
+        [options]="changeTypeOptions"
+        [ngModel]="filters().changeType"
+        (ngModelChange)="captainCoasterComparisonFacade.setChangeTypeFilter($event)"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Changement"
+        class="filter-select">
+      </p-select>
+      <p-select
+        [options]="appliedOptions"
+        [ngModel]="filters().isApplied"
+        (ngModelChange)="captainCoasterComparisonFacade.setAppliedFilter($event)"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Appliqué"
+        class="filter-select">
+      </p-select>
+      <span class="filter-total">{{ totalCount() | number }} résultats filtrés</span>
+    </div>
+
+    <div class="bulk-actions">
+      <div class="bulk-actions__selection">
+        <p-checkbox
+          [binary]="true"
+          [ngModel]="allPageSelected()"
+          (ngModelChange)="captainCoasterComparisonFacade.toggleSelectPage($event)"
+          inputId="selectPage">
+        </p-checkbox>
+        <label for="selectPage">Page ({{ currentItems().length }})</label>
+        <span *ngIf="selectedCount() > 0" class="selected-count">
+          {{ selectedCount() }} sélectionné(s)
+        </span>
+      </div>
+      <div class="bulk-actions__buttons">
+        <button
+          pButton
+          type="button"
+          label="Appliquer la sélection"
+          icon="pi pi-check"
+          class="p-button-sm"
+          [disabled]="isBusy() || selectedCount() === 0"
+          (click)="captainCoasterComparisonFacade.applySelectionAsync()">
+        </button>
+        <button
+          pButton
+          type="button"
+          label="Tout appliquer (filtre actuel)"
+          icon="pi pi-check-circle"
+          class="p-button-sm p-button-outlined p-button-warn"
+          [disabled]="isBusy() || totalCount() === 0"
+          (click)="captainCoasterComparisonFacade.applyAllAsync(filters().entityType, filters().changeType)">
+        </button>
+      </div>
+    </div>
+
+    <div class="table-wrapper" [class.table-wrapper--loading]="isLoadingPage()">
+      <p-table [value]="currentItems()" responsiveLayout="scroll" styleClass="p-datatable-sm">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width:3rem"></th>
+            <th style="width:6rem">Type</th>
+            <th>Nom</th>
+            <th style="width:8rem">Changement</th>
+            <th style="width:7rem">Confiance</th>
+            <th>Analyse / résolution</th>
+            <th style="width:4rem">Fait</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-row>
+          <tr [class.row--applied]="row.isApplied" [class.row--duplicate]="captainCoasterComparisonFacade.isDuplicateRow(row)">
+            <td>
+              <p-checkbox
+                [binary]="true"
+                [ngModel]="captainCoasterComparisonFacade.isSelected(row.id)"
+                (ngModelChange)="captainCoasterComparisonFacade.toggleSelection(row.id, $event)"
+                [disabled]="row.isApplied">
+              </p-checkbox>
+            </td>
+            <td><p-tag [value]="row.entityType" severity="secondary"></p-tag></td>
+            <td class="col-name" [title]="row.displayName">{{ row.displayName }}</td>
+            <td><p-tag [value]="row.changeType" [severity]="captainCoasterComparisonFacade.getChangeTypeSeverity(row.changeType)"></p-tag></td>
+            <td class="col-confidence">{{ row.matchConfidence }}</td>
+            <td>
+              <app-captain-coaster-comparison-analysis [row]="row"></app-captain-coaster-comparison-analysis>
+            </td>
+            <td><i [class]="row.isApplied ? 'pi pi-check-circle applied-icon' : 'pi pi-circle pending-icon'"></i></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+    <app-pagination
+      [rows]="pageSize()"
+      [first]="currentPage() * pageSize()"
+      [totalRecords]="totalCount()"
+      [rowsPerPageOptions]="[25, 50, 100, 200]"
+      [alwaysShow]="true"
+      (pageChanged)="captainCoasterComparisonFacade.onPageChange($event)">
+    </app-pagination>
+  </ng-container>
+</p-card>

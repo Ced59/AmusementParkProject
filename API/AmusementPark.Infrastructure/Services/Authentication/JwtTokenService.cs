@@ -1,10 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Users;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using Microsoft.IdentityModel.Tokens;
-using AmusementPark.Application.Ports;
 
 namespace AmusementPark.Infrastructure.Services.Authentication;
 
@@ -70,7 +70,14 @@ public sealed class JwtTokenService : ITokenService
         try
         {
             ClaimsPrincipal principal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
-            JwtSecurityToken jwtSecurityToken = (JwtSecurityToken)validatedToken;
+            if (validatedToken is not JwtSecurityToken jwtSecurityToken)
+            {
+                return new Application.Ports.TokenValidationResult
+                {
+                    IsValid = false,
+                };
+            }
+
             return new Application.Ports.TokenValidationResult
             {
                 IsValid = true,
@@ -78,7 +85,14 @@ public sealed class JwtTokenService : ITokenService
                 Claims = principal.Claims.ToList(),
             };
         }
-        catch
+        catch (SecurityTokenException)
+        {
+            return new Application.Ports.TokenValidationResult
+            {
+                IsValid = false,
+            };
+        }
+        catch (ArgumentException)
         {
             return new Application.Ports.TokenValidationResult
             {

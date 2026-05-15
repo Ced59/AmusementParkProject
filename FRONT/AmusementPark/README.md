@@ -2,6 +2,24 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
 
+## Migration front
+
+La fondation de la nouvelle architecture front a été posée en **P02**.
+La référence officielle de cette étape est :
+
+- `src/app/core/architecture/P02-FRONT-TARGET-ARCHITECTURE.md`
+
+La structure cible visible dans le projet est désormais :
+
+- `src/app/core`
+- `src/app/shared`
+- `src/app/features`
+- `src/app/data-access`
+- `src/app/ui`
+
+Les dossiers historiques restent temporairement en place pour préserver l'iso-fonctionnel.
+Les futures phases devront migrer la logique progressivement vers la structure cible.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
