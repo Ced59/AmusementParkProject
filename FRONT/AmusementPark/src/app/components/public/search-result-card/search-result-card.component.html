@@ -1,19 +1,8 @@
-<article class="search-result-card" *ngIf="item as currentItem">
-  <div class="search-result-card__header">
-    <app-ui-kicker iconClass="pi pi-search">
-      {{ categoryLabelKey | translate }}
-    </app-ui-kicker>
-  </div>
-
-  <div class="search-result-card__body">
-    <h3>{{ currentItem.title }}</h3>
-    <p>{{ currentItem.description }}</p>
-  </div>
-
-  <div class="search-result-card__footer" *ngIf="parkLink">
-    <a appUiButton="ghost" [routerLink]="parkLink">
-      <span>{{ 'home.search.openResult' | translate }}</span>
-      <i class="pi pi-arrow-right" aria-hidden="true"></i>
-    </a>
-  </div>
-</article>
+@if (item; as currentItem) {
+  <app-ui-result-card
+    [title]="currentItem.title"
+    [description]="currentItem.description"
+    [kickerLabelKey]="categoryLabelKey"
+    [routerLink]="parkLink">
+  </app-ui-result-card>
+}

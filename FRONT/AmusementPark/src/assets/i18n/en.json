@@ -745,5 +745,14 @@
   "publicNavigation": {
     "youAreHere": "You are here",
     "treeAriaLabel": "Parks navigation tree"
+  },
+  "maps": {
+    "placeholder": {
+      "title": "Map unavailable",
+      "message": "The required coordinates are not available yet."
+    },
+    "distance": {
+      "title": "Geographic marker"
+    }
   }
 }

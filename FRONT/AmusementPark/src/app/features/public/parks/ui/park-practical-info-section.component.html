@@ -1,33 +1,20 @@
-<section class="park-info" *ngIf="park as currentPark">
-  <app-ui-section-header
-    class="park-section-header"
-    kickerIconClass="pi pi-info-circle"
-    kickerLabelKey="parks.detail.practical.title"
-    titleKey="parks.detail.practical.title"
-    subtitleKey="parks.detail.practical.subtitle">
-  </app-ui-section-header>
+@if (park; as currentPark) {
+  <section class="park-info">
+    <app-ui-section-header
+      class="park-section-header"
+      kickerIconClass="pi pi-info-circle"
+      kickerLabelKey="parks.detail.practical.title"
+      titleKey="parks.detail.practical.title"
+      subtitleKey="parks.detail.practical.subtitle">
+    </app-ui-section-header>
 
-  <div class="park-info__grid">
-    <article class="park-info__card" *ngIf="currentPark.countryCode">
-      <span>{{ 'parks.fields.country' | translate }}</span>
-      <strong>{{ currentPark.countryCode }}</strong>
-    </article>
-
-    <article class="park-info__card" *ngIf="currentPark.city">
-      <span>{{ 'parks.fields.city' | translate }}</span>
-      <strong>{{ currentPark.city }}</strong>
-    </article>
-
-    <article class="park-info__card" *ngIf="currentPark.addressLine">
-      <span>{{ 'parks.fields.address' | translate }}</span>
-      <strong>{{ currentPark.addressLine }}</strong>
-    </article>
-
-    <article class="park-info__card" *ngIf="currentPark.websiteUrl">
-      <span>{{ 'parks.fields.website' | translate }}</span>
-      <a [href]="currentPark.websiteUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener">
-        {{ 'parks.actions.website' | translate }}
-      </a>
-    </article>
-  </div>
-</section>
+    <app-ui-info-card
+      kickerIconClass="pi pi-ticket"
+      kickerLabelKey="parks.detail.heroBadge"
+      [titleText]="currentPark.name"
+      textKey="parks.detail.practical.subtitle"
+      [metrics]="metrics"
+      [primaryAction]="websiteAction">
+    </app-ui-info-card>
+  </section>
+}

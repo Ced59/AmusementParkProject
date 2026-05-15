@@ -1,22 +1,21 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { InputText } from 'primeng/inputtext';
-
 import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
 import { PaginationComponent } from '@app/components/shared/pagination/pagination.component';
 import { ParkCardComponent } from '@app/components/public/park-card/park-card.component';
 import { PaginationContract } from '@shared/models/contracts';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
-import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiSearchPanelComponent } from '@ui/forms';
 
 @Component({
   selector: 'app-park-list-view',
   templateUrl: './park-list-view.component.html',
   styleUrls: ['./park-list-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [InputText, PageStateComponent, PaginationComponent, NgFor, ParkCardComponent, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective]
+  imports: [PageStateComponent, PaginationComponent, NgFor, ParkCardComponent, TranslateModule, UiChipComponent, UiKickerComponent, UiSurfaceDirective, UiSearchPanelComponent]
 })
 export class ParkListViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;

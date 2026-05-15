@@ -1,18 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-import { InputText } from 'primeng/inputtext';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed } from '@angular/core';
 
 import { SelectOption } from '../models/select-option.model';
-import { UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiSearchPanelComponent, UiSearchPanelSelectFilterModel } from '@ui/forms';
 
 @Component({
   selector: 'app-park-items-filters',
   templateUrl: './park-items-filters.component.html',
-  styleUrls: ['./park-items-filters.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgFor, FormsModule, InputText, TranslateModule, UiSectionHeaderComponent, UiSurfaceDirective]
+  imports: [UiSearchPanelComponent]
 })
 export class ParkItemsFiltersComponent {
   @Input({ required: true }) searchTerm!: Signal<string>;
@@ -29,31 +24,45 @@ export class ParkItemsFiltersComponent {
   @Output() typeChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() zoneChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
 
+  protected readonly filters = computed<UiSearchPanelSelectFilterModel[]>(() => [
+    {
+      id: 'category',
+      labelKey: 'parkItems.filters.category',
+      selectedValue: this.selectedCategory(),
+      options: this.categoryOptions()
+    },
+    {
+      id: 'type',
+      labelKey: 'parkItems.filters.type',
+      selectedValue: this.selectedType(),
+      options: this.typeOptions()
+    },
+    {
+      id: 'zone',
+      labelKey: 'parkItems.filters.zone',
+      selectedValue: this.selectedZoneId(),
+      options: this.zoneOptions(),
+      hidden: !this.hasZones()
+    }
+  ]);
+
   onSearchChanged(value: string): void {
     this.searchChanged.emit(value ?? '');
   }
 
-  onCategoryChanged(value: string | null): void {
-    this.categoryChanged.emit(value);
-  }
-
-  onTypeChanged(value: string | null): void {
-    this.typeChanged.emit(value);
-  }
-
-  onZoneChanged(value: string | null): void {
-    this.zoneChanged.emit(value);
-  }
-
-  resolveOptionLabel(option: SelectOption | null | undefined, fallbackKey: string): string {
-    if (!option) {
-      return fallbackKey;
+  onFilterChanged(event: { id: string; value: string | null }): void {
+    if (event.id === 'category') {
+      this.categoryChanged.emit(event.value);
+      return;
     }
 
-    if (option.labelKey) {
-      return option.labelKey;
+    if (event.id === 'type') {
+      this.typeChanged.emit(event.value);
+      return;
     }
 
-    return option.label ?? fallbackKey;
+    if (event.id === 'zone') {
+      this.zoneChanged.emit(event.value);
+    }
   }
 }

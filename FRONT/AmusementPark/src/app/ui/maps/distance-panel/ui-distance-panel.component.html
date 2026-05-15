@@ -1,0 +1,74 @@
+<aside class="app-distance-panel">
+  <div class="app-distance-panel__header">
+    <span class="app-distance-panel__icon">
+      <i class="pi pi-compass" aria-hidden="true"></i>
+    </span>
+    <div>
+      <h3>
+        @if (titleText) {
+          {{ titleText }}
+        } @else {
+          {{ titleKey | translate }}
+        }
+      </h3>
+      @if (hasRouteLabels) {
+        <p>
+          @if (sourceLabel) {
+            <span>{{ sourceLabel }}</span>
+          }
+          @if (sourceLabel && targetLabel) {
+            <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          }
+          @if (targetLabel) {
+            <span>{{ targetLabel }}</span>
+          }
+        </p>
+      }
+    </div>
+  </div>
+
+  @if (hasDistance) {
+    <strong class="app-distance-panel__value">
+      {{ distanceValue }} @if (distanceUnit) { <span>{{ distanceUnit }}</span> }
+    </strong>
+  }
+
+  @if (durationText) {
+    <p class="app-distance-panel__duration">
+      <i class="pi pi-clock" aria-hidden="true"></i>
+      <span>{{ durationText }}</span>
+    </p>
+  }
+
+  @if (hasMetrics) {
+    <div class="app-distance-panel__metrics">
+      @for (metric of metrics; track metric.labelKey ?? metric.labelText ?? metric.value) {
+        <div class="app-distance-panel__metric">
+          @if (metric.iconClass) {
+            <i [class]="metric.iconClass" aria-hidden="true"></i>
+          }
+          <span>
+            @if (metric.labelKey) {
+              {{ metric.labelKey | translate }}
+            } @else {
+              {{ metric.labelText }}
+            }
+          </span>
+          <strong>{{ metric.value }} @if (metric.unit) { <small>{{ metric.unit }}</small> }</strong>
+        </div>
+      }
+    </div>
+  }
+
+  @if (hasNote) {
+    <p class="app-distance-panel__note">
+      @if (noteKey) {
+        {{ noteKey | translate }}
+      } @else {
+        {{ noteText }}
+      }
+    </p>
+  }
+
+  <ng-content></ng-content>
+</aside>

@@ -1,0 +1,27 @@
+<div class="app-field ui-field-input" [class.ui-field-input--with-icon]="iconClass">
+  @if (hasLabel) {
+    <label class="app-field__label" [for]="inputId">
+      @if (labelKey) {
+        {{ labelKey | translate }}
+      } @else {
+        {{ labelText }}
+      }
+    </label>
+  }
+
+  <div class="ui-field-input__control">
+    @if (iconClass) {
+      <i [class]="iconClass" aria-hidden="true"></i>
+    }
+
+    <input
+      class="app-input"
+      [id]="inputId"
+      [type]="type"
+      [ngModel]="value"
+      [placeholder]="placeholderKey ? (placeholderKey | translate) : resolvedPlaceholder"
+      [autocomplete]="autocomplete"
+      [disabled]="disabled"
+      (ngModelChange)="onValueChanged($event)" />
+  </div>
+</div>

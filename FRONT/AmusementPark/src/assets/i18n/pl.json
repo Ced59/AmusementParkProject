@@ -745,5 +745,14 @@
   "publicNavigation": {
     "youAreHere": "Jesteś tutaj",
     "treeAriaLabel": "Drzewo nawigacji parków"
+  },
+  "maps": {
+    "placeholder": {
+      "title": "Mapa niedostępna",
+      "message": "Wymagane współrzędne nie są jeszcze dostępne."
+    },
+    "distance": {
+      "title": "Punkt geograficzny"
+    }
   }
 }

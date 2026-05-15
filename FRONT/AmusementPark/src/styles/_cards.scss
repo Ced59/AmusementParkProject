@@ -132,3 +132,288 @@ a.public-feature-card:hover {
 .app-stat-card--purple {
   background: linear-gradient(135deg, color-mix(in srgb, var(--c-purple) 10%, var(--app-surface)), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
 }
+
+/* M05 shared card components. Keep card structure here so feature components stay layout-only. */
+.ui-park-card,
+.ui-item-card,
+.ui-result-card,
+.ui-info-card {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+.ui-park-card:hover,
+.ui-item-card:hover,
+.ui-result-card:hover,
+.ui-info-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--app-border-stronger);
+  box-shadow: var(--shadow-lift);
+}
+
+.ui-park-card {
+  grid-template-rows: auto 1fr auto;
+}
+
+.ui-park-card__visual {
+  position: relative;
+  display: grid;
+  min-height: 12rem;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 20%, rgba(255, 90, 31, 0.14), transparent 34%),
+    radial-gradient(circle at 84% 14%, rgba(196, 255, 39, 0.10), transparent 34%),
+    linear-gradient(135deg, color-mix(in srgb, var(--app-surface-2) 92%, transparent), color-mix(in srgb, var(--app-surface) 100%, transparent));
+}
+
+.ui-park-card__visual::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -35% -10%;
+  height: 60%;
+  background: radial-gradient(ellipse at center, rgba(255, 90, 31, 0.18), transparent 64%);
+  pointer-events: none;
+}
+
+.ui-park-card__visual--placeholder {
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255, 90, 31, 0.16), transparent 42%),
+    linear-gradient(135deg, color-mix(in srgb, var(--app-surface-2) 88%, transparent), color-mix(in srgb, var(--app-surface) 100%, transparent));
+}
+
+.ui-park-card__badges,
+.ui-item-card__chips,
+.ui-result-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ui-park-card__badges {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  z-index: 2;
+  justify-content: space-between;
+}
+
+.ui-park-card__logo {
+  position: relative;
+  z-index: 1;
+  width: min(8rem, 48%);
+  max-height: 7rem;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.22));
+}
+
+.ui-park-card__body,
+.ui-item-card__body,
+.ui-result-card__body,
+.ui-info-card__body {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+  padding: 1.1rem;
+}
+
+.ui-park-card__headline,
+.ui-item-card__headline {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.ui-park-card__eyebrow {
+  margin: 0;
+  color: var(--app-text-muted);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ui-park-card__title,
+.ui-item-card__title,
+.ui-result-card__title,
+.ui-info-card__title {
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.3vw, 1.45rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.ui-park-card__description,
+.ui-item-card__description,
+.ui-result-card__description,
+.ui-info-card__text,
+.ui-item-card__subtitle {
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.62;
+}
+
+.ui-park-card__details {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.ui-park-card__detail,
+.ui-info-card__metric,
+.app-distance-panel__metric {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.75rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 210, 140, 0.035);
+}
+
+.ui-park-card__label,
+.ui-info-card__metric span,
+.app-distance-panel__metric span {
+  color: var(--app-text-muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ui-park-card__detail strong,
+.ui-info-card__metric strong,
+.app-distance-panel__metric strong {
+  color: var(--app-heading);
+  font-weight: 900;
+}
+
+.ui-park-card__footer,
+.ui-item-card__footer,
+.ui-result-card__footer,
+.ui-info-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0 1.1rem 1.1rem;
+}
+
+.ui-park-card__cta {
+  flex: 1 1 auto;
+}
+
+.ui-park-card__secondary-cta {
+  flex: 0 0 auto;
+}
+
+.ui-park-card--compact .ui-park-card__visual {
+  min-height: 8rem;
+}
+
+.ui-park-card--compact .ui-park-card__body {
+  padding: 0.95rem;
+}
+
+.ui-park-card--compact .ui-park-card__footer {
+  padding: 0 0.95rem 0.95rem;
+}
+
+.ui-item-card {
+  grid-template-rows: auto 1fr auto;
+}
+
+.ui-item-card__visual {
+  position: relative;
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 90, 31, 0.14), transparent 30%),
+    radial-gradient(circle at 80% 35%, rgba(155, 93, 229, 0.12), transparent 32%),
+    linear-gradient(135deg, color-mix(in srgb, var(--app-surface-2) 92%, transparent), color-mix(in srgb, var(--app-surface) 100%, transparent));
+}
+
+.ui-item-card__icon {
+  display: inline-grid;
+  width: 3.2rem;
+  height: 3.2rem;
+  place-items: center;
+  border-radius: 1.15rem;
+  background: var(--app-primary);
+  color: #000000;
+  box-shadow: var(--shadow-soft-orange);
+  font-size: 1.35rem;
+}
+
+.ui-item-card__highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.ui-item-card__highlight {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.8rem;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-pill);
+  color: var(--app-text-muted);
+  background: rgba(255, 210, 140, 0.04);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.ui-result-card {
+  gap: 0;
+}
+
+.ui-result-card__header {
+  justify-content: space-between;
+  padding: 1rem 1rem 0;
+}
+
+.ui-info-card {
+  padding: 0;
+}
+
+.ui-info-card__metrics,
+.app-distance-panel__metrics {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.ui-info-card--compact .ui-info-card__body {
+  padding: 0.95rem;
+}
+
+@media (max-width: 680px) {
+  .ui-park-card__footer,
+  .ui-item-card__footer,
+  .ui-result-card__footer,
+  .ui-info-card__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ui-park-card__footer .app-button,
+  .ui-item-card__footer .app-button,
+  .ui-result-card__footer .app-button,
+  .ui-info-card__actions .app-button {
+    width: 100%;
+  }
+}

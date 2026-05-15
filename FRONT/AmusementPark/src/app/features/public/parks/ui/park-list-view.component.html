@@ -33,28 +33,18 @@
     </div>
   </section>
 
-  <section class="public-filter-panel parks-toolbar" appUiSurface="filter" appUiSurfacePadding="regular">
-    <div class="public-filter-grid parks-toolbar__grid">
-      <div class="public-field parks-toolbar__search">
-        <label class="public-field__label">{{ 'parks.search.label' | translate }}</label>
-        <input
-          #parkSearchInput
-          type="text"
-          pInputText
-          class="public-input"
-          [value]="searchTerm()"
-          [placeholder]="'parks.search.placeholder' | translate"
-          (input)="onSearchInput(parkSearchInput.value)" />
-      </div>
-
-      <div class="parks-toolbar__actions">
-        <button appUiButton="ghost" type="button" (click)="clearSearch()">
-          <i class="pi pi-times" aria-hidden="true"></i>
-          <span>{{ 'parks.search.clear' | translate }}</span>
-        </button>
-      </div>
-    </div>
-  </section>
+  <app-ui-search-panel
+    class="parks-toolbar"
+    searchInputId="parks-search-input"
+    kickerLabelKey="parks.search.label"
+    kickerIconClass="pi pi-search"
+    searchLabelKey="parks.search.label"
+    searchPlaceholderKey="parks.search.placeholder"
+    [searchTerm]="searchTerm()"
+    clearActionLabelKey="parks.search.clear"
+    (searchTermChange)="onSearchInput($event)"
+    (clearClicked)="clearSearch()">
+  </app-ui-search-panel>
 
   <section class="public-panel parks-results" appUiSurface="panel" appUiSurfacePadding="compact">
     <app-page-state

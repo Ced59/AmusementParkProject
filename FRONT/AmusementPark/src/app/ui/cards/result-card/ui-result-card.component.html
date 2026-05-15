@@ -1,0 +1,39 @@
+<article class="ui-result-card">
+  <div class="ui-result-card__header">
+    @if (hasKicker) {
+      <app-ui-kicker [tone]="kickerTone" [iconClass]="kickerIconClass">
+        @if (kickerLabelKey) {
+          {{ kickerLabelKey | translate }}
+        } @else {
+          {{ kickerText }}
+        }
+      </app-ui-kicker>
+    }
+
+    @if (hasBadge) {
+      <app-ui-chip [tone]="badgeTone">
+        @if (badgeLabelKey) {
+          {{ badgeLabelKey | translate }}
+        } @else {
+          {{ badgeText }}
+        }
+      </app-ui-chip>
+    }
+  </div>
+
+  <div class="ui-result-card__body">
+    <h3 class="ui-result-card__title">{{ title }}</h3>
+    @if (description) {
+      <p class="ui-result-card__description">{{ description }}</p>
+    }
+  </div>
+
+  @if (routerLink) {
+    <div class="ui-result-card__footer">
+      <a appUiButton="ghost" [routerLink]="routerLink">
+        <span>{{ actionLabelKey | translate }}</span>
+        <i class="pi pi-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  }
+</article>

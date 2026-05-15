@@ -1,17 +1,14 @@
 import { Component, Input } from '@angular/core';
+
 import { SearchResultItem } from '@app/models/search/search-result-item';
 import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
-import { NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
 import { getSearchCategoryTranslationKey } from '@shared/utils/display/display-label.helpers';
-import { UiButtonDirective, UiKickerComponent } from '@ui/primitives';
+import { UiResultCardComponent } from '@ui/cards';
 
 @Component({
-    selector: 'app-search-result-card',
-    templateUrl: './search-result-card.component.html',
-    styleUrls: ['./search-result-card.component.scss'],
-    imports: [NgIf, RouterLink, TranslateModule, UiButtonDirective, UiKickerComponent]
+  selector: 'app-search-result-card',
+  templateUrl: './search-result-card.component.html',
+  imports: [UiResultCardComponent]
 })
 export class SearchResultCardComponent {
   @Input() item: SearchResultItem | null = null;

@@ -1,28 +1,26 @@
-<section class="park-location" *ngIf="park as currentPark">
-  <app-ui-section-header
-    class="park-section-header"
+@if (park; as currentPark) {
+  <app-ui-map-shell
+    class="park-location"
     kickerIconClass="pi pi-map"
     kickerLabelKey="parks.detail.location.title"
     titleKey="parks.detail.location.title"
     subtitleKey="parks.detail.location.subtitle">
-  </app-ui-section-header>
+    <app-ui-map-slot uiMapShellMap [available]="hasCoordinates" minHeight="22rem">
+      <app-leaflet-map
+        [center]="center"
+        [zoom]="11"
+        [markers]="markers">
+      </app-leaflet-map>
+    </app-ui-map-slot>
 
-  <div class="park-location__stats">
-    <article class="park-location__stat">
-      <span>{{ 'parks.fields.latitude' | translate }}</span>
-      <strong>{{ currentPark.latitude }}</strong>
-    </article>
-
-    <article class="park-location__stat">
-      <span>{{ 'parks.fields.longitude' | translate }}</span>
-      <strong>{{ currentPark.longitude }}</strong>
-    </article>
-  </div>
-
-  <app-leaflet-map
-    *ngIf="hasCoordinates"
-    [center]="center"
-    [zoom]="11"
-    [markers]="markers">
-  </app-leaflet-map>
-</section>
+    <app-ui-distance-panel
+      uiMapShellSide
+      titleKey="parks.detail.location.title"
+      [sourceLabel]="currentPark.name"
+      [metrics]="[
+        { labelKey: 'parks.fields.latitude', value: currentPark.latitude, iconClass: 'pi pi-compass' },
+        { labelKey: 'parks.fields.longitude', value: currentPark.longitude, iconClass: 'pi pi-compass' }
+      ]">
+    </app-ui-distance-panel>
+  </app-ui-map-shell>
+}

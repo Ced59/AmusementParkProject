@@ -1,0 +1,12 @@
+<button class="app-category-chip__button" type="button" [disabled]="disabled" (click)="select()">
+  @if (iconClass) {
+    <i [class]="iconClass" aria-hidden="true"></i>
+  }
+  <span>
+    @if (labelKey) {
+      {{ labelKey | translate }}
+    } @else {
+      {{ labelText }}
+    }
+  </span>
+</button>

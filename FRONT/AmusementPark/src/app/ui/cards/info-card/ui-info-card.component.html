@@ -1,0 +1,95 @@
+<article class="ui-info-card" [class.ui-info-card--compact]="compact">
+  <div class="ui-info-card__body">
+    @if (hasKicker) {
+      <app-ui-kicker [tone]="kickerTone" [iconClass]="kickerIconClass">
+        @if (kickerLabelKey) {
+          {{ kickerLabelKey | translate }}
+        } @else {
+          {{ kickerText }}
+        }
+      </app-ui-kicker>
+    }
+
+    @if (hasTitle) {
+      <h3 class="ui-info-card__title">
+        @if (titleKey) {
+          {{ titleKey | translate }}
+        } @else {
+          {{ titleText }}
+        }
+      </h3>
+    }
+
+    @if (hasText) {
+      <p class="ui-info-card__text">
+        @if (textKey) {
+          {{ textKey | translate }}
+        } @else {
+          {{ text }}
+        }
+      </p>
+    }
+
+    <ng-content></ng-content>
+
+    @if (hasMetrics) {
+      <div class="ui-info-card__metrics">
+        @for (metric of metrics; track metric.labelKey ?? metric.labelText ?? metric.value) {
+          <div class="ui-info-card__metric">
+            @if (metric.iconClass) {
+              <i [class]="metric.iconClass" aria-hidden="true"></i>
+            }
+            <span>
+              @if (metric.labelKey) {
+                {{ metric.labelKey | translate }}
+              } @else {
+                {{ metric.labelText }}
+              }
+            </span>
+            <strong>{{ metric.value }}</strong>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  @if (primaryAction || secondaryAction) {
+    <div class="ui-info-card__actions">
+      @if (primaryAction; as action) {
+        @if (action.routerLink) {
+          <a appUiButton="primary" [routerLink]="action.routerLink">
+            @if (action.iconClass) {
+              <i [class]="action.iconClass" aria-hidden="true"></i>
+            }
+            <span>{{ action.labelKey | translate }}</span>
+          </a>
+        } @else if (action.externalUrl) {
+          <a appUiButton="primary" [href]="action.externalUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener">
+            @if (action.iconClass) {
+              <i [class]="action.iconClass" aria-hidden="true"></i>
+            }
+            <span>{{ action.labelKey | translate }}</span>
+          </a>
+        }
+      }
+
+      @if (secondaryAction; as action) {
+        @if (action.routerLink) {
+          <a appUiButton="ghost" [routerLink]="action.routerLink">
+            @if (action.iconClass) {
+              <i [class]="action.iconClass" aria-hidden="true"></i>
+            }
+            <span>{{ action.labelKey | translate }}</span>
+          </a>
+        } @else if (action.externalUrl) {
+          <a appUiButton="ghost" [href]="action.externalUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener">
+            @if (action.iconClass) {
+              <i [class]="action.iconClass" aria-hidden="true"></i>
+            }
+            <span>{{ action.labelKey | translate }}</span>
+          </a>
+        }
+      }
+    </div>
+  }
+</article>

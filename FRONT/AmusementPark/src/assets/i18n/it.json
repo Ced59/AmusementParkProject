@@ -745,5 +745,14 @@
   "publicNavigation": {
     "youAreHere": "Sei qui",
     "treeAriaLabel": "Albero di navigazione dei parchi"
+  },
+  "maps": {
+    "placeholder": {
+      "title": "Mappa non disponibile",
+      "message": "Le coordinate necessarie non sono ancora disponibili."
+    },
+    "distance": {
+      "title": "Riferimento geografico"
+    }
   }
 }

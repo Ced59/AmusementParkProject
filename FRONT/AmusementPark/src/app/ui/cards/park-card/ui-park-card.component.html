@@ -1,0 +1,75 @@
+@if (park; as currentPark) {
+  <article class="ui-park-card" [class.ui-park-card--compact]="compact">
+    <div class="ui-park-card__visual" [class.ui-park-card__visual--placeholder]="!hasLogoImageId">
+      <div class="ui-park-card__badges">
+        @if (currentPark.countryCode) {
+          <app-ui-chip tone="soft" iconClass="pi pi-map-marker">
+            {{ currentPark.countryCode }}
+          </app-ui-chip>
+        }
+
+        @if (hasSecondaryLocation) {
+          <app-ui-chip tone="sky" iconClass="pi pi-building">
+            {{ currentPark.city }}
+          </app-ui-chip>
+        }
+      </div>
+
+      <app-image-display
+        [imageId]="currentPark.logoImageId"
+        [alt]="currentPark.name || 'Park logo'"
+        imgClass="ui-park-card__logo">
+      </app-image-display>
+    </div>
+
+    <div class="ui-park-card__body">
+      <div class="ui-park-card__headline">
+        @if (currentPark.locationLine) {
+          <p class="ui-park-card__eyebrow">{{ currentPark.locationLine }}</p>
+        }
+        <h3 class="ui-park-card__title">{{ currentPark.name }}</h3>
+      </div>
+
+      @if (hasDescription) {
+        <p class="ui-park-card__description">{{ currentPark.shortDescription }}</p>
+      }
+
+      <div class="ui-park-card__details">
+        @if (currentPark.addressLine) {
+          <div class="ui-park-card__detail">
+            <span class="ui-park-card__label">{{ 'parks.fields.address' | translate }}</span>
+            <strong>{{ currentPark.addressLine }}</strong>
+          </div>
+        }
+
+        @if (hasCoordinates) {
+          <div class="ui-park-card__detail">
+            <span class="ui-park-card__label">{{ 'parks.fields.coordinates' | translate }}</span>
+            <strong>{{ currentPark.coordinatesLine }}</strong>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="ui-park-card__footer">
+      @if (detailLink) {
+        <a appUiButton="primary" [routerLink]="detailLink" class="ui-park-card__cta">
+          <span>{{ primaryActionLabelKey | translate }}</span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </a>
+      }
+
+      @if (canOpenWebsite) {
+        <a
+          appUiButton="soft"
+          class="ui-park-card__secondary-cta"
+          [href]="currentPark.websiteUrl | safeExternalUrl"
+          target="_blank"
+          rel="noreferrer noopener">
+          <i class="pi pi-external-link" aria-hidden="true"></i>
+          <span>{{ 'parks.actions.website' | translate }}</span>
+        </a>
+      }
+    </div>
+  </article>
+}

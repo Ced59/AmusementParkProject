@@ -745,5 +745,14 @@
   "publicNavigation": {
     "youAreHere": "Je bent hier",
     "treeAriaLabel": "Navigatieboom van parken"
+  },
+  "maps": {
+    "placeholder": {
+      "title": "Kaart niet beschikbaar",
+      "message": "De vereiste coördinaten zijn nog niet beschikbaar."
+    },
+    "distance": {
+      "title": "Geografisch referentiepunt"
+    }
   }
 }
