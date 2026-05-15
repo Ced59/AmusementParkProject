@@ -1,6 +1,6 @@
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { LANGUAGES } from '@app/commons/languages';
+import { LANGUAGES } from '@shared/models/localization';
 import { AttractionAccessCondition } from '@app/models/parks/attraction-access-condition';
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
 import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';

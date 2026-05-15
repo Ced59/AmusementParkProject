@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { forkJoin, Observable } from 'rxjs';
 
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
@@ -35,7 +36,8 @@ export class AdminParkItemsIndexStateFacade {
 
   constructor(
     private readonly parkItemsApiService: ParkItemsApiService,
-    private readonly parksApiService: ParksApiService
+    private readonly parksApiService: ParksApiService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -69,7 +71,7 @@ export class AdminParkItemsIndexStateFacade {
         this.searchTermSignal()
       ),
       parks: this.getAllParks()
-    }).subscribe({
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: ({ rowsResponse, parks }: { rowsResponse: ApiResponse<ParkItemAdminRow>; parks: Park[] }) => {
         const rows: ParkItemAdminRow[] = rowsResponse.data ?? [];
         const validParks: Park[] = parks.filter((park: Park) => !!park.id);
@@ -101,7 +103,7 @@ export class AdminParkItemsIndexStateFacade {
 
   private getAllParks(): Observable<Park[]> {
     return new Observable<Park[]>((observer) => {
-      this.parksApiService.getParksPaginated(1, 100).subscribe({
+      this.parksApiService.getParksPaginated(1, 100).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (firstResponse: ParksApiResponse) => {
           const firstPageParks: Park[] = firstResponse.data ?? [];
           const pagination: Pagination | undefined = firstResponse.pagination;
@@ -119,7 +121,7 @@ export class AdminParkItemsIndexStateFacade {
             requests.push(this.parksApiService.getParksPaginated(currentPage, 100));
           }
 
-          forkJoin(requests).subscribe({
+          forkJoin(requests).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
             next: (responses: ParksApiResponse[]) => {
               const allParks: Park[] = [...firstPageParks];
 

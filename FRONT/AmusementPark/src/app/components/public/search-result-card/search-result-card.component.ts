@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SearchResultItem } from '@app/models/search/search-result-item';
-import { buildParkSlug } from '@app/commons/park-presentation.utils';
+import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import { NgIf } from '@angular/common';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';

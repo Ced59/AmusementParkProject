@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
@@ -39,7 +40,8 @@ export class ParkItemDetailStateFacade {
     private readonly parkItemsApiService: ParkItemsApiService,
     private readonly parksApiService: ParksApiService,
     private readonly manufacturersApiService: ManufacturersApiService,
-    private readonly parkZonesApiService: ParkZonesApiService
+    private readonly parkZonesApiService: ParkZonesApiService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -51,7 +53,7 @@ export class ParkItemDetailStateFacade {
     const previousData: ParkItemDetailSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
-    this.parkItemsApiService.getParkItemById(itemId).subscribe({
+    this.parkItemsApiService.getParkItemById(itemId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (item: ParkItem) => {
         this.screenStateStore.setReady({
           item,
@@ -70,7 +72,7 @@ export class ParkItemDetailStateFacade {
   }
 
   private loadRelatedData(item: ParkItem): void {
-    this.parksApiService.getParkById(item.parkId).subscribe({
+    this.parksApiService.getParkById(item.parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (park: Park) => {
         this.updateReadyData((current: ParkItemDetailSourceData) => ({
           ...current,
@@ -84,7 +86,7 @@ export class ParkItemDetailStateFacade {
     });
 
     if (item.attractionDetails?.manufacturerId) {
-      this.manufacturersApiService.getAttractionManufacturerById(item.attractionDetails.manufacturerId).subscribe({
+      this.manufacturersApiService.getAttractionManufacturerById(item.attractionDetails.manufacturerId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (manufacturer: { name?: string | null }) => {
           this.updateReadyData((current: ParkItemDetailSourceData) => ({
             ...current,
@@ -101,7 +103,7 @@ export class ParkItemDetailStateFacade {
     }
 
     if (item.zoneId) {
-      this.parkZonesApiService.getParkZoneById(item.zoneId).subscribe({
+      this.parkZonesApiService.getParkZoneById(item.zoneId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (zone: { name?: string | null }) => {
           this.updateReadyData((current: ParkItemDetailSourceData) => ({
             ...current,

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { EmptyStateComponent } from '../../../../shared/empty-state/empty-state.component';
@@ -37,7 +38,8 @@ export class AdminParkItemsComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly parkItemsApiService: ParkItemsApiService,
     private readonly translateService: TranslateService,
-    private readonly stateFacade: AdminParkItemsStateFacade
+    private readonly stateFacade: AdminParkItemsStateFacade,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -77,7 +79,7 @@ export class AdminParkItemsComponent implements OnInit {
       return;
     }
 
-    this.parkItemsApiService.deleteParkItem(item.id).subscribe({
+    this.parkItemsApiService.deleteParkItem(item.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => this.loadData(),
       error: (error: unknown) => console.error('Error deleting park item', error)
     });

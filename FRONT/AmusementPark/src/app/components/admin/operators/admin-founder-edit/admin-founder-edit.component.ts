@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
@@ -28,7 +29,8 @@ export class AdminFounderEditComponent implements OnInit {
     private readonly parkFoundersApiService: ParkFoundersApiService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -47,7 +49,7 @@ export class AdminFounderEditComponent implements OnInit {
     });
 
     if (this.founderId) {
-      this.parkFoundersApiService.getParkFounderById(this.founderId).subscribe({
+      this.parkFoundersApiService.getParkFounderById(this.founderId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (founder: ParkFounder) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.form.patchValue({
@@ -76,7 +78,7 @@ export class AdminFounderEditComponent implements OnInit {
     };
 
     if (this.isEditMode && this.founderId) {
-      this.parkFoundersApiService.updateParkFounder(this.founderId, payload).subscribe({
+      this.parkFoundersApiService.updateParkFounder(this.founderId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (updated: ParkFounder) => {
           this.navigateAfterSave(updated.id);
         },
@@ -87,7 +89,7 @@ export class AdminFounderEditComponent implements OnInit {
       return;
     }
 
-    this.parkFoundersApiService.createParkFounder(payload).subscribe({
+    this.parkFoundersApiService.createParkFounder(payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (created: ParkFounder) => {
         this.navigateAfterSave(created.id);
       },

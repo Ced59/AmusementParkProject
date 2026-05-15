@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { UserRegister } from '@app/models/users/user-register';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
@@ -29,7 +30,7 @@ export class RegisterFormComponent {
     private readonly translateService: TranslationService) {
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (!this.isValidPassword() || !this.isValidEmail() || !this.passwordsMatch()) {
       this.messageService.add('error', 'Erreur', 'Le formulaire d’inscription contient des erreurs.');
       return;
@@ -42,28 +43,24 @@ export class RegisterFormComponent {
       preferredLanguage: this.translateService.getCurrentLang().toUpperCase()
     };
 
-    this.authApiService.register(request).subscribe({
-      next: () => {
-        this.registrationCompleted = true;
-        this.messageService.add('success', 'Succès', 'Compte créé. Vérifie le lien de confirmation envoyé dans la console de l’API.');
-      },
-      error: (error: unknown): void => {
-        const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
-        this.messageService.add('error', 'Erreur', errorMessage);
-      }
-    });
+    try {
+      await firstValueFrom(this.authApiService.register(request));
+      this.registrationCompleted = true;
+      this.messageService.add('success', 'Succès', 'Compte créé. Vérifie le lien de confirmation envoyé dans la console de l’API.');
+    } catch (error: unknown) {
+      const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
+      this.messageService.add('error', 'Erreur', errorMessage);
+    }
   }
 
-  resendConfirmation(): void {
-    this.authApiService.resendConfirmation(this.registerEmail).subscribe({
-      next: (response) => {
-        this.messageService.add('success', 'Succès', response.message);
-      },
-      error: (error: unknown): void => {
-        const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
-        this.messageService.add('error', 'Erreur', errorMessage);
-      }
-    });
+  async resendConfirmation(): Promise<void> {
+    try {
+      const response: { message: string } = await firstValueFrom(this.authApiService.resendConfirmation(this.registerEmail));
+      this.messageService.add('success', 'Succès', response.message);
+    } catch (error: unknown) {
+      const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
+      this.messageService.add('error', 'Erreur', errorMessage);
+    }
   }
 
   isValidPassword(): boolean {

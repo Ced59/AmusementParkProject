@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { firstValueFrom } from 'rxjs';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
@@ -42,51 +43,47 @@ export class AdminSiteComponent implements OnInit {
     this.stateFacade.selectImage(image);
   }
 
-  saveImage(): void {
+  async saveImage(): Promise<void> {
     const selectedImage: ImageDto | null = this.selectedImage();
 
     if (!selectedImage) {
       return;
     }
 
-    this.imagesApiService.updateAdminImage(selectedImage.id, {
-      description: selectedImage.description,
-      geoLocation: selectedImage.geoLocation ?? null,
-      altTexts: selectedImage.altTexts ?? [],
-      captions: selectedImage.captions ?? [],
-      credits: selectedImage.credits ?? [],
-      tagIds: selectedImage.tagIds ?? [],
-      isPublished: selectedImage.isPublished
-    }).subscribe({
-      next: () => {
-        this.reload();
-      },
-      error: () => {
-        this.stateFacade.setError();
-      }
-    });
+    try {
+      await firstValueFrom(this.imagesApiService.updateAdminImage(selectedImage.id, {
+        description: selectedImage.description,
+        geoLocation: selectedImage.geoLocation ?? null,
+        altTexts: selectedImage.altTexts ?? [],
+        captions: selectedImage.captions ?? [],
+        credits: selectedImage.credits ?? [],
+        tagIds: selectedImage.tagIds ?? [],
+        isPublished: selectedImage.isPublished
+      }));
+      this.reload();
+    } catch {
+      this.stateFacade.setError();
+    }
   }
 
-  createTag(): void {
+  async createTag(): Promise<void> {
     const slug: string = this.newTagSlug.trim().toLowerCase();
 
     if (!slug) {
       return;
     }
 
-    this.imagesApiService.createAdminImageTag({
-      slug,
-      labels: [{ languageCode: 'fr', value: slug }],
-      descriptions: []
-    }).subscribe({
-      next: () => {
-        this.newTagSlug = '';
-        this.reload();
-      },
-      error: () => {
-        this.stateFacade.setError();
-      }
-    });
+    try {
+      await firstValueFrom(this.imagesApiService.createAdminImageTag({
+        slug,
+        labels: [{ languageCode: 'fr', value: slug }],
+        descriptions: []
+      }));
+      this.newTagSlug = '';
+      this.reload();
+    } catch {
+      this.stateFacade.setError();
+    }
   }
 
   updateSelectedImageDescription(value: string): void {

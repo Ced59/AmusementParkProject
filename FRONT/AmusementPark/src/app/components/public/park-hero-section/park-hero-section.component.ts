@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Park } from '@app/models/parks/park';
 import { resolveLocalizedValue } from '@shared/utils/localization';
-import { buildParkAddressLine, buildParkLocationLine } from '@app/commons/park-presentation.utils';
+import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/display/park-presentation.helpers';
 import { NgIf } from '@angular/common';
 import { ImageDisplayComponent } from '../../shared/image-display/image-display.component';
 import { TranslateModule } from '@ngx-translate/core';

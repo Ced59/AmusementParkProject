@@ -1,4 +1,5 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize, Subscription, switchMap } from 'rxjs';
 
 import { ImagesApiService } from '@data-access/images/images-api.service';
@@ -59,7 +60,8 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
 
   constructor(
     private readonly imagesApiService: ImagesApiService,
-    private readonly imageUploadSecurityService: ImageUploadSecurityService
+    private readonly imageUploadSecurityService: ImageUploadSecurityService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -152,7 +154,7 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
         finalize(() => {
           this.isUploading = false;
         }))
-      .subscribe({
+      .pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (image: ImageDto) => {
           this.uploaded.emit(image);
           this.resetAndClose();

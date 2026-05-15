@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -21,7 +22,9 @@ export class AdminOperatorsStateFacade {
   public readonly filteredOperators: Signal<ParkOperator[]> = computed(() => this.screenStateStore.data()?.filteredOperators ?? []);
   public readonly totalCount = computed(() => this.filteredOperators().length);
 
-  constructor(private readonly parkOperatorsApiService: ParkOperatorsApiService) {
+  constructor(private readonly parkOperatorsApiService: ParkOperatorsApiService,
+    private readonly destroyRef: DestroyRef
+  ) {
   }
 
   loadOperators(): void {
@@ -29,7 +32,7 @@ export class AdminOperatorsStateFacade {
 
     this.screenStateStore.setLoading(previousData);
 
-    this.parkOperatorsApiService.getParkOperators().subscribe({
+    this.parkOperatorsApiService.getParkOperators().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (operators: ParkOperator[]) => {
         this.operatorsSignal.set(operators);
         this.pushDerivedState();

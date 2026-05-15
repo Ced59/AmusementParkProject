@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserCredentials } from '@app/models/users/user_credentials';
 import { UserToken } from '@app/models/users/user_token';
@@ -35,21 +36,19 @@ export class LoginFormComponent {
     private readonly modalService: ModalService) {
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     const userCredentials: UserCredentials = new UserCredentials(this.loginEmail, this.loginPassword);
 
-    this.authApiService.login(userCredentials).subscribe({
-      next: (result: UserToken) => {
-        this.authService.setAuthenticatedSession(result);
-        this.messageService.add('success', 'Succès', 'Connexion réussie !');
-        this.sharedService.emitLoginStatusChange();
-        this.loginSuccess.emit(result);
-      },
-      error: (error: unknown): void => {
-        const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
-        this.messageService.add('error', 'Erreur', errorMessage);
-      }
-    });
+    try {
+      const result: UserToken = await firstValueFrom(this.authApiService.login(userCredentials));
+      this.authService.setAuthenticatedSession(result);
+      this.messageService.add('success', 'Succès', 'Connexion réussie !');
+      this.sharedService.emitLoginStatusChange();
+      this.loginSuccess.emit(result);
+    } catch (error: unknown) {
+      const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
+      this.messageService.add('error', 'Erreur', errorMessage);
+    }
   }
 
   navigateToForgotPassword(): void {

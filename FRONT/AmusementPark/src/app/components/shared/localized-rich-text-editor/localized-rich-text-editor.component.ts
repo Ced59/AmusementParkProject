@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-import { LANGUAGES } from '@app/commons/languages';
+import { LANGUAGES } from '@shared/models/localization';
 import { isRichTextEmpty } from '@shared/utils/localization';
 import { HtmlSecurityService } from '@shared/utils/security';
 import { LocalizedItem } from '@app/models/shared/localized-item';

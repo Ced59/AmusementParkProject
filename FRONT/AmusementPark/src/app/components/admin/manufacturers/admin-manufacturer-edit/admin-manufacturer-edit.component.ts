@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
@@ -28,7 +29,8 @@ export class AdminManufacturerEditComponent implements OnInit {
     private readonly manufacturersApiService: ManufacturersApiService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -47,7 +49,7 @@ export class AdminManufacturerEditComponent implements OnInit {
     });
 
     if (this.manufacturerId) {
-      this.manufacturersApiService.getAttractionManufacturerById(this.manufacturerId).subscribe({
+      this.manufacturersApiService.getAttractionManufacturerById(this.manufacturerId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (manufacturer: AttractionManufacturer) => {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.form.patchValue({
@@ -76,7 +78,7 @@ export class AdminManufacturerEditComponent implements OnInit {
     };
 
     if (this.isEditMode && this.manufacturerId) {
-      this.manufacturersApiService.updateAttractionManufacturer(this.manufacturerId, payload).subscribe({
+      this.manufacturersApiService.updateAttractionManufacturer(this.manufacturerId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (updated: AttractionManufacturer) => {
           this.navigateAfterSave(updated.id);
         },
@@ -87,7 +89,7 @@ export class AdminManufacturerEditComponent implements OnInit {
       return;
     }
 
-    this.manufacturersApiService.createAttractionManufacturer(payload).subscribe({
+    this.manufacturersApiService.createAttractionManufacturer(payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (created: AttractionManufacturer) => {
         this.navigateAfterSave(created.id);
       },

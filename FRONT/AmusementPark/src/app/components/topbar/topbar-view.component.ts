@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UserDto } from '@app/models/users/user_dto';
+import { ModalName } from '@app/services/modal/modal.service';
+import { LanguageOption } from '@shared/models/localization';
 import { Bind } from 'primeng/bind';
 import { Toolbar } from 'primeng/toolbar';
 import { PrimeTemplate } from 'primeng/api';
@@ -11,10 +13,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { AuthModalComponent } from '../login-register/auth-modal/auth-modal.component';
 
-export interface TopbarLanguageOption {
-  label: string;
-  value: string;
-}
 
 @Component({
   selector: 'app-topbar-view',
@@ -24,7 +22,7 @@ export interface TopbarLanguageOption {
   imports: [Bind, Toolbar, PrimeTemplate, RouterLink, Avatar, ButtonDirective, ThemeSwitcherComponent, Dialog, AuthModalComponent, TranslateModule]
 })
 export class TopbarViewComponent {
-  @Input() languages: TopbarLanguageOption[] = [];
+  @Input() languages: readonly LanguageOption[] = [];
   @Input() selectedLanguage: string | undefined;
   @Input() displayLoginModal: boolean = false;
   @Input() displayLanguageModal: boolean = false;
@@ -32,15 +30,15 @@ export class TopbarViewComponent {
   @Input() userProfile: UserDto | null = null;
   @Input() userAvatarUrl: string | null = null;
 
-  @Output() modalOpened: EventEmitter<string> = new EventEmitter<string>();
-  @Output() modalClosed: EventEmitter<string> = new EventEmitter<string>();
+  @Output() modalOpened: EventEmitter<ModalName> = new EventEmitter<ModalName>();
+  @Output() modalClosed: EventEmitter<ModalName> = new EventEmitter<ModalName>();
   @Output() languageSelected: EventEmitter<string> = new EventEmitter<string>();
 
-  openModal(modalName: string): void {
+  openModal(modalName: ModalName): void {
     this.modalOpened.emit(modalName);
   }
 
-  closeModal(modalName: string): void {
+  closeModal(modalName: ModalName): void {
     this.modalClosed.emit(modalName);
   }
 

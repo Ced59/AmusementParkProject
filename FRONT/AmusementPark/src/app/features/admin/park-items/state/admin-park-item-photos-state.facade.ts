@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { firstValueFrom } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
 import { TranslateService } from '@ngx-translate/core';
@@ -41,7 +42,8 @@ export class AdminParkItemPhotosStateFacade {
     private readonly imagesApiService: ImagesApiService,
     private readonly translateService: TranslateService,
     private readonly toastMessageService: ToastMessageService,
-    private readonly imageUploadSecurityService: ImageUploadSecurityService
+    private readonly imageUploadSecurityService: ImageUploadSecurityService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -63,7 +65,7 @@ export class AdminParkItemPhotosStateFacade {
   loadPhotos(itemId: string): void {
     this.photosLoadingSignal.set(true);
 
-    this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, itemId, ImageCategory.ATTRACTION).subscribe({
+    this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, itemId, ImageCategory.ATTRACTION).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (images: ImageDto[]) => {
         const photoItems: OwnedImageItem[] = images.map((image: ImageDto) => this.toOwnedImageItem(image));
         this.attractionPhotosSignal.set(photoItems);
@@ -151,7 +153,7 @@ export class AdminParkItemPhotosStateFacade {
       return;
     }
 
-    this.imagesApiService.setCurrentImage(photo.id).subscribe({
+    this.imagesApiService.setCurrentImage(photo.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (image: ImageDto) => {
         const updatedPhoto: OwnedImageItem = this.toOwnedImageItem(image);
         const updatedItems: OwnedImageItem[] = this.attractionPhotosSignal().map((item: OwnedImageItem) => ({
@@ -174,7 +176,7 @@ export class AdminParkItemPhotosStateFacade {
   }
 
   deletePhoto(photo: OwnedImageItem): void {
-    this.imagesApiService.deleteImage(photo.id).subscribe({
+    this.imagesApiService.deleteImage(photo.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => {
         const updatedItems: OwnedImageItem[] = this.attractionPhotosSignal().filter((item: OwnedImageItem) => item.id !== photo.id);
         this.attractionPhotosSignal.set(updatedItems);

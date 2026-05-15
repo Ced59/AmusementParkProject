@@ -1,9 +1,9 @@
-import { buildParkSlug } from '@app/commons/park-presentation.utils';
+import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import {
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
   resolveParkItemDescription
-} from '@app/commons/park-item-presentation.utils';
+} from '@shared/utils/display/park-item-presentation.helpers';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { getLocalizedBooleanDisplay } from '@shared/utils/display/display-label.helpers';

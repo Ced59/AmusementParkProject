@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { EmptyStateComponent } from '../../../../shared/empty-state/empty-state.component';
@@ -31,7 +32,8 @@ export class AdminParkZonesComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly parkZonesApiService: ParkZonesApiService,
     private readonly translateService: TranslateService,
-    private readonly stateFacade: AdminParkZonesStateFacade
+    private readonly stateFacade: AdminParkZonesStateFacade,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -54,7 +56,7 @@ export class AdminParkZonesComponent implements OnInit {
       return;
     }
 
-    this.parkZonesApiService.deleteParkZone(zone.id).subscribe({
+    this.parkZonesApiService.deleteParkZone(zone.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => this.loadZones(),
       error: (error: unknown) => console.error('Error deleting zone', error)
     });

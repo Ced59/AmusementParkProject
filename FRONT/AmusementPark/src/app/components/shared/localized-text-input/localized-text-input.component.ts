@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
-import { LANGUAGES } from '@app/commons/languages';
+import { LANGUAGES } from '@shared/models/localization';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { Bind } from 'primeng/bind';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';

@@ -1,6 +1,6 @@
 import { Park } from '@app/models/parks/park';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
-import { buildParkAddressLine, buildParkLocationLine } from '@app/commons/park-presentation.utils';
+import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/display/park-presentation.helpers';
 import { resolveLocalizedValue, stripHtml } from '@shared/utils/localization';
 
 export function mapParkToCardModel(park: Park, currentLanguage: string): ParkCardModel {

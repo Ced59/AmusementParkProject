@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { languageGuard } from './guards/language.guard';
+import { languageGuard } from '@core/guards/language.guard';
 import { authGuard } from '@core/guards/auth.guard';
 import { adminGuard } from '@core/guards/admin.guard';
 

@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { PaginationContract } from '@shared/models/contracts';
@@ -28,7 +29,9 @@ export class ParkListStateFacade {
   public readonly currentPage = this.currentPageSignal.asReadonly();
   public readonly pageSize = this.pageSizeSignal.asReadonly();
 
-  constructor(private readonly parksApiService: ParksApiService) {
+  constructor(private readonly parksApiService: ParksApiService,
+    private readonly destroyRef: DestroyRef
+  ) {
   }
 
   setCurrentLanguage(language: string): void {
@@ -47,7 +50,7 @@ export class ParkListStateFacade {
       ? this.parksApiService.searchParks(normalizedTerm, page, size)
       : this.parksApiService.getParksPaginated(page, size);
 
-    request$.subscribe({
+    request$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: ParksApiResponse) => {
         const pagedResult = mapCollectionResponse(response, (park: Park) => park);
         const sourceData: ParkListSourceData = {

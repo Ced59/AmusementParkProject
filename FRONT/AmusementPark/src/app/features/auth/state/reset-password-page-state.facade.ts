@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed } from '@angular/core';
+import { Injectable, Signal, computed, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
@@ -21,7 +22,9 @@ export class ResetPasswordPageStateFacade {
   public readonly isSubmitted = computed(() => this.screenStateStore.data()?.isSubmitted ?? false);
   public readonly message: Signal<string> = computed(() => this.screenStateStore.data()?.message ?? '');
 
-  constructor(private readonly authApiService: AuthApiService) {
+  constructor(private readonly authApiService: AuthApiService,
+    private readonly destroyRef: DestroyRef
+  ) {
     this.screenStateStore.setReady({
       token: '',
       newPassword: '',
@@ -66,7 +69,7 @@ export class ResetPasswordPageStateFacade {
 
     this.screenStateStore.setLoading(currentData);
 
-    this.authApiService.resetPassword(currentData.token, currentData.newPassword, currentData.confirmPassword).subscribe({
+    this.authApiService.resetPassword(currentData.token, currentData.newPassword, currentData.confirmPassword).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: { message: string }) => {
         this.screenStateStore.setReady({
           ...currentData,

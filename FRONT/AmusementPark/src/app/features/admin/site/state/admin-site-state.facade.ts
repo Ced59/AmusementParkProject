@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed } from '@angular/core';
+import { Injectable, Signal, computed, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { forkJoin } from 'rxjs';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -20,7 +21,9 @@ export class AdminSiteStateFacade {
   public readonly tags: Signal<ImageTagDto[]> = computed(() => this.screenStateStore.data()?.tags ?? []);
   public readonly selectedImage: Signal<ImageDto | null> = computed(() => this.screenStateStore.data()?.selectedImage ?? null);
 
-  constructor(private readonly imagesApiService: ImagesApiService) {
+  constructor(private readonly imagesApiService: ImagesApiService,
+    private readonly destroyRef: DestroyRef
+  ) {
   }
 
   reload(): void {
@@ -30,7 +33,7 @@ export class AdminSiteStateFacade {
     forkJoin({
       images: this.imagesApiService.getAdminImages(),
       tags: this.imagesApiService.getAdminImageTags()
-    }).subscribe({
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: ({ images, tags }: { images: ImageDto[]; tags: ImageTagDto[] }) => {
         const previousSelectionId: string | null = previousData?.selectedImage?.id ?? null;
         const selectedImage: ImageDto | null = this.resolveSelectedImage(images, previousSelectionId);

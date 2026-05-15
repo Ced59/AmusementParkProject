@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { Park } from '@app/models/parks/park';
 import { SearchApiResponse } from '@app/models/search/search-api-response';
@@ -39,7 +40,8 @@ export class HomeStateFacade {
 
   constructor(
     private readonly parksApiService: ParksApiService,
-    private readonly searchApiService: SearchApiService
+    private readonly searchApiService: SearchApiService,
+    private readonly destroyRef: DestroyRef
   ) {
     this.searchStateStore.setReady({
       results: [],
@@ -52,7 +54,7 @@ export class HomeStateFacade {
     const previousData: HomeFeaturedViewModel | undefined = this.featuredStateStore.data();
     this.featuredStateStore.setLoading(previousData);
 
-    this.parksApiService.getParksPaginated(1, 6).subscribe({
+    this.parksApiService.getParksPaginated(1, 6).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: { data?: Park[] | null }) => {
         const parks: ParkCardModel[] = mapArray(response.data, (park: Park) => mapParkToCardModel(park, currentLanguage));
         const viewModel: HomeFeaturedViewModel = {
@@ -88,7 +90,7 @@ export class HomeStateFacade {
     const previousData: HomeSearchViewModel | undefined = this.searchStateStore.data();
     this.searchStateStore.setLoading(previousData);
 
-    this.searchApiService.getSearch(normalizedTerm, categoriesToSend, page, size).subscribe({
+    this.searchApiService.getSearch(normalizedTerm, categoriesToSend, page, size).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: SearchApiResponse) => {
         const results: SearchResultItem[] = response.data ?? [];
         const pagination: Pagination | null = response.pagination ?? null;

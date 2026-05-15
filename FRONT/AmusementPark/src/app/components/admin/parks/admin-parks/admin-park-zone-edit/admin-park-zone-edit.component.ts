@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalizedItem } from '@app/models/shared/localized-item';
@@ -35,7 +36,8 @@ export class AdminParkZoneEditComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly parkZonesApiService: ParkZonesApiService,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -53,7 +55,7 @@ export class AdminParkZoneEditComponent implements OnInit {
     });
 
     if (this.zoneId) {
-      this.parkZonesApiService.getParkZoneById(this.zoneId).subscribe((zone: ParkZone) => {
+      this.parkZonesApiService.getParkZoneById(this.zoneId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe((zone: ParkZone) => {
         commitViewUpdate(this.changeDetectorRef, () => {
           this.form.patchValue({
             parkId: zone.parkId,
@@ -76,11 +78,11 @@ export class AdminParkZoneEditComponent implements OnInit {
     const payload: ParkZone = this.form.value as ParkZone;
 
     if (this.zoneId) {
-      this.parkZonesApiService.updateParkZone(this.zoneId, payload).subscribe(() => this.goBack());
+      this.parkZonesApiService.updateParkZone(this.zoneId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.goBack());
       return;
     }
 
-    this.parkZonesApiService.createParkZone(payload).subscribe(() => this.goBack());
+    this.parkZonesApiService.createParkZone(payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.goBack());
   }
 
   goBack(): void {

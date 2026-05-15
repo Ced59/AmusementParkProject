@@ -1,5 +1,5 @@
-import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, DestroyRef, ElementRef, HostListener, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslationService } from '@app/services/translation.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { SharedService } from '@app/services/shared/shared.service';
@@ -11,44 +11,36 @@ import { SidebarViewComponent } from './sidebar-view.component';
   styleUrls: ['./sidebar.component.scss'],
   imports: [SidebarViewComponent]
 })
-export class SidebarComponent implements OnInit, OnDestroy {
+export class SidebarComponent implements OnInit {
   isCollapsed: boolean = true;
   currentLang: string = 'en';
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
-  private langSub!: Subscription;
-
-  private subscriptions = new Subscription();
 
   constructor(
     private readonly translationService: TranslationService,
     private readonly authService: AuthService,
     private readonly sharedService: SharedService,
-    private readonly elRef: ElementRef
+    private readonly elRef: ElementRef<HTMLElement>,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
   ngOnInit(): void {
     this.currentLang = this.translationService.getCurrentLang() || 'en';
-    this.langSub = this.translationService.languageChanged.subscribe((lang: string) => {
-      this.currentLang = lang;
-    });
+    this.translationService.languageChanged
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((lang: string): void => {
+        this.currentLang = lang;
+      });
 
     this.checkAuthStatus();
 
-    this.subscriptions.add(
-      this.sharedService.getLoginStatusListener().subscribe(() => {
+    this.sharedService.getLoginStatusListener()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((): void => {
         this.checkAuthStatus();
-      })
-    );
-  }
-
-  ngOnDestroy(): void {
-    if (this.langSub) {
-      this.langSub.unsubscribe();
-    }
-
-    this.subscriptions.unsubscribe();
+      });
   }
 
   handleNavClick(event: Event): void {
@@ -66,7 +58,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
-    if (window.innerWidth < 768 && !this.isCollapsed && !this.elRef.nativeElement.contains(event.target)) {
+    if (window.innerWidth < 768 && !this.isCollapsed && !this.elRef.nativeElement.contains(event.target as Node)) {
       this.isCollapsed = true;
     }
   }

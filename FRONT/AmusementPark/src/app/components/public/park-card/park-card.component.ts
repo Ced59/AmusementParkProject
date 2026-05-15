@@ -6,7 +6,7 @@ import { SafeExternalUrlPipe } from '@shared/pipes';
 import { Bind } from 'primeng/bind';
 import { ButtonDirective } from 'primeng/button';
 
-import { buildParkSlug } from '@app/commons/park-presentation.utils';
+import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ImageDisplayComponent } from '../../shared/image-display/image-display.component';
 

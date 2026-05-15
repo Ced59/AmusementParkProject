@@ -1,4 +1,5 @@
-import { Injectable, OnDestroy, Signal, computed, signal } from '@angular/core';
+import { Injectable, OnDestroy, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { firstValueFrom, interval, of, Subscription } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 
@@ -178,7 +179,8 @@ export class CaptainCoasterPipelineFacade implements OnDestroy {
 
   constructor(
     private readonly dataSourcesApiService: DataSourcesApiService,
-    private readonly adminDataSourcesFacade: AdminDataSourcesFacade
+    private readonly adminDataSourcesFacade: AdminDataSourcesFacade,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -362,7 +364,7 @@ export class CaptainCoasterPipelineFacade implements OnDestroy {
     this.currentPollingMode = mode;
     this.pollingSubscription = interval(3000).pipe(
       switchMap(() => this.dataSourcesApiService.getSessionById(sessionId).pipe(catchError(() => of(null))))
-    ).subscribe((session: CaptainCoasterSessionResponse | null) => {
+    ).pipe(takeUntilDestroyed(this.destroyRef)).subscribe((session: CaptainCoasterSessionResponse | null) => {
       if (session === null || session.id !== sessionId) {
         return;
       }

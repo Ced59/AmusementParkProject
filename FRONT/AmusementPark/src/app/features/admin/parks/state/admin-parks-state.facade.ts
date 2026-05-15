@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Park } from '@app/models/parks/park';
 import { Pagination } from '@app/models/shared/pagination';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
@@ -29,7 +30,9 @@ export class AdminParksStateFacade {
   public readonly pageSize = this.pageSizeSignal.asReadonly();
   public readonly searchQuery = this.searchQuerySignal.asReadonly();
 
-  constructor(private readonly parksApiService: ParksApiService) {
+  constructor(private readonly parksApiService: ParksApiService,
+    private readonly destroyRef: DestroyRef
+  ) {
   }
 
   loadParks(page: number = this.currentPageSignal(), size: number = this.pageSizeSignal()): void {
@@ -67,7 +70,7 @@ export class AdminParksStateFacade {
     };
 
     if (trimmedQuery.length > 0) {
-      this.parksApiService.searchParks(trimmedQuery, page, size).subscribe({
+      this.parksApiService.searchParks(trimmedQuery, page, size).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (response: ParksApiResponse) => {
           handleResponse(response, page, size);
         },
@@ -79,7 +82,7 @@ export class AdminParksStateFacade {
       return;
     }
 
-    this.parksApiService.getParksPaginated(page, size).subscribe({
+    this.parksApiService.getParksPaginated(page, size).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: ParksApiResponse) => {
         handleResponse(response, page, size);
       },

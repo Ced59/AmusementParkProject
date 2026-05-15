@@ -13,7 +13,8 @@ import {
   ViewChild
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import {MapMarker} from "@app/models/map/map-marker";
+import { MapMarker } from '@app/models/map/map-marker';
+import type { LeafletEvent, LeafletMouseEvent, Marker as LeafletMarker } from 'leaflet';
 
 @Component({
     selector: 'app-leaflet-map',
@@ -82,7 +83,6 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       shadowSize: [41, 41]
     });
 
-    // @ts-ignore
     this.L.Marker.prototype.options.icon = iconDefault;
 
     this.initMap();
@@ -159,7 +159,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
 
     if (this.editable) {
-      this.map.on('click', (e: any) => this.handleMapClick(e));
+      this.map.on('click', (event: LeafletMouseEvent) => this.handleMapClick(event));
     }
   }
 
@@ -183,8 +183,8 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       });
 
       if (this.editable && this.markers.length <= 1) {
-        marker.on('dragend', (evt: any) => {
-          const target = evt.target as import('leaflet').Marker;
+        marker.on('dragend', (event: LeafletEvent) => {
+          const target = event.target as LeafletMarker;
           const pos = target.getLatLng();
           this.positionChange.emit({ lat: pos.lat, lng: pos.lng });
         });
@@ -194,13 +194,13 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
   }
 
-  private handleMapClick(e: any): void {
+  private handleMapClick(event: LeafletMouseEvent): void {
     if (!this.editable) {
       return;
     }
 
     if (this.markers.length === 0 || this.markers.length === 1) {
-      const pos = e.latlng;
+      const pos = event.latlng;
       this.positionChange.emit({ lat: pos.lat, lng: pos.lng });
     }
   }

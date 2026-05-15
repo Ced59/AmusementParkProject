@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed } from '@angular/core';
+import { Injectable, Signal, computed, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { forkJoin } from 'rxjs';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
@@ -21,7 +22,8 @@ export class AdminParkItemsStateFacade {
 
   constructor(
     private readonly parkZonesApiService: ParkZonesApiService,
-    private readonly parkItemsApiService: ParkItemsApiService
+    private readonly parkItemsApiService: ParkItemsApiService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -32,7 +34,7 @@ export class AdminParkItemsStateFacade {
     forkJoin({
       zones: this.parkZonesApiService.getParkZonesByParkId(parkId),
       items: this.parkItemsApiService.getParkItemsByParkId(parkId)
-    }).subscribe({
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: ({ zones, items }: AdminParkItemsViewModel) => {
         const viewModel: AdminParkItemsViewModel = {
           zones,

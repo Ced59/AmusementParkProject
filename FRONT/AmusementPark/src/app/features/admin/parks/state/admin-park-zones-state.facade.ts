@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed } from '@angular/core';
+import { Injectable, Signal, computed, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { ParkZone } from '@app/models/parks/park-zone';
@@ -14,14 +15,16 @@ export class AdminParkZonesStateFacade {
   public readonly state = this.screenStateStore.state;
   public readonly zones: Signal<ParkZone[]> = computed(() => this.screenStateStore.data()?.zones ?? []);
 
-  constructor(private readonly parkZonesApiService: ParkZonesApiService) {
+  constructor(private readonly parkZonesApiService: ParkZonesApiService,
+    private readonly destroyRef: DestroyRef
+  ) {
   }
 
   loadZones(parkId: string): void {
     const previousData: AdminParkZonesViewModel | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
-    this.parkZonesApiService.getParkZonesByParkId(parkId).subscribe({
+    this.parkZonesApiService.getParkZonesByParkId(parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (zones: ParkZone[]) => {
         const viewModel: AdminParkZonesViewModel = {
           zones

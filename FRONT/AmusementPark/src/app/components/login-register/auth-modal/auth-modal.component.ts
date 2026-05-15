@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { GoogleIdentityService } from '@app/services/auth/google-identity.service';
@@ -47,7 +48,7 @@ export class AuthModalComponent implements AfterViewInit {
       await this.googleIdentityService.renderButtonAsync(
         this.googleButtonContainer.nativeElement,
         (response: GoogleCredentialResponse) => {
-          this.authenticateWithGoogle(response.credential);
+          void this.authenticateWithGoogleAsync(response.credential);
         });
     } catch (error) {
       console.error('Unable to render Google button.', error);
@@ -55,18 +56,16 @@ export class AuthModalComponent implements AfterViewInit {
     }
   }
 
-  private authenticateWithGoogle(idToken: string): void {
-    this.authApiService.externalLogin('google', idToken).subscribe({
-      next: (result: UserToken) => {
-        this.authService.setAuthenticatedSession(result);
-        this.messageService.add('success', 'Succès', 'Connexion avec Google réussie !');
-        this.sharedService.emitLoginStatusChange();
-        this.closeModal.emit();
-      },
-      error: (error: unknown): void => {
-        const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
-        this.messageService.add('error', 'Erreur', errorMessage);
-      }
-    });
+  private async authenticateWithGoogleAsync(idToken: string): Promise<void> {
+    try {
+      const result: UserToken = await firstValueFrom(this.authApiService.externalLogin('google', idToken));
+      this.authService.setAuthenticatedSession(result);
+      this.messageService.add('success', 'Succès', 'Connexion avec Google réussie !');
+      this.sharedService.emitLoginStatusChange();
+      this.closeModal.emit();
+    } catch (error: unknown) {
+      const errorMessage: string = extractSafeDisplayErrorMessage(error, 'Une erreur inattendue est survenue.');
+      this.messageService.add('error', 'Erreur', errorMessage);
+    }
   }
 }

@@ -6,7 +6,7 @@ import { ButtonDirective } from 'primeng/button';
 
 import { Park } from '@app/models/parks/park';
 import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
-import { buildParkSlug } from '@app/commons/park-presentation.utils';
+import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 
 interface ParkContentSummaryEntry {
   labelKey: string;

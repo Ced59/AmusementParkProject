@@ -1,11 +1,11 @@
 <app-topbar-view
   [languages]="languages"
-  [selectedLanguage]="selectedLanguage"
-  [displayLoginModal]="displayLoginModal"
-  [displayLanguageModal]="displayLanguageModal"
-  [isLoggedIn]="isLoggedIn"
-  [userProfile]="userProfile"
-  [userAvatarUrl]="userAvatarUrl"
+  [selectedLanguage]="selectedLanguage()"
+  [displayLoginModal]="displayLoginModal()"
+  [displayLanguageModal]="displayLanguageModal()"
+  [isLoggedIn]="isLoggedIn()"
+  [userProfile]="userProfile()"
+  [userAvatarUrl]="userAvatarUrl()"
   (modalOpened)="openModal($event)"
   (modalClosed)="closeModal($event)"
   (languageSelected)="selectLanguage($event)">

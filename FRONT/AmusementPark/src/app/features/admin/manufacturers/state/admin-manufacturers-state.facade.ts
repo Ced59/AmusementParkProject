@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -21,7 +22,9 @@ export class AdminManufacturersStateFacade {
   public readonly filteredManufacturers: Signal<AttractionManufacturer[]> = computed(() => this.screenStateStore.data()?.filteredManufacturers ?? []);
   public readonly totalCount = computed(() => this.filteredManufacturers().length);
 
-  constructor(private readonly manufacturersApiService: ManufacturersApiService) {
+  constructor(private readonly manufacturersApiService: ManufacturersApiService,
+    private readonly destroyRef: DestroyRef
+  ) {
   }
 
   loadManufacturers(): void {
@@ -29,7 +32,7 @@ export class AdminManufacturersStateFacade {
 
     this.screenStateStore.setLoading(previousData);
 
-    this.manufacturersApiService.getAttractionManufacturers().subscribe({
+    this.manufacturersApiService.getAttractionManufacturers().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (manufacturers: AttractionManufacturer[]) => {
         this.manufacturersSignal.set(manufacturers);
         this.pushDerivedState();

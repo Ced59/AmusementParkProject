@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
 import { TableLazyLoadEvent } from 'primeng/table';
@@ -60,22 +61,20 @@ export class AdminParksComponent implements OnInit {
     this.stateFacade.loadParks(page, rows);
   }
 
-  onVisibilityChange(park: Park): void {
+  async onVisibilityChange(park: Park): Promise<void> {
     if (!park.id) {
       return;
     }
 
     const newValue: boolean = !!park.isVisible;
 
-    this.parksApiService.updateParkVisibility(park.id, newValue).subscribe({
-      next: () => {
-      },
-      error: (error: unknown) => {
-        console.error('Error updating park visibility', error);
-        park.isVisible = !newValue;
-        this.stateFacade.loadParks(this.currentPage(), this.pageSize());
-      }
-    });
+    try {
+      await firstValueFrom(this.parksApiService.updateParkVisibility(park.id, newValue));
+    } catch (error: unknown) {
+      console.error('Error updating park visibility', error);
+      park.isVisible = !newValue;
+      this.stateFacade.loadParks(this.currentPage(), this.pageSize());
+    }
   }
 
   getTypeTranslationKey(type: string | null | undefined): string {

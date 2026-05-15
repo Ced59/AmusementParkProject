@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed } from '@angular/core';
+import { Injectable, Signal, computed, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
@@ -17,7 +18,9 @@ export class ConfirmAccountPageStateFacade {
   public readonly isSuccess = computed(() => this.screenStateStore.data()?.isSuccess ?? false);
   public readonly message: Signal<string> = computed(() => this.screenStateStore.data()?.message ?? '');
 
-  constructor(private readonly authApiService: AuthApiService) {
+  constructor(private readonly authApiService: AuthApiService,
+    private readonly destroyRef: DestroyRef
+  ) {
   }
 
   confirmEmail(token: string, currentLanguage: string): void {
@@ -36,7 +39,7 @@ export class ConfirmAccountPageStateFacade {
       return;
     }
 
-    this.authApiService.confirmEmail(token).subscribe({
+    this.authApiService.confirmEmail(token).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: { message: string }) => {
         this.screenStateStore.setReady({
           currentLanguage,

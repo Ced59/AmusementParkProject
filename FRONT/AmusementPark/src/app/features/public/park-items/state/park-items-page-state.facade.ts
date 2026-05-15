@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, forkJoin, of } from 'rxjs';
 
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
@@ -12,7 +13,7 @@ import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { resolveLocalizedValue } from '@shared/utils/localization';
-import { resolveParkItemDescription } from '@app/commons/park-item-presentation.utils';
+import { resolveParkItemDescription } from '@shared/utils/display/park-item-presentation.helpers';
 import { buildTranslationOptions } from '@shared/utils/display/display-options';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { mapParkItemToCardViewModel } from '../mappers/park-item-card.mapper';
@@ -228,7 +229,8 @@ export class ParkItemsPageStateFacade {
     private readonly parksApiService: ParksApiService,
     private readonly parkItemsApiService: ParkItemsApiService,
     private readonly manufacturersApiService: ManufacturersApiService,
-    private readonly parkZonesApiService: ParkZonesApiService
+    private readonly parkZonesApiService: ParkZonesApiService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -259,7 +261,7 @@ export class ParkItemsPageStateFacade {
       items: this.parkItemsApiService.getParkItemsByParkId(parkId),
       manufacturers: this.manufacturersApiService.getAttractionManufacturers().pipe(catchError(() => of([] as AttractionManufacturer[]))),
       zones: this.parkZonesApiService.getParkZonesByParkId(parkId).pipe(catchError(() => of([] as ParkZone[])))
-    }).subscribe({
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: ({
         park,
         explorer,

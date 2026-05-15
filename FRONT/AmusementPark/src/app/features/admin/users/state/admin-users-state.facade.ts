@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Pagination } from '@app/models/shared/pagination';
 import { UserDto } from '@app/models/users/user_dto';
 import { UsersApiResponse } from '@app/models/users/users_api_response';
@@ -27,7 +28,9 @@ export class AdminUsersStateFacade {
   public readonly currentPage = this.currentPageSignal.asReadonly();
   public readonly pageSize = this.pageSizeSignal.asReadonly();
 
-  constructor(private readonly usersApiService: UsersApiService) {
+  constructor(private readonly usersApiService: UsersApiService,
+    private readonly destroyRef: DestroyRef
+  ) {
   }
 
   loadUsers(page: number = this.currentPageSignal(), size: number = this.pageSizeSignal()): void {
@@ -37,7 +40,7 @@ export class AdminUsersStateFacade {
     this.pageSizeSignal.set(size);
     this.screenStateStore.setLoading(previousData);
 
-    this.usersApiService.getUsers(page, size).subscribe({
+    this.usersApiService.getUsers(page, size).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: UsersApiResponse) => {
         const users: UserDto[] = response.data ?? [];
         const pagination: Pagination | null = response.pagination ?? null;

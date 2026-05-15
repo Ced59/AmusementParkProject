@@ -1,5 +1,5 @@
 import { Park } from '@app/models/parks/park';
-import { buildParkAddressLine, buildParkLocationLine, buildParkSlug } from '@app/commons/park-presentation.utils';
+import { buildParkAddressLine, buildParkLocationLine, buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
 

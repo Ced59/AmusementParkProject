@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { firstValueFrom } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
 import { TranslateService } from '@ngx-translate/core';
@@ -42,7 +43,8 @@ export class AdminParkLogosStateFacade {
     private readonly imagesApiService: ImagesApiService,
     private readonly translateService: TranslateService,
     private readonly toastMessageService: ToastMessageService,
-    private readonly imageUploadSecurityService: ImageUploadSecurityService
+    private readonly imageUploadSecurityService: ImageUploadSecurityService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -63,7 +65,7 @@ export class AdminParkLogosStateFacade {
   loadLogos(parkId: string): void {
     this.logosLoadingSignal.set(true);
 
-    this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK_LOGO).subscribe({
+    this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK_LOGO).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (images: ImageDto[]) => {
         const logoItems: OwnedImageItem[] = images.map((image: ImageDto) => this.toOwnedImageItem(image));
         this.parkLogosSignal.set(logoItems);
@@ -149,7 +151,7 @@ export class AdminParkLogosStateFacade {
       return;
     }
 
-    this.imagesApiService.setCurrentImage(logo.id).subscribe({
+    this.imagesApiService.setCurrentImage(logo.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (image: ImageDto) => {
         const updatedLogo: OwnedImageItem = this.toOwnedImageItem(image);
         const updatedItems: OwnedImageItem[] = this.parkLogosSignal().map((item: OwnedImageItem) => ({
@@ -172,7 +174,7 @@ export class AdminParkLogosStateFacade {
   }
 
   deleteLogo(logo: OwnedImageItem): void {
-    this.imagesApiService.deleteImage(logo.id).subscribe({
+    this.imagesApiService.deleteImage(logo.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => {
         const updatedItems: OwnedImageItem[] = this.parkLogosSignal().filter((item: OwnedImageItem) => item.id !== logo.id);
         this.parkLogosSignal.set(updatedItems);

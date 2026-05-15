@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { Park } from '@app/models/parks/park';
 import { TranslationService } from '@app/services/translation.service';
-import { buildParkSlug } from '@app/commons/park-presentation.utils';
+import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import { ParkDetailStateFacade } from '@features/public/parks/state/park-detail-state.facade';
 import { ParkDetailViewComponent } from './park-detail-view.component';
 

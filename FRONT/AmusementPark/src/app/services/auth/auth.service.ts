@@ -155,11 +155,10 @@ export class AuthService {
         withCredentials: true
       };
 
-      this.rawHttpClient.post<void>(url, {}, options).subscribe({
-        error: (error: unknown) => {
+      void firstValueFrom(this.rawHttpClient.post<void>(url, {}, options))
+        .catch((error: unknown): void => {
           console.error('Error logging out from server session:', error);
-        }
-      });
+        });
     }
   }
 

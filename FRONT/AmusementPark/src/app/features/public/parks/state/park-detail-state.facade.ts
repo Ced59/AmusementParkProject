@@ -1,4 +1,5 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { Park } from '@app/models/parks/park';
 import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
@@ -40,7 +41,8 @@ export class ParkDetailStateFacade {
 
   constructor(
     private readonly parksApiService: ParksApiService,
-    private readonly parkItemsApiService: ParkItemsApiService
+    private readonly parkItemsApiService: ParkItemsApiService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -52,7 +54,7 @@ export class ParkDetailStateFacade {
     const previousData: ParkDetailSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
-    this.parksApiService.getParkById(id).subscribe({
+    this.parksApiService.getParkById(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (park: Park) => {
         const sourceData: ParkDetailSourceData = {
           park,
@@ -73,7 +75,7 @@ export class ParkDetailStateFacade {
   }
 
   private loadExplorerSummary(parkId: string): void {
-    this.parksApiService.getParkExplorer(parkId).subscribe({
+    this.parksApiService.getParkExplorer(parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (explorer: ParkExplorer) => {
         this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
@@ -88,7 +90,7 @@ export class ParkDetailStateFacade {
   }
 
   private loadFallbackExplorerSummary(parkId: string): void {
-    this.parkItemsApiService.getParkItemsByParkId(parkId).subscribe({
+    this.parkItemsApiService.getParkItemsByParkId(parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (items: ParkItem[]) => {
         const countsByCategory: ParkExplorerCount[] = this.buildCounts(items.map((item: ParkItem) => item.category));
         const countsByType: ParkExplorerCount[] = this.buildCounts(items.map((item: ParkItem) => item.type));
@@ -146,7 +148,7 @@ export class ParkDetailStateFacade {
       nearbyState: 'loading'
     }));
 
-    this.parksApiService.getParksByLocation(park.latitude, park.longitude, 150).subscribe({
+    this.parksApiService.getParksByLocation(park.latitude, park.longitude, 150).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (parks: Park[]) => {
         const nearbyParks: Park[] = parks.filter((candidate: Park) => candidate.id !== park.id).slice(0, 4);
         this.updateReadyData((current: ParkDetailSourceData) => ({

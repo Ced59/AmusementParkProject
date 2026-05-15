@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -20,7 +21,8 @@ export class SigninGoogleStateFacade {
     private readonly messageService: ToastMessageService,
     private readonly authService: AuthService,
     private readonly sharedService: SharedService,
-    private readonly currentUserService: CurrentUserService
+    private readonly currentUserService: CurrentUserService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -32,7 +34,7 @@ export class SigninGoogleStateFacade {
 
     this.screenStateStore.setLoading();
 
-    this.authApiService.googleLogin(code).subscribe({
+    this.authApiService.googleLogin(code).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result: UserToken) => {
         this.authService.setAuthenticatedSession(result);
         this.currentUserService.refreshCurrentUser();
