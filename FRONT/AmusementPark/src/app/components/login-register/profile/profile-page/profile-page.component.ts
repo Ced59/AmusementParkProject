@@ -182,7 +182,7 @@ export class ProfilePageComponent implements OnInit {
     this.authService.logout();
     this.sharedService.emitLoginStatusChange();
     const currentLang: string = this.router.url.split('/')[1] || 'en';
-    this.router.navigate([currentLang, 'home']);
+    this.router.navigate(['/', currentLang, 'home']);
   }
 
   private updatePreferredLanguage(lang: string): void {

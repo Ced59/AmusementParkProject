@@ -14,10 +14,15 @@
     <span class="app-mobile-bottom-nav__label">{{ 'sidebar.about' | translate }}</span>
   </a>
 
-  <a class="app-mobile-bottom-nav__item" [routerLink]="['/', currentLang(), 'profile']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+  <button
+    type="button"
+    class="app-mobile-bottom-nav__item"
+    [class.active]="isProfileSectionActive()"
+    [attr.aria-label]="'sidebar.profile' | translate"
+    (click)="navigateToCurrentUserProfile()">
     <span class="app-mobile-bottom-nav__icon" aria-hidden="true"><i class="pi pi-user"></i></span>
     <span class="app-mobile-bottom-nav__label">{{ 'sidebar.profile' | translate }}</span>
-  </a>
+  </button>
 
   @if (isLoggedIn() && isAdmin()) {
     <a class="app-mobile-bottom-nav__item" [routerLink]="['/', currentLang(), 'admin']" routerLinkActive="active">

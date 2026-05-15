@@ -19,6 +19,7 @@ import { ModalName, ModalService } from '@app/services/modal/modal.service';
 import { SharedService } from '@app/services/shared/shared.service';
 import { TranslationService } from '@app/services/translation.service';
 import { LANGUAGES, LanguageOption } from '@shared/models/localization';
+import { resolveSupportedLanguage, resolveSupportedLanguageFromUrl } from '@shared/utils/routing/localized-route.helpers';
 import { PublicParkNavigationTreeFacade } from '@features/public/navigation/state/public-park-navigation-tree.facade';
 import { PublicParkNavigationTreeViewModel } from '@features/public/navigation/models/public-park-navigation-tree.model';
 
@@ -130,6 +131,25 @@ export class PublicHeaderComponent implements OnInit {
     }
   }
 
+
+  protected navigateToCurrentUserProfile(): void {
+    this.authService.ensureValidAccessToken(true)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((token: string | null): void => {
+        if (!token) {
+          this.checkLoginStatus();
+          this.openModal('loginModal');
+          return;
+        }
+
+        this.checkLoginStatus();
+
+        const currentLanguage: string = this.getCurrentSupportedLanguage();
+        this.router.navigate(['/', currentLanguage, 'profile'])
+          .catch((error: unknown): void => console.error('Failed to navigate to current user profile:', error));
+      });
+  }
+
   protected isParksSectionActive(): boolean {
     const urlWithoutQuery: string = this.currentUrl().split('?')[0] ?? '';
     const segments: string[] = urlWithoutQuery.split('/').filter((segment: string) => segment.length > 0);
@@ -193,6 +213,10 @@ export class PublicHeaderComponent implements OnInit {
   }
 
   private getLanguageFromUrl(): string {
-    return this.router.url.split('/')[1] || this.translationService.getCurrentLang() || 'en';
+    return resolveSupportedLanguageFromUrl(this.router.url, this.translationService.getCurrentLang() || 'en');
+  }
+
+  private getCurrentSupportedLanguage(): string {
+    return resolveSupportedLanguage(this.selectedLanguage(), this.translationService.getCurrentLang() || 'en');
   }
 }

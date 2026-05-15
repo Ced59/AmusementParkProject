@@ -122,6 +122,13 @@
   transition: var(--transition);
 }
 
+
+button.app-mobile-bottom-nav__item {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
 .mobile-bottom-nav__item.active,
 .app-mobile-bottom-nav__item.active {
   color: var(--c-orange);
@@ -182,6 +189,7 @@
   border: 1px solid var(--app-border);
   border-radius: var(--radius-pill);
   background: color-mix(in srgb, var(--app-surface-2) 94%, transparent);
+  cursor: pointer;
   transition:
     transform var(--transition),
     border-color var(--transition),
@@ -545,6 +553,7 @@
   min-height: 44px;
   padding: 0 0 0 0.85rem;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .app-public-nav__profile .p-avatar,

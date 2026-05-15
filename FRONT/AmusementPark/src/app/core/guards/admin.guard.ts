@@ -4,13 +4,14 @@ import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { map, Observable } from 'rxjs';
 
 import { AuthService } from '@app/services/auth/auth.service';
+import { resolveSupportedLanguageFromUrl } from '@shared/utils/routing/localized-route.helpers';
 
 export const adminGuard: CanActivateFn = (_route, state): Observable<boolean | UrlTree> | boolean | UrlTree => {
   const authService = inject(AuthService);
   const router = inject(Router);
   const platformId = inject(PLATFORM_ID);
 
-  return authService.ensureValidAccessToken().pipe(
+  return authService.ensureValidAccessToken(true).pipe(
     map((token: string | null) => {
       if (!token) {
         return redirectToHome(router, state);
@@ -30,8 +31,6 @@ export const adminGuard: CanActivateFn = (_route, state): Observable<boolean | U
 };
 
 function redirectToHome(router: Router, state: { url?: string }): UrlTree {
-  const url: string = state.url || router.url || '/en/home';
-  const segments: string[] = url.split('/').filter(Boolean);
-  const lang: string = segments[0] || 'en';
-  return router.createUrlTree([`/${lang}/home`]);
+  const lang: string = resolveSupportedLanguageFromUrl(state.url || router.url, 'en');
+  return router.createUrlTree(['/', lang, 'home']);
 }

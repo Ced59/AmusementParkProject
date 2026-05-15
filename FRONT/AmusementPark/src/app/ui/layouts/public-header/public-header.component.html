@@ -80,7 +80,11 @@
 
     <div class="app-public-nav__right">
       @if (isLoggedIn()) {
-        <a [routerLink]="['/', selectedLanguage(), 'profile']" class="app-public-nav__profile">
+        <button
+          type="button"
+          class="app-public-nav__profile"
+          [attr.aria-label]="'sidebar.profile' | translate"
+          (click)="navigateToCurrentUserProfile()">
           <span class="app-public-nav__profile-copy">
             <span class="app-public-nav__profile-kicker">{{ 'topbar.hello' | translate }}</span>
             <span class="app-public-nav__profile-name">{{ userProfile()?.firstName || userProfile()?.email }}</span>
@@ -92,7 +96,7 @@
               <i class="pi pi-user"></i>
             </span>
           }
-        </a>
+        </button>
       } @else {
         <button type="button" class="btn-nav btn-nav--primary" (click)="openModal('loginModal')">
           <i class="pi pi-user" aria-hidden="true"></i>
