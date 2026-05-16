@@ -6,12 +6,23 @@
     "no_results": "Aucun résultat pour",
     "in_category": "dans",
     "categories": {
-      "park": "Parcs",
-      "attractions": "Attractions",
+      "park": "Parc",
+      "attractions": "Attraction",
       "everywhere": "Partout",
-      "parkItems": "Attractions",
-      "operators": "Exploitants",
-      "manufacturers": "Constructeurs"
+      "parkItems": "Éléments",
+      "operators": "Exploitant",
+      "manufacturers": "Constructeur",
+      "attraction": "Attraction",
+      "restaurant": "Restaurant",
+      "hotel": "Hôtel",
+      "animal": "Animal",
+      "show": "Spectacle",
+      "shop": "Boutique",
+      "service": "Service",
+      "transport": "Transport",
+      "other": "Autre",
+      "founders": "Fondateur",
+      "parks": "Parc"
     },
     "heroBadge": "Cartographie des sensations",
     "heroSubtitle": "Des milliers d'attractions recensées dans des centaines de parcs à travers le monde. Ton prochain vertige est à portée de clic.",
@@ -29,7 +40,7 @@
     },
     "search": {
       "resultsTitle": "Résultats de recherche",
-      "resultsSubtitle": "Recherche dans le catalogue public et ouvre directement les fiches de parc depuis les résultats.",
+      "resultsSubtitle": "Résultats publics correspondant à ta recherche, avec accès direct aux fiches disponibles.",
       "loadingTitle": "Recherche en cours",
       "loadingMessage": "Les résultats de recherche sont en cours de chargement.",
       "errorTitle": "Échec de la recherche",
@@ -41,7 +52,8 @@
       "openResult": "Ouvrir",
       "kicker": "Recherche intelligente",
       "commandTitle": "Trouver le bon parc plus vite",
-      "commandSubtitle": "Recherche dans le vrai catalogue public, filtre par type de contenu, puis ouvre les pages correspondantes sans sortir de l’expérience MVP."
+      "commandSubtitle": "Recherche dans le catalogue public réel, filtre par type de contenu, puis ouvre les pages correspondantes sans sortir de l’expérience MVP.",
+      "attractionsLabel": "attractions"
     },
     "experience": {
       "mapKicker": "Carte prête",

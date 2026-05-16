@@ -6,12 +6,23 @@
     "no_results": "Geen resultaten voor",
     "in_category": "in",
     "categories": {
-      "park": "Parks",
-      "attractions": "Attractions",
+      "park": "Park",
+      "attractions": "Attractie",
       "everywhere": "Everywhere",
-      "parkItems": "Attractions",
-      "operators": "Operators",
-      "manufacturers": "Manufacturers"
+      "parkItems": "Parkitems",
+      "operators": "Exploitant",
+      "manufacturers": "Fabrikant",
+      "attraction": "Attractie",
+      "restaurant": "Restaurant",
+      "hotel": "Hotel",
+      "animal": "Dier",
+      "show": "Show",
+      "shop": "Winkel",
+      "service": "Service",
+      "transport": "Vervoer",
+      "other": "Overig",
+      "founders": "Oprichter",
+      "parks": "Park"
     },
     "heroBadge": "Kaart van sensaties",
     "heroSubtitle": "Duizenden attracties in honderden parken wereldwijd. Je volgende adrenalinekick is maar één klik weg.",
@@ -29,7 +40,7 @@
     },
     "search": {
       "resultsTitle": "Search results",
-      "resultsSubtitle": "Search across the public catalog and open park pages directly from the results.",
+      "resultsSubtitle": "Publieke resultaten die overeenkomen met je zoekopdracht, met directe toegang tot beschikbare detailpagina’s.",
       "loadingTitle": "Searching",
       "loadingMessage": "The search results are being loaded.",
       "errorTitle": "Search failed",
@@ -41,7 +52,8 @@
       "openResult": "Open",
       "kicker": "Smart search",
       "commandTitle": "Find the right park faster",
-      "commandSubtitle": "Search the real public catalog, filter by content type, then open the matching pages without leaving the MVP experience."
+      "commandSubtitle": "Doorzoek echte publieke content, filter op contenttype en open passende pagina’s zonder de MVP-ervaring te verlaten.",
+      "attractionsLabel": "attracties"
     },
     "experience": {
       "mapKicker": "Map ready",

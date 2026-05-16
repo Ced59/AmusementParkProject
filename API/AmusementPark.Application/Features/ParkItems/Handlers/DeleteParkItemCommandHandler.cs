@@ -27,6 +27,7 @@ public sealed class DeleteParkItemCommandHandler : ICommandHandler<DeleteParkIte
 
         try
         {
+            AmusementPark.Core.Domain.Parks.ParkItem? existing = await this.parkItemRepository.GetByIdAsync(command.ParkItemId, cancellationToken);
             bool deleted = await this.parkItemRepository.DeleteAsync(command.ParkItemId, cancellationToken);
             if (!deleted)
             {
@@ -34,6 +35,11 @@ public sealed class DeleteParkItemCommandHandler : ICommandHandler<DeleteParkIte
             }
 
             await this.searchProjectionWriter.DeleteAsync(SearchProjectionResourceTypes.ParkItems, command.ParkItemId, cancellationToken);
+            if (existing is not null && !string.IsNullOrWhiteSpace(existing.ParkId))
+            {
+                await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, existing.ParkId, cancellationToken);
+            }
+
             return ApplicationResult.Success();
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

@@ -6,12 +6,23 @@
     "no_results": "Nenhum resultado para",
     "in_category": "em",
     "categories": {
-      "park": "Parks",
-      "attractions": "Attractions",
+      "park": "Parque",
+      "attractions": "Atração",
       "everywhere": "Everywhere",
-      "parkItems": "Attractions",
-      "operators": "Operators",
-      "manufacturers": "Manufacturers"
+      "parkItems": "Elementos",
+      "operators": "Operador",
+      "manufacturers": "Fabricante",
+      "attraction": "Atração",
+      "restaurant": "Restaurante",
+      "hotel": "Hotel",
+      "animal": "Animal",
+      "show": "Espetáculo",
+      "shop": "Loja",
+      "service": "Serviço",
+      "transport": "Transporte",
+      "other": "Outro",
+      "founders": "Fundador",
+      "parks": "Parque"
     },
     "heroBadge": "Mapa das sensações",
     "heroSubtitle": "Milhares de atrações registadas em centenas de parques pelo mundo. A tua próxima descarga de adrenalina está a um clique.",
@@ -29,7 +40,7 @@
     },
     "search": {
       "resultsTitle": "Search results",
-      "resultsSubtitle": "Search across the public catalog and open park pages directly from the results.",
+      "resultsSubtitle": "Resultados públicos correspondentes à tua pesquisa, com acesso direto às páginas disponíveis.",
       "loadingTitle": "Searching",
       "loadingMessage": "The search results are being loaded.",
       "errorTitle": "Search failed",
@@ -41,7 +52,8 @@
       "openResult": "Open",
       "kicker": "Smart search",
       "commandTitle": "Find the right park faster",
-      "commandSubtitle": "Search the real public catalog, filter by content type, then open the matching pages without leaving the MVP experience."
+      "commandSubtitle": "Pesquisa nos conteúdos públicos reais, filtra por tipo de conteúdo e abre as páginas correspondentes sem sair da experiência MVP.",
+      "attractionsLabel": "atrações"
     },
     "experience": {
       "mapKicker": "Map ready",

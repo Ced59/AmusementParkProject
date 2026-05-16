@@ -44,6 +44,7 @@ public sealed class CreateParkItemCommandHandler : ICommandHandler<CreateParkIte
         {
             ParkItem created = await this.parkItemRepository.CreateAsync(parkItem, cancellationToken);
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, created.Id, cancellationToken);
+            await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, created.ParkId, cancellationToken);
             return ApplicationResult<ParkItem>.Success(created);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)

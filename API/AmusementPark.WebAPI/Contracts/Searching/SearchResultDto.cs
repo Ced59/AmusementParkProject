@@ -9,7 +9,23 @@ public sealed class SearchResultDto
 
     public string Category { get; set; } = string.Empty;
 
+    public string ResourceType { get; set; } = string.Empty;
+
     public string Title { get; set; } = string.Empty;
 
+    public string? Subtitle { get; set; }
+
     public string Description { get; set; } = string.Empty;
+
+    public string? City { get; set; }
+
+    public string? CountryCode { get; set; }
+
+    public string? LogoImageId { get; set; }
+
+    public int? AttractionCount { get; set; }
+
+    public string? ParentParkId { get; set; }
+
+    public string? ParentParkName { get; set; }
 }

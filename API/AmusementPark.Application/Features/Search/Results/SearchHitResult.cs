@@ -11,5 +11,11 @@ public sealed class SearchHitResult
     public string? Subtitle { get; init; }
     public string? Category { get; init; }
     public string? Description { get; init; }
+    public string? City { get; init; }
+    public string? CountryCode { get; init; }
+    public string? LogoImageId { get; init; }
+    public int? AttractionCount { get; init; }
+    public string? ParentParkId { get; init; }
+    public string? ParentParkName { get; init; }
     public double? Score { get; init; }
 }
