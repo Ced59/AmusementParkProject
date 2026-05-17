@@ -28,6 +28,9 @@ internal static class ParksHttpMappers
             OperatorId = NormalizeOptionalString(dto.OperatorId),
             Descriptions = dto.Descriptions.ToDomain(),
             IsVisible = dto.IsVisible,
+            IsFeaturedOnHome = dto.IsFeaturedOnHome,
+            FeaturedHomeOrder = NormalizeOptionalOrder(dto.FeaturedHomeOrder),
+            IsFeaturedOnHomeSponsored = dto.IsFeaturedOnHomeSponsored && dto.IsFeaturedOnHome,
             WebsiteUrl = NormalizeOptionalString(dto.WebsiteUrl),
             Street = NormalizeOptionalString(dto.Street),
             City = NormalizeOptionalString(dto.City),
@@ -51,6 +54,9 @@ internal static class ParksHttpMappers
             OperatorId = NormalizeOptionalString(dto.OperatorId),
             Descriptions = dto.Descriptions.ToDomain(),
             IsVisible = dto.IsVisible,
+            IsFeaturedOnHome = dto.IsFeaturedOnHome,
+            FeaturedHomeOrder = NormalizeOptionalOrder(dto.FeaturedHomeOrder),
+            IsFeaturedOnHomeSponsored = dto.IsFeaturedOnHomeSponsored && dto.IsFeaturedOnHome,
             WebsiteUrl = NormalizeOptionalString(dto.WebsiteUrl),
             Street = NormalizeOptionalString(dto.Street),
             City = NormalizeOptionalString(dto.City),
@@ -77,6 +83,9 @@ internal static class ParksHttpMappers
             Longitude = value.Position?.Longitude ?? 0.0,
             Descriptions = value.Descriptions.ToHttp(),
             IsVisible = value.IsVisible,
+            IsFeaturedOnHome = value.IsFeaturedOnHome,
+            FeaturedHomeOrder = value.FeaturedHomeOrder,
+            IsFeaturedOnHomeSponsored = value.IsFeaturedOnHomeSponsored,
             WebSiteUrl = value.WebsiteUrl,
             Street = value.Street,
             City = value.City,
@@ -100,6 +109,9 @@ internal static class ParksHttpMappers
             Longitude = value.Position?.Longitude ?? 0.0,
             Descriptions = value.Descriptions.ToHttp(),
             IsVisible = value.IsVisible,
+            IsFeaturedOnHome = value.IsFeaturedOnHome,
+            FeaturedHomeOrder = value.FeaturedHomeOrder,
+            IsFeaturedOnHomeSponsored = value.IsFeaturedOnHomeSponsored,
             WebSiteUrl = value.WebsiteUrl,
             Street = value.Street,
             City = value.City,
@@ -290,6 +302,11 @@ internal static class ParksHttpMappers
     private static string? NormalizeOptionalString(string? value)
     {
         return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
+    }
+
+    private static int? NormalizeOptionalOrder(int? value)
+    {
+        return value.HasValue && value.Value > 0 ? value.Value : null;
     }
 
     private static ParkType? ToDomain(this ParkTypeDto? value)

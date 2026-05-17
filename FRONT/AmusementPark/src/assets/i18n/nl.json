@@ -30,13 +30,16 @@
     "ctaLearnMore": "Hoe het werkt",
     "featured": {
       "title": "Featured parks",
-      "subtitle": "Start with a selection of parks highlighted on the public experience.",
+      "subtitle": "Onze selectie van niet te missen parken van dit moment.",
       "loadingTitle": "Loading featured parks",
       "loadingMessage": "The highlighted parks are being loaded.",
       "errorTitle": "Unable to load featured parks",
       "errorMessage": "The featured parks could not be loaded.",
       "emptyTitle": "No featured park",
-      "emptyMessage": "There is no park to highlight yet."
+      "emptyMessage": "There is no park to highlight yet.",
+      "discover": "Ontdekken",
+      "manualSelection": "Handmatige selectie",
+      "sponsored": "Gesponsord"
     },
     "search": {
       "resultsTitle": "Search results",
@@ -498,7 +501,17 @@
       "management": {
         "sectionTitle": "Beheer van parkinhoud",
         "sectionHelp": "Snelle toegang tot de zones en elementen die aan dit park zijn gekoppeld."
-      }
+      },
+      "featuredOnHomeField": "Uitlichten op de homepage",
+      "featuredOnHomeHelp": "Geeft dit park voorrang in de publieke sectie “Uitgelichte parken”. Als er geen park is gemarkeerd, gebruikt de homepage een willekeurige selectie zichtbare parken.",
+      "featuredOnHomeEnabled": "Uitgelicht",
+      "featuredOnHomeDisabled": "Niet uitgelicht",
+      "featuredHomeOrder": "Uitgelichte volgorde",
+      "featuredHomeOrderPlaceholder": "Bijv. 1",
+      "featuredSponsoredField": "Sponsorvermelding",
+      "featuredSponsoredHelp": "Toont een sponsorvermelding op de openbare kaart wanneer deze uitgelichte plaatsing een samenwerking is.",
+      "featuredSponsoredEnabled": "Gesponsord",
+      "featuredSponsoredDisabled": "Niet gesponsord"
     },
     "loading": "Laden...",
     "operators": {
@@ -798,6 +811,33 @@
     },
     "distance": {
       "title": "Geografisch referentiepunt"
+    }
+  },
+  "footer": {
+    "ariaLabel": "Voettekst van de site",
+    "brand": {
+      "tagline": "De volledige kaart van sensaties. Park per park, attractie per attractie."
+    },
+    "explore": {
+      "title": "Ontdekken",
+      "allParks": "Alle parken",
+      "topRollerCoasters": "Top achtbanen",
+      "interactiveMap": "Interactieve kaart",
+      "news": "Nieuwigheden"
+    },
+    "about": {
+      "title": "Over",
+      "project": "Het project",
+      "sources": "Bronnen",
+      "contact": "Contact"
+    },
+    "languages": {
+      "title": "Talen"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Gemaakt met ❤️ en adrenaline",
+      "openSource": "Open Source",
+      "mvp": "MVP"
     }
   }
 }

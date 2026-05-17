@@ -39,6 +39,16 @@ public interface IParkRepository
     Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne une sélection aléatoire de parcs visibles publiquement, en excluant certains parcs.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne les parcs visibles mis en avant manuellement sur la home publique.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetManualHomeFeaturedVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Compte les pays réellement couverts par les parcs.
     /// </summary>
     Task<int> CountDistinctCountryCodesAsync(bool includeHidden, CancellationToken cancellationToken);

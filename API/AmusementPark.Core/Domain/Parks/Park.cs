@@ -44,6 +44,21 @@ public sealed class Park : GeolocatedEntityBase
     public bool IsVisible { get; set; }
 
     /// <summary>
+    /// Indique si le parc est mis en avant manuellement sur la home publique.
+    /// </summary>
+    public bool IsFeaturedOnHome { get; set; }
+
+    /// <summary>
+    /// Ordre d'affichage manuel sur la home publique.
+    /// </summary>
+    public int? FeaturedHomeOrder { get; set; }
+
+    /// <summary>
+    /// Indique si la mise en avant home doit être présentée comme sponsorisée.
+    /// </summary>
+    public bool IsFeaturedOnHomeSponsored { get; set; }
+
+    /// <summary>
     /// URL du site officiel.
     /// </summary>
     public string? WebsiteUrl { get; set; }

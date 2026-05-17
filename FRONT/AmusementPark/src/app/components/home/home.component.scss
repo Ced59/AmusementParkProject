@@ -412,6 +412,9 @@ body.light-mode .home-hero__title-line--outline {
 }
 
 .home-featured__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
   margin-top: 1rem;
 }
 
@@ -486,6 +489,10 @@ app-pagination {
   .home-hero-card:hover {
     transform: translateY(-6px);
   }
+
+  .home-featured__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 680px) {
@@ -522,6 +529,10 @@ app-pagination {
 
   .home-hero-card {
     flex-basis: 82vw;
+  }
+
+  .home-featured__grid {
+    grid-template-columns: 1fr;
   }
 }
 

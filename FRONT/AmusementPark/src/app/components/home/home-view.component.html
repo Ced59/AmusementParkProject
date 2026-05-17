@@ -207,12 +207,9 @@
         emptyTitleKey: 'home.featured.emptyTitle',
         emptyMessageKey: 'home.featured.emptyMessage'
       }">
-      <div class="app-grid-cards home-featured__grid">
+      <div class="home-featured__grid">
         @for (park of featuredParks(); track park.id ?? park.name) {
-          <app-park-card
-            [park]="park"
-            [currentLang]="currentLang()">
-          </app-park-card>
+          <app-ui-featured-park-card [park]="park"></app-ui-featured-park-card>
         }
       </div>
     </app-page-state>

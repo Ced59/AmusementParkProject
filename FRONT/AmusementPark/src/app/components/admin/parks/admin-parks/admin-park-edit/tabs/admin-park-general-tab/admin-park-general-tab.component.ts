@@ -9,6 +9,7 @@ import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
 import { EntitySelectComponent } from '@app/components/shared/entity-select/entity-select.component';
 import { ToggleSwitch } from 'primeng/toggleswitch';
+import { InputNumber } from 'primeng/inputnumber';
 import { TranslateModule } from '@ngx-translate/core';
 
 
@@ -16,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-admin-park-general-tab',
     templateUrl: './admin-park-general-tab.component.html',
     styleUrls: ['./admin-park-general-tab.component.scss'],
-    imports: [FormsModule, ReactiveFormsModule, Bind, ButtonDirective, RouterLink, InputText, Select, EntitySelectComponent, ToggleSwitch, TranslateModule]
+    imports: [FormsModule, ReactiveFormsModule, Bind, ButtonDirective, RouterLink, InputText, Select, EntitySelectComponent, ToggleSwitch, InputNumber, TranslateModule]
 })
 export class AdminParkGeneralTabComponent {
   @Input({ required: true }) form!: FormGroup;
@@ -43,5 +44,13 @@ export class AdminParkGeneralTabComponent {
 
   get isVisibleControl(): AbstractControl | null {
     return this.form.get('isVisible');
+  }
+
+  get isFeaturedOnHomeControl(): AbstractControl | null {
+    return this.form.get('isFeaturedOnHome');
+  }
+
+  get isFeaturedOnHomeSponsoredControl(): AbstractControl | null {
+    return this.form.get('isFeaturedOnHomeSponsored');
   }
 }

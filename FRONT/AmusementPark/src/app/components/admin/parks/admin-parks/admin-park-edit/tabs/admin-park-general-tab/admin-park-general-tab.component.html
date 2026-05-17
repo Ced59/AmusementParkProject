@@ -133,6 +133,56 @@
     </div>
   </div>
 
+
+  <div class="visibility-card visibility-card--featured">
+    <div>
+      <label>{{ 'admin.parks.featuredOnHomeField' | translate }}</label>
+      <small class="text-color-secondary d-block mt-1">{{ 'admin.parks.featuredOnHomeHelp' | translate }}</small>
+    </div>
+
+    <div class="visibility-card__toggle">
+      <p-toggleswitch formControlName="isFeaturedOnHome"></p-toggleswitch>
+      @if (isFeaturedOnHomeControl?.value) {
+        <span>{{ 'admin.parks.featuredOnHomeEnabled' | translate }}</span>
+      }
+      @if (!isFeaturedOnHomeControl?.value) {
+        <span>{{ 'admin.parks.featuredOnHomeDisabled' | translate }}</span>
+      }
+    </div>
+  </div>
+
+  @if (isFeaturedOnHomeControl?.value) {
+    <div class="grid formgrid">
+      <div class="field col-12 md:col-4">
+        <label for="featuredHomeOrder">{{ 'admin.parks.featuredHomeOrder' | translate }}</label>
+        <p-inputnumber
+          inputId="featuredHomeOrder"
+          formControlName="featuredHomeOrder"
+          [min]="1"
+          [showButtons]="true"
+          [placeholder]="'admin.parks.featuredHomeOrderPlaceholder' | translate">
+        </p-inputnumber>
+      </div>
+    </div>
+
+    <div class="visibility-card visibility-card--featured visibility-card--sponsored">
+      <div>
+        <label>{{ 'admin.parks.featuredSponsoredField' | translate }}</label>
+        <small class="text-color-secondary d-block mt-1">{{ 'admin.parks.featuredSponsoredHelp' | translate }}</small>
+      </div>
+
+      <div class="visibility-card__toggle">
+        <p-toggleswitch formControlName="isFeaturedOnHomeSponsored"></p-toggleswitch>
+        @if (isFeaturedOnHomeSponsoredControl?.value) {
+          <span>{{ 'admin.parks.featuredSponsoredEnabled' | translate }}</span>
+        }
+        @if (!isFeaturedOnHomeSponsoredControl?.value) {
+          <span>{{ 'admin.parks.featuredSponsoredDisabled' | translate }}</span>
+        }
+      </div>
+    </div>
+  }
+
   <div class="section-actions">
     <button
       pButton

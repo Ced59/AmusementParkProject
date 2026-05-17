@@ -75,6 +75,16 @@ public sealed class ParkDocument : MongoGeolocatedDocumentBase
     [BsonElement("isVisible")]
     public bool IsVisible { get; set; }
 
+    [BsonElement("isFeaturedOnHome")]
+    public bool IsFeaturedOnHome { get; set; }
+
+    [BsonElement("featuredHomeOrder")]
+    [BsonIgnoreIfNull]
+    public int? FeaturedHomeOrder { get; set; }
+
+    [BsonElement("isFeaturedOnHomeSponsored")]
+    public bool IsFeaturedOnHomeSponsored { get; set; }
+
     [BsonElement("websiteUrl")]
     [BsonIgnoreIfNull]
     public string? WebsiteUrl { get; set; }

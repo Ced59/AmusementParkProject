@@ -101,18 +101,43 @@ public sealed class ParkRepository : IParkRepository
             .ToList();
     }
 
-    public async Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken)
+    public Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken)
+    {
+        return this.GetRandomVisibleAsync(limit, Array.Empty<string>(), cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, CancellationToken cancellationToken)
     {
         if (limit <= 0)
         {
             return Array.Empty<Park>();
         }
 
-        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
+        FilterDefinition<ParkDocument> filter = this.BuildVisibleSelectionFilter(excludedParkIds);
 
         List<ParkDocument> documents = await this.collection.Aggregate()
             .Match(filter)
             .Sample(limit)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
+    public async Task<IReadOnlyCollection<Park>> GetManualHomeFeaturedVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, CancellationToken cancellationToken)
+    {
+        if (limit <= 0)
+        {
+            return Array.Empty<Park>();
+        }
+
+        FilterDefinition<ParkDocument> filter = this.BuildVisibleSelectionFilter(excludedParkIds)
+            & Builders<ParkDocument>.Filter.Eq(document => document.IsFeaturedOnHome, true);
+
+        List<ParkDocument> documents = await this.collection.Find(filter)
+            .SortBy(document => document.FeaturedHomeOrder)
+            .ThenBy(document => document.Name)
+            .ThenBy(document => document.Id)
+            .Limit(limit)
             .ToListAsync(cancellationToken);
 
         return documents.Select(document => document.ToDomain()).ToList();
@@ -257,6 +282,28 @@ public sealed class ParkRepository : IParkRepository
 
         ParkDocument? updated = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
         return updated?.ToDomain();
+    }
+
+    private FilterDefinition<ParkDocument> BuildVisibleSelectionFilter(IReadOnlyCollection<string> excludedParkIds)
+    {
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
+        List<string> normalizedExcludedIds = NormalizeParkIds(excludedParkIds);
+
+        if (normalizedExcludedIds.Count > 0)
+        {
+            filter &= Builders<ParkDocument>.Filter.Nin(document => document.Id, normalizedExcludedIds);
+        }
+
+        return filter;
+    }
+
+    private static List<string> NormalizeParkIds(IEnumerable<string> parkIds)
+    {
+        return parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
     }
 
     private FilterDefinition<ParkDocument> BuildVisibilityFilter(bool includeHidden)

@@ -30,13 +30,16 @@
     "ctaLearnMore": "So funktioniert es",
     "featured": {
       "title": "Featured parks",
-      "subtitle": "Start with a selection of parks highlighted on the public experience.",
+      "subtitle": "Unsere Auswahl der derzeit unverzichtbaren Parks.",
       "loadingTitle": "Loading featured parks",
       "loadingMessage": "The highlighted parks are being loaded.",
       "errorTitle": "Unable to load featured parks",
       "errorMessage": "The featured parks could not be loaded.",
       "emptyTitle": "No featured park",
-      "emptyMessage": "There is no park to highlight yet."
+      "emptyMessage": "There is no park to highlight yet.",
+      "discover": "Entdecken",
+      "manualSelection": "Manuelle Auswahl",
+      "sponsored": "Gesponsert"
     },
     "search": {
       "resultsTitle": "Search results",
@@ -498,7 +501,17 @@
       "management": {
         "sectionTitle": "Verwaltung der Parkinhalte",
         "sectionHelp": "Schneller Zugriff auf die Zonen und Elemente dieses Parks."
-      }
+      },
+      "featuredOnHomeField": "Auf der Startseite hervorheben",
+      "featuredOnHomeHelp": "Priorisiert diesen Park im öffentlichen Bereich „Empfohlene Parks“. Wenn kein Park markiert ist, nutzt die Startseite eine zufällige Auswahl sichtbarer Parks.",
+      "featuredOnHomeEnabled": "Hervorgehoben",
+      "featuredOnHomeDisabled": "Nicht hervorgehoben",
+      "featuredHomeOrder": "Reihenfolge der Hervorhebung",
+      "featuredHomeOrderPlaceholder": "Z. B. 1",
+      "featuredSponsoredField": "Sponsoring-Hinweis",
+      "featuredSponsoredHelp": "Zeigt auf der öffentlichen Karte einen Sponsoring-Hinweis an, wenn diese Hervorhebung eine Partnerschaft ist.",
+      "featuredSponsoredEnabled": "Gesponsert",
+      "featuredSponsoredDisabled": "Nicht gesponsert"
     },
     "loading": "Laden...",
     "operators": {
@@ -798,6 +811,33 @@
     },
     "distance": {
       "title": "Geografischer Bezugspunkt"
+    }
+  },
+  "footer": {
+    "ariaLabel": "Fußzeile der Website",
+    "brand": {
+      "tagline": "Die vollständige Karte der Nervenkitzel. Park für Park, Attraktion für Attraktion."
+    },
+    "explore": {
+      "title": "Entdecken",
+      "allParks": "Alle Parks",
+      "topRollerCoasters": "Top-Achterbahnen",
+      "interactiveMap": "Interaktive Karte",
+      "news": "Neuheiten"
+    },
+    "about": {
+      "title": "Über uns",
+      "project": "Das Projekt",
+      "sources": "Quellen",
+      "contact": "Kontakt"
+    },
+    "languages": {
+      "title": "Sprachen"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Gemacht mit ❤️ und Adrenalin",
+      "openSource": "Open Source",
+      "mvp": "MVP"
     }
   }
 }

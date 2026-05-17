@@ -16,3 +16,5 @@ Ce dossier porte le socle visuel centralisé de la refonte design MVP.
 
 Les futures phases ne doivent pas recopier la maquette dans les SCSS de pages.
 Une page consomme les tokens/primitives, puis ne garde localement que le placement strictement spécifique.
+
+- `_footer.scss` : footer public global, issu de la maquette et partagé par les layouts publics/account.

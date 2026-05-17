@@ -30,13 +30,16 @@
     "ctaLearnMore": "Como funciona",
     "featured": {
       "title": "Featured parks",
-      "subtitle": "Start with a selection of parks highlighted on the public experience.",
+      "subtitle": "A nossa seleção dos parques imperdíveis do momento.",
       "loadingTitle": "Loading featured parks",
       "loadingMessage": "The highlighted parks are being loaded.",
       "errorTitle": "Unable to load featured parks",
       "errorMessage": "The featured parks could not be loaded.",
       "emptyTitle": "No featured park",
-      "emptyMessage": "There is no park to highlight yet."
+      "emptyMessage": "There is no park to highlight yet.",
+      "discover": "Descobrir",
+      "manualSelection": "Seleção manual",
+      "sponsored": "Patrocinado"
     },
     "search": {
       "resultsTitle": "Search results",
@@ -498,7 +501,17 @@
       "management": {
         "sectionTitle": "Gestão do conteúdo do parque",
         "sectionHelp": "Acede rapidamente às zonas e aos elementos associados a este parque."
-      }
+      },
+      "featuredOnHomeField": "Destacar na página inicial",
+      "featuredOnHomeHelp": "Prioriza este parque na secção pública “Parques em destaque”. Se nenhum parque estiver marcado, a página inicial usa uma seleção aleatória de parques visíveis.",
+      "featuredOnHomeEnabled": "Em destaque",
+      "featuredOnHomeDisabled": "Não destacado",
+      "featuredHomeOrder": "Ordem de destaque",
+      "featuredHomeOrderPlaceholder": "Ex. 1",
+      "featuredSponsoredField": "Aviso de patrocínio",
+      "featuredSponsoredHelp": "Mostra um aviso de patrocínio no cartão público quando este destaque corresponde a uma parceria.",
+      "featuredSponsoredEnabled": "Patrocinado",
+      "featuredSponsoredDisabled": "Não patrocinado"
     },
     "loading": "A carregar...",
     "operators": {
@@ -798,6 +811,33 @@
     },
     "distance": {
       "title": "Referência geográfica"
+    }
+  },
+  "footer": {
+    "ariaLabel": "Rodapé do site",
+    "brand": {
+      "tagline": "O mapa completo das emoções. Parque por parque, atração por atração."
+    },
+    "explore": {
+      "title": "Explorar",
+      "allParks": "Todos os parques",
+      "topRollerCoasters": "Top montanhas-russas",
+      "interactiveMap": "Mapa interativo",
+      "news": "Novidades"
+    },
+    "about": {
+      "title": "Sobre",
+      "project": "O projeto",
+      "sources": "Fontes",
+      "contact": "Contacto"
+    },
+    "languages": {
+      "title": "Idiomas"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Feito com ❤️ e adrenalina",
+      "openSource": "Open Source",
+      "mvp": "MVP"
     }
   }
 }

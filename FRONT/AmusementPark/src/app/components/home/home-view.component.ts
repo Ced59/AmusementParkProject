@@ -7,15 +7,16 @@ import { SearchResultItem } from '@app/models/search/search-result-item';
 import { PageStateComponent } from '../shared/page-state/page-state.component';
 import { PaginationComponent } from '../shared/pagination/pagination.component';
 import { EmptyStateComponent } from '../shared/empty-state/empty-state.component';
-import { ParkCardComponent } from '../public/park-card/park-card.component';
 import { SearchResultCardComponent } from '../public/search-result-card/search-result-card.component';
 import { PaginationContract } from '@shared/models/contracts';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
+import { HomeFeaturedParkCardModel } from '@app/models/home/home-featured-park-card.model';
 import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import { UiSearchPanelSelectFilterModel } from '@ui/forms/models/ui-search-panel.model';
 import { UiSearchPanelComponent } from '@ui/forms';
 import { UiButtonDirective, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiFeaturedParkCardComponent } from '@ui/cards';
 
 @Component({
   selector: 'app-home-view',
@@ -27,9 +28,9 @@ import { UiButtonDirective, UiSectionHeaderComponent, UiSurfaceDirective } from 
     PageStateComponent,
     PaginationComponent,
     EmptyStateComponent,
-    ParkCardComponent,
     SearchResultCardComponent,
     TranslateModule,
+    UiFeaturedParkCardComponent,
     UiButtonDirective,
     UiSearchPanelComponent,
     UiSectionHeaderComponent,
@@ -50,7 +51,7 @@ export class HomeViewComponent {
   @Input() statsState!: Signal<ScreenState<unknown, string>>;
   @Input() homeStats!: Signal<HomeStatsModel | null>;
   @Input() featuredState!: Signal<ScreenState<unknown, string>>;
-  @Input() featuredParks!: Signal<ParkCardModel[]>;
+  @Input() featuredParks!: Signal<HomeFeaturedParkCardModel[]>;
   @Input() heroFeaturedParks!: Signal<ParkCardModel[]>;
   @Input() searchState!: Signal<ScreenState<unknown, string>>;
   @Input() results!: Signal<SearchResultItem[]>;

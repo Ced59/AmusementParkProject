@@ -162,6 +162,7 @@ button.app-mobile-bottom-nav__item {
   .app-public-nav__right {
     justify-content: flex-start;
   }
+
 }
 
 @media (max-width: 680px) {
@@ -288,22 +289,6 @@ button.app-mobile-bottom-nav__item {
   justify-content: center;
   gap: 0.65rem;
   min-height: 3.5rem;
-}
-
-.app-public-footer {
-  position: relative;
-  z-index: 2;
-  padding: 1.8rem 1rem 2.2rem;
-  color: var(--app-text-faint);
-  text-align: center;
-}
-
-.app-public-footer__inner {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
 }
 
 @media (max-width: 680px) {

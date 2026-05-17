@@ -11,6 +11,9 @@ export interface Park {
   latitude: number;
   longitude: number;
   isVisible?: boolean;
+  isFeaturedOnHome?: boolean;
+  featuredHomeOrder?: number | null;
+  isFeaturedOnHomeSponsored?: boolean;
   webSiteUrl?: string;
   street?: string;
   city?: string;

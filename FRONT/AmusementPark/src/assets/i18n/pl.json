@@ -30,13 +30,16 @@
     "ctaLearnMore": "Jak to działa",
     "featured": {
       "title": "Featured parks",
-      "subtitle": "Start with a selection of parks highlighted on the public experience.",
+      "subtitle": "Nasz wybór najciekawszych parków w tej chwili.",
       "loadingTitle": "Loading featured parks",
       "loadingMessage": "The highlighted parks are being loaded.",
       "errorTitle": "Unable to load featured parks",
       "errorMessage": "The featured parks could not be loaded.",
       "emptyTitle": "No featured park",
-      "emptyMessage": "There is no park to highlight yet."
+      "emptyMessage": "There is no park to highlight yet.",
+      "discover": "Odkryj",
+      "manualSelection": "Wybór ręczny",
+      "sponsored": "Sponsorowane"
     },
     "search": {
       "resultsTitle": "Search results",
@@ -498,7 +501,17 @@
       "management": {
         "sectionTitle": "Zarządzanie zawartością parku",
         "sectionHelp": "Szybki dostęp do stref i elementów powiązanych z tym parkiem."
-      }
+      },
+      "featuredOnHomeField": "Wyróżnij na stronie głównej",
+      "featuredOnHomeHelp": "Nadaje temu parkowi priorytet w publicznej sekcji „Wyróżnione parki”. Jeśli żaden park nie jest oznaczony, strona główna używa losowego wyboru widocznych parków.",
+      "featuredOnHomeEnabled": "Wyróżniony",
+      "featuredOnHomeDisabled": "Niewyróżniony",
+      "featuredHomeOrder": "Kolejność wyróżnienia",
+      "featuredHomeOrderPlaceholder": "Np. 1",
+      "featuredSponsoredField": "Oznaczenie sponsorowane",
+      "featuredSponsoredHelp": "Wyświetla oznaczenie sponsorowane na publicznej karcie, gdy wyróżnienie wynika ze współpracy partnerskiej.",
+      "featuredSponsoredEnabled": "Sponsorowane",
+      "featuredSponsoredDisabled": "Niesponsorowane"
     },
     "loading": "Ładowanie...",
     "operators": {
@@ -798,6 +811,33 @@
     },
     "distance": {
       "title": "Punkt geograficzny"
+    }
+  },
+  "footer": {
+    "ariaLabel": "Stopka strony",
+    "brand": {
+      "tagline": "Pełna mapa emocji. Park po parku, atrakcja po atrakcji."
+    },
+    "explore": {
+      "title": "Odkrywaj",
+      "allParks": "Wszystkie parki",
+      "topRollerCoasters": "Najlepsze rollercoastery",
+      "interactiveMap": "Mapa interaktywna",
+      "news": "Nowości"
+    },
+    "about": {
+      "title": "O projekcie",
+      "project": "Projekt",
+      "sources": "Źródła",
+      "contact": "Kontakt"
+    },
+    "languages": {
+      "title": "Języki"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Stworzone z ❤️ i adrenaliną",
+      "openSource": "Open Source",
+      "mvp": "MVP"
     }
   }
 }

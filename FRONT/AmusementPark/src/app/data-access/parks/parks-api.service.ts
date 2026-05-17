@@ -20,6 +20,9 @@ interface ParkWriteRequest {
   longitude: number;
   descriptions: LocalizedItem<string>[];
   isVisible: boolean;
+  isFeaturedOnHome: boolean;
+  featuredHomeOrder: number | null;
+  isFeaturedOnHomeSponsored: boolean;
   websiteUrl?: string | null;
   street?: string | null;
   city?: string | null;
@@ -97,10 +100,22 @@ export class ParksApiService {
       longitude: park.longitude,
       descriptions: park.descriptions ?? [],
       isVisible: park.isVisible ?? true,
+      isFeaturedOnHome: park.isFeaturedOnHome ?? false,
+      featuredHomeOrder: this.normalizeFeaturedHomeOrder(park.featuredHomeOrder),
+      isFeaturedOnHomeSponsored: Boolean(park.isFeaturedOnHome) && Boolean(park.isFeaturedOnHomeSponsored),
       websiteUrl: park.webSiteUrl ?? null,
       street: park.street ?? null,
       city: park.city ?? null,
       postalCode: park.postalCode ?? null
     };
+  }
+
+  private normalizeFeaturedHomeOrder(value: number | null | undefined): number | null {
+    if (value === null || value === undefined) {
+      return null;
+    }
+
+    const normalizedValue: number = Number(value);
+    return Number.isFinite(normalizedValue) && normalizedValue > 0 ? normalizedValue : null;
   }
 }

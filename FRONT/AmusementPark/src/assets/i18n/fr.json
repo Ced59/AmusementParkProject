@@ -30,13 +30,16 @@
     "ctaLearnMore": "Comment ça marche",
     "featured": {
       "title": "Parcs mis en avant",
-      "subtitle": "Commence avec une sélection de parcs valorisés dans l’expérience publique.",
+      "subtitle": "Notre sélection des parcs incontournables du moment.",
       "loadingTitle": "Chargement des parcs",
       "loadingMessage": "Les parcs mis en avant sont en cours de chargement.",
       "errorTitle": "Impossible de charger les parcs",
       "errorMessage": "Les parcs mis en avant n’ont pas pu être chargés.",
       "emptyTitle": "Aucun parc mis en avant",
-      "emptyMessage": "Aucun parc n’est encore disponible à mettre en avant."
+      "emptyMessage": "Aucun parc n’est encore disponible à mettre en avant.",
+      "discover": "Découvrir",
+      "manualSelection": "Sélection manuelle",
+      "sponsored": "Sponsorisé"
     },
     "search": {
       "resultsTitle": "Résultats de recherche",
@@ -498,7 +501,17 @@
       "management": {
         "sectionTitle": "Gestion du contenu du parc",
         "sectionHelp": "Accède rapidement aux zones et aux éléments rattachés à ce parc."
-      }
+      },
+      "featuredOnHomeField": "Mettre en avant sur la home",
+      "featuredOnHomeHelp": "Priorise ce parc dans la section publique « Parcs en vedette ». Si aucun parc n’est marqué, la home utilise une sélection aléatoire de parcs visibles.",
+      "featuredOnHomeEnabled": "Mis en avant",
+      "featuredOnHomeDisabled": "Non mis en avant",
+      "featuredHomeOrder": "Ordre de mise en avant",
+      "featuredHomeOrderPlaceholder": "Ex. 1",
+      "featuredSponsoredField": "Mention sponsorisée",
+      "featuredSponsoredHelp": "Affiche une mention sponsorisée sur la card publique quand cette mise en avant correspond à un partenariat.",
+      "featuredSponsoredEnabled": "Sponsorisé",
+      "featuredSponsoredDisabled": "Non sponsorisé"
     },
     "loading": "Chargement...",
     "operators": {
@@ -798,6 +811,33 @@
     },
     "distance": {
       "title": "Repère géographique"
+    }
+  },
+  "footer": {
+    "ariaLabel": "Pied de page du site",
+    "brand": {
+      "tagline": "La cartographie complète des sensations fortes. Parc par parc, attraction par attraction."
+    },
+    "explore": {
+      "title": "Explorer",
+      "allParks": "Tous les parcs",
+      "topRollerCoasters": "Top Rollercoasters",
+      "interactiveMap": "Carte interactive",
+      "news": "Nouveautés"
+    },
+    "about": {
+      "title": "À propos",
+      "project": "Le projet",
+      "sources": "Sources",
+      "contact": "Contact"
+    },
+    "languages": {
+      "title": "Langues"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Fait avec ❤️ et de l’adrénaline",
+      "openSource": "Open Source",
+      "mvp": "MVP"
     }
   }
 }

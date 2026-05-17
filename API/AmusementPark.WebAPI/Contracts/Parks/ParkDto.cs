@@ -25,6 +25,12 @@ public sealed class ParkDto
 
     public bool IsVisible { get; set; }
 
+    public bool IsFeaturedOnHome { get; set; }
+
+    public int? FeaturedHomeOrder { get; set; }
+
+    public bool IsFeaturedOnHomeSponsored { get; set; }
+
     public string? WebSiteUrl { get; set; }
 
     public string? Street { get; set; }

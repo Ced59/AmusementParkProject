@@ -30,13 +30,16 @@
     "ctaLearnMore": "How it works",
     "featured": {
       "title": "Featured parks",
-      "subtitle": "Start with a selection of parks highlighted on the public experience.",
+      "subtitle": "Our selection of must-see parks right now.",
       "loadingTitle": "Loading featured parks",
       "loadingMessage": "The highlighted parks are being loaded.",
       "errorTitle": "Unable to load featured parks",
       "errorMessage": "The featured parks could not be loaded.",
       "emptyTitle": "No featured park",
-      "emptyMessage": "There is no park to highlight yet."
+      "emptyMessage": "There is no park to highlight yet.",
+      "discover": "Discover",
+      "manualSelection": "Manual selection",
+      "sponsored": "Sponsored"
     },
     "search": {
       "resultsTitle": "Search results",
@@ -498,7 +501,17 @@
       "management": {
         "sectionTitle": "Park content management",
         "sectionHelp": "Quick access to the zones and items attached to this park."
-      }
+      },
+      "featuredOnHomeField": "Feature on the home page",
+      "featuredOnHomeHelp": "Prioritizes this park in the public “Featured parks” section. If no park is marked, the home page uses a random selection of visible parks.",
+      "featuredOnHomeEnabled": "Featured",
+      "featuredOnHomeDisabled": "Not featured",
+      "featuredHomeOrder": "Featured order",
+      "featuredHomeOrderPlaceholder": "E.g. 1",
+      "featuredSponsoredField": "Sponsored disclosure",
+      "featuredSponsoredHelp": "Shows a sponsored disclosure on the public card when this featured placement is a partnership.",
+      "featuredSponsoredEnabled": "Sponsored",
+      "featuredSponsoredDisabled": "Not sponsored"
     },
     "loading": "Loading...",
     "operators": {
@@ -798,6 +811,33 @@
     },
     "distance": {
       "title": "Geographic marker"
+    }
+  },
+  "footer": {
+    "ariaLabel": "Site footer",
+    "brand": {
+      "tagline": "The complete map of thrills. Park by park, attraction by attraction."
+    },
+    "explore": {
+      "title": "Explore",
+      "allParks": "All parks",
+      "topRollerCoasters": "Top Rollercoasters",
+      "interactiveMap": "Interactive map",
+      "news": "New releases"
+    },
+    "about": {
+      "title": "About",
+      "project": "The project",
+      "sources": "Sources",
+      "contact": "Contact"
+    },
+    "languages": {
+      "title": "Languages"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Made with ❤️ and adrenaline",
+      "openSource": "Open Source",
+      "mvp": "MVP"
     }
   }
 }

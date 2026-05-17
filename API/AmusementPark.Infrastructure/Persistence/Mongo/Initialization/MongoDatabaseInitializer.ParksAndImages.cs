@@ -39,6 +39,14 @@ public sealed partial class MongoDatabaseInitializer
                 Builders<ParkDocument>.IndexKeys.Ascending(item => item.IsVisible).Ascending(item => item.Name).Ascending(item => item.Id),
                 new CreateIndexOptions { Name = "idx_parks_visibility_name_id" }),
             new CreateIndexModel<ParkDocument>(
+                Builders<ParkDocument>.IndexKeys
+                    .Ascending(item => item.IsVisible)
+                    .Ascending(item => item.IsFeaturedOnHome)
+                    .Ascending(item => item.FeaturedHomeOrder)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_parks_home_featured" }),
+            new CreateIndexModel<ParkDocument>(
                 Builders<ParkDocument>.IndexKeys.Geo2DSphere(item => item.Location),
                 new CreateIndexOptions { Name = "idx_parks_location" }),
         };

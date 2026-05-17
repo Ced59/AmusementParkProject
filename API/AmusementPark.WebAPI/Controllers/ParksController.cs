@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AmusementPark.Application.Abstractions;
@@ -8,8 +10,10 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Parks;
+using AmusementPark.WebAPI.Contracts.Home;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +34,7 @@ public sealed class ParksController : ControllerBase
     private readonly IQueryHandler<SearchParksByNameQuery, ApplicationResult<PagedResult<Park>>> searchParksByNameQueryHandler;
     private readonly IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler;
     private readonly IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler;
+    private readonly IQueryHandler<GetHomeFeaturedParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getHomeFeaturedParksQueryHandler;
     private readonly ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkCommandHandler;
     private readonly ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler;
 
@@ -40,6 +45,7 @@ public sealed class ParksController : ControllerBase
         IQueryHandler<SearchParksByNameQuery, ApplicationResult<PagedResult<Park>>> searchParksByNameQueryHandler,
         IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler,
         IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler,
+        IQueryHandler<GetHomeFeaturedParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getHomeFeaturedParksQueryHandler,
         ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkCommandHandler,
         ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler)
     {
@@ -49,6 +55,7 @@ public sealed class ParksController : ControllerBase
         this.searchParksByNameQueryHandler = searchParksByNameQueryHandler;
         this.searchParksByLocationQueryHandler = searchParksByLocationQueryHandler;
         this.getRandomVisibleParksQueryHandler = getRandomVisibleParksQueryHandler;
+        this.getHomeFeaturedParksQueryHandler = getHomeFeaturedParksQueryHandler;
         this.updateParkCommandHandler = updateParkCommandHandler;
         this.updateParkVisibilityCommandHandler = updateParkVisibilityCommandHandler;
     }
@@ -80,6 +87,24 @@ public sealed class ParksController : ControllerBase
         }
 
         List<ParkDto> response = result.Value.Select(static park => park.ToHttp()).ToList();
+        return this.Ok(response);
+    }
+
+
+    [HttpGet("home-featured")]
+    [ProducesResponseType(typeof(IReadOnlyCollection<HomeFeaturedParkDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetHomeFeaturedParksAsync([FromQuery] int limit = 3, [FromQuery] string[]? excludeIds = null, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>> result = await this.getHomeFeaturedParksQueryHandler.HandleAsync(
+            new GetHomeFeaturedParksQuery(limit, excludeIds ?? Array.Empty<string>()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        List<HomeFeaturedParkDto> response = result.Value.Select(static park => park.ToHttp()).ToList();
         return this.Ok(response);
     }
 

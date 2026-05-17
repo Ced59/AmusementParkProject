@@ -30,13 +30,16 @@
     "ctaLearnMore": "Come funziona",
     "featured": {
       "title": "Featured parks",
-      "subtitle": "Start with a selection of parks highlighted on the public experience.",
+      "subtitle": "La nostra selezione dei parchi imperdibili del momento.",
       "loadingTitle": "Loading featured parks",
       "loadingMessage": "The highlighted parks are being loaded.",
       "errorTitle": "Unable to load featured parks",
       "errorMessage": "The featured parks could not be loaded.",
       "emptyTitle": "No featured park",
-      "emptyMessage": "There is no park to highlight yet."
+      "emptyMessage": "There is no park to highlight yet.",
+      "discover": "Scopri",
+      "manualSelection": "Selezione manuale",
+      "sponsored": "Sponsorizzato"
     },
     "search": {
       "resultsTitle": "Search results",
@@ -498,7 +501,17 @@
       "management": {
         "sectionTitle": "Gestione dei contenuti del parco",
         "sectionHelp": "Accedi rapidamente alle zone e agli elementi collegati a questo parco."
-      }
+      },
+      "featuredOnHomeField": "Metti in evidenza in home",
+      "featuredOnHomeHelp": "Dà priorità a questo parco nella sezione pubblica “Parchi in evidenza”. Se nessun parco è marcato, la home usa una selezione casuale di parchi visibili.",
+      "featuredOnHomeEnabled": "In evidenza",
+      "featuredOnHomeDisabled": "Non in evidenza",
+      "featuredHomeOrder": "Ordine di evidenza",
+      "featuredHomeOrderPlaceholder": "Es. 1",
+      "featuredSponsoredField": "Indicazione sponsorizzata",
+      "featuredSponsoredHelp": "Mostra un’indicazione sponsorizzata nella card pubblica quando questa messa in evidenza è legata a una partnership.",
+      "featuredSponsoredEnabled": "Sponsorizzato",
+      "featuredSponsoredDisabled": "Non sponsorizzato"
     },
     "loading": "Caricamento...",
     "operators": {
@@ -798,6 +811,33 @@
     },
     "distance": {
       "title": "Riferimento geografico"
+    }
+  },
+  "footer": {
+    "ariaLabel": "Piè di pagina del sito",
+    "brand": {
+      "tagline": "La mappa completa delle emozioni. Parco per parco, attrazione per attrazione."
+    },
+    "explore": {
+      "title": "Esplora",
+      "allParks": "Tutti i parchi",
+      "topRollerCoasters": "Top montagne russe",
+      "interactiveMap": "Mappa interattiva",
+      "news": "Novità"
+    },
+    "about": {
+      "title": "Informazioni",
+      "project": "Il progetto",
+      "sources": "Fonti",
+      "contact": "Contatto"
+    },
+    "languages": {
+      "title": "Lingue"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Creato con ❤️ e adrenalina",
+      "openSource": "Open Source",
+      "mvp": "MVP"
     }
   }
 }
