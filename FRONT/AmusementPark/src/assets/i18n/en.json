@@ -660,9 +660,9 @@
     }
   },
   "parks": {
-    "heroBadge": "Public catalog",
-    "title": "Parks",
-    "subtitle": "Browse the parks already managed in the administration area and explore their public details.",
+    "heroBadge": "🗺️ Exploration",
+    "title": "All parks",
+    "subtitle": "Explore visible parks, locate them on the interactive map and choose your next destination.",
     "loadingTitle": "Loading parks",
     "loadingMessage": "The parks list is being loaded.",
     "errorTitle": "Unable to load parks",
@@ -671,7 +671,7 @@
     "emptyMessage": "No park is available for display.",
     "search": {
       "label": "Search",
-      "placeholder": "Search a park by name",
+      "placeholder": "Search a park, country or city…",
       "clear": "Clear"
     },
     "fields": {
@@ -713,6 +713,34 @@
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
       }
+    },
+    "titlePrefix": "All",
+    "titleAccent": "parks",
+    "stats": {
+      "visibleParks": "Visible parks",
+      "countries": "Countries"
+    },
+    "map": {
+      "badge": "Interactive map",
+      "title": "Visible parks map",
+      "subtitle": "The map follows the current search. Click a marker or a result card to keep the whole page in sync.",
+      "visiblePins": "{{count}} visible pins",
+      "quickMarkers": "Quick markers",
+      "selected": "Selected park",
+      "loadingTitle": "Loading map",
+      "loadingMessage": "Visible parks are being placed on the map.",
+      "errorTitle": "Map unavailable",
+      "errorMessage": "The map points could not be loaded.",
+      "emptyTitle": "No point available",
+      "emptyMessage": "No visible park with coordinates matches this search."
+    },
+    "results": {
+      "badge": "Results",
+      "title": "Parks list",
+      "count": "{{count}} results",
+      "focusOnMap": "Select {{name}} on the map",
+      "selectedOnly": "Selected: {{name}}",
+      "clearSelection": "Show all results"
     }
   },
   "parkVisitor": {

@@ -660,9 +660,9 @@
     }
   },
   "parks": {
-    "heroBadge": "Public catalog",
-    "title": "Parks",
-    "subtitle": "Browse the parks already managed in the administration area and explore their public details.",
+    "heroBadge": "🗺️ Exploration",
+    "title": "Alle Parks",
+    "subtitle": "Entdecke sichtbare Parks, finde sie auf der interaktiven Karte und wähle dein nächstes Ziel.",
     "loadingTitle": "Loading parks",
     "loadingMessage": "The parks list is being loaded.",
     "errorTitle": "Unable to load parks",
@@ -670,9 +670,9 @@
     "emptyTitle": "No park available",
     "emptyMessage": "No park is available for display.",
     "search": {
-      "label": "Search",
-      "placeholder": "Search a park by name",
-      "clear": "Clear"
+      "label": "Suche",
+      "placeholder": "Park, Land oder Stadt suchen…",
+      "clear": "Löschen"
     },
     "fields": {
       "country": "Country",
@@ -713,6 +713,34 @@
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
       }
+    },
+    "titlePrefix": "Alle",
+    "titleAccent": "Parks",
+    "stats": {
+      "visibleParks": "Sichtbare Parks",
+      "countries": "Länder"
+    },
+    "map": {
+      "badge": "Interaktive Karte",
+      "title": "Karte der sichtbaren Parks",
+      "subtitle": "Die Karte folgt der aktuellen Suche. Klicke auf einen Marker oder eine Ergebniskarte, um die ganze Seite zu synchronisieren.",
+      "visiblePins": "{{count}} sichtbare Pins",
+      "quickMarkers": "Schnellmarker",
+      "selected": "Ausgewählter Park",
+      "loadingTitle": "Karte wird geladen",
+      "loadingMessage": "Die sichtbaren Parks werden auf der Karte platziert.",
+      "errorTitle": "Karte nicht verfügbar",
+      "errorMessage": "Die Kartenpunkte konnten nicht geladen werden.",
+      "emptyTitle": "Kein Punkt verfügbar",
+      "emptyMessage": "Kein sichtbarer Park mit Koordinaten entspricht dieser Suche."
+    },
+    "results": {
+      "badge": "Ergebnisse",
+      "title": "Parkliste",
+      "count": "{{count}} Ergebnisse",
+      "focusOnMap": "{{name}} auf der Karte auswählen",
+      "selectedOnly": "Ausgewählt: {{name}}",
+      "clearSelection": "Alle Ergebnisse anzeigen"
     }
   },
   "parkVisitor": {

@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ParkExplorer } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
+import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
@@ -42,8 +43,8 @@ export class ParksApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getParksPaginated(page: number, size: number): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size)}`;
+  getParksPaginated(page: number, size: number, visibleOnly: boolean = false): Observable<ParksApiResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly)}`;
     return this.http.get<ParksApiResponse>(url);
   }
 
@@ -52,13 +53,19 @@ export class ParksApiService {
     return this.http.get<Park[]>(url);
   }
 
+  getVisibleParkMapPoints(name: string | null = null): Observable<ParkMapPoint[]> {
+    const normalizedName: string | null = name?.trim() || null;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedName)}`;
+    return this.http.get<ParkMapPoint[]>(url);
+  }
+
   getParkById(id: string): Observable<Park> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkById(id)}`;
     return this.http.get<Park>(url);
   }
 
-  searchParks(name: string, page: number, size: number): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(name, page, size)}`;
+  searchParks(name: string, page: number, size: number, visibleOnly: boolean = false): Observable<ParksApiResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(name, page, size, visibleOnly)}`;
     return this.http.get<ParksApiResponse>(url);
   }
 

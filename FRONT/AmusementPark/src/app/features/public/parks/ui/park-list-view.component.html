@@ -1,35 +1,37 @@
 <section class="public-page parks-page">
-  <section class="public-hero public-hero--split parks-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
-    <div class="public-hero__content">
-      <app-ui-kicker iconClass="pi pi-map">
-        {{ 'parks.heroBadge' | translate }}
-      </app-ui-kicker>
+  <section class="parks-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <div class="parks-hero__inner">
+      <div class="parks-hero__top">
+        <div class="parks-hero__content">
+          <app-ui-kicker tone="sky" iconClass="pi pi-map">
+            {{ 'parks.heroBadge' | translate }}
+          </app-ui-kicker>
 
-      <div>
-        <h1 class="page-title parks-hero__title">{{ 'parks.title' | translate }}</h1>
-        <p class="public-lead parks-hero__lead">
-          {{ 'parks.subtitle' | translate }}
-        </p>
+          <div>
+            <h1 class="parks-page-title">
+              {{ 'parks.titlePrefix' | translate }}<br>
+              <span>{{ 'parks.titleAccent' | translate }}</span>
+            </h1>
+            <p class="section-subtitle parks-hero__lead">
+              {{ 'parks.subtitle' | translate }}
+            </p>
+          </div>
+        </div>
+
+        <div class="parks-hero__stats">
+          <app-ui-stat-card
+            tone="sky"
+            labelKey="parks.stats.visibleParks"
+            [value]="pagination()?.totalItems ?? visibleMapPoints().length">
+          </app-ui-stat-card>
+
+          <app-ui-stat-card
+            tone="lime"
+            labelKey="parks.stats.countries"
+            [value]="visibleCountryCount()">
+          </app-ui-stat-card>
+        </div>
       </div>
-
-      <div class="public-cta-row parks-hero__chips">
-        <app-ui-chip tone="sky" iconClass="pi pi-compass">
-          {{ 'parks.search.label' | translate }}
-        </app-ui-chip>
-        <app-ui-chip tone="soft" iconClass="pi pi-eye">
-          {{ pagination()?.totalItems ?? parks().length }}
-        </app-ui-chip>
-      </div>
-    </div>
-
-    <div class="public-hero__media">
-      <article class="public-feature-card parks-feature-card">
-        <app-ui-kicker tone="sky" iconClass="pi pi-search">
-          {{ 'parks.search.label' | translate }}
-        </app-ui-kicker>
-        <h2 class="public-feature-card__title">{{ 'parks.search.placeholder' | translate }}</h2>
-        <p class="public-feature-card__text">{{ 'parks.subtitle' | translate }}</p>
-      </article>
     </div>
   </section>
 
@@ -46,7 +48,38 @@
     (clearClicked)="clearSearch()">
   </app-ui-search-panel>
 
+  <app-park-list-map
+    [mapState]="mapState"
+    [mapPoints]="visibleMapPoints"
+    [selectedParkId]="selectedMapParkId"
+    (parkSelected)="onMapParkSelected($event)">
+  </app-park-list-map>
+
   <section class="public-panel parks-results" appUiSurface="panel" appUiSurfacePadding="compact">
+    <div class="parks-results__head">
+      <div>
+        <app-ui-kicker tone="lime" iconClass="pi pi-list">
+          {{ 'parks.results.badge' | translate }}
+        </app-ui-kicker>
+        <h2>{{ 'parks.results.title' | translate }}</h2>
+      </div>
+      <div class="parks-results__actions">
+        @if (selectedParkCard()) {
+          <app-ui-chip tone="sky" iconClass="pi pi-map-marker">
+            {{ 'parks.results.selectedOnly' | translate:{ name: selectedParkCard()?.name } }}
+          </app-ui-chip>
+          <button type="button" class="parks-results__clear-selection" appUiButton="ghost" (click)="clearSelectedPark()">
+            <i class="pi pi-times" aria-hidden="true"></i>
+            <span>{{ 'parks.results.clearSelection' | translate }}</span>
+          </button>
+        } @else {
+          <app-ui-chip tone="soft" iconClass="pi pi-database">
+            {{ 'parks.results.count' | translate:{ count: pagination()?.totalItems ?? parks().length } }}
+          </app-ui-chip>
+        }
+      </div>
+    </div>
+
     <app-page-state
       [state]="state().kind"
       [messages]="{
@@ -58,19 +91,30 @@
         emptyMessageKey: 'parks.emptyMessage'
       }">
       <div class="app-grid-cards">
-        <app-park-card
+        <div
           *ngFor="let park of parks()"
-          [park]="park"
-          [currentLang]="currentLang()">
-        </app-park-card>
+          class="parks-results__card-target"
+          [class.parks-results__card-target--selected]="park.id === selectedMapParkId()"
+          role="button"
+          tabindex="0"
+          [attr.aria-label]="'parks.results.focusOnMap' | translate:{ name: park.name }"
+          (click)="onResultCardClick($event, park)"
+          (keydown)="onResultCardKeydown($event, park)">
+          <app-park-card
+            [park]="park"
+            [currentLang]="currentLang()">
+          </app-park-card>
+        </div>
       </div>
 
-      <app-pagination
-        [pagination]="pagination()"
-        [rowsPerPageOptions]="[6, 9, 18, 36]"
-        [pageLinkSize]="3"
-        (pageChanged)="onPageChange($event)">
-      </app-pagination>
+      @if (!selectedParkCard()) {
+        <app-pagination
+          [pagination]="pagination()"
+          [rowsPerPageOptions]="[6, 9, 18, 36]"
+          [pageLinkSize]="3"
+          (pageChanged)="onPageChange($event)">
+        </app-pagination>
+      }
     </app-page-state>
   </section>
 </section>

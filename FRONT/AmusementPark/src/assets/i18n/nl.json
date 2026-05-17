@@ -713,6 +713,34 @@
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
       }
+    },
+    "titlePrefix": "Alle",
+    "titleAccent": "parken",
+    "stats": {
+      "visibleParks": "Zichtbare parken",
+      "countries": "Landen"
+    },
+    "map": {
+      "badge": "Interactieve kaart",
+      "title": "Kaart van zichtbare parken",
+      "subtitle": "De kaart volgt de huidige zoekopdracht. Klik op een marker of resultaatkaart om de hele pagina te synchroniseren.",
+      "visiblePins": "{{count}} zichtbare pins",
+      "quickMarkers": "Snelle markeringen",
+      "selected": "Geselecteerd park",
+      "loadingTitle": "Kaart laden",
+      "loadingMessage": "De zichtbare parken worden op de kaart geplaatst.",
+      "errorTitle": "Kaart niet beschikbaar",
+      "errorMessage": "De kaartpunten konden niet worden geladen.",
+      "emptyTitle": "Geen punt beschikbaar",
+      "emptyMessage": "Geen zichtbaar park met coördinaten komt overeen met deze zoekopdracht."
+    },
+    "results": {
+      "badge": "Resultaten",
+      "title": "Parkenlijst",
+      "count": "{{count}} resultaten",
+      "focusOnMap": "{{name}} op de kaart selecteren",
+      "selectedOnly": "Geselecteerd: {{name}}",
+      "clearSelection": "Alle resultaten tonen"
     }
   },
   "parkVisitor": {

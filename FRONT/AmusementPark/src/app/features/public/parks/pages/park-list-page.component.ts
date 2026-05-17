@@ -5,6 +5,7 @@ import { debounceTime } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
+import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ParkListStateFacade } from '../state/park-list-state.facade';
 import { ParkListViewComponent } from '../ui/park-list-view.component';
 
@@ -18,8 +19,14 @@ import { ParkListViewComponent } from '../ui/park-list-view.component';
 })
 export class ParkListPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
+  protected readonly mapState = this.stateFacade.mapState;
   protected readonly parks = this.stateFacade.parks;
+  protected readonly displayedParks = this.stateFacade.displayedParks;
   protected readonly pagination = this.stateFacade.pagination;
+  protected readonly visibleMapPoints = this.stateFacade.visibleMapPoints;
+  protected readonly visibleCountryCount = this.stateFacade.visibleCountryCount;
+  protected readonly selectedMapParkId = this.stateFacade.selectedParkId;
+  protected readonly selectedParkCard = this.stateFacade.selectedParkCard;
   protected readonly currentLang = signal<string>('en');
   protected readonly searchTerm = signal<string>('');
 
@@ -58,9 +65,12 @@ export class ParkListPageComponent implements OnInit {
       debounceTime(300),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((term: string) => {
+      this.stateFacade.clearSelectedPark();
+      this.stateFacade.loadVisibleMapPoints(term);
       this.stateFacade.loadParks(1, this.stateFacade.pageSize(), term);
     });
 
+    this.stateFacade.loadVisibleMapPoints(this.searchTerm());
     this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm());
   }
 
@@ -79,5 +89,17 @@ export class ParkListPageComponent implements OnInit {
     const page: number = (event.page ?? 0) + 1;
     const rows: number = event.rows ?? this.stateFacade.pageSize();
     this.stateFacade.loadParks(page, rows, this.searchTerm());
+  }
+
+  onMapParkSelected(parkId: string | null): void {
+    this.stateFacade.selectParkFromMap(parkId);
+  }
+
+  onResultParkFocused(park: ParkCardModel): void {
+    this.stateFacade.selectParkFromCard(park);
+  }
+
+  clearSelectedPark(): void {
+    this.stateFacade.clearSelectedPark();
   }
 }

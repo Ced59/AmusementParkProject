@@ -15,7 +15,7 @@ public static class UseCaseCatalog
             ["ParkFounders"] = new[] { "GetParkFounders", "GetParkFounderById", "CreateParkFounder", "UpdateParkFounder" },
             ["ParkOperators"] = new[] { "GetParkOperators", "GetParkOperatorById", "CreateParkOperator", "UpdateParkOperator" },
             ["AttractionManufacturers"] = new[] { "GetAttractionManufacturers", "GetAttractionManufacturerById", "CreateAttractionManufacturer", "UpdateAttractionManufacturer" },
-            ["Parks"] = new[] { "CreatePark", "GetParkById", "GetParksPage", "SearchParksByName", "SearchParksByLocation", "UpdatePark", "UpdateParkVisibility" },
+            ["Parks"] = new[] { "CreatePark", "GetParkById", "GetParksPage", "GetVisibleParkMapPoints", "SearchParksByName", "SearchParksByLocation", "UpdatePark", "UpdateParkVisibility" },
             ["ParkZones"] = new[] { "GetParkZonesByParkId", "GetParkZoneById", "CreateParkZone", "UpdateParkZone", "DeleteParkZone", "GetParkExplorer" },
             ["ParkItems"] = new[] { "GetParkItemsByParkId", "GetParkItemsPage", "GetParkItemById", "CreateParkItem", "UpdateParkItem", "DeleteParkItem" },
             ["Images"] = new[] { "UploadImage", "LinkImage", "SetCurrentImage", "DeleteImage", "GetImageById", "GetCurrentImage", "GetImagesByOwner", "GetAllImages", "UpdateImageMetadata", "ListImageTags", "CreateImageTag", "UpdateImageTag" },

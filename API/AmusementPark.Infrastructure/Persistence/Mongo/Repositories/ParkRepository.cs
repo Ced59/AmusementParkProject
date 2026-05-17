@@ -101,6 +101,28 @@ public sealed class ParkRepository : IParkRepository
             .ToList();
     }
 
+    public async Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true)
+            & Builders<ParkDocument>.Filter.Ne(document => document.Latitude, null)
+            & Builders<ParkDocument>.Filter.Ne(document => document.Longitude, null);
+
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+        {
+            string escapedSearchTerm = Regex.Escape(searchTerm.Trim());
+            filter &= Builders<ParkDocument>.Filter.Regex(
+                document => document.Name,
+                new BsonRegularExpression(escapedSearchTerm, "i"));
+        }
+
+        List<ParkDocument> documents = await this.collection.Find(filter)
+            .SortBy(document => document.Name)
+            .ThenBy(document => document.Id)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
     public Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken)
     {
         return this.GetRandomVisibleAsync(limit, Array.Empty<string>(), cancellationToken);

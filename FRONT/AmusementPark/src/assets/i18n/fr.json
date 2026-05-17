@@ -660,9 +660,9 @@
     }
   },
   "parks": {
-    "heroBadge": "Catalogue public",
-    "title": "Parcs",
-    "subtitle": "Parcours les parcs déjà gérés dans l’administration et explore leurs détails publics.",
+    "heroBadge": "🗺️ Exploration",
+    "title": "Tous les parcs",
+    "subtitle": "Explore les parcs visibles, retrouve-les sur la carte interactive et choisis ta prochaine destination.",
     "loadingTitle": "Chargement des parcs",
     "loadingMessage": "La liste des parcs est en cours de chargement.",
     "errorTitle": "Impossible de charger les parcs",
@@ -671,7 +671,7 @@
     "emptyMessage": "Aucun parc n’est disponible à l’affichage.",
     "search": {
       "label": "Recherche",
-      "placeholder": "Rechercher un parc par son nom",
+      "placeholder": "Rechercher un parc, un pays, une ville…",
       "clear": "Effacer"
     },
     "fields": {
@@ -713,6 +713,34 @@
         "emptyTitle": "Aucun parc à proximité",
         "emptyMessage": "Aucun parc proche n’a été trouvé autour de cette destination."
       }
+    },
+    "titlePrefix": "Tous les",
+    "titleAccent": "parcs",
+    "stats": {
+      "visibleParks": "Parcs visibles",
+      "countries": "Pays"
+    },
+    "map": {
+      "badge": "Carte interactive",
+      "title": "Carte des parcs visibles",
+      "subtitle": "La carte suit la recherche en cours. Clique sur un marqueur ou sur une card de résultat pour synchroniser toute la page.",
+      "visiblePins": "{{count}} pins visibles",
+      "quickMarkers": "Repères rapides",
+      "selected": "Parc sélectionné",
+      "loadingTitle": "Chargement de la carte",
+      "loadingMessage": "Les parcs visibles sont placés sur la carte.",
+      "errorTitle": "Carte indisponible",
+      "errorMessage": "Les points cartographiques n’ont pas pu être chargés.",
+      "emptyTitle": "Aucun point disponible",
+      "emptyMessage": "Aucun parc visible avec coordonnées ne correspond à la recherche."
+    },
+    "results": {
+      "badge": "Résultats",
+      "title": "Liste des parcs",
+      "count": "{{count}} résultats",
+      "focusOnMap": "Sélectionner {{name}} sur la carte",
+      "selectedOnly": "Sélection : {{name}}",
+      "clearSelection": "Afficher tous les résultats"
     }
   },
   "parkVisitor": {

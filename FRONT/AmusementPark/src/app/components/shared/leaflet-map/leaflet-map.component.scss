@@ -6,3 +6,18 @@
   border: 1px solid var(--app-border);
   box-shadow: var(--app-shadow-1);
 }
+
+:host ::ng-deep .leaflet-popup-content strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #1a140f;
+  font-weight: 800;
+}
+
+:host ::ng-deep .leaflet-map-popup__lines {
+  display: grid;
+  gap: 0.16rem;
+  color: #3a3026;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}

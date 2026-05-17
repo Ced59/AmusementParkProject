@@ -120,6 +120,24 @@ internal static class ParksHttpMappers
         };
     }
 
+    public static ParkMapPointDto ToMapPointHttp(this Park value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkMapPointDto
+        {
+            Id = value.Id ?? string.Empty,
+            Name = value.Name ?? string.Empty,
+            CountryCode = value.CountryCode,
+            City = value.City,
+            Street = value.Street,
+            PostalCode = value.PostalCode,
+            Latitude = value.Position?.Latitude ?? 0.0,
+            Longitude = value.Position?.Longitude ?? 0.0,
+            CurrentLogoImageId = value.CurrentLogoImageId,
+        };
+    }
+
     public static PaginationDto ToHttp(this PagedResult<Park> value)
     {
         ArgumentNullException.ThrowIfNull(value);

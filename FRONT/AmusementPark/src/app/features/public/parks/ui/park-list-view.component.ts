@@ -7,25 +7,35 @@ import { ParkCardComponent } from '@app/components/public/park-card/park-card.co
 import { PaginationContract } from '@shared/models/contracts';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
-import { UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective } from '@ui/primitives';
 import { UiSearchPanelComponent } from '@ui/forms';
+import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
+import { ParkListMapComponent } from './park-list-map.component';
 
 @Component({
   selector: 'app-park-list-view',
   templateUrl: './park-list-view.component.html',
   styleUrls: ['./park-list-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, PaginationComponent, NgFor, ParkCardComponent, TranslateModule, UiChipComponent, UiKickerComponent, UiSurfaceDirective, UiSearchPanelComponent]
+  imports: [PageStateComponent, PaginationComponent, NgFor, ParkCardComponent, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective, UiSearchPanelComponent, ParkListMapComponent]
 })
 export class ParkListViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;
+  @Input() mapState!: Signal<ScreenState<ParkMapPointViewModel[], string>>;
   @Input() parks!: Signal<ParkCardModel[]>;
   @Input() pagination!: Signal<PaginationContract | null>;
+  @Input() visibleMapPoints!: Signal<ParkMapPointViewModel[]>;
+  @Input() visibleCountryCount!: Signal<number>;
+  @Input() selectedMapParkId!: Signal<string | null>;
+  @Input() selectedParkCard!: Signal<ParkCardModel | null>;
   @Input() currentLang!: Signal<string>;
   @Input() searchTerm!: Signal<string>;
 
   @Output() searchInputChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() clearSearchClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() mapParkSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
+  @Output() resultParkFocused: EventEmitter<ParkCardModel> = new EventEmitter<ParkCardModel>();
+  @Output() selectedParkCleared: EventEmitter<void> = new EventEmitter<void>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
 
   onSearchInput(value: string): void {
@@ -34,6 +44,43 @@ export class ParkListViewComponent {
 
   clearSearch(): void {
     this.clearSearchClicked.emit();
+  }
+
+  onMapParkSelected(parkId: string | null): void {
+    this.mapParkSelected.emit(parkId);
+  }
+
+  onResultCardClick(event: MouseEvent, park: ParkCardModel): void {
+    if (this.isInteractiveChildClick(event)) {
+      return;
+    }
+
+    this.resultParkFocused.emit(park);
+  }
+
+  onResultCardKeydown(event: KeyboardEvent, park: ParkCardModel): void {
+    if (event.key !== 'Enter' && event.key !== ' ') {
+      return;
+    }
+
+    event.preventDefault();
+    this.resultParkFocused.emit(park);
+  }
+
+  private isInteractiveChildClick(event: MouseEvent): boolean {
+    const target: EventTarget | null = event.target;
+    const currentTarget: EventTarget | null = event.currentTarget;
+
+    if (!(target instanceof HTMLElement) || !(currentTarget instanceof HTMLElement)) {
+      return false;
+    }
+
+    const interactiveElement: Element | null = target.closest('a, button, input, textarea, select, [role=\"button\"]');
+    return !!interactiveElement && interactiveElement !== currentTarget;
+  }
+
+  clearSelectedPark(): void {
+    this.selectedParkCleared.emit();
   }
 
   onPageChange(event: { page?: number; rows?: number }): void {

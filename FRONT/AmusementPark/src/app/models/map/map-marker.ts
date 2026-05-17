@@ -3,4 +3,7 @@ export interface MapMarker {
   lat: number;
   lng: number;
   draggable?: boolean;
+  title?: string | null;
+  subtitle?: string | null;
+  details?: string[];
 }

@@ -713,6 +713,34 @@
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
       }
+    },
+    "titlePrefix": "Tutti i",
+    "titleAccent": "parchi",
+    "stats": {
+      "visibleParks": "Parchi visibili",
+      "countries": "Paesi"
+    },
+    "map": {
+      "badge": "Mappa interattiva",
+      "title": "Mappa dei parchi visibili",
+      "subtitle": "La mappa segue la ricerca in corso. Clicca su un marker o su una card risultato per sincronizzare tutta la pagina.",
+      "visiblePins": "{{count}} pin visibili",
+      "quickMarkers": "Marker rapidi",
+      "selected": "Parco selezionato",
+      "loadingTitle": "Caricamento mappa",
+      "loadingMessage": "I parchi visibili vengono posizionati sulla mappa.",
+      "errorTitle": "Mappa non disponibile",
+      "errorMessage": "Impossibile caricare i punti della mappa.",
+      "emptyTitle": "Nessun punto disponibile",
+      "emptyMessage": "Nessun parco visibile con coordinate corrisponde a questa ricerca."
+    },
+    "results": {
+      "badge": "Risultati",
+      "title": "Lista dei parchi",
+      "count": "{{count}} risultati",
+      "focusOnMap": "Seleziona {{name}} sulla mappa",
+      "selectedOnly": "Selezione: {{name}}",
+      "clearSelection": "Mostra tutti i risultati"
     }
   },
   "parkVisitor": {

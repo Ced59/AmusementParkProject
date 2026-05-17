@@ -1,10 +1,18 @@
 <app-park-list-view
   [state]="state"
-  [parks]="parks"
+  [mapState]="mapState"
+  [parks]="displayedParks"
   [pagination]="pagination"
+  [visibleMapPoints]="visibleMapPoints"
+  [visibleCountryCount]="visibleCountryCount"
+  [selectedMapParkId]="selectedMapParkId"
+  [selectedParkCard]="selectedParkCard"
   [currentLang]="currentLang"
   [searchTerm]="searchTerm"
   (searchInputChanged)="onSearchInput($event)"
   (clearSearchClicked)="clearSearch()"
+  (mapParkSelected)="onMapParkSelected($event)"
+  (resultParkFocused)="onResultParkFocused($event)"
+  (selectedParkCleared)="clearSelectedPark()"
   (pageChanged)="onPageChange($event)">
 </app-park-list-view>
