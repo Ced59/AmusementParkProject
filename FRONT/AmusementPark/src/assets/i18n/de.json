@@ -385,7 +385,18 @@
           "uploadSuccess": "{{count}} photo(s) uploaded successfully.",
           "uploadError": "An error occurred after {{count}} upload(s).",
           "currentSetSuccess": "Current photo updated.",
-          "deleteSuccess": "Photo deleted."
+          "deleteSuccess": "Photo deleted.",
+          "categoryLabel": "Photo category",
+          "descriptionLabel": "Description",
+          "categorized": "Categorized",
+          "categories": {
+            "gallery": "Gallery",
+            "entrance": "Entrance",
+            "exit": "Exit",
+            "layout": "Layout",
+            "queue": "Queue",
+            "station": "Station"
+          }
         },
         "attractionConfigurationTitle": "Attraction configuration",
         "attractionConfigurationHelp": "This section is only displayed for Attraction items. All fields are optional.",
@@ -975,6 +986,29 @@
       "moderate": "Moderate",
       "soaking": "Soaking",
       "extremeSoaking": "Extrem durchnässend"
+    },
+    "photos": {
+      "kicker": "Photos",
+      "title": "Fotos",
+      "subtitle": "Filtere die Bilder nach Kategorie, damit die Detailseite fokussiert bleibt.",
+      "current": "Current",
+      "categories": {
+        "gallery": "Gallery",
+        "entrance": "Entrance",
+        "exit": "Exit",
+        "layout": "Layout",
+        "queue": "Queue",
+        "station": "Station"
+      },
+      "controls": {
+        "category": "Fotokategorie",
+        "allCategories": "Alle",
+        "displayCount": "Anzahl",
+        "count": "{{count}}",
+        "all": "Alle",
+        "previous": "Vorheriges Foto",
+        "next": "Nächstes Foto"
+      }
     }
   },
   "publicNavigation": {

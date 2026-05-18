@@ -10,9 +10,11 @@ import { UploadedImage } from '@app/models/images/uploaded-image';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { mapImageDtoToOwnedImageItem } from '@shared/utils/images/owned-image-item.mapper';
 import { ImageUploadSecurityService } from '@shared/utils/security';
+import { AdminParkItemPhotoCategoryOption, PARK_ITEM_PHOTO_CATEGORY_OPTIONS } from '../models/admin-park-item-edit.model';
 
 @Injectable()
 export class AdminParkItemPhotosStateFacade {
@@ -25,6 +27,8 @@ export class AdminParkItemPhotosStateFacade {
   private readonly photosPageSizeSignal = signal(8);
   private readonly selectedPhotoFilesSignal = signal<File[]>([]);
   private readonly newPhotoDescriptionSignal = signal('');
+  private readonly selectedPhotoCategorySlugSignal = signal(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
+  private readonly photoTagIdsBySlugSignal = signal<Record<string, string>>({});
 
   public readonly attractionPhotos: Signal<OwnedImageItem[]> = this.attractionPhotosSignal.asReadonly();
   public readonly currentPhoto: Signal<OwnedImageItem | null> = this.currentPhotoSignal.asReadonly();
@@ -32,6 +36,8 @@ export class AdminParkItemPhotosStateFacade {
   public readonly photosUploading: Signal<boolean> = this.photosUploadingSignal.asReadonly();
   public readonly photosPageSize: Signal<number> = this.photosPageSizeSignal.asReadonly();
   public readonly newPhotoDescription: Signal<string> = this.newPhotoDescriptionSignal.asReadonly();
+  public readonly selectedPhotoCategorySlug: Signal<string> = this.selectedPhotoCategorySlugSignal.asReadonly();
+  public readonly photoCategoryOptions: Signal<AdminParkItemPhotoCategoryOption[]> = signal([...PARK_ITEM_PHOTO_CATEGORY_OPTIONS]).asReadonly();
   public readonly selectedPhotoCount: Signal<number> = computed(() => this.selectedPhotoFilesSignal().length);
   public readonly pagedPhotos: Signal<OwnedImageItem[]> = computed(() => {
     const start: number = this.photosPageSignal() * this.photosPageSizeSignal();
@@ -60,10 +66,13 @@ export class AdminParkItemPhotosStateFacade {
     this.photosPageSizeSignal.set(8);
     this.selectedPhotoFilesSignal.set([]);
     this.newPhotoDescriptionSignal.set('');
+    this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
+    this.photoTagIdsBySlugSignal.set({});
   }
 
   loadPhotos(itemId: string): void {
     this.photosLoadingSignal.set(true);
+    this.ensurePhotoCategoryTags();
 
     this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, itemId, ImageCategory.ATTRACTION).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (images: ImageDto[]) => {
@@ -107,6 +116,11 @@ export class AdminParkItemPhotosStateFacade {
     this.newPhotoDescriptionSignal.set(description);
   }
 
+  setSelectedPhotoCategorySlug(slug: string): void {
+    const isKnownSlug: boolean = PARK_ITEM_PHOTO_CATEGORY_OPTIONS.some((option: AdminParkItemPhotoCategoryOption) => option.slug === slug);
+    this.selectedPhotoCategorySlugSignal.set(isKnownSlug ? slug : PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
+  }
+
   onPhotosPageChange(event: PaginatorState): void {
     this.photosPageSignal.set(event.page ?? 0);
     this.photosPageSizeSignal.set(event.rows ?? this.photosPageSizeSignal());
@@ -131,6 +145,8 @@ export class AdminParkItemPhotosStateFacade {
 
       this.selectedPhotoFilesSignal.set([]);
       this.newPhotoDescriptionSignal.set('');
+    this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
+    this.photoTagIdsBySlugSignal.set({});
       this.toastMessageService.add(
         'success',
         this.translateService.instant('admin.parks.items.saveMessages.successSummary'),
@@ -193,6 +209,62 @@ export class AdminParkItemPhotosStateFacade {
     });
   }
 
+
+  private ensurePhotoCategoryTags(): void {
+    this.imagesApiService.getAdminImageTags().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (tags: ImageTagDto[]) => {
+        void this.ensureMissingPhotoCategoryTagsAsync(tags);
+      },
+      error: (error: unknown) => {
+        console.error('Error loading image tags', error);
+      }
+    });
+  }
+
+  private async ensureMissingPhotoCategoryTagsAsync(existingTags: ImageTagDto[]): Promise<void> {
+    const idsBySlug: Record<string, string> = {};
+
+    for (const option of PARK_ITEM_PHOTO_CATEGORY_OPTIONS) {
+      const existingTag: ImageTagDto | undefined = existingTags.find((tag: ImageTagDto) => tag.slug === option.slug);
+
+      if (existingTag) {
+        idsBySlug[option.slug] = existingTag.id;
+        continue;
+      }
+
+      const createdTag: ImageTagDto = await firstValueFrom(this.imagesApiService.createAdminImageTag({
+        slug: option.slug,
+        labels: [
+          { languageCode: 'fr', value: this.translateService.instant(option.labelKey) },
+          { languageCode: 'en', value: this.translateService.instant(option.labelKey) }
+        ],
+        descriptions: []
+      }));
+
+      idsBySlug[option.slug] = createdTag.id;
+    }
+
+    this.photoTagIdsBySlugSignal.set(idsBySlug);
+  }
+
+  private async applySelectedPhotoCategoryAsync(image: ImageDto): Promise<ImageDto> {
+    const selectedTagId: string | undefined = this.photoTagIdsBySlugSignal()[this.selectedPhotoCategorySlugSignal()];
+
+    if (!selectedTagId) {
+      return image;
+    }
+
+    return firstValueFrom(this.imagesApiService.updateAdminImage(image.id, {
+      description: image.description,
+      geoLocation: image.geoLocation ?? null,
+      altTexts: image.altTexts ?? [],
+      captions: image.captions ?? [],
+      credits: image.credits ?? [],
+      tagIds: [...new Set([...(image.tagIds ?? []), selectedTagId])],
+      isPublished: image.isPublished
+    }));
+  }
+
   private async uploadPhotoAsync(file: File, itemId: string, itemName: string, setAsCurrent: boolean): Promise<void> {
     const uploadedImage: UploadedImage = await firstValueFrom(
       this.imagesApiService.uploadImage(
@@ -213,7 +285,8 @@ export class AdminParkItemPhotosStateFacade {
       })
     );
 
-    this.upsertPhoto(this.toOwnedImageItem(linkedImage));
+    const taggedImage: ImageDto = await this.applySelectedPhotoCategoryAsync(linkedImage);
+    this.upsertPhoto(this.toOwnedImageItem(taggedImage));
   }
 
   private upsertPhoto(item: OwnedImageItem): void {

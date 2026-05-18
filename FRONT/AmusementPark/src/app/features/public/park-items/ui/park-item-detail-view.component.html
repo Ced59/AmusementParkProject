@@ -18,16 +18,18 @@
         </svg>
       </div>
 
-      <div class="item-detail-hero__content">
-        <div class="route-trail item-detail-trail">
-          <a [routerLink]="currentDetail.homeLink">{{ 'sidebar.home' | translate }}</a>
-          <span class="route-trail__sep">/</span>
-          <a *ngIf="currentDetail.parkLink" [routerLink]="currentDetail.parkLink">{{ currentDetail.parkName }}</a>
-          <span *ngIf="!currentDetail.parkLink">{{ currentDetail.parkName }}</span>
-          <span class="route-trail__sep">/</span>
-          <span>{{ currentDetail.name }}</span>
-        </div>
+      <div class="item-detail-hero__photo" *ngIf="currentDetail.heroPhoto">
+        <app-image-display
+          [imageId]="currentDetail.heroPhoto.imageId"
+          [alt]="currentDetail.heroPhoto.alt"
+          loading="eager"
+          imgClass="item-detail-hero__photo-img"
+          placeholderClass="item-detail-hero__photo-placeholder"
+          placeholderIconClass="pi pi-image">
+        </app-image-display>
+      </div>
 
+      <div class="item-detail-hero__content">
         <div class="item-detail-hero__type">
           <div class="item-detail-icon">
             <i [class]="currentDetail.typeIconClass" aria-hidden="true"></i>
@@ -69,16 +71,18 @@
     </section>
 
     <section class="item-specs-grid" *ngIf="currentDetail.spotlightRows.length > 0">
-      <app-ui-stat-card
-        *ngFor="let row of currentDetail.spotlightRows"
-        [labelKey]="row.labelKey"
-        [value]="row.valueKey ? (row.valueKey | translate) : row.value">
-      </app-ui-stat-card>
+      <article class="item-spec" *ngFor="let row of currentDetail.spotlightRows">
+        <div class="item-spec__icon" *ngIf="row.iconClass">
+          <i [class]="row.iconClass" aria-hidden="true"></i>
+        </div>
+        <div class="item-spec__value">{{ row.valueKey ? (row.valueKey | translate) : row.value }}</div>
+        <div class="item-spec__label">{{ row.labelKey | translate }}</div>
+      </article>
     </section>
 
     <div class="item-detail-body">
       <div class="item-detail-main">
-        <section class="detail-panel" appUiSurface="detail" appUiSurfacePadding="regular" *ngIf="currentDetail.description">
+        <section class="detail-panel detail-panel--description" appUiSurface="detail" appUiSurfacePadding="regular" *ngIf="currentDetail.description">
           <app-ui-section-header
             kickerIconClass="pi pi-align-left"
             kickerLabelKey="parkItems.detail.descriptionTitle"
@@ -87,7 +91,109 @@
           <p>{{ currentDetail.description }}</p>
         </section>
 
-        <section class="detail-panel" appUiSurface="detail" appUiSurfacePadding="regular" *ngFor="let group of currentDetail.specGroups">
+        <section class="detail-panel photos-panel" appUiSurface="detail" appUiSurfacePadding="regular" *ngIf="currentDetail.photos.length > 0">
+          <app-ui-section-header
+            kickerIconClass="pi pi-images"
+            kickerLabelKey="parkItems.photos.kicker"
+            titleKey="parkItems.photos.title"
+            subtitleKey="parkItems.photos.subtitle">
+          </app-ui-section-header>
+
+          <div class="photos-toolbar">
+            <div class="photos-toolbar__group" role="group" [attr.aria-label]="'parkItems.photos.controls.category' | translate">
+              <button
+                type="button"
+                class="photos-filter"
+                [class.photos-filter--active]="hasSelectedCategory(null, currentDetail.photos)"
+                (click)="selectPhotoCategory(null)">
+                <span>{{ 'parkItems.photos.controls.allCategories' | translate }}</span>
+                <strong>{{ currentDetail.photos.length }}</strong>
+              </button>
+
+              <button
+                *ngFor="let category of currentDetail.photoCategories"
+                type="button"
+                class="photos-filter"
+                [class.photos-filter--active]="hasSelectedCategory(category.key, currentDetail.photos)"
+                (click)="selectPhotoCategory(category.key)">
+                <span>{{ category.labelKey | translate }}</span>
+                <strong>{{ getCategoryCountLabel(category) }}</strong>
+              </button>
+            </div>
+
+            <div class="photos-toolbar__group photos-toolbar__group--limits" role="group" [attr.aria-label]="'parkItems.photos.controls.displayCount' | translate">
+              <span class="photos-toolbar__label">{{ 'parkItems.photos.controls.displayCount' | translate }}</span>
+              <button
+                *ngFor="let limit of photoDisplayLimits"
+                type="button"
+                class="photos-limit"
+                [class.photos-limit--active]="selectedPhotoLimit === limit"
+                (click)="setPhotoLimit(limit)">
+                {{ getDisplayLimitLabelKey(limit) | translate:{ count: limit } }}
+              </button>
+            </div>
+          </div>
+
+          <ng-container *ngIf="getActivePhoto(currentDetail.photos) as activePhoto">
+            <div class="photos-carousel">
+              <button
+                type="button"
+                class="photos-carousel__nav photos-carousel__nav--prev"
+                (click)="previousPhoto(currentDetail.photos)"
+                [disabled]="getDisplayedPhotos(currentDetail.photos).length <= 1"
+                [attr.aria-label]="'parkItems.photos.controls.previous' | translate">
+                <i class="pi pi-chevron-left" aria-hidden="true"></i>
+              </button>
+
+              <article class="photos-carousel__stage">
+                <app-image-display
+                  [imageId]="activePhoto.imageId"
+                  [alt]="activePhoto.alt"
+                  loading="lazy"
+                  imgClass="photos-carousel__image"
+                  placeholderClass="photos-carousel__placeholder"
+                  placeholderIconClass="pi pi-image">
+                </app-image-display>
+
+                <div class="photos-carousel__caption">
+                  <app-ui-chip tone="primary">{{ activePhoto.categoryLabelKey | translate }}</app-ui-chip>
+                  <app-ui-chip tone="soft" *ngIf="activePhoto.isCurrent">{{ 'parkItems.photos.current' | translate }}</app-ui-chip>
+                  <p *ngIf="activePhoto.description">{{ activePhoto.description }}</p>
+                </div>
+              </article>
+
+              <button
+                type="button"
+                class="photos-carousel__nav photos-carousel__nav--next"
+                (click)="nextPhoto(currentDetail.photos)"
+                [disabled]="getDisplayedPhotos(currentDetail.photos).length <= 1"
+                [attr.aria-label]="'parkItems.photos.controls.next' | translate">
+                <i class="pi pi-chevron-right" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <div class="photos-strip" *ngIf="getDisplayedPhotos(currentDetail.photos).length > 1">
+              <button
+                *ngFor="let photo of getDisplayedPhotos(currentDetail.photos); let photoIndex = index"
+                type="button"
+                class="photos-strip__item"
+                [class.photos-strip__item--active]="photoIndex === activePhotoIndex"
+                (click)="activePhotoIndex = photoIndex">
+                <app-image-display
+                  [imageId]="photo.imageId"
+                  [alt]="photo.alt"
+                  loading="lazy"
+                  imgClass="photos-strip__image"
+                  placeholderClass="photos-strip__placeholder"
+                  placeholderIconClass="pi pi-image">
+                </app-image-display>
+                <span>{{ photo.categoryLabelKey | translate }}</span>
+              </button>
+            </div>
+          </ng-container>
+        </section>
+
+        <section class="detail-panel spec-panel" appUiSurface="detail" appUiSurfacePadding="regular" *ngFor="let group of currentDetail.specGroups">
           <app-ui-section-header
             [kickerIconClass]="group.iconClass"
             [kickerLabelKey]="group.titleKey"

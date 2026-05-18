@@ -55,13 +55,37 @@
                   {{ 'admin.parks.items.photos.selectedCount' | translate:{ count: selectedPhotoCount } }}
                 </small>
               }
-              <input
-                pInputText
-                type="text"
-                [ngModel]="newPhotoDescription"
-                (ngModelChange)="newPhotoDescriptionChange.emit($event)"
-                [ngModelOptions]="{ standalone: true }"
-                [placeholder]="'admin.parks.items.photos.descriptionPlaceholder' | translate" />
+              <div class="photo-upload-grid">
+                <div class="field">
+                  <label class="block mb-2">{{ 'admin.parks.items.photos.categoryLabel' | translate }}</label>
+                  <p-select
+                    [ngModel]="selectedPhotoCategorySlug"
+                    (ngModelChange)="selectedPhotoCategorySlugChange.emit($event)"
+                    [ngModelOptions]="{ standalone: true }"
+                    [options]="photoCategoryOptions"
+                    optionLabel="labelKey"
+                    optionValue="slug"
+                    [appendTo]="'body'">
+                    <ng-template let-option pTemplate="item">
+                      {{ option.labelKey | translate }}
+                    </ng-template>
+                    <ng-template let-option pTemplate="selectedItem">
+                      {{ option?.labelKey | translate }}
+                    </ng-template>
+                  </p-select>
+                </div>
+
+                <div class="field">
+                  <label class="block mb-2">{{ 'admin.parks.items.photos.descriptionLabel' | translate }}</label>
+                  <input
+                    pInputText
+                    type="text"
+                    [ngModel]="newPhotoDescription"
+                    (ngModelChange)="newPhotoDescriptionChange.emit($event)"
+                    [ngModelOptions]="{ standalone: true }"
+                    [placeholder]="'admin.parks.items.photos.descriptionPlaceholder' | translate" />
+                </div>
+              </div>
               <div class="flex justify-content-end">
                 <button pButton type="button"
                   (click)="uploadPhoto.emit()"
@@ -125,6 +149,11 @@
                     <small class="mb-2 text-center">
                       {{ photo.description || ('admin.parks.items.photos.noDescription' | translate) }}
                     </small>
+                    @if (photo.tagIds.length > 0) {
+                      <small class="text-color-secondary mb-2">
+                        {{ 'admin.parks.items.photos.categorized' | translate }}
+                      </small>
+                    }
                     <div class="flex gap-2">
                       <button pButton type="button"
                         icon="pi pi-check"

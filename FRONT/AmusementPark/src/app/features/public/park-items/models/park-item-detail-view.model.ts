@@ -1,4 +1,5 @@
 import { MapMarker } from '@app/models/map/map-marker';
+import { ImageCategory } from '@app/models/images/image-category';
 import { ParkItemCardViewModel } from './park-item-card.model';
 
 export interface ParkItemDetailRowViewModel {
@@ -22,6 +23,23 @@ export interface ParkItemLocationPointViewModel {
   longitude: number;
   coordinatesLabel: string;
   isGeneralFallback: boolean;
+}
+
+export interface ParkItemPhotoCategoryOptionViewModel {
+  key: string;
+  labelKey: string;
+  count: number;
+}
+
+export interface ParkItemPhotoViewModel {
+  id: string;
+  imageId: string;
+  category: ImageCategory;
+  categoryKey: string;
+  categoryLabelKey: string;
+  description: string | null;
+  alt: string;
+  isCurrent: boolean;
 }
 
 export interface ParkItemAccessConditionViewModel {
@@ -50,6 +68,9 @@ export interface ParkItemDetailViewModel {
   spotlightRows: ParkItemDetailRowViewModel[];
   summaryRows: ParkItemDetailRowViewModel[];
   specGroups: ParkItemDetailSpecGroupViewModel[];
+  photos: ParkItemPhotoViewModel[];
+  photoCategories: ParkItemPhotoCategoryOptionViewModel[];
+  heroPhoto: ParkItemPhotoViewModel | null;
   accessConditions: ParkItemAccessConditionViewModel[];
   locationPoints: ParkItemLocationPointViewModel[];
   mapMarkers: MapMarker[];

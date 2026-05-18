@@ -18,7 +18,8 @@ import {
   AdminParkItemCategoryOption,
   AdminParkItemTypeOption,
   AttractionLocationKey,
-  AttractionLocationOption
+  AttractionLocationOption,
+  AdminParkItemPhotoCategoryOption
 } from '@features/admin/park-items/models/admin-park-item-edit.model';
 import { AdminParkItemGeneralTabComponent } from './tabs/admin-park-item-general-tab/admin-park-item-general-tab.component';
 import { AdminParkItemDetailsTabComponent } from './tabs/admin-park-item-details-tab/admin-park-item-details-tab.component';
@@ -83,6 +84,8 @@ export class AdminParkItemEditFormComponent {
   @Input() allowMultiplePhotoUpload: boolean = true;
   @Input() selectedPhotoCount: number = 0;
   @Input() newPhotoDescription: string = '';
+  @Input() selectedPhotoCategorySlug: string = 'park-item-gallery';
+  @Input() photoCategoryOptions: AdminParkItemPhotoCategoryOption[] = [];
   @Input() photosUploading: boolean = false;
   @Input() photosLoading: boolean = false;
   @Input() attractionPhotos: OwnedImageItem[] = [];
@@ -110,6 +113,7 @@ export class AdminParkItemEditFormComponent {
   @Output() clearSelectedLocation: EventEmitter<void> = new EventEmitter<void>();
   @Output() photoFileSelected: EventEmitter<Event> = new EventEmitter<Event>();
   @Output() newPhotoDescriptionChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() selectedPhotoCategorySlugChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() uploadPhoto: EventEmitter<void> = new EventEmitter<void>();
   @Output() setCurrentPhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() deletePhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();

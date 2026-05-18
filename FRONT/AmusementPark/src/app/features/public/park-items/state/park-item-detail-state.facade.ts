@@ -1,9 +1,14 @@
 import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
@@ -17,6 +22,8 @@ interface ParkItemDetailSourceData {
   manufacturerName: string | null;
   zoneName: string | null;
   relatedItems: ParkItem[];
+  photos: ImageDto[];
+  imageTags: ImageTagDto[];
 }
 
 @Injectable()
@@ -34,7 +41,9 @@ export class ParkItemDetailStateFacade {
       sourceData?.manufacturerName ?? null,
       sourceData?.zoneName ?? null,
       this.currentLanguageSignal(),
-      sourceData?.relatedItems ?? []
+      sourceData?.relatedItems ?? [],
+      sourceData?.photos ?? [],
+      sourceData?.imageTags ?? []
     );
   });
 
@@ -43,6 +52,7 @@ export class ParkItemDetailStateFacade {
     private readonly parksApiService: ParksApiService,
     private readonly manufacturersApiService: ManufacturersApiService,
     private readonly parkZonesApiService: ParkZonesApiService,
+    private readonly imagesApiService: ImagesApiService,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -62,7 +72,9 @@ export class ParkItemDetailStateFacade {
           park: null,
           manufacturerName: null,
           zoneName: null,
-          relatedItems: []
+          relatedItems: [],
+          photos: [],
+          imageTags: []
         });
 
         this.loadRelatedData(item);
@@ -85,6 +97,40 @@ export class ParkItemDetailStateFacade {
       error: (error: unknown) => {
         console.error('Error loading park for item', error);
         this.screenStateStore.setError('parkItems.detail.errorMessage', this.screenStateStore.data());
+      }
+    });
+
+    if (!item.id) {
+      return;
+    }
+
+    this.imagesApiService.getAdminImageTags().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (imageTags: ImageTagDto[]) => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          imageTags
+        }));
+      },
+      error: () => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          imageTags: []
+        }));
+      }
+    });
+
+    this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, item.id, ImageCategory.ATTRACTION).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (photos: ImageDto[]) => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          photos
+        }));
+      },
+      error: () => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          photos: []
+        }));
       }
     });
 

@@ -16,6 +16,7 @@ export class ImageDisplayComponent implements OnChanges {
   @Input() imgClass: string = '';
   @Input() placeholderClass: string = '';
   @Input() placeholderIconClass: string = 'pi pi-image';
+  @Input() loading: 'eager' | 'lazy' = 'lazy';
 
   imageLoadFailed: boolean = false;
 

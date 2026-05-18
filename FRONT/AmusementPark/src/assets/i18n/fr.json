@@ -385,7 +385,18 @@
           "uploadSuccess": "{{count}} photo(s) importée(s) avec succès.",
           "uploadError": "Une erreur est survenue après {{count}} import(s).",
           "currentSetSuccess": "La photo courante a été mise à jour.",
-          "deleteSuccess": "La photo a été supprimée."
+          "deleteSuccess": "La photo a été supprimée.",
+          "categoryLabel": "Catégorie photo",
+          "descriptionLabel": "Description",
+          "categorized": "Catégorisée",
+          "categories": {
+            "gallery": "Galerie",
+            "entrance": "Entrée",
+            "exit": "Sortie",
+            "layout": "Layout",
+            "queue": "File d’attente",
+            "station": "Station"
+          }
         },
         "attractionConfigurationTitle": "Configuration de l’attraction",
         "attractionConfigurationHelp": "Cette section n’apparaît que pour les éléments de catégorie Attraction. Tous les champs sont optionnels.",
@@ -975,6 +986,29 @@
       "moderate": "Modéré",
       "soaking": "Très mouillant",
       "extremeSoaking": "Extrêmement mouillant"
+    },
+    "photos": {
+      "kicker": "Photos",
+      "title": "Photos",
+      "subtitle": "Filtre les visuels par catégorie pour consulter uniquement les photos utiles.",
+      "current": "Actuelle",
+      "categories": {
+        "gallery": "Galerie",
+        "entrance": "Entrée",
+        "exit": "Sortie",
+        "layout": "Layout",
+        "queue": "File d’attente",
+        "station": "Station"
+      },
+      "controls": {
+        "category": "Catégorie de photo",
+        "allCategories": "Toutes",
+        "displayCount": "Nombre affiché",
+        "count": "{{count}}",
+        "all": "Tout",
+        "previous": "Photo précédente",
+        "next": "Photo suivante"
+      }
     }
   },
   "publicNavigation": {

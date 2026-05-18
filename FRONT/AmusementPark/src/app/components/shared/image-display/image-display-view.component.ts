@@ -15,6 +15,7 @@ export class ImageDisplayViewComponent {
   @Input() imgClass: string = '';
   @Input() placeholderClass: string = '';
   @Input() placeholderIconClass: string = 'pi pi-image';
+  @Input() loading: 'eager' | 'lazy' = 'lazy';
 
   @Output() imageError: EventEmitter<void> = new EventEmitter<void>();
 

@@ -1,3 +1,5 @@
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { MapMarker } from '@app/models/map/map-marker';
 import { AttractionAccessCondition } from '@app/models/parks/attraction-access-condition';
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
@@ -21,6 +23,8 @@ import {
   ParkItemDetailRowViewModel,
   ParkItemDetailSpecGroupViewModel,
   ParkItemDetailViewModel,
+  ParkItemPhotoViewModel,
+  ParkItemPhotoCategoryOptionViewModel,
   ParkItemLocationPointViewModel
 } from '../models/park-item-detail-view.model';
 
@@ -32,7 +36,9 @@ export function mapParkItemToDetailViewModel(
   manufacturerName: string | null,
   zoneName: string | null,
   currentLanguage: string,
-  relatedItems: ParkItem[] = []
+  relatedItems: ParkItem[] = [],
+  photos: ImageDto[] = [],
+  imageTags: ImageTagDto[] = []
 ): ParkItemDetailViewModel | null {
   if (!item) {
     return null;
@@ -44,6 +50,7 @@ export function mapParkItemToDetailViewModel(
   const specGroups: ParkItemDetailSpecGroupViewModel[] = buildSpecGroups(technicalRows, performanceRows, experienceRows);
   const locationPoints: ParkItemLocationPointViewModel[] = buildLocationPoints(item, currentLanguage);
   const hasPreciseLocations: boolean = locationPoints.some((point: ParkItemLocationPointViewModel) => !point.isGeneralFallback);
+  const galleryPhotos: ParkItemPhotoViewModel[] = buildPhotos(photos, imageTags);
 
   return {
     name: item.name?.trim() ?? '',
@@ -61,9 +68,12 @@ export function mapParkItemToDetailViewModel(
     status: trimOrNull(item.attractionDetails?.status),
     zoneName,
     subtype: trimOrNull(item.subtype),
-    spotlightRows: buildSpotlightRows(item, performanceRows, currentLanguage),
-    summaryRows: buildSummaryRows(item, park, zoneName, currentLanguage),
+    spotlightRows: buildSpotlightRows(item, performanceRows),
+    summaryRows: buildSummaryRows(item, park, zoneName),
     specGroups,
+    photos: galleryPhotos,
+    photoCategories: buildPhotoCategories(galleryPhotos),
+    heroPhoto: galleryPhotos.find((photo: ParkItemPhotoViewModel) => photo.isCurrent) ?? galleryPhotos[0] ?? null,
     accessConditions: buildAccessConditions(item, currentLanguage),
     locationPoints,
     mapMarkers: buildMapMarkers(locationPoints, item.name),
@@ -110,11 +120,8 @@ function buildPerformanceRows(item: ParkItem, currentLanguage: string): ParkItem
   const rows: ParkItemDetailRowViewModel[] = [];
 
   pushRow(rows, 'parkItems.fields.heightInMeters', formatNumberWithUnit(details?.heightInMeters, 'm'), null, 'pi pi-arrow-up');
-  pushRow(rows, 'parkItems.fields.heightInFeet', formatNumberWithUnit(details?.heightInFeet, 'ft'), null, 'pi pi-arrow-up-right');
   pushRow(rows, 'parkItems.fields.lengthInMeters', formatNumberWithUnit(details?.lengthInMeters, 'm'), null, 'pi pi-arrows-h');
-  pushRow(rows, 'parkItems.fields.lengthInFeet', formatNumberWithUnit(details?.lengthInFeet, 'ft'), null, 'pi pi-arrows-h');
   pushRow(rows, 'parkItems.fields.speedInKmH', formatNumberWithUnit(details?.speedInKmH, 'km/h'), null, 'pi pi-gauge');
-  pushRow(rows, 'parkItems.fields.speedInMph', formatNumberWithUnit(details?.speedInMph, 'mph'), null, 'pi pi-gauge');
   pushRow(rows, 'parkItems.fields.dropInMeters', formatNumberWithUnit(details?.dropInMeters, 'm'), null, 'pi pi-arrow-down');
   pushRow(rows, 'parkItems.fields.inversionCount', formatInteger(details?.inversionCount), null, 'pi pi-refresh');
   pushRow(rows, 'parkItems.fields.capacityPerHour', formatInteger(details?.capacityPerHour), null, 'pi pi-users');
@@ -149,7 +156,7 @@ function buildExperienceRows(item: ParkItem, currentLanguage: string): ParkItemD
   return rows;
 }
 
-function buildSummaryRows(item: ParkItem, park: Park | null, zoneName: string | null, currentLanguage: string): ParkItemDetailRowViewModel[] {
+function buildSummaryRows(item: ParkItem, park: Park | null, zoneName: string | null): ParkItemDetailRowViewModel[] {
   const rows: ParkItemDetailRowViewModel[] = [];
 
   pushRow(rows, 'parkItems.fields.category', '', getParkItemCategoryTranslationKey(item.category), 'pi pi-tags');
@@ -157,15 +164,12 @@ function buildSummaryRows(item: ParkItem, park: Park | null, zoneName: string | 
   pushRow(rows, 'parkItems.fields.subtype', item.subtype, null, 'pi pi-tag');
   pushRow(rows, 'parkItems.fields.park', park?.name, null, 'pi pi-map');
   pushRow(rows, 'parkItems.fields.zone', zoneName, null, 'pi pi-map-marker');
-  pushRow(rows, 'parkItems.fields.isVisible', formatBoolean(item.isVisible, currentLanguage), null, 'pi pi-eye');
-
   return rows;
 }
 
 function buildSpotlightRows(
   item: ParkItem,
-  performanceRows: ParkItemDetailRowViewModel[],
-  currentLanguage: string
+  performanceRows: ParkItemDetailRowViewModel[]
 ): ParkItemDetailRowViewModel[] {
   const details = item.attractionDetails;
   const preferredKeys: string[] = [
@@ -204,12 +208,99 @@ function buildSpotlightRows(
       valueKey: getParkItemTypeTranslationKey(item.type),
       iconClass: 'pi pi-star'
     },
-    {
-      labelKey: 'parkItems.fields.isVisible',
-      value: formatBoolean(item.isVisible, currentLanguage) ?? '',
-      iconClass: 'pi pi-eye'
-    }
   ].filter((row: ParkItemDetailRowViewModel) => row.value.length > 0 || !!row.valueKey);
+}
+
+
+
+function buildPhotos(photos: ImageDto[], imageTags: ImageTagDto[]): ParkItemPhotoViewModel[] {
+  const tagSlugById: Map<string, string> = new Map<string, string>(imageTags.map((tag: ImageTagDto) => [tag.id, tag.slug]));
+  return photos
+    .filter((photo: ImageDto) => photo.isPublished !== false)
+    .map((photo: ImageDto) => {
+      const firstKnownTag: string | undefined = photo.tagIds
+        ?.map((tagId: string) => tagSlugById.get(tagId) ?? tagId)
+        .find((tagSlug: string) => !!tagSlug);
+      const categoryKey: string = resolvePhotoCategoryKey(firstKnownTag);
+
+      return {
+        id: photo.id,
+        imageId: photo.id,
+        category: photo.category,
+        categoryKey,
+        categoryLabelKey: resolvePhotoCategoryLabelKey(categoryKey),
+        description: trimOrNull(photo.description),
+        alt: trimOrNull(photo.description) ?? trimOrNull(photo.originalFileName) ?? 'Park item photo',
+        isCurrent: photo.isCurrent
+      };
+    });
+}
+
+function buildPhotoCategories(photos: ParkItemPhotoViewModel[]): ParkItemPhotoCategoryOptionViewModel[] {
+  const countByCategoryKey: Map<string, number> = new Map<string, number>();
+
+  for (const photo of photos) {
+    countByCategoryKey.set(photo.categoryKey, (countByCategoryKey.get(photo.categoryKey) ?? 0) + 1);
+  }
+
+  return Array.from(countByCategoryKey.entries())
+    .map(([key, count]: [string, number]) => ({
+      key,
+      labelKey: resolvePhotoCategoryLabelKey(key),
+      count
+    }))
+    .sort((first: ParkItemPhotoCategoryOptionViewModel, second: ParkItemPhotoCategoryOptionViewModel) => {
+      return getPhotoCategoryOrder(first.key) - getPhotoCategoryOrder(second.key);
+    });
+}
+
+function resolvePhotoCategoryKey(tagIdOrSlug: string | undefined): string {
+  const normalizedValue: string = (tagIdOrSlug ?? '').toLowerCase();
+
+  if (normalizedValue.includes('entrance')) {
+    return 'entrance';
+  }
+
+  if (normalizedValue.includes('exit')) {
+    return 'exit';
+  }
+
+  if (normalizedValue.includes('layout')) {
+    return 'layout';
+  }
+
+  if (normalizedValue.includes('queue')) {
+    return 'queue';
+  }
+
+  if (normalizedValue.includes('station')) {
+    return 'station';
+  }
+
+  return 'gallery';
+}
+
+function resolvePhotoCategoryLabelKey(categoryKey: string): string {
+  return `parkItems.photos.categories.${categoryKey}`;
+}
+
+function getPhotoCategoryOrder(categoryKey: string): number {
+  switch (categoryKey) {
+    case 'gallery':
+      return 0;
+    case 'entrance':
+      return 1;
+    case 'exit':
+      return 2;
+    case 'queue':
+      return 3;
+    case 'station':
+      return 4;
+    case 'layout':
+      return 5;
+    default:
+      return 99;
+  }
 }
 
 function buildAccessConditions(item: ParkItem, currentLanguage: string): ParkItemAccessConditionViewModel[] {

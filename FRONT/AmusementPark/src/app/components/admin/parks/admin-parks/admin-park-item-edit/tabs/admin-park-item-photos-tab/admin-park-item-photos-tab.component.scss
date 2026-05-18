@@ -54,3 +54,16 @@
 :host ::ng-deep .photo-history-preview--placeholder {
   object-fit: initial;
 }
+
+.photo-upload-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  gap: 1rem;
+  align-items: end;
+}
+
+@media (max-width: 768px) {
+  .photo-upload-grid {
+    grid-template-columns: 1fr;
+  }
+}
