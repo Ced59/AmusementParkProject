@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { MapMarker } from '@app/models/map/map-marker';
+import { createLeafletMarkerIcon } from '@ui/maps/leaflet';
 import type { LeafletEvent, LeafletMouseEvent, Marker as LeafletMarker } from 'leaflet';
 
 @Component({
@@ -248,7 +249,8 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
     for (const m of this.markers) {
       const marker = this.L.marker([m.lat, m.lng], {
-        draggable: this.editable && (this.markers.length <= 1)
+        draggable: this.editable && (this.markers.length <= 1),
+        icon: createLeafletMarkerIcon(this.L, m.iconKind)
       });
 
       if (m.title || m.subtitle) {

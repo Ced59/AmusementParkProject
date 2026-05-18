@@ -60,6 +60,7 @@ export class ParkListMapComponent {
       lng: point.longitude,
       title: point.name,
       subtitle: point.locationLine ?? point.countryName ?? point.countryCode ?? null,
+      iconKind: 'park',
       details: this.buildMarkerDetails(point),
       actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
         latitude: point.latitude,

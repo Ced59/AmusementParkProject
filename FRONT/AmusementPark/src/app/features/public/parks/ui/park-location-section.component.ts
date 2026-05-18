@@ -45,6 +45,7 @@ export class ParkLocationSectionComponent {
       lng: this.park.longitude,
       title: this.park.name,
       subtitle: this.park.locationLine,
+      iconKind: 'park',
       actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
         latitude: this.park.latitude,
         longitude: this.park.longitude,

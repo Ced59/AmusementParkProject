@@ -15,6 +15,7 @@ import {
   resolveParkItemDescription
 } from '@shared/utils/display/park-item-presentation.helpers';
 import { getLocalizedBooleanDisplay, normalizeTranslationSegment } from '@shared/utils/display/display-label.helpers';
+import { resolveLocationMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { resolveLocalizedText } from '@shared/utils/localization/localized-text.helpers';
 import { mapParkItemToCardViewModel } from './park-item-card.mapper';
 import { ParkItemCardViewModel } from '../models/park-item-card.model';
@@ -521,6 +522,7 @@ function buildMapMarkers(points: ParkItemLocationPointViewModel[], itemName: str
     lng: point.longitude,
     title: itemName,
     subtitle: point.coordinatesLabel,
+    iconKind: resolveLocationMarkerIconKind(point.id),
     details: []
   }));
 }

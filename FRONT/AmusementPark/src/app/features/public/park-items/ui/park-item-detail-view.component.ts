@@ -8,6 +8,7 @@ import { ImageDisplayComponent } from '@app/components/shared/image-display/imag
 import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
+import { resolveLocationMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { MapMarker } from '@app/models/map/map-marker';
 import { ParkItemDetailViewModel } from '../models/park-item-detail-view.model';
 import { UiItemCardComponent } from '@ui/cards';
@@ -58,6 +59,7 @@ export class ParkItemDetailViewComponent {
         lng: point.longitude,
         title: pointLabel,
         subtitle: currentDetail.name,
+        iconKind: resolveLocationMarkerIconKind(point.id),
         details: [],
         actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
           latitude: point.latitude,

@@ -1,3 +1,40 @@
+export type MapMarkerIconKind =
+  | 'park'
+  | 'site'
+  | 'entrance'
+  | 'exit'
+  | 'fastPassEntrance'
+  | 'accessibleEntrance'
+  | 'attraction'
+  | 'rollerCoaster'
+  | 'waterRide'
+  | 'darkRide'
+  | 'flatRide'
+  | 'familyRide'
+  | 'thrillRide'
+  | 'transportRide'
+  | 'walkThrough'
+  | 'playground'
+  | 'interactiveExperience'
+  | 'observationRide'
+  | 'animal'
+  | 'show'
+  | 'restaurant'
+  | 'snack'
+  | 'shop'
+  | 'hotel'
+  | 'game'
+  | 'meetAndGreet'
+  | 'transport'
+  | 'station'
+  | 'toilets'
+  | 'firstAid'
+  | 'information'
+  | 'locker'
+  | 'parking'
+  | 'service'
+  | 'other';
+
 export interface MapMarker {
   id: string;
   lat: number;
@@ -8,4 +45,5 @@ export interface MapMarker {
   details?: string[];
   actionLabel?: string | null;
   actionUrl?: string | null;
+  iconKind?: MapMarkerIconKind | null;
 }

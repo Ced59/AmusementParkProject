@@ -2,6 +2,7 @@ import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import {
   ParkItemsMapFilterOptionViewModel,
   ParkItemsMapMarkerViewModel,
@@ -44,6 +45,11 @@ function mapParkItemToMarker(
     lng: item.longitude,
     title: item.name,
     subtitle: item.category,
+    iconKind: resolveParkItemMarkerIconKind({
+      category: item.category,
+      type: item.type,
+      subtype: item.subtype ?? null
+    }),
     details,
     category: item.category,
     zoneId: item.zoneId ?? null
