@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed, signal } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
 import { MapMarker } from '@app/models/map/map-marker';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
+import { ParkRegionFilter, ParkRegionFilterOption } from '@shared/models/geo/world-region-filter.model';
 import { UiChipComponent } from '@ui/primitives';
 import { UiMapShellComponent, UiMapSlotComponent } from '@ui/maps';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
@@ -15,16 +16,30 @@ import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
   imports: [LeafletMapComponent, TranslateModule, UiChipComponent, UiMapShellComponent, UiMapSlotComponent]
 })
 export class ParkListMapComponent {
-  @Input() mapState!: Signal<ScreenState<ParkMapPointViewModel[], string>>;
-  @Input() mapPoints!: Signal<ParkMapPointViewModel[]>;
-  @Input() selectedParkId!: Signal<string | null>;
+  private readonly emptyMapState = signal<ScreenState<ParkMapPointViewModel[], string>>({ kind: 'ready', data: [] });
+  private readonly emptyMapPoints = signal<ParkMapPointViewModel[]>([]);
+  private readonly emptySelectedParkId = signal<string | null>(null);
+  private readonly emptySelectedRegion = signal<ParkRegionFilter | null>(null);
+
+  @Input() mapState: Signal<ScreenState<ParkMapPointViewModel[], string>> = this.emptyMapState.asReadonly();
+  @Input() mapPoints: Signal<ParkMapPointViewModel[]> = this.emptyMapPoints.asReadonly();
+  @Input() selectedParkId: Signal<string | null> = this.emptySelectedParkId.asReadonly();
+  @Input() selectedRegion: Signal<ParkRegionFilter | null> = this.emptySelectedRegion.asReadonly();
   @Output() parkSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
+  @Output() regionFilterChanged: EventEmitter<ParkRegionFilter | null> = new EventEmitter<ParkRegionFilter | null>();
 
-  get hasMapPoints(): boolean {
-    return this.mapPoints().length > 0;
-  }
+  readonly regionFilters: ParkRegionFilterOption[] = [
+    { value: null, labelKey: 'parks.map.regionFilters.all' },
+    { value: 'europe', labelKey: 'parks.map.regionFilters.europe' },
+    { value: 'north-america', labelKey: 'parks.map.regionFilters.northAmerica' },
+    { value: 'south-america', labelKey: 'parks.map.regionFilters.southAmerica' },
+    { value: 'orient', labelKey: 'parks.map.regionFilters.orient' },
+    { value: 'africa', labelKey: 'parks.map.regionFilters.africa' },
+  ];
 
-  get mapCenter(): [number, number] {
+  readonly hasMapPoints = computed<boolean>(() => this.mapPoints().length > 0);
+
+  readonly mapCenter = computed<[number, number]>(() => {
     const points: ParkMapPointViewModel[] = this.mapPoints();
 
     if (points.length === 0) {
@@ -35,17 +50,30 @@ export class ParkListMapComponent {
     const totalLongitude: number = points.reduce((sum: number, point: ParkMapPointViewModel) => sum + point.longitude, 0);
 
     return [totalLatitude / points.length, totalLongitude / points.length];
-  }
+  });
 
-  get mapMarkers(): MapMarker[] {
+  readonly mapMarkers = computed<MapMarker[]>(() => {
     return this.mapPoints().map((point: ParkMapPointViewModel) => ({
       id: point.id,
       lat: point.latitude,
       lng: point.longitude,
       title: point.name,
-      subtitle: point.locationLine ?? point.countryCode ?? null,
+      subtitle: point.locationLine ?? point.countryName ?? point.countryCode ?? null,
       details: this.buildMarkerDetails(point),
+      actionUrl: this.buildNavigationUrl(point),
+      actionLabel: this.translateService.instant('parks.map.navigate'),
     }));
+  });
+
+  constructor(private readonly translateService: TranslateService) {
+  }
+
+  onRegionFilterClick(region: ParkRegionFilter | null): void {
+    this.regionFilterChanged.emit(region);
+  }
+
+  isRegionSelected(region: ParkRegionFilter | null): boolean {
+    return this.selectedRegion() === region;
   }
 
   onMarkerClick(marker: MapMarker): void {
@@ -61,5 +89,9 @@ export class ParkListMapComponent {
 
     details.push(point.coordinatesLine);
     return details;
+  }
+
+  private buildNavigationUrl(point: ParkMapPointViewModel): string {
+    return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${point.latitude},${point.longitude}`)}`;
   }
 }

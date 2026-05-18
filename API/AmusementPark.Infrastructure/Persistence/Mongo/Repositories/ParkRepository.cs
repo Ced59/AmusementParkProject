@@ -3,6 +3,7 @@ using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.ParkZones.Results;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -101,19 +102,18 @@ public sealed class ParkRepository : IParkRepository
             .ToList();
     }
 
-    public async Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken)
+    public Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken)
+    {
+        ParkSearchCriteria criteria = new ParkSearchCriteria(searchTerm, Array.Empty<string>(), Array.Empty<string>());
+        return this.GetVisibleMapPointsAsync(criteria, cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(ParkSearchCriteria criteria, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true)
             & Builders<ParkDocument>.Filter.Ne(document => document.Latitude, null)
-            & Builders<ParkDocument>.Filter.Ne(document => document.Longitude, null);
-
-        if (!string.IsNullOrWhiteSpace(searchTerm))
-        {
-            string escapedSearchTerm = Regex.Escape(searchTerm.Trim());
-            filter &= Builders<ParkDocument>.Filter.Regex(
-                document => document.Name,
-                new BsonRegularExpression(escapedSearchTerm, "i"));
-        }
+            & Builders<ParkDocument>.Filter.Ne(document => document.Longitude, null)
+            & this.BuildCriteriaFilter(criteria);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
             .SortBy(document => document.Name)
@@ -214,17 +214,16 @@ public sealed class ParkRepository : IParkRepository
             .Count();
     }
 
-    public async Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
+    public Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
     {
-        string escapedName = Regex.Escape(name.Trim());
-        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Regex(
-            document => document.Name,
-            new BsonRegularExpression(escapedName, "i"));
+        ParkSearchCriteria criteria = new ParkSearchCriteria(name, Array.Empty<string>(), Array.Empty<string>());
+        return this.SearchAsync(criteria, page, pageSize, includeHidden, cancellationToken);
+    }
 
-        if (!includeHidden)
-        {
-            filter &= Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
-        }
+    public async Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden)
+            & this.BuildCriteriaFilter(criteria);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
@@ -304,6 +303,72 @@ public sealed class ParkRepository : IParkRepository
 
         ParkDocument? updated = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
         return updated?.ToDomain();
+    }
+
+
+    private FilterDefinition<ParkDocument> BuildCriteriaFilter(ParkSearchCriteria? criteria)
+    {
+        if (criteria is null || !criteria.HasAnyFilter)
+        {
+            return Builders<ParkDocument>.Filter.Empty;
+        }
+
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Empty;
+        List<string> regionCountryCodes = NormalizeCountryCodes(criteria.RegionCountryCodes);
+        if (regionCountryCodes.Count > 0)
+        {
+            filter &= Builders<ParkDocument>.Filter.In(document => document.CountryCode, regionCountryCodes);
+        }
+
+        FilterDefinition<ParkDocument>? searchFilter = this.BuildSearchTermFilter(criteria);
+        if (searchFilter is not null)
+        {
+            filter &= searchFilter;
+        }
+
+        return filter;
+    }
+
+    private FilterDefinition<ParkDocument>? BuildSearchTermFilter(ParkSearchCriteria criteria)
+    {
+        string normalizedTerm = (criteria.SearchTerm ?? string.Empty).Trim();
+        List<string> matchingCountryCodes = NormalizeCountryCodes(criteria.MatchingCountryCodes);
+
+        if (normalizedTerm.Length == 0 && matchingCountryCodes.Count == 0)
+        {
+            return null;
+        }
+
+        List<FilterDefinition<ParkDocument>> filters = new List<FilterDefinition<ParkDocument>>();
+
+        if (normalizedTerm.Length > 0)
+        {
+            string escapedTerm = Regex.Escape(normalizedTerm);
+            BsonRegularExpression expression = new BsonRegularExpression(escapedTerm, "i");
+            filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.Name, expression));
+            filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.City, expression));
+            filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.CountryCode, expression));
+            filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.Street, expression));
+            filters.Add(Builders<ParkDocument>.Filter.Regex(document => document.PostalCode, expression));
+        }
+
+        if (matchingCountryCodes.Count > 0)
+        {
+            filters.Add(Builders<ParkDocument>.Filter.In(document => document.CountryCode, matchingCountryCodes));
+        }
+
+        return filters.Count == 0
+            ? null
+            : Builders<ParkDocument>.Filter.Or(filters);
+    }
+
+    private static List<string> NormalizeCountryCodes(IEnumerable<string> countryCodes)
+    {
+        return countryCodes
+            .Where(static countryCode => !string.IsNullOrWhiteSpace(countryCode))
+            .Select(static countryCode => countryCode.Trim().ToUpperInvariant())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
     }
 
     private FilterDefinition<ParkDocument> BuildVisibleSelectionFilter(IReadOnlyCollection<string> excludedParkIds)

@@ -24,6 +24,8 @@ import type { LeafletEvent, LeafletMouseEvent, Marker as LeafletMarker } from 'l
 export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   private resizeObserver: ResizeObserver | null = null;
+  private viewportUpdateTimeoutId: number | null = null;
+  private viewportStabilizationTimeoutId: number | null = null;
 
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
 
@@ -99,33 +101,30 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       return;
     }
 
-    if (changes['markers']) {
+    const markersChanged: boolean = Boolean(changes['markers']);
+    const selectedMarkerChanged: boolean = Boolean(changes['selectedMarkerId']);
+    const fitBoundsChanged: boolean = Boolean(changes['fitBounds']);
+    const centerChanged: boolean = Boolean(changes['center'] && !changes['center'].firstChange);
+    const zoomChanged: boolean = Boolean(changes['zoom'] && !changes['zoom'].firstChange);
+
+    if (markersChanged) {
       this.refreshMarkers();
-
-      if (!this.focusSelectedMarker()) {
-        this.fitMapToMarkersIfNeeded();
-      }
-
-      this.refreshMapSize();
     }
 
-    if (changes['center'] && !changes['center'].firstChange) {
-      this.map.setView(this.center, this.zoom);
-      this.refreshMapSize();
+    if (markersChanged || selectedMarkerChanged || fitBoundsChanged) {
+      this.scheduleViewportUpdate();
+      return;
     }
 
-    if (changes['zoom'] && !changes['zoom'].firstChange) {
-      this.map.setZoom(this.zoom);
-      this.refreshMapSize();
-    }
-
-    if (changes['selectedMarkerId'] && !changes['selectedMarkerId'].firstChange) {
-      this.focusSelectedMarker();
+    if (centerChanged || zoomChanged) {
+      this.applyDefaultViewport();
       this.refreshMapSize();
     }
   }
 
   ngOnDestroy(): void {
+    this.clearViewportUpdateTimers();
+
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
       this.resizeObserver = null;
@@ -165,12 +164,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     this.markerLayer = this.L.layerGroup().addTo(this.map);
 
     this.refreshMarkers();
-
-    if (!this.focusSelectedMarker()) {
-      this.fitMapToMarkersIfNeeded();
-    }
-
-    this.refreshMapSize();
+    this.scheduleViewportUpdate();
 
     if (typeof ResizeObserver !== 'undefined') {
       this.resizeObserver = new ResizeObserver((): void => {
@@ -182,6 +176,63 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     if (this.editable) {
       this.map.on('click', (event: LeafletMouseEvent) => this.handleMapClick(event));
     }
+  }
+
+  private scheduleViewportUpdate(): void {
+    if (!this.map) {
+      return;
+    }
+
+    this.clearViewportUpdateTimers();
+
+    this.viewportUpdateTimeoutId = window.setTimeout((): void => {
+      this.viewportUpdateTimeoutId = null;
+      this.applyMarkerViewport();
+
+      this.viewportStabilizationTimeoutId = window.setTimeout((): void => {
+        this.viewportStabilizationTimeoutId = null;
+        this.applyMarkerViewport();
+      }, 120);
+    }, 0);
+  }
+
+  private clearViewportUpdateTimers(): void {
+    if (this.viewportUpdateTimeoutId !== null) {
+      window.clearTimeout(this.viewportUpdateTimeoutId);
+      this.viewportUpdateTimeoutId = null;
+    }
+
+    if (this.viewportStabilizationTimeoutId !== null) {
+      window.clearTimeout(this.viewportStabilizationTimeoutId);
+      this.viewportStabilizationTimeoutId = null;
+    }
+  }
+
+  private applyMarkerViewport(): void {
+    if (!this.map) {
+      return;
+    }
+
+    this.map.invalidateSize();
+
+    if (this.focusSelectedMarker()) {
+      return;
+    }
+
+    this.fitMapToMarkersIfNeeded();
+  }
+
+  private applyDefaultViewport(): void {
+    if (!this.map) {
+      return;
+    }
+
+    if (this.fitBounds && this.markers.length > 0) {
+      this.scheduleViewportUpdate();
+      return;
+    }
+
+    this.map.setView(this.center, this.zoom);
   }
 
   private refreshMarkers(): void {
@@ -263,11 +314,24 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       .map((line: string) => `<span>${line}</span>`)
       .join('');
 
-    if (!lines) {
+    const actionLink: string = this.buildPopupAction(marker);
+
+    if (!lines && !actionLink) {
       return `<strong>${title}</strong>`;
     }
 
-    return `<strong>${title}</strong><div class="leaflet-map-popup__lines">${lines}</div>`;
+    return `<strong>${title}</strong><div class="leaflet-map-popup__lines">${lines}</div>${actionLink}`;
+  }
+
+  private buildPopupAction(marker: MapMarker): string {
+    const actionUrl: string = marker.actionUrl?.trim() ?? '';
+    const actionLabel: string = marker.actionLabel?.trim() ?? '';
+
+    if (!actionUrl || !actionLabel) {
+      return '';
+    }
+
+    return `<a class="leaflet-map-popup__action" href="${this.escapeHtml(actionUrl)}" target="_blank" rel="noopener noreferrer">${this.escapeHtml(actionLabel)}</a>`;
   }
 
   private escapeHtml(value: string): string {

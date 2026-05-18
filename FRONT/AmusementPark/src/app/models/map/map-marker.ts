@@ -6,4 +6,6 @@ export interface MapMarker {
   title?: string | null;
   subtitle?: string | null;
   details?: string[];
+  actionLabel?: string | null;
+  actionUrl?: string | null;
 }

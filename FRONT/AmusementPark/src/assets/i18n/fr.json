@@ -732,7 +732,17 @@
       "errorTitle": "Carte indisponible",
       "errorMessage": "Les points cartographiques n’ont pas pu être chargés.",
       "emptyTitle": "Aucun point disponible",
-      "emptyMessage": "Aucun parc visible avec coordonnées ne correspond à la recherche."
+      "emptyMessage": "Aucun parc visible avec coordonnées ne correspond à la recherche.",
+      "navigate": "Y aller",
+      "regionFilters": {
+        "all": "Tous",
+        "europe": "Europe",
+        "northAmerica": "Amérique Nord",
+        "southAmerica": "Amérique Sud",
+        "orient": "Orient",
+        "africa": "Afrique"
+      },
+      "regionFilterAriaLabel": "Filtrer les parcs par continent"
     },
     "results": {
       "badge": "Résultats",

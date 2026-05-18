@@ -1,8 +1,8 @@
 import { HomeFeaturedParkCardModel, HomeFeaturedParkMetricModel } from '@app/models/home/home-featured-park-card.model';
 import { HomeFeaturedParkCategoryCountModel, HomeFeaturedParkModel } from '@app/models/home/home-featured-park.model';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
+import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
-import { resolveLocalizedCountryName } from '@shared/utils/display/country-display.helpers';
 import { getParkItemCategoryTranslationKey, getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import { resolveLocalizedValue, stripHtml } from '@shared/utils/localization';
@@ -16,10 +16,11 @@ export function mapHomeFeaturedParkToCardModel(
   park: HomeFeaturedParkModel,
   currentLanguage: string,
   truncator: NaturalTextTruncatorService,
-  index: number
+  index: number,
+  countryDisplayService: CountryDisplayService
 ): HomeFeaturedParkCardModel {
   const plainDescription: string = stripHtml(resolveLocalizedValue(park.descriptions, currentLanguage) ?? null) ?? '';
-  const countryName: string | null = resolveLocalizedCountryName(park.countryCode, currentLanguage);
+  const countryName: string | null = countryDisplayService.resolveLocalizedCountryName(park.countryCode, currentLanguage);
   const city: string | null = normalizeOptionalString(park.city);
   const locationLine: string | null = buildLocationLine(city, countryName ?? park.countryCode ?? null);
   const normalizedName: string = normalizeOptionalString(park.name) ?? '';

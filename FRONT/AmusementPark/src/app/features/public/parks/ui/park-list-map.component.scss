@@ -1,3 +1,52 @@
 :host {
   display: block;
 }
+
+.parks-map__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.parks-map__filters {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.parks-map__filter {
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-pill);
+  background: color-mix(in srgb, var(--app-surface) 78%, transparent);
+  color: var(--app-text-muted);
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  padding: 0.5rem 0.78rem;
+  text-transform: uppercase;
+  transition: var(--app-transition);
+}
+
+.parks-map__filter:hover,
+.parks-map__filter--active {
+  border-color: color-mix(in srgb, var(--c-sky) 42%, var(--app-border));
+  background: color-mix(in srgb, var(--c-sky) 14%, transparent);
+  color: var(--c-sky);
+}
+
+.parks-map__filter--active {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--c-sky) 28%, transparent);
+}
+
+@media (max-width: 720px) {
+  .parks-map__actions,
+  .parks-map__filters {
+    justify-content: flex-start;
+  }
+}

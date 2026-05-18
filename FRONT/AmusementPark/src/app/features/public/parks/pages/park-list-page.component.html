@@ -7,11 +7,13 @@
   [visibleCountryCount]="visibleCountryCount"
   [selectedMapParkId]="selectedMapParkId"
   [selectedParkCard]="selectedParkCard"
+  [selectedRegion]="selectedRegion"
   [currentLang]="currentLang"
   [searchTerm]="searchTerm"
   (searchInputChanged)="onSearchInput($event)"
   (clearSearchClicked)="clearSearch()"
   (mapParkSelected)="onMapParkSelected($event)"
+  (regionFilterChanged)="onRegionFilterChanged($event)"
   (resultParkFocused)="onResultParkFocused($event)"
   (selectedParkCleared)="clearSelectedPark()"
   (pageChanged)="onPageChange($event)">

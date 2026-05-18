@@ -477,7 +477,7 @@ app-pagination {
 
 /* M07 refinements: the hero surface owns its visual spacing even when a surface padding utility is present. */
 .parks-hero.app-surface {
-  padding: clamp(2.7rem, 5.8vw, 4.75rem) clamp(1.65rem, 4.8vw, 3rem) clamp(2rem, 4.2vw, 3.25rem);
+  padding: clamp(3rem, 6.2vw, 5.1rem) clamp(2.25rem, 5.4vw, 3.65rem) clamp(2.25rem, 4.6vw, 3.55rem);
 }
 
 .parks-results__actions {
@@ -494,7 +494,7 @@ app-pagination {
 
 @media (max-width: 680px) {
   .parks-hero.app-surface {
-    padding: 2.25rem 1.35rem 1.85rem;
+    padding: 2.45rem 1.55rem 2rem;
   }
 
   .parks-results__actions {

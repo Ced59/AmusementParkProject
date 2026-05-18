@@ -21,3 +21,21 @@
   font-size: 0.82rem;
   line-height: 1.35;
 }
+
+:host ::ng-deep .leaflet-map-popup__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.65rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: #ff5a1f;
+  color: #000;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+:host ::ng-deep .leaflet-map-popup__action:hover {
+  background: #ff7a45;
+}

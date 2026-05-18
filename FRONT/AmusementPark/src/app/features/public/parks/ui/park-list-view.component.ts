@@ -5,6 +5,7 @@ import { PageStateComponent } from '@app/components/shared/page-state/page-state
 import { PaginationComponent } from '@app/components/shared/pagination/pagination.component';
 import { ParkCardComponent } from '@app/components/public/park-card/park-card.component';
 import { PaginationContract } from '@shared/models/contracts';
+import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective } from '@ui/primitives';
@@ -28,12 +29,14 @@ export class ParkListViewComponent {
   @Input() visibleCountryCount!: Signal<number>;
   @Input() selectedMapParkId!: Signal<string | null>;
   @Input() selectedParkCard!: Signal<ParkCardModel | null>;
+  @Input() selectedRegion!: Signal<ParkRegionFilter | null>;
   @Input() currentLang!: Signal<string>;
   @Input() searchTerm!: Signal<string>;
 
   @Output() searchInputChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() clearSearchClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() mapParkSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
+  @Output() regionFilterChanged: EventEmitter<ParkRegionFilter | null> = new EventEmitter<ParkRegionFilter | null>();
   @Output() resultParkFocused: EventEmitter<ParkCardModel> = new EventEmitter<ParkCardModel>();
   @Output() selectedParkCleared: EventEmitter<void> = new EventEmitter<void>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
@@ -48,6 +51,10 @@ export class ParkListViewComponent {
 
   onMapParkSelected(parkId: string | null): void {
     this.mapParkSelected.emit(parkId);
+  }
+
+  onRegionFilterChanged(region: ParkRegionFilter | null): void {
+    this.regionFilterChanged.emit(region);
   }
 
   onResultCardClick(event: MouseEvent, park: ParkCardModel): void {

@@ -7,6 +7,7 @@ import { SearchResultItem } from '@app/models/search/search-result-item';
 import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import { getSearchCategoryTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { SafeRichHtmlPipe } from '@shared/pipes';
+import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { UiButtonDirective } from '@ui/primitives';
 import { UiPrimitiveTone } from '@ui/primitives/models/ui-primitive-variant.model';
 
@@ -17,6 +18,9 @@ import { UiPrimitiveTone } from '@ui/primitives/models/ui-primitive-variant.mode
   imports: [ImageDisplayComponent, RouterLink, TranslateModule, SafeRichHtmlPipe, UiButtonDirective]
 })
 export class SearchResultCardComponent {
+  constructor(private readonly countryDisplayService: CountryDisplayService) {
+  }
+
   @Input() item: SearchResultItem | null = null;
   @Input() currentLang = 'en';
 
@@ -143,18 +147,7 @@ export class SearchResultCardComponent {
   }
 
   formatCountryName(countryCode: string | null | undefined): string | null {
-    const normalizedCode: string = countryCode?.trim().toUpperCase() ?? '';
-    if (normalizedCode.length !== 2) {
-      return normalizedCode || null;
-    }
-
-    try {
-      const displayNames: Intl.DisplayNames = new Intl.DisplayNames([this.currentLang], { type: 'region' });
-      return displayNames.of(normalizedCode) ?? normalizedCode;
-    }
-    catch {
-      return normalizedCode;
-    }
+    return this.countryDisplayService.resolveLocalizedCountryName(countryCode, this.currentLang);
   }
 
   formatCount(value: number | null | undefined): string {

@@ -5,6 +5,7 @@ import { debounceTime } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
+import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ParkListStateFacade } from '../state/park-list-state.facade';
 import { ParkListViewComponent } from '../ui/park-list-view.component';
@@ -27,6 +28,7 @@ export class ParkListPageComponent implements OnInit {
   protected readonly visibleCountryCount = this.stateFacade.visibleCountryCount;
   protected readonly selectedMapParkId = this.stateFacade.selectedParkId;
   protected readonly selectedParkCard = this.stateFacade.selectedParkCard;
+  protected readonly selectedRegion = this.stateFacade.selectedRegion;
   protected readonly currentLang = signal<string>('en');
   protected readonly searchTerm = signal<string>('');
 
@@ -53,12 +55,14 @@ export class ParkListPageComponent implements OnInit {
         const language: string = params.get('lang') ?? 'en';
         this.currentLang.set(language);
         this.stateFacade.setCurrentLanguage(language);
+        this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
       });
     }
 
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
       this.currentLang.set(language);
       this.stateFacade.setCurrentLanguage(language);
+      this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
     });
 
     this.searchSubject.pipe(
@@ -66,12 +70,12 @@ export class ParkListPageComponent implements OnInit {
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((term: string) => {
       this.stateFacade.clearSelectedPark();
-      this.stateFacade.loadVisibleMapPoints(term);
-      this.stateFacade.loadParks(1, this.stateFacade.pageSize(), term);
+      this.stateFacade.loadVisibleMapPoints(term, this.selectedRegion());
+      this.stateFacade.loadParks(1, this.stateFacade.pageSize(), term, this.selectedRegion());
     });
 
-    this.stateFacade.loadVisibleMapPoints(this.searchTerm());
-    this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm());
+    this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
+    this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), this.selectedRegion());
   }
 
   onSearchInput(value: string): void {
@@ -88,7 +92,14 @@ export class ParkListPageComponent implements OnInit {
   onPageChange(event: { page?: number; rows?: number }): void {
     const page: number = (event.page ?? 0) + 1;
     const rows: number = event.rows ?? this.stateFacade.pageSize();
-    this.stateFacade.loadParks(page, rows, this.searchTerm());
+    this.stateFacade.loadParks(page, rows, this.searchTerm(), this.selectedRegion());
+  }
+
+  onRegionFilterChanged(region: ParkRegionFilter | null): void {
+    this.stateFacade.setSelectedRegion(region);
+    this.stateFacade.clearSelectedPark();
+    this.stateFacade.loadVisibleMapPoints(this.searchTerm(), region);
+    this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), region);
   }
 
   onMapParkSelected(parkId: string | null): void {

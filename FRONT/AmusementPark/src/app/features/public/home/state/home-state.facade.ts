@@ -12,6 +12,7 @@ import { HomeStatsModel } from '@app/models/home/home-stats.model';
 import { HomeFeaturedParkCardModel } from '@app/models/home/home-featured-park-card.model';
 import { HomeFeaturedParkModel } from '@app/models/home/home-featured-park.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
+import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { mapArray, mapParkToCardModel } from '@shared/utils/mapping';
@@ -65,6 +66,7 @@ export class HomeStateFacade {
     private readonly searchApiService: SearchApiService,
     private readonly homeApiService: HomeApiService,
     private readonly textTruncator: NaturalTextTruncatorService,
+    private readonly countryDisplayService: CountryDisplayService,
     private readonly destroyRef: DestroyRef
   ) {
     this.searchStateStore.setReady({
@@ -98,7 +100,7 @@ export class HomeStateFacade {
 
     this.parksApiService.getRandomVisibleParks(4).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: Park[]) => {
-        const heroParks: ParkCardModel[] = mapArray(response, (park: Park) => mapParkToCardModel(park, currentLanguage));
+        const heroParks: ParkCardModel[] = mapArray(response, (park: Park) => mapParkToCardModel(park, currentLanguage, this.countryDisplayService));
         this.setHeroParks(heroParks);
         this.loadHomeFeaturedParks(currentLanguage, heroParks.map((park: ParkCardModel) => park.id).filter((parkId: string | null): parkId is string => !!parkId));
       },
@@ -179,7 +181,7 @@ export class HomeStateFacade {
     this.homeApiService.getFeaturedParks(excludedParkIds, 3).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: HomeFeaturedParkModel[]) => {
         const parks: HomeFeaturedParkCardModel[] = response.map((park: HomeFeaturedParkModel, index: number) =>
-          mapHomeFeaturedParkToCardModel(park, currentLanguage, this.textTruncator, index));
+          mapHomeFeaturedParkToCardModel(park, currentLanguage, this.textTruncator, index, this.countryDisplayService));
         const viewModel: HomeFeaturedViewModel = { parks };
 
         if (parks.length === 0) {

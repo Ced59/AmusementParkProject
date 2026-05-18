@@ -732,7 +732,17 @@
       "errorTitle": "Kaart niet beschikbaar",
       "errorMessage": "De kaartpunten konden niet worden geladen.",
       "emptyTitle": "Geen punt beschikbaar",
-      "emptyMessage": "Geen zichtbaar park met coördinaten komt overeen met deze zoekopdracht."
+      "emptyMessage": "Geen zichtbaar park met coördinaten komt overeen met deze zoekopdracht.",
+      "navigate": "Route openen",
+      "regionFilters": {
+        "all": "Alles",
+        "europe": "Europa",
+        "northAmerica": "Noord-Amerika",
+        "southAmerica": "Zuid-Amerika",
+        "orient": "Oriënt",
+        "africa": "Afrika"
+      },
+      "regionFilterAriaLabel": "Parken filteren op continent"
     },
     "results": {
       "badge": "Resultaten",

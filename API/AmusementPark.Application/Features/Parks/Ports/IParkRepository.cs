@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Parks.Ports;
@@ -39,6 +40,11 @@ public interface IParkRepository
     Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne les parcs visibles publiquement disposant de coordonnées pour une carte selon des critères unifiés.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(ParkSearchCriteria criteria, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Retourne une sélection aléatoire de parcs visibles publiquement.
     /// </summary>
     Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken);
@@ -67,6 +73,11 @@ public interface IParkRepository
     /// Recherche des parcs par nom.
     /// </summary>
     Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Recherche des parcs par critères publics unifiés.
+    /// </summary>
+    Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken);
 
     /// <summary>
     /// Recherche des parcs par position.

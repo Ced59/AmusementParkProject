@@ -2,6 +2,7 @@ export interface ParkMapPointViewModel {
   id: string;
   name: string;
   countryCode: string | null;
+  countryName: string | null;
   city: string | null;
   street: string | null;
   postalCode: string | null;

@@ -4,23 +4,38 @@
   kickerLabelKey="parks.map.badge"
   titleKey="parks.map.title"
   subtitleKey="parks.map.subtitle">
-  <app-ui-chip uiMapShellActions tone="sky" iconClass="pi pi-eye">
-    {{ 'parks.map.visiblePins' | translate:{ count: mapPoints().length } }}
-  </app-ui-chip>
+  <div uiMapShellActions class="parks-map__actions">
+    <div class="parks-map__filters" [attr.aria-label]="'parks.map.regionFilterAriaLabel' | translate">
+      @for (filter of regionFilters; track filter.labelKey) {
+        <button
+          type="button"
+          class="parks-map__filter"
+          [class.parks-map__filter--active]="isRegionSelected(filter.value)"
+          [attr.aria-pressed]="isRegionSelected(filter.value)"
+          (click)="onRegionFilterClick(filter.value)">
+          {{ filter.labelKey | translate }}
+        </button>
+      }
+    </div>
+
+    <app-ui-chip tone="sky" iconClass="pi pi-eye">
+      {{ 'parks.map.visiblePins' | translate:{ count: mapPoints().length } }}
+    </app-ui-chip>
+  </div>
 
   <app-ui-map-slot
     uiMapShellMap
-    [available]="hasMapPoints || mapState().kind === 'loading' || mapState().kind === 'error'"
+    [available]="hasMapPoints() || mapState().kind === 'loading' || mapState().kind === 'error'"
     minHeight="24rem"
     placeholderTitleKey="parks.map.emptyTitle"
     placeholderMessageKey="parks.map.emptyMessage">
-    @if (mapState().kind === 'loading' && !hasMapPoints) {
+    @if (mapState().kind === 'loading' && !hasMapPoints()) {
       <div class="parks-map__state parks-map__state--loading">
         <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
         <strong>{{ 'parks.map.loadingTitle' | translate }}</strong>
         <span>{{ 'parks.map.loadingMessage' | translate }}</span>
       </div>
-    } @else if (mapState().kind === 'error' && !hasMapPoints) {
+    } @else if (mapState().kind === 'error' && !hasMapPoints()) {
       <div class="parks-map__state parks-map__state--error">
         <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
         <strong>{{ 'parks.map.errorTitle' | translate }}</strong>
@@ -28,10 +43,10 @@
       </div>
     } @else {
       <app-leaflet-map
-        [center]="mapCenter"
+        [center]="mapCenter()"
         [zoom]="5"
         [fitBounds]="true"
-        [markers]="mapMarkers"
+        [markers]="mapMarkers()"
         [selectedMarkerId]="selectedParkId()"
         (markerClick)="onMarkerClick($event)">
       </app-leaflet-map>

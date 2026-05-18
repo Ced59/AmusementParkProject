@@ -9,6 +9,7 @@ import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
+import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { PARKS_API_ENDPOINTS } from './parks-api-endpoints';
 
 interface ParkWriteRequest {
@@ -43,8 +44,8 @@ export class ParksApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getParksPaginated(page: number, size: number, visibleOnly: boolean = false): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly)}`;
+  getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null): Observable<ParksApiResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly, region)}`;
     return this.http.get<ParksApiResponse>(url);
   }
 
@@ -53,9 +54,9 @@ export class ParksApiService {
     return this.http.get<Park[]>(url);
   }
 
-  getVisibleParkMapPoints(name: string | null = null): Observable<ParkMapPoint[]> {
-    const normalizedName: string | null = name?.trim() || null;
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedName)}`;
+  getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null): Observable<ParkMapPoint[]> {
+    const normalizedQuery: string | null = query?.trim() || null;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedQuery, region)}`;
     return this.http.get<ParkMapPoint[]>(url);
   }
 
@@ -64,8 +65,8 @@ export class ParksApiService {
     return this.http.get<Park>(url);
   }
 
-  searchParks(name: string, page: number, size: number, visibleOnly: boolean = false): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(name, page, size, visibleOnly)}`;
+  searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null): Observable<ParksApiResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(query, page, size, visibleOnly, region)}`;
     return this.http.get<ParksApiResponse>(url);
   }
 

@@ -52,7 +52,9 @@
     [mapState]="mapState"
     [mapPoints]="visibleMapPoints"
     [selectedParkId]="selectedMapParkId"
-    (parkSelected)="onMapParkSelected($event)">
+    [selectedRegion]="selectedRegion"
+    (parkSelected)="onMapParkSelected($event)"
+    (regionFilterChanged)="onRegionFilterChanged($event)">
   </app-park-list-map>
 
   <section class="public-panel parks-results" appUiSurface="panel" appUiSurfacePadding="compact">

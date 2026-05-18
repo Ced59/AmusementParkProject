@@ -732,7 +732,17 @@
       "errorTitle": "Map unavailable",
       "errorMessage": "The map points could not be loaded.",
       "emptyTitle": "No point available",
-      "emptyMessage": "No visible park with coordinates matches this search."
+      "emptyMessage": "No visible park with coordinates matches this search.",
+      "navigate": "Get directions",
+      "regionFilters": {
+        "all": "All",
+        "europe": "Europe",
+        "northAmerica": "North America",
+        "southAmerica": "South America",
+        "orient": "East",
+        "africa": "Africa"
+      },
+      "regionFilterAriaLabel": "Filter parks by continent"
     },
     "results": {
       "badge": "Results",

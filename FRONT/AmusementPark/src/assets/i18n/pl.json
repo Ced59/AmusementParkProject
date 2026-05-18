@@ -732,7 +732,17 @@
       "errorTitle": "Mapa niedostępna",
       "errorMessage": "Nie udało się załadować punktów mapy.",
       "emptyTitle": "Brak dostępnego punktu",
-      "emptyMessage": "Żaden widoczny park ze współrzędnymi nie pasuje do tego wyszukiwania."
+      "emptyMessage": "Żaden widoczny park ze współrzędnymi nie pasuje do tego wyszukiwania.",
+      "navigate": "Nawiguj",
+      "regionFilters": {
+        "all": "Wszystkie",
+        "europe": "Europa",
+        "northAmerica": "Ameryka Płn.",
+        "southAmerica": "Ameryka Płd.",
+        "orient": "Orient",
+        "africa": "Afryka"
+      },
+      "regionFilterAriaLabel": "Filtruj parki według kontynentu"
     },
     "results": {
       "badge": "Wyniki",

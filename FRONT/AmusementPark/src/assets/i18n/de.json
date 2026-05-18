@@ -732,7 +732,17 @@
       "errorTitle": "Karte nicht verfügbar",
       "errorMessage": "Die Kartenpunkte konnten nicht geladen werden.",
       "emptyTitle": "Kein Punkt verfügbar",
-      "emptyMessage": "Kein sichtbarer Park mit Koordinaten entspricht dieser Suche."
+      "emptyMessage": "Kein sichtbarer Park mit Koordinaten entspricht dieser Suche.",
+      "navigate": "Route öffnen",
+      "regionFilters": {
+        "all": "Alle",
+        "europe": "Europa",
+        "northAmerica": "Nordamerika",
+        "southAmerica": "Südamerika",
+        "orient": "Orient",
+        "africa": "Afrika"
+      },
+      "regionFilterAriaLabel": "Parks nach Kontinent filtern"
     },
     "results": {
       "badge": "Ergebnisse",

@@ -7,6 +7,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Countries;
 using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Core.Domain.Parks;
@@ -31,7 +32,7 @@ public sealed class ParksController : ControllerBase
     private readonly ICommandHandler<CreateParkCommand, ApplicationResult<Park>> createParkCommandHandler;
     private readonly IQueryHandler<GetParkByIdQuery, ApplicationResult<Park>> getParkByIdQueryHandler;
     private readonly IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<Park>>> getParksPageQueryHandler;
-    private readonly IQueryHandler<SearchParksByNameQuery, ApplicationResult<PagedResult<Park>>> searchParksByNameQueryHandler;
+    private readonly IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<Park>>> searchParksQueryHandler;
     private readonly IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler;
     private readonly IQueryHandler<GetVisibleParkMapPointsQuery, ApplicationResult<IReadOnlyCollection<Park>>> getVisibleParkMapPointsQueryHandler;
     private readonly IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler;
@@ -43,7 +44,7 @@ public sealed class ParksController : ControllerBase
         ICommandHandler<CreateParkCommand, ApplicationResult<Park>> createParkCommandHandler,
         IQueryHandler<GetParkByIdQuery, ApplicationResult<Park>> getParkByIdQueryHandler,
         IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<Park>>> getParksPageQueryHandler,
-        IQueryHandler<SearchParksByNameQuery, ApplicationResult<PagedResult<Park>>> searchParksByNameQueryHandler,
+        IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<Park>>> searchParksQueryHandler,
         IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler,
         IQueryHandler<GetVisibleParkMapPointsQuery, ApplicationResult<IReadOnlyCollection<Park>>> getVisibleParkMapPointsQueryHandler,
         IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler,
@@ -54,7 +55,7 @@ public sealed class ParksController : ControllerBase
         this.createParkCommandHandler = createParkCommandHandler;
         this.getParkByIdQueryHandler = getParkByIdQueryHandler;
         this.getParksPageQueryHandler = getParksPageQueryHandler;
-        this.searchParksByNameQueryHandler = searchParksByNameQueryHandler;
+        this.searchParksQueryHandler = searchParksQueryHandler;
         this.searchParksByLocationQueryHandler = searchParksByLocationQueryHandler;
         this.getVisibleParkMapPointsQueryHandler = getVisibleParkMapPointsQueryHandler;
         this.getRandomVisibleParksQueryHandler = getRandomVisibleParksQueryHandler;
@@ -113,10 +114,13 @@ public sealed class ParksController : ControllerBase
 
     [HttpGet("map-visible")]
     [ProducesResponseType(typeof(IReadOnlyCollection<ParkMapPointDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetVisibleParkMapPointsAsync([FromQuery] string? name = null, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetVisibleParkMapPointsAsync([FromQuery] string? query = null, [FromQuery] string? name = null, [FromQuery] string? region = null, CancellationToken cancellationToken = default)
     {
+        string? effectiveQuery = string.IsNullOrWhiteSpace(query) ? name : query;
+        WorldRegionFilter? regionFilter = WorldRegionFilterParser.Parse(region);
+
         ApplicationResult<IReadOnlyCollection<Park>> result = await this.getVisibleParkMapPointsQueryHandler.HandleAsync(
-            new GetVisibleParkMapPointsQuery(name),
+            new GetVisibleParkMapPointsQuery(effectiveQuery, regionFilter),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -147,14 +151,16 @@ public sealed class ParksController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(PagedResponseDto<ParkDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetParksAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? name = null, [FromQuery] bool visibleOnly = false, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetParksAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? query = null, [FromQuery] string? name = null, [FromQuery] string? region = null, [FromQuery] bool visibleOnly = false, CancellationToken cancellationToken = default)
     {
         bool includeNonVisible = !visibleOnly && this.UserCanSeeNonVisible();
         PagedQuery paging = pagination.ToApplication();
+        string? effectiveQuery = string.IsNullOrWhiteSpace(query) ? name : query;
+        WorldRegionFilter? regionFilter = WorldRegionFilterParser.Parse(region);
 
-        ApplicationResult<PagedResult<Park>> result = string.IsNullOrWhiteSpace(name)
+        ApplicationResult<PagedResult<Park>> result = string.IsNullOrWhiteSpace(effectiveQuery) && regionFilter is null
             ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible), cancellationToken)
-            : await this.searchParksByNameQueryHandler.HandleAsync(new SearchParksByNameQuery(name.Trim(), paging, includeNonVisible), cancellationToken);
+            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible), cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
         {

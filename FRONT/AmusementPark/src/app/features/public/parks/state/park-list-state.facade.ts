@@ -9,7 +9,9 @@ import { mapArray, mapCollectionResponse, mapParkToCardModel } from '@shared/uti
 import { Park } from '@app/models/parks/park';
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
+import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { mapParkMapPointToViewModel } from '../mappers/park-map-point-view.mapper';
 
 interface ParkListSourceData {
@@ -26,11 +28,12 @@ export class ParkListStateFacade {
   private readonly pageSizeSignal = signal(9);
   private readonly selectedParkIdSignal = signal<string | null>(null);
   private readonly selectedParkCardSignal = signal<ParkCardModel | null>(null);
+  private readonly selectedRegionSignal = signal<ParkRegionFilter | null>(null);
 
   public readonly state = this.screenStateStore.state;
   public readonly mapState = this.mapStateStore.state;
   public readonly parks: Signal<ParkCardModel[]> = computed(() => {
-    return mapArray(this.screenStateStore.data()?.parks, (park: Park) => mapParkToCardModel(park, this.currentLanguageSignal()));
+    return mapArray(this.screenStateStore.data()?.parks, (park: Park) => mapParkToCardModel(park, this.currentLanguageSignal(), this.countryDisplayService));
   });
   public readonly displayedParks: Signal<ParkCardModel[]> = computed(() => {
     const selectedPark: ParkCardModel | null = this.selectedParkCardSignal();
@@ -58,14 +61,21 @@ export class ParkListStateFacade {
   public readonly pageSize = this.pageSizeSignal.asReadonly();
   public readonly selectedParkId = this.selectedParkIdSignal.asReadonly();
   public readonly selectedParkCard = this.selectedParkCardSignal.asReadonly();
+  public readonly selectedRegion = this.selectedRegionSignal.asReadonly();
 
-  constructor(private readonly parksApiService: ParksApiService,
+  constructor(
+    private readonly parksApiService: ParksApiService,
+    private readonly countryDisplayService: CountryDisplayService,
     private readonly destroyRef: DestroyRef
   ) {
   }
 
   setCurrentLanguage(language: string): void {
     this.currentLanguageSignal.set(language || 'en');
+  }
+
+  setSelectedRegion(region: ParkRegionFilter | null): void {
+    this.selectedRegionSignal.set(region);
   }
 
   clearSelectedPark(): void {
@@ -112,7 +122,7 @@ export class ParkListStateFacade {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (park: Park) => {
-          const selectedPark: ParkCardModel = mapParkToCardModel(park, this.currentLanguageSignal());
+          const selectedPark: ParkCardModel = mapParkToCardModel(park, this.currentLanguageSignal(), this.countryDisplayService);
           this.selectedParkCardSignal.set(selectedPark);
         },
         error: (error: unknown) => {
@@ -121,7 +131,7 @@ export class ParkListStateFacade {
       });
   }
 
-  loadParks(page: number, size: number, term: string): void {
+  loadParks(page: number, size: number, term: string, region: ParkRegionFilter | null): void {
     const normalizedTerm: string = term.trim();
     const previousData: ParkListSourceData | undefined = this.screenStateStore.data();
 
@@ -130,8 +140,8 @@ export class ParkListStateFacade {
     this.screenStateStore.setLoading(previousData);
 
     const request$ = normalizedTerm
-      ? this.parksApiService.searchParks(normalizedTerm, page, size, true)
-      : this.parksApiService.getParksPaginated(page, size, true);
+      ? this.parksApiService.searchParks(normalizedTerm, page, size, true, region)
+      : this.parksApiService.getParksPaginated(page, size, true, region);
 
     request$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: ParksApiResponse) => {
@@ -155,16 +165,16 @@ export class ParkListStateFacade {
     });
   }
 
-  loadVisibleMapPoints(term: string = ''): void {
+  loadVisibleMapPoints(term: string = '', region: ParkRegionFilter | null = null): void {
     const previousData: ParkMapPointViewModel[] | undefined = this.mapStateStore.data();
     this.mapStateStore.setLoading(previousData);
 
-    this.parksApiService.getVisibleParkMapPoints(term)
+    this.parksApiService.getVisibleParkMapPoints(term, region)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (points: ParkMapPoint[]) => {
           const viewModels: ParkMapPointViewModel[] = points
-            .map((point: ParkMapPoint) => mapParkMapPointToViewModel(point))
+            .map((point: ParkMapPoint) => mapParkMapPointToViewModel(point, this.currentLanguageSignal(), this.countryDisplayService))
             .filter((point: ParkMapPointViewModel | null): point is ParkMapPointViewModel => point !== null);
 
           if (viewModels.length === 0) {

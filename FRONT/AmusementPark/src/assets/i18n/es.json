@@ -732,7 +732,17 @@
       "errorTitle": "Mapa no disponible",
       "errorMessage": "No se pudieron cargar los puntos del mapa.",
       "emptyTitle": "No hay puntos disponibles",
-      "emptyMessage": "Ningún parque visible con coordenadas coincide con esta búsqueda."
+      "emptyMessage": "Ningún parque visible con coordenadas coincide con esta búsqueda.",
+      "navigate": "Cómo llegar",
+      "regionFilters": {
+        "all": "Todos",
+        "europe": "Europa",
+        "northAmerica": "Norteamérica",
+        "southAmerica": "Sudamérica",
+        "orient": "Oriente",
+        "africa": "África"
+      },
+      "regionFilterAriaLabel": "Filtrar parques por continente"
     },
     "results": {
       "badge": "Resultados",
