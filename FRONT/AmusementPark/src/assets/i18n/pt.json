@@ -697,7 +697,9 @@
       "errorMessage": "The requested park could not be loaded.",
       "practical": {
         "title": "Practical information",
-        "subtitle": "The visitor essentials currently available for this park."
+        "subtitle": "The visitor essentials currently available for this park.",
+        "postalCode": "Código postal",
+        "street": "Rua"
       },
       "location": {
         "title": "Location",
@@ -712,6 +714,44 @@
         "errorMessage": "Nearby parks could not be loaded.",
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
+      },
+      "description": {
+        "badge": "Visão geral",
+        "title": "Sobre este parque",
+        "empty": "Ainda não há uma descrição enriquecida disponível para este parque."
+      },
+      "identity": {
+        "title": "Identidade do parque",
+        "subtitle": "Dados estruturais atualmente disponíveis no modelo do parque.",
+        "type": "Tipo",
+        "founder": "Fundador",
+        "operator": "Operador",
+        "reference": "Referência"
+      },
+      "publication": {
+        "title": "Publicação",
+        "subtitle": "Visibilidade e destaque na página inicial vindos do modelo do parque.",
+        "visible": "Visível",
+        "featured": "Em destaque",
+        "sponsored": "Patrocinado",
+        "featuredOrder": "Ordem na home",
+        "logo": "Logo",
+        "logoAvailable": "Logo atual definido"
+      },
+      "zones": {
+        "badge": "Zonas do parque",
+        "title": "Zonas e lands",
+        "subtitle": "Exibição condicional das zonas quando o parque as possui, com links diretos para itens filtrados.",
+        "visible": "Visível",
+        "hidden": "Oculta",
+        "open": "Ver itens da zona",
+        "noDescription": "Ainda não há descrição disponível para esta zona.",
+        "slug": "Slug",
+        "sortOrder": "Ordem",
+        "sortOrderShort": "Ordem {{order}}"
+      },
+      "stats": {
+        "zones": "Zonas"
       }
     },
     "titlePrefix": "Todos os",

@@ -18,6 +18,7 @@ export class ParkDetailPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly park = this.stateFacade.park;
   protected readonly summary = this.stateFacade.summary;
+  protected readonly zones = this.stateFacade.zones;
   protected readonly nearbyParks = this.stateFacade.nearbyParks;
   protected readonly nearbyState = this.stateFacade.nearbyState;
   protected readonly currentLang = signal<string>('en');

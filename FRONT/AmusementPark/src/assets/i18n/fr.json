@@ -697,7 +697,9 @@
       "errorMessage": "Le parc demandé n’a pas pu être chargé.",
       "practical": {
         "title": "Informations pratiques",
-        "subtitle": "Les informations utiles au visiteur actuellement disponibles pour ce parc."
+        "subtitle": "Les informations utiles au visiteur actuellement disponibles pour ce parc.",
+        "postalCode": "Code postal",
+        "street": "Rue"
       },
       "location": {
         "title": "Localisation",
@@ -712,6 +714,44 @@
         "errorMessage": "Les parcs proches n’ont pas pu être chargés.",
         "emptyTitle": "Aucun parc à proximité",
         "emptyMessage": "Aucun parc proche n’a été trouvé autour de cette destination."
+      },
+      "description": {
+        "badge": "Présentation",
+        "title": "À propos du parc",
+        "empty": "Aucune description enrichie n’est encore disponible pour ce parc."
+      },
+      "identity": {
+        "title": "Identité du parc",
+        "subtitle": "Les données structurelles actuellement renseignées dans le modèle parc.",
+        "type": "Type",
+        "founder": "Fondateur",
+        "operator": "Exploitant",
+        "reference": "Référence"
+      },
+      "publication": {
+        "title": "Publication",
+        "subtitle": "Visibilité et mise en avant issues du modèle parc.",
+        "visible": "Visible",
+        "featured": "Mis en avant",
+        "sponsored": "Sponsorisé",
+        "featuredOrder": "Ordre home",
+        "logo": "Logo",
+        "logoAvailable": "Logo courant défini"
+      },
+      "zones": {
+        "badge": "Zones du parc",
+        "title": "Zones et lands",
+        "subtitle": "Affichage conditionnel des zones quand le parc en possède, avec lien direct vers les éléments filtrés.",
+        "visible": "Visible",
+        "hidden": "Masquée",
+        "open": "Voir les éléments de la zone",
+        "noDescription": "Aucune description n’est encore disponible pour cette zone.",
+        "slug": "Slug",
+        "sortOrder": "Ordre",
+        "sortOrderShort": "Ordre {{order}}"
+      },
+      "stats": {
+        "zones": "Zones"
       }
     },
     "titlePrefix": "Tous les",

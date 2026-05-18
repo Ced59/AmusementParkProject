@@ -697,7 +697,9 @@
       "errorMessage": "The requested park could not be loaded.",
       "practical": {
         "title": "Practical information",
-        "subtitle": "The visitor essentials currently available for this park."
+        "subtitle": "The visitor essentials currently available for this park.",
+        "postalCode": "Código postal",
+        "street": "Calle"
       },
       "location": {
         "title": "Location",
@@ -712,6 +714,44 @@
         "errorMessage": "Nearby parks could not be loaded.",
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
+      },
+      "description": {
+        "badge": "Presentación",
+        "title": "Sobre este parque",
+        "empty": "Todavía no hay una descripción enriquecida disponible para este parque."
+      },
+      "identity": {
+        "title": "Identidad del parque",
+        "subtitle": "Datos estructurales disponibles actualmente en el modelo del parque.",
+        "type": "Tipo",
+        "founder": "Fundador",
+        "operator": "Operador",
+        "reference": "Referencia"
+      },
+      "publication": {
+        "title": "Publicación",
+        "subtitle": "Visibilidad y destacados de inicio procedentes del modelo del parque.",
+        "visible": "Visible",
+        "featured": "Destacado",
+        "sponsored": "Patrocinado",
+        "featuredOrder": "Orden en inicio",
+        "logo": "Logo",
+        "logoAvailable": "Logo actual definido"
+      },
+      "zones": {
+        "badge": "Zonas del parque",
+        "title": "Zonas y lands",
+        "subtitle": "Visualización condicional de zonas cuando el parque las contiene, con enlaces directos a elementos filtrados.",
+        "visible": "Visible",
+        "hidden": "Oculta",
+        "open": "Ver elementos de la zona",
+        "noDescription": "Todavía no hay una descripción disponible para esta zona.",
+        "slug": "Slug",
+        "sortOrder": "Orden",
+        "sortOrderShort": "Orden {{order}}"
+      },
+      "stats": {
+        "zones": "Zonas"
       }
     },
     "titlePrefix": "Todos los",

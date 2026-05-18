@@ -697,7 +697,9 @@
       "errorMessage": "The requested park could not be loaded.",
       "practical": {
         "title": "Practical information",
-        "subtitle": "The visitor essentials currently available for this park."
+        "subtitle": "The visitor essentials currently available for this park.",
+        "postalCode": "Postcode",
+        "street": "Straat"
       },
       "location": {
         "title": "Location",
@@ -712,6 +714,44 @@
         "errorMessage": "Nearby parks could not be loaded.",
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
+      },
+      "description": {
+        "badge": "Overzicht",
+        "title": "Over dit park",
+        "empty": "Er is nog geen uitgebreide beschrijving beschikbaar voor dit park."
+      },
+      "identity": {
+        "title": "Parkidentiteit",
+        "subtitle": "Structurele gegevens die momenteel in het parkmodel beschikbaar zijn.",
+        "type": "Type",
+        "founder": "Oprichter",
+        "operator": "Exploitant",
+        "reference": "Referentie"
+      },
+      "publication": {
+        "title": "Publicatie",
+        "subtitle": "Zichtbaarheid en home-uitlichting uit het parkmodel.",
+        "visible": "Zichtbaar",
+        "featured": "Uitgelicht",
+        "sponsored": "Gesponsord",
+        "featuredOrder": "Home-volgorde",
+        "logo": "Logo",
+        "logoAvailable": "Huidig logo ingesteld"
+      },
+      "zones": {
+        "badge": "Parkzones",
+        "title": "Zones en lands",
+        "subtitle": "Voorwaardelijke zoneweergave wanneer het park zones bevat, met directe links naar gefilterde items.",
+        "visible": "Zichtbaar",
+        "hidden": "Verborgen",
+        "open": "Zone-items bekijken",
+        "noDescription": "Er is nog geen beschrijving beschikbaar voor deze zone.",
+        "slug": "Slug",
+        "sortOrder": "Volgorde",
+        "sortOrderShort": "Volgorde {{order}}"
+      },
+      "stats": {
+        "zones": "Zones"
       }
     },
     "titlePrefix": "Alle",

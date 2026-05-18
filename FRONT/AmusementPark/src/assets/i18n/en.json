@@ -697,7 +697,9 @@
       "errorMessage": "The requested park could not be loaded.",
       "practical": {
         "title": "Practical information",
-        "subtitle": "The visitor essentials currently available for this park."
+        "subtitle": "The visitor essentials currently available for this park.",
+        "postalCode": "Postal code",
+        "street": "Street"
       },
       "location": {
         "title": "Location",
@@ -712,6 +714,44 @@
         "errorMessage": "Nearby parks could not be loaded.",
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
+      },
+      "description": {
+        "badge": "Overview",
+        "title": "About this park",
+        "empty": "No rich description is available for this park yet."
+      },
+      "identity": {
+        "title": "Park identity",
+        "subtitle": "Structural data currently available in the park model.",
+        "type": "Type",
+        "founder": "Founder",
+        "operator": "Operator",
+        "reference": "Reference"
+      },
+      "publication": {
+        "title": "Publication",
+        "subtitle": "Visibility and home highlight data from the park model.",
+        "visible": "Visible",
+        "featured": "Featured",
+        "sponsored": "Sponsored",
+        "featuredOrder": "Home order",
+        "logo": "Logo",
+        "logoAvailable": "Current logo set"
+      },
+      "zones": {
+        "badge": "Park zones",
+        "title": "Zones and lands",
+        "subtitle": "Conditional zone display when the park contains zones, with direct links to filtered items.",
+        "visible": "Visible",
+        "hidden": "Hidden",
+        "open": "View zone items",
+        "noDescription": "No description is available for this zone yet.",
+        "slug": "Slug",
+        "sortOrder": "Order",
+        "sortOrderShort": "Order {{order}}"
+      },
+      "stats": {
+        "zones": "Zones"
       }
     },
     "titlePrefix": "All",

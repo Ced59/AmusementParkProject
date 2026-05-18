@@ -697,7 +697,9 @@
       "errorMessage": "The requested park could not be loaded.",
       "practical": {
         "title": "Practical information",
-        "subtitle": "The visitor essentials currently available for this park."
+        "subtitle": "The visitor essentials currently available for this park.",
+        "postalCode": "Kod pocztowy",
+        "street": "Ulica"
       },
       "location": {
         "title": "Location",
@@ -712,6 +714,44 @@
         "errorMessage": "Nearby parks could not be loaded.",
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
+      },
+      "description": {
+        "badge": "Opis",
+        "title": "O tym parku",
+        "empty": "Nie ma jeszcze rozszerzonego opisu tego parku."
+      },
+      "identity": {
+        "title": "Tożsamość parku",
+        "subtitle": "Dane strukturalne dostępne obecnie w modelu parku.",
+        "type": "Typ",
+        "founder": "Założyciel",
+        "operator": "Operator",
+        "reference": "Referencja"
+      },
+      "publication": {
+        "title": "Publikacja",
+        "subtitle": "Widoczność i wyróżnienie na stronie głównej z modelu parku.",
+        "visible": "Widoczny",
+        "featured": "Wyróżniony",
+        "sponsored": "Sponsorowany",
+        "featuredOrder": "Kolejność home",
+        "logo": "Logo",
+        "logoAvailable": "Ustawiono bieżące logo"
+      },
+      "zones": {
+        "badge": "Strefy parku",
+        "title": "Strefy i obszary",
+        "subtitle": "Warunkowe wyświetlanie stref, gdy park je posiada, z bezpośrednimi linkami do przefiltrowanych elementów.",
+        "visible": "Widoczna",
+        "hidden": "Ukryta",
+        "open": "Zobacz elementy strefy",
+        "noDescription": "Opis tej strefy nie jest jeszcze dostępny.",
+        "slug": "Slug",
+        "sortOrder": "Kolejność",
+        "sortOrderShort": "Kolejność {{order}}"
+      },
+      "stats": {
+        "zones": "Strefy"
       }
     },
     "titlePrefix": "Wszystkie",

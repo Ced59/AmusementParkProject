@@ -697,7 +697,9 @@
       "errorMessage": "The requested park could not be loaded.",
       "practical": {
         "title": "Practical information",
-        "subtitle": "The visitor essentials currently available for this park."
+        "subtitle": "The visitor essentials currently available for this park.",
+        "postalCode": "CAP",
+        "street": "Via"
       },
       "location": {
         "title": "Location",
@@ -712,6 +714,44 @@
         "errorMessage": "Nearby parks could not be loaded.",
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
+      },
+      "description": {
+        "badge": "Panoramica",
+        "title": "Informazioni sul parco",
+        "empty": "Non è ancora disponibile una descrizione dettagliata per questo parco."
+      },
+      "identity": {
+        "title": "Identità del parco",
+        "subtitle": "Dati strutturali attualmente disponibili nel modello del parco.",
+        "type": "Tipo",
+        "founder": "Fondatore",
+        "operator": "Gestore",
+        "reference": "Riferimento"
+      },
+      "publication": {
+        "title": "Pubblicazione",
+        "subtitle": "Visibilità e dati di evidenza home dal modello del parco.",
+        "visible": "Visibile",
+        "featured": "In evidenza",
+        "sponsored": "Sponsorizzato",
+        "featuredOrder": "Ordine home",
+        "logo": "Logo",
+        "logoAvailable": "Logo corrente impostato"
+      },
+      "zones": {
+        "badge": "Zone del parco",
+        "title": "Zone e lands",
+        "subtitle": "Visualizzazione condizionale delle zone quando il parco ne contiene, con link diretti agli elementi filtrati.",
+        "visible": "Visibile",
+        "hidden": "Nascosta",
+        "open": "Vedi elementi della zona",
+        "noDescription": "Nessuna descrizione è ancora disponibile per questa zona.",
+        "slug": "Slug",
+        "sortOrder": "Ordine",
+        "sortOrderShort": "Ordine {{order}}"
+      },
+      "stats": {
+        "zones": "Zone"
       }
     },
     "titlePrefix": "Tutti i",

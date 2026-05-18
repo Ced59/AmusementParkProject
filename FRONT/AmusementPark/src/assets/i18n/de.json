@@ -697,7 +697,9 @@
       "errorMessage": "The requested park could not be loaded.",
       "practical": {
         "title": "Practical information",
-        "subtitle": "The visitor essentials currently available for this park."
+        "subtitle": "The visitor essentials currently available for this park.",
+        "postalCode": "Postleitzahl",
+        "street": "Straße"
       },
       "location": {
         "title": "Location",
@@ -712,6 +714,44 @@
         "errorMessage": "Nearby parks could not be loaded.",
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination."
+      },
+      "description": {
+        "badge": "Übersicht",
+        "title": "Über diesen Park",
+        "empty": "Für diesen Park ist noch keine ausführliche Beschreibung verfügbar."
+      },
+      "identity": {
+        "title": "Parkidentität",
+        "subtitle": "Strukturdaten, die derzeit im Parkmodell verfügbar sind.",
+        "type": "Typ",
+        "founder": "Gründer",
+        "operator": "Betreiber",
+        "reference": "Referenz"
+      },
+      "publication": {
+        "title": "Veröffentlichung",
+        "subtitle": "Sichtbarkeit und Hervorhebung aus dem Parkmodell.",
+        "visible": "Sichtbar",
+        "featured": "Hervorgehoben",
+        "sponsored": "Gesponsert",
+        "featuredOrder": "Home-Reihenfolge",
+        "logo": "Logo",
+        "logoAvailable": "Aktuelles Logo gesetzt"
+      },
+      "zones": {
+        "badge": "Parkzonen",
+        "title": "Zonen und Themenbereiche",
+        "subtitle": "Bedingte Anzeige der Zonen, wenn der Park welche besitzt, mit direkten Links zu gefilterten Elementen.",
+        "visible": "Sichtbar",
+        "hidden": "Ausgeblendet",
+        "open": "Elemente der Zone anzeigen",
+        "noDescription": "Für diese Zone ist noch keine Beschreibung verfügbar.",
+        "slug": "Slug",
+        "sortOrder": "Reihenfolge",
+        "sortOrderShort": "Reihenfolge {{order}}"
+      },
+      "stats": {
+        "zones": "Zonen"
       }
     },
     "titlePrefix": "Alle",
