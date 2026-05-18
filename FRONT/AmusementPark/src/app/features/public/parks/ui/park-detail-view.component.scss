@@ -1,4 +1,6 @@
 .park-detail {
+  --park-detail-content-max-width: var(--content-wide-max-width, 1480px);
+
   display: flex;
   flex-direction: column;
 }
@@ -38,11 +40,11 @@
   position: relative;
   z-index: 1;
   display: grid;
-  width: 100%;
-  max-width: 1340px;
+  width: min(100% - 2.5rem, var(--park-detail-content-max-width));
+  max-width: none;
   margin: 0 auto;
   gap: 1.25rem;
-  padding: 1.35rem 1.25rem 1.9rem;
+  padding: 1.35rem 0 1.9rem;
 }
 
 .park-logo-frame {
@@ -119,11 +121,11 @@
 
 .park-detail__body {
   display: grid;
-  width: 100%;
-  max-width: 1340px;
+  width: min(100% - 2.5rem, var(--park-detail-content-max-width));
+  max-width: none;
   margin: 0 auto;
   gap: 1.4rem;
-  padding: 2.25rem 1.25rem 4.5rem;
+  padding: 2.25rem 0 4.5rem;
 }
 
 .park-main,
@@ -229,10 +231,10 @@
 }
 
 .park-info-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: minmax(7.4rem, auto) minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: center;
   padding: 0.76rem 0;
   border-bottom: 1px solid var(--app-border);
 }
@@ -262,7 +264,6 @@
 }
 
 .park-info-row dd {
-  max-width: 58%;
   margin: 0;
   color: var(--app-text);
   font-size: 0.86rem;
@@ -283,7 +284,8 @@
   justify-content: flex-end;
   gap: 0.4rem;
   max-width: 100%;
-  padding: 0.24rem 0.55rem;
+  min-height: 2rem;
+  padding: 0.24rem 0.62rem;
   border: 1px solid color-mix(in srgb, var(--app-primary) 26%, transparent);
   border-radius: var(--radius-pill);
   background: color-mix(in srgb, var(--app-primary) 8%, transparent);
@@ -293,14 +295,28 @@
 }
 
 .park-info-row__link span {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .park-info-row__link i {
+  flex: 0 0 auto;
   color: var(--app-primary);
   font-size: 0.72rem;
+}
+
+.park-info-row--reference {
+  grid-template-columns: minmax(6.8rem, auto) minmax(0, 1fr);
+}
+
+.park-info-row--reference dd {
+  min-width: 0;
+}
+
+.park-info-row--reference .park-info-row__link {
+  width: min(100%, 13.75rem);
 }
 
 .park-info-row__link:hover,
@@ -368,6 +384,13 @@
   text-transform: uppercase;
 }
 
+
+app-park-nearby-section {
+  display: block;
+  width: min(100% - 2.5rem, var(--park-detail-content-max-width));
+  margin: 0 auto 4.5rem;
+}
+
 @media (min-width: 680px) {
   .park-stats-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -386,7 +409,7 @@
   }
 
   .park-detail__body {
-    grid-template-columns: minmax(0, 1fr) 330px;
+    grid-template-columns: minmax(0, 1fr) minmax(390px, 410px);
   }
 
   .park-sidebar {
@@ -461,9 +484,15 @@
   }
 
   .park-banner__content,
-  .park-detail__body {
+  .park-detail__body,
+  app-park-nearby-section {
+    width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  app-park-nearby-section {
+    margin-bottom: 3rem;
   }
 
   .park-logo-frame {

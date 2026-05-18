@@ -125,7 +125,9 @@
               </header>
               <dl class="park-info-list info-card__body">
                 @for (row of currentPark.practicalRows; track row.labelKey + '-' + row.value) {
-                  <div class="park-info-row">
+                  <div
+                    class="park-info-row"
+                    [class.park-info-row--reference]="row.routerLink && row.routerLink.length > 0">
                     <dt>
                       <i [class]="row.iconClass" aria-hidden="true"></i>
                       <span>{{ row.labelKey | translate }}</span>
@@ -139,6 +141,7 @@
                         <a
                           [routerLink]="row.routerLink"
                           class="park-info-row__link"
+                          [title]="row.value"
                           [attr.aria-label]="('parks.detail.practical.openReference' | translate: { name: row.value })">
                           <span>{{ row.value }}</span>
                           <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
