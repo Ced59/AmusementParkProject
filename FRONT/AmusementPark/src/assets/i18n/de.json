@@ -478,7 +478,28 @@
           "itemCreated": "Das Parkelement wurde erstellt und bleibt im Bearbeitungsmodus geöffnet.",
           "errorSummary": "Speichern fehlgeschlagen",
           "errorDetail": "Beim Speichern des Parkelements ist ein Fehler aufgetreten."
-        }
+        },
+        "heightRequirements": {
+          "title": "Größenanforderungen",
+          "help": "Verwalte die üblichen Größenregeln in einem einzigen Block. Jedes Feld ist optional.",
+          "fields": {
+            "minHeightCm": {
+              "label": "Mindestgröße",
+              "help": "Zugang ab dieser Größe erlaubt."
+            },
+            "minHeightAccompaniedCm": {
+              "label": "Mindestgröße mit Begleitung",
+              "help": "Ab dieser Größe ist der Zugang mit einem Erwachsenen erlaubt."
+            },
+            "maxHeightCm": {
+              "label": "Maximalgröße",
+              "help": "Zugang über dieser Größe verboten."
+            }
+          }
+        },
+        "advancedAccessConditionsTitle": "Weitere Bedingungen",
+        "advancedAccessConditionsHelp": "Füge nur Regeln hinzu, die keine Größenanforderungen sind.",
+        "advancedAccessConditionsEmpty": "Keine weitere Bedingung eingetragen."
       },
       "refactorHint": "Der Editor ist jetzt in thematische Tabs aufgeteilt, damit die Seite leichter und übersichtlicher bleibt.",
       "visibilityHelp": "Steuert, ob dieser Park in der öffentlichen Anwendung sichtbar ist.",
@@ -983,7 +1004,9 @@
       "relatedKicker": "Discover too",
       "relatedTitle": "Similar items",
       "relatedSubtitle": "Selection based on the item type, category or zone.",
-      "navigationTitle": "Navigation"
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Wähle einen Punkt aus, um ihn auf der Karte hervorzuheben oder eine Route über die Markierung zu öffnen.",
+      "showLocationOnMap": "Auf Karte anzeigen"
     },
     "fields": {
       "category": "Category",
@@ -1085,6 +1108,17 @@
       },
       "lightbox": {
         "title": "Foto im Vollbild"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Größenanforderungen",
+        "minHeight": "Mindestgröße",
+        "minHeightHelp": "Ab dieser Größe erlaubt.",
+        "minHeightAccompanied": "Größe mit Begleitung",
+        "minHeightAccompaniedHelp": "Mit einem Erwachsenen ab dieser Größe erlaubt.",
+        "maxHeight": "Maximalgröße",
+        "maxHeightHelp": "Zugang über dieser Größe verboten."
       }
     }
   },

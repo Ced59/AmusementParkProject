@@ -20,6 +20,7 @@ import { mapParkItemToCardViewModel } from './park-item-card.mapper';
 import { ParkItemCardViewModel } from '../models/park-item-card.model';
 import {
   ParkItemAccessConditionViewModel,
+  ParkItemAccessConditionMetricViewModel,
   ParkItemDetailRowViewModel,
   ParkItemDetailSpecGroupViewModel,
   ParkItemDetailViewModel,
@@ -306,8 +307,93 @@ function getPhotoCategoryOrder(categoryKey: string): number {
 function buildAccessConditions(item: ParkItem, currentLanguage: string): ParkItemAccessConditionViewModel[] {
   const conditions: AttractionAccessCondition[] = [...(item.attractionDetails?.accessConditions ?? [])]
     .sort((first: AttractionAccessCondition, second: AttractionAccessCondition) => (first.displayOrder ?? 0) - (second.displayOrder ?? 0));
+  const viewModels: ParkItemAccessConditionViewModel[] = [];
+  const heightCondition: ParkItemAccessConditionViewModel | null = buildHeightAccessCondition(conditions, currentLanguage);
 
-  return conditions.map((condition: AttractionAccessCondition) => mapAccessCondition(condition, currentLanguage));
+  if (heightCondition) {
+    viewModels.push(heightCondition);
+  }
+
+  viewModels.push(
+    ...conditions
+      .filter((condition: AttractionAccessCondition) => !isHeightAccessCondition(condition.type))
+      .map((condition: AttractionAccessCondition) => mapAccessCondition(condition, currentLanguage))
+  );
+
+  return viewModels;
+}
+
+function buildHeightAccessCondition(
+  conditions: AttractionAccessCondition[],
+  currentLanguage: string
+): ParkItemAccessConditionViewModel | null {
+  const metrics: ParkItemAccessConditionMetricViewModel[] = [];
+
+  pushHeightMetric(
+    metrics,
+    conditions,
+    'MinHeight',
+    'parkItems.accessConditions.height.minHeight',
+    'parkItems.accessConditions.height.minHeightHelp',
+    'pi pi-user',
+    currentLanguage
+  );
+  pushHeightMetric(
+    metrics,
+    conditions,
+    'MinHeightAccompanied',
+    'parkItems.accessConditions.height.minHeightAccompanied',
+    'parkItems.accessConditions.height.minHeightAccompaniedHelp',
+    'pi pi-users',
+    currentLanguage
+  );
+  pushHeightMetric(
+    metrics,
+    conditions,
+    'MaxHeight',
+    'parkItems.accessConditions.height.maxHeight',
+    'parkItems.accessConditions.height.maxHeightHelp',
+    'pi pi-ban',
+    currentLanguage
+  );
+
+  if (metrics.length === 0) {
+    return null;
+  }
+
+  return {
+    title: null,
+    titleKey: 'parkItems.accessConditions.height.title',
+    description: null,
+    rows: [],
+    metrics,
+    kind: 'height',
+    iconClass: 'pi pi-arrows-v',
+    tone: 'height'
+  };
+}
+
+function pushHeightMetric(
+  metrics: ParkItemAccessConditionMetricViewModel[],
+  conditions: AttractionAccessCondition[],
+  type: AttractionAccessConditionType,
+  labelKey: string,
+  helperKey: string,
+  iconClass: string,
+  currentLanguage: string
+): void {
+  const condition: AttractionAccessCondition | undefined = conditions.find((candidate: AttractionAccessCondition) => candidate.type === type);
+
+  if (!condition || condition.value == null) {
+    return;
+  }
+
+  metrics.push({
+    labelKey,
+    value: formatAccessConditionValue(condition.value, 'Centimeter', currentLanguage),
+    helperKey,
+    iconClass
+  });
 }
 
 function mapAccessCondition(condition: AttractionAccessCondition, currentLanguage: string): ParkItemAccessConditionViewModel {
@@ -315,13 +401,11 @@ function mapAccessCondition(condition: AttractionAccessCondition, currentLanguag
   const title: string | null = resolveOptionalLocalizedText(condition.label, currentLanguage);
   const description: string | null = resolveOptionalLocalizedText(condition.description, currentLanguage);
 
-  pushRow(rows, 'parkItems.accessConditionFields.type', '', getAccessConditionTypeLabelKey(condition.type), 'pi pi-info-circle');
-
   if (condition.value != null) {
     pushRow(rows, 'parkItems.accessConditionFields.value', formatAccessConditionValue(condition.value, condition.unit, currentLanguage), null, 'pi pi-sliders-h');
   }
 
-  if (condition.requiresAccompaniment != null) {
+  if (condition.requiresAccompaniment === true) {
     pushRow(rows, 'parkItems.accessConditionFields.requiresAccompaniment', formatBoolean(condition.requiresAccompaniment, currentLanguage), null, 'pi pi-users');
   }
 
@@ -333,8 +417,68 @@ function mapAccessCondition(condition: AttractionAccessCondition, currentLanguag
     title,
     titleKey: getAccessConditionTypeLabelKey(condition.type),
     description,
-    rows
+    rows,
+    metrics: [],
+    kind: getAccessConditionKind(condition.type),
+    iconClass: getAccessConditionIconClass(condition.type),
+    tone: getAccessConditionTone(condition.type)
   };
+}
+
+function isHeightAccessCondition(type: AttractionAccessConditionType): boolean {
+  return type === 'MinHeight' || type === 'MinHeightAccompanied' || type === 'MaxHeight';
+}
+
+function getAccessConditionKind(type: AttractionAccessConditionType): 'restriction' | 'default' {
+  switch (type) {
+    case 'PregnancyRestriction':
+    case 'HeartRestriction':
+    case 'BackNeckRestriction':
+    case 'WheelchairTransferRequired':
+    case 'AccessPassRequired':
+      return 'restriction';
+    default:
+      return 'default';
+  }
+}
+
+function getAccessConditionIconClass(type: AttractionAccessConditionType): string {
+  switch (type) {
+    case 'MinAge':
+    case 'MinAgeAccompanied':
+      return 'pi pi-calendar';
+    case 'PregnancyRestriction':
+      return 'pi pi-exclamation-triangle';
+    case 'HeartRestriction':
+      return 'pi pi-heart';
+    case 'BackNeckRestriction':
+      return 'pi pi-shield';
+    case 'WheelchairTransferRequired':
+      return 'pi pi-directions';
+    case 'AccessPassRequired':
+      return 'pi pi-ticket';
+    case 'Custom':
+      return 'pi pi-info-circle';
+    default:
+      return 'pi pi-lock';
+  }
+}
+
+function getAccessConditionTone(type: AttractionAccessConditionType): string {
+  switch (type) {
+    case 'PregnancyRestriction':
+    case 'HeartRestriction':
+    case 'BackNeckRestriction':
+      return 'restriction';
+    case 'WheelchairTransferRequired':
+    case 'AccessPassRequired':
+      return 'sky';
+    case 'MinAge':
+    case 'MinAgeAccompanied':
+      return 'gold';
+    default:
+      return 'default';
+  }
 }
 
 function buildLocationPoints(item: ParkItem, currentLanguage: string): ParkItemLocationPointViewModel[] {

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
 import { UiButtonDirective, UiKickerComponent } from '@ui/primitives';
@@ -9,6 +9,7 @@ import {
   ParkItemsMapMarkerViewModel,
   ParkItemsMapViewModel
 } from '../models/park-items-map-view.model';
+import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
 
 @Component({
   selector: 'app-park-items-map-section',
@@ -19,6 +20,12 @@ import {
 })
 export class ParkItemsMapSectionComponent implements OnChanges {
   @Input() map: ParkItemsMapViewModel | null = null;
+
+  constructor(
+    private readonly mapDirectionsUrlService: MapDirectionsUrlService,
+    private readonly translateService: TranslateService
+  ) {
+  }
 
   protected selectedCategory: string | null = null;
   protected selectedZoneId: string | null = null;
@@ -53,6 +60,18 @@ export class ParkItemsMapSectionComponent implements OnChanges {
       const zoneMatches: boolean = this.selectedZoneId === null || marker.zoneId === this.selectedZoneId;
       return categoryMatches && zoneMatches;
     });
+  }
+
+  protected get navigationMarkers(): ParkItemsMapMarkerViewModel[] {
+    return this.filteredMarkers.map((marker: ParkItemsMapMarkerViewModel) => ({
+      ...marker,
+      actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
+        latitude: marker.lat,
+        longitude: marker.lng,
+        label: marker.title
+      }),
+      actionLabel: this.translateService.instant('parks.map.navigate')
+    }));
   }
 
   protected get center(): [number, number] {

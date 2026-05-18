@@ -6,6 +6,46 @@ import { AttractionAccessConditionType } from '@app/models/parks/attraction-acce
 import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 
+
+export type AdminParkItemHeightRequirementKey = 'minHeightCm' | 'minHeightAccompaniedCm' | 'maxHeightCm';
+
+export interface AdminParkItemHeightRequirementField {
+  key: AdminParkItemHeightRequirementKey;
+  conditionType: AttractionAccessConditionType;
+  labelKey: string;
+  helpKey: string;
+  iconClass: string;
+}
+
+export interface AdminParkItemAccessConditionEntry {
+  index: number;
+  group: FormGroup;
+}
+
+export const ADMIN_PARK_ITEM_HEIGHT_REQUIREMENT_FIELDS: AdminParkItemHeightRequirementField[] = [
+  {
+    key: 'minHeightCm',
+    conditionType: 'MinHeight',
+    labelKey: 'admin.parks.items.heightRequirements.fields.minHeightCm.label',
+    helpKey: 'admin.parks.items.heightRequirements.fields.minHeightCm.help',
+    iconClass: 'pi pi-user'
+  },
+  {
+    key: 'minHeightAccompaniedCm',
+    conditionType: 'MinHeightAccompanied',
+    labelKey: 'admin.parks.items.heightRequirements.fields.minHeightAccompaniedCm.label',
+    helpKey: 'admin.parks.items.heightRequirements.fields.minHeightAccompaniedCm.help',
+    iconClass: 'pi pi-users'
+  },
+  {
+    key: 'maxHeightCm',
+    conditionType: 'MaxHeight',
+    labelKey: 'admin.parks.items.heightRequirements.fields.maxHeightCm.label',
+    helpKey: 'admin.parks.items.heightRequirements.fields.maxHeightCm.help',
+    iconClass: 'pi pi-ban'
+  }
+];
+
 const ACCESS_CONDITION_DEFAULT_LABELS: Record<AttractionAccessConditionType, Record<string, string>> = {
   MinHeight: {
     en: 'Minimum height',
@@ -254,6 +294,134 @@ export function toLocalizedItems(value: unknown): LocalizedItem<string>[] | null
     .filter((item: LocalizedItem<string>) => item.languageCode.length > 0 && item.value.length > 0);
 
   return normalized.length > 0 ? normalized : null;
+}
+
+
+export function isAdminParkItemHeightAccessConditionType(type: AttractionAccessConditionType | string | null | undefined): boolean {
+  return type === 'MinHeight' || type === 'MinHeightAccompanied' || type === 'MaxHeight';
+}
+
+export function getAdminParkItemStandaloneAccessConditionEntries(accessConditions: FormArray): AdminParkItemAccessConditionEntry[] {
+  const entries: AdminParkItemAccessConditionEntry[] = [];
+
+  for (let index: number = 0; index < accessConditions.length; index++) {
+    const group: FormGroup = accessConditions.at(index) as FormGroup;
+    const type: AttractionAccessConditionType | null = group.get('type')?.value as AttractionAccessConditionType | null;
+
+    if (!isAdminParkItemHeightAccessConditionType(type)) {
+      entries.push({ index, group });
+    }
+  }
+
+  return entries;
+}
+
+export function getAdminParkItemHeightRequirementValue(
+  accessConditions: FormArray,
+  key: AdminParkItemHeightRequirementKey
+): number | null {
+  const field: AdminParkItemHeightRequirementField | undefined = ADMIN_PARK_ITEM_HEIGHT_REQUIREMENT_FIELDS
+    .find((candidate: AdminParkItemHeightRequirementField) => candidate.key === key);
+
+  if (!field) {
+    return null;
+  }
+
+  const group: FormGroup | null = findAdminParkItemAccessConditionGroup(accessConditions, field.conditionType);
+  const value: unknown = group?.get('value')?.value;
+  const parsedValue: number = Number(value);
+
+  return Number.isFinite(parsedValue) && parsedValue >= 0 ? parsedValue : null;
+}
+
+export function setAdminParkItemHeightRequirementValue(
+  formBuilder: FormBuilder,
+  accessConditions: FormArray,
+  key: AdminParkItemHeightRequirementKey,
+  value: unknown
+): void {
+  const field: AdminParkItemHeightRequirementField | undefined = ADMIN_PARK_ITEM_HEIGHT_REQUIREMENT_FIELDS
+    .find((candidate: AdminParkItemHeightRequirementField) => candidate.key === key);
+
+  if (!field) {
+    return;
+  }
+
+  const normalizedValue: number | null = normalizeHeightRequirementValue(value);
+  const existingIndex: number = findAdminParkItemAccessConditionIndex(accessConditions, field.conditionType);
+
+  if (normalizedValue === null) {
+    if (existingIndex >= 0) {
+      accessConditions.removeAt(existingIndex);
+      syncAdminParkItemAccessConditionDisplayOrders(accessConditions);
+    }
+
+    accessConditions.markAsDirty();
+    return;
+  }
+
+  if (existingIndex >= 0) {
+    const group: FormGroup = accessConditions.at(existingIndex) as FormGroup;
+    const currentLabel: LocalizedItem<string>[] | null = toLocalizedItems(group.get('label')?.value);
+    const defaultCondition: AttractionAccessCondition = buildAdminParkItemDefaultAccessCondition(field.conditionType, existingIndex + 1);
+
+    group.patchValue({
+      type: field.conditionType,
+      isCustom: false,
+      value: normalizedValue,
+      unit: 'Centimeter',
+      requiresAccompaniment: field.conditionType === 'MinHeightAccompanied',
+      minimumCompanionAge: null,
+      displayOrder: existingIndex + 1
+    });
+
+    if (!hasLocalizedValues(currentLabel)) {
+      group.get('label')?.setValue(defaultCondition.label ?? []);
+    }
+  } else {
+    const condition: AttractionAccessCondition = buildAdminParkItemDefaultAccessCondition(field.conditionType, accessConditions.length + 1);
+    condition.value = normalizedValue;
+    condition.unit = 'Centimeter';
+    condition.requiresAccompaniment = field.conditionType === 'MinHeightAccompanied';
+    accessConditions.push(createAdminParkItemAccessConditionGroup(formBuilder, condition));
+  }
+
+  syncAdminParkItemAccessConditionDisplayOrders(accessConditions);
+  accessConditions.markAsDirty();
+}
+
+function findAdminParkItemAccessConditionGroup(
+  accessConditions: FormArray,
+  type: AttractionAccessConditionType
+): FormGroup | null {
+  const index: number = findAdminParkItemAccessConditionIndex(accessConditions, type);
+  return index >= 0 ? accessConditions.at(index) as FormGroup : null;
+}
+
+function findAdminParkItemAccessConditionIndex(accessConditions: FormArray, type: AttractionAccessConditionType): number {
+  for (let index: number = 0; index < accessConditions.length; index++) {
+    const group: FormGroup = accessConditions.at(index) as FormGroup;
+
+    if (group.get('type')?.value === type) {
+      return index;
+    }
+  }
+
+  return -1;
+}
+
+function normalizeHeightRequirementValue(value: unknown): number | null {
+  if (value === null || value === undefined || value === '') {
+    return null;
+  }
+
+  const parsedValue: number = Number(value);
+
+  if (!Number.isFinite(parsedValue) || parsedValue < 0) {
+    return null;
+  }
+
+  return Math.trunc(parsedValue);
 }
 
 function syncAdminParkItemAccessConditionDisplayOrders(accessConditions: FormArray): void {

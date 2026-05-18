@@ -478,7 +478,28 @@
           "itemCreated": "The park item has been created and you stay in edit mode.",
           "errorSummary": "Save failed",
           "errorDetail": "An error occurred while saving the park item."
-        }
+        },
+        "heightRequirements": {
+          "title": "Height requirements",
+          "help": "Manage the usual height rules in one block. Every field is optional: leave it empty to remove the rule.",
+          "fields": {
+            "minHeightCm": {
+              "label": "Minimum height",
+              "help": "Access is allowed from this height."
+            },
+            "minHeightAccompaniedCm": {
+              "label": "Minimum height with adult",
+              "help": "Between this height and the minimum height, access requires an adult."
+            },
+            "maxHeightCm": {
+              "label": "Maximum height",
+              "help": "Access is forbidden above this height."
+            }
+          }
+        },
+        "advancedAccessConditionsTitle": "Other conditions",
+        "advancedAccessConditionsHelp": "Add only rules that are not height requirements: age, health, transfer, access pass or custom condition.",
+        "advancedAccessConditionsEmpty": "No other condition has been configured."
       },
       "refactorHint": "The editor is now split into thematic tabs to keep the page lighter and easier to navigate.",
       "visibilityHelp": "Controls whether this park is visible in the public application.",
@@ -973,7 +994,7 @@
       "performanceTitle": "Performance",
       "experienceTitle": "Experience & accessibility",
       "accessConditionsTitle": "Access conditions",
-      "accessConditionsSubtitle": "Rules are displayed only when they exist on the item record.",
+      "accessConditionsSubtitle": "Readable summary of the rules to check before visiting the attraction.",
       "locationKicker": "Location",
       "locationTitle": "Location inside the park",
       "preciseLocationSubtitle": "Precise points are available, so the map displays these specific locations.",
@@ -983,7 +1004,9 @@
       "relatedKicker": "Discover too",
       "relatedTitle": "Similar items",
       "relatedSubtitle": "Selection based on the item type, category or zone.",
-      "navigationTitle": "Navigation"
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Select a point to highlight it on the map or open directions from the marker.",
+      "showLocationOnMap": "Show on map"
     },
     "fields": {
       "category": "Category",
@@ -1085,6 +1108,17 @@
       },
       "lightbox": {
         "title": "Fullscreen photo"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Height requirements",
+        "minHeight": "Minimum height",
+        "minHeightHelp": "Allowed from this height.",
+        "minHeightAccompanied": "Height with adult",
+        "minHeightAccompaniedHelp": "Allowed with an adult from this height.",
+        "maxHeight": "Maximum height",
+        "maxHeightHelp": "Access forbidden above this height."
       }
     }
   },

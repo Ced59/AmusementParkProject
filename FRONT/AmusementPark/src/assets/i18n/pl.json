@@ -478,7 +478,28 @@
           "itemCreated": "Element parku został utworzony i pozostajesz w trybie edycji.",
           "errorSummary": "Zapisywanie nie powiodło się",
           "errorDetail": "Wystąpił błąd podczas zapisywania elementu parku."
-        }
+        },
+        "heightRequirements": {
+          "title": "Wymagania wzrostu",
+          "help": "Zarządzaj typowymi zasadami wzrostu w jednym bloku. Każde pole jest opcjonalne.",
+          "fields": {
+            "minHeightCm": {
+              "label": "Minimalny wzrost",
+              "help": "Wejście dozwolone od tego wzrostu."
+            },
+            "minHeightAccompaniedCm": {
+              "label": "Minimalny wzrost z opiekunem",
+              "help": "Od tego wzrostu wejście wymaga osoby dorosłej."
+            },
+            "maxHeightCm": {
+              "label": "Maksymalny wzrost",
+              "help": "Wejście zabronione powyżej tego wzrostu."
+            }
+          }
+        },
+        "advancedAccessConditionsTitle": "Inne warunki",
+        "advancedAccessConditionsHelp": "Dodaj tylko zasady, które nie są wymaganiami wzrostu.",
+        "advancedAccessConditionsEmpty": "Brak innych skonfigurowanych warunków."
       },
       "refactorHint": "Edytor został teraz podzielony na tematyczne zakładki, aby strona była lżejsza i bardziej czytelna.",
       "visibilityHelp": "Określa, czy ten park jest widoczny w publicznej aplikacji.",
@@ -983,7 +1004,9 @@
       "relatedKicker": "Discover too",
       "relatedTitle": "Similar items",
       "relatedSubtitle": "Selection based on the item type, category or zone.",
-      "navigationTitle": "Navigation"
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Wybierz punkt, aby wyróżnić go na mapie albo otworzyć trasę z poziomu znacznika.",
+      "showLocationOnMap": "Pokaż na mapie"
     },
     "fields": {
       "category": "Category",
@@ -1085,6 +1108,17 @@
       },
       "lightbox": {
         "title": "Zdjęcie pełnoekranowe"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Wymagania wzrostu",
+        "minHeight": "Minimalny wzrost",
+        "minHeightHelp": "Dozwolone od tego wzrostu.",
+        "minHeightAccompanied": "Wzrost z opiekunem",
+        "minHeightAccompaniedHelp": "Dozwolone z osobą dorosłą od tego wzrostu.",
+        "maxHeight": "Maksymalny wzrost",
+        "maxHeightHelp": "Wejście zabronione powyżej tego wzrostu."
       }
     }
   },

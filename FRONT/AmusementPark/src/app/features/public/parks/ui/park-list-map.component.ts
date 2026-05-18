@@ -7,6 +7,7 @@ import { ParkRegionFilter, ParkRegionFilterOption } from '@shared/models/geo/wor
 import { UiChipComponent } from '@ui/primitives';
 import { UiMapShellComponent, UiMapSlotComponent } from '@ui/maps';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
+import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
 
 @Component({
   selector: 'app-park-list-map',
@@ -60,12 +61,19 @@ export class ParkListMapComponent {
       title: point.name,
       subtitle: point.locationLine ?? point.countryName ?? point.countryCode ?? null,
       details: this.buildMarkerDetails(point),
-      actionUrl: this.buildNavigationUrl(point),
+      actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
+        latitude: point.latitude,
+        longitude: point.longitude,
+        label: point.name
+      }),
       actionLabel: this.translateService.instant('parks.map.navigate'),
     }));
   });
 
-  constructor(private readonly translateService: TranslateService) {
+  constructor(
+    private readonly translateService: TranslateService,
+    private readonly mapDirectionsUrlService: MapDirectionsUrlService
+  ) {
   }
 
   onRegionFilterClick(region: ParkRegionFilter | null): void {
@@ -87,11 +95,7 @@ export class ParkListMapComponent {
       details.push(point.addressLine);
     }
 
-    details.push(point.coordinatesLine);
     return details;
   }
-
-  private buildNavigationUrl(point: ParkMapPointViewModel): string {
-    return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${point.latitude},${point.longitude}`)}`;
-  }
 }
+

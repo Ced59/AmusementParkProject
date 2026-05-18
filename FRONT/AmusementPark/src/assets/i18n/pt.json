@@ -478,7 +478,28 @@
           "itemCreated": "O elemento do parque foi criado e continuas em modo de edição.",
           "errorSummary": "Falha ao guardar",
           "errorDetail": "Ocorreu um erro ao guardar o elemento do parque."
-        }
+        },
+        "heightRequirements": {
+          "title": "Requisitos de altura",
+          "help": "Gerencia as regras de altura habituais em um só bloco. Cada campo é opcional.",
+          "fields": {
+            "minHeightCm": {
+              "label": "Altura mínima",
+              "help": "Acesso permitido a partir desta altura."
+            },
+            "minHeightAccompaniedCm": {
+              "label": "Altura mínima acompanhada",
+              "help": "A partir desta altura o acesso requer um adulto."
+            },
+            "maxHeightCm": {
+              "label": "Altura máxima",
+              "help": "Acesso proibido acima desta altura."
+            }
+          }
+        },
+        "advancedAccessConditionsTitle": "Outras condições",
+        "advancedAccessConditionsHelp": "Adicione apenas regras que não sejam requisitos de altura.",
+        "advancedAccessConditionsEmpty": "Nenhuma outra condição configurada."
       },
       "refactorHint": "O editor está agora dividido em separadores temáticos para tornar a página mais leve e fácil de usar.",
       "visibilityHelp": "Controla se este parque fica visível na aplicação pública.",
@@ -983,7 +1004,9 @@
       "relatedKicker": "Discover too",
       "relatedTitle": "Similar items",
       "relatedSubtitle": "Selection based on the item type, category or zone.",
-      "navigationTitle": "Navigation"
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Seleciona um ponto para o destacar no mapa ou abrir o itinerário a partir do marcador.",
+      "showLocationOnMap": "Mostrar no mapa"
     },
     "fields": {
       "category": "Category",
@@ -1085,6 +1108,17 @@
       },
       "lightbox": {
         "title": "Foto em ecrã inteiro"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Requisitos de altura",
+        "minHeight": "Altura mínima",
+        "minHeightHelp": "Permitido a partir desta altura.",
+        "minHeightAccompanied": "Altura com adulto",
+        "minHeightAccompaniedHelp": "Permitido com adulto a partir desta altura.",
+        "maxHeight": "Altura máxima",
+        "maxHeightHelp": "Acesso proibido acima desta altura."
       }
     }
   },

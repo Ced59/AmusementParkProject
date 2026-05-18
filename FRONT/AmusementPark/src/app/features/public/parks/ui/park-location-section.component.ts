@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
 import { MapMarker } from '@app/models/map/map-marker';
 import { UiMapSlotComponent } from '@ui/maps';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
+import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
 
 @Component({
   selector: 'app-park-location-section',
@@ -14,6 +15,12 @@ import { ParkDetailViewModel } from '../models/park-detail-view.model';
 })
 export class ParkLocationSectionComponent {
   @Input() park: ParkDetailViewModel | null = null;
+
+  constructor(
+    private readonly mapDirectionsUrlService: MapDirectionsUrlService,
+    private readonly translateService: TranslateService
+  ) {
+  }
 
   get hasCoordinates(): boolean {
     return this.park?.hasLocationInfo ?? false;
@@ -37,7 +44,13 @@ export class ParkLocationSectionComponent {
       lat: this.park.latitude,
       lng: this.park.longitude,
       title: this.park.name,
-      subtitle: this.park.locationLine
+      subtitle: this.park.locationLine,
+      actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
+        latitude: this.park.latitude,
+        longitude: this.park.longitude,
+        label: this.park.name
+      }),
+      actionLabel: this.translateService.instant('parks.map.navigate')
     }];
   }
 }

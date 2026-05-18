@@ -478,7 +478,28 @@
           "itemCreated": "L’élément du parc a été créé et l’édition continue sur cette page.",
           "errorSummary": "Échec de l’enregistrement",
           "errorDetail": "Une erreur est survenue pendant l’enregistrement de l’élément du parc."
-        }
+        },
+        "heightRequirements": {
+          "title": "Gabarit de taille",
+          "help": "Renseigne les tailles usuelles dans un seul bloc. Chaque champ est optionnel : vide, la règle n’est pas enregistrée.",
+          "fields": {
+            "minHeightCm": {
+              "label": "Taille minimale",
+              "help": "Accès autorisé à partir de cette taille."
+            },
+            "minHeightAccompaniedCm": {
+              "label": "Taille minimale accompagnée",
+              "help": "Entre cette taille et la taille minimale, l’accès nécessite un adulte."
+            },
+            "maxHeightCm": {
+              "label": "Taille maximale",
+              "help": "Accès interdit au-dessus de cette taille."
+            }
+          }
+        },
+        "advancedAccessConditionsTitle": "Autres conditions",
+        "advancedAccessConditionsHelp": "Ajoute seulement les règles qui ne relèvent pas du gabarit de taille : âge, santé, transfert, access pass ou condition personnalisée.",
+        "advancedAccessConditionsEmpty": "Aucune autre condition renseignée."
       },
       "refactorHint": "L’éditeur est désormais découpé en onglets thématiques pour alléger la page et mieux s’y retrouver.",
       "visibilityHelp": "Contrôle si ce parc est visible dans l’application publique.",
@@ -973,7 +994,7 @@
       "performanceTitle": "Performances",
       "experienceTitle": "Expérience & accessibilité",
       "accessConditionsTitle": "Conditions d’accès",
-      "accessConditionsSubtitle": "Règles affichées uniquement lorsqu’elles existent sur la fiche de l’élément.",
+      "accessConditionsSubtitle": "Résumé lisible des règles utiles avant de se rendre sur l’attraction.",
       "locationKicker": "Localisation",
       "locationTitle": "Localisation dans le parc",
       "preciseLocationSubtitle": "Des points précis sont renseignés : la carte affiche donc ces localisations spécifiques.",
@@ -983,7 +1004,9 @@
       "relatedKicker": "À découvrir aussi",
       "relatedTitle": "Éléments similaires",
       "relatedSubtitle": "Sélection basée sur le type, la catégorie ou la zone de l’élément.",
-      "navigationTitle": "Navigation"
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Sélectionne un point pour le retrouver sur la carte ou ouvrir un itinéraire depuis le marqueur.",
+      "showLocationOnMap": "Afficher sur la carte"
     },
     "fields": {
       "category": "Catégorie",
@@ -1085,6 +1108,17 @@
       },
       "lightbox": {
         "title": "Photo en plein écran"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Gabarit de taille",
+        "minHeight": "Taille minimale",
+        "minHeightHelp": "Autorisé à partir de cette taille.",
+        "minHeightAccompanied": "Taille accompagnée",
+        "minHeightAccompaniedHelp": "Autorisé avec un adulte à partir de cette taille.",
+        "maxHeight": "Taille maximale",
+        "maxHeightHelp": "Accès interdit au-dessus de cette taille."
       }
     }
   },

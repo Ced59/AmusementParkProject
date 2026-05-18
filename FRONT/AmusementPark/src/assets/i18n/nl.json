@@ -478,7 +478,28 @@
           "itemCreated": "Het parkelement is aangemaakt en je blijft in de bewerkingsmodus.",
           "errorSummary": "Opslaan mislukt",
           "errorDetail": "Er is een fout opgetreden bij het opslaan van het parkelement."
-        }
+        },
+        "heightRequirements": {
+          "title": "Lengtevoorwaarden",
+          "help": "Beheer de gebruikelijke lengteregels in één blok. Elk veld is optioneel.",
+          "fields": {
+            "minHeightCm": {
+              "label": "Minimumlengte",
+              "help": "Toegang toegestaan vanaf deze lengte."
+            },
+            "minHeightAccompaniedCm": {
+              "label": "Minimumlengte met begeleiding",
+              "help": "Vanaf deze lengte is toegang met een volwassene toegestaan."
+            },
+            "maxHeightCm": {
+              "label": "Maximumlengte",
+              "help": "Toegang verboden boven deze lengte."
+            }
+          }
+        },
+        "advancedAccessConditionsTitle": "Andere voorwaarden",
+        "advancedAccessConditionsHelp": "Voeg alleen regels toe die geen lengtevoorwaarden zijn.",
+        "advancedAccessConditionsEmpty": "Geen andere voorwaarde ingesteld."
       },
       "refactorHint": "De editor is nu opgesplitst in thematische tabbladen om de pagina lichter en overzichtelijker te maken.",
       "visibilityHelp": "Bepaalt of dit park zichtbaar is in de publieke applicatie.",
@@ -983,7 +1004,9 @@
       "relatedKicker": "Discover too",
       "relatedTitle": "Similar items",
       "relatedSubtitle": "Selection based on the item type, category or zone.",
-      "navigationTitle": "Navigation"
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Selecteer een punt om het op de kaart te markeren of een route via de marker te openen.",
+      "showLocationOnMap": "Toon op kaart"
     },
     "fields": {
       "category": "Category",
@@ -1085,6 +1108,17 @@
       },
       "lightbox": {
         "title": "Foto op volledig scherm"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Lengtevoorwaarden",
+        "minHeight": "Minimumlengte",
+        "minHeightHelp": "Toegestaan vanaf deze lengte.",
+        "minHeightAccompanied": "Lengte met begeleiding",
+        "minHeightAccompaniedHelp": "Toegestaan met een volwassene vanaf deze lengte.",
+        "maxHeight": "Maximumlengte",
+        "maxHeightHelp": "Toegang verboden boven deze lengte."
       }
     }
   },

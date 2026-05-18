@@ -42,11 +42,22 @@ export interface ParkItemPhotoViewModel {
   isCurrent: boolean;
 }
 
+export interface ParkItemAccessConditionMetricViewModel {
+  labelKey: string;
+  value: string;
+  helperKey: string | null;
+  iconClass: string;
+}
+
 export interface ParkItemAccessConditionViewModel {
   title: string | null;
   titleKey: string;
   description: string | null;
   rows: ParkItemDetailRowViewModel[];
+  metrics: ParkItemAccessConditionMetricViewModel[];
+  kind: 'height' | 'restriction' | 'default';
+  iconClass: string;
+  tone: string;
 }
 
 export interface ParkItemDetailViewModel {

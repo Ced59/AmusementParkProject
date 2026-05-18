@@ -478,7 +478,28 @@
           "itemCreated": "L’elemento del parco è stato creato e rimani in modalità modifica.",
           "errorSummary": "Salvataggio non riuscito",
           "errorDetail": "Si è verificato un errore durante il salvataggio dell’elemento del parco."
-        }
+        },
+        "heightRequirements": {
+          "title": "Requisiti di altezza",
+          "help": "Gestisci le regole di altezza usuali in un unico blocco. Ogni campo è opzionale.",
+          "fields": {
+            "minHeightCm": {
+              "label": "Altezza minima",
+              "help": "Accesso consentito da questa altezza."
+            },
+            "minHeightAccompaniedCm": {
+              "label": "Altezza minima accompagnata",
+              "help": "Da questa altezza l’accesso richiede un adulto."
+            },
+            "maxHeightCm": {
+              "label": "Altezza massima",
+              "help": "Accesso vietato oltre questa altezza."
+            }
+          }
+        },
+        "advancedAccessConditionsTitle": "Altre condizioni",
+        "advancedAccessConditionsHelp": "Aggiungi solo regole che non sono requisiti di altezza.",
+        "advancedAccessConditionsEmpty": "Nessun’altra condizione configurata."
       },
       "refactorHint": "L’editor è ora suddiviso in schede tematiche per alleggerire la pagina e renderla più chiara.",
       "visibilityHelp": "Controlla se questo parco è visibile nell’applicazione pubblica.",
@@ -983,7 +1004,9 @@
       "relatedKicker": "Discover too",
       "relatedTitle": "Similar items",
       "relatedSubtitle": "Selection based on the item type, category or zone.",
-      "navigationTitle": "Navigation"
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Seleziona un punto per evidenziarlo sulla mappa o aprire le indicazioni dal marker.",
+      "showLocationOnMap": "Mostra sulla mappa"
     },
     "fields": {
       "category": "Category",
@@ -1085,6 +1108,17 @@
       },
       "lightbox": {
         "title": "Foto a schermo intero"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Requisiti di altezza",
+        "minHeight": "Altezza minima",
+        "minHeightHelp": "Consentito da questa altezza.",
+        "minHeightAccompanied": "Altezza con adulto",
+        "minHeightAccompaniedHelp": "Consentito con un adulto da questa altezza.",
+        "maxHeight": "Altezza massima",
+        "maxHeightHelp": "Accesso vietato oltre questa altezza."
       }
     }
   },

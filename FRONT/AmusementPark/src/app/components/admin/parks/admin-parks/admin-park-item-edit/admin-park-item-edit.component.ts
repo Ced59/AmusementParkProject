@@ -76,7 +76,7 @@ export class AdminParkItemEditComponent implements OnInit {
   public readonly parkId = signal('');
   public readonly itemId = signal<string | null>(null);
   public readonly hasPendingChanges = signal(false);
-  public readonly selectedAccessConditionPreset = signal<AttractionAccessConditionType>('MinHeight');
+  public readonly selectedAccessConditionPreset = signal<AttractionAccessConditionType>('Custom');
   public readonly filteredTypeOptions = signal<AdminParkItemTypeOption[]>([]);
   public readonly isEditMode = computed(() => !!this.itemId());
   public readonly isAttractionCategory = computed(() => this.form.get('category')?.value === 'Attraction');

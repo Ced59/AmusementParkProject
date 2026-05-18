@@ -91,6 +91,42 @@
           <p>{{ currentDetail.description }}</p>
         </section>
 
+        <app-ui-map-shell
+          *ngIf="currentDetail.locationPoints.length > 0"
+          class="item-location-shell"
+          kickerIconClass="pi pi-map-marker"
+          kickerLabelKey="parkItems.detail.locationKicker"
+          titleKey="parkItems.detail.locationTitle"
+          subtitleKey="parkItems.detail.locationSubtitle">
+          <app-ui-map-slot [available]="locationMapMarkers().length > 0" minHeight="340px">
+            <app-leaflet-map
+              [center]="currentDetail.mapCenter"
+              [zoom]="currentDetail.mapZoom"
+              [markers]="locationMapMarkers()"
+              [fitBounds]="locationMapMarkers().length > 1 && !selectedLocationPointId()"
+              [fitBoundsMaxZoom]="18"
+              [selectedMarkerId]="selectedLocationPointId()"
+              (markerClick)="onLocationMarkerClick($event)">
+            </app-leaflet-map>
+          </app-ui-map-slot>
+
+          <div uiMapShellSide class="location-list">
+            <button
+              type="button"
+              class="location-row"
+              *ngFor="let point of currentDetail.locationPoints"
+              [class.location-row--active]="selectedLocationPointId() === point.id"
+              [attr.aria-pressed]="selectedLocationPointId() === point.id"
+              (click)="selectLocationPoint(point.id)">
+              <span class="location-row__icon">
+                <i [class]="point.iconClass" aria-hidden="true"></i>
+              </span>
+              <span class="location-row__label">{{ point.labelKey | translate }}</span>
+              <strong>{{ 'parkItems.detail.showLocationOnMap' | translate }}</strong>
+            </button>
+          </div>
+        </app-ui-map-shell>
+
         <app-ui-photo-carousel
           *ngIf="currentDetail.photos.length > 0"
           [photos]="currentDetail.photos"
@@ -133,7 +169,7 @@
           </div>
         </section>
 
-        <section class="detail-panel" appUiSurface="detail" appUiSurfacePadding="regular" *ngIf="currentDetail.accessConditions.length > 0">
+        <section class="detail-panel access-panel" appUiSurface="detail" appUiSurfacePadding="regular" *ngIf="currentDetail.accessConditions.length > 0">
           <app-ui-section-header
             kickerIconClass="pi pi-lock"
             kickerLabelKey="parkItems.detail.accessConditionsTitle"
@@ -141,54 +177,46 @@
             subtitleKey="parkItems.detail.accessConditionsSubtitle">
           </app-ui-section-header>
 
-          <div class="access-condition-list">
-            <article class="access-condition-card" *ngFor="let condition of currentDetail.accessConditions">
-              <h3>{{ condition.title || (condition.titleKey | translate) }}</h3>
-              <p *ngIf="condition.description">{{ condition.description }}</p>
+          <div class="access-condition-grid">
+            <article
+              class="access-condition-card"
+              *ngFor="let condition of currentDetail.accessConditions"
+              [attr.data-access-kind]="condition.kind"
+              [attr.data-access-tone]="condition.tone">
+              <div class="access-condition-card__icon">
+                <i [class]="condition.iconClass" aria-hidden="true"></i>
+              </div>
 
-              <div class="detail-row-grid detail-row-grid--compact" *ngIf="condition.rows.length > 0">
-                <div class="detail-data-row" *ngFor="let row of condition.rows">
-                  <span class="detail-data-row__icon" *ngIf="row.iconClass">
-                    <i [class]="row.iconClass" aria-hidden="true"></i>
-                  </span>
-                  <span class="detail-data-row__label">{{ row.labelKey | translate }}</span>
-                  <strong class="detail-data-row__value">{{ row.valueKey ? (row.valueKey | translate) : row.value }}</strong>
+              <div class="access-condition-card__content">
+                <h3>{{ condition.title || (condition.titleKey | translate) }}</h3>
+                <p *ngIf="condition.description">{{ condition.description }}</p>
+
+                <div class="height-requirement-summary" *ngIf="condition.metrics.length > 0">
+                  <div class="height-requirement-summary__rail" aria-hidden="true"></div>
+
+                  <article class="height-requirement-summary__item" *ngFor="let metric of condition.metrics">
+                    <span class="height-requirement-summary__icon">
+                      <i [class]="metric.iconClass" aria-hidden="true"></i>
+                    </span>
+                    <span class="height-requirement-summary__label">{{ metric.labelKey | translate }}</span>
+                    <strong>{{ metric.value }}</strong>
+                    <small *ngIf="metric.helperKey">{{ metric.helperKey | translate }}</small>
+                  </article>
+                </div>
+
+                <div class="detail-row-grid detail-row-grid--compact" *ngIf="condition.rows.length > 0">
+                  <div class="detail-data-row" *ngFor="let row of condition.rows">
+                    <span class="detail-data-row__icon" *ngIf="row.iconClass">
+                      <i [class]="row.iconClass" aria-hidden="true"></i>
+                    </span>
+                    <span class="detail-data-row__label">{{ row.labelKey | translate }}</span>
+                    <strong class="detail-data-row__value">{{ row.valueKey ? (row.valueKey | translate) : row.value }}</strong>
+                  </div>
                 </div>
               </div>
             </article>
           </div>
         </section>
-
-        <app-ui-map-shell
-          *ngIf="currentDetail.locationPoints.length > 0"
-          class="item-location-shell"
-          kickerIconClass="pi pi-map-marker"
-          kickerLabelKey="parkItems.detail.locationKicker"
-          titleKey="parkItems.detail.locationTitle"
-          [subtitleKey]="currentDetail.hasPreciseLocations ? 'parkItems.detail.preciseLocationSubtitle' : 'parkItems.detail.generalLocationSubtitle'">
-          <app-ui-map-slot [available]="currentDetail.mapMarkers.length > 0" minHeight="340px">
-            <app-leaflet-map
-              [center]="currentDetail.mapCenter"
-              [zoom]="currentDetail.mapZoom"
-              [markers]="currentDetail.mapMarkers"
-              [fitBounds]="currentDetail.mapMarkers.length > 1"
-              [fitBoundsMaxZoom]="18">
-            </app-leaflet-map>
-          </app-ui-map-slot>
-
-          <div uiMapShellSide class="location-list">
-            <article class="location-row" *ngFor="let point of currentDetail.locationPoints">
-              <span class="location-row__icon">
-                <i [class]="point.iconClass" aria-hidden="true"></i>
-              </span>
-              <span class="location-row__label">{{ point.labelKey | translate }}</span>
-              <strong>{{ point.coordinatesLabel }}</strong>
-              <app-ui-chip [tone]="point.isGeneralFallback ? 'soft' : 'sky'">
-                {{ (point.isGeneralFallback ? 'parkItems.detail.generalLocationBadge' : 'parkItems.detail.preciseLocationBadge') | translate }}
-              </app-ui-chip>
-            </article>
-          </div>
-        </app-ui-map-shell>
 
         <section class="related-section" *ngIf="currentDetail.relatedItems.length > 0">
           <app-ui-section-header
