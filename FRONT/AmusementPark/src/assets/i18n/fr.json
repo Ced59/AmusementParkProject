@@ -699,7 +699,8 @@
         "title": "Informations pratiques",
         "subtitle": "Les informations utiles au visiteur actuellement disponibles pour ce parc.",
         "postalCode": "Code postal",
-        "street": "Rue"
+        "street": "Rue",
+        "openReference": "Ouvrir la fiche de {{name}}"
       },
       "location": {
         "title": "Localisation",

@@ -699,7 +699,8 @@
         "title": "Practical information",
         "subtitle": "The visitor essentials currently available for this park.",
         "postalCode": "Kod pocztowy",
-        "street": "Ulica"
+        "street": "Ulica",
+        "openReference": "Open {{name}} details"
       },
       "location": {
         "title": "Location",

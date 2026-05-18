@@ -281,14 +281,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.35rem;
+  gap: 0.4rem;
+  max-width: 100%;
+  padding: 0.24rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 26%, transparent);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--app-primary) 8%, transparent);
   color: var(--app-heading);
   text-decoration: none !important;
+  transition: var(--transition);
 }
 
 .park-info-row__link span {
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--app-primary) 52%, transparent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .park-info-row__link i {
@@ -296,8 +303,12 @@
   font-size: 0.72rem;
 }
 
-.park-info-row__link:hover span {
+.park-info-row__link:hover,
+.park-info-row__link:focus-visible {
+  border-color: color-mix(in srgb, var(--app-primary) 48%, transparent);
+  background: color-mix(in srgb, var(--app-primary) 14%, transparent);
   color: var(--app-primary);
+  transform: translateY(-1px);
 }
 
 .park-info-row__value--mono {
@@ -310,6 +321,18 @@
 .park-stats-row__item app-ui-stat-card {
   display: block;
   height: 100%;
+}
+
+.park-content-summary-block {
+  order: 10;
+}
+
+.park-items-map-block {
+  order: 20;
+}
+
+.park-zones-block {
+  order: 30;
 }
 
 .info-card__header-icon--rose {
@@ -461,4 +484,11 @@
     max-width: none;
     text-align: left;
   }
+
+  .park-info-row__link {
+    justify-content: flex-start;
+    width: max-content;
+    max-width: 100%;
+  }
 }
+

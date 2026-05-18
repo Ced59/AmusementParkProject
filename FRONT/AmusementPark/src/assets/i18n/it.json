@@ -699,7 +699,8 @@
         "title": "Practical information",
         "subtitle": "The visitor essentials currently available for this park.",
         "postalCode": "CAP",
-        "street": "Via"
+        "street": "Via",
+        "openReference": "Apri la scheda di {{name}}"
       },
       "location": {
         "title": "Location",

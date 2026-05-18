@@ -135,8 +135,11 @@
                         <a [href]="row.externalUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener">
                           {{ row.value }}
                         </a>
-                      } @else if (row.routerLink) {
-                        <a [routerLink]="row.routerLink" class="park-info-row__link">
+                      } @else if (row.routerLink && row.routerLink.length > 0) {
+                        <a
+                          [routerLink]="row.routerLink"
+                          class="park-info-row__link"
+                          [attr.aria-label]="('parks.detail.practical.openReference' | translate: { name: row.value })">
                           <span>{{ row.value }}</span>
                           <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
                         </a>
