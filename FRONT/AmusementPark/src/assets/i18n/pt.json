@@ -1007,7 +1007,12 @@
         "count": "{{count}}",
         "all": "Todas",
         "previous": "Foto anterior",
-        "next": "Foto seguinte"
+        "next": "Foto seguinte",
+        "openFullscreen": "Abrir em ecrã inteiro",
+        "closeFullscreen": "Fechar ecrã inteiro"
+      },
+      "lightbox": {
+        "title": "Foto em ecrã inteiro"
       }
     }
   },
@@ -1049,6 +1054,36 @@
       "copy": "© {{year}} AmusementPark — Feito com ❤️ e adrenalina",
       "openSource": "Open Source",
       "mvp": "MVP"
+    }
+  },
+  "ui": {
+    "photoCarousel": {
+      "kicker": "Photos",
+      "title": "Fotos",
+      "subtitle": "Filtre as imagens por categoria para manter a ficha focada.",
+      "current": "Current",
+      "categories": {
+        "gallery": "Gallery",
+        "entrance": "Entrance",
+        "exit": "Exit",
+        "layout": "Layout",
+        "queue": "Queue",
+        "station": "Station"
+      },
+      "controls": {
+        "category": "Categoria da foto",
+        "allCategories": "Todas",
+        "displayCount": "Mostradas",
+        "count": "{{count}}",
+        "all": "Todas",
+        "previous": "Foto anterior",
+        "next": "Foto seguinte",
+        "openFullscreen": "Abrir em ecrã inteiro",
+        "closeFullscreen": "Fechar ecrã inteiro"
+      },
+      "lightbox": {
+        "title": "Foto em ecrã inteiro"
+      }
     }
   }
 }

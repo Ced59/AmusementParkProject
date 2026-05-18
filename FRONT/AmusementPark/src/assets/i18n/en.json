@@ -1007,7 +1007,12 @@
         "count": "{{count}}",
         "all": "All",
         "previous": "Previous photo",
-        "next": "Next photo"
+        "next": "Next photo",
+        "openFullscreen": "Open fullscreen",
+        "closeFullscreen": "Close fullscreen"
+      },
+      "lightbox": {
+        "title": "Fullscreen photo"
       }
     }
   },
@@ -1049,6 +1054,36 @@
       "copy": "© {{year}} AmusementPark — Made with ❤️ and adrenaline",
       "openSource": "Open Source",
       "mvp": "MVP"
+    }
+  },
+  "ui": {
+    "photoCarousel": {
+      "kicker": "Photos",
+      "title": "Photos",
+      "subtitle": "Filter visuals by category to keep the item sheet focused.",
+      "current": "Current",
+      "categories": {
+        "gallery": "Gallery",
+        "entrance": "Entrance",
+        "exit": "Exit",
+        "layout": "Layout",
+        "queue": "Queue",
+        "station": "Station"
+      },
+      "controls": {
+        "category": "Photo category",
+        "allCategories": "All",
+        "displayCount": "Shown",
+        "count": "{{count}}",
+        "all": "All",
+        "previous": "Previous photo",
+        "next": "Next photo",
+        "openFullscreen": "Open fullscreen",
+        "closeFullscreen": "Close fullscreen"
+      },
+      "lightbox": {
+        "title": "Fullscreen photo"
+      }
     }
   }
 }

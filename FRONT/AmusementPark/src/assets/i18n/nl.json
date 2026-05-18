@@ -1007,7 +1007,12 @@
         "count": "{{count}}",
         "all": "Alle",
         "previous": "Vorige foto",
-        "next": "Volgende foto"
+        "next": "Volgende foto",
+        "openFullscreen": "Volledig scherm openen",
+        "closeFullscreen": "Volledig scherm sluiten"
+      },
+      "lightbox": {
+        "title": "Foto op volledig scherm"
       }
     }
   },
@@ -1049,6 +1054,36 @@
       "copy": "© {{year}} AmusementPark — Gemaakt met ❤️ en adrenaline",
       "openSource": "Open Source",
       "mvp": "MVP"
+    }
+  },
+  "ui": {
+    "photoCarousel": {
+      "kicker": "Photos",
+      "title": "Foto's",
+      "subtitle": "Filter beelden per categorie zodat de detailpagina overzichtelijk blijft.",
+      "current": "Current",
+      "categories": {
+        "gallery": "Gallery",
+        "entrance": "Entrance",
+        "exit": "Exit",
+        "layout": "Layout",
+        "queue": "Queue",
+        "station": "Station"
+      },
+      "controls": {
+        "category": "Fotocategorie",
+        "allCategories": "Alle",
+        "displayCount": "Getoond",
+        "count": "{{count}}",
+        "all": "Alle",
+        "previous": "Vorige foto",
+        "next": "Volgende foto",
+        "openFullscreen": "Volledig scherm openen",
+        "closeFullscreen": "Volledig scherm sluiten"
+      },
+      "lightbox": {
+        "title": "Foto op volledig scherm"
+      }
     }
   }
 }
