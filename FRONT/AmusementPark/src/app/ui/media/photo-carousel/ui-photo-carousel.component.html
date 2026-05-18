@@ -78,6 +78,20 @@
           <app-ui-chip tone="primary">{{ currentPhoto.categoryLabelKey | translate }}</app-ui-chip>
           <app-ui-chip tone="soft" *ngIf="currentPhoto.isCurrent">{{ currentLabelKey | translate }}</app-ui-chip>
           <p *ngIf="currentPhoto.description">{{ currentPhoto.description }}</p>
+
+          <div class="photo-carousel__source" *ngIf="currentPhoto.sourceTitle">
+            <span class="photo-carousel__source-name">
+              <i [class]="currentPhoto.sourceIconClass ?? 'pi pi-map-marker'" aria-hidden="true"></i>
+              {{ currentPhoto.sourceTitle }}
+            </span>
+            <a
+              *ngIf="currentPhoto.sourceRouterLink"
+              class="photo-carousel__source-link"
+              [routerLink]="currentPhoto.sourceRouterLink"
+              [attr.aria-label]="(currentPhoto.sourceLinkLabelKey ?? 'ui.photoCarousel.controls.openSource') | translate:{ name: currentPhoto.sourceTitle }">
+              <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
         </div>
       </article>
 
@@ -171,6 +185,20 @@
         <app-ui-chip tone="primary">{{ fullscreenPhoto.categoryLabelKey | translate }}</app-ui-chip>
         <app-ui-chip tone="soft" *ngIf="fullscreenPhoto.isCurrent">{{ currentLabelKey | translate }}</app-ui-chip>
         <p *ngIf="fullscreenPhoto.description">{{ fullscreenPhoto.description }}</p>
+
+        <div class="photo-lightbox__source" *ngIf="fullscreenPhoto.sourceTitle">
+          <span class="photo-lightbox__source-name">
+            <i [class]="fullscreenPhoto.sourceIconClass ?? 'pi pi-map-marker'" aria-hidden="true"></i>
+            {{ fullscreenPhoto.sourceTitle }}
+          </span>
+          <a
+            *ngIf="fullscreenPhoto.sourceRouterLink"
+            class="photo-lightbox__source-link"
+            [routerLink]="fullscreenPhoto.sourceRouterLink"
+            [attr.aria-label]="(fullscreenPhoto.sourceLinkLabelKey ?? 'ui.photoCarousel.controls.openSource') | translate:{ name: fullscreenPhoto.sourceTitle }">
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
 
       <div class="photo-lightbox__thumbs" *ngIf="displayedPhotos.length > 1">

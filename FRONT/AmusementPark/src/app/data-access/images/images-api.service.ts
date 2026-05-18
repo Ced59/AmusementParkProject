@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -58,15 +58,29 @@ export class ImagesApiService {
     });
   }
 
-  getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory): Observable<ImageDto[]> {
-    const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getImages(ownerType, ownerId, category)}`;
-    return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url).pipe(
+  getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page: number = 1, size: number = 100): Observable<ImageDto[]> {
+    const ownerTypeApiValue: number = toImageOwnerTypeApiValue(ownerType);
+    const categoryApiValue: number = toImageCategoryApiValue(category);
+    const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getImages(
+      String(ownerTypeApiValue),
+      ownerId,
+      String(categoryApiValue)
+    )}`;
+    const params: HttpParams = new HttpParams()
+      .set('page', String(page))
+      .set('size', String(size));
+
+    return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url, { params }).pipe(
       map((response: ImageDto[] | PagedCollectionResponse<ImageDto>) => unwrapCollection<ImageDto>(response))
     );
   }
 
   getCurrentImage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory): Observable<ImageDto> {
-    const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getCurrentImage(ownerType, ownerId, category)}`;
+    const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getCurrentImage(
+      String(toImageOwnerTypeApiValue(ownerType)),
+      ownerId,
+      String(toImageCategoryApiValue(category))
+    )}`;
     return this.http.get<ImageDto>(url);
   }
 

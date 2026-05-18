@@ -536,3 +536,54 @@
     height: min(58vh, 34rem);
   }
 }
+
+.photo-carousel__source,
+.photo-lightbox__source {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.photo-carousel__source-name,
+.photo-lightbox__source-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  color: var(--app-heading);
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.photo-carousel__source-name i,
+.photo-lightbox__source-name i {
+  color: var(--photo-tone);
+  font-size: 0.78rem;
+}
+
+.photo-carousel__source-link,
+.photo-lightbox__source-link {
+  display: inline-grid;
+  width: 1.85rem;
+  height: 1.85rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--photo-tone) 24%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--photo-tone) 8%, transparent);
+  color: var(--photo-tone);
+  font-size: 0.72rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.photo-carousel__source-link:hover,
+.photo-carousel__source-link:focus-visible,
+.photo-lightbox__source-link:hover,
+.photo-lightbox__source-link:focus-visible {
+  border-color: color-mix(in srgb, var(--photo-tone) 48%, transparent);
+  background: color-mix(in srgb, var(--photo-tone) 14%, transparent);
+  color: var(--app-heading);
+  transform: translateY(-1px);
+}

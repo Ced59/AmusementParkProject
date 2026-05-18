@@ -1,6 +1,11 @@
 import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { catchError, from, map, mergeMap, of, toArray } from 'rxjs';
 
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { ParkFounder } from '@app/models/parks/park-founder';
 import { Park } from '@app/models/parks/park';
 import { ParkExplorer, ParkExplorerBucket, ParkExplorerCount } from '@app/models/parks/park-explorer';
@@ -8,6 +13,7 @@ import { ParkItem } from '@app/models/parks/park-item';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
 import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
@@ -19,7 +25,7 @@ import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store'
 import { mapArray, mapNullable, mapParkToCardModel } from '@shared/utils/mapping';
 import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
 import { mapParkItemsToMapViewModel } from '../mappers/park-items-map-view.mapper';
-import { mapParkToDetailViewModel } from '../mappers/park-detail-view.mapper';
+import { mapParkToDetailViewModel, ParkDetailItemPhotoSource } from '../mappers/park-detail-view.mapper';
 import { mapParkZoneToDetailViewModel } from '../mappers/park-zone-detail-view.mapper';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
@@ -35,6 +41,9 @@ interface ParkDetailSourceData {
   nearbyParks: Park[];
   nearbyState: ScreenStateKind;
   parkItems: ParkItem[];
+  parkPhotos: ImageDto[];
+  itemPhotoSources: ParkDetailItemPhotoSource[];
+  imageTags: ImageTagDto[];
 }
 
 @Injectable()
@@ -46,19 +55,27 @@ export class ParkDetailStateFacade {
   public readonly park: Signal<ParkDetailViewModel | null> = computed(() => {
     const sourceData: ParkDetailSourceData | undefined = this.screenStateStore.data();
 
-    return mapNullable(sourceData?.park, (park: Park) => mapParkToDetailViewModel(
-      park,
-      this.currentLanguageSignal(),
-      {
-        founderName: sourceData?.founderName ?? null,
-        operatorName: sourceData?.operatorName ?? null,
-        countryName: this.countryDisplayService.resolveLocalizedCountryName(park.countryCode, this.currentLanguageSignal())
-      },
-      {
-        totalItems: sourceData?.explorer?.overview.totalItems ?? null,
-        zoneCount: this.resolveZoneCount(sourceData)
-      }
-    ));
+    return mapNullable(sourceData?.park, (park: Park) => {
+      const mappedPark: ParkDetailViewModel = mapParkToDetailViewModel(
+        park,
+        this.currentLanguageSignal(),
+        {
+          founderName: sourceData?.founderName ?? null,
+          operatorName: sourceData?.operatorName ?? null,
+          countryName: this.countryDisplayService.resolveLocalizedCountryName(park.countryCode, this.currentLanguageSignal())
+        },
+        {
+          totalItems: sourceData?.explorer?.overview.totalItems ?? null,
+          zoneCount: this.resolveZoneCount(sourceData)
+        },
+        sourceData?.parkPhotos ?? [],
+        sourceData?.itemPhotoSources ?? [],
+        sourceData?.imageTags ?? []
+      );
+
+
+      return mappedPark;
+    });
   });
   public readonly summary: Signal<ParkContentSummaryViewModel | null> = computed(() => {
     return mapParkContentSummaryViewModel(this.park(), this.screenStateStore.data()?.explorer ?? null);
@@ -108,6 +125,7 @@ export class ParkDetailStateFacade {
 
   constructor(
     private readonly parksApiService: ParksApiService,
+    private readonly imagesApiService: ImagesApiService,
     private readonly parkItemsApiService: ParkItemsApiService,
     private readonly parkZonesApiService: ParkZonesApiService,
     private readonly parkFoundersApiService: ParkFoundersApiService,
@@ -127,6 +145,7 @@ export class ParkDetailStateFacade {
 
     this.parksApiService.getParkById(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (park: Park) => {
+
         const sourceData: ParkDetailSourceData = {
           park,
           explorer: null,
@@ -135,7 +154,10 @@ export class ParkDetailStateFacade {
           operatorName: null,
           nearbyParks: [],
           nearbyState: 'empty',
-          parkItems: []
+          parkItems: [],
+          parkPhotos: [],
+          itemPhotoSources: [],
+          imageTags: []
         };
 
         this.screenStateStore.setReady(sourceData);
@@ -143,6 +165,8 @@ export class ParkDetailStateFacade {
         this.loadExplorerSummary(park.id ?? id);
         this.loadZones(park.id ?? id);
         this.loadParkItems(park.id ?? id);
+        this.loadParkPhotos(park.id ?? id);
+        this.loadImageTags();
         this.loadReferences(park);
       },
       error: (error: unknown) => {
@@ -192,12 +216,94 @@ export class ParkDetailStateFacade {
           ...current,
           parkItems: items
         }));
+
+        this.loadParkItemPhotos(items);
       },
       error: (error: unknown) => {
         console.error('Error loading park items for map', error);
         this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
           parkItems: []
+        }));
+      }
+    });
+  }
+
+
+  private loadParkPhotos(parkId: string): void {
+
+    this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, 100).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (photos: ImageDto[]) => {
+
+        this.updateReadyData((current: ParkDetailSourceData) => ({
+          ...current,
+          parkPhotos: photos
+        }));
+      },
+      error: () => {
+        this.updateReadyData((current: ParkDetailSourceData) => ({
+          ...current,
+          parkPhotos: []
+        }));
+      }
+    });
+  }
+
+  private loadImageTags(): void {
+    this.imagesApiService.getAdminImageTags().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (imageTags: ImageTagDto[]) => {
+
+        this.updateReadyData((current: ParkDetailSourceData) => ({
+          ...current,
+          imageTags
+        }));
+      },
+      error: () => {
+        this.updateReadyData((current: ParkDetailSourceData) => ({
+          ...current,
+          imageTags: []
+        }));
+      }
+    });
+  }
+
+  private loadParkItemPhotos(items: ParkItem[]): void {
+    const itemsWithIdentifier: ParkItem[] = items.filter((item: ParkItem) => !!item.id && item.isVisible !== false);
+
+    if (itemsWithIdentifier.length === 0) {
+      this.updateReadyData((current: ParkDetailSourceData) => ({
+        ...current,
+        itemPhotoSources: []
+      }));
+      return;
+    }
+
+    from(itemsWithIdentifier).pipe(
+      mergeMap((item: ParkItem) => {
+        return this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, item.id!, ImageCategory.ATTRACTION, 1, 100).pipe(
+          map((photos: ImageDto[]) => {
+            return { item, photos } as ParkDetailItemPhotoSource;
+          }),
+          catchError(() => {
+            return of({ item, photos: [] } as ParkDetailItemPhotoSource);
+          })
+        );
+      }, 5),
+      toArray(),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: (itemPhotoSources: ParkDetailItemPhotoSource[]) => {
+
+        this.updateReadyData((current: ParkDetailSourceData) => ({
+          ...current,
+          itemPhotoSources
+        }));
+      },
+      error: (error: unknown) => {
+        console.error('Error loading park item photos', error);
+        this.updateReadyData((current: ParkDetailSourceData) => ({
+          ...current,
+          itemPhotoSources: []
         }));
       }
     });

@@ -488,7 +488,8 @@
         "general": "Général",
         "location": "Localisation",
         "descriptions": "Descriptions",
-        "logos": "Logos"
+        "logos": "Logos",
+        "photos": "Photos"
       },
       "editorStatus": {
         "saving": "Enregistrement en cours...",
@@ -522,7 +523,44 @@
       "featuredSponsoredField": "Mention sponsorisée",
       "featuredSponsoredHelp": "Affiche une mention sponsorisée sur la card publique quand cette mise en avant correspond à un partenariat.",
       "featuredSponsoredEnabled": "Sponsorisé",
-      "featuredSponsoredDisabled": "Non sponsorisé"
+      "featuredSponsoredDisabled": "Non sponsorisé",
+      "photos": {
+        "sectionTitle": "Photos du parc",
+        "sectionHelp": "Ajoute les visuels généraux du parc : entrée, vue d’ensemble, plan, ambiance, restauration ou services.",
+        "saveBeforeUpload": "Enregistre d’abord le parc pour pouvoir lui associer des photos.",
+        "currentTitle": "Photo actuelle",
+        "uploadTitle": "Ajouter une photo",
+        "uploadButton": "Uploader la photo",
+        "historyTitle": "Historique des photos",
+        "empty": "Aucune photo pour ce parc.",
+        "noCurrent": "Aucune photo actuelle définie.",
+        "currentLabel": "Actuelle",
+        "noDescription": "Aucune description",
+        "alt": "Photo du parc",
+        "descriptionPlaceholder": "Description optionnelle de la photo",
+        "deleteConfirm": "Supprimer cette photo ?",
+        "selectedCount": "{{count}} fichier(s) sélectionné(s)",
+        "uploadSuccess": "{{count}} photo(s) importée(s) avec succès.",
+        "uploadError": "Une erreur est survenue après {{count}} import(s).",
+        "currentSetSuccess": "La photo courante a été mise à jour.",
+        "deleteSuccess": "La photo a été supprimée.",
+        "categoryLabel": "Catégorie photo",
+        "descriptionLabel": "Description",
+        "categorized": "Catégorisée",
+        "categories": {
+          "gallery": "Galerie",
+          "entrance": "Entrée du parc",
+          "overview": "Vue d’ensemble",
+          "map": "Plan / layout",
+          "atmosphere": "Ambiance",
+          "event": "Événement",
+          "food": "Restauration",
+          "services": "Services",
+          "halloween": "Halloween",
+          "christmas": "Noël",
+          "easter": "Pâques"
+        }
+      }
     },
     "loading": "Chargement...",
     "operators": {
@@ -846,6 +884,40 @@
         "descriptionTitle": "Présentation du fondateur",
         "emptyDescription": "Aucune biographie enrichie n’est encore disponible pour ce fondateur."
       }
+    },
+    "photos": {
+      "kicker": "Photos",
+      "title": "Photos",
+      "subtitle": "Photos générales du parc et visuels issus des éléments du parc, filtrables par type.",
+      "current": "Actuelle",
+      "openItem": "Ouvrir la fiche {{name}}",
+      "categories": {
+        "gallery": "Parc · Galerie",
+        "entrance": "Entrée du parc",
+        "overview": "Vue d’ensemble",
+        "map": "Plan / layout",
+        "atmosphere": "Ambiance",
+        "event": "Événements",
+        "food": "Restauration",
+        "services": "Services",
+        "halloween": "Halloween",
+        "christmas": "Noël",
+        "easter": "Pâques"
+      },
+      "controls": {
+        "category": "Catégorie de photo",
+        "allCategories": "Toutes",
+        "displayCount": "Nombre affiché",
+        "count": "{{count}}",
+        "all": "Tout",
+        "previous": "Photo précédente",
+        "next": "Photo suivante",
+        "openFullscreen": "Agrandir",
+        "closeFullscreen": "Fermer le plein écran"
+      },
+      "lightbox": {
+        "title": "Photo en plein écran"
+      }
     }
   },
   "parkVisitor": {
@@ -1079,7 +1151,8 @@
         "previous": "Photo précédente",
         "next": "Photo suivante",
         "openFullscreen": "Agrandir",
-        "closeFullscreen": "Fermer le plein écran"
+        "closeFullscreen": "Fermer le plein écran",
+        "openSource": "Ouvrir {{name}}"
       },
       "lightbox": {
         "title": "Photo en plein écran"

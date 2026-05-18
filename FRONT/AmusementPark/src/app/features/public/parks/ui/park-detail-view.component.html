@@ -1,16 +1,37 @@
+@let currentState = state;
+@let currentPark = park;
+@let currentSummary = summary;
+@let currentItemsMap = itemsMap;
+@let currentZones = zones;
+@let currentNearbyParks = nearbyParks;
+@let currentNearbyState = nearbyState;
+
 <app-page-state
-  [state]="state().kind"
+  [state]="currentState"
   [messages]="{
     loadingTitleKey: 'parks.detail.loadingTitle',
     loadingMessageKey: 'parks.detail.loadingMessage',
     errorTitleKey: 'parks.detail.errorTitle',
     errorMessageKey: 'parks.detail.errorMessage'
   }">
-  @if (park(); as currentPark) {
+  @if (currentPark) {
     <section class="park-detail">
       <section class="park-banner">
         <div class="park-banner__bg" aria-hidden="true"></div>
         <div class="park-banner__pattern" aria-hidden="true"></div>
+
+        @if (currentPark.heroImageId) {
+          <div class="park-banner__photo" aria-hidden="true">
+            <app-image-display
+              [imageId]="currentPark.heroImageId"
+              [alt]="currentPark.name"
+              loading="eager"
+              imgClass="park-banner__photo-img"
+              placeholderClass="park-banner__photo-placeholder"
+              placeholderIconClass="pi pi-image">
+            </app-image-display>
+          </div>
+        }
 
         <div class="park-banner__content">
           <div class="park-logo-frame" [class.park-logo-frame--placeholder]="!currentPark.logoImageId">
@@ -104,13 +125,41 @@
             }
           </section>
 
-          @if (summary(); as currentSummary) {
+
+          @if (currentSummary) {
             <app-park-content-summary class="park-content-summary-block" [summary]="currentSummary"></app-park-content-summary>
           }
 
-          <app-park-items-map-section class="park-items-map-block" [map]="itemsMap()"></app-park-items-map-section>
+          <app-park-items-map-section class="park-items-map-block" [map]="currentItemsMap"></app-park-items-map-section>
 
-          <app-park-zones-section class="park-zones-block" [zones]="zones()"></app-park-zones-section>
+          <app-park-zones-section class="park-zones-block" [zones]="currentZones"></app-park-zones-section>
+
+
+          @if (currentPark.photos.length > 0) {
+            <app-ui-photo-carousel
+              class="park-photos-block"
+              [photos]="currentPark.photos"
+              [categories]="currentPark.photoCategories"
+              [defaultDisplayLimit]="8"
+              [displayLimits]="[4, 8, 12, 0]"
+              tone="sky"
+              kickerIconClass="pi pi-images"
+              kickerLabelKey="parks.photos.kicker"
+              titleKey="parks.photos.title"
+              subtitleKey="parks.photos.subtitle"
+              categoryAriaLabelKey="parks.photos.controls.category"
+              allCategoriesLabelKey="parks.photos.controls.allCategories"
+              displayCountLabelKey="parks.photos.controls.displayCount"
+              countLimitLabelKey="parks.photos.controls.count"
+              allLimitLabelKey="parks.photos.controls.all"
+              previousLabelKey="parks.photos.controls.previous"
+              nextLabelKey="parks.photos.controls.next"
+              openFullscreenLabelKey="parks.photos.controls.openFullscreen"
+              closeFullscreenLabelKey="parks.photos.controls.closeFullscreen"
+              lightboxTitleKey="parks.photos.lightbox.title"
+              currentLabelKey="parks.photos.current">
+            </app-ui-photo-carousel>
+          }
         </main>
 
         <aside class="park-sidebar" aria-label="Park detail sidebar">
@@ -210,9 +259,9 @@
       </div>
 
       <app-park-nearby-section
-        [parks]="nearbyParks()"
-        [currentLang]="currentLang()"
-        [state]="nearbyState()">
+        [parks]="currentNearbyParks"
+        [currentLang]="currentLang"
+        [state]="currentNearbyState">
       </app-park-nearby-section>
     </section>
   }

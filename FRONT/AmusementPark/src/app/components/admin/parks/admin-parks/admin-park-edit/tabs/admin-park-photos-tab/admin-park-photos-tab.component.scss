@@ -1,0 +1,63 @@
+.park-photos-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.photo-card__header h4 {
+  margin: 0;
+}
+
+.photo-card__body {
+  min-height: 13rem;
+}
+
+.photo-upload-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.photo-preview,
+.photo-history-preview {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  background: var(--surface-card);
+}
+
+.photo-preview {
+  max-width: 18rem;
+  aspect-ratio: 4 / 3;
+}
+
+.photo-history-preview {
+  aspect-ratio: 4 / 3;
+}
+
+.photo-preview--placeholder,
+.photo-history-preview--placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--text-color-secondary);
+}
+
+.photo-empty-text {
+  max-width: 16rem;
+}
+
+.section-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .photo-upload-grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+}

@@ -1,3 +1,4 @@
+import { ImageCategory } from '@app/models/images/image-category';
 import { ParkType } from '@app/models/parks/park-type';
 import { ParkDetailInfoRowViewModel } from './park-detail-info-row.model';
 
@@ -7,6 +8,29 @@ export interface ParkDetailStatViewModel {
   hintKey?: string | null;
   hintText?: string | null;
   tone?: 'primary' | 'lime' | 'sky' | 'gold' | 'rose' | 'soft';
+}
+
+
+export interface ParkDetailPhotoCategoryOptionViewModel {
+  key: string;
+  labelKey: string;
+  count: number;
+}
+
+export interface ParkDetailPhotoViewModel {
+  id: string;
+  imageId: string;
+  category: ImageCategory;
+  categoryKey: string;
+  categoryLabelKey: string;
+  description: string | null;
+  alt: string;
+  isCurrent: boolean;
+  sourceTitle?: string | null;
+  sourceSubtitle?: string | null;
+  sourceIconClass?: string | null;
+  sourceRouterLink?: string[] | null;
+  sourceLinkLabelKey?: string | null;
 }
 
 export interface ParkDetailViewModel {
@@ -19,6 +43,7 @@ export interface ParkDetailViewModel {
   postalCode: string | null;
   websiteUrl: string | null;
   logoImageId: string | null;
+  heroImageId: string | null;
   description: string | null;
   type: ParkType | null;
   typeLabelKey: string | null;
@@ -43,4 +68,7 @@ export interface ParkDetailViewModel {
   publicationRows: ParkDetailInfoRowViewModel[];
   locationRows: ParkDetailInfoRowViewModel[];
   stats: ParkDetailStatViewModel[];
+  photos: ParkDetailPhotoViewModel[];
+  photoCategories: ParkDetailPhotoCategoryOptionViewModel[];
 }
+

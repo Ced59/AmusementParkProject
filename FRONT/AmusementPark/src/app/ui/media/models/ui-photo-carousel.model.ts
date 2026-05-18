@@ -6,6 +6,11 @@ export interface UiPhotoCarouselImage {
   categoryLabelKey: string;
   description: string | null;
   isCurrent?: boolean;
+  sourceTitle?: string | null;
+  sourceSubtitle?: string | null;
+  sourceIconClass?: string | null;
+  sourceRouterLink?: string[] | null;
+  sourceLinkLabelKey?: string | null;
 }
 
 export interface UiPhotoCarouselCategoryOption {

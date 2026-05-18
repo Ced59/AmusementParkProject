@@ -488,7 +488,8 @@
         "general": "Algemeen",
         "location": "Locatie",
         "descriptions": "Beschrijvingen",
-        "logos": "Logo’s"
+        "logos": "Logo’s",
+        "photos": "Photos"
       },
       "editorStatus": {
         "saving": "Opslaan...",
@@ -522,7 +523,44 @@
       "featuredSponsoredField": "Sponsorvermelding",
       "featuredSponsoredHelp": "Toont een sponsorvermelding op de openbare kaart wanneer deze uitgelichte plaatsing een samenwerking is.",
       "featuredSponsoredEnabled": "Gesponsord",
-      "featuredSponsoredDisabled": "Niet gesponsord"
+      "featuredSponsoredDisabled": "Niet gesponsord",
+      "photos": {
+        "sectionTitle": "Park photos",
+        "sectionHelp": "Add general park visuals: entrance, overview, map, atmosphere, food or services.",
+        "saveBeforeUpload": "Save the park first before attaching photos.",
+        "currentTitle": "Current photo",
+        "uploadTitle": "Add a photo",
+        "uploadButton": "Upload photo",
+        "historyTitle": "Photo history",
+        "empty": "No photo for this park.",
+        "noCurrent": "No current photo selected.",
+        "currentLabel": "Current",
+        "noDescription": "No description",
+        "alt": "Park photo",
+        "descriptionPlaceholder": "Optional photo description",
+        "deleteConfirm": "Delete this photo?",
+        "selectedCount": "{{count}} selected file(s)",
+        "uploadSuccess": "{{count}} photo(s) uploaded successfully.",
+        "uploadError": "An error occurred after {{count}} upload(s).",
+        "currentSetSuccess": "The current photo has been updated.",
+        "deleteSuccess": "The photo has been deleted.",
+        "categoryLabel": "Photo category",
+        "descriptionLabel": "Description",
+        "categorized": "Categorized",
+        "categories": {
+          "gallery": "Gallery",
+          "entrance": "Park entrance",
+          "overview": "Overview",
+          "map": "Map / layout",
+          "atmosphere": "Atmosphere",
+          "event": "Event",
+          "food": "Food",
+          "services": "Services",
+          "halloween": "Halloween",
+          "christmas": "Kerst",
+          "easter": "Pasen"
+        }
+      }
     },
     "loading": "Laden...",
     "operators": {
@@ -846,6 +884,40 @@
         "descriptionTitle": "Over de oprichter",
         "emptyDescription": "Er is nog geen rijke biografie beschikbaar voor deze oprichter."
       }
+    },
+    "photos": {
+      "kicker": "Photos",
+      "title": "Photos",
+      "subtitle": "General park photos and visuals from park items, filterable by type.",
+      "current": "Current",
+      "openItem": "Open {{name}} detail page",
+      "categories": {
+        "gallery": "Park · Gallery",
+        "entrance": "Park entrance",
+        "overview": "Overview",
+        "map": "Map / layout",
+        "atmosphere": "Atmosphere",
+        "event": "Events",
+        "food": "Food",
+        "services": "Services",
+        "halloween": "Halloween",
+        "christmas": "Kerst",
+        "easter": "Pasen"
+      },
+      "controls": {
+        "category": "Photo category",
+        "allCategories": "All",
+        "displayCount": "Displayed count",
+        "count": "{{count}}",
+        "all": "All",
+        "previous": "Previous photo",
+        "next": "Next photo",
+        "openFullscreen": "Expand",
+        "closeFullscreen": "Close fullscreen"
+      },
+      "lightbox": {
+        "title": "Fullscreen photo"
+      }
     }
   },
   "parkVisitor": {
@@ -1079,7 +1151,8 @@
         "previous": "Vorige foto",
         "next": "Volgende foto",
         "openFullscreen": "Volledig scherm openen",
-        "closeFullscreen": "Volledig scherm sluiten"
+        "closeFullscreen": "Volledig scherm sluiten",
+        "openSource": "Open {{name}}"
       },
       "lightbox": {
         "title": "Foto op volledig scherm"

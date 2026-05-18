@@ -2,16 +2,26 @@ import { Component, Input } from '@angular/core';
 import { ViewState } from '@app/models/shared/view-state';
 import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { EmptyStateComponent } from '../empty-state/empty-state.component';
-import { PageStateMessages, ScreenStateKind } from '@shared/models/contracts';
+import { PageStateMessages, ScreenState, ScreenStateKind } from '@shared/models/contracts';
 
 @Component({
-    selector: 'app-page-state',
-    templateUrl: './page-state.component.html',
-    styleUrls: ['./page-state.component.scss'],
-    imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, EmptyStateComponent]
+  selector: 'app-page-state',
+  templateUrl: './page-state.component.html',
+  styleUrls: ['./page-state.component.scss'],
+  imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, EmptyStateComponent]
 })
 export class PageStateComponent {
-  @Input() state: ViewState | ScreenStateKind = ViewState.Ready;
+  private currentState: ViewState | ScreenStateKind = ViewState.Ready;
+
+  @Input()
+  set state(value: ViewState | ScreenStateKind | ScreenState<unknown, unknown> | null | undefined) {
+    this.currentState = this.resolveStateKind(value);
+  }
+
+  get state(): ViewState | ScreenStateKind {
+    return this.currentState;
+  }
+
   @Input() messages: PageStateMessages | null = null;
 
   @Input() loadingTitleKey: string = 'common.loadingTitle';
@@ -45,5 +55,17 @@ export class PageStateComponent {
 
   protected get resolvedEmptyMessageKey(): string {
     return this.messages?.emptyMessageKey ?? this.emptyMessageKey;
+  }
+
+  private resolveStateKind(value: ViewState | ScreenStateKind | ScreenState<unknown, unknown> | null | undefined): ViewState | ScreenStateKind {
+    if (!value) {
+      return ViewState.Ready;
+    }
+
+    if (typeof value === 'string') {
+      return value;
+    }
+
+    return value.kind;
   }
 }

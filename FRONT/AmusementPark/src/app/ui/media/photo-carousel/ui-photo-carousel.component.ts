@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ImageDisplayComponent } from '@app/components/shared/image-display/image-display.component';
@@ -18,7 +19,8 @@ import { UiPhotoCarouselCategoryOption, UiPhotoCarouselImage } from '../models/u
     TranslateModule,
     UiChipComponent,
     UiSectionHeaderComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    RouterLink
   ]
 })
 export class UiPhotoCarouselComponent implements OnChanges {

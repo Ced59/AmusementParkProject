@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SafeExternalUrlPipe, SafeRichHtmlPipe } from '@shared/pipes';
@@ -7,6 +7,7 @@ import { ImageDisplayComponent } from '@app/components/shared/image-display/imag
 import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
 import { ScreenState, ScreenStateKind } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
+import { UiPhotoCarouselComponent } from '@ui/media';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent } from '@ui/primitives';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
@@ -38,18 +39,19 @@ import { ParkZonesSectionComponent } from './park-zones-section.component';
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,
-    UiStatCardComponent
+    UiStatCardComponent,
+    UiPhotoCarouselComponent
   ]
 })
 export class ParkDetailViewComponent {
-  @Input() state!: Signal<ScreenState<unknown, string>>;
-  @Input() park!: Signal<ParkDetailViewModel | null>;
-  @Input() summary!: Signal<ParkContentSummaryViewModel | null>;
-  @Input() itemsMap!: Signal<ParkItemsMapViewModel | null>;
-  @Input() zones!: Signal<ParkZoneDetailViewModel[]>;
-  @Input() nearbyParks!: Signal<ParkCardModel[]>;
-  @Input() nearbyState!: Signal<ScreenStateKind>;
-  @Input() currentLang!: Signal<string>;
+  @Input() state: ScreenState<unknown, string> | null = null;
+  @Input() park: ParkDetailViewModel | null = null;
+  @Input() summary: ParkContentSummaryViewModel | null = null;
+  @Input() itemsMap: ParkItemsMapViewModel | null = null;
+  @Input() zones: ParkZoneDetailViewModel[] = [];
+  @Input() nearbyParks: ParkCardModel[] = [];
+  @Input() nearbyState: ScreenStateKind = 'empty';
+  @Input() currentLang: string = 'en';
 
   @Output() backClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() exploreClicked: EventEmitter<void> = new EventEmitter<void>();

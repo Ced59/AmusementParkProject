@@ -488,7 +488,8 @@
         "general": "General",
         "location": "Ubicación",
         "descriptions": "Descripciones",
-        "logos": "Logotipos"
+        "logos": "Logotipos",
+        "photos": "Photos"
       },
       "editorStatus": {
         "saving": "Guardando...",
@@ -522,7 +523,44 @@
       "featuredSponsoredField": "Aviso de patrocinio",
       "featuredSponsoredHelp": "Muestra un aviso de patrocinio en la tarjeta pública cuando esta promoción corresponde a una colaboración.",
       "featuredSponsoredEnabled": "Patrocinado",
-      "featuredSponsoredDisabled": "No patrocinado"
+      "featuredSponsoredDisabled": "No patrocinado",
+      "photos": {
+        "sectionTitle": "Park photos",
+        "sectionHelp": "Add general park visuals: entrance, overview, map, atmosphere, food or services.",
+        "saveBeforeUpload": "Save the park first before attaching photos.",
+        "currentTitle": "Current photo",
+        "uploadTitle": "Add a photo",
+        "uploadButton": "Upload photo",
+        "historyTitle": "Photo history",
+        "empty": "No photo for this park.",
+        "noCurrent": "No current photo selected.",
+        "currentLabel": "Current",
+        "noDescription": "No description",
+        "alt": "Park photo",
+        "descriptionPlaceholder": "Optional photo description",
+        "deleteConfirm": "Delete this photo?",
+        "selectedCount": "{{count}} selected file(s)",
+        "uploadSuccess": "{{count}} photo(s) uploaded successfully.",
+        "uploadError": "An error occurred after {{count}} upload(s).",
+        "currentSetSuccess": "The current photo has been updated.",
+        "deleteSuccess": "The photo has been deleted.",
+        "categoryLabel": "Photo category",
+        "descriptionLabel": "Description",
+        "categorized": "Categorized",
+        "categories": {
+          "gallery": "Gallery",
+          "entrance": "Park entrance",
+          "overview": "Overview",
+          "map": "Map / layout",
+          "atmosphere": "Atmosphere",
+          "event": "Event",
+          "food": "Food",
+          "services": "Services",
+          "halloween": "Halloween",
+          "christmas": "Navidad",
+          "easter": "Pascua"
+        }
+      }
     },
     "loading": "Cargando...",
     "operators": {
@@ -846,6 +884,40 @@
         "descriptionTitle": "Sobre el fundador",
         "emptyDescription": "Aún no hay una biografía enriquecida disponible para este fundador."
       }
+    },
+    "photos": {
+      "kicker": "Photos",
+      "title": "Photos",
+      "subtitle": "General park photos and visuals from park items, filterable by type.",
+      "current": "Current",
+      "openItem": "Open {{name}} detail page",
+      "categories": {
+        "gallery": "Park · Gallery",
+        "entrance": "Park entrance",
+        "overview": "Overview",
+        "map": "Map / layout",
+        "atmosphere": "Atmosphere",
+        "event": "Events",
+        "food": "Food",
+        "services": "Services",
+        "halloween": "Halloween",
+        "christmas": "Navidad",
+        "easter": "Pascua"
+      },
+      "controls": {
+        "category": "Photo category",
+        "allCategories": "All",
+        "displayCount": "Displayed count",
+        "count": "{{count}}",
+        "all": "All",
+        "previous": "Previous photo",
+        "next": "Next photo",
+        "openFullscreen": "Expand",
+        "closeFullscreen": "Close fullscreen"
+      },
+      "lightbox": {
+        "title": "Fullscreen photo"
+      }
     }
   },
   "parkVisitor": {
@@ -1079,7 +1151,8 @@
         "previous": "Foto anterior",
         "next": "Foto siguiente",
         "openFullscreen": "Abrir en pantalla completa",
-        "closeFullscreen": "Cerrar pantalla completa"
+        "closeFullscreen": "Cerrar pantalla completa",
+        "openSource": "Open {{name}}"
       },
       "lightbox": {
         "title": "Foto en pantalla completa"
