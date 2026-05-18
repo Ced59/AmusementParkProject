@@ -741,7 +741,7 @@
       "zones": {
         "badge": "Parkzones",
         "title": "Zones en lands",
-        "subtitle": "Voorwaardelijke zoneweergave wanneer het park zones bevat, met directe links naar gefilterde items.",
+        "subtitle": "Vind snel de attracties en plekken die bij elke zone van het park horen.",
         "visible": "Zichtbaar",
         "hidden": "Verborgen",
         "open": "Zone-items bekijken",
@@ -752,6 +752,30 @@
       },
       "stats": {
         "zones": "Zones"
+      },
+      "itemsMap": {
+        "badge": "Itemkaart",
+        "title": "Kaart met parkitems",
+        "subtitle": "Vind de geolokaliseerde items van dit park en filter de kaart op zone of categorie.",
+        "categoriesTitle": "Categorieën",
+        "emptyTitle": "Geen geolokaliseerd item",
+        "emptyMessage": "Geen geolokaliseerd item komt momenteel overeen met de geselecteerde filters."
+      },
+      "comingSoon": {
+        "badge": "Binnenkort",
+        "message": "Deze sectie wordt in een volgende stap gekoppeld aan een betrouwbare bron."
+      },
+      "weather": {
+        "title": "Weer voor 5 dagen",
+        "subtitle": "Een compacte voorspelling om het bezoek voor te bereiden."
+      },
+      "hours": {
+        "title": "Openingstijden",
+        "subtitle": "Openingstijden en speciale periodes worden later toegevoegd."
+      },
+      "prices": {
+        "title": "Tarieven",
+        "subtitle": "Tickets, passen en prijsinformatie worden later toegevoegd."
       }
     },
     "titlePrefix": "Alle",
@@ -791,16 +815,35 @@
       "focusOnMap": "{{name}} op de kaart selecteren",
       "selectedOnly": "Geselecteerd: {{name}}",
       "clearSelection": "Alle resultaten tonen"
+    },
+    "reference": {
+      "loadingTitle": "Profiel laden",
+      "loadingMessage": "Het publieke profiel wordt geladen.",
+      "errorTitle": "Profiel kan niet worden geladen",
+      "errorMessage": "Het gevraagde profiel kon niet worden geladen.",
+      "backToParks": "Terug naar parken",
+      "operator": {
+        "badge": "Parkexploitant",
+        "title": "Exploitant",
+        "descriptionTitle": "Over de exploitant",
+        "emptyDescription": "Er is nog geen rijke beschrijving beschikbaar voor deze exploitant."
+      },
+      "founder": {
+        "badge": "Parkoprichter",
+        "title": "Oprichter",
+        "descriptionTitle": "Over de oprichter",
+        "emptyDescription": "Er is nog geen rijke biografie beschikbaar voor deze oprichter."
+      }
     }
   },
   "parkVisitor": {
     "summary": {
-      "badge": "Park content",
-      "title": "Explore what this park contains",
-      "subtitle": "Use this summary to jump to the right category without overloading the park page.",
-      "viewAllItems": "Browse all items",
-      "totalItems": "Total items",
-      "unassignedItems": "Unassigned items"
+      "badge": "Parkinhoud",
+      "title": "Ontdek wat dit park biedt",
+      "subtitle": "Kies een categorie om attracties, restaurants en plekken in dit park snel te vinden.",
+      "viewAllItems": "Alle items bekijken",
+      "totalItems": "Items in totaal",
+      "unassignedItems": "Items zonder zone"
     }
   },
   "parkItems": {

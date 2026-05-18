@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SafeExternalUrlPipe, SafeRichHtmlPipe } from '@shared/pipes';
 
@@ -9,8 +10,10 @@ import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent } from '@ui/primitives';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
+import { ParkItemsMapViewModel } from '../models/park-items-map-view.model';
 import { ParkZoneDetailViewModel } from '../models/park-zone-detail-view.model';
 import { ParkContentSummaryComponent } from './park-content-summary.component';
+import { ParkItemsMapSectionComponent } from './park-items-map-section.component';
 import { ParkLocationSectionComponent } from './park-location-section.component';
 import { ParkNearbySectionComponent } from './park-nearby-section.component';
 import { ParkZonesSectionComponent } from './park-zones-section.component';
@@ -24,12 +27,14 @@ import { ParkZonesSectionComponent } from './park-zones-section.component';
     PageStateComponent,
     ImageDisplayComponent,
     ParkContentSummaryComponent,
+    ParkItemsMapSectionComponent,
     ParkLocationSectionComponent,
     ParkNearbySectionComponent,
     ParkZonesSectionComponent,
     TranslateModule,
     SafeExternalUrlPipe,
     SafeRichHtmlPipe,
+    RouterLink,
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,
@@ -40,6 +45,7 @@ export class ParkDetailViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;
   @Input() park!: Signal<ParkDetailViewModel | null>;
   @Input() summary!: Signal<ParkContentSummaryViewModel | null>;
+  @Input() itemsMap!: Signal<ParkItemsMapViewModel | null>;
   @Input() zones!: Signal<ParkZoneDetailViewModel[]>;
   @Input() nearbyParks!: Signal<ParkCardModel[]>;
   @Input() nearbyState!: Signal<ScreenStateKind>;

@@ -1,0 +1,95 @@
+<section class="park-items-map">
+  <header class="park-items-map__header">
+    <div class="park-items-map__heading">
+      <app-ui-kicker tone="sky" iconClass="pi pi-map-marker">
+        {{ 'parks.detail.itemsMap.badge' | translate }}
+      </app-ui-kicker>
+      <h2>{{ 'parks.detail.itemsMap.title' | translate }}</h2>
+      <p>{{ 'parks.detail.itemsMap.subtitle' | translate }}</p>
+    </div>
+  </header>
+
+  @if (hasZoneFilters) {
+    <div class="park-items-map__zone-filters" aria-label="Zone filters">
+      <button
+        appUiButton="ghost"
+        type="button"
+        class="park-items-map__zone-filter"
+        [class.park-items-map__zone-filter--active]="isSelectedZone(null)"
+        (click)="selectZone(null)">
+        <i class="pi pi-globe" aria-hidden="true"></i>
+        <span>{{ 'parkItems.filters.allZones' | translate }}</span>
+      </button>
+
+      @for (zone of map?.zoneFilters ?? []; track zone.key) {
+        <button
+          appUiButton="ghost"
+          type="button"
+          class="park-items-map__zone-filter"
+          [class.park-items-map__zone-filter--active]="isSelectedZone(zone.key)"
+          (click)="selectZone(zone.key)">
+          @if (zone.iconClass) {
+            <i [class]="zone.iconClass" aria-hidden="true"></i>
+          }
+          <span>{{ zone.labelText }}</span>
+          <strong>{{ zone.count }}</strong>
+        </button>
+      }
+    </div>
+  }
+
+  <div class="park-items-map__body">
+    <app-ui-map-slot
+      class="park-items-map__slot"
+      [available]="hasFilteredMarkers"
+      minHeight="28rem"
+      placeholderTitleKey="parks.detail.itemsMap.emptyTitle"
+      placeholderMessageKey="parks.detail.itemsMap.emptyMessage">
+      <app-leaflet-map
+        [center]="center"
+        [zoom]="17"
+        [fitBounds]="true"
+        [fitBoundsMaxZoom]="17"
+        [markers]="filteredMarkers">
+      </app-leaflet-map>
+    </app-ui-map-slot>
+
+    @if (hasCategoryFilters) {
+      <aside class="park-items-map__categories" aria-label="Category filters">
+        <span class="park-items-map__categories-title">{{ 'parks.detail.itemsMap.categoriesTitle' | translate }}</span>
+
+        <button
+          type="button"
+          class="park-items-map__category-button"
+          [class.park-items-map__category-button--active]="isSelectedCategory(null)"
+          (click)="selectCategory(null)">
+          <span class="park-items-map__category-icon"><i class="pi pi-th-large" aria-hidden="true"></i></span>
+          <span>{{ 'parkItems.filters.allCategories' | translate }}</span>
+          <strong>{{ map?.markers?.length ?? 0 }}</strong>
+        </button>
+
+        @for (category of map?.categoryFilters ?? []; track category.key) {
+          <button
+            type="button"
+            class="park-items-map__category-button"
+            [class.park-items-map__category-button--active]="isSelectedCategory(category.key)"
+            (click)="selectCategory(category.key)">
+            <span class="park-items-map__category-icon">
+              @if (category.iconClass) {
+                <i [class]="category.iconClass" aria-hidden="true"></i>
+              }
+            </span>
+            <span>
+              @if (category.labelKey) {
+                {{ category.labelKey | translate }}
+              } @else {
+                {{ category.labelText }}
+              }
+            </span>
+            <strong>{{ category.count }}</strong>
+          </button>
+        }
+      </aside>
+    }
+  </div>
+</section>

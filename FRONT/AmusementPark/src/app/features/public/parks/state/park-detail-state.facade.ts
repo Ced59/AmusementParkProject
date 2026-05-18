@@ -7,6 +7,7 @@ import { ParkExplorer, ParkExplorerBucket, ParkExplorerCount } from '@app/models
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { ParkZone } from '@app/models/parks/park-zone';
+import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
 import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
@@ -17,10 +18,12 @@ import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { mapArray, mapNullable, mapParkToCardModel } from '@shared/utils/mapping';
 import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
+import { mapParkItemsToMapViewModel } from '../mappers/park-items-map-view.mapper';
 import { mapParkToDetailViewModel } from '../mappers/park-detail-view.mapper';
 import { mapParkZoneToDetailViewModel } from '../mappers/park-zone-detail-view.mapper';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
+import { ParkItemsMapViewModel } from '../models/park-items-map-view.model';
 import { ParkZoneDetailViewModel } from '../models/park-zone-detail-view.model';
 
 interface ParkDetailSourceData {
@@ -31,6 +34,7 @@ interface ParkDetailSourceData {
   operatorName: string | null;
   nearbyParks: Park[];
   nearbyState: ScreenStateKind;
+  parkItems: ParkItem[];
 }
 
 @Injectable()
@@ -47,7 +51,8 @@ export class ParkDetailStateFacade {
       this.currentLanguageSignal(),
       {
         founderName: sourceData?.founderName ?? null,
-        operatorName: sourceData?.operatorName ?? null
+        operatorName: sourceData?.operatorName ?? null,
+        countryName: this.countryDisplayService.resolveLocalizedCountryName(park.countryCode, this.currentLanguageSignal())
       },
       {
         totalItems: sourceData?.explorer?.overview.totalItems ?? null,
@@ -57,6 +62,19 @@ export class ParkDetailStateFacade {
   });
   public readonly summary: Signal<ParkContentSummaryViewModel | null> = computed(() => {
     return mapParkContentSummaryViewModel(this.park(), this.screenStateStore.data()?.explorer ?? null);
+  });
+  public readonly itemsMap: Signal<ParkItemsMapViewModel | null> = computed(() => {
+    const sourceData: ParkDetailSourceData | undefined = this.screenStateStore.data();
+
+    if (!sourceData) {
+      return null;
+    }
+
+    return mapParkItemsToMapViewModel(
+      sourceData.park,
+      sourceData.parkItems,
+      sourceData.zones
+    );
   });
   public readonly zones: Signal<ParkZoneDetailViewModel[]> = computed(() => {
     const sourceData: ParkDetailSourceData | undefined = this.screenStateStore.data();
@@ -84,7 +102,7 @@ export class ParkDetailStateFacade {
       ));
   });
   public readonly nearbyParks: Signal<ParkCardModel[]> = computed(() => {
-    return mapArray(this.screenStateStore.data()?.nearbyParks, (park: Park) => mapParkToCardModel(park, this.currentLanguageSignal()));
+    return mapArray(this.screenStateStore.data()?.nearbyParks, (park: Park) => mapParkToCardModel(park, this.currentLanguageSignal(), this.countryDisplayService));
   });
   public readonly nearbyState = computed(() => this.screenStateStore.data()?.nearbyState ?? 'empty');
 
@@ -94,6 +112,7 @@ export class ParkDetailStateFacade {
     private readonly parkZonesApiService: ParkZonesApiService,
     private readonly parkFoundersApiService: ParkFoundersApiService,
     private readonly parkOperatorsApiService: ParkOperatorsApiService,
+    private readonly countryDisplayService: CountryDisplayService,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -115,13 +134,15 @@ export class ParkDetailStateFacade {
           founderName: null,
           operatorName: null,
           nearbyParks: [],
-          nearbyState: 'empty'
+          nearbyState: 'empty',
+          parkItems: []
         };
 
         this.screenStateStore.setReady(sourceData);
         this.loadNearbyParks(park);
         this.loadExplorerSummary(park.id ?? id);
         this.loadZones(park.id ?? id);
+        this.loadParkItems(park.id ?? id);
         this.loadReferences(park);
       },
       error: (error: unknown) => {
@@ -159,6 +180,24 @@ export class ParkDetailStateFacade {
         this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
           zones: []
+        }));
+      }
+    });
+  }
+
+  private loadParkItems(parkId: string): void {
+    this.parkItemsApiService.getParkItemsByParkId(parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (items: ParkItem[]) => {
+        this.updateReadyData((current: ParkDetailSourceData) => ({
+          ...current,
+          parkItems: items
+        }));
+      },
+      error: (error: unknown) => {
+        console.error('Error loading park items for map', error);
+        this.updateReadyData((current: ParkDetailSourceData) => ({
+          ...current,
+          parkItems: []
         }));
       }
     });
@@ -211,6 +250,7 @@ export class ParkDetailStateFacade {
 
         this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
+          parkItems: current.parkItems.length > 0 ? current.parkItems : items,
           explorer: {
             parkId,
             hasZones: false,

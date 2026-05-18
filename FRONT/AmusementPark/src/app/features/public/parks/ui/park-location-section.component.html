@@ -1,26 +1,36 @@
 @if (park; as currentPark) {
-  <app-ui-map-shell
-    class="park-location"
-    kickerIconClass="pi pi-map"
-    kickerLabelKey="parks.detail.location.title"
-    titleKey="parks.detail.location.title"
-    subtitleKey="parks.detail.location.subtitle">
-    <app-ui-map-slot uiMapShellMap [available]="hasCoordinates" minHeight="22rem">
-      <app-leaflet-map
-        [center]="center"
-        [zoom]="11"
-        [markers]="markers">
-      </app-leaflet-map>
-    </app-ui-map-slot>
+  <section class="park-location-card info-card">
+    <header class="info-card__header">
+      <span class="info-card__header-icon info-card__header-icon--gold">
+        <i class="pi pi-map" aria-hidden="true"></i>
+      </span>
+      <div>
+        <h2 class="info-card__title">{{ 'parks.detail.location.title' | translate }}</h2>
+        <p>{{ 'parks.detail.location.subtitle' | translate }}</p>
+      </div>
+    </header>
 
-    <app-ui-distance-panel
-      uiMapShellSide
-      titleKey="parks.detail.location.title"
-      [sourceLabel]="currentPark.name"
-      [metrics]="[
-        { labelKey: 'parks.fields.latitude', value: currentPark.latitude, iconClass: 'pi pi-compass' },
-        { labelKey: 'parks.fields.longitude', value: currentPark.longitude, iconClass: 'pi pi-compass' }
-      ]">
-    </app-ui-distance-panel>
-  </app-ui-map-shell>
+    <div class="park-location-card__body info-card__body">
+      <app-ui-map-slot [available]="hasCoordinates" minHeight="15rem">
+        <app-leaflet-map
+          [center]="center"
+          [zoom]="13"
+          [markers]="markers">
+        </app-leaflet-map>
+      </app-ui-map-slot>
+
+      @if (hasCoordinates) {
+        <dl class="park-location-card__coordinates">
+          <div>
+            <dt>{{ 'parks.fields.latitude' | translate }}</dt>
+            <dd>{{ currentPark.latitude }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'parks.fields.longitude' | translate }}</dt>
+            <dd>{{ currentPark.longitude }}</dd>
+          </div>
+        </dl>
+      }
+    </div>
+  </section>
 }

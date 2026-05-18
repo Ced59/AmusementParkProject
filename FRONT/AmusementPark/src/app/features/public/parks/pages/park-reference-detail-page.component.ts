@@ -3,25 +3,21 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
-import { ParkDetailStateFacade } from '../state/park-detail-state.facade';
-import { ParkDetailViewComponent } from '../ui/park-detail-view.component';
+import { ParkReferenceKind } from '../models/park-reference-detail-view.model';
+import { ParkReferenceDetailStateFacade } from '../state/park-reference-detail-state.facade';
+import { ParkReferenceDetailViewComponent } from '../ui/park-reference-detail-view.component';
 
 @Component({
-  selector: 'app-park-detail-page',
-  templateUrl: './park-detail-page.component.html',
-  styleUrls: ['./park-detail-page.component.scss'],
+  selector: 'app-park-reference-detail-page',
+  templateUrl: './park-reference-detail-page.component.html',
+  styleUrls: ['./park-reference-detail-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ParkDetailStateFacade],
-  imports: [ParkDetailViewComponent]
+  providers: [ParkReferenceDetailStateFacade],
+  imports: [ParkReferenceDetailViewComponent]
 })
-export class ParkDetailPageComponent implements OnInit {
+export class ParkReferenceDetailPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
-  protected readonly park = this.stateFacade.park;
-  protected readonly summary = this.stateFacade.summary;
-  protected readonly itemsMap = this.stateFacade.itemsMap;
-  protected readonly zones = this.stateFacade.zones;
-  protected readonly nearbyParks = this.stateFacade.nearbyParks;
-  protected readonly nearbyState = this.stateFacade.nearbyState;
+  protected readonly reference = this.stateFacade.reference;
   protected readonly currentLang = signal<string>('en');
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -30,7 +26,7 @@ export class ParkDetailPageComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly translationService: TranslationService,
-    private readonly stateFacade: ParkDetailStateFacade
+    private readonly stateFacade: ParkReferenceDetailStateFacade
   ) {
   }
 
@@ -44,12 +40,13 @@ export class ParkDetailPageComponent implements OnInit {
 
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {
       const id: string | null = params.get('id');
+      const kind: ParkReferenceKind = this.resolveReferenceKind();
 
       if (!id) {
         return;
       }
 
-      this.stateFacade.loadPark(id);
+      this.stateFacade.loadReference(kind, id);
     });
 
     if (this.route.parent) {
@@ -67,16 +64,11 @@ export class ParkDetailPageComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate([`/${this.currentLang()}/parks`]);
+    this.router.navigate(['/', this.currentLang(), 'parks']);
   }
 
-  goToExplore(): void {
-    const exploreLink: string[] | null = this.park()?.exploreLink ?? null;
-
-    if (!exploreLink) {
-      return;
-    }
-
-    this.router.navigate(exploreLink);
+  private resolveReferenceKind(): ParkReferenceKind {
+    const kind: unknown = this.route.snapshot.data['referenceKind'];
+    return kind === 'founder' ? 'founder' : 'operator';
   }
 }

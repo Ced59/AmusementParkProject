@@ -75,7 +75,7 @@ export class AdminParkZoneEditComponent implements OnInit {
       return;
     }
 
-    const payload: ParkZone = this.form.value as ParkZone;
+    const payload: ParkZone = this.buildPayload();
 
     if (this.zoneId) {
       this.parkZonesApiService.updateParkZone(this.zoneId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.goBack());
@@ -87,6 +87,35 @@ export class AdminParkZoneEditComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/', this.currentLang, 'admin', 'parks', 'edit', this.parkId, 'zones']);
+  }
+
+  private buildPayload(): ParkZone {
+    const rawValue: ParkZone = this.form.value as ParkZone;
+    const names: LocalizedItem<string>[] = rawValue.names ?? [];
+    const fallbackName: string = this.resolveFallbackName(names, rawValue.name);
+
+    return {
+      ...rawValue,
+      parkId: this.parkId,
+      name: fallbackName,
+      names
+    };
+  }
+
+  private resolveFallbackName(names: LocalizedItem<string>[], fallbackName: string | null | undefined): string {
+    const englishName: string | undefined = names.find((item: LocalizedItem<string>) => item.languageCode?.toLowerCase() === 'en' && !!item.value?.trim())?.value?.trim();
+
+    if (englishName) {
+      return englishName;
+    }
+
+    const firstLocalizedName: string | undefined = names.find((item: LocalizedItem<string>) => !!item.value?.trim())?.value?.trim();
+
+    if (firstLocalizedName) {
+      return firstLocalizedName;
+    }
+
+    return fallbackName?.trim() || 'zone';
   }
 
   private getInitialNames(zone: ParkZone): LocalizedItem<string>[] {

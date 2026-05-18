@@ -93,6 +93,8 @@ export const routes: Routes = [
           { path: 'parks', loadComponent: () => import('./features/public/parks/pages/park-list-page.component').then((m) => m.ParkListPageComponent) },
           { path: 'about', loadComponent: () => import('./components/about/about.component').then((m) => m.AboutComponent) },
 
+          { path: 'park-operator/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'operator' } },
+          { path: 'park-founder/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'founder' } },
           { path: 'park/:id/:slug/items', loadComponent: () => import('./features/public/park-items/pages/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug', loadComponent: () => import('./features/public/park-items/pages/park-item-detail-page.component').then((m) => m.ParkItemDetailPageComponent) },
           { path: 'park/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-detail-page.component').then((m) => m.ParkDetailPageComponent) },

@@ -41,6 +41,9 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   /** Centre automatiquement la carte sur l'ensemble des marqueurs. */
   @Input() fitBounds = false;
 
+  /** Zoom maximal utilisé lorsqu'une carte est ajustée sur plusieurs marqueurs. */
+  @Input() fitBoundsMaxZoom = 8;
+
   /** Marqueur à centrer et ouvrir, utile pour synchroniser une liste de résultats avec la carte. */
   @Input() selectedMarkerId: string | null = null;
 
@@ -299,7 +302,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
 
     const bounds = this.L.latLngBounds(this.markers.map((marker: MapMarker) => [marker.lat, marker.lng]));
-    this.map.fitBounds(bounds, { padding: [32, 32], maxZoom: 8 });
+    this.map.fitBounds(bounds, { padding: [32, 32], maxZoom: this.fitBoundsMaxZoom });
   }
 
   private buildPopupContent(marker: MapMarker): string {

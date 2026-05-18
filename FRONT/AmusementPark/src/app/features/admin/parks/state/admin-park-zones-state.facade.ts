@@ -30,11 +30,6 @@ export class AdminParkZonesStateFacade {
           zones
         };
 
-        if (zones.length === 0) {
-          this.screenStateStore.setEmpty(viewModel);
-          return;
-        }
-
         this.screenStateStore.setReady(viewModel);
       },
       error: (error: unknown) => {

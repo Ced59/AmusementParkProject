@@ -1,6 +1,6 @@
 import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
-import { buildParkAddressLine, buildParkLocationLine, buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
+import { buildEntitySlug, buildParkAddressLine, buildParkLocationLine, buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import { getLocalizedBooleanDisplay, getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { ParkDetailInfoRowViewModel } from '../models/park-detail-info-row.model';
@@ -9,6 +9,7 @@ import { ParkDetailStatViewModel, ParkDetailViewModel } from '../models/park-det
 export interface ParkDetailReferenceNames {
   founderName?: string | null;
   operatorName?: string | null;
+  countryName?: string | null;
 }
 
 export interface ParkDetailStatsSource {
@@ -25,11 +26,12 @@ export function mapParkToDetailViewModel(
   const hasLocationInfo: boolean = Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
   const websiteUrl: string | null = normalizeOptionalString(park.webSiteUrl);
   const countryCode: string | null = normalizeOptionalString(park.countryCode);
+  const countryName: string | null = normalizeOptionalString(references.countryName) ?? countryCode;
   const city: string | null = normalizeOptionalString(park.city);
   const street: string | null = normalizeOptionalString(park.street);
   const postalCode: string | null = normalizeOptionalString(park.postalCode);
   const addressLine: string | null = buildParkAddressLine(park);
-  const locationLine: string | null = buildParkLocationLine(park);
+  const locationLine: string | null = buildParkLocationLine(park, countryName);
   const logoImageId: string | null = normalizeOptionalString(park.currentLogoImageId);
   const type: ParkType | null = park.type ?? null;
   const founderId: string | null = normalizeOptionalString(park.founderId);
@@ -40,14 +42,26 @@ export function mapParkToDetailViewModel(
   const isFeaturedOnHome: boolean | null = park.isFeaturedOnHome ?? null;
   const featuredHomeOrder: number | null = park.featuredHomeOrder ?? null;
   const isFeaturedOnHomeSponsored: boolean | null = park.isFeaturedOnHomeSponsored ?? null;
-  const hasPracticalInfo: boolean = !!countryCode || !!city || !!street || !!postalCode || !!websiteUrl;
+  const hasPracticalInfo: boolean = !!countryName || !!city || !!street || !!postalCode || !!websiteUrl || !!founderId || !!operatorId;
   const hasIdentity: boolean = !!park.id && !!park.name;
   const description: string | null = normalizeOptionalString(resolveLocalizedValue(park.descriptions, currentLanguage) ?? null);
   const totalItems: number = statsSource.totalItems ?? 0;
   const zoneCount: number = statsSource.zoneCount ?? 0;
 
   const identityRows: ParkDetailInfoRowViewModel[] = buildIdentityRows(park.id ?? null, type, founderName, operatorName, founderId, operatorId);
-  const practicalRows: ParkDetailInfoRowViewModel[] = buildPracticalRows(countryCode, city, postalCode, street, addressLine, websiteUrl);
+  const practicalRows: ParkDetailInfoRowViewModel[] = buildPracticalRows(
+    countryName,
+    city,
+    postalCode,
+    street,
+    addressLine,
+    websiteUrl,
+    founderId,
+    founderName,
+    operatorId,
+    operatorName,
+    currentLanguage
+  );
   const publicationRows: ParkDetailInfoRowViewModel[] = buildPublicationRows(
     isVisible,
     isFeaturedOnHome,
@@ -57,12 +71,13 @@ export function mapParkToDetailViewModel(
     currentLanguage
   );
   const locationRows: ParkDetailInfoRowViewModel[] = buildLocationRows(hasLocationInfo, park.latitude, park.longitude);
-  const stats: ParkDetailStatViewModel[] = buildStats(totalItems, zoneCount, countryCode, type);
+  const stats: ParkDetailStatViewModel[] = buildStats(totalItems, zoneCount, countryName, type);
 
   return {
     id: park.id ?? null,
     name: park.name?.trim() ?? '',
     countryCode,
+    countryName,
     city,
     street,
     postalCode,
@@ -145,17 +160,22 @@ function buildIdentityRows(
 }
 
 function buildPracticalRows(
-  countryCode: string | null,
+  countryName: string | null,
   city: string | null,
   postalCode: string | null,
   street: string | null,
   addressLine: string | null,
-  websiteUrl: string | null
+  websiteUrl: string | null,
+  founderId: string | null,
+  founderName: string | null,
+  operatorId: string | null,
+  operatorName: string | null,
+  currentLanguage: string
 ): ParkDetailInfoRowViewModel[] {
   const rows: ParkDetailInfoRowViewModel[] = [];
 
-  if (countryCode) {
-    rows.push({ labelKey: 'parks.fields.country', value: countryCode, iconClass: 'pi pi-flag' });
+  if (countryName) {
+    rows.push({ labelKey: 'parks.fields.country', value: countryName, iconClass: 'pi pi-flag' });
   }
 
   if (city) {
@@ -180,6 +200,28 @@ function buildPracticalRows(
       value: websiteUrl,
       externalUrl: websiteUrl,
       iconClass: 'pi pi-external-link'
+    });
+  }
+
+  if (operatorId) {
+    const displayName: string = operatorName ?? operatorId;
+    rows.push({
+      labelKey: 'parks.detail.identity.operator',
+      value: displayName,
+      routerLink: ['/', currentLanguage, 'park-operator', operatorId, buildEntitySlug(displayName)],
+      iconClass: 'pi pi-briefcase',
+      isMonospace: displayName === operatorId
+    });
+  }
+
+  if (founderId) {
+    const displayName: string = founderName ?? founderId;
+    rows.push({
+      labelKey: 'parks.detail.identity.founder',
+      value: displayName,
+      routerLink: ['/', currentLanguage, 'park-founder', founderId, buildEntitySlug(displayName)],
+      iconClass: 'pi pi-user',
+      isMonospace: displayName === founderId
     });
   }
 
@@ -254,7 +296,7 @@ function buildLocationRows(hasLocationInfo: boolean, latitude: number, longitude
 function buildStats(
   totalItems: number,
   zoneCount: number,
-  countryCode: string | null,
+  countryName: string | null,
   type: ParkType | null
 ): ParkDetailStatViewModel[] {
   const stats: ParkDetailStatViewModel[] = [
@@ -275,10 +317,10 @@ function buildStats(
     });
   }
 
-  if (countryCode) {
+  if (countryName) {
     stats.push({
       labelKey: 'parks.fields.country',
-      value: countryCode,
+      value: countryName,
       hintKey: 'parks.detail.practical.title',
       tone: 'sky'
     });

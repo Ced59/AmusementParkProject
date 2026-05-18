@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { SafeRichHtmlPipe } from '@shared/pipes';
-import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent } from '@ui/primitives';
+import { UiSectionHeaderComponent } from '@ui/primitives';
 import { ParkZoneDetailViewModel } from '../models/park-zone-detail-view.model';
 
 @Component({
@@ -10,7 +9,7 @@ import { ParkZoneDetailViewModel } from '../models/park-zone-detail-view.model';
   templateUrl: './park-zones-section.component.html',
   styleUrls: ['./park-zones-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslateModule, SafeRichHtmlPipe, UiButtonDirective, UiChipComponent, UiSectionHeaderComponent]
+  imports: [RouterLink, TranslateModule, UiSectionHeaderComponent]
 })
 export class ParkZonesSectionComponent {
   @Input() zones: ParkZoneDetailViewModel[] = [];

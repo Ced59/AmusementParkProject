@@ -741,7 +741,7 @@
       "zones": {
         "badge": "Zone del parco",
         "title": "Zone e lands",
-        "subtitle": "Visualizzazione condizionale delle zone quando il parco ne contiene, con link diretti agli elementi filtrati.",
+        "subtitle": "Trova rapidamente attrazioni e luoghi collegati a ogni area del parco.",
         "visible": "Visibile",
         "hidden": "Nascosta",
         "open": "Vedi elementi della zona",
@@ -752,6 +752,30 @@
       },
       "stats": {
         "zones": "Zone"
+      },
+      "itemsMap": {
+        "badge": "Mappa elementi",
+        "title": "Mappa degli elementi del parco",
+        "subtitle": "Trova gli elementi geolocalizzati di questo parco e filtra la mappa per zona o categoria.",
+        "categoriesTitle": "Categorie",
+        "emptyTitle": "Nessun elemento geolocalizzato",
+        "emptyMessage": "Nessun elemento geolocalizzato corrisponde attualmente ai filtri selezionati."
+      },
+      "comingSoon": {
+        "badge": "Prossimamente",
+        "message": "Questa sezione sarà collegata a una fonte affidabile in una fase successiva."
+      },
+      "weather": {
+        "title": "Meteo a 5 giorni",
+        "subtitle": "Previsione sintetica prevista per preparare la visita."
+      },
+      "hours": {
+        "title": "Orari",
+        "subtitle": "Orari di apertura e periodi speciali saranno aggiunti più avanti."
+      },
+      "prices": {
+        "title": "Tariffe",
+        "subtitle": "Biglietti, pass e informazioni tariffarie saranno aggiunti più avanti."
       }
     },
     "titlePrefix": "Tutti i",
@@ -791,16 +815,35 @@
       "focusOnMap": "Seleziona {{name}} sulla mappa",
       "selectedOnly": "Selezione: {{name}}",
       "clearSelection": "Mostra tutti i risultati"
+    },
+    "reference": {
+      "loadingTitle": "Caricamento scheda",
+      "loadingMessage": "La scheda pubblica è in caricamento.",
+      "errorTitle": "Impossibile caricare la scheda",
+      "errorMessage": "La scheda richiesta non può essere caricata.",
+      "backToParks": "Torna ai parchi",
+      "operator": {
+        "badge": "Operatore del parco",
+        "title": "Operatore",
+        "descriptionTitle": "Informazioni sull’operatore",
+        "emptyDescription": "Non è ancora disponibile una descrizione ricca per questo operatore."
+      },
+      "founder": {
+        "badge": "Fondatore del parco",
+        "title": "Fondatore",
+        "descriptionTitle": "Informazioni sul fondatore",
+        "emptyDescription": "Non è ancora disponibile una biografia ricca per questo fondatore."
+      }
     }
   },
   "parkVisitor": {
     "summary": {
-      "badge": "Park content",
-      "title": "Explore what this park contains",
-      "subtitle": "Use this summary to jump to the right category without overloading the park page.",
-      "viewAllItems": "Browse all items",
-      "totalItems": "Total items",
-      "unassignedItems": "Unassigned items"
+      "badge": "Contenuto del parco",
+      "title": "Scopri cosa offre questo parco",
+      "subtitle": "Scegli una categoria per trovare rapidamente attrazioni, ristoranti e luoghi del parco.",
+      "viewAllItems": "Vedi tutti gli elementi",
+      "totalItems": "Elementi totali",
+      "unassignedItems": "Elementi senza zona"
     }
   },
   "parkItems": {

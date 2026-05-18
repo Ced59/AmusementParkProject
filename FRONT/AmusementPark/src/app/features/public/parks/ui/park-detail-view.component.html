@@ -42,11 +42,6 @@
 
             <h1 class="park-banner__name">{{ currentPark.name }}</h1>
 
-            @if (currentPark.description) {
-              <p class="park-banner__lead" [innerHTML]="currentPark.description | safeRichHtml"></p>
-            } @else {
-              <p class="park-banner__lead">{{ 'parks.detail.heroDescription' | translate }}</p>
-            }
           </div>
 
           <div class="park-banner__actions">
@@ -81,13 +76,18 @@
           @if (currentPark.stats.length > 0) {
             <div class="park-stats-row">
               @for (stat of currentPark.stats; track stat.labelKey + '-' + stat.value) {
-                <app-ui-stat-card
-                  [tone]="stat.tone ?? 'soft'"
-                  [labelKey]="stat.labelKey"
-                  [value]="stat.value"
-                  [hintKey]="stat.hintKey ?? null"
-                  [hintText]="stat.hintText ?? null">
-                </app-ui-stat-card>
+                <div
+                  class="park-stats-row__item"
+                  [class.park-stats-row__item--country]="stat.labelKey === 'parks.fields.country'"
+                  [class.park-stats-row__item--items]="stat.labelKey === 'parkVisitor.summary.totalItems'">
+                  <app-ui-stat-card
+                    [tone]="stat.tone ?? 'soft'"
+                    [labelKey]="stat.labelKey"
+                    [value]="stat.value"
+                    [hintKey]="stat.hintKey ?? null"
+                    [hintText]="stat.hintText ?? null">
+                  </app-ui-stat-card>
+                </div>
               }
             </div>
           }
@@ -105,19 +105,17 @@
           </section>
 
           @if (summary(); as currentSummary) {
-            <app-park-content-summary [summary]="currentSummary"></app-park-content-summary>
+            <app-park-content-summary class="park-content-summary-block" [summary]="currentSummary"></app-park-content-summary>
           }
 
-          <app-park-zones-section [zones]="zones()"></app-park-zones-section>
+          <app-park-items-map-section class="park-items-map-block" [map]="itemsMap()"></app-park-items-map-section>
 
-          @if (currentPark.hasLocationInfo) {
-            <app-park-location-section [park]="currentPark"></app-park-location-section>
-          }
+          <app-park-zones-section class="park-zones-block" [zones]="zones()"></app-park-zones-section>
         </main>
 
         <aside class="park-sidebar" aria-label="Park detail sidebar">
           @if (currentPark.practicalRows.length > 0) {
-            <section class="park-side-card info-card">
+            <section class="park-side-card park-side-card--practical info-card">
               <header class="info-card__header">
                 <span class="info-card__header-icon"><i class="pi pi-info-circle" aria-hidden="true"></i></span>
                 <div>
@@ -137,6 +135,11 @@
                         <a [href]="row.externalUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener">
                           {{ row.value }}
                         </a>
+                      } @else if (row.routerLink) {
+                        <a [routerLink]="row.routerLink" class="park-info-row__link">
+                          <span>{{ row.value }}</span>
+                          <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+                        </a>
                       } @else if (row.valueKey) {
                         {{ row.valueKey | translate }}
                       } @else {
@@ -149,86 +152,54 @@
             </section>
           }
 
-          @if (currentPark.identityRows.length > 0) {
-            <section class="park-side-card info-card">
-              <header class="info-card__header">
-                <span class="info-card__header-icon info-card__header-icon--sky"><i class="pi pi-id-card" aria-hidden="true"></i></span>
-                <div>
-                  <h2 class="info-card__title">{{ 'parks.detail.identity.title' | translate }}</h2>
-                  <p>{{ 'parks.detail.identity.subtitle' | translate }}</p>
-                </div>
-              </header>
-              <dl class="park-info-list info-card__body">
-                @for (row of currentPark.identityRows; track row.labelKey + '-' + row.value + '-' + row.valueKey) {
-                  <div class="park-info-row">
-                    <dt>
-                      <i [class]="row.iconClass" aria-hidden="true"></i>
-                      <span>{{ row.labelKey | translate }}</span>
-                    </dt>
-                    <dd [class.park-info-row__value--mono]="row.isMonospace">
-                      @if (row.valueKey) {
-                        {{ row.valueKey | translate }}
-                      } @else {
-                        {{ row.value }}
-                      }
-                    </dd>
-                  </div>
-                }
-              </dl>
-            </section>
+
+
+          @if (currentPark.hasLocationInfo) {
+            <app-park-location-section class="park-side-card--location" [park]="currentPark"></app-park-location-section>
           }
 
-          @if (currentPark.publicationRows.length > 0) {
-            <section class="park-side-card info-card">
-              <header class="info-card__header">
-                <span class="info-card__header-icon info-card__header-icon--lime"><i class="pi pi-megaphone" aria-hidden="true"></i></span>
-                <div>
-                  <h2 class="info-card__title">{{ 'parks.detail.publication.title' | translate }}</h2>
-                  <p>{{ 'parks.detail.publication.subtitle' | translate }}</p>
-                </div>
-              </header>
-              <dl class="park-info-list info-card__body">
-                @for (row of currentPark.publicationRows; track row.labelKey + '-' + row.value + '-' + row.valueKey) {
-                  <div class="park-info-row">
-                    <dt>
-                      <i [class]="row.iconClass" aria-hidden="true"></i>
-                      <span>{{ row.labelKey | translate }}</span>
-                    </dt>
-                    <dd>
-                      @if (row.valueKey) {
-                        {{ row.valueKey | translate }}
-                      } @else {
-                        {{ row.value }}
-                      }
-                    </dd>
-                  </div>
-                }
-              </dl>
-            </section>
-          }
+          <section class="park-side-card park-side-card--weather park-side-coming-soon info-card">
+            <header class="info-card__header">
+              <span class="info-card__header-icon info-card__header-icon--sky"><i class="pi pi-cloud" aria-hidden="true"></i></span>
+              <div>
+                <h2 class="info-card__title">{{ 'parks.detail.weather.title' | translate }}</h2>
+                <p>{{ 'parks.detail.weather.subtitle' | translate }}</p>
+              </div>
+            </header>
+            <div class="park-side-coming-soon__body info-card__body">
+              <span class="park-side-coming-soon__badge">{{ 'parks.detail.comingSoon.badge' | translate }}</span>
+              <p>{{ 'parks.detail.comingSoon.message' | translate }}</p>
+            </div>
+          </section>
 
-          @if (currentPark.locationRows.length > 0) {
-            <section class="park-side-card info-card">
-              <header class="info-card__header">
-                <span class="info-card__header-icon info-card__header-icon--gold"><i class="pi pi-map" aria-hidden="true"></i></span>
-                <div>
-                  <h2 class="info-card__title">{{ 'parks.detail.location.title' | translate }}</h2>
-                  <p>{{ 'parks.detail.location.subtitle' | translate }}</p>
-                </div>
-              </header>
-              <dl class="park-info-list info-card__body">
-                @for (row of currentPark.locationRows; track row.labelKey) {
-                  <div class="park-info-row">
-                    <dt>
-                      <i [class]="row.iconClass" aria-hidden="true"></i>
-                      <span>{{ row.labelKey | translate }}</span>
-                    </dt>
-                    <dd>{{ row.value }}</dd>
-                  </div>
-                }
-              </dl>
-            </section>
-          }
+          <section class="park-side-card park-side-card--hours park-side-coming-soon info-card">
+            <header class="info-card__header">
+              <span class="info-card__header-icon info-card__header-icon--lime"><i class="pi pi-clock" aria-hidden="true"></i></span>
+              <div>
+                <h2 class="info-card__title">{{ 'parks.detail.hours.title' | translate }}</h2>
+                <p>{{ 'parks.detail.hours.subtitle' | translate }}</p>
+              </div>
+            </header>
+            <div class="park-side-coming-soon__body info-card__body">
+              <span class="park-side-coming-soon__badge">{{ 'parks.detail.comingSoon.badge' | translate }}</span>
+              <p>{{ 'parks.detail.comingSoon.message' | translate }}</p>
+            </div>
+          </section>
+
+          <section class="park-side-card park-side-card--prices park-side-coming-soon info-card">
+            <header class="info-card__header">
+              <span class="info-card__header-icon info-card__header-icon--rose"><i class="pi pi-ticket" aria-hidden="true"></i></span>
+              <div>
+                <h2 class="info-card__title">{{ 'parks.detail.prices.title' | translate }}</h2>
+                <p>{{ 'parks.detail.prices.subtitle' | translate }}</p>
+              </div>
+            </header>
+            <div class="park-side-coming-soon__body info-card__body">
+              <span class="park-side-coming-soon__badge">{{ 'parks.detail.comingSoon.badge' | translate }}</span>
+              <p>{{ 'parks.detail.comingSoon.message' | translate }}</p>
+            </div>
+          </section>
+
         </aside>
       </div>
 

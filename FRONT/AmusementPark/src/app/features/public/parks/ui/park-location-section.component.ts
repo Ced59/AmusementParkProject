@@ -3,14 +3,14 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
 import { MapMarker } from '@app/models/map/map-marker';
-import { UiDistancePanelComponent, UiMapShellComponent, UiMapSlotComponent } from '@ui/maps';
+import { UiMapSlotComponent } from '@ui/maps';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
 
 @Component({
   selector: 'app-park-location-section',
   templateUrl: './park-location-section.component.html',
   styleUrls: ['./park-location-section.component.scss'],
-  imports: [LeafletMapComponent, TranslateModule, UiDistancePanelComponent, UiMapShellComponent, UiMapSlotComponent]
+  imports: [LeafletMapComponent, TranslateModule, UiMapSlotComponent]
 })
 export class ParkLocationSectionComponent {
   @Input() park: ParkDetailViewModel | null = null;
@@ -35,7 +35,9 @@ export class ParkLocationSectionComponent {
     return [{
       id: this.park.id ?? 'park-location',
       lat: this.park.latitude,
-      lng: this.park.longitude
+      lng: this.park.longitude,
+      title: this.park.name,
+      subtitle: this.park.locationLine
     }];
   }
 }

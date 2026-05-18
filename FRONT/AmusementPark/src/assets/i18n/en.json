@@ -741,7 +741,7 @@
       "zones": {
         "badge": "Park zones",
         "title": "Zones and lands",
-        "subtitle": "Conditional zone display when the park contains zones, with direct links to filtered items.",
+        "subtitle": "Quickly find the attractions and places linked to each area of the park.",
         "visible": "Visible",
         "hidden": "Hidden",
         "open": "View zone items",
@@ -752,6 +752,30 @@
       },
       "stats": {
         "zones": "Zones"
+      },
+      "itemsMap": {
+        "badge": "Item map",
+        "title": "Park item map",
+        "subtitle": "Find the geolocated items in this park and filter the map by zone or category.",
+        "categoriesTitle": "Categories",
+        "emptyTitle": "No geolocated item",
+        "emptyMessage": "No geolocated item currently matches the selected filters."
+      },
+      "comingSoon": {
+        "badge": "Coming soon",
+        "message": "This section will be connected to a reliable source in a future step."
+      },
+      "weather": {
+        "title": "5-day weather",
+        "subtitle": "A compact forecast planned to help prepare the visit."
+      },
+      "hours": {
+        "title": "Opening hours",
+        "subtitle": "Opening hours and special periods will be added later."
+      },
+      "prices": {
+        "title": "Prices",
+        "subtitle": "Tickets, passes and pricing information will be added later."
       }
     },
     "titlePrefix": "All",
@@ -791,13 +815,32 @@
       "focusOnMap": "Select {{name}} on the map",
       "selectedOnly": "Selected: {{name}}",
       "clearSelection": "Show all results"
+    },
+    "reference": {
+      "loadingTitle": "Loading profile",
+      "loadingMessage": "The public profile is loading.",
+      "errorTitle": "Unable to load profile",
+      "errorMessage": "The requested profile could not be loaded.",
+      "backToParks": "Back to parks",
+      "operator": {
+        "badge": "Park operator",
+        "title": "Operator",
+        "descriptionTitle": "About the operator",
+        "emptyDescription": "No rich description is available for this operator yet."
+      },
+      "founder": {
+        "badge": "Park founder",
+        "title": "Founder",
+        "descriptionTitle": "About the founder",
+        "emptyDescription": "No rich biography is available for this founder yet."
+      }
     }
   },
   "parkVisitor": {
     "summary": {
       "badge": "Park content",
       "title": "Explore what this park contains",
-      "subtitle": "Use this summary to jump to the right category without overloading the park page.",
+      "subtitle": "Pick a category to quickly find the rides, restaurants and places available in this park.",
       "viewAllItems": "Browse all items",
       "totalItems": "Total items",
       "unassignedItems": "Unassigned items"
