@@ -885,7 +885,22 @@
       "descriptionTitle": "Description",
       "specificationsTitle": "Caractéristiques",
       "sourceTitle": "Source",
-      "summaryTitle": "En un coup d'œil"
+      "summaryTitle": "En un coup d'œil",
+      "technicalTitle": "Données techniques",
+      "performanceTitle": "Performances",
+      "experienceTitle": "Expérience & accessibilité",
+      "accessConditionsTitle": "Conditions d’accès",
+      "accessConditionsSubtitle": "Règles affichées uniquement lorsqu’elles existent sur la fiche de l’élément.",
+      "locationKicker": "Localisation",
+      "locationTitle": "Localisation dans le parc",
+      "preciseLocationSubtitle": "Des points précis sont renseignés : la carte affiche donc ces localisations spécifiques.",
+      "generalLocationSubtitle": "Aucune localisation spécifique n’est renseignée : la carte affiche seulement la localisation générale de l’élément.",
+      "preciseLocationBadge": "Point précis",
+      "generalLocationBadge": "Fallback général",
+      "relatedKicker": "À découvrir aussi",
+      "relatedTitle": "Éléments similaires",
+      "relatedSubtitle": "Sélection basée sur le type, la catégorie ou la zone de l’élément.",
+      "navigationTitle": "Navigation"
     },
     "fields": {
       "category": "Catégorie",
@@ -919,7 +934,47 @@
       "isAccessibleForReducedMobility": "Accès PMR",
       "isIndoor": "Indoor",
       "isLaunched": "Propulsé",
-      "waterExposureLevel": "Niveau d'exposition à l'eau"
+      "waterExposureLevel": "Niveau d'exposition à l'eau",
+      "subtype": "Sous-type",
+      "isVisible": "Visible",
+      "coordinates": "Coordonnées"
+    },
+    "locations": {
+      "general": "Localisation générale",
+      "entrance": "Entrée",
+      "exit": "Sortie",
+      "fastPassEntrance": "Entrée fast pass",
+      "reducedMobilityEntrance": "Entrée PMR"
+    },
+    "accessConditionFields": {
+      "type": "Type",
+      "value": "Valeur",
+      "requiresAccompaniment": "Accompagnement requis",
+      "minimumCompanionAge": "Âge minimum de l’accompagnant"
+    },
+    "accessConditionTypes": {
+      "minHeight": "Taille minimale",
+      "minHeightAccompanied": "Taille minimale accompagné",
+      "maxHeight": "Taille maximale",
+      "minAge": "Âge minimum",
+      "minAgeAccompanied": "Âge minimum accompagné",
+      "pregnancyRestriction": "Restriction grossesse",
+      "heartRestriction": "Restriction cardiaque",
+      "backNeckRestriction": "Restriction dos ou nuque",
+      "wheelchairTransferRequired": "Transfert fauteuil requis",
+      "accessPassRequired": "Access pass requis",
+      "custom": "Condition personnalisée"
+    },
+    "accessConditionUnits": {
+      "centimeter": "Centimètres",
+      "year": "Ans"
+    },
+    "waterExposureLevels": {
+      "none": "Aucune",
+      "splash": "Éclaboussures légères",
+      "moderate": "Modéré",
+      "soaking": "Très mouillant",
+      "extremeSoaking": "Extrêmement mouillant"
     }
   },
   "publicNavigation": {

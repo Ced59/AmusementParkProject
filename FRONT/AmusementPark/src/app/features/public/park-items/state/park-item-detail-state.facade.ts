@@ -16,6 +16,7 @@ interface ParkItemDetailSourceData {
   park: Park | null;
   manufacturerName: string | null;
   zoneName: string | null;
+  relatedItems: ParkItem[];
 }
 
 @Injectable()
@@ -32,7 +33,8 @@ export class ParkItemDetailStateFacade {
       sourceData?.park ?? null,
       sourceData?.manufacturerName ?? null,
       sourceData?.zoneName ?? null,
-      this.currentLanguageSignal()
+      this.currentLanguageSignal(),
+      sourceData?.relatedItems ?? []
     );
   });
 
@@ -59,7 +61,8 @@ export class ParkItemDetailStateFacade {
           item,
           park: null,
           manufacturerName: null,
-          zoneName: null
+          zoneName: null,
+          relatedItems: []
         });
 
         this.loadRelatedData(item);
@@ -82,6 +85,21 @@ export class ParkItemDetailStateFacade {
       error: (error: unknown) => {
         console.error('Error loading park for item', error);
         this.screenStateStore.setError('parkItems.detail.errorMessage', this.screenStateStore.data());
+      }
+    });
+
+    this.parkItemsApiService.getParkItemsByParkId(item.parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (items: ParkItem[]) => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          relatedItems: items
+        }));
+      },
+      error: () => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          relatedItems: []
+        }));
       }
     });
 
