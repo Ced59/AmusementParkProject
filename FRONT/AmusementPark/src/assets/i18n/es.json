@@ -100,7 +100,10 @@
       "title_password": "Contraseña",
       "password_placeholder": "Introduce tu contraseña",
       "btn_text": "Iniciar sesión",
-      "forgot_password": "Forgot password?"
+      "forgot_password": "Forgot password?",
+      "success": "Sesión iniciada correctamente.",
+      "google_unavailable": "El inicio de sesión con Google no está disponible temporalmente.",
+      "google_success": "Inicio de sesión con Google correcto."
     },
     "register": {
       "title": "Registro clásico",
@@ -116,24 +119,43 @@
         "password_error": "La contraseña debe contener como mínimo 8 caracteres, una mayúscula, una minúscula y un número."
       },
       "success_message": "Your account has been created. Open the confirmation link printed in the API console to activate it.",
-      "resend_confirmation": "Send confirmation link again"
+      "resend_confirmation": "Send confirmation link again",
+      "success_badge": "Creada",
+      "validation_error": "El formulario de registro contiene errores.",
+      "created_toast": "Cuenta creada. Comprueba el enlace de confirmación enviado por la API."
     },
     "common": {
       "back_home": "Back to home"
     },
     "confirm": {
       "title": "Account confirmation",
-      "loading": "Account confirmation in progress..."
+      "loading": "Account confirmation in progress...",
+      "kicker": "Confirmación",
+      "subtitle": "Estamos validando el enlace de activación de tu cuenta.",
+      "success_badge": "Confirmada",
+      "error_badge": "Error"
     },
     "forgot_password": {
       "title": "Forgot password",
       "description": "Enter your email address to receive a reset link.",
-      "submit": "Send reset link"
+      "submit": "Send reset link",
+      "kicker": "Recuperación",
+      "sent_badge": "Enviado"
     },
     "reset_password": {
       "title": "Reset password",
       "invalid_link": "This reset link is invalid.",
-      "submit": "Reset password"
+      "submit": "Reset password",
+      "kicker": "Seguridad",
+      "description": "Elige una nueva contraseña para proteger tu cuenta.",
+      "invalid_badge": "Enlace inválido",
+      "done_badge": "Actualizada"
+    },
+    "modal": {
+      "kicker": "Bienvenido",
+      "title": "Inicia sesión o crea tu cuenta",
+      "subtitle": "Tu cuenta prepara futuras funciones personalizadas manteniendo simples los flujos MVP.",
+      "or": "o"
     }
   },
   "user-profile": {
@@ -153,7 +175,8 @@
       "invalidFile": "Please select a valid image file.",
       "invalidSize": "The selected avatar is too large.",
       "noImageSelected": "Please select an avatar before uploading.",
-      "uploading": "Uploading avatar..."
+      "uploading": "Uploading avatar...",
+      "updateSuccess": "Avatar actualizado correctamente."
     },
     "identity": "Identity",
     "save": "Save",
@@ -164,7 +187,14 @@
     "errorTitle": "Unable to load profile",
     "errorMessage": "The profile could not be loaded.",
     "back": "Volver",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "accountBadge": "Cuenta",
+    "subtitle": "Actualiza tu identidad pública, avatar e idioma preferido.",
+    "detailsKicker": "Ajustes",
+    "detailsSubtitle": "Mantén tu información lista para futuras funciones personalizadas.",
+    "identityRequired": "Nombre y apellido son obligatorios.",
+    "updateSuccess": "Perfil actualizado correctamente.",
+    "updateError": "No se pudo actualizar el perfil."
   },
   "theme": {
     "change": "Cambiar tema",
@@ -727,7 +757,11 @@
     "security": {
       "uploadRejectedSummary": "Archivo rechazado",
       "invalidImageUploadMessage": "Solo se aceptan imágenes JPEG, PNG, WebP o GIF de menos de 10 MB."
-    }
+    },
+    "success": "Éxito",
+    "error": "Error",
+    "warning": "Atención",
+    "unexpectedError": "Se produjo un error inesperado."
   },
   "parks": {
     "heroBadge": "Public catalog",
@@ -1214,6 +1248,60 @@
       "lightbox": {
         "title": "Foto en pantalla completa"
       }
+    }
+  },
+  "accountLayout": {
+    "kicker": "Espacio personal",
+    "title": "Tu pasaporte de parques",
+    "subtitle": "Gestiona tu perfil, idioma y accesos con una experiencia alineada con el MVP público.",
+    "security": "Acceso seguro",
+    "languages": "Idiomas",
+    "profile": "Perfil"
+  },
+  "languageModal": {
+    "kicker": "Idioma",
+    "title": "Elige tu idioma",
+    "subtitle": "Cambia toda la experiencia manteniendo la ruta actual cuando sea posible.",
+    "current": "Actual"
+  },
+  "aboutPage": {
+    "kicker": "Visión del proyecto",
+    "title": "Una forma más clara de explorar parques",
+    "lead": "AmusementPark cartografía parques, atracciones e información práctica con una arquitectura estable preparada para comparación y distancia.",
+    "primaryCta": "Explorar parques",
+    "secondaryCta": "Volver al inicio",
+    "stats": {
+      "parksLabel": "Parques potenciales",
+      "parksHint": "Diseñado para seguir siendo rápido a escala",
+      "mapLabel": "Objetivo visual",
+      "mapHint": "Recorrido público listo para el MVP"
+    },
+    "mission": {
+      "kicker": "Misión",
+      "title": "Encontrar el parque adecuado más rápido",
+      "subtitle": "El producto comienza con un portfolio sólido y crece hacia herramientas de descubrimiento y decisión más ricas."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Descubrir",
+        "title": "Páginas de parque fiables",
+        "text": "Cada página centraliza ubicación, elementos, fotos, parques cercanos y referencias útiles."
+      },
+      "explore": {
+        "badge": "Explorar",
+        "title": "Mentalidad centrada en el mapa",
+        "text": "Búsqueda, interacciones de mapa y distancias cercanas son bases reutilizables."
+      },
+      "enjoy": {
+        "badge": "Disfrutar",
+        "title": "Identidad visual coherente",
+        "text": "Las páginas públicas, auth y perfil comparten los mismos tokens, superficies y componentes."
+      }
+    },
+    "clean": {
+      "kicker": "Ingeniería",
+      "title": "Construido para evolucionar sin apaños",
+      "text": "El front separa primitivas visuales de la orquestación y la API mantiene los cálculos de negocio fuera de los componentes."
     }
   }
 }

@@ -215,3 +215,96 @@
     width: 100%;
   }
 }
+
+/* M13 account layout: premium shell for auth/profile pages. */
+.app-account-layout__main {
+  width: min(100% - 1.5rem, 1160px);
+  margin-top: clamp(1rem, 2.6vw, 2rem);
+}
+
+.app-account-layout__shell {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.35fr);
+  gap: clamp(1rem, 2.6vw, 1.5rem);
+  align-items: stretch;
+}
+
+.app-account-layout__aside,
+.app-account-layout__content {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  box-shadow: var(--shadow-card);
+}
+
+.app-account-layout__aside {
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+  min-height: 34rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background:
+    radial-gradient(ellipse 72% 48% at 16% 16%, rgba(255, 90, 31, 0.16), transparent 70%),
+    radial-gradient(ellipse 58% 42% at 84% 84%, rgba(196, 255, 39, 0.08), transparent 68%),
+    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+}
+
+.app-account-layout__aside::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -35% -20%;
+  height: 44%;
+  background: radial-gradient(ellipse at center, rgba(255, 90, 31, 0.14), transparent 68%);
+  pointer-events: none;
+}
+
+.app-account-layout__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 10ch;
+  color: var(--app-heading);
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 5.8rem);
+  line-height: 0.92;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.app-account-layout__lead {
+  position: relative;
+  z-index: 1;
+  max-width: 34ch;
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.75;
+}
+
+.app-account-layout__chips {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.app-account-layout__content {
+  min-width: 0;
+  padding: clamp(1rem, 2.4vw, 1.5rem);
+}
+
+@media (max-width: 960px) {
+  .app-account-layout__shell {
+    grid-template-columns: 1fr;
+  }
+
+  .app-account-layout__aside {
+    min-height: auto;
+  }
+
+  .app-account-layout__title {
+    max-width: none;
+  }
+}

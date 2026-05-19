@@ -100,7 +100,10 @@
       "title_password": "Passwort",
       "password_placeholder": "Gib dein Passwort ein",
       "btn_text": "Anmelden",
-      "forgot_password": "Forgot password?"
+      "forgot_password": "Forgot password?",
+      "success": "Anmeldung erfolgreich.",
+      "google_unavailable": "Google-Anmeldung ist vorübergehend nicht verfügbar.",
+      "google_success": "Google-Anmeldung erfolgreich."
     },
     "register": {
       "title": "Standard-Registrierung",
@@ -116,24 +119,43 @@
         "password_error": "Das Passwort muss mindestens 8 Zeichen, einen Großbuchstaben, einen Kleinbuchstaben und eine Ziffer enthalten."
       },
       "success_message": "Your account has been created. Open the confirmation link printed in the API console to activate it.",
-      "resend_confirmation": "Send confirmation link again"
+      "resend_confirmation": "Send confirmation link again",
+      "success_badge": "Erstellt",
+      "validation_error": "Das Registrierungsformular enthält Fehler.",
+      "created_toast": "Konto erstellt. Prüfe den von der API gesendeten Bestätigungslink."
     },
     "common": {
       "back_home": "Back to home"
     },
     "confirm": {
       "title": "Account confirmation",
-      "loading": "Account confirmation in progress..."
+      "loading": "Account confirmation in progress...",
+      "kicker": "Bestätigung",
+      "subtitle": "Wir prüfen deinen Aktivierungslink.",
+      "success_badge": "Bestätigt",
+      "error_badge": "Fehlgeschlagen"
     },
     "forgot_password": {
       "title": "Forgot password",
       "description": "Enter your email address to receive a reset link.",
-      "submit": "Send reset link"
+      "submit": "Send reset link",
+      "kicker": "Wiederherstellung",
+      "sent_badge": "Gesendet"
     },
     "reset_password": {
       "title": "Reset password",
       "invalid_link": "This reset link is invalid.",
-      "submit": "Reset password"
+      "submit": "Reset password",
+      "kicker": "Sicherheit",
+      "description": "Wähle ein neues Passwort, um dein Konto zu sichern.",
+      "invalid_badge": "Ungültiger Link",
+      "done_badge": "Aktualisiert"
+    },
+    "modal": {
+      "kicker": "Willkommen",
+      "title": "Anmelden oder Konto erstellen",
+      "subtitle": "Dein Konto bereitet künftige personalisierte Funktionen vor und hält MVP-Flows einfach.",
+      "or": "oder"
     }
   },
   "user-profile": {
@@ -153,7 +175,8 @@
       "invalidFile": "Please select a valid image file.",
       "invalidSize": "The selected avatar is too large.",
       "noImageSelected": "Please select an avatar before uploading.",
-      "uploading": "Uploading avatar..."
+      "uploading": "Uploading avatar...",
+      "updateSuccess": "Avatar erfolgreich aktualisiert."
     },
     "identity": "Identity",
     "save": "Save",
@@ -164,7 +187,14 @@
     "errorTitle": "Unable to load profile",
     "errorMessage": "The profile could not be loaded.",
     "back": "Zurück",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "accountBadge": "Konto",
+    "subtitle": "Aktualisiere öffentliche Identität, Avatar und bevorzugte Sprache.",
+    "detailsKicker": "Einstellungen",
+    "detailsSubtitle": "Halte deine Daten für künftige personalisierte Funktionen bereit.",
+    "identityRequired": "Vorname und Nachname sind erforderlich.",
+    "updateSuccess": "Profil erfolgreich aktualisiert.",
+    "updateError": "Profilaktualisierung fehlgeschlagen."
   },
   "theme": {
     "change": "Theme ändern",
@@ -727,7 +757,11 @@
     "security": {
       "uploadRejectedSummary": "File rejected",
       "invalidImageUploadMessage": "Only JPEG, PNG, WebP or GIF images under 10 MB are accepted."
-    }
+    },
+    "success": "Erfolg",
+    "error": "Fehler",
+    "warning": "Achtung",
+    "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten."
   },
   "parks": {
     "heroBadge": "🗺️ Exploration",
@@ -1214,6 +1248,60 @@
       "lightbox": {
         "title": "Foto im Vollbild"
       }
+    }
+  },
+  "accountLayout": {
+    "kicker": "Persönlicher Bereich",
+    "title": "Dein Park-Pass",
+    "subtitle": "Verwalte Profil, Sprache und Zugriff in einem Erlebnis passend zum öffentlichen MVP.",
+    "security": "Sicherer Zugriff",
+    "languages": "Sprachen",
+    "profile": "Profil"
+  },
+  "languageModal": {
+    "kicker": "Sprache",
+    "title": "Wähle deine Sprache",
+    "subtitle": "Wechsle die gesamte Erfahrung und behalte nach Möglichkeit die aktuelle Route.",
+    "current": "Aktuell"
+  },
+  "aboutPage": {
+    "kicker": "Projektvision",
+    "title": "Parks klarer entdecken",
+    "lead": "AmusementPark kartiert Parks, Attraktionen und praktische Infos mit stabiler Architektur für Vergleichs- und Distanzfunktionen.",
+    "primaryCta": "Parks entdecken",
+    "secondaryCta": "Zur Startseite",
+    "stats": {
+      "parksLabel": "Potenzielle Parks",
+      "parksHint": "Auf Geschwindigkeit in großem Maßstab ausgelegt",
+      "mapLabel": "Designziel",
+      "mapHint": "Öffentlicher Ablauf bereit fürs MVP"
+    },
+    "mission": {
+      "kicker": "Mission",
+      "title": "Den richtigen Park schneller finden",
+      "subtitle": "Das Produkt startet mit einem soliden Portfolio und wächst zu reicheren Entdeckungs- und Entscheidungstools."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Entdecken",
+        "title": "Zuverlässige Parkseiten",
+        "text": "Jede Parkseite bündelt Standort, Elemente, Fotos, nahe Parks und nützliche Referenzen."
+      },
+      "explore": {
+        "badge": "Erkunden",
+        "title": "Kartenorientierter Ansatz",
+        "text": "Suche, Karteninteraktionen und Distanzen sind wiederverwendbare Grundlagen."
+      },
+      "enjoy": {
+        "badge": "Erleben",
+        "title": "Kohärente visuelle Identität",
+        "text": "Öffentliche, Auth- und Profilseiten teilen Tokens, Flächen und Komponenten."
+      }
+    },
+    "clean": {
+      "kicker": "Engineering",
+      "title": "Gebaut für Evolution ohne Basteln",
+      "text": "Das Frontend trennt visuelle Primitive von Orchestrierung, die API hält Business-Berechnungen aus Komponenten heraus."
     }
   }
 }

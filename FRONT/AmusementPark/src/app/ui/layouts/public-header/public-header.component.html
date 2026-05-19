@@ -114,25 +114,48 @@
 </header>
 
 <p-dialog
-  [header]="'topbar.choose_language' | translate"
   [visible]="displayLanguageModal()"
-  (visibleChange)="closeModal('languageModal')"
+  (visibleChange)="onLanguageDialogVisibleChanged($event)"
   [modal]="true"
   [draggable]="false"
   [resizable]="false"
-  [style]="{ width: 'min(92vw, 34rem)' }">
-  <div class="languages-grid">
-    @for (language of languages; track language.value) {
-      <button
-        pButton
-        type="button"
-        class="language-option"
-        (click)="selectLanguage(language.value)">
-        <img [src]="'assets/flags/' + language.value + '.png'" class="flag flag-large" alt="{{ language.label }}" />
-        <span>{{ language.label }}</span>
-      </button>
-    }
-  </div>
+  [showHeader]="false"
+  styleClass="app-language-dialog"
+  [style]="{ width: 'min(94vw, 42rem)' }">
+  <section class="app-language-dialog__shell">
+    <app-ui-section-header
+      kickerTone="sky"
+      kickerIconClass="pi pi-language"
+      kickerLabelKey="languageModal.kicker"
+      titleKey="languageModal.title"
+      subtitleKey="languageModal.subtitle">
+      <app-ui-chip uiSectionActions tone="soft" iconClass="pi pi-check-circle">
+        {{ 'languageModal.current' | translate }} · {{ selectedLanguage().toUpperCase() }}
+      </app-ui-chip>
+    </app-ui-section-header>
+
+    <div class="languages-grid" role="listbox" [attr.aria-label]="'topbar.choose_language' | translate">
+      @for (language of languages; track language.value) {
+        <button
+          appUiButton="soft"
+          type="button"
+          class="language-option"
+          [class.language-option--active]="isSelectedLanguage(language)"
+          [attr.aria-selected]="isSelectedLanguage(language)"
+          role="option"
+          (click)="selectLanguage(language.value)">
+          <img [src]="'assets/flags/' + language.value + '.png'" class="flag flag-large" alt="" />
+          <span class="language-option__copy">
+            <strong>{{ language.label }}</strong>
+            <small>{{ getLanguageShortCode(language) }}</small>
+          </span>
+          @if (isSelectedLanguage(language)) {
+            <i class="pi pi-check language-option__check" aria-hidden="true"></i>
+          }
+        </button>
+      }
+    </div>
+  </section>
 </p-dialog>
 
 <p-dialog

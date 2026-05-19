@@ -1,11 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
-import { NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
-import { ButtonDirective } from 'primeng/button';
-import { InputText } from 'primeng/inputtext';
 import { TranslateModule } from '@ngx-translate/core';
+
 import { UserDto } from '@app/models/users/user_dto';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageCategory } from '@app/models/images/image-category';
@@ -14,13 +9,26 @@ import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { PageStateComponent } from '../../../shared/page-state/page-state.component';
 import { OwnerImageUploadDialogComponent } from '../../../shared/owner-image-upload-dialog/owner-image-upload-dialog.component';
 import { ImageDisplayComponent } from '../../../shared/image-display/image-display.component';
+import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiFieldInputComponent } from '@ui/forms';
 
 @Component({
   selector: 'app-profile-page-view',
   templateUrl: './profile-page-view.component.html',
   styleUrls: ['./profile-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, Bind, Card, ButtonDirective, NgIf, FormsModule, InputText, OwnerImageUploadDialogComponent, TranslateModule, ImageDisplayComponent]
+  imports: [
+    PageStateComponent,
+    OwnerImageUploadDialogComponent,
+    TranslateModule,
+    ImageDisplayComponent,
+    UiButtonDirective,
+    UiChipComponent,
+    UiFieldInputComponent,
+    UiKickerComponent,
+    UiSectionHeaderComponent,
+    UiSurfaceDirective
+  ]
 })
 export class ProfilePageViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;

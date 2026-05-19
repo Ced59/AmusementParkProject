@@ -6,12 +6,12 @@ import { catchError, filter, tap } from 'rxjs/operators';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { Avatar } from 'primeng/avatar';
-import { ButtonDirective } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
 
 import { UserDto } from '@app/models/users/user_dto';
 import { AuthModalComponent } from '@app/components/login-register/auth-modal/auth-modal.component';
 import { ThemeSwitcherComponent } from '@app/components/theme-switcher/theme-switcher.component';
+import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent } from '@ui/primitives';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { AuthService } from '@app/services/auth/auth.service';
@@ -30,12 +30,14 @@ import { PublicParkNavigationTreeViewModel } from '@features/public/navigation/m
   imports: [
     Avatar,
     AuthModalComponent,
-    ButtonDirective,
     Dialog,
     RouterLink,
     RouterLinkActive,
     ThemeSwitcherComponent,
-    TranslateModule
+    TranslateModule,
+    UiButtonDirective,
+    UiChipComponent,
+    UiSectionHeaderComponent
   ]
 })
 export class PublicHeaderComponent implements OnInit {
@@ -156,6 +158,20 @@ export class PublicHeaderComponent implements OnInit {
     const publicSection: string | undefined = segments[1];
 
     return publicSection === 'parks' || publicSection === 'park';
+  }
+
+  protected isSelectedLanguage(language: LanguageOption): boolean {
+    return language.value === this.selectedLanguage();
+  }
+
+  protected getLanguageShortCode(language: LanguageOption): string {
+    return language.value.toUpperCase();
+  }
+
+  protected onLanguageDialogVisibleChanged(visible: boolean): void {
+    if (!visible) {
+      this.closeModal('languageModal');
+    }
   }
 
   protected selectLanguage(lang: string): void {

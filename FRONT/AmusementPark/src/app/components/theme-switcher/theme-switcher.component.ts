@@ -1,25 +1,23 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
-import { ThemeService } from '@app/services/themes/themes.service';
-import { Bind } from 'primeng/bind';
-import { ButtonDirective } from 'primeng/button';
-import { Dialog } from 'primeng/dialog';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { ThemeService } from '@app/services/themes/themes.service';
+
 @Component({
-    selector: 'app-theme-switcher',
-    templateUrl: './theme-switcher.component.html',
-    styleUrls: ['./theme-switcher.component.scss'],
-    imports: [Bind, ButtonDirective, NgClass, Dialog, TranslateModule]
+  selector: 'app-theme-switcher',
+  templateUrl: './theme-switcher.component.html',
+  styleUrls: ['./theme-switcher.component.scss'],
+  imports: [NgClass, TranslateModule]
 })
 export class ThemeSwitcherComponent implements OnInit {
   currentTheme: 'light' | 'dark' = 'dark';
-  displayThemeDialog = false;
 
   constructor(
-    private themeService: ThemeService,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+    private readonly themeService: ThemeService,
+    @Inject(PLATFORM_ID) private readonly platformId: object
+  ) {
+  }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -27,13 +25,9 @@ export class ThemeSwitcherComponent implements OnInit {
     }
   }
 
-  openThemeDialog(): void {
-    this.displayThemeDialog = true;
-  }
-
-  changeTheme(themeName: 'light' | 'dark'): void {
-    this.currentTheme = themeName;
-    this.themeService.changeTheme(themeName);
-    this.displayThemeDialog = false;
+  toggleTheme(): void {
+    const nextTheme: 'light' | 'dark' = this.currentTheme === 'light' ? 'dark' : 'light';
+    this.currentTheme = nextTheme;
+    this.themeService.changeTheme(nextTheme);
   }
 }

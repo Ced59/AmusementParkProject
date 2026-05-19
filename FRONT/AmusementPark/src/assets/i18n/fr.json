@@ -100,7 +100,10 @@
       "title_password": "Mot de passe",
       "password_placeholder": "Entrez votre mot de passe",
       "btn_text": "Se connecter",
-      "forgot_password": "Mot de passe oublié ?"
+      "forgot_password": "Mot de passe oublié ?",
+      "success": "Connexion réussie.",
+      "google_unavailable": "La connexion Google est temporairement indisponible.",
+      "google_success": "Connexion avec Google réussie."
     },
     "register": {
       "title": "Inscription classique",
@@ -116,24 +119,43 @@
         "password_error": "Le mot de passe doit contenir au minimum 8 caractères, une majuscule, une minuscule, et un chiffre."
       },
       "success_message": "Votre compte a été créé. Ouvrez le lien de confirmation affiché dans la console de l’API pour l’activer.",
-      "resend_confirmation": "Renvoyer le lien de confirmation"
+      "resend_confirmation": "Renvoyer le lien de confirmation",
+      "success_badge": "Créé",
+      "validation_error": "Le formulaire d’inscription contient des erreurs.",
+      "created_toast": "Compte créé. Vérifie le lien de confirmation envoyé par l’API."
     },
     "common": {
       "back_home": "Retour à l’accueil"
     },
     "confirm": {
       "title": "Confirmation du compte",
-      "loading": "Confirmation du compte en cours..."
+      "loading": "Confirmation du compte en cours...",
+      "kicker": "Confirmation",
+      "subtitle": "Nous validons le lien d’activation de ton compte.",
+      "success_badge": "Confirmé",
+      "error_badge": "Échec"
     },
     "forgot_password": {
       "title": "Mot de passe oublié",
       "description": "Saisissez votre adresse email pour recevoir un lien de réinitialisation.",
-      "submit": "Envoyer le lien de réinitialisation"
+      "submit": "Envoyer le lien de réinitialisation",
+      "kicker": "Récupération",
+      "sent_badge": "Envoyé"
     },
     "reset_password": {
       "title": "Réinitialiser le mot de passe",
       "invalid_link": "Ce lien de réinitialisation est invalide.",
-      "submit": "Réinitialiser le mot de passe"
+      "submit": "Réinitialiser le mot de passe",
+      "kicker": "Sécurité",
+      "description": "Choisis un nouveau mot de passe pour sécuriser ton compte.",
+      "invalid_badge": "Lien invalide",
+      "done_badge": "Mis à jour"
+    },
+    "modal": {
+      "kicker": "Bienvenue",
+      "title": "Connecte-toi ou crée ton compte",
+      "subtitle": "Ton compte prépare les futures fonctionnalités personnalisées tout en gardant les flux MVP simples.",
+      "or": "ou"
     }
   },
   "user-profile": {
@@ -153,7 +175,8 @@
       "invalidFile": "Please select a valid image file.",
       "invalidSize": "The selected avatar is too large.",
       "noImageSelected": "Please select an avatar before uploading.",
-      "uploading": "Uploading avatar..."
+      "uploading": "Uploading avatar...",
+      "updateSuccess": "Avatar mis à jour avec succès."
     },
     "identity": "Identité",
     "save": "Enregistrer",
@@ -164,7 +187,14 @@
     "errorTitle": "Impossible de charger le profil",
     "errorMessage": "Le profil n’a pas pu être chargé.",
     "back": "Retour",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "accountBadge": "Compte",
+    "subtitle": "Mets à jour ton identité publique, ton avatar et ta langue préférée.",
+    "detailsKicker": "Paramètres",
+    "detailsSubtitle": "Garde tes informations personnelles prêtes pour les futures fonctionnalités personnalisées.",
+    "identityRequired": "Le prénom et le nom sont requis.",
+    "updateSuccess": "Profil mis à jour avec succès.",
+    "updateError": "La mise à jour du profil a échoué."
   },
   "theme": {
     "change": "Changer le thème",
@@ -727,7 +757,11 @@
     "security": {
       "uploadRejectedSummary": "Fichier refusé",
       "invalidImageUploadMessage": "Seules les images JPEG, PNG, WebP ou GIF de moins de 10 Mo sont acceptées."
-    }
+    },
+    "success": "Succès",
+    "error": "Erreur",
+    "warning": "Attention",
+    "unexpectedError": "Une erreur inattendue est survenue."
   },
   "parks": {
     "heroBadge": "🗺️ Exploration",
@@ -1214,6 +1248,60 @@
       "lightbox": {
         "title": "Photo en plein écran"
       }
+    }
+  },
+  "accountLayout": {
+    "kicker": "Espace personnel",
+    "title": "Ton passeport parcs",
+    "subtitle": "Gère ton profil, ta langue et tes accès dans une expérience alignée avec le MVP public.",
+    "security": "Accès sécurisé",
+    "languages": "Langues",
+    "profile": "Profil"
+  },
+  "languageModal": {
+    "kicker": "Langue",
+    "title": "Choisis ta langue",
+    "subtitle": "Change toute l’expérience en conservant la route actuelle quand c’est possible.",
+    "current": "Actuelle"
+  },
+  "aboutPage": {
+    "kicker": "Vision du projet",
+    "title": "Une façon plus claire d’explorer les parcs",
+    "lead": "AmusementPark cartographie les parcs, attractions et informations utiles avec une architecture stable, prête pour les futures fonctions de comparaison et de distance.",
+    "primaryCta": "Explorer les parcs",
+    "secondaryCta": "Retour accueil",
+    "stats": {
+      "parksLabel": "Parcs potentiels",
+      "parksHint": "Pensé pour rester rapide à grande échelle",
+      "mapLabel": "Cible design",
+      "mapHint": "Parcours public prêt pour le MVP"
+    },
+    "mission": {
+      "kicker": "Mission",
+      "title": "Trouver le bon parc plus vite",
+      "subtitle": "Le produit commence par un portfolio solide, puis évolue vers des outils de découverte et d’aide à la décision plus riches."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Découvrir",
+        "title": "Pages parc fiables",
+        "text": "Chaque page parc centralise localisation, éléments, photos, parcs proches et références utiles."
+      },
+      "explore": {
+        "badge": "Explorer",
+        "title": "Une logique pensée carte",
+        "text": "Recherche, interactions carte et distances proches sont conçues comme des fondations réutilisables."
+      },
+      "enjoy": {
+        "badge": "Profiter",
+        "title": "Une identité visuelle cohérente",
+        "text": "Les pages publiques, auth et profil partagent maintenant les mêmes tokens, surfaces et composants."
+      }
+    },
+    "clean": {
+      "kicker": "Ingénierie",
+      "title": "Construit pour évoluer sans bricolage",
+      "text": "Le front sépare les primitives visuelles de l’orchestration, pendant que l’API garde les calculs métier hors des composants."
     }
   }
 }

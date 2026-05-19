@@ -15,6 +15,7 @@ import { ToastMessageService } from '@app/services/messages/toast-message.servic
 import { ModalService } from '@app/services/modal/modal.service';
 import { SharedService } from '@app/services/shared/shared.service';
 import { TranslationService } from '@app/services/translation.service';
+import { TranslateService } from '@ngx-translate/core';
 import { ProfilePageViewComponent } from './profile-page-view.component';
 import { ProfilePageStateFacade } from '@features/profile/state/profile-page-state.facade';
 
@@ -52,6 +53,7 @@ export class ProfilePageComponent implements OnInit {
     private readonly sharedService: SharedService,
     private readonly modalService: ModalService,
     private readonly translationService: TranslationService,
+    private readonly translateService: TranslateService,
     private readonly messageService: ToastMessageService
   ) {
   }
@@ -124,7 +126,7 @@ export class ProfilePageComponent implements OnInit {
     const lastName: string = this.identityDraft.lastName.trim();
 
     if (!firstName || !lastName) {
-      this.messageService.add('warn', 'Attention', 'Le prénom et le nom sont requis.');
+      this.messageService.add('warn', this.translate('common.warning', 'Warning'), this.translate('user-profile.identityRequired', 'First name and last name are required.'));
       return;
     }
 
@@ -148,12 +150,12 @@ export class ProfilePageComponent implements OnInit {
         this.isEditingIdentity = false;
         this.savingIdentity = false;
         this.sharedService.emitLoginStatusChange();
-        this.messageService.add('success', 'Succès', 'Profil mis à jour avec succès !');
+        this.messageService.add('success', this.translate('common.success', 'Success'), this.translate('user-profile.updateSuccess', 'Profile updated successfully.'));
       },
       error: (error: unknown) => {
         console.error('Error updating profile identity', error);
         this.savingIdentity = false;
-        this.messageService.add('error', 'Erreur', 'La mise à jour du profil a échoué.');
+        this.messageService.add('error', this.translate('common.error', 'Error'), this.translate('user-profile.updateError', 'Profile update failed.'));
       }
     });
   }
@@ -171,7 +173,7 @@ export class ProfilePageComponent implements OnInit {
 
     this.stateFacade.loadUserProfile(this.currentUserId);
     this.sharedService.emitLoginStatusChange();
-    this.messageService.add('success', 'Succès', 'Avatar mis à jour avec succès !');
+    this.messageService.add('success', this.translate('common.success', 'Success'), this.translate('user-profile.avatar.updateSuccess', 'Avatar updated successfully.'));
   }
 
   getAvatarUrl(): string {
@@ -205,5 +207,10 @@ export class ProfilePageComponent implements OnInit {
         this.stateFacade.setUser(user);
       }
     });
+  }
+
+  private translate(key: string, fallback: string): string {
+    const translatedValue: string = this.translateService.instant(key);
+    return translatedValue === key ? fallback : translatedValue;
   }
 }

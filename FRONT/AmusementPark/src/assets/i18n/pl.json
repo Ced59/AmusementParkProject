@@ -100,7 +100,10 @@
       "title_password": "Hasło",
       "password_placeholder": "Wpisz swoje hasło",
       "btn_text": "Zaloguj się",
-      "forgot_password": "Forgot password?"
+      "forgot_password": "Forgot password?",
+      "success": "Zalogowano pomyślnie.",
+      "google_unavailable": "Logowanie Google jest chwilowo niedostępne.",
+      "google_success": "Logowanie Google zakończone sukcesem."
     },
     "register": {
       "title": "Klasyczna rejestracja",
@@ -116,24 +119,43 @@
         "password_error": "Hasło musi zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą literę i jedną cyfrę."
       },
       "success_message": "Your account has been created. Open the confirmation link printed in the API console to activate it.",
-      "resend_confirmation": "Send confirmation link again"
+      "resend_confirmation": "Send confirmation link again",
+      "success_badge": "Utworzono",
+      "validation_error": "Formularz rejestracji zawiera błędy.",
+      "created_toast": "Konto utworzone. Sprawdź link potwierdzający wysłany przez API."
     },
     "common": {
       "back_home": "Back to home"
     },
     "confirm": {
       "title": "Account confirmation",
-      "loading": "Account confirmation in progress..."
+      "loading": "Account confirmation in progress...",
+      "kicker": "Potwierdzenie",
+      "subtitle": "Weryfikujemy link aktywacyjny konta.",
+      "success_badge": "Potwierdzono",
+      "error_badge": "Niepowodzenie"
     },
     "forgot_password": {
       "title": "Forgot password",
       "description": "Enter your email address to receive a reset link.",
-      "submit": "Send reset link"
+      "submit": "Send reset link",
+      "kicker": "Odzyskiwanie",
+      "sent_badge": "Wysłano"
     },
     "reset_password": {
       "title": "Reset password",
       "invalid_link": "This reset link is invalid.",
-      "submit": "Reset password"
+      "submit": "Reset password",
+      "kicker": "Bezpieczeństwo",
+      "description": "Wybierz nowe hasło, aby zabezpieczyć konto.",
+      "invalid_badge": "Nieprawidłowy link",
+      "done_badge": "Zaktualizowano"
+    },
+    "modal": {
+      "kicker": "Witaj",
+      "title": "Zaloguj się lub utwórz konto",
+      "subtitle": "Konto przygotowuje przyszłe funkcje personalizacji przy prostych przepływach MVP.",
+      "or": "lub"
     }
   },
   "user-profile": {
@@ -153,7 +175,8 @@
       "invalidFile": "Please select a valid image file.",
       "invalidSize": "The selected avatar is too large.",
       "noImageSelected": "Please select an avatar before uploading.",
-      "uploading": "Uploading avatar..."
+      "uploading": "Uploading avatar...",
+      "updateSuccess": "Avatar zaktualizowany pomyślnie."
     },
     "identity": "Identity",
     "save": "Save",
@@ -164,7 +187,14 @@
     "errorTitle": "Unable to load profile",
     "errorMessage": "The profile could not be loaded.",
     "back": "Wróć",
-    "logout": "Wyloguj"
+    "logout": "Wyloguj",
+    "accountBadge": "Konto",
+    "subtitle": "Zaktualizuj publiczną tożsamość, avatar i preferowany język.",
+    "detailsKicker": "Ustawienia",
+    "detailsSubtitle": "Utrzymuj dane gotowe na przyszłe funkcje personalizowane.",
+    "identityRequired": "Imię i nazwisko są wymagane.",
+    "updateSuccess": "Profil zaktualizowany pomyślnie.",
+    "updateError": "Aktualizacja profilu nie powiodła się."
   },
   "theme": {
     "change": "Zmień motyw",
@@ -727,7 +757,11 @@
     "security": {
       "uploadRejectedSummary": "File rejected",
       "invalidImageUploadMessage": "Only JPEG, PNG, WebP or GIF images under 10 MB are accepted."
-    }
+    },
+    "success": "Sukces",
+    "error": "Błąd",
+    "warning": "Uwaga",
+    "unexpectedError": "Wystąpił nieoczekiwany błąd."
   },
   "parks": {
     "heroBadge": "Public catalog",
@@ -1214,6 +1248,60 @@
       "lightbox": {
         "title": "Zdjęcie pełnoekranowe"
       }
+    }
+  },
+  "accountLayout": {
+    "kicker": "Strefa osobista",
+    "title": "Twój paszport parków",
+    "subtitle": "Zarządzaj profilem, językiem i dostępem w doświadczeniu spójnym z publicznym MVP.",
+    "security": "Bezpieczny dostęp",
+    "languages": "Języki",
+    "profile": "Profil"
+  },
+  "languageModal": {
+    "kicker": "Język",
+    "title": "Wybierz język",
+    "subtitle": "Zmień całe doświadczenie, zachowując bieżącą trasę, gdy to możliwe.",
+    "current": "Aktualny"
+  },
+  "aboutPage": {
+    "kicker": "Wizja projektu",
+    "title": "Czytelniejszy sposób odkrywania parków",
+    "lead": "AmusementPark mapuje parki, atrakcje i praktyczne informacje na stabilnej architekturze gotowej na porównania i dystanse.",
+    "primaryCta": "Przeglądaj parki",
+    "secondaryCta": "Wróć do strony głównej",
+    "stats": {
+      "parksLabel": "Potencjalne parki",
+      "parksHint": "Zaprojektowane pod szybkość w skali",
+      "mapLabel": "Cel designu",
+      "mapHint": "Publiczna ścieżka gotowa na MVP"
+    },
+    "mission": {
+      "kicker": "Misja",
+      "title": "Szybciej znaleźć właściwy park",
+      "subtitle": "Produkt zaczyna od solidnego portfolio i rozwija się w stronę bogatszych narzędzi odkrywania i decyzji."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Odkrywaj",
+        "title": "Wiarygodne strony parków",
+        "text": "Każda strona parku łączy lokalizację, elementy, zdjęcia, pobliskie parki i przydatne referencje."
+      },
+      "explore": {
+        "badge": "Eksploruj",
+        "title": "Podejście map-first",
+        "text": "Wyszukiwanie, interakcje mapy i pobliskie dystanse są podstawami do ponownego użycia."
+      },
+      "enjoy": {
+        "badge": "Korzystaj",
+        "title": "Spójna identyfikacja wizualna",
+        "text": "Strony publiczne, auth i profilowe współdzielą te same tokeny, powierzchnie i komponenty."
+      }
+    },
+    "clean": {
+      "kicker": "Inżynieria",
+      "title": "Zbudowane do ewolucji bez prowizorki",
+      "text": "Front oddziela primitive wizualne od orkiestracji, a API trzyma obliczenia biznesowe poza komponentami."
     }
   }
 }

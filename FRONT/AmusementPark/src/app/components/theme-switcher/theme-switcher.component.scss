@@ -9,24 +9,38 @@
   height: 44px;
   min-width: 44px;
   min-height: 44px;
-  padding: 0 !important;
-  border-radius: 50% !important;
-  background: var(--app-surface-2) !important;
-  border: 1px solid var(--app-border) !important;
-  color: var(--app-heading) !important;
+  padding: 0;
+  border: 1px solid var(--app-border);
+  border-radius: 50%;
+  color: var(--app-heading);
+  background: var(--app-surface-2);
+  cursor: pointer;
 
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background-color var(--transition),
+    color var(--transition);
 }
 
-.theme-icon-button .p-button-label {
-  display: none;
+.theme-icon-button:hover {
+  transform: translateY(-1px);
+  border-color: var(--app-border-stronger);
+  color: var(--c-orange);
+  background: color-mix(in srgb, var(--app-surface-2) 94%, var(--c-orange) 6%);
 }
 
-.theme-icon-button .p-button-icon,
+.theme-icon-button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
 .theme-icon-button i {
-  margin: 0 !important;
+  margin: 0;
   font-size: 1.1rem;
   line-height: 1;
 }

@@ -6,105 +6,127 @@
     errorTitleKey: 'user-profile.errorTitle',
     errorMessageKey: 'user-profile.errorMessage'
   }">
-  <p-card header="{{ 'user-profile.title' | translate }}" class="profile-card">
-    <div class="profile-avatar-container">
-      <app-image-display
-        [imagePathOrUrl]="avatarUrl"
-        alt="Avatar"
-        imgClass="profile-avatar"
-        placeholderClass="profile-avatar profile-avatar--placeholder"
-        placeholderIconClass="pi pi-user">
-      </app-image-display>
-      <button
-        pButton
-        type="button"
-        label="{{ 'user-profile.modify' | translate }}"
-        class="p-button-text edit-avatar-button"
-        (click)="editField('avatar')">
-      </button>
-    </div>
-
-    <div class="profile-details" *ngIf="user() as currentUser">
-      <div class="profile-row">
-        <span class="profile-label">{{ 'user-profile.email' | translate }} :</span>
-        <span class="profile-value">{{ currentUser.email }}</span>
-        <span></span>
-      </div>
-
-      <div class="profile-row profile-row--identity">
-        <span class="profile-label">{{ 'user-profile.identity' | translate }} :</span>
-
-        <div class="profile-value" *ngIf="!isEditingIdentity; else identityEditor">
-          <strong>{{ currentUser.firstName }}</strong>
-          <span>{{ currentUser.lastName }}</span>
-        </div>
-
-        <div class="profile-actions" *ngIf="!isEditingIdentity">
+  @if (user(); as currentUser) {
+    <section class="profile-page">
+      <article class="profile-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+        <div class="profile-hero__avatar">
+          <app-image-display
+            [imagePathOrUrl]="avatarUrl"
+            alt="Avatar"
+            imgClass="profile-avatar"
+            placeholderClass="profile-avatar profile-avatar--placeholder"
+            placeholderIconClass="pi pi-user">
+          </app-image-display>
           <button
-            pButton
+            appUiButton="soft"
             type="button"
-            label="{{ 'user-profile.modify' | translate }}"
-            class="p-button-text"
-            (click)="editField('identity')"></button>
+            class="profile-avatar-button"
+            (click)="editField('avatar')">
+            <i class="pi pi-camera" aria-hidden="true"></i>
+            <span>{{ 'user-profile.modify' | translate }}</span>
+          </button>
         </div>
 
-        <ng-template #identityEditor>
-          <div class="profile-identity-editor">
-            <div class="profile-identity-fields">
-              <div class="profile-inline-field">
-                <label for="profile-firstname">{{ 'user-profile.firstname' | translate }}</label>
-                <input
-                  id="profile-firstname"
-                  pInputText
-                  type="text"
-                  [(ngModel)]="identityDraft.firstName"
-                  [disabled]="savingIdentity" />
-              </div>
-
-              <div class="profile-inline-field">
-                <label for="profile-lastname">{{ 'user-profile.name' | translate }}</label>
-                <input
-                  id="profile-lastname"
-                  pInputText
-                  type="text"
-                  [(ngModel)]="identityDraft.lastName"
-                  [disabled]="savingIdentity" />
-              </div>
-            </div>
-
-            <div class="profile-actions profile-actions--editing">
-              <button
-                pButton
-                type="button"
-                icon="pi pi-check"
-                [label]="savingIdentity ? ('user-profile.saving' | translate) : ('user-profile.save' | translate)"
-                [disabled]="savingIdentity"
-                (click)="saveIdentity()"></button>
-
-              <button
-                pButton
-                type="button"
-                class="p-button-text"
-                icon="pi pi-times"
-                [label]="'user-profile.cancel' | translate"
-                [disabled]="savingIdentity"
-                (click)="cancelIdentityEdition()"></button>
-            </div>
+        <div class="profile-hero__content">
+          <app-ui-kicker tone="gold" iconClass="pi pi-user">
+            {{ 'user-profile.accountBadge' | translate }}
+          </app-ui-kicker>
+          <h1 class="profile-hero__title">{{ currentUser.firstName || currentUser.email }}</h1>
+          <p class="profile-hero__subtitle">{{ 'user-profile.subtitle' | translate }}</p>
+          <div class="profile-hero__chips">
+            <app-ui-chip tone="sky" iconClass="pi pi-envelope">{{ currentUser.email }}</app-ui-chip>
+            <app-ui-chip tone="lime" iconClass="pi pi-language">{{ currentUser.preferredLanguage }}</app-ui-chip>
           </div>
-        </ng-template>
-      </div>
+        </div>
+      </article>
 
-      <div class="profile-row">
-        <span class="profile-label">{{ 'user-profile.preferred_language' | translate }} :</span>
-        <span class="profile-value">{{ currentUser.preferredLanguage }}</span>
-        <button pButton type="button" label="{{ 'user-profile.modify' | translate }}" class="p-button-text" (click)="editPreferredLanguage()"></button>
-      </div>
-    </div>
+      <article class="profile-panel" appUiSurface="panel" appUiSurfacePadding="spacious">
+        <app-ui-section-header
+          kickerTone="sky"
+          kickerIconClass="pi pi-id-card"
+          kickerLabelKey="user-profile.detailsKicker"
+          titleKey="user-profile.title"
+          subtitleKey="user-profile.detailsSubtitle">
+        </app-ui-section-header>
 
-    <div class="logout-container">
-      <button pButton type="button" label="Logout" class="p-button-danger" (click)="logout()"></button>
-    </div>
-  </p-card>
+        <div class="profile-details">
+          <div class="profile-row">
+            <span class="profile-label">{{ 'user-profile.email' | translate }}</span>
+            <span class="profile-value">{{ currentUser.email }}</span>
+          </div>
+
+          <div class="profile-row profile-row--identity">
+            <span class="profile-label">{{ 'user-profile.identity' | translate }}</span>
+
+            @if (!isEditingIdentity) {
+              <span class="profile-value profile-value--identity">
+                <strong>{{ currentUser.firstName }}</strong>
+                <span>{{ currentUser.lastName }}</span>
+              </span>
+              <button appUiButton="ghost" type="button" (click)="editField('identity')">
+                {{ 'user-profile.modify' | translate }}
+              </button>
+            } @else {
+              <div class="profile-identity-editor">
+                <div class="profile-identity-fields">
+                  <app-ui-field-input
+                    inputId="profile-firstname"
+                    labelKey="user-profile.firstname"
+                    [value]="identityDraft.firstName"
+                    [disabled]="savingIdentity"
+                    (valueChange)="identityDraft.firstName = $event">
+                  </app-ui-field-input>
+
+                  <app-ui-field-input
+                    inputId="profile-lastname"
+                    labelKey="user-profile.name"
+                    [value]="identityDraft.lastName"
+                    [disabled]="savingIdentity"
+                    (valueChange)="identityDraft.lastName = $event">
+                  </app-ui-field-input>
+                </div>
+
+                <div class="profile-actions profile-actions--editing">
+                  <button
+                    appUiButton="primary"
+                    type="button"
+                    [disabled]="savingIdentity"
+                    (click)="saveIdentity()">
+                    <i class="pi pi-check" aria-hidden="true"></i>
+                    <span>{{ savingIdentity ? ('user-profile.saving' | translate) : ('user-profile.save' | translate) }}</span>
+                  </button>
+
+                  <button
+                    appUiButton="ghost"
+                    type="button"
+                    [disabled]="savingIdentity"
+                    (click)="cancelIdentityEdition()">
+                    <i class="pi pi-times" aria-hidden="true"></i>
+                    <span>{{ 'user-profile.cancel' | translate }}</span>
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="profile-row">
+            <span class="profile-label">{{ 'user-profile.preferred_language' | translate }}</span>
+            <span class="profile-value">{{ currentUser.preferredLanguage }}</span>
+            <button appUiButton="ghost" type="button" (click)="editPreferredLanguage()">
+              {{ 'user-profile.modify' | translate }}
+            </button>
+          </div>
+        </div>
+
+        <div class="logout-container">
+          <button appUiButton="rose" type="button" (click)="logout()">
+            <i class="pi pi-sign-out" aria-hidden="true"></i>
+            <span>{{ 'user-profile.logout' | translate }}</span>
+          </button>
+        </div>
+      </article>
+    </section>
+  }
 </app-page-state>
 
 <app-owner-image-upload-dialog

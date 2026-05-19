@@ -100,7 +100,10 @@
       "title_password": "Palavra-passe",
       "password_placeholder": "Introduza a sua palavra-passe",
       "btn_text": "Iniciar sessão",
-      "forgot_password": "Forgot password?"
+      "forgot_password": "Forgot password?",
+      "success": "Sessão iniciada com sucesso.",
+      "google_unavailable": "O login Google está temporariamente indisponível.",
+      "google_success": "Login com Google concluído."
     },
     "register": {
       "title": "Registo clássico",
@@ -116,24 +119,43 @@
         "password_error": "A palavra-passe deve conter pelo menos 8 caracteres, uma maiúscula, uma minúscula e um número."
       },
       "success_message": "Your account has been created. Open the confirmation link printed in the API console to activate it.",
-      "resend_confirmation": "Send confirmation link again"
+      "resend_confirmation": "Send confirmation link again",
+      "success_badge": "Criada",
+      "validation_error": "O formulário de registo contém erros.",
+      "created_toast": "Conta criada. Verifica o link de confirmação enviado pela API."
     },
     "common": {
       "back_home": "Back to home"
     },
     "confirm": {
       "title": "Account confirmation",
-      "loading": "Account confirmation in progress..."
+      "loading": "Account confirmation in progress...",
+      "kicker": "Confirmação",
+      "subtitle": "Estamos a validar o link de ativação da tua conta.",
+      "success_badge": "Confirmada",
+      "error_badge": "Falhou"
     },
     "forgot_password": {
       "title": "Forgot password",
       "description": "Enter your email address to receive a reset link.",
-      "submit": "Send reset link"
+      "submit": "Send reset link",
+      "kicker": "Recuperação",
+      "sent_badge": "Enviado"
     },
     "reset_password": {
       "title": "Reset password",
       "invalid_link": "This reset link is invalid.",
-      "submit": "Reset password"
+      "submit": "Reset password",
+      "kicker": "Segurança",
+      "description": "Escolhe uma nova palavra-passe para proteger a tua conta.",
+      "invalid_badge": "Link inválido",
+      "done_badge": "Atualizada"
+    },
+    "modal": {
+      "kicker": "Bem-vindo",
+      "title": "Inicia sessão ou cria a tua conta",
+      "subtitle": "A tua conta prepara futuras funcionalidades personalizadas mantendo simples os fluxos MVP.",
+      "or": "ou"
     }
   },
   "user-profile": {
@@ -153,7 +175,8 @@
       "invalidFile": "Please select a valid image file.",
       "invalidSize": "The selected avatar is too large.",
       "noImageSelected": "Please select an avatar before uploading.",
-      "uploading": "Uploading avatar..."
+      "uploading": "Uploading avatar...",
+      "updateSuccess": "Avatar atualizado com sucesso."
     },
     "identity": "Identity",
     "save": "Save",
@@ -164,7 +187,14 @@
     "errorTitle": "Unable to load profile",
     "errorMessage": "The profile could not be loaded.",
     "back": "Voltar",
-    "logout": "Terminar sessão"
+    "logout": "Terminar sessão",
+    "accountBadge": "Conta",
+    "subtitle": "Atualiza a tua identidade pública, avatar e idioma preferido.",
+    "detailsKicker": "Definições",
+    "detailsSubtitle": "Mantém as tuas informações prontas para futuras funcionalidades personalizadas.",
+    "identityRequired": "Nome e apelido são obrigatórios.",
+    "updateSuccess": "Perfil atualizado com sucesso.",
+    "updateError": "Falha ao atualizar o perfil."
   },
   "theme": {
     "change": "Mudar tema",
@@ -727,7 +757,11 @@
     "security": {
       "uploadRejectedSummary": "File rejected",
       "invalidImageUploadMessage": "Only JPEG, PNG, WebP or GIF images under 10 MB are accepted."
-    }
+    },
+    "success": "Sucesso",
+    "error": "Erro",
+    "warning": "Atenção",
+    "unexpectedError": "Ocorreu um erro inesperado."
   },
   "parks": {
     "heroBadge": "Public catalog",
@@ -1214,6 +1248,60 @@
       "lightbox": {
         "title": "Foto em ecrã inteiro"
       }
+    }
+  },
+  "accountLayout": {
+    "kicker": "Espaço pessoal",
+    "title": "O teu passaporte de parques",
+    "subtitle": "Gere o teu perfil, idioma e acessos numa experiência alinhada com o MVP público.",
+    "security": "Acesso seguro",
+    "languages": "Idiomas",
+    "profile": "Perfil"
+  },
+  "languageModal": {
+    "kicker": "Idioma",
+    "title": "Escolhe o teu idioma",
+    "subtitle": "Altera toda a experiência mantendo a rota atual quando possível.",
+    "current": "Atual"
+  },
+  "aboutPage": {
+    "kicker": "Visão do projeto",
+    "title": "Uma forma mais clara de explorar parques",
+    "lead": "AmusementPark mapeia parques, atrações e informações práticas com uma arquitetura estável pronta para comparação e distância.",
+    "primaryCta": "Explorar parques",
+    "secondaryCta": "Voltar ao início",
+    "stats": {
+      "parksLabel": "Parques potenciais",
+      "parksHint": "Pensado para continuar rápido em escala",
+      "mapLabel": "Objetivo visual",
+      "mapHint": "Percurso público pronto para o MVP"
+    },
+    "mission": {
+      "kicker": "Missão",
+      "title": "Encontrar o parque certo mais depressa",
+      "subtitle": "O produto começa com um portfólio sólido e cresce para ferramentas mais ricas de descoberta e decisão."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Descobrir",
+        "title": "Páginas de parque fiáveis",
+        "text": "Cada página de parque centraliza localização, itens, fotos, parques próximos e referências úteis."
+      },
+      "explore": {
+        "badge": "Explorar",
+        "title": "Mentalidade centrada no mapa",
+        "text": "Pesquisa, interações de mapa e distâncias próximas são bases reutilizáveis."
+      },
+      "enjoy": {
+        "badge": "Aproveitar",
+        "title": "Identidade visual coerente",
+        "text": "Páginas públicas, auth e perfil partilham os mesmos tokens, superfícies e componentes."
+      }
+    },
+    "clean": {
+      "kicker": "Engenharia",
+      "title": "Construído para evoluir sem remendos",
+      "text": "O front separa primitivas visuais da orquestração, enquanto a API mantém cálculos de negócio fora dos componentes."
     }
   }
 }

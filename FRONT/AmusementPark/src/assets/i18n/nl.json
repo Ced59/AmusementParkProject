@@ -100,7 +100,10 @@
       "title_password": "Wachtwoord",
       "password_placeholder": "Vul je wachtwoord in",
       "btn_text": "Inloggen",
-      "forgot_password": "Forgot password?"
+      "forgot_password": "Forgot password?",
+      "success": "Succesvol ingelogd.",
+      "google_unavailable": "Google-login is tijdelijk niet beschikbaar.",
+      "google_success": "Google-login geslaagd."
     },
     "register": {
       "title": "Standaard registratie",
@@ -116,24 +119,43 @@
         "password_error": "Het wachtwoord moet minstens 8 tekens, één hoofdletter, één kleine letter en één cijfer bevatten."
       },
       "success_message": "Your account has been created. Open the confirmation link printed in the API console to activate it.",
-      "resend_confirmation": "Send confirmation link again"
+      "resend_confirmation": "Send confirmation link again",
+      "success_badge": "Aangemaakt",
+      "validation_error": "Het registratieformulier bevat fouten.",
+      "created_toast": "Account aangemaakt. Controleer de bevestigingslink van de API."
     },
     "common": {
       "back_home": "Back to home"
     },
     "confirm": {
       "title": "Account confirmation",
-      "loading": "Account confirmation in progress..."
+      "loading": "Account confirmation in progress...",
+      "kicker": "Bevestiging",
+      "subtitle": "We valideren de activeringslink van je account.",
+      "success_badge": "Bevestigd",
+      "error_badge": "Mislukt"
     },
     "forgot_password": {
       "title": "Forgot password",
       "description": "Enter your email address to receive a reset link.",
-      "submit": "Send reset link"
+      "submit": "Send reset link",
+      "kicker": "Herstel",
+      "sent_badge": "Verzonden"
     },
     "reset_password": {
       "title": "Reset password",
       "invalid_link": "This reset link is invalid.",
-      "submit": "Reset password"
+      "submit": "Reset password",
+      "kicker": "Beveiliging",
+      "description": "Kies een nieuw wachtwoord om je account te beveiligen.",
+      "invalid_badge": "Ongeldige link",
+      "done_badge": "Bijgewerkt"
+    },
+    "modal": {
+      "kicker": "Welkom",
+      "title": "Log in of maak je account aan",
+      "subtitle": "Je account bereidt toekomstige gepersonaliseerde functies voor met eenvoudige MVP-flows.",
+      "or": "of"
     }
   },
   "user-profile": {
@@ -153,7 +175,8 @@
       "invalidFile": "Please select a valid image file.",
       "invalidSize": "The selected avatar is too large.",
       "noImageSelected": "Please select an avatar before uploading.",
-      "uploading": "Uploading avatar..."
+      "uploading": "Uploading avatar...",
+      "updateSuccess": "Avatar succesvol bijgewerkt."
     },
     "identity": "Identity",
     "save": "Save",
@@ -164,7 +187,14 @@
     "errorTitle": "Unable to load profile",
     "errorMessage": "The profile could not be loaded.",
     "back": "Terug",
-    "logout": "Uitloggen"
+    "logout": "Uitloggen",
+    "accountBadge": "Account",
+    "subtitle": "Werk je openbare identiteit, avatar en voorkeurstaal bij.",
+    "detailsKicker": "Instellingen",
+    "detailsSubtitle": "Houd je gegevens klaar voor toekomstige gepersonaliseerde functies.",
+    "identityRequired": "Voornaam en achternaam zijn verplicht.",
+    "updateSuccess": "Profiel succesvol bijgewerkt.",
+    "updateError": "Profiel bijwerken mislukt."
   },
   "theme": {
     "change": "Thema wijzigen",
@@ -727,7 +757,11 @@
     "security": {
       "uploadRejectedSummary": "File rejected",
       "invalidImageUploadMessage": "Only JPEG, PNG, WebP or GIF images under 10 MB are accepted."
-    }
+    },
+    "success": "Succes",
+    "error": "Fout",
+    "warning": "Let op",
+    "unexpectedError": "Er is een onverwachte fout opgetreden."
   },
   "parks": {
     "heroBadge": "Public catalog",
@@ -1214,6 +1248,60 @@
       "lightbox": {
         "title": "Foto op volledig scherm"
       }
+    }
+  },
+  "accountLayout": {
+    "kicker": "Persoonlijke ruimte",
+    "title": "Jouw parkpas",
+    "subtitle": "Beheer je profiel, taal en toegang in een ervaring die aansluit bij de publieke MVP.",
+    "security": "Veilige toegang",
+    "languages": "Talen",
+    "profile": "Profiel"
+  },
+  "languageModal": {
+    "kicker": "Taal",
+    "title": "Kies je taal",
+    "subtitle": "Wijzig de hele ervaring en behoud waar mogelijk de huidige route.",
+    "current": "Huidig"
+  },
+  "aboutPage": {
+    "kicker": "Projectvisie",
+    "title": "Een duidelijkere manier om pretparken te verkennen",
+    "lead": "AmusementPark brengt parken, attracties en praktische informatie in kaart met een stabiele architectuur voor vergelijking en afstand.",
+    "primaryCta": "Parken verkennen",
+    "secondaryCta": "Terug naar home",
+    "stats": {
+      "parksLabel": "Potentiële parken",
+      "parksHint": "Ontworpen om snel te blijven op schaal",
+      "mapLabel": "Design doel",
+      "mapHint": "Publieke route klaar voor de MVP"
+    },
+    "mission": {
+      "kicker": "Missie",
+      "title": "Sneller het juiste park vinden",
+      "subtitle": "Het product start met een solide portfolio en groeit naar rijkere ontdek- en keuzehulpmiddelen."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Ontdekken",
+        "title": "Betrouwbare parkpagina’s",
+        "text": "Elke parkpagina bundelt locatie, items, foto’s, nabijgelegen parken en nuttige referenties."
+      },
+      "explore": {
+        "badge": "Verkennen",
+        "title": "Kaartgerichte aanpak",
+        "text": "Zoeken, kaartinteracties en nabije afstanden zijn herbruikbare fundamenten."
+      },
+      "enjoy": {
+        "badge": "Genieten",
+        "title": "Consistente visuele identiteit",
+        "text": "Publieke, auth- en profielpagina’s delen dezelfde tokens, surfaces en componenten."
+      }
+    },
+    "clean": {
+      "kicker": "Engineering",
+      "title": "Gebouwd om te evolueren zonder knutselwerk",
+      "text": "De front-end scheidt visuele primitives van orkestratie en de API houdt zakelijke berekeningen buiten componenten."
     }
   }
 }

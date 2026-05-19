@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
 import { TranslateModule } from '@ngx-translate/core';
 import { PageStateComponent } from '../../shared/page-state/page-state.component';
+import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 import { ConfirmAccountPageStateFacade } from '@features/auth/state/confirm-account-page-state.facade';
 
 @Component({
@@ -11,7 +10,7 @@ import { ConfirmAccountPageStateFacade } from '@features/auth/state/confirm-acco
     templateUrl: './confirm-account-page.component.html',
     styleUrls: ['./confirm-account-page.component.scss'],
     providers: [ConfirmAccountPageStateFacade],
-    imports: [Bind, Card, RouterLink, TranslateModule, PageStateComponent]
+    imports: [RouterLink, TranslateModule, PageStateComponent, UiButtonDirective, UiChipComponent, UiSectionHeaderComponent, UiSurfaceDirective]
 })
 export class ConfirmAccountPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;

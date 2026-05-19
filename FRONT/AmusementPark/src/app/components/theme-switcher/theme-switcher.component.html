@@ -1,34 +1,7 @@
-<button pButton type="button" class="theme-icon-button" (click)="openThemeDialog()">
-  <i class="pi" [ngClass]="currentTheme === 'light' ? 'pi-sun' : 'pi-moon'"></i>
+<button
+  type="button"
+  class="theme-icon-button"
+  (click)="toggleTheme()"
+  [attr.aria-label]="(currentTheme === 'light' ? 'theme.dark' : 'theme.light') | translate">
+  <i class="pi" [ngClass]="currentTheme === 'light' ? 'pi-sun' : 'pi-moon'" aria-hidden="true"></i>
 </button>
-
-<p-dialog
-  header="{{ 'theme.change' | translate }}"
-  [(visible)]="displayThemeDialog"
-  [modal]="true"
-  [closable]="true"
-  [draggable]="false"
-  [resizable]="false"
-  [appendTo]="'body'"
-  [baseZIndex]="12000"
-  [style]="{ width: 'min(92vw, 24rem)' }">
-  <div class="theme-dialog-content">
-    <button
-      pButton
-      type="button"
-      [label]="'theme.light' | translate"
-      icon="pi pi-sun"
-      class="theme-option"
-      (click)="changeTheme('light')">
-    </button>
-
-    <button
-      pButton
-      type="button"
-      [label]="'theme.dark' | translate"
-      icon="pi pi-moon"
-      class="theme-option"
-      (click)="changeTheme('dark')">
-    </button>
-  </div>
-</p-dialog>
