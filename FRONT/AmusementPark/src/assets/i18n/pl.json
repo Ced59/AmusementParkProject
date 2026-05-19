@@ -255,7 +255,11 @@
       "unlock": "Odblokuj",
       "password": "Nowe hasło",
       "passwordConfirm": "Potwierdź hasło",
-      "changePassword": "Zmień hasło"
+      "changePassword": "Zmień hasło",
+      "title": "Użytkownicy",
+      "blockTitle": "Blokada konta",
+      "newPassword": "Nowe hasło",
+      "confirmPassword": "Potwierdź hasło"
     },
     "parks": {
       "total": "Łączna liczba parków: {{count}}",
@@ -630,7 +634,8 @@
         "updateTitle": "Edytuj operatora",
         "name": "Nazwa",
         "description": "Opis"
-      }
+      },
+      "title": "Operatorzy"
     },
     "parkFounders": {
       "editPage": {
@@ -654,7 +659,8 @@
         "updateTitle": "Edit manufacturer",
         "name": "Name",
         "biography": "Biography"
-      }
+      },
+      "title": "Producenci"
     },
     "parkItems": {
       "title": "Park items",
@@ -715,7 +721,17 @@
       "title": "Źródła danych"
     },
     "dashboard": {
-      "title": "Panel"
+      "title": "Panel",
+      "subtitle": "Punkt wejścia do panelu administracyjnego: wybierz sekcję z lewego menu albo ze skrótów poniżej.",
+      "shortcuts": {
+        "users": "Zarządzanie kontami, rolami i dostępem.",
+        "parks": "Filtrowanie, priorytetyzacja i publikowanie parków.",
+        "parkItems": "Zarządzanie atrakcjami, sklepami, restauracjami i usługami.",
+        "operators": "Utrzymywanie operatorów powiązanych z parkami.",
+        "manufacturers": "Utrzymywanie producentów i konstruktorów atrakcji.",
+        "images": "Kontrola mediów, logo i grafik strony.",
+        "data": "Monitorowanie importów, źródeł i przetwarzania danych."
+      }
     }
   },
   "validation": {
@@ -725,7 +741,8 @@
     "cancel": "Anuluj",
     "save": "Zapisz",
     "backToPark": "Powrót do parku",
-    "backToList": "Powrót"
+    "backToList": "Powrót",
+    "edit": "Edytuj"
   },
   "parkDetail": {
     "descriptionTitle": "Opis",

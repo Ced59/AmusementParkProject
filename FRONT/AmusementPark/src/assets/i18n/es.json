@@ -255,7 +255,11 @@
       "unlock": "Desbloquear",
       "password": "Nueva contraseña",
       "passwordConfirm": "Confirmar contraseña",
-      "changePassword": "Cambiar contraseña"
+      "changePassword": "Cambiar contraseña",
+      "title": "Usuarios",
+      "blockTitle": "Bloqueo de cuenta",
+      "newPassword": "Nueva contraseña",
+      "confirmPassword": "Confirmar contraseña"
     },
     "parks": {
       "total": "Número total de parques: {{count}}",
@@ -630,7 +634,8 @@
         "updateTitle": "Editar el operador",
         "name": "Nombre",
         "description": "Descripción"
-      }
+      },
+      "title": "Operadores"
     },
     "parkFounders": {
       "editPage": {
@@ -654,7 +659,8 @@
         "updateTitle": "Edit manufacturer",
         "name": "Name",
         "biography": "Biography"
-      }
+      },
+      "title": "Constructores"
     },
     "parkItems": {
       "title": "Park items",
@@ -715,7 +721,17 @@
       "title": "Fuentes de datos"
     },
     "dashboard": {
-      "title": "Panel"
+      "title": "Panel",
+      "subtitle": "Punto de entrada del back-office: elige una sección en el menú izquierdo o en los accesos directos.",
+      "shortcuts": {
+        "users": "Gestionar cuentas, roles y accesos.",
+        "parks": "Filtrar, priorizar y publicar parques.",
+        "parkItems": "Administrar atracciones, tiendas, restaurantes y servicios.",
+        "operators": "Mantener los operadores asociados a los parques.",
+        "manufacturers": "Mantener constructores y fabricantes de atracciones.",
+        "images": "Revisar medios, logotipos y visuales del sitio.",
+        "data": "Supervisar importaciones, fuentes y procesos de datos."
+      }
     }
   },
   "validation": {
@@ -725,7 +741,8 @@
     "cancel": "Cancelar",
     "save": "Guardar",
     "backToPark": "Volver al parque",
-    "backToList": "Volver"
+    "backToList": "Volver",
+    "edit": "Editar"
   },
   "parkDetail": {
     "descriptionTitle": "Descripción",

@@ -34,6 +34,14 @@
           <span>🎢</span>
           <span>{{ 'admin.parkItems.title' | translate }}</span>
         </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'operators']" routerLinkActive="active">
+          <span>🏢</span>
+          <span>{{ 'admin.operators.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'manufacturers']" routerLinkActive="active">
+          <span>🔧</span>
+          <span>{{ 'admin.manufacturers.title' | translate }}</span>
+        </a>
         <a [routerLink]="['/', currentLang, 'admin', 'images']" routerLinkActive="active">
           <span>🖼️</span>
           <span>{{ 'admin.images.title' | translate }}</span>

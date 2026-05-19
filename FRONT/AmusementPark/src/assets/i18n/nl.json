@@ -255,7 +255,11 @@
       "unlock": "Deblokkeren",
       "password": "Nieuw wachtwoord",
       "passwordConfirm": "Wachtwoord bevestigen",
-      "changePassword": "Wachtwoord wijzigen"
+      "changePassword": "Wachtwoord wijzigen",
+      "title": "Gebruikers",
+      "blockTitle": "Account blokkeren",
+      "newPassword": "Nieuw wachtwoord",
+      "confirmPassword": "Wachtwoord bevestigen"
     },
     "parks": {
       "total": "Totaal aantal parken: {{count}}",
@@ -630,7 +634,8 @@
         "updateTitle": "Exploitant bewerken",
         "name": "Naam",
         "description": "Beschrijving"
-      }
+      },
+      "title": "Exploitanten"
     },
     "parkFounders": {
       "editPage": {
@@ -654,7 +659,8 @@
         "updateTitle": "Edit manufacturer",
         "name": "Name",
         "biography": "Biography"
-      }
+      },
+      "title": "Constructeurs"
     },
     "parkItems": {
       "title": "Park items",
@@ -715,7 +721,17 @@
       "title": "Databronnen"
     },
     "dashboard": {
-      "title": "Dashboard"
+      "title": "Dashboard",
+      "subtitle": "Startpunt van de backoffice: kies een rubriek in het linkermenu of via de snelkoppelingen hieronder.",
+      "shortcuts": {
+        "users": "Accounts, rollen en toegang beheren.",
+        "parks": "Parken filteren, prioriteren en publiceren.",
+        "parkItems": "Attracties, winkels, restaurants en diensten beheren.",
+        "operators": "Exploitanten gekoppeld aan parken onderhouden.",
+        "manufacturers": "Constructeurs en attractiebouwers onderhouden.",
+        "images": "Media, logo’s en sitebeelden controleren.",
+        "data": "Imports, bronnen en gegevensverwerking volgen."
+      }
     }
   },
   "validation": {
@@ -725,7 +741,8 @@
     "cancel": "Annuleren",
     "save": "Opslaan",
     "backToPark": "Terug naar het park",
-    "backToList": "Terug"
+    "backToList": "Terug",
+    "edit": "Bewerken"
   },
   "parkDetail": {
     "descriptionTitle": "Beschrijving",

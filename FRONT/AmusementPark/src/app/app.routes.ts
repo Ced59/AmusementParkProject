@@ -21,57 +21,55 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            loadComponent: () => import('./components/admin/admin-dashboard/admin-dashboard.component').then((m) => m.AdminDashboardComponent),
-            children: [
-              {
-                path: 'users',
-                loadChildren: () =>
-                  import('./components/admin/users/admin-users/admin-users.module')
-                    .then((m) => m.AdminUsersModule)
-              },
-              {
-                path: 'parks',
-                loadChildren: () =>
-                  import('./components/admin/parks/admin-parks/admin-parks.module')
-                    .then((m) => m.AdminParksModule)
-              },
-              {
-                path: 'items',
-                loadChildren: () =>
-                  import('./components/admin/park-items/admin-park-items-index/admin-park-items-index.module')
-                    .then((m) => m.AdminParkItemsIndexModule)
-              },
-              {
-                path: 'operators',
-                loadChildren: () =>
-                  import('./components/admin/operators/admin-operators/admin-operators.module')
-                    .then((m) => m.AdminOperatorsModule)
-              },
-              {
-                path: 'manufacturers',
-                loadChildren: () =>
-                  import('./components/admin/manufacturers/admin-manufacturers/admin-manufacturers.module')
-                    .then((m) => m.AdminManufacturersModule)
-              },
-              {
-                path: 'data',
-                loadChildren: () =>
-                  import('./components/admin/data/admin-data/admin-data.module')
-                    .then((m) => m.AdminDataModule)
-              },
-              {
-                path: 'images',
-                loadChildren: () =>
-                  import('./components/admin/site/admin-site/admin-site.module')
-                    .then((m) => m.AdminSiteModule)
-              },
-              {
-                path: 'site',
-                redirectTo: 'images',
-                pathMatch: 'full'
-              },
-              { path: '', redirectTo: 'users', pathMatch: 'full' }
-            ]
+            pathMatch: 'full',
+            loadComponent: () => import('./components/admin/admin-dashboard/admin-dashboard.component').then((m) => m.AdminDashboardComponent)
+          },
+          {
+            path: 'users',
+            loadChildren: () =>
+              import('./components/admin/users/admin-users/admin-users.module')
+                .then((m) => m.AdminUsersModule)
+          },
+          {
+            path: 'parks',
+            loadChildren: () =>
+              import('./components/admin/parks/admin-parks/admin-parks.module')
+                .then((m) => m.AdminParksModule)
+          },
+          {
+            path: 'items',
+            loadChildren: () =>
+              import('./components/admin/park-items/admin-park-items-index/admin-park-items-index.module')
+                .then((m) => m.AdminParkItemsIndexModule)
+          },
+          {
+            path: 'operators',
+            loadChildren: () =>
+              import('./components/admin/operators/admin-operators/admin-operators.module')
+                .then((m) => m.AdminOperatorsModule)
+          },
+          {
+            path: 'manufacturers',
+            loadChildren: () =>
+              import('./components/admin/manufacturers/admin-manufacturers/admin-manufacturers.module')
+                .then((m) => m.AdminManufacturersModule)
+          },
+          {
+            path: 'data',
+            loadChildren: () =>
+              import('./components/admin/data/admin-data/admin-data.module')
+                .then((m) => m.AdminDataModule)
+          },
+          {
+            path: 'images',
+            loadChildren: () =>
+              import('./components/admin/site/admin-site/admin-site.module')
+                .then((m) => m.AdminSiteModule)
+          },
+          {
+            path: 'site',
+            redirectTo: 'images',
+            pathMatch: 'full'
           }
         ]
       },

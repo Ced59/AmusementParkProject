@@ -255,7 +255,11 @@
       "unlock": "Sblocca",
       "password": "Nuova password",
       "passwordConfirm": "Conferma password",
-      "changePassword": "Cambia password"
+      "changePassword": "Cambia password",
+      "title": "Utenti",
+      "blockTitle": "Blocco account",
+      "newPassword": "Nuova password",
+      "confirmPassword": "Conferma password"
     },
     "parks": {
       "total": "Numero totale di parchi: {{count}}",
@@ -630,7 +634,8 @@
         "updateTitle": "Modifica il gestore",
         "name": "Nome",
         "description": "Descrizione"
-      }
+      },
+      "title": "Operatori"
     },
     "parkFounders": {
       "editPage": {
@@ -654,7 +659,8 @@
         "updateTitle": "Edit manufacturer",
         "name": "Name",
         "biography": "Biography"
-      }
+      },
+      "title": "Costruttori"
     },
     "parkItems": {
       "title": "Park items",
@@ -715,7 +721,17 @@
       "title": "Fonti dati"
     },
     "dashboard": {
-      "title": "Dashboard"
+      "title": "Dashboard",
+      "subtitle": "Punto di ingresso del back-office: scegli una sezione dal menu a sinistra o dalle scorciatoie qui sotto.",
+      "shortcuts": {
+        "users": "Gestire account, ruoli e accessi.",
+        "parks": "Filtrare, prioritizzare e pubblicare i parchi.",
+        "parkItems": "Amministrare attrazioni, negozi, ristoranti e servizi.",
+        "operators": "Gestire gli operatori collegati ai parchi.",
+        "manufacturers": "Gestire costruttori e produttori di attrazioni.",
+        "images": "Controllare media, loghi e immagini del sito.",
+        "data": "Monitorare importazioni, fonti e processi dati."
+      }
     }
   },
   "validation": {
@@ -725,7 +741,8 @@
     "cancel": "Annulla",
     "save": "Salva",
     "backToPark": "Torna al parco",
-    "backToList": "Indietro"
+    "backToList": "Indietro",
+    "edit": "Modifica"
   },
   "parkDetail": {
     "descriptionTitle": "Descrizione",

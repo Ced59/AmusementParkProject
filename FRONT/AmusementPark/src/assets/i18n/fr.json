@@ -255,7 +255,11 @@
       "unlock": "Débloquer",
       "password": "Nouveau mot de passe",
       "passwordConfirm": "Confirmer le mot de passe",
-      "changePassword": "Changer le mot de passe"
+      "changePassword": "Changer le mot de passe",
+      "title": "Utilisateurs",
+      "blockTitle": "Blocage du compte",
+      "newPassword": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe"
     },
     "parks": {
       "total": "Nombre total de parcs : {{count}}",
@@ -630,7 +634,8 @@
         "updateTitle": "Modifier l'exploitant",
         "name": "Nom",
         "description": "Description"
-      }
+      },
+      "title": "Exploitants"
     },
     "parkFounders": {
       "editPage": {
@@ -654,7 +659,8 @@
         "updateTitle": "Modifier le constructeur",
         "name": "Nom",
         "biography": "Biographie"
-      }
+      },
+      "title": "Constructeurs"
     },
     "parkItems": {
       "title": "Éléments de parc",
@@ -715,7 +721,17 @@
       "title": "Sources de données"
     },
     "dashboard": {
-      "title": "Tableau de bord"
+      "title": "Tableau de bord",
+      "subtitle": "Point d’entrée du back-office : choisis une rubrique dans le menu de gauche ou dans les raccourcis ci-dessous.",
+      "shortcuts": {
+        "users": "Gérer les comptes, les rôles et les accès.",
+        "parks": "Filtrer, prioriser et publier les parcs.",
+        "parkItems": "Administrer les attractions, boutiques, restaurants et services.",
+        "operators": "Maintenir les exploitants rattachés aux parcs.",
+        "manufacturers": "Maintenir les constructeurs et fabricants d’attractions.",
+        "images": "Contrôler les médias, logos et visuels du site.",
+        "data": "Suivre les imports, sources et traitements de données."
+      }
     }
   },
   "validation": {
@@ -725,7 +741,8 @@
     "cancel": "Annuler",
     "save": "Enregistrer",
     "backToPark": "Retour au parc",
-    "backToList": "Retour"
+    "backToList": "Retour",
+    "edit": "Modifier"
   },
   "parkDetail": {
     "descriptionTitle": "Description",
