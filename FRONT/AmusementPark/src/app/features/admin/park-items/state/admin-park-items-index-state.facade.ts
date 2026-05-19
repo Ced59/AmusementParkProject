@@ -113,7 +113,7 @@ export class AdminParkItemsIndexStateFacade {
       next: ({ rowsResponse, parks }: { rowsResponse: ApiResponse<ParkItemAdminRow>; parks: Park[] }) => {
         const rows: ParkItemAdminRow[] = (rowsResponse.data ?? []).map((row: ParkItemAdminRow) => ({
           ...row,
-          adminReviewStatus: row.adminReviewStatus ?? 'Ready'
+          adminReviewStatus: row.adminReviewStatus ?? 'ToReview'
         }));
         const validParks: Park[] = parks.filter((park: Park) => !!park.id);
         const viewModel: AdminParkItemsIndexViewModel = {

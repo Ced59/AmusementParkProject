@@ -11,7 +11,7 @@ import { Tag } from 'primeng/tag';
 import { ButtonDirective } from 'primeng/button';
 import { PaginationComponent } from '../../../shared/pagination/pagination.component';
 import { EmptyStateComponent } from '../../../shared/empty-state/empty-state.component';
-import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
+import { AdminReviewStatus, getAdminReviewStatusSeverity, getAdminReviewStatusTranslationKey } from '@app/models/admin/admin-review-status';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
@@ -156,19 +156,31 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     this.bulkVisibilityChanged.emit(false);
   }
 
-  markSelectedReady(): void {
-    this.bulkStatusChanged.emit('Ready');
+  markSelectedToReview(): void {
+    this.bulkStatusChanged.emit('ToReview');
+  }
+
+  markSelectedValidated(): void {
+    this.bulkStatusChanged.emit('Validated');
   }
 
   markSelectedLater(): void {
     this.bulkStatusChanged.emit('ToProcessLater');
   }
 
+  markSelectedNotRelevant(): void {
+    this.bulkStatusChanged.emit('NotRelevant');
+  }
+
   clearSelection(): void {
     this.selectionCleared.emit();
   }
 
-  getStatusSeverity(status: AdminReviewStatus | null | undefined): 'success' | 'warn' {
-    return status === 'ToProcessLater' ? 'warn' : 'success';
+  getStatusSeverity(status: AdminReviewStatus | null | undefined): 'success' | 'info' | 'warn' | 'danger' {
+    return getAdminReviewStatusSeverity(status);
+  }
+
+  getStatusLabelKey(status: AdminReviewStatus | null | undefined): string {
+    return getAdminReviewStatusTranslationKey(status);
   }
 }

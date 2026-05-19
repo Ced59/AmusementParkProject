@@ -61,5 +61,5 @@ public sealed class ParkItem : GeolocatedEntityBase
     /// <summary>
     /// Statut de traitement interne pour les listes d'administration.
     /// </summary>
-    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.Ready;
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
 }

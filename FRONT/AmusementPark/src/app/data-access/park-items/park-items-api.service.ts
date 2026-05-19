@@ -172,7 +172,7 @@ export class ParkItemsApiService {
       attractionDetails: this.mapAttractionDetails(item.attractionDetails),
       attractionLocations: this.mapAttractionLocations(item.attractionLocations),
       isVisible: item.isVisible ?? true,
-      adminReviewStatus: item.adminReviewStatus ?? 'Ready'
+      adminReviewStatus: item.adminReviewStatus ?? 'Validated'
     };
   }
 

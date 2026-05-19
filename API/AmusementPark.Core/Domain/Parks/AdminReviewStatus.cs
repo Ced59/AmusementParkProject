@@ -1,17 +1,34 @@
 namespace AmusementPark.Core.Domain.Parks;
 
 /// <summary>
-/// Statut de traitement interne utilisé par l'administration pour prioriser les listes.
+/// Statut de revue interne utilisé uniquement par l'administration pour piloter la validation humaine
+/// des données importées ou administrées. Il est volontairement indépendant de la visibilité publique.
 /// </summary>
 public enum AdminReviewStatus
 {
     /// <summary>
-    /// Élément traité normalement dans les listes d'administration.
+    /// Donnée à vérifier par un administrateur. C'est le statut par défaut des données non validées,
+    /// notamment celles issues d'une source externe.
     /// </summary>
-    Ready = 0,
+    ToReview = 0,
 
     /// <summary>
-    /// Élément volontairement repoussé en fin de liste pour traitement ultérieur.
+    /// Donnée relue et validée par un administrateur.
     /// </summary>
-    ToProcessLater = 1,
+    Validated = 1,
+
+    /// <summary>
+    /// Alias de compatibilité avec l'ancien nom M14. Ne pas utiliser dans le nouveau code.
+    /// </summary>
+    Ready = Validated,
+
+    /// <summary>
+    /// Donnée repoussée volontairement pour ne plus polluer le flux principal de traitement.
+    /// </summary>
+    ToProcessLater = 2,
+
+    /// <summary>
+    /// Donnée considérée comme non pertinente pour le site.
+    /// </summary>
+    NotRelevant = 3,
 }

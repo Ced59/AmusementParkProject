@@ -2,6 +2,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using AmusementPark.Core.Domain.Users;
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
@@ -49,6 +50,12 @@ public sealed partial class MongoDatabaseInitializer
             new CreateIndexModel<ParkDocument>(
                 Builders<ParkDocument>.IndexKeys.Geo2DSphere(item => item.Location),
                 new CreateIndexOptions { Name = "idx_parks_location" }),
+            new CreateIndexModel<ParkDocument>(
+                Builders<ParkDocument>.IndexKeys
+                    .Ascending(item => item.AdminReviewPriority)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_parks_admin_review_priority_name" }),
         };
 
         await parksCollection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
@@ -75,6 +82,12 @@ public sealed partial class MongoDatabaseInitializer
             new CreateIndexModel<ParkOperatorDocument>(
                 Builders<ParkOperatorDocument>.IndexKeys.Ascending(item => item.Name),
                 new CreateIndexOptions { Name = "idx_park_operators_name_unique", Unique = true }),
+            new CreateIndexModel<ParkOperatorDocument>(
+                Builders<ParkOperatorDocument>.IndexKeys
+                    .Ascending(item => item.AdminReviewPriority)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_park_operators_admin_review_priority_name" }),
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
@@ -88,6 +101,12 @@ public sealed partial class MongoDatabaseInitializer
             new CreateIndexModel<AttractionManufacturerDocument>(
                 Builders<AttractionManufacturerDocument>.IndexKeys.Ascending(item => item.Name),
                 new CreateIndexOptions { Name = "idx_attraction_manufacturers_name_unique", Unique = true }),
+            new CreateIndexModel<AttractionManufacturerDocument>(
+                Builders<AttractionManufacturerDocument>.IndexKeys
+                    .Ascending(item => item.AdminReviewPriority)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_attraction_manufacturers_admin_review_priority_name" }),
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
@@ -149,6 +168,13 @@ public sealed partial class MongoDatabaseInitializer
             new CreateIndexModel<ParkItemDocument>(
                 Builders<ParkItemDocument>.IndexKeys.Geo2DSphere(item => item.Location),
                 new CreateIndexOptions { Name = "idx_park_items_location" }),
+            new CreateIndexModel<ParkItemDocument>(
+                Builders<ParkItemDocument>.IndexKeys
+                    .Ascending(item => item.AdminReviewPriority)
+                    .Ascending(item => item.ParkId)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_park_items_admin_review_priority_park_name" }),
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
@@ -223,4 +249,49 @@ public sealed partial class MongoDatabaseInitializer
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
     }
+
+    private async Task BackfillAdminReviewPrioritiesAsync(CancellationToken cancellationToken)
+    {
+        await BackfillAdminReviewPriorityAsync(this.database.GetCollection<ParkDocument>(this.settings.ParksCollectionName), cancellationToken);
+        await BackfillAdminReviewPriorityAsync(this.database.GetCollection<ParkItemDocument>(this.settings.ParkItemsCollectionName), cancellationToken);
+        await BackfillAdminReviewPriorityAsync(this.database.GetCollection<ParkOperatorDocument>(this.settings.ParkOperatorsCollectionName), cancellationToken);
+        await BackfillAdminReviewPriorityAsync(this.database.GetCollection<AttractionManufacturerDocument>(this.settings.AttractionManufacturersCollectionName), cancellationToken);
+    }
+
+    private static async Task BackfillAdminReviewPriorityAsync<TDocument>(IMongoCollection<TDocument> collection, CancellationToken cancellationToken)
+    {
+        await collection.UpdateManyAsync(
+            Builders<TDocument>.Filter.Or(
+                Builders<TDocument>.Filter.Exists("adminReviewStatus", false),
+                Builders<TDocument>.Filter.Eq("adminReviewStatus", BsonNull.Value)),
+            Builders<TDocument>.Update
+                .Set("adminReviewStatus", AdminReviewStatus.ToReview.ToString())
+                .Set("adminReviewPriority", 0),
+            cancellationToken: cancellationToken);
+
+        await collection.UpdateManyAsync(
+            Builders<TDocument>.Filter.Eq("adminReviewStatus", AdminReviewStatus.ToReview.ToString()),
+            Builders<TDocument>.Update.Set("adminReviewPriority", 0),
+            cancellationToken: cancellationToken);
+
+        await collection.UpdateManyAsync(
+            Builders<TDocument>.Filter.Or(
+                Builders<TDocument>.Filter.Eq("adminReviewStatus", AdminReviewStatus.Validated.ToString()),
+                Builders<TDocument>.Filter.Eq("adminReviewStatus", "Ready")),
+            Builders<TDocument>.Update
+                .Set("adminReviewStatus", AdminReviewStatus.Validated.ToString())
+                .Set("adminReviewPriority", 10),
+            cancellationToken: cancellationToken);
+
+        await collection.UpdateManyAsync(
+            Builders<TDocument>.Filter.Eq("adminReviewStatus", AdminReviewStatus.ToProcessLater.ToString()),
+            Builders<TDocument>.Update.Set("adminReviewPriority", 90),
+            cancellationToken: cancellationToken);
+
+        await collection.UpdateManyAsync(
+            Builders<TDocument>.Filter.Eq("adminReviewStatus", AdminReviewStatus.NotRelevant.ToString()),
+            Builders<TDocument>.Update.Set("adminReviewPriority", 99),
+            cancellationToken: cancellationToken);
+    }
+
 }

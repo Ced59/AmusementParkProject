@@ -17,4 +17,9 @@ public sealed class ParkOperator : AuditableEntity
     /// Description localisée.
     /// </summary>
     public List<LocalizedText> Description { get; set; } = new();
+
+    /// <summary>
+    /// Statut de revue interne pour le pilotage back-office.
+    /// </summary>
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
 }

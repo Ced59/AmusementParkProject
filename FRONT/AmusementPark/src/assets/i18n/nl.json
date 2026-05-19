@@ -637,7 +637,8 @@
         "description": "Beschrijving"
       },
       "title": "Exploitanten",
-      "subtitle": "Referentielijst van exploitanten voor parkfiches."
+      "subtitle": "Referentielijst van exploitanten voor parkfiches.",
+      "reviewStatus": "Adminstatus"
     },
     "parkFounders": {
       "editPage": {
@@ -663,7 +664,8 @@
         "biography": "Biography"
       },
       "title": "Constructeurs",
-      "subtitle": "Referentielijst van bouwers voor attracties."
+      "subtitle": "Referentielijst van bouwers voor attracties.",
+      "reviewStatus": "Adminstatus"
     },
     "parkItems": {
       "title": "Park items",
@@ -704,16 +706,22 @@
       "countryCodePlaceholder": "FR"
     },
     "reviewStatus": {
-      "ready": "Te verwerken",
-      "toProcessLater": "Later verwerken"
+      "ready": "Gevalideerd",
+      "toProcessLater": "Later verwerken",
+      "toReview": "Te controleren",
+      "validated": "Gevalideerd",
+      "notRelevant": "Niet relevant"
     },
     "bulk": {
       "selected": "{{count}} geselecteerd",
       "makeVisible": "Zichtbaar maken",
       "hide": "Verbergen",
-      "markReady": "Markeer klaar",
+      "markReady": "Valideren",
       "processLater": "Later verwerken",
-      "clearSelection": "Selectie wissen"
+      "clearSelection": "Selectie wissen",
+      "markToReview": "Markeer te controleren",
+      "markValidated": "Valideren",
+      "markNotRelevant": "Niet relevant"
     },
     "visible": "Visible",
     "hidden": "Verborgen",

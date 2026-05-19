@@ -324,7 +324,10 @@ public sealed class ParkRepository : IParkRepository
 
         if (adminReviewStatus.HasValue)
         {
-            update = update.Set(document => document.AdminReviewStatus, adminReviewStatus.Value);
+            AdminReviewStatus normalizedStatus = adminReviewStatus.Value.NormalizeForAdministration();
+            update = update
+                .Set(document => document.AdminReviewStatus, normalizedStatus)
+                .Set(document => document.AdminReviewPriority, normalizedStatus.ToAdminReviewPriority());
         }
 
         UpdateResult result = await this.collection.UpdateManyAsync(
@@ -457,20 +460,13 @@ public sealed class ParkRepository : IParkRepository
 
     private FilterDefinition<ParkDocument> BuildAdminReviewStatusFilter(AdminReviewStatus adminReviewStatus)
     {
-        if (adminReviewStatus == AdminReviewStatus.Ready)
-        {
-            return Builders<ParkDocument>.Filter.Or(
-                Builders<ParkDocument>.Filter.Eq(document => document.AdminReviewStatus, AdminReviewStatus.Ready),
-                Builders<ParkDocument>.Filter.Exists("adminReviewStatus", false));
-        }
-
-        return Builders<ParkDocument>.Filter.Eq(document => document.AdminReviewStatus, adminReviewStatus);
+        return Builders<ParkDocument>.Filter.BuildAdminReviewStatusFilter("adminReviewStatus", adminReviewStatus);
     }
 
     private SortDefinition<ParkDocument> BuildAdminListSort()
     {
         return Builders<ParkDocument>.Sort
-            .Ascending(document => document.AdminReviewStatus)
+            .Ascending(document => document.AdminReviewPriority)
             .Ascending(document => document.Name)
             .Ascending(document => document.Id);
     }

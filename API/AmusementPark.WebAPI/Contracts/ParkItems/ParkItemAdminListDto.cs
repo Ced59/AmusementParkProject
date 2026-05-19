@@ -21,5 +21,5 @@ public sealed class ParkItemAdminListDto
 
     public bool IsVisible { get; set; }
 
-    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Ready;
+    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;
 }

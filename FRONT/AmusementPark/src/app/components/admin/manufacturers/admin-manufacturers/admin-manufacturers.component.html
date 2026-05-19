@@ -40,6 +40,32 @@
     </div>
   </div>
 
+  <div class="admin-filters-grid">
+    <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.filters.reviewStatus' | translate }}</span>
+      <select [ngModel]="stateFacade.adminReviewStatusFilter()" (ngModelChange)="onAdminReviewStatusChanged($event)">
+        <option [ngValue]="null">{{ 'admin.filters.statusAll' | translate }}</option>
+        <option [ngValue]="'ToReview'">{{ 'admin.reviewStatus.toReview' | translate }}</option>
+        <option [ngValue]="'Validated'">{{ 'admin.reviewStatus.validated' | translate }}</option>
+        <option [ngValue]="'ToProcessLater'">{{ 'admin.reviewStatus.toProcessLater' | translate }}</option>
+        <option [ngValue]="'NotRelevant'">{{ 'admin.reviewStatus.notRelevant' | translate }}</option>
+      </select>
+    </label>
+  </div>
+
+  @if (selectedCount() > 0) {
+    <div class="admin-bulk-bar">
+      <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
+      <div class="admin-bulk-bar__actions">
+        <button pButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReview' | translate" (click)="markSelectedToReview()"></button>
+        <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
+        <button pButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLater' | translate" (click)="markSelectedLater()"></button>
+        <button pButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
+        <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelection' | translate" (click)="clearSelection()"></button>
+      </div>
+    </div>
+  }
+
   <p-table
     [value]="manufacturers()"
     [loading]="loading()"
@@ -47,17 +73,30 @@
     styleClass="admin-data-table">
     <ng-template pTemplate="header">
       <tr>
+        <th class="admin-selection-column">
+          <input type="checkbox" [checked]="areAllCurrentManufacturersSelected()" (change)="onAllSelectionChange($event)" aria-label="Select all manufacturers" />
+        </th>
         <th>{{ 'admin.manufacturers.name' | translate }}</th>
         <th>{{ 'admin.manufacturers.attractionCount' | translate }}</th>
+        <th>{{ 'admin.manufacturers.reviewStatus' | translate }}</th>
         <th>{{ 'admin.manufacturers.actions' | translate }}</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-manufacturer>
-      <tr>
+      <tr [class.admin-row--later]="manufacturer.adminReviewStatus === 'ToProcessLater' || manufacturer.adminReviewStatus === 'NotRelevant'">
+        <td class="admin-selection-column">
+          <input type="checkbox" [checked]="isManufacturerSelected(manufacturer)" (change)="onManufacturerSelectionChange(manufacturer, $event)" [attr.aria-label]="manufacturer.name" />
+        </td>
         <td><strong class="admin-row-title">{{ manufacturer.name }}</strong></td>
         <td>
           <span class="admin-count-chip">{{ manufacturer.attractionCount ?? 0 }}</span>
+        </td>
+        <td>
+          <p-tag
+            [value]="getStatusLabelKey(manufacturer.adminReviewStatus) | translate"
+            [severity]="getStatusSeverity(manufacturer.adminReviewStatus)">
+          </p-tag>
         </td>
         <td>
           <a
@@ -73,7 +112,7 @@
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="3">
+        <td colspan="5">
           <app-empty-state
             [compact]="true"
             titleKey="common.emptyTitle"

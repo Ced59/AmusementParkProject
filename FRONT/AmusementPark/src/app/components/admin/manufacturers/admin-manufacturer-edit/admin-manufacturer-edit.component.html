@@ -19,6 +19,16 @@
         <app-localized-rich-text-editor formControlName="biography"></app-localized-rich-text-editor>
       </div>
 
+      <div class="field mt-3">
+        <label for="adminReviewStatus">{{ 'admin.filters.reviewStatus' | translate }}</label>
+        <select id="adminReviewStatus" formControlName="adminReviewStatus">
+          <option [ngValue]="'ToReview'">{{ 'admin.reviewStatus.toReview' | translate }}</option>
+          <option [ngValue]="'Validated'">{{ 'admin.reviewStatus.validated' | translate }}</option>
+          <option [ngValue]="'ToProcessLater'">{{ 'admin.reviewStatus.toProcessLater' | translate }}</option>
+          <option [ngValue]="'NotRelevant'">{{ 'admin.reviewStatus.notRelevant' | translate }}</option>
+        </select>
+      </div>
+
       <div class="flex justify-content-end gap-2 mt-3">
         <button
           pButton

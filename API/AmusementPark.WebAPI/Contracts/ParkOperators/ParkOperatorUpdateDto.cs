@@ -20,4 +20,9 @@ public sealed class ParkOperatorUpdateDto
     /// Description localisée.
     /// </summary>
     public List<LocalizedTextDto> Description { get; set; } = new();
+
+    /// <summary>
+    /// Statut de revue interne back-office.
+    /// </summary>
+    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;
 }

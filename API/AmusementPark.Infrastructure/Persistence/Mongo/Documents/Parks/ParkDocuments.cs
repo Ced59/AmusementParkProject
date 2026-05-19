@@ -27,6 +27,13 @@ public sealed class ParkOperatorDocument : MongoDocumentBase
 
     [BsonElement("description")]
     public List<LocalizedTextDocument> Description { get; set; } = new();
+
+    [BsonElement("adminReviewStatus")]
+    [BsonRepresentation(BsonType.String)]
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
+
+    [BsonElement("adminReviewPriority")]
+    public int AdminReviewPriority { get; set; }
 }
 
 /// <summary>
@@ -39,6 +46,13 @@ public sealed class AttractionManufacturerDocument : MongoDocumentBase
 
     [BsonElement("biography")]
     public List<LocalizedTextDocument> Biography { get; set; } = new();
+
+    [BsonElement("adminReviewStatus")]
+    [BsonRepresentation(BsonType.String)]
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
+
+    [BsonElement("adminReviewPriority")]
+    public int AdminReviewPriority { get; set; }
 }
 
 /// <summary>
@@ -77,7 +91,10 @@ public sealed class ParkDocument : MongoGeolocatedDocumentBase
 
     [BsonElement("adminReviewStatus")]
     [BsonRepresentation(BsonType.String)]
-    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.Ready;
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
+
+    [BsonElement("adminReviewPriority")]
+    public int AdminReviewPriority { get; set; }
 
     [BsonElement("isFeaturedOnHome")]
     public bool IsFeaturedOnHome { get; set; }
@@ -186,7 +203,10 @@ public sealed class ParkItemDocument : MongoGeolocatedDocumentBase
 
     [BsonElement("adminReviewStatus")]
     [BsonRepresentation(BsonType.String)]
-    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.Ready;
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
+
+    [BsonElement("adminReviewPriority")]
+    public int AdminReviewPriority { get; set; }
 }
 
 /// <summary>

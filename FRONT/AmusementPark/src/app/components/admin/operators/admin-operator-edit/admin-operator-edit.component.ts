@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
+import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { commitViewUpdate } from '@shared/utils/angular';
 import { Bind } from 'primeng/bind';
@@ -45,7 +46,8 @@ export class AdminOperatorEditComponent implements OnInit {
 
     this.form = this.fb.group({
       name: ['', Validators.required],
-      description: [[]]
+      description: [[]],
+      adminReviewStatus: ['Validated' as AdminReviewStatus]
     });
 
     if (this.operatorId) {
@@ -54,7 +56,8 @@ export class AdminOperatorEditComponent implements OnInit {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.form.patchValue({
               name: parkOperator.name,
-              description: parkOperator.description ?? []
+              description: parkOperator.description ?? [],
+              adminReviewStatus: parkOperator.adminReviewStatus ?? 'ToReview'
             });
           });
         },
@@ -74,7 +77,8 @@ export class AdminOperatorEditComponent implements OnInit {
 
     const payload: ParkOperator = {
       name: this.form.value.name,
-      description: this.form.value.description ?? []
+      description: this.form.value.description ?? [],
+      adminReviewStatus: this.form.value.adminReviewStatus ?? 'Validated'
     };
 
     if (this.isEditMode && this.operatorId) {

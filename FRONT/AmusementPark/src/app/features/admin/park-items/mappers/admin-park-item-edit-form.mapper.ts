@@ -58,7 +58,7 @@ export function createAdminParkItemEditForm(formBuilder: FormBuilder, parkId: st
       reducedMobilityEntrance: createLocationGroup(formBuilder)
     }),
     isVisible: [true],
-    adminReviewStatus: ['Ready']
+    adminReviewStatus: ['Validated']
   });
 }
 
@@ -78,7 +78,7 @@ export function patchAdminParkItemEditForm(
     longitude: item.longitude,
     descriptions: item.descriptions ?? [],
     isVisible: item.isVisible ?? true,
-    adminReviewStatus: item.adminReviewStatus ?? 'Ready'
+    adminReviewStatus: item.adminReviewStatus ?? 'Validated'
   }, { emitEvent: false });
 
   patchAttractionDetails(formBuilder, form, item.attractionDetails ?? null);
@@ -133,7 +133,7 @@ export function mapAdminParkItemEditFormToParkItem(form: FormGroup): ParkItem {
     attractionDetails: category === 'Attraction' ? buildAttractionDetails(raw.attractionDetails) : null,
     attractionLocations: category === 'Attraction' ? buildAttractionLocations(raw.attractionLocations) : null,
     isVisible: !!raw.isVisible,
-    adminReviewStatus: raw.adminReviewStatus ?? 'Ready'
+    adminReviewStatus: raw.adminReviewStatus ?? 'Validated'
   };
 }
 

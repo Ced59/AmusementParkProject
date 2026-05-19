@@ -1,3 +1,4 @@
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
 
 namespace AmusementPark.Application.Features.AttractionManufacturers.Results;
@@ -26,4 +27,10 @@ public sealed class AttractionManufacturerResult
     /// Nombre d'attractions liées.
     /// </summary>
     public int AttractionCount { get; init; }
+
+    /// <summary>
+    /// Statut de revue interne back-office.
+    /// </summary>
+    public AdminReviewStatus AdminReviewStatus { get; init; }
 }
+

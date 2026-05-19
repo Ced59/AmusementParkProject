@@ -8,6 +8,7 @@ using AmusementPark.Application.Features.ParkOperators.Queries;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.ParkOperators;
+using AmusementPark.Application.Common.Results;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
@@ -26,6 +27,7 @@ public sealed class ParkOperatorsController : ControllerBase
     private readonly IQueryHandler<GetParkOperatorByIdQuery, ApplicationResult<ParkOperator>> getParkOperatorByIdQueryHandler;
     private readonly ICommandHandler<CreateParkOperatorCommand, ApplicationResult<ParkOperator>> createParkOperatorCommandHandler;
     private readonly ICommandHandler<UpdateParkOperatorCommand, ApplicationResult<ParkOperator>> updateParkOperatorCommandHandler;
+    private readonly ICommandHandler<UpdateParkOperatorsBulkReviewStatusCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkOperatorsBulkReviewStatusCommandHandler;
 
     /// <summary>
     /// Initialise une nouvelle instance de la classe <see cref="ParkOperatorsController"/>.
@@ -34,12 +36,14 @@ public sealed class ParkOperatorsController : ControllerBase
         IQueryHandler<GetParkOperatorsQuery, ApplicationResult<IReadOnlyCollection<ParkOperator>>> getParkOperatorsQueryHandler,
         IQueryHandler<GetParkOperatorByIdQuery, ApplicationResult<ParkOperator>> getParkOperatorByIdQueryHandler,
         ICommandHandler<CreateParkOperatorCommand, ApplicationResult<ParkOperator>> createParkOperatorCommandHandler,
-        ICommandHandler<UpdateParkOperatorCommand, ApplicationResult<ParkOperator>> updateParkOperatorCommandHandler)
+        ICommandHandler<UpdateParkOperatorCommand, ApplicationResult<ParkOperator>> updateParkOperatorCommandHandler,
+        ICommandHandler<UpdateParkOperatorsBulkReviewStatusCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkOperatorsBulkReviewStatusCommandHandler)
     {
         this.getParkOperatorsQueryHandler = getParkOperatorsQueryHandler;
         this.getParkOperatorByIdQueryHandler = getParkOperatorByIdQueryHandler;
         this.createParkOperatorCommandHandler = createParkOperatorCommandHandler;
         this.updateParkOperatorCommandHandler = updateParkOperatorCommandHandler;
+        this.updateParkOperatorsBulkReviewStatusCommandHandler = updateParkOperatorsBulkReviewStatusCommandHandler;
     }
 
     [HttpGet]
@@ -54,6 +58,27 @@ public sealed class ParkOperatorsController : ControllerBase
 
         PagedResponseDto<ParkOperatorDto> response = pagination.ToPagedResponse(result.Value, static value => value.ToHttp());
         return this.Ok(response);
+    }
+
+    [HttpPatch("bulk-review-status")]
+    [ProducesResponseType(typeof(BulkAdministrationUpdateResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateBulkReviewStatusAsync([FromBody] BulkAdministrationUpdateDto request, CancellationToken cancellationToken = default)
+    {
+        if (request.AdminReviewStatus is null)
+        {
+            return this.BadRequest("adminReviewStatus is required.");
+        }
+
+        ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParkOperatorsBulkReviewStatusCommandHandler.HandleAsync(
+            new UpdateParkOperatorsBulkReviewStatusCommand(request.Ids, request.AdminReviewStatus.Value.ToDomain()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
     }
 
     [HttpGet("{id}")]

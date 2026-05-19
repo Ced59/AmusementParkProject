@@ -637,7 +637,8 @@
         "description": "Descripción"
       },
       "title": "Operadores",
-      "subtitle": "Referencial de operadores usado por las fichas de parques."
+      "subtitle": "Referencial de operadores usado por las fichas de parques.",
+      "reviewStatus": "Estado admin"
     },
     "parkFounders": {
       "editPage": {
@@ -663,7 +664,8 @@
         "biography": "Biography"
       },
       "title": "Constructores",
-      "subtitle": "Referencial de constructores usado por las atracciones."
+      "subtitle": "Referencial de constructores usado por las atracciones.",
+      "reviewStatus": "Estado admin"
     },
     "parkItems": {
       "title": "Park items",
@@ -704,16 +706,22 @@
       "countryCodePlaceholder": "FR"
     },
     "reviewStatus": {
-      "ready": "Por tratar",
-      "toProcessLater": "Tratar más tarde"
+      "ready": "Validado",
+      "toProcessLater": "Tratar más tarde",
+      "toReview": "Por revisar",
+      "validated": "Validado",
+      "notRelevant": "No pertinente"
     },
     "bulk": {
       "selected": "{{count}} seleccionado(s)",
       "makeVisible": "Hacer visible",
       "hide": "Ocultar",
-      "markReady": "Marcar listo",
+      "markReady": "Validar",
       "processLater": "Tratar más tarde",
-      "clearSelection": "Limpiar selección"
+      "clearSelection": "Limpiar selección",
+      "markToReview": "Marcar por revisar",
+      "markValidated": "Validar",
+      "markNotRelevant": "No pertinente"
     },
     "visible": "Visible",
     "hidden": "Oculto",

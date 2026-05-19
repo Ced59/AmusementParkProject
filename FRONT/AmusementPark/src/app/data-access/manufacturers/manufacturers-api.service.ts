@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { EMPTY, expand, map, Observable, reduce } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
+import { BulkAdministrationUpdateResult, BulkReviewStatusUpdateRequest } from '@app/models/admin/admin-review-status';
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { PagedResult } from '@shared/models/contracts';
 import { PagedCollectionResponse, unwrapCollection, unwrapPagedCollection } from '../shared/api-helpers';
@@ -63,5 +64,10 @@ export class ManufacturersApiService {
   updateAttractionManufacturer(id: string, manufacturer: AttractionManufacturer): Observable<AttractionManufacturer> {
     const url: string = `${environment.apiBaseUrl}${MANUFACTURERS_API_ENDPOINTS.updateAttractionManufacturer(id)}`;
     return this.http.put<AttractionManufacturer>(url, JSON.stringify(manufacturer), this.jsonHttpOptions);
+  }
+
+  updateAttractionManufacturersBulkReviewStatus(request: BulkReviewStatusUpdateRequest): Observable<BulkAdministrationUpdateResult> {
+    const url: string = `${environment.apiBaseUrl}${MANUFACTURERS_API_ENDPOINTS.updateAttractionManufacturersBulkReviewStatus}`;
+    return this.http.patch<BulkAdministrationUpdateResult>(url, JSON.stringify(request), this.jsonHttpOptions);
   }
 }

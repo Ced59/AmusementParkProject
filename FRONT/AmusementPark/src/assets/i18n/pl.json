@@ -637,7 +637,8 @@
         "description": "Opis"
       },
       "title": "Operatorzy",
-      "subtitle": "Lista operatorów używana w kartach parków."
+      "subtitle": "Lista operatorów używana w kartach parków.",
+      "reviewStatus": "Status admin"
     },
     "parkFounders": {
       "editPage": {
@@ -663,7 +664,8 @@
         "biography": "Biography"
       },
       "title": "Producenci",
-      "subtitle": "Lista producentów używana przy atrakcjach."
+      "subtitle": "Lista producentów używana przy atrakcjach.",
+      "reviewStatus": "Status admin"
     },
     "parkItems": {
       "title": "Park items",
@@ -704,16 +706,22 @@
       "countryCodePlaceholder": "FR"
     },
     "reviewStatus": {
-      "ready": "Do obsługi",
-      "toProcessLater": "Obsłuż później"
+      "ready": "Zatwierdzony",
+      "toProcessLater": "Przetworzyć później",
+      "toReview": "Do sprawdzenia",
+      "validated": "Zatwierdzony",
+      "notRelevant": "Nieistotne"
     },
     "bulk": {
       "selected": "Wybrano: {{count}}",
       "makeVisible": "Ustaw jako widoczne",
       "hide": "Ukryj",
-      "markReady": "Oznacz jako gotowe",
+      "markReady": "Zatwierdź",
       "processLater": "Obsłuż później",
-      "clearSelection": "Wyczyść wybór"
+      "clearSelection": "Wyczyść wybór",
+      "markToReview": "Oznacz do sprawdzenia",
+      "markValidated": "Zatwierdź",
+      "markNotRelevant": "Nieistotne"
     },
     "visible": "Visible",
     "hidden": "Ukryte",

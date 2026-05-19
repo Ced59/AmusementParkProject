@@ -20,4 +20,9 @@ public sealed class AttractionManufacturerCreateDto
     /// Biographie localisée.
     /// </summary>
     public List<LocalizedTextDto> Biography { get; set; } = new();
+
+    /// <summary>
+    /// Statut de revue interne back-office.
+    /// </summary>
+    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;
 }

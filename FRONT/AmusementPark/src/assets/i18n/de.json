@@ -637,7 +637,8 @@
         "description": "Beschreibung"
       },
       "title": "Betreiber",
-      "subtitle": "Referenzliste der Betreiber für Parkdatensätze."
+      "subtitle": "Referenzliste der Betreiber für Parkdatensätze.",
+      "reviewStatus": "Admin-Status"
     },
     "parkFounders": {
       "editPage": {
@@ -663,7 +664,8 @@
         "biography": "Biography"
       },
       "title": "Hersteller",
-      "subtitle": "Referenzliste der Hersteller für Attraktionen."
+      "subtitle": "Referenzliste der Hersteller für Attraktionen.",
+      "reviewStatus": "Admin-Status"
     },
     "parkItems": {
       "title": "Park items",
@@ -704,16 +706,22 @@
       "countryCodePlaceholder": "FR"
     },
     "reviewStatus": {
-      "ready": "Zu bearbeiten",
-      "toProcessLater": "Später bearbeiten"
+      "ready": "Validiert",
+      "toProcessLater": "Später bearbeiten",
+      "toReview": "Zu prüfen",
+      "validated": "Validiert",
+      "notRelevant": "Nicht relevant"
     },
     "bulk": {
       "selected": "{{count}} ausgewählt",
       "makeVisible": "Sichtbar machen",
       "hide": "Ausblenden",
-      "markReady": "Als bereit markieren",
+      "markReady": "Validieren",
       "processLater": "Später bearbeiten",
-      "clearSelection": "Auswahl löschen"
+      "clearSelection": "Auswahl löschen",
+      "markToReview": "Zu prüfen setzen",
+      "markValidated": "Validieren",
+      "markNotRelevant": "Nicht relevant"
     },
     "visible": "Visible",
     "hidden": "Ausgeblendet",

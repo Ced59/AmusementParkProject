@@ -56,6 +56,7 @@ internal static class LookupHttpMappers
         {
             Name = dto.Name.Trim(),
             Description = dto.Description.ToDomain(),
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
     }
 
@@ -65,6 +66,7 @@ internal static class LookupHttpMappers
         {
             Name = dto.Name.Trim(),
             Description = dto.Description.ToDomain(),
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
     }
 
@@ -75,6 +77,7 @@ internal static class LookupHttpMappers
             Id = value.Id,
             Name = value.Name,
             Description = value.Description.ToHttp(),
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
         };
     }
 
@@ -84,6 +87,7 @@ internal static class LookupHttpMappers
         {
             Name = dto.Name.Trim(),
             Biography = dto.Biography.ToDomain(),
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
     }
 
@@ -93,6 +97,7 @@ internal static class LookupHttpMappers
         {
             Name = dto.Name.Trim(),
             Biography = dto.Biography.ToDomain(),
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
     }
 
@@ -104,6 +109,7 @@ internal static class LookupHttpMappers
             Name = value.Name,
             Biography = value.Biography.ToHttp(),
             AttractionCount = value.AttractionCount,
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
         };
     }
 }

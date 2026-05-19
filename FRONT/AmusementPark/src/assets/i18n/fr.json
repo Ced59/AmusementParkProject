@@ -637,7 +637,8 @@
         "description": "Description"
       },
       "title": "Exploitants",
-      "subtitle": "Référentiel des exploitants utilisés par les fiches de parc."
+      "subtitle": "Référentiel des exploitants utilisés par les fiches de parc.",
+      "reviewStatus": "Statut admin"
     },
     "parkFounders": {
       "editPage": {
@@ -663,7 +664,8 @@
         "biography": "Biographie"
       },
       "title": "Constructeurs",
-      "subtitle": "Référentiel des constructeurs utilisés par les attractions."
+      "subtitle": "Référentiel des constructeurs utilisés par les attractions.",
+      "reviewStatus": "Statut admin"
     },
     "parkItems": {
       "title": "Éléments de parc",
@@ -704,16 +706,22 @@
       "countryCodePlaceholder": "FR"
     },
     "reviewStatus": {
-      "ready": "À traiter",
-      "toProcessLater": "À traiter plus tard"
+      "ready": "Validé",
+      "toProcessLater": "À traiter plus tard",
+      "toReview": "À traiter",
+      "validated": "Validé",
+      "notRelevant": "Non pertinent"
     },
     "bulk": {
       "selected": "{{count}} sélectionné(s)",
       "makeVisible": "Rendre visible",
       "hide": "Masquer",
-      "markReady": "Remettre à traiter",
+      "markReady": "Valider",
       "processLater": "Traiter plus tard",
-      "clearSelection": "Désélectionner"
+      "clearSelection": "Désélectionner",
+      "markToReview": "Remettre à traiter",
+      "markValidated": "Valider",
+      "markNotRelevant": "Non pertinent"
     },
     "visible": "Visible",
     "hidden": "Masqué",

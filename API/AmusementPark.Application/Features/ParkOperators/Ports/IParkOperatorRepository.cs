@@ -26,4 +26,9 @@ public interface IParkOperatorRepository
     /// Met à jour un park operator existant.
     /// </summary>
     Task<ParkOperator?> UpdateAsync(string id, ParkOperator entity, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Met à jour en masse le statut de revue admin.
+    /// </summary>
+    Task<int> UpdateBulkAdminReviewStatusAsync(IReadOnlyCollection<string> ids, AdminReviewStatus adminReviewStatus, CancellationToken cancellationToken);
 }

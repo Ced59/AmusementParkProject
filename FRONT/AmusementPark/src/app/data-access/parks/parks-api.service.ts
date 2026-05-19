@@ -126,7 +126,7 @@ export class ParksApiService {
       longitude: park.longitude,
       descriptions: park.descriptions ?? [],
       isVisible: park.isVisible ?? true,
-      adminReviewStatus: park.adminReviewStatus ?? 'Ready',
+      adminReviewStatus: park.adminReviewStatus ?? 'Validated',
       isFeaturedOnHome: park.isFeaturedOnHome ?? false,
       featuredHomeOrder: this.normalizeFeaturedHomeOrder(park.featuredHomeOrder),
       isFeaturedOnHomeSponsored: Boolean(park.isFeaturedOnHome) && Boolean(park.isFeaturedOnHomeSponsored),

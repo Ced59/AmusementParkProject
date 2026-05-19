@@ -43,6 +43,7 @@ public sealed class CreateAttractionManufacturerCommandHandler : ICommandHandler
                 Id = created.Id,
                 Name = created.Name,
                 Biography = created.Biography,
+                AdminReviewStatus = created.AdminReviewStatus,
                 AttractionCount = 0,
             });
         }

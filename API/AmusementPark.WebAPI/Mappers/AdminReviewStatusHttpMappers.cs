@@ -1,10 +1,11 @@
+using AmusementPark.Application.Common.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.Common;
 
 namespace AmusementPark.WebAPI.Mappers;
 
 /// <summary>
-/// Helpers de mapping HTTP pour le statut de traitement administratif partagé par les listes admin.
+/// Mappers HTTP du statut de revue admin.
 /// </summary>
 internal static class AdminReviewStatusHttpMappers
 {
@@ -12,8 +13,11 @@ internal static class AdminReviewStatusHttpMappers
     {
         return value switch
         {
+            AdminReviewStatusDto.Validated => AdminReviewStatus.Validated,
+            AdminReviewStatusDto.Ready => AdminReviewStatus.Validated,
             AdminReviewStatusDto.ToProcessLater => AdminReviewStatus.ToProcessLater,
-            _ => AdminReviewStatus.Ready,
+            AdminReviewStatusDto.NotRelevant => AdminReviewStatus.NotRelevant,
+            _ => AdminReviewStatus.ToReview,
         };
     }
 
@@ -26,8 +30,19 @@ internal static class AdminReviewStatusHttpMappers
     {
         return value switch
         {
+            AdminReviewStatus.Validated => AdminReviewStatusDto.Validated,
             AdminReviewStatus.ToProcessLater => AdminReviewStatusDto.ToProcessLater,
-            _ => AdminReviewStatusDto.Ready,
+            AdminReviewStatus.NotRelevant => AdminReviewStatusDto.NotRelevant,
+            _ => AdminReviewStatusDto.ToReview,
+        };
+    }
+
+    public static BulkAdministrationUpdateResultDto ToHttp(this BulkAdministrationUpdateResult value)
+    {
+        return new BulkAdministrationUpdateResultDto
+        {
+            RequestedCount = value.RequestedCount,
+            UpdatedCount = value.UpdatedCount,
         };
     }
 }

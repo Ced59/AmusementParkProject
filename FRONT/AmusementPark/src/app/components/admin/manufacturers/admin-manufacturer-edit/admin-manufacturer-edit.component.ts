@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { commitViewUpdate } from '@shared/utils/angular';
@@ -45,7 +46,8 @@ export class AdminManufacturerEditComponent implements OnInit {
 
     this.form = this.fb.group({
       name: ['', Validators.required],
-      biography: [[]]
+      biography: [[]],
+      adminReviewStatus: ['Validated' as AdminReviewStatus]
     });
 
     if (this.manufacturerId) {
@@ -54,7 +56,8 @@ export class AdminManufacturerEditComponent implements OnInit {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.form.patchValue({
               name: manufacturer.name,
-              biography: manufacturer.biography ?? []
+              biography: manufacturer.biography ?? [],
+              adminReviewStatus: manufacturer.adminReviewStatus ?? 'ToReview'
             });
           });
         },
@@ -74,7 +77,8 @@ export class AdminManufacturerEditComponent implements OnInit {
 
     const payload: AttractionManufacturer = {
       name: this.form.value.name,
-      biography: this.form.value.biography ?? []
+      biography: this.form.value.biography ?? [],
+      adminReviewStatus: this.form.value.adminReviewStatus ?? 'Validated'
     };
 
     if (this.isEditMode && this.manufacturerId) {

@@ -10,7 +10,7 @@ import { ButtonDirective } from 'primeng/button';
 import { ToggleSwitch } from 'primeng/toggleswitch';
 import { Tag } from 'primeng/tag';
 import { TranslateModule } from '@ngx-translate/core';
-import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
+import { AdminReviewStatus, getAdminReviewStatusSeverity, getAdminReviewStatusTranslationKey } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
 import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
@@ -116,12 +116,20 @@ export class AdminParksViewComponent {
     this.bulkVisibilityChanged.emit(false);
   }
 
-  markSelectedReady(): void {
-    this.bulkStatusChanged.emit('Ready');
+  markSelectedToReview(): void {
+    this.bulkStatusChanged.emit('ToReview');
+  }
+
+  markSelectedValidated(): void {
+    this.bulkStatusChanged.emit('Validated');
   }
 
   markSelectedLater(): void {
     this.bulkStatusChanged.emit('ToProcessLater');
+  }
+
+  markSelectedNotRelevant(): void {
+    this.bulkStatusChanged.emit('NotRelevant');
   }
 
   clearSelection(): void {
@@ -132,7 +140,11 @@ export class AdminParksViewComponent {
     return this.getTypeTranslationKeyFn(type);
   }
 
-  getStatusSeverity(status: AdminReviewStatus | null | undefined): 'success' | 'warn' {
-    return status === 'ToProcessLater' ? 'warn' : 'success';
+  getStatusSeverity(status: AdminReviewStatus | null | undefined): 'success' | 'info' | 'warn' | 'danger' {
+    return getAdminReviewStatusSeverity(status);
+  }
+
+  getStatusLabelKey(status: AdminReviewStatus | null | undefined): string {
+    return getAdminReviewStatusTranslationKey(status);
   }
 }

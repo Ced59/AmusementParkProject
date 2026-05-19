@@ -24,6 +24,11 @@ public sealed class AttractionManufacturerDto
     public List<LocalizedTextDto> Biography { get; set; } = new();
 
     /// <summary>
+    /// Statut de revue interne back-office.
+    /// </summary>
+    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;
+
+    /// <summary>
     /// Nombre d'attractions rattachées.
     /// </summary>
     public int AttractionCount { get; set; }

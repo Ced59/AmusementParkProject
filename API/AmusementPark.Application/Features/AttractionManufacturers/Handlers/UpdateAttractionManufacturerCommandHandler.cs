@@ -59,6 +59,7 @@ public sealed class UpdateAttractionManufacturerCommandHandler : ICommandHandler
                 Id = updated.Id,
                 Name = updated.Name,
                 Biography = updated.Biography,
+                AdminReviewStatus = updated.AdminReviewStatus,
                 AttractionCount = attractionCount,
             });
         }

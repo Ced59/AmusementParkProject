@@ -64,8 +64,10 @@
       <span class="admin-field-label">{{ 'admin.filters.reviewStatus' | translate }}</span>
       <select [(ngModel)]="localAdminReviewStatusFilter" (ngModelChange)="onImmediateFilterChanged()">
         <option [ngValue]="null">{{ 'admin.filters.statusAll' | translate }}</option>
-        <option [ngValue]="'Ready'">{{ 'admin.reviewStatus.ready' | translate }}</option>
+        <option [ngValue]="'ToReview'">{{ 'admin.reviewStatus.toReview' | translate }}</option>
+        <option [ngValue]="'Validated'">{{ 'admin.reviewStatus.validated' | translate }}</option>
         <option [ngValue]="'ToProcessLater'">{{ 'admin.reviewStatus.toProcessLater' | translate }}</option>
+        <option [ngValue]="'NotRelevant'">{{ 'admin.reviewStatus.notRelevant' | translate }}</option>
       </select>
     </label>
 
@@ -96,8 +98,10 @@
       <div class="admin-bulk-bar__actions">
         <button pButton type="button" class="p-button-sm" icon="pi pi-eye" [label]="'admin.bulk.makeVisible' | translate" (click)="makeSelectedVisible()"></button>
         <button pButton type="button" class="p-button-sm p-button-secondary" icon="pi pi-eye-slash" [label]="'admin.bulk.hide' | translate" (click)="hideSelected()"></button>
-        <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markReady' | translate" (click)="markSelectedReady()"></button>
+        <button pButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReview' | translate" (click)="markSelectedToReview()"></button>
+        <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
         <button pButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLater' | translate" (click)="markSelectedLater()"></button>
+        <button pButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
         <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelection' | translate" (click)="clearSelection()"></button>
       </div>
     </div>
@@ -135,7 +139,7 @@
     </ng-template>
 
     <ng-template pTemplate="body" let-row>
-      <tr [class.admin-row--later]="row.adminReviewStatus === 'ToProcessLater'">
+      <tr [class.admin-row--later]="row.adminReviewStatus === 'ToProcessLater' || row.adminReviewStatus === 'NotRelevant'">
         <td class="admin-selection-column">
           <input type="checkbox" [checked]="isItemSelected(row)" (change)="onItemSelectionChange(row, $event)" [attr.aria-label]="row.name" />
         </td>
@@ -145,7 +149,7 @@
         <td>{{ getCategoryLabelKey(row.category) | translate }}</td>
         <td>
           <p-tag
-            [value]="(row.adminReviewStatus === 'ToProcessLater' ? 'admin.reviewStatus.toProcessLater' : 'admin.reviewStatus.ready') | translate"
+            [value]="getStatusLabelKey(row.adminReviewStatus) | translate"
             [severity]="getStatusSeverity(row.adminReviewStatus)">
           </p-tag>
         </td>

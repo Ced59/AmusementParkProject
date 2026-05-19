@@ -67,7 +67,7 @@ export class AdminParksStateFacade {
       const parks: Park[] = (response.data ?? []).map((park: Park) => ({
         ...park,
         isVisible: park.isVisible ?? false,
-        adminReviewStatus: park.adminReviewStatus ?? 'Ready'
+        adminReviewStatus: park.adminReviewStatus ?? 'ToReview'
       }));
       const pagination: Pagination | null = response.pagination ?? null;
       const viewModel: AdminParksViewModel = {

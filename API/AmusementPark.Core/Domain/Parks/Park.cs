@@ -46,7 +46,7 @@ public sealed class Park : GeolocatedEntityBase
     /// <summary>
     /// Statut de traitement interne pour les listes d'administration.
     /// </summary>
-    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.Ready;
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
 
     /// <summary>
     /// Indique si le parc est mis en avant manuellement sur la home publique.

@@ -76,6 +76,7 @@ internal static partial class EntityMongoMappers
             Id = document.Id,
             Name = document.Name,
             Description = CommonMongoMappers.ToDomain(document.Description),
+            AdminReviewStatus = document.AdminReviewStatus.NormalizeForAdministration(),
         };
 
         entity.CreatedAtUtc = document.CreatedAt;
@@ -90,6 +91,8 @@ internal static partial class EntityMongoMappers
             Id = entity.Id,
             Name = entity.Name,
             Description = CommonMongoMappers.ToDocuments(entity.Description),
+            AdminReviewStatus = entity.AdminReviewStatus.NormalizeForAdministration(),
+            AdminReviewPriority = entity.AdminReviewStatus.ToAdminReviewPriority(),
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };
@@ -102,6 +105,7 @@ internal static partial class EntityMongoMappers
             Id = document.Id,
             Name = document.Name,
             Biography = CommonMongoMappers.ToDomain(document.Biography),
+            AdminReviewStatus = document.AdminReviewStatus.NormalizeForAdministration(),
         };
 
         entity.CreatedAtUtc = document.CreatedAt;
@@ -116,6 +120,8 @@ internal static partial class EntityMongoMappers
             Id = entity.Id,
             Name = entity.Name,
             Biography = CommonMongoMappers.ToDocuments(entity.Biography),
+            AdminReviewStatus = entity.AdminReviewStatus.NormalizeForAdministration(),
+            AdminReviewPriority = entity.AdminReviewStatus.ToAdminReviewPriority(),
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };

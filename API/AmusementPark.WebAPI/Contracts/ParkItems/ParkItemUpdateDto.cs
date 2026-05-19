@@ -36,5 +36,5 @@ public sealed class ParkItemUpdateDto
 
     public bool IsVisible { get; set; } = true;
 
-    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Ready;
+    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;
 }

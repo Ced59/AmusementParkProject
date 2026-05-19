@@ -637,7 +637,8 @@
         "description": "Description"
       },
       "title": "Operators",
-      "subtitle": "Reference list of operators used by park records."
+      "subtitle": "Reference list of operators used by park records.",
+      "reviewStatus": "Admin status"
     },
     "parkFounders": {
       "editPage": {
@@ -663,7 +664,8 @@
         "biography": "Biography"
       },
       "title": "Manufacturers",
-      "subtitle": "Reference list of manufacturers used by attractions."
+      "subtitle": "Reference list of manufacturers used by attractions.",
+      "reviewStatus": "Admin status"
     },
     "parkItems": {
       "title": "Park items",
@@ -704,16 +706,22 @@
       "countryCodePlaceholder": "FR"
     },
     "reviewStatus": {
-      "ready": "To process",
-      "toProcessLater": "Process later"
+      "ready": "Validated",
+      "toProcessLater": "Process later",
+      "toReview": "To review",
+      "validated": "Validated",
+      "notRelevant": "Not relevant"
     },
     "bulk": {
       "selected": "{{count}} selected",
       "makeVisible": "Make visible",
       "hide": "Hide",
-      "markReady": "Mark ready",
+      "markReady": "Validate",
       "processLater": "Process later",
-      "clearSelection": "Clear selection"
+      "clearSelection": "Clear selection",
+      "markToReview": "Mark to review",
+      "markValidated": "Validate",
+      "markNotRelevant": "Not relevant"
     },
     "visible": "Visible",
     "hidden": "Hidden",
