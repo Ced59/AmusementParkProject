@@ -1,5 +1,5 @@
-import { PaginationContract } from '@shared/models/contracts';
-import { coalesceArray, mapArray } from '@shared/utils/mapping';
+import { PagedResult, PaginationContract } from '@shared/models/contracts';
+import { coalesceArray, createPagedResult, mapArray } from '@shared/utils/mapping';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
@@ -9,6 +9,19 @@ import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 export interface PagedCollectionResponse<T> {
   data?: T[];
   pagination?: PaginationContract | null;
+}
+
+
+export function unwrapPagedCollection<T>(response: T[] | PagedCollectionResponse<T> | null | undefined): PagedResult<T> {
+  if (Array.isArray(response)) {
+    return createPagedResult<T>(response);
+  }
+
+  if (response && Array.isArray(response.data)) {
+    return createPagedResult<T>(response.data, response.pagination);
+  }
+
+  return createPagedResult<T>([]);
 }
 
 export function unwrapCollection<T>(response: T[] | PagedCollectionResponse<T> | null | undefined): T[] {

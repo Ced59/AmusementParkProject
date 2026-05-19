@@ -259,7 +259,8 @@
       "title": "Gebruikers",
       "blockTitle": "Account blokkeren",
       "newPassword": "Nieuw wachtwoord",
-      "confirmPassword": "Wachtwoord bevestigen"
+      "confirmPassword": "Wachtwoord bevestigen",
+      "subtitle": "Beheer accounts, rollen en toegangsstatus."
     },
     "parks": {
       "total": "Totaal aantal parken: {{count}}",
@@ -635,7 +636,8 @@
         "name": "Naam",
         "description": "Beschrijving"
       },
-      "title": "Exploitanten"
+      "title": "Exploitanten",
+      "subtitle": "Referentielijst van exploitanten voor parkfiches."
     },
     "parkFounders": {
       "editPage": {
@@ -660,7 +662,8 @@
         "name": "Name",
         "biography": "Biography"
       },
-      "title": "Constructeurs"
+      "title": "Constructeurs",
+      "subtitle": "Referentielijst van bouwers voor attracties."
     },
     "parkItems": {
       "title": "Park items",
@@ -681,7 +684,7 @@
       "total": "{{count}} item(s)"
     },
     "m14": {
-      "kicker": "Leesbare administratie",
+      "kicker": "Administratie",
       "sidebarTitle": "Backoffice beheer"
     },
     "filters": {

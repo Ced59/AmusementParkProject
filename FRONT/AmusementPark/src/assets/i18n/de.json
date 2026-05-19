@@ -259,7 +259,8 @@
       "title": "Benutzer",
       "blockTitle": "Konto sperren",
       "newPassword": "Neues Passwort",
-      "confirmPassword": "Passwort bestätigen"
+      "confirmPassword": "Passwort bestätigen",
+      "subtitle": "Konten, Rollen und Zugriffsstatus verwalten."
     },
     "parks": {
       "total": "Gesamtzahl der Parks: {{count}}",
@@ -635,7 +636,8 @@
         "name": "Name",
         "description": "Beschreibung"
       },
-      "title": "Betreiber"
+      "title": "Betreiber",
+      "subtitle": "Referenzliste der Betreiber für Parkdatensätze."
     },
     "parkFounders": {
       "editPage": {
@@ -660,7 +662,8 @@
         "name": "Name",
         "biography": "Biography"
       },
-      "title": "Hersteller"
+      "title": "Hersteller",
+      "subtitle": "Referenzliste der Hersteller für Attraktionen."
     },
     "parkItems": {
       "title": "Park items",
@@ -681,7 +684,7 @@
       "total": "{{count}} Element(e)"
     },
     "m14": {
-      "kicker": "Lesbare Administration",
+      "kicker": "Administration",
       "sidebarTitle": "Backoffice-Steuerung"
     },
     "filters": {

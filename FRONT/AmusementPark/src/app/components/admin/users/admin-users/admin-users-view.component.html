@@ -1,8 +1,14 @@
-<p-card>
+<p-card styleClass="admin-list-card">
   <ng-template pTemplate="header">
-    <div class="header-row">
+    <div class="admin-list-header">
+      <div>
+        <span class="admin-kicker">M14 · Admin</span>
+        <h2>{{ 'admin.users.title' | translate }}</h2>
+        <p>{{ 'admin.users.subtitle' | translate }}</p>
+      </div>
+
       @if (canShowHeaderTotal()) {
-        <span class="total">
+        <span class="admin-total-pill">
           {{ 'admin.users.total' | translate:{ count: totalRecords() } }}
         </span>
       }
@@ -19,7 +25,7 @@
     (onLazyLoad)="onPageChanged($event)"
     [responsiveLayout]="'scroll'"
     selectionMode="single"
-    >
+    styleClass="admin-data-table">
     <ng-template pTemplate="header">
       <tr>
         <th class="col-avatar"></th>
@@ -38,35 +44,36 @@
           <p-avatar
             [image]="resolveAvatarUrl(user.avatarUrl)"
             shape="circle"
-            size="normal"
-          ></p-avatar>
+            size="normal">
+          </p-avatar>
         </td>
-        <td>{{ user.email }}</td>
+        <td><strong class="admin-row-title">{{ user.email }}</strong></td>
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
         <td>
           @for (role of user.roles; track role) {
             <p-tag
               [value]="role"
-              class="mr-1"
-            ></p-tag>
+              class="mr-1">
+            </p-tag>
           }
         </td>
         <td>
           <p-tag
             [severity]="user.isBlocked ? 'danger' : 'success'"
-            [value]="(user.isBlocked ? 'admin.users.status.blocked' : 'admin.users.status.active') | translate"
-          ></p-tag>
+            [value]="(user.isBlocked ? 'admin.users.status.blocked' : 'admin.users.status.active') | translate">
+          </p-tag>
         </td>
         <td class="col-actions">
           <button
             pButton
             type="button"
             icon="pi pi-pencil"
-            class="p-button-text p-button-sm"
+            class="p-button-sm"
             [pTooltip]="'admin.users.manage' | translate"
-            (click)="openUserProfile(user.id); $event.stopPropagation()"
-          ></button>
+            [label]="'actions.edit' | translate"
+            (click)="openUserProfile(user.id); $event.stopPropagation()">
+          </button>
         </td>
       </tr>
     </ng-template>

@@ -259,7 +259,8 @@
       "title": "Utenti",
       "blockTitle": "Blocco account",
       "newPassword": "Nuova password",
-      "confirmPassword": "Conferma password"
+      "confirmPassword": "Conferma password",
+      "subtitle": "Gestisci account, ruoli e stato di accesso."
     },
     "parks": {
       "total": "Numero totale di parchi: {{count}}",
@@ -635,7 +636,8 @@
         "name": "Nome",
         "description": "Descrizione"
       },
-      "title": "Operatori"
+      "title": "Operatori",
+      "subtitle": "Elenco di riferimento degli operatori usati dalle schede parco."
     },
     "parkFounders": {
       "editPage": {
@@ -660,7 +662,8 @@
         "name": "Name",
         "biography": "Biography"
       },
-      "title": "Costruttori"
+      "title": "Costruttori",
+      "subtitle": "Elenco di riferimento dei costruttori usati dalle attrazioni."
     },
     "parkItems": {
       "title": "Park items",
@@ -681,7 +684,7 @@
       "total": "{{count}} elemento/i"
     },
     "m14": {
-      "kicker": "Amministrazione leggibile",
+      "kicker": "Amministrazione",
       "sidebarTitle": "Controllo back-office"
     },
     "filters": {

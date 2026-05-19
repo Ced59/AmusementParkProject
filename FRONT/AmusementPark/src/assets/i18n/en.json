@@ -259,7 +259,8 @@
       "title": "Users",
       "blockTitle": "Account blocking",
       "newPassword": "New password",
-      "confirmPassword": "Confirm password"
+      "confirmPassword": "Confirm password",
+      "subtitle": "Manage accounts, roles and access status."
     },
     "parks": {
       "total": "Total number of parks: {{count}}",
@@ -635,7 +636,8 @@
         "name": "Name",
         "description": "Description"
       },
-      "title": "Operators"
+      "title": "Operators",
+      "subtitle": "Reference list of operators used by park records."
     },
     "parkFounders": {
       "editPage": {
@@ -660,7 +662,8 @@
         "name": "Name",
         "biography": "Biography"
       },
-      "title": "Manufacturers"
+      "title": "Manufacturers",
+      "subtitle": "Reference list of manufacturers used by attractions."
     },
     "parkItems": {
       "title": "Park items",
@@ -681,7 +684,7 @@
       "total": "{{count}} item(s)"
     },
     "m14": {
-      "kicker": "Readable administration",
+      "kicker": "Administration",
       "sidebarTitle": "Back-office control"
     },
     "filters": {

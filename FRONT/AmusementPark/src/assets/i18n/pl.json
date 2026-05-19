@@ -259,7 +259,8 @@
       "title": "Użytkownicy",
       "blockTitle": "Blokada konta",
       "newPassword": "Nowe hasło",
-      "confirmPassword": "Potwierdź hasło"
+      "confirmPassword": "Potwierdź hasło",
+      "subtitle": "Zarządzanie kontami, rolami i statusem dostępu."
     },
     "parks": {
       "total": "Łączna liczba parków: {{count}}",
@@ -635,7 +636,8 @@
         "name": "Nazwa",
         "description": "Opis"
       },
-      "title": "Operatorzy"
+      "title": "Operatorzy",
+      "subtitle": "Lista operatorów używana w kartach parków."
     },
     "parkFounders": {
       "editPage": {
@@ -660,7 +662,8 @@
         "name": "Name",
         "biography": "Biography"
       },
-      "title": "Producenci"
+      "title": "Producenci",
+      "subtitle": "Lista producentów używana przy atrakcjach."
     },
     "parkItems": {
       "title": "Park items",
@@ -681,7 +684,7 @@
       "total": "{{count}} element(y)"
     },
     "m14": {
-      "kicker": "Czytelna administracja",
+      "kicker": "Administracja",
       "sidebarTitle": "Panel back-office"
     },
     "filters": {

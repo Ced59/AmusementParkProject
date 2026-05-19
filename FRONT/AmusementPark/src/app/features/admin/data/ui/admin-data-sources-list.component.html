@@ -1,5 +1,16 @@
-<p-card header="Sources de données configurées">
-  <p-table [value]="sources" responsiveLayout="scroll">
+<p-card styleClass="admin-list-card">
+  <ng-template pTemplate="header">
+    <div class="admin-list-header">
+      <div>
+        <span class="admin-kicker">M14 · Admin</span>
+        <h2>Sources de données configurées</h2>
+        <p>Pilotez les connecteurs et les imports qui alimentent le référentiel.</p>
+      </div>
+      <span class="admin-total-pill">{{ sources.length }} source(s)</span>
+    </div>
+  </ng-template>
+
+  <p-table [value]="sources" responsiveLayout="scroll" styleClass="admin-data-table">
     <ng-template pTemplate="header">
       <tr>
         <th>Source</th>
@@ -15,12 +26,12 @@
         <td>
           <div class="source-label">
             <i [class]="source.icon"></i>
-            <strong>{{ source.label }}</strong>
+            <strong class="admin-row-title">{{ source.label }}</strong>
           </div>
         </td>
         <td class="source-description">{{ source.description }}</td>
         <td>{{ source.lastImportUtc ? (source.lastImportUtc | date:'short') : 'Jamais' }}</td>
-        <td>{{ source.totalSessions }}</td>
+        <td><span class="admin-count-chip">{{ source.totalSessions }}</span></td>
         <td>
           <p-tag [value]="source.statusLabel" [severity]="getSeverity(source)"></p-tag>
         </td>
