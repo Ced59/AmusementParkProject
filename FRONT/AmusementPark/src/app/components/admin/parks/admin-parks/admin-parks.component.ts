@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, computed, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
 import { TableLazyLoadEvent } from 'primeng/table';
+import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
+import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { AdminParksStateFacade } from '@features/admin/parks/state/admin-parks-state.facade';
 import { AdminParksViewComponent } from './admin-parks-view.component';
@@ -23,6 +25,12 @@ export class AdminParksComponent implements OnInit {
   protected readonly pageSize = this.stateFacade.pageSize;
   protected readonly currentPage = this.stateFacade.currentPage;
   protected readonly searchQuery = this.stateFacade.searchQuery;
+  protected readonly visibilityFilter = this.stateFacade.visibilityFilter;
+  protected readonly adminReviewStatusFilter = this.stateFacade.adminReviewStatusFilter;
+  protected readonly typeFilter = this.stateFacade.typeFilter;
+  protected readonly countryCodeFilter = this.stateFacade.countryCodeFilter;
+  protected readonly selectedParkIds = signal<string[]>([]);
+  protected readonly selectedCount = computed(() => this.selectedParkIds().length);
   protected readonly canShowHeaderTotal = computed(() => !this.loading());
   protected readonly canClearSearch = computed(() => this.searchQuery().trim().length > 0);
 
@@ -41,6 +49,7 @@ export class AdminParksComponent implements OnInit {
   }
 
   onSearch(): void {
+    this.selectedParkIds.set([]);
     this.stateFacade.loadParks(1, this.pageSize());
   }
 
@@ -50,7 +59,13 @@ export class AdminParksComponent implements OnInit {
     }
 
     this.stateFacade.clearSearchQuery();
+    this.selectedParkIds.set([]);
     this.stateFacade.loadParks(1, this.pageSize());
+  }
+
+  onFiltersChanged(filters: ParkAdminListFilters): void {
+    this.selectedParkIds.set([]);
+    this.stateFacade.updateFilters(filters);
   }
 
   onPageChanged(event: TableLazyLoadEvent): void {
@@ -58,6 +73,7 @@ export class AdminParksComponent implements OnInit {
     const first: number = event.first ?? 0;
     const page: number = Math.floor(first / rows) + 1;
 
+    this.selectedParkIds.set([]);
     this.stateFacade.loadParks(page, rows);
   }
 
@@ -70,6 +86,7 @@ export class AdminParksComponent implements OnInit {
 
     try {
       await firstValueFrom(this.parksApiService.updateParkVisibility(park.id, newValue));
+      this.stateFacade.loadParks(this.currentPage(), this.pageSize());
     } catch (error: unknown) {
       console.error('Error updating park visibility', error);
       park.isVisible = !newValue;
@@ -77,7 +94,61 @@ export class AdminParksComponent implements OnInit {
     }
   }
 
+  onParkSelectionChanged(event: { parkId: string; selected: boolean }): void {
+    const currentIds: string[] = this.selectedParkIds();
+    if (event.selected) {
+      this.selectedParkIds.set(currentIds.includes(event.parkId) ? currentIds : [...currentIds, event.parkId]);
+      return;
+    }
+
+    this.selectedParkIds.set(currentIds.filter((parkId: string) => parkId !== event.parkId));
+  }
+
+  onAllParksSelectionChanged(selected: boolean): void {
+    if (!selected) {
+      this.selectedParkIds.set([]);
+      return;
+    }
+
+    this.selectedParkIds.set(this.parks().map((park: Park) => park.id).filter((parkId: string | undefined): parkId is string => !!parkId));
+  }
+
+  async onBulkVisibilityChange(isVisible: boolean): Promise<void> {
+    if (this.selectedCount() === 0) {
+      return;
+    }
+
+    await this.applyBulkAdministration({ isVisible });
+  }
+
+  async onBulkStatusChange(adminReviewStatus: AdminReviewStatus): Promise<void> {
+    if (this.selectedCount() === 0) {
+      return;
+    }
+
+    await this.applyBulkAdministration({ adminReviewStatus });
+  }
+
+  clearSelection(): void {
+    this.selectedParkIds.set([]);
+  }
+
   getTypeTranslationKey(type: string | null | undefined): string {
     return getParkTypeTranslationKey(type);
+  }
+
+  private async applyBulkAdministration(change: { isVisible?: boolean; adminReviewStatus?: AdminReviewStatus }): Promise<void> {
+    try {
+      await firstValueFrom(this.stateFacade.updateBulkAdministration({
+        ids: this.selectedParkIds(),
+        isVisible: change.isVisible ?? null,
+        adminReviewStatus: change.adminReviewStatus ?? null
+      }));
+      this.selectedParkIds.set([]);
+      this.stateFacade.loadParks(this.currentPage(), this.pageSize());
+    } catch (error: unknown) {
+      console.error('Error applying bulk park administration update', error);
+      this.stateFacade.loadParks(this.currentPage(), this.pageSize());
+    }
   }
 }

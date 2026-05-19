@@ -611,7 +611,10 @@
           "christmas": "Navidad",
           "easter": "Pascua"
         }
-      }
+      },
+      "title": "Parques",
+      "subtitle": "Filtra, prioriza y administra los parques del sitio.",
+      "reviewStatus": "Estado admin"
     },
     "loading": "Cargando...",
     "operators": {
@@ -664,9 +667,55 @@
         "item": "Item",
         "type": "Type",
         "visibility": "Visibility",
-        "actions": "Actions"
+        "actions": "Actions",
+        "category": "Categoría",
+        "reviewStatus": "Estado admin"
       },
-      "allParks": "All parks"
+      "allParks": "All parks",
+      "total": "{{count}} elemento(s)"
+    },
+    "m14": {
+      "kicker": "Administración legible",
+      "sidebarTitle": "Control back-office"
+    },
+    "filters": {
+      "search": "Búsqueda",
+      "applySearch": "Aplicar",
+      "visibility": "Visibilidad",
+      "visibilityAll": "Todas las visibilidades",
+      "visibleOnly": "Solo visibles",
+      "hiddenOnly": "Solo ocultos",
+      "reviewStatus": "Tratamiento",
+      "statusAll": "Todos los estados",
+      "type": "Tipo",
+      "typeAll": "Todos los tipos",
+      "category": "Categoría",
+      "categoryAll": "Todas las categorías",
+      "countryCode": "País",
+      "countryCodePlaceholder": "FR"
+    },
+    "reviewStatus": {
+      "ready": "Por tratar",
+      "toProcessLater": "Tratar más tarde"
+    },
+    "bulk": {
+      "selected": "{{count}} seleccionado(s)",
+      "makeVisible": "Hacer visible",
+      "hide": "Ocultar",
+      "markReady": "Marcar listo",
+      "processLater": "Tratar más tarde",
+      "clearSelection": "Limpiar selección"
+    },
+    "visible": "Visible",
+    "hidden": "Oculto",
+    "images": {
+      "title": "Imágenes"
+    },
+    "dataSources": {
+      "title": "Fuentes de datos"
+    },
+    "dashboard": {
+      "title": "Panel"
     }
   },
   "validation": {

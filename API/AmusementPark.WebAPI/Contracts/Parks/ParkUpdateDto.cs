@@ -29,6 +29,8 @@ public sealed class ParkUpdateDto
 
     public bool IsVisible { get; set; }
 
+    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Ready;
+
     public bool IsFeaturedOnHome { get; set; }
 
     public int? FeaturedHomeOrder { get; set; }

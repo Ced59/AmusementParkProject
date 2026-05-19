@@ -75,6 +75,10 @@ public sealed class ParkDocument : MongoGeolocatedDocumentBase
     [BsonElement("isVisible")]
     public bool IsVisible { get; set; }
 
+    [BsonElement("adminReviewStatus")]
+    [BsonRepresentation(BsonType.String)]
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.Ready;
+
     [BsonElement("isFeaturedOnHome")]
     public bool IsFeaturedOnHome { get; set; }
 
@@ -179,6 +183,10 @@ public sealed class ParkItemDocument : MongoGeolocatedDocumentBase
 
     [BsonElement("isVisible")]
     public bool IsVisible { get; set; } = true;
+
+    [BsonElement("adminReviewStatus")]
+    [BsonRepresentation(BsonType.String)]
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.Ready;
 }
 
 /// <summary>

@@ -57,7 +57,8 @@ export function createAdminParkItemEditForm(formBuilder: FormBuilder, parkId: st
       fastPassEntrance: createLocationGroup(formBuilder),
       reducedMobilityEntrance: createLocationGroup(formBuilder)
     }),
-    isVisible: [true]
+    isVisible: [true],
+    adminReviewStatus: ['Ready']
   });
 }
 
@@ -76,7 +77,8 @@ export function patchAdminParkItemEditForm(
     latitude: item.latitude,
     longitude: item.longitude,
     descriptions: item.descriptions ?? [],
-    isVisible: item.isVisible ?? true
+    isVisible: item.isVisible ?? true,
+    adminReviewStatus: item.adminReviewStatus ?? 'Ready'
   }, { emitEvent: false });
 
   patchAttractionDetails(formBuilder, form, item.attractionDetails ?? null);
@@ -130,7 +132,8 @@ export function mapAdminParkItemEditFormToParkItem(form: FormGroup): ParkItem {
     descriptions: raw.descriptions ?? [],
     attractionDetails: category === 'Attraction' ? buildAttractionDetails(raw.attractionDetails) : null,
     attractionLocations: category === 'Attraction' ? buildAttractionLocations(raw.attractionLocations) : null,
-    isVisible: !!raw.isVisible
+    isVisible: !!raw.isVisible,
+    adminReviewStatus: raw.adminReviewStatus ?? 'Ready'
   };
 }
 
@@ -483,4 +486,5 @@ interface AdminParkItemFormValue {
   attractionDetails?: AdminAttractionDetailsFormValue | null;
   attractionLocations?: AdminAttractionLocationsFormValue | null;
   isVisible?: boolean | null;
+  adminReviewStatus?: ParkItem['adminReviewStatus'];
 }

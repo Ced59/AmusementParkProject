@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -31,6 +32,7 @@ public sealed class ParkItemsController : ControllerBase
     private readonly ICommandHandler<CreateParkItemCommand, ApplicationResult<ParkItem>> createParkItemCommandHandler;
     private readonly ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler;
     private readonly ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler;
+    private readonly ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler;
 
     public ParkItemsController(
         IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler,
@@ -38,7 +40,8 @@ public sealed class ParkItemsController : ControllerBase
         IQueryHandler<GetParkItemByIdQuery, ApplicationResult<ParkItem>> getParkItemByIdQueryHandler,
         ICommandHandler<CreateParkItemCommand, ApplicationResult<ParkItem>> createParkItemCommandHandler,
         ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler,
-        ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler)
+        ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler,
+        ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler)
     {
         this.getParkItemsByParkIdQueryHandler = getParkItemsByParkIdQueryHandler;
         this.getParkItemsPageQueryHandler = getParkItemsPageQueryHandler;
@@ -46,6 +49,7 @@ public sealed class ParkItemsController : ControllerBase
         this.createParkItemCommandHandler = createParkItemCommandHandler;
         this.updateParkItemCommandHandler = updateParkItemCommandHandler;
         this.deleteParkItemCommandHandler = deleteParkItemCommandHandler;
+        this.updateParkItemsBulkAdministrationCommandHandler = updateParkItemsBulkAdministrationCommandHandler;
     }
 
     [HttpGet("park/{parkId}")]
@@ -67,11 +71,27 @@ public sealed class ParkItemsController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(PagedResponseDto<ParkItemAdminListDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetPaginatedAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? parkId = null, [FromQuery] string? search = null, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetPaginatedAsync(
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? parkId = null,
+        [FromQuery] string? search = null,
+        [FromQuery] bool? isVisible = null,
+        [FromQuery] string? adminReviewStatus = null,
+        [FromQuery] string? category = null,
+        [FromQuery] string? type = null,
+        CancellationToken cancellationToken = default)
     {
         PagedQuery paging = pagination.ToApplication();
         ApplicationResult<PagedResult<ParkItemAdminListResult>> result = await this.getParkItemsPageQueryHandler.HandleAsync(
-            new GetParkItemsPageQuery(paging, parkId, search, this.UserCanSeeNonVisible()),
+            new GetParkItemsPageQuery(
+                paging,
+                parkId,
+                search,
+                this.UserCanSeeNonVisible(),
+                isVisible,
+                ParseAdminReviewStatus(adminReviewStatus),
+                ParseParkItemCategory(category),
+                ParseParkItemType(type)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -123,6 +143,26 @@ public sealed class ParkItemsController : ControllerBase
         return this.Ok(result.Value.ToHttp());
     }
 
+    [HttpPatch("bulk-administration")]
+    [ProducesResponseType(typeof(BulkAdministrationUpdateResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateParkItemsBulkAdministrationAsync([FromBody] BulkAdministrationUpdateDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParkItemsBulkAdministrationCommandHandler.HandleAsync(
+            new UpdateParkItemsBulkAdministrationCommand(request.Ids, request.IsVisible, request.AdminReviewStatus.ToOptionalDomain()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(new BulkAdministrationUpdateResultDto
+        {
+            RequestedCount = result.Value.RequestedCount,
+            UpdatedCount = result.Value.UpdatedCount,
+        });
+    }
+
     [HttpDelete("{id}")]
     [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
     public async Task<IActionResult> DeleteAsync([FromRoute] string id, CancellationToken cancellationToken = default)
@@ -134,6 +174,21 @@ public sealed class ParkItemsController : ControllerBase
         }
 
         return this.Ok(true);
+    }
+
+    private static AdminReviewStatus? ParseAdminReviewStatus(string? value)
+    {
+        return Enum.TryParse(value, true, out AdminReviewStatus parsed) ? parsed : null;
+    }
+
+    private static ParkItemCategory? ParseParkItemCategory(string? value)
+    {
+        return Enum.TryParse(value, true, out ParkItemCategory parsed) ? parsed : null;
+    }
+
+    private static ParkItemType? ParseParkItemType(string? value)
+    {
+        return Enum.TryParse(value, true, out ParkItemType parsed) ? parsed : null;
     }
 
     private bool UserCanSeeNonVisible()

@@ -29,6 +29,7 @@ internal static class ParksHttpMappers
             OperatorId = NormalizeOptionalString(dto.OperatorId),
             Descriptions = dto.Descriptions.ToDomain(),
             IsVisible = dto.IsVisible,
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
             IsFeaturedOnHome = dto.IsFeaturedOnHome,
             FeaturedHomeOrder = NormalizeOptionalOrder(dto.FeaturedHomeOrder),
             IsFeaturedOnHomeSponsored = dto.IsFeaturedOnHomeSponsored && dto.IsFeaturedOnHome,
@@ -55,6 +56,7 @@ internal static class ParksHttpMappers
             OperatorId = NormalizeOptionalString(dto.OperatorId),
             Descriptions = dto.Descriptions.ToDomain(),
             IsVisible = dto.IsVisible,
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
             IsFeaturedOnHome = dto.IsFeaturedOnHome,
             FeaturedHomeOrder = NormalizeOptionalOrder(dto.FeaturedHomeOrder),
             IsFeaturedOnHomeSponsored = dto.IsFeaturedOnHomeSponsored && dto.IsFeaturedOnHome,
@@ -84,6 +86,7 @@ internal static class ParksHttpMappers
             Longitude = value.Position?.Longitude ?? 0.0,
             Descriptions = value.Descriptions.ToHttp(),
             IsVisible = value.IsVisible,
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
             IsFeaturedOnHome = value.IsFeaturedOnHome,
             FeaturedHomeOrder = value.FeaturedHomeOrder,
             IsFeaturedOnHomeSponsored = value.IsFeaturedOnHomeSponsored,
@@ -110,6 +113,7 @@ internal static class ParksHttpMappers
             Longitude = value.Position?.Longitude ?? 0.0,
             Descriptions = value.Descriptions.ToHttp(),
             IsVisible = value.IsVisible,
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
             IsFeaturedOnHome = value.IsFeaturedOnHome,
             FeaturedHomeOrder = value.FeaturedHomeOrder,
             IsFeaturedOnHomeSponsored = value.IsFeaturedOnHomeSponsored,
@@ -367,6 +371,7 @@ internal static class ParksHttpMappers
 
         return Enum.TryParse(value.Value.ToString(), out ParkType parsed) ? parsed : null;
     }
+
 
     private static ParkTypeDto? ToHttp(this ParkType? value)
     {

@@ -58,17 +58,14 @@ public sealed class ParkRepository : IParkRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public async Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
+    public async Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkDocument> filter = includeHidden
-            ? Builders<ParkDocument>.Filter.Empty
-            : Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
+        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
-            .SortBy(document => document.Name)
-            .ThenBy(document => document.Id)
+            .Sort(this.BuildAdminListSort())
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
@@ -217,19 +214,18 @@ public sealed class ParkRepository : IParkRepository
     public Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
     {
         ParkSearchCriteria criteria = new ParkSearchCriteria(name, Array.Empty<string>(), Array.Empty<string>());
-        return this.SearchAsync(criteria, page, pageSize, includeHidden, cancellationToken);
+        return this.SearchAsync(criteria, page, pageSize, includeHidden, null, null, null, null, cancellationToken);
     }
 
-    public async Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
+    public async Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden)
+        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode)
             & this.BuildCriteriaFilter(criteria);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
-            .SortBy(document => document.Name)
-            .ThenBy(document => document.Id)
+            .Sort(this.BuildAdminListSort())
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
@@ -312,6 +308,32 @@ public sealed class ParkRepository : IParkRepository
         return updated?.ToDomain();
     }
 
+    public async Task<int> UpdateBulkAdministrationAsync(IReadOnlyCollection<string> parkIds, bool? isVisible, AdminReviewStatus? adminReviewStatus, CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkIds = NormalizeParkIds(parkIds);
+        if (normalizedParkIds.Count == 0 || (!isVisible.HasValue && !adminReviewStatus.HasValue))
+        {
+            return 0;
+        }
+
+        UpdateDefinition<ParkDocument> update = Builders<ParkDocument>.Update.Set(document => document.UpdatedAt, DateTime.UtcNow);
+        if (isVisible.HasValue)
+        {
+            update = update.Set(document => document.IsVisible, isVisible.Value);
+        }
+
+        if (adminReviewStatus.HasValue)
+        {
+            update = update.Set(document => document.AdminReviewStatus, adminReviewStatus.Value);
+        }
+
+        UpdateResult result = await this.collection.UpdateManyAsync(
+            Builders<ParkDocument>.Filter.In(document => document.Id, normalizedParkIds),
+            update,
+            cancellationToken: cancellationToken);
+
+        return checked((int)result.ModifiedCount);
+    }
 
     private static GeoJsonPoint<GeoJson2DGeographicCoordinates> BuildGeoJsonPoint(double latitude, double longitude)
     {
@@ -403,6 +425,54 @@ public sealed class ParkRepository : IParkRepository
             .Select(static countryCode => countryCode.Trim().ToUpperInvariant())
             .Distinct(StringComparer.Ordinal)
             .ToList();
+    }
+
+    private FilterDefinition<ParkDocument> BuildAdminListFilter(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode)
+    {
+        FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden);
+
+        if (isVisible.HasValue)
+        {
+            filter &= Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, isVisible.Value);
+        }
+
+        if (adminReviewStatus.HasValue)
+        {
+            filter &= this.BuildAdminReviewStatusFilter(adminReviewStatus.Value);
+        }
+
+        if (type.HasValue)
+        {
+            filter &= Builders<ParkDocument>.Filter.Eq(document => document.Type, type.Value);
+        }
+
+        string normalizedCountryCode = (countryCode ?? string.Empty).Trim().ToUpperInvariant();
+        if (normalizedCountryCode.Length > 0)
+        {
+            filter &= Builders<ParkDocument>.Filter.Eq(document => document.CountryCode, normalizedCountryCode);
+        }
+
+        return filter;
+    }
+
+    private FilterDefinition<ParkDocument> BuildAdminReviewStatusFilter(AdminReviewStatus adminReviewStatus)
+    {
+        if (adminReviewStatus == AdminReviewStatus.Ready)
+        {
+            return Builders<ParkDocument>.Filter.Or(
+                Builders<ParkDocument>.Filter.Eq(document => document.AdminReviewStatus, AdminReviewStatus.Ready),
+                Builders<ParkDocument>.Filter.Exists("adminReviewStatus", false));
+        }
+
+        return Builders<ParkDocument>.Filter.Eq(document => document.AdminReviewStatus, adminReviewStatus);
+    }
+
+    private SortDefinition<ParkDocument> BuildAdminListSort()
+    {
+        return Builders<ParkDocument>.Sort
+            .Ascending(document => document.AdminReviewStatus)
+            .Ascending(document => document.Name)
+            .Ascending(document => document.Id);
     }
 
     private FilterDefinition<ParkDocument> BuildVisibleSelectionFilter(IReadOnlyCollection<string> excludedParkIds)

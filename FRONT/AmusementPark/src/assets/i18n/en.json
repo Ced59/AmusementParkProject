@@ -611,7 +611,10 @@
           "christmas": "Christmas",
           "easter": "Easter"
         }
-      }
+      },
+      "title": "Parks",
+      "subtitle": "Filter, prioritize and administer parks exposed on the site.",
+      "reviewStatus": "Admin status"
     },
     "loading": "Loading...",
     "operators": {
@@ -664,9 +667,55 @@
         "item": "Item",
         "type": "Type",
         "visibility": "Visibility",
-        "actions": "Actions"
+        "actions": "Actions",
+        "category": "Category",
+        "reviewStatus": "Admin status"
       },
-      "allParks": "All parks"
+      "allParks": "All parks",
+      "total": "{{count}} item(s)"
+    },
+    "m14": {
+      "kicker": "Readable administration",
+      "sidebarTitle": "Back-office control"
+    },
+    "filters": {
+      "search": "Search",
+      "applySearch": "Apply",
+      "visibility": "Visibility",
+      "visibilityAll": "All visibility states",
+      "visibleOnly": "Visible only",
+      "hiddenOnly": "Hidden only",
+      "reviewStatus": "Processing",
+      "statusAll": "All statuses",
+      "type": "Type",
+      "typeAll": "All types",
+      "category": "Category",
+      "categoryAll": "All categories",
+      "countryCode": "Country",
+      "countryCodePlaceholder": "FR"
+    },
+    "reviewStatus": {
+      "ready": "To process",
+      "toProcessLater": "Process later"
+    },
+    "bulk": {
+      "selected": "{{count}} selected",
+      "makeVisible": "Make visible",
+      "hide": "Hide",
+      "markReady": "Mark ready",
+      "processLater": "Process later",
+      "clearSelection": "Clear selection"
+    },
+    "visible": "Visible",
+    "hidden": "Hidden",
+    "images": {
+      "title": "Images"
+    },
+    "dataSources": {
+      "title": "Data sources"
+    },
+    "dashboard": {
+      "title": "Dashboard"
     }
   },
   "validation": {

@@ -611,7 +611,10 @@
           "christmas": "Weihnachten",
           "easter": "Ostern"
         }
-      }
+      },
+      "title": "Parks",
+      "subtitle": "Parks filtern, priorisieren und verwalten.",
+      "reviewStatus": "Admin-Status"
     },
     "loading": "Laden...",
     "operators": {
@@ -664,9 +667,55 @@
         "item": "Item",
         "type": "Type",
         "visibility": "Visibility",
-        "actions": "Actions"
+        "actions": "Actions",
+        "category": "Kategorie",
+        "reviewStatus": "Admin-Status"
       },
-      "allParks": "All parks"
+      "allParks": "All parks",
+      "total": "{{count}} Element(e)"
+    },
+    "m14": {
+      "kicker": "Lesbare Administration",
+      "sidebarTitle": "Backoffice-Steuerung"
+    },
+    "filters": {
+      "search": "Suche",
+      "applySearch": "Anwenden",
+      "visibility": "Sichtbarkeit",
+      "visibilityAll": "Alle Sichtbarkeiten",
+      "visibleOnly": "Nur sichtbare",
+      "hiddenOnly": "Nur versteckte",
+      "reviewStatus": "Bearbeitung",
+      "statusAll": "Alle Status",
+      "type": "Typ",
+      "typeAll": "Alle Typen",
+      "category": "Kategorie",
+      "categoryAll": "Alle Kategorien",
+      "countryCode": "Land",
+      "countryCodePlaceholder": "FR"
+    },
+    "reviewStatus": {
+      "ready": "Zu bearbeiten",
+      "toProcessLater": "Später bearbeiten"
+    },
+    "bulk": {
+      "selected": "{{count}} ausgewählt",
+      "makeVisible": "Sichtbar machen",
+      "hide": "Ausblenden",
+      "markReady": "Als bereit markieren",
+      "processLater": "Später bearbeiten",
+      "clearSelection": "Auswahl löschen"
+    },
+    "visible": "Visible",
+    "hidden": "Ausgeblendet",
+    "images": {
+      "title": "Bilder"
+    },
+    "dataSources": {
+      "title": "Datenquellen"
+    },
+    "dashboard": {
+      "title": "Dashboard"
     }
   },
   "validation": {

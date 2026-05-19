@@ -1,5 +1,6 @@
 import { LocalizedItem } from '../shared/localized-item';
 import { ParkType } from './park-type';
+import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 
 export interface Park {
   id?: string;
@@ -11,6 +12,7 @@ export interface Park {
   latitude: number;
   longitude: number;
   isVisible?: boolean;
+  adminReviewStatus?: AdminReviewStatus;
   isFeaturedOnHome?: boolean;
   featuredHomeOrder?: number | null;
   isFeaturedOnHomeSponsored?: boolean;

@@ -11,7 +11,8 @@ import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
-import { PARKS_API_ENDPOINTS } from './parks-api-endpoints';
+import { PARKS_API_ENDPOINTS, ParkAdminListFilters } from './parks-api-endpoints';
+import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
 
 interface ParkWriteRequest {
   name?: string;
@@ -23,6 +24,7 @@ interface ParkWriteRequest {
   longitude: number;
   descriptions: LocalizedItem<string>[];
   isVisible: boolean;
+  adminReviewStatus?: string | null;
   isFeaturedOnHome: boolean;
   featuredHomeOrder: number | null;
   isFeaturedOnHomeSponsored: boolean;
@@ -45,8 +47,8 @@ export class ParksApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly, region)}`;
+  getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly, region, filters)}`;
     return this.http.get<ParksApiResponse>(url);
   }
 
@@ -66,8 +68,8 @@ export class ParksApiService {
     return this.http.get<Park>(url);
   }
 
-  searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(query, page, size, visibleOnly, region)}`;
+  searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(query, page, size, visibleOnly, region, filters)}`;
     return this.http.get<ParksApiResponse>(url);
   }
 
@@ -91,6 +93,11 @@ export class ParksApiService {
   updateParkVisibility(parkId: string, isVisible: boolean): Observable<Park> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.updateParkVisibility(parkId)}`;
     return this.http.patch<Park>(url, { isVisible });
+  }
+
+  updateParksBulkAdministration(request: BulkAdministrationUpdateRequest): Observable<BulkAdministrationUpdateResult> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.updateParksBulkAdministration}`;
+    return this.http.patch<BulkAdministrationUpdateResult>(url, request, this.jsonHttpOptions);
   }
 
   createPark(park: Park): Observable<Park> {
@@ -119,6 +126,7 @@ export class ParksApiService {
       longitude: park.longitude,
       descriptions: park.descriptions ?? [],
       isVisible: park.isVisible ?? true,
+      adminReviewStatus: park.adminReviewStatus ?? 'Ready',
       isFeaturedOnHome: park.isFeaturedOnHome ?? false,
       featuredHomeOrder: this.normalizeFeaturedHomeOrder(park.featuredHomeOrder),
       isFeaturedOnHomeSponsored: Boolean(park.isFeaturedOnHome) && Boolean(park.isFeaturedOnHomeSponsored),

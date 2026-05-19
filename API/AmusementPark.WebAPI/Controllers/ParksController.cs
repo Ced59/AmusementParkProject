@@ -41,6 +41,7 @@ public sealed class ParksController : ControllerBase
     private readonly IQueryHandler<GetHomeFeaturedParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getHomeFeaturedParksQueryHandler;
     private readonly ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkCommandHandler;
     private readonly ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler;
+    private readonly ICommandHandler<UpdateParksBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParksBulkAdministrationCommandHandler;
 
     public ParksController(
         ICommandHandler<CreateParkCommand, ApplicationResult<Park>> createParkCommandHandler,
@@ -54,7 +55,8 @@ public sealed class ParksController : ControllerBase
         IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler,
         IQueryHandler<GetHomeFeaturedParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getHomeFeaturedParksQueryHandler,
         ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkCommandHandler,
-        ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler)
+        ICommandHandler<UpdateParkVisibilityCommand, ApplicationResult<Park>> updateParkVisibilityCommandHandler,
+        ICommandHandler<UpdateParksBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParksBulkAdministrationCommandHandler)
     {
         this.createParkCommandHandler = createParkCommandHandler;
         this.getParkByIdQueryHandler = getParkByIdQueryHandler;
@@ -68,6 +70,7 @@ public sealed class ParksController : ControllerBase
         this.getHomeFeaturedParksQueryHandler = getHomeFeaturedParksQueryHandler;
         this.updateParkCommandHandler = updateParkCommandHandler;
         this.updateParkVisibilityCommandHandler = updateParkVisibilityCommandHandler;
+        this.updateParksBulkAdministrationCommandHandler = updateParksBulkAdministrationCommandHandler;
     }
 
     [HttpPost]
@@ -157,16 +160,29 @@ public sealed class ParksController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(PagedResponseDto<ParkDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetParksAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? query = null, [FromQuery] string? name = null, [FromQuery] string? region = null, [FromQuery] bool visibleOnly = false, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetParksAsync(
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? query = null,
+        [FromQuery] string? name = null,
+        [FromQuery] string? region = null,
+        [FromQuery] bool visibleOnly = false,
+        [FromQuery] bool? isVisible = null,
+        [FromQuery] string? adminReviewStatus = null,
+        [FromQuery] string? type = null,
+        [FromQuery] string? countryCode = null,
+        CancellationToken cancellationToken = default)
     {
         bool includeNonVisible = !visibleOnly && this.UserCanSeeNonVisible();
         PagedQuery paging = pagination.ToApplication();
         string? effectiveQuery = string.IsNullOrWhiteSpace(query) ? name : query;
         WorldRegionFilter? regionFilter = WorldRegionFilterParser.Parse(region);
 
+        AdminReviewStatus? parsedAdminReviewStatus = ParseAdminReviewStatus(adminReviewStatus);
+        ParkType? parsedType = ParseParkType(type);
+
         ApplicationResult<PagedResult<Park>> result = string.IsNullOrWhiteSpace(effectiveQuery) && regionFilter is null
-            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible), cancellationToken)
-            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible), cancellationToken);
+            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, isVisible, parsedAdminReviewStatus, parsedType, countryCode), cancellationToken)
+            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, isVisible, parsedAdminReviewStatus, parsedType, countryCode), cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
         {
@@ -242,6 +258,26 @@ public sealed class ParksController : ControllerBase
         return this.Ok(result.Value.ToDistanceHttp());
     }
 
+    [HttpPatch("bulk-administration")]
+    [ProducesResponseType(typeof(BulkAdministrationUpdateResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateParksBulkAdministrationAsync([FromBody] BulkAdministrationUpdateDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParksBulkAdministrationCommandHandler.HandleAsync(
+            new UpdateParksBulkAdministrationCommand(request.Ids, request.IsVisible, request.AdminReviewStatus.ToOptionalDomain()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(new BulkAdministrationUpdateResultDto
+        {
+            RequestedCount = result.Value.RequestedCount,
+            UpdatedCount = result.Value.UpdatedCount,
+        });
+    }
+
     [HttpPatch("{id}/visibility")]
     [ProducesResponseType(typeof(ParkDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateParkVisibilityAsync([FromRoute] string id, [FromBody] ParkVisibilityUpdateDto request, CancellationToken cancellationToken = default)
@@ -266,6 +302,16 @@ public sealed class ParksController : ControllerBase
         }
 
         return this.Ok(result.Value.ToHttp());
+    }
+
+    private static AdminReviewStatus? ParseAdminReviewStatus(string? value)
+    {
+        return Enum.TryParse(value, true, out AdminReviewStatus parsed) ? parsed : null;
+    }
+
+    private static ParkType? ParseParkType(string? value)
+    {
+        return Enum.TryParse(value, true, out ParkType parsed) ? parsed : null;
     }
 
     private static double ResolveRadiusInKilometers(double? radiusMeters, double? radiusKilometers, double? legacyRadiusMeters)

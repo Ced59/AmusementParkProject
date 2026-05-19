@@ -35,4 +35,6 @@ public sealed class ParkItemUpdateDto
     public AttractionLocationsDto? AttractionLocations { get; set; }
 
     public bool IsVisible { get; set; } = true;
+
+    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Ready;
 }

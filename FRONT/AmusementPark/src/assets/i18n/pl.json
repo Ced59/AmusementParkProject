@@ -611,7 +611,10 @@
           "christmas": "Boże Narodzenie",
           "easter": "Wielkanoc"
         }
-      }
+      },
+      "title": "Parki",
+      "subtitle": "Filtruj, priorytetyzuj i administruj parkami w serwisie.",
+      "reviewStatus": "Status admin"
     },
     "loading": "Ładowanie...",
     "operators": {
@@ -664,9 +667,55 @@
         "item": "Item",
         "type": "Type",
         "visibility": "Visibility",
-        "actions": "Actions"
+        "actions": "Actions",
+        "category": "Kategoria",
+        "reviewStatus": "Status admin"
       },
-      "allParks": "All parks"
+      "allParks": "All parks",
+      "total": "{{count}} element(y)"
+    },
+    "m14": {
+      "kicker": "Czytelna administracja",
+      "sidebarTitle": "Panel back-office"
+    },
+    "filters": {
+      "search": "Szukaj",
+      "applySearch": "Zastosuj",
+      "visibility": "Widoczność",
+      "visibilityAll": "Wszystkie widoczności",
+      "visibleOnly": "Tylko widoczne",
+      "hiddenOnly": "Tylko ukryte",
+      "reviewStatus": "Obsługa",
+      "statusAll": "Wszystkie statusy",
+      "type": "Typ",
+      "typeAll": "Wszystkie typy",
+      "category": "Kategoria",
+      "categoryAll": "Wszystkie kategorie",
+      "countryCode": "Kraj",
+      "countryCodePlaceholder": "FR"
+    },
+    "reviewStatus": {
+      "ready": "Do obsługi",
+      "toProcessLater": "Obsłuż później"
+    },
+    "bulk": {
+      "selected": "Wybrano: {{count}}",
+      "makeVisible": "Ustaw jako widoczne",
+      "hide": "Ukryj",
+      "markReady": "Oznacz jako gotowe",
+      "processLater": "Obsłuż później",
+      "clearSelection": "Wyczyść wybór"
+    },
+    "visible": "Visible",
+    "hidden": "Ukryte",
+    "images": {
+      "title": "Obrazy"
+    },
+    "dataSources": {
+      "title": "Źródła danych"
+    },
+    "dashboard": {
+      "title": "Panel"
     }
   },
   "validation": {

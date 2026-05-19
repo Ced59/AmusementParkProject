@@ -611,7 +611,10 @@
           "christmas": "Natale",
           "easter": "Pasqua"
         }
-      }
+      },
+      "title": "Parchi",
+      "subtitle": "Filtra, priorizza e amministra i parchi del sito.",
+      "reviewStatus": "Stato admin"
     },
     "loading": "Caricamento...",
     "operators": {
@@ -664,9 +667,55 @@
         "item": "Item",
         "type": "Type",
         "visibility": "Visibility",
-        "actions": "Actions"
+        "actions": "Actions",
+        "category": "Categoria",
+        "reviewStatus": "Stato admin"
       },
-      "allParks": "All parks"
+      "allParks": "All parks",
+      "total": "{{count}} elemento/i"
+    },
+    "m14": {
+      "kicker": "Amministrazione leggibile",
+      "sidebarTitle": "Controllo back-office"
+    },
+    "filters": {
+      "search": "Ricerca",
+      "applySearch": "Applica",
+      "visibility": "Visibilità",
+      "visibilityAll": "Tutte le visibilità",
+      "visibleOnly": "Solo visibili",
+      "hiddenOnly": "Solo nascosti",
+      "reviewStatus": "Trattamento",
+      "statusAll": "Tutti gli stati",
+      "type": "Tipo",
+      "typeAll": "Tutti i tipi",
+      "category": "Categoria",
+      "categoryAll": "Tutte le categorie",
+      "countryCode": "Paese",
+      "countryCodePlaceholder": "FR"
+    },
+    "reviewStatus": {
+      "ready": "Da trattare",
+      "toProcessLater": "Trattare più tardi"
+    },
+    "bulk": {
+      "selected": "{{count}} selezionato/i",
+      "makeVisible": "Rendi visibile",
+      "hide": "Nascondi",
+      "markReady": "Segna pronto",
+      "processLater": "Tratta più tardi",
+      "clearSelection": "Deseleziona"
+    },
+    "visible": "Visible",
+    "hidden": "Nascosto",
+    "images": {
+      "title": "Immagini"
+    },
+    "dataSources": {
+      "title": "Fonti dati"
+    },
+    "dashboard": {
+      "title": "Dashboard"
     }
   },
   "validation": {

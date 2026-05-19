@@ -611,7 +611,10 @@
           "christmas": "Kerst",
           "easter": "Pasen"
         }
-      }
+      },
+      "title": "Parken",
+      "subtitle": "Filter, prioriteer en beheer parken op de site.",
+      "reviewStatus": "Adminstatus"
     },
     "loading": "Laden...",
     "operators": {
@@ -664,9 +667,55 @@
         "item": "Item",
         "type": "Type",
         "visibility": "Visibility",
-        "actions": "Actions"
+        "actions": "Actions",
+        "category": "Categorie",
+        "reviewStatus": "Adminstatus"
       },
-      "allParks": "All parks"
+      "allParks": "All parks",
+      "total": "{{count}} item(s)"
+    },
+    "m14": {
+      "kicker": "Leesbare administratie",
+      "sidebarTitle": "Backoffice beheer"
+    },
+    "filters": {
+      "search": "Zoeken",
+      "applySearch": "Toepassen",
+      "visibility": "Zichtbaarheid",
+      "visibilityAll": "Alle zichtbaarheden",
+      "visibleOnly": "Alleen zichtbaar",
+      "hiddenOnly": "Alleen verborgen",
+      "reviewStatus": "Verwerking",
+      "statusAll": "Alle statussen",
+      "type": "Type",
+      "typeAll": "Alle types",
+      "category": "Categorie",
+      "categoryAll": "Alle categorieën",
+      "countryCode": "Land",
+      "countryCodePlaceholder": "FR"
+    },
+    "reviewStatus": {
+      "ready": "Te verwerken",
+      "toProcessLater": "Later verwerken"
+    },
+    "bulk": {
+      "selected": "{{count}} geselecteerd",
+      "makeVisible": "Zichtbaar maken",
+      "hide": "Verbergen",
+      "markReady": "Markeer klaar",
+      "processLater": "Later verwerken",
+      "clearSelection": "Selectie wissen"
+    },
+    "visible": "Visible",
+    "hidden": "Verborgen",
+    "images": {
+      "title": "Afbeeldingen"
+    },
+    "dataSources": {
+      "title": "Databronnen"
+    },
+    "dashboard": {
+      "title": "Dashboard"
     }
   },
   "validation": {

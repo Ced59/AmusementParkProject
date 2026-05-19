@@ -11,4 +11,10 @@ namespace AmusementPark.Application.Features.Parks.Queries;
 /// </summary>
 /// <param name="Paging">Paramètres de pagination.</param>
 /// <param name="IncludeHidden">Indique si les parcs non visibles doivent être inclus.</param>
-public sealed record GetParksPageQuery(PagedQuery Paging, bool IncludeHidden = false) : IQuery<ApplicationResult<PagedResult<Park>>>;
+public sealed record GetParksPageQuery(
+    PagedQuery Paging,
+    bool IncludeHidden = false,
+    bool? IsVisible = null,
+    AdminReviewStatus? AdminReviewStatus = null,
+    ParkType? Type = null,
+    string? CountryCode = null) : IQuery<ApplicationResult<PagedResult<Park>>>;

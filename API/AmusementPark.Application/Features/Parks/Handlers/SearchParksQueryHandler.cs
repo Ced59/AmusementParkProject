@@ -38,7 +38,16 @@ public sealed class SearchParksQueryHandler : IQueryHandler<SearchParksQuery, Ap
         }
 
         ParkSearchCriteria criteria = await this.BuildCriteriaAsync(query, cancellationToken);
-        PagedResult<Park> page = await this.parkRepository.SearchAsync(criteria, query.Paging.Page, query.Paging.PageSize, query.IncludeHidden, cancellationToken);
+        PagedResult<Park> page = await this.parkRepository.SearchAsync(
+            criteria,
+            query.Paging.Page,
+            query.Paging.PageSize,
+            query.IncludeHidden,
+            query.IsVisible,
+            query.AdminReviewStatus,
+            query.Type,
+            query.CountryCode,
+            cancellationToken);
         return ApplicationResult<PagedResult<Park>>.Success(page);
     }
 

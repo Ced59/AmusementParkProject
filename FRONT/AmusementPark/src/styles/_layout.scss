@@ -308,3 +308,100 @@
     max-width: none;
   }
 }
+
+/* M14 admin layout: dense, readable back-office shell. */
+.app-admin-layout__body {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 1.5rem, var(--content-wide-max-width));
+  margin: 1rem auto 2rem;
+  display: grid;
+  grid-template-columns: minmax(15rem, 17rem) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.app-admin-layout__sidebar {
+  position: sticky;
+  top: calc(var(--topbar-height) + 1rem);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, var(--app-card-bg), var(--app-card-bg-2));
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.app-admin-layout__sidebar-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.app-admin-layout__sidebar-head strong {
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+}
+
+.app-admin-layout__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+}
+
+.app-admin-layout__nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.68rem 0.75rem;
+  border-radius: var(--radius-md);
+  color: var(--app-text-muted);
+  font-size: 0.88rem;
+  font-weight: 800;
+  transition: var(--transition);
+}
+
+.app-admin-layout__nav a:hover,
+.app-admin-layout__nav a.active {
+  color: var(--app-heading);
+  background: rgba(255, 90, 31, 0.1);
+}
+
+.app-admin-layout__nav a.active {
+  color: var(--c-orange);
+}
+
+.app-admin-layout__body .app-admin-layout__main {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 1080px) {
+  .app-admin-layout__body {
+    grid-template-columns: 1fr;
+  }
+
+  .app-admin-layout__sidebar {
+    position: static;
+  }
+
+  .app-admin-layout__nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.85rem;
+  }
+
+  .app-admin-layout__nav a {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-admin-layout__body {
+    width: min(100% - 1rem, var(--content-wide-max-width));
+    margin-top: 0.75rem;
+  }
+}

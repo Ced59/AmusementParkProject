@@ -29,6 +29,7 @@ internal static partial class EntityMongoMappers
             OperatorId = document.OperatorId,
             Descriptions = CommonMongoMappers.ToDomain(document.Descriptions),
             IsVisible = document.IsVisible,
+            AdminReviewStatus = document.AdminReviewStatus,
             IsFeaturedOnHome = document.IsFeaturedOnHome,
             FeaturedHomeOrder = document.FeaturedHomeOrder,
             IsFeaturedOnHomeSponsored = document.IsFeaturedOnHomeSponsored,
@@ -57,6 +58,7 @@ internal static partial class EntityMongoMappers
             OperatorId = entity.OperatorId,
             Descriptions = CommonMongoMappers.ToDocuments(entity.Descriptions),
             IsVisible = entity.IsVisible,
+            AdminReviewStatus = entity.AdminReviewStatus,
             IsFeaturedOnHome = entity.IsFeaturedOnHome,
             FeaturedHomeOrder = entity.FeaturedHomeOrder,
             IsFeaturedOnHomeSponsored = entity.IsFeaturedOnHomeSponsored,
@@ -128,6 +130,7 @@ internal static partial class EntityMongoMappers
             AttractionDetails = document.AttractionDetails?.ToDomain(),
             AttractionLocations = document.AttractionLocations?.ToDomain(),
             IsVisible = document.IsVisible,
+            AdminReviewStatus = document.AdminReviewStatus,
         };
 
         CommonMongoMappers.ApplyPosition(entity, document.Latitude, document.Longitude);
@@ -151,6 +154,7 @@ internal static partial class EntityMongoMappers
             AttractionDetails = entity.AttractionDetails?.ToDocument(),
             AttractionLocations = entity.AttractionLocations?.ToDocument(),
             IsVisible = entity.IsVisible,
+            AdminReviewStatus = entity.AdminReviewStatus,
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };

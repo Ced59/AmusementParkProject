@@ -17,7 +17,8 @@ import {
   PagedCollectionResponse,
   unwrapCollection
 } from '../shared/api-helpers';
-import { PARK_ITEMS_API_ENDPOINTS } from './park-items-api-endpoints';
+import { PARK_ITEMS_API_ENDPOINTS, ParkItemAdminListFilters } from './park-items-api-endpoints';
+import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
 
 interface AttractionAccessConditionWriteRequest {
   type: AttractionAccessCondition['type'];
@@ -93,6 +94,7 @@ interface ParkItemWriteRequest {
   attractionDetails?: AttractionDetailsWriteRequest | null;
   attractionLocations?: AttractionLocationsWriteRequest | null;
   isVisible: boolean;
+  adminReviewStatus?: string | null;
 }
 
 @Injectable({
@@ -113,9 +115,10 @@ export class ParkItemsApiService {
     page: number,
     size: number,
     parkId?: string | null,
-    search?: string | null
+    search?: string | null,
+    filters: ParkItemAdminListFilters | null = null
   ): Observable<ApiResponse<ParkItemAdminRow>> {
-    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsPaginated(page, size, parkId, search)}`;
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsPaginated(page, size, parkId, search, filters)}`;
     return this.http.get<ApiResponse<ParkItemAdminRow>>(url).pipe(
       map((response: ApiResponse<ParkItemAdminRow>) => ({
         ...response,
@@ -150,6 +153,11 @@ export class ParkItemsApiService {
     return this.http.delete<boolean>(url);
   }
 
+  updateParkItemsBulkAdministration(request: BulkAdministrationUpdateRequest): Observable<BulkAdministrationUpdateResult> {
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.updateParkItemsBulkAdministration}`;
+    return this.http.patch<BulkAdministrationUpdateResult>(url, request);
+  }
+
   private mapParkItemToWriteRequest(item: ParkItem): ParkItemWriteRequest {
     return {
       parkId: item.parkId,
@@ -163,7 +171,8 @@ export class ParkItemsApiService {
       descriptions: item.descriptions ?? [],
       attractionDetails: this.mapAttractionDetails(item.attractionDetails),
       attractionLocations: this.mapAttractionLocations(item.attractionLocations),
-      isVisible: item.isVisible ?? true
+      isVisible: item.isVisible ?? true,
+      adminReviewStatus: item.adminReviewStatus ?? 'Ready'
     };
   }
 
