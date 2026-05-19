@@ -90,7 +90,8 @@ export class ParkDetailStateFacade {
     return mapParkItemsToMapViewModel(
       sourceData.park,
       sourceData.parkItems,
-      sourceData.zones
+      sourceData.zones,
+      this.currentLanguageSignal()
     );
   });
   public readonly zones: Signal<ParkZoneDetailViewModel[]> = computed(() => {

@@ -869,6 +869,7 @@
       "emptyTitle": "Brak dostępnego punktu",
       "emptyMessage": "Żaden widoczny park ze współrzędnymi nie pasuje do tego wyszukiwania.",
       "navigate": "Nawiguj",
+      "openDetail": "Przejdź do karty",
       "regionFilters": {
         "all": "Wszystkie",
         "europe": "Europa",

@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, inject } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
+import { MapMarker } from '@app/models/map/map-marker';
 import { UiButtonDirective, UiKickerComponent } from '@ui/primitives';
 import { UiMapSlotComponent } from '@ui/maps';
 import {
@@ -9,7 +10,7 @@ import {
   ParkItemsMapMarkerViewModel,
   ParkItemsMapViewModel
 } from '../models/park-items-map-view.model';
-import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
+import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
 
 @Component({
   selector: 'app-park-items-map-section',
@@ -21,14 +22,12 @@ import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-ur
 export class ParkItemsMapSectionComponent implements OnChanges {
   @Input() map: ParkItemsMapViewModel | null = null;
 
-  constructor(
-    private readonly mapDirectionsUrlService: MapDirectionsUrlService,
-    private readonly translateService: TranslateService
-  ) {
-  }
+  private readonly mapMarkerPopupActionService: MapMarkerPopupActionService = inject(MapMarkerPopupActionService);
+  private readonly translateService: TranslateService = inject(TranslateService);
 
   protected selectedCategory: string | null = null;
   protected selectedZoneId: string | null = null;
+  protected navigationMarkers: MapMarker[] = [];
 
   ngOnChanges(): void {
     if (this.selectedCategory && !this.map?.categoryFilters.some((filter: ParkItemsMapFilterOptionViewModel) => filter.key === this.selectedCategory)) {
@@ -38,6 +37,8 @@ export class ParkItemsMapSectionComponent implements OnChanges {
     if (this.selectedZoneId && !this.map?.zoneFilters.some((filter: ParkItemsMapFilterOptionViewModel) => filter.key === this.selectedZoneId)) {
       this.selectedZoneId = null;
     }
+
+    this.refreshNavigationMarkers();
   }
 
   protected get hasZoneFilters(): boolean {
@@ -62,16 +63,36 @@ export class ParkItemsMapSectionComponent implements OnChanges {
     });
   }
 
-  protected get navigationMarkers(): ParkItemsMapMarkerViewModel[] {
-    return this.filteredMarkers.map((marker: ParkItemsMapMarkerViewModel) => ({
-      ...marker,
-      actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
-        latitude: marker.lat,
-        longitude: marker.lng,
-        label: marker.title
-      }),
-      actionLabel: this.translateService.instant('parks.map.navigate')
-    }));
+  private refreshNavigationMarkers(): void {
+    const currentMap: ParkItemsMapViewModel | null = this.map;
+
+    if (!currentMap) {
+      this.navigationMarkers = [];
+      return;
+    }
+
+    const language: string = currentMap.language || this.translateService.currentLang;
+    const navigateLabel: string = this.translateService.instant('parks.map.navigate');
+    const openDetailLabel: string = this.translateService.instant('parks.map.openDetail');
+
+    this.navigationMarkers = this.filteredMarkers.map((marker: ParkItemsMapMarkerViewModel) => {
+      return this.mapMarkerPopupActionService.enrich(marker, {
+        directions: {
+          latitude: marker.lat,
+          longitude: marker.lng,
+          label: marker.title
+        },
+        directionsLabel: navigateLabel,
+        parkItemDetail: {
+          language,
+          parkId: currentMap.parkId,
+          parkName: currentMap.parkName,
+          itemId: marker.itemId,
+          itemName: marker.itemName
+        },
+        detailLabel: openDetailLabel
+      });
+    });
   }
 
   protected get center(): [number, number] {
@@ -84,12 +105,15 @@ export class ParkItemsMapSectionComponent implements OnChanges {
     return this.map?.center ?? [0, 0];
   }
 
+
   protected selectCategory(category: string | null): void {
     this.selectedCategory = category;
+    this.refreshNavigationMarkers();
   }
 
   protected selectZone(zoneId: string | null): void {
     this.selectedZoneId = zoneId;
+    this.refreshNavigationMarkers();
   }
 
   protected isSelectedCategory(category: string | null): boolean {

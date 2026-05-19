@@ -869,6 +869,7 @@
       "emptyTitle": "Aucun point disponible",
       "emptyMessage": "Aucun parc visible avec coordonnées ne correspond à la recherche.",
       "navigate": "Y aller",
+      "openDetail": "Aller vers la fiche",
       "regionFilters": {
         "all": "Tous",
         "europe": "Europe",

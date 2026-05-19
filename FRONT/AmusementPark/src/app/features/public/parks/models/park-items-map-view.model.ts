@@ -9,11 +9,16 @@ export interface ParkItemsMapFilterOptionViewModel {
 }
 
 export interface ParkItemsMapMarkerViewModel extends MapMarker {
+  itemId: string | null;
+  itemName: string;
   category: string;
   zoneId: string | null;
 }
 
 export interface ParkItemsMapViewModel {
+  parkId: string | null;
+  parkName: string | null;
+  language: string;
   center: [number, number];
   markers: ParkItemsMapMarkerViewModel[];
   categoryFilters: ParkItemsMapFilterOptionViewModel[];

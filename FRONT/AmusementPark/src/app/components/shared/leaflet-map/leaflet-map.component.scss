@@ -39,3 +39,23 @@
 :host ::ng-deep .leaflet-map-popup__action:hover {
   background: #ff7a45;
 }
+
+:host ::ng-deep .leaflet-map-popup__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+
+:host ::ng-deep .leaflet-map-popup__actions .leaflet-map-popup__action {
+  margin-top: 0;
+}
+
+:host ::ng-deep .leaflet-map-popup__action--detail {
+  background: #c4ff27;
+  color: #111;
+}
+
+:host ::ng-deep .leaflet-map-popup__action--detail:hover {
+  background: #d9ff6b;
+}

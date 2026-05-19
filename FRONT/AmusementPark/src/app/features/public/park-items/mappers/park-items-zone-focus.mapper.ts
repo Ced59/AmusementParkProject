@@ -6,6 +6,7 @@ import { ParkZone } from '@app/models/parks/park-zone';
 import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
+import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
 import { ParkItemsCountTagViewModel } from '../models/park-items-page-view.model';
 import { ParkItemsMapViewModel, ParkItemsZoneFocusViewModel } from '../models/park-items-zone-focus.model';
 
@@ -70,10 +71,18 @@ function mapDisplayedItemsToMapViewModel(
         title: item.name,
         subtitle: item.category,
         details,
+        directionsActionEnabled: true,
         iconKind: resolveParkItemMarkerIconKind({
           category: item.category,
           type: item.type,
           subtype: item.subtype ?? null
+        }),
+        detailActionRouteCommands: buildParkItemMapDetailRouteCommands({
+          language: currentLanguage,
+          parkId: park.id,
+          parkName: park.name,
+          itemId: item.id,
+          itemName: item.name
         })
       };
     })

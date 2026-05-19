@@ -869,6 +869,7 @@
       "emptyTitle": "Kein Punkt verfügbar",
       "emptyMessage": "Kein sichtbarer Park mit Koordinaten entspricht dieser Suche.",
       "navigate": "Route öffnen",
+      "openDetail": "Zur Detailseite",
       "regionFilters": {
         "all": "Alle",
         "europe": "Europa",

@@ -45,5 +45,9 @@ export interface MapMarker {
   details?: string[];
   actionLabel?: string | null;
   actionUrl?: string | null;
+  directionsActionEnabled?: boolean | null;
+  detailActionLabel?: string | null;
+  detailActionUrl?: string | null;
+  detailActionRouteCommands?: string[] | null;
   iconKind?: MapMarkerIconKind | null;
 }

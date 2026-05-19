@@ -5,6 +5,7 @@ import {
   EventEmitter,
   Inject,
   Input,
+  NgZone,
   OnChanges,
   OnDestroy,
   Output,
@@ -13,8 +14,11 @@ import {
   ViewChild
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { MapMarker } from '@app/models/map/map-marker';
 import { createLeafletMarkerIcon } from '@ui/maps/leaflet';
+import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
 import type { LeafletEvent, LeafletMouseEvent, Marker as LeafletMarker } from 'leaflet';
 
 @Component({
@@ -68,7 +72,13 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
   private readonly isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+  constructor(
+    @Inject(PLATFORM_ID) platformId: Object,
+    private readonly router: Router,
+    private readonly ngZone: NgZone,
+    private readonly translateService: TranslateService,
+    private readonly mapDirectionsUrlService: MapDirectionsUrlService
+  ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -176,6 +186,8 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       });
       this.resizeObserver.observe(this.mapContainer.nativeElement);
     }
+
+    this.map.on('popupopen', () => this.bindInternalPopupNavigationLinks());
 
     if (this.editable) {
       this.map.on('click', (event: LeafletMouseEvent) => this.handleMapClick(event));
@@ -319,24 +331,131 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       .map((line: string) => `<span>${line}</span>`)
       .join('');
 
-    const actionLink: string = this.buildPopupAction(marker);
+    const actionLinks: string = this.buildPopupActions(marker);
 
-    if (!lines && !actionLink) {
+    if (!lines && !actionLinks) {
       return `<strong>${title}</strong>`;
     }
 
-    return `<strong>${title}</strong><div class="leaflet-map-popup__lines">${lines}</div>${actionLink}`;
+    const linesBlock: string = lines.length > 0 ? `<div class="leaflet-map-popup__lines">${lines}</div>` : '';
+    return `<strong>${title}</strong>${linesBlock}${actionLinks}`;
   }
 
-  private buildPopupAction(marker: MapMarker): string {
-    const actionUrl: string = marker.actionUrl?.trim() ?? '';
-    const actionLabel: string = marker.actionLabel?.trim() ?? '';
+  private buildPopupActions(marker: MapMarker): string {
+    const detailActionLink: string = this.buildPopupDetailAction(marker);
+    const directionsActionLink: string = this.buildPopupDirectionsAction(marker);
+    const actionLinks: string = [detailActionLink, directionsActionLink]
+      .filter((actionLink: string) => actionLink.length > 0)
+      .join('');
+
+    return actionLinks.length > 0
+      ? `<div class="leaflet-map-popup__actions">${actionLinks}</div>`
+      : '';
+  }
+
+  private buildPopupDetailAction(marker: MapMarker): string {
+    const actionUrl: string = this.resolveDetailActionUrl(marker);
+    const actionLabel: string = this.resolvePopupActionLabel(marker.detailActionLabel, 'parks.map.openDetail', actionUrl);
 
     if (!actionUrl || !actionLabel) {
       return '';
     }
 
-    return `<a class="leaflet-map-popup__action" href="${this.escapeHtml(actionUrl)}" target="_blank" rel="noopener noreferrer">${this.escapeHtml(actionLabel)}</a>`;
+    return `<a class="leaflet-map-popup__action leaflet-map-popup__action--detail" href="${this.escapeHtml(actionUrl)}" data-app-map-popup-internal-link="true">${this.escapeHtml(actionLabel)}</a>`;
+  }
+
+  private buildPopupDirectionsAction(marker: MapMarker): string {
+    const actionUrl: string = this.resolveDirectionsActionUrl(marker);
+    const actionLabel: string = this.resolvePopupActionLabel(marker.actionLabel, 'parks.map.navigate', actionUrl);
+
+    if (!actionUrl || !actionLabel) {
+      return '';
+    }
+
+    return `<a class="leaflet-map-popup__action leaflet-map-popup__action--directions" href="${this.escapeHtml(actionUrl)}" target="_blank" rel="noopener noreferrer">${this.escapeHtml(actionLabel)}</a>`;
+  }
+
+  private resolvePopupActionLabel(label: string | null | undefined, fallbackTranslationKey: string, actionUrl: string): string {
+    const explicitLabel: string = label?.trim() ?? '';
+
+    if (explicitLabel.length > 0) {
+      return explicitLabel;
+    }
+
+    if (!actionUrl) {
+      return '';
+    }
+
+    const translatedLabel: string = this.translateService.instant(fallbackTranslationKey);
+    return translatedLabel?.trim() ?? '';
+  }
+
+  private resolveDirectionsActionUrl(marker: MapMarker): string {
+    const explicitUrl: string = marker.actionUrl?.trim() ?? '';
+
+    if (explicitUrl.length > 0) {
+      return explicitUrl;
+    }
+
+    if (marker.directionsActionEnabled !== true || !Number.isFinite(marker.lat) || !Number.isFinite(marker.lng)) {
+      return '';
+    }
+
+    return this.mapDirectionsUrlService.buildDirectionsUrl({
+      latitude: marker.lat,
+      longitude: marker.lng,
+      label: marker.title ?? marker.subtitle ?? null
+    });
+  }
+
+  private resolveDetailActionUrl(marker: MapMarker): string {
+    const explicitUrl: string = marker.detailActionUrl?.trim() ?? '';
+
+    if (explicitUrl.length > 0) {
+      return explicitUrl;
+    }
+
+    const routeCommands: string[] | null | undefined = marker.detailActionRouteCommands;
+
+    if (!routeCommands || routeCommands.length === 0) {
+      return '';
+    }
+
+    return this.router.serializeUrl(this.router.createUrlTree(routeCommands));
+  }
+
+  private bindInternalPopupNavigationLinks(): void {
+    const links: NodeListOf<HTMLAnchorElement> = this.mapContainer.nativeElement
+      .querySelectorAll<HTMLAnchorElement>('[data-app-map-popup-internal-link="true"]');
+
+    links.forEach((link: HTMLAnchorElement): void => {
+      if (link.dataset['appMapPopupNavigationBound'] === 'true') {
+        return;
+      }
+
+      link.dataset['appMapPopupNavigationBound'] = 'true';
+      link.addEventListener('click', (event: MouseEvent): void => this.handleInternalPopupNavigation(event));
+    });
+  }
+
+  private handleInternalPopupNavigation(event: MouseEvent): void {
+    event.preventDefault();
+
+    const target: EventTarget | null = event.currentTarget;
+
+    if (!(target instanceof HTMLAnchorElement)) {
+      return;
+    }
+
+    const href: string = target.getAttribute('href') ?? '';
+
+    if (!href) {
+      return;
+    }
+
+    this.ngZone.run((): void => {
+      void this.router.navigateByUrl(href);
+    });
   }
 
   private escapeHtml(value: string): string {

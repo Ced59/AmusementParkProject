@@ -869,6 +869,7 @@
       "emptyTitle": "Geen punt beschikbaar",
       "emptyMessage": "Geen zichtbaar park met coördinaten komt overeen met deze zoekopdracht.",
       "navigate": "Route openen",
+      "openDetail": "Naar de fiche",
       "regionFilters": {
         "all": "Alles",
         "europe": "Europa",

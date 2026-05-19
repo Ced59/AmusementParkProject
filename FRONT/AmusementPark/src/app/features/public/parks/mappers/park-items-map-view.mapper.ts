@@ -3,6 +3,7 @@ import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
+import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
 import {
   ParkItemsMapFilterOptionViewModel,
   ParkItemsMapMarkerViewModel,
@@ -12,15 +13,19 @@ import {
 export function mapParkItemsToMapViewModel(
   park: Park,
   items: readonly ParkItem[],
-  zones: readonly ParkZone[]
+  zones: readonly ParkZone[],
+  currentLanguage: string
 ): ParkItemsMapViewModel {
   const markers: ParkItemsMapMarkerViewModel[] = items
     .filter((item: ParkItem) => item.isVisible !== false)
     .filter((item: ParkItem) => Number.isFinite(item.latitude) && Number.isFinite(item.longitude))
-    .map((item: ParkItem) => mapParkItemToMarker(item, zones))
+    .map((item: ParkItem) => mapParkItemToMarker(item, zones, park, currentLanguage))
     .sort((left: ParkItemsMapMarkerViewModel, right: ParkItemsMapMarkerViewModel) => left.title?.localeCompare(right.title ?? '') ?? 0);
 
   return {
+    parkId: normalizeOptionalString(park.id),
+    parkName: normalizeOptionalString(park.name),
+    language: currentLanguage,
     center: resolveMapCenter(park, markers),
     markers,
     categoryFilters: buildCategoryFilters(markers),
@@ -31,7 +36,9 @@ export function mapParkItemsToMapViewModel(
 
 function mapParkItemToMarker(
   item: ParkItem,
-  zones: readonly ParkZone[]
+  zones: readonly ParkZone[],
+  park: Park,
+  currentLanguage: string
 ): ParkItemsMapMarkerViewModel {
   const zoneName: string | null = resolveZoneName(item.zoneId ?? null, zones);
   const details: string[] = [
@@ -41,16 +48,26 @@ function mapParkItemToMarker(
 
   return {
     id: item.id ?? `${item.name}-${item.latitude}-${item.longitude}`,
+    itemId: normalizeOptionalString(item.id),
+    itemName: item.name,
     lat: item.latitude,
     lng: item.longitude,
     title: item.name,
     subtitle: item.category,
+    directionsActionEnabled: true,
     iconKind: resolveParkItemMarkerIconKind({
       category: item.category,
       type: item.type,
       subtype: item.subtype ?? null
     }),
     details,
+    detailActionRouteCommands: buildParkItemMapDetailRouteCommands({
+      language: currentLanguage,
+      parkId: park.id,
+      parkName: park.name,
+      itemId: item.id,
+      itemName: item.name
+    }),
     category: item.category,
     zoneId: item.zoneId ?? null
   };
@@ -138,4 +155,9 @@ function resolveCategoryIcon(category: string): string {
     default:
       return 'pi pi-map-marker';
   }
+}
+
+function normalizeOptionalString(value: string | null | undefined): string | null {
+  const normalizedValue: string = value?.trim() ?? '';
+  return normalizedValue.length > 0 ? normalizedValue : null;
 }

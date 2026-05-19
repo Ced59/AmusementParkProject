@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed, inject, signal } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
 import { MapMarker } from '@app/models/map/map-marker';
@@ -7,7 +7,7 @@ import { ParkRegionFilter, ParkRegionFilterOption } from '@shared/models/geo/wor
 import { UiChipComponent } from '@ui/primitives';
 import { UiMapShellComponent, UiMapSlotComponent } from '@ui/maps';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
-import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
+import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
 
 @Component({
   selector: 'app-park-list-map',
@@ -17,6 +17,8 @@ import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-ur
   imports: [LeafletMapComponent, TranslateModule, UiChipComponent, UiMapShellComponent, UiMapSlotComponent]
 })
 export class ParkListMapComponent {
+  private readonly translateService: TranslateService = inject(TranslateService);
+  private readonly mapMarkerPopupActionService: MapMarkerPopupActionService = inject(MapMarkerPopupActionService);
   private readonly emptyMapState = signal<ScreenState<ParkMapPointViewModel[], string>>({ kind: 'ready', data: [] });
   private readonly emptyMapPoints = signal<ParkMapPointViewModel[]>([]);
   private readonly emptySelectedParkId = signal<string | null>(null);
@@ -54,28 +56,33 @@ export class ParkListMapComponent {
   });
 
   readonly mapMarkers = computed<MapMarker[]>(() => {
-    return this.mapPoints().map((point: ParkMapPointViewModel) => ({
+    const navigateLabel: string = this.translateService.instant('parks.map.navigate');
+    const openDetailLabel: string = this.translateService.instant('parks.map.openDetail');
+
+    return this.mapPoints().map((point: ParkMapPointViewModel) => this.mapMarkerPopupActionService.enrich({
       id: point.id,
       lat: point.latitude,
       lng: point.longitude,
       title: point.name,
       subtitle: point.locationLine ?? point.countryName ?? point.countryCode ?? null,
       iconKind: 'park',
-      details: this.buildMarkerDetails(point),
-      actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
+      details: this.buildMarkerDetails(point)
+    }, {
+      directions: {
         latitude: point.latitude,
         longitude: point.longitude,
         label: point.name
-      }),
-      actionLabel: this.translateService.instant('parks.map.navigate'),
+      },
+      directionsLabel: navigateLabel,
+      parkDetail: {
+        language: this.translateService.currentLang,
+        parkId: point.id,
+        parkName: point.name
+      },
+      detailLabel: openDetailLabel
     }));
   });
 
-  constructor(
-    private readonly translateService: TranslateService,
-    private readonly mapDirectionsUrlService: MapDirectionsUrlService
-  ) {
-  }
 
   onRegionFilterClick(region: ParkRegionFilter | null): void {
     this.regionFilterChanged.emit(region);

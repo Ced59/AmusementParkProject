@@ -869,6 +869,7 @@
       "emptyTitle": "Nessun punto disponibile",
       "emptyMessage": "Nessun parco visibile con coordinate corrisponde a questa ricerca.",
       "navigate": "Indicazioni",
+      "openDetail": "Apri la scheda",
       "regionFilters": {
         "all": "Tutti",
         "europe": "Europa",

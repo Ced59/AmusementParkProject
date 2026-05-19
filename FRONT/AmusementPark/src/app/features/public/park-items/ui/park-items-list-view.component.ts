@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed, inject } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -16,7 +16,7 @@ import { ParkItemsZoneFocusViewModel } from '../models/park-items-zone-focus.mod
 import { ParkItemCardComponent } from './park-item-card.component';
 import { ParkItemsFiltersComponent } from './park-items-filters.component';
 import { ParkItemsZoneListComponent } from './park-items-zone-list.component';
-import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
+import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
 import { SafeRichHtmlPipe } from '@shared/pipes';
 import { UiMapSlotComponent } from '@ui/maps';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective } from '@ui/primitives';
@@ -77,11 +77,8 @@ export class ParkItemsListViewComponent {
 
   protected readonly hasZones = computed(() => this.zoneCards().length > 0);
 
-  constructor(
-    private readonly mapDirectionsUrlService: MapDirectionsUrlService,
-    private readonly translateService: TranslateService
-  ) {
-  }
+  private readonly mapMarkerPopupActionService: MapMarkerPopupActionService = inject(MapMarkerPopupActionService);
+  private readonly translateService: TranslateService = inject(TranslateService);
 
   protected get zoneNavigationMarkers(): MapMarker[] {
     const focus: ParkItemsZoneFocusViewModel | null = this.zoneFocus();
@@ -90,14 +87,17 @@ export class ParkItemsListViewComponent {
       return [];
     }
 
-    return focus.map.markers.map((marker: MapMarker) => ({
-      ...marker,
-      actionUrl: this.mapDirectionsUrlService.buildDirectionsUrl({
+    const navigateLabel: string = this.translateService.instant('parks.map.navigate');
+    const openDetailLabel: string = this.translateService.instant('parks.map.openDetail');
+
+    return focus.map.markers.map((marker: MapMarker) => this.mapMarkerPopupActionService.enrich(marker, {
+      directions: {
         latitude: marker.lat,
         longitude: marker.lng,
         label: marker.title
-      }),
-      actionLabel: this.translateService.instant('parks.map.navigate')
+      },
+      directionsLabel: navigateLabel,
+      detailLabel: openDetailLabel
     }));
   }
 
