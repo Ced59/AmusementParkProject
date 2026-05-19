@@ -2,75 +2,342 @@
   [state]="state().kind"
   [messages]="{
     loadingTitleKey: 'admin.loading',
-    loadingMessageKey: 'admin.loading',
+    loadingMessageKey: 'admin.images.loadingMessage',
     errorTitleKey: 'common.errorTitle',
     errorMessageKey: 'common.errorMessage'
   }">
 
-  <div class="admin-images-page">
-    <h2>{{ 'admin.tabs.images' | translate }}</h2>
-
-    <div class="admin-images-layout">
-      <div class="images-list">
-        @if (images().length === 0) {
-          <p>{{ 'common.emptyMessage' | translate }}</p>
-        }
-
-        @for (image of images(); track trackById($index, image)) {
-          <button type="button" class="image-list-item" (click)="selectImage(image)">
-            <app-image-display
-              [imageId]="image.id"
-              [alt]="image.description || image.originalFileName || image.id"
-              imgClass="image-list-item__preview"
-              placeholderClass="image-list-item__preview image-list-item__preview--placeholder"
-              placeholderIconClass="pi pi-image">
-            </app-image-display>
-            <div>
-              <strong>{{ image.originalFileName || image.id }}</strong>
-              <div>{{ image.width }} × {{ image.height }}</div>
-              <div>{{ image.contentType }}</div>
-            </div>
-          </button>
+  <div class="admin-images-page admin-list-card">
+    <header class="admin-list-header admin-images-header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.images.kicker' | translate }}</span>
+        <h2>{{ 'admin.images.title' | translate }}</h2>
+        <p>{{ 'admin.images.subtitle' | translate }}</p>
+      </div>
+      <div class="admin-images-header__metrics">
+        <span class="admin-total-pill">{{ pagination().totalItems || 0 }} {{ 'admin.images.total' | translate }}</span>
+        @if (selectedCount() > 0) {
+          <span class="admin-count-chip">{{ selectedCount() }} {{ 'admin.images.selected' | translate }}</span>
         }
       </div>
+    </header>
 
-      <div class="image-editor">
-        <ng-container *ngIf="selectedImage() as currentImage">
-          <h3>{{ currentImage.originalFileName || currentImage.id }}</h3>
+    <section class="admin-images-controls" aria-label="Image filters">
+      <div class="admin-toolbar">
+        <label class="admin-toolbar__search">
+          <span class="admin-field-label">{{ 'admin.images.search' | translate }}</span>
+          <span class="admin-search-field">
+            <i class="pi pi-search" aria-hidden="true"></i>
+            <input
+              type="search"
+              [ngModel]="query().search || ''"
+              (ngModelChange)="updateSearch($event)"
+              (keydown.enter)="applyQuery()"
+              [placeholder]="'admin.images.searchPlaceholder' | translate">
+          </span>
+        </label>
+
+        <div class="admin-toolbar__actions">
+          <button type="button" class="btn btn--primary btn--sm" (click)="applyQuery()">
+            <i class="pi pi-filter" aria-hidden="true"></i>
+            {{ 'actions.apply' | translate }}
+          </button>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="clearFilters()">
+            <i class="pi pi-times" aria-hidden="true"></i>
+            {{ 'actions.clear' | translate }}
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-filters-grid admin-images-filters-grid">
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.category' | translate }}</span>
+          <select [ngModel]="query().category || ''" (ngModelChange)="updateCategory($event)">
+            <option value="">{{ 'admin.images.allCategories' | translate }}</option>
+            @for (category of categories; track category) {
+              <option [value]="category">{{ ('images.categories.' + category) | translate }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.ownerType' | translate }}</span>
+          <select [ngModel]="query().ownerType || ''" (ngModelChange)="updateOwnerType($event)">
+            <option value="">{{ 'admin.images.allOwnerTypes' | translate }}</option>
+            @for (ownerType of ownerTypes; track ownerType) {
+              <option [value]="ownerType">{{ ('images.ownerTypes.' + ownerType) | translate }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.ownerId' | translate }}</span>
+          <input type="text" [ngModel]="query().ownerId || ''" (ngModelChange)="updateOwnerId($event)" [placeholder]="'admin.images.ownerIdPlaceholder' | translate">
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.tag' | translate }}</span>
+          <select [ngModel]="query().tagId || ''" (ngModelChange)="updateTag($event)">
+            <option value="">{{ 'admin.images.allTags' | translate }}</option>
+            @for (tag of tags(); track trackById($index, tag)) {
+              <option [value]="tag.id">{{ tag.slug }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.publication' | translate }}</span>
+          <select [ngModel]="query().isPublished === null ? '' : query().isPublished" (ngModelChange)="updatePublishedFilter($event)">
+            <option value="">{{ 'admin.images.allPublicationStates' | translate }}</option>
+            <option value="true">{{ 'admin.images.published' | translate }}</option>
+            <option value="false">{{ 'admin.images.hidden' | translate }}</option>
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.ownership' | translate }}</span>
+          <select [ngModel]="query().hasOwner === null ? '' : query().hasOwner" (ngModelChange)="updateHasOwnerFilter($event)">
+            <option value="">{{ 'admin.images.allOwnershipStates' | translate }}</option>
+            <option value="true">{{ 'admin.images.linkedOnly' | translate }}</option>
+            <option value="false">{{ 'admin.images.orphansOnly' | translate }}</option>
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.images.geo' | translate }}</span>
+          <select [ngModel]="query().hasGeoLocation === null ? '' : query().hasGeoLocation" (ngModelChange)="updateHasGeoLocationFilter($event)">
+            <option value="">{{ 'admin.images.allGeoStates' | translate }}</option>
+            <option value="true">{{ 'admin.images.withGeo' | translate }}</option>
+            <option value="false">{{ 'admin.images.withoutGeo' | translate }}</option>
+          </select>
+        </label>
+
+        <div class="admin-images-sort-row">
+          <label class="admin-field">
+            <span class="admin-field-label">{{ 'admin.images.sortBy' | translate }}</span>
+            <select [ngModel]="query().sortBy || 'created'" (ngModelChange)="updateSortBy($event)">
+              @for (sortField of sortFields; track sortField) {
+                <option [value]="sortField">{{ ('admin.images.sortFields.' + sortField) | translate }}</option>
+              }
+            </select>
+          </label>
+          <label class="admin-field">
+            <span class="admin-field-label">{{ 'admin.images.direction' | translate }}</span>
+            <select [ngModel]="query().sortDirection || 'desc'" (ngModelChange)="updateSortDirection($event)">
+              <option value="desc">{{ 'admin.images.desc' | translate }}</option>
+              <option value="asc">{{ 'admin.images.asc' | translate }}</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    @if (selectedCount() > 0) {
+      <section class="admin-bulk-bar admin-images-bulk-bar">
+        <span>{{ selectedCount() }} {{ 'admin.images.selectedForBulk' | translate }}</span>
+        <div class="admin-bulk-bar__actions admin-images-bulk-actions">
+          <button type="button" class="btn btn--lime btn--sm" (click)="applyBulkPublished(true)">{{ 'admin.images.bulkPublish' | translate }}</button>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="applyBulkPublished(false)">{{ 'admin.images.bulkHide' | translate }}</button>
+          <select [(ngModel)]="bulkCategory">
+            <option value="">{{ 'admin.images.bulkCategory' | translate }}</option>
+            @for (category of categories; track category) {
+              <option [value]="category">{{ ('images.categories.' + category) | translate }}</option>
+            }
+          </select>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="applyBulkCategory()">{{ 'admin.images.applyCategory' | translate }}</button>
+          <select [(ngModel)]="bulkTagId">
+            <option value="">{{ 'admin.images.bulkTag' | translate }}</option>
+            @for (tag of tags(); track trackById($index, tag)) {
+              <option [value]="tag.id">{{ tag.slug }}</option>
+            }
+          </select>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="applyBulkAddTag()">{{ 'admin.images.addTag' | translate }}</button>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="applyBulkRemoveTag()">{{ 'admin.images.removeTag' | translate }}</button>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="clearSelection()">{{ 'actions.clear' | translate }}</button>
+        </div>
+      </section>
+    }
+
+    <div class="admin-images-workbench">
+      <section class="admin-images-browser">
+        <div class="admin-images-browser__head">
+          <label class="admin-images-select-page">
+            <input type="checkbox" [checked]="isEveryPageImageSelected()" (change)="toggleCurrentPageSelection($any($event.target).checked)">
+            <span>{{ 'admin.images.selectPage' | translate }}</span>
+          </label>
+          <span class="admin-muted">{{ 'admin.images.pageHint' | translate }}</span>
+        </div>
+
+        @if (images().length === 0) {
+          <div class="admin-images-empty">
+            <i class="pi pi-image" aria-hidden="true"></i>
+            <strong>{{ 'admin.images.emptyTitle' | translate }}</strong>
+            <span>{{ 'admin.images.emptyMessage' | translate }}</span>
+          </div>
+        } @else {
+          <div class="admin-images-grid">
+            @for (image of images(); track trackById($index, image)) {
+              <article class="admin-image-card" [class.admin-image-card--active]="selectedImage()?.id === image.id">
+                <label class="admin-image-card__select" (click)="$event.stopPropagation()">
+                  <input type="checkbox" [checked]="isImageSelected(image.id)" (change)="toggleImageSelection(image.id, $any($event.target).checked)">
+                </label>
+
+                <button type="button" class="admin-image-card__button" (click)="selectImage(image)">
+                  <app-image-display
+                    [imageId]="image.id"
+                    [alt]="image.description || image.originalFileName || image.id"
+                    imgClass="admin-image-card__preview"
+                    placeholderClass="admin-image-card__preview admin-image-card__preview--placeholder"
+                    placeholderIconClass="pi pi-image">
+                  </app-image-display>
+
+                  <span class="admin-image-card__body">
+                    <strong>{{ image.originalFileName || image.id }}</strong>
+                    <span>{{ image.width }} × {{ image.height }} · {{ formatBytes(image.sizeInBytes) }}</span>
+                    <span>{{ formatDate(image.createdAt) }}</span>
+                  </span>
+                </button>
+
+                <div class="admin-image-card__badges">
+                  <span class="admin-image-badge admin-image-badge--category">{{ ('images.categories.' + image.category) | translate }}</span>
+                  <span class="admin-image-badge" [class.admin-image-badge--published]="image.isPublished" [class.admin-image-badge--hidden]="!image.isPublished">
+                    {{ (image.isPublished ? 'admin.images.published' : 'admin.images.hidden') | translate }}
+                  </span>
+                  @if (image.ownerType !== 'NONE') {
+                    <span class="admin-image-badge admin-image-badge--owner">{{ ('images.ownerTypes.' + image.ownerType) | translate }}</span>
+                  }
+                </div>
+              </article>
+            }
+          </div>
+        }
+
+        <footer class="admin-images-pagination">
+          <div class="admin-muted">
+            {{ 'admin.images.page' | translate }} {{ pagination().currentPage || 1 }} / {{ pagination().totalPages || 1 }}
+          </div>
+          <div class="admin-images-pagination__actions">
+            <label class="admin-field admin-field--inline">
+              <span class="admin-field-label">{{ 'admin.images.pageSize' | translate }}</span>
+              <select [ngModel]="query().size" (ngModelChange)="changePageSize($event)">
+                @for (size of pageSizes; track size) {
+                  <option [value]="size">{{ size }}</option>
+                }
+              </select>
+            </label>
+            <button type="button" class="btn btn--ghost btn--sm" [disabled]="(pagination().currentPage || 1) <= 1" (click)="changePage((pagination().currentPage || 1) - 1)">
+              {{ 'pagination.previous' | translate }}
+            </button>
+            <button type="button" class="btn btn--ghost btn--sm" [disabled]="(pagination().currentPage || 1) >= (pagination().totalPages || 1)" (click)="changePage((pagination().currentPage || 1) + 1)">
+              {{ 'pagination.next' | translate }}
+            </button>
+          </div>
+        </footer>
+      </section>
+
+      <aside class="admin-image-inspector">
+        @if (selectedImage(); as currentImage) {
+          <div class="admin-image-inspector__head">
+            <div>
+              <span class="admin-kicker">{{ 'admin.images.inspector' | translate }}</span>
+              <h3>{{ currentImage.originalFileName || currentImage.id }}</h3>
+            </div>
+            <span class="admin-image-badge" [class.admin-image-badge--published]="currentImage.isPublished" [class.admin-image-badge--hidden]="!currentImage.isPublished">
+              {{ (currentImage.isPublished ? 'admin.images.published' : 'admin.images.hidden') | translate }}
+            </span>
+          </div>
+
           <app-image-display
             [imageId]="currentImage.id"
             [alt]="currentImage.description || currentImage.id"
-            imgClass="selected-preview"
-            placeholderClass="selected-preview selected-preview--placeholder"
+            imgClass="admin-image-inspector__preview"
+            placeholderClass="admin-image-inspector__preview admin-image-inspector__preview--placeholder"
             placeholderIconClass="pi pi-image">
           </app-image-display>
-          <label>Description</label>
-          <input [ngModel]="currentImage.description" (ngModelChange)="updateSelectedImageDescription($event)">
-          <label>Published</label>
-          <input type="checkbox" [ngModel]="currentImage.isPublished" (ngModelChange)="updateSelectedImagePublished($event)">
 
-          @if (currentImage.geoLocation) {
-            <label>Latitude</label>
-            <input type="number" [ngModel]="currentImage.geoLocation.latitude" (ngModelChange)="updateSelectedImageLatitude($event)">
-            <label>Longitude</label>
-            <input type="number" [ngModel]="currentImage.geoLocation.longitude" (ngModelChange)="updateSelectedImageLongitude($event)">
-          }
+          <dl class="admin-image-facts">
+            <div><dt>ID</dt><dd>{{ currentImage.id }}</dd></div>
+            <div><dt>{{ 'admin.images.dimensions' | translate }}</dt><dd>{{ currentImage.width }} × {{ currentImage.height }}</dd></div>
+            <div><dt>{{ 'admin.images.weight' | translate }}</dt><dd>{{ formatBytes(currentImage.sizeInBytes) }}</dd></div>
+            <div><dt>{{ 'admin.images.mimeType' | translate }}</dt><dd>{{ currentImage.contentType || '—' }}</dd></div>
+            <div><dt>{{ 'admin.images.owner' | translate }}</dt><dd>{{ ('images.ownerTypes.' + currentImage.ownerType) | translate }} · {{ currentImage.ownerId || '—' }}</dd></div>
+          </dl>
 
-          <h4>Tags</h4>
-          <div class="tags-grid">
-            @for (tag of tags(); track trackById($index, tag)) {
-              <label><input type="checkbox" [checked]="currentImage.tagIds.includes(tag.id)" (change)="toggleTag(tag.id, $any($event.target).checked)"> {{ tag.slug }}</label>
-            }
+          <div class="admin-image-editor-form">
+            <label class="admin-field">
+              <span class="admin-field-label">{{ 'admin.images.description' | translate }}</span>
+              <textarea [ngModel]="currentImage.description || ''" (ngModelChange)="updateSelectedImageDescription($event)"></textarea>
+            </label>
+
+            <label class="admin-image-switch">
+              <input type="checkbox" [ngModel]="currentImage.isPublished" (ngModelChange)="updateSelectedImagePublished($event)">
+              <span>{{ 'admin.images.isPublished' | translate }}</span>
+            </label>
+
+            <div class="admin-images-two-columns">
+              <label class="admin-field">
+                <span class="admin-field-label">{{ 'admin.images.latitude' | translate }}</span>
+                <input type="number" [ngModel]="currentImage.geoLocation?.latitude" (ngModelChange)="updateSelectedImageLatitude($event)">
+              </label>
+              <label class="admin-field">
+                <span class="admin-field-label">{{ 'admin.images.longitude' | translate }}</span>
+                <input type="number" [ngModel]="currentImage.geoLocation?.longitude" (ngModelChange)="updateSelectedImageLongitude($event)">
+              </label>
+            </div>
+
+            <div class="admin-images-two-columns">
+              <label class="admin-field">
+                <span class="admin-field-label">{{ 'admin.images.altTextFr' | translate }}</span>
+                <input type="text" [ngModel]="getLocalizedField(currentImage, 'altTexts')" (ngModelChange)="updateLocalizedField('altTexts', $event)">
+              </label>
+              <label class="admin-field">
+                <span class="admin-field-label">{{ 'admin.images.creditFr' | translate }}</span>
+                <input type="text" [ngModel]="getLocalizedField(currentImage, 'credits')" (ngModelChange)="updateLocalizedField('credits', $event)">
+              </label>
+            </div>
+
+            <label class="admin-field">
+              <span class="admin-field-label">{{ 'admin.images.captionFr' | translate }}</span>
+              <input type="text" [ngModel]="getLocalizedField(currentImage, 'captions')" (ngModelChange)="updateLocalizedField('captions', $event)">
+            </label>
+
+            <div class="admin-image-tags-panel">
+              <span class="admin-field-label">{{ 'admin.images.tags' | translate }}</span>
+              <div class="admin-image-tags-grid">
+                @for (tag of tags(); track trackById($index, tag)) {
+                  <label>
+                    <input type="checkbox" [checked]="currentImage.tagIds.includes(tag.id)" (change)="toggleTag(tag.id, $any($event.target).checked)">
+                    <span>{{ tag.slug }}</span>
+                  </label>
+                }
+              </div>
+            </div>
+
+            <button type="button" class="btn btn--primary" (click)="saveImage()">
+              <i class="pi pi-save" aria-hidden="true"></i>
+              {{ 'admin.images.saveImage' | translate }}
+            </button>
           </div>
-          <button type="button" (click)="saveImage()">Save image</button>
-        </ng-container>
+        } @else {
+          <div class="admin-images-empty admin-images-empty--inspector">
+            <i class="pi pi-image" aria-hidden="true"></i>
+            <strong>{{ 'admin.images.noSelectionTitle' | translate }}</strong>
+            <span>{{ 'admin.images.noSelectionMessage' | translate }}</span>
+          </div>
+        }
 
-        <div class="tag-create">
-          <h3>Create tag</h3>
-          <input [(ngModel)]="newTagSlug" placeholder="tag slug">
-          <button type="button" (click)="createTag()">Create tag</button>
+        <div class="admin-image-tag-create">
+          <span class="admin-kicker">{{ 'admin.images.tagCreation' | translate }}</span>
+          <label class="admin-field">
+            <span class="admin-field-label">{{ 'admin.images.newTagSlug' | translate }}</span>
+            <input [(ngModel)]="newTagSlug" [placeholder]="'admin.images.newTagPlaceholder' | translate">
+          </label>
+          <button type="button" class="btn btn--ghost btn--sm" (click)="createTag()">
+            <i class="pi pi-plus" aria-hidden="true"></i>
+            {{ 'admin.images.createTag' | translate }}
+          </button>
         </div>
-      </div>
+      </aside>
     </div>
   </div>
 </app-page-state>

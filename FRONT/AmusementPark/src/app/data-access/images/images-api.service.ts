@@ -4,6 +4,8 @@ import { map, Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { ImageCategory } from '@app/models/images/image-category';
+import { AdminImageBulkMetadataResult, AdminImageBulkMetadataUpdate } from '@app/models/images/admin-image-bulk-metadata-update';
+import { AdminImageSearchQuery } from '@app/models/images/admin-image-search-query';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageGeoLocation } from '@app/models/images/image-geo-location';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
@@ -11,9 +13,11 @@ import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { LinkImageToOwner } from '@app/models/images/link-image-to-owner';
 import { UploadedImage } from '@app/models/images/uploaded-image';
 import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
+import { PagedResult } from '@shared/models/contracts';
 import { UrlSecurityService } from '@shared/utils/security';
 import {
   PagedCollectionResponse,
+  unwrapPagedCollection,
   toImageCategoryApiValue,
   toImageOwnerTypeApiValue,
   unwrapCollection
@@ -140,11 +144,31 @@ export class ImagesApiService {
     return this.resolveImageUrl(imagePathOrUrl) ?? this.buildAvatarFallbackDataUrl();
   }
 
-  getAdminImages(): Observable<ImageDto[]> {
+  getAdminImages(query: Partial<AdminImageSearchQuery> = {}): Observable<PagedResult<ImageDto>> {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getAdminImages}`;
-    return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url).pipe(
-      map((response: ImageDto[] | PagedCollectionResponse<ImageDto>) => unwrapCollection<ImageDto>(response))
+    let params: HttpParams = new HttpParams()
+      .set('page', String(query.page ?? 1))
+      .set('size', String(query.size ?? 40));
+
+    params = this.appendOptionalParam(params, 'search', query.search);
+    params = this.appendOptionalParam(params, 'category', query.category);
+    params = this.appendOptionalParam(params, 'ownerType', query.ownerType);
+    params = this.appendOptionalParam(params, 'ownerId', query.ownerId);
+    params = this.appendOptionalParam(params, 'tagId', query.tagId);
+    params = this.appendOptionalBooleanParam(params, 'isPublished', query.isPublished);
+    params = this.appendOptionalBooleanParam(params, 'hasOwner', query.hasOwner);
+    params = this.appendOptionalBooleanParam(params, 'hasGeoLocation', query.hasGeoLocation);
+    params = this.appendOptionalParam(params, 'sortBy', query.sortBy);
+    params = this.appendOptionalParam(params, 'sortDirection', query.sortDirection);
+
+    return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url, { params }).pipe(
+      map((response: ImageDto[] | PagedCollectionResponse<ImageDto>) => unwrapPagedCollection<ImageDto>(response))
     );
+  }
+
+  updateAdminImagesBulkMetadata(request: AdminImageBulkMetadataUpdate): Observable<AdminImageBulkMetadataResult> {
+    const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getAdminImages}/bulk-metadata`;
+    return this.http.patch<AdminImageBulkMetadataResult>(url, request);
   }
 
   updateAdminImage(id: string, request: {
@@ -162,7 +186,11 @@ export class ImagesApiService {
 
   getAdminImageTags(): Observable<ImageTagDto[]> {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getAdminImageTags}`;
-    return this.http.get<ImageTagDto[] | PagedCollectionResponse<ImageTagDto>>(url).pipe(
+    const params: HttpParams = new HttpParams()
+      .set('page', '1')
+      .set('size', '100');
+
+    return this.http.get<ImageTagDto[] | PagedCollectionResponse<ImageTagDto>>(url, { params }).pipe(
       map((response: ImageTagDto[] | PagedCollectionResponse<ImageTagDto>) => unwrapCollection<ImageTagDto>(response))
     );
   }
@@ -185,4 +213,20 @@ export class ImagesApiService {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.updateAdminImageTag(id)}`;
     return this.http.put<ImageTagDto>(url, request);
   }
+  private appendOptionalParam(params: HttpParams, key: string, value: string | number | null | undefined): HttpParams {
+    if (value === null || value === undefined || String(value).trim() === '') {
+      return params;
+    }
+
+    return params.set(key, String(value));
+  }
+
+  private appendOptionalBooleanParam(params: HttpParams, key: string, value: boolean | null | undefined): HttpParams {
+    if (value === null || value === undefined) {
+      return params;
+    }
+
+    return params.set(key, String(value));
+  }
+
 }

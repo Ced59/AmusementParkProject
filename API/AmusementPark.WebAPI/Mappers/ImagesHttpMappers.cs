@@ -37,6 +37,25 @@ internal static class ImagesHttpMappers
         };
     }
 
+    public static ImageCategory? ToOptionalDomain(this ImageCategoryDto? value)
+    {
+        return value.HasValue ? value.Value.ToDomain() : null;
+    }
+
+    public static ImageOwnerType? ToOptionalDomain(this ImageOwnerTypeDto? value)
+    {
+        return value.HasValue ? value.Value.ToDomain() : null;
+    }
+
+    public static ImageBulkMetadataUpdate ToApplication(this BulkImageMetadataUpdateDto value)
+    {
+        return new ImageBulkMetadataUpdate(
+            value.IsPublished,
+            value.Category.ToOptionalDomain(),
+            value.AddTagIds,
+            value.RemoveTagIds);
+    }
+
     public static ImageCategoryDto ToHttp(this ImageCategory value)
     {
         return value switch

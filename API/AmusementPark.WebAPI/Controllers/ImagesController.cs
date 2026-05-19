@@ -4,8 +4,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Contracts;
+using AmusementPark.Application.Common.Requests;
+using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Images.Commands;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Queries;
 using AmusementPark.Application.Features.Images.Results;
 using AmusementPark.Application.Features.Images.Ports;
@@ -33,8 +36,10 @@ public sealed class ImagesController : ControllerBase
     private readonly ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>> updateImageMetadataCommandHandler;
     private readonly ICommandHandler<CreateImageTagCommand, ApplicationResult<ImageTag>> createImageTagCommandHandler;
     private readonly ICommandHandler<UpdateImageTagCommand, ApplicationResult<ImageTag>> updateImageTagCommandHandler;
+    private readonly ICommandHandler<UpdateImagesBulkMetadataCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateImagesBulkMetadataCommandHandler;
     private readonly IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>> getImageByIdQueryHandler;
     private readonly IQueryHandler<GetAllImagesQuery, ApplicationResult<IReadOnlyCollection<Image>>> getAllImagesQueryHandler;
+    private readonly IQueryHandler<GetImagesPageQuery, ApplicationResult<PagedResult<Image>>> getImagesPageQueryHandler;
     private readonly IQueryHandler<GetCurrentImageQuery, ApplicationResult<Image>> getCurrentImageQueryHandler;
     private readonly IQueryHandler<GetImagesByOwnerQuery, ApplicationResult<IReadOnlyCollection<Image>>> getImagesByOwnerQueryHandler;
     private readonly IQueryHandler<ListImageTagsQuery, ApplicationResult<IReadOnlyCollection<ImageTag>>> listImageTagsQueryHandler;
@@ -48,8 +53,10 @@ public sealed class ImagesController : ControllerBase
         ICommandHandler<UpdateImageMetadataCommand, ApplicationResult<Image>> updateImageMetadataCommandHandler,
         ICommandHandler<CreateImageTagCommand, ApplicationResult<ImageTag>> createImageTagCommandHandler,
         ICommandHandler<UpdateImageTagCommand, ApplicationResult<ImageTag>> updateImageTagCommandHandler,
+        ICommandHandler<UpdateImagesBulkMetadataCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateImagesBulkMetadataCommandHandler,
         IQueryHandler<GetImageByIdQuery, ApplicationResult<Image>> getImageByIdQueryHandler,
         IQueryHandler<GetAllImagesQuery, ApplicationResult<IReadOnlyCollection<Image>>> getAllImagesQueryHandler,
+        IQueryHandler<GetImagesPageQuery, ApplicationResult<PagedResult<Image>>> getImagesPageQueryHandler,
         IQueryHandler<GetCurrentImageQuery, ApplicationResult<Image>> getCurrentImageQueryHandler,
         IQueryHandler<GetImagesByOwnerQuery, ApplicationResult<IReadOnlyCollection<Image>>> getImagesByOwnerQueryHandler,
         IQueryHandler<ListImageTagsQuery, ApplicationResult<IReadOnlyCollection<ImageTag>>> listImageTagsQueryHandler,
@@ -62,8 +69,10 @@ public sealed class ImagesController : ControllerBase
         this.updateImageMetadataCommandHandler = updateImageMetadataCommandHandler;
         this.createImageTagCommandHandler = createImageTagCommandHandler;
         this.updateImageTagCommandHandler = updateImageTagCommandHandler;
+        this.updateImagesBulkMetadataCommandHandler = updateImagesBulkMetadataCommandHandler;
         this.getImageByIdQueryHandler = getImageByIdQueryHandler;
         this.getAllImagesQueryHandler = getAllImagesQueryHandler;
+        this.getImagesPageQueryHandler = getImagesPageQueryHandler;
         this.getCurrentImageQueryHandler = getCurrentImageQueryHandler;
         this.getImagesByOwnerQueryHandler = getImagesByOwnerQueryHandler;
         this.listImageTagsQueryHandler = listImageTagsQueryHandler;
@@ -197,16 +206,60 @@ public sealed class ImagesController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(PagedResponseDto<ImageDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetAllAsync(
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? search = null,
+        [FromQuery] ImageCategoryDto? category = null,
+        [FromQuery] ImageOwnerTypeDto? ownerType = null,
+        [FromQuery] string? ownerId = null,
+        [FromQuery] string? tagId = null,
+        [FromQuery] bool? isPublished = null,
+        [FromQuery] bool? hasOwner = null,
+        [FromQuery] bool? hasGeoLocation = null,
+        [FromQuery] string? sortBy = null,
+        [FromQuery] string? sortDirection = null,
+        CancellationToken cancellationToken = default)
     {
-        ApplicationResult<IReadOnlyCollection<Image>> result = await this.getAllImagesQueryHandler.HandleAsync(new GetAllImagesQuery(), cancellationToken);
+        ImageSearchCriteria criteria = new ImageSearchCriteria(
+            search,
+            category.ToOptionalDomain(),
+            ownerType.ToOptionalDomain(),
+            ownerId,
+            tagId,
+            isPublished,
+            hasOwner,
+            hasGeoLocation,
+            sortBy,
+            sortDirection);
+
+        ApplicationResult<PagedResult<Image>> result = await this.getImagesPageQueryHandler.HandleAsync(new GetImagesPageQuery(pagination.ToApplication(), criteria), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<ImageDto> response = pagination.ToPagedResponse(result.Value, static imageValue => imageValue.ToHttp());
+        PagedResponseDto<ImageDto> response = result.Value.ToPagedResponse(static imageValue => imageValue.ToHttp());
         return this.Ok(response);
+    }
+
+    [HttpPatch("bulk-metadata")]
+    [ProducesResponseType(typeof(BulkAdministrationUpdateResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateBulkMetadataAsync([FromBody] BulkImageMetadataUpdateDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateImagesBulkMetadataCommandHandler.HandleAsync(
+            new UpdateImagesBulkMetadataCommand(request.ImageIds, request.ToApplication()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(new BulkAdministrationUpdateResultDto
+        {
+            RequestedCount = result.Value.RequestedCount,
+            UpdatedCount = result.Value.UpdatedCount,
+        });
     }
 
     [HttpGet("tags")]

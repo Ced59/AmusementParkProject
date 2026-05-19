@@ -184,6 +184,25 @@ public sealed partial class MongoDatabaseInitializer
             new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys.Ascending("tagIds"),
                 new CreateIndexOptions { Name = "idx_images_tag_ids" }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.IsPublished)
+                    .Descending(item => item.CreatedAt),
+                new CreateIndexOptions { Name = "idx_images_category_published_created_desc" }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
+                    .Ascending(item => item.OwnerType)
+                    .Ascending(item => item.IsPublished)
+                    .Descending(item => item.CreatedAt),
+                new CreateIndexOptions { Name = "idx_images_owner_type_published_created_desc" }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
+                    .Text(item => item.OriginalFileName)
+                    .Text(item => item.Description)
+                    .Text(item => item.Path)
+                    .Text(item => item.OwnerId),
+                new CreateIndexOptions { Name = "idx_images_admin_text" }),
         };
 
         await collection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);

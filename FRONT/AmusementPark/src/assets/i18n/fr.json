@@ -718,7 +718,79 @@
     "visible": "Visible",
     "hidden": "Masqué",
     "images": {
-      "title": "Images"
+      "title": "Images",
+      "kicker": "M15 · Médiathèque",
+      "subtitle": "Recherche, tri et édition optimisés pour gérer des dizaines de milliers d’images sans charger toute la base.",
+      "total": "image(s)",
+      "selected": "sélectionnée(s)",
+      "loadingMessage": "Chargement de la médiathèque…",
+      "search": "Recherche",
+      "searchPlaceholder": "Nom de fichier, id, description, propriétaire…",
+      "category": "Catégorie",
+      "allCategories": "Toutes les catégories",
+      "ownerType": "Propriétaire",
+      "allOwnerTypes": "Tous les propriétaires",
+      "ownerId": "ID propriétaire",
+      "ownerIdPlaceholder": "ID parc, item ou user",
+      "tag": "Tag",
+      "allTags": "Tous les tags",
+      "publication": "Publication",
+      "allPublicationStates": "Tous les états",
+      "published": "Publié",
+      "hidden": "Masqué",
+      "ownership": "Lien",
+      "allOwnershipStates": "Tous les liens",
+      "linkedOnly": "Liées uniquement",
+      "orphansOnly": "Orphelines uniquement",
+      "geo": "Géolocalisation",
+      "allGeoStates": "Toutes",
+      "withGeo": "Avec coordonnées",
+      "withoutGeo": "Sans coordonnées",
+      "sortBy": "Tri",
+      "direction": "Sens",
+      "desc": "Décroissant",
+      "asc": "Croissant",
+      "sortFields": {
+        "created": "Création",
+        "updated": "Mise à jour",
+        "filename": "Nom de fichier",
+        "size": "Poids",
+        "dimensions": "Dimensions"
+      },
+      "selectedForBulk": "image(s) sélectionnée(s)",
+      "bulkPublish": "Publier",
+      "bulkHide": "Masquer",
+      "bulkCategory": "Catégorie en masse",
+      "applyCategory": "Appliquer catégorie",
+      "bulkTag": "Tag en masse",
+      "addTag": "Ajouter tag",
+      "removeTag": "Retirer tag",
+      "selectPage": "Sélectionner cette page",
+      "pageHint": "Prévisualisation lazy, filtres serveur et pagination réelle.",
+      "emptyTitle": "Aucune image trouvée",
+      "emptyMessage": "Modifie les filtres ou lance une nouvelle recherche.",
+      "page": "Page",
+      "pageSize": "Taille",
+      "inspector": "Inspecteur image",
+      "dimensions": "Dimensions",
+      "weight": "Poids",
+      "mimeType": "MIME",
+      "owner": "Propriétaire",
+      "description": "Description",
+      "isPublished": "Image publiée",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "altTextFr": "Texte alternatif FR",
+      "creditFr": "Crédit FR",
+      "captionFr": "Légende FR",
+      "tags": "Tags",
+      "saveImage": "Enregistrer l’image",
+      "noSelectionTitle": "Aucune image sélectionnée",
+      "noSelectionMessage": "Sélectionne une image pour éditer ses métadonnées.",
+      "tagCreation": "Création de tag",
+      "newTagSlug": "Slug du tag",
+      "newTagPlaceholder": "ex: logo-officiel",
+      "createTag": "Créer le tag"
     },
     "dataSources": {
       "title": "Sources de données"
@@ -745,7 +817,9 @@
     "save": "Enregistrer",
     "backToPark": "Retour au parc",
     "backToList": "Retour",
-    "edit": "Modifier"
+    "edit": "Modifier",
+    "apply": "Appliquer",
+    "clear": "Effacer"
   },
   "parkDetail": {
     "descriptionTitle": "Description",
@@ -1372,5 +1446,23 @@
       "title": "Construit pour évoluer sans bricolage",
       "text": "Le front sépare les primitives visuelles de l’orchestration, pendant que l’API garde les calculs métier hors des composants."
     }
+  },
+  "images": {
+    "categories": {
+      "AVATAR": "Avatar",
+      "PARK_LOGO": "Logo de parc",
+      "PARK": "Photo de parc",
+      "ATTRACTION": "Photo d’élément"
+    },
+    "ownerTypes": {
+      "NONE": "Aucun",
+      "PARK": "Parc",
+      "USER": "Utilisateur",
+      "ATTRACTION": "Élément"
+    }
+  },
+  "pagination": {
+    "previous": "Précédent",
+    "next": "Suivant"
   }
 }
