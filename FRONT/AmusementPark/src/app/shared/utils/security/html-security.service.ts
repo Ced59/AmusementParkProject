@@ -75,6 +75,8 @@ export class HtmlSecurityService {
     }
 
     if (node.nodeType === 3) {
+      const textNode: Text = node as Text;
+      textNode.nodeValue = this.normalizeTextNode(textNode.nodeValue);
       return;
     }
 
@@ -110,6 +112,10 @@ export class HtmlSecurityService {
     if (element.parentNode === parent) {
       parent.removeChild(element);
     }
+  }
+
+  private normalizeTextNode(value: string | null): string {
+    return (value ?? '').replace(/\u00a0/g, ' ');
   }
 
   private sanitizeElementAttributes(element: HTMLElement, tagName: string): void {

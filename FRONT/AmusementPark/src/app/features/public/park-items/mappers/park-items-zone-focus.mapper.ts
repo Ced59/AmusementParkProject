@@ -34,7 +34,7 @@ export function mapParkItemsZoneFocusViewModel(
   const map: ParkItemsMapViewModel = mapDisplayedItemsToMapViewModel(park, displayedItems, zones, currentLanguage);
   const topTypeHighlights: ParkItemsCountTagViewModel[] = activeZoneBucket
     ? mapBucketTypeHighlights(activeZoneBucket)
-    : buildTypeHighlightsFromItems(displayedItems);
+    : mapBucketTypeHighlights(explorer?.overview ?? null);
 
   return {
     parkName: park.name ?? '',
@@ -124,10 +124,15 @@ function resolveZoneNameById(zoneId: string | null, zones: readonly ParkZone[], 
   return resolveZoneName(zones.find((zone: ParkZone) => zone.id === zoneId) ?? null, currentLanguage);
 }
 
-function mapBucketTypeHighlights(bucket: ParkExplorerBucket): ParkItemsCountTagViewModel[] {
+function mapBucketTypeHighlights(bucket: ParkExplorerBucket | null): ParkItemsCountTagViewModel[] {
+  if (!bucket) {
+    return [];
+  }
+
   return bucket.countsByType
     .filter((count: ParkExplorerCount) => count.count > 0)
     .map((count: ParkExplorerCount) => ({
+      value: count.key,
       labelKey: getParkItemTypeTranslationKey(count.key),
       count: count.count
     }))
@@ -148,6 +153,7 @@ function buildTypeHighlightsFromItems(items: readonly ParkItem[]): ParkItemsCoun
 
   return Array.from(countsByType.entries())
     .map(([type, count]: [string, number]) => ({
+      value: type,
       labelKey: getParkItemTypeTranslationKey(type),
       count
     }))

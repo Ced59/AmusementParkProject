@@ -97,18 +97,31 @@
 
           <aside class="zone-focus__side-panel">
             <span class="zone-focus__side-kicker">{{ 'parkItems.zoneFocus.mapPanelTitle' | translate }}</span>
-            <h2>{{ 'parkItems.zoneFocus.mapPanelHeading' | translate }}</h2>
-            <p>{{ 'parkItems.zoneFocus.mapPanelText' | translate }}</p>
+            <h2>
+              {{ (focus.hasActiveZone ? 'parkItems.zoneFocus.zoneMapHeading' : 'parkItems.zoneFocus.parkMapHeading') | translate:{ name: focus.zoneName } }}
+            </h2>
 
-            @if (focus.topTypeHighlights.length > 0) {
-              <div class="zone-focus__chips">
-                @for (typeCount of focus.topTypeHighlights; track typeCount.labelKey) {
-                  <app-ui-chip tone="soft">
-                    {{ typeCount.labelKey | translate }} · {{ typeCount.count }}
-                  </app-ui-chip>
-                }
-              </div>
-            }
+            <div class="zone-focus__chips" *ngIf="focus.topTypeHighlights.length > 0">
+              <button
+                class="zone-focus__filter-chip zone-focus__filter-chip--all"
+                type="button"
+                [class.zone-focus__filter-chip--active]="selectedType() === null"
+                [attr.aria-pressed]="selectedType() === null"
+                (click)="setMapTypeFilter(null)">
+                {{ 'parkItems.zoneFocus.allMapItems' | translate }}
+              </button>
+
+              @for (typeCount of focus.topTypeHighlights; track typeCount.value) {
+                <button
+                  class="zone-focus__filter-chip"
+                  type="button"
+                  [class.zone-focus__filter-chip--active]="selectedType() === typeCount.value"
+                  [attr.aria-pressed]="selectedType() === typeCount.value"
+                  (click)="setMapTypeFilter(typeCount.value)">
+                  {{ typeCount.labelKey | translate }} · {{ typeCount.count }}
+                </button>
+              }
+            </div>
           </aside>
         </div>
       </section>

@@ -1134,7 +1134,10 @@
       "mapMarkersHint": "Geolocalizzati",
       "mapPanelTitle": "Riferimenti mappa",
       "mapPanelHeading": "Mappa filtrata in tempo reale",
-      "mapPanelText": "La mappa segue la selezione corrente: zona, categoria, tipo e ricerca. I marker personalizzati restano adattati al tipo preciso di ogni elemento."
+      "mapPanelText": "La mappa segue la selezione corrente: zona, categoria, tipo e ricerca. I marker personalizzati restano adattati al tipo preciso di ogni elemento.",
+      "zoneMapHeading": "Mappa zona {{name}}",
+      "parkMapHeading": "Mappa {{name}}",
+      "allMapItems": "Tutto"
     }
   },
   "publicNavigation": {

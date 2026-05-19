@@ -1134,7 +1134,10 @@
       "mapMarkersHint": "Geolokaliseerd",
       "mapPanelTitle": "Kaartpunten",
       "mapPanelHeading": "Realtime gefilterde kaart",
-      "mapPanelText": "De kaart volgt de huidige selectie: zone, categorie, type en zoekopdracht. De aangepaste markers blijven afgestemd op het exacte itemtype."
+      "mapPanelText": "De kaart volgt de huidige selectie: zone, categorie, type en zoekopdracht. De aangepaste markers blijven afgestemd op het exacte itemtype.",
+      "zoneMapHeading": "Kaart zone {{name}}",
+      "parkMapHeading": "Kaart {{name}}",
+      "allMapItems": "Alles"
     }
   },
   "publicNavigation": {

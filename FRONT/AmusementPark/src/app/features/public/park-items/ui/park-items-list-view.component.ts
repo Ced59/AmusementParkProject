@@ -121,6 +121,11 @@ export class ParkItemsListViewComponent {
     this.typeChanged.emit(value);
   }
 
+  setMapTypeFilter(value: string | null): void {
+    const nextValue: string | null = value && this.selectedType() === value ? null : value;
+    this.typeChanged.emit(nextValue);
+  }
+
   onZoneChanged(value: string | null): void {
     this.zoneChanged.emit(value);
   }

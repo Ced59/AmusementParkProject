@@ -52,6 +52,7 @@ function mapCountTags(counts: ParkExplorerCount[], maxCount: number): ParkItemsC
     .sort((left: ParkExplorerCount, right: ParkExplorerCount) => right.count - left.count)
     .slice(0, maxCount)
     .map((item: ParkExplorerCount) => ({
+      value: item.key,
       labelKey: getParkItemTypeTranslationKey(item.key),
       count: item.count
     }));

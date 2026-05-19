@@ -1134,7 +1134,10 @@
       "mapMarkersHint": "Geolokalisiert",
       "mapPanelTitle": "Kartenpunkte",
       "mapPanelHeading": "Live gefilterte Karte",
-      "mapPanelText": "Die Karte folgt der aktuellen Auswahl: Bereich, Kategorie, Typ und Suche. Die eigenen Marker bleiben an den genauen Elementtyp angepasst."
+      "mapPanelText": "Die Karte folgt der aktuellen Auswahl: Bereich, Kategorie, Typ und Suche. Die eigenen Marker bleiben an den genauen Elementtyp angepasst.",
+      "zoneMapHeading": "Karte Bereich {{name}}",
+      "parkMapHeading": "Karte {{name}}",
+      "allMapItems": "Alle"
     }
   },
   "publicNavigation": {

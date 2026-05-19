@@ -1134,7 +1134,10 @@
       "mapMarkersHint": "Geolokalizowane",
       "mapPanelTitle": "Punkty mapy",
       "mapPanelHeading": "Mapa filtrowana w czasie rzeczywistym",
-      "mapPanelText": "Mapa podąża za aktualnym wyborem: strefą, kategorią, typem i wyszukiwaniem. Niestandardowe znaczniki pozostają dopasowane do dokładnego typu elementu."
+      "mapPanelText": "Mapa podąża za aktualnym wyborem: strefą, kategorią, typem i wyszukiwaniem. Niestandardowe znaczniki pozostają dopasowane do dokładnego typu elementu.",
+      "zoneMapHeading": "Mapa strefy {{name}}",
+      "parkMapHeading": "Mapa {{name}}",
+      "allMapItems": "Wszystko"
     }
   },
   "publicNavigation": {

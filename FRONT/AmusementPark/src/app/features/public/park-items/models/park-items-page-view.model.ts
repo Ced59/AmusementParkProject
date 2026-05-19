@@ -1,4 +1,5 @@
 export interface ParkItemsCountTagViewModel {
+  value: string;
   labelKey: string;
   count: number;
 }

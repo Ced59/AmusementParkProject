@@ -1134,7 +1134,10 @@
       "mapMarkersHint": "Géolocalisés",
       "mapPanelTitle": "Repères carte",
       "mapPanelHeading": "Carte filtrée en temps réel",
-      "mapPanelText": "La carte suit la sélection courante : zone, catégorie, type et recherche. Les marqueurs personnalisés restent adaptés au type précis de chaque élément."
+      "mapPanelText": "La carte suit la sélection courante : zone, catégorie, type et recherche. Les marqueurs personnalisés restent adaptés au type précis de chaque élément.",
+      "zoneMapHeading": "Carte Zone {{name}}",
+      "parkMapHeading": "Carte {{name}}",
+      "allMapItems": "Tout"
     }
   },
   "publicNavigation": {

@@ -1134,7 +1134,10 @@
       "mapMarkersHint": "Geolocated",
       "mapPanelTitle": "Map cues",
       "mapPanelHeading": "Real-time filtered map",
-      "mapPanelText": "The map follows the current selection: zone, category, type and search. Custom markers stay adapted to each item type."
+      "mapPanelText": "The map follows the current selection: zone, category, type and search. Custom markers stay adapted to each item type.",
+      "zoneMapHeading": "Map Zone {{name}}",
+      "parkMapHeading": "{{name}} map",
+      "allMapItems": "All"
     }
   },
   "publicNavigation": {

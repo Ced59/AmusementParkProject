@@ -32,6 +32,7 @@
   z-index: 2;
   display: grid;
   max-width: 78rem;
+  min-width: 0;
   min-height: inherit;
   gap: 1.05rem;
   align-content: end;
@@ -42,6 +43,7 @@
   display: grid;
   gap: 0.55rem;
   max-width: min(66rem, 100%);
+  min-width: 0;
 }
 
 .zone-focus__park-name,
@@ -70,10 +72,15 @@
   margin: 0;
   color: var(--app-text-muted);
   line-height: 1.72;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .zone-focus__rich-description {
-  max-width: 62rem;
+  max-width: min(62rem, 100%);
+  overflow: hidden;
   font-size: clamp(0.95rem, 1.45vw, 1.08rem);
 }
 
@@ -89,6 +96,18 @@
 
 :host ::ng-deep .zone-focus__rich-description :where(p, li) {
   color: var(--app-text-muted);
+}
+
+:host ::ng-deep .zone-focus__rich-description :where(*) {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal !important;
+}
+
+:host ::ng-deep .zone-focus__rich-description :where(img, table, pre) {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .zone-focus__quick-actions {
@@ -184,6 +203,36 @@
 
 .zone-focus__chips {
   padding-top: 0.4rem;
+}
+
+.zone-focus__filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.1rem;
+  padding: 0.35rem 0.82rem;
+  border: 1px solid rgba(255, 210, 140, 0.14);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 210, 140, 0.06);
+  color: var(--app-text-muted);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  text-align: left;
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+}
+
+.zone-focus__filter-chip:hover,
+.zone-focus__filter-chip--active {
+  border-color: color-mix(in srgb, var(--app-primary) 44%, var(--app-border));
+  background: color-mix(in srgb, var(--app-primary) 16%, transparent);
+  color: var(--app-heading);
+}
+
+.zone-focus__filter-chip--all {
+  color: var(--app-primary);
 }
 
 :host ::ng-deep .zone-focus__map-slot .leaflet-map-container {
