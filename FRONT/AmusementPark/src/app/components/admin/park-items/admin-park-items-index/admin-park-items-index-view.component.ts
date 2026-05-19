@@ -16,6 +16,7 @@ import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
+import { PARK_ITEM_CATEGORY_OPTIONS, PARK_ITEM_TYPE_OPTIONS, TranslationOption } from '@shared/utils/display/display-options';
 
 @Component({
   selector: 'app-admin-park-items-index-view',
@@ -71,6 +72,8 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   protected localAdminReviewStatusFilter: AdminReviewStatus | null = null;
   protected localCategoryFilter: ParkItemCategory | null = null;
   protected localTypeFilter: ParkItemType | null = null;
+  protected readonly categoryOptions: ReadonlyArray<TranslationOption<ParkItemCategory>> = PARK_ITEM_CATEGORY_OPTIONS;
+  protected readonly typeOptions: ReadonlyArray<TranslationOption<ParkItemType>> = PARK_ITEM_TYPE_OPTIONS;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedParkId']) {

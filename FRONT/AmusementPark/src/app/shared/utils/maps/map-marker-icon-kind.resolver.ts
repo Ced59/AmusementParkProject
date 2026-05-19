@@ -185,10 +185,26 @@ function resolveTypeIconKind(normalizedType: string): MapMarkerIconKind | null {
       return 'show';
     case 'shop':
       return 'shop';
+    case 'game':
+      return 'game';
+    case 'meetandgreet':
+      return 'meetAndGreet';
     case 'service':
       return 'service';
+    case 'toilets':
+      return 'toilets';
+    case 'firstaid':
+      return 'firstAid';
+    case 'information':
+      return 'information';
+    case 'locker':
+      return 'locker';
+    case 'parking':
+      return 'parking';
     case 'transport':
       return 'transport';
+    case 'station':
+      return 'station';
     case 'attraction':
       return 'attraction';
     case 'other':

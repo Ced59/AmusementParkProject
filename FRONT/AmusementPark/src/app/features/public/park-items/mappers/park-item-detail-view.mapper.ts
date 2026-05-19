@@ -791,9 +791,28 @@ function resolveParkItemTypeIconClass(type: string | null | undefined): string {
       return 'pi pi-home';
     case 'Shop':
       return 'pi pi-shopping-cart';
+    case 'Game':
+    case 'InteractiveExperience':
+      return 'pi pi-bullseye';
+    case 'MeetAndGreet':
+      return 'pi pi-heart';
+    case 'Service':
+      return 'pi pi-wrench';
+    case 'Toilets':
+      return 'pi pi-users';
+    case 'FirstAid':
+      return 'pi pi-plus-circle';
+    case 'Information':
+      return 'pi pi-info-circle';
+    case 'Locker':
+      return 'pi pi-lock';
+    case 'Parking':
+      return 'pi pi-car';
     case 'Transport':
     case 'TransportRide':
       return 'pi pi-car';
+    case 'Station':
+      return 'pi pi-directions';
     default:
       return 'pi pi-star';
   }
@@ -814,7 +833,21 @@ function resolveParkItemTypeTone(type: string | null | undefined, category: stri
     case 'Snack':
       return 'food';
     case 'ThrillRide':
+    case 'Game':
       return 'thrill';
+    case 'MeetAndGreet':
+      return 'rose';
+    case 'Parking':
+    case 'Toilets':
+    case 'Locker':
+    case 'FirstAid':
+    case 'Information':
+    case 'Service':
+      return 'sky';
+    case 'Station':
+    case 'Transport':
+    case 'TransportRide':
+      return 'family';
     default:
       return resolveParkItemCategoryTone(category);
   }

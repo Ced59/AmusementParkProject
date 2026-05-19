@@ -83,6 +83,40 @@ function resolveParkItemTypeIconClass(type: string | null | undefined): string {
       return 'pi pi-sync';
     case 'DarkRide':
       return 'pi pi-moon';
+    case 'FamilyRide':
+    case 'MeetAndGreet':
+      return 'pi pi-heart';
+    case 'ThrillRide':
+      return 'pi pi-send';
+    case 'Restaurant':
+    case 'Snack':
+      return 'pi pi-shopping-bag';
+    case 'Show':
+      return 'pi pi-video';
+    case 'Hotel':
+      return 'pi pi-home';
+    case 'Shop':
+      return 'pi pi-shopping-cart';
+    case 'Game':
+    case 'InteractiveExperience':
+      return 'pi pi-bullseye';
+    case 'Transport':
+    case 'TransportRide':
+      return 'pi pi-car';
+    case 'Station':
+      return 'pi pi-directions';
+    case 'Toilets':
+      return 'pi pi-users';
+    case 'FirstAid':
+      return 'pi pi-plus-circle';
+    case 'Information':
+      return 'pi pi-info-circle';
+    case 'Locker':
+      return 'pi pi-lock';
+    case 'Parking':
+      return 'pi pi-car';
+    case 'Service':
+      return 'pi pi-wrench';
     default:
       return 'pi pi-star';
   }

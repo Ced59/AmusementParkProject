@@ -154,9 +154,25 @@ function toParkItemType(value: ParkItem['type'] | ParkItemAdminRow['type'] | num
     case 17:
       return 'Shop';
     case 18:
-      return 'Service';
+      return 'Game';
     case 19:
+      return 'MeetAndGreet';
+    case 20:
+      return 'Service';
+    case 21:
+      return 'Toilets';
+    case 22:
+      return 'FirstAid';
+    case 23:
+      return 'Information';
+    case 24:
+      return 'Locker';
+    case 25:
+      return 'Parking';
+    case 26:
       return 'Transport';
+    case 27:
+      return 'Station';
     default:
       return 'Other';
   }

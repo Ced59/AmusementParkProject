@@ -404,6 +404,8 @@ function toParkItemType(value: unknown, category: ParkItemCategory): ParkItemTyp
       'WalkThrough',
       'Playground',
       'InteractiveExperience',
+      'Game',
+      'MeetAndGreet',
       'ObservationRide',
       'Other'
     ]
@@ -418,9 +420,9 @@ function toParkItemType(value: unknown, category: ParkItemCategory): ParkItemTyp
             : category === 'Shop'
               ? ['Shop']
               : category === 'Service'
-                ? ['Service']
+                ? ['Service', 'Toilets', 'FirstAid', 'Information', 'Locker', 'Parking']
                 : category === 'Transport'
-                  ? ['Transport']
+                  ? ['Transport', 'Station']
                   : ['Other'];
 
   return allowedTypes.includes(normalized as ParkItemType)

@@ -73,15 +73,9 @@
       <span class="admin-field-label">{{ 'admin.filters.category' | translate }}</span>
       <select [(ngModel)]="localCategoryFilter" (ngModelChange)="onImmediateFilterChanged()">
         <option [ngValue]="null">{{ 'admin.filters.categoryAll' | translate }}</option>
-        <option [ngValue]="'Attraction'">{{ 'parkExplorer.categories.attraction' | translate }}</option>
-        <option [ngValue]="'Restaurant'">{{ 'parkExplorer.categories.restaurant' | translate }}</option>
-        <option [ngValue]="'Hotel'">{{ 'parkExplorer.categories.hotel' | translate }}</option>
-        <option [ngValue]="'Animal'">{{ 'parkExplorer.categories.animal' | translate }}</option>
-        <option [ngValue]="'Show'">{{ 'parkExplorer.categories.show' | translate }}</option>
-        <option [ngValue]="'Shop'">{{ 'parkExplorer.categories.shop' | translate }}</option>
-        <option [ngValue]="'Service'">{{ 'parkExplorer.categories.service' | translate }}</option>
-        <option [ngValue]="'Transport'">{{ 'parkExplorer.categories.transport' | translate }}</option>
-        <option [ngValue]="'Other'">{{ 'parkExplorer.categories.other' | translate }}</option>
+        @for (option of categoryOptions; track option.value) {
+          <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+        }
       </select>
     </label>
 
@@ -89,27 +83,9 @@
       <span class="admin-field-label">{{ 'admin.filters.type' | translate }}</span>
       <select [(ngModel)]="localTypeFilter" (ngModelChange)="onImmediateFilterChanged()">
         <option [ngValue]="null">{{ 'admin.filters.typeAll' | translate }}</option>
-        <option [ngValue]="'Attraction'">{{ 'parkExplorer.types.attraction' | translate }}</option>
-        <option [ngValue]="'RollerCoaster'">{{ 'parkExplorer.types.rollerCoaster' | translate }}</option>
-        <option [ngValue]="'WaterRide'">{{ 'parkExplorer.types.waterRide' | translate }}</option>
-        <option [ngValue]="'FlatRide'">{{ 'parkExplorer.types.flatRide' | translate }}</option>
-        <option [ngValue]="'DarkRide'">{{ 'parkExplorer.types.darkRide' | translate }}</option>
-        <option [ngValue]="'FamilyRide'">{{ 'parkExplorer.types.familyRide' | translate }}</option>
-        <option [ngValue]="'ThrillRide'">{{ 'parkExplorer.types.thrillRide' | translate }}</option>
-        <option [ngValue]="'TransportRide'">{{ 'parkExplorer.types.transportRide' | translate }}</option>
-        <option [ngValue]="'WalkThrough'">{{ 'parkExplorer.types.walkThrough' | translate }}</option>
-        <option [ngValue]="'Playground'">{{ 'parkExplorer.types.playground' | translate }}</option>
-        <option [ngValue]="'InteractiveExperience'">{{ 'parkExplorer.types.interactiveExperience' | translate }}</option>
-        <option [ngValue]="'ObservationRide'">{{ 'parkExplorer.types.observationRide' | translate }}</option>
-        <option [ngValue]="'AnimalExhibit'">{{ 'parkExplorer.types.animalExhibit' | translate }}</option>
-        <option [ngValue]="'Restaurant'">{{ 'parkExplorer.types.restaurant' | translate }}</option>
-        <option [ngValue]="'Snack'">{{ 'parkExplorer.types.snack' | translate }}</option>
-        <option [ngValue]="'Hotel'">{{ 'parkExplorer.types.hotel' | translate }}</option>
-        <option [ngValue]="'Show'">{{ 'parkExplorer.types.show' | translate }}</option>
-        <option [ngValue]="'Shop'">{{ 'parkExplorer.types.shop' | translate }}</option>
-        <option [ngValue]="'Service'">{{ 'parkExplorer.types.service' | translate }}</option>
-        <option [ngValue]="'Transport'">{{ 'parkExplorer.types.transport' | translate }}</option>
-        <option [ngValue]="'Other'">{{ 'parkExplorer.types.other' | translate }}</option>
+        @for (option of typeOptions; track option.value) {
+          <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+        }
       </select>
     </label>
   </div>

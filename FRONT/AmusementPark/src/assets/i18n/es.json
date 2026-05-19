@@ -871,7 +871,15 @@
       "walkThrough": "Walkthrough attractions",
       "playground": "Playgrounds",
       "interactiveExperience": "Interactive experiences",
-      "observationRide": "Observation rides"
+      "observationRide": "Observation rides",
+      "game": "Juego",
+      "meetAndGreet": "Encuentro con personajes",
+      "toilets": "Baños",
+      "firstAid": "Primeros auxilios",
+      "information": "Información",
+      "locker": "Consigna",
+      "parking": "Aparcamiento",
+      "station": "Estación"
     }
   },
   "shared": {

@@ -871,7 +871,15 @@
       "walkThrough": "Walkthrough attractions",
       "playground": "Playgrounds",
       "interactiveExperience": "Interactive experiences",
-      "observationRide": "Observation rides"
+      "observationRide": "Observation rides",
+      "game": "Spel",
+      "meetAndGreet": "Ontmoeting met personages",
+      "toilets": "Toiletten",
+      "firstAid": "Eerste hulp",
+      "information": "Informatie",
+      "locker": "Kluisje",
+      "parking": "Parking",
+      "station": "Station"
     }
   },
   "shared": {
