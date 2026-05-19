@@ -10,6 +10,7 @@ import { AuthService } from '@app/services/auth/auth.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { SharedService } from '@app/services/shared/shared.service';
 import { ModalService } from '@app/services/modal/modal.service';
+import { AuthenticatedUserLanguageService } from '@app/services/users/authenticated-user-language.service';
 import { FormsModule } from '@angular/forms';
 import { UiButtonDirective } from '@ui/primitives';
 import { UiFieldInputComponent } from '@ui/forms';
@@ -35,6 +36,7 @@ export class LoginFormComponent {
     private readonly sharedService: SharedService,
     private readonly router: Router,
     private readonly modalService: ModalService,
+    private readonly authenticatedUserLanguageService: AuthenticatedUserLanguageService,
     private readonly translateService: TranslateService) {
   }
 
@@ -44,6 +46,7 @@ export class LoginFormComponent {
     try {
       const result: UserToken = await firstValueFrom(this.authApiService.login(userCredentials));
       this.authService.setAuthenticatedSession(result);
+      await firstValueFrom(this.authenticatedUserLanguageService.syncPreferredLanguageFromCurrentUser());
       this.messageService.add('success', this.translate('common.success', 'Success'), this.translate('auth.login.success', 'Signed in successfully.'));
       this.sharedService.emitLoginStatusChange();
       this.loginSuccess.emit(result);

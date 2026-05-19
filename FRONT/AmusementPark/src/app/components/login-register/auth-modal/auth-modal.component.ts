@@ -7,6 +7,7 @@ import { AuthService } from '@app/services/auth/auth.service';
 import { GoogleIdentityService } from '@app/services/auth/google-identity.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { SharedService } from '@app/services/shared/shared.service';
+import { AuthenticatedUserLanguageService } from '@app/services/users/authenticated-user-language.service';
 import { UserToken } from '@app/models/users/user_token';
 import { RegisterFormComponent } from '../register-form/register-form.component';
 import { LoginFormComponent } from '../login-form/login-form.component';
@@ -30,6 +31,7 @@ export class AuthModalComponent implements AfterViewInit {
     private readonly googleIdentityService: GoogleIdentityService,
     private readonly messageService: ToastMessageService,
     private readonly sharedService: SharedService,
+    private readonly authenticatedUserLanguageService: AuthenticatedUserLanguageService,
     private readonly translateService: TranslateService) {
   }
 
@@ -62,6 +64,7 @@ export class AuthModalComponent implements AfterViewInit {
     try {
       const result: UserToken = await firstValueFrom(this.authApiService.externalLogin('google', idToken));
       this.authService.setAuthenticatedSession(result);
+      await firstValueFrom(this.authenticatedUserLanguageService.syncPreferredLanguageFromCurrentUser());
       this.messageService.add('success', this.translate('common.success', 'Success'), this.translate('auth.login.google_success', 'Google sign-in succeeded.'));
       this.sharedService.emitLoginStatusChange();
       this.closeModal.emit();

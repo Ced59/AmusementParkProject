@@ -2,12 +2,14 @@ import { Injectable, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
+import { switchMap } from 'rxjs/operators';
+
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { UserToken } from '../../../../models/users/user_token';
 import { AuthService } from '../../../../services/auth/auth.service';
 import { ToastMessageService } from '../../../../services/messages/toast-message.service';
 import { SharedService } from '../../../../services/shared/shared.service';
-import { CurrentUserService } from '../../../../services/users/current-user.service';
+import { AuthenticatedUserLanguageService } from '@app/services/users/authenticated-user-language.service';
 
 @Injectable()
 export class SigninGoogleStateFacade {
@@ -21,7 +23,7 @@ export class SigninGoogleStateFacade {
     private readonly messageService: ToastMessageService,
     private readonly authService: AuthService,
     private readonly sharedService: SharedService,
-    private readonly currentUserService: CurrentUserService,
+    private readonly authenticatedUserLanguageService: AuthenticatedUserLanguageService,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -34,13 +36,16 @@ export class SigninGoogleStateFacade {
 
     this.screenStateStore.setLoading();
 
-    this.authApiService.googleLogin(code).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (result: UserToken) => {
+    this.authApiService.googleLogin(code).pipe(
+      switchMap((result: UserToken) => {
         this.authService.setAuthenticatedSession(result);
-        this.currentUserService.refreshCurrentUser();
+        return this.authenticatedUserLanguageService.syncPreferredLanguageFromCurrentUser(lastVisitedUrl ?? '/en/home');
+      }),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe({
+      next: () => {
         this.messageService.add('success', 'Succès', 'Connexion avec Google réussie !');
         this.sharedService.emitLoginStatusChange();
-        this.redirectToLastVisitedUrl(lastVisitedUrl);
       },
       error: (error: unknown) => {
         this.screenStateStore.setError('auth.google.errorMessage');
