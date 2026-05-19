@@ -7,6 +7,7 @@ export interface ParkItemDetailRowViewModel {
   value: string;
   valueKey?: string | null;
   iconClass?: string | null;
+  isTextualValue?: boolean;
 }
 
 export interface ParkItemDetailSpecGroupViewModel {

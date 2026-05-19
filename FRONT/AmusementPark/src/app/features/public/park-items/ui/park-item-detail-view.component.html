@@ -71,14 +71,20 @@
     </section>
 
     <section class="item-specs-grid" *ngIf="currentDetail.spotlightRows.length > 0">
-      <article class="item-spec" *ngFor="let row of currentDetail.spotlightRows">
+      <article
+        class="item-spec"
+        *ngFor="let row of currentDetail.spotlightRows"
+        [class.item-spec--textual]="isSpotlightTextualValue(row)"
+        [class.item-spec--long-text]="isSpotlightLongTextValue(row)">
         <div class="item-spec__icon" *ngIf="row.iconClass">
           <i [class]="row.iconClass" aria-hidden="true"></i>
         </div>
         <div
           class="item-spec__value"
-          [class.item-spec__value--textual]="row.valueKey">
-          {{ row.valueKey ? (row.valueKey | translate) : row.value }}
+          [class.item-spec__value--textual]="isSpotlightTextualValue(row)"
+          [class.item-spec__value--long-text]="isSpotlightLongTextValue(row)"
+          [title]="getSpotlightValue(row)">
+          {{ getSpotlightValue(row) }}
         </div>
         <div class="item-spec__label">{{ row.labelKey | translate }}</div>
       </article>

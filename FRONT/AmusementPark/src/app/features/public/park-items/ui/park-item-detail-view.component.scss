@@ -500,16 +500,38 @@
   hyphens: none;
 }
 
+.item-spec--textual {
+  align-content: center;
+}
+
+.item-spec--textual .item-spec__value,
 .item-spec__value--textual {
-  font-size: clamp(1rem, 1.45vw, 1.34rem);
-  line-height: 1.12;
-  letter-spacing: -0.04em;
-  text-wrap: normal;
+  width: 100%;
+  max-width: calc(100% - 0.5rem);
+  font-size: clamp(0.9rem, 1.05vw, 1.12rem) !important;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  overflow: visible;
+}
+
+.item-spec--long-text .item-spec__value,
+.item-spec__value--long-text {
+  max-width: calc(100% - 0.75rem);
+  font-size: clamp(0.78rem, 0.92vw, 0.98rem) !important;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
 }
 
 @supports (font-size: 1cqw) {
+  .item-spec--textual .item-spec__value,
   .item-spec__value--textual {
-    font-size: clamp(1rem, 6.2cqw, 1.34rem);
+    font-size: clamp(0.86rem, 3.5cqw, 1.08rem) !important;
+  }
+
+  .item-spec--long-text .item-spec__value,
+  .item-spec__value--long-text {
+    font-size: clamp(0.74rem, 2.85cqw, 0.96rem) !important;
   }
 }
 

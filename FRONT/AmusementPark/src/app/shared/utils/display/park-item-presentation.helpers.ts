@@ -23,3 +23,14 @@ export function resolveParkItemDescription(item: ParkItem | null | undefined, cu
   const plainText: string = stripHtml(localizedDescription);
   return plainText.length > 0 ? plainText : null;
 }
+
+export function resolveParkItemRichDescription(item: ParkItem | null | undefined, currentLang: string): string | null {
+  const localizedDescription: string | undefined = resolveLocalizedValue(item?.descriptions, currentLang);
+  const plainText: string = stripHtml(localizedDescription);
+
+  if (plainText.length === 0) {
+    return null;
+  }
+
+  return localizedDescription?.trim() ?? null;
+}

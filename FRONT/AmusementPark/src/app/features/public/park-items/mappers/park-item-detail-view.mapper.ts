@@ -12,7 +12,7 @@ import { buildPublicParkItemsRouteCommands, buildPublicParkRouteCommands } from 
 import {
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
-  resolveParkItemDescription
+  resolveParkItemRichDescription
 } from '@shared/utils/display/park-item-presentation.helpers';
 import { getLocalizedBooleanDisplay, normalizeTranslationSegment } from '@shared/utils/display/display-label.helpers';
 import { resolveLocationMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
@@ -64,7 +64,7 @@ export function mapParkItemToDetailViewModel(
     homeLink: ['/', currentLanguage, 'home'],
     parkLink: buildParkLink(park, currentLanguage),
     itemsLink: buildItemsLink(park, currentLanguage),
-    description: resolveParkItemDescription(item, currentLanguage),
+    description: resolveParkItemRichDescription(item, currentLanguage),
     manufacturerName,
     modelName: trimOrNull(item.attractionDetails?.model),
     status: trimOrNull(item.attractionDetails?.status),
@@ -202,13 +202,15 @@ function buildSpotlightRows(
       labelKey: 'parkItems.fields.category',
       value: '',
       valueKey: getParkItemCategoryTranslationKey(item.category),
-      iconClass: 'pi pi-tags'
+      iconClass: 'pi pi-tags',
+      isTextualValue: true
     },
     {
       labelKey: 'parkItems.fields.type',
       value: '',
       valueKey: getParkItemTypeTranslationKey(item.type),
-      iconClass: 'pi pi-star'
+      iconClass: 'pi pi-star',
+      isTextualValue: true
     },
   ].filter((row: ParkItemDetailRowViewModel) => row.value.length > 0 || !!row.valueKey);
 }
@@ -607,7 +609,20 @@ function pushRow(
     return;
   }
 
-  rows.push({ labelKey, value: trimmedValue, valueKey, iconClass });
+  rows.push({ labelKey, value: trimmedValue, valueKey, iconClass, isTextualValue: isTextualDetailValue(labelKey, trimmedValue, valueKey) });
+}
+
+
+function isTextualDetailValue(labelKey: string, value: string, valueKey: string | null): boolean {
+  if (valueKey !== null) {
+    return true;
+  }
+
+  if (labelKey === 'parkItems.fields.status') {
+    return true;
+  }
+
+  return value.length > 8 && /[A-Za-zÀ-ÿ]/.test(value);
 }
 
 function pushLocationPoint(
