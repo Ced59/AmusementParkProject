@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkZones.Results;
+using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Parks;
@@ -135,6 +136,36 @@ internal static class ParksHttpMappers
             Latitude = value.Position?.Latitude ?? 0.0,
             Longitude = value.Position?.Longitude ?? 0.0,
             CurrentLogoImageId = value.CurrentLogoImageId,
+        };
+    }
+
+    public static ParkDistanceResponseDto ToDistanceHttp(this ParkDistanceResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkDistanceResponseDto
+        {
+            Source = value.SourcePark.ToMapPointHttp(),
+            DistanceUnit = value.DistanceUnit,
+            CalculationKind = value.CalculationKind,
+            Targets = value.Targets.Select(target => target.ToDistanceHttp(value.DistanceUnit)).ToList(),
+            MissingTargetParkIds = value.MissingTargetParkIds.ToList(),
+            UnavailableTargetParkIds = value.UnavailableTargetParkIds.ToList(),
+        };
+    }
+
+    public static ParkDistanceTargetDto ToDistanceHttp(this ParkDistanceTargetResult value, string distanceUnit)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkDistanceTargetDto
+        {
+            ProximityRank = value.ProximityRank,
+            DistanceKilometers = value.DistanceKilometers,
+            DistanceMeters = Math.Round(value.DistanceKilometers * 1000d, 0, MidpointRounding.AwayFromZero),
+            DistanceUnit = distanceUnit,
+            EstimatedTravelDurationMinutes = value.EstimatedTravelDurationMinutes,
+            Park = value.Park.ToHttp(),
         };
     }
 

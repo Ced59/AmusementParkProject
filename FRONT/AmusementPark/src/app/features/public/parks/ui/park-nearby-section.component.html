@@ -7,6 +7,20 @@
     subtitleKey="parks.detail.nearby.subtitle">
   </app-ui-section-header>
 
+  @if (nearestPark; as closestPark) {
+    @if (closestPark.distanceLine) {
+      <app-ui-distance-panel
+        class="park-nearby__distance-panel"
+        titleKey="parks.detail.nearby.closestTitle"
+        [sourceLabel]="sourceName"
+        [targetLabel]="closestPark.name"
+        [distanceValue]="closestPark.distanceLine"
+        [durationText]="closestPark.travelDurationLine ?? null"
+        noteKey="parks.detail.nearby.distanceNote">
+      </app-ui-distance-panel>
+    }
+  }
+
   <app-page-state
     [state]="state"
     [messages]="{

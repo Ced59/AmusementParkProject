@@ -751,7 +751,9 @@
       "website": "Site web",
       "coordinates": "Coordonnées",
       "latitude": "Latitude",
-      "longitude": "Longitude"
+      "longitude": "Longitude",
+      "distance": "Distance",
+      "estimatedTravelDuration": "Trajet estimé"
     },
     "actions": {
       "viewDetails": "Voir le détail",
@@ -784,7 +786,9 @@
         "errorTitle": "Impossible de charger les parcs proches",
         "errorMessage": "Les parcs proches n’ont pas pu être chargés.",
         "emptyTitle": "Aucun parc à proximité",
-        "emptyMessage": "Aucun parc proche n’a été trouvé autour de cette destination."
+        "emptyMessage": "Aucun parc proche n’a été trouvé autour de cette destination.",
+        "closestTitle": "Parc le plus proche",
+        "distanceNote": "Distance orthodromique calculée depuis les coordonnées du parc."
       },
       "description": {
         "badge": "Présentation",

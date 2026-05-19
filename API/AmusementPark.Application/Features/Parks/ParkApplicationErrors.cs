@@ -17,6 +17,22 @@ internal static class ParkApplicationErrors
         return ApplicationError.NotFound("park.geo-search.empty", "They are no park in this location");
     }
 
+    public static ApplicationError InvalidDistanceRequest(string fieldName, string message)
+    {
+        return ApplicationError.Validation(
+            "park.distance.invalid-request",
+            message,
+            new Dictionary<string, IReadOnlyCollection<string>>
+            {
+                [fieldName] = new[] { message },
+            });
+    }
+
+    public static ApplicationError ParkHasNoCoordinates(string parkId)
+    {
+        return ApplicationError.RuleViolation("park.distance.no-coordinates", $"Park '{parkId}' has no coordinates");
+    }
+
     public static ApplicationError ErrorCreatingPark()
     {
         return ApplicationError.Technical("park.create.failed", "Error while creating park");

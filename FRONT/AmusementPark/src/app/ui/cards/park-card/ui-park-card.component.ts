@@ -32,6 +32,14 @@ export class UiParkCardComponent {
     return !!this.park?.shortDescription && !this.compact;
   }
 
+  protected get hasDistance(): boolean {
+    return !!this.park?.distanceLine;
+  }
+
+  protected get hasTravelDuration(): boolean {
+    return !!this.park?.travelDurationLine && !this.compact;
+  }
+
   protected get hasCoordinates(): boolean {
     return !!this.park?.coordinatesLine && !this.compact;
   }

@@ -35,6 +35,20 @@
       }
 
       <div class="ui-park-card__details">
+        @if (hasDistance) {
+          <div class="ui-park-card__detail ui-park-card__detail--distance">
+            <span class="ui-park-card__label">{{ 'parks.fields.distance' | translate }}</span>
+            <strong>{{ currentPark.distanceLine }}</strong>
+          </div>
+        }
+
+        @if (hasTravelDuration) {
+          <div class="ui-park-card__detail">
+            <span class="ui-park-card__label">{{ 'parks.fields.estimatedTravelDuration' | translate }}</span>
+            <strong>{{ currentPark.travelDurationLine }}</strong>
+          </div>
+        }
+
         @if (currentPark.addressLine) {
           <div class="ui-park-card__detail">
             <span class="ui-park-card__label">{{ 'parks.fields.address' | translate }}</span>

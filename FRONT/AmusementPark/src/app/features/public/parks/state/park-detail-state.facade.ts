@@ -8,6 +8,7 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { ParkFounder } from '@app/models/parks/park-founder';
 import { Park } from '@app/models/parks/park';
+import { ParkDistanceResponse, ParkDistanceTarget } from '@app/models/parks/park-distance';
 import { ParkExplorer, ParkExplorerBucket, ParkExplorerCount } from '@app/models/parks/park-explorer';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkOperator } from '@app/models/parks/park-operator';
@@ -22,8 +23,9 @@ import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { ScreenStateKind } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
-import { mapArray, mapNullable, mapParkToCardModel } from '@shared/utils/mapping';
+import { mapArray, mapNullable } from '@shared/utils/mapping';
 import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
+import { mapParkDistanceTargetToCardModel } from '../mappers/park-distance-card.mapper';
 import { mapParkItemsToMapViewModel } from '../mappers/park-items-map-view.mapper';
 import { mapParkToDetailViewModel, ParkDetailItemPhotoSource } from '../mappers/park-detail-view.mapper';
 import { mapParkZoneToDetailViewModel } from '../mappers/park-zone-detail-view.mapper';
@@ -38,7 +40,7 @@ interface ParkDetailSourceData {
   zones: ParkZone[];
   founderName: string | null;
   operatorName: string | null;
-  nearbyParks: Park[];
+  nearbyParks: ParkDistanceTarget[];
   nearbyState: ScreenStateKind;
   parkItems: ParkItem[];
   parkPhotos: ImageDto[];
@@ -120,7 +122,10 @@ export class ParkDetailStateFacade {
       ));
   });
   public readonly nearbyParks: Signal<ParkCardModel[]> = computed(() => {
-    return mapArray(this.screenStateStore.data()?.nearbyParks, (park: Park) => mapParkToCardModel(park, this.currentLanguageSignal(), this.countryDisplayService));
+    return mapArray(
+      this.screenStateStore.data()?.nearbyParks,
+      (target: ParkDistanceTarget) => mapParkDistanceTargetToCardModel(target, this.currentLanguageSignal(), this.countryDisplayService)
+    );
   });
   public readonly nearbyState = computed(() => this.screenStateStore.data()?.nearbyState ?? 'empty');
 
@@ -395,7 +400,8 @@ export class ParkDetailStateFacade {
   }
 
   private loadNearbyParks(park: Park): void {
-    if (!this.hasLocationInfo(park)) {
+    const parkId: string | null = park.id?.trim() ?? null;
+    if (!parkId || !this.hasLocationInfo(park)) {
       this.updateReadyData((current: ParkDetailSourceData) => ({
         ...current,
         nearbyParks: [],
@@ -409,9 +415,9 @@ export class ParkDetailStateFacade {
       nearbyState: 'loading'
     }));
 
-    this.parksApiService.getParksByLocation(park.latitude, park.longitude, 150).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (parks: Park[]) => {
-        const nearbyParks: Park[] = parks.filter((candidate: Park) => candidate.id !== park.id).slice(0, 4);
+    this.parksApiService.getNearestParks(parkId, 4).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (response: ParkDistanceResponse) => {
+        const nearbyParks: ParkDistanceTarget[] = response.targets ?? [];
         this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
           nearbyParks,

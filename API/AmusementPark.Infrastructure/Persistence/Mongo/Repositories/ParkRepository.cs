@@ -243,20 +243,27 @@ public sealed class ParkRepository : IParkRepository
 
     public async Task<IReadOnlyCollection<Park>> SearchByLocationAsync(double latitude, double longitude, double radiusInKilometers, bool includeHidden, CancellationToken cancellationToken)
     {
-        GeoJsonPoint<GeoJson2DGeographicCoordinates> center = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
-            new GeoJson2DGeographicCoordinates(longitude, latitude));
-
-        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.NearSphere(
-            document => document.Location,
-            center,
-            maxDistance: radiusInKilometers * 1000d);
-
-        if (!includeHidden)
-        {
-            filter &= Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
-        }
+        GeoJsonPoint<GeoJson2DGeographicCoordinates> center = BuildGeoJsonPoint(latitude, longitude);
+        FilterDefinition<ParkDocument> filter = this.BuildNearLocationFilter(center, radiusInKilometers, includeHidden);
 
         List<ParkDocument> documents = await this.collection.Find(filter).ToListAsync(cancellationToken);
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
+    public async Task<IReadOnlyCollection<Park>> GetNearestByLocationAsync(double latitude, double longitude, int limit, double? maxDistanceInKilometers, bool includeHidden, CancellationToken cancellationToken)
+    {
+        if (limit <= 0)
+        {
+            return Array.Empty<Park>();
+        }
+
+        GeoJsonPoint<GeoJson2DGeographicCoordinates> center = BuildGeoJsonPoint(latitude, longitude);
+        FilterDefinition<ParkDocument> filter = this.BuildNearLocationFilter(center, maxDistanceInKilometers, includeHidden);
+
+        List<ParkDocument> documents = await this.collection.Find(filter)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
@@ -305,6 +312,33 @@ public sealed class ParkRepository : IParkRepository
         return updated?.ToDomain();
     }
 
+
+    private static GeoJsonPoint<GeoJson2DGeographicCoordinates> BuildGeoJsonPoint(double latitude, double longitude)
+    {
+        return new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
+            new GeoJson2DGeographicCoordinates(longitude, latitude));
+    }
+
+    private FilterDefinition<ParkDocument> BuildNearLocationFilter(GeoJsonPoint<GeoJson2DGeographicCoordinates> center, double? radiusInKilometers, bool includeHidden)
+    {
+        double? maxDistanceInMeters = radiusInKilometers.HasValue
+            ? Math.Max(0d, radiusInKilometers.Value) * 1000d
+            : null;
+
+        FilterDefinition<ParkDocument> filter = maxDistanceInMeters.HasValue
+            ? Builders<ParkDocument>.Filter.NearSphere(document => document.Location, center, maxDistance: maxDistanceInMeters.Value)
+            : Builders<ParkDocument>.Filter.NearSphere(document => document.Location, center);
+
+        filter &= Builders<ParkDocument>.Filter.Ne(document => document.Latitude, null)
+            & Builders<ParkDocument>.Filter.Ne(document => document.Longitude, null);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        return filter;
+    }
 
     private FilterDefinition<ParkDocument> BuildCriteriaFilter(ParkSearchCriteria? criteria)
     {

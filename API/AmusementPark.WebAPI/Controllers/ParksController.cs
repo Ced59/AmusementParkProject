@@ -34,6 +34,8 @@ public sealed class ParksController : ControllerBase
     private readonly IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<Park>>> getParksPageQueryHandler;
     private readonly IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<Park>>> searchParksQueryHandler;
     private readonly IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler;
+    private readonly IQueryHandler<CalculateParkDistancesQuery, ApplicationResult<ParkDistanceResult>> calculateParkDistancesQueryHandler;
+    private readonly IQueryHandler<GetNearestParksQuery, ApplicationResult<ParkDistanceResult>> getNearestParksQueryHandler;
     private readonly IQueryHandler<GetVisibleParkMapPointsQuery, ApplicationResult<IReadOnlyCollection<Park>>> getVisibleParkMapPointsQueryHandler;
     private readonly IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler;
     private readonly IQueryHandler<GetHomeFeaturedParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getHomeFeaturedParksQueryHandler;
@@ -46,6 +48,8 @@ public sealed class ParksController : ControllerBase
         IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<Park>>> getParksPageQueryHandler,
         IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<Park>>> searchParksQueryHandler,
         IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler,
+        IQueryHandler<CalculateParkDistancesQuery, ApplicationResult<ParkDistanceResult>> calculateParkDistancesQueryHandler,
+        IQueryHandler<GetNearestParksQuery, ApplicationResult<ParkDistanceResult>> getNearestParksQueryHandler,
         IQueryHandler<GetVisibleParkMapPointsQuery, ApplicationResult<IReadOnlyCollection<Park>>> getVisibleParkMapPointsQueryHandler,
         IQueryHandler<GetRandomVisibleParksQuery, ApplicationResult<IReadOnlyCollection<Park>>> getRandomVisibleParksQueryHandler,
         IQueryHandler<GetHomeFeaturedParksQuery, ApplicationResult<IReadOnlyCollection<HomeFeaturedParkResult>>> getHomeFeaturedParksQueryHandler,
@@ -57,6 +61,8 @@ public sealed class ParksController : ControllerBase
         this.getParksPageQueryHandler = getParksPageQueryHandler;
         this.searchParksQueryHandler = searchParksQueryHandler;
         this.searchParksByLocationQueryHandler = searchParksByLocationQueryHandler;
+        this.calculateParkDistancesQueryHandler = calculateParkDistancesQueryHandler;
+        this.getNearestParksQueryHandler = getNearestParksQueryHandler;
         this.getVisibleParkMapPointsQueryHandler = getVisibleParkMapPointsQueryHandler;
         this.getRandomVisibleParksQueryHandler = getRandomVisibleParksQueryHandler;
         this.getHomeFeaturedParksQueryHandler = getHomeFeaturedParksQueryHandler;
@@ -177,11 +183,13 @@ public sealed class ParksController : ControllerBase
     public async Task<IActionResult> SearchParksByLocationAsync(
         [FromQuery] double latitude,
         [FromQuery] double longitude,
-        [FromQuery] double radius,
         [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] double? radiusMeters = null,
+        [FromQuery] double? radiusKilometers = null,
+        [FromQuery] double? radius = null,
         CancellationToken cancellationToken = default)
     {
-        double radiusInKilometers = radius / 1000d;
+        double radiusInKilometers = ResolveRadiusInKilometers(radiusMeters, radiusKilometers, radius);
         ApplicationResult<IReadOnlyCollection<Park>> result = await this.searchParksByLocationQueryHandler.HandleAsync(
             new SearchParksByLocationQuery(latitude, longitude, radiusInKilometers, false),
             cancellationToken);
@@ -193,6 +201,45 @@ public sealed class ParksController : ControllerBase
 
         PagedResponseDto<ParkDto> response = pagination.ToPagedResponse(result.Value, static park => park.ToHttp());
         return this.Ok(response);
+    }
+
+    [HttpGet("{id}/distances")]
+    [ProducesResponseType(typeof(ParkDistanceResponseDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetParkDistancesAsync(
+        [FromRoute] string id,
+        [FromQuery] string[] targetParkIds,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkDistanceResult> result = await this.calculateParkDistancesQueryHandler.HandleAsync(
+            new CalculateParkDistancesQuery(id, targetParkIds, this.UserCanSeeNonVisible()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToDistanceHttp());
+    }
+
+    [HttpGet("{id}/nearby")]
+    [ProducesResponseType(typeof(ParkDistanceResponseDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetNearestParksAsync(
+        [FromRoute] string id,
+        [FromQuery] int limit = 4,
+        [FromQuery] double? maxDistanceKilometers = null,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkDistanceResult> result = await this.getNearestParksQueryHandler.HandleAsync(
+            new GetNearestParksQuery(id, limit, maxDistanceKilometers, this.UserCanSeeNonVisible()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToDistanceHttp());
     }
 
     [HttpPatch("{id}/visibility")]
@@ -219,6 +266,26 @@ public sealed class ParksController : ControllerBase
         }
 
         return this.Ok(result.Value.ToHttp());
+    }
+
+    private static double ResolveRadiusInKilometers(double? radiusMeters, double? radiusKilometers, double? legacyRadiusMeters)
+    {
+        if (radiusKilometers.HasValue)
+        {
+            return Math.Max(0d, radiusKilometers.Value);
+        }
+
+        if (radiusMeters.HasValue)
+        {
+            return Math.Max(0d, radiusMeters.Value) / 1000d;
+        }
+
+        if (legacyRadiusMeters.HasValue)
+        {
+            return Math.Max(0d, legacyRadiusMeters.Value) / 1000d;
+        }
+
+        return 50d;
     }
 
     private bool UserCanSeeNonVisible()

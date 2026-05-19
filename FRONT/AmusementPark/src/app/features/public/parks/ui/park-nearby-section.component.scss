@@ -3,6 +3,11 @@
   gap: 1rem;
 }
 
+.park-nearby__distance-panel {
+  display: block;
+  max-width: 520px;
+}
+
 .park-nearby__grid {
   display: grid;
   gap: 1rem;

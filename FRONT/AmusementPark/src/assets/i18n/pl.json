@@ -751,7 +751,9 @@
       "website": "Website",
       "coordinates": "Coordinates",
       "latitude": "Latitude",
-      "longitude": "Longitude"
+      "longitude": "Longitude",
+      "distance": "Odległość",
+      "estimatedTravelDuration": "Szacowana podróż"
     },
     "actions": {
       "viewDetails": "View details",
@@ -784,7 +786,9 @@
         "errorTitle": "Unable to load nearby parks",
         "errorMessage": "Nearby parks could not be loaded.",
         "emptyTitle": "No nearby park",
-        "emptyMessage": "No nearby park has been found around this destination."
+        "emptyMessage": "No nearby park has been found around this destination.",
+        "closestTitle": "Najbliższy park",
+        "distanceNote": "Odległość po ortodromie obliczona z koordynatów parku."
       },
       "description": {
         "badge": "Opis",

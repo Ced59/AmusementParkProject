@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { ParkExplorer } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
+import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
@@ -70,8 +71,18 @@ export class ParksApiService {
     return this.http.get<ParksApiResponse>(url);
   }
 
-  getParksByLocation(latitude: number, longitude: number, radius: number): Observable<Park[]> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksByLocation(latitude, longitude, radius)}`;
+  getParkDistances(sourceParkId: string, targetParkIds: string[]): Observable<ParkDistanceResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkDistances(sourceParkId, targetParkIds)}`;
+    return this.http.get<ParkDistanceResponse>(url);
+  }
+
+  getNearestParks(sourceParkId: string, limit: number = 4, maxDistanceKilometers: number | null = null): Observable<ParkDistanceResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getNearestParks(sourceParkId, limit, maxDistanceKilometers)}`;
+    return this.http.get<ParkDistanceResponse>(url);
+  }
+
+  getParksByLocation(latitude: number, longitude: number, radiusMeters: number): Observable<Park[]> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksByLocation(latitude, longitude, radiusMeters)}`;
     return this.http.get<Park[] | PagedCollectionResponse<Park>>(url).pipe(
       map((response: Park[] | PagedCollectionResponse<Park>) => unwrapCollection<Park>(response))
     );

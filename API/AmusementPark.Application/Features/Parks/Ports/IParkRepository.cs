@@ -85,6 +85,11 @@ public interface IParkRepository
     Task<IReadOnlyCollection<Park>> SearchByLocationAsync(double latitude, double longitude, double radiusInKilometers, bool includeHidden, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne les parcs les plus proches d'une position.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetNearestByLocationAsync(double latitude, double longitude, int limit, double? maxDistanceInKilometers, bool includeHidden, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Crée un parc.
     /// </summary>
     Task<Park> CreateAsync(Park park, CancellationToken cancellationToken);

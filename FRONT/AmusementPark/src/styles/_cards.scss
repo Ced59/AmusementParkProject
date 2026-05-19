@@ -301,6 +301,15 @@ a.public-feature-card:hover {
   font-weight: 900;
 }
 
+.ui-park-card__detail--distance {
+  border-color: rgba(196, 255, 39, 0.18);
+  background: rgba(196, 255, 39, 0.055);
+}
+
+.ui-park-card__detail--distance strong {
+  color: var(--c-lime);
+}
+
 .ui-park-card__footer,
 .ui-item-card__footer,
 .ui-result-card__footer,
