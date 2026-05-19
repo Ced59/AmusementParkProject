@@ -1,4 +1,4 @@
-import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
+import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { Park } from '@app/models/parks/park';
 import { ParkExplorer, ParkExplorerBucket, ParkExplorerCount } from '@app/models/parks/park-explorer';
 import { resolveLocalizedValue } from '@shared/utils/localization';
@@ -59,9 +59,9 @@ function mapCountTags(counts: ParkExplorerCount[], maxCount: number): ParkItemsC
 }
 
 function buildParkLink(park: Park, currentLanguage: string): string[] | null {
-  if (!park.id || !park.name) {
-    return null;
-  }
-
-  return ['/', currentLanguage, 'park', park.id, buildParkSlug(park.name)];
+  return buildPublicParkRouteCommands({
+    language: currentLanguage,
+    parkId: park.id,
+    parkName: park.name
+  });
 }

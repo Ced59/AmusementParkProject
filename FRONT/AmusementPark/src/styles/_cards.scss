@@ -852,6 +852,12 @@ body.light-mode .ui-featured-park-card__visual-bg {
   padding: 0.72rem;
 }
 
+.ui-featured-park-card__logo-placeholder {
+  border-radius: inherit;
+  background: transparent;
+  color: var(--featured-park-accent);
+}
+
 .ui-featured-park-card__body {
   display: flex;
   flex: 1;

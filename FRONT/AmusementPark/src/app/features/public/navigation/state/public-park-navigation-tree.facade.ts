@@ -12,6 +12,11 @@ import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import {
+  buildPublicParkItemRouteCommands,
+  buildPublicParkItemsRouteCommands,
+  buildPublicParkRouteCommands
+} from '@shared/utils/routing/public-detail-route.helpers';
+import {
   PublicParkNavigationTreeItem,
   PublicParkNavigationTreeViewModel
 } from '../models/public-park-navigation-tree.model';
@@ -146,8 +151,8 @@ export class PublicParkNavigationTreeFacade {
     const parkLabel: string = this.resolveParkLabel(sourceData.park, context.parkId);
     const zoneLabel: string | null = sourceData.zone ? this.resolveZoneLabel(sourceData.zone, context.language) : null;
     const itemLabel: string | null = sourceData.item?.name ?? null;
-    const parkRoute: string[] = ['/', context.language, 'park', context.parkId, context.parkSlug];
-    const parkItemsRoute: string[] = ['/', context.language, 'park', context.parkId, context.parkSlug, 'items'];
+    const parkRoute: string[] = this.buildParkRoute(sourceData);
+    const parkItemsRoute: string[] = this.buildParkItemsRoute(sourceData);
     const items: PublicParkNavigationTreeItem[] = [
       {
         id: 'parks-list',
@@ -195,7 +200,7 @@ export class PublicParkNavigationTreeFacade {
         id: `item-${context.itemId}`,
         label: itemLabel ?? context.itemSlug,
         icon: 'pi pi-star',
-        routeCommands: ['/', context.language, 'park', context.parkId, context.parkSlug, 'item', context.itemId, context.itemSlug],
+        routeCommands: this.buildParkItemRoute(sourceData),
         level: sourceData.zone?.id ? 3 : 2,
         isCurrent: true
       });
@@ -218,11 +223,45 @@ export class PublicParkNavigationTreeFacade {
         id: `park-${context.parkId}`,
         label: context.parkSlug,
         icon: 'pi pi-map-marker',
-        routeCommands: ['/', context.language, 'park', context.parkId, context.parkSlug],
+        routeCommands: this.buildFallbackParkRoute(context),
         level: 1,
         isCurrent: context.pageKind === 'park-detail'
       }
     ];
+  }
+
+
+  private buildParkRoute(sourceData: PublicParkNavigationSourceData): string[] {
+    const context: PublicParkRouteContext = sourceData.context;
+    return buildPublicParkRouteCommands({
+      language: context.language,
+      parkId: context.parkId,
+      parkName: sourceData.park?.name ?? context.parkSlug
+    }) ?? this.buildFallbackParkRoute(context);
+  }
+
+  private buildParkItemsRoute(sourceData: PublicParkNavigationSourceData): string[] {
+    const context: PublicParkRouteContext = sourceData.context;
+    return buildPublicParkItemsRouteCommands({
+      language: context.language,
+      parkId: context.parkId,
+      parkName: sourceData.park?.name ?? context.parkSlug
+    }) ?? [...this.buildFallbackParkRoute(context), 'items'];
+  }
+
+  private buildParkItemRoute(sourceData: PublicParkNavigationSourceData): string[] {
+    const context: PublicParkRouteContext = sourceData.context;
+    return buildPublicParkItemRouteCommands({
+      language: context.language,
+      parkId: context.parkId,
+      parkName: sourceData.park?.name ?? context.parkSlug,
+      itemId: context.itemId,
+      itemName: sourceData.item?.name ?? context.itemSlug
+    }) ?? [...this.buildFallbackParkRoute(context), 'item', context.itemId ?? '', context.itemSlug ?? ''];
+  }
+
+  private buildFallbackParkRoute(context: PublicParkRouteContext): string[] {
+    return ['/', context.language, 'park', context.parkId, context.parkSlug];
   }
 
   private resolveRouteContext(url: string): PublicParkRouteContext | null {

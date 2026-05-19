@@ -17,15 +17,13 @@
       </div>
 
       <div class="ui-featured-park-card__logo-frame">
-        @if (hasLogo) {
-          <app-image-display
-            [imageId]="currentPark.logoImageId"
-            [alt]="currentPark.name"
-            imgClass="ui-featured-park-card__logo">
-          </app-image-display>
-        } @else {
-          <i class="pi pi-map-marker" aria-hidden="true"></i>
-        }
+        <app-image-display
+          [imageId]="currentPark.logoImageId"
+          [alt]="currentPark.name"
+          imgClass="ui-featured-park-card__logo"
+          placeholderClass="ui-featured-park-card__logo-placeholder"
+          placeholderKind="park">
+        </app-image-display>
       </div>
     </div>
 

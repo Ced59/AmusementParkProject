@@ -4,7 +4,7 @@ import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { getParkItemCategoryTranslationKey, getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
-import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
+import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLocalizedValue, stripHtml } from '@shared/utils/localization';
 
 type FeaturedParkTone = HomeFeaturedParkCardModel['tone'];
@@ -64,12 +64,11 @@ function getCategorySortOrder(category: ParkItemCategory): number {
 }
 
 function buildDetailLink(parkId: string | null | undefined, parkName: string, currentLanguage: string): string[] | null {
-  const normalizedParkId: string | null = normalizeOptionalString(parkId);
-  if (!normalizedParkId || !parkName) {
-    return null;
-  }
-
-  return ['/', currentLanguage, 'park', normalizedParkId, buildParkSlug(parkName)];
+  return buildPublicParkRouteCommands({
+    language: currentLanguage,
+    parkId,
+    parkName
+  });
 }
 
 function buildLocationLine(city: string | null, countryName: string | null): string | null {

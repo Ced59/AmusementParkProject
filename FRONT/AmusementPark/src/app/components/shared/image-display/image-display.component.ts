@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ImageDisplayViewComponent } from './image-display-view.component';
+import { ImageFallbackKind, resolveImageFallbackIconClass } from '@shared/utils/images/image-fallback.helpers';
 
 @Component({
   selector: 'app-image-display',
@@ -15,7 +16,8 @@ export class ImageDisplayComponent implements OnChanges {
   @Input() alt: string = '';
   @Input() imgClass: string = '';
   @Input() placeholderClass: string = '';
-  @Input() placeholderIconClass: string = 'pi pi-image';
+  @Input() placeholderIconClass: string | null = null;
+  @Input() placeholderKind: ImageFallbackKind = 'generic';
   @Input() loading: 'eager' | 'lazy' = 'lazy';
 
   imageLoadFailed: boolean = false;
@@ -41,6 +43,16 @@ export class ImageDisplayComponent implements OnChanges {
 
   get showImage(): boolean {
     return !!this.resolvedImageUrl && !this.imageLoadFailed;
+  }
+
+  get resolvedPlaceholderIconClass(): string {
+    const explicitIconClass: string = this.placeholderIconClass?.trim() ?? '';
+
+    if (explicitIconClass.length > 0) {
+      return explicitIconClass;
+    }
+
+    return resolveImageFallbackIconClass(this.placeholderKind);
   }
 
   onImageError(): void {

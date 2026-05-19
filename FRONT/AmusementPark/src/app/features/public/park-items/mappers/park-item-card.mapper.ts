@@ -1,10 +1,9 @@
-import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import {
-  buildEntitySlug,
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
   resolveParkItemDescription
 } from '@shared/utils/display/park-item-presentation.helpers';
+import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemCardViewModel } from '../models/park-item-card.model';
@@ -65,20 +64,13 @@ function buildParkItemHighlights(item: ParkItem, manufacturerName: string | null
 }
 
 function buildParkItemLink(park: Park | null, item: ParkItem, currentLanguage: string): string[] | null {
-  if (!park?.id || !park?.name || !item.id || !item.name) {
-    return null;
-  }
-
-  return [
-    '/',
-    currentLanguage,
-    'park',
-    park.id,
-    buildParkSlug(park.name),
-    'item',
-    item.id,
-    buildEntitySlug(item.name)
-  ];
+  return buildPublicParkItemRouteCommands({
+    language: currentLanguage,
+    parkId: park?.id,
+    parkName: park?.name,
+    itemId: item.id,
+    itemName: item.name
+  });
 }
 
 function resolveParkItemTypeIconClass(type: string | null | undefined): string {

@@ -4,10 +4,15 @@ import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkType } from '@app/models/parks/park-type';
-import { buildEntitySlug, buildParkAddressLine, buildParkLocationLine, buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
+import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/display/park-presentation.helpers';
 import { getLocalizedBooleanDisplay, getParkTypeTranslationKey, normalizeTranslationSegment } from '@shared/utils/display/display-label.helpers';
-import { buildEntitySlug as buildParkItemEntitySlug, getParkItemCategoryTranslationKey } from '@shared/utils/display/park-item-presentation.helpers';
+import { getParkItemCategoryTranslationKey } from '@shared/utils/display/park-item-presentation.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
+import {
+  buildPublicParkItemRouteCommands,
+  buildPublicParkItemsRouteCommands,
+  buildPublicParkReferenceRouteCommands
+} from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkDetailInfoRowViewModel } from '../models/park-detail-info-row.model';
 import {
   ParkDetailPhotoCategoryOptionViewModel,
@@ -122,7 +127,9 @@ export function mapParkToDetailViewModel(
     hasPracticalInfo,
     hasLocationInfo,
     hasDescription: !!description,
-    exploreLink: hasIdentity ? ['/', currentLanguage, 'park', park.id!, buildParkSlug(park.name!), 'items'] : null,
+    exploreLink: hasIdentity
+      ? buildPublicParkItemsRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
+      : null,
     identityRows,
     practicalRows,
     publicationRows,
@@ -251,7 +258,12 @@ function buildPracticalRows(
     rows.push({
       labelKey: 'parks.detail.identity.operator',
       value: displayName,
-      routerLink: ['/', currentLanguage, 'park-operator', operatorId, buildEntitySlug(displayName)],
+      routerLink: buildPublicParkReferenceRouteCommands({
+        language: currentLanguage,
+        referenceId: operatorId,
+        referenceName: displayName,
+        kind: 'operator'
+      }),
       iconClass: 'pi pi-briefcase',
       isMonospace: displayName === operatorId
     });
@@ -262,7 +274,12 @@ function buildPracticalRows(
     rows.push({
       labelKey: 'parks.detail.identity.founder',
       value: displayName,
-      routerLink: ['/', currentLanguage, 'park-founder', founderId, buildEntitySlug(displayName)],
+      routerLink: buildPublicParkReferenceRouteCommands({
+        language: currentLanguage,
+        referenceId: founderId,
+        referenceName: displayName,
+        kind: 'founder'
+      }),
       iconClass: 'pi pi-user',
       isMonospace: displayName === founderId
     });
@@ -619,20 +636,13 @@ function getPhotoCategoryOrder(categoryKey: string): number {
 }
 
 function buildParkItemLink(park: Park, item: ParkItem, currentLanguage: string): string[] | null {
-  if (!park.id || !park.name || !item.id || !item.name) {
-    return null;
-  }
-
-  return [
-    '/',
-    currentLanguage,
-    'park',
-    park.id,
-    buildParkSlug(park.name),
-    'item',
-    item.id,
-    buildParkItemEntitySlug(item.name)
-  ];
+  return buildPublicParkItemRouteCommands({
+    language: currentLanguage,
+    parkId: park.id,
+    parkName: park.name,
+    itemId: item.id,
+    itemName: item.name
+  });
 }
 
 function resolveParkItemSourceIconClass(category: string | null | undefined): string {

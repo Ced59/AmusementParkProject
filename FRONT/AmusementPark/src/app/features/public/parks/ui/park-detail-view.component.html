@@ -28,7 +28,7 @@
               loading="eager"
               imgClass="park-banner__photo-img"
               placeholderClass="park-banner__photo-placeholder"
-              placeholderIconClass="pi pi-image">
+              placeholderKind="photo">
             </app-image-display>
           </div>
         }
@@ -38,7 +38,7 @@
             <app-image-display
               [imageId]="currentPark.logoImageId"
               [alt]="currentPark.name || 'Park logo'"
-              placeholderIconClass="pi pi-map-marker">
+              placeholderKind="park">
             </app-image-display>
           </div>
 

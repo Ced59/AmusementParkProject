@@ -8,7 +8,7 @@ import { AttractionLocationPoint } from '@app/models/parks/attraction-location-p
 import { AttractionLocations } from '@app/models/parks/attraction-locations';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
-import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
+import { buildPublicParkItemsRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import {
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
@@ -566,19 +566,19 @@ function resolveMapCenter(points: ParkItemLocationPointViewModel[], item: ParkIt
 }
 
 function buildParkLink(park: Park | null, currentLanguage: string): string[] | null {
-  if (!park?.id || !park?.name) {
-    return null;
-  }
-
-  return ['/', currentLanguage, 'park', park.id, buildParkSlug(park.name)];
+  return buildPublicParkRouteCommands({
+    language: currentLanguage,
+    parkId: park?.id,
+    parkName: park?.name
+  });
 }
 
 function buildItemsLink(park: Park | null, currentLanguage: string): string[] | null {
-  if (!park?.id || !park?.name) {
-    return null;
-  }
-
-  return ['/', currentLanguage, 'park', park.id, buildParkSlug(park.name), 'items'];
+  return buildPublicParkItemsRouteCommands({
+    language: currentLanguage,
+    parkId: park?.id,
+    parkName: park?.name
+  });
 }
 
 function pushGroup(
