@@ -618,3 +618,43 @@
     );
   }
 }
+
+/* M10 responsive hardening for item detail on portrait tablets. */
+@media (min-width: 681px) and (max-width: 1099px) {
+  .item-detail-body {
+    grid-template-columns: 1fr;
+  }
+
+  .item-detail-sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .detail-panel--sidebar,
+  .item-location-shell {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 681px) and (max-width: 860px) {
+  .item-detail-hero {
+    min-height: clamp(21rem, 46vw, 28rem);
+  }
+
+  .item-detail-hero__photo {
+    width: 100%;
+    opacity: 0.2;
+    mask-image: linear-gradient(180deg, #000 0%, transparent 88%);
+  }
+
+  .item-specs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .item-detail-hero__lead {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

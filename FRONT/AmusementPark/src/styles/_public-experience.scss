@@ -501,3 +501,57 @@ app-pagination {
     justify-content: flex-start;
   }
 }
+
+/* M10 responsive hardening: tablet gets breathing room instead of squeezed desktop grids. */
+@media (min-width: 768px) and (max-width: 1079px) {
+  .public-hero--split {
+    grid-template-columns: 1fr;
+  }
+
+  .public-hero__media {
+    margin-top: 0;
+  }
+
+  .public-stat-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .public-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 681px) and (max-width: 860px) {
+  .public-hero,
+  .public-panel,
+  .public-filter-panel,
+  .public-shell-card {
+    border-radius: var(--radius-xl);
+  }
+
+  .public-cta-row .app-button,
+  .public-cta-row .btn {
+    flex: 1 1 min(15rem, 100%);
+  }
+
+  .parks-hero.app-surface {
+    padding: 2.85rem 1.75rem 2.35rem;
+  }
+
+  .parks-results,
+  .parks-toolbar {
+    width: calc(100% - 1.25rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .public-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .public-stat-grid {
+    grid-template-columns: 1fr;
+  }
+}

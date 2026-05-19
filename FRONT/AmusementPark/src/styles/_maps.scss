@@ -546,3 +546,44 @@
 .app-leaflet-marker--other .app-leaflet-marker__symbol {
   font-size: 1.4rem;
 }
+
+/* M10 responsive hardening for map-heavy pages. */
+@media (min-width: 681px) and (max-width: 1180px) {
+  .app-map-shell__body,
+  .parks-map .app-map-shell__body {
+    grid-template-columns: 1fr;
+  }
+
+  .parks-map,
+  .parks-map .app-map-slot,
+  .parks-map app-leaflet-map,
+  .parks-map .leaflet-map-container,
+  .parks-map__state {
+    min-height: clamp(22rem, 48vw, 30rem);
+  }
+
+  .parks-map__entries {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-map-shell {
+    padding: 0.9rem;
+  }
+
+  .app-map-slot,
+  .parks-map .app-map-slot,
+  .parks-map app-leaflet-map,
+  .parks-map .leaflet-map-container,
+  .parks-map__state {
+    min-height: 20rem;
+  }
+
+  .parks-map__entries {
+    grid-template-columns: 1fr;
+  }
+}

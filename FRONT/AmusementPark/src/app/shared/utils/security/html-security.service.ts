@@ -36,10 +36,25 @@ export class HtmlSecurityService {
 
     const workingDocument: Document = this.createWorkingDocument();
     const template: HTMLTemplateElement = workingDocument.createElement('template');
-    template.innerHTML = rawValue;
+    template.innerHTML = this.decodeEncodedRichHtml(rawValue, workingDocument);
 
     this.sanitizeChildren(template.content);
     return template.innerHTML;
+  }
+
+  private decodeEncodedRichHtml(value: string, workingDocument: Document): string {
+    if (!this.looksLikeEncodedHtml(value)) {
+      return value;
+    }
+
+    const textarea: HTMLTextAreaElement = workingDocument.createElement('textarea');
+    textarea.innerHTML = value;
+
+    return textarea.value;
+  }
+
+  private looksLikeEncodedHtml(value: string): boolean {
+    return /&lt;\/?[a-z][a-z0-9:-]*(\s|&gt;|\/&gt;)/i.test(value);
   }
 
   private createWorkingDocument(): Document {

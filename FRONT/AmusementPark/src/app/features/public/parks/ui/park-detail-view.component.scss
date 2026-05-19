@@ -580,3 +580,58 @@ app-park-nearby-section {
   }
 }
 
+
+/* M10 responsive hardening: tablet should not squeeze content into a desktop sidebar. */
+@media (min-width: 960px) and (max-width: 1119px) {
+  .park-banner__content {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: end;
+  }
+
+  .park-banner__actions {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .park-detail__body {
+    grid-template-columns: 1fr;
+  }
+
+  .park-sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-self: stretch;
+  }
+
+  .park-side-card--location,
+  .park-side-coming-soon {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 681px) and (max-width: 959px) {
+  .park-banner__content,
+  .park-detail__body,
+  app-park-nearby-section {
+    width: min(100% - 1.5rem, var(--park-detail-content-max-width));
+  }
+
+  .park-sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .park-side-card--location,
+  .park-side-coming-soon {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .park-info-row {
+    grid-template-columns: 1fr;
+  }
+}

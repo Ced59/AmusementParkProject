@@ -192,3 +192,26 @@
     margin-bottom: calc(var(--bottom-nav-height) + 1.35rem);
   }
 }
+
+/* M10 responsive hardening: keep public/account/admin shells comfortable on tablets. */
+@media (min-width: 681px) and (max-width: 1180px) {
+  .app-layout-main,
+  .app-admin-layout__main {
+    width: min(100% - clamp(1.25rem, 3vw, 2rem), var(--content-wide-max-width));
+    margin-top: clamp(0.85rem, 2vw, 1.15rem);
+  }
+
+  .app-account-layout__main {
+    width: min(100% - clamp(1.25rem, 3vw, 2rem), 980px);
+  }
+}
+
+@media (min-width: 681px) and (max-width: 860px) {
+  .app-admin-layout__header {
+    padding-inline: clamp(0.9rem, 2.5vw, 1.25rem);
+  }
+
+  .app-admin-layout__actions {
+    width: 100%;
+  }
+}

@@ -113,3 +113,25 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+/* M10 responsive hardening for medium-width park hero cards. */
+@media (min-width: 681px) and (max-width: 1099px) {
+  .park-hero {
+    grid-template-columns: 1fr;
+    padding: clamp(1.1rem, 2.6vw, 1.45rem);
+  }
+
+  .park-hero__meta-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .park-hero__visual-shell {
+    min-height: 12rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .park-hero__meta-grid {
+    grid-template-columns: 1fr;
+  }
+}

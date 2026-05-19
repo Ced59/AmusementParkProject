@@ -153,3 +153,34 @@
     height: 22rem;
   }
 }
+
+/* M10 responsive hardening for the park-detail items map. */
+@media (min-width: 681px) and (max-width: 1099px) {
+  .park-items-map__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .park-items-map__body {
+    grid-template-columns: 1fr;
+  }
+
+  .park-items-map__categories {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .park-items-map__categories-title {
+    grid-column: 1 / -1;
+  }
+
+  :host ::ng-deep .park-items-map__slot .leaflet-map-container {
+    height: clamp(23rem, 48vw, 30rem);
+  }
+}
+
+@media (max-width: 760px) {
+  .park-items-map__categories {
+    grid-template-columns: 1fr;
+  }
+}

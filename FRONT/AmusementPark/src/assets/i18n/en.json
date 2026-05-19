@@ -1120,6 +1120,21 @@
         "maxHeight": "Maximum height",
         "maxHeightHelp": "Access forbidden above this height."
       }
+    },
+    "zoneFocus": {
+      "badge": "Park zone",
+      "overviewBadge": "Live map",
+      "overviewDescription": "View the items currently displayed for {{park}} according to the active filters.",
+      "zoneFallbackDescription": "This zone groups the items currently displayed. Use the filters to refine the selection.",
+      "totalItems": "Zone items",
+      "totalItemsHint": "Linked content",
+      "displayedItems": "Displayed",
+      "displayedItemsHint": "After filters",
+      "mapMarkers": "Markers",
+      "mapMarkersHint": "Geolocated",
+      "mapPanelTitle": "Map cues",
+      "mapPanelHeading": "Real-time filtered map",
+      "mapPanelText": "The map follows the current selection: zone, category, type and search. Custom markers stay adapted to each item type."
     }
   },
   "publicNavigation": {

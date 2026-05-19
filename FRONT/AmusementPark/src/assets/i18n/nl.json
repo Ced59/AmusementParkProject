@@ -1120,6 +1120,21 @@
         "maxHeight": "Maximumlengte",
         "maxHeightHelp": "Toegang verboden boven deze lengte."
       }
+    },
+    "zoneFocus": {
+      "badge": "Parkzone",
+      "overviewBadge": "Live kaart",
+      "overviewDescription": "Bekijk de momenteel getoonde items voor {{park}} volgens de actieve filters.",
+      "zoneFallbackDescription": "Deze zone groepeert de momenteel getoonde items. Gebruik de filters om de selectie te verfijnen.",
+      "totalItems": "Zone-items",
+      "totalItemsHint": "Gekoppelde inhoud",
+      "displayedItems": "Getoond",
+      "displayedItemsHint": "Na filters",
+      "mapMarkers": "Markers",
+      "mapMarkersHint": "Geolokaliseerd",
+      "mapPanelTitle": "Kaartpunten",
+      "mapPanelHeading": "Realtime gefilterde kaart",
+      "mapPanelText": "De kaart volgt de huidige selectie: zone, categorie, type en zoekopdracht. De aangepaste markers blijven afgestemd op het exacte itemtype."
     }
   },
   "publicNavigation": {

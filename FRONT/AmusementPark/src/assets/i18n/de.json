@@ -1120,6 +1120,21 @@
         "maxHeight": "Maximalgröße",
         "maxHeightHelp": "Zugang über dieser Größe verboten."
       }
+    },
+    "zoneFocus": {
+      "badge": "Parkbereich",
+      "overviewBadge": "Live-Karte",
+      "overviewDescription": "Zeigt die aktuell angezeigten Elemente für {{park}} entsprechend den aktiven Filtern.",
+      "zoneFallbackDescription": "Dieser Bereich bündelt die aktuell angezeigten Elemente. Nutze die Filter, um die Auswahl zu verfeinern.",
+      "totalItems": "Bereichselemente",
+      "totalItemsHint": "Verknüpfter Inhalt",
+      "displayedItems": "Angezeigt",
+      "displayedItemsHint": "Nach Filtern",
+      "mapMarkers": "Marker",
+      "mapMarkersHint": "Geolokalisiert",
+      "mapPanelTitle": "Kartenpunkte",
+      "mapPanelHeading": "Live gefilterte Karte",
+      "mapPanelText": "Die Karte folgt der aktuellen Auswahl: Bereich, Kategorie, Typ und Suche. Die eigenen Marker bleiben an den genauen Elementtyp angepasst."
     }
   },
   "publicNavigation": {

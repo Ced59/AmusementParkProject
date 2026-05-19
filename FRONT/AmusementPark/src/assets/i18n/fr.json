@@ -1120,6 +1120,21 @@
         "maxHeight": "Taille maximale",
         "maxHeightHelp": "Accès interdit au-dessus de cette taille."
       }
+    },
+    "zoneFocus": {
+      "badge": "Zone du parc",
+      "overviewBadge": "Carte instantanée",
+      "overviewDescription": "Visualisez les éléments affichés pour {{park}} selon les filtres actifs.",
+      "zoneFallbackDescription": "Cette zone regroupe les éléments actuellement affichés. Utilisez les filtres pour affiner la sélection.",
+      "totalItems": "Éléments zone",
+      "totalItemsHint": "Contenu rattaché",
+      "displayedItems": "Affichés",
+      "displayedItemsHint": "Après filtres",
+      "mapMarkers": "Marqueurs",
+      "mapMarkersHint": "Géolocalisés",
+      "mapPanelTitle": "Repères carte",
+      "mapPanelHeading": "Carte filtrée en temps réel",
+      "mapPanelText": "La carte suit la sélection courante : zone, catégorie, type et recherche. Les marqueurs personnalisés restent adaptés au type précis de chaque élément."
     }
   },
   "publicNavigation": {

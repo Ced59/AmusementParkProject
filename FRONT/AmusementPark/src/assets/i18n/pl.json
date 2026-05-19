@@ -1120,6 +1120,21 @@
         "maxHeight": "Maksymalny wzrost",
         "maxHeightHelp": "Wejście zabronione powyżej tego wzrostu."
       }
+    },
+    "zoneFocus": {
+      "badge": "Strefa parku",
+      "overviewBadge": "Mapa na żywo",
+      "overviewDescription": "Zobacz elementy aktualnie wyświetlane dla {{park}} zgodnie z aktywnymi filtrami.",
+      "zoneFallbackDescription": "Ta strefa grupuje aktualnie wyświetlane elementy. Użyj filtrów, aby zawęzić wybór.",
+      "totalItems": "Elementy strefy",
+      "totalItemsHint": "Powiązana zawartość",
+      "displayedItems": "Wyświetlane",
+      "displayedItemsHint": "Po filtrach",
+      "mapMarkers": "Znaczniki",
+      "mapMarkersHint": "Geolokalizowane",
+      "mapPanelTitle": "Punkty mapy",
+      "mapPanelHeading": "Mapa filtrowana w czasie rzeczywistym",
+      "mapPanelText": "Mapa podąża za aktualnym wyborem: strefą, kategorią, typem i wyszukiwaniem. Niestandardowe znaczniki pozostają dopasowane do dokładnego typu elementu."
     }
   },
   "publicNavigation": {
