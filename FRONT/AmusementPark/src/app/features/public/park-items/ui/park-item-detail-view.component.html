@@ -75,7 +75,11 @@
         <div class="item-spec__icon" *ngIf="row.iconClass">
           <i [class]="row.iconClass" aria-hidden="true"></i>
         </div>
-        <div class="item-spec__value">{{ row.valueKey ? (row.valueKey | translate) : row.value }}</div>
+        <div
+          class="item-spec__value"
+          [class.item-spec__value--textual]="row.valueKey">
+          {{ row.valueKey ? (row.valueKey | translate) : row.value }}
+        </div>
         <div class="item-spec__label">{{ row.labelKey | translate }}</div>
       </article>
     </section>
@@ -88,7 +92,7 @@
             kickerLabelKey="parkItems.detail.descriptionTitle"
             titleKey="parkItems.detail.descriptionTitle">
           </app-ui-section-header>
-          <p>{{ currentDetail.description }}</p>
+          <div class="detail-panel__rich-text" [innerHTML]="currentDetail.description | safeRichHtml"></div>
         </section>
 
         <app-ui-map-shell

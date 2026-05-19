@@ -7,7 +7,7 @@
   --item-tone: var(--c-orange);
 
   position: relative;
-  min-height: clamp(24rem, 44vh, 34rem);
+  min-height: clamp(17rem, 34vh, 25rem);
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -59,7 +59,7 @@
   width: 100%;
   display: grid;
   gap: 1.1rem;
-  padding: clamp(1.35rem, 3vw, 2rem);
+  padding: clamp(1.15rem, 2.4vw, 1.75rem);
 }
 
 .item-detail-hero__type {
@@ -71,15 +71,15 @@
 
 .item-detail-icon {
   display: grid;
-  width: clamp(3.8rem, 7vw, 4.8rem);
-  height: clamp(3.8rem, 7vw, 4.8rem);
+  width: clamp(3.2rem, 5vw, 4.1rem);
+  height: clamp(3.2rem, 5vw, 4.1rem);
   place-items: center;
   border: 2px solid color-mix(in srgb, var(--item-tone) 28%, transparent);
   border-radius: var(--radius-lg);
   background: color-mix(in srgb, var(--item-tone) 14%, transparent);
   color: var(--item-tone);
   box-shadow: 0 0 18px color-mix(in srgb, var(--item-tone) 18%, transparent);
-  font-size: clamp(1.45rem, 4vw, 2rem);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
 }
 
 .item-detail-hero__main {
@@ -100,10 +100,14 @@
   margin: 0;
   color: var(--app-heading);
   font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 6vw, 4.15rem);
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
   font-weight: 900;
-  line-height: 1;
+  line-height: 0.98;
   letter-spacing: -0.045em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
 }
 
 .item-detail-hero__lead {
@@ -145,6 +149,53 @@
   margin: 0;
   color: var(--app-text-muted);
   line-height: 1.75;
+}
+
+.detail-panel__rich-text {
+  margin: 0;
+  max-width: 100%;
+  min-width: 0;
+  color: var(--app-text-muted);
+  line-height: 1.8;
+  font-size: 0.98rem;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+:host ::ng-deep .detail-panel__rich-text :where(h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote) {
+  margin-top: 0;
+}
+
+:host ::ng-deep .detail-panel__rich-text :where(h1, h2, h3, h4, h5, h6) {
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+:host ::ng-deep .detail-panel__rich-text :where(p, li) {
+  color: var(--app-text-muted);
+}
+
+:host ::ng-deep .detail-panel__rich-text :where(a) {
+  color: var(--item-tone, var(--c-orange));
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+:host ::ng-deep .detail-panel__rich-text :where(*) {
+  max-width: 100%;
+  white-space: normal !important;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+:host ::ng-deep .detail-panel__rich-text :where(img, table, pre) {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .detail-row-grid {
@@ -195,9 +246,13 @@
 .detail-data-row__value,
 .sidebar-row strong {
   min-width: 0;
+  max-width: 100%;
   color: var(--app-heading);
   font-weight: 900;
-  overflow-wrap: anywhere;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
 }
 
 .access-condition-list {
@@ -393,11 +448,14 @@
 
 .item-spec {
   position: relative;
+  container-type: inline-size;
   display: grid;
   gap: 0.55rem;
-  min-height: 8.8rem;
+  min-width: 0;
+  min-height: auto;
   padding: 1.2rem;
   overflow: hidden;
+  align-content: center;
   text-align: center;
   border: 1px solid var(--app-border);
   border-radius: var(--radius-lg);
@@ -425,12 +483,34 @@
 }
 
 .item-spec__value {
+  display: block;
+  justify-self: center;
+  min-width: 0;
+  max-width: 100%;
   color: var(--app-heading);
   font-family: var(--font-heading);
-  font-size: clamp(1.45rem, 3vw, 1.95rem);
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  white-space: normal;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.item-spec__value--textual {
+  font-size: clamp(1rem, 1.45vw, 1.34rem);
+  line-height: 1.12;
   letter-spacing: -0.04em;
+  text-wrap: normal;
+}
+
+@supports (font-size: 1cqw) {
+  .item-spec__value--textual {
+    font-size: clamp(1rem, 6.2cqw, 1.34rem);
+  }
 }
 
 .item-spec__label {
@@ -638,7 +718,7 @@
 
 @media (min-width: 681px) and (max-width: 860px) {
   .item-detail-hero {
-    min-height: clamp(21rem, 46vw, 28rem);
+    min-height: clamp(17rem, 40vw, 23rem);
   }
 
   .item-detail-hero__photo {
