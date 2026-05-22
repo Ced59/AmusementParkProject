@@ -255,6 +255,22 @@
   hyphens: none;
 }
 
+.detail-data-row__value--link {
+  display: inline-flex;
+  width: fit-content;
+  color: var(--c-sky);
+  text-decoration: none;
+  transition: color var(--transition), text-decoration-color var(--transition);
+}
+
+.detail-data-row__value--link:hover,
+.detail-data-row__value--link:focus-visible {
+  color: var(--c-lime);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
 .access-condition-list {
   display: grid;
   gap: 0.85rem;

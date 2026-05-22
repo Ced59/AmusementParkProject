@@ -12,4 +12,7 @@ public enum ImageCategoryDto
     PARK_LOGO,
     PARK,
     ATTRACTION,
+    OPERATOR,
+    MANUFACTURER,
+    FOUNDER,
 }

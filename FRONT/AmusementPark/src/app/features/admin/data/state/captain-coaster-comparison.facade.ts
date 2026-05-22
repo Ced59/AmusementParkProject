@@ -6,6 +6,7 @@ import {
   CaptainCoasterComparisonResultResponse,
   CaptainCoasterDuplicateResolutionRequest,
   CaptainCoasterExternalVariantResponse,
+  CaptainCoasterFieldChangeResponse,
   CaptainCoasterFieldResolutionRequest,
   CaptainCoasterSessionResponse,
   ComparisonFilters
@@ -17,6 +18,54 @@ interface DuplicateResolutionState {
   strategy: 'SelectVariant' | 'Merge';
   selectedExternalVariantId: string | null;
   fieldSelections: Record<string, string>;
+}
+
+interface RawCaptainCoasterComparisonPagedResponse extends Partial<CaptainCoasterComparisonPagedResponse> {
+  Items?: RawCaptainCoasterComparisonResultResponse[];
+  TotalCount?: number;
+  Page?: number;
+  PageSize?: number;
+  SessionUpdatedCount?: number;
+  SessionMissingCount?: number;
+  SessionDuplicateCount?: number;
+  SessionAppliedCount?: number;
+}
+
+interface RawCaptainCoasterComparisonResultResponse extends Partial<CaptainCoasterComparisonResultResponse> {
+  Id?: string;
+  EntityType?: string;
+  ChangeType?: string;
+  DisplayName?: string;
+  LocalEntityId?: string | null;
+  ExternalEntityId?: string | null;
+  MatchConfidence?: string;
+  IsApplied?: boolean;
+  HasExternalDuplicates?: boolean;
+  RequiresManualResolution?: boolean;
+  ResolutionStatus?: string;
+  AppliedExternalVariantId?: string | null;
+  Changes?: RawCaptainCoasterFieldChangeResponse[];
+  ExternalVariants?: RawCaptainCoasterExternalVariantResponse[];
+}
+
+interface RawCaptainCoasterExternalVariantResponse extends Partial<CaptainCoasterExternalVariantResponse> {
+  ExternalVariantId?: string;
+  DisplayLabel?: string;
+  CandidateLocalEntityId?: string | null;
+  SourceUrl?: string | null;
+  IsSuggested?: boolean;
+  Changes?: RawCaptainCoasterFieldChangeResponse[];
+}
+
+interface RawCaptainCoasterFieldChangeResponse {
+  field?: string;
+  Field?: string;
+  localValue?: string | null;
+  LocalValue?: string | null;
+  externalValue?: string | null;
+  ExternalValue?: string | null;
+  isDifferent?: boolean;
+  IsDifferent?: boolean;
 }
 
 @Injectable()
@@ -87,8 +136,14 @@ export class CaptainCoasterComparisonFacade {
     const sessionId: string | null = this.captainCoasterPipelineFacade.session()?.id ?? null;
     this.currentPageSignal.set(0);
     this.resetSelection();
-    await this.fetchPageAsync(sessionId, this.filtersSignal(), 0, this.pageSizeSignal());
-    this.isLoadedSignal.set(true);
+    this.captainCoasterPipelineFacade.clearFeedbackMessages();
+
+    try {
+      await this.fetchPageAsync(sessionId, this.filtersSignal(), 0, this.pageSizeSignal());
+      this.isLoadedSignal.set(true);
+    } catch (error: unknown) {
+      this.captainCoasterPipelineFacade.setErrorMessage(this.extractErrorMessage(error));
+    }
   }
 
   async onPageChange(event: { first?: number; rows?: number }): Promise<void> {
@@ -364,15 +419,78 @@ export class CaptainCoasterComparisonFacade {
   ): Promise<void> {
     this.isLoadingPageSignal.set(true);
     try {
-      const result: CaptainCoasterComparisonPagedResponse = await firstValueFrom(
+      const rawResult: CaptainCoasterComparisonPagedResponse | RawCaptainCoasterComparisonPagedResponse = await firstValueFrom(
         this.dataSourcesApiService.getComparisonResults(sessionId, filters, page, pageSize)
       );
+      const result: CaptainCoasterComparisonPagedResponse = this.normalizeComparisonPage(rawResult);
       this.pagedResultSignal.set(result);
       this.ensureDuplicateResolutionStates(result.items);
       this.syncSelectionSignals();
     } finally {
       this.isLoadingPageSignal.set(false);
     }
+  }
+
+  private normalizeComparisonPage(
+    rawResult: CaptainCoasterComparisonPagedResponse | RawCaptainCoasterComparisonPagedResponse
+  ): CaptainCoasterComparisonPagedResponse {
+    const normalizedRawResult: RawCaptainCoasterComparisonPagedResponse = rawResult as RawCaptainCoasterComparisonPagedResponse;
+    const rawItems: RawCaptainCoasterComparisonResultResponse[] = (normalizedRawResult.items ?? normalizedRawResult.Items ?? []) as RawCaptainCoasterComparisonResultResponse[];
+
+    return {
+      items: rawItems.map((item: RawCaptainCoasterComparisonResultResponse) => this.normalizeComparisonItem(item)),
+      totalCount: normalizedRawResult.totalCount ?? normalizedRawResult.TotalCount ?? rawItems.length,
+      page: normalizedRawResult.page ?? normalizedRawResult.Page ?? this.currentPageSignal(),
+      pageSize: normalizedRawResult.pageSize ?? normalizedRawResult.PageSize ?? this.pageSizeSignal(),
+      sessionUpdatedCount: normalizedRawResult.sessionUpdatedCount ?? normalizedRawResult.SessionUpdatedCount ?? 0,
+      sessionMissingCount: normalizedRawResult.sessionMissingCount ?? normalizedRawResult.SessionMissingCount ?? 0,
+      sessionDuplicateCount: normalizedRawResult.sessionDuplicateCount ?? normalizedRawResult.SessionDuplicateCount ?? 0,
+      sessionAppliedCount: normalizedRawResult.sessionAppliedCount ?? normalizedRawResult.SessionAppliedCount ?? 0
+    };
+  }
+
+  private normalizeComparisonItem(rawItem: RawCaptainCoasterComparisonResultResponse): CaptainCoasterComparisonResultResponse {
+    const rawChanges: RawCaptainCoasterFieldChangeResponse[] = rawItem.changes ?? rawItem.Changes ?? [];
+    const rawVariants: RawCaptainCoasterExternalVariantResponse[] = rawItem.externalVariants ?? rawItem.ExternalVariants ?? [];
+
+    return {
+      id: rawItem.id ?? rawItem.Id ?? '',
+      entityType: rawItem.entityType ?? rawItem.EntityType ?? '',
+      changeType: rawItem.changeType ?? rawItem.ChangeType ?? '',
+      displayName: rawItem.displayName ?? rawItem.DisplayName ?? '',
+      localEntityId: rawItem.localEntityId ?? rawItem.LocalEntityId ?? null,
+      externalEntityId: rawItem.externalEntityId ?? rawItem.ExternalEntityId ?? null,
+      matchConfidence: rawItem.matchConfidence ?? rawItem.MatchConfidence ?? '',
+      isApplied: rawItem.isApplied ?? rawItem.IsApplied ?? false,
+      hasExternalDuplicates: rawItem.hasExternalDuplicates ?? rawItem.HasExternalDuplicates ?? false,
+      requiresManualResolution: rawItem.requiresManualResolution ?? rawItem.RequiresManualResolution ?? false,
+      resolutionStatus: rawItem.resolutionStatus ?? rawItem.ResolutionStatus ?? '',
+      appliedExternalVariantId: rawItem.appliedExternalVariantId ?? rawItem.AppliedExternalVariantId ?? null,
+      changes: rawChanges.map((change: RawCaptainCoasterFieldChangeResponse) => this.normalizeFieldChange(change)),
+      externalVariants: rawVariants.map((variant: RawCaptainCoasterExternalVariantResponse) => this.normalizeExternalVariant(variant))
+    };
+  }
+
+  private normalizeExternalVariant(rawVariant: RawCaptainCoasterExternalVariantResponse): CaptainCoasterExternalVariantResponse {
+    const rawChanges: RawCaptainCoasterFieldChangeResponse[] = rawVariant.changes ?? rawVariant.Changes ?? [];
+
+    return {
+      externalVariantId: rawVariant.externalVariantId ?? rawVariant.ExternalVariantId ?? '',
+      displayLabel: rawVariant.displayLabel ?? rawVariant.DisplayLabel ?? '',
+      candidateLocalEntityId: rawVariant.candidateLocalEntityId ?? rawVariant.CandidateLocalEntityId ?? null,
+      sourceUrl: rawVariant.sourceUrl ?? rawVariant.SourceUrl ?? null,
+      isSuggested: rawVariant.isSuggested ?? rawVariant.IsSuggested ?? false,
+      changes: rawChanges.map((change: RawCaptainCoasterFieldChangeResponse) => this.normalizeFieldChange(change))
+    };
+  }
+
+  private normalizeFieldChange(rawChange: RawCaptainCoasterFieldChangeResponse): CaptainCoasterFieldChangeResponse {
+    return {
+      field: rawChange.field ?? rawChange.Field ?? '',
+      localValue: rawChange.localValue ?? rawChange.LocalValue ?? null,
+      externalValue: rawChange.externalValue ?? rawChange.ExternalValue ?? null,
+      isDifferent: rawChange.isDifferent ?? rawChange.IsDifferent ?? false
+    };
   }
 
   private resetComparisonState(): void {

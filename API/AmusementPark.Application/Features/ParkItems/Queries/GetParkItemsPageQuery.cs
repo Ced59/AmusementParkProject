@@ -22,4 +22,5 @@ public sealed record GetParkItemsPageQuery(
     bool? IsVisible = null,
     AdminReviewStatus? AdminReviewStatus = null,
     ParkItemCategory? Category = null,
-    ParkItemType? Type = null) : IQuery<ApplicationResult<PagedResult<ParkItemAdminListResult>>>;
+    ParkItemType? Type = null,
+    string? ManufacturerId = null) : IQuery<ApplicationResult<PagedResult<ParkItemAdminListResult>>>;

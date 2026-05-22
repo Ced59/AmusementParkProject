@@ -41,6 +41,7 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
             query.AdminReviewStatus,
             query.Category,
             query.Type,
+            query.ManufacturerId,
             cancellationToken);
 
         List<string> parkIds = page.Items

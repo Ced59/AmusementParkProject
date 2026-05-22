@@ -9,4 +9,7 @@ public enum ImageCategory
     ParkLogo,
     Park,
     Attraction,
+    Operator,
+    Manufacturer,
+    Founder,
 }

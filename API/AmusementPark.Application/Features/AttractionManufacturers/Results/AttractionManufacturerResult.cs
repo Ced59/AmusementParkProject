@@ -19,6 +19,26 @@ public sealed class AttractionManufacturerResult
     public string Name { get; init; } = string.Empty;
 
     /// <summary>
+    /// Nom légal ou complet du constructeur, si différent du nom d'affichage.
+    /// </summary>
+    public string? LegalName { get; init; }
+
+    /// <summary>
+    /// Année de création.
+    /// </summary>
+    public int? FoundedYear { get; init; }
+
+    /// <summary>
+    /// Année de fin d'activité éventuelle.
+    /// </summary>
+    public int? ClosedYear { get; init; }
+
+    /// <summary>
+    /// Coordonnées facultatives.
+    /// </summary>
+    public ParkReferenceContactDetails? ContactDetails { get; init; }
+
+    /// <summary>
     /// Biographie localisée.
     /// </summary>
     public IReadOnlyCollection<LocalizedText> Biography { get; init; } = Array.Empty<LocalizedText>();

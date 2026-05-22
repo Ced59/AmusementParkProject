@@ -69,6 +69,11 @@ export class ParkReferenceDetailPageComponent implements OnInit {
 
   private resolveReferenceKind(): ParkReferenceKind {
     const kind: unknown = this.route.snapshot.data['referenceKind'];
-    return kind === 'founder' ? 'founder' : 'operator';
+
+    if (kind === 'founder' || kind === 'manufacturer') {
+      return kind;
+    }
+
+    return 'operator';
   }
 }

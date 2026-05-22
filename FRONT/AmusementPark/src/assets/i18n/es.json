@@ -815,6 +815,42 @@
         "images": "Revisar medios, logotipos y visuales del sitio.",
         "data": "Supervisar importaciones, fuentes y procesos de datos."
       }
+    },
+    "references": {
+      "sections": {
+        "identity": "Identity",
+        "contact": "Optional contact details",
+        "content": "Editorial content",
+        "administration": "Admin workflow"
+      },
+      "fields": {
+        "legalName": "Legal name",
+        "foundedYear": "Founded year",
+        "closedYear": "Closed year",
+        "websiteUrl": "Website",
+        "email": "Email",
+        "phoneNumber": "Phone",
+        "street": "Street",
+        "city": "City",
+        "postalCode": "Postal code",
+        "countryCode": "Country code",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "occupation": "Occupation / role",
+        "birthDate": "Birth date",
+        "deathDate": "Death date",
+        "birthPlace": "Birth place",
+        "nationalityCountryCode": "Nationality / country code"
+      },
+      "images": {
+        "title": "Profile images",
+        "help": "Add portraits, logos, headquarters photos, historical documents or reference visuals. Public display remains conditional.",
+        "add": "Add image",
+        "saveBeforeUpload": "Save this profile before adding images.",
+        "empty": "No image is linked to this profile yet.",
+        "untitled": "Reference image",
+        "uploadTitle": "Add an image to this profile"
+      }
     }
   },
   "validation": {
@@ -827,7 +863,8 @@
     "backToList": "Volver",
     "edit": "Editar",
     "apply": "Apply",
-    "clear": "Clear"
+    "clear": "Clear",
+    "delete": "Delete"
   },
   "parkDetail": {
     "descriptionTitle": "Descripción",
@@ -1092,16 +1129,51 @@
       "errorMessage": "No se pudo cargar la ficha solicitada.",
       "backToParks": "Volver a los parques",
       "operator": {
-        "badge": "Operador del parque",
-        "title": "Operador",
-        "descriptionTitle": "Sobre el operador",
-        "emptyDescription": "Aún no hay una descripción enriquecida disponible para este operador."
+        "badge": "Park operator",
+        "title": "Operator",
+        "descriptionTitle": "Operator profile",
+        "emptyDescription": "No rich description is available for this operator yet."
       },
       "founder": {
-        "badge": "Fundador del parque",
-        "title": "Fundador",
-        "descriptionTitle": "Sobre el fundador",
-        "emptyDescription": "Aún no hay una biografía enriquecida disponible para este fundador."
+        "badge": "Park founder",
+        "title": "Founder",
+        "descriptionTitle": "Biography",
+        "emptyDescription": "No rich biography is available for this founder yet."
+      },
+      "manufacturer": {
+        "badge": "Attraction manufacturer",
+        "title": "Manufacturer",
+        "descriptionTitle": "Manufacturer profile",
+        "emptyDescription": "No rich profile is available for this manufacturer yet.",
+        "attractionsKicker": "Built attractions",
+        "attractionsTitle": "Attractions linked to this manufacturer",
+        "attractionsSubtitle": "Visible site attractions associated with this manufacturer.",
+        "emptyAttractions": "No visible attraction is linked to this manufacturer yet."
+      },
+      "facts": {
+        "title": "Key information",
+        "legalName": "Legal name",
+        "foundedYear": "Founded",
+        "closedYear": "Closed",
+        "website": "Website",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "country": "Country",
+        "coordinates": "Coordinates",
+        "occupation": "Role",
+        "birthDate": "Birth",
+        "deathDate": "Death",
+        "birthPlace": "Birth place",
+        "nationality": "Nationality"
+      },
+      "photos": {
+        "kicker": "Gallery",
+        "title": "Related images",
+        "subtitle": "Published visuals enriching this profile.",
+        "founder": "Founder",
+        "operator": "Operator",
+        "manufacturer": "Manufacturer"
       }
     },
     "photos": {

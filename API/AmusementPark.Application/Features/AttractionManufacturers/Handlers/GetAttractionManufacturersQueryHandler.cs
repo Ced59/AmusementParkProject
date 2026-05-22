@@ -36,7 +36,12 @@ public sealed class GetAttractionManufacturersQueryHandler : IQueryHandler<GetAt
         {
             Id = entity.Id,
             Name = entity.Name,
+            LegalName = entity.LegalName,
+            FoundedYear = entity.FoundedYear,
+            ClosedYear = entity.ClosedYear,
+            ContactDetails = entity.ContactDetails,
             Biography = entity.Biography,
+            AdminReviewStatus = entity.AdminReviewStatus,
             AttractionCount = !string.IsNullOrWhiteSpace(entity.Id) && counts.TryGetValue(entity.Id, out int value) ? value : 0,
         }).ToList();
 

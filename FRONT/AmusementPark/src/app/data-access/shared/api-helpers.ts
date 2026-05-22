@@ -64,6 +64,12 @@ export function toImageOwnerTypeApiValue(value: ImageOwnerType): number {
       return 2;
     case ImageOwnerType.ATTRACTION:
       return 3;
+    case ImageOwnerType.PARK_OPERATOR:
+      return 4;
+    case ImageOwnerType.ATTRACTION_MANUFACTURER:
+      return 5;
+    case ImageOwnerType.PARK_FOUNDER:
+      return 6;
     default:
       return 0;
   }
@@ -79,6 +85,12 @@ export function toImageCategoryApiValue(value: ImageCategory): number {
       return 2;
     case ImageCategory.ATTRACTION:
       return 3;
+    case ImageCategory.OPERATOR:
+      return 4;
+    case ImageCategory.MANUFACTURER:
+      return 5;
+    case ImageCategory.FOUNDER:
+      return 6;
     default:
       return 2;
   }

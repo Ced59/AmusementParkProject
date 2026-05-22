@@ -1,28 +1,47 @@
-import { ChangeDetectorRef, Component, OnInit, DestroyRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef, Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
-import { ParkFounder } from '@app/models/parks/park-founder';
-import { commitViewUpdate } from '@shared/utils/angular';
-import { Bind } from 'primeng/bind';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonDirective } from 'primeng/button';
 import { Card } from 'primeng/card';
 import { InputText } from 'primeng/inputtext';
+
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ParkFounder } from '@app/models/parks/park-founder';
+import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
+import { commitViewUpdate } from '@shared/utils/angular';
+import { Bind } from 'primeng/bind';
 import { LocalizedRichTextEditorComponent } from '../../../shared/localized-rich-text-editor/localized-rich-text-editor.component';
-import { ButtonDirective } from 'primeng/button';
-import { TranslateModule } from '@ngx-translate/core';
+import { AdminReferenceImagesComponent } from '../../shared/admin-reference-images/admin-reference-images.component';
 
 @Component({
-    selector: 'app-admin-founder-edit',
-    templateUrl: './admin-founder-edit.component.html',
-    styleUrls: ['./admin-founder-edit.component.scss'],
-    imports: [Bind, Card, FormsModule, ReactiveFormsModule, InputText, LocalizedRichTextEditorComponent, ButtonDirective, TranslateModule]
+  selector: 'app-admin-founder-edit',
+  templateUrl: './admin-founder-edit.component.html',
+  styleUrls: ['./admin-founder-edit.component.scss'],
+  imports: [
+    CommonModule,
+    Bind,
+    Card,
+    FormsModule,
+    ReactiveFormsModule,
+    InputText,
+    LocalizedRichTextEditorComponent,
+    ButtonDirective,
+    TranslateModule,
+    AdminReferenceImagesComponent
+  ]
 })
 export class AdminFounderEditComponent implements OnInit {
   form!: FormGroup;
   founderId: string | null = null;
   isEditMode: boolean = false;
   currentLang: string = 'en';
+
+  protected readonly imageOwnerType: ImageOwnerType = ImageOwnerType.PARK_FOUNDER;
+  protected readonly imageCategory: ImageCategory = ImageCategory.FOUNDER;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -45,6 +64,12 @@ export class AdminFounderEditComponent implements OnInit {
 
     this.form = this.fb.group({
       name: ['', Validators.required],
+      occupation: [null],
+      birthDate: [null],
+      deathDate: [null],
+      birthPlace: [null],
+      nationalityCountryCode: [null],
+      websiteUrl: [null],
       biography: [[]]
     });
 
@@ -54,6 +79,12 @@ export class AdminFounderEditComponent implements OnInit {
           commitViewUpdate(this.changeDetectorRef, () => {
             this.form.patchValue({
               name: founder.name,
+              occupation: founder.occupation ?? null,
+              birthDate: founder.birthDate ?? null,
+              deathDate: founder.deathDate ?? null,
+              birthPlace: founder.birthPlace ?? null,
+              nationalityCountryCode: founder.nationalityCountryCode ?? null,
+              websiteUrl: founder.websiteUrl ?? null,
               biography: founder.biography ?? []
             });
           });
@@ -74,6 +105,12 @@ export class AdminFounderEditComponent implements OnInit {
 
     const payload: ParkFounder = {
       name: this.form.value.name,
+      occupation: this.toOptionalText(this.form.value.occupation),
+      birthDate: this.toOptionalText(this.form.value.birthDate),
+      deathDate: this.toOptionalText(this.form.value.deathDate),
+      birthPlace: this.toOptionalText(this.form.value.birthPlace),
+      nationalityCountryCode: this.toOptionalText(this.form.value.nationalityCountryCode)?.toUpperCase() ?? null,
+      websiteUrl: this.toOptionalText(this.form.value.websiteUrl),
       biography: this.form.value.biography ?? []
     };
 
@@ -101,6 +138,11 @@ export class AdminFounderEditComponent implements OnInit {
 
   onCancel(): void {
     this.navigateBackToOrigin();
+  }
+
+  private toOptionalText(value: unknown): string | null {
+    const normalizedValue: string = typeof value === 'string' ? value.trim() : '';
+    return normalizedValue.length > 0 ? normalizedValue : null;
   }
 
   private navigateAfterSave(createdId: string | undefined): void {

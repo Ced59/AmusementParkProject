@@ -815,6 +815,42 @@
         "images": "Kontrola mediów, logo i grafik strony.",
         "data": "Monitorowanie importów, źródeł i przetwarzania danych."
       }
+    },
+    "references": {
+      "sections": {
+        "identity": "Identity",
+        "contact": "Optional contact details",
+        "content": "Editorial content",
+        "administration": "Admin workflow"
+      },
+      "fields": {
+        "legalName": "Legal name",
+        "foundedYear": "Founded year",
+        "closedYear": "Closed year",
+        "websiteUrl": "Website",
+        "email": "Email",
+        "phoneNumber": "Phone",
+        "street": "Street",
+        "city": "City",
+        "postalCode": "Postal code",
+        "countryCode": "Country code",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "occupation": "Occupation / role",
+        "birthDate": "Birth date",
+        "deathDate": "Death date",
+        "birthPlace": "Birth place",
+        "nationalityCountryCode": "Nationality / country code"
+      },
+      "images": {
+        "title": "Profile images",
+        "help": "Add portraits, logos, headquarters photos, historical documents or reference visuals. Public display remains conditional.",
+        "add": "Add image",
+        "saveBeforeUpload": "Save this profile before adding images.",
+        "empty": "No image is linked to this profile yet.",
+        "untitled": "Reference image",
+        "uploadTitle": "Add an image to this profile"
+      }
     }
   },
   "validation": {
@@ -827,7 +863,8 @@
     "backToList": "Powrót",
     "edit": "Edytuj",
     "apply": "Apply",
-    "clear": "Clear"
+    "clear": "Clear",
+    "delete": "Delete"
   },
   "parkDetail": {
     "descriptionTitle": "Opis",
@@ -1092,16 +1129,51 @@
       "errorMessage": "Nie udało się załadować wybranego profilu.",
       "backToParks": "Wróć do parków",
       "operator": {
-        "badge": "Operator parku",
+        "badge": "Park operator",
         "title": "Operator",
-        "descriptionTitle": "O operatorze",
-        "emptyDescription": "Dla tego operatora nie ma jeszcze opisu z formatowaniem."
+        "descriptionTitle": "Operator profile",
+        "emptyDescription": "No rich description is available for this operator yet."
       },
       "founder": {
-        "badge": "Założyciel parku",
-        "title": "Założyciel",
-        "descriptionTitle": "O założycielu",
-        "emptyDescription": "Dla tego założyciela nie ma jeszcze biografii z formatowaniem."
+        "badge": "Park founder",
+        "title": "Founder",
+        "descriptionTitle": "Biography",
+        "emptyDescription": "No rich biography is available for this founder yet."
+      },
+      "manufacturer": {
+        "badge": "Attraction manufacturer",
+        "title": "Manufacturer",
+        "descriptionTitle": "Manufacturer profile",
+        "emptyDescription": "No rich profile is available for this manufacturer yet.",
+        "attractionsKicker": "Built attractions",
+        "attractionsTitle": "Attractions linked to this manufacturer",
+        "attractionsSubtitle": "Visible site attractions associated with this manufacturer.",
+        "emptyAttractions": "No visible attraction is linked to this manufacturer yet."
+      },
+      "facts": {
+        "title": "Key information",
+        "legalName": "Legal name",
+        "foundedYear": "Founded",
+        "closedYear": "Closed",
+        "website": "Website",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "country": "Country",
+        "coordinates": "Coordinates",
+        "occupation": "Role",
+        "birthDate": "Birth",
+        "deathDate": "Death",
+        "birthPlace": "Birth place",
+        "nationality": "Nationality"
+      },
+      "photos": {
+        "kicker": "Gallery",
+        "title": "Related images",
+        "subtitle": "Published visuals enriching this profile.",
+        "founder": "Founder",
+        "operator": "Operator",
+        "manufacturer": "Manufacturer"
       }
     },
     "photos": {

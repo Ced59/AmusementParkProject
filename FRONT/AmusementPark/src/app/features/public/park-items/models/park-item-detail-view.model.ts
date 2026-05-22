@@ -8,6 +8,7 @@ export interface ParkItemDetailRowViewModel {
   valueKey?: string | null;
   iconClass?: string | null;
   isTextualValue?: boolean;
+  routerLink?: string[] | null;
 }
 
 export interface ParkItemDetailSpecGroupViewModel {

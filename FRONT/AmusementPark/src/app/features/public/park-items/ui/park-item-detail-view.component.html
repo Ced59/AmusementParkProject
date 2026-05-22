@@ -174,7 +174,12 @@
                 <i [class]="row.iconClass" aria-hidden="true"></i>
               </span>
               <span class="detail-data-row__label">{{ row.labelKey | translate }}</span>
-              <strong class="detail-data-row__value">{{ row.valueKey ? (row.valueKey | translate) : row.value }}</strong>
+              <a *ngIf="row.routerLink; else plainDetailRowValue" class="detail-data-row__value detail-data-row__value--link" [routerLink]="row.routerLink">
+                {{ row.valueKey ? (row.valueKey | translate) : row.value }}
+              </a>
+              <ng-template #plainDetailRowValue>
+                <strong class="detail-data-row__value">{{ row.valueKey ? (row.valueKey | translate) : row.value }}</strong>
+              </ng-template>
             </div>
           </div>
         </section>

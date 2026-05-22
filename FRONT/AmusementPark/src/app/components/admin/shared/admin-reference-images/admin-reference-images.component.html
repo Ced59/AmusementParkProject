@@ -1,0 +1,64 @@
+<section class="admin-reference-images">
+  <div class="admin-reference-images__header">
+    <div>
+      <h3>{{ titleKey | translate }}</h3>
+      <p>{{ helpKey | translate }}</p>
+    </div>
+
+    <button
+      pButton
+      type="button"
+      icon="pi pi-upload"
+      class="p-button-sm"
+      [disabled]="!ownerId"
+      [label]="'admin.references.images.add' | translate"
+      (click)="openUploadDialog()">
+    </button>
+  </div>
+
+  <div *ngIf="!ownerId" class="admin-reference-images__empty">
+    {{ 'admin.references.images.saveBeforeUpload' | translate }}
+  </div>
+
+  <div *ngIf="ownerId && isLoading" class="admin-reference-images__empty">
+    {{ 'common.loadingMessage' | translate }}
+  </div>
+
+  <div *ngIf="ownerId && !isLoading && images.length === 0" class="admin-reference-images__empty">
+    {{ 'admin.references.images.empty' | translate }}
+  </div>
+
+  <div *ngIf="ownerId && !isLoading && images.length > 0" class="admin-reference-images__grid">
+    <article *ngFor="let image of images" class="admin-reference-images__card">
+      <app-image-display
+        [imageId]="image.id"
+        [alt]="image.description || image.originalFileName || 'Image'"
+        imgClass="admin-reference-images__image"
+        placeholderClass="admin-reference-images__image admin-reference-images__image--placeholder"
+        placeholderKind="photo">
+      </app-image-display>
+      <div class="admin-reference-images__meta">
+        <strong>{{ image.description || image.originalFileName || ('admin.references.images.untitled' | translate) }}</strong>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-trash"
+          class="p-button-text p-button-danger p-button-sm"
+          [label]="'actions.delete' | translate"
+          (click)="deleteImage(image.id)">
+        </button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<app-owner-image-upload-dialog
+  [(visible)]="uploadDialogVisible"
+  [ownerId]="ownerId || ''"
+  [ownerType]="ownerType"
+  [category]="category"
+  [withWatermark]="false"
+  [showDescription]="true"
+  titleKey="admin.references.images.uploadTitle"
+  (uploaded)="onImageUploaded($event)">
+</app-owner-image-upload-dialog>

@@ -44,9 +44,9 @@ public sealed class ParkItemRepository : IParkItemRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public async Task<PagedResult<ParkItem>> GetPageAsync(int page, int pageSize, string? parkId, string? search, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, CancellationToken cancellationToken)
+    public async Task<PagedResult<ParkItem>> GetPageAsync(int page, int pageSize, string? parkId, string? search, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, string? manufacturerId, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkItemDocument> filter = this.BuildAdminListFilter(parkId, includeHidden, isVisible, adminReviewStatus, category, type);
+        FilterDefinition<ParkItemDocument> filter = this.BuildAdminListFilter(parkId, includeHidden, isVisible, adminReviewStatus, category, type, manufacturerId);
 
         if (!string.IsNullOrWhiteSpace(search))
         {
@@ -270,7 +270,7 @@ public sealed class ParkItemRepository : IParkItemRepository
         return checked((int)result.ModifiedCount);
     }
 
-    private FilterDefinition<ParkItemDocument> BuildAdminListFilter(string? parkId, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type)
+    private FilterDefinition<ParkItemDocument> BuildAdminListFilter(string? parkId, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, string? manufacturerId)
     {
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Empty;
 
@@ -302,6 +302,11 @@ public sealed class ParkItemRepository : IParkItemRepository
         if (type.HasValue)
         {
             filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.Type, type.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(manufacturerId))
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq("attractionDetails.manufacturerId", manufacturerId.Trim());
         }
 
         return filter;

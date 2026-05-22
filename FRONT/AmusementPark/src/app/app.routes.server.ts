@@ -44,6 +44,9 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin/site', renderMode: RenderMode.Server },
 
   // Pages de parc dynamiques => SSR
+  { path: ':lang/park-operator/:id/:slug', renderMode: RenderMode.Server },
+  { path: ':lang/park-founder/:id/:slug', renderMode: RenderMode.Server },
+  { path: ':lang/park-manufacturer/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/items', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug', renderMode: RenderMode.Server },

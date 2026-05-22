@@ -7,6 +7,7 @@ export interface ParkItemAdminListFilters {
   adminReviewStatus?: AdminReviewStatus | null;
   category?: ParkItemCategory | null;
   type?: ParkItemType | null;
+  manufacturerId?: string | null;
 }
 
 function buildParkItemAdminListQuery(filters: ParkItemAdminListFilters | null = null): string {
@@ -26,6 +27,9 @@ function buildParkItemAdminListQuery(filters: ParkItemAdminListFilters | null = 
   }
   if (filters.type) {
     params.push(`type=${encodeURIComponent(filters.type)}`);
+  }
+  if (filters.manufacturerId) {
+    params.push(`manufacturerId=${encodeURIComponent(filters.manufacturerId)}`);
   }
 
   return params.length > 0 ? `&${params.join('&')}` : '';

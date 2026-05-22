@@ -12,7 +12,7 @@ export interface PublicParkItemRouteTarget extends PublicParkRouteTarget {
   itemName: string | null | undefined;
 }
 
-export type PublicParkReferenceKind = 'operator' | 'founder';
+export type PublicParkReferenceKind = 'operator' | 'founder' | 'manufacturer';
 
 export interface PublicParkReferenceRouteTarget {
   language: string | null | undefined;
@@ -76,7 +76,7 @@ export function buildPublicParkReferenceRouteCommands(target: PublicParkReferenc
   return [
     '/',
     resolveSupportedLanguage(target.language),
-    target.kind === 'operator' ? 'park-operator' : 'park-founder',
+    getPublicParkReferenceRouteSegment(target.kind),
     referenceId,
     buildEntitySlug(referenceName)
   ];
@@ -85,4 +85,16 @@ export function buildPublicParkReferenceRouteCommands(target: PublicParkReferenc
 function normalizeRouteValue(value: string | null | undefined): string | null {
   const normalizedValue: string = value?.trim() ?? '';
   return normalizedValue.length > 0 ? normalizedValue : null;
+}
+
+function getPublicParkReferenceRouteSegment(kind: PublicParkReferenceKind): string {
+  if (kind === 'operator') {
+    return 'park-operator';
+  }
+
+  if (kind === 'manufacturer') {
+    return 'park-manufacturer';
+  }
+
+  return 'park-founder';
 }

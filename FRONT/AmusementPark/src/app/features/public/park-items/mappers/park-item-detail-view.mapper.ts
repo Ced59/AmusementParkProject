@@ -8,7 +8,7 @@ import { AttractionLocationPoint } from '@app/models/parks/attraction-location-p
 import { AttractionLocations } from '@app/models/parks/attraction-locations';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
-import { buildPublicParkItemsRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import { buildPublicParkItemsRouteCommands, buildPublicParkReferenceRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import {
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
@@ -46,7 +46,7 @@ export function mapParkItemToDetailViewModel(
     return null;
   }
 
-  const technicalRows: ParkItemDetailRowViewModel[] = buildTechnicalRows(item, manufacturerName);
+  const technicalRows: ParkItemDetailRowViewModel[] = buildTechnicalRows(item, manufacturerName, currentLanguage);
   const performanceRows: ParkItemDetailRowViewModel[] = buildPerformanceRows(item, currentLanguage);
   const experienceRows: ParkItemDetailRowViewModel[] = buildExperienceRows(item, currentLanguage);
   const specGroups: ParkItemDetailSpecGroupViewModel[] = buildSpecGroups(technicalRows, performanceRows, experienceRows);
@@ -100,11 +100,24 @@ function buildSpecGroups(
   return groups;
 }
 
-function buildTechnicalRows(item: ParkItem, manufacturerName: string | null): ParkItemDetailRowViewModel[] {
+function buildTechnicalRows(item: ParkItem, manufacturerName: string | null, currentLanguage: string): ParkItemDetailRowViewModel[] {
   const details = item.attractionDetails;
   const rows: ParkItemDetailRowViewModel[] = [];
 
-  pushRow(rows, 'parkItems.fields.manufacturer', manufacturerName, null, 'pi pi-building');
+  pushRow(
+    rows,
+    'parkItems.fields.manufacturer',
+    manufacturerName,
+    null,
+    'pi pi-building',
+    item.attractionDetails?.manufacturerId && manufacturerName
+      ? buildPublicParkReferenceRouteCommands({
+        language: currentLanguage,
+        referenceId: item.attractionDetails.manufacturerId,
+        referenceName: manufacturerName,
+        kind: 'manufacturer'
+      })
+      : null);
   pushRow(rows, 'parkItems.fields.model', details?.model, null, 'pi pi-box');
   pushRow(rows, 'parkItems.fields.status', details?.status, null, 'pi pi-circle-fill');
   pushRow(rows, 'parkItems.fields.materialType', details?.materialType, null, 'pi pi-wrench');
@@ -601,7 +614,8 @@ function pushRow(
   labelKey: string,
   value: string | null | undefined,
   valueKey: string | null = null,
-  iconClass: string | null = null
+  iconClass: string | null = null,
+  routerLink: string[] | null = null
 ): void {
   const trimmedValue: string = value?.trim() ?? '';
 
@@ -609,7 +623,7 @@ function pushRow(
     return;
   }
 
-  rows.push({ labelKey, value: trimmedValue, valueKey, iconClass, isTextualValue: isTextualDetailValue(labelKey, trimmedValue, valueKey) });
+  rows.push({ labelKey, value: trimmedValue, valueKey, iconClass, isTextualValue: isTextualDetailValue(labelKey, trimmedValue, valueKey), routerLink });
 }
 
 

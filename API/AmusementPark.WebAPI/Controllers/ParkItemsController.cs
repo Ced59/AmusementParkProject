@@ -79,6 +79,7 @@ public sealed class ParkItemsController : ControllerBase
         [FromQuery] string? adminReviewStatus = null,
         [FromQuery] string? category = null,
         [FromQuery] string? type = null,
+        [FromQuery] string? manufacturerId = null,
         CancellationToken cancellationToken = default)
     {
         PagedQuery paging = pagination.ToApplication();
@@ -91,7 +92,8 @@ public sealed class ParkItemsController : ControllerBase
                 isVisible,
                 ParseAdminReviewStatus(adminReviewStatus),
                 ParseParkItemCategory(category),
-                ParseParkItemType(type)),
+                ParseParkItemType(type),
+                manufacturerId),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

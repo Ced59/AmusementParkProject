@@ -6,14 +6,15 @@
 
 .page-title {
   margin: 0;
+  color: var(--app-heading, #fff);
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 800;
   display: flex;
   align-items: center;
   gap: .6rem;
 
   i {
-    color: var(--primary-color, #3b82f6);
+    color: var(--app-accent-cyan, var(--primary-color, #3b82f6));
   }
 }
 
@@ -27,16 +28,20 @@
   margin: 0;
   padding: .75rem 1rem;
   border-radius: .75rem;
+  border: 1px solid transparent;
+  font-weight: 600;
 }
 
 .message--error {
-  background: rgba(220, 38, 38, .12);
-  color: #991b1b;
+  background: rgba(220, 38, 38, .14);
+  border-color: rgba(220, 38, 38, .26);
+  color: #fecaca;
 }
 
 .message--success {
-  background: rgba(22, 163, 74, .12);
-  color: #166534;
+  background: rgba(22, 163, 74, .14);
+  border-color: rgba(22, 163, 74, .26);
+  color: #bbf7d0;
 }
 
 .tab-pulse {
@@ -46,13 +51,21 @@
 }
 
 .tab-badge {
-  background: var(--primary-color, #3b82f6);
-  color: #fff;
+  background: var(--app-primary, var(--primary-color, #3b82f6));
+  color: #000;
   border-radius: 2rem;
   font-size: .7rem;
-  font-weight: 700;
+  font-weight: 800;
   padding: 0 .35rem;
   margin-left: .3rem;
+}
+
+:host ::ng-deep .p-card,
+:host ::ng-deep .p-tabview-panels,
+:host ::ng-deep .p-tabs-panels,
+:host ::ng-deep .p-tabpanel {
+  background: var(--app-surface, #1a140f);
+  color: var(--app-text, #f6eed9);
 }
 
 @keyframes pulse {

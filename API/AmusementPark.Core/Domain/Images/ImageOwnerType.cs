@@ -9,4 +9,7 @@ public enum ImageOwnerType
     Park = 1,
     User = 2,
     Attraction = 3,
+    ParkOperator = 4,
+    AttractionManufacturer = 5,
+    ParkFounder = 6,
 }
