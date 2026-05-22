@@ -1,5 +1,5 @@
 @if (card; as currentCard) {
-  <article class="ui-item-card">
+  <article class="ui-item-card" [attr.aria-label]="currentCard.name">
     <div class="ui-item-card__visual">
       <span class="ui-item-card__icon">
         <i [class]="currentCard.typeIconClass" aria-hidden="true"></i>
@@ -37,7 +37,7 @@
 
     <div class="ui-item-card__footer">
       @if (currentCard.itemLink) {
-        <a appUiButton="ghost" [routerLink]="currentCard.itemLink">
+        <a appUiButton="ghost" [routerLink]="currentCard.itemLink" [attr.aria-label]="(actionLabelKey | translate) + ' · ' + currentCard.name">
           <i class="pi pi-arrow-right" aria-hidden="true"></i>
           <span>{{ actionLabelKey | translate }}</span>
         </a>

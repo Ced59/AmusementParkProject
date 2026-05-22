@@ -1,5 +1,5 @@
 @if (park; as currentPark) {
-  <article class="ui-park-card" [class.ui-park-card--compact]="compact">
+  <article class="ui-park-card" [class.ui-park-card--compact]="compact" [attr.aria-label]="currentPark.name">
     <div class="ui-park-card__visual" [class.ui-park-card__visual--placeholder]="!hasLogoImageId">
       <div class="ui-park-card__badges">
         @if (currentPark.countryCode) {
@@ -79,7 +79,8 @@
           class="ui-park-card__secondary-cta"
           [href]="currentPark.websiteUrl | safeExternalUrl"
           target="_blank"
-          rel="noreferrer noopener">
+          rel="noreferrer noopener"
+          [attr.aria-label]="'parks.actions.website' | translate">
           <i class="pi pi-external-link" aria-hidden="true"></i>
           <span>{{ 'parks.actions.website' | translate }}</span>
         </a>

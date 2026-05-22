@@ -22,6 +22,7 @@
       [placeholder]="placeholderKey ? (placeholderKey | translate) : resolvedPlaceholder"
       [autocomplete]="autocomplete"
       [disabled]="disabled"
+      [attr.aria-label]="hasLabel ? null : (placeholderKey ? (placeholderKey | translate) : resolvedPlaceholder)"
       (ngModelChange)="onValueChanged($event)" />
   </div>
 </div>

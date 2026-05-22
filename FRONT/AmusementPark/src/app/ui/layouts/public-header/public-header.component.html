@@ -5,7 +5,7 @@
       <span class="app-public-nav__logo-text">AmusementPark</span>
     </a>
 
-    <ul class="app-public-nav__links">
+    <ul class="app-public-nav__links" role="list">
       <li>
         <a [routerLink]="['/', selectedLanguage(), 'home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <i class="pi pi-home" aria-hidden="true"></i>
@@ -18,7 +18,8 @@
             type="button"
             class="app-public-nav__tree-trigger active"
             [attr.aria-expanded]="isParksNavigationOpen()"
-            aria-haspopup="true"
+            [attr.aria-label]="'publicNavigation.treeAriaLabel' | translate"
+            aria-haspopup="menu"
             (click)="toggleParksNavigation()">
             <i class="pi pi-map" aria-hidden="true"></i>
             <span>{{ 'sidebar.parks' | translate }}</span>

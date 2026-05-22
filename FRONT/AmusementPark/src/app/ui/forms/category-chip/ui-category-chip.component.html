@@ -1,4 +1,10 @@
-<button class="app-category-chip__button" type="button" [disabled]="disabled" (click)="select()">
+<button
+  class="app-category-chip__button"
+  type="button"
+  [disabled]="disabled"
+  [attr.aria-pressed]="selected"
+  [attr.aria-label]="labelKey ? (labelKey | translate) : labelText"
+  (click)="select()">
   @if (iconClass) {
     <i [class]="iconClass" aria-hidden="true"></i>
   }

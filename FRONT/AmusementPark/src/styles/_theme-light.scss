@@ -1,6 +1,8 @@
 body.light-mode {
   color-scheme: light;
 
+  --shadow-focus: 0 0 0 3px rgba(143, 58, 12, 0.34), 0 0 0 6px rgba(255, 255, 255, 0.74);
+
   --bg: #fff9f0;
   --bg-2: #fff3e0;
   --bg-3: #ffeccf;
@@ -8,20 +10,39 @@ body.light-mode {
   --bg-card-2: #fffaf3;
   --surface: #ffffff;
   --text: #2a1a08;
-  --text-muted: #7a5c38;
-  --text-faint: #b8986a;
+  --text-muted: #5f411e;
+  --text-faint: #8a6635;
   --heading: #160a00;
-  --border: rgba(180, 100, 20, 0.1);
-  --border-2: rgba(180, 100, 20, 0.18);
-  --border-3: rgba(180, 100, 20, 0.26);
+  --border: rgba(143, 78, 13, 0.16);
+  --border-2: rgba(143, 78, 13, 0.28);
+  --border-3: rgba(143, 78, 13, 0.38);
   --nav-bg: rgba(255, 249, 240, 0.9);
   --page-bg: linear-gradient(160deg, #fff9f0 0%, #fff3e0 52%, #fff9f0 100%);
+
+  /* M16 light-specific contrast aliases. Dark keeps the original mockup values. */
+  --app-light-accent-lime: #4f6f00;
+  --app-light-accent-lime-soft: rgba(79, 111, 0, 0.13);
+  --app-light-accent-sky: #006d93;
+  --app-light-accent-sky-soft: rgba(0, 109, 147, 0.13);
+  --app-light-accent-gold: #8a4f00;
+  --app-light-accent-gold-soft: rgba(138, 79, 0, 0.14);
+  --app-light-accent-rose: #c61855;
+  --app-light-accent-rose-soft: rgba(198, 24, 85, 0.12);
+  --app-light-accent-purple: #6f36b8;
+  --app-light-accent-purple-soft: rgba(111, 54, 184, 0.12);
+  --app-light-soft-surface: rgba(143, 78, 13, 0.055);
+  --app-light-soft-surface-strong: rgba(143, 78, 13, 0.09);
+  --type-water: var(--app-light-accent-sky);
+  --type-family: var(--app-light-accent-lime);
+  --type-show: var(--app-light-accent-purple);
+  --type-food: var(--app-light-accent-gold);
+  --type-thrill: var(--app-light-accent-rose);
 
   --app-bg: var(--bg);
   --app-bg-elevated: var(--bg-2);
   --app-bg-accent-1: rgba(255, 90, 31, 0.08);
-  --app-bg-accent-2: rgba(196, 255, 39, 0.06);
-  --app-bg-accent-3: rgba(56, 197, 245, 0.055);
+  --app-bg-accent-2: rgba(255, 90, 31, 0.05);
+  --app-bg-accent-3: rgba(0, 116, 154, 0.055);
   --app-page-bg: var(--page-bg);
   --app-page-surface: color-mix(in srgb, var(--bg-card) 86%, transparent);
   --app-surface: color-mix(in srgb, var(--bg-card) 94%, transparent);
@@ -37,22 +58,22 @@ body.light-mode {
   --app-primary: var(--c-orange);
   --app-primary-strong: var(--c-orange-2);
   --app-primary-soft: rgba(255, 90, 31, 0.12);
-  --app-success: #7ba800;
-  --app-warning: var(--c-gold);
-  --app-danger: var(--c-rose);
-  --app-focus-ring: rgba(255, 90, 31, 0.18);
+  --app-success: #4f6f00;
+  --app-warning: #8a4f00;
+  --app-danger: #c61855;
+  --app-focus-ring: rgba(143, 58, 12, 0.34);
   --app-topbar-bg: color-mix(in srgb, var(--nav-bg) 86%, transparent);
   --app-sidebar-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 250, 243, 0.94));
   --app-background-illustration-opacity: 0;
-  --app-accent-cyan: #0088b6;
-  --app-accent-pink: var(--c-rose);
-  --app-accent-gold: #c67900;
-  --app-accent-lime: #6f9700;
-  --app-accent-purple: var(--c-purple);
-  --app-surface-hero: radial-gradient(ellipse 70% 58% at 8% 48%, rgba(255, 90, 31, 0.13), transparent 70%), radial-gradient(ellipse 44% 44% at 88% 20%, rgba(196, 255, 39, 0.1), transparent 60%), linear-gradient(180deg, var(--bg-card), var(--bg-card-2));
+  --app-accent-cyan: #006d93;
+  --app-accent-pink: #c61855;
+  --app-accent-gold: #8a4f00;
+  --app-accent-lime: #4f6f00;
+  --app-accent-purple: #6f36b8;
+  --app-surface-hero: radial-gradient(ellipse 70% 58% at 8% 48%, rgba(255, 90, 31, 0.12), transparent 70%), radial-gradient(ellipse 44% 44% at 88% 20%, rgba(0, 109, 147, 0.08), transparent 60%), linear-gradient(180deg, var(--bg-card), var(--bg-card-2));
   --app-surface-glow: rgba(255, 90, 31, 0.065);
   --app-card-highlight: rgba(255, 90, 31, 0.09);
-  --app-card-highlight-strong: rgba(56, 197, 245, 0.08);
+  --app-card-highlight-strong: rgba(0, 109, 147, 0.1);
   --app-card-noise: rgba(255, 255, 255, 0.4);
 
   /* Legacy ap-* aliases kept to avoid breaking older visual code during the migration. */
@@ -83,7 +104,7 @@ body.light-mode {
   --ap-shadow-hover: var(--app-shadow-2);
   --ap-sidebar-bg: var(--app-sidebar-bg);
   --ap-sidebar-text: var(--app-text);
-  --ap-sidebar-hover: rgba(0, 0, 0, 0.05);
+  --ap-sidebar-hover: rgba(143, 78, 13, 0.09);
   --ap-sidebar-active: var(--app-primary-soft);
   --ap-navbar-bg-start: #fff9f0;
   --ap-navbar-bg-end: #fff3e0;

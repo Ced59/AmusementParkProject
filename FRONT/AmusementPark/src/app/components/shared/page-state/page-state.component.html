@@ -1,5 +1,5 @@
 <ng-container [ngSwitch]="state">
-  <div *ngSwitchCase="viewState.Loading" class="app-page-state">
+  <div *ngSwitchCase="viewState.Loading" class="app-page-state app-page-state--loading" role="status" aria-live="polite" aria-busy="true">
     <app-empty-state
       iconClass="pi pi-spin pi-spinner app-page-state__icon"
       [titleKey]="resolvedLoadingTitleKey"
@@ -7,7 +7,7 @@
     </app-empty-state>
   </div>
 
-  <div *ngSwitchCase="viewState.Error" class="app-page-state">
+  <div *ngSwitchCase="viewState.Error" class="app-page-state app-page-state--error" role="alert" aria-live="assertive">
     <app-empty-state
       iconClass="pi pi-exclamation-circle app-page-state__icon"
       [titleKey]="resolvedErrorTitleKey"
@@ -15,7 +15,7 @@
     </app-empty-state>
   </div>
 
-  <div *ngSwitchCase="viewState.Empty" class="app-page-state">
+  <div *ngSwitchCase="viewState.Empty" class="app-page-state app-page-state--empty" role="status" aria-live="polite">
     <app-empty-state
       iconClass="pi pi-inbox app-page-state__icon"
       [titleKey]="resolvedEmptyTitleKey"

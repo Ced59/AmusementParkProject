@@ -1,5 +1,5 @@
 @if (park; as currentPark) {
-  <article class="ui-featured-park-card" [attr.data-tone]="currentPark.tone">
+  <article class="ui-featured-park-card" [attr.data-tone]="currentPark.tone" [attr.aria-label]="currentPark.name">
     <div class="ui-featured-park-card__visual" [class.ui-featured-park-card__visual--placeholder]="!hasLogo">
       <div class="ui-featured-park-card__visual-bg" aria-hidden="true"></div>
       <div class="ui-featured-park-card__badges">
@@ -62,7 +62,7 @@
 
     <div class="ui-featured-park-card__footer">
       @if (currentPark.detailLink) {
-        <a appUiButton="primary" class="ui-featured-park-card__cta" [routerLink]="currentPark.detailLink">
+        <a appUiButton="primary" class="ui-featured-park-card__cta" [routerLink]="currentPark.detailLink" [attr.aria-label]="('home.featured.discover' | translate) + ' · ' + currentPark.name">
           <span>{{ 'home.featured.discover' | translate }}</span>
           <i class="pi pi-arrow-right" aria-hidden="true"></i>
         </a>

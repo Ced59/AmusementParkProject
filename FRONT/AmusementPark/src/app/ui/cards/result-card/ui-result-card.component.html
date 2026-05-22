@@ -1,4 +1,4 @@
-<article class="ui-result-card" [attr.data-tone]="kickerTone">
+<article class="ui-result-card" [attr.data-tone]="kickerTone" [attr.aria-label]="title">
   <div class="ui-result-card__icon" aria-hidden="true">
     <i [class]="iconClass"></i>
   </div>
@@ -36,7 +36,7 @@
 
   @if (routerLink) {
     <div class="ui-result-card__footer">
-      <a appUiButton="ghost" [routerLink]="routerLink">
+      <a appUiButton="ghost" [routerLink]="routerLink" [attr.aria-label]="(actionLabelKey | translate) + (title ? ' · ' + title : '')">
         <span>{{ actionLabelKey | translate }}</span>
         <i class="pi pi-arrow-right" aria-hidden="true"></i>
       </a>
