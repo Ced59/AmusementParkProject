@@ -154,8 +154,16 @@ export class CaptainCoasterComparisonFacade {
     private readonly dataSourcesApiService: DataSourcesApiService,
     private readonly captainCoasterPipelineFacade: CaptainCoasterPipelineFacade
   ) {
+    let hasObservedInitialGeneration = false;
+
     effect(() => {
       this.captainCoasterPipelineFacade.comparisonGeneration();
+
+      if (!hasObservedInitialGeneration) {
+        hasObservedInitialGeneration = true;
+        return;
+      }
+
       this.resetComparisonState();
     }, { allowSignalWrites: true });
   }

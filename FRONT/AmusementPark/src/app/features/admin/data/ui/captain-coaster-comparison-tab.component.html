@@ -9,7 +9,7 @@
         [icon]="isLoadingPage() ? 'pi pi-spin pi-spinner' : (isLoaded() ? 'pi pi-refresh' : 'pi pi-download')"
         class="p-button-sm"
         [disabled]="isLoadingPage() || session() === null"
-        (click)="captainCoasterComparisonFacade.loadComparisonAsync()">
+        (click)="loadComparisonResultsAsync()">
       </button>
     </div>
   </ng-template>

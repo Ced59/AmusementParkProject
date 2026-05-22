@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonDirective } from 'primeng/button';
@@ -34,6 +34,7 @@ import { CaptainCoasterComparisonAnalysisComponent } from './captain-coaster-com
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CaptainCoasterComparisonTabComponent {
+  private lastAutoLoadedSessionId: string | null = null;
   protected readonly isBusy = this.captainCoasterPipelineFacade.isBusy;
   protected readonly session = this.captainCoasterPipelineFacade.session;
   protected readonly isLoaded = this.captainCoasterComparisonFacade.isLoaded;
@@ -57,8 +58,28 @@ export class CaptainCoasterComparisonTabComponent {
     protected readonly captainCoasterComparisonFacade: CaptainCoasterComparisonFacade,
     protected readonly captainCoasterPipelineFacade: CaptainCoasterPipelineFacade
   ) {
+    effect(() => {
+      const session = this.session();
+      const canAutoLoad = session !== null
+        && session.status === 'Completed'
+        && session.comparisonResults > 0
+        && !this.isLoaded()
+        && !this.isLoadingPage();
+
+      if (!canAutoLoad || session === null || this.lastAutoLoadedSessionId === session.id) {
+        return;
+      }
+
+      this.lastAutoLoadedSessionId = session.id;
+      queueMicrotask(() => {
+        void this.loadComparisonResultsAsync();
+      });
+    });
   }
 
+  protected async loadComparisonResultsAsync(): Promise<void> {
+    await this.captainCoasterComparisonFacade.loadComparisonAsync();
+  }
 
   protected getEmptyComparisonMessage(): string {
     const session = this.session();

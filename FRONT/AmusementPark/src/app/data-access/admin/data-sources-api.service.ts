@@ -213,23 +213,26 @@ export class DataSourcesApiService {
   private mapComparisonPage(response: unknown, requestedPage: number, requestedPageSize: number): CaptainCoasterComparisonPagedResponse {
     const root: Record<string, unknown> = this.asRecord(response);
     const data: unknown = this.readValue(root, 'data', 'Data');
-    const payload: Record<string, unknown> = data !== undefined && !Array.isArray(data) && typeof data === 'object' && data !== null
-      ? this.asRecord(data)
+    const wrappedValue: unknown = this.readValue(root, 'value', 'Value', 'result', 'Result');
+    const payloadCandidate: unknown = wrappedValue ?? data;
+    const payload: Record<string, unknown> = payloadCandidate !== undefined && !Array.isArray(payloadCandidate) && typeof payloadCandidate === 'object' && payloadCandidate !== null
+      ? this.asRecord(payloadCandidate)
       : root;
-    const pagination: Record<string, unknown> = this.asRecord(this.readValue(root, 'pagination', 'Pagination'));
+    const pagination: Record<string, unknown> = this.asRecord(this.readValue(root, 'pagination', 'Pagination') ?? this.readValue(payload, 'pagination', 'Pagination'));
     const rawItems: unknown = this.readValue(payload, 'items', 'Items');
     const dataItems: unknown = Array.isArray(data) ? data : undefined;
-    const items: CaptainCoasterComparisonResultResponse[] = this.asArray(rawItems ?? dataItems)
+    const valueItems: unknown = Array.isArray(wrappedValue) ? wrappedValue : undefined;
+    const items: CaptainCoasterComparisonResultResponse[] = this.asArray(rawItems ?? dataItems ?? valueItems)
       .map((item: unknown) => this.mapComparisonItem(item));
 
     return {
       items,
       totalCount: this.toNumber(
-        this.readValue(payload, 'totalCount', 'TotalCount')
+        this.readValue(payload, 'totalCount', 'TotalCount', 'count', 'Count')
           ?? this.readValue(pagination, 'totalItems', 'TotalItems', 'totalRecords', 'TotalRecords'),
         items.length),
-      page: this.toNumber(this.readValue(payload, 'page', 'Page'), requestedPage),
-      pageSize: this.toNumber(this.readValue(payload, 'pageSize', 'PageSize'), requestedPageSize),
+      page: this.toNumber(this.readValue(payload, 'page', 'Page', 'currentPage', 'CurrentPage'), requestedPage),
+      pageSize: this.toNumber(this.readValue(payload, 'pageSize', 'PageSize', 'itemsPerPage', 'ItemsPerPage'), requestedPageSize),
       sessionUpdatedCount: this.toNumber(this.readValue(payload, 'sessionUpdatedCount', 'SessionUpdatedCount'), 0),
       sessionMissingCount: this.toNumber(this.readValue(payload, 'sessionMissingCount', 'SessionMissingCount'), 0),
       sessionDuplicateCount: this.toNumber(this.readValue(payload, 'sessionDuplicateCount', 'SessionDuplicateCount'), 0),
