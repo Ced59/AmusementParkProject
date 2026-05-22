@@ -278,6 +278,14 @@ public sealed class CaptainCoasterCoasterSnapshotDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? ParkName { get; set; }
 
+    [BsonElement("countryCode")]
+    [BsonIgnoreIfNull]
+    public string? CountryCode { get; set; }
+
+    [BsonElement("countryRaw")]
+    [BsonIgnoreIfNull]
+    public string? CountryRaw { get; set; }
+
     [BsonElement("manufacturer")]
     [BsonIgnoreIfNull]
     public string? Manufacturer { get; set; }

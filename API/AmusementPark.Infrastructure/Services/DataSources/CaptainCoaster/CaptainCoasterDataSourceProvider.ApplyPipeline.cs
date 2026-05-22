@@ -113,7 +113,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             localParkDocument = new ParkDocument
             {
                 Name = externalParkDocument.Name,
-                CountryCode = externalParkDocument.CountryCode,
+                CountryCode = NormalizeCountryCodeForStorage(externalParkDocument.CountryCode),
                 Latitude = externalParkDocument.Latitude,
                 Longitude = externalParkDocument.Longitude,
                 IsVisible = false,
@@ -127,12 +127,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         }
         else
         {
-            localParkDocument.Name = externalParkDocument.Name;
-            localParkDocument.CountryCode = externalParkDocument.CountryCode;
-            localParkDocument.Latitude = externalParkDocument.Latitude;
-            localParkDocument.Longitude = externalParkDocument.Longitude;
-            localParkDocument.UpdatedAt = utcNow;
-            localParkDocument.RefreshLocation();
+            ApplyExternalParkSnapshotToLocalPark(localParkDocument, externalParkDocument, utcNow);
             AddParkLookup(context, localParkDocument);
         }
 
@@ -552,13 +547,14 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         DateTime utcNow)
     {
         ParkDocument? localParkDocument = null;
+        CaptainCoasterParkSnapshotDocument? externalParkDocument = null;
 
         if (!string.IsNullOrWhiteSpace(externalCoaster.ParkCaptainCoasterId)
             && context.ParkSnapshotsByCaptainCoasterId.TryGetValue(
                 externalCoaster.ParkCaptainCoasterId.Trim(),
                 out List<CaptainCoasterParkSnapshotDocument>? externalParkVariants))
         {
-            CaptainCoasterParkSnapshotDocument? externalParkDocument = externalParkVariants.FirstOrDefault(item => item.SyncSessionId == sessionId) ?? externalParkVariants.FirstOrDefault();
+            externalParkDocument = externalParkVariants.FirstOrDefault(item => item.SyncSessionId == sessionId) ?? externalParkVariants.FirstOrDefault();
             if (externalParkDocument != null)
             {
                 localParkDocument = FindMatchingPark(context, externalParkDocument);
@@ -593,10 +589,10 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
         localParkDocument = new ParkDocument
         {
-            Name = externalCoaster.ParkName,
-            CountryCode = null,
-            Latitude = null,
-            Longitude = null,
+            Name = externalParkDocument?.Name ?? externalCoaster.ParkName,
+            CountryCode = NormalizeCountryCodeForStorage(externalParkDocument?.CountryCode ?? externalCoaster.CountryCode),
+            Latitude = externalParkDocument?.Latitude,
+            Longitude = externalParkDocument?.Longitude,
             IsVisible = false,
             CreatedAt = utcNow,
             UpdatedAt = utcNow,

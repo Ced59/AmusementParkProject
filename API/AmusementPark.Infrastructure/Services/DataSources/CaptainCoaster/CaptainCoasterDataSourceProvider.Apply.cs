@@ -31,27 +31,25 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             }
             localParkDocument ??= MatchPark(localParks, externalParkDocument);
 
+            DateTime utcNow = DateTime.UtcNow;
             if (localParkDocument == null)
             {
                 localParkDocument = new ParkDocument
                 {
                     Name = externalParkDocument.Name,
-                    CountryCode = externalParkDocument.CountryCode,
+                    CountryCode = NormalizeCountryCodeForStorage(externalParkDocument.CountryCode),
                     Latitude = externalParkDocument.Latitude,
                     Longitude = externalParkDocument.Longitude,
                     IsVisible = false,
-                    CreatedAt = DateTime.UtcNow,
-                    UpdatedAt = DateTime.UtcNow
+                    CreatedAt = utcNow,
+                    UpdatedAt = utcNow
                 };
+                localParkDocument.RefreshLocation();
                 await localParksCollection.InsertOneAsync(localParkDocument, cancellationToken: cancellationToken);
             }
             else
             {
-                localParkDocument.Name = externalParkDocument.Name;
-                localParkDocument.CountryCode = externalParkDocument.CountryCode;
-                localParkDocument.Latitude = externalParkDocument.Latitude;
-                localParkDocument.Longitude = externalParkDocument.Longitude;
-                localParkDocument.UpdatedAt = DateTime.UtcNow;
+                ApplyExternalParkSnapshotToLocalPark(localParkDocument, externalParkDocument, utcNow);
                 await localParksCollection.ReplaceOneAsync(item => item.Id == localParkDocument.Id, localParkDocument, cancellationToken: cancellationToken);
             }
 
@@ -516,16 +514,18 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                     localParkDocument = MatchPark(localParks, externalParkDocument);
                     if (localParkDocument == null)
                     {
+                        DateTime utcNow = DateTime.UtcNow;
                         localParkDocument = new ParkDocument
                         {
                             Name = externalParkDocument.Name,
-                            CountryCode = externalParkDocument.CountryCode,
+                            CountryCode = NormalizeCountryCodeForStorage(externalParkDocument.CountryCode),
                             Latitude = externalParkDocument.Latitude,
                             Longitude = externalParkDocument.Longitude,
                             IsVisible = false,
-                            CreatedAt = DateTime.UtcNow,
-                            UpdatedAt = DateTime.UtcNow
+                            CreatedAt = utcNow,
+                            UpdatedAt = utcNow
                         };
+                        localParkDocument.RefreshLocation();
                         await localParksCollection.InsertOneAsync(localParkDocument, cancellationToken: cancellationToken);
                     }
                 }
@@ -538,16 +538,18 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
             if (localParkDocument == null && !string.IsNullOrWhiteSpace(externalCoaster.ParkName))
             {
+                DateTime utcNow = DateTime.UtcNow;
                 localParkDocument = new ParkDocument
                 {
                     Name = externalCoaster.ParkName,
-                    CountryCode = null,
-                    Latitude = 0d,
-                    Longitude = 0d,
+                    CountryCode = NormalizeCountryCodeForStorage(externalCoaster.CountryCode),
+                    Latitude = null,
+                    Longitude = null,
                     IsVisible = false,
-                    CreatedAt = DateTime.UtcNow,
-                    UpdatedAt = DateTime.UtcNow
+                    CreatedAt = utcNow,
+                    UpdatedAt = utcNow
                 };
+                localParkDocument.RefreshLocation();
                 await localParksCollection.InsertOneAsync(localParkDocument, cancellationToken: cancellationToken);
             }
 

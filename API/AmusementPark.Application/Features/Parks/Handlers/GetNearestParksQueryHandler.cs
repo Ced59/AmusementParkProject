@@ -53,11 +53,12 @@ public sealed class GetNearestParksQueryHandler : IQueryHandler<GetNearestParksQ
             sourcePark.Position.Longitude,
             queryLimit,
             query.MaxDistanceKilometers,
-            query.IncludeHidden,
-            cancellationToken);
+            includeHidden: false,
+            cancellationToken: cancellationToken);
 
         List<ParkDistanceTargetResult> targets = nearbyCandidates
             .Where(candidate => !string.Equals(candidate.Id, sourcePark.Id, StringComparison.Ordinal))
+            .Where(static candidate => candidate.IsVisible)
             .Where(static candidate => candidate.Position is not null)
             .Select(candidate => this.BuildTarget(sourcePark, candidate, 0))
             .OrderBy(static target => target.DistanceKilometers)

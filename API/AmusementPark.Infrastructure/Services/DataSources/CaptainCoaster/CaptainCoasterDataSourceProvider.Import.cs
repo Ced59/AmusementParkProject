@@ -211,6 +211,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 continue;
             }
 
+            string? countryRaw = ReadString(element, "country");
             result.Add(new CaptainCoasterCoasterSnapshotDocument
             {
                 SourceKey = SourceKeyValue,
@@ -221,6 +222,8 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 SourceUrl = ReadString(element, "sourceUrl"),
                 ParkCaptainCoasterId = ReadString(element, "parkSlug"),
                 ParkName = ReadString(element, "parkName"),
+                CountryRaw = NormalizeNullableText(countryRaw),
+                CountryCode = CountryNameMapper.ToCountryCode(countryRaw),
                 Manufacturer = NormalizeManufacturer(ReadString(element, "manufacturer")),
                 Model = ReadString(element, "model"),
                 MaterialType = ReadString(element, "materialType"),
