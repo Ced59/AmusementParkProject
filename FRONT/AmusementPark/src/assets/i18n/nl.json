@@ -646,7 +646,17 @@
         "updateTitle": "Oprichter bewerken",
         "name": "Naam",
         "biography": "Biografie"
-      }
+      },
+      "title": "Oprichters",
+      "subtitle": "Referentielijst van oprichters die door parkfiches worden gebruikt.",
+      "total": "Oprichters: {{count}}",
+      "searchPlaceholder": "Zoek een oprichter",
+      "create": "Oprichter maken",
+      "name": "Naam",
+      "lifeDates": "Datums",
+      "actions": "Acties",
+      "empty": "Geen oprichter gevonden.",
+      "loadError": "Kan oprichters niet laden."
     },
     "manufacturers": {
       "total": "Manufacturers: {{count}}",
@@ -813,7 +823,8 @@
         "operators": "Exploitanten gekoppeld aan parken onderhouden.",
         "manufacturers": "Constructeurs en attractiebouwers onderhouden.",
         "images": "Media, logo’s en sitebeelden controleren.",
-        "data": "Imports, bronnen en gegevensverwerking volgen."
+        "data": "Imports, bronnen en gegevensverwerking volgen.",
+        "founders": "Beheer oprichters en biografieën die aan parken zijn gekoppeld."
       }
     },
     "references": {

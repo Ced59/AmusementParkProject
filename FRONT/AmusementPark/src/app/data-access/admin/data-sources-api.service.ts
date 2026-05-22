@@ -5,7 +5,10 @@ import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import {
   CaptainCoasterComparisonPagedResponse,
+  CaptainCoasterComparisonResultResponse,
   CaptainCoasterDuplicateResolutionRequest,
+  CaptainCoasterExternalVariantResponse,
+  CaptainCoasterFieldChangeResponse,
   CaptainCoasterSessionResponse,
   CaptainCoasterSettingsResponse,
   CaptainCoasterStatusResponse,
@@ -174,7 +177,9 @@ export class DataSourcesApiService {
       params = params.set('isApplied', filters.isApplied.toString());
     }
 
-    return this.http.get<CaptainCoasterComparisonPagedResponse>(`${this.baseUrl}/comparison-results`, { params });
+    return this.http.get<unknown>(`${this.baseUrl}/comparison-results`, { params }).pipe(
+      map((response: unknown) => this.mapComparisonPage(response, page, pageSize))
+    );
   }
 
   applySelectedIds(
@@ -201,6 +206,141 @@ export class DataSourcesApiService {
       changeTypeFilter,
       duplicateResolutions: []
     });
+  }
+
+
+
+  private mapComparisonPage(response: unknown, requestedPage: number, requestedPageSize: number): CaptainCoasterComparisonPagedResponse {
+    const root: Record<string, unknown> = this.asRecord(response);
+    const data: unknown = this.readValue(root, 'data', 'Data');
+    const payload: Record<string, unknown> = data !== undefined && !Array.isArray(data) && typeof data === 'object' && data !== null
+      ? this.asRecord(data)
+      : root;
+    const pagination: Record<string, unknown> = this.asRecord(this.readValue(root, 'pagination', 'Pagination'));
+    const rawItems: unknown = this.readValue(payload, 'items', 'Items');
+    const dataItems: unknown = Array.isArray(data) ? data : undefined;
+    const items: CaptainCoasterComparisonResultResponse[] = this.asArray(rawItems ?? dataItems)
+      .map((item: unknown) => this.mapComparisonItem(item));
+
+    return {
+      items,
+      totalCount: this.toNumber(
+        this.readValue(payload, 'totalCount', 'TotalCount')
+          ?? this.readValue(pagination, 'totalItems', 'TotalItems', 'totalRecords', 'TotalRecords'),
+        items.length),
+      page: this.toNumber(this.readValue(payload, 'page', 'Page'), requestedPage),
+      pageSize: this.toNumber(this.readValue(payload, 'pageSize', 'PageSize'), requestedPageSize),
+      sessionUpdatedCount: this.toNumber(this.readValue(payload, 'sessionUpdatedCount', 'SessionUpdatedCount'), 0),
+      sessionMissingCount: this.toNumber(this.readValue(payload, 'sessionMissingCount', 'SessionMissingCount'), 0),
+      sessionDuplicateCount: this.toNumber(this.readValue(payload, 'sessionDuplicateCount', 'SessionDuplicateCount'), 0),
+      sessionAppliedCount: this.toNumber(this.readValue(payload, 'sessionAppliedCount', 'SessionAppliedCount'), 0)
+    };
+  }
+
+  private mapComparisonItem(response: unknown): CaptainCoasterComparisonResultResponse {
+    const item: Record<string, unknown> = this.asRecord(response);
+    const changes: CaptainCoasterFieldChangeResponse[] = this.asArray(this.readValue(item, 'changes', 'Changes'))
+      .map((change: unknown) => this.mapComparisonFieldChange(change));
+    const externalVariants: CaptainCoasterExternalVariantResponse[] = this.asArray(this.readValue(item, 'externalVariants', 'ExternalVariants'))
+      .map((variant: unknown) => this.mapComparisonExternalVariant(variant));
+
+    return {
+      id: this.toStringValue(this.readValue(item, 'id', 'Id')),
+      entityType: this.toStringValue(this.readValue(item, 'entityType', 'EntityType')),
+      changeType: this.toStringValue(this.readValue(item, 'changeType', 'ChangeType')),
+      displayName: this.toStringValue(this.readValue(item, 'displayName', 'DisplayName')),
+      localEntityId: this.toNullableStringValue(this.readValue(item, 'localEntityId', 'LocalEntityId')),
+      externalEntityId: this.toNullableStringValue(this.readValue(item, 'externalEntityId', 'ExternalEntityId')),
+      matchConfidence: this.toStringValue(this.readValue(item, 'matchConfidence', 'MatchConfidence')),
+      isApplied: this.toBoolean(this.readValue(item, 'isApplied', 'IsApplied'), false),
+      hasExternalDuplicates: this.toBoolean(this.readValue(item, 'hasExternalDuplicates', 'HasExternalDuplicates'), false),
+      requiresManualResolution: this.toBoolean(this.readValue(item, 'requiresManualResolution', 'RequiresManualResolution'), false),
+      resolutionStatus: this.toStringValue(this.readValue(item, 'resolutionStatus', 'ResolutionStatus')),
+      appliedExternalVariantId: this.toNullableStringValue(this.readValue(item, 'appliedExternalVariantId', 'AppliedExternalVariantId')),
+      changes,
+      externalVariants
+    };
+  }
+
+  private mapComparisonExternalVariant(response: unknown): CaptainCoasterExternalVariantResponse {
+    const variant: Record<string, unknown> = this.asRecord(response);
+    const changes: CaptainCoasterFieldChangeResponse[] = this.asArray(this.readValue(variant, 'changes', 'Changes'))
+      .map((change: unknown) => this.mapComparisonFieldChange(change));
+
+    return {
+      externalVariantId: this.toStringValue(this.readValue(variant, 'externalVariantId', 'ExternalVariantId')),
+      displayLabel: this.toStringValue(this.readValue(variant, 'displayLabel', 'DisplayLabel')),
+      candidateLocalEntityId: this.toNullableStringValue(this.readValue(variant, 'candidateLocalEntityId', 'CandidateLocalEntityId')),
+      sourceUrl: this.toNullableStringValue(this.readValue(variant, 'sourceUrl', 'SourceUrl')),
+      isSuggested: this.toBoolean(this.readValue(variant, 'isSuggested', 'IsSuggested'), false),
+      changes
+    };
+  }
+
+  private mapComparisonFieldChange(response: unknown): CaptainCoasterFieldChangeResponse {
+    const change: Record<string, unknown> = this.asRecord(response);
+    return {
+      field: this.toStringValue(this.readValue(change, 'field', 'Field')),
+      localValue: this.toNullableStringValue(this.readValue(change, 'localValue', 'LocalValue')),
+      externalValue: this.toNullableStringValue(this.readValue(change, 'externalValue', 'ExternalValue')),
+      isDifferent: this.toBoolean(this.readValue(change, 'isDifferent', 'IsDifferent'), false)
+    };
+  }
+
+  private readValue(source: Record<string, unknown>, ...keys: string[]): unknown {
+    for (const key of keys) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        return source[key];
+      }
+    }
+
+    return undefined;
+  }
+
+  private asRecord(value: unknown): Record<string, unknown> {
+    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+      return value as Record<string, unknown>;
+    }
+
+    return {};
+  }
+
+  private asArray(value: unknown): unknown[] {
+    return Array.isArray(value) ? value : [];
+  }
+
+  private toStringValue(value: unknown): string {
+    return typeof value === 'string' ? value : value === null || value === undefined ? '' : String(value);
+  }
+
+  private toNullableStringValue(value: unknown): string | null {
+    const normalizedValue: string = this.toStringValue(value).trim();
+    return normalizedValue.length > 0 ? normalizedValue : null;
+  }
+
+  private toNumber(value: unknown, fallback: number): number {
+    if (typeof value === 'number' && Number.isFinite(value)) {
+      return value;
+    }
+
+    if (typeof value === 'string') {
+      const parsedValue: number = Number(value);
+      return Number.isFinite(parsedValue) ? parsedValue : fallback;
+    }
+
+    return fallback;
+  }
+
+  private toBoolean(value: unknown, fallback: boolean): boolean {
+    if (typeof value === 'boolean') {
+      return value;
+    }
+
+    if (typeof value === 'string') {
+      return value.toLowerCase() === 'true';
+    }
+
+    return fallback;
   }
 
   private mapSourceSummary(source: DataSourceStatusApiDto): DataSourceSummary {

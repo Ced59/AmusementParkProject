@@ -646,7 +646,17 @@
         "updateTitle": "Modifica il fondatore",
         "name": "Nome",
         "biography": "Biografia"
-      }
+      },
+      "title": "Fondatori",
+      "subtitle": "Elenco di riferimento dei fondatori usati nelle schede dei parchi.",
+      "total": "Fondatori: {{count}}",
+      "searchPlaceholder": "Cerca un fondatore",
+      "create": "Crea fondatore",
+      "name": "Nome",
+      "lifeDates": "Date",
+      "actions": "Azioni",
+      "empty": "Nessun fondatore trovato.",
+      "loadError": "Impossibile caricare i fondatori."
     },
     "manufacturers": {
       "total": "Manufacturers: {{count}}",
@@ -813,7 +823,8 @@
         "operators": "Gestire gli operatori collegati ai parchi.",
         "manufacturers": "Gestire costruttori e produttori di attrazioni.",
         "images": "Controllare media, loghi e immagini del sito.",
-        "data": "Monitorare importazioni, fonti e processi dati."
+        "data": "Monitorare importazioni, fonti e processi dati.",
+        "founders": "Gestire fondatori e biografie collegati ai parchi."
       }
     },
     "references": {

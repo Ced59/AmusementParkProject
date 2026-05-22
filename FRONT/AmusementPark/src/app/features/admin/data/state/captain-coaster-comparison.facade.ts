@@ -20,40 +20,68 @@ interface DuplicateResolutionState {
   fieldSelections: Record<string, string>;
 }
 
-interface RawCaptainCoasterComparisonPagedResponse extends Partial<CaptainCoasterComparisonPagedResponse> {
+interface RawCaptainCoasterComparisonPagedResponse {
+  items?: RawCaptainCoasterComparisonResultResponse[];
   Items?: RawCaptainCoasterComparisonResultResponse[];
+  totalCount?: number;
   TotalCount?: number;
+  page?: number;
   Page?: number;
+  pageSize?: number;
   PageSize?: number;
+  sessionUpdatedCount?: number;
   SessionUpdatedCount?: number;
+  sessionMissingCount?: number;
   SessionMissingCount?: number;
+  sessionDuplicateCount?: number;
   SessionDuplicateCount?: number;
+  sessionAppliedCount?: number;
   SessionAppliedCount?: number;
 }
 
-interface RawCaptainCoasterComparisonResultResponse extends Partial<CaptainCoasterComparisonResultResponse> {
+interface RawCaptainCoasterComparisonResultResponse {
+  id?: string;
   Id?: string;
+  entityType?: string;
   EntityType?: string;
+  changeType?: string;
   ChangeType?: string;
+  displayName?: string;
   DisplayName?: string;
+  localEntityId?: string | null;
   LocalEntityId?: string | null;
+  externalEntityId?: string | null;
   ExternalEntityId?: string | null;
+  matchConfidence?: string;
   MatchConfidence?: string;
+  isApplied?: boolean;
   IsApplied?: boolean;
+  hasExternalDuplicates?: boolean;
   HasExternalDuplicates?: boolean;
+  requiresManualResolution?: boolean;
   RequiresManualResolution?: boolean;
+  resolutionStatus?: string;
   ResolutionStatus?: string;
+  appliedExternalVariantId?: string | null;
   AppliedExternalVariantId?: string | null;
+  changes?: RawCaptainCoasterFieldChangeResponse[];
   Changes?: RawCaptainCoasterFieldChangeResponse[];
+  externalVariants?: RawCaptainCoasterExternalVariantResponse[];
   ExternalVariants?: RawCaptainCoasterExternalVariantResponse[];
 }
 
-interface RawCaptainCoasterExternalVariantResponse extends Partial<CaptainCoasterExternalVariantResponse> {
+interface RawCaptainCoasterExternalVariantResponse {
+  externalVariantId?: string;
   ExternalVariantId?: string;
+  displayLabel?: string;
   DisplayLabel?: string;
+  candidateLocalEntityId?: string | null;
   CandidateLocalEntityId?: string | null;
+  sourceUrl?: string | null;
   SourceUrl?: string | null;
+  isSuggested?: boolean;
   IsSuggested?: boolean;
+  changes?: RawCaptainCoasterFieldChangeResponse[];
   Changes?: RawCaptainCoasterFieldChangeResponse[];
 }
 
@@ -419,10 +447,18 @@ export class CaptainCoasterComparisonFacade {
   ): Promise<void> {
     this.isLoadingPageSignal.set(true);
     try {
-      const rawResult: CaptainCoasterComparisonPagedResponse | RawCaptainCoasterComparisonPagedResponse = await firstValueFrom(
+      let result: CaptainCoasterComparisonPagedResponse = this.normalizeComparisonPage(await firstValueFrom(
         this.dataSourcesApiService.getComparisonResults(sessionId, filters, page, pageSize)
-      );
-      const result: CaptainCoasterComparisonPagedResponse = this.normalizeComparisonPage(rawResult);
+      ));
+
+      const session: CaptainCoasterSessionResponse | null = this.captainCoasterPipelineFacade.session();
+      const hasActiveFilter: boolean = filters.entityType !== null || filters.changeType !== null || filters.isApplied !== null;
+      if (sessionId !== null && !hasActiveFilter && result.totalCount === 0 && (session?.comparisonResults ?? 0) > 0) {
+        result = this.normalizeComparisonPage(await firstValueFrom(
+          this.dataSourcesApiService.getComparisonResults(null, filters, page, pageSize)
+        ));
+      }
+
       this.pagedResultSignal.set(result);
       this.ensureDuplicateResolutionStates(result.items);
       this.syncSelectionSignals();

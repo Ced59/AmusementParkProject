@@ -646,7 +646,17 @@
         "updateTitle": "Edytuj założyciela",
         "name": "Nazwa",
         "biography": "Biografia"
-      }
+      },
+      "title": "Założyciele",
+      "subtitle": "Lista referencyjna założycieli używanych w kartach parków.",
+      "total": "Założyciele: {{count}}",
+      "searchPlaceholder": "Szukaj założyciela",
+      "create": "Utwórz założyciela",
+      "name": "Nazwa",
+      "lifeDates": "Daty",
+      "actions": "Akcje",
+      "empty": "Nie znaleziono założyciela.",
+      "loadError": "Nie można załadować założycieli."
     },
     "manufacturers": {
       "total": "Manufacturers: {{count}}",
@@ -813,7 +823,8 @@
         "operators": "Utrzymywanie operatorów powiązanych z parkami.",
         "manufacturers": "Utrzymywanie producentów i konstruktorów atrakcji.",
         "images": "Kontrola mediów, logo i grafik strony.",
-        "data": "Monitorowanie importów, źródeł i przetwarzania danych."
+        "data": "Monitorowanie importów, źródeł i przetwarzania danych.",
+        "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami."
       }
     },
     "references": {

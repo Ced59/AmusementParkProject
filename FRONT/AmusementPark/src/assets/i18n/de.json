@@ -646,7 +646,17 @@
         "updateTitle": "Gründer bearbeiten",
         "name": "Name",
         "biography": "Biografie"
-      }
+      },
+      "title": "Gründer",
+      "subtitle": "Referenzliste der Gründer, die von Parkdaten verwendet werden.",
+      "total": "Gründer: {{count}}",
+      "searchPlaceholder": "Gründer suchen",
+      "create": "Gründer erstellen",
+      "name": "Name",
+      "lifeDates": "Daten",
+      "actions": "Aktionen",
+      "empty": "Kein Gründer gefunden.",
+      "loadError": "Gründer konnten nicht geladen werden."
     },
     "manufacturers": {
       "total": "Manufacturers: {{count}}",
@@ -813,7 +823,8 @@
         "operators": "Die mit Parks verknüpften Betreiber pflegen.",
         "manufacturers": "Hersteller und Anlagenbauer pflegen.",
         "images": "Medien, Logos und Website-Bilder prüfen.",
-        "data": "Importe, Quellen und Datenverarbeitung überwachen."
+        "data": "Importe, Quellen und Datenverarbeitung überwachen.",
+        "founders": "Gründer und Biografien verwalten, die mit Parks verknüpft sind."
       }
     },
     "references": {

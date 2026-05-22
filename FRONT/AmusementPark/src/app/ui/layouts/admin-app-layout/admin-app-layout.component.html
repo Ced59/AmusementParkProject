@@ -38,6 +38,10 @@
           <span>🏢</span>
           <span>{{ 'admin.operators.title' | translate }}</span>
         </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'founders']" routerLinkActive="active">
+          <span>🧬</span>
+          <span>{{ 'admin.parkFounders.title' | translate }}</span>
+        </a>
         <a [routerLink]="['/', currentLang, 'admin', 'manufacturers']" routerLinkActive="active">
           <span>🔧</span>
           <span>{{ 'admin.manufacturers.title' | translate }}</span>

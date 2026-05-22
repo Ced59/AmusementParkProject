@@ -49,6 +49,12 @@ export const routes: Routes = [
                 .then((m) => m.AdminOperatorsModule)
           },
           {
+            path: 'founders',
+            loadChildren: () =>
+              import('./components/admin/founders/admin-founders/admin-founders.module')
+                .then((m) => m.AdminFoundersModule)
+          },
+          {
             path: 'manufacturers',
             loadChildren: () =>
               import('./components/admin/manufacturers/admin-manufacturers/admin-manufacturers.module')

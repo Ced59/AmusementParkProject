@@ -58,4 +58,22 @@ export class CaptainCoasterComparisonTabComponent {
     protected readonly captainCoasterPipelineFacade: CaptainCoasterPipelineFacade
   ) {
   }
+
+
+  protected getEmptyComparisonMessage(): string {
+    const session = this.session();
+    if (session === null) {
+      return 'Aucune session Captain Coaster n’est sélectionnée.';
+    }
+
+    if (session.status !== 'Completed' && session.comparisonResults === 0) {
+      return 'La comparaison n’est pas encore disponible : le pipeline doit terminer la construction des différences avant de pouvoir afficher des résultats.';
+    }
+
+    if (session.comparisonResults > 0) {
+      return 'Aucun résultat ne correspond aux filtres actuels. Essaie de retirer les filtres ou d’actualiser.';
+    }
+
+    return 'Aucun résultat de comparaison n’est disponible pour cette session.';
+  }
 }

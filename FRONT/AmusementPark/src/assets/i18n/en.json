@@ -646,7 +646,17 @@
         "updateTitle": "Edit founder",
         "name": "Name",
         "biography": "Biography"
-      }
+      },
+      "title": "Founders",
+      "subtitle": "Reference list of founders used by park records.",
+      "total": "Founders: {{count}}",
+      "searchPlaceholder": "Search a founder",
+      "create": "Create founder",
+      "name": "Name",
+      "lifeDates": "Dates",
+      "actions": "Actions",
+      "empty": "No founder found.",
+      "loadError": "Unable to load founders."
     },
     "manufacturers": {
       "total": "Manufacturers: {{count}}",
@@ -813,7 +823,8 @@
         "operators": "Maintain the operators linked to parks.",
         "manufacturers": "Maintain attraction manufacturers and builders.",
         "images": "Review media, logos and site visuals.",
-        "data": "Monitor imports, sources and data processing."
+        "data": "Monitor imports, sources and data processing.",
+        "founders": "Maintain founders and biographies linked to parks."
       }
     },
     "references": {

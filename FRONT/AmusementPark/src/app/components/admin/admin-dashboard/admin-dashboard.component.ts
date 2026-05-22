@@ -43,6 +43,12 @@ export class AdminDashboardComponent {
       segment: 'operators'
     },
     {
+      icon: '🧬',
+      titleKey: 'admin.parkFounders.title',
+      descriptionKey: 'admin.dashboard.shortcuts.founders',
+      segment: 'founders'
+    },
+    {
       icon: '🔧',
       titleKey: 'admin.manufacturers.title',
       descriptionKey: 'admin.dashboard.shortcuts.manufacturers',

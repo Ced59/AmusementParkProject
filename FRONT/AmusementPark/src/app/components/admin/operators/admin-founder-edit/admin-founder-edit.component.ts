@@ -91,7 +91,7 @@ export class AdminFounderEditComponent implements OnInit {
         },
         error: (error: unknown) => {
           console.error('Error loading founder', error);
-          this.navigateToParks();
+          this.navigateToFounders();
         }
       });
     }
@@ -156,7 +156,7 @@ export class AdminFounderEditComponent implements OnInit {
       return;
     }
 
-    this.navigateToParks();
+    this.navigateToFounders();
   }
 
   private navigateBackToOrigin(): void {
@@ -170,10 +170,10 @@ export class AdminFounderEditComponent implements OnInit {
       return;
     }
 
-    this.navigateToParks();
+    this.navigateToFounders();
   }
 
-  private navigateToParks(): void {
-    this.router.navigate(['/', this.currentLang, 'admin', 'parks']);
+  private navigateToFounders(): void {
+    this.router.navigate(['/', this.currentLang, 'admin', 'founders']);
   }
 }
