@@ -24,9 +24,9 @@ public static class WebApplicationPipelineExtensions
         if (!app.Environment.IsDevelopment())
         {
             app.UseHsts();
+            app.UseHttpsRedirection();
         }
 
-        app.UseHttpsRedirection();
         app.Use(async (context, next) =>
         {
             context.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
