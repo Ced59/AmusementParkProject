@@ -321,12 +321,17 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
   private buildPopupContent(marker: MapMarker): string {
     const title: string = this.escapeHtml(marker.title ?? '');
-    const subtitle: string = this.escapeHtml(marker.subtitle ?? '');
+    const subtitle: string = this.escapeHtml(this.resolveTranslatedPopupLine(marker.subtitleTranslationKey, marker.subtitle));
+    const translatedDetails: string[] = (marker.detailTranslationKeys ?? [])
+      .map((detailTranslationKey: string) => this.resolveTranslatedPopupLine(detailTranslationKey, null))
+      .filter((detail: string) => detail.length > 0);
     const details: string[] = (marker.details ?? [])
-      .map((detail: string) => this.escapeHtml(detail))
+      .map((detail: string) => detail.trim())
       .filter((detail: string) => detail.length > 0);
 
-    const lines: string = [subtitle, ...details]
+    const escapedTranslatedDetails: string[] = translatedDetails.map((detail: string) => this.escapeHtml(detail));
+    const escapedDetails: string[] = details.map((detail: string) => this.escapeHtml(detail));
+    const lines: string = [subtitle, ...escapedTranslatedDetails, ...escapedDetails]
       .filter((line: string) => line.length > 0)
       .map((line: string) => `<span>${line}</span>`)
       .join('');
@@ -339,6 +344,20 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
     const linesBlock: string = lines.length > 0 ? `<div class="leaflet-map-popup__lines">${lines}</div>` : '';
     return `<strong>${title}</strong>${linesBlock}${actionLinks}`;
+  }
+
+  private resolveTranslatedPopupLine(translationKey: string | null | undefined, fallback: string | null | undefined): string {
+    const normalizedTranslationKey: string = translationKey?.trim() ?? '';
+
+    if (normalizedTranslationKey.length > 0) {
+      const translatedValue: string = this.translateService.instant(normalizedTranslationKey)?.trim() ?? '';
+
+      if (translatedValue.length > 0 && translatedValue !== normalizedTranslationKey) {
+        return translatedValue;
+      }
+    }
+
+    return fallback?.trim() ?? '';
   }
 
   private buildPopupActions(marker: MapMarker): string {

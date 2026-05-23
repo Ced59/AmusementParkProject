@@ -42,9 +42,11 @@ function mapParkItemToMarker(
 ): ParkItemsMapMarkerViewModel {
   const zoneName: string | null = resolveZoneName(item.zoneId ?? null, zones);
   const details: string[] = [
-    item.type,
     zoneName ? `${zoneName}` : ''
   ].filter((value: string) => value.trim().length > 0);
+  const detailTranslationKeys: string[] = normalizeOptionalString(item.type)
+    ? [getParkItemTypeTranslationKey(item.type)]
+    : [];
 
   return {
     id: item.id ?? `${item.name}-${item.latitude}-${item.longitude}`,
@@ -54,6 +56,7 @@ function mapParkItemToMarker(
     lng: item.longitude,
     title: item.name,
     subtitle: item.category,
+    subtitleTranslationKey: getParkItemCategoryTranslationKey(item.category),
     directionsActionEnabled: true,
     iconKind: resolveParkItemMarkerIconKind({
       category: item.category,
@@ -61,6 +64,7 @@ function mapParkItemToMarker(
       subtype: item.subtype ?? null
     }),
     details,
+    detailTranslationKeys,
     detailActionRouteCommands: buildParkItemMapDetailRouteCommands({
       language: currentLanguage,
       parkId: park.id,

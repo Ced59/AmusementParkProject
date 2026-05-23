@@ -42,7 +42,9 @@ export interface MapMarker {
   draggable?: boolean;
   title?: string | null;
   subtitle?: string | null;
+  subtitleTranslationKey?: string | null;
   details?: string[];
+  detailTranslationKeys?: string[];
   actionLabel?: string | null;
   actionUrl?: string | null;
   directionsActionEnabled?: boolean | null;

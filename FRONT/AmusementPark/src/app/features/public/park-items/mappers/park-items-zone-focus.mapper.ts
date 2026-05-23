@@ -3,7 +3,7 @@ import { Park } from '@app/models/parks/park';
 import { ParkExplorer, ParkExplorerBucket } from '@app/models/parks/park-explorer';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
-import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
@@ -61,7 +61,10 @@ function mapDisplayedItemsToMapViewModel(
     .filter((item: ParkItem) => Number.isFinite(item.latitude) && Number.isFinite(item.longitude))
     .map((item: ParkItem) => {
       const zoneName: string | null = resolveZoneNameById(item.zoneId ?? null, zones, currentLanguage);
-      const details: string[] = [item.type, zoneName].filter((value: string | null | undefined): value is string => !!value && value.trim().length > 0);
+      const details: string[] = [zoneName].filter((value: string | null | undefined): value is string => !!value && value.trim().length > 0);
+      const detailTranslationKeys: string[] = normalizeOptionalString(item.type)
+        ? [getParkItemTypeTranslationKey(item.type)]
+        : [];
 
       return {
         id: item.id ?? `${item.name}-${item.latitude}-${item.longitude}`,
@@ -69,7 +72,9 @@ function mapDisplayedItemsToMapViewModel(
         lng: item.longitude,
         title: item.name,
         subtitle: item.category,
+        subtitleTranslationKey: getParkItemCategoryTranslationKey(item.category),
         details,
+        detailTranslationKeys,
         directionsActionEnabled: true,
         iconKind: resolveParkItemMarkerIconKind({
           category: item.category,
