@@ -19,7 +19,7 @@ namespace AmusementPark.Infrastructure.Services.Images;
 /// </summary>
 public sealed class MinioImageBinaryStorage : IImageBinaryStorage
 {
-    private const string WatermarkText = "amusement-park.fun";
+    private const string WatermarkText = "amusement-parks.fun";
     private const int MaxFileSizeKb = 300;
     private const int MaxLongEdge = 1920;
 

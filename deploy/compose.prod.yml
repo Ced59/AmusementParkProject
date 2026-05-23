@@ -1,0 +1,141 @@
+name: amusementpark
+
+services:
+  front:
+    image: ${FRONT_IMAGE:?FRONT_IMAGE is required}
+    container_name: amusementpark-front
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${PUBLIC_HTTP_PORT:-8080}:8080"
+    networks:
+      - public_edge
+      - backend_private
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:8080/ || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+      - /var/run
+
+  api:
+    image: ${API_IMAGE:?API_IMAGE is required}
+    container_name: amusementpark-api
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      minio:
+        condition: service_started
+    expose:
+      - "8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Production}
+      ASPNETCORE_URLS: http://+:8080
+      MongoDB__Url: mongodb://${MONGO_APP_USERNAME:?MONGO_APP_USERNAME is required}:${MONGO_APP_PASSWORD:?MONGO_APP_PASSWORD is required}@mongodb:27017/${MONGO_DATABASE_NAME:-AmusementPark}?authSource=${MONGO_DATABASE_NAME:-AmusementPark}
+      MongoDB__DatabaseName: ${MONGO_DATABASE_NAME:-AmusementPark}
+      Images__MinIo__Endpoint: minio:9000
+      Images__MinIo__AccessKey: ${MINIO_ROOT_USER:?MINIO_ROOT_USER is required}
+      Images__MinIo__SecretKey: ${MINIO_ROOT_PASSWORD:?MINIO_ROOT_PASSWORD is required}
+      Images__MinIo__WithSsl: "false"
+      Images__MinIo__Bucket: ${MINIO_BUCKET:-amusement-park-images}
+      Authentication__Jwt__Key: ${JWT_KEY:?JWT_KEY is required}
+      Authentication__Jwt__Issuer: ${JWT_ISSUER:?JWT_ISSUER is required}
+      Authentication__Jwt__Audience: ${JWT_AUDIENCE:?JWT_AUDIENCE is required}
+      Authentication__Local__FrontendBaseUrl: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required}
+      Authentication__RefreshTokenCookie__Name: amusementpark.refresh
+      Authentication__RefreshTokenCookie__Path: /api/auth
+      Authentication__RefreshTokenCookie__HttpOnly: "true"
+      Authentication__RefreshTokenCookie__Secure: "true"
+      Authentication__RefreshTokenCookie__SameSite: None
+      Authentication__Google__ClientId: ${GOOGLE_CLIENT_ID:-}
+      Authentication__Google__ClientSecret: ${GOOGLE_CLIENT_SECRET:-}
+      Authentication__Google__RedirectUri: ${GOOGLE_REDIRECT_URI:-}
+      Authentication__Facebook__AppId: ${FACEBOOK_APP_ID:-}
+      Authentication__Facebook__AppSecret: ${FACEBOOK_APP_SECRET:-}
+      Cors__AllowedOrigins__0: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required}
+      Cors__AllowCredentials: "true"
+      Email__Mode: ${EMAIL_MODE:-Console}
+      Email__Host: ${EMAIL_HOST:-}
+      Email__Port: ${EMAIL_PORT:-587}
+      Email__UseSsl: ${EMAIL_USE_SSL:-false}
+      Email__UseStartTls: ${EMAIL_USE_STARTTLS:-true}
+      Email__Username: ${EMAIL_USERNAME:-}
+      Email__Password: ${EMAIL_PASSWORD:-}
+      Email__FromAddress: ${EMAIL_FROM_ADDRESS:-noreply@amusement-parks.fun}
+      Email__FromName: ${EMAIL_FROM_NAME:-Amusement Park}
+      Initialization__AdminUser__Enabled: ${ADMIN_USER_ENABLED:-false}
+      Initialization__AdminUser__Email: ${ADMIN_USER_EMAIL:-}
+      Initialization__AdminUser__Password: ${ADMIN_USER_PASSWORD:-}
+    networks:
+      - backend_private
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --header=\"X-Forwarded-Proto: https\" --spider http://127.0.0.1:8080/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+    security_opt:
+      - no-new-privileges:true
+
+  mongodb:
+    image: mongo:8.0
+    container_name: amusementpark-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}
+      MONGO_APP_DATABASE: ${MONGO_DATABASE_NAME:-AmusementPark}
+      MONGO_APP_USERNAME: ${MONGO_APP_USERNAME:?MONGO_APP_USERNAME is required}
+      MONGO_APP_PASSWORD: ${MONGO_APP_PASSWORD:?MONGO_APP_PASSWORD is required}
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/01-amusementpark-app-user.js:ro
+    networks:
+      - backend_private
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval 'db.adminCommand({ ping: 1 }).ok' mongodb://$${MONGO_INITDB_ROOT_USERNAME}:$${MONGO_INITDB_ROOT_PASSWORD}@127.0.0.1:27017/admin | grep 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    security_opt:
+      - no-new-privileges:true
+
+  minio:
+    image: ${MINIO_IMAGE:-quay.io/minio/minio:RELEASE.2025-07-23T15-54-02Z}
+    container_name: amusementpark-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:?MINIO_ROOT_USER is required}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?MINIO_ROOT_PASSWORD is required}
+    volumes:
+      - minio_data:/data
+    ports:
+      - "127.0.0.1:${MINIO_API_PORT:-9000}:9000"
+      - "127.0.0.1:${MINIO_CONSOLE_PORT:-9001}:9001"
+    networks:
+      - backend_private
+    security_opt:
+      - no-new-privileges:true
+
+
+networks:
+  public_edge:
+    driver: bridge
+  backend_private:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+  minio_data:

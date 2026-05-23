@@ -1,58 +1,29 @@
-version: '3'
+name: amusementpark-dev-infra
 
 services:
-  amusement-park-api:
-    container_name: amusement-park-api
-    build:
-      context: .
-      dockerfile: API/WebAPI/Dockerfile
+  mongodb:
+    image: mongo:8.0
+    container_name: amusementpark-dev-mongodb
+    restart: unless-stopped
     ports:
-      - "5000:80"  # Port HTTP local pour l'API
-      - "5001:443"  # Port HTTPS local pour l'API
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - API_URL=http://api:5000
-
-  amusement-park-front:
-    container_name: amusement-park-front
-    build:
-      context: ./FRONT/AmusementPark
-      dockerfile: Dockerfile
-    ports:
-      - "4200:80"  # Port HTTP local pour le front-end
-      - "4201:443"  # Port HTTPS local pour le front-end
-    depends_on:
-      - amusement-park-api
-    environment:
-      - API_URL=https://api:5001
-
-  amusement-park-db:
-    container_name: amusement-park-db
-    image: postgres:14
-    environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB}
+      - "27017:27017"
     volumes:
-      - amusement_park_db_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"  
+      - amusementpark_dev_mongodb_data:/data/db
 
-  amusement-park-pgadmin:
-    container_name: amusement-park-pgadmin
-    image: dpage/pgadmin4
+  minio:
+    image: ${MINIO_IMAGE:-quay.io/minio/minio:RELEASE.2025-07-23T15-54-02Z}
+    container_name: amusementpark-dev-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
     environment:
-      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
-      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
-    depends_on:
-      - amusement-park-db
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
     ports:
-      - "5050:80"
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - amusementpark_dev_minio_data:/data
 
 volumes:
-  amusement_park_db_data:     
-
-networks:
-  default:
-  
-  
+  amusementpark_dev_mongodb_data:
+  amusementpark_dev_minio_data:

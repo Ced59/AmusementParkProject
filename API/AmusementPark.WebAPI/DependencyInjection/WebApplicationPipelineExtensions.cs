@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace AmusementPark.WebAPI.DependencyInjection;
 
@@ -17,6 +18,8 @@ public static class WebApplicationPipelineExtensions
     public static WebApplication UseApiPipeline(this WebApplication app)
     {
         ArgumentNullException.ThrowIfNull(app);
+
+        app.UseForwardedHeaders();
 
         if (!app.Environment.IsDevelopment())
         {

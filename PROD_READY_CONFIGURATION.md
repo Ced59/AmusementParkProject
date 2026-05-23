@@ -14,16 +14,16 @@ Le back est désormais prêt à être piloté uniquement par configuration.
 
 ```bash
 ASPNETCORE_ENVIRONMENT=Production
-Authentication__Local__FrontendBaseUrl=https://amusement-park.fun
-Cors__AllowedOrigins__0=https://amusement-park.fun
+Authentication__Local__FrontendBaseUrl=https://amusement-parks.fun
+Cors__AllowedOrigins__0=https://amusement-parks.fun
 Email__Mode=Smtp
 Email__Host=smtp.hostinger.com
 Email__Port=587
 Email__UseSsl=false
 Email__UseStartTls=true
-Email__Username=noreply@amusement-park.fun
+Email__Username=noreply@amusement-parks.fun
 Email__Password=VOTRE_SECRET
-Email__FromAddress=noreply@amusement-park.fun
+Email__FromAddress=noreply@amusement-parks.fun
 Email__FromName=Amusement Park
 ```
 

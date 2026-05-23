@@ -1,0 +1,285 @@
+name: AmusementPark production CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: amusementpark-production-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOTNET_VERSION: 10.0.x
+  NODE_VERSION: 24.x
+  FRONTEND_DIR: FRONT/AmusementPark
+  API_IMAGE_NAME: amusementpark-api
+  FRONT_IMAGE_NAME: amusementpark-front
+
+jobs:
+  backend:
+    name: Backend build and tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore solution
+        run: dotnet restore AmusementPark.sln
+
+      - name: Build solution
+        run: dotnet build AmusementPark.sln --configuration Release --no-restore
+
+      - name: Run backend tests when present
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t test_projects < <(find API -type f \( -name '*Tests.csproj' -o -name '*Test.csproj' \) | sort)
+
+          if [ "${#test_projects[@]}" -eq 0 ]; then
+            echo "::notice title=Backend tests::No .NET test project found yet. The CI already runs the build and will run tests automatically as soon as a *Tests.csproj exists."
+            exit 0
+          fi
+
+          mkdir -p TestResults/backend
+          for test_project in "${test_projects[@]}"; do
+            echo "Running backend tests for ${test_project}"
+            dotnet test "${test_project}" \
+              --configuration Release \
+              --logger "trx" \
+              --results-directory TestResults/backend
+          done
+
+      - name: Upload backend test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-test-results
+          path: TestResults/backend
+          if-no-files-found: ignore
+
+  frontend:
+    name: Frontend build and tests
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ${{ env.FRONTEND_DIR }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: ${{ env.FRONTEND_DIR }}/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run frontend tests
+        run: npm run test:ci
+
+      - name: Build frontend
+        run: npm run build -- --configuration production
+
+      - name: Upload frontend coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: ${{ env.FRONTEND_DIR }}/coverage
+          if-no-files-found: ignore
+
+  docker:
+    name: Build and push immutable Docker images
+    runs-on: ubuntu-latest
+    needs:
+      - backend
+      - frontend
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+
+    outputs:
+      api_image: ${{ steps.images.outputs.api_image }}
+      front_image: ${{ steps.images.outputs.front_image }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compute image names
+        id: images
+        shell: bash
+        run: |
+          set -euo pipefail
+          owner_lc="$(echo "${GITHUB_REPOSITORY_OWNER}" | tr '[:upper:]' '[:lower:]')"
+          api_image="ghcr.io/${owner_lc}/${API_IMAGE_NAME}:${GITHUB_SHA}"
+          front_image="ghcr.io/${owner_lc}/${FRONT_IMAGE_NAME}:${GITHUB_SHA}"
+          echo "owner_lc=${owner_lc}" >> "${GITHUB_OUTPUT}"
+          echo "api_image=${api_image}" >> "${GITHUB_OUTPUT}"
+          echo "front_image=${front_image}" >> "${GITHUB_OUTPUT}"
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push API image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: API/AmusementPark.WebAPI/Dockerfile
+          push: true
+          tags: |
+            ${{ steps.images.outputs.api_image }}
+            ghcr.io/${{ steps.images.outputs.owner_lc }}/${{ env.API_IMAGE_NAME }}:master
+          cache-from: type=gha,scope=api
+          cache-to: type=gha,scope=api,mode=max
+
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ env.FRONTEND_DIR }}
+          file: ${{ env.FRONTEND_DIR }}/Dockerfile
+          push: true
+          tags: |
+            ${{ steps.images.outputs.front_image }}
+            ghcr.io/${{ steps.images.outputs.owner_lc }}/${{ env.FRONT_IMAGE_NAME }}:master
+          cache-from: type=gha,scope=front
+          cache-to: type=gha,scope=front,mode=max
+
+  deploy:
+    name: Deploy to Hostinger VPS
+    runs-on: ubuntu-latest
+    needs: docker
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    environment: production
+
+    env:
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_SSH_USER: ${{ secrets.VPS_SSH_USER }}
+      VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT || '22' }}
+      VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH || '/opt/amusementpark' }}
+      PUBLIC_HTTP_PORT: ${{ vars.PUBLIC_HTTP_PORT || '8080' }}
+      PUBLIC_BASE_URL: ${{ vars.PUBLIC_BASE_URL || 'https://amusement-parks.fun' }}
+      PUBLIC_DOMAIN: ${{ vars.PUBLIC_DOMAIN || 'amusement-parks.fun' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare deployment bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -czf /tmp/amusementpark-deploy.tar.gz \
+            -C deploy \
+            compose.prod.yml \
+            mongo-init.js \
+            .env.production.example \
+            scripts \
+            README.md
+
+      - name: Configure SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' '${{ secrets.VPS_SSH_PRIVATE_KEY }}' > ~/.ssh/amusementpark_vps_key
+          chmod 600 ~/.ssh/amusementpark_vps_key
+          ssh-keyscan -p "${VPS_SSH_PORT}" "${VPS_HOST}" >> ~/.ssh/known_hosts
+
+      - name: Upload deployment bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/amusementpark_vps_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" \
+            "mkdir -p '${VPS_DEPLOY_PATH}'"
+          scp -i ~/.ssh/amusementpark_vps_key -P "${VPS_SSH_PORT}" \
+            /tmp/amusementpark-deploy.tar.gz \
+            "${VPS_SSH_USER}@${VPS_HOST}:/tmp/amusementpark-deploy-${GITHUB_SHA}.tar.gz"
+          ssh -i ~/.ssh/amusementpark_vps_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" \
+            "tar -xzf '/tmp/amusementpark-deploy-${GITHUB_SHA}.tar.gz' -C '${VPS_DEPLOY_PATH}' && rm '/tmp/amusementpark-deploy-${GITHUB_SHA}.tar.gz'"
+
+      - name: Write production environment on VPS
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/amusementpark.env <<'EOF_ENV'
+          COMPOSE_PROJECT_NAME=amusementpark
+          API_IMAGE=${{ needs.docker.outputs.api_image }}
+          FRONT_IMAGE=${{ needs.docker.outputs.front_image }}
+          PUBLIC_HTTP_PORT=${{ env.PUBLIC_HTTP_PORT }}
+          PUBLIC_DOMAIN=${{ env.PUBLIC_DOMAIN }}
+          PUBLIC_BASE_URL=${{ env.PUBLIC_BASE_URL }}
+          ASPNETCORE_ENVIRONMENT=Production
+          MONGO_DATABASE_NAME=${{ secrets.PROD_MONGO_DATABASE_NAME || 'AmusementPark' }}
+          MONGO_INITDB_ROOT_USERNAME=${{ secrets.PROD_MONGO_ROOT_USERNAME }}
+          MONGO_INITDB_ROOT_PASSWORD=${{ secrets.PROD_MONGO_ROOT_PASSWORD }}
+          MONGO_APP_USERNAME=${{ secrets.PROD_MONGO_APP_USERNAME }}
+          MONGO_APP_PASSWORD=${{ secrets.PROD_MONGO_APP_PASSWORD }}
+          MINIO_IMAGE=${{ vars.MINIO_IMAGE || 'quay.io/minio/minio:RELEASE.2025-07-23T15-54-02Z' }}
+          MINIO_ROOT_USER=${{ secrets.PROD_MINIO_ROOT_USER }}
+          MINIO_ROOT_PASSWORD=${{ secrets.PROD_MINIO_ROOT_PASSWORD }}
+          MINIO_BUCKET=${{ secrets.PROD_MINIO_BUCKET || 'amusement-park-images' }}
+          MINIO_API_PORT=${{ vars.MINIO_API_PORT || '9000' }}
+          MINIO_CONSOLE_PORT=${{ vars.MINIO_CONSOLE_PORT || '9001' }}
+          JWT_KEY=${{ secrets.PROD_JWT_KEY }}
+          JWT_ISSUER=${{ secrets.PROD_JWT_ISSUER }}
+          JWT_AUDIENCE=${{ secrets.PROD_JWT_AUDIENCE }}
+          GOOGLE_CLIENT_ID=${{ secrets.PROD_GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET=${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REDIRECT_URI=${{ secrets.PROD_GOOGLE_REDIRECT_URI }}
+          FACEBOOK_APP_ID=${{ secrets.PROD_FACEBOOK_APP_ID }}
+          FACEBOOK_APP_SECRET=${{ secrets.PROD_FACEBOOK_APP_SECRET }}
+          EMAIL_MODE=${{ secrets.PROD_EMAIL_MODE || 'Console' }}
+          EMAIL_HOST=${{ secrets.PROD_EMAIL_HOST }}
+          EMAIL_PORT=${{ secrets.PROD_EMAIL_PORT || '587' }}
+          EMAIL_USE_SSL=${{ secrets.PROD_EMAIL_USE_SSL || 'false' }}
+          EMAIL_USE_STARTTLS=${{ secrets.PROD_EMAIL_USE_STARTTLS || 'true' }}
+          EMAIL_USERNAME=${{ secrets.PROD_EMAIL_USERNAME }}
+          EMAIL_PASSWORD=${{ secrets.PROD_EMAIL_PASSWORD }}
+          EMAIL_FROM_ADDRESS=${{ secrets.PROD_EMAIL_FROM_ADDRESS || 'noreply@amusement-parks.fun' }}
+          EMAIL_FROM_NAME=${{ secrets.PROD_EMAIL_FROM_NAME || 'Amusement Park' }}
+          ADMIN_USER_ENABLED=${{ secrets.PROD_ADMIN_USER_ENABLED || 'false' }}
+          ADMIN_USER_EMAIL=${{ secrets.PROD_ADMIN_USER_EMAIL }}
+          ADMIN_USER_PASSWORD=${{ secrets.PROD_ADMIN_USER_PASSWORD }}
+          EOF_ENV
+          scp -i ~/.ssh/amusementpark_vps_key -P "${VPS_SSH_PORT}" \
+            /tmp/amusementpark.env \
+            "${VPS_SSH_USER}@${VPS_HOST}:${VPS_DEPLOY_PATH}/.env"
+          rm /tmp/amusementpark.env
+
+      - name: Pull images and restart services
+        shell: bash
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/amusementpark_vps_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" <<EOF
+          set -euo pipefail
+          cd '${VPS_DEPLOY_PATH}'
+          echo '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u '${{ github.actor }}' --password-stdin
+          chmod +x scripts/*.sh
+          ./scripts/deploy.sh
+          EOF
