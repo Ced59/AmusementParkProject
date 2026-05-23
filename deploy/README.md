@@ -38,6 +38,23 @@ ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;am
 
 Toute autre valeur de `Host` doit être rejetée en production.
 
+
+## Durcissement Forwarded Headers
+
+L'API accepte les en-têtes `X-Forwarded-*` uniquement depuis les proxys et réseaux explicitement configurés.
+
+Variables recommandées pour le déploiement Docker actuel :
+
+```bash
+PUBLIC_EDGE_SUBNET=172.30.30.0/24
+BACKEND_PRIVATE_SUBNET=172.30.31.0/24
+FORWARDED_HEADERS_KNOWN_NETWORKS=172.30.31.0/24
+FORWARDED_HEADERS_ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1
+FORWARDED_HEADERS_FORWARD_LIMIT=2
+```
+
+Si Nginx Proxy Manager tourne dans un autre réseau Docker et que son adresse apparaît dans `X-Forwarded-For`, ajouter ce réseau à `FORWARDED_HEADERS_KNOWN_NETWORKS`, séparé par `;`.
+
 ## Secrets GitHub Actions nécessaires
 
 ### Accès VPS

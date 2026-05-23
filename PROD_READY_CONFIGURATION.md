@@ -17,6 +17,11 @@ ASPNETCORE_ENVIRONMENT=Production
 AllowedHosts=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api
 Authentication__Local__FrontendBaseUrl=https://amusement-parks.fun
 Cors__AllowedOrigins__0=https://amusement-parks.fun
+ForwardedHeaders__ForwardLimit=2
+ForwardedHeaders__KnownProxies__0=127.0.0.1
+ForwardedHeaders__KnownProxies__1=::1
+ForwardedHeaders__KnownNetworks__0=172.30.31.0/24
+ForwardedHeaders__AllowedHosts__0=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1
 Email__Mode=Smtp
 Email__Host=smtp.hostinger.com
 Email__Port=587
@@ -39,6 +44,13 @@ AllowedHosts=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amu
 ```
 
 Les hôtes locaux et le nom de service Docker sont conservés pour ne pas casser les healthchecks internes ni les futurs appels serveur-à-serveur.
+
+
+## Forwarded Headers M18.3
+
+L'API ne vide plus les réseaux/proxys connus sans les reconfigurer. Les headers `X-Forwarded-For`, `X-Forwarded-Proto` et `X-Forwarded-Host` sont maintenant acceptés uniquement depuis les proxys/réseaux configurés.
+
+Pour le déploiement Docker actuel, `backend_private` est fixé à `172.30.31.0/24` et cette plage est injectée dans `FORWARDED_HEADERS_KNOWN_NETWORKS`. Si la plage Docker doit changer pour éviter un conflit VPS, modifier à la fois `BACKEND_PRIVATE_SUBNET` et `FORWARDED_HEADERS_KNOWN_NETWORKS`.
 
 ## Règle de sélection du sender mail
 

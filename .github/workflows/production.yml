@@ -185,7 +185,12 @@ jobs:
       PUBLIC_HTTP_PORT: ${{ vars.PUBLIC_HTTP_PORT || '8080' }}
       PUBLIC_BASE_URL: ${{ vars.PUBLIC_BASE_URL || 'https://amusement-parks.fun' }}
       PUBLIC_DOMAIN: ${{ vars.PUBLIC_DOMAIN || 'amusement-parks.fun' }}
+      PUBLIC_EDGE_SUBNET: ${{ vars.PUBLIC_EDGE_SUBNET || '172.30.30.0/24' }}
+      BACKEND_PRIVATE_SUBNET: ${{ vars.BACKEND_PRIVATE_SUBNET || '172.30.31.0/24' }}
       ALLOWED_HOSTS: ${{ vars.ALLOWED_HOSTS || format('{0};www.{0};localhost;127.0.0.1;amusementpark-api', vars.PUBLIC_DOMAIN || 'amusement-parks.fun') }}
+      FORWARDED_HEADERS_ALLOWED_HOSTS: ${{ vars.FORWARDED_HEADERS_ALLOWED_HOSTS || format('{0};www.{0};localhost;127.0.0.1', vars.PUBLIC_DOMAIN || 'amusement-parks.fun') }}
+      FORWARDED_HEADERS_KNOWN_NETWORKS: ${{ vars.FORWARDED_HEADERS_KNOWN_NETWORKS || vars.BACKEND_PRIVATE_SUBNET || '172.30.31.0/24' }}
+      FORWARDED_HEADERS_FORWARD_LIMIT: ${{ vars.FORWARDED_HEADERS_FORWARD_LIMIT || '2' }}
 
     steps:
       - name: Checkout
@@ -236,6 +241,11 @@ jobs:
           PUBLIC_DOMAIN=${{ env.PUBLIC_DOMAIN }}
           PUBLIC_BASE_URL=${{ env.PUBLIC_BASE_URL }}
           ALLOWED_HOSTS=${{ env.ALLOWED_HOSTS }}
+          FORWARDED_HEADERS_ALLOWED_HOSTS=${{ env.FORWARDED_HEADERS_ALLOWED_HOSTS }}
+          FORWARDED_HEADERS_KNOWN_NETWORKS=${{ env.FORWARDED_HEADERS_KNOWN_NETWORKS }}
+          FORWARDED_HEADERS_FORWARD_LIMIT=${{ env.FORWARDED_HEADERS_FORWARD_LIMIT }}
+          PUBLIC_EDGE_SUBNET=${{ env.PUBLIC_EDGE_SUBNET }}
+          BACKEND_PRIVATE_SUBNET=${{ env.BACKEND_PRIVATE_SUBNET }}
           ASPNETCORE_ENVIRONMENT=Production
           MONGO_DATABASE_NAME=${{ secrets.PROD_MONGO_DATABASE_NAME || 'AmusementPark' }}
           MONGO_INITDB_ROOT_USERNAME=${{ secrets.PROD_MONGO_ROOT_USERNAME }}
