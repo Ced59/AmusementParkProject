@@ -93,7 +93,34 @@ Le sitemap seed contient :
 - items visibles rattachés à un parc visible ;
 - références publiques de base : exploitants, fondateurs, constructeurs.
 
-Ce seed reste volontairement simple. M22 reprendra le sujet avec génération dynamique avancée, cache, panneau admin et règles d'inclusion plus fines.
+Ce seed reste volontairement simple. Pour éviter de transformer M19 en sitemap très gros volume, `Seo:MaxDynamicUrlsPerType` est volontairement borné à `50` par défaut, avec un plafond interne plus strict sur les pages de références. M22 reprendra le sujet avec génération dynamique avancée, découpage éventuel, cache, panneau admin et règles d'inclusion plus fines.
+
+Le XML est généré dans un buffer UTF-8 explicite puis renvoyé en `application/xml; charset=utf-8`, afin d'éviter les réponses XML incomplètes ou incohérentes avec l'encodage HTTP.
+
+
+## Validation locale avec `ng serve`
+
+En développement local, `ng serve` ne sert pas le front via le Nginx de production. Sans proxy dev, une URL technique comme `/sitemap.xml` est donc traitée comme une route SPA inconnue : Angular renvoie `index.html`, puis le routing localisé peut retomber sur `/en/home` ou `/en/not-found`.
+
+Pour éviter ce faux positif, le front inclut désormais `proxy.conf.json` et `angular.json` référence ce proxy pour `ng serve`.
+
+Routes proxifiées localement vers l'API HTTPS :
+
+```txt
+http://localhost:4200/robots.txt  -> https://localhost:44391/robots.txt
+http://localhost:4200/sitemap.xml -> https://localhost:44391/sitemap.xml
+```
+
+Pré-requis : l'API locale doit être démarrée sur `https://localhost:44391`.
+
+Validation :
+
+```powershell
+curl.exe -i http://localhost:4200/robots.txt
+curl.exe -i http://localhost:4200/sitemap.xml
+```
+
+Résultat attendu : réponse `200` avec `text/plain` pour `robots.txt` et `application/xml` pour `sitemap.xml`. Si l'API n'est pas démarrée, le proxy doit retourner une erreur de connexion, mais ne doit plus retomber sur la home Angular.
 
 ## Points de vigilance SEO
 

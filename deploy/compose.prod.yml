@@ -75,7 +75,7 @@ services:
       Authentication__Local__FrontendBaseUrl: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required}
       Seo__PublicBaseUrl: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required}
       Seo__DefaultLanguage: ${SEO_DEFAULT_LANGUAGE:-en}
-      Seo__MaxDynamicUrlsPerType: ${SEO_MAX_DYNAMIC_URLS_PER_TYPE:-10000}
+      Seo__MaxDynamicUrlsPerType: ${SEO_MAX_DYNAMIC_URLS_PER_TYPE:-50}
       Seo__SupportedLanguages__0: en
       Seo__SupportedLanguages__1: fr
       Seo__SupportedLanguages__2: es

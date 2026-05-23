@@ -1,0 +1,14 @@
+{
+  "/robots.txt": {
+    "target": "https://localhost:44391",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "warn"
+  },
+  "/sitemap.xml": {
+    "target": "https://localhost:44391",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "warn"
+  }
+}

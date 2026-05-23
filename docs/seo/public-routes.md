@@ -39,7 +39,7 @@ Langues servies : `en`, `fr`, `es`, `de`, `it`, `pl`, `nl`, `pt`.
 | `/:lang/reset-password` | `noindex,nofollow` | Parcours auth/email. |
 | `/api/**` | `Disallow` dans `robots.txt` | API technique consommée par le front. |
 | `/robots.txt` | Non applicable | Fichier technique public. |
-| `/sitemap.xml` | Non applicable | Fichier technique public. |
+| `/sitemap.xml` | Non applicable | Fichier technique public. En local `ng serve`, proxifié vers l'API par `proxy.conf.json`. |
 
 ## Validation attendue
 

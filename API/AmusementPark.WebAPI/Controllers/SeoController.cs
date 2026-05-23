@@ -71,8 +71,8 @@ public sealed class SeoController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        string xml = this.BuildSitemapXml(result.Value);
-        return this.Content(xml, "application/xml", Encoding.UTF8);
+        byte[] xml = this.BuildSitemapXml(result.Value);
+        return this.File(xml, "application/xml; charset=utf-8");
     }
 
     private string GetPublicBaseUrl()
@@ -109,36 +109,39 @@ public sealed class SeoController : ControllerBase
             .ToList();
     }
 
-    private string BuildSitemapXml(IReadOnlyCollection<PublicSitemapUrl> urls)
+    private byte[] BuildSitemapXml(IReadOnlyCollection<PublicSitemapUrl> urls)
     {
         string publicBaseUrl = this.GetPublicBaseUrl();
-        StringBuilder builder = new StringBuilder();
         XmlWriterSettings writerSettings = new XmlWriterSettings
         {
-            Encoding = Encoding.UTF8,
+            Encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
             Indent = true,
-            OmitXmlDeclaration = true,
+            OmitXmlDeclaration = false,
         };
 
-        using XmlWriter writer = XmlWriter.Create(builder, writerSettings);
-        writer.WriteStartDocument();
-        writer.WriteStartElement("urlset", "http://www.sitemaps.org/schemas/sitemap/0.9");
-
-        foreach (PublicSitemapUrl url in urls)
+        using MemoryStream stream = new MemoryStream();
+        using (XmlWriter writer = XmlWriter.Create(stream, writerSettings))
         {
-            writer.WriteStartElement("url");
-            writer.WriteElementString("loc", $"{publicBaseUrl}{url.RelativePath}");
+            writer.WriteStartDocument();
+            writer.WriteStartElement("urlset", "http://www.sitemaps.org/schemas/sitemap/0.9");
 
-            if (url.LastModifiedUtc.HasValue)
+            foreach (PublicSitemapUrl url in urls)
             {
-                writer.WriteElementString("lastmod", url.LastModifiedUtc.Value.ToUniversalTime().ToString("yyyy-MM-dd"));
+                writer.WriteStartElement("url");
+                writer.WriteElementString("loc", $"{publicBaseUrl}{url.RelativePath}");
+
+                if (url.LastModifiedUtc.HasValue)
+                {
+                    writer.WriteElementString("lastmod", url.LastModifiedUtc.Value.ToUniversalTime().ToString("yyyy-MM-dd"));
+                }
+
+                writer.WriteEndElement();
             }
 
             writer.WriteEndElement();
+            writer.WriteEndDocument();
         }
 
-        writer.WriteEndElement();
-        writer.WriteEndDocument();
-        return builder.ToString();
+        return stream.ToArray();
     }
 }

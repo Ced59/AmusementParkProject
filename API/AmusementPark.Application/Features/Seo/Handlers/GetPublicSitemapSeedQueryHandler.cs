@@ -49,7 +49,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
     public async Task<ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>>> HandleAsync(GetPublicSitemapSeedQuery query, CancellationToken cancellationToken = default)
     {
         IReadOnlyCollection<string> languages = NormalizeLanguages(query.SupportedLanguages);
-        int dynamicLimit = Math.Clamp(query.MaxDynamicUrlsPerType, 100, 50000);
+        int dynamicLimit = Math.Clamp(query.MaxDynamicUrlsPerType, 1, 5000);
         List<PublicSitemapUrl> urls = new List<PublicSitemapUrl>();
 
         this.AddStaticPages(urls, languages);
@@ -60,7 +60,9 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
 
         this.AddParkUrls(urls, visibleParks, languages);
         await this.AddParkItemUrlsAsync(urls, visibleParkById, languages, dynamicLimit, cancellationToken);
-        await this.AddReferenceUrlsAsync(urls, languages, dynamicLimit, cancellationToken);
+
+        int referenceLimit = Math.Min(dynamicLimit, 25);
+        await this.AddReferenceUrlsAsync(urls, languages, referenceLimit, cancellationToken);
 
         IReadOnlyCollection<PublicSitemapUrl> distinctUrls = urls
             .GroupBy(static url => url.RelativePath, StringComparer.OrdinalIgnoreCase)
