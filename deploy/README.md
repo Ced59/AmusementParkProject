@@ -6,6 +6,7 @@ Cette configuration est prévue pour un VPS qui possède déjà Nginx Proxy Mana
 
 - Nginx Proxy Manager expose publiquement `https://amusement-parks.fun`.
 - Le container front est publié uniquement sur `127.0.0.1:${PUBLIC_HTTP_PORT:-8080}`.
+- L'API filtre les en-têtes `Host` via `AllowedHosts`, injecté par la variable `ALLOWED_HOSTS`.
 - L'API n'a aucun port public : elle est appelée par le front via `/api`.
 - MongoDB n'a aucun port public.
 - MinIO est lié à `127.0.0.1` seulement, pour accès par SSH tunnel ou par une règle NPM protégée si nécessaire.
@@ -22,6 +23,20 @@ Créer un Proxy Host :
 - Activer SSL + Force SSL + HTTP/2.
 
 Ne crée pas de Proxy Host public pour l'API. L'API passe par `https://amusement-parks.fun/api`.
+
+## Verrouillage AllowedHosts
+
+La production ne doit pas utiliser `AllowedHosts=*`. Le déploiement injecte :
+
+```bash
+ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api
+```
+
+- `amusement-parks.fun` et `www.amusement-parks.fun` couvrent les domaines publics.
+- `localhost` et `127.0.0.1` couvrent les healthchecks internes.
+- `amusementpark-api` anticipe les appels Docker internes, notamment pour le futur SSR.
+
+Toute autre valeur de `Host` doit être rejetée en production.
 
 ## Secrets GitHub Actions nécessaires
 
@@ -68,6 +83,7 @@ Ne crée pas de Proxy Host public pour l'API. L'API passe par `https://amusement
 
 - `PUBLIC_BASE_URL`, défaut `https://amusement-parks.fun`
 - `PUBLIC_DOMAIN`, défaut `amusement-parks.fun`
+- `ALLOWED_HOSTS`, défaut pipeline : `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api`
 - `PUBLIC_HTTP_PORT`, défaut `8080`
 - `MINIO_API_PORT`, défaut `9000`
 - `MINIO_CONSOLE_PORT`, défaut `9001`

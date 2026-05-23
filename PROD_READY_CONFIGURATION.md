@@ -14,6 +14,7 @@ Le back est désormais prêt à être piloté uniquement par configuration.
 
 ```bash
 ASPNETCORE_ENVIRONMENT=Production
+AllowedHosts=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api
 Authentication__Local__FrontendBaseUrl=https://amusement-parks.fun
 Cors__AllowedOrigins__0=https://amusement-parks.fun
 Email__Mode=Smtp
@@ -27,6 +28,18 @@ Email__FromAddress=noreply@amusement-parks.fun
 Email__FromName=Amusement Park
 ```
 
+## Verrouillage Host M18.2
+
+`appsettings.json` ne contient plus de wildcard global. Le wildcard `AllowedHosts=*` est réservé au profil `Development`. En production, `AllowedHosts` doit être injecté explicitement par variable d'environnement ou par le fichier `.env` de déploiement.
+
+La valeur recommandée pour le déploiement Docker actuel est :
+
+```bash
+AllowedHosts=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api
+```
+
+Les hôtes locaux et le nom de service Docker sont conservés pour ne pas casser les healthchecks internes ni les futurs appels serveur-à-serveur.
+
 ## Règle de sélection du sender mail
 
 - `Email:Mode=Console` => `ConsoleEmailSender`
@@ -34,4 +47,4 @@ Email__FromName=Amusement Park
 
 ## Fichier d'exemple
 
-Un fichier `API/WebAPI/appsettings.Production.example.json` est fourni comme base de configuration.
+Le fichier `deploy/.env.production.example` est fourni comme base de configuration pour le déploiement Docker/VPS.

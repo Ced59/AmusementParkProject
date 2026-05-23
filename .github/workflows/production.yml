@@ -185,6 +185,7 @@ jobs:
       PUBLIC_HTTP_PORT: ${{ vars.PUBLIC_HTTP_PORT || '8080' }}
       PUBLIC_BASE_URL: ${{ vars.PUBLIC_BASE_URL || 'https://amusement-parks.fun' }}
       PUBLIC_DOMAIN: ${{ vars.PUBLIC_DOMAIN || 'amusement-parks.fun' }}
+      ALLOWED_HOSTS: ${{ vars.ALLOWED_HOSTS || format('{0};www.{0};localhost;127.0.0.1;amusementpark-api', vars.PUBLIC_DOMAIN || 'amusement-parks.fun') }}
 
     steps:
       - name: Checkout
@@ -234,6 +235,7 @@ jobs:
           PUBLIC_HTTP_PORT=${{ env.PUBLIC_HTTP_PORT }}
           PUBLIC_DOMAIN=${{ env.PUBLIC_DOMAIN }}
           PUBLIC_BASE_URL=${{ env.PUBLIC_BASE_URL }}
+          ALLOWED_HOSTS=${{ env.ALLOWED_HOSTS }}
           ASPNETCORE_ENVIRONMENT=Production
           MONGO_DATABASE_NAME=${{ secrets.PROD_MONGO_DATABASE_NAME || 'AmusementPark' }}
           MONGO_INITDB_ROOT_USERNAME=${{ secrets.PROD_MONGO_ROOT_USERNAME }}
