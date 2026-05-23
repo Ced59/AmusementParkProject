@@ -19,6 +19,9 @@ using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AmusementPark.WebAPI.Authorization;
+using AmusementPark.WebAPI.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -27,6 +30,8 @@ namespace AmusementPark.WebAPI.Controllers;
 /// </summary>
 [ApiController]
 [Route("images")]
+[RequireActivatedUnblockedUser]
+[Authorize(Roles = AuthorizationRoleGroups.Admin)]
 public sealed class ImagesController : ControllerBase
 {
     private readonly ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>> uploadImageCommandHandler;
@@ -127,6 +132,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpGet("{ownerType}/{ownerId}/{category}/current")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ImageDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetCurrentImageAsync([FromRoute] string ownerType, [FromRoute] string ownerId, [FromRoute] string category, CancellationToken cancellationToken = default)
     {
@@ -153,6 +159,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpGet("{ownerType}/{ownerId}/{category}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ImageDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetImagesAsync([FromRoute] string ownerType, [FromRoute] string ownerId, [FromRoute] string category, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
@@ -338,6 +345,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpGet("{imageId}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetImageAsync([FromRoute] string imageId, CancellationToken cancellationToken = default)
     {
         ApplicationResult<Image> result = await this.getImageByIdQueryHandler.HandleAsync(new GetImageByIdQuery(imageId), cancellationToken);

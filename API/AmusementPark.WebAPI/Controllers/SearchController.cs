@@ -14,6 +14,7 @@ using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -32,6 +33,7 @@ public sealed class SearchController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<SearchResultDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> SearchAsync(
         [FromQuery] string? query,

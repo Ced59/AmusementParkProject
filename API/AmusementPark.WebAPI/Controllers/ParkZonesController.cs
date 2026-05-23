@@ -15,6 +15,9 @@ using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AmusementPark.WebAPI.Authorization;
+using AmusementPark.WebAPI.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -23,6 +26,8 @@ namespace AmusementPark.WebAPI.Controllers;
 /// </summary>
 [ApiController]
 [Route("park-zones")]
+[RequireActivatedUnblockedUser]
+[Authorize(Roles = AuthorizationRoleGroups.Admin)]
 public sealed class ParkZonesController : ControllerBase
 {
     private readonly IQueryHandler<GetParkZonesByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkZone>>> getParkZonesByParkIdQueryHandler;
@@ -49,10 +54,11 @@ public sealed class ParkZonesController : ControllerBase
     }
 
     [HttpGet("park/{parkId}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkZoneDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<IReadOnlyCollection<ParkZone>> result = await this.getParkZonesByParkIdQueryHandler.HandleAsync(new GetParkZonesByParkIdQuery(parkId), cancellationToken);
+        ApplicationResult<IReadOnlyCollection<ParkZone>> result = await this.getParkZonesByParkIdQueryHandler.HandleAsync(new GetParkZonesByParkIdQuery(parkId, this.UserCanSeeNonVisible()), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
@@ -68,10 +74,11 @@ public sealed class ParkZonesController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ParkZoneDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetByIdAsync([FromRoute] string id, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<ParkZone> result = await this.getParkZoneByIdQueryHandler.HandleAsync(new GetParkZoneByIdQuery(id), cancellationToken);
+        ApplicationResult<ParkZone> result = await this.getParkZoneByIdQueryHandler.HandleAsync(new GetParkZoneByIdQuery(id, this.UserCanSeeNonVisible()), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
@@ -81,10 +88,11 @@ public sealed class ParkZonesController : ControllerBase
     }
 
     [HttpGet("park/{parkId}/explorer")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ParkExplorerDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetExplorerAsync([FromRoute] string parkId, CancellationToken cancellationToken = default)
     {
-        bool includeNonVisible = this.User?.IsInRole("ADMIN") == true || this.User?.IsInRole("MODERATOR") == true;
+        bool includeNonVisible = this.UserCanSeeNonVisible();
         ApplicationResult<ParkExplorerResult> result = await this.getParkExplorerQueryHandler.HandleAsync(new GetParkExplorerQuery(parkId, includeNonVisible), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
@@ -131,5 +139,10 @@ public sealed class ParkZonesController : ControllerBase
         }
 
         return this.Ok(true);
+    }
+
+    private bool UserCanSeeNonVisible()
+    {
+        return this.User?.IsInRole("ADMIN") == true;
     }
 }

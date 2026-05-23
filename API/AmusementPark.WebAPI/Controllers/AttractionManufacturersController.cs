@@ -13,6 +13,9 @@ using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AmusementPark.WebAPI.Authorization;
+using AmusementPark.WebAPI.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -21,6 +24,8 @@ namespace AmusementPark.WebAPI.Controllers;
 /// </summary>
 [ApiController]
 [Route("attraction-manufacturers")]
+[RequireActivatedUnblockedUser]
+[Authorize(Roles = AuthorizationRoleGroups.Admin)]
 public sealed class AttractionManufacturersController : ControllerBase
 {
     private readonly IQueryHandler<GetAttractionManufacturersQuery, ApplicationResult<IReadOnlyCollection<AttractionManufacturerResult>>> getAttractionManufacturersQueryHandler;
@@ -47,6 +52,7 @@ public sealed class AttractionManufacturersController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<AttractionManufacturerDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
@@ -82,6 +88,7 @@ public sealed class AttractionManufacturersController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(AttractionManufacturerDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetByIdAsync([FromRoute] string id, CancellationToken cancellationToken = default)
     {

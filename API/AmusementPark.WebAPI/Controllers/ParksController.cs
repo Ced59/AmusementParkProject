@@ -19,6 +19,9 @@ using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AmusementPark.WebAPI.Authorization;
+using AmusementPark.WebAPI.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -27,6 +30,8 @@ namespace AmusementPark.WebAPI.Controllers;
 /// </summary>
 [ApiController]
 [Route("[controller]")]
+[RequireActivatedUnblockedUser]
+[Authorize(Roles = AuthorizationRoleGroups.Admin)]
 public sealed class ParksController : ControllerBase
 {
     private readonly ICommandHandler<CreateParkCommand, ApplicationResult<Park>> createParkCommandHandler;
@@ -87,6 +92,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("random-visible")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<ParkDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetRandomVisibleParksAsync([FromQuery] int limit = 4, CancellationToken cancellationToken = default)
     {
@@ -105,6 +111,7 @@ public sealed class ParksController : ControllerBase
 
 
     [HttpGet("home-featured")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<HomeFeaturedParkDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetHomeFeaturedParksAsync([FromQuery] int limit = 3, [FromQuery] string[]? excludeIds = null, CancellationToken cancellationToken = default)
     {
@@ -122,6 +129,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("map-visible")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<ParkMapPointDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetVisibleParkMapPointsAsync([FromQuery] string? query = null, [FromQuery] string? name = null, [FromQuery] string? region = null, CancellationToken cancellationToken = default)
     {
@@ -146,10 +154,11 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ParkDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetParkById([FromRoute] string id, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<Park> result = await this.getParkByIdQueryHandler.HandleAsync(new GetParkByIdQuery(id, true), cancellationToken);
+        ApplicationResult<Park> result = await this.getParkByIdQueryHandler.HandleAsync(new GetParkByIdQuery(id, this.UserCanSeeNonVisible()), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
@@ -159,6 +168,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetParksAsync(
         [FromQuery] PaginationRequestDto pagination,
@@ -172,17 +182,19 @@ public sealed class ParksController : ControllerBase
         [FromQuery] string? countryCode = null,
         CancellationToken cancellationToken = default)
     {
-        bool includeNonVisible = !visibleOnly && this.UserCanSeeNonVisible();
+        bool canSeeNonVisible = this.UserCanSeeNonVisible();
+        bool includeNonVisible = !visibleOnly && canSeeNonVisible;
         PagedQuery paging = pagination.ToApplication();
         string? effectiveQuery = string.IsNullOrWhiteSpace(query) ? name : query;
         WorldRegionFilter? regionFilter = WorldRegionFilterParser.Parse(region);
 
-        AdminReviewStatus? parsedAdminReviewStatus = ParseAdminReviewStatus(adminReviewStatus);
+        bool? effectiveIsVisible = canSeeNonVisible ? isVisible : true;
+        AdminReviewStatus? parsedAdminReviewStatus = canSeeNonVisible ? ParseAdminReviewStatus(adminReviewStatus) : null;
         ParkType? parsedType = ParseParkType(type);
 
         ApplicationResult<PagedResult<Park>> result = string.IsNullOrWhiteSpace(effectiveQuery) && regionFilter is null
-            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, isVisible, parsedAdminReviewStatus, parsedType, countryCode), cancellationToken)
-            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, isVisible, parsedAdminReviewStatus, parsedType, countryCode), cancellationToken);
+            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode), cancellationToken)
+            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode), cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
         {
@@ -195,6 +207,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("geo-search")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> SearchParksByLocationAsync(
         [FromQuery] double latitude,
@@ -220,6 +233,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("{id}/distances")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ParkDistanceResponseDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetParkDistancesAsync(
         [FromRoute] string id,
@@ -239,6 +253,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("{id}/nearby")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ParkDistanceResponseDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetNearestParksAsync(
         [FromRoute] string id,
@@ -336,6 +351,6 @@ public sealed class ParksController : ControllerBase
 
     private bool UserCanSeeNonVisible()
     {
-        return this.User?.IsInRole("ADMIN") == true || this.User?.IsInRole("MODERATOR") == true;
+        return this.User?.IsInRole("ADMIN") == true;
     }
 }

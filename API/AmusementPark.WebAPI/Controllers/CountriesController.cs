@@ -11,6 +11,7 @@ using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -35,6 +36,7 @@ public sealed class CountriesController : ControllerBase
     /// Retourne la liste des pays avec le nom localisé.
     /// </summary>
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<CountryDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetCountries([FromQuery] string? lang = null, [FromQuery] PaginationRequestDto? pagination = null, CancellationToken cancellationToken = default)
     {

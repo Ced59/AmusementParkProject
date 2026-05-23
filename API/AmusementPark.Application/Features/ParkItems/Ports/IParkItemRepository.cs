@@ -14,6 +14,7 @@ public interface IParkItemRepository
     Task<long> CountByCategoryForParkIdsAsync(ParkItemCategory category, IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken);
     Task<IReadOnlyDictionary<string, IReadOnlyDictionary<ParkItemCategory, int>>> GetCountsByCategoryForParkIdsAsync(IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken);
     Task<ParkItem?> GetByIdAsync(string parkItemId, CancellationToken cancellationToken);
+    Task<ParkItem?> GetByIdAsync(string parkItemId, bool includeHidden, CancellationToken cancellationToken);
     Task<ParkItem> CreateAsync(ParkItem parkItem, CancellationToken cancellationToken);
     Task<ParkItem?> UpdateAsync(string parkItemId, ParkItem parkItem, CancellationToken cancellationToken);
     Task<bool> DeleteAsync(string parkItemId, CancellationToken cancellationToken);

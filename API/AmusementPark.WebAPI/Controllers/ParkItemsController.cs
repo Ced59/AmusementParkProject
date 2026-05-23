@@ -16,6 +16,9 @@ using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AmusementPark.WebAPI.Authorization;
+using AmusementPark.WebAPI.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -24,6 +27,8 @@ namespace AmusementPark.WebAPI.Controllers;
 /// </summary>
 [ApiController]
 [Route("park-items")]
+[RequireActivatedUnblockedUser]
+[Authorize(Roles = AuthorizationRoleGroups.Admin)]
 public sealed class ParkItemsController : ControllerBase
 {
     private readonly IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler;
@@ -53,6 +58,7 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpGet("park/{parkId}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkItemDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
@@ -70,6 +76,7 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkItemAdminListDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetPaginatedAsync(
         [FromQuery] PaginationRequestDto pagination,
@@ -82,15 +89,18 @@ public sealed class ParkItemsController : ControllerBase
         [FromQuery] string? manufacturerId = null,
         CancellationToken cancellationToken = default)
     {
+        bool canSeeNonVisible = this.UserCanSeeNonVisible();
+        bool? effectiveIsVisible = canSeeNonVisible ? isVisible : true;
+        AdminReviewStatus? effectiveAdminReviewStatus = canSeeNonVisible ? ParseAdminReviewStatus(adminReviewStatus) : null;
         PagedQuery paging = pagination.ToApplication();
         ApplicationResult<PagedResult<ParkItemAdminListResult>> result = await this.getParkItemsPageQueryHandler.HandleAsync(
             new GetParkItemsPageQuery(
                 paging,
                 parkId,
                 search,
-                this.UserCanSeeNonVisible(),
-                isVisible,
-                ParseAdminReviewStatus(adminReviewStatus),
+                canSeeNonVisible,
+                effectiveIsVisible,
+                effectiveAdminReviewStatus,
                 ParseParkItemCategory(category),
                 ParseParkItemType(type),
                 manufacturerId),
@@ -107,10 +117,11 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ParkItemDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetByIdAsync([FromRoute] string id, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<ParkItem> result = await this.getParkItemByIdQueryHandler.HandleAsync(new GetParkItemByIdQuery(id), cancellationToken);
+        ApplicationResult<ParkItem> result = await this.getParkItemByIdQueryHandler.HandleAsync(new GetParkItemByIdQuery(id, this.UserCanSeeNonVisible()), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
@@ -195,6 +206,6 @@ public sealed class ParkItemsController : ControllerBase
 
     private bool UserCanSeeNonVisible()
     {
-        return this.User?.IsInRole("ADMIN") == true || this.User?.IsInRole("MODERATOR") == true;
+        return this.User?.IsInRole("ADMIN") == true;
     }
 }

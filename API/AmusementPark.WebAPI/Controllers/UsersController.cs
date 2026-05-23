@@ -76,6 +76,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(UserCreatedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateUserAsync([FromBody] UserCreateDto user, CancellationToken cancellationToken = default)
     {
@@ -204,6 +205,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("confirm-email")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(EmailConfirmedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ConfirmEmailAsync([FromBody] ConfirmEmailRequestDto confirmEmailRequestDto, CancellationToken cancellationToken = default)
     {
@@ -223,6 +225,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("resend-confirmation")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ConfirmationEmailResentDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ResendConfirmationAsync([FromBody] ResendConfirmationEmailDto resendConfirmationEmailDto, CancellationToken cancellationToken = default)
     {
@@ -242,6 +245,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("forgot-password")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(EmailPasswordSendedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ForgotPasswordAsync([FromBody] ForgotPasswordDto forgotPasswordDto, CancellationToken cancellationToken = default)
     {
@@ -261,6 +265,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("reset-password")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PasswordResetedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ResetPasswordAsync([FromBody] ResetPasswordDto resetPasswordDto, CancellationToken cancellationToken = default)
     {

@@ -192,9 +192,21 @@ public sealed class ParkItemRepository : IParkItemRepository
             StringComparer.Ordinal);
     }
 
-    public async Task<ParkItem?> GetByIdAsync(string parkItemId, CancellationToken cancellationToken)
+    public Task<ParkItem?> GetByIdAsync(string parkItemId, CancellationToken cancellationToken)
     {
-        ParkItemDocument? document = await this.collection.Find(document => document.Id == parkItemId)
+        return this.GetByIdAsync(parkItemId, true, cancellationToken);
+    }
+
+    public async Task<ParkItem?> GetByIdAsync(string parkItemId, bool includeHidden, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.Id, parkItemId);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        ParkItemDocument? document = await this.collection.Find(filter)
             .FirstOrDefaultAsync(cancellationToken);
 
         return document?.ToDomain();

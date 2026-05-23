@@ -16,6 +16,7 @@ using AmusementPark.WebAPI.Security;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -53,6 +54,7 @@ public sealed class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(UserLoggedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> LoginAsync([FromBody] UserLoginDto userLoginDto, CancellationToken cancellationToken = default)
     {
@@ -75,6 +77,7 @@ public sealed class AuthController : ControllerBase
     }
 
     [HttpPost("refresh-token")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(RefreshTokenResponseDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> RefreshTokenAsync([FromBody] RefreshTokenRequestDto? token, CancellationToken cancellationToken = default)
     {
@@ -111,6 +114,7 @@ public sealed class AuthController : ControllerBase
     }
 
     [HttpPost("logout")]
+    [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> Logout(CancellationToken cancellationToken = default)
     {
@@ -133,6 +137,7 @@ public sealed class AuthController : ControllerBase
     }
 
     [HttpPost("external/{provider}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(UserLoggedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ExternalLoginAsync([FromRoute] string provider, [FromBody] ExternalLoginRequestDto request, CancellationToken cancellationToken = default)
     {
@@ -167,6 +172,7 @@ public sealed class AuthController : ControllerBase
     }
 
     [HttpGet("facebook")]
+    [AllowAnonymous]
     public async Task<IActionResult> AuthenticateFacebook()
     {
         AuthenticationScheme? scheme = await this.authenticationSchemeProvider.GetSchemeAsync("Facebook");
@@ -184,6 +190,7 @@ public sealed class AuthController : ControllerBase
     }
 
     [HttpGet("facebook-response")]
+    [AllowAnonymous]
     public async Task<IActionResult> FacebookResponse()
     {
         AuthenticationScheme? scheme = await this.authenticationSchemeProvider.GetSchemeAsync("Facebook");

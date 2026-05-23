@@ -71,7 +71,7 @@ public static class WebApplicationPipelineExtensions
         ArgumentNullException.ThrowIfNull(app);
 
         app.MapControllers();
-        app.MapGet("/health", () => Results.Ok(MigrationDiagnostics.CreateHealthPayload()));
+        app.MapGet("/health", () => Results.Ok(MigrationDiagnostics.CreateHealthPayload())).AllowAnonymous();
 
         return app;
     }
