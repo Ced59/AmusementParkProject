@@ -5,13 +5,6 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import AppServerModule from './src/main.server';
 
-// En développement, le backend .NET utilise un certificat auto-signé.
-// Node.js refuse ces certificats par défaut, ce qui fait échouer les appels
-// HTTP du rendu SSR. On désactive la vérification TLS uniquement hors production.
-if (process.env['NODE_ENV'] !== 'production') {
-  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-}
-
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
