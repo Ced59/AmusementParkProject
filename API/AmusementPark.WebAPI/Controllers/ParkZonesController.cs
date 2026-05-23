@@ -103,6 +103,7 @@ public sealed class ParkZonesController : ControllerBase
     }
 
     [HttpPost]
+    [AdminAudit("park-zone.create", "ParkZone")]
     [ProducesResponseType(typeof(ParkZoneDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateAsync([FromBody] ParkZoneCreateDto dto, CancellationToken cancellationToken = default)
     {
@@ -116,6 +117,7 @@ public sealed class ParkZonesController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [AdminAudit("park-zone.update", "ParkZone", TargetIdRouteKey = "id")]
     [ProducesResponseType(typeof(ParkZoneDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateAsync([FromRoute] string id, [FromBody] ParkZoneUpdateDto dto, CancellationToken cancellationToken = default)
     {
@@ -129,6 +131,7 @@ public sealed class ParkZonesController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [AdminAudit("park-zone.delete", "ParkZone", TargetIdRouteKey = "id")]
     [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
     public async Task<IActionResult> DeleteAsync([FromRoute] string id, CancellationToken cancellationToken = default)
     {

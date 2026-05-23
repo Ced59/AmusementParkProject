@@ -85,6 +85,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpPost]
+    [AdminAudit("image.upload", "Image")]
     [Consumes("multipart/form-data")]
     [ProducesResponseType(typeof(ImageCreatedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UploadAsync([FromForm] ImageCreateDto image, CancellationToken cancellationToken = default)
@@ -116,6 +117,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpPost("links")]
+    [AdminAudit("image.link", "Image")]
     [ProducesResponseType(typeof(ImageDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> LinkImageAsync([FromBody] LinkImageToOwnerDto request, CancellationToken cancellationToken = default)
     {
@@ -187,6 +189,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpPut("{imageId}/current")]
+    [AdminAudit("image.current.set", "Image", TargetIdRouteKey = "imageId")]
     [ProducesResponseType(typeof(ImageDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> SetCurrentImageAsync([FromRoute] string imageId, CancellationToken cancellationToken = default)
     {
@@ -200,6 +203,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpDelete("{imageId}")]
+    [AdminAudit("image.delete", "Image", TargetIdRouteKey = "imageId")]
     public async Task<IActionResult> DeleteImageAsync([FromRoute] string imageId, CancellationToken cancellationToken = default)
     {
         ApplicationResult result = await this.deleteImageCommandHandler.HandleAsync(new DeleteImageCommand(imageId), cancellationToken);
@@ -250,6 +254,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpPatch("bulk-metadata")]
+    [AdminAudit("image.bulk-metadata.update", "Image", StaticTargetId = "bulk")]
     [ProducesResponseType(typeof(BulkAdministrationUpdateResultDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateBulkMetadataAsync([FromBody] BulkImageMetadataUpdateDto request, CancellationToken cancellationToken = default)
     {
@@ -284,6 +289,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpPost("tags")]
+    [AdminAudit("image-tag.create", "ImageTag")]
     [ProducesResponseType(typeof(ImageTagDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateTagAsync([FromBody] CreateImageTagRequest request, CancellationToken cancellationToken = default)
     {
@@ -297,6 +303,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpPut("tags/{id}")]
+    [AdminAudit("image-tag.update", "ImageTag", TargetIdRouteKey = "id")]
     [ProducesResponseType(typeof(ImageTagDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateTagAsync([FromRoute] string id, [FromBody] UpdateImageTagRequest request, CancellationToken cancellationToken = default)
     {
@@ -323,6 +330,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpPut("{imageId}/metadata")]
+    [AdminAudit("image.metadata.update", "Image", TargetIdRouteKey = "imageId")]
     [ProducesResponseType(typeof(ImageDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateMetadataAsync([FromRoute] string imageId, [FromBody] UpdateImageAssetRequest request, CancellationToken cancellationToken = default)
     {

@@ -102,6 +102,7 @@ public sealed class DataSourcesController : ControllerBase
     }
 
     [HttpPut("{sourceKey}/settings")]
+    [AdminAudit("data-source.settings.update", "DataSource", TargetIdRouteKey = "sourceKey")]
     [ProducesResponseType(typeof(DataSourceSettingsDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateSettingsAsync([FromRoute] string sourceKey, [FromBody] UpdateDataSourceSettingsDto dto, CancellationToken cancellationToken = default)
     {
@@ -174,6 +175,7 @@ public sealed class DataSourcesController : ControllerBase
     }
 
     [HttpPost("{sourceKey}/import")]
+    [AdminAudit("data-source.import.start", "DataSource", TargetIdRouteKey = "sourceKey")]
     [ProducesResponseType(typeof(DataSourceSessionDto), StatusCodes.Status202Accepted)]
     public async Task<IActionResult> StartImportAsync(
         [FromRoute] string sourceKey,
@@ -211,6 +213,7 @@ public sealed class DataSourcesController : ControllerBase
     }
 
     [HttpPost("{sourceKey}/apply")]
+    [AdminAudit("data-source.comparison.apply", "DataSource", TargetIdRouteKey = "sourceKey")]
     [ProducesResponseType(typeof(DataSourceApplyResultDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ApplyAsync([FromRoute] string sourceKey, [FromBody] ApplyDataSourceComparisonRequestDto dto, CancellationToken cancellationToken = default)
     {

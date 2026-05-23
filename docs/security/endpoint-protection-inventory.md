@@ -143,3 +143,20 @@ Les erreurs HTTP de l'API utilisent désormais `application/problem+json` / RFC 
 L'ancien format `{ statusCode, message }` n'est plus une cible acceptée. Les contrôleurs, les erreurs applicatives, la validation modèle, les refus 401/403, les erreurs 404 sans corps, le rate limiting et les exceptions non gérées doivent converger vers `ProblemDetails`.
 
 Voir `docs/security/problem-details-error-contract.md`.
+
+## M18.8 — Audit log admin minimal
+
+Les actions d'administration sensibles portent maintenant un attribut explicite `AdminAuditAttribute`.
+
+Une trace est persistée en MongoDB dans `adminAuditLogs` uniquement après une réponse HTTP réussie `2xx` ou `3xx`. Elle contient l'action métier, le type d'entité, l'identifiant cible lorsque disponible, l'utilisateur acteur, ses rôles, l'IP calculée après forwarded headers, le user-agent, le statut HTTP et le `traceId`.
+
+Les actions couvertes incluent :
+
+- changements de visibilité et mises à jour admin en masse ;
+- suppressions de park items, zones et images ;
+- rôles, verrouillage et déverrouillage utilisateur ;
+- imports/apply data source et paramètres data source ;
+- uploads, liaisons, métadonnées et tags d'images ;
+- créations/modifications admin majeures sur parcs, éléments, zones, exploitants, constructeurs et fondateurs.
+
+Voir `docs/security/admin-audit-log.md`.

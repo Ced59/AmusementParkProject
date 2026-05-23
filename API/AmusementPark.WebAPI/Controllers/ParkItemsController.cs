@@ -131,6 +131,7 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpPost]
+    [AdminAudit("park-item.create", "ParkItem")]
     [ProducesResponseType(typeof(ParkItemDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateAsync([FromBody] ParkItemCreateDto dto, CancellationToken cancellationToken = default)
     {
@@ -144,6 +145,7 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [AdminAudit("park-item.update", "ParkItem", TargetIdRouteKey = "id")]
     [ProducesResponseType(typeof(ParkItemDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateAsync([FromRoute] string id, [FromBody] ParkItemUpdateDto dto, CancellationToken cancellationToken = default)
     {
@@ -157,6 +159,7 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpPatch("bulk-administration")]
+    [AdminAudit("park-item.bulk-administration.update", "ParkItem", StaticTargetId = "bulk")]
     [ProducesResponseType(typeof(BulkAdministrationUpdateResultDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateParkItemsBulkAdministrationAsync([FromBody] BulkAdministrationUpdateDto request, CancellationToken cancellationToken = default)
     {
@@ -177,6 +180,7 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [AdminAudit("park-item.delete", "ParkItem", TargetIdRouteKey = "id")]
     [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
     public async Task<IActionResult> DeleteAsync([FromRoute] string id, CancellationToken cancellationToken = default)
     {

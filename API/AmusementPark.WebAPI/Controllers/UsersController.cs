@@ -292,6 +292,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("roles/assign/{userId}")]
+    [AdminAudit("user.role.assign", "User", TargetIdRouteKey = "userId")]
     [Authorize(Roles = AuthorizationRoleGroups.Admin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(RoleAssignedDto), StatusCodes.Status200OK)]
@@ -310,6 +311,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpDelete("roles/remove/{userId}")]
+    [AdminAudit("user.role.remove", "User", TargetIdRouteKey = "userId")]
     [Authorize(Roles = AuthorizationRoleGroups.Admin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(RoleRemovedDto), StatusCodes.Status200OK)]
@@ -328,6 +330,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("lock")]
+    [AdminAudit("user.lock", "User")]
     [Authorize(Roles = AuthorizationRoleGroups.ModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(UserLockedDto), StatusCodes.Status200OK)]
@@ -343,6 +346,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("unlock")]
+    [AdminAudit("user.unlock", "User")]
     [Authorize(Roles = AuthorizationRoleGroups.ModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(UserUnlockedDto), StatusCodes.Status200OK)]

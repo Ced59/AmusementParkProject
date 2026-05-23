@@ -77,6 +77,7 @@ public sealed class ParkFoundersController : ControllerBase
     }
 
     [HttpPost]
+    [AdminAudit("park-founder.create", "ParkFounder")]
     [ProducesResponseType(typeof(ParkFounderDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateAsync([FromBody] ParkFounderCreateDto dto, CancellationToken cancellationToken = default)
     {
@@ -90,6 +91,7 @@ public sealed class ParkFoundersController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [AdminAudit("park-founder.update", "ParkFounder", TargetIdRouteKey = "id")]
     [ProducesResponseType(typeof(ParkFounderDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateAsync([FromRoute] string id, [FromBody] ParkFounderUpdateDto dto, CancellationToken cancellationToken = default)
     {

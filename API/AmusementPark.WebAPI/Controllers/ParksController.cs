@@ -79,6 +79,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpPost]
+    [AdminAudit("park.create", "Park")]
     [ProducesResponseType(typeof(ParkCreatedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateParkAsync([FromBody] ParkCreateDto park, CancellationToken cancellationToken = default)
     {
@@ -274,6 +275,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpPatch("bulk-administration")]
+    [AdminAudit("park.bulk-administration.update", "Park", StaticTargetId = "bulk")]
     [ProducesResponseType(typeof(BulkAdministrationUpdateResultDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateParksBulkAdministrationAsync([FromBody] BulkAdministrationUpdateDto request, CancellationToken cancellationToken = default)
     {
@@ -294,6 +296,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpPatch("{id}/visibility")]
+    [AdminAudit("park.visibility.update", "Park", TargetIdRouteKey = "id")]
     [ProducesResponseType(typeof(ParkDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateParkVisibilityAsync([FromRoute] string id, [FromBody] ParkVisibilityUpdateDto request, CancellationToken cancellationToken = default)
     {
@@ -307,6 +310,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [AdminAudit("park.update", "Park", TargetIdRouteKey = "id")]
     [ProducesResponseType(typeof(ParkDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateParkAsync([FromRoute] string id, [FromBody] ParkUpdateDto park, CancellationToken cancellationToken = default)
     {

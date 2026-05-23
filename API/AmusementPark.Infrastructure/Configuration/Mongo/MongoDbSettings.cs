@@ -38,6 +38,8 @@ public sealed class MongoDbSettings
 
     public string SearchItemCollectionName { get; set; } = "searchItems";
 
+    public string AdminAuditLogsCollectionName { get; set; } = "adminAuditLogs";
+
     public string ImagesCollectionName { get; set; } = "images";
 
     public string ImageTagsCollectionName { get; set; } = "imageTags";
