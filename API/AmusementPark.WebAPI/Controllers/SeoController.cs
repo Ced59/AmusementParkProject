@@ -7,8 +7,10 @@ using AmusementPark.Application.Features.Seo.Queries;
 using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 
 namespace AmusementPark.WebAPI.Controllers;
@@ -21,13 +23,16 @@ namespace AmusementPark.WebAPI.Controllers;
 public sealed class SeoController : ControllerBase
 {
     private readonly SeoSettings settings;
+    private readonly IWebHostEnvironment environment;
     private readonly IQueryHandler<GetPublicSitemapSeedQuery, ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>>> getPublicSitemapSeedQueryHandler;
 
     public SeoController(
         IOptions<SeoSettings> settings,
+        IWebHostEnvironment environment,
         IQueryHandler<GetPublicSitemapSeedQuery, ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>>> getPublicSitemapSeedQueryHandler)
     {
         this.settings = settings.Value;
+        this.environment = environment;
         this.getPublicSitemapSeedQueryHandler = getPublicSitemapSeedQueryHandler;
     }
 
@@ -36,7 +41,7 @@ public sealed class SeoController : ControllerBase
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     public IActionResult GetRobotsTxt()
     {
-        string publicBaseUrl = this.settings.GetNormalizedPublicBaseUrl();
+        string publicBaseUrl = this.GetPublicBaseUrl();
         StringBuilder builder = new StringBuilder();
         builder.AppendLine("User-agent: *");
         builder.AppendLine("Allow: /");
@@ -70,6 +75,11 @@ public sealed class SeoController : ControllerBase
         return this.Content(xml, "application/xml", Encoding.UTF8);
     }
 
+    private string GetPublicBaseUrl()
+    {
+        return this.settings.GetNormalizedPublicBaseUrl(requireHttps: !this.environment.IsDevelopment());
+    }
+
     private IReadOnlyCollection<string> BuildRobotsDisallowPaths()
     {
         List<string> paths = new List<string>();
@@ -101,7 +111,7 @@ public sealed class SeoController : ControllerBase
 
     private string BuildSitemapXml(IReadOnlyCollection<PublicSitemapUrl> urls)
     {
-        string publicBaseUrl = this.settings.GetNormalizedPublicBaseUrl();
+        string publicBaseUrl = this.GetPublicBaseUrl();
         StringBuilder builder = new StringBuilder();
         XmlWriterSettings writerSettings = new XmlWriterSettings
         {

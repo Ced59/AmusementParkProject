@@ -159,7 +159,7 @@ curl https://amusement-parks.fun/sitemap.xml
 
 Attendus :
 
-- les pages publiques ont `title`, meta description, canonical, robots `index,follow` et alternates `hreflang` ;
+- les pages publiques ont `title`, meta description, canonical HTTPS, robots `index,follow` et alternates `hreflang` HTTPS ;
 - admin, compte et auth restent en `noindex,nofollow` ;
 - la 404 publique est en `noindex,follow` ;
 - `robots.txt` référence le sitemap racine ;

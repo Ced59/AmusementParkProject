@@ -29,6 +29,24 @@ Les composants publics ne manipulent pas directement `Title`, `Meta` ou les bali
 - Admin/auth/account : `noindex,nofollow` via route defaults.
 - 404 : vraie page publique `noindex,follow`.
 
+
+### Politique HTTPS des URLs SEO
+
+En production, tous les signaux SEO absolus doivent sortir en HTTPS :
+
+- `<link rel="canonical">` ;
+- `<link rel="alternate" hreflang="...">` ;
+- `og:url` ;
+- URLs `<loc>` du sitemap ;
+- directive `Sitemap:` dans `robots.txt` ;
+- liens d'emails générés depuis `Authentication:Local:FrontendBaseUrl`.
+
+Le front s'appuie sur `environment.baseUrl`. En build production, si cette valeur est accidentellement configurée en `http://`, `CanonicalUrlService` force l'origine en `https://` et refuse de produire une origine `localhost`.
+
+L'API s'appuie sur `Seo:PublicBaseUrl`. Hors environnement `Development`, `SeoSettings` refuse désormais une URL non HTTPS, une URL localhost ou une URL qui n'est pas une origin racine.
+
+Le `http://localhost:4200` reste autorisé uniquement en développement local.
+
 ### Hreflang minimal
 
 Les alternates sont générés pour les langues réellement déclarées et servies par l'application : `en`, `fr`, `es`, `de`, `it`, `pl`, `nl`, `pt`, plus `x-default` vers `en`.

@@ -270,7 +270,7 @@ Le front Nginx proxifie maintenant les documents SEO racine vers l'API :
 - `GET /robots.txt` -> `amusementpark-api:8080/robots.txt`
 - `GET /sitemap.xml` -> `amusementpark-api:8080/sitemap.xml`
 
-La variable `PUBLIC_BASE_URL` alimente aussi `Seo__PublicBaseUrl`, utilisée pour produire les URLs absolues du sitemap et la directive `Sitemap:` de `robots.txt`.
+La variable `PUBLIC_BASE_URL` alimente aussi `Seo__PublicBaseUrl`, utilisée pour produire les URLs absolues du sitemap et la directive `Sitemap:` de `robots.txt`. En production, cette valeur doit rester une origin racine en `https://` : elle sert aussi de référence SEO pour éviter des canonical/hreflang/sitemap en `http://`.
 
 Variables optionnelles :
 
