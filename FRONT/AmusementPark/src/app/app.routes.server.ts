@@ -1,6 +1,6 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 
-const supportedLangs: string[] = ['en', 'fr'];
+const supportedLangs: string[] = ['en', 'fr', 'es', 'de', 'it', 'pl', 'nl', 'pt'];
 
 function getLangParams(): Promise<Record<string, string>[]> {
   return Promise.resolve(supportedLangs.map((lang) => ({ lang })));
@@ -29,6 +29,11 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: ':lang/privacy',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: getLangParams
+  },
+  {
+    path: ':lang/not-found',
     renderMode: RenderMode.Prerender,
     getPrerenderParams: getLangParams
   },

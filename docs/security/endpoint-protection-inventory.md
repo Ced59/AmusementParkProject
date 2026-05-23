@@ -194,3 +194,12 @@ La configuration CORS est maintenant validée au démarrage :
 Le déploiement valide aussi le `.env` avec `deploy/scripts/validate-production-env.sh` avant de redémarrer les services. Les secrets Mongo, MinIO, JWT et Google OAuth doivent être présents avant le déploiement production.
 
 Voir `docs/security/production-cors-and-secrets.md`.
+
+## M19 — Routes techniques SEO publiques
+
+Deux nouvelles routes publiques anonymes sont ajoutées pour l'indexation :
+
+- `GET /robots.txt` : fichier technique SEO, lecture seule, aucune donnée métier sensible.
+- `GET /sitemap.xml` : sitemap seed public, lecture seule, limité aux routes publiques indexables et aux entités visibles.
+
+Ces routes ne sont pas des mutations, ne modifient aucune donnée et ne nécessitent pas d'authentification.

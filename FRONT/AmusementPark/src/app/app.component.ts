@@ -8,6 +8,7 @@ import { TranslationService } from '@app/services/translation.service';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
 import { CookieConsentBannerComponent } from '@ui/layouts/cookie-consent-banner/cookie-consent-banner.component';
+import { SeoService } from '@core/seo/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
     private readonly translationService: TranslationService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
+    private readonly seoService: SeoService,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -30,8 +32,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.pipe(
       filter((event: unknown): event is NavigationEnd => event instanceof NavigationEnd),
-      tap((): void => {
+      tap((event: NavigationEnd): void => {
         this.isLoading = true;
+        this.seoService.applyRouteDefaults(event.urlAfterRedirects);
       }),
       switchMap(() => {
         const lang: string | null | undefined = this.route.root.firstChild?.snapshot.paramMap.get('lang');
@@ -43,6 +46,7 @@ export class AppComponent implements OnInit {
         return this.translationService.useLang(lang).pipe(
           tap((): void => {
             this.isLoading = false;
+            this.seoService.setHtmlLanguage(lang);
           }),
           catchError((error: unknown) => {
             this.isLoading = false;

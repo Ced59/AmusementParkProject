@@ -146,3 +146,21 @@ Le fichier `deploy/.env.production.example` est restauré et sert de base docume
 ## Note `.env` robuste
 
 Les scripts de déploiement ne font plus de `source .env` direct. Ils passent par `deploy/scripts/env-loader.sh`, afin que des valeurs contenant des `;`, des espaces ou certains caractères de secrets ne soient pas interprétées comme du code Bash.
+
+## M19 — SEO minimal à vérifier avant MVP
+
+Après déploiement sur le vrai domaine, vérifier :
+
+```bash
+curl -I https://amusement-parks.fun/fr/home
+curl https://amusement-parks.fun/robots.txt
+curl https://amusement-parks.fun/sitemap.xml
+```
+
+Attendus :
+
+- les pages publiques ont `title`, meta description, canonical, robots `index,follow` et alternates `hreflang` ;
+- admin, compte et auth restent en `noindex,nofollow` ;
+- la 404 publique est en `noindex,follow` ;
+- `robots.txt` référence le sitemap racine ;
+- `sitemap.xml` ne contient que des URLs publiques.

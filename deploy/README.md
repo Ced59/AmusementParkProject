@@ -262,3 +262,19 @@ Il refuse notamment les placeholders, les secrets manquants, `AllowedHosts=*`, l
 ## Note `.env` robuste
 
 Les scripts de déploiement ne font plus de `source .env` direct. Ils passent par `deploy/scripts/env-loader.sh`, afin que des valeurs contenant des `;`, des espaces ou certains caractères de secrets ne soient pas interprétées comme du code Bash.
+
+## M19 — SEO technique public
+
+Le front Nginx proxifie maintenant les documents SEO racine vers l'API :
+
+- `GET /robots.txt` -> `amusementpark-api:8080/robots.txt`
+- `GET /sitemap.xml` -> `amusementpark-api:8080/sitemap.xml`
+
+La variable `PUBLIC_BASE_URL` alimente aussi `Seo__PublicBaseUrl`, utilisée pour produire les URLs absolues du sitemap et la directive `Sitemap:` de `robots.txt`.
+
+Variables optionnelles :
+
+```env
+SEO_DEFAULT_LANGUAGE=en
+SEO_MAX_DYNAMIC_URLS_PER_TYPE=10000
+```

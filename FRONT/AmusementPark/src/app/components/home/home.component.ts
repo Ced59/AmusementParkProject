@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, inject, signal } from '@angular/core';
 import { EMPTY, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -8,6 +9,7 @@ import { HomeStateFacade } from '@features/public/home/state/home-state.facade';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { UiSearchPanelSelectFilterModel } from '@ui/forms/models/ui-search-panel.model';
 import { HomeViewComponent } from './home-view.component';
+import { SeoService } from '@core/seo/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -57,12 +59,20 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private readonly stateFacade: HomeStateFacade,
-    private readonly translationService: TranslationService
+    private readonly translationService: TranslationService,
+    private readonly router: Router,
+    private readonly seoService: SeoService
   ) {
   }
 
   ngOnInit(): void {
     this.currentLang.set(this.translationService.getCurrentLang() || 'en');
+    this.seoService.applyHomeSeo(this.currentLang(), this.router.url);
+    this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
+      this.currentLang.set(language);
+      this.seoService.applyHomeSeo(language, this.router.url);
+      this.stateFacade.loadFeaturedParks(language);
+    });
     this.stateFacade.loadHomeStats();
     this.stateFacade.loadFeaturedParks(this.currentLang());
 

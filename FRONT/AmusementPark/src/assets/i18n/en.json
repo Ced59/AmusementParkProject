@@ -1682,5 +1682,11 @@
     },
     "lastUpdate": "Last updated: 23 May 2026.",
     "backHome": "Back home"
+  },
+  "notFound": {
+    "title": "This page took the wrong turn",
+    "description": "The page you requested does not exist, moved, or is not publicly available.",
+    "homeCta": "Back to home",
+    "parksCta": "Explore parks"
   }
 }

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddApplicationModules();
+builder.Services.AddApplicationModules(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddMongoInitialization();
 builder.Services.AddApiAuthentication(builder.Configuration);

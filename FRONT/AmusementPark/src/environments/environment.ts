@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
   apiBaseUrl: 'https://localhost:44391/',
+  baseUrl: 'http://localhost:4200/',
   ssrApiBaseUrl: 'http://localhost:60445/',
   apiImagePath: 'https://localhost:44391/images/',
   googleClientId: '819235253823-lj2de5lllhlngr4rpt5iq0m5mgmmltaj.apps.googleusercontent.com',

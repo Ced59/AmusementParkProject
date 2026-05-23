@@ -1682,5 +1682,11 @@
     },
     "lastUpdate": "Last updated: 23 May 2026.",
     "backHome": "Back home"
+  },
+  "notFound": {
+    "title": "Diese Seite ist falsch abgebogen",
+    "description": "Die angeforderte Seite existiert nicht, wurde verschoben oder ist nicht öffentlich verfügbar.",
+    "homeCta": "Zur Startseite",
+    "parksCta": "Parks entdecken"
   }
 }

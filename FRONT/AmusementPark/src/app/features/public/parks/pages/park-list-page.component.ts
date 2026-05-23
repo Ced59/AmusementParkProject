@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -9,6 +9,7 @@ import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ParkListStateFacade } from '../state/park-list-state.facade';
 import { ParkListViewComponent } from '../ui/park-list-view.component';
+import { SeoService } from '@core/seo/seo.service';
 
 @Component({
   selector: 'app-park-list-page',
@@ -37,8 +38,10 @@ export class ParkListPageComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
+    private readonly router: Router,
     private readonly stateFacade: ParkListStateFacade,
-    private readonly translationService: TranslationService
+    private readonly translationService: TranslationService,
+    private readonly seoService: SeoService
   ) {
   }
 
@@ -49,12 +52,14 @@ export class ParkListPageComponent implements OnInit {
 
     this.currentLang.set(initialLanguage);
     this.stateFacade.setCurrentLanguage(initialLanguage);
+    this.seoService.applyParkListSeo(initialLanguage, this.router.url);
 
     if (this.route.parent) {
       this.route.parent.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
         const language: string = params.get('lang') ?? 'en';
         this.currentLang.set(language);
         this.stateFacade.setCurrentLanguage(language);
+        this.seoService.applyParkListSeo(language, this.router.url);
         this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
       });
     }
@@ -62,6 +67,7 @@ export class ParkListPageComponent implements OnInit {
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
       this.currentLang.set(language);
       this.stateFacade.setCurrentLanguage(language);
+      this.seoService.applyParkListSeo(language, this.router.url);
       this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
     });
 

@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
 import { ParkItemDetailStateFacade } from '../state/park-item-detail-state.facade';
 import { ParkItemDetailViewComponent } from '../ui/park-item-detail-view.component';
+import { SeoService } from '@core/seo/seo.service';
 
 @Component({
   selector: 'app-park-item-detail-page',
@@ -25,8 +26,18 @@ export class ParkItemDetailPageComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly translationService: TranslationService,
-    private readonly stateFacade: ParkItemDetailStateFacade
+    private readonly stateFacade: ParkItemDetailStateFacade,
+    private readonly seoService: SeoService
   ) {
+    effect((): void => {
+      const currentDetail = this.detail();
+
+      if (!currentDetail) {
+        return;
+      }
+
+      this.seoService.applyParkItemDetailSeo(currentDetail, this.currentLanguage(), this.router.url);
+    });
   }
 
   ngOnInit(): void {

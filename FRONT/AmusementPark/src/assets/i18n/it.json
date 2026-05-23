@@ -1682,5 +1682,11 @@
     },
     "lastUpdate": "Last updated: 23 May 2026.",
     "backHome": "Back home"
+  },
+  "notFound": {
+    "title": "Questa pagina ha preso la direzione sbagliata",
+    "description": "La pagina richiesta non esiste, è stata spostata o non è disponibile pubblicamente.",
+    "homeCta": "Torna alla home",
+    "parksCta": "Esplora i parchi"
   }
 }
