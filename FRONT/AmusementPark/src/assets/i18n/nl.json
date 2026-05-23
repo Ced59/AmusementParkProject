@@ -534,7 +534,9 @@
         },
         "advancedAccessConditionsTitle": "Andere voorwaarden",
         "advancedAccessConditionsHelp": "Voeg alleen regels toe die geen lengtevoorwaarden zijn.",
-        "advancedAccessConditionsEmpty": "Geen andere voorwaarde ingesteld."
+        "advancedAccessConditionsEmpty": "Geen andere voorwaarde ingesteld.",
+        "park": "Gekoppeld park",
+        "parkHelp": "Gebruik dit om het item handmatig naar het juiste park te verplaatsen als een import het verkeerd heeft gekoppeld."
       },
       "refactorHint": "De editor is nu opgesplitst in thematische tabbladen om de pagina lichter en overzichtelijker te maken.",
       "visibilityHelp": "Bepaalt of dit park zichtbaar is in de publieke applicatie.",

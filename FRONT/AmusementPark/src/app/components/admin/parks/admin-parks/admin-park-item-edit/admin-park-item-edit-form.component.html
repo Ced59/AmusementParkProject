@@ -45,6 +45,8 @@
               [form]="form"
               [categoryOptions]="categoryOptions"
               [filteredTypeOptions]="filteredTypeOptions"
+              [parkOptions]="parkOptions"
+              [parkOptionsLoading]="parkOptionsLoading"
               [zones]="zones"
               [generalMapCenter]="generalMapCenter"
               [generalMapZoom]="generalMapZoom"
@@ -53,6 +55,7 @@
               [isSaving]="isSaving"
               (generalMapPositionChange)="generalMapPositionChange.emit($event)"
               (resetGeneralLocationToPark)="resetGeneralLocationToPark.emit()"
+              (parkSelectionChange)="parkSelectionChange.emit($event)"
               (saveSection)="saveSection.emit()">
             </app-admin-park-item-general-tab>
           }

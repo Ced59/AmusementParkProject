@@ -534,7 +534,9 @@
         },
         "advancedAccessConditionsTitle": "Other conditions",
         "advancedAccessConditionsHelp": "Add only rules that are not height requirements: age, health, transfer, access pass or custom condition.",
-        "advancedAccessConditionsEmpty": "No other condition has been configured."
+        "advancedAccessConditionsEmpty": "No other condition has been configured.",
+        "park": "Linked park",
+        "parkHelp": "Use this to manually move the item to the correct park if an import attached it to the wrong one."
       },
       "refactorHint": "The editor is now split into thematic tabs to keep the page lighter and easier to navigate.",
       "visibilityHelp": "Controls whether this park is visible in the public application.",

@@ -534,7 +534,9 @@
         },
         "advancedAccessConditionsTitle": "Outras condições",
         "advancedAccessConditionsHelp": "Adicione apenas regras que não sejam requisitos de altura.",
-        "advancedAccessConditionsEmpty": "Nenhuma outra condição configurada."
+        "advancedAccessConditionsEmpty": "Nenhuma outra condição configurada.",
+        "park": "Parque associado",
+        "parkHelp": "Permite mover manualmente o elemento para o parque correto se uma importação o associou ao parque errado."
       },
       "refactorHint": "O editor está agora dividido em separadores temáticos para tornar a página mais leve e fácil de usar.",
       "visibilityHelp": "Controla se este parque fica visível na aplicação pública.",

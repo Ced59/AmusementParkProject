@@ -62,6 +62,8 @@ export class AdminParkItemEditFormComponent {
   @Input() isSaving: boolean = false;
   @Input() categoryOptions: AdminParkItemCategoryOption[] = [];
   @Input() filteredTypeOptions: AdminParkItemTypeOption[] = [];
+  @Input() parkOptions: EntitySelectOption[] = [];
+  @Input() parkOptionsLoading: boolean = false;
   @Input() zones: Array<{ id: string; label: string }> = [];
   @Input() manufacturerOptions: EntitySelectOption[] = [];
   @Input() manufacturersLoading: boolean = false;
@@ -99,6 +101,7 @@ export class AdminParkItemEditFormComponent {
   @Output() tabChanged: EventEmitter<number | string | undefined> = new EventEmitter<number | string | undefined>();
   @Output() generalMapPositionChange: EventEmitter<{ lat: number; lng: number }> = new EventEmitter<{ lat: number; lng: number }>();
   @Output() resetGeneralLocationToPark: EventEmitter<void> = new EventEmitter<void>();
+  @Output() parkSelectionChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() saveSection: EventEmitter<void> = new EventEmitter<void>();
   @Output() selectedAccessConditionPresetChange: EventEmitter<AttractionAccessConditionType> = new EventEmitter<AttractionAccessConditionType>();
   @Output() addAccessCondition: EventEmitter<AttractionAccessConditionType> = new EventEmitter<AttractionAccessConditionType>();

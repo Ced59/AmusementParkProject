@@ -534,7 +534,9 @@
         },
         "advancedAccessConditionsTitle": "Weitere Bedingungen",
         "advancedAccessConditionsHelp": "Füge nur Regeln hinzu, die keine Größenanforderungen sind.",
-        "advancedAccessConditionsEmpty": "Keine weitere Bedingung eingetragen."
+        "advancedAccessConditionsEmpty": "Keine weitere Bedingung eingetragen.",
+        "park": "Zugeordneter Park",
+        "parkHelp": "Damit kann das Element manuell in den richtigen Park verschoben werden, falls ein Import es falsch zugeordnet hat."
       },
       "refactorHint": "Der Editor ist jetzt in thematische Tabs aufgeteilt, damit die Seite leichter und übersichtlicher bleibt.",
       "visibilityHelp": "Steuert, ob dieser Park in der öffentlichen Anwendung sichtbar ist.",

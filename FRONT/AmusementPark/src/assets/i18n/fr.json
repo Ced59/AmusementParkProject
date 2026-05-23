@@ -534,7 +534,9 @@
         },
         "advancedAccessConditionsTitle": "Autres conditions",
         "advancedAccessConditionsHelp": "Ajoute seulement les règles qui ne relèvent pas du gabarit de taille : âge, santé, transfert, access pass ou condition personnalisée.",
-        "advancedAccessConditionsEmpty": "Aucune autre condition renseignée."
+        "advancedAccessConditionsEmpty": "Aucune autre condition renseignée.",
+        "park": "Parc de rattachement",
+        "parkHelp": "Permet de déplacer manuellement l’élément vers le bon parc si un import l’a rattaché au mauvais endroit."
       },
       "refactorHint": "L’éditeur est désormais découpé en onglets thématiques pour alléger la page et mieux s’y retrouver.",
       "visibilityHelp": "Contrôle si ce parc est visible dans l’application publique.",

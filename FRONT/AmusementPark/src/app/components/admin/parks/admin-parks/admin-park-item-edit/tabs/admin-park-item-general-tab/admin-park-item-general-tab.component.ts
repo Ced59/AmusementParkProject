@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapMarker } from '@app/models/map/map-marker';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
+import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';
@@ -28,6 +29,8 @@ export class AdminParkItemGeneralTabComponent {
   @Input({ required: true }) form!: FormGroup;
   @Input() categoryOptions: Option<ParkItemCategory>[] = [];
   @Input() filteredTypeOptions: Option<ParkItemType>[] = [];
+  @Input() parkOptions: EntitySelectOption[] = [];
+  @Input() parkOptionsLoading: boolean = false;
   @Input() zones: { id: string; label: string }[] = [];
   @Input() generalMapCenter: [number, number] = [48.8566, 2.3522];
   @Input() generalMapZoom: number = 18;
@@ -37,5 +40,14 @@ export class AdminParkItemGeneralTabComponent {
 
   @Output() generalMapPositionChange: EventEmitter<{ lat: number; lng: number }> = new EventEmitter<{ lat: number; lng: number }>();
   @Output() resetGeneralLocationToPark: EventEmitter<void> = new EventEmitter<void>();
+  @Output() parkSelectionChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() saveSection: EventEmitter<void> = new EventEmitter<void>();
+
+  onParkSelectionChanged(value: unknown): void {
+    if (typeof value !== 'string') {
+      return;
+    }
+
+    this.parkSelectionChange.emit(value);
+  }
 }

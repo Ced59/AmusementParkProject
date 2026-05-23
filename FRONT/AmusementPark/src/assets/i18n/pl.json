@@ -534,7 +534,9 @@
         },
         "advancedAccessConditionsTitle": "Inne warunki",
         "advancedAccessConditionsHelp": "Dodaj tylko zasady, które nie są wymaganiami wzrostu.",
-        "advancedAccessConditionsEmpty": "Brak innych skonfigurowanych warunków."
+        "advancedAccessConditionsEmpty": "Brak innych skonfigurowanych warunków.",
+        "park": "Powiązany park",
+        "parkHelp": "Pozwala ręcznie przenieść element do właściwego parku, jeśli import przypisał go błędnie."
       },
       "refactorHint": "Edytor został teraz podzielony na tematyczne zakładki, aby strona była lżejsza i bardziej czytelna.",
       "visibilityHelp": "Określa, czy ten park jest widoczny w publicznej aplikacji.",

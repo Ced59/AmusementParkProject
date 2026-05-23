@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
+import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
@@ -120,6 +121,14 @@ export class AdminParkItemEditComponent implements OnInit {
     return this.photosStateFacade;
   }
 
+  public get parkOptions(): Signal<EntitySelectOption[]> {
+    return this.editStateFacade.parkOptions;
+  }
+
+  public get parkOptionsLoading(): Signal<boolean> {
+    return this.editStateFacade.parkOptionsLoading;
+  }
+
   get isFormDirty(): boolean {
     return this.hasPendingChanges();
   }
@@ -144,6 +153,7 @@ export class AdminParkItemEditComponent implements OnInit {
     this.photosStateFacade.reset();
     this.manufacturersStateFacade.load();
     this.zonesStateFacade.load(this.parkId(), this.currentLang());
+    void this.editStateFacade.loadParkOptions();
     this.setupFormSync();
 
     void this.initializeEditorAsync();
@@ -192,6 +202,17 @@ export class AdminParkItemEditComponent implements OnInit {
 
   resetGeneralLocationToPark(): void {
     this.locationStateFacade.resetGeneralLocationToPark();
+    this.updatePendingChanges();
+  }
+
+  onParkSelectionChange(parkId: string): void {
+    if (!parkId || parkId === this.parkId()) {
+      return;
+    }
+
+    this.form.get('zoneId')?.setValue(null, { emitEvent: false });
+    this.zonesStateFacade.load(parkId, this.currentLang());
+    void this.locationStateFacade.loadParkLocationDefaultAsync(parkId, false);
     this.updatePendingChanges();
   }
 
@@ -404,10 +425,20 @@ export class AdminParkItemEditComponent implements OnInit {
   }
 
   private afterSuccessfulSave(savedItem: ParkItem, mode: SaveMode, scope: SaveScope, wasEditMode: boolean): void {
+    const savedParkId: string = savedItem.parkId?.trim() || this.form.get('parkId')?.value || this.parkId();
+    const previousRouteParkId: string = this.parkId();
+    const hasParkChanged: boolean = !!savedParkId && savedParkId !== previousRouteParkId;
+
+    if (hasParkChanged) {
+      this.parkId.set(savedParkId);
+      this.zonesStateFacade.load(savedParkId, this.currentLang());
+      void this.locationStateFacade.loadParkLocationDefaultAsync(savedParkId, false);
+    }
+
     this.captureCurrentSnapshot();
     this.showSaveSuccessMessage(scope, wasEditMode);
 
-    if (!this.itemId() && savedItem.id) {
+    if ((!this.itemId() || hasParkChanged) && savedItem.id) {
       this.itemId.set(savedItem.id);
 
       if (mode === 'back') {
@@ -416,7 +447,7 @@ export class AdminParkItemEditComponent implements OnInit {
       }
 
       this.router.navigate(
-        ['/', this.currentLang(), 'admin', 'parks', 'edit', this.parkId(), 'items', savedItem.id],
+        ['/', this.currentLang(), 'admin', 'parks', 'edit', savedParkId, 'items', savedItem.id],
         {
           replaceUrl: true,
           queryParams: { tab: this.activeTabIndex() }
