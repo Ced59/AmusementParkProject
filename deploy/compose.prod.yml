@@ -50,6 +50,18 @@ services:
       Security__ContentSecurityPolicy__Enabled: ${CSP_ENABLED:-true}
       Security__ContentSecurityPolicy__ReportOnly: ${CSP_REPORT_ONLY:-true}
       Security__ContentSecurityPolicy__ReportUri: ${CSP_REPORT_URI:-/security/csp-report}
+      RateLimiting__Authentication__Login__PermitLimit: ${AUTH_RATE_LIMIT_LOGIN_LIMIT:-5}
+      RateLimiting__Authentication__Login__WindowSeconds: ${AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS:-60}
+      RateLimiting__Authentication__ExternalLogin__PermitLimit: ${AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT:-10}
+      RateLimiting__Authentication__ExternalLogin__WindowSeconds: ${AUTH_RATE_LIMIT_EXTERNAL_LOGIN_WINDOW_SECONDS:-60}
+      RateLimiting__Authentication__RefreshToken__PermitLimit: ${AUTH_RATE_LIMIT_REFRESH_TOKEN_LIMIT:-30}
+      RateLimiting__Authentication__RefreshToken__WindowSeconds: ${AUTH_RATE_LIMIT_REFRESH_TOKEN_WINDOW_SECONDS:-60}
+      RateLimiting__Authentication__Registration__PermitLimit: ${AUTH_RATE_LIMIT_REGISTRATION_LIMIT:-5}
+      RateLimiting__Authentication__Registration__WindowSeconds: ${AUTH_RATE_LIMIT_REGISTRATION_WINDOW_SECONDS:-900}
+      RateLimiting__Authentication__EmailChallenge__PermitLimit: ${AUTH_RATE_LIMIT_EMAIL_CHALLENGE_LIMIT:-3}
+      RateLimiting__Authentication__EmailChallenge__WindowSeconds: ${AUTH_RATE_LIMIT_EMAIL_CHALLENGE_WINDOW_SECONDS:-900}
+      RateLimiting__Authentication__PasswordReset__PermitLimit: ${AUTH_RATE_LIMIT_PASSWORD_RESET_LIMIT:-5}
+      RateLimiting__Authentication__PasswordReset__WindowSeconds: ${AUTH_RATE_LIMIT_PASSWORD_RESET_WINDOW_SECONDS:-900}
       MongoDB__Url: mongodb://${MONGO_APP_USERNAME:?MONGO_APP_USERNAME is required}:${MONGO_APP_PASSWORD:?MONGO_APP_PASSWORD is required}@mongodb:27017/${MONGO_DATABASE_NAME:-AmusementPark}?authSource=${MONGO_DATABASE_NAME:-AmusementPark}
       MongoDB__DatabaseName: ${MONGO_DATABASE_NAME:-AmusementPark}
       Images__MinIo__Endpoint: minio:9000

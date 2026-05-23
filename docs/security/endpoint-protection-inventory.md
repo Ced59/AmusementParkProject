@@ -70,6 +70,19 @@ Ces endpoints restent publics car ils sont nécessaires à la navigation non con
 
 M18.4 ajoute un endpoint public technique `POST /security/csp-report` pour recevoir les rapports navigateur CSP en mode Report-Only. Il est volontairement anonyme afin que le navigateur puisse signaler les violations avant authentification, mais il ne permet aucune mutation métier et limite le corps de requête à 16 Ko.
 
+## Mise à jour M18.6
+
+Les endpoints publics d'authentification et de cycle de vie compte restent anonymes par nécessité, mais ils portent maintenant des policies explicites `EnableRateLimiting` :
+
+- `POST /auth/login` : `auth-login` ;
+- `POST /auth/external/{provider}` : `auth-external-login` ;
+- `POST /auth/refresh-token` : `auth-refresh` ;
+- `POST /users` : `auth-registration` ;
+- `POST /users/confirm-email`, `POST /users/resend-confirmation`, `POST /users/forgot-password` : `auth-email-challenge` ;
+- `POST /users/reset-password` : `auth-password-reset`.
+
+Le dépassement renvoie `429 Too Many Requests` avec `traceId`.
+
 ## Endpoints admin protégés
 
 | Zone | Routes protégées | Protection |
@@ -115,7 +128,7 @@ Les mutations publiques suivantes sont justifiées et ne sont pas des mutations 
 - cycle de vie compte : inscription, confirmation, renvoi de confirmation ;
 - reset mot de passe : forgot-password, reset-password.
 
-Ces endpoints devront être renforcés ensuite par M18.6 avec un rate limiting ciblé auth, car le rate limit global ne suffit pas pour limiter proprement brute force et spam de reset.
+M18.6 renforce désormais ces endpoints avec des policies de rate limiting ciblées par IP : login, OAuth externe, refresh-token, inscription, confirmation/renvoi email, forgot-password et reset-password. Le rate limit global reste actif, mais ne constitue plus la seule protection contre brute force et spam de reset.
 
 ## Validation M18.1
 

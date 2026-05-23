@@ -12,11 +12,13 @@ using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Contracts.Users;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Security;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -55,6 +57,7 @@ public sealed class AuthController : ControllerBase
 
     [HttpPost("login")]
     [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthLogin)]
     [ProducesResponseType(typeof(UserLoggedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> LoginAsync([FromBody] UserLoginDto userLoginDto, CancellationToken cancellationToken = default)
     {
@@ -78,6 +81,7 @@ public sealed class AuthController : ControllerBase
 
     [HttpPost("refresh-token")]
     [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthRefresh)]
     [ProducesResponseType(typeof(RefreshTokenResponseDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> RefreshTokenAsync([FromBody] RefreshTokenRequestDto? token, CancellationToken cancellationToken = default)
     {
@@ -138,6 +142,7 @@ public sealed class AuthController : ControllerBase
 
     [HttpPost("external/{provider}")]
     [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthExternalLogin)]
     [ProducesResponseType(typeof(UserLoggedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ExternalLoginAsync([FromRoute] string provider, [FromBody] ExternalLoginRequestDto request, CancellationToken cancellationToken = default)
     {

@@ -60,8 +60,10 @@ public static class WebApplicationPipelineExtensions
             });
         });
 
+        app.UseRouting();
         app.UseApiCors();
         app.UseApiRateLimiting();
+        app.UseApiAuthenticationRateLimiting();
         app.UseAuthentication();
         app.UseAuthorization();
         return app;

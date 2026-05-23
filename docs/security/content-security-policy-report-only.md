@@ -155,7 +155,11 @@ Ensuite, ouvrir les pages clés dans le navigateur et surveiller les logs API :
 - Matomo ne génère pas de violation bloquante inattendue après consentement.
 - Les violations éventuelles apparaissent dans les logs via `SecurityReportsController`.
 
-## Passage M18.5
+## Passage M18.5 — à reprendre impérativement après déploiement réel
+
+M18.5 ne doit pas être oublié. Il est simplement différé tant que le site n'est pas testé sur le vrai chemin de production : domaine HTTPS, Nginx Proxy Manager, container front Nginx, API derrière `/api`, Google OAuth, Matomo, Leaflet/OpenStreetMap et images API.
+
+À la première mise en ligne staging/prod, garder `CSP_REPORT_ONLY=true`, parcourir les pages clés, analyser les rapports CSP, puis planifier le passage en mode enforce.
 
 Avant d'activer le mode enforce :
 

@@ -14,10 +14,12 @@ using AmusementPark.WebAPI.Contracts.Users;
 using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
+using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -77,6 +79,7 @@ public sealed class UsersController : ControllerBase
 
     [HttpPost]
     [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthRegistration)]
     [ProducesResponseType(typeof(UserCreatedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateUserAsync([FromBody] UserCreateDto user, CancellationToken cancellationToken = default)
     {
@@ -206,6 +209,7 @@ public sealed class UsersController : ControllerBase
 
     [HttpPost("confirm-email")]
     [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthEmailChallenge)]
     [ProducesResponseType(typeof(EmailConfirmedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ConfirmEmailAsync([FromBody] ConfirmEmailRequestDto confirmEmailRequestDto, CancellationToken cancellationToken = default)
     {
@@ -226,6 +230,7 @@ public sealed class UsersController : ControllerBase
 
     [HttpPost("resend-confirmation")]
     [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthEmailChallenge)]
     [ProducesResponseType(typeof(ConfirmationEmailResentDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ResendConfirmationAsync([FromBody] ResendConfirmationEmailDto resendConfirmationEmailDto, CancellationToken cancellationToken = default)
     {
@@ -246,6 +251,7 @@ public sealed class UsersController : ControllerBase
 
     [HttpPost("forgot-password")]
     [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthEmailChallenge)]
     [ProducesResponseType(typeof(EmailPasswordSendedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ForgotPasswordAsync([FromBody] ForgotPasswordDto forgotPasswordDto, CancellationToken cancellationToken = default)
     {
@@ -266,6 +272,7 @@ public sealed class UsersController : ControllerBase
 
     [HttpPost("reset-password")]
     [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthPasswordReset)]
     [ProducesResponseType(typeof(PasswordResetedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ResetPasswordAsync([FromBody] ResetPasswordDto resetPasswordDto, CancellationToken cancellationToken = default)
     {

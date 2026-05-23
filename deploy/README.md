@@ -90,6 +90,29 @@ La réponse doit contenir `Content-Security-Policy-Report-Only`.
 
 Avant M18.5, conserver `CSP_REPORT_ONLY=true` et analyser les logs `SecurityReportsController`.
 
+M18.5 reste à reprendre impérativement après le premier déploiement réel/staging : il faudra vérifier les rapports CSP sur le vrai domaine HTTPS, puis seulement basculer en mode enforce.
+
+## Rate limiting auth M18.6
+
+Le quota global IP reste actif, mais les endpoints d'authentification publics ont désormais des limites dédiées :
+
+```bash
+AUTH_RATE_LIMIT_LOGIN_LIMIT=5
+AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS=60
+AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT=10
+AUTH_RATE_LIMIT_EXTERNAL_LOGIN_WINDOW_SECONDS=60
+AUTH_RATE_LIMIT_REFRESH_TOKEN_LIMIT=30
+AUTH_RATE_LIMIT_REFRESH_TOKEN_WINDOW_SECONDS=60
+AUTH_RATE_LIMIT_REGISTRATION_LIMIT=5
+AUTH_RATE_LIMIT_REGISTRATION_WINDOW_SECONDS=900
+AUTH_RATE_LIMIT_EMAIL_CHALLENGE_LIMIT=3
+AUTH_RATE_LIMIT_EMAIL_CHALLENGE_WINDOW_SECONDS=900
+AUTH_RATE_LIMIT_PASSWORD_RESET_LIMIT=5
+AUTH_RATE_LIMIT_PASSWORD_RESET_WINDOW_SECONDS=900
+```
+
+Ces limites ciblent login, OAuth externe, refresh-token, inscription, confirmation/renvoi email, forgot-password et reset-password. Elles s'appliquent par IP après traitement sécurisé des `ForwardedHeaders`.
+
 ## Secrets GitHub Actions nécessaires
 
 ### Accès VPS
@@ -143,6 +166,18 @@ Avant M18.5, conserver `CSP_REPORT_ONLY=true` et analyser les logs `SecurityRepo
 - `CSP_ENABLED`, défaut `true`
 - `CSP_REPORT_ONLY`, défaut `true` pendant M18.4
 - `CSP_REPORT_URI`, défaut `/security/csp-report`
+- `AUTH_RATE_LIMIT_LOGIN_LIMIT`, défaut `5`
+- `AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS`, défaut `60`
+- `AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT`, défaut `10`
+- `AUTH_RATE_LIMIT_EXTERNAL_LOGIN_WINDOW_SECONDS`, défaut `60`
+- `AUTH_RATE_LIMIT_REFRESH_TOKEN_LIMIT`, défaut `30`
+- `AUTH_RATE_LIMIT_REFRESH_TOKEN_WINDOW_SECONDS`, défaut `60`
+- `AUTH_RATE_LIMIT_REGISTRATION_LIMIT`, défaut `5`
+- `AUTH_RATE_LIMIT_REGISTRATION_WINDOW_SECONDS`, défaut `900`
+- `AUTH_RATE_LIMIT_EMAIL_CHALLENGE_LIMIT`, défaut `3`
+- `AUTH_RATE_LIMIT_EMAIL_CHALLENGE_WINDOW_SECONDS`, défaut `900`
+- `AUTH_RATE_LIMIT_PASSWORD_RESET_LIMIT`, défaut `5`
+- `AUTH_RATE_LIMIT_PASSWORD_RESET_WINDOW_SECONDS`, défaut `900`
 
 ## Déclenchement
 
