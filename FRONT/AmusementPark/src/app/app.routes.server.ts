@@ -48,6 +48,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin/founders/edit/:id', renderMode: RenderMode.Server },
   { path: ':lang/admin/manufacturers', renderMode: RenderMode.Server },
   { path: ':lang/admin/data', renderMode: RenderMode.Server },
+  { path: ':lang/admin/audit-logs', renderMode: RenderMode.Server },
   { path: ':lang/admin/images', renderMode: RenderMode.Server },
   { path: ':lang/admin/site', renderMode: RenderMode.Server },
 

@@ -32,7 +32,8 @@ public static class ApplicationModuleServiceCollectionExtensions
                    namespaceName.Contains(".Features.Images.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Users.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Search.", StringComparison.Ordinal) ||
-                   namespaceName.Contains(".Features.DataSources.", StringComparison.Ordinal);
+                   namespaceName.Contains(".Features.DataSources.", StringComparison.Ordinal) ||
+                   namespaceName.Contains(".Features.AdminAudit.", StringComparison.Ordinal);
         });
 
         return services;

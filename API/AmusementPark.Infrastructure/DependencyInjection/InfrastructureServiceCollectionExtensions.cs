@@ -95,6 +95,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IAdminAuditLogWriter, AdminAuditLogWriter>();
+        services.AddScoped<IAdminAuditLogReader, AdminAuditLogReader>();
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
         services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();
         services.AddSingleton<IDataSourceImportJobQueue, InMemoryDataSourceImportJobQueue>();

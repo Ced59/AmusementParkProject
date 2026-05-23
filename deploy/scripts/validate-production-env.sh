@@ -1,0 +1,155 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+env_file="${1:-.env}"
+
+if [ ! -f "${env_file}" ]; then
+  echo "Missing production environment file: ${env_file}" >&2
+  exit 1
+fi
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck disable=SC1091
+source "${script_dir}/env-loader.sh"
+load_env_file "${env_file}"
+
+errors=0
+warnings=0
+
+require_value() {
+  local name="$1"
+  local value="${!name:-}"
+
+  if [ -z "${value// }" ]; then
+    echo "ERROR: ${name} is required." >&2
+    errors=$((errors + 1))
+  fi
+}
+
+reject_placeholder() {
+  local name="$1"
+  local value="${!name:-}"
+  local upper_value
+
+  upper_value="$(printf '%s' "${value}" | tr '[:lower:]' '[:upper:]')"
+
+  case "${upper_value}" in
+    *VIA-USER-SECRETS*|*CHANGE_ME*|*CHANGEME*|*TODO*|SECRET|PASSWORD|MINIOADMIN)
+      echo "ERROR: ${name} still uses a placeholder/default value." >&2
+      errors=$((errors + 1))
+      ;;
+  esac
+}
+
+require_https_public_url() {
+  local name="$1"
+  local value="${!name:-}"
+
+  if [ -z "${value// }" ]; then
+    echo "ERROR: ${name} is required." >&2
+    errors=$((errors + 1))
+    return
+  fi
+
+  if [[ ! "${value}" =~ ^https://[^/]+/?$ ]]; then
+    echo "ERROR: ${name} must be a root https origin, for example https://amusement-parks.fun." >&2
+    errors=$((errors + 1))
+  fi
+
+  if [[ "${value}" =~ localhost|127\.0\.0\.1|::1 ]]; then
+    echo "ERROR: ${name} must not point to localhost in production." >&2
+    errors=$((errors + 1))
+  fi
+}
+
+reject_wildcard() {
+  local name="$1"
+  local value="${!name:-}"
+
+  if [[ "${value}" == *"*"* ]]; then
+    echo "ERROR: ${name} must not contain a wildcard in production." >&2
+    errors=$((errors + 1))
+  fi
+}
+
+warn_missing() {
+  local name="$1"
+  local value="${!name:-}"
+
+  if [ -z "${value// }" ]; then
+    echo "WARNING: ${name} is empty. This is allowed only if the corresponding feature is intentionally disabled." >&2
+    warnings=$((warnings + 1))
+  fi
+}
+
+required_names=(
+  API_IMAGE
+  FRONT_IMAGE
+  PUBLIC_BASE_URL
+  PUBLIC_DOMAIN
+  ALLOWED_HOSTS
+  FORWARDED_HEADERS_ALLOWED_HOSTS
+  FORWARDED_HEADERS_KNOWN_NETWORKS
+  MONGO_INITDB_ROOT_USERNAME
+  MONGO_INITDB_ROOT_PASSWORD
+  MONGO_APP_USERNAME
+  MONGO_APP_PASSWORD
+  MINIO_ROOT_USER
+  MINIO_ROOT_PASSWORD
+  JWT_KEY
+  JWT_ISSUER
+  JWT_AUDIENCE
+  GOOGLE_CLIENT_ID
+  GOOGLE_CLIENT_SECRET
+  GOOGLE_REDIRECT_URI
+)
+
+for required_name in "${required_names[@]}"; do
+  require_value "${required_name}"
+  reject_placeholder "${required_name}"
+done
+
+require_https_public_url PUBLIC_BASE_URL
+
+if [ -n "${PUBLIC_WWW_BASE_URL:-}" ]; then
+  require_https_public_url PUBLIC_WWW_BASE_URL
+fi
+
+reject_wildcard ALLOWED_HOSTS
+reject_wildcard FORWARDED_HEADERS_ALLOWED_HOSTS
+
+if [[ "${ALLOWED_HOSTS:-}" == *"localhost"* ]] || [[ "${ALLOWED_HOSTS:-}" == *"127.0.0.1"* ]]; then
+  echo "NOTICE: ALLOWED_HOSTS contains localhost/127.0.0.1 for internal healthchecks. Keep API ports private." >&2
+fi
+
+
+jwt_value="${JWT_KEY:-}"
+jwt_length="${#jwt_value}"
+if [ "${jwt_length}" -lt 32 ]; then
+  echo "ERROR: JWT_KEY must contain at least 32 characters." >&2
+  errors=$((errors + 1))
+fi
+
+case "${EMAIL_MODE:-Console}" in
+  Console)
+    echo "WARNING: EMAIL_MODE=Console. This is acceptable for a discreet MVP smoke test, but SMTP should be configured before real users." >&2
+    warnings=$((warnings + 1))
+    ;;
+  Smtp)
+    for smtp_name in EMAIL_HOST EMAIL_USERNAME EMAIL_PASSWORD EMAIL_FROM_ADDRESS; do
+      require_value "${smtp_name}"
+      reject_placeholder "${smtp_name}"
+    done
+    ;;
+  *)
+    echo "ERROR: EMAIL_MODE must be Console or Smtp." >&2
+    errors=$((errors + 1))
+    ;;
+esac
+
+if [ "${errors}" -gt 0 ]; then
+  echo "Production environment validation failed with ${errors} error(s) and ${warnings} warning(s)." >&2
+  exit 1
+fi
+
+echo "Production environment validation completed with ${warnings} warning(s)."

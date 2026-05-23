@@ -8,10 +8,11 @@ if [ ! -f .env ]; then
   exit 1
 fi
 
-set -a
 # shellcheck disable=SC1091
-source .env
-set +a
+source ./scripts/env-loader.sh
+load_env_file .env
+
+./scripts/validate-production-env.sh .env
 
 docker compose -f compose.prod.yml pull
 docker compose -f compose.prod.yml up -d --remove-orphans

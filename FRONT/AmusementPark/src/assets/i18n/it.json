@@ -826,7 +826,8 @@
         "manufacturers": "Gestire costruttori e produttori di attrazioni.",
         "images": "Controllare media, loghi e immagini del sito.",
         "data": "Monitorare importazioni, fonti e processi dati.",
-        "founders": "Gestire fondatori e biografie collegati ai parchi."
+        "founders": "Gestire fondatori e biografie collegati ai parchi.",
+        "auditLogs": "Consultare le azioni amministrative sensibili registrate."
       }
     },
     "references": {
@@ -864,6 +865,37 @@
         "untitled": "Reference image",
         "uploadTitle": "Add an image to this profile"
       }
+    },
+    "auditLogs": {
+      "title": "Registro audit",
+      "subtitle": "Vista in sola lettura delle azioni amministrative sensibili.",
+      "total": "{{count}} voci",
+      "loading": "Caricamento registro audit...",
+      "loadError": "Impossibile caricare il registro audit.",
+      "empty": "Nessuna voce corrisponde ai filtri.",
+      "filters": {
+        "fromUtc": "Da",
+        "toUtc": "A",
+        "actorEmail": "Email attore",
+        "action": "Azione",
+        "entityType": "Tipo entità",
+        "entityId": "ID entità",
+        "traceId": "Trace ID",
+        "actorUserId": "ID attore"
+      },
+      "columns": {
+        "date": "Data",
+        "actor": "Attore",
+        "action": "Azione",
+        "entity": "Entità",
+        "request": "Richiesta",
+        "status": "Stato",
+        "traceId": "Trace ID",
+        "metadata": "Metadati"
+      },
+      "metadata": {
+        "show": "Mostra"
+      }
     }
   },
   "validation": {
@@ -877,7 +909,9 @@
     "edit": "Modifica",
     "apply": "Apply",
     "clear": "Clear",
-    "delete": "Delete"
+    "delete": "Delete",
+    "search": "Cerca",
+    "reset": "Reimposta"
   },
   "parkDetail": {
     "descriptionTitle": "Descrizione",

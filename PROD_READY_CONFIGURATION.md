@@ -102,3 +102,47 @@ Les seuils prod par défaut sont configurables par environnement. Ils sont volon
 ## Fichier d'exemple
 
 Le fichier `deploy/.env.production.example` est fourni comme base de configuration pour le déploiement Docker/VPS.
+
+## M18.9 — Scans de dépendances CI
+
+La CI ajoute un job `dependency-security` qui exécute :
+
+```bash
+dotnet list AmusementPark.sln package --vulnerable --include-transitive
+npm audit --audit-level=moderate
+npm audit signatures
+```
+
+Les rapports sont archivés dans `dependency-security-reports`. Le premier passage est non bloquant pour les vulnérabilités détectées, mais visible par warnings GitHub Actions.
+
+## M18.10 — CORS et secrets prod
+
+CORS est maintenant strictement configuré :
+
+- origins explicites uniquement ;
+- wildcard interdit avec credentials ;
+- localhost interdit hors `Development` ;
+- origins racine uniquement, sans chemin ni query string ;
+- méthodes et headers autorisés listés explicitement.
+
+Variables recommandées :
+
+```bash
+PUBLIC_BASE_URL=https://amusement-parks.fun
+PUBLIC_WWW_BASE_URL=https://www.amusement-parks.fun
+```
+
+Le déploiement valide le `.env` avec :
+
+```bash
+deploy/scripts/validate-production-env.sh
+```
+
+La validation refuse les placeholders, les secrets manquants, `ALLOWED_HOSTS=*`, `FORWARDED_HEADERS_ALLOWED_HOSTS=*`, une `JWT_KEY` de moins de 32 caractères, les URL publiques non HTTPS, et les secrets Google OAuth absents.
+
+Le fichier `deploy/.env.production.example` est restauré et sert de base documentaire, mais ne doit jamais être utilisé tel quel en production.
+
+
+## Note `.env` robuste
+
+Les scripts de déploiement ne font plus de `source .env` direct. Ils passent par `deploy/scripts/env-loader.sh`, afin que des valeurs contenant des `;`, des espaces ou certains caractères de secrets ne soient pas interprétées comme du code Bash.

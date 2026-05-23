@@ -826,7 +826,8 @@
         "manufacturers": "Hersteller und Anlagenbauer pflegen.",
         "images": "Medien, Logos und Website-Bilder prüfen.",
         "data": "Importe, Quellen und Datenverarbeitung überwachen.",
-        "founders": "Gründer und Biografien verwalten, die mit Parks verknüpft sind."
+        "founders": "Gründer und Biografien verwalten, die mit Parks verknüpft sind.",
+        "auditLogs": "Protokollierte sensible Verwaltungsaktionen prüfen."
       }
     },
     "references": {
@@ -864,6 +865,37 @@
         "untitled": "Reference image",
         "uploadTitle": "Add an image to this profile"
       }
+    },
+    "auditLogs": {
+      "title": "Auditprotokoll",
+      "subtitle": "Schreibgeschützte Ansicht sensibler Verwaltungsaktionen.",
+      "total": "{{count}} Einträge",
+      "loading": "Auditprotokoll wird geladen...",
+      "loadError": "Auditprotokoll konnte nicht geladen werden.",
+      "empty": "Keine Auditspur entspricht den Filtern.",
+      "filters": {
+        "fromUtc": "Von",
+        "toUtc": "Bis",
+        "actorEmail": "Akteur-E-Mail",
+        "action": "Aktion",
+        "entityType": "Entitätstyp",
+        "entityId": "Entitäts-ID",
+        "traceId": "Trace ID",
+        "actorUserId": "Akteur-ID"
+      },
+      "columns": {
+        "date": "Datum",
+        "actor": "Akteur",
+        "action": "Aktion",
+        "entity": "Entität",
+        "request": "Anfrage",
+        "status": "Status",
+        "traceId": "Trace ID",
+        "metadata": "Metadaten"
+      },
+      "metadata": {
+        "show": "Anzeigen"
+      }
     }
   },
   "validation": {
@@ -877,7 +909,9 @@
     "edit": "Bearbeiten",
     "apply": "Apply",
     "clear": "Clear",
-    "delete": "Delete"
+    "delete": "Delete",
+    "search": "Suchen",
+    "reset": "Zurücksetzen"
   },
   "parkDetail": {
     "descriptionTitle": "Beschreibung",

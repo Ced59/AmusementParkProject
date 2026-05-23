@@ -826,7 +826,8 @@
         "manufacturers": "Utrzymywanie producentów i konstruktorów atrakcji.",
         "images": "Kontrola mediów, logo i grafik strony.",
         "data": "Monitorowanie importów, źródeł i przetwarzania danych.",
-        "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami."
+        "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami.",
+        "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne."
       }
     },
     "references": {
@@ -864,6 +865,37 @@
         "untitled": "Reference image",
         "uploadTitle": "Add an image to this profile"
       }
+    },
+    "auditLogs": {
+      "title": "Dziennik audytu",
+      "subtitle": "Widok tylko do odczytu wrażliwych akcji administracyjnych.",
+      "total": "{{count}} wpisów",
+      "loading": "Ładowanie dziennika audytu...",
+      "loadError": "Nie można wczytać dziennika audytu.",
+      "empty": "Brak wpisów pasujących do filtrów.",
+      "filters": {
+        "fromUtc": "Od",
+        "toUtc": "Do",
+        "actorEmail": "Email aktora",
+        "action": "Akcja",
+        "entityType": "Typ encji",
+        "entityId": "ID encji",
+        "traceId": "Trace ID",
+        "actorUserId": "ID aktora"
+      },
+      "columns": {
+        "date": "Data",
+        "actor": "Aktor",
+        "action": "Akcja",
+        "entity": "Encja",
+        "request": "Żądanie",
+        "status": "Status",
+        "traceId": "Trace ID",
+        "metadata": "Metadane"
+      },
+      "metadata": {
+        "show": "Pokaż"
+      }
     }
   },
   "validation": {
@@ -877,7 +909,9 @@
     "edit": "Edytuj",
     "apply": "Apply",
     "clear": "Clear",
-    "delete": "Delete"
+    "delete": "Delete",
+    "search": "Szukaj",
+    "reset": "Resetuj"
   },
   "parkDetail": {
     "descriptionTitle": "Opis",

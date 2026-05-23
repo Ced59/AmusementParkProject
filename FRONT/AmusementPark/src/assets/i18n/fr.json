@@ -826,7 +826,8 @@
         "manufacturers": "Maintenir les constructeurs et fabricants d’attractions.",
         "images": "Contrôler les médias, logos et visuels du site.",
         "data": "Suivre les imports, sources et traitements de données.",
-        "founders": "Maintenir les fondateurs et biographies rattachés aux parcs."
+        "founders": "Maintenir les fondateurs et biographies rattachés aux parcs.",
+        "auditLogs": "Consulter les actions sensibles journalisées."
       }
     },
     "references": {
@@ -864,6 +865,37 @@
         "untitled": "Image de référence",
         "uploadTitle": "Ajouter une image à la fiche"
       }
+    },
+    "auditLogs": {
+      "title": "Journal d’audit",
+      "subtitle": "Consultation lecture seule des actions d’administration sensibles.",
+      "total": "{{count}} traces",
+      "loading": "Chargement du journal d’audit...",
+      "loadError": "Impossible de charger le journal d’audit.",
+      "empty": "Aucune trace d’audit ne correspond aux filtres.",
+      "filters": {
+        "fromUtc": "Depuis",
+        "toUtc": "Jusqu’à",
+        "actorEmail": "Email acteur",
+        "action": "Action",
+        "entityType": "Type entité",
+        "entityId": "ID entité",
+        "traceId": "Trace ID",
+        "actorUserId": "ID acteur"
+      },
+      "columns": {
+        "date": "Date",
+        "actor": "Acteur",
+        "action": "Action",
+        "entity": "Entité",
+        "request": "Requête",
+        "status": "Statut",
+        "traceId": "Trace ID",
+        "metadata": "Métadonnées"
+      },
+      "metadata": {
+        "show": "Voir"
+      }
     }
   },
   "validation": {
@@ -877,7 +909,9 @@
     "edit": "Modifier",
     "apply": "Appliquer",
     "clear": "Effacer",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "search": "Rechercher",
+    "reset": "Réinitialiser"
   },
   "parkDetail": {
     "descriptionTitle": "Description",

@@ -9,7 +9,7 @@ builder.Services.AddApplicationModules();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddMongoInitialization();
 builder.Services.AddApiAuthentication(builder.Configuration);
-builder.Services.AddApiCors(builder.Configuration);
+builder.Services.AddApiCors(builder.Configuration, builder.Environment);
 builder.Services.AddApiRateLimiting(builder.Configuration);
 builder.Services.AddApiForwardedHeaders(builder.Configuration);
 builder.Services.AddApiContentSecurityPolicy(builder.Configuration);

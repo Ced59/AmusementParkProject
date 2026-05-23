@@ -1,0 +1,153 @@
+<p-card styleClass="admin-list-card admin-audit-logs-card">
+  <ng-template pTemplate="header">
+    <div class="admin-list-header admin-audit-logs-header">
+      <div>
+        <span class="admin-kicker">M18.8 · Security</span>
+        <h2>{{ 'admin.auditLogs.title' | translate }}</h2>
+        <p>{{ 'admin.auditLogs.subtitle' | translate }}</p>
+      </div>
+
+      @if (canShowHeaderTotal()) {
+        <span class="admin-total-pill">
+          {{ 'admin.auditLogs.total' | translate:{ count: totalRecords() } }}
+        </span>
+      }
+    </div>
+  </ng-template>
+
+  <form class="admin-audit-logs-filters" [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
+    <label>
+      <span>{{ 'admin.auditLogs.filters.fromUtc' | translate }}</span>
+      <input pInputText type="datetime-local" formControlName="fromUtc" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.auditLogs.filters.toUtc' | translate }}</span>
+      <input pInputText type="datetime-local" formControlName="toUtc" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.auditLogs.filters.actorEmail' | translate }}</span>
+      <input pInputText type="text" formControlName="actorEmail" autocomplete="off" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.auditLogs.filters.actorUserId' | translate }}</span>
+      <input pInputText type="text" formControlName="actorUserId" autocomplete="off" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.auditLogs.filters.action' | translate }}</span>
+      <input pInputText type="text" formControlName="action" autocomplete="off" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.auditLogs.filters.entityType' | translate }}</span>
+      <input pInputText type="text" formControlName="entityType" autocomplete="off" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.auditLogs.filters.entityId' | translate }}</span>
+      <input pInputText type="text" formControlName="entityId" autocomplete="off" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.auditLogs.filters.traceId' | translate }}</span>
+      <input pInputText type="text" formControlName="traceId" autocomplete="off" />
+    </label>
+
+    <div class="admin-audit-logs-filters__actions">
+      <button pButton type="submit" icon="pi pi-search" [label]="'actions.search' | translate"></button>
+      <button pButton type="button" class="p-button-secondary" icon="pi pi-filter-slash" [label]="'actions.reset' | translate" (click)="resetFilters()"></button>
+    </div>
+  </form>
+
+  <app-page-state
+    [state]="state()"
+    loadingMessageKey="admin.auditLogs.loading"
+    errorMessageKey="admin.auditLogs.loadError"
+    emptyMessageKey="admin.auditLogs.empty">
+    <p-table
+      [value]="logs()"
+      [loading]="loading()"
+      [paginator]="true"
+      [rows]="pageSize()"
+      [totalRecords]="totalRecords()"
+      [lazy]="true"
+      (onLazyLoad)="onPageChanged($event)"
+      [responsiveLayout]="'scroll'"
+      styleClass="admin-data-table admin-audit-logs-table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>{{ 'admin.auditLogs.columns.date' | translate }}</th>
+          <th>{{ 'admin.auditLogs.columns.actor' | translate }}</th>
+          <th>{{ 'admin.auditLogs.columns.action' | translate }}</th>
+          <th>{{ 'admin.auditLogs.columns.entity' | translate }}</th>
+          <th>{{ 'admin.auditLogs.columns.request' | translate }}</th>
+          <th>{{ 'admin.auditLogs.columns.status' | translate }}</th>
+          <th>{{ 'admin.auditLogs.columns.traceId' | translate }}</th>
+          <th>{{ 'admin.auditLogs.columns.metadata' | translate }}</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-log>
+        <tr>
+          <td class="admin-audit-logs-table__date">
+            <strong>{{ log.occurredAtUtc | date:'yyyy-MM-dd HH:mm:ss':'UTC' }}</strong>
+            <span>UTC</span>
+          </td>
+          <td>
+            <strong class="admin-row-title">{{ log.actorEmail || '—' }}</strong>
+            <div class="admin-audit-logs-table__muted">{{ log.actorUserId || '—' }}</div>
+            <div class="admin-audit-logs-table__roles">
+              @for (role of log.actorRoles; track role) {
+                <p-tag [value]="role" severity="info"></p-tag>
+              }
+            </div>
+          </td>
+          <td><code>{{ log.action }}</code></td>
+          <td>
+            <strong>{{ log.entityType }}</strong>
+            <div class="admin-audit-logs-table__muted">{{ log.entityId || '—' }}</div>
+          </td>
+          <td>
+            <p-tag [value]="log.httpMethod" severity="secondary"></p-tag>
+            <div class="admin-audit-logs-table__path">{{ log.path }}</div>
+            <div class="admin-audit-logs-table__muted">{{ log.ipAddress || '—' }}</div>
+          </td>
+          <td>
+            <p-tag [value]="log.statusCode.toString()" [severity]="statusSeverity(log.statusCode)"></p-tag>
+          </td>
+          <td><code class="admin-audit-logs-table__trace">{{ log.traceId }}</code></td>
+          <td>
+            @if (hasMetadata(log)) {
+              <details class="admin-audit-logs-metadata">
+                <summary>{{ 'admin.auditLogs.metadata.show' | translate }}</summary>
+                <dl>
+                  @for (entry of metadataEntries(log); track entry.key) {
+                    <dt>{{ entry.key }}</dt>
+                    <dd>{{ entry.value }}</dd>
+                  }
+                </dl>
+              </details>
+            } @else {
+              <span class="admin-audit-logs-table__muted">—</span>
+            }
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">
+            <app-empty-state
+              [compact]="true"
+              titleKey="common.emptyTitle"
+              messageKey="admin.auditLogs.empty">
+            </app-empty-state>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </app-page-state>
+</p-card>

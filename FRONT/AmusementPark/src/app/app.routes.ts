@@ -67,6 +67,10 @@ export const routes: Routes = [
                 .then((m) => m.AdminDataModule)
           },
           {
+            path: 'audit-logs',
+            loadComponent: () => import('./components/admin/audit-logs/admin-audit-logs.component').then((m) => m.AdminAuditLogsComponent)
+          },
+          {
             path: 'images',
             loadChildren: () =>
               import('./components/admin/site/admin-site/admin-site.module')

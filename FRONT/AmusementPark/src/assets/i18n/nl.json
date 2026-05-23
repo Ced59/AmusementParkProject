@@ -826,7 +826,8 @@
         "manufacturers": "Constructeurs en attractiebouwers onderhouden.",
         "images": "Media, logo’s en sitebeelden controleren.",
         "data": "Imports, bronnen en gegevensverwerking volgen.",
-        "founders": "Beheer oprichters en biografieën die aan parken zijn gekoppeld."
+        "founders": "Beheer oprichters en biografieën die aan parken zijn gekoppeld.",
+        "auditLogs": "Gelogde gevoelige beheeracties bekijken."
       }
     },
     "references": {
@@ -864,6 +865,37 @@
         "untitled": "Reference image",
         "uploadTitle": "Add an image to this profile"
       }
+    },
+    "auditLogs": {
+      "title": "Auditlog",
+      "subtitle": "Alleen-lezen overzicht van gevoelige beheeracties.",
+      "total": "{{count}} vermeldingen",
+      "loading": "Auditlog laden...",
+      "loadError": "Kan de auditlog niet laden.",
+      "empty": "Geen auditvermelding komt overeen met de filters.",
+      "filters": {
+        "fromUtc": "Vanaf",
+        "toUtc": "Tot",
+        "actorEmail": "E-mail actor",
+        "action": "Actie",
+        "entityType": "Entiteitstype",
+        "entityId": "Entiteit-ID",
+        "traceId": "Trace ID",
+        "actorUserId": "Actor-ID"
+      },
+      "columns": {
+        "date": "Datum",
+        "actor": "Actor",
+        "action": "Actie",
+        "entity": "Entiteit",
+        "request": "Verzoek",
+        "status": "Status",
+        "traceId": "Trace ID",
+        "metadata": "Metadata"
+      },
+      "metadata": {
+        "show": "Tonen"
+      }
     }
   },
   "validation": {
@@ -877,7 +909,9 @@
     "edit": "Bewerken",
     "apply": "Apply",
     "clear": "Clear",
-    "delete": "Delete"
+    "delete": "Delete",
+    "search": "Zoeken",
+    "reset": "Resetten"
   },
   "parkDetail": {
     "descriptionTitle": "Beschrijving",

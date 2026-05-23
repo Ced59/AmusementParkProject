@@ -22,5 +22,6 @@ public static class UseCaseCatalog
             ["Users"] = new[] { "RegisterLocalUser", "ProvisionExternalUser", "GetUserByEmail", "GetUserById", "UpdateUserProfile", "Login", "LoginExternal", "RefreshToken", "ConfirmEmail", "ResendConfirmationEmail", "ForgotPassword", "ResetPassword", "AssignRole", "RemoveRole", "LockUser", "UnlockUser", "GetUsersPage", "ChangePassword", "SynchronizeUserAvatar" },
             ["Search"] = new[] { "Search" },
             ["DataSources"] = new[] { "ListDataSources", "GetDataSourceStatus", "GetDataSourceSettings", "UpdateDataSourceSettings", "GetLatestDataSourceSession", "GetDataSourceSession", "GetDataSourceComparisonResults", "StartDataSourceImport", "ApplyDataSourceComparison" },
+            ["AdminAudit"] = new[] { "GetAdminAuditLogs" },
         };
 }

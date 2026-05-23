@@ -214,3 +214,51 @@ Sur le VPS, dans le dossier de déploiement :
 ## Note MinIO
 
 L'application crée le bucket applicatif au premier usage si celui-ci n'existe pas encore. Le service MinIO reste donc privé et ne nécessite pas de bootstrap public.
+
+## M18.9 — Scans dépendances CI
+
+Le workflow `.github/workflows/production.yml` contient maintenant un job `dependency-security` lancé avec les builds.
+
+Il archive un artefact `dependency-security-reports` contenant :
+
+- `dotnet-vulnerable.txt` pour les vulnérabilités .NET directes et transitives ;
+- `npm-audit.json` et `npm-audit.txt` pour les vulnérabilités npm `moderate` et supérieures ;
+- `npm-audit-signatures.txt` pour la vérification des signatures npm en best-effort.
+
+Ce premier palier émet des warnings sans bloquer automatiquement le déploiement au premier rapport. Une fois les rapports stabilisés, le seuil pourra devenir bloquant pour `high`/`critical`.
+
+## M18.10 — CORS et secrets production
+
+La configuration CORS prod est volontairement restrictive :
+
+```bash
+PUBLIC_BASE_URL=https://amusement-parks.fun
+PUBLIC_WWW_BASE_URL=https://www.amusement-parks.fun
+```
+
+Ces deux origins sont injectées dans l'API via `Cors__AllowedOrigins__0` et `Cors__AllowedOrigins__1`.
+
+Règles backend :
+
+- aucune origine wildcard si `Cors__AllowCredentials=true` ;
+- aucune origine `localhost` hors environnement `Development` ;
+- aucune origine avec path, query string ou fragment ;
+- pas de fallback automatique vers `http://localhost:4200` en production.
+
+Le script suivant valide le `.env` avant redémarrage :
+
+```bash
+./scripts/validate-production-env.sh .env
+```
+
+Il est exécuté deux fois :
+
+1. dans GitHub Actions, juste après génération du `.env` ;
+2. sur le VPS via `deploy.sh`, avant `docker compose pull/up`.
+
+Il refuse notamment les placeholders, les secrets manquants, `AllowedHosts=*`, les URLs publiques non HTTPS, les clés JWT trop courtes, et les paramètres Google OAuth absents.
+
+
+## Note `.env` robuste
+
+Les scripts de déploiement ne font plus de `source .env` direct. Ils passent par `deploy/scripts/env-loader.sh`, afin que des valeurs contenant des `;`, des espaces ou certains caractères de secrets ne soient pas interprétées comme du code Bash.

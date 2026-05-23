@@ -65,6 +65,12 @@ export class AdminDashboardComponent {
       titleKey: 'admin.dataSources.title',
       descriptionKey: 'admin.dashboard.shortcuts.data',
       segment: 'data'
+    },
+    {
+      icon: '🛡️',
+      titleKey: 'admin.auditLogs.title',
+      descriptionKey: 'admin.dashboard.shortcuts.auditLogs',
+      segment: 'audit-logs'
     }
   ];
 

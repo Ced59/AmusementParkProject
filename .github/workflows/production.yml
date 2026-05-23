@@ -108,12 +108,89 @@ jobs:
           path: ${{ env.FRONTEND_DIR }}/coverage
           if-no-files-found: ignore
 
+
+  dependency-security:
+    name: Dependency security scans
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: ${{ env.FRONTEND_DIR }}/package-lock.json
+
+      - name: Restore backend packages
+        run: dotnet restore AmusementPark.sln
+
+      - name: Scan .NET vulnerable packages
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports/dependencies
+          dotnet list AmusementPark.sln package --vulnerable --include-transitive 2>&1 | tee reports/dependencies/dotnet-vulnerable.txt
+
+          if grep -qi "has the following vulnerable packages" reports/dependencies/dotnet-vulnerable.txt; then
+            echo "::warning title=.NET dependency vulnerabilities::Vulnerable .NET packages were reported. Review the dependency-security-reports artifact."
+          fi
+
+      - name: Install frontend packages
+        run: npm ci
+        working-directory: ${{ env.FRONTEND_DIR }}
+
+      - name: Scan npm vulnerable packages
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports/dependencies
+          pushd "${FRONTEND_DIR}" >/dev/null
+
+          set +e
+          npm audit --audit-level=moderate --json > ../../reports/dependencies/npm-audit.json
+          audit_status="$?"
+          npm audit --audit-level=moderate > ../../reports/dependencies/npm-audit.txt
+          text_status="$?"
+          set -e
+
+          if [ "${audit_status}" -ne 0 ] || [ "${text_status}" -ne 0 ]; then
+            echo "::warning title=npm dependency vulnerabilities::npm audit reported moderate or higher vulnerabilities. Review the dependency-security-reports artifact."
+          fi
+
+          set +e
+          npm audit signatures > ../../reports/dependencies/npm-audit-signatures.txt 2>&1
+          signatures_status="$?"
+          set -e
+
+          if [ "${signatures_status}" -ne 0 ]; then
+            echo "::notice title=npm audit signatures::npm audit signatures did not complete successfully. See the dependency-security-reports artifact."
+          fi
+
+          popd >/dev/null
+
+      - name: Upload dependency security reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-security-reports
+          path: reports/dependencies
+          if-no-files-found: warn
+
   docker:
     name: Build and push immutable Docker images
     runs-on: ubuntu-latest
     needs:
       - backend
       - frontend
+      - dependency-security
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
     outputs:
@@ -184,6 +261,7 @@ jobs:
       VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH || '/opt/amusementpark' }}
       PUBLIC_HTTP_PORT: ${{ vars.PUBLIC_HTTP_PORT || '8080' }}
       PUBLIC_BASE_URL: ${{ vars.PUBLIC_BASE_URL || 'https://amusement-parks.fun' }}
+      PUBLIC_WWW_BASE_URL: ${{ vars.PUBLIC_WWW_BASE_URL || 'https://www.amusement-parks.fun' }}
       PUBLIC_DOMAIN: ${{ vars.PUBLIC_DOMAIN || 'amusement-parks.fun' }}
       PUBLIC_EDGE_SUBNET: ${{ vars.PUBLIC_EDGE_SUBNET || '172.30.30.0/24' }}
       BACKEND_PRIVATE_SUBNET: ${{ vars.BACKEND_PRIVATE_SUBNET || '172.30.31.0/24' }}
@@ -255,6 +333,7 @@ jobs:
           PUBLIC_HTTP_PORT=${{ env.PUBLIC_HTTP_PORT }}
           PUBLIC_DOMAIN=${{ env.PUBLIC_DOMAIN }}
           PUBLIC_BASE_URL=${{ env.PUBLIC_BASE_URL }}
+          PUBLIC_WWW_BASE_URL=${{ env.PUBLIC_WWW_BASE_URL }}
           ALLOWED_HOSTS=${{ env.ALLOWED_HOSTS }}
           FORWARDED_HEADERS_ALLOWED_HOSTS=${{ env.FORWARDED_HEADERS_ALLOWED_HOSTS }}
           FORWARDED_HEADERS_KNOWN_NETWORKS=${{ env.FORWARDED_HEADERS_KNOWN_NETWORKS }}
@@ -309,6 +388,7 @@ jobs:
           ADMIN_USER_EMAIL=${{ secrets.PROD_ADMIN_USER_EMAIL }}
           ADMIN_USER_PASSWORD=${{ secrets.PROD_ADMIN_USER_PASSWORD }}
           EOF_ENV
+          bash deploy/scripts/validate-production-env.sh /tmp/amusementpark.env
           scp -i ~/.ssh/amusementpark_vps_key -P "${VPS_SSH_PORT}" \
             /tmp/amusementpark.env \
             "${VPS_SSH_USER}@${VPS_HOST}:${VPS_DEPLOY_PATH}/.env"

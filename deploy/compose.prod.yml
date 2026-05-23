@@ -84,6 +84,21 @@ services:
       Authentication__Facebook__AppId: ${FACEBOOK_APP_ID:-}
       Authentication__Facebook__AppSecret: ${FACEBOOK_APP_SECRET:-}
       Cors__AllowedOrigins__0: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required}
+      Cors__AllowedOrigins__1: ${PUBLIC_WWW_BASE_URL:-}
+      Cors__AllowedMethods__0: GET
+      Cors__AllowedMethods__1: POST
+      Cors__AllowedMethods__2: PUT
+      Cors__AllowedMethods__3: PATCH
+      Cors__AllowedMethods__4: DELETE
+      Cors__AllowedMethods__5: OPTIONS
+      Cors__AllowedHeaders__0: Authorization
+      Cors__AllowedHeaders__1: Content-Type
+      Cors__AllowedHeaders__2: Accept-Language
+      Cors__AllowedHeaders__3: X-Requested-With
+      Cors__ExposedHeaders__0: Retry-After
+      Cors__ExposedHeaders__1: X-Rate-Limit-Limit
+      Cors__ExposedHeaders__2: X-Rate-Limit-Remaining
+      Cors__ExposedHeaders__3: X-Rate-Limit-Reset
       Cors__AllowCredentials: "true"
       Email__Mode: ${EMAIL_MODE:-Console}
       Email__Host: ${EMAIL_HOST:-}

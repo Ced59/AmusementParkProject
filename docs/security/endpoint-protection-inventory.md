@@ -160,3 +160,37 @@ Les actions couvertes incluent :
 - créations/modifications admin majeures sur parcs, éléments, zones, exploitants, constructeurs et fondateurs.
 
 Voir `docs/security/admin-audit-log.md`.
+
+
+### M18.8 bis — Consultation du journal d’audit
+
+- `GET /admin/audit-logs` : protégé `ADMIN`, lecture seule, pagination et filtres.
+- Aucune route publique ajoutée.
+- Aucun document Mongo n’est exposé directement : WebAPI → Application query/port → Infrastructure Mongo.
+
+## M18.9 — Scans de dépendances CI
+
+Le workflow GitHub Actions contient maintenant un job `dependency-security`.
+
+Il génère et archive les rapports suivants :
+
+- `dotnet list AmusementPark.sln package --vulnerable --include-transitive` ;
+- `npm audit --audit-level=moderate` ;
+- `npm audit signatures` en best-effort.
+
+Les résultats sont publiés dans l'artefact `dependency-security-reports`. Le premier palier signale les vulnérabilités par warnings sans bloquer automatiquement tout déploiement.
+
+Voir `docs/security/dependency-security-scans.md`.
+
+## M18.10 — CORS et secrets prod
+
+La configuration CORS est maintenant validée au démarrage :
+
+- aucune origine wildcard avec credentials ;
+- aucune origine locale hors `Development` ;
+- aucune origine avec path/query/fragment ;
+- origine explicite obligatoire hors `Development`.
+
+Le déploiement valide aussi le `.env` avec `deploy/scripts/validate-production-env.sh` avant de redémarrer les services. Les secrets Mongo, MinIO, JWT et Google OAuth doivent être présents avant le déploiement production.
+
+Voir `docs/security/production-cors-and-secrets.md`.

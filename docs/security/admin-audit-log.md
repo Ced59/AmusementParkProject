@@ -120,3 +120,8 @@ Ce choix évite de rendre l'administration inutilisable à cause d'un incident d
 - Pas encore d'export CSV.
 
 Ces éléments relèvent plutôt du palier M24, où la roadmap prévoit d'étendre l'audit log admin.
+
+
+## Consultation admin ajoutée en M18.8 bis
+
+Le journal n’est plus uniquement consultable dans MongoDB. Une page lecture seule est disponible dans le panel admin sur `/:lang/admin/audit-logs`, alimentée par l’endpoint protégé `GET /admin/audit-logs`. Le détail d’architecture et les filtres sont documentés dans `docs/security/admin-audit-log-consultation.md`.

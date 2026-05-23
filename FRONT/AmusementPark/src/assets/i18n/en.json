@@ -826,7 +826,8 @@
         "manufacturers": "Maintain attraction manufacturers and builders.",
         "images": "Review media, logos and site visuals.",
         "data": "Monitor imports, sources and data processing.",
-        "founders": "Maintain founders and biographies linked to parks."
+        "founders": "Maintain founders and biographies linked to parks.",
+        "auditLogs": "Review logged sensitive administration actions."
       }
     },
     "references": {
@@ -864,6 +865,37 @@
         "untitled": "Reference image",
         "uploadTitle": "Add an image to this profile"
       }
+    },
+    "auditLogs": {
+      "title": "Audit log",
+      "subtitle": "Read-only view of sensitive administration actions.",
+      "total": "{{count}} entries",
+      "loading": "Loading audit log...",
+      "loadError": "Unable to load the audit log.",
+      "empty": "No audit entry matches the filters.",
+      "filters": {
+        "fromUtc": "From",
+        "toUtc": "To",
+        "actorEmail": "Actor email",
+        "action": "Action",
+        "entityType": "Entity type",
+        "entityId": "Entity ID",
+        "traceId": "Trace ID",
+        "actorUserId": "Actor ID"
+      },
+      "columns": {
+        "date": "Date",
+        "actor": "Actor",
+        "action": "Action",
+        "entity": "Entity",
+        "request": "Request",
+        "status": "Status",
+        "traceId": "Trace ID",
+        "metadata": "Metadata"
+      },
+      "metadata": {
+        "show": "Show"
+      }
     }
   },
   "validation": {
@@ -877,7 +909,9 @@
     "edit": "Edit",
     "apply": "Apply",
     "clear": "Clear",
-    "delete": "Delete"
+    "delete": "Delete",
+    "search": "Search",
+    "reset": "Reset"
   },
   "parkDetail": {
     "descriptionTitle": "Description",

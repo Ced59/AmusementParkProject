@@ -9,5 +9,11 @@ public sealed class CorsSettings
 
     public string[] AllowedOrigins { get; init; } = ["http://localhost:4200"];
 
+    public string[] AllowedMethods { get; init; } = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"];
+
+    public string[] AllowedHeaders { get; init; } = ["Authorization", "Content-Type", "Accept-Language", "X-Requested-With"];
+
+    public string[] ExposedHeaders { get; init; } = ["Retry-After", "X-Rate-Limit-Limit", "X-Rate-Limit-Remaining", "X-Rate-Limit-Reset"];
+
     public bool AllowCredentials { get; init; } = true;
 }
