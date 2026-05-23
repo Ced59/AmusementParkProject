@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
@@ -11,7 +11,7 @@ import { TranslationService } from '@app/services/translation.service';
   templateUrl: './public-not-found-page.component.html',
   styleUrls: ['./public-not-found-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslatePipe]
+  imports: [RouterLink, TranslateModule]
 })
 export class PublicNotFoundPageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');
