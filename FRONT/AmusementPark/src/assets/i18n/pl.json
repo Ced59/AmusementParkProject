@@ -1568,33 +1568,33 @@
     "next": "Next"
   },
   "cookieConsent": {
-    "ariaLabel": "Audience measurement consent banner",
-    "title": "Matomo audience measurement",
-    "text": "AmusementPark uses Matomo to understand visitor journeys and improve the website. Audience measurement only starts after your agreement.",
+    "ariaLabel": "Baner informacji i wyboru dotyczący plików cookie",
+    "title": "Pliki cookie i prywatność",
+    "text": "AmusementPark używa plików cookie lub pamięci niezbędnych do działania strony, w szczególności bezpieczeństwa, sesji, języka, motywu i uwierzytelniania. Za Twoją zgodą strona włącza także opcjonalne pliki cookie Matomo do pomiaru oglądalności.",
     "privacyLink": "Przeczytaj politykę prywatności.",
-    "accept": "Akceptuj pomiar",
-    "continueWithoutAnalytics": "Kontynuuj bez pomiaru"
+    "accept": "Akceptuj opcjonalne cookie",
+    "continueWithNecessaryCookiesOnly": "Kontynuuj z niezbędnymi cookie"
   },
   "privacyPage": {
     "kicker": "Personal data",
     "title": "Polityka prywatności",
-    "lead": "This page explains how AmusementPark processes personal data, Matomo audience measurement and privacy choices.",
+    "lead": "Ta strona wyjaśnia, jak AmusementPark przetwarza dane osobowe, niezbędne pliki cookie, uwierzytelnianie Google OAuth i pomiar oglądalności Matomo.",
     "chips": {
       "hosting": "Hosting in France",
-      "analytics": "Matomo on a personal VPS",
+      "analytics": "Cookie i analityka",
       "controller": "Controller: Cédric Caudron"
     },
     "consent": {
-      "kicker": "Analytics preferences",
-      "title": "Manage audience measurement",
-      "text": "Matomo is configured with prior consent on the website. You can accept, refuse or show the banner again at any time.",
-      "currentStatus": "Current status:",
-      "statusAccepted": "pomiar oglądalności zaakceptowany.",
-      "statusRefused": "pomiar oglądalności odrzucony.",
+      "kicker": "Preferencje cookie",
+      "title": "Zarządzanie opcjonalnymi cookie",
+      "text": "Pliki cookie niezbędne do działania i uwierzytelniania mogą być używane bez zgody. Tutaj możesz zaakceptować, odrzucić lub ponownie wyświetlić wybór dotyczący opcjonalnych cookie pomiaru oglądalności.",
+      "currentStatus": "Aktualny status:",
+      "statusAccepted": "opcjonalne cookie zaakceptowane.",
+      "statusRefused": "opcjonalne cookie odrzucone.",
       "statusUnset": "brak zapisanego wyboru.",
-      "accept": "Accept Matomo",
-      "refuse": "Refuse / withdraw consent",
-      "reset": "Show banner again"
+      "accept": "Akceptuj opcjonalne cookie",
+      "refuse": "Wycofaj zgodę na opcjonalne cookie",
+      "reset": "Pokaż baner ponownie"
     },
     "sections": {
       "controller": {
@@ -1610,18 +1610,19 @@
       "purposes": {
         "title": "Purposes and legal bases",
         "body1": "Data is used to provide website features, secure access, manage accounts, display public content and administer the project.",
-        "body2": "Processing required for operation relies on service performance or legitimate interest. Matomo audience measurement relies on your consent unless it is later operated in a strict exempt mode."
+        "body2": "Przetwarzanie niezbędne do działania opiera się na wykonaniu usługi lub prawnie uzasadnionym interesie. Opcjonalne pliki cookie Matomo do pomiaru oglądalności opierają się na Twojej zgodzie, chyba że później zostanie wdrożona ściśle zwolniona konfiguracja."
       },
       "analytics": {
-        "title": "Matomo audience measurement",
-        "body1": "The website uses a self-hosted Matomo instance available at matomo.cedric-caudron.com with site ID 4.",
-        "body2": "Matomo may measure visited pages, navigation sequences, traffic sources, device type and technical browser information.",
-        "body3": "No third-party advertising tracking is added by this integration. Profile-related journeys may be measured only after consent, without sending private profile content as analytics events."
+        "title": "Pomiar oglądalności Matomo",
+        "body1": "Strona korzysta z samodzielnie hostowanej instancji Matomo dostępnej pod adresem matomo.cedric-caudron.com z ID strony 4.",
+        "body2": "Matomo może mierzyć odwiedzone strony, sekwencje nawigacji, źródła ruchu, typ urządzenia i techniczne informacje o przeglądarce.",
+        "body3": "Ta integracja nie dodaje reklamowego śledzenia stron trzecich. Ścieżki związane z profilem mogą być mierzone tylko po zgodzie na opcjonalne cookie, bez wysyłania prywatnej treści profilu jako zdarzeń analitycznych."
       },
       "cookies": {
-        "title": "Cookies and local storage",
-        "body1": "Strictly necessary cookies or storage may be used for session, security, language, theme and interface preferences.",
-        "body2": "The Matomo choice is stored in the browser local storage so the same choice is not requested on every page."
+        "title": "Pliki cookie i pamięć lokalna",
+        "body1": "Ściśle niezbędne pliki cookie lub pamięć mogą być używane do sesji, bezpieczeństwa, języka, motywu, preferencji interfejsu i prawidłowego działania uwierzytelniania.",
+        "body2": "Te niezbędne mechanizmy mogą obejmować cookie sesji/API, cookie uwierzytelniania HTTP-only, mechanizmy antynadużyciowe i lokalnie zapisane preferencje. Nie można ich wyłączyć z banera, ponieważ warunkują żądaną usługę.",
+        "body3": "Wybór dotyczący opcjonalnych cookie jest przechowywany w lokalnej pamięci przeglądarki, aby nie pytać o niego na każdej stronie."
       },
       "hosting": {
         "title": "Hosting and processors",
@@ -1637,6 +1638,12 @@
         "title": "Your rights",
         "body1": "You can request access, rectification, erasure, restriction or objection for applicable processing of your data.",
         "body2": "You can also withdraw analytics consent on this page and, if needed, lodge a complaint with the CNIL."
+      },
+      "thirdPartyCookies": {
+        "title": "Cookie stron trzecich i uwierzytelnianie Google",
+        "body1": "Strona oferuje logowanie przez Google OAuth / Sign in with Google. Gdy używasz tej metody, Google może zapisywać lub odczytywać własne cookie i podobne technologie w celu uwierzytelniania, bezpieczeństwa, zapobiegania oszustwom i utrzymania sesji.",
+        "body2": "Te mechanizmy stron trzecich są niezbędne do uwierzytelniania Google żądanego przez użytkownika i nie są sterowane zgodą Matomo/analityczną strony.",
+        "body3": "Odmowa opcjonalnych cookie AmusementPark nie blokuje uwierzytelniania. Przeglądarka blokująca niektóre cookie stron trzecich może jednak uniemożliwić lub pogorszyć logowanie przez Google."
       }
     },
     "lastUpdate": "Last updated: 23 May 2026.",

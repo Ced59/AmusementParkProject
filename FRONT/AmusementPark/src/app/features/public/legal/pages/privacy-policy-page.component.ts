@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { AnalyticsConsentService } from '@core/analytics/analytics-consent.service';
-import { AnalyticsConsentDecision } from '@core/analytics/analytics-consent.model';
+import { CookieConsentService } from '@core/privacy/cookie-consent.service';
+import { CookieConsentDecision } from '@core/privacy/cookie-consent.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 
 interface PrivacyPolicySection {
@@ -20,7 +20,7 @@ interface PrivacyPolicySection {
   imports: [RouterLink, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective]
 })
 export class PrivacyPolicyPageComponent {
-  protected readonly analyticsDecision: Signal<AnalyticsConsentDecision | null> = this.analyticsConsentService.decision;
+  protected readonly cookieConsentDecision: Signal<CookieConsentDecision | null> = this.cookieConsentService.decision;
   protected readonly sections: readonly PrivacyPolicySection[] = [
     {
       iconClass: 'pi pi-user',
@@ -60,7 +60,17 @@ export class PrivacyPolicyPageComponent {
       titleKey: 'privacyPage.sections.cookies.title',
       bodyKeys: [
         'privacyPage.sections.cookies.body1',
-        'privacyPage.sections.cookies.body2'
+        'privacyPage.sections.cookies.body2',
+        'privacyPage.sections.cookies.body3'
+      ]
+    },
+    {
+      iconClass: 'pi pi-key',
+      titleKey: 'privacyPage.sections.thirdPartyCookies.title',
+      bodyKeys: [
+        'privacyPage.sections.thirdPartyCookies.body1',
+        'privacyPage.sections.thirdPartyCookies.body2',
+        'privacyPage.sections.thirdPartyCookies.body3'
       ]
     },
     {
@@ -89,18 +99,18 @@ export class PrivacyPolicyPageComponent {
     }
   ];
 
-  constructor(private readonly analyticsConsentService: AnalyticsConsentService) {
+  constructor(private readonly cookieConsentService: CookieConsentService) {
   }
 
-  protected acceptAnalytics(): void {
-    this.analyticsConsentService.acceptAnalytics();
+  protected acceptOptionalCookies(): void {
+    this.cookieConsentService.acceptOptionalCookies();
   }
 
-  protected refuseAnalytics(): void {
-    this.analyticsConsentService.revokeAnalyticsConsent();
+  protected refuseOptionalCookies(): void {
+    this.cookieConsentService.revokeOptionalCookieConsent();
   }
 
-  protected resetAnalyticsChoice(): void {
-    this.analyticsConsentService.resetAnalyticsChoice();
+  protected resetCookieChoice(): void {
+    this.cookieConsentService.resetCookieChoice();
   }
 }

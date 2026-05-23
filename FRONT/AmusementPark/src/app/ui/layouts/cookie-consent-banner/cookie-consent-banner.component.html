@@ -2,7 +2,7 @@
   <section class="app-cookie-consent" role="region" [attr.aria-label]="'cookieConsent.ariaLabel' | translate">
     <div class="app-cookie-consent__inner">
       <div class="app-cookie-consent__icon" aria-hidden="true">
-        <i class="pi pi-chart-line"></i>
+        <i class="pi pi-shield"></i>
       </div>
 
       <div class="app-cookie-consent__content">
@@ -14,11 +14,11 @@
       </div>
 
       <div class="app-cookie-consent__actions">
-        <button type="button" class="app-cookie-consent__button app-cookie-consent__button--primary" (click)="acceptAnalytics()">
+        <button type="button" class="app-cookie-consent__button app-cookie-consent__button--primary" (click)="acceptOptionalCookies()">
           {{ 'cookieConsent.accept' | translate }}
         </button>
-        <button type="button" class="app-cookie-consent__button app-cookie-consent__button--ghost" (click)="continueWithoutAnalytics()">
-          {{ 'cookieConsent.continueWithoutAnalytics' | translate }}
+        <button type="button" class="app-cookie-consent__button app-cookie-consent__button--ghost" (click)="continueWithNecessaryCookiesOnly()">
+          {{ 'cookieConsent.continueWithNecessaryCookiesOnly' | translate }}
         </button>
       </div>
     </div>

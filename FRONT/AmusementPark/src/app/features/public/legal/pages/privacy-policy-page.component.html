@@ -23,9 +23,9 @@
       <p>{{ 'privacyPage.consent.text' | translate }}</p>
       <p class="privacy-consent__status">
         <strong>{{ 'privacyPage.consent.currentStatus' | translate }}</strong>
-        @if (analyticsDecision() === 'accepted') {
+        @if (cookieConsentDecision() === 'accepted') {
           <span>{{ 'privacyPage.consent.statusAccepted' | translate }}</span>
-        } @else if (analyticsDecision() === 'refused') {
+        } @else if (cookieConsentDecision() === 'refused') {
           <span>{{ 'privacyPage.consent.statusRefused' | translate }}</span>
         } @else {
           <span>{{ 'privacyPage.consent.statusUnset' | translate }}</span>
@@ -34,13 +34,13 @@
     </div>
 
     <div class="privacy-consent__actions">
-      <button type="button" appUiButton="primary" (click)="acceptAnalytics()">
+      <button type="button" appUiButton="primary" (click)="acceptOptionalCookies()">
         {{ 'privacyPage.consent.accept' | translate }}
       </button>
-      <button type="button" appUiButton="ghost" (click)="refuseAnalytics()">
+      <button type="button" appUiButton="ghost" (click)="refuseOptionalCookies()">
         {{ 'privacyPage.consent.refuse' | translate }}
       </button>
-      <button type="button" appUiButton="soft" (click)="resetAnalyticsChoice()">
+      <button type="button" appUiButton="soft" (click)="resetCookieChoice()">
         {{ 'privacyPage.consent.reset' | translate }}
       </button>
     </div>

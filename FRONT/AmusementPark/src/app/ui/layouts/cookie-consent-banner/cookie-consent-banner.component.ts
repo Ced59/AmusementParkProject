@@ -4,7 +4,7 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
 
-import { AnalyticsConsentService } from '@core/analytics/analytics-consent.service';
+import { CookieConsentService } from '@core/privacy/cookie-consent.service';
 import { TranslationService } from '@app/services/translation.service';
 import { resolveSupportedLanguageFromUrl } from '@shared/utils/routing/localized-route.helpers';
 
@@ -16,11 +16,11 @@ import { resolveSupportedLanguageFromUrl } from '@shared/utils/routing/localized
   imports: [RouterLink, TranslateModule]
 })
 export class CookieConsentBannerComponent implements OnInit {
-  protected readonly isVisible: Signal<boolean> = this.analyticsConsentService.isBannerVisible;
+  protected readonly isVisible: Signal<boolean> = this.cookieConsentService.isBannerVisible;
   protected readonly currentLanguage: WritableSignal<string> = signal<string>('en');
 
   constructor(
-    private readonly analyticsConsentService: AnalyticsConsentService,
+    private readonly cookieConsentService: CookieConsentService,
     private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly destroyRef: DestroyRef
@@ -38,12 +38,12 @@ export class CookieConsentBannerComponent implements OnInit {
     });
   }
 
-  protected acceptAnalytics(): void {
-    this.analyticsConsentService.acceptAnalytics();
+  protected acceptOptionalCookies(): void {
+    this.cookieConsentService.acceptOptionalCookies();
   }
 
-  protected continueWithoutAnalytics(): void {
-    this.analyticsConsentService.continueWithoutAnalytics();
+  protected continueWithNecessaryCookiesOnly(): void {
+    this.cookieConsentService.continueWithNecessaryCookiesOnly();
   }
 
   private getLanguageFromUrl(): string {
