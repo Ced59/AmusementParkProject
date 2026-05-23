@@ -12,6 +12,7 @@ builder.Services.AddApiAuthentication(builder.Configuration);
 builder.Services.AddApiCors(builder.Configuration);
 builder.Services.AddApiRateLimiting(builder.Configuration);
 builder.Services.AddApiForwardedHeaders(builder.Configuration);
+builder.Services.AddApiContentSecurityPolicy(builder.Configuration);
 builder.Services.AddApiSwagger();
 builder.Services.AddHttpApi();
 WebApplication app = builder.Build();

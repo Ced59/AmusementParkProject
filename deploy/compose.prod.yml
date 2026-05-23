@@ -47,6 +47,9 @@ services:
       ForwardedHeaders__KnownProxies__1: "::1"
       ForwardedHeaders__KnownNetworks__0: ${FORWARDED_HEADERS_KNOWN_NETWORKS:?FORWARDED_HEADERS_KNOWN_NETWORKS is required}
       ForwardedHeaders__AllowedHosts__0: ${FORWARDED_HEADERS_ALLOWED_HOSTS:?FORWARDED_HEADERS_ALLOWED_HOSTS is required}
+      Security__ContentSecurityPolicy__Enabled: ${CSP_ENABLED:-true}
+      Security__ContentSecurityPolicy__ReportOnly: ${CSP_REPORT_ONLY:-true}
+      Security__ContentSecurityPolicy__ReportUri: ${CSP_REPORT_URI:-/security/csp-report}
       MongoDB__Url: mongodb://${MONGO_APP_USERNAME:?MONGO_APP_USERNAME is required}:${MONGO_APP_PASSWORD:?MONGO_APP_PASSWORD is required}@mongodb:27017/${MONGO_DATABASE_NAME:-AmusementPark}?authSource=${MONGO_DATABASE_NAME:-AmusementPark}
       MongoDB__DatabaseName: ${MONGO_DATABASE_NAME:-AmusementPark}
       Images__MinIo__Endpoint: minio:9000

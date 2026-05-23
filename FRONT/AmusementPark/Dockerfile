@@ -12,6 +12,7 @@ RUN npm run build -- --configuration production
 FROM nginxinc/nginx-unprivileged:1.29-alpine AS runtime
 
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx/snippets /etc/nginx/snippets
 COPY --from=build /app/dist/amusement-park/browser /usr/share/nginx/html
 
 EXPOSE 8080

@@ -63,6 +63,12 @@ Ces endpoints restent publics car ils sont nécessaires à la navigation non con
 | Fondateurs | `GET /park-founders`, `GET /park-founders/{id}` | Référentiel public et liens depuis fiches parcs. |
 | Constructeurs | `GET /attraction-manufacturers`, `GET /attraction-manufacturers/{id}` | Référentiel public et liens depuis attractions. |
 | Diagnostic | `GET /health` | Healthcheck Docker, CI/CD et reverse proxy. |
+| Sécurité navigateur | `POST /security/csp-report` | Collecte technique des rapports CSP Report-Only ; aucun impact métier. |
+
+
+## Mise à jour M18.4
+
+M18.4 ajoute un endpoint public technique `POST /security/csp-report` pour recevoir les rapports navigateur CSP en mode Report-Only. Il est volontairement anonyme afin que le navigateur puisse signaler les violations avant authentification, mais il ne permet aucune mutation métier et limite le corps de requête à 16 Ko.
 
 ## Endpoints admin protégés
 

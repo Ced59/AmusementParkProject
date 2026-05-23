@@ -20,6 +20,7 @@ public static class WebApplicationPipelineExtensions
         ArgumentNullException.ThrowIfNull(app);
 
         app.UseForwardedHeaders();
+        app.UseApiContentSecurityPolicy();
 
         if (!app.Environment.IsDevelopment())
         {

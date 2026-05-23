@@ -55,6 +55,41 @@ FORWARDED_HEADERS_FORWARD_LIMIT=2
 
 Si Nginx Proxy Manager tourne dans un autre réseau Docker et que son adresse apparaît dans `X-Forwarded-For`, ajouter ce réseau à `FORWARDED_HEADERS_KNOWN_NETWORKS`, séparé par `;`.
 
+
+## CSP Report-Only M18.4
+
+Le front Nginx sert une `Content-Security-Policy-Report-Only` sur les pages et assets publics. Elle ne bloque rien pour le moment : elle sert à détecter les chargements qui seraient refusés au futur passage en mode enforce.
+
+Les rapports navigateur sont envoyés vers :
+
+```bash
+/api/security/csp-report
+```
+
+Puis proxifiés vers l'API interne :
+
+```bash
+/security/csp-report
+```
+
+Variables API disponibles :
+
+```bash
+CSP_ENABLED=true
+CSP_REPORT_ONLY=true
+CSP_REPORT_URI=/security/csp-report
+```
+
+Pour tester localement le vrai header front, utiliser le container Nginx du front plutôt que `ng serve`, puis vérifier :
+
+```bash
+curl -I http://127.0.0.1:8080/
+```
+
+La réponse doit contenir `Content-Security-Policy-Report-Only`.
+
+Avant M18.5, conserver `CSP_REPORT_ONLY=true` et analyser les logs `SecurityReportsController`.
+
 ## Secrets GitHub Actions nécessaires
 
 ### Accès VPS
@@ -105,6 +140,9 @@ Si Nginx Proxy Manager tourne dans un autre réseau Docker et que son adresse ap
 - `MINIO_API_PORT`, défaut `9000`
 - `MINIO_CONSOLE_PORT`, défaut `9001`
 - `MINIO_IMAGE`, pour changer l'image MinIO sans modifier le compose
+- `CSP_ENABLED`, défaut `true`
+- `CSP_REPORT_ONLY`, défaut `true` pendant M18.4
+- `CSP_REPORT_URI`, défaut `/security/csp-report`
 
 ## Déclenchement
 
