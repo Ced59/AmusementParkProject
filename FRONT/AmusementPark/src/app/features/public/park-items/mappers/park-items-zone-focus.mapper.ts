@@ -1,6 +1,6 @@
 import { ImageDto } from '@app/models/images/image-dto';
 import { Park } from '@app/models/parks/park';
-import { ParkExplorer, ParkExplorerBucket, ParkExplorerCount } from '@app/models/parks/park-explorer';
+import { ParkExplorer, ParkExplorerBucket } from '@app/models/parks/park-explorer';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
@@ -15,6 +15,7 @@ export function mapParkItemsZoneFocusViewModel(
   explorer: ParkExplorer | null,
   zones: readonly ParkZone[],
   displayedItems: readonly ParkItem[],
+  typeFilterScopeItems: readonly ParkItem[],
   selectedZoneId: string | null,
   parkPhotos: readonly ImageDto[],
   currentLanguage: string
@@ -33,9 +34,7 @@ export function mapParkItemsZoneFocusViewModel(
   const zoneDescription: string | null = resolveZoneDescription(activeZone, currentLanguage);
   const heroImageId: string | null = resolveParkHeroImageId(parkPhotos);
   const map: ParkItemsMapViewModel = mapDisplayedItemsToMapViewModel(park, displayedItems, zones, currentLanguage);
-  const topTypeHighlights: ParkItemsCountTagViewModel[] = activeZoneBucket
-    ? mapBucketTypeHighlights(activeZoneBucket)
-    : mapBucketTypeHighlights(explorer?.overview ?? null);
+  const topTypeHighlights: ParkItemsCountTagViewModel[] = buildTypeHighlightsFromItems(typeFilterScopeItems);
 
   return {
     parkName: park.name ?? '',
@@ -133,22 +132,6 @@ function resolveZoneNameById(zoneId: string | null, zones: readonly ParkZone[], 
   return resolveZoneName(zones.find((zone: ParkZone) => zone.id === zoneId) ?? null, currentLanguage);
 }
 
-function mapBucketTypeHighlights(bucket: ParkExplorerBucket | null): ParkItemsCountTagViewModel[] {
-  if (!bucket) {
-    return [];
-  }
-
-  return bucket.countsByType
-    .filter((count: ParkExplorerCount) => count.count > 0)
-    .map((count: ParkExplorerCount) => ({
-      value: count.key,
-      labelKey: getParkItemTypeTranslationKey(count.key),
-      count: count.count
-    }))
-    .sort((left, right) => right.count - left.count)
-    .slice(0, 4);
-}
-
 function buildTypeHighlightsFromItems(items: readonly ParkItem[]): ParkItemsCountTagViewModel[] {
   const countsByType: Map<string, number> = new Map<string, number>();
 
@@ -166,8 +149,9 @@ function buildTypeHighlightsFromItems(items: readonly ParkItem[]): ParkItemsCoun
       labelKey: getParkItemTypeTranslationKey(type),
       count
     }))
-    .sort((left: ParkItemsCountTagViewModel, right: ParkItemsCountTagViewModel) => right.count - left.count)
-    .slice(0, 4);
+    .sort((left: ParkItemsCountTagViewModel, right: ParkItemsCountTagViewModel) => {
+      return right.count - left.count || left.value.localeCompare(right.value);
+    });
 }
 
 function resolveParkHeroImageId(parkPhotos: readonly ImageDto[]): string | null {

@@ -9,6 +9,12 @@ export interface ParkItemDetailRowViewModel {
   iconClass?: string | null;
   isTextualValue?: boolean;
   routerLink?: string[] | null;
+  queryParams?: Record<string, string> | null;
+}
+
+export interface ParkItemDetailNavigationLinkViewModel {
+  routerLink: string[];
+  queryParams?: Record<string, string> | null;
 }
 
 export interface ParkItemDetailSpecGroupViewModel {
@@ -72,6 +78,10 @@ export interface ParkItemDetailViewModel {
   homeLink: string[];
   parkLink: string[] | null;
   itemsLink: string[] | null;
+  categoryNavigation: ParkItemDetailNavigationLinkViewModel | null;
+  typeNavigation: ParkItemDetailNavigationLinkViewModel | null;
+  subtypeNavigation: ParkItemDetailNavigationLinkViewModel | null;
+  zoneNavigation: ParkItemDetailNavigationLinkViewModel | null;
   description: string | null;
   manufacturerName: string | null;
   modelName: string | null;

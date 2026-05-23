@@ -37,10 +37,45 @@
 
           <div class="item-detail-hero__main">
             <div class="item-detail-hero__tags">
-              <app-ui-chip tone="primary">{{ currentDetail.categoryLabelKey | translate }}</app-ui-chip>
-              <app-ui-chip tone="soft">{{ currentDetail.typeLabelKey | translate }}</app-ui-chip>
-              <app-ui-chip tone="soft" *ngIf="currentDetail.subtype">{{ currentDetail.subtype }}</app-ui-chip>
-              <app-ui-chip tone="soft" *ngIf="currentDetail.zoneName">{{ currentDetail.zoneName }}</app-ui-chip>
+              <a
+                *ngIf="currentDetail.categoryNavigation as categoryNavigation; else plainCategoryChip"
+                class="item-detail-hero__tag-link"
+                [routerLink]="categoryNavigation.routerLink"
+                [queryParams]="categoryNavigation.queryParams ?? null">
+                <app-ui-chip tone="primary">{{ currentDetail.categoryLabelKey | translate }}</app-ui-chip>
+              </a>
+              <ng-template #plainCategoryChip>
+                <app-ui-chip tone="primary">{{ currentDetail.categoryLabelKey | translate }}</app-ui-chip>
+              </ng-template>
+
+              <a
+                *ngIf="currentDetail.typeNavigation as typeNavigation; else plainTypeChip"
+                class="item-detail-hero__tag-link"
+                [routerLink]="typeNavigation.routerLink"
+                [queryParams]="typeNavigation.queryParams ?? null">
+                <app-ui-chip tone="soft">{{ currentDetail.typeLabelKey | translate }}</app-ui-chip>
+              </a>
+              <ng-template #plainTypeChip>
+                <app-ui-chip tone="soft">{{ currentDetail.typeLabelKey | translate }}</app-ui-chip>
+              </ng-template>
+
+              <a
+                *ngIf="currentDetail.subtypeNavigation as subtypeNavigation"
+                class="item-detail-hero__tag-link"
+                [routerLink]="subtypeNavigation.routerLink"
+                [queryParams]="subtypeNavigation.queryParams ?? null">
+                <app-ui-chip tone="soft">{{ currentDetail.subtype }}</app-ui-chip>
+              </a>
+              <app-ui-chip tone="soft" *ngIf="currentDetail.subtype && !currentDetail.subtypeNavigation">{{ currentDetail.subtype }}</app-ui-chip>
+
+              <a
+                *ngIf="currentDetail.zoneNavigation as zoneNavigation"
+                class="item-detail-hero__tag-link"
+                [routerLink]="zoneNavigation.routerLink"
+                [queryParams]="zoneNavigation.queryParams ?? null">
+                <app-ui-chip tone="soft">{{ currentDetail.zoneName }}</app-ui-chip>
+              </a>
+              <app-ui-chip tone="soft" *ngIf="currentDetail.zoneName && !currentDetail.zoneNavigation">{{ currentDetail.zoneName }}</app-ui-chip>
             </div>
 
             <h1 class="item-detail-hero__name">{{ currentDetail.name }}</h1>
@@ -51,7 +86,19 @@
                 {{ currentDetail.parkName }}
               </a>
               <span *ngIf="!currentDetail.parkLink">{{ currentDetail.parkName }}</span>
-              <span *ngIf="currentDetail.zoneName"> · {{ currentDetail.zoneName }}</span>
+              <ng-container *ngIf="currentDetail.zoneName">
+                <span>·</span>
+                <a
+                  *ngIf="currentDetail.zoneNavigation as zoneNavigation; else plainHeroZone"
+                  class="public-inline-link"
+                  [routerLink]="zoneNavigation.routerLink"
+                  [queryParams]="zoneNavigation.queryParams ?? null">
+                  {{ currentDetail.zoneName }}
+                </a>
+                <ng-template #plainHeroZone>
+                  <span>{{ currentDetail.zoneName }}</span>
+                </ng-template>
+              </ng-container>
             </p>
           </div>
         </div>
@@ -174,7 +221,11 @@
                 <i [class]="row.iconClass" aria-hidden="true"></i>
               </span>
               <span class="detail-data-row__label">{{ row.labelKey | translate }}</span>
-              <a *ngIf="row.routerLink; else plainDetailRowValue" class="detail-data-row__value detail-data-row__value--link" [routerLink]="row.routerLink">
+              <a
+                *ngIf="row.routerLink; else plainDetailRowValue"
+                class="detail-data-row__value detail-data-row__value--link"
+                [routerLink]="row.routerLink"
+                [queryParams]="row.queryParams ?? null">
                 {{ row.valueKey ? (row.valueKey | translate) : row.value }}
               </a>
               <ng-template #plainDetailRowValue>
@@ -259,8 +310,18 @@
           </app-ui-section-header>
 
           <div class="sidebar-row" *ngFor="let row of currentDetail.summaryRows">
-            <span>{{ row.labelKey | translate }}</span>
-            <strong>{{ row.valueKey ? (row.valueKey | translate) : row.value }}</strong>
+            <span class="sidebar-row__label">{{ row.labelKey | translate }}</span>
+            <a
+              *ngIf="row.routerLink; else plainSummaryRowValue"
+              class="sidebar-row__value sidebar-row__value--link"
+              [routerLink]="row.routerLink"
+              [queryParams]="row.queryParams ?? null">
+              <span>{{ row.valueKey ? (row.valueKey | translate) : row.value }}</span>
+              <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <ng-template #plainSummaryRowValue>
+              <strong class="sidebar-row__value">{{ row.valueKey ? (row.valueKey | translate) : row.value }}</strong>
+            </ng-template>
           </div>
         </section>
 

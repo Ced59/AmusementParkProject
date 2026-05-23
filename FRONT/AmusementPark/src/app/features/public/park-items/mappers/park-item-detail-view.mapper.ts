@@ -23,6 +23,7 @@ import {
   ParkItemAccessConditionViewModel,
   ParkItemAccessConditionMetricViewModel,
   ParkItemDetailRowViewModel,
+  ParkItemDetailNavigationLinkViewModel,
   ParkItemDetailSpecGroupViewModel,
   ParkItemDetailViewModel,
   ParkItemPhotoViewModel,
@@ -53,6 +54,8 @@ export function mapParkItemToDetailViewModel(
   const locationPoints: ParkItemLocationPointViewModel[] = buildLocationPoints(item, currentLanguage);
   const hasPreciseLocations: boolean = locationPoints.some((point: ParkItemLocationPointViewModel) => !point.isGeneralFallback);
   const galleryPhotos: ParkItemPhotoViewModel[] = buildPhotos(photos, imageTags);
+  const itemsLink: string[] | null = buildItemsLink(park, currentLanguage);
+  const parkLink: string[] | null = buildParkLink(park, currentLanguage);
 
   return {
     name: item.name?.trim() ?? '',
@@ -62,8 +65,12 @@ export function mapParkItemToDetailViewModel(
     typeTone: resolveParkItemTypeTone(item.type, item.category),
     parkName: park?.name?.trim() ?? null,
     homeLink: ['/', currentLanguage, 'home'],
-    parkLink: buildParkLink(park, currentLanguage),
-    itemsLink: buildItemsLink(park, currentLanguage),
+    parkLink,
+    itemsLink,
+    categoryNavigation: buildCategoryNavigation(itemsLink, item.category),
+    typeNavigation: buildTypeNavigation(itemsLink, item.type),
+    subtypeNavigation: buildSearchNavigation(itemsLink, item.subtype),
+    zoneNavigation: buildZoneNavigation(itemsLink, item.zoneId),
     description: resolveParkItemRichDescription(item, currentLanguage),
     manufacturerName,
     modelName: trimOrNull(item.attractionDetails?.model),
@@ -71,7 +78,7 @@ export function mapParkItemToDetailViewModel(
     zoneName,
     subtype: trimOrNull(item.subtype),
     spotlightRows: buildSpotlightRows(item, performanceRows),
-    summaryRows: buildSummaryRows(item, park, zoneName),
+    summaryRows: buildSummaryRows(item, park, zoneName, currentLanguage),
     specGroups,
     photos: galleryPhotos,
     photoCategories: buildPhotoCategories(galleryPhotos),
@@ -171,15 +178,96 @@ function buildExperienceRows(item: ParkItem, currentLanguage: string): ParkItemD
   return rows;
 }
 
-function buildSummaryRows(item: ParkItem, park: Park | null, zoneName: string | null): ParkItemDetailRowViewModel[] {
+function buildSummaryRows(
+  item: ParkItem,
+  park: Park | null,
+  zoneName: string | null,
+  currentLanguage: string
+): ParkItemDetailRowViewModel[] {
   const rows: ParkItemDetailRowViewModel[] = [];
+  const itemsLink: string[] | null = buildItemsLink(park, currentLanguage);
 
-  pushRow(rows, 'parkItems.fields.category', '', getParkItemCategoryTranslationKey(item.category), 'pi pi-tags');
-  pushRow(rows, 'parkItems.fields.type', '', getParkItemTypeTranslationKey(item.type), 'pi pi-star');
-  pushRow(rows, 'parkItems.fields.subtype', item.subtype, null, 'pi pi-tag');
-  pushRow(rows, 'parkItems.fields.park', park?.name, null, 'pi pi-map');
-  pushRow(rows, 'parkItems.fields.zone', zoneName, null, 'pi pi-map-marker');
+  pushRow(
+    rows,
+    'parkItems.fields.category',
+    '',
+    getParkItemCategoryTranslationKey(item.category),
+    'pi pi-tags',
+    itemsLink,
+    buildCategoryQueryParams(item.category)
+  );
+  pushRow(
+    rows,
+    'parkItems.fields.type',
+    '',
+    getParkItemTypeTranslationKey(item.type),
+    'pi pi-star',
+    itemsLink,
+    buildTypeQueryParams(item.type)
+  );
+  pushRow(
+    rows,
+    'parkItems.fields.subtype',
+    item.subtype,
+    null,
+    'pi pi-tag',
+    itemsLink,
+    buildSearchQueryParams(item.subtype)
+  );
+  pushRow(rows, 'parkItems.fields.park', park?.name, null, 'pi pi-map', buildParkLink(park, currentLanguage));
+  pushRow(rows, 'parkItems.fields.zone', zoneName, null, 'pi pi-map-marker', itemsLink, buildZoneQueryParams(item.zoneId));
+
   return rows;
+}
+
+function buildCategoryNavigation(itemsLink: string[] | null, category: string | null | undefined): ParkItemDetailNavigationLinkViewModel | null {
+  return buildNavigation(itemsLink, buildCategoryQueryParams(category));
+}
+
+function buildTypeNavigation(itemsLink: string[] | null, type: string | null | undefined): ParkItemDetailNavigationLinkViewModel | null {
+  return buildNavigation(itemsLink, buildTypeQueryParams(type));
+}
+
+function buildZoneNavigation(itemsLink: string[] | null, zoneId: string | null | undefined): ParkItemDetailNavigationLinkViewModel | null {
+  return buildNavigation(itemsLink, buildZoneQueryParams(zoneId));
+}
+
+function buildSearchNavigation(itemsLink: string[] | null, searchTerm: string | null | undefined): ParkItemDetailNavigationLinkViewModel | null {
+  return buildNavigation(itemsLink, buildSearchQueryParams(searchTerm));
+}
+
+function buildNavigation(
+  itemsLink: string[] | null,
+  queryParams: Record<string, string> | null
+): ParkItemDetailNavigationLinkViewModel | null {
+  if (!itemsLink || !queryParams) {
+    return null;
+  }
+
+  return {
+    routerLink: itemsLink,
+    queryParams
+  };
+}
+
+function buildCategoryQueryParams(category: string | null | undefined): Record<string, string> | null {
+  const normalizedCategory: string | null = trimOrNull(category);
+  return normalizedCategory ? { category: normalizedCategory } : null;
+}
+
+function buildTypeQueryParams(type: string | null | undefined): Record<string, string> | null {
+  const normalizedType: string | null = trimOrNull(type);
+  return normalizedType ? { type: normalizedType } : null;
+}
+
+function buildZoneQueryParams(zoneId: string | null | undefined): Record<string, string> | null {
+  const normalizedZoneId: string | null = trimOrNull(zoneId);
+  return normalizedZoneId ? { zone: normalizedZoneId } : null;
+}
+
+function buildSearchQueryParams(searchTerm: string | null | undefined): Record<string, string> | null {
+  const normalizedSearchTerm: string | null = trimOrNull(searchTerm);
+  return normalizedSearchTerm ? { search: normalizedSearchTerm } : null;
 }
 
 function buildSpotlightRows(
@@ -615,7 +703,8 @@ function pushRow(
   value: string | null | undefined,
   valueKey: string | null = null,
   iconClass: string | null = null,
-  routerLink: string[] | null = null
+  routerLink: string[] | null = null,
+  queryParams: Record<string, string> | null = null
 ): void {
   const trimmedValue: string = value?.trim() ?? '';
 
@@ -623,7 +712,15 @@ function pushRow(
     return;
   }
 
-  rows.push({ labelKey, value: trimmedValue, valueKey, iconClass, isTextualValue: isTextualDetailValue(labelKey, trimmedValue, valueKey), routerLink });
+  rows.push({
+    labelKey,
+    value: trimmedValue,
+    valueKey,
+    iconClass,
+    isTextualValue: isTextualDetailValue(labelKey, trimmedValue, valueKey),
+    routerLink,
+    queryParams
+  });
 }
 
 

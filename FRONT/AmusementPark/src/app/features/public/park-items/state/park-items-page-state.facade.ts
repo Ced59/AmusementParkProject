@@ -114,6 +114,7 @@ export class ParkItemsPageStateFacade {
       this.explorer(),
       this.zones(),
       this.filteredItems(),
+      this.typeFilterScopeItems(),
       this.selectedZoneIdSignal(),
       this.screenStateStore.data()?.parkPhotos ?? [],
       this.currentLanguageSignal()
@@ -188,61 +189,8 @@ export class ParkItemsPageStateFacade {
     return this.zonesById()[selectedZoneId] ?? null;
   });
   private readonly hasZones = computed(() => this.zoneCards().length > 0);
-  private readonly filteredItems: Signal<ParkItem[]> = computed(() => {
-    const allItems: ParkItem[] = this.allItems();
-
-    if (allItems.length === 0) {
-      return [];
-    }
-
-    const normalizedSearchTerm: string = this.searchTermSignal().trim().toLowerCase();
-    const selectedCategory: string | null = this.selectedCategorySignal();
-    const selectedType: string | null = this.selectedTypeSignal();
-    const selectedZoneId: string | null = this.selectedZoneIdSignal();
-    const currentLanguage: string = this.currentLanguageSignal();
-    const manufacturersById: Record<string, string> = this.manufacturersById();
-    const zonesById: Record<string, string> = this.zonesById();
-
-    return allItems
-      .filter((item: ParkItem) => {
-        if (selectedCategory && item.category !== selectedCategory) {
-          return false;
-        }
-
-        if (selectedType && item.type !== selectedType) {
-          return false;
-        }
-
-        if (selectedZoneId && item.zoneId !== selectedZoneId) {
-          return false;
-        }
-
-        if (!normalizedSearchTerm) {
-          return true;
-        }
-
-        const manufacturerName: string | null = item.attractionDetails?.manufacturerId
-          ? manufacturersById[item.attractionDetails.manufacturerId] ?? null
-          : null;
-        const zoneName: string | null = item.zoneId ? zonesById[item.zoneId] ?? null : null;
-        const description: string = resolveParkItemDescription(item, currentLanguage) ?? '';
-        const haystack: string = [
-          item.name,
-          item.subtype,
-          description,
-          manufacturerName,
-          item.attractionDetails?.model,
-          item.attractionDetails?.status,
-          zoneName
-        ]
-          .filter((value: string | null | undefined): value is string => !!value)
-          .join(' ')
-          .toLowerCase();
-
-        return haystack.includes(normalizedSearchTerm);
-      })
-      .sort((left: ParkItem, right: ParkItem) => left.name.localeCompare(right.name));
-  });
+  private readonly filteredItems: Signal<ParkItem[]> = computed(() => this.filterItems(true));
+  private readonly typeFilterScopeItems: Signal<ParkItem[]> = computed(() => this.filterItems(false));
 
   constructor(
     private readonly parksApiService: ParksApiService,
@@ -313,6 +261,63 @@ export class ParkItemsPageStateFacade {
         this.screenStateStore.setError('parkItems.list.errorMessage', previousData);
       }
     });
+  }
+
+
+  private filterItems(includeTypeFilter: boolean): ParkItem[] {
+    const allItems: ParkItem[] = this.allItems();
+
+    if (allItems.length === 0) {
+      return [];
+    }
+
+    const normalizedSearchTerm: string = this.searchTermSignal().trim().toLowerCase();
+    const selectedCategory: string | null = this.selectedCategorySignal();
+    const selectedType: string | null = includeTypeFilter ? this.selectedTypeSignal() : null;
+    const selectedZoneId: string | null = this.selectedZoneIdSignal();
+    const currentLanguage: string = this.currentLanguageSignal();
+    const manufacturersById: Record<string, string> = this.manufacturersById();
+    const zonesById: Record<string, string> = this.zonesById();
+
+    return allItems
+      .filter((item: ParkItem) => {
+        if (selectedCategory && item.category !== selectedCategory) {
+          return false;
+        }
+
+        if (selectedType && item.type !== selectedType) {
+          return false;
+        }
+
+        if (selectedZoneId && item.zoneId !== selectedZoneId) {
+          return false;
+        }
+
+        if (!normalizedSearchTerm) {
+          return true;
+        }
+
+        const manufacturerName: string | null = item.attractionDetails?.manufacturerId
+          ? manufacturersById[item.attractionDetails.manufacturerId] ?? null
+          : null;
+        const zoneName: string | null = item.zoneId ? zonesById[item.zoneId] ?? null : null;
+        const description: string = resolveParkItemDescription(item, currentLanguage) ?? '';
+        const haystack: string = [
+          item.name,
+          item.subtype,
+          description,
+          manufacturerName,
+          item.attractionDetails?.model,
+          item.attractionDetails?.status,
+          zoneName
+        ]
+          .filter((value: string | null | undefined): value is string => !!value)
+          .join(' ')
+          .toLowerCase();
+
+        return haystack.includes(normalizedSearchTerm);
+      })
+      .sort((left: ParkItem, right: ParkItem) => left.name.localeCompare(right.name));
   }
 
   private resolveManufacturerName(item: ParkItem): string | null {
