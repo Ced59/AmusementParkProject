@@ -169,10 +169,9 @@
         }">
         <div class="home-results__grid">
           @for (item of results(); track item.originalId) {
-            <app-search-result-card
-              [item]="item"
-              [currentLang]="currentLang()">
-            </app-search-result-card>
+            <app-ui-search-result-card
+              [card]="buildSearchResultCard(item)">
+            </app-ui-search-result-card>
           }
         </div>
 

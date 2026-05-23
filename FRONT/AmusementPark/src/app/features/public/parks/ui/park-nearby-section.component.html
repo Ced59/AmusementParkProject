@@ -32,12 +32,12 @@
       emptyMessageKey: 'parks.detail.nearby.emptyMessage'
     }">
     <div class="park-nearby__grid">
-      <app-park-card
+      <app-ui-park-card
         *ngFor="let park of parks"
         [park]="park"
-        [currentLang]="currentLang"
+        [detailLink]="buildParkLink(park)"
         [compact]="true">
-      </app-park-card>
+      </app-ui-park-card>
     </div>
   </app-page-state>
 </section>

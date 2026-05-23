@@ -1,22 +1,24 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { HomeStatsModel } from '@app/models/home/home-stats.model';
 import { SearchResultItem } from '@app/models/search/search-result-item';
 import { PageStateComponent } from '../shared/page-state/page-state.component';
 import { PaginationComponent } from '../shared/pagination/pagination.component';
 import { EmptyStateComponent } from '../shared/empty-state/empty-state.component';
-import { SearchResultCardComponent } from '../public/search-result-card/search-result-card.component';
 import { PaginationContract } from '@shared/models/contracts';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { HomeFeaturedParkCardModel } from '@app/models/home/home-featured-park-card.model';
-import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
+import { getSearchCategoryTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { resolveLocalizedCountryName } from '@shared/utils/display/country-display.helpers';
+import { buildPublicParkItemRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { UiSearchPanelSelectFilterModel } from '@ui/forms/models/ui-search-panel.model';
 import { UiSearchPanelComponent } from '@ui/forms';
 import { UiButtonDirective, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
-import { UiFeaturedParkCardComponent } from '@ui/cards';
+import { UiPrimitiveTone } from '@ui/primitives/models/ui-primitive-variant.model';
+import { UiFeaturedParkCardComponent, UiSearchResultCardComponent, UiSearchResultCardModel } from '@ui/cards';
 
 @Component({
   selector: 'app-home-view',
@@ -28,7 +30,7 @@ import { UiFeaturedParkCardComponent } from '@ui/cards';
     PageStateComponent,
     PaginationComponent,
     EmptyStateComponent,
-    SearchResultCardComponent,
+    UiSearchResultCardComponent,
     TranslateModule,
     UiFeaturedParkCardComponent,
     UiButtonDirective,
@@ -38,6 +40,9 @@ import { UiFeaturedParkCardComponent } from '@ui/cards';
   ]
 })
 export class HomeViewComponent {
+  constructor(private readonly translateService: TranslateService) {
+  }
+
   protected readonly heroCardStyles: { tone: string; iconClass: string; tagKey: string }[] = [
     { tone: 'primary', iconClass: 'pi pi-map-marker', tagKey: 'home.heroCards.featured' },
     { tone: 'lime', iconClass: 'pi pi-compass', tagKey: 'home.heroCards.sensations' },
@@ -74,11 +79,166 @@ export class HomeViewComponent {
   }
 
   protected buildParkLink(park: ParkCardModel): string[] | null {
-    if (!park.id || !park.name) {
-      return null;
+    return buildPublicParkRouteCommands({
+      language: this.currentLang(),
+      parkId: park.id,
+      parkName: park.name
+    });
+  }
+
+  protected buildSearchResultCard(item: SearchResultItem): UiSearchResultCardModel {
+    return {
+      title: item.title,
+      description: item.description ?? null,
+      logoImageId: item.logoImageId?.trim() ?? null,
+      iconClass: this.resolveSearchResultIconClass(item),
+      tone: this.resolveSearchResultTone(item),
+      categoryLabelKey: getSearchCategoryTranslationKey(item.category),
+      metaParts: this.buildSearchResultMetaParts(item),
+      detailLink: this.buildSearchResultLink(item),
+      actionLabelKey: 'home.search.openResult'
+    };
+  }
+
+  private buildSearchResultMetaParts(item: SearchResultItem): string[] {
+    const metaParts: string[] = [];
+
+    if (item.city?.trim()) {
+      metaParts.push(item.city.trim());
     }
 
-    return ['/', this.currentLang(), 'park', park.id, buildParkSlug(park.name)];
+    const countryName: string | null = resolveLocalizedCountryName(item.countryCode, this.currentLang());
+    if (countryName) {
+      metaParts.push(countryName);
+    }
+
+    if (this.isParkSearchResult(item) && item.attractionCount !== null && item.attractionCount !== undefined) {
+      metaParts.push(`${new Intl.NumberFormat(this.currentLang()).format(item.attractionCount)} ${this.searchResultsAttractionsLabel}`);
+      return metaParts;
+    }
+
+    const subtitle: string | null = this.resolveSearchResultSubtitle(item);
+    if (subtitle) {
+      metaParts.push(subtitle);
+    }
+
+    return metaParts;
+  }
+
+  private buildSearchResultLink(item: SearchResultItem): string[] | null {
+    const originalId: string = item.originalId?.trim() ?? '';
+    const title: string = item.title?.trim() ?? '';
+
+    if (originalId.startsWith('park_')) {
+      return buildPublicParkRouteCommands({
+        language: this.currentLang(),
+        parkId: originalId.substring(5),
+        parkName: title
+      });
+    }
+
+    if (originalId.startsWith('parkItem_')) {
+      return buildPublicParkItemRouteCommands({
+        language: this.currentLang(),
+        parkId: item.parentParkId,
+        parkName: item.parentParkName,
+        itemId: originalId.substring(9),
+        itemName: title
+      });
+    }
+
+    return null;
+  }
+
+  private resolveSearchResultSubtitle(item: SearchResultItem): string | null {
+    const subtitle: string = item.subtitle?.trim() ?? '';
+    if (subtitle.length > 0) {
+      return subtitle;
+    }
+
+    const parentParkName: string = item.parentParkName?.trim() ?? '';
+    return parentParkName.length > 0 ? parentParkName : null;
+  }
+
+  private resolveSearchResultIconClass(item: SearchResultItem): string {
+    const category: string = this.normalizeSearchResultCategory(item.category);
+
+    if (category === 'attraction' || category.includes('item')) {
+      return 'pi pi-bolt';
+    }
+
+    if (category === 'hotel') {
+      return 'pi pi-home';
+    }
+
+    if (category === 'restaurant') {
+      return 'pi pi-shop';
+    }
+
+    if (category === 'shop') {
+      return 'pi pi-shopping-bag';
+    }
+
+    if (category === 'show') {
+      return 'pi pi-star';
+    }
+
+    if (category === 'operator') {
+      return 'pi pi-building';
+    }
+
+    if (category === 'manufacturer') {
+      return 'pi pi-wrench';
+    }
+
+    if (category === 'founder') {
+      return 'pi pi-user';
+    }
+
+    return 'pi pi-map';
+  }
+
+  private resolveSearchResultTone(item: SearchResultItem): UiPrimitiveTone {
+    const category: string = this.normalizeSearchResultCategory(item.category);
+
+    if (category === 'attraction' || category.includes('item')) {
+      return 'sky';
+    }
+
+    if (category === 'hotel' || category === 'restaurant') {
+      return 'gold';
+    }
+
+    if (category === 'shop' || category === 'show') {
+      return 'rose';
+    }
+
+    if (category === 'operator') {
+      return 'lime';
+    }
+
+    if (category === 'manufacturer') {
+      return 'purple';
+    }
+
+    return 'primary';
+  }
+
+  private isParkSearchResult(item: SearchResultItem): boolean {
+    return this.normalizeSearchResultCategory(item.category) === 'park'
+      || this.normalizeSearchResultCategory(item.resourceType) === 'parks';
+  }
+
+  private normalizeSearchResultCategory(value: string | null | undefined): string {
+    return (value ?? '')
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, '')
+      .replace(/s$/, '');
+  }
+
+  private get searchResultsAttractionsLabel(): string {
+    return this.translateService.instant('home.search.attractionsLabel') as string;
   }
 
   protected formatStatValue(value: number | null | undefined): string {

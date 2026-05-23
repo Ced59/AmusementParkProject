@@ -3,13 +3,14 @@ import { NgFor } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
 import { PaginationComponent } from '@app/components/shared/pagination/pagination.component';
-import { ParkCardComponent } from '@app/components/public/park-card/park-card.component';
 import { PaginationContract } from '@shared/models/contracts';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective } from '@ui/primitives';
 import { UiSearchPanelComponent } from '@ui/forms';
+import { UiParkCardComponent } from '@ui/cards';
+import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkListMapComponent } from './park-list-map.component';
 
@@ -18,7 +19,7 @@ import { ParkListMapComponent } from './park-list-map.component';
   templateUrl: './park-list-view.component.html',
   styleUrls: ['./park-list-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, PaginationComponent, NgFor, ParkCardComponent, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective, UiSearchPanelComponent, ParkListMapComponent]
+  imports: [PageStateComponent, PaginationComponent, NgFor, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective, UiSearchPanelComponent, UiParkCardComponent, ParkListMapComponent]
 })
 export class ParkListViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;
@@ -40,6 +41,14 @@ export class ParkListViewComponent {
   @Output() resultParkFocused: EventEmitter<ParkCardModel> = new EventEmitter<ParkCardModel>();
   @Output() selectedParkCleared: EventEmitter<void> = new EventEmitter<void>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
+
+  protected buildParkLink(park: ParkCardModel): string[] | null {
+    return buildPublicParkRouteCommands({
+      language: this.currentLang(),
+      parkId: park.id,
+      parkName: park.name
+    });
+  }
 
   onSearchInput(value: string): void {
     this.searchInputChanged.emit(value);

@@ -102,10 +102,10 @@
           [attr.aria-label]="'parks.results.focusOnMap' | translate:{ name: park.name }"
           (click)="onResultCardClick($event, park)"
           (keydown)="onResultCardKeydown($event, park)">
-          <app-park-card
+          <app-ui-park-card
             [park]="park"
-            [currentLang]="currentLang()">
-          </app-park-card>
+            [detailLink]="buildParkLink(park)">
+          </app-ui-park-card>
         </div>
       </div>
 

@@ -536,7 +536,7 @@ a.public-feature-card:hover {
   }
 }
 
-.app-search-result-card {
+.ui-search-result-card {
   --search-result-accent: var(--c-orange);
   --search-result-soft: rgba(255, 90, 31, 0.10);
 
@@ -554,7 +554,7 @@ a.public-feature-card:hover {
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
-.app-search-result-card::before {
+.ui-search-result-card::before {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
@@ -564,38 +564,38 @@ a.public-feature-card:hover {
   opacity: 0.9;
 }
 
-.app-search-result-card:hover {
+.ui-search-result-card:hover {
   transform: translateX(3px);
   border-color: color-mix(in srgb, var(--search-result-accent) 36%, var(--border-3));
   box-shadow: var(--shadow-lift);
 }
 
-.app-search-result-card--sky {
+.ui-search-result-card--sky {
   --search-result-accent: var(--c-sky);
   --search-result-soft: rgba(56, 197, 245, 0.12);
 }
 
-.app-search-result-card--gold {
+.ui-search-result-card--gold {
   --search-result-accent: var(--c-gold);
   --search-result-soft: rgba(255, 182, 39, 0.12);
 }
 
-.app-search-result-card--purple {
+.ui-search-result-card--purple {
   --search-result-accent: var(--c-purple);
   --search-result-soft: rgba(155, 93, 229, 0.12);
 }
 
-.app-search-result-card--lime {
+.ui-search-result-card--lime {
   --search-result-accent: var(--c-lime);
   --search-result-soft: rgba(196, 255, 39, 0.10);
 }
 
-.app-search-result-card--rose {
+.ui-search-result-card--rose {
   --search-result-accent: var(--c-rose);
   --search-result-soft: rgba(255, 77, 139, 0.12);
 }
 
-.app-search-result-card__visual {
+.ui-search-result-card__visual {
   display: grid;
   width: 3.55rem;
   height: 3.55rem;
@@ -608,8 +608,8 @@ a.public-feature-card:hover {
     rgba(255, 210, 140, 0.035);
 }
 
-.app-search-result-card__icon,
-.app-search-result-card__placeholder {
+.ui-search-result-card__icon,
+.ui-search-result-card__placeholder {
   display: grid;
   width: 100%;
   height: 100%;
@@ -619,7 +619,7 @@ a.public-feature-card:hover {
   font-size: 1.35rem;
 }
 
-.app-search-result-card__logo {
+.ui-search-result-card__logo {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -627,19 +627,19 @@ a.public-feature-card:hover {
   background: rgba(255, 255, 255, 0.035);
 }
 
-.app-search-result-card__content {
+.ui-search-result-card__content {
   display: grid;
   gap: 0.5rem;
   min-width: 0;
 }
 
-.app-search-result-card__headline {
+.ui-search-result-card__headline {
   display: grid;
   gap: 0.2rem;
   min-width: 0;
 }
 
-.app-search-result-card__title {
+.ui-search-result-card__title {
   margin: 0;
   overflow: hidden;
   color: var(--heading);
@@ -652,7 +652,7 @@ a.public-feature-card:hover {
   white-space: nowrap;
 }
 
-.app-search-result-card__meta {
+.ui-search-result-card__meta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
@@ -663,19 +663,19 @@ a.public-feature-card:hover {
   line-height: 1.45;
 }
 
-.app-search-result-card__meta span {
+.ui-search-result-card__meta span {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
 }
 
-.app-search-result-card__meta span + span::before {
+.ui-search-result-card__meta span + span::before {
   content: "·";
   color: var(--text-faint);
   font-weight: 900;
 }
 
-.app-search-result-card__description {
+.ui-search-result-card__description {
   display: -webkit-box;
   max-height: 3.2rem;
   overflow: hidden;
@@ -686,24 +686,24 @@ a.public-feature-card:hover {
   -webkit-line-clamp: 2;
 }
 
-.app-search-result-card__description :where(p, ul, ol, blockquote, pre, table) {
+.ui-search-result-card__description :where(p, ul, ol, blockquote, pre, table) {
   margin: 0 0 0.3rem;
 }
 
-.app-search-result-card__description :where(p:last-child, ul:last-child, ol:last-child, blockquote:last-child, pre:last-child) {
+.ui-search-result-card__description :where(p:last-child, ul:last-child, ol:last-child, blockquote:last-child, pre:last-child) {
   margin-bottom: 0;
 }
 
-.app-search-result-card__description :where(strong, b) {
+.ui-search-result-card__description :where(strong, b) {
   color: var(--heading);
   font-weight: 900;
 }
 
-.app-search-result-card__description :where(em, i) {
+.ui-search-result-card__description :where(em, i) {
   color: var(--text);
 }
 
-.app-search-result-card__actions {
+.ui-search-result-card__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
@@ -711,7 +711,7 @@ a.public-feature-card:hover {
   justify-content: flex-end;
 }
 
-.app-search-result-card__category {
+.ui-search-result-card__category {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -729,17 +729,17 @@ a.public-feature-card:hover {
   white-space: nowrap;
 }
 
-.app-search-result-card__link {
+.ui-search-result-card__link {
   white-space: nowrap;
 }
 
 @media (max-width: 680px) {
-  .app-search-result-card {
+  .ui-search-result-card {
     grid-template-columns: auto minmax(0, 1fr);
     align-items: start;
   }
 
-  .app-search-result-card__actions {
+  .ui-search-result-card__actions {
     grid-column: 1 / -1;
     justify-content: flex-start;
   }
