@@ -19,7 +19,7 @@ Les limites s'appliquent par IP après traitement des `ForwardedHeaders`. La fia
 
 ## Choix technique
 
-Le projet conserve le middleware `AspNetCoreRateLimit` existant pour le quota global :
+Le quota global est maintenant appliqué par le middleware natif ASP.NET Core `RateLimiter`, afin que les réponses `429` utilisent aussi le contrat `ProblemDetails` standardisé en M18.7. Le package `AspNetCoreRateLimit` a été retiré du projet WebAPI. La configuration reste lue depuis le bloc historique :
 
 ```json
 "IpRateLimiting": {
@@ -33,7 +33,7 @@ Le projet conserve le middleware `AspNetCoreRateLimit` existant pour le quota gl
 }
 ```
 
-M18.6 ajoute en complément les policies natives ASP.NET Core via `EnableRateLimiting`, uniquement sur les actions sensibles. Cela évite de limiter tout le site public et rend le code plus lisible : chaque action sensible porte sa policy explicitement.
+Les policies ciblées auth restent déclarées via `EnableRateLimiting`, uniquement sur les actions sensibles. Cela évite de limiter tout le site public avec des seuils trop agressifs et rend le code plus lisible : chaque action sensible porte sa policy explicitement.
 
 ## Fichiers concernés
 
@@ -47,13 +47,17 @@ M18.6 ajoute en complément les policies natives ASP.NET Core via `EnableRateLim
 
 ## Réponse attendue en cas de dépassement
 
-L'API renvoie `429 Too Many Requests` avec un corps JSON minimal :
+L'API renvoie `429 Too Many Requests` avec un corps `application/problem+json` :
 
 ```json
 {
-  "statusCode": 429,
-  "message": "Too many authentication requests. Please retry later.",
-  "traceId": "..."
+  "type": "https://amusement-parks.fun/problems/rate-limit-exceeded",
+  "title": "Too many requests.",
+  "status": 429,
+  "detail": "Too many requests were sent in a short period. Please retry later.",
+  "instance": "/auth/login",
+  "traceId": "...",
+  "errorCode": "rate-limit.exceeded"
 }
 ```
 

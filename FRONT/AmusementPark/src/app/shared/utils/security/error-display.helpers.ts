@@ -1,3 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
+
+import { ApiProblemDetails } from '@shared/models/contracts';
+
 const GENERIC_ERROR_MESSAGE: string = 'Une erreur est survenue.';
 const TECHNICAL_MESSAGE_PATTERNS: RegExp[] = [
   /\bat\s+[\w$.<>]+\(/i,
@@ -11,12 +15,21 @@ const TECHNICAL_MESSAGE_PATTERNS: RegExp[] = [
 ];
 
 export function extractSafeDisplayErrorMessage(error: unknown, fallback: string = GENERIC_ERROR_MESSAGE): string {
-  const candidate: string | null = extractErrorMessageCandidate(error);
-  if (candidate === null) {
+  const problemDetails: ApiProblemDetails | null = extractApiProblemDetails(error);
+  if (problemDetails === null) {
     return fallback;
   }
 
+  const candidate: string | null = problemDetails.detail ?? problemDetails.title ?? null;
   return sanitizeDisplayMessage(candidate, fallback);
+}
+
+export function extractApiProblemDetails(error: unknown): ApiProblemDetails | null {
+  if (error instanceof HttpErrorResponse) {
+    return isApiProblemDetails(error.error) ? error.error : null;
+  }
+
+  return isApiProblemDetails(error) ? error : null;
 }
 
 export function sanitizeDisplayMessage(value: string | null | undefined, fallback: string = GENERIC_ERROR_MESSAGE): string {
@@ -40,32 +53,18 @@ export function sanitizeDisplayMessage(value: string | null | undefined, fallbac
   return normalizedValue;
 }
 
-function extractErrorMessageCandidate(error: unknown): string | null {
-  if (typeof error === 'string') {
-    return error;
+function isApiProblemDetails(value: unknown): value is ApiProblemDetails {
+  if (typeof value !== 'object' || value === null) {
+    return false;
   }
 
-  if (typeof error !== 'object' || error === null) {
-    return null;
-  }
+  const candidate: Record<string, unknown> = value as Record<string, unknown>;
+  const status: unknown = candidate['status'];
+  const title: unknown = candidate['title'];
+  const detail: unknown = candidate['detail'];
 
-  const errorRecord: Record<string, unknown> = error as Record<string, unknown>;
-  const nestedError: unknown = errorRecord['error'];
-
-  if (typeof nestedError === 'string') {
-    return nestedError;
-  }
-
-  if (typeof nestedError === 'object' && nestedError !== null) {
-    const nestedRecord: Record<string, unknown> = nestedError as Record<string, unknown>;
-    const nestedMessage: unknown = nestedRecord['message'] ?? nestedRecord['Message'];
-    if (typeof nestedMessage === 'string') {
-      return nestedMessage;
-    }
-  }
-
-  const message: unknown = errorRecord['message'] ?? errorRecord['Message'];
-  return typeof message === 'string' ? message : null;
+  return typeof status === 'number'
+    && (typeof title === 'string' || typeof detail === 'string');
 }
 
 function stripHtml(value: string): string {

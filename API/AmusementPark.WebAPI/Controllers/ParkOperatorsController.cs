@@ -72,7 +72,7 @@ public sealed class ParkOperatorsController : ControllerBase
     {
         if (request.AdminReviewStatus is null)
         {
-            return this.BadRequest("adminReviewStatus is required.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "adminReviewStatus is required.", "admin-review-status.required");
         }
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParkOperatorsBulkReviewStatusCommandHandler.HandleAsync(

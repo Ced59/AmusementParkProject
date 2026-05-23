@@ -88,7 +88,7 @@ public sealed class AuthController : ControllerBase
         if (!this.IsAllowedCredentialOrigin())
         {
             this.refreshTokenCookieService.DeleteRefreshTokenCookie(this.Response);
-            return CreateLegacyError(StatusCodes.Status403Forbidden, "Origin is not allowed for credentialed authentication requests.");
+            return this.ToProblemDetailsResult(StatusCodes.Status403Forbidden, "Origin is not allowed for credentialed authentication requests.", "auth.origin-not-allowed");
         }
 
         string? refreshTokenFromCookie = this.refreshTokenCookieService.GetRefreshToken(this.Request);
@@ -125,7 +125,7 @@ public sealed class AuthController : ControllerBase
         if (!this.IsAllowedCredentialOrigin())
         {
             this.refreshTokenCookieService.DeleteRefreshTokenCookie(this.Response);
-            return CreateLegacyError(StatusCodes.Status403Forbidden, "Origin is not allowed for credentialed authentication requests.");
+            return this.ToProblemDetailsResult(StatusCodes.Status403Forbidden, "Origin is not allowed for credentialed authentication requests.", "auth.origin-not-allowed");
         }
 
         string? refreshToken = this.refreshTokenCookieService.GetRefreshToken(this.Request);
@@ -148,7 +148,7 @@ public sealed class AuthController : ControllerBase
     {
         if (!Enum.TryParse(provider, true, out ExternalLoginProvider parsedProvider))
         {
-            return CreateLegacyError(StatusCodes.Status400BadRequest, "External authentication provider is not supported.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "External authentication provider is not supported.", "auth.external-provider-not-supported");
         }
 
         ProvisionExternalUserRequest applicationRequest = new ProvisionExternalUserRequest
@@ -183,7 +183,7 @@ public sealed class AuthController : ControllerBase
         AuthenticationScheme? scheme = await this.authenticationSchemeProvider.GetSchemeAsync("Facebook");
         if (scheme is null)
         {
-            return this.BadRequest("Facebook authentication is not configured.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Facebook authentication is not configured.", "auth.facebook-not-configured");
         }
 
         AuthenticationProperties authenticationProperties = new AuthenticationProperties
@@ -201,13 +201,13 @@ public sealed class AuthController : ControllerBase
         AuthenticationScheme? scheme = await this.authenticationSchemeProvider.GetSchemeAsync("Facebook");
         if (scheme is null)
         {
-            return this.BadRequest("Facebook authentication is not configured.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Facebook authentication is not configured.", "auth.facebook-not-configured");
         }
 
         AuthenticateResult result = await this.HttpContext.AuthenticateAsync("Facebook");
         if (!result.Succeeded)
         {
-            return this.BadRequest("Error from Facebook authentication");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Error from Facebook authentication.", "auth.facebook-error");
         }
 
         return this.Ok();
@@ -250,15 +250,4 @@ public sealed class AuthController : ControllerBase
         return allowedOrigins.Contains(normalizedOrigin, StringComparer.OrdinalIgnoreCase);
     }
 
-    private static ObjectResult CreateLegacyError(int statusCode, string message)
-    {
-        return new ObjectResult(new
-        {
-            StatusCode = statusCode,
-            Message = message,
-        })
-        {
-            StatusCode = statusCode,
-        };
-    }
 }

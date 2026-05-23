@@ -135,3 +135,11 @@ M18.6 renforce désormais ces endpoints avec des policies de rate limiting cibl�
 - Document d'inventaire mis à jour : oui.
 - Route mutation métier publique non justifiée : aucune détectée.
 - Passage à M18.2 dans ce livrable : oui.
+
+## M18.7 — Contrat d'erreur standardisé
+
+Les erreurs HTTP de l'API utilisent désormais `application/problem+json` / RFC 7807 avec `traceId` et `errorCode` lorsque disponible.
+
+L'ancien format `{ statusCode, message }` n'est plus une cible acceptée. Les contrôleurs, les erreurs applicatives, la validation modèle, les refus 401/403, les erreurs 404 sans corps, le rate limiting et les exceptions non gérées doivent converger vers `ProblemDetails`.
+
+Voir `docs/security/problem-details-error-contract.md`.

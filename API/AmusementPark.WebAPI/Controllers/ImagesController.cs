@@ -91,7 +91,7 @@ public sealed class ImagesController : ControllerBase
     {
         if (image.File is null)
         {
-            return this.BadRequest(new { StatusCode = 400, Message = "No image filename provided." });
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "No image filename provided.", "image.file-required");
         }
 
         await using System.IO.Stream content = image.File.OpenReadStream();
@@ -138,12 +138,12 @@ public sealed class ImagesController : ControllerBase
     {
         if (!Enum.TryParse<ImageOwnerTypeDto>(ownerType, true, out ImageOwnerTypeDto parsedOwnerType))
         {
-            return this.BadRequest("Invalid ownerType.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid ownerType.", "image.owner-type-invalid");
         }
 
         if (!Enum.TryParse<ImageCategoryDto>(category, true, out ImageCategoryDto parsedCategory))
         {
-            return this.BadRequest("Invalid category.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid category.", "image.category-invalid");
         }
 
         ApplicationResult<Image> result = await this.getCurrentImageQueryHandler.HandleAsync(
@@ -165,12 +165,12 @@ public sealed class ImagesController : ControllerBase
     {
         if (!Enum.TryParse<ImageOwnerTypeDto>(ownerType, true, out ImageOwnerTypeDto parsedOwnerType))
         {
-            return this.BadRequest("Invalid ownerType.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid ownerType.", "image.owner-type-invalid");
         }
 
         if (!Enum.TryParse<ImageCategoryDto>(category, true, out ImageCategoryDto parsedCategory))
         {
-            return this.BadRequest("Invalid category.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid category.", "image.category-invalid");
         }
 
         ApplicationResult<IReadOnlyCollection<Image>> result = await this.getImagesByOwnerQueryHandler.HandleAsync(
@@ -356,13 +356,13 @@ public sealed class ImagesController : ControllerBase
 
         if (string.IsNullOrWhiteSpace(result.Value.Path))
         {
-            return this.NotFound();
+            return this.ToNotFoundProblemDetailsResult("The requested image binary was not found.", "image.binary-not-found");
         }
 
         (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetBestAsync(result.Value.Path, this.Request.Headers.Accept.ToString(), cancellationToken);
         if (binary is null)
         {
-            return this.NotFound();
+            return this.ToNotFoundProblemDetailsResult("The requested image binary was not found.", "image.binary-not-found");
         }
 
         return this.File(binary.Value.Stream, binary.Value.ContentType);

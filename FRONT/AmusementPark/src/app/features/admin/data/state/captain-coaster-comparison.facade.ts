@@ -13,6 +13,7 @@ import {
 } from '@app/models/admin/data/data-management.models';
 import { DataSourcesApiService } from '@data-access/admin/data-sources-api.service';
 import { CaptainCoasterPipelineFacade } from './captain-coaster-pipeline.facade';
+import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
 
 interface DuplicateResolutionState {
   strategy: 'SelectVariant' | 'Merge';
@@ -666,20 +667,6 @@ export class CaptainCoasterComparisonFacade {
   }
 
   private extractErrorMessage(error: unknown): string {
-    if (typeof error === 'object' && error !== null && 'error' in error) {
-      const payload: unknown = (error as { error: unknown }).error;
-      if (typeof payload === 'string' && payload.trim().length > 0) {
-        return payload;
-      }
-
-      if (typeof payload === 'object' && payload !== null && 'message' in payload) {
-        const message: unknown = (payload as { message?: unknown }).message;
-        if (typeof message === 'string' && message.trim().length > 0) {
-          return message;
-        }
-      }
-    }
-
-    return 'Une erreur est survenue.';
+    return extractSafeDisplayErrorMessage(error);
   }
 }

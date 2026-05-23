@@ -119,7 +119,7 @@ public sealed class UsersController : ControllerBase
         string? currentUserId = this.User.GetUserId();
         if (currentUserId != id && !this.User.IsInRoles(UserRoleDto.ADMIN, UserRoleDto.MODERATOR))
         {
-            return CreateLegacyError(StatusCodes.Status403Forbidden, "You cannot access other user");
+            return this.ToProblemDetailsResult(StatusCodes.Status403Forbidden, "You cannot access another user account.", "user.access-denied");
         }
 
         ApplicationResult<User> result = await this.getUserByIdQueryHandler.HandleAsync(new GetUserByIdQuery(id), cancellationToken);
@@ -158,7 +158,7 @@ public sealed class UsersController : ControllerBase
         string? currentUserId = this.User.GetUserId();
         if (currentUserId != id && !this.User.IsInRoles(UserRoleDto.ADMIN, UserRoleDto.MODERATOR))
         {
-            return CreateLegacyError(StatusCodes.Status403Forbidden, "You cannot update other user");
+            return this.ToProblemDetailsResult(StatusCodes.Status403Forbidden, "You cannot update another user account.", "user.update-denied");
         }
 
         ApplicationResult<User> result = await this.updateUserProfileCommandHandler.HandleAsync(
@@ -181,14 +181,14 @@ public sealed class UsersController : ControllerBase
     {
         if (!string.Equals(changePasswordDto.NewPassword, changePasswordDto.NewPasswordConfirm, StringComparison.Ordinal))
         {
-            return CreateLegacyError(StatusCodes.Status400BadRequest, "Passwords do not match.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Passwords do not match.", "password.confirmation-mismatch");
         }
 
         string? currentUserId = this.User.GetUserId();
         bool isAdminOrModerator = this.User.IsInRoles(UserRoleDto.ADMIN, UserRoleDto.MODERATOR);
         if (currentUserId != idUser && !isAdminOrModerator)
         {
-            return CreateLegacyError(StatusCodes.Status403Forbidden, "You cannot update other user password");
+            return this.ToProblemDetailsResult(StatusCodes.Status403Forbidden, "You cannot update another user password.", "password.update-denied");
         }
 
         bool isSelfChange = currentUserId == idUser;
@@ -357,15 +357,4 @@ public sealed class UsersController : ControllerBase
         return this.Ok(result.Value.ToUnlockedDto());
     }
 
-    private static ObjectResult CreateLegacyError(int statusCode, string message)
-    {
-        return new ObjectResult(new
-        {
-            StatusCode = statusCode,
-            Message = message,
-        })
-        {
-            StatusCode = statusCode,
-        };
-    }
 }

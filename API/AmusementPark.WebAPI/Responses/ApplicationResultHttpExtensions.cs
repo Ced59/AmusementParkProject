@@ -2,12 +2,13 @@ using System;
 using System.Linq;
 using AmusementPark.Application.Errors;
 using AmusementPark.WebAPI.Architecture;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmusementPark.WebAPI.Responses;
 
 /// <summary>
-/// Conversion des résultats applicatifs en réponses HTTP cohérentes avec le contrat legacy.
+/// Conversion des résultats applicatifs en réponses HTTP RFC 7807.
 /// </summary>
 internal static class ApplicationResultHttpExtensions
 {
@@ -41,13 +42,29 @@ internal static class ApplicationResultHttpExtensions
     {
         int statusCode = ApplicationResultHttpMapper.ToStatusCode(error.Type);
 
-        return new ObjectResult(new
+        if (error.Type == ApplicationErrorType.Validation && error.Details is not null && error.Details.Count > 0)
         {
-            StatusCode = statusCode,
-            Message = error.Message,
-        })
-        {
-            StatusCode = statusCode,
-        };
+            ValidationProblemDetails validationProblemDetails = ApiProblemDetailsFactory.CreateValidation(
+                controller.HttpContext,
+                error.Details,
+                error.Code,
+                error.Message);
+
+            return ApiProblemDetailsFactory.ToObjectResult(validationProblemDetails);
+        }
+
+        string title = ApiProblemDetailsFactory.GetDefaultTitle(statusCode);
+        string detail = statusCode == StatusCodes.Status500InternalServerError
+            ? ApiProblemDetailsFactory.GetDefaultDetail(statusCode)
+            : error.Message;
+
+        ProblemDetails problemDetails = ApiProblemDetailsFactory.Create(
+            controller.HttpContext,
+            statusCode,
+            title,
+            detail,
+            error.Code);
+
+        return ApiProblemDetailsFactory.ToObjectResult(problemDetails);
     }
 }
