@@ -1452,7 +1452,8 @@
       "title": "À propos",
       "project": "Le projet",
       "sources": "Sources",
-      "contact": "Contact"
+      "contact": "Contact",
+      "privacy": "Confidentialité"
     },
     "languages": {
       "title": "Langues"
@@ -1565,5 +1566,80 @@
   "pagination": {
     "previous": "Précédent",
     "next": "Suivant"
+  },
+  "cookieConsent": {
+    "ariaLabel": "Bandeau de consentement à la mesure d’audience",
+    "title": "Mesure d’audience Matomo",
+    "text": "AmusementPark utilise Matomo pour comprendre les parcours de visite et améliorer le site. La mesure d’audience ne démarre qu’après votre accord.",
+    "privacyLink": "Lire la politique de confidentialité.",
+    "accept": "Accepter la mesure",
+    "continueWithoutAnalytics": "Continuer sans mesure"
+  },
+  "privacyPage": {
+    "kicker": "Données personnelles",
+    "title": "Politique de confidentialité",
+    "lead": "Cette page explique comment AmusementPark traite les données personnelles, la mesure d’audience Matomo et les choix de confidentialité disponibles.",
+    "chips": {
+      "hosting": "Hébergement en France",
+      "analytics": "Matomo sur VPS personnel",
+      "controller": "Responsable : Cédric Caudron"
+    },
+    "consent": {
+      "kicker": "Préférences analytics",
+      "title": "Gérer la mesure d’audience",
+      "text": "Matomo est configuré avec consentement préalable côté site. Vous pouvez accepter, refuser ou réafficher le bandeau à tout moment.",
+      "currentStatus": "Statut actuel :",
+      "statusAccepted": "mesure d’audience acceptée.",
+      "statusRefused": "mesure d’audience refusée.",
+      "statusUnset": "aucun choix enregistré.",
+      "accept": "Accepter Matomo",
+      "refuse": "Refuser / retirer le consentement",
+      "reset": "Réafficher le bandeau"
+    },
+    "sections": {
+      "controller": {
+        "title": "Responsable du traitement",
+        "body1": "Le responsable du traitement est Cédric Caudron, éditeur du site AmusementPark.",
+        "body2": "Pour toute demande relative aux données personnelles, vous pouvez utiliser les moyens de contact publiés sur le site cedric-caudron.com."
+      },
+      "data": {
+        "title": "Données traitées",
+        "body1": "Le site peut traiter les données de compte nécessaires au service : adresse e-mail, nom ou prénom renseigné, avatar, langue préférée et paramètres de profil.",
+        "body2": "Des données techniques peuvent aussi être traitées : adresse IP, date, URL consultée, navigateur, journal d’erreur et informations de sécurité strictement utiles à l’exploitation."
+      },
+      "purposes": {
+        "title": "Finalités et bases légales",
+        "body1": "Les données sont utilisées pour fournir les fonctionnalités du site, sécuriser les accès, gérer les comptes, afficher les contenus publics et administrer le projet.",
+        "body2": "Les traitements nécessaires au fonctionnement reposent sur l’exécution du service ou l’intérêt légitime. La mesure d’audience Matomo repose sur votre consentement tant qu’elle n’est pas exploitée en mode exempté strict."
+      },
+      "analytics": {
+        "title": "Mesure d’audience Matomo",
+        "body1": "Le site utilise une instance Matomo auto-hébergée accessible à l’adresse matomo.cedric-caudron.com, avec l’identifiant de site 4.",
+        "body2": "Matomo peut mesurer les pages visitées, les enchaînements de navigation, les sources de trafic, le type d’appareil et des informations techniques de navigateur.",
+        "body3": "Aucun suivi publicitaire tiers n’est ajouté par cette intégration. Les parcours liés au profil peuvent être mesurés seulement après consentement, sans envoyer le contenu privé du profil comme événement analytics."
+      },
+      "cookies": {
+        "title": "Cookies et stockage local",
+        "body1": "Les cookies ou stockages strictement nécessaires peuvent servir à la session, à la sécurité, à la langue, au thème et aux préférences d’interface.",
+        "body2": "Le choix Matomo est conservé dans le stockage local du navigateur afin de ne pas redemander le même choix à chaque page."
+      },
+      "hosting": {
+        "title": "Hébergement et sous-traitants",
+        "body1": "Le site est destiné à être hébergé sur un serveur situé en France via Hostinger. Les services techniques du projet, dont MongoDB, MinIO et Matomo, peuvent être exploités sur ce VPS.",
+        "body2": "Les données ne sont pas vendues à des annonceurs. Elles peuvent être traitées par les prestataires techniques strictement nécessaires à l’hébergement, à la sécurité et à l’exploitation."
+      },
+      "retention": {
+        "title": "Durées de conservation",
+        "body1": "Les comptes sont conservés tant que le compte existe ou tant qu’une obligation de sécurité impose une conservation limitée.",
+        "body2": "Les logs techniques sont conservés pour une durée proportionnée à la sécurité et au diagnostic. Les données Matomo doivent être configurées avec une durée limitée et réexaminée régulièrement."
+      },
+      "rights": {
+        "title": "Vos droits",
+        "body1": "Vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou l’opposition aux traitements applicables à vos données.",
+        "body2": "Vous pouvez également retirer votre consentement analytics sur cette page et, si nécessaire, introduire une réclamation auprès de la CNIL."
+      }
+    },
+    "lastUpdate": "Dernière mise à jour : 23 mai 2026.",
+    "backHome": "Retour à l’accueil"
   }
 }

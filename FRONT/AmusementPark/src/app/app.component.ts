@@ -7,12 +7,13 @@ import { catchError, filter, tap } from 'rxjs/operators';
 import { TranslationService } from '@app/services/translation.service';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
+import { CookieConsentBannerComponent } from '@ui/layouts/cookie-consent-banner/cookie-consent-banner.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [RouterOutlet, Bind, Toast]
+  imports: [RouterOutlet, Bind, Toast, CookieConsentBannerComponent]
 })
 export class AppComponent implements OnInit {
   title: string = 'Amusement Parks';

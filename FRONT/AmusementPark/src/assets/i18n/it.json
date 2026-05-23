@@ -1452,7 +1452,8 @@
       "title": "Informazioni",
       "project": "Il progetto",
       "sources": "Fonti",
-      "contact": "Contatto"
+      "contact": "Contatto",
+      "privacy": "Privacy"
     },
     "languages": {
       "title": "Lingue"
@@ -1565,5 +1566,80 @@
   "pagination": {
     "previous": "Previous",
     "next": "Next"
+  },
+  "cookieConsent": {
+    "ariaLabel": "Audience measurement consent banner",
+    "title": "Matomo audience measurement",
+    "text": "AmusementPark uses Matomo to understand visitor journeys and improve the website. Audience measurement only starts after your agreement.",
+    "privacyLink": "Leggi l’informativa sulla privacy.",
+    "accept": "Accetta misurazione",
+    "continueWithoutAnalytics": "Continua senza misurazione"
+  },
+  "privacyPage": {
+    "kicker": "Personal data",
+    "title": "Informativa sulla privacy",
+    "lead": "This page explains how AmusementPark processes personal data, Matomo audience measurement and privacy choices.",
+    "chips": {
+      "hosting": "Hosting in France",
+      "analytics": "Matomo on a personal VPS",
+      "controller": "Controller: Cédric Caudron"
+    },
+    "consent": {
+      "kicker": "Analytics preferences",
+      "title": "Manage audience measurement",
+      "text": "Matomo is configured with prior consent on the website. You can accept, refuse or show the banner again at any time.",
+      "currentStatus": "Current status:",
+      "statusAccepted": "misurazione audience accettata.",
+      "statusRefused": "misurazione audience rifiutata.",
+      "statusUnset": "nessuna scelta salvata.",
+      "accept": "Accept Matomo",
+      "refuse": "Refuse / withdraw consent",
+      "reset": "Show banner again"
+    },
+    "sections": {
+      "controller": {
+        "title": "Data controller",
+        "body1": "The data controller is Cédric Caudron, publisher of the AmusementPark website.",
+        "body2": "For any personal-data request, you can use the contact methods published on cedric-caudron.com."
+      },
+      "data": {
+        "title": "Processed data",
+        "body1": "The website may process account data needed for the service: email address, provided first or last name, avatar, preferred language and profile settings.",
+        "body2": "Technical data may also be processed: IP address, date, viewed URL, browser, error logs and security information strictly useful for operation."
+      },
+      "purposes": {
+        "title": "Purposes and legal bases",
+        "body1": "Data is used to provide website features, secure access, manage accounts, display public content and administer the project.",
+        "body2": "Processing required for operation relies on service performance or legitimate interest. Matomo audience measurement relies on your consent unless it is later operated in a strict exempt mode."
+      },
+      "analytics": {
+        "title": "Matomo audience measurement",
+        "body1": "The website uses a self-hosted Matomo instance available at matomo.cedric-caudron.com with site ID 4.",
+        "body2": "Matomo may measure visited pages, navigation sequences, traffic sources, device type and technical browser information.",
+        "body3": "No third-party advertising tracking is added by this integration. Profile-related journeys may be measured only after consent, without sending private profile content as analytics events."
+      },
+      "cookies": {
+        "title": "Cookies and local storage",
+        "body1": "Strictly necessary cookies or storage may be used for session, security, language, theme and interface preferences.",
+        "body2": "The Matomo choice is stored in the browser local storage so the same choice is not requested on every page."
+      },
+      "hosting": {
+        "title": "Hosting and processors",
+        "body1": "The website is intended to be hosted on a server located in France via Hostinger. Project technical services, including MongoDB, MinIO and Matomo, may run on this VPS.",
+        "body2": "Data is not sold to advertisers. It may be processed by technical providers strictly required for hosting, security and operation."
+      },
+      "retention": {
+        "title": "Retention periods",
+        "body1": "Accounts are kept while the account exists or while a limited security obligation requires retention.",
+        "body2": "Technical logs are kept for a period proportionate to security and diagnostics. Matomo data must be configured with a limited period and reviewed regularly."
+      },
+      "rights": {
+        "title": "Your rights",
+        "body1": "You can request access, rectification, erasure, restriction or objection for applicable processing of your data.",
+        "body2": "You can also withdraw analytics consent on this page and, if needed, lodge a complaint with the CNIL."
+      }
+    },
+    "lastUpdate": "Last updated: 23 May 2026.",
+    "backHome": "Back home"
   }
 }

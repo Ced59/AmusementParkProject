@@ -27,6 +27,11 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
     getPrerenderParams: getLangParams
   },
+  {
+    path: ':lang/privacy',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: getLangParams
+  },
 
   // Pages utilisateur / admin => SSR
   { path: ':lang/profile', renderMode: RenderMode.Server },

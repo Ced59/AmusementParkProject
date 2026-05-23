@@ -1,0 +1,138 @@
+:host {
+  display: block;
+}
+
+.privacy-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.privacy-hero {
+  display: grid;
+  gap: 1rem;
+}
+
+.privacy-hero__title {
+  max-width: 11ch;
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 9vw, 6.8rem);
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.privacy-hero__lead {
+  max-width: 78ch;
+  margin: 0;
+  color: var(--app-text-muted);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.75;
+}
+
+.privacy-hero__chips,
+.privacy-consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.privacy-consent {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.privacy-consent__copy {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.privacy-consent h2 {
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+.privacy-consent p,
+.privacy-card p,
+.privacy-update p {
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.7;
+}
+
+.privacy-consent__status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.privacy-consent__status strong {
+  color: var(--app-heading);
+}
+
+.privacy-consent__actions {
+  justify-content: flex-end;
+}
+
+.privacy-sections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.privacy-card {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+}
+
+.privacy-card__header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.privacy-card__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: var(--radius-md);
+  color: #000000;
+  background: var(--c-orange);
+  box-shadow: var(--shadow-soft-orange);
+}
+
+.privacy-card h2 {
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: 1.14rem;
+}
+
+.privacy-update {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 880px) {
+  .privacy-consent,
+  .privacy-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-consent__actions {
+    justify-content: flex-start;
+  }
+}

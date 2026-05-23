@@ -96,6 +96,7 @@ export const routes: Routes = [
           { path: 'home', loadComponent: () => import('./components/home/home.component').then((m) => m.HomeComponent) },
           { path: 'parks', loadComponent: () => import('./features/public/parks/pages/park-list-page.component').then((m) => m.ParkListPageComponent) },
           { path: 'about', loadComponent: () => import('./components/about/about.component').then((m) => m.AboutComponent) },
+          { path: 'privacy', loadComponent: () => import('./features/public/legal/pages/privacy-policy-page.component').then((m) => m.PrivacyPolicyPageComponent) },
 
           { path: 'park-operator/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'operator' } },
           { path: 'park-founder/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'founder' } },
