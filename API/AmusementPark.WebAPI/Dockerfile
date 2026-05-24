@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM mcr.microsoft.com/dotnet/sdk:10.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 COPY AmusementPark.sln ./
@@ -19,16 +19,18 @@ RUN dotnet publish ./API/AmusementPark.WebAPI/AmusementPark.WebAPI.csproj \
     --output /app/publish \
     /p:UseAppHost=false
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 
 ENV ASPNETCORE_URLS=http://+:8080 \
     ASPNETCORE_ENVIRONMENT=Production \
     DOTNET_RUNNING_IN_CONTAINER=true
 
-RUN apk add --no-cache fontconfig ttf-dejavu \
-    && addgroup -S amusementpark \
-    && adduser -S amusementpark -G amusementpark
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates curl fontconfig fonts-dejavu-core \
+    && rm -rf /var/lib/apt/lists/* \
+    && groupadd --system amusementpark \
+    && useradd --system --gid amusementpark --home-dir /app --no-create-home amusementpark
 COPY --from=build --chown=amusementpark:amusementpark /app/publish ./
 
 USER amusementpark

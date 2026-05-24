@@ -41,7 +41,19 @@ echo "Pulling production images..."
 compose pull
 
 echo "Starting production stack..."
-compose up -d --remove-orphans
+if ! compose up -d --remove-orphans; then
+  echo "Docker Compose failed while starting the production stack. Recent container status:" >&2
+  compose ps >&2 || true
+  echo "Recent API logs:" >&2
+  compose logs --tail=200 api >&2 || true
+  echo "Recent MongoDB logs:" >&2
+  compose logs --tail=120 mongodb >&2 || true
+  echo "Recent MinIO logs:" >&2
+  compose logs --tail=80 minio >&2 || true
+  echo "Recent Front SSR logs:" >&2
+  compose logs --tail=120 front >&2 || true
+  exit 1
+fi
 
 compose ps
 

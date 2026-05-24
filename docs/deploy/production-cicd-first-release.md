@@ -164,3 +164,9 @@ M18.5 reste volontairement différé : ne passer CSP en enforce qu’après obse
 Le healthcheck MongoDB utilise maintenant `mongosh --username/--password` plutôt qu'une URI contenant les identifiants. Cela évite les faux `unhealthy` quand un mot de passe root contient des caractères spéciaux.
 
 La chaîne de connexion applicative utilise `MONGO_APP_USERNAME_URL_ENCODED` et `MONGO_APP_PASSWORD_URL_ENCODED`, générés automatiquement par `deploy/scripts/write-production-env.sh` à partir des secrets bruts. Il ne faut pas créer ces deux valeurs dans GitHub : elles sont internes au `.env` généré.
+
+## Runtime API Docker
+
+L'image API de production utilise volontairement les images .NET Debian par défaut (`mcr.microsoft.com/dotnet/aspnet:10.0`) plutôt que les variantes Alpine. Le premier essai VPS a montré un redémarrage avec code 139 côté API, typique d'un crash natif/segfault. Debian est plus lourde mais plus prudente pour la première production, notamment avec les dépendances de polices, TLS, DNS, globalization et traitement d'images.
+
+Le healthcheck API utilise `curl`, installé dans l'image runtime.
