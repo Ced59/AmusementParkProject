@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminDashboardComponent } from './admin-dashboard.component';
+import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 
 describe('AdminDashboardComponent', () => {
   let component: AdminDashboardComponent;
@@ -8,13 +9,12 @@ describe('AdminDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [AdminDashboardComponent]
-})
-    .compileComponents();
+      imports: [...COMMON_TEST_IMPORTS, AdminDashboardComponent],
+      providers: provideCommonTestDependencies(),
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AdminDashboardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

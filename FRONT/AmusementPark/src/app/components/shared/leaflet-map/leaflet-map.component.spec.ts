@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LeafletMapComponent } from './leaflet-map.component';
+import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 
 describe('LeafletMapComponent', () => {
   let component: LeafletMapComponent;
@@ -8,13 +9,12 @@ describe('LeafletMapComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [LeafletMapComponent]
-})
-    .compileComponents();
+      imports: [...COMMON_TEST_IMPORTS, LeafletMapComponent],
+      providers: provideCommonTestDependencies(),
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LeafletMapComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

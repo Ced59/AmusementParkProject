@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterFormComponent } from './register-form.component';
+import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 
 describe('RegisterFormComponent', () => {
   let component: RegisterFormComponent;
@@ -8,13 +9,12 @@ describe('RegisterFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [RegisterFormComponent]
-})
-    .compileComponents();
-    
+      imports: [...COMMON_TEST_IMPORTS, RegisterFormComponent],
+      providers: provideCommonTestDependencies(),
+    }).compileComponents();
+
     fixture = TestBed.createComponent(RegisterFormComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

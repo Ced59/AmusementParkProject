@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
 import { AdminSiteComponent } from './admin-site.component';
+import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 
 describe('AdminSiteComponent', () => {
   let component: AdminSiteComponent;
@@ -9,12 +9,12 @@ describe('AdminSiteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminSiteComponent, RouterTestingModule]
+      imports: [...COMMON_TEST_IMPORTS, AdminSiteComponent],
+      providers: provideCommonTestDependencies(),
     }).compileComponents();
 
     fixture = TestBed.createComponent(AdminSiteComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
