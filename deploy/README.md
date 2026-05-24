@@ -21,6 +21,7 @@ Créer un Proxy Host :
 - Forward Port : `8080` ou la valeur de `PUBLIC_HTTP_PORT`.
 - Activer Websockets.
 - Activer SSL + Force SSL + HTTP/2.
+- Vérifier que toute requête `http://` est redirigée en `https://` avant ouverture publique.
 
 Ne crée pas de Proxy Host public pour l'API. L'API passe par `https://amusement-parks.fun/api`.
 

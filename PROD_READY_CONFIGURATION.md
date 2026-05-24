@@ -192,3 +192,9 @@ Puis lancer le smoke test SSR depuis le front :
 ```bash
 PUBLIC_BASE_URL=https://amusement-parks.fun npm run seo:ssr-smoke
 ```
+
+## HTTPS public
+
+En production, Nginx Proxy Manager doit exposer le domaine public en HTTPS avec **Force SSL** activé. Le conteneur front écoute en HTTP interne sur `127.0.0.1:${PUBLIC_HTTP_PORT:-8080}`, mais le trafic public doit être redirigé de `http://` vers `https://`.
+
+Le serveur Angular SSR dispose aussi de `SSR_FORCE_HTTPS=true` en production. Cette protection redirige en 308 quand le reverse proxy transmet `X-Forwarded-Proto: http`. Elle ne remplace pas la configuration NPM, mais limite le risque d'oubli.

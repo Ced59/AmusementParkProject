@@ -13,6 +13,7 @@ const apiInternalOrigin = normalizeOrigin(process.env['SSR_API_INTERNAL_URL'] ??
 const cspReportOnly = (process.env['SSR_CSP_REPORT_ONLY'] ?? 'true').toLowerCase() !== 'false';
 const cspEnabled = (process.env['SSR_CSP_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?? 'localhost;127.0.0.1;amusement.localhost;front');
+const forceHttps = (process.env['SSR_FORCE_HTTPS'] ?? 'false').toLowerCase() === 'true';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -28,6 +29,7 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
+  server.use(redirectHttpToHttps);
   server.use(applySecurityHeaders);
 
   server.get('/healthz', (_req: Request, res: Response) => {
@@ -86,6 +88,32 @@ function run(): void {
     console.log(`Angular SSR server listening on http://0.0.0.0:${port}`);
     console.log(`SSR API internal origin: ${apiInternalOrigin}`);
   });
+}
+
+
+function redirectHttpToHttps(req: Request, res: Response, next: NextFunction): void {
+  if (!forceHttps || req.method === 'OPTIONS') {
+    next();
+    return;
+  }
+
+  const forwardedProto = getForwardedValue(req, 'x-forwarded-proto');
+  const protocol = forwardedProto ?? req.protocol;
+
+  if (protocol.toLowerCase() === 'https') {
+    next();
+    return;
+  }
+
+  const forwardedHost = getForwardedValue(req, 'x-forwarded-host');
+  const host = forwardedHost ?? req.headers.host;
+
+  if (!host) {
+    next();
+    return;
+  }
+
+  res.redirect(308, `https://${host}${req.originalUrl}`);
 }
 
 function applySecurityHeaders(_req: Request, res: Response, next: NextFunction): void {

@@ -16,7 +16,7 @@ Ce stack local sert à tester les aspects difficiles à valider avec `ng serve` 
 - premiers smoke tests SEO/SSR ;
 - mesures Core Web Vitals dont le CLS.
 
-Ce n'est pas une prod parfaite : le HTTPS public, le vrai domaine, les certificats et Google OAuth devront encore être validés en staging/prod.
+Ce n'est pas une prod parfaite : le HTTPS public, le vrai domaine, les certificats et Google OAuth devront encore être validés en staging/prod. En local, rester en HTTP par défaut sauf si un certificat local est explicitement configuré dans NPM.
 
 ## Démarrage Windows
 
@@ -102,6 +102,8 @@ Si `amusement.localhost` ne résout pas sur ta machine, ajouter temporairement d
 ```
 
 ## Matomo local
+
+Le build `local-production` utilise volontairement `matomoSiteId: 1` et le tracker `http://matomo.amusement.localhost:18080/`. La production officielle conserve `matomoSiteId: 4` sur `https://matomo.cedric-caudron.com/`.
 
 Matomo est lancé dans le stack pour tester le consentement et la future observabilité web.
 

@@ -17,6 +17,7 @@ services:
       SSR_CSP_ENABLED: ${CSP_ENABLED:-true}
       SSR_CSP_REPORT_ONLY: ${CSP_REPORT_ONLY:-true}
       SSR_CSP_REPORT_URI: ${FRONT_CSP_REPORT_URI:-/api/security/csp-report}
+      SSR_FORCE_HTTPS: ${SSR_FORCE_HTTPS:-true}
     networks:
       - public_edge
       - backend_private
