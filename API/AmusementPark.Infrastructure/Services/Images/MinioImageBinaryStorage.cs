@@ -26,7 +26,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
     private readonly IMinioClient minioClient;
     private readonly MinioImageStorageSettings settings;
     private readonly ILogger<MinioImageBinaryStorage> logger;
-    private readonly Font watermarkFont;
+    private readonly Font? watermarkFont;
 
     public MinioImageBinaryStorage(
         IMinioClient minioClient,
@@ -36,7 +36,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         this.minioClient = minioClient;
         this.settings = settings;
         this.logger = logger;
-        this.watermarkFont = ResolveWatermarkFont();
+        this.watermarkFont = ResolveWatermarkFont(logger);
     }
 
     public async Task<IReadOnlyCollection<string>> SaveAsync(string pathWithoutExtension, FilePayload file, bool withWatermark, CancellationToken cancellationToken)
@@ -253,6 +253,16 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
             imageStream.Position = 0;
         }
 
+        if (this.watermarkFont is null)
+        {
+            this.logger.LogWarning("Image watermark skipped because no usable font is available on the current host.");
+
+            MemoryStream copy = new MemoryStream();
+            await imageStream.CopyToAsync(copy, cancellationToken);
+            copy.Position = 0;
+            return copy;
+        }
+
         using Image image = await Image.LoadAsync(imageStream, cancellationToken);
         int margin = 10;
         image.Mutate(context =>
@@ -274,17 +284,40 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         return output;
     }
 
-    private static Font ResolveWatermarkFont()
+    private static Font? ResolveWatermarkFont(ILogger logger)
     {
-        FontCollection collection = new FontCollection();
-        collection.AddSystemFonts();
-
-        if (collection.TryGet("Arial", out FontFamily family))
+        try
         {
-            return family.CreateFont(24f);
+            FontCollection collection = new FontCollection();
+            collection.AddSystemFonts();
+
+            if (collection.TryGet("Arial", out FontFamily arialFamily))
+            {
+                return arialFamily.CreateFont(24f);
+            }
+
+            if (collection.TryGet("DejaVu Sans", out FontFamily dejavuFamily))
+            {
+                return dejavuFamily.CreateFont(24f);
+            }
+
+            if (collection.Families.Any())
+            {
+                return collection.Families.First().CreateFont(24f);
+            }
+
+            if (SystemFonts.Families.Any())
+            {
+                return SystemFonts.Families.First().CreateFont(24f);
+            }
+        }
+        catch (Exception exception)
+        {
+            logger.LogWarning(exception, "Unable to resolve a system font for image watermarking.");
+            return null;
         }
 
-        FontFamily fallbackFamily = SystemFonts.Families.First();
-        return fallbackFamily.CreateFont(24f);
+        logger.LogWarning("Unable to resolve a system font for image watermarking.");
+        return null;
     }
 }

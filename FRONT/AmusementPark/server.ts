@@ -12,6 +12,7 @@ const defaultApiInternalOrigin = 'http://api:8080';
 const apiInternalOrigin = normalizeOrigin(process.env['SSR_API_INTERNAL_URL'] ?? defaultApiInternalOrigin);
 const cspReportOnly = (process.env['SSR_CSP_REPORT_ONLY'] ?? 'true').toLowerCase() !== 'false';
 const cspEnabled = (process.env['SSR_CSP_ENABLED'] ?? 'true').toLowerCase() !== 'false';
+const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?? 'localhost;127.0.0.1;amusement.localhost;front');
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -20,7 +21,7 @@ export function app(): express.Express {
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
-  const commonEngine = new CommonEngine();
+  const commonEngine = new CommonEngine({ allowedHosts: ssrAllowedHosts });
 
   server.disable('x-powered-by');
   server.set('trust proxy', true);
@@ -111,7 +112,8 @@ function buildContentSecurityPolicy(): string {
     "frame-ancestors 'none'",
     "form-action 'self'",
     "script-src 'self' 'unsafe-inline' https://accounts.google.com https://apis.google.com https://matomo.cedric-caudron.com",
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com",
+    "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com",
     "font-src 'self' data: https://fonts.gstatic.com",
     "img-src 'self' data: blob: https: http://localhost:* http://amusement.localhost:* http://matomo.amusement.localhost:*",
     "connect-src 'self' http://localhost:* https://localhost:* http://amusement.localhost:* http://matomo.amusement.localhost:* https://accounts.google.com https://www.googleapis.com https://matomo.cedric-caudron.com",
@@ -222,6 +224,19 @@ function normalizeOrigin(value: string): string {
   }
 
   return normalizedValue;
+}
+
+function splitConfiguredValues(value: string): string[] {
+  const values = value
+    .split(/[;,]/)
+    .map((item: string) => item.trim())
+    .filter((item: string) => item.length > 0);
+
+  if (values.length === 0) {
+    return ['localhost', '127.0.0.1', 'amusement.localhost'];
+  }
+
+  return Array.from(new Set(values));
 }
 
 run();

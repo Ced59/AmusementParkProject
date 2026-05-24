@@ -26,7 +26,9 @@ ENV ASPNETCORE_URLS=http://+:8080 \
     ASPNETCORE_ENVIRONMENT=Production \
     DOTNET_RUNNING_IN_CONTAINER=true
 
-RUN addgroup -S amusementpark && adduser -S amusementpark -G amusementpark
+RUN apk add --no-cache fontconfig ttf-dejavu \
+    && addgroup -S amusementpark \
+    && adduser -S amusementpark -G amusementpark
 COPY --from=build --chown=amusementpark:amusementpark /app/publish ./
 
 USER amusementpark
