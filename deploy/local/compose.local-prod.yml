@@ -131,11 +131,11 @@ services:
     networks:
       - backend_private
     healthcheck:
-      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:8080/health || exit 1"]
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8080/health >/dev/null || exit 1"]
       interval: 30s
       timeout: 5s
       retries: 5
-      start_period: 60s
+      start_period: 90s
     security_opt:
       - no-new-privileges:true
 
@@ -202,7 +202,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-      start_period: 60s
+      start_period: 90s
     security_opt:
       - no-new-privileges:true
 
