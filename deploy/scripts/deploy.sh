@@ -21,6 +21,72 @@ compose() {
   docker compose --project-name "${compose_project_name}" -f compose.prod.yml "$@"
 }
 
+wait_for_service_healthy() {
+  local service_name="$1"
+  local timeout_seconds="${2:-120}"
+  local elapsed_seconds=0
+  local container_id=""
+  local health_status=""
+
+  echo "Waiting for ${service_name} service to become healthy..."
+
+  while [ "${elapsed_seconds}" -lt "${timeout_seconds}" ]; do
+    container_id="$(compose ps -q "${service_name}" 2>/dev/null || true)"
+
+    if [ -n "${container_id}" ]; then
+      health_status="$(docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{else}}{{.State.Status}}{{end}}' "${container_id}" 2>/dev/null || true)"
+
+      if [ "${health_status}" = "healthy" ]; then
+        echo "${service_name} service is healthy."
+        return 0
+      fi
+
+      if [ "${health_status}" = "unhealthy" ] || [ "${health_status}" = "exited" ] || [ "${health_status}" = "dead" ]; then
+        echo "${service_name} service reached status '${health_status}'." >&2
+        compose ps >&2 || true
+        compose logs --tail=160 "${service_name}" >&2 || true
+        return 1
+      fi
+    fi
+
+    sleep 2
+    elapsed_seconds=$((elapsed_seconds + 2))
+  done
+
+  echo "Timed out while waiting for ${service_name} service to become healthy after ${timeout_seconds}s." >&2
+  compose ps >&2 || true
+  compose logs --tail=160 "${service_name}" >&2 || true
+  return 1
+}
+
+curl_with_retry() {
+  local label="$1"
+  local url="$2"
+  local max_attempts="${3:-20}"
+  local attempt=1
+
+  echo "${label}"
+
+  while [ "${attempt}" -le "${max_attempts}" ]; do
+    if curl -fsS \
+      -H "Host: ${public_domain}" \
+      -H "X-Forwarded-Proto: https" \
+      "${url}" >/dev/null; then
+      return 0
+    fi
+
+    echo "Attempt ${attempt}/${max_attempts} failed for ${url}. Retrying..." >&2
+    sleep 3
+    attempt=$((attempt + 1))
+  done
+
+  echo "Health check failed after ${max_attempts} attempts: ${url}" >&2
+  compose ps >&2 || true
+  compose logs --tail=160 front >&2 || true
+  compose logs --tail=120 api >&2 || true
+  return 1
+}
+
 ./scripts/validate-production-env.sh .env
 
 if ! docker network inspect "${npm_docker_network_name}" >/dev/null 2>&1; then
@@ -57,23 +123,20 @@ fi
 
 compose ps
 
-echo "Checking SSR frontend health on 127.0.0.1:${public_http_port}..."
-curl -fsS \
-  -H "Host: ${public_domain}" \
-  -H "X-Forwarded-Proto: https" \
-  "http://127.0.0.1:${public_http_port}/healthz" >/dev/null
+wait_for_service_healthy api 180
+wait_for_service_healthy front 180
 
-echo "Checking API health through SSR public proxy..."
-curl -fsS \
-  -H "Host: ${public_domain}" \
-  -H "X-Forwarded-Proto: https" \
-  "http://127.0.0.1:${public_http_port}/api/health" >/dev/null
+curl_with_retry \
+  "Checking SSR frontend health on 127.0.0.1:${public_http_port}..." \
+  "http://127.0.0.1:${public_http_port}/healthz"
 
-echo "Checking robots.txt through SSR public proxy..."
-curl -fsS \
-  -H "Host: ${public_domain}" \
-  -H "X-Forwarded-Proto: https" \
-  "http://127.0.0.1:${public_http_port}/robots.txt" >/dev/null
+curl_with_retry \
+  "Checking API health through SSR public proxy..." \
+  "http://127.0.0.1:${public_http_port}/api/health"
+
+curl_with_retry \
+  "Checking robots.txt through SSR public proxy..." \
+  "http://127.0.0.1:${public_http_port}/robots.txt"
 
 echo "Pruning old Docker images older than 7 days..."
 docker image prune -af --filter "until=168h" >/dev/null || true
