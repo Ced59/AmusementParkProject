@@ -93,16 +93,16 @@ Différences importantes :
 Après démarrage du front SSR :
 
 ```bash
-curl -i http://127.0.0.1:4000/en/parks
-curl -i http://127.0.0.1:4000/sitemap.xml
-curl -i http://127.0.0.1:4000/api/health
+curl -i http://127.0.0.1:14000/en/parks
+curl -i http://127.0.0.1:14000/sitemap.xml
+curl -i http://127.0.0.1:14000/api/health
 ```
 
 Puis, avec le stack local NPM configuré :
 
 ```bash
 cd FRONT/AmusementPark
-PUBLIC_BASE_URL=http://amusement.localhost:8080 npm run seo:ssr-smoke
+PUBLIC_BASE_URL=http://amusement.localhost:18080 npm run seo:ssr-smoke
 ```
 
-Le test direct sur `localhost:4000` reste utile pour vérifier que le serveur répond, mais les canonical/hreflang du build local-production pointent volontairement vers `amusement.localhost:8080`, c'est-à-dire l'entrée reverse-proxy locale.
+Le test direct sur `localhost:14000` reste utile pour vérifier que le serveur répond, mais les canonical/hreflang du build local-production pointent volontairement vers `amusement.localhost:18080`, c'est-à-dire l'entrée reverse-proxy locale.

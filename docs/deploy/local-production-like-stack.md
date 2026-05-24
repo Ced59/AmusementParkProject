@@ -30,13 +30,13 @@ copy deploy\local\.env.local.example deploy\local\.env.local
 Accès direct SSR, sans NPM :
 
 ```txt
-http://localhost:4000/en/home
+http://localhost:14000/en/home
 ```
 
 Accès Nginx Proxy Manager :
 
 ```txt
-http://localhost:8181
+http://localhost:18181
 ```
 
 
@@ -56,6 +56,27 @@ Tu peux vérifier côté terminal avec :
 docker compose --project-name amusementpark-local-prod --env-file deploy\local\.env.local -f deploy\local\compose.local-prod.yml ps
 ```
 
+
+## Ports locaux par défaut
+
+Pour éviter les collisions avec l’environnement de dev classique, la préproduction locale utilise volontairement des ports hôte non standards :
+
+| Service | Port hôte local | Port interne Docker |
+|---|---:|---:|
+| Nginx Proxy Manager HTTP | `18080` | `80` |
+| Nginx Proxy Manager admin | `18181` | `81` |
+| Nginx Proxy Manager HTTPS local | `18443` | `443` |
+| Angular SSR direct | `14000` | `4000` |
+| MongoDB inspection locale | `27018` | `27017` |
+| MinIO API locale | `19000` | `9000` |
+| MinIO console locale | `19001` | `9001` |
+
+Les conteneurs communiquent entre eux avec les ports internes standards. Les ports décalés ne concernent que l’accès depuis Windows.
+
+Si un `.env.local` existant contient encore les anciens ports par défaut (`8080`, `4000`, `27017`, `9000`, etc.), `start-local-prod.ps1` les migre automatiquement vers les nouveaux ports tant qu’ils n’ont pas été personnalisés.
+
+Avant de lancer Docker Compose, le script vérifie aussi que les ports choisis ne sont pas déjà pris par un autre processus ou un autre stack Docker. En cas de conflit, modifier `deploy/local/.env.local`.
+
 ## Configuration NPM locale
 
 Créer un Proxy Host dans Nginx Proxy Manager :
@@ -71,7 +92,7 @@ Websockets: enabled
 Ensuite ouvrir :
 
 ```txt
-http://amusement.localhost:8080/en/home
+http://amusement.localhost:18080/en/home
 ```
 
 Si `amusement.localhost` ne résout pas sur ta machine, ajouter temporairement dans le fichier hosts Windows :
@@ -96,7 +117,7 @@ Forward Port: 80
 Puis ouvrir :
 
 ```txt
-http://matomo.amusement.localhost:8080
+http://matomo.amusement.localhost:18080
 ```
 
 La configuration Angular `local-production` pointe vers cette URL Matomo locale.
@@ -106,7 +127,7 @@ La configuration Angular `local-production` pointe vers cette URL Matomo locale.
 Console directe :
 
 ```txt
-http://localhost:9001
+http://localhost:19001
 ```
 
 Identifiants par défaut dans `.env.local.example` :
@@ -120,7 +141,7 @@ minioadmin / minioadmin123
 Port exposé localement :
 
 ```txt
-localhost:27017
+localhost:27018
 ```
 
 La base applicative et l'utilisateur applicatif sont créés via `deploy/mongo-init.js`.
@@ -137,7 +158,7 @@ Ou directement :
 
 ```powershell
 cd FRONT\AmusementPark
-$env:PUBLIC_BASE_URL='http://amusement.localhost:8080'
+$env:PUBLIC_BASE_URL='http://amusement.localhost:18080'
 npm run seo:ssr-smoke
 ```
 
@@ -155,7 +176,7 @@ Le CLS se teste mieux sur ce stack que via `ng serve`, car on se rapproche du re
 
 Recommandé :
 
-1. ouvrir `http://amusement.localhost:8080/en/home` ;
+1. ouvrir `http://amusement.localhost:18080/en/home` ;
 2. DevTools Chrome > Lighthouse ;
 3. mode mobile ;
 4. cocher Performance + SEO ;
