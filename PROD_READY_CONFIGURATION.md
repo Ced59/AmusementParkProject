@@ -164,3 +164,31 @@ Attendus :
 - la 404 publique est en `noindex,follow` ;
 - `robots.txt` référence le sitemap racine ;
 - `sitemap.xml` ne contient que des URLs publiques.
+
+## M20 — SSR public réellement servi
+
+Le front de production doit maintenant être traité comme un service Node SSR, pas comme un simple dossier statique Nginx.
+
+Points de configuration critiques :
+
+- Nginx Proxy Manager pointe vers `127.0.0.1:${PUBLIC_HTTP_PORT:-8080}` ;
+- le container front écoute en interne sur `4000` ;
+- l'API reste privée et accessible depuis le SSR via `FRONT_SSR_API_INTERNAL_URL=http://api:8080` ;
+- `/api`, `/robots.txt` et `/sitemap.xml` sont proxifiés par le serveur SSR ;
+- les pages publiques SEO sont SSR ;
+- admin/profil/auth restent CSR + noindex ;
+- `ng serve` reste un mode dev rapide, mais ne valide pas le comportement SSR prod.
+
+Avant exposition publique sérieuse, tester au minimum :
+
+```bash
+curl -i https://amusement-parks.fun/en/parks
+curl -i https://amusement-parks.fun/sitemap.xml
+curl -i https://amusement-parks.fun/api/health
+```
+
+Puis lancer le smoke test SSR depuis le front :
+
+```bash
+PUBLIC_BASE_URL=https://amusement-parks.fun npm run seo:ssr-smoke
+```

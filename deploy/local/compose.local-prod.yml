@@ -1,0 +1,248 @@
+name: amusementpark-local-prod
+
+services:
+  npm:
+    image: jc21/nginx-proxy-manager:2
+    container_name: amusementpark-local-npm
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${NPM_HTTP_PORT:-8080}:80"
+      - "127.0.0.1:${NPM_ADMIN_PORT:-8181}:81"
+      - "127.0.0.1:${NPM_HTTPS_PORT:-8443}:443"
+    volumes:
+      - npm_data:/data
+      - npm_letsencrypt:/etc/letsencrypt
+    networks:
+      - public_edge
+    security_opt:
+      - no-new-privileges:true
+
+  front:
+    build:
+      context: ../../FRONT/AmusementPark
+      dockerfile: Dockerfile
+      args:
+        ANGULAR_CONFIGURATION: local-production
+    container_name: amusementpark-local-front-ssr
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      SSR_API_INTERNAL_URL: http://api:8080
+      SSR_CSP_ENABLED: "true"
+      SSR_CSP_REPORT_ONLY: "true"
+      SSR_CSP_REPORT_URI: /api/security/csp-report
+    ports:
+      - "127.0.0.1:${SSR_DIRECT_PORT:-4000}:4000"
+    expose:
+      - "4000"
+    networks:
+      - public_edge
+      - backend_private
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:4000/healthz || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+
+  api:
+    build:
+      context: ../..
+      dockerfile: API/AmusementPark.WebAPI/Dockerfile
+    container_name: amusementpark-local-api
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      minio:
+        condition: service_started
+    expose:
+      - "8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      AllowedHosts: ${ALLOWED_HOSTS:-amusement.localhost;localhost;127.0.0.1;api;front}
+      ForwardedHeaders__ForwardLimit: "2"
+      ForwardedHeaders__KnownNetworks__0: ${FORWARDED_HEADERS_KNOWN_NETWORKS:-172.31.31.0/24}
+      ForwardedHeaders__AllowedHosts__0: ${FORWARDED_HEADERS_ALLOWED_HOSTS:-amusement.localhost;localhost;127.0.0.1}
+      Security__ContentSecurityPolicy__Enabled: "true"
+      Security__ContentSecurityPolicy__ReportOnly: "true"
+      Security__ContentSecurityPolicy__ReportUri: /security/csp-report
+      MongoDB__Url: mongodb://${MONGO_APP_USERNAME:-amusementpark}:${MONGO_APP_PASSWORD:-amusementpark-local-password}@mongodb:27017/${MONGO_DATABASE_NAME:-AmusementPark}?authSource=${MONGO_DATABASE_NAME:-AmusementPark}
+      MongoDB__DatabaseName: ${MONGO_DATABASE_NAME:-AmusementPark}
+      Images__MinIo__Endpoint: minio:9000
+      Images__MinIo__AccessKey: ${MINIO_ROOT_USER:-minioadmin}
+      Images__MinIo__SecretKey: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+      Images__MinIo__WithSsl: "false"
+      Images__MinIo__Bucket: ${MINIO_BUCKET:-amusement-park-images}
+      Authentication__Jwt__Key: ${JWT_KEY:-local-development-jwt-key-change-me-64-characters-minimum-0000000000}
+      Authentication__Jwt__Issuer: ${JWT_ISSUER:-AmusementPark.Local}
+      Authentication__Jwt__Audience: ${JWT_AUDIENCE:-AmusementPark.Local}
+      Authentication__Local__FrontendBaseUrl: ${PUBLIC_BASE_URL:-http://amusement.localhost:8080}
+      Authentication__RefreshTokenCookie__Name: amusementpark.refresh
+      Authentication__RefreshTokenCookie__Path: /api/auth
+      Authentication__RefreshTokenCookie__HttpOnly: "true"
+      Authentication__RefreshTokenCookie__Secure: "false"
+      Authentication__RefreshTokenCookie__SameSite: Lax
+      Authentication__Google__ClientId: ${GOOGLE_CLIENT_ID:-}
+      Authentication__Google__ClientSecret: ${GOOGLE_CLIENT_SECRET:-}
+      Authentication__Google__RedirectUri: ${GOOGLE_REDIRECT_URI:-}
+      Cors__AllowedOrigins__0: ${PUBLIC_BASE_URL:-http://amusement.localhost:8080}
+      Cors__AllowedOrigins__1: http://localhost:${SSR_DIRECT_PORT:-4000}
+      Cors__AllowedMethods__0: GET
+      Cors__AllowedMethods__1: POST
+      Cors__AllowedMethods__2: PUT
+      Cors__AllowedMethods__3: PATCH
+      Cors__AllowedMethods__4: DELETE
+      Cors__AllowedMethods__5: OPTIONS
+      Cors__AllowedHeaders__0: Authorization
+      Cors__AllowedHeaders__1: Content-Type
+      Cors__AllowedHeaders__2: Accept-Language
+      Cors__AllowedHeaders__3: X-Requested-With
+      Cors__ExposedHeaders__0: Retry-After
+      Cors__AllowCredentials: "true"
+      Seo__PublicBaseUrl: ${PUBLIC_BASE_URL:-http://amusement.localhost:8080}
+      Seo__DefaultLanguage: en
+      Seo__MaxDynamicUrlsPerType: ${SEO_MAX_DYNAMIC_URLS_PER_TYPE:-50}
+      Seo__SupportedLanguages__0: en
+      Seo__SupportedLanguages__1: fr
+      Seo__SupportedLanguages__2: es
+      Seo__SupportedLanguages__3: de
+      Seo__SupportedLanguages__4: it
+      Seo__SupportedLanguages__5: pl
+      Seo__SupportedLanguages__6: nl
+      Seo__SupportedLanguages__7: pt
+      Email__Mode: Console
+      Initialization__AdminUser__Enabled: ${ADMIN_USER_ENABLED:-true}
+      Initialization__AdminUser__Email: ${ADMIN_USER_EMAIL:-admin@amusement.localhost}
+      Initialization__AdminUser__Password: ${ADMIN_USER_PASSWORD:-Admin123!Local}
+    networks:
+      - backend_private
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:8080/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    security_opt:
+      - no-new-privileges:true
+
+  mongodb:
+    image: mongo:8.0
+    container_name: amusementpark-local-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-root}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-root-local-password}
+      MONGO_APP_DATABASE: ${MONGO_DATABASE_NAME:-AmusementPark}
+      MONGO_APP_USERNAME: ${MONGO_APP_USERNAME:-amusementpark}
+      MONGO_APP_PASSWORD: ${MONGO_APP_PASSWORD:-amusementpark-local-password}
+    ports:
+      - "127.0.0.1:${MONGO_PORT:-27017}:27017"
+    volumes:
+      - local_mongodb_data:/data/db
+      - ../mongo-init.js:/docker-entrypoint-initdb.d/01-amusementpark-app-user.js:ro
+    networks:
+      - backend_private
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval 'db.adminCommand({ ping: 1 }).ok' mongodb://$${MONGO_INITDB_ROOT_USERNAME}:$${MONGO_INITDB_ROOT_PASSWORD}@127.0.0.1:27017/admin | grep 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    security_opt:
+      - no-new-privileges:true
+
+  minio:
+    image: ${MINIO_IMAGE:-quay.io/minio/minio:RELEASE.2025-07-23T15-54-02Z}
+    container_name: amusementpark-local-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+    ports:
+      - "127.0.0.1:${MINIO_API_PORT:-9000}:9000"
+      - "127.0.0.1:${MINIO_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - local_minio_data:/data
+    networks:
+      - backend_private
+      - public_edge
+    security_opt:
+      - no-new-privileges:true
+
+  matomo-db:
+    image: mariadb:11.4
+    container_name: amusementpark-local-matomo-db
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${MATOMO_DATABASE:-matomo}
+      MARIADB_USER: ${MATOMO_DATABASE_USERNAME:-matomo}
+      MARIADB_PASSWORD: ${MATOMO_DATABASE_PASSWORD:-matomo-local-password}
+      MARIADB_ROOT_PASSWORD: ${MATOMO_DATABASE_ROOT_PASSWORD:-matomo-root-local-password}
+    volumes:
+      - local_matomo_db_data:/var/lib/mysql
+    networks:
+      - backend_private
+    healthcheck:
+      test: ["CMD-SHELL", "healthcheck.sh --connect --innodb_initialized"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    security_opt:
+      - no-new-privileges:true
+
+  matomo:
+    image: matomo:5-apache
+    container_name: amusementpark-local-matomo
+    restart: unless-stopped
+    depends_on:
+      matomo-db:
+        condition: service_healthy
+    environment:
+      MATOMO_DATABASE_HOST: matomo-db
+      MATOMO_DATABASE_ADAPTER: mysql
+      MATOMO_DATABASE_TABLES_PREFIX: matomo_
+      MATOMO_DATABASE_USERNAME: ${MATOMO_DATABASE_USERNAME:-matomo}
+      MATOMO_DATABASE_PASSWORD: ${MATOMO_DATABASE_PASSWORD:-matomo-local-password}
+      MATOMO_DATABASE_DBNAME: ${MATOMO_DATABASE:-matomo}
+    expose:
+      - "80"
+    networks:
+      - public_edge
+      - backend_private
+    volumes:
+      - local_matomo_data:/var/www/html
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  public_edge:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${PUBLIC_EDGE_SUBNET:-172.31.30.0/24}
+  backend_private:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${BACKEND_PRIVATE_SUBNET:-172.31.31.0/24}
+
+volumes:
+  npm_data:
+  npm_letsencrypt:
+  local_mongodb_data:
+  local_minio_data:
+  local_matomo_db_data:
+  local_matomo_data:

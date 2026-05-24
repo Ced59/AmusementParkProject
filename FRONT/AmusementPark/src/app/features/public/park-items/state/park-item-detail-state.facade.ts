@@ -13,6 +13,8 @@ import { ParkItemsApiService } from '@data-access/park-items/park-items-api.serv
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { hasHttpStatus } from '@core/http/http-error-status.helpers';
+import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { mapParkItemToDetailViewModel } from '../mappers/park-item-detail-view.mapper';
 import { ParkItemDetailViewModel } from '../models/park-item-detail-view.model';
 
@@ -53,7 +55,8 @@ export class ParkItemDetailStateFacade {
     private readonly manufacturersApiService: ManufacturersApiService,
     private readonly parkZonesApiService: ParkZonesApiService,
     private readonly imagesApiService: ImagesApiService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
   }
 
@@ -81,6 +84,11 @@ export class ParkItemDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park item', error);
+
+        if (hasHttpStatus(error, 404)) {
+          this.ssrHttpStatusService.setNotFound();
+        }
+
         this.screenStateStore.setError('parkItems.detail.errorMessage', previousData);
       }
     });
@@ -96,6 +104,11 @@ export class ParkItemDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park for item', error);
+
+        if (hasHttpStatus(error, 404)) {
+          this.ssrHttpStatusService.setNotFound();
+        }
+
         this.screenStateStore.setError('parkItems.detail.errorMessage', this.screenStateStore.data());
       }
     });

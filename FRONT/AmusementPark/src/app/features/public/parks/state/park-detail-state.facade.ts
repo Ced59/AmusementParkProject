@@ -23,6 +23,8 @@ import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { ScreenStateKind } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { hasHttpStatus } from '@core/http/http-error-status.helpers';
+import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { mapArray, mapNullable } from '@shared/utils/mapping';
 import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
 import { mapParkDistanceTargetToCardModel } from '../mappers/park-distance-card.mapper';
@@ -137,7 +139,8 @@ export class ParkDetailStateFacade {
     private readonly parkFoundersApiService: ParkFoundersApiService,
     private readonly parkOperatorsApiService: ParkOperatorsApiService,
     private readonly countryDisplayService: CountryDisplayService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
   }
 
@@ -177,6 +180,11 @@ export class ParkDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park details', error);
+
+        if (hasHttpStatus(error, 404)) {
+          this.ssrHttpStatusService.setNotFound();
+        }
+
         this.screenStateStore.setError('parks.detail.errorMessage', previousData);
       }
     });

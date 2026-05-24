@@ -58,7 +58,7 @@ Si Nginx Proxy Manager tourne dans un autre réseau Docker et que son adresse ap
 
 ## CSP Report-Only M18.4
 
-Le front Nginx sert une `Content-Security-Policy-Report-Only` sur les pages et assets publics. Elle ne bloque rien pour le moment : elle sert à détecter les chargements qui seraient refusés au futur passage en mode enforce.
+Le front sert une `Content-Security-Policy-Report-Only` sur les pages et assets publics. Depuis M20, ce header est émis par le serveur Angular SSR Node plutôt que par le Nginx statique historique. Elle ne bloque rien pour le moment : elle sert à détecter les chargements qui seraient refusés au futur passage en mode enforce.
 
 Les rapports navigateur sont envoyés vers :
 
@@ -80,7 +80,7 @@ CSP_REPORT_ONLY=true
 CSP_REPORT_URI=/security/csp-report
 ```
 
-Pour tester localement le vrai header front, utiliser le container Nginx du front plutôt que `ng serve`, puis vérifier :
+Pour tester localement le vrai header front, utiliser le container SSR plutôt que `ng serve`, puis vérifier :
 
 ```bash
 curl -I http://127.0.0.1:8080/
@@ -278,3 +278,46 @@ Variables optionnelles :
 SEO_DEFAULT_LANGUAGE=en
 SEO_MAX_DYNAMIC_URLS_PER_TYPE=50
 ```
+
+## M20 — Front Angular SSR derrière Nginx Proxy Manager
+
+Le container front n'est plus un Nginx statique : il lance maintenant le serveur Angular SSR Node sur le port interne `4000`.
+
+Nginx Proxy Manager conserve la même cible côté VPS :
+
+```txt
+Forward Hostname / IP : 127.0.0.1
+Forward Port          : 8080 ou PUBLIC_HTTP_PORT
+```
+
+Le mapping Docker publie désormais :
+
+```txt
+127.0.0.1:${PUBLIC_HTTP_PORT:-8080} -> container front:4000
+```
+
+Le serveur SSR relaie aussi :
+
+```txt
+/api/*       -> API interne Docker
+/robots.txt  -> API interne Docker
+/sitemap.xml -> API interne Docker
+```
+
+Variable disponible si le nom du service API change :
+
+```bash
+FRONT_SSR_API_INTERNAL_URL=http://api:8080
+```
+
+Les routes publiques sont rendues côté serveur. Les routes admin/profil/auth sensibles restent en rendu client et en `noindex`.
+
+Pour valider le rendu initial :
+
+```bash
+curl -i http://127.0.0.1:${PUBLIC_HTTP_PORT:-8080}/en/parks
+curl -i http://127.0.0.1:${PUBLIC_HTTP_PORT:-8080}/sitemap.xml
+curl -i http://127.0.0.1:${PUBLIC_HTTP_PORT:-8080}/api/health
+```
+
+Un stack local proche production est disponible dans `deploy/local` et documenté dans `docs/deploy/local-production-like-stack.md`.

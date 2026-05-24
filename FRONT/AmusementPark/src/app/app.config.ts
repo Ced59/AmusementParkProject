@@ -6,6 +6,7 @@ import {
   HTTP_INTERCEPTORS,
   HttpClient
 } from '@angular/common/http';
+import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -82,6 +83,7 @@ export const appConfig: ApplicationConfig = {
     ),
 
     provideAnimations(),
+    provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
 
     provideAppInitializer(() => {

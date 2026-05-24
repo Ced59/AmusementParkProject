@@ -16,6 +16,8 @@ import { ParkItemsApiService } from '@data-access/park-items/park-items-api.serv
 import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
 import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { hasHttpStatus } from '@core/http/http-error-status.helpers';
+import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { mapNullable } from '@shared/utils/mapping';
 import {
   mapAttractionManufacturerToReferenceDetailViewModel,
@@ -67,7 +69,8 @@ export class ParkReferenceDetailStateFacade {
     private readonly manufacturersApiService: ManufacturersApiService,
     private readonly imagesApiService: ImagesApiService,
     private readonly parkItemsApiService: ParkItemsApiService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
   }
 
@@ -109,6 +112,11 @@ export class ParkReferenceDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park founder', error);
+
+        if (hasHttpStatus(error, 404)) {
+          this.ssrHttpStatusService.setNotFound();
+        }
+
         this.screenStateStore.setError('parks.reference.errorMessage', previousData);
       }
     });
@@ -134,6 +142,11 @@ export class ParkReferenceDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading park operator', error);
+
+        if (hasHttpStatus(error, 404)) {
+          this.ssrHttpStatusService.setNotFound();
+        }
+
         this.screenStateStore.setError('parks.reference.errorMessage', previousData);
       }
     });
@@ -160,6 +173,11 @@ export class ParkReferenceDetailStateFacade {
       },
       error: (error: unknown) => {
         console.error('Error loading attraction manufacturer', error);
+
+        if (hasHttpStatus(error, 404)) {
+          this.ssrHttpStatusService.setNotFound();
+        }
+
         this.screenStateStore.setError('parks.reference.errorMessage', previousData);
       }
     });
