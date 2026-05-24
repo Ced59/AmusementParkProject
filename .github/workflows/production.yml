@@ -212,6 +212,7 @@ jobs:
           file: FRONT/AmusementPark/Dockerfile
           build-args: |
             ANGULAR_CONFIGURATION=production
+            GOOGLE_CLIENT_ID=${{ secrets.PROD_GOOGLE_CLIENT_ID }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ${{ steps.image-names.outputs.front_image }}
