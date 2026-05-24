@@ -39,6 +39,23 @@ Accès Nginx Proxy Manager :
 http://localhost:8181
 ```
 
+
+## Regroupement dans Docker Desktop
+
+Le stack est lancé avec le projet Docker Compose :
+
+```txt
+amusementpark-local-prod
+```
+
+Dans Docker Desktop, les conteneurs doivent donc être regroupés sous ce projet/app. Les conteneurs gardent aussi des noms explicites du type `amusementpark-local-api`, `amusementpark-local-front-ssr`, `amusementpark-local-mongodb`, etc.
+
+Tu peux vérifier côté terminal avec :
+
+```powershell
+docker compose --project-name amusementpark-local-prod --env-file deploy\local\.env.local -f deploy\local\compose.local-prod.yml ps
+```
+
 ## Configuration NPM locale
 
 Créer un Proxy Host dans Nginx Proxy Manager :
@@ -156,5 +173,5 @@ Les vrais seuils CI/Lighthouse restent plutôt pour M23, après stabilisation SS
 Pour supprimer aussi les volumes :
 
 ```powershell
-docker compose --env-file deploy\local\.env.local -f deploy\local\compose.local-prod.yml down -v
+docker compose --project-name amusementpark-local-prod --env-file deploy\local\.env.local -f deploy\local\compose.local-prod.yml down -v
 ```
