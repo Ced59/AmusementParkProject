@@ -21,6 +21,9 @@ import { createLeafletMarkerIcon } from '@ui/maps/leaflet';
 import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
 import type { LeafletEvent, LeafletMouseEvent, Marker as LeafletMarker } from 'leaflet';
 
+type LeafletNamespace = typeof import('leaflet');
+type LeafletModule = LeafletNamespace & { readonly default?: LeafletNamespace };
+
 @Component({
     selector: 'app-leaflet-map',
     templateUrl: './leaflet-map.component.html',
@@ -65,7 +68,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   @Output() markerClick = new EventEmitter<MapMarker>();
 
   // Leaflet chargé dynamiquement
-  private L: typeof import('leaflet') | null = null;
+  private L: LeafletNamespace | null = null;
   private map: import('leaflet').Map | null = null;
   private markerLayer: import('leaflet').LayerGroup | null = null;
   private leafletMarkers: Map<string, import('leaflet').Marker> = new Map();
@@ -84,30 +87,23 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
   async ngAfterViewInit(): Promise<void> {
     if (!this.isBrowser) {
-      // SSR : on ne fait rien
       return;
     }
 
-    const leaflet = await import('leaflet');
-    this.L = leaflet;
+    try {
+      const leafletModule: LeafletModule = await import('leaflet') as LeafletModule;
+      this.L = this.resolveLeafletNamespace(leafletModule);
 
-    // Fix des icônes
-    const iconRetinaUrl = 'assets/leaflet/marker-icon-2x.png';
-    const iconUrl = 'assets/leaflet/marker-icon.png';
-    const shadowUrl = 'assets/leaflet/marker-shadow.png';
+      await new Promise<void>((resolve: () => void): void => {
+        window.setTimeout(resolve, 0);
+      });
 
-    const iconDefault = this.L.icon({
-      iconRetinaUrl,
-      iconUrl,
-      shadowUrl,
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      shadowSize: [41, 41]
-    });
-
-    this.L.Marker.prototype.options.icon = iconDefault;
-
-    this.initMap();
+      this.configureDefaultMarkerIcon();
+      this.initMap();
+      this.scheduleMapSizeStabilization();
+    } catch (error: unknown) {
+      console.error('Unable to initialize Leaflet map:', error);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -158,6 +154,47 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     window.setTimeout((): void => {
       this.map?.invalidateSize();
     }, 50);
+  }
+
+  private resolveLeafletNamespace(leafletModule: LeafletModule): LeafletNamespace {
+    const resolvedNamespace: LeafletNamespace = leafletModule.default ?? leafletModule;
+
+    if (typeof resolvedNamespace.icon !== 'function' || typeof resolvedNamespace.map !== 'function') {
+      throw new Error('Leaflet browser namespace could not be resolved.');
+    }
+
+    return resolvedNamespace;
+  }
+
+  private configureDefaultMarkerIcon(): void {
+    if (!this.L) {
+      return;
+    }
+
+    const iconDefault: import('leaflet').Icon = this.L.icon({
+      iconRetinaUrl: 'assets/leaflet/marker-icon-2x.png',
+      iconUrl: 'assets/leaflet/marker-icon.png',
+      shadowUrl: 'assets/leaflet/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      shadowSize: [41, 41]
+    });
+
+    this.L.Marker.prototype.options.icon = iconDefault;
+  }
+
+  private scheduleMapSizeStabilization(): void {
+    if (!this.map) {
+      return;
+    }
+
+    window.setTimeout((): void => {
+      this.map?.invalidateSize();
+    }, 50);
+
+    window.setTimeout((): void => {
+      this.map?.invalidateSize();
+    }, 250);
   }
 
   private initMap(): void {

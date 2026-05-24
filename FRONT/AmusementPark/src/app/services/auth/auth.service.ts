@@ -1,4 +1,4 @@
-import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpBackend, HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable, catchError, finalize, firstValueFrom, map, of, shareReplay } from 'rxjs';
@@ -15,6 +15,8 @@ import { GoogleIdentityService } from './google-identity.service';
   providedIn: 'root'
 })
 export class AuthService {
+  private static readonly RefreshSessionMarkerKey = 'amusementpark.hasRefreshSession';
+
   private readonly rawHttpClient: HttpClient;
   private refreshAccessTokenRequest$: Observable<string | null> | null = null;
   private accessToken: string | null = null;
@@ -31,6 +33,12 @@ export class AuthService {
 
   async initializeSession(): Promise<void> {
     if (!isPlatformBrowser(this.platformId) || this.hasInitializedSession) {
+      this.hasInitializedSession = true;
+      return;
+    }
+
+    if (!this.hasPersistedRefreshSessionMarker()) {
+      this.clearSession(false);
       this.hasInitializedSession = true;
       return;
     }
@@ -61,6 +69,7 @@ export class AuthService {
     this.setToken(accessToken);
     this.hasServerRefreshSession = true;
     this.hasInitializedSession = true;
+    this.persistRefreshSessionMarker();
   }
 
   getTokenDecoded(): JwtPayload | null {
@@ -128,7 +137,10 @@ export class AuthService {
           return response.accessToken;
         }),
         catchError((error: unknown) => {
-          console.error('Error refreshing access token:', error);
+          if (!this.isExpectedRefreshTokenFailure(error)) {
+            console.error('Error refreshing access token:', error);
+          }
+
           this.clearSession(false);
           return of(null);
         }),
@@ -211,9 +223,51 @@ export class AuthService {
   private clearSession(disableAutoSelect: boolean): void {
     this.accessToken = null;
     this.hasServerRefreshSession = false;
+    this.clearRefreshSessionMarker();
 
     if (disableAutoSelect) {
       this.googleIdentityService.disableAutoSelect();
     }
+  }
+
+  private hasPersistedRefreshSessionMarker(): boolean {
+    if (!isPlatformBrowser(this.platformId)) {
+      return false;
+    }
+
+    try {
+      return localStorage.getItem(AuthService.RefreshSessionMarkerKey) === 'true';
+    } catch (_error) {
+      return false;
+    }
+  }
+
+  private persistRefreshSessionMarker(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    try {
+      localStorage.setItem(AuthService.RefreshSessionMarkerKey, 'true');
+    } catch (_error) {
+      // Non-critical: the HttpOnly refresh cookie remains the source of truth.
+    }
+  }
+
+  private clearRefreshSessionMarker(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    try {
+      localStorage.removeItem(AuthService.RefreshSessionMarkerKey);
+    } catch (_error) {
+      // Non-critical: browser storage may be unavailable in privacy modes.
+    }
+  }
+
+  private isExpectedRefreshTokenFailure(error: unknown): boolean {
+    return error instanceof HttpErrorResponse
+      && (error.status === 400 || error.status === 401 || error.status === 403);
   }
 }
