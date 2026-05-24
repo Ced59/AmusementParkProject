@@ -171,7 +171,7 @@ Le front de production doit maintenant être traité comme un service Node SSR, 
 
 Points de configuration critiques :
 
-- Nginx Proxy Manager pointe vers `127.0.0.1:${PUBLIC_HTTP_PORT:-8080}` ;
+- Nginx Proxy Manager pointe vers `127.0.0.1:${PUBLIC_HTTP_PORT:-18080}` ;
 - le container front écoute en interne sur `4000` ;
 - l'API reste privée et accessible depuis le SSR via `FRONT_SSR_API_INTERNAL_URL=http://api:8080` ;
 - `/api`, `/robots.txt` et `/sitemap.xml` sont proxifiés par le serveur SSR ;
@@ -195,6 +195,36 @@ PUBLIC_BASE_URL=https://amusement-parks.fun npm run seo:ssr-smoke
 
 ## HTTPS public
 
-En production, Nginx Proxy Manager doit exposer le domaine public en HTTPS avec **Force SSL** activé. Le conteneur front écoute en HTTP interne sur `127.0.0.1:${PUBLIC_HTTP_PORT:-8080}`, mais le trafic public doit être redirigé de `http://` vers `https://`.
+En production, Nginx Proxy Manager doit exposer le domaine public en HTTPS avec **Force SSL** activé. Le conteneur front écoute en HTTP interne sur `127.0.0.1:${PUBLIC_HTTP_PORT:-18080}`, mais le trafic public doit être redirigé de `http://` vers `https://`.
 
 Le serveur Angular SSR dispose aussi de `SSR_FORCE_HTTPS=true` en production. Cette protection redirige en 308 quand le reverse proxy transmet `X-Forwarded-Proto: http`. Elle ne remplace pas la configuration NPM, mais limite le risque d'oubli.
+
+
+## Première production — alignement avec l’environnement local prod-like
+
+La version validée localement avec Angular SSR, NPM, Mongo, MinIO et Matomo a entraîné les ajustements suivants pour la prod :
+
+```bash
+PUBLIC_HTTP_PORT=18080
+MINIO_API_PORT=19000
+MINIO_CONSOLE_PORT=19001
+SSR_ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1
+SSR_FORCE_HTTPS=true
+SSR_CSP_ALLOW_LOCAL_DEV_SOURCES=false
+```
+
+Le VPS conserve son Nginx Proxy Manager existant. Le compose production AmusementPark n’installe pas NPM : il publie uniquement le front SSR sur `127.0.0.1:18080`, puis NPM doit router `amusement-parks.fun` vers ce port avec SSL + Force SSL.
+
+Le workflow de production est volontairement protégé par `PRODUCTION_DEPLOY_ENABLED=true` afin d’éviter un déploiement accidentel avant configuration DNS/NPM/secrets.
+
+La liste exhaustive des secrets et variables GitHub attendus se trouve dans :
+
+```text
+docs/deploy/github-production-secrets-and-vars.md
+```
+
+Le plan de première mise en production et les commandes de diagnostic VPS sont dans :
+
+```text
+docs/deploy/production-cicd-first-release.md
+```

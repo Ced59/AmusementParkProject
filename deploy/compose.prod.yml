@@ -9,7 +9,7 @@ services:
       api:
         condition: service_healthy
     ports:
-      - "127.0.0.1:${PUBLIC_HTTP_PORT:-8080}:4000"
+      - "127.0.0.1:${PUBLIC_HTTP_PORT:-18080}:4000"
     environment:
       NODE_ENV: production
       PORT: 4000
@@ -17,6 +17,8 @@ services:
       SSR_CSP_ENABLED: ${CSP_ENABLED:-true}
       SSR_CSP_REPORT_ONLY: ${CSP_REPORT_ONLY:-true}
       SSR_CSP_REPORT_URI: ${FRONT_CSP_REPORT_URI:-/api/security/csp-report}
+      SSR_CSP_ALLOW_LOCAL_DEV_SOURCES: ${SSR_CSP_ALLOW_LOCAL_DEV_SOURCES:-false}
+      SSR_ALLOWED_HOSTS: ${SSR_ALLOWED_HOSTS:?SSR_ALLOWED_HOSTS is required}
       SSR_FORCE_HTTPS: ${SSR_FORCE_HTTPS:-true}
     networks:
       - public_edge
@@ -175,8 +177,8 @@ services:
     volumes:
       - minio_data:/data
     ports:
-      - "127.0.0.1:${MINIO_API_PORT:-9000}:9000"
-      - "127.0.0.1:${MINIO_CONSOLE_PORT:-9001}:9001"
+      - "127.0.0.1:${MINIO_API_PORT:-19000}:9000"
+      - "127.0.0.1:${MINIO_CONSOLE_PORT:-19001}:9001"
     networks:
       - backend_private
     security_opt:

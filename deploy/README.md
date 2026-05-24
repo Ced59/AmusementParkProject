@@ -5,7 +5,7 @@ Cette configuration est prévue pour un VPS qui possède déjà Nginx Proxy Mana
 ## Exposition réseau prévue
 
 - Nginx Proxy Manager expose publiquement `https://amusement-parks.fun`.
-- Le container front est publié uniquement sur `127.0.0.1:${PUBLIC_HTTP_PORT:-8080}`.
+- Le container front est publié uniquement sur `127.0.0.1:${PUBLIC_HTTP_PORT:-18080}`.
 - L'API filtre les en-têtes `Host` via `AllowedHosts`, injecté par la variable `ALLOWED_HOSTS`.
 - L'API n'a aucun port public : elle est appelée par le front via `/api`.
 - MongoDB n'a aucun port public.
@@ -18,7 +18,7 @@ Créer un Proxy Host :
 - Domain Name : `amusement-parks.fun` et éventuellement `www.amusement-parks.fun`.
 - Scheme : `http`.
 - Forward Hostname / IP : `127.0.0.1`.
-- Forward Port : `8080` ou la valeur de `PUBLIC_HTTP_PORT`.
+- Forward Port : `18080` ou la valeur de `PUBLIC_HTTP_PORT`.
 - Activer Websockets.
 - Activer SSL + Force SSL + HTTP/2.
 - Vérifier que toute requête `http://` est redirigée en `https://` avant ouverture publique.
@@ -84,7 +84,7 @@ CSP_REPORT_URI=/security/csp-report
 Pour tester localement le vrai header front, utiliser le container SSR plutôt que `ng serve`, puis vérifier :
 
 ```bash
-curl -I http://127.0.0.1:8080/
+curl -I -H "Host: amusement-parks.fun" -H "X-Forwarded-Proto: https" http://127.0.0.1:${PUBLIC_HTTP_PORT:-18080}/
 ```
 
 La réponse doit contenir `Content-Security-Policy-Report-Only`.
@@ -160,9 +160,9 @@ Ces limites ciblent login, OAuth externe, refresh-token, inscription, confirmati
 - `PUBLIC_BASE_URL`, défaut `https://amusement-parks.fun`
 - `PUBLIC_DOMAIN`, défaut `amusement-parks.fun`
 - `ALLOWED_HOSTS`, défaut pipeline : `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api`
-- `PUBLIC_HTTP_PORT`, défaut `8080`
-- `MINIO_API_PORT`, défaut `9000`
-- `MINIO_CONSOLE_PORT`, défaut `9001`
+- `PUBLIC_HTTP_PORT`, défaut `18080`
+- `MINIO_API_PORT`, défaut `19000`
+- `MINIO_CONSOLE_PORT`, défaut `19001`
 - `MINIO_IMAGE`, pour changer l'image MinIO sans modifier le compose
 - `CSP_ENABLED`, défaut `true`
 - `CSP_REPORT_ONLY`, défaut `true` pendant M18.4
@@ -198,10 +198,10 @@ Les pull requests vers `master` lancent la CI, mais ne déploient pas.
 Depuis ta machine :
 
 ```bash
-ssh -L 9001:127.0.0.1:9001 <user>@<vps>
+ssh -L 19001:127.0.0.1:19001 <user>@<vps>
 ```
 
-Puis ouvrir `http://127.0.0.1:9001`.
+Puis ouvrir `http://127.0.0.1:19001`.
 
 ## Sauvegarde MongoDB
 
@@ -266,7 +266,7 @@ Les scripts de déploiement ne font plus de `source .env` direct. Ils passent pa
 
 ## M19 — SEO technique public
 
-Le front Nginx proxifie maintenant les documents SEO racine vers l'API :
+Le serveur Angular SSR proxifie maintenant les documents SEO racine vers l'API :
 
 - `GET /robots.txt` -> `amusementpark-api:8080/robots.txt`
 - `GET /sitemap.xml` -> `amusementpark-api:8080/sitemap.xml`
@@ -288,13 +288,13 @@ Nginx Proxy Manager conserve la même cible côté VPS :
 
 ```txt
 Forward Hostname / IP : 127.0.0.1
-Forward Port          : 8080 ou PUBLIC_HTTP_PORT
+Forward Port          : 18080 ou PUBLIC_HTTP_PORT
 ```
 
 Le mapping Docker publie désormais :
 
 ```txt
-127.0.0.1:${PUBLIC_HTTP_PORT:-8080} -> container front:4000
+127.0.0.1:${PUBLIC_HTTP_PORT:-18080} -> container front:4000
 ```
 
 Le serveur SSR relaie aussi :
@@ -316,9 +316,51 @@ Les routes publiques sont rendues côté serveur. Les routes admin/profil/auth s
 Pour valider le rendu initial :
 
 ```bash
-curl -i http://127.0.0.1:${PUBLIC_HTTP_PORT:-8080}/en/parks
-curl -i http://127.0.0.1:${PUBLIC_HTTP_PORT:-8080}/sitemap.xml
-curl -i http://127.0.0.1:${PUBLIC_HTTP_PORT:-8080}/api/health
+curl -i http://127.0.0.1:${PUBLIC_HTTP_PORT:-18080}/en/parks
+curl -i http://127.0.0.1:${PUBLIC_HTTP_PORT:-18080}/sitemap.xml
+curl -i http://127.0.0.1:${PUBLIC_HTTP_PORT:-18080}/api/health
 ```
 
 Un stack local proche production est disponible dans `deploy/local` et documenté dans `docs/deploy/local-production-like-stack.md`.
+
+
+## Préparation première mise en production — M20 v11+
+
+L’environnement local proche prod a montré plusieurs points à reporter en production :
+
+- le front doit être traité comme un runtime **Angular SSR Node** ;
+- `SSR_ALLOWED_HOSTS` doit contenir les domaines publics, sinon Angular SSR peut refuser le rendu ;
+- les sources CSP locales (`localhost`, `amusement.localhost`, Matomo local) ne doivent pas fuiter en production ;
+- les ports hôte doivent éviter les conflits avec NPM et autres services déjà présents sur le VPS.
+
+Les valeurs recommandées sont donc :
+
+```bash
+PUBLIC_HTTP_PORT=18080
+SSR_ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1
+SSR_CSP_ALLOW_LOCAL_DEV_SOURCES=false
+MINIO_API_PORT=19000
+MINIO_CONSOLE_PORT=19001
+```
+
+Le workflow `.github/workflows/production.yml` génère le `.env` de prod depuis les GitHub Secrets/Variables, valide ce fichier, pousse les images GHCR, copie le bundle sur le VPS puis lance `scripts/deploy.sh`.
+
+Le déploiement automatique sur `main`/`master` est protégé par la variable GitHub :
+
+```text
+PRODUCTION_DEPLOY_ENABLED=true
+```
+
+Sans cette variable, la CI build/test/push les images, mais ne touche pas au VPS. Le workflow peut aussi être lancé manuellement avec `workflow_dispatch` et `deploy=true`.
+
+Voir aussi :
+
+- `docs/deploy/production-cicd-first-release.md`
+- `docs/deploy/github-production-secrets-and-vars.md`
+
+Pour diagnostiquer le VPS avant ouverture publique, utiliser :
+
+```bash
+cd /opt/amusementpark
+./scripts/vps-preflight.sh
+```

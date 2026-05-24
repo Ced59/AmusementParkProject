@@ -72,6 +72,21 @@ reject_wildcard() {
   fi
 }
 
+
+validate_port() {
+  local name="$1"
+  local value="${!name:-}"
+
+  if [ -z "${value// }" ]; then
+    return
+  fi
+
+  if [[ ! "${value}" =~ ^[0-9]+$ ]] || [ "${value}" -lt 1 ] || [ "${value}" -gt 65535 ]; then
+    echo "ERROR: ${name} must be a valid TCP port between 1 and 65535." >&2
+    errors=$((errors + 1))
+  fi
+}
+
 warn_missing() {
   local name="$1"
   local value="${!name:-}"
@@ -90,6 +105,7 @@ required_names=(
   ALLOWED_HOSTS
   FORWARDED_HEADERS_ALLOWED_HOSTS
   FORWARDED_HEADERS_KNOWN_NETWORKS
+  SSR_ALLOWED_HOSTS
   MONGO_INITDB_ROOT_USERNAME
   MONGO_INITDB_ROOT_PASSWORD
   MONGO_APP_USERNAME
@@ -117,10 +133,25 @@ fi
 
 reject_wildcard ALLOWED_HOSTS
 reject_wildcard FORWARDED_HEADERS_ALLOWED_HOSTS
+reject_wildcard SSR_ALLOWED_HOSTS
 
 if [[ "${ALLOWED_HOSTS:-}" == *"localhost"* ]] || [[ "${ALLOWED_HOSTS:-}" == *"127.0.0.1"* ]]; then
   echo "NOTICE: ALLOWED_HOSTS contains localhost/127.0.0.1 for internal healthchecks. Keep API ports private." >&2
 fi
+
+if [[ "${SSR_ALLOWED_HOSTS:-}" == *"amusement.localhost"* ]] || [[ "${SSR_ALLOWED_HOSTS:-}" == *"matomo.amusement.localhost"* ]]; then
+  echo "ERROR: SSR_ALLOWED_HOSTS must not contain local-prod hostnames in production." >&2
+  errors=$((errors + 1))
+fi
+
+if [ "${SSR_CSP_ALLOW_LOCAL_DEV_SOURCES:-false}" != "false" ]; then
+  echo "ERROR: SSR_CSP_ALLOW_LOCAL_DEV_SOURCES must stay false in production." >&2
+  errors=$((errors + 1))
+fi
+
+validate_port PUBLIC_HTTP_PORT
+validate_port MINIO_API_PORT
+validate_port MINIO_CONSOLE_PORT
 
 
 jwt_value="${JWT_KEY:-}"

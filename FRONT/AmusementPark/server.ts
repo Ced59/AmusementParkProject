@@ -14,6 +14,7 @@ const cspReportOnly = (process.env['SSR_CSP_REPORT_ONLY'] ?? 'true').toLowerCase
 const cspEnabled = (process.env['SSR_CSP_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?? 'localhost;127.0.0.1;amusement.localhost;front');
 const forceHttps = (process.env['SSR_FORCE_HTTPS'] ?? 'false').toLowerCase() === 'true';
+const allowLocalCspSources = (process.env['SSR_CSP_ALLOW_LOCAL_DEV_SOURCES'] ?? 'false').toLowerCase() === 'true';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -132,6 +133,9 @@ function applySecurityHeaders(_req: Request, res: Response, next: NextFunction):
 
 function buildContentSecurityPolicy(): string {
   const reportUri = process.env['SSR_CSP_REPORT_URI'] ?? '/api/security/csp-report';
+  const localScriptSources: string[] = allowLocalCspSources ? ['http://localhost:*', 'http://matomo.amusement.localhost:*'] : [];
+  const localImageSources: string[] = allowLocalCspSources ? ['http://localhost:*', 'http://amusement.localhost:*', 'http://matomo.amusement.localhost:*'] : [];
+  const localConnectSources: string[] = allowLocalCspSources ? ['http://localhost:*', 'https://localhost:*', 'http://amusement.localhost:*', 'http://matomo.amusement.localhost:*'] : [];
 
   return [
     "default-src 'self'",
@@ -139,18 +143,23 @@ function buildContentSecurityPolicy(): string {
     "object-src 'none'",
     "frame-ancestors 'none'",
     "form-action 'self'",
-    "script-src 'self' 'unsafe-inline' https://accounts.google.com https://apis.google.com https://matomo.cedric-caudron.com http://matomo.amusement.localhost:18080 http://localhost:*",
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com",
-    "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com",
-    "font-src 'self' data: https://fonts.gstatic.com",
-    "img-src 'self' data: blob: https: https://tile.openstreetmap.org https://*.tile.openstreetmap.org http://localhost:* http://amusement.localhost:* http://matomo.amusement.localhost:*",
-    "connect-src 'self' http://localhost:* https://localhost:* http://amusement.localhost:* http://matomo.amusement.localhost:* https://accounts.google.com https://www.googleapis.com https://matomo.cedric-caudron.com",
-    "frame-src 'self' https://accounts.google.com",
+    joinCspDirective('script-src', ["'self'", "'unsafe-inline'", 'https://accounts.google.com', 'https://apis.google.com', 'https://matomo.cedric-caudron.com', ...localScriptSources]),
+    joinCspDirective('style-src', ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://accounts.google.com']),
+    joinCspDirective('style-src-elem', ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://accounts.google.com']),
+    joinCspDirective('font-src', ["'self'", 'data:', 'https://fonts.gstatic.com']),
+    joinCspDirective('img-src', ["'self'", 'data:', 'blob:', 'https:', 'https://tile.openstreetmap.org', 'https://*.tile.openstreetmap.org', ...localImageSources]),
+    joinCspDirective('connect-src', ["'self'", 'https://accounts.google.com', 'https://www.googleapis.com', 'https://matomo.cedric-caudron.com', ...localConnectSources]),
+    joinCspDirective('frame-src', ["'self'", 'https://accounts.google.com']),
     "worker-src 'self' blob:",
     "media-src 'self' blob: data:",
     "manifest-src 'self'",
     `report-uri ${reportUri}`
   ].join('; ');
+}
+
+function joinCspDirective(name: string, sources: string[]): string {
+  const uniqueSources: string[] = Array.from(new Set(sources.filter((source: string) => source.length > 0)));
+  return `${name} ${uniqueSources.join(' ')}`;
 }
 
 function proxyToApi(req: Request, res: Response, next: NextFunction, targetPath: string): void {

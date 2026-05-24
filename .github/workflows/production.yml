@@ -1,67 +1,62 @@
-name: AmusementPark production CI/CD
+name: Production CI/CD
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
+      - main
+      - master
+  push:
+    branches:
+      - main
       - master
   workflow_dispatch:
+    inputs:
+      deploy:
+        description: Deploy to the production VPS after building images
+        type: boolean
+        required: true
+        default: false
 
 permissions:
   contents: read
   packages: write
 
-concurrency:
-  group: amusementpark-production-${{ github.ref }}
-  cancel-in-progress: true
-
 env:
   DOTNET_VERSION: 10.0.x
   NODE_VERSION: 24.x
-  FRONTEND_DIR: FRONT/AmusementPark
-  API_IMAGE_NAME: amusementpark-api
-  FRONT_IMAGE_NAME: amusementpark-front
+  REGISTRY: ghcr.io
 
 jobs:
   backend:
     name: Backend build and tests
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore solution
+      - name: Restore backend
         run: dotnet restore AmusementPark.sln
 
-      - name: Build solution
+      - name: Build backend
         run: dotnet build AmusementPark.sln --configuration Release --no-restore
 
       - name: Run backend tests when present
         shell: bash
         run: |
           set -euo pipefail
-          mapfile -t test_projects < <(find API -type f \( -name '*Tests.csproj' -o -name '*Test.csproj' \) | sort)
-
+          mapfile -t test_projects < <(find . -name '*Tests.csproj' -o -name '*Test.csproj')
           if [ "${#test_projects[@]}" -eq 0 ]; then
-            echo "::notice title=Backend tests::No .NET test project found yet. The CI already runs the build and will run tests automatically as soon as a *Tests.csproj exists."
+            echo "No backend test project found yet. Skipping backend tests."
             exit 0
           fi
 
-          mkdir -p TestResults/backend
           for test_project in "${test_projects[@]}"; do
-            echo "Running backend tests for ${test_project}"
-            dotnet test "${test_project}" \
-              --configuration Release \
-              --logger "trx" \
-              --results-directory TestResults/backend
+            dotnet test "${test_project}" --configuration Release --no-build --logger trx --results-directory TestResults
           done
 
       - name: Upload backend test results
@@ -69,35 +64,33 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: backend-test-results
-          path: TestResults/backend
+          path: TestResults
           if-no-files-found: ignore
 
   frontend:
     name: Frontend build and tests
     runs-on: ubuntu-latest
-
     defaults:
       run:
-        working-directory: ${{ env.FRONTEND_DIR }}
-
+        working-directory: FRONT/AmusementPark
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
-          cache-dependency-path: ${{ env.FRONTEND_DIR }}/package-lock.json
+          cache-dependency-path: FRONT/AmusementPark/package-lock.json
 
-      - name: Install dependencies
+      - name: Install frontend dependencies
         run: npm ci
 
       - name: Run frontend tests
         run: npm run test:ci
 
-      - name: Build frontend
+      - name: Build frontend production SSR
         run: npm run build -- --configuration production
 
       - name: Upload frontend coverage
@@ -105,311 +98,243 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frontend-coverage
-          path: ${{ env.FRONTEND_DIR }}/coverage
+          path: FRONT/AmusementPark/coverage
           if-no-files-found: ignore
 
-
   dependency-security:
-    name: Dependency security scans
+    name: Dependency security reports
     runs-on: ubuntu-latest
-
+    continue-on-error: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
-          cache-dependency-path: ${{ env.FRONTEND_DIR }}/package-lock.json
+          cache-dependency-path: FRONT/AmusementPark/package-lock.json
 
-      - name: Restore backend packages
+      - name: Prepare report directory
+        run: mkdir -p dependency-security-reports
+
+      - name: Restore backend for vulnerability scan
         run: dotnet restore AmusementPark.sln
 
-      - name: Scan .NET vulnerable packages
+      - name: Scan .NET packages
         shell: bash
         run: |
-          set -euo pipefail
-          mkdir -p reports/dependencies
-          dotnet list AmusementPark.sln package --vulnerable --include-transitive 2>&1 | tee reports/dependencies/dotnet-vulnerable.txt
+          set +e
+          dotnet list AmusementPark.sln package --vulnerable --include-transitive > dependency-security-reports/dotnet-vulnerable.txt 2>&1
+          status=$?
+          cat dependency-security-reports/dotnet-vulnerable.txt
+          exit 0
 
-          if grep -qi "has the following vulnerable packages" reports/dependencies/dotnet-vulnerable.txt; then
-            echo "::warning title=.NET dependency vulnerabilities::Vulnerable .NET packages were reported. Review the dependency-security-reports artifact."
-          fi
-
-      - name: Install frontend packages
+      - name: Install frontend dependencies for npm audit
+        working-directory: FRONT/AmusementPark
         run: npm ci
-        working-directory: ${{ env.FRONTEND_DIR }}
 
-      - name: Scan npm vulnerable packages
+      - name: Scan npm packages
+        working-directory: FRONT/AmusementPark
         shell: bash
         run: |
-          set -euo pipefail
-          mkdir -p reports/dependencies
-          pushd "${FRONTEND_DIR}" >/dev/null
-
           set +e
-          npm audit --audit-level=moderate --json > ../../reports/dependencies/npm-audit.json
-          audit_status="$?"
-          npm audit --audit-level=moderate > ../../reports/dependencies/npm-audit.txt
-          text_status="$?"
-          set -e
-
-          if [ "${audit_status}" -ne 0 ] || [ "${text_status}" -ne 0 ]; then
-            echo "::warning title=npm dependency vulnerabilities::npm audit reported moderate or higher vulnerabilities. Review the dependency-security-reports artifact."
-          fi
-
-          set +e
-          npm audit signatures > ../../reports/dependencies/npm-audit-signatures.txt 2>&1
-          signatures_status="$?"
-          set -e
-
-          if [ "${signatures_status}" -ne 0 ]; then
-            echo "::notice title=npm audit signatures::npm audit signatures did not complete successfully. See the dependency-security-reports artifact."
-          fi
-
-          popd >/dev/null
+          npm audit --audit-level=moderate --json > ../../dependency-security-reports/npm-audit.json 2>&1
+          npm audit --audit-level=moderate > ../../dependency-security-reports/npm-audit.txt 2>&1
+          npm audit signatures > ../../dependency-security-reports/npm-audit-signatures.txt 2>&1
+          cat ../../dependency-security-reports/npm-audit.txt
+          exit 0
 
       - name: Upload dependency security reports
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: dependency-security-reports
-          path: reports/dependencies
-          if-no-files-found: warn
+          path: dependency-security-reports
 
-  docker:
-    name: Build and push immutable Docker images
+  docker-images:
+    name: Build and push Docker images
     runs-on: ubuntu-latest
     needs:
       - backend
       - frontend
-      - dependency-security
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-
     outputs:
-      api_image: ${{ steps.images.outputs.api_image }}
-      front_image: ${{ steps.images.outputs.front_image }}
-
+      api_image: ${{ steps.image-names.outputs.api_image }}
+      front_image: ${{ steps.image-names.outputs.front_image }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Compute image names
-        id: images
+        id: image-names
         shell: bash
         run: |
           set -euo pipefail
-          owner_lc="$(echo "${GITHUB_REPOSITORY_OWNER}" | tr '[:upper:]' '[:lower:]')"
-          api_image="ghcr.io/${owner_lc}/${API_IMAGE_NAME}:${GITHUB_SHA}"
-          front_image="ghcr.io/${owner_lc}/${FRONT_IMAGE_NAME}:${GITHUB_SHA}"
-          echo "owner_lc=${owner_lc}" >> "${GITHUB_OUTPUT}"
-          echo "api_image=${api_image}" >> "${GITHUB_OUTPUT}"
-          echo "front_image=${front_image}" >> "${GITHUB_OUTPUT}"
-
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v3
+          owner="${GITHUB_REPOSITORY_OWNER,,}"
+          sha_tag="${GITHUB_SHA}"
+          echo "api_image=${REGISTRY}/${owner}/amusementpark-api:${sha_tag}" >> "${GITHUB_OUTPUT}"
+          echo "front_image=${REGISTRY}/${owner}/amusementpark-front:${sha_tag}" >> "${GITHUB_OUTPUT}"
+          echo "api_latest=${REGISTRY}/${owner}/amusementpark-api:latest" >> "${GITHUB_OUTPUT}"
+          echo "front_latest=${REGISTRY}/${owner}/amusementpark-front:latest" >> "${GITHUB_OUTPUT}"
 
       - name: Login to GHCR
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Build and push API image
         uses: docker/build-push-action@v6
         with:
           context: .
           file: API/AmusementPark.WebAPI/Dockerfile
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ steps.images.outputs.api_image }}
-            ghcr.io/${{ steps.images.outputs.owner_lc }}/${{ env.API_IMAGE_NAME }}:master
+            ${{ steps.image-names.outputs.api_image }}
+            ${{ steps.image-names.outputs.api_latest }}
           cache-from: type=gha,scope=api
           cache-to: type=gha,scope=api,mode=max
 
-      - name: Build and push frontend image
+      - name: Build and push frontend SSR image
         uses: docker/build-push-action@v6
         with:
-          context: ${{ env.FRONTEND_DIR }}
-          file: ${{ env.FRONTEND_DIR }}/Dockerfile
-          push: true
+          context: FRONT/AmusementPark
+          file: FRONT/AmusementPark/Dockerfile
+          build-args: |
+            ANGULAR_CONFIGURATION=production
+          push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ steps.images.outputs.front_image }}
-            ghcr.io/${{ steps.images.outputs.owner_lc }}/${{ env.FRONT_IMAGE_NAME }}:master
+            ${{ steps.image-names.outputs.front_image }}
+            ${{ steps.image-names.outputs.front_latest }}
           cache-from: type=gha,scope=front
           cache-to: type=gha,scope=front,mode=max
 
-  deploy:
-    name: Deploy to Hostinger VPS
+  deploy-production:
+    name: Deploy to VPS
     runs-on: ubuntu-latest
-    needs: docker
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs:
+      - docker-images
+      - dependency-security
+    if: >-
+      ${{
+        (github.event_name == 'push' && (github.ref_name == 'main' || github.ref_name == 'master') && vars.PRODUCTION_DEPLOY_ENABLED == 'true') ||
+        (github.event_name == 'workflow_dispatch' && inputs.deploy == true)
+      }}
     environment: production
-
     env:
-      VPS_HOST: ${{ secrets.VPS_HOST }}
-      VPS_SSH_USER: ${{ secrets.VPS_SSH_USER }}
-      VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT || '22' }}
-      VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH || '/opt/amusementpark' }}
-      PUBLIC_HTTP_PORT: ${{ vars.PUBLIC_HTTP_PORT || '8080' }}
+      API_IMAGE: ${{ needs.docker-images.outputs.api_image }}
+      FRONT_IMAGE: ${{ needs.docker-images.outputs.front_image }}
+      PUBLIC_DOMAIN: ${{ vars.PUBLIC_DOMAIN || 'amusement-parks.fun' }}
       PUBLIC_BASE_URL: ${{ vars.PUBLIC_BASE_URL || 'https://amusement-parks.fun' }}
       PUBLIC_WWW_BASE_URL: ${{ vars.PUBLIC_WWW_BASE_URL || 'https://www.amusement-parks.fun' }}
-      PUBLIC_DOMAIN: ${{ vars.PUBLIC_DOMAIN || 'amusement-parks.fun' }}
+      PUBLIC_HTTP_PORT: ${{ vars.PUBLIC_HTTP_PORT || '18080' }}
       PUBLIC_EDGE_SUBNET: ${{ vars.PUBLIC_EDGE_SUBNET || '172.30.30.0/24' }}
       BACKEND_PRIVATE_SUBNET: ${{ vars.BACKEND_PRIVATE_SUBNET || '172.30.31.0/24' }}
-      ALLOWED_HOSTS: ${{ vars.ALLOWED_HOSTS || format('{0};www.{0};localhost;127.0.0.1;amusementpark-api', vars.PUBLIC_DOMAIN || 'amusement-parks.fun') }}
-      FORWARDED_HEADERS_ALLOWED_HOSTS: ${{ vars.FORWARDED_HEADERS_ALLOWED_HOSTS || format('{0};www.{0};localhost;127.0.0.1', vars.PUBLIC_DOMAIN || 'amusement-parks.fun') }}
-      FORWARDED_HEADERS_KNOWN_NETWORKS: ${{ vars.FORWARDED_HEADERS_KNOWN_NETWORKS || vars.BACKEND_PRIVATE_SUBNET || '172.30.31.0/24' }}
-      FORWARDED_HEADERS_FORWARD_LIMIT: ${{ vars.FORWARDED_HEADERS_FORWARD_LIMIT || '2' }}
+      ALLOWED_HOSTS: ${{ vars.ALLOWED_HOSTS || 'amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api' }}
+      FORWARDED_HEADERS_ALLOWED_HOSTS: ${{ vars.FORWARDED_HEADERS_ALLOWED_HOSTS || 'amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1' }}
+      FORWARDED_HEADERS_KNOWN_NETWORKS: ${{ vars.FORWARDED_HEADERS_KNOWN_NETWORKS || '172.30.31.0/24' }}
+      SSR_ALLOWED_HOSTS: ${{ vars.SSR_ALLOWED_HOSTS || 'amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1' }}
+      SSR_FORCE_HTTPS: ${{ vars.SSR_FORCE_HTTPS || 'true' }}
       CSP_ENABLED: ${{ vars.CSP_ENABLED || 'true' }}
       CSP_REPORT_ONLY: ${{ vars.CSP_REPORT_ONLY || 'true' }}
-      CSP_REPORT_URI: ${{ vars.CSP_REPORT_URI || '/security/csp-report' }}
-      FRONT_CSP_REPORT_URI: ${{ vars.FRONT_CSP_REPORT_URI || '/api/security/csp-report' }}
-      FRONT_SSR_API_INTERNAL_URL: ${{ vars.FRONT_SSR_API_INTERNAL_URL || 'http://api:8080' }}
-      SEO_DEFAULT_LANGUAGE: ${{ vars.SEO_DEFAULT_LANGUAGE || 'en' }}
       SEO_MAX_DYNAMIC_URLS_PER_TYPE: ${{ vars.SEO_MAX_DYNAMIC_URLS_PER_TYPE || '50' }}
-      AUTH_RATE_LIMIT_LOGIN_LIMIT: ${{ vars.AUTH_RATE_LIMIT_LOGIN_LIMIT || '5' }}
-      AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS: ${{ vars.AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS || '60' }}
-      AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT: ${{ vars.AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT || '10' }}
-      AUTH_RATE_LIMIT_EXTERNAL_LOGIN_WINDOW_SECONDS: ${{ vars.AUTH_RATE_LIMIT_EXTERNAL_LOGIN_WINDOW_SECONDS || '60' }}
-      AUTH_RATE_LIMIT_REFRESH_TOKEN_LIMIT: ${{ vars.AUTH_RATE_LIMIT_REFRESH_TOKEN_LIMIT || '30' }}
-      AUTH_RATE_LIMIT_REFRESH_TOKEN_WINDOW_SECONDS: ${{ vars.AUTH_RATE_LIMIT_REFRESH_TOKEN_WINDOW_SECONDS || '60' }}
-      AUTH_RATE_LIMIT_REGISTRATION_LIMIT: ${{ vars.AUTH_RATE_LIMIT_REGISTRATION_LIMIT || '5' }}
-      AUTH_RATE_LIMIT_REGISTRATION_WINDOW_SECONDS: ${{ vars.AUTH_RATE_LIMIT_REGISTRATION_WINDOW_SECONDS || '900' }}
-      AUTH_RATE_LIMIT_EMAIL_CHALLENGE_LIMIT: ${{ vars.AUTH_RATE_LIMIT_EMAIL_CHALLENGE_LIMIT || '3' }}
-      AUTH_RATE_LIMIT_EMAIL_CHALLENGE_WINDOW_SECONDS: ${{ vars.AUTH_RATE_LIMIT_EMAIL_CHALLENGE_WINDOW_SECONDS || '900' }}
-      AUTH_RATE_LIMIT_PASSWORD_RESET_LIMIT: ${{ vars.AUTH_RATE_LIMIT_PASSWORD_RESET_LIMIT || '5' }}
-      AUTH_RATE_LIMIT_PASSWORD_RESET_WINDOW_SECONDS: ${{ vars.AUTH_RATE_LIMIT_PASSWORD_RESET_WINDOW_SECONDS || '900' }}
-
+      MONGO_DATABASE_NAME: ${{ vars.PROD_MONGO_DATABASE_NAME || 'AmusementPark' }}
+      MONGO_INITDB_ROOT_USERNAME: ${{ secrets.PROD_MONGO_ROOT_USERNAME }}
+      MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.PROD_MONGO_ROOT_PASSWORD }}
+      MONGO_APP_USERNAME: ${{ secrets.PROD_MONGO_APP_USERNAME }}
+      MONGO_APP_PASSWORD: ${{ secrets.PROD_MONGO_APP_PASSWORD }}
+      MINIO_IMAGE: ${{ vars.MINIO_IMAGE || 'quay.io/minio/minio:RELEASE.2025-07-23T15-54-02Z' }}
+      MINIO_ROOT_USER: ${{ secrets.PROD_MINIO_ROOT_USER }}
+      MINIO_ROOT_PASSWORD: ${{ secrets.PROD_MINIO_ROOT_PASSWORD }}
+      MINIO_BUCKET: ${{ vars.PROD_MINIO_BUCKET || 'amusement-park-images' }}
+      MINIO_API_PORT: ${{ vars.MINIO_API_PORT || '19000' }}
+      MINIO_CONSOLE_PORT: ${{ vars.MINIO_CONSOLE_PORT || '19001' }}
+      JWT_KEY: ${{ secrets.PROD_JWT_KEY }}
+      JWT_ISSUER: ${{ vars.PROD_JWT_ISSUER || 'AmusementPark' }}
+      JWT_AUDIENCE: ${{ vars.PROD_JWT_AUDIENCE || 'AmusementPark' }}
+      GOOGLE_CLIENT_ID: ${{ secrets.PROD_GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}
+      GOOGLE_REDIRECT_URI: ${{ vars.PROD_GOOGLE_REDIRECT_URI || 'https://amusement-parks.fun/api/auth/external/google/callback' }}
+      FACEBOOK_APP_ID: ${{ secrets.PROD_FACEBOOK_APP_ID }}
+      FACEBOOK_APP_SECRET: ${{ secrets.PROD_FACEBOOK_APP_SECRET }}
+      EMAIL_MODE: ${{ vars.PROD_EMAIL_MODE || 'Console' }}
+      EMAIL_HOST: ${{ secrets.PROD_EMAIL_HOST }}
+      EMAIL_PORT: ${{ vars.PROD_EMAIL_PORT || '587' }}
+      EMAIL_USE_SSL: ${{ vars.PROD_EMAIL_USE_SSL || 'false' }}
+      EMAIL_USE_STARTTLS: ${{ vars.PROD_EMAIL_USE_STARTTLS || 'true' }}
+      EMAIL_USERNAME: ${{ secrets.PROD_EMAIL_USERNAME }}
+      EMAIL_PASSWORD: ${{ secrets.PROD_EMAIL_PASSWORD }}
+      EMAIL_FROM_ADDRESS: ${{ vars.PROD_EMAIL_FROM_ADDRESS || 'noreply@amusement-parks.fun' }}
+      EMAIL_FROM_NAME: ${{ vars.PROD_EMAIL_FROM_NAME || 'Amusement Park' }}
+      ADMIN_USER_ENABLED: ${{ vars.PROD_ADMIN_USER_ENABLED || 'false' }}
+      ADMIN_USER_EMAIL: ${{ secrets.PROD_ADMIN_USER_EMAIL }}
+      ADMIN_USER_PASSWORD: ${{ secrets.PROD_ADMIN_USER_PASSWORD }}
+      BACKUP_BEFORE_DEPLOY: ${{ vars.BACKUP_BEFORE_DEPLOY || 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare deployment bundle
-        shell: bash
+      - name: Generate production .env
         run: |
-          set -euo pipefail
-          tar -czf /tmp/amusementpark-deploy.tar.gz \
+          chmod +x deploy/scripts/write-production-env.sh deploy/scripts/validate-production-env.sh deploy/scripts/env-loader.sh
+          deploy/scripts/write-production-env.sh deploy/.env
+          deploy/scripts/validate-production-env.sh deploy/.env
+
+      - name: Prepare deployment bundle
+        run: |
+          tar -czf amusementpark-deploy.tgz \
             -C deploy \
             compose.prod.yml \
             mongo-init.js \
-            .env.production.example \
-            scripts \
-            README.md
+            .env \
+            scripts
 
       - name: Configure SSH
-        shell: bash
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT || '22' }}
+          VPS_SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
         run: |
           set -euo pipefail
-          install -m 700 -d ~/.ssh
-          printf '%s\n' '${{ secrets.VPS_SSH_PRIVATE_KEY }}' > ~/.ssh/amusementpark_vps_key
-          chmod 600 ~/.ssh/amusementpark_vps_key
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "${VPS_SSH_PRIVATE_KEY}" > ~/.ssh/amusementpark_deploy_key
+          chmod 600 ~/.ssh/amusementpark_deploy_key
           ssh-keyscan -p "${VPS_SSH_PORT}" "${VPS_HOST}" >> ~/.ssh/known_hosts
 
       - name: Upload deployment bundle
-        shell: bash
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_USER: ${{ secrets.VPS_SSH_USER }}
+          VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT || '22' }}
+          VPS_DEPLOY_PATH: ${{ vars.VPS_DEPLOY_PATH || '/opt/amusementpark' }}
         run: |
           set -euo pipefail
-          ssh -i ~/.ssh/amusementpark_vps_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" \
-            "mkdir -p '${VPS_DEPLOY_PATH}'"
-          scp -i ~/.ssh/amusementpark_vps_key -P "${VPS_SSH_PORT}" \
-            /tmp/amusementpark-deploy.tar.gz \
-            "${VPS_SSH_USER}@${VPS_HOST}:/tmp/amusementpark-deploy-${GITHUB_SHA}.tar.gz"
-          ssh -i ~/.ssh/amusementpark_vps_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" \
-            "tar -xzf '/tmp/amusementpark-deploy-${GITHUB_SHA}.tar.gz' -C '${VPS_DEPLOY_PATH}' && rm '/tmp/amusementpark-deploy-${GITHUB_SHA}.tar.gz'"
+          ssh -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" "mkdir -p '${VPS_DEPLOY_PATH}'"
+          scp -i ~/.ssh/amusementpark_deploy_key -P "${VPS_SSH_PORT}" amusementpark-deploy.tgz "${VPS_SSH_USER}@${VPS_HOST}:/tmp/amusementpark-deploy.tgz"
+          ssh -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" "tar -xzf /tmp/amusementpark-deploy.tgz -C '${VPS_DEPLOY_PATH}' && rm /tmp/amusementpark-deploy.tgz && chmod +x '${VPS_DEPLOY_PATH}'/scripts/*.sh"
 
-      - name: Write production environment on VPS
-        shell: bash
+      - name: Deploy on VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_USER: ${{ secrets.VPS_SSH_USER }}
+          VPS_SSH_PORT: ${{ secrets.VPS_SSH_PORT || '22' }}
+          VPS_DEPLOY_PATH: ${{ vars.VPS_DEPLOY_PATH || '/opt/amusementpark' }}
+          GHCR_USERNAME: ${{ secrets.GHCR_USERNAME }}
+          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
         run: |
           set -euo pipefail
-          cat > /tmp/amusementpark.env <<'EOF_ENV'
-          COMPOSE_PROJECT_NAME=amusementpark
-          API_IMAGE=${{ needs.docker.outputs.api_image }}
-          FRONT_IMAGE=${{ needs.docker.outputs.front_image }}
-          PUBLIC_HTTP_PORT=${{ env.PUBLIC_HTTP_PORT }}
-          PUBLIC_DOMAIN=${{ env.PUBLIC_DOMAIN }}
-          PUBLIC_BASE_URL=${{ env.PUBLIC_BASE_URL }}
-          PUBLIC_WWW_BASE_URL=${{ env.PUBLIC_WWW_BASE_URL }}
-          SEO_DEFAULT_LANGUAGE=${{ env.SEO_DEFAULT_LANGUAGE }}
-          SEO_MAX_DYNAMIC_URLS_PER_TYPE=${{ env.SEO_MAX_DYNAMIC_URLS_PER_TYPE }}
-          ALLOWED_HOSTS=${{ env.ALLOWED_HOSTS }}
-          FORWARDED_HEADERS_ALLOWED_HOSTS=${{ env.FORWARDED_HEADERS_ALLOWED_HOSTS }}
-          FORWARDED_HEADERS_KNOWN_NETWORKS=${{ env.FORWARDED_HEADERS_KNOWN_NETWORKS }}
-          FORWARDED_HEADERS_FORWARD_LIMIT=${{ env.FORWARDED_HEADERS_FORWARD_LIMIT }}
-          CSP_ENABLED=${{ env.CSP_ENABLED }}
-          CSP_REPORT_ONLY=${{ env.CSP_REPORT_ONLY }}
-          CSP_REPORT_URI=${{ env.CSP_REPORT_URI }}
-          FRONT_CSP_REPORT_URI=${{ env.FRONT_CSP_REPORT_URI }}
-          FRONT_SSR_API_INTERNAL_URL=${{ env.FRONT_SSR_API_INTERNAL_URL }}
-          AUTH_RATE_LIMIT_LOGIN_LIMIT=${{ env.AUTH_RATE_LIMIT_LOGIN_LIMIT }}
-          AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS=${{ env.AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS }}
-          AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT=${{ env.AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT }}
-          AUTH_RATE_LIMIT_EXTERNAL_LOGIN_WINDOW_SECONDS=${{ env.AUTH_RATE_LIMIT_EXTERNAL_LOGIN_WINDOW_SECONDS }}
-          AUTH_RATE_LIMIT_REFRESH_TOKEN_LIMIT=${{ env.AUTH_RATE_LIMIT_REFRESH_TOKEN_LIMIT }}
-          AUTH_RATE_LIMIT_REFRESH_TOKEN_WINDOW_SECONDS=${{ env.AUTH_RATE_LIMIT_REFRESH_TOKEN_WINDOW_SECONDS }}
-          AUTH_RATE_LIMIT_REGISTRATION_LIMIT=${{ env.AUTH_RATE_LIMIT_REGISTRATION_LIMIT }}
-          AUTH_RATE_LIMIT_REGISTRATION_WINDOW_SECONDS=${{ env.AUTH_RATE_LIMIT_REGISTRATION_WINDOW_SECONDS }}
-          AUTH_RATE_LIMIT_EMAIL_CHALLENGE_LIMIT=${{ env.AUTH_RATE_LIMIT_EMAIL_CHALLENGE_LIMIT }}
-          AUTH_RATE_LIMIT_EMAIL_CHALLENGE_WINDOW_SECONDS=${{ env.AUTH_RATE_LIMIT_EMAIL_CHALLENGE_WINDOW_SECONDS }}
-          AUTH_RATE_LIMIT_PASSWORD_RESET_LIMIT=${{ env.AUTH_RATE_LIMIT_PASSWORD_RESET_LIMIT }}
-          AUTH_RATE_LIMIT_PASSWORD_RESET_WINDOW_SECONDS=${{ env.AUTH_RATE_LIMIT_PASSWORD_RESET_WINDOW_SECONDS }}
-          PUBLIC_EDGE_SUBNET=${{ env.PUBLIC_EDGE_SUBNET }}
-          BACKEND_PRIVATE_SUBNET=${{ env.BACKEND_PRIVATE_SUBNET }}
-          ASPNETCORE_ENVIRONMENT=Production
-          MONGO_DATABASE_NAME=${{ secrets.PROD_MONGO_DATABASE_NAME || 'AmusementPark' }}
-          MONGO_INITDB_ROOT_USERNAME=${{ secrets.PROD_MONGO_ROOT_USERNAME }}
-          MONGO_INITDB_ROOT_PASSWORD=${{ secrets.PROD_MONGO_ROOT_PASSWORD }}
-          MONGO_APP_USERNAME=${{ secrets.PROD_MONGO_APP_USERNAME }}
-          MONGO_APP_PASSWORD=${{ secrets.PROD_MONGO_APP_PASSWORD }}
-          MINIO_IMAGE=${{ vars.MINIO_IMAGE || 'quay.io/minio/minio:RELEASE.2025-07-23T15-54-02Z' }}
-          MINIO_ROOT_USER=${{ secrets.PROD_MINIO_ROOT_USER }}
-          MINIO_ROOT_PASSWORD=${{ secrets.PROD_MINIO_ROOT_PASSWORD }}
-          MINIO_BUCKET=${{ secrets.PROD_MINIO_BUCKET || 'amusement-park-images' }}
-          MINIO_API_PORT=${{ vars.MINIO_API_PORT || '9000' }}
-          MINIO_CONSOLE_PORT=${{ vars.MINIO_CONSOLE_PORT || '9001' }}
-          JWT_KEY=${{ secrets.PROD_JWT_KEY }}
-          JWT_ISSUER=${{ secrets.PROD_JWT_ISSUER }}
-          JWT_AUDIENCE=${{ secrets.PROD_JWT_AUDIENCE }}
-          GOOGLE_CLIENT_ID=${{ secrets.PROD_GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET=${{ secrets.PROD_GOOGLE_CLIENT_SECRET }}
-          GOOGLE_REDIRECT_URI=${{ secrets.PROD_GOOGLE_REDIRECT_URI }}
-          FACEBOOK_APP_ID=${{ secrets.PROD_FACEBOOK_APP_ID }}
-          FACEBOOK_APP_SECRET=${{ secrets.PROD_FACEBOOK_APP_SECRET }}
-          EMAIL_MODE=${{ secrets.PROD_EMAIL_MODE || 'Console' }}
-          EMAIL_HOST=${{ secrets.PROD_EMAIL_HOST }}
-          EMAIL_PORT=${{ secrets.PROD_EMAIL_PORT || '587' }}
-          EMAIL_USE_SSL=${{ secrets.PROD_EMAIL_USE_SSL || 'false' }}
-          EMAIL_USE_STARTTLS=${{ secrets.PROD_EMAIL_USE_STARTTLS || 'true' }}
-          EMAIL_USERNAME=${{ secrets.PROD_EMAIL_USERNAME }}
-          EMAIL_PASSWORD=${{ secrets.PROD_EMAIL_PASSWORD }}
-          EMAIL_FROM_ADDRESS=${{ secrets.PROD_EMAIL_FROM_ADDRESS || 'noreply@amusement-parks.fun' }}
-          EMAIL_FROM_NAME=${{ secrets.PROD_EMAIL_FROM_NAME || 'Amusement Park' }}
-          ADMIN_USER_ENABLED=${{ secrets.PROD_ADMIN_USER_ENABLED || 'false' }}
-          ADMIN_USER_EMAIL=${{ secrets.PROD_ADMIN_USER_EMAIL }}
-          ADMIN_USER_PASSWORD=${{ secrets.PROD_ADMIN_USER_PASSWORD }}
-          EOF_ENV
-          bash deploy/scripts/validate-production-env.sh /tmp/amusementpark.env
-          scp -i ~/.ssh/amusementpark_vps_key -P "${VPS_SSH_PORT}" \
-            /tmp/amusementpark.env \
-            "${VPS_SSH_USER}@${VPS_HOST}:${VPS_DEPLOY_PATH}/.env"
-          rm /tmp/amusementpark.env
-
-      - name: Pull images and restart services
-        shell: bash
-        run: |
-          set -euo pipefail
-          ssh -i ~/.ssh/amusementpark_vps_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" <<EOF
-          set -euo pipefail
-          cd '${VPS_DEPLOY_PATH}'
-          echo '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u '${{ github.actor }}' --password-stdin
-          chmod +x scripts/*.sh
-          ./scripts/deploy.sh
-          EOF
+          ssh -i ~/.ssh/amusementpark_deploy_key -p "${VPS_SSH_PORT}" "${VPS_SSH_USER}@${VPS_HOST}" \
+            "export GHCR_USERNAME='${GHCR_USERNAME}' GHCR_TOKEN='${GHCR_TOKEN}'; \
+             if [ -n \"\${GHCR_USERNAME}\" ] && [ -n \"\${GHCR_TOKEN}\" ]; then echo \"\${GHCR_TOKEN}\" | docker login ghcr.io -u \"\${GHCR_USERNAME}\" --password-stdin; fi; \
+             cd '${VPS_DEPLOY_PATH}' && ./scripts/deploy.sh"

@@ -12,11 +12,12 @@ fi
 source ./scripts/env-loader.sh
 load_env_file .env
 
+compose_project_name="${COMPOSE_PROJECT_NAME:-amusementpark}"
 backup_dir="${BACKUP_DIR:-./backups/mongodb}"
 timestamp="$(date -u +%Y%m%dT%H%M%SZ)"
 mkdir -p "${backup_dir}"
 
-docker compose -f compose.prod.yml exec -T mongodb \
+docker compose --project-name "${compose_project_name}" -f compose.prod.yml exec -T mongodb \
   mongodump \
   --username "${MONGO_INITDB_ROOT_USERNAME}" \
   --password "${MONGO_INITDB_ROOT_PASSWORD}" \

@@ -35,6 +35,7 @@ services:
       SSR_CSP_ENABLED: "true"
       SSR_CSP_REPORT_ONLY: "true"
       SSR_CSP_REPORT_URI: /api/security/csp-report
+      SSR_CSP_ALLOW_LOCAL_DEV_SOURCES: "true"
       SSR_ALLOWED_HOSTS: "${SSR_ALLOWED_HOSTS:-localhost;127.0.0.1;amusement.localhost}"
       SSR_FORCE_HTTPS: "false"
     ports:

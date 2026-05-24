@@ -12,20 +12,51 @@ fi
 source ./scripts/env-loader.sh
 load_env_file .env
 
+compose_project_name="${COMPOSE_PROJECT_NAME:-amusementpark}"
+public_http_port="${PUBLIC_HTTP_PORT:-18080}"
+public_domain="${PUBLIC_DOMAIN:-amusement-parks.fun}"
+
+compose() {
+  docker compose --project-name "${compose_project_name}" -f compose.prod.yml "$@"
+}
+
 ./scripts/validate-production-env.sh .env
 
-docker compose -f compose.prod.yml pull
-docker compose -f compose.prod.yml up -d --remove-orphans
+if [ "${BACKUP_BEFORE_DEPLOY:-true}" = "true" ] && compose ps --services --filter status=running | grep -qx 'mongodb'; then
+  echo "Running MongoDB backup before deployment..."
+  ./scripts/backup-mongo.sh || {
+    echo "MongoDB backup failed. Deployment aborted." >&2
+    exit 1
+  }
+fi
 
-docker compose -f compose.prod.yml ps
+echo "Pulling production images..."
+compose pull
 
-echo "Checking public frontend on 127.0.0.1:${PUBLIC_HTTP_PORT:-8080}..."
-curl -fsS "http://127.0.0.1:${PUBLIC_HTTP_PORT:-8080}/" >/dev/null
+echo "Starting production stack..."
+compose up -d --remove-orphans
 
-echo "Checking API health through the frontend reverse proxy..."
-curl -fsS "http://127.0.0.1:${PUBLIC_HTTP_PORT:-8080}/api/health" >/dev/null
+compose ps
+
+echo "Checking SSR frontend health on 127.0.0.1:${public_http_port}..."
+curl -fsS \
+  -H "Host: ${public_domain}" \
+  -H "X-Forwarded-Proto: https" \
+  "http://127.0.0.1:${public_http_port}/healthz" >/dev/null
+
+echo "Checking API health through SSR public proxy..."
+curl -fsS \
+  -H "Host: ${public_domain}" \
+  -H "X-Forwarded-Proto: https" \
+  "http://127.0.0.1:${public_http_port}/api/health" >/dev/null
+
+echo "Checking robots.txt through SSR public proxy..."
+curl -fsS \
+  -H "Host: ${public_domain}" \
+  -H "X-Forwarded-Proto: https" \
+  "http://127.0.0.1:${public_http_port}/robots.txt" >/dev/null
 
 echo "Pruning old Docker images older than 7 days..."
 docker image prune -af --filter "until=168h" >/dev/null || true
 
-echo "Deployment completed."
+echo "Deployment completed. Configure Nginx Proxy Manager to forward ${public_domain} to 127.0.0.1:${public_http_port} with SSL + Force SSL."
