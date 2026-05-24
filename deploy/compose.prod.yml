@@ -105,8 +105,7 @@ services:
       Authentication__Google__RedirectUri: ${GOOGLE_REDIRECT_URI:-}
       Authentication__Facebook__AppId: ${FACEBOOK_APP_ID:-}
       Authentication__Facebook__AppSecret: ${FACEBOOK_APP_SECRET:-}
-      Cors__AllowedOrigins__0: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required}
-      Cors__AllowedOrigins__1: ${PUBLIC_WWW_BASE_URL:-}
+      Cors__AllowedOriginsCsv: ${PUBLIC_BASE_URL:?PUBLIC_BASE_URL is required};${PUBLIC_WWW_BASE_URL:-}
       Cors__AllowedMethods__0: GET
       Cors__AllowedMethods__1: POST
       Cors__AllowedMethods__2: PUT

@@ -237,7 +237,7 @@ PUBLIC_BASE_URL=https://amusement-parks.fun
 PUBLIC_WWW_BASE_URL=https://www.amusement-parks.fun
 ```
 
-Ces deux origins sont injectées dans l'API via `Cors__AllowedOrigins__0` et `Cors__AllowedOrigins__1`.
+Ces deux origins sont injectées dans l'API via `Cors__AllowedOriginsCsv`. Ce format volontairement plat évite les effets de fusion des tableaux de configuration .NET entre `appsettings.json` et variables d'environnement.
 
 Règles backend :
 
