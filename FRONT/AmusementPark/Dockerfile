@@ -10,7 +10,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
-RUN node scripts/inject-google-client-id.cjs && \
+RUN GOOGLE_CLIENT_ID="${GOOGLE_CLIENT_ID}" node scripts/inject-google-client-id.cjs && \
     npm run build -- --configuration ${ANGULAR_CONFIGURATION}
 
 
