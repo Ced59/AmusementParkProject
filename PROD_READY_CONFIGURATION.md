@@ -16,7 +16,7 @@ Le back est désormais prêt à être piloté uniquement par configuration.
 ASPNETCORE_ENVIRONMENT=Production
 AllowedHosts=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api
 Authentication__Local__FrontendBaseUrl=https://amusement-parks.fun
-Cors__AllowedOrigins__0=https://amusement-parks.fun
+Cors__AllowedOriginsCsv=https://amusement-parks.fun;https://www.amusement-parks.fun
 ForwardedHeaders__ForwardLimit=2
 ForwardedHeaders__KnownProxies__0=127.0.0.1
 ForwardedHeaders__KnownProxies__1=::1

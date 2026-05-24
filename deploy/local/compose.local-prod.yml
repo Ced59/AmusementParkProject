@@ -99,8 +99,7 @@ services:
       Authentication__Google__ClientId: ${GOOGLE_CLIENT_ID:-}
       Authentication__Google__ClientSecret: ${GOOGLE_CLIENT_SECRET:-}
       Authentication__Google__RedirectUri: ${GOOGLE_REDIRECT_URI:-}
-      Cors__AllowedOrigins__0: ${PUBLIC_BASE_URL:-http://amusement.localhost:18080}
-      Cors__AllowedOrigins__1: http://localhost:${SSR_DIRECT_PORT:-14000}
+      Cors__AllowedOriginsCsv: ${PUBLIC_BASE_URL:-http://amusement.localhost:18080};http://localhost:${SSR_DIRECT_PORT:-14000}
       Cors__AllowedMethods__0: GET
       Cors__AllowedMethods__1: POST
       Cors__AllowedMethods__2: PUT

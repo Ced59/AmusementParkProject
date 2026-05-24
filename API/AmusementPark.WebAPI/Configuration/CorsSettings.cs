@@ -7,7 +7,9 @@ public sealed class CorsSettings
 {
     public const string SectionName = "Cors";
 
-    public string[] AllowedOrigins { get; init; } = ["http://localhost:4200"];
+    public string[] AllowedOrigins { get; init; } = [];
+
+    public string? AllowedOriginsCsv { get; init; }
 
     public string[] AllowedMethods { get; init; } = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"];
 

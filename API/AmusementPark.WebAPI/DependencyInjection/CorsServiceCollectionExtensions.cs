@@ -23,7 +23,8 @@ public static class CorsServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(environment);
 
         CorsSettings corsSettings = configuration.GetSection(CorsSettings.SectionName).Get<CorsSettings>() ?? new CorsSettings();
-        string[] allowedOrigins = NormalizeAllowedOrigins(corsSettings.AllowedOrigins, corsSettings.AllowCredentials, environment);
+        string[] configuredAllowedOrigins = ParseConfiguredOrigins(corsSettings);
+        string[] allowedOrigins = NormalizeAllowedOrigins(configuredAllowedOrigins, corsSettings.AllowCredentials, environment);
         string[] allowedMethods = NormalizeTokens(corsSettings.AllowedMethods, ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]);
         string[] allowedHeaders = NormalizeTokens(corsSettings.AllowedHeaders, ["Authorization", "Content-Type", "Accept-Language", "X-Requested-With"]);
         string[] exposedHeaders = NormalizeTokens(corsSettings.ExposedHeaders, Array.Empty<string>());
@@ -67,6 +68,19 @@ public static class CorsServiceCollectionExtensions
     {
         ArgumentNullException.ThrowIfNull(app);
         return app.UseCors(PolicyName);
+    }
+
+
+    private static string[] ParseConfiguredOrigins(CorsSettings corsSettings)
+    {
+        if (!string.IsNullOrWhiteSpace(corsSettings.AllowedOriginsCsv))
+        {
+            return corsSettings.AllowedOriginsCsv
+                .Split(new[] { ';', ',' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                .ToArray();
+        }
+
+        return corsSettings.AllowedOrigins;
     }
 
     private static string[] NormalizeAllowedOrigins(string[] configuredOrigins, bool allowCredentials, IHostEnvironment environment)

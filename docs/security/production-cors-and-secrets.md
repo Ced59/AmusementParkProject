@@ -25,8 +25,7 @@ Règles appliquées :
 Origines prod injectées par Docker Compose :
 
 ```bash
-Cors__AllowedOrigins__0=${PUBLIC_BASE_URL}
-Cors__AllowedOrigins__1=${PUBLIC_WWW_BASE_URL}
+Cors__AllowedOriginsCsv=${PUBLIC_BASE_URL};${PUBLIC_WWW_BASE_URL}
 ```
 
 Méthodes autorisées :
