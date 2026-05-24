@@ -34,6 +34,7 @@ import { AdminParkGeneralTabComponent } from './admin-park-edit/tabs/admin-park-
 import { AdminParkLocationTabComponent } from './admin-park-edit/tabs/admin-park-location-tab/admin-park-location-tab.component';
 import { AdminParkDescriptionsTabComponent } from './admin-park-edit/tabs/admin-park-descriptions-tab/admin-park-descriptions-tab.component';
 import { AdminParkLogosTabComponent } from './admin-park-edit/tabs/admin-park-logos-tab/admin-park-logos-tab.component';
+import { AdminParkPhotosTabComponent } from './admin-park-edit/tabs/admin-park-photos-tab/admin-park-photos-tab.component';
 
 @NgModule({
     imports: [
@@ -70,7 +71,8 @@ import { AdminParkLogosTabComponent } from './admin-park-edit/tabs/admin-park-lo
     AdminParkGeneralTabComponent,
     AdminParkLocationTabComponent,
     AdminParkDescriptionsTabComponent,
-    AdminParkLogosTabComponent
+    AdminParkLogosTabComponent,
+    AdminParkPhotosTabComponent
 ]
 })
 export class AdminParksModule { }

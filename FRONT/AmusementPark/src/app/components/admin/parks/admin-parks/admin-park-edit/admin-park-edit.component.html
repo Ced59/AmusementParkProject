@@ -56,6 +56,7 @@
           <p-tab [value]="1">{{ 'admin.parks.tabs.location' | translate }}</p-tab>
           <p-tab [value]="2">{{ 'admin.parks.tabs.descriptions' | translate }}</p-tab>
           <p-tab [value]="3">{{ 'admin.parks.tabs.logos' | translate }}</p-tab>
+          <p-tab [value]="4">{{ 'admin.parks.tabs.photos' | translate }}</p-tab>
         </p-tablist>
 
         <p-tabpanels>
@@ -69,7 +70,7 @@
                 [operatorOptions]="referenceData.operatorOptions()"
                 [foundersLoading]="referenceData.foundersLoading()"
                 [operatorsLoading]="referenceData.operatorsLoading()"
-                [founderAddLink]="['/', currentLang(), 'admin', 'parks', 'founders', 'new']"
+                [founderAddLink]="['/', currentLang(), 'admin', 'founders', 'new']"
                 [founderAddQueryParams]="founderCreateLinkQueryParams"
                 [operatorAddLink]="['/', currentLang(), 'admin', 'operators', 'new']"
                 [operatorAddQueryParams]="operatorCreateLinkQueryParams"
@@ -128,6 +129,34 @@
                 (logosPageChange)="logosState.onLogosPageChange($event)"
                 (saveSection)="saveSection()">
               </app-admin-park-logos-tab>
+            }
+          </p-tabpanel>
+
+          <p-tabpanel [value]="4">
+            @if (activeTabIndex() === 4) {
+              <app-admin-park-photos-tab
+                [isEditMode]="isEditMode()"
+                [currentPhoto]="photosState.currentPhoto()"
+                [allowMultiplePhotoUpload]="true"
+                [selectedPhotoCount]="photosState.selectedPhotoCount()"
+                [newPhotoDescription]="photosState.newPhotoDescription()"
+                [selectedPhotoCategorySlug]="photosState.selectedPhotoCategorySlug()"
+                [photoCategoryOptions]="photosState.photoCategoryOptions()"
+                [photosUploading]="photosState.photosUploading()"
+                [photosLoading]="photosState.photosLoading()"
+                [parkPhotos]="photosState.parkPhotos()"
+                [pagedPhotos]="photosState.pagedPhotos()"
+                [photosPageSize]="photosState.photosPageSize()"
+                [isSaving]="isSaving()"
+                (photoFileSelected)="onParkPhotoFileSelected($event)"
+                (newPhotoDescriptionChange)="photosState.setNewPhotoDescription($event)"
+                (selectedPhotoCategorySlugChange)="photosState.setSelectedPhotoCategorySlug($event)"
+                (uploadPhoto)="onUploadParkPhoto()"
+                (setCurrentPhoto)="onSetCurrentParkPhoto($event)"
+                (deletePhoto)="onDeleteParkPhoto($event)"
+                (photosPageChange)="photosState.onPhotosPageChange($event)"
+                (saveSection)="saveSection()">
+              </app-admin-park-photos-tab>
             }
           </p-tabpanel>
         </p-tabpanels>

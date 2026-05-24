@@ -76,6 +76,13 @@ public static class AuthenticationServiceCollectionExtensions
 
         services.AddAuthorization(options =>
         {
+            AuthorizationPolicy authenticatedUserPolicy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+
+            options.DefaultPolicy = authenticatedUserPolicy;
+            options.FallbackPolicy = authenticatedUserPolicy;
+
             options.AddPolicy(AuthorizationPolicyNames.ActivatedUnblockedUser, static policy =>
             {
                 policy.RequireAuthenticatedUser();

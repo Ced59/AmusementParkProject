@@ -1,0 +1,47 @@
+@if (card; as currentCard) {
+  <article class="ui-item-card" [attr.aria-label]="currentCard.name">
+    <div class="ui-item-card__visual">
+      <span class="ui-item-card__icon">
+        <i [class]="currentCard.typeIconClass" aria-hidden="true"></i>
+      </span>
+
+      <div class="ui-item-card__chips">
+        <app-ui-chip tone="primary">{{ currentCard.categoryLabelKey | translate }}</app-ui-chip>
+        <app-ui-chip tone="soft">{{ currentCard.typeLabelKey | translate }}</app-ui-chip>
+        @if (currentCard.zoneName) {
+          <app-ui-chip tone="soft">{{ currentCard.zoneName }}</app-ui-chip>
+        }
+      </div>
+    </div>
+
+    <div class="ui-item-card__body">
+      <div class="ui-item-card__headline">
+        <h3 class="ui-item-card__title">{{ currentCard.name }}</h3>
+        @if (currentCard.subtitle) {
+          <p class="ui-item-card__subtitle">{{ currentCard.subtitle }}</p>
+        }
+      </div>
+
+      @if (currentCard.description) {
+        <p class="ui-item-card__description">{{ currentCard.description }}</p>
+      }
+
+      @if (currentCard.highlights.length > 0) {
+        <div class="ui-item-card__highlights">
+          @for (value of currentCard.highlights; track value) {
+            <span class="ui-item-card__highlight">{{ value }}</span>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="ui-item-card__footer">
+      @if (currentCard.itemLink) {
+        <a appUiButton="ghost" [routerLink]="currentCard.itemLink" [attr.aria-label]="(actionLabelKey | translate) + ' · ' + currentCard.name">
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          <span>{{ actionLabelKey | translate }}</span>
+        </a>
+      }
+    </div>
+  </article>
+}

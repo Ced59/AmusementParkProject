@@ -1,0 +1,123 @@
+.admin-audit-logs-header {
+  align-items: flex-start;
+}
+
+.admin-audit-logs-filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0 0 1rem;
+  padding: 1rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 210, 140, 0.035);
+
+  label {
+    display: grid;
+    gap: 0.35rem;
+    min-width: 0;
+  }
+
+  span {
+    color: var(--app-text-muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+.admin-audit-logs-filters__actions {
+  display: flex;
+  gap: 0.6rem;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.admin-audit-logs-table {
+  code {
+    display: inline-block;
+    max-width: 18rem;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+}
+
+.admin-audit-logs-table__date {
+  white-space: nowrap;
+
+  strong,
+  span {
+    display: block;
+  }
+
+  span {
+    color: var(--app-text-muted);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+}
+
+.admin-audit-logs-table__muted,
+.admin-audit-logs-table__path {
+  margin-top: 0.35rem;
+  color: var(--app-text-muted);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+
+.admin-audit-logs-table__roles {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-top: 0.45rem;
+}
+
+.admin-audit-logs-table__trace {
+  max-width: 14rem;
+}
+
+.admin-audit-logs-metadata {
+  min-width: 12rem;
+
+  summary {
+    cursor: pointer;
+    color: var(--app-heading);
+    font-weight: 800;
+  }
+
+  dl {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0.55rem 0 0;
+  }
+
+  dt {
+    color: var(--app-text-muted);
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 1180px) {
+  .admin-audit-logs-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .admin-audit-logs-filters {
+    grid-template-columns: 1fr;
+  }
+}

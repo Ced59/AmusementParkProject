@@ -17,6 +17,10 @@ export function createAdminParkEditForm(formBuilder: FormBuilder): FormGroup {
     latitude: [initialPark.latitude, Validators.required],
     longitude: [initialPark.longitude, Validators.required],
     isVisible: [initialPark.isVisible],
+    adminReviewStatus: [initialPark.adminReviewStatus ?? 'Validated'],
+    isFeaturedOnHome: [initialPark.isFeaturedOnHome ?? false],
+    featuredHomeOrder: [initialPark.featuredHomeOrder ?? null],
+    isFeaturedOnHomeSponsored: [initialPark.isFeaturedOnHomeSponsored ?? false],
     descriptions: [initialPark.descriptions ?? []],
     websiteUrl: [initialPark.webSiteUrl ?? ''],
     street: [initialPark.street ?? ''],
@@ -36,6 +40,10 @@ export function patchAdminParkEditForm(form: FormGroup, park: Park): void {
     latitude: park.latitude,
     longitude: park.longitude,
     isVisible: park.isVisible ?? true,
+    adminReviewStatus: park.adminReviewStatus ?? 'Validated',
+    isFeaturedOnHome: park.isFeaturedOnHome ?? false,
+    featuredHomeOrder: park.featuredHomeOrder ?? null,
+    isFeaturedOnHomeSponsored: park.isFeaturedOnHomeSponsored ?? false,
     descriptions: park.descriptions ?? [],
     websiteUrl: park.webSiteUrl ?? '',
     street: park.street ?? '',
@@ -57,6 +65,10 @@ export function mapAdminParkEditFormToPark(form: FormGroup): Park {
     latitude: Number(rawValue['latitude']),
     longitude: Number(rawValue['longitude']),
     isVisible: Boolean(rawValue['isVisible']),
+    adminReviewStatus: (rawValue['adminReviewStatus'] as Park['adminReviewStatus']) ?? 'Validated',
+    isFeaturedOnHome: Boolean(rawValue['isFeaturedOnHome']),
+    featuredHomeOrder: normalizeOptionalNumber(rawValue['featuredHomeOrder']),
+    isFeaturedOnHomeSponsored: Boolean(rawValue['isFeaturedOnHome']) && Boolean(rawValue['isFeaturedOnHomeSponsored']),
     descriptions: (rawValue['descriptions'] as LocalizedItem<string>[] | null | undefined) ?? [],
     webSiteUrl: normalizeOptionalString(rawValue['websiteUrl']) ?? undefined,
     street: normalizeOptionalString(rawValue['street']) ?? undefined,
@@ -92,6 +104,10 @@ function createDefaultAdminPark(): Park {
     latitude: DEFAULT_ADMIN_PARK_COORDINATES[0],
     longitude: DEFAULT_ADMIN_PARK_COORDINATES[1],
     isVisible: true,
+    adminReviewStatus: 'Validated',
+    isFeaturedOnHome: false,
+    featuredHomeOrder: null,
+    isFeaturedOnHomeSponsored: false,
     descriptions: []
   } as Park;
 }
@@ -103,4 +119,13 @@ function normalizeOptionalString(value: unknown): string | null {
 
   const trimmedValue: string = value.trim();
   return trimmedValue.length > 0 ? trimmedValue : null;
+}
+
+function normalizeOptionalNumber(value: unknown): number | null {
+  if (value === null || value === undefined || value === '') {
+    return null;
+  }
+
+  const normalizedValue: number = Number(value);
+  return Number.isFinite(normalizedValue) && normalizedValue > 0 ? normalizedValue : null;
 }

@@ -2,24 +2,9 @@
   color: var(--app-text-muted);
 }
 
-.app-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  min-height: 2rem;
-  border-radius: var(--app-radius-pill);
-  padding: 0.45rem 0.85rem;
-  border: 1px solid color-mix(in srgb, var(--app-primary-soft) 70%, var(--app-border));
-  background: color-mix(in srgb, var(--app-primary-soft) 82%, transparent);
-  color: var(--app-heading);
-  font-size: 0.86rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
 .app-link-reset {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 .app-grid-cards {
@@ -28,10 +13,24 @@
   gap: 1rem;
 }
 
-.app-empty-state {
-  border: 1px dashed var(--app-border-strong);
-  border-radius: var(--app-radius-xl);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 88%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
-  padding: 1.5rem;
-  text-align: center;
+.app-container {
+  width: min(100% - 2rem, var(--app-content-max-width));
+  margin-inline: auto;
+}
+
+.app-wide-container {
+  width: min(100% - 2rem, var(--app-content-wide-max-width));
+  margin-inline: auto;
+}
+
+.app-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

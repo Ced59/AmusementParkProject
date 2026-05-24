@@ -1,0 +1,51 @@
+<section class="app-map-shell" [class.app-map-shell--compact]="compact">
+  @if (hasHeader) {
+    <div class="app-map-shell__header">
+      <div class="app-map-shell__heading">
+        @if (hasKicker) {
+          <app-ui-kicker tone="sky" [iconClass]="kickerIconClass">
+            @if (kickerLabelKey) {
+              {{ kickerLabelKey | translate }}
+            } @else {
+              {{ kickerText }}
+            }
+          </app-ui-kicker>
+        }
+
+        @if (hasTitle) {
+          <h2 class="app-map-shell__title">
+            @if (titleKey) {
+              {{ titleKey | translate }}
+            } @else {
+              {{ titleText }}
+            }
+          </h2>
+        }
+
+        @if (hasSubtitle) {
+          <p class="app-map-shell__subtitle">
+            @if (subtitleKey) {
+              {{ subtitleKey | translate }}
+            } @else {
+              {{ subtitleText }}
+            }
+          </p>
+        }
+      </div>
+
+      <div class="app-map-shell__actions">
+        <ng-content select="[uiMapShellActions]"></ng-content>
+      </div>
+    </div>
+  }
+
+  <div class="app-map-shell__body">
+    <div class="app-map-shell__map">
+      <ng-content select="[uiMapShellMap], app-ui-map-slot"></ng-content>
+    </div>
+
+    <div class="app-map-shell__side">
+      <ng-content select="[uiMapShellSide], app-ui-distance-panel"></ng-content>
+    </div>
+  </div>
+</section>

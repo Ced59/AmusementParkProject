@@ -1,0 +1,79 @@
+@if (park; as currentPark) {
+  <article class="ui-featured-park-card" [attr.data-tone]="currentPark.tone" [attr.aria-label]="currentPark.name">
+    <div class="ui-featured-park-card__visual" [class.ui-featured-park-card__visual--placeholder]="!hasLogo">
+      <div class="ui-featured-park-card__visual-bg" aria-hidden="true"></div>
+      <div class="ui-featured-park-card__badges">
+        @if (currentPark.countryName) {
+          <app-ui-chip [tone]="currentPark.tone === 'sky' ? 'sky' : currentPark.tone === 'purple' ? 'purple' : 'primary'">
+            {{ currentPark.countryName }}
+          </app-ui-chip>
+        }
+
+        @if (currentPark.city) {
+          <app-ui-chip tone="soft">
+            {{ currentPark.city }}
+          </app-ui-chip>
+        }
+      </div>
+
+      <div class="ui-featured-park-card__logo-frame">
+        <app-image-display
+          [imageId]="currentPark.logoImageId"
+          [alt]="currentPark.name"
+          imgClass="ui-featured-park-card__logo"
+          placeholderClass="ui-featured-park-card__logo-placeholder"
+          placeholderKind="park">
+        </app-image-display>
+      </div>
+    </div>
+
+    <div class="ui-featured-park-card__body">
+      <div class="ui-featured-park-card__headline">
+        @if (currentPark.locationLine) {
+          <p class="ui-featured-park-card__location">
+            <i class="pi pi-map-marker" aria-hidden="true"></i>
+            <span>{{ currentPark.locationLine }}</span>
+          </p>
+        }
+
+        <h3 class="ui-featured-park-card__name">{{ currentPark.name }}</h3>
+      </div>
+
+      @if (currentPark.description) {
+        <p class="ui-featured-park-card__description">{{ currentPark.description }}</p>
+      }
+
+      <div class="ui-featured-park-card__chips">
+        @if (currentPark.type) {
+          <app-ui-chip [tone]="currentPark.tone === 'sky' ? 'lime' : currentPark.tone === 'purple' ? 'rose' : 'rose'">
+            {{ currentPark.typeLabelKey | translate }}
+          </app-ui-chip>
+        }
+
+        @if (hasMetrics) {
+          @for (metric of currentPark.metrics; track metric.category) {
+            <app-ui-chip tone="soft">
+              {{ metric.count }} {{ metric.labelKey | translate }}
+            </app-ui-chip>
+          }
+        }
+      </div>
+    </div>
+
+    <div class="ui-featured-park-card__footer">
+      @if (currentPark.detailLink) {
+        <a appUiButton="primary" class="ui-featured-park-card__cta" [routerLink]="currentPark.detailLink" [attr.aria-label]="('home.featured.discover' | translate) + ' · ' + currentPark.name">
+          <span>{{ 'home.featured.discover' | translate }}</span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </a>
+      }
+
+      @if (currentPark.isSponsoredFeatured) {
+        <span class="ui-featured-park-card__sponsored-badge">
+          <i class="pi pi-megaphone" aria-hidden="true"></i>
+          <span>{{ 'home.featured.sponsored' | translate }}</span>
+        </span>
+      }
+    </div>
+  </article>
+}

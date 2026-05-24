@@ -1,59 +1,114 @@
-<p-card>
+<p-card styleClass="admin-list-card">
   <ng-template pTemplate="header">
-    <div class="header-row">
-      <span class="total">
+    <div class="admin-list-header">
+      <div>
+        <span class="admin-kicker">M14 · Admin</span>
+        <h2>{{ 'admin.operators.title' | translate }}</h2>
+        <p>{{ 'admin.operators.subtitle' | translate }}</p>
+      </div>
+
+      <span class="admin-total-pill">
         {{ 'admin.operators.total' | translate:{ count: totalCount() } }}
       </span>
     </div>
   </ng-template>
 
-  <div class="search-row">
-    <input
-      pInputText
-      type="text"
-      [ngModel]="stateFacade.searchQuery()"
-      (ngModelChange)="onSearchQueryChanged($event)"
-      [placeholder]="'admin.operators.searchPlaceholder' | translate" />
+  <div class="admin-toolbar">
+    <div class="admin-toolbar__search">
+      <label class="admin-field-label" for="admin-operators-search">{{ 'admin.filters.search' | translate }}</label>
+      <div class="admin-search-field">
+        <span class="pi pi-search" aria-hidden="true"></span>
+        <input
+          id="admin-operators-search"
+          pInputText
+          type="text"
+          [ngModel]="stateFacade.searchQuery()"
+          (ngModelChange)="onSearchQueryChanged($event)"
+          [placeholder]="'admin.operators.searchPlaceholder' | translate" />
+      </div>
+    </div>
 
-    <a
-      pButton
-      type="button"
-      icon="pi pi-plus"
-      class="p-button-primary"
-      [routerLink]="['/', currentLang, 'admin', 'operators', 'new']"
-      [label]="'admin.operators.create' | translate">
-    </a>
+    <div class="admin-toolbar__actions">
+      <a
+        pButton
+        type="button"
+        icon="pi pi-plus"
+        class="p-button-sm"
+        [routerLink]="['/', currentLang, 'admin', 'operators', 'new']"
+        [label]="'admin.operators.create' | translate">
+      </a>
+    </div>
   </div>
 
+  <div class="admin-filters-grid">
+    <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.filters.reviewStatus' | translate }}</span>
+      <select [ngModel]="stateFacade.adminReviewStatusFilter()" (ngModelChange)="onAdminReviewStatusChanged($event)">
+        <option [ngValue]="null">{{ 'admin.filters.statusAll' | translate }}</option>
+        <option [ngValue]="'ToReview'">{{ 'admin.reviewStatus.toReview' | translate }}</option>
+        <option [ngValue]="'Validated'">{{ 'admin.reviewStatus.validated' | translate }}</option>
+        <option [ngValue]="'ToProcessLater'">{{ 'admin.reviewStatus.toProcessLater' | translate }}</option>
+        <option [ngValue]="'NotRelevant'">{{ 'admin.reviewStatus.notRelevant' | translate }}</option>
+      </select>
+    </label>
+  </div>
+
+  @if (selectedCount() > 0) {
+    <div class="admin-bulk-bar">
+      <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
+      <div class="admin-bulk-bar__actions">
+        <button pButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReview' | translate" (click)="markSelectedToReview()"></button>
+        <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
+        <button pButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLater' | translate" (click)="markSelectedLater()"></button>
+        <button pButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
+        <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelection' | translate" (click)="clearSelection()"></button>
+      </div>
+    </div>
+  }
+
   <p-table
-    [value]="filteredOperators()"
+    [value]="operators()"
     [loading]="loading()"
-    [responsiveLayout]="'scroll'">
+    [responsiveLayout]="'scroll'"
+    styleClass="admin-data-table">
     <ng-template pTemplate="header">
       <tr>
+        <th class="admin-selection-column">
+          <input type="checkbox" [checked]="areAllCurrentOperatorsSelected()" (change)="onAllSelectionChange($event)" aria-label="Select all operators" />
+        </th>
         <th>{{ 'admin.operators.name' | translate }}</th>
+        <th>{{ 'admin.operators.reviewStatus' | translate }}</th>
         <th>{{ 'admin.operators.actions' | translate }}</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-parkOperator>
-      <tr>
-        <td>{{ parkOperator.name }}</td>
+      <tr [class.admin-row--later]="parkOperator.adminReviewStatus === 'ToProcessLater' || parkOperator.adminReviewStatus === 'NotRelevant'">
+        <td class="admin-selection-column">
+          <input type="checkbox" [checked]="isOperatorSelected(parkOperator)" (change)="onOperatorSelectionChange(parkOperator, $event)" [attr.aria-label]="parkOperator.name" />
+        </td>
+        <td><strong class="admin-row-title">{{ parkOperator.name }}</strong></td>
+        <td>
+          <p-tag
+            [value]="getStatusLabelKey(parkOperator.adminReviewStatus) | translate"
+            [severity]="getStatusSeverity(parkOperator.adminReviewStatus)">
+          </p-tag>
+        </td>
         <td>
           <a
             pButton
             type="button"
             icon="pi pi-pencil"
-            class="p-button-text p-button-sm"
+            class="p-button-sm"
             [routerLink]="['/', currentLang, 'admin', 'operators', 'edit', parkOperator.id]"
-            [label]="'admin.operators.edit' | translate">
+            [label]="'actions.edit' | translate">
           </a>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="2">
+        <td colspan="4">
           <app-empty-state
             [compact]="true"
             titleKey="common.emptyTitle"
@@ -63,4 +118,12 @@
       </tr>
     </ng-template>
   </p-table>
+
+  <app-pagination
+    [rows]="pageSize()"
+    [first]="(currentPage() - 1) * pageSize()"
+    [totalRecords]="totalCount()"
+    [rowsPerPageOptions]="[10, 20, 50, 100]"
+    (pageChanged)="onPageChanged($event)">
+  </app-pagination>
 </p-card>

@@ -30,7 +30,15 @@ public sealed class GetParksPageQueryHandler : IQueryHandler<GetParksPageQuery, 
             return ApplicationResult<PagedResult<Park>>.Failure(errors);
         }
 
-        PagedResult<Park> page = await this.parkRepository.GetPageAsync(query.Paging.Page, query.Paging.PageSize, query.IncludeHidden, cancellationToken);
+        PagedResult<Park> page = await this.parkRepository.GetPageAsync(
+            query.Paging.Page,
+            query.Paging.PageSize,
+            query.IncludeHidden,
+            query.IsVisible,
+            query.AdminReviewStatus,
+            query.Type,
+            query.CountryCode,
+            cancellationToken);
         return ApplicationResult<PagedResult<Park>>.Success(page);
     }
 }

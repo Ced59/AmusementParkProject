@@ -21,6 +21,7 @@ namespace AmusementPark.Application.Architecture
             new FeatureSlice("Images", 9, "Images, liens d'ownership, tags, compression, watermark et métadonnées."),
             new FeatureSlice("Search", 10, "Projection technique pour la recherche et l'indexation."),
             new FeatureSlice("DataSources", 11, "Socle générique d'ingestion et de synchronisation de sources externes, avec Captain Coaster comme premier provider."),
+            new FeatureSlice("AdminAudit", 12, "Journalisation et consultation des actions d'administration sensibles."),
         };
     }
 }

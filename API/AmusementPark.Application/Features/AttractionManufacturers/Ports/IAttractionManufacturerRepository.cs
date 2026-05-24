@@ -26,4 +26,9 @@ public interface IAttractionManufacturerRepository
     /// Met à jour un attraction manufacturer existant.
     /// </summary>
     Task<AttractionManufacturer?> UpdateAsync(string id, AttractionManufacturer entity, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Met à jour en masse le statut de revue admin.
+    /// </summary>
+    Task<int> UpdateBulkAdminReviewStatusAsync(IReadOnlyCollection<string> ids, AdminReviewStatus adminReviewStatus, CancellationToken cancellationToken);
 }

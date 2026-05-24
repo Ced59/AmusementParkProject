@@ -1,3 +1,5 @@
+using AmusementPark.WebAPI.Contracts.Common;
+
 namespace AmusementPark.WebAPI.Contracts.ParkItems;
 
 /// <summary>
@@ -18,4 +20,6 @@ public sealed class ParkItemAdminListDto
     public ParkItemTypeDto Type { get; set; }
 
     public bool IsVisible { get; set; }
+
+    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;
 }

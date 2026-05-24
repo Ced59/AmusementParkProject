@@ -6,17 +6,95 @@ import {
   CaptainCoasterComparisonResultResponse,
   CaptainCoasterDuplicateResolutionRequest,
   CaptainCoasterExternalVariantResponse,
+  CaptainCoasterFieldChangeResponse,
   CaptainCoasterFieldResolutionRequest,
   CaptainCoasterSessionResponse,
   ComparisonFilters
 } from '@app/models/admin/data/data-management.models';
 import { DataSourcesApiService } from '@data-access/admin/data-sources-api.service';
 import { CaptainCoasterPipelineFacade } from './captain-coaster-pipeline.facade';
+import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
 
 interface DuplicateResolutionState {
   strategy: 'SelectVariant' | 'Merge';
   selectedExternalVariantId: string | null;
   fieldSelections: Record<string, string>;
+}
+
+interface RawCaptainCoasterComparisonPagedResponse {
+  items?: RawCaptainCoasterComparisonResultResponse[];
+  Items?: RawCaptainCoasterComparisonResultResponse[];
+  totalCount?: number;
+  TotalCount?: number;
+  page?: number;
+  Page?: number;
+  pageSize?: number;
+  PageSize?: number;
+  sessionUpdatedCount?: number;
+  SessionUpdatedCount?: number;
+  sessionMissingCount?: number;
+  SessionMissingCount?: number;
+  sessionDuplicateCount?: number;
+  SessionDuplicateCount?: number;
+  sessionAppliedCount?: number;
+  SessionAppliedCount?: number;
+}
+
+interface RawCaptainCoasterComparisonResultResponse {
+  id?: string;
+  Id?: string;
+  entityType?: string;
+  EntityType?: string;
+  changeType?: string;
+  ChangeType?: string;
+  displayName?: string;
+  DisplayName?: string;
+  localEntityId?: string | null;
+  LocalEntityId?: string | null;
+  externalEntityId?: string | null;
+  ExternalEntityId?: string | null;
+  matchConfidence?: string;
+  MatchConfidence?: string;
+  isApplied?: boolean;
+  IsApplied?: boolean;
+  hasExternalDuplicates?: boolean;
+  HasExternalDuplicates?: boolean;
+  requiresManualResolution?: boolean;
+  RequiresManualResolution?: boolean;
+  resolutionStatus?: string;
+  ResolutionStatus?: string;
+  appliedExternalVariantId?: string | null;
+  AppliedExternalVariantId?: string | null;
+  changes?: RawCaptainCoasterFieldChangeResponse[];
+  Changes?: RawCaptainCoasterFieldChangeResponse[];
+  externalVariants?: RawCaptainCoasterExternalVariantResponse[];
+  ExternalVariants?: RawCaptainCoasterExternalVariantResponse[];
+}
+
+interface RawCaptainCoasterExternalVariantResponse {
+  externalVariantId?: string;
+  ExternalVariantId?: string;
+  displayLabel?: string;
+  DisplayLabel?: string;
+  candidateLocalEntityId?: string | null;
+  CandidateLocalEntityId?: string | null;
+  sourceUrl?: string | null;
+  SourceUrl?: string | null;
+  isSuggested?: boolean;
+  IsSuggested?: boolean;
+  changes?: RawCaptainCoasterFieldChangeResponse[];
+  Changes?: RawCaptainCoasterFieldChangeResponse[];
+}
+
+interface RawCaptainCoasterFieldChangeResponse {
+  field?: string;
+  Field?: string;
+  localValue?: string | null;
+  LocalValue?: string | null;
+  externalValue?: string | null;
+  ExternalValue?: string | null;
+  isDifferent?: boolean;
+  IsDifferent?: boolean;
 }
 
 @Injectable()
@@ -77,8 +155,16 @@ export class CaptainCoasterComparisonFacade {
     private readonly dataSourcesApiService: DataSourcesApiService,
     private readonly captainCoasterPipelineFacade: CaptainCoasterPipelineFacade
   ) {
+    let hasObservedInitialGeneration = false;
+
     effect(() => {
       this.captainCoasterPipelineFacade.comparisonGeneration();
+
+      if (!hasObservedInitialGeneration) {
+        hasObservedInitialGeneration = true;
+        return;
+      }
+
       this.resetComparisonState();
     }, { allowSignalWrites: true });
   }
@@ -87,8 +173,14 @@ export class CaptainCoasterComparisonFacade {
     const sessionId: string | null = this.captainCoasterPipelineFacade.session()?.id ?? null;
     this.currentPageSignal.set(0);
     this.resetSelection();
-    await this.fetchPageAsync(sessionId, this.filtersSignal(), 0, this.pageSizeSignal());
-    this.isLoadedSignal.set(true);
+    this.captainCoasterPipelineFacade.clearFeedbackMessages();
+
+    try {
+      await this.fetchPageAsync(sessionId, this.filtersSignal(), 0, this.pageSizeSignal());
+      this.isLoadedSignal.set(true);
+    } catch (error: unknown) {
+      this.captainCoasterPipelineFacade.setErrorMessage(this.extractErrorMessage(error));
+    }
   }
 
   async onPageChange(event: { first?: number; rows?: number }): Promise<void> {
@@ -364,15 +456,86 @@ export class CaptainCoasterComparisonFacade {
   ): Promise<void> {
     this.isLoadingPageSignal.set(true);
     try {
-      const result: CaptainCoasterComparisonPagedResponse = await firstValueFrom(
+      let result: CaptainCoasterComparisonPagedResponse = this.normalizeComparisonPage(await firstValueFrom(
         this.dataSourcesApiService.getComparisonResults(sessionId, filters, page, pageSize)
-      );
+      ));
+
+      const session: CaptainCoasterSessionResponse | null = this.captainCoasterPipelineFacade.session();
+      const hasActiveFilter: boolean = filters.entityType !== null || filters.changeType !== null || filters.isApplied !== null;
+      if (sessionId !== null && !hasActiveFilter && result.totalCount === 0 && (session?.comparisonResults ?? 0) > 0) {
+        result = this.normalizeComparisonPage(await firstValueFrom(
+          this.dataSourcesApiService.getComparisonResults(null, filters, page, pageSize)
+        ));
+      }
+
       this.pagedResultSignal.set(result);
       this.ensureDuplicateResolutionStates(result.items);
       this.syncSelectionSignals();
     } finally {
       this.isLoadingPageSignal.set(false);
     }
+  }
+
+  private normalizeComparisonPage(
+    rawResult: CaptainCoasterComparisonPagedResponse | RawCaptainCoasterComparisonPagedResponse
+  ): CaptainCoasterComparisonPagedResponse {
+    const normalizedRawResult: RawCaptainCoasterComparisonPagedResponse = rawResult as RawCaptainCoasterComparisonPagedResponse;
+    const rawItems: RawCaptainCoasterComparisonResultResponse[] = (normalizedRawResult.items ?? normalizedRawResult.Items ?? []) as RawCaptainCoasterComparisonResultResponse[];
+
+    return {
+      items: rawItems.map((item: RawCaptainCoasterComparisonResultResponse) => this.normalizeComparisonItem(item)),
+      totalCount: normalizedRawResult.totalCount ?? normalizedRawResult.TotalCount ?? rawItems.length,
+      page: normalizedRawResult.page ?? normalizedRawResult.Page ?? this.currentPageSignal(),
+      pageSize: normalizedRawResult.pageSize ?? normalizedRawResult.PageSize ?? this.pageSizeSignal(),
+      sessionUpdatedCount: normalizedRawResult.sessionUpdatedCount ?? normalizedRawResult.SessionUpdatedCount ?? 0,
+      sessionMissingCount: normalizedRawResult.sessionMissingCount ?? normalizedRawResult.SessionMissingCount ?? 0,
+      sessionDuplicateCount: normalizedRawResult.sessionDuplicateCount ?? normalizedRawResult.SessionDuplicateCount ?? 0,
+      sessionAppliedCount: normalizedRawResult.sessionAppliedCount ?? normalizedRawResult.SessionAppliedCount ?? 0
+    };
+  }
+
+  private normalizeComparisonItem(rawItem: RawCaptainCoasterComparisonResultResponse): CaptainCoasterComparisonResultResponse {
+    const rawChanges: RawCaptainCoasterFieldChangeResponse[] = rawItem.changes ?? rawItem.Changes ?? [];
+    const rawVariants: RawCaptainCoasterExternalVariantResponse[] = rawItem.externalVariants ?? rawItem.ExternalVariants ?? [];
+
+    return {
+      id: rawItem.id ?? rawItem.Id ?? '',
+      entityType: rawItem.entityType ?? rawItem.EntityType ?? '',
+      changeType: rawItem.changeType ?? rawItem.ChangeType ?? '',
+      displayName: rawItem.displayName ?? rawItem.DisplayName ?? '',
+      localEntityId: rawItem.localEntityId ?? rawItem.LocalEntityId ?? null,
+      externalEntityId: rawItem.externalEntityId ?? rawItem.ExternalEntityId ?? null,
+      matchConfidence: rawItem.matchConfidence ?? rawItem.MatchConfidence ?? '',
+      isApplied: rawItem.isApplied ?? rawItem.IsApplied ?? false,
+      hasExternalDuplicates: rawItem.hasExternalDuplicates ?? rawItem.HasExternalDuplicates ?? false,
+      requiresManualResolution: rawItem.requiresManualResolution ?? rawItem.RequiresManualResolution ?? false,
+      resolutionStatus: rawItem.resolutionStatus ?? rawItem.ResolutionStatus ?? '',
+      appliedExternalVariantId: rawItem.appliedExternalVariantId ?? rawItem.AppliedExternalVariantId ?? null,
+      changes: rawChanges.map((change: RawCaptainCoasterFieldChangeResponse) => this.normalizeFieldChange(change)),
+      externalVariants: rawVariants.map((variant: RawCaptainCoasterExternalVariantResponse) => this.normalizeExternalVariant(variant))
+    };
+  }
+
+  private normalizeExternalVariant(rawVariant: RawCaptainCoasterExternalVariantResponse): CaptainCoasterExternalVariantResponse {
+    const rawChanges: RawCaptainCoasterFieldChangeResponse[] = rawVariant.changes ?? rawVariant.Changes ?? [];
+
+    return {
+      externalVariantId: rawVariant.externalVariantId ?? rawVariant.ExternalVariantId ?? '',
+      displayLabel: rawVariant.displayLabel ?? rawVariant.DisplayLabel ?? '',
+      candidateLocalEntityId: rawVariant.candidateLocalEntityId ?? rawVariant.CandidateLocalEntityId ?? null,
+      sourceUrl: rawVariant.sourceUrl ?? rawVariant.SourceUrl ?? null,
+      isSuggested: rawVariant.isSuggested ?? rawVariant.IsSuggested ?? false,
+      changes: rawChanges.map((change: RawCaptainCoasterFieldChangeResponse) => this.normalizeFieldChange(change))
+    };
+  }
+
+  private normalizeFieldChange(rawChange: RawCaptainCoasterFieldChangeResponse): CaptainCoasterFieldChangeResponse {
+    return {
+      field: rawChange.field ?? rawChange.Field ?? '',
+      localValue: rawChange.localValue ?? rawChange.LocalValue ?? null,
+      externalValue: rawChange.externalValue ?? rawChange.ExternalValue ?? null,
+      isDifferent: rawChange.isDifferent ?? rawChange.IsDifferent ?? false
+    };
   }
 
   private resetComparisonState(): void {
@@ -504,20 +667,6 @@ export class CaptainCoasterComparisonFacade {
   }
 
   private extractErrorMessage(error: unknown): string {
-    if (typeof error === 'object' && error !== null && 'error' in error) {
-      const payload: unknown = (error as { error: unknown }).error;
-      if (typeof payload === 'string' && payload.trim().length > 0) {
-        return payload;
-      }
-
-      if (typeof payload === 'object' && payload !== null && 'message' in payload) {
-        const message: unknown = (payload as { message?: unknown }).message;
-        if (typeof message === 'string' && message.trim().length > 0) {
-          return message;
-        }
-      }
-    }
-
-    return 'Une erreur est survenue.';
+    return extractSafeDisplayErrorMessage(error);
   }
 }

@@ -37,6 +37,11 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
             query.ParkId,
             query.Search,
             query.IncludeHidden,
+            query.IsVisible,
+            query.AdminReviewStatus,
+            query.Category,
+            query.Type,
+            query.ManufacturerId,
             cancellationToken);
 
         List<string> parkIds = page.Items
@@ -60,6 +65,7 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
                 Category = item.Category,
                 Type = item.Type,
                 IsVisible = item.IsVisible,
+                AdminReviewStatus = item.AdminReviewStatus,
             })
             .ToList();
 

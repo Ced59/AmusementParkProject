@@ -36,10 +36,25 @@ export class HtmlSecurityService {
 
     const workingDocument: Document = this.createWorkingDocument();
     const template: HTMLTemplateElement = workingDocument.createElement('template');
-    template.innerHTML = rawValue;
+    template.innerHTML = this.decodeEncodedRichHtml(rawValue, workingDocument);
 
     this.sanitizeChildren(template.content);
     return template.innerHTML;
+  }
+
+  private decodeEncodedRichHtml(value: string, workingDocument: Document): string {
+    if (!this.looksLikeEncodedHtml(value)) {
+      return value;
+    }
+
+    const textarea: HTMLTextAreaElement = workingDocument.createElement('textarea');
+    textarea.innerHTML = value;
+
+    return textarea.value;
+  }
+
+  private looksLikeEncodedHtml(value: string): boolean {
+    return /&lt;\/?[a-z][a-z0-9:-]*(\s|&gt;|\/&gt;)/i.test(value);
   }
 
   private createWorkingDocument(): Document {
@@ -60,6 +75,8 @@ export class HtmlSecurityService {
     }
 
     if (node.nodeType === 3) {
+      const textNode: Text = node as Text;
+      textNode.nodeValue = this.normalizeTextNode(textNode.nodeValue);
       return;
     }
 
@@ -95,6 +112,10 @@ export class HtmlSecurityService {
     if (element.parentNode === parent) {
       parent.removeChild(element);
     }
+  }
+
+  private normalizeTextNode(value: string | null): string {
+    return (value ?? '').replace(/\u00a0/g, ' ');
   }
 
   private sanitizeElementAttributes(element: HTMLElement, tagName: string): void {

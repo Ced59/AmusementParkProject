@@ -1,14 +1,11 @@
-<section class="public-panel park-items-zones" *ngIf="zoneCards().length > 0">
-  <div class="public-section-header park-items-zones__header">
-    <div>
-      <span class="public-kicker">
-        <i class="pi pi-map"></i>
-        {{ 'parkItems.filters.zone' | translate }}
-      </span>
-      <h2 class="public-section-header__title">{{ 'parkItems.filters.zone' | translate }}</h2>
-      <p class="public-section-header__subtitle">{{ 'parkExplorer.subtitle' | translate }}</p>
-    </div>
-  </div>
+<section class="public-panel park-items-zones" appUiSurface="panel" appUiSurfacePadding="regular" *ngIf="zoneCards().length > 0">
+  <app-ui-section-header
+    class="park-items-zones__header"
+    kickerIconClass="pi pi-map"
+    kickerLabelKey="parkItems.filters.zone"
+    titleKey="parkItems.filters.zone"
+    subtitleKey="parkExplorer.subtitle">
+  </app-ui-section-header>
 
   <div class="zone-grid">
     <article
@@ -21,19 +18,16 @@
           <p>{{ 'parkExplorer.totalItems' | translate:{ count: zoneCard.totalItems } }}</p>
         </div>
 
-        <button
-          pButton
-          type="button"
-          icon="pi pi-arrow-right"
-          class="p-button-outlined p-button-sm"
-          [label]="'parkItems.filters.zone' | translate"
-          (click)="selectZone(zoneCard.id)"></button>
+        <button appUiButton="ghost" type="button" (click)="selectZone(zoneCard.id)">
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          <span>{{ 'parkItems.filters.zone' | translate }}</span>
+        </button>
       </div>
 
       <div class="zone-card__meta" *ngIf="zoneCard.typeHighlights.length > 0">
-        <span class="public-pill public-pill--soft" *ngFor="let typeCount of zoneCard.typeHighlights">
+        <app-ui-chip tone="soft" *ngFor="let typeCount of zoneCard.typeHighlights">
           {{ typeCount.labelKey | translate }} · {{ typeCount.count }}
-        </span>
+        </app-ui-chip>
       </div>
     </article>
   </div>

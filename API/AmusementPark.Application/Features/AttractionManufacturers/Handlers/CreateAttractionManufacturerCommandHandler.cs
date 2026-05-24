@@ -42,7 +42,12 @@ public sealed class CreateAttractionManufacturerCommandHandler : ICommandHandler
             {
                 Id = created.Id,
                 Name = created.Name,
+                LegalName = created.LegalName,
+                FoundedYear = created.FoundedYear,
+                ClosedYear = created.ClosedYear,
+                ContactDetails = created.ContactDetails,
                 Biography = created.Biography,
+                AdminReviewStatus = created.AdminReviewStatus,
                 AttractionCount = 0,
             });
         }

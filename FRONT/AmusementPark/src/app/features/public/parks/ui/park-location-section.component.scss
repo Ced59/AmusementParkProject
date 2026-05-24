@@ -1,41 +1,93 @@
-.park-location {
-  display: grid;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: var(--app-radius-xl);
-  border: 1px solid var(--app-border);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
-  box-shadow: var(--app-shadow-1);
+.park-location-card {
+  display: block;
+  overflow: hidden;
 }
 
-.park-location__stats {
-  display: grid;
-  gap: 0.85rem;
+.info-card__header {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 1.1rem 1.2rem 0.95rem;
+  border-bottom: 1px solid var(--app-border);
 }
 
-.park-location__stat {
+.info-card__header-icon {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
   display: grid;
-  gap: 0.35rem;
-  padding: 1rem;
-  border-radius: var(--app-radius-lg);
-  border: 1px solid var(--app-border);
-  background: color-mix(in srgb, var(--app-surface-2) 94%, transparent);
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--app-primary) 12%, transparent);
+  color: var(--app-primary);
 }
 
-.park-location__stat span {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.info-card__header-icon--gold {
+  background: color-mix(in srgb, var(--app-accent-gold) 12%, transparent);
+  color: var(--app-accent-gold);
+}
+
+.info-card__title {
+  margin: 0;
+  color: var(--app-heading);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.info-card__header p {
+  margin: 0.28rem 0 0;
   color: var(--app-text-muted);
-  font-weight: 700;
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
-@media (min-width: 768px) {
-  .park-location {
-    padding: 1.25rem;
-  }
+.info-card__body {
+  padding: 1rem 1.2rem 1.15rem;
+}
 
-  .park-location__stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.park-location-card__body {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.park-location-card__coordinates {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+}
+
+.park-location-card__coordinates div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.62rem 0;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.park-location-card__coordinates div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.park-location-card__coordinates dt {
+  color: var(--app-text-faint);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.park-location-card__coordinates dd {
+  margin: 0;
+  color: var(--app-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-align: right;
+}
+
+:host ::ng-deep .park-location-card .leaflet-map-container {
+  height: 15rem;
+  border-radius: var(--radius-lg);
+  box-shadow: none;
 }

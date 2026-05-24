@@ -1,5 +1,7 @@
 using System;
 using AmusementPark.Application.DependencyInjection;
+using AmusementPark.WebAPI.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AmusementPark.WebAPI.DependencyInjection;
@@ -9,10 +11,12 @@ namespace AmusementPark.WebAPI.DependencyInjection;
 /// </summary>
 public static class ApplicationModuleServiceCollectionExtensions
 {
-    public static IServiceCollection AddApplicationModules(this IServiceCollection services)
+    public static IServiceCollection AddApplicationModules(this IServiceCollection services, IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
 
+        services.Configure<SeoSettings>(configuration.GetSection(SeoSettings.SectionName));
         services.AddApplication();
         services.AddApplicationHandlers(static type =>
         {
@@ -32,7 +36,9 @@ public static class ApplicationModuleServiceCollectionExtensions
                    namespaceName.Contains(".Features.Images.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Users.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Search.", StringComparison.Ordinal) ||
-                   namespaceName.Contains(".Features.DataSources.", StringComparison.Ordinal);
+                   namespaceName.Contains(".Features.DataSources.", StringComparison.Ordinal) ||
+                   namespaceName.Contains(".Features.AdminAudit.", StringComparison.Ordinal) ||
+                   namespaceName.Contains(".Features.Seo.", StringComparison.Ordinal);
         });
 
         return services;

@@ -1,0 +1,11 @@
+<div class="app-map-slot" [style.min-height]="minHeight">
+  @if (available) {
+    <ng-content></ng-content>
+  } @else {
+    <div class="app-map-slot__placeholder">
+      <i class="pi pi-map" aria-hidden="true"></i>
+      <strong>{{ placeholderTitleKey | translate }}</strong>
+      <span>{{ placeholderMessageKey | translate }}</span>
+    </div>
+  }
+</div>

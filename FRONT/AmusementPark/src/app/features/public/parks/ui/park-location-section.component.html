@@ -1,31 +1,36 @@
-<section class="park-location" *ngIf="park as currentPark">
-  <div class="public-section-header park-section-header">
-    <div>
-      <span class="public-kicker">
-        <i class="pi pi-map"></i>
-        {{ 'parks.detail.location.title' | translate }}
+@if (park; as currentPark) {
+  <section class="park-location-card info-card">
+    <header class="info-card__header">
+      <span class="info-card__header-icon info-card__header-icon--gold">
+        <i class="pi pi-map" aria-hidden="true"></i>
       </span>
-      <h2 class="public-section-header__title">{{ 'parks.detail.location.title' | translate }}</h2>
-      <p class="public-section-header__subtitle">{{ 'parks.detail.location.subtitle' | translate }}</p>
+      <div>
+        <h2 class="info-card__title">{{ 'parks.detail.location.title' | translate }}</h2>
+        <p>{{ 'parks.detail.location.subtitle' | translate }}</p>
+      </div>
+    </header>
+
+    <div class="park-location-card__body info-card__body">
+      <app-ui-map-slot [available]="hasCoordinates" minHeight="15rem">
+        <app-leaflet-map
+          [center]="center"
+          [zoom]="13"
+          [markers]="markers">
+        </app-leaflet-map>
+      </app-ui-map-slot>
+
+      @if (hasCoordinates) {
+        <dl class="park-location-card__coordinates">
+          <div>
+            <dt>{{ 'parks.fields.latitude' | translate }}</dt>
+            <dd>{{ currentPark.latitude }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'parks.fields.longitude' | translate }}</dt>
+            <dd>{{ currentPark.longitude }}</dd>
+          </div>
+        </dl>
+      }
     </div>
-  </div>
-
-  <div class="park-location__stats">
-    <article class="park-location__stat">
-      <span>{{ 'parks.fields.latitude' | translate }}</span>
-      <strong>{{ currentPark.latitude }}</strong>
-    </article>
-
-    <article class="park-location__stat">
-      <span>{{ 'parks.fields.longitude' | translate }}</span>
-      <strong>{{ currentPark.longitude }}</strong>
-    </article>
-  </div>
-
-  <app-leaflet-map
-    *ngIf="hasCoordinates"
-    [center]="center"
-    [zoom]="11"
-    [markers]="markers">
-  </app-leaflet-map>
-</section>
+  </section>
+}

@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Parks.Ports;
@@ -21,7 +22,52 @@ public interface IParkRepository
     /// <summary>
     /// Retourne une page de parcs.
     /// </summary>
-    Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, CancellationToken cancellationToken);
+    Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Compte les parcs.
+    /// </summary>
+    Task<long> CountAsync(bool includeHidden, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne les identifiants des parcs visibles publiquement.
+    /// </summary>
+    Task<IReadOnlyCollection<string>> GetVisibleParkIdsAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne les parcs visibles publiquement disposant de coordonnées pour une carte.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne les parcs visibles publiquement disposant de coordonnées pour une carte selon des critères unifiés.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(ParkSearchCriteria criteria, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne une sélection aléatoire de parcs visibles publiquement.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne une sélection aléatoire de parcs visibles publiquement, en excluant certains parcs.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne les parcs visibles mis en avant manuellement sur la home publique.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetManualHomeFeaturedVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Compte les pays réellement couverts par les parcs.
+    /// </summary>
+    Task<int> CountDistinctCountryCodesAsync(bool includeHidden, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Compte les pays réellement couverts par une sélection explicite de parcs.
+    /// </summary>
+    Task<int> CountDistinctCountryCodesForParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken);
 
     /// <summary>
     /// Recherche des parcs par nom.
@@ -29,9 +75,19 @@ public interface IParkRepository
     Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Recherche des parcs par critères publics unifiés.
+    /// </summary>
+    Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Recherche des parcs par position.
     /// </summary>
     Task<IReadOnlyCollection<Park>> SearchByLocationAsync(double latitude, double longitude, double radiusInKilometers, bool includeHidden, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne les parcs les plus proches d'une position.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetNearestByLocationAsync(double latitude, double longitude, int limit, double? maxDistanceInKilometers, bool includeHidden, CancellationToken cancellationToken);
 
     /// <summary>
     /// Crée un parc.
@@ -47,4 +103,9 @@ public interface IParkRepository
     /// Met à jour uniquement la visibilité d'un parc.
     /// </summary>
     Task<Park?> UpdateVisibilityAsync(string parkId, bool isVisible, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Applique une action de masse d'administration aux parcs.
+    /// </summary>
+    Task<int> UpdateBulkAdministrationAsync(IReadOnlyCollection<string> parkIds, bool? isVisible, AdminReviewStatus? adminReviewStatus, CancellationToken cancellationToken);
 }

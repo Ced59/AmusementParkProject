@@ -85,3 +85,323 @@
     margin-bottom: calc(var(--app-bottom-nav-height) + 1.25rem);
   }
 }
+
+.app-route-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+}
+
+.app-layout-main {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 1.5rem, var(--content-max-width));
+  margin: 1rem auto 2rem;
+  flex: 1 0 auto;
+}
+
+.app-public-layout__content,
+.app-account-layout__content {
+  min-height: calc(100vh - var(--topbar-height) - 9rem);
+}
+
+.app-account-layout__main {
+  width: min(100% - 1.5rem, 980px);
+}
+
+.app-admin-layout {
+  background: var(--app-page-bg);
+}
+
+.app-admin-layout__header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem max(1.25rem, calc((100vw - var(--content-wide-max-width)) / 2));
+  border-bottom: 1px solid var(--app-border);
+  background: var(--app-topbar-bg);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+
+.app-admin-layout__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--app-heading);
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.app-admin-layout__brand-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  color: #000000;
+  background: var(--c-orange);
+  box-shadow: var(--shadow-soft-orange);
+}
+
+.app-admin-layout__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.app-admin-layout__main {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 1.5rem, var(--content-wide-max-width));
+  margin: 1rem auto 2rem;
+  flex: 1 0 auto;
+}
+
+@media (max-width: 960px) {
+  .app-admin-layout__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .app-admin-layout__actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-layout-main,
+  .app-account-layout__main,
+  .app-admin-layout__main {
+    width: min(100% - 1rem, var(--content-max-width));
+    margin-top: 0.75rem;
+  }
+
+  .app-public-layout__main,
+  .app-account-layout__main {
+    margin-bottom: calc(var(--bottom-nav-height) + 1.35rem);
+  }
+}
+
+/* M10 responsive hardening: keep public/account/admin shells comfortable on tablets. */
+@media (min-width: 681px) and (max-width: 1180px) {
+  .app-layout-main,
+  .app-admin-layout__main {
+    width: min(100% - clamp(1.25rem, 3vw, 2rem), var(--content-wide-max-width));
+    margin-top: clamp(0.85rem, 2vw, 1.15rem);
+  }
+
+  .app-account-layout__main {
+    width: min(100% - clamp(1.25rem, 3vw, 2rem), 980px);
+  }
+}
+
+@media (min-width: 681px) and (max-width: 860px) {
+  .app-admin-layout__header {
+    padding-inline: clamp(0.9rem, 2.5vw, 1.25rem);
+  }
+
+  .app-admin-layout__actions {
+    width: 100%;
+  }
+}
+
+/* M13 account layout: premium shell for auth/profile pages. */
+.app-account-layout__main {
+  width: min(100% - 1.5rem, 1160px);
+  margin-top: clamp(1rem, 2.6vw, 2rem);
+}
+
+.app-account-layout__shell {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.35fr);
+  gap: clamp(1rem, 2.6vw, 1.5rem);
+  align-items: stretch;
+}
+
+.app-account-layout__aside,
+.app-account-layout__content {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  box-shadow: var(--shadow-card);
+}
+
+.app-account-layout__aside {
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+  min-height: 34rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background:
+    radial-gradient(ellipse 72% 48% at 16% 16%, rgba(255, 90, 31, 0.16), transparent 70%),
+    radial-gradient(ellipse 58% 42% at 84% 84%, rgba(196, 255, 39, 0.08), transparent 68%),
+    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 90%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+}
+
+.app-account-layout__aside::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -35% -20%;
+  height: 44%;
+  background: radial-gradient(ellipse at center, rgba(255, 90, 31, 0.14), transparent 68%);
+  pointer-events: none;
+}
+
+.app-account-layout__title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 10ch;
+  color: var(--app-heading);
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 5.8rem);
+  line-height: 0.92;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.app-account-layout__lead {
+  position: relative;
+  z-index: 1;
+  max-width: 34ch;
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.75;
+}
+
+.app-account-layout__chips {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.app-account-layout__content {
+  min-width: 0;
+  padding: clamp(1rem, 2.4vw, 1.5rem);
+}
+
+@media (max-width: 960px) {
+  .app-account-layout__shell {
+    grid-template-columns: 1fr;
+  }
+
+  .app-account-layout__aside {
+    min-height: auto;
+  }
+
+  .app-account-layout__title {
+    max-width: none;
+  }
+}
+
+/* M14 admin layout: dense, readable back-office shell. */
+.app-admin-layout__body {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 1.5rem, var(--content-wide-max-width));
+  margin: 1rem auto 2rem;
+  display: grid;
+  grid-template-columns: minmax(15rem, 17rem) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.app-admin-layout__sidebar {
+  position: sticky;
+  top: calc(var(--topbar-height) + 1rem);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, var(--app-card-bg), var(--app-card-bg-2));
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.app-admin-layout__sidebar-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.app-admin-layout__sidebar-head strong {
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+}
+
+.app-admin-layout__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+}
+
+.app-admin-layout__nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.68rem 0.75rem;
+  border-radius: var(--radius-md);
+  color: var(--app-text-muted);
+  font-size: 0.88rem;
+  font-weight: 800;
+  transition: var(--transition);
+}
+
+.app-admin-layout__nav a:hover,
+.app-admin-layout__nav a.active {
+  color: var(--app-heading);
+  background: rgba(255, 90, 31, 0.1);
+}
+
+.app-admin-layout__nav a.active {
+  color: var(--c-orange);
+}
+
+.app-admin-layout__body .app-admin-layout__main {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 1080px) {
+  .app-admin-layout__body {
+    grid-template-columns: 1fr;
+  }
+
+  .app-admin-layout__sidebar {
+    position: static;
+  }
+
+  .app-admin-layout__nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.85rem;
+  }
+
+  .app-admin-layout__nav a {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-admin-layout__body {
+    width: min(100% - 1rem, var(--content-wide-max-width));
+    margin-top: 0.75rem;
+  }
+}

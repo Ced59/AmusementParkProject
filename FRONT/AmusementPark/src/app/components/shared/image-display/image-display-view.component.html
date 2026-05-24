@@ -3,6 +3,8 @@
   [src]="resolvedImageUrl"
   [alt]="alt"
   [ngClass]="imgClass"
+  [attr.loading]="loading"
+  decoding="async"
   (error)="onImageError()" />
 
 <div

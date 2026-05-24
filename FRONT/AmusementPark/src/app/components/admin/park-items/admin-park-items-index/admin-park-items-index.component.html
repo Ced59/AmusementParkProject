@@ -1,13 +1,26 @@
 <app-admin-park-items-index-view
   [state]="state"
+  [loading]="loading"
   [rows]="rows"
   [parkOptions]="parkOptions"
   [totalRecords]="totalRecords"
   [selectedParkId]="selectedParkId()"
   [searchTerm]="searchTerm()"
+  [visibilityFilter]="visibilityFilter()"
+  [adminReviewStatusFilter]="adminReviewStatusFilter()"
+  [categoryFilter]="categoryFilter()"
+  [typeFilter]="typeFilter()"
   [pageSize]="pageSize()"
+  [selectedItemIds]="selectedItemIds"
+  [selectedCount]="selectedCount"
+  [getCategoryLabelKeyFn]="getCategoryLabelKey.bind(this)"
   [getTypeLabelKeyFn]="getTypeLabelKey.bind(this)"
   (filtersChanged)="onFiltersChanged($event)"
   (pageChanged)="onPageChange($event)"
-  (editClicked)="goToEdit($event)">
+  (editClicked)="goToEdit($event)"
+  (itemSelectionChanged)="onItemSelectionChanged($event)"
+  (allItemsSelectionChanged)="onAllItemsSelectionChanged($event)"
+  (bulkVisibilityChanged)="onBulkVisibilityChange($event)"
+  (bulkStatusChanged)="onBulkStatusChange($event)"
+  (selectionCleared)="clearSelection()">
 </app-admin-park-items-index-view>

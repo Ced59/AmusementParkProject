@@ -11,14 +11,57 @@
     </div>
   </p-card>
 
+  <p-card styleClass="inner-card access-height-card mb-3">
+    <ng-template pTemplate="header">
+      <div class="access-height-card__header">
+        <span class="access-height-card__icon"><i class="pi pi-arrows-v" aria-hidden="true"></i></span>
+        <div>
+          <h4>{{ 'admin.parks.items.heightRequirements.title' | translate }}</h4>
+          <small>{{ 'admin.parks.items.heightRequirements.help' | translate }}</small>
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="height-requirement-grid">
+      <div class="height-requirement-field" *ngFor="let field of heightRequirementFields">
+        <div class="height-requirement-field__label">
+          <span class="height-requirement-field__icon"><i [class]="field.iconClass" aria-hidden="true"></i></span>
+          <label [attr.for]="field.key">{{ field.labelKey | translate }}</label>
+        </div>
+
+        <div class="height-requirement-field__input">
+          <input
+            pInputText
+            [id]="field.key"
+            type="number"
+            min="0"
+            step="1"
+            [ngModel]="getHeightRequirementValue(field.key)"
+            (ngModelChange)="onHeightRequirementValueChange(field.key, $event)"
+            [ngModelOptions]="{ standalone: true }" />
+          <span>cm</span>
+        </div>
+
+        <small>{{ field.helpKey | translate }}</small>
+      </div>
+    </div>
+  </p-card>
+
+  <div class="access-advanced-head">
+    <div>
+      <h4>{{ 'admin.parks.items.advancedAccessConditionsTitle' | translate }}</h4>
+      <small class="text-color-secondary">{{ 'admin.parks.items.advancedAccessConditionsHelp' | translate }}</small>
+    </div>
+  </div>
+
   <div class="grid formgrid mb-3 access-condition-add-row">
     <div class="field col-12 md:col-8 lg:col-6">
       <label>{{ 'admin.parks.items.accessConditionsPreset' | translate }}</label>
       <p-select
-        [ngModel]="selectedAccessConditionPreset"
+        [ngModel]="safeSelectedAccessConditionPreset"
         (ngModelChange)="onSelectedAccessConditionPresetChange($event)"
         [ngModelOptions]="{ standalone: true }"
-        [options]="accessConditionPresetOptions"
+        [options]="standaloneAccessConditionPresetOptions"
         optionLabel="labelKey"
         optionValue="value"
         [appendTo]="'body'">
@@ -31,34 +74,34 @@
         pButton
         type="button"
         icon="pi pi-plus"
-        (click)="addAccessCondition.emit(selectedAccessConditionPreset)"
+        (click)="onAddStandaloneAccessCondition()"
         [label]="'admin.parks.items.addAccessCondition' | translate">
       </button>
     </div>
   </div>
 
   <div formArrayName="accessConditions">
-    <div *ngIf="accessConditions.length === 0" class="text-color-secondary mb-3">
-      {{ 'admin.parks.items.accessConditionsEmpty' | translate }}
+    <div *ngIf="standaloneAccessConditionEntries.length === 0" class="text-color-secondary mb-3">
+      {{ 'admin.parks.items.advancedAccessConditionsEmpty' | translate }}
     </div>
 
     <div class="access-condition-list">
       <div
         class="access-condition-card"
-        *ngFor="let accessCondition of accessConditions.controls; let i = index"
-        [formGroupName]="i">
+        *ngFor="let accessCondition of standaloneAccessConditionEntries; let visibleIndex = index"
+        [formGroupName]="accessCondition.index">
         <p-card>
           <ng-template pTemplate="header">
             <div class="access-condition-card__header">
               <div>
-                <h4>{{ getAccessConditionTitle(i) }}</h4>
-                <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionIndex' | translate:{ index: i + 1 } }}</small>
+                <h4>{{ getAccessConditionTitle(accessCondition.index) }}</h4>
+                <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionIndex' | translate:{ index: visibleIndex + 1 } }}</small>
               </div>
 
               <div class="access-condition-card__actions">
-                <button pButton type="button" icon="pi pi-arrow-up" class="p-button-text p-button-sm" (click)="moveAccessConditionUp.emit(i)" [disabled]="i === 0"></button>
-                <button pButton type="button" icon="pi pi-arrow-down" class="p-button-text p-button-sm" (click)="moveAccessConditionDown.emit(i)" [disabled]="i === accessConditions.length - 1"></button>
-                <button pButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" (click)="removeAccessCondition.emit(i)"></button>
+                <button pButton type="button" icon="pi pi-arrow-up" class="p-button-text p-button-sm" (click)="moveAccessConditionUp.emit(accessCondition.index)" [disabled]="visibleIndex === 0"></button>
+                <button pButton type="button" icon="pi pi-arrow-down" class="p-button-text p-button-sm" (click)="moveAccessConditionDown.emit(accessCondition.index)" [disabled]="visibleIndex === standaloneAccessConditionEntries.length - 1"></button>
+                <button pButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" (click)="removeAccessCondition.emit(accessCondition.index)"></button>
               </div>
             </div>
           </ng-template>
@@ -68,11 +111,11 @@
               <label>{{ 'admin.parks.items.accessConditionFields.type' | translate }}</label>
               <p-select
                 formControlName="type"
-                [options]="accessConditionPresetOptions"
+                [options]="standaloneAccessConditionPresetOptions"
                 optionLabel="labelKey"
                 optionValue="value"
                 [appendTo]="'body'"
-                (onChange)="accessConditionTypeChanged.emit(i)">
+                (onChange)="accessConditionTypeChanged.emit(accessCondition.index)">
                 <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
                 <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
               </p-select>

@@ -8,4 +8,5 @@ namespace AmusementPark.Application.Features.ParkZones.Queries;
 /// Récupère les zones d'un parc.
 /// </summary>
 /// <param name="ParkId">Identifiant du parc.</param>
-public sealed record GetParkZonesByParkIdQuery(string ParkId) : IQuery<ApplicationResult<IReadOnlyCollection<ParkZone>>>;
+/// <param name="IncludeHidden">Indique si les zones d'un parc non visible peuvent être retournées.</param>
+public sealed record GetParkZonesByParkIdQuery(string ParkId, bool IncludeHidden = false) : IQuery<ApplicationResult<IReadOnlyCollection<ParkZone>>>;

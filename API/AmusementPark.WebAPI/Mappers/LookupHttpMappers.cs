@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.AttractionManufacturers.Results;
 using AmusementPark.Core.Domain.Countries;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.AttractionManufacturers;
 using AmusementPark.WebAPI.Contracts.Countries;
 using AmusementPark.WebAPI.Contracts.ParkFounders;
@@ -27,6 +28,12 @@ internal static class LookupHttpMappers
         return new ParkFounder
         {
             Name = dto.Name.Trim(),
+            Occupation = NormalizeOptional(dto.Occupation),
+            BirthDate = NormalizeOptional(dto.BirthDate),
+            DeathDate = NormalizeOptional(dto.DeathDate),
+            BirthPlace = NormalizeOptional(dto.BirthPlace),
+            NationalityCountryCode = NormalizeOptional(dto.NationalityCountryCode)?.ToUpperInvariant(),
+            WebsiteUrl = NormalizeOptional(dto.WebsiteUrl),
             Biography = dto.Biography.ToDomain(),
         };
     }
@@ -36,6 +43,12 @@ internal static class LookupHttpMappers
         return new ParkFounder
         {
             Name = dto.Name.Trim(),
+            Occupation = NormalizeOptional(dto.Occupation),
+            BirthDate = NormalizeOptional(dto.BirthDate),
+            DeathDate = NormalizeOptional(dto.DeathDate),
+            BirthPlace = NormalizeOptional(dto.BirthPlace),
+            NationalityCountryCode = NormalizeOptional(dto.NationalityCountryCode)?.ToUpperInvariant(),
+            WebsiteUrl = NormalizeOptional(dto.WebsiteUrl),
             Biography = dto.Biography.ToDomain(),
         };
     }
@@ -46,6 +59,12 @@ internal static class LookupHttpMappers
         {
             Id = founder.Id,
             Name = founder.Name,
+            Occupation = founder.Occupation,
+            BirthDate = founder.BirthDate,
+            DeathDate = founder.DeathDate,
+            BirthPlace = founder.BirthPlace,
+            NationalityCountryCode = founder.NationalityCountryCode,
+            WebsiteUrl = founder.WebsiteUrl,
             Biography = founder.Biography.ToHttp(),
         };
     }
@@ -55,7 +74,12 @@ internal static class LookupHttpMappers
         return new ParkOperator
         {
             Name = dto.Name.Trim(),
+            LegalName = NormalizeOptional(dto.LegalName),
+            FoundedYear = dto.FoundedYear,
+            ClosedYear = dto.ClosedYear,
+            ContactDetails = ToDomainContactDetails(dto.ContactDetails),
             Description = dto.Description.ToDomain(),
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
     }
 
@@ -64,7 +88,12 @@ internal static class LookupHttpMappers
         return new ParkOperator
         {
             Name = dto.Name.Trim(),
+            LegalName = NormalizeOptional(dto.LegalName),
+            FoundedYear = dto.FoundedYear,
+            ClosedYear = dto.ClosedYear,
+            ContactDetails = ToDomainContactDetails(dto.ContactDetails),
             Description = dto.Description.ToDomain(),
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
     }
 
@@ -74,7 +103,12 @@ internal static class LookupHttpMappers
         {
             Id = value.Id,
             Name = value.Name,
+            LegalName = value.LegalName,
+            FoundedYear = value.FoundedYear,
+            ClosedYear = value.ClosedYear,
+            ContactDetails = ToHttpContactDetails(value.ContactDetails),
             Description = value.Description.ToHttp(),
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
         };
     }
 
@@ -83,7 +117,12 @@ internal static class LookupHttpMappers
         return new AttractionManufacturer
         {
             Name = dto.Name.Trim(),
+            LegalName = NormalizeOptional(dto.LegalName),
+            FoundedYear = dto.FoundedYear,
+            ClosedYear = dto.ClosedYear,
+            ContactDetails = ToDomainContactDetails(dto.ContactDetails),
             Biography = dto.Biography.ToDomain(),
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
     }
 
@@ -92,7 +131,12 @@ internal static class LookupHttpMappers
         return new AttractionManufacturer
         {
             Name = dto.Name.Trim(),
+            LegalName = NormalizeOptional(dto.LegalName),
+            FoundedYear = dto.FoundedYear,
+            ClosedYear = dto.ClosedYear,
+            ContactDetails = ToDomainContactDetails(dto.ContactDetails),
             Biography = dto.Biography.ToDomain(),
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
     }
 
@@ -102,8 +146,61 @@ internal static class LookupHttpMappers
         {
             Id = value.Id,
             Name = value.Name,
+            LegalName = value.LegalName,
+            FoundedYear = value.FoundedYear,
+            ClosedYear = value.ClosedYear,
+            ContactDetails = ToHttpContactDetails(value.ContactDetails),
             Biography = value.Biography.ToHttp(),
             AttractionCount = value.AttractionCount,
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
         };
     }
+    private static ParkReferenceContactDetails? ToDomainContactDetails(ParkReferenceContactDetailsDto? dto)
+    {
+        if (dto is null)
+        {
+            return null;
+        }
+
+        return new ParkReferenceContactDetails
+        {
+            WebsiteUrl = NormalizeOptional(dto.WebsiteUrl),
+            Email = NormalizeOptional(dto.Email),
+            PhoneNumber = NormalizeOptional(dto.PhoneNumber),
+            Street = NormalizeOptional(dto.Street),
+            City = NormalizeOptional(dto.City),
+            PostalCode = NormalizeOptional(dto.PostalCode),
+            CountryCode = NormalizeOptional(dto.CountryCode)?.ToUpperInvariant(),
+            Latitude = dto.Latitude,
+            Longitude = dto.Longitude,
+        };
+    }
+
+    private static ParkReferenceContactDetailsDto? ToHttpContactDetails(ParkReferenceContactDetails? details)
+    {
+        if (details is null)
+        {
+            return null;
+        }
+
+        return new ParkReferenceContactDetailsDto
+        {
+            WebsiteUrl = details.WebsiteUrl,
+            Email = details.Email,
+            PhoneNumber = details.PhoneNumber,
+            Street = details.Street,
+            City = details.City,
+            PostalCode = details.PostalCode,
+            CountryCode = details.CountryCode,
+            Latitude = details.Latitude,
+            Longitude = details.Longitude,
+        };
+    }
+
+    private static string? NormalizeOptional(string? value)
+    {
+        string normalizedValue = value?.Trim() ?? string.Empty;
+        return normalizedValue.Length == 0 ? null : normalizedValue;
+    }
+
 }

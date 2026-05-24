@@ -4,6 +4,21 @@
     <input id="name" pInputText formControlName="name" />
   </div>
 
+  <div class="field">
+    <label>{{ 'admin.parks.items.park' | translate }}</label>
+    <p-select
+      formControlName="parkId"
+      [options]="parkOptions"
+      optionLabel="label"
+      optionValue="id"
+      [filter]="true"
+      [loading]="parkOptionsLoading"
+      [appendTo]="'body'"
+      (onChange)="onParkSelectionChanged($event.value)">
+    </p-select>
+    <small class="text-color-secondary">{{ 'admin.parks.items.parkHelp' | translate }}</small>
+  </div>
+
   <div class="grid formgrid">
     <div class="field col-12 md:col-6">
       <label>{{ 'admin.parks.items.category' | translate }}</label>

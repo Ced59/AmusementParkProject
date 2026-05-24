@@ -44,19 +44,9 @@ public sealed class ParkItemRepository : IParkItemRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public async Task<PagedResult<ParkItem>> GetPageAsync(int page, int pageSize, string? parkId, string? search, bool includeHidden, CancellationToken cancellationToken)
+    public async Task<PagedResult<ParkItem>> GetPageAsync(int page, int pageSize, string? parkId, string? search, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, string? manufacturerId, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Empty;
-
-        if (!string.IsNullOrWhiteSpace(parkId))
-        {
-            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId.Trim());
-        }
-
-        if (!includeHidden)
-        {
-            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
-        }
+        FilterDefinition<ParkItemDocument> filter = this.BuildAdminListFilter(parkId, includeHidden, isVisible, adminReviewStatus, category, type, manufacturerId);
 
         if (!string.IsNullOrWhiteSpace(search))
         {
@@ -85,8 +75,7 @@ public sealed class ParkItemRepository : IParkItemRepository
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
         List<ParkItemDocument> documents = await this.collection.Find(filter)
-            .SortBy(document => document.ParkId)
-            .ThenBy(document => document.Name)
+            .Sort(this.BuildAdminListSort())
             .Skip((page - 1) * pageSize)
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
@@ -98,9 +87,126 @@ public sealed class ParkItemRepository : IParkItemRepository
             totalItems);
     }
 
-    public async Task<ParkItem?> GetByIdAsync(string parkItemId, CancellationToken cancellationToken)
+    public async Task<long> CountByCategoryAsync(ParkItemCategory category, bool includeHidden, CancellationToken cancellationToken)
     {
-        ParkItemDocument? document = await this.collection.Find(document => document.Id == parkItemId)
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.Category, category);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+    }
+
+
+    public async Task<long> CountByCategoryForParkIdsAsync(ParkItemCategory category, IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkIds = NormalizeParkIds(parkIds);
+
+        if (normalizedParkIds.Count == 0)
+        {
+            return 0;
+        }
+
+        FilterDefinition<ParkItemDocument> filter =
+            Builders<ParkItemDocument>.Filter.Eq(document => document.Category, category) &
+            Builders<ParkItemDocument>.Filter.In(document => document.ParkId, normalizedParkIds);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+    }
+
+    public async Task<IReadOnlyDictionary<string, IReadOnlyDictionary<ParkItemCategory, int>>> GetCountsByCategoryForParkIdsAsync(IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkIds = NormalizeParkIds(parkIds);
+        if (normalizedParkIds.Count == 0)
+        {
+            return new Dictionary<string, IReadOnlyDictionary<ParkItemCategory, int>>(StringComparer.Ordinal);
+        }
+
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.In(document => document.ParkId, normalizedParkIds);
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        List<BsonDocument> aggregationResults = await this.collection.Aggregate()
+            .Match(filter)
+            .Group(new BsonDocument
+            {
+                { "_id", new BsonDocument
+                    {
+                        { "parkId", "$parkId" },
+                        { "category", "$category" },
+                    }
+                },
+                { "count", new BsonDocument("$sum", 1) },
+            })
+            .ToListAsync(cancellationToken);
+
+        Dictionary<string, Dictionary<ParkItemCategory, int>> mutableCounts = new Dictionary<string, Dictionary<ParkItemCategory, int>>(StringComparer.Ordinal);
+
+        foreach (BsonDocument aggregationResult in aggregationResults)
+        {
+            BsonValue idValue = aggregationResult.GetValue("_id", new BsonDocument());
+            if (!idValue.IsBsonDocument)
+            {
+                continue;
+            }
+
+            BsonDocument id = idValue.AsBsonDocument;
+            BsonValue parkIdValue = id.GetValue("parkId", BsonValue.Create(string.Empty));
+            BsonValue categoryValue = id.GetValue("category", BsonValue.Create(string.Empty));
+
+            if (!parkIdValue.IsString || !categoryValue.IsString)
+            {
+                continue;
+            }
+
+            string parkId = parkIdValue.AsString;
+            string categoryText = categoryValue.AsString;
+
+            if (string.IsNullOrWhiteSpace(parkId) || !Enum.TryParse(categoryText, true, out ParkItemCategory category))
+            {
+                continue;
+            }
+
+            if (!mutableCounts.TryGetValue(parkId, out Dictionary<ParkItemCategory, int>? countsByCategory))
+            {
+                countsByCategory = new Dictionary<ParkItemCategory, int>();
+                mutableCounts[parkId] = countsByCategory;
+            }
+
+            BsonValue countValue = aggregationResult.GetValue("count", BsonValue.Create(0));
+            countsByCategory[category] = countValue.IsNumeric ? countValue.ToInt32() : 0;
+        }
+
+        return mutableCounts.ToDictionary(
+            pair => pair.Key,
+            pair => (IReadOnlyDictionary<ParkItemCategory, int>)pair.Value,
+            StringComparer.Ordinal);
+    }
+
+    public Task<ParkItem?> GetByIdAsync(string parkItemId, CancellationToken cancellationToken)
+    {
+        return this.GetByIdAsync(parkItemId, true, cancellationToken);
+    }
+
+    public async Task<ParkItem?> GetByIdAsync(string parkItemId, bool includeHidden, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.Id, parkItemId);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        ParkItemDocument? document = await this.collection.Find(filter)
             .FirstOrDefaultAsync(cancellationToken);
 
         return document?.ToDomain();
@@ -139,6 +245,106 @@ public sealed class ParkItemRepository : IParkItemRepository
     {
         DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == parkItemId, cancellationToken: cancellationToken);
         return result.DeletedCount > 0;
+    }
+
+    public async Task<int> UpdateBulkAdministrationAsync(IReadOnlyCollection<string> parkItemIds, bool? isVisible, AdminReviewStatus? adminReviewStatus, CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkItemIds = parkItemIds
+            .Where(static parkItemId => !string.IsNullOrWhiteSpace(parkItemId))
+            .Select(static parkItemId => parkItemId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedParkItemIds.Count == 0 || (!isVisible.HasValue && !adminReviewStatus.HasValue))
+        {
+            return 0;
+        }
+
+        UpdateDefinition<ParkItemDocument> update = Builders<ParkItemDocument>.Update.Set(document => document.UpdatedAt, DateTime.UtcNow);
+        if (isVisible.HasValue)
+        {
+            update = update.Set(document => document.IsVisible, isVisible.Value);
+        }
+
+        if (adminReviewStatus.HasValue)
+        {
+            AdminReviewStatus normalizedStatus = adminReviewStatus.Value.NormalizeForAdministration();
+            update = update
+                .Set(document => document.AdminReviewStatus, normalizedStatus)
+                .Set(document => document.AdminReviewPriority, normalizedStatus.ToAdminReviewPriority());
+        }
+
+        UpdateResult result = await this.collection.UpdateManyAsync(
+            Builders<ParkItemDocument>.Filter.In(document => document.Id, normalizedParkItemIds),
+            update,
+            cancellationToken: cancellationToken);
+
+        return checked((int)result.ModifiedCount);
+    }
+
+    private FilterDefinition<ParkItemDocument> BuildAdminListFilter(string? parkId, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, string? manufacturerId)
+    {
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Empty;
+
+        if (!string.IsNullOrWhiteSpace(parkId))
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId.Trim());
+        }
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        if (isVisible.HasValue)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, isVisible.Value);
+        }
+
+        if (adminReviewStatus.HasValue)
+        {
+            filter &= this.BuildAdminReviewStatusFilter(adminReviewStatus.Value);
+        }
+
+        if (category.HasValue)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.Category, category.Value);
+        }
+
+        if (type.HasValue)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.Type, type.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(manufacturerId))
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq("attractionDetails.manufacturerId", manufacturerId.Trim());
+        }
+
+        return filter;
+    }
+
+    private FilterDefinition<ParkItemDocument> BuildAdminReviewStatusFilter(AdminReviewStatus adminReviewStatus)
+    {
+        return Builders<ParkItemDocument>.Filter.BuildAdminReviewStatusFilter("adminReviewStatus", adminReviewStatus);
+    }
+
+    private SortDefinition<ParkItemDocument> BuildAdminListSort()
+    {
+        return Builders<ParkItemDocument>.Sort
+            .Ascending(document => document.AdminReviewPriority)
+            .Ascending(document => document.ParkId)
+            .Ascending(document => document.Name)
+            .Ascending(document => document.Id);
+    }
+
+    private static List<string> NormalizeParkIds(IEnumerable<string> parkIds)
+    {
+        return parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
     }
 
     public async Task<IReadOnlyDictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds, CancellationToken cancellationToken)

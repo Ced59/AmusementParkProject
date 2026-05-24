@@ -334,3 +334,224 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* M07 public parks list layout, aligned with the MVP mockup while keeping feature SCSS thin. */
+.parks-page {
+  align-content: start;
+  gap: clamp(1rem, 2.5vw, 1.6rem);
+}
+
+.parks-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.35rem, 5.5vw, 4.4rem) clamp(1.35rem, 4vw, 2.25rem) clamp(1.8rem, 3.8vw, 3rem);
+  border: 0;
+  background:
+    radial-gradient(ellipse 60% 78% at 0% 50%, rgba(56, 197, 245, 0.07), transparent 65%),
+    radial-gradient(ellipse 40% 55% at 100% 0%, rgba(196, 255, 39, 0.05), transparent 60%);
+  box-shadow: none;
+}
+
+.parks-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.parks-hero__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  align-items: end;
+}
+
+.parks-hero__content {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.parks-page-title {
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6.4rem);
+  line-height: 0.94;
+  letter-spacing: 0.03em;
+}
+
+.parks-page-title span {
+  color: var(--c-sky);
+  text-shadow: 0 0 14px rgba(56, 197, 245, 0.18);
+}
+
+.parks-hero__lead {
+  max-width: 58ch;
+}
+
+.parks-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(8.8rem, 1fr));
+  gap: 0.75rem;
+  min-width: min(100%, 24rem);
+}
+
+.parks-toolbar {
+  display: block;
+  max-width: var(--content-max-width);
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+}
+
+.parks-results {
+  display: grid;
+  gap: 1.35rem;
+  max-width: var(--content-max-width);
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+.parks-results__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.parks-results__head h2 {
+  margin: 0.65rem 0 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3.5vw, 2.15rem);
+  letter-spacing: -0.03em;
+}
+
+.parks-results__card-target {
+  display: block;
+  min-width: 0;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  outline: none;
+}
+
+.parks-results__card-target:focus-visible,
+.parks-results__card-target--selected {
+  box-shadow: 0 0 0 3px rgba(56, 197, 245, 0.22);
+}
+
+.parks-results__card-target--selected .ui-park-card {
+  border-color: color-mix(in srgb, var(--c-sky) 38%, var(--app-border));
+}
+
+app-pagination {
+  display: block;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 960px) {
+  .parks-hero__top {
+    grid-template-columns: 1fr;
+  }
+
+  .parks-hero__stats {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .parks-hero {
+    padding-top: 2rem;
+  }
+
+  .parks-hero__stats,
+  .parks-results__head {
+    grid-template-columns: 1fr;
+  }
+
+  .parks-hero__stats {
+    min-width: 0;
+  }
+}
+
+/* M07 refinements: the hero surface owns its visual spacing even when a surface padding utility is present. */
+.parks-hero.app-surface {
+  padding: clamp(3rem, 6.2vw, 5.1rem) clamp(2.25rem, 5.4vw, 3.65rem) clamp(2.25rem, 4.6vw, 3.55rem);
+}
+
+.parks-results__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.parks-results__clear-selection {
+  min-height: 2.25rem;
+}
+
+@media (max-width: 680px) {
+  .parks-hero.app-surface {
+    padding: 2.45rem 1.55rem 2rem;
+  }
+
+  .parks-results__actions {
+    justify-content: flex-start;
+  }
+}
+
+/* M10 responsive hardening: tablet gets breathing room instead of squeezed desktop grids. */
+@media (min-width: 768px) and (max-width: 1079px) {
+  .public-hero--split {
+    grid-template-columns: 1fr;
+  }
+
+  .public-hero__media {
+    margin-top: 0;
+  }
+
+  .public-stat-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .public-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 681px) and (max-width: 860px) {
+  .public-hero,
+  .public-panel,
+  .public-filter-panel,
+  .public-shell-card {
+    border-radius: var(--radius-xl);
+  }
+
+  .public-cta-row .app-button,
+  .public-cta-row .btn {
+    flex: 1 1 min(15rem, 100%);
+  }
+
+  .parks-hero.app-surface {
+    padding: 2.85rem 1.75rem 2.35rem;
+  }
+
+  .parks-results,
+  .parks-toolbar {
+    width: calc(100% - 1.25rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .public-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .public-stat-grid {
+    grid-template-columns: 1fr;
+  }
+}

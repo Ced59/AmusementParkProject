@@ -18,6 +18,7 @@ export class ParkItemsPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly pageView = this.stateFacade.pageView;
   protected readonly zoneCards = this.stateFacade.zoneCards;
+  protected readonly zoneFocus = this.stateFacade.zoneFocus;
   protected readonly pagedItems = this.stateFacade.pagedItems;
   protected readonly categoryOptions = this.stateFacade.categoryOptions;
   protected readonly typeOptions = this.stateFacade.typeOptions;

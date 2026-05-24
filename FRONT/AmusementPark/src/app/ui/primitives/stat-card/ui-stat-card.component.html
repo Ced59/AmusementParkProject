@@ -1,0 +1,21 @@
+<span class="app-stat-card__label">
+  @if (labelKey) {
+    {{ labelKey | translate }}
+  } @else {
+    {{ labelText }}
+  }
+</span>
+
+<strong class="app-stat-card__value">
+  {{ value }}
+</strong>
+
+@if (hasHint()) {
+  <span class="app-stat-card__hint">
+    @if (hintKey) {
+      {{ hintKey | translate }}
+    } @else {
+      {{ hintText }}
+    }
+  </span>
+}

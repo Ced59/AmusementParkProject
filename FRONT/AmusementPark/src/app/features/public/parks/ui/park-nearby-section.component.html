@@ -1,14 +1,25 @@
 <section class="park-nearby public-page">
-  <div class="public-section-header park-section-header">
-    <div>
-      <span class="public-kicker">
-        <i class="pi pi-map-marker"></i>
-        {{ 'parks.detail.nearby.title' | translate }}
-      </span>
-      <h2 class="public-section-header__title">{{ 'parks.detail.nearby.title' | translate }}</h2>
-      <p class="public-section-header__subtitle">{{ 'parks.detail.nearby.subtitle' | translate }}</p>
-    </div>
-  </div>
+  <app-ui-section-header
+    class="park-section-header"
+    kickerIconClass="pi pi-map-marker"
+    kickerLabelKey="parks.detail.nearby.title"
+    titleKey="parks.detail.nearby.title"
+    subtitleKey="parks.detail.nearby.subtitle">
+  </app-ui-section-header>
+
+  @if (nearestPark; as closestPark) {
+    @if (closestPark.distanceLine) {
+      <app-ui-distance-panel
+        class="park-nearby__distance-panel"
+        titleKey="parks.detail.nearby.closestTitle"
+        [sourceLabel]="sourceName"
+        [targetLabel]="closestPark.name"
+        [distanceValue]="closestPark.distanceLine"
+        [durationText]="closestPark.travelDurationLine ?? null"
+        noteKey="parks.detail.nearby.distanceNote">
+      </app-ui-distance-panel>
+    }
+  }
 
   <app-page-state
     [state]="state"
@@ -21,12 +32,12 @@
       emptyMessageKey: 'parks.detail.nearby.emptyMessage'
     }">
     <div class="park-nearby__grid">
-      <app-park-card
+      <app-ui-park-card
         *ngFor="let park of parks"
         [park]="park"
-        [currentLang]="currentLang"
+        [detailLink]="buildParkLink(park)"
         [compact]="true">
-      </app-park-card>
+      </app-ui-park-card>
     </div>
   </app-page-state>
 </section>

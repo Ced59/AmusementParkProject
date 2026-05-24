@@ -1,7 +1,7 @@
 .import-description {
   margin-bottom: 1.25rem;
   line-height: 1.6;
-  opacity: .85;
+  color: var(--app-text-muted, #b09d7a);
 }
 
 .import-form {
@@ -20,16 +20,19 @@
   display: flex;
   flex-direction: column;
   gap: .2rem;
+  color: var(--app-heading, #fff);
 }
 
 .file-label__text {
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: .4rem;
 
   code {
-    background: var(--surface-ground, #f3f4f6);
+    background: rgba(196, 255, 39, 0.08);
+    border: 1px solid rgba(196, 255, 39, 0.16);
+    color: var(--c-lime, #c4ff27);
     padding: .1rem .4rem;
     border-radius: .3rem;
     font-size: .85em;
@@ -38,7 +41,7 @@
 
 .file-label__hint {
   font-size: .82rem;
-  opacity: .65;
+  color: var(--app-text-muted, #b09d7a);
 }
 
 .file-input-row {
@@ -56,6 +59,7 @@
   display: flex;
   align-items: center;
   gap: .5rem;
+  color: var(--app-text, #f6eed9);
 }
 
 .checkbox-inline span {
@@ -63,16 +67,18 @@
 }
 
 .file-input {
-  border: 1px dashed var(--surface-border, #d1d5db);
-  border-radius: .5rem;
-  padding: .5rem .75rem;
+  min-width: 200px;
+  flex: 1;
+  padding: .65rem .85rem;
+  border: 1px dashed var(--app-border-strong, rgba(255, 210, 140, 0.22));
+  border-radius: .75rem;
+  background: color-mix(in srgb, var(--app-bg, #0f0b06) 82%, transparent);
+  color: var(--app-text, #f6eed9);
   cursor: pointer;
   font-size: .9rem;
-  flex: 1;
-  min-width: 200px;
 
   &:hover {
-    border-color: var(--primary-color, #3b82f6);
+    border-color: var(--c-orange, #ff5a1f);
   }
 }
 
@@ -80,12 +86,12 @@
   display: flex;
   align-items: center;
   gap: .4rem;
-  color: #166534;
+  color: var(--c-lime, #c4ff27);
   font-size: .85rem;
-  font-weight: 500;
+  font-weight: 700;
 
   i {
-    color: #16a34a;
+    color: var(--c-lime, #c4ff27);
   }
 }
 
@@ -95,22 +101,29 @@
   gap: 1rem;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--surface-border, #e5e7eb);
+  border-top: 1px solid var(--app-border, rgba(255, 210, 140, 0.08));
 }
 
-.status-card {
-  padding: 1rem;
-  border: 1px solid var(--surface-border, #d1d5db);
-  border-radius: 1rem;
-  background: var(--surface-card, #fff);
+.status-card,
+.setting-card {
   display: flex;
   flex-direction: column;
-  gap: .25rem;
+  gap: .35rem;
+  min-height: 100%;
+  padding: 1rem;
+  border: 1px solid var(--app-border, rgba(255, 210, 140, 0.08));
+  border-radius: 1rem;
+  background: linear-gradient(180deg, var(--app-surface, #1a140f), var(--app-surface-2, #211a13));
+  color: var(--app-text, #f6eed9);
+  box-shadow: var(--shadow-card, 0 8px 24px rgba(0, 0, 0, 0.14));
 }
 
 .status-card__label {
-  font-size: .82rem;
-  opacity: .7;
+  font-size: .78rem;
+  color: var(--app-text-muted, #b09d7a);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 800;
 }
 
 .bulk-actions__buttons {
@@ -126,38 +139,29 @@
   gap: 1rem;
 }
 
-.setting-card {
-  display: flex;
-  flex-direction: column;
-  gap: .45rem;
-  padding: 1rem;
-  border: 1px solid var(--surface-border, #d1d5db);
-  border-radius: 1rem;
-  background: var(--surface-card, #fff);
-  min-height: 100%;
-}
-
 .setting-card--checkbox {
   justify-content: center;
 }
 
 .setting-card__label {
   font-size: .9rem;
-  font-weight: 600;
+  font-weight: 800;
   line-height: 1.35;
+  color: var(--app-heading, #fff);
 }
 
 .setting-card__hint {
   font-size: .8rem;
-  opacity: .7;
+  color: var(--app-text-muted, #b09d7a);
   line-height: 1.45;
 }
 
 .merge-row__select {
   width: 100%;
-  border: 1px solid var(--surface-border, #d1d5db);
-  border-radius: .45rem;
   min-height: 2.25rem;
   padding: .35rem .6rem;
-  background: #fff;
+  border: 1px solid var(--app-border-strong, rgba(255, 210, 140, 0.22));
+  border-radius: .45rem;
+  background: var(--app-bg, #0f0b06);
+  color: var(--app-text, #f6eed9);
 }

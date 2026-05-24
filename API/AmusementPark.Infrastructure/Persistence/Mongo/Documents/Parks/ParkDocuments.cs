@@ -6,12 +6,78 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 
 /// <summary>
+/// Coordonnées facultatives d'une référence liée aux parcs.
+/// </summary>
+public sealed class ParkReferenceContactDetailsDocument
+{
+    [BsonElement("websiteUrl")]
+    [BsonIgnoreIfNull]
+    public string? WebsiteUrl { get; set; }
+
+    [BsonElement("email")]
+    [BsonIgnoreIfNull]
+    public string? Email { get; set; }
+
+    [BsonElement("phoneNumber")]
+    [BsonIgnoreIfNull]
+    public string? PhoneNumber { get; set; }
+
+    [BsonElement("street")]
+    [BsonIgnoreIfNull]
+    public string? Street { get; set; }
+
+    [BsonElement("city")]
+    [BsonIgnoreIfNull]
+    public string? City { get; set; }
+
+    [BsonElement("postalCode")]
+    [BsonIgnoreIfNull]
+    public string? PostalCode { get; set; }
+
+    [BsonElement("countryCode")]
+    [BsonIgnoreIfNull]
+    public string? CountryCode { get; set; }
+
+    [BsonElement("latitude")]
+    [BsonIgnoreIfNull]
+    public double? Latitude { get; set; }
+
+    [BsonElement("longitude")]
+    [BsonIgnoreIfNull]
+    public double? Longitude { get; set; }
+}
+
+/// <summary>
 /// Document Mongo d'un fondateur de parc.
 /// </summary>
 public sealed class ParkFounderDocument : MongoDocumentBase
 {
     [BsonElement("name")]
     public string Name { get; set; } = string.Empty;
+
+    [BsonElement("occupation")]
+    [BsonIgnoreIfNull]
+    public string? Occupation { get; set; }
+
+    [BsonElement("birthDate")]
+    [BsonIgnoreIfNull]
+    public string? BirthDate { get; set; }
+
+    [BsonElement("deathDate")]
+    [BsonIgnoreIfNull]
+    public string? DeathDate { get; set; }
+
+    [BsonElement("birthPlace")]
+    [BsonIgnoreIfNull]
+    public string? BirthPlace { get; set; }
+
+    [BsonElement("nationalityCountryCode")]
+    [BsonIgnoreIfNull]
+    public string? NationalityCountryCode { get; set; }
+
+    [BsonElement("websiteUrl")]
+    [BsonIgnoreIfNull]
+    public string? WebsiteUrl { get; set; }
 
     [BsonElement("biography")]
     public List<LocalizedTextDocument> Biography { get; set; } = new();
@@ -25,8 +91,31 @@ public sealed class ParkOperatorDocument : MongoDocumentBase
     [BsonElement("name")]
     public string Name { get; set; } = string.Empty;
 
+    [BsonElement("legalName")]
+    [BsonIgnoreIfNull]
+    public string? LegalName { get; set; }
+
+    [BsonElement("foundedYear")]
+    [BsonIgnoreIfNull]
+    public int? FoundedYear { get; set; }
+
+    [BsonElement("closedYear")]
+    [BsonIgnoreIfNull]
+    public int? ClosedYear { get; set; }
+
+    [BsonElement("contactDetails")]
+    [BsonIgnoreIfNull]
+    public ParkReferenceContactDetailsDocument? ContactDetails { get; set; }
+
     [BsonElement("description")]
     public List<LocalizedTextDocument> Description { get; set; } = new();
+
+    [BsonElement("adminReviewStatus")]
+    [BsonRepresentation(BsonType.String)]
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
+
+    [BsonElement("adminReviewPriority")]
+    public int AdminReviewPriority { get; set; }
 }
 
 /// <summary>
@@ -37,8 +126,31 @@ public sealed class AttractionManufacturerDocument : MongoDocumentBase
     [BsonElement("name")]
     public string Name { get; set; } = string.Empty;
 
+    [BsonElement("legalName")]
+    [BsonIgnoreIfNull]
+    public string? LegalName { get; set; }
+
+    [BsonElement("foundedYear")]
+    [BsonIgnoreIfNull]
+    public int? FoundedYear { get; set; }
+
+    [BsonElement("closedYear")]
+    [BsonIgnoreIfNull]
+    public int? ClosedYear { get; set; }
+
+    [BsonElement("contactDetails")]
+    [BsonIgnoreIfNull]
+    public ParkReferenceContactDetailsDocument? ContactDetails { get; set; }
+
     [BsonElement("biography")]
     public List<LocalizedTextDocument> Biography { get; set; } = new();
+
+    [BsonElement("adminReviewStatus")]
+    [BsonRepresentation(BsonType.String)]
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
+
+    [BsonElement("adminReviewPriority")]
+    public int AdminReviewPriority { get; set; }
 }
 
 /// <summary>
@@ -74,6 +186,23 @@ public sealed class ParkDocument : MongoGeolocatedDocumentBase
 
     [BsonElement("isVisible")]
     public bool IsVisible { get; set; }
+
+    [BsonElement("adminReviewStatus")]
+    [BsonRepresentation(BsonType.String)]
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
+
+    [BsonElement("adminReviewPriority")]
+    public int AdminReviewPriority { get; set; }
+
+    [BsonElement("isFeaturedOnHome")]
+    public bool IsFeaturedOnHome { get; set; }
+
+    [BsonElement("featuredHomeOrder")]
+    [BsonIgnoreIfNull]
+    public int? FeaturedHomeOrder { get; set; }
+
+    [BsonElement("isFeaturedOnHomeSponsored")]
+    public bool IsFeaturedOnHomeSponsored { get; set; }
 
     [BsonElement("websiteUrl")]
     [BsonIgnoreIfNull]
@@ -169,6 +298,13 @@ public sealed class ParkItemDocument : MongoGeolocatedDocumentBase
 
     [BsonElement("isVisible")]
     public bool IsVisible { get; set; } = true;
+
+    [BsonElement("adminReviewStatus")]
+    [BsonRepresentation(BsonType.String)]
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
+
+    [BsonElement("adminReviewPriority")]
+    public int AdminReviewPriority { get; set; }
 }
 
 /// <summary>

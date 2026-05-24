@@ -1,0 +1,22 @@
+@if (zones.length > 0) {
+  <section class="park-zones-section">
+    <app-ui-section-header
+      kickerIconClass="pi pi-map"
+      kickerLabelKey="parks.detail.zones.badge"
+      titleKey="parks.detail.zones.title"
+      subtitleKey="parks.detail.zones.subtitle">
+    </app-ui-section-header>
+
+    <div class="zone-tabs" aria-label="Park zones">
+      @for (zone of zones; track zone.id ?? zone.name) {
+        <a
+          class="zone-tab"
+          [routerLink]="zone.itemsLink"
+          [queryParams]="zone.queryParams">
+          <span>{{ zone.name }}</span>
+          <strong>{{ zone.totalItems }}</strong>
+        </a>
+      }
+    </div>
+  </section>
+}

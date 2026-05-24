@@ -1,0 +1,41 @@
+.app-empty-state,
+.app-error-state,
+.app-loading-state {
+  border: 1px dashed var(--app-border-strong);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 88%, transparent), color-mix(in srgb, var(--app-surface-2) 98%, transparent));
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.app-error-state {
+  border-color: rgba(255, 90, 31, 0.28);
+  background: rgba(255, 90, 31, 0.08);
+}
+
+.app-skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--app-surface-2) 84%, transparent);
+}
+
+.app-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  animation: app-skeleton-shimmer 1.4s infinite;
+}
+
+@keyframes app-skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}

@@ -1,15 +1,5 @@
-<div class="layout-container">
-  <app-topbar></app-topbar>
-
-  <div class="layout-main">
-    <app-sidebar></app-sidebar>
-
-    <div class="layout-content">
-      <div class="page-shell">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>
 
 <p-toast position="bottom-right"></p-toast>
+
+<app-cookie-consent-banner></app-cookie-consent-banner>

@@ -1,4 +1,6 @@
 using System;
+using AmusementPark.WebAPI.Responses;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +20,14 @@ public static class HttpApiServiceCollectionExtensions
             options.LowercaseUrls = true;
         });
 
+        services.Configure<ApiBehaviorOptions>(static options =>
+        {
+            options.InvalidModelStateResponseFactory = context =>
+                ApiProblemDetailsFactory.ToObjectResult(
+                    ApiProblemDetailsFactory.CreateValidation(context.HttpContext, context.ModelState));
+        });
+
+        services.AddProblemDetails();
         services.AddControllers();
         services.AddEndpointsApiExplorer();
 

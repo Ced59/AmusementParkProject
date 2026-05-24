@@ -1,0 +1,224 @@
+<section class="photo-carousel-panel" appUiSurface="detail" appUiSurfacePadding="regular" *ngIf="photos.length > 0">
+  <app-ui-section-header
+    [kickerIconClass]="kickerIconClass"
+    [kickerLabelKey]="kickerLabelKey"
+    [titleKey]="titleKey"
+    [subtitleKey]="subtitleKey">
+  </app-ui-section-header>
+
+  <div class="photo-carousel-toolbar">
+    <div class="photo-carousel-toolbar__group" role="group" [attr.aria-label]="categoryAriaLabelKey | translate">
+      <button
+        type="button"
+        class="photo-carousel-filter"
+        [class.photo-carousel-filter--active]="hasSelectedCategory(null)"
+        (click)="selectCategory(null)">
+        <span>{{ allCategoriesLabelKey | translate }}</span>
+        <strong>{{ photos.length }}</strong>
+      </button>
+
+      <button
+        *ngFor="let category of categories"
+        type="button"
+        class="photo-carousel-filter"
+        [class.photo-carousel-filter--active]="hasSelectedCategory(category.key)"
+        (click)="selectCategory(category.key)">
+        <span>{{ category.labelKey | translate }}</span>
+        <strong>{{ getCategoryCountLabel(category) }}</strong>
+      </button>
+    </div>
+
+    <div class="photo-carousel-toolbar__group photo-carousel-toolbar__group--limits" role="group" [attr.aria-label]="displayCountLabelKey | translate">
+      <span class="photo-carousel-toolbar__label">{{ displayCountLabelKey | translate }}</span>
+      <button
+        *ngFor="let limit of displayLimits"
+        type="button"
+        class="photo-carousel-limit"
+        [class.photo-carousel-limit--active]="selectedLimit === limit"
+        (click)="setLimit(limit)">
+        {{ getLimitLabelKey(limit) | translate:{ count: limit } }}
+      </button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="activePhoto as currentPhoto">
+    <div class="photo-carousel">
+      <button
+        type="button"
+        class="photo-carousel__nav photo-carousel__nav--prev"
+        (click)="previousPhoto()"
+        [disabled]="displayedPhotos.length <= 1"
+        [attr.aria-label]="previousLabelKey | translate">
+        <i class="pi pi-chevron-left" aria-hidden="true"></i>
+      </button>
+
+      <article
+        class="photo-carousel__stage"
+        role="button"
+        tabindex="0"
+        [attr.aria-label]="openFullscreenLabelKey | translate"
+        (click)="openLightbox(activePhotoIndex)"
+        (keydown.enter)="openLightbox(activePhotoIndex)"
+        (keydown.space)="openLightbox(activePhotoIndex); $event.preventDefault()">
+        <app-image-display
+          [imageId]="currentPhoto.imageId"
+          [alt]="currentPhoto.alt"
+          loading="lazy"
+          imgClass="photo-carousel__image"
+          placeholderClass="photo-carousel__placeholder"
+          placeholderKind="photo">
+        </app-image-display>
+
+        <span class="photo-carousel__fullscreen-hint">
+          <i class="pi pi-expand" aria-hidden="true"></i>
+          {{ openFullscreenLabelKey | translate }}
+        </span>
+
+        <div class="photo-carousel__caption">
+          <app-ui-chip tone="primary">{{ currentPhoto.categoryLabelKey | translate }}</app-ui-chip>
+          <app-ui-chip tone="soft" *ngIf="currentPhoto.isCurrent">{{ currentLabelKey | translate }}</app-ui-chip>
+          <p *ngIf="currentPhoto.description">{{ currentPhoto.description }}</p>
+
+          <div class="photo-carousel__source" *ngIf="currentPhoto.sourceTitle">
+            <span class="photo-carousel__source-name">
+              <i [class]="currentPhoto.sourceIconClass ?? 'pi pi-map-marker'" aria-hidden="true"></i>
+              {{ currentPhoto.sourceTitle }}
+            </span>
+            <a
+              *ngIf="currentPhoto.sourceRouterLink"
+              class="photo-carousel__source-link"
+              [routerLink]="currentPhoto.sourceRouterLink"
+              [attr.aria-label]="(currentPhoto.sourceLinkLabelKey ?? 'ui.photoCarousel.controls.openSource') | translate:{ name: currentPhoto.sourceTitle }">
+              <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <button
+        type="button"
+        class="photo-carousel__nav photo-carousel__nav--next"
+        (click)="nextPhoto()"
+        [disabled]="displayedPhotos.length <= 1"
+        [attr.aria-label]="nextLabelKey | translate">
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="photo-carousel-strip" *ngIf="displayedPhotos.length > 1">
+      <button
+        *ngFor="let photo of displayedPhotos; let photoIndex = index"
+        type="button"
+        class="photo-carousel-strip__item"
+        [class.photo-carousel-strip__item--active]="photoIndex === activePhotoIndex"
+        (click)="selectPhoto(photoIndex)">
+        <app-image-display
+          [imageId]="photo.imageId"
+          [alt]="photo.alt"
+          loading="lazy"
+          imgClass="photo-carousel-strip__image"
+          placeholderClass="photo-carousel-strip__placeholder"
+          placeholderKind="photo">
+        </app-image-display>
+        <span>{{ photo.categoryLabelKey | translate }}</span>
+      </button>
+    </div>
+  </ng-container>
+</section>
+
+<section
+  class="photo-lightbox"
+  *ngIf="lightboxOpen && activePhoto as fullscreenPhoto"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="lightboxTitleKey | translate"
+  (click)="closeLightbox()">
+  <div class="photo-lightbox__dialog" (click)="$event.stopPropagation()">
+    <header class="photo-lightbox__header">
+      <div>
+        <span class="photo-lightbox__kicker">{{ fullscreenPhoto.categoryLabelKey | translate }}</span>
+        <h2>{{ lightboxTitleKey | translate }}</h2>
+      </div>
+
+      <button
+        type="button"
+        class="photo-lightbox__close"
+        (click)="closeLightbox()"
+        [attr.aria-label]="closeFullscreenLabelKey | translate">
+        <i class="pi pi-times" aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <div class="photo-lightbox__stage">
+      <button
+        type="button"
+        class="photo-lightbox__nav photo-lightbox__nav--prev"
+        (click)="previousPhoto()"
+        [disabled]="displayedPhotos.length <= 1"
+        [attr.aria-label]="previousLabelKey | translate">
+        <i class="pi pi-chevron-left" aria-hidden="true"></i>
+      </button>
+
+      <div class="photo-lightbox__image-frame">
+        <app-image-display
+          [imageId]="fullscreenPhoto.imageId"
+          [alt]="fullscreenPhoto.alt"
+          loading="eager"
+          imgClass="photo-lightbox__image"
+          placeholderClass="photo-lightbox__placeholder"
+          placeholderKind="photo">
+        </app-image-display>
+      </div>
+
+      <button
+        type="button"
+        class="photo-lightbox__nav photo-lightbox__nav--next"
+        (click)="nextPhoto()"
+        [disabled]="displayedPhotos.length <= 1"
+        [attr.aria-label]="nextLabelKey | translate">
+        <i class="pi pi-chevron-right" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <footer class="photo-lightbox__footer">
+      <div class="photo-lightbox__caption">
+        <app-ui-chip tone="primary">{{ fullscreenPhoto.categoryLabelKey | translate }}</app-ui-chip>
+        <app-ui-chip tone="soft" *ngIf="fullscreenPhoto.isCurrent">{{ currentLabelKey | translate }}</app-ui-chip>
+        <p *ngIf="fullscreenPhoto.description">{{ fullscreenPhoto.description }}</p>
+
+        <div class="photo-lightbox__source" *ngIf="fullscreenPhoto.sourceTitle">
+          <span class="photo-lightbox__source-name">
+            <i [class]="fullscreenPhoto.sourceIconClass ?? 'pi pi-map-marker'" aria-hidden="true"></i>
+            {{ fullscreenPhoto.sourceTitle }}
+          </span>
+          <a
+            *ngIf="fullscreenPhoto.sourceRouterLink"
+            class="photo-lightbox__source-link"
+            [routerLink]="fullscreenPhoto.sourceRouterLink"
+            [attr.aria-label]="(fullscreenPhoto.sourceLinkLabelKey ?? 'ui.photoCarousel.controls.openSource') | translate:{ name: fullscreenPhoto.sourceTitle }">
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="photo-lightbox__thumbs" *ngIf="displayedPhotos.length > 1">
+        <button
+          *ngFor="let photo of displayedPhotos; let photoIndex = index"
+          type="button"
+          class="photo-lightbox__thumb"
+          [class.photo-lightbox__thumb--active]="photoIndex === activePhotoIndex"
+          (click)="selectPhoto(photoIndex)">
+          <app-image-display
+            [imageId]="photo.imageId"
+            [alt]="photo.alt"
+            loading="lazy"
+            imgClass="photo-lightbox__thumb-image"
+            placeholderClass="photo-lightbox__thumb-placeholder"
+            placeholderKind="photo">
+          </app-image-display>
+          <span>{{ photo.categoryLabelKey | translate }}</span>
+        </button>
+      </div>
+    </footer>
+  </div>
+</section>

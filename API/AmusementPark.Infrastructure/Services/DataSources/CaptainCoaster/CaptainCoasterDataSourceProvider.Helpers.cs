@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Features.DataSources.Results;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
 using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
 using MongoDB.Driver;
@@ -222,6 +223,36 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
                 .Where(item => !string.IsNullOrWhiteSpace(item))
                 .GroupBy(item => item.Trim(), StringComparer.Ordinal)
                 .Count(group => group.Count() > 1);
+        }
+
+        private static string? NormalizeCountryCodeForStorage(string? countryCode)
+        {
+            if (string.IsNullOrWhiteSpace(countryCode))
+            {
+                return null;
+            }
+
+            return countryCode.Trim().ToUpperInvariant();
+        }
+
+        private static void ApplyExternalParkSnapshotToLocalPark(ParkDocument localParkDocument, CaptainCoasterParkSnapshotDocument externalParkDocument, DateTime utcNow)
+        {
+            localParkDocument.Name = externalParkDocument.Name;
+
+            string? normalizedCountryCode = NormalizeCountryCodeForStorage(externalParkDocument.CountryCode);
+            if (!string.IsNullOrWhiteSpace(normalizedCountryCode))
+            {
+                localParkDocument.CountryCode = normalizedCountryCode;
+            }
+
+            if (externalParkDocument.Latitude.HasValue && externalParkDocument.Longitude.HasValue)
+            {
+                localParkDocument.Latitude = externalParkDocument.Latitude;
+                localParkDocument.Longitude = externalParkDocument.Longitude;
+            }
+
+            localParkDocument.UpdatedAt = utcNow;
+            localParkDocument.RefreshLocation();
         }
 
         private static double? ConvertMetersToFeet(double? value) => value == null ? null : Math.Round(value.Value * 3.28084d, 2, MidpointRounding.AwayFromZero);

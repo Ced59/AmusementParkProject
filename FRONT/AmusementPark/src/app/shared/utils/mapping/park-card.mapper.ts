@@ -1,13 +1,17 @@
 import { Park } from '@app/models/parks/park';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
+import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/display/park-presentation.helpers';
+import { resolveLocalizedCountryName } from '@shared/utils/display/country-display.helpers';
 import { resolveLocalizedValue, stripHtml } from '@shared/utils/localization';
 
-export function mapParkToCardModel(park: Park, currentLanguage: string): ParkCardModel {
+export function mapParkToCardModel(park: Park, currentLanguage: string, countryDisplayService: CountryDisplayService | null = null): ParkCardModel {
   const shortDescription: string | null = buildShortDescription(
     resolveLocalizedValue(park.descriptions, currentLanguage) ?? null
   );
   const hasCoordinates: boolean = Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
+  const countryName: string | null = countryDisplayService?.resolveLocalizedCountryName(park.countryCode, currentLanguage)
+    ?? resolveLocalizedCountryName(park.countryCode, currentLanguage);
 
   return {
     id: park.id ?? null,
@@ -18,7 +22,7 @@ export function mapParkToCardModel(park: Park, currentLanguage: string): ParkCar
     longitude: hasCoordinates ? park.longitude : null,
     logoImageId: park.currentLogoImageId?.trim() ?? null,
     websiteUrl: park.webSiteUrl?.trim() ?? null,
-    locationLine: buildParkLocationLine(park),
+    locationLine: buildParkLocationLine(park, countryName),
     addressLine: buildParkAddressLine(park),
     coordinatesLine: hasCoordinates ? `${park.latitude.toFixed(3)}, ${park.longitude.toFixed(3)}` : null,
     shortDescription,

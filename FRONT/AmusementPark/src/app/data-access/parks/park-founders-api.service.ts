@@ -1,10 +1,11 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { EMPTY, expand, map, Observable, reduce } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { ParkFounder } from '@app/models/parks/park-founder';
-import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
+import { PagedResult } from '@shared/models/contracts';
+import { PagedCollectionResponse, unwrapCollection, unwrapPagedCollection } from '../shared/api-helpers';
 import { PARK_FOUNDERS_API_ENDPOINTS } from './park-founders-api-endpoints';
 
 @Injectable({
@@ -21,9 +22,31 @@ export class ParkFoundersApiService {
   }
 
   getParkFounders(): Observable<ParkFounder[]> {
+    return this.getAllParkFounders();
+  }
+
+  getParkFoundersPage(page: number = 1, size: number = 100): Observable<PagedResult<ParkFounder>> {
     const url: string = `${environment.apiBaseUrl}${PARK_FOUNDERS_API_ENDPOINTS.getParkFounders}`;
-    return this.http.get<ParkFounder[] | PagedCollectionResponse<ParkFounder>>(url).pipe(
-      map((response: ParkFounder[] | PagedCollectionResponse<ParkFounder>) => unwrapCollection<ParkFounder>(response))
+    const params: HttpParams = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    return this.http.get<ParkFounder[] | PagedCollectionResponse<ParkFounder>>(url, { params }).pipe(
+      map((response: ParkFounder[] | PagedCollectionResponse<ParkFounder>) => unwrapPagedCollection<ParkFounder>(response))
+    );
+  }
+
+  getAllParkFounders(): Observable<ParkFounder[]> {
+    return this.getParkFoundersPage(1, 100).pipe(
+      expand((result: PagedResult<ParkFounder>) => {
+        const nextPage: number = result.pagination.currentPage + 1;
+        if (nextPage > result.pagination.totalPages) {
+          return EMPTY;
+        }
+
+        return this.getParkFoundersPage(nextPage, result.pagination.itemsPerPage || 100);
+      }),
+      reduce((items: ParkFounder[], result: PagedResult<ParkFounder>) => [...items, ...unwrapCollection<ParkFounder>({ data: result.items })], [] as ParkFounder[])
     );
   }
 

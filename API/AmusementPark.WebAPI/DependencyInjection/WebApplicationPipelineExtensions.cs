@@ -1,8 +1,11 @@
 using System;
 using AmusementPark.WebAPI.Diagnostics;
+using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -18,12 +21,15 @@ public static class WebApplicationPipelineExtensions
     {
         ArgumentNullException.ThrowIfNull(app);
 
+        app.UseForwardedHeaders();
+        app.UseApiContentSecurityPolicy();
+
         if (!app.Environment.IsDevelopment())
         {
             app.UseHsts();
+            app.UseHttpsRedirection();
         }
 
-        app.UseHttpsRedirection();
         app.Use(async (context, next) =>
         {
             context.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
@@ -32,6 +38,7 @@ public static class WebApplicationPipelineExtensions
             context.Response.Headers.TryAdd("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
             await next();
         });
+
         app.UseExceptionHandler(static errorApp =>
         {
             errorApp.Run(async context =>
@@ -43,21 +50,54 @@ public static class WebApplicationPipelineExtensions
 
                 if (exception is not null)
                 {
-                    logger.LogError(exception, "Unhandled API exception for {Method} {Path}.", context.Request.Method, context.Request.Path);
+                    logger.LogError(
+                        exception,
+                        "Unhandled API exception for {Method} {Path}. TraceId: {TraceId}.",
+                        context.Request.Method,
+                        context.Request.Path,
+                        context.TraceIdentifier);
                 }
 
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                context.Response.ContentType = "application/json";
-                await context.Response.WriteAsJsonAsync(new
-                {
-                    StatusCode = StatusCodes.Status500InternalServerError,
-                    Message = "An unexpected error occurred.",
-                });
+                ProblemDetails problemDetails = ApiProblemDetailsFactory.Create(
+                    context,
+                    StatusCodes.Status500InternalServerError,
+                    ApiProblemDetailsFactory.GetDefaultTitle(StatusCodes.Status500InternalServerError),
+                    ApiProblemDetailsFactory.GetDefaultDetail(StatusCodes.Status500InternalServerError),
+                    "unexpected.error");
+
+                await ApiProblemDetailsFactory.WriteAsync(context, problemDetails);
             });
         });
 
+        app.UseStatusCodePages(async statusCodeContext =>
+        {
+            HttpContext context = statusCodeContext.HttpContext;
+            int statusCode = context.Response.StatusCode;
+
+            if (statusCode < StatusCodes.Status400BadRequest || context.Response.HasStarted)
+            {
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(context.Response.ContentType) || context.Response.ContentLength.HasValue)
+            {
+                return;
+            }
+
+            ProblemDetails problemDetails = ApiProblemDetailsFactory.Create(
+                context,
+                statusCode,
+                ApiProblemDetailsFactory.GetDefaultTitle(statusCode),
+                ApiProblemDetailsFactory.GetDefaultDetail(statusCode),
+                $"http.{statusCode}");
+
+            await ApiProblemDetailsFactory.WriteAsync(context, problemDetails);
+        });
+
+        app.UseRouting();
         app.UseApiCors();
         app.UseApiRateLimiting();
+        app.UseApiAuthenticationRateLimiting();
         app.UseAuthentication();
         app.UseAuthorization();
         return app;
@@ -68,7 +108,7 @@ public static class WebApplicationPipelineExtensions
         ArgumentNullException.ThrowIfNull(app);
 
         app.MapControllers();
-        app.MapGet("/health", () => Results.Ok(MigrationDiagnostics.CreateHealthPayload()));
+        app.MapGet("/health", () => Results.Ok(MigrationDiagnostics.CreateHealthPayload())).AllowAnonymous();
 
         return app;
     }

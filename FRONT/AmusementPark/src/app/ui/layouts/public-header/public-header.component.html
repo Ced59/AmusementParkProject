@@ -1,0 +1,171 @@
+<header class="app-public-nav" aria-label="Navigation principale">
+  <div class="app-public-nav__inner">
+    <a class="app-public-nav__logo" [routerLink]="['/', selectedLanguage(), 'home']" aria-label="AmusementPark">
+      <span class="app-public-nav__logo-icon" aria-hidden="true">🎢</span>
+      <span class="app-public-nav__logo-text">AmusementPark</span>
+    </a>
+
+    <ul class="app-public-nav__links" role="list">
+      <li>
+        <a [routerLink]="['/', selectedLanguage(), 'home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="pi pi-home" aria-hidden="true"></i>
+          <span>{{ 'sidebar.home' | translate }}</span>
+        </a>
+      </li>
+      <li class="app-public-nav__parks-node" [class.app-public-nav__parks-node--open]="isParksNavigationOpen()">
+        @if (parkNavigationTree().isAvailable) {
+          <button
+            type="button"
+            class="app-public-nav__tree-trigger active"
+            [attr.aria-expanded]="isParksNavigationOpen()"
+            [attr.aria-label]="'publicNavigation.treeAriaLabel' | translate"
+            aria-haspopup="menu"
+            (click)="toggleParksNavigation()">
+            <i class="pi pi-map" aria-hidden="true"></i>
+            <span>{{ 'sidebar.parks' | translate }}</span>
+            <i class="pi pi-chevron-down app-public-nav__tree-trigger-chevron" aria-hidden="true"></i>
+          </button>
+
+          @if (isParksNavigationOpen()) {
+            <div class="app-public-park-tree" role="menu" [attr.aria-label]="'publicNavigation.treeAriaLabel' | translate">
+              <div class="app-public-park-tree__header">
+                <span class="app-public-park-tree__kicker">{{ 'publicNavigation.youAreHere' | translate }}</span>
+                <strong>{{ 'sidebar.parks' | translate }}</strong>
+              </div>
+
+              <div class="app-public-park-tree__items">
+                @for (item of parkNavigationTree().items; track item.id) {
+                  <a
+                    class="app-public-park-tree__item"
+                    [class.app-public-park-tree__item--level-1]="item.level === 1"
+                    [class.app-public-park-tree__item--level-2]="item.level === 2"
+                    [class.app-public-park-tree__item--level-3]="item.level === 3"
+                    [class.app-public-park-tree__item--current]="item.isCurrent"
+                    [routerLink]="item.routeCommands"
+                    [queryParams]="item.queryParams"
+                    role="menuitem"
+                    (click)="closeParksNavigation()">
+                    @if (item.level > 0) {
+                      <span class="app-public-park-tree__branch" aria-hidden="true">└</span>
+                    }
+                    <span class="app-public-park-tree__icon" aria-hidden="true"><i [class]="item.icon"></i></span>
+                    <span class="app-public-park-tree__label">{{ item.label }}</span>
+                  </a>
+                }
+              </div>
+            </div>
+          }
+        } @else {
+          <a [routerLink]="['/', selectedLanguage(), 'parks']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" [class.active]="isParksSectionActive()">
+            <i class="pi pi-map" aria-hidden="true"></i>
+            <span>{{ 'sidebar.parks' | translate }}</span>
+          </a>
+        }
+      </li>
+      <li>
+        <a [routerLink]="['/', selectedLanguage(), 'about']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="pi pi-info-circle" aria-hidden="true"></i>
+          <span>{{ 'sidebar.about' | translate }}</span>
+        </a>
+      </li>
+
+      @if (isLoggedIn() && isAdmin()) {
+        <li>
+          <a [routerLink]="['/', selectedLanguage(), 'admin']" routerLinkActive="active">
+            <i class="pi pi-shield" aria-hidden="true"></i>
+            <span>{{ 'sidebar.admin' | translate }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="app-public-nav__right">
+      @if (isLoggedIn()) {
+        <button
+          type="button"
+          class="app-public-nav__profile"
+          [attr.aria-label]="'sidebar.profile' | translate"
+          (click)="navigateToCurrentUserProfile()">
+          <span class="app-public-nav__profile-copy">
+            <span class="app-public-nav__profile-kicker">{{ 'topbar.hello' | translate }}</span>
+            <span class="app-public-nav__profile-name">{{ userProfile()?.firstName || userProfile()?.email }}</span>
+          </span>
+          @if (userAvatarUrl()) {
+            <p-avatar [image]="userAvatarUrl() || undefined" shape="circle" styleClass="app-public-nav__profile-avatar"></p-avatar>
+          } @else {
+            <span class="app-public-nav__profile-fallback" aria-hidden="true">
+              <i class="pi pi-user"></i>
+            </span>
+          }
+        </button>
+      } @else {
+        <button type="button" class="btn-nav btn-nav--primary" (click)="openModal('loginModal')">
+          <i class="pi pi-user" aria-hidden="true"></i>
+          <span>{{ 'topbar.login_header' | translate }}</span>
+        </button>
+      }
+
+      <button type="button" class="btn-nav btn-nav--ghost app-public-nav__language" (click)="openModal('languageModal')" [attr.aria-label]="'topbar.choose_language' | translate">
+        <img [src]="'assets/flags/' + selectedLanguage() + '.png'" class="app-public-nav__flag" alt="" />
+      </button>
+
+      <app-theme-switcher></app-theme-switcher>
+    </div>
+  </div>
+</header>
+
+<p-dialog
+  [visible]="displayLanguageModal()"
+  (visibleChange)="onLanguageDialogVisibleChanged($event)"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [showHeader]="false"
+  styleClass="app-language-dialog"
+  [style]="{ width: 'min(94vw, 42rem)' }">
+  <section class="app-language-dialog__shell">
+    <app-ui-section-header
+      kickerTone="sky"
+      kickerIconClass="pi pi-language"
+      kickerLabelKey="languageModal.kicker"
+      titleKey="languageModal.title"
+      subtitleKey="languageModal.subtitle">
+      <app-ui-chip uiSectionActions tone="soft" iconClass="pi pi-check-circle">
+        {{ 'languageModal.current' | translate }} · {{ selectedLanguage().toUpperCase() }}
+      </app-ui-chip>
+    </app-ui-section-header>
+
+    <div class="languages-grid" role="listbox" [attr.aria-label]="'topbar.choose_language' | translate">
+      @for (language of languages; track language.value) {
+        <button
+          appUiButton="soft"
+          type="button"
+          class="language-option"
+          [class.language-option--active]="isSelectedLanguage(language)"
+          [attr.aria-selected]="isSelectedLanguage(language)"
+          role="option"
+          (click)="selectLanguage(language.value)">
+          <img [src]="'assets/flags/' + language.value + '.png'" class="flag flag-large" alt="" />
+          <span class="language-option__copy">
+            <strong>{{ language.label }}</strong>
+            <small>{{ getLanguageShortCode(language) }}</small>
+          </span>
+          @if (isSelectedLanguage(language)) {
+            <i class="pi pi-check language-option__check" aria-hidden="true"></i>
+          }
+        </button>
+      }
+    </div>
+  </section>
+</p-dialog>
+
+<p-dialog
+  [header]="'topbar.login_header' | translate"
+  [visible]="displayLoginModal()"
+  (visibleChange)="closeModal('loginModal')"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: 'min(96vw, 64rem)' }">
+  <app-auth-modal (closeModal)="closeModal('loginModal')"></app-auth-modal>
+</p-dialog>

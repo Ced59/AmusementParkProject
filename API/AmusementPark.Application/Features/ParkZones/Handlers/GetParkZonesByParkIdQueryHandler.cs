@@ -26,7 +26,7 @@ public sealed class GetParkZonesByParkIdQueryHandler : IQueryHandler<GetParkZone
             return ApplicationResult<IReadOnlyCollection<ParkZone>>.Failure(ParkApplicationErrors.ParkNotExists());
         }
 
-        Park? park = await this.parkRepository.GetByIdAsync(query.ParkId.Trim(), true, cancellationToken);
+        Park? park = await this.parkRepository.GetByIdAsync(query.ParkId.Trim(), query.IncludeHidden, cancellationToken);
         if (park is null)
         {
             return ApplicationResult<IReadOnlyCollection<ParkZone>>.Failure(ParkApplicationErrors.ParkNotExists());

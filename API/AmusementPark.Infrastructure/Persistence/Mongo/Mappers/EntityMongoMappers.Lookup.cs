@@ -49,6 +49,12 @@ internal static partial class EntityMongoMappers
         {
             Id = document.Id,
             Name = document.Name,
+            Occupation = document.Occupation,
+            BirthDate = document.BirthDate,
+            DeathDate = document.DeathDate,
+            BirthPlace = document.BirthPlace,
+            NationalityCountryCode = document.NationalityCountryCode,
+            WebsiteUrl = document.WebsiteUrl,
             Biography = CommonMongoMappers.ToDomain(document.Biography),
         };
 
@@ -63,6 +69,12 @@ internal static partial class EntityMongoMappers
         {
             Id = entity.Id,
             Name = entity.Name,
+            Occupation = entity.Occupation,
+            BirthDate = entity.BirthDate,
+            DeathDate = entity.DeathDate,
+            BirthPlace = entity.BirthPlace,
+            NationalityCountryCode = entity.NationalityCountryCode,
+            WebsiteUrl = entity.WebsiteUrl,
             Biography = CommonMongoMappers.ToDocuments(entity.Biography),
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
@@ -75,7 +87,12 @@ internal static partial class EntityMongoMappers
         {
             Id = document.Id,
             Name = document.Name,
+            LegalName = document.LegalName,
+            FoundedYear = document.FoundedYear,
+            ClosedYear = document.ClosedYear,
+            ContactDetails = ToDomainContactDetails(document.ContactDetails),
             Description = CommonMongoMappers.ToDomain(document.Description),
+            AdminReviewStatus = document.AdminReviewStatus.NormalizeForAdministration(),
         };
 
         entity.CreatedAtUtc = document.CreatedAt;
@@ -89,7 +106,13 @@ internal static partial class EntityMongoMappers
         {
             Id = entity.Id,
             Name = entity.Name,
+            LegalName = entity.LegalName,
+            FoundedYear = entity.FoundedYear,
+            ClosedYear = entity.ClosedYear,
+            ContactDetails = ToDocumentContactDetails(entity.ContactDetails),
             Description = CommonMongoMappers.ToDocuments(entity.Description),
+            AdminReviewStatus = entity.AdminReviewStatus.NormalizeForAdministration(),
+            AdminReviewPriority = entity.AdminReviewStatus.ToAdminReviewPriority(),
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };
@@ -101,7 +124,12 @@ internal static partial class EntityMongoMappers
         {
             Id = document.Id,
             Name = document.Name,
+            LegalName = document.LegalName,
+            FoundedYear = document.FoundedYear,
+            ClosedYear = document.ClosedYear,
+            ContactDetails = ToDomainContactDetails(document.ContactDetails),
             Biography = CommonMongoMappers.ToDomain(document.Biography),
+            AdminReviewStatus = document.AdminReviewStatus.NormalizeForAdministration(),
         };
 
         entity.CreatedAtUtc = document.CreatedAt;
@@ -115,9 +143,57 @@ internal static partial class EntityMongoMappers
         {
             Id = entity.Id,
             Name = entity.Name,
+            LegalName = entity.LegalName,
+            FoundedYear = entity.FoundedYear,
+            ClosedYear = entity.ClosedYear,
+            ContactDetails = ToDocumentContactDetails(entity.ContactDetails),
             Biography = CommonMongoMappers.ToDocuments(entity.Biography),
+            AdminReviewStatus = entity.AdminReviewStatus.NormalizeForAdministration(),
+            AdminReviewPriority = entity.AdminReviewStatus.ToAdminReviewPriority(),
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };
     }
+    private static ParkReferenceContactDetails? ToDomainContactDetails(ParkReferenceContactDetailsDocument? document)
+    {
+        if (document is null)
+        {
+            return null;
+        }
+
+        return new ParkReferenceContactDetails
+        {
+            WebsiteUrl = document.WebsiteUrl,
+            Email = document.Email,
+            PhoneNumber = document.PhoneNumber,
+            Street = document.Street,
+            City = document.City,
+            PostalCode = document.PostalCode,
+            CountryCode = document.CountryCode,
+            Latitude = document.Latitude,
+            Longitude = document.Longitude,
+        };
+    }
+
+    private static ParkReferenceContactDetailsDocument? ToDocumentContactDetails(ParkReferenceContactDetails? entity)
+    {
+        if (entity is null)
+        {
+            return null;
+        }
+
+        return new ParkReferenceContactDetailsDocument
+        {
+            WebsiteUrl = entity.WebsiteUrl,
+            Email = entity.Email,
+            PhoneNumber = entity.PhoneNumber,
+            Street = entity.Street,
+            City = entity.City,
+            PostalCode = entity.PostalCode,
+            CountryCode = entity.CountryCode,
+            Latitude = entity.Latitude,
+            Longitude = entity.Longitude,
+        };
+    }
+
 }

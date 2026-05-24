@@ -45,6 +45,8 @@
               [form]="form"
               [categoryOptions]="categoryOptions"
               [filteredTypeOptions]="filteredTypeOptions"
+              [parkOptions]="parkOptions"
+              [parkOptionsLoading]="parkOptionsLoading"
               [zones]="zones"
               [generalMapCenter]="generalMapCenter"
               [generalMapZoom]="generalMapZoom"
@@ -53,6 +55,7 @@
               [isSaving]="isSaving"
               (generalMapPositionChange)="generalMapPositionChange.emit($event)"
               (resetGeneralLocationToPark)="resetGeneralLocationToPark.emit()"
+              (parkSelectionChange)="parkSelectionChange.emit($event)"
               (saveSection)="saveSection.emit()">
             </app-admin-park-item-general-tab>
           }
@@ -128,6 +131,8 @@
                 [allowMultiplePhotoUpload]="allowMultiplePhotoUpload"
                 [selectedPhotoCount]="selectedPhotoCount"
                 [newPhotoDescription]="newPhotoDescription"
+                [selectedPhotoCategorySlug]="selectedPhotoCategorySlug"
+                [photoCategoryOptions]="photoCategoryOptions"
                 [photosUploading]="photosUploading"
                 [photosLoading]="photosLoading"
                 [attractionPhotos]="attractionPhotos"
@@ -136,6 +141,7 @@
                 [isSaving]="isSaving"
                 (photoFileSelected)="photoFileSelected.emit($event)"
                 (newPhotoDescriptionChange)="newPhotoDescriptionChange.emit($event)"
+                (selectedPhotoCategorySlugChange)="selectedPhotoCategorySlugChange.emit($event)"
                 (uploadPhoto)="uploadPhoto.emit()"
                 (setCurrentPhoto)="setCurrentPhoto.emit($event)"
                 (deletePhoto)="deletePhoto.emit($event)"

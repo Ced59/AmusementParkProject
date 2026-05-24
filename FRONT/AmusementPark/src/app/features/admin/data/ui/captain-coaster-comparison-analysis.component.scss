@@ -10,7 +10,8 @@
   align-items: center;
   font-size: .76rem;
   flex-wrap: wrap;
-  opacity: .5;
+  color: var(--app-text-muted, #b09d7a);
+  opacity: .6;
 }
 
 .change-item--diff {
@@ -18,32 +19,33 @@
 }
 
 .change-item__field {
-  font-weight: 700;
+  font-weight: 800;
   min-width: 88px;
+  color: var(--app-text-muted, #b09d7a);
   font-size: .7rem;
   text-transform: uppercase;
-  opacity: .7;
+}
+
+.change-item__local,
+.change-item__ext {
+  padding: .05rem .3rem;
+  border-radius: .25rem;
+  font-family: monospace;
 }
 
 .change-item__local {
-  color: #9f1239;
-  background: rgba(159, 18, 57, .08);
-  padding: .05rem .3rem;
-  border-radius: .2rem;
-  font-family: monospace;
+  color: #fda4af;
+  background: rgba(159, 18, 57, .16);
 }
 
 .change-item__ext {
-  color: #166534;
-  background: rgba(22, 101, 52, .08);
-  padding: .05rem .3rem;
-  border-radius: .2rem;
-  font-family: monospace;
+  color: #86efac;
+  background: rgba(22, 101, 52, .16);
 }
 
 i.pi-arrow-right {
+  color: var(--app-text-faint, #75644e);
   font-size: .65rem;
-  opacity: .4;
 }
 
 .duplicate-panel {
@@ -52,29 +54,27 @@ i.pi-arrow-right {
   gap: .9rem;
   padding: .75rem;
   border-radius: .75rem;
-  border: 1px solid rgba(220, 38, 38, .15);
-  background: rgba(248, 250, 252, .9);
+  border: 1px solid rgba(220, 38, 38, .22);
+  background: rgba(220, 38, 38, .08);
+}
+
+.duplicate-panel__intro,
+.duplicate-panel__strategy {
+  display: flex;
+  gap: .65rem;
+  flex-wrap: wrap;
+  color: var(--app-text, #f6eed9);
+  font-size: .85rem;
 }
 
 .duplicate-panel__intro {
-  display: flex;
   align-items: center;
-  gap: .65rem;
-  flex-wrap: wrap;
-  font-size: .85rem;
 }
 
-.duplicate-panel__strategy {
+.duplicate-panel__strategy label {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  font-size: .85rem;
-
-  label {
-    display: flex;
-    align-items: center;
-    gap: .4rem;
-  }
+  align-items: center;
+  gap: .4rem;
 }
 
 .duplicate-variants {
@@ -89,18 +89,21 @@ i.pi-arrow-right {
   gap: .5rem;
   padding: .75rem;
   border-radius: .75rem;
-  border: 1px solid var(--surface-border, #d1d5db);
-  background: #fff;
+  border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
+  background: linear-gradient(180deg, var(--app-surface, #1a140f), var(--app-surface-2, #211a13));
+  color: var(--app-text, #f6eed9);
   cursor: pointer;
 }
 
 .duplicate-variant-card--selected {
-  border-color: var(--primary-color, #3b82f6);
-  box-shadow: 0 0 0 1px rgba(59, 130, 246, .2);
+  border-color: var(--app-accent-cyan, var(--primary-color, #3b82f6));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--app-accent-cyan, #38c5f5) 28%, transparent);
 }
 
 .duplicate-variant-card--suggested {
-  background: rgba(59, 130, 246, .04);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(59, 130, 246, .14), transparent 46%),
+    linear-gradient(180deg, var(--app-surface, #1a140f), var(--app-surface-2, #211a13));
 }
 
 .duplicate-variant-card__header {
@@ -118,9 +121,9 @@ i.pi-arrow-right {
 
 .duplicate-variant-card__badge {
   font-size: .72rem;
-  font-weight: 700;
-  color: #1e40af;
-  background: rgba(59, 130, 246, .12);
+  font-weight: 800;
+  color: #93c5fd;
+  background: rgba(59, 130, 246, .18);
   border-radius: 999px;
   padding: .15rem .5rem;
 }
@@ -131,8 +134,8 @@ i.pi-arrow-right {
   gap: .5rem;
   padding: .75rem;
   border-radius: .75rem;
-  background: var(--surface-ground, #f8f9fa);
-  border: 1px solid var(--surface-border, #e5e7eb);
+  background: var(--app-surface, #1a140f);
+  border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
 }
 
 .merge-row {
@@ -143,25 +146,26 @@ i.pi-arrow-right {
 }
 
 .merge-row__field {
+  color: var(--app-text-muted, #b09d7a);
   font-size: .78rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  opacity: .72;
 }
 
 .merge-row__select {
   width: 100%;
-  border: 1px solid var(--surface-border, #d1d5db);
+  border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
   border-radius: .45rem;
   min-height: 2.25rem;
   padding: .35rem .6rem;
-  background: #fff;
+  background: var(--app-surface-2, #211a13);
+  color: var(--app-text, #f6eed9);
 }
 
 .duplicate-panel__summary {
+  color: var(--app-heading, #fff);
   font-size: .82rem;
-  font-weight: 600;
-  color: #374151;
+  font-weight: 700;
 }
 
 @media (max-width: 900px) {

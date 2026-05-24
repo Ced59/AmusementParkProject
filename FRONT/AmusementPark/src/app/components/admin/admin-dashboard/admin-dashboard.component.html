@@ -1,89 +1,21 @@
-<div class="admin-dashboard">
-  <header class="admin-header">
-    <h1>{{ 'admin.title' | translate }}</h1>
+<section class="admin-dashboard admin-surface">
+  <header class="admin-dashboard__header">
+    <span class="kicker kicker--sky">{{ 'admin.m14.kicker' | translate }}</span>
+    <div>
+      <h1 class="admin-page-title">{{ 'admin.dashboard.title' | translate }}</h1>
+      <p class="admin-muted">{{ 'admin.dashboard.subtitle' | translate }}</p>
+    </div>
   </header>
 
-  <nav class="admin-tabs">
-    <button
-      type="button"
-      pButton
-      class="admin-tab"
-      [routerLink]="buildAdminRoute('users')"
-      routerLinkActive="active-tab"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [label]="'admin.tabs.users' | translate"
-      icon="pi pi-users"
-    ></button>
-
-    <button
-      type="button"
-      pButton
-      class="admin-tab"
-      [routerLink]="buildAdminRoute('parks')"
-      routerLinkActive="active-tab"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [label]="'admin.tabs.parks' | translate"
-      icon="pi pi-compass"
-    ></button>
-
-
-    <button
-      type="button"
-      pButton
-      class="admin-tab"
-      [routerLink]="buildAdminRoute('items')"
-      routerLinkActive="active-tab"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [label]="'admin.tabs.parkItems' | translate"
-      icon="pi pi-map"
-    ></button>
-
-    <button
-      type="button"
-      pButton
-      class="admin-tab"
-      [routerLink]="buildAdminRoute('operators')"
-      routerLinkActive="active-tab"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [label]="'admin.tabs.operators' | translate"
-      icon="pi pi-building"
-    ></button>
-
-    <button
-      type="button"
-      pButton
-      class="admin-tab"
-      [routerLink]="buildAdminRoute('manufacturers')"
-      routerLinkActive="active-tab"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [label]="'admin.tabs.manufacturers' | translate"
-      icon="pi pi-wrench"
-    ></button>
-
-    <button
-      type="button"
-      pButton
-      class="admin-tab"
-      [routerLink]="buildAdminRoute('data')"
-      routerLinkActive="active-tab"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [label]="'admin.tabs.data' | translate"
-      icon="pi pi-database"
-    ></button>
-
-    <button
-      type="button"
-      pButton
-      class="admin-tab"
-      [routerLink]="buildAdminRoute('images')"
-      routerLinkActive="active-tab"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [label]="'admin.tabs.images' | translate"
-      icon="pi pi-images"
-    ></button>
-  </nav>
-
-  <section class="admin-content">
-    <router-outlet></router-outlet>
-  </section>
-</div>
+  <div class="admin-dashboard__grid" aria-label="Administration">
+    @for (shortcut of shortcuts; track shortcut.segment) {
+      <a class="admin-dashboard__shortcut" [routerLink]="buildAdminRoute(shortcut.segment)">
+        <span class="admin-dashboard__shortcut-icon" aria-hidden="true">{{ shortcut.icon }}</span>
+        <span class="admin-dashboard__shortcut-body">
+          <strong>{{ shortcut.titleKey | translate }}</strong>
+          <span>{{ shortcut.descriptionKey | translate }}</span>
+        </span>
+      </a>
+    }
+  </div>
+</section>

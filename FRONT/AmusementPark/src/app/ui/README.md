@@ -1,6 +1,10 @@
 # ui
 
-Zone cible des briques d'interface génériques.
+Couche visuelle générique du front.
 
-Elle regroupera progressivement les layouts, shells génériques et composants UI de composition
-qui ne portent pas une responsabilité métier propre à une feature.
+Cette zone doit contenir progressivement les composants Angular réutilisables issus du design system MVP : layouts, primitives, cards, forms, maps et shells de composition.
+
+## Règle
+
+Un composant sous `ui` ne dépend pas d'un service métier, d'une facade de feature ou d'un DTO API.
+Il reçoit des données déjà préparées par une page, une feature ou un mapper.

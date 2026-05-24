@@ -1,0 +1,72 @@
+<div class="app-route-layout app-admin-layout admin-shell">
+  <header class="app-admin-layout__header">
+    <a class="app-admin-layout__brand" [routerLink]="['/', currentLang, 'home']" aria-label="AmusementPark">
+      <span class="app-admin-layout__brand-icon" aria-hidden="true">🎢</span>
+      <span>AmusementPark</span>
+    </a>
+
+    <div class="app-admin-layout__actions">
+      <span class="chip chip--soft">{{ 'admin.title' | translate }}</span>
+      <a class="btn-nav btn-nav--ghost" [routerLink]="['/', currentLang, 'home']">
+        <i class="pi pi-arrow-left" aria-hidden="true"></i>
+        <span>{{ 'auth.common.back_home' | translate }}</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="app-admin-layout__body">
+    <aside class="app-admin-layout__sidebar" aria-label="Administration">
+      <div class="app-admin-layout__sidebar-head">
+        <span class="kicker kicker--sky">{{ 'admin.m14.kicker' | translate }}</span>
+        <strong>{{ 'admin.m14.sidebarTitle' | translate }}</strong>
+      </div>
+
+      <nav class="app-admin-layout__nav">
+        <a [routerLink]="['/', currentLang, 'admin']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <span>📊</span>
+          <span>{{ 'admin.dashboard.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'parks']" routerLinkActive="active">
+          <span>🗺️</span>
+          <span>{{ 'admin.parks.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'items']" routerLinkActive="active">
+          <span>🎢</span>
+          <span>{{ 'admin.parkItems.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'operators']" routerLinkActive="active">
+          <span>🏢</span>
+          <span>{{ 'admin.operators.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'founders']" routerLinkActive="active">
+          <span>🧬</span>
+          <span>{{ 'admin.parkFounders.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'manufacturers']" routerLinkActive="active">
+          <span>🔧</span>
+          <span>{{ 'admin.manufacturers.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'images']" routerLinkActive="active">
+          <span>🖼️</span>
+          <span>{{ 'admin.images.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'users']" routerLinkActive="active">
+          <span>👤</span>
+          <span>{{ 'admin.users.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'data']" routerLinkActive="active">
+          <span>⚙️</span>
+          <span>{{ 'admin.dataSources.title' | translate }}</span>
+        </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'audit-logs']" routerLinkActive="active">
+          <span>🛡️</span>
+          <span>{{ 'admin.auditLogs.title' | translate }}</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="app-admin-layout__main">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

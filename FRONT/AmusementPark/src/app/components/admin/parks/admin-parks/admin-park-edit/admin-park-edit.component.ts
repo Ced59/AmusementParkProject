@@ -17,6 +17,7 @@ import { AdminParkGeneralTabComponent } from './tabs/admin-park-general-tab/admi
 import { AdminParkLocationTabComponent } from './tabs/admin-park-location-tab/admin-park-location-tab.component';
 import { AdminParkDescriptionsTabComponent } from './tabs/admin-park-descriptions-tab/admin-park-descriptions-tab.component';
 import { AdminParkLogosTabComponent } from './tabs/admin-park-logos-tab/admin-park-logos-tab.component';
+import { AdminParkPhotosTabComponent } from './tabs/admin-park-photos-tab/admin-park-photos-tab.component';
 import { PARK_TYPE_OPTIONS } from '@shared/utils/display/display-options';
 import { AdminParkTypeOption } from '@features/admin/parks/models/admin-park-edit.model';
 import {
@@ -29,6 +30,7 @@ import {
 import { AdminParkReferenceDataFacade } from '@features/admin/parks/state/admin-park-reference-data.facade';
 import { AdminParkLocationStateFacade } from '@features/admin/parks/state/admin-park-location-state.facade';
 import { AdminParkLogosStateFacade } from '@features/admin/parks/state/admin-park-logos-state.facade';
+import { AdminParkPhotosStateFacade } from '@features/admin/parks/state/admin-park-photos-state.facade';
 import { AdminParkEditStateFacade } from '@features/admin/parks/state/admin-park-edit-state.facade';
 
 
@@ -44,6 +46,7 @@ type SaveScope = 'section' | 'all';
     AdminParkReferenceDataFacade,
     AdminParkLocationStateFacade,
     AdminParkLogosStateFacade,
+    AdminParkPhotosStateFacade,
     AdminParkEditStateFacade
   ],
   imports: [
@@ -63,6 +66,7 @@ type SaveScope = 'section' | 'all';
     AdminParkLocationTabComponent,
     AdminParkDescriptionsTabComponent,
     AdminParkLogosTabComponent,
+    AdminParkPhotosTabComponent,
     TranslateModule
   ]
 })
@@ -89,6 +93,7 @@ export class AdminParkEditComponent implements OnInit {
     private readonly referenceDataFacade: AdminParkReferenceDataFacade,
     private readonly locationStateFacade: AdminParkLocationStateFacade,
     private readonly logosStateFacade: AdminParkLogosStateFacade,
+    private readonly photosStateFacade: AdminParkPhotosStateFacade,
     private readonly editStateFacade: AdminParkEditStateFacade
   ) {
     this.form = createAdminParkEditForm(this.formBuilder);
@@ -114,6 +119,10 @@ export class AdminParkEditComponent implements OnInit {
     return this.logosStateFacade;
   }
 
+  protected get photosState(): AdminParkPhotosStateFacade {
+    return this.photosStateFacade;
+  }
+
   get nameControl(): AbstractControl | null {
     return this.form.get('name');
   }
@@ -129,6 +138,7 @@ export class AdminParkEditComponent implements OnInit {
     this.referenceDataFacade.load(this.currentLang());
     this.locationStateFacade.bindForm(this.form);
     this.logosStateFacade.setCurrentLanguage(this.currentLang());
+    this.photosStateFacade.setCurrentLanguage(this.currentLang());
     this.setupFormSync();
 
     void this.initializeEditorAsync();
@@ -196,6 +206,35 @@ export class AdminParkEditComponent implements OnInit {
     this.logosStateFacade.setCurrentLogo(logo);
   }
 
+  onParkPhotoFileSelected(event: Event): void {
+    this.photosStateFacade.selectPhotoFiles(event);
+  }
+
+  async onUploadParkPhoto(): Promise<void> {
+    const parkId: string | null = this.parkId();
+
+    if (!parkId) {
+      return;
+    }
+
+    await this.photosStateFacade.uploadSelectedPhotos(
+      parkId,
+      this.form.get('name')?.value ?? ''
+    );
+  }
+
+  onSetCurrentParkPhoto(photo: OwnedImageItem): void {
+    this.photosStateFacade.setCurrentPhoto(photo);
+  }
+
+  onDeleteParkPhoto(photo: OwnedImageItem): void {
+    if (!confirm(this.translate.instant('admin.parks.photos.deleteConfirm'))) {
+      return;
+    }
+
+    this.photosStateFacade.deletePhoto(photo);
+  }
+
   onDeleteLogo(logo: OwnedImageItem): void {
     if (!confirm(this.translate.instant('admin.parks.logos.deleteConfirm'))) {
       return;
@@ -260,6 +299,7 @@ export class AdminParkEditComponent implements OnInit {
 
       if (wasLoaded) {
         this.logosStateFacade.loadLogos(parkId);
+        this.photosStateFacade.loadPhotos(parkId);
       }
 
       return;

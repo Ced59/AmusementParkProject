@@ -1,3 +1,4 @@
+using AmusementPark.Application.Features.AdminAudit.Ports;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.CaptainCoaster.Ports;
 using AmusementPark.Application.Features.Countries.Ports;
@@ -93,6 +94,8 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IImageBinaryStorage, MinioImageBinaryStorage>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddScoped<IAdminAuditLogWriter, AdminAuditLogWriter>();
+        services.AddScoped<IAdminAuditLogReader, AdminAuditLogReader>();
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
         services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();
         services.AddSingleton<IDataSourceImportJobQueue, InMemoryDataSourceImportJobQueue>();

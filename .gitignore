@@ -366,3 +366,8 @@ FodyWeavers.xsd
 
 .idea
 AmusementParkProject.zip
+
+# Production/deploy local artifacts
+/deploy/.env
+/deploy/backups/
+/deploy/*.tar.gz

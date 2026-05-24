@@ -1,0 +1,368 @@
+/* M16 — accessibility, state and premium polish.
+   Keep dark visual identity untouched. Light-mode overrides only improve contrast. */
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+  box-shadow: var(--shadow-focus);
+}
+
+:where(.app-button, .btn, .btn-nav, .app-category-chip__button, .app-public-nav__profile, .app-mobile-bottom-nav__item):focus-visible {
+  position: relative;
+  z-index: 2;
+}
+
+body.light-mode {
+  .home-hero__title-line--outline {
+    color: transparent;
+    -webkit-text-stroke: 2.25px var(--app-primary);
+    text-shadow: 0 0 1px rgba(22, 10, 0, 0.18);
+  }
+
+  .home-hero__backdrop {
+    opacity: 0.12;
+    background-image:
+      linear-gradient(rgba(42, 26, 8, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42, 26, 8, 0.055) 1px, transparent 1px);
+  }
+
+  .home-hero-stat--lime {
+    --hero-stat-color: var(--app-light-accent-lime);
+  }
+
+  .home-hero-stat--sky {
+    --hero-stat-color: var(--app-light-accent-sky);
+  }
+
+  .home-hero-card--lime {
+    --hero-card-accent: var(--app-light-accent-lime);
+    --hero-card-soft: var(--app-light-accent-lime-soft);
+  }
+
+  .home-hero-card--sky {
+    --hero-card-accent: var(--app-light-accent-sky);
+    --hero-card-soft: var(--app-light-accent-sky-soft);
+  }
+
+  .home-hero-card--rose {
+    --hero-card-accent: var(--app-light-accent-rose);
+    --hero-card-soft: var(--app-light-accent-rose-soft);
+  }
+
+  .kicker--lime,
+  .app-kicker--lime,
+  .chip--lime,
+  .app-chip--lime {
+    color: var(--app-light-accent-lime);
+    border-color: rgba(79, 111, 0, 0.32);
+    background: var(--app-light-accent-lime-soft);
+  }
+
+  .kicker--sky,
+  .app-kicker--sky,
+  .chip--sky,
+  .app-chip--sky,
+  .public-pill--cyan {
+    color: var(--app-light-accent-sky);
+    border-color: rgba(0, 109, 147, 0.32);
+    background: var(--app-light-accent-sky-soft);
+  }
+
+  .kicker--gold,
+  .app-kicker--gold,
+  .chip--gold,
+  .app-chip--gold,
+  .public-pill--gold {
+    color: var(--app-light-accent-gold);
+    border-color: rgba(138, 79, 0, 0.34);
+    background: var(--app-light-accent-gold-soft);
+  }
+
+  .kicker--rose,
+  .app-kicker--rose,
+  .chip--rose,
+  .app-chip--rose {
+    color: var(--app-light-accent-rose);
+    border-color: rgba(198, 24, 85, 0.28);
+    background: var(--app-light-accent-rose-soft);
+  }
+
+  .kicker--purple,
+  .app-kicker--purple,
+  .chip--purple,
+  .app-chip--purple {
+    color: var(--app-light-accent-purple);
+    border-color: rgba(111, 54, 184, 0.28);
+    background: var(--app-light-accent-purple-soft);
+  }
+
+  .chip--soft,
+  .app-chip--soft,
+  .public-pill--soft,
+  .btn--soft,
+  .app-button--soft,
+  .btn-nav--ghost {
+    color: var(--app-text);
+    border-color: var(--app-border-strong);
+    background: var(--app-light-soft-surface);
+  }
+
+  .btn--ghost,
+  .app-button--ghost {
+    color: var(--app-text);
+    border-color: var(--app-border-stronger);
+    background: rgba(255, 255, 255, 0.42);
+  }
+
+  .btn--ghost:hover,
+  .app-button--ghost:hover,
+  .btn--soft:hover,
+  .app-button--soft:hover,
+  .btn-nav--ghost:hover {
+    color: var(--app-heading);
+    background: var(--app-light-soft-surface-strong);
+  }
+
+  .parks-page-title span,
+  .ui-result-card[data-tone="sky"] .ui-result-card__icon,
+  .app-map-slot__placeholder i,
+  .parks-map__state i,
+  .app-distance-panel__icon,
+  .admin-total-pill {
+    color: var(--app-light-accent-sky);
+  }
+
+  .ui-result-card[data-tone="lime"] .ui-result-card__icon,
+  .ui-park-card__detail--distance strong,
+  .app-stat-card--lime .app-stat-card__value,
+  .public-stat-card--lime .public-stat-card__value {
+    color: var(--app-light-accent-lime);
+  }
+
+  .ui-result-card[data-tone="gold"] .ui-result-card__icon {
+    color: var(--app-light-accent-gold);
+  }
+
+  .ui-result-card[data-tone="purple"] .ui-result-card__icon {
+    color: var(--app-light-accent-purple);
+  }
+
+  .ui-result-card[data-tone="rose"] .ui-result-card__icon {
+    color: var(--app-light-accent-rose);
+  }
+
+  .ui-result-card__description :where(code),
+  code {
+    color: var(--app-light-accent-lime);
+    border-color: rgba(79, 111, 0, 0.25);
+    background: var(--app-light-accent-lime-soft);
+  }
+
+  .ui-park-card__detail,
+  .ui-info-card__metric,
+  .app-distance-panel__metric,
+  .profile-row,
+  .auth-feedback,
+  .auth-success-panel,
+  .parks-map__selected-card,
+  .parks-map__entry {
+    background: var(--app-light-soft-surface);
+    border-color: var(--app-border);
+  }
+
+  .ui-park-card__detail--distance,
+  .auth-feedback--success,
+  .auth-success-panel {
+    background: var(--app-light-accent-lime-soft);
+    border-color: rgba(79, 111, 0, 0.26);
+  }
+
+  .app-category-chip__button {
+    color: var(--app-text);
+    border-color: var(--app-border-strong);
+    background: var(--app-light-soft-surface);
+  }
+
+  .app-category-chip__button:hover,
+  .app-category-chip--selected .app-category-chip__button {
+    color: var(--app-heading);
+    border-color: rgba(143, 58, 12, 0.44);
+    background: rgba(255, 90, 31, 0.13);
+  }
+
+
+
+  .detail-data-row__value--link,
+  .location-row__icon {
+    color: var(--app-light-accent-sky);
+  }
+
+  .detail-data-row__value--link:hover,
+  .detail-data-row__value--link:focus-visible {
+    color: var(--app-primary);
+  }
+
+  .location-row:hover,
+  .location-row--active {
+    border-color: rgba(0, 109, 147, 0.34);
+    background:
+      radial-gradient(circle at 0 50%, rgba(0, 109, 147, 0.11), transparent 52%),
+      rgba(0, 109, 147, 0.06);
+  }
+
+  .location-row:focus-visible {
+    outline: 3px solid rgba(0, 109, 147, 0.3);
+  }
+
+  .access-condition-card[data-access-tone="height"] {
+    --access-tone: var(--app-light-accent-lime);
+  }
+
+  .access-condition-card[data-access-tone="restriction"] {
+    --access-tone: var(--app-light-accent-rose);
+  }
+
+  .access-condition-card[data-access-tone="sky"] {
+    --access-tone: var(--app-light-accent-sky);
+  }
+
+  .access-condition-card[data-access-tone="gold"] {
+    --access-tone: var(--app-light-accent-gold);
+  }
+
+  .access-condition-card,
+  .location-row,
+  .height-requirement-summary__item {
+    background: var(--app-light-soft-surface);
+    border-color: var(--app-border);
+  }
+
+  .admin-data-table .p-datatable-thead > tr > th {
+    color: var(--app-text);
+    background: color-mix(in srgb, var(--bg-card-2) 82%, rgba(111, 54, 184, 0.14));
+  }
+
+  .admin-data-table .p-datatable-tbody > tr.admin-row--later {
+    opacity: 0.92;
+  }
+}
+
+.app-empty-state,
+.public-empty-state,
+.app-error-state,
+.app-loading-state {
+  min-height: 12rem;
+  display: grid;
+  place-items: center;
+  gap: 0.65rem;
+}
+
+.app-empty-state i,
+.public-empty-state i {
+  display: grid;
+  width: 3.2rem;
+  height: 3.2rem;
+  place-items: center;
+  border-radius: 1.15rem;
+  background: rgba(255, 90, 31, 0.12);
+  color: var(--app-primary);
+  font-size: 1.45rem;
+}
+
+.app-empty-state h3,
+.public-empty-state h3 {
+  margin: 0.75rem 0 0.2rem;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.app-empty-state p,
+.public-empty-state p {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--app-text-muted);
+}
+
+.app-page-state--loading .app-empty-state,
+.app-loading-state {
+  border-style: solid;
+}
+
+.app-page-state--loading .app-empty-state i {
+  color: var(--app-accent-cyan);
+  background: rgba(56, 197, 245, 0.12);
+}
+
+.app-page-state--error .app-empty-state,
+.app-error-state {
+  border-color: color-mix(in srgb, var(--app-danger) 30%, var(--app-border));
+  background: rgba(255, 77, 139, 0.07);
+}
+
+.app-page-state--error .app-empty-state i {
+  color: var(--app-danger);
+  background: rgba(255, 77, 139, 0.12);
+}
+
+.app-page-state--empty .app-empty-state i {
+  color: var(--app-primary);
+}
+
+.app-skeleton {
+  min-height: 1rem;
+}
+
+.app-skeleton--text {
+  width: 100%;
+  height: 0.95rem;
+}
+
+.app-skeleton--title {
+  width: min(20rem, 70%);
+  height: 1.35rem;
+}
+
+.app-skeleton--card {
+  min-height: 12rem;
+  border-radius: var(--radius-xl);
+}
+
+.admin-shell {
+  .ui-park-card,
+  .ui-item-card,
+  .ui-result-card,
+  .ui-info-card,
+  .ui-featured-park-card,
+  .admin-list-card,
+  .p-card,
+  .p-datatable,
+  .p-panel {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  }
+
+  .ui-park-card:hover,
+  .ui-item-card:hover,
+  .ui-result-card:hover,
+  .ui-info-card:hover,
+  .ui-featured-park-card:hover,
+  .admin-list-card:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .home-hero-card {
+    animation: none !important;
+  }
+}

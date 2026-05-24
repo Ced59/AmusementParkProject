@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Bind } from 'primeng/bind';
-import { Card } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
-import { InputText } from 'primeng/inputtext';
-import { ButtonDirective } from 'primeng/button';
 import { TranslateModule } from '@ngx-translate/core';
+
 import { PageStateComponent } from '../../shared/page-state/page-state.component';
 import { ResetPasswordPageStateFacade } from '@features/auth/state/reset-password-page-state.facade';
+import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiFieldInputComponent } from '@ui/forms';
 
 @Component({
-    selector: 'app-reset-password-page',
-    templateUrl: './reset-password-page.component.html',
-    styleUrls: ['./reset-password-page.component.scss'],
-    providers: [ResetPasswordPageStateFacade],
-    imports: [Bind, Card, FormsModule, InputText, ButtonDirective, TranslateModule, PageStateComponent]
+  selector: 'app-reset-password-page',
+  templateUrl: './reset-password-page.component.html',
+  styleUrls: ['./reset-password-page.component.scss'],
+  providers: [ResetPasswordPageStateFacade],
+  imports: [FormsModule, TranslateModule, PageStateComponent, UiButtonDirective, UiChipComponent, UiFieldInputComponent, UiSectionHeaderComponent, UiSurfaceDirective]
 })
 export class ResetPasswordPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;

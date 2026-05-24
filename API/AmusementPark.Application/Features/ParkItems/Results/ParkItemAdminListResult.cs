@@ -41,4 +41,9 @@ public sealed class ParkItemAdminListResult
     /// Indique si l'élément est visible.
     /// </summary>
     public bool IsVisible { get; init; }
+
+    /// <summary>
+    /// Statut de traitement interne.
+    /// </summary>
+    public AdminReviewStatus AdminReviewStatus { get; init; }
 }

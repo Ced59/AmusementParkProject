@@ -1,3 +1,8 @@
+:host {
+  display: block;
+  color: var(--app-text, #f6eed9);
+}
+
 .session-panel {
   display: flex;
   flex-direction: column;
@@ -15,13 +20,13 @@
   display: flex;
   align-items: center;
   gap: .4rem;
-  color: var(--primary-color, #3b82f6);
+  color: var(--app-accent-cyan, var(--primary-color, #3b82f6));
   font-size: .85rem;
 }
 
 .session-message {
   margin: 0;
-  opacity: .75;
+  color: var(--app-text-muted, #b09d7a);
   font-size: .9rem;
 }
 
@@ -31,19 +36,34 @@
   gap: 1rem;
 }
 
-.metric-card {
-  padding: .75rem 1rem;
-  border: 1px solid var(--surface-border, #d1d5db);
-  border-radius: 1rem;
-  background: var(--surface-card, #fff);
+.metric-card,
+.status-card {
   display: flex;
   flex-direction: column;
   gap: .25rem;
+  border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
+  background:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--app-primary, #ff5a1f) 7%, transparent), transparent 42%),
+    linear-gradient(180deg, var(--app-surface, #1a140f), var(--app-surface-2, #211a13));
+  color: var(--app-heading, #fff);
+  box-shadow: var(--shadow-card, 0 8px 24px rgba(0, 0, 0, .14));
 }
 
-.metric-card__label {
+.metric-card {
+  padding: .85rem 1rem;
+  border-radius: 1rem;
+}
+
+.metric-card__label,
+.status-card__label {
+  color: var(--app-text-muted, #b09d7a);
   font-size: .78rem;
-  opacity: .7;
+}
+
+.metric-card strong,
+.status-card strong {
+  color: var(--app-heading, #fff);
+  font-weight: 800;
 }
 
 .status-grid {
@@ -55,15 +75,17 @@
 
 .status-card {
   padding: 1rem;
-  border: 1px solid var(--surface-border, #d1d5db);
   border-radius: 1rem;
-  background: var(--surface-card, #fff);
-  display: flex;
-  flex-direction: column;
-  gap: .25rem;
 }
 
-.status-card__label {
-  font-size: .82rem;
-  opacity: .7;
+:host ::ng-deep .p-card {
+  background: var(--app-surface, #1a140f);
+  border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
+  color: var(--app-text, #f6eed9);
+}
+
+:host ::ng-deep .p-progressbar {
+  background: color-mix(in srgb, var(--app-surface-2, #211a13) 76%, #fff 8%);
+  border: 1px solid var(--app-border, rgba(255, 210, 140, .14));
+  overflow: hidden;
 }

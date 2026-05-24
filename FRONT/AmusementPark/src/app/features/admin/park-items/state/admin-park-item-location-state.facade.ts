@@ -7,6 +7,7 @@ import { MapMarker } from '@app/models/map/map-marker';
 import { Park } from '@app/models/parks/park';
 import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { resolveLocationMarkerIconKind, resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { AttractionLocationKey, ParkCoordinates } from '../models/admin-park-item-edit.model';
 
 @Injectable()
@@ -59,6 +60,10 @@ export class AdminParkItemLocationStateFacade {
         this.updateGeneralMapState();
         this.updateLocationMapState();
       });
+
+    this.bindItemMarkerIdentityControl('category');
+    this.bindItemMarkerIdentityControl('type');
+    this.bindItemMarkerIdentityControl('subtype');
 
     form.get('attractionLocations')?.valueChanges
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -183,6 +188,22 @@ export class AdminParkItemLocationStateFacade {
     this.refreshFromForm();
   }
 
+  private bindItemMarkerIdentityControl(controlName: string): void {
+    this.form?.get(controlName)?.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((): void => {
+        this.updateGeneralMapState();
+      });
+  }
+
+  private resolveGeneralLocationIconKind(): MapMarker['iconKind'] {
+    return resolveParkItemMarkerIconKind({
+      category: this.form?.get('category')?.value as string | null | undefined,
+      type: this.form?.get('type')?.value as string | null | undefined,
+      subtype: this.form?.get('subtype')?.value as string | null | undefined
+    });
+  }
+
   private updateGeneralMapState(): void {
     if (!this.form) {
       return;
@@ -199,7 +220,8 @@ export class AdminParkItemLocationStateFacade {
         {
           id: 'general-location-default',
           lat: parkLocation.latitude,
-          lng: parkLocation.longitude
+          lng: parkLocation.longitude,
+          iconKind: 'park'
         }
       ]);
       return;
@@ -210,7 +232,8 @@ export class AdminParkItemLocationStateFacade {
       {
         id: 'general-location',
         lat: latitude,
-        lng: longitude
+        lng: longitude,
+        iconKind: this.resolveGeneralLocationIconKind()
       }
     ]);
   }
@@ -228,7 +251,8 @@ export class AdminParkItemLocationStateFacade {
         {
           id: this.selectedLocationKeySignal(),
           lat: point.latitude,
-          lng: point.longitude
+          lng: point.longitude,
+          iconKind: resolveLocationMarkerIconKind(this.selectedLocationKeySignal())
         }
       ]);
       return;

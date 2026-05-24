@@ -1,0 +1,330 @@
+.park-reference-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.park-reference-hero {
+  position: relative;
+  min-height: clamp(17rem, 28vh, 22rem);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border-bottom: 1px solid var(--app-border);
+  background: var(--app-surface-2);
+}
+
+.park-reference-hero__bg,
+.park-reference-hero__pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.park-reference-hero__bg {
+  background:
+    radial-gradient(ellipse 72% 60% at 16% 35%, color-mix(in srgb, var(--reference-accent, var(--app-primary)) 18%, transparent), transparent 64%),
+    radial-gradient(ellipse 44% 48% at 82% 78%, color-mix(in srgb, var(--app-accent-cyan) 10%, transparent), transparent 58%),
+    linear-gradient(180deg, color-mix(in srgb, var(--app-surface-2) 94%, transparent), var(--app-bg));
+}
+
+.park-reference-hero__pattern {
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.55) 39px, rgba(255, 255, 255, 0.55) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.55) 39px, rgba(255, 255, 255, 0.55) 40px);
+}
+
+.park-reference-detail[data-reference-kind='operator'] {
+  --reference-accent: var(--app-accent-cyan);
+}
+
+.park-reference-detail[data-reference-kind='manufacturer'] {
+  --reference-accent: var(--app-accent-lime);
+}
+
+.park-reference-detail[data-reference-kind='founder'] {
+  --reference-accent: var(--app-primary);
+}
+
+.park-reference-hero__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  max-width: 1340px;
+  margin: 0 auto;
+  gap: 1.25rem;
+  padding: 1.45rem 1.25rem 2rem;
+}
+
+.park-reference-hero__icon {
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border: 2px solid color-mix(in srgb, var(--reference-accent, var(--app-primary)) 38%, var(--app-border-strong));
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--reference-accent, var(--app-primary)) 20%, transparent), transparent 48%),
+    linear-gradient(180deg, var(--app-surface), var(--app-surface-2));
+  color: var(--reference-accent, var(--app-primary));
+  font-size: 2rem;
+  box-shadow: var(--shadow-lift);
+}
+
+.park-reference-hero__main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.park-reference-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.park-reference-hero__name {
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(2.35rem, 5.4vw, 4.4rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.park-reference-hero__legal-name {
+  margin: 0;
+  color: var(--app-text-muted);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.park-reference-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 100%;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 2.25rem 1.25rem 4.5rem;
+}
+
+.park-reference-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.park-reference-card {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 1.8rem);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--reference-accent, var(--app-primary)) 7%, transparent), transparent 40%),
+    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  box-shadow: var(--shadow-card);
+}
+
+.park-reference-card--description {
+  min-height: 16rem;
+}
+
+.park-reference-card__rich-text,
+.park-reference-card__empty {
+  margin: 0;
+  color: var(--app-text-muted);
+  font-size: 0.98rem;
+  line-height: 1.82;
+}
+
+.park-reference-card__rich-text ::ng-deep a {
+  color: var(--reference-accent, var(--app-primary));
+}
+
+.reference-facts {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.reference-fact {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.25rem 0.75rem;
+  align-items: start;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.reference-fact:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.reference-fact__icon {
+  grid-row: span 2;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--reference-accent, var(--app-primary)) 13%, transparent);
+  color: var(--reference-accent, var(--app-primary));
+}
+
+.reference-fact__label {
+  color: var(--app-text-faint);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reference-fact__value {
+  min-width: 0;
+  color: var(--app-text);
+  font-size: 0.9rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+a.reference-fact__value:hover {
+  color: var(--reference-accent, var(--app-primary));
+}
+
+.reference-fact__value--mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.attractions-head {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+
+.attractions-head h2 {
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.attractions-head p {
+  margin: 0;
+  max-width: 70ch;
+  color: var(--app-text-muted);
+}
+
+.attractions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.9rem;
+}
+
+.attraction-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.95rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-bg) 72%, var(--app-surface) 28%);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.attraction-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--reference-accent, var(--app-primary)) 34%, var(--app-border-strong));
+  background: color-mix(in srgb, var(--app-surface-2) 92%, var(--reference-accent, var(--app-primary)) 8%);
+}
+
+.attraction-card__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border-radius: .9rem;
+  background: color-mix(in srgb, var(--reference-accent, var(--app-primary)) 14%, transparent);
+  color: var(--reference-accent, var(--app-primary));
+}
+
+.attraction-card__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.attraction-card__body strong {
+  color: var(--app-heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attraction-card__body span,
+.attraction-card__meta {
+  color: var(--app-text-muted);
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.attraction-card__meta {
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--reference-accent, var(--app-primary)) 10%, transparent);
+}
+
+@media (min-width: 960px) {
+  .park-reference-hero__content {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: end;
+  }
+}
+
+@media (max-width: 1040px) {
+  .park-reference-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .park-reference-hero {
+    min-height: auto;
+  }
+
+  .park-reference-hero__content,
+  .park-reference-body {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .park-reference-hero__icon {
+    width: 78px;
+    height: 78px;
+  }
+
+  .park-reference-hero__name {
+    word-break: break-word;
+  }
+
+  .attraction-card {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .attraction-card__meta {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

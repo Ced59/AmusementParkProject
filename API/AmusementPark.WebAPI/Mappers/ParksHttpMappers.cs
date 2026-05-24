@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkZones.Results;
+using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Parks;
@@ -28,6 +29,10 @@ internal static class ParksHttpMappers
             OperatorId = NormalizeOptionalString(dto.OperatorId),
             Descriptions = dto.Descriptions.ToDomain(),
             IsVisible = dto.IsVisible,
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
+            IsFeaturedOnHome = dto.IsFeaturedOnHome,
+            FeaturedHomeOrder = NormalizeOptionalOrder(dto.FeaturedHomeOrder),
+            IsFeaturedOnHomeSponsored = dto.IsFeaturedOnHomeSponsored && dto.IsFeaturedOnHome,
             WebsiteUrl = NormalizeOptionalString(dto.WebsiteUrl),
             Street = NormalizeOptionalString(dto.Street),
             City = NormalizeOptionalString(dto.City),
@@ -51,6 +56,10 @@ internal static class ParksHttpMappers
             OperatorId = NormalizeOptionalString(dto.OperatorId),
             Descriptions = dto.Descriptions.ToDomain(),
             IsVisible = dto.IsVisible,
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
+            IsFeaturedOnHome = dto.IsFeaturedOnHome,
+            FeaturedHomeOrder = NormalizeOptionalOrder(dto.FeaturedHomeOrder),
+            IsFeaturedOnHomeSponsored = dto.IsFeaturedOnHomeSponsored && dto.IsFeaturedOnHome,
             WebsiteUrl = NormalizeOptionalString(dto.WebsiteUrl),
             Street = NormalizeOptionalString(dto.Street),
             City = NormalizeOptionalString(dto.City),
@@ -77,6 +86,10 @@ internal static class ParksHttpMappers
             Longitude = value.Position?.Longitude ?? 0.0,
             Descriptions = value.Descriptions.ToHttp(),
             IsVisible = value.IsVisible,
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
+            IsFeaturedOnHome = value.IsFeaturedOnHome,
+            FeaturedHomeOrder = value.FeaturedHomeOrder,
+            IsFeaturedOnHomeSponsored = value.IsFeaturedOnHomeSponsored,
             WebSiteUrl = value.WebsiteUrl,
             Street = value.Street,
             City = value.City,
@@ -100,11 +113,63 @@ internal static class ParksHttpMappers
             Longitude = value.Position?.Longitude ?? 0.0,
             Descriptions = value.Descriptions.ToHttp(),
             IsVisible = value.IsVisible,
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
+            IsFeaturedOnHome = value.IsFeaturedOnHome,
+            FeaturedHomeOrder = value.FeaturedHomeOrder,
+            IsFeaturedOnHomeSponsored = value.IsFeaturedOnHomeSponsored,
             WebSiteUrl = value.WebsiteUrl,
             Street = value.Street,
             City = value.City,
             PostalCode = value.PostalCode,
             CurrentLogoImageId = value.CurrentLogoImageId,
+        };
+    }
+
+    public static ParkMapPointDto ToMapPointHttp(this Park value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkMapPointDto
+        {
+            Id = value.Id ?? string.Empty,
+            Name = value.Name ?? string.Empty,
+            CountryCode = value.CountryCode,
+            City = value.City,
+            Street = value.Street,
+            PostalCode = value.PostalCode,
+            Latitude = value.Position?.Latitude ?? 0.0,
+            Longitude = value.Position?.Longitude ?? 0.0,
+            CurrentLogoImageId = value.CurrentLogoImageId,
+        };
+    }
+
+    public static ParkDistanceResponseDto ToDistanceHttp(this ParkDistanceResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkDistanceResponseDto
+        {
+            Source = value.SourcePark.ToMapPointHttp(),
+            DistanceUnit = value.DistanceUnit,
+            CalculationKind = value.CalculationKind,
+            Targets = value.Targets.Select(target => target.ToDistanceHttp(value.DistanceUnit)).ToList(),
+            MissingTargetParkIds = value.MissingTargetParkIds.ToList(),
+            UnavailableTargetParkIds = value.UnavailableTargetParkIds.ToList(),
+        };
+    }
+
+    public static ParkDistanceTargetDto ToDistanceHttp(this ParkDistanceTargetResult value, string distanceUnit)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkDistanceTargetDto
+        {
+            ProximityRank = value.ProximityRank,
+            DistanceKilometers = value.DistanceKilometers,
+            DistanceMeters = Math.Round(value.DistanceKilometers * 1000d, 0, MidpointRounding.AwayFromZero),
+            DistanceUnit = distanceUnit,
+            EstimatedTravelDurationMinutes = value.EstimatedTravelDurationMinutes,
+            Park = value.Park.ToHttp(),
         };
     }
 
@@ -292,6 +357,11 @@ internal static class ParksHttpMappers
         return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
     }
 
+    private static int? NormalizeOptionalOrder(int? value)
+    {
+        return value.HasValue && value.Value > 0 ? value.Value : null;
+    }
+
     private static ParkType? ToDomain(this ParkTypeDto? value)
     {
         if (!value.HasValue)
@@ -301,6 +371,7 @@ internal static class ParksHttpMappers
 
         return Enum.TryParse(value.Value.ToString(), out ParkType parsed) ? parsed : null;
     }
+
 
     private static ParkTypeDto? ToHttp(this ParkType? value)
     {

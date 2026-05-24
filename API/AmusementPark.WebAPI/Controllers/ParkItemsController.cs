@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,6 +16,9 @@ using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AmusementPark.WebAPI.Authorization;
+using AmusementPark.WebAPI.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -23,6 +27,8 @@ namespace AmusementPark.WebAPI.Controllers;
 /// </summary>
 [ApiController]
 [Route("park-items")]
+[RequireActivatedUnblockedUser]
+[Authorize(Roles = AuthorizationRoleGroups.Admin)]
 public sealed class ParkItemsController : ControllerBase
 {
     private readonly IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler;
@@ -31,6 +37,7 @@ public sealed class ParkItemsController : ControllerBase
     private readonly ICommandHandler<CreateParkItemCommand, ApplicationResult<ParkItem>> createParkItemCommandHandler;
     private readonly ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler;
     private readonly ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler;
+    private readonly ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler;
 
     public ParkItemsController(
         IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler,
@@ -38,7 +45,8 @@ public sealed class ParkItemsController : ControllerBase
         IQueryHandler<GetParkItemByIdQuery, ApplicationResult<ParkItem>> getParkItemByIdQueryHandler,
         ICommandHandler<CreateParkItemCommand, ApplicationResult<ParkItem>> createParkItemCommandHandler,
         ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler,
-        ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler)
+        ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler,
+        ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler)
     {
         this.getParkItemsByParkIdQueryHandler = getParkItemsByParkIdQueryHandler;
         this.getParkItemsPageQueryHandler = getParkItemsPageQueryHandler;
@@ -46,9 +54,11 @@ public sealed class ParkItemsController : ControllerBase
         this.createParkItemCommandHandler = createParkItemCommandHandler;
         this.updateParkItemCommandHandler = updateParkItemCommandHandler;
         this.deleteParkItemCommandHandler = deleteParkItemCommandHandler;
+        this.updateParkItemsBulkAdministrationCommandHandler = updateParkItemsBulkAdministrationCommandHandler;
     }
 
     [HttpGet("park/{parkId}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkItemDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetByParkIdAsync([FromRoute] string parkId, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
@@ -66,12 +76,34 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkItemAdminListDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetPaginatedAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? parkId = null, [FromQuery] string? search = null, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetPaginatedAsync(
+        [FromQuery] PaginationRequestDto pagination,
+        [FromQuery] string? parkId = null,
+        [FromQuery] string? search = null,
+        [FromQuery] bool? isVisible = null,
+        [FromQuery] string? adminReviewStatus = null,
+        [FromQuery] string? category = null,
+        [FromQuery] string? type = null,
+        [FromQuery] string? manufacturerId = null,
+        CancellationToken cancellationToken = default)
     {
+        bool canSeeNonVisible = this.UserCanSeeNonVisible();
+        bool? effectiveIsVisible = canSeeNonVisible ? isVisible : true;
+        AdminReviewStatus? effectiveAdminReviewStatus = canSeeNonVisible ? ParseAdminReviewStatus(adminReviewStatus) : null;
         PagedQuery paging = pagination.ToApplication();
         ApplicationResult<PagedResult<ParkItemAdminListResult>> result = await this.getParkItemsPageQueryHandler.HandleAsync(
-            new GetParkItemsPageQuery(paging, parkId, search, this.UserCanSeeNonVisible()),
+            new GetParkItemsPageQuery(
+                paging,
+                parkId,
+                search,
+                canSeeNonVisible,
+                effectiveIsVisible,
+                effectiveAdminReviewStatus,
+                ParseParkItemCategory(category),
+                ParseParkItemType(type),
+                manufacturerId),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -85,10 +117,11 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(ParkItemDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetByIdAsync([FromRoute] string id, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<ParkItem> result = await this.getParkItemByIdQueryHandler.HandleAsync(new GetParkItemByIdQuery(id), cancellationToken);
+        ApplicationResult<ParkItem> result = await this.getParkItemByIdQueryHandler.HandleAsync(new GetParkItemByIdQuery(id, this.UserCanSeeNonVisible()), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
@@ -98,6 +131,7 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpPost]
+    [AdminAudit("park-item.create", "ParkItem")]
     [ProducesResponseType(typeof(ParkItemDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateAsync([FromBody] ParkItemCreateDto dto, CancellationToken cancellationToken = default)
     {
@@ -111,6 +145,7 @@ public sealed class ParkItemsController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [AdminAudit("park-item.update", "ParkItem", TargetIdRouteKey = "id")]
     [ProducesResponseType(typeof(ParkItemDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateAsync([FromRoute] string id, [FromBody] ParkItemUpdateDto dto, CancellationToken cancellationToken = default)
     {
@@ -123,7 +158,29 @@ public sealed class ParkItemsController : ControllerBase
         return this.Ok(result.Value.ToHttp());
     }
 
+    [HttpPatch("bulk-administration")]
+    [AdminAudit("park-item.bulk-administration.update", "ParkItem", StaticTargetId = "bulk")]
+    [ProducesResponseType(typeof(BulkAdministrationUpdateResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateParkItemsBulkAdministrationAsync([FromBody] BulkAdministrationUpdateDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParkItemsBulkAdministrationCommandHandler.HandleAsync(
+            new UpdateParkItemsBulkAdministrationCommand(request.Ids, request.IsVisible, request.AdminReviewStatus.ToOptionalDomain()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(new BulkAdministrationUpdateResultDto
+        {
+            RequestedCount = result.Value.RequestedCount,
+            UpdatedCount = result.Value.UpdatedCount,
+        });
+    }
+
     [HttpDelete("{id}")]
+    [AdminAudit("park-item.delete", "ParkItem", TargetIdRouteKey = "id")]
     [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
     public async Task<IActionResult> DeleteAsync([FromRoute] string id, CancellationToken cancellationToken = default)
     {
@@ -136,8 +193,23 @@ public sealed class ParkItemsController : ControllerBase
         return this.Ok(true);
     }
 
+    private static AdminReviewStatus? ParseAdminReviewStatus(string? value)
+    {
+        return Enum.TryParse(value, true, out AdminReviewStatus parsed) ? parsed : null;
+    }
+
+    private static ParkItemCategory? ParseParkItemCategory(string? value)
+    {
+        return Enum.TryParse(value, true, out ParkItemCategory parsed) ? parsed : null;
+    }
+
+    private static ParkItemType? ParseParkItemType(string? value)
+    {
+        return Enum.TryParse(value, true, out ParkItemType parsed) ? parsed : null;
+    }
+
     private bool UserCanSeeNonVisible()
     {
-        return this.User?.IsInRole("ADMIN") == true || this.User?.IsInRole("MODERATOR") == true;
+        return this.User?.IsInRole("ADMIN") == true;
     }
 }

@@ -1,13 +1,26 @@
-<p-card styleClass="auth-page-card">
-  <h2>{{ 'auth.confirm.title' | translate }}</h2>
+<section class="auth-page">
+  <article class="auth-card" appUiSurface="panel" appUiSurfacePadding="spacious">
+    <app-ui-section-header
+      kickerTone="lime"
+      kickerIconClass="pi pi-check-circle"
+      kickerLabelKey="auth.confirm.kicker"
+      titleKey="auth.confirm.title"
+      subtitleKey="auth.confirm.subtitle">
+    </app-ui-section-header>
 
-  <app-page-state
-    [state]="state().kind"
-    [messages]="{
-      loadingTitleKey: 'auth.confirm.title',
-      loadingMessageKey: 'auth.confirm.loading'
-    }">
-    <p [class.auth-success]="isSuccess()" [class.auth-error]="!isSuccess()">{{ message() }}</p>
-    <a [routerLink]="['/', currentLanguage(), 'home']" class="app-link-reset">{{ 'auth.common.back_home' | translate }}</a>
-  </app-page-state>
-</p-card>
+    <app-page-state
+      [state]="state().kind"
+      [messages]="{
+        loadingTitleKey: 'auth.confirm.title',
+        loadingMessageKey: 'auth.confirm.loading'
+      }">
+      <div class="auth-feedback" [class.auth-feedback--success]="isSuccess()" [class.auth-feedback--error]="!isSuccess()">
+        <app-ui-chip [tone]="isSuccess() ? 'lime' : 'rose'" [iconClass]="isSuccess() ? 'pi pi-check-circle' : 'pi pi-times-circle'">
+          {{ (isSuccess() ? 'auth.confirm.success_badge' : 'auth.confirm.error_badge') | translate }}
+        </app-ui-chip>
+        <p>{{ message() }}</p>
+        <a appUiButton="ghost" [routerLink]="['/', currentLanguage(), 'home']">{{ 'auth.common.back_home' | translate }}</a>
+      </div>
+    </app-page-state>
+  </article>
+</section>

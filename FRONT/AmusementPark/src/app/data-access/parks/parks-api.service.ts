@@ -5,10 +5,14 @@ import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ParkExplorer } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
+import { ParkMapPoint } from '@app/models/parks/park-map-point';
+import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
-import { PARKS_API_ENDPOINTS } from './parks-api-endpoints';
+import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
+import { PARKS_API_ENDPOINTS, ParkAdminListFilters } from './parks-api-endpoints';
+import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
 
 interface ParkWriteRequest {
   name?: string;
@@ -20,6 +24,10 @@ interface ParkWriteRequest {
   longitude: number;
   descriptions: LocalizedItem<string>[];
   isVisible: boolean;
+  adminReviewStatus?: string | null;
+  isFeaturedOnHome: boolean;
+  featuredHomeOrder: number | null;
+  isFeaturedOnHomeSponsored: boolean;
   websiteUrl?: string | null;
   street?: string | null;
   city?: string | null;
@@ -39,9 +47,20 @@ export class ParksApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getParksPaginated(page: number, size: number): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size)}`;
+  getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly, region, filters)}`;
     return this.http.get<ParksApiResponse>(url);
+  }
+
+  getRandomVisibleParks(limit: number = 4): Observable<Park[]> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getRandomVisibleParks(limit)}`;
+    return this.http.get<Park[]>(url);
+  }
+
+  getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null): Observable<ParkMapPoint[]> {
+    const normalizedQuery: string | null = query?.trim() || null;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedQuery, region)}`;
+    return this.http.get<ParkMapPoint[]>(url);
   }
 
   getParkById(id: string): Observable<Park> {
@@ -49,13 +68,23 @@ export class ParksApiService {
     return this.http.get<Park>(url);
   }
 
-  searchParks(name: string, page: number, size: number): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(name, page, size)}`;
+  searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(query, page, size, visibleOnly, region, filters)}`;
     return this.http.get<ParksApiResponse>(url);
   }
 
-  getParksByLocation(latitude: number, longitude: number, radius: number): Observable<Park[]> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksByLocation(latitude, longitude, radius)}`;
+  getParkDistances(sourceParkId: string, targetParkIds: string[]): Observable<ParkDistanceResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkDistances(sourceParkId, targetParkIds)}`;
+    return this.http.get<ParkDistanceResponse>(url);
+  }
+
+  getNearestParks(sourceParkId: string, limit: number = 4, maxDistanceKilometers: number | null = null): Observable<ParkDistanceResponse> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getNearestParks(sourceParkId, limit, maxDistanceKilometers)}`;
+    return this.http.get<ParkDistanceResponse>(url);
+  }
+
+  getParksByLocation(latitude: number, longitude: number, radiusMeters: number): Observable<Park[]> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksByLocation(latitude, longitude, radiusMeters)}`;
     return this.http.get<Park[] | PagedCollectionResponse<Park>>(url).pipe(
       map((response: Park[] | PagedCollectionResponse<Park>) => unwrapCollection<Park>(response))
     );
@@ -64,6 +93,11 @@ export class ParksApiService {
   updateParkVisibility(parkId: string, isVisible: boolean): Observable<Park> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.updateParkVisibility(parkId)}`;
     return this.http.patch<Park>(url, { isVisible });
+  }
+
+  updateParksBulkAdministration(request: BulkAdministrationUpdateRequest): Observable<BulkAdministrationUpdateResult> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.updateParksBulkAdministration}`;
+    return this.http.patch<BulkAdministrationUpdateResult>(url, request, this.jsonHttpOptions);
   }
 
   createPark(park: Park): Observable<Park> {
@@ -92,10 +126,23 @@ export class ParksApiService {
       longitude: park.longitude,
       descriptions: park.descriptions ?? [],
       isVisible: park.isVisible ?? true,
+      adminReviewStatus: park.adminReviewStatus ?? 'Validated',
+      isFeaturedOnHome: park.isFeaturedOnHome ?? false,
+      featuredHomeOrder: this.normalizeFeaturedHomeOrder(park.featuredHomeOrder),
+      isFeaturedOnHomeSponsored: Boolean(park.isFeaturedOnHome) && Boolean(park.isFeaturedOnHomeSponsored),
       websiteUrl: park.webSiteUrl ?? null,
       street: park.street ?? null,
       city: park.city ?? null,
       postalCode: park.postalCode ?? null
     };
+  }
+
+  private normalizeFeaturedHomeOrder(value: number | null | undefined): number | null {
+    if (value === null || value === undefined) {
+      return null;
+    }
+
+    const normalizedValue: number = Number(value);
+    return Number.isFinite(normalizedValue) && normalizedValue > 0 ? normalizedValue : null;
   }
 }

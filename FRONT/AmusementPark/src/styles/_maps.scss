@@ -1,0 +1,589 @@
+.map-shell-card,
+.app-map-shell,
+.map-slot,
+.app-map-slot {
+  position: relative;
+  overflow: hidden;
+  min-height: 18rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(56, 197, 245, 0.12), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(196, 255, 39, 0.1), transparent 32%),
+    linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  box-shadow: var(--shadow-card);
+}
+
+.map-shell-card::before,
+.app-map-shell::before,
+.map-slot::before,
+.app-map-slot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(var(--app-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--app-border) 1px, transparent 1px);
+  background-size: 34px 34px;
+  pointer-events: none;
+}
+
+.map-shell-card__content,
+.app-map-shell__content {
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+}
+
+.distance-panel,
+.app-distance-panel {
+  border: 1px solid rgba(56, 197, 245, 0.2);
+  border-radius: var(--radius-lg);
+  background: rgba(56, 197, 245, 0.075);
+  padding: 1rem;
+}
+
+/* M05 shared map/distance components. */
+.app-map-shell {
+  display: grid;
+  gap: 1rem;
+  min-height: auto;
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+.app-map-shell::before {
+  z-index: 0;
+}
+
+.app-map-shell__header,
+.app-map-shell__body,
+.app-map-shell__content {
+  position: relative;
+  z-index: 1;
+}
+
+.app-map-shell__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+.app-map-shell__heading {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.app-map-shell__title {
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.app-map-shell__subtitle {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--app-text-muted);
+  line-height: 1.62;
+}
+
+.app-map-shell__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.34fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.app-map-shell__map,
+.app-map-shell__side {
+  min-width: 0;
+}
+
+.app-map-shell__side:empty {
+  display: none;
+}
+
+.app-map-shell__body:has(.app-map-shell__side:empty) {
+  grid-template-columns: 1fr;
+}
+
+.app-map-slot {
+  position: relative;
+  display: grid;
+  min-height: 18rem;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-surface-2) 96%, transparent);
+}
+
+.app-map-slot > *:not(.app-map-slot__placeholder) {
+  position: relative;
+  z-index: 1;
+  min-height: inherit;
+}
+
+.app-map-slot__placeholder {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.45rem;
+  place-items: center;
+  padding: 2rem;
+  text-align: center;
+  color: var(--app-text-muted);
+}
+
+.app-map-slot__placeholder i {
+  display: grid;
+  width: 3.4rem;
+  height: 3.4rem;
+  place-items: center;
+  border-radius: 1.2rem;
+  background: rgba(56, 197, 245, 0.12);
+  color: var(--c-sky);
+  font-size: 1.4rem;
+}
+
+.app-map-slot__placeholder strong {
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+}
+
+.app-distance-panel {
+  display: grid;
+  gap: 0.85rem;
+  align-content: start;
+  height: 100%;
+  min-height: 0;
+}
+
+.app-distance-panel__header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.app-distance-panel__icon {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+  border-radius: 0.95rem;
+  background: rgba(56, 197, 245, 0.14);
+  color: var(--c-sky);
+}
+
+.app-distance-panel h3 {
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+.app-distance-panel p {
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.55;
+}
+
+.app-distance-panel__header p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.app-distance-panel__value {
+  display: block;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.app-distance-panel__value span {
+  color: var(--app-text-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0;
+}
+
+.app-distance-panel__duration,
+.app-distance-panel__note {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.app-distance-panel__note {
+  align-items: start;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--app-border);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 960px) {
+  .app-map-shell__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .app-map-shell__header {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* M07 interactive parks map. */
+.parks-map {
+  display: block;
+  max-width: var(--content-max-width);
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+}
+
+.parks-map .app-map-shell__body {
+  grid-template-columns: 1fr;
+}
+
+.parks-map .app-map-slot {
+  min-height: 24rem;
+  background:
+    radial-gradient(circle at 18% 32%, rgba(56, 197, 245, 0.08), transparent 22%),
+    radial-gradient(circle at 72% 40%, rgba(196, 255, 39, 0.06), transparent 22%),
+    radial-gradient(circle at 48% 72%, rgba(255, 90, 31, 0.06), transparent 22%),
+    repeating-linear-gradient(0deg, transparent 0 30px, rgba(255, 255, 255, 0.04) 30px 31px),
+    repeating-linear-gradient(90deg, transparent 0 30px, rgba(255, 255, 255, 0.04) 30px 31px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+}
+
+.parks-map app-leaflet-map,
+.parks-map .leaflet-map-container {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 24rem;
+  border: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+}
+
+.parks-map__state {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 0.45rem;
+  min-height: 24rem;
+  place-items: center;
+  align-content: center;
+  padding: 2rem;
+  text-align: center;
+  color: var(--app-text-muted);
+}
+
+.parks-map__state i {
+  display: grid;
+  width: 3.4rem;
+  height: 3.4rem;
+  place-items: center;
+  border-radius: 1.2rem;
+  background: rgba(56, 197, 245, 0.12);
+  color: var(--c-sky);
+  font-size: 1.4rem;
+}
+
+.parks-map__state--error i {
+  background: rgba(255, 90, 31, 0.12);
+  color: var(--c-orange);
+}
+
+.parks-map__state strong,
+.parks-map__selected-card h3,
+.parks-map__entry strong {
+  color: var(--app-heading);
+}
+
+.parks-map__side {
+  display: grid;
+  gap: 0.85rem;
+  align-content: start;
+  height: 100%;
+  min-height: 0;
+}
+
+.parks-map__side-head {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--app-text-faint);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.parks-map__selected-card,
+.parks-map__entry {
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 210, 140, 0.035);
+}
+
+.parks-map__selected-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.parks-map__selected-card h3,
+.parks-map__selected-card p {
+  margin: 0;
+}
+
+.parks-map__selected-card p {
+  color: var(--app-text-muted);
+}
+
+.parks-map__eyebrow {
+  color: var(--c-sky);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.parks-map__entries {
+  display: grid;
+  gap: 0.65rem;
+  max-height: 24rem;
+  overflow: auto;
+  padding-right: 0.15rem;
+}
+
+.parks-map__entry {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  width: 100%;
+  padding: 0.85rem;
+  color: var(--app-text);
+  text-align: left;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition),
+    transform var(--transition);
+}
+
+.parks-map__entry:hover,
+.parks-map__entry--selected {
+  border-color: color-mix(in srgb, var(--c-sky) 38%, var(--app-border));
+  background: rgba(56, 197, 245, 0.08);
+  transform: translateY(-1px);
+}
+
+.parks-map__entry small {
+  display: block;
+  margin-top: 0.18rem;
+  color: var(--app-text-muted);
+}
+
+.parks-map__dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-top: 0.35rem;
+  border-radius: 50%;
+  background: var(--c-sky);
+  box-shadow: 0 0 0 0.25rem rgba(56, 197, 245, 0.12);
+}
+
+@media (max-width: 1180px) {
+  .parks-map .app-map-shell__body {
+    grid-template-columns: 1fr;
+  }
+
+  .parks-map__entries {
+    max-height: none;
+  }
+}
+
+/* Centralized Leaflet marker design. */
+.app-leaflet-marker {
+  background: transparent;
+  border: 0;
+}
+
+.app-leaflet-marker__pin {
+  position: relative;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.32));
+  transform-origin: 50% 100%;
+  transition:
+    transform var(--transition),
+    filter var(--transition);
+}
+
+.app-leaflet-marker__pin:hover {
+  transform: translateY(-3px) scale(1.06);
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.42));
+}
+
+.app-leaflet-marker__pin--park,
+.app-leaflet-marker__pin--location {
+  width: 46px;
+  height: 58px;
+}
+
+.app-leaflet-marker__pin--item {
+  width: 42px;
+  height: 52px;
+}
+
+.app-leaflet-marker__head {
+  position: absolute;
+  inset: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 3px solid #0f0b06;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.34), transparent 34%),
+    linear-gradient(145deg, var(--marker-color), color-mix(in srgb, var(--marker-color) 72%, #000 28%));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 0 0 2px rgba(255, 255, 255, 0.08);
+}
+
+.app-leaflet-marker__pin--park .app-leaflet-marker__head,
+.app-leaflet-marker__pin--location .app-leaflet-marker__head {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px 16px 18px 18px;
+}
+
+.app-leaflet-marker__pin--item .app-leaflet-marker__head {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.app-leaflet-marker__tip {
+  position: absolute;
+  left: 50%;
+  z-index: -1;
+  background: var(--marker-color);
+  border-right: 3px solid #0f0b06;
+  border-bottom: 3px solid #0f0b06;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.app-leaflet-marker__pin--park .app-leaflet-marker__tip,
+.app-leaflet-marker__pin--location .app-leaflet-marker__tip {
+  bottom: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 0 0 6px 0;
+}
+
+.app-leaflet-marker__pin--item .app-leaflet-marker__tip {
+  bottom: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 0 0 5px 0;
+}
+
+.app-leaflet-marker__symbol {
+  position: relative;
+  z-index: 1;
+  color: #0f0b06;
+  font-size: 1.12rem;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.app-leaflet-marker__logo {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 0.65rem;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.24));
+}
+
+.app-leaflet-marker--park .app-leaflet-marker__head,
+.app-leaflet-marker--site .app-leaflet-marker__head {
+  border-radius: 14px;
+}
+
+.app-leaflet-marker--accessibleEntrance .app-leaflet-marker__symbol,
+.app-leaflet-marker--exit .app-leaflet-marker__symbol,
+.app-leaflet-marker--darkRide .app-leaflet-marker__symbol,
+.app-leaflet-marker--show .app-leaflet-marker__symbol,
+.app-leaflet-marker--thrillRide .app-leaflet-marker__symbol,
+.app-leaflet-marker--interactiveExperience .app-leaflet-marker__symbol,
+.app-leaflet-marker--firstAid .app-leaflet-marker__symbol {
+  color: #fff;
+}
+
+.app-leaflet-marker--information .app-leaflet-marker__symbol,
+.app-leaflet-marker--parking .app-leaflet-marker__symbol {
+  font-family: var(--font-heading, system-ui, sans-serif);
+  font-size: 1rem;
+}
+
+.app-leaflet-marker--familyRide .app-leaflet-marker__symbol {
+  font-size: 0.82rem;
+}
+
+.app-leaflet-marker--other .app-leaflet-marker__symbol {
+  font-size: 1.4rem;
+}
+
+/* M10 responsive hardening for map-heavy pages. */
+@media (min-width: 681px) and (max-width: 1180px) {
+  .app-map-shell__body,
+  .parks-map .app-map-shell__body {
+    grid-template-columns: 1fr;
+  }
+
+  .parks-map,
+  .parks-map .app-map-slot,
+  .parks-map app-leaflet-map,
+  .parks-map .leaflet-map-container,
+  .parks-map__state {
+    min-height: clamp(22rem, 48vw, 30rem);
+  }
+
+  .parks-map__entries {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-map-shell {
+    padding: 0.9rem;
+  }
+
+  .app-map-slot,
+  .parks-map .app-map-slot,
+  .parks-map app-leaflet-map,
+  .parks-map .leaflet-map-container,
+  .parks-map__state {
+    min-height: 20rem;
+  }
+
+  .parks-map__entries {
+    grid-template-columns: 1fr;
+  }
+}

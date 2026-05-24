@@ -1,0 +1,11 @@
+<section class="not-found-page" aria-labelledby="not-found-title">
+  <div class="not-found-page__content">
+    <p class="not-found-page__eyebrow">404</p>
+    <h1 id="not-found-title">{{ 'notFound.title' | translate }}</h1>
+    <p>{{ 'notFound.description' | translate }}</p>
+    <div class="not-found-page__actions">
+      <a class="not-found-page__primary" [routerLink]="['/', currentLang(), 'home']">{{ 'notFound.homeCta' | translate }}</a>
+      <a class="not-found-page__secondary" [routerLink]="['/', currentLang(), 'parks']">{{ 'notFound.parksCta' | translate }}</a>
+    </div>
+  </div>
+</section>

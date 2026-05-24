@@ -14,6 +14,7 @@ using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -32,6 +33,7 @@ public sealed class SearchController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<SearchResultDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> SearchAsync(
         [FromQuery] string? query,
@@ -47,7 +49,7 @@ public sealed class SearchController : ControllerBase
 
         if (string.IsNullOrWhiteSpace(query) && normalizedCategories.Length == 0)
         {
-            return this.BadRequest("Vous devez fournir un terme de recherche ou au moins une catégorie.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Vous devez fournir un terme de recherche ou au moins une catégorie.", "search.query-or-category-required");
         }
 
         PaginationRequestDto effectivePagination = pagination.Override(size: legacyPageSize);

@@ -78,3 +78,100 @@
     width: 100%;
   }
 }
+
+.access-height-card__header {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: 1rem 1rem 0;
+}
+
+.access-height-card__header h4,
+.access-advanced-head h4 {
+  margin: 0;
+}
+
+.access-height-card__header small,
+.access-advanced-head small,
+.height-requirement-field small {
+  color: var(--text-color-secondary);
+}
+
+.access-height-card__icon,
+.height-requirement-field__icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 0.85rem;
+  color: var(--primary-color);
+  background: color-mix(in srgb, var(--primary-color) 12%, transparent);
+}
+
+.access-height-card__icon {
+  width: 2.6rem;
+  height: 2.6rem;
+  font-size: 1.05rem;
+}
+
+.height-requirement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.height-requirement-field {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--surface-card) 92%, transparent);
+}
+
+.height-requirement-field__label {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  min-height: 2.2rem;
+}
+
+.height-requirement-field__label label {
+  margin: 0;
+  font-weight: 700;
+}
+
+.height-requirement-field__icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.height-requirement-field__input {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.height-requirement-field__input span {
+  min-width: 2.6rem;
+  padding: 0.65rem 0.7rem;
+  text-align: center;
+  border: 1px solid var(--surface-border);
+  border-radius: 0.75rem;
+  color: var(--text-color-secondary);
+  background: var(--surface-ground);
+  font-weight: 800;
+}
+
+.access-advanced-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+@media (max-width: 991px) {
+  .height-requirement-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -26,3 +26,17 @@ export const ATTRACTION_LOCATION_OPTIONS: ReadonlyArray<AttractionLocationOption
   { key: 'fastPassEntrance', labelKey: 'admin.parks.items.locationFields.fastPassEntrance' },
   { key: 'reducedMobilityEntrance', labelKey: 'admin.parks.items.locationFields.reducedMobilityEntrance' }
 ];
+
+export interface AdminParkItemPhotoCategoryOption {
+  slug: string;
+  labelKey: string;
+}
+
+export const PARK_ITEM_PHOTO_CATEGORY_OPTIONS: ReadonlyArray<AdminParkItemPhotoCategoryOption> = [
+  { slug: 'park-item-gallery', labelKey: 'admin.parks.items.photos.categories.gallery' },
+  { slug: 'park-item-entrance', labelKey: 'admin.parks.items.photos.categories.entrance' },
+  { slug: 'park-item-exit', labelKey: 'admin.parks.items.photos.categories.exit' },
+  { slug: 'park-item-layout', labelKey: 'admin.parks.items.photos.categories.layout' },
+  { slug: 'park-item-queue', labelKey: 'admin.parks.items.photos.categories.queue' },
+  { slug: 'park-item-station', labelKey: 'admin.parks.items.photos.categories.station' }
+];

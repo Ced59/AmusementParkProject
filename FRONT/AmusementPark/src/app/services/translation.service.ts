@@ -1,5 +1,5 @@
-import { EventEmitter, Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
+import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom, forkJoin, Observable, of, tap } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -15,7 +15,7 @@ export class TranslationService {
 
   constructor(
     private readonly translate: TranslateService,
-    @Inject(PLATFORM_ID) private readonly platformId: object
+    @Inject(DOCUMENT) private readonly document: Document
   ) {
   }
 
@@ -24,9 +24,7 @@ export class TranslationService {
   }
 
   useLang(lang: string): Observable<unknown> {
-    if (isPlatformBrowser(this.platformId)) {
-      document.documentElement.lang = lang;
-    }
+    this.document.documentElement.lang = lang;
 
     return this.translate.use(lang).pipe(
       catchError((error: unknown): Observable<unknown> => {

@@ -31,6 +31,7 @@ internal static class ParkItemsHttpMappers
             AttractionDetails = dto.AttractionDetails?.ToDomain(),
             AttractionLocations = dto.AttractionLocations?.ToDomain(),
             IsVisible = dto.IsVisible,
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
 
         parkItem.SetPosition(dto.Latitude, dto.Longitude);
@@ -53,6 +54,7 @@ internal static class ParkItemsHttpMappers
             AttractionDetails = dto.AttractionDetails?.ToDomain(),
             AttractionLocations = dto.AttractionLocations?.ToDomain(),
             IsVisible = dto.IsVisible,
+            AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
 
         parkItem.SetPosition(dto.Latitude, dto.Longitude);
@@ -78,6 +80,7 @@ internal static class ParkItemsHttpMappers
             AttractionDetails = value.AttractionDetails?.ToHttp(),
             AttractionLocations = value.AttractionLocations?.ToHttp(),
             IsVisible = value.IsVisible,
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
         };
     }
 
@@ -94,6 +97,7 @@ internal static class ParkItemsHttpMappers
             Category = value.Category.ToHttp(),
             Type = value.Type.ToHttp(),
             IsVisible = value.IsVisible,
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
         };
     }
 

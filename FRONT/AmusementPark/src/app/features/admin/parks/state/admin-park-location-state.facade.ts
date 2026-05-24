@@ -64,7 +64,8 @@ export class AdminParkLocationStateFacade {
         id: 'park-marker',
         lat: latitude,
         lng: longitude,
-        draggable: true
+        draggable: true,
+        iconKind: 'park'
       }
     ]);
   }

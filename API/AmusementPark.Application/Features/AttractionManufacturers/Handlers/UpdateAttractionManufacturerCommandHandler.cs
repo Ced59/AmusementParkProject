@@ -58,7 +58,12 @@ public sealed class UpdateAttractionManufacturerCommandHandler : ICommandHandler
             {
                 Id = updated.Id,
                 Name = updated.Name,
+                LegalName = updated.LegalName,
+                FoundedYear = updated.FoundedYear,
+                ClosedYear = updated.ClosedYear,
+                ContactDetails = updated.ContactDetails,
                 Biography = updated.Biography,
+                AdminReviewStatus = updated.AdminReviewStatus,
                 AttractionCount = attractionCount,
             });
         }

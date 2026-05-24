@@ -36,6 +36,38 @@ export const PARK_ITEM_CATEGORY_OPTIONS: ReadonlyArray<TranslationOption<ParkIte
   buildTranslationOption('Other', getParkItemCategoryTranslationKey)
 ];
 
+export const PARK_ITEM_TYPE_OPTIONS: ReadonlyArray<TranslationOption<ParkItemType>> = [
+  buildTranslationOption('Attraction', getParkItemTypeTranslationKey),
+  buildTranslationOption('RollerCoaster', getParkItemTypeTranslationKey),
+  buildTranslationOption('WaterRide', getParkItemTypeTranslationKey),
+  buildTranslationOption('FlatRide', getParkItemTypeTranslationKey),
+  buildTranslationOption('DarkRide', getParkItemTypeTranslationKey),
+  buildTranslationOption('FamilyRide', getParkItemTypeTranslationKey),
+  buildTranslationOption('ThrillRide', getParkItemTypeTranslationKey),
+  buildTranslationOption('TransportRide', getParkItemTypeTranslationKey),
+  buildTranslationOption('WalkThrough', getParkItemTypeTranslationKey),
+  buildTranslationOption('Playground', getParkItemTypeTranslationKey),
+  buildTranslationOption('InteractiveExperience', getParkItemTypeTranslationKey),
+  buildTranslationOption('Game', getParkItemTypeTranslationKey),
+  buildTranslationOption('MeetAndGreet', getParkItemTypeTranslationKey),
+  buildTranslationOption('ObservationRide', getParkItemTypeTranslationKey),
+  buildTranslationOption('AnimalExhibit', getParkItemTypeTranslationKey),
+  buildTranslationOption('Restaurant', getParkItemTypeTranslationKey),
+  buildTranslationOption('Snack', getParkItemTypeTranslationKey),
+  buildTranslationOption('Hotel', getParkItemTypeTranslationKey),
+  buildTranslationOption('Show', getParkItemTypeTranslationKey),
+  buildTranslationOption('Shop', getParkItemTypeTranslationKey),
+  buildTranslationOption('Service', getParkItemTypeTranslationKey),
+  buildTranslationOption('Toilets', getParkItemTypeTranslationKey),
+  buildTranslationOption('FirstAid', getParkItemTypeTranslationKey),
+  buildTranslationOption('Information', getParkItemTypeTranslationKey),
+  buildTranslationOption('Locker', getParkItemTypeTranslationKey),
+  buildTranslationOption('Parking', getParkItemTypeTranslationKey),
+  buildTranslationOption('Transport', getParkItemTypeTranslationKey),
+  buildTranslationOption('Station', getParkItemTypeTranslationKey),
+  buildTranslationOption('Other', getParkItemTypeTranslationKey)
+];
+
 export const ATTRACTION_TYPE_OPTIONS: ReadonlyArray<TranslationOption<ParkItemType>> = [
   buildTranslationOption('Attraction', getParkItemTypeTranslationKey),
   buildTranslationOption('RollerCoaster', getParkItemTypeTranslationKey),
@@ -48,6 +80,8 @@ export const ATTRACTION_TYPE_OPTIONS: ReadonlyArray<TranslationOption<ParkItemTy
   buildTranslationOption('WalkThrough', getParkItemTypeTranslationKey),
   buildTranslationOption('Playground', getParkItemTypeTranslationKey),
   buildTranslationOption('InteractiveExperience', getParkItemTypeTranslationKey),
+  buildTranslationOption('Game', getParkItemTypeTranslationKey),
+  buildTranslationOption('MeetAndGreet', getParkItemTypeTranslationKey),
   buildTranslationOption('ObservationRide', getParkItemTypeTranslationKey),
   buildTranslationOption('Other', getParkItemTypeTranslationKey)
 ];
@@ -70,10 +104,16 @@ export const NON_ATTRACTION_TYPE_OPTIONS_BY_CATEGORY: Readonly<Record<Exclude<Pa
     buildTranslationOption('Shop', getParkItemTypeTranslationKey)
   ],
   Service: [
-    buildTranslationOption('Service', getParkItemTypeTranslationKey)
+    buildTranslationOption('Service', getParkItemTypeTranslationKey),
+    buildTranslationOption('Toilets', getParkItemTypeTranslationKey),
+    buildTranslationOption('FirstAid', getParkItemTypeTranslationKey),
+    buildTranslationOption('Information', getParkItemTypeTranslationKey),
+    buildTranslationOption('Locker', getParkItemTypeTranslationKey),
+    buildTranslationOption('Parking', getParkItemTypeTranslationKey)
   ],
   Transport: [
-    buildTranslationOption('Transport', getParkItemTypeTranslationKey)
+    buildTranslationOption('Transport', getParkItemTypeTranslationKey),
+    buildTranslationOption('Station', getParkItemTypeTranslationKey)
   ],
   Other: [
     buildTranslationOption('Other', getParkItemTypeTranslationKey)

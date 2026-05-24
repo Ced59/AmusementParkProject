@@ -25,6 +25,14 @@ public sealed class ParkCreatedDto
 
     public bool IsVisible { get; set; }
 
+    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;
+
+    public bool IsFeaturedOnHome { get; set; }
+
+    public int? FeaturedHomeOrder { get; set; }
+
+    public bool IsFeaturedOnHomeSponsored { get; set; }
+
     public string? WebSiteUrl { get; set; }
 
     public string? Street { get; set; }

@@ -22,6 +22,9 @@ internal static class ImagesHttpMappers
             ImageCategoryDto.PARK_LOGO => ImageCategory.ParkLogo,
             ImageCategoryDto.PARK => ImageCategory.Park,
             ImageCategoryDto.ATTRACTION => ImageCategory.Attraction,
+            ImageCategoryDto.OPERATOR => ImageCategory.Operator,
+            ImageCategoryDto.MANUFACTURER => ImageCategory.Manufacturer,
+            ImageCategoryDto.FOUNDER => ImageCategory.Founder,
             _ => ImageCategory.Park,
         };
     }
@@ -33,8 +36,30 @@ internal static class ImagesHttpMappers
             ImageOwnerTypeDto.PARK => ImageOwnerType.Park,
             ImageOwnerTypeDto.USER => ImageOwnerType.User,
             ImageOwnerTypeDto.ATTRACTION => ImageOwnerType.Attraction,
+            ImageOwnerTypeDto.PARK_OPERATOR => ImageOwnerType.ParkOperator,
+            ImageOwnerTypeDto.ATTRACTION_MANUFACTURER => ImageOwnerType.AttractionManufacturer,
+            ImageOwnerTypeDto.PARK_FOUNDER => ImageOwnerType.ParkFounder,
             _ => ImageOwnerType.None,
         };
+    }
+
+    public static ImageCategory? ToOptionalDomain(this ImageCategoryDto? value)
+    {
+        return value.HasValue ? value.Value.ToDomain() : null;
+    }
+
+    public static ImageOwnerType? ToOptionalDomain(this ImageOwnerTypeDto? value)
+    {
+        return value.HasValue ? value.Value.ToDomain() : null;
+    }
+
+    public static ImageBulkMetadataUpdate ToApplication(this BulkImageMetadataUpdateDto value)
+    {
+        return new ImageBulkMetadataUpdate(
+            value.IsPublished,
+            value.Category.ToOptionalDomain(),
+            value.AddTagIds,
+            value.RemoveTagIds);
     }
 
     public static ImageCategoryDto ToHttp(this ImageCategory value)
@@ -44,6 +69,10 @@ internal static class ImagesHttpMappers
             ImageCategory.Avatar => ImageCategoryDto.AVATAR,
             ImageCategory.ParkLogo => ImageCategoryDto.PARK_LOGO,
             ImageCategory.Park => ImageCategoryDto.PARK,
+            ImageCategory.Attraction => ImageCategoryDto.ATTRACTION,
+            ImageCategory.Operator => ImageCategoryDto.OPERATOR,
+            ImageCategory.Manufacturer => ImageCategoryDto.MANUFACTURER,
+            ImageCategory.Founder => ImageCategoryDto.FOUNDER,
             _ => ImageCategoryDto.ATTRACTION,
         };
     }
@@ -55,6 +84,9 @@ internal static class ImagesHttpMappers
             ImageOwnerType.Park => ImageOwnerTypeDto.PARK,
             ImageOwnerType.User => ImageOwnerTypeDto.USER,
             ImageOwnerType.Attraction => ImageOwnerTypeDto.ATTRACTION,
+            ImageOwnerType.ParkOperator => ImageOwnerTypeDto.PARK_OPERATOR,
+            ImageOwnerType.AttractionManufacturer => ImageOwnerTypeDto.ATTRACTION_MANUFACTURER,
+            ImageOwnerType.ParkFounder => ImageOwnerTypeDto.PARK_FOUNDER,
             _ => ImageOwnerTypeDto.NONE,
         };
     }

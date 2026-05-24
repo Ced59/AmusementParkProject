@@ -1,4 +1,4 @@
-<div class="p-3">
+<div class="reference-edit-page">
   <p-card>
     <h2>
       {{
@@ -8,32 +8,113 @@
       }}
     </h2>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
-      <div class="field">
-        <label for="name">{{ 'admin.operators.editPage.name' | translate }}</label>
-        <input id="name" pInputText type="text" formControlName="name" />
-      </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="reference-form">
+      <section class="form-section">
+        <h3>{{ 'admin.references.sections.identity' | translate }}</h3>
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">{{ 'admin.operators.editPage.name' | translate }}</label>
+            <input id="name" pInputText type="text" formControlName="name" />
+          </div>
 
-      <div class="field mt-3">
-        <label>{{ 'admin.operators.editPage.description' | translate }}</label>
-        <app-localized-rich-text-editor formControlName="description"></app-localized-rich-text-editor>
-      </div>
+          <div class="field">
+            <label for="legalName">{{ 'admin.references.fields.legalName' | translate }}</label>
+            <input id="legalName" pInputText type="text" formControlName="legalName" />
+          </div>
 
-      <div class="flex justify-content-end gap-2 mt-3">
-        <button
-          pButton
-          type="button"
-          class="p-button-secondary"
-          (click)="onCancel()"
-          [label]="'actions.cancel' | translate">
-        </button>
+          <div class="field">
+            <label for="foundedYear">{{ 'admin.references.fields.foundedYear' | translate }}</label>
+            <input id="foundedYear" pInputText type="number" formControlName="foundedYear" />
+          </div>
 
-        <button
-          pButton
-          type="submit"
-          class="p-button-primary"
-          [label]="'actions.save' | translate">
-        </button>
+          <div class="field">
+            <label for="closedYear">{{ 'admin.references.fields.closedYear' | translate }}</label>
+            <input id="closedYear" pInputText type="number" formControlName="closedYear" />
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section" formGroupName="contactDetails">
+        <h3>{{ 'admin.references.sections.contact' | translate }}</h3>
+        <div class="form-grid">
+          <div class="field field--wide">
+            <label for="websiteUrl">{{ 'admin.references.fields.websiteUrl' | translate }}</label>
+            <input id="websiteUrl" pInputText type="url" formControlName="websiteUrl" />
+          </div>
+
+          <div class="field">
+            <label for="email">{{ 'admin.references.fields.email' | translate }}</label>
+            <input id="email" pInputText type="email" formControlName="email" />
+          </div>
+
+          <div class="field">
+            <label for="phoneNumber">{{ 'admin.references.fields.phoneNumber' | translate }}</label>
+            <input id="phoneNumber" pInputText type="text" formControlName="phoneNumber" />
+          </div>
+
+          <div class="field field--wide">
+            <label for="street">{{ 'admin.references.fields.street' | translate }}</label>
+            <input id="street" pInputText type="text" formControlName="street" />
+          </div>
+
+          <div class="field">
+            <label for="city">{{ 'admin.references.fields.city' | translate }}</label>
+            <input id="city" pInputText type="text" formControlName="city" />
+          </div>
+
+          <div class="field">
+            <label for="postalCode">{{ 'admin.references.fields.postalCode' | translate }}</label>
+            <input id="postalCode" pInputText type="text" formControlName="postalCode" />
+          </div>
+
+          <div class="field">
+            <label for="countryCode">{{ 'admin.references.fields.countryCode' | translate }}</label>
+            <input id="countryCode" pInputText type="text" formControlName="countryCode" />
+          </div>
+
+          <div class="field">
+            <label for="latitude">{{ 'admin.references.fields.latitude' | translate }}</label>
+            <input id="latitude" pInputText type="number" formControlName="latitude" />
+          </div>
+
+          <div class="field">
+            <label for="longitude">{{ 'admin.references.fields.longitude' | translate }}</label>
+            <input id="longitude" pInputText type="number" formControlName="longitude" />
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h3>{{ 'admin.references.sections.content' | translate }}</h3>
+        <div class="field">
+          <label>{{ 'admin.operators.editPage.description' | translate }}</label>
+          <app-localized-rich-text-editor formControlName="description"></app-localized-rich-text-editor>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h3>{{ 'admin.references.sections.administration' | translate }}</h3>
+        <div class="field field--status">
+          <label for="adminReviewStatus">{{ 'admin.filters.reviewStatus' | translate }}</label>
+          <select id="adminReviewStatus" formControlName="adminReviewStatus">
+            <option [ngValue]="'ToReview'">{{ 'admin.reviewStatus.toReview' | translate }}</option>
+            <option [ngValue]="'Validated'">{{ 'admin.reviewStatus.validated' | translate }}</option>
+            <option [ngValue]="'ToProcessLater'">{{ 'admin.reviewStatus.toProcessLater' | translate }}</option>
+            <option [ngValue]="'NotRelevant'">{{ 'admin.reviewStatus.notRelevant' | translate }}</option>
+          </select>
+        </div>
+      </section>
+
+      <app-admin-reference-images
+        *ngIf="isEditMode"
+        [ownerId]="operatorId"
+        [ownerType]="imageOwnerType"
+        [category]="imageCategory">
+      </app-admin-reference-images>
+
+      <div class="form-actions">
+        <button pButton type="button" class="p-button-secondary" (click)="onCancel()" [label]="'actions.cancel' | translate"></button>
+        <button pButton type="submit" class="p-button-primary" [label]="'actions.save' | translate"></button>
       </div>
     </form>
   </p-card>

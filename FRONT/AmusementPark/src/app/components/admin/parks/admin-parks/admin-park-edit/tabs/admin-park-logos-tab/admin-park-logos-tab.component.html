@@ -49,15 +49,31 @@
           </div>
           <div class="logo-card__body">
             <div class="flex flex-column gap-3">
-              <input type="file"
-                (change)="logoFileSelected.emit($event)"
-                accept="image/jpeg,image/png,image/webp,image/gif"
-                [multiple]="allowMultipleLogoUpload" />
-              @if (selectedLogoCount > 0) {
-                <small class="text-color-secondary">
-                  {{ 'admin.parks.logos.selectedCount' | translate:{ count: selectedLogoCount } }}
-                </small>
-              }
+              <div class="logo-upload-picker">
+                <input
+                  #logoFileInput
+                  class="logo-upload-picker__input"
+                  type="file"
+                  (change)="logoFileSelected.emit($event)"
+                  accept="image/jpeg,image/png,image/webp,image/gif"
+                  [multiple]="allowMultipleLogoUpload" />
+                <button
+                  pButton
+                  type="button"
+                  class="p-button-outlined"
+                  icon="pi pi-folder-open"
+                  (click)="logoFileInput.click()"
+                  [label]="'admin.parks.logos.chooseFilesButton' | translate">
+                </button>
+                <span class="logo-upload-picker__status">
+                  @if (selectedLogoCount > 0) {
+                    {{ 'admin.parks.logos.selectedCount' | translate:{ count: selectedLogoCount } }}
+                  }
+                  @if (selectedLogoCount === 0) {
+                    {{ 'admin.parks.logos.noFileSelected' | translate }}
+                  }
+                </span>
+              </div>
               <input
                 pInputText
                 type="text"

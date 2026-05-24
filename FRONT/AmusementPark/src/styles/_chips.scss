@@ -1,0 +1,155 @@
+.kicker,
+.public-kicker,
+.app-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  min-height: 2rem;
+  padding: 0.38rem 0.9rem;
+  border: 1px solid rgba(255, 90, 31, 0.2);
+  border-radius: var(--radius-pill);
+  color: var(--c-orange);
+  background: rgba(255, 90, 31, 0.12);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.kicker--lime,
+.app-kicker--lime {
+  color: var(--c-lime);
+  border-color: rgba(196, 255, 39, 0.18);
+  background: rgba(196, 255, 39, 0.1);
+}
+
+.kicker--sky,
+.app-kicker--sky {
+  color: var(--c-sky);
+  border-color: rgba(56, 197, 245, 0.18);
+  background: rgba(56, 197, 245, 0.1);
+}
+
+.kicker--rose,
+.app-kicker--rose {
+  color: var(--c-rose);
+  border-color: rgba(255, 77, 139, 0.18);
+  background: rgba(255, 77, 139, 0.12);
+}
+
+.kicker--gold,
+.app-kicker--gold {
+  color: var(--c-gold);
+  border-color: rgba(255, 182, 39, 0.2);
+  background: rgba(255, 182, 39, 0.1);
+}
+
+.kicker--purple,
+.app-kicker--purple {
+  color: var(--c-purple);
+  border-color: rgba(155, 93, 229, 0.2);
+  background: rgba(155, 93, 229, 0.1);
+}
+
+.kicker--ghost,
+.app-kicker--ghost,
+.kicker--soft,
+.app-kicker--soft {
+  color: var(--app-text-muted);
+  border-color: var(--app-border);
+  background: rgba(255, 210, 140, 0.06);
+}
+
+.chips,
+.app-chip-list,
+.public-chip-list,
+.public-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.chip,
+.app-chip,
+.public-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2rem;
+  padding: 0.33rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.74rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.chip--orange,
+.app-chip--orange {
+  color: var(--c-orange-2);
+  background: rgba(255, 90, 31, 0.14);
+}
+
+.chip--primary,
+.app-chip--primary,
+.public-pill {
+  color: var(--c-orange-2);
+  background: rgba(255, 90, 31, 0.14);
+}
+
+.chip--ghost,
+.app-chip--ghost {
+  color: var(--app-text);
+  border: 1px solid var(--app-border-strong);
+  background: transparent;
+}
+
+.chip--lime,
+.app-chip--lime {
+  color: var(--c-lime);
+  background: rgba(196, 255, 39, 0.12);
+}
+
+.chip--sky,
+.app-chip--sky,
+.public-pill--cyan {
+  color: var(--c-sky);
+  background: rgba(56, 197, 245, 0.12);
+}
+
+.chip--rose,
+.app-chip--rose {
+  color: var(--c-rose);
+  background: rgba(255, 77, 139, 0.12);
+}
+
+.chip--gold,
+.app-chip--gold,
+.public-pill--gold {
+  color: var(--c-gold);
+  background: rgba(255, 182, 39, 0.12);
+}
+
+.chip--purple,
+.app-chip--purple {
+  color: var(--c-purple);
+  background: rgba(155, 93, 229, 0.12);
+}
+
+.app-chip i,
+.app-kicker i,
+.public-pill i,
+.public-kicker i {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+.chip--soft,
+.app-chip--soft,
+.public-pill--soft {
+  color: var(--app-text-muted);
+  border: 1px solid var(--app-border);
+  background: rgba(255, 210, 140, 0.06);
+}

@@ -1,42 +1,119 @@
-<p-card>
+<p-card styleClass="admin-list-card admin-parks-card">
   <ng-template pTemplate="header">
-    <div class="header-row">
+    <div class="admin-list-header">
+      <div>
+        <span class="admin-kicker">M14 · Admin</span>
+        <h2>{{ 'admin.parks.title' | translate }}</h2>
+        <p>{{ 'admin.parks.subtitle' | translate }}</p>
+      </div>
+
       @if (canShowHeaderTotal()) {
-        <span class="total">
+        <span class="admin-total-pill">
           {{ 'admin.parks.total' | translate:{ count: totalRecords() } }}
         </span>
       }
     </div>
   </ng-template>
 
-  <div class="search-row">
-    <input
-      pInputText
-      type="text"
-      [ngModel]="searchQuery()"
-      (ngModelChange)="onSearchQueryChanged($event)"
-      (keyup.enter)="onSearch()"
-      [placeholder]="'admin.parks.searchPlaceholder' | translate" />
+  <div class="admin-toolbar">
+    <div class="admin-toolbar__search">
+      <label class="admin-field-label" for="admin-parks-search">{{ 'admin.filters.search' | translate }}</label>
+      <div class="admin-search-field">
+        <span class="pi pi-search" aria-hidden="true"></span>
+        <input
+          id="admin-parks-search"
+          pInputText
+          type="text"
+          [ngModel]="searchQuery()"
+          (ngModelChange)="onSearchQueryChanged($event)"
+          (keyup.enter)="onSearch()"
+          [placeholder]="'admin.parks.searchPlaceholder' | translate" />
+      </div>
+    </div>
 
-    <button
-      pButton
-      type="button"
-      icon="pi pi-search"
-      class="p-button-sm"
-      (click)="onSearch()">
-    </button>
-
-    @if (canClearSearch()) {
+    <div class="admin-toolbar__actions">
       <button
         pButton
         type="button"
-        icon="pi pi-times"
-        class="p-button-text p-button-sm"
-        (click)="clearSearch()"
-        [label]="'admin.parks.clear' | translate">
+        icon="pi pi-search"
+        class="p-button-sm"
+        [label]="'admin.filters.applySearch' | translate"
+        (click)="onSearch()">
       </button>
-    }
+
+      @if (canClearSearch()) {
+        <button
+          pButton
+          type="button"
+          icon="pi pi-times"
+          class="p-button-text p-button-sm"
+          (click)="clearSearch()"
+          [label]="'admin.parks.clear' | translate">
+        </button>
+      }
+    </div>
   </div>
+
+  <div class="admin-filters-grid">
+    <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.filters.visibility' | translate }}</span>
+      <select [(ngModel)]="localVisibilityFilter" (ngModelChange)="onFilterChanged()">
+        <option [ngValue]="null">{{ 'admin.filters.visibilityAll' | translate }}</option>
+        <option [ngValue]="true">{{ 'admin.filters.visibleOnly' | translate }}</option>
+        <option [ngValue]="false">{{ 'admin.filters.hiddenOnly' | translate }}</option>
+      </select>
+    </label>
+
+    <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.filters.reviewStatus' | translate }}</span>
+      <select [(ngModel)]="localAdminReviewStatusFilter" (ngModelChange)="onFilterChanged()">
+        <option [ngValue]="null">{{ 'admin.filters.statusAll' | translate }}</option>
+        <option [ngValue]="'ToReview'">{{ 'admin.reviewStatus.toReview' | translate }}</option>
+        <option [ngValue]="'Validated'">{{ 'admin.reviewStatus.validated' | translate }}</option>
+        <option [ngValue]="'ToProcessLater'">{{ 'admin.reviewStatus.toProcessLater' | translate }}</option>
+        <option [ngValue]="'NotRelevant'">{{ 'admin.reviewStatus.notRelevant' | translate }}</option>
+      </select>
+    </label>
+
+    <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.filters.type' | translate }}</span>
+      <select [(ngModel)]="localTypeFilter" (ngModelChange)="onFilterChanged()">
+        <option [ngValue]="null">{{ 'admin.filters.typeAll' | translate }}</option>
+        <option [ngValue]="'ThemePark'">{{ 'admin.parks.types.themePark' | translate }}</option>
+        <option [ngValue]="'WaterPark'">{{ 'admin.parks.types.waterPark' | translate }}</option>
+        <option [ngValue]="'Zoo'">{{ 'admin.parks.types.zoo' | translate }}</option>
+        <option [ngValue]="'AnimalPark'">{{ 'admin.parks.types.animalPark' | translate }}</option>
+        <option [ngValue]="'AmusementPark'">{{ 'admin.parks.types.amusementPark' | translate }}</option>
+        <option [ngValue]="'Resort'">{{ 'admin.parks.types.resort' | translate }}</option>
+      </select>
+    </label>
+
+    <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.filters.countryCode' | translate }}</span>
+      <input
+        pInputText
+        type="text"
+        maxlength="2"
+        [(ngModel)]="localCountryCodeFilter"
+        (keyup.enter)="onFilterChanged()"
+        [placeholder]="'admin.filters.countryCodePlaceholder' | translate" />
+    </label>
+  </div>
+
+  @if (selectedCount() > 0) {
+    <div class="admin-bulk-bar">
+      <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
+      <div class="admin-bulk-bar__actions">
+        <button pButton type="button" class="p-button-sm" icon="pi pi-eye" [label]="'admin.bulk.makeVisible' | translate" (click)="makeSelectedVisible()"></button>
+        <button pButton type="button" class="p-button-sm p-button-secondary" icon="pi pi-eye-slash" [label]="'admin.bulk.hide' | translate" (click)="hideSelected()"></button>
+        <button pButton type="button" class="p-button-sm p-button-info" icon="pi pi-inbox" [label]="'admin.bulk.markToReview' | translate" (click)="markSelectedToReview()"></button>
+        <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
+        <button pButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLater' | translate" (click)="markSelectedLater()"></button>
+        <button pButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
+        <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelection' | translate" (click)="clearSelection()"></button>
+      </div>
+    </div>
+  }
 
   <p-table
     [value]="parks()"
@@ -46,22 +123,40 @@
     [totalRecords]="totalRecords()"
     [lazy]="true"
     (onLazyLoad)="onPageChanged($event)"
-    [responsiveLayout]="'scroll'">
+    [responsiveLayout]="'scroll'"
+    styleClass="admin-data-table">
     <ng-template pTemplate="header">
       <tr>
+        <th class="admin-selection-column">
+          <input type="checkbox" [checked]="areAllCurrentParksSelected()" (change)="onAllSelectionChange($event)" aria-label="Select all parks" />
+        </th>
         <th>{{ 'admin.parks.name' | translate }}</th>
         <th>{{ 'admin.parks.type' | translate }}</th>
         <th>{{ 'admin.parks.country' | translate }}</th>
+        <th>{{ 'admin.parks.city' | translate }}</th>
+        <th>{{ 'admin.parks.reviewStatus' | translate }}</th>
         <th>{{ 'admin.parks.visible' | translate }}</th>
         <th>{{ 'admin.parks.actions' | translate }}</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-park>
-      <tr>
-        <td>{{ park.name }}</td>
+      <tr [class.admin-row--later]="park.adminReviewStatus === 'ToProcessLater' || park.adminReviewStatus === 'NotRelevant'">
+        <td class="admin-selection-column">
+          <input type="checkbox" [checked]="isParkSelected(park)" (change)="onParkSelectionChange(park, $event)" [attr.aria-label]="park.name" />
+        </td>
+        <td>
+          <strong class="admin-row-title">{{ park.name }}</strong>
+        </td>
         <td>{{ getTypeTranslationKey(park.type) | translate }}</td>
-        <td>{{ park.countryCode }}</td>
+        <td>{{ park.countryCode || '—' }}</td>
+        <td>{{ park.city || '—' }}</td>
+        <td>
+          <p-tag
+            [value]="getStatusLabelKey(park.adminReviewStatus) | translate"
+            [severity]="getStatusSeverity(park.adminReviewStatus)">
+          </p-tag>
+        </td>
         <td>
           <p-toggleswitch
             [(ngModel)]="park.isVisible"
@@ -82,7 +177,7 @@
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="5">
+        <td colspan="8">
           <app-empty-state
             [compact]="true"
             titleKey="common.emptyTitle"

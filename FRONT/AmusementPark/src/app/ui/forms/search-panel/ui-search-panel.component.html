@@ -1,0 +1,75 @@
+<section class="app-search-panel" [id]="panelId">
+  @if (hasHeader) {
+    <div class="app-search-panel__header">
+      <div class="app-search-panel__heading">
+        @if (kickerLabelKey || kickerText) {
+          <app-ui-kicker [iconClass]="kickerIconClass">
+            @if (kickerLabelKey) {
+              {{ kickerLabelKey | translate }}
+            } @else {
+              {{ kickerText }}
+            }
+          </app-ui-kicker>
+        }
+
+        @if (hasTitle) {
+          <h2 class="app-search-panel__title">
+            @if (titleKey) {
+              {{ titleKey | translate }}
+            } @else {
+              {{ titleText }}
+            }
+          </h2>
+        }
+
+        <ng-content select="[uiSearchPanelSubtitle], [filters-subtitle]"></ng-content>
+      </div>
+
+      <div class="app-search-panel__actions">
+        <ng-content select="[uiSearchPanelActions]"></ng-content>
+      </div>
+    </div>
+  }
+
+  <div class="app-search-panel__grid">
+    <app-ui-field-input
+      class="app-search-panel__search"
+      [inputId]="searchInputId"
+      [labelKey]="searchLabelKey"
+      [labelText]="searchLabelText"
+      [placeholderKey]="searchPlaceholderKey"
+      [placeholderText]="searchPlaceholderText"
+      [value]="searchTerm"
+      iconClass="pi pi-search"
+      (valueChange)="onSearchTermChanged($event)">
+    </app-ui-field-input>
+
+    @for (filter of visibleFilters; track filter.id) {
+      <div class="app-field app-search-panel__select-field">
+        <label class="app-field__label" [for]="'search-panel-' + filter.id">
+          {{ filter.labelKey | translate }}
+        </label>
+        <select
+          class="app-select"
+          [id]="'search-panel-' + filter.id"
+          [ngModel]="filter.selectedValue"
+          (ngModelChange)="onFilterChanged(filter.id, $event)">
+          @for (option of filter.options; track option.value ?? option.labelKey ?? option.label) {
+            <option [ngValue]="option.value">
+              {{ resolveOptionLabel(option) | translate }}
+            </option>
+          }
+        </select>
+      </div>
+    }
+
+    @if (showClearAction) {
+      <div class="app-search-panel__clear">
+        <button appUiButton="ghost" type="button" (click)="clear()">
+          <i class="pi pi-times" aria-hidden="true"></i>
+          <span>{{ clearActionLabelKey | translate }}</span>
+        </button>
+      </div>
+    }
+  </div>
+</section>

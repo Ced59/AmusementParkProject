@@ -216,6 +216,8 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             SourceUrl = parsed.SourceUrl,
             ParkCaptainCoasterId = parsed.ParkSlug,
             ParkName = parsed.ParkName,
+            CountryRaw = NormalizeNullableText(parsed.CountryRaw),
+            CountryCode = CountryNameMapper.ToCountryCode(parsed.CountryRaw),
             Manufacturer = parsed.Manufacturer,
             Model = parsed.Model,
             MaterialType = parsed.MaterialType,
@@ -244,23 +246,30 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             .GroupBy(static item => item.ParkName!, StringComparer.OrdinalIgnoreCase)
             .Select(group =>
             {
+                string? countryRaw = PickMostFrequentNonBlank(group.Select(static item => item.CountryRaw));
+                string? countryCode = PickMostFrequentNonBlank(group.Select(static item => item.CountryCode));
+                if (string.IsNullOrWhiteSpace(countryCode))
+                {
+                    countryCode = CountryNameMapper.ToCountryCode(countryRaw);
+                }
+
                 CaptainCoasterParkSnapshotDocument document = new CaptainCoasterParkSnapshotDocument
                 {
-                SourceKey = SourceKeyValue,
-                SyncSessionId = sessionId,
-                CaptainCoasterId = group.First().ParkCaptainCoasterId ?? group.Key.ToSlugValue(),
-                Name = group.Key,
-                Slug = group.First().ParkCaptainCoasterId,
-                SourceUrl = group.First().SourceUrl,
-                CountryRaw = null,
-                CountryCode = null,
-                Latitude = null,
-                Longitude = null,
-                CoasterCount = group.Count(),
-                SampleCoasterNames = group.Select(static item => item.Name).Distinct(StringComparer.OrdinalIgnoreCase).Take(10).ToList(),
-                ScrapedAtUtc = DateTime.UtcNow,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow,
+                    SourceKey = SourceKeyValue,
+                    SyncSessionId = sessionId,
+                    CaptainCoasterId = group.First().ParkCaptainCoasterId ?? group.Key.ToSlugValue(),
+                    Name = group.Key,
+                    Slug = group.First().ParkCaptainCoasterId,
+                    SourceUrl = group.First().SourceUrl,
+                    CountryRaw = countryRaw,
+                    CountryCode = NormalizeCountryCodeForStorage(countryCode),
+                    Latitude = null,
+                    Longitude = null,
+                    CoasterCount = group.Count(),
+                    SampleCoasterNames = group.Select(static item => item.Name).Distinct(StringComparer.OrdinalIgnoreCase).Take(10).ToList(),
+                    ScrapedAtUtc = DateTime.UtcNow,
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow,
                 };
 
                 document.RefreshLocation();
@@ -268,6 +277,28 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             })
             .OrderBy(static item => item.Name, StringComparer.OrdinalIgnoreCase)
             .ToList();
+    }
+
+    private static string? PickMostFrequentNonBlank(IEnumerable<string?> values)
+    {
+        return values
+            .Where(static value => !string.IsNullOrWhiteSpace(value))
+            .Select(static value => value!.Trim())
+            .GroupBy(static value => value, StringComparer.OrdinalIgnoreCase)
+            .OrderByDescending(static group => group.Count())
+            .ThenBy(static group => group.Key, StringComparer.OrdinalIgnoreCase)
+            .Select(static group => group.Key)
+            .FirstOrDefault();
+    }
+
+    private static string? NormalizeNullableText(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        return value.Trim();
     }
 
     private static CaptainCoasterScrapingSettings BuildScrapingSettings(DataSourceImportDescriptor importDescriptor, CaptainCoasterSettingsDocument settings)

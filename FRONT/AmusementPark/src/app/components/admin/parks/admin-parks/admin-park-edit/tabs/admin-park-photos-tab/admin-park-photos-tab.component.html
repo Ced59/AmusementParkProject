@@ -1,0 +1,204 @@
+<div class="tab-section park-photos-section">
+  <div class="section-header">
+    <h3>{{ 'admin.parks.photos.sectionTitle' | translate }}</h3>
+    <small class="text-color-secondary">{{ 'admin.parks.photos.sectionHelp' | translate }}</small>
+  </div>
+
+  @if (!isEditMode) {
+    <div class="text-color-secondary mb-3">
+      {{ 'admin.parks.photos.saveBeforeUpload' | translate }}
+    </div>
+  }
+
+  @if (isEditMode) {
+    <div class="grid">
+      <div class="col-12 md:col-4">
+        <p-card styleClass="photo-card">
+          <div class="photo-card__header">
+            <h4>{{ 'admin.parks.photos.currentTitle' | translate }}</h4>
+          </div>
+          <div class="photo-card__body">
+            <div class="flex flex-column align-items-center justify-content-center gap-2 h-full">
+              @if (currentPhoto) {
+                <app-image-display
+                  [imageId]="currentPhoto.imageId"
+                  [alt]="currentPhoto.alt || ('admin.parks.photos.alt' | translate)"
+                  imgClass="photo-preview"
+                  placeholderClass="photo-preview photo-preview--placeholder"
+                  placeholderIconClass="pi pi-image">
+                </app-image-display>
+              }
+              @if (!currentPhoto) {
+                <span class="text-color-secondary text-center photo-empty-text">
+                  {{ 'admin.parks.photos.noCurrent' | translate }}
+                </span>
+              }
+              @if (currentPhoto) {
+                <small class="text-color-secondary">
+                  {{ currentPhoto.createdAt | date:'shortDate' }}
+                </small>
+              }
+            </div>
+          </div>
+        </p-card>
+      </div>
+
+      <div class="col-12 md:col-8">
+        <p-card styleClass="photo-card">
+          <div class="photo-card__header">
+            <h4>{{ 'admin.parks.photos.uploadTitle' | translate }}</h4>
+          </div>
+          <div class="photo-card__body">
+            <div class="flex flex-column gap-3">
+              <input
+                type="file"
+                (change)="photoFileSelected.emit($event)"
+                accept="image/jpeg,image/png,image/webp,image/gif"
+                [multiple]="allowMultiplePhotoUpload" />
+
+              @if (selectedPhotoCount > 0) {
+                <small class="text-color-secondary">
+                  {{ 'admin.parks.photos.selectedCount' | translate:{ count: selectedPhotoCount } }}
+                </small>
+              }
+
+              <div class="photo-upload-grid">
+                <div class="field">
+                  <label class="block mb-2">{{ 'admin.parks.photos.categoryLabel' | translate }}</label>
+                  <p-select
+                    [ngModel]="selectedPhotoCategorySlug"
+                    (ngModelChange)="selectedPhotoCategorySlugChange.emit($event)"
+                    [ngModelOptions]="{ standalone: true }"
+                    [options]="photoCategoryOptions"
+                    optionLabel="labelKey"
+                    optionValue="slug"
+                    [appendTo]="'body'">
+                    <ng-template let-option #item>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+                    <ng-template let-option #selectedItem>{{ option?.labelKey ? (option.labelKey | translate) : "" }}</ng-template>
+                  </p-select>
+                </div>
+
+                <div class="field">
+                  <label class="block mb-2">{{ 'admin.parks.photos.descriptionLabel' | translate }}</label>
+                  <input
+                    pInputText
+                    type="text"
+                    [ngModel]="newPhotoDescription"
+                    (ngModelChange)="newPhotoDescriptionChange.emit($event)"
+                    [ngModelOptions]="{ standalone: true }"
+                    [placeholder]="'admin.parks.photos.descriptionPlaceholder' | translate" />
+                </div>
+              </div>
+
+              <div class="flex justify-content-end">
+                <button
+                  pButton
+                  type="button"
+                  (click)="uploadPhoto.emit()"
+                  [disabled]="selectedPhotoCount === 0 || photosUploading">
+                  @if (!photosUploading) {
+                    <span>{{ 'admin.parks.photos.uploadButton' | translate }}</span>
+                  }
+                  @if (photosUploading) {
+                    <span>{{ 'admin.loading' | translate }}</span>
+                  }
+                </button>
+              </div>
+            </div>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  }
+
+  @if (isEditMode) {
+    <p-panel [toggleable]="true" [collapsed]="true" header="{{ 'admin.parks.photos.historyTitle' | translate }}">
+      @if (photosLoading) {
+        <div class="text-center py-3">
+          <p-progressSpinner styleClass="w-2rem h-2rem"></p-progressSpinner>
+        </div>
+      }
+
+      @if (!photosLoading && parkPhotos.length === 0) {
+        <div class="text-color-secondary">
+          {{ 'admin.parks.photos.empty' | translate }}
+        </div>
+      }
+
+      @if (!photosLoading && parkPhotos.length > 0) {
+        <div>
+          <div class="grid">
+            @for (photo of pagedPhotos; track photo) {
+              <div class="col-12 md:col-4 lg:col-3">
+                <p-card [ngClass]="{ 'border-primary': photo.isCurrent }">
+                  <div class="flex flex-column align-items-center">
+                    <app-image-display
+                      [imageId]="photo.imageId"
+                      [alt]="photo.alt || ('admin.parks.photos.alt' | translate)"
+                      imgClass="photo-history-preview mb-2"
+                      placeholderClass="photo-history-preview photo-history-preview--placeholder mb-2"
+                      placeholderIconClass="pi pi-image">
+                    </app-image-display>
+                    @if (photo.isCurrent) {
+                      <p-tag
+                        [value]="'admin.parks.photos.currentLabel' | translate"
+                        severity="success"
+                        class="mb-2">
+                      </p-tag>
+                    }
+                    <small class="text-color-secondary mb-2">
+                      {{ photo.createdAt | date:'short' }}
+                    </small>
+                    <small class="mb-2 text-center">
+                      {{ photo.description || ('admin.parks.photos.noDescription' | translate) }}
+                    </small>
+                    @if (photo.tagIds.length > 0) {
+                      <small class="text-color-secondary mb-2">
+                        {{ 'admin.parks.photos.categorized' | translate }}
+                      </small>
+                    }
+                    <div class="flex gap-2">
+                      <button
+                        pButton
+                        type="button"
+                        icon="pi pi-check"
+                        class="p-button-sm p-button-success"
+                        (click)="setCurrentPhoto.emit(photo)"
+                        [disabled]="photo.isCurrent">
+                      </button>
+                      <button
+                        pButton
+                        type="button"
+                        icon="pi pi-trash"
+                        class="p-button-sm p-button-danger"
+                        (click)="deletePhoto.emit(photo)">
+                      </button>
+                    </div>
+                  </div>
+                </p-card>
+              </div>
+            }
+          </div>
+          <app-pagination
+            [rows]="photosPageSize"
+            [totalRecords]="parkPhotos.length"
+            (pageChanged)="photosPageChange.emit($event)">
+          </app-pagination>
+        </div>
+      }
+    </p-panel>
+  }
+
+  <div class="section-actions">
+    <button
+      pButton
+      type="button"
+      class="p-button-secondary p-button-outlined"
+      icon="pi pi-save"
+      (click)="saveSection.emit()"
+      [loading]="isSaving"
+      [disabled]="isSaving"
+      [label]="'admin.parks.editorActions.saveSection' | translate">
+    </button>
+  </div>
+</div>

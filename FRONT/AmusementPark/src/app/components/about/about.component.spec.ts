@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';
+import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
@@ -8,13 +9,12 @@ describe('AboutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [AboutComponent]
-})
-    .compileComponents();
-    
+      imports: [...COMMON_TEST_IMPORTS, AboutComponent],
+      providers: provideCommonTestDependencies(),
+    }).compileComponents();
+
     fixture = TestBed.createComponent(AboutComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

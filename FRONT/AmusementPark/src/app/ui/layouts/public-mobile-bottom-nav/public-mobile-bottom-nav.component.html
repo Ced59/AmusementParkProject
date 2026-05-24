@@ -1,0 +1,33 @@
+<nav class="app-mobile-bottom-nav" aria-label="Navigation principale mobile">
+  <a class="app-mobile-bottom-nav__item" [attr.aria-label]="'sidebar.home' | translate" [routerLink]="['/', currentLang(), 'home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <span class="app-mobile-bottom-nav__icon" aria-hidden="true"><i class="pi pi-home"></i></span>
+    <span class="app-mobile-bottom-nav__label">{{ 'sidebar.home' | translate }}</span>
+  </a>
+
+  <a class="app-mobile-bottom-nav__item" [attr.aria-label]="'sidebar.parks' | translate" [routerLink]="['/', currentLang(), 'parks']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" [class.active]="isParksSectionActive()">
+    <span class="app-mobile-bottom-nav__icon" aria-hidden="true"><i class="pi pi-map"></i></span>
+    <span class="app-mobile-bottom-nav__label">{{ 'sidebar.parks' | translate }}</span>
+  </a>
+
+  <a class="app-mobile-bottom-nav__item" [attr.aria-label]="'sidebar.about' | translate" [routerLink]="['/', currentLang(), 'about']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <span class="app-mobile-bottom-nav__icon" aria-hidden="true"><i class="pi pi-info-circle"></i></span>
+    <span class="app-mobile-bottom-nav__label">{{ 'sidebar.about' | translate }}</span>
+  </a>
+
+  <button
+    type="button"
+    class="app-mobile-bottom-nav__item"
+    [class.active]="isProfileSectionActive()"
+    [attr.aria-label]="'sidebar.profile' | translate"
+    (click)="navigateToCurrentUserProfile()">
+    <span class="app-mobile-bottom-nav__icon" aria-hidden="true"><i class="pi pi-user"></i></span>
+    <span class="app-mobile-bottom-nav__label">{{ 'sidebar.profile' | translate }}</span>
+  </button>
+
+  @if (isLoggedIn() && isAdmin()) {
+    <a class="app-mobile-bottom-nav__item" [attr.aria-label]="'sidebar.admin' | translate" [routerLink]="['/', currentLang(), 'admin']" routerLinkActive="active">
+      <span class="app-mobile-bottom-nav__icon" aria-hidden="true"><i class="pi pi-shield"></i></span>
+      <span class="app-mobile-bottom-nav__label">{{ 'sidebar.admin' | translate }}</span>
+    </a>
+  }
+</nav>

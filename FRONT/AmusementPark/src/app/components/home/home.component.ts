@@ -1,11 +1,15 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, inject, signal } from '@angular/core';
 import { EMPTY, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
 import { HomeStateFacade } from '@features/public/home/state/home-state.facade';
+import { ParkCardModel } from '@shared/models/parks/park-card.model';
+import { UiSearchPanelSelectFilterModel } from '@ui/forms/models/ui-search-panel.model';
 import { HomeViewComponent } from './home-view.component';
+import { SeoService } from '@core/seo/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -28,8 +32,23 @@ export class HomeComponent implements OnInit {
     { labelKey: 'home.categories.manufacturers', value: 'manufacturers' }
   ];
 
+  protected readonly searchFilters = computed<UiSearchPanelSelectFilterModel[]>(() => [
+    {
+      id: 'category',
+      labelKey: 'home.placeholder_category',
+      selectedValue: this.selectedCategory() || null,
+      options: this.categoryOptions.map((option: { labelKey: string; value: string }) => ({
+        labelKey: option.labelKey,
+        value: option.value || null
+      }))
+    }
+  ]);
+
+  protected readonly statsState = this.stateFacade.statsState;
+  protected readonly homeStats = this.stateFacade.homeStats;
   protected readonly featuredState = this.stateFacade.featuredState;
   protected readonly featuredParks = this.stateFacade.featuredParks;
+  protected readonly heroFeaturedParks = computed<ParkCardModel[]>(() => this.stateFacade.heroParks().slice(0, 4));
   protected readonly searchState = this.stateFacade.searchState;
   protected readonly results = this.stateFacade.searchResults;
   protected readonly pagination = this.stateFacade.searchPagination;
@@ -40,12 +59,21 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private readonly stateFacade: HomeStateFacade,
-    private readonly translationService: TranslationService
+    private readonly translationService: TranslationService,
+    private readonly router: Router,
+    private readonly seoService: SeoService
   ) {
   }
 
   ngOnInit(): void {
     this.currentLang.set(this.translationService.getCurrentLang() || 'en');
+    this.seoService.applyHomeSeo(this.currentLang(), this.router.url);
+    this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
+      this.currentLang.set(language);
+      this.seoService.applyHomeSeo(language, this.router.url);
+      this.stateFacade.loadFeaturedParks(language);
+    });
+    this.stateFacade.loadHomeStats();
     this.stateFacade.loadFeaturedParks(this.currentLang());
 
     this.searchSubject.pipe(
@@ -74,6 +102,12 @@ export class HomeComponent implements OnInit {
   onCategoryChange(value: string): void {
     this.selectedCategory.set(value ?? '');
     this.searchSubject.next();
+  }
+
+  onClearSearch(): void {
+    this.searchTerm.set('');
+    this.selectedCategory.set('');
+    this.stateFacade.clearSearch();
   }
 
   onPageChange(event: { page?: number; rows?: number }): void {

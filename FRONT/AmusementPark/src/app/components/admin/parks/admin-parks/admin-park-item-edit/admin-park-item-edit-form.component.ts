@@ -18,7 +18,8 @@ import {
   AdminParkItemCategoryOption,
   AdminParkItemTypeOption,
   AttractionLocationKey,
-  AttractionLocationOption
+  AttractionLocationOption,
+  AdminParkItemPhotoCategoryOption
 } from '@features/admin/park-items/models/admin-park-item-edit.model';
 import { AdminParkItemGeneralTabComponent } from './tabs/admin-park-item-general-tab/admin-park-item-general-tab.component';
 import { AdminParkItemDetailsTabComponent } from './tabs/admin-park-item-details-tab/admin-park-item-details-tab.component';
@@ -61,6 +62,8 @@ export class AdminParkItemEditFormComponent {
   @Input() isSaving: boolean = false;
   @Input() categoryOptions: AdminParkItemCategoryOption[] = [];
   @Input() filteredTypeOptions: AdminParkItemTypeOption[] = [];
+  @Input() parkOptions: EntitySelectOption[] = [];
+  @Input() parkOptionsLoading: boolean = false;
   @Input() zones: Array<{ id: string; label: string }> = [];
   @Input() manufacturerOptions: EntitySelectOption[] = [];
   @Input() manufacturersLoading: boolean = false;
@@ -83,6 +86,8 @@ export class AdminParkItemEditFormComponent {
   @Input() allowMultiplePhotoUpload: boolean = true;
   @Input() selectedPhotoCount: number = 0;
   @Input() newPhotoDescription: string = '';
+  @Input() selectedPhotoCategorySlug: string = 'park-item-gallery';
+  @Input() photoCategoryOptions: AdminParkItemPhotoCategoryOption[] = [];
   @Input() photosUploading: boolean = false;
   @Input() photosLoading: boolean = false;
   @Input() attractionPhotos: OwnedImageItem[] = [];
@@ -96,6 +101,7 @@ export class AdminParkItemEditFormComponent {
   @Output() tabChanged: EventEmitter<number | string | undefined> = new EventEmitter<number | string | undefined>();
   @Output() generalMapPositionChange: EventEmitter<{ lat: number; lng: number }> = new EventEmitter<{ lat: number; lng: number }>();
   @Output() resetGeneralLocationToPark: EventEmitter<void> = new EventEmitter<void>();
+  @Output() parkSelectionChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() saveSection: EventEmitter<void> = new EventEmitter<void>();
   @Output() selectedAccessConditionPresetChange: EventEmitter<AttractionAccessConditionType> = new EventEmitter<AttractionAccessConditionType>();
   @Output() addAccessCondition: EventEmitter<AttractionAccessConditionType> = new EventEmitter<AttractionAccessConditionType>();
@@ -110,6 +116,7 @@ export class AdminParkItemEditFormComponent {
   @Output() clearSelectedLocation: EventEmitter<void> = new EventEmitter<void>();
   @Output() photoFileSelected: EventEmitter<Event> = new EventEmitter<Event>();
   @Output() newPhotoDescriptionChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() selectedPhotoCategorySlugChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() uploadPhoto: EventEmitter<void> = new EventEmitter<void>();
   @Output() setCurrentPhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() deletePhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();

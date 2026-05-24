@@ -2,6 +2,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using AmusementPark.Core.Domain.Users;
+using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
@@ -78,7 +79,12 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.ParkItemsCollectionName, cancellationToken);
         await this.InitializeParkItemsIndexesAsync(cancellationToken);
 
+        await this.BackfillAdminReviewPrioritiesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.SearchItemCollectionName, cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(this.settings.AdminAuditLogsCollectionName, cancellationToken);
+        await this.InitializeAdminAuditIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.CaptainCoasterSettingsCollectionName, cancellationToken);
         await this.InitializeCaptainCoasterSettingsIndexesAsync(cancellationToken);

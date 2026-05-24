@@ -39,11 +39,6 @@ public sealed class SearchQueryHandler : IQueryHandler<SearchQuery, ApplicationR
         }
 
         SearchResultPage<SearchHitResult> page = await this.searchReadRepository.SearchAsync(query.Text ?? string.Empty, query.Categories, query.Paging.Page, query.Paging.PageSize, cancellationToken);
-        if (page.TotalItems <= 0)
-        {
-            return ApplicationResult<SearchResultPage<SearchHitResult>>.Failure(ApplicationError.NotFound("search.no-results", "Aucun résultat pour cette recherche."));
-        }
-
         return ApplicationResult<SearchResultPage<SearchHitResult>>.Success(page);
     }
 }

@@ -1,9 +1,17 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://api.amusement-park.fun/',
-  baseUrl: 'https://amusement-park.fun/',
-  apiImagePath: 'https://api.amusement-park.fun/images/',
+  apiBaseUrl: '/api/',
+  ssrApiBaseUrl: 'http://api:8080/',
+  baseUrl: 'https://amusement-parks.fun/',
+  apiImagePath: '/api/images/',
   googleClientId: '819235253823-lj2de5lllhlngr4rpt5iq0m5mgmmltaj.apps.googleusercontent.com',
-  redirectOAuthUri: 'https://amusement-park.fun/en/signin-google',
-  imagesBaseUrl: 'https://api.amusement-park.fun/images'
+  imagesBaseUrl: '/api/images',
+  analytics: {
+    matomoEnabled: true,
+    consentBannerEnabled: true,
+    matomoSiteId: 4,
+    matomoTrackerUrl: 'https://matomo.cedric-caudron.com/',
+    matomoRequireConsent: true,
+    matomoConsentHoursToExpire: 4380
+  }
 };

@@ -1,0 +1,63 @@
+.reference-edit-page {
+  padding: 1rem;
+}
+
+.reference-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--app-border, var(--surface-border));
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--app-surface, var(--surface-card)) 92%, transparent);
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--app-heading, var(--text-color));
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field--wide {
+  grid-column: 1 / -1;
+}
+
+.field--status {
+  max-width: 22rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .reference-edit-page {
+    padding: .75rem 0;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

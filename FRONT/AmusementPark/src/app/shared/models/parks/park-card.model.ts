@@ -10,5 +10,7 @@ export interface ParkCardModel {
   locationLine: string | null;
   addressLine: string | null;
   coordinatesLine: string | null;
+  distanceLine?: string | null;
+  travelDurationLine?: string | null;
   shortDescription: string | null;
 }

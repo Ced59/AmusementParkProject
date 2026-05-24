@@ -1,0 +1,67 @@
+<section class="privacy-page public-page">
+  <section class="privacy-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <app-ui-kicker tone="lime" iconClass="pi pi-shield">
+      {{ 'privacyPage.kicker' | translate }}
+    </app-ui-kicker>
+
+    <h1 class="privacy-hero__title">{{ 'privacyPage.title' | translate }}</h1>
+    <p class="privacy-hero__lead">{{ 'privacyPage.lead' | translate }}</p>
+
+    <div class="privacy-hero__chips" aria-label="Privacy policy highlights">
+      <app-ui-chip tone="primary" iconClass="pi pi-map-marker">{{ 'privacyPage.chips.hosting' | translate }}</app-ui-chip>
+      <app-ui-chip tone="sky" iconClass="pi pi-chart-line">{{ 'privacyPage.chips.analytics' | translate }}</app-ui-chip>
+      <app-ui-chip tone="gold" iconClass="pi pi-user">{{ 'privacyPage.chips.controller' | translate }}</app-ui-chip>
+    </div>
+  </section>
+
+  <section class="privacy-consent" appUiSurface="panel" appUiSurfacePadding="spacious">
+    <div class="privacy-consent__copy">
+      <app-ui-kicker tone="sky" iconClass="pi pi-sliders-h">
+        {{ 'privacyPage.consent.kicker' | translate }}
+      </app-ui-kicker>
+      <h2>{{ 'privacyPage.consent.title' | translate }}</h2>
+      <p>{{ 'privacyPage.consent.text' | translate }}</p>
+      <p class="privacy-consent__status">
+        <strong>{{ 'privacyPage.consent.currentStatus' | translate }}</strong>
+        @if (cookieConsentDecision() === 'accepted') {
+          <span>{{ 'privacyPage.consent.statusAccepted' | translate }}</span>
+        } @else if (cookieConsentDecision() === 'refused') {
+          <span>{{ 'privacyPage.consent.statusRefused' | translate }}</span>
+        } @else {
+          <span>{{ 'privacyPage.consent.statusUnset' | translate }}</span>
+        }
+      </p>
+    </div>
+
+    <div class="privacy-consent__actions">
+      <button type="button" appUiButton="primary" (click)="acceptOptionalCookies()">
+        {{ 'privacyPage.consent.accept' | translate }}
+      </button>
+      <button type="button" appUiButton="ghost" (click)="refuseOptionalCookies()">
+        {{ 'privacyPage.consent.refuse' | translate }}
+      </button>
+      <button type="button" appUiButton="soft" (click)="resetCookieChoice()">
+        {{ 'privacyPage.consent.reset' | translate }}
+      </button>
+    </div>
+  </section>
+
+  <section class="privacy-sections">
+    @for (section of sections; track section.titleKey) {
+      <article class="privacy-card" appUiSurface="shell" appUiSurfacePadding="regular">
+        <div class="privacy-card__header">
+          <span class="privacy-card__icon" aria-hidden="true"><i [class]="section.iconClass"></i></span>
+          <h2>{{ section.titleKey | translate }}</h2>
+        </div>
+        @for (bodyKey of section.bodyKeys; track bodyKey) {
+          <p>{{ bodyKey | translate }}</p>
+        }
+      </article>
+    }
+  </section>
+
+  <section class="privacy-update" appUiSurface="panel" appUiSurfacePadding="regular">
+    <p>{{ 'privacyPage.lastUpdate' | translate }}</p>
+    <a appUiButton="ghost" [routerLink]="['../home']">{{ 'privacyPage.backHome' | translate }}</a>
+  </section>
+</section>

@@ -57,4 +57,9 @@ public sealed class ParkItem : GeolocatedEntityBase
     /// Indique si l'élément est visible publiquement.
     /// </summary>
     public bool IsVisible { get; set; } = true;
+
+    /// <summary>
+    /// Statut de traitement interne pour les listes d'administration.
+    /// </summary>
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
 }

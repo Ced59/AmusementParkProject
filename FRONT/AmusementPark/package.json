@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:AmusementPark": "node dist/amusement-park/server/server.mjs"
+    "serve:ssr:AmusementPark": "node dist/amusement-park/server/server.mjs",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
+    "build:ssr:local": "ng build --configuration local-production",
+    "seo:ssr-smoke": "node tools/seo-ssr-smoke.mjs"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +31,7 @@
     "express": "^4.18.2",
     "jwt-decode": "^4.0.0",
     "leaflet": "^1.9.4",
+    "ngx-matomo-client": "^9.1.0",
     "primeflex": "^4.0.0",
     "primeicons": "^7.0.0",
     "primeng": "21.1.4",

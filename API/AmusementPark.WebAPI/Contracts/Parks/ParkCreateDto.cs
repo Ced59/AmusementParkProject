@@ -21,7 +21,15 @@ public sealed class ParkCreateDto
 
     public List<LocalizedTextDto> Descriptions { get; set; } = new();
 
-    public bool IsVisible { get; set; } = false;
+    public bool IsVisible { get; set; }
+
+    public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;
+
+    public bool IsFeaturedOnHome { get; set; }
+
+    public int? FeaturedHomeOrder { get; set; }
+
+    public bool IsFeaturedOnHomeSponsored { get; set; }
 
     public string? WebsiteUrl { get; set; }
 

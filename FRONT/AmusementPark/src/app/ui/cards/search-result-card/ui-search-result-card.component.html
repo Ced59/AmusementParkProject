@@ -1,0 +1,51 @@
+@if (card; as currentCard) {
+  <article [class]="'ui-search-result-card ' + toneClass" [attr.aria-label]="currentCard.title">
+    <div class="ui-search-result-card__visual" aria-hidden="true">
+      @if (hasLogoImage) {
+        <app-image-display
+          [imageId]="currentCard.logoImageId"
+          [alt]="currentCard.title"
+          imgClass="ui-search-result-card__logo"
+          placeholderClass="ui-search-result-card__placeholder"
+          [placeholderIconClass]="currentCard.iconClass">
+        </app-image-display>
+      } @else {
+        <span class="ui-search-result-card__icon">
+          <i [class]="currentCard.iconClass" aria-hidden="true"></i>
+        </span>
+      }
+    </div>
+
+    <div class="ui-search-result-card__content">
+      <div class="ui-search-result-card__headline">
+        <h3 class="ui-search-result-card__title">{{ currentCard.title }}</h3>
+
+        @if (currentCard.metaParts.length > 0) {
+          <p class="ui-search-result-card__meta">
+            @for (metaPart of currentCard.metaParts; track metaPart) {
+              <span>{{ metaPart }}</span>
+            }
+          </p>
+        }
+      </div>
+
+      @if (currentCard.description) {
+        <div class="ui-search-result-card__description" [innerHTML]="currentCard.description | safeRichHtml"></div>
+      }
+    </div>
+
+    <div class="ui-search-result-card__actions">
+      <span class="ui-search-result-card__category">
+        <i [class]="currentCard.iconClass" aria-hidden="true"></i>
+        <span>{{ currentCard.categoryLabelKey | translate }}</span>
+      </span>
+
+      @if (currentCard.detailLink; as link) {
+        <a appUiButton="ghost" [routerLink]="link" class="ui-search-result-card__link">
+          <span>{{ currentCard.actionLabelKey | translate }}</span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
+        </a>
+      }
+    </div>
+  </article>
+}

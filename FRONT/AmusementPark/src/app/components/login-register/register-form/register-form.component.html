@@ -1,28 +1,57 @@
-<h5>{{ 'auth.register.title' | translate }}</h5>
+<section class="auth-form-card auth-form-card--register">
+  <app-ui-kicker tone="lime" iconClass="pi pi-user-plus">
+    {{ 'auth.register.title' | translate }}
+  </app-ui-kicker>
 
-@if (!registrationCompleted) {
-  <form class="form-style" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="registerEmail">{{ 'auth.register.title_email' | translate }}</label>
-      <input type="email" id="registerEmail" name="registerEmail" pInputText
-             [placeholder]="('auth.register.mail_placeholder' | translate)"
-             [(ngModel)]="registerEmail">
+  @if (!registrationCompleted) {
+    <form class="auth-form" (ngSubmit)="onSubmit()">
+      <app-ui-field-input
+        inputId="registerEmail"
+        type="email"
+        autocomplete="email"
+        iconClass="pi pi-envelope"
+        labelKey="auth.register.title_email"
+        placeholderKey="auth.register.mail_placeholder"
+        [(value)]="registerEmail">
+      </app-ui-field-input>
+
+      <app-ui-field-input
+        inputId="registerPassword"
+        type="password"
+        autocomplete="new-password"
+        iconClass="pi pi-lock"
+        labelKey="auth.register.title_password"
+        placeholderKey="auth.register.password_placeholder"
+        [(value)]="registerPassword">
+      </app-ui-field-input>
+
+      <small class="auth-form__help">{{ 'auth.register.password_info' | translate }}</small>
+
+      <app-ui-field-input
+        inputId="confirmPassword"
+        type="password"
+        autocomplete="new-password"
+        iconClass="pi pi-check-circle"
+        placeholderKey="auth.register.password_confirm_placeholder"
+        [(value)]="confirmPassword">
+      </app-ui-field-input>
+
+      <button
+        appUiButton="lime"
+        type="submit"
+        class="auth-form__submit"
+        [disabled]="!isValidEmail() || !isValidPassword() || !passwordsMatch()">
+        <i class="pi pi-send" aria-hidden="true"></i>
+        <span>{{ 'auth.register.btn_text' | translate }}</span>
+      </button>
+    </form>
+  } @else {
+    <div class="auth-success-panel">
+      <app-ui-chip tone="lime" iconClass="pi pi-check-circle">{{ 'auth.register.success_badge' | translate }}</app-ui-chip>
+      <p>{{ 'auth.register.success_message' | translate }}</p>
+      <button appUiButton="ghost" type="button" (click)="resendConfirmation()">
+        {{ 'auth.register.resend_confirmation' | translate }}
+      </button>
     </div>
-    <div class="form-group">
-      <label for="registerPassword">{{ 'auth.register.title_password' | translate }}</label>
-      <input type="password" id="registerPassword" name="registerPassword" pInputText
-             [placeholder]="('auth.register.password_placeholder' | translate)"
-             [(ngModel)]="registerPassword" [ngClass]="{'error': !isValidPassword() && registerPassword}">
-      <small class="field-help">{{ 'auth.register.password_info' | translate }}</small>
-      <input type="password" id="confirmPassword" name="confirmPassword" pInputText
-             [placeholder]="('auth.register.password_confirm_placeholder' | translate)"
-             [(ngModel)]="confirmPassword" [ngClass]="{'error': !passwordsMatch() && confirmPassword}">
-    </div>
-    <button pButton type="submit" [label]="('auth.register.btn_text' | translate)" [disabled]="!isValidEmail() || !isValidPassword() || !passwordsMatch()"></button>
-  </form>
-} @else {
-  <div class="register-success-box">
-    <p>{{ 'auth.register.success_message' | translate }}</p>
-    <button pButton type="button" [label]="('auth.register.resend_confirmation' | translate)" (click)="resendConfirmation()"></button>
-  </div>
-}
+  }
+</section>

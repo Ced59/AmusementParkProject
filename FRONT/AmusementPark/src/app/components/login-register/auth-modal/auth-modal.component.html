@@ -1,15 +1,26 @@
-<div class="social-buttons-container">
-  <div #googleButtonContainer class="google-button-host"></div>
-  <button pButton type="button" label="Facebook" icon="pi pi-facebook" class="facebook-button" [disabled]="true"></button>
-</div>
-
-<hr/>
-
-<div class="form-container">
-  <div class="register-form">
-    <app-register-form></app-register-form>
+<section class="auth-modal-shell">
+  <div class="auth-modal-intro" appUiSurface="soft" appUiSurfacePadding="regular">
+    <app-ui-kicker tone="primary" iconClass="pi pi-shield">
+      {{ 'auth.modal.kicker' | translate }}
+    </app-ui-kicker>
+    <h2>{{ 'auth.modal.title' | translate }}</h2>
+    <p>{{ 'auth.modal.subtitle' | translate }}</p>
   </div>
-  <div class="login-form">
+
+  <div class="social-buttons-container">
+    <div #googleButtonContainer class="google-button-host"></div>
+    <button appUiButton="soft" type="button" class="facebook-button" disabled>
+      <i class="pi pi-facebook" aria-hidden="true"></i>
+      <span>Facebook</span>
+    </button>
+  </div>
+
+  <div class="auth-divider" aria-hidden="true">
+    <span>{{ 'auth.modal.or' | translate }}</span>
+  </div>
+
+  <div class="form-container">
+    <app-register-form></app-register-form>
     <app-login-form (loginSuccess)="onLoginSuccess()"></app-login-form>
   </div>
-</div>
+</section>

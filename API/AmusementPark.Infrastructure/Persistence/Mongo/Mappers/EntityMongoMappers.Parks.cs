@@ -29,6 +29,10 @@ internal static partial class EntityMongoMappers
             OperatorId = document.OperatorId,
             Descriptions = CommonMongoMappers.ToDomain(document.Descriptions),
             IsVisible = document.IsVisible,
+            AdminReviewStatus = document.AdminReviewStatus.NormalizeForAdministration(),
+            IsFeaturedOnHome = document.IsFeaturedOnHome,
+            FeaturedHomeOrder = document.FeaturedHomeOrder,
+            IsFeaturedOnHomeSponsored = document.IsFeaturedOnHomeSponsored,
             WebsiteUrl = document.WebsiteUrl,
             Street = document.Street,
             City = document.City,
@@ -54,6 +58,11 @@ internal static partial class EntityMongoMappers
             OperatorId = entity.OperatorId,
             Descriptions = CommonMongoMappers.ToDocuments(entity.Descriptions),
             IsVisible = entity.IsVisible,
+            AdminReviewStatus = entity.AdminReviewStatus.NormalizeForAdministration(),
+            AdminReviewPriority = entity.AdminReviewStatus.ToAdminReviewPriority(),
+            IsFeaturedOnHome = entity.IsFeaturedOnHome,
+            FeaturedHomeOrder = entity.FeaturedHomeOrder,
+            IsFeaturedOnHomeSponsored = entity.IsFeaturedOnHomeSponsored,
             WebsiteUrl = entity.WebsiteUrl,
             Street = entity.Street,
             City = entity.City,
@@ -122,6 +131,7 @@ internal static partial class EntityMongoMappers
             AttractionDetails = document.AttractionDetails?.ToDomain(),
             AttractionLocations = document.AttractionLocations?.ToDomain(),
             IsVisible = document.IsVisible,
+            AdminReviewStatus = document.AdminReviewStatus.NormalizeForAdministration(),
         };
 
         CommonMongoMappers.ApplyPosition(entity, document.Latitude, document.Longitude);
@@ -145,6 +155,8 @@ internal static partial class EntityMongoMappers
             AttractionDetails = entity.AttractionDetails?.ToDocument(),
             AttractionLocations = entity.AttractionLocations?.ToDocument(),
             IsVisible = entity.IsVisible,
+            AdminReviewStatus = entity.AdminReviewStatus.NormalizeForAdministration(),
+            AdminReviewPriority = entity.AdminReviewStatus.ToAdminReviewPriority(),
             CreatedAt = entity.CreatedAtUtc,
             UpdatedAt = entity.UpdatedAtUtc,
         };

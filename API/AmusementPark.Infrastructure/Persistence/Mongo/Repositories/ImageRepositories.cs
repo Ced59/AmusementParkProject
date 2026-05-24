@@ -1,3 +1,4 @@
+using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Core.Domain.Images;
@@ -6,6 +7,8 @@ using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
+using System.Text.RegularExpressions;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -29,6 +32,24 @@ public sealed class ImageRepository : IImageRepository
             .ToListAsync(cancellationToken);
 
         return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
+    public async Task<PagedResult<Image>> GetPageAsync(int page, int pageSize, ImageSearchCriteria criteria, CancellationToken cancellationToken)
+    {
+        int safePage = Math.Max(1, page);
+        int safePageSize = Math.Clamp(pageSize, 1, 100);
+        FilterDefinition<ImageDocument> filter = BuildFilter(criteria);
+        SortDefinition<ImageDocument> sort = BuildSort(criteria);
+
+        long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+        List<ImageDocument> documents = await this.collection
+            .Find(filter)
+            .Sort(sort)
+            .Skip((safePage - 1) * safePageSize)
+            .Limit(safePageSize)
+            .ToListAsync(cancellationToken);
+
+        return new PagedResult<Image>(documents.Select(static document => document.ToDomain()).ToList(), safePage, safePageSize, totalItems);
     }
 
     public async Task<Image?> GetByIdAsync(string imageId, CancellationToken cancellationToken)
@@ -187,6 +208,146 @@ public sealed class ImageRepository : IImageRepository
     {
         DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == imageId, cancellationToken: cancellationToken);
         return result.DeletedCount > 0;
+    }
+
+    public async Task<int> UpdateBulkMetadataAsync(IReadOnlyCollection<string> imageIds, ImageBulkMetadataUpdate metadata, CancellationToken cancellationToken)
+    {
+        List<string> normalizedImageIds = imageIds
+            .Where(static id => !string.IsNullOrWhiteSpace(id))
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedImageIds.Count == 0)
+        {
+            return 0;
+        }
+
+        List<UpdateDefinition<ImageDocument>> updates = new List<UpdateDefinition<ImageDocument>>
+        {
+            Builders<ImageDocument>.Update.Set(static document => document.UpdatedAt, DateTime.UtcNow),
+        };
+
+        if (metadata.IsPublished.HasValue)
+        {
+            updates.Add(Builders<ImageDocument>.Update.Set(static document => document.IsPublished, metadata.IsPublished.Value));
+        }
+
+        if (metadata.Category.HasValue)
+        {
+            updates.Add(Builders<ImageDocument>.Update.Set(static document => document.Category, metadata.Category.Value));
+        }
+
+        List<string> tagIdsToAdd = metadata.AddTagIds?
+            .Where(static tagId => !string.IsNullOrWhiteSpace(tagId))
+            .Distinct(StringComparer.Ordinal)
+            .ToList() ?? new List<string>();
+
+        if (tagIdsToAdd.Count > 0)
+        {
+            updates.Add(Builders<ImageDocument>.Update.AddToSetEach(static document => document.TagIds, tagIdsToAdd));
+        }
+
+        List<string> tagIdsToRemove = metadata.RemoveTagIds?
+            .Where(static tagId => !string.IsNullOrWhiteSpace(tagId))
+            .Distinct(StringComparer.Ordinal)
+            .ToList() ?? new List<string>();
+
+        if (tagIdsToRemove.Count > 0)
+        {
+            updates.Add(Builders<ImageDocument>.Update.PullAll(static document => document.TagIds, tagIdsToRemove));
+        }
+
+        if (updates.Count <= 1)
+        {
+            return 0;
+        }
+
+        FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.In(static document => document.Id, normalizedImageIds);
+        UpdateResult result = await this.collection.UpdateManyAsync(filter, Builders<ImageDocument>.Update.Combine(updates), cancellationToken: cancellationToken);
+        return checked((int)result.ModifiedCount);
+    }
+
+    private static FilterDefinition<ImageDocument> BuildFilter(ImageSearchCriteria criteria)
+    {
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter = builder.Empty;
+
+        if (criteria.Category.HasValue)
+        {
+            filter &= builder.Eq(static document => document.Category, criteria.Category.Value);
+        }
+
+        if (criteria.OwnerType.HasValue)
+        {
+            filter &= builder.Eq(static document => document.OwnerType, criteria.OwnerType.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(criteria.OwnerId))
+        {
+            filter &= builder.Eq(static document => document.OwnerId, criteria.OwnerId.Trim());
+        }
+
+        if (!string.IsNullOrWhiteSpace(criteria.TagId))
+        {
+            filter &= builder.AnyEq(static document => document.TagIds, criteria.TagId.Trim());
+        }
+
+        if (criteria.IsPublished.HasValue)
+        {
+            filter &= builder.Eq(static document => document.IsPublished, criteria.IsPublished.Value);
+        }
+
+        if (criteria.HasOwner.HasValue)
+        {
+            FilterDefinition<ImageDocument> hasOwnerFilter = builder.Ne(static document => document.OwnerType, ImageOwnerType.None) &
+                                                             builder.Ne(static document => document.OwnerId, null) &
+                                                             builder.Ne(static document => document.OwnerId, string.Empty);
+            filter &= criteria.HasOwner.Value ? hasOwnerFilter : builder.Not(hasOwnerFilter);
+        }
+
+        if (criteria.HasGeoLocation.HasValue)
+        {
+            FilterDefinition<ImageDocument> hasGeoLocationFilter = builder.Ne(static document => document.GeoLocation, null);
+            filter &= criteria.HasGeoLocation.Value ? hasGeoLocationFilter : builder.Not(hasGeoLocationFilter);
+        }
+
+        if (!string.IsNullOrWhiteSpace(criteria.Search))
+        {
+            string escapedSearch = Regex.Escape(criteria.Search.Trim());
+            BsonRegularExpression regex = new BsonRegularExpression(escapedSearch, "i");
+            filter &= builder.Or(
+                builder.Regex(static document => document.Id, regex),
+                builder.Regex(static document => document.OriginalFileName, regex),
+                builder.Regex(static document => document.Path, regex),
+                builder.Regex(static document => document.Description, regex),
+                builder.Regex(static document => document.ContentType, regex),
+                builder.Regex(static document => document.OwnerId, regex),
+                builder.Regex("altTexts.value", regex),
+                builder.Regex("captions.value", regex),
+                builder.Regex("credits.value", regex));
+        }
+
+        return filter;
+    }
+
+    private static SortDefinition<ImageDocument> BuildSort(ImageSearchCriteria criteria)
+    {
+        bool descending = !string.Equals(criteria.SortDirection, "asc", StringComparison.OrdinalIgnoreCase);
+        SortDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Sort;
+
+        return (criteria.SortBy?.Trim().ToLowerInvariant(), descending) switch
+        {
+            ("filename", true) => builder.Descending(static document => document.OriginalFileName).Descending(static document => document.CreatedAt),
+            ("filename", false) => builder.Ascending(static document => document.OriginalFileName).Ascending(static document => document.CreatedAt),
+            ("size", true) => builder.Descending(static document => document.SizeInBytes).Descending(static document => document.CreatedAt),
+            ("size", false) => builder.Ascending(static document => document.SizeInBytes).Ascending(static document => document.CreatedAt),
+            ("dimensions", true) => builder.Descending(static document => document.Width).Descending(static document => document.Height),
+            ("dimensions", false) => builder.Ascending(static document => document.Width).Ascending(static document => document.Height),
+            ("updated", true) => builder.Descending(static document => document.UpdatedAt),
+            ("updated", false) => builder.Ascending(static document => document.UpdatedAt),
+            ("created", false) => builder.Ascending(static document => document.CreatedAt),
+            _ => builder.Descending(static document => document.CreatedAt),
+        };
     }
 }
 

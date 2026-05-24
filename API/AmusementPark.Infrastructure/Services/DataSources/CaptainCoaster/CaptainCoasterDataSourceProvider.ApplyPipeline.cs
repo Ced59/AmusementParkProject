@@ -113,7 +113,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             localParkDocument = new ParkDocument
             {
                 Name = externalParkDocument.Name,
-                CountryCode = externalParkDocument.CountryCode,
+                CountryCode = NormalizeCountryCodeForStorage(externalParkDocument.CountryCode),
                 Latitude = externalParkDocument.Latitude,
                 Longitude = externalParkDocument.Longitude,
                 IsVisible = false,
@@ -127,12 +127,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         }
         else
         {
-            localParkDocument.Name = externalParkDocument.Name;
-            localParkDocument.CountryCode = externalParkDocument.CountryCode;
-            localParkDocument.Latitude = externalParkDocument.Latitude;
-            localParkDocument.Longitude = externalParkDocument.Longitude;
-            localParkDocument.UpdatedAt = utcNow;
-            localParkDocument.RefreshLocation();
+            ApplyExternalParkSnapshotToLocalPark(localParkDocument, externalParkDocument, utcNow);
             AddParkLookup(context, localParkDocument);
         }
 
@@ -187,13 +182,8 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
         AttractionManufacturerDocument? manufacturer = this.ResolveManufacturerWithContext(externalCoaster.Manufacturer, context, utcNow);
 
-        ParkItemDocument? localCoaster = null;
-        if (!string.IsNullOrWhiteSpace(result.LocalEntityId))
-        {
-            context.LocalCoastersById.TryGetValue(result.LocalEntityId.Trim(), out localCoaster);
-        }
-
-        localCoaster ??= FindMatchingLocalCoaster(context, externalCoaster);
+        ParkItemDocument? localCoaster = ResolveSelectedLocalCoasterForImport(result, externalCoaster, park.Id, context);
+        localCoaster ??= FindMatchingLocalCoaster(context, externalCoaster, park.Id);
 
         AttractionDetailsDocument attractionDetails = localCoaster?.AttractionDetails ?? new AttractionDetailsDocument();
         attractionDetails.ManufacturerId = manufacturer?.Id;
@@ -408,7 +398,8 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         string normalizedCountryCode = Normalize(externalParkDocument.CountryCode);
         string compositeKey = BuildParkCompositeKey(normalizedName, normalizedCountryCode);
 
-        if (context.ParkIdsByNormalizedNameAndCountry.TryGetValue(compositeKey, out List<string>? idsByNameAndCountry))
+        if (!string.IsNullOrWhiteSpace(normalizedCountryCode)
+            && context.ParkIdsByNormalizedNameAndCountry.TryGetValue(compositeKey, out List<string>? idsByNameAndCountry))
         {
             foreach (string parkId in idsByNameAndCountry)
             {
@@ -419,63 +410,63 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
             }
         }
 
-        if (context.ParkIdsByNormalizedName.TryGetValue(normalizedName, out List<string>? idsByName))
+        if (context.ParkIdsByNormalizedName.TryGetValue(normalizedName, out List<string>? idsByName)
+            && idsByName.Count == 1
+            && context.LocalParksById.TryGetValue(idsByName[0], out ParkDocument? singleNameMatch))
         {
-            foreach (string parkId in idsByName)
-            {
-                if (context.LocalParksById.TryGetValue(parkId, out ParkDocument? parkDocument))
-                {
-                    return parkDocument;
-                }
-            }
+            return singleNameMatch;
         }
 
         return null;
     }
 
+    private static ParkItemDocument? ResolveSelectedLocalCoasterForImport(
+        CaptainCoasterComparisonResultDocument result,
+        CaptainCoasterCoasterSnapshotDocument externalCoaster,
+        string targetParkId,
+        CaptainCoasterApplyExecutionContext context)
+    {
+        if (string.IsNullOrWhiteSpace(result.LocalEntityId))
+        {
+            return null;
+        }
+
+        if (!context.LocalCoastersById.TryGetValue(result.LocalEntityId.Trim(), out ParkItemDocument? selectedLocalCoaster))
+        {
+            return null;
+        }
+
+        return IsSafeLocalCoasterImportMatch(selectedLocalCoaster, externalCoaster, targetParkId)
+            ? selectedLocalCoaster
+            : null;
+    }
+
+    private static bool IsSafeLocalCoasterImportMatch(
+        ParkItemDocument localCoaster,
+        CaptainCoasterCoasterSnapshotDocument externalCoaster,
+        string targetParkId)
+    {
+        if (!string.Equals(localCoaster.ParkId, targetParkId, StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        string normalizedExternalId = Normalize(externalCoaster.CaptainCoasterId);
+        if (!string.IsNullOrWhiteSpace(normalizedExternalId) && IsCaptainCoasterLinkedTo(localCoaster, normalizedExternalId))
+        {
+            return true;
+        }
+
+        return Normalize(localCoaster.Name) == Normalize(externalCoaster.Name)
+            && IsPotentialCaptainCoasterTarget(localCoaster);
+    }
+
     private static ParkItemDocument? FindMatchingLocalCoaster(
         CaptainCoasterApplyExecutionContext context,
-        CaptainCoasterCoasterSnapshotDocument externalCoaster)
+        CaptainCoasterCoasterSnapshotDocument externalCoaster,
+        string targetParkId)
     {
-        string normalizedName = Normalize(externalCoaster.Name);
-        string? localParkId = null;
-
-        if (!string.IsNullOrWhiteSpace(externalCoaster.ParkName))
-        {
-            string normalizedParkName = Normalize(externalCoaster.ParkName);
-            if (context.ParkIdsByNormalizedName.TryGetValue(normalizedParkName, out List<string>? candidateParkIds))
-            {
-                localParkId = candidateParkIds.FirstOrDefault();
-            }
-        }
-
-        if (!string.IsNullOrWhiteSpace(localParkId))
-        {
-            string compositeKey = BuildCoasterCompositeKey(normalizedName, localParkId);
-            if (context.CoasterIdsByNormalizedNameAndParkId.TryGetValue(compositeKey, out List<string>? candidateCoasterIdsByPark))
-            {
-                foreach (string coasterId in candidateCoasterIdsByPark)
-                {
-                    if (context.LocalCoastersById.TryGetValue(coasterId, out ParkItemDocument? parkItemDocument))
-                    {
-                        return parkItemDocument;
-                    }
-                }
-            }
-        }
-
-        if (context.CoasterIdsByNormalizedName.TryGetValue(normalizedName, out List<string>? candidateCoasterIds))
-        {
-            foreach (string coasterId in candidateCoasterIds)
-            {
-                if (context.LocalCoastersById.TryGetValue(coasterId, out ParkItemDocument? parkItemDocument))
-                {
-                    return parkItemDocument;
-                }
-            }
-        }
-
-        return null;
+        return MatchCoasterInPark(context.LocalCoasters, targetParkId, externalCoaster);
     }
 
     private static string BuildParkCompositeKey(string normalizedName, string normalizedCountryCode)
@@ -517,6 +508,43 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         }
     }
 
+    private static ParkDocument? FindMatchingParkByCoasterContext(
+        CaptainCoasterApplyExecutionContext context,
+        CaptainCoasterCoasterSnapshotDocument externalCoaster)
+    {
+        if (string.IsNullOrWhiteSpace(externalCoaster.ParkName))
+        {
+            return null;
+        }
+
+        string normalizedParkName = Normalize(externalCoaster.ParkName);
+        string normalizedCountryCode = Normalize(externalCoaster.CountryCode);
+
+        if (!string.IsNullOrWhiteSpace(normalizedCountryCode))
+        {
+            string compositeKey = BuildParkCompositeKey(normalizedParkName, normalizedCountryCode);
+            if (context.ParkIdsByNormalizedNameAndCountry.TryGetValue(compositeKey, out List<string>? candidateParkIdsByCountry))
+            {
+                foreach (string candidateParkId in candidateParkIdsByCountry)
+                {
+                    if (context.LocalParksById.TryGetValue(candidateParkId, out ParkDocument? candidatePark))
+                    {
+                        return candidatePark;
+                    }
+                }
+            }
+        }
+
+        if (context.ParkIdsByNormalizedName.TryGetValue(normalizedParkName, out List<string>? candidateParkIds)
+            && candidateParkIds.Count == 1
+            && context.LocalParksById.TryGetValue(candidateParkIds[0], out ParkDocument? singleNameMatch))
+        {
+            return singleNameMatch;
+        }
+
+        return null;
+    }
+
     private static void AddCoasterLookup(CaptainCoasterApplyExecutionContext context, ParkItemDocument parkItemDocument)
     {
         string normalizedName = Normalize(parkItemDocument.Name);
@@ -552,13 +580,14 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
         DateTime utcNow)
     {
         ParkDocument? localParkDocument = null;
+        CaptainCoasterParkSnapshotDocument? externalParkDocument = null;
 
         if (!string.IsNullOrWhiteSpace(externalCoaster.ParkCaptainCoasterId)
             && context.ParkSnapshotsByCaptainCoasterId.TryGetValue(
                 externalCoaster.ParkCaptainCoasterId.Trim(),
                 out List<CaptainCoasterParkSnapshotDocument>? externalParkVariants))
         {
-            CaptainCoasterParkSnapshotDocument? externalParkDocument = externalParkVariants.FirstOrDefault(item => item.SyncSessionId == sessionId) ?? externalParkVariants.FirstOrDefault();
+            externalParkDocument = externalParkVariants.FirstOrDefault(item => item.SyncSessionId == sessionId) ?? externalParkVariants.FirstOrDefault();
             if (externalParkDocument != null)
             {
                 localParkDocument = FindMatchingPark(context, externalParkDocument);
@@ -567,18 +596,7 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
         if (localParkDocument == null && !string.IsNullOrWhiteSpace(externalCoaster.ParkName))
         {
-            string normalizedParkName = Normalize(externalCoaster.ParkName);
-            if (context.ParkIdsByNormalizedName.TryGetValue(normalizedParkName, out List<string>? candidateParkIds))
-            {
-                foreach (string candidateParkId in candidateParkIds)
-                {
-                    if (context.LocalParksById.TryGetValue(candidateParkId, out ParkDocument? candidatePark))
-                    {
-                        localParkDocument = candidatePark;
-                        break;
-                    }
-                }
-            }
+            localParkDocument = FindMatchingParkByCoasterContext(context, externalCoaster);
         }
 
         if (localParkDocument != null)
@@ -593,10 +611,10 @@ internal sealed partial class CaptainCoasterDataSourceProvider : IDataSourceProv
 
         localParkDocument = new ParkDocument
         {
-            Name = externalCoaster.ParkName,
-            CountryCode = null,
-            Latitude = null,
-            Longitude = null,
+            Name = externalParkDocument?.Name ?? externalCoaster.ParkName,
+            CountryCode = NormalizeCountryCodeForStorage(externalParkDocument?.CountryCode ?? externalCoaster.CountryCode),
+            Latitude = externalParkDocument?.Latitude,
+            Longitude = externalParkDocument?.Longitude,
             IsVisible = false,
             CreatedAt = utcNow,
             UpdatedAt = utcNow,

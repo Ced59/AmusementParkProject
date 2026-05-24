@@ -14,10 +14,12 @@ using AmusementPark.WebAPI.Contracts.Users;
 using AmusementPark.WebAPI.Extensions;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
+using AmusementPark.WebAPI.RateLimiting;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -76,6 +78,8 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthRegistration)]
     [ProducesResponseType(typeof(UserCreatedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateUserAsync([FromBody] UserCreateDto user, CancellationToken cancellationToken = default)
     {
@@ -115,7 +119,7 @@ public sealed class UsersController : ControllerBase
         string? currentUserId = this.User.GetUserId();
         if (currentUserId != id && !this.User.IsInRoles(UserRoleDto.ADMIN, UserRoleDto.MODERATOR))
         {
-            return CreateLegacyError(StatusCodes.Status403Forbidden, "You cannot access other user");
+            return this.ToProblemDetailsResult(StatusCodes.Status403Forbidden, "You cannot access another user account.", "user.access-denied");
         }
 
         ApplicationResult<User> result = await this.getUserByIdQueryHandler.HandleAsync(new GetUserByIdQuery(id), cancellationToken);
@@ -154,7 +158,7 @@ public sealed class UsersController : ControllerBase
         string? currentUserId = this.User.GetUserId();
         if (currentUserId != id && !this.User.IsInRoles(UserRoleDto.ADMIN, UserRoleDto.MODERATOR))
         {
-            return CreateLegacyError(StatusCodes.Status403Forbidden, "You cannot update other user");
+            return this.ToProblemDetailsResult(StatusCodes.Status403Forbidden, "You cannot update another user account.", "user.update-denied");
         }
 
         ApplicationResult<User> result = await this.updateUserProfileCommandHandler.HandleAsync(
@@ -177,14 +181,14 @@ public sealed class UsersController : ControllerBase
     {
         if (!string.Equals(changePasswordDto.NewPassword, changePasswordDto.NewPasswordConfirm, StringComparison.Ordinal))
         {
-            return CreateLegacyError(StatusCodes.Status400BadRequest, "Passwords do not match.");
+            return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Passwords do not match.", "password.confirmation-mismatch");
         }
 
         string? currentUserId = this.User.GetUserId();
         bool isAdminOrModerator = this.User.IsInRoles(UserRoleDto.ADMIN, UserRoleDto.MODERATOR);
         if (currentUserId != idUser && !isAdminOrModerator)
         {
-            return CreateLegacyError(StatusCodes.Status403Forbidden, "You cannot update other user password");
+            return this.ToProblemDetailsResult(StatusCodes.Status403Forbidden, "You cannot update another user password.", "password.update-denied");
         }
 
         bool isSelfChange = currentUserId == idUser;
@@ -204,6 +208,8 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("confirm-email")]
+    [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthEmailChallenge)]
     [ProducesResponseType(typeof(EmailConfirmedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ConfirmEmailAsync([FromBody] ConfirmEmailRequestDto confirmEmailRequestDto, CancellationToken cancellationToken = default)
     {
@@ -223,6 +229,8 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("resend-confirmation")]
+    [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthEmailChallenge)]
     [ProducesResponseType(typeof(ConfirmationEmailResentDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ResendConfirmationAsync([FromBody] ResendConfirmationEmailDto resendConfirmationEmailDto, CancellationToken cancellationToken = default)
     {
@@ -242,6 +250,8 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("forgot-password")]
+    [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthEmailChallenge)]
     [ProducesResponseType(typeof(EmailPasswordSendedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ForgotPasswordAsync([FromBody] ForgotPasswordDto forgotPasswordDto, CancellationToken cancellationToken = default)
     {
@@ -261,6 +271,8 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("reset-password")]
+    [AllowAnonymous]
+    [EnableRateLimiting(RateLimitPolicyNames.AuthPasswordReset)]
     [ProducesResponseType(typeof(PasswordResetedDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ResetPasswordAsync([FromBody] ResetPasswordDto resetPasswordDto, CancellationToken cancellationToken = default)
     {
@@ -280,6 +292,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("roles/assign/{userId}")]
+    [AdminAudit("user.role.assign", "User", TargetIdRouteKey = "userId")]
     [Authorize(Roles = AuthorizationRoleGroups.Admin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(RoleAssignedDto), StatusCodes.Status200OK)]
@@ -298,6 +311,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpDelete("roles/remove/{userId}")]
+    [AdminAudit("user.role.remove", "User", TargetIdRouteKey = "userId")]
     [Authorize(Roles = AuthorizationRoleGroups.Admin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(RoleRemovedDto), StatusCodes.Status200OK)]
@@ -316,6 +330,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("lock")]
+    [AdminAudit("user.lock", "User")]
     [Authorize(Roles = AuthorizationRoleGroups.ModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(UserLockedDto), StatusCodes.Status200OK)]
@@ -331,6 +346,7 @@ public sealed class UsersController : ControllerBase
     }
 
     [HttpPost("unlock")]
+    [AdminAudit("user.unlock", "User")]
     [Authorize(Roles = AuthorizationRoleGroups.ModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(UserUnlockedDto), StatusCodes.Status200OK)]
@@ -345,15 +361,4 @@ public sealed class UsersController : ControllerBase
         return this.Ok(result.Value.ToUnlockedDto());
     }
 
-    private static ObjectResult CreateLegacyError(int statusCode, string message)
-    {
-        return new ObjectResult(new
-        {
-            StatusCode = statusCode,
-            Message = message,
-        })
-        {
-            StatusCode = statusCode,
-        };
-    }
 }

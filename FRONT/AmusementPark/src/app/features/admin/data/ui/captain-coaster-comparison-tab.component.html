@@ -9,7 +9,7 @@
         [icon]="isLoadingPage() ? 'pi pi-spin pi-spinner' : (isLoaded() ? 'pi pi-refresh' : 'pi pi-download')"
         class="p-button-sm"
         [disabled]="isLoadingPage() || session() === null"
-        (click)="captainCoasterComparisonFacade.loadComparisonAsync()">
+        (click)="loadComparisonResultsAsync()">
       </button>
     </div>
   </ng-template>
@@ -61,6 +61,12 @@
       <span class="filter-total">{{ totalCount() | number }} résultats filtrés</span>
     </div>
 
+    @if (totalCount() === 0) {
+      <div class="not-loaded-hint comparison-empty-hint">
+        <i class="pi pi-info-circle"></i>
+        <span>{{ getEmptyComparisonMessage() }}</span>
+      </div>
+    } @else {
     <div class="bulk-actions">
       <div class="bulk-actions__selection">
         <p-checkbox
@@ -140,5 +146,6 @@
       [alwaysShow]="true"
       (pageChanged)="captainCoasterComparisonFacade.onPageChange($event)">
     </app-pagination>
+    }
   </ng-container>
 </p-card>

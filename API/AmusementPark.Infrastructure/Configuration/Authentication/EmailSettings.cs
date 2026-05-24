@@ -19,7 +19,7 @@ public sealed class EmailSettings
 
     public string Password { get; set; } = string.Empty;
 
-    public string FromAddress { get; set; } = "noreply@amusement-park.fun";
+    public string FromAddress { get; set; } = "noreply@amusement-parks.fun";
 
     public string FromName { get; set; } = "Amusement Park";
 }

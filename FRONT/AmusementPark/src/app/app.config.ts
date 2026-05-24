@@ -6,6 +6,7 @@ import {
   HTTP_INTERCEPTORS,
   HttpClient
 } from '@angular/common/http';
+import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -19,6 +20,7 @@ import { AuthService } from './services/auth/auth.service';
 import { LanguageInterceptor } from '@core/http/interceptors/language.interceptor';
 import { AuthInterceptor } from '@core/http/interceptors/auth.interceptor';
 import AmusementParkPreset from './config/primeng-preset';
+import { MatomoPageViewTrackingService } from '@core/analytics/matomo-page-view-tracking.service';
 
 import { SelectModule } from 'primeng/select';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -33,10 +35,10 @@ import { AvatarModule } from 'primeng/avatar';
 import { PaginatorModule } from 'primeng/paginator';
 import { MultiSelectModule } from 'primeng/multiselect';
 
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: {
@@ -60,11 +62,16 @@ export const appConfig: ApplicationConfig = {
     ),
 
     provideAnimations(),
+    provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
 
     provideAppInitializer(() => {
       const initializerFn = initializeApp(inject(TranslationService), inject(AuthService));
       return initializerFn();
+    }),
+
+    provideAppInitializer(() => {
+      inject(MatomoPageViewTrackingService).initialize();
     }),
 
     {

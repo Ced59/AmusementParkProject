@@ -1,9 +1,14 @@
-import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Observable } from 'rxjs';
+
+import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult, AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
+import { ParkType } from '@app/models/parks/park-type';
 import { Pagination } from '@app/models/shared/pagination';
-import { ParksApiResponse } from '@app/models/parks/parks_api_response';
+import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
 interface AdminParksViewModel {
@@ -21,6 +26,10 @@ export class AdminParksStateFacade {
   private readonly currentPageSignal = signal(1);
   private readonly pageSizeSignal = signal(10);
   private readonly searchQuerySignal = signal('');
+  private readonly visibilityFilterSignal = signal<boolean | null>(null);
+  private readonly adminReviewStatusFilterSignal = signal<AdminReviewStatus | null>(null);
+  private readonly typeFilterSignal = signal<ParkType | null>(null);
+  private readonly countryCodeFilterSignal = signal('');
 
   public readonly state = this.screenStateStore.state;
   public readonly loading = this.screenStateStore.isLoading;
@@ -29,6 +38,16 @@ export class AdminParksStateFacade {
   public readonly currentPage = this.currentPageSignal.asReadonly();
   public readonly pageSize = this.pageSizeSignal.asReadonly();
   public readonly searchQuery = this.searchQuerySignal.asReadonly();
+  public readonly visibilityFilter = this.visibilityFilterSignal.asReadonly();
+  public readonly adminReviewStatusFilter = this.adminReviewStatusFilterSignal.asReadonly();
+  public readonly typeFilter = this.typeFilterSignal.asReadonly();
+  public readonly countryCodeFilter = this.countryCodeFilterSignal.asReadonly();
+  public readonly filters = computed<ParkAdminListFilters>(() => ({
+    isVisible: this.visibilityFilterSignal(),
+    adminReviewStatus: this.adminReviewStatusFilterSignal(),
+    type: this.typeFilterSignal(),
+    countryCode: this.countryCodeFilterSignal().trim() || null
+  }));
 
   constructor(private readonly parksApiService: ParksApiService,
     private readonly destroyRef: DestroyRef
@@ -38,6 +57,7 @@ export class AdminParksStateFacade {
   loadParks(page: number = this.currentPageSignal(), size: number = this.pageSizeSignal()): void {
     const previousData: AdminParksViewModel | undefined = this.screenStateStore.data();
     const trimmedQuery: string = this.searchQuerySignal().trim();
+    const filters: ParkAdminListFilters = this.filters();
 
     this.currentPageSignal.set(page);
     this.pageSizeSignal.set(size);
@@ -46,7 +66,8 @@ export class AdminParksStateFacade {
     const handleResponse = (response: ParksApiResponse, currentPage: number, currentSize: number) => {
       const parks: Park[] = (response.data ?? []).map((park: Park) => ({
         ...park,
-        isVisible: park.isVisible ?? false
+        isVisible: park.isVisible ?? false,
+        adminReviewStatus: park.adminReviewStatus ?? 'ToReview'
       }));
       const pagination: Pagination | null = response.pagination ?? null;
       const viewModel: AdminParksViewModel = {
@@ -70,7 +91,7 @@ export class AdminParksStateFacade {
     };
 
     if (trimmedQuery.length > 0) {
-      this.parksApiService.searchParks(trimmedQuery, page, size).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      this.parksApiService.searchParks(trimmedQuery, page, size, false, null, filters).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (response: ParksApiResponse) => {
           handleResponse(response, page, size);
         },
@@ -82,7 +103,7 @@ export class AdminParksStateFacade {
       return;
     }
 
-    this.parksApiService.getParksPaginated(page, size).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getParksPaginated(page, size, false, null, filters).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: ParksApiResponse) => {
         handleResponse(response, page, size);
       },
@@ -99,5 +120,17 @@ export class AdminParksStateFacade {
 
   clearSearchQuery(): void {
     this.searchQuerySignal.set('');
+  }
+
+  updateFilters(filters: ParkAdminListFilters): void {
+    this.visibilityFilterSignal.set(filters.isVisible ?? null);
+    this.adminReviewStatusFilterSignal.set(filters.adminReviewStatus ?? null);
+    this.typeFilterSignal.set(filters.type ?? null);
+    this.countryCodeFilterSignal.set(filters.countryCode ?? '');
+    this.loadParks(1, this.pageSizeSignal());
+  }
+
+  updateBulkAdministration(request: BulkAdministrationUpdateRequest): Observable<BulkAdministrationUpdateResult> {
+    return this.parksApiService.updateParksBulkAdministration(request);
   }
 }

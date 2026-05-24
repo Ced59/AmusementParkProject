@@ -1,0 +1,186 @@
+.park-items-map {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.2rem, 3vw, 1.5rem);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--app-surface) 92%, transparent), color-mix(in srgb, var(--app-surface-2) 100%, transparent));
+  box-shadow: var(--shadow-card);
+}
+
+.park-items-map__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.park-items-map__heading {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.park-items-map__heading h2 {
+  margin: 0;
+  color: var(--app-heading);
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  letter-spacing: -0.035em;
+}
+
+.park-items-map__heading p {
+  max-width: 70ch;
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.65;
+}
+
+.park-items-map__zone-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.park-items-map__zone-filter {
+  width: auto;
+}
+
+.park-items-map__zone-filter strong {
+  margin-left: 0.15rem;
+  color: var(--app-heading);
+}
+
+.park-items-map__zone-filter--active {
+  color: var(--app-primary) !important;
+  border-color: color-mix(in srgb, var(--app-primary) 36%, transparent) !important;
+  background: color-mix(in srgb, var(--app-primary-soft) 64%, transparent) !important;
+}
+
+.park-items-map__body {
+  display: grid;
+  gap: 1rem;
+}
+
+.park-items-map__slot {
+  display: block;
+  min-width: 0;
+}
+
+.park-items-map__categories {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.9rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--app-bg) 42%, transparent);
+}
+
+.park-items-map__categories-title {
+  color: var(--app-text-faint);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.park-items-map__category-button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.65rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.72rem 0.8rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-surface) 82%, transparent);
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+  text-align: left;
+  transition: color var(--app-transition-base), border-color var(--app-transition-base), background var(--app-transition-base), transform var(--app-transition-base);
+}
+
+.park-items-map__category-button:hover,
+.park-items-map__category-button--active {
+  color: var(--app-heading);
+  border-color: color-mix(in srgb, var(--app-accent-cyan) 34%, transparent);
+  background: color-mix(in srgb, var(--app-accent-cyan) 9%, var(--app-surface));
+  transform: translateY(-1px);
+}
+
+.park-items-map__category-icon {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--app-accent-cyan) 12%, transparent);
+  color: var(--app-accent-cyan);
+}
+
+.park-items-map__category-button strong {
+  color: var(--app-heading);
+}
+
+:host ::ng-deep .park-items-map__slot .leaflet-map-container {
+  height: 28rem;
+  border-radius: var(--radius-lg);
+}
+
+:host ::ng-deep .leaflet-popup-content .leaflet-map-popup__lines span:first-child {
+  color: #6a4424;
+  font-weight: 700;
+}
+
+@media (min-width: 1100px) {
+  .park-items-map__body {
+    grid-template-columns: minmax(0, 1fr) 17rem;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 680px) {
+  .park-items-map {
+    padding: 1rem;
+  }
+
+  .park-items-map__zone-filter {
+    width: 100%;
+  }
+
+  :host ::ng-deep .park-items-map__slot .leaflet-map-container {
+    height: 22rem;
+  }
+}
+
+/* M10 responsive hardening for the park-detail items map. */
+@media (min-width: 681px) and (max-width: 1099px) {
+  .park-items-map__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .park-items-map__body {
+    grid-template-columns: 1fr;
+  }
+
+  .park-items-map__categories {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .park-items-map__categories-title {
+    grid-column: 1 / -1;
+  }
+
+  :host ::ng-deep .park-items-map__slot .leaflet-map-container {
+    height: clamp(23rem, 48vw, 30rem);
+  }
+}
+
+@media (max-width: 760px) {
+  .park-items-map__categories {
+    grid-template-columns: 1fr;
+  }
+}

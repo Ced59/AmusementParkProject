@@ -57,7 +57,8 @@ export function createAdminParkItemEditForm(formBuilder: FormBuilder, parkId: st
       fastPassEntrance: createLocationGroup(formBuilder),
       reducedMobilityEntrance: createLocationGroup(formBuilder)
     }),
-    isVisible: [true]
+    isVisible: [true],
+    adminReviewStatus: ['Validated']
   });
 }
 
@@ -76,7 +77,8 @@ export function patchAdminParkItemEditForm(
     latitude: item.latitude,
     longitude: item.longitude,
     descriptions: item.descriptions ?? [],
-    isVisible: item.isVisible ?? true
+    isVisible: item.isVisible ?? true,
+    adminReviewStatus: item.adminReviewStatus ?? 'Validated'
   }, { emitEvent: false });
 
   patchAttractionDetails(formBuilder, form, item.attractionDetails ?? null);
@@ -130,7 +132,8 @@ export function mapAdminParkItemEditFormToParkItem(form: FormGroup): ParkItem {
     descriptions: raw.descriptions ?? [],
     attractionDetails: category === 'Attraction' ? buildAttractionDetails(raw.attractionDetails) : null,
     attractionLocations: category === 'Attraction' ? buildAttractionLocations(raw.attractionLocations) : null,
-    isVisible: !!raw.isVisible
+    isVisible: !!raw.isVisible,
+    adminReviewStatus: raw.adminReviewStatus ?? 'Validated'
   };
 }
 
@@ -401,6 +404,8 @@ function toParkItemType(value: unknown, category: ParkItemCategory): ParkItemTyp
       'WalkThrough',
       'Playground',
       'InteractiveExperience',
+      'Game',
+      'MeetAndGreet',
       'ObservationRide',
       'Other'
     ]
@@ -415,9 +420,9 @@ function toParkItemType(value: unknown, category: ParkItemCategory): ParkItemTyp
             : category === 'Shop'
               ? ['Shop']
               : category === 'Service'
-                ? ['Service']
+                ? ['Service', 'Toilets', 'FirstAid', 'Information', 'Locker', 'Parking']
                 : category === 'Transport'
-                  ? ['Transport']
+                  ? ['Transport', 'Station']
                   : ['Other'];
 
   return allowedTypes.includes(normalized as ParkItemType)
@@ -483,4 +488,5 @@ interface AdminParkItemFormValue {
   attractionDetails?: AdminAttractionDetailsFormValue | null;
   attractionLocations?: AdminAttractionLocationsFormValue | null;
   isVisible?: boolean | null;
+  adminReviewStatus?: ParkItem['adminReviewStatus'];
 }

@@ -1,4 +1,4 @@
-<div class="p-3">
+<div class="reference-edit-page">
   <p-card>
     <h2>
       {{
@@ -8,32 +8,59 @@
       }}
     </h2>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
-      <div class="field">
-        <label for="name">{{ 'admin.parkFounders.editPage.name' | translate }}</label>
-        <input id="name" pInputText type="text" formControlName="name" />
-      </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="reference-form">
+      <section class="form-section">
+        <h3>{{ 'admin.references.sections.identity' | translate }}</h3>
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">{{ 'admin.parkFounders.editPage.name' | translate }}</label>
+            <input id="name" pInputText type="text" formControlName="name" />
+          </div>
+          <div class="field">
+            <label for="occupation">{{ 'admin.references.fields.occupation' | translate }}</label>
+            <input id="occupation" pInputText type="text" formControlName="occupation" />
+          </div>
+          <div class="field">
+            <label for="birthDate">{{ 'admin.references.fields.birthDate' | translate }}</label>
+            <input id="birthDate" pInputText type="text" formControlName="birthDate" />
+          </div>
+          <div class="field">
+            <label for="deathDate">{{ 'admin.references.fields.deathDate' | translate }}</label>
+            <input id="deathDate" pInputText type="text" formControlName="deathDate" />
+          </div>
+          <div class="field">
+            <label for="birthPlace">{{ 'admin.references.fields.birthPlace' | translate }}</label>
+            <input id="birthPlace" pInputText type="text" formControlName="birthPlace" />
+          </div>
+          <div class="field">
+            <label for="nationalityCountryCode">{{ 'admin.references.fields.nationalityCountryCode' | translate }}</label>
+            <input id="nationalityCountryCode" pInputText type="text" formControlName="nationalityCountryCode" />
+          </div>
+          <div class="field field--wide">
+            <label for="websiteUrl">{{ 'admin.references.fields.websiteUrl' | translate }}</label>
+            <input id="websiteUrl" pInputText type="url" formControlName="websiteUrl" />
+          </div>
+        </div>
+      </section>
 
-      <div class="field mt-3">
-        <label>{{ 'admin.parkFounders.editPage.biography' | translate }}</label>
-        <app-localized-rich-text-editor formControlName="biography"></app-localized-rich-text-editor>
-      </div>
+      <section class="form-section">
+        <h3>{{ 'admin.references.sections.content' | translate }}</h3>
+        <div class="field">
+          <label>{{ 'admin.parkFounders.editPage.biography' | translate }}</label>
+          <app-localized-rich-text-editor formControlName="biography"></app-localized-rich-text-editor>
+        </div>
+      </section>
 
-      <div class="flex justify-content-end gap-2 mt-3">
-        <button
-          pButton
-          type="button"
-          class="p-button-secondary"
-          (click)="onCancel()"
-          [label]="'actions.cancel' | translate">
-        </button>
+      <app-admin-reference-images
+        *ngIf="isEditMode"
+        [ownerId]="founderId"
+        [ownerType]="imageOwnerType"
+        [category]="imageCategory">
+      </app-admin-reference-images>
 
-        <button
-          pButton
-          type="submit"
-          class="p-button-primary"
-          [label]="'actions.save' | translate">
-        </button>
+      <div class="form-actions">
+        <button pButton type="button" class="p-button-secondary" (click)="onCancel()" [label]="'actions.cancel' | translate"></button>
+        <button pButton type="submit" class="p-button-primary" [label]="'actions.save' | translate"></button>
       </div>
     </form>
   </p-card>

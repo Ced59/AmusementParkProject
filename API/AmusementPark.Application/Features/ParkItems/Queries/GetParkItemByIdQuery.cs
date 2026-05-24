@@ -8,4 +8,5 @@ namespace AmusementPark.Application.Features.ParkItems.Queries;
 /// Récupère un élément de parc par identifiant.
 /// </summary>
 /// <param name="ParkItemId">Identifiant de l'élément.</param>
-public sealed record GetParkItemByIdQuery(string ParkItemId) : IQuery<ApplicationResult<ParkItem>>;
+/// <param name="IncludeHidden">Indique si les éléments non visibles peuvent être retournés.</param>
+public sealed record GetParkItemByIdQuery(string ParkItemId, bool IncludeHidden = false) : IQuery<ApplicationResult<ParkItem>>;

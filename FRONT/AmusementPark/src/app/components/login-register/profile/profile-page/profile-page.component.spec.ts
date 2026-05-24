@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfilePageComponent } from './profile-page.component';
+import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 
 describe('ProfilePageComponent', () => {
   let component: ProfilePageComponent;
@@ -8,13 +9,12 @@ describe('ProfilePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [ProfilePageComponent]
-})
-    .compileComponents();
-    
+      imports: [...COMMON_TEST_IMPORTS, ProfilePageComponent],
+      providers: provideCommonTestDependencies(),
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ProfilePageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

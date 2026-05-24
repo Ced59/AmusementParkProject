@@ -1,27 +1,75 @@
-<section class="about-page">
-  <div class="page-header">
+<section class="about-page public-page">
+  <section class="about-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <div class="about-hero__content">
+      <app-ui-kicker tone="lime" iconClass="pi pi-compass">
+        {{ 'aboutPage.kicker' | translate }}
+      </app-ui-kicker>
+
+      <h1 class="about-hero__title">{{ 'aboutPage.title' | translate }}</h1>
+      <p class="about-hero__lead">{{ 'aboutPage.lead' | translate }}</p>
+
+      <div class="about-hero__actions">
+        <a appUiButton="primary" [routerLink]="['../parks']">{{ 'aboutPage.primaryCta' | translate }}</a>
+        <a appUiButton="ghost" [routerLink]="['../home']">{{ 'aboutPage.secondaryCta' | translate }}</a>
+      </div>
+    </div>
+
+    <div class="about-hero__stats" aria-label="Project highlights">
+      <div class="app-stat-card app-stat-card--gold">
+        <span class="app-stat-card__label">{{ 'aboutPage.stats.parksLabel' | translate }}</span>
+        <strong class="app-stat-card__value">2900+</strong>
+        <span class="app-stat-card__hint">{{ 'aboutPage.stats.parksHint' | translate }}</span>
+      </div>
+      <div class="app-stat-card app-stat-card--sky">
+        <span class="app-stat-card__label">{{ 'aboutPage.stats.mapLabel' | translate }}</span>
+        <strong class="app-stat-card__value">MVP</strong>
+        <span class="app-stat-card__hint">{{ 'aboutPage.stats.mapHint' | translate }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <app-ui-section-header
+      kickerTone="sky"
+      kickerIconClass="pi pi-sparkles"
+      kickerLabelKey="aboutPage.mission.kicker"
+      titleKey="aboutPage.mission.title"
+      subtitleKey="aboutPage.mission.subtitle">
+    </app-ui-section-header>
+
+    <div class="about-card-grid">
+      <article class="about-feature-card" appUiSurface="shell" appUiSurfacePadding="regular">
+        <app-ui-chip tone="primary" iconClass="pi pi-map-marker">{{ 'aboutPage.cards.discover.badge' | translate }}</app-ui-chip>
+        <h2>{{ 'aboutPage.cards.discover.title' | translate }}</h2>
+        <p>{{ 'aboutPage.cards.discover.text' | translate }}</p>
+      </article>
+
+      <article class="about-feature-card" appUiSurface="shell" appUiSurfacePadding="regular">
+        <app-ui-chip tone="lime" iconClass="pi pi-search">{{ 'aboutPage.cards.explore.badge' | translate }}</app-ui-chip>
+        <h2>{{ 'aboutPage.cards.explore.title' | translate }}</h2>
+        <p>{{ 'aboutPage.cards.explore.text' | translate }}</p>
+      </article>
+
+      <article class="about-feature-card" appUiSurface="shell" appUiSurfacePadding="regular">
+        <app-ui-chip tone="rose" iconClass="pi pi-heart">{{ 'aboutPage.cards.enjoy.badge' | translate }}</app-ui-chip>
+        <h2>{{ 'aboutPage.cards.enjoy.title' | translate }}</h2>
+        <p>{{ 'aboutPage.cards.enjoy.text' | translate }}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-section about-section--split" appUiSurface="panel" appUiSurfacePadding="spacious">
     <div>
-      <h1 class="page-title">About</h1>
-      <p class="page-subtitle">
-        Learn more about the Amusement Parks project and the experience behind it.
-      </p>
-    </div>
-  </div>
-
-  <div class="about-grid">
-    <div class="about-card">
-      <h2>Discover</h2>
-      <p>Browse parks, compare destinations and find the right place faster.</p>
+      <app-ui-kicker tone="gold" iconClass="pi pi-code">{{ 'aboutPage.clean.kicker' | translate }}</app-ui-kicker>
+      <h2 class="about-section__title">{{ 'aboutPage.clean.title' | translate }}</h2>
+      <p class="about-section__text">{{ 'aboutPage.clean.text' | translate }}</p>
     </div>
 
-    <div class="about-card">
-      <h2>Explore</h2>
-      <p>Use a clearer interface, cleaner filters and a more consistent navigation.</p>
+    <div class="about-pill-list">
+      <app-ui-chip tone="soft">SOLID</app-ui-chip>
+      <app-ui-chip tone="soft">Clean Architecture</app-ui-chip>
+      <app-ui-chip tone="soft">Angular</app-ui-chip>
+      <app-ui-chip tone="soft">.NET</app-ui-chip>
     </div>
-
-    <div class="about-card">
-      <h2>Enjoy</h2>
-      <p>A modern visual experience built around your existing PrimeNG theme system.</p>
-    </div>
-  </div>
+  </section>
 </section>

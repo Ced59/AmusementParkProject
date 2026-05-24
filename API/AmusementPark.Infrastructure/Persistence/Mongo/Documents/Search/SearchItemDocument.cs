@@ -30,6 +30,30 @@ public sealed class SearchItemDocument : MongoGeolocatedDocumentBase
     [BsonIgnoreIfNull]
     public string? Description { get; set; }
 
+    [BsonElement("city")]
+    [BsonIgnoreIfNull]
+    public string? City { get; set; }
+
+    [BsonElement("countryCode")]
+    [BsonIgnoreIfNull]
+    public string? CountryCode { get; set; }
+
+    [BsonElement("logoImageId")]
+    [BsonIgnoreIfNull]
+    public string? LogoImageId { get; set; }
+
+    [BsonElement("attractionCount")]
+    [BsonIgnoreIfNull]
+    public int? AttractionCount { get; set; }
+
+    [BsonElement("parentParkId")]
+    [BsonIgnoreIfNull]
+    public string? ParentParkId { get; set; }
+
+    [BsonElement("parentParkName")]
+    [BsonIgnoreIfNull]
+    public string? ParentParkName { get; set; }
+
     [BsonElement("keywords")]
     public List<string> Keywords { get; set; } = new();
 

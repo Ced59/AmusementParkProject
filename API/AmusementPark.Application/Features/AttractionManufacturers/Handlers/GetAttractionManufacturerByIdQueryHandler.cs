@@ -45,7 +45,12 @@ public sealed class GetAttractionManufacturerByIdQueryHandler : IQueryHandler<Ge
         {
             Id = entity.Id,
             Name = entity.Name,
+            LegalName = entity.LegalName,
+            FoundedYear = entity.FoundedYear,
+            ClosedYear = entity.ClosedYear,
+            ContactDetails = entity.ContactDetails,
             Biography = entity.Biography,
+            AdminReviewStatus = entity.AdminReviewStatus,
             AttractionCount = attractionCount,
         });
     }

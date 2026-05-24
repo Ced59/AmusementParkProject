@@ -1,0 +1,136 @@
+<app-page-state
+  [state]="state().kind"
+  [messages]="{
+    loadingTitleKey: 'parks.reference.loadingTitle',
+    loadingMessageKey: 'parks.reference.loadingMessage',
+    errorTitleKey: 'parks.reference.errorTitle',
+    errorMessageKey: 'parks.reference.errorMessage'
+  }">
+  @if (reference(); as currentReference) {
+    <section class="park-reference-detail" [attr.data-reference-kind]="currentReference.kind">
+      <section class="park-reference-hero">
+        <div class="park-reference-hero__bg" aria-hidden="true"></div>
+        <div class="park-reference-hero__pattern" aria-hidden="true"></div>
+
+        <div class="park-reference-hero__content">
+          <div class="park-reference-hero__icon">
+            <i [class]="currentReference.heroIconClass" aria-hidden="true"></i>
+          </div>
+
+          <div class="park-reference-hero__main">
+            <div class="park-reference-hero__meta">
+              <app-ui-kicker [iconClass]="currentReference.heroIconClass">
+                {{ currentReference.badgeKey | translate }}
+              </app-ui-kicker>
+              <app-ui-chip tone="soft" iconClass="pi pi-database">
+                {{ currentReference.titleKey | translate }}
+              </app-ui-chip>
+            </div>
+
+            <h1 class="park-reference-hero__name">{{ currentReference.name }}</h1>
+            @if (currentReference.legalName) {
+              <p class="park-reference-hero__legal-name">{{ currentReference.legalName }}</p>
+            }
+          </div>
+
+          <button appUiButton="ghost" type="button" (click)="goBack()">
+            <i class="pi pi-arrow-left" aria-hidden="true"></i>
+            <span>{{ 'parks.reference.backToParks' | translate }}</span>
+          </button>
+        </div>
+      </section>
+
+      <main class="park-reference-body">
+        <div class="park-reference-layout">
+          <section class="park-reference-card park-reference-card--description">
+            <app-ui-kicker iconClass="pi pi-align-left">
+              {{ currentReference.descriptionTitleKey | translate }}
+            </app-ui-kicker>
+
+            @if (currentReference.richDescription) {
+              <div class="park-reference-card__rich-text" [innerHTML]="currentReference.richDescription | safeRichHtml"></div>
+            } @else {
+              <p class="park-reference-card__empty">{{ currentReference.emptyDescriptionKey | translate }}</p>
+            }
+          </section>
+
+          @if (currentReference.facts.length > 0) {
+            <aside class="park-reference-card park-reference-card--facts">
+              <app-ui-kicker iconClass="pi pi-info-circle">
+                {{ 'parks.reference.facts.title' | translate }}
+              </app-ui-kicker>
+
+              <div class="reference-facts">
+                @for (fact of currentReference.facts; track fact.labelKey + fact.value) {
+                  <div class="reference-fact">
+                    <span class="reference-fact__icon"><i [class]="fact.iconClass" aria-hidden="true"></i></span>
+                    <span class="reference-fact__label">{{ fact.labelKey | translate }}</span>
+                    @if (fact.href) {
+                      <a class="reference-fact__value" [class.reference-fact__value--mono]="fact.isMonospace" [href]="fact.href" [attr.target]="fact.isExternal ? '_blank' : null" [attr.rel]="fact.isExternal ? 'noopener noreferrer nofollow' : null">
+                        {{ fact.value }}
+                      </a>
+                    } @else {
+                      <span class="reference-fact__value" [class.reference-fact__value--mono]="fact.isMonospace">{{ fact.value }}</span>
+                    }
+                  </div>
+                }
+              </div>
+            </aside>
+          }
+        </div>
+
+        @if (currentReference.photos.length > 0) {
+          <app-ui-photo-carousel
+            [photos]="currentReference.photos"
+            [categories]="currentReference.photoCategories"
+            tone="sky"
+            kickerIconClass="pi pi-images"
+            kickerLabelKey="parks.reference.photos.kicker"
+            titleKey="parks.reference.photos.title"
+            subtitleKey="parks.reference.photos.subtitle">
+          </app-ui-photo-carousel>
+        }
+
+        @if (currentReference.kind === 'manufacturer') {
+          <section class="park-reference-card park-reference-card--attractions">
+            <div class="attractions-head">
+              <app-ui-kicker iconClass="pi pi-bolt">
+                {{ 'parks.reference.manufacturer.attractionsKicker' | translate }}
+              </app-ui-kicker>
+              <h2>{{ 'parks.reference.manufacturer.attractionsTitle' | translate }}</h2>
+              <p>{{ 'parks.reference.manufacturer.attractionsSubtitle' | translate }}</p>
+            </div>
+
+            @if (currentReference.attractions.length > 0) {
+              <div class="attractions-grid">
+                @for (attraction of currentReference.attractions; track attraction.id) {
+                  @if (attraction.routerLink) {
+                    <a class="attraction-card" [routerLink]="attraction.routerLink">
+                      <span class="attraction-card__icon"><i class="pi pi-bolt" aria-hidden="true"></i></span>
+                      <span class="attraction-card__body">
+                        <strong>{{ attraction.name }}</strong>
+                        <span>{{ attraction.parkName }}</span>
+                      </span>
+                      <span class="attraction-card__meta">{{ attraction.type }}</span>
+                    </a>
+                  } @else {
+                    <article class="attraction-card">
+                      <span class="attraction-card__icon"><i class="pi pi-bolt" aria-hidden="true"></i></span>
+                      <span class="attraction-card__body">
+                        <strong>{{ attraction.name }}</strong>
+                        <span>{{ attraction.parkName }}</span>
+                      </span>
+                      <span class="attraction-card__meta">{{ attraction.type }}</span>
+                    </article>
+                  }
+                }
+              </div>
+            } @else {
+              <p class="park-reference-card__empty">{{ 'parks.reference.manufacturer.emptyAttractions' | translate }}</p>
+            }
+          </section>
+        }
+      </main>
+    </section>
+  }
+</app-page-state>

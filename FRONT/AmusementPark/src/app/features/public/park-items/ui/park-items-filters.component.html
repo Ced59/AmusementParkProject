@@ -1,52 +1,13 @@
-<section class="public-filter-panel park-items-filters" id="park-items-results">
-  <div class="public-section-header park-items-filters__header">
-    <div>
-      <span class="public-kicker">
-        <i class="pi pi-sliders-h"></i>
-        {{ 'parkVisitor.summary.viewAllItems' | translate }}
-      </span>
-      <h2 class="public-section-header__title">{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
-      <ng-content select="[filters-subtitle]"></ng-content>
-    </div>
-  </div>
-
-  <div class="public-filter-grid">
-    <div class="public-field park-items-filters__search-field">
-      <label class="public-field__label">{{ 'parkItems.filters.search' | translate }}</label>
-      <input
-        pInputText
-        type="text"
-        class="public-input"
-        [ngModel]="searchTerm()"
-        [placeholder]="'parkItems.filters.searchPlaceholder' | translate"
-        (ngModelChange)="onSearchChanged($event)" />
-    </div>
-
-    <div class="public-field">
-      <label class="public-field__label">{{ 'parkItems.filters.category' | translate }}</label>
-      <select class="public-select" [ngModel]="selectedCategory()" (ngModelChange)="onCategoryChanged($event)">
-        <option *ngFor="let option of categoryOptions()" [ngValue]="option.value">
-          {{ resolveOptionLabel(option, 'parkItems.filters.allCategories') | translate }}
-        </option>
-      </select>
-    </div>
-
-    <div class="public-field">
-      <label class="public-field__label">{{ 'parkItems.filters.type' | translate }}</label>
-      <select class="public-select" [ngModel]="selectedType()" (ngModelChange)="onTypeChanged($event)">
-        <option *ngFor="let option of typeOptions()" [ngValue]="option.value">
-          {{ resolveOptionLabel(option, 'parkItems.filters.allTypes') | translate }}
-        </option>
-      </select>
-    </div>
-
-    <div class="public-field" *ngIf="hasZones()">
-      <label class="public-field__label">{{ 'parkItems.filters.zone' | translate }}</label>
-      <select class="public-select" [ngModel]="selectedZoneId()" (ngModelChange)="onZoneChanged($event)">
-        <option *ngFor="let option of zoneOptions()" [ngValue]="option.value">
-          {{ resolveOptionLabel(option, 'parkItems.filters.allZones') | translate }}
-        </option>
-      </select>
-    </div>
-  </div>
-</section>
+<app-ui-search-panel
+  panelId="park-items-results"
+  searchInputId="park-items-search-input"
+  searchLabelKey="parkItems.filters.search"
+  searchPlaceholderKey="parkItems.filters.searchPlaceholder"
+  clearActionLabelKey="parkItems.filters.clear"
+  [searchTerm]="searchTerm()"
+  [filters]="filters()"
+  [showClearAction]="false"
+  (searchTermChange)="onSearchChanged($event)"
+  (filterChanged)="onFilterChanged($event)">
+  <ng-content select="[filters-subtitle]"></ng-content>
+</app-ui-search-panel>

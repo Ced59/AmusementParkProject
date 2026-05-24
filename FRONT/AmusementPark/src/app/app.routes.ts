@@ -14,25 +14,16 @@ export const routes: Routes = [
     path: ':lang',
     canActivate: [languageGuard],
     children: [
-      { path: 'home', loadComponent: () => import('./components/home/home.component').then((m) => m.HomeComponent) },
-      { path: 'parks', loadComponent: () => import('./features/public/parks/pages/park-list-page.component').then((m) => m.ParkListPageComponent) },
-      { path: 'about', loadComponent: () => import('./components/about/about.component').then((m) => m.AboutComponent) },
-
-      { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then((m) => m.ProfileModule) },
-
-      { path: 'confirm-account', loadComponent: () => import('./components/login-register/confirm-account-page/confirm-account-page.component').then((m) => m.ConfirmAccountPageComponent) },
-      { path: 'forgot-password', loadComponent: () => import('./components/login-register/forgot-password-page/forgot-password-page.component').then((m) => m.ForgotPasswordPageComponent) },
-      { path: 'reset-password', loadComponent: () => import('./components/login-register/reset-password-page/reset-password-page.component').then((m) => m.ResetPasswordPageComponent) },
-
-      { path: 'park/:id/:slug/items', loadComponent: () => import('./features/public/park-items/pages/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
-      { path: 'park/:id/:slug/item/:itemId/:itemSlug', loadComponent: () => import('./features/public/park-items/pages/park-item-detail-page.component').then((m) => m.ParkItemDetailPageComponent) },
-      { path: 'park/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-detail-page.component').then((m) => m.ParkDetailPageComponent) },
-
       {
         path: 'admin',
-        loadComponent: () => import('./components/admin/admin-dashboard/admin-dashboard.component').then((m) => m.AdminDashboardComponent),
+        loadComponent: () => import('@ui/layouts/admin-app-layout/admin-app-layout.component').then((m) => m.AdminAppLayoutComponent),
         canActivate: [authGuard, adminGuard],
         children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            loadComponent: () => import('./components/admin/admin-dashboard/admin-dashboard.component').then((m) => m.AdminDashboardComponent)
+          },
           {
             path: 'users',
             loadChildren: () =>
@@ -58,6 +49,12 @@ export const routes: Routes = [
                 .then((m) => m.AdminOperatorsModule)
           },
           {
+            path: 'founders',
+            loadChildren: () =>
+              import('./components/admin/founders/admin-founders/admin-founders.module')
+                .then((m) => m.AdminFoundersModule)
+          },
+          {
             path: 'manufacturers',
             loadChildren: () =>
               import('./components/admin/manufacturers/admin-manufacturers/admin-manufacturers.module')
@@ -70,6 +67,10 @@ export const routes: Routes = [
                 .then((m) => m.AdminDataModule)
           },
           {
+            path: 'audit-logs',
+            loadComponent: () => import('./components/admin/audit-logs/admin-audit-logs.component').then((m) => m.AdminAuditLogsComponent)
+          },
+          {
             path: 'images',
             loadChildren: () =>
               import('./components/admin/site/admin-site/admin-site.module')
@@ -79,13 +80,41 @@ export const routes: Routes = [
             path: 'site',
             redirectTo: 'images',
             pathMatch: 'full'
-          },
-          { path: '', redirectTo: 'users', pathMatch: 'full' }
+          }
         ]
       },
+      {
+        path: '',
+        loadComponent: () => import('@ui/layouts/account-layout/account-layout.component').then((m) => m.AccountLayoutComponent),
+        children: [
+          { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then((m) => m.ProfileModule) },
+          { path: 'confirm-account', loadComponent: () => import('./components/login-register/confirm-account-page/confirm-account-page.component').then((m) => m.ConfirmAccountPageComponent) },
+          { path: 'forgot-password', loadComponent: () => import('./components/login-register/forgot-password-page/forgot-password-page.component').then((m) => m.ForgotPasswordPageComponent) },
+          { path: 'reset-password', loadComponent: () => import('./components/login-register/reset-password-page/reset-password-page.component').then((m) => m.ResetPasswordPageComponent) }
+        ]
+      },
+      {
+        path: '',
+        loadComponent: () => import('@ui/layouts/public-app-layout/public-app-layout.component').then((m) => m.PublicAppLayoutComponent),
+        children: [
+          { path: 'home', loadComponent: () => import('./components/home/home.component').then((m) => m.HomeComponent) },
+          { path: 'parks', loadComponent: () => import('./features/public/parks/pages/park-list-page.component').then((m) => m.ParkListPageComponent) },
+          { path: 'about', loadComponent: () => import('./components/about/about.component').then((m) => m.AboutComponent) },
+          { path: 'privacy', loadComponent: () => import('./features/public/legal/pages/privacy-policy-page.component').then((m) => m.PrivacyPolicyPageComponent) },
+          { path: 'not-found', loadComponent: () => import('./features/public/not-found/pages/public-not-found-page.component').then((m) => m.PublicNotFoundPageComponent) },
 
-      { path: '', redirectTo: 'home', pathMatch: 'full' }
+          { path: 'park-operator/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'operator' } },
+          { path: 'park-founder/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'founder' } },
+          { path: 'park-manufacturer/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-reference-detail-page.component').then((m) => m.ParkReferenceDetailPageComponent), data: { referenceKind: 'manufacturer' } },
+          { path: 'park/:id/:slug/items', loadComponent: () => import('./features/public/park-items/pages/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
+          { path: 'park/:id/:slug/item/:itemId/:itemSlug', loadComponent: () => import('./features/public/park-items/pages/park-item-detail-page.component').then((m) => m.ParkItemDetailPageComponent) },
+          { path: 'park/:id/:slug', loadComponent: () => import('./features/public/parks/pages/park-detail-page.component').then((m) => m.ParkDetailPageComponent) },
+
+          { path: '', redirectTo: 'home', pathMatch: 'full' },
+          { path: '**', loadComponent: () => import('./features/public/not-found/pages/public-not-found-page.component').then((m) => m.PublicNotFoundPageComponent) }
+        ]
+      }
     ]
   },
-  { path: '**', redirectTo: 'en/home', pathMatch: 'full' }
+  { path: '**', redirectTo: 'en/not-found', pathMatch: 'full' }
 ];

@@ -144,13 +144,15 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             return;
         }
 
+        Dictionary<string, int> attractionCountsByParkId = await this.LoadAttractionCountsByParkIdsAsync(parks.Select(item => item.Id).ToList(), cancellationToken);
         List<string> originalIds = parks.Select(item => $"park_{item.Id}").ToList();
         Dictionary<string, SearchItemDocument> existingByOriginalId = await this.LoadExistingSearchItemsByOriginalIdsAsync(originalIds, cancellationToken);
         List<WriteModel<SearchItemDocument>> writes = new List<WriteModel<SearchItemDocument>>(parks.Count);
 
         foreach (ParkDocument park in parks)
         {
-            SearchItemDocument document = this.BuildParkSearchItem(park);
+            attractionCountsByParkId.TryGetValue(park.Id, out int attractionCount);
+            SearchItemDocument document = this.BuildParkSearchItem(park, attractionCount);
             if (existingByOriginalId.TryGetValue(document.OriginalId, out SearchItemDocument? existing))
             {
                 document.Id = existing.Id;
@@ -220,6 +222,29 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         await this.searchCollection.BulkWriteAsync(writes, new BulkWriteOptions { IsOrdered = false }, cancellationToken);
     }
 
+    private async Task<Dictionary<string, int>> LoadAttractionCountsByParkIdsAsync(
+        IReadOnlyCollection<string> parkIds,
+        CancellationToken cancellationToken)
+    {
+        if (parkIds.Count == 0)
+        {
+            return new Dictionary<string, int>(StringComparer.Ordinal);
+        }
+
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.In(item => item.ParkId, parkIds)
+            & Builders<ParkItemDocument>.Filter.Eq(item => item.Category, AmusementPark.Core.Domain.Parks.ParkItemCategory.Attraction)
+            & Builders<ParkItemDocument>.Filter.Eq(item => item.IsVisible, true);
+
+        List<ParkItemDocument> attractions = await this.parkItemsCollection
+            .Find(filter)
+            .Project(item => new ParkItemDocument { Id = item.Id, ParkId = item.ParkId })
+            .ToListAsync(cancellationToken);
+
+        return attractions
+            .GroupBy(item => item.ParkId, StringComparer.Ordinal)
+            .ToDictionary(group => group.Key, group => group.Count(), StringComparer.Ordinal);
+    }
+
     private async Task<Dictionary<string, SearchItemDocument>> LoadExistingSearchItemsByOriginalIdsAsync(
         IReadOnlyCollection<string> originalIds,
         CancellationToken cancellationToken)
@@ -231,7 +256,7 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         return existingItems.ToDictionary(item => item.OriginalId, item => item, StringComparer.Ordinal);
     }
 
-    private SearchItemDocument BuildParkSearchItem(ParkDocument source)
+    private SearchItemDocument BuildParkSearchItem(ParkDocument source, int attractionCount)
     {
         List<string> keywords = this.BuildKeywords(source.Name, source.CountryCode, source.City, source.PostalCode, source.Type?.ToString());
 
@@ -244,6 +269,10 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             Title = source.Name ?? string.Empty,
             Subtitle = BuildParkSubtitle(source),
             Description = this.ResolveLocalizedText(source.Descriptions) ?? this.BuildParkFallbackDescription(source),
+            City = source.City,
+            CountryCode = source.CountryCode,
+            LogoImageId = source.CurrentLogoImageId,
+            AttractionCount = attractionCount,
             Keywords = keywords,
             CompositeScore = 0.0,
             Latitude = source.Latitude,
@@ -272,6 +301,11 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             Title = source.Name,
             Subtitle = string.IsNullOrWhiteSpace(parkName) ? HumanizeValue(source.Category.ToString()) : parkName,
             Description = this.ResolveLocalizedText(source.Descriptions) ?? fallbackDescription,
+            City = park?.City,
+            CountryCode = park?.CountryCode,
+            LogoImageId = park?.CurrentLogoImageId,
+            ParentParkId = park?.Id,
+            ParentParkName = parkName,
             Keywords = keywords,
             CompositeScore = 0.0,
             Latitude = source.Latitude,
@@ -290,7 +324,9 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             throw new InvalidOperationException($"Park '{resourceId}' not found for search projection.");
         }
 
-        return this.BuildParkSearchItem(source);
+        Dictionary<string, int> attractionCountsByParkId = await this.LoadAttractionCountsByParkIdsAsync(new[] { source.Id }, cancellationToken);
+        attractionCountsByParkId.TryGetValue(source.Id, out int attractionCount);
+        return this.BuildParkSearchItem(source, attractionCount);
     }
 
     private async Task<SearchItemDocument> BuildParkItemSearchItemAsync(string resourceId, CancellationToken cancellationToken)

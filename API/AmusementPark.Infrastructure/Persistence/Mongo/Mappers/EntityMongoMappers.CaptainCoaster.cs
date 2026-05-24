@@ -60,6 +60,12 @@ internal static partial class EntityMongoMappers
             Subtitle = document.Subtitle,
             Category = document.Category,
             Description = document.Description,
+            City = document.City,
+            CountryCode = document.CountryCode,
+            LogoImageId = document.LogoImageId,
+            AttractionCount = document.AttractionCount,
+            ParentParkId = document.ParentParkId,
+            ParentParkName = document.ParentParkName,
             Score = document.CompositeScore,
         };
     }

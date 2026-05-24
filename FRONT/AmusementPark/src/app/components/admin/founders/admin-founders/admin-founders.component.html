@@ -1,0 +1,102 @@
+<p-card styleClass="admin-list-card">
+  <ng-template pTemplate="header">
+    <div class="admin-list-header">
+      <div>
+        <span class="admin-kicker">M16 · Admin</span>
+        <h2>{{ 'admin.parkFounders.title' | translate }}</h2>
+        <p>{{ 'admin.parkFounders.subtitle' | translate }}</p>
+      </div>
+
+      <span class="admin-total-pill">
+        {{ 'admin.parkFounders.total' | translate:{ count: totalCount() } }}
+      </span>
+    </div>
+  </ng-template>
+
+  <div class="admin-toolbar">
+    <div class="admin-toolbar__search">
+      <label class="admin-field-label" for="admin-founders-search">{{ 'admin.filters.search' | translate }}</label>
+      <div class="admin-search-field">
+        <span class="pi pi-search" aria-hidden="true"></span>
+        <input
+          id="admin-founders-search"
+          pInputText
+          type="text"
+          [ngModel]="stateFacade.searchQuery()"
+          (ngModelChange)="onSearchQueryChanged($event)"
+          [placeholder]="'admin.parkFounders.searchPlaceholder' | translate" />
+      </div>
+    </div>
+
+    <div class="admin-toolbar__actions">
+      <a
+        pButton
+        type="button"
+        icon="pi pi-plus"
+        class="p-button-sm"
+        [routerLink]="['/', currentLang, 'admin', 'founders', 'new']"
+        [label]="'admin.parkFounders.create' | translate">
+      </a>
+    </div>
+  </div>
+
+  <p-table
+    [value]="founders()"
+    [loading]="loading()"
+    [responsiveLayout]="'scroll'"
+    styleClass="admin-data-table">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'admin.parkFounders.name' | translate }}</th>
+        <th>{{ 'admin.references.fields.occupation' | translate }}</th>
+        <th>{{ 'admin.parkFounders.lifeDates' | translate }}</th>
+        <th>{{ 'admin.references.fields.nationalityCountryCode' | translate }}</th>
+        <th>{{ 'admin.parkFounders.actions' | translate }}</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-founder>
+      <tr>
+        <td><strong class="admin-row-title">{{ founder.name }}</strong></td>
+        <td>{{ founder.occupation || '—' }}</td>
+        <td>{{ hasLifeDates(founder) ? getLifeDates(founder) : '—' }}</td>
+        <td>
+          @if (founder.nationalityCountryCode) {
+            <p-tag [value]="founder.nationalityCountryCode" severity="secondary"></p-tag>
+          } @else {
+            <span>—</span>
+          }
+        </td>
+        <td>
+          <a
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-sm"
+            [routerLink]="['/', currentLang, 'admin', 'founders', 'edit', founder.id]"
+            [label]="'actions.edit' | translate">
+          </a>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5">
+          <app-empty-state
+            [compact]="true"
+            titleKey="common.emptyTitle"
+            messageKey="admin.parkFounders.empty">
+          </app-empty-state>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <app-pagination
+    [rows]="pageSize()"
+    [first]="(currentPage() - 1) * pageSize()"
+    [totalRecords]="totalCount()"
+    [rowsPerPageOptions]="[10, 20, 50, 100]"
+    (pageChanged)="onPageChanged($event)">
+  </app-pagination>
+</p-card>

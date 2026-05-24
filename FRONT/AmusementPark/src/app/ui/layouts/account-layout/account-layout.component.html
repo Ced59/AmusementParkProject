@@ -1,0 +1,29 @@
+<div class="app-route-layout app-account-layout">
+  <app-public-header></app-public-header>
+
+  <main class="app-layout-main app-account-layout__main">
+    <div class="app-account-layout__shell">
+      <aside class="app-account-layout__aside" aria-label="Account experience introduction">
+        <app-ui-kicker tone="lime" iconClass="pi pi-sparkles">
+          {{ 'accountLayout.kicker' | translate }}
+        </app-ui-kicker>
+
+        <h1 class="app-account-layout__title">{{ 'accountLayout.title' | translate }}</h1>
+        <p class="app-account-layout__lead">{{ 'accountLayout.subtitle' | translate }}</p>
+
+        <div class="app-account-layout__chips" aria-label="Account feature highlights">
+          <app-ui-chip tone="primary" iconClass="pi pi-shield">{{ 'accountLayout.security' | translate }}</app-ui-chip>
+          <app-ui-chip tone="sky" iconClass="pi pi-language">{{ 'accountLayout.languages' | translate }}</app-ui-chip>
+          <app-ui-chip tone="gold" iconClass="pi pi-user">{{ 'accountLayout.profile' | translate }}</app-ui-chip>
+        </div>
+      </aside>
+
+      <section class="app-account-layout__content">
+        <router-outlet></router-outlet>
+      </section>
+    </div>
+  </main>
+
+  <app-public-mobile-bottom-nav></app-public-mobile-bottom-nav>
+  <app-public-footer></app-public-footer>
+</div>

@@ -1,110 +1,269 @@
+@let currentState = state;
+@let currentPark = park;
+@let currentSummary = summary;
+@let currentItemsMap = itemsMap;
+@let currentZones = zones;
+@let currentNearbyParks = nearbyParks;
+@let currentNearbyState = nearbyState;
+
 <app-page-state
-  [state]="state().kind"
+  [state]="currentState"
   [messages]="{
     loadingTitleKey: 'parks.detail.loadingTitle',
     loadingMessageKey: 'parks.detail.loadingMessage',
     errorTitleKey: 'parks.detail.errorTitle',
     errorMessageKey: 'parks.detail.errorMessage'
   }">
-  <section class="park-detail public-page page-shell" *ngIf="park() as currentPark">
-    <div class="page-header park-detail__header">
-      <div>
-        <span class="public-kicker">
-          <i class="pi pi-compass"></i>
-          {{ 'parks.detail.heroBadge' | translate }}
-        </span>
-      </div>
+  @if (currentPark) {
+    <section class="park-detail">
+      <section class="park-banner">
+        <div class="park-banner__bg" aria-hidden="true"></div>
+        <div class="park-banner__pattern" aria-hidden="true"></div>
 
-      <div class="detail-actions">
-        <button
-          pButton
-          type="button"
-          icon="pi pi-arrow-left"
-          class="p-button-outlined"
-          [label]="'parks.actions.backToList' | translate"
-          (click)="goBack()"></button>
+        @if (currentPark.heroImageId) {
+          <div class="park-banner__photo" aria-hidden="true">
+            <app-image-display
+              [imageId]="currentPark.heroImageId"
+              [alt]="currentPark.name"
+              loading="eager"
+              imgClass="park-banner__photo-img"
+              placeholderClass="park-banner__photo-placeholder"
+              placeholderKind="photo">
+            </app-image-display>
+          </div>
+        }
 
-        <button
-          *ngIf="currentPark.exploreLink"
-          pButton
-          type="button"
-          icon="pi pi-sitemap"
-          [label]="'parkVisitor.summary.viewAllItems' | translate"
-          (click)="goToExplore()"></button>
-      </div>
-    </div>
-
-    <app-park-hero-section [park]="currentPark"></app-park-hero-section>
-
-    <div class="park-detail__summary-grid" *ngIf="summary() as currentSummary">
-      <app-park-content-summary [summary]="currentSummary"></app-park-content-summary>
-
-      <section class="public-shell-card park-detail__quick-actions">
-        <div class="public-panel__content public-shell-stack">
-          <div>
-            <span class="public-kicker">
-              <i class="pi pi-star"></i>
-              {{ 'parks.detail.heroBadge' | translate }}
-            </span>
-            <h2 class="park-detail__quick-title">{{ 'parkVisitor.summary.title' | translate }}</h2>
-            <p class="public-muted">{{ 'parkVisitor.summary.subtitle' | translate }}</p>
+        <div class="park-banner__content">
+          <div class="park-logo-frame" [class.park-logo-frame--placeholder]="!currentPark.logoImageId">
+            <app-image-display
+              [imageId]="currentPark.logoImageId"
+              [alt]="currentPark.name || 'Park logo'"
+              placeholderKind="park">
+            </app-image-display>
           </div>
 
-          <div class="public-pill-list">
-            <span class="public-pill public-pill--soft" *ngIf="currentPark.countryCode">
-              <i class="pi pi-map-marker"></i>
-              {{ currentPark.countryCode }}
-            </span>
-            <span class="public-pill public-pill--soft" *ngIf="currentPark.city">
-              <i class="pi pi-building"></i>
-              {{ currentPark.city }}
-            </span>
-            <span class="public-pill public-pill--gold" *ngIf="currentPark.hasLocationInfo">
-              <i class="pi pi-map"></i>
-              {{ 'parks.detail.location.title' | translate }}
-            </span>
+          <div class="park-banner__info">
+            <div class="park-banner__meta">
+              <app-ui-kicker iconClass="pi pi-compass">
+                {{ 'parks.detail.heroBadge' | translate }}
+              </app-ui-kicker>
+
+              @if (currentPark.countryCode) {
+                <app-ui-chip tone="primary" iconClass="pi pi-flag">{{ currentPark.countryCode }}</app-ui-chip>
+              }
+
+              @if (currentPark.locationLine) {
+                <app-ui-chip tone="soft" iconClass="pi pi-map-marker">{{ currentPark.locationLine }}</app-ui-chip>
+              }
+
+              @if (currentPark.typeLabelKey) {
+                <app-ui-chip tone="gold" iconClass="pi pi-tag">{{ currentPark.typeLabelKey | translate }}</app-ui-chip>
+              }
+            </div>
+
+            <h1 class="park-banner__name">{{ currentPark.name }}</h1>
+
           </div>
 
-          <div class="public-cta-row">
-            <button
-              *ngIf="currentPark.exploreLink"
-              pButton
-              type="button"
-              icon="pi pi-sitemap"
-              [label]="'parkVisitor.summary.viewAllItems' | translate"
-              (click)="goToExplore()"></button>
+          <div class="park-banner__actions">
+            <button appUiButton="ghost" type="button" (click)="goBack()">
+              <i class="pi pi-arrow-left" aria-hidden="true"></i>
+              <span>{{ 'parks.actions.backToList' | translate }}</span>
+            </button>
 
-            <a
-              *ngIf="currentPark.websiteUrl"
-              pButton
-              class="p-button-outlined"
-              icon="pi pi-external-link"
-              [href]="currentPark.websiteUrl | safeExternalUrl"
-              target="_blank"
-              rel="noreferrer noopener"
-              [label]="'parks.actions.website' | translate">
-            </a>
+            @if (currentPark.exploreLink) {
+              <button appUiButton="primary" type="button" (click)="goToExplore()">
+                <i class="pi pi-sitemap" aria-hidden="true"></i>
+                <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+              </button>
+            }
+
+            @if (currentPark.websiteUrl) {
+              <a
+                appUiButton="ghost"
+                [href]="currentPark.websiteUrl | safeExternalUrl"
+                target="_blank"
+                rel="noreferrer noopener">
+                <i class="pi pi-external-link" aria-hidden="true"></i>
+                <span>{{ 'parks.actions.website' | translate }}</span>
+              </a>
+            }
           </div>
         </div>
       </section>
-    </div>
 
-    <div class="park-detail__grid">
-      <app-park-practical-info-section
-        *ngIf="currentPark.hasPracticalInfo"
-        [park]="currentPark">
-      </app-park-practical-info-section>
+      <div class="park-detail__body">
+        <main class="park-main">
+          @if (currentPark.stats.length > 0) {
+            <div class="park-stats-row">
+              @for (stat of currentPark.stats; track stat.labelKey + '-' + stat.value) {
+                <div
+                  class="park-stats-row__item"
+                  [class.park-stats-row__item--country]="stat.labelKey === 'parks.fields.country'"
+                  [class.park-stats-row__item--items]="stat.labelKey === 'parkVisitor.summary.totalItems'">
+                  <app-ui-stat-card
+                    [tone]="stat.tone ?? 'soft'"
+                    [labelKey]="stat.labelKey"
+                    [value]="stat.value"
+                    [hintKey]="stat.hintKey ?? null"
+                    [hintText]="stat.hintText ?? null">
+                  </app-ui-stat-card>
+                </div>
+              }
+            </div>
+          }
 
-      <app-park-location-section
-        *ngIf="currentPark.hasLocationInfo"
-        [park]="currentPark">
-      </app-park-location-section>
-    </div>
+          <section class="park-desc">
+            <app-ui-kicker iconClass="pi pi-align-left">
+              {{ 'parks.detail.description.badge' | translate }}
+            </app-ui-kicker>
+            <h2 class="park-desc__title">{{ 'parks.detail.description.title' | translate }}</h2>
+            @if (currentPark.description) {
+              <div class="park-desc__text" [innerHTML]="currentPark.description | safeRichHtml"></div>
+            } @else {
+              <p class="park-desc__text">{{ 'parks.detail.description.empty' | translate }}</p>
+            }
+          </section>
 
-    <app-park-nearby-section
-      [parks]="nearbyParks()"
-      [currentLang]="currentLang()"
-      [state]="nearbyState()">
-    </app-park-nearby-section>
-  </section>
+
+          @if (currentSummary) {
+            <app-park-content-summary class="park-content-summary-block" [summary]="currentSummary"></app-park-content-summary>
+          }
+
+          <app-park-items-map-section class="park-items-map-block" [map]="currentItemsMap"></app-park-items-map-section>
+
+          <app-park-zones-section class="park-zones-block" [zones]="currentZones"></app-park-zones-section>
+
+
+          @if (currentPark.photos.length > 0) {
+            <app-ui-photo-carousel
+              class="park-photos-block"
+              [photos]="currentPark.photos"
+              [categories]="currentPark.photoCategories"
+              [defaultDisplayLimit]="8"
+              [displayLimits]="[4, 8, 12, 0]"
+              tone="sky"
+              kickerIconClass="pi pi-images"
+              kickerLabelKey="parks.photos.kicker"
+              titleKey="parks.photos.title"
+              subtitleKey="parks.photos.subtitle"
+              categoryAriaLabelKey="parks.photos.controls.category"
+              allCategoriesLabelKey="parks.photos.controls.allCategories"
+              displayCountLabelKey="parks.photos.controls.displayCount"
+              countLimitLabelKey="parks.photos.controls.count"
+              allLimitLabelKey="parks.photos.controls.all"
+              previousLabelKey="parks.photos.controls.previous"
+              nextLabelKey="parks.photos.controls.next"
+              openFullscreenLabelKey="parks.photos.controls.openFullscreen"
+              closeFullscreenLabelKey="parks.photos.controls.closeFullscreen"
+              lightboxTitleKey="parks.photos.lightbox.title"
+              currentLabelKey="parks.photos.current">
+            </app-ui-photo-carousel>
+          }
+        </main>
+
+        <aside class="park-sidebar" aria-label="Park detail sidebar">
+          @if (currentPark.practicalRows.length > 0) {
+            <section class="park-side-card park-side-card--practical info-card">
+              <header class="info-card__header">
+                <span class="info-card__header-icon"><i class="pi pi-info-circle" aria-hidden="true"></i></span>
+                <div>
+                  <h2 class="info-card__title">{{ 'parks.detail.practical.title' | translate }}</h2>
+                  <p>{{ 'parks.detail.practical.subtitle' | translate }}</p>
+                </div>
+              </header>
+              <dl class="park-info-list info-card__body">
+                @for (row of currentPark.practicalRows; track row.labelKey + '-' + row.value) {
+                  <div
+                    class="park-info-row"
+                    [class.park-info-row--reference]="row.routerLink && row.routerLink.length > 0">
+                    <dt>
+                      <i [class]="row.iconClass" aria-hidden="true"></i>
+                      <span>{{ row.labelKey | translate }}</span>
+                    </dt>
+                    <dd>
+                      @if (row.externalUrl) {
+                        <a [href]="row.externalUrl | safeExternalUrl" target="_blank" rel="noreferrer noopener">
+                          {{ row.value }}
+                        </a>
+                      } @else if (row.routerLink && row.routerLink.length > 0) {
+                        <a
+                          [routerLink]="row.routerLink"
+                          class="park-info-row__link"
+                          [title]="row.value"
+                          [attr.aria-label]="('parks.detail.practical.openReference' | translate: { name: row.value })">
+                          <span>{{ row.value }}</span>
+                          <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                      } @else if (row.valueKey) {
+                        {{ row.valueKey | translate }}
+                      } @else {
+                        {{ row.value }}
+                      }
+                    </dd>
+                  </div>
+                }
+              </dl>
+            </section>
+          }
+
+
+
+          @if (currentPark.hasLocationInfo) {
+            <app-park-location-section class="park-side-card--location" [park]="currentPark"></app-park-location-section>
+          }
+
+          <section class="park-side-card park-side-card--weather park-side-coming-soon info-card">
+            <header class="info-card__header">
+              <span class="info-card__header-icon info-card__header-icon--sky"><i class="pi pi-cloud" aria-hidden="true"></i></span>
+              <div>
+                <h2 class="info-card__title">{{ 'parks.detail.weather.title' | translate }}</h2>
+                <p>{{ 'parks.detail.weather.subtitle' | translate }}</p>
+              </div>
+            </header>
+            <div class="park-side-coming-soon__body info-card__body">
+              <span class="park-side-coming-soon__badge">{{ 'parks.detail.comingSoon.badge' | translate }}</span>
+              <p>{{ 'parks.detail.comingSoon.message' | translate }}</p>
+            </div>
+          </section>
+
+          <section class="park-side-card park-side-card--hours park-side-coming-soon info-card">
+            <header class="info-card__header">
+              <span class="info-card__header-icon info-card__header-icon--lime"><i class="pi pi-clock" aria-hidden="true"></i></span>
+              <div>
+                <h2 class="info-card__title">{{ 'parks.detail.hours.title' | translate }}</h2>
+                <p>{{ 'parks.detail.hours.subtitle' | translate }}</p>
+              </div>
+            </header>
+            <div class="park-side-coming-soon__body info-card__body">
+              <span class="park-side-coming-soon__badge">{{ 'parks.detail.comingSoon.badge' | translate }}</span>
+              <p>{{ 'parks.detail.comingSoon.message' | translate }}</p>
+            </div>
+          </section>
+
+          <section class="park-side-card park-side-card--prices park-side-coming-soon info-card">
+            <header class="info-card__header">
+              <span class="info-card__header-icon info-card__header-icon--rose"><i class="pi pi-ticket" aria-hidden="true"></i></span>
+              <div>
+                <h2 class="info-card__title">{{ 'parks.detail.prices.title' | translate }}</h2>
+                <p>{{ 'parks.detail.prices.subtitle' | translate }}</p>
+              </div>
+            </header>
+            <div class="park-side-coming-soon__body info-card__body">
+              <span class="park-side-coming-soon__badge">{{ 'parks.detail.comingSoon.badge' | translate }}</span>
+              <p>{{ 'parks.detail.comingSoon.message' | translate }}</p>
+            </div>
+          </section>
+
+        </aside>
+      </div>
+
+      <app-park-nearby-section
+        [parks]="currentNearbyParks"
+        [currentLang]="currentLang"
+        [sourceName]="currentPark.name"
+        [state]="currentNearbyState">
+      </app-park-nearby-section>
+    </section>
+  }
 </app-page-state>

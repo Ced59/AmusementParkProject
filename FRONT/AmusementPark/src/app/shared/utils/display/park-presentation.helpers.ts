@@ -14,8 +14,9 @@ export function buildEntitySlug(value: string | null | undefined): string {
     .replace(/(^-|-$)/g, '');
 }
 
-export function buildParkLocationLine(park: Park | null | undefined): string | null {
-  const parts: string[] = [park?.city, park?.countryCode]
+export function buildParkLocationLine(park: Park | null | undefined, countryNameOverride: string | null = null): string | null {
+  const countryLabel: string | null = countryNameOverride?.trim() || park?.countryCode?.trim() || null;
+  const parts: string[] = [park?.city, countryLabel]
     .filter((part: string | undefined | null): part is string => !!part?.trim());
 
   return parts.length > 0 ? parts.join(' · ') : null;

@@ -1,10 +1,9 @@
-import { buildParkSlug } from '@shared/utils/display/park-presentation.helpers';
 import {
-  buildEntitySlug,
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
   resolveParkItemDescription
 } from '@shared/utils/display/park-item-presentation.helpers';
+import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemCardViewModel } from '../models/park-item-card.model';
@@ -65,20 +64,13 @@ function buildParkItemHighlights(item: ParkItem, manufacturerName: string | null
 }
 
 function buildParkItemLink(park: Park | null, item: ParkItem, currentLanguage: string): string[] | null {
-  if (!park?.id || !park?.name || !item.id || !item.name) {
-    return null;
-  }
-
-  return [
-    '/',
-    currentLanguage,
-    'park',
-    park.id,
-    buildParkSlug(park.name),
-    'item',
-    item.id,
-    buildEntitySlug(item.name)
-  ];
+  return buildPublicParkItemRouteCommands({
+    language: currentLanguage,
+    parkId: park?.id,
+    parkName: park?.name,
+    itemId: item.id,
+    itemName: item.name
+  });
 }
 
 function resolveParkItemTypeIconClass(type: string | null | undefined): string {
@@ -91,6 +83,40 @@ function resolveParkItemTypeIconClass(type: string | null | undefined): string {
       return 'pi pi-sync';
     case 'DarkRide':
       return 'pi pi-moon';
+    case 'FamilyRide':
+    case 'MeetAndGreet':
+      return 'pi pi-heart';
+    case 'ThrillRide':
+      return 'pi pi-send';
+    case 'Restaurant':
+    case 'Snack':
+      return 'pi pi-shopping-bag';
+    case 'Show':
+      return 'pi pi-video';
+    case 'Hotel':
+      return 'pi pi-home';
+    case 'Shop':
+      return 'pi pi-shopping-cart';
+    case 'Game':
+    case 'InteractiveExperience':
+      return 'pi pi-bullseye';
+    case 'Transport':
+    case 'TransportRide':
+      return 'pi pi-car';
+    case 'Station':
+      return 'pi pi-directions';
+    case 'Toilets':
+      return 'pi pi-users';
+    case 'FirstAid':
+      return 'pi pi-plus-circle';
+    case 'Information':
+      return 'pi pi-info-circle';
+    case 'Locker':
+      return 'pi pi-lock';
+    case 'Parking':
+      return 'pi pi-car';
+    case 'Service':
+      return 'pi pi-wrench';
     default:
       return 'pi pi-star';
   }

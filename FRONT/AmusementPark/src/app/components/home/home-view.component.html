@@ -1,137 +1,162 @@
 <section class="public-page home-page">
-  <section class="public-hero public-hero--split home-hero">
-    <div class="public-hero__content">
-      <span class="public-kicker">
-        <i class="pi pi-compass"></i>
-        {{ 'home.heroBadge' | translate }}
-      </span>
+  <section class="home-hero">
+    <div class="home-hero__backdrop" aria-hidden="true"></div>
+    <div class="home-hero__inner">
+      <div class="home-hero__content">
+        <div class="home-hero__kicker">
+          <i class="pi pi-compass" aria-hidden="true"></i>
+          <span>{{ 'home.heroBadge' | translate }}</span>
+        </div>
 
-      <div>
-        <h1 class="page-title home-hero__title">{{ 'home.home_title' | translate }}</h1>
-        <p class="public-lead home-hero__lead">
-          {{ 'home.heroSubtitle' | translate }}
-        </p>
+        <div class="home-hero__headline">
+          <h1 class="home-hero__title">
+            <span class="home-hero__title-line">{{ 'home.heroTitleFind' | translate }}</span>
+            <span class="home-hero__title-line">{{ 'home.heroTitleYour' | translate }}</span>
+            <span class="home-hero__title-line home-hero__title-line--accent">{{ 'home.heroTitleThrill' | translate }}</span>
+            <span class="home-hero__title-line home-hero__title-line--outline">{{ 'home.heroTitlePerfect' | translate }}</span>
+          </h1>
+          <p class="home-hero__lead">
+            {{ 'home.heroSubtitle' | translate }}
+          </p>
+        </div>
+
+        <div class="home-hero__actions">
+          <a appUiButton="primary" [routerLink]="['/', currentLang(), 'parks']">
+            <i class="pi pi-map" aria-hidden="true"></i>
+            <span>{{ 'home.ctaBrowseParks' | translate }}</span>
+          </a>
+
+          <a appUiButton="ghost" [routerLink]="['/', currentLang(), 'about']">
+            <i class="pi pi-sparkles" aria-hidden="true"></i>
+            <span>{{ 'home.ctaLearnMore' | translate }}</span>
+          </a>
+        </div>
+
+        <div class="home-hero__stats" [attr.aria-label]="'home.stats.ariaLabel' | translate">
+          <article class="home-hero-stat home-hero-stat--orange">
+            <strong>{{ formatStatValue(homeStats()?.parksCount) }}</strong>
+            <span>{{ 'home.stats.parks' | translate }}</span>
+          </article>
+
+          <article class="home-hero-stat home-hero-stat--lime">
+            <strong>{{ formatStatValue(homeStats()?.attractionsCount) }}</strong>
+            <span>{{ 'home.stats.attractions' | translate }}</span>
+          </article>
+
+          <article class="home-hero-stat home-hero-stat--sky">
+            <strong>{{ formatStatValue(homeStats()?.countriesCount) }}</strong>
+            <span>{{ 'home.stats.countries' | translate }}</span>
+          </article>
+        </div>
       </div>
 
-      <div class="public-stat-grid home-hero__stats">
-        <article class="public-stat-card public-stat-card--accent">
-          <span class="public-stat-card__label">{{ 'home.featured.title' | translate }}</span>
-          <strong class="public-stat-card__value">{{ featuredParks().length }}</strong>
-          <span class="public-stat-card__hint">{{ 'home.featured.subtitle' | translate }}</span>
-        </article>
+      <div class="home-hero__spotlight" [attr.aria-label]="'home.heroCards.ariaLabel' | translate">
+        <div class="home-floating-stack">
+          @if (heroFeaturedParks().length > 0) {
+            @for (park of heroFeaturedParks(); track park.id ?? park.name; let index = $index) {
+              @if (buildParkLink(park); as parkLink) {
+                <a
+                  [class]="getHeroCardClass(index)"
+                  [routerLink]="parkLink"
+                  [attr.aria-label]="park.name">
+                  <span class="home-hero-card__icon">
+                    <i [class]="getHeroCardStyle(index).iconClass" aria-hidden="true"></i>
+                  </span>
+                  <span class="home-hero-card__content">
+                    <strong>{{ park.name }}</strong>
+                    <span>{{ park.locationLine || park.countryCode || ('home.heroCards.locationFallback' | translate) }}</span>
+                  </span>
+                  <span class="home-hero-card__tag">{{ getHeroCardStyle(index).tagKey | translate }}</span>
+                  <span class="home-hero-card__bar" aria-hidden="true">
+                    <span class="home-hero-card__bar-fill"></span>
+                  </span>
+                </a>
+              }
+            }
+          } @else {
+            <article class="home-hero-card home-hero-card--1 home-hero-card--primary home-hero-card--placeholder">
+              <span class="home-hero-card__icon"><i class="pi pi-map" aria-hidden="true"></i></span>
+              <span class="home-hero-card__content">
+                <strong>{{ 'home.heroCards.placeholderTitle' | translate }}</strong>
+                <span>{{ 'home.heroCards.placeholderSubtitle' | translate }}</span>
+              </span>
+              <span class="home-hero-card__tag">{{ 'home.heroCards.featured' | translate }}</span>
+              <span class="home-hero-card__bar" aria-hidden="true">
+                <span class="home-hero-card__bar-fill"></span>
+              </span>
+            </article>
 
-        <article class="public-stat-card">
-          <span class="public-stat-card__label">{{ 'home.search.resultsTitle' | translate }}</span>
-          <strong class="public-stat-card__value">{{ searchResultsTotal }}</strong>
-          <span class="public-stat-card__hint">
-            {{ searchResultsHintKey | translate }}
-          </span>
-        </article>
+            <article class="home-hero-card home-hero-card--2 home-hero-card--lime home-hero-card--placeholder">
+              <span class="home-hero-card__icon"><i class="pi pi-bolt" aria-hidden="true"></i></span>
+              <span class="home-hero-card__content">
+                <strong>{{ 'home.search.commandTitle' | translate }}</strong>
+                <span>{{ 'home.search.hintMessage' | translate }}</span>
+              </span>
+              <span class="home-hero-card__tag">{{ 'home.heroCards.sensations' | translate }}</span>
+              <span class="home-hero-card__bar" aria-hidden="true">
+                <span class="home-hero-card__bar-fill"></span>
+              </span>
+            </article>
 
-        <article class="public-stat-card">
-          <span class="public-stat-card__label">{{ 'parks.title' | translate }}</span>
-          <strong class="public-stat-card__value">{{ categoryOptions.length - 1 }}</strong>
-          <span class="public-stat-card__hint">{{ 'home.placeholder_category' | translate }}</span>
-        </article>
+            <article class="home-hero-card home-hero-card--3 home-hero-card--sky home-hero-card--placeholder">
+              <span class="home-hero-card__icon"><i class="pi pi-bolt" aria-hidden="true"></i></span>
+              <span class="home-hero-card__content">
+                <strong>{{ 'home.heroCards.placeholderTitle' | translate }}</strong>
+                <span>{{ 'home.heroCards.placeholderSubtitle' | translate }}</span>
+              </span>
+              <span class="home-hero-card__tag">{{ 'home.heroCards.featured' | translate }}</span>
+              <span class="home-hero-card__bar" aria-hidden="true">
+                <span class="home-hero-card__bar-fill"></span>
+              </span>
+            </article>
+
+            <article class="home-hero-card home-hero-card--4 home-hero-card--rose home-hero-card--placeholder">
+              <span class="home-hero-card__icon"><i class="pi pi-sparkles" aria-hidden="true"></i></span>
+              <span class="home-hero-card__content">
+                <strong>{{ 'home.search.commandTitle' | translate }}</strong>
+                <span>{{ 'home.search.hintMessage' | translate }}</span>
+              </span>
+              <span class="home-hero-card__tag">{{ 'home.heroCards.family' | translate }}</span>
+              <span class="home-hero-card__bar" aria-hidden="true">
+                <span class="home-hero-card__bar-fill"></span>
+              </span>
+            </article>
+          }
+        </div>
       </div>
-
-      <div class="public-cta-row">
-        <a
-          pButton
-          [routerLink]="['/', currentLang(), 'parks']"
-          icon="pi pi-map"
-          [label]="'home.ctaBrowseParks' | translate">
-        </a>
-
-        <a
-          pButton
-          class="p-button-outlined"
-          [routerLink]="['/', currentLang(), 'about']"
-          icon="pi pi-info-circle"
-          [label]="'home.ctaLearnMore' | translate">
-        </a>
-      </div>
-    </div>
-
-    <div class="public-hero__media home-hero__media">
-      <article class="public-feature-card home-feature-card">
-        <span class="public-feature-card__eyebrow">
-          <i class="pi pi-bolt"></i>
-          {{ 'parkVisitor.summary.badge' | translate }}
-        </span>
-        <h2 class="public-feature-card__title">{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
-        <p class="public-feature-card__text">{{ 'parkVisitor.summary.subtitle' | translate }}</p>
-      </article>
-
-      <article class="public-feature-card home-feature-card home-feature-card--accent">
-        <span class="public-feature-card__eyebrow">
-          <i class="pi pi-search"></i>
-          {{ 'home.search.resultsTitle' | translate }}
-        </span>
-        <h2 class="public-feature-card__title">{{ 'home.placeholder_search' | translate }}</h2>
-        <p class="public-feature-card__text">{{ 'home.search.hintMessage' | translate }}</p>
-      </article>
     </div>
   </section>
 
-  <section class="public-filter-panel home-search-panel">
-    <div class="public-section-header home-search-panel__header">
-      <div>
-        <span class="public-kicker">
-          <i class="pi pi-search"></i>
-          {{ 'home.search.resultsTitle' | translate }}
-        </span>
-        <h2 class="public-section-header__title">{{ 'home.placeholder_search' | translate }}</h2>
-        <p class="public-section-header__subtitle">{{ 'home.search.resultsSubtitle' | translate }}</p>
-      </div>
-    </div>
+  <app-ui-search-panel
+    id="home-search-panel"
+    class="home-command-center"
+    panelId="home-search-results"
+    searchInputId="home-search-input"
+    kickerIconClass="pi pi-search"
+    kickerLabelKey="home.search.kicker"
+    titleKey="home.search.commandTitle"
+    searchLabelKey="home.placeholder_search"
+    searchPlaceholderKey="home.placeholder_search"
+    clearActionLabelKey="parks.search.clear"
+    [searchTerm]="searchTerm()"
+    [filters]="searchFilters()"
+    (searchTermChange)="onSearchInput($event)"
+    (filterChanged)="onFilterChanged($event)"
+    (clearClicked)="onClearSearch()">
+    <p filters-subtitle class="home-command-center__subtitle">
+      {{ 'home.search.commandSubtitle' | translate }}
+    </p>
+  </app-ui-search-panel>
 
-    <div class="public-filter-grid home-search-grid">
-      <div class="public-field home-search-grid__field--search">
-        <label class="public-field__label">{{ 'home.placeholder_search' | translate }}</label>
-        <input
-          #searchInput
-          type="text"
-          pInputText
-          class="public-input"
-          [placeholder]="'home.placeholder_search' | translate"
-          [value]="searchTerm()"
-          (input)="onSearchInput(searchInput.value)" />
-      </div>
+  @if (hasPerformedSearch()) {
+    <section class="public-panel home-results" appUiSurface="panel" appUiSurfacePadding="regular">
+      <app-ui-section-header
+        kickerIconClass="pi pi-list"
+        kickerLabelKey="home.search.resultsTitle"
+        titleKey="home.search.resultsTitle"
+        subtitleKey="home.search.resultsSubtitle">
+      </app-ui-section-header>
 
-      <div class="public-field">
-        <label class="public-field__label">{{ 'home.placeholder_category' | translate }}</label>
-        <p-select
-          [options]="categoryOptions"
-          [ngModel]="selectedCategory()"
-          optionLabel="labelKey"
-          optionValue="value"
-          (ngModelChange)="onCategoryChange($event)">
-          <ng-template let-opt #selectedItem>
-            {{ opt?.labelKey ? (opt.labelKey | translate) : ('home.placeholder_category' | translate) }}
-          </ng-template>
-
-          <ng-template let-opt #item>
-            {{ opt.labelKey | translate }}
-          </ng-template>
-        </p-select>
-      </div>
-    </div>
-  </section>
-
-  <section class="public-panel content-section">
-    <div class="public-section-header">
-      <div>
-        <span class="public-kicker">
-          <i class="pi pi-star"></i>
-          {{ 'home.search.resultsTitle' | translate }}
-        </span>
-        <h2 class="public-section-header__title">{{ 'home.search.resultsTitle' | translate }}</h2>
-        <p class="public-section-header__subtitle">{{ 'home.search.resultsSubtitle' | translate }}</p>
-      </div>
-    </div>
-
-    <ng-container *ngIf="hasPerformedSearch(); else searchHint">
       <app-page-state
         [state]="searchState().kind"
         [messages]="{
@@ -142,12 +167,12 @@
           emptyTitleKey: 'home.search.emptyTitle',
           emptyMessageKey: 'home.search.emptyMessage'
         }">
-        <div class="app-grid-cards">
-          <app-search-result-card
-            *ngFor="let item of results()"
-            [item]="item"
-            [currentLang]="currentLang()">
-          </app-search-result-card>
+        <div class="home-results__grid">
+          @for (item of results(); track item.originalId) {
+            <app-ui-search-result-card
+              [card]="buildSearchResultCard(item)">
+            </app-ui-search-result-card>
+          }
         </div>
 
         <app-pagination
@@ -156,30 +181,20 @@
           (pageChanged)="onPageChange($event)">
         </app-pagination>
       </app-page-state>
-    </ng-container>
+    </section>
+  }
 
-    <ng-template #searchHint>
-      <app-empty-state
-        class="home-hint-state"
-        variant="public"
-        iconClass="pi pi-search"
-        titleKey="home.search.hintTitle"
-        messageKey="home.search.hintMessage">
-      </app-empty-state>
-    </ng-template>
-  </section>
-
-  <section class="public-panel content-section">
-    <div class="public-section-header">
-      <div>
-        <span class="public-kicker">
-          <i class="pi pi-star"></i>
-          {{ 'home.featured.title' | translate }}
-        </span>
-        <h2 class="public-section-header__title">{{ 'home.featured.title' | translate }}</h2>
-        <p class="public-section-header__subtitle">{{ 'home.featured.subtitle' | translate }}</p>
-      </div>
-    </div>
+  <section class="public-panel home-featured" appUiSurface="panel" appUiSurfacePadding="regular">
+    <app-ui-section-header
+      kickerIconClass="pi pi-star"
+      kickerLabelKey="home.featured.title"
+      titleKey="home.featured.title"
+      subtitleKey="home.featured.subtitle">
+      <a uiSectionActions appUiButton="ghost" [routerLink]="['/', currentLang(), 'parks']">
+        <span>{{ 'home.ctaBrowseParks' | translate }}</span>
+        <i class="pi pi-arrow-right" aria-hidden="true"></i>
+      </a>
+    </app-ui-section-header>
 
     <app-page-state
       [state]="featuredState().kind"
@@ -191,13 +206,21 @@
         emptyTitleKey: 'home.featured.emptyTitle',
         emptyMessageKey: 'home.featured.emptyMessage'
       }">
-      <div class="app-grid-cards">
-        <app-park-card
-          *ngFor="let park of featuredParks()"
-          [park]="park"
-          [currentLang]="currentLang()">
-        </app-park-card>
+      <div class="home-featured__grid">
+        @for (park of featuredParks(); track park.id ?? park.name) {
+          <app-ui-featured-park-card [park]="park"></app-ui-featured-park-card>
+        }
       </div>
     </app-page-state>
   </section>
+
+  @if (!hasPerformedSearch()) {
+    <app-empty-state
+      class="home-hint-state"
+      variant="public"
+      iconClass="pi pi-search"
+      titleKey="home.search.hintTitle"
+      messageKey="home.search.hintMessage">
+    </app-empty-state>
+  }
 </section>
