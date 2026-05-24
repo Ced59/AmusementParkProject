@@ -228,6 +228,7 @@ services:
       - backend_private
     volumes:
       - local_matomo_data:/var/www/html
+      - ./matomo-configure-local.php:/usr/local/bin/matomo-configure-local.php:ro
     security_opt:
       - no-new-privileges:true
 

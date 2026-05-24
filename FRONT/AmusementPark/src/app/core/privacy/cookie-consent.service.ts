@@ -1,6 +1,5 @@
 import { Inject, Injectable, PLATFORM_ID, Signal, WritableSignal, computed, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { MatomoTracker } from 'ngx-matomo-client';
 
 import { environment } from '../../../environments/environment';
 import { CookieConsentDecision, StoredCookieConsent } from './cookie-consent.model';
@@ -20,8 +19,7 @@ export class CookieConsentService {
   });
 
   constructor(
-    @Inject(PLATFORM_ID) platformId: object,
-    private readonly tracker: MatomoTracker
+    @Inject(PLATFORM_ID) platformId: object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.decisionState.set(this.readStoredDecision());
@@ -36,10 +34,6 @@ export class CookieConsentService {
     this.writeStoredDecision('accepted');
     this.decisionState.set('accepted');
 
-    if (environment.analytics.matomoEnabled && environment.analytics.matomoRequireConsent) {
-      this.tracker.rememberConsentGiven(environment.analytics.matomoConsentHoursToExpire);
-      this.tracker.trackPageView();
-    }
   }
 
   public continueWithNecessaryCookiesOnly(): void {
@@ -79,7 +73,6 @@ export class CookieConsentService {
     }
 
     if (this.decisionState() === 'accepted') {
-      this.tracker.rememberConsentGiven(environment.analytics.matomoConsentHoursToExpire);
       return;
     }
 
@@ -91,7 +84,22 @@ export class CookieConsentService {
       return;
     }
 
-    this.tracker.forgetConsentGiven();
+    this.deleteMatomoCookies();
+  }
+
+  private deleteMatomoCookies(): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    const cookieNames: string[] = document.cookie
+      .split(';')
+      .map((cookie: string): string => cookie.trim().split('=')[0])
+      .filter((cookieName: string): boolean => cookieName.startsWith('_pk_'));
+
+    for (const cookieName of cookieNames) {
+      document.cookie = `${cookieName}=; Max-Age=0; Path=/; SameSite=Lax`;
+    }
   }
 
   private readStoredDecision(): CookieConsentDecision | null {

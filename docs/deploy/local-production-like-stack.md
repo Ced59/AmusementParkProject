@@ -194,3 +194,18 @@ Pour supprimer aussi les volumes :
 ```powershell
 docker compose --project-name amusementpark-local-prod --env-file deploy\local\.env.local -f deploy\local\compose.local-prod.yml down -v
 ```
+
+### Matomo local: admin direct + trusted hosts
+
+For local-prod, Matomo is intentionally exposed directly on `http://localhost:18082` instead of going through the local Nginx Proxy Manager. This avoids local reverse-proxy CSRF/origin issues in the Matomo admin UI.
+
+The startup script refreshes Matomo `trusted_hosts[]` automatically after `docker compose up` so that the admin UI accepts:
+
+- `localhost:18082`
+- `127.0.0.1:18082`
+- `matomo.amusement.localhost`
+- `matomo.amusement.localhost:18080`
+
+The AmusementPark local-prod Angular bundle tracks against `http://localhost:18082/` and uses Matomo site id `1`.
+
+The frontend loads `matomo.js` only after optional-cookie consent, then sends the page view explicitly through Matomo's HTTP tracking endpoint (`matomo.php`). This avoids relying on the automatic router integration during SSR/hydration and makes the expected local Network panel check simple: after accepting optional cookies, both `matomo.js` and `matomo.php` should appear.

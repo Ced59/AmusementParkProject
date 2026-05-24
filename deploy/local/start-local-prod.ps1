@@ -147,6 +147,28 @@ function Assert-LocalPortsAreAvailable {
     }
 }
 
+
+function Update-MatomoLocalTrustedHosts {
+    param([string]$Path)
+
+    $matomoHttpPort = Get-EnvValue -Path $Path -Name 'MATOMO_HTTP_PORT' -DefaultValue '18082'
+    $npmHttpPort = Get-EnvValue -Path $Path -Name 'NPM_HTTP_PORT' -DefaultValue '18080'
+
+    try {
+        & docker exec `
+            -e "MATOMO_HTTP_PORT=$matomoHttpPort" `
+            -e "NPM_HTTP_PORT=$npmHttpPort" `
+            amusementpark-local-matomo `
+            php /usr/local/bin/matomo-configure-local.php | Write-Host
+
+        & docker restart amusementpark-local-matomo | Out-Null
+        Write-Host "Matomo local trusted hosts refreshed."
+    }
+    catch {
+        Write-Warning "Unable to refresh Matomo trusted hosts automatically. If Matomo is not initialized yet, this is harmless. Details: $($_.Exception.Message)"
+    }
+}
+
 if (-not (Test-Path $envFile)) {
     Copy-Item $exampleFile $envFile
     Write-Host "Created $envFile from example. Review it if needed."
@@ -169,3 +191,5 @@ if ($Build) {
 }
 
 & docker @arguments
+
+Update-MatomoLocalTrustedHosts -Path $envFile

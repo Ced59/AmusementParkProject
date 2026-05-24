@@ -11,7 +11,6 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
-import { MatomoConsentRequirement, provideMatomo, withRouter } from 'ngx-matomo-client';
 import { providePrimeNG } from 'primeng/config';
 
 import { routes } from './app.routes';
@@ -21,7 +20,7 @@ import { AuthService } from './services/auth/auth.service';
 import { LanguageInterceptor } from '@core/http/interceptors/language.interceptor';
 import { AuthInterceptor } from '@core/http/interceptors/auth.interceptor';
 import AmusementParkPreset from './config/primeng-preset';
-import { environment } from '../environments/environment';
+import { MatomoPageViewTrackingService } from '@core/analytics/matomo-page-view-tracking.service';
 
 import { SelectModule } from 'primeng/select';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -37,29 +36,9 @@ import { PaginatorModule } from 'primeng/paginator';
 import { MultiSelectModule } from 'primeng/multiselect';
 
 
-const matomoConsentRequirement: MatomoConsentRequirement = environment.analytics.matomoRequireConsent ? 'tracking' : 'none';
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideMatomo(
-      {
-        siteId: environment.analytics.matomoSiteId,
-        trackerUrl: environment.analytics.matomoTrackerUrl,
-        disabled: !environment.analytics.matomoEnabled,
-        requireConsent: matomoConsentRequirement,
-        acceptDoNotTrack: true,
-        enableLinkTracking: true,
-        runOutsideAngularZone: true,
-        disableCampaignParameters: true,
-        excludedQueryParams: ['token', 'code', 'email', 'returnUrl', 'resetToken', 'confirmationToken']
-      },
-      withRouter({
-        delay: 250,
-        exclude: [/\/[a-z]{2}\/admin(?:\/|$)/i]
-      })
-    ),
-
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: {
@@ -89,6 +68,10 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(() => {
       const initializerFn = initializeApp(inject(TranslationService), inject(AuthService));
       return initializerFn();
+    }),
+
+    provideAppInitializer(() => {
+      inject(MatomoPageViewTrackingService).initialize();
     }),
 
     {
