@@ -27,7 +27,7 @@ services:
           - amusementpark-front-ssr
       backend_private:
     healthcheck:
-      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:4000/healthz || exit 1"]
+      test: ["CMD-SHELL", "wget -q --header=\"X-Forwarded-Proto: https\" --spider http://127.0.0.1:4000/healthz || exit 1"]
       interval: 30s
       timeout: 5s
       retries: 5
@@ -136,7 +136,7 @@ services:
     networks:
       - backend_private
     healthcheck:
-      test: ["CMD-SHELL", "wget -q --header=\"X-Forwarded-Proto: https\" --spider http://127.0.0.1:8080/health || exit 1"]
+      test: ["CMD-SHELL", "curl -fsS -H \"Host: localhost\" -H \"X-Forwarded-Proto: https\" http://127.0.0.1:8080/health >/dev/null || exit 1"]
       interval: 30s
       timeout: 5s
       retries: 5
