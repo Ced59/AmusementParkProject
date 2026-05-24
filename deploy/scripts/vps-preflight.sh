@@ -10,9 +10,9 @@ if [ -f .env ]; then
 fi
 
 public_http_port="${PUBLIC_HTTP_PORT:-18080}"
+npm_docker_network_name="${NPM_DOCKER_NETWORK_NAME:-nginx-proxy-network}"
 minio_api_port="${MINIO_API_PORT:-19000}"
 minio_console_port="${MINIO_CONSOLE_PORT:-19001}"
-public_edge_subnet="${PUBLIC_EDGE_SUBNET:-172.30.30.0/24}"
 backend_private_subnet="${BACKEND_PRIVATE_SUBNET:-172.30.31.0/24}"
 compose_project_name="${COMPOSE_PROJECT_NAME:-amusementpark}"
 
@@ -62,7 +62,7 @@ docker compose version || true
 docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}' || true
 
 section "Ports expected by AmusementPark production stack"
-check_port "${public_http_port}" "front SSR loopback exposed to Nginx Proxy Manager"
+check_port "${public_http_port}" "front SSR loopback direct diagnostic port"
 check_port "${minio_api_port}" "MinIO API loopback / SSH tunnel"
 check_port "${minio_console_port}" "MinIO console loopback / SSH tunnel"
 check_port 80 "public HTTP - usually owned by existing Nginx Proxy Manager"
@@ -71,7 +71,12 @@ check_port 81 "Nginx Proxy Manager admin UI if default port is used"
 
 section "Docker networks"
 docker network ls || true
-printf '\nRequested PUBLIC_EDGE_SUBNET=%s\n' "${public_edge_subnet}"
+if docker network inspect "${npm_docker_network_name}" >/dev/null 2>&1; then
+  printf 'OK: external NPM Docker network exists: %s\n' "${npm_docker_network_name}"
+else
+  printf 'MISSING: external NPM Docker network does not exist: %s\n' "${npm_docker_network_name}"
+fi
+printf '\nRequired external NPM network=%s\n' "${npm_docker_network_name}"
 printf 'Requested BACKEND_PRIVATE_SUBNET=%s\n' "${backend_private_subnet}"
 docker network inspect $(docker network ls -q) --format '{{.Name}} {{range .IPAM.Config}}{{.Subnet}} {{end}}' 2>/dev/null || true
 

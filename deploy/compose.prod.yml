@@ -21,8 +21,11 @@ services:
       SSR_ALLOWED_HOSTS: ${SSR_ALLOWED_HOSTS:?SSR_ALLOWED_HOSTS is required}
       SSR_FORCE_HTTPS: ${SSR_FORCE_HTTPS:-true}
     networks:
-      - public_edge
-      - backend_private
+      npm_proxy_external:
+        aliases:
+          - amusementpark-front
+          - amusementpark-front-ssr
+      backend_private:
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:4000/healthz || exit 1"]
       interval: 30s
@@ -186,11 +189,9 @@ services:
 
 
 networks:
-  public_edge:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: ${PUBLIC_EDGE_SUBNET:-172.30.30.0/24}
+  npm_proxy_external:
+    name: ${NPM_DOCKER_NETWORK_NAME:-nginx-proxy-network}
+    external: true
   backend_private:
     driver: bridge
     ipam:

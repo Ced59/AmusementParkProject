@@ -238,7 +238,7 @@ jobs:
       PUBLIC_BASE_URL: ${{ vars.PUBLIC_BASE_URL || 'https://amusement-parks.fun' }}
       PUBLIC_WWW_BASE_URL: ${{ vars.PUBLIC_WWW_BASE_URL || 'https://www.amusement-parks.fun' }}
       PUBLIC_HTTP_PORT: ${{ vars.PUBLIC_HTTP_PORT || '18080' }}
-      PUBLIC_EDGE_SUBNET: ${{ vars.PUBLIC_EDGE_SUBNET || '172.30.30.0/24' }}
+      NPM_DOCKER_NETWORK_NAME: ${{ vars.NPM_DOCKER_NETWORK_NAME || 'nginx-proxy-network' }}
       BACKEND_PRIVATE_SUBNET: ${{ vars.BACKEND_PRIVATE_SUBNET || '172.30.31.0/24' }}
       ALLOWED_HOSTS: ${{ vars.ALLOWED_HOSTS || 'amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api' }}
       FORWARDED_HEADERS_ALLOWED_HOSTS: ${{ vars.FORWARDED_HEADERS_ALLOWED_HOSTS || 'amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1' }}

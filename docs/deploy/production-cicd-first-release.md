@@ -1,5 +1,7 @@
 # Première mise en production — CI/CD et VPS
 
+Voir aussi : `docs/deploy/vps-current-state-analysis.md` pour l’analyse de ton VPS actuel.
+
 Ce document décrit le déploiement cible après validation de l’environnement local proche production M20.
 
 ## Architecture cible sur le VPS
@@ -9,8 +11,7 @@ Le VPS possède déjà Nginx Proxy Manager. Le stack AmusementPark **ne redéplo
 ```text
 Internet
   -> Nginx Proxy Manager existant : 80 / 443 / 81
-  -> 127.0.0.1:${PUBLIC_HTTP_PORT:-18080}
-  -> container Angular SSR : front:4000
+  -> container Angular SSR : amusementpark-front:4000 via réseau Docker nginx-proxy-network
   -> API privée Docker : api:8080
   -> MongoDB privé Docker
   -> MinIO privé Docker
@@ -31,7 +32,7 @@ Décisions retenues après les tests local-prod-like :
 
 | Service | Port hôte | Exposition |
 |---|---:|---|
-| Front SSR via NPM | `127.0.0.1:18080` | local VPS seulement |
+| Front SSR direct diagnostic | `127.0.0.1:18080` | local VPS seulement |
 | MinIO API | `127.0.0.1:19000` | local VPS / tunnel SSH |
 | MinIO Console | `127.0.0.1:19001` | local VPS / tunnel SSH |
 | API | aucun port hôte | Docker privé |
@@ -76,8 +77,8 @@ Ces commandes sont en lecture seule.
 ```text
 Domain Names: amusement-parks.fun, www.amusement-parks.fun
 Scheme: http
-Forward Hostname / IP: 127.0.0.1
-Forward Port: 18080
+Forward Hostname / IP: amusementpark-front
+Forward Port: 4000
 Websockets Support: enabled
 SSL Certificate: Let's Encrypt
 Force SSL: enabled

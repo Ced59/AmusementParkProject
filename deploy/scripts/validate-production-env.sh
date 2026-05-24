@@ -106,6 +106,7 @@ required_names=(
   FORWARDED_HEADERS_ALLOWED_HOSTS
   FORWARDED_HEADERS_KNOWN_NETWORKS
   SSR_ALLOWED_HOSTS
+  NPM_DOCKER_NETWORK_NAME
   MONGO_INITDB_ROOT_USERNAME
   MONGO_INITDB_ROOT_PASSWORD
   MONGO_APP_USERNAME
@@ -150,6 +151,12 @@ if [ "${SSR_CSP_ALLOW_LOCAL_DEV_SOURCES:-false}" != "false" ]; then
 fi
 
 validate_port PUBLIC_HTTP_PORT
+
+if [[ "${NPM_DOCKER_NETWORK_NAME:-}" =~ [[:space:]] ]]; then
+  echo "ERROR: NPM_DOCKER_NETWORK_NAME must not contain spaces." >&2
+  errors=$((errors + 1))
+fi
+
 validate_port MINIO_API_PORT
 validate_port MINIO_CONSOLE_PORT
 

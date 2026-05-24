@@ -47,7 +47,7 @@ L'API accepte les en-têtes `X-Forwarded-*` uniquement depuis les proxys et rés
 Variables recommandées pour le déploiement Docker actuel :
 
 ```bash
-PUBLIC_EDGE_SUBNET=172.30.30.0/24
+NPM_DOCKER_NETWORK_NAME=nginx-proxy-network
 BACKEND_PRIVATE_SUBNET=172.30.31.0/24
 FORWARDED_HEADERS_KNOWN_NETWORKS=172.30.31.0/24
 FORWARDED_HEADERS_ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1
