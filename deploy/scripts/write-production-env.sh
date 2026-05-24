@@ -22,6 +22,10 @@ write_line() {
   printf '%s=%s\n' "${name}" "${value}"
 }
 
+url_encode() {
+  python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.stdin.read(), safe=""), end="")'
+}
+
 public_domain="$(value_or_default PUBLIC_DOMAIN 'amusement-parks.fun')"
 public_base_url="$(value_or_default PUBLIC_BASE_URL "https://${public_domain}")"
 public_www_base_url="$(value_or_default PUBLIC_WWW_BASE_URL "https://www.${public_domain}")"
@@ -73,8 +77,12 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line MONGO_DATABASE_NAME "$(value_or_default MONGO_DATABASE_NAME 'AmusementPark')"
   write_line MONGO_INITDB_ROOT_USERNAME "${MONGO_INITDB_ROOT_USERNAME:?MONGO_INITDB_ROOT_USERNAME is required}"
   write_line MONGO_INITDB_ROOT_PASSWORD "${MONGO_INITDB_ROOT_PASSWORD:?MONGO_INITDB_ROOT_PASSWORD is required}"
-  write_line MONGO_APP_USERNAME "${MONGO_APP_USERNAME:?MONGO_APP_USERNAME is required}"
-  write_line MONGO_APP_PASSWORD "${MONGO_APP_PASSWORD:?MONGO_APP_PASSWORD is required}"
+  mongo_app_username="${MONGO_APP_USERNAME:?MONGO_APP_USERNAME is required}"
+  mongo_app_password="${MONGO_APP_PASSWORD:?MONGO_APP_PASSWORD is required}"
+  write_line MONGO_APP_USERNAME "${mongo_app_username}"
+  write_line MONGO_APP_PASSWORD "${mongo_app_password}"
+  write_line MONGO_APP_USERNAME_URL_ENCODED "$(printf '%s' "${mongo_app_username}" | url_encode)"
+  write_line MONGO_APP_PASSWORD_URL_ENCODED "$(printf '%s' "${mongo_app_password}" | url_encode)"
   write_line MINIO_IMAGE "$(value_or_default MINIO_IMAGE 'quay.io/minio/minio:RELEASE.2025-07-23T15-54-02Z')"
   write_line MINIO_ROOT_USER "${MINIO_ROOT_USER:?MINIO_ROOT_USER is required}"
   write_line MINIO_ROOT_PASSWORD "${MINIO_ROOT_PASSWORD:?MINIO_ROOT_PASSWORD is required}"
