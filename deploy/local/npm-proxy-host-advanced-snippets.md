@@ -14,9 +14,29 @@ Forward Port: 4000
 Websockets Support: enabled
 ```
 
-## Proxy Host Matomo `matomo.amusement.localhost`
+## Matomo local
 
-Matomo valide l'origine des formulaires. En local, comme NPM écoute sur le port `18080`, il faut préserver le host avec son port.
+L'administration Matomo locale doit de préférence se faire directement via :
+
+```txt
+http://localhost:18082
+```
+
+Ce choix évite les erreurs CSRF Matomo provoquées par un reverse proxy HTTP local sur port non standard.
+
+Le Proxy Host `matomo.amusement.localhost` n'est donc plus recommandé pour l'administration Matomo locale. Il peut être supprimé ou ignoré.
+
+Si tu veux tout de même expérimenter Matomo derrière NPM, le Proxy Host doit cibler :
+
+```txt
+Scheme: http
+Forward Hostname / IP: matomo
+Forward Port: 80
+Websockets Support: enabled
+Force SSL: disabled
+```
+
+Avec ce snippet Advanced :
 
 ```nginx
 proxy_set_header Host $http_host;
@@ -24,14 +44,3 @@ proxy_set_header X-Forwarded-Host $http_host;
 proxy_set_header X-Forwarded-Proto $scheme;
 proxy_set_header X-Forwarded-Port $server_port;
 ```
-
-Le Proxy Host doit cibler :
-
-```txt
-Scheme: http
-Forward Hostname / IP: matomo
-Forward Port: 80
-Websockets Support: enabled
-```
-
-Ne pas activer **Force SSL** sur ce Proxy Host local tant qu'aucun certificat local n'est configuré dans NPM.

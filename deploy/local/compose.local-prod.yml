@@ -221,6 +221,8 @@ services:
       MATOMO_DATABASE_DBNAME: ${MATOMO_DATABASE:-matomo}
     expose:
       - "80"
+    ports:
+      - "127.0.0.1:${MATOMO_HTTP_PORT:-18082}:80"
     networks:
       - public_edge
       - backend_private

@@ -103,26 +103,22 @@ Si `amusement.localhost` ne résout pas sur ta machine, ajouter temporairement d
 
 ## Matomo local
 
-Le build `local-production` utilise volontairement `matomoSiteId: 1` et le tracker `http://matomo.amusement.localhost:18080/`. La production officielle conserve `matomoSiteId: 4` sur `https://matomo.cedric-caudron.com/`.
+Le build `local-production` utilise volontairement `matomoSiteId: 1`. La production officielle conserve `matomoSiteId: 4` sur `https://matomo.cedric-caudron.com/`.
 
-Matomo est lancé dans le stack pour tester le consentement et la future observabilité web.
-
-Créer un Proxy Host NPM optionnel :
+Pour éviter les erreurs CSRF Matomo liées à un reverse proxy local HTTP sur port non standard, l'instance Matomo locale est exposée directement sur un port hôte dédié :
 
 ```txt
-Domain Name: matomo.amusement.localhost
-Scheme: http
-Forward Hostname / IP: matomo
-Forward Port: 80
+http://localhost:18082
 ```
 
-Puis ouvrir :
+La configuration Angular `local-production` pointe donc vers :
 
 ```txt
-http://matomo.amusement.localhost:18080
+matomoSiteId: 1
+matomoTrackerUrl: http://localhost:18082/
 ```
 
-La configuration Angular `local-production` pointe vers cette URL Matomo locale.
+Matomo reste dans le même projet Docker et utilise la base MariaDB interne `matomo-db`. Le Proxy Host NPM `matomo.amusement.localhost` devient optionnel et n'est plus recommandé pour l'administration locale de Matomo.
 
 ## MinIO local
 

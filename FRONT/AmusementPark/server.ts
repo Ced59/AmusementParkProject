@@ -139,7 +139,7 @@ function buildContentSecurityPolicy(): string {
     "object-src 'none'",
     "frame-ancestors 'none'",
     "form-action 'self'",
-    "script-src 'self' 'unsafe-inline' https://accounts.google.com https://apis.google.com https://matomo.cedric-caudron.com http://matomo.amusement.localhost:18080",
+    "script-src 'self' 'unsafe-inline' https://accounts.google.com https://apis.google.com https://matomo.cedric-caudron.com http://matomo.amusement.localhost:18080 http://localhost:*",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com",
     "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com",
     "font-src 'self' data: https://fonts.gstatic.com",

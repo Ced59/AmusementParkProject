@@ -26,11 +26,16 @@ function Update-LegacyDefaultLocalEnvironmentValues {
         'MONGO_PORT=27017' = 'MONGO_PORT=27018'
         'MINIO_API_PORT=9000' = 'MINIO_API_PORT=19000'
         'MINIO_CONSOLE_PORT=9001' = 'MINIO_CONSOLE_PORT=19001'
+        'MATOMO_HTTP_PORT=8080' = 'MATOMO_HTTP_PORT=18082'
         '# GOOGLE_REDIRECT_URI=http://amusement.localhost:8080/api/auth/external/google/callback' = '# GOOGLE_REDIRECT_URI=http://amusement.localhost:18080/api/auth/external/google/callback'
     }
 
     foreach ($entry in $replacements.GetEnumerator()) {
         $updated = $updated.Replace($entry.Key, $entry.Value)
+    }
+
+    if ($updated -notmatch '(?m)^MATOMO_HTTP_PORT=') {
+        $updated = $updated.TrimEnd() + [Environment]::NewLine + 'MATOMO_HTTP_PORT=18082' + [Environment]::NewLine
     }
 
     if ($updated -ne $content) {
@@ -102,7 +107,8 @@ function Assert-LocalPortsAreAvailable {
         @{ Name = 'SSR_DIRECT_PORT'; Label = 'Angular SSR direct debug port'; Default = '14000' },
         @{ Name = 'MONGO_PORT'; Label = 'MongoDB optional local inspection port'; Default = '27018' },
         @{ Name = 'MINIO_API_PORT'; Label = 'MinIO optional local API port'; Default = '19000' },
-        @{ Name = 'MINIO_CONSOLE_PORT'; Label = 'MinIO console port'; Default = '19001' }
+        @{ Name = 'MINIO_CONSOLE_PORT'; Label = 'MinIO console port'; Default = '19001' },
+        @{ Name = 'MATOMO_HTTP_PORT'; Label = 'Matomo direct local UI/tracker port'; Default = '18082' }
     )
 
     $projectPorts = @()

@@ -10,7 +10,7 @@ export const environment = {
     matomoEnabled: true,
     consentBannerEnabled: true,
     matomoSiteId: 1,
-    matomoTrackerUrl: 'http://matomo.amusement.localhost:18080/',
+    matomoTrackerUrl: 'http://localhost:18082/',
     matomoRequireConsent: true,
     matomoConsentHoursToExpire: 4380
   }
