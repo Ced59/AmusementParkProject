@@ -91,6 +91,9 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.AdminAuditLogsCollectionName, cancellationToken);
         await this.InitializeAdminAuditIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.ParkGraphUpsertHistoryCollectionName, cancellationToken);
+        await this.InitializeParkGraphUpsertHistoryIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.CaptainCoasterSettingsCollectionName, cancellationToken);
         await this.InitializeCaptainCoasterSettingsIndexesAsync(cancellationToken);
 

@@ -67,6 +67,10 @@ export const routes: Routes = [
                 .then((m) => m.AdminDataModule)
           },
           {
+            path: 'park-graph-upserts',
+            loadComponent: () => import('./components/admin/park-graph-upserts/admin-park-graph-upserts.component').then((m) => m.AdminParkGraphUpsertsComponent)
+          },
+          {
             path: 'localized-content',
             loadComponent: () => import('./components/admin/localized-content/admin-localized-content.component').then((m) => m.AdminLocalizedContentComponent)
           },

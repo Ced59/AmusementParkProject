@@ -21,7 +21,7 @@ namespace AmusementPark.WebAPI.Filters;
 public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
 {
     private static readonly string[] DefaultRouteIdKeys = { "id", "imageId", "userId", "sourceKey", "parkId" };
-    private static readonly string[] DefaultPropertyIdKeys = { "Id", "UserId", "IdUser", "ImageId", "SourceKey", "ParkId" };
+    private static readonly string[] DefaultPropertyIdKeys = { "Id", "UserId", "IdUser", "ImageId", "SourceKey", "ParkId", "TargetParkId" };
     private static readonly HashSet<string> SensitivePropertyNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
     {
         "password",

@@ -851,7 +851,8 @@
         "data": "Monitorizar importações, fontes e processamento de dados.",
         "founders": "Gerir fundadores e biografias ligados aos parques.",
         "auditLogs": "Consultar ações administrativas sensíveis registadas.",
-        "localizedContent": "Importar rapidamente textos localizados por JSON depois de escolher um destino."
+        "localizedContent": "Importar rapidamente textos localizados por JSON depois de escolher um destino.",
+        "parkGraphUpserts": "Pré-visualizar e aplicar um JSON completo ou parcial de parque."
       }
     },
     "references": {
@@ -1004,6 +1005,56 @@
         "partial": "Um JSON parcial altera apenas os campos presentes.",
         "merge": "Os valores localizados são fundidos por idioma, salvo com replaceExisting ou mode: replace.",
         "accessConditions": "Para elementos do parque, accessConditions pode criar ou atualizar condições e tipos reutilizáveis."
+      }
+    },
+    "parkGraphUpserts": {
+      "navTitle": "Upsert JSON parque",
+      "title": "Upsert JSON de parque",
+      "kicker": "Importação estruturada · Admin",
+      "subtitle": "Cole um JSON completo ou parcial de parque, pré-visualize as alterações e aplique-as sem sobrescrever campos ausentes.",
+      "target": {
+        "title": "Parque alvo",
+        "description": "Para atualizar, selecione sempre o parque existente para usar o id real.",
+        "searchPlaceholder": "Pesquisar parque por nome, cidade ou país…",
+        "selected": "Parque selecionado"
+      },
+      "options": {
+        "createIfMissing": "Permitir criação se nenhum parque estiver selecionado",
+        "replaceCollections": "Modo substituição de coleções ausentes (apenas imports controlados)"
+      },
+      "editor": {
+        "title": "Documento JSON",
+        "description": "As propriedades ausentes são preservadas. As listas zones/items fazem upsert apenas dos elementos presentes."
+      },
+      "actions": {
+        "search": "Pesquisar",
+        "searching": "A pesquisar…",
+        "clear": "Remover",
+        "preview": "Pré-visualizar",
+        "previewing": "Pré-visualização…",
+        "apply": "Aplicar",
+        "applying": "A aplicar…"
+      },
+      "errors": {
+        "noParkSelected": "Selecione um parque existente ou ative a criação explícita.",
+        "invalidJson": "O JSON é inválido.",
+        "searchTooShort": "Introduza pelo menos 2 caracteres.",
+        "searchFailed": "A pesquisa do parque falhou.",
+        "previewFailed": "A pré-visualização falhou.",
+        "applyFailed": "A aplicação falhou."
+      },
+      "result": {
+        "title": "Pré-visualização",
+        "noTarget": "Sem parque alvo",
+        "created": "Criados",
+        "updated": "Alterados",
+        "warnings": "Avisos",
+        "errors": "Erros",
+        "applied": "Upsert aplicado com sucesso.",
+        "field": "Campo",
+        "oldValue": "Antigo",
+        "newValue": "Novo",
+        "noFieldChange": "Nenhum campo alterado."
       }
     }
   },
