@@ -19,7 +19,7 @@ namespace AmusementPark.WebAPI.Controllers;
 /// Administration des champs localisés par JSON contrôlé.
 /// </summary>
 [ApiController]
-[Route("localized-content")]
+[Route("admin/localized-content")]
 [RequireActivatedUnblockedUser]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
 public sealed class LocalizedContentController : ControllerBase
@@ -39,12 +39,13 @@ public sealed class LocalizedContentController : ControllerBase
     [ProducesResponseType(typeof(PagedResponseDto<LocalizedContentTargetDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> SearchTargetsAsync(
         [FromQuery] string entityType,
-        [FromQuery] PaginationRequestDto pagination,
         [FromQuery] string? search = null,
+        [FromQuery] int page = 1,
+        [FromQuery] int size = 20,
         CancellationToken cancellationToken = default)
     {
         ApplicationResult<PagedResult<LocalizedContentTargetResult>> result = await this.searchTargetsQueryHandler.HandleAsync(
-            new SearchLocalizedContentTargetsQuery(entityType, search, pagination.Page, pagination.Size),
+            new SearchLocalizedContentTargetsQuery(entityType, search, page, size),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

@@ -26,6 +26,10 @@ export interface LocalizedContentApplyResult {
   providedIn: 'root'
 })
 export class LocalizedContentApiService {
+  private readonly apiBaseUrl: string = environment.apiBaseUrl.endsWith('/')
+    ? environment.apiBaseUrl
+    : `${environment.apiBaseUrl}/`;
+
   private readonly jsonHttpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -36,7 +40,7 @@ export class LocalizedContentApiService {
   }
 
   searchTargets(entityType: LocalizedContentEntityType, search: string, page: number = 1, size: number = 20): Observable<PagedCollectionResponse<LocalizedContentTarget>> {
-    const url: string = `${environment.apiBaseUrl}/localized-content/targets`;
+    const url: string = `${this.apiBaseUrl}admin/localized-content/targets`;
     let params: HttpParams = new HttpParams()
       .set('entityType', entityType)
       .set('page', String(page))
@@ -51,7 +55,7 @@ export class LocalizedContentApiService {
   }
 
   applyJson(entityType: LocalizedContentEntityType, entityId: string, json: unknown): Observable<LocalizedContentApplyResult> {
-    const url: string = `${environment.apiBaseUrl}/localized-content/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`;
+    const url: string = `${this.apiBaseUrl}admin/localized-content/${encodeURIComponent(entityType)}/${encodeURIComponent(entityId)}`;
     return this.http.patch<LocalizedContentApplyResult>(url, { json }, this.jsonHttpOptions);
   }
 }

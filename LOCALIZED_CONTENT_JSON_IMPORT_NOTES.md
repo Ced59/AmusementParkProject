@@ -6,7 +6,7 @@ Ajout d'une fonctionnalité admin permettant de choisir une entité localisable 
 
 ## Architecture
 
-- **WebAPI** : `LocalizedContentController` expose uniquement les contrats HTTP et délègue à des handlers Application.
+- **WebAPI** : `LocalizedContentController` expose les endpoints admin `admin/localized-content/targets` et `admin/localized-content/{entityType}/{entityId}`, uniquement les contrats HTTP et délègue à des handlers Application.
 - **Application** : `Features/LocalizedContent` contient la logique de sélection, de validation JSON, de mapping des champs supportés et d'application métier.
 - **Infrastructure** : aucun accès Mongo direct depuis le contrôleur ; les repositories existants restent les ports de persistance. Seul `IParkZoneRepository.GetAllAsync` a été ajouté pour permettre la recherche admin globale des zones.
 - **Front Angular** : nouvelle page admin `/:lang/admin/localized-content` avec type d'entité, recherche, sélection explicite, éditeur JSON et feedback.
@@ -68,3 +68,10 @@ Pour les conditions d'accès d'une attraction :
 ```
 
 Le sélecteur de condition peut utiliser `type` et/ou `displayOrder`.
+
+
+## Correction v27
+
+- Alignement de la route API sur le préfixe admin : `admin/localized-content`.
+- Construction d'URL front normalisée pour éviter les doubles slashs entre `apiBaseUrl` et endpoint.
+- Reprise de l'interface avec les classes partagées `admin-list-card`, `app-field`, `app-input`, `app-select` et `app-button` pour un rendu cohérent avec le back-office existant.
