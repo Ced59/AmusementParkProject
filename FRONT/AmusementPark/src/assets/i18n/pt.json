@@ -536,7 +536,19 @@
         "advancedAccessConditionsHelp": "Adicione apenas regras que não sejam requisitos de altura.",
         "advancedAccessConditionsEmpty": "Nenhuma outra condição configurada.",
         "park": "Parque associado",
-        "parkHelp": "Permite mover manualmente o elemento para o parque correto se uma importação o associou ao parque errado."
+        "parkHelp": "Permite mover manualmente o elemento para o parque correto se uma importação o associou ao parque errado.",
+        "accessConditionTypesAdmin": {
+          "title": "Tipos de condição reutilizáveis",
+          "help": "Adiciona um tipo comum ao catálogo antes de o usar numa atração.",
+          "key": "Chave estável",
+          "frLabel": "Rótulo em francês",
+          "enLabel": "Rótulo em inglês",
+          "create": "Criar tipo",
+          "createdSummary": "Tipo criado",
+          "createdDetail": "O tipo de condição está agora disponível na lista.",
+          "errorSummary": "Falha na criação",
+          "errorDetail": "Não foi possível criar o tipo de condição."
+        }
       },
       "refactorHint": "O editor está agora dividido em separadores temáticos para tornar a página mais leve e fácil de usar.",
       "visibilityHelp": "Controla se este parque fica visível na aplicação pública.",
@@ -928,7 +940,7 @@
         "merge": "Por defeito, os idiomas enviados são fundidos com os valores existentes: os outros idiomas são preservados.",
         "replace": "Adiciona \"replaceExisting\": true ou \"mode\": \"replace\" para substituir totalmente o campo localizado.",
         "fields": "Campos suportados: descriptions, names, description, biography, altTexts, captions, credits, labels conforme o tipo escolhido.",
-        "accessConditions": "Para um item de parque do tipo atração, accessConditions pode localizar label e description usando type ou displayOrder."
+        "accessConditions": "Para um elemento de parque do tipo atração, accessConditions pode criar ou atualizar condições: type, customTypeKey implícito para um tipo desconhecido, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label e description."
       },
       "messages": {
         "searchError": "Não foi possível carregar os destinos localizáveis.",

@@ -80,6 +80,44 @@
     </div>
   </div>
 
+  <p-card styleClass="inner-card mb-3">
+    <ng-template pTemplate="header">
+      <div class="access-condition-type-create__header">
+        <span><i class="pi pi-tags" aria-hidden="true"></i></span>
+        <div>
+          <h4>{{ 'admin.parks.items.accessConditionTypesAdmin.title' | translate }}</h4>
+          <small class="text-color-secondary">{{ 'admin.parks.items.accessConditionTypesAdmin.help' | translate }}</small>
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="grid formgrid access-condition-type-create">
+      <div class="field col-12 md:col-4">
+        <label>{{ 'admin.parks.items.accessConditionTypesAdmin.key' | translate }}</label>
+        <input pInputText type="text" [(ngModel)]="newAccessConditionTypeKey" [ngModelOptions]="{ standalone: true }" placeholder="no-smoking" />
+      </div>
+      <div class="field col-12 md:col-4">
+        <label>{{ 'admin.parks.items.accessConditionTypesAdmin.frLabel' | translate }}</label>
+        <input pInputText type="text" [(ngModel)]="newAccessConditionTypeFrLabel" [ngModelOptions]="{ standalone: true }" />
+      </div>
+      <div class="field col-12 md:col-4">
+        <label>{{ 'admin.parks.items.accessConditionTypesAdmin.enLabel' | translate }}</label>
+        <input pInputText type="text" [(ngModel)]="newAccessConditionTypeEnLabel" [ngModelOptions]="{ standalone: true }" />
+      </div>
+      <div class="field col-12 flex justify-content-end">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-plus-circle"
+          class="p-button-secondary p-button-outlined"
+          (click)="onCreateAccessConditionType()"
+          [disabled]="!newAccessConditionTypeKey.trim() || !newAccessConditionTypeFrLabel.trim()"
+          [label]="'admin.parks.items.accessConditionTypesAdmin.create' | translate">
+        </button>
+      </div>
+    </div>
+  </p-card>
+
   <div formArrayName="accessConditions">
     <div *ngIf="standaloneAccessConditionEntries.length === 0" class="text-color-secondary mb-3">
       {{ 'admin.parks.items.advancedAccessConditionsEmpty' | translate }}
@@ -110,7 +148,7 @@
             <div class="field col-12 md:col-6 lg:col-4">
               <label>{{ 'admin.parks.items.accessConditionFields.type' | translate }}</label>
               <p-select
-                formControlName="type"
+                formControlName="typeKey"
                 [options]="standaloneAccessConditionPresetOptions"
                 optionLabel="labelKey"
                 optionValue="value"

@@ -536,7 +536,19 @@
         "advancedAccessConditionsHelp": "Añade solo reglas que no sean requisitos de altura.",
         "advancedAccessConditionsEmpty": "No hay otras condiciones configuradas.",
         "park": "Parque asociado",
-        "parkHelp": "Permite mover manualmente el elemento al parque correcto si una importación lo asoció mal."
+        "parkHelp": "Permite mover manualmente el elemento al parque correcto si una importación lo asoció mal.",
+        "accessConditionTypesAdmin": {
+          "title": "Tipos de condición reutilizables",
+          "help": "Añade un tipo común al catálogo antes de usarlo en una atracción.",
+          "key": "Clave estable",
+          "frLabel": "Etiqueta en francés",
+          "enLabel": "Etiqueta en inglés",
+          "create": "Crear tipo",
+          "createdSummary": "Tipo creado",
+          "createdDetail": "El tipo de condición ya está disponible en la lista.",
+          "errorSummary": "No se pudo crear",
+          "errorDetail": "No se pudo crear el tipo de condición."
+        }
       },
       "refactorHint": "El editor ahora está dividido en pestañas temáticas para aligerar la página y facilitar la navegación.",
       "visibilityHelp": "Controla si este parque es visible en la aplicación pública.",
@@ -928,7 +940,7 @@
         "merge": "Por defecto, los idiomas enviados se fusionan con los valores existentes: los demás idiomas se conservan.",
         "replace": "Añade \"replaceExisting\": true o \"mode\": \"replace\" para reemplazar completamente el campo localizado.",
         "fields": "Campos admitidos: descriptions, names, description, biography, altTexts, captions, credits, labels según el tipo elegido.",
-        "accessConditions": "Para un elemento de parque de tipo atracción, accessConditions permite localizar label y description mediante type o displayOrder."
+        "accessConditions": "Para un elemento de parque de tipo atracción, accessConditions puede crear o actualizar condiciones: type, customTypeKey implícito para un tipo desconocido, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label y description."
       },
       "messages": {
         "searchError": "No se pudieron cargar los destinos localizables.",

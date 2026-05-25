@@ -536,7 +536,19 @@
         "advancedAccessConditionsHelp": "Voeg alleen regels toe die geen lengtevoorwaarden zijn.",
         "advancedAccessConditionsEmpty": "Geen andere voorwaarde ingesteld.",
         "park": "Gekoppeld park",
-        "parkHelp": "Gebruik dit om het item handmatig naar het juiste park te verplaatsen als een import het verkeerd heeft gekoppeld."
+        "parkHelp": "Gebruik dit om het item handmatig naar het juiste park te verplaatsen als een import het verkeerd heeft gekoppeld.",
+        "accessConditionTypesAdmin": {
+          "title": "Herbruikbare voorwaardetypes",
+          "help": "Voeg een gedeeld type toe aan de catalogus voordat je het op een attractie gebruikt.",
+          "key": "Stabiele sleutel",
+          "frLabel": "Frans label",
+          "enLabel": "Engels label",
+          "create": "Type maken",
+          "createdSummary": "Type gemaakt",
+          "createdDetail": "Het voorwaardetype is nu beschikbaar in de lijst.",
+          "errorSummary": "Aanmaken mislukt",
+          "errorDetail": "Het voorwaardetype kon niet worden aangemaakt."
+        }
       },
       "refactorHint": "De editor is nu opgesplitst in thematische tabbladen om de pagina lichter en overzichtelijker te maken.",
       "visibilityHelp": "Bepaalt of dit park zichtbaar is in de publieke applicatie.",
@@ -928,7 +940,7 @@
         "merge": "Standaard worden aangeleverde talen samengevoegd met bestaande waarden: andere talen blijven behouden.",
         "replace": "Voeg \"replaceExisting\": true of \"mode\": \"replace\" toe om het gelokaliseerde veld volledig te vervangen.",
         "fields": "Ondersteunde velden: descriptions, names, description, biography, altTexts, captions, credits, labels afhankelijk van het gekozen type.",
-        "accessConditions": "Voor een parkitem van het type attractie kan accessConditions label en description lokaliseren via type of displayOrder."
+        "accessConditions": "Voor een parkitem van het type attractie kan accessConditions voorwaarden maken of bijwerken: type, impliciete customTypeKey voor een onbekend type, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label en description."
       },
       "messages": {
         "searchError": "Gelokaliseerde doelen konden niet worden geladen.",

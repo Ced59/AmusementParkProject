@@ -536,7 +536,19 @@
         "advancedAccessConditionsHelp": "Ajoute seulement les règles qui ne relèvent pas du gabarit de taille : âge, santé, transfert, access pass ou condition personnalisée.",
         "advancedAccessConditionsEmpty": "Aucune autre condition renseignée.",
         "park": "Parc de rattachement",
-        "parkHelp": "Permet de déplacer manuellement l’élément vers le bon parc si un import l’a rattaché au mauvais endroit."
+        "parkHelp": "Permet de déplacer manuellement l’élément vers le bon parc si un import l’a rattaché au mauvais endroit.",
+        "accessConditionTypesAdmin": {
+          "title": "Types de conditions réutilisables",
+          "help": "Ajoute un type commun au catalogue avant de l’utiliser sur une attraction.",
+          "key": "Clé stable",
+          "frLabel": "Libellé français",
+          "enLabel": "Libellé anglais",
+          "create": "Créer le type",
+          "createdSummary": "Type créé",
+          "createdDetail": "Le type de condition est disponible dans la liste.",
+          "errorSummary": "Création impossible",
+          "errorDetail": "Le type de condition n’a pas pu être créé."
+        }
       },
       "refactorHint": "L’éditeur est désormais découpé en onglets thématiques pour alléger la page et mieux s’y retrouver.",
       "visibilityHelp": "Contrôle si ce parc est visible dans l’application publique.",
@@ -928,7 +940,7 @@
         "merge": "Par défaut, les langues fournies sont fusionnées avec les valeurs existantes : les autres langues sont conservées.",
         "replace": "Ajoute \"replaceExisting\": true ou \"mode\": \"replace\" pour remplacer entièrement le champ localisé.",
         "fields": "Champs supportés : descriptions, names, description, biography, altTexts, captions, credits, labels selon le type choisi.",
-        "accessConditions": "Pour un élément de parc de type attraction, accessConditions permet de localiser label et description via type ou displayOrder."
+        "accessConditions": "Pour un élément de parc de type attraction, accessConditions peut créer ou mettre à jour des conditions : type, customTypeKey implicite pour un type inconnu, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label et description."
       },
       "messages": {
         "searchError": "Impossible de charger les cibles localisables.",

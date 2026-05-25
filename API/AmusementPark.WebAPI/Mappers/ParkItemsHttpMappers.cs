@@ -209,7 +209,10 @@ internal static class ParkItemsHttpMappers
         return new AttractionAccessCondition
         {
             Type = dto.Type.ToDomain(),
+            TypeKey = dto.TypeKey,
             IsCustom = dto.IsCustom,
+            CustomTypeKey = dto.CustomTypeKey,
+            CustomTypeLabel = dto.CustomTypeLabel.ToDomain(),
             Value = dto.Value,
             Unit = dto.Unit?.ToDomain(),
             RequiresAccompaniment = dto.RequiresAccompaniment,
@@ -227,7 +230,10 @@ internal static class ParkItemsHttpMappers
         return new AttractionAccessConditionDto
         {
             Type = value.Type.ToHttp(),
+            TypeKey = value.TypeKey,
             IsCustom = value.IsCustom,
+            CustomTypeKey = value.CustomTypeKey,
+            CustomTypeLabel = value.CustomTypeLabel.Count > 0 ? value.CustomTypeLabel.ToHttp() : null,
             Value = value.Value,
             Unit = value.Unit?.ToHttp(),
             RequiresAccompaniment = value.RequiresAccompaniment,

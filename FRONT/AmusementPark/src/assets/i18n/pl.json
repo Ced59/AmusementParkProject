@@ -536,7 +536,19 @@
         "advancedAccessConditionsHelp": "Dodaj tylko zasady, które nie są wymaganiami wzrostu.",
         "advancedAccessConditionsEmpty": "Brak innych skonfigurowanych warunków.",
         "park": "Powiązany park",
-        "parkHelp": "Pozwala ręcznie przenieść element do właściwego parku, jeśli import przypisał go błędnie."
+        "parkHelp": "Pozwala ręcznie przenieść element do właściwego parku, jeśli import przypisał go błędnie.",
+        "accessConditionTypesAdmin": {
+          "title": "Typy warunków wielokrotnego użycia",
+          "help": "Dodaj wspólny typ do katalogu przed użyciem go przy atrakcji.",
+          "key": "Stabilny klucz",
+          "frLabel": "Etykieta francuska",
+          "enLabel": "Etykieta angielska",
+          "create": "Utwórz typ",
+          "createdSummary": "Typ utworzony",
+          "createdDetail": "Typ warunku jest teraz dostępny na liście.",
+          "errorSummary": "Nie udało się utworzyć",
+          "errorDetail": "Nie udało się utworzyć typu warunku."
+        }
       },
       "refactorHint": "Edytor został teraz podzielony na tematyczne zakładki, aby strona była lżejsza i bardziej czytelna.",
       "visibilityHelp": "Określa, czy ten park jest widoczny w publicznej aplikacji.",
@@ -928,7 +940,7 @@
         "merge": "Domyślnie podane języki są scalane z istniejącymi wartościami: pozostałe języki zostają zachowane.",
         "replace": "Dodaj \"replaceExisting\": true lub \"mode\": \"replace\", aby całkowicie zastąpić pole lokalizowane.",
         "fields": "Obsługiwane pola: descriptions, names, description, biography, altTexts, captions, credits, labels zależnie od wybranego typu.",
-        "accessConditions": "Dla elementu parku typu atrakcja accessConditions może lokalizować label i description przez type lub displayOrder."
+        "accessConditions": "Dla elementu parku typu atrakcja accessConditions może tworzyć lub aktualizować warunki: type, domyślny customTypeKey dla nieznanego typu, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label i description."
       },
       "messages": {
         "searchError": "Nie udało się załadować celów lokalizowanych.",

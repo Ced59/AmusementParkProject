@@ -22,7 +22,10 @@ import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from 
 
 interface AttractionAccessConditionWriteRequest {
   type: AttractionAccessCondition['type'];
+  typeKey?: string | null;
   isCustom?: boolean | null;
+  customTypeKey?: string | null;
+  customTypeLabel?: LocalizedItem<string>[] | null;
   value?: number | null;
   unit?: AttractionAccessCondition['unit'];
   requiresAccompaniment?: boolean | null;
@@ -217,7 +220,10 @@ export class ParkItemsApiService {
       waterExposureLevel: details.waterExposureLevel ?? null,
       accessConditions: details.accessConditions?.map((condition: AttractionAccessCondition) => ({
         type: condition.type,
+        typeKey: condition.typeKey ?? null,
         isCustom: condition.isCustom ?? null,
+        customTypeKey: condition.customTypeKey ?? null,
+        customTypeLabel: condition.customTypeLabel ?? null,
         value: condition.value ?? null,
         unit: condition.unit ?? null,
         requiresAccompaniment: condition.requiresAccompaniment ?? null,

@@ -41,4 +41,25 @@ public static class LocalizedContentApplicationErrors
             "localized-content.access-condition.not-found",
             $"Aucune condition d'accès ne correspond au sélecteur '{selector}'.");
     }
+
+    public static ApplicationError AccessConditionAmbiguous(string selector)
+    {
+        return ApplicationError.Validation(
+            "localized-content.access-condition.ambiguous",
+            $"Plusieurs conditions d'accès correspondent au sélecteur '{selector}'. Ajoute displayOrder ou typeKey pour lever l'ambiguïté.");
+    }
+
+    public static ApplicationError AccessConditionInvalid(string selector)
+    {
+        return ApplicationError.Validation(
+            "localized-content.access-condition.invalid",
+            $"La condition d'accès '{selector}' est invalide. Fournis au moins un type connu, un typeKey ou un displayOrder ciblant une condition existante.");
+    }
+
+    public static ApplicationError AccessConditionsRequireAttraction()
+    {
+        return ApplicationError.Validation(
+            "localized-content.access-condition.requires-attraction",
+            "Les conditions d'accès ne peuvent être appliquées qu'à un élément de parc de catégorie attraction.");
+    }
 }

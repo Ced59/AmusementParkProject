@@ -173,6 +173,9 @@ export class AdminLocalizedContentComponent {
           accessConditions: [
             {
               type: 'MinHeight',
+              value: 105,
+              unit: 'Centimeter',
+              displayOrder: 1,
               label: [
                 { languageCode: 'fr', value: 'Taille minimale' },
                 { languageCode: 'en', value: 'Minimum height' }
@@ -181,6 +184,19 @@ export class AdminLocalizedContentComponent {
                 { languageCode: 'fr', value: 'Accès soumis à une taille minimale.' },
                 { languageCode: 'en', value: 'Access is subject to a minimum height.' }
               ]
+            },
+            {
+              type: 'AdultSupervisionRequired',
+              customTypeLabel: {
+                fr: 'Surveillance adulte',
+                en: 'Adult supervision'
+              },
+              requiresAccompaniment: true,
+              displayOrder: 2,
+              label: {
+                fr: 'Accompagnement requis',
+                en: 'Accompaniment required'
+              }
             }
           ]
         };

@@ -536,7 +536,19 @@
         "advancedAccessConditionsHelp": "Füge nur Regeln hinzu, die keine Größenanforderungen sind.",
         "advancedAccessConditionsEmpty": "Keine weitere Bedingung eingetragen.",
         "park": "Zugeordneter Park",
-        "parkHelp": "Damit kann das Element manuell in den richtigen Park verschoben werden, falls ein Import es falsch zugeordnet hat."
+        "parkHelp": "Damit kann das Element manuell in den richtigen Park verschoben werden, falls ein Import es falsch zugeordnet hat.",
+        "accessConditionTypesAdmin": {
+          "title": "Wiederverwendbare Bedingungstypen",
+          "help": "Füge dem Katalog einen gemeinsamen Typ hinzu, bevor du ihn bei einer Attraktion verwendest.",
+          "key": "Stabile Schlüssel",
+          "frLabel": "Französische Bezeichnung",
+          "enLabel": "Englische Bezeichnung",
+          "create": "Typ erstellen",
+          "createdSummary": "Typ erstellt",
+          "createdDetail": "Der Bedingungstyp ist jetzt in der Liste verfügbar.",
+          "errorSummary": "Erstellung fehlgeschlagen",
+          "errorDetail": "Der Bedingungstyp konnte nicht erstellt werden."
+        }
       },
       "refactorHint": "Der Editor ist jetzt in thematische Tabs aufgeteilt, damit die Seite leichter und übersichtlicher bleibt.",
       "visibilityHelp": "Steuert, ob dieser Park in der öffentlichen Anwendung sichtbar ist.",
@@ -928,7 +940,7 @@
         "merge": "Standardmäßig werden gelieferte Sprachen mit vorhandenen Werten zusammengeführt: andere Sprachen bleiben erhalten.",
         "replace": "Füge \"replaceExisting\": true oder \"mode\": \"replace\" hinzu, um das lokalisierte Feld vollständig zu ersetzen.",
         "fields": "Unterstützte Felder: descriptions, names, description, biography, altTexts, captions, credits, labels je nach gewähltem Typ.",
-        "accessConditions": "Für ein Parkelement vom Typ Attraktion kann accessConditions label und description über type oder displayOrder lokalisieren."
+        "accessConditions": "Für ein Parkelement der Kategorie Attraktion kann accessConditions Bedingungen erstellen oder aktualisieren: type, impliziter customTypeKey bei unbekanntem Typ, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label und description."
       },
       "messages": {
         "searchError": "Lokalisierbare Ziele konnten nicht geladen werden.",

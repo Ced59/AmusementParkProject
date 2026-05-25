@@ -13,9 +13,24 @@ public sealed class AttractionAccessCondition
     public AttractionAccessConditionType Type { get; set; }
 
     /// <summary>
+    /// Clé du type réutilisable de condition d'accès.
+    /// </summary>
+    public string? TypeKey { get; set; }
+
+    /// <summary>
     /// Indique si la contrainte est personnalisée.
     /// </summary>
     public bool? IsCustom { get; set; }
+
+    /// <summary>
+    /// Clé stable d'un type personnalisé de contrainte.
+    /// </summary>
+    public string? CustomTypeKey { get; set; }
+
+    /// <summary>
+    /// Libellés localisés du type personnalisé.
+    /// </summary>
+    public List<LocalizedText> CustomTypeLabel { get; set; } = new();
 
     /// <summary>
     /// Valeur numérique éventuelle de la contrainte.

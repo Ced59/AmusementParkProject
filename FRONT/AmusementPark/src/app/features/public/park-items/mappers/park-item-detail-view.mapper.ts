@@ -502,7 +502,8 @@ function pushHeightMetric(
 
 function mapAccessCondition(condition: AttractionAccessCondition, currentLanguage: string): ParkItemAccessConditionViewModel {
   const rows: ParkItemDetailRowViewModel[] = [];
-  const title: string | null = resolveOptionalLocalizedText(condition.label, currentLanguage);
+  const title: string | null = resolveOptionalLocalizedText(condition.label, currentLanguage)
+    ?? resolveOptionalLocalizedText(condition.customTypeLabel, currentLanguage);
   const description: string | null = resolveOptionalLocalizedText(condition.description, currentLanguage);
 
   if (condition.value != null) {

@@ -536,7 +536,19 @@
         "advancedAccessConditionsHelp": "Aggiungi solo regole che non sono requisiti di altezza.",
         "advancedAccessConditionsEmpty": "Nessun’altra condizione configurata.",
         "park": "Parco associato",
-        "parkHelp": "Consente di spostare manualmente l’elemento nel parco corretto se un import lo ha associato a quello sbagliato."
+        "parkHelp": "Consente di spostare manualmente l’elemento nel parco corretto se un import lo ha associato a quello sbagliato.",
+        "accessConditionTypesAdmin": {
+          "title": "Tipi di condizioni riutilizzabili",
+          "help": "Aggiungi un tipo comune al catalogo prima di usarlo su un’attrazione.",
+          "key": "Chiave stabile",
+          "frLabel": "Etichetta francese",
+          "enLabel": "Etichetta inglese",
+          "create": "Crea tipo",
+          "createdSummary": "Tipo creato",
+          "createdDetail": "Il tipo di condizione è ora disponibile nell’elenco.",
+          "errorSummary": "Creazione non riuscita",
+          "errorDetail": "Non è stato possibile creare il tipo di condizione."
+        }
       },
       "refactorHint": "L’editor è ora suddiviso in schede tematiche per alleggerire la pagina e renderla più chiara.",
       "visibilityHelp": "Controlla se questo parco è visibile nell’applicazione pubblica.",
@@ -928,7 +940,7 @@
         "merge": "Per impostazione predefinita, le lingue fornite vengono unite ai valori esistenti: le altre lingue sono conservate.",
         "replace": "Aggiungi \"replaceExisting\": true o \"mode\": \"replace\" per sostituire completamente il campo localizzato.",
         "fields": "Campi supportati: descriptions, names, description, biography, altTexts, captions, credits, labels a seconda del tipo scelto.",
-        "accessConditions": "Per un elemento parco di tipo attrazione, accessConditions può localizzare label e description tramite type o displayOrder."
+        "accessConditions": "Per un elemento di parco di tipo attrazione, accessConditions può creare o aggiornare condizioni: type, customTypeKey implicito per un tipo sconosciuto, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label e description."
       },
       "messages": {
         "searchError": "Impossibile caricare le destinazioni localizzabili.",

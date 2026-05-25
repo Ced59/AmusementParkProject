@@ -10,7 +10,13 @@ public sealed class AttractionAccessConditionDto
 {
     public AttractionAccessConditionTypeDto Type { get; set; }
 
+    public string? TypeKey { get; set; }
+
     public bool? IsCustom { get; set; }
+
+    public string? CustomTypeKey { get; set; }
+
+    public List<LocalizedTextDto>? CustomTypeLabel { get; set; }
 
     public double? Value { get; set; }
 

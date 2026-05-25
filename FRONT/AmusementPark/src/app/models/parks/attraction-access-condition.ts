@@ -4,7 +4,10 @@ import { AttractionAccessConditionUnit } from './attraction-access-condition-uni
 
 export interface AttractionAccessCondition {
   type: AttractionAccessConditionType;
+  typeKey?: string | null;
   isCustom?: boolean | null;
+  customTypeKey?: string | null;
+  customTypeLabel?: LocalizedItem<string>[] | null;
   value?: number | null;
   unit?: AttractionAccessConditionUnit | null;
   requiresAccompaniment?: boolean | null;

@@ -232,11 +232,16 @@ function buildAttractionAccessCondition(
   index: number
 ): AttractionAccessCondition | null {
   const type: AttractionAccessConditionType = (raw?.type as AttractionAccessConditionType) ?? 'Custom';
+  const typeKey: string | null = toNullableText(raw?.typeKey);
   const label: LocalizedItem<string>[] | null = toLocalizedItems(raw?.label);
   const description: LocalizedItem<string>[] | null = toLocalizedItems(raw?.description);
+  const customTypeLabel: LocalizedItem<string>[] | null = toLocalizedItems(raw?.customTypeLabel);
   const condition: AttractionAccessCondition = {
     type,
-    isCustom: type === 'Custom',
+    typeKey,
+    isCustom: raw?.isCustom ?? null,
+    customTypeKey: toNullableText(raw?.customTypeKey),
+    customTypeLabel,
     value: toNullableNumber(raw?.value),
     unit: toNullableUnit(raw?.unit),
     requiresAccompaniment: !!raw?.requiresAccompaniment,
@@ -297,11 +302,13 @@ function hasAtLeastOneAttractionDetail(details: AttractionDetails): boolean {
 }
 
 function hasAtLeastOneAccessConditionValue(condition: AttractionAccessCondition): boolean {
-  if (condition.type !== 'Custom') {
+  if (condition.type !== 'Custom' || !!condition.typeKey) {
     return true;
   }
 
-  return condition.value !== null
+  return !!condition.customTypeKey
+    || hasLocalizedValues(condition.customTypeLabel)
+    || condition.value !== null
     || condition.unit !== null
     || condition.requiresAccompaniment === true
     || condition.minimumCompanionAge !== null
@@ -444,6 +451,10 @@ interface AdminAttractionLocationsFormValue {
 
 interface AdminAttractionAccessConditionFormValue {
   type?: AttractionAccessConditionType | string | null;
+  typeKey?: string | null;
+  isCustom?: boolean | null;
+  customTypeKey?: string | null;
+  customTypeLabel?: unknown;
   value?: unknown;
   unit?: AttractionAccessConditionUnit | string | null;
   requiresAccompaniment?: boolean | null;

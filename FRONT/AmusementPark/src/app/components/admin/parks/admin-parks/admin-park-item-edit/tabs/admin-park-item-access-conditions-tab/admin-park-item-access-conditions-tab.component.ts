@@ -5,6 +5,7 @@ import { resolveLocalizedValue } from '@shared/utils/localization';
 import {
   ADMIN_PARK_ITEM_HEIGHT_REQUIREMENT_FIELDS,
   AdminParkItemAccessConditionEntry,
+  AdminParkItemAccessConditionTypeOption,
   AdminParkItemHeightRequirementField,
   AdminParkItemHeightRequirementKey,
   getAdminParkItemAccessConditionLabelKey,
@@ -37,19 +38,24 @@ export class AdminParkItemAccessConditionsTabComponent {
   public readonly heightRequirementFields: AdminParkItemHeightRequirementField[] = ADMIN_PARK_ITEM_HEIGHT_REQUIREMENT_FIELDS;
 
   @Input({ required: true }) formGroup!: FormGroup;
-  @Input() accessConditionPresetOptions: Array<{ labelKey: string; value: AttractionAccessConditionType }> = [];
+  @Input() accessConditionPresetOptions: AdminParkItemAccessConditionTypeOption[] = [];
   @Input() accessConditionUnitOptions: Array<{ labelKey: string; value: AttractionAccessConditionUnit }> = [];
-  @Input() selectedAccessConditionPreset: AttractionAccessConditionType = 'Custom';
+  @Input() selectedAccessConditionPreset: string = 'custom';
   @Input() currentLang: string = 'en';
   @Input() isSaving: boolean = false;
 
-  @Output() selectedAccessConditionPresetChange: EventEmitter<AttractionAccessConditionType> = new EventEmitter<AttractionAccessConditionType>();
-  @Output() addAccessCondition: EventEmitter<AttractionAccessConditionType> = new EventEmitter<AttractionAccessConditionType>();
+  @Output() selectedAccessConditionPresetChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() addAccessCondition: EventEmitter<string> = new EventEmitter<string>();
   @Output() removeAccessCondition: EventEmitter<number> = new EventEmitter<number>();
   @Output() moveAccessConditionUp: EventEmitter<number> = new EventEmitter<number>();
   @Output() moveAccessConditionDown: EventEmitter<number> = new EventEmitter<number>();
   @Output() accessConditionTypeChanged: EventEmitter<number> = new EventEmitter<number>();
   @Output() saveSection: EventEmitter<void> = new EventEmitter<void>();
+  @Output() createAccessConditionType: EventEmitter<{ key: string; fr: string; en: string }> = new EventEmitter<{ key: string; fr: string; en: string }>();
+
+  public newAccessConditionTypeKey: string = '';
+  public newAccessConditionTypeFrLabel: string = '';
+  public newAccessConditionTypeEnLabel: string = '';
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -65,25 +71,39 @@ export class AdminParkItemAccessConditionsTabComponent {
     return getAdminParkItemStandaloneAccessConditionEntries(this.accessConditions);
   }
 
-  get standaloneAccessConditionPresetOptions(): Array<{ labelKey: string; value: AttractionAccessConditionType }> {
+  get standaloneAccessConditionPresetOptions(): AdminParkItemAccessConditionTypeOption[] {
     return this.accessConditionPresetOptions
-      .filter((option: { labelKey: string; value: AttractionAccessConditionType }) => !isAdminParkItemHeightAccessConditionType(option.value));
+      .filter((option: AdminParkItemAccessConditionTypeOption) => !isAdminParkItemHeightAccessConditionType(option.legacyType));
   }
 
-  get safeSelectedAccessConditionPreset(): AttractionAccessConditionType {
-    if (!isAdminParkItemHeightAccessConditionType(this.selectedAccessConditionPreset)) {
-      return this.selectedAccessConditionPreset;
-    }
+  get safeSelectedAccessConditionPreset(): string {
+    const selectedOption: AdminParkItemAccessConditionTypeOption | undefined = this.standaloneAccessConditionPresetOptions
+      .find((option: AdminParkItemAccessConditionTypeOption) => option.value === this.selectedAccessConditionPreset);
 
-    return this.standaloneAccessConditionPresetOptions[0]?.value ?? 'Custom';
+    return selectedOption?.value ?? this.standaloneAccessConditionPresetOptions[0]?.value ?? 'custom';
   }
 
-  onSelectedAccessConditionPresetChange(value: AttractionAccessConditionType): void {
+  onSelectedAccessConditionPresetChange(value: string): void {
     this.selectedAccessConditionPresetChange.emit(value);
   }
 
   onAddStandaloneAccessCondition(): void {
     this.addAccessCondition.emit(this.safeSelectedAccessConditionPreset);
+  }
+
+  onCreateAccessConditionType(): void {
+    const key: string = this.newAccessConditionTypeKey.trim();
+    const fr: string = this.newAccessConditionTypeFrLabel.trim();
+    const en: string = this.newAccessConditionTypeEnLabel.trim();
+
+    if (!key || !fr) {
+      return;
+    }
+
+    this.createAccessConditionType.emit({ key, fr, en: en || fr });
+    this.newAccessConditionTypeKey = '';
+    this.newAccessConditionTypeFrLabel = '';
+    this.newAccessConditionTypeEnLabel = '';
   }
 
   getHeightRequirementValue(key: AdminParkItemHeightRequirementKey): number | null {
@@ -102,6 +122,12 @@ export class AdminParkItemAccessConditionsTabComponent {
 
     if (resolvedLabel && resolvedLabel.trim().length > 0) {
       return resolvedLabel;
+    }
+
+    const typeKey: string = String(group.get('typeKey')?.value ?? 'custom');
+    const option: AdminParkItemAccessConditionTypeOption | undefined = this.accessConditionPresetOptions.find((candidate: AdminParkItemAccessConditionTypeOption) => candidate.value === typeKey);
+    if (option) {
+      return this.translateService.instant(option.labelKey);
     }
 
     const type: AttractionAccessConditionType = group.get('type')?.value as AttractionAccessConditionType;
