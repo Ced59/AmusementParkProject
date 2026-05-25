@@ -139,7 +139,10 @@ internal static class ParkItemNormalization
         AttractionAccessCondition normalized = new AttractionAccessCondition
         {
             Type = value.Type,
-            IsCustom = value.IsCustom == true || value.Type == AttractionAccessConditionType.Custom ? true : null,
+            TypeKey = NormalizeOptionalText(value.TypeKey),
+            IsCustom = value.IsCustom == true ? true : null,
+            CustomTypeKey = NormalizeOptionalText(value.CustomTypeKey),
+            CustomTypeLabel = NormalizeLocalizedTexts(value.CustomTypeLabel),
             Value = NormalizeNullableDouble(value.Value),
             Unit = value.Unit,
             RequiresAccompaniment = value.RequiresAccompaniment,
@@ -164,7 +167,10 @@ internal static class ParkItemNormalization
             return true;
         }
 
-        return condition.Value != null ||
+        return !string.IsNullOrWhiteSpace(condition.TypeKey) ||
+               !string.IsNullOrWhiteSpace(condition.CustomTypeKey) ||
+               condition.CustomTypeLabel.Count > 0 ||
+               condition.Value != null ||
                condition.Unit != null ||
                condition.RequiresAccompaniment == true ||
                condition.MinimumCompanionAge != null ||

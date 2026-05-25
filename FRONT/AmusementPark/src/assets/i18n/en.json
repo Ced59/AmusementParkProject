@@ -395,7 +395,9 @@
           "isWaterAttraction": "Water attraction",
           "manufacturerPlaceholder": "Select a manufacturer",
           "waterExposureLevel": "Water exposure level",
-          "waterExposureLevelPlaceholder": "Select a level"
+          "waterExposureLevelPlaceholder": "Select a level",
+          "status": "Operating status",
+          "statusPlaceholder": "Select a status"
         },
         "locationFields": {
           "entrance": "Entrance",
@@ -536,7 +538,28 @@
         "advancedAccessConditionsHelp": "Add only rules that are not height requirements: age, health, transfer, access pass or custom condition.",
         "advancedAccessConditionsEmpty": "No other condition has been configured.",
         "park": "Linked park",
-        "parkHelp": "Use this to manually move the item to the correct park if an import attached it to the wrong one."
+        "parkHelp": "Use this to manually move the item to the correct park if an import attached it to the wrong one.",
+        "accessConditionTypesAdmin": {
+          "title": "Reusable condition types",
+          "help": "Add a shared type to the catalogue before using it on an attraction.",
+          "key": "Stable key",
+          "frLabel": "French label",
+          "enLabel": "English label",
+          "create": "Create type",
+          "createdSummary": "Type created",
+          "createdDetail": "The condition type is now available in the list.",
+          "errorSummary": "Creation failed",
+          "errorDetail": "The condition type could not be created."
+        },
+        "statuses": {
+          "operating": "Operating",
+          "underConstruction": "Under construction",
+          "temporarilyClosed": "Temporarily closed",
+          "closedDefinitively": "Permanently closed",
+          "removed": "Removed / dismantled",
+          "planned": "Planned",
+          "unknown": "Unknown"
+        }
       },
       "refactorHint": "The editor is now split into thematic tabs to keep the page lighter and easier to navigate.",
       "visibilityHelp": "Controls whether this park is visible in the public application.",
@@ -899,10 +922,10 @@
       }
     },
     "localizedContent": {
-      "navTitle": "Localized content",
-      "kicker": "Editorial administration",
-      "title": "Import localized JSON",
-      "subtitle": "Search and select an entity first, then apply JSON only to supported localizable fields.",
+      "navTitle": "JSON imports",
+      "kicker": "JSON import",
+      "title": "Import entity JSON",
+      "subtitle": "Choose an existing entity, then apply a partial or complete JSON payload to the supported fields.",
       "selection": {
         "title": "1. Select the target",
         "description": "Selection uses readable search results so you do not update an entity from a technical ID alone.",
@@ -928,7 +951,7 @@
         "merge": "By default, provided languages are merged with existing values: other languages are preserved.",
         "replace": "Add \"replaceExisting\": true or \"mode\": \"replace\" to fully replace the localized field.",
         "fields": "Supported fields: descriptions, names, description, biography, altTexts, captions, credits, labels depending on the selected type.",
-        "accessConditions": "For an attraction park item, accessConditions can localize label and description using type or displayOrder."
+        "accessConditions": "For an attraction park item, accessConditions can create or update conditions: type, implicit customTypeKey for an unknown type, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label and description."
       },
       "messages": {
         "searchError": "Could not load localizable targets.",
@@ -946,7 +969,8 @@
         "parkFounder": "Founder",
         "attractionManufacturer": "Manufacturer",
         "image": "Image",
-        "imageTag": "Image tag"
+        "imageTag": "Image tag",
+        "accessConditionType": "Access condition type"
       },
       "entityHints": {
         "park": "Localized park description.",
@@ -956,7 +980,30 @@
         "parkFounder": "Localized founder biography.",
         "attractionManufacturer": "Localized manufacturer biography.",
         "image": "Localized alternative texts, captions and credits.",
-        "imageTag": "Localized tag labels and descriptions."
+        "imageTag": "Localized tag labels and descriptions.",
+        "accessConditionType": "Reusable catalogue of access condition types."
+      }
+    },
+    "jsonImport": {
+      "tab": "JSON import",
+      "kicker": "JSON import",
+      "title": "Import data for this entity",
+      "description": "Paste a partial or complete JSON payload to quickly fill supported fields, without managing photos or creating child entities.",
+      "resetExample": "Reset example",
+      "jsonLabel": "Entity JSON",
+      "apply": "Apply JSON",
+      "applying": "Applying…",
+      "disabledUntilSave": "Save this entity before importing JSON.",
+      "messages": {
+        "invalidJson": "The JSON is invalid.",
+        "success": "JSON applied. Reload or check the tabs if needed.",
+        "error": "Unable to apply the JSON."
+      },
+      "help": {
+        "title": "Accepted format",
+        "partial": "A partial JSON only updates the fields it contains.",
+        "merge": "Localized values are merged by language, unless replaceExisting or mode: replace is used.",
+        "accessConditions": "For park items, accessConditions can create or update conditions and their reusable types."
       }
     }
   },
@@ -1517,6 +1564,15 @@
       "zoneMapHeading": "Map Zone {{name}}",
       "parkMapHeading": "{{name}} map",
       "allMapItems": "All"
+    },
+    "statuses": {
+      "operating": "Operating",
+      "underConstruction": "Under construction",
+      "temporarilyClosed": "Temporarily closed",
+      "closedDefinitively": "Permanently closed",
+      "removed": "Removed / dismantled",
+      "planned": "Planned",
+      "unknown": "Unknown"
     }
   },
   "publicNavigation": {
@@ -1556,7 +1612,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Made with ❤️ and adrenaline",
-      "version": "Version 1.0.1"
+      "version": "Version 1.1.0"
     }
   },
   "ui": {

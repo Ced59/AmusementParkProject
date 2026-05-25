@@ -1,6 +1,7 @@
 using AmusementPark.Application.Features.CaptainCoaster.Results;
 using AmusementPark.Core.Domain.Countries;
 using AmusementPark.Core.Domain.Images;
+using System;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Domain.Users;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.CaptainCoaster;
@@ -254,7 +255,10 @@ internal static partial class EntityMongoMappers
         return new AttractionAccessCondition
         {
             Type = document.Type,
+            TypeKey = document.TypeKey,
             IsCustom = document.IsCustom,
+            CustomTypeKey = document.CustomTypeKey,
+            CustomTypeLabel = CommonMongoMappers.ToDomain(document.CustomTypeLabel),
             Value = document.Value,
             Unit = document.Unit,
             RequiresAccompaniment = document.RequiresAccompaniment,
@@ -270,7 +274,10 @@ internal static partial class EntityMongoMappers
         return new AttractionAccessConditionDocument
         {
             Type = entity.Type,
+            TypeKey = entity.TypeKey,
             IsCustom = entity.IsCustom,
+            CustomTypeKey = entity.CustomTypeKey,
+            CustomTypeLabel = CommonMongoMappers.ToDocuments(entity.CustomTypeLabel),
             Value = entity.Value,
             Unit = entity.Unit,
             RequiresAccompaniment = entity.RequiresAccompaniment,
@@ -302,4 +309,34 @@ internal static partial class EntityMongoMappers
             ReducedMobilityEntrance = CommonMongoMappers.ToDocument(entity.ReducedMobilityEntrance),
         };
     }
+    public static AttractionAccessConditionTypeDefinition ToDomain(this AttractionAccessConditionTypeDefinitionDocument document)
+    {
+        return new AttractionAccessConditionTypeDefinition
+        {
+            Id = document.Id,
+            Key = document.Key,
+            LegacyType = document.LegacyType,
+            IsSystem = document.IsSystem,
+            IsActive = document.IsActive,
+            Labels = CommonMongoMappers.ToDomain(document.Labels),
+            Descriptions = CommonMongoMappers.ToDomain(document.Descriptions),
+            SortOrder = document.SortOrder,
+        };
+    }
+
+    public static AttractionAccessConditionTypeDefinitionDocument ToDocument(this AttractionAccessConditionTypeDefinition entity)
+    {
+        return new AttractionAccessConditionTypeDefinitionDocument
+        {
+            Id = string.IsNullOrWhiteSpace(entity.Id) ? Guid.NewGuid().ToString("N") : entity.Id,
+            Key = entity.Key,
+            LegacyType = entity.LegacyType,
+            IsSystem = entity.IsSystem,
+            IsActive = entity.IsActive,
+            Labels = CommonMongoMappers.ToDocuments(entity.Labels),
+            Descriptions = CommonMongoMappers.ToDocuments(entity.Descriptions),
+            SortOrder = entity.SortOrder,
+        };
+    }
+
 }

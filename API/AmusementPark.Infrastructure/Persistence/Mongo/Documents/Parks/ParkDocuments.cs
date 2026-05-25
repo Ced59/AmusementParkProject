@@ -458,9 +458,20 @@ public sealed class AttractionAccessConditionDocument
     [BsonRepresentation(BsonType.String)]
     public AttractionAccessConditionType Type { get; set; }
 
+    [BsonElement("typeKey")]
+    [BsonIgnoreIfNull]
+    public string? TypeKey { get; set; }
+
     [BsonElement("isCustom")]
     [BsonIgnoreIfNull]
     public bool? IsCustom { get; set; }
+
+    [BsonElement("customTypeKey")]
+    [BsonIgnoreIfNull]
+    public string? CustomTypeKey { get; set; }
+
+    [BsonElement("customTypeLabel")]
+    public List<LocalizedTextDocument> CustomTypeLabel { get; set; } = new();
 
     [BsonElement("value")]
     [BsonIgnoreIfNull]
@@ -510,4 +521,33 @@ public sealed class AttractionLocationsDocument
     [BsonElement("reducedMobilityEntrance")]
     [BsonIgnoreIfNull]
     public GeoPointDocument? ReducedMobilityEntrance { get; set; }
+}
+
+/// <summary>
+/// Document Mongo d'un type réutilisable de condition d'accès.
+/// </summary>
+[BsonIgnoreExtraElements]
+public sealed class AttractionAccessConditionTypeDefinitionDocument : MongoDocumentBase
+{
+    [BsonElement("key")]
+    public string Key { get; set; } = string.Empty;
+
+    [BsonElement("legacyType")]
+    [BsonRepresentation(BsonType.String)]
+    public AttractionAccessConditionType LegacyType { get; set; } = AttractionAccessConditionType.Custom;
+
+    [BsonElement("isSystem")]
+    public bool IsSystem { get; set; }
+
+    [BsonElement("isActive")]
+    public bool IsActive { get; set; } = true;
+
+    [BsonElement("labels")]
+    public List<LocalizedTextDocument> Labels { get; set; } = new();
+
+    [BsonElement("descriptions")]
+    public List<LocalizedTextDocument> Descriptions { get; set; } = new();
+
+    [BsonElement("sortOrder")]
+    public int SortOrder { get; set; }
 }

@@ -30,6 +30,7 @@ public static class ApplicationModuleServiceCollectionExtensions
                    namespaceName.Contains(".Features.ParkFounders.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.ParkOperators.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.AttractionManufacturers.", StringComparison.Ordinal) ||
+                   namespaceName.Contains(".Features.AttractionAccessConditionTypes.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.Parks.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.ParkZones.", StringComparison.Ordinal) ||
                    namespaceName.Contains(".Features.ParkItems.", StringComparison.Ordinal) ||

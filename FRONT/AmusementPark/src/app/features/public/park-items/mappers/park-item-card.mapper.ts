@@ -3,10 +3,10 @@ import {
   getParkItemTypeTranslationKey,
   resolveParkItemDescription
 } from '@shared/utils/display/park-item-presentation.helpers';
-import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
-import { Park } from '@app/models/parks/park';
-import { ParkItem } from '@app/models/parks/park-item';
-import { ParkItemCardViewModel } from '../models/park-item-card.model';
+import {buildPublicParkItemRouteCommands} from '@shared/utils/routing/public-detail-route.helpers';
+import {Park} from '@app/models/parks/park';
+import {ParkItem} from '@app/models/parks/park-item';
+import {ParkItemCardViewModel} from '../models/park-item-card.model';
 
 export function mapParkItemToCardViewModel(
   item: ParkItem,
@@ -28,12 +28,12 @@ export function mapParkItemToCardViewModel(
     typeLabelKey: getParkItemTypeTranslationKey(item.type),
     typeIconClass: resolveParkItemTypeIconClass(item.type),
     zoneName,
-    highlights: buildParkItemHighlights(item, manufacturerName),
+    highlights: buildParkItemHighlights(item, manufacturerName, currentLanguage),
     itemLink: buildParkItemLink(park, item, currentLanguage)
   };
 }
 
-function buildParkItemHighlights(item: ParkItem, manufacturerName: string | null): string[] {
+function buildParkItemHighlights(item: ParkItem, manufacturerName: string | null, currentLanguage: string): string[] {
   const values: string[] = [];
 
   if (manufacturerName) {
@@ -44,8 +44,9 @@ function buildParkItemHighlights(item: ParkItem, manufacturerName: string | null
     values.push(item.attractionDetails.model);
   }
 
-  if (item.attractionDetails?.status) {
-    values.push(item.attractionDetails.status);
+  const statusLabel: string | null = resolveAttractionStatusDisplay(item.attractionDetails?.status, currentLanguage);
+  if (statusLabel) {
+    values.push(statusLabel);
   }
 
   if (item.attractionDetails?.heightInMeters != null) {
@@ -61,6 +62,117 @@ function buildParkItemHighlights(item: ParkItem, manufacturerName: string | null
   }
 
   return values.slice(0, 4);
+}
+
+
+function resolveAttractionStatusDisplay(status: string | null | undefined, currentLanguage: string): string | null {
+  const normalized: string = status?.trim() ?? '';
+  if (normalized.length === 0) {
+    return null;
+  }
+
+  const normalizedKey: string = normalized.toLowerCase().replace(/[\s_-]+/g, '');
+  const statusKey: string | undefined = {
+    operating: 'operating',
+    open: 'operating',
+    opened: 'operating',
+    enfonctionnement: 'operating',
+    underconstruction: 'underConstruction',
+    construction: 'underConstruction',
+    temporarilyclosed: 'temporarilyClosed',
+    temporaryclosed: 'temporarilyClosed',
+    closedtemporarily: 'temporarilyClosed',
+    closeddefinitively: 'closedDefinitively',
+    permanentlyclosed: 'closedDefinitively',
+    definitivelyclosed: 'closedDefinitively',
+    fermedefinitivement: 'closedDefinitively',
+    removed: 'removed',
+    dismantled: 'removed',
+    planned: 'planned',
+    announced: 'planned',
+    unknown: 'unknown'
+  }[normalizedKey];
+
+  if (!statusKey) {
+    return normalized;
+  }
+
+  const labels: Record<string, Record<string, string>> = {
+    fr: {
+      operating: 'En fonctionnement',
+      underConstruction: 'En construction',
+      temporarilyClosed: 'Fermé temporairement',
+      closedDefinitively: 'Fermé définitivement',
+      removed: 'Supprimé / démonté',
+      planned: 'Prévu',
+      unknown: 'Inconnu'
+    },
+    en: {
+      operating: 'Operating',
+      underConstruction: 'Under construction',
+      temporarilyClosed: 'Temporarily closed',
+      closedDefinitively: 'Permanently closed',
+      removed: 'Removed / dismantled',
+      planned: 'Planned',
+      unknown: 'Unknown'
+    },
+    es: {
+      operating: 'En funcionamiento',
+      underConstruction: 'En construcción',
+      temporarilyClosed: 'Cerrado temporalmente',
+      closedDefinitively: 'Cerrado definitivamente',
+      removed: 'Retirado / desmontado',
+      planned: 'Previsto',
+      unknown: 'Desconocido'
+    },
+    de: {
+      operating: 'In Betrieb',
+      underConstruction: 'Im Bau',
+      temporarilyClosed: 'Vorübergehend geschlossen',
+      closedDefinitively: 'Dauerhaft geschlossen',
+      removed: 'Entfernt / abgebaut',
+      planned: 'Geplant',
+      unknown: 'Unbekannt'
+    },
+    it: {
+      operating: 'In funzione',
+      underConstruction: 'In costruzione',
+      temporarilyClosed: 'Chiuso temporaneamente',
+      closedDefinitively: 'Chiuso definitivamente',
+      removed: 'Rimosso / smontato',
+      planned: 'Previsto',
+      unknown: 'Sconosciuto'
+    },
+    pl: {
+      operating: 'Działa',
+      underConstruction: 'W budowie',
+      temporarilyClosed: 'Tymczasowo zamknięte',
+      closedDefinitively: 'Zamknięte na stałe',
+      removed: 'Usunięte / zdemontowane',
+      planned: 'Planowane',
+      unknown: 'Nieznane'
+    },
+    nl: {
+      operating: 'In werking',
+      underConstruction: 'In aanbouw',
+      temporarilyClosed: 'Tijdelijk gesloten',
+      closedDefinitively: 'Definitief gesloten',
+      removed: 'Verwijderd / afgebroken',
+      planned: 'Gepland',
+      unknown: 'Onbekend'
+    },
+    pt: {
+      operating: 'Em funcionamento',
+      underConstruction: 'Em construção',
+      temporarilyClosed: 'Fechado temporariamente',
+      closedDefinitively: 'Fechado definitivamente',
+      removed: 'Removido / desmontado',
+      planned: 'Planeado',
+      unknown: 'Desconhecido'
+    }
+  };
+
+  return labels[currentLanguage]?.[statusKey] ?? labels['en']?.[statusKey] ?? normalized;
 }
 
 function buildParkItemLink(park: Park | null, item: ParkItem, currentLanguage: string): string[] | null {

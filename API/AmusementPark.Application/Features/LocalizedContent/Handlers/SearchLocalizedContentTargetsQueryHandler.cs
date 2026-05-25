@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.AttractionAccessConditionTypes.Ports;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.LocalizedContent.Queries;
@@ -30,6 +31,7 @@ public sealed class SearchLocalizedContentTargetsQueryHandler : IQueryHandler<Se
     private readonly IParkOperatorRepository parkOperatorRepository;
     private readonly IParkFounderRepository parkFounderRepository;
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
+    private readonly IAttractionAccessConditionTypeDefinitionRepository accessConditionTypeDefinitionRepository;
     private readonly IImageRepository imageRepository;
     private readonly IImageTagRepository imageTagRepository;
 
@@ -40,6 +42,7 @@ public sealed class SearchLocalizedContentTargetsQueryHandler : IQueryHandler<Se
         IParkOperatorRepository parkOperatorRepository,
         IParkFounderRepository parkFounderRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
+        IAttractionAccessConditionTypeDefinitionRepository accessConditionTypeDefinitionRepository,
         IImageRepository imageRepository,
         IImageTagRepository imageTagRepository)
     {
@@ -49,6 +52,7 @@ public sealed class SearchLocalizedContentTargetsQueryHandler : IQueryHandler<Se
         this.parkOperatorRepository = parkOperatorRepository;
         this.parkFounderRepository = parkFounderRepository;
         this.attractionManufacturerRepository = attractionManufacturerRepository;
+        this.accessConditionTypeDefinitionRepository = accessConditionTypeDefinitionRepository;
         this.imageRepository = imageRepository;
         this.imageTagRepository = imageTagRepository;
     }
@@ -74,6 +78,7 @@ public sealed class SearchLocalizedContentTargetsQueryHandler : IQueryHandler<Se
             LocalizedContentEntityType.AttractionManufacturer => await this.SearchAttractionManufacturersAsync(search, page, pageSize, cancellationToken),
             LocalizedContentEntityType.Image => await this.SearchImagesAsync(search, page, pageSize, cancellationToken),
             LocalizedContentEntityType.ImageTag => await this.SearchImageTagsAsync(search, page, pageSize, cancellationToken),
+            LocalizedContentEntityType.AccessConditionType => await this.SearchAccessConditionTypesAsync(search, page, pageSize, cancellationToken),
             _ => new PagedResult<LocalizedContentTargetResult>(Array.Empty<LocalizedContentTargetResult>(), page, pageSize, 0),
         };
 
@@ -214,6 +219,25 @@ public sealed class SearchLocalizedContentTargetsQueryHandler : IQueryHandler<Se
                 value.Slug,
                 value.IsActive ? "Actif" : "Inactif",
                 LocalizedContentSupportedFields.For(LocalizedContentEntityType.ImageTag)))
+            .ToList();
+
+        return ToPagedResult(targets, page, pageSize);
+    }
+
+
+    private async Task<PagedResult<LocalizedContentTargetResult>> SearchAccessConditionTypesAsync(string search, int page, int pageSize, CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<AttractionAccessConditionTypeDefinition> conditionTypes = await this.accessConditionTypeDefinitionRepository.GetAllAsync(true, cancellationToken);
+        List<LocalizedContentTargetResult> targets = conditionTypes
+            .Where(value => Matches(search, value.Id, value.Key, value.LegacyType.ToString(), LocalizedValues(value.Labels), LocalizedValues(value.Descriptions)))
+            .OrderBy(static value => value.SortOrder)
+            .ThenBy(static value => value.Key, StringComparer.OrdinalIgnoreCase)
+            .Select(static value => new LocalizedContentTargetResult(
+                LocalizedContentEntityTypes.AccessConditionType,
+                value.Id,
+                value.Key,
+                value.IsSystem ? "Système" : "Personnalisé",
+                LocalizedContentSupportedFields.For(LocalizedContentEntityType.AccessConditionType)))
             .ToList();
 
         return ToPagedResult(targets, page, pageSize);

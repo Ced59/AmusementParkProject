@@ -7,6 +7,7 @@ import { AttractionDetails } from '@app/models/parks/attraction-details';
 import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
 import { AttractionLocations } from '@app/models/parks/attraction-locations';
 import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water-exposure-level';
+import { AttractionStatus } from '@app/models/parks/attraction-status';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { LocalizedItem } from '@app/models/shared/localized-item';
@@ -32,6 +33,7 @@ export function createAdminParkItemEditForm(formBuilder: FormBuilder, parkId: st
     attractionDetails: formBuilder.group({
       manufacturerId: [null],
       model: [''],
+      status: [null],
       openingDate: [''],
       closingDate: [''],
       durationInSeconds: [null],
@@ -150,6 +152,7 @@ function patchAttractionDetails(formBuilder: FormBuilder, form: FormGroup, detai
   form.get('attractionDetails')?.patchValue({
     manufacturerId: details?.manufacturerId ?? null,
     model: details?.model ?? '',
+    status: toNullableAttractionStatus(details?.status),
     openingDate: normalizeDateForInput(details?.openingDate),
     closingDate: normalizeDateForInput(details?.closingDate),
     durationInSeconds: details?.durationInSeconds ?? null,
@@ -190,6 +193,7 @@ function buildAttractionDetails(raw: AdminAttractionDetailsFormValue | null | un
   const details: AttractionDetails = {
     manufacturerId: toNullableText(raw?.manufacturerId),
     model: toNullableText(raw?.model),
+    status: toNullableAttractionStatus(raw?.status),
     openingDate: toNullableDateText(raw?.openingDate),
     closingDate: toNullableDateText(raw?.closingDate),
     durationInSeconds: toNullableInteger(raw?.durationInSeconds),
@@ -232,11 +236,16 @@ function buildAttractionAccessCondition(
   index: number
 ): AttractionAccessCondition | null {
   const type: AttractionAccessConditionType = (raw?.type as AttractionAccessConditionType) ?? 'Custom';
+  const typeKey: string | null = toNullableText(raw?.typeKey);
   const label: LocalizedItem<string>[] | null = toLocalizedItems(raw?.label);
   const description: LocalizedItem<string>[] | null = toLocalizedItems(raw?.description);
+  const customTypeLabel: LocalizedItem<string>[] | null = toLocalizedItems(raw?.customTypeLabel);
   const condition: AttractionAccessCondition = {
     type,
-    isCustom: type === 'Custom',
+    typeKey,
+    isCustom: raw?.isCustom ?? null,
+    customTypeKey: toNullableText(raw?.customTypeKey),
+    customTypeLabel,
     value: toNullableNumber(raw?.value),
     unit: toNullableUnit(raw?.unit),
     requiresAccompaniment: !!raw?.requiresAccompaniment,
@@ -297,11 +306,13 @@ function hasAtLeastOneAttractionDetail(details: AttractionDetails): boolean {
 }
 
 function hasAtLeastOneAccessConditionValue(condition: AttractionAccessCondition): boolean {
-  if (condition.type !== 'Custom') {
+  if (condition.type !== 'Custom' || !!condition.typeKey) {
     return true;
   }
 
-  return condition.value !== null
+  return !!condition.customTypeKey
+    || hasLocalizedValues(condition.customTypeLabel)
+    || condition.value !== null
     || condition.unit !== null
     || condition.requiresAccompaniment === true
     || condition.minimumCompanionAge !== null
@@ -384,6 +395,37 @@ function toNullableWaterExposureLevel(value: unknown): AttractionWaterExposureLe
     : null;
 }
 
+function toNullableAttractionStatus(value: unknown): AttractionStatus | string | null {
+  const normalized: string = String(value ?? '').trim();
+  if (normalized.length === 0) {
+    return null;
+  }
+
+  const normalizedKey: string = normalized.toLowerCase().replace(/[\s_-]+/g, '');
+  const knownStatuses: Record<string, AttractionStatus> = {
+    operating: 'Operating',
+    open: 'Operating',
+    opened: 'Operating',
+    enfonctionnement: 'Operating',
+    underconstruction: 'UnderConstruction',
+    construction: 'UnderConstruction',
+    temporarilyclosed: 'TemporarilyClosed',
+    temporaryclosed: 'TemporarilyClosed',
+    closedtemporarily: 'TemporarilyClosed',
+    closeddefinitively: 'ClosedDefinitively',
+    permanentlyclosed: 'ClosedDefinitively',
+    definitivelyclosed: 'ClosedDefinitively',
+    fermedefinitivement: 'ClosedDefinitively',
+    removed: 'Removed',
+    dismantled: 'Removed',
+    planned: 'Planned',
+    announced: 'Planned',
+    unknown: 'Unknown'
+  };
+
+  return knownStatuses[normalizedKey] ?? normalized;
+}
+
 function toRequiredNumber(value: unknown): number {
   const parsed: number = Number(value);
   return Number.isFinite(parsed) ? parsed : 0;
@@ -444,6 +486,10 @@ interface AdminAttractionLocationsFormValue {
 
 interface AdminAttractionAccessConditionFormValue {
   type?: AttractionAccessConditionType | string | null;
+  typeKey?: string | null;
+  isCustom?: boolean | null;
+  customTypeKey?: string | null;
+  customTypeLabel?: unknown;
   value?: unknown;
   unit?: AttractionAccessConditionUnit | string | null;
   requiresAccompaniment?: boolean | null;
@@ -455,6 +501,7 @@ interface AdminAttractionAccessConditionFormValue {
 interface AdminAttractionDetailsFormValue {
   manufacturerId?: unknown;
   model?: unknown;
+  status?: AttractionStatus | string | null;
   openingDate?: unknown;
   closingDate?: unknown;
   durationInSeconds?: unknown;

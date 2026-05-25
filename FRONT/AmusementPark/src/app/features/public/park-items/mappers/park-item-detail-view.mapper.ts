@@ -78,7 +78,7 @@ export function mapParkItemToDetailViewModel(
     zoneName,
     subtype: trimOrNull(item.subtype),
     spotlightRows: buildSpotlightRows(item, performanceRows),
-    summaryRows: buildSummaryRows(item, park, zoneName, currentLanguage),
+    summaryRows: buildSummaryRows(item, park, manufacturerName, zoneName, currentLanguage),
     specGroups,
     photos: galleryPhotos,
     photoCategories: buildPhotoCategories(galleryPhotos),
@@ -126,7 +126,7 @@ function buildTechnicalRows(item: ParkItem, manufacturerName: string | null, cur
       })
       : null);
   pushRow(rows, 'parkItems.fields.model', details?.model, null, 'pi pi-box');
-  pushRow(rows, 'parkItems.fields.status', details?.status, null, 'pi pi-circle-fill');
+  pushStatusRow(rows, details?.status);
   pushRow(rows, 'parkItems.fields.materialType', details?.materialType, null, 'pi pi-wrench');
   pushRow(rows, 'parkItems.fields.seatingType', details?.seatingType, null, 'pi pi-users');
   pushRow(rows, 'parkItems.fields.launchType', details?.launchType, null, 'pi pi-send');
@@ -135,6 +135,50 @@ function buildTechnicalRows(item: ParkItem, manufacturerName: string | null, cur
   pushRow(rows, 'parkItems.fields.closingDate', formatDate(details?.closingDate ?? details?.closingDateText), null, 'pi pi-calendar-minus');
 
   return rows;
+}
+
+
+function pushStatusRow(rows: ParkItemDetailRowViewModel[], status: string | null | undefined): void {
+  const statusValueKey: string | null = getAttractionStatusValueKey(status);
+  pushRow(
+    rows,
+    'parkItems.fields.status',
+    statusValueKey ? '' : status,
+    statusValueKey,
+    'pi pi-circle-fill'
+  );
+}
+
+function getAttractionStatusValueKey(status: string | null | undefined): string | null {
+  const normalized: string = status?.trim() ?? '';
+  if (normalized.length === 0) {
+    return null;
+  }
+
+  const normalizedKey: string = normalized.toLowerCase().replace(/[\s_-]+/g, '');
+  const translationSegments: Record<string, string> = {
+    operating: 'operating',
+    open: 'operating',
+    opened: 'operating',
+    enfonctionnement: 'operating',
+    underconstruction: 'underConstruction',
+    construction: 'underConstruction',
+    temporarilyclosed: 'temporarilyClosed',
+    temporaryclosed: 'temporarilyClosed',
+    closedtemporarily: 'temporarilyClosed',
+    closeddefinitively: 'closedDefinitively',
+    permanentlyclosed: 'closedDefinitively',
+    definitivelyclosed: 'closedDefinitively',
+    fermedefinitivement: 'closedDefinitively',
+    removed: 'removed',
+    dismantled: 'removed',
+    planned: 'planned',
+    announced: 'planned',
+    unknown: 'unknown'
+  };
+  const segment: string | undefined = translationSegments[normalizedKey];
+
+  return segment ? `parkItems.statuses.${segment}` : null;
 }
 
 function buildPerformanceRows(item: ParkItem, currentLanguage: string): ParkItemDetailRowViewModel[] {
@@ -181,6 +225,7 @@ function buildExperienceRows(item: ParkItem, currentLanguage: string): ParkItemD
 function buildSummaryRows(
   item: ParkItem,
   park: Park | null,
+  manufacturerName: string | null,
   zoneName: string | null,
   currentLanguage: string
 ): ParkItemDetailRowViewModel[] {
@@ -213,6 +258,21 @@ function buildSummaryRows(
     'pi pi-tag',
     itemsLink,
     buildSearchQueryParams(item.subtype)
+  );
+  pushRow(
+    rows,
+    'parkItems.fields.manufacturer',
+    manufacturerName,
+    null,
+    'pi pi-building',
+    item.attractionDetails?.manufacturerId && manufacturerName
+      ? buildPublicParkReferenceRouteCommands({
+        language: currentLanguage,
+        referenceId: item.attractionDetails.manufacturerId,
+        referenceName: manufacturerName,
+        kind: 'manufacturer'
+      })
+      : null
   );
   pushRow(rows, 'parkItems.fields.park', park?.name, null, 'pi pi-map', buildParkLink(park, currentLanguage));
   pushRow(rows, 'parkItems.fields.zone', zoneName, null, 'pi pi-map-marker', itemsLink, buildZoneQueryParams(item.zoneId));
@@ -284,7 +344,7 @@ function buildSpotlightRows(
   ];
   const rows: ParkItemDetailRowViewModel[] = [];
 
-  pushRow(rows, 'parkItems.fields.status', details?.status, null, 'pi pi-circle-fill');
+  pushStatusRow(rows, details?.status);
 
   for (const key of preferredKeys) {
     const row: ParkItemDetailRowViewModel | undefined = performanceRows.find((candidate: ParkItemDetailRowViewModel) => candidate.labelKey === key);
@@ -502,7 +562,8 @@ function pushHeightMetric(
 
 function mapAccessCondition(condition: AttractionAccessCondition, currentLanguage: string): ParkItemAccessConditionViewModel {
   const rows: ParkItemDetailRowViewModel[] = [];
-  const title: string | null = resolveOptionalLocalizedText(condition.label, currentLanguage);
+  const title: string | null = resolveOptionalLocalizedText(condition.label, currentLanguage)
+    ?? resolveOptionalLocalizedText(condition.customTypeLabel, currentLanguage);
   const description: string | null = resolveOptionalLocalizedText(condition.description, currentLanguage);
 
   if (condition.value != null) {

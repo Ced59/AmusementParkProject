@@ -22,6 +22,13 @@ export interface AdminParkItemAccessConditionEntry {
   group: FormGroup;
 }
 
+export interface AdminParkItemAccessConditionTypeOption {
+  labelKey: string;
+  value: string;
+  legacyType: AttractionAccessConditionType;
+  labels?: LocalizedItem<string>[] | null;
+}
+
 export const ADMIN_PARK_ITEM_HEIGHT_REQUIREMENT_FIELDS: AdminParkItemHeightRequirementField[] = [
   {
     key: 'minHeightCm',
@@ -165,7 +172,10 @@ export function createAdminParkItemAccessConditionGroup(
 ): FormGroup {
   return formBuilder.group({
     type: [condition?.type ?? 'Custom', Validators.required],
-    isCustom: [condition?.isCustom ?? (condition?.type === 'Custom')],
+    typeKey: [condition?.typeKey ?? toAdminParkItemAccessConditionTypeKey(condition?.type ?? 'Custom'), Validators.required],
+    isCustom: [condition?.isCustom ?? false],
+    customTypeKey: [condition?.customTypeKey ?? null],
+    customTypeLabel: [condition?.customTypeLabel ?? []],
     value: [condition?.value ?? null],
     unit: [condition?.unit ?? null],
     requiresAccompaniment: [condition?.requiresAccompaniment ?? false],
@@ -195,9 +205,11 @@ export function setAdminParkItemAccessConditions(
 export function addAdminParkItemAccessCondition(
   formBuilder: FormBuilder,
   accessConditions: FormArray,
-  type: AttractionAccessConditionType
+  typeKey: string,
+  typeOptions: AdminParkItemAccessConditionTypeOption[]
 ): void {
-  const condition: AttractionAccessCondition = buildAdminParkItemDefaultAccessCondition(type, accessConditions.length + 1);
+  const option: AdminParkItemAccessConditionTypeOption = findAdminParkItemAccessConditionTypeOption(typeOptions, typeKey);
+  const condition: AttractionAccessCondition = buildAdminParkItemDefaultAccessCondition(option.legacyType, accessConditions.length + 1, option.value, option.labels);
   accessConditions.push(createAdminParkItemAccessConditionGroup(formBuilder, condition));
   syncAdminParkItemAccessConditionDisplayOrders(accessConditions);
 }
@@ -229,15 +241,25 @@ export function moveAdminParkItemAccessConditionDown(accessConditions: FormArray
   syncAdminParkItemAccessConditionDisplayOrders(accessConditions);
 }
 
-export function updateAdminParkItemAccessConditionType(accessConditions: FormArray, index: number): void {
+export function updateAdminParkItemAccessConditionType(
+  accessConditions: FormArray,
+  index: number,
+  typeOptions: AdminParkItemAccessConditionTypeOption[]
+): void {
   const group: FormGroup = accessConditions.at(index) as FormGroup;
-  const type: AttractionAccessConditionType = group.get('type')?.value as AttractionAccessConditionType;
-  const defaultCondition: AttractionAccessCondition = buildAdminParkItemDefaultAccessCondition(type, index + 1);
+  const typeKey: string = String(group.get('typeKey')?.value ?? 'custom');
+  const option: AdminParkItemAccessConditionTypeOption = findAdminParkItemAccessConditionTypeOption(typeOptions, typeKey);
+  const type: AttractionAccessConditionType = option.legacyType;
+  const defaultCondition: AttractionAccessCondition = buildAdminParkItemDefaultAccessCondition(type, index + 1, option.value, option.labels);
   const currentLabel: LocalizedItem<string>[] | null = toLocalizedItems(group.get('label')?.value);
   const shouldReplaceLabel: boolean = !hasLocalizedValues(currentLabel);
 
   group.patchValue({
-    isCustom: type === 'Custom',
+    type,
+    typeKey: option.value,
+    isCustom: false,
+    customTypeKey: null,
+    customTypeLabel: [],
     unit: defaultCondition.unit ?? null,
     requiresAccompaniment: defaultCondition.requiresAccompaniment ?? false,
     minimumCompanionAge: defaultCondition.minimumCompanionAge ?? null
@@ -367,6 +389,7 @@ export function setAdminParkItemHeightRequirementValue(
 
     group.patchValue({
       type: field.conditionType,
+      typeKey: toAdminParkItemAccessConditionTypeKey(field.conditionType),
       isCustom: false,
       value: normalizedValue,
       unit: 'Centimeter',
@@ -432,19 +455,58 @@ function syncAdminParkItemAccessConditionDisplayOrders(accessConditions: FormArr
 
 function buildAdminParkItemDefaultAccessCondition(
   type: AttractionAccessConditionType,
-  displayOrder: number
+  displayOrder: number,
+  typeKey: string = toAdminParkItemAccessConditionTypeKey(type),
+  labels?: LocalizedItem<string>[] | null
 ): AttractionAccessCondition {
   return {
     type,
-    isCustom: type === 'Custom',
+    typeKey,
+    isCustom: false,
     value: null,
     unit: getDefaultUnit(type),
     requiresAccompaniment: type === 'MinHeightAccompanied' || type === 'MinAgeAccompanied',
     minimumCompanionAge: null,
-    label: buildDefaultLocalizedLabel(type),
+    label: labels && labels.length > 0 ? labels : buildDefaultLocalizedLabel(type),
     description: [],
     displayOrder
   };
+}
+
+export function toAdminParkItemAccessConditionTypeKey(type: AttractionAccessConditionType | string | null | undefined): string {
+  switch (type) {
+    case 'MinHeight':
+      return 'min-height';
+    case 'MinHeightAccompanied':
+      return 'min-height-accompanied';
+    case 'MaxHeight':
+      return 'max-height';
+    case 'MinAge':
+      return 'min-age';
+    case 'MinAgeAccompanied':
+      return 'min-age-accompanied';
+    case 'PregnancyRestriction':
+      return 'pregnancy-restriction';
+    case 'HeartRestriction':
+      return 'heart-restriction';
+    case 'BackNeckRestriction':
+      return 'back-neck-restriction';
+    case 'WheelchairTransferRequired':
+      return 'wheelchair-transfer-required';
+    case 'AccessPassRequired':
+      return 'access-pass-required';
+    default:
+      return 'custom';
+  }
+}
+
+function findAdminParkItemAccessConditionTypeOption(
+  options: AdminParkItemAccessConditionTypeOption[],
+  typeKey: string
+): AdminParkItemAccessConditionTypeOption {
+  return options.find((option: AdminParkItemAccessConditionTypeOption) => option.value === typeKey)
+    ?? options.find((option: AdminParkItemAccessConditionTypeOption) => option.value === 'custom')
+    ?? { labelKey: 'admin.parks.items.accessConditionTypes.custom', value: 'custom', legacyType: 'Custom' };
 }
 
 function buildDefaultLocalizedLabel(type: AttractionAccessConditionType): LocalizedItem<string>[] {

@@ -10,8 +10,10 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from 'primeng/tabs';
 import { EditorSaveToolbarComponent } from '../../../../shared/editor-save-toolbar/editor-save-toolbar.component';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
+import { AdminParkItemAccessConditionTypeOption } from '@features/admin/park-items/mappers/admin-park-item-access-condition-form.utils';
 import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';
 import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water-exposure-level';
+import { AttractionStatus } from '@app/models/parks/attraction-status';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { MapMarker } from '@app/models/map/map-marker';
 import {
@@ -26,6 +28,7 @@ import { AdminParkItemDetailsTabComponent } from './tabs/admin-park-item-details
 import { AdminParkItemAccessConditionsTabComponent } from './tabs/admin-park-item-access-conditions-tab/admin-park-item-access-conditions-tab.component';
 import { AdminParkItemLocationsTabComponent } from './tabs/admin-park-item-locations-tab/admin-park-item-locations-tab.component';
 import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component';
+import { AdminJsonImportTabComponent } from '../../../shared/admin-json-import-tab/admin-json-import-tab.component';
 
 @Component({
   selector: 'app-admin-park-item-edit-form',
@@ -48,6 +51,7 @@ import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-t
     AdminParkItemAccessConditionsTabComponent,
     AdminParkItemLocationsTabComponent,
     AdminParkItemPhotosTabComponent,
+    AdminJsonImportTabComponent,
     TranslateModule
   ]
 })
@@ -55,6 +59,8 @@ export class AdminParkItemEditFormComponent {
   @Input({ required: true }) form!: FormGroup;
   @Input() activeTabIndex: number = 0;
   @Input() isEditMode: boolean = false;
+  @Input() entityId: string | null = null;
+  @Input() jsonImportExample: string = '{\n  "descriptions": []\n}';
   @Input() isAttractionCategory: boolean = true;
   @Input() currentLang: string = 'en';
   @Input() statusLabel: string = '';
@@ -69,10 +75,11 @@ export class AdminParkItemEditFormComponent {
   @Input() manufacturersLoading: boolean = false;
   @Input() manufacturerAddLink: unknown[] | string | null = null;
   @Input() manufacturerAddQueryParams: Record<string, string | number | boolean | null | undefined> | null = null;
+  @Input() statusOptions: Array<{ labelKey: string; value: AttractionStatus }> = [];
   @Input() waterExposureLevelOptions: Array<{ labelKey: string; value: AttractionWaterExposureLevel }> = [];
-  @Input() accessConditionPresetOptions: Array<{ labelKey: string; value: AttractionAccessConditionType }> = [];
+  @Input() accessConditionPresetOptions: AdminParkItemAccessConditionTypeOption[] = [];
   @Input() accessConditionUnitOptions: Array<{ labelKey: string; value: AttractionAccessConditionUnit }> = [];
-  @Input() selectedAccessConditionPreset: AttractionAccessConditionType = 'MinHeight';
+  @Input() selectedAccessConditionPreset: string = 'custom';
   @Input() attractionLocationOptions: AttractionLocationOption[] = [];
   @Input() selectedLocationKey: AttractionLocationKey = 'entrance';
   @Input() generalMapCenter: [number, number] = [48.8566, 2.3522];
@@ -103,12 +110,13 @@ export class AdminParkItemEditFormComponent {
   @Output() resetGeneralLocationToPark: EventEmitter<void> = new EventEmitter<void>();
   @Output() parkSelectionChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() saveSection: EventEmitter<void> = new EventEmitter<void>();
-  @Output() selectedAccessConditionPresetChange: EventEmitter<AttractionAccessConditionType> = new EventEmitter<AttractionAccessConditionType>();
-  @Output() addAccessCondition: EventEmitter<AttractionAccessConditionType> = new EventEmitter<AttractionAccessConditionType>();
+  @Output() selectedAccessConditionPresetChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() addAccessCondition: EventEmitter<string> = new EventEmitter<string>();
   @Output() removeAccessCondition: EventEmitter<number> = new EventEmitter<number>();
   @Output() moveAccessConditionUp: EventEmitter<number> = new EventEmitter<number>();
   @Output() moveAccessConditionDown: EventEmitter<number> = new EventEmitter<number>();
   @Output() accessConditionTypeChanged: EventEmitter<number> = new EventEmitter<number>();
+  @Output() createAccessConditionType: EventEmitter<{ key: string; fr: string; en: string }> = new EventEmitter<{ key: string; fr: string; en: string }>();
   @Output() selectedLocationKeyChange: EventEmitter<AttractionLocationKey> = new EventEmitter<AttractionLocationKey>();
   @Output() specificLocationMapPositionChange: EventEmitter<{ lat: number; lng: number }> = new EventEmitter<{ lat: number; lng: number }>();
   @Output() clearLocationPoint: EventEmitter<AttractionLocationKey> = new EventEmitter<AttractionLocationKey>();
@@ -121,6 +129,7 @@ export class AdminParkItemEditFormComponent {
   @Output() setCurrentPhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() deletePhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() photosPageChange: EventEmitter<PaginatorState> = new EventEmitter<PaginatorState>();
+  @Output() jsonImported: EventEmitter<void> = new EventEmitter<void>();
 
   get attractionDetailsGroup(): FormGroup {
     return this.form.get('attractionDetails') as FormGroup;

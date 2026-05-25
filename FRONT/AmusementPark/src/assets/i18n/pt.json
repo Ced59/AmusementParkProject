@@ -395,7 +395,9 @@
           "isWaterAttraction": "Atração aquática",
           "manufacturerPlaceholder": "Selecionar um fabricante",
           "waterExposureLevel": "Nível de exposição à água",
-          "waterExposureLevelPlaceholder": "Selecionar um nível"
+          "waterExposureLevelPlaceholder": "Selecionar um nível",
+          "status": "Estado de funcionamento",
+          "statusPlaceholder": "Selecionar um estado"
         },
         "locationFields": {
           "entrance": "Entrada",
@@ -536,7 +538,28 @@
         "advancedAccessConditionsHelp": "Adicione apenas regras que não sejam requisitos de altura.",
         "advancedAccessConditionsEmpty": "Nenhuma outra condição configurada.",
         "park": "Parque associado",
-        "parkHelp": "Permite mover manualmente o elemento para o parque correto se uma importação o associou ao parque errado."
+        "parkHelp": "Permite mover manualmente o elemento para o parque correto se uma importação o associou ao parque errado.",
+        "accessConditionTypesAdmin": {
+          "title": "Tipos de condição reutilizáveis",
+          "help": "Adiciona um tipo comum ao catálogo antes de o usar numa atração.",
+          "key": "Chave estável",
+          "frLabel": "Rótulo em francês",
+          "enLabel": "Rótulo em inglês",
+          "create": "Criar tipo",
+          "createdSummary": "Tipo criado",
+          "createdDetail": "O tipo de condição está agora disponível na lista.",
+          "errorSummary": "Falha na criação",
+          "errorDetail": "Não foi possível criar o tipo de condição."
+        },
+        "statuses": {
+          "operating": "Em funcionamento",
+          "underConstruction": "Em construção",
+          "temporarilyClosed": "Fechado temporariamente",
+          "closedDefinitively": "Fechado definitivamente",
+          "removed": "Removido / desmontado",
+          "planned": "Planeado",
+          "unknown": "Desconhecido"
+        }
       },
       "refactorHint": "O editor está agora dividido em separadores temáticos para tornar a página mais leve e fácil de usar.",
       "visibilityHelp": "Controla se este parque fica visível na aplicação pública.",
@@ -899,10 +922,10 @@
       }
     },
     "localizedContent": {
-      "navTitle": "Conteúdos localizados",
-      "kicker": "Administração editorial",
-      "title": "Importar JSON localizado",
-      "subtitle": "Escolhe primeiro uma entidade pela pesquisa e aplica depois um JSON apenas aos campos localizáveis suportados.",
+      "navTitle": "Importações JSON",
+      "kicker": "Importação JSON",
+      "title": "Importar JSON da entidade",
+      "subtitle": "Escolhe uma entidade existente e aplica um JSON parcial ou completo aos campos suportados.",
       "selection": {
         "title": "1. Escolher o destino",
         "description": "A seleção usa resultados legíveis para evitar modificar uma entidade apenas por um identificador técnico.",
@@ -928,7 +951,7 @@
         "merge": "Por defeito, os idiomas enviados são fundidos com os valores existentes: os outros idiomas são preservados.",
         "replace": "Adiciona \"replaceExisting\": true ou \"mode\": \"replace\" para substituir totalmente o campo localizado.",
         "fields": "Campos suportados: descriptions, names, description, biography, altTexts, captions, credits, labels conforme o tipo escolhido.",
-        "accessConditions": "Para um item de parque do tipo atração, accessConditions pode localizar label e description usando type ou displayOrder."
+        "accessConditions": "Para um elemento de parque do tipo atração, accessConditions pode criar ou atualizar condições: type, customTypeKey implícito para um tipo desconhecido, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label e description."
       },
       "messages": {
         "searchError": "Não foi possível carregar os destinos localizáveis.",
@@ -946,7 +969,8 @@
         "parkFounder": "Fundador",
         "attractionManufacturer": "Fabricante",
         "image": "Imagem",
-        "imageTag": "Etiqueta de imagem"
+        "imageTag": "Etiqueta de imagem",
+        "accessConditionType": "Tipo de condição de acesso"
       },
       "entityHints": {
         "park": "Descrição localizada do parque.",
@@ -956,7 +980,30 @@
         "parkFounder": "Biografia localizada do fundador.",
         "attractionManufacturer": "Biografia localizada do fabricante.",
         "image": "Textos alternativos, legendas e créditos localizados.",
-        "imageTag": "Etiquetas e descrições localizadas."
+        "imageTag": "Etiquetas e descrições localizadas.",
+        "accessConditionType": "Catálogo reutilizável de tipos de condições de acesso."
+      }
+    },
+    "jsonImport": {
+      "tab": "Importar JSON",
+      "kicker": "Importação JSON",
+      "title": "Importar dados desta entidade",
+      "description": "Cola um JSON parcial ou completo para preencher rapidamente os campos suportados, sem gerir fotos nem criar entidades filhas.",
+      "resetExample": "Repor exemplo",
+      "jsonLabel": "JSON da entidade",
+      "apply": "Aplicar JSON",
+      "applying": "A aplicar…",
+      "disabledUntilSave": "Guarda primeiro esta entidade antes de importar JSON.",
+      "messages": {
+        "invalidJson": "O JSON é inválido.",
+        "success": "JSON aplicado. Recarrega ou verifica os separadores se necessário.",
+        "error": "Não foi possível aplicar o JSON."
+      },
+      "help": {
+        "title": "Formato aceite",
+        "partial": "Um JSON parcial altera apenas os campos presentes.",
+        "merge": "Os valores localizados são fundidos por idioma, salvo com replaceExisting ou mode: replace.",
+        "accessConditions": "Para elementos do parque, accessConditions pode criar ou atualizar condições e tipos reutilizáveis."
       }
     }
   },
@@ -1517,6 +1564,15 @@
       "zoneMapHeading": "Mapa zona {{name}}",
       "parkMapHeading": "Mapa {{name}}",
       "allMapItems": "Tudo"
+    },
+    "statuses": {
+      "operating": "Em funcionamento",
+      "underConstruction": "Em construção",
+      "temporarilyClosed": "Fechado temporariamente",
+      "closedDefinitively": "Fechado definitivamente",
+      "removed": "Removido / desmontado",
+      "planned": "Planeado",
+      "unknown": "Desconhecido"
     }
   },
   "publicNavigation": {
@@ -1556,7 +1612,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Feito com ❤️ e adrenalina",
-      "version": "Versão 1.0.1"
+      "version": "Versão 1.1.0"
     }
   },
   "ui": {

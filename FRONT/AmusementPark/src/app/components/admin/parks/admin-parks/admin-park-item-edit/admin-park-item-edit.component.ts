@@ -9,15 +9,21 @@ import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
+import { AttractionAccessConditionTypeDefinition } from '@app/models/parks/attraction-access-condition-type-definition';
+import { AttractionAccessConditionTypesApiService } from '@app/data-access/park-items/attraction-access-condition-types-api.service';
+import { resolveLocalizedValue } from '@shared/utils/localization';
 import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water-exposure-level';
+import { AttractionStatus } from '@app/models/parks/attraction-status';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import {
   ATTRACTION_ACCESS_CONDITION_PRESET_OPTIONS,
   ATTRACTION_ACCESS_CONDITION_UNIT_OPTIONS,
+  ATTRACTION_STATUS_OPTIONS,
   ATTRACTION_WATER_EXPOSURE_LEVEL_OPTIONS,
   TranslationOption
 } from '@shared/utils/display/display-options';
 import {
+  AdminParkItemAccessConditionTypeOption,
   addAdminParkItemAccessCondition,
   moveAdminParkItemAccessConditionDown,
   moveAdminParkItemAccessConditionUp,
@@ -67,7 +73,8 @@ import { AdminParkItemEditFormComponent } from './admin-park-item-edit-form.comp
 export class AdminParkItemEditComponent implements OnInit {
   public readonly form: FormGroup;
   public readonly categoryOptions: AdminParkItemCategoryOption[] = getAdminParkItemCategoryOptions();
-  public readonly accessConditionPresetOptions: Array<TranslationOption<AttractionAccessConditionType>> = [...ATTRACTION_ACCESS_CONDITION_PRESET_OPTIONS];
+  public readonly accessConditionPresetOptions = signal<AdminParkItemAccessConditionTypeOption[]>(this.buildFallbackAccessConditionTypeOptions());
+  public readonly statusOptions: Array<TranslationOption<AttractionStatus>> = [...ATTRACTION_STATUS_OPTIONS];
   public readonly waterExposureLevelOptions: Array<TranslationOption<AttractionWaterExposureLevel>> = [...ATTRACTION_WATER_EXPOSURE_LEVEL_OPTIONS];
   public readonly accessConditionUnitOptions = [...ATTRACTION_ACCESS_CONDITION_UNIT_OPTIONS];
   public readonly attractionLocationOptions = [...ATTRACTION_LOCATION_OPTIONS];
@@ -77,7 +84,7 @@ export class AdminParkItemEditComponent implements OnInit {
   public readonly parkId = signal('');
   public readonly itemId = signal<string | null>(null);
   public readonly hasPendingChanges = signal(false);
-  public readonly selectedAccessConditionPreset = signal<AttractionAccessConditionType>('Custom');
+  public readonly selectedAccessConditionPreset = signal<string>('pregnancy-restriction');
   public readonly filteredTypeOptions = signal<AdminParkItemTypeOption[]>([]);
   public readonly isEditMode = computed(() => !!this.itemId());
   public readonly isAttractionCategory = computed(() => this.form.get('category')?.value === 'Attraction');
@@ -92,6 +99,7 @@ export class AdminParkItemEditComponent implements OnInit {
     private readonly router: Router,
     private readonly translate: TranslateService,
     private readonly toastMessageService: ToastMessageService,
+    private readonly accessConditionTypesApiService: AttractionAccessConditionTypesApiService,
     private readonly manufacturersStateFacade: AdminParkItemManufacturersStateFacade,
     private readonly zonesStateFacade: AdminParkItemZonesStateFacade,
     private readonly locationStateFacade: AdminParkItemLocationStateFacade,
@@ -152,6 +160,7 @@ export class AdminParkItemEditComponent implements OnInit {
     this.photosStateFacade.setCurrentLanguage(this.currentLang());
     this.photosStateFacade.reset();
     this.manufacturersStateFacade.load();
+    this.loadAccessConditionTypeOptions();
     this.zonesStateFacade.load(this.parkId(), this.currentLang());
     void this.editStateFacade.loadParkOptions();
     this.setupFormSync();
@@ -239,8 +248,8 @@ export class AdminParkItemEditComponent implements OnInit {
     this.locationStateFacade.useGeneralLocationForSelectedPoint();
   }
 
-  addAccessCondition(type: AttractionAccessConditionType): void {
-    addAdminParkItemAccessCondition(this.formBuilder, this.accessConditions, type);
+  addAccessCondition(typeKey: string): void {
+    addAdminParkItemAccessCondition(this.formBuilder, this.accessConditions, typeKey, this.accessConditionPresetOptions());
     this.activeTabIndex.set(this.isAttractionCategory() ? 2 : 0);
   }
 
@@ -257,7 +266,40 @@ export class AdminParkItemEditComponent implements OnInit {
   }
 
   onAccessConditionTypeChanged(index: number): void {
-    updateAdminParkItemAccessConditionType(this.accessConditions, index);
+    updateAdminParkItemAccessConditionType(this.accessConditions, index, this.accessConditionPresetOptions());
+  }
+
+  onCreateAccessConditionType(request: { key: string; fr: string; en: string }): void {
+    this.accessConditionTypesApiService.upsert({
+      key: request.key,
+      legacyType: 'Custom',
+      isActive: true,
+      labels: [
+        { languageCode: 'fr', value: request.fr },
+        { languageCode: 'en', value: request.en }
+      ],
+      descriptions: [],
+      sortOrder: 1000
+    })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (): void => {
+          this.loadAccessConditionTypeOptions();
+          this.toastMessageService.add(
+            'success',
+            this.translate.instant('admin.parks.items.accessConditionTypesAdmin.createdSummary'),
+            this.translate.instant('admin.parks.items.accessConditionTypesAdmin.createdDetail')
+          );
+        },
+        error: (error: unknown): void => {
+          console.error('Error creating access condition type', error);
+          this.toastMessageService.add(
+            'error',
+            this.translate.instant('admin.parks.items.accessConditionTypesAdmin.errorSummary'),
+            this.translate.instant('admin.parks.items.accessConditionTypesAdmin.errorDetail')
+          );
+        }
+      });
   }
 
   onPhotoFileSelected(event: Event): void {
@@ -291,6 +333,51 @@ export class AdminParkItemEditComponent implements OnInit {
 
   onPhotosPageChange(event: { page?: number; rows?: number }): void {
     this.photosStateFacade.onPhotosPageChange(event);
+  }
+
+  reloadCurrentItem(): void {
+    const itemId: string | null = this.itemId();
+    if (!itemId) {
+      return;
+    }
+
+    void this.loadItemAsync(itemId);
+    this.loadAccessConditionTypeOptions();
+  }
+
+  get parkItemJsonImportExample(): string {
+    const payload: unknown = {
+      name: this.form.get('name')?.value || 'Nom de l’élément',
+      category: this.form.get('category')?.value || 'Attraction',
+      type: this.form.get('type')?.value || 'WaterRide',
+      subtype: this.form.get('subtype')?.value || null,
+      isVisible: this.form.get('isVisible')?.value ?? true,
+      descriptions: [
+        { languageCode: 'fr', value: '<p>Description en français.</p>' },
+        { languageCode: 'en', value: '<p>English description.</p>' }
+      ],
+      attractionDetails: {
+        model: this.form.get(['attractionDetails', 'model'])?.value || null,
+        status: this.form.get(['attractionDetails', 'status'])?.value || 'Operating',
+        openingDateText: null,
+        durationInSeconds: null,
+        heightInMeters: null,
+        lengthInMeters: null,
+        speedInKmH: null,
+        waterExposureLevel: 'Splash'
+      },
+      accessConditions: [
+        {
+          typeKey: 'min-height',
+          value: 105,
+          unit: 'Centimeter',
+          displayOrder: 1,
+          label: { fr: '105 cm', en: '105 cm' }
+        }
+      ]
+    };
+
+    return JSON.stringify(payload, null, 2);
   }
 
   getEditorStatusLabel(): string {
@@ -376,6 +463,54 @@ export class AdminParkItemEditComponent implements OnInit {
     }
 
     this.form.get(['attractionDetails', 'manufacturerId'])?.setValue(manufacturerId, { emitEvent: false });
+  }
+
+  private loadAccessConditionTypeOptions(): void {
+    this.accessConditionTypesApiService.getAll()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (definitions: AttractionAccessConditionTypeDefinition[]): void => {
+          const options: AdminParkItemAccessConditionTypeOption[] = definitions
+            .filter((definition: AttractionAccessConditionTypeDefinition) => definition.isActive)
+            .map((definition: AttractionAccessConditionTypeDefinition) => ({
+              labelKey: resolveLocalizedValue(definition.labels ?? [], this.currentLang()) || definition.key,
+              value: definition.key,
+              legacyType: definition.legacyType ?? 'Custom',
+              labels: definition.labels ?? []
+            }));
+
+          if (options.length > 0) {
+            this.accessConditionPresetOptions.set(options);
+          }
+        },
+        error: (): void => {
+          this.accessConditionPresetOptions.set(this.buildFallbackAccessConditionTypeOptions());
+        }
+      });
+  }
+
+  private buildFallbackAccessConditionTypeOptions(): AdminParkItemAccessConditionTypeOption[] {
+    return ATTRACTION_ACCESS_CONDITION_PRESET_OPTIONS.map((option: TranslationOption<AttractionAccessConditionType>) => ({
+      labelKey: option.labelKey,
+      value: this.toAccessConditionTypeKey(option.value),
+      legacyType: option.value
+    }));
+  }
+
+  private toAccessConditionTypeKey(type: AttractionAccessConditionType): string {
+    switch (type) {
+      case 'MinHeight': return 'min-height';
+      case 'MinHeightAccompanied': return 'min-height-accompanied';
+      case 'MaxHeight': return 'max-height';
+      case 'MinAge': return 'min-age';
+      case 'MinAgeAccompanied': return 'min-age-accompanied';
+      case 'PregnancyRestriction': return 'pregnancy-restriction';
+      case 'HeartRestriction': return 'heart-restriction';
+      case 'BackNeckRestriction': return 'back-neck-restriction';
+      case 'WheelchairTransferRequired': return 'wheelchair-transfer-required';
+      case 'AccessPassRequired': return 'access-pass-required';
+      default: return 'custom';
+    }
   }
 
   private setupFormSync(): void {

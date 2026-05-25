@@ -36,6 +36,8 @@ public sealed class MongoDbSettings
 
     public string ParkItemsCollectionName { get; set; } = "parkItems";
 
+    public string AttractionAccessConditionTypesCollectionName { get; set; } = "attractionAccessConditionTypes";
+
     public string SearchItemCollectionName { get; set; } = "searchItems";
 
     public string AdminAuditLogsCollectionName { get; set; } = "adminAuditLogs";

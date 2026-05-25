@@ -1,5 +1,6 @@
 using AmusementPark.Application.Features.AdminAudit.Ports;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.AttractionAccessConditionTypes.Ports;
 using AmusementPark.Application.Features.CaptainCoaster.Ports;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.DataSources.Ports;
@@ -87,6 +88,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IParkRepository, ParkRepository>();
         services.AddScoped<IParkZoneRepository, ParkZoneRepository>();
         services.AddScoped<IParkItemRepository, ParkItemRepository>();
+        services.AddScoped<IAttractionAccessConditionTypeDefinitionRepository, AttractionAccessConditionTypeDefinitionRepository>();
         services.AddScoped<ISearchReadRepository, SearchReadRepository>();
         services.AddScoped<IImageRepository, ImageRepository>();
         services.AddScoped<IImageTagRepository, ImageTagRepository>();

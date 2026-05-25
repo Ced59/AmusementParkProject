@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water-exposure-level';
+import { AttractionStatus } from '@app/models/parks/attraction-status';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { EntitySelectComponent } from '@app/components/shared/entity-select/entity-select.component';
 import { Bind } from 'primeng/bind';
@@ -22,6 +23,7 @@ export class AdminParkItemDetailsTabComponent {
   @Input() manufacturersLoading: boolean = false;
   @Input() manufacturerAddLink: unknown[] | string | null = null;
   @Input() manufacturerAddQueryParams: Record<string, string | number | boolean | null | undefined> | null = null;
+  @Input() statusOptions: Array<{ labelKey: string; value: AttractionStatus }> = [];
   @Input() waterExposureLevelOptions: Array<{ labelKey: string; value: AttractionWaterExposureLevel }> = [];
   @Input() isSaving: boolean = false;
 

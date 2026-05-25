@@ -13,4 +13,5 @@ public enum LocalizedContentEntityType
     AttractionManufacturer,
     Image,
     ImageTag,
+    AccessConditionType,
 }

@@ -48,6 +48,13 @@ public static class LocalizedContentEntityTypeParser
             case "tag":
                 entityType = LocalizedContentEntityType.ImageTag;
                 return true;
+            case "accessconditiontype":
+            case "conditiontype":
+            case "attractionaccessconditiontype":
+            case "accesscondition":
+            case "condition":
+                entityType = LocalizedContentEntityType.AccessConditionType;
+                return true;
             default:
                 entityType = default;
                 return false;
@@ -66,6 +73,7 @@ public static class LocalizedContentEntityTypeParser
             LocalizedContentEntityType.AttractionManufacturer => LocalizedContentEntityTypes.AttractionManufacturer,
             LocalizedContentEntityType.Image => LocalizedContentEntityTypes.Image,
             LocalizedContentEntityType.ImageTag => LocalizedContentEntityTypes.ImageTag,
+            LocalizedContentEntityType.AccessConditionType => LocalizedContentEntityTypes.AccessConditionType,
             _ => entityType.ToString(),
         };
     }

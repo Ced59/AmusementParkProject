@@ -15,7 +15,7 @@ Ajout d'une fonctionnalité admin permettant de choisir une entité localisable 
 
 - `park` : `descriptions`
 - `parkZone` : `names`, `descriptions`
-- `parkItem` : `descriptions`, `accessConditions[].label`, `accessConditions[].description`
+- `parkItem` : `descriptions`, `accessConditions[].type`, `accessConditions[].customTypeKey`, `accessConditions[].customTypeLabel`, `accessConditions[].value`, `accessConditions[].unit`, `accessConditions[].requiresAccompaniment`, `accessConditions[].minimumCompanionAge`, `accessConditions[].displayOrder`, `accessConditions[].label`, `accessConditions[].description`
 - `parkOperator` : `description`
 - `parkFounder` : `biography`
 - `attractionManufacturer` : `biography`
@@ -47,27 +47,45 @@ Pour remplacer entièrement un champ localisé :
 }
 ```
 
-Pour les conditions d'accès d'une attraction :
+Pour les conditions d'accès d'une attraction, le JSON peut maintenant créer ou mettre à jour les valeurs métier en plus des textes localisés :
 
 ```json
 {
   "accessConditions": [
     {
       "type": "MinHeight",
-      "label": [
-        { "languageCode": "fr", "value": "Taille minimale" },
-        { "languageCode": "en", "value": "Minimum height" }
-      ],
-      "description": [
-        { "languageCode": "fr", "value": "Accès soumis à une taille minimale." },
-        { "languageCode": "en", "value": "Access is subject to a minimum height." }
-      ]
+      "value": 105,
+      "unit": "Centimeter",
+      "displayOrder": 1,
+      "label": {
+        "fr": "Taille minimale",
+        "en": "Minimum height"
+      },
+      "description": {
+        "fr": "Accessible à partir de 105 cm.",
+        "en": "Accessible from 105 cm."
+      }
+    },
+    {
+      "type": "AdultSupervisionRequired",
+      "requiresAccompaniment": true,
+      "displayOrder": 2,
+      "customTypeLabel": {
+        "fr": "Surveillance adulte",
+        "en": "Adult supervision"
+      },
+      "label": {
+        "fr": "Accompagnement requis",
+        "en": "Accompaniment required"
+      }
     }
   ]
 }
 ```
 
-Le sélecteur de condition peut utiliser `type` et/ou `displayOrder`.
+Un `type` inconnu est automatiquement traité comme une condition personnalisée : l'API génère un `customTypeKey` stable à partir de ce type, conserve les textes localisés et crée la condition si elle n'existe pas. Pour cibler explicitement une condition personnalisée déjà créée, utiliser `customTypeKey`.
+
+Le sélecteur de condition peut utiliser `customTypeKey`, `type` et/ou `displayOrder`. Si aucune condition ne correspond mais que le JSON contient un type ou un `customTypeKey`, la condition est créée. Si plusieurs conditions correspondent, l'API refuse la mise à jour et demande un sélecteur plus précis.
 
 
 ## Correction v27
@@ -75,3 +93,11 @@ Le sélecteur de condition peut utiliser `type` et/ou `displayOrder`.
 - Alignement de la route API sur le préfixe admin : `admin/localized-content`.
 - Construction d'URL front normalisée pour éviter les doubles slashs entre `apiBaseUrl` et endpoint.
 - Reprise de l'interface avec les classes partagées `admin-list-card`, `app-field`, `app-input`, `app-select` et `app-button` pour un rendu cohérent avec le back-office existant.
+
+
+## Évolution v28
+
+- `accessConditions` supporte désormais les valeurs métier : `value`, `unit`, `requiresAccompaniment`, `minimumCompanionAge`, `displayOrder` et `isCustom`.
+- Les conditions absentes peuvent être créées par JSON si un `type` ou un `customTypeKey` est fourni.
+- Les types inconnus sont transformés en conditions personnalisées avec `customTypeKey` généré, ce qui évite de modifier l'enum pour chaque cas terrain.
+- Les conditions personnalisées peuvent exposer un libellé de type via `customTypeLabel`, en plus du `label` propre à la condition.

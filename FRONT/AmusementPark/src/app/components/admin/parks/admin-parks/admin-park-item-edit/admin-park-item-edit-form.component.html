@@ -36,6 +36,7 @@
         @if (isAttractionCategory) {
           <p-tab [value]="4">{{ 'admin.parks.items.tabs.photos' | translate }}</p-tab>
         }
+        <p-tab [value]="5">{{ 'admin.jsonImport.tab' | translate }}</p-tab>
       </p-tablist>
 
       <p-tabpanels>
@@ -70,6 +71,7 @@
                 [manufacturersLoading]="manufacturersLoading"
                 [manufacturerAddLink]="manufacturerAddLink"
                 [manufacturerAddQueryParams]="manufacturerAddQueryParams"
+                [statusOptions]="statusOptions"
                 [waterExposureLevelOptions]="waterExposureLevelOptions"
                 [isSaving]="isSaving"
                 (saveSection)="saveSection.emit()">
@@ -94,6 +96,7 @@
                 (moveAccessConditionUp)="moveAccessConditionUp.emit($event)"
                 (moveAccessConditionDown)="moveAccessConditionDown.emit($event)"
                 (accessConditionTypeChanged)="accessConditionTypeChanged.emit($event)"
+                (createAccessConditionType)="createAccessConditionType.emit($event)"
                 (saveSection)="saveSection.emit()">
               </app-admin-park-item-access-conditions-tab>
             }
@@ -151,6 +154,17 @@
             }
           </p-tabpanel>
         }
+
+        <p-tabpanel [value]="5">
+          @if (activeTabIndex === 5) {
+            <app-admin-json-import-tab
+              entityType="parkItem"
+              [entityId]="entityId"
+              [exampleJson]="jsonImportExample"
+              (applied)="jsonImported.emit()">
+            </app-admin-json-import-tab>
+          }
+        </p-tabpanel>
       </p-tabpanels>
     </p-tabs>
   </form>

@@ -29,7 +29,8 @@ export class AdminLocalizedContentComponent {
     { value: 'parkFounder', labelKey: 'admin.localizedContent.entityTypes.parkFounder', hintKey: 'admin.localizedContent.entityHints.parkFounder' },
     { value: 'attractionManufacturer', labelKey: 'admin.localizedContent.entityTypes.attractionManufacturer', hintKey: 'admin.localizedContent.entityHints.attractionManufacturer' },
     { value: 'image', labelKey: 'admin.localizedContent.entityTypes.image', hintKey: 'admin.localizedContent.entityHints.image' },
-    { value: 'imageTag', labelKey: 'admin.localizedContent.entityTypes.imageTag', hintKey: 'admin.localizedContent.entityHints.imageTag' }
+    { value: 'imageTag', labelKey: 'admin.localizedContent.entityTypes.imageTag', hintKey: 'admin.localizedContent.entityHints.imageTag' },
+    { value: 'accessConditionType', labelKey: 'admin.localizedContent.entityTypes.accessConditionType', hintKey: 'admin.localizedContent.entityHints.accessConditionType' }
   ];
 
   protected selectedEntityType: LocalizedContentEntityType = 'parkItem';
@@ -167,12 +168,25 @@ export class AdminLocalizedContentComponent {
           descriptions: this.buildDescriptionValues()
         };
         break;
+      case 'accessConditionType':
+        payload = {
+          key: 'no-smoking',
+          legacyType: 'Custom',
+          isActive: true,
+          sortOrder: 1000,
+          labels: { fr: 'Interdiction de fumer', en: 'No smoking' },
+          descriptions: this.buildDescriptionValues()
+        };
+        break;
       case 'parkItem':
         payload = {
           descriptions: this.buildDescriptionValues(),
           accessConditions: [
             {
               type: 'MinHeight',
+              value: 105,
+              unit: 'Centimeter',
+              displayOrder: 1,
               label: [
                 { languageCode: 'fr', value: 'Taille minimale' },
                 { languageCode: 'en', value: 'Minimum height' }
@@ -181,6 +195,19 @@ export class AdminLocalizedContentComponent {
                 { languageCode: 'fr', value: 'Accès soumis à une taille minimale.' },
                 { languageCode: 'en', value: 'Access is subject to a minimum height.' }
               ]
+            },
+            {
+              typeKey: 'adult-supervision-required',
+              typeLabel: {
+                fr: 'Surveillance adulte',
+                en: 'Adult supervision'
+              },
+              requiresAccompaniment: true,
+              displayOrder: 2,
+              label: {
+                fr: 'Accompagnement requis',
+                en: 'Accompaniment required'
+              }
             }
           ]
         };

@@ -2,6 +2,8 @@
   [form]="form"
   [activeTabIndex]="activeTabIndex()"
   [isEditMode]="isEditMode()"
+  [entityId]="itemId()"
+  [jsonImportExample]="parkItemJsonImportExample"
   [isAttractionCategory]="isAttractionCategory()"
   [currentLang]="currentLang()"
   [statusLabel]="getEditorStatusLabel()"
@@ -16,8 +18,9 @@
   [manufacturersLoading]="manufacturersState.manufacturersLoading()"
   [manufacturerAddLink]="['/', currentLang(), 'admin', 'manufacturers', 'new']"
   [manufacturerAddQueryParams]="manufacturerCreateLinkQueryParams"
+  [statusOptions]="statusOptions"
   [waterExposureLevelOptions]="waterExposureLevelOptions"
-  [accessConditionPresetOptions]="accessConditionPresetOptions"
+  [accessConditionPresetOptions]="accessConditionPresetOptions()"
   [accessConditionUnitOptions]="accessConditionUnitOptions"
   [selectedAccessConditionPreset]="selectedAccessConditionPreset()"
   [attractionLocationOptions]="attractionLocationOptions"
@@ -55,6 +58,7 @@
   (moveAccessConditionUp)="moveAccessConditionUp($event)"
   (moveAccessConditionDown)="moveAccessConditionDown($event)"
   (accessConditionTypeChanged)="onAccessConditionTypeChanged($event)"
+  (createAccessConditionType)="onCreateAccessConditionType($event)"
   (selectedLocationKeyChange)="selectLocationEditor($event)"
   (specificLocationMapPositionChange)="onSpecificLocationMapPositionChange($event)"
   (clearLocationPoint)="clearLocationPoint($event)"
@@ -66,5 +70,6 @@
   (uploadPhoto)="onUploadPhoto()"
   (setCurrentPhoto)="onSetCurrentPhoto($event)"
   (deletePhoto)="onDeletePhoto($event)"
-  (photosPageChange)="onPhotosPageChange($event)">
+  (photosPageChange)="onPhotosPageChange($event)"
+  (jsonImported)="reloadCurrentItem()">
 </app-admin-park-item-edit-form>
