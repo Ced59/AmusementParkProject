@@ -1,0 +1,165 @@
+<section class="park-graph-upserts admin-surface">
+  <header class="park-graph-upserts__header">
+    <span class="kicker kicker--sky">{{ 'admin.parkGraphUpserts.kicker' | translate }}</span>
+    <div>
+      <h1 class="admin-page-title">{{ 'admin.parkGraphUpserts.title' | translate }}</h1>
+      <p class="admin-muted">{{ 'admin.parkGraphUpserts.subtitle' | translate }}</p>
+    </div>
+  </header>
+
+  <div class="park-graph-upserts__grid">
+    <article class="admin-card park-graph-upserts__panel">
+      <h2>{{ 'admin.parkGraphUpserts.target.title' | translate }}</h2>
+      <p class="admin-muted">{{ 'admin.parkGraphUpserts.target.description' | translate }}</p>
+
+      <div class="park-search-row">
+        <input
+          type="search"
+          class="admin-input"
+          [(ngModel)]="searchTerm"
+          [placeholder]="'admin.parkGraphUpserts.target.searchPlaceholder' | translate"
+          (keydown.enter)="searchParks()">
+        <button type="button" class="btn-nav" (click)="searchParks()" [disabled]="isSearching">
+          {{ (isSearching ? 'admin.parkGraphUpserts.actions.searching' : 'admin.parkGraphUpserts.actions.search') | translate }}
+        </button>
+      </div>
+
+      @if (selectedPark) {
+        <div class="selected-park">
+          <span>{{ 'admin.parkGraphUpserts.target.selected' | translate }}</span>
+          <strong>{{ selectedPark.name }}</strong>
+          <code>{{ selectedPark.id }}</code>
+          <button type="button" class="btn-nav btn-nav--ghost" (click)="clearSelectedPark()">
+            {{ 'admin.parkGraphUpserts.actions.clear' | translate }}
+          </button>
+        </div>
+      }
+
+      @if (searchResults.length > 0) {
+        <div class="park-results" role="list">
+          @for (park of searchResults; track trackPark($index, park)) {
+            <button type="button" role="listitem" class="park-result" [class.active]="selectedPark?.id === park.id" (click)="selectPark(park)">
+              <span>
+                <strong>{{ park.name }}</strong>
+                <small>{{ park.city || '—' }} · {{ park.countryCode || '—' }}</small>
+              </span>
+              <code>{{ park.id }}</code>
+            </button>
+          }
+        </div>
+      }
+
+      <label class="admin-check">
+        <input type="checkbox" [(ngModel)]="createIfMissing" [disabled]="!!selectedPark">
+        <span>{{ 'admin.parkGraphUpserts.options.createIfMissing' | translate }}</span>
+      </label>
+
+      <label class="admin-check admin-check--muted">
+        <input type="checkbox" [(ngModel)]="replaceCollections">
+        <span>{{ 'admin.parkGraphUpserts.options.replaceCollections' | translate }}</span>
+      </label>
+    </article>
+
+    <article class="admin-card park-graph-upserts__editor">
+      <div class="editor-head">
+        <div>
+          <h2>{{ 'admin.parkGraphUpserts.editor.title' | translate }}</h2>
+          <p class="admin-muted">{{ 'admin.parkGraphUpserts.editor.description' | translate }}</p>
+        </div>
+        <div class="editor-actions">
+          <button type="button" class="btn-nav btn-nav--ghost" (click)="preview()" [disabled]="isPreviewing">
+            {{ (isPreviewing ? 'admin.parkGraphUpserts.actions.previewing' : 'admin.parkGraphUpserts.actions.preview') | translate }}
+          </button>
+          <button type="button" class="btn-nav" (click)="apply()" [disabled]="!canApply">
+            {{ (isApplying ? 'admin.parkGraphUpserts.actions.applying' : 'admin.parkGraphUpserts.actions.apply') | translate }}
+          </button>
+        </div>
+      </div>
+
+      @if (uiError) {
+        <p class="admin-alert admin-alert--error">{{ uiError | translate }}</p>
+      }
+
+      <textarea class="json-editor" [(ngModel)]="jsonText" spellcheck="false" aria-label="JSON"></textarea>
+    </article>
+  </div>
+
+  @if (previewResult) {
+    <article class="admin-card park-graph-upserts__result">
+      <header class="result-head">
+        <div>
+          <h2>{{ 'admin.parkGraphUpserts.result.title' | translate }}</h2>
+          <p class="admin-muted">
+            {{ previewResult.targetParkName || ('admin.parkGraphUpserts.result.noTarget' | translate) }}
+            @if (previewResult.targetParkId) {
+              <code>{{ previewResult.targetParkId }}</code>
+            }
+          </p>
+        </div>
+        <div class="result-counts">
+          <span>{{ 'admin.parkGraphUpserts.result.created' | translate }} <strong>{{ previewResult.counts.created }}</strong></span>
+          <span>{{ 'admin.parkGraphUpserts.result.updated' | translate }} <strong>{{ previewResult.counts.updated }}</strong></span>
+          <span>{{ 'admin.parkGraphUpserts.result.warnings' | translate }} <strong>{{ previewResult.counts.warnings }}</strong></span>
+          <span>{{ 'admin.parkGraphUpserts.result.errors' | translate }} <strong>{{ previewResult.counts.errors }}</strong></span>
+        </div>
+      </header>
+
+      @if (lastAppliedResult) {
+        <p class="admin-alert admin-alert--success">{{ 'admin.parkGraphUpserts.result.applied' | translate }}</p>
+      }
+
+      @if (previewResult.errors.length > 0) {
+        <div class="message-list message-list--error">
+          @for (error of previewResult.errors; track error) {
+            <p>{{ error }}</p>
+          }
+        </div>
+      }
+
+      @if (previewResult.warnings.length > 0) {
+        <div class="message-list message-list--warning">
+          @for (warning of previewResult.warnings; track warning) {
+            <p>{{ warning }}</p>
+          }
+        </div>
+      }
+
+      <div class="change-list">
+        @for (change of changes; track trackChange($index, change)) {
+          <details class="change-card" [open]="change.changeType !== 'Unchanged'">
+            <summary>
+              <span>
+                <strong>{{ change.displayName }}</strong>
+                <small>{{ change.entityType }} · {{ change.matchedBy }}</small>
+              </span>
+              <em [class]="'change-status change-status--' + change.changeType.toLowerCase()">{{ change.changeType }}</em>
+            </summary>
+
+            @if (change.fields.length > 0) {
+              <table class="admin-mini-table">
+                <thead>
+                  <tr>
+                    <th>{{ 'admin.parkGraphUpserts.result.field' | translate }}</th>
+                    <th>{{ 'admin.parkGraphUpserts.result.oldValue' | translate }}</th>
+                    <th>{{ 'admin.parkGraphUpserts.result.newValue' | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (field of change.fields; track field.field) {
+                    <tr>
+                      <td>{{ field.field }}</td>
+                      <td><code>{{ field.oldValue || '∅' }}</code></td>
+                      <td><code>{{ field.newValue || '∅' }}</code></td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            } @else {
+              <p class="admin-muted">{{ 'admin.parkGraphUpserts.result.noFieldChange' | translate }}</p>
+            }
+          </details>
+        }
+      </div>
+    </article>
+  }
+</section>

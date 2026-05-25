@@ -67,6 +67,12 @@ export class AdminDashboardComponent {
       segment: 'data'
     },
     {
+      icon: '🧩',
+      titleKey: 'admin.parkGraphUpserts.title',
+      descriptionKey: 'admin.dashboard.shortcuts.parkGraphUpserts',
+      segment: 'park-graph-upserts'
+    },
+    {
       icon: '🌍',
       titleKey: 'admin.localizedContent.navTitle',
       descriptionKey: 'admin.dashboard.shortcuts.localizedContent',
