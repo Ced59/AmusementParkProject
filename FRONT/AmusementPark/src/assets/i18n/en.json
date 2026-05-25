@@ -55,16 +55,16 @@
       "openResult": "Open",
       "kicker": "Smart search",
       "commandTitle": "Find the right park faster",
-      "commandSubtitle": "Search the real public catalog, filter by content type, then open matching pages without leaving the MVP experience.",
+      "commandSubtitle": "Browse parks, attractions and places, filter by what you want, then open the detail page that interests you.",
       "attractionsLabel": "attractions"
     },
     "experience": {
-      "mapKicker": "Map ready",
-      "mapTitle": "A visual space already prepared for geolocation",
-      "mapText": "The home keeps the mockup's map-oriented identity while the real distance and map features remain isolated in the dedicated map components.",
-      "catalogKicker": "Public catalog",
-      "catalogTitle": "Parks, attractions and operators in one coherent journey",
-      "catalogText": "The page reuses the shared design primitives so the next public screens can keep the same visual language without duplicating CSS."
+      "mapKicker": "Map view",
+      "mapTitle": "Explore parks visually",
+      "mapText": "Find destinations on the map, compare nearby parks and keep useful places within reach.",
+      "catalogKicker": "Discovery",
+      "catalogTitle": "Parks and attractions in one place",
+      "catalogText": "Move from a park to its attractions, photos and useful references without getting lost."
     },
     "heroTitleFind": "Find",
     "heroTitleYour": "your",
@@ -118,11 +118,11 @@
         "password_error_summary": "Password error",
         "password_error": "The password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one digit."
       },
-      "success_message": "Your account has been created. Open the confirmation link printed in the API console to activate it.",
+      "success_message": "Your account has been created. Use the confirmation link sent by email to activate it.",
       "resend_confirmation": "Send confirmation link again",
       "success_badge": "Created",
       "validation_error": "The registration form contains errors.",
-      "created_toast": "Account created. Check the confirmation link sent by the API."
+      "created_toast": "Account created. Check your email to confirm it."
     },
     "common": {
       "back_home": "Back to home"
@@ -154,7 +154,7 @@
     "modal": {
       "kicker": "Welcome",
       "title": "Sign in or create your account",
-      "subtitle": "Use your account to prepare future personalized park features while keeping the MVP flows simple.",
+      "subtitle": "Use your account to prepare future personalized park features while keeping the experience simple.",
       "or": "or"
     }
   },
@@ -202,7 +202,7 @@
     "dark": "Dark theme"
   },
   "title": "Welcome",
-  "description": "This is a description in English.",
+  "description": "Explore amusement parks, attractions and practical information around the world.",
   "sidebar": {
     "logo_text": "Menu",
     "home": "Home",
@@ -1494,8 +1494,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Made with ❤️ and adrenaline",
-      "openSource": "Open Source",
-      "mvp": "MVP"
+      "version": "Version 1.0.0"
     }
   },
   "ui": {
@@ -1532,7 +1531,7 @@
   "accountLayout": {
     "kicker": "Personal space",
     "title": "Your park passport",
-    "subtitle": "Manage your profile, language and access in a visual experience aligned with the public MVP.",
+    "subtitle": "Manage your profile, language and access from a clear personal space.",
     "security": "Secure access",
     "languages": "Languages",
     "profile": "Profile"
@@ -1553,7 +1552,7 @@
       "parksLabel": "Potential parks",
       "parksHint": "Built to remain fast at scale",
       "mapLabel": "Design target",
-      "mapHint": "Public journey ready for MVP"
+      "mapHint": "Public journey ready to grow"
     },
     "mission": {
       "kicker": "Mission",
@@ -1579,8 +1578,8 @@
     },
     "clean": {
       "kicker": "Engineering",
-      "title": "Built to evolve without bricolage",
-      "text": "The front keeps visual primitives separate from orchestration, while the API keeps business calculations outside components."
+      "title": "Built to evolve step by step",
+      "text": "The project is designed to add maps, comparisons and trip planning without disrupting the visitor experience."
     }
   },
   "images": {
