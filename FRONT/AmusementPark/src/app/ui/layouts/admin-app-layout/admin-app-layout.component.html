@@ -58,6 +58,10 @@
           <span>⚙️</span>
           <span>{{ 'admin.dataSources.title' | translate }}</span>
         </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'localized-content']" routerLinkActive="active">
+          <span>🌍</span>
+          <span>{{ 'admin.localizedContent.navTitle' | translate }}</span>
+        </a>
         <a [routerLink]="['/', currentLang, 'admin', 'audit-logs']" routerLinkActive="active">
           <span>🛡️</span>
           <span>{{ 'admin.auditLogs.title' | translate }}</span>

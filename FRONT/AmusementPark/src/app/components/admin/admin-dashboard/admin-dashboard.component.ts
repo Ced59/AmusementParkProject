@@ -67,6 +67,12 @@ export class AdminDashboardComponent {
       segment: 'data'
     },
     {
+      icon: '🌍',
+      titleKey: 'admin.localizedContent.navTitle',
+      descriptionKey: 'admin.dashboard.shortcuts.localizedContent',
+      segment: 'localized-content'
+    },
+    {
       icon: '🛡️',
       titleKey: 'admin.auditLogs.title',
       descriptionKey: 'admin.dashboard.shortcuts.auditLogs',

@@ -827,7 +827,8 @@
         "images": "Rever multimédia, logótipos e imagens do site.",
         "data": "Monitorizar importações, fontes e processamento de dados.",
         "founders": "Gerir fundadores e biografias ligados aos parques.",
-        "auditLogs": "Consultar ações administrativas sensíveis registadas."
+        "auditLogs": "Consultar ações administrativas sensíveis registadas.",
+        "localizedContent": "Importar rapidamente textos localizados por JSON depois de escolher um destino."
       }
     },
     "references": {
@@ -895,6 +896,67 @@
       },
       "metadata": {
         "show": "Ver"
+      }
+    },
+    "localizedContent": {
+      "navTitle": "Conteúdos localizados",
+      "kicker": "Administração editorial",
+      "title": "Importar JSON localizado",
+      "subtitle": "Escolhe primeiro uma entidade pela pesquisa e aplica depois um JSON apenas aos campos localizáveis suportados.",
+      "selection": {
+        "title": "1. Escolher o destino",
+        "description": "A seleção usa resultados legíveis para evitar modificar uma entidade apenas por um identificador técnico.",
+        "entityType": "Tipo de entidade",
+        "search": "Pesquisa",
+        "searchPlaceholder": "Nome do parque, atração, zona, fabricante…",
+        "searchButton": "Pesquisar",
+        "searching": "A pesquisar…",
+        "empty": "Inicia uma pesquisa para mostrar os destinos disponíveis."
+      },
+      "editor": {
+        "title": "2. Colar o JSON",
+        "description": "O JSON é validado pela API e aplicado através da camada Application.",
+        "resetExample": "Repor exemplo",
+        "selected": "Destino selecionado",
+        "noTarget": "Nenhum destino selecionado.",
+        "jsonLabel": "JSON localizado",
+        "apply": "Aplicar JSON",
+        "applying": "A aplicar…"
+      },
+      "help": {
+        "title": "Formato aceite",
+        "merge": "Por defeito, os idiomas enviados são fundidos com os valores existentes: os outros idiomas são preservados.",
+        "replace": "Adiciona \"replaceExisting\": true ou \"mode\": \"replace\" para substituir totalmente o campo localizado.",
+        "fields": "Campos suportados: descriptions, names, description, biography, altTexts, captions, credits, labels conforme o tipo escolhido.",
+        "accessConditions": "Para um item de parque do tipo atração, accessConditions pode localizar label e description usando type ou displayOrder."
+      },
+      "messages": {
+        "searchError": "Não foi possível carregar os destinos localizáveis.",
+        "selectTargetFirst": "Seleciona primeiro um destino.",
+        "invalidJson": "O JSON introduzido é inválido.",
+        "applySuccess": "JSON localizado aplicado com sucesso.",
+        "applyNoField": "Nenhum campo localizado foi atualizado.",
+        "applyError": "Não foi possível aplicar o JSON localizado."
+      },
+      "entityTypes": {
+        "park": "Parque",
+        "parkZone": "Zona do parque",
+        "parkItem": "Item do parque",
+        "parkOperator": "Operador",
+        "parkFounder": "Fundador",
+        "attractionManufacturer": "Fabricante",
+        "image": "Imagem",
+        "imageTag": "Etiqueta de imagem"
+      },
+      "entityHints": {
+        "park": "Descrição localizada do parque.",
+        "parkZone": "Nome e descrição localizados da zona.",
+        "parkItem": "Descrição localizada do item, com condições de acesso se for atração.",
+        "parkOperator": "Descrição localizada do operador.",
+        "parkFounder": "Biografia localizada do fundador.",
+        "attractionManufacturer": "Biografia localizada do fabricante.",
+        "image": "Textos alternativos, legendas e créditos localizados.",
+        "imageTag": "Etiquetas e descrições localizadas."
       }
     }
   },
@@ -1494,7 +1556,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Feito com ❤️ e adrenalina",
-      "version": "Versão 1.0.0"
+      "version": "Versão 1.0.1"
     }
   },
   "ui": {

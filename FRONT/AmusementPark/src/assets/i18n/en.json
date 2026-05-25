@@ -827,7 +827,8 @@
         "images": "Review media, logos and site visuals.",
         "data": "Monitor imports, sources and data processing.",
         "founders": "Maintain founders and biographies linked to parks.",
-        "auditLogs": "Review logged sensitive administration actions."
+        "auditLogs": "Review logged sensitive administration actions.",
+        "localizedContent": "Quickly import localized texts through JSON after selecting a target."
       }
     },
     "references": {
@@ -895,6 +896,67 @@
       },
       "metadata": {
         "show": "Show"
+      }
+    },
+    "localizedContent": {
+      "navTitle": "Localized content",
+      "kicker": "Editorial administration",
+      "title": "Import localized JSON",
+      "subtitle": "Search and select an entity first, then apply JSON only to supported localizable fields.",
+      "selection": {
+        "title": "1. Select the target",
+        "description": "Selection uses readable search results so you do not update an entity from a technical ID alone.",
+        "entityType": "Entity type",
+        "search": "Search",
+        "searchPlaceholder": "Park name, attraction, zone, manufacturer…",
+        "searchButton": "Search",
+        "searching": "Searching…",
+        "empty": "Run a search to display available targets."
+      },
+      "editor": {
+        "title": "2. Paste JSON",
+        "description": "The JSON is validated by the API and applied through the Application layer.",
+        "resetExample": "Reset example",
+        "selected": "Selected target",
+        "noTarget": "No target selected.",
+        "jsonLabel": "Localized JSON",
+        "apply": "Apply JSON",
+        "applying": "Applying…"
+      },
+      "help": {
+        "title": "Accepted format",
+        "merge": "By default, provided languages are merged with existing values: other languages are preserved.",
+        "replace": "Add \"replaceExisting\": true or \"mode\": \"replace\" to fully replace the localized field.",
+        "fields": "Supported fields: descriptions, names, description, biography, altTexts, captions, credits, labels depending on the selected type.",
+        "accessConditions": "For an attraction park item, accessConditions can localize label and description using type or displayOrder."
+      },
+      "messages": {
+        "searchError": "Could not load localizable targets.",
+        "selectTargetFirst": "Select a target first.",
+        "invalidJson": "The JSON is invalid.",
+        "applySuccess": "Localized JSON applied successfully.",
+        "applyNoField": "No localized field was updated.",
+        "applyError": "Could not apply localized JSON."
+      },
+      "entityTypes": {
+        "park": "Park",
+        "parkZone": "Park zone",
+        "parkItem": "Park item",
+        "parkOperator": "Operator",
+        "parkFounder": "Founder",
+        "attractionManufacturer": "Manufacturer",
+        "image": "Image",
+        "imageTag": "Image tag"
+      },
+      "entityHints": {
+        "park": "Localized park description.",
+        "parkZone": "Localized zone name and description.",
+        "parkItem": "Localized item description, with access conditions for attractions.",
+        "parkOperator": "Localized operator description.",
+        "parkFounder": "Localized founder biography.",
+        "attractionManufacturer": "Localized manufacturer biography.",
+        "image": "Localized alternative texts, captions and credits.",
+        "imageTag": "Localized tag labels and descriptions."
       }
     }
   },
@@ -1494,7 +1556,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Made with ❤️ and adrenaline",
-      "version": "Version 1.0.0"
+      "version": "Version 1.0.1"
     }
   },
   "ui": {
