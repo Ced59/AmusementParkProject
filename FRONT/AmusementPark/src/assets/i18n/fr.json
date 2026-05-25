@@ -911,10 +911,10 @@
       }
     },
     "localizedContent": {
-      "navTitle": "Contenus localisés",
-      "kicker": "Administration éditoriale",
-      "title": "Importer un JSON localisé",
-      "subtitle": "Choisis d’abord une entité par recherche, puis applique un JSON uniquement sur les champs localisables supportés.",
+      "navTitle": "Imports JSON",
+      "kicker": "Import JSON",
+      "title": "Importer un JSON d’entité",
+      "subtitle": "Choisis une entité existante, puis applique un JSON partiel ou complet sur les champs supportés.",
       "selection": {
         "title": "1. Choisir la cible",
         "description": "Le choix se fait depuis une recherche lisible pour éviter de modifier une entité uniquement à partir d’un identifiant technique.",
@@ -958,7 +958,8 @@
         "parkFounder": "Fondateur",
         "attractionManufacturer": "Constructeur",
         "image": "Image",
-        "imageTag": "Tag d’image"
+        "imageTag": "Tag d’image",
+        "accessConditionType": "Type de condition d’accès"
       },
       "entityHints": {
         "park": "Description localisée du parc.",
@@ -968,7 +969,30 @@
         "parkFounder": "Biographie localisée du fondateur.",
         "attractionManufacturer": "Biographie localisée du constructeur.",
         "image": "Textes alternatifs, légendes et crédits localisés.",
-        "imageTag": "Libellés et descriptions localisés du tag."
+        "imageTag": "Libellés et descriptions localisés du tag.",
+        "accessConditionType": "Catalogue réutilisable des types de conditions d’accès."
+      }
+    },
+    "jsonImport": {
+      "tab": "Import JSON",
+      "kicker": "Import JSON",
+      "title": "Importer les données de cette entité",
+      "description": "Colle un JSON partiel ou complet pour renseigner rapidement les champs supportés, sans gérer les photos ni créer d’entités enfants.",
+      "resetExample": "Remettre l’exemple",
+      "jsonLabel": "JSON de l’entité",
+      "apply": "Appliquer le JSON",
+      "applying": "Application…",
+      "disabledUntilSave": "Enregistre d’abord cette entité avant d’importer un JSON.",
+      "messages": {
+        "invalidJson": "Le JSON est invalide.",
+        "success": "JSON appliqué. Recharge ou vérifie les onglets si nécessaire.",
+        "error": "Impossible d’appliquer le JSON."
+      },
+      "help": {
+        "title": "Format accepté",
+        "partial": "Un JSON partiel ne modifie que les champs présents.",
+        "merge": "Les valeurs localisées sont fusionnées par langue, sauf avec replaceExisting ou mode: replace.",
+        "accessConditions": "Pour les éléments de parc, accessConditions peut créer ou mettre à jour les conditions et leurs types réutilisables."
       }
     }
   },
@@ -1568,7 +1592,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Fait avec ❤️ et de l’adrénaline",
-      "version": "Version 1.0.1"
+      "version": "Version 1.1.0"
     }
   },
   "ui": {

@@ -19,6 +19,7 @@ using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Geo;
 using AmusementPark.Core.Localization;
 
 namespace AmusementPark.Application.Features.LocalizedContent.Handlers;
@@ -90,6 +91,7 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
             LocalizedContentEntityType.AttractionManufacturer => await this.ApplyToAttractionManufacturerAsync(command.EntityId.Trim(), patch, cancellationToken),
             LocalizedContentEntityType.Image => await this.ApplyToImageAsync(command.EntityId.Trim(), patch, cancellationToken),
             LocalizedContentEntityType.ImageTag => await this.ApplyToImageTagAsync(command.EntityId.Trim(), patch, cancellationToken),
+            LocalizedContentEntityType.AccessConditionType => await this.ApplyToAccessConditionTypeAsync(command.EntityId.Trim(), patch, cancellationToken),
             _ => ApplicationResult<LocalizedContentApplyResult>.Failure(LocalizedContentApplicationErrors.InvalidEntityType(command.EntityType)),
         };
 
@@ -122,6 +124,12 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
             park.Descriptions = Merge(park.Descriptions, field.Value, patch.ReplaceExisting);
             updatedFields.Add("descriptions");
             updatedValueCount += field.Value.Count;
+        }
+
+        ApplicationResult rawResult = ApplyParkRawFields(park, patch.RawFields, updatedFields);
+        if (!rawResult.IsSuccess)
+        {
+            return ApplicationResult<LocalizedContentApplyResult>.Failure(rawResult.Errors);
         }
 
         Park? updated = await this.parkRepository.UpdateAsync(entityId, park, cancellationToken);
@@ -176,6 +184,12 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
             updatedValueCount += field.Value.Count;
         }
 
+        ApplicationResult rawResult = ApplyParkZoneRawFields(zone, patch.RawFields, updatedFields);
+        if (!rawResult.IsSuccess)
+        {
+            return ApplicationResult<LocalizedContentApplyResult>.Failure(rawResult.Errors);
+        }
+
         ParkZone? updated = await this.parkZoneRepository.UpdateAsync(entityId, zone, cancellationToken);
         if (updated is null)
         {
@@ -207,6 +221,12 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
             item.Descriptions = Merge(item.Descriptions, field.Value, patch.ReplaceExisting);
             updatedFields.Add("descriptions");
             updatedValueCount += field.Value.Count;
+        }
+
+        ApplicationResult rawResult = ApplyParkItemRawFields(item, patch.RawFields, updatedFields);
+        if (!rawResult.IsSuccess)
+        {
+            return ApplicationResult<LocalizedContentApplyResult>.Failure(rawResult.Errors);
         }
 
         foreach (AccessConditionPatch accessConditionPatch in patch.AccessConditions)
@@ -259,6 +279,12 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
             updatedValueCount += field.Value.Count;
         }
 
+        ApplicationResult rawResult = ApplyParkOperatorRawFields(entity, patch.RawFields, updatedFields);
+        if (!rawResult.IsSuccess)
+        {
+            return ApplicationResult<LocalizedContentApplyResult>.Failure(rawResult.Errors);
+        }
+
         ParkOperator? updated = await this.parkOperatorRepository.UpdateAsync(entityId, entity, cancellationToken);
         if (updated is null)
         {
@@ -295,6 +321,12 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
             entity.Biography = Merge(entity.Biography, field.Value, patch.ReplaceExisting);
             updatedFields.Add("biography");
             updatedValueCount += field.Value.Count;
+        }
+
+        ApplicationResult rawResult = ApplyParkFounderRawFields(entity, patch.RawFields, updatedFields);
+        if (!rawResult.IsSuccess)
+        {
+            return ApplicationResult<LocalizedContentApplyResult>.Failure(rawResult.Errors);
         }
 
         ParkFounder? updated = await this.parkFounderRepository.UpdateAsync(entityId, entity, cancellationToken);
@@ -335,6 +367,12 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
             updatedValueCount += field.Value.Count;
         }
 
+        ApplicationResult rawResult = ApplyAttractionManufacturerRawFields(entity, patch.RawFields, updatedFields);
+        if (!rawResult.IsSuccess)
+        {
+            return ApplicationResult<LocalizedContentApplyResult>.Failure(rawResult.Errors);
+        }
+
         AttractionManufacturer? updated = await this.attractionManufacturerRepository.UpdateAsync(entityId, entity, cancellationToken);
         if (updated is null)
         {
@@ -345,11 +383,120 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
         return Success(LocalizedContentEntityType.AttractionManufacturer, entityId, updatedFields, updatedValueCount);
     }
 
+    private async Task<ApplicationResult<LocalizedContentApplyResult>> ApplyToAccessConditionTypeAsync(string entityId, LocalizedContentPatch patch, CancellationToken cancellationToken)
+    {
+        if (patch.AccessConditions.Count > 0)
+        {
+            return UnsupportedField(LocalizedContentEntityType.AccessConditionType, "accessConditions");
+        }
+
+        IReadOnlyCollection<AttractionAccessConditionTypeDefinition> definitions = await this.accessConditionTypeDefinitionRepository.GetAllAsync(true, cancellationToken);
+        AttractionAccessConditionTypeDefinition? existing = definitions.FirstOrDefault(value => string.Equals(value.Id, entityId, StringComparison.OrdinalIgnoreCase) || string.Equals(value.Key, entityId, StringComparison.OrdinalIgnoreCase));
+        if (existing is null)
+        {
+            return ApplicationResult<LocalizedContentApplyResult>.Failure(ApplicationErrors.EntityNotFound(nameof(AttractionAccessConditionTypeDefinition), entityId));
+        }
+
+        List<string> updatedFields = new List<string>();
+        int updatedValueCount = 0;
+        List<LocalizedText> labels = existing.Labels;
+        List<LocalizedText> descriptions = existing.Descriptions;
+        string key = existing.Key;
+        AttractionAccessConditionType legacyType = existing.LegacyType;
+        bool isActive = existing.IsActive;
+        int sortOrder = existing.SortOrder;
+
+        foreach (KeyValuePair<string, IReadOnlyCollection<LocalizedText>> field in patch.Fields)
+        {
+            string normalizedField = NormalizeField(field.Key);
+            if (normalizedField is "labels" or "label" or "typelabel" or "typelabels")
+            {
+                labels = Merge(labels, field.Value, patch.ReplaceExisting);
+                updatedFields.Add("labels");
+                updatedValueCount += field.Value.Count;
+            }
+            else if (normalizedField is "descriptions" or "description")
+            {
+                descriptions = Merge(descriptions, field.Value, patch.ReplaceExisting);
+                updatedFields.Add("descriptions");
+                updatedValueCount += field.Value.Count;
+            }
+            else
+            {
+                return UnsupportedField(LocalizedContentEntityType.AccessConditionType, field.Key);
+            }
+        }
+
+        foreach (KeyValuePair<string, JsonElement> field in patch.RawFields)
+        {
+            string normalizedField = NormalizeField(field.Key);
+            if (normalizedField is "key" or "typekey")
+            {
+                string? value = AttractionAccessConditionTypeKeyNormalizer.Normalize(ReadString(field.Value));
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    key = value;
+                    updatedFields.Add("key");
+                }
+            }
+            else if (normalizedField is "legacytype" or "type")
+            {
+                AttractionAccessConditionType? value = ReadEnum<AttractionAccessConditionType>(field.Value);
+                if (value.HasValue)
+                {
+                    legacyType = value.Value;
+                    updatedFields.Add("legacyType");
+                }
+            }
+            else if (normalizedField is "isactive" or "active")
+            {
+                bool? value = ReadBoolean(field.Value);
+                if (value.HasValue)
+                {
+                    isActive = value.Value;
+                    updatedFields.Add("isActive");
+                }
+            }
+            else if (normalizedField is "sortorder" or "displayorder" or "order")
+            {
+                int? value = ReadInt32(field.Value);
+                if (value.HasValue)
+                {
+                    sortOrder = value.Value;
+                    updatedFields.Add("sortOrder");
+                }
+            }
+            else
+            {
+                return UnsupportedField(LocalizedContentEntityType.AccessConditionType, field.Key);
+            }
+        }
+
+        AttractionAccessConditionTypeDefinitionWriteModel model = new AttractionAccessConditionTypeDefinitionWriteModel
+        {
+            Key = key,
+            LegacyType = legacyType,
+            IsSystem = existing.IsSystem,
+            IsActive = isActive,
+            SortOrder = sortOrder,
+            Labels = ToValues(labels),
+            Descriptions = ToValues(descriptions),
+        };
+
+        AttractionAccessConditionTypeDefinition updated = await this.accessConditionTypeDefinitionRepository.UpsertAsync(model, cancellationToken);
+        return Success(LocalizedContentEntityType.AccessConditionType, updated.Id, updatedFields, updatedValueCount);
+    }
+
     private async Task<ApplicationResult<LocalizedContentApplyResult>> ApplyToImageAsync(string entityId, LocalizedContentPatch patch, CancellationToken cancellationToken)
     {
         if (patch.AccessConditions.Count > 0)
         {
             return UnsupportedField(LocalizedContentEntityType.Image, "accessConditions");
+        }
+
+        if (patch.RawFields.Count > 0)
+        {
+            return UnsupportedField(LocalizedContentEntityType.Image, patch.RawFields.Keys.First());
         }
 
         Image? image = await this.imageRepository.GetByIdAsync(entityId, cancellationToken);
@@ -448,6 +595,12 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
             }
 
             updatedValueCount += field.Value.Count;
+        }
+
+        ApplicationResult rawResult = ApplyImageTagRawFields(tag, patch.RawFields, updatedFields);
+        if (!rawResult.IsSuccess)
+        {
+            return ApplicationResult<LocalizedContentApplyResult>.Failure(rawResult.Errors);
         }
 
         ImageTagWriteModel model = new ImageTagWriteModel
@@ -687,6 +840,613 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
         }
     }
 
+    private static ApplicationResult ApplyParkRawFields(Park park, IReadOnlyDictionary<string, JsonElement> rawFields, List<string> updatedFields)
+    {
+        double? latitude = null;
+        double? longitude = null;
+        foreach (KeyValuePair<string, JsonElement> field in rawFields)
+        {
+            string normalizedField = NormalizeField(field.Key);
+            if (normalizedField is "name")
+            {
+                ApplyString(field.Value, value => park.Name = value, updatedFields, "name");
+            }
+            else if (normalizedField is "countrycode" or "country")
+            {
+                ApplyString(field.Value, value => park.CountryCode = value?.ToUpperInvariant(), updatedFields, "countryCode");
+            }
+            else if (normalizedField is "type" or "parktype")
+            {
+                ApplyEnum<ParkType>(field.Value, value => park.Type = value, updatedFields, "type");
+            }
+            else if (normalizedField is "founderid")
+            {
+                ApplyString(field.Value, value => park.FounderId = value, updatedFields, "founderId");
+            }
+            else if (normalizedField is "operatorid")
+            {
+                ApplyString(field.Value, value => park.OperatorId = value, updatedFields, "operatorId");
+            }
+            else if (normalizedField is "websiteurl" or "website")
+            {
+                ApplyString(field.Value, value => park.WebsiteUrl = value, updatedFields, "websiteUrl");
+            }
+            else if (normalizedField is "street")
+            {
+                ApplyString(field.Value, value => park.Street = value, updatedFields, "street");
+            }
+            else if (normalizedField is "city")
+            {
+                ApplyString(field.Value, value => park.City = value, updatedFields, "city");
+            }
+            else if (normalizedField is "postalcode" or "zipcode")
+            {
+                ApplyString(field.Value, value => park.PostalCode = value, updatedFields, "postalCode");
+            }
+            else if (normalizedField is "isvisible" or "visible")
+            {
+                ApplyBool(field.Value, value => park.IsVisible = value, updatedFields, "isVisible");
+            }
+            else if (normalizedField is "adminreviewstatus" or "reviewstatus")
+            {
+                ApplyEnum<AdminReviewStatus>(field.Value, value => park.AdminReviewStatus = value, updatedFields, "adminReviewStatus");
+            }
+            else if (normalizedField is "isfeaturedonhome")
+            {
+                ApplyBool(field.Value, value => park.IsFeaturedOnHome = value, updatedFields, "isFeaturedOnHome");
+            }
+            else if (normalizedField is "featuredhomeorder")
+            {
+                ApplyInt(field.Value, value => park.FeaturedHomeOrder = value, updatedFields, "featuredHomeOrder");
+            }
+            else if (normalizedField is "isfeaturedonhomesponsored")
+            {
+                ApplyBool(field.Value, value => park.IsFeaturedOnHomeSponsored = value, updatedFields, "isFeaturedOnHomeSponsored");
+            }
+            else if (normalizedField is "latitude" or "lat")
+            {
+                latitude = ReadDouble(field.Value);
+            }
+            else if (normalizedField is "longitude" or "lng" or "lon")
+            {
+                longitude = ReadDouble(field.Value);
+            }
+            else if (normalizedField is "position" or "location" or "coordinates")
+            {
+                (double? readLatitude, double? readLongitude) = ReadPosition(field.Value);
+                latitude = readLatitude ?? latitude;
+                longitude = readLongitude ?? longitude;
+            }
+            else
+            {
+                return ApplicationResult.Failure(LocalizedContentApplicationErrors.UnsupportedField(LocalizedContentEntityType.Park, field.Key));
+            }
+        }
+
+        ApplyPosition(park, latitude, longitude, updatedFields);
+        return ApplicationResult.Success();
+    }
+
+    private static ApplicationResult ApplyParkZoneRawFields(ParkZone zone, IReadOnlyDictionary<string, JsonElement> rawFields, List<string> updatedFields)
+    {
+        double? latitude = null;
+        double? longitude = null;
+        foreach (KeyValuePair<string, JsonElement> field in rawFields)
+        {
+            string normalizedField = NormalizeField(field.Key);
+            if (normalizedField is "parkid")
+            {
+                ApplyString(field.Value, value => zone.ParkId = value ?? zone.ParkId, updatedFields, "parkId");
+            }
+            else if (normalizedField is "name")
+            {
+                ApplyString(field.Value, value => zone.Name = value ?? zone.Name, updatedFields, "name");
+            }
+            else if (normalizedField is "slug")
+            {
+                ApplyString(field.Value, value => zone.Slug = value, updatedFields, "slug");
+            }
+            else if (normalizedField is "isvisible" or "visible")
+            {
+                ApplyBool(field.Value, value => zone.IsVisible = value, updatedFields, "isVisible");
+            }
+            else if (normalizedField is "sortorder" or "displayorder" or "order")
+            {
+                ApplyInt(field.Value, value => zone.SortOrder = value ?? zone.SortOrder, updatedFields, "sortOrder");
+            }
+            else if (normalizedField is "latitude" or "lat")
+            {
+                latitude = ReadDouble(field.Value);
+            }
+            else if (normalizedField is "longitude" or "lng" or "lon")
+            {
+                longitude = ReadDouble(field.Value);
+            }
+            else if (normalizedField is "position" or "location" or "coordinates")
+            {
+                (double? readLatitude, double? readLongitude) = ReadPosition(field.Value);
+                latitude = readLatitude ?? latitude;
+                longitude = readLongitude ?? longitude;
+            }
+            else
+            {
+                return ApplicationResult.Failure(LocalizedContentApplicationErrors.UnsupportedField(LocalizedContentEntityType.ParkZone, field.Key));
+            }
+        }
+
+        ApplyPosition(zone, latitude, longitude, updatedFields);
+        return ApplicationResult.Success();
+    }
+
+    private static ApplicationResult ApplyParkItemRawFields(ParkItem item, IReadOnlyDictionary<string, JsonElement> rawFields, List<string> updatedFields)
+    {
+        double? latitude = null;
+        double? longitude = null;
+        foreach (KeyValuePair<string, JsonElement> field in rawFields)
+        {
+            string normalizedField = NormalizeField(field.Key);
+            if (normalizedField is "parkid")
+            {
+                ApplyString(field.Value, value => item.ParkId = value ?? item.ParkId, updatedFields, "parkId");
+            }
+            else if (normalizedField is "zoneid")
+            {
+                ApplyString(field.Value, value => item.ZoneId = value, updatedFields, "zoneId");
+            }
+            else if (normalizedField is "name")
+            {
+                ApplyString(field.Value, value => item.Name = value ?? item.Name, updatedFields, "name");
+            }
+            else if (normalizedField is "category")
+            {
+                ApplyEnum<ParkItemCategory>(field.Value, value => item.Category = value, updatedFields, "category");
+            }
+            else if (normalizedField is "type" or "itemtype")
+            {
+                ApplyEnum<ParkItemType>(field.Value, value => item.Type = value, updatedFields, "type");
+            }
+            else if (normalizedField is "subtype")
+            {
+                ApplyString(field.Value, value => item.Subtype = value, updatedFields, "subtype");
+            }
+            else if (normalizedField is "isvisible" or "visible")
+            {
+                ApplyBool(field.Value, value => item.IsVisible = value, updatedFields, "isVisible");
+            }
+            else if (normalizedField is "adminreviewstatus" or "reviewstatus")
+            {
+                ApplyEnum<AdminReviewStatus>(field.Value, value => item.AdminReviewStatus = value, updatedFields, "adminReviewStatus");
+            }
+            else if (normalizedField is "latitude" or "lat")
+            {
+                latitude = ReadDouble(field.Value);
+            }
+            else if (normalizedField is "longitude" or "lng" or "lon")
+            {
+                longitude = ReadDouble(field.Value);
+            }
+            else if (normalizedField is "position" or "location" or "coordinates")
+            {
+                (double? readLatitude, double? readLongitude) = ReadPosition(field.Value);
+                latitude = readLatitude ?? latitude;
+                longitude = readLongitude ?? longitude;
+            }
+            else if (normalizedField is "attractiondetails" or "details")
+            {
+                item.AttractionDetails ??= new AttractionDetails();
+                ApplyAttractionDetailsRawFields(item.AttractionDetails, field.Value, updatedFields);
+            }
+            else if (TryApplyAttractionDetailsRawField(item, field, updatedFields))
+            {
+            }
+            else
+            {
+                return ApplicationResult.Failure(LocalizedContentApplicationErrors.UnsupportedField(LocalizedContentEntityType.ParkItem, field.Key));
+            }
+        }
+
+        ApplyPosition(item, latitude, longitude, updatedFields);
+        return ApplicationResult.Success();
+    }
+
+    private static ApplicationResult ApplyParkOperatorRawFields(ParkOperator entity, IReadOnlyDictionary<string, JsonElement> rawFields, List<string> updatedFields)
+    {
+        foreach (KeyValuePair<string, JsonElement> field in rawFields)
+        {
+            string normalizedField = NormalizeField(field.Key);
+            if (normalizedField is "name")
+            {
+                ApplyString(field.Value, value => entity.Name = value ?? entity.Name, updatedFields, "name");
+            }
+            else if (normalizedField is "legalname")
+            {
+                ApplyString(field.Value, value => entity.LegalName = value, updatedFields, "legalName");
+            }
+            else if (normalizedField is "foundedyear")
+            {
+                ApplyInt(field.Value, value => entity.FoundedYear = value, updatedFields, "foundedYear");
+            }
+            else if (normalizedField is "closedyear")
+            {
+                ApplyInt(field.Value, value => entity.ClosedYear = value, updatedFields, "closedYear");
+            }
+            else if (normalizedField is "contactdetails" or "contact")
+            {
+                entity.ContactDetails = ReadContactDetails(field.Value, entity.ContactDetails);
+                updatedFields.Add("contactDetails");
+            }
+            else if (normalizedField is "adminreviewstatus" or "reviewstatus")
+            {
+                ApplyEnum<AdminReviewStatus>(field.Value, value => entity.AdminReviewStatus = value, updatedFields, "adminReviewStatus");
+            }
+            else
+            {
+                return ApplicationResult.Failure(LocalizedContentApplicationErrors.UnsupportedField(LocalizedContentEntityType.ParkOperator, field.Key));
+            }
+        }
+
+        return ApplicationResult.Success();
+    }
+
+    private static ApplicationResult ApplyParkFounderRawFields(ParkFounder entity, IReadOnlyDictionary<string, JsonElement> rawFields, List<string> updatedFields)
+    {
+        foreach (KeyValuePair<string, JsonElement> field in rawFields)
+        {
+            string normalizedField = NormalizeField(field.Key);
+            if (normalizedField is "name")
+            {
+                ApplyString(field.Value, value => entity.Name = value ?? entity.Name, updatedFields, "name");
+            }
+            else if (normalizedField is "occupation")
+            {
+                ApplyString(field.Value, value => entity.Occupation = value, updatedFields, "occupation");
+            }
+            else if (normalizedField is "birthdate")
+            {
+                ApplyString(field.Value, value => entity.BirthDate = value, updatedFields, "birthDate");
+            }
+            else if (normalizedField is "deathdate")
+            {
+                ApplyString(field.Value, value => entity.DeathDate = value, updatedFields, "deathDate");
+            }
+            else if (normalizedField is "birthplace")
+            {
+                ApplyString(field.Value, value => entity.BirthPlace = value, updatedFields, "birthPlace");
+            }
+            else if (normalizedField is "nationalitycountrycode" or "countrycode" or "nationality")
+            {
+                ApplyString(field.Value, value => entity.NationalityCountryCode = value?.ToUpperInvariant(), updatedFields, "nationalityCountryCode");
+            }
+            else if (normalizedField is "websiteurl" or "website")
+            {
+                ApplyString(field.Value, value => entity.WebsiteUrl = value, updatedFields, "websiteUrl");
+            }
+            else
+            {
+                return ApplicationResult.Failure(LocalizedContentApplicationErrors.UnsupportedField(LocalizedContentEntityType.ParkFounder, field.Key));
+            }
+        }
+
+        return ApplicationResult.Success();
+    }
+
+    private static ApplicationResult ApplyAttractionManufacturerRawFields(AttractionManufacturer entity, IReadOnlyDictionary<string, JsonElement> rawFields, List<string> updatedFields)
+    {
+        foreach (KeyValuePair<string, JsonElement> field in rawFields)
+        {
+            string normalizedField = NormalizeField(field.Key);
+            if (normalizedField is "name")
+            {
+                ApplyString(field.Value, value => entity.Name = value ?? entity.Name, updatedFields, "name");
+            }
+            else if (normalizedField is "legalname")
+            {
+                ApplyString(field.Value, value => entity.LegalName = value, updatedFields, "legalName");
+            }
+            else if (normalizedField is "foundedyear")
+            {
+                ApplyInt(field.Value, value => entity.FoundedYear = value, updatedFields, "foundedYear");
+            }
+            else if (normalizedField is "closedyear")
+            {
+                ApplyInt(field.Value, value => entity.ClosedYear = value, updatedFields, "closedYear");
+            }
+            else if (normalizedField is "contactdetails" or "contact")
+            {
+                entity.ContactDetails = ReadContactDetails(field.Value, entity.ContactDetails);
+                updatedFields.Add("contactDetails");
+            }
+            else if (normalizedField is "adminreviewstatus" or "reviewstatus")
+            {
+                ApplyEnum<AdminReviewStatus>(field.Value, value => entity.AdminReviewStatus = value, updatedFields, "adminReviewStatus");
+            }
+            else
+            {
+                return ApplicationResult.Failure(LocalizedContentApplicationErrors.UnsupportedField(LocalizedContentEntityType.AttractionManufacturer, field.Key));
+            }
+        }
+
+        return ApplicationResult.Success();
+    }
+
+    private static ApplicationResult ApplyImageTagRawFields(ImageTag tag, IReadOnlyDictionary<string, JsonElement> rawFields, List<string> updatedFields)
+    {
+        foreach (KeyValuePair<string, JsonElement> field in rawFields)
+        {
+            string normalizedField = NormalizeField(field.Key);
+            if (normalizedField is "slug" or "key")
+            {
+                ApplyString(field.Value, value => tag.Slug = value ?? tag.Slug, updatedFields, "slug");
+            }
+            else if (normalizedField is "isactive" or "active")
+            {
+                ApplyBool(field.Value, value => tag.IsActive = value, updatedFields, "isActive");
+            }
+            else
+            {
+                return ApplicationResult.Failure(LocalizedContentApplicationErrors.UnsupportedField(LocalizedContentEntityType.ImageTag, field.Key));
+            }
+        }
+
+        return ApplicationResult.Success();
+    }
+
+    private static bool TryApplyAttractionDetailsRawField(ParkItem item, KeyValuePair<string, JsonElement> field, List<string> updatedFields)
+    {
+        string normalizedField = NormalizeField(field.Key);
+        if (!IsAttractionDetailsField(normalizedField))
+        {
+            return false;
+        }
+
+        item.AttractionDetails ??= new AttractionDetails();
+        ApplyAttractionDetailsField(item.AttractionDetails, normalizedField, field.Value, updatedFields, $"attractionDetails.{field.Key}");
+        return true;
+    }
+
+    private static void ApplyAttractionDetailsRawFields(AttractionDetails details, JsonElement value, List<string> updatedFields)
+    {
+        if (value.ValueKind != JsonValueKind.Object)
+        {
+            return;
+        }
+
+        foreach (JsonProperty property in value.EnumerateObject())
+        {
+            string normalizedField = NormalizeField(property.Name);
+            if (normalizedField is "accessconditions" or "attractionaccessconditions")
+            {
+                continue;
+            }
+
+            ApplyAttractionDetailsField(details, normalizedField, property.Value, updatedFields, $"attractionDetails.{property.Name}");
+        }
+    }
+
+    private static bool IsAttractionDetailsField(string normalizedField)
+    {
+        return normalizedField is "manufacturerid" or "model" or "externalsource" or "externalid" or "sourceurl" or "status" or
+            "materialtype" or "seatingtype" or "launchtype" or "restrainttype" or "islaunched" or "openingdate" or "closingdate" or
+            "openingdatetext" or "closingdatetext" or "durationinseconds" or "duration" or "capacityperhour" or "heightinfeet" or
+            "heightinmeters" or "height" or "lengthinfeet" or "lengthinmeters" or "length" or "speedinmph" or "speedinkmh" or "speed" or
+            "dropinmeters" or "drop" or "inversioncount" or "inversions" or "traincount" or "carspertrain" or "riderspervehicle" or
+            "hassinglerider" or "hasfastpass" or "isaccessibleforreducedmobility" or "isindoor" or "waterexposurelevel";
+    }
+
+    private static void ApplyAttractionDetailsField(AttractionDetails details, string normalizedField, JsonElement value, List<string> updatedFields, string fieldName)
+    {
+        switch (normalizedField)
+        {
+            case "manufacturerid": ApplyString(value, v => details.ManufacturerId = v, updatedFields, fieldName); break;
+            case "model": ApplyString(value, v => details.Model = v, updatedFields, fieldName); break;
+            case "externalsource": ApplyString(value, v => details.ExternalSource = v, updatedFields, fieldName); break;
+            case "externalid": ApplyString(value, v => details.ExternalId = v, updatedFields, fieldName); break;
+            case "sourceurl": ApplyString(value, v => details.SourceUrl = v, updatedFields, fieldName); break;
+            case "status": ApplyString(value, v => details.Status = v, updatedFields, fieldName); break;
+            case "materialtype": ApplyString(value, v => details.MaterialType = v, updatedFields, fieldName); break;
+            case "seatingtype": ApplyString(value, v => details.SeatingType = v, updatedFields, fieldName); break;
+            case "launchtype": ApplyString(value, v => details.LaunchType = v, updatedFields, fieldName); break;
+            case "restrainttype": ApplyString(value, v => details.RestraintType = v, updatedFields, fieldName); break;
+            case "islaunched": ApplyBool(value, v => details.IsLaunched = v, updatedFields, fieldName); break;
+            case "openingdate": ApplyDate(value, v => details.OpeningDate = v, updatedFields, fieldName); break;
+            case "closingdate": ApplyDate(value, v => details.ClosingDate = v, updatedFields, fieldName); break;
+            case "openingdatetext": ApplyString(value, v => details.OpeningDateText = v, updatedFields, fieldName); break;
+            case "closingdatetext": ApplyString(value, v => details.ClosingDateText = v, updatedFields, fieldName); break;
+            case "duration":
+            case "durationinseconds": ApplyInt(value, v => details.DurationInSeconds = v, updatedFields, fieldName); break;
+            case "capacityperhour": ApplyInt(value, v => details.CapacityPerHour = v, updatedFields, fieldName); break;
+            case "heightinfeet": ApplyDouble(value, v => details.HeightInFeet = v, updatedFields, fieldName); break;
+            case "height":
+            case "heightinmeters": ApplyDouble(value, v => details.HeightInMeters = v, updatedFields, fieldName); break;
+            case "lengthinfeet": ApplyDouble(value, v => details.LengthInFeet = v, updatedFields, fieldName); break;
+            case "length":
+            case "lengthinmeters": ApplyDouble(value, v => details.LengthInMeters = v, updatedFields, fieldName); break;
+            case "speedinmph": ApplyDouble(value, v => details.SpeedInMph = v, updatedFields, fieldName); break;
+            case "speed":
+            case "speedinkmh": ApplyDouble(value, v => details.SpeedInKmH = v, updatedFields, fieldName); break;
+            case "drop":
+            case "dropinmeters": ApplyDouble(value, v => details.DropInMeters = v, updatedFields, fieldName); break;
+            case "inversions":
+            case "inversioncount": ApplyInt(value, v => details.InversionCount = v, updatedFields, fieldName); break;
+            case "traincount": ApplyInt(value, v => details.TrainCount = v, updatedFields, fieldName); break;
+            case "carspertrain": ApplyInt(value, v => details.CarsPerTrain = v, updatedFields, fieldName); break;
+            case "riderspervehicle": ApplyInt(value, v => details.RidersPerVehicle = v, updatedFields, fieldName); break;
+            case "hassinglerider": ApplyBool(value, v => details.HasSingleRider = v, updatedFields, fieldName); break;
+            case "hasfastpass": ApplyBool(value, v => details.HasFastPass = v, updatedFields, fieldName); break;
+            case "isaccessibleforreducedmobility": ApplyBool(value, v => details.IsAccessibleForReducedMobility = v, updatedFields, fieldName); break;
+            case "isindoor": ApplyBool(value, v => details.IsIndoor = v, updatedFields, fieldName); break;
+            case "waterexposurelevel": ApplyEnum<AttractionWaterExposureLevel>(value, v => details.WaterExposureLevel = v, updatedFields, fieldName); break;
+        }
+    }
+
+    private static ParkReferenceContactDetails? ReadContactDetails(JsonElement value, ParkReferenceContactDetails? existing)
+    {
+        if (value.ValueKind != JsonValueKind.Object)
+        {
+            return existing;
+        }
+
+        ParkReferenceContactDetails details = existing is null
+            ? new ParkReferenceContactDetails()
+            : new ParkReferenceContactDetails
+            {
+                WebsiteUrl = existing.WebsiteUrl,
+                Email = existing.Email,
+                PhoneNumber = existing.PhoneNumber,
+                Street = existing.Street,
+                City = existing.City,
+                PostalCode = existing.PostalCode,
+                CountryCode = existing.CountryCode,
+                Latitude = existing.Latitude,
+                Longitude = existing.Longitude,
+            };
+
+        foreach (JsonProperty property in value.EnumerateObject())
+        {
+            string normalizedField = NormalizeField(property.Name);
+            switch (normalizedField)
+            {
+                case "websiteurl":
+                case "website": details.WebsiteUrl = NormalizeOptionalText(ReadString(property.Value)); break;
+                case "email": details.Email = NormalizeOptionalText(ReadString(property.Value)); break;
+                case "phonenumber":
+                case "phone": details.PhoneNumber = NormalizeOptionalText(ReadString(property.Value)); break;
+                case "street": details.Street = NormalizeOptionalText(ReadString(property.Value)); break;
+                case "city": details.City = NormalizeOptionalText(ReadString(property.Value)); break;
+                case "postalcode":
+                case "zipcode": details.PostalCode = NormalizeOptionalText(ReadString(property.Value)); break;
+                case "countrycode":
+                case "country": details.CountryCode = NormalizeOptionalText(ReadString(property.Value))?.ToUpperInvariant(); break;
+                case "latitude":
+                case "lat": details.Latitude = ReadDouble(property.Value); break;
+                case "longitude":
+                case "lng":
+                case "lon": details.Longitude = ReadDouble(property.Value); break;
+            }
+        }
+
+        bool hasValue = !string.IsNullOrWhiteSpace(details.WebsiteUrl) ||
+                        !string.IsNullOrWhiteSpace(details.Email) ||
+                        !string.IsNullOrWhiteSpace(details.PhoneNumber) ||
+                        !string.IsNullOrWhiteSpace(details.Street) ||
+                        !string.IsNullOrWhiteSpace(details.City) ||
+                        !string.IsNullOrWhiteSpace(details.PostalCode) ||
+                        !string.IsNullOrWhiteSpace(details.CountryCode) ||
+                        details.Latitude.HasValue ||
+                        details.Longitude.HasValue;
+
+        return hasValue ? details : null;
+    }
+
+    private static void ApplyString(JsonElement value, Action<string?> setter, List<string> updatedFields, string fieldName)
+    {
+        setter(NormalizeOptionalText(ReadString(value)));
+        updatedFields.Add(fieldName);
+    }
+
+    private static void ApplyBool(JsonElement value, Action<bool> setter, List<string> updatedFields, string fieldName)
+    {
+        bool? parsed = ReadBoolean(value);
+        if (parsed.HasValue)
+        {
+            setter(parsed.Value);
+            updatedFields.Add(fieldName);
+        }
+    }
+
+    private static void ApplyInt(JsonElement value, Action<int?> setter, List<string> updatedFields, string fieldName)
+    {
+        setter(ReadInt32(value));
+        updatedFields.Add(fieldName);
+    }
+
+    private static void ApplyDouble(JsonElement value, Action<double?> setter, List<string> updatedFields, string fieldName)
+    {
+        setter(ReadDouble(value));
+        updatedFields.Add(fieldName);
+    }
+
+    private static void ApplyDate(JsonElement value, Action<DateTime?> setter, List<string> updatedFields, string fieldName)
+    {
+        setter(ReadDateTime(value));
+        updatedFields.Add(fieldName);
+    }
+
+    private static void ApplyEnum<TEnum>(JsonElement value, Action<TEnum> setter, List<string> updatedFields, string fieldName)
+        where TEnum : struct
+    {
+        TEnum? parsed = ReadEnum<TEnum>(value);
+        if (parsed.HasValue)
+        {
+            setter(parsed.Value);
+            updatedFields.Add(fieldName);
+        }
+    }
+
+    private static TEnum? ReadEnum<TEnum>(JsonElement value)
+        where TEnum : struct
+    {
+        string? text = ReadString(value);
+        return !string.IsNullOrWhiteSpace(text) && Enum.TryParse(text, true, out TEnum parsed) ? parsed : null;
+    }
+
+    private static DateTime? ReadDateTime(JsonElement value)
+    {
+        string? text = ReadString(value);
+        return !string.IsNullOrWhiteSpace(text) && DateTime.TryParse(text, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.AssumeLocal, out DateTime parsed)
+            ? parsed
+            : null;
+    }
+
+    private static string? NormalizeOptionalText(string? value)
+    {
+        return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
+    }
+
+    private static (double? Latitude, double? Longitude) ReadPosition(JsonElement value)
+    {
+        if (value.ValueKind != JsonValueKind.Object)
+        {
+            return (null, null);
+        }
+
+        double? latitude = null;
+        double? longitude = null;
+        foreach (JsonProperty property in value.EnumerateObject())
+        {
+            string normalizedField = NormalizeField(property.Name);
+            if (normalizedField is "latitude" or "lat")
+            {
+                latitude = ReadDouble(property.Value);
+            }
+            else if (normalizedField is "longitude" or "lng" or "lon")
+            {
+                longitude = ReadDouble(property.Value);
+            }
+        }
+
+        return (latitude, longitude);
+    }
+
+    private static void ApplyPosition(GeolocatedEntityBase entity, double? latitude, double? longitude, List<string> updatedFields)
+    {
+        double? resolvedLatitude = latitude ?? entity.Position?.Latitude;
+        double? resolvedLongitude = longitude ?? entity.Position?.Longitude;
+        if (!resolvedLatitude.HasValue || !resolvedLongitude.HasValue)
+        {
+            return;
+        }
+
+        try
+        {
+            entity.SetPosition(resolvedLatitude.Value, resolvedLongitude.Value);
+            updatedFields.Add("position");
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+        }
+    }
+
     private static ApplicationResult<LocalizedContentApplyResult> Success(LocalizedContentEntityType entityType, string entityId, IReadOnlyCollection<string> updatedFields, int updatedValueCount)
     {
         return ApplicationResult<LocalizedContentApplyResult>.Success(new LocalizedContentApplyResult(
@@ -755,6 +1515,7 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
             JsonElement root = document.RootElement;
             bool replaceExisting = TryReadReplaceExisting(root);
             Dictionary<string, IReadOnlyCollection<LocalizedText>> fields = new Dictionary<string, IReadOnlyCollection<LocalizedText>>(StringComparer.OrdinalIgnoreCase);
+            Dictionary<string, JsonElement> rawFields = new Dictionary<string, JsonElement>(StringComparer.OrdinalIgnoreCase);
             List<AccessConditionPatch> accessConditions = new List<AccessConditionPatch>();
 
             foreach (JsonProperty property in root.EnumerateObject())
@@ -769,7 +1530,10 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
                 {
                     foreach (JsonProperty fieldProperty in property.Value.EnumerateObject())
                     {
-                        AddLocalizedField(fields, fieldProperty.Name, fieldProperty.Value);
+                        if (!AddLocalizedField(fields, fieldProperty.Name, fieldProperty.Value))
+                        {
+                            rawFields[fieldProperty.Name] = fieldProperty.Value.Clone();
+                        }
                     }
 
                     continue;
@@ -781,11 +1545,14 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
                     continue;
                 }
 
-                AddLocalizedField(fields, property.Name, property.Value);
+                if (!AddLocalizedField(fields, property.Name, property.Value))
+                {
+                    rawFields[property.Name] = property.Value.Clone();
+                }
             }
 
-            patch = new LocalizedContentPatch(fields, accessConditions, replaceExisting);
-            return fields.Count > 0 || accessConditions.Count > 0;
+            patch = new LocalizedContentPatch(fields, rawFields, accessConditions, replaceExisting);
+            return fields.Count > 0 || rawFields.Count > 0 || accessConditions.Count > 0;
         }
         catch (JsonException)
         {
@@ -793,13 +1560,16 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
         }
     }
 
-    private static void AddLocalizedField(Dictionary<string, IReadOnlyCollection<LocalizedText>> fields, string fieldName, JsonElement value)
+    private static bool AddLocalizedField(Dictionary<string, IReadOnlyCollection<LocalizedText>> fields, string fieldName, JsonElement value)
     {
         IReadOnlyCollection<LocalizedText> localizedValues = ReadLocalizedTexts(value);
-        if (localizedValues.Count > 0)
+        if (localizedValues.Count == 0)
         {
-            fields[fieldName] = localizedValues;
+            return false;
         }
+
+        fields[fieldName] = localizedValues;
+        return true;
     }
 
     private static IReadOnlyCollection<LocalizedText> ReadLocalizedTexts(JsonElement value)
@@ -818,6 +1588,11 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
             List<LocalizedText> values = new List<LocalizedText>();
             foreach (JsonProperty property in value.EnumerateObject())
             {
+                if (!IsSupportedLanguageCode(property.Name))
+                {
+                    return Array.Empty<LocalizedText>();
+                }
+
                 if (property.Value.ValueKind == JsonValueKind.String)
                 {
                     string? text = property.Value.GetString();
@@ -1097,6 +1872,12 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
         return false;
     }
 
+    private static bool IsSupportedLanguageCode(string? languageCode)
+    {
+        string normalized = NormalizeLanguageCode(languageCode);
+        return normalized is "fr" or "en" or "es" or "de" or "it" or "pl" or "nl" or "pt";
+    }
+
     private static string NormalizeField(string? value)
     {
         return string.IsNullOrWhiteSpace(value)
@@ -1138,6 +1919,7 @@ public sealed class ApplyLocalizedContentJsonCommandHandler : ICommandHandler<Ap
 
     private sealed record LocalizedContentPatch(
         IReadOnlyDictionary<string, IReadOnlyCollection<LocalizedText>> Fields,
+        IReadOnlyDictionary<string, JsonElement> RawFields,
         IReadOnlyCollection<AccessConditionPatch> AccessConditions,
         bool ReplaceExisting);
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { resolveLocalizedValue } from '@shared/utils/localization';
@@ -31,6 +31,7 @@ import { LocalizedTextInputComponent } from '@app/components/shared/localized-te
 @Component({
     selector: 'app-admin-park-item-access-conditions-tab',
     templateUrl: './admin-park-item-access-conditions-tab.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./admin-park-item-access-conditions-tab.component.scss'],
     imports: [FormsModule, ReactiveFormsModule, Bind, Card, Select, ButtonDirective, NgIf, NgFor, PrimeTemplate, InputText, ToggleSwitch, LocalizedTextInputComponent, TranslateModule]
 })
@@ -113,6 +114,14 @@ export class AdminParkItemAccessConditionsTabComponent {
   onHeightRequirementValueChange(key: AdminParkItemHeightRequirementKey, value: unknown): void {
     setAdminParkItemHeightRequirementValue(this.formBuilder, this.accessConditions, key, value);
     this.formGroup.markAsDirty();
+  }
+
+  trackByAccessConditionEntry(_index: number, entry: AdminParkItemAccessConditionEntry): number {
+    return entry.index;
+  }
+
+  trackByHeightRequirementField(_index: number, field: AdminParkItemHeightRequirementField): string {
+    return field.key;
   }
 
   getAccessConditionTitle(index: number): string {

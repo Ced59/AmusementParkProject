@@ -332,6 +332,50 @@ export class AdminParkItemEditComponent implements OnInit {
     this.photosStateFacade.onPhotosPageChange(event);
   }
 
+  reloadCurrentItem(): void {
+    const itemId: string | null = this.itemId();
+    if (!itemId) {
+      return;
+    }
+
+    void this.loadItemAsync(itemId);
+    this.loadAccessConditionTypeOptions();
+  }
+
+  get parkItemJsonImportExample(): string {
+    const payload: unknown = {
+      name: this.form.get('name')?.value || 'Nom de l’élément',
+      category: this.form.get('category')?.value || 'Attraction',
+      type: this.form.get('type')?.value || 'WaterRide',
+      subtype: this.form.get('subtype')?.value || null,
+      isVisible: this.form.get('isVisible')?.value ?? true,
+      descriptions: [
+        { languageCode: 'fr', value: '<p>Description en français.</p>' },
+        { languageCode: 'en', value: '<p>English description.</p>' }
+      ],
+      attractionDetails: {
+        model: this.form.get(['attractionDetails', 'model'])?.value || null,
+        openingDateText: null,
+        durationInSeconds: null,
+        heightInMeters: null,
+        lengthInMeters: null,
+        speedInKmH: null,
+        waterExposureLevel: 'Splash'
+      },
+      accessConditions: [
+        {
+          typeKey: 'min-height',
+          value: 105,
+          unit: 'Centimeter',
+          displayOrder: 1,
+          label: { fr: '105 cm', en: '105 cm' }
+        }
+      ]
+    };
+
+    return JSON.stringify(payload, null, 2);
+  }
+
   getEditorStatusLabel(): string {
     if (this.isSaving()) {
       return this.translate.instant('admin.parks.items.editorStatus.saving');

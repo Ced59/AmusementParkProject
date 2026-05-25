@@ -1,0 +1,47 @@
+.admin-json-import-tab {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.admin-json-import-tab__header {
+  align-items: flex-start;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.admin-json-import-tab__header h3 {
+  margin: 0.2rem 0 0.3rem;
+}
+
+.admin-json-import-tab__header p,
+.admin-json-import-tab__disabled {
+  color: var(--text-muted, #a99a87);
+  margin: 0;
+}
+
+.admin-json-import-tab__textarea {
+  background: color-mix(in srgb, var(--surface-ground, #0f0b06) 82%, #000 18%);
+  border: 1px solid var(--surface-border, rgba(255, 255, 255, 0.12));
+  border-radius: 1rem;
+  color: var(--text-color, #fff);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  min-height: 28rem;
+  padding: 1rem;
+  resize: vertical;
+  width: 100%;
+}
+
+.admin-json-import-tab__help {
+  color: var(--text-muted, #a99a87);
+}
+
+.admin-json-import-tab__help summary {
+  color: var(--text-color, #fff);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.admin-json-import-tab__messages {
+  min-height: 1.5rem;
+}

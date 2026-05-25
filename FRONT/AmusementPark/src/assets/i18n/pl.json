@@ -911,10 +911,10 @@
       }
     },
     "localizedContent": {
-      "navTitle": "Treści lokalizowane",
-      "kicker": "Administracja redakcyjna",
-      "title": "Importuj zlokalizowany JSON",
-      "subtitle": "Najpierw wybierz encję przez wyszukiwanie, potem zastosuj JSON tylko do obsługiwanych pól lokalizowanych.",
+      "navTitle": "Importy JSON",
+      "kicker": "Import JSON",
+      "title": "Importuj JSON encji",
+      "subtitle": "Wybierz istniejącą encję i zastosuj częściowy lub pełny JSON do obsługiwanych pól.",
       "selection": {
         "title": "1. Wybierz cel",
         "description": "Wybór odbywa się przez czytelne wyniki wyszukiwania, aby nie edytować encji wyłącznie po technicznym identyfikatorze.",
@@ -958,7 +958,8 @@
         "parkFounder": "Założyciel",
         "attractionManufacturer": "Producent",
         "image": "Obraz",
-        "imageTag": "Tag obrazu"
+        "imageTag": "Tag obrazu",
+        "accessConditionType": "Typ warunku dostępu"
       },
       "entityHints": {
         "park": "Zlokalizowany opis parku.",
@@ -968,7 +969,30 @@
         "parkFounder": "Zlokalizowana biografia założyciela.",
         "attractionManufacturer": "Zlokalizowana biografia producenta.",
         "image": "Zlokalizowane teksty alternatywne, podpisy i kredyty.",
-        "imageTag": "Zlokalizowane etykiety i opisy tagu."
+        "imageTag": "Zlokalizowane etykiety i opisy tagu.",
+        "accessConditionType": "Katalog typów warunków dostępu wielokrotnego użytku."
+      }
+    },
+    "jsonImport": {
+      "tab": "Import JSON",
+      "kicker": "Import JSON",
+      "title": "Importuj dane tej encji",
+      "description": "Wklej częściowy lub pełny JSON, aby szybko uzupełnić obsługiwane pola, bez zarządzania zdjęciami ani tworzenia encji podrzędnych.",
+      "resetExample": "Przywróć przykład",
+      "jsonLabel": "JSON encji",
+      "apply": "Zastosuj JSON",
+      "applying": "Stosowanie…",
+      "disabledUntilSave": "Najpierw zapisz tę encję przed importem JSON.",
+      "messages": {
+        "invalidJson": "JSON jest nieprawidłowy.",
+        "success": "JSON zastosowany. W razie potrzeby odśwież lub sprawdź zakładki.",
+        "error": "Nie można zastosować JSON."
+      },
+      "help": {
+        "title": "Akceptowany format",
+        "partial": "Częściowy JSON zmienia tylko obecne pola.",
+        "merge": "Wartości lokalizowane są łączone według języka, chyba że użyto replaceExisting lub mode: replace.",
+        "accessConditions": "Dla elementów parku accessConditions może tworzyć lub aktualizować warunki i ich typy wielokrotnego użytku."
       }
     }
   },
@@ -1568,7 +1592,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Stworzone z ❤️ i adrenaliną",
-      "version": "Wersja 1.0.1"
+      "version": "Wersja 1.1.0"
     }
   },
   "ui": {

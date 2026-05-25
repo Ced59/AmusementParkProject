@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { PagedCollectionResponse } from '../shared/api-helpers';
 
-export type LocalizedContentEntityType = 'park' | 'parkZone' | 'parkItem' | 'parkOperator' | 'parkFounder' | 'attractionManufacturer' | 'image' | 'imageTag';
+export type LocalizedContentEntityType = 'park' | 'parkZone' | 'parkItem' | 'parkOperator' | 'parkFounder' | 'attractionManufacturer' | 'image' | 'imageTag' | 'accessConditionType';
 
 export interface LocalizedContentTarget {
   readonly entityType: LocalizedContentEntityType;

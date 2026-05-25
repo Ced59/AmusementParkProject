@@ -911,10 +911,10 @@
       }
     },
     "localizedContent": {
-      "navTitle": "Localized content",
-      "kicker": "Editorial administration",
-      "title": "Import localized JSON",
-      "subtitle": "Search and select an entity first, then apply JSON only to supported localizable fields.",
+      "navTitle": "JSON imports",
+      "kicker": "JSON import",
+      "title": "Import entity JSON",
+      "subtitle": "Choose an existing entity, then apply a partial or complete JSON payload to the supported fields.",
       "selection": {
         "title": "1. Select the target",
         "description": "Selection uses readable search results so you do not update an entity from a technical ID alone.",
@@ -958,7 +958,8 @@
         "parkFounder": "Founder",
         "attractionManufacturer": "Manufacturer",
         "image": "Image",
-        "imageTag": "Image tag"
+        "imageTag": "Image tag",
+        "accessConditionType": "Access condition type"
       },
       "entityHints": {
         "park": "Localized park description.",
@@ -968,7 +969,30 @@
         "parkFounder": "Localized founder biography.",
         "attractionManufacturer": "Localized manufacturer biography.",
         "image": "Localized alternative texts, captions and credits.",
-        "imageTag": "Localized tag labels and descriptions."
+        "imageTag": "Localized tag labels and descriptions.",
+        "accessConditionType": "Reusable catalogue of access condition types."
+      }
+    },
+    "jsonImport": {
+      "tab": "JSON import",
+      "kicker": "JSON import",
+      "title": "Import data for this entity",
+      "description": "Paste a partial or complete JSON payload to quickly fill supported fields, without managing photos or creating child entities.",
+      "resetExample": "Reset example",
+      "jsonLabel": "Entity JSON",
+      "apply": "Apply JSON",
+      "applying": "Applying…",
+      "disabledUntilSave": "Save this entity before importing JSON.",
+      "messages": {
+        "invalidJson": "The JSON is invalid.",
+        "success": "JSON applied. Reload or check the tabs if needed.",
+        "error": "Unable to apply the JSON."
+      },
+      "help": {
+        "title": "Accepted format",
+        "partial": "A partial JSON only updates the fields it contains.",
+        "merge": "Localized values are merged by language, unless replaceExisting or mode: replace is used.",
+        "accessConditions": "For park items, accessConditions can create or update conditions and their reusable types."
       }
     }
   },
@@ -1568,7 +1592,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Made with ❤️ and adrenaline",
-      "version": "Version 1.0.1"
+      "version": "Version 1.1.0"
     }
   },
   "ui": {

@@ -1,0 +1,45 @@
+<section class="admin-json-import-tab">
+  <header class="admin-json-import-tab__header">
+    <div>
+      <span class="admin-kicker">{{ 'admin.jsonImport.kicker' | translate }}</span>
+      <h3>{{ 'admin.jsonImport.title' | translate }}</h3>
+      <p>{{ 'admin.jsonImport.description' | translate }}</p>
+    </div>
+    <button type="button" class="app-button app-button--soft" (click)="resetExample()">
+      {{ 'admin.jsonImport.resetExample' | translate }}
+    </button>
+  </header>
+
+  <p class="admin-json-import-tab__disabled" *ngIf="!entityId">
+    {{ disabledReasonKey | translate }}
+  </p>
+
+  <label class="app-field" for="entity-json-import">
+    <span class="app-field__label">{{ 'admin.jsonImport.jsonLabel' | translate }}</span>
+    <textarea id="entity-json-import" class="admin-json-import-tab__textarea" [(ngModel)]="jsonText" spellcheck="false"></textarea>
+  </label>
+
+  <details class="admin-json-import-tab__help">
+    <summary>{{ 'admin.jsonImport.help.title' | translate }}</summary>
+    <ul>
+      <li>{{ 'admin.jsonImport.help.partial' | translate }}</li>
+      <li>{{ 'admin.jsonImport.help.merge' | translate }}</li>
+      <li>{{ 'admin.jsonImport.help.accessConditions' | translate }}</li>
+    </ul>
+  </details>
+
+  <div class="admin-json-import-tab__messages" aria-live="polite">
+    <p class="state state--success" *ngIf="successMessage">{{ successMessage | translate }}</p>
+    <p class="state state--error" *ngIf="errorMessage">{{ errorMessage | translate }}</p>
+  </div>
+
+  <div class="section-actions">
+    <button
+      type="button"
+      class="app-button app-button--primary"
+      (click)="applyJson()"
+      [disabled]="isApplying || !entityId">
+      {{ (isApplying ? 'admin.jsonImport.applying' : 'admin.jsonImport.apply') | translate }}
+    </button>
+  </div>
+</section>

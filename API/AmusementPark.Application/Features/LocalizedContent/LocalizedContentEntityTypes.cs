@@ -13,4 +13,5 @@ public static class LocalizedContentEntityTypes
     public const string AttractionManufacturer = "attractionManufacturer";
     public const string Image = "image";
     public const string ImageTag = "imageTag";
+    public const string AccessConditionType = "accessConditionType";
 }

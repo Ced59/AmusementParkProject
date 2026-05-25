@@ -23,7 +23,7 @@
     </ng-template>
 
     <div class="height-requirement-grid">
-      <div class="height-requirement-field" *ngFor="let field of heightRequirementFields">
+      <div class="height-requirement-field" *ngFor="let field of heightRequirementFields; trackBy: trackByHeightRequirementField">
         <div class="height-requirement-field__label">
           <span class="height-requirement-field__icon"><i [class]="field.iconClass" aria-hidden="true"></i></span>
           <label [attr.for]="field.key">{{ field.labelKey | translate }}</label>
@@ -126,7 +126,7 @@
     <div class="access-condition-list">
       <div
         class="access-condition-card"
-        *ngFor="let accessCondition of standaloneAccessConditionEntries; let visibleIndex = index"
+        *ngFor="let accessCondition of standaloneAccessConditionEntries; let visibleIndex = index; trackBy: trackByAccessConditionEntry"
         [formGroupName]="accessCondition.index">
         <p-card>
           <ng-template pTemplate="header">

@@ -27,6 +27,7 @@ import { AdminParkItemDetailsTabComponent } from './tabs/admin-park-item-details
 import { AdminParkItemAccessConditionsTabComponent } from './tabs/admin-park-item-access-conditions-tab/admin-park-item-access-conditions-tab.component';
 import { AdminParkItemLocationsTabComponent } from './tabs/admin-park-item-locations-tab/admin-park-item-locations-tab.component';
 import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component';
+import { AdminJsonImportTabComponent } from '../../../shared/admin-json-import-tab/admin-json-import-tab.component';
 
 @Component({
   selector: 'app-admin-park-item-edit-form',
@@ -49,6 +50,7 @@ import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-t
     AdminParkItemAccessConditionsTabComponent,
     AdminParkItemLocationsTabComponent,
     AdminParkItemPhotosTabComponent,
+    AdminJsonImportTabComponent,
     TranslateModule
   ]
 })
@@ -56,6 +58,8 @@ export class AdminParkItemEditFormComponent {
   @Input({ required: true }) form!: FormGroup;
   @Input() activeTabIndex: number = 0;
   @Input() isEditMode: boolean = false;
+  @Input() entityId: string | null = null;
+  @Input() jsonImportExample: string = '{\n  "descriptions": []\n}';
   @Input() isAttractionCategory: boolean = true;
   @Input() currentLang: string = 'en';
   @Input() statusLabel: string = '';
@@ -123,6 +127,7 @@ export class AdminParkItemEditFormComponent {
   @Output() setCurrentPhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() deletePhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() photosPageChange: EventEmitter<PaginatorState> = new EventEmitter<PaginatorState>();
+  @Output() jsonImported: EventEmitter<void> = new EventEmitter<void>();
 
   get attractionDetailsGroup(): FormGroup {
     return this.form.get('attractionDetails') as FormGroup;
