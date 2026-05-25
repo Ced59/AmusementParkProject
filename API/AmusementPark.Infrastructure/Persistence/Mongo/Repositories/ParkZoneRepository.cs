@@ -28,6 +28,18 @@ public sealed class ParkZoneRepository : IParkZoneRepository
         this.itemsCollection = database.GetCollection<ParkItemDocument>(settings.ParkItemsCollectionName);
     }
 
+    public async Task<IReadOnlyCollection<ParkZone>> GetAllAsync(CancellationToken cancellationToken)
+    {
+        List<ParkZoneDocument> documents = await this.zonesCollection.Find(Builders<ParkZoneDocument>.Filter.Empty)
+            .SortBy(document => document.ParkId)
+            .ThenBy(document => document.SortOrder)
+            .ThenBy(document => document.Name)
+            .ThenBy(document => document.Id)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
     public async Task<IReadOnlyCollection<ParkZone>> GetByParkIdAsync(string parkId, CancellationToken cancellationToken)
     {
         List<ParkZoneDocument> documents = await this.zonesCollection.Find(document => document.ParkId == parkId)

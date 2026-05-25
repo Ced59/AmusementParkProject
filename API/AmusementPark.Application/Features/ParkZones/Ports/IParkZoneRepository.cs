@@ -8,6 +8,7 @@ namespace AmusementPark.Application.Features.ParkZones.Ports;
 /// </summary>
 public interface IParkZoneRepository
 {
+    Task<IReadOnlyCollection<ParkZone>> GetAllAsync(CancellationToken cancellationToken);
     Task<IReadOnlyCollection<ParkZone>> GetByParkIdAsync(string parkId, CancellationToken cancellationToken);
     Task<ParkZone?> GetByIdAsync(string zoneId, CancellationToken cancellationToken);
     Task<ParkZone> CreateAsync(ParkZone zone, CancellationToken cancellationToken);

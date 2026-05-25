@@ -67,6 +67,10 @@ export const routes: Routes = [
                 .then((m) => m.AdminDataModule)
           },
           {
+            path: 'localized-content',
+            loadComponent: () => import('./components/admin/localized-content/admin-localized-content.component').then((m) => m.AdminLocalizedContentComponent)
+          },
+          {
             path: 'audit-logs',
             loadComponent: () => import('./components/admin/audit-logs/admin-audit-logs.component').then((m) => m.AdminAuditLogsComponent)
           },

@@ -1,0 +1,131 @@
+<section class="admin-localized-content">
+  <article class="admin-list-card admin-localized-content__hero">
+    <header class="admin-list-header admin-localized-content__hero-header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.localizedContent.kicker' | translate }}</span>
+        <h2>{{ 'admin.localizedContent.title' | translate }}</h2>
+        <p>{{ 'admin.localizedContent.subtitle' | translate }}</p>
+      </div>
+    </header>
+  </article>
+
+  <div class="admin-localized-content__grid">
+    <section class="admin-list-card admin-localized-content__panel">
+      <header class="admin-localized-content__panel-header">
+        <div class="admin-localized-content__step">1</div>
+        <div>
+          <h3>{{ 'admin.localizedContent.selection.title' | translate }}</h3>
+          <p>{{ 'admin.localizedContent.selection.description' | translate }}</p>
+        </div>
+      </header>
+
+      <div class="admin-localized-content__form">
+        <label class="app-field" for="localized-entity-type">
+          <span class="app-field__label">{{ 'admin.localizedContent.selection.entityType' | translate }}</span>
+          <select id="localized-entity-type" class="app-select" [(ngModel)]="selectedEntityType" (ngModelChange)="onEntityTypeChanged()">
+            <option *ngFor="let entityType of entityTypes" [ngValue]="entityType.value">
+              {{ entityType.labelKey | translate }}
+            </option>
+          </select>
+        </label>
+
+        <p class="admin-localized-content__hint">
+          {{ ('admin.localizedContent.entityHints.' + selectedEntityType) | translate }}
+        </p>
+
+        <div class="app-search-panel admin-localized-content__search-panel">
+          <div class="app-search-panel__grid admin-localized-content__search-grid">
+            <label class="app-field app-search-panel__search" for="localized-search">
+              <span class="app-field__label">{{ 'admin.localizedContent.selection.search' | translate }}</span>
+              <span class="ui-field-input__control ui-field-input--with-icon">
+                <i class="pi pi-search" aria-hidden="true"></i>
+                <input
+                  id="localized-search"
+                  class="app-input"
+                  type="search"
+                  [(ngModel)]="searchTerm"
+                  [placeholder]="'admin.localizedContent.selection.searchPlaceholder' | translate"
+                  (keydown.enter)="searchTargets()" />
+              </span>
+            </label>
+
+            <div class="admin-localized-content__search-action">
+              <button type="button" class="app-button app-button--primary app-button--mobile-full" (click)="searchTargets()" [disabled]="isSearching">
+                {{ (isSearching ? 'admin.localizedContent.selection.searching' : 'admin.localizedContent.selection.searchButton') | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-localized-content__results" *ngIf="targets.length > 0">
+        <button
+          type="button"
+          class="admin-localized-content__target"
+          *ngFor="let target of targets"
+          [class.admin-localized-content__target--active]="selectedTarget?.entityId === target.entityId && selectedTarget?.entityType === target.entityType"
+          (click)="selectTarget(target)">
+          <span class="admin-localized-content__target-main">
+            <strong>{{ target.label }}</strong>
+            <small *ngIf="target.context">{{ target.context }}</small>
+          </span>
+          <span class="admin-localized-content__target-fields">{{ target.supportedFields.join(', ') }}</span>
+        </button>
+      </div>
+
+      <p class="admin-localized-content__empty" *ngIf="!isSearching && targets.length === 0">
+        {{ 'admin.localizedContent.selection.empty' | translate }}
+      </p>
+    </section>
+
+    <section class="admin-list-card admin-localized-content__panel admin-localized-content__editor">
+      <header class="admin-localized-content__panel-header admin-localized-content__editor-head">
+        <div class="admin-localized-content__panel-title">
+          <div class="admin-localized-content__step">2</div>
+          <div>
+            <h3>{{ 'admin.localizedContent.editor.title' | translate }}</h3>
+            <p>{{ 'admin.localizedContent.editor.description' | translate }}</p>
+          </div>
+        </div>
+        <button type="button" class="app-button app-button--soft" (click)="resetExample()">
+          {{ 'admin.localizedContent.editor.resetExample' | translate }}
+        </button>
+      </header>
+
+      <div class="admin-localized-content__selected" *ngIf="selectedTarget; else noTarget">
+        <span>{{ 'admin.localizedContent.editor.selected' | translate }}</span>
+        <strong>{{ selectedTarget.label }}</strong>
+        <small>{{ selectedTarget.entityType }} · {{ selectedTarget.entityId }}</small>
+      </div>
+      <ng-template #noTarget>
+        <p class="admin-localized-content__selected admin-localized-content__selected--empty">
+          {{ 'admin.localizedContent.editor.noTarget' | translate }}
+        </p>
+      </ng-template>
+
+      <label class="app-field" for="localized-json">
+        <span class="app-field__label">{{ 'admin.localizedContent.editor.jsonLabel' | translate }}</span>
+        <textarea id="localized-json" class="admin-localized-content__textarea" [(ngModel)]="jsonText" spellcheck="false"></textarea>
+      </label>
+
+      <details class="admin-localized-content__help">
+        <summary>{{ 'admin.localizedContent.help.title' | translate }}</summary>
+        <ul>
+          <li>{{ 'admin.localizedContent.help.merge' | translate }}</li>
+          <li>{{ 'admin.localizedContent.help.replace' | translate }}</li>
+          <li>{{ 'admin.localizedContent.help.fields' | translate }}</li>
+          <li>{{ 'admin.localizedContent.help.accessConditions' | translate }}</li>
+        </ul>
+      </details>
+
+      <div class="admin-localized-content__messages" aria-live="polite">
+        <p class="state state--success" *ngIf="successMessage">{{ successMessage | translate }}</p>
+        <p class="state state--error" *ngIf="errorMessage">{{ errorMessage | translate }}</p>
+      </div>
+
+      <button type="button" class="app-button app-button--primary admin-localized-content__apply" (click)="applyJson()" [disabled]="isApplying || !selectedTarget">
+        {{ (isApplying ? 'admin.localizedContent.editor.applying' : 'admin.localizedContent.editor.apply') | translate }}
+      </button>
+    </section>
+  </div>
+</section>
