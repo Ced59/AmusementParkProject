@@ -3,10 +3,10 @@ import {
   getParkItemTypeTranslationKey,
   resolveParkItemDescription
 } from '@shared/utils/display/park-item-presentation.helpers';
-import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
-import { Park } from '@app/models/parks/park';
-import { ParkItem } from '@app/models/parks/park-item';
-import { ParkItemCardViewModel } from '../models/park-item-card.model';
+import {buildPublicParkItemRouteCommands} from '@shared/utils/routing/public-detail-route.helpers';
+import {Park} from '@app/models/parks/park';
+import {ParkItem} from '@app/models/parks/park-item';
+import {ParkItemCardViewModel} from '../models/park-item-card.model';
 
 export function mapParkItemToCardViewModel(
   item: ParkItem,
@@ -172,7 +172,7 @@ function resolveAttractionStatusDisplay(status: string | null | undefined, curre
     }
   };
 
-  return labels[currentLanguage]?.[statusKey] ?? labels.en[statusKey] ?? normalized;
+  return labels[currentLanguage]?.[statusKey] ?? labels['en']?.[statusKey] ?? normalized;
 }
 
 function buildParkItemLink(park: Park | null, item: ParkItem, currentLanguage: string): string[] | null {
