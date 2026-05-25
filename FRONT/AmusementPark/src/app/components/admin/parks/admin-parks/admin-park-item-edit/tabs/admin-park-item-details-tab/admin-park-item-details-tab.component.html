@@ -22,6 +22,24 @@
       <input pInputText formControlName="model" />
     </div>
     <div class="field col-12 md:col-6 lg:col-4">
+      <label>{{ 'admin.parks.items.details.status' | translate }}</label>
+      <p-select
+        formControlName="status"
+        [options]="statusOptions"
+        optionLabel="labelKey"
+        optionValue="value"
+        [showClear]="true"
+        [appendTo]="'body'"
+        [placeholder]="'admin.parks.items.details.statusPlaceholder' | translate">
+        <ng-template let-option #item>
+          {{ option.labelKey | translate }}
+        </ng-template>
+        <ng-template let-selected #selectedItem>
+          {{ selected?.labelKey ? (selected.labelKey | translate) : ('admin.parks.items.details.statusPlaceholder' | translate) }}
+        </ng-template>
+      </p-select>
+    </div>
+    <div class="field col-12 md:col-6 lg:col-4">
       <label>{{ 'admin.parks.items.details.openingDate' | translate }}</label>
       <input pInputText type="date" formControlName="openingDate" />
     </div>

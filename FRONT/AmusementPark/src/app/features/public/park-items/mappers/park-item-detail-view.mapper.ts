@@ -126,7 +126,7 @@ function buildTechnicalRows(item: ParkItem, manufacturerName: string | null, cur
       })
       : null);
   pushRow(rows, 'parkItems.fields.model', details?.model, null, 'pi pi-box');
-  pushRow(rows, 'parkItems.fields.status', details?.status, null, 'pi pi-circle-fill');
+  pushStatusRow(rows, details?.status);
   pushRow(rows, 'parkItems.fields.materialType', details?.materialType, null, 'pi pi-wrench');
   pushRow(rows, 'parkItems.fields.seatingType', details?.seatingType, null, 'pi pi-users');
   pushRow(rows, 'parkItems.fields.launchType', details?.launchType, null, 'pi pi-send');
@@ -135,6 +135,50 @@ function buildTechnicalRows(item: ParkItem, manufacturerName: string | null, cur
   pushRow(rows, 'parkItems.fields.closingDate', formatDate(details?.closingDate ?? details?.closingDateText), null, 'pi pi-calendar-minus');
 
   return rows;
+}
+
+
+function pushStatusRow(rows: ParkItemDetailRowViewModel[], status: string | null | undefined): void {
+  const statusValueKey: string | null = getAttractionStatusValueKey(status);
+  pushRow(
+    rows,
+    'parkItems.fields.status',
+    statusValueKey ? '' : status,
+    statusValueKey,
+    'pi pi-circle-fill'
+  );
+}
+
+function getAttractionStatusValueKey(status: string | null | undefined): string | null {
+  const normalized: string = status?.trim() ?? '';
+  if (normalized.length === 0) {
+    return null;
+  }
+
+  const normalizedKey: string = normalized.toLowerCase().replace(/[\s_-]+/g, '');
+  const translationSegments: Record<string, string> = {
+    operating: 'operating',
+    open: 'operating',
+    opened: 'operating',
+    enfonctionnement: 'operating',
+    underconstruction: 'underConstruction',
+    construction: 'underConstruction',
+    temporarilyclosed: 'temporarilyClosed',
+    temporaryclosed: 'temporarilyClosed',
+    closedtemporarily: 'temporarilyClosed',
+    closeddefinitively: 'closedDefinitively',
+    permanentlyclosed: 'closedDefinitively',
+    definitivelyclosed: 'closedDefinitively',
+    fermedefinitivement: 'closedDefinitively',
+    removed: 'removed',
+    dismantled: 'removed',
+    planned: 'planned',
+    announced: 'planned',
+    unknown: 'unknown'
+  };
+  const segment: string | undefined = translationSegments[normalizedKey];
+
+  return segment ? `parkItems.statuses.${segment}` : null;
 }
 
 function buildPerformanceRows(item: ParkItem, currentLanguage: string): ParkItemDetailRowViewModel[] {
@@ -300,7 +344,7 @@ function buildSpotlightRows(
   ];
   const rows: ParkItemDetailRowViewModel[] = [];
 
-  pushRow(rows, 'parkItems.fields.status', details?.status, null, 'pi pi-circle-fill');
+  pushStatusRow(rows, details?.status);
 
   for (const key of preferredKeys) {
     const row: ParkItemDetailRowViewModel | undefined = performanceRows.find((candidate: ParkItemDetailRowViewModel) => candidate.labelKey === key);

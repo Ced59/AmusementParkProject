@@ -13,6 +13,7 @@ import { AttractionAccessConditionType } from '@app/models/parks/attraction-acce
 import { AdminParkItemAccessConditionTypeOption } from '@features/admin/park-items/mappers/admin-park-item-access-condition-form.utils';
 import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';
 import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water-exposure-level';
+import { AttractionStatus } from '@app/models/parks/attraction-status';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { MapMarker } from '@app/models/map/map-marker';
 import {
@@ -74,6 +75,7 @@ export class AdminParkItemEditFormComponent {
   @Input() manufacturersLoading: boolean = false;
   @Input() manufacturerAddLink: unknown[] | string | null = null;
   @Input() manufacturerAddQueryParams: Record<string, string | number | boolean | null | undefined> | null = null;
+  @Input() statusOptions: Array<{ labelKey: string; value: AttractionStatus }> = [];
   @Input() waterExposureLevelOptions: Array<{ labelKey: string; value: AttractionWaterExposureLevel }> = [];
   @Input() accessConditionPresetOptions: AdminParkItemAccessConditionTypeOption[] = [];
   @Input() accessConditionUnitOptions: Array<{ labelKey: string; value: AttractionAccessConditionUnit }> = [];

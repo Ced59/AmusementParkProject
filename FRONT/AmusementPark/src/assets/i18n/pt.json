@@ -395,7 +395,9 @@
           "isWaterAttraction": "Atração aquática",
           "manufacturerPlaceholder": "Selecionar um fabricante",
           "waterExposureLevel": "Nível de exposição à água",
-          "waterExposureLevelPlaceholder": "Selecionar um nível"
+          "waterExposureLevelPlaceholder": "Selecionar um nível",
+          "status": "Estado de funcionamento",
+          "statusPlaceholder": "Selecionar um estado"
         },
         "locationFields": {
           "entrance": "Entrada",
@@ -548,6 +550,15 @@
           "createdDetail": "O tipo de condição está agora disponível na lista.",
           "errorSummary": "Falha na criação",
           "errorDetail": "Não foi possível criar o tipo de condição."
+        },
+        "statuses": {
+          "operating": "Em funcionamento",
+          "underConstruction": "Em construção",
+          "temporarilyClosed": "Fechado temporariamente",
+          "closedDefinitively": "Fechado definitivamente",
+          "removed": "Removido / desmontado",
+          "planned": "Planeado",
+          "unknown": "Desconhecido"
         }
       },
       "refactorHint": "O editor está agora dividido em separadores temáticos para tornar a página mais leve e fácil de usar.",
@@ -1553,6 +1564,15 @@
       "zoneMapHeading": "Mapa zona {{name}}",
       "parkMapHeading": "Mapa {{name}}",
       "allMapItems": "Tudo"
+    },
+    "statuses": {
+      "operating": "Em funcionamento",
+      "underConstruction": "Em construção",
+      "temporarilyClosed": "Fechado temporariamente",
+      "closedDefinitively": "Fechado definitivamente",
+      "removed": "Removido / desmontado",
+      "planned": "Planeado",
+      "unknown": "Desconhecido"
     }
   },
   "publicNavigation": {

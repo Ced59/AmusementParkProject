@@ -395,7 +395,9 @@
           "isWaterAttraction": "Attraction aquatique",
           "manufacturerPlaceholder": "Sélectionner un constructeur",
           "waterExposureLevel": "Niveau d'exposition à l'eau",
-          "waterExposureLevelPlaceholder": "Sélectionner un niveau"
+          "waterExposureLevelPlaceholder": "Sélectionner un niveau",
+          "status": "Statut d’exploitation",
+          "statusPlaceholder": "Sélectionner un statut"
         },
         "locationFields": {
           "entrance": "Entrée",
@@ -548,6 +550,15 @@
           "createdDetail": "Le type de condition est disponible dans la liste.",
           "errorSummary": "Création impossible",
           "errorDetail": "Le type de condition n’a pas pu être créé."
+        },
+        "statuses": {
+          "operating": "En fonctionnement",
+          "underConstruction": "En construction",
+          "temporarilyClosed": "Fermé temporairement",
+          "closedDefinitively": "Fermé définitivement",
+          "removed": "Supprimé / démonté",
+          "planned": "Prévu",
+          "unknown": "Inconnu"
         }
       },
       "refactorHint": "L’éditeur est désormais découpé en onglets thématiques pour alléger la page et mieux s’y retrouver.",
@@ -1553,6 +1564,15 @@
       "zoneMapHeading": "Carte Zone {{name}}",
       "parkMapHeading": "Carte {{name}}",
       "allMapItems": "Tout"
+    },
+    "statuses": {
+      "operating": "En fonctionnement",
+      "underConstruction": "En construction",
+      "temporarilyClosed": "Fermé temporairement",
+      "closedDefinitively": "Fermé définitivement",
+      "removed": "Supprimé / démonté",
+      "planned": "Prévu",
+      "unknown": "Inconnu"
     }
   },
   "publicNavigation": {

@@ -395,7 +395,9 @@
           "isWaterAttraction": "Water attraction",
           "manufacturerPlaceholder": "Select a manufacturer",
           "waterExposureLevel": "Water exposure level",
-          "waterExposureLevelPlaceholder": "Select a level"
+          "waterExposureLevelPlaceholder": "Select a level",
+          "status": "Operating status",
+          "statusPlaceholder": "Select a status"
         },
         "locationFields": {
           "entrance": "Entrance",
@@ -548,6 +550,15 @@
           "createdDetail": "The condition type is now available in the list.",
           "errorSummary": "Creation failed",
           "errorDetail": "The condition type could not be created."
+        },
+        "statuses": {
+          "operating": "Operating",
+          "underConstruction": "Under construction",
+          "temporarilyClosed": "Temporarily closed",
+          "closedDefinitively": "Permanently closed",
+          "removed": "Removed / dismantled",
+          "planned": "Planned",
+          "unknown": "Unknown"
         }
       },
       "refactorHint": "The editor is now split into thematic tabs to keep the page lighter and easier to navigate.",
@@ -1553,6 +1564,15 @@
       "zoneMapHeading": "Map Zone {{name}}",
       "parkMapHeading": "{{name}} map",
       "allMapItems": "All"
+    },
+    "statuses": {
+      "operating": "Operating",
+      "underConstruction": "Under construction",
+      "temporarilyClosed": "Temporarily closed",
+      "closedDefinitively": "Permanently closed",
+      "removed": "Removed / dismantled",
+      "planned": "Planned",
+      "unknown": "Unknown"
     }
   },
   "publicNavigation": {

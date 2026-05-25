@@ -1,5 +1,6 @@
 import { AttractionAccessCondition } from './attraction-access-condition';
 import { AttractionWaterExposureLevel } from './attraction-water-exposure-level';
+import { AttractionStatus } from './attraction-status';
 
 export interface AttractionDetails {
   manufacturerId?: string | null;
@@ -7,7 +8,7 @@ export interface AttractionDetails {
   externalSource?: string | null;
   externalId?: string | null;
   sourceUrl?: string | null;
-  status?: string | null;
+  status?: AttractionStatus | string | null;
   materialType?: string | null;
   seatingType?: string | null;
   launchType?: string | null;

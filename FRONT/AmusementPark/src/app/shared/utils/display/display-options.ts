@@ -1,6 +1,7 @@
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
 import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';
 import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water-exposure-level';
+import { AttractionStatus } from '@app/models/parks/attraction-status';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { ParkType } from '@app/models/parks/park-type';
@@ -132,6 +133,17 @@ export const ATTRACTION_ACCESS_CONDITION_PRESET_OPTIONS: ReadonlyArray<Translati
   { labelKey: 'admin.parks.items.accessConditionTypes.wheelchairTransferRequired', value: 'WheelchairTransferRequired' },
   { labelKey: 'admin.parks.items.accessConditionTypes.accessPassRequired', value: 'AccessPassRequired' },
   { labelKey: 'admin.parks.items.accessConditionTypes.custom', value: 'Custom' }
+];
+
+
+export const ATTRACTION_STATUS_OPTIONS: ReadonlyArray<TranslationOption<AttractionStatus>> = [
+  { labelKey: 'admin.parks.items.statuses.operating', value: 'Operating' },
+  { labelKey: 'admin.parks.items.statuses.underConstruction', value: 'UnderConstruction' },
+  { labelKey: 'admin.parks.items.statuses.temporarilyClosed', value: 'TemporarilyClosed' },
+  { labelKey: 'admin.parks.items.statuses.closedDefinitively', value: 'ClosedDefinitively' },
+  { labelKey: 'admin.parks.items.statuses.removed', value: 'Removed' },
+  { labelKey: 'admin.parks.items.statuses.planned', value: 'Planned' },
+  { labelKey: 'admin.parks.items.statuses.unknown', value: 'Unknown' }
 ];
 
 export const ATTRACTION_WATER_EXPOSURE_LEVEL_OPTIONS: ReadonlyArray<TranslationOption<AttractionWaterExposureLevel>> = [

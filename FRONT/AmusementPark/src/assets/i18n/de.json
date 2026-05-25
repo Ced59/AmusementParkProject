@@ -395,7 +395,9 @@
           "isWaterAttraction": "Wasserattraktion",
           "manufacturerPlaceholder": "Hersteller auswählen",
           "waterExposureLevel": "Nässegrad",
-          "waterExposureLevelPlaceholder": "Stufe auswählen"
+          "waterExposureLevelPlaceholder": "Stufe auswählen",
+          "status": "Betriebsstatus",
+          "statusPlaceholder": "Status auswählen"
         },
         "locationFields": {
           "entrance": "Eingang",
@@ -548,6 +550,15 @@
           "createdDetail": "Der Bedingungstyp ist jetzt in der Liste verfügbar.",
           "errorSummary": "Erstellung fehlgeschlagen",
           "errorDetail": "Der Bedingungstyp konnte nicht erstellt werden."
+        },
+        "statuses": {
+          "operating": "In Betrieb",
+          "underConstruction": "Im Bau",
+          "temporarilyClosed": "Vorübergehend geschlossen",
+          "closedDefinitively": "Dauerhaft geschlossen",
+          "removed": "Entfernt / abgebaut",
+          "planned": "Geplant",
+          "unknown": "Unbekannt"
         }
       },
       "refactorHint": "Der Editor ist jetzt in thematische Tabs aufgeteilt, damit die Seite leichter und übersichtlicher bleibt.",
@@ -1553,6 +1564,15 @@
       "zoneMapHeading": "Karte Bereich {{name}}",
       "parkMapHeading": "Karte {{name}}",
       "allMapItems": "Alle"
+    },
+    "statuses": {
+      "operating": "In Betrieb",
+      "underConstruction": "Im Bau",
+      "temporarilyClosed": "Vorübergehend geschlossen",
+      "closedDefinitively": "Dauerhaft geschlossen",
+      "removed": "Entfernt / abgebaut",
+      "planned": "Geplant",
+      "unknown": "Unbekannt"
     }
   },
   "publicNavigation": {

@@ -13,10 +13,12 @@ import { AttractionAccessConditionTypeDefinition } from '@app/models/parks/attra
 import { AttractionAccessConditionTypesApiService } from '@app/data-access/park-items/attraction-access-condition-types-api.service';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water-exposure-level';
+import { AttractionStatus } from '@app/models/parks/attraction-status';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import {
   ATTRACTION_ACCESS_CONDITION_PRESET_OPTIONS,
   ATTRACTION_ACCESS_CONDITION_UNIT_OPTIONS,
+  ATTRACTION_STATUS_OPTIONS,
   ATTRACTION_WATER_EXPOSURE_LEVEL_OPTIONS,
   TranslationOption
 } from '@shared/utils/display/display-options';
@@ -72,6 +74,7 @@ export class AdminParkItemEditComponent implements OnInit {
   public readonly form: FormGroup;
   public readonly categoryOptions: AdminParkItemCategoryOption[] = getAdminParkItemCategoryOptions();
   public readonly accessConditionPresetOptions = signal<AdminParkItemAccessConditionTypeOption[]>(this.buildFallbackAccessConditionTypeOptions());
+  public readonly statusOptions: Array<TranslationOption<AttractionStatus>> = [...ATTRACTION_STATUS_OPTIONS];
   public readonly waterExposureLevelOptions: Array<TranslationOption<AttractionWaterExposureLevel>> = [...ATTRACTION_WATER_EXPOSURE_LEVEL_OPTIONS];
   public readonly accessConditionUnitOptions = [...ATTRACTION_ACCESS_CONDITION_UNIT_OPTIONS];
   public readonly attractionLocationOptions = [...ATTRACTION_LOCATION_OPTIONS];
@@ -355,6 +358,7 @@ export class AdminParkItemEditComponent implements OnInit {
       ],
       attractionDetails: {
         model: this.form.get(['attractionDetails', 'model'])?.value || null,
+        status: this.form.get(['attractionDetails', 'status'])?.value || 'Operating',
         openingDateText: null,
         durationInSeconds: null,
         heightInMeters: null,

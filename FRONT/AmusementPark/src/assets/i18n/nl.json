@@ -395,7 +395,9 @@
           "isWaterAttraction": "Waterattractie",
           "manufacturerPlaceholder": "Selecteer een fabrikant",
           "waterExposureLevel": "Mate van waterblootstelling",
-          "waterExposureLevelPlaceholder": "Selecteer een niveau"
+          "waterExposureLevelPlaceholder": "Selecteer een niveau",
+          "status": "Operationele status",
+          "statusPlaceholder": "Selecteer een status"
         },
         "locationFields": {
           "entrance": "Ingang",
@@ -548,6 +550,15 @@
           "createdDetail": "Het voorwaardetype is nu beschikbaar in de lijst.",
           "errorSummary": "Aanmaken mislukt",
           "errorDetail": "Het voorwaardetype kon niet worden aangemaakt."
+        },
+        "statuses": {
+          "operating": "In werking",
+          "underConstruction": "In aanbouw",
+          "temporarilyClosed": "Tijdelijk gesloten",
+          "closedDefinitively": "Definitief gesloten",
+          "removed": "Verwijderd / afgebroken",
+          "planned": "Gepland",
+          "unknown": "Onbekend"
         }
       },
       "refactorHint": "De editor is nu opgesplitst in thematische tabbladen om de pagina lichter en overzichtelijker te maken.",
@@ -1553,6 +1564,15 @@
       "zoneMapHeading": "Kaart zone {{name}}",
       "parkMapHeading": "Kaart {{name}}",
       "allMapItems": "Alles"
+    },
+    "statuses": {
+      "operating": "In werking",
+      "underConstruction": "In aanbouw",
+      "temporarilyClosed": "Tijdelijk gesloten",
+      "closedDefinitively": "Definitief gesloten",
+      "removed": "Verwijderd / afgebroken",
+      "planned": "Gepland",
+      "unknown": "Onbekend"
     }
   },
   "publicNavigation": {
