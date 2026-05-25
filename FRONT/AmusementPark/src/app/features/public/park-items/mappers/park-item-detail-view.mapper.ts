@@ -78,7 +78,7 @@ export function mapParkItemToDetailViewModel(
     zoneName,
     subtype: trimOrNull(item.subtype),
     spotlightRows: buildSpotlightRows(item, performanceRows),
-    summaryRows: buildSummaryRows(item, park, zoneName, currentLanguage),
+    summaryRows: buildSummaryRows(item, park, manufacturerName, zoneName, currentLanguage),
     specGroups,
     photos: galleryPhotos,
     photoCategories: buildPhotoCategories(galleryPhotos),
@@ -181,6 +181,7 @@ function buildExperienceRows(item: ParkItem, currentLanguage: string): ParkItemD
 function buildSummaryRows(
   item: ParkItem,
   park: Park | null,
+  manufacturerName: string | null,
   zoneName: string | null,
   currentLanguage: string
 ): ParkItemDetailRowViewModel[] {
@@ -213,6 +214,21 @@ function buildSummaryRows(
     'pi pi-tag',
     itemsLink,
     buildSearchQueryParams(item.subtype)
+  );
+  pushRow(
+    rows,
+    'parkItems.fields.manufacturer',
+    manufacturerName,
+    null,
+    'pi pi-building',
+    item.attractionDetails?.manufacturerId && manufacturerName
+      ? buildPublicParkReferenceRouteCommands({
+        language: currentLanguage,
+        referenceId: item.attractionDetails.manufacturerId,
+        referenceName: manufacturerName,
+        kind: 'manufacturer'
+      })
+      : null
   );
   pushRow(rows, 'parkItems.fields.park', park?.name, null, 'pi pi-map', buildParkLink(park, currentLanguage));
   pushRow(rows, 'parkItems.fields.zone', zoneName, null, 'pi pi-map-marker', itemsLink, buildZoneQueryParams(item.zoneId));
