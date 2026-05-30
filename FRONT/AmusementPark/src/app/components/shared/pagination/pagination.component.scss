@@ -1,3 +1,28 @@
 .app-pagination {
   display: block;
 }
+
+:host ::ng-deep .app-pagination .p-paginator {
+  border-radius: var(--radius-lg);
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+@media (max-width: 680px) {
+  :host ::ng-deep .app-pagination .p-paginator {
+    justify-content: center;
+    padding-inline: 0.35rem;
+  }
+
+  :host ::ng-deep .app-pagination .p-paginator-current,
+  :host ::ng-deep .app-pagination .p-paginator-rpp-options {
+    width: 100%;
+  }
+
+  :host ::ng-deep .app-pagination .p-paginator-pages {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+}

@@ -13,7 +13,7 @@
       </div>
     </ng-template>
 
-    <p-table [value]="zones()" [loading]="state().kind === 'loading'" [responsiveLayout]="'scroll'">
+    <p-table [value]="zones()" [loading]="state().kind === 'loading'" [responsiveLayout]="'scroll'" styleClass="admin-data-table">
       <ng-template pTemplate="header">
         <tr>
           <th>{{ 'admin.parks.zones.name' | translate }}</th>
@@ -25,10 +25,10 @@
 
       <ng-template pTemplate="body" let-zone>
         <tr>
-          <td>{{ getZoneDisplayName(zone) }}</td>
-          <td>{{ (zone.isVisible ? 'admin.parks.visible' : 'admin.parks.hidden') | translate }}</td>
-          <td>{{ zone.sortOrder ?? 0 }}</td>
-          <td class="actions-cell">
+          <td [attr.data-label]="'admin.parks.zones.name' | translate">{{ getZoneDisplayName(zone) }}</td>
+          <td [attr.data-label]="'admin.parks.visible' | translate">{{ (zone.isVisible ? 'admin.parks.visible' : 'admin.parks.hidden') | translate }}</td>
+          <td [attr.data-label]="'admin.parks.zones.sortOrder' | translate">{{ zone.sortOrder ?? 0 }}</td>
+          <td class="actions-cell" [attr.data-label]="'admin.parks.actions' | translate">
             <button
               pButton
               type="button"

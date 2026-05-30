@@ -145,25 +145,25 @@
         <td class="admin-selection-column">
           <input type="checkbox" [checked]="isParkSelected(park)" (change)="onParkSelectionChange(park, $event)" [attr.aria-label]="park.name" />
         </td>
-        <td>
+        <td [attr.data-label]="'admin.parks.name' | translate">
           <strong class="admin-row-title">{{ park.name }}</strong>
         </td>
-        <td>{{ getTypeTranslationKey(park.type) | translate }}</td>
-        <td>{{ park.countryCode || '—' }}</td>
-        <td>{{ park.city || '—' }}</td>
-        <td>
+        <td [attr.data-label]="'admin.parks.type' | translate">{{ getTypeTranslationKey(park.type) | translate }}</td>
+        <td [attr.data-label]="'admin.parks.country' | translate">{{ park.countryCode || '—' }}</td>
+        <td [attr.data-label]="'admin.parks.city' | translate">{{ park.city || '—' }}</td>
+        <td [attr.data-label]="'admin.parks.reviewStatus' | translate">
           <p-tag
             [value]="getStatusLabelKey(park.adminReviewStatus) | translate"
             [severity]="getStatusSeverity(park.adminReviewStatus)">
           </p-tag>
         </td>
-        <td>
+        <td [attr.data-label]="'admin.parks.visible' | translate">
           <p-toggleswitch
             [(ngModel)]="park.isVisible"
             (ngModelChange)="onVisibilityChange(park)">
           </p-toggleswitch>
         </td>
-        <td>
+        <td [attr.data-label]="'admin.parks.actions' | translate">
           <button
             pButton
             type="button"

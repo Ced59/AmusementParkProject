@@ -23,19 +23,19 @@
     </ng-template>
     <ng-template pTemplate="body" let-source>
       <tr>
-        <td>
+        <td data-label="Source">
           <div class="source-label">
             <i [class]="source.icon"></i>
             <strong class="admin-row-title">{{ source.label }}</strong>
           </div>
         </td>
-        <td class="source-description">{{ source.description }}</td>
-        <td>{{ source.lastImportUtc ? (source.lastImportUtc | date:'short') : 'Jamais' }}</td>
-        <td><span class="admin-count-chip">{{ source.totalSessions }}</span></td>
-        <td>
+        <td class="source-description" data-label="Description">{{ source.description }}</td>
+        <td data-label="Dernier import">{{ source.lastImportUtc ? (source.lastImportUtc | date:'short') : 'Jamais' }}</td>
+        <td data-label="Sessions"><span class="admin-count-chip">{{ source.totalSessions }}</span></td>
+        <td data-label="Statut">
           <p-tag [value]="source.statusLabel" [severity]="getSeverity(source)"></p-tag>
         </td>
-        <td>
+        <td data-label="Actions">
           <button
             pButton
             type="button"

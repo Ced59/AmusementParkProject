@@ -92,11 +92,11 @@
 
       <ng-template pTemplate="body" let-log>
         <tr>
-          <td class="admin-audit-logs-table__date">
+          <td class="admin-audit-logs-table__date" [attr.data-label]="'admin.auditLogs.columns.date' | translate">
             <strong>{{ log.occurredAtUtc | date:'yyyy-MM-dd HH:mm:ss':'UTC' }}</strong>
             <span>UTC</span>
           </td>
-          <td>
+          <td [attr.data-label]="'admin.auditLogs.columns.actor' | translate">
             <strong class="admin-row-title">{{ log.actorEmail || '—' }}</strong>
             <div class="admin-audit-logs-table__muted">{{ log.actorUserId || '—' }}</div>
             <div class="admin-audit-logs-table__roles">
@@ -105,21 +105,21 @@
               }
             </div>
           </td>
-          <td><code>{{ log.action }}</code></td>
-          <td>
+          <td [attr.data-label]="'admin.auditLogs.columns.action' | translate"><code>{{ log.action }}</code></td>
+          <td [attr.data-label]="'admin.auditLogs.columns.entity' | translate">
             <strong>{{ log.entityType }}</strong>
             <div class="admin-audit-logs-table__muted">{{ log.entityId || '—' }}</div>
           </td>
-          <td>
+          <td [attr.data-label]="'admin.auditLogs.columns.request' | translate">
             <p-tag [value]="log.httpMethod" severity="secondary"></p-tag>
             <div class="admin-audit-logs-table__path">{{ log.path }}</div>
             <div class="admin-audit-logs-table__muted">{{ log.ipAddress || '—' }}</div>
           </td>
-          <td>
+          <td [attr.data-label]="'admin.auditLogs.columns.status' | translate">
             <p-tag [value]="log.statusCode.toString()" [severity]="statusSeverity(log.statusCode)"></p-tag>
           </td>
-          <td><code class="admin-audit-logs-table__trace">{{ log.traceId }}</code></td>
-          <td>
+          <td [attr.data-label]="'admin.auditLogs.columns.traceId' | translate"><code class="admin-audit-logs-table__trace">{{ log.traceId }}</code></td>
+          <td [attr.data-label]="'admin.auditLogs.columns.metadata' | translate">
             @if (hasMetadata(log)) {
               <details class="admin-audit-logs-metadata">
                 <summary>{{ 'admin.auditLogs.metadata.show' | translate }}</summary>

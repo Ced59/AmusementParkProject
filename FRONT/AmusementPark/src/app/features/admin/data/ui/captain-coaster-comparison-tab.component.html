@@ -103,7 +103,7 @@
     </div>
 
     <div class="table-wrapper" [class.table-wrapper--loading]="isLoadingPage()">
-      <p-table [value]="currentItems()" responsiveLayout="scroll" styleClass="p-datatable-sm">
+      <p-table [value]="currentItems()" responsiveLayout="scroll" styleClass="admin-data-table p-datatable-sm admin-comparison-table">
         <ng-template pTemplate="header">
           <tr>
             <th style="width:3rem"></th>
@@ -125,14 +125,14 @@
                 [disabled]="row.isApplied">
               </p-checkbox>
             </td>
-            <td><p-tag [value]="row.entityType" severity="secondary"></p-tag></td>
-            <td class="col-name" [title]="row.displayName">{{ row.displayName }}</td>
-            <td><p-tag [value]="row.changeType" [severity]="captainCoasterComparisonFacade.getChangeTypeSeverity(row.changeType)"></p-tag></td>
-            <td class="col-confidence">{{ row.matchConfidence }}</td>
-            <td>
+            <td data-label="Type"><p-tag [value]="row.entityType" severity="secondary"></p-tag></td>
+            <td class="col-name" data-label="Nom" [title]="row.displayName">{{ row.displayName }}</td>
+            <td data-label="Changement"><p-tag [value]="row.changeType" [severity]="captainCoasterComparisonFacade.getChangeTypeSeverity(row.changeType)"></p-tag></td>
+            <td class="col-confidence" data-label="Confiance">{{ row.matchConfidence }}</td>
+            <td data-label="Analyse / résolution">
               <app-captain-coaster-comparison-analysis [row]="row"></app-captain-coaster-comparison-analysis>
             </td>
-            <td><i [class]="row.isApplied ? 'pi pi-check-circle applied-icon' : 'pi pi-circle pending-icon'"></i></td>
+            <td data-label="Fait"><i [class]="row.isApplied ? 'pi pi-check-circle applied-icon' : 'pi pi-circle pending-icon'"></i></td>
           </tr>
         </ng-template>
       </p-table>

@@ -88,17 +88,17 @@
         <td class="admin-selection-column">
           <input type="checkbox" [checked]="isManufacturerSelected(manufacturer)" (change)="onManufacturerSelectionChange(manufacturer, $event)" [attr.aria-label]="manufacturer.name" />
         </td>
-        <td><strong class="admin-row-title">{{ manufacturer.name }}</strong></td>
-        <td>
+        <td [attr.data-label]="'admin.manufacturers.name' | translate"><strong class="admin-row-title">{{ manufacturer.name }}</strong></td>
+        <td [attr.data-label]="'admin.manufacturers.attractionCount' | translate">
           <span class="admin-count-chip">{{ manufacturer.attractionCount ?? 0 }}</span>
         </td>
-        <td>
+        <td [attr.data-label]="'admin.manufacturers.reviewStatus' | translate">
           <p-tag
             [value]="getStatusLabelKey(manufacturer.adminReviewStatus) | translate"
             [severity]="getStatusSeverity(manufacturer.adminReviewStatus)">
           </p-tag>
         </td>
-        <td>
+        <td [attr.data-label]="'admin.manufacturers.actions' | translate">
           <a
             pButton
             type="button"
