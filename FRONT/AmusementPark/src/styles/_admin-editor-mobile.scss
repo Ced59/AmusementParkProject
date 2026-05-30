@@ -456,3 +456,95 @@
     }
   }
 }
+
+/* Admin editor overflow hardening: PrimeNG tabs must scroll inside the card, not enlarge the whole page. */
+.admin-shell,
+.admin-shell .app-admin-layout__body,
+.admin-shell .app-admin-layout__main,
+.admin-shell router-outlet + *,
+.admin-shell form,
+.admin-shell .p-fluid,
+.admin-shell .admin-park-edit,
+.admin-shell .reference-edit-page,
+.admin-shell .admin-user-page,
+.admin-shell .park-graph-upserts,
+.admin-shell .admin-localized-content,
+.admin-shell app-admin-park-item-edit-form,
+.admin-shell app-admin-park-zone-edit {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.admin-shell .p-tabs,
+.admin-shell .p-tablist,
+.admin-shell .p-tabpanels,
+.admin-shell .p-tabpanel {
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.admin-shell .p-tabs,
+.admin-shell .p-tablist,
+.admin-shell .p-tabpanels,
+.admin-shell .p-tabpanel {
+  overflow-x: clip;
+}
+
+.admin-shell .p-tablist-content {
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.admin-shell .p-tablist-tab-list {
+  display: flex;
+  inline-size: max-content;
+  min-inline-size: max-content;
+  max-inline-size: none;
+}
+
+.admin-shell .p-tab {
+  flex: 0 0 auto;
+  max-inline-size: min(16rem, 72vw);
+  white-space: nowrap;
+}
+
+.admin-shell .p-tabpanels,
+.admin-shell .p-tabpanel {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 760px) {
+  .admin-shell {
+    overflow-x: clip;
+  }
+
+  .admin-shell .app-admin-layout__body,
+  .admin-shell .app-admin-layout__main {
+    overflow-x: clip;
+  }
+
+  .admin-shell .admin-park-edit,
+  .admin-shell .reference-edit-page,
+  .admin-shell .admin-user-page,
+  .admin-shell .park-graph-upserts,
+  .admin-shell .admin-localized-content {
+    inline-size: 100%;
+  }
+
+  .admin-shell .p-tabs {
+    display: block;
+  }
+
+  .admin-shell .p-tablist {
+    border-radius: var(--radius-lg);
+  }
+
+  .admin-shell .p-tab {
+    padding-inline: 1rem;
+  }
+}

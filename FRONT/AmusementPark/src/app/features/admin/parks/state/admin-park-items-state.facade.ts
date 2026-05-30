@@ -185,11 +185,28 @@ export class AdminParkItemsStateFacade {
       type?: ParkItemType | null;
     },
   ): void {
-    this.searchTermSignal.set(filters.searchTerm);
-    this.visibilityFilterSignal.set(filters.isVisible ?? null);
-    this.adminReviewStatusFilterSignal.set(filters.adminReviewStatus ?? null);
-    this.categoryFilterSignal.set(filters.category ?? null);
-    this.typeFilterSignal.set(filters.type ?? null);
+    const nextSearchTerm: string = filters.searchTerm;
+    const nextVisibilityFilter: boolean | null = filters.isVisible ?? null;
+    const nextAdminReviewStatusFilter: AdminReviewStatus | null =
+      filters.adminReviewStatus ?? null;
+    const nextCategoryFilter: ParkItemCategory | null = filters.category ?? null;
+    const nextTypeFilter: ParkItemType | null = filters.type ?? null;
+    const hasFilterChanged: boolean =
+      this.searchTermSignal() !== nextSearchTerm ||
+      this.visibilityFilterSignal() !== nextVisibilityFilter ||
+      this.adminReviewStatusFilterSignal() !== nextAdminReviewStatusFilter ||
+      this.categoryFilterSignal() !== nextCategoryFilter ||
+      this.typeFilterSignal() !== nextTypeFilter;
+
+    if (!hasFilterChanged) {
+      return;
+    }
+
+    this.searchTermSignal.set(nextSearchTerm);
+    this.visibilityFilterSignal.set(nextVisibilityFilter);
+    this.adminReviewStatusFilterSignal.set(nextAdminReviewStatusFilter);
+    this.categoryFilterSignal.set(nextCategoryFilter);
+    this.typeFilterSignal.set(nextTypeFilter);
     this.currentPageSignal.set(1);
     this.loadData(parkId);
   }
@@ -198,6 +215,13 @@ export class AdminParkItemsStateFacade {
     parkId: string,
     event: { sortBy: ParkItemAdminSortField; sortOrder: 1 | -1 },
   ): void {
+    if (
+      this.sortFieldSignal() === event.sortBy &&
+      this.sortOrderSignal() === event.sortOrder
+    ) {
+      return;
+    }
+
     this.sortFieldSignal.set(event.sortBy);
     this.sortOrderSignal.set(event.sortOrder);
     this.currentPageSignal.set(1);
@@ -211,9 +235,18 @@ export class AdminParkItemsStateFacade {
     const rows: number = event.rows ?? this.pageSizeSignal();
     const pageIndex: number =
       event.page ?? Math.floor((event.first ?? 0) / Math.max(rows, 1));
+    const nextPage: number = Math.max(pageIndex + 1, 1);
+    const nextPageSize: number = event.rows ?? this.pageSizeSignal();
 
-    this.currentPageSignal.set(pageIndex + 1);
-    this.pageSizeSignal.set(event.rows ?? this.pageSizeSignal());
+    if (
+      this.currentPageSignal() === nextPage &&
+      this.pageSizeSignal() === nextPageSize
+    ) {
+      return;
+    }
+
+    this.currentPageSignal.set(nextPage);
+    this.pageSizeSignal.set(nextPageSize);
     this.loadData(parkId);
   }
 

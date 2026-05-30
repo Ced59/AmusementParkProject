@@ -201,17 +201,27 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     const rows: number = event.rows ?? this.pageSize;
     const pageIndex: number =
       event.page ?? Math.floor((event.first ?? 0) / Math.max(rows, 1));
+    const first: number = event.first ?? pageIndex * rows;
+
+    if (first === this.getPaginationFirst() && rows === this.pageSize) {
+      return;
+    }
 
     this.pageChanged.emit({
       page: pageIndex,
       rows,
-      first: event.first ?? pageIndex * rows,
+      first,
     });
   }
 
   onSortChange(event: PrimeSortEventLike): void {
     const sortBy: ParkItemAdminSortField = this.mapTableSortField(event.field);
     const sortOrder: 1 | -1 = event.order === -1 ? -1 : 1;
+
+    if (sortBy === this.sortField && sortOrder === this.sortOrder) {
+      return;
+    }
+
     this.sortChanged.emit({ sortBy, sortOrder });
   }
 
