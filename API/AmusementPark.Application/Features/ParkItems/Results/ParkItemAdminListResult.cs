@@ -23,6 +23,11 @@ public sealed class ParkItemAdminListResult
     public string ParkName { get; init; } = string.Empty;
 
     /// <summary>
+    /// Identifiant éventuel de la zone parent.
+    /// </summary>
+    public string? ZoneId { get; init; }
+
+    /// <summary>
     /// Nom du park item.
     /// </summary>
     public string Name { get; init; } = string.Empty;

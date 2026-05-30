@@ -87,6 +87,8 @@ public sealed class ParkItemsController : ControllerBase
         [FromQuery] string? category = null,
         [FromQuery] string? type = null,
         [FromQuery] string? manufacturerId = null,
+        [FromQuery] string? sortBy = null,
+        [FromQuery] string? sortDirection = null,
         CancellationToken cancellationToken = default)
     {
         bool canSeeNonVisible = this.UserCanSeeNonVisible();
@@ -103,7 +105,9 @@ public sealed class ParkItemsController : ControllerBase
                 effectiveAdminReviewStatus,
                 ParseParkItemCategory(category),
                 ParseParkItemType(type),
-                manufacturerId),
+                manufacturerId,
+                ParseParkItemAdminSortField(sortBy),
+                IsSortDescending(sortDirection)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -191,6 +195,36 @@ public sealed class ParkItemsController : ControllerBase
         }
 
         return this.Ok(true);
+    }
+
+
+    private static ParkItemAdminSortField ParseParkItemAdminSortField(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return ParkItemAdminSortField.Default;
+        }
+
+        return value.Trim().ToLowerInvariant() switch
+        {
+            "name" => ParkItemAdminSortField.Name,
+            "category" => ParkItemAdminSortField.Category,
+            "type" => ParkItemAdminSortField.Type,
+            "isvisible" => ParkItemAdminSortField.IsVisible,
+            "visibility" => ParkItemAdminSortField.IsVisible,
+            "adminreviewstatus" => ParkItemAdminSortField.AdminReviewStatus,
+            "status" => ParkItemAdminSortField.AdminReviewStatus,
+            "parkid" => ParkItemAdminSortField.ParkId,
+            "zoneid" => ParkItemAdminSortField.ZoneId,
+            _ => ParkItemAdminSortField.Default,
+        };
+    }
+
+    private static bool IsSortDescending(string? value)
+    {
+        return string.Equals(value, "desc", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(value, "descending", StringComparison.OrdinalIgnoreCase)
+            || string.Equals(value, "-1", StringComparison.OrdinalIgnoreCase);
     }
 
     private static AdminReviewStatus? ParseAdminReviewStatus(string? value)

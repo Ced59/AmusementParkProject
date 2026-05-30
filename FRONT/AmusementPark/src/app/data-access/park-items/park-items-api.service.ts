@@ -17,7 +17,7 @@ import {
   PagedCollectionResponse,
   unwrapCollection
 } from '../shared/api-helpers';
-import { PARK_ITEMS_API_ENDPOINTS, ParkItemAdminListFilters } from './park-items-api-endpoints';
+import { PARK_ITEMS_API_ENDPOINTS, ParkItemAdminListFilters, ParkItemAdminListSort } from './park-items-api-endpoints';
 import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
 
 interface AttractionAccessConditionWriteRequest {
@@ -119,9 +119,10 @@ export class ParkItemsApiService {
     size: number,
     parkId?: string | null,
     search?: string | null,
-    filters: ParkItemAdminListFilters | null = null
+    filters: ParkItemAdminListFilters | null = null,
+    sort: ParkItemAdminListSort | null = null
   ): Observable<ApiResponse<ParkItemAdminRow>> {
-    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsPaginated(page, size, parkId, search, filters)}`;
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsPaginated(page, size, parkId, search, filters, sort)}`;
     return this.http.get<ApiResponse<ParkItemAdminRow>>(url).pipe(
       map((response: ApiResponse<ParkItemAdminRow>) => ({
         ...response,

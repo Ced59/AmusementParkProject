@@ -42,7 +42,9 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
             query.Category,
             query.Type,
             query.ManufacturerId,
-            cancellationToken);
+            cancellationToken,
+            query.SortField,
+            query.SortDescending);
 
         List<string> parkIds = page.Items
             .Where(static item => !string.IsNullOrWhiteSpace(item.ParkId))
@@ -61,6 +63,7 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
                 Id = item.Id,
                 ParkId = item.ParkId,
                 ParkName = parkNamesById.TryGetValue(item.ParkId, out string? parkName) ? parkName : string.Empty,
+                ZoneId = item.ZoneId,
                 Name = item.Name,
                 Category = item.Category,
                 Type = item.Type,

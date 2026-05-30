@@ -559,7 +559,10 @@
           "removed": "Removed / dismantled",
           "planned": "Planned",
           "unknown": "Unknown"
-        }
+        },
+        "subtitle": "Admin list of the items attached to this park, with filters, pagination, sorting and review tracking.",
+        "total": "{{count}} item(s)",
+        "searchPlaceholder": "Search an item, type or status"
       },
       "refactorHint": "The editor is now split into thematic tabs to keep the page lighter and easier to navigate.",
       "visibilityHelp": "Controls whether this park is visible in the public application.",

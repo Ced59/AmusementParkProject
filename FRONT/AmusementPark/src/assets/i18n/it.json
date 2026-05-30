@@ -559,7 +559,10 @@
           "removed": "Rimosso / smontato",
           "planned": "Previsto",
           "unknown": "Sconosciuto"
-        }
+        },
+        "subtitle": "Elenco di amministrazione degli elementi collegati a questo parco, con filtri, paginazione, ordinamento e stato di revisione.",
+        "total": "{{count}} elemento/i",
+        "searchPlaceholder": "Cerca un elemento, un tipo o uno stato"
       },
       "refactorHint": "L’editor è ora suddiviso in schede tematiche per alleggerire la pagina e renderla più chiara.",
       "visibilityHelp": "Controlla se questo parco è visibile nell’applicazione pubblica.",

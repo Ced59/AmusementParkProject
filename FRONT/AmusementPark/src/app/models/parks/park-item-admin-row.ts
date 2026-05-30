@@ -6,6 +6,7 @@ export interface ParkItemAdminRow {
   id: string;
   parkId: string;
   parkName: string;
+  zoneId?: string | null;
   name: string;
   category: ParkItemCategory;
   type: ParkItemType;

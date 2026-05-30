@@ -559,7 +559,10 @@
           "removed": "Verwijderd / afgebroken",
           "planned": "Gepland",
           "unknown": "Onbekend"
-        }
+        },
+        "subtitle": "Beheerlijst van de onderdelen die aan dit park zijn gekoppeld, met filters, paginering, sortering en beoordelingsstatus.",
+        "total": "{{count}} item(s)",
+        "searchPlaceholder": "Zoek een item, type of status"
       },
       "refactorHint": "De editor is nu opgesplitst in thematische tabbladen om de pagina lichter en overzichtelijker te maken.",
       "visibilityHelp": "Bepaalt of dit park zichtbaar is in de publieke applicatie.",

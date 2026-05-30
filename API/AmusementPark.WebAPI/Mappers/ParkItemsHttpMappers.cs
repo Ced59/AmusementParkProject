@@ -93,6 +93,7 @@ internal static class ParkItemsHttpMappers
             Id = value.Id,
             ParkId = value.ParkId,
             ParkName = value.ParkName,
+            ZoneId = value.ZoneId,
             Name = value.Name,
             Category = value.Category.ToHttp(),
             Type = value.Type.ToHttp(),

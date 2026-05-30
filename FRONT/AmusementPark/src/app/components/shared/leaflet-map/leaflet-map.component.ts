@@ -272,7 +272,11 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       return;
     }
 
-    this.fitMapToMarkersIfNeeded();
+    if (this.fitMapToMarkersIfNeeded()) {
+      return;
+    }
+
+    this.applyDefaultViewport();
   }
 
   private applyDefaultViewport(): void {
@@ -341,19 +345,20 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     return true;
   }
 
-  private fitMapToMarkersIfNeeded(): void {
+  private fitMapToMarkersIfNeeded(): boolean {
     if (!this.fitBounds || !this.L || !this.map || this.markers.length === 0) {
-      return;
+      return false;
     }
 
     if (this.markers.length === 1) {
       const singleMarker: MapMarker = this.markers[0];
       this.map.setView([singleMarker.lat, singleMarker.lng], Math.max(this.zoom, 8));
-      return;
+      return true;
     }
 
     const bounds = this.L.latLngBounds(this.markers.map((marker: MapMarker) => [marker.lat, marker.lng]));
     this.map.fitBounds(bounds, { padding: [32, 32], maxZoom: this.fitBoundsMaxZoom });
+    return true;
   }
 
   private buildPopupContent(marker: MapMarker): string {

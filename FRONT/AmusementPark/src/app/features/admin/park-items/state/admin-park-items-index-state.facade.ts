@@ -1,6 +1,6 @@
 import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { forkJoin, Observable } from 'rxjs';
+import { EMPTY, Observable, expand, forkJoin, map, reduce, shareReplay } from 'rxjs';
 
 import { AdminReviewStatus, BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
@@ -10,7 +10,7 @@ import { ParkItemType } from '@app/models/parks/park-item-type';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { ApiResponse } from '@app/models/shared/api_reponse';
 import { Pagination } from '@app/models/shared/pagination';
-import { ParkItemAdminListFilters } from '@data-access/park-items/park-items-api-endpoints';
+import { ParkItemAdminListFilters, ParkItemAdminListSort, ParkItemAdminSortField } from '@data-access/park-items/park-items-api-endpoints';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -33,6 +33,9 @@ export class AdminParkItemsIndexStateFacade {
   private readonly typeFilterSignal = signal<ParkItemType | null>(null);
   private readonly currentPageSignal = signal(1);
   private readonly pageSizeSignal = signal(20);
+  private readonly sortFieldSignal = signal<ParkItemAdminSortField>('default');
+  private readonly sortOrderSignal = signal<1 | -1>(1);
+  private parksRequest$: Observable<Park[]> | null = null;
 
   public readonly state = this.screenStateStore.state;
   public readonly loading = this.screenStateStore.isLoading;
@@ -46,11 +49,17 @@ export class AdminParkItemsIndexStateFacade {
   public readonly categoryFilter = this.categoryFilterSignal.asReadonly();
   public readonly typeFilter = this.typeFilterSignal.asReadonly();
   public readonly pageSize: Signal<number> = this.pageSizeSignal.asReadonly();
+  public readonly sortField: Signal<ParkItemAdminSortField> = this.sortFieldSignal.asReadonly();
+  public readonly sortOrder: Signal<1 | -1> = this.sortOrderSignal.asReadonly();
   public readonly filters = computed<ParkItemAdminListFilters>(() => ({
     isVisible: this.visibilityFilterSignal(),
     adminReviewStatus: this.adminReviewStatusFilterSignal(),
     category: this.categoryFilterSignal(),
     type: this.typeFilterSignal()
+  }));
+  public readonly sort = computed<ParkItemAdminListSort>(() => ({
+    sortBy: this.sortFieldSignal(),
+    sortDirection: this.sortOrderSignal() === -1 ? 'desc' : 'asc'
   }));
 
   constructor(
@@ -83,6 +92,13 @@ export class AdminParkItemsIndexStateFacade {
     this.loadData();
   }
 
+  updateSort(event: { sortBy: ParkItemAdminSortField; sortOrder: 1 | -1 }): void {
+    this.sortFieldSignal.set(event.sortBy);
+    this.sortOrderSignal.set(event.sortOrder);
+    this.currentPageSignal.set(1);
+    this.loadData();
+  }
+
   updatePage(event: { page?: number; rows?: number }): void {
     this.currentPageSignal.set((event.page ?? 0) + 1);
     this.pageSizeSignal.set(event.rows ?? this.pageSizeSignal());
@@ -106,7 +122,8 @@ export class AdminParkItemsIndexStateFacade {
         this.pageSizeSignal(),
         this.selectedParkIdSignal(),
         this.searchTermSignal().trim(),
-        this.filters()
+        this.filters(),
+        this.sort()
       ),
       parks: this.getAllParks()
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
@@ -143,45 +160,27 @@ export class AdminParkItemsIndexStateFacade {
   }
 
   private getAllParks(): Observable<Park[]> {
-    return new Observable<Park[]>((observer) => {
-      this.parksApiService.getParksPaginated(1, 100).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-        next: (firstResponse: ParksApiResponse) => {
-          const firstPageParks: Park[] = firstResponse.data ?? [];
-          const pagination: Pagination | undefined = firstResponse.pagination;
-          const totalPages: number = pagination?.totalPages ?? 1;
+    if (this.parksRequest$) {
+      return this.parksRequest$;
+    }
 
-          if (totalPages <= 1) {
-            observer.next(firstPageParks);
-            observer.complete();
-            return;
-          }
+    this.parksRequest$ = this.parksApiService.getParksPaginated(1, 100).pipe(
+      expand((response: ParksApiResponse) => {
+        const pagination: Pagination | undefined = response.pagination;
+        const currentPage: number = pagination?.currentPage ?? 1;
+        const totalPages: number = pagination?.totalPages ?? 1;
 
-          const requests: Observable<ParksApiResponse>[] = [];
-
-          for (let currentPage: number = 2; currentPage <= totalPages; currentPage++) {
-            requests.push(this.parksApiService.getParksPaginated(currentPage, 100));
-          }
-
-          forkJoin(requests).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-            next: (responses: ParksApiResponse[]) => {
-              const allParks: Park[] = [...firstPageParks];
-
-              responses.forEach((response: ParksApiResponse) => {
-                allParks.push(...(response.data ?? []));
-              });
-
-              observer.next(allParks);
-              observer.complete();
-            },
-            error: (error: unknown) => {
-              observer.error(error);
-            }
-          });
-        },
-        error: (error: unknown) => {
-          observer.error(error);
+        if (currentPage >= totalPages) {
+          return EMPTY;
         }
-      });
-    });
+
+        return this.parksApiService.getParksPaginated(currentPage + 1, 100);
+      }),
+      map((response: ParksApiResponse) => response.data ?? []),
+      reduce((allParks: Park[], parks: Park[]) => [...allParks, ...parks], [] as Park[]),
+      shareReplay({ bufferSize: 1, refCount: false })
+    );
+
+    return this.parksRequest$;
   }
 }

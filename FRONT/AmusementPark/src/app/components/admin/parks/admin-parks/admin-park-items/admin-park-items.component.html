@@ -1,52 +1,42 @@
-<app-page-state [state]="state().kind">
-  <p-card>
-    <ng-template pTemplate="header">
-      <div class="header-row">
-        <h2>{{ 'admin.parks.items.title' | translate }}</h2>
-        <button
-          pButton
-          type="button"
-          icon="pi pi-plus"
-          [label]="'admin.parks.items.create' | translate"
-          [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'items', 'new']">
-        </button>
-      </div>
-    </ng-template>
-
-    <p-table [value]="items()" [loading]="state().kind === 'loading'" [responsiveLayout]="'scroll'">
-      <ng-template pTemplate="header">
-        <tr>
-          <th>{{ 'admin.parks.items.itemName' | translate }}</th>
-          <th>{{ 'admin.parks.items.category' | translate }}</th>
-          <th>{{ 'admin.parks.items.type' | translate }}</th>
-          <th>{{ 'admin.parks.items.zone' | translate }}</th>
-          <th>{{ 'admin.parks.actions' | translate }}</th>
-        </tr>
-      </ng-template>
-
-      <ng-template pTemplate="body" let-item>
-        <tr>
-          <td>{{ item.name }}</td>
-          <td>{{ getCategoryLabelKey(item.category) | translate }}</td>
-          <td>{{ getTypeLabelKey(item.type) | translate }}</td>
-          <td>{{ getZoneName(item.zoneId) }}</td>
-          <td class="actions-cell">
-            <button pButton type="button" icon="pi pi-pencil" class="p-button-text" [routerLink]="['/', currentLang, 'admin', 'parks', 'edit', parkId, 'items', item.id]"></button>
-            <button pButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger" (click)="deleteItem(item)"></button>
-          </td>
-        </tr>
-      </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="5">
-          <app-empty-state
-            [compact]="true"
-            titleKey="common.emptyTitle"
-            messageKey="admin.parks.items.empty">
-          </app-empty-state>
-        </td>
-      </tr>
-    </ng-template>
-    </p-table>
-  </p-card>
-</app-page-state>
+<app-admin-park-items-index-view
+  [state]="state"
+  [loading]="loading"
+  [rows]="items"
+  [parkOptions]="emptyParkOptions"
+  [totalRecords]="totalRecords"
+  [selectedParkId]="parkId"
+  [searchTerm]="searchTerm()"
+  [visibilityFilter]="visibilityFilter()"
+  [adminReviewStatusFilter]="adminReviewStatusFilter()"
+  [categoryFilter]="categoryFilter()"
+  [typeFilter]="typeFilter()"
+  [pageSize]="pageSize()"
+  [sortField]="sortField()"
+  [sortOrder]="sortOrder()"
+  [selectedItemIds]="selectedItemIds"
+  [selectedCount]="selectedCount"
+  titleKey="admin.parks.items.title"
+  subtitleKey="admin.parks.items.subtitle"
+  totalKey="admin.parks.items.total"
+  searchPlaceholderKey="admin.parks.items.searchPlaceholder"
+  emptyMessageKey="admin.parks.items.empty"
+  [showParkFilter]="false"
+  [showParkColumn]="false"
+  [showZoneColumn]="true"
+  [showDeleteAction]="true"
+  [showCreateButton]="true"
+  [createButtonRouterLink]="getCreateRouterLink()"
+  [getCategoryLabelKeyFn]="getCategoryLabelKey.bind(this)"
+  [getTypeLabelKeyFn]="getTypeLabelKey.bind(this)"
+  [getZoneLabelFn]="getZoneName.bind(this)"
+  (filtersChanged)="onFiltersChanged($event)"
+  (pageChanged)="onPageChange($event)"
+  (sortChanged)="onSortChange($event)"
+  (editClicked)="goToEdit($event)"
+  (deleteClicked)="deleteItem($event)"
+  (itemSelectionChanged)="onItemSelectionChanged($event)"
+  (allItemsSelectionChanged)="onAllItemsSelectionChanged($event)"
+  (bulkVisibilityChanged)="onBulkVisibilityChange($event)"
+  (bulkStatusChanged)="onBulkStatusChange($event)"
+  (selectionCleared)="clearSelection()">
+</app-admin-park-items-index-view>
