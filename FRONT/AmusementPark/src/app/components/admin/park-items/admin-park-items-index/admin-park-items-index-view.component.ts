@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, Signal, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { Bind } from 'primeng/bind';
 import { Card } from 'primeng/card';
@@ -17,13 +18,19 @@ import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { PARK_ITEM_CATEGORY_OPTIONS, PARK_ITEM_TYPE_OPTIONS, TranslationOption } from '@shared/utils/display/display-options';
+import { ParkItemAdminSortField } from '@data-access/park-items/park-items-api-endpoints';
+
+interface PrimeSortEventLike {
+  field?: string | string[] | null;
+  order?: number | null;
+}
 
 @Component({
   selector: 'app-admin-park-items-index-view',
   templateUrl: './admin-park-items-index-view.component.html',
   styleUrls: ['./admin-park-items-index.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, Card, FormsModule, InputText, Select, TableModule, PrimeTemplate, Tag, ButtonDirective, TranslateModule, PaginationComponent, EmptyStateComponent]
+  imports: [Bind, Card, FormsModule, InputText, Select, TableModule, PrimeTemplate, Tag, ButtonDirective, RouterLink, TranslateModule, PaginationComponent, EmptyStateComponent]
 })
 export class AdminParkItemsIndexViewComponent implements OnChanges {
   @Input() state!: Signal<ScreenState<unknown, string>>;
@@ -38,10 +45,26 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   @Input() categoryFilter: ParkItemCategory | null = null;
   @Input() typeFilter: ParkItemType | null = null;
   @Input() pageSize: number = 20;
+  @Input() sortField: ParkItemAdminSortField = 'default';
+  @Input() sortOrder: 1 | -1 = 1;
   @Input() selectedItemIds!: Signal<string[]>;
   @Input() selectedCount!: Signal<number>;
+  @Input() titleKey: string = 'admin.parkItems.title';
+  @Input() subtitleKey: string = 'admin.parkItems.subtitle';
+  @Input() totalKey: string = 'admin.parkItems.total';
+  @Input() searchPlaceholderKey: string = 'admin.parkItems.searchPlaceholder';
+  @Input() emptyMessageKey: string = 'admin.parkItems.empty';
+  @Input() showParkFilter: boolean = true;
+  @Input() showParkColumn: boolean = true;
+  @Input() showZoneColumn: boolean = false;
+  @Input() showBulkActions: boolean = true;
+  @Input() showDeleteAction: boolean = false;
+  @Input() showCreateButton: boolean = false;
+  @Input() createButtonLabelKey: string = 'admin.parks.items.create';
+  @Input() createButtonRouterLink: unknown[] | null = null;
   @Input() getCategoryLabelKeyFn: (category: string | number | null | undefined) => string = () => 'parkExplorer.categories.other';
   @Input() getTypeLabelKeyFn: (itemType: string | number | null | undefined) => string = () => 'parkExplorer.types.other';
+  @Input() getZoneLabelFn: (zoneId: string | null | undefined) => string = () => '—';
 
   @Output() filtersChanged: EventEmitter<{
     selectedParkId: string | null;
@@ -59,7 +82,9 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     type: ParkItemType | null;
   }>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
+  @Output() sortChanged: EventEmitter<{ sortBy: ParkItemAdminSortField; sortOrder: 1 | -1 }> = new EventEmitter<{ sortBy: ParkItemAdminSortField; sortOrder: 1 | -1 }>();
   @Output() editClicked: EventEmitter<ParkItemAdminRow> = new EventEmitter<ParkItemAdminRow>();
+  @Output() deleteClicked: EventEmitter<ParkItemAdminRow> = new EventEmitter<ParkItemAdminRow>();
   @Output() itemSelectionChanged: EventEmitter<{ itemId: string; selected: boolean }> = new EventEmitter<{ itemId: string; selected: boolean }>();
   @Output() allItemsSelectionChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() bulkVisibilityChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -98,7 +123,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
 
   applyFilters(): void {
     this.filtersChanged.emit({
-      selectedParkId: this.localSelectedParkId,
+      selectedParkId: this.showParkFilter ? this.localSelectedParkId : this.selectedParkId,
       searchTerm: this.localSearchTerm,
       isVisible: this.localVisibilityFilter,
       adminReviewStatus: this.localAdminReviewStatusFilter,
@@ -115,6 +140,12 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     this.pageChanged.emit(event);
   }
 
+  onSortChange(event: PrimeSortEventLike): void {
+    const sortBy: ParkItemAdminSortField = this.mapTableSortField(event.field);
+    const sortOrder: 1 | -1 = event.order === -1 ? -1 : 1;
+    this.sortChanged.emit({ sortBy, sortOrder });
+  }
+
   getCategoryLabelKey(category: string | number | null | undefined): string {
     return this.getCategoryLabelKeyFn(category);
   }
@@ -123,8 +154,16 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     return this.getTypeLabelKeyFn(itemType);
   }
 
+  getZoneLabel(zoneId: string | null | undefined): string {
+    return this.getZoneLabelFn(zoneId);
+  }
+
   goToEdit(row: ParkItemAdminRow): void {
     this.editClicked.emit(row);
+  }
+
+  deleteRow(row: ParkItemAdminRow): void {
+    this.deleteClicked.emit(row);
   }
 
   isItemSelected(row: ParkItemAdminRow): boolean {
@@ -182,5 +221,42 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
 
   getStatusLabelKey(status: AdminReviewStatus | null | undefined): string {
     return getAdminReviewStatusTranslationKey(status);
+  }
+
+  getColumnSpan(): number {
+    let columnCount: number = 7;
+
+    if (this.showParkColumn) {
+      columnCount += 1;
+    }
+
+    if (this.showZoneColumn) {
+      columnCount += 1;
+    }
+
+    return columnCount;
+  }
+
+  private mapTableSortField(field: string | string[] | null | undefined): ParkItemAdminSortField {
+    const rawField: string | undefined = Array.isArray(field) ? field[0] : field ?? undefined;
+
+    switch (rawField) {
+      case 'name':
+        return 'name';
+      case 'type':
+        return 'type';
+      case 'category':
+        return 'category';
+      case 'adminReviewStatus':
+        return 'adminReviewStatus';
+      case 'isVisible':
+        return 'isVisible';
+      case 'parkName':
+        return 'parkId';
+      case 'zoneId':
+        return 'zoneId';
+      default:
+        return 'default';
+    }
   }
 }

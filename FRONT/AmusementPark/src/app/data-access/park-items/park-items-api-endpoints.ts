@@ -10,6 +10,14 @@ export interface ParkItemAdminListFilters {
   manufacturerId?: string | null;
 }
 
+export type ParkItemAdminSortField = 'default' | 'name' | 'category' | 'type' | 'isVisible' | 'adminReviewStatus' | 'parkId' | 'zoneId';
+export type ParkItemAdminSortDirection = 'asc' | 'desc';
+
+export interface ParkItemAdminListSort {
+  sortBy: ParkItemAdminSortField;
+  sortDirection: ParkItemAdminSortDirection;
+}
+
 function buildParkItemAdminListQuery(filters: ParkItemAdminListFilters | null = null): string {
   if (!filters) {
     return '';
@@ -35,12 +43,27 @@ function buildParkItemAdminListQuery(filters: ParkItemAdminListFilters | null = 
   return params.length > 0 ? `&${params.join('&')}` : '';
 }
 
+function buildParkItemAdminSortQuery(sort: ParkItemAdminListSort | null = null): string {
+  if (!sort || sort.sortBy === 'default') {
+    return '';
+  }
+
+  return `&sortBy=${encodeURIComponent(sort.sortBy)}&sortDirection=${encodeURIComponent(sort.sortDirection)}`;
+}
+
 export const PARK_ITEMS_API_ENDPOINTS = {
   getParkItemsByParkId: (parkId: string) => `park-items/park/${parkId}`,
-  getParkItemsPaginated: (page: number, size: number, parkId?: string | null, search?: string | null, filters: ParkItemAdminListFilters | null = null) => {
+  getParkItemsPaginated: (
+    page: number,
+    size: number,
+    parkId?: string | null,
+    search?: string | null,
+    filters: ParkItemAdminListFilters | null = null,
+    sort: ParkItemAdminListSort | null = null
+  ) => {
     const parkIdQuery: string = parkId ? `&parkId=${encodeURIComponent(parkId)}` : '';
     const searchQuery: string = search ? `&search=${encodeURIComponent(search)}` : '';
-    return `park-items?page=${page}&size=${size}${parkIdQuery}${searchQuery}${buildParkItemAdminListQuery(filters)}`;
+    return `park-items?page=${page}&size=${size}${parkIdQuery}${searchQuery}${buildParkItemAdminListQuery(filters)}${buildParkItemAdminSortQuery(sort)}`;
   },
   getParkItemById: (id: string) => `park-items/${id}`,
   createParkItem: 'park-items',

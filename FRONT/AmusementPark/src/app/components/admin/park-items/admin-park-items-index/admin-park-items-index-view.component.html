@@ -2,12 +2,24 @@
   <div class="admin-list-header">
     <div>
       <span class="admin-kicker">M14 · Admin</span>
-      <h2>{{ 'admin.parkItems.title' | translate }}</h2>
-      <p>{{ 'admin.parkItems.subtitle' | translate }}</p>
+      <h2>{{ titleKey | translate }}</h2>
+      <p>{{ subtitleKey | translate }}</p>
     </div>
-    <span class="admin-total-pill">
-      {{ 'admin.parkItems.total' | translate:{ count: totalRecords() } }}
-    </span>
+    <div class="admin-list-header__actions">
+      <span class="admin-total-pill">
+        {{ totalKey | translate:{ count: totalRecords() } }}
+      </span>
+      @if (showCreateButton && createButtonRouterLink) {
+        <button
+          pButton
+          type="button"
+          icon="pi pi-plus"
+          class="p-button-sm"
+          [label]="createButtonLabelKey | translate"
+          [routerLink]="createButtonRouterLink">
+        </button>
+      }
+    </div>
   </div>
 
   <div class="admin-toolbar">
@@ -21,7 +33,7 @@
           type="text"
           [(ngModel)]="localSearchTerm"
           (keyup.enter)="applyFilters()"
-          [placeholder]="'admin.parkItems.searchPlaceholder' | translate" />
+          [placeholder]="searchPlaceholderKey | translate" />
       </div>
     </div>
 
@@ -37,19 +49,21 @@
     </div>
   </div>
 
-  <div class="admin-filters-grid admin-filters-grid--items">
-    <label class="admin-field">
-      <span class="admin-field-label">{{ 'admin.parkItems.parkFilter' | translate }}</span>
-      <p-select
-        [(ngModel)]="localSelectedParkId"
-        [options]="parkOptions()"
-        optionLabel="label"
-        optionValue="value"
-        [showClear]="true"
-        (ngModelChange)="onImmediateFilterChanged()"
-        [placeholder]="'admin.parkItems.parkFilter' | translate">
-      </p-select>
-    </label>
+  <div class="admin-filters-grid admin-filters-grid--items" [class.admin-filters-grid--without-park]="!showParkFilter">
+    @if (showParkFilter) {
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.parkItems.parkFilter' | translate }}</span>
+        <p-select
+          [(ngModel)]="localSelectedParkId"
+          [options]="parkOptions()"
+          optionLabel="label"
+          optionValue="value"
+          [showClear]="true"
+          (ngModelChange)="onImmediateFilterChanged()"
+          [placeholder]="'admin.parkItems.parkFilter' | translate">
+        </p-select>
+      </label>
+    }
 
     <label class="admin-field">
       <span class="admin-field-label">{{ 'admin.filters.visibility' | translate }}</span>
@@ -92,7 +106,7 @@
     </label>
   </div>
 
-  @if (selectedCount() > 0) {
+  @if (showBulkActions && selectedCount() > 0) {
     <div class="admin-bulk-bar">
       <span>{{ 'admin.bulk.selected' | translate:{ count: selectedCount() } }}</span>
       <div class="admin-bulk-bar__actions">
@@ -111,18 +125,21 @@
     [value]="rows()"
     [loading]="loading()"
     responsiveLayout="scroll"
-    sortField="parkName"
-    [sortOrder]="1"
+    [sortField]="sortField === 'parkId' ? 'parkName' : sortField"
+    [sortOrder]="sortOrder"
+    (onSort)="onSortChange($event)"
     styleClass="admin-data-table">
     <ng-template pTemplate="header">
       <tr>
         <th class="admin-selection-column">
           <input type="checkbox" [checked]="areAllCurrentItemsSelected()" (change)="onAllSelectionChange($event)" aria-label="Select all park items" />
         </th>
-        <th pSortableColumn="parkName">
-          {{ 'admin.parkItems.columns.park' | translate }}
-          <p-sortIcon field="parkName"></p-sortIcon>
-        </th>
+        @if (showParkColumn) {
+          <th pSortableColumn="parkName">
+            {{ 'admin.parkItems.columns.park' | translate }}
+            <p-sortIcon field="parkName"></p-sortIcon>
+          </th>
+        }
         <th pSortableColumn="name">
           {{ 'admin.parkItems.columns.item' | translate }}
           <p-sortIcon field="name"></p-sortIcon>
@@ -131,9 +148,24 @@
           {{ 'admin.parkItems.columns.type' | translate }}
           <p-sortIcon field="type"></p-sortIcon>
         </th>
-        <th>{{ 'admin.parkItems.columns.category' | translate }}</th>
-        <th>{{ 'admin.parkItems.columns.reviewStatus' | translate }}</th>
-        <th>{{ 'admin.parkItems.columns.visibility' | translate }}</th>
+        <th pSortableColumn="category">
+          {{ 'admin.parkItems.columns.category' | translate }}
+          <p-sortIcon field="category"></p-sortIcon>
+        </th>
+        @if (showZoneColumn) {
+          <th pSortableColumn="zoneId">
+            {{ 'admin.parks.items.zone' | translate }}
+            <p-sortIcon field="zoneId"></p-sortIcon>
+          </th>
+        }
+        <th pSortableColumn="adminReviewStatus">
+          {{ 'admin.parkItems.columns.reviewStatus' | translate }}
+          <p-sortIcon field="adminReviewStatus"></p-sortIcon>
+        </th>
+        <th pSortableColumn="isVisible">
+          {{ 'admin.parkItems.columns.visibility' | translate }}
+          <p-sortIcon field="isVisible"></p-sortIcon>
+        </th>
         <th>{{ 'admin.parkItems.columns.actions' | translate }}</th>
       </tr>
     </ng-template>
@@ -143,10 +175,15 @@
         <td class="admin-selection-column">
           <input type="checkbox" [checked]="isItemSelected(row)" (change)="onItemSelectionChange(row, $event)" [attr.aria-label]="row.name" />
         </td>
-        <td>{{ row.parkName }}</td>
+        @if (showParkColumn) {
+          <td>{{ row.parkName }}</td>
+        }
         <td><strong class="admin-row-title">{{ row.name }}</strong></td>
         <td>{{ getTypeLabelKey(row.type) | translate }}</td>
         <td>{{ getCategoryLabelKey(row.category) | translate }}</td>
+        @if (showZoneColumn) {
+          <td>{{ getZoneLabel(row.zoneId) }}</td>
+        }
         <td>
           <p-tag
             [value]="getStatusLabelKey(row.adminReviewStatus) | translate"
@@ -160,24 +197,36 @@
           </p-tag>
         </td>
         <td>
-          <button
-            pButton
-            type="button"
-            icon="pi pi-pencil"
-            class="p-button-sm"
-            (click)="goToEdit(row)"
-            [label]="'actions.edit' | translate">
-          </button>
+          <div class="admin-row-actions">
+            <button
+              pButton
+              type="button"
+              icon="pi pi-pencil"
+              class="p-button-sm"
+              (click)="goToEdit(row)"
+              [label]="'actions.edit' | translate">
+            </button>
+            @if (showDeleteAction) {
+              <button
+                pButton
+                type="button"
+                icon="pi pi-trash"
+                class="p-button-sm p-button-danger p-button-outlined"
+                (click)="deleteRow(row)"
+                [label]="'actions.delete' | translate">
+              </button>
+            }
+          </div>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="8">
+        <td [attr.colspan]="getColumnSpan()">
           <app-empty-state
             [compact]="true"
             titleKey="common.emptyTitle"
-            messageKey="admin.parkItems.empty">
+            [messageKey]="emptyMessageKey">
           </app-empty-state>
         </td>
       </tr>

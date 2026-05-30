@@ -7,6 +7,7 @@ import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
+import { ParkItemAdminSortField } from '@data-access/park-items/park-items-api-endpoints';
 import { AdminParkItemsIndexStateFacade } from '@features/admin/park-items/state/admin-park-items-index-state.facade';
 import { AdminParkItemsIndexViewComponent } from './admin-park-items-index-view.component';
 import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
@@ -32,6 +33,8 @@ export class AdminParkItemsIndexComponent implements OnInit {
   protected readonly categoryFilter = this.stateFacade.categoryFilter;
   protected readonly typeFilter = this.stateFacade.typeFilter;
   protected readonly pageSize = this.stateFacade.pageSize;
+  protected readonly sortField = this.stateFacade.sortField;
+  protected readonly sortOrder = this.stateFacade.sortOrder;
   protected readonly selectedItemIds = signal<string[]>([]);
   protected readonly selectedCount = computed(() => this.selectedItemIds().length);
 
@@ -61,6 +64,11 @@ export class AdminParkItemsIndexComponent implements OnInit {
   onPageChange(event: { page?: number; rows?: number }): void {
     this.selectedItemIds.set([]);
     this.stateFacade.updatePage(event);
+  }
+
+  onSortChange(event: { sortBy: ParkItemAdminSortField; sortOrder: 1 | -1 }): void {
+    this.selectedItemIds.set([]);
+    this.stateFacade.updateSort(event);
   }
 
   getCategoryLabelKey(category: string | number | null | undefined): string {

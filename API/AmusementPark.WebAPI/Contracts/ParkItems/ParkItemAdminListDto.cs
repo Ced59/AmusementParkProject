@@ -13,6 +13,8 @@ public sealed class ParkItemAdminListDto
 
     public string ParkName { get; set; } = string.Empty;
 
+    public string? ZoneId { get; set; }
+
     public string Name { get; set; } = string.Empty;
 
     public ParkItemCategoryDto Category { get; set; }
