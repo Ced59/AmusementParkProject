@@ -292,3 +292,236 @@
     justify-content: flex-start;
   }
 }
+
+/* Admin mobile hardening: turn dense PrimeNG tables into readable cards without losing columns. */
+.admin-data-table code,
+.admin-mini-table code {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.admin-data-table .p-datatable-wrapper {
+  border-radius: inherit;
+}
+
+.admin-data-table .p-datatable-tbody > tr > td[data-label]::before {
+  display: none;
+}
+
+.admin-row-actions,
+.admin-mobile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.admin-list-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@media (max-width: 760px) {
+  .admin-list-card .p-card-body {
+    padding: 1rem;
+  }
+
+  .admin-list-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .admin-list-header__actions,
+  .admin-toolbar__actions,
+  .admin-bulk-bar__actions,
+  .admin-row-actions,
+  .admin-mobile-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .admin-toolbar__actions .p-button,
+  .admin-bulk-bar__actions .p-button,
+  .admin-row-actions .p-button,
+  .admin-mobile-actions .p-button,
+  .admin-list-header__actions .p-button,
+  .create-park-container .p-button,
+  .actions-cell .p-button,
+  .col-actions .p-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .admin-data-table.p-datatable {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .admin-data-table .p-datatable-wrapper {
+    overflow: visible;
+  }
+
+  .admin-data-table .p-datatable-table,
+  .admin-data-table .p-datatable-thead,
+  .admin-data-table .p-datatable-tbody,
+  .admin-data-table .p-datatable-tbody > tr,
+  .admin-data-table .p-datatable-tbody > tr > td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-data-table .p-datatable-thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .admin-data-table .p-datatable-tbody {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .admin-data-table .p-datatable-tbody > tr {
+    display: grid;
+    gap: 0;
+    padding: 0.85rem;
+    border: 1px solid var(--app-border, var(--border));
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--app-card-bg, var(--bg-card)) 92%, transparent), color-mix(in srgb, var(--app-card-bg-2, var(--bg-card-2)) 98%, transparent));
+    box-shadow: var(--shadow-card);
+  }
+
+  .admin-data-table .p-datatable-tbody > tr > td {
+    min-width: 0;
+    padding: 0.65rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--app-border, var(--border));
+    color: var(--app-text, var(--text));
+    overflow-wrap: anywhere;
+  }
+
+  .admin-data-table .p-datatable-tbody > tr > td:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .admin-data-table .p-datatable-tbody > tr > td[data-label] {
+    display: grid;
+    grid-template-columns: minmax(7.25rem, 38%) minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  .admin-data-table .p-datatable-tbody > tr > td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--app-text-faint, var(--text-faint));
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .admin-data-table .p-datatable-tbody > tr > td.admin-selection-column,
+  .admin-data-table .p-datatable-tbody > tr > td.col-avatar {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .admin-data-table .p-datatable-tbody > tr > td.col-actions,
+  .admin-data-table .p-datatable-tbody > tr > td.actions-cell {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .admin-data-table .p-tag,
+  .admin-data-table p-tag {
+    max-width: 100%;
+  }
+
+  .admin-data-table .p-toggleswitch {
+    justify-self: start;
+  }
+
+  .admin-data-table .p-paginator,
+  .admin-list-card .p-paginator {
+    justify-content: center;
+  }
+
+  .admin-data-table .p-paginator .p-paginator-pages,
+  .admin-list-card .p-paginator .p-paginator-pages {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .admin-mini-table,
+  .admin-mini-table thead,
+  .admin-mini-table tbody,
+  .admin-mini-table tr,
+  .admin-mini-table th,
+  .admin-mini-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-mini-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .admin-mini-table tbody {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .admin-mini-table tr {
+    padding: 0.65rem;
+    border: 1px solid var(--app-border, var(--border));
+    border-radius: var(--radius-md);
+    background: rgba(255, 210, 140, 0.04);
+  }
+
+  .admin-mini-table td {
+    display: grid;
+    grid-template-columns: minmax(6.5rem, 36%) minmax(0, 1fr);
+    gap: 0.7rem;
+    border-top: 0;
+    border-bottom: 1px solid var(--app-border, var(--border));
+  }
+
+  .admin-mini-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .admin-mini-table td[data-label]::before {
+    content: attr(data-label);
+    color: var(--app-text-faint, var(--text-faint));
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 520px) {
+  .admin-data-table .p-datatable-tbody > tr > td[data-label],
+  .admin-mini-table td {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}

@@ -87,14 +87,14 @@
         <td class="admin-selection-column">
           <input type="checkbox" [checked]="isOperatorSelected(parkOperator)" (change)="onOperatorSelectionChange(parkOperator, $event)" [attr.aria-label]="parkOperator.name" />
         </td>
-        <td><strong class="admin-row-title">{{ parkOperator.name }}</strong></td>
-        <td>
+        <td [attr.data-label]="'admin.operators.name' | translate"><strong class="admin-row-title">{{ parkOperator.name }}</strong></td>
+        <td [attr.data-label]="'admin.operators.reviewStatus' | translate">
           <p-tag
             [value]="getStatusLabelKey(parkOperator.adminReviewStatus) | translate"
             [severity]="getStatusSeverity(parkOperator.adminReviewStatus)">
           </p-tag>
         </td>
-        <td>
+        <td [attr.data-label]="'admin.operators.actions' | translate">
           <a
             pButton
             type="button"

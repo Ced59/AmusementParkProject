@@ -147,9 +147,9 @@
                 <tbody>
                   @for (field of change.fields; track field.field) {
                     <tr>
-                      <td>{{ field.field }}</td>
-                      <td><code>{{ field.oldValue || '∅' }}</code></td>
-                      <td><code>{{ field.newValue || '∅' }}</code></td>
+                      <td [attr.data-label]="'admin.parkGraphUpserts.result.field' | translate">{{ field.field }}</td>
+                      <td [attr.data-label]="'admin.parkGraphUpserts.result.oldValue' | translate"><code>{{ field.oldValue || '∅' }}</code></td>
+                      <td [attr.data-label]="'admin.parkGraphUpserts.result.newValue' | translate"><code>{{ field.newValue || '∅' }}</code></td>
                     </tr>
                   }
                 </tbody>

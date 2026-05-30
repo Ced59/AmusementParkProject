@@ -57,17 +57,17 @@
 
     <ng-template pTemplate="body" let-founder>
       <tr>
-        <td><strong class="admin-row-title">{{ founder.name }}</strong></td>
-        <td>{{ founder.occupation || '—' }}</td>
-        <td>{{ hasLifeDates(founder) ? getLifeDates(founder) : '—' }}</td>
-        <td>
+        <td [attr.data-label]="'admin.parkFounders.name' | translate"><strong class="admin-row-title">{{ founder.name }}</strong></td>
+        <td [attr.data-label]="'admin.references.fields.occupation' | translate">{{ founder.occupation || '—' }}</td>
+        <td [attr.data-label]="'admin.parkFounders.lifeDates' | translate">{{ hasLifeDates(founder) ? getLifeDates(founder) : '—' }}</td>
+        <td [attr.data-label]="'admin.references.fields.nationalityCountryCode' | translate">
           @if (founder.nationalityCountryCode) {
             <p-tag [value]="founder.nationalityCountryCode" severity="secondary"></p-tag>
           } @else {
             <span>—</span>
           }
         </td>
-        <td>
+        <td [attr.data-label]="'admin.parkFounders.actions' | translate">
           <a
             pButton
             type="button"

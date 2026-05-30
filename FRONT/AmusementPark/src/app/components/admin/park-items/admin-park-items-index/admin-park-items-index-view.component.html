@@ -176,27 +176,27 @@
           <input type="checkbox" [checked]="isItemSelected(row)" (change)="onItemSelectionChange(row, $event)" [attr.aria-label]="row.name" />
         </td>
         @if (showParkColumn) {
-          <td>{{ row.parkName }}</td>
+          <td [attr.data-label]="'admin.parkItems.columns.park' | translate">{{ row.parkName }}</td>
         }
-        <td><strong class="admin-row-title">{{ row.name }}</strong></td>
-        <td>{{ getTypeLabelKey(row.type) | translate }}</td>
-        <td>{{ getCategoryLabelKey(row.category) | translate }}</td>
+        <td [attr.data-label]="'admin.parkItems.columns.item' | translate"><strong class="admin-row-title">{{ row.name }}</strong></td>
+        <td [attr.data-label]="'admin.parkItems.columns.type' | translate">{{ getTypeLabelKey(row.type) | translate }}</td>
+        <td [attr.data-label]="'admin.parkItems.columns.category' | translate">{{ getCategoryLabelKey(row.category) | translate }}</td>
         @if (showZoneColumn) {
-          <td>{{ getZoneLabel(row.zoneId) }}</td>
+          <td [attr.data-label]="'admin.parks.items.zone' | translate">{{ getZoneLabel(row.zoneId) }}</td>
         }
-        <td>
+        <td [attr.data-label]="'admin.parkItems.columns.reviewStatus' | translate">
           <p-tag
             [value]="getStatusLabelKey(row.adminReviewStatus) | translate"
             [severity]="getStatusSeverity(row.adminReviewStatus)">
           </p-tag>
         </td>
-        <td>
+        <td [attr.data-label]="'admin.parkItems.columns.visibility' | translate">
           <p-tag
             [value]="row.isVisible ? ('admin.visible' | translate) : ('admin.hidden' | translate)"
             [severity]="row.isVisible ? 'success' : 'warn'">
           </p-tag>
         </td>
-        <td>
+        <td [attr.data-label]="'admin.parkItems.columns.actions' | translate">
           <div class="admin-row-actions">
             <button
               pButton

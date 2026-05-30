@@ -141,3 +141,28 @@
 .p-fieldset .p-fieldset-content {
   padding-top: 1.25rem;
 }
+
+@media (max-width: 760px) {
+  .p-tablist,
+  .p-tablist-content,
+  .p-tablist-tab-list {
+    overflow-x: auto !important;
+    scrollbar-width: thin;
+  }
+
+  .p-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    min-height: 2.75rem;
+  }
+
+  .p-tabpanels,
+  .p-tabpanel {
+    padding-inline: 0 !important;
+  }
+
+  .p-dialog {
+    width: calc(100vw - 1rem) !important;
+    max-width: calc(100vw - 1rem) !important;
+  }
+}

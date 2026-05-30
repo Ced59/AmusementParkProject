@@ -47,10 +47,10 @@
             size="normal">
           </p-avatar>
         </td>
-        <td><strong class="admin-row-title">{{ user.email }}</strong></td>
-        <td>{{ user.firstName }}</td>
-        <td>{{ user.lastName }}</td>
-        <td>
+        <td [attr.data-label]="'admin.users.columns.email' | translate"><strong class="admin-row-title">{{ user.email }}</strong></td>
+        <td [attr.data-label]="'admin.users.columns.firstName' | translate">{{ user.firstName }}</td>
+        <td [attr.data-label]="'admin.users.columns.lastName' | translate">{{ user.lastName }}</td>
+        <td [attr.data-label]="'admin.users.columns.roles' | translate">
           @for (role of user.roles; track role) {
             <p-tag
               [value]="role"
@@ -58,13 +58,13 @@
             </p-tag>
           }
         </td>
-        <td>
+        <td [attr.data-label]="'admin.users.columns.status' | translate">
           <p-tag
             [severity]="user.isBlocked ? 'danger' : 'success'"
             [value]="(user.isBlocked ? 'admin.users.status.blocked' : 'admin.users.status.active') | translate">
           </p-tag>
         </td>
-        <td class="col-actions">
+        <td class="col-actions" [attr.data-label]="'admin.users.columns.actions' | translate">
           <button
             pButton
             type="button"
