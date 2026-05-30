@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, Signal, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  Signal,
+  SimpleChanges,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -12,12 +21,20 @@ import { Tag } from 'primeng/tag';
 import { ButtonDirective } from 'primeng/button';
 import { PaginationComponent } from '../../../shared/pagination/pagination.component';
 import { EmptyStateComponent } from '../../../shared/empty-state/empty-state.component';
-import { AdminReviewStatus, getAdminReviewStatusSeverity, getAdminReviewStatusTranslationKey } from '@app/models/admin/admin-review-status';
+import {
+  AdminReviewStatus,
+  getAdminReviewStatusSeverity,
+  getAdminReviewStatusTranslationKey,
+} from '@app/models/admin/admin-review-status';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
-import { PARK_ITEM_CATEGORY_OPTIONS, PARK_ITEM_TYPE_OPTIONS, TranslationOption } from '@shared/utils/display/display-options';
+import {
+  PARK_ITEM_CATEGORY_OPTIONS,
+  PARK_ITEM_TYPE_OPTIONS,
+  TranslationOption,
+} from '@shared/utils/display/display-options';
 import { ParkItemAdminSortField } from '@data-access/park-items/park-items-api-endpoints';
 
 interface PrimeSortEventLike {
@@ -30,7 +47,21 @@ interface PrimeSortEventLike {
   templateUrl: './admin-park-items-index-view.component.html',
   styleUrls: ['./admin-park-items-index.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Bind, Card, FormsModule, InputText, Select, TableModule, PrimeTemplate, Tag, ButtonDirective, RouterLink, TranslateModule, PaginationComponent, EmptyStateComponent]
+  imports: [
+    Bind,
+    Card,
+    FormsModule,
+    InputText,
+    Select,
+    TableModule,
+    PrimeTemplate,
+    Tag,
+    ButtonDirective,
+    RouterLink,
+    TranslateModule,
+    PaginationComponent,
+    EmptyStateComponent,
+  ],
 })
 export class AdminParkItemsIndexViewComponent implements OnChanges {
   @Input() state!: Signal<ScreenState<unknown, string>>;
@@ -44,6 +75,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   @Input() adminReviewStatusFilter: AdminReviewStatus | null = null;
   @Input() categoryFilter: ParkItemCategory | null = null;
   @Input() typeFilter: ParkItemType | null = null;
+  @Input() currentPage: number = 1;
   @Input() pageSize: number = 20;
   @Input() sortField: ParkItemAdminSortField = 'default';
   @Input() sortOrder: 1 | -1 = 1;
@@ -62,9 +94,14 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   @Input() showCreateButton: boolean = false;
   @Input() createButtonLabelKey: string = 'admin.parks.items.create';
   @Input() createButtonRouterLink: unknown[] | null = null;
-  @Input() getCategoryLabelKeyFn: (category: string | number | null | undefined) => string = () => 'parkExplorer.categories.other';
-  @Input() getTypeLabelKeyFn: (itemType: string | number | null | undefined) => string = () => 'parkExplorer.types.other';
-  @Input() getZoneLabelFn: (zoneId: string | null | undefined) => string = () => '—';
+  @Input() getCategoryLabelKeyFn: (
+    category: string | number | null | undefined,
+  ) => string = () => 'parkExplorer.categories.other';
+  @Input() getTypeLabelKeyFn: (
+    itemType: string | number | null | undefined,
+  ) => string = () => 'parkExplorer.types.other';
+  @Input() getZoneLabelFn: (zoneId: string | null | undefined) => string = () =>
+    '—';
 
   @Output() filtersChanged: EventEmitter<{
     selectedParkId: string | null;
@@ -81,14 +118,32 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     category: ParkItemCategory | null;
     type: ParkItemType | null;
   }>();
-  @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
-  @Output() sortChanged: EventEmitter<{ sortBy: ParkItemAdminSortField; sortOrder: 1 | -1 }> = new EventEmitter<{ sortBy: ParkItemAdminSortField; sortOrder: 1 | -1 }>();
-  @Output() editClicked: EventEmitter<ParkItemAdminRow> = new EventEmitter<ParkItemAdminRow>();
-  @Output() deleteClicked: EventEmitter<ParkItemAdminRow> = new EventEmitter<ParkItemAdminRow>();
-  @Output() itemSelectionChanged: EventEmitter<{ itemId: string; selected: boolean }> = new EventEmitter<{ itemId: string; selected: boolean }>();
-  @Output() allItemsSelectionChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() bulkVisibilityChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() bulkStatusChanged: EventEmitter<AdminReviewStatus> = new EventEmitter<AdminReviewStatus>();
+  @Output() pageChanged: EventEmitter<{
+    page?: number;
+    rows?: number;
+    first?: number;
+  }> = new EventEmitter<{ page?: number; rows?: number; first?: number }>();
+  @Output() sortChanged: EventEmitter<{
+    sortBy: ParkItemAdminSortField;
+    sortOrder: 1 | -1;
+  }> = new EventEmitter<{
+    sortBy: ParkItemAdminSortField;
+    sortOrder: 1 | -1;
+  }>();
+  @Output() editClicked: EventEmitter<ParkItemAdminRow> =
+    new EventEmitter<ParkItemAdminRow>();
+  @Output() deleteClicked: EventEmitter<ParkItemAdminRow> =
+    new EventEmitter<ParkItemAdminRow>();
+  @Output() itemSelectionChanged: EventEmitter<{
+    itemId: string;
+    selected: boolean;
+  }> = new EventEmitter<{ itemId: string; selected: boolean }>();
+  @Output() allItemsSelectionChanged: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
+  @Output() bulkVisibilityChanged: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
+  @Output() bulkStatusChanged: EventEmitter<AdminReviewStatus> =
+    new EventEmitter<AdminReviewStatus>();
   @Output() selectionCleared: EventEmitter<void> = new EventEmitter<void>();
 
   protected localSelectedParkId: string | null = null;
@@ -97,8 +152,12 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   protected localAdminReviewStatusFilter: AdminReviewStatus | null = null;
   protected localCategoryFilter: ParkItemCategory | null = null;
   protected localTypeFilter: ParkItemType | null = null;
-  protected readonly categoryOptions: ReadonlyArray<TranslationOption<ParkItemCategory>> = PARK_ITEM_CATEGORY_OPTIONS;
-  protected readonly typeOptions: ReadonlyArray<TranslationOption<ParkItemType>> = PARK_ITEM_TYPE_OPTIONS;
+  protected readonly categoryOptions: ReadonlyArray<
+    TranslationOption<ParkItemCategory>
+  > = PARK_ITEM_CATEGORY_OPTIONS;
+  protected readonly typeOptions: ReadonlyArray<
+    TranslationOption<ParkItemType>
+  > = PARK_ITEM_TYPE_OPTIONS;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedParkId']) {
@@ -123,12 +182,14 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
 
   applyFilters(): void {
     this.filtersChanged.emit({
-      selectedParkId: this.showParkFilter ? this.localSelectedParkId : this.selectedParkId,
+      selectedParkId: this.showParkFilter
+        ? this.localSelectedParkId
+        : this.selectedParkId,
       searchTerm: this.localSearchTerm,
       isVisible: this.localVisibilityFilter,
       adminReviewStatus: this.localAdminReviewStatusFilter,
       category: this.localCategoryFilter,
-      type: this.localTypeFilter
+      type: this.localTypeFilter,
     });
   }
 
@@ -136,8 +197,16 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     this.applyFilters();
   }
 
-  onPageChange(event: { page?: number; rows?: number }): void {
-    this.pageChanged.emit(event);
+  onPageChange(event: { page?: number; rows?: number; first?: number }): void {
+    const rows: number = event.rows ?? this.pageSize;
+    const pageIndex: number =
+      event.page ?? Math.floor((event.first ?? 0) / Math.max(rows, 1));
+
+    this.pageChanged.emit({
+      page: pageIndex,
+      rows,
+      first: event.first ?? pageIndex * rows,
+    });
   }
 
   onSortChange(event: PrimeSortEventLike): void {
@@ -171,8 +240,15 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   }
 
   areAllCurrentItemsSelected(): boolean {
-    const visibleIds: string[] = this.rows().map((row: ParkItemAdminRow) => row.id).filter((itemId: string | undefined): itemId is string => !!itemId);
-    return visibleIds.length > 0 && visibleIds.every((itemId: string) => this.selectedItemIds().includes(itemId));
+    const visibleIds: string[] = this.rows()
+      .map((row: ParkItemAdminRow) => row.id)
+      .filter((itemId: string | undefined): itemId is string => !!itemId);
+    return (
+      visibleIds.length > 0 &&
+      visibleIds.every((itemId: string) =>
+        this.selectedItemIds().includes(itemId),
+      )
+    );
   }
 
   onItemSelectionChange(row: ParkItemAdminRow, event: Event): void {
@@ -180,11 +256,16 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
       return;
     }
 
-    this.itemSelectionChanged.emit({ itemId: row.id, selected: (event.target as HTMLInputElement).checked });
+    this.itemSelectionChanged.emit({
+      itemId: row.id,
+      selected: (event.target as HTMLInputElement).checked,
+    });
   }
 
   onAllSelectionChange(event: Event): void {
-    this.allItemsSelectionChanged.emit((event.target as HTMLInputElement).checked);
+    this.allItemsSelectionChanged.emit(
+      (event.target as HTMLInputElement).checked,
+    );
   }
 
   makeSelectedVisible(): void {
@@ -215,12 +296,18 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     this.selectionCleared.emit();
   }
 
-  getStatusSeverity(status: AdminReviewStatus | null | undefined): 'success' | 'info' | 'warn' | 'danger' {
+  getStatusSeverity(
+    status: AdminReviewStatus | null | undefined,
+  ): 'success' | 'info' | 'warn' | 'danger' {
     return getAdminReviewStatusSeverity(status);
   }
 
   getStatusLabelKey(status: AdminReviewStatus | null | undefined): string {
     return getAdminReviewStatusTranslationKey(status);
+  }
+
+  getPaginationFirst(): number {
+    return Math.max(this.currentPage - 1, 0) * this.pageSize;
   }
 
   getColumnSpan(): number {
@@ -237,8 +324,12 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     return columnCount;
   }
 
-  private mapTableSortField(field: string | string[] | null | undefined): ParkItemAdminSortField {
-    const rawField: string | undefined = Array.isArray(field) ? field[0] : field ?? undefined;
+  private mapTableSortField(
+    field: string | string[] | null | undefined,
+  ): ParkItemAdminSortField {
+    const rawField: string | undefined = Array.isArray(field)
+      ? field[0]
+      : (field ?? undefined);
 
     switch (rawField) {
       case 'name':

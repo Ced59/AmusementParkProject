@@ -1,0 +1,458 @@
+/* Admin editor mobile pass: keep every administrative create/edit screen usable on phones without hiding fields. */
+.admin-shell {
+  .admin-park-edit,
+  .reference-edit-page,
+  .admin-user-page,
+  .park-graph-upserts,
+  .admin-localized-content,
+  app-admin-park-item-edit-form,
+  app-admin-park-zone-edit {
+    min-width: 0;
+  }
+
+  .admin-editor-card.p-card,
+  .reference-edit-page > .p-card,
+  .admin-park-edit > .p-card,
+  app-admin-park-item-edit-form > .p-card,
+  app-admin-park-zone-edit > .p-card {
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+  }
+
+  .admin-editor-card .p-card-body,
+  .admin-editor-card .p-card-content,
+  .reference-edit-page > .p-card .p-card-body,
+  .reference-edit-page > .p-card .p-card-content,
+  .admin-park-edit > .p-card .p-card-body,
+  .admin-park-edit > .p-card .p-card-content,
+  app-admin-park-item-edit-form > .p-card .p-card-body,
+  app-admin-park-item-edit-form > .p-card .p-card-content,
+  app-admin-park-zone-edit > .p-card .p-card-body,
+  app-admin-park-zone-edit > .p-card .p-card-content {
+    min-width: 0;
+  }
+
+  .page-header,
+  .editor-head,
+  .result-head,
+  .section-header,
+  .profile-header,
+  .admin-user-toolbar {
+    min-width: 0;
+  }
+
+  .page-header h1,
+  .page-header h2,
+  .section-header h3,
+  .editor-head h2,
+  .result-head h2,
+  .reference-edit-page h2,
+  .admin-user-page h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .grid.formgrid,
+  .form-grid,
+  .settings-grid,
+  .status-grid,
+  .metrics-grid,
+  .roles-grid,
+  .security-grid,
+  .photo-upload-grid,
+  .locations-layout,
+  .admin-localized-content__grid,
+  .park-graph-upserts__grid {
+    min-width: 0;
+  }
+
+  .grid.formgrid > *,
+  .form-grid > *,
+  .settings-grid > *,
+  .status-grid > *,
+  .metrics-grid > *,
+  .roles-grid > *,
+  .security-grid > *,
+  .photo-upload-grid > *,
+  .locations-layout > *,
+  .admin-localized-content__grid > *,
+  .park-graph-upserts__grid > * {
+    min-width: 0;
+  }
+
+  .field,
+  .app-field,
+  .admin-field,
+  .file-field,
+  .height-requirement-field,
+  .setting-card,
+  .status-card,
+  .metric-card {
+    min-width: 0;
+  }
+
+  input[pInputText],
+  .p-inputtext,
+  .p-select,
+  .p-dropdown,
+  .p-multiselect,
+  .p-inputnumber,
+  .p-inputnumber-input,
+  select,
+  textarea,
+  .admin-input,
+  .app-input,
+  .app-select,
+  .json-editor,
+  .admin-localized-content__textarea {
+    max-width: 100%;
+  }
+
+  .p-select-label,
+  .p-dropdown-label,
+  .p-multiselect-label,
+  .selected-file-name,
+  .file-selected,
+  code {
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .field--wide,
+  .field-full {
+    min-width: 0;
+  }
+}
+
+.admin-shell .localized-rich-text-editor,
+.admin-shell .localized-text-input,
+.admin-shell app-localized-rich-text-editor,
+.admin-shell app-localized-text-input {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.admin-shell .localized-rich-text-editor .p-tablist,
+.admin-shell .localized-text-input .p-tablist,
+.admin-shell .localized-rich-text-editor .p-tablist-content,
+.admin-shell .localized-text-input .p-tablist-content,
+.admin-shell .localized-rich-text-editor .p-tablist-tab-list,
+.admin-shell .localized-text-input .p-tablist-tab-list {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.admin-shell .localized-rich-text-editor .p-editor-container,
+.admin-shell .localized-rich-text-editor .p-editor-content,
+.admin-shell .localized-rich-text-editor .ql-container,
+.admin-shell .localized-rich-text-editor .ql-editor {
+  max-width: 100%;
+}
+
+.admin-shell .localized-rich-text-editor .p-editor-toolbar,
+.admin-shell .localized-rich-text-editor .ql-toolbar {
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+}
+
+@media (max-width: 920px) {
+  .admin-shell {
+    .admin-park-edit.p-3,
+    .reference-edit-page {
+      padding-inline: 0 !important;
+    }
+
+    .admin-park-edit > .p-card .p-card-body,
+    .admin-park-edit > .p-card .p-card-content,
+    app-admin-park-item-edit-form > .p-card .p-card-body,
+    app-admin-park-item-edit-form > .p-card .p-card-content,
+    app-admin-park-zone-edit > .p-card .p-card-body,
+    app-admin-park-zone-edit > .p-card .p-card-content,
+    .reference-edit-page > .p-card .p-card-body,
+    .reference-edit-page > .p-card .p-card-content,
+    .admin-user-card .p-card-body,
+    .admin-user-card .p-card-content {
+      padding: clamp(0.85rem, 3vw, 1rem) !important;
+    }
+
+    .page-header,
+    .page-header__aside,
+    .profile-header,
+    .editor-head,
+    .result-head,
+    .admin-reference-images__header,
+    .admin-localized-content__editor-head,
+    .admin-localized-content__panel-header,
+    .management-links-card,
+    .visibility-card,
+    .access-condition-card__header,
+    .location-card__header,
+    .role-item,
+    .security-row,
+    .bulk-actions,
+    .filters-bar,
+    .file-input-row,
+    .park-search-row,
+    .park-result {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      align-items: stretch !important;
+      justify-content: stretch !important;
+    }
+
+    .page-header__aside,
+    .admin-user-toolbar,
+    .result-counts,
+    .bulk-actions__buttons,
+    .management-links,
+    .visibility-card__toggle,
+    .access-condition-card__actions,
+    .location-card__actions,
+    .location-editor-actions,
+    .editor-actions,
+    .section-actions,
+    .section-inline-actions,
+    .actions-row,
+    .form-actions,
+    .dialog-footer,
+    .admin-reference-images__meta {
+      width: 100%;
+      justify-content: stretch !important;
+    }
+
+    .editor-toolbar,
+    .editor-toolbar__actions,
+    .editor-toolbar__status {
+      width: 100%;
+      justify-content: stretch;
+    }
+
+    .editor-toolbar__status {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .grid.formgrid {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 0.85rem !important;
+      margin-inline: 0 !important;
+    }
+
+    .grid.formgrid > [class*='col-'],
+    .grid.formgrid > .field,
+    .form-grid > [class*='col-'],
+    .form-grid > .field {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 0 0 auto !important;
+      padding-inline: 0 !important;
+    }
+
+    .form-grid,
+    .settings-grid,
+    .status-grid,
+    .metrics-grid,
+    .roles-grid,
+    .security-grid,
+    .photo-upload-grid,
+    .height-requirement-grid,
+    .access-condition-type-create,
+    .locations-layout,
+    .admin-localized-content__grid,
+    .admin-localized-content__search-grid,
+    .park-graph-upserts__grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .field--status {
+      max-width: none !important;
+    }
+
+    .visibility-card__toggle {
+      justify-items: start;
+      white-space: normal !important;
+    }
+
+    .section-actions,
+    .section-inline-actions,
+    .actions-row,
+    .form-actions,
+    .location-editor-actions,
+    .editor-actions,
+    .management-links,
+    .bulk-actions__buttons,
+    .dialog-footer,
+    .admin-reference-images__meta {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 0.65rem !important;
+    }
+
+    .section-actions .p-button,
+    .section-inline-actions .p-button,
+    .actions-row .p-button,
+    .form-actions .p-button,
+    .location-editor-actions .p-button,
+    .editor-toolbar__actions .p-button,
+    .editor-actions .p-button,
+    .management-links .p-button,
+    .bulk-actions__buttons .p-button,
+    .admin-user-toolbar .p-button,
+    .admin-reference-images__header .p-button,
+    .admin-reference-images__meta .p-button,
+    .dialog-footer .p-button,
+    .btn-nav,
+    .app-button {
+      width: 100% !important;
+      justify-content: center !important;
+      text-align: center;
+    }
+
+    .p-tabs,
+    .p-tabpanels,
+    .p-tabpanel,
+    .p-panel,
+    .p-fieldset,
+    .p-card,
+    .inner-card,
+    .form-section,
+    .location-card,
+    .access-condition-card,
+    .admin-card {
+      min-width: 0;
+    }
+
+    .p-tabpanels,
+    .p-tabpanel {
+      padding-inline: 0 !important;
+    }
+
+    .form-section,
+    .admin-card,
+    .access-height-card,
+    .inner-card .p-card-body,
+    .location-card .p-card-body {
+      padding: 0.85rem !important;
+    }
+
+    .profile-header {
+      text-align: left !important;
+    }
+
+    .profile-avatar-container {
+      justify-items: start;
+    }
+
+    .admin-reference-images__grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .admin-reference-images__meta strong {
+      white-space: normal !important;
+      overflow-wrap: anywhere;
+    }
+
+    .photo-preview,
+    .photo-history-preview,
+    .logo-preview,
+    .logo-history-preview,
+    .admin-reference-images__image {
+      max-width: 100% !important;
+    }
+
+    .leaflet-map-container {
+      height: min(70vh, 360px) !important;
+      border-radius: var(--radius-lg) !important;
+    }
+
+    .json-editor,
+    .admin-localized-content__textarea {
+      min-height: min(62vh, 28rem) !important;
+      font-size: 0.82rem !important;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .admin-shell {
+    .admin-page-title,
+    .admin-list-header h2,
+    .page-header h2,
+    .reference-edit-page h2 {
+      font-size: clamp(1.25rem, 8vw, 1.65rem) !important;
+      line-height: 1.08;
+    }
+
+    .admin-park-edit,
+    .reference-edit-page,
+    .admin-user-page,
+    .park-graph-upserts,
+    .admin-localized-content {
+      gap: 0.75rem;
+    }
+
+    .admin-park-edit > .p-card,
+    app-admin-park-item-edit-form > .p-card,
+    app-admin-park-zone-edit > .p-card,
+    .reference-edit-page > .p-card,
+    .admin-list-card,
+    .admin-card,
+    .form-section,
+    .management-links-card,
+    .visibility-card,
+    .admin-reference-images {
+      border-radius: var(--radius-lg) !important;
+    }
+
+    .admin-list-card .p-card-body,
+    .admin-list-card .p-card-content,
+    .admin-park-edit > .p-card .p-card-body,
+    app-admin-park-item-edit-form > .p-card .p-card-body,
+    app-admin-park-zone-edit > .p-card .p-card-body,
+    .reference-edit-page > .p-card .p-card-body {
+      padding: 0.75rem !important;
+    }
+
+    .tab-section,
+    .reference-form,
+    .profile-form,
+    .password-form,
+    .session-panel,
+    .import-form {
+      gap: 0.85rem !important;
+    }
+
+    .p-tab,
+    .p-button,
+    .btn-nav,
+    .app-button {
+      min-height: 2.65rem;
+    }
+
+    .p-inputtext,
+    .p-select,
+    .p-dropdown,
+    .p-multiselect,
+    .p-inputnumber-input,
+    select,
+    .admin-input,
+    .app-input,
+    .app-select {
+      min-height: 2.8rem;
+    }
+
+    .localized-rich-text-editor .p-editor-content,
+    .localized-rich-text-editor .ql-editor {
+      min-height: 14rem !important;
+    }
+
+    .drop-zone {
+      min-height: 12rem !important;
+      padding: 1rem !important;
+    }
+  }
+}

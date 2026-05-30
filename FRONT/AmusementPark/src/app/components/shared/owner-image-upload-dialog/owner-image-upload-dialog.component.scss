@@ -70,3 +70,28 @@
   justify-content: flex-end;
   gap: 0.75rem;
 }
+
+@media (max-width: 560px) {
+  .dialog-body {
+    gap: 0.85rem;
+  }
+
+  .drop-zone {
+    min-height: 12rem;
+    padding: 1rem;
+  }
+
+  .preview-image {
+    max-height: 14rem;
+  }
+
+  .dialog-footer {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  :host ::ng-deep .dialog-footer .p-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
