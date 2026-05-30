@@ -234,6 +234,7 @@
   </p-table>
 
   <app-pagination
+    [first]="getPaginationFirst()"
     [rows]="pageSize"
     [totalRecords]="totalRecords()"
     [rowsPerPageOptions]="[10, 20, 50, 100]"

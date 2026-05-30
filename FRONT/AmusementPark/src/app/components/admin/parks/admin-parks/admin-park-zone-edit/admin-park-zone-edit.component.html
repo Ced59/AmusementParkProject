@@ -1,4 +1,4 @@
-<p-card>
+<p-card styleClass="admin-editor-card admin-zone-editor-card">
   <h2>{{ (isEditMode ? 'admin.parks.zones.editTitle' : 'admin.parks.zones.createTitle') | translate }}</h2>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">

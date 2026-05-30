@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit, DestroyRef, computed, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  DestroyRef,
+  computed,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -16,7 +23,7 @@ import { AdminParkItemsIndexViewComponent } from '@app/components/admin/park-ite
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import {
   getParkItemCategoryTranslationKey,
-  getParkItemTypeTranslationKey
+  getParkItemTypeTranslationKey,
 } from '@shared/utils/display/display-label.helpers';
 
 @Component({
@@ -25,7 +32,7 @@ import {
   styleUrls: ['./admin-park-items.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AdminParkItemsStateFacade],
-  imports: [AdminParkItemsIndexViewComponent]
+  imports: [AdminParkItemsIndexViewComponent],
 })
 export class AdminParkItemsComponent implements OnInit {
   protected parkId: string = '';
@@ -36,15 +43,21 @@ export class AdminParkItemsComponent implements OnInit {
   protected readonly totalRecords = this.stateFacade.totalRecords;
   protected readonly searchTerm = this.stateFacade.searchTerm;
   protected readonly visibilityFilter = this.stateFacade.visibilityFilter;
-  protected readonly adminReviewStatusFilter = this.stateFacade.adminReviewStatusFilter;
+  protected readonly adminReviewStatusFilter =
+    this.stateFacade.adminReviewStatusFilter;
   protected readonly categoryFilter = this.stateFacade.categoryFilter;
   protected readonly typeFilter = this.stateFacade.typeFilter;
+  protected readonly currentPage = this.stateFacade.currentPage;
   protected readonly pageSize = this.stateFacade.pageSize;
   protected readonly sortField = this.stateFacade.sortField;
   protected readonly sortOrder = this.stateFacade.sortOrder;
   protected readonly selectedItemIds = signal<string[]>([]);
-  protected readonly selectedCount = computed(() => this.selectedItemIds().length);
-  protected readonly emptyParkOptions = signal<Array<{ label: string; value: string | null }>>([]);
+  protected readonly selectedCount = computed(
+    () => this.selectedItemIds().length,
+  );
+  protected readonly emptyParkOptions = signal<
+    Array<{ label: string; value: string | null }>
+  >([]);
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -52,22 +65,22 @@ export class AdminParkItemsComponent implements OnInit {
     private readonly parkItemsApiService: ParkItemsApiService,
     private readonly translateService: TranslateService,
     private readonly stateFacade: AdminParkItemsStateFacade,
-    private readonly destroyRef: DestroyRef
-  ) {
-  }
+    private readonly destroyRef: DestroyRef,
+  ) {}
 
   ngOnInit(): void {
-    this.currentLang = this.route.root.firstChild?.snapshot.params['lang'] ?? 'en';
+    this.currentLang =
+      this.route.root.firstChild?.snapshot.params['lang'] ?? 'en';
     this.parkId = this.route.snapshot.paramMap.get('idPark') ?? '';
     this.loadData();
   }
 
-  loadData(): void {
+  loadData(forceReload: boolean = false): void {
     if (!this.parkId) {
       return;
     }
 
-    this.stateFacade.loadData(this.parkId);
+    this.stateFacade.loadData(this.parkId, forceReload);
   }
 
   onFiltersChanged(filters: {
@@ -81,18 +94,30 @@ export class AdminParkItemsComponent implements OnInit {
     this.stateFacade.updateFilters(this.parkId, filters);
   }
 
-  onPageChange(event: { page?: number; rows?: number }): void {
+  onPageChange(event: { page?: number; rows?: number; first?: number }): void {
     this.selectedItemIds.set([]);
     this.stateFacade.updatePage(this.parkId, event);
   }
 
-  onSortChange(event: { sortBy: ParkItemAdminSortField; sortOrder: 1 | -1 }): void {
+  onSortChange(event: {
+    sortBy: ParkItemAdminSortField;
+    sortOrder: 1 | -1;
+  }): void {
     this.selectedItemIds.set([]);
     this.stateFacade.updateSort(this.parkId, event);
   }
 
   getCreateRouterLink(): unknown[] {
-    return ['/', this.currentLang, 'admin', 'parks', 'edit', this.parkId, 'items', 'new'];
+    return [
+      '/',
+      this.currentLang,
+      'admin',
+      'parks',
+      'edit',
+      this.parkId,
+      'items',
+      'new',
+    ];
   }
 
   getZoneName(zoneId?: string | null): string {
@@ -100,8 +125,12 @@ export class AdminParkItemsComponent implements OnInit {
       return '—';
     }
 
-    const zone: ParkZone | undefined = this.stateFacade.zones().find((item: ParkZone) => item.id === zoneId);
-    return resolveLocalizedValue(zone?.names, this.currentLang) ?? zone?.name ?? '—';
+    const zone: ParkZone | undefined = this.stateFacade
+      .zones()
+      .find((item: ParkZone) => item.id === zoneId);
+    return (
+      resolveLocalizedValue(zone?.names, this.currentLang) ?? zone?.name ?? '—'
+    );
   }
 
   getCategoryLabelKey(category: string | number | null | undefined): string {
@@ -121,28 +150,50 @@ export class AdminParkItemsComponent implements OnInit {
       return;
     }
 
-    this.router.navigate(['/', this.currentLang, 'admin', 'parks', 'edit', this.parkId, 'items', row.id]);
+    this.router.navigate([
+      '/',
+      this.currentLang,
+      'admin',
+      'parks',
+      'edit',
+      this.parkId,
+      'items',
+      row.id,
+    ]);
   }
 
   deleteItem(row: ParkItemAdminRow): void {
-    if (!row.id || !confirm(this.translateService.instant('admin.parks.items.deleteConfirm'))) {
+    if (
+      !row.id ||
+      !confirm(this.translateService.instant('admin.parks.items.deleteConfirm'))
+    ) {
       return;
     }
 
-    this.parkItemsApiService.deleteParkItem(row.id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: () => this.loadData(),
-      error: (error: unknown) => console.error('Error deleting park item', error)
-    });
+    this.parkItemsApiService
+      .deleteParkItem(row.id)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => this.loadData(true),
+        error: (error: unknown) =>
+          console.error('Error deleting park item', error),
+      });
   }
 
   onItemSelectionChanged(event: { itemId: string; selected: boolean }): void {
     const currentIds: string[] = this.selectedItemIds();
     if (event.selected) {
-      this.selectedItemIds.set(currentIds.includes(event.itemId) ? currentIds : [...currentIds, event.itemId]);
+      this.selectedItemIds.set(
+        currentIds.includes(event.itemId)
+          ? currentIds
+          : [...currentIds, event.itemId],
+      );
       return;
     }
 
-    this.selectedItemIds.set(currentIds.filter((itemId: string) => itemId !== event.itemId));
+    this.selectedItemIds.set(
+      currentIds.filter((itemId: string) => itemId !== event.itemId),
+    );
   }
 
   onAllItemsSelectionChanged(selected: boolean): void {
@@ -151,7 +202,11 @@ export class AdminParkItemsComponent implements OnInit {
       return;
     }
 
-    this.selectedItemIds.set(this.items().map((row: ParkItemAdminRow) => row.id).filter((itemId: string | undefined): itemId is string => !!itemId));
+    this.selectedItemIds.set(
+      this.items()
+        .map((row: ParkItemAdminRow) => row.id)
+        .filter((itemId: string | undefined): itemId is string => !!itemId),
+    );
   }
 
   async onBulkVisibilityChange(isVisible: boolean): Promise<void> {
@@ -162,7 +217,9 @@ export class AdminParkItemsComponent implements OnInit {
     await this.applyBulkAdministration({ isVisible });
   }
 
-  async onBulkStatusChange(adminReviewStatus: AdminReviewStatus): Promise<void> {
+  async onBulkStatusChange(
+    adminReviewStatus: AdminReviewStatus,
+  ): Promise<void> {
     if (this.selectedCount() === 0) {
       return;
     }
@@ -174,18 +231,26 @@ export class AdminParkItemsComponent implements OnInit {
     this.selectedItemIds.set([]);
   }
 
-  private async applyBulkAdministration(change: { isVisible?: boolean; adminReviewStatus?: AdminReviewStatus }): Promise<void> {
+  private async applyBulkAdministration(change: {
+    isVisible?: boolean;
+    adminReviewStatus?: AdminReviewStatus;
+  }): Promise<void> {
     try {
-      await firstValueFrom(this.stateFacade.updateBulkAdministration({
-        ids: this.selectedItemIds(),
-        isVisible: change.isVisible ?? null,
-        adminReviewStatus: change.adminReviewStatus ?? null
-      }));
+      await firstValueFrom(
+        this.stateFacade.updateBulkAdministration({
+          ids: this.selectedItemIds(),
+          isVisible: change.isVisible ?? null,
+          adminReviewStatus: change.adminReviewStatus ?? null,
+        }),
+      );
       this.selectedItemIds.set([]);
-      this.loadData();
+      this.loadData(true);
     } catch (error: unknown) {
-      console.error('Error applying bulk park item administration update', error);
-      this.loadData();
+      console.error(
+        'Error applying bulk park item administration update',
+        error,
+      );
+      this.loadData(true);
     }
   }
 }
