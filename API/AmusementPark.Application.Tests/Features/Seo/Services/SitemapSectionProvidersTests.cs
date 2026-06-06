@@ -107,21 +107,47 @@ public sealed class SitemapSectionProvidersTests
     }
 
     [Fact]
-    public async Task ParkItemsProvider_WhenItemParentParkIsNotPublic_ShouldSkipItem()
+    public async Task ParkItemsProvider_WhenVisibleItemHasVisibleParentPark_ShouldReturnUrlForEachLanguage()
     {
-        PagedResult<Park> parkPage = new PagedResult<Park>(new[]
+        PagedResult<ParkItem> itemPage = new PagedResult<ParkItem>(new[]
         {
-            new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+            new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Attraction familiale", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc) },
         }, 1, 10, 1);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        itemRepository.Setup(item => item.GetPageAsync(1, 10, null, null, false, true, null, null, null, null, It.IsAny<CancellationToken>(), ParkItemAdminSortField.Default, false)).ReturnsAsync(itemPage);
+        parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
+        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" }, MaxDynamicUrlsPerType = 10 };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale");
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ParkItemsProvider_WhenParentParkIsNotPublicOrMissing_ShouldSkipItems()
+    {
         PagedResult<ParkItem> itemPage = new PagedResult<ParkItem>(new[]
         {
             new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Attraction", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
-            new ParkItem { Id = "item-2", ParkId = "missing-park", Name = "Orphan", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
-        }, 1, 10, 2);
+            new ParkItem { Id = "item-2", ParkId = "hidden-park", Name = "Hidden parent", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+            new ParkItem { Id = "item-3", ParkId = "missing-park", Name = "Orphan", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+        }, 1, 10, 3);
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        parkRepository.Setup(item => item.GetPageAsync(1, 10, false, true, null, null, null, It.IsAny<CancellationToken>())).ReturnsAsync(parkPage);
         itemRepository.Setup(item => item.GetPageAsync(1, 10, null, null, false, true, null, null, null, null, It.IsAny<CancellationToken>(), ParkItemAdminSortField.Default, false)).ReturnsAsync(itemPage);
+        parkRepository.Setup(item => item.GetByIdsAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+                new Park { Id = "hidden-park", Name = "Hidden Park", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
+            });
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" }, MaxDynamicUrlsPerType = 10 };
 
@@ -129,5 +155,84 @@ public sealed class SitemapSectionProvidersTests
 
         SitemapUrlEntry url = Assert.Single(urls);
         Assert.Equal("/fr/park/park-1/visible-park/item/item-1/attraction", url.RelativePath);
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("missing", StringComparison.OrdinalIgnoreCase));
+    }
+
+    [Theory]
+    [InlineData("", "park-1", "Attraction", true, AdminReviewStatus.Validated)]
+    [InlineData("item-1", "", "Attraction", true, AdminReviewStatus.Validated)]
+    [InlineData("item-1", "park-1", "", true, AdminReviewStatus.Validated)]
+    [InlineData("item-1", "park-1", "Attraction", false, AdminReviewStatus.Validated)]
+    [InlineData("item-1", "park-1", "Attraction", true, AdminReviewStatus.NotRelevant)]
+    public async Task ParkItemsProvider_WhenItemIsNotPublic_ShouldSkipItem(string id, string parkId, string name, bool isVisible, AdminReviewStatus status)
+    {
+        PagedResult<ParkItem> itemPage = new PagedResult<ParkItem>(new[]
+        {
+            new ParkItem { Id = id, ParkId = parkId, Name = name, IsVisible = isVisible, AdminReviewStatus = status },
+        }, 1, 10, 1);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        itemRepository.Setup(item => item.GetPageAsync(1, 10, null, null, false, true, null, null, null, null, It.IsAny<CancellationToken>(), ParkItemAdminSortField.Default, false)).ReturnsAsync(itemPage);
+        parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => !ids.Any()), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Park>());
+        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" }, MaxDynamicUrlsPerType = 10 };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Empty(urls);
+    }
+
+    [Fact]
+    public async Task ParkItemsProvider_WhenMultipleVisibleItemsShareParents_ShouldReturnAllWithoutDuplicates()
+    {
+        PagedResult<ParkItem> itemPage = new PagedResult<ParkItem>(new[]
+        {
+            new ParkItem { Id = "item-1", ParkId = "park-2", Name = "Wood Coaster", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+            new ParkItem { Id = "item-2", ParkId = "park-1", Name = "Water Ride", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+            new ParkItem { Id = "item-3", ParkId = "park-2", Name = "Dark Ride", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+        }, 1, 50, 3);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        itemRepository.Setup(item => item.GetPageAsync(1, 50, null, null, false, true, null, null, null, null, It.IsAny<CancellationToken>(), ParkItemAdminSortField.Default, false)).ReturnsAsync(itemPage);
+        parkRepository.Setup(item => item.GetByIdsAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Park { Id = "park-1", Name = "Water Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+                new Park { Id = "park-2", Name = "Theme Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+            });
+        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" }, MaxDynamicUrlsPerType = 50 };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(3, urls.Count);
+        Assert.Equal(urls.Count, urls.Select(static url => url.RelativePath).Distinct(StringComparer.OrdinalIgnoreCase).Count());
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-2/theme-park/item/item-1/wood-coaster");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/water-park/item/item-2/water-ride");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-2/theme-park/item/item-3/dark-ride");
+    }
+
+    [Fact]
+    public async Task ParkItemsProvider_WhenParentParkIsOutsideFirstParkPage_ShouldStillReturnItemUrl()
+    {
+        PagedResult<ParkItem> itemPage = new PagedResult<ParkItem>(new[]
+        {
+            new ParkItem { Id = "item-99", ParkId = "park-99", Name = "Late Attraction", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+        }, 1, 10, 1);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        itemRepository.Setup(item => item.GetPageAsync(1, 10, null, null, false, true, null, null, null, null, It.IsAny<CancellationToken>(), ParkItemAdminSortField.Default, false)).ReturnsAsync(itemPage);
+        parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-99" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { new Park { Id = "park-99", Name = "Late Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
+        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" }, MaxDynamicUrlsPerType = 10 };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        SitemapUrlEntry url = Assert.Single(urls);
+        Assert.Equal("/fr/park/park-99/late-park/item/item-99/late-attraction", url.RelativePath);
+        parkRepository.Verify(repository => repository.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool?>(), It.IsAny<AdminReviewStatus?>(), It.IsAny<ParkType?>(), It.IsAny<string?>(), It.IsAny<CancellationToken>()), Times.Never);
     }
 }
