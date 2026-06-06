@@ -158,20 +158,6 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
 
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
         int limit = ParksSitemapSectionProvider.NormalizeDynamicLimit(context.MaxDynamicUrlsPerType);
-        PagedResult<Park> parkPage = await this.parkRepository.GetPageAsync(
-            1,
-            limit,
-            includeHidden: false,
-            isVisible: true,
-            adminReviewStatus: null,
-            type: null,
-            countryCode: null,
-            cancellationToken);
-
-        Dictionary<string, Park> visibleParkById = parkPage.Items
-            .Where(static park => ParksSitemapSectionProvider.IsPublicPark(park))
-            .ToDictionary(static park => park.Id!, static park => park, StringComparer.OrdinalIgnoreCase);
-
         PagedResult<ParkItem> itemPage = await this.parkItemRepository.GetPageAsync(
             1,
             limit,
@@ -185,8 +171,22 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
             manufacturerId: null,
             cancellationToken);
 
+        IReadOnlyCollection<ParkItem> publicItems = itemPage.Items
+            .Where(static item => IsPublicItem(item))
+            .ToList();
+
+        IReadOnlyCollection<string> parentParkIds = publicItems
+            .Select(static item => item.ParkId)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
+        IReadOnlyCollection<Park> parentParks = await this.parkRepository.GetByIdsAsync(parentParkIds, cancellationToken);
+        Dictionary<string, Park> visibleParkById = parentParks
+            .Where(static park => ParksSitemapSectionProvider.IsPublicPark(park))
+            .ToDictionary(static park => park.Id!, static park => park, StringComparer.OrdinalIgnoreCase);
+
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
-        foreach (ParkItem item in itemPage.Items.Where(static item => IsPublicItem(item)))
+        foreach (ParkItem item in publicItems)
         {
             if (!visibleParkById.TryGetValue(item.ParkId, out Park? parentPark))
             {
