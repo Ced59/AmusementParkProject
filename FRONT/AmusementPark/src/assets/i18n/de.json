@@ -1725,7 +1725,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Gemacht mit ❤️ und Adrenalin",
-      "version": "Version 1.1.0"
+      "version": "Version {{version}}"
     }
   },
   "ui": {

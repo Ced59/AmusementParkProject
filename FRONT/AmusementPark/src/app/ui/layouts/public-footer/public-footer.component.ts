@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TranslationService } from '@app/services/translation.service';
 import { LANGUAGES, LanguageOption } from '@shared/models/localization';
 import { resolveSupportedLanguageFromUrl } from '@shared/utils/routing/localized-route.helpers';
+import { siteVersion } from '../../../../environments/version.generated';
 
 @Component({
   selector: 'app-public-footer',
@@ -20,6 +21,7 @@ export class PublicFooterComponent implements OnInit {
   protected readonly selectedLanguage = signal<string>('en');
   protected readonly currentUrl = signal<string>('');
   protected readonly currentYear: number = new Date().getFullYear();
+  protected readonly siteVersion: string = siteVersion;
 
   constructor(
     private readonly router: Router,
