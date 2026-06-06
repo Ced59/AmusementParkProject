@@ -495,9 +495,25 @@ export class SeoService {
   }
 
   private normalizePath(url: string): string {
-    const withoutHash: string = url.split('#')[0] ?? '';
-    const withoutQuery: string = withoutHash.split('?')[0] ?? '';
-    const withLeadingSlash: string = withoutQuery.startsWith('/') ? withoutQuery : `/${withoutQuery}`;
-    return withLeadingSlash.replace(/\/+/g, '/');
+    const rawUrl: string = url?.trim() ?? '';
+
+    if (!rawUrl) {
+      return '/';
+    }
+
+    try {
+      const documentOrigin: string | undefined = this.document.location?.origin;
+      const baseUrl: string = documentOrigin && documentOrigin !== 'null' ? documentOrigin : 'https://amusement-parks.fun';
+      const parsedUrl: URL = new URL(rawUrl, baseUrl);
+      const normalizedPath: string = parsedUrl.pathname.replace(/\/+/g, '/');
+
+      return normalizedPath || '/';
+    } catch {
+      const withoutHash: string = rawUrl.split('#')[0] ?? '';
+      const withoutQuery: string = withoutHash.split('?')[0] ?? '';
+      const withLeadingSlash: string = withoutQuery.startsWith('/') ? withoutQuery : `/${withoutQuery}`;
+
+      return withLeadingSlash.replace(/\/+/g, '/');
+    }
   }
 }
