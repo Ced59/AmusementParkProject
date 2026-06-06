@@ -82,8 +82,8 @@ public sealed class SeoSettings
     {
         string normalizedHost = host.Trim();
 
-        if (normalizedHost.StartsWith('[', StringComparison.Ordinal) &&
-            normalizedHost.EndsWith(']', StringComparison.Ordinal) &&
+        if (normalizedHost.StartsWith("[", StringComparison.Ordinal) &&
+            normalizedHost.EndsWith("]", StringComparison.Ordinal) &&
             normalizedHost.Length > 2)
         {
             normalizedHost = normalizedHost[1..^1];
