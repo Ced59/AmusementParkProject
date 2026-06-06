@@ -1,10 +1,20 @@
-import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ParkFounder } from '@app/models/parks/park-founder';
-import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  ADMIN_FOUNDERS_STATE_PARK_FOUNDERS_API_SERVICE_PORT,
+  AdminFoundersStateParkFoundersApiServicePort
+} from './admin-founders-state-data.ports';
 interface AdminFoundersViewModel {
   founders: ParkFounder[];
   filteredFounders: ParkFounder[];
@@ -34,7 +44,7 @@ export class AdminFoundersStateFacade {
   public readonly totalCount = computed(() => this.filteredFounders().length);
 
   constructor(
-    private readonly parkFoundersApiService: ParkFoundersApiService,
+    @Inject(ADMIN_FOUNDERS_STATE_PARK_FOUNDERS_API_SERVICE_PORT) private readonly parkFoundersApiService: AdminFoundersStateParkFoundersApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
   }

@@ -1,4 +1,12 @@
-import { Injectable, OnDestroy, Signal, computed, signal, DestroyRef } from '@angular/core';
+import {
+  Injectable,
+  OnDestroy,
+  Signal,
+  computed,
+  signal,
+  DestroyRef,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { firstValueFrom, interval, of, Subscription } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
@@ -10,11 +18,14 @@ import {
   StartCaptainCoasterImportRequest,
   UpdateCaptainCoasterSettingsRequest
 } from '@app/models/admin/data/data-management.models';
-import { DataSourcesApiService } from '@data-access/admin/data-sources-api.service';
 import { AdminDataSourcesFacade } from './admin-data-sources.facade';
 
 import { extractSafeDisplayErrorMessage, sanitizeDisplayMessage } from '@shared/utils/security';
 
+import {
+  CAPTAIN_COASTER_PIPELINE_DATA_SOURCES_API_SERVICE_PORT,
+  CaptainCoasterPipelineDataSourcesApiServicePort
+} from './captain-coaster-pipeline-data.ports';
 interface CaptainCoasterSettingField {
   key: string;
   type?: 'text' | 'number';
@@ -178,7 +189,7 @@ export class CaptainCoasterPipelineFacade implements OnDestroy {
   ];
 
   constructor(
-    private readonly dataSourcesApiService: DataSourcesApiService,
+    @Inject(CAPTAIN_COASTER_PIPELINE_DATA_SOURCES_API_SERVICE_PORT) private readonly dataSourcesApiService: CaptainCoasterPipelineDataSourcesApiServicePort,
     private readonly adminDataSourcesFacade: AdminDataSourcesFacade,
     private readonly destroyRef: DestroyRef
   ) {

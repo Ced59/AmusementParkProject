@@ -1,8 +1,17 @@
-import { Injectable, Signal, computed, DestroyRef } from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  computed,
+  DestroyRef,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  CONFIRM_ACCOUNT_PAGE_STATE_AUTH_API_SERVICE_PORT,
+  ConfirmAccountPageStateAuthApiServicePort
+} from './confirm-account-page-state-data.ports';
 interface ConfirmAccountPageViewModel {
   currentLanguage: string;
   isSuccess: boolean;
@@ -18,7 +27,7 @@ export class ConfirmAccountPageStateFacade {
   public readonly isSuccess = computed(() => this.screenStateStore.data()?.isSuccess ?? false);
   public readonly message: Signal<string> = computed(() => this.screenStateStore.data()?.message ?? '');
 
-  constructor(private readonly authApiService: AuthApiService,
+  constructor(@Inject(CONFIRM_ACCOUNT_PAGE_STATE_AUTH_API_SERVICE_PORT) private readonly authApiService: ConfirmAccountPageStateAuthApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
   }

@@ -93,7 +93,7 @@ Le sitemap seed contient :
 - items visibles rattachés à un parc visible ;
 - références publiques de base : exploitants, fondateurs, constructeurs.
 
-Ce seed reste volontairement simple. Pour éviter de transformer M19 en sitemap très gros volume, `Seo:MaxDynamicUrlsPerType` est volontairement borné à `50` par défaut, avec un plafond interne plus strict sur les pages de références. M22 reprendra le sujet avec génération dynamique avancée, découpage éventuel, cache, panneau admin et règles d'inclusion plus fines.
+Ce seed reste volontairement simple. Pour éviter de transformer M19 en sitemap très gros volume, `Seo:MaxDynamicUrlsPerType` est volontairement borné à `5000` par défaut pour la brique avancée, avec un plafond interne plus strict sur les pages de références. M22 reprendra le sujet avec génération dynamique avancée, découpage éventuel, cache, panneau admin et règles d'inclusion plus fines.
 
 Le XML est généré dans un buffer UTF-8 explicite puis renvoyé en `application/xml; charset=utf-8`, afin d'éviter les réponses XML incomplètes ou incohérentes avec l'encodage HTTP.
 

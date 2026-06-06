@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ImageDisplayComponent } from '@app/components/shared/image-display/image-display.component';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { SafeRichHtmlPipe } from '@shared/pipes';
 import { UiButtonDirective } from '@ui/primitives';
 import { UiSearchResultCardModel } from '../models/ui-search-result-card.model';

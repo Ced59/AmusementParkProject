@@ -1,4 +1,4 @@
-import { DestroyRef, Injectable, Signal, computed, effect, inject, signal } from '@angular/core';
+import { DestroyRef, Inject, Injectable, Signal, computed, effect, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
 import {
@@ -6,96 +6,23 @@ import {
   CaptainCoasterComparisonResultResponse,
   CaptainCoasterDuplicateResolutionRequest,
   CaptainCoasterExternalVariantResponse,
-  CaptainCoasterFieldChangeResponse,
-  CaptainCoasterFieldResolutionRequest,
   CaptainCoasterSessionResponse,
   ComparisonFilters
 } from '@app/models/admin/data/data-management.models';
-import { DataSourcesApiService } from '@data-access/admin/data-sources-api.service';
 import { CaptainCoasterPipelineFacade } from './captain-coaster-pipeline.facade';
 import { extractSafeDisplayErrorMessage } from '@shared/utils/security';
 
-interface DuplicateResolutionState {
-  strategy: 'SelectVariant' | 'Merge';
-  selectedExternalVariantId: string | null;
-  fieldSelections: Record<string, string>;
-}
-
-interface RawCaptainCoasterComparisonPagedResponse {
-  items?: RawCaptainCoasterComparisonResultResponse[];
-  Items?: RawCaptainCoasterComparisonResultResponse[];
-  totalCount?: number;
-  TotalCount?: number;
-  page?: number;
-  Page?: number;
-  pageSize?: number;
-  PageSize?: number;
-  sessionUpdatedCount?: number;
-  SessionUpdatedCount?: number;
-  sessionMissingCount?: number;
-  SessionMissingCount?: number;
-  sessionDuplicateCount?: number;
-  SessionDuplicateCount?: number;
-  sessionAppliedCount?: number;
-  SessionAppliedCount?: number;
-}
-
-interface RawCaptainCoasterComparisonResultResponse {
-  id?: string;
-  Id?: string;
-  entityType?: string;
-  EntityType?: string;
-  changeType?: string;
-  ChangeType?: string;
-  displayName?: string;
-  DisplayName?: string;
-  localEntityId?: string | null;
-  LocalEntityId?: string | null;
-  externalEntityId?: string | null;
-  ExternalEntityId?: string | null;
-  matchConfidence?: string;
-  MatchConfidence?: string;
-  isApplied?: boolean;
-  IsApplied?: boolean;
-  hasExternalDuplicates?: boolean;
-  HasExternalDuplicates?: boolean;
-  requiresManualResolution?: boolean;
-  RequiresManualResolution?: boolean;
-  resolutionStatus?: string;
-  ResolutionStatus?: string;
-  appliedExternalVariantId?: string | null;
-  AppliedExternalVariantId?: string | null;
-  changes?: RawCaptainCoasterFieldChangeResponse[];
-  Changes?: RawCaptainCoasterFieldChangeResponse[];
-  externalVariants?: RawCaptainCoasterExternalVariantResponse[];
-  ExternalVariants?: RawCaptainCoasterExternalVariantResponse[];
-}
-
-interface RawCaptainCoasterExternalVariantResponse {
-  externalVariantId?: string;
-  ExternalVariantId?: string;
-  displayLabel?: string;
-  DisplayLabel?: string;
-  candidateLocalEntityId?: string | null;
-  CandidateLocalEntityId?: string | null;
-  sourceUrl?: string | null;
-  SourceUrl?: string | null;
-  isSuggested?: boolean;
-  IsSuggested?: boolean;
-  changes?: RawCaptainCoasterFieldChangeResponse[];
-  Changes?: RawCaptainCoasterFieldChangeResponse[];
-}
-
-interface RawCaptainCoasterFieldChangeResponse {
-  field?: string;
-  Field?: string;
-  localValue?: string | null;
-  LocalValue?: string | null;
-  externalValue?: string | null;
-  ExternalValue?: string | null;
-  isDifferent?: boolean;
-  IsDifferent?: boolean;
-}
+import { normalizeCaptainCoasterComparisonPage } from './captain-coaster-comparison-normalizer';
+import {
+  buildDuplicateResolutions,
+  DuplicateResolutionState,
+  ensureDuplicateResolutionState,
+  ensureDuplicateResolutionStates,
+  getExternalFieldValue,
+  getMergeEligibleFields,
+  getSuggestedVariantId
+} from './captain-coaster-duplicate-resolution.helpers';
+import { CAPTAIN_COASTER_COMPARISON_DATA_PORT, CaptainCoasterComparisonDataPort } from './captain-coaster-comparison-data.port';
 
 @Injectable()
 export class CaptainCoasterComparisonFacade {
@@ -152,7 +79,7 @@ export class CaptainCoasterComparisonFacade {
   ];
 
   constructor(
-    private readonly dataSourcesApiService: DataSourcesApiService,
+    @Inject(CAPTAIN_COASTER_COMPARISON_DATA_PORT) private readonly dataSourcesApiService: CaptainCoasterComparisonDataPort,
     private readonly captainCoasterPipelineFacade: CaptainCoasterPipelineFacade
   ) {
     let hasObservedInitialGeneration = false;
@@ -253,7 +180,7 @@ export class CaptainCoasterComparisonFacade {
 
     const selectedRows: CaptainCoasterComparisonResultResponse[] = this.currentItems()
       .filter((item: CaptainCoasterComparisonResultResponse) => this.selectedIdsSet.has(item.id));
-    const duplicateResolutions: CaptainCoasterDuplicateResolutionRequest[] = this.buildDuplicateResolutions(selectedRows);
+    const duplicateResolutions: CaptainCoasterDuplicateResolutionRequest[] = buildDuplicateResolutions(selectedRows, this.duplicateResolutionStateByResultId);
     if (selectedRows.some((item: CaptainCoasterComparisonResultResponse) => item.requiresManualResolution) && duplicateResolutions.length === 0) {
       this.captainCoasterPipelineFacade.setErrorMessage('Résolvez les doublons sélectionnés avant de lancer l’application.');
       return;
@@ -338,7 +265,7 @@ export class CaptainCoasterComparisonFacade {
   }
 
   getDuplicateState(item: CaptainCoasterComparisonResultResponse): DuplicateResolutionState {
-    this.ensureDuplicateResolutionState(item);
+    ensureDuplicateResolutionState(item, this.duplicateResolutionStateByResultId);
     return this.duplicateResolutionStateByResultId.get(item.id)!;
   }
 
@@ -346,7 +273,7 @@ export class CaptainCoasterComparisonFacade {
     const state: DuplicateResolutionState = this.getDuplicateState(item);
     state.strategy = strategy;
     if (state.selectedExternalVariantId === null) {
-      state.selectedExternalVariantId = this.getSuggestedVariantId(item);
+      state.selectedExternalVariantId = getSuggestedVariantId(item);
     }
   }
 
@@ -355,7 +282,7 @@ export class CaptainCoasterComparisonFacade {
     state.selectedExternalVariantId = value;
 
     if (value !== null) {
-      const fields: string[] = this.getMergeEligibleFields(item);
+      const fields: string[] = getMergeEligibleFields(item);
       for (const field of fields) {
         if (!(field in state.fieldSelections)) {
           state.fieldSelections[field] = `variant:${value}`;
@@ -365,52 +292,12 @@ export class CaptainCoasterComparisonFacade {
   }
 
   getMergeEligibleFields(item: CaptainCoasterComparisonResultResponse): string[] {
-    const fields: Set<string> = new Set<string>();
-    for (const variant of item.externalVariants) {
-      for (const change of variant.changes) {
-        if (this.isMergeEligibleField(change.field)) {
-          fields.add(change.field);
-        }
-      }
-    }
-
-    const order: string[] = [
-      'name',
-      'countryCode',
-      'parkName',
-      'manufacturer',
-      'model',
-      'sourceUrl',
-      'status',
-      'materialType',
-      'seatingType',
-      'launchType',
-      'restraintType',
-      'isLaunched',
-      'openingDate',
-      'closingDate',
-      'heightInMeters',
-      'lengthInMeters',
-      'speedInKmH',
-      'inversionCount'
-    ];
-
-    return Array.from(fields).sort((left: string, right: string) => {
-      const leftIndex: number = order.indexOf(left);
-      const rightIndex: number = order.indexOf(right);
-      const safeLeftIndex: number = leftIndex === -1 ? 999 : leftIndex;
-      const safeRightIndex: number = rightIndex === -1 ? 999 : rightIndex;
-      if (safeLeftIndex !== safeRightIndex) {
-        return safeLeftIndex - safeRightIndex;
-      }
-
-      return left.localeCompare(right);
-    });
+    return getMergeEligibleFields(item);
   }
 
   getMergeSelection(item: CaptainCoasterComparisonResultResponse, field: string): string {
     const state: DuplicateResolutionState = this.getDuplicateState(item);
-    return state.fieldSelections[field] ?? `variant:${this.getSuggestedVariantId(item) ?? ''}`;
+    return state.fieldSelections[field] ?? `variant:${getSuggestedVariantId(item) ?? ''}`;
   }
 
   setMergeSelection(item: CaptainCoasterComparisonResultResponse, field: string, value: string): void {
@@ -421,7 +308,7 @@ export class CaptainCoasterComparisonFacade {
   getMergeOptions(item: CaptainCoasterComparisonResultResponse, field: string): { label: string; value: string }[] {
     const options: { label: string; value: string }[] = [{ label: 'Conserver la valeur locale', value: 'local' }];
     for (const variant of item.externalVariants) {
-      const preview: string = this.getExternalFieldValue(variant, field) ?? '∅';
+      const preview: string = getExternalFieldValue(variant, field) ?? '∅';
       options.push({
         label: `${variant.displayLabel} → ${preview}`,
         value: `variant:${variant.externalVariantId}`
@@ -439,7 +326,7 @@ export class CaptainCoasterComparisonFacade {
       return variant?.displayLabel ?? 'Aucune variante sélectionnée';
     }
 
-    return `Fusion (${this.getMergeEligibleFields(item).length} champ(s))`;
+    return `Fusion (${getMergeEligibleFields(item).length} champ(s))`;
   }
 
   private async onFilterChangeAsync(): Promise<void> {
@@ -469,73 +356,15 @@ export class CaptainCoasterComparisonFacade {
       }
 
       this.pagedResultSignal.set(result);
-      this.ensureDuplicateResolutionStates(result.items);
+      ensureDuplicateResolutionStates(result.items, this.duplicateResolutionStateByResultId);
       this.syncSelectionSignals();
     } finally {
       this.isLoadingPageSignal.set(false);
     }
   }
 
-  private normalizeComparisonPage(
-    rawResult: CaptainCoasterComparisonPagedResponse | RawCaptainCoasterComparisonPagedResponse
-  ): CaptainCoasterComparisonPagedResponse {
-    const normalizedRawResult: RawCaptainCoasterComparisonPagedResponse = rawResult as RawCaptainCoasterComparisonPagedResponse;
-    const rawItems: RawCaptainCoasterComparisonResultResponse[] = (normalizedRawResult.items ?? normalizedRawResult.Items ?? []) as RawCaptainCoasterComparisonResultResponse[];
-
-    return {
-      items: rawItems.map((item: RawCaptainCoasterComparisonResultResponse) => this.normalizeComparisonItem(item)),
-      totalCount: normalizedRawResult.totalCount ?? normalizedRawResult.TotalCount ?? rawItems.length,
-      page: normalizedRawResult.page ?? normalizedRawResult.Page ?? this.currentPageSignal(),
-      pageSize: normalizedRawResult.pageSize ?? normalizedRawResult.PageSize ?? this.pageSizeSignal(),
-      sessionUpdatedCount: normalizedRawResult.sessionUpdatedCount ?? normalizedRawResult.SessionUpdatedCount ?? 0,
-      sessionMissingCount: normalizedRawResult.sessionMissingCount ?? normalizedRawResult.SessionMissingCount ?? 0,
-      sessionDuplicateCount: normalizedRawResult.sessionDuplicateCount ?? normalizedRawResult.SessionDuplicateCount ?? 0,
-      sessionAppliedCount: normalizedRawResult.sessionAppliedCount ?? normalizedRawResult.SessionAppliedCount ?? 0
-    };
-  }
-
-  private normalizeComparisonItem(rawItem: RawCaptainCoasterComparisonResultResponse): CaptainCoasterComparisonResultResponse {
-    const rawChanges: RawCaptainCoasterFieldChangeResponse[] = rawItem.changes ?? rawItem.Changes ?? [];
-    const rawVariants: RawCaptainCoasterExternalVariantResponse[] = rawItem.externalVariants ?? rawItem.ExternalVariants ?? [];
-
-    return {
-      id: rawItem.id ?? rawItem.Id ?? '',
-      entityType: rawItem.entityType ?? rawItem.EntityType ?? '',
-      changeType: rawItem.changeType ?? rawItem.ChangeType ?? '',
-      displayName: rawItem.displayName ?? rawItem.DisplayName ?? '',
-      localEntityId: rawItem.localEntityId ?? rawItem.LocalEntityId ?? null,
-      externalEntityId: rawItem.externalEntityId ?? rawItem.ExternalEntityId ?? null,
-      matchConfidence: rawItem.matchConfidence ?? rawItem.MatchConfidence ?? '',
-      isApplied: rawItem.isApplied ?? rawItem.IsApplied ?? false,
-      hasExternalDuplicates: rawItem.hasExternalDuplicates ?? rawItem.HasExternalDuplicates ?? false,
-      requiresManualResolution: rawItem.requiresManualResolution ?? rawItem.RequiresManualResolution ?? false,
-      resolutionStatus: rawItem.resolutionStatus ?? rawItem.ResolutionStatus ?? '',
-      appliedExternalVariantId: rawItem.appliedExternalVariantId ?? rawItem.AppliedExternalVariantId ?? null,
-      changes: rawChanges.map((change: RawCaptainCoasterFieldChangeResponse) => this.normalizeFieldChange(change)),
-      externalVariants: rawVariants.map((variant: RawCaptainCoasterExternalVariantResponse) => this.normalizeExternalVariant(variant))
-    };
-  }
-
-  private normalizeExternalVariant(rawVariant: RawCaptainCoasterExternalVariantResponse): CaptainCoasterExternalVariantResponse {
-    const rawChanges: RawCaptainCoasterFieldChangeResponse[] = rawVariant.changes ?? rawVariant.Changes ?? [];
-
-    return {
-      externalVariantId: rawVariant.externalVariantId ?? rawVariant.ExternalVariantId ?? '',
-      displayLabel: rawVariant.displayLabel ?? rawVariant.DisplayLabel ?? '',
-      candidateLocalEntityId: rawVariant.candidateLocalEntityId ?? rawVariant.CandidateLocalEntityId ?? null,
-      sourceUrl: rawVariant.sourceUrl ?? rawVariant.SourceUrl ?? null,
-      isSuggested: rawVariant.isSuggested ?? rawVariant.IsSuggested ?? false,
-      changes: rawChanges.map((change: RawCaptainCoasterFieldChangeResponse) => this.normalizeFieldChange(change))
-    };
-  }
-
-  private normalizeFieldChange(rawChange: RawCaptainCoasterFieldChangeResponse): CaptainCoasterFieldChangeResponse {
-    return {
-      field: rawChange.field ?? rawChange.Field ?? '',
-      localValue: rawChange.localValue ?? rawChange.LocalValue ?? null,
-      externalValue: rawChange.externalValue ?? rawChange.ExternalValue ?? null,
-      isDifferent: rawChange.isDifferent ?? rawChange.IsDifferent ?? false
-    };
+  private normalizeComparisonPage(rawResult: CaptainCoasterComparisonPagedResponse): CaptainCoasterComparisonPagedResponse {
+    return normalizeCaptainCoasterComparisonPage(rawResult, this.currentPageSignal(), this.pageSizeSignal());
   }
 
   private resetComparisonState(): void {
@@ -558,112 +387,6 @@ export class CaptainCoasterComparisonFacade {
     const unapplied: CaptainCoasterComparisonResultResponse[] = items.filter((item: CaptainCoasterComparisonResultResponse) => !item.isApplied);
     const allPageSelected: boolean = unapplied.length > 0 && unapplied.every((item: CaptainCoasterComparisonResultResponse) => this.selectedIdsSet.has(item.id));
     this.allPageSelectedSignal.set(allPageSelected);
-  }
-
-  private ensureDuplicateResolutionStates(items: CaptainCoasterComparisonResultResponse[]): void {
-    for (const item of items) {
-      this.ensureDuplicateResolutionState(item);
-    }
-  }
-
-  private ensureDuplicateResolutionState(item: CaptainCoasterComparisonResultResponse): void {
-    if (!item.requiresManualResolution) {
-      return;
-    }
-
-    if (this.duplicateResolutionStateByResultId.has(item.id)) {
-      return;
-    }
-
-    const suggestedVariantId: string | null = this.getSuggestedVariantId(item);
-    const fieldSelections: Record<string, string> = {};
-    for (const field of this.getMergeEligibleFields(item)) {
-      fieldSelections[field] = suggestedVariantId === null ? 'local' : `variant:${suggestedVariantId}`;
-    }
-
-    this.duplicateResolutionStateByResultId.set(item.id, {
-      strategy: 'SelectVariant',
-      selectedExternalVariantId: suggestedVariantId,
-      fieldSelections
-    });
-  }
-
-  private getSuggestedVariantId(item: CaptainCoasterComparisonResultResponse): string | null {
-    return item.externalVariants.find((variant: CaptainCoasterExternalVariantResponse) => variant.isSuggested)?.externalVariantId
-      ?? item.externalVariants[0]?.externalVariantId
-      ?? null;
-  }
-
-  private isMergeEligibleField(field: string): boolean {
-    return field !== 'duplicateVariants'
-      && field !== 'externalId'
-      && field !== 'externalSource'
-      && field !== 'heightInFeet'
-      && field !== 'lengthInFeet'
-      && field !== 'speedInMph';
-  }
-
-  private getExternalFieldValue(variant: CaptainCoasterExternalVariantResponse, field: string): string | null {
-    const change: { externalValue: string | null } | undefined = variant.changes.find((item) => item.field === field);
-    return change?.externalValue ?? null;
-  }
-
-  private buildDuplicateResolutions(items: CaptainCoasterComparisonResultResponse[]): CaptainCoasterDuplicateResolutionRequest[] {
-    const resolutions: CaptainCoasterDuplicateResolutionRequest[] = [];
-
-    for (const item of items) {
-      if (!item.requiresManualResolution) {
-        continue;
-      }
-
-      const state: DuplicateResolutionState | undefined = this.duplicateResolutionStateByResultId.get(item.id);
-      if (!state) {
-        continue;
-      }
-
-      if (state.strategy === 'SelectVariant') {
-        if (state.selectedExternalVariantId === null) {
-          continue;
-        }
-
-        resolutions.push({
-          comparisonResultId: item.id,
-          strategy: 'SelectVariant',
-          selectedExternalVariantId: state.selectedExternalVariantId,
-          fieldResolutions: []
-        });
-        continue;
-      }
-
-      const fieldResolutions: CaptainCoasterFieldResolutionRequest[] = this.getMergeEligibleFields(item)
-        .map((field: string) => this.buildFieldResolution(field, state.fieldSelections[field] ?? 'local'));
-
-      resolutions.push({
-        comparisonResultId: item.id,
-        strategy: 'Merge',
-        selectedExternalVariantId: state.selectedExternalVariantId,
-        fieldResolutions
-      });
-    }
-
-    return resolutions;
-  }
-
-  private buildFieldResolution(field: string, rawSelection: string): CaptainCoasterFieldResolutionRequest {
-    if (rawSelection === 'local') {
-      return {
-        field,
-        sourceType: 'Local',
-        externalVariantId: null
-      };
-    }
-
-    const variantId: string = rawSelection.replace('variant:', '');
-    return {
-      field,
-      sourceType: 'Variant',
-      externalVariantId: variantId
-    };
   }
 
   private extractErrorMessage(error: unknown): string {

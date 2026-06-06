@@ -1,16 +1,19 @@
-import { Injectable, Signal, signal } from '@angular/core';
+import { Injectable, Signal, signal, Inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
 import { Park } from '@app/models/parks/park';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
 
+import {
+  ADMIN_PARK_EDIT_STATE_PARKS_API_SERVICE_PORT,
+  AdminParkEditStateParksApiServicePort
+} from './admin-park-edit-state-data.ports';
 @Injectable()
 export class AdminParkEditStateFacade {
   private readonly isSavingSignal = signal(false);
 
   public readonly isSaving: Signal<boolean> = this.isSavingSignal.asReadonly();
 
-  constructor(private readonly parksApiService: ParksApiService) {
+  constructor(@Inject(ADMIN_PARK_EDIT_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: AdminParkEditStateParksApiServicePort) {
   }
 
   async loadPark(parkId: string): Promise<Park> {

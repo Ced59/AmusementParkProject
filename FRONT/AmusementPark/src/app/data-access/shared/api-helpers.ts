@@ -6,6 +6,68 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 
+const IMAGE_OWNER_TYPE_API_VALUES: ReadonlyMap<ImageOwnerType, number> = new Map<ImageOwnerType, number>([
+  [ImageOwnerType.PARK, 1],
+  [ImageOwnerType.USER, 2],
+  [ImageOwnerType.ATTRACTION, 3],
+  [ImageOwnerType.PARK_OPERATOR, 4],
+  [ImageOwnerType.ATTRACTION_MANUFACTURER, 5],
+  [ImageOwnerType.PARK_FOUNDER, 6]
+]);
+
+const IMAGE_CATEGORY_API_VALUES: ReadonlyMap<ImageCategory, number> = new Map<ImageCategory, number>([
+  [ImageCategory.AVATAR, 0],
+  [ImageCategory.PARK_LOGO, 1],
+  [ImageCategory.PARK, 2],
+  [ImageCategory.ATTRACTION, 3],
+  [ImageCategory.OPERATOR, 4],
+  [ImageCategory.MANUFACTURER, 5],
+  [ImageCategory.FOUNDER, 6]
+]);
+
+const PARK_ITEM_CATEGORIES_BY_API_VALUE: ReadonlyMap<number, ParkItem['category']> = new Map<number, ParkItem['category']>([
+  [0, 'Attraction'],
+  [1, 'Restaurant'],
+  [2, 'Hotel'],
+  [3, 'Animal'],
+  [4, 'Show'],
+  [5, 'Shop'],
+  [6, 'Service'],
+  [7, 'Transport']
+]);
+
+const PARK_ITEM_TYPES_BY_API_VALUE: ReadonlyMap<number, ParkItem['type']> = new Map<number, ParkItem['type']>([
+  [0, 'Attraction'],
+  [1, 'RollerCoaster'],
+  [2, 'WaterRide'],
+  [3, 'FlatRide'],
+  [4, 'DarkRide'],
+  [5, 'FamilyRide'],
+  [6, 'ThrillRide'],
+  [7, 'TransportRide'],
+  [8, 'WalkThrough'],
+  [9, 'Playground'],
+  [10, 'InteractiveExperience'],
+  [11, 'ObservationRide'],
+  [12, 'AnimalExhibit'],
+  [13, 'Restaurant'],
+  [14, 'Snack'],
+  [15, 'Hotel'],
+  [16, 'Show'],
+  [17, 'Shop'],
+  [18, 'Game'],
+  [19, 'MeetAndGreet'],
+  [20, 'Service'],
+  [21, 'Toilets'],
+  [22, 'FirstAid'],
+  [23, 'Information'],
+  [24, 'Locker'],
+  [25, 'Parking'],
+  [26, 'Transport'],
+  [27, 'Station']
+]);
+
+
 export interface PagedCollectionResponse<T> {
   data?: T[];
   pagination?: PaginationContract | null;
@@ -57,43 +119,11 @@ export function normalizeParkItemAdminRows(rows: ParkItemAdminRow[] | null | und
 }
 
 export function toImageOwnerTypeApiValue(value: ImageOwnerType): number {
-  switch (value) {
-    case ImageOwnerType.PARK:
-      return 1;
-    case ImageOwnerType.USER:
-      return 2;
-    case ImageOwnerType.ATTRACTION:
-      return 3;
-    case ImageOwnerType.PARK_OPERATOR:
-      return 4;
-    case ImageOwnerType.ATTRACTION_MANUFACTURER:
-      return 5;
-    case ImageOwnerType.PARK_FOUNDER:
-      return 6;
-    default:
-      return 0;
-  }
+  return IMAGE_OWNER_TYPE_API_VALUES.get(value) ?? 0;
 }
 
 export function toImageCategoryApiValue(value: ImageCategory): number {
-  switch (value) {
-    case ImageCategory.AVATAR:
-      return 0;
-    case ImageCategory.PARK_LOGO:
-      return 1;
-    case ImageCategory.PARK:
-      return 2;
-    case ImageCategory.ATTRACTION:
-      return 3;
-    case ImageCategory.OPERATOR:
-      return 4;
-    case ImageCategory.MANUFACTURER:
-      return 5;
-    case ImageCategory.FOUNDER:
-      return 6;
-    default:
-      return 2;
-  }
+  return IMAGE_CATEGORY_API_VALUES.get(value) ?? 2;
 }
 
 function toParkItemCategory(value: ParkItem['category'] | ParkItemAdminRow['category'] | number | null | undefined): ParkItem['category'] {
@@ -101,26 +131,7 @@ function toParkItemCategory(value: ParkItem['category'] | ParkItemAdminRow['cate
     return value as ParkItem['category'];
   }
 
-  switch (value) {
-    case 0:
-      return 'Attraction';
-    case 1:
-      return 'Restaurant';
-    case 2:
-      return 'Hotel';
-    case 3:
-      return 'Animal';
-    case 4:
-      return 'Show';
-    case 5:
-      return 'Shop';
-    case 6:
-      return 'Service';
-    case 7:
-      return 'Transport';
-    default:
-      return 'Other';
-  }
+  return PARK_ITEM_CATEGORIES_BY_API_VALUE.get(Number(value)) ?? 'Other';
 }
 
 function toParkItemType(value: ParkItem['type'] | ParkItemAdminRow['type'] | number | null | undefined): ParkItem['type'] {
@@ -128,64 +139,5 @@ function toParkItemType(value: ParkItem['type'] | ParkItemAdminRow['type'] | num
     return value as ParkItem['type'];
   }
 
-  switch (value) {
-    case 0:
-      return 'Attraction';
-    case 1:
-      return 'RollerCoaster';
-    case 2:
-      return 'WaterRide';
-    case 3:
-      return 'FlatRide';
-    case 4:
-      return 'DarkRide';
-    case 5:
-      return 'FamilyRide';
-    case 6:
-      return 'ThrillRide';
-    case 7:
-      return 'TransportRide';
-    case 8:
-      return 'WalkThrough';
-    case 9:
-      return 'Playground';
-    case 10:
-      return 'InteractiveExperience';
-    case 11:
-      return 'ObservationRide';
-    case 12:
-      return 'AnimalExhibit';
-    case 13:
-      return 'Restaurant';
-    case 14:
-      return 'Snack';
-    case 15:
-      return 'Hotel';
-    case 16:
-      return 'Show';
-    case 17:
-      return 'Shop';
-    case 18:
-      return 'Game';
-    case 19:
-      return 'MeetAndGreet';
-    case 20:
-      return 'Service';
-    case 21:
-      return 'Toilets';
-    case 22:
-      return 'FirstAid';
-    case 23:
-      return 'Information';
-    case 24:
-      return 'Locker';
-    case 25:
-      return 'Parking';
-    case 26:
-      return 'Transport';
-    case 27:
-      return 'Station';
-    default:
-      return 'Other';
-  }
+  return PARK_ITEM_TYPES_BY_API_VALUE.get(Number(value)) ?? 'Other';
 }

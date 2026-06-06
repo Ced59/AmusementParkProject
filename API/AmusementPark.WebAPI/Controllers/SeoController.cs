@@ -1,9 +1,10 @@
 using System.Text;
-using System.Xml;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Seo.Queries;
+using AmusementPark.Application.Features.Seo.Results;
 using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
@@ -24,16 +25,19 @@ public sealed class SeoController : ControllerBase
 {
     private readonly SeoSettings settings;
     private readonly IWebHostEnvironment environment;
-    private readonly IQueryHandler<GetPublicSitemapSeedQuery, ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>>> getPublicSitemapSeedQueryHandler;
+    private readonly ISeoSitemapSettingsRepository sitemapSettingsRepository;
+    private readonly IQueryHandler<GetPublicSitemapDocumentQuery, ApplicationResult<SitemapDocumentResult>> getPublicSitemapDocumentQueryHandler;
 
     public SeoController(
         IOptions<SeoSettings> settings,
         IWebHostEnvironment environment,
-        IQueryHandler<GetPublicSitemapSeedQuery, ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>>> getPublicSitemapSeedQueryHandler)
+        ISeoSitemapSettingsRepository sitemapSettingsRepository,
+        IQueryHandler<GetPublicSitemapDocumentQuery, ApplicationResult<SitemapDocumentResult>> getPublicSitemapDocumentQueryHandler)
     {
         this.settings = settings.Value;
         this.environment = environment;
-        this.getPublicSitemapSeedQueryHandler = getPublicSitemapSeedQueryHandler;
+        this.sitemapSettingsRepository = sitemapSettingsRepository;
+        this.getPublicSitemapDocumentQueryHandler = getPublicSitemapDocumentQueryHandler;
     }
 
     [HttpGet("robots.txt")]
@@ -60,10 +64,41 @@ public sealed class SeoController : ControllerBase
     [HttpGet("sitemap.xml")]
     [Produces("application/xml")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetSitemapXml(CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetSitemapIndexXml(CancellationToken cancellationToken = default)
     {
-        ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>> result = await this.getPublicSitemapSeedQueryHandler.HandleAsync(
-            new GetPublicSitemapSeedQuery(this.settings.SupportedLanguages, this.settings.MaxDynamicUrlsPerType),
+        return await this.GetSitemapDocumentAsync(sectionKey: null, cancellationToken);
+    }
+
+    [HttpGet("sitemaps/{sectionFileName}")]
+    [Produces("application/xml")]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetSitemapSectionXml([FromRoute] string sectionFileName, CancellationToken cancellationToken = default)
+    {
+        return await this.GetSitemapDocumentAsync(sectionFileName, cancellationToken);
+    }
+
+    [HttpGet("{key}.txt")]
+    [Produces("text/plain")]
+    public async Task<IActionResult> GetIndexNowKeyFileAsync([FromRoute] string key, CancellationToken cancellationToken = default)
+    {
+        SeoSitemapSettings sitemapSettings = await this.sitemapSettingsRepository.GetAsync(cancellationToken);
+        if (!sitemapSettings.IsIndexNowEnabled || string.IsNullOrWhiteSpace(sitemapSettings.IndexNowKey))
+        {
+            return this.NotFound();
+        }
+
+        if (!string.Equals(key, sitemapSettings.IndexNowKey, StringComparison.Ordinal))
+        {
+            return this.NotFound();
+        }
+
+        return this.Content(sitemapSettings.IndexNowKey, "text/plain", Encoding.UTF8);
+    }
+
+    private async Task<IActionResult> GetSitemapDocumentAsync(string? sectionKey, CancellationToken cancellationToken)
+    {
+        ApplicationResult<SitemapDocumentResult> result = await this.getPublicSitemapDocumentQueryHandler.HandleAsync(
+            new GetPublicSitemapDocumentQuery(sectionKey, this.GetPublicBaseUrl(), this.settings.SupportedLanguages, this.settings.MaxDynamicUrlsPerType),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -71,8 +106,7 @@ public sealed class SeoController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        byte[] xml = this.BuildSitemapXml(result.Value);
-        return this.File(xml, "application/xml; charset=utf-8");
+        return this.Content(result.Value.Content, result.Value.ContentType, Encoding.UTF8);
     }
 
     private string GetPublicBaseUrl()
@@ -107,41 +141,5 @@ public sealed class SeoController : ControllerBase
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .OrderBy(static path => path, StringComparer.OrdinalIgnoreCase)
             .ToList();
-    }
-
-    private byte[] BuildSitemapXml(IReadOnlyCollection<PublicSitemapUrl> urls)
-    {
-        string publicBaseUrl = this.GetPublicBaseUrl();
-        XmlWriterSettings writerSettings = new XmlWriterSettings
-        {
-            Encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
-            Indent = true,
-            OmitXmlDeclaration = false,
-        };
-
-        using MemoryStream stream = new MemoryStream();
-        using (XmlWriter writer = XmlWriter.Create(stream, writerSettings))
-        {
-            writer.WriteStartDocument();
-            writer.WriteStartElement("urlset", "http://www.sitemaps.org/schemas/sitemap/0.9");
-
-            foreach (PublicSitemapUrl url in urls)
-            {
-                writer.WriteStartElement("url");
-                writer.WriteElementString("loc", $"{publicBaseUrl}{url.RelativePath}");
-
-                if (url.LastModifiedUtc.HasValue)
-                {
-                    writer.WriteElementString("lastmod", url.LastModifiedUtc.Value.ToUniversalTime().ToString("yyyy-MM-dd"));
-                }
-
-                writer.WriteEndElement();
-            }
-
-            writer.WriteEndElement();
-            writer.WriteEndDocument();
-        }
-
-        return stream.ToArray();
     }
 }

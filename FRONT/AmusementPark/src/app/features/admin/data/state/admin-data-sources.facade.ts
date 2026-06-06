@@ -1,9 +1,18 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  Inject,
+} from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
 import { DataSourceSummary } from '@app/models/admin/data/data-management.models';
-import { DataSourcesApiService } from '@data-access/admin/data-sources-api.service';
 
+import {
+  ADMIN_DATA_SOURCES_DATA_SOURCES_API_SERVICE_PORT,
+  AdminDataSourcesDataSourcesApiServicePort
+} from './admin-data-sources-data.ports';
 @Injectable()
 export class AdminDataSourcesFacade {
   private readonly dataSourcesSignal = signal<DataSourceSummary[]>([]);
@@ -16,7 +25,7 @@ export class AdminDataSourcesFacade {
     return this.dataSourcesSignal().find((source: DataSourceSummary) => source.key === selectedSourceKey) ?? null;
   });
 
-  constructor(private readonly dataSourcesApiService: DataSourcesApiService) {
+  constructor(@Inject(ADMIN_DATA_SOURCES_DATA_SOURCES_API_SERVICE_PORT) private readonly dataSourcesApiService: AdminDataSourcesDataSourcesApiServicePort) {
   }
 
   async loadSourcesAsync(): Promise<void> {

@@ -1,10 +1,16 @@
-import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  DestroyRef,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { firstValueFrom } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
 import { TranslateService } from '@ngx-translate/core';
 
-import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { UploadedImage } from '@app/models/images/uploaded-image';
 import { ImageCategory } from '@app/models/images/image-category';
@@ -15,6 +21,10 @@ import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { mapImageDtoToOwnedImageItem } from '@shared/utils/images/owned-image-item.mapper';
 import { ImageUploadSecurityService } from '@shared/utils/security';
 
+import {
+  ADMIN_PARK_LOGOS_STATE_IMAGES_API_SERVICE_PORT,
+  AdminParkLogosStateImagesApiServicePort
+} from './admin-park-logos-state-data.ports';
 @Injectable()
 export class AdminParkLogosStateFacade {
   private readonly currentLanguageSignal = signal('en');
@@ -40,7 +50,7 @@ export class AdminParkLogosStateFacade {
   });
 
   constructor(
-    private readonly imagesApiService: ImagesApiService,
+    @Inject(ADMIN_PARK_LOGOS_STATE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: AdminParkLogosStateImagesApiServicePort,
     private readonly translateService: TranslateService,
     private readonly toastMessageService: ToastMessageService,
     private readonly imageUploadSecurityService: ImageUploadSecurityService,

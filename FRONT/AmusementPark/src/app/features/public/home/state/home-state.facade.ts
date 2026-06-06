@@ -1,12 +1,16 @@
-import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  DestroyRef,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { Park } from '@app/models/parks/park';
 import { SearchApiResponse } from '@app/models/search/search-api-response';
 import { SearchResultItem } from '@app/models/search/search-result-item';
-import { SearchApiService } from '@data-access/search/search-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { HomeApiService } from '@data-access/home/home-api.service';
 import { Pagination } from '@app/models/shared/pagination';
 import { HomeStatsModel } from '@app/models/home/home-stats.model';
 import { HomeFeaturedParkCardModel } from '@app/models/home/home-featured-park-card.model';
@@ -18,6 +22,14 @@ import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store'
 import { mapArray, mapParkToCardModel } from '@shared/utils/mapping';
 import { mapHomeFeaturedParkToCardModel } from '../mappers/home-featured-park.mapper';
 
+import {
+  HOME_STATE_SEARCH_API_SERVICE_PORT,
+  HomeStateSearchApiServicePort,
+  HOME_STATE_PARKS_API_SERVICE_PORT,
+  HomeStateParksApiServicePort,
+  HOME_STATE_HOME_API_SERVICE_PORT,
+  HomeStateHomeApiServicePort
+} from './home-state-data.ports';
 interface HomeHeroParksViewModel {
   parks: ParkCardModel[];
 }
@@ -62,9 +74,9 @@ export class HomeStateFacade {
   public readonly pageSize = this.pageSizeSignal.asReadonly();
 
   constructor(
-    private readonly parksApiService: ParksApiService,
-    private readonly searchApiService: SearchApiService,
-    private readonly homeApiService: HomeApiService,
+    @Inject(HOME_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: HomeStateParksApiServicePort,
+    @Inject(HOME_STATE_SEARCH_API_SERVICE_PORT) private readonly searchApiService: HomeStateSearchApiServicePort,
+    @Inject(HOME_STATE_HOME_API_SERVICE_PORT) private readonly homeApiService: HomeStateHomeApiServicePort,
     private readonly textTruncator: NaturalTextTruncatorService,
     private readonly countryDisplayService: CountryDisplayService,
     private readonly destroyRef: DestroyRef

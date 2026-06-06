@@ -855,7 +855,8 @@
         "founders": "Beheer oprichters en biografieën die aan parken zijn gekoppeld.",
         "auditLogs": "Gelogde gevoelige beheeracties bekijken.",
         "localizedContent": "Snel gelokaliseerde teksten via JSON importeren na het kiezen van een doel.",
-        "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen."
+        "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
+        "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow."
       }
     },
     "references": {
@@ -1059,6 +1060,63 @@
         "newValue": "Nieuw",
         "noFieldChange": "Geen veld gewijzigd."
       }
+    },
+    "seoSitemaps": {
+      "navTitle": "SEO & sitemaps",
+      "title": "SEO & sitemaps",
+      "subtitle": "Gecontroleerde sitemap-indexgeneratie, sectieweergave en IndexNow-beheer.",
+      "loading": "SEO-informatie laden...",
+      "loadError": "SEO-informatie kan niet worden geladen.",
+      "saveError": "SEO-instellingen kunnen niet worden opgeslagen.",
+      "generateError": "Sitemaps kunnen niet worden gegenereerd.",
+      "empty": "Geen SEO-informatie beschikbaar.",
+      "actions": {
+        "generate": "Opnieuw genereren",
+        "generateWithoutIndexNow": "Genereren zonder IndexNow",
+        "openSitemap": "Openen"
+      },
+      "stats": {
+        "totalUrls": "Gerefereerde URLs",
+        "sections": "Secties",
+        "lastGeneration": "Laatste generatie",
+        "runtime": "Status"
+      },
+      "lastResult": {
+        "title": "Laatste resultaat"
+      },
+      "publicFiles": {
+        "title": "Openbare bestanden",
+        "subtitle": "Directe toegang tot bestanden voor crawlers en validators."
+      },
+      "sections": {
+        "title": "Sitemap-indeling",
+        "subtitle": "De sitemap-index verwijst naar bestanden per URL-familie.",
+        "file": "Bestand",
+        "urls": "URLs",
+        "lastModified": "Laatst gewijzigd"
+      },
+      "settings": {
+        "title": "IndexNow-instellingen",
+        "subtitle": "IndexNow kan in de administratie worden in- en uitgeschakeld.",
+        "indexNowEnabled": "IndexNow inschakelen",
+        "submitManual": "Verzenden na handmatige generatie",
+        "submitAutomatic": "Verzenden na automatische generatie",
+        "indexNowKey": "IndexNow-sleutel",
+        "indexNowKeyLocation": "Sleutellocatie",
+        "indexNowEndpoints": "IndexNow-endpoints"
+      },
+      "history": {
+        "title": "Generatiegeschiedenis",
+        "subtitle": "Volgt generaties, volumes, fouten en IndexNow-verzendingen.",
+        "columns": {
+          "date": "Datum",
+          "status": "Status",
+          "urls": "URLs",
+          "duration": "Duur",
+          "indexNow": "IndexNow",
+          "actor": "Actor"
+        }
+      }
     }
   },
   "validation": {
@@ -1074,7 +1132,8 @@
     "clear": "Wissen",
     "delete": "Verwijderen",
     "search": "Zoeken",
-    "reset": "Resetten"
+    "reset": "Resetten",
+    "refresh": "Vernieuwen"
   },
   "parkDetail": {
     "descriptionTitle": "Beschrijving",

@@ -1,10 +1,20 @@
-import { DestroyRef, Injectable, Signal, inject, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  inject,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
-import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 
+import {
+  ADMIN_PARK_ITEM_MANUFACTURERS_STATE_MANUFACTURERS_API_SERVICE_PORT,
+  AdminParkItemManufacturersStateManufacturersApiServicePort
+} from './admin-park-item-manufacturers-state-data.ports';
 @Injectable()
 export class AdminParkItemManufacturersStateFacade {
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -14,7 +24,7 @@ export class AdminParkItemManufacturersStateFacade {
   public readonly manufacturerOptions: Signal<EntitySelectOption[]> = this.manufacturerOptionsSignal.asReadonly();
   public readonly manufacturersLoading: Signal<boolean> = this.manufacturersLoadingSignal.asReadonly();
 
-  constructor(private readonly manufacturersApiService: ManufacturersApiService) {
+  constructor(@Inject(ADMIN_PARK_ITEM_MANUFACTURERS_STATE_MANUFACTURERS_API_SERVICE_PORT) private readonly manufacturersApiService: AdminParkItemManufacturersStateManufacturersApiServicePort) {
   }
 
   load(): void {

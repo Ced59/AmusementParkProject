@@ -1,9 +1,18 @@
-import { Injectable, Signal, computed, DestroyRef } from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  computed,
+  DestroyRef,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { UsersApiService } from '@data-access/users/users-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { UserDto } from '@app/models/users/user_dto';
 
+import {
+  ADMIN_USER_MANAGEMENT_STATE_USERS_API_SERVICE_PORT,
+  AdminUserManagementStateUsersApiServicePort
+} from './admin-user-management-state-data.ports';
 interface AdminUserManagementViewModel {
   user: UserDto;
 }
@@ -15,7 +24,7 @@ export class AdminUserManagementStateFacade {
   public readonly state = this.screenStateStore.state;
   public readonly user: Signal<UserDto | null> = computed(() => this.screenStateStore.data()?.user ?? null);
 
-  constructor(private readonly usersApiService: UsersApiService,
+  constructor(@Inject(ADMIN_USER_MANAGEMENT_STATE_USERS_API_SERVICE_PORT) private readonly usersApiService: AdminUserManagementStateUsersApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
   }

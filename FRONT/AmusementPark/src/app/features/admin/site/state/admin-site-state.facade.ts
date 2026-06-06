@@ -1,4 +1,10 @@
-import { DestroyRef, Injectable, Signal, computed } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  computed,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { forkJoin } from 'rxjs';
 
@@ -6,10 +12,13 @@ import { AdminImageBulkMetadataUpdate } from '@app/models/images/admin-image-bul
 import { AdminImageSearchQuery } from '@app/models/images/admin-image-search-query';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
-import { ImagesApiService } from '@data-access/images/images-api.service';
 import { DEFAULT_PAGINATION, PagedResult, PaginationContract } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  ADMIN_SITE_STATE_IMAGES_API_SERVICE_PORT,
+  AdminSiteStateImagesApiServicePort
+} from './admin-site-state-data.ports';
 interface AdminSiteViewModel {
   images: ImageDto[];
   tags: ImageTagDto[];
@@ -58,7 +67,7 @@ export class AdminSiteStateFacade {
   });
 
   constructor(
-    private readonly imagesApiService: ImagesApiService,
+    @Inject(ADMIN_SITE_STATE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: AdminSiteStateImagesApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
   }

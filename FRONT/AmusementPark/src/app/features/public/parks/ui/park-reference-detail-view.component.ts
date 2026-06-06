@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
+import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { SafeRichHtmlPipe } from '@shared/pipes';
 import { UiPhotoCarouselComponent } from '@ui/media';

@@ -1,4 +1,11 @@
-import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  DestroyRef,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, forkJoin, of } from 'rxjs';
 
@@ -10,11 +17,6 @@ import { Park } from '@app/models/parks/park';
 import { ParkExplorer, ParkExplorerBucket } from '@app/models/parks/park-explorer';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
-import { ImagesApiService } from '@data-access/images/images-api.service';
-import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
-import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemDescription } from '@shared/utils/display/park-item-presentation.helpers';
@@ -31,6 +33,18 @@ import { SelectOption } from '../models/select-option.model';
 import { ParkItemsPageViewModel, ParkItemZoneCardViewModel } from '../models/park-items-page-view.model';
 import { ParkItemsZoneFocusViewModel } from '../models/park-items-zone-focus.model';
 
+import {
+  PARK_ITEMS_PAGE_STATE_IMAGES_API_SERVICE_PORT,
+  ParkItemsPageStateImagesApiServicePort,
+  PARK_ITEMS_PAGE_STATE_MANUFACTURERS_API_SERVICE_PORT,
+  ParkItemsPageStateManufacturersApiServicePort,
+  PARK_ITEMS_PAGE_STATE_PARK_ITEMS_API_SERVICE_PORT,
+  ParkItemsPageStateParkItemsApiServicePort,
+  PARK_ITEMS_PAGE_STATE_PARKS_API_SERVICE_PORT,
+  ParkItemsPageStateParksApiServicePort,
+  PARK_ITEMS_PAGE_STATE_PARK_ZONES_API_SERVICE_PORT,
+  ParkItemsPageStateParkZonesApiServicePort
+} from './park-items-page-state-data.ports';
 interface ParkItemsPageSourceData {
   park: Park;
   explorer: ParkExplorer;
@@ -193,11 +207,11 @@ export class ParkItemsPageStateFacade {
   private readonly typeFilterScopeItems: Signal<ParkItem[]> = computed(() => this.filterItems(false));
 
   constructor(
-    private readonly parksApiService: ParksApiService,
-    private readonly parkItemsApiService: ParkItemsApiService,
-    private readonly imagesApiService: ImagesApiService,
-    private readonly manufacturersApiService: ManufacturersApiService,
-    private readonly parkZonesApiService: ParkZonesApiService,
+    @Inject(PARK_ITEMS_PAGE_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: ParkItemsPageStateParksApiServicePort,
+    @Inject(PARK_ITEMS_PAGE_STATE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: ParkItemsPageStateParkItemsApiServicePort,
+    @Inject(PARK_ITEMS_PAGE_STATE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: ParkItemsPageStateImagesApiServicePort,
+    @Inject(PARK_ITEMS_PAGE_STATE_MANUFACTURERS_API_SERVICE_PORT) private readonly manufacturersApiService: ParkItemsPageStateManufacturersApiServicePort,
+    @Inject(PARK_ITEMS_PAGE_STATE_PARK_ZONES_API_SERVICE_PORT) private readonly parkZonesApiService: ParkItemsPageStateParkZonesApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -262,7 +276,6 @@ export class ParkItemsPageStateFacade {
       }
     });
   }
-
 
   private filterItems(includeTypeFilter: boolean): ParkItem[] {
     const allItems: ParkItem[] = this.allItems();

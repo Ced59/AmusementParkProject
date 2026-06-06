@@ -42,6 +42,12 @@ public sealed class MongoDbSettings
 
     public string AdminAuditLogsCollectionName { get; set; } = "adminAuditLogs";
 
+    public string SeoSitemapSnapshotsCollectionName { get; set; } = "seoSitemapSnapshots";
+
+    public string SeoSitemapGenerationHistoryCollectionName { get; set; } = "seoSitemapGenerationHistory";
+
+    public string SeoSitemapSettingsCollectionName { get; set; } = "seoSitemapSettings";
+
     public string ParkGraphUpsertHistoryCollectionName { get; set; } = "parkGraphUpsertHistory";
 
     public string ImagesCollectionName { get; set; } = "images";

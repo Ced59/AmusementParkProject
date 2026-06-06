@@ -9,7 +9,7 @@ import { SelectModule } from 'primeng/select';
 import { TableModule } from 'primeng/table';
 import { Tag } from 'primeng/tag';
 
-import { PaginationComponent } from '@app/components/shared/pagination/pagination.component';
+import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { CaptainCoasterComparisonFacade } from '@features/admin/data/state/captain-coaster-comparison.facade';
 import { CaptainCoasterPipelineFacade } from '@features/admin/data/state/captain-coaster-pipeline.facade';
 import { CaptainCoasterComparisonAnalysisComponent } from './captain-coaster-comparison-analysis.component';

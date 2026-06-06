@@ -41,6 +41,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin/manufacturers', renderMode: RenderMode.Client },
   { path: ':lang/admin/data', renderMode: RenderMode.Client },
   { path: ':lang/admin/audit-logs', renderMode: RenderMode.Client },
+  { path: ':lang/admin/seo-sitemaps', renderMode: RenderMode.Client },
   { path: ':lang/admin/images', renderMode: RenderMode.Client },
   { path: ':lang/admin/site', renderMode: RenderMode.Client },
 

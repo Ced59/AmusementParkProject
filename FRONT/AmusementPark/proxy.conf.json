@@ -10,5 +10,11 @@
     "secure": false,
     "changeOrigin": true,
     "logLevel": "warn"
+  },
+  "/sitemaps": {
+    "target": "https://localhost:44391",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "warn"
   }
 }

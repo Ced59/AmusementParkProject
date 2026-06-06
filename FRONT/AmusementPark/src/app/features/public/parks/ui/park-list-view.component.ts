@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
-import { PaginationComponent } from '@app/components/shared/pagination/pagination.component';
+import { PageStateComponent } from '@shared/components/page-state/page-state.component';
+import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { PaginationContract } from '@shared/models/contracts';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';

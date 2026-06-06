@@ -1,11 +1,21 @@
-import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { AdminAuditLog, AdminAuditLogQuery, AdminAuditLogResponse } from '@app/models/admin/audit/admin-audit-log.models';
 import { Pagination } from '@app/models/shared/pagination';
-import { AdminAuditLogsApiService } from '@data-access/admin/admin-audit-logs-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  ADMIN_AUDIT_LOGS_STATE__PORT,
+  AdminAuditLogsStatePort
+} from './admin-audit-logs-state-data.ports';
 interface AdminAuditLogsViewModel {
   logs: AdminAuditLog[];
   pagination: Pagination | null;
@@ -31,7 +41,7 @@ export class AdminAuditLogsStateFacade {
   public readonly lastQuery = this.lastQuerySignal.asReadonly();
 
   constructor(
-    private readonly apiService: AdminAuditLogsApiService,
+    @Inject(ADMIN_AUDIT_LOGS_STATE__PORT) private readonly apiService: AdminAuditLogsStatePort,
     private readonly destroyRef: DestroyRef
   ) {
   }

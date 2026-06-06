@@ -1,8 +1,17 @@
-import { Injectable, Signal, computed, DestroyRef } from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  computed,
+  DestroyRef,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  FORGOT_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT,
+  ForgotPasswordPageStateAuthApiServicePort
+} from './forgot-password-page-state-data.ports';
 interface ForgotPasswordPageViewModel {
   email: string;
   isSubmitted: boolean;
@@ -18,7 +27,7 @@ export class ForgotPasswordPageStateFacade {
   public readonly isSubmitted = computed(() => this.screenStateStore.data()?.isSubmitted ?? false);
   public readonly message: Signal<string> = computed(() => this.screenStateStore.data()?.message ?? '');
 
-  constructor(private readonly authApiService: AuthApiService,
+  constructor(@Inject(FORGOT_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT) private readonly authApiService: ForgotPasswordPageStateAuthApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
     this.screenStateStore.setReady({

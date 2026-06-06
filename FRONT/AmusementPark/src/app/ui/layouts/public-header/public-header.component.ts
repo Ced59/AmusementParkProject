@@ -9,8 +9,8 @@ import { Avatar } from 'primeng/avatar';
 import { Dialog } from 'primeng/dialog';
 
 import { UserDto } from '@app/models/users/user_dto';
-import { AuthModalComponent } from '@app/components/login-register/auth-modal/auth-modal.component';
-import { ThemeSwitcherComponent } from '@app/components/theme-switcher/theme-switcher.component';
+import { AuthModalComponent } from '@features/auth/ui/auth-modal/auth-modal.component';
+import { ThemeSwitcherComponent } from '@shared/components/theme-switcher/theme-switcher.component';
 import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent } from '@ui/primitives';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { ImagesApiService } from '@data-access/images/images-api.service';

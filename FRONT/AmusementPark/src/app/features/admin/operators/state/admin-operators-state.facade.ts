@@ -1,10 +1,20 @@
-import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkOperator } from '@app/models/parks/park-operator';
-import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  ADMIN_OPERATORS_STATE_PARK_OPERATORS_API_SERVICE_PORT,
+  AdminOperatorsStateParkOperatorsApiServicePort
+} from './admin-operators-state-data.ports';
 interface AdminOperatorsViewModel {
   operators: ParkOperator[];
   filteredOperators: ParkOperator[];
@@ -40,7 +50,7 @@ export class AdminOperatorsStateFacade {
   public readonly totalCount = computed(() => this.filteredOperators().length);
 
   constructor(
-    private readonly parkOperatorsApiService: ParkOperatorsApiService,
+    @Inject(ADMIN_OPERATORS_STATE_PARK_OPERATORS_API_SERVICE_PORT) private readonly parkOperatorsApiService: AdminOperatorsStateParkOperatorsApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
   }

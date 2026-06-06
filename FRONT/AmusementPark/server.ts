@@ -45,6 +45,14 @@ export function app(): express.Express {
     proxyToApi(req, res, next, req.originalUrl);
   });
 
+  server.get('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
+    proxyToApi(req, res, next, req.originalUrl);
+  });
+
+  server.get('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
+    proxyToApi(req, res, next, req.originalUrl);
+  });
+
   server.use('/api', (req: Request, res: Response, next: NextFunction) => {
     const apiPath = req.originalUrl.replace(/^\/api(?=\/|$)/i, '') || '/';
     proxyToApi(req, res, next, apiPath);

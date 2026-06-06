@@ -1,4 +1,11 @@
-import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { firstValueFrom } from 'rxjs';
 import { PaginatorState } from 'primeng/paginator';
@@ -10,12 +17,15 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { UploadedImage } from '@app/models/images/uploaded-image';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
-import { ImagesApiService } from '@data-access/images/images-api.service';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { mapImageDtoToOwnedImageItem } from '@shared/utils/images/owned-image-item.mapper';
 import { ImageUploadSecurityService } from '@shared/utils/security';
 import { AdminParkPhotoCategoryOption, PARK_PHOTO_CATEGORY_OPTIONS } from '../models/admin-park-edit.model';
 
+import {
+  ADMIN_PARK_PHOTOS_STATE_IMAGES_API_SERVICE_PORT,
+  AdminParkPhotosStateImagesApiServicePort
+} from './admin-park-photos-state-data.ports';
 @Injectable()
 export class AdminParkPhotosStateFacade {
   private readonly currentLanguageSignal = signal('en');
@@ -45,7 +55,7 @@ export class AdminParkPhotosStateFacade {
   });
 
   constructor(
-    private readonly imagesApiService: ImagesApiService,
+    @Inject(ADMIN_PARK_PHOTOS_STATE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: AdminParkPhotosStateImagesApiServicePort,
     private readonly translateService: TranslateService,
     private readonly toastMessageService: ToastMessageService,
     private readonly imageUploadSecurityService: ImageUploadSecurityService,

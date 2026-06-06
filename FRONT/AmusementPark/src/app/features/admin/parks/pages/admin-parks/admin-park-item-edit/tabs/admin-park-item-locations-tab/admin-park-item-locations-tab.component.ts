@@ -1,0 +1,95 @@
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MapMarker } from '@app/models/map/map-marker';
+import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
+import { Bind } from 'primeng/bind';
+import { Card } from 'primeng/card';
+import { ButtonDirective } from 'primeng/button';
+import { NgClass } from '@angular/common';
+import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
+import { InputText } from 'primeng/inputtext';
+import { TranslateModule } from '@ngx-translate/core';
+
+export type AttractionLocationKey = 'entrance' | 'exit' | 'fastPassEntrance' | 'reducedMobilityEntrance';
+
+interface AttractionLocationOption {
+  key: AttractionLocationKey;
+  labelKey: string;
+}
+
+@Component({
+    selector: 'app-admin-park-item-locations-tab',
+    templateUrl: './admin-park-item-locations-tab.component.html',
+    styleUrls: ['./admin-park-item-locations-tab.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [FormsModule, ReactiveFormsModule, Bind, Card, ButtonDirective, NgClass, LeafletMapComponent, InputText, TranslateModule]
+})
+export class AdminParkItemLocationsTabComponent {
+  @Input({ required: true }) formGroup!: FormGroup;
+  @Input() selectedLocationKey: AttractionLocationKey = 'entrance';
+  @Input() attractionLocationOptions: AttractionLocationOption[] = [];
+  @Input() locationMapCenter: [number, number] = [48.8566, 2.3522];
+  @Input() locationMapZoom: number = 19;
+  @Input() locationMapMarkers: MapMarker[] = [];
+  @Input() isSaving: boolean = false;
+
+  @Output() selectedLocationKeyChange: EventEmitter<AttractionLocationKey> = new EventEmitter<AttractionLocationKey>();
+  @Output() specificLocationMapPositionChange: EventEmitter<{ lat: number; lng: number }> = new EventEmitter<{ lat: number; lng: number }>();
+  @Output() clearLocationPoint: EventEmitter<AttractionLocationKey> = new EventEmitter<AttractionLocationKey>();
+  @Output() useGeneralLocation: EventEmitter<void> = new EventEmitter<void>();
+  @Output() clearSelectedLocation: EventEmitter<void> = new EventEmitter<void>();
+  @Output() saveSection: EventEmitter<void> = new EventEmitter<void>();
+
+  getDefinedLocationCount(): number {
+    return this.attractionLocationOptions.filter((option: AttractionLocationOption) => this.hasLocationPoint(option.key)).length;
+  }
+
+  hasLocationPoint(locationKey: AttractionLocationKey): boolean {
+    return this.getLocationPoint(locationKey) !== null;
+  }
+
+  getLocationCoordinatesLabel(locationKey: AttractionLocationKey): string {
+    const point: AttractionLocationPoint | null = this.getLocationPoint(locationKey);
+
+    if (!point || point.latitude === null || point.longitude === null || point.latitude === undefined || point.longitude === undefined) {
+      return '—';
+    }
+
+    return `${point.latitude.toFixed(6)}, ${point.longitude.toFixed(6)}`;
+  }
+
+  getSelectedLocationLabelKey(): string {
+    return this.attractionLocationOptions.find((option: AttractionLocationOption) => option.key === this.selectedLocationKey)?.labelKey
+      ?? this.attractionLocationOptions[0]?.labelKey
+      ?? 'admin.parks.items.locationFields.entrance';
+  }
+
+  private getLocationPoint(locationKey: AttractionLocationKey): AttractionLocationPoint | null {
+    const group: FormGroup | null = this.formGroup.get(locationKey) as FormGroup | null;
+
+    if (!group) {
+      return null;
+    }
+
+    const latitude: number | null = this.toNullableNumber(group.get('latitude')?.value);
+    const longitude: number | null = this.toNullableNumber(group.get('longitude')?.value);
+
+    if (latitude === null || longitude === null) {
+      return null;
+    }
+
+    return {
+      latitude,
+      longitude
+    };
+  }
+
+  private toNullableNumber(value: unknown): number | null {
+    if (value === null || value === undefined || value === '') {
+      return null;
+    }
+
+    const parsed: number = Number(value);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+}
