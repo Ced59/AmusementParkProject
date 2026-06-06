@@ -113,6 +113,10 @@ export class ImagesApiService {
       return this.urlSecurityService.sanitizeImageUrl(rawValue);
     }
 
+    if (/^[a-z][a-z0-9+.-]*:/i.test(rawValue)) {
+      return null;
+    }
+
     if (rawValue.startsWith('/images/')) {
       const imageId: string = rawValue.replace(/^\/images\//, '');
       return this.buildImageUrl(imageId);

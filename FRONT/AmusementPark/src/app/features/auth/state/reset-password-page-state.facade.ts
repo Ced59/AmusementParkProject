@@ -1,8 +1,17 @@
-import { Injectable, Signal, computed, DestroyRef } from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  computed,
+  DestroyRef,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  RESET_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT,
+  ResetPasswordPageStateAuthApiServicePort
+} from './reset-password-page-state-data.ports';
 interface ResetPasswordPageViewModel {
   token: string;
   newPassword: string;
@@ -22,7 +31,7 @@ export class ResetPasswordPageStateFacade {
   public readonly isSubmitted = computed(() => this.screenStateStore.data()?.isSubmitted ?? false);
   public readonly message: Signal<string> = computed(() => this.screenStateStore.data()?.message ?? '');
 
-  constructor(private readonly authApiService: AuthApiService,
+  constructor(@Inject(RESET_PASSWORD_PAGE_STATE_AUTH_API_SERVICE_PORT) private readonly authApiService: ResetPasswordPageStateAuthApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
     this.screenStateStore.setReady({

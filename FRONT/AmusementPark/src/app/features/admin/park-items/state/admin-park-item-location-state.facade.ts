@@ -1,4 +1,12 @@
-import { DestroyRef, Injectable, Signal, computed, inject, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  computed,
+  inject,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormGroup } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
@@ -6,10 +14,13 @@ import { firstValueFrom } from 'rxjs';
 import { MapMarker } from '@app/models/map/map-marker';
 import { Park } from '@app/models/parks/park';
 import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { resolveLocationMarkerIconKind, resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { AttractionLocationKey, ParkCoordinates } from '../models/admin-park-item-edit.model';
 
+import {
+  ADMIN_PARK_ITEM_LOCATION_STATE_PARKS_API_SERVICE_PORT,
+  AdminParkItemLocationStateParksApiServicePort
+} from './admin-park-item-location-state-data.ports';
 @Injectable()
 export class AdminParkItemLocationStateFacade {
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -33,7 +44,7 @@ export class AdminParkItemLocationStateFacade {
   public readonly locationMapMarkers: Signal<MapMarker[]> = this.locationMapMarkersSignal.asReadonly();
   public readonly canUseParkLocation: Signal<boolean> = computed(() => this.parkLocationDefaultSignal() !== null);
 
-  constructor(private readonly parksApiService: ParksApiService) {
+  constructor(@Inject(ADMIN_PARK_ITEM_LOCATION_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: AdminParkItemLocationStateParksApiServicePort) {
   }
 
   bindForm(form: FormGroup): void {

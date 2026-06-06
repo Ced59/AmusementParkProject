@@ -4,6 +4,7 @@ import {
   Signal,
   computed,
   signal,
+  Inject,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -34,10 +35,14 @@ import {
   ParkItemAdminListSort,
   ParkItemAdminSortField,
 } from '@data-access/park-items/park-items-api-endpoints';
-import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  ADMIN_PARK_ITEMS_INDEX_STATE_PARK_ITEMS_API_SERVICE_PORT,
+  AdminParkItemsIndexStateParkItemsApiServicePort,
+  ADMIN_PARK_ITEMS_INDEX_STATE_PARKS_API_SERVICE_PORT,
+  AdminParkItemsIndexStateParksApiServicePort
+} from './admin-park-items-index-state-data.ports';
 interface AdminParkItemsIndexViewModel {
   rows: ParkItemAdminRow[];
   parkOptions: { label: string; value: string | null }[];
@@ -103,8 +108,8 @@ export class AdminParkItemsIndexStateFacade {
   }));
 
   constructor(
-    private readonly parkItemsApiService: ParkItemsApiService,
-    private readonly parksApiService: ParksApiService,
+    @Inject(ADMIN_PARK_ITEMS_INDEX_STATE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: AdminParkItemsIndexStateParkItemsApiServicePort,
+    @Inject(ADMIN_PARK_ITEMS_INDEX_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: AdminParkItemsIndexStateParksApiServicePort,
     private readonly destroyRef: DestroyRef,
   ) {}
 

@@ -22,66 +22,70 @@ export const routes: Routes = [
           {
             path: '',
             pathMatch: 'full',
-            loadComponent: () => import('./components/admin/admin-dashboard/admin-dashboard.component').then((m) => m.AdminDashboardComponent)
+            loadComponent: () => import('@features/admin/dashboard/pages/admin-dashboard/admin-dashboard.component').then((m) => m.AdminDashboardComponent)
           },
           {
             path: 'users',
             loadChildren: () =>
-              import('./components/admin/users/admin-users/admin-users.module')
+              import('@features/admin/users/pages/admin-users/admin-users.module')
                 .then((m) => m.AdminUsersModule)
           },
           {
             path: 'parks',
             loadChildren: () =>
-              import('./components/admin/parks/admin-parks/admin-parks.module')
+              import('@features/admin/parks/pages/admin-parks/admin-parks.module')
                 .then((m) => m.AdminParksModule)
           },
           {
             path: 'items',
             loadChildren: () =>
-              import('./components/admin/park-items/admin-park-items-index/admin-park-items-index.module')
+              import('@features/admin/park-items/pages/admin-park-items-index/admin-park-items-index.module')
                 .then((m) => m.AdminParkItemsIndexModule)
           },
           {
             path: 'operators',
             loadChildren: () =>
-              import('./components/admin/operators/admin-operators/admin-operators.module')
+              import('@features/admin/operators/pages/admin-operators/admin-operators.module')
                 .then((m) => m.AdminOperatorsModule)
           },
           {
             path: 'founders',
             loadChildren: () =>
-              import('./components/admin/founders/admin-founders/admin-founders.module')
+              import('@features/admin/founders/pages/admin-founders/admin-founders.module')
                 .then((m) => m.AdminFoundersModule)
           },
           {
             path: 'manufacturers',
             loadChildren: () =>
-              import('./components/admin/manufacturers/admin-manufacturers/admin-manufacturers.module')
+              import('@features/admin/manufacturers/pages/admin-manufacturers/admin-manufacturers.module')
                 .then((m) => m.AdminManufacturersModule)
           },
           {
             path: 'data',
             loadChildren: () =>
-              import('./components/admin/data/admin-data/admin-data.module')
+              import('@features/admin/data/pages/admin-data/admin-data.module')
                 .then((m) => m.AdminDataModule)
           },
           {
             path: 'park-graph-upserts',
-            loadComponent: () => import('./components/admin/park-graph-upserts/admin-park-graph-upserts.component').then((m) => m.AdminParkGraphUpsertsComponent)
+            loadComponent: () => import('@features/admin/park-graph-upserts/pages/admin-park-graph-upserts/admin-park-graph-upserts.component').then((m) => m.AdminParkGraphUpsertsComponent)
           },
           {
             path: 'localized-content',
-            loadComponent: () => import('./components/admin/localized-content/admin-localized-content.component').then((m) => m.AdminLocalizedContentComponent)
+            loadComponent: () => import('@features/admin/localized-content/pages/admin-localized-content/admin-localized-content.component').then((m) => m.AdminLocalizedContentComponent)
           },
           {
             path: 'audit-logs',
-            loadComponent: () => import('./components/admin/audit-logs/admin-audit-logs.component').then((m) => m.AdminAuditLogsComponent)
+            loadComponent: () => import('@features/admin/audit-logs/pages/admin-audit-logs/admin-audit-logs.component').then((m) => m.AdminAuditLogsComponent)
+          },
+          {
+            path: 'seo-sitemaps',
+            loadComponent: () => import('@features/admin/seo-sitemaps/pages/admin-seo-sitemaps/admin-seo-sitemaps.component').then((m) => m.AdminSeoSitemapsComponent)
           },
           {
             path: 'images',
             loadChildren: () =>
-              import('./components/admin/site/admin-site/admin-site.module')
+              import('@features/admin/site/pages/admin-site/admin-site.module')
                 .then((m) => m.AdminSiteModule)
           },
           {
@@ -95,19 +99,19 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('@ui/layouts/account-layout/account-layout.component').then((m) => m.AccountLayoutComponent),
         children: [
-          { path: 'profile', loadChildren: () => import('./components/login-register/profile/profile.module').then((m) => m.ProfileModule) },
-          { path: 'confirm-account', loadComponent: () => import('./components/login-register/confirm-account-page/confirm-account-page.component').then((m) => m.ConfirmAccountPageComponent) },
-          { path: 'forgot-password', loadComponent: () => import('./components/login-register/forgot-password-page/forgot-password-page.component').then((m) => m.ForgotPasswordPageComponent) },
-          { path: 'reset-password', loadComponent: () => import('./components/login-register/reset-password-page/reset-password-page.component').then((m) => m.ResetPasswordPageComponent) }
+          { path: 'profile', loadChildren: () => import('@features/profile/profile.module').then((m) => m.ProfileModule) },
+          { path: 'confirm-account', loadComponent: () => import('@features/auth/pages/confirm-account-page/confirm-account-page.component').then((m) => m.ConfirmAccountPageComponent) },
+          { path: 'forgot-password', loadComponent: () => import('@features/auth/pages/forgot-password-page/forgot-password-page.component').then((m) => m.ForgotPasswordPageComponent) },
+          { path: 'reset-password', loadComponent: () => import('@features/auth/pages/reset-password-page/reset-password-page.component').then((m) => m.ResetPasswordPageComponent) }
         ]
       },
       {
         path: '',
         loadComponent: () => import('@ui/layouts/public-app-layout/public-app-layout.component').then((m) => m.PublicAppLayoutComponent),
         children: [
-          { path: 'home', loadComponent: () => import('./components/home/home.component').then((m) => m.HomeComponent) },
+          { path: 'home', loadComponent: () => import('@features/public/home/pages/home.component').then((m) => m.HomeComponent) },
           { path: 'parks', loadComponent: () => import('./features/public/parks/pages/park-list-page.component').then((m) => m.ParkListPageComponent) },
-          { path: 'about', loadComponent: () => import('./components/about/about.component').then((m) => m.AboutComponent) },
+          { path: 'about', loadComponent: () => import('@features/public/about/pages/about.component').then((m) => m.AboutComponent) },
           { path: 'privacy', loadComponent: () => import('./features/public/legal/pages/privacy-policy-page.component').then((m) => m.PrivacyPolicyPageComponent) },
           { path: 'not-found', loadComponent: () => import('./features/public/not-found/pages/public-not-found-page.component').then((m) => m.PublicNotFoundPageComponent) },
 

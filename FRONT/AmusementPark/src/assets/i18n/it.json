@@ -855,7 +855,8 @@
         "founders": "Gestire fondatori e biografie collegati ai parchi.",
         "auditLogs": "Consultare le azioni amministrative sensibili registrate.",
         "localizedContent": "Importare rapidamente testi localizzati via JSON dopo aver scelto una destinazione.",
-        "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale."
+        "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale.",
+        "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow."
       }
     },
     "references": {
@@ -1059,6 +1060,63 @@
         "newValue": "Nuovo",
         "noFieldChange": "Nessun campo modificato."
       }
+    },
+    "seoSitemaps": {
+      "navTitle": "SEO e sitemap",
+      "title": "SEO e sitemap",
+      "subtitle": "Generazione controllata dell’indice sitemap, consultazione sezioni e gestione IndexNow.",
+      "loading": "Caricamento informazioni SEO...",
+      "loadError": "Impossibile caricare le informazioni SEO.",
+      "saveError": "Impossibile salvare le impostazioni SEO.",
+      "generateError": "Impossibile generare le sitemap.",
+      "empty": "Nessuna informazione SEO disponibile.",
+      "actions": {
+        "generate": "Rigenera",
+        "generateWithoutIndexNow": "Genera senza IndexNow",
+        "openSitemap": "Apri"
+      },
+      "stats": {
+        "totalUrls": "URL referenziati",
+        "sections": "Sezioni",
+        "lastGeneration": "Ultima generazione",
+        "runtime": "Stato"
+      },
+      "lastResult": {
+        "title": "Ultimo risultato"
+      },
+      "publicFiles": {
+        "title": "File pubblici",
+        "subtitle": "Accesso diretto ai file esposti a crawler e validatori."
+      },
+      "sections": {
+        "title": "Organizzazione sitemap",
+        "subtitle": "L’indice sitemap riferisce file separati per famiglia di URL.",
+        "file": "File",
+        "urls": "URL",
+        "lastModified": "Ultima modifica"
+      },
+      "settings": {
+        "title": "Impostazioni IndexNow",
+        "subtitle": "IndexNow può essere attivato, disattivato e controllato dall’amministrazione.",
+        "indexNowEnabled": "Attiva IndexNow",
+        "submitManual": "Invia dopo generazione manuale",
+        "submitAutomatic": "Invia dopo generazione automatica",
+        "indexNowKey": "Chiave IndexNow",
+        "indexNowKeyLocation": "Posizione chiave",
+        "indexNowEndpoints": "Endpoint IndexNow"
+      },
+      "history": {
+        "title": "Cronologia generazioni",
+        "subtitle": "Traccia generazioni, volumi, errori e invii IndexNow.",
+        "columns": {
+          "date": "Data",
+          "status": "Stato",
+          "urls": "URL",
+          "duration": "Durata",
+          "indexNow": "IndexNow",
+          "actor": "Attore"
+        }
+      }
     }
   },
   "validation": {
@@ -1074,7 +1132,8 @@
     "clear": "Cancella",
     "delete": "Elimina",
     "search": "Cerca",
-    "reset": "Reimposta"
+    "reset": "Reimposta",
+    "refresh": "Aggiorna"
   },
   "parkDetail": {
     "descriptionTitle": "Descrizione",

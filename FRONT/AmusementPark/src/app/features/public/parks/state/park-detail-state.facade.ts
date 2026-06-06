@@ -1,4 +1,4 @@
-import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
+import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, from, map, mergeMap, of, toArray } from 'rxjs';
 
@@ -14,12 +14,6 @@ import { ParkItem } from '@app/models/parks/park-item';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
-import { ImagesApiService } from '@data-access/images/images-api.service';
-import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
-import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
-import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { ScreenStateKind } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -35,6 +29,20 @@ import { ParkContentSummaryViewModel } from '../models/park-content-summary.mode
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
 import { ParkItemsMapViewModel } from '../models/park-items-map-view.model';
 import { ParkZoneDetailViewModel } from '../models/park-zone-detail-view.model';
+import {
+  PARK_DETAIL_FOUNDERS_PORT,
+  PARK_DETAIL_IMAGES_PORT,
+  PARK_DETAIL_ITEMS_PORT,
+  PARK_DETAIL_OPERATORS_PORT,
+  PARK_DETAIL_PARKS_PORT,
+  PARK_DETAIL_ZONES_PORT,
+  ParkDetailFoundersPort,
+  ParkDetailImagesPort,
+  ParkDetailItemsPort,
+  ParkDetailOperatorsPort,
+  ParkDetailParksPort,
+  ParkDetailZonesPort
+} from './park-detail-data.ports';
 
 interface ParkDetailSourceData {
   park: Park;
@@ -132,12 +140,12 @@ export class ParkDetailStateFacade {
   public readonly nearbyState = computed(() => this.screenStateStore.data()?.nearbyState ?? 'empty');
 
   constructor(
-    private readonly parksApiService: ParksApiService,
-    private readonly imagesApiService: ImagesApiService,
-    private readonly parkItemsApiService: ParkItemsApiService,
-    private readonly parkZonesApiService: ParkZonesApiService,
-    private readonly parkFoundersApiService: ParkFoundersApiService,
-    private readonly parkOperatorsApiService: ParkOperatorsApiService,
+    @Inject(PARK_DETAIL_PARKS_PORT) private readonly parksApiService: ParkDetailParksPort,
+    @Inject(PARK_DETAIL_IMAGES_PORT) private readonly imagesApiService: ParkDetailImagesPort,
+    @Inject(PARK_DETAIL_ITEMS_PORT) private readonly parkItemsApiService: ParkDetailItemsPort,
+    @Inject(PARK_DETAIL_ZONES_PORT) private readonly parkZonesApiService: ParkDetailZonesPort,
+    @Inject(PARK_DETAIL_FOUNDERS_PORT) private readonly parkFoundersApiService: ParkDetailFoundersPort,
+    @Inject(PARK_DETAIL_OPERATORS_PORT) private readonly parkOperatorsApiService: ParkDetailOperatorsPort,
     private readonly countryDisplayService: CountryDisplayService,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService

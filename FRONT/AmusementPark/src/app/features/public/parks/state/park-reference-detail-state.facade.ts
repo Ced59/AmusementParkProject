@@ -1,4 +1,11 @@
-import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, forkJoin, map, of, Observable } from 'rxjs';
 
@@ -10,11 +17,6 @@ import { ParkFounder } from '@app/models/parks/park-founder';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { ApiResponse } from '@app/models/shared/api_reponse';
-import { ImagesApiService } from '@data-access/images/images-api.service';
-import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
-import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
-import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
-import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
@@ -26,6 +28,18 @@ import {
 } from '../mappers/park-reference-detail-view.mapper';
 import { ParkReferenceDetailViewModel, ParkReferenceKind } from '../models/park-reference-detail-view.model';
 
+import {
+  PARK_REFERENCE_DETAIL_STATE_IMAGES_API_SERVICE_PORT,
+  ParkReferenceDetailStateImagesApiServicePort,
+  PARK_REFERENCE_DETAIL_STATE_MANUFACTURERS_API_SERVICE_PORT,
+  ParkReferenceDetailStateManufacturersApiServicePort,
+  PARK_REFERENCE_DETAIL_STATE_PARK_ITEMS_API_SERVICE_PORT,
+  ParkReferenceDetailStateParkItemsApiServicePort,
+  PARK_REFERENCE_DETAIL_STATE_PARK_FOUNDERS_API_SERVICE_PORT,
+  ParkReferenceDetailStateParkFoundersApiServicePort,
+  PARK_REFERENCE_DETAIL_STATE_PARK_OPERATORS_API_SERVICE_PORT,
+  ParkReferenceDetailStateParkOperatorsApiServicePort
+} from './park-reference-detail-state-data.ports';
 interface ParkReferenceDetailSourceData {
   kind: ParkReferenceKind;
   founder: ParkFounder | null;
@@ -64,11 +78,11 @@ export class ParkReferenceDetailStateFacade {
   });
 
   constructor(
-    private readonly parkFoundersApiService: ParkFoundersApiService,
-    private readonly parkOperatorsApiService: ParkOperatorsApiService,
-    private readonly manufacturersApiService: ManufacturersApiService,
-    private readonly imagesApiService: ImagesApiService,
-    private readonly parkItemsApiService: ParkItemsApiService,
+    @Inject(PARK_REFERENCE_DETAIL_STATE_PARK_FOUNDERS_API_SERVICE_PORT) private readonly parkFoundersApiService: ParkReferenceDetailStateParkFoundersApiServicePort,
+    @Inject(PARK_REFERENCE_DETAIL_STATE_PARK_OPERATORS_API_SERVICE_PORT) private readonly parkOperatorsApiService: ParkReferenceDetailStateParkOperatorsApiServicePort,
+    @Inject(PARK_REFERENCE_DETAIL_STATE_MANUFACTURERS_API_SERVICE_PORT) private readonly manufacturersApiService: ParkReferenceDetailStateManufacturersApiServicePort,
+    @Inject(PARK_REFERENCE_DETAIL_STATE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: ParkReferenceDetailStateImagesApiServicePort,
+    @Inject(PARK_REFERENCE_DETAIL_STATE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: ParkReferenceDetailStateParkItemsApiServicePort,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {

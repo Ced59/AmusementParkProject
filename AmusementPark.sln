@@ -14,6 +14,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.Core", "API\AmusementPark.Core\AmusementPark.Core.csproj", "{49307D70-9C32-4ABC-8FA6-19531D7B3C23}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.Core.Tests", "API\AmusementPark.Core.Tests\AmusementPark.Core.Tests.csproj", "{8E560F3A-840A-4E18-BCB2-38FE2BE191C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.Application.Tests", "API\AmusementPark.Application.Tests\AmusementPark.Application.Tests.csproj", "{4CA5E94E-0B5F-4DD8-A78A-C45268E06AA2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.Infrastructure.Tests", "API\AmusementPark.Infrastructure.Tests\AmusementPark.Infrastructure.Tests.csproj", "{7C3E44CE-92F8-4FA1-B3B4-DEB7931AD7A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmusementPark.WebAPI.Tests", "API\AmusementPark.WebAPI.Tests\AmusementPark.WebAPI.Tests.csproj", "{D9610EC0-A8DF-43C5-9500-D7E4B1B42DB8}"
+EndProject
 
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +49,22 @@ Global
 		{49307D70-9C32-4ABC-8FA6-19531D7B3C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49307D70-9C32-4ABC-8FA6-19531D7B3C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49307D70-9C32-4ABC-8FA6-19531D7B3C23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E560F3A-840A-4E18-BCB2-38FE2BE191C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E560F3A-840A-4E18-BCB2-38FE2BE191C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E560F3A-840A-4E18-BCB2-38FE2BE191C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E560F3A-840A-4E18-BCB2-38FE2BE191C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA5E94E-0B5F-4DD8-A78A-C45268E06AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA5E94E-0B5F-4DD8-A78A-C45268E06AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA5E94E-0B5F-4DD8-A78A-C45268E06AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA5E94E-0B5F-4DD8-A78A-C45268E06AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C3E44CE-92F8-4FA1-B3B4-DEB7931AD7A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C3E44CE-92F8-4FA1-B3B4-DEB7931AD7A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C3E44CE-92F8-4FA1-B3B4-DEB7931AD7A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C3E44CE-92F8-4FA1-B3B4-DEB7931AD7A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9610EC0-A8DF-43C5-9500-D7E4B1B42DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9610EC0-A8DF-43C5-9500-D7E4B1B42DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9610EC0-A8DF-43C5-9500-D7E4B1B42DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9610EC0-A8DF-43C5-9500-D7E4B1B42DB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 
 	GlobalSection(SolutionProperties) = preSolution
@@ -52,6 +76,10 @@ Global
 		{DA66BAC2-25D1-495F-8955-9AEAC5CD4767} = {F6275A80-5435-44C9-BE3D-33DB5D18A16C}
 		{E9858229-546D-4FCA-A467-6D360EDB06BE} = {F6275A80-5435-44C9-BE3D-33DB5D18A16C}
 		{49307D70-9C32-4ABC-8FA6-19531D7B3C23} = {F6275A80-5435-44C9-BE3D-33DB5D18A16C}
+		{8E560F3A-840A-4E18-BCB2-38FE2BE191C1} = {F6275A80-5435-44C9-BE3D-33DB5D18A16C}
+		{4CA5E94E-0B5F-4DD8-A78A-C45268E06AA2} = {F6275A80-5435-44C9-BE3D-33DB5D18A16C}
+		{7C3E44CE-92F8-4FA1-B3B4-DEB7931AD7A8} = {F6275A80-5435-44C9-BE3D-33DB5D18A16C}
+		{D9610EC0-A8DF-43C5-9500-D7E4B1B42DB8} = {F6275A80-5435-44C9-BE3D-33DB5D18A16C}
 	EndGlobalSection
 
 	GlobalSection(ExtensibilityGlobals) = postSolution

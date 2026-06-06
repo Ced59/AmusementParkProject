@@ -1,15 +1,27 @@
-import { DestroyRef, Injectable, Signal, inject, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  inject,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { CountriesApiService } from '@data-access/countries/countries-api.service';
-import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.service';
-import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
 import { CountryDto } from '@app/models/countries/country-dto';
 import { ParkFounder } from '@app/models/parks/park-founder';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { AdminParkCountryOption } from '../models/admin-park-edit.model';
 
+import {
+  ADMIN_PARK_REFERENCE_DATA_COUNTRIES_API_SERVICE_PORT,
+  AdminParkReferenceDataCountriesApiServicePort,
+  ADMIN_PARK_REFERENCE_DATA_PARK_FOUNDERS_API_SERVICE_PORT,
+  AdminParkReferenceDataParkFoundersApiServicePort,
+  ADMIN_PARK_REFERENCE_DATA_PARK_OPERATORS_API_SERVICE_PORT,
+  AdminParkReferenceDataParkOperatorsApiServicePort
+} from './admin-park-reference-data-data.ports';
 @Injectable()
 export class AdminParkReferenceDataFacade {
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -28,9 +40,9 @@ export class AdminParkReferenceDataFacade {
   public readonly operatorsLoading: Signal<boolean> = this.operatorsLoadingSignal.asReadonly();
 
   constructor(
-    private readonly countriesApiService: CountriesApiService,
-    private readonly parkFoundersApiService: ParkFoundersApiService,
-    private readonly parkOperatorsApiService: ParkOperatorsApiService
+    @Inject(ADMIN_PARK_REFERENCE_DATA_COUNTRIES_API_SERVICE_PORT) private readonly countriesApiService: AdminParkReferenceDataCountriesApiServicePort,
+    @Inject(ADMIN_PARK_REFERENCE_DATA_PARK_FOUNDERS_API_SERVICE_PORT) private readonly parkFoundersApiService: AdminParkReferenceDataParkFoundersApiServicePort,
+    @Inject(ADMIN_PARK_REFERENCE_DATA_PARK_OPERATORS_API_SERVICE_PORT) private readonly parkOperatorsApiService: AdminParkReferenceDataParkOperatorsApiServicePort
   ) {
   }
 

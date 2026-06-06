@@ -1,11 +1,21 @@
-import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  DestroyRef,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Pagination } from '@app/models/shared/pagination';
 import { UserDto } from '@app/models/users/user_dto';
 import { UsersApiResponse } from '@app/models/users/users_api_response';
-import { UsersApiService } from '@data-access/users/users-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  ADMIN_USERS_STATE_USERS_API_SERVICE_PORT,
+  AdminUsersStateUsersApiServicePort
+} from './admin-users-state-data.ports';
 interface AdminUsersViewModel {
   users: UserDto[];
   pagination: Pagination | null;
@@ -28,7 +38,7 @@ export class AdminUsersStateFacade {
   public readonly currentPage = this.currentPageSignal.asReadonly();
   public readonly pageSize = this.pageSizeSignal.asReadonly();
 
-  constructor(private readonly usersApiService: UsersApiService,
+  constructor(@Inject(ADMIN_USERS_STATE_USERS_API_SERVICE_PORT) private readonly usersApiService: AdminUsersStateUsersApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
   }

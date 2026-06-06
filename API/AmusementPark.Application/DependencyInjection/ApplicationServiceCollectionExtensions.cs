@@ -5,6 +5,8 @@ using AmusementPark.Application.Features.Countries.Services;
 using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkGraphUpserts.Services;
 using AmusementPark.Application.Features.Parks.Services;
+using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Validation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -36,6 +38,13 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ParkGraphUpsertProcessor>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddSingleton<IParkDistanceCalculator, ParkDistanceCalculator>();
+        services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, ParksSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, ParkItemsSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, ReferencesSitemapSectionProvider>();
+        services.AddScoped<ISitemapXmlWriter, SitemapXmlWriter>();
+        services.AddScoped<SeoSitemapGenerationOrchestrator>();
+        services.AddSingleton<ISeoSitemapRuntimeStateStore, InMemorySeoSitemapRuntimeStateStore>();
         return services;
     }
 

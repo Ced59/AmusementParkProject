@@ -855,7 +855,8 @@
         "founders": "Maintenir les fondateurs et biographies rattachés aux parcs.",
         "auditLogs": "Consulter les actions sensibles journalisées.",
         "localizedContent": "Importer rapidement des textes localisés via JSON après sélection d’une cible.",
-        "parkGraphUpserts": "Prévisualiser puis appliquer un JSON global ou partiel de parc."
+        "parkGraphUpserts": "Prévisualiser puis appliquer un JSON global ou partiel de parc.",
+        "seoSitemaps": "Piloter le sitemap index, les sections XML, les statistiques et IndexNow."
       }
     },
     "references": {
@@ -1059,6 +1060,63 @@
         "newValue": "Nouveau",
         "noFieldChange": "Aucun champ modifié."
       }
+    },
+    "seoSitemaps": {
+      "navTitle": "SEO & Sitemaps",
+      "title": "SEO & Sitemaps",
+      "subtitle": "Génération contrôlée du sitemap index, consultation des sections et pilotage IndexNow.",
+      "loading": "Chargement des informations SEO...",
+      "loadError": "Impossible de charger les informations SEO.",
+      "saveError": "Impossible d’enregistrer les réglages SEO.",
+      "generateError": "Impossible de générer les sitemaps.",
+      "empty": "Aucune information SEO disponible.",
+      "actions": {
+        "generate": "Régénérer",
+        "generateWithoutIndexNow": "Générer sans IndexNow",
+        "openSitemap": "Afficher"
+      },
+      "stats": {
+        "totalUrls": "URLs référencées",
+        "sections": "Sections",
+        "lastGeneration": "Dernière génération",
+        "runtime": "État"
+      },
+      "lastResult": {
+        "title": "Dernier résultat"
+      },
+      "publicFiles": {
+        "title": "Fichiers publics",
+        "subtitle": "Accès direct aux fichiers exposés aux moteurs et aux validateurs."
+      },
+      "sections": {
+        "title": "Organisation des sitemaps",
+        "subtitle": "Le sitemap index référence des fichiers séparés par famille d’URLs.",
+        "file": "Fichier",
+        "urls": "URLs",
+        "lastModified": "Dernière modification"
+      },
+      "settings": {
+        "title": "Réglages IndexNow",
+        "subtitle": "IndexNow reste désactivable et pilotable depuis l’administration.",
+        "indexNowEnabled": "Activer IndexNow",
+        "submitManual": "Soumettre après génération manuelle",
+        "submitAutomatic": "Soumettre après génération automatique",
+        "indexNowKey": "Clé IndexNow",
+        "indexNowKeyLocation": "Emplacement de la clé",
+        "indexNowEndpoints": "Endpoints IndexNow"
+      },
+      "history": {
+        "title": "Historique de génération",
+        "subtitle": "Trace les générations, les volumes, les erreurs et les soumissions IndexNow.",
+        "columns": {
+          "date": "Date",
+          "status": "Statut",
+          "urls": "URLs",
+          "duration": "Durée",
+          "indexNow": "IndexNow",
+          "actor": "Acteur"
+        }
+      }
     }
   },
   "validation": {
@@ -1074,7 +1132,8 @@
     "clear": "Effacer",
     "delete": "Supprimer",
     "search": "Rechercher",
-    "reset": "Réinitialiser"
+    "reset": "Réinitialiser",
+    "refresh": "Actualiser"
   },
   "parkDetail": {
     "descriptionTitle": "Description",

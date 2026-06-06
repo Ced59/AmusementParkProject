@@ -1,10 +1,20 @@
-import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
-import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  ADMIN_MANUFACTURERS_STATE_MANUFACTURERS_API_SERVICE_PORT,
+  AdminManufacturersStateManufacturersApiServicePort
+} from './admin-manufacturers-state-data.ports';
 interface AdminManufacturersViewModel {
   manufacturers: AttractionManufacturer[];
   filteredManufacturers: AttractionManufacturer[];
@@ -40,7 +50,7 @@ export class AdminManufacturersStateFacade {
   public readonly totalCount = computed(() => this.filteredManufacturers().length);
 
   constructor(
-    private readonly manufacturersApiService: ManufacturersApiService,
+    @Inject(ADMIN_MANUFACTURERS_STATE_MANUFACTURERS_API_SERVICE_PORT) private readonly manufacturersApiService: AdminManufacturersStateManufacturersApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
   }

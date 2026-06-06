@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal
 import { NgFor, NgIf } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { EmptyStateComponent } from '@app/components/shared/empty-state/empty-state.component';
-import { ImageDisplayComponent } from '@app/components/shared/image-display/image-display.component';
-import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
+import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
+import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
 import { MapMarker } from '@app/models/map/map-marker';
-import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
-import { PaginationComponent } from '@app/components/shared/pagination/pagination.component';
+import { PageStateComponent } from '@shared/components/page-state/page-state.component';
+import { PaginationComponent } from '@shared/components/pagination/pagination.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkItemCardViewModel } from '../models/park-item-card.model';
 import { SelectOption } from '../models/select-option.model';

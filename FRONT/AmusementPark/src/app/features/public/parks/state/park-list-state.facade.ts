@@ -1,4 +1,11 @@
-import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
@@ -8,12 +15,15 @@ import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store'
 import { mapArray, mapCollectionResponse, mapParkToCardModel } from '@shared/utils/mapping';
 import { Park } from '@app/models/parks/park';
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { mapParkMapPointToViewModel } from '../mappers/park-map-point-view.mapper';
 
+import {
+  PARK_LIST_STATE_PARKS_API_SERVICE_PORT,
+  ParkListStateParksApiServicePort
+} from './park-list-state-data.ports';
 interface ParkListSourceData {
   parks: Park[];
   pagination: PaginationContract | null;
@@ -64,7 +74,7 @@ export class ParkListStateFacade {
   public readonly selectedRegion = this.selectedRegionSignal.asReadonly();
 
   constructor(
-    private readonly parksApiService: ParksApiService,
+    @Inject(PARK_LIST_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: ParkListStateParksApiServicePort,
     private readonly countryDisplayService: CountryDisplayService,
     private readonly destroyRef: DestroyRef
   ) {

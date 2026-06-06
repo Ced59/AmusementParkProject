@@ -1,4 +1,4 @@
-import { Injectable, Signal, computed, signal, DestroyRef } from '@angular/core';
+import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ImageCategory } from '@app/models/images/image-category';
@@ -7,16 +7,23 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
-import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
-import { ImagesApiService } from '@data-access/images/images-api.service';
-import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
-import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { mapParkItemToDetailViewModel } from '../mappers/park-item-detail-view.mapper';
 import { ParkItemDetailViewModel } from '../models/park-item-detail-view.model';
+import {
+  PARK_ITEM_DETAIL_IMAGES_PORT,
+  PARK_ITEM_DETAIL_ITEMS_PORT,
+  PARK_ITEM_DETAIL_MANUFACTURERS_PORT,
+  PARK_ITEM_DETAIL_PARKS_PORT,
+  PARK_ITEM_DETAIL_ZONES_PORT,
+  ParkItemDetailImagesPort,
+  ParkItemDetailItemsPort,
+  ParkItemDetailManufacturersPort,
+  ParkItemDetailParksPort,
+  ParkItemDetailZonesPort
+} from './park-item-detail-data.ports';
 
 interface ParkItemDetailSourceData {
   item: ParkItem;
@@ -50,11 +57,11 @@ export class ParkItemDetailStateFacade {
   });
 
   constructor(
-    private readonly parkItemsApiService: ParkItemsApiService,
-    private readonly parksApiService: ParksApiService,
-    private readonly manufacturersApiService: ManufacturersApiService,
-    private readonly parkZonesApiService: ParkZonesApiService,
-    private readonly imagesApiService: ImagesApiService,
+    @Inject(PARK_ITEM_DETAIL_ITEMS_PORT) private readonly parkItemsApiService: ParkItemDetailItemsPort,
+    @Inject(PARK_ITEM_DETAIL_PARKS_PORT) private readonly parksApiService: ParkItemDetailParksPort,
+    @Inject(PARK_ITEM_DETAIL_MANUFACTURERS_PORT) private readonly manufacturersApiService: ParkItemDetailManufacturersPort,
+    @Inject(PARK_ITEM_DETAIL_ZONES_PORT) private readonly parkZonesApiService: ParkItemDetailZonesPort,
+    @Inject(PARK_ITEM_DETAIL_IMAGES_PORT) private readonly imagesApiService: ParkItemDetailImagesPort,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {

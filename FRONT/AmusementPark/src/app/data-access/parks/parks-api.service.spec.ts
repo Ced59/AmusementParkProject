@@ -1,0 +1,102 @@
+import { HttpTestingController } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+
+import { Park } from '@app/models/parks/park';
+import { environment } from '../../../environments/environment';
+import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
+import { ParksApiService } from './parks-api.service';
+
+describe('ParksApiService', () => {
+  let service: ParksApiService;
+  let httpTestingController: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({ providers: provideCommonTestDependencies() });
+    service = TestBed.inject(ParksApiService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+  });
+
+  afterEach(() => {
+    httpTestingController.verify();
+  });
+
+  function createPark(overrides: Partial<Park> = {}): Park {
+    return {
+      id: 'park-1',
+      name: 'Park',
+      countryCode: 'BE',
+      latitude: 50,
+      longitude: 3,
+      descriptions: [],
+      ...overrides
+    };
+  }
+
+  it('gets paginated parks and trims visible map search queries before endpoint generation', () => {
+    service.getParksPaginated(2, 20, true, 'europe').subscribe();
+    service.getVisibleParkMapPoints('  parc  ', null).subscribe();
+
+    const pageRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks?page=2&size=20&visibleOnly=true&region=europe`);
+    expect(pageRequest.request.method).toBe('GET');
+    pageRequest.flush({ data: [] });
+
+    const mapRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/map-visible?query=parc`);
+    expect(mapRequest.request.method).toBe('GET');
+    mapRequest.flush([]);
+  });
+
+  it('unwraps geolocation search responses whether API returns arrays or collections', () => {
+    let result: Park[] = [];
+    service.getParksByLocation(50, 3, 1000).subscribe((parks: Park[]) => {
+      result = parks;
+    });
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/geo-search?latitude=50&longitude=3&radiusMeters=1000`);
+    request.flush({ data: [createPark()] });
+
+    expect(result.length).toBe(1);
+  });
+
+  it('normalizes park write requests for create and update', () => {
+    const park: Park = createPark({
+      isVisible: undefined,
+      adminReviewStatus: undefined,
+      isFeaturedOnHome: true,
+      isFeaturedOnHomeSponsored: true,
+      featuredHomeOrder: 0,
+      webSiteUrl: 'https://park.test'
+    });
+
+    service.createPark(park).subscribe();
+    service.updatePark('park-1', { ...park, featuredHomeOrder: 4, isFeaturedOnHome: false, isFeaturedOnHomeSponsored: true }).subscribe();
+
+    const createRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks`);
+    expect(createRequest.request.method).toBe('POST');
+    expect(createRequest.request.headers.get('Content-Type')).toBe('application/json');
+    expect(createRequest.request.body.featuredHomeOrder).toBeNull();
+    expect(createRequest.request.body.isVisible).toBeTrue();
+    expect(createRequest.request.body.adminReviewStatus).toBe('Validated');
+    expect(createRequest.request.body.isFeaturedOnHomeSponsored).toBeTrue();
+    createRequest.flush(park);
+
+    const updateRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/park-1`);
+    expect(updateRequest.request.method).toBe('PUT');
+    expect(updateRequest.request.body.featuredHomeOrder).toBe(4);
+    expect(updateRequest.request.body.isFeaturedOnHomeSponsored).toBeFalse();
+    updateRequest.flush(park);
+  });
+
+  it('updates visibility and bulk administration through PATCH requests', () => {
+    service.updateParkVisibility('park-1', false).subscribe();
+    service.updateParksBulkAdministration({ ids: ['park-1'], adminReviewStatus: 'Validated' }).subscribe();
+
+    const visibilityRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/park-1/visibility`);
+    expect(visibilityRequest.request.method).toBe('PATCH');
+    expect(visibilityRequest.request.body).toEqual({ isVisible: false });
+    visibilityRequest.flush(createPark());
+
+    const bulkRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/bulk-administration`);
+    expect(bulkRequest.request.method).toBe('PATCH');
+    bulkRequest.flush({ requestedCount: 1, updatedCount: 1 });
+  });
+});

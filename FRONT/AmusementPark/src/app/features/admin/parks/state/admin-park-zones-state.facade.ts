@@ -1,9 +1,18 @@
-import { Injectable, Signal, computed, DestroyRef } from '@angular/core';
+import {
+  Injectable,
+  Signal,
+  computed,
+  DestroyRef,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { ParkZone } from '@app/models/parks/park-zone';
 
+import {
+  ADMIN_PARK_ZONES_STATE_PARK_ZONES_API_SERVICE_PORT,
+  AdminParkZonesStateParkZonesApiServicePort
+} from './admin-park-zones-state-data.ports';
 interface AdminParkZonesViewModel {
   zones: ParkZone[];
 }
@@ -15,7 +24,7 @@ export class AdminParkZonesStateFacade {
   public readonly state = this.screenStateStore.state;
   public readonly zones: Signal<ParkZone[]> = computed(() => this.screenStateStore.data()?.zones ?? []);
 
-  constructor(private readonly parkZonesApiService: ParkZonesApiService,
+  constructor(@Inject(ADMIN_PARK_ZONES_STATE_PARK_ZONES_API_SERVICE_PORT) private readonly parkZonesApiService: AdminParkZonesStateParkZonesApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
   }

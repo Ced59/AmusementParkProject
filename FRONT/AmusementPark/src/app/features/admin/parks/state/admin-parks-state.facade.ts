@@ -1,4 +1,11 @@
-import { DestroyRef, Injectable, Signal, computed, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  computed,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 
@@ -7,10 +14,13 @@ import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
 import { Pagination } from '@app/models/shared/pagination';
 import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
+import {
+  ADMIN_PARKS_STATE_PARKS_API_SERVICE_PORT,
+  AdminParksStateParksApiServicePort
+} from './admin-parks-state-data.ports';
 interface AdminParksViewModel {
   parks: Park[];
   pagination: Pagination | null;
@@ -49,7 +59,7 @@ export class AdminParksStateFacade {
     countryCode: this.countryCodeFilterSignal().trim() || null
   }));
 
-  constructor(private readonly parksApiService: ParksApiService,
+  constructor(@Inject(ADMIN_PARKS_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: AdminParksStateParksApiServicePort,
     private readonly destroyRef: DestroyRef
   ) {
   }

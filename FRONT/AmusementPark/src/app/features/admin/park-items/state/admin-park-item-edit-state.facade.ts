@@ -1,13 +1,17 @@
-import { Injectable, Signal, signal } from '@angular/core';
+import { Injectable, Signal, signal, Inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
-import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
 
+import {
+  ADMIN_PARK_ITEM_EDIT_STATE_PARK_ITEMS_API_SERVICE_PORT,
+  AdminParkItemEditStateParkItemsApiServicePort,
+  ADMIN_PARK_ITEM_EDIT_STATE_PARKS_API_SERVICE_PORT,
+  AdminParkItemEditStateParksApiServicePort
+} from './admin-park-item-edit-state-data.ports';
 @Injectable()
 export class AdminParkItemEditStateFacade {
   private readonly isSavingSignal = signal(false);
@@ -19,8 +23,8 @@ export class AdminParkItemEditStateFacade {
   public readonly parkOptionsLoading: Signal<boolean> = this.parkOptionsLoadingSignal.asReadonly();
 
   constructor(
-    private readonly parkItemsApiService: ParkItemsApiService,
-    private readonly parksApiService: ParksApiService
+    @Inject(ADMIN_PARK_ITEM_EDIT_STATE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: AdminParkItemEditStateParkItemsApiServicePort,
+    @Inject(ADMIN_PARK_ITEM_EDIT_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: AdminParkItemEditStateParksApiServicePort
   ) {
   }
 

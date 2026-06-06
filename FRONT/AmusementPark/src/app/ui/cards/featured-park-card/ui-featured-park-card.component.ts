@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ImageDisplayComponent } from '@app/components/shared/image-display/image-display.component';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { HomeFeaturedParkCardModel } from '@app/models/home/home-featured-park-card.model';
 import { UiButtonDirective, UiChipComponent } from '@ui/primitives';
 

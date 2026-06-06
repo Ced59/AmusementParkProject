@@ -855,7 +855,8 @@
         "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami.",
         "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne.",
         "localizedContent": "Szybko importować zlokalizowane teksty przez JSON po wyborze celu.",
-        "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku."
+        "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
+        "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow."
       }
     },
     "references": {
@@ -1059,6 +1060,63 @@
         "newValue": "Nowe",
         "noFieldChange": "Brak zmian pól."
       }
+    },
+    "seoSitemaps": {
+      "navTitle": "SEO i sitemapy",
+      "title": "SEO i sitemapy",
+      "subtitle": "Kontrolowane generowanie indeksu sitemap, podgląd sekcji i zarządzanie IndexNow.",
+      "loading": "Ładowanie informacji SEO...",
+      "loadError": "Nie można załadować informacji SEO.",
+      "saveError": "Nie można zapisać ustawień SEO.",
+      "generateError": "Nie można wygenerować sitemap.",
+      "empty": "Brak informacji SEO.",
+      "actions": {
+        "generate": "Wygeneruj ponownie",
+        "generateWithoutIndexNow": "Generuj bez IndexNow",
+        "openSitemap": "Otwórz"
+      },
+      "stats": {
+        "totalUrls": "Adresy URL",
+        "sections": "Sekcje",
+        "lastGeneration": "Ostatnie generowanie",
+        "runtime": "Stan"
+      },
+      "lastResult": {
+        "title": "Ostatni wynik"
+      },
+      "publicFiles": {
+        "title": "Pliki publiczne",
+        "subtitle": "Bezpośredni dostęp do plików dla crawlerów i walidatorów."
+      },
+      "sections": {
+        "title": "Organizacja sitemap",
+        "subtitle": "Indeks sitemap wskazuje pliki podzielone według rodzin URL.",
+        "file": "Plik",
+        "urls": "URL",
+        "lastModified": "Ostatnia zmiana"
+      },
+      "settings": {
+        "title": "Ustawienia IndexNow",
+        "subtitle": "IndexNow można włączać, wyłączać i kontrolować z panelu admina.",
+        "indexNowEnabled": "Włącz IndexNow",
+        "submitManual": "Wyślij po generowaniu ręcznym",
+        "submitAutomatic": "Wyślij po generowaniu automatycznym",
+        "indexNowKey": "Klucz IndexNow",
+        "indexNowKeyLocation": "Lokalizacja klucza",
+        "indexNowEndpoints": "Endpointy IndexNow"
+      },
+      "history": {
+        "title": "Historia generowania",
+        "subtitle": "Śledzi generowania, wolumeny, błędy i wysyłki IndexNow.",
+        "columns": {
+          "date": "Data",
+          "status": "Status",
+          "urls": "URL",
+          "duration": "Czas",
+          "indexNow": "IndexNow",
+          "actor": "Aktor"
+        }
+      }
     }
   },
   "validation": {
@@ -1074,7 +1132,8 @@
     "clear": "Wyczyść",
     "delete": "Usuń",
     "search": "Szukaj",
-    "reset": "Resetuj"
+    "reset": "Resetuj",
+    "refresh": "Odśwież"
   },
   "parkDetail": {
     "descriptionTitle": "Opis",

@@ -10,7 +10,8 @@
     "serve:ssr:AmusementPark": "node dist/amusement-park/server/server.mjs",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "build:ssr:local": "ng build --configuration local-production",
-    "seo:ssr-smoke": "node tools/seo-ssr-smoke.mjs"
+    "seo:ssr-smoke": "node tools/seo-ssr-smoke.mjs",
+    "architecture:facade-ports": "node tools/architecture/check-facade-data-ports.mjs"
   },
   "private": true,
   "dependencies": {

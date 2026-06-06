@@ -6,6 +6,7 @@ import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-v
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
 import { CanonicalUrlService } from './canonical-url.service';
 import { HreflangService } from './hreflang.service';
+import { JsonLdService } from './json-ld.service';
 import { SeoAlternateLink, SeoRouteData } from './models/seo-route-data.model';
 import { SEO_DEFAULT_LANGUAGE } from './seo-languages';
 import { normalizeSeoText, truncateSeoText } from './seo-text.utils';
@@ -17,6 +18,7 @@ interface StaticSeoCopy {
 
 const SITE_NAME: string = 'Amusement Parks';
 const DEFAULT_DESCRIPTION: string = 'Explore amusement parks, attractions, restaurants, hotels and park references around the world.';
+const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpark.png';
 
 const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
   en: {
@@ -148,6 +150,7 @@ export class SeoService {
     private readonly meta: Meta,
     private readonly canonicalUrlService: CanonicalUrlService,
     private readonly hreflangService: HreflangService,
+    private readonly jsonLdService: JsonLdService,
     @Inject(DOCUMENT) private readonly document: Document
   ) {
   }
@@ -217,6 +220,7 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: this.buildParkDetailJsonLd(park, url)
     });
   }
 
@@ -231,6 +235,7 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: this.buildParkItemDetailJsonLd(detail, url)
     });
   }
 
@@ -244,16 +249,155 @@ export class SeoService {
     this.meta.updateTag({ name: 'description', content: data.description });
     this.meta.updateTag({ name: 'robots', content: data.robots });
     this.meta.updateTag({ name: 'googlebot', content: data.robots });
+    const socialImageUrl: string = data.imageUrl ?? this.canonicalUrlService.buildAbsoluteUrl(DEFAULT_SOCIAL_IMAGE_PATH);
+    const locale: string = this.resolveOpenGraphLocale(data.canonicalUrl);
+
     this.meta.updateTag({ property: 'og:site_name', content: SITE_NAME });
     this.meta.updateTag({ property: 'og:title', content: data.title });
     this.meta.updateTag({ property: 'og:description', content: data.description });
     this.meta.updateTag({ property: 'og:url', content: data.canonicalUrl });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
+    this.meta.updateTag({ property: 'og:locale', content: locale });
+    this.meta.updateTag({ property: 'og:image', content: socialImageUrl });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: data.title });
     this.meta.updateTag({ name: 'twitter:description', content: data.description });
+    this.meta.updateTag({ name: 'twitter:image', content: socialImageUrl });
     this.setCanonical(data.canonicalUrl);
     this.setAlternates(data.alternates);
+    this.jsonLdService.setJsonLd(data.jsonLd ?? []);
+  }
+
+  private resolveOpenGraphLocale(url: string): string {
+    const language: string = this.resolveLanguageFromUrl(url);
+
+    switch (language) {
+      case 'fr':
+        return 'fr_FR';
+      case 'es':
+        return 'es_ES';
+      case 'de':
+        return 'de_DE';
+      case 'it':
+        return 'it_IT';
+      case 'pl':
+        return 'pl_PL';
+      case 'nl':
+        return 'nl_NL';
+      case 'pt':
+        return 'pt_PT';
+      default:
+        return 'en_US';
+    }
+  }
+
+  private buildParkDetailJsonLd(park: ParkDetailViewModel, url: string): unknown[] {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const jsonLd: unknown[] = [this.buildBreadcrumbJsonLd([
+      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${this.resolveLanguageFromUrl(url)}/home`) },
+      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${this.resolveLanguageFromUrl(url)}/parks`) },
+      { name: park.name, url: canonicalUrl }
+    ])];
+
+    const parkJsonLd: Record<string, unknown> = {
+      '@context': 'https://schema.org',
+      '@type': 'AmusementPark',
+      name: park.name,
+      url: canonicalUrl
+    };
+
+    const description: string = normalizeSeoText(park.description, '');
+    if (description) {
+      parkJsonLd['description'] = truncateSeoText(description, 300);
+    }
+
+    if (park.websiteUrl) {
+      parkJsonLd['sameAs'] = [park.websiteUrl];
+    }
+
+    const address: Record<string, string> = {};
+    if (park.street) {
+      address['streetAddress'] = park.street;
+    }
+    if (park.city) {
+      address['addressLocality'] = park.city;
+    }
+    if (park.postalCode) {
+      address['postalCode'] = park.postalCode;
+    }
+    if (park.countryCode) {
+      address['addressCountry'] = park.countryCode;
+    }
+    if (Object.keys(address).length > 0) {
+      parkJsonLd['address'] = { '@type': 'PostalAddress', ...address };
+    }
+
+    if (park.latitude !== null && park.longitude !== null) {
+      parkJsonLd['geo'] = {
+        '@type': 'GeoCoordinates',
+        latitude: park.latitude,
+        longitude: park.longitude
+      };
+    }
+
+    jsonLd.push(parkJsonLd);
+    return jsonLd;
+  }
+
+  private buildParkItemDetailJsonLd(detail: ParkItemDetailViewModel, url: string): unknown[] {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const language: string = this.resolveLanguageFromUrl(url);
+    const breadcrumbItems = [
+      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) }
+    ];
+
+    if (detail.parkName && detail.parkLink) {
+      breadcrumbItems.push({ name: detail.parkName, url: this.canonicalUrlService.buildAbsoluteUrl(detail.parkLink.join('/')) });
+    }
+
+    breadcrumbItems.push({ name: detail.name, url: canonicalUrl });
+
+    const itemJsonLd: Record<string, unknown> = {
+      '@context': 'https://schema.org',
+      '@type': 'TouristAttraction',
+      name: detail.name,
+      url: canonicalUrl
+    };
+
+    const description: string = normalizeSeoText(detail.description, '');
+    if (description) {
+      itemJsonLd['description'] = truncateSeoText(description, 300);
+    }
+
+    if (detail.parkName) {
+      itemJsonLd['containedInPlace'] = {
+        '@type': 'AmusementPark',
+        name: detail.parkName
+      };
+    }
+
+    if (detail.manufacturerName) {
+      itemJsonLd['manufacturer'] = {
+        '@type': 'Organization',
+        name: detail.manufacturerName
+      };
+    }
+
+    return [this.buildBreadcrumbJsonLd(breadcrumbItems), itemJsonLd];
+  }
+
+  private buildBreadcrumbJsonLd(items: Array<{ name: string; url: string }>): unknown {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items.map((item: { name: string; url: string }, index: number) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: item.url
+      }))
+    };
   }
 
   private buildStaticRouteData(routeKey: string, language: string, url: string, robots: SeoRouteData['robots']): SeoRouteData {

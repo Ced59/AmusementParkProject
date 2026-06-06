@@ -17,14 +17,16 @@ export function buildEntitySlug(value: string | null | undefined): string {
 export function buildParkLocationLine(park: Park | null | undefined, countryNameOverride: string | null = null): string | null {
   const countryLabel: string | null = countryNameOverride?.trim() || park?.countryCode?.trim() || null;
   const parts: string[] = [park?.city, countryLabel]
-    .filter((part: string | undefined | null): part is string => !!part?.trim());
+    .map((part: string | undefined | null): string => part?.trim() ?? '')
+    .filter((part: string): boolean => part.length > 0);
 
   return parts.length > 0 ? parts.join(' · ') : null;
 }
 
 export function buildParkAddressLine(park: Park | null | undefined): string | null {
   const parts: string[] = [park?.street, park?.postalCode, park?.city]
-    .filter((part: string | undefined | null): part is string => !!part?.trim());
+    .map((part: string | undefined | null): string => part?.trim() ?? '')
+    .filter((part: string): boolean => part.length > 0);
 
   return parts.length > 0 ? parts.join(', ') : null;
 }

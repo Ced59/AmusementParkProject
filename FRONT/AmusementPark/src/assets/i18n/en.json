@@ -855,7 +855,8 @@
         "founders": "Maintain founders and biographies linked to parks.",
         "auditLogs": "Review logged sensitive administration actions.",
         "localizedContent": "Quickly import localized texts through JSON after selecting a target.",
-        "parkGraphUpserts": "Preview then apply a full or partial park graph JSON."
+        "parkGraphUpserts": "Preview then apply a full or partial park graph JSON.",
+        "seoSitemaps": "Manage the sitemap index, XML sections, stats and IndexNow."
       }
     },
     "references": {
@@ -1059,6 +1060,63 @@
         "newValue": "New",
         "noFieldChange": "No field changed."
       }
+    },
+    "seoSitemaps": {
+      "navTitle": "SEO & Sitemaps",
+      "title": "SEO & Sitemaps",
+      "subtitle": "Controlled sitemap index generation, section preview and IndexNow management.",
+      "loading": "Loading SEO information...",
+      "loadError": "Unable to load SEO information.",
+      "saveError": "Unable to save SEO settings.",
+      "generateError": "Unable to generate sitemaps.",
+      "empty": "No SEO information available.",
+      "actions": {
+        "generate": "Regenerate",
+        "generateWithoutIndexNow": "Generate without IndexNow",
+        "openSitemap": "Open"
+      },
+      "stats": {
+        "totalUrls": "Referenced URLs",
+        "sections": "Sections",
+        "lastGeneration": "Last generation",
+        "runtime": "State"
+      },
+      "lastResult": {
+        "title": "Last result"
+      },
+      "publicFiles": {
+        "title": "Public files",
+        "subtitle": "Direct access to files exposed to crawlers and validators."
+      },
+      "sections": {
+        "title": "Sitemap organization",
+        "subtitle": "The sitemap index references files split by URL family.",
+        "file": "File",
+        "urls": "URLs",
+        "lastModified": "Last modified"
+      },
+      "settings": {
+        "title": "IndexNow settings",
+        "subtitle": "IndexNow can be enabled, disabled and controlled from the admin area.",
+        "indexNowEnabled": "Enable IndexNow",
+        "submitManual": "Submit after manual generation",
+        "submitAutomatic": "Submit after automatic generation",
+        "indexNowKey": "IndexNow key",
+        "indexNowKeyLocation": "Key location",
+        "indexNowEndpoints": "IndexNow endpoints"
+      },
+      "history": {
+        "title": "Generation history",
+        "subtitle": "Tracks generations, volumes, errors and IndexNow submissions.",
+        "columns": {
+          "date": "Date",
+          "status": "Status",
+          "urls": "URLs",
+          "duration": "Duration",
+          "indexNow": "IndexNow",
+          "actor": "Actor"
+        }
+      }
     }
   },
   "validation": {
@@ -1074,7 +1132,8 @@
     "clear": "Clear",
     "delete": "Delete",
     "search": "Search",
-    "reset": "Reset"
+    "reset": "Reset",
+    "refresh": "Refresh"
   },
   "parkDetail": {
     "descriptionTitle": "Description",

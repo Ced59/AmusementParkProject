@@ -1,4 +1,10 @@
-import { DestroyRef, Injectable, Signal, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Params, Router, UrlSegment, UrlTree } from '@angular/router';
 import { Observable, forkJoin, of } from 'rxjs';
@@ -7,9 +13,6 @@ import { catchError, distinctUntilChanged, filter, map, switchMap } from 'rxjs/o
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
-import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
-import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
-import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import {
   buildPublicParkItemRouteCommands,
@@ -21,6 +24,14 @@ import {
   PublicParkNavigationTreeViewModel
 } from '../models/public-park-navigation-tree.model';
 
+import {
+  PUBLIC_PARK_NAVIGATION_TREE_PARK_ITEMS_API_SERVICE_PORT,
+  PublicParkNavigationTreeParkItemsApiServicePort,
+  PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT,
+  PublicParkNavigationTreeParkZonesApiServicePort,
+  PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT,
+  PublicParkNavigationTreeParksApiServicePort
+} from './public-park-navigation-tree-data.ports';
 interface PublicParkRouteContext {
   readonly language: string;
   readonly parkId: string;
@@ -51,9 +62,9 @@ export class PublicParkNavigationTreeFacade {
   private loadSequence: number = 0;
 
   constructor(
-    private readonly parksApiService: ParksApiService,
-    private readonly parkItemsApiService: ParkItemsApiService,
-    private readonly parkZonesApiService: ParkZonesApiService,
+    @Inject(PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT) private readonly parksApiService: PublicParkNavigationTreeParksApiServicePort,
+    @Inject(PUBLIC_PARK_NAVIGATION_TREE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: PublicParkNavigationTreeParkItemsApiServicePort,
+    @Inject(PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT) private readonly parkZonesApiService: PublicParkNavigationTreeParkZonesApiServicePort,
     private readonly router: Router,
     private readonly destroyRef: DestroyRef
   ) {
@@ -229,7 +240,6 @@ export class PublicParkNavigationTreeFacade {
       }
     ];
   }
-
 
   private buildParkRoute(sourceData: PublicParkNavigationSourceData): string[] {
     const context: PublicParkRouteContext = sourceData.context;

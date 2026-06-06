@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
+import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
 import { MapMarker } from '@app/models/map/map-marker';
 import { UiMapSlotComponent } from '@ui/maps';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
@@ -10,6 +10,7 @@ import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-ur
 @Component({
   selector: 'app-park-location-section',
   templateUrl: './park-location-section.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./park-location-section.component.scss'],
   imports: [LeafletMapComponent, TranslateModule, UiMapSlotComponent]
 })

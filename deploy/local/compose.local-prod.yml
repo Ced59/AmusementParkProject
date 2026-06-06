@@ -114,7 +114,7 @@ services:
       Cors__AllowCredentials: "true"
       Seo__PublicBaseUrl: ${PUBLIC_BASE_URL:-http://amusement.localhost:18080}
       Seo__DefaultLanguage: en
-      Seo__MaxDynamicUrlsPerType: ${SEO_MAX_DYNAMIC_URLS_PER_TYPE:-50}
+      Seo__MaxDynamicUrlsPerType: ${SEO_MAX_DYNAMIC_URLS_PER_TYPE:-5000}
       Seo__SupportedLanguages__0: en
       Seo__SupportedLanguages__1: fr
       Seo__SupportedLanguages__2: es

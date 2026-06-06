@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, inject } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
+import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
 import { MapMarker } from '@app/models/map/map-marker';
 import { UiButtonDirective, UiKickerComponent } from '@ui/primitives';
 import { UiMapSlotComponent } from '@ui/maps';

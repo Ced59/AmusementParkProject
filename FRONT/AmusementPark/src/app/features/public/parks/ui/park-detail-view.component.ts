@@ -3,8 +3,8 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SafeExternalUrlPipe, SafeRichHtmlPipe } from '@shared/pipes';
 
-import { ImageDisplayComponent } from '@app/components/shared/image-display/image-display.component';
-import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
+import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState, ScreenStateKind } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { UiPhotoCarouselComponent } from '@ui/media';

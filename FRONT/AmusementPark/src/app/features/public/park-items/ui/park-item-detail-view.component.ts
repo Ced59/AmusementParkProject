@@ -3,9 +3,9 @@ import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
-import { ImageDisplayComponent } from '@app/components/shared/image-display/image-display.component';
-import { PageStateComponent } from '@app/components/shared/page-state/page-state.component';
+import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
+import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
 import { resolveLocationMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';

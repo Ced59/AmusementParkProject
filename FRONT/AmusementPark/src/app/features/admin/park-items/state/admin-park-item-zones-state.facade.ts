@@ -1,10 +1,20 @@
-import { DestroyRef, Injectable, Signal, inject, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  Signal,
+  inject,
+  signal,
+  Inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { ParkZone } from '@app/models/parks/park-zone';
-import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 
+import {
+  ADMIN_PARK_ITEM_ZONES_STATE_PARK_ZONES_API_SERVICE_PORT,
+  AdminParkItemZonesStateParkZonesApiServicePort
+} from './admin-park-item-zones-state-data.ports';
 export interface AdminParkItemZoneOption {
   id: string;
   label: string;
@@ -17,7 +27,7 @@ export class AdminParkItemZonesStateFacade {
 
   public readonly zones: Signal<AdminParkItemZoneOption[]> = this.zonesSignal.asReadonly();
 
-  constructor(private readonly parkZonesApiService: ParkZonesApiService) {
+  constructor(@Inject(ADMIN_PARK_ITEM_ZONES_STATE_PARK_ZONES_API_SERVICE_PORT) private readonly parkZonesApiService: AdminParkItemZonesStateParkZonesApiServicePort) {
   }
 
   load(parkId: string, currentLanguage: string): void {

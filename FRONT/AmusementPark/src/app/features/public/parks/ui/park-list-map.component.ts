@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, computed, inject, signal } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { LeafletMapComponent } from '@app/components/shared/leaflet-map/leaflet-map.component';
+import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
 import { MapMarker } from '@app/models/map/map-marker';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { ParkRegionFilter, ParkRegionFilterOption } from '@shared/models/geo/world-region-filter.model';

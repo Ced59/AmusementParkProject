@@ -1,3 +1,5 @@
+using System.Net;
+
 namespace AmusementPark.WebAPI.Configuration;
 
 /// <summary>
@@ -25,7 +27,7 @@ public sealed class SeoSettings
         "pt",
     };
 
-    public int MaxDynamicUrlsPerType { get; set; } = 50;
+    public int MaxDynamicUrlsPerType { get; set; } = 5000;
 
     public List<string> RobotsDisallowPaths { get; set; } = new()
     {
@@ -78,9 +80,22 @@ public sealed class SeoSettings
 
     private static bool IsLocalHost(string host)
     {
-        return string.Equals(host, "localhost", StringComparison.OrdinalIgnoreCase) ||
-               string.Equals(host, "127.0.0.1", StringComparison.OrdinalIgnoreCase) ||
-               string.Equals(host, "::1", StringComparison.OrdinalIgnoreCase);
+        string normalizedHost = host.Trim();
+
+        if (normalizedHost.StartsWith("[", StringComparison.Ordinal) &&
+            normalizedHost.EndsWith("]", StringComparison.Ordinal) &&
+            normalizedHost.Length > 2)
+        {
+            normalizedHost = normalizedHost[1..^1];
+        }
+
+        if (string.Equals(normalizedHost, "localhost", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        return IPAddress.TryParse(normalizedHost, out IPAddress? address) &&
+               IPAddress.IsLoopback(address);
     }
 
     private static bool HasRootOnlyPath(Uri uri)
