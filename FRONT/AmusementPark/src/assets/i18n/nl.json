@@ -1725,7 +1725,7 @@
     },
     "bottom": {
       "copy": "© {{year}} AmusementPark — Gemaakt met ❤️ en adrenaline",
-      "version": "Versie 1.1.0"
+      "version": "Versie {{version}}"
     }
   },
   "ui": {

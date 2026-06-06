@@ -5,13 +5,14 @@ WORKDIR /app
 
 ARG ANGULAR_CONFIGURATION=production
 ARG GOOGLE_CLIENT_ID=
+ARG SITE_VERSION=
 
 COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
 RUN GOOGLE_CLIENT_ID="${GOOGLE_CLIENT_ID}" node scripts/inject-google-client-id.cjs && \
-    npm run build -- --configuration ${ANGULAR_CONFIGURATION}
+    SITE_VERSION="${SITE_VERSION}" npm run build -- --configuration ${ANGULAR_CONFIGURATION}
 
 
 FROM node:24-alpine AS runtime

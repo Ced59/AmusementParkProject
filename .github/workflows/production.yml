@@ -76,6 +76,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -169,6 +171,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute frontend version
+        id: frontend-version
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(git describe --tags --abbrev=0 2>/dev/null || true)"
+          if [ -z "${version}" ]; then
+            version="v0.0.0-dev"
+          fi
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
 
       - name: Compute image names
         id: image-names
@@ -213,6 +228,7 @@ jobs:
           build-args: |
             ANGULAR_CONFIGURATION=production
             GOOGLE_CLIENT_ID=${{ secrets.PROD_GOOGLE_CLIENT_ID }}
+            SITE_VERSION=${{ steps.frontend-version.outputs.version }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ${{ steps.image-names.outputs.front_image }}
