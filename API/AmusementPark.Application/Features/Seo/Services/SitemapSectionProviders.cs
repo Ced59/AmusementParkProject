@@ -158,20 +158,11 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
 
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
         int limit = ParksSitemapSectionProvider.NormalizeDynamicLimit(context.MaxDynamicUrlsPerType);
-        PagedResult<ParkItem> itemPage = await this.parkItemRepository.GetPageAsync(
-            1,
+        IReadOnlyCollection<ParkItem> candidateItems = await this.parkItemRepository.GetPublicSitemapCandidatesAsync(
             limit,
-            parkId: null,
-            search: null,
-            includeHidden: false,
-            isVisible: true,
-            adminReviewStatus: null,
-            category: null,
-            type: null,
-            manufacturerId: null,
             cancellationToken);
 
-        IReadOnlyCollection<ParkItem> publicItems = itemPage.Items
+        IReadOnlyCollection<ParkItem> publicItems = candidateItems
             .Where(static item => IsPublicItem(item))
             .ToList();
 
