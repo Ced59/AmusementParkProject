@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "generate-version": "node scripts/generate-version.mjs",
+    "release:version": "node scripts/set-release-version.mjs",
+    "release:version:print": "node scripts/read-release-version.mjs",
     "prestart": "npm run generate-version",
     "start": "ng serve",
     "prebuild": "npm run generate-version",

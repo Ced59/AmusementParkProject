@@ -1,12 +1,31 @@
-# Version frontend depuis les tags Git
+# Version frontend depuis la version de PR et les tags Git
 
 Le footer Angular affiche la version lue depuis `src/environments/version.generated.ts`.
 Ce fichier est genere avant les builds et tests npm par `npm run generate-version`.
 
-La version utilisee est le dernier tag reachable depuis le commit en cours, via:
+Chaque PR qui prepare une version frontend porte la version attendue dans:
+
+```text
+FRONT/AmusementPark/release-version.json
+```
+
+Pour configurer cette version localement:
 
 ```bash
-git describe --tags --abbrev=0
+cd FRONT/AmusementPark
+npm run release:version -- 1.2.0
+```
+
+Le fichier `release-version.json` doit etre committe dans la PR. Il sert a:
+
+- afficher la version voulue dans les builds de PR;
+- informer la PR de la version a creer;
+- creer automatiquement le tag sur `master` apres merge.
+
+Les tags de ce repository utilisent le format sans prefixe `v`, par exemple:
+
+```text
+1.2.0
 ```
 
 Si aucun tag n'est disponible, le fallback affiche est:
@@ -21,28 +40,21 @@ Le navigateur ne fait aucun appel runtime vers GitHub. Le fichier de version est
 
 Le workflow de production recupere les tags Git avec `fetch-depth: 0` pour les jobs qui buildent le frontend.
 
-L'image Docker frontend ne depend pas de `.git` dans son image finale. Le workflow calcule la version avant le build Docker et la transmet via le build arg `SITE_VERSION`.
-Un build Docker local sans `SITE_VERSION` reste possible et utilise le fallback si aucun tag Git n'est disponible dans le contexte.
+Sur pull request, la CI lit `release-version.json`, verifie que la version est valide, et verifie que le tag n'existe pas deja si le fichier de version a change dans la PR.
+
+Sur push vers `master` apres merge, la CI:
+
+1. lit `release-version.json`;
+2. detecte si ce fichier a change dans le commit merge;
+3. verifie que le tag n'existe pas deja;
+4. cree le tag sur le SHA merge dans `master`;
+5. build et deploie le frontend avec cette version.
+
+L'image Docker frontend ne depend pas de `.git` dans son image finale. Le workflow transmet la version creee/taggee via le build arg `SITE_VERSION`.
+Un build Docker local sans `SITE_VERSION` reste possible et utilise `release-version.json`, puis les tags Git, puis le fallback si aucune source n'est disponible.
 
 ## Creer un tag apres merge
 
-Le tag de release doit pointer vers le commit deja merge sur `master`. Ne cree pas le tag depuis une branche de pull request.
+Le tag de release est cree automatiquement par la pipeline de production quand la PR est mergee dans `master` et que `release-version.json` a change.
 
-Exemple local:
-
-```bash
-git fetch origin master --tags
-git switch master
-git pull --ff-only origin master
-git tag v0.3.0
-git push origin v0.3.0
-```
-
-Il est aussi possible d'utiliser le workflow manuel GitHub Actions `Create release tag`:
-
-1. lancer le workflow depuis GitHub Actions;
-2. saisir un tag comme `v0.3.0`;
-3. le workflow verifie que le tag n'existe pas deja;
-4. il checkout `master`, cree le tag sur le HEAD de `master`, puis pousse le tag.
-
-Le tag doit exister avant le build/deploy frontend qui doit l'afficher. Apres creation d'un tag post-merge, relancer le workflow de production depuis `master` si un deploiement doit embarquer cette nouvelle version.
+Ne cree pas le tag depuis une branche de pull request. Si la creation du tag echoue, verifier que la version de PR n'est pas deja utilisee par un tag existant.
