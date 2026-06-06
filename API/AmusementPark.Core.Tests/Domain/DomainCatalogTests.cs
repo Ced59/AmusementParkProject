@@ -22,7 +22,9 @@ public sealed class DomainCatalogTests
     [Fact]
     public void ExtractedTypes_WhenRead_ShouldBeOrderedByMigrationCatalogDefinition()
     {
-        Assert.True(DomainCatalog.ExtractedTypes.IndexOf("Country") < DomainCatalog.ExtractedTypes.IndexOf("User"));
-        Assert.True(DomainCatalog.ExtractedTypes.IndexOf("Park") < DomainCatalog.ExtractedTypes.IndexOf("ParkItem"));
+        List<string> extractedTypes = DomainCatalog.ExtractedTypes.ToList();
+
+        Assert.True(extractedTypes.IndexOf("Country") < extractedTypes.IndexOf("User"));
+        Assert.True(extractedTypes.IndexOf("Park") < extractedTypes.IndexOf("ParkItem"));
     }
 }

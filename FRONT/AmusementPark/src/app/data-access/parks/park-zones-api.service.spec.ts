@@ -45,12 +45,12 @@ describe('ParkZonesApiService', () => {
     expect(createRequest.request.body).toBe(zone);
     createRequest.flush(zone);
 
-    const updateRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}park-zones/zone-1`);
+    const updateRequest = httpTestingController.expectOne((request) => request.url === `${environment.apiBaseUrl}park-zones/zone-1` && request.method === 'PUT');
     expect(updateRequest.request.method).toBe('PUT');
     expect(updateRequest.request.body).toBe(zone);
     updateRequest.flush(zone);
 
-    const deleteRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}park-zones/zone-1`);
+    const deleteRequest = httpTestingController.expectOne((request) => request.url === `${environment.apiBaseUrl}park-zones/zone-1` && request.method === 'DELETE');
     expect(deleteRequest.request.method).toBe('DELETE');
     deleteRequest.flush(true);
   });

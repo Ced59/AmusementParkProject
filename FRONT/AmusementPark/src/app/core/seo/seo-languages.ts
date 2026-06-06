@@ -7,7 +7,7 @@ export interface SeoLanguageDefinition {
 
 export const SEO_LANGUAGES: readonly SeoLanguageDefinition[] = LANGUAGES.map((language) => ({
   language: language.value,
-  hreflang: language.code,
+  hreflang: language.value,
 }));
 
 export const SEO_DEFAULT_LANGUAGE: string = 'en';

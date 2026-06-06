@@ -37,7 +37,7 @@ export class NaturalTextTruncatorService {
     );
 
     if (naturalBreakpoint >= Math.floor(hardLimit * 0.62)) {
-      return `${candidate.slice(0, naturalBreakpoint).trimEnd()}${ellipsis}`;
+      return `${candidate.slice(0, naturalBreakpoint).replace(/[\s,;:.!?]+$/g, '')}${ellipsis}`;
     }
 
     return `${candidate}${ellipsis}`;

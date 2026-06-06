@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Text.Json;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
 using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;

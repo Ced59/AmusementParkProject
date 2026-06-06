@@ -102,13 +102,13 @@ export function getAdminParkItemFirstInvalidTabIndex(form: FormGroup): number {
     return 0;
   }
 
-  if ((form.get('attractionDetails') as FormGroup).invalid) {
-    return 1;
-  }
-
   const accessConditions: FormArray = getAccessConditions(form);
   if (accessConditions.invalid) {
     return 2;
+  }
+
+  if ((form.get('attractionDetails') as FormGroup).invalid) {
+    return 1;
   }
 
   if ((form.get('attractionLocations') as FormGroup).invalid) {
@@ -226,7 +226,11 @@ function buildAttractionAccessConditions(
 
   const conditions: AttractionAccessCondition[] = raw
     .map((item: AdminAttractionAccessConditionFormValue, index: number) => buildAttractionAccessCondition(item, index))
-    .filter((item: AttractionAccessCondition | null): item is AttractionAccessCondition => item !== null);
+    .filter((item: AttractionAccessCondition | null): item is AttractionAccessCondition => item !== null)
+    .map((item: AttractionAccessCondition, index: number): AttractionAccessCondition => ({
+      ...item,
+      displayOrder: index + 1
+    }));
 
   return conditions.length > 0 ? conditions : null;
 }
@@ -236,7 +240,8 @@ function buildAttractionAccessCondition(
   index: number
 ): AttractionAccessCondition | null {
   const type: AttractionAccessConditionType = (raw?.type as AttractionAccessConditionType) ?? 'Custom';
-  const typeKey: string | null = toNullableText(raw?.typeKey);
+  const rawTypeKey: string | null = toNullableText(raw?.typeKey);
+  const typeKey: string | null = type === 'Custom' && rawTypeKey === 'custom' ? null : rawTypeKey;
   const label: LocalizedItem<string>[] | null = toLocalizedItems(raw?.label);
   const description: LocalizedItem<string>[] | null = toLocalizedItems(raw?.description);
   const customTypeLabel: LocalizedItem<string>[] | null = toLocalizedItems(raw?.customTypeLabel);
