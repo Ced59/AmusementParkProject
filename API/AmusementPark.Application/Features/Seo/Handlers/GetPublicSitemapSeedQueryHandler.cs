@@ -132,20 +132,11 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
 
     private async Task AddParkItemUrlsAsync(List<PublicSitemapUrl> urls, IReadOnlyDictionary<string, Park> visibleParkById, IReadOnlyCollection<string> languages, int dynamicLimit, CancellationToken cancellationToken)
     {
-        PagedResult<ParkItem> page = await this.parkItemRepository.GetPageAsync(
-            1,
+        IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetPublicSitemapCandidatesAsync(
             dynamicLimit,
-            parkId: null,
-            search: null,
-            includeHidden: false,
-            isVisible: true,
-            adminReviewStatus: null,
-            category: null,
-            type: null,
-            manufacturerId: null,
             cancellationToken);
 
-        foreach (ParkItem item in page.Items)
+        foreach (ParkItem item in items)
         {
             if (string.IsNullOrWhiteSpace(item.Id) || !item.IsVisible || item.AdminReviewStatus == AdminReviewStatus.NotRelevant)
             {
