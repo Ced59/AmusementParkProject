@@ -90,7 +90,7 @@ public sealed class SeoSitemapSectionStatsDto
     public string PublicUrl { get; init; } = string.Empty;
 }
 
-public sealed class SeoSitemapGenerationResultDto
+public class SeoSitemapGenerationResultDto
 {
     public string Id { get; init; } = string.Empty;
 
