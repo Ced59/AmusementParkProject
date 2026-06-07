@@ -789,6 +789,12 @@
           "locations": "Spezifische Positionen",
           "photos": "Fotos"
         },
+        "sectionNav": {
+          "label": "Editorbereich",
+          "help": "Auf kleinen Bildschirmen jeweils einen Bereich auswahlen.",
+          "retrySave": "Speichern erneut versuchen",
+          "saveFailedWithRetry": "Speichern fehlgeschlagen. Deine Anderungen bleiben in diesem Formular."
+        },
         "accessConditionsCount": "{{count}} Zugangsbedingung(en)",
         "accessConditionsSummary": "Detaillierte Regeln werden jetzt in diesem eigenen Bereich verwaltet.",
         "locationSummary": "{{count}} / {{total}} spezifische Position(en) definiert",
@@ -801,6 +807,7 @@
         "clearSelectedLocation": "Ausgewählten Punkt leeren",
         "editorStatus": {
           "saving": "Speichern...",
+          "saveFailed": "Speichern fehlgeschlagen",
           "unsavedChanges": "Ungespeicherte Änderungen",
           "upToDate": "Aktuell"
         },

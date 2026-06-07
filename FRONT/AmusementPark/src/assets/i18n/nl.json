@@ -789,6 +789,12 @@
           "locations": "Specifieke locaties",
           "photos": "Foto's"
         },
+        "sectionNav": {
+          "label": "Editorsectie",
+          "help": "Kies op kleine schermen een sectie per keer.",
+          "retrySave": "Opnieuw opslaan",
+          "saveFailedWithRetry": "Opslaan mislukt. Je wijzigingen blijven in dit formulier."
+        },
         "accessConditionsCount": "{{count}} toegangsvoorwaarde(n)",
         "accessConditionsSummary": "Beheer de gedetailleerde regels hier in plaats van het hoofdformulier te overladen.",
         "locationSummary": "{{count}} / {{total}} specifieke locatie(s) gedefinieerd",
@@ -801,6 +807,7 @@
         "clearSelectedLocation": "Geselecteerd punt wissen",
         "editorStatus": {
           "saving": "Opslaan...",
+          "saveFailed": "Opslaan mislukt",
           "unsavedChanges": "Niet-opgeslagen wijzigingen",
           "upToDate": "Bijgewerkt"
         },

@@ -789,6 +789,12 @@
           "locations": "Lokalizacje szczegółowe",
           "photos": "Zdjęcia"
         },
+        "sectionNav": {
+          "label": "Sekcja edytora",
+          "help": "Na malych ekranach wybierz jedna sekcje naraz.",
+          "retrySave": "Ponow zapis",
+          "saveFailedWithRetry": "Zapis sie nie udal. Zmiany pozostaja w tym formularzu."
+        },
         "accessConditionsCount": "{{count}} warunek/warunki dostępu",
         "accessConditionsSummary": "Szczegółowe zasady są teraz zarządzane w osobnej sekcji.",
         "locationSummary": "{{count}} / {{total}} zdefiniowanych lokalizacji szczegółowych",
@@ -801,6 +807,7 @@
         "clearSelectedLocation": "Wyczyść wybrany punkt",
         "editorStatus": {
           "saving": "Zapisywanie...",
+          "saveFailed": "Zapis nieudany",
           "unsavedChanges": "Niezapisane zmiany",
           "upToDate": "Aktualne"
         },

@@ -191,6 +191,7 @@ export class AdminParkItemsIndexComponent implements OnInit {
       );
       this.quickDescriptionItem.set(item);
       this.quickDescriptionDraft.set([...(item.descriptions ?? [])]);
+      this.focusQuickDescriptionsPanel();
     } catch (error: unknown) {
       console.error('Error loading park item descriptions', error);
     }
@@ -252,5 +253,17 @@ export class AdminParkItemsIndexComponent implements OnInit {
       );
       this.stateFacade.loadData(true);
     }
+  }
+
+  private focusQuickDescriptionsPanel(): void {
+    setTimeout((): void => {
+      if (typeof document === 'undefined') {
+        return;
+      }
+
+      const panel: HTMLElement | null = document.getElementById('admin-quick-description-panel');
+      panel?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      panel?.focus({ preventScroll: true });
+    }, 0);
   }
 }

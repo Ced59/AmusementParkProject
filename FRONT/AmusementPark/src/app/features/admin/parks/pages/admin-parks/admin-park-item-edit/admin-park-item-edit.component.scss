@@ -53,6 +53,46 @@
   margin: 0;
 }
 
+.admin-save-recovery {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--red-500) 32%, var(--surface-border));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--red-500) 8%, var(--surface-0));
+  color: var(--red-700);
+  font-weight: 600;
+}
+
+.admin-save-recovery span {
+  flex: 1;
+}
+
+.responsive-section-nav {
+  display: none;
+}
+
+.responsive-section-nav label {
+  font-weight: 700;
+}
+
+.responsive-section-nav select {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 8px;
+  background: var(--surface-0);
+  color: var(--text-color);
+  font: inherit;
+}
+
+.responsive-section-nav small {
+  color: var(--text-color-secondary);
+}
+
 .tab-section {
   display: flex;
   flex-direction: column;
@@ -254,5 +294,23 @@
   :host ::ng-deep .section-inline-actions .p-button,
   :host ::ng-deep .actions-row .p-button {
     width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .admin-save-recovery {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .responsive-section-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+  }
+
+  :host ::ng-deep .admin-park-item-editor-card .p-tablist {
+    display: none;
   }
 }

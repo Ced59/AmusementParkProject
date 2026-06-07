@@ -17,6 +17,9 @@ import {
 } from './admin-park-item-manufacturers-state-data.ports';
 @Injectable()
 export class AdminParkItemManufacturersStateFacade {
+  private static readonly cacheTtlMs: number = 5 * 60 * 1000;
+  private static cachedOptions: { expiresAt: number; options: EntitySelectOption[] } | null = null;
+
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly manufacturerOptionsSignal = signal<EntitySelectOption[]>([]);
   private readonly manufacturersLoadingSignal = signal(false);
@@ -28,20 +31,31 @@ export class AdminParkItemManufacturersStateFacade {
   }
 
   load(): void {
+    const cachedOptions: { expiresAt: number; options: EntitySelectOption[] } | null = AdminParkItemManufacturersStateFacade.cachedOptions;
+
+    if (cachedOptions && cachedOptions.expiresAt > Date.now()) {
+      this.manufacturerOptionsSignal.set(cachedOptions.options);
+      return;
+    }
+
     this.manufacturersLoadingSignal.set(true);
 
     this.manufacturersApiService.getAttractionManufacturers()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (manufacturers: AttractionManufacturer[]) => {
-          this.manufacturerOptionsSignal.set(
-            manufacturers
-              .filter((manufacturer: AttractionManufacturer) => !!manufacturer.id)
-              .map((manufacturer: AttractionManufacturer) => ({
-                id: manufacturer.id ?? '',
-                label: manufacturer.name
-              }))
-          );
+          const options: EntitySelectOption[] = manufacturers
+            .filter((manufacturer: AttractionManufacturer) => !!manufacturer.id)
+            .map((manufacturer: AttractionManufacturer) => ({
+              id: manufacturer.id ?? '',
+              label: manufacturer.name
+            }));
+
+          AdminParkItemManufacturersStateFacade.cachedOptions = {
+            expiresAt: Date.now() + AdminParkItemManufacturersStateFacade.cacheTtlMs,
+            options
+          };
+          this.manufacturerOptionsSignal.set(options);
           this.manufacturersLoadingSignal.set(false);
         },
         error: (error: unknown) => {
@@ -49,5 +63,9 @@ export class AdminParkItemManufacturersStateFacade {
           this.manufacturersLoadingSignal.set(false);
         }
       });
+  }
+
+  invalidateCache(): void {
+    AdminParkItemManufacturersStateFacade.cachedOptions = null;
   }
 }

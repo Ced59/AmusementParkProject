@@ -18,9 +18,39 @@
       (saveAll)="saveAll.emit()"
       (saveAndClose)="saveAndClose.emit()">
     </app-editor-save-toolbar>
+
+    @if (saveErrorVisible) {
+      <div class="admin-save-recovery" role="alert">
+        <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
+        <span>{{ 'admin.parks.items.sectionNav.saveFailedWithRetry' | translate }}</span>
+        <button
+          pButton
+          type="button"
+          class="p-button-sm p-button-danger p-button-outlined"
+          icon="pi pi-refresh"
+          [disabled]="isSaving"
+          [label]="'admin.parks.items.sectionNav.retrySave' | translate"
+          (click)="retrySave.emit()">
+        </button>
+      </div>
+    }
   </div>
 
   <form [formGroup]="form" (ngSubmit)="submitForm.emit()" class="p-fluid">
+    <div class="responsive-section-nav">
+      <label for="park-item-editor-section">{{ 'admin.parks.items.sectionNav.label' | translate }}</label>
+      <select
+        id="park-item-editor-section"
+        [value]="activeTabIndex"
+        aria-describedby="park-item-editor-section-help"
+        (change)="onSectionSelect($any($event.target).value)">
+        @for (section of sectionOptions; track section.value) {
+          <option [value]="section.value">{{ section.labelKey | translate }}</option>
+        }
+      </select>
+      <small id="park-item-editor-section-help">{{ 'admin.parks.items.sectionNav.help' | translate }}</small>
+    </div>
+
     <p-tabs [value]="activeTabIndex" (valueChange)="tabChanged.emit($event)">
       <p-tablist>
         <p-tab [value]="0">{{ 'admin.parks.items.tabs.general' | translate }}</p-tab>

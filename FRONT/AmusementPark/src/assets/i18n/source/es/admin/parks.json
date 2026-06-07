@@ -239,6 +239,12 @@
           "locations": "Ubicaciones específicas",
           "photos": "Fotos"
         },
+        "sectionNav": {
+          "label": "Seccion del editor",
+          "help": "En pantallas pequenas, elige una seccion cada vez.",
+          "retrySave": "Reintentar guardado",
+          "saveFailedWithRetry": "No se pudo guardar. Tus cambios siguen en este formulario."
+        },
         "accessConditionsCount": "{{count}} condición(es) de acceso",
         "accessConditionsSummary": "Gestiona aquí las reglas detalladas en lugar de saturar el formulario principal.",
         "locationSummary": "{{count}} / {{total}} ubicación(es) específica(s) definidas",
@@ -251,6 +257,7 @@
         "clearSelectedLocation": "Borrar punto seleccionado",
         "editorStatus": {
           "saving": "Guardando...",
+          "saveFailed": "Guardado fallido",
           "unsavedChanges": "Cambios no guardados",
           "upToDate": "Actualizado"
         },

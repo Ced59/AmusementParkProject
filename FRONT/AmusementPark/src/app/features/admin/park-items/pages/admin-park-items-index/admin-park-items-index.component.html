@@ -32,7 +32,7 @@
 </app-admin-park-items-index-view>
 
 @if (quickDescriptionItem(); as item) {
-  <section class="admin-quick-description-panel" aria-live="polite">
+  <section id="admin-quick-description-panel" class="admin-quick-description-panel" aria-live="polite" tabindex="-1">
     <div class="admin-quick-description-panel__header">
       <div>
         <span class="admin-kicker">{{ 'admin.parkItems.content.quickDescriptions' | translate }}</span>

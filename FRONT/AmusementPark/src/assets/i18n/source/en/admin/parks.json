@@ -239,6 +239,12 @@
           "locations": "Specific locations",
           "photos": "Photos"
         },
+        "sectionNav": {
+          "label": "Editor section",
+          "help": "On small screens, choose one section at a time.",
+          "retrySave": "Retry save",
+          "saveFailedWithRetry": "Save failed. Your changes are still on this form."
+        },
         "accessConditionsCount": "{{count}} access condition(s)",
         "accessConditionsSummary": "Manage the detailed rules in this dedicated section instead of keeping everything on the main form.",
         "locationSummary": "{{count}} / {{total}} specific location(s) defined",
@@ -251,6 +257,7 @@
         "clearSelectedLocation": "Clear selected point",
         "editorStatus": {
           "saving": "Saving...",
+          "saveFailed": "Save failed",
           "unsavedChanges": "Unsaved changes",
           "upToDate": "Up to date"
         },

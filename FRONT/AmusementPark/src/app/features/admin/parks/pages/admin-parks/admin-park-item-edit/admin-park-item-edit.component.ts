@@ -71,6 +71,9 @@ import { AdminParkItemEditFormComponent } from './admin-park-item-edit-form.comp
   imports: [AdminParkItemEditFormComponent, TranslateModule]
 })
 export class AdminParkItemEditComponent implements OnInit {
+  private static accessConditionTypeOptionsCache: { expiresAt: number; options: AdminParkItemAccessConditionTypeOption[] } | null = null;
+  private static readonly referenceDataCacheTtlMs: number = 5 * 60 * 1000;
+
   public readonly form: FormGroup;
   public readonly categoryOptions: AdminParkItemCategoryOption[] = getAdminParkItemCategoryOptions();
   public readonly accessConditionPresetOptions = signal<AdminParkItemAccessConditionTypeOption[]>(this.buildFallbackAccessConditionTypeOptions());
@@ -84,12 +87,14 @@ export class AdminParkItemEditComponent implements OnInit {
   public readonly parkId = signal('');
   public readonly itemId = signal<string | null>(null);
   public readonly hasPendingChanges = signal(false);
+  public readonly lastSaveFailed = signal(false);
   public readonly selectedAccessConditionPreset = signal<string>('pregnancy-restriction');
   public readonly filteredTypeOptions = signal<AdminParkItemTypeOption[]>([]);
   public readonly isEditMode = computed(() => !!this.itemId());
   public readonly isAttractionCategory = computed(() => this.form.get('category')?.value === 'Attraction');
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
+  private readonly loadedSectionData: Set<number> = new Set<number>();
   private lastSavedSnapshot: string = '';
   private isInitializing: boolean = false;
 
@@ -159,10 +164,6 @@ export class AdminParkItemEditComponent implements OnInit {
     this.locationStateFacade.bindForm(this.form);
     this.photosStateFacade.setCurrentLanguage(this.currentLang());
     this.photosStateFacade.reset();
-    this.manufacturersStateFacade.load();
-    this.loadAccessConditionTypeOptions();
-    this.zonesStateFacade.load(this.parkId(), this.currentLang());
-    void this.editStateFacade.loadParkOptions();
     this.setupFormSync();
 
     void this.initializeEditorAsync();
@@ -184,6 +185,11 @@ export class AdminParkItemEditComponent implements OnInit {
     void this.persistItemAsync('back', 'all');
   }
 
+  retryLastSave(): void {
+    this.lastSaveFailed.set(false);
+    void this.persistItemAsync('stay', 'all');
+  }
+
   goBack(): void {
     this.router.navigate(['/', this.currentLang(), 'admin', 'parks', 'edit', this.parkId(), 'items']);
   }
@@ -197,6 +203,7 @@ export class AdminParkItemEditComponent implements OnInit {
           : 0;
 
     this.activeTabIndex.set(Number.isFinite(normalizedIndex) ? normalizedIndex : 0);
+    this.loadSectionData(this.activeTabIndex());
 
     if (this.activeTabIndex() === 0 || this.activeTabIndex() === 3) {
       setTimeout((): void => {
@@ -220,6 +227,7 @@ export class AdminParkItemEditComponent implements OnInit {
     }
 
     this.form.get('zoneId')?.setValue(null, { emitEvent: false });
+    this.loadedSectionData.delete(0);
     this.zonesStateFacade.load(parkId, this.currentLang());
     void this.locationStateFacade.loadParkLocationDefaultAsync(parkId, false);
     this.updatePendingChanges();
@@ -251,6 +259,7 @@ export class AdminParkItemEditComponent implements OnInit {
   addAccessCondition(typeKey: string): void {
     addAdminParkItemAccessCondition(this.formBuilder, this.accessConditions, typeKey, this.accessConditionPresetOptions());
     this.activeTabIndex.set(this.isAttractionCategory() ? 2 : 0);
+    this.loadSectionData(this.activeTabIndex());
   }
 
   removeAccessCondition(index: number): void {
@@ -284,7 +293,8 @@ export class AdminParkItemEditComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (): void => {
-          this.loadAccessConditionTypeOptions();
+          AdminParkItemEditComponent.accessConditionTypeOptionsCache = null;
+          this.loadAccessConditionTypeOptions(true);
           this.toastMessageService.add(
             'success',
             this.translate.instant('admin.parks.items.accessConditionTypesAdmin.createdSummary'),
@@ -385,6 +395,10 @@ export class AdminParkItemEditComponent implements OnInit {
       return this.translate.instant('admin.parks.items.editorStatus.saving');
     }
 
+    if (this.lastSaveFailed()) {
+      return this.translate.instant('admin.parks.items.editorStatus.saveFailed');
+    }
+
     if (this.isFormDirty) {
       return this.translate.instant('admin.parks.items.editorStatus.unsavedChanges');
     }
@@ -420,13 +434,15 @@ export class AdminParkItemEditComponent implements OnInit {
   }
 
   private async initializeEditorAsync(): Promise<void> {
+    const loadStartedAt: number = this.now();
     const itemId: string | null = this.itemId();
 
     if (itemId) {
       const wasLoaded: boolean = await this.loadItemAsync(itemId);
 
-      if (wasLoaded && this.isAttractionCategory()) {
-        this.photosStateFacade.loadPhotos(itemId);
+      if (wasLoaded) {
+        this.loadSectionData(this.activeTabIndex());
+        this.logAdminTiming('park-item-editor.loaded', loadStartedAt);
       }
 
       return;
@@ -435,6 +451,8 @@ export class AdminParkItemEditComponent implements OnInit {
     this.applySelectionOverridesFromQueryParams();
     await this.locationStateFacade.loadParkLocationDefaultAsync(this.parkId(), true);
     this.finalizeLoadedFormState();
+    this.loadSectionData(this.activeTabIndex());
+    this.logAdminTiming('park-item-editor.loaded', loadStartedAt);
   }
 
   private async loadItemAsync(itemId: string): Promise<boolean> {
@@ -465,7 +483,15 @@ export class AdminParkItemEditComponent implements OnInit {
     this.form.get(['attractionDetails', 'manufacturerId'])?.setValue(manufacturerId, { emitEvent: false });
   }
 
-  private loadAccessConditionTypeOptions(): void {
+  private loadAccessConditionTypeOptions(forceReload: boolean = false): void {
+    const cachedOptions: { expiresAt: number; options: AdminParkItemAccessConditionTypeOption[] } | null =
+      AdminParkItemEditComponent.accessConditionTypeOptionsCache;
+
+    if (!forceReload && cachedOptions && cachedOptions.expiresAt > Date.now()) {
+      this.accessConditionPresetOptions.set(cachedOptions.options);
+      return;
+    }
+
     this.accessConditionTypesApiService.getAll()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
@@ -480,6 +506,10 @@ export class AdminParkItemEditComponent implements OnInit {
             }));
 
           if (options.length > 0) {
+            AdminParkItemEditComponent.accessConditionTypeOptionsCache = {
+              expiresAt: Date.now() + AdminParkItemEditComponent.referenceDataCacheTtlMs,
+              options
+            };
             this.accessConditionPresetOptions.set(options);
           }
         },
@@ -522,6 +552,7 @@ export class AdminParkItemEditComponent implements OnInit {
 
         if (categoryValue !== 'Attraction') {
           this.activeTabIndex.set(0);
+          this.loadSectionData(0);
         }
       });
 
@@ -549,12 +580,15 @@ export class AdminParkItemEditComponent implements OnInit {
 
     const payload: ParkItem = mapAdminParkItemEditFormToParkItem(this.form);
     const wasEditMode: boolean = this.isEditMode();
+    this.lastSaveFailed.set(false);
 
     try {
       const savedItem: ParkItem = await this.editStateFacade.saveItem(this.itemId(), payload);
       this.afterSuccessfulSave(savedItem, mode, scope, wasEditMode);
     } catch (error: unknown) {
       console.error('Error saving park item', error);
+      this.lastSaveFailed.set(true);
+      this.hasPendingChanges.set(true);
       this.showSaveErrorMessage();
     }
   }
@@ -571,10 +605,13 @@ export class AdminParkItemEditComponent implements OnInit {
     }
 
     this.captureCurrentSnapshot();
+    this.lastSaveFailed.set(false);
     this.showSaveSuccessMessage(scope, wasEditMode);
 
     if ((!this.itemId() || hasParkChanged) && savedItem.id) {
       this.itemId.set(savedItem.id);
+      this.loadedSectionData.delete(4);
+      this.loadSectionData(this.activeTabIndex());
 
       if (mode === 'back') {
         this.goBack();
@@ -618,6 +655,7 @@ export class AdminParkItemEditComponent implements OnInit {
 
   private focusFirstInvalidTab(): void {
     this.activeTabIndex.set(getAdminParkItemFirstInvalidTabIndex(this.form));
+    this.loadSectionData(this.activeTabIndex());
   }
 
   private finalizeLoadedFormState(): void {
@@ -634,5 +672,55 @@ export class AdminParkItemEditComponent implements OnInit {
 
   private updatePendingChanges(): void {
     this.hasPendingChanges.set(buildAdminParkItemEditSnapshot(this.form) !== this.lastSavedSnapshot);
+  }
+
+  private loadSectionData(tabIndex: number): void {
+    if (this.loadedSectionData.has(tabIndex)) {
+      return;
+    }
+
+    this.loadedSectionData.add(tabIndex);
+
+    switch (tabIndex) {
+      case 0:
+        this.zonesStateFacade.load(this.parkId(), this.currentLang());
+        void this.editStateFacade.loadParkOptions();
+        break;
+      case 1:
+        this.manufacturersStateFacade.load();
+        break;
+      case 2:
+        this.loadAccessConditionTypeOptions();
+        break;
+      case 3:
+        this.locationStateFacade.refreshFromForm();
+        break;
+      case 4: {
+        const itemId: string | null = this.itemId();
+
+        if (itemId && this.isAttractionCategory()) {
+          this.photosStateFacade.loadPhotos(itemId);
+        } else {
+          this.loadedSectionData.delete(4);
+        }
+
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
+  private logAdminTiming(eventName: string, startedAt: number): void {
+    console.info('[admin-timing]', eventName, {
+      durationMs: Math.round(this.now() - startedAt),
+      activeTabIndex: this.activeTabIndex(),
+      editMode: this.isEditMode(),
+      itemId: this.itemId()
+    });
+  }
+
+  private now(): number {
+    return typeof performance !== 'undefined' ? performance.now() : Date.now();
   }
 }
