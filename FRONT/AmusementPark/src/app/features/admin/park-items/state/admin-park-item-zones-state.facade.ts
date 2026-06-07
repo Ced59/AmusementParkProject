@@ -22,6 +22,9 @@ export interface AdminParkItemZoneOption {
 
 @Injectable()
 export class AdminParkItemZonesStateFacade {
+  private static readonly cacheTtlMs: number = 5 * 60 * 1000;
+  private static readonly cachedZonesByKey: Map<string, { expiresAt: number; zones: AdminParkItemZoneOption[] }> = new Map<string, { expiresAt: number; zones: AdminParkItemZoneOption[] }>();
+
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly zonesSignal = signal<AdminParkItemZoneOption[]>([]);
 
@@ -31,23 +34,52 @@ export class AdminParkItemZonesStateFacade {
   }
 
   load(parkId: string, currentLanguage: string): void {
+    const cacheKey: string = this.buildCacheKey(parkId, currentLanguage);
+    const cachedZones: { expiresAt: number; zones: AdminParkItemZoneOption[] } | undefined = AdminParkItemZonesStateFacade.cachedZonesByKey.get(cacheKey);
+
+    if (cachedZones && cachedZones.expiresAt > Date.now()) {
+      this.zonesSignal.set(cachedZones.zones);
+      return;
+    }
+
     this.parkZonesApiService.getParkZonesByParkId(parkId)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (zones: ParkZone[]) => {
-          this.zonesSignal.set(
-            zones
-              .filter((zone: ParkZone) => !!zone.id)
-              .map((zone: ParkZone) => ({
-                id: zone.id ?? '',
-                label: resolveLocalizedValue(zone.names, currentLanguage) ?? zone.name ?? zone.id ?? ''
-              }))
-          );
+          const options: AdminParkItemZoneOption[] = zones
+            .filter((zone: ParkZone) => !!zone.id)
+            .map((zone: ParkZone) => ({
+              id: zone.id ?? '',
+              label: resolveLocalizedValue(zone.names, currentLanguage) ?? zone.name ?? zone.id ?? ''
+            }));
+
+          AdminParkItemZonesStateFacade.cachedZonesByKey.set(cacheKey, {
+            expiresAt: Date.now() + AdminParkItemZonesStateFacade.cacheTtlMs,
+            zones: options
+          });
+          this.zonesSignal.set(options);
         },
         error: (error: unknown) => {
           console.error('Error loading park item zones', error);
           this.zonesSignal.set([]);
         }
       });
+  }
+
+  invalidateCache(parkId: string | null = null): void {
+    if (!parkId) {
+      AdminParkItemZonesStateFacade.cachedZonesByKey.clear();
+      return;
+    }
+
+    for (const cacheKey of AdminParkItemZonesStateFacade.cachedZonesByKey.keys()) {
+      if (cacheKey.startsWith(`${parkId}|`)) {
+        AdminParkItemZonesStateFacade.cachedZonesByKey.delete(cacheKey);
+      }
+    }
+  }
+
+  private buildCacheKey(parkId: string, currentLanguage: string): string {
+    return `${parkId}|${currentLanguage}`;
   }
 }

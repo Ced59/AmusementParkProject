@@ -14,6 +14,9 @@ import {
 } from './admin-park-item-edit-state-data.ports';
 @Injectable()
 export class AdminParkItemEditStateFacade {
+  private static readonly parkOptionsCacheTtlMs: number = 5 * 60 * 1000;
+  private static parkOptionsCache: { expiresAt: number; options: EntitySelectOption[] } | null = null;
+
   private readonly isSavingSignal = signal(false);
   private readonly parkOptionsSignal = signal<EntitySelectOption[]>([]);
   private readonly parkOptionsLoadingSignal = signal(false);
@@ -34,6 +37,13 @@ export class AdminParkItemEditStateFacade {
 
   async loadParkOptions(): Promise<void> {
     if (this.parkOptionsSignal().length > 0 || this.parkOptionsLoadingSignal()) {
+      return;
+    }
+
+    const cachedOptions: { expiresAt: number; options: EntitySelectOption[] } | null = AdminParkItemEditStateFacade.parkOptionsCache;
+
+    if (cachedOptions && cachedOptions.expiresAt > Date.now()) {
+      this.parkOptionsSignal.set(cachedOptions.options);
       return;
     }
 
@@ -58,6 +68,10 @@ export class AdminParkItemEditStateFacade {
         }))
         .sort((left: EntitySelectOption, right: EntitySelectOption): number => left.label.localeCompare(right.label));
 
+      AdminParkItemEditStateFacade.parkOptionsCache = {
+        expiresAt: Date.now() + AdminParkItemEditStateFacade.parkOptionsCacheTtlMs,
+        options
+      };
       this.parkOptionsSignal.set(options);
     } finally {
       this.parkOptionsLoadingSignal.set(false);
@@ -76,6 +90,10 @@ export class AdminParkItemEditStateFacade {
     } finally {
       this.isSavingSignal.set(false);
     }
+  }
+
+  invalidateParkOptionsCache(): void {
+    AdminParkItemEditStateFacade.parkOptionsCache = null;
   }
 
   private buildParkOptionLabel(park: Park): string {

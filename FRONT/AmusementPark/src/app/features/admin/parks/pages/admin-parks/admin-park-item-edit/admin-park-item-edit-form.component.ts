@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PaginatorState } from 'primeng/paginator';
 
 import { Bind } from 'primeng/bind';
+import { ButtonDirective } from 'primeng/button';
 import { Card } from 'primeng/card';
 import { Ripple } from 'primeng/ripple';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from 'primeng/tabs';
@@ -30,6 +31,12 @@ import { AdminParkItemLocationsTabComponent } from './tabs/admin-park-item-locat
 import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component';
 import { AdminJsonImportTabComponent } from '@features/admin/shared/ui/admin-json-import-tab/admin-json-import-tab.component';
 
+interface AdminParkItemEditorSectionOption {
+  value: number;
+  labelKey: string;
+  enabled: boolean;
+}
+
 @Component({
   selector: 'app-admin-park-item-edit-form',
   templateUrl: './admin-park-item-edit-form.component.html',
@@ -37,6 +44,7 @@ import { AdminJsonImportTabComponent } from '@features/admin/shared/ui/admin-jso
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     Bind,
+    ButtonDirective,
     Card,
     EditorSaveToolbarComponent,
     FormsModule,
@@ -67,6 +75,7 @@ export class AdminParkItemEditFormComponent {
   @Input() statusLabel: string = '';
   @Input() isDirty: boolean = false;
   @Input() isSaving: boolean = false;
+  @Input() saveErrorVisible: boolean = false;
   @Input() categoryOptions: AdminParkItemCategoryOption[] = [];
   @Input() filteredTypeOptions: AdminParkItemTypeOption[] = [];
   @Input() parkOptions: EntitySelectOption[] = [];
@@ -106,6 +115,7 @@ export class AdminParkItemEditFormComponent {
   @Output() back: EventEmitter<void> = new EventEmitter<void>();
   @Output() saveAll: EventEmitter<void> = new EventEmitter<void>();
   @Output() saveAndClose: EventEmitter<void> = new EventEmitter<void>();
+  @Output() retrySave: EventEmitter<void> = new EventEmitter<void>();
   @Output() tabChanged: EventEmitter<number | string | undefined> = new EventEmitter<number | string | undefined>();
   @Output() generalMapPositionChange: EventEmitter<{ lat: number; lng: number }> = new EventEmitter<{ lat: number; lng: number }>();
   @Output() resetGeneralLocationToPark: EventEmitter<void> = new EventEmitter<void>();
@@ -138,5 +148,26 @@ export class AdminParkItemEditFormComponent {
 
   get attractionLocationsGroup(): FormGroup {
     return this.form.get('attractionLocations') as FormGroup;
+  }
+
+  get sectionOptions(): AdminParkItemEditorSectionOption[] {
+    return [
+      { value: 0, labelKey: 'admin.parks.items.tabs.general', enabled: true },
+      { value: 1, labelKey: 'admin.parks.items.tabs.details', enabled: this.isAttractionCategory },
+      { value: 2, labelKey: 'admin.parks.items.tabs.accessConditions', enabled: this.isAttractionCategory },
+      { value: 3, labelKey: 'admin.parks.items.tabs.locations', enabled: this.isAttractionCategory },
+      { value: 4, labelKey: 'admin.parks.items.tabs.photos', enabled: this.isAttractionCategory },
+      { value: 5, labelKey: 'admin.jsonImport.tab', enabled: true }
+    ].filter((option: AdminParkItemEditorSectionOption): boolean => option.enabled);
+  }
+
+  onSectionSelect(value: string): void {
+    const selectedValue: number = Number(value);
+
+    if (!Number.isFinite(selectedValue)) {
+      return;
+    }
+
+    this.tabChanged.emit(selectedValue);
   }
 }

@@ -239,6 +239,12 @@
           "locations": "Localisations spécifiques",
           "photos": "Photos"
         },
+        "sectionNav": {
+          "label": "Section de l'editeur",
+          "help": "Sur petit ecran, choisis une section a la fois.",
+          "retrySave": "Reessayer l'enregistrement",
+          "saveFailedWithRetry": "Echec de l'enregistrement. Tes modifications restent dans ce formulaire."
+        },
         "accessConditionsCount": "{{count}} condition(s) d’accès",
         "accessConditionsSummary": "Les règles détaillées sont maintenant gérées dans cette section dédiée au lieu de surcharger le formulaire principal.",
         "locationSummary": "{{count}} / {{total}} localisation(s) spécifique(s) définie(s)",
@@ -251,6 +257,7 @@
         "clearSelectedLocation": "Vider le point sélectionné",
         "editorStatus": {
           "saving": "Enregistrement en cours...",
+          "saveFailed": "Echec d'enregistrement",
           "unsavedChanges": "Modifications non enregistrées",
           "upToDate": "À jour"
         },

@@ -789,6 +789,12 @@
           "locations": "Posizioni specifiche",
           "photos": "Foto"
         },
+        "sectionNav": {
+          "label": "Sezione editor",
+          "help": "Su schermi piccoli scegli una sezione alla volta.",
+          "retrySave": "Riprova salvataggio",
+          "saveFailedWithRetry": "Salvataggio non riuscito. Le modifiche restano in questo modulo."
+        },
         "accessConditionsCount": "{{count}} condizione/i di accesso",
         "accessConditionsSummary": "Gestisci qui le regole dettagliate invece di sovraccaricare il modulo principale.",
         "locationSummary": "{{count}} / {{total}} posizione/i specifica/he definita/e",
@@ -801,6 +807,7 @@
         "clearSelectedLocation": "Cancella punto selezionato",
         "editorStatus": {
           "saving": "Salvataggio...",
+          "saveFailed": "Salvataggio fallito",
           "unsavedChanges": "Modifiche non salvate",
           "upToDate": "Aggiornato"
         },
