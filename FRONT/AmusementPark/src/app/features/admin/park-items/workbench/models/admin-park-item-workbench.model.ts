@@ -20,6 +20,23 @@ export interface AdminParkItemQuickCreateDraft {
   adminReviewStatus?: AdminReviewStatus | null;
 }
 
+export interface AdminParkItemQuickCreateContext {
+  zoneId?: string | null;
+  category?: ParkItemCategory | null;
+  type?: ParkItemType | null;
+  manufacturerId?: string | null;
+  isVisible?: boolean | null;
+  adminReviewStatus?: AdminReviewStatus | null;
+}
+
+export interface AdminParkItemDuplicateWarning {
+  id: string;
+  name: string;
+  zoneId?: string | null;
+  category: ParkItemCategory;
+  type: ParkItemType;
+}
+
 export interface AdminParkItemInlineAdministrationDraft {
   zoneId?: string | null;
   category?: ParkItemCategory | null;

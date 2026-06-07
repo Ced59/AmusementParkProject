@@ -92,7 +92,9 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   @Input() showBulkActions: boolean = true;
   @Input() showDeleteAction: boolean = false;
   @Input() showCreateButton: boolean = false;
+  @Input() showQuickCreateButton: boolean = false;
   @Input() createButtonLabelKey: string = 'admin.parks.items.create';
+  @Input() quickCreateButtonLabelKey: string = 'admin.parks.items.quickCreate.open';
   @Input() createButtonRouterLink: unknown[] | null = null;
   @Input() getCategoryLabelKeyFn: (
     category: string | number | null | undefined,
@@ -134,6 +136,9 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     new EventEmitter<ParkItemAdminRow>();
   @Output() deleteClicked: EventEmitter<ParkItemAdminRow> =
     new EventEmitter<ParkItemAdminRow>();
+  @Output() duplicateClicked: EventEmitter<ParkItemAdminRow> =
+    new EventEmitter<ParkItemAdminRow>();
+  @Output() quickCreateClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() itemSelectionChanged: EventEmitter<{
     itemId: string;
     selected: boolean;
@@ -243,6 +248,14 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
 
   deleteRow(row: ParkItemAdminRow): void {
     this.deleteClicked.emit(row);
+  }
+
+  duplicateRow(row: ParkItemAdminRow): void {
+    this.duplicateClicked.emit(row);
+  }
+
+  openQuickCreate(): void {
+    this.quickCreateClicked.emit();
   }
 
   isItemSelected(row: ParkItemAdminRow): boolean {

@@ -1,0 +1,131 @@
+:host {
+  display: contents;
+}
+
+.quick-create-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(6, 8, 14, 0.46);
+  backdrop-filter: blur(4px);
+}
+
+.quick-create-drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 81;
+  display: flex;
+  width: min(100vw, 520px);
+  max-width: 100%;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 1.15rem;
+  overflow-y: auto;
+  border-left: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--bg-card), var(--bg-card-2));
+  box-shadow: -24px 0 60px rgba(0, 0, 0, 0.32);
+}
+
+.quick-create-drawer__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+
+  h2 {
+    margin: 0.25rem 0 0;
+    color: var(--heading);
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+  }
+
+  p {
+    margin: 0.35rem 0 0;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+  }
+}
+
+.quick-create-form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quick-create-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.admin-kicker,
+.admin-field-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.admin-field select,
+.admin-field input[pInputText] {
+  min-height: 2.55rem;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  color: var(--text);
+  outline: none;
+}
+
+.admin-field select {
+  padding: 0 0.85rem;
+}
+
+.admin-field select:focus,
+.admin-field input[pInputText]:focus {
+  border-color: rgba(255, 90, 31, 0.42);
+  box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.08);
+}
+
+.quick-create-duplicates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(255, 189, 56, 0.22);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 189, 56, 0.08);
+  color: var(--text-muted);
+  font-size: 0.84rem;
+
+  strong {
+    color: var(--heading);
+  }
+}
+
+.quick-create-drawer__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .quick-create-drawer {
+    width: 100%;
+    border-left: 0;
+  }
+
+  .quick-create-form__grid {
+    grid-template-columns: 1fr;
+  }
+}
