@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "dashboard": {
+      "title": "Pannello di controllo",
+      "subtitle": "Punto di ingresso del back-office: scegli una sezione dal menu a sinistra o dalle scorciatoie qui sotto.",
+      "shortcuts": {
+        "users": "Gestire account, ruoli e accessi.",
+        "parks": "Filtrare, prioritizzare e pubblicare i parchi.",
+        "parkItems": "Amministrare attrazioni, negozi, ristoranti e servizi.",
+        "operators": "Gestire gli operatori collegati ai parchi.",
+        "manufacturers": "Gestire costruttori e produttori di attrazioni.",
+        "images": "Controllare media, loghi e immagini del sito.",
+        "data": "Monitorare importazioni, fonti e processi dati.",
+        "founders": "Gestire fondatori e biografie collegati ai parchi.",
+        "auditLogs": "Consultare le azioni amministrative sensibili registrate.",
+        "localizedContent": "Importare rapidamente testi localizzati via JSON dopo aver scelto una destinazione.",
+        "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale.",
+        "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow."
+      }
+    }
+  }
+}

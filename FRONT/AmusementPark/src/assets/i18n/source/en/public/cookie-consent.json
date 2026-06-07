@@ -1,0 +1,10 @@
+{
+  "cookieConsent": {
+    "ariaLabel": "Cookie information and choice banner",
+    "title": "Cookies and privacy",
+    "text": "AmusementPark uses cookies or storage that are necessary for the website to work, including security, session, language, theme and authentication. With your agreement, the website also enables optional Matomo audience measurement cookies.",
+    "privacyLink": "Read the privacy policy.",
+    "accept": "Accept optional cookies",
+    "continueWithNecessaryCookiesOnly": "Continue with necessary cookies"
+  }
+}

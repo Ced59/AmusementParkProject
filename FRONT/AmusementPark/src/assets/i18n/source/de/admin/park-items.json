@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "parkItems": {
+      "title": "Parkelemente",
+      "subtitle": "Parkübergreifende Ansicht aller Parkelemente für schnelleres Bearbeiten.",
+      "searchPlaceholder": "Park, Element oder Typ suchen",
+      "parkFilter": "Nach Park filtern",
+      "empty": "Keine Elemente gefunden.",
+      "columns": {
+        "park": "Park",
+        "item": "Item",
+        "type": "Typ",
+        "visibility": "Sichtbarkeit",
+        "actions": "Aktionen",
+        "category": "Kategorie",
+        "reviewStatus": "Admin-Status"
+      },
+      "allParks": "Alle Parks",
+      "total": "{{count}} Element(e)"
+    }
+  }
+}

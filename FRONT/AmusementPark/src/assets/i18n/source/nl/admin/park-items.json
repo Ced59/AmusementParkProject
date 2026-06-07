@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "parkItems": {
+      "title": "Parkitems",
+      "subtitle": "Parkoverstijgend overzicht van alle parkitems voor sneller bewerken.",
+      "searchPlaceholder": "Zoek een park, item of type",
+      "parkFilter": "Filteren op park",
+      "empty": "Geen items found.",
+      "columns": {
+        "park": "Park",
+        "item": "Item",
+        "type": "Type",
+        "visibility": "Zichtbaarheid",
+        "actions": "Acties",
+        "category": "Categorie",
+        "reviewStatus": "Adminstatus"
+      },
+      "allParks": "Alle parken",
+      "total": "{{count}} item(s)"
+    }
+  }
+}

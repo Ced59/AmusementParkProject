@@ -1,0 +1,67 @@
+{
+  "admin": {
+    "localizedContent": {
+      "navTitle": "JSON-Importe",
+      "kicker": "JSON-Import",
+      "title": "Entitäts-JSON importieren",
+      "subtitle": "Wähle eine bestehende Entität aus und wende ein teilweises oder vollständiges JSON auf die unterstützten Felder an.",
+      "selection": {
+        "title": "1. Ziel auswählen",
+        "description": "Die Auswahl erfolgt über lesbare Suchergebnisse, damit keine Entität nur über eine technische ID geändert wird.",
+        "entityType": "Entitätstyp",
+        "search": "Suche",
+        "searchPlaceholder": "Parkname, Attraktion, Bereich, Hersteller…",
+        "searchButton": "Suchen",
+        "searching": "Suche…",
+        "empty": "Starte eine Suche, um verfügbare Ziele anzuzeigen."
+      },
+      "editor": {
+        "title": "2. JSON einfügen",
+        "description": "Das JSON wird von der API validiert und über die Application-Schicht angewendet.",
+        "resetExample": "Beispiel zurücksetzen",
+        "selected": "Ausgewähltes Ziel",
+        "noTarget": "Kein Ziel ausgewählt.",
+        "jsonLabel": "Lokalisiertes JSON",
+        "apply": "JSON anwenden",
+        "applying": "Wird angewendet…"
+      },
+      "help": {
+        "title": "Akzeptiertes Format",
+        "merge": "Standardmäßig werden gelieferte Sprachen mit vorhandenen Werten zusammengeführt: andere Sprachen bleiben erhalten.",
+        "replace": "Füge \"replaceExisting\": true oder \"mode\": \"replace\" hinzu, um das lokalisierte Feld vollständig zu ersetzen.",
+        "fields": "Unterstützte Felder: descriptions, names, description, biography, altTexts, captions, credits, labels je nach gewähltem Typ.",
+        "accessConditions": "Für ein Parkelement der Kategorie Attraktion kann accessConditions Bedingungen erstellen oder aktualisieren: type, impliziter customTypeKey bei unbekanntem Typ, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label und description."
+      },
+      "messages": {
+        "searchError": "Lokalisierbare Ziele konnten nicht geladen werden.",
+        "selectTargetFirst": "Wähle zuerst ein Ziel aus.",
+        "invalidJson": "Das eingegebene JSON ist ungültig.",
+        "applySuccess": "Lokalisiertes JSON erfolgreich angewendet.",
+        "applyNoField": "Kein lokalisiertes Feld wurde aktualisiert.",
+        "applyError": "Lokalisiertes JSON konnte nicht angewendet werden."
+      },
+      "entityTypes": {
+        "park": "Park",
+        "parkZone": "Parkbereich",
+        "parkItem": "Parkelement",
+        "parkOperator": "Betreiber",
+        "parkFounder": "Gründer",
+        "attractionManufacturer": "Hersteller",
+        "image": "Bild",
+        "imageTag": "Bild-Tag",
+        "accessConditionType": "Zugangsbedingungstyp"
+      },
+      "entityHints": {
+        "park": "Lokalisierte Parkbeschreibung.",
+        "parkZone": "Lokalisierter Name und Beschreibung des Bereichs.",
+        "parkItem": "Lokalisierte Elementbeschreibung, mit Zugangsbedingungen bei Attraktionen.",
+        "parkOperator": "Lokalisierte Betreiberbeschreibung.",
+        "parkFounder": "Lokalisierte Gründerbiografie.",
+        "attractionManufacturer": "Lokalisierte Herstellerbiografie.",
+        "image": "Lokalisierte Alternativtexte, Bildunterschriften und Credits.",
+        "imageTag": "Lokalisierte Tag-Bezeichnungen und Beschreibungen.",
+        "accessConditionType": "Wiederverwendbarer Katalog der Zugangsbedingungstypen."
+      }
+    }
+  }
+}

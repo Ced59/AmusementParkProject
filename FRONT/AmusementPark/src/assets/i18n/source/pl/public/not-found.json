@@ -1,0 +1,8 @@
+{
+  "notFound": {
+    "title": "Ta strona skręciła w złą stronę",
+    "description": "Żądana strona nie istnieje, została przeniesiona albo nie jest publicznie dostępna.",
+    "homeCta": "Wróć na stronę główną",
+    "parksCta": "Przeglądaj parki"
+  }
+}

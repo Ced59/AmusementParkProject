@@ -1,0 +1,200 @@
+{
+  "parkItems": {
+    "actions": {
+      "viewDetails": "View item",
+      "backToItems": "Back to items",
+      "backToPark": "Back to park"
+    },
+    "filters": {
+      "search": "Search",
+      "searchPlaceholder": "Search by name, description, manufacturer or status",
+      "category": "Category",
+      "type": "Type",
+      "zone": "Zone",
+      "clear": "Clear filters",
+      "allCategories": "All categories",
+      "allTypes": "All types",
+      "allZones": "All zones"
+    },
+    "list": {
+      "subtitle": "Browse the park content through its generic ParkItem model and drill down into each item.",
+      "loadingTitle": "Loading park items",
+      "loadingMessage": "The park content is being loaded.",
+      "errorTitle": "Unable to load park items",
+      "errorMessage": "The park content could not be loaded.",
+      "emptyTitle": "No item available",
+      "emptyMessage": "No public item is currently available for this park.",
+      "emptyFilteredTitle": "No matching item",
+      "emptyFilteredMessage": "Try broadening your filters or clear them to see more content.",
+      "filteredResults": "Filtered results",
+      "resultsCount": "Showing {{start}}-{{end}} of {{total}} item(s)"
+    },
+    "detail": {
+      "loadingTitle": "Loading item",
+      "loadingMessage": "The item page is being loaded.",
+      "errorTitle": "Unable to load the item",
+      "errorMessage": "The requested item could not be loaded.",
+      "descriptionTitle": "Description",
+      "specificationsTitle": "Specifications",
+      "sourceTitle": "Source",
+      "summaryTitle": "At a glance",
+      "technicalTitle": "Technical data",
+      "performanceTitle": "Performance",
+      "experienceTitle": "Experience & accessibility",
+      "accessConditionsTitle": "Access conditions",
+      "accessConditionsSubtitle": "Readable summary of the rules to check before visiting the attraction.",
+      "locationKicker": "Location",
+      "locationTitle": "Location inside the park",
+      "preciseLocationSubtitle": "Precise points are available, so the map displays these specific locations.",
+      "generalLocationSubtitle": "No specific location is available, so the map displays only the general item location.",
+      "preciseLocationBadge": "Precise point",
+      "generalLocationBadge": "General fallback",
+      "relatedKicker": "Discover too",
+      "relatedTitle": "Similar items",
+      "relatedSubtitle": "Selection based on the item type, category or zone.",
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Select a point to highlight it on the map or open directions from the marker.",
+      "showLocationOnMap": "Show on map"
+    },
+    "fields": {
+      "category": "Category",
+      "type": "Type",
+      "park": "Park",
+      "zone": "Zone",
+      "manufacturer": "Manufacturer",
+      "model": "Model",
+      "status": "Status",
+      "materialType": "Material",
+      "seatingType": "Seating",
+      "launchType": "Launch",
+      "restraintType": "Restraint",
+      "openingDate": "Opening date",
+      "closingDate": "Closing date",
+      "heightInMeters": "Height",
+      "heightInFeet": "Height (ft)",
+      "lengthInMeters": "Length",
+      "lengthInFeet": "Length (ft)",
+      "speedInKmH": "Speed",
+      "speedInMph": "Speed (mph)",
+      "dropInMeters": "Drop",
+      "inversionCount": "Inversions",
+      "capacityPerHour": "Capacity / hour",
+      "durationInSeconds": "Duration (sec)",
+      "trainCount": "Train count",
+      "carsPerTrain": "Cars / train",
+      "ridersPerVehicle": "Riders / vehicle",
+      "hasSingleRider": "Single rider",
+      "hasFastPass": "Fast pass",
+      "isAccessibleForReducedMobility": "Reduced mobility access",
+      "isIndoor": "Indoor",
+      "isLaunched": "Launched",
+      "waterExposureLevel": "Water exposure",
+      "subtype": "Subtype",
+      "isVisible": "Visible",
+      "coordinates": "Coordinates"
+    },
+    "locations": {
+      "general": "General location",
+      "entrance": "Entrance",
+      "exit": "Exit",
+      "fastPassEntrance": "Fast pass entrance",
+      "reducedMobilityEntrance": "Reduced mobility entrance"
+    },
+    "accessConditionFields": {
+      "type": "Type",
+      "value": "Value",
+      "requiresAccompaniment": "Requires accompaniment",
+      "minimumCompanionAge": "Minimum companion age"
+    },
+    "accessConditionTypes": {
+      "minHeight": "Minimum height",
+      "minHeightAccompanied": "Minimum height with accompaniment",
+      "maxHeight": "Maximum height",
+      "minAge": "Minimum age",
+      "minAgeAccompanied": "Minimum age with accompaniment",
+      "pregnancyRestriction": "Pregnancy restriction",
+      "heartRestriction": "Cardiac restriction",
+      "backNeckRestriction": "Back or neck restriction",
+      "wheelchairTransferRequired": "Wheelchair transfer required",
+      "accessPassRequired": "Access pass required",
+      "custom": "Custom condition"
+    },
+    "accessConditionUnits": {
+      "centimeter": "Centimeters",
+      "year": "Years"
+    },
+    "waterExposureLevels": {
+      "none": "None",
+      "splash": "Light splash",
+      "moderate": "Moderate",
+      "soaking": "Soaking",
+      "extremeSoaking": "Extremely soaking"
+    },
+    "photos": {
+      "kicker": "Photos",
+      "title": "Photos",
+      "subtitle": "Filter visuals by category to keep the item sheet focused.",
+      "current": "Current",
+      "categories": {
+        "gallery": "Gallery",
+        "entrance": "Entrance",
+        "exit": "Exit",
+        "layout": "Layout",
+        "queue": "Queue",
+        "station": "Station"
+      },
+      "controls": {
+        "category": "Photo category",
+        "allCategories": "All",
+        "displayCount": "Shown",
+        "count": "{{count}}",
+        "all": "All",
+        "previous": "Previous photo",
+        "next": "Next photo",
+        "openFullscreen": "Open fullscreen",
+        "closeFullscreen": "Close fullscreen"
+      },
+      "lightbox": {
+        "title": "Fullscreen photo"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Height requirements",
+        "minHeight": "Minimum height",
+        "minHeightHelp": "Allowed from this height.",
+        "minHeightAccompanied": "Height with adult",
+        "minHeightAccompaniedHelp": "Allowed with an adult from this height.",
+        "maxHeight": "Maximum height",
+        "maxHeightHelp": "Access forbidden above this height."
+      }
+    },
+    "zoneFocus": {
+      "badge": "Park zone",
+      "overviewBadge": "Live map",
+      "overviewDescription": "View the items currently displayed for {{park}} according to the active filters.",
+      "zoneFallbackDescription": "This zone groups the items currently displayed. Use the filters to refine the selection.",
+      "totalItems": "Zone items",
+      "totalItemsHint": "Linked content",
+      "displayedItems": "Displayed",
+      "displayedItemsHint": "After filters",
+      "mapMarkers": "Markers",
+      "mapMarkersHint": "Geolocated",
+      "mapPanelTitle": "Map cues",
+      "mapPanelHeading": "Real-time filtered map",
+      "mapPanelText": "The map follows the current selection: zone, category, type and search. Custom markers stay adapted to each item type.",
+      "zoneMapHeading": "Map Zone {{name}}",
+      "parkMapHeading": "{{name}} map",
+      "allMapItems": "All"
+    },
+    "statuses": {
+      "operating": "Operating",
+      "underConstruction": "Under construction",
+      "temporarilyClosed": "Temporarily closed",
+      "closedDefinitively": "Permanently closed",
+      "removed": "Removed / dismantled",
+      "planned": "Planned",
+      "unknown": "Unknown"
+    }
+  }
+}

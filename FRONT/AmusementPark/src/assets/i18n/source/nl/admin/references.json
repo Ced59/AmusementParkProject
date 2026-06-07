@@ -1,0 +1,40 @@
+{
+  "admin": {
+    "references": {
+      "sections": {
+        "identity": "Identiteit",
+        "contact": "Optionele contactgegevens",
+        "content": "Redactionele inhoud",
+        "administration": "Beheerworkflow"
+      },
+      "fields": {
+        "legalName": "Wettelijke naam",
+        "foundedYear": "Oprichtingsjaar",
+        "closedYear": "Sluitingsjaar",
+        "websiteUrl": "Website",
+        "email": "E-mail",
+        "phoneNumber": "Telefoon",
+        "street": "Straat",
+        "city": "Stad",
+        "postalCode": "Postcode",
+        "countryCode": "Landcode",
+        "latitude": "Breedtegraad",
+        "longitude": "Lengtegraad",
+        "occupation": "Beroep / rol",
+        "birthDate": "Geboortedatum",
+        "deathDate": "Overlijdensdatum",
+        "birthPlace": "Geboorteplaats",
+        "nationalityCountryCode": "Nationaliteit / landcode"
+      },
+      "images": {
+        "title": "Probestand afbeeldings",
+        "help": "Voeg portretten, logo’s, hoofdkantoorfoto’s, historische documenten of referentiebeelden toe. Openbare weergave blijft voorwaardelijk.",
+        "add": "Add afbeelding",
+        "saveBeforeUpload": "Save this profiel before adding afbeeldings.",
+        "empty": "Geen afbeelding is linked to this profiel yet.",
+        "untitled": "Reference afbeelding",
+        "uploadTitle": "Add an afbeelding to this profiel"
+      }
+    }
+  }
+}

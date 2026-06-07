@@ -1,0 +1,18 @@
+{
+  "common": {
+    "loadingTitle": "Caricamento",
+    "loadingMessage": "Il contenuto è in caricamento.",
+    "errorTitle": "Si è verificato un errore",
+    "errorMessage": "Non è stato possibile caricare il contenuto richiesto.",
+    "emptyTitle": "Nessunthing to display",
+    "emptyMessage": "Nessun content is available at the moment.",
+    "security": {
+      "uploadRejectedSummary": "File rifiutato",
+      "invalidImageUploadMessage": "Sono accettate solo immagini JPEG, PNG, WebP o GIF sotto i 10 MB."
+    },
+    "success": "Successo",
+    "error": "Errore",
+    "warning": "Attenzione",
+    "unexpectedError": "Si è verificato un errore imprevisto."
+  }
+}

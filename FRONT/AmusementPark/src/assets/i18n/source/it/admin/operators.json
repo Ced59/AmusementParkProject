@@ -1,0 +1,23 @@
+{
+  "admin": {
+    "operators": {
+      "total": "Gestori: {{count}}",
+      "searchPlaceholder": "Cerca un gestore",
+      "create": "Crea un gestore",
+      "name": "Nome",
+      "actions": "Azioni",
+      "edit": "Modifica",
+      "empty": "Nessun gestore trovato.",
+      "editPage": {
+        "createTitle": "Crea un gestore",
+        "updateTitle": "Modifica il gestore",
+        "name": "Nome",
+        "description": "Descrizione"
+      },
+      "title": "Operatori",
+      "subtitle": "Elenco di riferimento degli operatori usati dalle schede parco.",
+      "reviewStatus": "Stato admin",
+      "loadError": "Impossibile caricare gli operatori."
+    }
+  }
+}

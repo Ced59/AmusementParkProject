@@ -1,0 +1,24 @@
+{
+  "admin": {
+    "manufacturers": {
+      "total": "Fabricantes: {{count}}",
+      "searchPlaceholder": "Buscar un fabricante",
+      "create": "Crear un fabricante",
+      "name": "Nombre",
+      "attractionCount": "Atracciones vinculadas",
+      "actions": "Acciones",
+      "edit": "Editar",
+      "empty": "Sin manufacturer found.",
+      "editPage": {
+        "createTitle": "Crear un fabricante",
+        "updateTitle": "Editar fabricante",
+        "name": "Nombre",
+        "biography": "Biografía"
+      },
+      "title": "Constructores",
+      "subtitle": "Referencial de constructores usado por las atracciones.",
+      "reviewStatus": "Estado admin",
+      "loadError": "No se pudieron cargar los fabricantes."
+    }
+  }
+}

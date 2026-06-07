@@ -1,0 +1,200 @@
+{
+  "parkItems": {
+    "actions": {
+      "viewDetails": "Item bekijken",
+      "backToItems": "Terug naar items",
+      "backToPark": "Terug naar het park"
+    },
+    "filters": {
+      "search": "Zoeken",
+      "searchPlaceholder": "Zoeken op naam, beschrijving, fabrikant of status",
+      "category": "Categorie",
+      "type": "Type",
+      "zone": "Zone",
+      "clear": "Filters wissen",
+      "allCategories": "Alle categorieën",
+      "allTypes": "Alle types",
+      "allZones": "Alle zones"
+    },
+    "list": {
+      "subtitle": "Blader door de inhoud van het park en open elk item voor meer details.",
+      "loadingTitle": "Laden park items",
+      "loadingMessage": "De parkinhoud wordt geladen.",
+      "errorTitle": "Kan niet laden park items",
+      "errorMessage": "The park content kon niet worden geladen.",
+      "emptyTitle": "Geen item available",
+      "emptyMessage": "Er is momenteel geen openbaar item beschikbaar voor dit park.",
+      "emptyFilteredTitle": "Geen matching item",
+      "emptyFilteredMessage": "Verruim je filters of wis ze om meer inhoud te zien.",
+      "filteredResults": "Gefilterde resultaten",
+      "resultsCount": "{{start}}-{{end}} van {{total}} item(s) weergegeven"
+    },
+    "detail": {
+      "loadingTitle": "Laden item",
+      "loadingMessage": "De itempagina wordt geladen.",
+      "errorTitle": "Kan niet laden the item",
+      "errorMessage": "The requested item kon niet worden geladen.",
+      "descriptionTitle": "Beschrijving",
+      "specificationsTitle": "Specificaties",
+      "sourceTitle": "Bron",
+      "summaryTitle": "In één oogopslag",
+      "technicalTitle": "Technische gegevens",
+      "performanceTitle": "Prestaties",
+      "experienceTitle": "Ervaring en toegankelijkheid",
+      "accessConditionsTitle": "Toegangsvoorwaarden",
+      "accessConditionsSubtitle": "Rules are displayed only when they exist on the item record.",
+      "locationKicker": "Locatie",
+      "locationTitle": "Locatie in het park",
+      "preciseLocationSubtitle": "Er zijn precieze punten beschikbaar, dus de kaart toont deze specifieke locaties.",
+      "generalLocationSubtitle": "Er is geen specifieke locatie beschikbaar, dus de kaart toont alleen de algemene itemlocatie.",
+      "preciseLocationBadge": "Exact punt",
+      "generalLocationBadge": "Algemene locatie",
+      "relatedKicker": "Ook ontdekken",
+      "relatedTitle": "Vergelijkbare items",
+      "relatedSubtitle": "Selectie op basis van itemtype, categorie of zone.",
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Selecteer een punt om het op de kaart te markeren of een route via de marker te openen.",
+      "showLocationOnMap": "Toon op kaart"
+    },
+    "fields": {
+      "category": "Categorie",
+      "type": "Type",
+      "park": "Park",
+      "zone": "Zone",
+      "manufacturer": "Fabrikant",
+      "model": "Model",
+      "status": "Status",
+      "materialType": "Materiaal",
+      "seatingType": "Seating",
+      "launchType": "Lanceringstype",
+      "restraintType": "Beugelsysteem",
+      "openingDate": "Openingsdatum",
+      "closingDate": "Sluitingsdatum",
+      "heightInMeters": "Hoogte",
+      "heightInFeet": "Hoogte (ft)",
+      "lengthInMeters": "Lengte",
+      "lengthInFeet": "Lengte (ft)",
+      "speedInKmH": "Snelheid",
+      "speedInMph": "Snelheid (mph)",
+      "dropInMeters": "Drop",
+      "inversionCount": "Inversies",
+      "capacityPerHour": "Capaciteit / uur",
+      "durationInSeconds": "Duur (sec)",
+      "trainCount": "Aantal treinen",
+      "carsPerTrain": "Wagens / trein",
+      "ridersPerVehicle": "Rijders / voertuig",
+      "hasSingleRider": "Single rider",
+      "hasFastPass": "Fastpass",
+      "isAccessibleForReducedMobility": "Toegang voor beperkte mobiliteit",
+      "isIndoor": "Binnen",
+      "isLaunched": "Gelanceerd",
+      "waterExposureLevel": "Waterblootstelling",
+      "subtype": "Subtype",
+      "isVisible": "Zichtbaar",
+      "coordinates": "Coördinaten"
+    },
+    "locations": {
+      "general": "Algemene locatie",
+      "entrance": "Ingang",
+      "exit": "Uitgang",
+      "fastPassEntrance": "Fastpass-ingang",
+      "reducedMobilityEntrance": "Ingang voor beperkte mobiliteit"
+    },
+    "accessConditionFields": {
+      "type": "Type",
+      "value": "Waarde",
+      "requiresAccompaniment": "Begeleiding vereist",
+      "minimumCompanionAge": "Minimumleeftijd begeleider"
+    },
+    "accessConditionTypes": {
+      "minHeight": "Minimale lengte",
+      "minHeightAccompanied": "Minimale lengte met begeleiding",
+      "maxHeight": "Maximale lengte",
+      "minAge": "Minimumleeftijd",
+      "minAgeAccompanied": "Minimumleeftijd met begeleiding",
+      "pregnancyRestriction": "Zwangerschapsbeperking",
+      "heartRestriction": "Hartbeperking",
+      "backNeckRestriction": "Rug- of nekbeperking",
+      "wheelchairTransferRequired": "Overstap uit rolstoel vereist",
+      "accessPassRequired": "Toegangspas vereist",
+      "custom": "Aangepaste voorwaarde"
+    },
+    "accessConditionUnits": {
+      "centimeter": "Centimeter",
+      "year": "Jaren"
+    },
+    "waterExposureLevels": {
+      "none": "Geen",
+      "splash": "Lichte spatten",
+      "moderate": "Matig",
+      "soaking": "Doorweekt",
+      "extremeSoaking": "Extreem natmakend"
+    },
+    "photos": {
+      "kicker": "Foto’s",
+      "title": "Foto's",
+      "subtitle": "Filter beelden per categorie zodat de detailpagina overzichtelijk blijft.",
+      "current": "Huidig",
+      "categories": {
+        "gallery": "Galerij",
+        "entrance": "Ingang",
+        "exit": "Uitgang",
+        "layout": "Indeling",
+        "queue": "Wachtrij",
+        "station": "Station"
+      },
+      "controls": {
+        "category": "Fotocategorie",
+        "allCategories": "Alle",
+        "displayCount": "Getoond",
+        "count": "{{count}}",
+        "all": "Alle",
+        "previous": "Vorige foto",
+        "next": "Volgende foto",
+        "openFullscreen": "Volledig scherm openen",
+        "closeFullscreen": "Volledig scherm sluiten"
+      },
+      "lightbox": {
+        "title": "Foto op volledig scherm"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Lengtevoorwaarden",
+        "minHeight": "Minimumlengte",
+        "minHeightHelp": "Toegestaan vanaf deze lengte.",
+        "minHeightAccompanied": "Lengte met begeleiding",
+        "minHeightAccompaniedHelp": "Toegestaan met een volwassene vanaf deze lengte.",
+        "maxHeight": "Maximumlengte",
+        "maxHeightHelp": "Toegang verboden boven deze lengte."
+      }
+    },
+    "zoneFocus": {
+      "badge": "Parkzone",
+      "overviewBadge": "Live kaart",
+      "overviewDescription": "Bekijk de momenteel getoonde items voor {{park}} volgens de actieve filters.",
+      "zoneFallbackDescription": "Deze zone groepeert de momenteel getoonde items. Gebruik de filters om de selectie te verfijnen.",
+      "totalItems": "Zone-items",
+      "totalItemsHint": "Gekoppelde inhoud",
+      "displayedItems": "Getoond",
+      "displayedItemsHint": "Na filters",
+      "mapMarkers": "Markers",
+      "mapMarkersHint": "Geolokaliseerd",
+      "mapPanelTitle": "Kaartpunten",
+      "mapPanelHeading": "Realtime gefilterde kaart",
+      "mapPanelText": "De kaart volgt de huidige selectie: zone, categorie, type en zoekopdracht. De aangepaste markers blijven afgestemd op het exacte itemtype.",
+      "zoneMapHeading": "Kaart zone {{name}}",
+      "parkMapHeading": "Kaart {{name}}",
+      "allMapItems": "Alles"
+    },
+    "statuses": {
+      "operating": "In werking",
+      "underConstruction": "In aanbouw",
+      "temporarilyClosed": "Tijdelijk gesloten",
+      "closedDefinitively": "Definitief gesloten",
+      "removed": "Verwijderd / afgebroken",
+      "planned": "Gepland",
+      "unknown": "Onbekend"
+    }
+  }
+}

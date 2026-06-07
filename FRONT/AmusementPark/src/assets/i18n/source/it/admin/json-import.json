@@ -1,0 +1,26 @@
+{
+  "admin": {
+    "jsonImport": {
+      "tab": "Import JSON",
+      "kicker": "Import JSON",
+      "title": "Importare i dati di questa entità",
+      "description": "Incolla un JSON parziale o completo per compilare rapidamente i campi supportati, senza gestire foto o creare entità figlie.",
+      "resetExample": "Ripristina esempio",
+      "jsonLabel": "JSON entità",
+      "apply": "Applica JSON",
+      "applying": "Applicazione…",
+      "disabledUntilSave": "Salva prima questa entità prima di importare JSON.",
+      "messages": {
+        "invalidJson": "Il JSON non è valido.",
+        "success": "JSON applicato. Ricarica o controlla le schede se necessario.",
+        "error": "Impossibile applicare il JSON."
+      },
+      "help": {
+        "title": "Formato accettato",
+        "partial": "Un JSON parziale modifica solo i campi presenti.",
+        "merge": "I valori localizzati vengono uniti per lingua, salvo replaceExisting o mode: replace.",
+        "accessConditions": "Per gli elementi del parco, accessConditions può creare o aggiornare condizioni e tipi riutilizzabili."
+      }
+    }
+  }
+}

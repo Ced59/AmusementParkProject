@@ -1,0 +1,76 @@
+{
+  "privacyPage": {
+    "kicker": "Dane osobowe",
+    "title": "Polityka prywatności",
+    "lead": "Ta strona wyjaśnia, jak AmusementPark przetwarza dane osobowe, niezbędne pliki cookie, uwierzytelnianie Google OAuth i pomiar oglądalności Matomo.",
+    "chips": {
+      "hosting": "Hosting we Francji",
+      "analytics": "Cookie i analityka",
+      "controller": "Administrator: Cédric Caudron"
+    },
+    "consent": {
+      "kicker": "Preferencje cookie",
+      "title": "Zarządzanie opcjonalnymi cookie",
+      "text": "Pliki cookie niezbędne do działania i uwierzytelniania mogą być używane bez zgody. Tutaj możesz zaakceptować, odrzucić lub ponownie wyświetlić wybór dotyczący opcjonalnych cookie pomiaru oglądalności.",
+      "currentStatus": "Aktualny status:",
+      "statusAccepted": "opcjonalne cookie zaakceptowane.",
+      "statusRefused": "opcjonalne cookie odrzucone.",
+      "statusUnset": "brak zapisanego wyboru.",
+      "accept": "Akceptuj opcjonalne cookie",
+      "refuse": "Wycofaj zgodę na opcjonalne cookie",
+      "reset": "Pokaż baner ponownie"
+    },
+    "sections": {
+      "controller": {
+        "title": "Administrator danych",
+        "body1": "Administratorem danych jest Cédric Caudron, wydawca strony AmusementPark.",
+        "body2": "W sprawach dotyczących danych osobowych możesz użyć metod kontaktu opublikowanych na cedric-caudron.com."
+      },
+      "data": {
+        "title": "Przetwarzane dane",
+        "body1": "Strona może przetwarzać dane konta potrzebne do usługi: adres e-mail, podane imię lub nazwisko, awatar, preferowany język i ustawienia profilu.",
+        "body2": "Mogą być też przetwarzane dane techniczne: adres IP, data, odwiedzony URL, przeglądarka, logi błędów i informacje bezpieczeństwa niezbędne do działania."
+      },
+      "purposes": {
+        "title": "Cele i podstawy prawne",
+        "body1": "Dane służą do udostępniania funkcji strony, zabezpieczania dostępu, zarządzania kontami, wyświetlania treści publicznych i administrowania projektem.",
+        "body2": "Przetwarzanie niezbędne do działania opiera się na wykonaniu usługi lub prawnie uzasadnionym interesie. Opcjonalne pliki cookie Matomo do pomiaru oglądalności opierają się na Twojej zgodzie, chyba że później zostanie wdrożona ściśle zwolniona konfiguracja."
+      },
+      "analytics": {
+        "title": "Pomiar oglądalności Matomo",
+        "body1": "Strona korzysta z samodzielnie hostowanej instancji Matomo dostępnej pod adresem matomo.cedric-caudron.com z ID strony 4.",
+        "body2": "Matomo może mierzyć odwiedzone strony, sekwencje nawigacji, źródła ruchu, typ urządzenia i techniczne informacje o przeglądarce.",
+        "body3": "Ta integracja nie dodaje reklamowego śledzenia stron trzecich. Ścieżki związane z profilem mogą być mierzone tylko po zgodzie na opcjonalne cookie, bez wysyłania prywatnej treści profilu jako zdarzeń analitycznych."
+      },
+      "cookies": {
+        "title": "Pliki cookie i pamięć lokalna",
+        "body1": "Ściśle niezbędne pliki cookie lub pamięć mogą być używane do sesji, bezpieczeństwa, języka, motywu, preferencji interfejsu i prawidłowego działania uwierzytelniania.",
+        "body2": "Te niezbędne mechanizmy mogą obejmować cookie sesji/API, cookie uwierzytelniania HTTP-only, mechanizmy antynadużyciowe i lokalnie zapisane preferencje. Nie można ich wyłączyć z banera, ponieważ warunkują żądaną usługę.",
+        "body3": "Wybór dotyczący opcjonalnych cookie jest przechowywany w lokalnej pamięci przeglądarki, aby nie pytać o niego na każdej stronie."
+      },
+      "hosting": {
+        "title": "Hosting i podmioty przetwarzające",
+        "body1": "Strona ma być hostowana na serwerze znajdującym się we Francji za pośrednictwem Hostinger. Usługi techniczne projektu, w tym MongoDB, MinIO i Matomo, mogą działać na tym VPS.",
+        "body2": "Dane nie są sprzedawane reklamodawcom. Mogą być przetwarzane przez dostawców technicznych niezbędnych do hostingu, bezpieczeństwa i działania."
+      },
+      "retention": {
+        "title": "Okresy przechowywania",
+        "body1": "Konta są przechowywane, dopóki istnieją albo gdy ograniczony obowiązek bezpieczeństwa wymaga ich zachowania.",
+        "body2": "Logi techniczne są przechowywane przez okres proporcjonalny do bezpieczeństwa i diagnostyki. Dane Matomo muszą mieć ograniczony okres przechowywania i być regularnie przeglądane."
+      },
+      "rights": {
+        "title": "Twoje prawa",
+        "body1": "Możesz żądać dostępu, sprostowania, usunięcia, ograniczenia lub sprzeciwu wobec właściwego przetwarzania danych.",
+        "body2": "Na tej stronie możesz też wycofać zgodę na analitykę, a w razie potrzeby złożyć skargę do CNIL."
+      },
+      "thirdPartyCookies": {
+        "title": "Cookie stron trzecich i uwierzytelnianie Google",
+        "body1": "Strona oferuje logowanie przez Google OAuth / Sign in with Google. Gdy używasz tej metody, Google może zapisywać lub odczytywać własne cookie i podobne technologie w celu uwierzytelniania, bezpieczeństwa, zapobiegania oszustwom i utrzymania sesji.",
+        "body2": "Te mechanizmy stron trzecich są niezbędne do uwierzytelniania Google żądanego przez użytkownika i nie są sterowane zgodą Matomo/analityczną strony.",
+        "body3": "Odmowa opcjonalnych cookie AmusementPark nie blokuje uwierzytelniania. Przeglądarka blokująca niektóre cookie stron trzecich może jednak uniemożliwić lub pogorszyć logowanie przez Google."
+      }
+    },
+    "lastUpdate": "Ostatnia aktualizacja: 23 maja 2026 r.",
+    "backHome": "Wróć do strony głównej"
+  }
+}

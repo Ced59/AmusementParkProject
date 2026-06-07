@@ -1,0 +1,11 @@
+{
+  "maps": {
+    "placeholder": {
+      "title": "Mapa niedostępna",
+      "message": "Wymagane współrzędne nie są jeszcze dostępne."
+    },
+    "distance": {
+      "title": "Punkt geograficzny"
+    }
+  }
+}

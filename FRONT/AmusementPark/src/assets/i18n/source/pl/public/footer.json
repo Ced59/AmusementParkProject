@@ -1,0 +1,29 @@
+{
+  "footer": {
+    "ariaLabel": "Stopka strony",
+    "brand": {
+      "tagline": "Pełna mapa emocji. Park po parku, atrakcja po atrakcji."
+    },
+    "explore": {
+      "title": "Odkrywaj",
+      "allParks": "Wszystkie parki",
+      "topRollerCoasters": "Najlepsze rollercoastery",
+      "interactiveMap": "Mapa interaktywna",
+      "news": "Nowości"
+    },
+    "about": {
+      "title": "O projekcie",
+      "project": "Projekt",
+      "sources": "Źródła",
+      "contact": "Kontakt",
+      "privacy": "Prywatność"
+    },
+    "languages": {
+      "title": "Języki"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Stworzone z ❤️ i adrenaliną",
+      "version": "Wersja {{version}}"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "admin": {
+    "jsonImport": {
+      "tab": "JSON-import",
+      "kicker": "JSON-import",
+      "title": "Gegevens van deze entiteit importeren",
+      "description": "Plak een gedeeltelijke of volledige JSON om ondersteunde velden snel in te vullen, zonder foto’s te beheren of child-entiteiten te maken.",
+      "resetExample": "Voorbeeld herstellen",
+      "jsonLabel": "Entiteit-JSON",
+      "apply": "JSON toepassen",
+      "applying": "Toepassen…",
+      "disabledUntilSave": "Sla deze entiteit eerst op voordat je JSON importeert.",
+      "messages": {
+        "invalidJson": "De JSON is ongeldig.",
+        "success": "JSON toegepast. Herlaad of controleer de tabs indien nodig.",
+        "error": "JSON kon niet worden toegepast."
+      },
+      "help": {
+        "title": "Geaccepteerd formaat",
+        "partial": "Een gedeeltelijke JSON wijzigt alleen de aanwezige velden.",
+        "merge": "Gelokaliseerde waarden worden per taal samengevoegd, behalve met replaceExisting of mode: replace.",
+        "accessConditions": "Voor parkitems kan accessConditions voorwaarden en herbruikbare types maken of bijwerken."
+      }
+    }
+  }
+}

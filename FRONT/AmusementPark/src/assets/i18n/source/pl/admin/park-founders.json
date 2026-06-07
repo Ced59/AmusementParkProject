@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Utwórz założyciela",
+        "updateTitle": "Edytuj założyciela",
+        "name": "Nazwa",
+        "biography": "Biografia"
+      },
+      "title": "Założyciele",
+      "subtitle": "Lista referencyjna założycieli używanych w kartach parków.",
+      "total": "Założyciele: {{count}}",
+      "searchPlaceholder": "Szukaj założyciela",
+      "create": "Utwórz założyciela",
+      "name": "Nazwa",
+      "lifeDates": "Daty",
+      "actions": "Akcje",
+      "empty": "Nie znaleziono założyciela.",
+      "loadError": "Nie można załadować założycieli."
+    }
+  }
+}

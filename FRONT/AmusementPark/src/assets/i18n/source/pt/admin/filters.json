@@ -1,0 +1,20 @@
+{
+  "admin": {
+    "filters": {
+      "search": "Pesquisa",
+      "applySearch": "Aplicar",
+      "visibility": "Visibilidade",
+      "visibilityAll": "Todas as visibilidades",
+      "visibleOnly": "Apenas visíveis",
+      "hiddenOnly": "Apenas ocultos",
+      "reviewStatus": "Tratamento",
+      "statusAll": "Todos os estados",
+      "type": "Tipo",
+      "typeAll": "Todos os tipos",
+      "category": "Categoria",
+      "categoryAll": "Todas as categorias",
+      "countryCode": "País",
+      "countryCodePlaceholder": "FR"
+    }
+  }
+}

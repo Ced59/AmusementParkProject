@@ -1,0 +1,46 @@
+{
+  "admin": {
+    "users": {
+      "total": "Totaal aantal gebruikers: {{count}}",
+      "empty": "Geen gebruikers gevonden.",
+      "columns": {
+        "email": "E-mail",
+        "firstName": "Voornaam",
+        "lastName": "Achternaam",
+        "roles": "Rollen",
+        "status": "Status",
+        "actions": "Acties"
+      },
+      "manage": "Gebruiker beheren",
+      "profileTitle": "Gebruikersbeheer",
+      "backToList": "Terug naar gebruikerslijst",
+      "newEmail": "Nieuw e-mailadres",
+      "status": {
+        "blocked": "Geblokkeerd",
+        "active": "Actief"
+      },
+      "rolesTitle": "Rollenbeheer",
+      "roleAssigned": "Momenteel toegewezen",
+      "roleNotAssigned": "Niet toegewezen",
+      "addRole": "Toewijzen",
+      "removeRole": "Verwijderen",
+      "securityTitle": "Beveiliging",
+      "blockingTitle": "Accountblokkering",
+      "blockedDescription": "Dit account is geblokkeerd.",
+      "activeDescription": "Dit account is actief.",
+      "block": "Blokkeren",
+      "unlock": "Deblokkeren",
+      "password": "Nieuw wachtwoord",
+      "passwordConfirm": "Wachtwoord bevestigen",
+      "changePassword": "Wachtwoord wijzigen",
+      "title": "Gebruikers",
+      "blockTitle": "Account blokkeren",
+      "newPassword": "Nieuw wachtwoord",
+      "confirmPassword": "Wachtwoord bevestigen",
+      "subtitle": "Beheer accounts, rollen en toegangsstatus.",
+      "loadError": "Gebruikers konden niet worden geladen.",
+      "blockAction": "Account blokkeren",
+      "unblockAction": "Account deblokkeren"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "cookieConsent": {
+    "ariaLabel": "Bandeau d’information et de choix sur les cookies",
+    "title": "Cookies et confidentialité",
+    "text": "AmusementPark utilise des cookies ou stockages nécessaires au fonctionnement du site, notamment pour la sécurité, la session, la langue, le thème et l’authentification. Avec votre accord, le site active aussi les cookies optionnels de mesure d’audience Matomo.",
+    "privacyLink": "Lire la politique de confidentialité.",
+    "accept": "Accepter les cookies optionnels",
+    "continueWithNecessaryCookiesOnly": "Continuer avec les cookies nécessaires"
+  }
+}

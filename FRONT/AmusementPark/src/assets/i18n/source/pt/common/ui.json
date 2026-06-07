@@ -1,0 +1,33 @@
+{
+  "ui": {
+    "photoCarousel": {
+      "kicker": "Fotos",
+      "title": "Fotos",
+      "subtitle": "Filtre as imagens por categoria para manter a ficha focada.",
+      "current": "Atual",
+      "categories": {
+        "gallery": "Galeria",
+        "entrance": "Entrada",
+        "exit": "Saída",
+        "layout": "Planta",
+        "queue": "Fila",
+        "station": "Estação"
+      },
+      "controls": {
+        "category": "Categoria da foto",
+        "allCategories": "Todas",
+        "displayCount": "Mostradas",
+        "count": "{{count}}",
+        "all": "Todas",
+        "previous": "Foto anterior",
+        "next": "Foto seguinte",
+        "openFullscreen": "Abrir em ecrã inteiro",
+        "closeFullscreen": "Fechar ecrã inteiro",
+        "openSource": "Abrir {{name}}"
+      },
+      "lightbox": {
+        "title": "Foto em ecrã inteiro"
+      }
+    }
+  }
+}

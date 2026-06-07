@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "workbench": {
+      "navTitle": "Area di lavoro elementi del parco",
+      "title": "Inserimento rapido elementi",
+      "kicker": "Amministrazione rapida",
+      "subtitle": "Crea, filtra e correggi rapidamente gli elementi del parco senza aprire la scheda completa.",
+      "quickCreate": {
+        "title": "Creazione rapida",
+        "name": "Nome",
+        "park": "Parco",
+        "zone": "Zona",
+        "category": "Categoria",
+        "type": "Tipo",
+        "manufacturer": "Produttore",
+        "visibility": "Visibilità",
+        "reviewStatus": "Stato di revisione",
+        "create": "Crea",
+        "createAndContinue": "Crea e continua",
+        "creating": "Creazione…"
+      },
+      "assistantImport": {
+        "title": "Importazione assistita",
+        "pasteLines": "Incolla righe",
+        "preview": "Anteprima",
+        "apply": "Applica",
+        "template": "Modello",
+        "mapping": "Mappatura dei campi"
+      },
+      "validations": {
+        "nameRequired": "Il nome è obbligatorio.",
+        "parkRequired": "Il parco è obbligatorio.",
+        "duplicateWarning": "Esiste già un elemento simile.",
+        "invalidTypeForCategory": "Il tipo non corrisponde alla categoria."
+      },
+      "duplicates": {
+        "title": "Possibili duplicati",
+        "samePark": "Stesso parco",
+        "sameZone": "Stessa zona",
+        "ignore": "Ignora",
+        "openExisting": "Apri esistente"
+      },
+      "templates": {
+        "parkOnly": "Solo parco",
+        "zoneItems": "Zona + elementi",
+        "services": "Servizi senza zona",
+        "captainCoaster": "Import Captain Coaster arricchito"
+      }
+    }
+  }
+}

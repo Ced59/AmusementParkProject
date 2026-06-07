@@ -1,0 +1,18 @@
+{
+  "common": {
+    "loadingTitle": "Laden",
+    "loadingMessage": "Inhoud wordt geladen.",
+    "errorTitle": "Er is een fout opgetreden",
+    "errorMessage": "De gevraagde inhoud kon niet worden geladen.",
+    "emptyTitle": "Geenthing to display",
+    "emptyMessage": "Geen content is available at the moment.",
+    "security": {
+      "uploadRejectedSummary": "Bestand geweigerd",
+      "invalidImageUploadMessage": "Alleen JPEG-, PNG-, WebP- of GIF-afbeeldingen onder 10 MB worden geaccepteerd."
+    },
+    "success": "Succes",
+    "error": "Fout",
+    "warning": "Let op",
+    "unexpectedError": "Er is een onverwachte fout opgetreden."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "aboutPage": {
+    "kicker": "Projectvisie",
+    "title": "Een duidelijkere manier om pretparken te verkennen",
+    "lead": "AmusementPark brengt parken, attracties en praktische informatie in kaart met een stabiele architectuur voor vergelijking en afstand.",
+    "primaryCta": "Parken verkennen",
+    "secondaryCta": "Terug naar home",
+    "stats": {
+      "parksLabel": "Potentiële parken",
+      "parksHint": "Ontworpen om snel te blijven op schaal",
+      "mapLabel": "Design doel",
+      "mapHint": "Publieke route klaar om te groeien"
+    },
+    "mission": {
+      "kicker": "Missie",
+      "title": "Sneller het juiste park vinden",
+      "subtitle": "Het product start met een solide portfolio en groeit naar rijkere ontdek- en keuzehulpmiddelen."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Ontdekken",
+        "title": "Betrouwbare parkpagina’s",
+        "text": "Elke parkpagina bundelt locatie, items, foto’s, nabijgelegen parken en nuttige referenties."
+      },
+      "explore": {
+        "badge": "Verkennen",
+        "title": "Kaartgerichte aanpak",
+        "text": "Zoeken, kaartinteracties en nabije afstanden zijn herbruikbare fundamenten."
+      },
+      "enjoy": {
+        "badge": "Genieten",
+        "title": "Consistente visuele identiteit",
+        "text": "Publieke, auth- en profielpagina’s delen dezelfde tokens, surfaces en componenten."
+      }
+    },
+    "clean": {
+      "kicker": "Engineering",
+      "title": "Gebouwd om stap voor stap te evolueren",
+      "text": "Het project is ontworpen om kaarten, vergelijkingen en reisplanning toe te voegen zonder de bezoekerservaring te verstoren."
+    }
+  }
+}

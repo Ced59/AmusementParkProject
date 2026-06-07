@@ -1,0 +1,11 @@
+{
+  "maps": {
+    "placeholder": {
+      "title": "Carte indisponible",
+      "message": "Les coordonnées nécessaires ne sont pas encore disponibles."
+    },
+    "distance": {
+      "title": "Repère géographique"
+    }
+  }
+}

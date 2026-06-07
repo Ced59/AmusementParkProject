@@ -1,0 +1,35 @@
+{
+  "admin": {
+    "auditLogs": {
+      "title": "Registro audit",
+      "subtitle": "Vista in sola lettura delle azioni amministrative sensibili.",
+      "total": "{{count}} voci",
+      "loading": "Caricamento registro audit...",
+      "loadError": "Impossibile caricare il registro audit.",
+      "empty": "Nessuna voce corrisponde ai filtri.",
+      "filters": {
+        "fromUtc": "Da",
+        "toUtc": "A",
+        "actorEmail": "Email attore",
+        "action": "Azione",
+        "entityType": "Tipo entità",
+        "entityId": "ID entità",
+        "traceId": "Trace ID",
+        "actorUserId": "ID attore"
+      },
+      "columns": {
+        "date": "Data",
+        "actor": "Attore",
+        "action": "Azione",
+        "entity": "Entità",
+        "request": "Richiesta",
+        "status": "Stato",
+        "traceId": "Trace ID",
+        "metadata": "Metadati"
+      },
+      "metadata": {
+        "show": "Mostra"
+      }
+    }
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "parkItems": {
+    "actions": {
+      "viewDetails": "View element",
+      "backToItems": "Back to elements",
+      "backToPark": "Wróć do parku"
+    },
+    "filters": {
+      "search": "Szukaj",
+      "searchPlaceholder": "Szukaj według nazwy, opisu, producenta lub statusu",
+      "category": "Kategoria",
+      "type": "Typ",
+      "zone": "Zone",
+      "clear": "Wyczyść filtry",
+      "allCategories": "Wszystkie kategorie",
+      "allTypes": "Wszystkie typy",
+      "allZones": "Wszystkie strefy"
+    },
+    "list": {
+      "subtitle": "Przeglądaj zawartość parku i otwieraj poszczególne elementy, aby zobaczyć szczegóły.",
+      "loadingTitle": "Ładowanie park elements",
+      "loadingMessage": "Zawartość parku jest ładowana.",
+      "errorTitle": "Nie można wczytać park elements",
+      "errorMessage": "The park content nie udało się wczytać.",
+      "emptyTitle": "Brak element available",
+      "emptyMessage": "Obecnie dla tego parku nie ma dostępnego publicznego elementu.",
+      "emptyFilteredTitle": "Brak matching element",
+      "emptyFilteredMessage": "Rozszerz filtry albo wyczyść je, aby zobaczyć więcej treści.",
+      "filteredResults": "Wyniki filtrowane",
+      "resultsCount": "Wyświetlanie {{start}}-{{end}} z {{total}} elementów"
+    },
+    "detail": {
+      "loadingTitle": "Ładowanie element",
+      "loadingMessage": "The element page is being loaded.",
+      "errorTitle": "Nie można wczytać the element",
+      "errorMessage": "The requested element nie udało się wczytać.",
+      "descriptionTitle": "Opis",
+      "specificationsTitle": "Specyfikacje",
+      "sourceTitle": "Źródło",
+      "summaryTitle": "W skrócie",
+      "technicalTitle": "Dane techniczne",
+      "performanceTitle": "Osiągi",
+      "experienceTitle": "Doświadczenie i dostępność",
+      "accessConditionsTitle": "Warunki dostępu",
+      "accessConditionsSubtitle": "Rules are displayed only when they exist on the item record.",
+      "locationKicker": "Lokalizacja",
+      "locationTitle": "Lokalizacja w parku",
+      "preciseLocationSubtitle": "Dostępne są dokładne punkty, więc mapa pokazuje te konkretne lokalizacje.",
+      "generalLocationSubtitle": "Brak szczegółowej lokalizacji, więc mapa pokazuje tylko ogólne położenie elementu.",
+      "preciseLocationBadge": "Dokładny punkt",
+      "generalLocationBadge": "Lokalizacja ogólna",
+      "relatedKicker": "Odkryj także",
+      "relatedTitle": "Similar elements",
+      "relatedSubtitle": "Wybór na podstawie typu, kategorii lub strefy elementu.",
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Wybierz punkt, aby wyróżnić go na mapie albo otworzyć trasę z poziomu znacznika.",
+      "showLocationOnMap": "Pokaż na mapie"
+    },
+    "fields": {
+      "category": "Kategoria",
+      "type": "Typ",
+      "park": "Park",
+      "zone": "Zone",
+      "manufacturer": "Producent",
+      "model": "Model",
+      "status": "Status",
+      "materialType": "Materiał",
+      "seatingType": "Seating",
+      "launchType": "Typ startu",
+      "restraintType": "System zabezpieczeń",
+      "openingDate": "Data otwarcia",
+      "closingDate": "Data zamknięcia",
+      "heightInMeters": "Wysokość",
+      "heightInFeet": "Wysokość (ft)",
+      "lengthInMeters": "Długość",
+      "lengthInFeet": "Długość (ft)",
+      "speedInKmH": "Prędkość",
+      "speedInMph": "Prędkość (mph)",
+      "dropInMeters": "Spadek",
+      "inversionCount": "Inwersje",
+      "capacityPerHour": "Pojemność / godz.",
+      "durationInSeconds": "Czas trwania (s)",
+      "trainCount": "Liczba pociągów",
+      "carsPerTrain": "Wagony / pociąg",
+      "ridersPerVehicle": "Pasażerowie / pojazd",
+      "hasSingleRider": "Kolejka single rider",
+      "hasFastPass": "Fast Pass",
+      "isAccessibleForReducedMobility": "Dostęp dla osób z ograniczoną mobilnością",
+      "isIndoor": "Wewnątrz",
+      "isLaunched": "Z napędem startowym",
+      "waterExposureLevel": "Kontakt z wodą",
+      "subtype": "Podtyp",
+      "isVisible": "Widoczny",
+      "coordinates": "Współrzędne"
+    },
+    "locations": {
+      "general": "Lokalizacja ogólna",
+      "entrance": "Wejście",
+      "exit": "Wyjście",
+      "fastPassEntrance": "Wejście Fast Pass",
+      "reducedMobilityEntrance": "Wejście dla osób o ograniczonej mobilności"
+    },
+    "accessConditionFields": {
+      "type": "Typ",
+      "value": "Wartość",
+      "requiresAccompaniment": "Wymaga opiekuna",
+      "minimumCompanionAge": "Minimalny wiek opiekuna"
+    },
+    "accessConditionTypes": {
+      "minHeight": "Minimalny wzrost",
+      "minHeightAccompanied": "Minimalny wzrost z opiekunem",
+      "maxHeight": "Maksymalny wzrost",
+      "minAge": "Minimalny wiek",
+      "minAgeAccompanied": "Minimalny wiek z opiekunem",
+      "pregnancyRestriction": "Ograniczenie dla kobiet w ciąży",
+      "heartRestriction": "Ograniczenie kardiologiczne",
+      "backNeckRestriction": "Ograniczenie dotyczące pleców lub szyi",
+      "wheelchairTransferRequired": "Wymagane przesiadanie z wózka",
+      "accessPassRequired": "Wymagana przepustka",
+      "custom": "Warunek niestandardowy"
+    },
+    "accessConditionUnits": {
+      "centimeter": "Centymetry",
+      "year": "Lata"
+    },
+    "waterExposureLevels": {
+      "none": "Brak",
+      "splash": "Lekkie ochlapanie",
+      "moderate": "Umiarkowane",
+      "soaking": "Mocne zmoczenie",
+      "extremeSoaking": "Ekstremalnie mokra"
+    },
+    "photos": {
+      "kicker": "Zdjęcia",
+      "title": "Zdjęcia",
+      "subtitle": "Filtruj zdjęcia według kategorii, aby karta pozostała czytelna.",
+      "current": "Aktualne",
+      "categories": {
+        "gallery": "Galeria",
+        "entrance": "Wejście",
+        "exit": "Wyjście",
+        "layout": "Układ",
+        "queue": "Kolejka",
+        "station": "Stacja"
+      },
+      "controls": {
+        "category": "Kategoria zdjęcia",
+        "allCategories": "Wszystkie",
+        "displayCount": "Pokazane",
+        "count": "{{count}}",
+        "all": "Wszystkie",
+        "previous": "Poprzednie zdjęcie",
+        "next": "Następne zdjęcie",
+        "openFullscreen": "Otwórz pełny ekran",
+        "closeFullscreen": "Zamknij pełny ekran"
+      },
+      "lightbox": {
+        "title": "Zdjęcie pełnoekranowe"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Wymagania wzrostu",
+        "minHeight": "Minimalny wzrost",
+        "minHeightHelp": "Dozwolone od tego wzrostu.",
+        "minHeightAccompanied": "Wzrost z opiekunem",
+        "minHeightAccompaniedHelp": "Dozwolone z osobą dorosłą od tego wzrostu.",
+        "maxHeight": "Maksymalny wzrost",
+        "maxHeightHelp": "Wejście zabronione powyżej tego wzrostu."
+      }
+    },
+    "zoneFocus": {
+      "badge": "Strefa parku",
+      "overviewBadge": "Mapa na żywo",
+      "overviewDescription": "Zobacz elementy aktualnie wyświetlane dla {{park}} zgodnie z aktywnymi filtrami.",
+      "zoneFallbackDescription": "Ta strefa grupuje aktualnie wyświetlane elementy. Użyj filtrów, aby zawęzić wybór.",
+      "totalItems": "Elementy strefy",
+      "totalItemsHint": "Powiązana zawartość",
+      "displayedItems": "Wyświetlane",
+      "displayedItemsHint": "Po filtrach",
+      "mapMarkers": "Znaczniki",
+      "mapMarkersHint": "Geolokalizowane",
+      "mapPanelTitle": "Punkty mapy",
+      "mapPanelHeading": "Mapa filtrowana w czasie rzeczywistym",
+      "mapPanelText": "Mapa podąża za aktualnym wyborem: strefą, kategorią, typem i wyszukiwaniem. Niestandardowe znaczniki pozostają dopasowane do dokładnego typu elementu.",
+      "zoneMapHeading": "Mapa strefy {{name}}",
+      "parkMapHeading": "Mapa {{name}}",
+      "allMapItems": "Wszystko"
+    },
+    "statuses": {
+      "operating": "Działa",
+      "underConstruction": "W budowie",
+      "temporarilyClosed": "Tymczasowo zamknięte",
+      "closedDefinitively": "Zamknięte na stałe",
+      "removed": "Usunięte / zdemontowane",
+      "planned": "Planowane",
+      "unknown": "Nieznane"
+    }
+  }
+}

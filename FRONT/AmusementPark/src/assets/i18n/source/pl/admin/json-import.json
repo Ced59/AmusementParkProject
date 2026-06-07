@@ -1,0 +1,26 @@
+{
+  "admin": {
+    "jsonImport": {
+      "tab": "Import JSON",
+      "kicker": "Import JSON",
+      "title": "Importuj dane tej encji",
+      "description": "Wklej częściowy lub pełny JSON, aby szybko uzupełnić obsługiwane pola, bez zarządzania zdjęciami ani tworzenia encji podrzędnych.",
+      "resetExample": "Przywróć przykład",
+      "jsonLabel": "JSON encji",
+      "apply": "Zastosuj JSON",
+      "applying": "Stosowanie…",
+      "disabledUntilSave": "Najpierw zapisz tę encję przed importem JSON.",
+      "messages": {
+        "invalidJson": "JSON jest nieprawidłowy.",
+        "success": "JSON zastosowany. W razie potrzeby odśwież lub sprawdź zakładki.",
+        "error": "Nie można zastosować JSON."
+      },
+      "help": {
+        "title": "Akceptowany format",
+        "partial": "Częściowy JSON zmienia tylko obecne pola.",
+        "merge": "Wartości lokalizowane są łączone według języka, chyba że użyto replaceExisting lub mode: replace.",
+        "accessConditions": "Dla elementów parku accessConditions może tworzyć lub aktualizować warunki i ich typy wielokrotnego użytku."
+      }
+    }
+  }
+}

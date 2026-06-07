@@ -1,0 +1,91 @@
+{
+  "home": {
+    "home_title": "Znajdź idealne emocje",
+    "placeholder_search": "Szukaj parku, atrakcji, hotelu…",
+    "placeholder_category": "Typ wyszukiwania",
+    "no_results": "Brak wyników dla",
+    "in_category": "w",
+    "categories": {
+      "park": "Park",
+      "attractions": "Atrakcja",
+      "everywhere": "Wszędzie",
+      "parkItems": "Elementy parku",
+      "operators": "Operator",
+      "manufacturers": "Producent",
+      "attraction": "Atrakcja",
+      "restaurant": "Restauracja",
+      "hotel": "Hotel",
+      "animal": "Zwierzę",
+      "show": "Pokaz",
+      "shop": "Sklep",
+      "service": "Usługa",
+      "transport": "Transport",
+      "other": "Inne",
+      "founders": "Założyciel",
+      "parks": "Park"
+    },
+    "heroBadge": "Mapa wrażeń",
+    "heroSubtitle": "Tysiące atrakcji w setkach parków na całym świecie. Następna dawka adrenaliny jest o jedno kliknięcie stąd.",
+    "ctaBrowseParks": "Odkrywaj parki",
+    "ctaLearnMore": "Jak to działa",
+    "featured": {
+      "title": "Wyróżnione parki",
+      "subtitle": "Nasz wybór najciekawszych parków w tej chwili.",
+      "loadingTitle": "Ładowanie wyróżnionych parków",
+      "loadingMessage": "Wyróżnione parki są ładowane.",
+      "errorTitle": "Nie można wczytać wyróżnionych parków",
+      "errorMessage": "Nie udało się wczytać wyróżnionych parków.",
+      "emptyTitle": "Brak wyróżnionego parku",
+      "emptyMessage": "Nie ma jeszcze parku do wyróżnienia.",
+      "discover": "Odkryj",
+      "manualSelection": "Wybór ręczny",
+      "sponsored": "Sponsorowane"
+    },
+    "search": {
+      "resultsTitle": "Wyniki wyszukiwania",
+      "resultsSubtitle": "Publiczne wyniki pasujące do wyszukiwania, z bezpośrednim dostępem do dostępnych stron szczegółów.",
+      "loadingTitle": "Wyszukiwanie",
+      "loadingMessage": "Wyniki wyszukiwania są ładowane.",
+      "errorTitle": "Wyszukiwanie nie powiodło się",
+      "errorMessage": "Nie udało się wczytać wyników wyszukiwania.",
+      "emptyTitle": "Nie znaleziono wyników",
+      "emptyMessage": "Żadna publiczna treść nie pasuje do wyszukiwania.",
+      "hintTitle": "Rozpocznij wyszukiwanie",
+      "hintMessage": "Wyszukaj park albo przefiltruj katalog według kategorii.",
+      "openResult": "Otwórz",
+      "kicker": "Inteligentne wyszukiwanie",
+      "commandTitle": "Szybciej znajdź odpowiedni park",
+      "commandSubtitle": "Przeglądaj parki, atrakcje i miejsca, filtruj według swoich potrzeb i otwieraj interesujące Cię szczegóły.",
+      "attractionsLabel": "atrakcji"
+    },
+    "experience": {
+      "mapKicker": "Widok mapy",
+      "mapTitle": "Odkrywaj parki wizualnie",
+      "mapText": "Znajduj miejsca na mapie, porównuj pobliskie parki i miej przydatne miejsca pod ręką.",
+      "catalogKicker": "Odkrywanie",
+      "catalogTitle": "Parki i atrakcje w jednym miejscu",
+      "catalogText": "Przechodź od parku do jego atrakcji, zdjęć i przydatnych informacji bez gubienia się."
+    },
+    "heroTitleFind": "Znajdź",
+    "heroTitleYour": "swój",
+    "heroTitleThrill": "dreszcz",
+    "heroTitlePerfect": "idealny",
+    "stats": {
+      "ariaLabel": "Statystyki katalogu publicznego",
+      "parks": "Parki w katalogu",
+      "attractions": "Atrakcje",
+      "countries": "Obsługiwane kraje",
+      "errorMessage": "Nie udało się wczytać statystyk publicznych."
+    },
+    "heroCards": {
+      "ariaLabel": "Podgląd wyróżnionych parków",
+      "featured": "Wybór",
+      "sensations": "Emocje",
+      "family": "Rodzina",
+      "locationFallback": "Miejsce do odkrycia",
+      "placeholderTitle": "Katalog w przygotowaniu",
+      "placeholderSubtitle": "Wyróżnione parki pojawią się tutaj.",
+      "errorMessage": "Nie udało się wczytać wyróżnionych parków."
+    }
+  }
+}

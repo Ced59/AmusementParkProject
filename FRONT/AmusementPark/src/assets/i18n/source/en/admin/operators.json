@@ -1,0 +1,23 @@
+{
+  "admin": {
+    "operators": {
+      "total": "Operators: {{count}}",
+      "searchPlaceholder": "Search an operator",
+      "create": "Create operator",
+      "name": "Name",
+      "actions": "Actions",
+      "edit": "Edit",
+      "empty": "No operators found.",
+      "editPage": {
+        "createTitle": "Create operator",
+        "updateTitle": "Edit operator",
+        "name": "Name",
+        "description": "Description"
+      },
+      "title": "Operators",
+      "subtitle": "Reference list of operators used by park records.",
+      "reviewStatus": "Admin status",
+      "loadError": "Unable to load operators."
+    }
+  }
+}

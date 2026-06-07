@@ -1,0 +1,18 @@
+{
+  "common": {
+    "loadingTitle": "Chargement",
+    "loadingMessage": "Le contenu est en cours de chargement.",
+    "errorTitle": "Une erreur est survenue",
+    "errorMessage": "Le contenu demandé n’a pas pu être chargé.",
+    "emptyTitle": "Rien à afficher",
+    "emptyMessage": "Aucun contenu n’est disponible pour le moment.",
+    "security": {
+      "uploadRejectedSummary": "Fichier refusé",
+      "invalidImageUploadMessage": "Seules les images JPEG, PNG, WebP ou GIF de moins de 10 Mo sont acceptées."
+    },
+    "success": "Succès",
+    "error": "Erreur",
+    "warning": "Attention",
+    "unexpectedError": "Une erreur inattendue est survenue."
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "workbench": {
+      "navTitle": "Park items workbench",
+      "title": "Fast item entry",
+      "kicker": "Fast administration",
+      "subtitle": "Create, filter and correct park items quickly without opening the full record.",
+      "quickCreate": {
+        "title": "Quick create",
+        "name": "Name",
+        "park": "Park",
+        "zone": "Zone",
+        "category": "Category",
+        "type": "Type",
+        "manufacturer": "Manufacturer",
+        "visibility": "Visibility",
+        "reviewStatus": "Review status",
+        "create": "Create",
+        "createAndContinue": "Create and continue",
+        "creating": "Creating…"
+      },
+      "assistantImport": {
+        "title": "Assisted import",
+        "pasteLines": "Paste lines",
+        "preview": "Preview",
+        "apply": "Apply",
+        "template": "Template",
+        "mapping": "Field mapping"
+      },
+      "validations": {
+        "nameRequired": "Name is required.",
+        "parkRequired": "Park is required.",
+        "duplicateWarning": "A similar item already exists.",
+        "invalidTypeForCategory": "The type does not match the category."
+      },
+      "duplicates": {
+        "title": "Potential duplicates",
+        "samePark": "Same park",
+        "sameZone": "Same zone",
+        "ignore": "Ignore",
+        "openExisting": "Open existing"
+      },
+      "templates": {
+        "parkOnly": "Park only",
+        "zoneItems": "Zone + items",
+        "services": "Services without zone",
+        "captainCoaster": "Enriched Captain Coaster import"
+      }
+    }
+  }
+}

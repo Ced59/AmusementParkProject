@@ -1,0 +1,254 @@
+{
+  "parks": {
+    "heroBadge": "Public catalog",
+    "title": "Parks",
+    "subtitle": "Browse the parks already managed in the administration area and explore their public details.",
+    "loadingTitle": "Laden parks",
+    "loadingMessage": "De parkenlijst wordt geladen.",
+    "errorTitle": "Kan niet laden parks",
+    "errorMessage": "The parks list kon niet worden geladen.",
+    "emptyTitle": "Geen park available",
+    "emptyMessage": "Geen park is available for display.",
+    "search": {
+      "label": "Zoeken",
+      "placeholder": "Search a park by name",
+      "clear": "Wissen"
+    },
+    "fields": {
+      "country": "Land",
+      "city": "Stad",
+      "address": "Adres",
+      "website": "Website",
+      "coordinates": "Coördinaten",
+      "latitude": "Breedtegraad",
+      "longitude": "Lengtegraad",
+      "distance": "Afstand",
+      "estimatedTravelDuration": "Geschatte reistijd"
+    },
+    "actions": {
+      "viewDetails": "Details bekijken",
+      "website": "Website",
+      "backToList": "Terug naar de lijst"
+    },
+    "detail": {
+      "heroBadge": "Parkoverzicht",
+      "heroDescription": "Ontdek de praktische informatie die momenteel voor dit park beschikbaar is.",
+      "loadingTitle": "Laden park",
+      "loadingMessage": "De parkpagina wordt geladen.",
+      "errorTitle": "Kan niet laden the park",
+      "errorMessage": "The requested park kon niet worden geladen.",
+      "practical": {
+        "title": "Praktische informatie",
+        "subtitle": "De belangrijkste bezoekersinformatie die momenteel voor dit park beschikbaar is.",
+        "postalCode": "Postcode",
+        "street": "Straat",
+        "openReference": "Details van {{name}} openen"
+      },
+      "location": {
+        "title": "Locatie",
+        "subtitle": "Vind het park op de kaart en bekijk de coördinaten."
+      },
+      "nearby": {
+        "title": "Nabijgelegen parken",
+        "subtitle": "Ga verder met parken rond deze bestemming.",
+        "loadingTitle": "Laden nearby parks",
+        "loadingMessage": "Nabijgelegen parken worden geladen.",
+        "errorTitle": "Kan niet laden nearby parks",
+        "errorMessage": "Nearby parks kon niet worden geladen.",
+        "emptyTitle": "Geen nearby park",
+        "emptyMessage": "Er is geen nabijgelegen park rond deze bestemming gevonden.",
+        "closestTitle": "Dichtstbijzijnde park",
+        "distanceNote": "Grootcirkelafstand berekend vanaf de parkcoördinaten."
+      },
+      "description": {
+        "badge": "Overzicht",
+        "title": "Over dit park",
+        "empty": "Er is nog geen uitgebreide beschrijving beschikbaar voor dit park."
+      },
+      "identity": {
+        "title": "Parkidentiteit",
+        "subtitle": "Structurele gegevens die momenteel in het parkmodel beschikbaar zijn.",
+        "type": "Type",
+        "founder": "Oprichter",
+        "operator": "Exploitant",
+        "reference": "Referentie"
+      },
+      "publication": {
+        "title": "Publicatie",
+        "subtitle": "Zichtbaarheid en home-uitlichting uit het parkmodel.",
+        "visible": "Zichtbaar",
+        "featured": "Uitgelicht",
+        "sponsored": "Gesponsord",
+        "featuredOrder": "Home-volgorde",
+        "logo": "Logo",
+        "logoAvailable": "Huidig logo ingesteld"
+      },
+      "zones": {
+        "badge": "Parkzones",
+        "title": "Zones en lands",
+        "subtitle": "Vind snel de attracties en plekken die bij elke zone van het park horen.",
+        "visible": "Zichtbaar",
+        "hidden": "Verborgen",
+        "open": "Zone-items bekijken",
+        "noDescription": "Er is nog geen beschrijving beschikbaar voor deze zone.",
+        "slug": "Slug",
+        "sortOrder": "Volgorde",
+        "sortOrderShort": "Volgorde {{order}}"
+      },
+      "stats": {
+        "zones": "Zones"
+      },
+      "itemsMap": {
+        "badge": "Itemkaart",
+        "title": "Kaart met parkitems",
+        "subtitle": "Vind de geolokaliseerde items van dit park en filter de kaart op zone of categorie.",
+        "categoriesTitle": "Categorieën",
+        "emptyTitle": "Geen geolokaliseerd item",
+        "emptyMessage": "Geen geolokaliseerd item komt momenteel overeen met de geselecteerde filters."
+      },
+      "comingSoon": {
+        "badge": "Binnenkort",
+        "message": "Deze sectie wordt in een volgende stap gekoppeld aan een betrouwbare bron."
+      },
+      "weather": {
+        "title": "Weer voor 5 dagen",
+        "subtitle": "Een compacte voorspelling om het bezoek voor te bereiden."
+      },
+      "hours": {
+        "title": "Openingstijden",
+        "subtitle": "Openingstijden en speciale periodes worden later toegevoegd."
+      },
+      "prices": {
+        "title": "Tarieven",
+        "subtitle": "Tickets, passen en prijsinformatie worden later toegevoegd."
+      }
+    },
+    "titlePrefix": "Alle",
+    "titleAccent": "parken",
+    "stats": {
+      "visibleParks": "Zichtbare parken",
+      "countries": "Landen"
+    },
+    "map": {
+      "badge": "Interactieve kaart",
+      "title": "Kaart van zichtbare parken",
+      "subtitle": "De kaart volgt de huidige zoekopdracht. Klik op een marker of resultaatkaart om de hele pagina te synchroniseren.",
+      "visiblePins": "{{count}} zichtbare pins",
+      "quickMarkers": "Snelle markeringen",
+      "selected": "Geselecteerd park",
+      "loadingTitle": "Kaart laden",
+      "loadingMessage": "De zichtbare parken worden op de kaart geplaatst.",
+      "errorTitle": "Kaart niet beschikbaar",
+      "errorMessage": "De kaartpunten konden niet worden geladen.",
+      "emptyTitle": "Geen punt beschikbaar",
+      "emptyMessage": "Geen zichtbaar park met coördinaten komt overeen met deze zoekopdracht.",
+      "navigate": "Route openen",
+      "openDetail": "Naar de fiche",
+      "regionFilters": {
+        "all": "Alles",
+        "europe": "Europa",
+        "northAmerica": "Noord-Amerika",
+        "southAmerica": "Zuid-Amerika",
+        "orient": "Oriënt",
+        "africa": "Afrika"
+      },
+      "regionFilterAriaLabel": "Parken filteren op continent"
+    },
+    "results": {
+      "badge": "Resultaten",
+      "title": "Parkenlijst",
+      "count": "{{count}} resultaten",
+      "focusOnMap": "{{name}} op de kaart selecteren",
+      "selectedOnly": "Geselecteerd: {{name}}",
+      "clearSelection": "Alle resultaten tonen"
+    },
+    "reference": {
+      "loadingTitle": "Profiel laden",
+      "loadingMessage": "Het publieke profiel wordt geladen.",
+      "errorTitle": "Profiel kan niet worden geladen",
+      "errorMessage": "Het gevraagde profiel kon niet worden geladen.",
+      "backToParks": "Terug naar parken",
+      "operator": {
+        "badge": "Parkexploitant",
+        "title": "Exploitant",
+        "descriptionTitle": "Operator profiel",
+        "emptyDescription": "Er is nog geen uitgebreide beschrijving beschikbaar voor deze exploitant."
+      },
+      "founder": {
+        "badge": "Parkoprichter",
+        "title": "Oprichter",
+        "descriptionTitle": "Biografie",
+        "emptyDescription": "Er is nog geen uitgebreide biografie beschikbaar voor deze oprichter."
+      },
+      "manufacturer": {
+        "badge": "Attractiefabrikant",
+        "title": "Fabrikant",
+        "descriptionTitle": "Manufacturer profiel",
+        "emptyDescription": "Er is nog geen uitgebreid profiel beschikbaar voor deze fabrikant.",
+        "attractionsKicker": "Gebouwde attracties",
+        "attractionsTitle": "Attracties gekoppeld aan deze fabrikant",
+        "attractionsSubtitle": "Zichtbare site-attracties gekoppeld aan deze fabrikant.",
+        "emptyAttractions": "Er is nog geen zichtbare attractie gekoppeld aan deze fabrikant."
+      },
+      "facts": {
+        "title": "Belangrijke informatie",
+        "legalName": "Wettelijke naam",
+        "foundedYear": "Opgericht",
+        "closedYear": "Gesloten",
+        "website": "Website",
+        "email": "E-mail",
+        "phone": "Telefoon",
+        "address": "Adres",
+        "country": "Land",
+        "coordinates": "Coördinaten",
+        "occupation": "Rol",
+        "birthDate": "Geboorte",
+        "deathDate": "Overlijden",
+        "birthPlace": "Geboorteplaats",
+        "nationality": "Nationaliteit"
+      },
+      "photos": {
+        "kicker": "Galerij",
+        "title": "Related afbeeldings",
+        "subtitle": "Gepubliceerde beelden die dit profiel verrijken.",
+        "founder": "Oprichter",
+        "operator": "Exploitant",
+        "manufacturer": "Fabrikant"
+      }
+    },
+    "photos": {
+      "kicker": "Foto’s",
+      "title": "Foto’s",
+      "subtitle": "Algemene parkfoto’s en beelden van parkitems, filterbaar op type.",
+      "current": "Huidig",
+      "openItem": "Detailpagina van {{name}} openen",
+      "categories": {
+        "gallery": "Park · Galerij",
+        "entrance": "Parkingang",
+        "overview": "Overzicht",
+        "map": "Kaart / plattegrond",
+        "atmosphere": "Sfeer",
+        "event": "Evenementen",
+        "food": "Eten",
+        "services": "Diensten",
+        "halloween": "Halloween",
+        "christmas": "Kerst",
+        "easter": "Pasen"
+      },
+      "controls": {
+        "category": "Fotocategorie",
+        "allCategories": "Alle",
+        "displayCount": "Weergegeven aantal",
+        "count": "{{count}}",
+        "all": "Alle",
+        "previous": "Vorige foto",
+        "next": "Volgende foto",
+        "openFullscreen": "Vergroten",
+        "closeFullscreen": "Volledig scherm sluiten"
+      },
+      "lightbox": {
+        "title": "Foto op volledig scherm"
+      }
+    }
+  }
+}

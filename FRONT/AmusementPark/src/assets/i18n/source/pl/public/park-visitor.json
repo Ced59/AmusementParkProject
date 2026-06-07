@@ -1,0 +1,12 @@
+{
+  "parkVisitor": {
+    "summary": {
+      "badge": "Zawartość parku",
+      "title": "Odkryj, co oferuje ten park",
+      "subtitle": "Wybierz kategorię, aby szybko znaleźć atrakcje, restauracje i miejsca w parku.",
+      "viewAllItems": "Zobacz wszystkie elementy",
+      "totalItems": "Łącznie elementów",
+      "unassignedItems": "Elementy bez strefy"
+    }
+  }
+}

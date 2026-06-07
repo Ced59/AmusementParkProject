@@ -1,0 +1,18 @@
+{
+  "shared": {
+    "imageUpload": {
+      "title": "Bild hochladen",
+      "choose": "Bild auswählen",
+      "upload": "Hochladen",
+      "cancel": "Abbrechen",
+      "dragAndDrop": "Ziehe ein Bild hierher oder klicke, um eines auszuwählen.",
+      "selectedFile": "Ausgewählte Datei",
+      "invalidFile": "Bitte wähle eine gültige Bilddatei aus.",
+      "invalidSize": "Das ausgewählte Bild ist zu groß.",
+      "noImageSelected": "Bitte wähle vor dem Hochladen ein Bild aus.",
+      "uploading": "Wird hochgeladen...",
+      "uploadError": "Beim Hochladen des Bildes ist ein Fehler aufgetreten.",
+      "descriptionPlaceholder": "Beschreibung"
+    }
+  }
+}

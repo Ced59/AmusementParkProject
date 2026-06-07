@@ -1,0 +1,11 @@
+{
+  "maps": {
+    "placeholder": {
+      "title": "Karte nicht verfügbar",
+      "message": "Die erforderlichen Koordinaten sind noch nicht verfügbar."
+    },
+    "distance": {
+      "title": "Geografischer Bezugspunkt"
+    }
+  }
+}

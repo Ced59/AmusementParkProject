@@ -1,0 +1,33 @@
+{
+  "ui": {
+    "photoCarousel": {
+      "kicker": "Foto",
+      "title": "Foto",
+      "subtitle": "Filtra le immagini per categoria per mantenere la scheda leggibile.",
+      "current": "Attuale",
+      "categories": {
+        "gallery": "Galleria",
+        "entrance": "Ingresso",
+        "exit": "Uscita",
+        "layout": "Layout",
+        "queue": "Coda",
+        "station": "Stazione"
+      },
+      "controls": {
+        "category": "Categoria foto",
+        "allCategories": "Tutte",
+        "displayCount": "Mostrate",
+        "count": "{{count}}",
+        "all": "Tutte",
+        "previous": "Foto precedente",
+        "next": "Foto successiva",
+        "openFullscreen": "Apri a schermo intero",
+        "closeFullscreen": "Chiudi schermo intero",
+        "openSource": "Apri {{name}}"
+      },
+      "lightbox": {
+        "title": "Foto a schermo intero"
+      }
+    }
+  }
+}

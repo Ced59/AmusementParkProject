@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Gründer erstellen",
+        "updateTitle": "Gründer bearbeiten",
+        "name": "Name",
+        "biography": "Biografie"
+      },
+      "title": "Gründer",
+      "subtitle": "Referenzliste der Gründer, die von Parkdaten verwendet werden.",
+      "total": "Gründer: {{count}}",
+      "searchPlaceholder": "Gründer suchen",
+      "create": "Gründer erstellen",
+      "name": "Name",
+      "lifeDates": "Daten",
+      "actions": "Aktionen",
+      "empty": "Kein Gründer gefunden.",
+      "loadError": "Gründer konnten nicht geladen werden."
+    }
+  }
+}

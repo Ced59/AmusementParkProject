@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "parkItems": {
+      "title": "Elementos do parque",
+      "subtitle": "Vista transversal de todos os elementos dos parques para edição mais rápida.",
+      "searchPlaceholder": "Search a parque, elemento or type",
+      "parkFilter": "Filter by parque",
+      "empty": "Nenhum elementos found.",
+      "columns": {
+        "park": "Parque",
+        "item": "Elemento",
+        "type": "Tipo",
+        "visibility": "Visibilidade",
+        "actions": "Ações",
+        "category": "Categoria",
+        "reviewStatus": "Estado admin"
+      },
+      "allParks": "Todos os parques",
+      "total": "{{count}} item(ns)"
+    }
+  }
+}

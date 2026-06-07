@@ -1,0 +1,76 @@
+{
+  "privacyPage": {
+    "kicker": "Persoonsgegevens",
+    "title": "Privacybeleid",
+    "lead": "Deze pagina legt uit hoe AmusementPark persoonsgegevens, noodzakelijke cookies, Google OAuth-authenticatie en Matomo-publieksmeting verwerkt.",
+    "chips": {
+      "hosting": "Hosting in Frankrijk",
+      "analytics": "Cookies en analytics",
+      "controller": "Verwerkingsverantwoordelijke: Cédric Caudron"
+    },
+    "consent": {
+      "kicker": "Cookievoorkeuren",
+      "title": "Optionele cookies beheren",
+      "text": "Cookies die nodig zijn voor werking en authenticatie kunnen zonder toestemming worden gebruikt. Hier kun je optionele cookies voor publieksmeting accepteren, weigeren of de keuze opnieuw tonen.",
+      "currentStatus": "Huidige status:",
+      "statusAccepted": "optionele cookies geaccepteerd.",
+      "statusRefused": "optionele cookies geweigerd.",
+      "statusUnset": "geen keuze opgeslagen.",
+      "accept": "Optionele cookies accepteren",
+      "refuse": "Toestemming voor optionele cookies intrekken",
+      "reset": "Banner opnieuw tonen"
+    },
+    "sections": {
+      "controller": {
+        "title": "Verwerkingsverantwoordelijke",
+        "body1": "De verwerkingsverantwoordelijke is Cédric Caudron, uitgever van de website AmusementPark.",
+        "body2": "Voor verzoeken over persoonsgegevens kun je de contactmogelijkheden op cedric-caudron.com gebruiken."
+      },
+      "data": {
+        "title": "Verwerkte gegevens",
+        "body1": "De website kan accountgegevens verwerken die nodig zijn voor de dienst: e-mailadres, opgegeven voor- of achternaam, avatar, voorkeurstaal en profielinstellingen.",
+        "body2": "Ook technische gegevens kunnen worden verwerkt: IP-adres, datum, bezochte URL, browser, foutlogs en beveiligingsinformatie die strikt nuttig is voor de werking."
+      },
+      "purposes": {
+        "title": "Doeleinden en rechtsgronden",
+        "body1": "Gegevens worden gebruikt om websitefuncties te leveren, toegang te beveiligen, accounts te beheren, openbare inhoud te tonen en het project te beheren.",
+        "body2": "Verwerkingen die nodig zijn voor de werking steunen op de uitvoering van de dienst of op gerechtvaardigd belang. Optionele Matomo-cookies voor publieksmeting steunen op je toestemming, tenzij later een strikt vrijgestelde configuratie wordt ingevoerd."
+      },
+      "analytics": {
+        "title": "Matomo-publieksmeting",
+        "body1": "De website gebruikt een zelfgehoste Matomo-instantie op matomo.cedric-caudron.com met site-ID 4.",
+        "body2": "Matomo kan bezochte pagina’s, navigatiereeksen, verkeersbronnen, apparaattype en technische browserinformatie meten.",
+        "body3": "Deze integratie voegt geen advertentietracking van derden toe. Profielgerelateerde routes kunnen alleen na toestemming voor optionele cookies worden gemeten, zonder privé-inhoud van het profiel als analytics-event te verzenden."
+      },
+      "cookies": {
+        "title": "Cookies en lokale opslag",
+        "body1": "Strikt noodzakelijke cookies of opslag kunnen worden gebruikt voor sessie, beveiliging, taal, thema, interfacevoorkeuren en correcte authenticatie.",
+        "body2": "Deze noodzakelijke trackers kunnen sessie-/API-cookies, HTTP-only authenticatiecookies, anti-misbruikmechanismen en lokaal opgeslagen voorkeuren omvatten. Ze kunnen niet via de banner worden uitgeschakeld omdat ze de gevraagde dienst mogelijk maken.",
+        "body3": "De keuze over optionele cookies wordt opgeslagen in de lokale opslag van de browser zodat ze niet op elke pagina opnieuw wordt gevraagd."
+      },
+      "hosting": {
+        "title": "Hosting en verwerkers",
+        "body1": "De website is bedoeld om via Hostinger op een server in Frankrijk te worden gehost. Technische projectdiensten, waaronder MongoDB, MinIO en Matomo, kunnen op deze VPS draaien.",
+        "body2": "Gegevens worden niet aan adverteerders verkocht. Ze kunnen worden verwerkt door technische leveranciers die strikt nodig zijn voor hosting, beveiliging en werking."
+      },
+      "retention": {
+        "title": "Bewaartermijnen",
+        "body1": "Accounts worden bewaard zolang het account bestaat of zolang een beperkte beveiligingsverplichting bewaring vereist.",
+        "body2": "Technische logs worden bewaard gedurende een periode die in verhouding staat tot beveiliging en diagnose. Matomo-gegevens moeten met een beperkte termijn worden ingesteld en regelmatig worden herzien."
+      },
+      "rights": {
+        "title": "Je rechten",
+        "body1": "Je kunt toegang, rectificatie, verwijdering, beperking of bezwaar vragen voor toepasselijke verwerking van je gegevens.",
+        "body2": "Je kunt op deze pagina ook toestemming voor analytics intrekken en indien nodig een klacht indienen bij de CNIL."
+      },
+      "thirdPartyCookies": {
+        "title": "Cookies van derden en Google-authenticatie",
+        "body1": "De website biedt inloggen via Google OAuth / Sign in with Google. Wanneer je deze methode gebruikt, kan Google eigen cookies en vergelijkbare technologieën plaatsen of lezen voor authenticatie, beveiliging, fraudepreventie en sessiebeheer.",
+        "body2": "Deze trackers van derden zijn nodig voor de door de gebruiker gevraagde Google-authenticatie en worden niet beheerd door de Matomo-/analytics-toestemming van de website.",
+        "body3": "Het weigeren van optionele AmusementPark-cookies blokkeert authenticatie niet. Een browser die bepaalde cookies van derden blokkeert, kan Google-inloggen wel verhinderen of verstoren."
+      }
+    },
+    "lastUpdate": "Laatst bijgewerkt: 23 mei 2026.",
+    "backHome": "Terug naar home"
+  }
+}

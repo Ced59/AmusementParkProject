@@ -1,0 +1,29 @@
+{
+  "footer": {
+    "ariaLabel": "Pie de página del sitio",
+    "brand": {
+      "tagline": "El mapa completo de las emociones. Parque por parque, atracción por atracción."
+    },
+    "explore": {
+      "title": "Explorar",
+      "allParks": "Todos los parques",
+      "topRollerCoasters": "Top montañas rusas",
+      "interactiveMap": "Mapa interactivo",
+      "news": "Novedades"
+    },
+    "about": {
+      "title": "Acerca de",
+      "project": "El proyecto",
+      "sources": "Fuentes",
+      "contact": "Contacto",
+      "privacy": "Privacidad"
+    },
+    "languages": {
+      "title": "Idiomas"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Hecho con ❤️ y adrenalina",
+      "version": "Versión {{version}}"
+    }
+  }
+}

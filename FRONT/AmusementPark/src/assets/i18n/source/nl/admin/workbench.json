@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "workbench": {
+      "navTitle": "Werkbank voor parkitems",
+      "title": "Snelle iteminvoer",
+      "kicker": "Snelle administratie",
+      "subtitle": "Maak, filter en corrigeer parkitems snel zonder de volledige fiche te openen.",
+      "quickCreate": {
+        "title": "Snel aanmaken",
+        "name": "Naam",
+        "park": "Park",
+        "zone": "Zone",
+        "category": "Categorie",
+        "type": "Type",
+        "manufacturer": "Fabrikant",
+        "visibility": "Zichtbaarheid",
+        "reviewStatus": "Beoordelingsstatus",
+        "create": "Aanmaken",
+        "createAndContinue": "Aanmaken en doorgaan",
+        "creating": "Wordt aangemaakt…"
+      },
+      "assistantImport": {
+        "title": "Geassisteerde import",
+        "pasteLines": "Regels plakken",
+        "preview": "Voorbeeld",
+        "apply": "Toepassen",
+        "template": "Sjabloon",
+        "mapping": "Veldkoppeling"
+      },
+      "validations": {
+        "nameRequired": "Naam is verplicht.",
+        "parkRequired": "Park is verplicht.",
+        "duplicateWarning": "Er bestaat al een vergelijkbaar item.",
+        "invalidTypeForCategory": "Het type past niet bij de categorie."
+      },
+      "duplicates": {
+        "title": "Mogelijke duplicaten",
+        "samePark": "Zelfde park",
+        "sameZone": "Zelfde zone",
+        "ignore": "Negeren",
+        "openExisting": "Bestaande openen"
+      },
+      "templates": {
+        "parkOnly": "Alleen park",
+        "zoneItems": "Zone + items",
+        "services": "Services zonder zone",
+        "captainCoaster": "Verrijkte Captain Coaster-import"
+      }
+    }
+  }
+}

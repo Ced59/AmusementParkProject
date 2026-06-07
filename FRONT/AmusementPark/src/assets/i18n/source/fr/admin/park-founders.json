@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Créer un fondateur",
+        "updateTitle": "Modifier le fondateur",
+        "name": "Nom",
+        "biography": "Biographie"
+      },
+      "title": "Fondateurs",
+      "subtitle": "Référentiel des fondateurs utilisés par les fiches de parc.",
+      "total": "Fondateurs : {{count}}",
+      "searchPlaceholder": "Rechercher un fondateur",
+      "create": "Créer un fondateur",
+      "name": "Nom",
+      "lifeDates": "Dates",
+      "actions": "Actions",
+      "empty": "Aucun fondateur trouvé.",
+      "loadError": "Impossible de charger les fondateurs."
+    }
+  }
+}

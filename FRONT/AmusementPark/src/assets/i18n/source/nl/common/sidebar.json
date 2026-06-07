@@ -1,0 +1,10 @@
+{
+  "sidebar": {
+    "logo_text": "Menu",
+    "home": "Start",
+    "parks": "Parken",
+    "about": "Over",
+    "profile": "Profiel",
+    "admin": "Beheer"
+  }
+}

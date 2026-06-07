@@ -1,0 +1,8 @@
+{
+  "languageModal": {
+    "kicker": "Language",
+    "title": "Choose your language",
+    "subtitle": "Switch the whole experience while keeping the current route when possible.",
+    "current": "Current"
+  }
+}

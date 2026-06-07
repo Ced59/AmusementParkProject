@@ -1,0 +1,11 @@
+{
+  "admin": {
+    "reviewStatus": {
+      "ready": "Gevalideerd",
+      "toProcessLater": "Later verwerken",
+      "toReview": "Te controleren",
+      "validated": "Gevalideerd",
+      "notRelevant": "Niet relevant"
+    }
+  }
+}

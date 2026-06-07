@@ -1,0 +1,15 @@
+{
+  "actions": {
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "backToPark": "Voltar ao parque",
+    "backToList": "Voltar",
+    "edit": "Editar",
+    "apply": "Aplicar",
+    "clear": "Limpar",
+    "delete": "Eliminar",
+    "search": "Pesquisar",
+    "reset": "Repor",
+    "refresh": "Atualizar"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "admin": {
+    "references": {
+      "sections": {
+        "identity": "Identidade",
+        "contact": "Contactos opcionais",
+        "content": "Conteúdo editorial",
+        "administration": "Fluxo administrativo"
+      },
+      "fields": {
+        "legalName": "Nome legal",
+        "foundedYear": "Ano de fundação",
+        "closedYear": "Ano de encerramento",
+        "websiteUrl": "Site",
+        "email": "Email",
+        "phoneNumber": "Telefone",
+        "street": "Rua",
+        "city": "Cidade",
+        "postalCode": "Código postal",
+        "countryCode": "Código do país",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "occupation": "Ocupação / função",
+        "birthDate": "Data de nascimento",
+        "deathDate": "Data de falecimento",
+        "birthPlace": "Local de nascimento",
+        "nationalityCountryCode": "Nacionalidade / código do país"
+      },
+      "images": {
+        "title": "Proficheiro imagems",
+        "help": "Adiciona retratos, logótipos, fotos da sede, documentos históricos ou imagens de referência. A apresentação pública continua condicionada.",
+        "add": "Add imagem",
+        "saveBeforeUpload": "Save this perfil before adding imagems.",
+        "empty": "Nenhum imagem is linked to this perfil yet.",
+        "untitled": "Reference imagem",
+        "uploadTitle": "Add an imagem to this perfil"
+      }
+    }
+  }
+}

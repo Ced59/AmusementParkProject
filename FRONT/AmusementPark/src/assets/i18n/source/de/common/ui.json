@@ -1,0 +1,33 @@
+{
+  "ui": {
+    "photoCarousel": {
+      "kicker": "Fotos",
+      "title": "Fotos",
+      "subtitle": "Filtere die Bilder nach Kategorie, damit die Detailseite fokussiert bleibt.",
+      "current": "Aktuell",
+      "categories": {
+        "gallery": "Galerie",
+        "entrance": "Eingang",
+        "exit": "Ausgang",
+        "layout": "Layout",
+        "queue": "Warteschlange",
+        "station": "Station"
+      },
+      "controls": {
+        "category": "Fotokategorie",
+        "allCategories": "Alle",
+        "displayCount": "Anzahl",
+        "count": "{{count}}",
+        "all": "Alle",
+        "previous": "Vorheriges Foto",
+        "next": "Nächstes Foto",
+        "openFullscreen": "Vollbild öffnen",
+        "closeFullscreen": "Vollbild schließen",
+        "openSource": "{{name}} öffnen"
+      },
+      "lightbox": {
+        "title": "Foto im Vollbild"
+      }
+    }
+  }
+}

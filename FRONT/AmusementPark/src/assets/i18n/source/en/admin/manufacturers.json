@@ -1,0 +1,24 @@
+{
+  "admin": {
+    "manufacturers": {
+      "total": "Manufacturers: {{count}}",
+      "searchPlaceholder": "Search a manufacturer",
+      "create": "Create a manufacturer",
+      "name": "Name",
+      "attractionCount": "Attached attractions",
+      "actions": "Actions",
+      "edit": "Edit",
+      "empty": "No manufacturer found.",
+      "editPage": {
+        "createTitle": "Create a manufacturer",
+        "updateTitle": "Edit manufacturer",
+        "name": "Name",
+        "biography": "Biography"
+      },
+      "title": "Manufacturers",
+      "subtitle": "Reference list of manufacturers used by attractions.",
+      "reviewStatus": "Admin status",
+      "loadError": "Unable to load manufacturers."
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "actions": {
+    "cancel": "Anuluj",
+    "save": "Zapisz",
+    "backToPark": "Powrót do parku",
+    "backToList": "Powrót",
+    "edit": "Edytuj",
+    "apply": "Zastosuj",
+    "clear": "Wyczyść",
+    "delete": "Usuń",
+    "search": "Szukaj",
+    "reset": "Resetuj",
+    "refresh": "Odśwież"
+  }
+}

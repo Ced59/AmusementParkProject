@@ -1,0 +1,46 @@
+{
+  "admin": {
+    "users": {
+      "total": "Łączna liczba użytkowników: {{count}}",
+      "empty": "Nie znaleziono użytkowników.",
+      "columns": {
+        "email": "E-mail",
+        "firstName": "Imię",
+        "lastName": "Nazwisko",
+        "roles": "Rola",
+        "status": "Status",
+        "actions": "Akcje"
+      },
+      "manage": "Zarządzaj użytkownikiem",
+      "profileTitle": "Zarządzanie użytkownikiem",
+      "backToList": "Wróć do listy użytkowników",
+      "newEmail": "Nowy email",
+      "status": {
+        "blocked": "Zablokowany",
+        "active": "Aktywny"
+      },
+      "rolesTitle": "Zarządzanie rolami",
+      "roleAssigned": "Aktualnie przypisana",
+      "roleNotAssigned": "Nieprzypisana",
+      "addRole": "Przypisz",
+      "removeRole": "Usuń",
+      "securityTitle": "Bezpieczeństwo",
+      "blockingTitle": "Blokada konta",
+      "blockedDescription": "To konto jest zablokowane.",
+      "activeDescription": "To konto jest aktywne.",
+      "block": "Zablokuj",
+      "unlock": "Odblokuj",
+      "password": "Nowe hasło",
+      "passwordConfirm": "Potwierdź hasło",
+      "changePassword": "Zmień hasło",
+      "title": "Użytkownicy",
+      "blockTitle": "Blokada konta",
+      "newPassword": "Nowe hasło",
+      "confirmPassword": "Potwierdź hasło",
+      "subtitle": "Zarządzanie kontami, rolami i statusem dostępu.",
+      "loadError": "Nie udało się wczytać użytkowników.",
+      "blockAction": "Zablokuj konto",
+      "unblockAction": "Odblokuj konto"
+    }
+  }
+}

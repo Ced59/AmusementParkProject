@@ -1,0 +1,61 @@
+{
+  "admin": {
+    "seoSitemaps": {
+      "navTitle": "SEO e sitemaps",
+      "title": "SEO e sitemaps",
+      "subtitle": "Geração controlada do índice sitemap, visualização de secções e gestão IndexNow.",
+      "loading": "A carregar informações SEO...",
+      "loadError": "Não foi possível carregar informações SEO.",
+      "saveError": "Não foi possível guardar definições SEO.",
+      "generateError": "Não foi possível gerar os sitemaps.",
+      "empty": "Nenhuma informação SEO disponível.",
+      "actions": {
+        "generate": "Regenerar",
+        "generateWithoutIndexNow": "Gerar sem IndexNow",
+        "openSitemap": "Abrir"
+      },
+      "stats": {
+        "totalUrls": "URLs referenciados",
+        "sections": "Secções",
+        "lastGeneration": "Última geração",
+        "runtime": "Estado"
+      },
+      "lastResult": {
+        "title": "Último resultado"
+      },
+      "publicFiles": {
+        "title": "Ficheiros públicos",
+        "subtitle": "Acesso direto aos ficheiros expostos a crawlers e validadores."
+      },
+      "sections": {
+        "title": "Organização dos sitemaps",
+        "subtitle": "O índice sitemap referencia ficheiros separados por família de URLs.",
+        "file": "Ficheiro",
+        "urls": "URLs",
+        "lastModified": "Última alteração"
+      },
+      "settings": {
+        "title": "Definições IndexNow",
+        "subtitle": "IndexNow pode ser ativado, desativado e controlado pela administração.",
+        "indexNowEnabled": "Ativar IndexNow",
+        "submitManual": "Submeter após geração manual",
+        "submitAutomatic": "Submeter após geração automática",
+        "indexNowKey": "Chave IndexNow",
+        "indexNowKeyLocation": "Localização da chave",
+        "indexNowEndpoints": "Endpoints IndexNow"
+      },
+      "history": {
+        "title": "Histórico de geração",
+        "subtitle": "Regista gerações, volumes, erros e submissões IndexNow.",
+        "columns": {
+          "date": "Data",
+          "status": "Estado",
+          "urls": "URLs",
+          "duration": "Duração",
+          "indexNow": "IndexNow",
+          "actor": "Ator"
+        }
+      }
+    }
+  }
+}

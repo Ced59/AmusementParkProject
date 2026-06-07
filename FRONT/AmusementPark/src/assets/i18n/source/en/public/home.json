@@ -1,0 +1,91 @@
+{
+  "home": {
+    "home_title": "Find your perfect thrill",
+    "placeholder_search": "Search for a park, ride, hotel…",
+    "placeholder_category": "Type of search",
+    "no_results": "No results for",
+    "in_category": "in",
+    "categories": {
+      "park": "Park",
+      "attractions": "Attraction",
+      "everywhere": "Everywhere",
+      "parkItems": "Park items",
+      "operators": "Operator",
+      "manufacturers": "Manufacturer",
+      "attraction": "Attraction",
+      "restaurant": "Restaurant",
+      "hotel": "Hotel",
+      "animal": "Animal",
+      "show": "Show",
+      "shop": "Shop",
+      "service": "Service",
+      "transport": "Transport",
+      "other": "Other",
+      "founders": "Founder",
+      "parks": "Park"
+    },
+    "heroBadge": "Map of thrills",
+    "heroSubtitle": "Thousands of attractions listed across hundreds of parks worldwide. Your next rush is only one click away.",
+    "ctaBrowseParks": "Explore parks",
+    "ctaLearnMore": "How it works",
+    "featured": {
+      "title": "Featured parks",
+      "subtitle": "Our selection of must-see parks right now.",
+      "loadingTitle": "Loading featured parks",
+      "loadingMessage": "The highlighted parks are being loaded.",
+      "errorTitle": "Unable to load featured parks",
+      "errorMessage": "The featured parks could not be loaded.",
+      "emptyTitle": "No featured park",
+      "emptyMessage": "There is no park to highlight yet.",
+      "discover": "Discover",
+      "manualSelection": "Manual selection",
+      "sponsored": "Sponsored"
+    },
+    "search": {
+      "resultsTitle": "Search results",
+      "resultsSubtitle": "Public results matching your search, with direct access to available detail pages.",
+      "loadingTitle": "Searching",
+      "loadingMessage": "The search results are being loaded.",
+      "errorTitle": "Search failed",
+      "errorMessage": "The search results could not be loaded.",
+      "emptyTitle": "No result found",
+      "emptyMessage": "No public content matches your search.",
+      "hintTitle": "Start a search",
+      "hintMessage": "Search for a park or filter the catalog by category.",
+      "openResult": "Open",
+      "kicker": "Smart search",
+      "commandTitle": "Find the right park faster",
+      "commandSubtitle": "Browse parks, attractions and places, filter by what you want, then open the detail page that interests you.",
+      "attractionsLabel": "attractions"
+    },
+    "experience": {
+      "mapKicker": "Map view",
+      "mapTitle": "Explore parks visually",
+      "mapText": "Find destinations on the map, compare nearby parks and keep useful places within reach.",
+      "catalogKicker": "Discovery",
+      "catalogTitle": "Parks and attractions in one place",
+      "catalogText": "Move from a park to its attractions, photos and useful references without getting lost."
+    },
+    "heroTitleFind": "Find",
+    "heroTitleYour": "your",
+    "heroTitleThrill": "thrill",
+    "heroTitlePerfect": "perfect",
+    "stats": {
+      "ariaLabel": "Public catalog statistics",
+      "parks": "Listed parks",
+      "attractions": "Attractions",
+      "countries": "Countries covered",
+      "errorMessage": "Public statistics could not be loaded."
+    },
+    "heroCards": {
+      "ariaLabel": "Featured parks preview",
+      "featured": "Featured",
+      "sensations": "Thrills",
+      "family": "Family",
+      "locationFallback": "Destination to discover",
+      "placeholderTitle": "Catalog warming up",
+      "placeholderSubtitle": "Featured parks will appear here.",
+      "errorMessage": "Featured parks could not be loaded."
+    }
+  }
+}

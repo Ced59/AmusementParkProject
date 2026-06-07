@@ -1,0 +1,15 @@
+{
+  "admin": {
+    "bulk": {
+      "selected": "{{count}} seleccionado(s)",
+      "makeVisible": "Hacer visible",
+      "hide": "Ocultar",
+      "markReady": "Validar",
+      "processLater": "Tratar más tarde",
+      "clearSelection": "Limpiar selección",
+      "markToReview": "Marcar por revisar",
+      "markValidated": "Validar",
+      "markNotRelevant": "No pertinente"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Back-office entry point: choose a section from the left menu or from the shortcuts below.",
+      "shortcuts": {
+        "users": "Manage accounts, roles and access.",
+        "parks": "Filter, prioritize and publish parks.",
+        "parkItems": "Manage attractions, shops, restaurants and services.",
+        "operators": "Maintain the operators linked to parks.",
+        "manufacturers": "Maintain attraction manufacturers and builders.",
+        "images": "Review media, logos and site visuals.",
+        "data": "Monitor imports, sources and data processing.",
+        "founders": "Maintain founders and biographies linked to parks.",
+        "auditLogs": "Review logged sensitive administration actions.",
+        "localizedContent": "Quickly import localized texts through JSON after selecting a target.",
+        "parkGraphUpserts": "Preview then apply a full or partial park graph JSON.",
+        "seoSitemaps": "Manage the sitemap index, XML sections, stats and IndexNow."
+      }
+    }
+  }
+}

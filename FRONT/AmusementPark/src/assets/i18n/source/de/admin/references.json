@@ -1,0 +1,40 @@
+{
+  "admin": {
+    "references": {
+      "sections": {
+        "identity": "Identität",
+        "contact": "Optionale Kontaktdaten",
+        "content": "Redaktioneller Inhalt",
+        "administration": "Admin-Workflow"
+      },
+      "fields": {
+        "legalName": "Rechtlicher Name",
+        "foundedYear": "Gründungsjahr",
+        "closedYear": "Schließungsjahr",
+        "websiteUrl": "Webseite",
+        "email": "E-Mail",
+        "phoneNumber": "Telefon",
+        "street": "Straße",
+        "city": "Stadt",
+        "postalCode": "Postleitzahl",
+        "countryCode": "Ländercode",
+        "latitude": "Breitengrad",
+        "longitude": "Längengrad",
+        "occupation": "Tätigkeit / Rolle",
+        "birthDate": "Geburtsdatum",
+        "deathDate": "Sterbedatum",
+        "birthPlace": "Geburtsort",
+        "nationalityCountryCode": "Nationalität / Ländercode"
+      },
+      "images": {
+        "title": "Profilbilder",
+        "help": "Füge Porträts, Logos, Hauptsitzfotos, historische Dokumente oder Referenzbilder hinzu. Die öffentliche Anzeige bleibt bedingt.",
+        "add": "Bild hinzufügen",
+        "saveBeforeUpload": "Speichere dieses Profil, bevor du Bilder hinzufügst.",
+        "empty": "Noch ist kein Bild mit diesem Profil verknüpft.",
+        "untitled": "Referenzbild",
+        "uploadTitle": "Ein Bild zu diesem Profil hinzufügen"
+      }
+    }
+  }
+}

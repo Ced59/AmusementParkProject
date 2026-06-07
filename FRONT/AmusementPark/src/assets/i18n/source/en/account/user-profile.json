@@ -1,0 +1,40 @@
+{
+  "user-profile": {
+    "title": "User profile",
+    "name": "Last name",
+    "firstname": "First name",
+    "email": "Email",
+    "preferred_language": "Preferred language",
+    "modify": "Edit",
+    "avatar": {
+      "title": "Change avatar",
+      "choose": "Choose an avatar",
+      "upload": "Upload avatar",
+      "cancel": "Cancel",
+      "dragAndDrop": "Drag and drop your avatar here, or click to select an image.",
+      "selectedFile": "Selected file",
+      "invalidFile": "Please select a valid image file.",
+      "invalidSize": "The selected avatar is too large.",
+      "noImageSelected": "Please select an avatar before uploading.",
+      "uploading": "Uploading avatar...",
+      "updateSuccess": "Avatar updated successfully."
+    },
+    "identity": "Identity",
+    "save": "Save",
+    "cancel": "Cancel",
+    "saving": "Saving...",
+    "loadingTitle": "Loading profile",
+    "loadingMessage": "The user profile is being loaded.",
+    "errorTitle": "Unable to load profile",
+    "errorMessage": "The profile could not be loaded.",
+    "back": "Back",
+    "logout": "Log out",
+    "accountBadge": "Account",
+    "subtitle": "Update your public identity, avatar and preferred language.",
+    "detailsKicker": "Settings",
+    "detailsSubtitle": "Keep your personal information ready for future personalized features.",
+    "identityRequired": "First name and last name are required.",
+    "updateSuccess": "Profile updated successfully.",
+    "updateError": "Profile update failed."
+  }
+}

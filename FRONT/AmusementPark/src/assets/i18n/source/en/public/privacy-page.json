@@ -1,0 +1,76 @@
+{
+  "privacyPage": {
+    "kicker": "Personal data",
+    "title": "Privacy policy",
+    "lead": "This page explains how AmusementPark processes personal data, necessary cookies, Google OAuth authentication and Matomo audience measurement.",
+    "chips": {
+      "hosting": "Hosting in France",
+      "analytics": "Cookies and analytics",
+      "controller": "Controller: Cédric Caudron"
+    },
+    "consent": {
+      "kicker": "Cookie preferences",
+      "title": "Manage optional cookies",
+      "text": "Cookies that are necessary for operation and authentication may be used without consent. Here you can accept, refuse or show again the choice for optional audience measurement cookies.",
+      "currentStatus": "Current status:",
+      "statusAccepted": "optional cookies accepted.",
+      "statusRefused": "optional cookies refused.",
+      "statusUnset": "no saved choice.",
+      "accept": "Accept optional cookies",
+      "refuse": "Withdraw consent for optional cookies",
+      "reset": "Show banner again"
+    },
+    "sections": {
+      "controller": {
+        "title": "Data controller",
+        "body1": "The data controller is Cédric Caudron, publisher of the AmusementPark website.",
+        "body2": "For any personal-data request, you can use the contact methods published on cedric-caudron.com."
+      },
+      "data": {
+        "title": "Processed data",
+        "body1": "The website may process account data needed for the service: email address, provided first or last name, avatar, preferred language and profile settings.",
+        "body2": "Technical data may also be processed: IP address, date, viewed URL, browser, error logs and security information strictly useful for operation."
+      },
+      "purposes": {
+        "title": "Purposes and legal bases",
+        "body1": "Data is used to provide website features, secure access, manage accounts, display public content and administer the project.",
+        "body2": "Processing required for operation relies on service performance or legitimate interest. Optional Matomo audience measurement cookies rely on your consent unless a strictly exempt configuration is later implemented."
+      },
+      "analytics": {
+        "title": "Matomo audience measurement",
+        "body1": "The website uses a self-hosted Matomo instance available at matomo.cedric-caudron.com with site ID 4.",
+        "body2": "Matomo may measure visited pages, navigation sequences, traffic sources, device type and technical browser information.",
+        "body3": "No third-party advertising tracking is added by this integration. Profile-related journeys may be measured only after optional-cookie consent, without sending private profile content as analytics events."
+      },
+      "cookies": {
+        "title": "Cookies and local storage",
+        "body1": "Strictly necessary cookies or storage may be used for session, security, language, theme, interface preferences and proper authentication behavior.",
+        "body2": "These necessary trackers may include session/API cookies, HTTP-only authentication cookies, anti-abuse mechanisms and locally stored preferences. They cannot be disabled from the banner because they condition the requested service.",
+        "body3": "The optional-cookie choice is stored in browser local storage so the same choice is not requested on every page."
+      },
+      "hosting": {
+        "title": "Hosting and processors",
+        "body1": "The website is intended to be hosted on a server located in France via Hostinger. Project technical services, including MongoDB, MinIO and Matomo, may run on this VPS.",
+        "body2": "Data is not sold to advertisers. It may be processed by technical providers strictly required for hosting, security and operation."
+      },
+      "retention": {
+        "title": "Retention periods",
+        "body1": "Accounts are kept while the account exists or while a limited security obligation requires retention.",
+        "body2": "Technical logs are kept for a period proportionate to security and diagnostics. Matomo data must be configured with a limited period and reviewed regularly."
+      },
+      "rights": {
+        "title": "Your rights",
+        "body1": "You can request access, rectification, erasure, restriction or objection for applicable processing of your data.",
+        "body2": "You can also withdraw analytics consent on this page and, if needed, lodge a complaint with the CNIL."
+      },
+      "thirdPartyCookies": {
+        "title": "Third-party cookies and Google authentication",
+        "body1": "The website offers Google OAuth / Sign in with Google. When you use this method, Google may place or read its own cookies and similar technologies for authentication, security, fraud prevention and session maintenance.",
+        "body2": "These third-party trackers are necessary for the Google authentication requested by the user and are not controlled by the website’s Matomo/analytics consent.",
+        "body3": "Refusing AmusementPark optional cookies does not block authentication. However, a browser that blocks some third-party cookies may prevent or degrade Google sign-in."
+      }
+    },
+    "lastUpdate": "Last updated: 23 May 2026.",
+    "backHome": "Back home"
+  }
+}

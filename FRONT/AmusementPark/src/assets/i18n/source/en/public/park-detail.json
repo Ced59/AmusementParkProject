@@ -1,0 +1,11 @@
+{
+  "parkDetail": {
+    "descriptionTitle": "Description",
+    "subtitle": "Detailed information about this park and its geographic location.",
+    "exploreButton": "Explore the park",
+    "countryCode": "Country code",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "loading": "Loading park..."
+  }
+}

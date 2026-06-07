@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "dashboard": {
+      "title": "Panel",
+      "subtitle": "Punto de entrada del back-office: elige una sección en el menú izquierdo o en los accesos directos.",
+      "shortcuts": {
+        "users": "Gestionar cuentas, roles y accesos.",
+        "parks": "Filtrar, priorizar y publicar parques.",
+        "parkItems": "Administrar atracciones, tiendas, restaurantes y servicios.",
+        "operators": "Mantener los operadores asociados a los parques.",
+        "manufacturers": "Mantener constructores y fabricantes de atracciones.",
+        "images": "Revisar medios, logotipos y visuales del sitio.",
+        "data": "Supervisar importaciones, fuentes y procesos de datos.",
+        "founders": "Mantener fundadores y biografías vinculados a los parques.",
+        "auditLogs": "Revisar acciones administrativas sensibles registradas.",
+        "localizedContent": "Importar rápidamente textos localizados mediante JSON tras seleccionar un destino.",
+        "parkGraphUpserts": "Previsualizar y aplicar un JSON completo o parcial de parque.",
+        "seoSitemaps": "Gestionar el índice sitemap, secciones XML, estadísticas e IndexNow."
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "admin": {
+    "localizedContent": {
+      "navTitle": "JSON-imports",
+      "kicker": "JSON-import",
+      "title": "Entiteit-JSON importeren",
+      "subtitle": "Kies een bestaande entiteit en pas een gedeeltelijke of volledige JSON toe op de ondersteunde velden.",
+      "selection": {
+        "title": "1. Doel kiezen",
+        "description": "De selectie gebruikt leesbare zoekresultaten zodat je geen entiteit alleen via een technische ID wijzigt.",
+        "entityType": "Entiteitstype",
+        "search": "Zoeken",
+        "searchPlaceholder": "Parknaam, attractie, zone, fabrikant…",
+        "searchButton": "Zoeken",
+        "searching": "Zoeken…",
+        "empty": "Start een zoekopdracht om beschikbare doelen te tonen."
+      },
+      "editor": {
+        "title": "2. JSON plakken",
+        "description": "De JSON wordt door de API gevalideerd en via de Application-laag toegepast.",
+        "resetExample": "Voorbeeld herstellen",
+        "selected": "Geselecteerd doel",
+        "noTarget": "Geen doel geselecteerd.",
+        "jsonLabel": "Gelokaliseerde JSON",
+        "apply": "JSON toepassen",
+        "applying": "Toepassen…"
+      },
+      "help": {
+        "title": "Geaccepteerd formaat",
+        "merge": "Standaard worden aangeleverde talen samengevoegd met bestaande waarden: andere talen blijven behouden.",
+        "replace": "Voeg \"replaceExisting\": true of \"mode\": \"replace\" toe om het gelokaliseerde veld volledig te vervangen.",
+        "fields": "Ondersteunde velden: descriptions, names, description, biography, altTexts, captions, credits, labels afhankelijk van het gekozen type.",
+        "accessConditions": "Voor een parkitem van het type attractie kan accessConditions voorwaarden maken of bijwerken: type, impliciete customTypeKey voor een onbekend type, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label en description."
+      },
+      "messages": {
+        "searchError": "Gelokaliseerde doelen konden niet worden geladen.",
+        "selectTargetFirst": "Selecteer eerst een doel.",
+        "invalidJson": "De ingevoerde JSON is ongeldig.",
+        "applySuccess": "Gelokaliseerde JSON succesvol toegepast.",
+        "applyNoField": "Er is geen gelokaliseerd veld bijgewerkt.",
+        "applyError": "Gelokaliseerde JSON kon niet worden toegepast."
+      },
+      "entityTypes": {
+        "park": "Park",
+        "parkZone": "Parkzone",
+        "parkItem": "Parkelement",
+        "parkOperator": "Operator",
+        "parkFounder": "Oprichter",
+        "attractionManufacturer": "Fabrikant",
+        "image": "Afbeelding",
+        "imageTag": "Afbeeldingstag",
+        "accessConditionType": "Type toegangsvoorwaarde"
+      },
+      "entityHints": {
+        "park": "Gelokaliseerde parkbeschrijving.",
+        "parkZone": "Gelokaliseerde zonenaam en beschrijving.",
+        "parkItem": "Gelokaliseerde elementbeschrijving, met toegangsvoorwaarden bij attracties.",
+        "parkOperator": "Gelokaliseerde operatorbeschrijving.",
+        "parkFounder": "Gelokaliseerde biografie van de oprichter.",
+        "attractionManufacturer": "Gelokaliseerde biografie van de fabrikant.",
+        "image": "Gelokaliseerde alt-teksten, bijschriften en credits.",
+        "imageTag": "Gelokaliseerde taglabels en beschrijvingen.",
+        "accessConditionType": "Herbruikbare catalogus van types toegangsvoorwaarden."
+      }
+    }
+  }
+}

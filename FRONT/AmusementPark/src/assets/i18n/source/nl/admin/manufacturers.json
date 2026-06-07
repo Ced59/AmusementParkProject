@@ -1,0 +1,24 @@
+{
+  "admin": {
+    "manufacturers": {
+      "total": "Fabrikanten: {{count}}",
+      "searchPlaceholder": "Fabrikant zoeken",
+      "create": "Fabrikant aanmaken",
+      "name": "Naam",
+      "attractionCount": "Gekoppelde attracties",
+      "actions": "Acties",
+      "edit": "Bewerken",
+      "empty": "Geen manufacturer found.",
+      "editPage": {
+        "createTitle": "Fabrikant aanmaken",
+        "updateTitle": "Fabrikant bewerken",
+        "name": "Naam",
+        "biography": "Biografie"
+      },
+      "title": "Constructeurs",
+      "subtitle": "Referentielijst van bouwers voor attracties.",
+      "reviewStatus": "Adminstatus",
+      "loadError": "Fabrikanten konden niet worden geladen."
+    }
+  }
+}

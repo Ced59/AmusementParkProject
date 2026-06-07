@@ -1,0 +1,35 @@
+{
+  "admin": {
+    "auditLogs": {
+      "title": "Registro de auditoría",
+      "subtitle": "Vista de solo lectura de acciones sensibles de administración.",
+      "total": "{{count}} registros",
+      "loading": "Cargando registro de auditoría...",
+      "loadError": "No se pudo cargar el registro de auditoría.",
+      "empty": "Ningún registro coincide con los filtros.",
+      "filters": {
+        "fromUtc": "Desde",
+        "toUtc": "Hasta",
+        "actorEmail": "Email del actor",
+        "action": "Acción",
+        "entityType": "Tipo de entidad",
+        "entityId": "ID de entidad",
+        "traceId": "Trace ID",
+        "actorUserId": "ID del actor"
+      },
+      "columns": {
+        "date": "Fecha",
+        "actor": "Actor",
+        "action": "Acción",
+        "entity": "Entidad",
+        "request": "Solicitud",
+        "status": "Estado",
+        "traceId": "Trace ID",
+        "metadata": "Metadatos"
+      },
+      "metadata": {
+        "show": "Ver"
+      }
+    }
+  }
+}

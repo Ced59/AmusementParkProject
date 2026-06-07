@@ -1,0 +1,91 @@
+{
+  "home": {
+    "home_title": "Trova il brivido perfetto",
+    "placeholder_search": "Cerca un parco, un'attrazione, un hotel…",
+    "placeholder_category": "Tipo di ricerca",
+    "no_results": "Nessun risultato per",
+    "in_category": "in",
+    "categories": {
+      "park": "Parco",
+      "attractions": "Attrazione",
+      "everywhere": "Ovunque",
+      "parkItems": "Elementi",
+      "operators": "Operatore",
+      "manufacturers": "Costruttore",
+      "attraction": "Attrazione",
+      "restaurant": "Ristorante",
+      "hotel": "Hotel",
+      "animal": "Animale",
+      "show": "Spettacolo",
+      "shop": "Negozio",
+      "service": "Servizio",
+      "transport": "Trasporto",
+      "other": "Altro",
+      "founders": "Fondatore",
+      "parks": "Parco"
+    },
+    "heroBadge": "Mappa delle emozioni",
+    "heroSubtitle": "Migliaia di attrazioni censite in centinaia di parchi nel mondo. La tua prossima scarica di adrenalina è a un clic.",
+    "ctaBrowseParks": "Esplora i parchi",
+    "ctaLearnMore": "Come funziona",
+    "featured": {
+      "title": "Parchi in evidenza",
+      "subtitle": "La nostra selezione dei parchi imperdibili del momento.",
+      "loadingTitle": "Caricamento dei parchi in evidenza",
+      "loadingMessage": "I parchi in evidenza sono in caricamento.",
+      "errorTitle": "Impossibile caricare i parchi in evidenza",
+      "errorMessage": "Non è stato possibile caricare i parchi in evidenza.",
+      "emptyTitle": "Nessun parco in evidenza",
+      "emptyMessage": "Non c’è ancora nessun parco da mettere in evidenza.",
+      "discover": "Scopri",
+      "manualSelection": "Selezione manuale",
+      "sponsored": "Sponsorizzato"
+    },
+    "search": {
+      "resultsTitle": "Risultati della ricerca",
+      "resultsSubtitle": "Risultati pubblici corrispondenti alla ricerca, con accesso diretto alle schede disponibili.",
+      "loadingTitle": "Ricerca in corso",
+      "loadingMessage": "I risultati della ricerca sono in caricamento.",
+      "errorTitle": "Ricerca non riuscita",
+      "errorMessage": "Non è stato possibile caricare i risultati della ricerca.",
+      "emptyTitle": "Nessun risultato trovato",
+      "emptyMessage": "Nessun contenuto pubblico corrisponde alla tua ricerca.",
+      "hintTitle": "Avvia una ricerca",
+      "hintMessage": "Cerca un parco o filtra il catalogo per categoria.",
+      "openResult": "Apri",
+      "kicker": "Ricerca intelligente",
+      "commandTitle": "Trova il parco giusto più velocemente",
+      "commandSubtitle": "Esplora parchi, attrazioni e luoghi, filtra in base a ciò che cerchi e apri la scheda che ti interessa.",
+      "attractionsLabel": "attrazioni"
+    },
+    "experience": {
+      "mapKicker": "Vista mappa",
+      "mapTitle": "Esplora i parchi in modo visivo",
+      "mapText": "Trova destinazioni sulla mappa, confronta i parchi vicini e tieni a portata di mano i luoghi utili.",
+      "catalogKicker": "Scoperta",
+      "catalogTitle": "Parchi e attrazioni in un solo posto",
+      "catalogText": "Passa da un parco alle sue attrazioni, foto e riferimenti utili senza perderti."
+    },
+    "heroTitleFind": "Trova",
+    "heroTitleYour": "il tuo",
+    "heroTitleThrill": "brivido",
+    "heroTitlePerfect": "perfetto",
+    "stats": {
+      "ariaLabel": "Statistiche del catalogo pubblico",
+      "parks": "Parchi censiti",
+      "attractions": "Attrazioni",
+      "countries": "Paesi coperti",
+      "errorMessage": "Impossibile caricare le statistiche pubbliche."
+    },
+    "heroCards": {
+      "ariaLabel": "Anteprima dei parchi in evidenza",
+      "featured": "Selezione",
+      "sensations": "Emozioni",
+      "family": "Famiglia",
+      "locationFallback": "Destinazione da scoprire",
+      "placeholderTitle": "Catalogo in preparazione",
+      "placeholderSubtitle": "I parchi in evidenza appariranno qui.",
+      "errorMessage": "Impossibile caricare i parchi in evidenza."
+    }
+  }
+}

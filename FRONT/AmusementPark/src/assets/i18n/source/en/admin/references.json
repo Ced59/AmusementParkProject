@@ -1,0 +1,40 @@
+{
+  "admin": {
+    "references": {
+      "sections": {
+        "identity": "Identity",
+        "contact": "Optional contact details",
+        "content": "Editorial content",
+        "administration": "Admin workflow"
+      },
+      "fields": {
+        "legalName": "Legal name",
+        "foundedYear": "Founded year",
+        "closedYear": "Closed year",
+        "websiteUrl": "Website",
+        "email": "Email",
+        "phoneNumber": "Phone",
+        "street": "Street",
+        "city": "City",
+        "postalCode": "Postal code",
+        "countryCode": "Country code",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "occupation": "Occupation / role",
+        "birthDate": "Birth date",
+        "deathDate": "Death date",
+        "birthPlace": "Birth place",
+        "nationalityCountryCode": "Nationality / country code"
+      },
+      "images": {
+        "title": "Profile images",
+        "help": "Add portraits, logos, headquarters photos, historical documents or reference visuals. Public display remains conditional.",
+        "add": "Add image",
+        "saveBeforeUpload": "Save this profile before adding images.",
+        "empty": "No image is linked to this profile yet.",
+        "untitled": "Reference image",
+        "uploadTitle": "Add an image to this profile"
+      }
+    }
+  }
+}

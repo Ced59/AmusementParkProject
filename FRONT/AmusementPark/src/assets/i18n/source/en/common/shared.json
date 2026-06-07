@@ -1,0 +1,18 @@
+{
+  "shared": {
+    "imageUpload": {
+      "title": "Upload an image",
+      "choose": "Choose an image",
+      "upload": "Upload",
+      "cancel": "Cancel",
+      "dragAndDrop": "Drag and drop an image here, or click to select one.",
+      "selectedFile": "Selected file",
+      "invalidFile": "Please select a valid image file.",
+      "invalidSize": "The selected image is too large.",
+      "noImageSelected": "Please select an image before uploading.",
+      "uploading": "Uploading...",
+      "uploadError": "An error occurred while uploading the image.",
+      "descriptionPlaceholder": "Description"
+    }
+  }
+}

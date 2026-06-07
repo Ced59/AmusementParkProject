@@ -1,0 +1,91 @@
+{
+  "home": {
+    "home_title": "Vind je perfecte sensatie",
+    "placeholder_search": "Zoek een park, attractie, hotel…",
+    "placeholder_category": "Soort zoekopdracht",
+    "no_results": "Geen resultaten voor",
+    "in_category": "in",
+    "categories": {
+      "park": "Park",
+      "attractions": "Attractie",
+      "everywhere": "Overal",
+      "parkItems": "Parkitems",
+      "operators": "Exploitant",
+      "manufacturers": "Fabrikant",
+      "attraction": "Attractie",
+      "restaurant": "Restaurant",
+      "hotel": "Hotel",
+      "animal": "Dier",
+      "show": "Show",
+      "shop": "Winkel",
+      "service": "Service",
+      "transport": "Vervoer",
+      "other": "Overig",
+      "founders": "Oprichter",
+      "parks": "Park"
+    },
+    "heroBadge": "Kaart van sensaties",
+    "heroSubtitle": "Duizenden attracties in honderden parken wereldwijd. Je volgende adrenalinekick is maar één klik weg.",
+    "ctaBrowseParks": "Parken verkennen",
+    "ctaLearnMore": "Hoe het werkt",
+    "featured": {
+      "title": "Uitgelichte parken",
+      "subtitle": "Onze selectie van niet te missen parken van dit moment.",
+      "loadingTitle": "Uitgelichte parken laden",
+      "loadingMessage": "De uitgelichte parken worden geladen.",
+      "errorTitle": "Kan uitgelichte parken niet laden",
+      "errorMessage": "De uitgelichte parken konden niet worden geladen.",
+      "emptyTitle": "Geen uitgelicht park",
+      "emptyMessage": "Er is nog geen park om uit te lichten.",
+      "discover": "Ontdekken",
+      "manualSelection": "Handmatige selectie",
+      "sponsored": "Gesponsord"
+    },
+    "search": {
+      "resultsTitle": "Zoekresultaten",
+      "resultsSubtitle": "Publieke resultaten die overeenkomen met je zoekopdracht, met directe toegang tot beschikbare detailpagina’s.",
+      "loadingTitle": "Zoeken",
+      "loadingMessage": "De zoekresultaten worden geladen.",
+      "errorTitle": "Zoeken mislukt",
+      "errorMessage": "De zoekresultaten konden niet worden geladen.",
+      "emptyTitle": "Geen resultaat gevonden",
+      "emptyMessage": "Geen openbare inhoud komt overeen met je zoekopdracht.",
+      "hintTitle": "Start een zoekopdracht",
+      "hintMessage": "Zoek een park of filter de catalogus op categorie.",
+      "openResult": "Openen",
+      "kicker": "Slim zoeken",
+      "commandTitle": "Vind sneller het juiste park",
+      "commandSubtitle": "Verken parken, attracties en plekken, filter op wat je zoekt en open de detailpagina die je interesseert.",
+      "attractionsLabel": "attracties"
+    },
+    "experience": {
+      "mapKicker": "Kaartweergave",
+      "mapTitle": "Verken parken visueel",
+      "mapText": "Vind bestemmingen op de kaart, vergelijk nabijgelegen parken en houd nuttige plekken binnen handbereik.",
+      "catalogKicker": "Ontdekking",
+      "catalogTitle": "Parken en attracties op één plek",
+      "catalogText": "Ga van een park naar zijn attracties, foto’s en nuttige informatie zonder de weg kwijt te raken."
+    },
+    "heroTitleFind": "Vind",
+    "heroTitleYour": "jouw",
+    "heroTitleThrill": "sensatie",
+    "heroTitlePerfect": "perfecte",
+    "stats": {
+      "ariaLabel": "Statistieken van de publieke catalogus",
+      "parks": "Geregistreerde parken",
+      "attractions": "Attracties",
+      "countries": "Landen gedekt",
+      "errorMessage": "De publieke statistieken konden niet worden geladen."
+    },
+    "heroCards": {
+      "ariaLabel": "Voorbeeld van uitgelichte parken",
+      "featured": "Selectie",
+      "sensations": "Sensaties",
+      "family": "Familie",
+      "locationFallback": "Bestemming om te ontdekken",
+      "placeholderTitle": "Catalogus in voorbereiding",
+      "placeholderSubtitle": "Uitgelichte parken verschijnen hier.",
+      "errorMessage": "De uitgelichte parken konden niet worden geladen."
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "home": {
+    "home_title": "Trouve ton frisson parfait",
+    "placeholder_search": "Rechercher un parc, une attraction, un hôtel…",
+    "placeholder_category": "Type de recherche",
+    "no_results": "Aucun résultat pour",
+    "in_category": "dans",
+    "categories": {
+      "park": "Parc",
+      "attractions": "Attraction",
+      "everywhere": "Partout",
+      "parkItems": "Éléments",
+      "operators": "Exploitant",
+      "manufacturers": "Constructeur",
+      "attraction": "Attraction",
+      "restaurant": "Restaurant",
+      "hotel": "Hôtel",
+      "animal": "Animal",
+      "show": "Spectacle",
+      "shop": "Boutique",
+      "service": "Service",
+      "transport": "Transport",
+      "other": "Autre",
+      "founders": "Fondateur",
+      "parks": "Parc"
+    },
+    "heroBadge": "Cartographie des sensations",
+    "heroSubtitle": "Des milliers d'attractions recensées dans des centaines de parcs à travers le monde. Ton prochain vertige est à portée de clic.",
+    "ctaBrowseParks": "Explorer les parcs",
+    "ctaLearnMore": "Comment ça marche",
+    "featured": {
+      "title": "Parcs mis en avant",
+      "subtitle": "Notre sélection des parcs incontournables du moment.",
+      "loadingTitle": "Chargement des parcs",
+      "loadingMessage": "Les parcs mis en avant sont en cours de chargement.",
+      "errorTitle": "Impossible de charger les parcs",
+      "errorMessage": "Les parcs mis en avant n’ont pas pu être chargés.",
+      "emptyTitle": "Aucun parc mis en avant",
+      "emptyMessage": "Aucun parc n’est encore disponible à mettre en avant.",
+      "discover": "Découvrir",
+      "manualSelection": "Sélection manuelle",
+      "sponsored": "Sponsorisé"
+    },
+    "search": {
+      "resultsTitle": "Résultats de recherche",
+      "resultsSubtitle": "Résultats publics correspondant à ta recherche, avec accès direct aux fiches disponibles.",
+      "loadingTitle": "Recherche en cours",
+      "loadingMessage": "Les résultats de recherche sont en cours de chargement.",
+      "errorTitle": "Échec de la recherche",
+      "errorMessage": "Les résultats de recherche n’ont pas pu être chargés.",
+      "emptyTitle": "Aucun résultat trouvé",
+      "emptyMessage": "Aucun contenu public ne correspond à votre recherche.",
+      "hintTitle": "Commence une recherche",
+      "hintMessage": "Recherche un parc ou filtre le catalogue par catégorie.",
+      "openResult": "Ouvrir",
+      "kicker": "Recherche intelligente",
+      "commandTitle": "Trouver le bon parc plus vite",
+      "commandSubtitle": "Parcours les parcs, attractions et lieux disponibles, filtre selon tes envies, puis ouvre la fiche qui t’intéresse.",
+      "attractionsLabel": "attractions"
+    },
+    "experience": {
+      "mapKicker": "Vue carte",
+      "mapTitle": "Explore les parcs visuellement",
+      "mapText": "Repère les destinations sur la carte, compare les parcs proches et garde les lieux utiles à portée de main.",
+      "catalogKicker": "Découverte",
+      "catalogTitle": "Parcs et attractions au même endroit",
+      "catalogText": "Passe d’un parc à ses attractions, photos et références utiles sans te perdre."
+    },
+    "heroTitleFind": "Trouve",
+    "heroTitleYour": "ton",
+    "heroTitleThrill": "frisson",
+    "heroTitlePerfect": "parfait",
+    "stats": {
+      "ariaLabel": "Statistiques du catalogue public",
+      "parks": "Parcs référencés",
+      "attractions": "Attractions",
+      "countries": "Pays couverts",
+      "errorMessage": "Les statistiques publiques n’ont pas pu être chargées."
+    },
+    "heroCards": {
+      "ariaLabel": "Aperçu des parcs mis en avant",
+      "featured": "Sélection",
+      "sensations": "Sensations",
+      "family": "Famille",
+      "locationFallback": "Destination à découvrir",
+      "placeholderTitle": "Catalogue en préparation",
+      "placeholderSubtitle": "Les parcs mis en avant apparaîtront ici.",
+      "errorMessage": "Impossible de charger les parcs mis en avant."
+    }
+  }
+}
