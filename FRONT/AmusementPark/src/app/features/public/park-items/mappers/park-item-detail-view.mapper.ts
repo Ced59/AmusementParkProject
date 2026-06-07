@@ -57,7 +57,7 @@ export function mapParkItemToDetailViewModel(
   const locationPoints: ParkItemLocationPointViewModel[] = buildLocationPoints(item, currentLanguage);
   const specGroups: ParkItemDetailSpecGroupViewModel[] = buildSpecGroups(technicalRows, performanceRows, experienceRows);
   if (locationPoints.length === 0) {
-    specGroups.push(buildNoGeolocationSpecGroup());
+    specGroups.push(buildNoGeolocationSpecGroup(currentLanguage));
   }
 
   const hasPreciseLocations: boolean = locationPoints.some((point: ParkItemLocationPointViewModel) => !point.isGeneralFallback);
@@ -101,14 +101,13 @@ export function mapParkItemToDetailViewModel(
   };
 }
 
-function buildNoGeolocationSpecGroup(): ParkItemDetailSpecGroupViewModel {
+function buildNoGeolocationSpecGroup(currentLanguage: string): ParkItemDetailSpecGroupViewModel {
   return {
     titleKey: 'parkItems.detail.locationTitle',
     iconClass: 'pi pi-map-marker',
     rows: [{
       labelKey: 'parkItems.fields.coordinates',
-      value: '',
-      valueKey: 'parkItems.detail.noGeolocationMessage',
+      value: currentLanguage === 'fr' ? 'Pas de géolocalisation pour cet élément' : 'No geolocation is available for this item.',
       iconClass: 'pi pi-map-marker',
       isTextualValue: true
     }]
