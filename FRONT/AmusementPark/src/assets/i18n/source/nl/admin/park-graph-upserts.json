@@ -5,6 +5,16 @@
       "title": "Park JSON-upsert",
       "kicker": "Gestructureerde import · Admin",
       "subtitle": "Plak een volledige of gedeeltelijke park-JSON, bekijk de wijzigingen en pas ze toe zonder ontbrekende velden te overschrijven.",
+      "wizard": {
+        "label": "Graph upsert wizard",
+        "steps": {
+          "target": "Park",
+          "mode": "Modus",
+          "graph": "Graph",
+          "preview": "Preview",
+          "expert": "Expert JSON"
+        }
+      },
       "target": {
         "title": "Doelpark",
         "description": "Selecteer voor updates altijd het bestaande park zodat de echte technische id wordt gebruikt.",
@@ -19,10 +29,38 @@
         "title": "JSON-document",
         "description": "Ontbrekende eigenschappen blijven behouden. Zones/items-lijsten upserten alleen aanwezige elementen."
       },
+      "mode": {
+        "title": "Upsert-modus",
+        "description": "Kies hoe de graph bestaande collecties behandelt voor de preview.",
+        "merge": {
+          "title": "Samenvoegen",
+          "description": "Behoud ontbrekende collecties en upsert alleen entiteiten in de graph."
+        },
+        "replaceCollections": {
+          "title": "Collecties vervangen",
+          "description": "Sta gecontroleerde vervanging toe voor collecties die deze graph beheert."
+        }
+      },
+      "graph": {
+        "title": "Graph-overzicht",
+        "description": "Controleer de graph-structuur voor de preview.",
+        "identity": "Identiteit",
+        "country": "Land",
+        "zones": "Zones",
+        "items": "Items",
+        "images": "Afbeeldingen",
+        "references": "Referenties",
+        "empty": "Niet ingevuld",
+        "invalidJson": "Het JSON-document is ongeldig. Open Expert JSON om dit te herstellen."
+      },
       "actions": {
         "search": "Zoeken",
         "searching": "Zoeken…",
         "clear": "Wissen",
+        "back": "Terug",
+        "next": "Volgende",
+        "expert": "Expert JSON",
+        "graph": "Graph-overzicht",
         "preview": "Voorbeeld",
         "previewing": "Voorbeeld…",
         "apply": "Toepassen",
@@ -43,6 +81,7 @@
         "updated": "Gewijzigd",
         "warnings": "Waarschuwingen",
         "errors": "Fouten",
+        "pending": "Voer een preview uit om wijzigingen te controleren voor toepassing.",
         "applied": "Upsert succesvol toegepast.",
         "field": "Veld",
         "oldValue": "Oud",

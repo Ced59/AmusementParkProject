@@ -353,6 +353,16 @@
       "title": "Upsert JSON de parque",
       "kicker": "Importación estructurada · Admin",
       "subtitle": "Pega un JSON completo o parcial de parque, previsualiza los cambios y aplícalos sin sobrescribir los campos ausentes.",
+      "wizard": {
+        "label": "Asistente Graph Upsert",
+        "steps": {
+          "target": "Parque",
+          "mode": "Modo",
+          "graph": "Graph",
+          "preview": "Preview",
+          "expert": "JSON experto"
+        }
+      },
       "target": {
         "title": "Parque objetivo",
         "description": "Para actualizar, selecciona siempre el parque existente para usar su id real.",
@@ -367,10 +377,38 @@
         "title": "Documento JSON",
         "description": "Las propiedades ausentes se conservan. Las listas de zonas/items hacen upsert solo de sus elementos."
       },
+      "mode": {
+        "title": "Modo upsert",
+        "description": "Elige como debe tratar el graph las colecciones existentes antes de la preview.",
+        "merge": {
+          "title": "Fusionar",
+          "description": "Conserva colecciones ausentes y actualiza solo entidades presentes en el graph."
+        },
+        "replaceCollections": {
+          "title": "Reemplazar colecciones",
+          "description": "Permite reemplazo controlado para colecciones gestionadas por este graph."
+        }
+      },
+      "graph": {
+        "title": "Vista graph",
+        "description": "Revisa la estructura del graph antes de la preview.",
+        "identity": "Identidad",
+        "country": "Pais",
+        "zones": "Zonas",
+        "items": "Items",
+        "images": "Imagenes",
+        "references": "Referencias",
+        "empty": "No indicado",
+        "invalidJson": "El documento JSON no es valido. Abre JSON experto para corregirlo."
+      },
       "actions": {
         "search": "Buscar",
         "searching": "Buscando…",
         "clear": "Quitar",
+        "back": "Volver",
+        "next": "Siguiente",
+        "expert": "JSON experto",
+        "graph": "Vista graph",
         "preview": "Previsualizar",
         "previewing": "Previsualizando…",
         "apply": "Aplicar",
@@ -391,6 +429,7 @@
         "updated": "Modificados",
         "warnings": "Avisos",
         "errors": "Errores",
+        "pending": "Ejecuta una preview para revisar los cambios antes de aplicar.",
         "applied": "Upsert aplicado correctamente.",
         "field": "Campo",
         "oldValue": "Anterior",

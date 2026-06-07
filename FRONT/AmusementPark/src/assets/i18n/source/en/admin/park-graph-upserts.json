@@ -5,6 +5,16 @@
       "title": "Park JSON upsert",
       "kicker": "Structured import · Admin",
       "subtitle": "Paste a full or partial park JSON, preview the changes, then apply them without overwriting absent fields.",
+      "wizard": {
+        "label": "Graph upsert wizard",
+        "steps": {
+          "target": "Target",
+          "mode": "Mode",
+          "graph": "Graph",
+          "preview": "Preview",
+          "expert": "Expert JSON"
+        }
+      },
       "target": {
         "title": "Target park",
         "description": "For updates, always select the existing park so the real technical id is used.",
@@ -19,10 +29,38 @@
         "title": "JSON document",
         "description": "Absent properties are preserved. Zones/items arrays upsert only the elements they contain."
       },
+      "mode": {
+        "title": "Upsert mode",
+        "description": "Choose how the graph should treat existing collections before preview.",
+        "merge": {
+          "title": "Merge",
+          "description": "Keep absent collections untouched and upsert only entities present in the graph."
+        },
+        "replaceCollections": {
+          "title": "Replace collections",
+          "description": "Allow controlled replacement behavior for collections managed by this graph."
+        }
+      },
+      "graph": {
+        "title": "Graph overview",
+        "description": "Review the graph structure before preview.",
+        "identity": "Identity",
+        "country": "Country",
+        "zones": "Zones",
+        "items": "Items",
+        "images": "Images",
+        "references": "References",
+        "empty": "Not provided",
+        "invalidJson": "The JSON document is invalid. Open Expert JSON to fix it."
+      },
       "actions": {
         "search": "Search",
         "searching": "Searching…",
         "clear": "Clear",
+        "back": "Back",
+        "next": "Next",
+        "expert": "Expert JSON",
+        "graph": "Graph overview",
         "preview": "Preview",
         "previewing": "Previewing…",
         "apply": "Apply",
@@ -43,6 +81,7 @@
         "updated": "Updated",
         "warnings": "Warnings",
         "errors": "Errors",
+        "pending": "Run a preview to inspect changes before applying.",
         "applied": "Upsert applied successfully.",
         "field": "Field",
         "oldValue": "Old",
