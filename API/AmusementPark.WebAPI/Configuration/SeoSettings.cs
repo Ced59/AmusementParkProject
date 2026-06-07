@@ -27,8 +27,6 @@ public sealed class SeoSettings
         "pt",
     };
 
-    public int MaxDynamicUrlsPerType { get; set; } = 5000;
-
     public List<string> RobotsDisallowPaths { get; set; } = new()
     {
         "/api/",
