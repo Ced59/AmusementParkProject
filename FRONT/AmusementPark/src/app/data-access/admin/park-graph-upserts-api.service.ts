@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
+import { ParkGraphUpsertHistoryEntry, ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +26,15 @@ export class ParkGraphUpsertsApiService {
   apply(request: ParkGraphUpsertRequest): Observable<ParkGraphUpsertResult> {
     const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/apply`;
     return this.http.post<ParkGraphUpsertResult>(url, request, this.jsonHttpOptions);
+  }
+
+  getHistory(targetParkId: string | null, limit: number): Observable<ParkGraphUpsertHistoryEntry[]> {
+    const params: string[] = [`limit=${encodeURIComponent(limit)}`];
+    if (targetParkId) {
+      params.push(`targetParkId=${encodeURIComponent(targetParkId)}`);
+    }
+
+    const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/history?${params.join('&')}`;
+    return this.http.get<ParkGraphUpsertHistoryEntry[]>(url);
   }
 }

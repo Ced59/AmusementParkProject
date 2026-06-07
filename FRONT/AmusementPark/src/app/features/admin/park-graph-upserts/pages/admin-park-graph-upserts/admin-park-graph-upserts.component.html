@@ -28,6 +28,15 @@
       <span class="pi pi-code" aria-hidden="true"></span>
       <strong>{{ 'admin.parkGraphUpserts.wizard.steps.expert' | translate }}</strong>
     </button>
+
+    <button
+      type="button"
+      class="graph-wizard__step graph-wizard__step--expert"
+      [class.active]="activeWorkspaceTab === 'history'"
+      (click)="selectWorkspaceTab('history')">
+      <span class="pi pi-history" aria-hidden="true"></span>
+      <strong>{{ 'admin.parkGraphUpserts.wizard.steps.history' | translate }}</strong>
+    </button>
   </nav>
 
   @if (uiError) {
@@ -152,6 +161,101 @@
       </div>
 
       @if (documentSummary; as summary) {
+        <section class="template-list" [attr.aria-label]="'admin.parkGraphUpserts.templates.title' | translate">
+          <div class="section-head">
+            <h3>{{ 'admin.parkGraphUpserts.templates.title' | translate }}</h3>
+            <p class="admin-muted">{{ 'admin.parkGraphUpserts.templates.description' | translate }}</p>
+          </div>
+          <div class="template-grid">
+            @for (template of templates; track trackTemplate($index, template)) {
+              <button type="button" class="template-option" (click)="applyTemplate(template.id)">
+                <strong>{{ template.titleKey | translate }}</strong>
+                <small>{{ template.descriptionKey | translate }}</small>
+              </button>
+            }
+          </div>
+        </section>
+
+        <section class="graph-builder">
+          <div class="section-head">
+            <h3>{{ 'admin.parkGraphUpserts.builder.title' | translate }}</h3>
+            <p class="admin-muted">{{ 'admin.parkGraphUpserts.builder.description' | translate }}</p>
+          </div>
+
+          <div class="builder-grid">
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.parkName' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.parkName">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.countryCode' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.countryCode" maxlength="2">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.city' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.city">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.websiteUrl' | translate }}</span>
+              <input type="url" class="admin-input" [(ngModel)]="builder.websiteUrl">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.zoneKey' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.zoneKey">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.zoneName' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.zoneName">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.itemKey' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.itemKey">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.itemName' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.itemName">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.itemCategory' | translate }}</span>
+              <select class="admin-input" [(ngModel)]="builder.itemCategory">
+                <option value="Attraction">Attraction</option>
+                <option value="Service">Service</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Shop">Shop</option>
+                <option value="Show">Show</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.itemType' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.itemType">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.manufacturerKey' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.manufacturerKey">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.manufacturerName' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.manufacturerName">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.imageUrl' | translate }}</span>
+              <input type="url" class="admin-input" [(ngModel)]="builder.imageUrl">
+            </label>
+            <label>
+              <span>{{ 'admin.parkGraphUpserts.builder.imageAltText' | translate }}</span>
+              <input type="text" class="admin-input" [(ngModel)]="builder.imageAltText">
+            </label>
+          </div>
+
+          <div class="wizard-actions">
+            <button type="button" class="btn-nav btn-nav--ghost" (click)="applyBuilderToJson()">
+              <span class="pi pi-sync" aria-hidden="true"></span>
+              {{ 'admin.parkGraphUpserts.actions.updateJson' | translate }}
+            </button>
+          </div>
+        </section>
+
         <div class="graph-summary">
           <span>
             <small>{{ 'admin.parkGraphUpserts.graph.identity' | translate }}</small>
@@ -250,29 +354,59 @@
       }
 
       @if (previewResult) {
-        @if (previewResult.errors.length > 0) {
+        @if (groupedErrors.length > 0) {
           <div class="message-list message-list--error">
-            @for (error of previewResult.errors; track error) {
-              <p>{{ error }}</p>
+            @for (group of groupedErrors; track trackMessageGroup($index, group)) {
+              <section class="message-group">
+                <strong>{{ group.entityType }} - {{ group.displayName }}</strong>
+                @for (message of group.messages; track trackString($index, message)) {
+                  <p>{{ message }}</p>
+                }
+              </section>
             }
           </div>
         }
 
-        @if (previewResult.warnings.length > 0) {
+        @if (groupedWarnings.length > 0) {
           <div class="message-list message-list--warning">
-            @for (warning of previewResult.warnings; track warning) {
-              <p>{{ warning }}</p>
+            @for (group of groupedWarnings; track trackMessageGroup($index, group)) {
+              <section class="message-group">
+                <strong>{{ group.entityType }} - {{ group.displayName }}</strong>
+                @for (message of group.messages; track trackString($index, message)) {
+                  <p>{{ message }}</p>
+                }
+              </section>
             }
           </div>
         }
+
+        <div class="preview-filters">
+          <label>
+            <span>{{ 'admin.parkGraphUpserts.result.changeTypeFilter' | translate }}</span>
+            <select class="admin-input" [(ngModel)]="changeTypeFilter">
+              @for (filter of changeTypeFilters; track trackString($index, filter)) {
+                <option [value]="filter">{{ ('admin.parkGraphUpserts.result.filters.' + filter) | translate }}</option>
+              }
+            </select>
+          </label>
+          <label>
+            <span>{{ 'admin.parkGraphUpserts.result.entityTypeFilter' | translate }}</span>
+            <select class="admin-input" [(ngModel)]="entityTypeFilter">
+              <option value="All">{{ 'admin.parkGraphUpserts.result.filters.All' | translate }}</option>
+              @for (entityType of entityTypeOptions; track trackString($index, entityType)) {
+                <option [value]="entityType">{{ entityType }}</option>
+              }
+            </select>
+          </label>
+        </div>
 
         <div class="change-list">
-          @for (change of changes; track trackChange($index, change)) {
+          @for (change of filteredChanges; track trackChange($index, change)) {
             <details class="change-card" [open]="change.changeType !== 'Unchanged'">
               <summary>
                 <span>
                   <strong>{{ change.displayName }}</strong>
-                  <small>{{ change.entityType }} - {{ change.matchedBy }}</small>
+                  <small>{{ change.entityType }} - {{ 'admin.parkGraphUpserts.result.matchedBy' | translate }} {{ change.matchedBy }}</small>
                 </span>
                 <em [class]="'change-status change-status--' + change.changeType.toLowerCase()">{{ change.changeType }}</em>
               </summary>
@@ -314,6 +448,58 @@
           {{ (isApplying ? 'admin.parkGraphUpserts.actions.applying' : 'admin.parkGraphUpserts.actions.apply') | translate }}
         </button>
       </div>
+    </article>
+  }
+
+  @if (activeWorkspaceTab === 'history') {
+    <article class="admin-card park-graph-upserts__history">
+      <header class="result-head">
+        <div>
+          <h2>{{ 'admin.parkGraphUpserts.history.title' | translate }}</h2>
+          <p class="admin-muted">{{ 'admin.parkGraphUpserts.history.description' | translate }}</p>
+        </div>
+        <button type="button" class="btn-nav btn-nav--ghost" (click)="loadHistory()" [disabled]="isLoadingHistory">
+          <span class="pi pi-refresh" aria-hidden="true"></span>
+          {{ (isLoadingHistory ? 'admin.parkGraphUpserts.actions.loadingHistory' : 'admin.parkGraphUpserts.actions.refreshHistory') | translate }}
+        </button>
+      </header>
+
+      @if (historyEntries.length > 0) {
+        <div class="history-list">
+          @for (entry of historyEntries; track trackHistory($index, entry)) {
+            <article class="history-card">
+              <div>
+                <strong>{{ entry.targetParkName || ('admin.parkGraphUpserts.result.noTarget' | translate) }}</strong>
+                <small>{{ entry.operationKind }} - {{ entry.createdAtUtc | date:'short' }}</small>
+                @if (entry.requestedByUserId) {
+                  <code>{{ entry.requestedByUserId }}</code>
+                }
+              </div>
+              <div class="result-counts">
+                <span>{{ 'admin.parkGraphUpserts.result.created' | translate }} <strong>{{ entry.result.counts.created }}</strong></span>
+                <span>{{ 'admin.parkGraphUpserts.result.updated' | translate }} <strong>{{ entry.result.counts.updated }}</strong></span>
+                <span>{{ 'admin.parkGraphUpserts.result.warnings' | translate }} <strong>{{ entry.result.counts.warnings }}</strong></span>
+                <span>{{ 'admin.parkGraphUpserts.result.errors' | translate }} <strong>{{ entry.result.counts.errors }}</strong></span>
+              </div>
+              @if (entry.result.errors.length > 0) {
+                <div class="message-list message-list--error">
+                  @for (error of entry.result.errors; track trackString($index, error)) {
+                    <p>{{ error }}</p>
+                  }
+                </div>
+              }
+              <div class="wizard-actions">
+                <button type="button" class="btn-nav" (click)="reuseHistory(entry)">
+                  <span class="pi pi-file-edit" aria-hidden="true"></span>
+                  {{ 'admin.parkGraphUpserts.actions.reuseDraft' | translate }}
+                </button>
+              </div>
+            </article>
+          }
+        </div>
+      } @else {
+        <p class="admin-muted">{{ 'admin.parkGraphUpserts.history.empty' | translate }}</p>
+      }
     </article>
   }
 </section>

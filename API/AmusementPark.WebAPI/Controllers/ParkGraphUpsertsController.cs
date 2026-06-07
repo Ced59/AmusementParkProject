@@ -2,6 +2,8 @@ using System.Security.Claims;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkGraphUpserts.Commands;
+using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
+using AmusementPark.Application.Features.ParkGraphUpserts.Queries;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
@@ -22,13 +24,27 @@ public sealed class ParkGraphUpsertsController : ControllerBase
 {
     private readonly ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler;
     private readonly ICommandHandler<ApplyParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> applyHandler;
+    private readonly IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler;
 
     public ParkGraphUpsertsController(
         ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler,
-        ICommandHandler<ApplyParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> applyHandler)
+        ICommandHandler<ApplyParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> applyHandler,
+        IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler)
     {
         this.previewHandler = previewHandler;
         this.applyHandler = applyHandler;
+        this.historyHandler = historyHandler;
+    }
+
+    [HttpGet("history")]
+    [ProducesResponseType(typeof(List<ParkGraphUpsertHistoryEntryDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetHistoryAsync([FromQuery] string? targetParkId = null, [FromQuery] int limit = 20, CancellationToken cancellationToken = default)
+    {
+        IReadOnlyCollection<ParkGraphUpsertHistoryEntry> entries = await this.historyHandler.HandleAsync(
+            new ListParkGraphUpsertHistoryQuery(targetParkId, limit),
+            cancellationToken);
+
+        return this.Ok(entries.Select(static entry => entry.ToHttp()).ToList());
     }
 
     [HttpPost("preview")]

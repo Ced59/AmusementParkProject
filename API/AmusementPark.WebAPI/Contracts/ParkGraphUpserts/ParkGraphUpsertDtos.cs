@@ -13,6 +13,25 @@ public sealed class ParkGraphUpsertRequestDto
     public JsonElement Document { get; set; }
 }
 
+public sealed class ParkGraphUpsertHistoryEntryDto
+{
+    public string Id { get; set; } = string.Empty;
+
+    public string OperationKind { get; set; } = "preview";
+
+    public string? TargetParkId { get; set; }
+
+    public string? TargetParkName { get; set; }
+
+    public string? RequestedByUserId { get; set; }
+
+    public DateTime CreatedAtUtc { get; set; }
+
+    public string RawJson { get; set; } = string.Empty;
+
+    public ParkGraphUpsertResultDto Result { get; set; } = new ParkGraphUpsertResultDto();
+}
+
 public sealed class ParkGraphUpsertResultDto
 {
     public string OperationId { get; set; } = string.Empty;
