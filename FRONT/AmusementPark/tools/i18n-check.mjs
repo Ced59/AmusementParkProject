@@ -3,11 +3,48 @@ import path from 'node:path';
 
 const root = process.cwd();
 const i18nDir = path.join(root, 'src', 'assets', 'i18n');
+const overridesDir = path.join(i18nDir, 'overrides');
 const sourceDir = path.join(root, 'src', 'app');
 const languages = ['en', 'fr', 'es', 'de', 'it', 'nl', 'pl', 'pt'];
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+}
+
+function deepMerge(base, override) {
+  const result = { ...base };
+
+  for (const [key, value] of Object.entries(override)) {
+    const baseValue = result[key];
+
+    if (
+      value &&
+      typeof value === 'object' &&
+      !Array.isArray(value) &&
+      baseValue &&
+      typeof baseValue === 'object' &&
+      !Array.isArray(baseValue)
+    ) {
+      result[key] = deepMerge(baseValue, value);
+      continue;
+    }
+
+    result[key] = value;
+  }
+
+  return result;
+}
+
+function readMergedLanguage(language) {
+  const baseFilePath = path.join(i18nDir, `${language}.json`);
+  const overrideFilePath = path.join(overridesDir, `${language}.json`);
+  const base = readJson(baseFilePath);
+
+  if (!fs.existsSync(overrideFilePath)) {
+    return base;
+  }
+
+  return deepMerge(base, readJson(overrideFilePath));
 }
 
 function flatten(value, prefix = '') {
@@ -74,7 +111,7 @@ for (const language of languages) {
     continue;
   }
 
-  const entries = new Map(flatten(readJson(filePath)));
+  const entries = new Map(flatten(readMergedLanguage(language)));
   flattenedByLanguage.set(language, entries);
 
   for (const [key, value] of entries) {
@@ -99,7 +136,7 @@ for (const language of languages.filter((item) => item !== 'en')) {
 
   for (const key of keys) {
     if (!englishKeys.has(key)) {
-      errors.push(`${language}: key not present in en.json: ${key}`);
+      errors.push(`${language}: key not present in merged en translations: ${key}`);
     }
   }
 }
@@ -107,7 +144,7 @@ for (const language of languages.filter((item) => item !== 'en')) {
 const usedKeys = extractLiteralKeys();
 for (const key of usedKeys) {
   if (!englishKeys.has(key)) {
-    errors.push(`Used translation key is missing from en.json: ${key}`);
+    errors.push(`Used translation key is missing from merged en translations: ${key}`);
   }
 }
 
@@ -145,4 +182,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`i18n check passed for ${languages.length} languages and ${englishKeys.size} keys.`);
+console.log(`i18n check passed for ${languages.length} languages and ${englishKeys.size} merged keys.`);
