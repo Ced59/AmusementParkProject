@@ -24,9 +24,9 @@ public sealed class ParkItemCreateDto
 
     public string? Subtype { get; set; }
 
-    public double Latitude { get; set; }
+    public double? Latitude { get; set; }
 
-    public double Longitude { get; set; }
+    public double? Longitude { get; set; }
 
     public List<LocalizedTextDto> Descriptions { get; set; } = new();
 
