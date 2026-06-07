@@ -38,7 +38,9 @@ class MergedTranslateHttpLoader implements TranslateLoader {
   public getTranslation(language: string): Observable<TranslationDictionary> {
     return forkJoin({
       base: this.http.get<TranslationDictionary>(`./assets/i18n/${language}.json`),
-      overrides: this.http.get<TranslationOverrides>('./assets/i18n/all-overrides.json').pipe(catchError(() => of({})))
+      overrides: this.http.get<TranslationOverrides>('./assets/i18n/all-overrides.json').pipe(
+        catchError(() => of({} as TranslationOverrides))
+      )
     }).pipe(map(({ base, overrides }) => mergeTranslations(base, overrides[language] ?? {})));
   }
 }
