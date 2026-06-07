@@ -54,8 +54,12 @@ export function mapParkItemToDetailViewModel(
   const technicalRows: ParkItemDetailRowViewModel[] = buildTechnicalRows(item, manufacturerName, currentLanguage);
   const performanceRows: ParkItemDetailRowViewModel[] = buildPerformanceRows(item, currentLanguage);
   const experienceRows: ParkItemDetailRowViewModel[] = buildExperienceRows(item, currentLanguage);
-  const specGroups: ParkItemDetailSpecGroupViewModel[] = buildSpecGroups(technicalRows, performanceRows, experienceRows);
   const locationPoints: ParkItemLocationPointViewModel[] = buildLocationPoints(item, currentLanguage);
+  const specGroups: ParkItemDetailSpecGroupViewModel[] = buildSpecGroups(technicalRows, performanceRows, experienceRows);
+  if (locationPoints.length === 0) {
+    specGroups.push(buildNoGeolocationSpecGroup());
+  }
+
   const hasPreciseLocations: boolean = locationPoints.some((point: ParkItemLocationPointViewModel) => !point.isGeneralFallback);
   const galleryPhotos: ParkItemPhotoViewModel[] = buildPhotos(photos, imageTags);
   const itemsLink: string[] | null = buildItemsLink(park, currentLanguage);
@@ -94,5 +98,19 @@ export function mapParkItemToDetailViewModel(
     mapZoom: locationPoints.length > 1 ? 17 : 18,
     hasPreciseLocations,
     relatedItems: buildRelatedItems(item, park, relatedItems, currentLanguage, zoneName)
+  };
+}
+
+function buildNoGeolocationSpecGroup(): ParkItemDetailSpecGroupViewModel {
+  return {
+    titleKey: 'parkItems.detail.locationTitle',
+    iconClass: 'pi pi-map-marker',
+    rows: [{
+      labelKey: 'parkItems.fields.coordinates',
+      value: '',
+      valueKey: 'parkItems.detail.noGeolocationMessage',
+      iconClass: 'pi pi-map-marker',
+      isTextualValue: true
+    }]
   };
 }
