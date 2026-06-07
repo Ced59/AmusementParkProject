@@ -4,6 +4,8 @@ import { of } from 'rxjs';
 import { AuthService } from '@app/services/auth/auth.service';
 import { AuthInterceptor } from './auth.interceptor';
 
+type TestHttpMethod = 'GET' | 'POST';
+
 describe('AuthInterceptor', () => {
   function createAuthService(token: string | null): jasmine.SpyObj<AuthService> {
     const authService = jasmine.createSpyObj<AuthService>('AuthService', ['ensureValidAccessToken']);
@@ -11,7 +13,7 @@ describe('AuthInterceptor', () => {
     return authService;
   }
 
-  function captureHeaders(interceptor: AuthInterceptor, url: string, method: string = 'GET'): Promise<string | null> {
+  function captureHeaders(interceptor: AuthInterceptor, url: string, method: TestHttpMethod = 'GET'): Promise<string | null> {
     return new Promise((resolve) => {
       const handler: HttpHandler = {
         handle: (request: HttpRequest<unknown>) => {
