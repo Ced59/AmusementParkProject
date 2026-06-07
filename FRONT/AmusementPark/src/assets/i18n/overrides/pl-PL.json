@@ -1,0 +1,90 @@
+{
+  "home": {
+    "heroCards": {
+      "errorMessage": "Nie udało się wczytać wyróżnionych parków."
+    }
+  },
+  "admin": {
+    "users": {
+      "loadError": "Nie udało się wczytać użytkowników.",
+      "blockAction": "Zablokuj konto",
+      "unblockAction": "Odblokuj konto"
+    },
+    "parks": {
+      "zones": {
+        "empty": "Nie znaleziono stref dla tego parku."
+      },
+      "items": {
+        "empty": "Nie znaleziono elementów dla tego parku."
+      },
+      "loadError": "Nie udało się wczytać parków."
+    },
+    "operators": {
+      "loadError": "Nie udało się wczytać operatorów."
+    },
+    "manufacturers": {
+      "loadError": "Nie udało się wczytać producentów."
+    },
+    "images": {
+      "ownership": "Powiązanie",
+      "newTagPlaceholder": "np.: oficjalne-logo"
+    },
+    "workbench": {
+      "navTitle": "Panel elementów parku",
+      "title": "Szybkie wprowadzanie elementów",
+      "kicker": "Szybka administracja",
+      "subtitle": "Szybko twórz, filtruj i poprawiaj elementy parku bez otwierania pełnej karty.",
+      "quickCreate": {
+        "title": "Szybkie tworzenie",
+        "name": "Nazwa",
+        "park": "Park",
+        "zone": "Strefa",
+        "category": "Kategoria",
+        "type": "Typ",
+        "manufacturer": "Producent",
+        "visibility": "Widoczność",
+        "reviewStatus": "Status weryfikacji",
+        "create": "Utwórz",
+        "createAndContinue": "Utwórz i kontynuuj",
+        "creating": "Tworzenie…"
+      },
+      "assistantImport": {
+        "title": "Import wspomagany",
+        "pasteLines": "Wklej wiersze",
+        "preview": "Podgląd",
+        "apply": "Zastosuj",
+        "template": "Szablon",
+        "mapping": "Mapowanie pól"
+      },
+      "validations": {
+        "nameRequired": "Nazwa jest wymagana.",
+        "parkRequired": "Park jest wymagany.",
+        "duplicateWarning": "Podobny element już istnieje.",
+        "invalidTypeForCategory": "Typ nie pasuje do kategorii."
+      },
+      "duplicates": {
+        "title": "Możliwe duplikaty",
+        "samePark": "Ten sam park",
+        "sameZone": "Ta sama strefa",
+        "ignore": "Ignoruj",
+        "openExisting": "Otwórz istniejący"
+      },
+      "templates": {
+        "parkOnly": "Tylko park",
+        "zoneItems": "Strefa + elementy",
+        "services": "Usługi bez strefy",
+        "captainCoaster": "Wzbogacony import Captain Coaster"
+      }
+    }
+  },
+  "parkItems": {
+    "fields": {
+      "hasSingleRider": "Kolejka single rider"
+    }
+  },
+  "images": {
+    "ownerTypes": {
+      "USER": "Użytkownik"
+    }
+  }
+}
