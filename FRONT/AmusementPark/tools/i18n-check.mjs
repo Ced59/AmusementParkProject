@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 const i18nDir = path.join(root, 'src', 'assets', 'i18n');
-const overridesDir = path.join(i18nDir, 'overrides');
+const overridesFilePath = path.join(i18nDir, 'all-overrides.json');
 const sourceDir = path.join(root, 'src', 'app');
 const languages = ['en', 'fr', 'es', 'de', 'it', 'nl', 'pl', 'pt'];
 
@@ -35,16 +35,12 @@ function deepMerge(base, override) {
   return result;
 }
 
+const allOverrides = fs.existsSync(overridesFilePath) ? readJson(overridesFilePath) : {};
+
 function readMergedLanguage(language) {
   const baseFilePath = path.join(i18nDir, `${language}.json`);
-  const overrideFilePath = path.join(overridesDir, `${language}.json`);
   const base = readJson(baseFilePath);
-
-  if (!fs.existsSync(overrideFilePath)) {
-    return base;
-  }
-
-  return deepMerge(base, readJson(overrideFilePath));
+  return deepMerge(base, allOverrides[language] ?? {});
 }
 
 function flatten(value, prefix = '') {
