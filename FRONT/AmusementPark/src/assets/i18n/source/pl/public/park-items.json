@@ -54,7 +54,8 @@
       "relatedSubtitle": "Wybór na podstawie typu, kategorii lub strefy elementu.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Wybierz punkt, aby wyróżnić go na mapie albo otworzyć trasę z poziomu znacznika.",
-      "showLocationOnMap": "Pokaż na mapie"
+      "showLocationOnMap": "Pokaż na mapie",
+      "noGeolocationMessage": "Brak geolokalizacji dla tego elementu."
     },
     "fields": {
       "category": "Kategoria",

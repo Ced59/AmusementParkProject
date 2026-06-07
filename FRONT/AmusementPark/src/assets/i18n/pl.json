@@ -518,10 +518,37 @@
         "visibility": "Widoczność",
         "actions": "Akcje",
         "category": "Kategoria",
-        "reviewStatus": "Status admin"
+        "reviewStatus": "Status admin",
+        "contentQuality": "Content"
       },
       "allParks": "Wszystkie parki",
-      "total": "{{count}} element(y)"
+      "total": "{{count}} element(y)",
+      "content": {
+        "backlogFilter": "To complete",
+        "complete": "Complete",
+        "toComplete": "To complete",
+        "visibleIncomplete": "Visible incomplete",
+        "languages": "Languages:",
+        "quickDescriptions": "Descriptions",
+        "quickDescriptionsTitle": "Quick descriptions - {{name}}",
+        "filters": {
+          "all": "All content states",
+          "missingDescriptionFr": "Missing FR description",
+          "missingDescriptionEn": "Missing EN description",
+          "missingAnyDescription": "Missing any description",
+          "missingZone": "Missing zone",
+          "missingPreciseType": "Missing precise type",
+          "visibleIncomplete": "Visible but incomplete"
+        },
+        "requirements": {
+          "structure": "Structure",
+          "descriptionAny": "Any description",
+          "descriptionFr": "FR description",
+          "descriptionEn": "EN description",
+          "zone": "Zone",
+          "typePrecise": "Precise type"
+        }
+      }
     },
     "parks": {
       "total": "Łączna liczba parków: {{count}}",
@@ -1210,6 +1237,7 @@
   },
   "actions": {
     "cancel": "Anuluj",
+    "close": "Zamknij",
     "save": "Zapisz",
     "backToPark": "Powrót do parku",
     "backToList": "Powrót",
@@ -1630,7 +1658,8 @@
       "relatedSubtitle": "Wybór na podstawie typu, kategorii lub strefy elementu.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Wybierz punkt, aby wyróżnić go na mapie albo otworzyć trasę z poziomu znacznika.",
-      "showLocationOnMap": "Pokaż na mapie"
+      "showLocationOnMap": "Pokaż na mapie",
+      "noGeolocationMessage": "Brak geolokalizacji dla tego elementu."
     },
     "fields": {
       "category": "Kategoria",

@@ -518,10 +518,37 @@
         "visibility": "Zichtbaarheid",
         "actions": "Acties",
         "category": "Categorie",
-        "reviewStatus": "Adminstatus"
+        "reviewStatus": "Adminstatus",
+        "contentQuality": "Content"
       },
       "allParks": "Alle parken",
-      "total": "{{count}} item(s)"
+      "total": "{{count}} item(s)",
+      "content": {
+        "backlogFilter": "To complete",
+        "complete": "Complete",
+        "toComplete": "To complete",
+        "visibleIncomplete": "Visible incomplete",
+        "languages": "Languages:",
+        "quickDescriptions": "Descriptions",
+        "quickDescriptionsTitle": "Quick descriptions - {{name}}",
+        "filters": {
+          "all": "All content states",
+          "missingDescriptionFr": "Missing FR description",
+          "missingDescriptionEn": "Missing EN description",
+          "missingAnyDescription": "Missing any description",
+          "missingZone": "Missing zone",
+          "missingPreciseType": "Missing precise type",
+          "visibleIncomplete": "Visible but incomplete"
+        },
+        "requirements": {
+          "structure": "Structure",
+          "descriptionAny": "Any description",
+          "descriptionFr": "FR description",
+          "descriptionEn": "EN description",
+          "zone": "Zone",
+          "typePrecise": "Precise type"
+        }
+      }
     },
     "parks": {
       "total": "Totaal aantal parken: {{count}}",
@@ -1210,6 +1237,7 @@
   },
   "actions": {
     "cancel": "Annuleren",
+    "close": "Sluiten",
     "save": "Opslaan",
     "backToPark": "Terug naar het park",
     "backToList": "Terug",
@@ -1630,7 +1658,8 @@
       "relatedSubtitle": "Selectie op basis van itemtype, categorie of zone.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Selecteer een punt om het op de kaart te markeren of een route via de marker te openen.",
-      "showLocationOnMap": "Toon op kaart"
+      "showLocationOnMap": "Toon op kaart",
+      "noGeolocationMessage": "Er is geen geolocatie beschikbaar voor dit item."
     },
     "fields": {
       "category": "Categorie",

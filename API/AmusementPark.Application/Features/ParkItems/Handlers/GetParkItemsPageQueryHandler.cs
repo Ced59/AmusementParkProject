@@ -4,6 +4,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkItems.Queries;
 using AmusementPark.Application.Features.ParkItems.Results;
+using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Validation;
 using AmusementPark.Core.Domain.Parks;
@@ -15,12 +16,14 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
     private readonly IParkItemRepository parkItemRepository;
     private readonly IParkRepository parkRepository;
     private readonly PagedQueryValidator pagedQueryValidator;
+    private readonly ParkItemContentQualityService contentQualityService;
 
-    public GetParkItemsPageQueryHandler(IParkItemRepository parkItemRepository, IParkRepository parkRepository, PagedQueryValidator pagedQueryValidator)
+    public GetParkItemsPageQueryHandler(IParkItemRepository parkItemRepository, IParkRepository parkRepository, PagedQueryValidator pagedQueryValidator, ParkItemContentQualityService contentQualityService)
     {
         this.parkItemRepository = parkItemRepository;
         this.parkRepository = parkRepository;
         this.pagedQueryValidator = pagedQueryValidator;
+        this.contentQualityService = contentQualityService;
     }
 
     public async Task<ApplicationResult<PagedResult<ParkItemAdminListResult>>> HandleAsync(GetParkItemsPageQuery query, CancellationToken cancellationToken = default)
@@ -43,6 +46,7 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
             query.Type,
             query.ZoneId,
             query.ManufacturerId,
+            query.ContentBacklogFilter,
             cancellationToken,
             query.SortField,
             query.SortDescending);
@@ -70,6 +74,8 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
                 Type = item.Type,
                 IsVisible = item.IsVisible,
                 AdminReviewStatus = item.AdminReviewStatus,
+                ContentQuality = this.contentQualityService.Evaluate(item),
+                PublicationSignals = this.contentQualityService.BuildPublicationSignals(item),
             })
             .ToList();
 

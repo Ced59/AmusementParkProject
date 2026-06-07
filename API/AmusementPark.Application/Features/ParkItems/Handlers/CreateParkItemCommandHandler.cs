@@ -2,6 +2,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Ports;
+using AmusementPark.Application.Features.ParkItems.Results;
+using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Core.Domain.Parks;
@@ -13,15 +15,18 @@ public sealed class CreateParkItemCommandHandler : ICommandHandler<CreateParkIte
     private readonly IParkItemRepository parkItemRepository;
     private readonly ParkItemReferenceValidator parkItemReferenceValidator;
     private readonly ISearchProjectionWriter searchProjectionWriter;
+    private readonly ParkItemContentQualityService contentQualityService;
 
     public CreateParkItemCommandHandler(
         IParkItemRepository parkItemRepository,
         ParkItemReferenceValidator parkItemReferenceValidator,
-        ISearchProjectionWriter searchProjectionWriter)
+        ISearchProjectionWriter searchProjectionWriter,
+        ParkItemContentQualityService contentQualityService)
     {
         this.parkItemRepository = parkItemRepository;
         this.parkItemReferenceValidator = parkItemReferenceValidator;
         this.searchProjectionWriter = searchProjectionWriter;
+        this.contentQualityService = contentQualityService;
     }
 
     public async Task<ApplicationResult<ParkItem>> HandleAsync(CreateParkItemCommand command, CancellationToken cancellationToken = default)
@@ -38,6 +43,15 @@ public sealed class CreateParkItemCommandHandler : ICommandHandler<CreateParkIte
         if (validationError is not null)
         {
             return ApplicationResult<ParkItem>.Failure(validationError);
+        }
+
+        if (parkItem.IsVisible)
+        {
+            ParkItemContentQualityResult quality = this.contentQualityService.Evaluate(parkItem);
+            if (!quality.IsPublishable)
+            {
+                return ApplicationResult<ParkItem>.Failure(ParkItemApplicationErrors.PublicationBlocked(quality.MissingRequirementKeys));
+            }
         }
 
         try

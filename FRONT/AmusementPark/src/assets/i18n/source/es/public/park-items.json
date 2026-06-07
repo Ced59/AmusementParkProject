@@ -54,7 +54,8 @@
       "relatedSubtitle": "Selección basada en el tipo, la categoría o la zona del elemento.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Selecciona un punto para resaltarlo en el mapa o abrir la ruta desde el marcador.",
-      "showLocationOnMap": "Mostrar en el mapa"
+      "showLocationOnMap": "Mostrar en el mapa",
+      "noGeolocationMessage": "No hay geolocalización disponible para este elemento."
     },
     "fields": {
       "category": "Categoría",

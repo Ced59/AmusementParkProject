@@ -194,6 +194,38 @@ internal static class ParkItemsHttpMappers
             Type = value.Type.ToHttp(),
             IsVisible = value.IsVisible,
             AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
+            ContentQuality = value.ContentQuality.ToHttp(),
+            PublicationSignals = value.PublicationSignals.ToHttp(),
+        };
+    }
+
+    private static ParkItemContentQualityDto ToHttp(this ParkItemContentQualityResult value)
+    {
+        return new ParkItemContentQualityDto
+        {
+            StructureComplete = value.StructureComplete,
+            HasAnyDescription = value.HasAnyDescription,
+            HasFrenchDescription = value.HasFrenchDescription,
+            HasEnglishDescription = value.HasEnglishDescription,
+            HasZone = value.HasZone,
+            HasPreciseType = value.HasPreciseType,
+            HasLocation = value.HasLocation,
+            HasAccessConditions = value.HasAccessConditions,
+            IsPublishable = value.IsPublishable,
+            AvailableLanguageCodes = value.AvailableLanguageCodes,
+            MissingRequirementKeys = value.MissingRequirementKeys,
+        };
+    }
+
+    private static ParkItemAdminPublicationSignalsDto ToHttp(this ParkItemAdminPublicationSignalsResult value)
+    {
+        return new ParkItemAdminPublicationSignalsDto
+        {
+            IsVisible = value.IsVisible,
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
+            LastUpdatedAtUtc = value.LastUpdatedAtUtc,
+            AvailableLanguageCodes = value.AvailableLanguageCodes,
+            IsPublishable = value.IsPublishable,
         };
     }
 

@@ -54,7 +54,8 @@
       "relatedSubtitle": "Seleção baseada no tipo, categoria ou zona do elemento.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Seleciona um ponto para o destacar no mapa ou abrir o itinerário a partir do marcador.",
-      "showLocationOnMap": "Mostrar no mapa"
+      "showLocationOnMap": "Mostrar no mapa",
+      "noGeolocationMessage": "Não há geolocalização disponível para este elemento."
     },
     "fields": {
       "category": "Categoria",

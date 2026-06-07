@@ -6,6 +6,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Queries;
 using AmusementPark.Application.Features.ParkItems.Results;
@@ -97,6 +98,7 @@ public sealed class ParkItemsController : ControllerBase
         [FromQuery] string? type = null,
         [FromQuery] string? zoneId = null,
         [FromQuery] string? manufacturerId = null,
+        [FromQuery] string? contentBacklogFilter = null,
         [FromQuery] string? sortBy = null,
         [FromQuery] string? sortDirection = null,
         CancellationToken cancellationToken = default)
@@ -117,6 +119,7 @@ public sealed class ParkItemsController : ControllerBase
                 ParseParkItemType(type),
                 zoneId,
                 manufacturerId,
+                ParseParkItemContentBacklogFilter(contentBacklogFilter),
                 ParseParkItemAdminSortField(sortBy),
                 IsSortDescending(sortDirection)),
             cancellationToken);
@@ -306,6 +309,11 @@ public sealed class ParkItemsController : ControllerBase
     private static ParkItemType? ParseParkItemType(string? value)
     {
         return Enum.TryParse(value, true, out ParkItemType parsed) ? parsed : null;
+    }
+
+    private static ParkItemContentBacklogFilter? ParseParkItemContentBacklogFilter(string? value)
+    {
+        return Enum.TryParse(value, true, out ParkItemContentBacklogFilter parsed) ? parsed : null;
     }
 
     private bool UserCanSeeNonVisible()

@@ -51,4 +51,8 @@ public sealed class ParkItemAdminListResult
     /// Statut de traitement interne.
     /// </summary>
     public AdminReviewStatus AdminReviewStatus { get; init; }
+
+    public ParkItemContentQualityResult ContentQuality { get; init; } = new ParkItemContentQualityResult();
+
+    public ParkItemAdminPublicationSignalsResult PublicationSignals { get; init; } = new ParkItemAdminPublicationSignalsResult();
 }

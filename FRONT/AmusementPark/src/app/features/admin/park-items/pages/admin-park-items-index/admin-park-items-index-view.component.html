@@ -126,6 +126,16 @@
         }
       </select>
     </label>
+
+    <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.parkItems.content.backlogFilter' | translate }}</span>
+      <select [(ngModel)]="localContentBacklogFilter" (ngModelChange)="onImmediateFilterChanged()">
+        <option [ngValue]="null">{{ 'admin.parkItems.content.filters.all' | translate }}</option>
+        @for (option of contentBacklogFilterOptions; track option.value) {
+          <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+        }
+      </select>
+    </label>
   </div>
 
   @if (showBulkActions && selectedCount() > 0) {
@@ -214,6 +224,7 @@
           {{ 'admin.parkItems.columns.reviewStatus' | translate }}
           <p-sortIcon field="adminReviewStatus"></p-sortIcon>
         </th>
+        <th>{{ 'admin.parkItems.columns.contentQuality' | translate }}</th>
         <th pSortableColumn="isVisible">
           {{ 'admin.parkItems.columns.visibility' | translate }}
           <p-sortIcon field="isVisible"></p-sortIcon>
@@ -282,6 +293,24 @@
             </p-tag>
           }
         </td>
+        <td [attr.data-label]="'admin.parkItems.columns.contentQuality' | translate">
+          <div class="admin-content-quality">
+            <p-tag
+              [value]="getQualityLabelKey(row) | translate"
+              [severity]="getQualitySeverity(row)">
+            </p-tag>
+            <span class="admin-language-coverage">
+              {{ 'admin.parkItems.content.languages' | translate }} {{ getLanguageCoverage(row) }}
+            </span>
+            @if (getMissingRequirementKeys(row).length > 0) {
+              <div class="admin-missing-requirements">
+                @for (requirement of getMissingRequirementKeys(row); track requirement) {
+                  <span>{{ getMissingRequirementLabelKey(requirement) | translate }}</span>
+                }
+              </div>
+            }
+          </div>
+        </td>
         <td [attr.data-label]="'admin.parkItems.columns.visibility' | translate">
           @if (allowInlineEditing) {
             <label class="admin-inline-toggle">
@@ -304,6 +333,14 @@
               class="p-button-sm"
               (click)="goToEdit(row)"
               [label]="'actions.edit' | translate">
+            </button>
+            <button
+              pButton
+              type="button"
+              icon="pi pi-align-left"
+              class="p-button-sm p-button-secondary"
+              (click)="editQuickDescriptions(row)"
+              [label]="'admin.parkItems.content.quickDescriptions' | translate">
             </button>
             @if (showQuickCreateButton) {
               <button

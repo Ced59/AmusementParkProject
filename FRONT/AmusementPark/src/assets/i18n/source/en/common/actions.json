@@ -1,6 +1,7 @@
 {
   "actions": {
     "cancel": "Cancel",
+    "close": "Close",
     "save": "Save",
     "backToPark": "Back to park",
     "backToList": "Back",

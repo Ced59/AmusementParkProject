@@ -21,6 +21,7 @@ The project must preserve its current architecture, SOLID principles, separation
 ## General rules
 
 - Keep pull requests small, focused, and easy to review.
+- Increment the release version in every PR unless the user explicitly asks for a major or intermediate version increment instead.
 - Do not mix unrelated backend, frontend, SEO, security, UI, deployment, and refactoring changes in one PR.
 - Respect the current architecture and naming conventions.
 - Do not introduce shortcuts that bypass validation, authorization, domain rules, or application services.

@@ -24,6 +24,7 @@ import {
   BulkAdministrationUpdateResult,
 } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
+import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
@@ -34,6 +35,7 @@ import {
   ParkItemAdminListFilters,
   ParkItemAdminListSort,
   ParkItemAdminSortField,
+  ParkItemContentBacklogFilter,
 } from '@data-access/park-items/park-items-api-endpoints';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
@@ -61,6 +63,8 @@ export class AdminParkItemsIndexStateFacade {
     signal<AdminReviewStatus | null>(null);
   private readonly categoryFilterSignal = signal<ParkItemCategory | null>(null);
   private readonly typeFilterSignal = signal<ParkItemType | null>(null);
+  private readonly contentBacklogFilterSignal =
+    signal<ParkItemContentBacklogFilter | null>(null);
   private readonly currentPageSignal = signal(1);
   private readonly pageSizeSignal = signal(20);
   private readonly sortFieldSignal = signal<ParkItemAdminSortField>('default');
@@ -90,6 +94,8 @@ export class AdminParkItemsIndexStateFacade {
     this.adminReviewStatusFilterSignal.asReadonly();
   public readonly categoryFilter = this.categoryFilterSignal.asReadonly();
   public readonly typeFilter = this.typeFilterSignal.asReadonly();
+  public readonly contentBacklogFilter =
+    this.contentBacklogFilterSignal.asReadonly();
   public readonly currentPage: Signal<number> =
     this.currentPageSignal.asReadonly();
   public readonly pageSize: Signal<number> = this.pageSizeSignal.asReadonly();
@@ -101,6 +107,7 @@ export class AdminParkItemsIndexStateFacade {
     adminReviewStatus: this.adminReviewStatusFilterSignal(),
     category: this.categoryFilterSignal(),
     type: this.typeFilterSignal(),
+    contentBacklogFilter: this.contentBacklogFilterSignal(),
   }));
   public readonly sort = computed<ParkItemAdminListSort>(() => ({
     sortBy: this.sortFieldSignal(),
@@ -125,6 +132,7 @@ export class AdminParkItemsIndexStateFacade {
     adminReviewStatus?: AdminReviewStatus | null;
     category?: ParkItemCategory | null;
     type?: ParkItemType | null;
+    contentBacklogFilter?: ParkItemContentBacklogFilter | null;
   }): void {
     const nextSelectedParkId: string | null = filters.selectedParkId;
     const nextSearchTerm: string = filters.searchTerm;
@@ -133,13 +141,16 @@ export class AdminParkItemsIndexStateFacade {
       filters.adminReviewStatus ?? null;
     const nextCategoryFilter: ParkItemCategory | null = filters.category ?? null;
     const nextTypeFilter: ParkItemType | null = filters.type ?? null;
+    const nextContentBacklogFilter: ParkItemContentBacklogFilter | null =
+      filters.contentBacklogFilter ?? null;
     const hasFilterChanged: boolean =
       this.selectedParkIdSignal() !== nextSelectedParkId ||
       this.searchTermSignal() !== nextSearchTerm ||
       this.visibilityFilterSignal() !== nextVisibilityFilter ||
       this.adminReviewStatusFilterSignal() !== nextAdminReviewStatusFilter ||
       this.categoryFilterSignal() !== nextCategoryFilter ||
-      this.typeFilterSignal() !== nextTypeFilter;
+      this.typeFilterSignal() !== nextTypeFilter ||
+      this.contentBacklogFilterSignal() !== nextContentBacklogFilter;
 
     if (!hasFilterChanged) {
       return;
@@ -151,6 +162,7 @@ export class AdminParkItemsIndexStateFacade {
     this.adminReviewStatusFilterSignal.set(nextAdminReviewStatusFilter);
     this.categoryFilterSignal.set(nextCategoryFilter);
     this.typeFilterSignal.set(nextTypeFilter);
+    this.contentBacklogFilterSignal.set(nextContentBacklogFilter);
     this.currentPageSignal.set(1);
     this.loadData();
   }
@@ -195,6 +207,14 @@ export class AdminParkItemsIndexStateFacade {
     request: BulkAdministrationUpdateRequest,
   ): Observable<BulkAdministrationUpdateResult> {
     return this.parkItemsApiService.updateParkItemsBulkAdministration(request);
+  }
+
+  getParkItemById(id: string): Observable<ParkItem> {
+    return this.parkItemsApiService.getParkItemById(id);
+  }
+
+  updateParkItem(id: string, item: ParkItem): Observable<ParkItem> {
+    return this.parkItemsApiService.updateParkItem(id, item);
   }
 
   loadData(forceReload: boolean = false): void {
