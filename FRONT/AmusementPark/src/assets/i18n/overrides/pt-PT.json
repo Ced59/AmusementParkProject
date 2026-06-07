@@ -1,0 +1,90 @@
+{
+  "home": {
+    "heroCards": {
+      "errorMessage": "Não foi possível carregar os parques em destaque."
+    }
+  },
+  "admin": {
+    "users": {
+      "loadError": "Não foi possível carregar os utilizadores.",
+      "blockAction": "Bloquear conta",
+      "unblockAction": "Desbloquear conta"
+    },
+    "parks": {
+      "zones": {
+        "empty": "Nenhuma zona encontrada para este parque."
+      },
+      "items": {
+        "empty": "Nenhum elemento encontrado para este parque."
+      },
+      "loadError": "Não foi possível carregar os parques."
+    },
+    "operators": {
+      "loadError": "Não foi possível carregar os operadores."
+    },
+    "manufacturers": {
+      "loadError": "Não foi possível carregar os fabricantes."
+    },
+    "images": {
+      "newTagPlaceholder": "ex.: logotipo-oficial"
+    },
+    "workbench": {
+      "navTitle": "Área de trabalho de elementos do parque",
+      "title": "Entrada rápida de elementos",
+      "kicker": "Administração rápida",
+      "subtitle": "Crie, filtre e corrija rapidamente elementos do parque sem abrir a ficha completa.",
+      "quickCreate": {
+        "title": "Criação rápida",
+        "name": "Nome",
+        "park": "Parque",
+        "zone": "Zona",
+        "category": "Categoria",
+        "type": "Tipo",
+        "manufacturer": "Fabricante",
+        "visibility": "Visibilidade",
+        "reviewStatus": "Estado de revisão",
+        "create": "Criar",
+        "createAndContinue": "Criar e continuar",
+        "creating": "A criar…"
+      },
+      "assistantImport": {
+        "title": "Importação assistida",
+        "pasteLines": "Colar linhas",
+        "preview": "Pré-visualizar",
+        "apply": "Aplicar",
+        "template": "Modelo",
+        "mapping": "Mapeamento de campos"
+      },
+      "validations": {
+        "nameRequired": "O nome é obrigatório.",
+        "parkRequired": "O parque é obrigatório.",
+        "duplicateWarning": "Já existe um elemento semelhante.",
+        "invalidTypeForCategory": "O tipo não corresponde à categoria."
+      },
+      "duplicates": {
+        "title": "Possíveis duplicados",
+        "samePark": "Mesmo parque",
+        "sameZone": "Mesma zona",
+        "ignore": "Ignorar",
+        "openExisting": "Abrir existente"
+      },
+      "templates": {
+        "parkOnly": "Apenas parque",
+        "zoneItems": "Zona + elementos",
+        "services": "Serviços sem zona",
+        "captainCoaster": "Importação enriquecida do Captain Coaster"
+      }
+    }
+  },
+  "parkItems": {
+    "fields": {
+      "seatingType": "Tipo de assento",
+      "hasSingleRider": "Fila single rider"
+    }
+  },
+  "images": {
+    "ownerTypes": {
+      "USER": "Utilizador"
+    }
+  }
+}
