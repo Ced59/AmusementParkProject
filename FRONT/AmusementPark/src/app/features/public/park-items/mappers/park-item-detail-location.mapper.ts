@@ -24,9 +24,9 @@ export function buildLocationPoints(item: ParkItem, currentLanguage: string): Pa
     id: 'general',
     labelKey: 'parkItems.locations.general',
     iconClass: 'pi pi-map-marker',
-    latitude: item.latitude,
-    longitude: item.longitude,
-    coordinatesLabel: formatCoordinates(item.latitude, item.longitude, currentLanguage),
+    latitude: item.latitude!,
+    longitude: item.longitude!,
+    coordinatesLabel: formatCoordinates(item.latitude!, item.longitude!, currentLanguage),
     isGeneralFallback: true
   }];
 }
@@ -62,7 +62,7 @@ export function resolveMapCenter(points: ParkItemLocationPointViewModel[], item:
   }
 
   if (isValidCoordinatePair(item.latitude, item.longitude)) {
-    return [item.latitude, item.longitude];
+    return [item.latitude!, item.longitude!];
   }
 
   if (park && isValidCoordinatePair(park.latitude, park.longitude)) {

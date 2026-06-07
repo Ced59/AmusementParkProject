@@ -93,10 +93,12 @@ export function createAdminParkItemQuickCreateDraftFromParkItem(
     category: item.category,
     type: item.type,
     manufacturerId: item.attractionDetails?.manufacturerId ?? null,
-    coordinates: {
-      latitude: item.latitude,
-      longitude: item.longitude
-    },
+    coordinates: hasValidCoordinates(item.latitude, item.longitude)
+      ? {
+          latitude: item.latitude!,
+          longitude: item.longitude!
+        }
+      : null,
     isVisible: item.isVisible ?? ADMIN_PARK_ITEM_WORKBENCH_DEFAULTS.isVisible,
     adminReviewStatus: item.adminReviewStatus ?? ADMIN_PARK_ITEM_WORKBENCH_DEFAULTS.adminReviewStatus
   });
@@ -164,6 +166,13 @@ export function getAllowedTypesForAdminParkItemCategory(
   category: ParkItemCategory
 ): ReadonlyArray<ParkItemType> {
   return getAllowedTypes(category);
+}
+
+function hasValidCoordinates(latitude: number | null | undefined, longitude: number | null | undefined): boolean {
+  return latitude != null
+    && longitude != null
+    && Number.isFinite(latitude)
+    && Number.isFinite(longitude);
 }
 
 function normalizeOptionalText(value: string | null | undefined): string | null {

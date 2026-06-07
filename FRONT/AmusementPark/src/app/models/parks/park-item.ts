@@ -13,8 +13,8 @@ export interface ParkItem {
   category: ParkItemCategory;
   type: ParkItemType;
   subtype?: string | null;
-  latitude: number;
-  longitude: number;
+  latitude: number | null;
+  longitude: number | null;
   descriptions?: LocalizedItem<string>[];
   attractionDetails?: AttractionDetails | null;
   attractionLocations?: AttractionLocations | null;

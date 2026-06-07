@@ -38,7 +38,7 @@ internal static class ParkItemsHttpMappers
             AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
 
-        parkItem.SetPosition(dto.Latitude, dto.Longitude);
+        ApplyOptionalPosition(parkItem, dto.Latitude, dto.Longitude);
         return parkItem;
     }
 
@@ -67,11 +67,7 @@ internal static class ParkItemsHttpMappers
             AdminReviewStatus = dto.AdminReviewStatus.ToOptionalDomain() ?? ParkItemAdministrationDefaults.QuickCreateAdminReviewStatus,
         };
 
-        if (dto.Latitude.HasValue && dto.Longitude.HasValue)
-        {
-            parkItem.SetPosition(dto.Latitude.Value, dto.Longitude.Value);
-        }
-
+        ApplyOptionalPosition(parkItem, dto.Latitude, dto.Longitude);
         ParkItemAdministrationDefaults.ApplyQuickCreateDefaults(parkItem, fallbackPosition);
         return parkItem;
     }
@@ -95,7 +91,7 @@ internal static class ParkItemsHttpMappers
             AdminReviewStatus = dto.AdminReviewStatus.ToDomain(),
         };
 
-        parkItem.SetPosition(dto.Latitude, dto.Longitude);
+        ApplyOptionalPosition(parkItem, dto.Latitude, dto.Longitude);
         return parkItem;
     }
 
@@ -112,8 +108,8 @@ internal static class ParkItemsHttpMappers
             Category = value.Category.ToHttp(),
             Type = value.Type.ToHttp(),
             Subtype = value.Subtype,
-            Latitude = value.Position?.Latitude ?? 0.0,
-            Longitude = value.Position?.Longitude ?? 0.0,
+            Latitude = value.Position?.Latitude,
+            Longitude = value.Position?.Longitude,
             Descriptions = value.Descriptions.ToHttp(),
             AttractionDetails = value.AttractionDetails?.ToHttp(),
             AttractionLocations = value.AttractionLocations?.ToHttp(),
@@ -356,6 +352,17 @@ internal static class ParkItemsHttpMappers
         {
             ManufacturerId = manufacturerId.Trim(),
         };
+    }
+
+    private static void ApplyOptionalPosition(ParkItem parkItem, double? latitude, double? longitude)
+    {
+        if (!latitude.HasValue || !longitude.HasValue)
+        {
+            parkItem.ClearPosition();
+            return;
+        }
+
+        parkItem.SetPosition(latitude.Value, longitude.Value);
     }
 
     private static AttractionAccessCondition ToDomain(this AttractionAccessConditionDto dto)
