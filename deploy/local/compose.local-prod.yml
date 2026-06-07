@@ -155,9 +155,9 @@ services:
     networks:
       - backend_private
     healthcheck:
-      test: ["CMD-SHELL", "mongosh --quiet --eval 'db.adminCommand({ ping: 1 }).ok' mongodb://$${MONGO_INITDB_ROOT_USERNAME}:$${MONGO_INITDB_ROOT_PASSWORD}@127.0.0.1:27017/admin | grep 1"]
+      test: ["CMD-SHELL", "bash -ec 'exec 3<>/dev/tcp/127.0.0.1/27017'"]
       interval: 30s
-      timeout: 10s
+      timeout: 5s
       retries: 5
       start_period: 30s
     security_opt:

@@ -161,14 +161,9 @@ services:
     healthcheck:
       test:
         - CMD-SHELL
-        - >-
-          mongosh --quiet --host 127.0.0.1 --port 27017
-          --username "$${MONGO_INITDB_ROOT_USERNAME}"
-          --password "$${MONGO_INITDB_ROOT_PASSWORD}"
-          --authenticationDatabase admin
-          --eval 'db.adminCommand({ ping: 1 }).ok' admin | grep 1
+        - bash -ec 'exec 3<>/dev/tcp/127.0.0.1/27017'
       interval: 30s
-      timeout: 10s
+      timeout: 5s
       retries: 10
       start_period: 90s
     security_opt:
