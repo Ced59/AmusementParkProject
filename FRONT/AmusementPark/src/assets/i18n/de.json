@@ -353,6 +353,16 @@
       "title": "Park-JSON-Upsert",
       "kicker": "Strukturierter Import · Admin",
       "subtitle": "Füge ein vollständiges oder teilweises Park-JSON ein, prüfe die Änderungen und wende sie an, ohne fehlende Felder zu überschreiben.",
+      "wizard": {
+        "label": "Graph-Upsert-Assistent",
+        "steps": {
+          "target": "Ziel",
+          "mode": "Modus",
+          "graph": "Graph",
+          "preview": "Vorschau",
+          "expert": "Experten-JSON"
+        }
+      },
       "target": {
         "title": "Zielpark",
         "description": "Wähle für Updates immer den vorhandenen Park aus, damit die echte technische ID verwendet wird.",
@@ -367,10 +377,38 @@
         "title": "JSON-Dokument",
         "description": "Fehlende Eigenschaften bleiben erhalten. Zonen/Items-Listen führen Upserts nur für enthaltene Elemente aus."
       },
+      "mode": {
+        "title": "Upsert-Modus",
+        "description": "Waehle vor der Vorschau, wie der Graph vorhandene Sammlungen behandelt.",
+        "merge": {
+          "title": "Zusammenfuehren",
+          "description": "Fehlende Sammlungen bleiben erhalten; nur enthaltene Entitaeten werden upserted."
+        },
+        "replaceCollections": {
+          "title": "Sammlungen ersetzen",
+          "description": "Erlaubt kontrolliertes Ersetzen fuer die von diesem Graph gesteuerten Sammlungen."
+        }
+      },
+      "graph": {
+        "title": "Graph-Uebersicht",
+        "description": "Pruefe die Graph-Struktur vor der Vorschau.",
+        "identity": "Identitaet",
+        "country": "Land",
+        "zones": "Zonen",
+        "items": "Items",
+        "images": "Bilder",
+        "references": "Referenzen",
+        "empty": "Nicht angegeben",
+        "invalidJson": "Das JSON-Dokument ist ungueltig. Oeffne Experten-JSON zur Korrektur."
+      },
       "actions": {
         "search": "Suchen",
         "searching": "Suche…",
         "clear": "Entfernen",
+        "back": "Zurueck",
+        "next": "Weiter",
+        "expert": "Experten-JSON",
+        "graph": "Graph-Uebersicht",
         "preview": "Prüfen",
         "previewing": "Prüfung…",
         "apply": "Anwenden",
@@ -391,6 +429,7 @@
         "updated": "Geändert",
         "warnings": "Warnungen",
         "errors": "Fehler",
+        "pending": "Fuehre eine Vorschau aus, um Aenderungen vor dem Anwenden zu pruefen.",
         "applied": "Upsert erfolgreich angewendet.",
         "field": "Feld",
         "oldValue": "Alt",

@@ -353,6 +353,16 @@
       "title": "Upsert JSON de parc",
       "kicker": "Import structuré · Admin",
       "subtitle": "Collez un JSON de parc complet ou partiel, prévisualisez les changements, puis appliquez-les sans écraser les champs absents.",
+      "wizard": {
+        "label": "Assistant Graph Upsert",
+        "steps": {
+          "target": "Parc",
+          "mode": "Mode",
+          "graph": "Graph",
+          "preview": "Preview",
+          "expert": "JSON expert"
+        }
+      },
       "target": {
         "title": "Parc cible",
         "description": "Pour une mise à jour, sélectionnez toujours le parc existant afin d’utiliser son identifiant réel.",
@@ -367,10 +377,38 @@
         "title": "Document JSON",
         "description": "Les propriétés absentes sont conservées. Les tableaux zones/items effectuent des upserts des éléments présents."
       },
+      "mode": {
+        "title": "Mode d'upsert",
+        "description": "Choisissez le comportement du graph sur les collections existantes avant la preview.",
+        "merge": {
+          "title": "Fusion",
+          "description": "Conserve les collections absentes et upsert uniquement les entites presentes dans le graph."
+        },
+        "replaceCollections": {
+          "title": "Remplacement des collections",
+          "description": "Active le remplacement controle pour les collections pilotees par ce graph."
+        }
+      },
+      "graph": {
+        "title": "Vue graph",
+        "description": "Controlez la structure du graph avant preview.",
+        "identity": "Identite",
+        "country": "Pays",
+        "zones": "Zones",
+        "items": "Items",
+        "images": "Images",
+        "references": "References",
+        "empty": "Non renseigne",
+        "invalidJson": "Le document JSON est invalide. Ouvrez JSON expert pour le corriger."
+      },
       "actions": {
         "search": "Rechercher",
         "searching": "Recherche…",
         "clear": "Retirer",
+        "back": "Retour",
+        "next": "Suivant",
+        "expert": "JSON expert",
+        "graph": "Vue graph",
         "preview": "Prévisualiser",
         "previewing": "Prévisualisation…",
         "apply": "Appliquer",
@@ -391,6 +429,7 @@
         "updated": "Modifiés",
         "warnings": "Alertes",
         "errors": "Erreurs",
+        "pending": "Lancez une preview pour inspecter les changements avant application.",
         "applied": "Upsert appliqué avec succès.",
         "field": "Champ",
         "oldValue": "Ancien",

@@ -5,6 +5,16 @@
       "title": "Upsert JSON parku",
       "kicker": "Import strukturalny · Admin",
       "subtitle": "Wklej pełny lub częściowy JSON parku, sprawdź zmiany i zastosuj je bez nadpisywania brakujących pól.",
+      "wizard": {
+        "label": "Asystent Graph Upsert",
+        "steps": {
+          "target": "Park",
+          "mode": "Tryb",
+          "graph": "Graph",
+          "preview": "Podglad",
+          "expert": "JSON ekspert"
+        }
+      },
       "target": {
         "title": "Park docelowy",
         "description": "Przy aktualizacji zawsze wybierz istniejący park, aby użyć jego prawdziwego identyfikatora.",
@@ -19,10 +29,38 @@
         "title": "Dokument JSON",
         "description": "Brakujące właściwości są zachowywane. Tablice zones/items wykonują upsert tylko zawartych elementów."
       },
+      "mode": {
+        "title": "Tryb upsert",
+        "description": "Wybierz, jak graph ma traktowac istniejace kolekcje przed podgladem.",
+        "merge": {
+          "title": "Scal",
+          "description": "Zachowuje brakujace kolekcje i upsertuje tylko encje obecne w graph."
+        },
+        "replaceCollections": {
+          "title": "Zastap kolekcje",
+          "description": "Pozwala kontrolowanie zastapic kolekcje zarzadzane przez ten graph."
+        }
+      },
+      "graph": {
+        "title": "Widok graph",
+        "description": "Sprawdz strukture graph przed podgladem.",
+        "identity": "Tozsamosc",
+        "country": "Kraj",
+        "zones": "Strefy",
+        "items": "Items",
+        "images": "Obrazy",
+        "references": "Referencje",
+        "empty": "Brak",
+        "invalidJson": "Dokument JSON jest nieprawidlowy. Otworz JSON ekspert, aby go poprawic."
+      },
       "actions": {
         "search": "Szukaj",
         "searching": "Szukanie…",
         "clear": "Wyczyść",
+        "back": "Wstecz",
+        "next": "Dalej",
+        "expert": "JSON ekspert",
+        "graph": "Widok graph",
         "preview": "Podgląd",
         "previewing": "Podgląd…",
         "apply": "Zastosuj",
@@ -43,6 +81,7 @@
         "updated": "Zmienione",
         "warnings": "Ostrzeżenia",
         "errors": "Błędy",
+        "pending": "Uruchom podglad, aby sprawdzic zmiany przed zastosowaniem.",
         "applied": "Upsert zastosowany pomyślnie.",
         "field": "Pole",
         "oldValue": "Stare",

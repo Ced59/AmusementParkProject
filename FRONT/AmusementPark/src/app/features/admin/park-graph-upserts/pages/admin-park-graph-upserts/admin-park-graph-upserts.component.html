@@ -7,10 +7,39 @@
     </div>
   </header>
 
-  <div class="park-graph-upserts__grid">
+  <nav class="graph-wizard" [attr.aria-label]="'admin.parkGraphUpserts.wizard.label' | translate">
+    @for (step of wizardSteps; track trackWizardStep($index, step)) {
+      <button
+        type="button"
+        class="graph-wizard__step"
+        [class.active]="isWizardStepActive(step)"
+        [class.done]="isWizardStepDone(step)"
+        (click)="selectWorkspaceTab(step)">
+        <span>{{ $index + 1 }}</span>
+        <strong>{{ ('admin.parkGraphUpserts.wizard.steps.' + step) | translate }}</strong>
+      </button>
+    }
+
+    <button
+      type="button"
+      class="graph-wizard__step graph-wizard__step--expert"
+      [class.active]="activeWorkspaceTab === 'expert'"
+      (click)="openExpertJson()">
+      <span class="pi pi-code" aria-hidden="true"></span>
+      <strong>{{ 'admin.parkGraphUpserts.wizard.steps.expert' | translate }}</strong>
+    </button>
+  </nav>
+
+  @if (uiError) {
+    <p class="admin-alert admin-alert--error">{{ uiError | translate }}</p>
+  }
+
+  @if (activeWorkspaceTab === 'target') {
     <article class="admin-card park-graph-upserts__panel">
-      <h2>{{ 'admin.parkGraphUpserts.target.title' | translate }}</h2>
-      <p class="admin-muted">{{ 'admin.parkGraphUpserts.target.description' | translate }}</p>
+      <div>
+        <h2>{{ 'admin.parkGraphUpserts.target.title' | translate }}</h2>
+        <p class="admin-muted">{{ 'admin.parkGraphUpserts.target.description' | translate }}</p>
+      </div>
 
       <div class="park-search-row">
         <input
@@ -20,6 +49,7 @@
           [placeholder]="'admin.parkGraphUpserts.target.searchPlaceholder' | translate"
           (keydown.enter)="searchParks()">
         <button type="button" class="btn-nav" (click)="searchParks()" [disabled]="isSearching">
+          <span class="pi pi-search" aria-hidden="true"></span>
           {{ (isSearching ? 'admin.parkGraphUpserts.actions.searching' : 'admin.parkGraphUpserts.actions.search') | translate }}
         </button>
       </div>
@@ -30,6 +60,7 @@
           <strong>{{ selectedPark.name }}</strong>
           <code>{{ selectedPark.id }}</code>
           <button type="button" class="btn-nav btn-nav--ghost" (click)="clearSelectedPark()">
+            <span class="pi pi-times" aria-hidden="true"></span>
             {{ 'admin.parkGraphUpserts.actions.clear' | translate }}
           </button>
         </div>
@@ -41,7 +72,7 @@
             <button type="button" role="listitem" class="park-result" [class.active]="selectedPark?.id === park.id" (click)="selectPark(park)">
               <span>
                 <strong>{{ park.name }}</strong>
-                <small>{{ park.city || '—' }} · {{ park.countryCode || '—' }}</small>
+                <small>{{ park.city || '-' }} - {{ park.countryCode || '-' }}</small>
               </span>
               <code>{{ park.id }}</code>
             </button>
@@ -54,12 +85,117 @@
         <span>{{ 'admin.parkGraphUpserts.options.createIfMissing' | translate }}</span>
       </label>
 
-      <label class="admin-check admin-check--muted">
-        <input type="checkbox" [(ngModel)]="replaceCollections">
-        <span>{{ 'admin.parkGraphUpserts.options.replaceCollections' | translate }}</span>
-      </label>
+      <div class="wizard-actions">
+        <button type="button" class="btn-nav" (click)="continueFromTarget()" [disabled]="!canContinueFromTarget">
+          {{ 'admin.parkGraphUpserts.actions.next' | translate }}
+          <span class="pi pi-arrow-right" aria-hidden="true"></span>
+        </button>
+      </div>
     </article>
+  }
 
+  @if (activeWorkspaceTab === 'mode') {
+    <article class="admin-card park-graph-upserts__panel">
+      <div>
+        <h2>{{ 'admin.parkGraphUpserts.mode.title' | translate }}</h2>
+        <p class="admin-muted">{{ 'admin.parkGraphUpserts.mode.description' | translate }}</p>
+      </div>
+
+      <div class="mode-choice-list">
+        <label class="mode-choice" [class.active]="graphMode === 'merge'">
+          <input type="radio" name="graphMode" [ngModel]="graphMode" value="merge" (ngModelChange)="selectGraphMode('merge')">
+          <span>
+            <strong>{{ 'admin.parkGraphUpserts.mode.merge.title' | translate }}</strong>
+            <small>{{ 'admin.parkGraphUpserts.mode.merge.description' | translate }}</small>
+          </span>
+        </label>
+
+        <label class="mode-choice" [class.active]="graphMode === 'replaceCollections'">
+          <input type="radio" name="graphMode" [ngModel]="graphMode" value="replaceCollections" (ngModelChange)="selectGraphMode('replaceCollections')">
+          <span>
+            <strong>{{ 'admin.parkGraphUpserts.mode.replaceCollections.title' | translate }}</strong>
+            <small>{{ 'admin.parkGraphUpserts.mode.replaceCollections.description' | translate }}</small>
+          </span>
+        </label>
+      </div>
+
+      <div class="wizard-actions">
+        <button type="button" class="btn-nav btn-nav--ghost" (click)="selectWorkspaceTab('target')">
+          <span class="pi pi-arrow-left" aria-hidden="true"></span>
+          {{ 'admin.parkGraphUpserts.actions.back' | translate }}
+        </button>
+        <button type="button" class="btn-nav" (click)="continueFromMode()">
+          {{ 'admin.parkGraphUpserts.actions.next' | translate }}
+          <span class="pi pi-arrow-right" aria-hidden="true"></span>
+        </button>
+      </div>
+    </article>
+  }
+
+  @if (activeWorkspaceTab === 'graph') {
+    <article class="admin-card park-graph-upserts__editor">
+      <div class="editor-head">
+        <div>
+          <h2>{{ 'admin.parkGraphUpserts.graph.title' | translate }}</h2>
+          <p class="admin-muted">{{ 'admin.parkGraphUpserts.graph.description' | translate }}</p>
+        </div>
+        <div class="editor-actions">
+          <button type="button" class="btn-nav btn-nav--ghost" (click)="openExpertJson()">
+            <span class="pi pi-code" aria-hidden="true"></span>
+            {{ 'admin.parkGraphUpserts.actions.expert' | translate }}
+          </button>
+          <button type="button" class="btn-nav" (click)="preview()" [disabled]="isPreviewing">
+            <span class="pi pi-eye" aria-hidden="true"></span>
+            {{ (isPreviewing ? 'admin.parkGraphUpserts.actions.previewing' : 'admin.parkGraphUpserts.actions.preview') | translate }}
+          </button>
+        </div>
+      </div>
+
+      @if (documentSummary; as summary) {
+        <div class="graph-summary">
+          <span>
+            <small>{{ 'admin.parkGraphUpserts.graph.identity' | translate }}</small>
+            <strong>{{ summary.name || ('admin.parkGraphUpserts.graph.empty' | translate) }}</strong>
+          </span>
+          <span>
+            <small>{{ 'admin.parkGraphUpserts.graph.country' | translate }}</small>
+            <strong>{{ summary.countryCode || ('admin.parkGraphUpserts.graph.empty' | translate) }}</strong>
+          </span>
+          <span>
+            <small>{{ 'admin.parkGraphUpserts.graph.zones' | translate }}</small>
+            <strong>{{ summary.zoneCount }}</strong>
+          </span>
+          <span>
+            <small>{{ 'admin.parkGraphUpserts.graph.items' | translate }}</small>
+            <strong>{{ summary.itemCount }}</strong>
+          </span>
+          <span>
+            <small>{{ 'admin.parkGraphUpserts.graph.images' | translate }}</small>
+            <strong>{{ summary.imageCount }}</strong>
+          </span>
+          <span>
+            <small>{{ 'admin.parkGraphUpserts.graph.references' | translate }}</small>
+            <strong>{{ summary.operatorCount + summary.founderCount + summary.manufacturerCount }}</strong>
+          </span>
+        </div>
+      } @else {
+        <p class="admin-alert admin-alert--error">{{ 'admin.parkGraphUpserts.graph.invalidJson' | translate }}</p>
+      }
+
+      <div class="wizard-actions">
+        <button type="button" class="btn-nav btn-nav--ghost" (click)="selectWorkspaceTab('mode')">
+          <span class="pi pi-arrow-left" aria-hidden="true"></span>
+          {{ 'admin.parkGraphUpserts.actions.back' | translate }}
+        </button>
+        <button type="button" class="btn-nav" (click)="preview()" [disabled]="isPreviewing">
+          {{ (isPreviewing ? 'admin.parkGraphUpserts.actions.previewing' : 'admin.parkGraphUpserts.actions.preview') | translate }}
+          <span class="pi pi-arrow-right" aria-hidden="true"></span>
+        </button>
+      </div>
+    </article>
+  }
+
+  @if (activeWorkspaceTab === 'expert') {
     <article class="admin-card park-graph-upserts__editor">
       <div class="editor-head">
         <div>
@@ -67,98 +203,116 @@
           <p class="admin-muted">{{ 'admin.parkGraphUpserts.editor.description' | translate }}</p>
         </div>
         <div class="editor-actions">
-          <button type="button" class="btn-nav btn-nav--ghost" (click)="preview()" [disabled]="isPreviewing">
-            {{ (isPreviewing ? 'admin.parkGraphUpserts.actions.previewing' : 'admin.parkGraphUpserts.actions.preview') | translate }}
+          <button type="button" class="btn-nav btn-nav--ghost" (click)="selectWorkspaceTab('graph')">
+            <span class="pi pi-sitemap" aria-hidden="true"></span>
+            {{ 'admin.parkGraphUpserts.actions.graph' | translate }}
           </button>
-          <button type="button" class="btn-nav" (click)="apply()" [disabled]="!canApply">
-            {{ (isApplying ? 'admin.parkGraphUpserts.actions.applying' : 'admin.parkGraphUpserts.actions.apply') | translate }}
+          <button type="button" class="btn-nav" (click)="preview()" [disabled]="isPreviewing">
+            <span class="pi pi-eye" aria-hidden="true"></span>
+            {{ (isPreviewing ? 'admin.parkGraphUpserts.actions.previewing' : 'admin.parkGraphUpserts.actions.preview') | translate }}
           </button>
         </div>
       </div>
 
-      @if (uiError) {
-        <p class="admin-alert admin-alert--error">{{ uiError | translate }}</p>
-      }
-
       <textarea class="json-editor" [(ngModel)]="jsonText" spellcheck="false" aria-label="JSON"></textarea>
     </article>
-  </div>
+  }
 
-  @if (previewResult) {
+  @if (activeWorkspaceTab === 'preview') {
     <article class="admin-card park-graph-upserts__result">
       <header class="result-head">
         <div>
           <h2>{{ 'admin.parkGraphUpserts.result.title' | translate }}</h2>
-          <p class="admin-muted">
-            {{ previewResult.targetParkName || ('admin.parkGraphUpserts.result.noTarget' | translate) }}
-            @if (previewResult.targetParkId) {
-              <code>{{ previewResult.targetParkId }}</code>
-            }
-          </p>
+          @if (previewResult) {
+            <p class="admin-muted">
+              {{ previewResult.targetParkName || ('admin.parkGraphUpserts.result.noTarget' | translate) }}
+              @if (previewResult.targetParkId) {
+                <code>{{ previewResult.targetParkId }}</code>
+              }
+            </p>
+          } @else {
+            <p class="admin-muted">{{ 'admin.parkGraphUpserts.result.pending' | translate }}</p>
+          }
         </div>
-        <div class="result-counts">
-          <span>{{ 'admin.parkGraphUpserts.result.created' | translate }} <strong>{{ previewResult.counts.created }}</strong></span>
-          <span>{{ 'admin.parkGraphUpserts.result.updated' | translate }} <strong>{{ previewResult.counts.updated }}</strong></span>
-          <span>{{ 'admin.parkGraphUpserts.result.warnings' | translate }} <strong>{{ previewResult.counts.warnings }}</strong></span>
-          <span>{{ 'admin.parkGraphUpserts.result.errors' | translate }} <strong>{{ previewResult.counts.errors }}</strong></span>
-        </div>
+
+        @if (previewResult) {
+          <div class="result-counts">
+            <span>{{ 'admin.parkGraphUpserts.result.created' | translate }} <strong>{{ previewResult.counts.created }}</strong></span>
+            <span>{{ 'admin.parkGraphUpserts.result.updated' | translate }} <strong>{{ previewResult.counts.updated }}</strong></span>
+            <span>{{ 'admin.parkGraphUpserts.result.warnings' | translate }} <strong>{{ previewResult.counts.warnings }}</strong></span>
+            <span>{{ 'admin.parkGraphUpserts.result.errors' | translate }} <strong>{{ previewResult.counts.errors }}</strong></span>
+          </div>
+        }
       </header>
 
       @if (lastAppliedResult) {
         <p class="admin-alert admin-alert--success">{{ 'admin.parkGraphUpserts.result.applied' | translate }}</p>
       }
 
-      @if (previewResult.errors.length > 0) {
-        <div class="message-list message-list--error">
-          @for (error of previewResult.errors; track error) {
-            <p>{{ error }}</p>
-          }
-        </div>
-      }
-
-      @if (previewResult.warnings.length > 0) {
-        <div class="message-list message-list--warning">
-          @for (warning of previewResult.warnings; track warning) {
-            <p>{{ warning }}</p>
-          }
-        </div>
-      }
-
-      <div class="change-list">
-        @for (change of changes; track trackChange($index, change)) {
-          <details class="change-card" [open]="change.changeType !== 'Unchanged'">
-            <summary>
-              <span>
-                <strong>{{ change.displayName }}</strong>
-                <small>{{ change.entityType }} · {{ change.matchedBy }}</small>
-              </span>
-              <em [class]="'change-status change-status--' + change.changeType.toLowerCase()">{{ change.changeType }}</em>
-            </summary>
-
-            @if (change.fields.length > 0) {
-              <table class="admin-mini-table">
-                <thead>
-                  <tr>
-                    <th>{{ 'admin.parkGraphUpserts.result.field' | translate }}</th>
-                    <th>{{ 'admin.parkGraphUpserts.result.oldValue' | translate }}</th>
-                    <th>{{ 'admin.parkGraphUpserts.result.newValue' | translate }}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @for (field of change.fields; track field.field) {
-                    <tr>
-                      <td [attr.data-label]="'admin.parkGraphUpserts.result.field' | translate">{{ field.field }}</td>
-                      <td [attr.data-label]="'admin.parkGraphUpserts.result.oldValue' | translate"><code>{{ field.oldValue || '∅' }}</code></td>
-                      <td [attr.data-label]="'admin.parkGraphUpserts.result.newValue' | translate"><code>{{ field.newValue || '∅' }}</code></td>
-                    </tr>
-                  }
-                </tbody>
-              </table>
-            } @else {
-              <p class="admin-muted">{{ 'admin.parkGraphUpserts.result.noFieldChange' | translate }}</p>
+      @if (previewResult) {
+        @if (previewResult.errors.length > 0) {
+          <div class="message-list message-list--error">
+            @for (error of previewResult.errors; track error) {
+              <p>{{ error }}</p>
             }
-          </details>
+          </div>
         }
+
+        @if (previewResult.warnings.length > 0) {
+          <div class="message-list message-list--warning">
+            @for (warning of previewResult.warnings; track warning) {
+              <p>{{ warning }}</p>
+            }
+          </div>
+        }
+
+        <div class="change-list">
+          @for (change of changes; track trackChange($index, change)) {
+            <details class="change-card" [open]="change.changeType !== 'Unchanged'">
+              <summary>
+                <span>
+                  <strong>{{ change.displayName }}</strong>
+                  <small>{{ change.entityType }} - {{ change.matchedBy }}</small>
+                </span>
+                <em [class]="'change-status change-status--' + change.changeType.toLowerCase()">{{ change.changeType }}</em>
+              </summary>
+
+              @if (change.fields.length > 0) {
+                <table class="admin-mini-table">
+                  <thead>
+                    <tr>
+                      <th>{{ 'admin.parkGraphUpserts.result.field' | translate }}</th>
+                      <th>{{ 'admin.parkGraphUpserts.result.oldValue' | translate }}</th>
+                      <th>{{ 'admin.parkGraphUpserts.result.newValue' | translate }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (field of change.fields; track field.field) {
+                      <tr>
+                        <td [attr.data-label]="'admin.parkGraphUpserts.result.field' | translate">{{ field.field }}</td>
+                        <td [attr.data-label]="'admin.parkGraphUpserts.result.oldValue' | translate"><code>{{ field.oldValue || '-' }}</code></td>
+                        <td [attr.data-label]="'admin.parkGraphUpserts.result.newValue' | translate"><code>{{ field.newValue || '-' }}</code></td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              } @else {
+                <p class="admin-muted">{{ 'admin.parkGraphUpserts.result.noFieldChange' | translate }}</p>
+              }
+            </details>
+          }
+        </div>
+      }
+
+      <div class="wizard-actions">
+        <button type="button" class="btn-nav btn-nav--ghost" (click)="selectWorkspaceTab('graph')">
+          <span class="pi pi-arrow-left" aria-hidden="true"></span>
+          {{ 'admin.parkGraphUpserts.actions.back' | translate }}
+        </button>
+        <button type="button" class="btn-nav" (click)="apply()" [disabled]="!canApply">
+          <span class="pi pi-check" aria-hidden="true"></span>
+          {{ (isApplying ? 'admin.parkGraphUpserts.actions.applying' : 'admin.parkGraphUpserts.actions.apply') | translate }}
+        </button>
       </div>
     </article>
   }

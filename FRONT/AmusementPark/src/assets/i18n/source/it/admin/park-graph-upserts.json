@@ -5,6 +5,16 @@
       "title": "Upsert JSON del parco",
       "kicker": "Import strutturato · Admin",
       "subtitle": "Incolla un JSON completo o parziale del parco, visualizza le modifiche e applicale senza sovrascrivere i campi assenti.",
+      "wizard": {
+        "label": "Procedura Graph Upsert",
+        "steps": {
+          "target": "Parco",
+          "mode": "Modo",
+          "graph": "Graph",
+          "preview": "Preview",
+          "expert": "JSON esperto"
+        }
+      },
       "target": {
         "title": "Parco di destinazione",
         "description": "Per aggiornare, seleziona sempre il parco esistente per usare il suo id reale.",
@@ -19,10 +29,38 @@
         "title": "Documento JSON",
         "description": "Le proprietà assenti sono conservate. Gli array zone/items eseguono upsert solo sugli elementi presenti."
       },
+      "mode": {
+        "title": "Modo upsert",
+        "description": "Scegli come il graph tratta le collezioni esistenti prima della preview.",
+        "merge": {
+          "title": "Merge",
+          "description": "Mantiene le collezioni assenti e aggiorna solo le entita presenti nel graph."
+        },
+        "replaceCollections": {
+          "title": "Sostituisci collezioni",
+          "description": "Consente sostituzione controllata per le collezioni gestite da questo graph."
+        }
+      },
+      "graph": {
+        "title": "Vista graph",
+        "description": "Controlla la struttura del graph prima della preview.",
+        "identity": "Identita",
+        "country": "Paese",
+        "zones": "Zone",
+        "items": "Items",
+        "images": "Immagini",
+        "references": "Riferimenti",
+        "empty": "Non indicato",
+        "invalidJson": "Il documento JSON non e valido. Apri JSON esperto per correggerlo."
+      },
       "actions": {
         "search": "Cerca",
         "searching": "Ricerca…",
         "clear": "Rimuovi",
+        "back": "Indietro",
+        "next": "Avanti",
+        "expert": "JSON esperto",
+        "graph": "Vista graph",
         "preview": "Anteprima",
         "previewing": "Anteprima…",
         "apply": "Applica",
@@ -43,6 +81,7 @@
         "updated": "Modificati",
         "warnings": "Avvisi",
         "errors": "Errori",
+        "pending": "Esegui una preview per controllare le modifiche prima di applicare.",
         "applied": "Upsert applicato correttamente.",
         "field": "Campo",
         "oldValue": "Vecchio",
