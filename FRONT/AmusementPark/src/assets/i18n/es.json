@@ -1011,6 +1011,53 @@
         "accessConditions": "Para elementos del parque, accessConditions puede crear o actualizar condiciones y sus tipos reutilizables."
       }
     },
+    "workbench": {
+      "navTitle": "Workbench de elementos",
+      "title": "Alta rápida de elementos",
+      "kicker": "Admin Fast Edition",
+      "subtitle": "Crea, filtra y corrige rápidamente elementos de un parque sin abrir la ficha completa.",
+      "quickCreate": {
+        "title": "Creación rápida",
+        "name": "Nombre",
+        "park": "Parque",
+        "zone": "Zona",
+        "category": "Categoría",
+        "type": "Tipo",
+        "manufacturer": "Constructor",
+        "visibility": "Visibilidad",
+        "reviewStatus": "Estado de revisión",
+        "create": "Crear",
+        "createAndContinue": "Crear y continuar",
+        "creating": "Creando…"
+      },
+      "assistantImport": {
+        "title": "Importación asistida",
+        "pasteLines": "Pegar líneas",
+        "preview": "Previsualizar",
+        "apply": "Aplicar",
+        "template": "Plantilla",
+        "mapping": "Mapeo"
+      },
+      "validations": {
+        "nameRequired": "El nombre es obligatorio.",
+        "parkRequired": "El parque es obligatorio.",
+        "duplicateWarning": "Ya existe un elemento parecido.",
+        "invalidTypeForCategory": "El tipo no corresponde a la categoría."
+      },
+      "duplicates": {
+        "title": "Duplicados potenciales",
+        "samePark": "Mismo parque",
+        "sameZone": "Misma zona",
+        "ignore": "Ignorar",
+        "openExisting": "Abrir existente"
+      },
+      "templates": {
+        "parkOnly": "Solo parque",
+        "zoneItems": "Zona + elementos",
+        "services": "Servicios sin zona",
+        "captainCoaster": "Importación Captain Coaster enriquecida"
+      }
+    },
     "parkGraphUpserts": {
       "navTitle": "Upsert JSON parque",
       "title": "Upsert JSON de parque",
