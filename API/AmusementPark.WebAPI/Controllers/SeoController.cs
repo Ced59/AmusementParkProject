@@ -98,7 +98,7 @@ public sealed class SeoController : ControllerBase
     private async Task<IActionResult> GetSitemapDocumentAsync(string? sectionKey, CancellationToken cancellationToken)
     {
         ApplicationResult<SitemapDocumentResult> result = await this.getPublicSitemapDocumentQueryHandler.HandleAsync(
-            new GetPublicSitemapDocumentQuery(sectionKey, this.GetPublicBaseUrl(), this.settings.SupportedLanguages, this.settings.MaxDynamicUrlsPerType),
+            new GetPublicSitemapDocumentQuery(sectionKey, this.GetPublicBaseUrl(), this.settings.SupportedLanguages),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
