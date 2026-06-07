@@ -22,9 +22,9 @@ public sealed class ParkItemDto
 
     public string? Subtype { get; set; }
 
-    public double Latitude { get; set; }
+    public double? Latitude { get; set; }
 
-    public double Longitude { get; set; }
+    public double? Longitude { get; set; }
 
     public List<LocalizedTextDto> Descriptions { get; set; } = new();
 
