@@ -77,6 +77,41 @@
   justify-content: flex-end;
 }
 
+.admin-bulk-bar__actions select,
+.admin-inline-select {
+  min-height: 2.2rem;
+  max-width: 12rem;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  color: var(--text);
+}
+
+.admin-bulk-bar__actions select {
+  width: 11rem;
+  padding: 0 0.65rem;
+}
+
+.admin-inline-select {
+  width: 100%;
+  min-width: 8.5rem;
+  padding: 0 0.55rem;
+}
+
+.admin-inline-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.admin-inline-toggle input[type='checkbox'] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--c-orange);
+}
+
 .admin-search-field {
   position: relative;
 

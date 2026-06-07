@@ -27,8 +27,10 @@ import {
   getAdminReviewStatusTranslationKey,
 } from '@app/models/admin/admin-review-status';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
+import { ParkItemBulkFieldsUpdateRequest } from '@app/models/parks/park-item-bulk-fields-update-request';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
+import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import {
   PARK_ITEM_CATEGORY_OPTIONS,
@@ -75,6 +77,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   @Input() adminReviewStatusFilter: AdminReviewStatus | null = null;
   @Input() categoryFilter: ParkItemCategory | null = null;
   @Input() typeFilter: ParkItemType | null = null;
+  @Input() zoneIdFilter: string | null = null;
   @Input() currentPage: number = 1;
   @Input() pageSize: number = 20;
   @Input() sortField: ParkItemAdminSortField = 'default';
@@ -89,7 +92,10 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   @Input() showParkFilter: boolean = true;
   @Input() showParkColumn: boolean = true;
   @Input() showZoneColumn: boolean = false;
+  @Input() showZoneFilter: boolean = false;
   @Input() showBulkActions: boolean = true;
+  @Input() showFieldBulkActions: boolean = false;
+  @Input() allowInlineEditing: boolean = false;
   @Input() showDeleteAction: boolean = false;
   @Input() showCreateButton: boolean = false;
   @Input() showQuickCreateButton: boolean = false;
@@ -105,6 +111,9 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   @Input() getZoneLabelFn: (zoneId: string | null | undefined) => string = () =>
     '—';
 
+  @Input() zoneOptions: Signal<Array<{ label: string; value: string | null }>> | null = null;
+  @Input() manufacturerOptions: Signal<EntitySelectOption[]> | null = null;
+
   @Output() filtersChanged: EventEmitter<{
     selectedParkId: string | null;
     searchTerm: string;
@@ -112,6 +121,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     adminReviewStatus: AdminReviewStatus | null;
     category: ParkItemCategory | null;
     type: ParkItemType | null;
+    zoneId: string | null;
   }> = new EventEmitter<{
     selectedParkId: string | null;
     searchTerm: string;
@@ -119,6 +129,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     adminReviewStatus: AdminReviewStatus | null;
     category: ParkItemCategory | null;
     type: ParkItemType | null;
+    zoneId: string | null;
   }>();
   @Output() pageChanged: EventEmitter<{
     page?: number;
@@ -149,6 +160,10 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     new EventEmitter<boolean>();
   @Output() bulkStatusChanged: EventEmitter<AdminReviewStatus> =
     new EventEmitter<AdminReviewStatus>();
+  @Output() bulkFieldsChanged: EventEmitter<ParkItemBulkFieldsUpdateRequest> =
+    new EventEmitter<ParkItemBulkFieldsUpdateRequest>();
+  @Output() inlineFieldsChanged: EventEmitter<ParkItemBulkFieldsUpdateRequest> =
+    new EventEmitter<ParkItemBulkFieldsUpdateRequest>();
   @Output() selectionCleared: EventEmitter<void> = new EventEmitter<void>();
 
   protected localSelectedParkId: string | null = null;
@@ -157,6 +172,11 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   protected localAdminReviewStatusFilter: AdminReviewStatus | null = null;
   protected localCategoryFilter: ParkItemCategory | null = null;
   protected localTypeFilter: ParkItemType | null = null;
+  protected localZoneIdFilter: string | null = null;
+  protected bulkZoneId: string | null = null;
+  protected bulkCategory: ParkItemCategory | null = null;
+  protected bulkType: ParkItemType | null = null;
+  protected bulkManufacturerId: string | null = null;
   protected readonly categoryOptions: ReadonlyArray<
     TranslationOption<ParkItemCategory>
   > = PARK_ITEM_CATEGORY_OPTIONS;
@@ -183,6 +203,9 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     if (changes['typeFilter']) {
       this.localTypeFilter = this.typeFilter;
     }
+    if (changes['zoneIdFilter']) {
+      this.localZoneIdFilter = this.zoneIdFilter;
+    }
   }
 
   applyFilters(): void {
@@ -195,6 +218,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
       adminReviewStatus: this.localAdminReviewStatusFilter,
       category: this.localCategoryFilter,
       type: this.localTypeFilter,
+      zoneId: this.showZoneFilter ? this.localZoneIdFilter : null,
     });
   }
 
@@ -313,6 +337,83 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
 
   markSelectedNotRelevant(): void {
     this.bulkStatusChanged.emit('NotRelevant');
+  }
+
+  applyBulkZone(): void {
+    this.bulkFieldsChanged.emit({
+      ids: this.selectedItemIds(),
+      updateZone: true,
+      zoneId: this.bulkZoneId,
+    });
+  }
+
+  applyBulkCategory(): void {
+    if (!this.bulkCategory) {
+      return;
+    }
+
+    this.bulkFieldsChanged.emit({
+      ids: this.selectedItemIds(),
+      category: this.bulkCategory,
+    });
+  }
+
+  applyBulkType(): void {
+    if (!this.bulkType) {
+      return;
+    }
+
+    this.bulkFieldsChanged.emit({
+      ids: this.selectedItemIds(),
+      type: this.bulkType,
+    });
+  }
+
+  applyBulkManufacturer(): void {
+    this.bulkFieldsChanged.emit({
+      ids: this.selectedItemIds(),
+      updateManufacturer: true,
+      manufacturerId: this.bulkManufacturerId,
+    });
+  }
+
+  changeRowZone(row: ParkItemAdminRow, zoneId: string | null): void {
+    this.inlineFieldsChanged.emit({
+      ids: [row.id],
+      updateZone: true,
+      zoneId,
+    });
+  }
+
+  changeRowCategory(row: ParkItemAdminRow, category: ParkItemCategory): void {
+    this.inlineFieldsChanged.emit({
+      ids: [row.id],
+      category,
+    });
+  }
+
+  changeRowType(row: ParkItemAdminRow, itemType: ParkItemType): void {
+    this.inlineFieldsChanged.emit({
+      ids: [row.id],
+      type: itemType,
+    });
+  }
+
+  changeRowVisibility(row: ParkItemAdminRow, event: Event): void {
+    this.inlineFieldsChanged.emit({
+      ids: [row.id],
+      isVisible: (event.target as HTMLInputElement).checked,
+    });
+  }
+
+  changeRowStatus(
+    row: ParkItemAdminRow,
+    adminReviewStatus: AdminReviewStatus,
+  ): void {
+    this.inlineFieldsChanged.emit({
+      ids: [row.id],
+      adminReviewStatus,
+    });
   }
 
   clearSelection(): void {

@@ -33,6 +33,14 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin', renderMode: RenderMode.Client },
   { path: ':lang/admin/users', renderMode: RenderMode.Client },
   { path: ':lang/admin/parks', renderMode: RenderMode.Client },
+  { path: ':lang/admin/parks/new', renderMode: RenderMode.Client },
+  { path: ':lang/admin/parks/edit/:idPark', renderMode: RenderMode.Client },
+  { path: ':lang/admin/parks/edit/:idPark/zones', renderMode: RenderMode.Client },
+  { path: ':lang/admin/parks/edit/:idPark/zones/new', renderMode: RenderMode.Client },
+  { path: ':lang/admin/parks/edit/:idPark/zones/:idZone', renderMode: RenderMode.Client },
+  { path: ':lang/admin/parks/edit/:idPark/items', renderMode: RenderMode.Client },
+  { path: ':lang/admin/parks/edit/:idPark/items/new', renderMode: RenderMode.Client },
+  { path: ':lang/admin/parks/edit/:idPark/items/:idItem', renderMode: RenderMode.Client },
   { path: ':lang/admin/items', renderMode: RenderMode.Client },
   { path: ':lang/admin/operators', renderMode: RenderMode.Client },
   { path: ':lang/admin/founders', renderMode: RenderMode.Client },
@@ -44,6 +52,8 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin/seo-sitemaps', renderMode: RenderMode.Client },
   { path: ':lang/admin/images', renderMode: RenderMode.Client },
   { path: ':lang/admin/site', renderMode: RenderMode.Client },
+  { path: ':lang/admin/park-graph-upserts', renderMode: RenderMode.Client },
+  { path: ':lang/admin/localized-content', renderMode: RenderMode.Client },
 
   // Unknown public URLs render the public 404 route and are marked 404 by server.ts.
   { path: '**', renderMode: RenderMode.Server }

@@ -25,6 +25,13 @@
   margin-left: auto;
 }
 
+.admin-park-edit__quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
 @media (max-width: 991px) {
   .page-header,
   .page-header__aside {
@@ -34,5 +41,9 @@
   .page-header__aside {
     width: 100%;
     margin-left: 0;
+  }
+
+  .admin-park-edit__quick-links {
+    justify-content: flex-start;
   }
 }

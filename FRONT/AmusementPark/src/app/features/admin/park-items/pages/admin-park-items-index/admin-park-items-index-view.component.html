@@ -75,6 +75,18 @@
       </label>
     }
 
+    @if (showZoneFilter && zoneOptions) {
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.parks.items.zone' | translate }}</span>
+        <select [(ngModel)]="localZoneIdFilter" (ngModelChange)="onImmediateFilterChanged()">
+          <option [ngValue]="null">{{ 'parkItems.filters.allZones' | translate }}</option>
+          @for (option of zoneOptions(); track option.value) {
+            <option [ngValue]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </label>
+    }
+
     <label class="admin-field">
       <span class="admin-field-label">{{ 'admin.filters.visibility' | translate }}</span>
       <select [(ngModel)]="localVisibilityFilter" (ngModelChange)="onImmediateFilterChanged()">
@@ -126,6 +138,36 @@
         <button pButton type="button" class="p-button-sm p-button-success" icon="pi pi-check" [label]="'admin.bulk.markValidated' | translate" (click)="markSelectedValidated()"></button>
         <button pButton type="button" class="p-button-sm p-button-warning" icon="pi pi-clock" [label]="'admin.bulk.processLater' | translate" (click)="markSelectedLater()"></button>
         <button pButton type="button" class="p-button-sm p-button-danger" icon="pi pi-ban" [label]="'admin.bulk.markNotRelevant' | translate" (click)="markSelectedNotRelevant()"></button>
+        @if (showFieldBulkActions) {
+          <select [(ngModel)]="bulkZoneId" [attr.aria-label]="'admin.parks.items.zone' | translate">
+            <option [ngValue]="null">{{ 'admin.parks.items.quickCreate.noZone' | translate }}</option>
+            @for (option of zoneOptions?.() ?? []; track option.value) {
+              <option [ngValue]="option.value">{{ option.label }}</option>
+            }
+          </select>
+          <button pButton type="button" class="p-button-sm" icon="pi pi-map-marker" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkZone()"></button>
+          <select [(ngModel)]="bulkCategory" [attr.aria-label]="'admin.filters.category' | translate">
+            <option [ngValue]="null">{{ 'admin.filters.category' | translate }}</option>
+            @for (option of categoryOptions; track option.value) {
+              <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+            }
+          </select>
+          <button pButton type="button" class="p-button-sm" icon="pi pi-tags" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkCategory()"></button>
+          <select [(ngModel)]="bulkType" [attr.aria-label]="'admin.filters.type' | translate">
+            <option [ngValue]="null">{{ 'admin.filters.type' | translate }}</option>
+            @for (option of typeOptions; track option.value) {
+              <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+            }
+          </select>
+          <button pButton type="button" class="p-button-sm" icon="pi pi-wrench" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkType()"></button>
+          <select [(ngModel)]="bulkManufacturerId" [attr.aria-label]="'admin.parks.items.details.manufacturer' | translate">
+            <option [ngValue]="null">{{ 'admin.parks.items.quickCreate.noManufacturer' | translate }}</option>
+            @for (option of manufacturerOptions?.() ?? []; track option.id) {
+              <option [ngValue]="option.id">{{ option.label }}</option>
+            }
+          </select>
+          <button pButton type="button" class="p-button-sm" icon="pi pi-building" [label]="'admin.filters.applySearch' | translate" (click)="applyBulkManufacturer()"></button>
+        }
         <button pButton type="button" class="p-button-text p-button-sm" icon="pi pi-times" [label]="'admin.bulk.clearSelection' | translate" (click)="clearSelection()"></button>
       </div>
     </div>
@@ -189,22 +231,69 @@
           <td [attr.data-label]="'admin.parkItems.columns.park' | translate">{{ row.parkName }}</td>
         }
         <td [attr.data-label]="'admin.parkItems.columns.item' | translate"><strong class="admin-row-title">{{ row.name }}</strong></td>
-        <td [attr.data-label]="'admin.parkItems.columns.type' | translate">{{ getTypeLabelKey(row.type) | translate }}</td>
-        <td [attr.data-label]="'admin.parkItems.columns.category' | translate">{{ getCategoryLabelKey(row.category) | translate }}</td>
+        <td [attr.data-label]="'admin.parkItems.columns.type' | translate">
+          @if (allowInlineEditing) {
+            <select class="admin-inline-select" [ngModel]="row.type" (ngModelChange)="changeRowType(row, $event)">
+              @for (option of typeOptions; track option.value) {
+                <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+              }
+            </select>
+          } @else {
+            {{ getTypeLabelKey(row.type) | translate }}
+          }
+        </td>
+        <td [attr.data-label]="'admin.parkItems.columns.category' | translate">
+          @if (allowInlineEditing) {
+            <select class="admin-inline-select" [ngModel]="row.category" (ngModelChange)="changeRowCategory(row, $event)">
+              @for (option of categoryOptions; track option.value) {
+                <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+              }
+            </select>
+          } @else {
+            {{ getCategoryLabelKey(row.category) | translate }}
+          }
+        </td>
         @if (showZoneColumn) {
-          <td [attr.data-label]="'admin.parks.items.zone' | translate">{{ getZoneLabel(row.zoneId) }}</td>
+          <td [attr.data-label]="'admin.parks.items.zone' | translate">
+            @if (allowInlineEditing) {
+              <select class="admin-inline-select" [ngModel]="row.zoneId ?? null" (ngModelChange)="changeRowZone(row, $event)">
+                <option [ngValue]="null">{{ 'admin.parks.items.quickCreate.noZone' | translate }}</option>
+                @for (option of zoneOptions?.() ?? []; track option.value) {
+                  <option [ngValue]="option.value">{{ option.label }}</option>
+                }
+              </select>
+            } @else {
+              {{ getZoneLabel(row.zoneId) }}
+            }
+          </td>
         }
         <td [attr.data-label]="'admin.parkItems.columns.reviewStatus' | translate">
-          <p-tag
-            [value]="getStatusLabelKey(row.adminReviewStatus) | translate"
-            [severity]="getStatusSeverity(row.adminReviewStatus)">
-          </p-tag>
+          @if (allowInlineEditing) {
+            <select class="admin-inline-select" [ngModel]="row.adminReviewStatus" (ngModelChange)="changeRowStatus(row, $event)">
+              <option [ngValue]="'ToReview'">{{ 'admin.reviewStatus.toReview' | translate }}</option>
+              <option [ngValue]="'Validated'">{{ 'admin.reviewStatus.validated' | translate }}</option>
+              <option [ngValue]="'ToProcessLater'">{{ 'admin.reviewStatus.toProcessLater' | translate }}</option>
+              <option [ngValue]="'NotRelevant'">{{ 'admin.reviewStatus.notRelevant' | translate }}</option>
+            </select>
+          } @else {
+            <p-tag
+              [value]="getStatusLabelKey(row.adminReviewStatus) | translate"
+              [severity]="getStatusSeverity(row.adminReviewStatus)">
+            </p-tag>
+          }
         </td>
         <td [attr.data-label]="'admin.parkItems.columns.visibility' | translate">
-          <p-tag
-            [value]="row.isVisible ? ('admin.visible' | translate) : ('admin.hidden' | translate)"
-            [severity]="row.isVisible ? 'success' : 'warn'">
-          </p-tag>
+          @if (allowInlineEditing) {
+            <label class="admin-inline-toggle">
+              <input type="checkbox" [checked]="row.isVisible" (change)="changeRowVisibility(row, $event)" />
+              <span>{{ row.isVisible ? ('admin.visible' | translate) : ('admin.hidden' | translate) }}</span>
+            </label>
+          } @else {
+            <p-tag
+              [value]="row.isVisible ? ('admin.visible' | translate) : ('admin.hidden' | translate)"
+              [severity]="row.isVisible ? 'success' : 'warn'">
+            </p-tag>
+          }
         </td>
         <td [attr.data-label]="'admin.parkItems.columns.actions' | translate">
           <div class="admin-row-actions">

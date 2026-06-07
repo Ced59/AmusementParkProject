@@ -38,6 +38,7 @@ public sealed class ParkItemsController : ControllerBase
     private readonly ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler;
     private readonly ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler;
     private readonly ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler;
+    private readonly ICommandHandler<UpdateParkItemsBulkFieldsCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkFieldsCommandHandler;
 
     public ParkItemsController(
         IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler,
@@ -46,7 +47,8 @@ public sealed class ParkItemsController : ControllerBase
         ICommandHandler<CreateParkItemCommand, ApplicationResult<ParkItem>> createParkItemCommandHandler,
         ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler,
         ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler,
-        ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler)
+        ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler,
+        ICommandHandler<UpdateParkItemsBulkFieldsCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkFieldsCommandHandler)
     {
         this.getParkItemsByParkIdQueryHandler = getParkItemsByParkIdQueryHandler;
         this.getParkItemsPageQueryHandler = getParkItemsPageQueryHandler;
@@ -55,6 +57,7 @@ public sealed class ParkItemsController : ControllerBase
         this.updateParkItemCommandHandler = updateParkItemCommandHandler;
         this.deleteParkItemCommandHandler = deleteParkItemCommandHandler;
         this.updateParkItemsBulkAdministrationCommandHandler = updateParkItemsBulkAdministrationCommandHandler;
+        this.updateParkItemsBulkFieldsCommandHandler = updateParkItemsBulkFieldsCommandHandler;
     }
 
     [HttpGet("park/{parkId}")]
@@ -86,6 +89,7 @@ public sealed class ParkItemsController : ControllerBase
         [FromQuery] string? adminReviewStatus = null,
         [FromQuery] string? category = null,
         [FromQuery] string? type = null,
+        [FromQuery] string? zoneId = null,
         [FromQuery] string? manufacturerId = null,
         [FromQuery] string? sortBy = null,
         [FromQuery] string? sortDirection = null,
@@ -105,6 +109,7 @@ public sealed class ParkItemsController : ControllerBase
                 effectiveAdminReviewStatus,
                 ParseParkItemCategory(category),
                 ParseParkItemType(type),
+                zoneId,
                 manufacturerId,
                 ParseParkItemAdminSortField(sortBy),
                 IsSortDescending(sortDirection)),
@@ -169,6 +174,27 @@ public sealed class ParkItemsController : ControllerBase
     {
         ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParkItemsBulkAdministrationCommandHandler.HandleAsync(
             new UpdateParkItemsBulkAdministrationCommand(request.Ids, request.IsVisible, request.AdminReviewStatus.ToOptionalDomain()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(new BulkAdministrationUpdateResultDto
+        {
+            RequestedCount = result.Value.RequestedCount,
+            UpdatedCount = result.Value.UpdatedCount,
+        });
+    }
+
+    [HttpPatch("bulk-fields")]
+    [AdminAudit("park-item.bulk-fields.update", "ParkItem", StaticTargetId = "bulk")]
+    [ProducesResponseType(typeof(BulkAdministrationUpdateResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> UpdateParkItemsBulkFieldsAsync([FromBody] ParkItemBulkFieldsUpdateDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParkItemsBulkFieldsCommandHandler.HandleAsync(
+            request.ToApplication(),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

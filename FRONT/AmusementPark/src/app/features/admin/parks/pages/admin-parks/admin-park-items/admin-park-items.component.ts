@@ -13,6 +13,7 @@ import { firstValueFrom } from 'rxjs';
 
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
+import { ParkItemBulkFieldsUpdateRequest } from '@app/models/parks/park-item-bulk-fields-update-request';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { ParkZone } from '@app/models/parks/park-zone';
@@ -63,6 +64,7 @@ export class AdminParkItemsComponent implements OnInit {
     this.stateFacade.adminReviewStatusFilter;
   protected readonly categoryFilter = this.stateFacade.categoryFilter;
   protected readonly typeFilter = this.stateFacade.typeFilter;
+  protected readonly zoneIdFilter = this.stateFacade.zoneIdFilter;
   protected readonly currentPage = this.stateFacade.currentPage;
   protected readonly pageSize = this.stateFacade.pageSize;
   protected readonly sortField = this.stateFacade.sortField;
@@ -77,6 +79,17 @@ export class AdminParkItemsComponent implements OnInit {
   protected readonly quickCreateDuplicateWarnings = this.workbenchStateFacade.duplicateWarnings;
   protected readonly isQuickCreating = this.workbenchStateFacade.isCreating;
   protected readonly manufacturerOptions = this.manufacturersStateFacade.manufacturerOptions;
+  protected readonly zoneOptions = computed<
+    Array<{ label: string; value: string | null }>
+  >(() =>
+    this.zones().map((zone: ParkZone) => ({
+      label:
+        resolveLocalizedValue(zone.names, this.currentLang) ??
+        zone.name ??
+        '',
+      value: zone.id ?? null,
+    })),
+  );
   protected readonly emptyParkOptions = signal<
     Array<{ label: string; value: string | null }>
   >([]);
@@ -117,6 +130,7 @@ export class AdminParkItemsComponent implements OnInit {
     adminReviewStatus: AdminReviewStatus | null;
     category: ParkItemCategory | null;
     type: ParkItemType | null;
+    zoneId?: string | null;
   }): void {
     this.selectedItemIds.set([]);
     this.stateFacade.updateFilters(this.parkId, filters);
@@ -297,7 +311,10 @@ export class AdminParkItemsComponent implements OnInit {
       return;
     }
 
-    await this.applyBulkAdministration({ isVisible });
+    await this.applyBulkFields({
+      ids: this.selectedItemIds(),
+      isVisible,
+    });
   }
 
   async onBulkStatusChange(
@@ -307,7 +324,33 @@ export class AdminParkItemsComponent implements OnInit {
       return;
     }
 
-    await this.applyBulkAdministration({ adminReviewStatus });
+    await this.applyBulkFields({
+      ids: this.selectedItemIds(),
+      adminReviewStatus,
+    });
+  }
+
+  async onBulkFieldsChange(
+    request: ParkItemBulkFieldsUpdateRequest,
+  ): Promise<void> {
+    if (this.selectedCount() === 0) {
+      return;
+    }
+
+    await this.applyBulkFields({
+      ...request,
+      ids: this.selectedItemIds(),
+    });
+  }
+
+  async onInlineFieldsChange(
+    request: ParkItemBulkFieldsUpdateRequest,
+  ): Promise<void> {
+    if (request.ids.length === 0) {
+      return;
+    }
+
+    await this.applyBulkFields(request, false);
   }
 
   clearSelection(): void {
@@ -399,26 +442,58 @@ export class AdminParkItemsComponent implements OnInit {
     this.quickCreateFocusVersion.update((value: number) => value + 1);
   }
 
-  private async applyBulkAdministration(change: {
-    isVisible?: boolean;
-    adminReviewStatus?: AdminReviewStatus;
-  }): Promise<void> {
+  private async applyBulkFields(
+    request: ParkItemBulkFieldsUpdateRequest,
+    clearSelectionAfterSuccess: boolean = true,
+  ): Promise<void> {
+    const patch: Partial<Pick<ParkItemAdminRow, 'zoneId' | 'category' | 'type' | 'isVisible' | 'adminReviewStatus'>> =
+      this.buildRowPatchFromBulkFields(request);
+
     try {
+      if (Object.keys(patch).length > 0) {
+        this.stateFacade.patchRows(request.ids, patch);
+      }
+
       await firstValueFrom(
-        this.stateFacade.updateBulkAdministration({
-          ids: this.selectedItemIds(),
-          isVisible: change.isVisible ?? null,
-          adminReviewStatus: change.adminReviewStatus ?? null,
-        }),
+        this.stateFacade.updateBulkFields(request),
       );
-      this.selectedItemIds.set([]);
-      this.loadData(true);
+      if (clearSelectionAfterSuccess) {
+        this.selectedItemIds.set([]);
+      }
     } catch (error: unknown) {
       console.error(
-        'Error applying bulk park item administration update',
+        'Error applying park item bulk fields update',
         error,
       );
       this.loadData(true);
     }
+  }
+
+  private buildRowPatchFromBulkFields(
+    request: ParkItemBulkFieldsUpdateRequest,
+  ): Partial<Pick<ParkItemAdminRow, 'zoneId' | 'category' | 'type' | 'isVisible' | 'adminReviewStatus'>> {
+    const patch: Partial<Pick<ParkItemAdminRow, 'zoneId' | 'category' | 'type' | 'isVisible' | 'adminReviewStatus'>> = {};
+
+    if (request.updateZone) {
+      patch.zoneId = request.zoneId ?? null;
+    }
+
+    if (request.category) {
+      patch.category = request.category;
+    }
+
+    if (request.type) {
+      patch.type = request.type;
+    }
+
+    if (request.isVisible !== null && request.isVisible !== undefined) {
+      patch.isVisible = request.isVisible;
+    }
+
+    if (request.adminReviewStatus) {
+      patch.adminReviewStatus = request.adminReviewStatus;
+    }
+
+    return patch;
   }
 }

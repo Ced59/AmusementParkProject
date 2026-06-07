@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.ParkItems.Results;
 using AmusementPark.Core.Domain.Parks;
@@ -118,6 +119,22 @@ internal static class ParkItemsHttpMappers
             IsVisible = value.IsVisible,
             AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
         };
+    }
+
+    public static UpdateParkItemsBulkFieldsCommand ToApplication(this ParkItemBulkFieldsUpdateDto value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new UpdateParkItemsBulkFieldsCommand(
+            value.Ids,
+            value.UpdateZone,
+            value.ZoneId,
+            value.Category.HasValue ? value.Category.Value.ToDomain() : null,
+            value.Type.HasValue ? value.Type.Value.ToDomain() : null,
+            value.UpdateManufacturer,
+            value.ManufacturerId,
+            value.IsVisible,
+            value.AdminReviewStatus.ToOptionalDomain());
     }
 
     public static ParkItemAdminListDto ToHttp(this ParkItemAdminListResult value)
