@@ -97,8 +97,8 @@ interface ParkItemWriteRequest {
   category: ParkItem['category'];
   type: ParkItem['type'];
   subtype?: string | null;
-  latitude: number;
-  longitude: number;
+  latitude: number | null;
+  longitude: number | null;
   descriptions: LocalizedItem<string>[];
   attractionDetails?: AttractionDetailsWriteRequest | null;
   attractionLocations?: AttractionLocationsWriteRequest | null;
@@ -201,8 +201,8 @@ export class ParkItemsApiService {
       category: item.category,
       type: item.type,
       subtype: item.subtype ?? null,
-      latitude: item.latitude,
-      longitude: item.longitude,
+      latitude: item.latitude ?? null,
+      longitude: item.longitude ?? null,
       descriptions: item.descriptions ?? [],
       attractionDetails: this.mapAttractionDetails(item.attractionDetails),
       attractionLocations: this.mapAttractionLocations(item.attractionLocations),
