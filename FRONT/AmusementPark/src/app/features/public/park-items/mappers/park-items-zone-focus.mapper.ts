@@ -58,7 +58,7 @@ function mapDisplayedItemsToMapViewModel(
 ): ParkItemsMapViewModel {
   const markers = displayedItems
     .filter((item: ParkItem) => item.isVisible !== false)
-    .filter((item: ParkItem) => Number.isFinite(item.latitude) && Number.isFinite(item.longitude))
+    .filter((item: ParkItem) => hasValidParkItemPosition(item))
     .map((item: ParkItem) => {
       const zoneName: string | null = resolveZoneNameById(item.zoneId ?? null, zones, currentLanguage);
       const details: string[] = [zoneName].filter((value: string | null | undefined): value is string => !!value && value.trim().length > 0);
@@ -68,8 +68,8 @@ function mapDisplayedItemsToMapViewModel(
 
       return {
         id: item.id ?? `${item.name}-${item.latitude}-${item.longitude}`,
-        lat: item.latitude,
-        lng: item.longitude,
+        lat: item.latitude!,
+        lng: item.longitude!,
         title: item.name,
         subtitle: item.category,
         subtitleTranslationKey: getParkItemCategoryTranslationKey(item.category),
@@ -109,6 +109,16 @@ function resolveMapCenter(park: Park, markers: readonly { lat: number; lng: numb
   }
 
   return [0, 0];
+}
+
+function hasValidParkItemPosition(item: ParkItem): boolean {
+  return item.latitude != null
+    && item.longitude != null
+    && Number.isFinite(item.latitude)
+    && Number.isFinite(item.longitude)
+    && Math.abs(item.latitude) <= 90
+    && Math.abs(item.longitude) <= 180
+    && !(item.latitude === 0 && item.longitude === 0);
 }
 
 function resolveZoneName(zone: ParkZone | null, currentLanguage: string): string | null {
