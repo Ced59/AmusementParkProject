@@ -161,7 +161,7 @@ M18.5 reste volontairement différé : ne passer CSP en enforce qu’après obse
 
 ### Note MongoDB production
 
-Le healthcheck MongoDB utilise maintenant `mongosh --username/--password` plutôt qu'une URI contenant les identifiants. Cela évite les faux `unhealthy` quand un mot de passe root contient des caractères spéciaux.
+Le healthcheck MongoDB utilise un probe TCP local vers `127.0.0.1:27017` plutôt qu'un client `mongosh`. Cela évite de lancer régulièrement un shell MongoDB complet sur le VPS tout en gardant un signal de disponibilité léger pour l'ordre de démarrage Docker.
 
 La chaîne de connexion applicative utilise `MONGO_APP_USERNAME_URL_ENCODED` et `MONGO_APP_PASSWORD_URL_ENCODED`, générés automatiquement par `deploy/scripts/write-production-env.sh` à partir des secrets bruts. Il ne faut pas créer ces deux valeurs dans GitHub : elles sont internes au `.env` généré.
 
