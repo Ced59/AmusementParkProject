@@ -5,6 +5,7 @@ import { TranslationService } from './services/translation.service';
 import { AuthService } from './services/auth/auth.service';
 
 type TranslationDictionary = Record<string, unknown>;
+type TranslationOverrides = Record<string, TranslationDictionary>;
 
 function mergeTranslations(base: TranslationDictionary, override: TranslationDictionary): TranslationDictionary {
   const result: TranslationDictionary = { ...base };
@@ -37,8 +38,8 @@ class MergedTranslateHttpLoader implements TranslateLoader {
   public getTranslation(language: string): Observable<TranslationDictionary> {
     return forkJoin({
       base: this.http.get<TranslationDictionary>(`./assets/i18n/${language}.json`),
-      override: this.http.get<TranslationDictionary>(`./assets/i18n/overrides/${language}.json`).pipe(catchError(() => of({})))
-    }).pipe(map(({ base, override }) => mergeTranslations(base, override)));
+      overrides: this.http.get<TranslationOverrides>('./assets/i18n/all-overrides.json').pipe(catchError(() => of({})))
+    }).pipe(map(({ base, overrides }) => mergeTranslations(base, overrides[language] ?? {})));
   }
 }
 
