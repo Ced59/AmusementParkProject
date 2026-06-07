@@ -36,7 +36,6 @@ public sealed class GenerateSitemapCommandHandler : ICommandHandler<GenerateSite
             new SitemapGenerationContext
             {
                 SupportedLanguages = command.SupportedLanguages,
-                MaxDynamicUrlsPerType = command.MaxDynamicUrlsPerType,
             },
             command.Trigger,
             shouldSubmitIndexNow,
@@ -233,7 +232,6 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
                 new SitemapGenerationContext
                 {
                     SupportedLanguages = query.SupportedLanguages,
-                    MaxDynamicUrlsPerType = query.MaxDynamicUrlsPerType,
                 },
                 SitemapGenerationTrigger.PublicFallback,
                 submitToIndexNow: false,

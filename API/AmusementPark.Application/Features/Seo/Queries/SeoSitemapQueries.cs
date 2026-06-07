@@ -12,4 +12,4 @@ public sealed record GetSeoSitemapSettingsQuery() : IQuery<ApplicationResult<Seo
 
 public sealed record GetSeoSitemapHistoryQuery(int Page, int PageSize) : IQuery<ApplicationResult<PagedResult<SitemapGenerationHistoryEntry>>>;
 
-public sealed record GetPublicSitemapDocumentQuery(string? SectionKey, string PublicBaseUrl, IReadOnlyCollection<string> SupportedLanguages, int MaxDynamicUrlsPerType) : IQuery<ApplicationResult<SitemapDocumentResult>>;
+public sealed record GetPublicSitemapDocumentQuery(string? SectionKey, string PublicBaseUrl, IReadOnlyCollection<string> SupportedLanguages) : IQuery<ApplicationResult<SitemapDocumentResult>>;

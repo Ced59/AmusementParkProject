@@ -60,7 +60,6 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line CSP_REPORT_URI "$(value_or_default CSP_REPORT_URI '/security/csp-report')"
   write_line FRONT_CSP_REPORT_URI "$(value_or_default FRONT_CSP_REPORT_URI '/api/security/csp-report')"
   write_line SEO_DEFAULT_LANGUAGE "$(value_or_default SEO_DEFAULT_LANGUAGE 'en')"
-  write_line SEO_MAX_DYNAMIC_URLS_PER_TYPE "$(value_or_default SEO_MAX_DYNAMIC_URLS_PER_TYPE '50')"
   write_line AUTH_RATE_LIMIT_LOGIN_LIMIT "$(value_or_default AUTH_RATE_LIMIT_LOGIN_LIMIT '5')"
   write_line AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS "$(value_or_default AUTH_RATE_LIMIT_LOGIN_WINDOW_SECONDS '60')"
   write_line AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT "$(value_or_default AUTH_RATE_LIMIT_EXTERNAL_LOGIN_LIMIT '10')"

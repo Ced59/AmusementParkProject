@@ -121,7 +121,6 @@ public sealed class AdminSeoSitemapsController : ControllerBase
             new GenerateSitemapCommand(
                 publicBaseUrl,
                 this.settings.SupportedLanguages,
-                this.settings.MaxDynamicUrlsPerType,
                 SitemapGenerationTrigger.Manual,
                 request?.SubmitToIndexNow ?? true,
                 this.GetCurrentUserId(),

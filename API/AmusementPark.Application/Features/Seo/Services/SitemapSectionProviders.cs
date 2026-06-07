@@ -64,6 +64,8 @@ public sealed class StaticPagesSitemapSectionProvider : ISitemapSectionProvider
 /// </summary>
 public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
 {
+    private const int PublicSitemapCandidatePageSize = int.MaxValue;
+
     private readonly IParkRepository parkRepository;
 
     public ParksSitemapSectionProvider(IParkRepository parkRepository)
@@ -82,10 +84,9 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
         ArgumentNullException.ThrowIfNull(context);
 
         IReadOnlyCollection<string> languages = NormalizeLanguages(context.SupportedLanguages);
-        int limit = NormalizeDynamicLimit(context.MaxDynamicUrlsPerType);
         PagedResult<Park> page = await this.parkRepository.GetPageAsync(
             1,
-            limit,
+            PublicSitemapCandidatePageSize,
             includeHidden: false,
             isVisible: true,
             adminReviewStatus: null,
@@ -125,11 +126,6 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
 
         return normalizedLanguages.Count > 0 ? normalizedLanguages : new[] { "en" };
     }
-
-    internal static int NormalizeDynamicLimit(int value)
-    {
-        return Math.Clamp(value, 1, 50000);
-    }
 }
 
 /// <summary>
@@ -137,6 +133,8 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
 /// </summary>
 public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
 {
+    private const int PublicSitemapCandidateLimit = int.MaxValue;
+
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
 
@@ -157,9 +155,8 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
         ArgumentNullException.ThrowIfNull(context);
 
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
-        int limit = ParksSitemapSectionProvider.NormalizeDynamicLimit(context.MaxDynamicUrlsPerType);
         IReadOnlyCollection<ParkItem> candidateItems = await this.parkItemRepository.GetPublicSitemapCandidatesAsync(
-            limit,
+            PublicSitemapCandidateLimit,
             cancellationToken);
 
         IReadOnlyCollection<ParkItem> publicItems = candidateItems
@@ -235,23 +232,22 @@ public sealed class ReferencesSitemapSectionProvider : ISitemapSectionProvider
         ArgumentNullException.ThrowIfNull(context);
 
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
-        int limit = Math.Min(ParksSitemapSectionProvider.NormalizeDynamicLimit(context.MaxDynamicUrlsPerType), 5000);
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
 
         IReadOnlyCollection<ParkOperator> operators = await this.parkOperatorRepository.GetAllAsync(cancellationToken);
-        foreach (ParkOperator entity in operators.Where(static entity => entity.AdminReviewStatus != AdminReviewStatus.NotRelevant).Take(limit))
+        foreach (ParkOperator entity in operators.Where(static entity => entity.AdminReviewStatus != AdminReviewStatus.NotRelevant))
         {
             AddReferenceUrls(urls, languages, "park-operator", entity.Id, entity.Name, entity.UpdatedAtUtc);
         }
 
         IReadOnlyCollection<ParkFounder> founders = await this.parkFounderRepository.GetAllAsync(cancellationToken);
-        foreach (ParkFounder entity in founders.Take(limit))
+        foreach (ParkFounder entity in founders)
         {
             AddReferenceUrls(urls, languages, "park-founder", entity.Id, entity.Name, entity.UpdatedAtUtc);
         }
 
         IReadOnlyCollection<AttractionManufacturer> manufacturers = await this.attractionManufacturerRepository.GetAllAsync(cancellationToken);
-        foreach (AttractionManufacturer entity in manufacturers.Where(static entity => entity.AdminReviewStatus != AdminReviewStatus.NotRelevant).Take(limit))
+        foreach (AttractionManufacturer entity in manufacturers.Where(static entity => entity.AdminReviewStatus != AdminReviewStatus.NotRelevant))
         {
             AddReferenceUrls(urls, languages, "park-manufacturer", entity.Id, entity.Name, entity.UpdatedAtUtc);
         }

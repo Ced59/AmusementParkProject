@@ -7,7 +7,6 @@ namespace AmusementPark.Application.Features.Seo.Commands;
 public sealed record GenerateSitemapCommand(
     string PublicBaseUrl,
     IReadOnlyCollection<string> SupportedLanguages,
-    int MaxDynamicUrlsPerType,
     SitemapGenerationTrigger Trigger,
     bool SubmitToIndexNow,
     string? TriggeredByUserId,
