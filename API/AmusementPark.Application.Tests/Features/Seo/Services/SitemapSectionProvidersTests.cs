@@ -40,14 +40,6 @@ public sealed class SitemapSectionProvidersTests
     }
 
     [Fact]
-    public void ParksProviderNormalizeDynamicLimit_WhenValueOutsideRange_ShouldClamp()
-    {
-        Assert.Equal(1, ParksSitemapSectionProvider.NormalizeDynamicLimit(0));
-        Assert.Equal(50000, ParksSitemapSectionProvider.NormalizeDynamicLimit(50001));
-        Assert.Equal(250, ParksSitemapSectionProvider.NormalizeDynamicLimit(250));
-    }
-
-    [Fact]
     public void ParksProviderIsPublicPark_WhenParkIsVisibleAndRelevant_ShouldReturnTrue()
     {
         Park park = new Park
@@ -91,11 +83,11 @@ public sealed class SitemapSectionProvidersTests
         {
             new Park { Id = "park-1", Name = "Parc Astérix", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) },
             new Park { Id = "hidden", Name = "Hidden", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
-        }, 1, 10, 2);
+        }, 1, int.MaxValue, 2);
         Mock<IParkRepository> repository = new Mock<IParkRepository>(MockBehavior.Strict);
-        repository.Setup(item => item.GetPageAsync(1, 10, false, true, null, null, null, cancellationToken)).ReturnsAsync(page);
+        repository.Setup(item => item.GetPageAsync(1, int.MaxValue, false, true, null, null, null, cancellationToken)).ReturnsAsync(page);
         ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(repository.Object);
-        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" }, MaxDynamicUrlsPerType = 10 };
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, cancellationToken);
 
@@ -115,11 +107,11 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(10, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
-        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" }, MaxDynamicUrlsPerType = 10 };
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
@@ -141,7 +133,7 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(10, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[]
             {
@@ -149,7 +141,7 @@ public sealed class SitemapSectionProvidersTests
                 new Park { Id = "hidden-park", Name = "Hidden Park", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
             });
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
-        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" }, MaxDynamicUrlsPerType = 10 };
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
@@ -173,11 +165,11 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(10, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => !ids.Any()), It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<Park>());
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
-        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" }, MaxDynamicUrlsPerType = 10 };
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
@@ -197,7 +189,7 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(50, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[]
             {
@@ -205,7 +197,7 @@ public sealed class SitemapSectionProvidersTests
                 new Park { Id = "park-2", Name = "Theme Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
             });
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
-        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" }, MaxDynamicUrlsPerType = 50 };
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
@@ -235,11 +227,11 @@ public sealed class SitemapSectionProvidersTests
             .ToList();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(5000, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
-        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" }, MaxDynamicUrlsPerType = 5000 };
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
@@ -258,11 +250,11 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(10, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-99" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-99", Name = "Late Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
-        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" }, MaxDynamicUrlsPerType = 10 };
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
