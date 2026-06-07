@@ -25,6 +25,11 @@ public interface IParkRepository
     Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne tous les parcs candidats au sitemap public, sans pagination artificielle.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetPublicSitemapCandidatesAsync(CancellationToken cancellationToken);
+
+    /// <summary>
     /// Compte les parcs.
     /// </summary>
     Task<long> CountAsync(bool includeHidden, CancellationToken cancellationToken);
