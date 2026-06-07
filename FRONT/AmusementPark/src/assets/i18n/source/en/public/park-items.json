@@ -54,7 +54,8 @@
       "relatedSubtitle": "Selection based on the item type, category or zone.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Select a point to highlight it on the map or open directions from the marker.",
-      "showLocationOnMap": "Show on map"
+      "showLocationOnMap": "Show on map",
+      "noGeolocationMessage": "No geolocation is available for this item."
     },
     "fields": {
       "category": "Category",
