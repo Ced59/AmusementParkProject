@@ -5,6 +5,17 @@ export interface ParkGraphUpsertRequest {
   document: unknown;
 }
 
+export interface ParkGraphUpsertHistoryEntry {
+  id: string;
+  operationKind: string;
+  targetParkId?: string | null;
+  targetParkName?: string | null;
+  requestedByUserId?: string | null;
+  createdAtUtc: string;
+  rawJson: string;
+  result: ParkGraphUpsertResult;
+}
+
 export interface ParkGraphUpsertResult {
   operationId: string;
   mode: string;

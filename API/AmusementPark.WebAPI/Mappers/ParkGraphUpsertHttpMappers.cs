@@ -1,5 +1,6 @@
 using System.Text.Json;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
+using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
 
@@ -64,6 +65,23 @@ internal static class ParkGraphUpsertHttpMappers
             }).ToList(),
             Warnings = result.Warnings.ToList(),
             Errors = result.Errors.ToList(),
+        };
+    }
+
+    public static ParkGraphUpsertHistoryEntryDto ToHttp(this ParkGraphUpsertHistoryEntry entry)
+    {
+        ArgumentNullException.ThrowIfNull(entry);
+
+        return new ParkGraphUpsertHistoryEntryDto
+        {
+            Id = entry.Id,
+            OperationKind = entry.OperationKind,
+            TargetParkId = entry.TargetParkId,
+            TargetParkName = entry.TargetParkName,
+            RequestedByUserId = entry.RequestedByUserId,
+            CreatedAtUtc = entry.CreatedAtUtc,
+            RawJson = entry.RawJson,
+            Result = entry.Result.ToHttp(),
         };
     }
 }

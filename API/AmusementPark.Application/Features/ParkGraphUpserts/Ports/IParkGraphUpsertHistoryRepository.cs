@@ -5,6 +5,15 @@ namespace AmusementPark.Application.Features.ParkGraphUpserts.Ports;
 public interface IParkGraphUpsertHistoryRepository
 {
     Task SaveAsync(ParkGraphUpsertHistoryEntry entry, CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> ListRecentAsync(ParkGraphUpsertHistoryQuery query, CancellationToken cancellationToken);
+}
+
+public sealed class ParkGraphUpsertHistoryQuery
+{
+    public string? TargetParkId { get; init; }
+
+    public int Limit { get; init; } = 20;
 }
 
 public sealed class ParkGraphUpsertHistoryEntry

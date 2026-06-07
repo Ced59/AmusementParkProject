@@ -360,7 +360,8 @@
           "mode": "Modus",
           "graph": "Graph",
           "preview": "Vorschau",
-          "expert": "Experten-JSON"
+          "expert": "Experten-JSON",
+          "history": "History"
         }
       },
       "target": {
@@ -412,7 +413,11 @@
         "preview": "Prüfen",
         "previewing": "Prüfung…",
         "apply": "Anwenden",
-        "applying": "Anwendung…"
+        "applying": "Anwendung…",
+        "updateJson": "Update JSON",
+        "loadingHistory": "Loading history...",
+        "refreshHistory": "Refresh history",
+        "reuseDraft": "Reuse as draft"
       },
       "errors": {
         "noParkSelected": "Wähle einen vorhandenen Park oder aktiviere die explizite Erstellung.",
@@ -420,7 +425,8 @@
         "searchTooShort": "Gib mindestens 2 Zeichen ein.",
         "searchFailed": "Parksuche fehlgeschlagen.",
         "previewFailed": "Prüfung fehlgeschlagen.",
-        "applyFailed": "Anwendung fehlgeschlagen."
+        "applyFailed": "Anwendung fehlgeschlagen.",
+        "historyFailed": "Graph history loading failed."
       },
       "result": {
         "title": "Vorschau",
@@ -434,7 +440,69 @@
         "field": "Feld",
         "oldValue": "Alt",
         "newValue": "Neu",
-        "noFieldChange": "Kein Feld geändert."
+        "noFieldChange": "Kein Feld geändert.",
+        "changeTypeFilter": "Change type",
+        "entityTypeFilter": "Entity type",
+        "matchedBy": "matched by",
+        "filters": {
+          "All": "All",
+          "Created": "Created",
+          "Updated": "Updated",
+          "Unchanged": "Unchanged",
+          "Warning": "Warning",
+          "Skipped": "Skipped"
+        }
+      },
+      "templates": {
+        "title": "Graph templates",
+        "description": "Start from a controlled model, then adjust the builder or expert JSON.",
+        "parkOnly": {
+          "title": "Park only",
+          "description": "Identity and park fields without zones or items."
+        },
+        "zonesOnly": {
+          "title": "Zones only",
+          "description": "Prepare park areas without changing items."
+        },
+        "zoneItems": {
+          "title": "Zone + items",
+          "description": "Create one zone and one item linked by key."
+        },
+        "servicesNoZone": {
+          "title": "Services without zone",
+          "description": "Create service items without attaching a zone."
+        },
+        "references": {
+          "title": "References",
+          "description": "Prepare operators, founders or manufacturers only."
+        },
+        "captainCoaster": {
+          "title": "Captain Coaster enriched",
+          "description": "Use metadata for an enriched Captain Coaster import."
+        }
+      },
+      "builder": {
+        "title": "Graph builder",
+        "description": "Fill the common fields and generate a safe graph document. New automated content stays hidden and ToReview by default.",
+        "parkName": "Park name",
+        "countryCode": "Country code",
+        "city": "City",
+        "websiteUrl": "Website URL",
+        "zoneKey": "Zone key",
+        "zoneName": "Zone name",
+        "itemKey": "Item key",
+        "itemName": "Item name",
+        "itemCategory": "Item category",
+        "itemType": "Item type",
+        "manufacturerKey": "Manufacturer key",
+        "manufacturerName": "Manufacturer name",
+        "imageUrl": "Image URL",
+        "imageAltText": "Image alt text"
+      },
+      "history": {
+        "title": "Graph history",
+        "description": "Review previous previews and applies, inspect their outcome, and restart from the stored JSON draft.",
+        "empty": "No graph import history yet."
       }
     },
     "parkItems": {

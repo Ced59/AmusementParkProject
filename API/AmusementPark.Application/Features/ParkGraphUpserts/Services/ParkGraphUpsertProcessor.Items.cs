@@ -5,6 +5,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkGraphUpserts.Contracts;
 using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
+using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -43,10 +44,10 @@ public sealed partial class ParkGraphUpsertProcessor
             {
                 ParkId = park.Id,
                 Name = name ?? string.Empty,
-                Category = ParkItemCategory.Attraction,
-                Type = ParkItemType.Attraction,
-                IsVisible = true,
-                AdminReviewStatus = AdminReviewStatus.ToReview,
+                Category = ParkItemAdministrationDefaults.QuickCreateCategory,
+                Type = ParkItemAdministrationDefaults.QuickCreateType,
+                IsVisible = ParkItemAdministrationDefaults.QuickCreateIsVisible,
+                AdminReviewStatus = ParkItemAdministrationDefaults.QuickCreateAdminReviewStatus,
             };
 
             ParkGraphUpsertChange change = BuildEntityChange("ParkItem", item.Id, key, item.Name, isNew ? "Created" : "Unchanged", isNew ? "name" : MatchMode(id, name));
