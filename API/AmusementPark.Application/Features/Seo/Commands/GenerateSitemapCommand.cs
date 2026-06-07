@@ -1,5 +1,5 @@
 using AmusementPark.Application.Abstractions;
-using AmusementPark.Errors;
+using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Seo.Models;
 
 namespace AmusementPark.Application.Features.Seo.Commands;
