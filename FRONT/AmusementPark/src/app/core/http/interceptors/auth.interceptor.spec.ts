@@ -21,8 +21,11 @@ describe('AuthInterceptor', () => {
           return of(new HttpResponse({ status: 200 }));
         }
       };
+      const request: HttpRequest<unknown> = method === 'POST'
+        ? new HttpRequest(method, url, null)
+        : new HttpRequest(method, url);
 
-      interceptor.intercept(new HttpRequest(method, url), handler).subscribe();
+      interceptor.intercept(request, handler).subscribe();
     });
   }
 
