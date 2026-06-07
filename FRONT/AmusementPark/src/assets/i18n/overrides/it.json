@@ -1,0 +1,104 @@
+{
+  "home": {
+    "heroCards": {
+      "errorMessage": "Impossibile caricare i parchi in evidenza."
+    }
+  },
+  "user-profile": {
+    "accountBadge": "Account utente"
+  },
+  "sidebar": {
+    "home": "Pagina iniziale"
+  },
+  "admin": {
+    "users": {
+      "loadError": "Impossibile caricare gli utenti.",
+      "blockAction": "Blocca account",
+      "unblockAction": "Sblocca account"
+    },
+    "parks": {
+      "zones": {
+        "empty": "Nessuna zona trovata per questo parco."
+      },
+      "items": {
+        "empty": "Nessun elemento trovato per questo parco."
+      },
+      "loadError": "Impossibile caricare i parchi."
+    },
+    "operators": {
+      "loadError": "Impossibile caricare gli operatori."
+    },
+    "manufacturers": {
+      "loadError": "Impossibile caricare i produttori."
+    },
+    "images": {
+      "newTagPlaceholder": "es.: logo-ufficiale"
+    },
+    "dashboard": {
+      "title": "Pannello di controllo"
+    },
+    "seoSitemaps": {
+      "sections": {
+        "file": "File XML"
+      }
+    },
+    "workbench": {
+      "navTitle": "Area di lavoro elementi del parco",
+      "title": "Inserimento rapido elementi",
+      "kicker": "Amministrazione rapida",
+      "subtitle": "Crea, filtra e correggi rapidamente gli elementi del parco senza aprire la scheda completa.",
+      "quickCreate": {
+        "title": "Creazione rapida",
+        "name": "Nome",
+        "park": "Parco",
+        "zone": "Zona",
+        "category": "Categoria",
+        "type": "Tipo",
+        "manufacturer": "Produttore",
+        "visibility": "Visibilità",
+        "reviewStatus": "Stato di revisione",
+        "create": "Crea",
+        "createAndContinue": "Crea e continua",
+        "creating": "Creazione…"
+      },
+      "assistantImport": {
+        "title": "Importazione assistita",
+        "pasteLines": "Incolla righe",
+        "preview": "Anteprima",
+        "apply": "Applica",
+        "template": "Modello",
+        "mapping": "Mappatura dei campi"
+      },
+      "validations": {
+        "nameRequired": "Il nome è obbligatorio.",
+        "parkRequired": "Il parco è obbligatorio.",
+        "duplicateWarning": "Esiste già un elemento simile.",
+        "invalidTypeForCategory": "Il tipo non corrisponde alla categoria."
+      },
+      "duplicates": {
+        "title": "Possibili duplicati",
+        "samePark": "Stesso parco",
+        "sameZone": "Stessa zona",
+        "ignore": "Ignora",
+        "openExisting": "Apri esistente"
+      },
+      "templates": {
+        "parkOnly": "Solo parco",
+        "zoneItems": "Zona + elementi",
+        "services": "Servizi senza zona",
+        "captainCoaster": "Import Captain Coaster arricchito"
+      }
+    }
+  },
+  "parkItems": {
+    "fields": {
+      "seatingType": "Tipo di seduta",
+      "hasSingleRider": "Fila single rider"
+    }
+  },
+  "footer": {
+    "about": {
+      "privacy": "Riservatezza"
+    }
+  }
+}
