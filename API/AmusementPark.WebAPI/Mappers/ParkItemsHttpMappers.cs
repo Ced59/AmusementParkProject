@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.ParkItems.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
+using AmusementPark.Core.Localization;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.ParkItems;
 
@@ -35,6 +37,40 @@ internal static class ParkItemsHttpMappers
         };
 
         parkItem.SetPosition(dto.Latitude, dto.Longitude);
+        return parkItem;
+    }
+
+    public static ParkItem ToDomain(this ParkItemQuickCreateDto dto, GeoPoint? fallbackPosition = null)
+    {
+        ArgumentNullException.ThrowIfNull(dto);
+
+        ParkItemCategory category = dto.Category.HasValue
+            ? dto.Category.Value.ToDomain()
+            : ParkItemAdministrationDefaults.QuickCreateCategory;
+        ParkItemType type = dto.Type.HasValue
+            ? dto.Type.Value.ToDomain()
+            : ParkItemAdministrationDefaults.GetDefaultType(category);
+
+        ParkItem parkItem = new ParkItem
+        {
+            ParkId = dto.ParkId,
+            ZoneId = dto.ZoneId,
+            Name = dto.Name,
+            Category = category,
+            Type = type,
+            Descriptions = new List<LocalizedText>(),
+            AttractionDetails = BuildQuickCreateAttractionDetails(category, dto.ManufacturerId),
+            AttractionLocations = null,
+            IsVisible = dto.IsVisible ?? ParkItemAdministrationDefaults.QuickCreateIsVisible,
+            AdminReviewStatus = dto.AdminReviewStatus.ToOptionalDomain() ?? ParkItemAdministrationDefaults.QuickCreateAdminReviewStatus,
+        };
+
+        if (dto.Latitude.HasValue && dto.Longitude.HasValue)
+        {
+            parkItem.SetPosition(dto.Latitude.Value, dto.Longitude.Value);
+        }
+
+        ParkItemAdministrationDefaults.ApplyQuickCreateDefaults(parkItem, fallbackPosition);
         return parkItem;
     }
 
@@ -200,6 +236,19 @@ internal static class ParkItemsHttpMappers
             AccessConditions = value.AccessConditions.Count > 0
                 ? value.AccessConditions.Select(static condition => condition.ToHttp()).ToList()
                 : null,
+        };
+    }
+
+    private static AttractionDetails? BuildQuickCreateAttractionDetails(ParkItemCategory category, string? manufacturerId)
+    {
+        if (category != ParkItemCategory.Attraction || string.IsNullOrWhiteSpace(manufacturerId))
+        {
+            return null;
+        }
+
+        return new AttractionDetails
+        {
+            ManufacturerId = manufacturerId.Trim(),
         };
     }
 

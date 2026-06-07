@@ -1,0 +1,1986 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AmusementPark — Roadmap Admin Fast Edition</title>
+  <meta name="description" content="Roadmap responsive pour transformer l’administration AmusementPark en poste de saisie rapide, fiable, mobile et conforme à l’architecture actuelle.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --font-display: "Bebas Neue", "Syne", sans-serif;
+      --font-heading: "Syne", "Plus Jakarta Sans", system-ui, sans-serif;
+      --font-body: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --bg: #0d0d12;
+      --bg-2: #141520;
+      --surface: rgba(20, 21, 32, 0.88);
+      --surface-2: rgba(28, 30, 44, 0.94);
+      --text: #f5f1ff;
+      --muted: #b9b2cc;
+      --faint: #7f7891;
+      --border: rgba(224, 214, 255, 0.13);
+      --border-2: rgba(224, 214, 255, 0.23);
+      --orange: #ff7a2f;
+      --pink: #ff4d9d;
+      --violet: #9b5de5;
+      --blue: #38c5f5;
+      --green: #4ddf8a;
+      --lime: #c4ff27;
+      --gold: #ffbd38;
+      --red: #ff5a64;
+      --radius-lg: 1.35rem;
+      --radius-xl: 2rem;
+      --shadow: 0 24px 70px rgba(0,0,0,0.32);
+      --shadow-card: 0 14px 40px rgba(0,0,0,0.24);
+      --page-inline: clamp(1rem, 4vw, 2rem);
+      --content-max: 1480px;
+      --rail-width: 300px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(ellipse 70% 44% at 8% 4%, rgba(155,93,229,0.18), transparent 64%),
+        radial-gradient(ellipse 40% 30% at 86% 18%, rgba(77,223,138,0.08), transparent 70%),
+        radial-gradient(ellipse 42% 34% at 88% 86%, rgba(56,197,245,0.10), transparent 72%),
+        linear-gradient(160deg, #0d0d12 0%, #171621 52%, #0d0d12 100%);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.022;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='0.8'/%3E%3C/svg%3E");
+    }
+    a { color: inherit; text-decoration: none; }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.86em;
+      color: #fef3ff;
+      background: rgba(224,214,255,0.08);
+      border: 1px solid rgba(224,214,255,0.14);
+      padding: 0.08rem 0.32rem;
+      border-radius: 0.45rem;
+    }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--border);
+      background: rgba(13,13,18,0.84);
+      backdrop-filter: blur(18px) saturate(145%);
+    }
+    .topbar-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0.7rem var(--page-inline);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 0.65rem; font-family: var(--font-display); font-size: 1.8rem; letter-spacing: 0.04em; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 0.85rem; background: var(--violet); color: #fff; box-shadow: 0 0 22px rgba(155,93,229,0.28); }
+    .topbar-meta { justify-self: center; display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.36rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .pill--must { color: var(--lime); background: rgba(196,255,39,0.08); border-color: rgba(196,255,39,0.18); }
+    .pill--fast { color: var(--blue); background: rgba(56,197,245,0.08); border-color: rgba(56,197,245,0.18); }
+    .pill--safe { color: var(--orange); background: rgba(255,122,47,0.09); border-color: rgba(255,122,47,0.2); }
+    .topbar-link { justify-self: end; color: #08080c; background: var(--lime); border-radius: 999px; padding: 0.55rem 1rem; font-weight: 900; font-size: 0.84rem; }
+    .mobile-jump {
+      display: none;
+      position: sticky;
+      top: 61px;
+      z-index: 18;
+      overflow-x: auto;
+      padding: 0.6rem var(--page-inline);
+      gap: 0.45rem;
+      background: rgba(13,13,18,0.78);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      scrollbar-width: none;
+    }
+    .mobile-jump::-webkit-scrollbar { display: none; }
+    .mobile-jump a {
+      flex: 0 0 auto;
+      min-width: 4.3rem;
+      text-align: center;
+      padding: 0.48rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(224,214,255,0.06);
+      border: 1px solid var(--border);
+      font-weight: 900;
+      color: var(--muted);
+    }
+    .layout {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 1.5rem var(--page-inline) 5rem;
+      display: grid;
+      grid-template-columns: var(--rail-width) minmax(0, 1fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+    .rail {
+      position: sticky;
+      top: 82px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-height: calc(100vh - 100px);
+      overflow: auto;
+      padding-right: 0.2rem;
+    }
+    .rail-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(20,21,32,0.9), rgba(28,30,44,0.88));
+      box-shadow: var(--shadow-card);
+      padding: 1rem;
+    }
+    .rail-title { margin: 0 0 0.8rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--faint); font-weight: 900; }
+    .rail-link {
+      display: grid;
+      grid-template-columns: 3.1rem 1fr;
+      gap: 0.72rem;
+      align-items: center;
+      padding: 0.72rem;
+      border-radius: 1rem;
+      border: 1px solid transparent;
+      color: var(--muted);
+      transition: 180ms ease;
+    }
+    .rail-link:hover { background: rgba(224,214,255,0.06); border-color: var(--border); color: var(--text); transform: translateX(2px); }
+    .rail-link span { grid-row: span 2; display: grid; place-items: center; width: 3.1rem; height: 3.1rem; border-radius: 1rem; font-family: var(--font-display); font-size: 1.6rem; background: rgba(224,214,255,0.07); color: var(--text); }
+    .rail-link strong { display: block; font-size: 0.9rem; line-height: 1.2; }
+    .rail-link small { display: block; color: var(--faint); font-weight: 800; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .rail-link--architecture span { color: var(--violet); }
+    .rail-link--manual span { color: var(--lime); }
+    .rail-link--performance span { color: var(--blue); }
+    .rail-link--import span { color: var(--green); }
+    .rail-link--graph span { color: var(--gold); }
+    .rail-link--content span { color: var(--pink); }
+    .rail-link--mobile span { color: var(--orange); }
+    .main { min-width: 0; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: clamp(1.5rem, 4vw, 2.5rem);
+      background:
+        radial-gradient(ellipse 58% 54% at 12% 42%, rgba(155,93,229,0.22), transparent 68%),
+        radial-gradient(ellipse 34% 30% at 90% 20%, rgba(196,255,39,0.08), transparent 70%),
+        linear-gradient(180deg, rgba(20,21,32,0.96), rgba(28,30,44,0.9));
+      box-shadow: var(--shadow);
+      padding: clamp(1.4rem, 5vw, 3.6rem);
+      margin-bottom: 1.2rem;
+    }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr); gap: 1.5rem; align-items: end; }
+    .kicker {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.38rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(196,255,39,0.22);
+      background: rgba(196,255,39,0.09);
+      color: var(--lime);
+      font-size: 0.74rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .hero h1 {
+      margin: 1rem 0 0.8rem;
+      max-width: 11ch;
+      font-family: var(--font-display);
+      font-size: clamp(4.2rem, 12vw, 8.6rem);
+      line-height: 0.88;
+      letter-spacing: 0.035em;
+    }
+    .hero h1 span { color: transparent; -webkit-text-stroke: 1.6px var(--lime); text-shadow: none; }
+    .lead { max-width: 74ch; margin: 0; color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.14rem); }
+    .hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; }
+    .stat { border: 1px solid var(--border); border-radius: var(--radius-lg); background: rgba(224,214,255,0.05); padding: 1rem; }
+    .stat strong { display:block; font-family: var(--font-heading); font-size: clamp(1.45rem, 3vw, 2rem); line-height: 1; }
+    .stat span { display:block; margin-top:0.35rem; color: var(--muted); font-weight: 800; font-size: 0.76rem; text-transform: uppercase; letter-spacing:0.06em; }
+    .summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; margin: 1rem 0 1.35rem; }
+    .summary-card { border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); padding: 1rem; }
+    .summary-card h2 { margin: 0; color: var(--text); font-size: 1.1rem; }
+    .summary-card p { margin: 0.45rem 0 0; color: var(--muted); }
+    .golden-rule {
+      margin: 1rem 0 1.35rem;
+      border: 1px solid rgba(196,255,39,0.2);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(196,255,39,0.08), rgba(56,197,245,0.045));
+      padding: clamp(1rem, 2.5vw, 1.4rem);
+    }
+    .golden-rule h2 { margin: 0 0 0.6rem; font-size: clamp(1.35rem, 3vw, 2rem); }
+    .rule-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0.75rem; margin-top: 0.9rem; }
+    .rule { border:1px solid var(--border); border-radius: 1rem; background: rgba(13,13,18,0.35); padding: 0.85rem; color: var(--muted); }
+    .rule strong { display:block; color: var(--text); margin-bottom: 0.25rem; }
+    .phase {
+      position: relative;
+      margin-top: 1.15rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(20,21,32,0.92), rgba(28,30,44,0.88));
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .phase::before { content:""; position:absolute; inset:0 auto 0 0; width: 5px; background: var(--violet); }
+    .phase--architecture::before { background: linear-gradient(180deg, var(--violet), var(--blue)); }
+    .phase--manual::before { background: linear-gradient(180deg, var(--lime), var(--green)); }
+    .phase--performance::before { background: linear-gradient(180deg, var(--blue), var(--violet)); }
+    .phase--import::before { background: linear-gradient(180deg, var(--green), var(--lime)); }
+    .phase--graph::before { background: linear-gradient(180deg, var(--gold), var(--orange)); }
+    .phase--content::before { background: linear-gradient(180deg, var(--pink), var(--violet)); }
+    .phase--mobile::before { background: linear-gradient(180deg, var(--orange), var(--red)); }
+    .phase-anchor { position: absolute; top: 0.85rem; right: 1rem; color: rgba(255,255,255,0.045); font-family: var(--font-display); font-size: clamp(4rem, 12vw, 8rem); line-height: 1; pointer-events: none; }
+    .phase-header {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 1rem;
+      padding: clamp(1rem, 2.7vw, 1.5rem);
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+    .phase-icon { width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border-radius: 1.05rem; background: rgba(224,214,255,0.07); border: 1px solid var(--border); font-size: 1.45rem; }
+    .phase-heading { min-width: 0; }
+    .eyebrow { margin: 0 0 0.3rem; color: var(--faint); font-size: 0.74rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; }
+    .phase h2 { margin: 0; font-family: var(--font-heading); font-size: clamp(1.45rem, 4.4vw, 2.2rem); line-height: 1.08; letter-spacing: -0.035em; }
+    .phase-heading > p:last-child { margin: 0.55rem 0 0; color: var(--muted); max-width: 78ch; }
+    .phase-count { justify-self: end; text-align: right; padding: 0.7rem 0.85rem; border: 1px solid var(--border); border-radius: 1rem; background: rgba(224,214,255,0.045); }
+    .phase-count strong { display:block; font-size: 1.5rem; line-height: 1; }
+    .phase-count span { color: var(--faint); font-weight: 800; font-size: 0.72rem; text-transform: uppercase; }
+    .phase-note { margin: clamp(1rem, 2.7vw, 1.5rem); padding: 0.9rem 1rem; border: 1px solid rgba(56,197,245,0.18); border-radius: 1rem; background: rgba(56,197,245,0.055); color: var(--muted); }
+    .phase-note strong { color: var(--text); }
+    .work-list { display: grid; gap: 0.85rem; padding: 0 clamp(1rem, 2.7vw, 1.5rem) clamp(1rem, 2.7vw, 1.5rem); }
+    .work-item { position: relative; border: 1px solid var(--border); border-radius: 1.15rem; background: rgba(13,13,18,0.38); overflow: hidden; }
+    .work-item::before { content:""; position:absolute; inset:0 auto 0 0; width: 3px; background: var(--violet); opacity: 0.85; }
+    .work-item--architecture::before { background: var(--violet); }
+    .work-item--manual::before { background: var(--lime); }
+    .work-item--performance::before { background: var(--blue); }
+    .work-item--import::before { background: var(--green); }
+    .work-item--graph::before { background: var(--gold); }
+    .work-item--content::before { background: var(--pink); }
+    .work-item--mobile::before { background: var(--orange); }
+    .work-head { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 0.85rem; padding: 0.95rem 1rem; align-items: center; border-bottom: 1px solid rgba(224,214,255,0.08); }
+    .work-index { width: 3rem; height: 3rem; display: grid; place-items: center; border-radius: 0.9rem; background: rgba(224,214,255,0.07); border: 1px solid var(--border); }
+    .work-index span { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 900; color: var(--text); }
+    .work-kicker { margin:0 0 0.15rem; color: var(--faint); font-weight: 900; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .work-title-wrap { min-width:0; }
+    .work-title-wrap h3 { margin:0; font-size: clamp(1rem, 2.4vw, 1.18rem); line-height: 1.25; letter-spacing: -0.02em; }
+    .badge { justify-self: end; border-radius: 999px; padding: 0.32rem 0.62rem; border: 1px solid var(--border); background: rgba(224,214,255,0.055); color: var(--muted); font-size: 0.68rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+    .badge--must { color: var(--orange); border-color: rgba(255,122,47,0.24); background: rgba(255,122,47,0.09); }
+    .badge--strong { color: var(--lime); border-color: rgba(196,255,39,0.18); background: rgba(196,255,39,0.07); }
+    .badge--plus { color: var(--blue); border-color: rgba(56,197,245,0.18); background: rgba(56,197,245,0.07); }
+    .badge--option { color: var(--faint); }
+    .work-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.95fr) minmax(0, 1fr); gap: 0; }
+    .work-grid section { padding: 0.9rem 1rem; border-right: 1px solid rgba(224,214,255,0.08); }
+    .work-grid section:last-child { border-right: 0; }
+    .work-grid h4 { margin: 0 0 0.35rem; color: var(--faint); font-size: 0.7rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.09em; }
+    .work-grid p { margin:0; color: var(--muted); font-size: 0.93rem; }
+    .validation p { color: #e8e1f7; }
+    .final-gate { margin-top: 1.15rem; border: 1px solid rgba(196,255,39,0.18); border-radius: var(--radius-xl); background: rgba(196,255,39,0.06); padding: clamp(1.2rem,3vw,1.7rem); }
+    .final-gate h2 { margin:0 0 0.75rem; font-size: clamp(1.4rem, 4vw, 2rem); }
+    .check-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+    .check { display:flex; gap:0.65rem; align-items:flex-start; color: var(--muted); padding:0.85rem; border:1px solid var(--border); border-radius:1rem; background:rgba(13,13,18,0.35); }
+    .check b { color: var(--lime); }
+    .footer { margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--border); color: var(--faint); font-size: 0.86rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+    @media (max-width: 1120px) {
+      .layout { grid-template-columns: 1fr; }
+      .rail { position: static; max-height: none; overflow: visible; }
+      .rail-card { display: none; }
+      .mobile-jump { display: flex; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    }
+    @media (max-width: 900px) { .rule-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 820px) {
+      .topbar-inner { grid-template-columns: 1fr; align-items: start; gap: 0.65rem; }
+      .topbar-meta { justify-self: start; justify-content: flex-start; }
+      .topbar-link { justify-self: start; }
+      .mobile-jump { top: 139px; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .phase-header { grid-template-columns: auto 1fr; }
+      .phase-count { grid-column: 1 / -1; justify-self: start; text-align: left; display:flex; gap:0.45rem; align-items:baseline; }
+      .work-head { grid-template-columns: auto 1fr; }
+      .badge { grid-column: 2; justify-self: start; }
+      .work-grid { grid-template-columns: 1fr; }
+      .work-grid section { border-right:0; border-bottom:1px solid rgba(224,214,255,0.08); }
+      .work-grid section:last-child { border-bottom:0; }
+      .check-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      html { scroll-padding-top: 8.5rem; }
+      .topbar { position: static; }
+      .mobile-jump { top: 0; }
+      .brand { font-size: 1.5rem; }
+      .brand-mark { width:34px; height:34px; }
+      .topbar-link { width: 100%; text-align: center; }
+      .hero { padding: 1.05rem; }
+      .hero h1 { font-size: clamp(3.3rem, 18vw, 4.8rem); }
+      .hero-stats { grid-template-columns: 1fr; }
+      .rule-grid { grid-template-columns: 1fr; }
+      .phase { border-radius: 1.25rem; }
+      .phase-header { padding: 1rem; gap: 0.75rem; }
+      .phase-icon { width: 2.8rem; height:2.8rem; border-radius:0.9rem; }
+      .phase-note { margin: 1rem; }
+      .work-list { padding: 0 1rem 1rem; }
+      .work-head { padding: 0.8rem; gap:0.65rem; }
+      .work-index { width:2.65rem; height:2.65rem; }
+      .work-grid section { padding:0.8rem; }
+      .pill { white-space: normal; }
+    }
+    @media print {
+      body { background: #fff; color: #111; }
+      .topbar, .mobile-jump, .rail { display:none; }
+      .layout { display:block; max-width:none; padding:0; }
+      .hero, .phase, .work-item, .summary-card, .golden-rule, .final-gate { box-shadow:none; break-inside: avoid; background:#fff; color:#111; }
+      .work-grid p, .phase-heading > p:last-child, .phase-note, .summary-card p, .rule { color:#333; }
+      .badge, .pill, code { color:#111; border-color:#bbb; background:#f4f4f4; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top"><span class="brand-mark">⚙️</span><span>AmusementPark</span></a>
+      <div class="topbar-meta" aria-label="Synthèse">
+        <span class="pill pill--must">Règle d’or · Architecture intacte</span>
+        <span class="pill pill--fast">Admin · Saisie ultra rapide</span>
+        <span class="pill pill--safe">Preview · ToReview · Audit</span>
+      </div>
+      <a class="topbar-link" href="#m25">Commencer →</a>
+    </div>
+  </header>
+
+  <nav class="mobile-jump" aria-label="Navigation rapide mobile">
+    <a href="#m25">M25</a>
+<a href="#m26">M26</a>
+<a href="#m27">M27</a>
+<a href="#m28">M28</a>
+<a href="#m29">M29</a>
+<a href="#m30">M30</a>
+<a href="#m31">M31</a>
+  </nav>
+
+  <div class="layout" id="top">
+    <aside class="rail" aria-label="Navigation des phases">
+      <div class="rail-card">
+        <p class="rail-title">Ordre recommandé</p>
+        <a href="#m25" class="rail-link rail-link--architecture"><span>M25</span><strong>Socle admin rapide sans rupture d’architecture</strong><small>Architecture</small></a>
+<a href="#m26" class="rail-link rail-link--manual"><span>M26</span><strong>Workbench ParkItems manuel ultra rapide</strong><small>Manuel rapide</small></a>
+<a href="#m27" class="rail-link rail-link--performance"><span>M27</span><strong>Liste paginée, édition inline et bulk métier</strong><small>Liste &amp; bulk</small></a>
+<a href="#m28" class="rail-link rail-link--import"><span>M28</span><strong>Import manuel assisté par collage / CSV</strong><small>Import assisté</small></a>
+<a href="#m29" class="rail-link rail-link--graph"><span>M29</span><strong>Graph Upsert visuel et sécurisé</strong><small>Graph Upsert</small></a>
+<a href="#m30" class="rail-link rail-link--content"><span>M30</span><strong>Workflow contenu, localisation et publication</strong><small>Contenu</small></a>
+<a href="#m31" class="rail-link rail-link--mobile"><span>M31</span><strong>Admin mobile, performances et robustesse opérationnelle</strong><small>Mobile &amp; ops</small></a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <span class="kicker">Roadmap Admin · Fast Edition</span>
+            <h1>ADMIN<br><span>ULTRA FAST</span></h1>
+            <p class="lead">Roadmap responsive pour transformer l’administration AmusementPark en poste de production : ajout manuel extrêmement rapide, import assisté, graph upsert visuel, édition inline, mobile réel, audit et qualité éditoriale. Le principe directeur est simple : accélérer massivement sans casser l’architecture actuelle.</p>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><strong>7</strong><span>phases</span></div>
+            <div class="stat"><strong>56</strong><span>sous-tâches</span></div>
+            <div class="stat"><strong>1</strong><span>règle absolue</span></div>
+            <div class="stat"><strong>0</strong><span>architecture parallèle</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="golden-rule" id="golden-rule">
+        <h2>Règle absolue et générale</h2>
+        <p class="lead">Toute évolution admin doit respecter à fond l’architecture actuelle, les principes SOLID, la séparation des responsabilités, les facades de state, les services data-access, les contrats API propres, les handlers applicatifs et les composants partagés lorsque leur réutilisation est pertinente. La vitesse de saisie ne doit jamais justifier un contournement sale du domaine ou une duplication durable.</p>
+        <div class="rule-grid">
+          <div class="rule"><strong>Architecture existante</strong>On étend les features actuelles au lieu de créer un second système admin.</div>
+          <div class="rule"><strong>SOLID</strong>Parsing, mapping, validation, state et UI restent séparés et testables.</div>
+          <div class="rule"><strong>Réutilisation pertinente</strong>On mutualise les composants utiles, sans forcer une abstraction artificielle.</div>
+          <div class="rule"><strong>Sécurité éditoriale</strong>Preview avant apply, audit des actions, ToReview par défaut pour les flux massifs.</div>
+        </div>
+      </section>
+
+      <section class="summary-grid" aria-label="Découpage de priorité">
+        <article class="summary-card">
+          <h2>M25 → M27 : accélération manuelle immédiate</h2>
+          <p>Socle propre, workbench par parc, création rapide, pagination, inline edit et bulk métier.</p>
+        </article>
+        <article class="summary-card">
+          <h2>M28 → M29 : import puissant mais contrôlé</h2>
+          <p>Collage/CSV, prévisualisation, dédoublonnage, Graph Upsert visuel et historique exploitable.</p>
+        </article>
+        <article class="summary-card">
+          <h2>M30 → M31 : qualité, mobile et exploitation</h2>
+          <p>Complétude éditoriale, localisation, gates de publication, responsive mobile réel, tests et observabilité.</p>
+        </article>
+      </section>
+
+
+    <section class="phase phase--architecture" id="m25">
+      <div class="phase-anchor">M25</div>
+      <header class="phase-header">
+        <div class="phase-icon" aria-hidden="true">🏗️</div>
+        <div class="phase-heading">
+          <p class="eyebrow">Fondations obligatoires · 1 à 3 jours</p>
+          <h2>M25 — Socle admin rapide sans rupture d’architecture</h2>
+          <p>Poser les règles techniques avant d’accélérer l’admin : aucun raccourci ne doit créer une seconde architecture, contourner les facades, ou dupliquer des composants existants.</p>
+        </div>
+        <div class="phase-count"><strong>8</strong><span>sous-tâches</span></div>
+      </header>
+      <div class="phase-note"><strong>Pourquoi maintenant :</strong> l’admin possède déjà une structure facades / data-access / mappers / composants. La vitesse doit venir d’une meilleure orchestration, pas d’un contournement du code existant.</div>
+      <div class="work-list">
+
+          <article class="work-item work-item--architecture" id="task-25-1">
+            <header class="work-head">
+              <div class="work-index"><span>25.1</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Architecture</p>
+                <h3>Écrire la charte Admin Fast Edition</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Définir noir sur blanc les règles absolues : respecter Clean Architecture, SOLID, séparation composants/state/data-access/API, et réutiliser les composants existants quand cela apporte réellement de la cohérence.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>docs/admin/admin-fast-edition-guidelines.md</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Chaque nouvelle feature admin peut être relue contre cette charte.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--architecture" id="task-25-2">
+            <header class="work-head">
+              <div class="work-index"><span>25.2</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Architecture</p>
+                <h3>Cartographier les composants admin réutilisables</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Lister les composants déjà utilisables : page-state, empty-state, pagination, editor-save-toolbar, admin-json-import-tab, reference-images, listes filtrées, facades signalées.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>FRONT/AmusementPark/src/app/components/admin, shared, features/admin</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>On sait précisément quoi réutiliser, quoi adapter, et quoi ne pas forcer.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--architecture" id="task-25-3">
+            <header class="work-head">
+              <div class="work-index"><span>25.3</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Architecture</p>
+                <h3>Créer un dossier feature admin/workbench</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Préparer une feature dédiée au travail rapide sans mélanger la page d’édition complète et le nouveau flux de production.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>features/admin/park-items/workbench + components/admin/park-items/workbench</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Le workbench a ses facades et modèles, mais réutilise les services API existants.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--architecture" id="task-25-4">
+            <header class="work-head">
+              <div class="work-index"><span>25.4</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Contrats</p>
+                <h3>Définir les DTO rapides sans polluer ParkItemDto</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Créer des contrats dédiés à la création rapide et à l’édition inline. Ne pas alourdir le DTO complet existant ni l’utiliser comme fourre-tout.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>API/AmusementPark.WebAPI/Contracts/ParkItems</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Les flux rapides ont un contrat explicite, testable, évolutif.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--architecture" id="task-25-5">
+            <header class="work-head">
+              <div class="work-index"><span>25.5</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Domain</p>
+                <h3>Définir les valeurs par défaut métier</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Centraliser les valeurs par défaut : visibilité, statut review, catégorie, coordonnées parc, descriptions vides, comportement ToReview.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>Application/Features/ParkItems/Services ou policy dédiée</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>La logique n’est pas dispersée dans les composants Angular.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--architecture" id="task-25-6">
+            <header class="work-head">
+              <div class="work-index"><span>25.6</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">UX</p>
+                <h3>Figer les parcours admin cibles</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Documenter les trois parcours : création rapide manuelle, enrichissement complet, import assisté. Chaque parcours doit avoir sa place et ne pas cannibaliser les autres.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>docs/admin/admin-editor-user-flows.md</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu sais quel écran utiliser selon le besoin : vite créer, enrichir, importer.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--architecture" id="task-25-7">
+            <header class="work-head">
+              <div class="work-index"><span>25.7</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Tests</p>
+                <h3>Ajouter tests de non-régression sur les mappers</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Protéger les mappers existants de parkItem edit et les futurs mappers quick create / bulk edit.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>features/admin/park-items/mappers/*.spec.ts</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>La rapidité UX ne casse pas la structure des entités envoyées à l’API.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--architecture" id="task-25-8">
+            <header class="work-head">
+              <div class="work-index"><span>25.8</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">I18n</p>
+                <h3>Préparer les clés de traduction admin</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Créer les clés i18n pour workbench, saisie rapide, assistant import, validations, doublons, templates. Pas de texte en dur.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>assets/i18n/*.json</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tous les nouveaux écrans admin restent localisés proprement.</p>
+              </section>
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section class="phase phase--manual" id="m26">
+      <div class="phase-anchor">M26</div>
+      <header class="phase-header">
+        <div class="phase-icon" aria-hidden="true">⚡</div>
+        <div class="phase-heading">
+          <p class="eyebrow">Priorité maximale · 3 à 6 jours</p>
+          <h2>M26 — Workbench ParkItems manuel ultra rapide</h2>
+          <p>Transformer la page des éléments d’un parc en véritable poste de saisie rapide : créer, dupliquer, corriger et continuer sans quitter le contexte du parc.</p>
+        </div>
+        <div class="phase-count"><strong>8</strong><span>sous-tâches</span></div>
+      </header>
+      <div class="phase-note"><strong>Pourquoi maintenant :</strong> c’est le plus gros gain concret. Le besoin principal est de pouvoir administrer un parc complet très vite, surtout manuellement.</div>
+      <div class="work-list">
+
+          <article class="work-item work-item--manual" id="task-26-1">
+            <header class="work-head">
+              <div class="work-index"><span>26.1</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">UX</p>
+                <h3>Remplacer la simple liste par un workbench</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>La page des items d’un parc doit devenir un écran de production : stats, filtres, recherche, liste paginée, actions rapides, drawer de création.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>admin-park-items + nouvelle feature workbench</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Depuis un parc, tu peux piloter tous les items sans revenir à l’index global.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--manual" id="task-26-2">
+            <header class="work-head">
+              <div class="work-index"><span>26.2</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Création</p>
+                <h3>Ajouter un drawer Création rapide</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Créer un panneau latéral compact avec seulement les champs indispensables : nom, catégorie, type, zone, visibilité, statut review.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>admin-park-item-quick-create-drawer.component</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Un item peut être créé en quelques secondes sans ouvrir la fiche complète.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--manual" id="task-26-3">
+            <header class="work-head">
+              <div class="work-index"><span>26.3</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Création</p>
+                <h3>Ajouter Créer + nouveau</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Après création, le formulaire reste ouvert, réinitialise uniquement le nom et conserve le contexte utile : parc, zone, catégorie, type, constructeur si choisi.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>workbench facade + quick create form</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Saisie en rafale fluide pour une zone entière.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--manual" id="task-26-4">
+            <header class="work-head">
+              <div class="work-index"><span>26.4</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Raccourcis</p>
+                <h3>Ajouter clavier et focus intelligent</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Entrée ou Ctrl+Entrée pour créer, Échap pour fermer, focus automatique sur le nom après chaque création, navigation tab propre.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>quick create drawer + a11y</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Le clavier suffit pour créer une série d’éléments.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--manual" id="task-26-5">
+            <header class="work-head">
+              <div class="work-index"><span>26.5</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Contexte</p>
+                <h3>Mémoriser le dernier contexte de saisie</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Conserver localement par parc : dernière zone, catégorie, type, constructeur, visibilité et statut review.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>local storage léger ou signal store dédié</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu ne ressaisis pas 15 fois les mêmes informations.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--manual" id="task-26-6">
+            <header class="work-head">
+              <div class="work-index"><span>26.6</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Duplication</p>
+                <h3>Ajouter Dupliquer depuis une ligne</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Créer un nouvel item depuis un item existant en reprenant zone, catégorie, type, détails légers et constructeur, mais en demandant un nouveau nom.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>workbench row actions + API create</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Créer des séries proches devient immédiat.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--manual" id="task-26-7">
+            <header class="work-head">
+              <div class="work-index"><span>26.7</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Navigation</p>
+                <h3>Ajouter Créer puis ouvrir fiche complète</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Après une création rapide, proposer d’ouvrir l’édition complète uniquement si l’item mérite un enrichissement immédiat.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>drawer actions + router</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Le flux rapide ne bloque pas le flux complet.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--manual" id="task-26-8">
+            <header class="work-head">
+              <div class="work-index"><span>26.8</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Validation</p>
+                <h3>Prévenir les doublons dès la saisie</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Pendant la frappe du nom, signaler les noms proches dans le même parc ou la même zone sans bloquer brutalement.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>dedupe service front + endpoint léger</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Les erreurs de doublons diminuent sans ralentir la saisie.</p>
+              </section>
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section class="phase phase--performance" id="m27">
+      <div class="phase-anchor">M27</div>
+      <header class="phase-header">
+        <div class="phase-icon" aria-hidden="true">📋</div>
+        <div class="phase-heading">
+          <p class="eyebrow">Priorité haute · 3 à 7 jours</p>
+          <h2>M27 — Liste paginée, édition inline et bulk métier</h2>
+          <p>Rendre l’administration quotidienne rapide : fini les ouvertures de fiche complète pour changer une zone, un type, une visibilité ou un statut.</p>
+        </div>
+        <div class="phase-count"><strong>8</strong><span>sous-tâches</span></div>
+      </header>
+      <div class="phase-note"><strong>Pourquoi maintenant :</strong> l’index global possède déjà une pagination et des bulk actions. Il faut ramener cette efficacité dans le contexte parc et l’étendre aux vrais champs métier.</div>
+      <div class="work-list">
+
+          <article class="work-item work-item--performance" id="task-27-1">
+            <header class="work-head">
+              <div class="work-index"><span>27.1</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">API</p>
+                <h3>Basculer les items d’un parc sur l’endpoint paginé</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Remplacer le chargement complet par l’endpoint park-items paginé avec parkId, recherche, filtres, page et taille.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>AdminParkItemsStateFacade + ParkItemsApiService</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Les grands parcs restent fluides et la pagination ne recharge pas toute la collection.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--performance" id="task-27-2">
+            <header class="work-head">
+              <div class="work-index"><span>27.2</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">UX</p>
+                <h3>Ajouter filtres rapides par zone/catégorie/type/statut</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Dans le workbench parc, ajouter des filtres utiles à la saisie réelle : zone, catégorie, type, visibilité, statut review, recherche.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>workbench filters component</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu retrouves immédiatement les items à corriger.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--performance" id="task-27-3">
+            <header class="work-head">
+              <div class="work-index"><span>27.3</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Inline</p>
+                <h3>Éditer zone/catégorie/type depuis la ligne</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Transformer certains champs en contrôles inline avec sauvegarde rapide, rollback en cas d’erreur et message toast sobre.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>admin-park-item-inline-cell components</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Les corrections simples ne nécessitent plus d’ouvrir la fiche.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--performance" id="task-27-4">
+            <header class="work-head">
+              <div class="work-index"><span>27.4</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Inline</p>
+                <h3>Éditer visibilité et review status inline</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Ajouter des switches/tags éditables pour isVisible et adminReviewStatus, en réutilisant la logique bulk existante si possible.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>bulk administration handler ou patch spécialisé</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Publication / masquage / validation deviennent instantanés.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--performance" id="task-27-5">
+            <header class="work-head">
+              <div class="work-index"><span>27.5</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Bulk</p>
+                <h3>Étendre le bulk aux champs métier</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Ajouter bulk zone, catégorie, type, constructeur, visibilité, statut review. Ne pas forcer tout dans bulk-administration si le contrat devient sale : créer un contrat bulk-fields propre.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>ParkItemsController + Commands + Handlers</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu peux corriger 30 items sélectionnés en une action.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--performance" id="task-27-6">
+            <header class="work-head">
+              <div class="work-index"><span>27.6</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Optimistic UI</p>
+                <h3>Mettre à jour la liste sans reload complet</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Après édition inline ou bulk, mettre à jour le signal store localement puis revalider si nécessaire. Éviter les rechargements brutaux.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>workbench state facade</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>L’admin paraît instantanée même sur réseau moyen.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--performance" id="task-27-7">
+            <header class="work-head">
+              <div class="work-index"><span>27.7</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Audit</p>
+                <h3>Brancher audit log sur actions rapides</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Chaque action rapide importante doit être auditée : bulk update, visibilité, statut, suppression, duplication, import apply.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>AdminAuditAttribute + handlers</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>La vitesse ne se fait pas au détriment de la traçabilité.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--performance" id="task-27-8">
+            <header class="work-head">
+              <div class="work-index"><span>27.8</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">A11y</p>
+                <h3>Adapter table desktop et cards mobile</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Desktop : table dense. Mobile : cards actionnables, champs critiques accessibles, pas de scroll horizontal imposé.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>workbench responsive view</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>L’admin fonctionne vraiment sur téléphone.</p>
+              </section>
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section class="phase phase--import" id="m28">
+      <div class="phase-anchor">M28</div>
+      <header class="phase-header">
+        <div class="phase-icon" aria-hidden="true">📥</div>
+        <div class="phase-heading">
+          <p class="eyebrow">Productivité massive · 4 à 8 jours</p>
+          <h2>M28 — Import manuel assisté par collage / CSV</h2>
+          <p>Permettre de créer beaucoup d’items depuis une liste simple, un tableau ou un copier-coller Excel, sans écrire de JSON à la main.</p>
+        </div>
+        <div class="phase-count"><strong>8</strong><span>sous-tâches</span></div>
+      </header>
+      <div class="phase-note"><strong>Pourquoi maintenant :</strong> le JSON Graph Upsert est puissant, mais trop technique pour une saisie fluide. L’admin doit générer le format robuste à ta place.</div>
+      <div class="work-list">
+
+          <article class="work-item work-item--import" id="task-28-1">
+            <header class="work-head">
+              <div class="work-index"><span>28.1</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">UX</p>
+                <h3>Ajouter Coller une liste</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Dans le workbench, créer un mode où chaque ligne devient un item minimal. Exemples acceptés : nom seul, nom;catégorie;type;zone;constructeur.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>admin-park-item-paste-import.component</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu peux transformer une liste brute en items prêts à prévisualiser.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--import" id="task-28-2">
+            <header class="work-head">
+              <div class="work-index"><span>28.2</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Parsing</p>
+                <h3>Créer un parseur tolérant mais testable</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Détecter séparateurs ; , tabulation, colonnes facultatives, lignes vides, commentaires. La logique doit être isolée et couverte par tests.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>features/admin/park-items/import/parsers</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Le parsing ne vit pas dans le composant Angular.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--import" id="task-28-3">
+            <header class="work-head">
+              <div class="work-index"><span>28.3</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Mapping</p>
+                <h3>Ajouter écran de mapping colonnes</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Pour CSV/tableaux, proposer le mapping : nom, catégorie, type, zone, constructeur, visibilité, statut, description FR.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>paste import wizard</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Un copier-coller Excel devient exploitable sans reformater à la main.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--import" id="task-28-4">
+            <header class="work-head">
+              <div class="work-index"><span>28.4</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Prévisualisation</p>
+                <h3>Afficher une table de preview éditable</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Avant application, chaque ligne peut être corrigée : type invalide, zone inconnue, constructeur proche, doublon potentiel.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>preview table reusable</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu corriges les erreurs avant d’écrire en base.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--import" id="task-28-5">
+            <header class="work-head">
+              <div class="work-index"><span>28.5</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Résolution</p>
+                <h3>Résoudre zones et constructeurs intelligemment</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Mapper par id, nom exact, nom normalisé, puis proposer création si absent. Ne jamais créer silencieusement sans preview.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>Application preview service</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Les imports rapides restent contrôlés.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--import" id="task-28-6">
+            <header class="work-head">
+              <div class="work-index"><span>28.6</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Application</p>
+                <h3>Créer un endpoint bulk create preview/apply</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Comme Graph Upsert : un endpoint preview ne modifie rien, un endpoint apply crée les items validés. Tous les nouveaux items arrivent en ToReview par défaut.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>ParkItemsBulkCreate feature</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Le flux est sûr : prévisualisation avant écriture.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--import" id="task-28-7">
+            <header class="work-head">
+              <div class="work-index"><span>28.7</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Historique</p>
+                <h3>Journaliser les imports manuels assistés</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Conserver date, utilisateur, parc, nombre de lignes, créés, ignorés, erreurs et payload source tronqué ou hashé.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>Admin import history</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>On sait d’où viennent les données ajoutées en masse.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--import" id="task-28-8">
+            <header class="work-head">
+              <div class="work-index"><span>28.8</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Réutilisation</p>
+                <h3>Réutiliser les composants de preview Graph si pertinent</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Si les modèles de changements Graph Upsert sont adaptés, les mutualiser. Sinon créer une abstraction PreviewChange commune sans forcer une réutilisation artificielle.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>shared admin preview components</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Le code reste cohérent mais pas tordu pour réutiliser à tout prix.</p>
+              </section>
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section class="phase phase--graph" id="m29">
+      <div class="phase-anchor">M29</div>
+      <header class="phase-header">
+        <div class="phase-icon" aria-hidden="true">🧩</div>
+        <div class="phase-heading">
+          <p class="eyebrow">Automatisation contrôlée · 4 à 9 jours</p>
+          <h2>M29 — Graph Upsert visuel et sécurisé</h2>
+          <p>Conserver la puissance du Park Graph Upsert, mais le rendre utilisable comme assistant visuel : construire, prévisualiser, comprendre et appliquer sans manipuler seulement du JSON brut.</p>
+        </div>
+        <div class="phase-count"><strong>8</strong><span>sous-tâches</span></div>
+      </header>
+      <div class="phase-note"><strong>Pourquoi maintenant :</strong> le processeur Graph Upsert est une force du projet. L’objectif est de le rendre productif sans perdre sa rigueur ni sa capacité de preview/apply.</div>
+      <div class="work-list">
+
+          <article class="work-item work-item--graph" id="task-29-1">
+            <header class="work-head">
+              <div class="work-index"><span>29.1</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">UX</p>
+                <h3>Transformer l’écran Graph Upsert en wizard</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Ajouter un parcours : choisir parc, choisir mode, construire graph, prévisualiser, appliquer. Garder un onglet expert JSON brut.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>AdminParkGraphUpsertsComponent</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Le mode expert reste disponible mais n’est plus le seul chemin.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--graph" id="task-29-2">
+            <header class="work-head">
+              <div class="work-index"><span>29.2</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Builder</p>
+                <h3>Créer un graph builder front</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Construire un ParkGraphUpsertRequest depuis des formulaires : parc, zones, références, items, images. Le JSON devient le résultat, pas le point de départ obligatoire.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>features/admin/park-graph-upserts/builder</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu peux créer un graph valide sans écrire la structure à la main.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--graph" id="task-29-3">
+            <header class="work-head">
+              <div class="work-index"><span>29.3</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Validation</p>
+                <h3>Afficher les erreurs par entité</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Au lieu d’un message global, rattacher les problèmes à la zone, l’item, le constructeur ou la référence concernée.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>preview result mapper + UI</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>La correction d’un gros import devient beaucoup plus rapide.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--graph" id="task-29-4">
+            <header class="work-head">
+              <div class="work-index"><span>29.4</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Diff</p>
+                <h3>Améliorer la lecture des changements</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Présenter Created / Updated / Unchanged / Warning / Skipped avec filtres, badges, et comparaison champ par champ.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>admin graph preview table</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>La preview devient réellement exploitable avant apply.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--graph" id="task-29-5">
+            <header class="work-head">
+              <div class="work-index"><span>29.5</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Dédoublonnage</p>
+                <h3>Renforcer les correspondances contrôlées</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Afficher le mode de match : id, name, key, externalId, normalized name. Ne pas masquer les ambiguïtés.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>ParkGraphUpsertProcessor results</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu sais pourquoi une entité sera créée ou mise à jour.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--graph" id="task-29-6">
+            <header class="work-head">
+              <div class="work-index"><span>29.6</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Templates</p>
+                <h3>Ajouter templates de graph par usage</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Créer des modèles : parc seul, zones seules, zone + items, services sans zone, références constructeurs, import Captain Coaster enrichi.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>graph upsert templates</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu démarres un import depuis un modèle fiable.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--graph" id="task-29-7">
+            <header class="work-head">
+              <div class="work-index"><span>29.7</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Sécurité</p>
+                <h3>Appliquer en ToReview / hidden par défaut</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Toute donnée automatisée ou semi-auto doit arriver non visible ou ToReview sauf choix explicite en preview.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>Application policies Graph Upsert</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Aucune donnée brute ne part en public par accident.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--graph" id="task-29-8">
+            <header class="work-head">
+              <div class="work-index"><span>29.8</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Historique</p>
+                <h3>Rendre l’historique Graph exploitable</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Afficher les anciens imports, résultat, utilisateur, targetPark, erreurs, et permettre de repartir d’un import comme brouillon.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>ParkGraphUpsertHistory + admin UI</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Les gros travaux d’import deviennent réutilisables et auditables.</p>
+              </section>
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section class="phase phase--content" id="m30">
+      <div class="phase-anchor">M30</div>
+      <header class="phase-header">
+        <div class="phase-icon" aria-hidden="true">✍️</div>
+        <div class="phase-heading">
+          <p class="eyebrow">Qualité éditoriale · 3 à 8 jours</p>
+          <h2>M30 — Workflow contenu, localisation et publication</h2>
+          <p>Accélérer la création sans dégrader la qualité publique : les items peuvent être créés vite, puis enrichis, traduits, validés et publiés dans un flux clair.</p>
+        </div>
+        <div class="phase-count"><strong>8</strong><span>sous-tâches</span></div>
+      </header>
+      <div class="phase-note"><strong>Pourquoi maintenant :</strong> la création rapide ne doit pas forcer des descriptions bâclées ni publier des fiches incomplètes. La vitesse doit être compatible avec la ligne éditoriale.</div>
+      <div class="work-list">
+
+          <article class="work-item work-item--content" id="task-30-1">
+            <header class="work-head">
+              <div class="work-index"><span>30.1</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Workflow</p>
+                <h3>Ajouter un statut de complétude éditoriale</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Calculer ou stocker : structure complète, descriptions présentes, médias présents, conditions vérifiées, localisation vérifiée.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>Application content quality service</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu sais immédiatement ce qui manque sur chaque item.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--content" id="task-30-2">
+            <header class="work-head">
+              <div class="work-index"><span>30.2</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Admin</p>
+                <h3>Créer une vue À compléter</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Filtres : sans description FR, sans description EN, sans aucune description, sans zone, sans type précis, visible mais incomplet.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>admin content backlog</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>L’enrichissement devient une file de travail claire.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--content" id="task-30-3">
+            <header class="work-head">
+              <div class="work-index"><span>30.3</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Publication</p>
+                <h3>Ajouter des gates de visibilité</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Empêcher ou avertir fortement lorsqu’un item devient visible alors qu’il n’a pas les champs publics minimaux.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>visibility policy + UI warnings</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Le public ne voit pas de fiches vides par erreur.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--content" id="task-30-4">
+            <header class="work-head">
+              <div class="work-index"><span>30.4</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Descriptions</p>
+                <h3>Ajouter édition rapide des descriptions principales</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Depuis la liste ou un drawer, permettre d’ajouter la description FR/EN sans ouvrir toute la fiche complète.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>quick content drawer</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu enrichis vite les items fraîchement créés.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--content" id="task-30-5">
+            <header class="work-head">
+              <div class="work-index"><span>30.5</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Localisation</p>
+                <h3>Créer tableau de couverture langues</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Afficher pour chaque item quelles langues ont une description, avec raccourcis vers édition.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>localized content components</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu pilotes les 8 langues sans te perdre.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--content" id="task-30-6">
+            <header class="work-head">
+              <div class="work-index"><span>30.6</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">IA assistée</p>
+                <h3>Préparer génération de brouillons uniquement</h3>
+              </div>
+              <span class="badge badge--option">Optionnel</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Ajouter un emplacement pour générer des drafts de descriptions, jamais publiées directement, toujours marquées ToReview.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>future AI draft service / manual paste now</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>L’auto accélère sans remplacer ta validation éditoriale.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--content" id="task-30-7">
+            <header class="work-head">
+              <div class="work-index"><span>30.7</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Réutilisation</p>
+                <h3>Mutualiser l’éditeur rich text localisé</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Factoriser ce qui existe déjà dans les formulaires pour éviter plusieurs éditeurs de descriptions divergents.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>shared localized-rich-text-editor</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Même comportement partout, moins de bugs.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--content" id="task-30-8">
+            <header class="work-head">
+              <div class="work-index"><span>30.8</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">SEO</p>
+                <h3>Préparer les signaux admin pour le SEO futur</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Exposer complétude, visible, last updated, traductions disponibles pour sitemap/SEO sans coupler l’admin au SEO.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>Application read models</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>La publication admin nourrit proprement le SEO métier.</p>
+              </section>
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section class="phase phase--mobile" id="m31">
+      <div class="phase-anchor">M31</div>
+      <header class="phase-header">
+        <div class="phase-icon" aria-hidden="true">📱</div>
+        <div class="phase-heading">
+          <p class="eyebrow">Mobile et robustesse · 4 à 8 jours</p>
+          <h2>M31 — Admin mobile, performances et robustesse opérationnelle</h2>
+          <p>Finaliser l’expérience pour administrer réellement depuis téléphone et PC, avec chargements progressifs, composants adaptatifs, tests et observabilité.</p>
+        </div>
+        <div class="phase-count"><strong>8</strong><span>sous-tâches</span></div>
+      </header>
+      <div class="phase-note"><strong>Pourquoi maintenant :</strong> une admin rapide doit rester stable en production, traçable, accessible et agréable sur petit écran.</div>
+      <div class="work-list">
+
+          <article class="work-item work-item--mobile" id="task-31-1">
+            <header class="work-head">
+              <div class="work-index"><span>31.1</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Responsive</p>
+                <h3>Remplacer les tabs horizontaux sur mobile</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Sur mobile, convertir les onglets PrimeNG lourds en select de section, accordion ou navigation verticale. Desktop conserve une navigation dense.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>admin-park-item-edit-form.component + shared responsive section nav</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Plus aucun débordement horizontal à cause des onglets.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--mobile" id="task-31-2">
+            <header class="work-head">
+              <div class="work-index"><span>31.2</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Performance</p>
+                <h3>Charger les sections lourdes à la demande</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Manufacturers, access condition types, photos, maps et park options ne doivent être chargés que quand la section ou le flux en a besoin.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>edit component + facades</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>L’ouverture d’une fiche devient nettement plus rapide.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--mobile" id="task-31-3">
+            <header class="work-head">
+              <div class="work-index"><span>31.3</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Cache</p>
+                <h3>Créer un cache léger des référentiels admin</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Zones, types, catégories, constructeurs, condition types : cache court avec invalidation simple après création/modification.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>admin reference-data facade</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Moins d’appels répétés, moins de 429, meilleure fluidité.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--mobile" id="task-31-4">
+            <header class="work-head">
+              <div class="work-index"><span>31.4</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Erreur</p>
+                <h3>Standardiser erreurs et reprise utilisateur</h3>
+              </div>
+              <span class="badge badge--must">Bloquant</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Toute action rapide doit conserver les données saisies en cas d’échec et proposer retry. Pas de perte de formulaire.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>toast + problem details mapping</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Une erreur réseau ne ruine pas une saisie en cours.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--mobile" id="task-31-5">
+            <header class="work-head">
+              <div class="work-index"><span>31.5</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">E2E</p>
+                <h3>Créer scénarios Playwright admin critiques</h3>
+              </div>
+              <span class="badge badge--strong">Fortement recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Tester : créer item rapide, créer + nouveau, inline edit, bulk edit, paste import preview, apply, édition complète mobile.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>e2e/admin</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Les régressions admin majeures sont détectées tôt.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--mobile" id="task-31-6">
+            <header class="work-head">
+              <div class="work-index"><span>31.6</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Accessibilité</p>
+                <h3>Vérifier clavier, labels et états focus</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Les drawers, tables, cards mobiles, selects et bulk bars doivent être utilisables au clavier et lisibles par lecteurs d’écran.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>admin UI components</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>L’UX rapide reste propre techniquement.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--mobile" id="task-31-7">
+            <header class="work-head">
+              <div class="work-index"><span>31.7</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Observabilité</p>
+                <h3>Mesurer temps de chargement admin</h3>
+              </div>
+              <span class="badge badge--option">Optionnel</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Ajouter logs/metrics simples : chargement workbench, création rapide, import preview, import apply, erreurs API admin.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>front timing + API logs</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Tu sais où l’admin ralentit réellement.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="work-item work-item--mobile" id="task-31-8">
+            <header class="work-head">
+              <div class="work-index"><span>31.8</span></div>
+              <div class="work-title-wrap">
+                <p class="work-kicker">Documentation</p>
+                <h3>Documenter le mode opératoire admin</h3>
+              </div>
+              <span class="badge badge--plus">Recommandé</span>
+            </header>
+            <div class="work-grid">
+              <section>
+                <h4>Objectif</h4>
+                <p>Créer une doc courte : créer un parc, zones, items rapides, enrichir, importer, valider, publier, revenir sur erreurs.</p>
+              </section>
+              <section>
+                <h4>Zone de travail</h4>
+                <p><code>docs/admin/admin-operator-guide.md</code></p>
+              </section>
+              <section class="validation">
+                <h4>Validation attendue</h4>
+                <p>Le workflow est transmissible et répétable.</p>
+              </section>
+            </div>
+          </article>
+      </div>
+    </section>
+
+      <section class="final-gate" id="gate-admin-fast">
+        <h2>Gate final — Admin réellement rapide</h2>
+        <div class="check-grid">
+          <div class="check"><b>✓</b><span>Un parkItem peut être créé depuis un parc en quelques secondes, sans ouvrir la fiche complète.</span></div>
+          <div class="check"><b>✓</b><span>La saisie en rafale conserve zone, catégorie, type et contexte utile.</span></div>
+          <div class="check"><b>✓</b><span>Les corrections simples se font inline ou en bulk : zone, type, catégorie, visibilité, statut.</span></div>
+          <div class="check"><b>✓</b><span>Les imports massifs passent par preview, détection d’erreurs, dédoublonnage et ToReview par défaut.</span></div>
+          <div class="check"><b>✓</b><span>L’édition complète reste disponible pour enrichir, mais n’est plus obligatoire pour créer vite.</span></div>
+          <div class="check"><b>✓</b><span>L’admin fonctionne sur mobile sans débordements de tabs, sans perte de données et avec audit des actions sensibles.</span></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>AmusementPark · Roadmap Admin Fast Edition</span>
+        <span>Ordre recommandé : M25 → M31 · Générée le 06/06/2026</span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
