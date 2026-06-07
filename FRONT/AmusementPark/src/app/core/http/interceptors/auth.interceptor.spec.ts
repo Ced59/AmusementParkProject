@@ -11,7 +11,7 @@ describe('AuthInterceptor', () => {
     return authService;
   }
 
-  function captureHeaders(interceptor: AuthInterceptor, url: string): Promise<string | null> {
+  function captureHeaders(interceptor: AuthInterceptor, url: string, method: string = 'GET'): Promise<string | null> {
     return new Promise((resolve) => {
       const handler: HttpHandler = {
         handle: (request: HttpRequest<unknown>) => {
@@ -20,7 +20,7 @@ describe('AuthInterceptor', () => {
         }
       };
 
-      interceptor.intercept(new HttpRequest('GET', url), handler).subscribe();
+      interceptor.intercept(new HttpRequest(method, url), handler).subscribe();
     });
   }
 
@@ -29,6 +29,16 @@ describe('AuthInterceptor', () => {
     const interceptor = new AuthInterceptor(authService, 'browser' as unknown as object);
 
     const authorizationHeader: string | null = await captureHeaders(interceptor, '/api/admin/parks');
+
+    expect(authorizationHeader).toBe('Bearer access-token');
+    expect(authService.ensureValidAccessToken).toHaveBeenCalledOnceWith();
+  });
+
+  it('adds the bearer token for the admin users list request', async () => {
+    const authService: jasmine.SpyObj<AuthService> = createAuthService('access-token');
+    const interceptor = new AuthInterceptor(authService, 'browser' as unknown as object);
+
+    const authorizationHeader: string | null = await captureHeaders(interceptor, '/api/users?page=1&size=10');
 
     expect(authorizationHeader).toBe('Bearer access-token');
     expect(authService.ensureValidAccessToken).toHaveBeenCalledOnceWith();
@@ -47,7 +57,7 @@ describe('AuthInterceptor', () => {
     const authService: jasmine.SpyObj<AuthService> = createAuthService('access-token');
     const interceptor = new AuthInterceptor(authService, 'browser' as unknown as object);
 
-    const authorizationHeader: string | null = await captureHeaders(interceptor, '/api/auth/login');
+    const authorizationHeader: string | null = await captureHeaders(interceptor, '/api/auth/login', 'POST');
 
     expect(authorizationHeader).toBeNull();
     expect(authService.ensureValidAccessToken).not.toHaveBeenCalled();
