@@ -9,6 +9,8 @@ namespace AmusementPark.Application.Features.Seo.Services;
 /// </summary>
 public sealed class SeoSitemapGenerationOrchestrator
 {
+    private const int MaxUrlsPerSitemapFile = 50000;
+
     private readonly IReadOnlyCollection<ISitemapSectionProvider> sectionProviders;
     private readonly ISitemapXmlWriter sitemapXmlWriter;
     private readonly ISeoSitemapSnapshotRepository snapshotRepository;
@@ -176,11 +178,12 @@ public sealed class SeoSitemapGenerationOrchestrator
                 continue;
             }
 
-            sections.Add(new SitemapSectionBuildResult(
+            AddChunkedSections(
+                sections,
                 $"{provider.Key}-{language}",
-                $"{baseFileName}-{language}.xml",
+                $"{baseFileName}-{language}",
                 $"{provider.DisplayName} · {language.ToUpperInvariant()}",
-                languageUrls));
+                languageUrls);
         }
 
         IReadOnlyCollection<SitemapUrlEntry> unscopedUrls = urls
@@ -190,14 +193,48 @@ public sealed class SeoSitemapGenerationOrchestrator
 
         if (unscopedUrls.Count > 0)
         {
-            sections.Add(new SitemapSectionBuildResult(
+            AddChunkedSections(
+                sections,
                 $"{provider.Key}-global",
-                $"{NormalizeBaseFileName(provider.FileName, provider.Key)}-global.xml",
+                $"{baseFileName}-global",
                 $"{provider.DisplayName} · Global",
-                unscopedUrls));
+                unscopedUrls);
         }
 
         return sections;
+    }
+
+    private static void AddChunkedSections(
+        List<SitemapSectionBuildResult> sections,
+        string baseKey,
+        string baseFileNameWithoutExtension,
+        string displayName,
+        IReadOnlyCollection<SitemapUrlEntry> urls)
+    {
+        if (urls.Count <= MaxUrlsPerSitemapFile)
+        {
+            sections.Add(new SitemapSectionBuildResult(
+                baseKey,
+                $"{baseFileNameWithoutExtension}.xml",
+                displayName,
+                urls));
+            return;
+        }
+
+        int chunkIndex = 1;
+        foreach (IReadOnlyCollection<SitemapUrlEntry> chunk in urls
+                     .Select((url, index) => new { url, index })
+                     .GroupBy(item => item.index / MaxUrlsPerSitemapFile)
+                     .Select(group => (IReadOnlyCollection<SitemapUrlEntry>)group.Select(item => item.url).ToList()))
+        {
+            sections.Add(new SitemapSectionBuildResult(
+                $"{baseKey}-{chunkIndex}",
+                $"{baseFileNameWithoutExtension}-{chunkIndex}.xml",
+                $"{displayName} · partie {chunkIndex}",
+                chunk));
+
+            chunkIndex++;
+        }
     }
 
     private static string NormalizeBaseFileName(string fileName, string fallbackKey)
