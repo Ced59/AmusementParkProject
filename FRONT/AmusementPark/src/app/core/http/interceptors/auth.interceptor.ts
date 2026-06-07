@@ -20,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (!isPlatformBrowser(this.platformId) || shouldSkipAuthorizationHeader(req.url)) {
+    if (!isPlatformBrowser(this.platformId) || shouldSkipAuthorizationHeader(req.url, req.method)) {
       return next.handle(req);
     }
 
