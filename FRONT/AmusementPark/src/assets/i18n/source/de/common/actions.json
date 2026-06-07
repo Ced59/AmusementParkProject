@@ -1,6 +1,7 @@
 {
   "actions": {
     "cancel": "Abbrechen",
+    "close": "Schließen",
     "save": "Speichern",
     "backToPark": "Zurück zum Park",
     "backToList": "Zurück",

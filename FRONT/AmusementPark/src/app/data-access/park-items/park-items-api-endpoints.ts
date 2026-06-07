@@ -9,10 +9,12 @@ export interface ParkItemAdminListFilters {
   type?: ParkItemType | null;
   zoneId?: string | null;
   manufacturerId?: string | null;
+  contentBacklogFilter?: ParkItemContentBacklogFilter | null;
 }
 
 export type ParkItemAdminSortField = 'default' | 'name' | 'category' | 'type' | 'isVisible' | 'adminReviewStatus' | 'parkId' | 'zoneId';
 export type ParkItemAdminSortDirection = 'asc' | 'desc';
+export type ParkItemContentBacklogFilter = 'MissingDescriptionFr' | 'MissingDescriptionEn' | 'MissingAnyDescription' | 'MissingZone' | 'MissingPreciseType' | 'VisibleIncomplete';
 
 export interface ParkItemAdminListSort {
   sortBy: ParkItemAdminSortField;
@@ -42,6 +44,9 @@ function buildParkItemAdminListQuery(filters: ParkItemAdminListFilters | null = 
   }
   if (filters.manufacturerId) {
     params.push(`manufacturerId=${encodeURIComponent(filters.manufacturerId)}`);
+  }
+  if (filters.contentBacklogFilter) {
+    params.push(`contentBacklogFilter=${encodeURIComponent(filters.contentBacklogFilter)}`);
   }
 
   return params.length > 0 ? `&${params.join('&')}` : '';

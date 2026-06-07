@@ -10,6 +10,7 @@
   [adminReviewStatusFilter]="adminReviewStatusFilter()"
   [categoryFilter]="categoryFilter()"
   [typeFilter]="typeFilter()"
+  [contentBacklogFilter]="contentBacklogFilter()"
   [currentPage]="currentPage()"
   [pageSize]="pageSize()"
   [sortField]="sortField()"
@@ -22,9 +23,46 @@
   (pageChanged)="onPageChange($event)"
   (sortChanged)="onSortChange($event)"
   (editClicked)="goToEdit($event)"
+  (quickDescriptionsClicked)="openQuickDescriptions($event)"
   (itemSelectionChanged)="onItemSelectionChanged($event)"
   (allItemsSelectionChanged)="onAllItemsSelectionChanged($event)"
   (bulkVisibilityChanged)="onBulkVisibilityChange($event)"
   (bulkStatusChanged)="onBulkStatusChange($event)"
   (selectionCleared)="clearSelection()">
 </app-admin-park-items-index-view>
+
+@if (quickDescriptionItem(); as item) {
+  <section class="admin-quick-description-panel" aria-live="polite">
+    <div class="admin-quick-description-panel__header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.parkItems.content.quickDescriptions' | translate }}</span>
+        <h3>{{ 'admin.parkItems.content.quickDescriptionsTitle' | translate:{ name: item.name } }}</h3>
+      </div>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-times"
+        class="p-button-text p-button-sm"
+        [label]="'actions.close' | translate"
+        (click)="closeQuickDescriptions()">
+      </button>
+    </div>
+
+    <app-localized-rich-text-editor
+      [ngModel]="quickDescriptionDraft()"
+      [editorHeight]="'12rem'"
+      (ngModelChange)="onQuickDescriptionDraftChange($event)">
+    </app-localized-rich-text-editor>
+
+    <div class="admin-quick-description-panel__actions">
+      <button
+        pButton
+        type="button"
+        icon="pi pi-save"
+        [disabled]="isSavingQuickDescription()"
+        [label]="'actions.save' | translate"
+        (click)="saveQuickDescriptions()">
+      </button>
+    </div>
+  </section>
+}

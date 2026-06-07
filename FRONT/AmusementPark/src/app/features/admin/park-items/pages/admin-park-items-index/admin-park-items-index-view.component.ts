@@ -37,7 +37,10 @@ import {
   PARK_ITEM_TYPE_OPTIONS,
   TranslationOption,
 } from '@shared/utils/display/display-options';
-import { ParkItemAdminSortField } from '@data-access/park-items/park-items-api-endpoints';
+import {
+  ParkItemAdminSortField,
+  ParkItemContentBacklogFilter,
+} from '@data-access/park-items/park-items-api-endpoints';
 
 interface PrimeSortEventLike {
   field?: string | string[] | null;
@@ -78,6 +81,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   @Input() categoryFilter: ParkItemCategory | null = null;
   @Input() typeFilter: ParkItemType | null = null;
   @Input() zoneIdFilter: string | null = null;
+  @Input() contentBacklogFilter: ParkItemContentBacklogFilter | null = null;
   @Input() currentPage: number = 1;
   @Input() pageSize: number = 20;
   @Input() sortField: ParkItemAdminSortField = 'default';
@@ -109,7 +113,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     itemType: string | number | null | undefined,
   ) => string = () => 'parkExplorer.types.other';
   @Input() getZoneLabelFn: (zoneId: string | null | undefined) => string = () =>
-    '—';
+    '-';
 
   @Input() zoneOptions: Signal<Array<{ label: string; value: string | null }>> | null = null;
   @Input() manufacturerOptions: Signal<EntitySelectOption[]> | null = null;
@@ -122,6 +126,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     category: ParkItemCategory | null;
     type: ParkItemType | null;
     zoneId: string | null;
+    contentBacklogFilter: ParkItemContentBacklogFilter | null;
   }> = new EventEmitter<{
     selectedParkId: string | null;
     searchTerm: string;
@@ -130,6 +135,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     category: ParkItemCategory | null;
     type: ParkItemType | null;
     zoneId: string | null;
+    contentBacklogFilter: ParkItemContentBacklogFilter | null;
   }>();
   @Output() pageChanged: EventEmitter<{
     page?: number;
@@ -144,6 +150,8 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     sortOrder: 1 | -1;
   }>();
   @Output() editClicked: EventEmitter<ParkItemAdminRow> =
+    new EventEmitter<ParkItemAdminRow>();
+  @Output() quickDescriptionsClicked: EventEmitter<ParkItemAdminRow> =
     new EventEmitter<ParkItemAdminRow>();
   @Output() deleteClicked: EventEmitter<ParkItemAdminRow> =
     new EventEmitter<ParkItemAdminRow>();
@@ -173,6 +181,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   protected localCategoryFilter: ParkItemCategory | null = null;
   protected localTypeFilter: ParkItemType | null = null;
   protected localZoneIdFilter: string | null = null;
+  protected localContentBacklogFilter: ParkItemContentBacklogFilter | null = null;
   protected bulkZoneId: string | null = null;
   protected bulkCategory: ParkItemCategory | null = null;
   protected bulkType: ParkItemType | null = null;
@@ -183,6 +192,35 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
   protected readonly typeOptions: ReadonlyArray<
     TranslationOption<ParkItemType>
   > = PARK_ITEM_TYPE_OPTIONS;
+  protected readonly contentBacklogFilterOptions: ReadonlyArray<{
+    value: ParkItemContentBacklogFilter;
+    labelKey: string;
+  }> = [
+    {
+      value: 'MissingDescriptionFr',
+      labelKey: 'admin.parkItems.content.filters.missingDescriptionFr',
+    },
+    {
+      value: 'MissingDescriptionEn',
+      labelKey: 'admin.parkItems.content.filters.missingDescriptionEn',
+    },
+    {
+      value: 'MissingAnyDescription',
+      labelKey: 'admin.parkItems.content.filters.missingAnyDescription',
+    },
+    {
+      value: 'MissingZone',
+      labelKey: 'admin.parkItems.content.filters.missingZone',
+    },
+    {
+      value: 'MissingPreciseType',
+      labelKey: 'admin.parkItems.content.filters.missingPreciseType',
+    },
+    {
+      value: 'VisibleIncomplete',
+      labelKey: 'admin.parkItems.content.filters.visibleIncomplete',
+    },
+  ];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedParkId']) {
@@ -206,6 +244,9 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     if (changes['zoneIdFilter']) {
       this.localZoneIdFilter = this.zoneIdFilter;
     }
+    if (changes['contentBacklogFilter']) {
+      this.localContentBacklogFilter = this.contentBacklogFilter;
+    }
   }
 
   applyFilters(): void {
@@ -219,6 +260,7 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
       category: this.localCategoryFilter,
       type: this.localTypeFilter,
       zoneId: this.showZoneFilter ? this.localZoneIdFilter : null,
+      contentBacklogFilter: this.localContentBacklogFilter,
     });
   }
 
@@ -268,6 +310,10 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
 
   goToEdit(row: ParkItemAdminRow): void {
     this.editClicked.emit(row);
+  }
+
+  editQuickDescriptions(row: ParkItemAdminRow): void {
+    this.quickDescriptionsClicked.emit(row);
   }
 
   deleteRow(row: ParkItemAdminRow): void {
@@ -430,12 +476,45 @@ export class AdminParkItemsIndexViewComponent implements OnChanges {
     return getAdminReviewStatusTranslationKey(status);
   }
 
+  getQualitySeverity(row: ParkItemAdminRow): 'success' | 'info' | 'warn' | 'danger' {
+    if (row.contentQuality?.isPublishable) {
+      return 'success';
+    }
+
+    return row.isVisible ? 'danger' : 'warn';
+  }
+
+  getQualityLabelKey(row: ParkItemAdminRow): string {
+    if (row.contentQuality?.isPublishable) {
+      return 'admin.parkItems.content.complete';
+    }
+
+    return row.isVisible ? 'admin.parkItems.content.visibleIncomplete' : 'admin.parkItems.content.toComplete';
+  }
+
+  getLanguageCoverage(row: ParkItemAdminRow): string {
+    const languages: string[] = row.contentQuality?.availableLanguageCodes ?? [];
+    return languages.length > 0
+      ? languages
+          .map((languageCode: string) => languageCode.toUpperCase())
+          .join(' | ')
+      : '-';
+  }
+
+  getMissingRequirementKeys(row: ParkItemAdminRow): string[] {
+    return row.contentQuality?.missingRequirementKeys ?? [];
+  }
+
+  getMissingRequirementLabelKey(requirement: string): string {
+    return `admin.parkItems.content.requirements.${requirement}`;
+  }
+
   getPaginationFirst(): number {
     return Math.max(this.currentPage - 1, 0) * this.pageSize;
   }
 
   getColumnSpan(): number {
-    let columnCount: number = 7;
+    let columnCount: number = 8;
 
     if (this.showParkColumn) {
       columnCount += 1;

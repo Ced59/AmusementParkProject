@@ -518,10 +518,37 @@
         "visibility": "Sichtbarkeit",
         "actions": "Aktionen",
         "category": "Kategorie",
-        "reviewStatus": "Admin-Status"
+        "reviewStatus": "Admin-Status",
+        "contentQuality": "Content"
       },
       "allParks": "Alle Parks",
-      "total": "{{count}} Element(e)"
+      "total": "{{count}} Element(e)",
+      "content": {
+        "backlogFilter": "To complete",
+        "complete": "Complete",
+        "toComplete": "To complete",
+        "visibleIncomplete": "Visible incomplete",
+        "languages": "Languages:",
+        "quickDescriptions": "Descriptions",
+        "quickDescriptionsTitle": "Quick descriptions - {{name}}",
+        "filters": {
+          "all": "All content states",
+          "missingDescriptionFr": "Missing FR description",
+          "missingDescriptionEn": "Missing EN description",
+          "missingAnyDescription": "Missing any description",
+          "missingZone": "Missing zone",
+          "missingPreciseType": "Missing precise type",
+          "visibleIncomplete": "Visible but incomplete"
+        },
+        "requirements": {
+          "structure": "Structure",
+          "descriptionAny": "Any description",
+          "descriptionFr": "FR description",
+          "descriptionEn": "EN description",
+          "zone": "Zone",
+          "typePrecise": "Precise type"
+        }
+      }
     },
     "parks": {
       "total": "Gesamtzahl der Parks: {{count}}",
@@ -1210,6 +1237,7 @@
   },
   "actions": {
     "cancel": "Abbrechen",
+    "close": "Schließen",
     "save": "Speichern",
     "backToPark": "Zurück zum Park",
     "backToList": "Zurück",
@@ -1630,7 +1658,8 @@
       "relatedSubtitle": "Auswahl basierend auf Elementtyp, Kategorie oder Bereich.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Wähle einen Punkt aus, um ihn auf der Karte hervorzuheben oder eine Route über die Markierung zu öffnen.",
-      "showLocationOnMap": "Auf Karte anzeigen"
+      "showLocationOnMap": "Auf Karte anzeigen",
+      "noGeolocationMessage": "Für dieses Element ist keine Geolokalisierung verfügbar."
     },
     "fields": {
       "category": "Kategorie",

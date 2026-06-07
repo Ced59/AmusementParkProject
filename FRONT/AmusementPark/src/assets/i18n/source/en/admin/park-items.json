@@ -13,10 +13,37 @@
         "visibility": "Visibility",
         "actions": "Actions",
         "category": "Category",
-        "reviewStatus": "Admin status"
+        "reviewStatus": "Admin status",
+        "contentQuality": "Content"
       },
       "allParks": "All parks",
-      "total": "{{count}} item(s)"
+      "total": "{{count}} item(s)",
+      "content": {
+        "backlogFilter": "To complete",
+        "complete": "Complete",
+        "toComplete": "To complete",
+        "visibleIncomplete": "Visible incomplete",
+        "languages": "Languages:",
+        "quickDescriptions": "Descriptions",
+        "quickDescriptionsTitle": "Quick descriptions - {{name}}",
+        "filters": {
+          "all": "All content states",
+          "missingDescriptionFr": "Missing FR description",
+          "missingDescriptionEn": "Missing EN description",
+          "missingAnyDescription": "Missing any description",
+          "missingZone": "Missing zone",
+          "missingPreciseType": "Missing precise type",
+          "visibleIncomplete": "Visible but incomplete"
+        },
+        "requirements": {
+          "structure": "Structure",
+          "descriptionAny": "Any description",
+          "descriptionFr": "FR description",
+          "descriptionEn": "EN description",
+          "zone": "Zone",
+          "typePrecise": "Precise type"
+        }
+      }
     }
   }
 }

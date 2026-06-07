@@ -5,17 +5,26 @@ import {
   computed,
   signal,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
 
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
+import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
-import { ParkItemAdminSortField } from '@data-access/park-items/park-items-api-endpoints';
+import {
+  ParkItemAdminSortField,
+  ParkItemContentBacklogFilter,
+} from '@data-access/park-items/park-items-api-endpoints';
 import { AdminParkItemsIndexStateFacade } from '@features/admin/park-items/state/admin-park-items-index-state.facade';
 import { AdminParkItemsIndexViewComponent } from './admin-park-items-index-view.component';
+import { LocalizedItem } from '@app/models/shared/localized-item';
+import { LocalizedRichTextEditorComponent } from '@shared/components/localized-rich-text-editor/localized-rich-text-editor.component';
+import { ButtonDirective } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 import {
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
@@ -27,7 +36,13 @@ import {
   styleUrls: ['./admin-park-items-index.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [AdminParkItemsIndexStateFacade],
-  imports: [AdminParkItemsIndexViewComponent],
+  imports: [
+    AdminParkItemsIndexViewComponent,
+    FormsModule,
+    LocalizedRichTextEditorComponent,
+    ButtonDirective,
+    TranslateModule,
+  ],
 })
 export class AdminParkItemsIndexComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
@@ -42,6 +57,7 @@ export class AdminParkItemsIndexComponent implements OnInit {
     this.stateFacade.adminReviewStatusFilter;
   protected readonly categoryFilter = this.stateFacade.categoryFilter;
   protected readonly typeFilter = this.stateFacade.typeFilter;
+  protected readonly contentBacklogFilter = this.stateFacade.contentBacklogFilter;
   protected readonly currentPage = this.stateFacade.currentPage;
   protected readonly pageSize = this.stateFacade.pageSize;
   protected readonly sortField = this.stateFacade.sortField;
@@ -50,6 +66,9 @@ export class AdminParkItemsIndexComponent implements OnInit {
   protected readonly selectedCount = computed(
     () => this.selectedItemIds().length,
   );
+  protected readonly quickDescriptionItem = signal<ParkItem | null>(null);
+  protected readonly quickDescriptionDraft = signal<LocalizedItem<string>[]>([]);
+  protected readonly isSavingQuickDescription = signal(false);
 
   constructor(
     private readonly stateFacade: AdminParkItemsIndexStateFacade,
@@ -70,6 +89,8 @@ export class AdminParkItemsIndexComponent implements OnInit {
     adminReviewStatus: AdminReviewStatus | null;
     category: ParkItemCategory | null;
     type: ParkItemType | null;
+    zoneId: string | null;
+    contentBacklogFilter: ParkItemContentBacklogFilter | null;
   }): void {
     this.selectedItemIds.set([]);
     this.stateFacade.updateFilters(filters);
@@ -161,6 +182,49 @@ export class AdminParkItemsIndexComponent implements OnInit {
     }
 
     await this.applyBulkAdministration({ adminReviewStatus });
+  }
+
+  async openQuickDescriptions(row: ParkItemAdminRow): Promise<void> {
+    try {
+      const item: ParkItem = await firstValueFrom(
+        this.stateFacade.getParkItemById(row.id),
+      );
+      this.quickDescriptionItem.set(item);
+      this.quickDescriptionDraft.set([...(item.descriptions ?? [])]);
+    } catch (error: unknown) {
+      console.error('Error loading park item descriptions', error);
+    }
+  }
+
+  onQuickDescriptionDraftChange(value: LocalizedItem<string>[]): void {
+    this.quickDescriptionDraft.set(value);
+  }
+
+  closeQuickDescriptions(): void {
+    this.quickDescriptionItem.set(null);
+    this.quickDescriptionDraft.set([]);
+  }
+
+  async saveQuickDescriptions(): Promise<void> {
+    const item: ParkItem | null = this.quickDescriptionItem();
+    if (!item?.id) {
+      return;
+    }
+
+    this.isSavingQuickDescription.set(true);
+    try {
+      await firstValueFrom(this.stateFacade.updateParkItem(item.id, {
+        ...item,
+        descriptions: this.quickDescriptionDraft(),
+      }));
+      this.closeQuickDescriptions();
+      this.stateFacade.invalidateCurrentPage();
+      this.stateFacade.loadData(true);
+    } catch (error: unknown) {
+      console.error('Error saving park item descriptions', error);
+    } finally {
+      this.isSavingQuickDescription.set(false);
+    }
   }
 
   clearSelection(): void {

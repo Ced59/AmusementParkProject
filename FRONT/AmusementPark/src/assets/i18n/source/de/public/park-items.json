@@ -54,7 +54,8 @@
       "relatedSubtitle": "Auswahl basierend auf Elementtyp, Kategorie oder Bereich.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Wähle einen Punkt aus, um ihn auf der Karte hervorzuheben oder eine Route über die Markierung zu öffnen.",
-      "showLocationOnMap": "Auf Karte anzeigen"
+      "showLocationOnMap": "Auf Karte anzeigen",
+      "noGeolocationMessage": "Für dieses Element ist keine Geolokalisierung verfügbar."
     },
     "fields": {
       "category": "Kategorie",

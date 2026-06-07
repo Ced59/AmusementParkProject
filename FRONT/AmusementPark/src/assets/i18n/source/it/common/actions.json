@@ -1,6 +1,7 @@
 {
   "actions": {
     "cancel": "Annulla",
+    "close": "Chiudi",
     "save": "Salva",
     "backToPark": "Torna al parco",
     "backToList": "Indietro",

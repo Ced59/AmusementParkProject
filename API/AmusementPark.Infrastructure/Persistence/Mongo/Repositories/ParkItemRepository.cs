@@ -1,11 +1,13 @@
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.ParkZones.Results;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Bson;
@@ -65,9 +67,9 @@ public sealed class ParkItemRepository : IParkItemRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public async Task<PagedResult<ParkItem>> GetPageAsync(int page, int pageSize, string? parkId, string? search, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, string? zoneId, string? manufacturerId, CancellationToken cancellationToken, ParkItemAdminSortField sortField = ParkItemAdminSortField.Default, bool sortDescending = false)
+    public async Task<PagedResult<ParkItem>> GetPageAsync(int page, int pageSize, string? parkId, string? search, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, string? zoneId, string? manufacturerId, ParkItemContentBacklogFilter? contentBacklogFilter, CancellationToken cancellationToken, ParkItemAdminSortField sortField = ParkItemAdminSortField.Default, bool sortDescending = false)
     {
-        FilterDefinition<ParkItemDocument> filter = this.BuildAdminListFilter(parkId, includeHidden, isVisible, adminReviewStatus, category, type, zoneId, manufacturerId);
+        FilterDefinition<ParkItemDocument> filter = this.BuildAdminListFilter(parkId, includeHidden, isVisible, adminReviewStatus, category, type, zoneId, manufacturerId, contentBacklogFilter);
 
         if (!string.IsNullOrWhiteSpace(search))
         {
@@ -233,6 +235,26 @@ public sealed class ParkItemRepository : IParkItemRepository
         return document?.ToDomain();
     }
 
+    public async Task<IReadOnlyCollection<ParkItem>> GetByIdsAsync(IReadOnlyCollection<string> parkItemIds, CancellationToken cancellationToken)
+    {
+        List<string> normalizedParkItemIds = parkItemIds
+            .Where(static parkItemId => !string.IsNullOrWhiteSpace(parkItemId))
+            .Select(static parkItemId => parkItemId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedParkItemIds.Count == 0)
+        {
+            return Array.Empty<ParkItem>();
+        }
+
+        List<ParkItemDocument> documents = await this.collection
+            .Find(Builders<ParkItemDocument>.Filter.In(document => document.Id, normalizedParkItemIds))
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<ParkItem> CreateAsync(ParkItem parkItem, CancellationToken cancellationToken)
     {
         ParkItemDocument document = parkItem.ToDocument();
@@ -362,7 +384,7 @@ public sealed class ParkItemRepository : IParkItemRepository
         return checked((int)result.ModifiedCount);
     }
 
-    private FilterDefinition<ParkItemDocument> BuildAdminListFilter(string? parkId, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, string? zoneId, string? manufacturerId)
+    private FilterDefinition<ParkItemDocument> BuildAdminListFilter(string? parkId, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkItemCategory? category, ParkItemType? type, string? zoneId, string? manufacturerId, ParkItemContentBacklogFilter? contentBacklogFilter)
     {
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Empty;
 
@@ -406,7 +428,64 @@ public sealed class ParkItemRepository : IParkItemRepository
             filter &= Builders<ParkItemDocument>.Filter.Eq("attractionDetails.manufacturerId", manufacturerId.Trim());
         }
 
+        if (contentBacklogFilter.HasValue)
+        {
+            filter &= BuildContentBacklogFilter(contentBacklogFilter.Value);
+        }
+
         return filter;
+    }
+
+    private static FilterDefinition<ParkItemDocument> BuildContentBacklogFilter(ParkItemContentBacklogFilter contentBacklogFilter)
+    {
+        switch (contentBacklogFilter)
+        {
+            case ParkItemContentBacklogFilter.MissingDescriptionFr:
+                return BuildMissingDescriptionFilter("fr");
+            case ParkItemContentBacklogFilter.MissingDescriptionEn:
+                return BuildMissingDescriptionFilter("en");
+            case ParkItemContentBacklogFilter.MissingAnyDescription:
+                return Builders<ParkItemDocument>.Filter.Not(BuildHasAnyDescriptionFilter());
+            case ParkItemContentBacklogFilter.MissingZone:
+                return Builders<ParkItemDocument>.Filter.Or(
+                    Builders<ParkItemDocument>.Filter.Eq(document => document.ZoneId, null),
+                    Builders<ParkItemDocument>.Filter.Eq(document => document.ZoneId, string.Empty));
+            case ParkItemContentBacklogFilter.MissingPreciseType:
+                return Builders<ParkItemDocument>.Filter.In(document => document.Type, new[] { ParkItemType.Attraction, ParkItemType.Other });
+            case ParkItemContentBacklogFilter.VisibleIncomplete:
+                return Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true)
+                    & Builders<ParkItemDocument>.Filter.Or(
+                        Builders<ParkItemDocument>.Filter.Eq(document => document.Category, ParkItemCategory.Other),
+                        Builders<ParkItemDocument>.Filter.In(document => document.Type, new[] { ParkItemType.Attraction, ParkItemType.Other }),
+                        Builders<ParkItemDocument>.Filter.Not(BuildHasAnyDescriptionFilter()),
+                        Builders<ParkItemDocument>.Filter.Or(
+                            Builders<ParkItemDocument>.Filter.Eq(document => document.ZoneId, null),
+                            Builders<ParkItemDocument>.Filter.Eq(document => document.ZoneId, string.Empty)));
+            default:
+                return Builders<ParkItemDocument>.Filter.Empty;
+        }
+    }
+
+    private static FilterDefinition<ParkItemDocument> BuildMissingDescriptionFilter(string languageCode)
+    {
+        return Builders<ParkItemDocument>.Filter.Not(BuildHasDescriptionFilter(languageCode));
+    }
+
+    private static FilterDefinition<ParkItemDocument> BuildHasDescriptionFilter(string languageCode)
+    {
+        FilterDefinition<LocalizedTextDocument> localizedFilter =
+            Builders<LocalizedTextDocument>.Filter.Eq(document => document.LanguageCode, languageCode)
+            & Builders<LocalizedTextDocument>.Filter.Regex(document => document.Value, new BsonRegularExpression("\\S"));
+
+        return Builders<ParkItemDocument>.Filter.ElemMatch(document => document.Descriptions, localizedFilter);
+    }
+
+    private static FilterDefinition<ParkItemDocument> BuildHasAnyDescriptionFilter()
+    {
+        FilterDefinition<LocalizedTextDocument> localizedFilter =
+            Builders<LocalizedTextDocument>.Filter.Regex(document => document.Value, new BsonRegularExpression("\\S"));
+
+        return Builders<ParkItemDocument>.Filter.ElemMatch(document => document.Descriptions, localizedFilter);
     }
 
     private FilterDefinition<ParkItemDocument> BuildAdminReviewStatusFilter(AdminReviewStatus adminReviewStatus)

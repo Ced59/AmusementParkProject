@@ -27,6 +27,16 @@ internal static class ParkItemApplicationErrors
         return ApplicationError.Technical("park-item.update.failed", "Error while updating park item");
     }
 
+    public static ApplicationError PublicationBlocked(IReadOnlyCollection<string> missingRequirementKeys)
+    {
+        Dictionary<string, IReadOnlyCollection<string>> details = new Dictionary<string, IReadOnlyCollection<string>>
+        {
+            ["missingRequirements"] = missingRequirementKeys,
+        };
+
+        return ApplicationError.Validation("park-item.publication.incomplete", "Park item cannot be published while required public content is incomplete.", details);
+    }
+
     public static ApplicationError ErrorDeletingParkItem()
     {
         return ApplicationError.Technical("park-item.delete.failed", "Error while deleting park item");

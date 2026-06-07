@@ -110,7 +110,16 @@ export function normalizeParkItemAdminRow(row: ParkItemAdminRow): ParkItemAdminR
   return {
     ...row,
     category: toParkItemCategory(row.category),
-    type: toParkItemType(row.type)
+    type: toParkItemType(row.type),
+    contentQuality: row.contentQuality ? {
+      ...row.contentQuality,
+      availableLanguageCodes: row.contentQuality.availableLanguageCodes ?? [],
+      missingRequirementKeys: row.contentQuality.missingRequirementKeys ?? []
+    } : undefined,
+    publicationSignals: row.publicationSignals ? {
+      ...row.publicationSignals,
+      availableLanguageCodes: row.publicationSignals.availableLanguageCodes ?? []
+    } : undefined
   };
 }
 

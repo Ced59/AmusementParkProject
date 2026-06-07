@@ -54,7 +54,8 @@
       "relatedSubtitle": "Selectie op basis van itemtype, categorie of zone.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Selecteer een punt om het op de kaart te markeren of een route via de marker te openen.",
-      "showLocationOnMap": "Toon op kaart"
+      "showLocationOnMap": "Toon op kaart",
+      "noGeolocationMessage": "Er is geen geolocatie beschikbaar voor dit item."
     },
     "fields": {
       "category": "Categorie",

@@ -1,6 +1,7 @@
 {
   "actions": {
     "cancel": "Annuleren",
+    "close": "Sluiten",
     "save": "Opslaan",
     "backToPark": "Terug naar het park",
     "backToList": "Terug",

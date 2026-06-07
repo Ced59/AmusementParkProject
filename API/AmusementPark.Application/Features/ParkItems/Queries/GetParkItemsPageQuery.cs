@@ -25,5 +25,6 @@ public sealed record GetParkItemsPageQuery(
     ParkItemType? Type = null,
     string? ZoneId = null,
     string? ManufacturerId = null,
+    ParkItemContentBacklogFilter? ContentBacklogFilter = null,
     ParkItemAdminSortField SortField = ParkItemAdminSortField.Default,
     bool SortDescending = false) : IQuery<ApplicationResult<PagedResult<ParkItemAdminListResult>>>;
