@@ -1,0 +1,40 @@
+{
+  "user-profile": {
+    "title": "Gebruikersprofiel",
+    "name": "Achternaam",
+    "firstname": "Voornaam",
+    "email": "E-mail",
+    "preferred_language": "Voorkeurstaal",
+    "modify": "Bewerken",
+    "avatar": {
+      "title": "Avatar wijzigen",
+      "choose": "Kies een avatar",
+      "upload": "Avatar uploaden",
+      "cancel": "Annuleren",
+      "dragAndDrop": "Sleep je avatar hierheen of klik om een afbeelding te kiezen.",
+      "selectedFile": "Geselecteerd bestand",
+      "invalidFile": "Selecteer een geldig afbeeldingsbestand.",
+      "invalidSize": "De geselecteerde avatar is te groot.",
+      "noImageSelected": "Selecteer een avatar voordat je uploadt.",
+      "uploading": "Avatar uploaden...",
+      "updateSuccess": "Avatar succesvol bijgewerkt."
+    },
+    "identity": "Identiteit",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "saving": "Opslaan...",
+    "loadingTitle": "Profiel laden",
+    "loadingMessage": "Het gebruikersprofiel wordt geladen.",
+    "errorTitle": "Kan profiel niet laden",
+    "errorMessage": "Het profiel kon niet worden geladen.",
+    "back": "Terug",
+    "logout": "Uitloggen",
+    "accountBadge": "Accountinstellingen",
+    "subtitle": "Werk je openbare identiteit, avatar en voorkeurstaal bij.",
+    "detailsKicker": "Instellingen",
+    "detailsSubtitle": "Houd je gegevens klaar voor toekomstige gepersonaliseerde functies.",
+    "identityRequired": "Voornaam en achternaam zijn verplicht.",
+    "updateSuccess": "Profiel succesvol bijgewerkt.",
+    "updateError": "Profiel bijwerken mislukt."
+  }
+}

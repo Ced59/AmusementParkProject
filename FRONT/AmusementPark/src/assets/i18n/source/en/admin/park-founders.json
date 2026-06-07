@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Create founder",
+        "updateTitle": "Edit founder",
+        "name": "Name",
+        "biography": "Biography"
+      },
+      "title": "Founders",
+      "subtitle": "Reference list of founders used by park records.",
+      "total": "Founders: {{count}}",
+      "searchPlaceholder": "Search a founder",
+      "create": "Create founder",
+      "name": "Name",
+      "lifeDates": "Dates",
+      "actions": "Actions",
+      "empty": "No founder found.",
+      "loadError": "Unable to load founders."
+    }
+  }
+}

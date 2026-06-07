@@ -1,0 +1,18 @@
+{
+  "shared": {
+    "imageUpload": {
+      "title": "Prześlij an obraz",
+      "choose": "Choose an obraz",
+      "upload": "Prześlij",
+      "cancel": "Anuluj",
+      "dragAndDrop": "Przeciągnij tutaj obraz albo kliknij, aby go wybrać.",
+      "selectedFile": "Wybrany plik",
+      "invalidFile": "Wybierz prawidłowy plik obrazu.",
+      "invalidSize": "The wybrane obraz is too large.",
+      "noImageSelected": "Please select an obraz before uploading.",
+      "uploading": "Prześlijing...",
+      "uploadError": "Wystąpił błąd podczas przesyłania obrazu.",
+      "descriptionPlaceholder": "Opis"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "admin": {
+    "manufacturers": {
+      "total": "Hersteller: {{count}}",
+      "searchPlaceholder": "Hersteller suchen",
+      "create": "Hersteller erstellen",
+      "name": "Name",
+      "attractionCount": "Verknüpfte Attraktionen",
+      "actions": "Aktionen",
+      "edit": "Bearbeiten",
+      "empty": "Kein Hersteller gefunden.",
+      "editPage": {
+        "createTitle": "Hersteller erstellen",
+        "updateTitle": "Hersteller bearbeiten",
+        "name": "Name",
+        "biography": "Biografie"
+      },
+      "title": "Hersteller",
+      "subtitle": "Referenzliste der Hersteller für Attraktionen.",
+      "reviewStatus": "Admin-Status",
+      "loadError": "Hersteller konnten nicht geladen werden."
+    }
+  }
+}

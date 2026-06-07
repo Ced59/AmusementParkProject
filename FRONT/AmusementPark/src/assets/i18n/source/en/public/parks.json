@@ -1,0 +1,254 @@
+{
+  "parks": {
+    "heroBadge": "🗺️ Exploration",
+    "title": "All parks",
+    "subtitle": "Explore visible parks, locate them on the interactive map and choose your next destination.",
+    "loadingTitle": "Loading parks",
+    "loadingMessage": "The parks list is being loaded.",
+    "errorTitle": "Unable to load parks",
+    "errorMessage": "The parks list could not be loaded.",
+    "emptyTitle": "No park available",
+    "emptyMessage": "No park is available for display.",
+    "search": {
+      "label": "Search",
+      "placeholder": "Search a park, country or city…",
+      "clear": "Clear"
+    },
+    "fields": {
+      "country": "Country",
+      "city": "City",
+      "address": "Address",
+      "website": "Website",
+      "coordinates": "Coordinates",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "distance": "Distance",
+      "estimatedTravelDuration": "Estimated trip"
+    },
+    "actions": {
+      "viewDetails": "View details",
+      "website": "Website",
+      "backToList": "Back to list"
+    },
+    "detail": {
+      "heroBadge": "Park overview",
+      "heroDescription": "Discover the practical information currently available for this park.",
+      "loadingTitle": "Loading park",
+      "loadingMessage": "The park page is being loaded.",
+      "errorTitle": "Unable to load the park",
+      "errorMessage": "The requested park could not be loaded.",
+      "practical": {
+        "title": "Practical information",
+        "subtitle": "The visitor essentials currently available for this park.",
+        "postalCode": "Postal code",
+        "street": "Street",
+        "openReference": "Open {{name}} details"
+      },
+      "location": {
+        "title": "Location",
+        "subtitle": "Find the park on the map and review its coordinates."
+      },
+      "nearby": {
+        "title": "Nearby parks",
+        "subtitle": "Continue your discovery with parks located around this destination.",
+        "loadingTitle": "Loading nearby parks",
+        "loadingMessage": "Nearby parks are being loaded.",
+        "errorTitle": "Unable to load nearby parks",
+        "errorMessage": "Nearby parks could not be loaded.",
+        "emptyTitle": "No nearby park",
+        "emptyMessage": "No nearby park has been found around this destination.",
+        "closestTitle": "Closest park",
+        "distanceNote": "Great-circle distance calculated from the park coordinates."
+      },
+      "description": {
+        "badge": "Overview",
+        "title": "About this park",
+        "empty": "No rich description is available for this park yet."
+      },
+      "identity": {
+        "title": "Park identity",
+        "subtitle": "Structural data currently available in the park model.",
+        "type": "Type",
+        "founder": "Founder",
+        "operator": "Operator",
+        "reference": "Reference"
+      },
+      "publication": {
+        "title": "Publication",
+        "subtitle": "Visibility and home highlight data from the park model.",
+        "visible": "Visible",
+        "featured": "Featured",
+        "sponsored": "Sponsored",
+        "featuredOrder": "Home order",
+        "logo": "Logo",
+        "logoAvailable": "Current logo set"
+      },
+      "zones": {
+        "badge": "Park zones",
+        "title": "Zones and lands",
+        "subtitle": "Quickly find the attractions and places linked to each area of the park.",
+        "visible": "Visible",
+        "hidden": "Hidden",
+        "open": "View zone items",
+        "noDescription": "No description is available for this zone yet.",
+        "slug": "Slug",
+        "sortOrder": "Order",
+        "sortOrderShort": "Order {{order}}"
+      },
+      "stats": {
+        "zones": "Zones"
+      },
+      "itemsMap": {
+        "badge": "Item map",
+        "title": "Park item map",
+        "subtitle": "Find the geolocated items in this park and filter the map by zone or category.",
+        "categoriesTitle": "Categories",
+        "emptyTitle": "No geolocated item",
+        "emptyMessage": "No geolocated item currently matches the selected filters."
+      },
+      "comingSoon": {
+        "badge": "Coming soon",
+        "message": "This section will be connected to a reliable source in a future step."
+      },
+      "weather": {
+        "title": "5-day weather",
+        "subtitle": "A compact forecast planned to help prepare the visit."
+      },
+      "hours": {
+        "title": "Opening hours",
+        "subtitle": "Opening hours and special periods will be added later."
+      },
+      "prices": {
+        "title": "Prices",
+        "subtitle": "Tickets, passes and pricing information will be added later."
+      }
+    },
+    "titlePrefix": "All",
+    "titleAccent": "parks",
+    "stats": {
+      "visibleParks": "Visible parks",
+      "countries": "Countries"
+    },
+    "map": {
+      "badge": "Interactive map",
+      "title": "Visible parks map",
+      "subtitle": "The map follows the current search. Click a marker or a result card to keep the whole page in sync.",
+      "visiblePins": "{{count}} visible pins",
+      "quickMarkers": "Quick markers",
+      "selected": "Selected park",
+      "loadingTitle": "Loading map",
+      "loadingMessage": "Visible parks are being placed on the map.",
+      "errorTitle": "Map unavailable",
+      "errorMessage": "The map points could not be loaded.",
+      "emptyTitle": "No point available",
+      "emptyMessage": "No visible park with coordinates matches this search.",
+      "navigate": "Get directions",
+      "openDetail": "Open details",
+      "regionFilters": {
+        "all": "All",
+        "europe": "Europe",
+        "northAmerica": "North America",
+        "southAmerica": "South America",
+        "orient": "East",
+        "africa": "Africa"
+      },
+      "regionFilterAriaLabel": "Filter parks by continent"
+    },
+    "results": {
+      "badge": "Results",
+      "title": "Parks list",
+      "count": "{{count}} results",
+      "focusOnMap": "Select {{name}} on the map",
+      "selectedOnly": "Selected: {{name}}",
+      "clearSelection": "Show all results"
+    },
+    "reference": {
+      "loadingTitle": "Loading profile",
+      "loadingMessage": "The public profile is loading.",
+      "errorTitle": "Unable to load profile",
+      "errorMessage": "The requested profile could not be loaded.",
+      "backToParks": "Back to parks",
+      "operator": {
+        "badge": "Park operator",
+        "title": "Operator",
+        "descriptionTitle": "Operator profile",
+        "emptyDescription": "No rich description is available for this operator yet."
+      },
+      "founder": {
+        "badge": "Park founder",
+        "title": "Founder",
+        "descriptionTitle": "Biography",
+        "emptyDescription": "No rich biography is available for this founder yet."
+      },
+      "manufacturer": {
+        "badge": "Attraction manufacturer",
+        "title": "Manufacturer",
+        "descriptionTitle": "Manufacturer profile",
+        "emptyDescription": "No rich profile is available for this manufacturer yet.",
+        "attractionsKicker": "Built attractions",
+        "attractionsTitle": "Attractions linked to this manufacturer",
+        "attractionsSubtitle": "Visible site attractions associated with this manufacturer.",
+        "emptyAttractions": "No visible attraction is linked to this manufacturer yet."
+      },
+      "facts": {
+        "title": "Key information",
+        "legalName": "Legal name",
+        "foundedYear": "Founded",
+        "closedYear": "Closed",
+        "website": "Website",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "country": "Country",
+        "coordinates": "Coordinates",
+        "occupation": "Role",
+        "birthDate": "Birth",
+        "deathDate": "Death",
+        "birthPlace": "Birth place",
+        "nationality": "Nationality"
+      },
+      "photos": {
+        "kicker": "Gallery",
+        "title": "Related images",
+        "subtitle": "Published visuals enriching this profile.",
+        "founder": "Founder",
+        "operator": "Operator",
+        "manufacturer": "Manufacturer"
+      }
+    },
+    "photos": {
+      "kicker": "Photos",
+      "title": "Photos",
+      "subtitle": "General park photos and visuals from park items, filterable by type.",
+      "current": "Current",
+      "openItem": "Open {{name}} detail page",
+      "categories": {
+        "gallery": "Park · Gallery",
+        "entrance": "Park entrance",
+        "overview": "Overview",
+        "map": "Map / layout",
+        "atmosphere": "Atmosphere",
+        "event": "Events",
+        "food": "Food",
+        "services": "Services",
+        "halloween": "Halloween",
+        "christmas": "Christmas",
+        "easter": "Easter"
+      },
+      "controls": {
+        "category": "Photo category",
+        "allCategories": "All",
+        "displayCount": "Displayed count",
+        "count": "{{count}}",
+        "all": "All",
+        "previous": "Previous photo",
+        "next": "Next photo",
+        "openFullscreen": "Expand",
+        "closeFullscreen": "Close fullscreen"
+      },
+      "lightbox": {
+        "title": "Fullscreen photo"
+      }
+    }
+  }
+}

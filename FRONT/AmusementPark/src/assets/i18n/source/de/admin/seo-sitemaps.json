@@ -1,0 +1,61 @@
+{
+  "admin": {
+    "seoSitemaps": {
+      "navTitle": "SEO & Sitemaps",
+      "title": "SEO & Sitemaps",
+      "subtitle": "Kontrollierte Sitemap-Index-Erzeugung, Bereichsansicht und IndexNow-Steuerung.",
+      "loading": "SEO-Informationen werden geladen...",
+      "loadError": "SEO-Informationen konnten nicht geladen werden.",
+      "saveError": "SEO-Einstellungen konnten nicht gespeichert werden.",
+      "generateError": "Sitemaps konnten nicht erzeugt werden.",
+      "empty": "Keine SEO-Informationen verfügbar.",
+      "actions": {
+        "generate": "Neu erzeugen",
+        "generateWithoutIndexNow": "Ohne IndexNow erzeugen",
+        "openSitemap": "Öffnen"
+      },
+      "stats": {
+        "totalUrls": "Referenzierte URLs",
+        "sections": "Bereiche",
+        "lastGeneration": "Letzte Erzeugung",
+        "runtime": "Status"
+      },
+      "lastResult": {
+        "title": "Letztes Ergebnis"
+      },
+      "publicFiles": {
+        "title": "Öffentliche Dateien",
+        "subtitle": "Direkter Zugriff auf Dateien für Crawler und Validatoren."
+      },
+      "sections": {
+        "title": "Sitemap-Struktur",
+        "subtitle": "Der Sitemap-Index verweist auf Dateien nach URL-Familie.",
+        "file": "Datei",
+        "urls": "URLs",
+        "lastModified": "Letzte Änderung"
+      },
+      "settings": {
+        "title": "IndexNow-Einstellungen",
+        "subtitle": "IndexNow kann in der Administration aktiviert, deaktiviert und gesteuert werden.",
+        "indexNowEnabled": "IndexNow aktivieren",
+        "submitManual": "Nach manueller Erzeugung senden",
+        "submitAutomatic": "Nach automatischer Erzeugung senden",
+        "indexNowKey": "IndexNow-Schlüssel",
+        "indexNowKeyLocation": "Schlüsselort",
+        "indexNowEndpoints": "IndexNow-Endpunkte"
+      },
+      "history": {
+        "title": "Erzeugungsverlauf",
+        "subtitle": "Protokolliert Erzeugungen, Mengen, Fehler und IndexNow-Sendungen.",
+        "columns": {
+          "date": "Datum",
+          "status": "Status",
+          "urls": "URLs",
+          "duration": "Dauer",
+          "indexNow": "IndexNow",
+          "actor": "Akteur"
+        }
+      }
+    }
+  }
+}

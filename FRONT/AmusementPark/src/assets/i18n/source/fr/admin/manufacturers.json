@@ -1,0 +1,24 @@
+{
+  "admin": {
+    "manufacturers": {
+      "total": "Constructeurs : {{count}}",
+      "searchPlaceholder": "Rechercher un constructeur",
+      "create": "Créer un constructeur",
+      "name": "Nom",
+      "attractionCount": "Attractions rattachées",
+      "actions": "Actions",
+      "edit": "Modifier",
+      "empty": "Aucun constructeur trouvé.",
+      "editPage": {
+        "createTitle": "Créer un constructeur",
+        "updateTitle": "Modifier le constructeur",
+        "name": "Nom",
+        "biography": "Biographie"
+      },
+      "title": "Constructeurs",
+      "subtitle": "Référentiel des constructeurs utilisés par les attractions.",
+      "reviewStatus": "Statut admin",
+      "loadError": "Impossible de charger les constructeurs."
+    }
+  }
+}

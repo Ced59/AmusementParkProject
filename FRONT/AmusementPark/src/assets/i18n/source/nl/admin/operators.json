@@ -1,0 +1,23 @@
+{
+  "admin": {
+    "operators": {
+      "total": "Exploitanten: {{count}}",
+      "searchPlaceholder": "Zoek een exploitant",
+      "create": "Exploitant aanmaken",
+      "name": "Naam",
+      "actions": "Acties",
+      "edit": "Bewerken",
+      "empty": "Geen exploitanten gevonden.",
+      "editPage": {
+        "createTitle": "Exploitant aanmaken",
+        "updateTitle": "Exploitant bewerken",
+        "name": "Naam",
+        "description": "Beschrijving"
+      },
+      "title": "Exploitanten",
+      "subtitle": "Referentielijst van exploitanten voor parkfiches.",
+      "reviewStatus": "Adminstatus",
+      "loadError": "Exploitanten konden niet worden geladen."
+    }
+  }
+}

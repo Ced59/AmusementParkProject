@@ -1,0 +1,29 @@
+{
+  "footer": {
+    "ariaLabel": "Site footer",
+    "brand": {
+      "tagline": "The complete map of thrills. Park by park, attraction by attraction."
+    },
+    "explore": {
+      "title": "Explore",
+      "allParks": "All parks",
+      "topRollerCoasters": "Top Rollercoasters",
+      "interactiveMap": "Interactive map",
+      "news": "New releases"
+    },
+    "about": {
+      "title": "About",
+      "project": "The project",
+      "sources": "Sources",
+      "contact": "Contact",
+      "privacy": "Privacy"
+    },
+    "languages": {
+      "title": "Languages"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Made with ❤️ and adrenaline",
+      "version": "Version {{version}}"
+    }
+  }
+}

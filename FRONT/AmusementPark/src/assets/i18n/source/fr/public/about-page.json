@@ -1,0 +1,42 @@
+{
+  "aboutPage": {
+    "kicker": "Vision du projet",
+    "title": "Une façon plus claire d’explorer les parcs",
+    "lead": "AmusementPark cartographie les parcs, attractions et informations utiles avec une architecture stable, prête pour les futures fonctions de comparaison et de distance.",
+    "primaryCta": "Explorer les parcs",
+    "secondaryCta": "Retour accueil",
+    "stats": {
+      "parksLabel": "Parcs potentiels",
+      "parksHint": "Pensé pour rester rapide à grande échelle",
+      "mapLabel": "Cible design",
+      "mapHint": "Parcours public prêt à évoluer"
+    },
+    "mission": {
+      "kicker": "Mission",
+      "title": "Trouver le bon parc plus vite",
+      "subtitle": "Le produit commence par un portfolio solide, puis évolue vers des outils de découverte et d’aide à la décision plus riches."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Découvrir",
+        "title": "Pages parc fiables",
+        "text": "Chaque page parc centralise localisation, éléments, photos, parcs proches et références utiles."
+      },
+      "explore": {
+        "badge": "Explorer",
+        "title": "Une logique pensée carte",
+        "text": "Recherche, interactions carte et distances proches sont conçues comme des fondations réutilisables."
+      },
+      "enjoy": {
+        "badge": "Profiter",
+        "title": "Une identité visuelle cohérente",
+        "text": "Les pages publiques, auth et profil partagent maintenant les mêmes tokens, surfaces et composants."
+      }
+    },
+    "clean": {
+      "kicker": "Ingénierie",
+      "title": "Construit pour évoluer étape par étape",
+      "text": "Le projet est pensé pour ajouter cartes, comparaisons et planification de voyage sans perturber l’expérience visiteur."
+    }
+  }
+}

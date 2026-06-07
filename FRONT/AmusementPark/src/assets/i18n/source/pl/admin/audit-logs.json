@@ -1,0 +1,35 @@
+{
+  "admin": {
+    "auditLogs": {
+      "title": "Dziennik audytu",
+      "subtitle": "Widok tylko do odczytu wrażliwych akcji administracyjnych.",
+      "total": "{{count}} wpisów",
+      "loading": "Ładowanie dziennika audytu...",
+      "loadError": "Nie można wczytać dziennika audytu.",
+      "empty": "Brak wpisów pasujących do filtrów.",
+      "filters": {
+        "fromUtc": "Od",
+        "toUtc": "Do",
+        "actorEmail": "Email aktora",
+        "action": "Akcja",
+        "entityType": "Typ encji",
+        "entityId": "ID encji",
+        "traceId": "Trace ID",
+        "actorUserId": "ID aktora"
+      },
+      "columns": {
+        "date": "Data",
+        "actor": "Aktor",
+        "action": "Akcja",
+        "entity": "Encja",
+        "request": "Żądanie",
+        "status": "Status",
+        "traceId": "Trace ID",
+        "metadata": "Metadane"
+      },
+      "metadata": {
+        "show": "Pokaż"
+      }
+    }
+  }
+}

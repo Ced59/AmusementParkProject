@@ -1,0 +1,76 @@
+{
+  "privacyPage": {
+    "kicker": "Données personnelles",
+    "title": "Politique de confidentialité",
+    "lead": "Cette page explique comment AmusementPark traite les données personnelles, les cookies nécessaires, l’authentification Google OAuth et la mesure d’audience Matomo.",
+    "chips": {
+      "hosting": "Hébergement en France",
+      "analytics": "Cookies et analytics",
+      "controller": "Responsable : Cédric Caudron"
+    },
+    "consent": {
+      "kicker": "Préférences cookies",
+      "title": "Gérer les cookies optionnels",
+      "text": "Les cookies nécessaires au fonctionnement et à l’authentification peuvent être utilisés sans consentement. Ici, vous pouvez accepter, refuser ou réafficher le choix relatif aux cookies optionnels de mesure d’audience.",
+      "currentStatus": "Statut actuel :",
+      "statusAccepted": "cookies optionnels acceptés.",
+      "statusRefused": "cookies optionnels refusés.",
+      "statusUnset": "aucun choix enregistré.",
+      "accept": "Accepter les cookies optionnels",
+      "refuse": "Retirer le consentement aux cookies optionnels",
+      "reset": "Réafficher le bandeau"
+    },
+    "sections": {
+      "controller": {
+        "title": "Responsable du traitement",
+        "body1": "Le responsable du traitement est Cédric Caudron, éditeur du site AmusementPark.",
+        "body2": "Pour toute demande relative aux données personnelles, vous pouvez utiliser les moyens de contact publiés sur le site cedric-caudron.com."
+      },
+      "data": {
+        "title": "Données traitées",
+        "body1": "Le site peut traiter les données de compte nécessaires au service : adresse e-mail, nom ou prénom renseigné, avatar, langue préférée et paramètres de profil.",
+        "body2": "Des données techniques peuvent aussi être traitées : adresse IP, date, URL consultée, navigateur, journal d’erreur et informations de sécurité strictement utiles à l’exploitation."
+      },
+      "purposes": {
+        "title": "Finalités et bases légales",
+        "body1": "Les données sont utilisées pour fournir les fonctionnalités du site, sécuriser les accès, gérer les comptes, afficher les contenus publics et administrer le projet.",
+        "body2": "Les traitements nécessaires au fonctionnement reposent sur l’exécution du service ou l’intérêt légitime. Les cookies optionnels de mesure d’audience Matomo reposent sur votre consentement, sauf si une configuration strictement exemptée est mise en place ultérieurement."
+      },
+      "analytics": {
+        "title": "Mesure d’audience Matomo",
+        "body1": "Le site utilise une instance Matomo auto-hébergée accessible à l’adresse matomo.cedric-caudron.com, avec l’identifiant de site 4.",
+        "body2": "Matomo peut mesurer les pages visitées, les enchaînements de navigation, les sources de trafic, le type d’appareil et des informations techniques de navigateur.",
+        "body3": "Aucun suivi publicitaire tiers n’est ajouté par cette intégration. Les parcours liés au profil peuvent être mesurés seulement après accord sur les cookies optionnels, sans envoyer le contenu privé du profil comme événement analytics."
+      },
+      "cookies": {
+        "title": "Cookies et stockage local",
+        "body1": "Des cookies ou stockages strictement nécessaires peuvent servir à la session, à la sécurité, à la langue, au thème, aux préférences d’interface et au bon fonctionnement de l’authentification.",
+        "body2": "Ces traceurs nécessaires peuvent inclure des cookies de session/API, des cookies d’authentification HTTP-only, des mécanismes anti-abus et des préférences conservées localement. Ils ne sont pas désactivables depuis le bandeau car ils conditionnent le service demandé.",
+        "body3": "Le choix relatif aux cookies optionnels est conservé dans le stockage local du navigateur afin de ne pas redemander le même choix à chaque page."
+      },
+      "hosting": {
+        "title": "Hébergement et sous-traitants",
+        "body1": "Le site est destiné à être hébergé sur un serveur situé en France via Hostinger. Les services techniques du projet, dont MongoDB, MinIO et Matomo, peuvent être exploités sur ce VPS.",
+        "body2": "Les données ne sont pas vendues à des annonceurs. Elles peuvent être traitées par les prestataires techniques strictement nécessaires à l’hébergement, à la sécurité et à l’exploitation."
+      },
+      "retention": {
+        "title": "Durées de conservation",
+        "body1": "Les comptes sont conservés tant que le compte existe ou tant qu’une obligation de sécurité impose une conservation limitée.",
+        "body2": "Les logs techniques sont conservés pour une durée proportionnée à la sécurité et au diagnostic. Les données Matomo doivent être configurées avec une durée limitée et réexaminée régulièrement."
+      },
+      "rights": {
+        "title": "Vos droits",
+        "body1": "Vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou l’opposition aux traitements applicables à vos données.",
+        "body2": "Vous pouvez également retirer votre consentement analytics sur cette page et, si nécessaire, introduire une réclamation auprès de la CNIL."
+      },
+      "thirdPartyCookies": {
+        "title": "Cookies tiers et authentification Google",
+        "body1": "Le site propose une connexion via Google OAuth / Sign in with Google. Lorsque vous utilisez ce mode, Google peut déposer ou lire ses propres cookies et technologies similaires à des fins d’authentification, de sécurité, de prévention de la fraude et de maintien de session.",
+        "body2": "Ces traceurs tiers sont nécessaires au fonctionnement de l’authentification Google demandée par l’utilisateur et ne sont pas pilotés par le consentement Matomo/analytics du site.",
+        "body3": "Le refus des cookies optionnels d’AmusementPark ne bloque pas l’authentification. En revanche, un navigateur qui bloque certains cookies tiers peut empêcher ou dégrader le fonctionnement de la connexion Google."
+      }
+    },
+    "lastUpdate": "Dernière mise à jour : 23 mai 2026.",
+    "backHome": "Retour à l’accueil"
+  }
+}

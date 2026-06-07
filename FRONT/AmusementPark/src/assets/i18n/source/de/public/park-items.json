@@ -1,0 +1,200 @@
+{
+  "parkItems": {
+    "actions": {
+      "viewDetails": "Element ansehen",
+      "backToItems": "Zurück zu den Elementen",
+      "backToPark": "Zurück zum Park"
+    },
+    "filters": {
+      "search": "Suchen",
+      "searchPlaceholder": "Nach Name, Beschreibung, Hersteller oder Status suchen",
+      "category": "Kategorie",
+      "type": "Typ",
+      "zone": "Zone",
+      "clear": "Filter löschen",
+      "allCategories": "Alle Kategorien",
+      "allTypes": "Alle Typen",
+      "allZones": "Alle Bereiche"
+    },
+    "list": {
+      "subtitle": "Durchstöbere die Inhalte des Parks und öffne jedes Element für mehr Details.",
+      "loadingTitle": "Parkelemente werden geladen",
+      "loadingMessage": "Die Parkinhalte werden geladen.",
+      "errorTitle": "Parkelemente können nicht geladen werden",
+      "errorMessage": "Der Parkinhalt konnte nicht geladen werden.",
+      "emptyTitle": "Kein Element verfügbar",
+      "emptyMessage": "Für diesen Park ist derzeit kein öffentliches Element verfügbar.",
+      "emptyFilteredTitle": "Kein passendes Element",
+      "emptyFilteredMessage": "Erweitere deine Filter oder lösche sie, um mehr Inhalte zu sehen.",
+      "filteredResults": "Gefilterte Ergebnisse",
+      "resultsCount": "Anzeige {{start}}–{{end}} von {{total}} Element(en)"
+    },
+    "detail": {
+      "loadingTitle": "Element wird geladen",
+      "loadingMessage": "Die Elementseite wird geladen.",
+      "errorTitle": "Element kann nicht geladen werden",
+      "errorMessage": "Das angeforderte Element konnte nicht geladen werden.",
+      "descriptionTitle": "Beschreibung",
+      "specificationsTitle": "Technische Daten",
+      "sourceTitle": "Quelle",
+      "summaryTitle": "Auf einen Blick",
+      "technicalTitle": "Technische Daten",
+      "performanceTitle": "Leistung",
+      "experienceTitle": "Erlebnis & Barrierefreiheit",
+      "accessConditionsTitle": "Zugangsbedingungen",
+      "accessConditionsSubtitle": "Rules are displayed only when they exist on the item record.",
+      "locationKicker": "Standort",
+      "locationTitle": "Standort im Park",
+      "preciseLocationSubtitle": "Präzise Punkte sind verfügbar, daher zeigt die Karte diese spezifischen Standorte.",
+      "generalLocationSubtitle": "Es ist kein spezifischer Standort verfügbar, daher zeigt die Karte nur den allgemeinen Elementstandort.",
+      "preciseLocationBadge": "Präziser Punkt",
+      "generalLocationBadge": "Allgemeiner Ersatzpunkt",
+      "relatedKicker": "Auch entdecken",
+      "relatedTitle": "Ähnliche Elemente",
+      "relatedSubtitle": "Auswahl basierend auf Elementtyp, Kategorie oder Bereich.",
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Wähle einen Punkt aus, um ihn auf der Karte hervorzuheben oder eine Route über die Markierung zu öffnen.",
+      "showLocationOnMap": "Auf Karte anzeigen"
+    },
+    "fields": {
+      "category": "Kategorie",
+      "type": "Typ",
+      "park": "Park",
+      "zone": "Zone",
+      "manufacturer": "Hersteller",
+      "model": "Modell",
+      "status": "Status",
+      "materialType": "Material",
+      "seatingType": "Sitze",
+      "launchType": "Launch-Typ",
+      "restraintType": "Rückhaltesystem",
+      "openingDate": "Eröffnungsdatum",
+      "closingDate": "Schließdatum",
+      "heightInMeters": "Höhe",
+      "heightInFeet": "Höhe (ft)",
+      "lengthInMeters": "Länge",
+      "lengthInFeet": "Länge (ft)",
+      "speedInKmH": "Geschwindigkeit",
+      "speedInMph": "Geschwindigkeit (mph)",
+      "dropInMeters": "Abfahrt",
+      "inversionCount": "Inversionen",
+      "capacityPerHour": "Kapazität / Stunde",
+      "durationInSeconds": "Dauer (Sek.)",
+      "trainCount": "Anzahl der Züge",
+      "carsPerTrain": "Wagen / Zug",
+      "ridersPerVehicle": "Fahrgäste / Fahrzeug",
+      "hasSingleRider": "Single Rider",
+      "hasFastPass": "Fast Pass",
+      "isAccessibleForReducedMobility": "Zugang für eingeschränkte Mobilität",
+      "isIndoor": "Innenbereich",
+      "isLaunched": "Launch",
+      "waterExposureLevel": "Nässegrad",
+      "subtype": "Untertyp",
+      "isVisible": "Sichtbar",
+      "coordinates": "Koordinaten"
+    },
+    "locations": {
+      "general": "Allgemeiner Standort",
+      "entrance": "Eingang",
+      "exit": "Ausgang",
+      "fastPassEntrance": "Fast-Pass-Eingang",
+      "reducedMobilityEntrance": "Eingang für eingeschränkte Mobilität"
+    },
+    "accessConditionFields": {
+      "type": "Typ",
+      "value": "Wert",
+      "requiresAccompaniment": "Begleitung erforderlich",
+      "minimumCompanionAge": "Mindestalter der Begleitperson"
+    },
+    "accessConditionTypes": {
+      "minHeight": "Mindestgröße",
+      "minHeightAccompanied": "Mindestgröße mit Begleitung",
+      "maxHeight": "Maximalgröße",
+      "minAge": "Mindestalter",
+      "minAgeAccompanied": "Mindestalter mit Begleitung",
+      "pregnancyRestriction": "Einschränkung bei Schwangerschaft",
+      "heartRestriction": "Herz-Kreislauf-Einschränkung",
+      "backNeckRestriction": "Rücken- oder Nackenbeschränkung",
+      "wheelchairTransferRequired": "Umsetzen aus dem Rollstuhl erforderlich",
+      "accessPassRequired": "Zugangspass erforderlich",
+      "custom": "Eigene Bedingung"
+    },
+    "accessConditionUnits": {
+      "centimeter": "Zentimeter",
+      "year": "Jahre"
+    },
+    "waterExposureLevels": {
+      "none": "Keine",
+      "splash": "Leichtes Spritzwasser",
+      "moderate": "Mäßig",
+      "soaking": "Durchnässend",
+      "extremeSoaking": "Extrem durchnässend"
+    },
+    "photos": {
+      "kicker": "Fotos",
+      "title": "Fotos",
+      "subtitle": "Filtere die Bilder nach Kategorie, damit die Detailseite fokussiert bleibt.",
+      "current": "Aktuell",
+      "categories": {
+        "gallery": "Galerie",
+        "entrance": "Eingang",
+        "exit": "Ausgang",
+        "layout": "Layout",
+        "queue": "Warteschlange",
+        "station": "Station"
+      },
+      "controls": {
+        "category": "Fotokategorie",
+        "allCategories": "Alle",
+        "displayCount": "Anzahl",
+        "count": "{{count}}",
+        "all": "Alle",
+        "previous": "Vorheriges Foto",
+        "next": "Nächstes Foto",
+        "openFullscreen": "Vollbild öffnen",
+        "closeFullscreen": "Vollbild schließen"
+      },
+      "lightbox": {
+        "title": "Foto im Vollbild"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Größenanforderungen",
+        "minHeight": "Mindestgröße",
+        "minHeightHelp": "Ab dieser Größe erlaubt.",
+        "minHeightAccompanied": "Größe mit Begleitung",
+        "minHeightAccompaniedHelp": "Mit einem Erwachsenen ab dieser Größe erlaubt.",
+        "maxHeight": "Maximalgröße",
+        "maxHeightHelp": "Zugang über dieser Größe verboten."
+      }
+    },
+    "zoneFocus": {
+      "badge": "Parkbereich",
+      "overviewBadge": "Live-Karte",
+      "overviewDescription": "Zeigt die aktuell angezeigten Elemente für {{park}} entsprechend den aktiven Filtern.",
+      "zoneFallbackDescription": "Dieser Bereich bündelt die aktuell angezeigten Elemente. Nutze die Filter, um die Auswahl zu verfeinern.",
+      "totalItems": "Bereichselemente",
+      "totalItemsHint": "Verknüpfter Inhalt",
+      "displayedItems": "Angezeigt",
+      "displayedItemsHint": "Nach Filtern",
+      "mapMarkers": "Marker",
+      "mapMarkersHint": "Geolokalisiert",
+      "mapPanelTitle": "Kartenpunkte",
+      "mapPanelHeading": "Live gefilterte Karte",
+      "mapPanelText": "Die Karte folgt der aktuellen Auswahl: Bereich, Kategorie, Typ und Suche. Die eigenen Marker bleiben an den genauen Elementtyp angepasst.",
+      "zoneMapHeading": "Karte Bereich {{name}}",
+      "parkMapHeading": "Karte {{name}}",
+      "allMapItems": "Alle"
+    },
+    "statuses": {
+      "operating": "In Betrieb",
+      "underConstruction": "Im Bau",
+      "temporarilyClosed": "Vorübergehend geschlossen",
+      "closedDefinitively": "Dauerhaft geschlossen",
+      "removed": "Entfernt / abgebaut",
+      "planned": "Geplant",
+      "unknown": "Unbekannt"
+    }
+  }
+}

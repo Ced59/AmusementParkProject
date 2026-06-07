@@ -1,0 +1,8 @@
+{
+  "notFound": {
+    "title": "Deze pagina nam de verkeerde afslag",
+    "description": "De gevraagde pagina bestaat niet, is verplaatst of is niet openbaar beschikbaar.",
+    "homeCta": "Terug naar home",
+    "parksCta": "Parken ontdekken"
+  }
+}

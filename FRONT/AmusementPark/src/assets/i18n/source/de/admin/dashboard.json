@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "dashboard": {
+      "title": "Dashboard",
+      "subtitle": "Einstieg ins Backoffice: Wähle einen Bereich im linken Menü oder über die folgenden Schnellzugriffe.",
+      "shortcuts": {
+        "users": "Konten, Rollen und Zugriffe verwalten.",
+        "parks": "Parks filtern, priorisieren und veröffentlichen.",
+        "parkItems": "Attraktionen, Shops, Restaurants und Services verwalten.",
+        "operators": "Die mit Parks verknüpften Betreiber pflegen.",
+        "manufacturers": "Hersteller und Anlagenbauer pflegen.",
+        "images": "Medien, Logos und Website-Bilder prüfen.",
+        "data": "Importe, Quellen und Datenverarbeitung überwachen.",
+        "founders": "Gründer und Biografien verwalten, die mit Parks verknüpft sind.",
+        "auditLogs": "Protokollierte sensible Verwaltungsaktionen prüfen.",
+        "localizedContent": "Lokalisierte Texte nach Zielauswahl schnell per JSON importieren.",
+        "parkGraphUpserts": "Ein vollständiges oder teilweises Park-JSON prüfen und anwenden.",
+        "seoSitemaps": "Sitemap-Index, XML-Bereiche, Statistiken und IndexNow verwalten."
+      }
+    }
+  }
+}

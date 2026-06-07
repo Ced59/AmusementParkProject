@@ -1,0 +1,23 @@
+{
+  "admin": {
+    "operators": {
+      "total": "Betreiber: {{count}}",
+      "searchPlaceholder": "Einen Betreiber suchen",
+      "create": "Betreiber erstellen",
+      "name": "Name",
+      "actions": "Aktionen",
+      "edit": "Bearbeiten",
+      "empty": "Keine Betreiber gefunden.",
+      "editPage": {
+        "createTitle": "Betreiber erstellen",
+        "updateTitle": "Betreiber bearbeiten",
+        "name": "Name",
+        "description": "Beschreibung"
+      },
+      "title": "Betreiber",
+      "subtitle": "Referenzliste der Betreiber für Parkdatensätze.",
+      "reviewStatus": "Admin-Status",
+      "loadError": "Betreiber konnten nicht geladen werden."
+    }
+  }
+}

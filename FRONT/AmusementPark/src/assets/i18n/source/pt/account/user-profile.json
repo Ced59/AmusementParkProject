@@ -1,0 +1,40 @@
+{
+  "user-profile": {
+    "title": "Perfil de utilizador",
+    "name": "Apelido",
+    "firstname": "Nome",
+    "email": "Email",
+    "preferred_language": "Idioma preferido",
+    "modify": "Editar",
+    "avatar": {
+      "title": "Alterar avatar",
+      "choose": "Escolher um avatar",
+      "upload": "Carregar avatar",
+      "cancel": "Cancelar",
+      "dragAndDrop": "Arrasta o teu avatar para aqui ou clica para escolher uma imagem.",
+      "selectedFile": "Ficheiro selecionado",
+      "invalidFile": "Seleciona um ficheiro de imagem válido.",
+      "invalidSize": "O avatar selecionado é demasiado grande.",
+      "noImageSelected": "Seleciona um avatar antes de carregar.",
+      "uploading": "A carregar avatar...",
+      "updateSuccess": "Avatar atualizado com sucesso."
+    },
+    "identity": "Identidade",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "saving": "A guardar...",
+    "loadingTitle": "A carregar perfil",
+    "loadingMessage": "O perfil do utilizador está a ser carregado.",
+    "errorTitle": "Não foi possível carregar o perfil",
+    "errorMessage": "Não foi possível carregar o perfil.",
+    "back": "Voltar",
+    "logout": "Terminar sessão",
+    "accountBadge": "Conta",
+    "subtitle": "Atualiza a tua identidade pública, avatar e idioma preferido.",
+    "detailsKicker": "Definições",
+    "detailsSubtitle": "Mantém as tuas informações prontas para futuras funcionalidades personalizadas.",
+    "identityRequired": "Nome e apelido são obrigatórios.",
+    "updateSuccess": "Perfil atualizado com sucesso.",
+    "updateError": "Falha ao atualizar o perfil."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "sidebar": {
+    "logo_text": "Menü",
+    "home": "Startseite",
+    "parks": "Parks",
+    "about": "Über uns",
+    "profile": "Profil",
+    "admin": "Administration"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "common": {
+    "loadingTitle": "Wird geladen",
+    "loadingMessage": "Inhalt wird geladen.",
+    "errorTitle": "Ein Fehler ist aufgetreten",
+    "errorMessage": "Der angeforderte Inhalt konnte nicht geladen werden.",
+    "emptyTitle": "Nichts anzuzeigen",
+    "emptyMessage": "Momentan ist kein Inhalt verfügbar.",
+    "security": {
+      "uploadRejectedSummary": "Datei abgelehnt",
+      "invalidImageUploadMessage": "Es werden nur JPEG-, PNG-, WebP- oder GIF-Bilder unter 10 MB akzeptiert."
+    },
+    "success": "Erfolg",
+    "error": "Fehler",
+    "warning": "Achtung",
+    "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "admin": {
+    "jsonImport": {
+      "tab": "Importar JSON",
+      "kicker": "Importação JSON",
+      "title": "Importar dados desta entidade",
+      "description": "Cola um JSON parcial ou completo para preencher rapidamente os campos suportados, sem gerir fotos nem criar entidades filhas.",
+      "resetExample": "Repor exemplo",
+      "jsonLabel": "JSON da entidade",
+      "apply": "Aplicar JSON",
+      "applying": "A aplicar…",
+      "disabledUntilSave": "Guarda primeiro esta entidade antes de importar JSON.",
+      "messages": {
+        "invalidJson": "O JSON é inválido.",
+        "success": "JSON aplicado. Recarrega ou verifica os separadores se necessário.",
+        "error": "Não foi possível aplicar o JSON."
+      },
+      "help": {
+        "title": "Formato aceite",
+        "partial": "Um JSON parcial altera apenas os campos presentes.",
+        "merge": "Os valores localizados são fundidos por idioma, salvo com replaceExisting ou mode: replace.",
+        "accessConditions": "Para elementos do parque, accessConditions pode criar ou atualizar condições e tipos reutilizáveis."
+      }
+    }
+  }
+}

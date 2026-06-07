@@ -1,0 +1,40 @@
+{
+  "admin": {
+    "references": {
+      "sections": {
+        "identity": "Tożsamość",
+        "contact": "Opcjonalne dane kontaktowe",
+        "content": "Treść redakcyjna",
+        "administration": "Proces administracyjny"
+      },
+      "fields": {
+        "legalName": "Nazwa prawna",
+        "foundedYear": "Rok założenia",
+        "closedYear": "Rok zamknięcia",
+        "websiteUrl": "Strona internetowa",
+        "email": "E-mail",
+        "phoneNumber": "Telefon",
+        "street": "Ulica",
+        "city": "Miasto",
+        "postalCode": "Kod pocztowy",
+        "countryCode": "Kod kraju",
+        "latitude": "Szerokość geograficzna",
+        "longitude": "Długość geograficzna",
+        "occupation": "Zawód / rola",
+        "birthDate": "Data urodzenia",
+        "deathDate": "Data śmierci",
+        "birthPlace": "Miejsce urodzenia",
+        "nationalityCountryCode": "Narodowość / kod kraju"
+      },
+      "images": {
+        "title": "Proplik obrazs",
+        "help": "Dodaj portrety, logotypy, zdjęcia siedziby, dokumenty historyczne lub materiały referencyjne. Publiczne wyświetlanie pozostaje warunkowe.",
+        "add": "Add obraz",
+        "saveBeforeUpload": "Save this profil before adding obrazs.",
+        "empty": "Brak obraz is linked to this profil yet.",
+        "untitled": "Reference obraz",
+        "uploadTitle": "Add an obraz to this profil"
+      }
+    }
+  }
+}

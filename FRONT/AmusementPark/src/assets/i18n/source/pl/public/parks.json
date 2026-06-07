@@ -1,0 +1,254 @@
+{
+  "parks": {
+    "heroBadge": "Public catalog",
+    "title": "Parks",
+    "subtitle": "Browse the parks already managed in the administration area and explore their public details.",
+    "loadingTitle": "Ładowanie parks",
+    "loadingMessage": "Lista parków jest ładowana.",
+    "errorTitle": "Nie można wczytać parks",
+    "errorMessage": "The parks list nie udało się wczytać.",
+    "emptyTitle": "Brak park available",
+    "emptyMessage": "Brak park is available for display.",
+    "search": {
+      "label": "Szukaj",
+      "placeholder": "Search a park by name",
+      "clear": "Wyczyść"
+    },
+    "fields": {
+      "country": "Kraj",
+      "city": "Miasto",
+      "address": "Adres",
+      "website": "Strona internetowa",
+      "coordinates": "Współrzędne",
+      "latitude": "Szerokość geograficzna",
+      "longitude": "Długość geograficzna",
+      "distance": "Odległość",
+      "estimatedTravelDuration": "Szacowana podróż"
+    },
+    "actions": {
+      "viewDetails": "Zobacz szczegóły",
+      "website": "Strona internetowa",
+      "backToList": "Wróć do listy"
+    },
+    "detail": {
+      "heroBadge": "Przegląd parku",
+      "heroDescription": "Poznaj praktyczne informacje dostępne obecnie dla tego parku.",
+      "loadingTitle": "Ładowanie park",
+      "loadingMessage": "Strona parku jest ładowana.",
+      "errorTitle": "Nie można wczytać the park",
+      "errorMessage": "The requested park nie udało się wczytać.",
+      "practical": {
+        "title": "Informacje praktyczne",
+        "subtitle": "Najważniejsze informacje dla odwiedzających dostępne obecnie dla tego parku.",
+        "postalCode": "Kod pocztowy",
+        "street": "Ulica",
+        "openReference": "Otwórz szczegóły {{name}}"
+      },
+      "location": {
+        "title": "Lokalizacja",
+        "subtitle": "Znajdź park na mapie i sprawdź jego współrzędne."
+      },
+      "nearby": {
+        "title": "Pobliskie parki",
+        "subtitle": "Kontynuuj odkrywanie parków położonych wokół tego miejsca.",
+        "loadingTitle": "Ładowanie nearby parks",
+        "loadingMessage": "Pobliskie parki są ładowane.",
+        "errorTitle": "Nie można wczytać nearby parks",
+        "errorMessage": "Nearby parks nie udało się wczytać.",
+        "emptyTitle": "Brak nearby park",
+        "emptyMessage": "Nie znaleziono pobliskiego parku wokół tego miejsca.",
+        "closestTitle": "Najbliższy park",
+        "distanceNote": "Odległość po ortodromie obliczona z koordynatów parku."
+      },
+      "description": {
+        "badge": "Opis",
+        "title": "O tym parku",
+        "empty": "Nie ma jeszcze rozszerzonego opisu tego parku."
+      },
+      "identity": {
+        "title": "Tożsamość parku",
+        "subtitle": "Dane strukturalne dostępne obecnie w modelu parku.",
+        "type": "Typ",
+        "founder": "Założyciel",
+        "operator": "Operator",
+        "reference": "Referencja"
+      },
+      "publication": {
+        "title": "Publikacja",
+        "subtitle": "Widoczność i wyróżnienie na stronie głównej z modelu parku.",
+        "visible": "Widoczny",
+        "featured": "Wyróżniony",
+        "sponsored": "Sponsorowany",
+        "featuredOrder": "Kolejność home",
+        "logo": "Logo",
+        "logoAvailable": "Ustawiono bieżące logo"
+      },
+      "zones": {
+        "badge": "Strefy parku",
+        "title": "Strefy i obszary",
+        "subtitle": "Szybko znajdź atrakcje i miejsca powiązane z każdą strefą parku.",
+        "visible": "Widoczna",
+        "hidden": "Ukryta",
+        "open": "Zobacz elementy strefy",
+        "noDescription": "Opis tej strefy nie jest jeszcze dostępny.",
+        "slug": "Slug",
+        "sortOrder": "Kolejność",
+        "sortOrderShort": "Kolejność {{order}}"
+      },
+      "stats": {
+        "zones": "Strefy"
+      },
+      "itemsMap": {
+        "badge": "Mapa elementów",
+        "title": "Mapa elementów parku",
+        "subtitle": "Znajdź geolokalizowane elementy tego parku i filtruj mapę według strefy lub kategorii.",
+        "categoriesTitle": "Kategorie",
+        "emptyTitle": "Brak geolokalizowanych elementów",
+        "emptyMessage": "Żaden geolokalizowany element nie pasuje obecnie do wybranych filtrów."
+      },
+      "comingSoon": {
+        "badge": "Wkrótce",
+        "message": "Ta sekcja zostanie podłączona do wiarygodnego źródła w kolejnym etapie."
+      },
+      "weather": {
+        "title": "Pogoda na 5 dni",
+        "subtitle": "Planowana krótka prognoza pomagająca przygotować wizytę."
+      },
+      "hours": {
+        "title": "Godziny otwarcia",
+        "subtitle": "Godziny otwarcia i okresy specjalne zostaną dodane później."
+      },
+      "prices": {
+        "title": "Ceny",
+        "subtitle": "Bilety, karnety i informacje cenowe zostaną dodane później."
+      }
+    },
+    "titlePrefix": "Wszystkie",
+    "titleAccent": "parki",
+    "stats": {
+      "visibleParks": "Widoczne parki",
+      "countries": "Kraje"
+    },
+    "map": {
+      "badge": "Mapa interaktywna",
+      "title": "Mapa widocznych parków",
+      "subtitle": "Mapa śledzi bieżące wyszukiwanie. Kliknij znacznik albo kartę wyniku, aby zsynchronizować całą stronę.",
+      "visiblePins": "{{count}} widoczne pinezki",
+      "quickMarkers": "Szybkie znaczniki",
+      "selected": "Wybrany park",
+      "loadingTitle": "Ładowanie mapy",
+      "loadingMessage": "Widoczne parki są umieszczane na mapie.",
+      "errorTitle": "Mapa niedostępna",
+      "errorMessage": "Nie udało się załadować punktów mapy.",
+      "emptyTitle": "Brak dostępnego punktu",
+      "emptyMessage": "Żaden widoczny park ze współrzędnymi nie pasuje do tego wyszukiwania.",
+      "navigate": "Nawiguj",
+      "openDetail": "Przejdź do karty",
+      "regionFilters": {
+        "all": "Wszystkie",
+        "europe": "Europa",
+        "northAmerica": "Ameryka Płn.",
+        "southAmerica": "Ameryka Płd.",
+        "orient": "Orient",
+        "africa": "Afryka"
+      },
+      "regionFilterAriaLabel": "Filtruj parki według kontynentu"
+    },
+    "results": {
+      "badge": "Wyniki",
+      "title": "Lista parków",
+      "count": "{{count}} wyników",
+      "focusOnMap": "Wybierz {{name}} na mapie",
+      "selectedOnly": "Wybrano: {{name}}",
+      "clearSelection": "Pokaż wszystkie wyniki"
+    },
+    "reference": {
+      "loadingTitle": "Ładowanie profilu",
+      "loadingMessage": "Profil publiczny jest ładowany.",
+      "errorTitle": "Nie można załadować profilu",
+      "errorMessage": "Nie udało się załadować wybranego profilu.",
+      "backToParks": "Wróć do parków",
+      "operator": {
+        "badge": "Operator parku",
+        "title": "Operator",
+        "descriptionTitle": "Operator profil",
+        "emptyDescription": "Nie ma jeszcze rozbudowanego opisu tego operatora."
+      },
+      "founder": {
+        "badge": "Założyciel parku",
+        "title": "Założyciel",
+        "descriptionTitle": "Biografia",
+        "emptyDescription": "Nie ma jeszcze rozbudowanej biografii tego założyciela."
+      },
+      "manufacturer": {
+        "badge": "Producent atrakcji",
+        "title": "Producent",
+        "descriptionTitle": "Manufacturer profil",
+        "emptyDescription": "Nie ma jeszcze rozbudowanego profilu tego producenta.",
+        "attractionsKicker": "Zbudowane atrakcje",
+        "attractionsTitle": "Atrakcje powiązane z tym producentem",
+        "attractionsSubtitle": "Widoczne atrakcje strony powiązane z tym producentem.",
+        "emptyAttractions": "Żadna widoczna atrakcja nie jest jeszcze powiązana z tym producentem."
+      },
+      "facts": {
+        "title": "Kluczowe informacje",
+        "legalName": "Nazwa prawna",
+        "foundedYear": "Założono",
+        "closedYear": "Zamknięto",
+        "website": "Strona internetowa",
+        "email": "E-mail",
+        "phone": "Telefon",
+        "address": "Adres",
+        "country": "Kraj",
+        "coordinates": "Współrzędne",
+        "occupation": "Rola",
+        "birthDate": "Narodziny",
+        "deathDate": "Śmierć",
+        "birthPlace": "Miejsce urodzenia",
+        "nationality": "Narodowość"
+      },
+      "photos": {
+        "kicker": "Galeria",
+        "title": "Related obrazs",
+        "subtitle": "Opublikowane materiały wzbogacające ten profil.",
+        "founder": "Założyciel",
+        "operator": "Operator",
+        "manufacturer": "Producent"
+      }
+    },
+    "photos": {
+      "kicker": "Zdjęcia",
+      "title": "Zdjęcia",
+      "subtitle": "Ogólne zdjęcia parku i materiały elementów, filtrowane według typu.",
+      "current": "Aktualne",
+      "openItem": "Otwórz stronę szczegółów {{name}}",
+      "categories": {
+        "gallery": "Park · Galeria",
+        "entrance": "Wejście do parku",
+        "overview": "Przegląd",
+        "map": "Mapa / układ",
+        "atmosphere": "Atmosfera",
+        "event": "Wydarzenia",
+        "food": "Jedzenie",
+        "services": "Usługi",
+        "halloween": "Halloween",
+        "christmas": "Boże Narodzenie",
+        "easter": "Wielkanoc"
+      },
+      "controls": {
+        "category": "Kategoria zdjęcia",
+        "allCategories": "Wszystkie",
+        "displayCount": "Liczba wyświetlanych",
+        "count": "{{count}}",
+        "all": "Wszystkie",
+        "previous": "Poprzednie zdjęcie",
+        "next": "Następne zdjęcie",
+        "openFullscreen": "Powiększ",
+        "closeFullscreen": "Zamknij pełny ekran"
+      },
+      "lightbox": {
+        "title": "Zdjęcie pełnoekranowe"
+      }
+    }
+  }
+}

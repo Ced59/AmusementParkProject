@@ -1,0 +1,23 @@
+{
+  "admin": {
+    "operators": {
+      "total": "Exploitants : {{count}}",
+      "searchPlaceholder": "Rechercher un exploitant",
+      "create": "Créer un exploitant",
+      "name": "Nom",
+      "actions": "Actions",
+      "edit": "Modifier",
+      "empty": "Aucun exploitant trouvé.",
+      "editPage": {
+        "createTitle": "Créer un exploitant",
+        "updateTitle": "Modifier l'exploitant",
+        "name": "Nom",
+        "description": "Description"
+      },
+      "title": "Exploitants",
+      "subtitle": "Référentiel des exploitants utilisés par les fiches de parc.",
+      "reviewStatus": "Statut admin",
+      "loadError": "Impossible de charger les exploitants."
+    }
+  }
+}

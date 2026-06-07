@@ -1,0 +1,33 @@
+{
+  "ui": {
+    "photoCarousel": {
+      "kicker": "Foto’s",
+      "title": "Foto's",
+      "subtitle": "Filter beelden per categorie zodat de detailpagina overzichtelijk blijft.",
+      "current": "Huidig",
+      "categories": {
+        "gallery": "Galerij",
+        "entrance": "Ingang",
+        "exit": "Uitgang",
+        "layout": "Indeling",
+        "queue": "Wachtrij",
+        "station": "Station"
+      },
+      "controls": {
+        "category": "Fotocategorie",
+        "allCategories": "Alle",
+        "displayCount": "Getoond",
+        "count": "{{count}}",
+        "all": "Alle",
+        "previous": "Vorige foto",
+        "next": "Volgende foto",
+        "openFullscreen": "Volledig scherm openen",
+        "closeFullscreen": "Volledig scherm sluiten",
+        "openSource": "{{name}} openen"
+      },
+      "lightbox": {
+        "title": "Foto op volledig scherm"
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "admin": {
+    "auditLogs": {
+      "title": "Auditlog",
+      "subtitle": "Alleen-lezen overzicht van gevoelige beheeracties.",
+      "total": "{{count}} vermeldingen",
+      "loading": "Auditlog laden...",
+      "loadError": "Kan de auditlog niet laden.",
+      "empty": "Geen auditvermelding komt overeen met de filters.",
+      "filters": {
+        "fromUtc": "Vanaf",
+        "toUtc": "Tot",
+        "actorEmail": "E-mail actor",
+        "action": "Actie",
+        "entityType": "Entiteitstype",
+        "entityId": "Entiteit-ID",
+        "traceId": "Trace ID",
+        "actorUserId": "Actor-ID"
+      },
+      "columns": {
+        "date": "Datum",
+        "actor": "Acteur",
+        "action": "Actie",
+        "entity": "Entiteit",
+        "request": "Verzoek",
+        "status": "Status",
+        "traceId": "Trace ID",
+        "metadata": "Metagegevens"
+      },
+      "metadata": {
+        "show": "Tonen"
+      }
+    }
+  }
+}

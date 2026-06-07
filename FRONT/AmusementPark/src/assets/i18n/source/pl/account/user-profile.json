@@ -1,0 +1,40 @@
+{
+  "user-profile": {
+    "title": "Profil użytkownika",
+    "name": "Nazwisko",
+    "firstname": "Imię",
+    "email": "E-mail",
+    "preferred_language": "Preferowany język",
+    "modify": "Edytuj",
+    "avatar": {
+      "title": "Zmień awatar",
+      "choose": "Wybierz awatar",
+      "upload": "Prześlij awatar",
+      "cancel": "Anuluj",
+      "dragAndDrop": "Przeciągnij tutaj awatar albo kliknij, aby wybrać obraz.",
+      "selectedFile": "Wybrany plik",
+      "invalidFile": "Wybierz prawidłowy plik obrazu.",
+      "invalidSize": "Wybrany awatar jest zbyt duży.",
+      "noImageSelected": "Wybierz awatar przed przesłaniem.",
+      "uploading": "Przesyłanie awatara...",
+      "updateSuccess": "Avatar zaktualizowany pomyślnie."
+    },
+    "identity": "Tożsamość",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "saving": "Zapisywanie...",
+    "loadingTitle": "Ładowanie profilu",
+    "loadingMessage": "Profil użytkownika jest ładowany.",
+    "errorTitle": "Nie można wczytać profilu",
+    "errorMessage": "Nie udało się wczytać profilu.",
+    "back": "Wróć",
+    "logout": "Wyloguj",
+    "accountBadge": "Konto",
+    "subtitle": "Zaktualizuj publiczną tożsamość, avatar i preferowany język.",
+    "detailsKicker": "Ustawienia",
+    "detailsSubtitle": "Utrzymuj dane gotowe na przyszłe funkcje personalizowane.",
+    "identityRequired": "Imię i nazwisko są wymagane.",
+    "updateSuccess": "Profil zaktualizowany pomyślnie.",
+    "updateError": "Aktualizacja profilu nie powiodła się."
+  }
+}

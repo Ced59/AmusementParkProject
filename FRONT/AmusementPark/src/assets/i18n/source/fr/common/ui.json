@@ -1,0 +1,33 @@
+{
+  "ui": {
+    "photoCarousel": {
+      "kicker": "Photos",
+      "title": "Photos",
+      "subtitle": "Filtre les visuels par catégorie pour consulter uniquement les photos utiles.",
+      "current": "Actuelle",
+      "categories": {
+        "gallery": "Galerie",
+        "entrance": "Entrée",
+        "exit": "Sortie",
+        "layout": "Plan",
+        "queue": "File d’attente",
+        "station": "Gare"
+      },
+      "controls": {
+        "category": "Catégorie de photo",
+        "allCategories": "Toutes",
+        "displayCount": "Nombre affiché",
+        "count": "{{count}}",
+        "all": "Tout",
+        "previous": "Photo précédente",
+        "next": "Photo suivante",
+        "openFullscreen": "Agrandir",
+        "closeFullscreen": "Fermer le plein écran",
+        "openSource": "Ouvrir {{name}}"
+      },
+      "lightbox": {
+        "title": "Photo en plein écran"
+      }
+    }
+  }
+}

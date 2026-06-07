@@ -1,0 +1,54 @@
+{
+  "admin": {
+    "parkGraphUpserts": {
+      "navTitle": "Upsert JSON parku",
+      "title": "Upsert JSON parku",
+      "kicker": "Import strukturalny · Admin",
+      "subtitle": "Wklej pełny lub częściowy JSON parku, sprawdź zmiany i zastosuj je bez nadpisywania brakujących pól.",
+      "target": {
+        "title": "Park docelowy",
+        "description": "Przy aktualizacji zawsze wybierz istniejący park, aby użyć jego prawdziwego identyfikatora.",
+        "searchPlaceholder": "Szukaj parku po nazwie, mieście lub kraju…",
+        "selected": "Wybrany park"
+      },
+      "options": {
+        "createIfMissing": "Zezwól na utworzenie, gdy nie wybrano parku",
+        "replaceCollections": "Tryb zastępowania brakujących kolekcji (tylko kontrolowane importy)"
+      },
+      "editor": {
+        "title": "Dokument JSON",
+        "description": "Brakujące właściwości są zachowywane. Tablice zones/items wykonują upsert tylko zawartych elementów."
+      },
+      "actions": {
+        "search": "Szukaj",
+        "searching": "Szukanie…",
+        "clear": "Wyczyść",
+        "preview": "Podgląd",
+        "previewing": "Podgląd…",
+        "apply": "Zastosuj",
+        "applying": "Stosowanie…"
+      },
+      "errors": {
+        "noParkSelected": "Wybierz istniejący park albo włącz jawne tworzenie.",
+        "invalidJson": "JSON jest nieprawidłowy.",
+        "searchTooShort": "Wpisz co najmniej 2 znaki.",
+        "searchFailed": "Wyszukiwanie parku nie powiodło się.",
+        "previewFailed": "Podgląd nie powiódł się.",
+        "applyFailed": "Zastosowanie nie powiodło się."
+      },
+      "result": {
+        "title": "Podgląd",
+        "noTarget": "Brak parku docelowego",
+        "created": "Utworzone",
+        "updated": "Zmienione",
+        "warnings": "Ostrzeżenia",
+        "errors": "Błędy",
+        "applied": "Upsert zastosowany pomyślnie.",
+        "field": "Pole",
+        "oldValue": "Stare",
+        "newValue": "Nowe",
+        "noFieldChange": "Brak zmian pól."
+      }
+    }
+  }
+}

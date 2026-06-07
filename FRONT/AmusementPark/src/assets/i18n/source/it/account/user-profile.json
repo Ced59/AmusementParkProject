@@ -1,0 +1,40 @@
+{
+  "user-profile": {
+    "title": "Profilo utente",
+    "name": "Cognome",
+    "firstname": "Nome",
+    "email": "Email",
+    "preferred_language": "Lingua preferita",
+    "modify": "Modifica",
+    "avatar": {
+      "title": "Cambia avatar",
+      "choose": "Scegli un avatar",
+      "upload": "Carica avatar",
+      "cancel": "Annulla",
+      "dragAndDrop": "Trascina qui il tuo avatar o fai clic per selezionare un’immagine.",
+      "selectedFile": "File selezionato",
+      "invalidFile": "Seleziona un file immagine valido.",
+      "invalidSize": "L’avatar selezionato è troppo grande.",
+      "noImageSelected": "Seleziona un avatar prima di caricarlo.",
+      "uploading": "Caricamento avatar...",
+      "updateSuccess": "Avatar aggiornato con successo."
+    },
+    "identity": "Identità",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "saving": "Salvataggio...",
+    "loadingTitle": "Caricamento profilo",
+    "loadingMessage": "Il profilo utente è in caricamento.",
+    "errorTitle": "Impossibile caricare il profilo",
+    "errorMessage": "Non è stato possibile caricare il profilo.",
+    "back": "Indietro",
+    "logout": "Esci",
+    "accountBadge": "Account utente",
+    "subtitle": "Aggiorna identità pubblica, avatar e lingua preferita.",
+    "detailsKicker": "Impostazioni",
+    "detailsSubtitle": "Mantieni pronte le tue informazioni per future funzionalità personalizzate.",
+    "identityRequired": "Nome e cognome sono obbligatori.",
+    "updateSuccess": "Profilo aggiornato con successo.",
+    "updateError": "Aggiornamento del profilo non riuscito."
+  }
+}

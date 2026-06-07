@@ -1,0 +1,29 @@
+{
+  "footer": {
+    "ariaLabel": "Voettekst van de site",
+    "brand": {
+      "tagline": "De volledige kaart van sensaties. Park per park, attractie per attractie."
+    },
+    "explore": {
+      "title": "Ontdekken",
+      "allParks": "Alle parken",
+      "topRollerCoasters": "Top achtbanen",
+      "interactiveMap": "Interactieve kaart",
+      "news": "Nieuwigheden"
+    },
+    "about": {
+      "title": "Over",
+      "project": "Het project",
+      "sources": "Bronnen",
+      "contact": "Contact",
+      "privacy": "Privacy"
+    },
+    "languages": {
+      "title": "Talen"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Gemaakt met ❤️ en adrenaline",
+      "version": "Versie {{version}}"
+    }
+  }
+}

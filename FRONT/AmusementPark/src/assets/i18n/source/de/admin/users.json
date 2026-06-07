@@ -1,0 +1,46 @@
+{
+  "admin": {
+    "users": {
+      "total": "Gesamtzahl der Benutzer: {{count}}",
+      "empty": "Keine Benutzer gefunden.",
+      "columns": {
+        "email": "E-Mail",
+        "firstName": "Vorname",
+        "lastName": "Nachname",
+        "roles": "Rollen",
+        "status": "Status",
+        "actions": "Aktionen"
+      },
+      "manage": "Benutzer verwalten",
+      "profileTitle": "Benutzerverwaltung",
+      "backToList": "Zurück zur Benutzerliste",
+      "newEmail": "Neue E-Mail",
+      "status": {
+        "blocked": "Gesperrt",
+        "active": "Aktiv"
+      },
+      "rolesTitle": "Rollenverwaltung",
+      "roleAssigned": "Derzeit zugewiesen",
+      "roleNotAssigned": "Nicht zugewiesen",
+      "addRole": "Zuweisen",
+      "removeRole": "Entfernen",
+      "securityTitle": "Sicherheit",
+      "blockingTitle": "Kontosperrung",
+      "blockedDescription": "Dieses Konto ist derzeit gesperrt.",
+      "activeDescription": "Dieses Konto ist aktiv.",
+      "block": "Sperren",
+      "unlock": "Entsperren",
+      "password": "Neues Passwort",
+      "passwordConfirm": "Passwort bestätigen",
+      "changePassword": "Passwort ändern",
+      "title": "Benutzer",
+      "blockTitle": "Konto sperren",
+      "newPassword": "Neues Passwort",
+      "confirmPassword": "Passwort bestätigen",
+      "subtitle": "Konten, Rollen und Zugriffsstatus verwalten.",
+      "loadError": "Benutzer konnten nicht geladen werden.",
+      "blockAction": "Konto sperren",
+      "unblockAction": "Konto entsperren"
+    }
+  }
+}

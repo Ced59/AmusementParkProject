@@ -1,0 +1,8 @@
+{
+  "notFound": {
+    "title": "Questa pagina ha preso la direzione sbagliata",
+    "description": "La pagina richiesta non esiste, è stata spostata o non è disponibile pubblicamente.",
+    "homeCta": "Torna alla home",
+    "parksCta": "Esplora i parchi"
+  }
+}

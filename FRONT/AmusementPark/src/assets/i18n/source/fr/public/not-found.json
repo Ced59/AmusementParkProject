@@ -1,0 +1,8 @@
+{
+  "notFound": {
+    "title": "Cette page a pris le mauvais virage",
+    "description": "La page demandée n’existe pas, a changé d’adresse ou n’est pas disponible publiquement.",
+    "homeCta": "Retour à l’accueil",
+    "parksCta": "Explorer les parcs"
+  }
+}

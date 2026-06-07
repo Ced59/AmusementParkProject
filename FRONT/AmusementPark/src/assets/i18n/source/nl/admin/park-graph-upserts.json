@@ -1,0 +1,54 @@
+{
+  "admin": {
+    "parkGraphUpserts": {
+      "navTitle": "Park JSON-upsert",
+      "title": "Park JSON-upsert",
+      "kicker": "Gestructureerde import · Admin",
+      "subtitle": "Plak een volledige of gedeeltelijke park-JSON, bekijk de wijzigingen en pas ze toe zonder ontbrekende velden te overschrijven.",
+      "target": {
+        "title": "Doelpark",
+        "description": "Selecteer voor updates altijd het bestaande park zodat de echte technische id wordt gebruikt.",
+        "searchPlaceholder": "Zoek een park op naam, stad of land…",
+        "selected": "Geselecteerd park"
+      },
+      "options": {
+        "createIfMissing": "Aanmaken toestaan als geen park geselecteerd is",
+        "replaceCollections": "Vervangmodus voor ontbrekende collecties (alleen gecontroleerde imports)"
+      },
+      "editor": {
+        "title": "JSON-document",
+        "description": "Ontbrekende eigenschappen blijven behouden. Zones/items-lijsten upserten alleen aanwezige elementen."
+      },
+      "actions": {
+        "search": "Zoeken",
+        "searching": "Zoeken…",
+        "clear": "Wissen",
+        "preview": "Voorbeeld",
+        "previewing": "Voorbeeld…",
+        "apply": "Toepassen",
+        "applying": "Toepassen…"
+      },
+      "errors": {
+        "noParkSelected": "Selecteer een bestaand park of schakel expliciet aanmaken in.",
+        "invalidJson": "De JSON is ongeldig.",
+        "searchTooShort": "Voer minstens 2 tekens in.",
+        "searchFailed": "Park zoeken mislukt.",
+        "previewFailed": "Voorbeeld mislukt.",
+        "applyFailed": "Toepassen mislukt."
+      },
+      "result": {
+        "title": "Voorbeeld",
+        "noTarget": "Geen doelpark",
+        "created": "Aangemaakt",
+        "updated": "Gewijzigd",
+        "warnings": "Waarschuwingen",
+        "errors": "Fouten",
+        "applied": "Upsert succesvol toegepast.",
+        "field": "Veld",
+        "oldValue": "Oud",
+        "newValue": "Nieuw",
+        "noFieldChange": "Geen veld gewijzigd."
+      }
+    }
+  }
+}

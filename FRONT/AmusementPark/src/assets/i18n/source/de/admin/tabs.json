@@ -1,0 +1,14 @@
+{
+  "admin": {
+    "tabs": {
+      "users": "Benutzer",
+      "parks": "Parks",
+      "images": "Bilder",
+      "site": "Seite",
+      "operators": "Betreiber",
+      "manufacturers": "Hersteller",
+      "parkItems": "Elemente",
+      "data": "Daten"
+    }
+  }
+}

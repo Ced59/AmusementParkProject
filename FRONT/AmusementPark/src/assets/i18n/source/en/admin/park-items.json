@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "parkItems": {
+      "title": "Park items",
+      "subtitle": "Cross-park view of every park item for faster editing.",
+      "searchPlaceholder": "Search a park, item or type",
+      "parkFilter": "Filter by park",
+      "empty": "No items found.",
+      "columns": {
+        "park": "Park",
+        "item": "Item",
+        "type": "Type",
+        "visibility": "Visibility",
+        "actions": "Actions",
+        "category": "Category",
+        "reviewStatus": "Admin status"
+      },
+      "allParks": "All parks",
+      "total": "{{count}} item(s)"
+    }
+  }
+}

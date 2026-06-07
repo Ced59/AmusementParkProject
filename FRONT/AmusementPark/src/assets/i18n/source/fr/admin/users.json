@@ -1,0 +1,46 @@
+{
+  "admin": {
+    "users": {
+      "total": "Nombre total d'utilisateurs : {{count}}",
+      "empty": "Aucun utilisateur trouvé.",
+      "columns": {
+        "email": "Email",
+        "firstName": "Prénom",
+        "lastName": "Nom",
+        "roles": "Rôles",
+        "status": "Statut",
+        "actions": "Actions"
+      },
+      "manage": "Gérer l'utilisateur",
+      "profileTitle": "Gestion de l'utilisateur",
+      "backToList": "Retour à la liste des utilisateurs",
+      "newEmail": "Nouvel email",
+      "status": {
+        "blocked": "Bloqué",
+        "active": "Actif"
+      },
+      "rolesTitle": "Gestion des rôles",
+      "roleAssigned": "Actuellement assigné",
+      "roleNotAssigned": "Non assigné",
+      "addRole": "Assigner",
+      "removeRole": "Retirer",
+      "securityTitle": "Sécurité",
+      "blockingTitle": "Blocage du compte",
+      "blockedDescription": "Ce compte est actuellement bloqué. L'utilisateur ne peut pas se connecter.",
+      "activeDescription": "Ce compte est actif. L'utilisateur peut se connecter normalement.",
+      "block": "Bloquer",
+      "unlock": "Débloquer",
+      "password": "Nouveau mot de passe",
+      "passwordConfirm": "Confirmer le mot de passe",
+      "changePassword": "Changer le mot de passe",
+      "title": "Utilisateurs",
+      "blockTitle": "Blocage du compte",
+      "newPassword": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "subtitle": "Gestion des comptes, rôles et états d’accès.",
+      "loadError": "Impossible de charger les utilisateurs.",
+      "blockAction": "Bloquer le compte",
+      "unblockAction": "Débloquer le compte"
+    }
+  }
+}

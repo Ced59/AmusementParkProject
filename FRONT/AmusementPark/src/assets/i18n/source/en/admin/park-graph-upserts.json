@@ -1,0 +1,54 @@
+{
+  "admin": {
+    "parkGraphUpserts": {
+      "navTitle": "Park JSON upsert",
+      "title": "Park JSON upsert",
+      "kicker": "Structured import · Admin",
+      "subtitle": "Paste a full or partial park JSON, preview the changes, then apply them without overwriting absent fields.",
+      "target": {
+        "title": "Target park",
+        "description": "For updates, always select the existing park so the real technical id is used.",
+        "searchPlaceholder": "Search a park by name, city or country…",
+        "selected": "Selected park"
+      },
+      "options": {
+        "createIfMissing": "Allow creation when no park is selected",
+        "replaceCollections": "Replace mode for missing collections (reserved for controlled imports)"
+      },
+      "editor": {
+        "title": "JSON document",
+        "description": "Absent properties are preserved. Zones/items arrays upsert only the elements they contain."
+      },
+      "actions": {
+        "search": "Search",
+        "searching": "Searching…",
+        "clear": "Clear",
+        "preview": "Preview",
+        "previewing": "Previewing…",
+        "apply": "Apply",
+        "applying": "Applying…"
+      },
+      "errors": {
+        "noParkSelected": "Select an existing park or enable explicit creation.",
+        "invalidJson": "The JSON is invalid.",
+        "searchTooShort": "Enter at least 2 characters.",
+        "searchFailed": "Park search failed.",
+        "previewFailed": "Preview failed.",
+        "applyFailed": "Apply failed."
+      },
+      "result": {
+        "title": "Preview",
+        "noTarget": "No target park",
+        "created": "Created",
+        "updated": "Updated",
+        "warnings": "Warnings",
+        "errors": "Errors",
+        "applied": "Upsert applied successfully.",
+        "field": "Field",
+        "oldValue": "Old",
+        "newValue": "New",
+        "noFieldChange": "No field changed."
+      }
+    }
+  }
+}

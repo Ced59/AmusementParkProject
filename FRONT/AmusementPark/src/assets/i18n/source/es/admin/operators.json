@@ -1,0 +1,23 @@
+{
+  "admin": {
+    "operators": {
+      "total": "Operadores: {{count}}",
+      "searchPlaceholder": "Buscar un operador",
+      "create": "Crear un operador",
+      "name": "Nombre",
+      "actions": "Acciones",
+      "edit": "Editar",
+      "empty": "No se ha encontrado ningún operador.",
+      "editPage": {
+        "createTitle": "Crear un operador",
+        "updateTitle": "Editar el operador",
+        "name": "Nombre",
+        "description": "Descripción"
+      },
+      "title": "Operadores",
+      "subtitle": "Referencial de operadores usado por las fichas de parques.",
+      "reviewStatus": "Estado admin",
+      "loadError": "No se pudieron cargar los operadores."
+    }
+  }
+}

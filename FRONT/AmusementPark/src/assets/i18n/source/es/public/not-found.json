@@ -1,0 +1,8 @@
+{
+  "notFound": {
+    "title": "Esta página tomó el camino equivocado",
+    "description": "La página solicitada no existe, se movió o no está disponible públicamente.",
+    "homeCta": "Volver al inicio",
+    "parksCta": "Explorar parques"
+  }
+}

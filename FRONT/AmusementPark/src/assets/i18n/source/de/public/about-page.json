@@ -1,0 +1,42 @@
+{
+  "aboutPage": {
+    "kicker": "Projektvision",
+    "title": "Parks klarer entdecken",
+    "lead": "AmusementPark kartiert Parks, Attraktionen und praktische Infos mit stabiler Architektur für Vergleichs- und Distanzfunktionen.",
+    "primaryCta": "Parks entdecken",
+    "secondaryCta": "Zur Startseite",
+    "stats": {
+      "parksLabel": "Potenzielle Parks",
+      "parksHint": "Auf Geschwindigkeit in großem Maßstab ausgelegt",
+      "mapLabel": "Designziel",
+      "mapHint": "Öffentliche Nutzung bereit zum Wachsen"
+    },
+    "mission": {
+      "kicker": "Mission",
+      "title": "Den richtigen Park schneller finden",
+      "subtitle": "Das Produkt startet mit einem soliden Portfolio und wächst zu reicheren Entdeckungs- und Entscheidungstools."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Entdecken",
+        "title": "Zuverlässige Parkseiten",
+        "text": "Jede Parkseite bündelt Standort, Elemente, Fotos, nahe Parks und nützliche Referenzen."
+      },
+      "explore": {
+        "badge": "Erkunden",
+        "title": "Kartenorientierter Ansatz",
+        "text": "Suche, Karteninteraktionen und Distanzen sind wiederverwendbare Grundlagen."
+      },
+      "enjoy": {
+        "badge": "Erleben",
+        "title": "Kohärente visuelle Identität",
+        "text": "Öffentliche, Auth- und Profilseiten teilen Tokens, Flächen und Komponenten."
+      }
+    },
+    "clean": {
+      "kicker": "Engineering",
+      "title": "Für schrittweise Weiterentwicklung gebaut",
+      "text": "Das Projekt ist darauf ausgelegt, Karten, Vergleiche und Reiseplanung hinzuzufügen, ohne das Besuchererlebnis zu stören."
+    }
+  }
+}

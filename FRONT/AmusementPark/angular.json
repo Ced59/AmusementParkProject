@@ -32,7 +32,14 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets",
+                "ignore": [
+                  "i18n/source/**"
+                ]
+              }
             ],
             "styles": [
               "src/styles.scss",
@@ -142,7 +149,14 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets",
+                "ignore": [
+                  "i18n/source/**"
+                ]
+              }
             ],
             "styles": [
               "node_modules/leaflet/dist/leaflet.css",

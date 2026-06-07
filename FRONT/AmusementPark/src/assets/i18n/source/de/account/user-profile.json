@@ -1,0 +1,40 @@
+{
+  "user-profile": {
+    "title": "Benutzerprofil",
+    "name": "Nachname",
+    "firstname": "Vorname",
+    "email": "E-Mail",
+    "preferred_language": "Bevorzugte Sprache",
+    "modify": "Bearbeiten",
+    "avatar": {
+      "title": "Avatar ändern",
+      "choose": "Avatar auswählen",
+      "upload": "Avatar hochladen",
+      "cancel": "Abbrechen",
+      "dragAndDrop": "Ziehe deinen Avatar hierher oder klicke, um ein Bild auszuwählen.",
+      "selectedFile": "Ausgewählte Datei",
+      "invalidFile": "Bitte wähle eine gültige Bilddatei aus.",
+      "invalidSize": "Der ausgewählte Avatar ist zu groß.",
+      "noImageSelected": "Bitte wähle vor dem Hochladen einen Avatar aus.",
+      "uploading": "Avatar wird hochgeladen...",
+      "updateSuccess": "Avatar erfolgreich aktualisiert."
+    },
+    "identity": "Identität",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "saving": "Wird gespeichert...",
+    "loadingTitle": "Profil wird geladen",
+    "loadingMessage": "Das Benutzerprofil wird geladen.",
+    "errorTitle": "Profil kann nicht geladen werden",
+    "errorMessage": "Das Profil konnte nicht geladen werden.",
+    "back": "Zurück",
+    "logout": "Abmelden",
+    "accountBadge": "Konto",
+    "subtitle": "Aktualisiere öffentliche Identität, Avatar und bevorzugte Sprache.",
+    "detailsKicker": "Einstellungen",
+    "detailsSubtitle": "Halte deine Daten für künftige personalisierte Funktionen bereit.",
+    "identityRequired": "Vorname und Nachname sind erforderlich.",
+    "updateSuccess": "Profil erfolgreich aktualisiert.",
+    "updateError": "Profilaktualisierung fehlgeschlagen."
+  }
+}

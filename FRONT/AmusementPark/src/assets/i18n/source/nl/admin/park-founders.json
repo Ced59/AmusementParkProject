@@ -1,0 +1,22 @@
+{
+  "admin": {
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Oprichter aanmaken",
+        "updateTitle": "Oprichter bewerken",
+        "name": "Naam",
+        "biography": "Biografie"
+      },
+      "title": "Oprichters",
+      "subtitle": "Referentielijst van oprichters die door parkfiches worden gebruikt.",
+      "total": "Oprichters: {{count}}",
+      "searchPlaceholder": "Zoek een oprichter",
+      "create": "Oprichter maken",
+      "name": "Naam",
+      "lifeDates": "Datums",
+      "actions": "Acties",
+      "empty": "Geen oprichter gevonden.",
+      "loadError": "Kan oprichters niet laden."
+    }
+  }
+}

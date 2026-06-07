@@ -1,0 +1,254 @@
+{
+  "parks": {
+    "heroBadge": "Public catalog",
+    "title": "Parks",
+    "subtitle": "Browse the parks already managed in the administration area and explore their public details.",
+    "loadingTitle": "A carregar parques",
+    "loadingMessage": "The parques list is being loaded.",
+    "errorTitle": "Não foi possível carregar parques",
+    "errorMessage": "The parques list não foi possível carregar.",
+    "emptyTitle": "Nenhum parque available",
+    "emptyMessage": "Nenhum parque is available for display.",
+    "search": {
+      "label": "Pesquisar",
+      "placeholder": "Search a park by name",
+      "clear": "Limpar"
+    },
+    "fields": {
+      "country": "País",
+      "city": "Cidade",
+      "address": "Morada",
+      "website": "Site",
+      "coordinates": "Coordenadas",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "distance": "Distância",
+      "estimatedTravelDuration": "Viagem estimada"
+    },
+    "actions": {
+      "viewDetails": "Ver detalhes",
+      "website": "Site",
+      "backToList": "Voltar à lista"
+    },
+    "detail": {
+      "heroBadge": "Visão geral do parque",
+      "heroDescription": "Descobre as informações práticas atualmente disponíveis para este parque.",
+      "loadingTitle": "A carregar parque",
+      "loadingMessage": "The parque page is being loaded.",
+      "errorTitle": "Não foi possível carregar the parque",
+      "errorMessage": "The requested parque não foi possível carregar.",
+      "practical": {
+        "title": "Informações práticas",
+        "subtitle": "As informações essenciais para visitantes atualmente disponíveis para este parque.",
+        "postalCode": "Código postal",
+        "street": "Rua",
+        "openReference": "Abrir a ficha de {{name}}"
+      },
+      "location": {
+        "title": "Localização",
+        "subtitle": "Encontra o parque no mapa e consulta as suas coordenadas."
+      },
+      "nearby": {
+        "title": "Nearby parques",
+        "subtitle": "Continua a descoberta com parques situados perto deste destino.",
+        "loadingTitle": "A carregar nearby parques",
+        "loadingMessage": "Nearby parques are being loaded.",
+        "errorTitle": "Não foi possível carregar nearby parques",
+        "errorMessage": "Nearby parques não foi possível carregar.",
+        "emptyTitle": "Nenhum nearby parque",
+        "emptyMessage": "Não foi encontrado nenhum parque próximo deste destino.",
+        "closestTitle": "Parque mais próximo",
+        "distanceNote": "Distância ortodrómica calculada a partir das coordenadas do parque."
+      },
+      "description": {
+        "badge": "Visão geral",
+        "title": "Sobre este parque",
+        "empty": "Ainda não há uma descrição enriquecida disponível para este parque."
+      },
+      "identity": {
+        "title": "Identidade do parque",
+        "subtitle": "Dados estruturais atualmente disponíveis no modelo do parque.",
+        "type": "Tipo",
+        "founder": "Fundador",
+        "operator": "Operador",
+        "reference": "Referência"
+      },
+      "publication": {
+        "title": "Publicação",
+        "subtitle": "Visibilidade e destaque na página inicial vindos do modelo do parque.",
+        "visible": "Visível",
+        "featured": "Em destaque",
+        "sponsored": "Patrocinado",
+        "featuredOrder": "Ordem na home",
+        "logo": "Logo",
+        "logoAvailable": "Logo atual definido"
+      },
+      "zones": {
+        "badge": "Zonas do parque",
+        "title": "Zonas e lands",
+        "subtitle": "Encontre rapidamente as atrações e locais associados a cada zona do parque.",
+        "visible": "Visível",
+        "hidden": "Oculta",
+        "open": "Ver itens da zona",
+        "noDescription": "Ainda não há descrição disponível para esta zona.",
+        "slug": "Slug",
+        "sortOrder": "Ordem",
+        "sortOrderShort": "Ordem {{order}}"
+      },
+      "stats": {
+        "zones": "Zonas"
+      },
+      "itemsMap": {
+        "badge": "Mapa de elementos",
+        "title": "Mapa dos elementos do parque",
+        "subtitle": "Encontra os elementos geolocalizados deste parque e filtra o mapa por zona ou categoria.",
+        "categoriesTitle": "Categorias",
+        "emptyTitle": "Nenhum elemento geolocalizado",
+        "emptyMessage": "Nenhum elemento geolocalizado corresponde atualmente aos filtros selecionados."
+      },
+      "comingSoon": {
+        "badge": "Em breve",
+        "message": "Esta secção será ligada a uma fonte fiável numa próxima etapa."
+      },
+      "weather": {
+        "title": "Meteorologia de 5 dias",
+        "subtitle": "Previsão resumida prevista para preparar a visita."
+      },
+      "hours": {
+        "title": "Horários",
+        "subtitle": "Horários de abertura e períodos especiais serão adicionados mais tarde."
+      },
+      "prices": {
+        "title": "Preços",
+        "subtitle": "Bilhetes, passes e informações de preços serão adicionados mais tarde."
+      }
+    },
+    "titlePrefix": "Todos os",
+    "titleAccent": "parques",
+    "stats": {
+      "visibleParks": "Parques visíveis",
+      "countries": "Países"
+    },
+    "map": {
+      "badge": "Mapa interativo",
+      "title": "Mapa dos parques visíveis",
+      "subtitle": "O mapa acompanha a pesquisa atual. Clica num marcador ou num cartão de resultado para sincronizar toda a página.",
+      "visiblePins": "{{count}} pins visíveis",
+      "quickMarkers": "Marcadores rápidos",
+      "selected": "Parque selecionado",
+      "loadingTitle": "A carregar o mapa",
+      "loadingMessage": "Os parques visíveis estão a ser colocados no mapa.",
+      "errorTitle": "Mapa indisponível",
+      "errorMessage": "Não foi possível carregar os pontos do mapa.",
+      "emptyTitle": "Nenhum ponto disponível",
+      "emptyMessage": "Nenhum parque visível com coordenadas corresponde a esta pesquisa.",
+      "navigate": "Ir para lá",
+      "openDetail": "Abrir ficha",
+      "regionFilters": {
+        "all": "Todos",
+        "europe": "Europa",
+        "northAmerica": "América Norte",
+        "southAmerica": "América Sul",
+        "orient": "Oriente",
+        "africa": "África"
+      },
+      "regionFilterAriaLabel": "Filtrar parques por continente"
+    },
+    "results": {
+      "badge": "Resultados",
+      "title": "Lista de parques",
+      "count": "{{count}} resultados",
+      "focusOnMap": "Selecionar {{name}} no mapa",
+      "selectedOnly": "Selecionado: {{name}}",
+      "clearSelection": "Mostrar todos os resultados"
+    },
+    "reference": {
+      "loadingTitle": "A carregar ficha",
+      "loadingMessage": "A ficha pública está a carregar.",
+      "errorTitle": "Não foi possível carregar a ficha",
+      "errorMessage": "Não foi possível carregar a ficha pedida.",
+      "backToParks": "Voltar aos parques",
+      "operator": {
+        "badge": "Operador do parque",
+        "title": "Operador",
+        "descriptionTitle": "Operator perfil",
+        "emptyDescription": "Ainda não há uma descrição detalhada para este operador."
+      },
+      "founder": {
+        "badge": "Fundador do parque",
+        "title": "Fundador",
+        "descriptionTitle": "Biografia",
+        "emptyDescription": "Ainda não há uma biografia detalhada para este fundador."
+      },
+      "manufacturer": {
+        "badge": "Fabricante de atrações",
+        "title": "Fabricante",
+        "descriptionTitle": "Manufacturer perfil",
+        "emptyDescription": "Ainda não há um perfil detalhado para este fabricante.",
+        "attractionsKicker": "Atrações construídas",
+        "attractionsTitle": "Atrações associadas a este fabricante",
+        "attractionsSubtitle": "Atrações visíveis do site associadas a este fabricante.",
+        "emptyAttractions": "Ainda não há nenhuma atração visível associada a este fabricante."
+      },
+      "facts": {
+        "title": "Informações-chave",
+        "legalName": "Nome legal",
+        "foundedYear": "Fundado",
+        "closedYear": "Encerrado",
+        "website": "Site",
+        "email": "Email",
+        "phone": "Telefone",
+        "address": "Morada",
+        "country": "País",
+        "coordinates": "Coordenadas",
+        "occupation": "Função",
+        "birthDate": "Nascimento",
+        "deathDate": "Falecimento",
+        "birthPlace": "Local de nascimento",
+        "nationality": "Nacionalidade"
+      },
+      "photos": {
+        "kicker": "Galeria",
+        "title": "Related imagems",
+        "subtitle": "Imagens publicadas que enriquecem este perfil.",
+        "founder": "Fundador",
+        "operator": "Operador",
+        "manufacturer": "Fabricante"
+      }
+    },
+    "photos": {
+      "kicker": "Fotos",
+      "title": "Fotos",
+      "subtitle": "Fotos gerais do parque e imagens dos elementos, filtráveis por tipo.",
+      "current": "Atual",
+      "openItem": "Abrir a ficha de {{name}}",
+      "categories": {
+        "gallery": "Parque · Galeria",
+        "entrance": "Entrada do parque",
+        "overview": "Visão geral",
+        "map": "Mapa / planta",
+        "atmosphere": "Ambiente",
+        "event": "Eventos",
+        "food": "Comida",
+        "services": "Serviços",
+        "halloween": "Halloween",
+        "christmas": "Natal",
+        "easter": "Páscoa"
+      },
+      "controls": {
+        "category": "Categoria da foto",
+        "allCategories": "Todos",
+        "displayCount": "Contagem apresentada",
+        "count": "{{count}}",
+        "all": "Todos",
+        "previous": "Foto anterior",
+        "next": "Foto seguinte",
+        "openFullscreen": "Ampliar",
+        "closeFullscreen": "Fechar ecrã inteiro"
+      },
+      "lightbox": {
+        "title": "Foto em ecrã inteiro"
+      }
+    }
+  }
+}

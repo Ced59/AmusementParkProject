@@ -1,0 +1,67 @@
+{
+  "admin": {
+    "localizedContent": {
+      "navTitle": "Imports JSON",
+      "kicker": "Import JSON",
+      "title": "Importer un JSON d’entité",
+      "subtitle": "Choisis une entité existante, puis applique un JSON partiel ou complet sur les champs supportés.",
+      "selection": {
+        "title": "1. Choisir la cible",
+        "description": "Le choix se fait depuis une recherche lisible pour éviter de modifier une entité uniquement à partir d’un identifiant technique.",
+        "entityType": "Type d’entité",
+        "search": "Recherche",
+        "searchPlaceholder": "Nom du parc, attraction, zone, constructeur…",
+        "searchButton": "Rechercher",
+        "searching": "Recherche…",
+        "empty": "Lance une recherche pour afficher les cibles disponibles."
+      },
+      "editor": {
+        "title": "2. Coller le JSON",
+        "description": "Le JSON est validé côté API puis appliqué dans la base via la couche Application.",
+        "resetExample": "Remettre l’exemple",
+        "selected": "Cible sélectionnée",
+        "noTarget": "Aucune cible sélectionnée.",
+        "jsonLabel": "JSON localisé",
+        "apply": "Appliquer le JSON",
+        "applying": "Application…"
+      },
+      "help": {
+        "title": "Format accepté",
+        "merge": "Par défaut, les langues fournies sont fusionnées avec les valeurs existantes : les autres langues sont conservées.",
+        "replace": "Ajoute \"replaceExisting\": true ou \"mode\": \"replace\" pour remplacer entièrement le champ localisé.",
+        "fields": "Champs supportés : descriptions, names, description, biography, altTexts, captions, credits, labels selon le type choisi.",
+        "accessConditions": "Pour un élément de parc de type attraction, accessConditions peut créer ou mettre à jour des conditions : type, customTypeKey implicite pour un type inconnu, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label et description."
+      },
+      "messages": {
+        "searchError": "Impossible de charger les cibles localisables.",
+        "selectTargetFirst": "Sélectionne d’abord une cible.",
+        "invalidJson": "Le JSON saisi est invalide.",
+        "applySuccess": "JSON localisé appliqué avec succès.",
+        "applyNoField": "Aucun champ localisé n’a été mis à jour.",
+        "applyError": "Impossible d’appliquer le JSON localisé."
+      },
+      "entityTypes": {
+        "park": "Parc",
+        "parkZone": "Zone de parc",
+        "parkItem": "Élément de parc",
+        "parkOperator": "Exploitant",
+        "parkFounder": "Fondateur",
+        "attractionManufacturer": "Constructeur",
+        "image": "Image",
+        "imageTag": "Tag d’image",
+        "accessConditionType": "Type de condition d’accès"
+      },
+      "entityHints": {
+        "park": "Description localisée du parc.",
+        "parkZone": "Nom et description localisés de la zone.",
+        "parkItem": "Description localisée de l’élément, avec conditions d’accès si attraction.",
+        "parkOperator": "Description localisée de l’exploitant.",
+        "parkFounder": "Biographie localisée du fondateur.",
+        "attractionManufacturer": "Biographie localisée du constructeur.",
+        "image": "Textes alternatifs, légendes et crédits localisés.",
+        "imageTag": "Libellés et descriptions localisés du tag.",
+        "accessConditionType": "Catalogue réutilisable des types de conditions d’accès."
+      }
+    }
+  }
+}

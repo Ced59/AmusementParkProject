@@ -1,0 +1,42 @@
+{
+  "aboutPage": {
+    "kicker": "Project vision",
+    "title": "A cleaner way to explore amusement parks",
+    "lead": "AmusementPark maps parks, attractions and practical information with a stable architecture ready for future comparison and distance features.",
+    "primaryCta": "Explore parks",
+    "secondaryCta": "Back home",
+    "stats": {
+      "parksLabel": "Potential parks",
+      "parksHint": "Built to remain fast at scale",
+      "mapLabel": "Design target",
+      "mapHint": "Public journey ready to grow"
+    },
+    "mission": {
+      "kicker": "Mission",
+      "title": "Find the right park faster",
+      "subtitle": "The product starts with a solid portfolio, then grows toward richer discovery and decision tools."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Discover",
+        "title": "Reliable park pages",
+        "text": "Each park page centralizes location, items, photos, nearby parks and useful references."
+      },
+      "explore": {
+        "badge": "Explore",
+        "title": "A map-first mindset",
+        "text": "Search, map interactions and nearby distances are designed as reusable foundations."
+      },
+      "enjoy": {
+        "badge": "Enjoy",
+        "title": "A coherent visual identity",
+        "text": "Public, auth and profile pages now share the same tokens, surfaces and components."
+      }
+    },
+    "clean": {
+      "kicker": "Engineering",
+      "title": "Built to evolve step by step",
+      "text": "The project is designed to add maps, comparisons and trip planning without disrupting the visitor experience."
+    }
+  }
+}

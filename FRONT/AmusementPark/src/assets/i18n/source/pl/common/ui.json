@@ -1,0 +1,33 @@
+{
+  "ui": {
+    "photoCarousel": {
+      "kicker": "Zdjęcia",
+      "title": "Zdjęcia",
+      "subtitle": "Filtruj zdjęcia według kategorii, aby karta pozostała czytelna.",
+      "current": "Aktualne",
+      "categories": {
+        "gallery": "Galeria",
+        "entrance": "Wejście",
+        "exit": "Wyjście",
+        "layout": "Układ",
+        "queue": "Kolejka",
+        "station": "Stacja"
+      },
+      "controls": {
+        "category": "Kategoria zdjęcia",
+        "allCategories": "Wszystkie",
+        "displayCount": "Pokazane",
+        "count": "{{count}}",
+        "all": "Wszystkie",
+        "previous": "Poprzednie zdjęcie",
+        "next": "Następne zdjęcie",
+        "openFullscreen": "Otwórz pełny ekran",
+        "closeFullscreen": "Zamknij pełny ekran",
+        "openSource": "Otwórz {{name}}"
+      },
+      "lightbox": {
+        "title": "Zdjęcie pełnoekranowe"
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "admin": {
+    "parkGraphUpserts": {
+      "navTitle": "Upsert JSON parco",
+      "title": "Upsert JSON del parco",
+      "kicker": "Import strutturato · Admin",
+      "subtitle": "Incolla un JSON completo o parziale del parco, visualizza le modifiche e applicale senza sovrascrivere i campi assenti.",
+      "target": {
+        "title": "Parco di destinazione",
+        "description": "Per aggiornare, seleziona sempre il parco esistente per usare il suo id reale.",
+        "searchPlaceholder": "Cerca un parco per nome, città o paese…",
+        "selected": "Parco selezionato"
+      },
+      "options": {
+        "createIfMissing": "Consenti creazione se nessun parco è selezionato",
+        "replaceCollections": "Modalità sostituzione raccolte mancanti (solo import controllati)"
+      },
+      "editor": {
+        "title": "Documento JSON",
+        "description": "Le proprietà assenti sono conservate. Gli array zone/items eseguono upsert solo sugli elementi presenti."
+      },
+      "actions": {
+        "search": "Cerca",
+        "searching": "Ricerca…",
+        "clear": "Rimuovi",
+        "preview": "Anteprima",
+        "previewing": "Anteprima…",
+        "apply": "Applica",
+        "applying": "Applicazione…"
+      },
+      "errors": {
+        "noParkSelected": "Seleziona un parco esistente o abilita la creazione esplicita.",
+        "invalidJson": "Il JSON non è valido.",
+        "searchTooShort": "Inserisci almeno 2 caratteri.",
+        "searchFailed": "Ricerca parco non riuscita.",
+        "previewFailed": "Anteprima non riuscita.",
+        "applyFailed": "Applicazione non riuscita."
+      },
+      "result": {
+        "title": "Anteprima",
+        "noTarget": "Nessun parco target",
+        "created": "Creati",
+        "updated": "Modificati",
+        "warnings": "Avvisi",
+        "errors": "Errori",
+        "applied": "Upsert applicato correttamente.",
+        "field": "Campo",
+        "oldValue": "Vecchio",
+        "newValue": "Nuovo",
+        "noFieldChange": "Nessun campo modificato."
+      }
+    }
+  }
+}

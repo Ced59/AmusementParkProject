@@ -1,0 +1,18 @@
+{
+  "shared": {
+    "imageUpload": {
+      "title": "Uploaden an afbeelding",
+      "choose": "Choose an afbeelding",
+      "upload": "Uploaden",
+      "cancel": "Annuleren",
+      "dragAndDrop": "Sleep hier een afbeelding heen of klik om er een te kiezen.",
+      "selectedFile": "Geselecteerd bestand",
+      "invalidFile": "Selecteer een geldig afbeeldingsbestand.",
+      "invalidSize": "The geselecteerd afbeelding is too large.",
+      "noImageSelected": "Please select an afbeelding before uploading.",
+      "uploading": "Uploadening...",
+      "uploadError": "Er is een fout opgetreden bij het uploaden van de afbeelding.",
+      "descriptionPlaceholder": "Beschrijving"
+    }
+  }
+}

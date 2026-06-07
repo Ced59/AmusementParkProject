@@ -1,0 +1,20 @@
+{
+  "admin": {
+    "filters": {
+      "search": "Szukaj",
+      "applySearch": "Zastosuj",
+      "visibility": "Widoczność",
+      "visibilityAll": "Wszystkie widoczności",
+      "visibleOnly": "Tylko widoczne",
+      "hiddenOnly": "Tylko ukryte",
+      "reviewStatus": "Obsługa",
+      "statusAll": "Wszystkie statusy",
+      "type": "Typ",
+      "typeAll": "Wszystkie typy",
+      "category": "Kategoria",
+      "categoryAll": "Wszystkie kategorie",
+      "countryCode": "Kraj",
+      "countryCodePlaceholder": "FR"
+    }
+  }
+}

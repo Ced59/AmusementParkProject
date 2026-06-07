@@ -1,0 +1,20 @@
+{
+  "admin": {
+    "filters": {
+      "search": "Zoeken",
+      "applySearch": "Toepassen",
+      "visibility": "Zichtbaarheid",
+      "visibilityAll": "Alle zichtbaarheden",
+      "visibleOnly": "Alleen zichtbaar",
+      "hiddenOnly": "Alleen verborgen",
+      "reviewStatus": "Verwerking",
+      "statusAll": "Alle statussen",
+      "type": "Type",
+      "typeAll": "Alle types",
+      "category": "Categorie",
+      "categoryAll": "Alle categorieën",
+      "countryCode": "Land",
+      "countryCodePlaceholder": "FR"
+    }
+  }
+}

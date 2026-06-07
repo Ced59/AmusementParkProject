@@ -1,0 +1,18 @@
+{
+  "shared": {
+    "imageUpload": {
+      "title": "Carregar an imagem",
+      "choose": "Choose an imagem",
+      "upload": "Carregar",
+      "cancel": "Cancelar",
+      "dragAndDrop": "Arrasta uma imagem para aqui ou clica para escolher uma.",
+      "selectedFile": "Ficheiro selecionado",
+      "invalidFile": "Seleciona um ficheiro de imagem válido.",
+      "invalidSize": "The selecionado imagem is too large.",
+      "noImageSelected": "Please select an imagem before uploading.",
+      "uploading": "Carregaring...",
+      "uploadError": "Ocorreu um erro ao carregar a imagem.",
+      "descriptionPlaceholder": "Descrição"
+    }
+  }
+}

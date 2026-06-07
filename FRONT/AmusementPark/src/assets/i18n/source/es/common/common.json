@@ -1,0 +1,18 @@
+{
+  "common": {
+    "loadingTitle": "Cargando",
+    "loadingMessage": "El contenido se está cargando.",
+    "errorTitle": "Se produjo un error",
+    "errorMessage": "No se pudo cargar el contenido solicitado.",
+    "emptyTitle": "Sinthing to display",
+    "emptyMessage": "Sin content is available at the moment.",
+    "security": {
+      "uploadRejectedSummary": "Archivo rechazado",
+      "invalidImageUploadMessage": "Solo se aceptan imágenes JPEG, PNG, WebP o GIF de menos de 10 MB."
+    },
+    "success": "Éxito",
+    "error": "Error",
+    "warning": "Atención",
+    "unexpectedError": "Se produjo un error inesperado."
+  }
+}

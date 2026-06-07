@@ -1,0 +1,35 @@
+{
+  "admin": {
+    "auditLogs": {
+      "title": "Registo de auditoria",
+      "subtitle": "Vista apenas de leitura das ações administrativas sensíveis.",
+      "total": "{{count}} entradas",
+      "loading": "A carregar registo de auditoria...",
+      "loadError": "Não foi possível carregar o registo de auditoria.",
+      "empty": "Nenhuma entrada corresponde aos filtros.",
+      "filters": {
+        "fromUtc": "Desde",
+        "toUtc": "Até",
+        "actorEmail": "Email do ator",
+        "action": "Ação",
+        "entityType": "Tipo de entidade",
+        "entityId": "ID da entidade",
+        "traceId": "Trace ID",
+        "actorUserId": "ID do ator"
+      },
+      "columns": {
+        "date": "Data",
+        "actor": "Ator",
+        "action": "Ação",
+        "entity": "Entidade",
+        "request": "Pedido",
+        "status": "Estado",
+        "traceId": "Trace ID",
+        "metadata": "Metadados"
+      },
+      "metadata": {
+        "show": "Ver"
+      }
+    }
+  }
+}

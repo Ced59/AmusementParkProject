@@ -1,0 +1,15 @@
+{
+  "actions": {
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "backToPark": "Terug naar het park",
+    "backToList": "Terug",
+    "edit": "Bewerken",
+    "apply": "Toepassen",
+    "clear": "Wissen",
+    "delete": "Verwijderen",
+    "search": "Zoeken",
+    "reset": "Resetten",
+    "refresh": "Vernieuwen"
+  }
+}

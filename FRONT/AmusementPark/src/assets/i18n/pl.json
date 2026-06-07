@@ -1,162 +1,11 @@
 {
-  "home": {
-    "home_title": "Znajdź idealne emocje",
-    "placeholder_search": "Szukaj parku, atrakcji, hotelu…",
-    "placeholder_category": "Typ wyszukiwania",
-    "no_results": "Brak wyników dla",
-    "in_category": "w",
-    "categories": {
-      "park": "Park",
-      "attractions": "Atrakcja",
-      "everywhere": "Wszędzie",
-      "parkItems": "Elementy parku",
-      "operators": "Operator",
-      "manufacturers": "Producent",
-      "attraction": "Atrakcja",
-      "restaurant": "Restauracja",
-      "hotel": "Hotel",
-      "animal": "Zwierzę",
-      "show": "Pokaz",
-      "shop": "Sklep",
-      "service": "Usługa",
-      "transport": "Transport",
-      "other": "Inne",
-      "founders": "Założyciel",
-      "parks": "Park"
-    },
-    "heroBadge": "Mapa wrażeń",
-    "heroSubtitle": "Tysiące atrakcji w setkach parków na całym świecie. Następna dawka adrenaliny jest o jedno kliknięcie stąd.",
-    "ctaBrowseParks": "Odkrywaj parki",
-    "ctaLearnMore": "Jak to działa",
-    "featured": {
-      "title": "Wyróżnione parki",
-      "subtitle": "Nasz wybór najciekawszych parków w tej chwili.",
-      "loadingTitle": "Ładowanie wyróżnionych parków",
-      "loadingMessage": "Wyróżnione parki są ładowane.",
-      "errorTitle": "Nie można wczytać wyróżnionych parków",
-      "errorMessage": "Nie udało się wczytać wyróżnionych parków.",
-      "emptyTitle": "Brak wyróżnionego parku",
-      "emptyMessage": "Nie ma jeszcze parku do wyróżnienia.",
-      "discover": "Odkryj",
-      "manualSelection": "Wybór ręczny",
-      "sponsored": "Sponsorowane"
-    },
-    "search": {
-      "resultsTitle": "Wyniki wyszukiwania",
-      "resultsSubtitle": "Publiczne wyniki pasujące do wyszukiwania, z bezpośrednim dostępem do dostępnych stron szczegółów.",
-      "loadingTitle": "Wyszukiwanie",
-      "loadingMessage": "Wyniki wyszukiwania są ładowane.",
-      "errorTitle": "Wyszukiwanie nie powiodło się",
-      "errorMessage": "Nie udało się wczytać wyników wyszukiwania.",
-      "emptyTitle": "Nie znaleziono wyników",
-      "emptyMessage": "Żadna publiczna treść nie pasuje do wyszukiwania.",
-      "hintTitle": "Rozpocznij wyszukiwanie",
-      "hintMessage": "Wyszukaj park albo przefiltruj katalog według kategorii.",
-      "openResult": "Otwórz",
-      "kicker": "Inteligentne wyszukiwanie",
-      "commandTitle": "Szybciej znajdź odpowiedni park",
-      "commandSubtitle": "Przeglądaj parki, atrakcje i miejsca, filtruj według swoich potrzeb i otwieraj interesujące Cię szczegóły.",
-      "attractionsLabel": "atrakcji"
-    },
-    "experience": {
-      "mapKicker": "Widok mapy",
-      "mapTitle": "Odkrywaj parki wizualnie",
-      "mapText": "Znajduj miejsca na mapie, porównuj pobliskie parki i miej przydatne miejsca pod ręką.",
-      "catalogKicker": "Odkrywanie",
-      "catalogTitle": "Parki i atrakcje w jednym miejscu",
-      "catalogText": "Przechodź od parku do jego atrakcji, zdjęć i przydatnych informacji bez gubienia się."
-    },
-    "heroTitleFind": "Znajdź",
-    "heroTitleYour": "swój",
-    "heroTitleThrill": "dreszcz",
-    "heroTitlePerfect": "idealny",
-    "stats": {
-      "ariaLabel": "Statystyki katalogu publicznego",
-      "parks": "Parki w katalogu",
-      "attractions": "Atrakcje",
-      "countries": "Obsługiwane kraje",
-      "errorMessage": "Nie udało się wczytać statystyk publicznych."
-    },
-    "heroCards": {
-      "ariaLabel": "Podgląd wyróżnionych parków",
-      "featured": "Wybór",
-      "sensations": "Emocje",
-      "family": "Rodzina",
-      "locationFallback": "Miejsce do odkrycia",
-      "placeholderTitle": "Katalog w przygotowaniu",
-      "placeholderSubtitle": "Wyróżnione parki pojawią się tutaj."
-    }
-  },
-  "topbar": {
-    "login_header": "Logowanie / Rejestracja",
-    "hello": "Cześć",
-    "choose_language": "Wybierz swój język:"
-  },
-  "auth": {
-    "login": {
-      "title": "Klasyczne logowanie",
-      "title_email": "E-mail",
-      "mail_placeholder": "Wpisz swój email",
-      "title_password": "Hasło",
-      "password_placeholder": "Wpisz swoje hasło",
-      "btn_text": "Zaloguj się",
-      "forgot_password": "Nie pamiętasz hasła?",
-      "success": "Zalogowano pomyślnie.",
-      "google_unavailable": "Logowanie Google jest chwilowo niedostępne.",
-      "google_success": "Logowanie Google zakończone sukcesem."
-    },
-    "register": {
-      "title": "Klasyczna rejestracja",
-      "title_email": "E-mail",
-      "mail_placeholder": "Wpisz swój email",
-      "title_password": "Hasło",
-      "password_placeholder": "Wpisz swoje hasło",
-      "password_info": "Hasło musi zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą literę i jedną cyfrę.",
-      "password_confirm_placeholder": "Potwierdź hasło",
-      "btn_text": "Zarejestruj się",
-      "errors": {
-        "password_error_summary": "Błąd hasła",
-        "password_error": "Hasło musi zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą literę i jedną cyfrę."
-      },
-      "success_message": "Twoje konto zostało utworzone. Użyj linku potwierdzającego z wiadomości e-mail, aby je aktywować.",
-      "resend_confirmation": "Wyślij link potwierdzający ponownie",
-      "success_badge": "Utworzono",
-      "validation_error": "Formularz rejestracji zawiera błędy.",
-      "created_toast": "Konto utworzone. Sprawdź e-mail, aby je potwierdzić."
-    },
-    "common": {
-      "back_home": "Wróć do strony głównej"
-    },
-    "confirm": {
-      "title": "Potwierdzenie konta",
-      "loading": "Trwa potwierdzanie konta...",
-      "kicker": "Potwierdzenie",
-      "subtitle": "Weryfikujemy link aktywacyjny konta.",
-      "success_badge": "Potwierdzono",
-      "error_badge": "Niepowodzenie"
-    },
-    "forgot_password": {
-      "title": "Nie pamiętasz hasła",
-      "description": "Podaj adres e-mail, aby otrzymać link resetujący.",
-      "submit": "Wyślij link resetujący",
-      "kicker": "Odzyskiwanie",
-      "sent_badge": "Wysłano"
-    },
-    "reset_password": {
-      "title": "Zresetuj hasło",
-      "invalid_link": "Ten link resetujący jest nieprawidłowy.",
-      "submit": "Zresetuj hasło",
-      "kicker": "Bezpieczeństwo",
-      "description": "Wybierz nowe hasło, aby zabezpieczyć konto.",
-      "invalid_badge": "Nieprawidłowy link",
-      "done_badge": "Zaktualizowano"
-    },
-    "modal": {
-      "kicker": "Witaj",
-      "title": "Zaloguj się lub utwórz konto",
-      "subtitle": "Użyj konta, aby przygotować przyszłe spersonalizowane funkcje parków, zachowując prostą obsługę.",
-      "or": "lub"
-    }
+  "accountLayout": {
+    "kicker": "Strefa osobista",
+    "title": "Twój paszport parków",
+    "subtitle": "Zarządzaj profilem, językiem i dostępem w przejrzystej przestrzeni osobistej.",
+    "security": "Bezpieczny dostęp",
+    "languages": "Języki",
+    "profile": "Profil"
   },
   "user-profile": {
     "title": "Profil użytkownika",
@@ -196,71 +45,376 @@
     "updateSuccess": "Profil zaktualizowany pomyślnie.",
     "updateError": "Aktualizacja profilu nie powiodła się."
   },
-  "theme": {
-    "change": "Zmień motyw",
-    "light": "Jasny motyw",
-    "dark": "Ciemny motyw"
-  },
-  "title": "Witamy",
-  "description": "Odkrywaj parki rozrywki, atrakcje i praktyczne informacje z całego świata.",
-  "sidebar": {
-    "logo_text": "Menu",
-    "home": "Strona główna",
-    "parks": "Parki",
-    "about": "O nas",
-    "profile": "Profil",
-    "admin": "Administracja"
-  },
   "admin": {
-    "title": "Panel administracyjny",
-    "tabs": {
-      "users": "Użytkownicy",
-      "parks": "Parki",
-      "images": "Obrazy",
-      "site": "Strona",
-      "operators": "Operatorzy",
-      "manufacturers": "Producenci",
-      "parkItems": "Elementy",
-      "data": "Dane"
-    },
-    "users": {
-      "total": "Łączna liczba użytkowników: {{count}}",
-      "empty": "Nie znaleziono użytkowników.",
+    "auditLogs": {
+      "title": "Dziennik audytu",
+      "subtitle": "Widok tylko do odczytu wrażliwych akcji administracyjnych.",
+      "total": "{{count}} wpisów",
+      "loading": "Ładowanie dziennika audytu...",
+      "loadError": "Nie można wczytać dziennika audytu.",
+      "empty": "Brak wpisów pasujących do filtrów.",
+      "filters": {
+        "fromUtc": "Od",
+        "toUtc": "Do",
+        "actorEmail": "Email aktora",
+        "action": "Akcja",
+        "entityType": "Typ encji",
+        "entityId": "ID encji",
+        "traceId": "Trace ID",
+        "actorUserId": "ID aktora"
+      },
       "columns": {
-        "email": "E-mail",
-        "firstName": "Imię",
-        "lastName": "Nazwisko",
-        "roles": "Rola",
+        "date": "Data",
+        "actor": "Aktor",
+        "action": "Akcja",
+        "entity": "Encja",
+        "request": "Żądanie",
         "status": "Status",
-        "actions": "Akcje"
+        "traceId": "Trace ID",
+        "metadata": "Metadane"
       },
-      "manage": "Zarządzaj użytkownikiem",
-      "profileTitle": "Zarządzanie użytkownikiem",
-      "backToList": "Wróć do listy użytkowników",
-      "newEmail": "Nowy email",
-      "status": {
-        "blocked": "Zablokowany",
-        "active": "Aktywny"
+      "metadata": {
+        "show": "Pokaż"
+      }
+    },
+    "bulk": {
+      "selected": "Wybrano: {{count}}",
+      "makeVisible": "Ustaw jako widoczne",
+      "hide": "Ukryj",
+      "markReady": "Zatwierdź",
+      "processLater": "Obsłuż później",
+      "clearSelection": "Wyczyść wybór",
+      "markToReview": "Oznacz do sprawdzenia",
+      "markValidated": "Zatwierdź",
+      "markNotRelevant": "Nieistotne"
+    },
+    "dashboard": {
+      "title": "Panel",
+      "subtitle": "Punkt wejścia do panelu administracyjnego: wybierz sekcję z lewego menu albo ze skrótów poniżej.",
+      "shortcuts": {
+        "users": "Zarządzanie kontami, rolami i dostępem.",
+        "parks": "Filtrowanie, priorytetyzacja i publikowanie parków.",
+        "parkItems": "Zarządzanie atrakcjami, sklepami, restauracjami i usługami.",
+        "operators": "Utrzymywanie operatorów powiązanych z parkami.",
+        "manufacturers": "Utrzymywanie producentów i konstruktorów atrakcji.",
+        "images": "Kontrola mediów, logo i grafik strony.",
+        "data": "Monitorowanie importów, źródeł i przetwarzania danych.",
+        "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami.",
+        "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne.",
+        "localizedContent": "Szybko importować zlokalizowane teksty przez JSON po wyborze celu.",
+        "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
+        "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow."
+      }
+    },
+    "dataSources": {
+      "title": "Źródła danych"
+    },
+    "filters": {
+      "search": "Szukaj",
+      "applySearch": "Zastosuj",
+      "visibility": "Widoczność",
+      "visibilityAll": "Wszystkie widoczności",
+      "visibleOnly": "Tylko widoczne",
+      "hiddenOnly": "Tylko ukryte",
+      "reviewStatus": "Obsługa",
+      "statusAll": "Wszystkie statusy",
+      "type": "Typ",
+      "typeAll": "Wszystkie typy",
+      "category": "Kategoria",
+      "categoryAll": "Wszystkie kategorie",
+      "countryCode": "Kraj",
+      "countryCodePlaceholder": "FR"
+    },
+    "hidden": "Ukryte",
+    "images": {
+      "title": "Obrazy",
+      "kicker": "M15 · Biblioteka mediów",
+      "subtitle": "Wyszukiwanie, sortowanie i edycja metadanych po stronie serwera dla dziesiątek tysięcy obrazów.",
+      "total": "obraz(s)",
+      "selected": "wybrane",
+      "loadingMessage": "Ładowanie media library…",
+      "search": "Szukaj",
+      "searchPlaceholder": "Nazwa pliku, id, opis, właściciel…",
+      "category": "Kategoria",
+      "allCategories": "Wszystkie kategorie",
+      "ownerType": "Właściciel",
+      "allOwnerTypes": "Wszyscy właściciele",
+      "ownerId": "ID właściciela",
+      "ownerIdPlaceholder": "Park, element or user ID",
+      "tag": "Tag",
+      "allTags": "Wszystkie tagi",
+      "publication": "Publikacja",
+      "allPublicationStates": "Wszystkie stany",
+      "published": "Opublikowany",
+      "hidden": "Ukryty",
+      "ownership": "Powiązanie",
+      "allOwnershipStates": "Wszystkie linki",
+      "linkedOnly": "Tylko powiązane",
+      "orphansOnly": "Tylko osierocone",
+      "geo": "Geolokalizacja",
+      "allGeoStates": "Wszystkie",
+      "withGeo": "Ze współrzędnymi",
+      "withoutGeo": "Bez współrzędnych",
+      "sortBy": "Sortuj",
+      "direction": "Kierunek",
+      "desc": "Malejąco",
+      "asc": "Rosnąco",
+      "sortFields": {
+        "created": "Utworzono",
+        "updated": "Zaktualizowano",
+        "filename": "Nazwa pliku",
+        "size": "Rozmiar",
+        "dimensions": "Wymiary"
       },
-      "rolesTitle": "Zarządzanie rolami",
-      "roleAssigned": "Aktualnie przypisana",
-      "roleNotAssigned": "Nieprzypisana",
-      "addRole": "Przypisz",
-      "removeRole": "Usuń",
-      "securityTitle": "Bezpieczeństwo",
-      "blockingTitle": "Blokada konta",
-      "blockedDescription": "To konto jest zablokowane.",
-      "activeDescription": "To konto jest aktywne.",
-      "block": "Zablokuj",
-      "unlock": "Odblokuj",
-      "password": "Nowe hasło",
-      "passwordConfirm": "Potwierdź hasło",
-      "changePassword": "Zmień hasło",
-      "title": "Użytkownicy",
-      "blockTitle": "Blokada konta",
-      "newPassword": "Nowe hasło",
-      "confirmPassword": "Potwierdź hasło",
-      "subtitle": "Zarządzanie kontami, rolami i statusem dostępu."
+      "selectedForBulk": "obraz(s) wybrane",
+      "bulkPublish": "Opublikuj",
+      "bulkHide": "Ukryj",
+      "bulkCategory": "Kategoria zbiorcza",
+      "applyCategory": "Zastosuj kategorię",
+      "bulkTag": "Tag zbiorczy",
+      "addTag": "Dodaj tag",
+      "removeTag": "Usuń tag",
+      "selectPage": "Wybierz tę stronę",
+      "pageHint": "Leniwe podglądy, filtry serwerowe i prawdziwa paginacja.",
+      "emptyTitle": "Brak obraz found",
+      "emptyMessage": "Zmień filtry albo rozpocznij nowe wyszukiwanie.",
+      "page": "Strona",
+      "pageSize": "Rozmiar",
+      "inspector": "Inspektor obrazu",
+      "dimensions": "Wymiary",
+      "weight": "Waga",
+      "mimeType": "MIME",
+      "owner": "Właściciel",
+      "description": "Opis",
+      "isPublished": "Published obraz",
+      "latitude": "Szerokość geograficzna",
+      "longitude": "Długość geograficzna",
+      "altTextFr": "Tekst alternatywny FR",
+      "creditFr": "Autor FR",
+      "captionFr": "Podpis FR",
+      "tags": "Tagi",
+      "saveImage": "Save obraz",
+      "noSelectionTitle": "Brak obraz wybrane",
+      "noSelectionMessage": "Select an obraz to edit its metadata.",
+      "tagCreation": "Tworzenie tagu",
+      "newTagSlug": "Slug tagu",
+      "newTagPlaceholder": "np.: oficjalne-logo",
+      "createTag": "Utwórz tag"
+    },
+    "jsonImport": {
+      "tab": "Import JSON",
+      "kicker": "Import JSON",
+      "title": "Importuj dane tej encji",
+      "description": "Wklej częściowy lub pełny JSON, aby szybko uzupełnić obsługiwane pola, bez zarządzania zdjęciami ani tworzenia encji podrzędnych.",
+      "resetExample": "Przywróć przykład",
+      "jsonLabel": "JSON encji",
+      "apply": "Zastosuj JSON",
+      "applying": "Stosowanie…",
+      "disabledUntilSave": "Najpierw zapisz tę encję przed importem JSON.",
+      "messages": {
+        "invalidJson": "JSON jest nieprawidłowy.",
+        "success": "JSON zastosowany. W razie potrzeby odśwież lub sprawdź zakładki.",
+        "error": "Nie można zastosować JSON."
+      },
+      "help": {
+        "title": "Akceptowany format",
+        "partial": "Częściowy JSON zmienia tylko obecne pola.",
+        "merge": "Wartości lokalizowane są łączone według języka, chyba że użyto replaceExisting lub mode: replace.",
+        "accessConditions": "Dla elementów parku accessConditions może tworzyć lub aktualizować warunki i ich typy wielokrotnego użytku."
+      }
+    },
+    "loading": "Ładowanie...",
+    "localizedContent": {
+      "navTitle": "Importy JSON",
+      "kicker": "Import JSON",
+      "title": "Importuj JSON encji",
+      "subtitle": "Wybierz istniejącą encję i zastosuj częściowy lub pełny JSON do obsługiwanych pól.",
+      "selection": {
+        "title": "1. Wybierz cel",
+        "description": "Wybór odbywa się przez czytelne wyniki wyszukiwania, aby nie edytować encji wyłącznie po technicznym identyfikatorze.",
+        "entityType": "Typ encji",
+        "search": "Szukaj",
+        "searchPlaceholder": "Nazwa parku, atrakcja, strefa, producent…",
+        "searchButton": "Szukaj",
+        "searching": "Wyszukiwanie…",
+        "empty": "Uruchom wyszukiwanie, aby zobaczyć dostępne cele."
+      },
+      "editor": {
+        "title": "2. Wklej JSON",
+        "description": "JSON jest walidowany przez API i stosowany przez warstwę Application.",
+        "resetExample": "Przywróć przykład",
+        "selected": "Wybrany cel",
+        "noTarget": "Nie wybrano celu.",
+        "jsonLabel": "Zlokalizowany JSON",
+        "apply": "Zastosuj JSON",
+        "applying": "Stosowanie…"
+      },
+      "help": {
+        "title": "Akceptowany format",
+        "merge": "Domyślnie podane języki są scalane z istniejącymi wartościami: pozostałe języki zostają zachowane.",
+        "replace": "Dodaj \"replaceExisting\": true lub \"mode\": \"replace\", aby całkowicie zastąpić pole lokalizowane.",
+        "fields": "Obsługiwane pola: descriptions, names, description, biography, altTexts, captions, credits, labels zależnie od wybranego typu.",
+        "accessConditions": "Dla elementu parku typu atrakcja accessConditions może tworzyć lub aktualizować warunki: type, domyślny customTypeKey dla nieznanego typu, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label i description."
+      },
+      "messages": {
+        "searchError": "Nie udało się załadować celów lokalizowanych.",
+        "selectTargetFirst": "Najpierw wybierz cel.",
+        "invalidJson": "Wprowadzony JSON jest nieprawidłowy.",
+        "applySuccess": "Zlokalizowany JSON zastosowano pomyślnie.",
+        "applyNoField": "Nie zaktualizowano żadnego pola lokalizowanego.",
+        "applyError": "Nie udało się zastosować zlokalizowanego JSON."
+      },
+      "entityTypes": {
+        "park": "Park",
+        "parkZone": "Strefa parku",
+        "parkItem": "Element parku",
+        "parkOperator": "Operator",
+        "parkFounder": "Założyciel",
+        "attractionManufacturer": "Producent",
+        "image": "Obraz",
+        "imageTag": "Tag obrazu",
+        "accessConditionType": "Typ warunku dostępu"
+      },
+      "entityHints": {
+        "park": "Zlokalizowany opis parku.",
+        "parkZone": "Zlokalizowana nazwa i opis strefy.",
+        "parkItem": "Zlokalizowany opis elementu, z warunkami dostępu dla atrakcji.",
+        "parkOperator": "Zlokalizowany opis operatora.",
+        "parkFounder": "Zlokalizowana biografia założyciela.",
+        "attractionManufacturer": "Zlokalizowana biografia producenta.",
+        "image": "Zlokalizowane teksty alternatywne, podpisy i kredyty.",
+        "imageTag": "Zlokalizowane etykiety i opisy tagu.",
+        "accessConditionType": "Katalog typów warunków dostępu wielokrotnego użytku."
+      }
+    },
+    "m14": {
+      "kicker": "Administracja",
+      "sidebarTitle": "Panel back-office"
+    },
+    "manufacturers": {
+      "total": "Producenci: {{count}}",
+      "searchPlaceholder": "Szukaj producenta",
+      "create": "Utwórz producenta",
+      "name": "Nazwa",
+      "attractionCount": "Powiązane atrakcje",
+      "actions": "Akcje",
+      "edit": "Edytuj",
+      "empty": "Brak manufacturer found.",
+      "editPage": {
+        "createTitle": "Utwórz producenta",
+        "updateTitle": "Edytuj producenta",
+        "name": "Nazwa",
+        "biography": "Biografia"
+      },
+      "title": "Producenci",
+      "subtitle": "Lista producentów używana przy atrakcjach.",
+      "reviewStatus": "Status admin",
+      "loadError": "Nie udało się wczytać producentów."
+    },
+    "operators": {
+      "total": "Operatorzy: {{count}}",
+      "searchPlaceholder": "Szukaj operatora",
+      "create": "Utwórz operatora",
+      "name": "Nazwa",
+      "actions": "Akcje",
+      "edit": "Edytuj",
+      "empty": "Nie znaleziono operatorów.",
+      "editPage": {
+        "createTitle": "Utwórz operatora",
+        "updateTitle": "Edytuj operatora",
+        "name": "Nazwa",
+        "description": "Opis"
+      },
+      "title": "Operatorzy",
+      "subtitle": "Lista operatorów używana w kartach parków.",
+      "reviewStatus": "Status admin",
+      "loadError": "Nie udało się wczytać operatorów."
+    },
+    "parkFounders": {
+      "editPage": {
+        "createTitle": "Utwórz założyciela",
+        "updateTitle": "Edytuj założyciela",
+        "name": "Nazwa",
+        "biography": "Biografia"
+      },
+      "title": "Założyciele",
+      "subtitle": "Lista referencyjna założycieli używanych w kartach parków.",
+      "total": "Założyciele: {{count}}",
+      "searchPlaceholder": "Szukaj założyciela",
+      "create": "Utwórz założyciela",
+      "name": "Nazwa",
+      "lifeDates": "Daty",
+      "actions": "Akcje",
+      "empty": "Nie znaleziono założyciela.",
+      "loadError": "Nie można załadować założycieli."
+    },
+    "parkGraphUpserts": {
+      "navTitle": "Upsert JSON parku",
+      "title": "Upsert JSON parku",
+      "kicker": "Import strukturalny · Admin",
+      "subtitle": "Wklej pełny lub częściowy JSON parku, sprawdź zmiany i zastosuj je bez nadpisywania brakujących pól.",
+      "target": {
+        "title": "Park docelowy",
+        "description": "Przy aktualizacji zawsze wybierz istniejący park, aby użyć jego prawdziwego identyfikatora.",
+        "searchPlaceholder": "Szukaj parku po nazwie, mieście lub kraju…",
+        "selected": "Wybrany park"
+      },
+      "options": {
+        "createIfMissing": "Zezwól na utworzenie, gdy nie wybrano parku",
+        "replaceCollections": "Tryb zastępowania brakujących kolekcji (tylko kontrolowane importy)"
+      },
+      "editor": {
+        "title": "Dokument JSON",
+        "description": "Brakujące właściwości są zachowywane. Tablice zones/items wykonują upsert tylko zawartych elementów."
+      },
+      "actions": {
+        "search": "Szukaj",
+        "searching": "Szukanie…",
+        "clear": "Wyczyść",
+        "preview": "Podgląd",
+        "previewing": "Podgląd…",
+        "apply": "Zastosuj",
+        "applying": "Stosowanie…"
+      },
+      "errors": {
+        "noParkSelected": "Wybierz istniejący park albo włącz jawne tworzenie.",
+        "invalidJson": "JSON jest nieprawidłowy.",
+        "searchTooShort": "Wpisz co najmniej 2 znaki.",
+        "searchFailed": "Wyszukiwanie parku nie powiodło się.",
+        "previewFailed": "Podgląd nie powiódł się.",
+        "applyFailed": "Zastosowanie nie powiodło się."
+      },
+      "result": {
+        "title": "Podgląd",
+        "noTarget": "Brak parku docelowego",
+        "created": "Utworzone",
+        "updated": "Zmienione",
+        "warnings": "Ostrzeżenia",
+        "errors": "Błędy",
+        "applied": "Upsert zastosowany pomyślnie.",
+        "field": "Pole",
+        "oldValue": "Stare",
+        "newValue": "Nowe",
+        "noFieldChange": "Brak zmian pól."
+      }
+    },
+    "parkItems": {
+      "title": "Elementy parku",
+      "subtitle": "Widok wszystkich elementów parków ułatwiający szybszą edycję.",
+      "searchPlaceholder": "Search a park, element or type",
+      "parkFilter": "Filtruj według parku",
+      "empty": "Brak elements found.",
+      "columns": {
+        "park": "Park",
+        "item": "Element",
+        "type": "Typ",
+        "visibility": "Widoczność",
+        "actions": "Akcje",
+        "category": "Kategoria",
+        "reviewStatus": "Status admin"
+      },
+      "allParks": "Wszystkie parki",
+      "total": "{{count}} element(y)"
     },
     "parks": {
       "total": "Łączna liczba parków: {{count}}",
@@ -349,7 +503,8 @@
         "sortOrder": "Kolejność wyświetlania",
         "description": "Opis lokalizowany",
         "namePlaceholder": "Nazwa strefy w języku {{language}}",
-        "deleteConfirm": "Usunąć tę strefę?"
+        "deleteConfirm": "Usunąć tę strefę?",
+        "empty": "Nie znaleziono stref dla tego parku."
       },
       "items": {
         "manage": "Zarządzaj elementami parku",
@@ -589,7 +744,8 @@
           "error": "Nie mozna przetworzyc tego importu.",
           "descriptionFr": "Opis FR",
           "previewSummary": "{{ready}} gotowe, {{warnings}} z ostrzezeniem, {{errors}} z bledem"
-        }
+        },
+        "empty": "Nie znaleziono elementów dla tego parku."
       },
       "refactorHint": "Edytor został teraz podzielony na tematyczne zakładki, aby strona była lżejsza i bardziej czytelna.",
       "visibilityHelp": "Określa, czy ten park jest widoczny w publicznej aplikacji.",
@@ -674,217 +830,8 @@
       },
       "title": "Parki",
       "subtitle": "Filtruj, priorytetyzuj i administruj parkami w serwisie.",
-      "reviewStatus": "Status admin"
-    },
-    "loading": "Ładowanie...",
-    "operators": {
-      "total": "Operatorzy: {{count}}",
-      "searchPlaceholder": "Szukaj operatora",
-      "create": "Utwórz operatora",
-      "name": "Nazwa",
-      "actions": "Akcje",
-      "edit": "Edytuj",
-      "empty": "Nie znaleziono operatorów.",
-      "editPage": {
-        "createTitle": "Utwórz operatora",
-        "updateTitle": "Edytuj operatora",
-        "name": "Nazwa",
-        "description": "Opis"
-      },
-      "title": "Operatorzy",
-      "subtitle": "Lista operatorów używana w kartach parków.",
-      "reviewStatus": "Status admin"
-    },
-    "parkFounders": {
-      "editPage": {
-        "createTitle": "Utwórz założyciela",
-        "updateTitle": "Edytuj założyciela",
-        "name": "Nazwa",
-        "biography": "Biografia"
-      },
-      "title": "Założyciele",
-      "subtitle": "Lista referencyjna założycieli używanych w kartach parków.",
-      "total": "Założyciele: {{count}}",
-      "searchPlaceholder": "Szukaj założyciela",
-      "create": "Utwórz założyciela",
-      "name": "Nazwa",
-      "lifeDates": "Daty",
-      "actions": "Akcje",
-      "empty": "Nie znaleziono założyciela.",
-      "loadError": "Nie można załadować założycieli."
-    },
-    "manufacturers": {
-      "total": "Producenci: {{count}}",
-      "searchPlaceholder": "Szukaj producenta",
-      "create": "Utwórz producenta",
-      "name": "Nazwa",
-      "attractionCount": "Powiązane atrakcje",
-      "actions": "Akcje",
-      "edit": "Edytuj",
-      "empty": "Brak manufacturer found.",
-      "editPage": {
-        "createTitle": "Utwórz producenta",
-        "updateTitle": "Edytuj producenta",
-        "name": "Nazwa",
-        "biography": "Biografia"
-      },
-      "title": "Producenci",
-      "subtitle": "Lista producentów używana przy atrakcjach.",
-      "reviewStatus": "Status admin"
-    },
-    "parkItems": {
-      "title": "Elementy parku",
-      "subtitle": "Widok wszystkich elementów parków ułatwiający szybszą edycję.",
-      "searchPlaceholder": "Search a park, element or type",
-      "parkFilter": "Filtruj według parku",
-      "empty": "Brak elements found.",
-      "columns": {
-        "park": "Park",
-        "item": "Element",
-        "type": "Typ",
-        "visibility": "Widoczność",
-        "actions": "Akcje",
-        "category": "Kategoria",
-        "reviewStatus": "Status admin"
-      },
-      "allParks": "Wszystkie parki",
-      "total": "{{count}} element(y)"
-    },
-    "m14": {
-      "kicker": "Administracja",
-      "sidebarTitle": "Panel back-office"
-    },
-    "filters": {
-      "search": "Szukaj",
-      "applySearch": "Zastosuj",
-      "visibility": "Widoczność",
-      "visibilityAll": "Wszystkie widoczności",
-      "visibleOnly": "Tylko widoczne",
-      "hiddenOnly": "Tylko ukryte",
-      "reviewStatus": "Obsługa",
-      "statusAll": "Wszystkie statusy",
-      "type": "Typ",
-      "typeAll": "Wszystkie typy",
-      "category": "Kategoria",
-      "categoryAll": "Wszystkie kategorie",
-      "countryCode": "Kraj",
-      "countryCodePlaceholder": "FR"
-    },
-    "reviewStatus": {
-      "ready": "Zatwierdzony",
-      "toProcessLater": "Przetworzyć później",
-      "toReview": "Do sprawdzenia",
-      "validated": "Zatwierdzony",
-      "notRelevant": "Nieistotne"
-    },
-    "bulk": {
-      "selected": "Wybrano: {{count}}",
-      "makeVisible": "Ustaw jako widoczne",
-      "hide": "Ukryj",
-      "markReady": "Zatwierdź",
-      "processLater": "Obsłuż później",
-      "clearSelection": "Wyczyść wybór",
-      "markToReview": "Oznacz do sprawdzenia",
-      "markValidated": "Zatwierdź",
-      "markNotRelevant": "Nieistotne"
-    },
-    "visible": "Widoczny",
-    "hidden": "Ukryte",
-    "images": {
-      "title": "Obrazy",
-      "kicker": "M15 · Biblioteka mediów",
-      "subtitle": "Wyszukiwanie, sortowanie i edycja metadanych po stronie serwera dla dziesiątek tysięcy obrazów.",
-      "total": "obraz(s)",
-      "selected": "wybrane",
-      "loadingMessage": "Ładowanie media library…",
-      "search": "Szukaj",
-      "searchPlaceholder": "Nazwa pliku, id, opis, właściciel…",
-      "category": "Kategoria",
-      "allCategories": "Wszystkie kategorie",
-      "ownerType": "Właściciel",
-      "allOwnerTypes": "Wszyscy właściciele",
-      "ownerId": "ID właściciela",
-      "ownerIdPlaceholder": "Park, element or user ID",
-      "tag": "Tag",
-      "allTags": "Wszystkie tagi",
-      "publication": "Publikacja",
-      "allPublicationStates": "Wszystkie stany",
-      "published": "Opublikowany",
-      "hidden": "Ukryty",
-      "ownership": "Link",
-      "allOwnershipStates": "Wszystkie linki",
-      "linkedOnly": "Tylko powiązane",
-      "orphansOnly": "Tylko osierocone",
-      "geo": "Geolokalizacja",
-      "allGeoStates": "Wszystkie",
-      "withGeo": "Ze współrzędnymi",
-      "withoutGeo": "Bez współrzędnych",
-      "sortBy": "Sortuj",
-      "direction": "Kierunek",
-      "desc": "Malejąco",
-      "asc": "Rosnąco",
-      "sortFields": {
-        "created": "Utworzono",
-        "updated": "Zaktualizowano",
-        "filename": "Nazwa pliku",
-        "size": "Rozmiar",
-        "dimensions": "Wymiary"
-      },
-      "selectedForBulk": "obraz(s) wybrane",
-      "bulkPublish": "Opublikuj",
-      "bulkHide": "Ukryj",
-      "bulkCategory": "Kategoria zbiorcza",
-      "applyCategory": "Zastosuj kategorię",
-      "bulkTag": "Tag zbiorczy",
-      "addTag": "Dodaj tag",
-      "removeTag": "Usuń tag",
-      "selectPage": "Wybierz tę stronę",
-      "pageHint": "Leniwe podglądy, filtry serwerowe i prawdziwa paginacja.",
-      "emptyTitle": "Brak obraz found",
-      "emptyMessage": "Zmień filtry albo rozpocznij nowe wyszukiwanie.",
-      "page": "Strona",
-      "pageSize": "Rozmiar",
-      "inspector": "Inspektor obrazu",
-      "dimensions": "Wymiary",
-      "weight": "Waga",
-      "mimeType": "MIME",
-      "owner": "Właściciel",
-      "description": "Opis",
-      "isPublished": "Published obraz",
-      "latitude": "Szerokość geograficzna",
-      "longitude": "Długość geograficzna",
-      "altTextFr": "Tekst alternatywny FR",
-      "creditFr": "Autor FR",
-      "captionFr": "Podpis FR",
-      "tags": "Tagi",
-      "saveImage": "Save obraz",
-      "noSelectionTitle": "Brak obraz wybrane",
-      "noSelectionMessage": "Select an obraz to edit its metadata.",
-      "tagCreation": "Tworzenie tagu",
-      "newTagSlug": "Slug tagu",
-      "newTagPlaceholder": "ex: official-logo",
-      "createTag": "Utwórz tag"
-    },
-    "dataSources": {
-      "title": "Źródła danych"
-    },
-    "dashboard": {
-      "title": "Panel",
-      "subtitle": "Punkt wejścia do panelu administracyjnego: wybierz sekcję z lewego menu albo ze skrótów poniżej.",
-      "shortcuts": {
-        "users": "Zarządzanie kontami, rolami i dostępem.",
-        "parks": "Filtrowanie, priorytetyzacja i publikowanie parków.",
-        "parkItems": "Zarządzanie atrakcjami, sklepami, restauracjami i usługami.",
-        "operators": "Utrzymywanie operatorów powiązanych z parkami.",
-        "manufacturers": "Utrzymywanie producentów i konstruktorów atrakcji.",
-        "images": "Kontrola mediów, logo i grafik strony.",
-        "data": "Monitorowanie importów, źródeł i przetwarzania danych.",
-        "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami.",
-        "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne.",
-        "localizedContent": "Szybko importować zlokalizowane teksty przez JSON po wyborze celu.",
-        "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
-        "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow."
-      }
+      "reviewStatus": "Status admin",
+      "loadError": "Nie udało się wczytać parków."
     },
     "references": {
       "sections": {
@@ -922,218 +869,12 @@
         "uploadTitle": "Add an obraz to this profil"
       }
     },
-    "auditLogs": {
-      "title": "Dziennik audytu",
-      "subtitle": "Widok tylko do odczytu wrażliwych akcji administracyjnych.",
-      "total": "{{count}} wpisów",
-      "loading": "Ładowanie dziennika audytu...",
-      "loadError": "Nie można wczytać dziennika audytu.",
-      "empty": "Brak wpisów pasujących do filtrów.",
-      "filters": {
-        "fromUtc": "Od",
-        "toUtc": "Do",
-        "actorEmail": "Email aktora",
-        "action": "Akcja",
-        "entityType": "Typ encji",
-        "entityId": "ID encji",
-        "traceId": "Trace ID",
-        "actorUserId": "ID aktora"
-      },
-      "columns": {
-        "date": "Data",
-        "actor": "Aktor",
-        "action": "Akcja",
-        "entity": "Encja",
-        "request": "Żądanie",
-        "status": "Status",
-        "traceId": "Trace ID",
-        "metadata": "Metadane"
-      },
-      "metadata": {
-        "show": "Pokaż"
-      }
-    },
-    "localizedContent": {
-      "navTitle": "Importy JSON",
-      "kicker": "Import JSON",
-      "title": "Importuj JSON encji",
-      "subtitle": "Wybierz istniejącą encję i zastosuj częściowy lub pełny JSON do obsługiwanych pól.",
-      "selection": {
-        "title": "1. Wybierz cel",
-        "description": "Wybór odbywa się przez czytelne wyniki wyszukiwania, aby nie edytować encji wyłącznie po technicznym identyfikatorze.",
-        "entityType": "Typ encji",
-        "search": "Szukaj",
-        "searchPlaceholder": "Nazwa parku, atrakcja, strefa, producent…",
-        "searchButton": "Szukaj",
-        "searching": "Wyszukiwanie…",
-        "empty": "Uruchom wyszukiwanie, aby zobaczyć dostępne cele."
-      },
-      "editor": {
-        "title": "2. Wklej JSON",
-        "description": "JSON jest walidowany przez API i stosowany przez warstwę Application.",
-        "resetExample": "Przywróć przykład",
-        "selected": "Wybrany cel",
-        "noTarget": "Nie wybrano celu.",
-        "jsonLabel": "Zlokalizowany JSON",
-        "apply": "Zastosuj JSON",
-        "applying": "Stosowanie…"
-      },
-      "help": {
-        "title": "Akceptowany format",
-        "merge": "Domyślnie podane języki są scalane z istniejącymi wartościami: pozostałe języki zostają zachowane.",
-        "replace": "Dodaj \"replaceExisting\": true lub \"mode\": \"replace\", aby całkowicie zastąpić pole lokalizowane.",
-        "fields": "Obsługiwane pola: descriptions, names, description, biography, altTexts, captions, credits, labels zależnie od wybranego typu.",
-        "accessConditions": "Dla elementu parku typu atrakcja accessConditions może tworzyć lub aktualizować warunki: type, domyślny customTypeKey dla nieznanego typu, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label i description."
-      },
-      "messages": {
-        "searchError": "Nie udało się załadować celów lokalizowanych.",
-        "selectTargetFirst": "Najpierw wybierz cel.",
-        "invalidJson": "Wprowadzony JSON jest nieprawidłowy.",
-        "applySuccess": "Zlokalizowany JSON zastosowano pomyślnie.",
-        "applyNoField": "Nie zaktualizowano żadnego pola lokalizowanego.",
-        "applyError": "Nie udało się zastosować zlokalizowanego JSON."
-      },
-      "entityTypes": {
-        "park": "Park",
-        "parkZone": "Strefa parku",
-        "parkItem": "Element parku",
-        "parkOperator": "Operator",
-        "parkFounder": "Założyciel",
-        "attractionManufacturer": "Producent",
-        "image": "Obraz",
-        "imageTag": "Tag obrazu",
-        "accessConditionType": "Typ warunku dostępu"
-      },
-      "entityHints": {
-        "park": "Zlokalizowany opis parku.",
-        "parkZone": "Zlokalizowana nazwa i opis strefy.",
-        "parkItem": "Zlokalizowany opis elementu, z warunkami dostępu dla atrakcji.",
-        "parkOperator": "Zlokalizowany opis operatora.",
-        "parkFounder": "Zlokalizowana biografia założyciela.",
-        "attractionManufacturer": "Zlokalizowana biografia producenta.",
-        "image": "Zlokalizowane teksty alternatywne, podpisy i kredyty.",
-        "imageTag": "Zlokalizowane etykiety i opisy tagu.",
-        "accessConditionType": "Katalog typów warunków dostępu wielokrotnego użytku."
-      }
-    },
-    "jsonImport": {
-      "tab": "Import JSON",
-      "kicker": "Import JSON",
-      "title": "Importuj dane tej encji",
-      "description": "Wklej częściowy lub pełny JSON, aby szybko uzupełnić obsługiwane pola, bez zarządzania zdjęciami ani tworzenia encji podrzędnych.",
-      "resetExample": "Przywróć przykład",
-      "jsonLabel": "JSON encji",
-      "apply": "Zastosuj JSON",
-      "applying": "Stosowanie…",
-      "disabledUntilSave": "Najpierw zapisz tę encję przed importem JSON.",
-      "messages": {
-        "invalidJson": "JSON jest nieprawidłowy.",
-        "success": "JSON zastosowany. W razie potrzeby odśwież lub sprawdź zakładki.",
-        "error": "Nie można zastosować JSON."
-      },
-      "help": {
-        "title": "Akceptowany format",
-        "partial": "Częściowy JSON zmienia tylko obecne pola.",
-        "merge": "Wartości lokalizowane są łączone według języka, chyba że użyto replaceExisting lub mode: replace.",
-        "accessConditions": "Dla elementów parku accessConditions może tworzyć lub aktualizować warunki i ich typy wielokrotnego użytku."
-      }
-    },
-    "workbench": {
-      "navTitle": "Workbench elementów parku",
-      "title": "Szybkie dodawanie elementów",
-      "kicker": "Admin Fast Edition",
-      "subtitle": "Szybko twórz, filtruj i poprawiaj elementy parku bez otwierania pełnej karty.",
-      "quickCreate": {
-        "title": "Szybkie tworzenie",
-        "name": "Nazwa",
-        "park": "Park",
-        "zone": "Strefa",
-        "category": "Kategoria",
-        "type": "Typ",
-        "manufacturer": "Producent",
-        "visibility": "Widoczność",
-        "reviewStatus": "Status weryfikacji",
-        "create": "Utwórz",
-        "createAndContinue": "Utwórz i kontynuuj",
-        "creating": "Tworzenie…"
-      },
-      "assistantImport": {
-        "title": "Import wspomagany",
-        "pasteLines": "Wklej wiersze",
-        "preview": "Podgląd",
-        "apply": "Zastosuj",
-        "template": "Szablon",
-        "mapping": "Mapowanie"
-      },
-      "validations": {
-        "nameRequired": "Nazwa jest wymagana.",
-        "parkRequired": "Park jest wymagany.",
-        "duplicateWarning": "Podobny element już istnieje.",
-        "invalidTypeForCategory": "Typ nie pasuje do kategorii."
-      },
-      "duplicates": {
-        "title": "Potencjalne duplikaty",
-        "samePark": "Ten sam park",
-        "sameZone": "Ta sama strefa",
-        "ignore": "Ignoruj",
-        "openExisting": "Otwórz istniejący"
-      },
-      "templates": {
-        "parkOnly": "Tylko park",
-        "zoneItems": "Strefa + elementy",
-        "services": "Usługi bez strefy",
-        "captainCoaster": "Rozszerzony import Captain Coaster"
-      }
-    },
-    "parkGraphUpserts": {
-      "navTitle": "Upsert JSON parku",
-      "title": "Upsert JSON parku",
-      "kicker": "Import strukturalny · Admin",
-      "subtitle": "Wklej pełny lub częściowy JSON parku, sprawdź zmiany i zastosuj je bez nadpisywania brakujących pól.",
-      "target": {
-        "title": "Park docelowy",
-        "description": "Przy aktualizacji zawsze wybierz istniejący park, aby użyć jego prawdziwego identyfikatora.",
-        "searchPlaceholder": "Szukaj parku po nazwie, mieście lub kraju…",
-        "selected": "Wybrany park"
-      },
-      "options": {
-        "createIfMissing": "Zezwól na utworzenie, gdy nie wybrano parku",
-        "replaceCollections": "Tryb zastępowania brakujących kolekcji (tylko kontrolowane importy)"
-      },
-      "editor": {
-        "title": "Dokument JSON",
-        "description": "Brakujące właściwości są zachowywane. Tablice zones/items wykonują upsert tylko zawartych elementów."
-      },
-      "actions": {
-        "search": "Szukaj",
-        "searching": "Szukanie…",
-        "clear": "Wyczyść",
-        "preview": "Podgląd",
-        "previewing": "Podgląd…",
-        "apply": "Zastosuj",
-        "applying": "Stosowanie…"
-      },
-      "errors": {
-        "noParkSelected": "Wybierz istniejący park albo włącz jawne tworzenie.",
-        "invalidJson": "JSON jest nieprawidłowy.",
-        "searchTooShort": "Wpisz co najmniej 2 znaki.",
-        "searchFailed": "Wyszukiwanie parku nie powiodło się.",
-        "previewFailed": "Podgląd nie powiódł się.",
-        "applyFailed": "Zastosowanie nie powiodło się."
-      },
-      "result": {
-        "title": "Podgląd",
-        "noTarget": "Brak parku docelowego",
-        "created": "Utworzone",
-        "updated": "Zmienione",
-        "warnings": "Ostrzeżenia",
-        "errors": "Błędy",
-        "applied": "Upsert zastosowany pomyślnie.",
-        "field": "Pole",
-        "oldValue": "Stare",
-        "newValue": "Nowe",
-        "noFieldChange": "Brak zmian pól."
-      }
+    "reviewStatus": {
+      "ready": "Zatwierdzony",
+      "toProcessLater": "Przetworzyć później",
+      "toReview": "Do sprawdzenia",
+      "validated": "Zatwierdzony",
+      "notRelevant": "Nieistotne"
     },
     "seoSitemaps": {
       "navTitle": "SEO i sitemapy",
@@ -1191,10 +932,174 @@
           "actor": "Aktor"
         }
       }
+    },
+    "tabs": {
+      "users": "Użytkownicy",
+      "parks": "Parki",
+      "images": "Obrazy",
+      "site": "Strona",
+      "operators": "Operatorzy",
+      "manufacturers": "Producenci",
+      "parkItems": "Elementy",
+      "data": "Dane"
+    },
+    "title": "Panel administracyjny",
+    "users": {
+      "total": "Łączna liczba użytkowników: {{count}}",
+      "empty": "Nie znaleziono użytkowników.",
+      "columns": {
+        "email": "E-mail",
+        "firstName": "Imię",
+        "lastName": "Nazwisko",
+        "roles": "Rola",
+        "status": "Status",
+        "actions": "Akcje"
+      },
+      "manage": "Zarządzaj użytkownikiem",
+      "profileTitle": "Zarządzanie użytkownikiem",
+      "backToList": "Wróć do listy użytkowników",
+      "newEmail": "Nowy email",
+      "status": {
+        "blocked": "Zablokowany",
+        "active": "Aktywny"
+      },
+      "rolesTitle": "Zarządzanie rolami",
+      "roleAssigned": "Aktualnie przypisana",
+      "roleNotAssigned": "Nieprzypisana",
+      "addRole": "Przypisz",
+      "removeRole": "Usuń",
+      "securityTitle": "Bezpieczeństwo",
+      "blockingTitle": "Blokada konta",
+      "blockedDescription": "To konto jest zablokowane.",
+      "activeDescription": "To konto jest aktywne.",
+      "block": "Zablokuj",
+      "unlock": "Odblokuj",
+      "password": "Nowe hasło",
+      "passwordConfirm": "Potwierdź hasło",
+      "changePassword": "Zmień hasło",
+      "title": "Użytkownicy",
+      "blockTitle": "Blokada konta",
+      "newPassword": "Nowe hasło",
+      "confirmPassword": "Potwierdź hasło",
+      "subtitle": "Zarządzanie kontami, rolami i statusem dostępu.",
+      "loadError": "Nie udało się wczytać użytkowników.",
+      "blockAction": "Zablokuj konto",
+      "unblockAction": "Odblokuj konto"
+    },
+    "visible": "Widoczny",
+    "workbench": {
+      "navTitle": "Panel elementów parku",
+      "title": "Szybkie wprowadzanie elementów",
+      "kicker": "Szybka administracja",
+      "subtitle": "Szybko twórz, filtruj i poprawiaj elementy parku bez otwierania pełnej karty.",
+      "quickCreate": {
+        "title": "Szybkie tworzenie",
+        "name": "Nazwa",
+        "park": "Park",
+        "zone": "Strefa",
+        "category": "Kategoria",
+        "type": "Typ",
+        "manufacturer": "Producent",
+        "visibility": "Widoczność",
+        "reviewStatus": "Status weryfikacji",
+        "create": "Utwórz",
+        "createAndContinue": "Utwórz i kontynuuj",
+        "creating": "Tworzenie…"
+      },
+      "assistantImport": {
+        "title": "Import wspomagany",
+        "pasteLines": "Wklej wiersze",
+        "preview": "Podgląd",
+        "apply": "Zastosuj",
+        "template": "Szablon",
+        "mapping": "Mapowanie pól"
+      },
+      "validations": {
+        "nameRequired": "Nazwa jest wymagana.",
+        "parkRequired": "Park jest wymagany.",
+        "duplicateWarning": "Podobny element już istnieje.",
+        "invalidTypeForCategory": "Typ nie pasuje do kategorii."
+      },
+      "duplicates": {
+        "title": "Możliwe duplikaty",
+        "samePark": "Ten sam park",
+        "sameZone": "Ta sama strefa",
+        "ignore": "Ignoruj",
+        "openExisting": "Otwórz istniejący"
+      },
+      "templates": {
+        "parkOnly": "Tylko park",
+        "zoneItems": "Strefa + elementy",
+        "services": "Usługi bez strefy",
+        "captainCoaster": "Wzbogacony import Captain Coaster"
+      }
     }
   },
-  "validation": {
-    "required": "To pole jest obowiązkowe"
+  "auth": {
+    "login": {
+      "title": "Klasyczne logowanie",
+      "title_email": "E-mail",
+      "mail_placeholder": "Wpisz swój email",
+      "title_password": "Hasło",
+      "password_placeholder": "Wpisz swoje hasło",
+      "btn_text": "Zaloguj się",
+      "forgot_password": "Nie pamiętasz hasła?",
+      "success": "Zalogowano pomyślnie.",
+      "google_unavailable": "Logowanie Google jest chwilowo niedostępne.",
+      "google_success": "Logowanie Google zakończone sukcesem."
+    },
+    "register": {
+      "title": "Klasyczna rejestracja",
+      "title_email": "E-mail",
+      "mail_placeholder": "Wpisz swój email",
+      "title_password": "Hasło",
+      "password_placeholder": "Wpisz swoje hasło",
+      "password_info": "Hasło musi zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą literę i jedną cyfrę.",
+      "password_confirm_placeholder": "Potwierdź hasło",
+      "btn_text": "Zarejestruj się",
+      "errors": {
+        "password_error_summary": "Błąd hasła",
+        "password_error": "Hasło musi zawierać co najmniej 8 znaków, jedną wielką literę, jedną małą literę i jedną cyfrę."
+      },
+      "success_message": "Twoje konto zostało utworzone. Użyj linku potwierdzającego z wiadomości e-mail, aby je aktywować.",
+      "resend_confirmation": "Wyślij link potwierdzający ponownie",
+      "success_badge": "Utworzono",
+      "validation_error": "Formularz rejestracji zawiera błędy.",
+      "created_toast": "Konto utworzone. Sprawdź e-mail, aby je potwierdzić."
+    },
+    "common": {
+      "back_home": "Wróć do strony głównej"
+    },
+    "confirm": {
+      "title": "Potwierdzenie konta",
+      "loading": "Trwa potwierdzanie konta...",
+      "kicker": "Potwierdzenie",
+      "subtitle": "Weryfikujemy link aktywacyjny konta.",
+      "success_badge": "Potwierdzono",
+      "error_badge": "Niepowodzenie"
+    },
+    "forgot_password": {
+      "title": "Nie pamiętasz hasła",
+      "description": "Podaj adres e-mail, aby otrzymać link resetujący.",
+      "submit": "Wyślij link resetujący",
+      "kicker": "Odzyskiwanie",
+      "sent_badge": "Wysłano"
+    },
+    "reset_password": {
+      "title": "Zresetuj hasło",
+      "invalid_link": "Ten link resetujący jest nieprawidłowy.",
+      "submit": "Zresetuj hasło",
+      "kicker": "Bezpieczeństwo",
+      "description": "Wybierz nowe hasło, aby zabezpieczyć konto.",
+      "invalid_badge": "Nieprawidłowy link",
+      "done_badge": "Zaktualizowano"
+    },
+    "modal": {
+      "kicker": "Witaj",
+      "title": "Zaloguj się lub utwórz konto",
+      "subtitle": "Użyj konta, aby przygotować przyszłe spersonalizowane funkcje parków, zachowując prostą obsługę.",
+      "or": "lub"
+    }
   },
   "actions": {
     "cancel": "Anuluj",
@@ -1208,6 +1113,299 @@
     "search": "Szukaj",
     "reset": "Resetuj",
     "refresh": "Odśwież"
+  },
+  "common": {
+    "loadingTitle": "Ładowanie",
+    "loadingMessage": "Treść jest ładowana.",
+    "errorTitle": "Wystąpił błąd",
+    "errorMessage": "Nie udało się wczytać żądanej treści.",
+    "emptyTitle": "Brakthing to display",
+    "emptyMessage": "Brak content is available at the moment.",
+    "security": {
+      "uploadRejectedSummary": "Plik odrzucony",
+      "invalidImageUploadMessage": "Akceptowane są tylko obrazy JPEG, PNG, WebP lub GIF poniżej 10 MB."
+    },
+    "success": "Sukces",
+    "error": "Błąd",
+    "warning": "Uwaga",
+    "unexpectedError": "Wystąpił nieoczekiwany błąd."
+  },
+  "description": "Odkrywaj parki rozrywki, atrakcje i praktyczne informacje z całego świata.",
+  "images": {
+    "categories": {
+      "AVATAR": "Awatar",
+      "PARK_LOGO": "Logo parku",
+      "PARK": "Zdjęcie parku",
+      "ATTRACTION": "Item zdjęcie"
+    },
+    "ownerTypes": {
+      "NONE": "Brak",
+      "PARK": "Park",
+      "USER": "Użytkownik",
+      "ATTRACTION": "Element"
+    }
+  },
+  "languageModal": {
+    "kicker": "Język",
+    "title": "Wybierz język",
+    "subtitle": "Zmień całe doświadczenie, zachowując bieżącą trasę, gdy to możliwe.",
+    "current": "Aktualny"
+  },
+  "maps": {
+    "placeholder": {
+      "title": "Mapa niedostępna",
+      "message": "Wymagane współrzędne nie są jeszcze dostępne."
+    },
+    "distance": {
+      "title": "Punkt geograficzny"
+    }
+  },
+  "pagination": {
+    "previous": "Poprzedni",
+    "next": "Następny"
+  },
+  "shared": {
+    "imageUpload": {
+      "title": "Prześlij an obraz",
+      "choose": "Choose an obraz",
+      "upload": "Prześlij",
+      "cancel": "Anuluj",
+      "dragAndDrop": "Przeciągnij tutaj obraz albo kliknij, aby go wybrać.",
+      "selectedFile": "Wybrany plik",
+      "invalidFile": "Wybierz prawidłowy plik obrazu.",
+      "invalidSize": "The wybrane obraz is too large.",
+      "noImageSelected": "Please select an obraz before uploading.",
+      "uploading": "Prześlijing...",
+      "uploadError": "Wystąpił błąd podczas przesyłania obrazu.",
+      "descriptionPlaceholder": "Opis"
+    }
+  },
+  "sidebar": {
+    "logo_text": "Menu",
+    "home": "Strona główna",
+    "parks": "Parki",
+    "about": "O nas",
+    "profile": "Profil",
+    "admin": "Administracja"
+  },
+  "theme": {
+    "change": "Zmień motyw",
+    "light": "Jasny motyw",
+    "dark": "Ciemny motyw"
+  },
+  "title": "Witamy",
+  "topbar": {
+    "login_header": "Logowanie / Rejestracja",
+    "hello": "Cześć",
+    "choose_language": "Wybierz swój język:"
+  },
+  "ui": {
+    "photoCarousel": {
+      "kicker": "Zdjęcia",
+      "title": "Zdjęcia",
+      "subtitle": "Filtruj zdjęcia według kategorii, aby karta pozostała czytelna.",
+      "current": "Aktualne",
+      "categories": {
+        "gallery": "Galeria",
+        "entrance": "Wejście",
+        "exit": "Wyjście",
+        "layout": "Układ",
+        "queue": "Kolejka",
+        "station": "Stacja"
+      },
+      "controls": {
+        "category": "Kategoria zdjęcia",
+        "allCategories": "Wszystkie",
+        "displayCount": "Pokazane",
+        "count": "{{count}}",
+        "all": "Wszystkie",
+        "previous": "Poprzednie zdjęcie",
+        "next": "Następne zdjęcie",
+        "openFullscreen": "Otwórz pełny ekran",
+        "closeFullscreen": "Zamknij pełny ekran",
+        "openSource": "Otwórz {{name}}"
+      },
+      "lightbox": {
+        "title": "Zdjęcie pełnoekranowe"
+      }
+    }
+  },
+  "validation": {
+    "required": "To pole jest obowiązkowe"
+  },
+  "aboutPage": {
+    "kicker": "Wizja projektu",
+    "title": "Czytelniejszy sposób odkrywania parków",
+    "lead": "AmusementPark mapuje parki, atrakcje i praktyczne informacje na stabilnej architekturze gotowej na porównania i dystanse.",
+    "primaryCta": "Przeglądaj parki",
+    "secondaryCta": "Wróć do strony głównej",
+    "stats": {
+      "parksLabel": "Potencjalne parki",
+      "parksHint": "Zaprojektowane pod szybkość w skali",
+      "mapLabel": "Cel designu",
+      "mapHint": "Publiczna ścieżka gotowa do rozwoju"
+    },
+    "mission": {
+      "kicker": "Misja",
+      "title": "Szybciej znaleźć właściwy park",
+      "subtitle": "Produkt zaczyna od solidnego portfolio i rozwija się w stronę bogatszych narzędzi odkrywania i decyzji."
+    },
+    "cards": {
+      "discover": {
+        "badge": "Odkrywaj",
+        "title": "Wiarygodne strony parków",
+        "text": "Każda strona parku łączy lokalizację, elementy, zdjęcia, pobliskie parki i przydatne referencje."
+      },
+      "explore": {
+        "badge": "Eksploruj",
+        "title": "Podejście map-first",
+        "text": "Wyszukiwanie, interakcje mapy i pobliskie dystanse są podstawami do ponownego użycia."
+      },
+      "enjoy": {
+        "badge": "Korzystaj",
+        "title": "Spójna identyfikacja wizualna",
+        "text": "Strony publiczne, auth i profilowe współdzielą te same tokeny, powierzchnie i komponenty."
+      }
+    },
+    "clean": {
+      "kicker": "Inżynieria",
+      "title": "Zbudowane, aby rozwijać się krok po kroku",
+      "text": "Projekt zaprojektowano tak, aby dodawać mapy, porównania i planowanie podróży bez zakłócania doświadczenia odwiedzającego."
+    }
+  },
+  "cookieConsent": {
+    "ariaLabel": "Baner informacji i wyboru dotyczący plików cookie",
+    "title": "Pliki cookie i prywatność",
+    "text": "AmusementPark używa plików cookie lub pamięci niezbędnych do działania strony, w szczególności bezpieczeństwa, sesji, języka, motywu i uwierzytelniania. Za Twoją zgodą strona włącza także opcjonalne pliki cookie Matomo do pomiaru oglądalności.",
+    "privacyLink": "Przeczytaj politykę prywatności.",
+    "accept": "Akceptuj opcjonalne cookie",
+    "continueWithNecessaryCookiesOnly": "Kontynuuj z niezbędnymi cookie"
+  },
+  "footer": {
+    "ariaLabel": "Stopka strony",
+    "brand": {
+      "tagline": "Pełna mapa emocji. Park po parku, atrakcja po atrakcji."
+    },
+    "explore": {
+      "title": "Odkrywaj",
+      "allParks": "Wszystkie parki",
+      "topRollerCoasters": "Najlepsze rollercoastery",
+      "interactiveMap": "Mapa interaktywna",
+      "news": "Nowości"
+    },
+    "about": {
+      "title": "O projekcie",
+      "project": "Projekt",
+      "sources": "Źródła",
+      "contact": "Kontakt",
+      "privacy": "Prywatność"
+    },
+    "languages": {
+      "title": "Języki"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Stworzone z ❤️ i adrenaliną",
+      "version": "Wersja {{version}}"
+    }
+  },
+  "home": {
+    "home_title": "Znajdź idealne emocje",
+    "placeholder_search": "Szukaj parku, atrakcji, hotelu…",
+    "placeholder_category": "Typ wyszukiwania",
+    "no_results": "Brak wyników dla",
+    "in_category": "w",
+    "categories": {
+      "park": "Park",
+      "attractions": "Atrakcja",
+      "everywhere": "Wszędzie",
+      "parkItems": "Elementy parku",
+      "operators": "Operator",
+      "manufacturers": "Producent",
+      "attraction": "Atrakcja",
+      "restaurant": "Restauracja",
+      "hotel": "Hotel",
+      "animal": "Zwierzę",
+      "show": "Pokaz",
+      "shop": "Sklep",
+      "service": "Usługa",
+      "transport": "Transport",
+      "other": "Inne",
+      "founders": "Założyciel",
+      "parks": "Park"
+    },
+    "heroBadge": "Mapa wrażeń",
+    "heroSubtitle": "Tysiące atrakcji w setkach parków na całym świecie. Następna dawka adrenaliny jest o jedno kliknięcie stąd.",
+    "ctaBrowseParks": "Odkrywaj parki",
+    "ctaLearnMore": "Jak to działa",
+    "featured": {
+      "title": "Wyróżnione parki",
+      "subtitle": "Nasz wybór najciekawszych parków w tej chwili.",
+      "loadingTitle": "Ładowanie wyróżnionych parków",
+      "loadingMessage": "Wyróżnione parki są ładowane.",
+      "errorTitle": "Nie można wczytać wyróżnionych parków",
+      "errorMessage": "Nie udało się wczytać wyróżnionych parków.",
+      "emptyTitle": "Brak wyróżnionego parku",
+      "emptyMessage": "Nie ma jeszcze parku do wyróżnienia.",
+      "discover": "Odkryj",
+      "manualSelection": "Wybór ręczny",
+      "sponsored": "Sponsorowane"
+    },
+    "search": {
+      "resultsTitle": "Wyniki wyszukiwania",
+      "resultsSubtitle": "Publiczne wyniki pasujące do wyszukiwania, z bezpośrednim dostępem do dostępnych stron szczegółów.",
+      "loadingTitle": "Wyszukiwanie",
+      "loadingMessage": "Wyniki wyszukiwania są ładowane.",
+      "errorTitle": "Wyszukiwanie nie powiodło się",
+      "errorMessage": "Nie udało się wczytać wyników wyszukiwania.",
+      "emptyTitle": "Nie znaleziono wyników",
+      "emptyMessage": "Żadna publiczna treść nie pasuje do wyszukiwania.",
+      "hintTitle": "Rozpocznij wyszukiwanie",
+      "hintMessage": "Wyszukaj park albo przefiltruj katalog według kategorii.",
+      "openResult": "Otwórz",
+      "kicker": "Inteligentne wyszukiwanie",
+      "commandTitle": "Szybciej znajdź odpowiedni park",
+      "commandSubtitle": "Przeglądaj parki, atrakcje i miejsca, filtruj według swoich potrzeb i otwieraj interesujące Cię szczegóły.",
+      "attractionsLabel": "atrakcji"
+    },
+    "experience": {
+      "mapKicker": "Widok mapy",
+      "mapTitle": "Odkrywaj parki wizualnie",
+      "mapText": "Znajduj miejsca na mapie, porównuj pobliskie parki i miej przydatne miejsca pod ręką.",
+      "catalogKicker": "Odkrywanie",
+      "catalogTitle": "Parki i atrakcje w jednym miejscu",
+      "catalogText": "Przechodź od parku do jego atrakcji, zdjęć i przydatnych informacji bez gubienia się."
+    },
+    "heroTitleFind": "Znajdź",
+    "heroTitleYour": "swój",
+    "heroTitleThrill": "dreszcz",
+    "heroTitlePerfect": "idealny",
+    "stats": {
+      "ariaLabel": "Statystyki katalogu publicznego",
+      "parks": "Parki w katalogu",
+      "attractions": "Atrakcje",
+      "countries": "Obsługiwane kraje",
+      "errorMessage": "Nie udało się wczytać statystyk publicznych."
+    },
+    "heroCards": {
+      "ariaLabel": "Podgląd wyróżnionych parków",
+      "featured": "Wybór",
+      "sensations": "Emocje",
+      "family": "Rodzina",
+      "locationFallback": "Miejsce do odkrycia",
+      "placeholderTitle": "Katalog w przygotowaniu",
+      "placeholderSubtitle": "Wyróżnione parki pojawią się tutaj.",
+      "errorMessage": "Nie udało się wczytać wyróżnionych parków."
+    }
+  },
+  "publicNavigation": {
+    "youAreHere": "Jesteś tutaj",
+    "treeAriaLabel": "Drzewo nawigacji parków"
+  },
+  "notFound": {
+    "title": "Ta strona skręciła w złą stronę",
+    "description": "Żądana strona nie istnieje, została przeniesiona albo nie jest publicznie dostępna.",
+    "homeCta": "Wróć na stronę główną",
+    "parksCta": "Przeglądaj parki"
   },
   "parkDetail": {
     "descriptionTitle": "Opis",
@@ -1270,37 +1468,213 @@
       "station": "Stacja"
     }
   },
-  "shared": {
-    "imageUpload": {
-      "title": "Prześlij an obraz",
-      "choose": "Choose an obraz",
-      "upload": "Prześlij",
-      "cancel": "Anuluj",
-      "dragAndDrop": "Przeciągnij tutaj obraz albo kliknij, aby go wybrać.",
-      "selectedFile": "Wybrany plik",
-      "invalidFile": "Wybierz prawidłowy plik obrazu.",
-      "invalidSize": "The wybrane obraz is too large.",
-      "noImageSelected": "Please select an obraz before uploading.",
-      "uploading": "Prześlijing...",
-      "uploadError": "Wystąpił błąd podczas przesyłania obrazu.",
-      "descriptionPlaceholder": "Opis"
+  "parkItems": {
+    "actions": {
+      "viewDetails": "View element",
+      "backToItems": "Back to elements",
+      "backToPark": "Wróć do parku"
+    },
+    "filters": {
+      "search": "Szukaj",
+      "searchPlaceholder": "Szukaj według nazwy, opisu, producenta lub statusu",
+      "category": "Kategoria",
+      "type": "Typ",
+      "zone": "Zone",
+      "clear": "Wyczyść filtry",
+      "allCategories": "Wszystkie kategorie",
+      "allTypes": "Wszystkie typy",
+      "allZones": "Wszystkie strefy"
+    },
+    "list": {
+      "subtitle": "Przeglądaj zawartość parku i otwieraj poszczególne elementy, aby zobaczyć szczegóły.",
+      "loadingTitle": "Ładowanie park elements",
+      "loadingMessage": "Zawartość parku jest ładowana.",
+      "errorTitle": "Nie można wczytać park elements",
+      "errorMessage": "The park content nie udało się wczytać.",
+      "emptyTitle": "Brak element available",
+      "emptyMessage": "Obecnie dla tego parku nie ma dostępnego publicznego elementu.",
+      "emptyFilteredTitle": "Brak matching element",
+      "emptyFilteredMessage": "Rozszerz filtry albo wyczyść je, aby zobaczyć więcej treści.",
+      "filteredResults": "Wyniki filtrowane",
+      "resultsCount": "Wyświetlanie {{start}}-{{end}} z {{total}} elementów"
+    },
+    "detail": {
+      "loadingTitle": "Ładowanie element",
+      "loadingMessage": "The element page is being loaded.",
+      "errorTitle": "Nie można wczytać the element",
+      "errorMessage": "The requested element nie udało się wczytać.",
+      "descriptionTitle": "Opis",
+      "specificationsTitle": "Specyfikacje",
+      "sourceTitle": "Źródło",
+      "summaryTitle": "W skrócie",
+      "technicalTitle": "Dane techniczne",
+      "performanceTitle": "Osiągi",
+      "experienceTitle": "Doświadczenie i dostępność",
+      "accessConditionsTitle": "Warunki dostępu",
+      "accessConditionsSubtitle": "Rules are displayed only when they exist on the item record.",
+      "locationKicker": "Lokalizacja",
+      "locationTitle": "Lokalizacja w parku",
+      "preciseLocationSubtitle": "Dostępne są dokładne punkty, więc mapa pokazuje te konkretne lokalizacje.",
+      "generalLocationSubtitle": "Brak szczegółowej lokalizacji, więc mapa pokazuje tylko ogólne położenie elementu.",
+      "preciseLocationBadge": "Dokładny punkt",
+      "generalLocationBadge": "Lokalizacja ogólna",
+      "relatedKicker": "Odkryj także",
+      "relatedTitle": "Similar elements",
+      "relatedSubtitle": "Wybór na podstawie typu, kategorii lub strefy elementu.",
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Wybierz punkt, aby wyróżnić go na mapie albo otworzyć trasę z poziomu znacznika.",
+      "showLocationOnMap": "Pokaż na mapie"
+    },
+    "fields": {
+      "category": "Kategoria",
+      "type": "Typ",
+      "park": "Park",
+      "zone": "Zone",
+      "manufacturer": "Producent",
+      "model": "Model",
+      "status": "Status",
+      "materialType": "Materiał",
+      "seatingType": "Seating",
+      "launchType": "Typ startu",
+      "restraintType": "System zabezpieczeń",
+      "openingDate": "Data otwarcia",
+      "closingDate": "Data zamknięcia",
+      "heightInMeters": "Wysokość",
+      "heightInFeet": "Wysokość (ft)",
+      "lengthInMeters": "Długość",
+      "lengthInFeet": "Długość (ft)",
+      "speedInKmH": "Prędkość",
+      "speedInMph": "Prędkość (mph)",
+      "dropInMeters": "Spadek",
+      "inversionCount": "Inwersje",
+      "capacityPerHour": "Pojemność / godz.",
+      "durationInSeconds": "Czas trwania (s)",
+      "trainCount": "Liczba pociągów",
+      "carsPerTrain": "Wagony / pociąg",
+      "ridersPerVehicle": "Pasażerowie / pojazd",
+      "hasSingleRider": "Kolejka single rider",
+      "hasFastPass": "Fast Pass",
+      "isAccessibleForReducedMobility": "Dostęp dla osób z ograniczoną mobilnością",
+      "isIndoor": "Wewnątrz",
+      "isLaunched": "Z napędem startowym",
+      "waterExposureLevel": "Kontakt z wodą",
+      "subtype": "Podtyp",
+      "isVisible": "Widoczny",
+      "coordinates": "Współrzędne"
+    },
+    "locations": {
+      "general": "Lokalizacja ogólna",
+      "entrance": "Wejście",
+      "exit": "Wyjście",
+      "fastPassEntrance": "Wejście Fast Pass",
+      "reducedMobilityEntrance": "Wejście dla osób o ograniczonej mobilności"
+    },
+    "accessConditionFields": {
+      "type": "Typ",
+      "value": "Wartość",
+      "requiresAccompaniment": "Wymaga opiekuna",
+      "minimumCompanionAge": "Minimalny wiek opiekuna"
+    },
+    "accessConditionTypes": {
+      "minHeight": "Minimalny wzrost",
+      "minHeightAccompanied": "Minimalny wzrost z opiekunem",
+      "maxHeight": "Maksymalny wzrost",
+      "minAge": "Minimalny wiek",
+      "minAgeAccompanied": "Minimalny wiek z opiekunem",
+      "pregnancyRestriction": "Ograniczenie dla kobiet w ciąży",
+      "heartRestriction": "Ograniczenie kardiologiczne",
+      "backNeckRestriction": "Ograniczenie dotyczące pleców lub szyi",
+      "wheelchairTransferRequired": "Wymagane przesiadanie z wózka",
+      "accessPassRequired": "Wymagana przepustka",
+      "custom": "Warunek niestandardowy"
+    },
+    "accessConditionUnits": {
+      "centimeter": "Centymetry",
+      "year": "Lata"
+    },
+    "waterExposureLevels": {
+      "none": "Brak",
+      "splash": "Lekkie ochlapanie",
+      "moderate": "Umiarkowane",
+      "soaking": "Mocne zmoczenie",
+      "extremeSoaking": "Ekstremalnie mokra"
+    },
+    "photos": {
+      "kicker": "Zdjęcia",
+      "title": "Zdjęcia",
+      "subtitle": "Filtruj zdjęcia według kategorii, aby karta pozostała czytelna.",
+      "current": "Aktualne",
+      "categories": {
+        "gallery": "Galeria",
+        "entrance": "Wejście",
+        "exit": "Wyjście",
+        "layout": "Układ",
+        "queue": "Kolejka",
+        "station": "Stacja"
+      },
+      "controls": {
+        "category": "Kategoria zdjęcia",
+        "allCategories": "Wszystkie",
+        "displayCount": "Pokazane",
+        "count": "{{count}}",
+        "all": "Wszystkie",
+        "previous": "Poprzednie zdjęcie",
+        "next": "Następne zdjęcie",
+        "openFullscreen": "Otwórz pełny ekran",
+        "closeFullscreen": "Zamknij pełny ekran"
+      },
+      "lightbox": {
+        "title": "Zdjęcie pełnoekranowe"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Wymagania wzrostu",
+        "minHeight": "Minimalny wzrost",
+        "minHeightHelp": "Dozwolone od tego wzrostu.",
+        "minHeightAccompanied": "Wzrost z opiekunem",
+        "minHeightAccompaniedHelp": "Dozwolone z osobą dorosłą od tego wzrostu.",
+        "maxHeight": "Maksymalny wzrost",
+        "maxHeightHelp": "Wejście zabronione powyżej tego wzrostu."
+      }
+    },
+    "zoneFocus": {
+      "badge": "Strefa parku",
+      "overviewBadge": "Mapa na żywo",
+      "overviewDescription": "Zobacz elementy aktualnie wyświetlane dla {{park}} zgodnie z aktywnymi filtrami.",
+      "zoneFallbackDescription": "Ta strefa grupuje aktualnie wyświetlane elementy. Użyj filtrów, aby zawęzić wybór.",
+      "totalItems": "Elementy strefy",
+      "totalItemsHint": "Powiązana zawartość",
+      "displayedItems": "Wyświetlane",
+      "displayedItemsHint": "Po filtrach",
+      "mapMarkers": "Znaczniki",
+      "mapMarkersHint": "Geolokalizowane",
+      "mapPanelTitle": "Punkty mapy",
+      "mapPanelHeading": "Mapa filtrowana w czasie rzeczywistym",
+      "mapPanelText": "Mapa podąża za aktualnym wyborem: strefą, kategorią, typem i wyszukiwaniem. Niestandardowe znaczniki pozostają dopasowane do dokładnego typu elementu.",
+      "zoneMapHeading": "Mapa strefy {{name}}",
+      "parkMapHeading": "Mapa {{name}}",
+      "allMapItems": "Wszystko"
+    },
+    "statuses": {
+      "operating": "Działa",
+      "underConstruction": "W budowie",
+      "temporarilyClosed": "Tymczasowo zamknięte",
+      "closedDefinitively": "Zamknięte na stałe",
+      "removed": "Usunięte / zdemontowane",
+      "planned": "Planowane",
+      "unknown": "Nieznane"
     }
   },
-  "common": {
-    "loadingTitle": "Ładowanie",
-    "loadingMessage": "Treść jest ładowana.",
-    "errorTitle": "Wystąpił błąd",
-    "errorMessage": "Nie udało się wczytać żądanej treści.",
-    "emptyTitle": "Brakthing to display",
-    "emptyMessage": "Brak content is available at the moment.",
-    "security": {
-      "uploadRejectedSummary": "Plik odrzucony",
-      "invalidImageUploadMessage": "Akceptowane są tylko obrazy JPEG, PNG, WebP lub GIF poniżej 10 MB."
-    },
-    "success": "Sukces",
-    "error": "Błąd",
-    "warning": "Uwaga",
-    "unexpectedError": "Wystąpił nieoczekiwany błąd."
+  "parkVisitor": {
+    "summary": {
+      "badge": "Zawartość parku",
+      "title": "Odkryj, co oferuje ten park",
+      "subtitle": "Wybierz kategorię, aby szybko znaleźć atrakcje, restauracje i miejsca w parku.",
+      "viewAllItems": "Zobacz wszystkie elementy",
+      "totalItems": "Łącznie elementów",
+      "unassignedItems": "Elementy bez strefy"
+    }
   },
   "parks": {
     "heroBadge": "Public catalog",
@@ -1554,365 +1928,6 @@
       }
     }
   },
-  "parkVisitor": {
-    "summary": {
-      "badge": "Zawartość parku",
-      "title": "Odkryj, co oferuje ten park",
-      "subtitle": "Wybierz kategorię, aby szybko znaleźć atrakcje, restauracje i miejsca w parku.",
-      "viewAllItems": "Zobacz wszystkie elementy",
-      "totalItems": "Łącznie elementów",
-      "unassignedItems": "Elementy bez strefy"
-    }
-  },
-  "parkItems": {
-    "actions": {
-      "viewDetails": "View element",
-      "backToItems": "Back to elements",
-      "backToPark": "Wróć do parku"
-    },
-    "filters": {
-      "search": "Szukaj",
-      "searchPlaceholder": "Szukaj według nazwy, opisu, producenta lub statusu",
-      "category": "Kategoria",
-      "type": "Typ",
-      "zone": "Zone",
-      "clear": "Wyczyść filtry",
-      "allCategories": "Wszystkie kategorie",
-      "allTypes": "Wszystkie typy",
-      "allZones": "Wszystkie strefy"
-    },
-    "list": {
-      "subtitle": "Przeglądaj zawartość parku i otwieraj poszczególne elementy, aby zobaczyć szczegóły.",
-      "loadingTitle": "Ładowanie park elements",
-      "loadingMessage": "Zawartość parku jest ładowana.",
-      "errorTitle": "Nie można wczytać park elements",
-      "errorMessage": "The park content nie udało się wczytać.",
-      "emptyTitle": "Brak element available",
-      "emptyMessage": "Obecnie dla tego parku nie ma dostępnego publicznego elementu.",
-      "emptyFilteredTitle": "Brak matching element",
-      "emptyFilteredMessage": "Rozszerz filtry albo wyczyść je, aby zobaczyć więcej treści.",
-      "filteredResults": "Wyniki filtrowane",
-      "resultsCount": "Wyświetlanie {{start}}-{{end}} z {{total}} elementów"
-    },
-    "detail": {
-      "loadingTitle": "Ładowanie element",
-      "loadingMessage": "The element page is being loaded.",
-      "errorTitle": "Nie można wczytać the element",
-      "errorMessage": "The requested element nie udało się wczytać.",
-      "descriptionTitle": "Opis",
-      "specificationsTitle": "Specyfikacje",
-      "sourceTitle": "Źródło",
-      "summaryTitle": "W skrócie",
-      "technicalTitle": "Dane techniczne",
-      "performanceTitle": "Osiągi",
-      "experienceTitle": "Doświadczenie i dostępność",
-      "accessConditionsTitle": "Warunki dostępu",
-      "accessConditionsSubtitle": "Rules are displayed only when they exist on the item record.",
-      "locationKicker": "Lokalizacja",
-      "locationTitle": "Lokalizacja w parku",
-      "preciseLocationSubtitle": "Dostępne są dokładne punkty, więc mapa pokazuje te konkretne lokalizacje.",
-      "generalLocationSubtitle": "Brak szczegółowej lokalizacji, więc mapa pokazuje tylko ogólne położenie elementu.",
-      "preciseLocationBadge": "Dokładny punkt",
-      "generalLocationBadge": "Lokalizacja ogólna",
-      "relatedKicker": "Odkryj także",
-      "relatedTitle": "Similar elements",
-      "relatedSubtitle": "Wybór na podstawie typu, kategorii lub strefy elementu.",
-      "navigationTitle": "Navigation",
-      "locationSubtitle": "Wybierz punkt, aby wyróżnić go na mapie albo otworzyć trasę z poziomu znacznika.",
-      "showLocationOnMap": "Pokaż na mapie"
-    },
-    "fields": {
-      "category": "Kategoria",
-      "type": "Typ",
-      "park": "Park",
-      "zone": "Zone",
-      "manufacturer": "Producent",
-      "model": "Model",
-      "status": "Status",
-      "materialType": "Materiał",
-      "seatingType": "Seating",
-      "launchType": "Typ startu",
-      "restraintType": "System zabezpieczeń",
-      "openingDate": "Data otwarcia",
-      "closingDate": "Data zamknięcia",
-      "heightInMeters": "Wysokość",
-      "heightInFeet": "Wysokość (ft)",
-      "lengthInMeters": "Długość",
-      "lengthInFeet": "Długość (ft)",
-      "speedInKmH": "Prędkość",
-      "speedInMph": "Prędkość (mph)",
-      "dropInMeters": "Spadek",
-      "inversionCount": "Inwersje",
-      "capacityPerHour": "Pojemność / godz.",
-      "durationInSeconds": "Czas trwania (s)",
-      "trainCount": "Liczba pociągów",
-      "carsPerTrain": "Wagony / pociąg",
-      "ridersPerVehicle": "Pasażerowie / pojazd",
-      "hasSingleRider": "Single rider",
-      "hasFastPass": "Fast Pass",
-      "isAccessibleForReducedMobility": "Dostęp dla osób z ograniczoną mobilnością",
-      "isIndoor": "Wewnątrz",
-      "isLaunched": "Z napędem startowym",
-      "waterExposureLevel": "Kontakt z wodą",
-      "subtype": "Podtyp",
-      "isVisible": "Widoczny",
-      "coordinates": "Współrzędne"
-    },
-    "locations": {
-      "general": "Lokalizacja ogólna",
-      "entrance": "Wejście",
-      "exit": "Wyjście",
-      "fastPassEntrance": "Wejście Fast Pass",
-      "reducedMobilityEntrance": "Wejście dla osób o ograniczonej mobilności"
-    },
-    "accessConditionFields": {
-      "type": "Typ",
-      "value": "Wartość",
-      "requiresAccompaniment": "Wymaga opiekuna",
-      "minimumCompanionAge": "Minimalny wiek opiekuna"
-    },
-    "accessConditionTypes": {
-      "minHeight": "Minimalny wzrost",
-      "minHeightAccompanied": "Minimalny wzrost z opiekunem",
-      "maxHeight": "Maksymalny wzrost",
-      "minAge": "Minimalny wiek",
-      "minAgeAccompanied": "Minimalny wiek z opiekunem",
-      "pregnancyRestriction": "Ograniczenie dla kobiet w ciąży",
-      "heartRestriction": "Ograniczenie kardiologiczne",
-      "backNeckRestriction": "Ograniczenie dotyczące pleców lub szyi",
-      "wheelchairTransferRequired": "Wymagane przesiadanie z wózka",
-      "accessPassRequired": "Wymagana przepustka",
-      "custom": "Warunek niestandardowy"
-    },
-    "accessConditionUnits": {
-      "centimeter": "Centymetry",
-      "year": "Lata"
-    },
-    "waterExposureLevels": {
-      "none": "Brak",
-      "splash": "Lekkie ochlapanie",
-      "moderate": "Umiarkowane",
-      "soaking": "Mocne zmoczenie",
-      "extremeSoaking": "Ekstremalnie mokra"
-    },
-    "photos": {
-      "kicker": "Zdjęcia",
-      "title": "Zdjęcia",
-      "subtitle": "Filtruj zdjęcia według kategorii, aby karta pozostała czytelna.",
-      "current": "Aktualne",
-      "categories": {
-        "gallery": "Galeria",
-        "entrance": "Wejście",
-        "exit": "Wyjście",
-        "layout": "Układ",
-        "queue": "Kolejka",
-        "station": "Stacja"
-      },
-      "controls": {
-        "category": "Kategoria zdjęcia",
-        "allCategories": "Wszystkie",
-        "displayCount": "Pokazane",
-        "count": "{{count}}",
-        "all": "Wszystkie",
-        "previous": "Poprzednie zdjęcie",
-        "next": "Następne zdjęcie",
-        "openFullscreen": "Otwórz pełny ekran",
-        "closeFullscreen": "Zamknij pełny ekran"
-      },
-      "lightbox": {
-        "title": "Zdjęcie pełnoekranowe"
-      }
-    },
-    "accessConditions": {
-      "height": {
-        "title": "Wymagania wzrostu",
-        "minHeight": "Minimalny wzrost",
-        "minHeightHelp": "Dozwolone od tego wzrostu.",
-        "minHeightAccompanied": "Wzrost z opiekunem",
-        "minHeightAccompaniedHelp": "Dozwolone z osobą dorosłą od tego wzrostu.",
-        "maxHeight": "Maksymalny wzrost",
-        "maxHeightHelp": "Wejście zabronione powyżej tego wzrostu."
-      }
-    },
-    "zoneFocus": {
-      "badge": "Strefa parku",
-      "overviewBadge": "Mapa na żywo",
-      "overviewDescription": "Zobacz elementy aktualnie wyświetlane dla {{park}} zgodnie z aktywnymi filtrami.",
-      "zoneFallbackDescription": "Ta strefa grupuje aktualnie wyświetlane elementy. Użyj filtrów, aby zawęzić wybór.",
-      "totalItems": "Elementy strefy",
-      "totalItemsHint": "Powiązana zawartość",
-      "displayedItems": "Wyświetlane",
-      "displayedItemsHint": "Po filtrach",
-      "mapMarkers": "Znaczniki",
-      "mapMarkersHint": "Geolokalizowane",
-      "mapPanelTitle": "Punkty mapy",
-      "mapPanelHeading": "Mapa filtrowana w czasie rzeczywistym",
-      "mapPanelText": "Mapa podąża za aktualnym wyborem: strefą, kategorią, typem i wyszukiwaniem. Niestandardowe znaczniki pozostają dopasowane do dokładnego typu elementu.",
-      "zoneMapHeading": "Mapa strefy {{name}}",
-      "parkMapHeading": "Mapa {{name}}",
-      "allMapItems": "Wszystko"
-    },
-    "statuses": {
-      "operating": "Działa",
-      "underConstruction": "W budowie",
-      "temporarilyClosed": "Tymczasowo zamknięte",
-      "closedDefinitively": "Zamknięte na stałe",
-      "removed": "Usunięte / zdemontowane",
-      "planned": "Planowane",
-      "unknown": "Nieznane"
-    }
-  },
-  "publicNavigation": {
-    "youAreHere": "Jesteś tutaj",
-    "treeAriaLabel": "Drzewo nawigacji parków"
-  },
-  "maps": {
-    "placeholder": {
-      "title": "Mapa niedostępna",
-      "message": "Wymagane współrzędne nie są jeszcze dostępne."
-    },
-    "distance": {
-      "title": "Punkt geograficzny"
-    }
-  },
-  "footer": {
-    "ariaLabel": "Stopka strony",
-    "brand": {
-      "tagline": "Pełna mapa emocji. Park po parku, atrakcja po atrakcji."
-    },
-    "explore": {
-      "title": "Odkrywaj",
-      "allParks": "Wszystkie parki",
-      "topRollerCoasters": "Najlepsze rollercoastery",
-      "interactiveMap": "Mapa interaktywna",
-      "news": "Nowości"
-    },
-    "about": {
-      "title": "O projekcie",
-      "project": "Projekt",
-      "sources": "Źródła",
-      "contact": "Kontakt",
-      "privacy": "Prywatność"
-    },
-    "languages": {
-      "title": "Języki"
-    },
-    "bottom": {
-      "copy": "© {{year}} AmusementPark — Stworzone z ❤️ i adrenaliną",
-      "version": "Wersja {{version}}"
-    }
-  },
-  "ui": {
-    "photoCarousel": {
-      "kicker": "Zdjęcia",
-      "title": "Zdjęcia",
-      "subtitle": "Filtruj zdjęcia według kategorii, aby karta pozostała czytelna.",
-      "current": "Aktualne",
-      "categories": {
-        "gallery": "Galeria",
-        "entrance": "Wejście",
-        "exit": "Wyjście",
-        "layout": "Układ",
-        "queue": "Kolejka",
-        "station": "Stacja"
-      },
-      "controls": {
-        "category": "Kategoria zdjęcia",
-        "allCategories": "Wszystkie",
-        "displayCount": "Pokazane",
-        "count": "{{count}}",
-        "all": "Wszystkie",
-        "previous": "Poprzednie zdjęcie",
-        "next": "Następne zdjęcie",
-        "openFullscreen": "Otwórz pełny ekran",
-        "closeFullscreen": "Zamknij pełny ekran",
-        "openSource": "Otwórz {{name}}"
-      },
-      "lightbox": {
-        "title": "Zdjęcie pełnoekranowe"
-      }
-    }
-  },
-  "accountLayout": {
-    "kicker": "Strefa osobista",
-    "title": "Twój paszport parków",
-    "subtitle": "Zarządzaj profilem, językiem i dostępem w przejrzystej przestrzeni osobistej.",
-    "security": "Bezpieczny dostęp",
-    "languages": "Języki",
-    "profile": "Profil"
-  },
-  "languageModal": {
-    "kicker": "Język",
-    "title": "Wybierz język",
-    "subtitle": "Zmień całe doświadczenie, zachowując bieżącą trasę, gdy to możliwe.",
-    "current": "Aktualny"
-  },
-  "aboutPage": {
-    "kicker": "Wizja projektu",
-    "title": "Czytelniejszy sposób odkrywania parków",
-    "lead": "AmusementPark mapuje parki, atrakcje i praktyczne informacje na stabilnej architekturze gotowej na porównania i dystanse.",
-    "primaryCta": "Przeglądaj parki",
-    "secondaryCta": "Wróć do strony głównej",
-    "stats": {
-      "parksLabel": "Potencjalne parki",
-      "parksHint": "Zaprojektowane pod szybkość w skali",
-      "mapLabel": "Cel designu",
-      "mapHint": "Publiczna ścieżka gotowa do rozwoju"
-    },
-    "mission": {
-      "kicker": "Misja",
-      "title": "Szybciej znaleźć właściwy park",
-      "subtitle": "Produkt zaczyna od solidnego portfolio i rozwija się w stronę bogatszych narzędzi odkrywania i decyzji."
-    },
-    "cards": {
-      "discover": {
-        "badge": "Odkrywaj",
-        "title": "Wiarygodne strony parków",
-        "text": "Każda strona parku łączy lokalizację, elementy, zdjęcia, pobliskie parki i przydatne referencje."
-      },
-      "explore": {
-        "badge": "Eksploruj",
-        "title": "Podejście map-first",
-        "text": "Wyszukiwanie, interakcje mapy i pobliskie dystanse są podstawami do ponownego użycia."
-      },
-      "enjoy": {
-        "badge": "Korzystaj",
-        "title": "Spójna identyfikacja wizualna",
-        "text": "Strony publiczne, auth i profilowe współdzielą te same tokeny, powierzchnie i komponenty."
-      }
-    },
-    "clean": {
-      "kicker": "Inżynieria",
-      "title": "Zbudowane, aby rozwijać się krok po kroku",
-      "text": "Projekt zaprojektowano tak, aby dodawać mapy, porównania i planowanie podróży bez zakłócania doświadczenia odwiedzającego."
-    }
-  },
-  "images": {
-    "categories": {
-      "AVATAR": "Awatar",
-      "PARK_LOGO": "Logo parku",
-      "PARK": "Zdjęcie parku",
-      "ATTRACTION": "Item zdjęcie"
-    },
-    "ownerTypes": {
-      "NONE": "Brak",
-      "PARK": "Park",
-      "USER": "User",
-      "ATTRACTION": "Element"
-    }
-  },
-  "pagination": {
-    "previous": "Poprzedni",
-    "next": "Następny"
-  },
-  "cookieConsent": {
-    "ariaLabel": "Baner informacji i wyboru dotyczący plików cookie",
-    "title": "Pliki cookie i prywatność",
-    "text": "AmusementPark używa plików cookie lub pamięci niezbędnych do działania strony, w szczególności bezpieczeństwa, sesji, języka, motywu i uwierzytelniania. Za Twoją zgodą strona włącza także opcjonalne pliki cookie Matomo do pomiaru oglądalności.",
-    "privacyLink": "Przeczytaj politykę prywatności.",
-    "accept": "Akceptuj opcjonalne cookie",
-    "continueWithNecessaryCookiesOnly": "Kontynuuj z niezbędnymi cookie"
-  },
   "privacyPage": {
     "kicker": "Dane osobowe",
     "title": "Polityka prywatności",
@@ -1986,11 +2001,5 @@
     },
     "lastUpdate": "Ostatnia aktualizacja: 23 maja 2026 r.",
     "backHome": "Wróć do strony głównej"
-  },
-  "notFound": {
-    "title": "Ta strona skręciła w złą stronę",
-    "description": "Żądana strona nie istnieje, została przeniesiona albo nie jest publicznie dostępna.",
-    "homeCta": "Wróć na stronę główną",
-    "parksCta": "Przeglądaj parki"
   }
 }

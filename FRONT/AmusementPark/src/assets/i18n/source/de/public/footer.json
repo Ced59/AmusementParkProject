@@ -1,0 +1,29 @@
+{
+  "footer": {
+    "ariaLabel": "Fußzeile der Website",
+    "brand": {
+      "tagline": "Die vollständige Karte der Nervenkitzel. Park für Park, Attraktion für Attraktion."
+    },
+    "explore": {
+      "title": "Entdecken",
+      "allParks": "Alle Parks",
+      "topRollerCoasters": "Top-Achterbahnen",
+      "interactiveMap": "Interaktive Karte",
+      "news": "Neuheiten"
+    },
+    "about": {
+      "title": "Über uns",
+      "project": "Das Projekt",
+      "sources": "Quellen",
+      "contact": "Kontakt",
+      "privacy": "Datenschutz"
+    },
+    "languages": {
+      "title": "Sprachen"
+    },
+    "bottom": {
+      "copy": "© {{year}} AmusementPark — Gemacht mit ❤️ und Adrenalin",
+      "version": "Version {{version}}"
+    }
+  }
+}

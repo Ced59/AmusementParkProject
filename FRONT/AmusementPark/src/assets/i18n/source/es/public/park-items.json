@@ -1,0 +1,200 @@
+{
+  "parkItems": {
+    "actions": {
+      "viewDetails": "View elemento",
+      "backToItems": "Back to elementos",
+      "backToPark": "Back to parque"
+    },
+    "filters": {
+      "search": "Buscar",
+      "searchPlaceholder": "Buscar por nombre, descripción, fabricante o estado",
+      "category": "Categoría",
+      "type": "Tipo",
+      "zone": "Zone",
+      "clear": "Limpiar filtros",
+      "allCategories": "Todas las categorías",
+      "allTypes": "Todos los tipos",
+      "allZones": "Todas las zonas"
+    },
+    "list": {
+      "subtitle": "Explora el contenido del parque y abre cada elemento para ver sus detalles.",
+      "loadingTitle": "Cargando parque elementos",
+      "loadingMessage": "The parque content is being loaded.",
+      "errorTitle": "Sin se puede cargar parque elementos",
+      "errorMessage": "The parque content no se pudo cargar.",
+      "emptyTitle": "Sin elemento available",
+      "emptyMessage": "Actualmente no hay ningún elemento público disponible para este parque.",
+      "emptyFilteredTitle": "Sin matching elemento",
+      "emptyFilteredMessage": "Prueba a ampliar los filtros o bórralos para ver más contenido.",
+      "filteredResults": "Resultados filtrados",
+      "resultsCount": "Mostrando {{start}}-{{end}} de {{total}} elemento(s)"
+    },
+    "detail": {
+      "loadingTitle": "Cargando elemento",
+      "loadingMessage": "The elemento page is being loaded.",
+      "errorTitle": "Sin se puede cargar the elemento",
+      "errorMessage": "The requested elemento no se pudo cargar.",
+      "descriptionTitle": "Descripción",
+      "specificationsTitle": "Especificaciones",
+      "sourceTitle": "Fuente",
+      "summaryTitle": "De un vistazo",
+      "technicalTitle": "Datos técnicos",
+      "performanceTitle": "Rendimiento",
+      "experienceTitle": "Experiencia y accesibilidad",
+      "accessConditionsTitle": "Condiciones de acceso",
+      "accessConditionsSubtitle": "Rules are displayed only when they exist on the item record.",
+      "locationKicker": "Ubicación",
+      "locationTitle": "Location inside the parque",
+      "preciseLocationSubtitle": "Hay puntos precisos disponibles, por lo que el mapa muestra esas ubicaciones específicas.",
+      "generalLocationSubtitle": "No hay ubicación específica disponible, por lo que el mapa solo muestra la ubicación general.",
+      "preciseLocationBadge": "Punto preciso",
+      "generalLocationBadge": "Ubicación general",
+      "relatedKicker": "Descubre también",
+      "relatedTitle": "Similar elementos",
+      "relatedSubtitle": "Selección basada en el tipo, la categoría o la zona del elemento.",
+      "navigationTitle": "Navigation",
+      "locationSubtitle": "Selecciona un punto para resaltarlo en el mapa o abrir la ruta desde el marcador.",
+      "showLocationOnMap": "Mostrar en el mapa"
+    },
+    "fields": {
+      "category": "Categoría",
+      "type": "Tipo",
+      "park": "Parque",
+      "zone": "Zone",
+      "manufacturer": "Fabricante",
+      "model": "Modelo",
+      "status": "Estado",
+      "materialType": "Material",
+      "seatingType": "Asientos",
+      "launchType": "Tipo de lanzamiento",
+      "restraintType": "Sistema de sujeción",
+      "openingDate": "Fecha de apertura",
+      "closingDate": "Fecha de cierre",
+      "heightInMeters": "Altura",
+      "heightInFeet": "Altura (ft)",
+      "lengthInMeters": "Longitud",
+      "lengthInFeet": "Longitud (ft)",
+      "speedInKmH": "Velocidad",
+      "speedInMph": "Velocidad (mph)",
+      "dropInMeters": "Caída",
+      "inversionCount": "Inversiones",
+      "capacityPerHour": "Capacidad / hora",
+      "durationInSeconds": "Duración (s)",
+      "trainCount": "Número de trenes",
+      "carsPerTrain": "Coches / tren",
+      "ridersPerVehicle": "Pasajeros / vehículo",
+      "hasSingleRider": "Fila single rider",
+      "hasFastPass": "Fast Pass",
+      "isAccessibleForReducedMobility": "Acceso para movilidad reducida",
+      "isIndoor": "Interior",
+      "isLaunched": "Con lanzamiento",
+      "waterExposureLevel": "Exposición al agua",
+      "subtype": "Subtipo",
+      "isVisible": "Visible",
+      "coordinates": "Coordenadas"
+    },
+    "locations": {
+      "general": "Ubicación general",
+      "entrance": "Entrada",
+      "exit": "Salida",
+      "fastPassEntrance": "Entrada Fast Pass",
+      "reducedMobilityEntrance": "Entrada para movilidad reducida"
+    },
+    "accessConditionFields": {
+      "type": "Tipo",
+      "value": "Valor",
+      "requiresAccompaniment": "Requiere acompañamiento",
+      "minimumCompanionAge": "Edad mínima del acompañante"
+    },
+    "accessConditionTypes": {
+      "minHeight": "Altura mínima",
+      "minHeightAccompanied": "Altura mínima con acompañante",
+      "maxHeight": "Altura máxima",
+      "minAge": "Edad mínima",
+      "minAgeAccompanied": "Edad mínima con acompañante",
+      "pregnancyRestriction": "Restricción por embarazo",
+      "heartRestriction": "Restricción cardíaca",
+      "backNeckRestriction": "Restricción de espalda o cuello",
+      "wheelchairTransferRequired": "Traslado desde silla de ruedas requerido",
+      "accessPassRequired": "Pase de acceso requerido",
+      "custom": "Condición personalizada"
+    },
+    "accessConditionUnits": {
+      "centimeter": "Centímetros",
+      "year": "Años"
+    },
+    "waterExposureLevels": {
+      "none": "Ninguno",
+      "splash": "Salpicadura ligera",
+      "moderate": "Moderado",
+      "soaking": "Empapado",
+      "extremeSoaking": "Extremadamente empapante"
+    },
+    "photos": {
+      "kicker": "Fotos",
+      "title": "Fotos",
+      "subtitle": "Filtra las imágenes por categoría para mantener la ficha clara.",
+      "current": "Actual",
+      "categories": {
+        "gallery": "Galería",
+        "entrance": "Entrada",
+        "exit": "Salida",
+        "layout": "Plano",
+        "queue": "Cola",
+        "station": "Estación"
+      },
+      "controls": {
+        "category": "Categoría de foto",
+        "allCategories": "Todas",
+        "displayCount": "Mostradas",
+        "count": "{{count}}",
+        "all": "Todas",
+        "previous": "Foto anterior",
+        "next": "Foto siguiente",
+        "openFullscreen": "Abrir en pantalla completa",
+        "closeFullscreen": "Cerrar pantalla completa"
+      },
+      "lightbox": {
+        "title": "Foto en pantalla completa"
+      }
+    },
+    "accessConditions": {
+      "height": {
+        "title": "Requisitos de altura",
+        "minHeight": "Altura mínima",
+        "minHeightHelp": "Permitido desde esta altura.",
+        "minHeightAccompanied": "Altura con adulto",
+        "minHeightAccompaniedHelp": "Permitido con un adulto desde esta altura.",
+        "maxHeight": "Altura máxima",
+        "maxHeightHelp": "Acceso prohibido por encima de esta altura."
+      }
+    },
+    "zoneFocus": {
+      "badge": "Zona del parque",
+      "overviewBadge": "Mapa en vivo",
+      "overviewDescription": "Visualiza los elementos mostrados para {{park}} según los filtros activos.",
+      "zoneFallbackDescription": "Esta zona agrupa los elementos mostrados actualmente. Usa los filtros para afinar la selección.",
+      "totalItems": "Elementos de zona",
+      "totalItemsHint": "Contenido asociado",
+      "displayedItems": "Mostrados",
+      "displayedItemsHint": "Tras filtros",
+      "mapMarkers": "Marcadores",
+      "mapMarkersHint": "Geolocalizados",
+      "mapPanelTitle": "Referencias del mapa",
+      "mapPanelHeading": "Mapa filtrado en tiempo real",
+      "mapPanelText": "El mapa sigue la selección actual: zona, categoría, tipo y búsqueda. Los marcadores personalizados se adaptan al tipo exacto de cada elemento.",
+      "zoneMapHeading": "Mapa zona {{name}}",
+      "parkMapHeading": "Mapa {{name}}",
+      "allMapItems": "Todo"
+    },
+    "statuses": {
+      "operating": "En funcionamiento",
+      "underConstruction": "En construcción",
+      "temporarilyClosed": "Cerrado temporalmente",
+      "closedDefinitively": "Cerrado definitivamente",
+      "removed": "Retirado / desmontado",
+      "planned": "Previsto",
+      "unknown": "Desconocido"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "admin": {
+    "references": {
+      "sections": {
+        "identity": "Identité",
+        "contact": "Coordonnées facultatives",
+        "content": "Contenu éditorial",
+        "administration": "Pilotage admin"
+      },
+      "fields": {
+        "legalName": "Nom légal",
+        "foundedYear": "Année de création",
+        "closedYear": "Année de fermeture",
+        "websiteUrl": "Site web",
+        "email": "E-mail",
+        "phoneNumber": "Téléphone",
+        "street": "Rue",
+        "city": "Ville",
+        "postalCode": "Code postal",
+        "countryCode": "Code pays",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "occupation": "Métier / rôle",
+        "birthDate": "Date de naissance",
+        "deathDate": "Date de décès",
+        "birthPlace": "Lieu de naissance",
+        "nationalityCountryCode": "Nationalité / code pays"
+      },
+      "images": {
+        "title": "Images de la fiche",
+        "help": "Ajoutez des portraits, logos, photos de siège social, documents historiques ou visuels de référence. Elles resteront conditionnelles côté public.",
+        "add": "Ajouter une image",
+        "saveBeforeUpload": "Enregistrez la fiche avant d’ajouter des images.",
+        "empty": "Aucune image n’est encore rattachée à cette fiche.",
+        "untitled": "Image de référence",
+        "uploadTitle": "Ajouter une image à la fiche"
+      }
+    }
+  }
+}

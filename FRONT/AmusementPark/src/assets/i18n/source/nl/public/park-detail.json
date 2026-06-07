@@ -1,0 +1,11 @@
+{
+  "parkDetail": {
+    "descriptionTitle": "Beschrijving",
+    "subtitle": "Gedetailleerde informatie over dit park en zijn geografische locatie.",
+    "exploreButton": "Verken het park",
+    "countryCode": "Landcode",
+    "latitude": "Breedtegraad",
+    "longitude": "Lengtegraad",
+    "loading": "Park wordt geladen..."
+  }
+}

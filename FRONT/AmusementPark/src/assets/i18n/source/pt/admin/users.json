@@ -1,0 +1,46 @@
+{
+  "admin": {
+    "users": {
+      "total": "Número total de utilizadores: {{count}}",
+      "empty": "Nenhum utilizador encontrado.",
+      "columns": {
+        "email": "Email",
+        "firstName": "Nome",
+        "lastName": "Sobrenome",
+        "roles": "Funções",
+        "status": "Estado",
+        "actions": "Ações"
+      },
+      "manage": "Gerir utilizador",
+      "profileTitle": "Gestão do utilizador",
+      "backToList": "Voltar à lista de utilizadores",
+      "newEmail": "Novo email",
+      "status": {
+        "blocked": "Bloqueado",
+        "active": "Ativo"
+      },
+      "rolesTitle": "Gestão de funções",
+      "roleAssigned": "Atualmente atribuído",
+      "roleNotAssigned": "Não atribuído",
+      "addRole": "Atribuir",
+      "removeRole": "Remover",
+      "securityTitle": "Segurança",
+      "blockingTitle": "Bloqueio de conta",
+      "blockedDescription": "Esta conta está bloqueada.",
+      "activeDescription": "Esta conta está ativa.",
+      "block": "Bloquear",
+      "unlock": "Desbloquear",
+      "password": "Nova palavra-passe",
+      "passwordConfirm": "Confirmar palavra-passe",
+      "changePassword": "Alterar palavra-passe",
+      "title": "Utilizadores",
+      "blockTitle": "Bloqueio da conta",
+      "newPassword": "Nova palavra-passe",
+      "confirmPassword": "Confirmar palavra-passe",
+      "subtitle": "Gerir contas, funções e estados de acesso.",
+      "loadError": "Não foi possível carregar os utilizadores.",
+      "blockAction": "Bloquear conta",
+      "unblockAction": "Desbloquear conta"
+    }
+  }
+}

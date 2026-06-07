@@ -1,0 +1,51 @@
+{
+  "admin": {
+    "workbench": {
+      "navTitle": "Parkelemente-Arbeitsbereich",
+      "title": "Schnelle Elementerfassung",
+      "kicker": "Schnelle Administration",
+      "subtitle": "Parkelemente schnell erstellen, filtern und korrigieren, ohne den vollständigen Datensatz zu öffnen.",
+      "quickCreate": {
+        "title": "Schnellerfassung",
+        "name": "Name",
+        "park": "Park",
+        "zone": "Zone",
+        "category": "Kategorie",
+        "type": "Typ",
+        "manufacturer": "Hersteller",
+        "visibility": "Sichtbarkeit",
+        "reviewStatus": "Prüfstatus",
+        "create": "Erstellen",
+        "createAndContinue": "Erstellen und fortfahren",
+        "creating": "Wird erstellt…"
+      },
+      "assistantImport": {
+        "title": "Unterstützter Import",
+        "pasteLines": "Zeilen einfügen",
+        "preview": "Vorschau",
+        "apply": "Anwenden",
+        "template": "Vorlage",
+        "mapping": "Feldzuordnung"
+      },
+      "validations": {
+        "nameRequired": "Der Name ist erforderlich.",
+        "parkRequired": "Der Park ist erforderlich.",
+        "duplicateWarning": "Ein ähnliches Element existiert bereits.",
+        "invalidTypeForCategory": "Der Typ passt nicht zur Kategorie."
+      },
+      "duplicates": {
+        "title": "Mögliche Duplikate",
+        "samePark": "Gleicher Park",
+        "sameZone": "Gleiche Zone",
+        "ignore": "Ignorieren",
+        "openExisting": "Vorhandenes öffnen"
+      },
+      "templates": {
+        "parkOnly": "Nur Park",
+        "zoneItems": "Zone + Elemente",
+        "services": "Services ohne Zone",
+        "captainCoaster": "Angereicherter Captain-Coaster-Import"
+      }
+    }
+  }
+}

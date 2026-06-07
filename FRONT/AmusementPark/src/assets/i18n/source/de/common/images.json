@@ -1,0 +1,16 @@
+{
+  "images": {
+    "categories": {
+      "AVATAR": "Avatar",
+      "PARK_LOGO": "Parklogo",
+      "PARK": "Parkfoto",
+      "ATTRACTION": "Foto des Elements"
+    },
+    "ownerTypes": {
+      "NONE": "Keine",
+      "PARK": "Park",
+      "USER": "Benutzer",
+      "ATTRACTION": "Element"
+    }
+  }
+}

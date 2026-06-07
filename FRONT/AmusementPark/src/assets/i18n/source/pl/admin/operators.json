@@ -1,0 +1,23 @@
+{
+  "admin": {
+    "operators": {
+      "total": "Operatorzy: {{count}}",
+      "searchPlaceholder": "Szukaj operatora",
+      "create": "Utwórz operatora",
+      "name": "Nazwa",
+      "actions": "Akcje",
+      "edit": "Edytuj",
+      "empty": "Nie znaleziono operatorów.",
+      "editPage": {
+        "createTitle": "Utwórz operatora",
+        "updateTitle": "Edytuj operatora",
+        "name": "Nazwa",
+        "description": "Opis"
+      },
+      "title": "Operatorzy",
+      "subtitle": "Lista operatorów używana w kartach parków.",
+      "reviewStatus": "Status admin",
+      "loadError": "Nie udało się wczytać operatorów."
+    }
+  }
+}

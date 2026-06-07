@@ -3,44 +3,11 @@ import path from 'node:path';
 
 const root = process.cwd();
 const i18nDir = path.join(root, 'src', 'assets', 'i18n');
-const overridesFilePath = path.join(i18nDir, 'all-overrides.json');
 const sourceDir = path.join(root, 'src', 'app');
 const languages = ['en', 'fr', 'es', 'de', 'it', 'nl', 'pl', 'pt'];
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-}
-
-function deepMerge(base, override) {
-  const result = { ...base };
-
-  for (const [key, value] of Object.entries(override)) {
-    const baseValue = result[key];
-
-    if (
-      value &&
-      typeof value === 'object' &&
-      !Array.isArray(value) &&
-      baseValue &&
-      typeof baseValue === 'object' &&
-      !Array.isArray(baseValue)
-    ) {
-      result[key] = deepMerge(baseValue, value);
-      continue;
-    }
-
-    result[key] = value;
-  }
-
-  return result;
-}
-
-const allOverrides = fs.existsSync(overridesFilePath) ? readJson(overridesFilePath) : {};
-
-function readMergedLanguage(language) {
-  const baseFilePath = path.join(i18nDir, `${language}.json`);
-  const base = readJson(baseFilePath);
-  return deepMerge(base, allOverrides[language] ?? {});
 }
 
 function flatten(value, prefix = '') {
@@ -107,7 +74,7 @@ for (const language of languages) {
     continue;
   }
 
-  const entries = new Map(flatten(readMergedLanguage(language)));
+  const entries = new Map(flatten(readJson(filePath)));
   flattenedByLanguage.set(language, entries);
 
   for (const [key, value] of entries) {
@@ -132,7 +99,7 @@ for (const language of languages.filter((item) => item !== 'en')) {
 
   for (const key of keys) {
     if (!englishKeys.has(key)) {
-      errors.push(`${language}: key not present in merged en translations: ${key}`);
+      errors.push(`${language}: key not present in en translations: ${key}`);
     }
   }
 }
@@ -140,7 +107,7 @@ for (const language of languages.filter((item) => item !== 'en')) {
 const usedKeys = extractLiteralKeys();
 for (const key of usedKeys) {
   if (!englishKeys.has(key)) {
-    errors.push(`Used translation key is missing from merged en translations: ${key}`);
+    errors.push(`Used translation key is missing from en translations: ${key}`);
   }
 }
 
@@ -178,4 +145,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`i18n check passed for ${languages.length} languages and ${englishKeys.size} merged keys.`);
+console.log(`i18n check passed for ${languages.length} languages and ${englishKeys.size} keys.`);
