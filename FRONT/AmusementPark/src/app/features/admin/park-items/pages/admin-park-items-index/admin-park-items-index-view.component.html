@@ -9,6 +9,16 @@
       <span class="admin-total-pill">
         {{ totalKey | translate:{ count: totalRecords() } }}
       </span>
+      @if (showQuickCreateButton) {
+        <button
+          pButton
+          type="button"
+          icon="pi pi-bolt"
+          class="p-button-sm p-button-success"
+          [label]="quickCreateButtonLabelKey | translate"
+          (click)="openQuickCreate()">
+        </button>
+      }
       @if (showCreateButton && createButtonRouterLink) {
         <button
           pButton
@@ -206,6 +216,16 @@
               (click)="goToEdit(row)"
               [label]="'actions.edit' | translate">
             </button>
+            @if (showQuickCreateButton) {
+              <button
+                pButton
+                type="button"
+                icon="pi pi-copy"
+                class="p-button-sm p-button-secondary"
+                (click)="duplicateRow(row)"
+                [label]="'admin.parks.items.quickCreate.duplicate' | translate">
+              </button>
+            }
             @if (showDeleteAction) {
               <button
                 pButton

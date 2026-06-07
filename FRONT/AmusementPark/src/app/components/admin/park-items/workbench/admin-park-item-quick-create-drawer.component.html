@@ -1,0 +1,135 @@
+@if (isOpen && localDraft) {
+  <div class="quick-create-backdrop" (click)="closed.emit()"></div>
+  <aside
+    class="quick-create-drawer"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="'admin.parks.items.quickCreate.title' | translate"
+    (keydown)="onDrawerKeyDown($event)">
+    <header class="quick-create-drawer__header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.parks.items.quickCreate.kicker' | translate }}</span>
+        <h2>{{ 'admin.parks.items.quickCreate.title' | translate }}</h2>
+        <p>{{ 'admin.parks.items.quickCreate.subtitle' | translate }}</p>
+      </div>
+      <button
+        pButton
+        type="button"
+        icon="pi pi-times"
+        class="p-button-rounded p-button-text"
+        [attr.aria-label]="'admin.parks.items.quickCreate.close' | translate"
+        (click)="closed.emit()">
+      </button>
+    </header>
+
+    <form class="quick-create-form" (ngSubmit)="emitCreateAndNew()">
+      <label class="admin-field">
+        <span class="admin-field-label">{{ 'admin.parks.items.itemName' | translate }}</span>
+        <input
+          #nameInput
+          pInputText
+          type="text"
+          name="quickCreateName"
+          [ngModel]="localDraft.name"
+          (ngModelChange)="updateName($event)"
+          autocomplete="off"
+          required />
+      </label>
+
+      @if (duplicateWarnings.length > 0) {
+        <div class="quick-create-duplicates" role="status">
+          <strong>{{ 'admin.parks.items.quickCreate.duplicatesTitle' | translate }}</strong>
+          @for (warning of duplicateWarnings; track warning.id) {
+            <span>{{ warning.name }}</span>
+          }
+        </div>
+      }
+
+      <div class="quick-create-form__grid">
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.parks.items.zone' | translate }}</span>
+          <select name="quickCreateZone" [ngModel]="localDraft.zoneId ?? ''" (ngModelChange)="updateZone($event)">
+            <option value="">{{ 'admin.parks.items.quickCreate.noZone' | translate }}</option>
+            @for (zone of zones; track zone.id) {
+              <option [value]="zone.id">{{ zone.name || zone.id }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.parks.items.category' | translate }}</span>
+          <select name="quickCreateCategory" [ngModel]="localDraft.category" (ngModelChange)="updateCategory($event)">
+            @for (option of categoryOptions; track option.value) {
+              <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.parks.items.type' | translate }}</span>
+          <select name="quickCreateType" [ngModel]="localDraft.type" (ngModelChange)="updateType($event)">
+            @for (option of typeOptions; track option.value) {
+              <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.parks.items.details.manufacturer' | translate }}</span>
+          <select name="quickCreateManufacturer" [ngModel]="localDraft.manufacturerId ?? ''" (ngModelChange)="updateManufacturer($event)">
+            <option value="">{{ 'admin.parks.items.quickCreate.noManufacturer' | translate }}</option>
+            @for (manufacturer of manufacturerOptions; track manufacturer.id) {
+              <option [value]="manufacturer.id">{{ manufacturer.label }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.filters.visibility' | translate }}</span>
+          <select name="quickCreateVisibility" [ngModel]="localDraft.isVisible ? 'true' : 'false'" (ngModelChange)="updateVisibility($event)">
+            <option value="false">{{ 'admin.hidden' | translate }}</option>
+            <option value="true">{{ 'admin.visible' | translate }}</option>
+          </select>
+        </label>
+
+        <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.filters.reviewStatus' | translate }}</span>
+          <select name="quickCreateReviewStatus" [ngModel]="localDraft.adminReviewStatus" (ngModelChange)="updateReviewStatus($event)">
+            @for (option of reviewStatusOptions; track option.value) {
+              <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+            }
+          </select>
+        </label>
+      </div>
+
+      <footer class="quick-create-drawer__footer">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-check"
+          class="p-button-sm"
+          [disabled]="isCreating || !canSubmit()"
+          [label]="'admin.parks.items.quickCreate.create' | translate"
+          (click)="emitCreate()">
+        </button>
+        <button
+          pButton
+          type="submit"
+          icon="pi pi-plus"
+          class="p-button-sm p-button-success"
+          [disabled]="isCreating || !canSubmit()"
+          [label]="'admin.parks.items.quickCreate.createAndNew' | translate">
+        </button>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-external-link"
+          class="p-button-sm p-button-secondary"
+          [disabled]="isCreating || !canSubmit()"
+          [label]="'admin.parks.items.quickCreate.createAndOpen' | translate"
+          (click)="emitCreateAndOpen()">
+        </button>
+      </footer>
+    </form>
+  </aside>
+}

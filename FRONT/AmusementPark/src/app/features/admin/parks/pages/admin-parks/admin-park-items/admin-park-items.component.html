@@ -26,14 +26,17 @@
   [showZoneColumn]="true"
   [showDeleteAction]="true"
   [showCreateButton]="true"
+  [showQuickCreateButton]="true"
   [createButtonRouterLink]="getCreateRouterLink()"
   [getCategoryLabelKeyFn]="getCategoryLabelKey.bind(this)"
   [getTypeLabelKeyFn]="getTypeLabelKey.bind(this)"
   [getZoneLabelFn]="getZoneName.bind(this)"
+  (quickCreateClicked)="openQuickCreate()"
   (filtersChanged)="onFiltersChanged($event)"
   (pageChanged)="onPageChange($event)"
   (sortChanged)="onSortChange($event)"
   (editClicked)="goToEdit($event)"
+  (duplicateClicked)="duplicateItem($event)"
   (deleteClicked)="deleteItem($event)"
   (itemSelectionChanged)="onItemSelectionChanged($event)"
   (allItemsSelectionChanged)="onAllItemsSelectionChanged($event)"
@@ -41,3 +44,18 @@
   (bulkStatusChanged)="onBulkStatusChange($event)"
   (selectionCleared)="clearSelection()">
 </app-admin-park-items-index-view>
+
+<app-admin-park-item-quick-create-drawer
+  [isOpen]="quickCreateOpen()"
+  [isCreating]="isQuickCreating()"
+  [draft]="quickCreateDraft()"
+  [zones]="zones()"
+  [manufacturerOptions]="manufacturerOptions()"
+  [duplicateWarnings]="quickCreateDuplicateWarnings()"
+  [focusVersion]="quickCreateFocusVersion()"
+  (draftChanged)="onQuickCreateDraftChanged($event)"
+  (create)="createQuickItem($event)"
+  (createAndNew)="createQuickItemAndNew($event)"
+  (createAndOpen)="createQuickItemAndOpen($event)"
+  (closed)="closeQuickCreate()">
+</app-admin-park-item-quick-create-drawer>
