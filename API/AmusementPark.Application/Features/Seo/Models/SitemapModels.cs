@@ -26,8 +26,6 @@ public static class SitemapSectionKeys
 public sealed class SitemapGenerationContext
 {
     public IReadOnlyCollection<string> SupportedLanguages { get; init; } = Array.Empty<string>();
-
-    public int MaxDynamicUrlsPerType { get; init; } = 5000;
 }
 
 /// <summary>
