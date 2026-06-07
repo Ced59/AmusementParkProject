@@ -41,6 +41,7 @@ public sealed class GetParkItemsPageQueryHandler : IQueryHandler<GetParkItemsPag
             query.AdminReviewStatus,
             query.Category,
             query.Type,
+            query.ZoneId,
             query.ManufacturerId,
             cancellationToken,
             query.SortField,

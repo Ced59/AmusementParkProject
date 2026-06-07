@@ -8,6 +8,7 @@ import { AttractionDetails } from '@app/models/parks/attraction-details';
 import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
 import { AttractionLocations } from '@app/models/parks/attraction-locations';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
+import { ParkItemBulkFieldsUpdateRequest } from '@app/models/parks/park-item-bulk-fields-update-request';
 import { ParkItem } from '@app/models/parks/park-item';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { ApiResponse } from '@app/models/shared/api_reponse';
@@ -160,6 +161,21 @@ export class ParkItemsApiService {
   updateParkItemsBulkAdministration(request: BulkAdministrationUpdateRequest): Observable<BulkAdministrationUpdateResult> {
     const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.updateParkItemsBulkAdministration}`;
     return this.http.patch<BulkAdministrationUpdateResult>(url, request);
+  }
+
+  updateParkItemsBulkFields(request: ParkItemBulkFieldsUpdateRequest): Observable<BulkAdministrationUpdateResult> {
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.updateParkItemsBulkFields}`;
+    return this.http.patch<BulkAdministrationUpdateResult>(url, {
+      ids: request.ids,
+      updateZone: request.updateZone ?? false,
+      zoneId: request.zoneId ?? null,
+      category: request.category ?? null,
+      type: request.type ?? null,
+      updateManufacturer: request.updateManufacturer ?? false,
+      manufacturerId: request.manufacturerId ?? null,
+      isVisible: request.isVisible ?? null,
+      adminReviewStatus: request.adminReviewStatus ?? null
+    });
   }
 
   private mapParkItemToWriteRequest(item: ParkItem): ParkItemWriteRequest {

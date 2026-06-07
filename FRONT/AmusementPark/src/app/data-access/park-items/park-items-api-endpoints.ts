@@ -7,6 +7,7 @@ export interface ParkItemAdminListFilters {
   adminReviewStatus?: AdminReviewStatus | null;
   category?: ParkItemCategory | null;
   type?: ParkItemType | null;
+  zoneId?: string | null;
   manufacturerId?: string | null;
 }
 
@@ -35,6 +36,9 @@ function buildParkItemAdminListQuery(filters: ParkItemAdminListFilters | null = 
   }
   if (filters.type) {
     params.push(`type=${encodeURIComponent(filters.type)}`);
+  }
+  if (filters.zoneId) {
+    params.push(`zoneId=${encodeURIComponent(filters.zoneId)}`);
   }
   if (filters.manufacturerId) {
     params.push(`manufacturerId=${encodeURIComponent(filters.manufacturerId)}`);
@@ -69,5 +73,6 @@ export const PARK_ITEMS_API_ENDPOINTS = {
   createParkItem: 'park-items',
   updateParkItem: (id: string) => `park-items/${id}`,
   deleteParkItem: (id: string) => `park-items/${id}`,
-  updateParkItemsBulkAdministration: 'park-items/bulk-administration'
+  updateParkItemsBulkAdministration: 'park-items/bulk-administration',
+  updateParkItemsBulkFields: 'park-items/bulk-fields'
 };

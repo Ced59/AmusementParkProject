@@ -10,6 +10,7 @@
   [adminReviewStatusFilter]="adminReviewStatusFilter()"
   [categoryFilter]="categoryFilter()"
   [typeFilter]="typeFilter()"
+  [zoneIdFilter]="zoneIdFilter()"
   [currentPage]="currentPage()"
   [pageSize]="pageSize()"
   [sortField]="sortField()"
@@ -24,6 +25,9 @@
   [showParkFilter]="false"
   [showParkColumn]="false"
   [showZoneColumn]="true"
+  [showZoneFilter]="true"
+  [showFieldBulkActions]="true"
+  [allowInlineEditing]="true"
   [showDeleteAction]="true"
   [showCreateButton]="true"
   [showQuickCreateButton]="true"
@@ -31,6 +35,8 @@
   [getCategoryLabelKeyFn]="getCategoryLabelKey.bind(this)"
   [getTypeLabelKeyFn]="getTypeLabelKey.bind(this)"
   [getZoneLabelFn]="getZoneName.bind(this)"
+  [zoneOptions]="zoneOptions"
+  [manufacturerOptions]="manufacturerOptions"
   (quickCreateClicked)="openQuickCreate()"
   (filtersChanged)="onFiltersChanged($event)"
   (pageChanged)="onPageChange($event)"
@@ -42,6 +48,8 @@
   (allItemsSelectionChanged)="onAllItemsSelectionChanged($event)"
   (bulkVisibilityChanged)="onBulkVisibilityChange($event)"
   (bulkStatusChanged)="onBulkStatusChange($event)"
+  (bulkFieldsChanged)="onBulkFieldsChange($event)"
+  (inlineFieldsChanged)="onInlineFieldsChange($event)"
   (selectionCleared)="clearSelection()">
 </app-admin-park-items-index-view>
 

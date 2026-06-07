@@ -15,6 +15,7 @@ import {
   BulkAdministrationUpdateResult,
 } from '@app/models/admin/admin-review-status';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
+import { ParkItemBulkFieldsUpdateRequest } from '@app/models/parks/park-item-bulk-fields-update-request';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { ParkZone } from '@app/models/parks/park-zone';
@@ -48,6 +49,7 @@ export class AdminParkItemsStateFacade {
     signal<AdminReviewStatus | null>(null);
   private readonly categoryFilterSignal = signal<ParkItemCategory | null>(null);
   private readonly typeFilterSignal = signal<ParkItemType | null>(null);
+  private readonly zoneIdFilterSignal = signal<string | null>(null);
   private readonly currentPageSignal = signal(1);
   private readonly pageSizeSignal = signal(20);
   private readonly sortFieldSignal = signal<ParkItemAdminSortField>('default');
@@ -78,6 +80,7 @@ export class AdminParkItemsStateFacade {
     this.adminReviewStatusFilterSignal.asReadonly();
   public readonly categoryFilter = this.categoryFilterSignal.asReadonly();
   public readonly typeFilter = this.typeFilterSignal.asReadonly();
+  public readonly zoneIdFilter = this.zoneIdFilterSignal.asReadonly();
   public readonly currentPage: Signal<number> =
     this.currentPageSignal.asReadonly();
   public readonly pageSize: Signal<number> = this.pageSizeSignal.asReadonly();
@@ -89,6 +92,7 @@ export class AdminParkItemsStateFacade {
     adminReviewStatus: this.adminReviewStatusFilterSignal(),
     category: this.categoryFilterSignal(),
     type: this.typeFilterSignal(),
+    zoneId: this.zoneIdFilterSignal(),
   }));
   public readonly sort = computed<ParkItemAdminListSort>(() => ({
     sortBy: this.sortFieldSignal(),
@@ -188,6 +192,7 @@ export class AdminParkItemsStateFacade {
       adminReviewStatus?: AdminReviewStatus | null;
       category?: ParkItemCategory | null;
       type?: ParkItemType | null;
+      zoneId?: string | null;
     },
   ): void {
     const nextSearchTerm: string = filters.searchTerm;
@@ -196,12 +201,14 @@ export class AdminParkItemsStateFacade {
       filters.adminReviewStatus ?? null;
     const nextCategoryFilter: ParkItemCategory | null = filters.category ?? null;
     const nextTypeFilter: ParkItemType | null = filters.type ?? null;
+    const nextZoneIdFilter: string | null = filters.zoneId ?? null;
     const hasFilterChanged: boolean =
       this.searchTermSignal() !== nextSearchTerm ||
       this.visibilityFilterSignal() !== nextVisibilityFilter ||
       this.adminReviewStatusFilterSignal() !== nextAdminReviewStatusFilter ||
       this.categoryFilterSignal() !== nextCategoryFilter ||
-      this.typeFilterSignal() !== nextTypeFilter;
+      this.typeFilterSignal() !== nextTypeFilter ||
+      this.zoneIdFilterSignal() !== nextZoneIdFilter;
 
     if (!hasFilterChanged) {
       return;
@@ -212,6 +219,7 @@ export class AdminParkItemsStateFacade {
     this.adminReviewStatusFilterSignal.set(nextAdminReviewStatusFilter);
     this.categoryFilterSignal.set(nextCategoryFilter);
     this.typeFilterSignal.set(nextTypeFilter);
+    this.zoneIdFilterSignal.set(nextZoneIdFilter);
     this.currentPageSignal.set(1);
     this.loadData(parkId);
   }
@@ -259,6 +267,43 @@ export class AdminParkItemsStateFacade {
     request: BulkAdministrationUpdateRequest,
   ): Observable<BulkAdministrationUpdateResult> {
     return this.parkItemsApiService.updateParkItemsBulkAdministration(request);
+  }
+
+  updateBulkFields(
+    request: ParkItemBulkFieldsUpdateRequest,
+  ): Observable<BulkAdministrationUpdateResult> {
+    return this.parkItemsApiService.updateParkItemsBulkFields(request);
+  }
+
+  patchRows(
+    ids: readonly string[],
+    change: Partial<Pick<ParkItemAdminRow, 'zoneId' | 'category' | 'type' | 'isVisible' | 'adminReviewStatus'>>,
+  ): void {
+    const previousData: AdminParkItemsViewModel | undefined =
+      this.screenStateStore.data();
+    if (!previousData) {
+      return;
+    }
+
+    const idSet: Set<string> = new Set(ids);
+    const nextData: AdminParkItemsViewModel = {
+      ...previousData,
+      items: previousData.items.map((item: ParkItemAdminRow) =>
+        idSet.has(item.id)
+          ? {
+              ...item,
+              ...change,
+            }
+          : item,
+      ),
+    };
+
+    if (nextData.totalRecords === 0) {
+      this.screenStateStore.setEmpty(nextData);
+      return;
+    }
+
+    this.screenStateStore.setReady(nextData);
   }
 
   invalidateCurrentPage(): void {

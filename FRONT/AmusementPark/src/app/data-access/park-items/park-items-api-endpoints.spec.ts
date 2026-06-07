@@ -7,13 +7,14 @@ describe('PARK_ITEMS_API_ENDPOINTS', () => {
       adminReviewStatus: 'ToReview',
       category: 'Attraction',
       type: 'RollerCoaster',
+      zoneId: 'zone 1',
       manufacturerId: 'manufacturer 1'
     }, {
       sortBy: 'name',
       sortDirection: 'desc'
     });
 
-    expect(endpoint).toBe('park-items?page=3&size=50&parkId=park%201&search=big%20ride&isVisible=false&adminReviewStatus=ToReview&category=Attraction&type=RollerCoaster&manufacturerId=manufacturer%201&sortBy=name&sortDirection=desc');
+    expect(endpoint).toBe('park-items?page=3&size=50&parkId=park%201&search=big%20ride&isVisible=false&adminReviewStatus=ToReview&category=Attraction&type=RollerCoaster&zoneId=zone%201&manufacturerId=manufacturer%201&sortBy=name&sortDirection=desc');
   });
 
   it('omits empty filters and default sort', () => {
@@ -22,6 +23,7 @@ describe('PARK_ITEMS_API_ENDPOINTS', () => {
       adminReviewStatus: null,
       category: null,
       type: null,
+      zoneId: null,
       manufacturerId: null
     }, {
       sortBy: 'default',
@@ -41,5 +43,6 @@ describe('PARK_ITEMS_API_ENDPOINTS', () => {
     expect(PARK_ITEMS_API_ENDPOINTS.getParkItemById('item-1')).toBe('park-items/item-1');
     expect(PARK_ITEMS_API_ENDPOINTS.updateParkItem('item-1')).toBe('park-items/item-1');
     expect(PARK_ITEMS_API_ENDPOINTS.deleteParkItem('item-1')).toBe('park-items/item-1');
+    expect(PARK_ITEMS_API_ENDPOINTS.updateParkItemsBulkFields).toBe('park-items/bulk-fields');
   });
 });

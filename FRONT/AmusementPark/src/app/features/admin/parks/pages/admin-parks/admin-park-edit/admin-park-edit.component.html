@@ -17,6 +17,27 @@
     </div>
 
     <div class="page-header__aside">
+      @if (isEditMode()) {
+        <div class="admin-park-edit__quick-links">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-map-marker"
+            class="p-button-sm p-button-secondary"
+            [label]="'admin.parks.zones.manage' | translate"
+            [routerLink]="['/', currentLang(), 'admin', 'parks', 'edit', parkId(), 'zones']">
+          </button>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-list-check"
+            class="p-button-sm p-button-success"
+            [label]="'admin.parks.items.manage' | translate"
+            [routerLink]="['/', currentLang(), 'admin', 'parks', 'edit', parkId(), 'items']">
+          </button>
+        </div>
+      }
+
       @if (form) {
         <div>
           @if (isVisibleControl?.value) {

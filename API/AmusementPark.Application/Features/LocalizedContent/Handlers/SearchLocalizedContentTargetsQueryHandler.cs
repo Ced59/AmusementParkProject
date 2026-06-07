@@ -112,6 +112,7 @@ public sealed class SearchLocalizedContentTargetsQueryHandler : IQueryHandler<Se
             null,
             null,
             null,
+            null,
             cancellationToken);
 
         return items.Map(static item => new LocalizedContentTargetResult(

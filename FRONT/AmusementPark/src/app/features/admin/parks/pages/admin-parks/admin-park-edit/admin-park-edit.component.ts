@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
@@ -9,6 +9,7 @@ import { Park } from '@app/models/parks/park';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
 import { Bind } from 'primeng/bind';
 import { Tag } from 'primeng/tag';
+import { ButtonDirective } from 'primeng/button';
 import { EditorSaveToolbarComponent } from '@shared/components/editor-save-toolbar/editor-save-toolbar.component';
 import { Card } from 'primeng/card';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
@@ -53,6 +54,8 @@ type SaveScope = 'section' | 'all';
   imports: [
     Bind,
     Tag,
+    ButtonDirective,
+    RouterLink,
     EditorSaveToolbarComponent,
     Card,
     FormsModule,
