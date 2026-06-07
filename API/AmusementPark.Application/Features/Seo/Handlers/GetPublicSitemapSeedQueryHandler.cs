@@ -18,6 +18,8 @@ namespace AmusementPark.Application.Features.Seo.Handlers;
 /// </summary>
 public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSitemapSeedQuery, ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>>>
 {
+    private const int PublicSitemapCandidatePageSize = int.MaxValue;
+
     private static readonly IReadOnlyCollection<string> StaticPublicPages = new[]
     {
         "home",
@@ -49,20 +51,18 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
     public async Task<ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>>> HandleAsync(GetPublicSitemapSeedQuery query, CancellationToken cancellationToken = default)
     {
         IReadOnlyCollection<string> languages = NormalizeLanguages(query.SupportedLanguages);
-        int dynamicLimit = Math.Clamp(query.MaxDynamicUrlsPerType, 1, 5000);
         List<PublicSitemapUrl> urls = new List<PublicSitemapUrl>();
 
         this.AddStaticPages(urls, languages);
-        IReadOnlyCollection<Park> visibleParks = await this.GetVisibleParksAsync(dynamicLimit, cancellationToken);
+        IReadOnlyCollection<Park> visibleParks = await this.GetVisibleParksAsync(cancellationToken);
         Dictionary<string, Park> visibleParkById = visibleParks
             .Where(static park => !string.IsNullOrWhiteSpace(park.Id))
             .ToDictionary(static park => park.Id!, static park => park, StringComparer.OrdinalIgnoreCase);
 
         this.AddParkUrls(urls, visibleParks, languages);
-        await this.AddParkItemUrlsAsync(urls, visibleParkById, languages, dynamicLimit, cancellationToken);
+        await this.AddParkItemUrlsAsync(urls, visibleParkById, languages, cancellationToken);
 
-        int referenceLimit = Math.Min(dynamicLimit, 25);
-        await this.AddReferenceUrlsAsync(urls, languages, referenceLimit, cancellationToken);
+        await this.AddReferenceUrlsAsync(urls, languages, cancellationToken);
 
         IReadOnlyCollection<PublicSitemapUrl> distinctUrls = urls
             .GroupBy(static url => url.RelativePath, StringComparer.OrdinalIgnoreCase)
@@ -95,11 +95,11 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         }
     }
 
-    private async Task<IReadOnlyCollection<Park>> GetVisibleParksAsync(int dynamicLimit, CancellationToken cancellationToken)
+    private async Task<IReadOnlyCollection<Park>> GetVisibleParksAsync(CancellationToken cancellationToken)
     {
         PagedResult<Park> page = await this.parkRepository.GetPageAsync(
             1,
-            dynamicLimit,
+            PublicSitemapCandidatePageSize,
             includeHidden: false,
             isVisible: true,
             adminReviewStatus: null,
@@ -130,10 +130,10 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         }
     }
 
-    private async Task AddParkItemUrlsAsync(List<PublicSitemapUrl> urls, IReadOnlyDictionary<string, Park> visibleParkById, IReadOnlyCollection<string> languages, int dynamicLimit, CancellationToken cancellationToken)
+    private async Task AddParkItemUrlsAsync(List<PublicSitemapUrl> urls, IReadOnlyDictionary<string, Park> visibleParkById, IReadOnlyCollection<string> languages, CancellationToken cancellationToken)
     {
         IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetPublicSitemapCandidatesAsync(
-            dynamicLimit,
+            PublicSitemapCandidatePageSize,
             cancellationToken);
 
         foreach (ParkItem item in items)
@@ -157,23 +157,23 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         }
     }
 
-    private async Task AddReferenceUrlsAsync(List<PublicSitemapUrl> urls, IReadOnlyCollection<string> languages, int dynamicLimit, CancellationToken cancellationToken)
+    private async Task AddReferenceUrlsAsync(List<PublicSitemapUrl> urls, IReadOnlyCollection<string> languages, CancellationToken cancellationToken)
     {
         IReadOnlyCollection<ParkOperator> operators = await this.parkOperatorRepository.GetAllAsync(cancellationToken);
         IReadOnlyCollection<ParkFounder> founders = await this.parkFounderRepository.GetAllAsync(cancellationToken);
         IReadOnlyCollection<AttractionManufacturer> manufacturers = await this.attractionManufacturerRepository.GetAllAsync(cancellationToken);
 
-        foreach (ParkOperator entity in operators.Where(static entity => entity.AdminReviewStatus != AdminReviewStatus.NotRelevant).Take(dynamicLimit))
+        foreach (ParkOperator entity in operators.Where(static entity => entity.AdminReviewStatus != AdminReviewStatus.NotRelevant))
         {
             this.AddReferenceUrls(urls, languages, "park-operator", entity.Id, entity.Name, entity.UpdatedAtUtc);
         }
 
-        foreach (ParkFounder entity in founders.Take(dynamicLimit))
+        foreach (ParkFounder entity in founders)
         {
             this.AddReferenceUrls(urls, languages, "park-founder", entity.Id, entity.Name, entity.UpdatedAtUtc);
         }
 
-        foreach (AttractionManufacturer entity in manufacturers.Where(static entity => entity.AdminReviewStatus != AdminReviewStatus.NotRelevant).Take(dynamicLimit))
+        foreach (AttractionManufacturer entity in manufacturers.Where(static entity => entity.AdminReviewStatus != AdminReviewStatus.NotRelevant))
         {
             this.AddReferenceUrls(urls, languages, "park-manufacturer", entity.Id, entity.Name, entity.UpdatedAtUtc);
         }
