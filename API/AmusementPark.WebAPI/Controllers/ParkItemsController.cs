@@ -39,6 +39,8 @@ public sealed class ParkItemsController : ControllerBase
     private readonly ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler;
     private readonly ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler;
     private readonly ICommandHandler<UpdateParkItemsBulkFieldsCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkFieldsCommandHandler;
+    private readonly ICommandHandler<PreviewParkItemsBulkCreateCommand, ApplicationResult<ParkItemsBulkCreatePreviewResult>> previewParkItemsBulkCreateCommandHandler;
+    private readonly ICommandHandler<ApplyParkItemsBulkCreateCommand, ApplicationResult<ParkItemsBulkCreateApplyResult>> applyParkItemsBulkCreateCommandHandler;
 
     public ParkItemsController(
         IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler,
@@ -48,7 +50,9 @@ public sealed class ParkItemsController : ControllerBase
         ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler,
         ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler,
         ICommandHandler<UpdateParkItemsBulkAdministrationCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkAdministrationCommandHandler,
-        ICommandHandler<UpdateParkItemsBulkFieldsCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkFieldsCommandHandler)
+        ICommandHandler<UpdateParkItemsBulkFieldsCommand, ApplicationResult<BulkAdministrationUpdateResult>> updateParkItemsBulkFieldsCommandHandler,
+        ICommandHandler<PreviewParkItemsBulkCreateCommand, ApplicationResult<ParkItemsBulkCreatePreviewResult>> previewParkItemsBulkCreateCommandHandler,
+        ICommandHandler<ApplyParkItemsBulkCreateCommand, ApplicationResult<ParkItemsBulkCreateApplyResult>> applyParkItemsBulkCreateCommandHandler)
     {
         this.getParkItemsByParkIdQueryHandler = getParkItemsByParkIdQueryHandler;
         this.getParkItemsPageQueryHandler = getParkItemsPageQueryHandler;
@@ -58,6 +62,8 @@ public sealed class ParkItemsController : ControllerBase
         this.deleteParkItemCommandHandler = deleteParkItemCommandHandler;
         this.updateParkItemsBulkAdministrationCommandHandler = updateParkItemsBulkAdministrationCommandHandler;
         this.updateParkItemsBulkFieldsCommandHandler = updateParkItemsBulkFieldsCommandHandler;
+        this.previewParkItemsBulkCreateCommandHandler = previewParkItemsBulkCreateCommandHandler;
+        this.applyParkItemsBulkCreateCommandHandler = applyParkItemsBulkCreateCommandHandler;
     }
 
     [HttpGet("park/{parkId}")]
@@ -207,6 +213,40 @@ public sealed class ParkItemsController : ControllerBase
             RequestedCount = result.Value.RequestedCount,
             UpdatedCount = result.Value.UpdatedCount,
         });
+    }
+
+    [HttpPost("bulk-create/preview")]
+    [AdminAudit("park-item.bulk-create.preview", "ParkItem", StaticTargetId = "bulk")]
+    [ProducesResponseType(typeof(ParkItemsBulkCreatePreviewResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> PreviewParkItemsBulkCreateAsync([FromBody] ParkItemsBulkCreateRequestDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkItemsBulkCreatePreviewResult> result = await this.previewParkItemsBulkCreateCommandHandler.HandleAsync(
+            request.ToPreviewApplication(),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPost("bulk-create/apply")]
+    [AdminAudit("park-item.bulk-create.apply", "ParkItem", StaticTargetId = "bulk")]
+    [ProducesResponseType(typeof(ParkItemsBulkCreateApplyResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> ApplyParkItemsBulkCreateAsync([FromBody] ParkItemsBulkCreateRequestDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkItemsBulkCreateApplyResult> result = await this.applyParkItemsBulkCreateCommandHandler.HandleAsync(
+            request.ToApplyApplication(),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
     }
 
     [HttpDelete("{id}")]

@@ -3,6 +3,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.Countries.Services;
 using AmusementPark.Application.Features.ParkItems;
+using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.ParkGraphUpserts.Services;
 using AmusementPark.Application.Features.Parks.Services;
 using AmusementPark.Application.Features.Seo.Ports;
@@ -35,6 +36,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<PagedQueryValidator>();
         services.AddSingleton<IApplicationValidator<AmusementPark.Application.Common.Requests.PagedQuery>, PagedQueryValidator>();
         services.AddScoped<ParkItemReferenceValidator>();
+        services.AddScoped<ParkItemsBulkCreatePreviewService>();
         services.AddScoped<ParkGraphUpsertProcessor>();
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddSingleton<IParkDistanceCalculator, ParkDistanceCalculator>();

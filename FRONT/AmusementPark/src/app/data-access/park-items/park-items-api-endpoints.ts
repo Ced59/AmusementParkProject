@@ -74,5 +74,7 @@ export const PARK_ITEMS_API_ENDPOINTS = {
   updateParkItem: (id: string) => `park-items/${id}`,
   deleteParkItem: (id: string) => `park-items/${id}`,
   updateParkItemsBulkAdministration: 'park-items/bulk-administration',
-  updateParkItemsBulkFields: 'park-items/bulk-fields'
+  updateParkItemsBulkFields: 'park-items/bulk-fields',
+  previewParkItemsBulkCreate: 'park-items/bulk-create/preview',
+  applyParkItemsBulkCreate: 'park-items/bulk-create/apply'
 };

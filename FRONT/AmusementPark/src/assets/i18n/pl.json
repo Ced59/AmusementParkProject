@@ -576,7 +576,20 @@
         },
         "subtitle": "Lista administracyjna elementów powiązanych z tym parkiem, z filtrami, paginacją, sortowaniem i statusem przeglądu.",
         "total": "{{count}} element(ów)",
-        "searchPlaceholder": "Szukaj elementu, typu lub statusu"
+        "searchPlaceholder": "Szukaj elementu, typu lub statusu",
+        "import": {
+          "open": "Import przez wklejenie",
+          "title": "Import wklejania / CSV",
+          "subtitle": "Wklej liste lub tabele, popraw podglad i zastosuj tylko prawidlowe wiersze.",
+          "source": "Zrodlo",
+          "placeholder": "Nazwa\\nNazwa;Kategoria;Typ;Strefa;Producent;Opis FR",
+          "parsedRows": "Wykryto {{count}} wiersz(y)",
+          "preview": "Podglad",
+          "apply": "Zastosuj",
+          "error": "Nie mozna przetworzyc tego importu.",
+          "descriptionFr": "Opis FR",
+          "previewSummary": "{{ready}} gotowe, {{warnings}} z ostrzezeniem, {{errors}} z bledem"
+        }
       },
       "refactorHint": "Edytor został teraz podzielony na tematyczne zakładki, aby strona była lżejsza i bardziej czytelna.",
       "visibilityHelp": "Określa, czy ten park jest widoczny w publicznej aplikacji.",

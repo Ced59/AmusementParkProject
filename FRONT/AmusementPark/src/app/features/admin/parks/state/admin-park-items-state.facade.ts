@@ -16,6 +16,11 @@ import {
 } from '@app/models/admin/admin-review-status';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkItemBulkFieldsUpdateRequest } from '@app/models/parks/park-item-bulk-fields-update-request';
+import {
+  ParkItemsBulkCreateApplyResult,
+  ParkItemsBulkCreatePreviewResult,
+  ParkItemsBulkCreateRequest,
+} from '@app/models/parks/park-item-bulk-create';
 import { ParkItemCategory } from '@app/models/parks/park-item-category';
 import { ParkItemType } from '@app/models/parks/park-item-type';
 import { ParkZone } from '@app/models/parks/park-zone';
@@ -273,6 +278,18 @@ export class AdminParkItemsStateFacade {
     request: ParkItemBulkFieldsUpdateRequest,
   ): Observable<BulkAdministrationUpdateResult> {
     return this.parkItemsApiService.updateParkItemsBulkFields(request);
+  }
+
+  previewBulkCreate(
+    request: ParkItemsBulkCreateRequest,
+  ): Observable<ParkItemsBulkCreatePreviewResult> {
+    return this.parkItemsApiService.previewParkItemsBulkCreate(request);
+  }
+
+  applyBulkCreate(
+    request: ParkItemsBulkCreateRequest,
+  ): Observable<ParkItemsBulkCreateApplyResult> {
+    return this.parkItemsApiService.applyParkItemsBulkCreate(request);
   }
 
   patchRows(

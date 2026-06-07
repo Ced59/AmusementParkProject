@@ -576,7 +576,20 @@
         },
         "subtitle": "Elenco di amministrazione degli elementi collegati a questo parco, con filtri, paginazione, ordinamento e stato di revisione.",
         "total": "{{count}} elemento/i",
-        "searchPlaceholder": "Cerca un elemento, un tipo o uno stato"
+        "searchPlaceholder": "Cerca un elemento, un tipo o uno stato",
+        "import": {
+          "open": "Importa da incolla",
+          "title": "Import incolla / CSV",
+          "subtitle": "Incolla una lista o tabella, correggi anteprima e applica solo le righe valide.",
+          "source": "Origine",
+          "placeholder": "Nome\\nNome;Categoria;Tipo;Zona;Produttore;Descrizione FR",
+          "parsedRows": "{{count}} riga/e rilevata/e",
+          "preview": "Anteprima",
+          "apply": "Applica",
+          "error": "Impossibile elaborare questo import.",
+          "descriptionFr": "Descrizione FR",
+          "previewSummary": "{{ready}} pronte, {{warnings}} con avviso, {{errors}} in errore"
+        }
       },
       "refactorHint": "L’editor è ora suddiviso in schede tematiche per alleggerire la pagina e renderla più chiara.",
       "visibilityHelp": "Controlla se questo parco è visibile nell’applicazione pubblica.",

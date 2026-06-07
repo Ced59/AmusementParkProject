@@ -44,5 +44,7 @@ describe('PARK_ITEMS_API_ENDPOINTS', () => {
     expect(PARK_ITEMS_API_ENDPOINTS.updateParkItem('item-1')).toBe('park-items/item-1');
     expect(PARK_ITEMS_API_ENDPOINTS.deleteParkItem('item-1')).toBe('park-items/item-1');
     expect(PARK_ITEMS_API_ENDPOINTS.updateParkItemsBulkFields).toBe('park-items/bulk-fields');
+    expect(PARK_ITEMS_API_ENDPOINTS.previewParkItemsBulkCreate).toBe('park-items/bulk-create/preview');
+    expect(PARK_ITEMS_API_ENDPOINTS.applyParkItemsBulkCreate).toBe('park-items/bulk-create/apply');
   });
 });
