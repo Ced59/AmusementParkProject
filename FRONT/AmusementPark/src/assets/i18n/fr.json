@@ -576,7 +576,20 @@
         },
         "subtitle": "Liste administrable des éléments rattachés à ce parc, avec filtres, pagination, tri et suivi du traitement.",
         "total": "{{count}} élément(s)",
-        "searchPlaceholder": "Rechercher un élément, un type ou un statut"
+        "searchPlaceholder": "Rechercher un élément, un type ou un statut",
+        "import": {
+          "open": "Importer par collage",
+          "title": "Import par collage / CSV",
+          "subtitle": "Colle une liste ou un tableau, corrige la previsualisation, puis applique seulement les lignes valides.",
+          "source": "Source",
+          "placeholder": "Nom\\nNom;Categorie;Type;Zone;Constructeur;Description FR",
+          "parsedRows": "{{count}} ligne(s) detectee(s)",
+          "preview": "Previsualiser",
+          "apply": "Appliquer",
+          "error": "Impossible de traiter cet import.",
+          "descriptionFr": "Description FR",
+          "previewSummary": "{{ready}} pretes, {{warnings}} avec avertissement, {{errors}} en erreur"
+        }
       },
       "refactorHint": "L’éditeur est désormais découpé en onglets thématiques pour alléger la page et mieux s’y retrouver.",
       "visibilityHelp": "Contrôle si ce parc est visible dans l’application publique.",

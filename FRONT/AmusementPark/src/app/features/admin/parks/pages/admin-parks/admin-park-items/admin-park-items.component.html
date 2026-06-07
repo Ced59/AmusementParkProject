@@ -53,6 +53,16 @@
   (selectionCleared)="clearSelection()">
 </app-admin-park-items-index-view>
 
+<app-admin-park-item-paste-import
+  [parkId]="parkId"
+  [zones]="zones"
+  [manufacturerOptions]="manufacturerOptions"
+  [currentLang]="currentLang"
+  [previewHandler]="previewBulkCreateRows"
+  [applyHandler]="applyBulkCreateRows"
+  (applied)="onBulkCreateApplied($event)">
+</app-admin-park-item-paste-import>
+
 <app-admin-park-item-quick-create-drawer
   [isOpen]="quickCreateOpen()"
   [isCreating]="isQuickCreating()"

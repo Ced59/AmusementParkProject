@@ -576,7 +576,20 @@
         },
         "subtitle": "Admin list of the items attached to this park, with filters, pagination, sorting and review tracking.",
         "total": "{{count}} item(s)",
-        "searchPlaceholder": "Search an item, type or status"
+        "searchPlaceholder": "Search an item, type or status",
+        "import": {
+          "open": "Paste import",
+          "title": "Paste / CSV import",
+          "subtitle": "Paste a list or table, correct the preview, then apply valid rows only.",
+          "source": "Source",
+          "placeholder": "Name\\nName;Category;Type;Zone;Manufacturer;Description FR",
+          "parsedRows": "{{count}} row(s) detected",
+          "preview": "Preview",
+          "apply": "Apply",
+          "error": "Unable to process this import.",
+          "descriptionFr": "Description FR",
+          "previewSummary": "{{ready}} ready, {{warnings}} with warnings, {{errors}} in error"
+        }
       },
       "refactorHint": "The editor is now split into thematic tabs to keep the page lighter and easier to navigate.",
       "visibilityHelp": "Controls whether this park is visible in the public application.",

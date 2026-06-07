@@ -576,7 +576,20 @@
         },
         "subtitle": "Lista de administração dos elementos ligados a este parque, com filtros, paginação, ordenação e acompanhamento da revisão.",
         "total": "{{count}} item(ns)",
-        "searchPlaceholder": "Pesquisar um item, tipo ou estado"
+        "searchPlaceholder": "Pesquisar um item, tipo ou estado",
+        "import": {
+          "open": "Importar por colagem",
+          "title": "Importacao por colagem / CSV",
+          "subtitle": "Cole uma lista ou tabela, corrija a pre-visualizacao e aplique apenas linhas validas.",
+          "source": "Fonte",
+          "placeholder": "Nome\\nNome;Categoria;Tipo;Zona;Fabricante;Descricao FR",
+          "parsedRows": "{{count}} linha(s) detetada(s)",
+          "preview": "Pre-visualizar",
+          "apply": "Aplicar",
+          "error": "Nao foi possivel processar esta importacao.",
+          "descriptionFr": "Descricao FR",
+          "previewSummary": "{{ready}} prontas, {{warnings}} com aviso, {{errors}} com erro"
+        }
       },
       "refactorHint": "O editor está agora dividido em separadores temáticos para tornar a página mais leve e fácil de usar.",
       "visibilityHelp": "Controla se este parque fica visível na aplicação pública.",

@@ -23,8 +23,14 @@ import { ParkItemAdminSortField } from '@data-access/park-items/park-items-api-e
 import { AdminParkItemsStateFacade } from '@features/admin/parks/state/admin-park-items-state.facade';
 import { AdminParkItemsIndexViewComponent } from '@features/admin/park-items/pages/admin-park-items-index/admin-park-items-index-view.component';
 import { AdminParkItemQuickCreateDrawerComponent } from '@app/components/admin/park-items/workbench/admin-park-item-quick-create-drawer.component';
+import { AdminParkItemPasteImportComponent } from '@app/components/admin/park-items/workbench/admin-park-item-paste-import.component';
 import { AdminParkItemManufacturersStateFacade } from '@features/admin/park-items/state/admin-park-item-manufacturers-state.facade';
 import { AdminParkItemWorkbenchStateFacade } from '@features/admin/park-items/workbench/state/admin-park-item-workbench-state.facade';
+import {
+  ParkItemBulkCreateDraft,
+  ParkItemsBulkCreateApplyResult,
+  ParkItemsBulkCreatePreviewResult,
+} from '@app/models/parks/park-item-bulk-create';
 import {
   AdminParkItemQuickCreateDraft,
   AdminParkItemWorkbenchCoordinates
@@ -46,6 +52,7 @@ import {
     AdminParkItemWorkbenchStateFacade
   ],
   imports: [
+    AdminParkItemPasteImportComponent,
     AdminParkItemQuickCreateDrawerComponent,
     AdminParkItemsIndexViewComponent
   ],
@@ -93,6 +100,24 @@ export class AdminParkItemsComponent implements OnInit {
   protected readonly emptyParkOptions = signal<
     Array<{ label: string; value: string | null }>
   >([]);
+  protected readonly previewBulkCreateRows = async (
+    rows: ParkItemBulkCreateDraft[],
+  ): Promise<ParkItemsBulkCreatePreviewResult> =>
+    firstValueFrom(
+      this.stateFacade.previewBulkCreate({
+        parkId: this.parkId,
+        rows,
+      }),
+    );
+  protected readonly applyBulkCreateRows = async (
+    rows: ParkItemBulkCreateDraft[],
+  ): Promise<ParkItemsBulkCreateApplyResult> =>
+    firstValueFrom(
+      this.stateFacade.applyBulkCreate({
+        parkId: this.parkId,
+        rows,
+      }),
+    );
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -355,6 +380,13 @@ export class AdminParkItemsComponent implements OnInit {
 
   clearSelection(): void {
     this.selectedItemIds.set([]);
+  }
+
+  onBulkCreateApplied(result: ParkItemsBulkCreateApplyResult): void {
+    if (result.createdCount > 0) {
+      this.selectedItemIds.set([]);
+      this.loadData(true);
+    }
   }
 
   private async submitQuickCreate(

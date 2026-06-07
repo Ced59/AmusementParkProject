@@ -576,7 +576,20 @@
         },
         "subtitle": "Lista de administración de los elementos vinculados a este parque, con filtros, paginación, ordenación y seguimiento de revisión.",
         "total": "{{count}} elemento(s)",
-        "searchPlaceholder": "Buscar un elemento, tipo o estado"
+        "searchPlaceholder": "Buscar un elemento, tipo o estado",
+        "import": {
+          "open": "Importar pegando",
+          "title": "Importacion pegando / CSV",
+          "subtitle": "Pega una lista o tabla, corrige la vista previa y aplica solo las filas validas.",
+          "source": "Fuente",
+          "placeholder": "Nombre\\nNombre;Categoria;Tipo;Zona;Fabricante;Descripcion FR",
+          "parsedRows": "{{count}} fila(s) detectada(s)",
+          "preview": "Previsualizar",
+          "apply": "Aplicar",
+          "error": "No se pudo procesar esta importacion.",
+          "descriptionFr": "Descripcion FR",
+          "previewSummary": "{{ready}} listas, {{warnings}} con advertencias, {{errors}} con error"
+        }
       },
       "refactorHint": "El editor ahora está dividido en pestañas temáticas para aligerar la página y facilitar la navegación.",
       "visibilityHelp": "Controla si este parque es visible en la aplicación pública.",

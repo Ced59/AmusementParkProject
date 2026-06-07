@@ -576,7 +576,20 @@
         },
         "subtitle": "Administrationsliste der mit diesem Park verknüpften Elemente, mit Filtern, Paginierung, Sortierung und Prüfstatus.",
         "total": "{{count}} Element(e)",
-        "searchPlaceholder": "Element, Typ oder Status suchen"
+        "searchPlaceholder": "Element, Typ oder Status suchen",
+        "import": {
+          "open": "Per Einfuegen importieren",
+          "title": "Einfuegen / CSV-Import",
+          "subtitle": "Liste oder Tabelle einfuegen, Vorschau korrigieren und nur gueltige Zeilen anwenden.",
+          "source": "Quelle",
+          "placeholder": "Name\\nName;Kategorie;Typ;Zone;Hersteller;Beschreibung FR",
+          "parsedRows": "{{count}} Zeile(n) erkannt",
+          "preview": "Vorschau",
+          "apply": "Anwenden",
+          "error": "Dieser Import konnte nicht verarbeitet werden.",
+          "descriptionFr": "Beschreibung FR",
+          "previewSummary": "{{ready}} bereit, {{warnings}} mit Warnung, {{errors}} fehlerhaft"
+        }
       },
       "refactorHint": "Der Editor ist jetzt in thematische Tabs aufgeteilt, damit die Seite leichter und übersichtlicher bleibt.",
       "visibilityHelp": "Steuert, ob dieser Park in der öffentlichen Anwendung sichtbar ist.",

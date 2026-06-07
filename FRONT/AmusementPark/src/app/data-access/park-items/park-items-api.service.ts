@@ -9,6 +9,11 @@ import { AttractionLocationPoint } from '@app/models/parks/attraction-location-p
 import { AttractionLocations } from '@app/models/parks/attraction-locations';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkItemBulkFieldsUpdateRequest } from '@app/models/parks/park-item-bulk-fields-update-request';
+import {
+  ParkItemsBulkCreateApplyResult,
+  ParkItemsBulkCreatePreviewResult,
+  ParkItemsBulkCreateRequest
+} from '@app/models/parks/park-item-bulk-create';
 import { ParkItem } from '@app/models/parks/park-item';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { ApiResponse } from '@app/models/shared/api_reponse';
@@ -176,6 +181,16 @@ export class ParkItemsApiService {
       isVisible: request.isVisible ?? null,
       adminReviewStatus: request.adminReviewStatus ?? null
     });
+  }
+
+  previewParkItemsBulkCreate(request: ParkItemsBulkCreateRequest): Observable<ParkItemsBulkCreatePreviewResult> {
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.previewParkItemsBulkCreate}`;
+    return this.http.post<ParkItemsBulkCreatePreviewResult>(url, request);
+  }
+
+  applyParkItemsBulkCreate(request: ParkItemsBulkCreateRequest): Observable<ParkItemsBulkCreateApplyResult> {
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.applyParkItemsBulkCreate}`;
+    return this.http.post<ParkItemsBulkCreateApplyResult>(url, request);
   }
 
   private mapParkItemToWriteRequest(item: ParkItem): ParkItemWriteRequest {

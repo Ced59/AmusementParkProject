@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkItems.Commands;
+using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.ParkItems.Results;
 using AmusementPark.Core.Domain.Parks;
@@ -137,6 +138,51 @@ internal static class ParkItemsHttpMappers
             value.AdminReviewStatus.ToOptionalDomain());
     }
 
+    public static PreviewParkItemsBulkCreateCommand ToPreviewApplication(this ParkItemsBulkCreateRequestDto value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new PreviewParkItemsBulkCreateCommand(
+            value.ParkId,
+            value.Rows.Select(static row => row.ToApplication()).ToList());
+    }
+
+    public static ApplyParkItemsBulkCreateCommand ToApplyApplication(this ParkItemsBulkCreateRequestDto value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ApplyParkItemsBulkCreateCommand(
+            value.ParkId,
+            value.Rows.Select(static row => row.ToApplication()).ToList());
+    }
+
+    public static ParkItemsBulkCreatePreviewResultDto ToHttp(this ParkItemsBulkCreatePreviewResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkItemsBulkCreatePreviewResultDto
+        {
+            Rows = value.Rows.Select(static row => row.ToHttp()).ToList(),
+            ReadyCount = value.ReadyCount,
+            WarningCount = value.WarningCount,
+            ErrorCount = value.ErrorCount,
+        };
+    }
+
+    public static ParkItemsBulkCreateApplyResultDto ToHttp(this ParkItemsBulkCreateApplyResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkItemsBulkCreateApplyResultDto
+        {
+            Rows = value.Rows.Select(static row => row.ToHttp()).ToList(),
+            CreatedIds = value.CreatedIds,
+            RequestedCount = value.RequestedCount,
+            CreatedCount = value.CreatedCount,
+            IgnoredCount = value.IgnoredCount,
+        };
+    }
+
     public static ParkItemAdminListDto ToHttp(this ParkItemAdminListResult value)
     {
         ArgumentNullException.ThrowIfNull(value);
@@ -152,6 +198,49 @@ internal static class ParkItemsHttpMappers
             Type = value.Type.ToHttp(),
             IsVisible = value.IsVisible,
             AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
+        };
+    }
+
+    private static ParkItemBulkCreateDraft ToApplication(this ParkItemBulkCreateDraftDto value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkItemBulkCreateDraft
+        {
+            RowNumber = value.RowNumber,
+            Name = value.Name,
+            Category = value.Category.HasValue ? value.Category.Value.ToDomain() : null,
+            Type = value.Type.HasValue ? value.Type.Value.ToDomain() : null,
+            ZoneId = value.ZoneId,
+            ZoneName = value.ZoneName,
+            ManufacturerId = value.ManufacturerId,
+            ManufacturerName = value.ManufacturerName,
+            IsVisible = value.IsVisible,
+            AdminReviewStatus = value.AdminReviewStatus.ToOptionalDomain(),
+            DescriptionFr = value.DescriptionFr,
+        };
+    }
+
+    private static ParkItemBulkCreatePreviewRowDto ToHttp(this ParkItemBulkCreatePreviewRow value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkItemBulkCreatePreviewRowDto
+        {
+            RowNumber = value.RowNumber,
+            Name = value.Name,
+            Category = value.Category.ToHttp(),
+            Type = value.Type.ToHttp(),
+            ZoneId = value.ZoneId,
+            ZoneName = value.ZoneName,
+            ManufacturerId = value.ManufacturerId,
+            ManufacturerName = value.ManufacturerName,
+            IsVisible = value.IsVisible,
+            AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
+            DescriptionFr = value.DescriptionFr,
+            CanApply = value.CanApply,
+            Errors = value.Errors,
+            Warnings = value.Warnings,
         };
     }
 

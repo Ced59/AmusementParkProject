@@ -1,0 +1,159 @@
+<div class="paste-import">
+  <button
+    pButton
+    type="button"
+    icon="pi pi-file-import"
+    class="p-button-sm p-button-secondary"
+    [label]="'admin.parks.items.import.open' | translate"
+    (click)="open()">
+  </button>
+
+  @if (isOpen()) {
+    <section class="paste-import__panel">
+      <header class="paste-import__header">
+        <div>
+          <h3>{{ 'admin.parks.items.import.title' | translate }}</h3>
+          <p>{{ 'admin.parks.items.import.subtitle' | translate }}</p>
+        </div>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-times"
+          class="p-button-sm p-button-text"
+          [label]="'actions.cancel' | translate"
+          (click)="close()">
+        </button>
+      </header>
+
+      <label class="paste-import__field">
+        <span>{{ 'admin.parks.items.import.source' | translate }}</span>
+        <textarea
+          [ngModel]="rawText()"
+          (ngModelChange)="updateRawText($event)"
+          rows="7"
+          [placeholder]="'admin.parks.items.import.placeholder' | translate">
+        </textarea>
+      </label>
+
+      <div class="paste-import__actions">
+        <span>{{ 'admin.parks.items.import.parsedRows' | translate:{ count: draftRows().length } }}</span>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-eye"
+          class="p-button-sm"
+          [disabled]="!canPreview()"
+          [label]="'admin.parks.items.import.preview' | translate"
+          (click)="previewRows()">
+        </button>
+        <button
+          pButton
+          type="button"
+          icon="pi pi-check"
+          class="p-button-sm p-button-success"
+          [disabled]="!canApply()"
+          [label]="'admin.parks.items.import.apply' | translate"
+          (click)="applyRows()">
+        </button>
+      </div>
+
+      @if (error(); as importError) {
+        <p class="paste-import__error">{{ importError | translate }}</p>
+      }
+
+      @if (draftRows().length > 0) {
+        <div class="paste-import__table-wrap">
+          <table class="paste-import__table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>{{ 'admin.parkItems.columns.item' | translate }}</th>
+                <th>{{ 'admin.parkItems.columns.category' | translate }}</th>
+                <th>{{ 'admin.parkItems.columns.type' | translate }}</th>
+                <th>{{ 'admin.parks.items.zone' | translate }}</th>
+                <th>{{ 'admin.parks.items.details.manufacturer' | translate }}</th>
+                <th>{{ 'admin.parks.items.import.descriptionFr' | translate }}</th>
+                <th>{{ 'admin.parkItems.columns.actions' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of draftRows(); track row.rowNumber) {
+                <tr>
+                  <td>{{ row.rowNumber }}</td>
+                  <td>
+                    <input [ngModel]="row.name" (ngModelChange)="updateDraft(row, { name: $event })" />
+                  </td>
+                  <td>
+                    <select [ngModel]="row.category ?? null" (ngModelChange)="updateDraft(row, { category: $event })">
+                      <option [ngValue]="null">{{ 'admin.filters.category' | translate }}</option>
+                      @for (option of categoryOptions; track option.value) {
+                        <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+                      }
+                    </select>
+                  </td>
+                  <td>
+                    <select [ngModel]="row.type ?? null" (ngModelChange)="updateDraft(row, { type: $event })">
+                      <option [ngValue]="null">{{ 'admin.filters.type' | translate }}</option>
+                      @for (option of typeOptions; track option.value) {
+                        <option [ngValue]="option.value">{{ option.labelKey | translate }}</option>
+                      }
+                    </select>
+                  </td>
+                  <td>
+                    <select [ngModel]="row.zoneId ?? null" (ngModelChange)="updateDraft(row, { zoneId: $event, zoneName: null })">
+                      <option [ngValue]="null">{{ row.zoneName || ('admin.parks.items.quickCreate.noZone' | translate) }}</option>
+                      @for (option of zoneOptions(); track option.value) {
+                        <option [ngValue]="option.value">{{ option.label }}</option>
+                      }
+                    </select>
+                  </td>
+                  <td>
+                    <select [ngModel]="row.manufacturerId ?? null" (ngModelChange)="updateDraft(row, { manufacturerId: $event, manufacturerName: null })">
+                      <option [ngValue]="null">{{ row.manufacturerName || ('admin.parks.items.quickCreate.noManufacturer' | translate) }}</option>
+                      @for (option of manufacturerOptions(); track option.id) {
+                        <option [ngValue]="option.id">{{ option.label }}</option>
+                      }
+                    </select>
+                  </td>
+                  <td>
+                    <input [ngModel]="row.descriptionFr" (ngModelChange)="updateDraft(row, { descriptionFr: $event })" />
+                  </td>
+                  <td>
+                    <button
+                      pButton
+                      type="button"
+                      icon="pi pi-trash"
+                      class="p-button-sm p-button-danger p-button-text"
+                      [label]="'actions.delete' | translate"
+                      (click)="removeDraft(row)">
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+
+      @if (preview(); as previewResult) {
+        <div class="paste-import__preview">
+          <strong>
+            {{ 'admin.parks.items.import.previewSummary' | translate:{
+              ready: previewResult.readyCount,
+              warnings: previewResult.warningCount,
+              errors: previewResult.errorCount
+            } }}
+          </strong>
+          @for (row of previewResult.rows; track row.rowNumber) {
+            @if (!row.canApply || row.warnings.length > 0) {
+              <p>
+                <span>#{{ row.rowNumber }} {{ row.name }}</span>
+                <span>{{ row.errors.concat(row.warnings).join(', ') }}</span>
+              </p>
+            }
+          }
+        </div>
+      }
+    </section>
+  }
+</div>
