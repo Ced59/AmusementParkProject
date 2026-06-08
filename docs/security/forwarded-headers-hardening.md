@@ -31,7 +31,7 @@ FORWARDED_HEADERS_ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;loca
 FORWARDED_HEADERS_FORWARD_LIMIT=2
 ```
 
-Le réseau réellement utilisé par l'API est `backend_private`, car le front Nginx appelle l'API via `http://amusementpark-api:8080/` sur ce réseau.
+Le réseau réellement utilisé par l'API est `backend_private`, car le front SSR appelle l'API via le service Docker `http://api:8080/` sur ce réseau. Ce host interne doit rester présent dans `ALLOWED_HOSTS`.
 
 ## Cas Nginx Proxy Manager externe
 

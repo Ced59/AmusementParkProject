@@ -72,6 +72,47 @@ reject_wildcard() {
   fi
 }
 
+extract_url_host() {
+  local url="$1"
+  local without_scheme
+  local authority
+
+  without_scheme="${url#*://}"
+
+  if [ "${without_scheme}" = "${url}" ]; then
+    printf ''
+    return
+  fi
+
+  authority="${without_scheme%%/*}"
+  printf '%s' "${authority%%:*}"
+}
+
+semicolon_list_contains() {
+  local list="$1"
+  local expected="$2"
+
+  [[ ";${list};" == *";${expected};"* ]]
+}
+
+validate_front_ssr_api_host() {
+  local url="${FRONT_SSR_API_INTERNAL_URL:-http://api:8080}"
+  local host
+
+  host="$(extract_url_host "${url}")"
+
+  if [ -z "${host}" ]; then
+    echo "ERROR: FRONT_SSR_API_INTERNAL_URL must be an absolute URL, for example http://api:8080." >&2
+    errors=$((errors + 1))
+    return
+  fi
+
+  if ! semicolon_list_contains "${ALLOWED_HOSTS:-}" "${host}"; then
+    echo "ERROR: ALLOWED_HOSTS must contain FRONT_SSR_API_INTERNAL_URL host '${host}' to avoid API 400 Invalid Hostname responses during SSR." >&2
+    errors=$((errors + 1))
+  fi
+}
+
 
 validate_port() {
   local name="$1"
@@ -137,6 +178,7 @@ fi
 reject_wildcard ALLOWED_HOSTS
 reject_wildcard FORWARDED_HEADERS_ALLOWED_HOSTS
 reject_wildcard SSR_ALLOWED_HOSTS
+validate_front_ssr_api_host
 
 if [[ "${ALLOWED_HOSTS:-}" == *"localhost"* ]] || [[ "${ALLOWED_HOSTS:-}" == *"127.0.0.1"* ]]; then
   echo "NOTICE: ALLOWED_HOSTS contains localhost/127.0.0.1 for internal healthchecks. Keep API ports private." >&2

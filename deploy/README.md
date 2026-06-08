@@ -30,12 +30,13 @@ Ne crée pas de Proxy Host public pour l'API. L'API passe par `https://amusement
 La production ne doit pas utiliser `AllowedHosts=*`. Le déploiement injecte :
 
 ```bash
-ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api
+ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;api;amusementpark-api
 ```
 
 - `amusement-parks.fun` et `www.amusement-parks.fun` couvrent les domaines publics.
 - `localhost` et `127.0.0.1` couvrent les healthchecks internes.
-- `amusementpark-api` anticipe les appels Docker internes, notamment pour le futur SSR.
+- `api` couvre l'appel Docker interne réellement utilisé par le SSR (`FRONT_SSR_API_INTERNAL_URL=http://api:8080`).
+- `amusementpark-api` reste accepté par compatibilité avec le nom de container.
 
 Toute autre valeur de `Host` doit être rejetée en production.
 
@@ -159,7 +160,7 @@ Ces limites ciblent login, OAuth externe, refresh-token, inscription, confirmati
 
 - `PUBLIC_BASE_URL`, défaut `https://amusement-parks.fun`
 - `PUBLIC_DOMAIN`, défaut `amusement-parks.fun`
-- `ALLOWED_HOSTS`, défaut pipeline : `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;amusementpark-api`
+- `ALLOWED_HOSTS`, défaut pipeline : `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;api;amusementpark-api`
 - `PUBLIC_HTTP_PORT`, défaut `18080`
 - `MINIO_API_PORT`, défaut `19000`
 - `MINIO_CONSOLE_PORT`, défaut `19001`
@@ -268,8 +269,8 @@ Les scripts de déploiement ne font plus de `source .env` direct. Ils passent pa
 
 Le serveur Angular SSR proxifie maintenant les documents SEO racine vers l'API :
 
-- `GET /robots.txt` -> `amusementpark-api:8080/robots.txt`
-- `GET /sitemap.xml` -> `amusementpark-api:8080/sitemap.xml`
+- `GET /robots.txt` -> `api:8080/robots.txt`
+- `GET /sitemap.xml` -> `api:8080/sitemap.xml`
 
 La variable `PUBLIC_BASE_URL` alimente aussi `Seo__PublicBaseUrl`, utilisée pour produire les URLs absolues du sitemap et la directive `Sitemap:` de `robots.txt`. En production, cette valeur doit rester une origin racine en `https://` : elle sert aussi de référence SEO pour éviter des canonical/hreflang/sitemap en `http://`.
 
@@ -310,6 +311,8 @@ Variable disponible si le nom du service API change :
 ```bash
 FRONT_SSR_API_INTERNAL_URL=http://api:8080
 ```
+
+Le host de cette URL interne (`api` par défaut) doit aussi être présent dans `ALLOWED_HOSTS`, sinon l'API ASP.NET Core renvoie des `400 Invalid Hostname` pendant le rendu SSR.
 
 Les routes publiques sont rendues côté serveur. Les routes admin/profil/auth sensibles restent en rendu client et en `noindex`.
 
