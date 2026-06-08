@@ -22,7 +22,7 @@ public interface IParkRepository
     /// <summary>
     /// Retourne une page de parcs.
     /// </summary>
-    Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, CancellationToken cancellationToken);
+    Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken);
 
     /// <summary>
     /// Compte les parcs.
@@ -77,7 +77,7 @@ public interface IParkRepository
     /// <summary>
     /// Recherche des parcs par critères publics unifiés.
     /// </summary>
-    Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, CancellationToken cancellationToken);
+    Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken);
 
     /// <summary>
     /// Recherche des parcs par position.
@@ -108,4 +108,9 @@ public interface IParkRepository
     /// Applique une action de masse d'administration aux parcs.
     /// </summary>
     Task<int> UpdateBulkAdministrationAsync(IReadOnlyCollection<string> parkIds, bool? isVisible, AdminReviewStatus? adminReviewStatus, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne les identifiants de parcs correspondant aux filtres d'administration.
+    /// </summary>
+    Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken);
 }

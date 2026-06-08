@@ -34,6 +34,7 @@ export class AdminParksViewComponent {
   @Input() adminReviewStatusFilter!: Signal<AdminReviewStatus | null>;
   @Input() typeFilter!: Signal<ParkType | null>;
   @Input() countryCodeFilter!: Signal<string>;
+  @Input() validCoordinatesFilter!: Signal<boolean | null>;
   @Input() selectedParkIds!: Signal<string[]>;
   @Input() selectedCount!: Signal<number>;
   @Input() canShowHeaderTotal!: Signal<boolean>;
@@ -50,12 +51,14 @@ export class AdminParksViewComponent {
   @Output() allParksSelectionChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() bulkVisibilityChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() bulkStatusChanged: EventEmitter<AdminReviewStatus> = new EventEmitter<AdminReviewStatus>();
+  @Output() filteredValidCoordinateParksVisibilityRequested: EventEmitter<void> = new EventEmitter<void>();
   @Output() selectionCleared: EventEmitter<void> = new EventEmitter<void>();
 
   protected localVisibilityFilter: boolean | null = null;
   protected localAdminReviewStatusFilter: AdminReviewStatus | null = null;
   protected localTypeFilter: ParkType | null = null;
   protected localCountryCodeFilter: string = '';
+  protected localValidCoordinatesFilter: boolean | null = null;
 
   onSearchQueryChanged(searchQuery: string): void {
     this.searchQueryChanged.emit(searchQuery);
@@ -74,7 +77,8 @@ export class AdminParksViewComponent {
       isVisible: this.localVisibilityFilter,
       adminReviewStatus: this.localAdminReviewStatusFilter,
       type: this.localTypeFilter,
-      countryCode: this.localCountryCodeFilter
+      countryCode: this.localCountryCodeFilter,
+      hasValidCoordinates: this.localValidCoordinatesFilter
     });
   }
 
@@ -132,6 +136,10 @@ export class AdminParksViewComponent {
     this.bulkStatusChanged.emit('NotRelevant');
   }
 
+  makeFilteredValidCoordinateParksVisible(): void {
+    this.filteredValidCoordinateParksVisibilityRequested.emit();
+  }
+
   clearSelection(): void {
     this.selectionCleared.emit();
   }
@@ -146,5 +154,22 @@ export class AdminParksViewComponent {
 
   getStatusLabelKey(status: AdminReviewStatus | null | undefined): string {
     return getAdminReviewStatusTranslationKey(status);
+  }
+
+  hasValidCoordinates(park: Park): boolean {
+    const latitude: number = Number(park.latitude);
+    const longitude: number = Number(park.longitude);
+
+    return Number.isFinite(latitude)
+      && Number.isFinite(longitude)
+      && (latitude !== 0 || longitude !== 0);
+  }
+
+  getCoordinatesLabel(park: Park): string {
+    if (!this.hasValidCoordinates(park)) {
+      return 'admin.parks.coordinatesMissing';
+    }
+
+    return `${park.latitude.toFixed(6)}, ${park.longitude.toFixed(6)}`;
   }
 }

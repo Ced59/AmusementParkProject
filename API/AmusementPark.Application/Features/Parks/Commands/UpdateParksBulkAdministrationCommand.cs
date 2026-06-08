@@ -11,4 +11,9 @@ namespace AmusementPark.Application.Features.Parks.Commands;
 public sealed record UpdateParksBulkAdministrationCommand(
     IReadOnlyCollection<string> ParkIds,
     bool? IsVisible,
-    AdminReviewStatus? AdminReviewStatus) : ICommand<ApplicationResult<BulkAdministrationUpdateResult>>;
+    AdminReviewStatus? AdminReviewStatus,
+    bool? FilterIsVisible = null,
+    AdminReviewStatus? FilterAdminReviewStatus = null,
+    ParkType? FilterType = null,
+    string? FilterCountryCode = null,
+    bool? FilterHasValidCoordinates = null) : ICommand<ApplicationResult<BulkAdministrationUpdateResult>>;

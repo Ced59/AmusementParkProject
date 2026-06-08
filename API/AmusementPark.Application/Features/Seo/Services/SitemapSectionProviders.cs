@@ -92,6 +92,7 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             adminReviewStatus: null,
             type: null,
             countryCode: null,
+            hasValidCoordinates: null,
             cancellationToken);
 
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();

@@ -7,6 +7,8 @@
       "country": "País",
       "actions": "Acciones",
       "edit": "Editar",
+      "coordinates": "Coordenadas",
+      "coordinatesMissing": "Faltantes o 0,0",
       "searchPlaceholder": "Buscar un parque...",
       "clear": "Limpiar",
       "visible": "Visible",

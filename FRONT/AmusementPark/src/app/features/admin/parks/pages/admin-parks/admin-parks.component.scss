@@ -96,7 +96,7 @@
 
 .admin-filters-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.85rem;
   margin-bottom: 1rem;
 }
@@ -142,6 +142,20 @@
   font-weight: 800;
 }
 
+.admin-coordinate-bulk-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(56, 197, 245, 0.2);
+  border-radius: var(--radius-lg);
+  background: rgba(56, 197, 245, 0.075);
+  color: var(--heading);
+  font-weight: 800;
+}
+
 :host ::ng-deep .admin-data-table {
   .p-datatable-thead > tr > th {
     color: var(--text-faint);
@@ -171,6 +185,16 @@
   color: var(--heading);
 }
 
+.admin-coordinate-value {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.admin-coordinate-value--missing {
+  color: var(--text-faint);
+}
+
 .create-park-container {
   margin-top: 1.5rem;
   display: flex;
@@ -185,12 +209,14 @@
 
   .admin-toolbar__actions,
   .admin-bulk-bar,
-  .admin-bulk-bar__actions {
+  .admin-bulk-bar__actions,
+  .admin-coordinate-bulk-bar {
     align-items: stretch;
     justify-content: flex-start;
   }
 
-  .admin-bulk-bar {
+  .admin-bulk-bar,
+  .admin-coordinate-bulk-bar {
     flex-direction: column;
   }
 }

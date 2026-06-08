@@ -29,6 +29,7 @@ export class AdminParksComponent implements OnInit {
   protected readonly adminReviewStatusFilter = this.stateFacade.adminReviewStatusFilter;
   protected readonly typeFilter = this.stateFacade.typeFilter;
   protected readonly countryCodeFilter = this.stateFacade.countryCodeFilter;
+  protected readonly validCoordinatesFilter = this.stateFacade.validCoordinatesFilter;
   protected readonly selectedParkIds = signal<string[]>([]);
   protected readonly selectedCount = computed(() => this.selectedParkIds().length);
   protected readonly canShowHeaderTotal = computed(() => !this.loading());
@@ -127,6 +128,17 @@ export class AdminParksComponent implements OnInit {
     }
 
     await this.applyBulkAdministration({ adminReviewStatus });
+  }
+
+  async onMakeFilteredValidCoordinateParksVisible(): Promise<void> {
+    try {
+      await firstValueFrom(this.stateFacade.makeFilteredValidCoordinateParksVisible());
+      this.selectedParkIds.set([]);
+      this.stateFacade.loadParks(this.currentPage(), this.pageSize());
+    } catch (error: unknown) {
+      console.error('Error making valid-coordinate parks visible', error);
+      this.stateFacade.loadParks(this.currentPage(), this.pageSize());
+    }
   }
 
   clearSelection(): void {

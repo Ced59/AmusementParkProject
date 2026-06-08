@@ -9,7 +9,9 @@
       "clearSelection": "Auswahl löschen",
       "markToReview": "Zu prüfen setzen",
       "markValidated": "Validieren",
-      "markNotRelevant": "Nicht relevant"
+      "markNotRelevant": "Nicht relevant",
+      "validCoordinatesScope": "Parks mit gueltigen Koordinaten",
+      "makeFilteredValidCoordinatesVisible": "Geolokalisierte Parks sichtbar machen"
     }
   }
 }

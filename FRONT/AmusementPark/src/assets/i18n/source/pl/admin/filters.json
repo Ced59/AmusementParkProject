@@ -14,7 +14,11 @@
       "category": "Kategoria",
       "categoryAll": "Wszystkie kategorie",
       "countryCode": "Kraj",
-      "countryCodePlaceholder": "FR"
+      "countryCodePlaceholder": "FR",
+      "coordinates": "Wspolrzedne",
+      "coordinatesAll": "Wszystkie wspolrzedne",
+      "validCoordinatesOnly": "Poprawne wspolrzedne",
+      "invalidCoordinatesOnly": "Brak lub 0,0"
     }
   }
 }

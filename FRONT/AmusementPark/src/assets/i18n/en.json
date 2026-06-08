@@ -86,7 +86,9 @@
       "clearSelection": "Clear selection",
       "markToReview": "Mark to review",
       "markValidated": "Validate",
-      "markNotRelevant": "Not relevant"
+      "markNotRelevant": "Not relevant",
+      "validCoordinatesScope": "Valid-coordinate parks",
+      "makeFilteredValidCoordinatesVisible": "Make geolocated parks visible"
     },
     "dashboard": {
       "title": "Dashboard",
@@ -123,7 +125,11 @@
       "category": "Category",
       "categoryAll": "All categories",
       "countryCode": "Country",
-      "countryCodePlaceholder": "FR"
+      "countryCodePlaceholder": "FR",
+      "coordinates": "Coordinates",
+      "coordinatesAll": "All coordinates",
+      "validCoordinatesOnly": "Valid coordinates",
+      "invalidCoordinatesOnly": "Missing or 0,0"
     },
     "hidden": "Hidden",
     "images": {
@@ -557,6 +563,8 @@
       "country": "Country",
       "actions": "Actions",
       "edit": "Edit",
+      "coordinates": "Coordinates",
+      "coordinatesMissing": "Missing or 0,0",
       "searchPlaceholder": "Search a park...",
       "clear": "Clear",
       "visible": "Visible",

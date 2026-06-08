@@ -9,7 +9,9 @@
       "clearSelection": "Limpiar selección",
       "markToReview": "Marcar por revisar",
       "markValidated": "Validar",
-      "markNotRelevant": "No pertinente"
+      "markNotRelevant": "No pertinente",
+      "validCoordinatesScope": "Parques con coordenadas validas",
+      "makeFilteredValidCoordinatesVisible": "Hacer visibles los geolocalizados"
     }
   }
 }

@@ -86,7 +86,9 @@
       "clearSelection": "Wyczyść wybór",
       "markToReview": "Oznacz do sprawdzenia",
       "markValidated": "Zatwierdź",
-      "markNotRelevant": "Nieistotne"
+      "markNotRelevant": "Nieistotne",
+      "validCoordinatesScope": "Parki z poprawnymi wspolrzednymi",
+      "makeFilteredValidCoordinatesVisible": "Pokaz parki geolokalizowane"
     },
     "dashboard": {
       "title": "Panel",
@@ -123,7 +125,11 @@
       "category": "Kategoria",
       "categoryAll": "Wszystkie kategorie",
       "countryCode": "Kraj",
-      "countryCodePlaceholder": "FR"
+      "countryCodePlaceholder": "FR",
+      "coordinates": "Wspolrzedne",
+      "coordinatesAll": "Wszystkie wspolrzedne",
+      "validCoordinatesOnly": "Poprawne wspolrzedne",
+      "invalidCoordinatesOnly": "Brak lub 0,0"
     },
     "hidden": "Ukryte",
     "images": {
@@ -557,6 +563,8 @@
       "country": "Kraj",
       "actions": "Akcje",
       "edit": "Edytuj",
+      "coordinates": "Wspolrzedne",
+      "coordinatesMissing": "Brak lub 0,0",
       "searchPlaceholder": "Szukaj parku...",
       "clear": "Wyczyść",
       "visible": "Widoczny",

@@ -8,6 +8,7 @@ export interface ParkAdminListFilters {
   adminReviewStatus?: AdminReviewStatus | null;
   type?: ParkType | null;
   countryCode?: string | null;
+  hasValidCoordinates?: boolean | null;
 }
 
 function buildAdminListQuery(filters: ParkAdminListFilters | null = null): string {
@@ -27,6 +28,9 @@ function buildAdminListQuery(filters: ParkAdminListFilters | null = null): strin
   }
   if (filters.countryCode?.trim()) {
     params.push(`countryCode=${encodeURIComponent(filters.countryCode.trim())}`);
+  }
+  if (filters.hasValidCoordinates !== null && filters.hasValidCoordinates !== undefined) {
+    params.push(`hasValidCoordinates=${filters.hasValidCoordinates}`);
   }
 
   return params.length > 0 ? `&${params.join('&')}` : '';

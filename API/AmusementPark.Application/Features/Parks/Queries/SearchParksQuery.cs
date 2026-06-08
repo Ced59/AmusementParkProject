@@ -18,4 +18,5 @@ public sealed record SearchParksQuery(
     bool? IsVisible = null,
     AdminReviewStatus? AdminReviewStatus = null,
     ParkType? Type = null,
-    string? CountryCode = null) : IQuery<ApplicationResult<PagedResult<Park>>>;
+    string? CountryCode = null,
+    bool? HasValidCoordinates = null) : IQuery<ApplicationResult<PagedResult<Park>>>;

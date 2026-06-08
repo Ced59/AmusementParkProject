@@ -38,6 +38,7 @@ public sealed class GetParksPageQueryHandler : IQueryHandler<GetParksPageQuery, 
             query.AdminReviewStatus,
             query.Type,
             query.CountryCode,
+            query.HasValidCoordinates,
             cancellationToken);
         return ApplicationResult<PagedResult<Park>>.Success(page);
     }

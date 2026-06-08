@@ -86,7 +86,9 @@
       "clearSelection": "Désélectionner",
       "markToReview": "Remettre à traiter",
       "markValidated": "Valider",
-      "markNotRelevant": "Non pertinent"
+      "markNotRelevant": "Non pertinent",
+      "validCoordinatesScope": "Parcs avec coordonnees valides",
+      "makeFilteredValidCoordinatesVisible": "Rendre visibles les geolocalises"
     },
     "dashboard": {
       "title": "Tableau de bord",
@@ -123,7 +125,11 @@
       "category": "Catégorie",
       "categoryAll": "Toutes les catégories",
       "countryCode": "Pays",
-      "countryCodePlaceholder": "FR"
+      "countryCodePlaceholder": "FR",
+      "coordinates": "Coordonnees",
+      "coordinatesAll": "Toutes les coordonnees",
+      "validCoordinatesOnly": "Coordonnees valides",
+      "invalidCoordinatesOnly": "Manquantes ou 0,0"
     },
     "hidden": "Masqué",
     "images": {
@@ -557,6 +563,8 @@
       "country": "Pays",
       "actions": "Actions",
       "edit": "Modifier",
+      "coordinates": "Coordonnees",
+      "coordinatesMissing": "Manquantes ou 0,0",
       "searchPlaceholder": "Rechercher un parc...",
       "clear": "Effacer",
       "visible": "Visible",

@@ -12,6 +12,16 @@ public sealed class BulkAdministrationUpdateDto
     public bool? IsVisible { get; set; }
 
     public AdminReviewStatusDto? AdminReviewStatus { get; set; }
+
+    public bool? FilterIsVisible { get; set; }
+
+    public AdminReviewStatusDto? FilterAdminReviewStatus { get; set; }
+
+    public string? FilterType { get; set; }
+
+    public string? FilterCountryCode { get; set; }
+
+    public bool? FilterHasValidCoordinates { get; set; }
 }
 
 /// <summary>

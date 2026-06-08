@@ -40,6 +40,7 @@ export class AdminParksStateFacade {
   private readonly adminReviewStatusFilterSignal = signal<AdminReviewStatus | null>(null);
   private readonly typeFilterSignal = signal<ParkType | null>(null);
   private readonly countryCodeFilterSignal = signal('');
+  private readonly validCoordinatesFilterSignal = signal<boolean | null>(null);
 
   public readonly state = this.screenStateStore.state;
   public readonly loading = this.screenStateStore.isLoading;
@@ -52,11 +53,13 @@ export class AdminParksStateFacade {
   public readonly adminReviewStatusFilter = this.adminReviewStatusFilterSignal.asReadonly();
   public readonly typeFilter = this.typeFilterSignal.asReadonly();
   public readonly countryCodeFilter = this.countryCodeFilterSignal.asReadonly();
+  public readonly validCoordinatesFilter = this.validCoordinatesFilterSignal.asReadonly();
   public readonly filters = computed<ParkAdminListFilters>(() => ({
     isVisible: this.visibilityFilterSignal(),
     adminReviewStatus: this.adminReviewStatusFilterSignal(),
     type: this.typeFilterSignal(),
-    countryCode: this.countryCodeFilterSignal().trim() || null
+    countryCode: this.countryCodeFilterSignal().trim() || null,
+    hasValidCoordinates: this.validCoordinatesFilterSignal()
   }));
 
   constructor(@Inject(ADMIN_PARKS_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: AdminParksStateParksApiServicePort,
@@ -137,10 +140,26 @@ export class AdminParksStateFacade {
     this.adminReviewStatusFilterSignal.set(filters.adminReviewStatus ?? null);
     this.typeFilterSignal.set(filters.type ?? null);
     this.countryCodeFilterSignal.set(filters.countryCode ?? '');
+    this.validCoordinatesFilterSignal.set(filters.hasValidCoordinates ?? null);
     this.loadParks(1, this.pageSizeSignal());
   }
 
   updateBulkAdministration(request: BulkAdministrationUpdateRequest): Observable<BulkAdministrationUpdateResult> {
     return this.parksApiService.updateParksBulkAdministration(request);
+  }
+
+  makeFilteredValidCoordinateParksVisible(): Observable<BulkAdministrationUpdateResult> {
+    const filters: ParkAdminListFilters = this.filters();
+
+    return this.parksApiService.updateParksBulkAdministration({
+      ids: [],
+      isVisible: true,
+      adminReviewStatus: null,
+      filterIsVisible: null,
+      filterAdminReviewStatus: filters.adminReviewStatus,
+      filterType: filters.type,
+      filterCountryCode: filters.countryCode,
+      filterHasValidCoordinates: true
+    });
   }
 }

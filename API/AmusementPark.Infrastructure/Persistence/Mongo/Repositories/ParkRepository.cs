@@ -58,9 +58,9 @@ public sealed class ParkRepository : IParkRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
-    public async Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, CancellationToken cancellationToken)
+    public async Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode);
+        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
@@ -214,12 +214,12 @@ public sealed class ParkRepository : IParkRepository
     public Task<PagedResult<Park>> SearchByNameAsync(string name, int page, int pageSize, bool includeHidden, CancellationToken cancellationToken)
     {
         ParkSearchCriteria criteria = new ParkSearchCriteria(name, Array.Empty<string>(), Array.Empty<string>());
-        return this.SearchAsync(criteria, page, pageSize, includeHidden, null, null, null, null, cancellationToken);
+        return this.SearchAsync(criteria, page, pageSize, includeHidden, null, null, null, null, null, cancellationToken);
     }
 
-    public async Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, CancellationToken cancellationToken)
+    public async Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
     {
-        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode)
+        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates)
             & this.BuildCriteriaFilter(criteria);
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
@@ -338,6 +338,17 @@ public sealed class ParkRepository : IParkRepository
         return checked((int)result.ModifiedCount);
     }
 
+    public async Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates);
+
+        List<string> parkIds = await this.collection.Find(filter)
+            .Project(document => document.Id)
+            .ToListAsync(cancellationToken);
+
+        return NormalizeParkIds(parkIds);
+    }
+
     private static GeoJsonPoint<GeoJson2DGeographicCoordinates> BuildGeoJsonPoint(double latitude, double longitude)
     {
         return new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
@@ -430,7 +441,7 @@ public sealed class ParkRepository : IParkRepository
             .ToList();
     }
 
-    private FilterDefinition<ParkDocument> BuildAdminListFilter(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode)
+    private FilterDefinition<ParkDocument> BuildAdminListFilter(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates)
     {
         FilterDefinition<ParkDocument> filter = this.BuildVisibilityFilter(includeHidden);
 
@@ -455,7 +466,33 @@ public sealed class ParkRepository : IParkRepository
             filter &= Builders<ParkDocument>.Filter.Eq(document => document.CountryCode, normalizedCountryCode);
         }
 
+        if (hasValidCoordinates.HasValue)
+        {
+            filter &= hasValidCoordinates.Value
+                ? BuildValidCoordinatesFilter()
+                : BuildInvalidCoordinatesFilter();
+        }
+
         return filter;
+    }
+
+    private static FilterDefinition<ParkDocument> BuildValidCoordinatesFilter()
+    {
+        return Builders<ParkDocument>.Filter.Ne(document => document.Latitude, null)
+            & Builders<ParkDocument>.Filter.Ne(document => document.Longitude, null)
+            & Builders<ParkDocument>.Filter.Or(
+                Builders<ParkDocument>.Filter.Ne(document => document.Latitude, 0d),
+                Builders<ParkDocument>.Filter.Ne(document => document.Longitude, 0d));
+    }
+
+    private static FilterDefinition<ParkDocument> BuildInvalidCoordinatesFilter()
+    {
+        return Builders<ParkDocument>.Filter.Or(
+            Builders<ParkDocument>.Filter.Eq(document => document.Latitude, null),
+            Builders<ParkDocument>.Filter.Eq(document => document.Longitude, null),
+            Builders<ParkDocument>.Filter.And(
+                Builders<ParkDocument>.Filter.Eq(document => document.Latitude, 0d),
+                Builders<ParkDocument>.Filter.Eq(document => document.Longitude, 0d)));
     }
 
     private FilterDefinition<ParkDocument> BuildAdminReviewStatusFilter(AdminReviewStatus adminReviewStatus)
