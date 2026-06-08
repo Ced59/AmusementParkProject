@@ -47,38 +47,27 @@ public sealed class ApiPerformanceLoggingMiddleware
             double elapsedMilliseconds = this.GetElapsedMilliseconds(startedAt);
             int statusCode = context.Response.StatusCode;
 
-            if (!this.ShouldLog(elapsedMilliseconds, statusCode))
+            if (this.ShouldLog(elapsedMilliseconds, statusCode))
             {
-                return;
+                this.LogRequest(context, elapsedMilliseconds, statusCode);
             }
+        }
+    }
 
-            bool isSlow = elapsedMilliseconds >= Math.Max(1, this.options.SlowRequestThresholdMilliseconds);
-            bool hasAuthorizationHeader = context.Request.Headers.ContainsKey("Authorization");
-            bool hasCookieHeader = context.Request.Headers.ContainsKey("Cookie");
-            bool isAuthenticated = context.User.Identity?.IsAuthenticated == true;
-            string userAgent = context.Request.Headers["User-Agent"].ToString();
-            string queryString = context.Request.QueryString.HasValue ? context.Request.QueryString.Value ?? string.Empty : string.Empty;
-            double roundedElapsedMilliseconds = Math.Round(elapsedMilliseconds, 2);
+    private void LogRequest(HttpContext context, double elapsedMilliseconds, int statusCode)
+    {
+        bool isSlow = elapsedMilliseconds >= Math.Max(1, this.options.SlowRequestThresholdMilliseconds);
+        bool hasAuthorizationHeader = context.Request.Headers.ContainsKey("Authorization");
+        bool hasCookieHeader = context.Request.Headers.ContainsKey("Cookie");
+        bool isAuthenticated = context.User.Identity?.IsAuthenticated == true;
+        string userAgent = context.Request.Headers["User-Agent"].ToString();
+        string queryString = context.Request.QueryString.HasValue ? context.Request.QueryString.Value ?? string.Empty : string.Empty;
+        double roundedElapsedMilliseconds = Math.Round(elapsedMilliseconds, 2);
 
-            if (isSlow)
-            {
-                this.logger.LogWarning(
-                    "Slow API request {Method} {Path}{QueryString} responded {StatusCode} in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, AuthorizationHeader={HasAuthorizationHeader}, CookieHeader={HasCookieHeader}, UserAgent={UserAgent}, TraceId={TraceId}.",
-                    context.Request.Method,
-                    context.Request.Path.Value,
-                    queryString,
-                    statusCode,
-                    roundedElapsedMilliseconds,
-                    isAuthenticated,
-                    hasAuthorizationHeader,
-                    hasCookieHeader,
-                    userAgent,
-                    context.TraceIdentifier);
-                return;
-            }
-
-            this.logger.LogInformation(
-                "API request {Method} {Path}{QueryString} responded {StatusCode} in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, AuthorizationHeader={HasAuthorizationHeader}, CookieHeader={HasCookieHeader}, UserAgent={UserAgent}, TraceId={TraceId}.",
+        if (isSlow)
+        {
+            this.logger.LogWarning(
+                "Slow API request {Method} {Path}{QueryString} responded {StatusCode} in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, AuthorizationHeader={HasAuthorizationHeader}, CookieHeader={HasCookieHeader}, UserAgent={UserAgent}, TraceId={TraceId}.",
                 context.Request.Method,
                 context.Request.Path.Value,
                 queryString,
@@ -89,7 +78,21 @@ public sealed class ApiPerformanceLoggingMiddleware
                 hasCookieHeader,
                 userAgent,
                 context.TraceIdentifier);
+            return;
         }
+
+        this.logger.LogInformation(
+            "API request {Method} {Path}{QueryString} responded {StatusCode} in {ElapsedMilliseconds} ms. Authenticated={IsAuthenticated}, AuthorizationHeader={HasAuthorizationHeader}, CookieHeader={HasCookieHeader}, UserAgent={UserAgent}, TraceId={TraceId}.",
+            context.Request.Method,
+            context.Request.Path.Value,
+            queryString,
+            statusCode,
+            roundedElapsedMilliseconds,
+            isAuthenticated,
+            hasAuthorizationHeader,
+            hasCookieHeader,
+            userAgent,
+            context.TraceIdentifier);
     }
 
     private bool ShouldLog(double elapsedMilliseconds, int statusCode)
