@@ -47,7 +47,15 @@ export function app(): express.Express {
     res.status(200).type('text/plain').send('ok\n');
   });
 
+  server.head('/robots.txt', (req: Request, res: Response, next: NextFunction) => {
+    proxyToApi(req, res, next, req.originalUrl);
+  });
+
   server.get('/robots.txt', (req: Request, res: Response, next: NextFunction) => {
+    proxyToApi(req, res, next, req.originalUrl);
+  });
+
+  server.head('/sitemap.xml', (req: Request, res: Response, next: NextFunction) => {
     proxyToApi(req, res, next, req.originalUrl);
   });
 
@@ -55,7 +63,15 @@ export function app(): express.Express {
     proxyToApi(req, res, next, req.originalUrl);
   });
 
+  server.head('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
+    proxyToApi(req, res, next, req.originalUrl);
+  });
+
   server.get('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
+    proxyToApi(req, res, next, req.originalUrl);
+  });
+
+  server.head('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
     proxyToApi(req, res, next, req.originalUrl);
   });
 

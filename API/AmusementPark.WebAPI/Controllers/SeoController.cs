@@ -42,7 +42,7 @@ public sealed class SeoController : ControllerBase
         this.getPublicSitemapDocumentQueryHandler = getPublicSitemapDocumentQueryHandler;
     }
 
-    [HttpGet("robots.txt")]
+    [HttpGet("/robots.txt")]
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicSeoDocuments)]
     [Produces("text/plain")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
@@ -64,7 +64,16 @@ public sealed class SeoController : ControllerBase
         return this.Content(builder.ToString(), "text/plain", Encoding.UTF8);
     }
 
-    [HttpGet("sitemap.xml")]
+    [HttpHead("/robots.txt")]
+    [Produces("text/plain")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult HeadRobotsTxt()
+    {
+        this.Response.ContentType = "text/plain; charset=utf-8";
+        return new EmptyResult();
+    }
+
+    [HttpGet("/sitemap.xml")]
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicSeoDocuments)]
     [Produces("application/xml")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
@@ -73,7 +82,15 @@ public sealed class SeoController : ControllerBase
         return await this.GetSitemapDocumentAsync(sectionKey: null, cancellationToken);
     }
 
-    [HttpGet("sitemaps/{sectionFileName}")]
+    [HttpHead("/sitemap.xml")]
+    [Produces("application/xml")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> HeadSitemapIndexXml(CancellationToken cancellationToken = default)
+    {
+        return await this.GetSitemapDocumentHeadAsync(sectionKey: null, cancellationToken);
+    }
+
+    [HttpGet("/sitemaps/{sectionFileName}")]
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicSeoDocuments)]
     [Produces("application/xml")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
@@ -82,7 +99,15 @@ public sealed class SeoController : ControllerBase
         return await this.GetSitemapDocumentAsync(sectionFileName, cancellationToken);
     }
 
-    [HttpGet("{key}.txt")]
+    [HttpHead("/sitemaps/{sectionFileName}")]
+    [Produces("application/xml")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> HeadSitemapSectionXml([FromRoute] string sectionFileName, CancellationToken cancellationToken = default)
+    {
+        return await this.GetSitemapDocumentHeadAsync(sectionFileName, cancellationToken);
+    }
+
+    [HttpGet("/{key}.txt")]
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicSeoDocuments)]
     [Produces("text/plain")]
     public async Task<IActionResult> GetIndexNowKeyFileAsync([FromRoute] string key, CancellationToken cancellationToken = default)
@@ -101,6 +126,25 @@ public sealed class SeoController : ControllerBase
         return this.Content(sitemapSettings.IndexNowKey, "text/plain", Encoding.UTF8);
     }
 
+    [HttpHead("/{key}.txt")]
+    [Produces("text/plain")]
+    public async Task<IActionResult> HeadIndexNowKeyFileAsync([FromRoute] string key, CancellationToken cancellationToken = default)
+    {
+        SeoSitemapSettings sitemapSettings = await this.sitemapSettingsRepository.GetAsync(cancellationToken);
+        if (!sitemapSettings.IsIndexNowEnabled || string.IsNullOrWhiteSpace(sitemapSettings.IndexNowKey))
+        {
+            return this.NotFound();
+        }
+
+        if (!string.Equals(key, sitemapSettings.IndexNowKey, StringComparison.Ordinal))
+        {
+            return this.NotFound();
+        }
+
+        this.Response.ContentType = "text/plain; charset=utf-8";
+        return new EmptyResult();
+    }
+
     private async Task<IActionResult> GetSitemapDocumentAsync(string? sectionKey, CancellationToken cancellationToken)
     {
         ApplicationResult<SitemapDocumentResult> result = await this.getPublicSitemapDocumentQueryHandler.HandleAsync(
@@ -113,6 +157,22 @@ public sealed class SeoController : ControllerBase
         }
 
         return this.Content(result.Value.Content, result.Value.ContentType, Encoding.UTF8);
+    }
+
+    private async Task<IActionResult> GetSitemapDocumentHeadAsync(string? sectionKey, CancellationToken cancellationToken)
+    {
+        ApplicationResult<SitemapDocumentResult> result = await this.getPublicSitemapDocumentQueryHandler.HandleAsync(
+            new GetPublicSitemapDocumentQuery(sectionKey, this.GetPublicBaseUrl(), this.settings.SupportedLanguages),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        this.Response.ContentType = result.Value.ContentType;
+        this.Response.ContentLength = Encoding.UTF8.GetByteCount(result.Value.Content);
+        return new EmptyResult();
     }
 
     private string GetPublicBaseUrl()
