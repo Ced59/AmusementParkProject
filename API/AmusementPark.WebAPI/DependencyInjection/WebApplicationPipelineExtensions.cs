@@ -101,6 +101,7 @@ public static class WebApplicationPipelineExtensions
         app.UseApiAuthenticationRateLimiting();
         app.UseAuthentication();
         app.UseAuthorization();
+        app.UseMiddleware<ApiPerformanceLoggingMiddleware>();
         app.UseOutputCache();
         return app;
     }
