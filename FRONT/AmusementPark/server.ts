@@ -407,8 +407,7 @@ function fetchSeoDocumentFromApi(
 ): void {
   const targetUrl = new URL(targetPath, apiInternalOrigin);
   const client = targetUrl.protocol === 'https:' ? https : http;
-  const headers = buildApiProxyHeaders(req, targetUrl);
-  delete headers['accept-encoding'];
+  const headers = buildSeoDocumentFetchHeaders(req, targetUrl);
 
   const proxyRequest = client.request(
     targetUrl,
@@ -450,15 +449,22 @@ function buildCachedSeoDocumentHeaders(headers: http.IncomingHttpHeaders, bodyLe
       return;
     }
 
+    // Exclure le cache-control de l'API : on impose le nôtre ci-dessous pour
+    // garantir une valeur cohérente indépendante de ce que retourne le OutputCache ASP.NET.
+    // Exclure également le header Vary émis par OutputCache (Host, X-Forwarded-*)
+    // qui peut perturber certains crawlers ou CDN intermédiaires.
+    const normalizedName = name.toLowerCase();
+    if (normalizedName === 'cache-control' || normalizedName === 'vary') {
+      return;
+    }
+
     responseHeaders[name] = value;
   });
 
   responseHeaders['content-length'] = bodyLength.toString();
 
-  if (!responseHeaders['cache-control']) {
-    const browserMaxAge = Math.min(seoDocumentCacheTtlSeconds, 300);
-    responseHeaders['cache-control'] = `public, max-age=${browserMaxAge}, stale-while-revalidate=60`;
-  }
+  const browserMaxAge = Math.min(seoDocumentCacheTtlSeconds, 300);
+  responseHeaders['cache-control'] = `public, max-age=${browserMaxAge}, stale-while-revalidate=60`;
 
   return responseHeaders;
 }
@@ -536,6 +542,36 @@ function buildApiProxyHeaders(req: Request, targetUrl: URL): http.OutgoingHttpHe
   if (req.originalUrl.toLowerCase().startsWith('/api')) {
     headers['x-forwarded-prefix'] = '/api';
   }
+
+  return headers;
+}
+
+/**
+ * Construit les headers minimalistes pour le fetch interne d'un document SEO vers l'API.
+ *
+ * Contrairement à buildApiProxyHeaders qui transmet les headers de la requête entrante,
+ * cette fonction produit un jeu de headers propre et déterministe :
+ * - Pas de Cookie ni Authorization (garantit que le OutputCache API met en cache la réponse).
+ * - Pas d'User-Agent du crawler entrant (évite toute logique basée sur l'UA côté API).
+ * - Pas d'Accept-Encoding (le corps doit rester non compressé pour être mis en cache en mémoire).
+ * - Accept: application/xml, text/plain pour guider la négociation de contenu.
+ *
+ * Les headers de forwarding (Host, X-Forwarded-*) sont conservés pour que l'API
+ * construise correctement les URLs publiques (sitemap index, robots Sitemap:).
+ */
+function buildSeoDocumentFetchHeaders(req: Request, targetUrl: URL): http.OutgoingHttpHeaders {
+  const publicProtocol = getForwardedValue(req, 'x-forwarded-proto') ?? req.protocol;
+  const publicHost = getForwardedValue(req, 'x-forwarded-host') ?? req.headers.host ?? targetUrl.host;
+
+  const headers: http.OutgoingHttpHeaders = {
+    'host': publicHost,
+    'x-forwarded-host': publicHost,
+    'x-forwarded-proto': publicProtocol,
+    'x-forwarded-for': appendForwardedFor(req),
+    'accept': 'application/xml, text/plain, */*',
+    'accept-language': 'en',
+    'user-agent': 'AmusementPark-SSR-SeoCache/1.0',
+  };
 
   return headers;
 }
