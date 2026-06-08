@@ -98,6 +98,28 @@
         (keyup.enter)="onFilterChanged()"
         [placeholder]="'admin.filters.countryCodePlaceholder' | translate" />
     </label>
+
+    <label class="admin-field">
+      <span class="admin-field-label">{{ 'admin.filters.coordinates' | translate }}</span>
+      <select [(ngModel)]="localValidCoordinatesFilter" (ngModelChange)="onFilterChanged()">
+        <option [ngValue]="null">{{ 'admin.filters.coordinatesAll' | translate }}</option>
+        <option [ngValue]="true">{{ 'admin.filters.validCoordinatesOnly' | translate }}</option>
+        <option [ngValue]="false">{{ 'admin.filters.invalidCoordinatesOnly' | translate }}</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="admin-coordinate-bulk-bar">
+    <span>{{ 'admin.bulk.validCoordinatesScope' | translate }}</span>
+    <button
+      pButton
+      type="button"
+      class="p-button-sm p-button-success"
+      icon="pi pi-map-marker"
+      [disabled]="loading()"
+      [label]="'admin.bulk.makeFilteredValidCoordinatesVisible' | translate"
+      (click)="makeFilteredValidCoordinateParksVisible()">
+    </button>
   </div>
 
   @if (selectedCount() > 0) {
@@ -134,6 +156,7 @@
         <th>{{ 'admin.parks.type' | translate }}</th>
         <th>{{ 'admin.parks.country' | translate }}</th>
         <th>{{ 'admin.parks.city' | translate }}</th>
+        <th>{{ 'admin.parks.coordinates' | translate }}</th>
         <th>{{ 'admin.parks.reviewStatus' | translate }}</th>
         <th>{{ 'admin.parks.visible' | translate }}</th>
         <th>{{ 'admin.parks.actions' | translate }}</th>
@@ -151,6 +174,13 @@
         <td [attr.data-label]="'admin.parks.type' | translate">{{ getTypeTranslationKey(park.type) | translate }}</td>
         <td [attr.data-label]="'admin.parks.country' | translate">{{ park.countryCode || '—' }}</td>
         <td [attr.data-label]="'admin.parks.city' | translate">{{ park.city || '—' }}</td>
+        <td [attr.data-label]="'admin.parks.coordinates' | translate">
+          @if (hasValidCoordinates(park)) {
+            <span class="admin-coordinate-value">{{ getCoordinatesLabel(park) }}</span>
+          } @else {
+            <span class="admin-coordinate-value admin-coordinate-value--missing">{{ 'admin.parks.coordinatesMissing' | translate }}</span>
+          }
+        </td>
         <td [attr.data-label]="'admin.parks.reviewStatus' | translate">
           <p-tag
             [value]="getStatusLabelKey(park.adminReviewStatus) | translate"
@@ -177,7 +207,7 @@
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="8">
+        <td colspan="9">
           <app-empty-state
             [compact]="true"
             titleKey="common.emptyTitle"

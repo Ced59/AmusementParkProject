@@ -9,6 +9,7 @@
   [adminReviewStatusFilter]="adminReviewStatusFilter"
   [typeFilter]="typeFilter"
   [countryCodeFilter]="countryCodeFilter"
+  [validCoordinatesFilter]="validCoordinatesFilter"
   [selectedParkIds]="selectedParkIds"
   [selectedCount]="selectedCount"
   [canShowHeaderTotal]="canShowHeaderTotal"
@@ -24,5 +25,6 @@
   (allParksSelectionChanged)="onAllParksSelectionChanged($event)"
   (bulkVisibilityChanged)="onBulkVisibilityChange($event)"
   (bulkStatusChanged)="onBulkStatusChange($event)"
+  (filteredValidCoordinateParksVisibilityRequested)="onMakeFilteredValidCoordinateParksVisible()"
   (selectionCleared)="clearSelection()">
 </app-admin-parks-view>

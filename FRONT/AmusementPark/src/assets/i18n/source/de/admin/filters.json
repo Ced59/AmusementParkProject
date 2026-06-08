@@ -14,7 +14,11 @@
       "category": "Kategorie",
       "categoryAll": "Alle Kategorien",
       "countryCode": "Land",
-      "countryCodePlaceholder": "FR"
+      "countryCodePlaceholder": "FR",
+      "coordinates": "Koordinaten",
+      "coordinatesAll": "Alle Koordinaten",
+      "validCoordinatesOnly": "Gueltige Koordinaten",
+      "invalidCoordinatesOnly": "Fehlend oder 0,0"
     }
   }
 }

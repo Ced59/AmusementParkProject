@@ -6,10 +6,11 @@ describe('PARKS_API_ENDPOINTS', () => {
       isVisible: false,
       adminReviewStatus: 'ToReview',
       type: 'ThemePark',
-      countryCode: ' be '
+      countryCode: ' be ',
+      hasValidCoordinates: true
     });
 
-    expect(endpoint).toBe('parks?page=2&size=25&visibleOnly=true&region=europe&isVisible=false&adminReviewStatus=ToReview&type=ThemePark&countryCode=be');
+    expect(endpoint).toBe('parks?page=2&size=25&visibleOnly=true&region=europe&isVisible=false&adminReviewStatus=ToReview&type=ThemePark&countryCode=be&hasValidCoordinates=true');
   });
 
   it('omits empty optional filters', () => {

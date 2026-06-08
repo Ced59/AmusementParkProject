@@ -105,6 +105,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             adminReviewStatus: null,
             type: null,
             countryCode: null,
+            hasValidCoordinates: null,
             cancellationToken);
 
         return page.Items

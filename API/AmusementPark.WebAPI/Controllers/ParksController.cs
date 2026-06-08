@@ -181,6 +181,7 @@ public sealed class ParksController : ControllerBase
         [FromQuery] string? adminReviewStatus = null,
         [FromQuery] string? type = null,
         [FromQuery] string? countryCode = null,
+        [FromQuery] bool? hasValidCoordinates = null,
         CancellationToken cancellationToken = default)
     {
         bool canSeeNonVisible = this.UserCanSeeNonVisible();
@@ -194,8 +195,8 @@ public sealed class ParksController : ControllerBase
         ParkType? parsedType = ParseParkType(type);
 
         ApplicationResult<PagedResult<Park>> result = string.IsNullOrWhiteSpace(effectiveQuery) && regionFilter is null
-            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode), cancellationToken)
-            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode), cancellationToken);
+            ? await this.getParksPageQueryHandler.HandleAsync(new GetParksPageQuery(paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates), cancellationToken)
+            : await this.searchParksQueryHandler.HandleAsync(new SearchParksQuery(effectiveQuery, regionFilter, paging, includeNonVisible, effectiveIsVisible, parsedAdminReviewStatus, parsedType, countryCode, hasValidCoordinates), cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
         {
@@ -280,7 +281,15 @@ public sealed class ParksController : ControllerBase
     public async Task<IActionResult> UpdateParksBulkAdministrationAsync([FromBody] BulkAdministrationUpdateDto request, CancellationToken cancellationToken = default)
     {
         ApplicationResult<BulkAdministrationUpdateResult> result = await this.updateParksBulkAdministrationCommandHandler.HandleAsync(
-            new UpdateParksBulkAdministrationCommand(request.Ids, request.IsVisible, request.AdminReviewStatus.ToOptionalDomain()),
+            new UpdateParksBulkAdministrationCommand(
+                request.Ids,
+                request.IsVisible,
+                request.AdminReviewStatus.ToOptionalDomain(),
+                request.FilterIsVisible,
+                request.FilterAdminReviewStatus.ToOptionalDomain(),
+                ParseParkType(request.FilterType),
+                request.FilterCountryCode,
+                request.FilterHasValidCoordinates),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

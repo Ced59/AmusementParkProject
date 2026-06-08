@@ -9,7 +9,9 @@
       "clearSelection": "Selectie wissen",
       "markToReview": "Markeer te controleren",
       "markValidated": "Valideren",
-      "markNotRelevant": "Niet relevant"
+      "markNotRelevant": "Niet relevant",
+      "validCoordinatesScope": "Parken met geldige coordinaten",
+      "makeFilteredValidCoordinatesVisible": "Maak geolokaliseerde parken zichtbaar"
     }
   }
 }

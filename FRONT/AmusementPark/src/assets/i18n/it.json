@@ -86,7 +86,9 @@
       "clearSelection": "Deseleziona",
       "markToReview": "Segna da verificare",
       "markValidated": "Valida",
-      "markNotRelevant": "Non pertinente"
+      "markNotRelevant": "Non pertinente",
+      "validCoordinatesScope": "Parchi con coordinate valide",
+      "makeFilteredValidCoordinatesVisible": "Rendi visibili i geolocalizzati"
     },
     "dashboard": {
       "title": "Pannello di controllo",
@@ -123,7 +125,11 @@
       "category": "Categoria",
       "categoryAll": "Tutte le categorie",
       "countryCode": "Paese",
-      "countryCodePlaceholder": "FR"
+      "countryCodePlaceholder": "FR",
+      "coordinates": "Coordinate",
+      "coordinatesAll": "Tutte le coordinate",
+      "validCoordinatesOnly": "Coordinate valide",
+      "invalidCoordinatesOnly": "Mancanti o 0,0"
     },
     "hidden": "Nascosto",
     "images": {
@@ -557,6 +563,8 @@
       "country": "Paese",
       "actions": "Azioni",
       "edit": "Modifica",
+      "coordinates": "Coordinate",
+      "coordinatesMissing": "Mancanti o 0,0",
       "searchPlaceholder": "Cerca un parco...",
       "clear": "Pulisci",
       "visible": "Visibile",

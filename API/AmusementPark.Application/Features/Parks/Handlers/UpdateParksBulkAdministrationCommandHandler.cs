@@ -34,7 +34,7 @@ public sealed class UpdateParksBulkAdministrationCommandHandler : ICommandHandle
             .Distinct(StringComparer.Ordinal)
             .ToList();
 
-        if (normalizedParkIds.Count == 0)
+        if (normalizedParkIds.Count == 0 && !HasFilterScope(command))
         {
             return ApplicationResult<BulkAdministrationUpdateResult>.Failure(ApplicationErrors.Required(nameof(command.ParkIds)));
         }
@@ -42,6 +42,24 @@ public sealed class UpdateParksBulkAdministrationCommandHandler : ICommandHandle
         if (!command.IsVisible.HasValue && !command.AdminReviewStatus.HasValue)
         {
             return ApplicationResult<BulkAdministrationUpdateResult>.Failure(ApplicationErrors.Required("bulkAction"));
+        }
+
+        if (normalizedParkIds.Count == 0)
+        {
+            IReadOnlyCollection<string> filteredParkIds = await this.parkRepository.GetAdministrationIdsAsync(
+                true,
+                command.FilterIsVisible,
+                command.FilterAdminReviewStatus,
+                command.FilterType,
+                command.FilterCountryCode,
+                command.FilterHasValidCoordinates,
+                cancellationToken);
+
+            normalizedParkIds = filteredParkIds
+                .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+                .Select(static parkId => parkId.Trim())
+                .Distinct(StringComparer.Ordinal)
+                .ToList();
         }
 
         int updatedCount = await this.parkRepository.UpdateBulkAdministrationAsync(
@@ -65,5 +83,14 @@ public sealed class UpdateParksBulkAdministrationCommandHandler : ICommandHandle
             RequestedCount = normalizedParkIds.Count,
             UpdatedCount = updatedCount,
         });
+    }
+
+    private static bool HasFilterScope(UpdateParksBulkAdministrationCommand command)
+    {
+        return command.FilterIsVisible.HasValue
+            || command.FilterAdminReviewStatus.HasValue
+            || command.FilterType.HasValue
+            || !string.IsNullOrWhiteSpace(command.FilterCountryCode)
+            || command.FilterHasValidCoordinates.HasValue;
     }
 }

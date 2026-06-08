@@ -14,7 +14,11 @@
       "category": "Categorie",
       "categoryAll": "Alle categorieën",
       "countryCode": "Land",
-      "countryCodePlaceholder": "FR"
+      "countryCodePlaceholder": "FR",
+      "coordinates": "Coordinaten",
+      "coordinatesAll": "Alle coordinaten",
+      "validCoordinatesOnly": "Geldige coordinaten",
+      "invalidCoordinatesOnly": "Ontbrekend of 0,0"
     }
   }
 }

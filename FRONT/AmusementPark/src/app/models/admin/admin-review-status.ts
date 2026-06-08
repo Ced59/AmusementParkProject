@@ -4,6 +4,11 @@ export interface BulkAdministrationUpdateRequest {
   ids: string[];
   isVisible?: boolean | null;
   adminReviewStatus?: AdminReviewStatus | null;
+  filterIsVisible?: boolean | null;
+  filterAdminReviewStatus?: AdminReviewStatus | null;
+  filterType?: string | null;
+  filterCountryCode?: string | null;
+  filterHasValidCoordinates?: boolean | null;
 }
 
 export interface BulkReviewStatusUpdateRequest {

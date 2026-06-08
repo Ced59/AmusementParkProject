@@ -86,7 +86,9 @@
       "clearSelection": "Selectie wissen",
       "markToReview": "Markeer te controleren",
       "markValidated": "Valideren",
-      "markNotRelevant": "Niet relevant"
+      "markNotRelevant": "Niet relevant",
+      "validCoordinatesScope": "Parken met geldige coordinaten",
+      "makeFilteredValidCoordinatesVisible": "Maak geolokaliseerde parken zichtbaar"
     },
     "dashboard": {
       "title": "Beheerpaneel",
@@ -123,7 +125,11 @@
       "category": "Categorie",
       "categoryAll": "Alle categorieën",
       "countryCode": "Land",
-      "countryCodePlaceholder": "FR"
+      "countryCodePlaceholder": "FR",
+      "coordinates": "Coordinaten",
+      "coordinatesAll": "Alle coordinaten",
+      "validCoordinatesOnly": "Geldige coordinaten",
+      "invalidCoordinatesOnly": "Ontbrekend of 0,0"
     },
     "hidden": "Verborgen",
     "images": {
@@ -557,6 +563,8 @@
       "country": "Land",
       "actions": "Acties",
       "edit": "Bewerken",
+      "coordinates": "Coordinaten",
+      "coordinatesMissing": "Ontbrekend of 0,0",
       "searchPlaceholder": "Zoek een park...",
       "clear": "Wissen",
       "visible": "Zichtbaar",

@@ -9,7 +9,9 @@
       "clearSelection": "Clear selection",
       "markToReview": "Mark to review",
       "markValidated": "Validate",
-      "markNotRelevant": "Not relevant"
+      "markNotRelevant": "Not relevant",
+      "validCoordinatesScope": "Valid-coordinate parks",
+      "makeFilteredValidCoordinatesVisible": "Make geolocated parks visible"
     }
   }
 }

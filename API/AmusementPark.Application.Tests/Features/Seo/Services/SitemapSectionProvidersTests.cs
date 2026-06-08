@@ -85,7 +85,7 @@ public sealed class SitemapSectionProvidersTests
             new Park { Id = "hidden", Name = "Hidden", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
         }, 1, int.MaxValue, 2);
         Mock<IParkRepository> repository = new Mock<IParkRepository>(MockBehavior.Strict);
-        repository.Setup(item => item.GetPageAsync(1, int.MaxValue, false, true, null, null, null, cancellationToken)).ReturnsAsync(page);
+        repository.Setup(item => item.GetPageAsync(1, int.MaxValue, false, true, null, null, null, null, cancellationToken)).ReturnsAsync(page);
         ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(repository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
@@ -260,6 +260,6 @@ public sealed class SitemapSectionProvidersTests
 
         SitemapUrlEntry url = Assert.Single(urls);
         Assert.Equal("/fr/park/park-99/late-park/item/item-99/late-attraction", url.RelativePath);
-        parkRepository.Verify(repository => repository.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool?>(), It.IsAny<AdminReviewStatus?>(), It.IsAny<ParkType?>(), It.IsAny<string?>(), It.IsAny<CancellationToken>()), Times.Never);
+        parkRepository.Verify(repository => repository.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool?>(), It.IsAny<AdminReviewStatus?>(), It.IsAny<ParkType?>(), It.IsAny<string?>(), It.IsAny<bool?>(), It.IsAny<CancellationToken>()), Times.Never);
     }
 }
