@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -34,6 +34,10 @@ interface ParkWriteRequest {
   postalCode?: string | null;
 }
 
+interface ParksHttpOptions {
+  context?: HttpContext;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -47,45 +51,45 @@ export class ParksApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
+  getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, options: ParksHttpOptions = {}): Observable<ParksApiResponse> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly, region, filters)}`;
-    return this.http.get<ParksApiResponse>(url);
+    return this.http.get<ParksApiResponse>(url, options);
   }
 
-  getRandomVisibleParks(limit: number = 4): Observable<Park[]> {
+  getRandomVisibleParks(limit: number = 4, options: ParksHttpOptions = {}): Observable<Park[]> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getRandomVisibleParks(limit)}`;
-    return this.http.get<Park[]>(url);
+    return this.http.get<Park[]>(url, options);
   }
 
-  getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null): Observable<ParkMapPoint[]> {
+  getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null, options: ParksHttpOptions = {}): Observable<ParkMapPoint[]> {
     const normalizedQuery: string | null = query?.trim() || null;
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedQuery, region)}`;
-    return this.http.get<ParkMapPoint[]>(url);
+    return this.http.get<ParkMapPoint[]>(url, options);
   }
 
-  getParkById(id: string): Observable<Park> {
+  getParkById(id: string, options: ParksHttpOptions = {}): Observable<Park> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkById(id)}`;
-    return this.http.get<Park>(url);
+    return this.http.get<Park>(url, options);
   }
 
-  searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null): Observable<ParksApiResponse> {
+  searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, options: ParksHttpOptions = {}): Observable<ParksApiResponse> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(query, page, size, visibleOnly, region, filters)}`;
-    return this.http.get<ParksApiResponse>(url);
+    return this.http.get<ParksApiResponse>(url, options);
   }
 
-  getParkDistances(sourceParkId: string, targetParkIds: string[]): Observable<ParkDistanceResponse> {
+  getParkDistances(sourceParkId: string, targetParkIds: string[], options: ParksHttpOptions = {}): Observable<ParkDistanceResponse> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkDistances(sourceParkId, targetParkIds)}`;
-    return this.http.get<ParkDistanceResponse>(url);
+    return this.http.get<ParkDistanceResponse>(url, options);
   }
 
-  getNearestParks(sourceParkId: string, limit: number = 4, maxDistanceKilometers: number | null = null): Observable<ParkDistanceResponse> {
+  getNearestParks(sourceParkId: string, limit: number = 4, maxDistanceKilometers: number | null = null, options: ParksHttpOptions = {}): Observable<ParkDistanceResponse> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getNearestParks(sourceParkId, limit, maxDistanceKilometers)}`;
-    return this.http.get<ParkDistanceResponse>(url);
+    return this.http.get<ParkDistanceResponse>(url, options);
   }
 
-  getParksByLocation(latitude: number, longitude: number, radiusMeters: number): Observable<Park[]> {
+  getParksByLocation(latitude: number, longitude: number, radiusMeters: number, options: ParksHttpOptions = {}): Observable<Park[]> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksByLocation(latitude, longitude, radiusMeters)}`;
-    return this.http.get<Park[] | PagedCollectionResponse<Park>>(url).pipe(
+    return this.http.get<Park[] | PagedCollectionResponse<Park>>(url, options).pipe(
       map((response: Park[] | PagedCollectionResponse<Park>) => unwrapCollection<Park>(response))
     );
   }
@@ -110,9 +114,9 @@ export class ParksApiService {
     return this.http.put<Park>(url, this.mapParkToWriteRequest(park), this.jsonHttpOptions);
   }
 
-  getParkExplorer(parkId: string): Observable<ParkExplorer> {
+  getParkExplorer(parkId: string, options: ParksHttpOptions = {}): Observable<ParkExplorer> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkExplorer(parkId)}`;
-    return this.http.get<ParkExplorer>(url);
+    return this.http.get<ParkExplorer>(url, options);
   }
 
   private mapParkToWriteRequest(park: Park): ParkWriteRequest {

@@ -232,7 +232,7 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.park()?.stats[0].value).toBe(3);
     expect(context.parksPort.parkByIdCalls).toEqual(['park-1']);
     expect(context.parksPort.explorerCalls).toEqual(['park-1']);
-    expect(context.parksPort.nearestCalls).toEqual([{ sourceParkId: 'park-1', limit: 4, maxDistanceKilometers: undefined }]);
+    expect(context.parksPort.nearestCalls).toEqual([{ sourceParkId: 'park-1', limit: 4, maxDistanceKilometers: null }]);
     expect(context.itemsPort.calls).toEqual(['park-1']);
     expect(context.zonesPort.calls).toEqual(['park-1']);
     expect(context.imagesPort.imageCalls.some((call) => call.ownerType === ImageOwnerType.PARK && call.ownerId === 'park-1')).toBeTrue();

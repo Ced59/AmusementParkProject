@@ -8,6 +8,7 @@ import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { mapParkItemToDetailViewModel } from '../mappers/park-item-detail-view.mapper';
@@ -75,7 +76,7 @@ export class ParkItemDetailStateFacade {
     const previousData: ParkItemDetailSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
-    this.parkItemsApiService.getParkItemById(itemId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parkItemsApiService.getParkItemById(itemId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (item: ParkItem) => {
         this.screenStateStore.setReady({
           item,
@@ -102,7 +103,7 @@ export class ParkItemDetailStateFacade {
   }
 
   private loadRelatedData(item: ParkItem): void {
-    this.parksApiService.getParkById(item.parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getParkById(item.parkId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (park: Park) => {
         this.updateReadyData((current: ParkItemDetailSourceData) => ({
           ...current,
@@ -124,7 +125,7 @@ export class ParkItemDetailStateFacade {
       return;
     }
 
-    this.imagesApiService.getAdminImageTags().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.imagesApiService.getAdminImageTags(anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (imageTags: ImageTagDto[]) => {
         this.updateReadyData((current: ParkItemDetailSourceData) => ({
           ...current,
@@ -139,7 +140,7 @@ export class ParkItemDetailStateFacade {
       }
     });
 
-    this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, item.id, ImageCategory.ATTRACTION).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, item.id, ImageCategory.ATTRACTION, 1, 100, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (photos: ImageDto[]) => {
         this.updateReadyData((current: ParkItemDetailSourceData) => ({
           ...current,
@@ -154,7 +155,7 @@ export class ParkItemDetailStateFacade {
       }
     });
 
-    this.parkItemsApiService.getParkItemsByParkId(item.parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parkItemsApiService.getParkItemsByParkId(item.parkId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (items: ParkItem[]) => {
         this.updateReadyData((current: ParkItemDetailSourceData) => ({
           ...current,
@@ -187,7 +188,7 @@ export class ParkItemDetailStateFacade {
     }
 
     if (item.zoneId) {
-      this.parkZonesApiService.getParkZoneById(item.zoneId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      this.parkZonesApiService.getParkZoneById(item.zoneId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (zone: { name?: string | null }) => {
           this.updateReadyData((current: ParkItemDetailSourceData) => ({
             ...current,

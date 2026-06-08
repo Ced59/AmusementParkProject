@@ -61,7 +61,7 @@ function buildParkItemAdminSortQuery(sort: ParkItemAdminListSort | null = null):
 }
 
 export const PARK_ITEMS_API_ENDPOINTS = {
-  getParkItemsByParkId: (parkId: string) => `park-items/park/${parkId}`,
+  getParkItemsByParkId: (parkId: string, page: number = 1, size: number = 100) => `park-items/park/${parkId}?page=${page}&size=${size}`,
   getParkItemsPaginated: (
     page: number,
     size: number,

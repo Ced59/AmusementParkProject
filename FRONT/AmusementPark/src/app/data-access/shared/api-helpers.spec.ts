@@ -53,6 +53,28 @@ describe('api helpers', () => {
     expect(normalizeParkItem(item)).toEqual(item);
   });
 
+  it('uses attraction entrance coordinates when root park item coordinates are missing', () => {
+    const item: ParkItem = {
+      parkId: 'p1',
+      name: 'Ride',
+      category: 'Attraction',
+      type: 'RollerCoaster',
+      latitude: null,
+      longitude: null,
+      attractionLocations: {
+        entrance: {
+          latitude: 50.5,
+          longitude: 3.1
+        }
+      }
+    };
+
+    const normalized: ParkItem = normalizeParkItem(item);
+
+    expect(normalized.latitude).toBe(50.5);
+    expect(normalized.longitude).toBe(3.1);
+  });
+
   it('normalizes admin rows and arrays including null arrays', () => {
     const row: ParkItemAdminRow = {
       id: 'i1',

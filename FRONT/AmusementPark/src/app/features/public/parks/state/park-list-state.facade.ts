@@ -16,6 +16,7 @@ import { mapArray, mapCollectionResponse, mapParkToCardModel } from '@shared/uti
 import { Park } from '@app/models/parks/park';
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
+import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { mapParkMapPointToViewModel } from '../mappers/park-map-point-view.mapper';
@@ -128,7 +129,7 @@ export class ParkListStateFacade {
       this.selectedParkCardSignal.set(this.mapPointToCardModel(currentMapPoint));
     }
 
-    this.parksApiService.getParkById(normalizedParkId)
+    this.parksApiService.getParkById(normalizedParkId, anonymousHttpOptions())
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (park: Park) => {
@@ -150,8 +151,8 @@ export class ParkListStateFacade {
     this.screenStateStore.setLoading(previousData);
 
     const request$ = normalizedTerm
-      ? this.parksApiService.searchParks(normalizedTerm, page, size, true, region)
-      : this.parksApiService.getParksPaginated(page, size, true, region);
+      ? this.parksApiService.searchParks(normalizedTerm, page, size, true, region, null, anonymousHttpOptions())
+      : this.parksApiService.getParksPaginated(page, size, true, region, null, anonymousHttpOptions());
 
     request$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: ParksApiResponse) => {
@@ -179,7 +180,7 @@ export class ParkListStateFacade {
     const previousData: ParkMapPointViewModel[] | undefined = this.mapStateStore.data();
     this.mapStateStore.setLoading(previousData);
 
-    this.parksApiService.getVisibleParkMapPoints(term, region)
+    this.parksApiService.getVisibleParkMapPoints(term, region, anonymousHttpOptions())
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (points: ParkMapPoint[]) => {

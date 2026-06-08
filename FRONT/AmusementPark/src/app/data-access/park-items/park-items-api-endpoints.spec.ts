@@ -39,7 +39,7 @@ describe('PARK_ITEMS_API_ENDPOINTS', () => {
   });
 
   it('builds CRUD endpoints', () => {
-    expect(PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId('park-1')).toBe('park-items/park/park-1');
+    expect(PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId('park-1')).toBe('park-items/park/park-1?page=1&size=100');
     expect(PARK_ITEMS_API_ENDPOINTS.getParkItemById('item-1')).toBe('park-items/item-1');
     expect(PARK_ITEMS_API_ENDPOINTS.updateParkItem('item-1')).toBe('park-items/item-1');
     expect(PARK_ITEMS_API_ENDPOINTS.deleteParkItem('item-1')).toBe('park-items/item-1');

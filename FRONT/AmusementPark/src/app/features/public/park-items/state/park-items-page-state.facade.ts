@@ -18,6 +18,7 @@ import { ParkExplorer, ParkExplorerBucket } from '@app/models/parks/park-explore
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemDescription } from '@shared/utils/display/park-item-presentation.helpers';
 import { buildTranslationOptions } from '@shared/utils/display/display-options';
@@ -238,12 +239,12 @@ export class ParkItemsPageStateFacade {
     this.screenStateStore.setLoading(previousData);
 
     forkJoin({
-      park: this.parksApiService.getParkById(parkId),
-      explorer: this.parksApiService.getParkExplorer(parkId),
-      items: this.parkItemsApiService.getParkItemsByParkId(parkId),
+      park: this.parksApiService.getParkById(parkId, anonymousHttpOptions()),
+      explorer: this.parksApiService.getParkExplorer(parkId, anonymousHttpOptions()),
+      items: this.parkItemsApiService.getParkItemsByParkId(parkId, anonymousHttpOptions()),
       manufacturers: this.manufacturersApiService.getAttractionManufacturers().pipe(catchError(() => of([] as AttractionManufacturer[]))),
-      zones: this.parkZonesApiService.getParkZonesByParkId(parkId).pipe(catchError(() => of([] as ParkZone[]))),
-      parkPhotos: this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, 24).pipe(catchError(() => of([] as ImageDto[])))
+      zones: this.parkZonesApiService.getParkZonesByParkId(parkId, anonymousHttpOptions()).pipe(catchError(() => of([] as ParkZone[]))),
+      parkPhotos: this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, 24, anonymousHttpOptions()).pipe(catchError(() => of([] as ImageDto[])))
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: ({
         park,

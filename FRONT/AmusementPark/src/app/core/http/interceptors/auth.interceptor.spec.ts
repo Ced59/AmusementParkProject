@@ -1,7 +1,8 @@
-import { HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpContext, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 
 import { AuthService } from '@app/services/auth/auth.service';
+import { SKIP_AUTHORIZATION_HEADER } from '../auth/auth-request-policy';
 import { AuthInterceptor } from './auth.interceptor';
 
 type TestHttpMethod = 'GET' | 'POST';
@@ -13,7 +14,7 @@ describe('AuthInterceptor', () => {
     return authService;
   }
 
-  function captureHeaders(interceptor: AuthInterceptor, url: string, method: TestHttpMethod = 'GET'): Promise<string | null> {
+  function captureHeaders(interceptor: AuthInterceptor, url: string, method: TestHttpMethod = 'GET', context?: HttpContext): Promise<string | null> {
     return new Promise((resolve) => {
       const handler: HttpHandler = {
         handle: (request: HttpRequest<unknown>) => {
@@ -21,9 +22,10 @@ describe('AuthInterceptor', () => {
           return of(new HttpResponse({ status: 200 }));
         }
       };
+      const requestOptions = context ? { context } : undefined;
       const request: HttpRequest<unknown> = method === 'POST'
-        ? new HttpRequest(method, url, null)
-        : new HttpRequest(method, url);
+        ? new HttpRequest(method, url, null, requestOptions)
+        : new HttpRequest(method, url, requestOptions);
 
       interceptor.intercept(request, handler).subscribe();
     });
@@ -63,6 +65,17 @@ describe('AuthInterceptor', () => {
     const interceptor = new AuthInterceptor(authService, 'browser' as unknown as object);
 
     const authorizationHeader: string | null = await captureHeaders(interceptor, '/api/auth/login', 'POST');
+
+    expect(authorizationHeader).toBeNull();
+    expect(authService.ensureValidAccessToken).not.toHaveBeenCalled();
+  });
+
+  it('skips requests marked as anonymous through request context', async () => {
+    const authService: jasmine.SpyObj<AuthService> = createAuthService('access-token');
+    const interceptor = new AuthInterceptor(authService, 'browser' as unknown as object);
+    const context: HttpContext = new HttpContext().set(SKIP_AUTHORIZATION_HEADER, true);
+
+    const authorizationHeader: string | null = await captureHeaders(interceptor, '/api/parks/park-1', 'GET', context);
 
     expect(authorizationHeader).toBeNull();
     expect(authService.ensureValidAccessToken).not.toHaveBeenCalled();

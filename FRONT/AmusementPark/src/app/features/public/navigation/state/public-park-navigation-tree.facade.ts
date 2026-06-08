@@ -10,6 +10,7 @@ import { NavigationEnd, Params, Router, UrlSegment, UrlTree } from '@angular/rou
 import { Observable, forkJoin, of } from 'rxjs';
 import { catchError, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 
+import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
@@ -134,15 +135,15 @@ export class PublicParkNavigationTreeFacade {
 
   private loadSourceData(context: PublicParkRouteContext): Observable<PublicParkNavigationSourceData> {
     return forkJoin({
-      park: this.parksApiService.getParkById(context.parkId).pipe(catchError(() => of(null as Park | null))),
+      park: this.parksApiService.getParkById(context.parkId, anonymousHttpOptions()).pipe(catchError(() => of(null as Park | null))),
       item: context.itemId
-        ? this.parkItemsApiService.getParkItemById(context.itemId).pipe(catchError(() => of(null as ParkItem | null)))
+        ? this.parkItemsApiService.getParkItemById(context.itemId, anonymousHttpOptions()).pipe(catchError(() => of(null as ParkItem | null)))
         : of(null as ParkItem | null)
     }).pipe(
       switchMap(({ park, item }: { park: Park | null; item: ParkItem | null }) => {
         const zoneId: string | null = context.selectedZoneId ?? item?.zoneId ?? null;
         const zone$: Observable<ParkZone | null> = zoneId
-          ? this.parkZonesApiService.getParkZoneById(zoneId).pipe(catchError(() => of(null as ParkZone | null)))
+          ? this.parkZonesApiService.getParkZoneById(zoneId, anonymousHttpOptions()).pipe(catchError(() => of(null as ParkZone | null)))
           : of(null as ParkZone | null);
 
         return zone$.pipe(

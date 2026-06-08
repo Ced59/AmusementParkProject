@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -7,6 +7,10 @@ import { ParkZone } from '@app/models/parks/park-zone';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
 import { PARK_ZONES_API_ENDPOINTS } from './park-zones-api-endpoints';
 
+interface ParkZonesHttpOptions {
+  context?: HttpContext;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,16 +18,16 @@ export class ParkZonesApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getParkZonesByParkId(parkId: string): Observable<ParkZone[]> {
+  getParkZonesByParkId(parkId: string, options: ParkZonesHttpOptions = {}): Observable<ParkZone[]> {
     const url: string = `${environment.apiBaseUrl}${PARK_ZONES_API_ENDPOINTS.getParkZonesByParkId(parkId)}`;
-    return this.http.get<ParkZone[] | PagedCollectionResponse<ParkZone>>(url).pipe(
+    return this.http.get<ParkZone[] | PagedCollectionResponse<ParkZone>>(url, options).pipe(
       map((response: ParkZone[] | PagedCollectionResponse<ParkZone>) => unwrapCollection<ParkZone>(response))
     );
   }
 
-  getParkZoneById(id: string): Observable<ParkZone> {
+  getParkZoneById(id: string, options: ParkZonesHttpOptions = {}): Observable<ParkZone> {
     const url: string = `${environment.apiBaseUrl}${PARK_ZONES_API_ENDPOINTS.getParkZoneById(id)}`;
-    return this.http.get<ParkZone>(url);
+    return this.http.get<ParkZone>(url, options);
   }
 
   createParkZone(zone: ParkZone): Observable<ParkZone> {

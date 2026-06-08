@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -23,6 +23,10 @@ import {
   unwrapCollection
 } from '../shared/api-helpers';
 import { IMAGES_API_ENDPOINTS } from './images-api-endpoints';
+
+interface ImagesHttpOptions {
+  context?: HttpContext;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +66,7 @@ export class ImagesApiService {
     });
   }
 
-  getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page: number = 1, size: number = 100): Observable<ImageDto[]> {
+  getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page: number = 1, size: number = 100, options: ImagesHttpOptions = {}): Observable<ImageDto[]> {
     const ownerTypeApiValue: number = toImageOwnerTypeApiValue(ownerType);
     const categoryApiValue: number = toImageCategoryApiValue(category);
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getImages(
@@ -74,18 +78,18 @@ export class ImagesApiService {
       .set('page', String(page))
       .set('size', String(size));
 
-    return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url, { params }).pipe(
+    return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url, { ...options, params }).pipe(
       map((response: ImageDto[] | PagedCollectionResponse<ImageDto>) => unwrapCollection<ImageDto>(response))
     );
   }
 
-  getCurrentImage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory): Observable<ImageDto> {
+  getCurrentImage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, options: ImagesHttpOptions = {}): Observable<ImageDto> {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getCurrentImage(
       String(toImageOwnerTypeApiValue(ownerType)),
       ownerId,
       String(toImageCategoryApiValue(category))
     )}`;
-    return this.http.get<ImageDto>(url);
+    return this.http.get<ImageDto>(url, options);
   }
 
   setCurrentImage(imageId: string): Observable<ImageDto> {
@@ -188,13 +192,13 @@ export class ImagesApiService {
     return this.http.put<ImageDto>(url, request);
   }
 
-  getAdminImageTags(): Observable<ImageTagDto[]> {
+  getAdminImageTags(options: ImagesHttpOptions = {}): Observable<ImageTagDto[]> {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getAdminImageTags}`;
     const params: HttpParams = new HttpParams()
       .set('page', '1')
       .set('size', '100');
 
-    return this.http.get<ImageTagDto[] | PagedCollectionResponse<ImageTagDto>>(url, { params }).pipe(
+    return this.http.get<ImageTagDto[] | PagedCollectionResponse<ImageTagDto>>(url, { ...options, params }).pipe(
       map((response: ImageTagDto[] | PagedCollectionResponse<ImageTagDto>) => unwrapCollection<ImageTagDto>(response))
     );
   }

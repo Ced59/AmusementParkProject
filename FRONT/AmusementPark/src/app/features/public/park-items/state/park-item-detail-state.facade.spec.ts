@@ -186,7 +186,7 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.manufacturersPort.calls).toEqual(['manufacturer-1']);
     expect(context.zonesPort.calls).toEqual(['zone-1']);
     expect(context.imagesPort.imageCalls).toEqual([
-      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: undefined, size: undefined }
+      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: 1, size: 100 }
     ]);
   });
 
