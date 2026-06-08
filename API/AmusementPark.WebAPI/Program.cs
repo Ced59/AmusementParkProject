@@ -14,7 +14,7 @@ builder.Services.AddApiRateLimiting(builder.Configuration);
 builder.Services.AddApiForwardedHeaders(builder.Configuration);
 builder.Services.AddApiContentSecurityPolicy(builder.Configuration);
 builder.Services.AddApiSwagger();
-builder.Services.AddHttpApi();
+builder.Services.AddHttpApi(builder.Configuration);
 WebApplication app = builder.Build();
 
 await app.InitializeMongoAsync();

@@ -54,6 +54,10 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Production}
       ASPNETCORE_URLS: http://+:8080
+      Diagnostics__PerformanceLogging__Enabled: ${API_PERF_LOGGING_ENABLED:-true}
+      Diagnostics__PerformanceLogging__LogAllRequests: ${API_PERF_LOGGING_LOG_ALL_REQUESTS:-false}
+      Diagnostics__PerformanceLogging__SlowRequestThresholdMilliseconds: ${API_PERF_LOGGING_SLOW_REQUEST_THRESHOLD_MS:-750}
+      Diagnostics__PerformanceLogging__AlwaysLogStatusCodeAtLeast: ${API_PERF_LOGGING_ALWAYS_LOG_STATUS_CODE_AT_LEAST:-500}
       AllowedHosts: ${ALLOWED_HOSTS:?ALLOWED_HOSTS is required}
       ForwardedHeaders__ForwardLimit: ${FORWARDED_HEADERS_FORWARD_LIMIT:-2}
       ForwardedHeaders__KnownProxies__0: "127.0.0.1"
