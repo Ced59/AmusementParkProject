@@ -3,6 +3,7 @@ import { coalesceArray, createPagedResult, mapArray } from '@shared/utils/mappin
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 
@@ -99,8 +100,12 @@ export function unwrapCollection<T>(response: T[] | PagedCollectionResponse<T> |
 }
 
 export function normalizeParkItem(item: ParkItem): ParkItem {
+  const fallbackPosition: AttractionLocationPoint | null = resolveParkItemFallbackPosition(item);
+
   return {
     ...item,
+    latitude: normalizeCoordinate(item.latitude, fallbackPosition?.latitude),
+    longitude: normalizeCoordinate(item.longitude, fallbackPosition?.longitude),
     category: toParkItemCategory(item.category),
     type: toParkItemType(item.type)
   };
@@ -149,4 +154,20 @@ function toParkItemType(value: ParkItem['type'] | ParkItemAdminRow['type'] | num
   }
 
   return PARK_ITEM_TYPES_BY_API_VALUE.get(Number(value)) ?? 'Other';
+}
+
+function resolveParkItemFallbackPosition(item: ParkItem): AttractionLocationPoint | null {
+  return item.attractionLocations?.entrance
+    ?? item.attractionLocations?.exit
+    ?? item.attractionLocations?.fastPassEntrance
+    ?? item.attractionLocations?.reducedMobilityEntrance
+    ?? null;
+}
+
+function normalizeCoordinate(primary: number | null | undefined, fallback: number | null | undefined): number | null {
+  if (primary !== null && primary !== undefined) {
+    return primary;
+  }
+
+  return fallback ?? null;
 }

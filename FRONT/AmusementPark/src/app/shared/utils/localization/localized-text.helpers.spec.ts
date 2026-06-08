@@ -23,6 +23,15 @@ describe('localized-text helpers', () => {
     expect(resolveLocalizedValue(localizedItems, 'de')).toBe('Hello');
   });
 
+  it('falls back to general localized values when exact and default languages are missing', () => {
+    const values: LocalizedItem<string>[] = [
+      { languageCode: 'general', value: 'Common label' },
+      { languageCode: 'nl', value: 'Hallo' }
+    ];
+
+    expect(resolveLocalizedValue(values, 'de')).toBe('Common label');
+  });
+
   it('falls back to the first item when the default language is missing', () => {
     expect(resolveLocalizedValue([{ languageCode: 'nl', value: 'Hallo' }], 'de', 'en')).toBe('Hallo');
   });
@@ -40,6 +49,16 @@ describe('localized-text helpers', () => {
     ];
 
     expect(resolveLocalizedText(values, 'fr')).toBe('Hallo');
+  });
+
+  it('uses non empty general text before unrelated localized text', () => {
+    const values: LocalizedItem<string>[] = [
+      { languageCode: 'fr', value: '   ' },
+      { languageCode: 'general', value: 'Shared description' },
+      { languageCode: 'de', value: 'Hallo' }
+    ];
+
+    expect(resolveLocalizedText(values, 'fr')).toBe('Shared description');
   });
 
   it('returns the configured fallback when no text is available', () => {

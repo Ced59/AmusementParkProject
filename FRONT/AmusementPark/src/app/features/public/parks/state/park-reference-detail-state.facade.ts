@@ -18,6 +18,7 @@ import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { ApiResponse } from '@app/models/shared/api_reponse';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { mapNullable } from '@shared/utils/mapping';
@@ -198,7 +199,7 @@ export class ParkReferenceDetailStateFacade {
   }
 
   private getReferenceImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory): Observable<ImageDto[]> {
-    return this.imagesApiService.getImages(ownerType, ownerId, category, 1, 100).pipe(
+    return this.imagesApiService.getImages(ownerType, ownerId, category, 1, 100, anonymousHttpOptions()).pipe(
       catchError((error: unknown) => {
         console.warn('Unable to load reference images', error);
         return of([] as ImageDto[]);
@@ -211,7 +212,7 @@ export class ParkReferenceDetailStateFacade {
       manufacturerId,
       isVisible: true,
       category: 'Attraction'
-    }).pipe(
+    }, null, anonymousHttpOptions()).pipe(
       map((response: ApiResponse<ParkItemAdminRow>) => response.data ?? []),
       catchError((error: unknown) => {
         console.warn('Unable to load manufacturer attractions', error);

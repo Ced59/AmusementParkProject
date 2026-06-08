@@ -18,24 +18,25 @@ import { ParkFoundersApiService } from '@data-access/parks/park-founders-api.ser
 import { ParkOperatorsApiService } from '@data-access/parks/park-operators-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
+import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
 export interface ParkDetailParksPort {
-  getParkById(id: string): Observable<Park>;
-  getParkExplorer(parkId: string): Observable<ParkExplorer>;
-  getNearestParks(sourceParkId: string, limit?: number, maxDistanceKilometers?: number | null): Observable<ParkDistanceResponse>;
+  getParkById(id: string, options?: AnonymousHttpOptions): Observable<Park>;
+  getParkExplorer(parkId: string, options?: AnonymousHttpOptions): Observable<ParkExplorer>;
+  getNearestParks(sourceParkId: string, limit?: number, maxDistanceKilometers?: number | null, options?: AnonymousHttpOptions): Observable<ParkDistanceResponse>;
 }
 
 export interface ParkDetailImagesPort {
-  getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number): Observable<ImageDto[]>;
-  getAdminImageTags(): Observable<ImageTagDto[]>;
+  getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number, options?: AnonymousHttpOptions): Observable<ImageDto[]>;
+  getAdminImageTags(options?: AnonymousHttpOptions): Observable<ImageTagDto[]>;
 }
 
 export interface ParkDetailItemsPort {
-  getParkItemsByParkId(parkId: string): Observable<ParkItem[]>;
+  getParkItemsByParkId(parkId: string, options?: AnonymousHttpOptions): Observable<ParkItem[]>;
 }
 
 export interface ParkDetailZonesPort {
-  getParkZonesByParkId(parkId: string): Observable<ParkZone[]>;
+  getParkZonesByParkId(parkId: string, options?: AnonymousHttpOptions): Observable<ParkZone[]>;
 }
 
 export interface ParkDetailFoundersPort {

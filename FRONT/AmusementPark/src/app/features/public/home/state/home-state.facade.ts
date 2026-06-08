@@ -20,6 +20,7 @@ import { CountryDisplayService } from '@shared/services/countries/country-displa
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { mapArray, mapParkToCardModel } from '@shared/utils/mapping';
+import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { mapHomeFeaturedParkToCardModel } from '../mappers/home-featured-park.mapper';
 
 import {
@@ -92,7 +93,7 @@ export class HomeStateFacade {
     const previousData: HomeStatsViewModel | undefined = this.statsStateStore.data();
     this.statsStateStore.setLoading(previousData);
 
-    this.homeApiService.getHomeStats().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.homeApiService.getHomeStats(anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (stats: HomeStatsModel) => {
         this.statsStateStore.setReady({ stats });
       },
@@ -110,7 +111,7 @@ export class HomeStateFacade {
     this.heroParksStateStore.setLoading(previousHeroData);
     this.featuredStateStore.setLoading(previousFeaturedData);
 
-    this.parksApiService.getRandomVisibleParks(4).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getRandomVisibleParks(4, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: Park[]) => {
         const heroParks: ParkCardModel[] = mapArray(response, (park: Park) => mapParkToCardModel(park, currentLanguage, this.countryDisplayService));
         this.setHeroParks(heroParks);
@@ -139,7 +140,7 @@ export class HomeStateFacade {
     const previousData: HomeSearchViewModel | undefined = this.searchStateStore.data();
     this.searchStateStore.setLoading(previousData);
 
-    this.searchApiService.getSearch(normalizedTerm, categoriesToSend, page, size).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.searchApiService.getSearch(normalizedTerm, categoriesToSend, page, size, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: SearchApiResponse) => {
         const results: SearchResultItem[] = response.data ?? [];
         const pagination: Pagination | null = response.pagination ?? null;
@@ -190,7 +191,7 @@ export class HomeStateFacade {
   private loadHomeFeaturedParks(currentLanguage: string, excludedParkIds: readonly string[]): void {
     const previousData: HomeFeaturedViewModel | undefined = this.featuredStateStore.data();
 
-    this.homeApiService.getFeaturedParks(excludedParkIds, 3).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.homeApiService.getFeaturedParks(excludedParkIds, 3, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: HomeFeaturedParkModel[]) => {
         const parks: HomeFeaturedParkCardModel[] = response.map((park: HomeFeaturedParkModel, index: number) =>
           mapHomeFeaturedParkToCardModel(park, currentLanguage, this.textTruncator, index, this.countryDisplayService));

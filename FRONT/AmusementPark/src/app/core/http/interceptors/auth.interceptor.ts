@@ -9,7 +9,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
 
 import { AuthService } from '@app/services/auth/auth.service';
-import { shouldSkipAuthorizationHeader } from '../auth/auth-request-policy';
+import { shouldSkipAuthorizationHeader, SKIP_AUTHORIZATION_HEADER } from '../auth/auth-request-policy';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -20,7 +20,9 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (!isPlatformBrowser(this.platformId) || shouldSkipAuthorizationHeader(req.url, req.method)) {
+    if (!isPlatformBrowser(this.platformId)
+      || req.context.get(SKIP_AUTHORIZATION_HEADER)
+      || shouldSkipAuthorizationHeader(req.url, req.method)) {
       return next.handle(req);
     }
 

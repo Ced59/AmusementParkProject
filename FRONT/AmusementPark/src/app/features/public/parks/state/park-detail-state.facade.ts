@@ -14,6 +14,7 @@ import { ParkItem } from '@app/models/parks/park-item';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
+import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { ScreenStateKind } from '@shared/models/contracts/screen-state.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -160,7 +161,7 @@ export class ParkDetailStateFacade {
     const previousData: ParkDetailSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
-    this.parksApiService.getParkById(id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getParkById(id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (park: Park) => {
 
         const sourceData: ParkDetailSourceData = {
@@ -199,7 +200,7 @@ export class ParkDetailStateFacade {
   }
 
   private loadExplorerSummary(parkId: string): void {
-    this.parksApiService.getParkExplorer(parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getParkExplorer(parkId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (explorer: ParkExplorer) => {
         this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
@@ -214,7 +215,7 @@ export class ParkDetailStateFacade {
   }
 
   private loadZones(parkId: string): void {
-    this.parkZonesApiService.getParkZonesByParkId(parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parkZonesApiService.getParkZonesByParkId(parkId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (zones: ParkZone[]) => {
         this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
@@ -232,7 +233,7 @@ export class ParkDetailStateFacade {
   }
 
   private loadParkItems(parkId: string): void {
-    this.parkItemsApiService.getParkItemsByParkId(parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parkItemsApiService.getParkItemsByParkId(parkId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (items: ParkItem[]) => {
         this.updateReadyData((current: ParkDetailSourceData) => ({
           ...current,
@@ -254,7 +255,7 @@ export class ParkDetailStateFacade {
 
   private loadParkPhotos(parkId: string): void {
 
-    this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, 100).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, 100, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (photos: ImageDto[]) => {
 
         this.updateReadyData((current: ParkDetailSourceData) => ({
@@ -272,7 +273,7 @@ export class ParkDetailStateFacade {
   }
 
   private loadImageTags(): void {
-    this.imagesApiService.getAdminImageTags().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.imagesApiService.getAdminImageTags(anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (imageTags: ImageTagDto[]) => {
 
         this.updateReadyData((current: ParkDetailSourceData) => ({
@@ -302,7 +303,7 @@ export class ParkDetailStateFacade {
 
     from(itemsWithIdentifier).pipe(
       mergeMap((item: ParkItem) => {
-        return this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, item.id!, ImageCategory.ATTRACTION, 1, 100).pipe(
+        return this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, item.id!, ImageCategory.ATTRACTION, 1, 100, anonymousHttpOptions()).pipe(
           map((photos: ImageDto[]) => {
             return { item, photos } as ParkDetailItemPhotoSource;
           }),
@@ -371,7 +372,7 @@ export class ParkDetailStateFacade {
   }
 
   private loadFallbackExplorerSummary(parkId: string): void {
-    this.parkItemsApiService.getParkItemsByParkId(parkId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parkItemsApiService.getParkItemsByParkId(parkId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (items: ParkItem[]) => {
         const countsByCategory: ParkExplorerCount[] = this.buildCounts(items.map((item: ParkItem) => item.category));
         const countsByType: ParkExplorerCount[] = this.buildCounts(items.map((item: ParkItem) => item.type));
@@ -431,7 +432,7 @@ export class ParkDetailStateFacade {
       nearbyState: 'loading'
     }));
 
-    this.parksApiService.getNearestParks(parkId, 4).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parksApiService.getNearestParks(parkId, 4, null, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: ParkDistanceResponse) => {
         const nearbyParks: ParkDistanceTarget[] = response.targets ?? [];
         this.updateReadyData((current: ParkDetailSourceData) => ({

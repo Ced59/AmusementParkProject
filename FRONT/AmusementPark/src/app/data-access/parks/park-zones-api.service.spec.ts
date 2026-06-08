@@ -26,7 +26,7 @@ describe('ParkZonesApiService', () => {
       result = zones;
     });
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}park-zones/park/park-1`);
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}park-zones/park/park-1?page=1&size=100`);
     expect(request.request.method).toBe('GET');
     request.flush({ data: [{ id: 'zone-1', parkId: 'park-1', name: 'Zone' }] });
 

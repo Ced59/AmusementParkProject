@@ -2,6 +2,8 @@ import { LocalizedItem } from '@app/models/shared/localized-item';
 
 export const DEFAULT_LOCALIZED_TEXT_FALLBACK: string = '—';
 
+const GENERAL_LOCALIZED_LANGUAGE_CODES: readonly string[] = ['', '*', 'all', 'default', 'general', 'generic', 'neutral'];
+
 export function stripHtml(value: string | null | undefined): string {
   if (!value) {
     return '';
@@ -46,6 +48,14 @@ export function resolveLocalizedValue<T>(
     return defaultMatch.value;
   }
 
+  const generalMatch: LocalizedItem<T> | undefined = items.find(
+    (item: LocalizedItem<T>) => isGeneralLanguageCode(item.languageCode)
+  );
+
+  if (generalMatch !== undefined) {
+    return generalMatch.value;
+  }
+
   return items[0]?.value;
 }
 
@@ -80,6 +90,14 @@ export function resolveLocalizedText(
     return defaultMatch.value;
   }
 
+  const generalMatch: LocalizedItem<string> | undefined = items.find(
+    (item: LocalizedItem<string>) => isGeneralLanguageCode(item.languageCode) && hasText(item.value)
+  );
+
+  if (generalMatch !== undefined) {
+    return generalMatch.value;
+  }
+
   const firstNonEmpty: LocalizedItem<string> | undefined = items.find(
     (item: LocalizedItem<string>) => hasText(item.value)
   );
@@ -89,6 +107,10 @@ export function resolveLocalizedText(
 
 function normalizeLanguageCode(languageCode: string | null | undefined): string {
   return (languageCode ?? '').trim().toLowerCase();
+}
+
+function isGeneralLanguageCode(languageCode: string | null | undefined): boolean {
+  return GENERAL_LOCALIZED_LANGUAGE_CODES.includes(normalizeLanguageCode(languageCode));
 }
 
 function hasText(value: string | null | undefined): boolean {

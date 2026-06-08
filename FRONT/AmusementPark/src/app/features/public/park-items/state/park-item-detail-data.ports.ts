@@ -12,14 +12,15 @@ import { ManufacturersApiService } from '@data-access/manufacturers/manufacturer
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
+import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
 export interface ParkItemDetailItemsPort {
-  getParkItemById(id: string): Observable<ParkItem>;
-  getParkItemsByParkId(parkId: string): Observable<ParkItem[]>;
+  getParkItemById(id: string, options?: AnonymousHttpOptions): Observable<ParkItem>;
+  getParkItemsByParkId(parkId: string, options?: AnonymousHttpOptions): Observable<ParkItem[]>;
 }
 
 export interface ParkItemDetailParksPort {
-  getParkById(id: string): Observable<Park>;
+  getParkById(id: string, options?: AnonymousHttpOptions): Observable<Park>;
 }
 
 export interface ParkItemDetailManufacturersPort {
@@ -27,12 +28,12 @@ export interface ParkItemDetailManufacturersPort {
 }
 
 export interface ParkItemDetailZonesPort {
-  getParkZoneById(id: string): Observable<{ name?: string | null }>;
+  getParkZoneById(id: string, options?: AnonymousHttpOptions): Observable<{ name?: string | null }>;
 }
 
 export interface ParkItemDetailImagesPort {
-  getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number): Observable<ImageDto[]>;
-  getAdminImageTags(): Observable<ImageTagDto[]>;
+  getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number, options?: AnonymousHttpOptions): Observable<ImageDto[]>;
+  getAdminImageTags(options?: AnonymousHttpOptions): Observable<ImageTagDto[]>;
 }
 
 export const PARK_ITEM_DETAIL_ITEMS_PORT = new InjectionToken<ParkItemDetailItemsPort>('PARK_ITEM_DETAIL_ITEMS_PORT', {

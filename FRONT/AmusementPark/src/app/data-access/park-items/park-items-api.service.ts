@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -106,6 +106,10 @@ interface ParkItemWriteRequest {
   adminReviewStatus?: string | null;
 }
 
+interface ParkItemsHttpOptions {
+  context?: HttpContext;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -113,9 +117,9 @@ export class ParkItemsApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getParkItemsByParkId(parkId: string): Observable<ParkItem[]> {
+  getParkItemsByParkId(parkId: string, options: ParkItemsHttpOptions = {}): Observable<ParkItem[]> {
     const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId(parkId)}`;
-    return this.http.get<ParkItem[] | PagedCollectionResponse<ParkItem>>(url).pipe(
+    return this.http.get<ParkItem[] | PagedCollectionResponse<ParkItem>>(url, options).pipe(
       map((response: ParkItem[] | PagedCollectionResponse<ParkItem>) => unwrapCollection<ParkItem>(response).map((item: ParkItem) => normalizeParkItem(item)))
     );
   }
@@ -126,10 +130,11 @@ export class ParkItemsApiService {
     parkId?: string | null,
     search?: string | null,
     filters: ParkItemAdminListFilters | null = null,
-    sort: ParkItemAdminListSort | null = null
+    sort: ParkItemAdminListSort | null = null,
+    options: ParkItemsHttpOptions = {}
   ): Observable<ApiResponse<ParkItemAdminRow>> {
     const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsPaginated(page, size, parkId, search, filters, sort)}`;
-    return this.http.get<ApiResponse<ParkItemAdminRow>>(url).pipe(
+    return this.http.get<ApiResponse<ParkItemAdminRow>>(url, options).pipe(
       map((response: ApiResponse<ParkItemAdminRow>) => ({
         ...response,
         data: normalizeParkItemAdminRows(response.data)
@@ -137,9 +142,9 @@ export class ParkItemsApiService {
     );
   }
 
-  getParkItemById(id: string): Observable<ParkItem> {
+  getParkItemById(id: string, options: ParkItemsHttpOptions = {}): Observable<ParkItem> {
     const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemById(id)}`;
-    return this.http.get<ParkItem>(url).pipe(
+    return this.http.get<ParkItem>(url, options).pipe(
       map((item: ParkItem) => normalizeParkItem(item))
     );
   }
