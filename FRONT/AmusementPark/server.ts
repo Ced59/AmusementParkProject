@@ -19,12 +19,25 @@ const allowLocalCspSources = (process.env['SSR_CSP_ALLOW_LOCAL_DEV_SOURCES'] ?? 
 const pageCacheTtlSeconds = Math.max(0, Number(process.env['SSR_PAGE_CACHE_SECONDS'] ?? 30));
 const pageCacheMaxEntries = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'] ?? 250));
 const pageCache = new Map<string, PageCacheEntry>();
+const seoDocumentCacheTtlSeconds = Math.max(0, Number(process.env['SSR_SEO_DOCUMENT_CACHE_SECONDS'] ?? 3600));
+const seoDocumentCacheMaxEntries = Math.max(0, Number(process.env['SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES'] ?? 128));
+const seoDocumentCache = new Map<string, SeoDocumentCacheEntry>();
+const pendingSeoDocumentCacheRequests = new Map<string, Array<SeoDocumentCacheCallback>>();
 
 interface PageCacheEntry {
   readonly statusCode: number;
   readonly html: string;
   readonly expiresAt: number;
 }
+
+interface SeoDocumentCacheEntry {
+  readonly statusCode: number;
+  readonly headers: Record<string, string | string[]>;
+  readonly body: Buffer;
+  readonly expiresAt: number;
+}
+
+type SeoDocumentCacheCallback = (error: Error | null, entry: SeoDocumentCacheEntry | null) => void;
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -48,35 +61,35 @@ export function app(): express.Express {
   });
 
   server.head('/robots.txt', (req: Request, res: Response, next: NextFunction) => {
-    proxyToApi(req, res, next, req.originalUrl);
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
   server.get('/robots.txt', (req: Request, res: Response, next: NextFunction) => {
-    proxyToApi(req, res, next, req.originalUrl);
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
   server.head('/sitemap.xml', (req: Request, res: Response, next: NextFunction) => {
-    proxyToApi(req, res, next, req.originalUrl);
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
   server.get('/sitemap.xml', (req: Request, res: Response, next: NextFunction) => {
-    proxyToApi(req, res, next, req.originalUrl);
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
   server.head('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
-    proxyToApi(req, res, next, req.originalUrl);
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
   server.get('/sitemaps/:fileName', (req: Request, res: Response, next: NextFunction) => {
-    proxyToApi(req, res, next, req.originalUrl);
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
   server.head('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
-    proxyToApi(req, res, next, req.originalUrl);
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
   server.get('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
-    proxyToApi(req, res, next, req.originalUrl);
+    proxySeoDocumentToApi(req, res, next, req.originalUrl);
   });
 
   server.use('/api', (req: Request, res: Response, next: NextFunction) => {
@@ -139,6 +152,7 @@ function run(): void {
     console.log(`Angular SSR server listening on http://0.0.0.0:${port}`);
     console.log(`SSR API internal origin: ${apiInternalOrigin}`);
     console.log(`SSR public page cache: ${pageCacheTtlSeconds}s / ${pageCacheMaxEntries} entries`);
+    console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
   });
 }
 
@@ -293,22 +307,195 @@ function joinCspDirective(name: string, sources: string[]): string {
   return `${name} ${uniqueSources.join(' ')}`;
 }
 
+
+function proxySeoDocumentToApi(req: Request, res: Response, next: NextFunction, targetPath: string): void {
+  if (!isSeoDocumentCacheEnabled() || !isSeoDocumentCacheableMethod(req.method)) {
+    proxyToApi(req, res, next, targetPath);
+    return;
+  }
+
+  const cacheKey = buildSeoDocumentCacheKey(targetPath);
+  const cachedEntry = getCachedSeoDocument(cacheKey);
+
+  if (cachedEntry !== null) {
+    writeCachedSeoDocument(req, res, cachedEntry, 'HIT');
+    return;
+  }
+
+  getOrFetchSeoDocument(req, targetPath, cacheKey, (error: Error | null, entry: SeoDocumentCacheEntry | null) => {
+    if (error !== null) {
+      next(error);
+      return;
+    }
+
+    if (entry === null) {
+      proxyToApi(req, res, next, targetPath);
+      return;
+    }
+
+    writeCachedSeoDocument(req, res, entry, 'MISS');
+  });
+}
+
+function isSeoDocumentCacheEnabled(): boolean {
+  return seoDocumentCacheTtlSeconds > 0 && seoDocumentCacheMaxEntries > 0;
+}
+
+function isSeoDocumentCacheableMethod(method: string): boolean {
+  return method.toUpperCase() === 'GET' || method.toUpperCase() === 'HEAD';
+}
+
+function buildSeoDocumentCacheKey(targetPath: string): string {
+  return targetPath.toLowerCase();
+}
+
+function getCachedSeoDocument(cacheKey: string): SeoDocumentCacheEntry | null {
+  const entry = seoDocumentCache.get(cacheKey);
+  if (!entry) {
+    return null;
+  }
+
+  if (entry.expiresAt <= Date.now()) {
+    seoDocumentCache.delete(cacheKey);
+    return null;
+  }
+
+  return entry;
+}
+
+function setCachedSeoDocument(cacheKey: string, entry: SeoDocumentCacheEntry): void {
+  seoDocumentCache.set(cacheKey, entry);
+
+  while (seoDocumentCache.size > seoDocumentCacheMaxEntries) {
+    const oldestKey = seoDocumentCache.keys().next().value as string | undefined;
+    if (!oldestKey) {
+      break;
+    }
+
+    seoDocumentCache.delete(oldestKey);
+  }
+}
+
+
+function getOrFetchSeoDocument(req: Request, targetPath: string, cacheKey: string, callback: SeoDocumentCacheCallback): void {
+  const pendingCallbacks = pendingSeoDocumentCacheRequests.get(cacheKey);
+  if (pendingCallbacks) {
+    pendingCallbacks.push(callback);
+    return;
+  }
+
+  pendingSeoDocumentCacheRequests.set(cacheKey, [callback]);
+
+  fetchSeoDocumentFromApi(req, targetPath, (error: Error | null, entry: SeoDocumentCacheEntry | null) => {
+    if (entry !== null && entry.statusCode >= 200 && entry.statusCode < 300) {
+      setCachedSeoDocument(cacheKey, entry);
+    }
+
+    const callbacks = pendingSeoDocumentCacheRequests.get(cacheKey) ?? [];
+    pendingSeoDocumentCacheRequests.delete(cacheKey);
+
+    callbacks.forEach((pendingCallback: SeoDocumentCacheCallback) => {
+      pendingCallback(error, entry);
+    });
+  });
+}
+
+function fetchSeoDocumentFromApi(
+  req: Request,
+  targetPath: string,
+  callback: (error: Error | null, entry: SeoDocumentCacheEntry | null) => void
+): void {
+  const targetUrl = new URL(targetPath, apiInternalOrigin);
+  const client = targetUrl.protocol === 'https:' ? https : http;
+  const headers = buildApiProxyHeaders(req, targetUrl);
+  delete headers['accept-encoding'];
+
+  const proxyRequest = client.request(
+    targetUrl,
+    {
+      method: 'GET',
+      headers
+    },
+    (proxyResponse: http.IncomingMessage) => {
+      const chunks: Buffer[] = [];
+
+      proxyResponse.on('data', (chunk: Buffer | string) => {
+        chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+      });
+
+      proxyResponse.on('end', () => {
+        const body = Buffer.concat(chunks);
+        const responseHeaders = buildCachedSeoDocumentHeaders(proxyResponse.headers, body.length);
+        const entry: SeoDocumentCacheEntry = {
+          statusCode: proxyResponse.statusCode ?? 502,
+          headers: responseHeaders,
+          body,
+          expiresAt: Date.now() + seoDocumentCacheTtlSeconds * 1000
+        };
+
+        callback(null, entry);
+      });
+    }
+  );
+
+  proxyRequest.on('error', (error: Error) => callback(error, null));
+  proxyRequest.end();
+}
+
+function buildCachedSeoDocumentHeaders(headers: http.IncomingHttpHeaders, bodyLength: number): Record<string, string | string[]> {
+  const responseHeaders: Record<string, string | string[]> = {};
+
+  Object.entries(headers).forEach(([name, value]: [string, string | string[] | undefined]) => {
+    if (value === undefined || isApiHeaderHiddenFromPublicProxy(name) || isHopByHopHeader(name)) {
+      return;
+    }
+
+    responseHeaders[name] = value;
+  });
+
+  responseHeaders['content-length'] = bodyLength.toString();
+
+  if (!responseHeaders['cache-control']) {
+    const browserMaxAge = Math.min(seoDocumentCacheTtlSeconds, 300);
+    responseHeaders['cache-control'] = `public, max-age=${browserMaxAge}, stale-while-revalidate=60`;
+  }
+
+  return responseHeaders;
+}
+
+function writeCachedSeoDocument(req: Request, res: Response, entry: SeoDocumentCacheEntry, cacheStatus: 'HIT' | 'MISS'): void {
+  res.status(entry.statusCode);
+
+  Object.entries(entry.headers).forEach(([name, value]: [string, string | string[]]) => {
+    res.setHeader(name, value);
+  });
+
+  res.setHeader('X-AmusementPark-SEO-Cache', cacheStatus);
+
+  if (req.method.toUpperCase() === 'HEAD') {
+    res.end();
+    return;
+  }
+
+  res.send(entry.body);
+}
+
+function isHopByHopHeader(name: string): boolean {
+  const normalizedName = name.toLowerCase();
+  return normalizedName === 'connection'
+    || normalizedName === 'keep-alive'
+    || normalizedName === 'proxy-authenticate'
+    || normalizedName === 'proxy-authorization'
+    || normalizedName === 'te'
+    || normalizedName === 'trailer'
+    || normalizedName === 'transfer-encoding'
+    || normalizedName === 'upgrade';
+}
+
 function proxyToApi(req: Request, res: Response, next: NextFunction, targetPath: string): void {
   const targetUrl = new URL(targetPath, apiInternalOrigin);
   const client = targetUrl.protocol === 'https:' ? https : http;
-  const publicProtocol = getForwardedValue(req, 'x-forwarded-proto') ?? req.protocol;
-  const publicHost = getForwardedValue(req, 'x-forwarded-host') ?? req.headers.host ?? targetUrl.host;
-
-  const headers: http.OutgoingHttpHeaders = { ...req.headers };
-  delete headers['host'];
-  headers['host'] = publicHost;
-  headers['x-forwarded-host'] = publicHost;
-  headers['x-forwarded-proto'] = publicProtocol;
-  headers['x-forwarded-for'] = appendForwardedFor(req);
-
-  if (req.originalUrl.toLowerCase().startsWith('/api')) {
-    headers['x-forwarded-prefix'] = '/api';
-  }
+  const headers = buildApiProxyHeaders(req, targetUrl);
 
   const proxyRequest = client.request(
     targetUrl,
@@ -333,6 +520,24 @@ function proxyToApi(req: Request, res: Response, next: NextFunction, targetPath:
 
   proxyRequest.on('error', (error: Error) => next(error));
   req.pipe(proxyRequest);
+}
+
+
+function buildApiProxyHeaders(req: Request, targetUrl: URL): http.OutgoingHttpHeaders {
+  const publicProtocol = getForwardedValue(req, 'x-forwarded-proto') ?? req.protocol;
+  const publicHost = getForwardedValue(req, 'x-forwarded-host') ?? req.headers.host ?? targetUrl.host;
+  const headers: http.OutgoingHttpHeaders = { ...req.headers };
+  delete headers['host'];
+  headers['host'] = publicHost;
+  headers['x-forwarded-host'] = publicHost;
+  headers['x-forwarded-proto'] = publicProtocol;
+  headers['x-forwarded-for'] = appendForwardedFor(req);
+
+  if (req.originalUrl.toLowerCase().startsWith('/api')) {
+    headers['x-forwarded-prefix'] = '/api';
+  }
+
+  return headers;
 }
 
 function isApiHeaderHiddenFromPublicProxy(name: string): boolean {
