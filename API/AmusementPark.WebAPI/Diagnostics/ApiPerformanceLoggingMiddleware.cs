@@ -1,6 +1,6 @@
 using System;
 using System.Diagnostics;
-using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -56,7 +56,7 @@ public sealed class ApiPerformanceLoggingMiddleware
             bool hasAuthorizationHeader = context.Request.Headers.ContainsKey("Authorization");
             bool hasCookieHeader = context.Request.Headers.ContainsKey("Cookie");
             bool isAuthenticated = context.User.Identity?.IsAuthenticated == true;
-            string userAgent = context.Request.Headers.UserAgent.ToString();
+            string userAgent = context.Request.Headers["User-Agent"].ToString();
             string queryString = context.Request.QueryString.HasValue ? context.Request.QueryString.Value ?? string.Empty : string.Empty;
             double roundedElapsedMilliseconds = Math.Round(elapsedMilliseconds, 2);
 
@@ -109,15 +109,21 @@ public sealed class ApiPerformanceLoggingMiddleware
 
     private bool IsExcludedPath(PathString path)
     {
-        if (this.options.ExcludedPathPrefixes.Length == 0)
+        foreach (string prefix in this.options.ExcludedPathPrefixes)
         {
-            return false;
+            if (string.IsNullOrWhiteSpace(prefix))
+            {
+                continue;
+            }
+
+            PathString excludedPrefix = new PathString(prefix.Trim());
+            if (path.StartsWithSegments(excludedPrefix, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
         }
 
-        return this.options.ExcludedPathPrefixes
-            .Where(static prefix => !string.IsNullOrWhiteSpace(prefix))
-            .Select(static prefix => prefix.Trim())
-            .Any(prefix => path.StartsWithSegments(prefix, StringComparison.OrdinalIgnoreCase));
+        return false;
     }
 
     private double GetElapsedMilliseconds(long startedAt)
