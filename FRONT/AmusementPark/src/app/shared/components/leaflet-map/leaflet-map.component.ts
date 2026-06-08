@@ -3,9 +3,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { MapMarker } from '@app/models/map/map-marker';
-import { createLeafletMarkerIcon } from '@ui/maps/leaflet';
+import { createLeafletMarkerClusterIcon, createLeafletMarkerIcon } from '@ui/maps/leaflet';
 import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
 import type { LeafletEvent, LeafletMouseEvent, Marker as LeafletMarker } from 'leaflet';
+import { buildMarkerClusters, MarkerCluster, MarkerClusterPoint } from './leaflet-marker-cluster.builder';
 
 type LeafletNamespace = typeof import('leaflet');
 type LeafletModule = LeafletNamespace & { readonly default?: LeafletNamespace };
@@ -18,9 +19,16 @@ type LeafletModule = LeafletNamespace & { readonly default?: LeafletNamespace };
 })
 export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy {
 
+  private static readonly ClusterActivationMarkerCount = 80;
+  private static readonly ClusterDisableZoom = 15;
+  private static readonly ClusterFocusZoom = 14;
+  private static readonly ViewportPaddingRatio = 0.35;
+
   private resizeObserver: ResizeObserver | null = null;
   private viewportUpdateTimeoutId: number | null = null;
   private viewportStabilizationTimeoutId: number | null = null;
+  private markerRefreshTimeoutId: number | null = null;
+  private pendingPopupMarkerId: string | null = null;
 
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
 
@@ -121,6 +129,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
   ngOnDestroy(): void {
     this.clearViewportUpdateTimers();
+    this.clearMarkerRefreshTimer();
 
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
@@ -211,7 +220,10 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       this.resizeObserver.observe(this.mapContainer.nativeElement);
     }
 
-    this.map.on('popupopen', () => this.bindInternalPopupNavigationLinks());
+    this.ngZone.runOutsideAngular((): void => {
+      this.map?.on('moveend zoomend', () => this.scheduleMarkerRefresh(40));
+      this.map?.on('popupopen', () => this.bindInternalPopupNavigationLinks());
+    });
 
     if (this.editable) {
       this.map.on('click', (event: LeafletMouseEvent) => this.handleMapClick(event));
@@ -248,6 +260,26 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
   }
 
+  private scheduleMarkerRefresh(delayMs: number = 0): void {
+    if (!this.map || !this.markerLayer) {
+      return;
+    }
+
+    this.clearMarkerRefreshTimer();
+
+    this.markerRefreshTimeoutId = window.setTimeout((): void => {
+      this.markerRefreshTimeoutId = null;
+      this.refreshMarkers();
+    }, delayMs);
+  }
+
+  private clearMarkerRefreshTimer(): void {
+    if (this.markerRefreshTimeoutId !== null) {
+      window.clearTimeout(this.markerRefreshTimeoutId);
+      this.markerRefreshTimeoutId = null;
+    }
+  }
+
   private applyMarkerViewport(): void {
     if (!this.map) {
       return;
@@ -280,39 +312,211 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   }
 
   private refreshMarkers(): void {
-    if (!this.L || !this.markerLayer) {
+    if (!this.L || !this.map || !this.markerLayer) {
       return;
     }
 
     this.markerLayer.clearLayers();
     this.leafletMarkers.clear();
 
-    for (const m of this.markers) {
-      const marker = this.L.marker([m.lat, m.lng], {
-        draggable: this.editable && (this.markers.length <= 1),
-        icon: createLeafletMarkerIcon(this.L, m.iconKind)
-      });
+    const renderableMarkers: MapMarker[] = this.getRenderableMarkers();
 
-      if (m.title || m.subtitle) {
-        marker.bindPopup(this.buildPopupContent(m));
+    if (!this.shouldClusterMarkers()) {
+      for (const marker of renderableMarkers) {
+        this.addSingleMarker(marker);
       }
 
-      marker.addTo(this.markerLayer);
+      this.openPendingSelectedMarkerPopup();
+      return;
+    }
 
-      marker.on('click', () => {
-        this.markerClick.emit(m);
+    const clusters: MarkerCluster[] = buildMarkerClusters(this.toClusterPoints(renderableMarkers), {
+      radiusPx: this.resolveClusterRadiusPx(),
+      selectedMarkerId: this.selectedMarkerId
+    });
+
+    for (const cluster of clusters) {
+      if (cluster.count === 1) {
+        this.addSingleMarker(cluster.markers[0]);
+        continue;
+      }
+
+      this.addClusterMarker(cluster);
+    }
+
+    this.openPendingSelectedMarkerPopup();
+  }
+
+  private getRenderableMarkers(): MapMarker[] {
+    if (!this.map || this.editable || !this.shouldClusterMarkers()) {
+      return this.markers.filter((marker: MapMarker): boolean => this.hasUsableCoordinates(marker));
+    }
+
+    const paddedBounds: import('leaflet').LatLngBounds = this.map.getBounds().pad(LeafletMapComponent.ViewportPaddingRatio);
+    const renderableMarkers: MapMarker[] = [];
+    const selectedMarker: MapMarker | undefined = this.selectedMarkerId
+      ? this.markers.find((marker: MapMarker): boolean => marker.id === this.selectedMarkerId)
+      : undefined;
+
+    for (const marker of this.markers) {
+      if (!this.hasUsableCoordinates(marker)) {
+        continue;
+      }
+
+      if (paddedBounds.contains([marker.lat, marker.lng])) {
+        renderableMarkers.push(marker);
+      }
+    }
+
+    if (selectedMarker && this.hasUsableCoordinates(selectedMarker) && !renderableMarkers.some((marker: MapMarker): boolean => marker.id === selectedMarker.id)) {
+      renderableMarkers.push(selectedMarker);
+    }
+
+    return renderableMarkers;
+  }
+
+  private shouldClusterMarkers(): boolean {
+    return !this.editable
+      && this.markers.length >= LeafletMapComponent.ClusterActivationMarkerCount
+      && this.getCurrentZoom() < LeafletMapComponent.ClusterDisableZoom;
+  }
+
+  private toClusterPoints(markers: MapMarker[]): MarkerClusterPoint[] {
+    if (!this.map) {
+      return [];
+    }
+
+    return markers.map((marker: MapMarker): MarkerClusterPoint => {
+      const point: import('leaflet').Point = this.map!.latLngToLayerPoint([marker.lat, marker.lng]);
+
+      return {
+        marker,
+        x: point.x,
+        y: point.y
+      };
+    });
+  }
+
+  private resolveClusterRadiusPx(): number {
+    const zoom: number = this.getCurrentZoom();
+
+    if (zoom <= 3) {
+      return 96;
+    }
+
+    if (zoom <= 5) {
+      return 78;
+    }
+
+    if (zoom <= 8) {
+      return 60;
+    }
+
+    if (zoom <= 11) {
+      return 44;
+    }
+
+    return 30;
+  }
+
+  private addSingleMarker(markerModel: MapMarker): void {
+    if (!this.L || !this.markerLayer) {
+      return;
+    }
+
+    const marker: import('leaflet').Marker = this.L.marker([markerModel.lat, markerModel.lng], {
+      draggable: this.editable && (this.markers.length <= 1),
+      icon: createLeafletMarkerIcon(this.L, markerModel.iconKind)
+    });
+
+    if (markerModel.title || markerModel.subtitle) {
+      marker.bindPopup(this.buildPopupContent(markerModel));
+    }
+
+    marker.addTo(this.markerLayer);
+
+    marker.on('click', () => {
+      this.ngZone.run((): void => {
+        this.markerClick.emit(markerModel);
       });
+    });
 
-      if (this.editable && this.markers.length <= 1) {
-        marker.on('dragend', (event: LeafletEvent) => {
-          const target = event.target as LeafletMarker;
-          const pos = target.getLatLng();
+    if (this.editable && this.markers.length <= 1) {
+      marker.on('dragend', (event: LeafletEvent) => {
+        const target = event.target as LeafletMarker;
+        const pos = target.getLatLng();
+        this.ngZone.run((): void => {
           this.positionChange.emit({ lat: pos.lat, lng: pos.lng });
         });
-      }
-
-      this.leafletMarkers.set(m.id, marker);
+      });
     }
+
+    this.leafletMarkers.set(markerModel.id, marker);
+  }
+
+  private addClusterMarker(cluster: MarkerCluster): void {
+    if (!this.L || !this.map || !this.markerLayer) {
+      return;
+    }
+
+    const clusterMarker: import('leaflet').Marker = this.L.marker([cluster.latitude, cluster.longitude], {
+      icon: createLeafletMarkerClusterIcon(this.L, cluster.count),
+      keyboard: true,
+      title: `${cluster.count} markers`
+    });
+
+    clusterMarker.addTo(this.markerLayer);
+    clusterMarker.on('click', (): void => this.zoomIntoCluster(cluster));
+  }
+
+  private zoomIntoCluster(cluster: MarkerCluster): void {
+    if (!this.L || !this.map) {
+      return;
+    }
+
+    if (cluster.markers.length <= 1) {
+      return;
+    }
+
+    const bounds: import('leaflet').LatLngBounds = this.L.latLngBounds(
+      cluster.markers.map((marker: MapMarker): [number, number] => [marker.lat, marker.lng])
+    );
+    const nextZoom: number = Math.min(this.getCurrentZoom() + 2, LeafletMapComponent.ClusterDisableZoom);
+
+    if (bounds.isValid()) {
+      this.map.fitBounds(bounds, { padding: [36, 36], maxZoom: nextZoom });
+      return;
+    }
+
+    this.map.setView([cluster.latitude, cluster.longitude], nextZoom);
+  }
+
+  private openPendingSelectedMarkerPopup(): void {
+    if (!this.pendingPopupMarkerId) {
+      return;
+    }
+
+    const marker: import('leaflet').Marker | undefined = this.leafletMarkers.get(this.pendingPopupMarkerId);
+
+    if (!marker) {
+      return;
+    }
+
+    marker.openPopup();
+    this.pendingPopupMarkerId = null;
+  }
+
+  private hasUsableCoordinates(marker: MapMarker): boolean {
+    return Number.isFinite(marker.lat)
+      && Number.isFinite(marker.lng)
+      && marker.lat >= -90
+      && marker.lat <= 90
+      && marker.lng >= -180
+      && marker.lng <= 180;
+  }
+
+  private getCurrentZoom(): number {
+    return this.map?.getZoom() ?? this.zoom;
   }
 
   private focusSelectedMarker(): boolean {
@@ -322,13 +526,22 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
     const marker: import('leaflet').Marker | undefined = this.leafletMarkers.get(this.selectedMarkerId);
 
-    if (!marker) {
+    if (marker) {
+      const position = marker.getLatLng();
+      this.map.setView(position, Math.max(this.map.getZoom(), LeafletMapComponent.ClusterFocusZoom), { animate: true });
+      marker.openPopup();
+      return true;
+    }
+
+    const markerModel: MapMarker | undefined = this.markers.find((candidate: MapMarker): boolean => candidate.id === this.selectedMarkerId);
+
+    if (!markerModel || !this.hasUsableCoordinates(markerModel)) {
       return false;
     }
 
-    const position = marker.getLatLng();
-    this.map.setView(position, Math.max(this.map.getZoom(), 10), { animate: true });
-    marker.openPopup();
+    this.pendingPopupMarkerId = markerModel.id;
+    this.map.setView([markerModel.lat, markerModel.lng], Math.max(this.map.getZoom(), LeafletMapComponent.ClusterFocusZoom), { animate: true });
+    this.scheduleMarkerRefresh(160);
     return true;
   }
 
