@@ -344,6 +344,7 @@ jobs:
       ALLOWED_HOSTS: ${{ vars.ALLOWED_HOSTS || 'amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;api;amusementpark-api' }}
       FORWARDED_HEADERS_ALLOWED_HOSTS: ${{ vars.FORWARDED_HEADERS_ALLOWED_HOSTS || 'amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1' }}
       FORWARDED_HEADERS_KNOWN_NETWORKS: ${{ vars.FORWARDED_HEADERS_KNOWN_NETWORKS || '172.30.31.0/24' }}
+      FRONT_SSR_API_INTERNAL_URL: ${{ vars.FRONT_SSR_API_INTERNAL_URL || 'http://api:8080' }}
       SSR_ALLOWED_HOSTS: ${{ vars.SSR_ALLOWED_HOSTS || 'amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1' }}
       SSR_FORCE_HTTPS: ${{ vars.SSR_FORCE_HTTPS || 'true' }}
       CSP_ENABLED: ${{ vars.CSP_ENABLED || 'true' }}

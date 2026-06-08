@@ -26,6 +26,64 @@ url_encode() {
   python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.stdin.read(), safe=""), end="")'
 }
 
+extract_url_host() {
+  local url="$1"
+  local without_scheme
+  local authority
+
+  without_scheme="${url#*://}"
+
+  if [ "${without_scheme}" = "${url}" ]; then
+    printf ''
+    return
+  fi
+
+  authority="${without_scheme%%/*}"
+  printf '%s' "${authority%%:*}"
+}
+
+semicolon_list_contains() {
+  local list="$1"
+  local expected="$2"
+
+  [[ ";${list};" == *";${expected};"* ]]
+}
+
+append_semicolon_value_if_missing() {
+  local list="$1"
+  local value="$2"
+
+  if [ -z "${value// }" ]; then
+    printf '%s' "${list}"
+    return
+  fi
+
+  if semicolon_list_contains "${list}" "${value}"; then
+    printf '%s' "${list}"
+    return
+  fi
+
+  if [ -z "${list// }" ]; then
+    printf '%s' "${value}"
+    return
+  fi
+
+  printf '%s;%s' "${list}" "${value}"
+}
+
+append_required_allowed_hosts() {
+  local list="$1"
+  local ssr_api_url="$2"
+  local ssr_api_host
+
+  ssr_api_host="$(extract_url_host "${ssr_api_url}")"
+  list="$(append_semicolon_value_if_missing "${list}" "${ssr_api_host}")"
+  list="$(append_semicolon_value_if_missing "${list}" 'localhost')"
+  list="$(append_semicolon_value_if_missing "${list}" '127.0.0.1')"
+
+  printf '%s' "${list}"
+}
+
 public_domain="$(value_or_default PUBLIC_DOMAIN 'amusement-parks.fun')"
 public_base_url="$(value_or_default PUBLIC_BASE_URL "https://${public_domain}")"
 public_www_base_url="$(value_or_default PUBLIC_WWW_BASE_URL "https://www.${public_domain}")"
@@ -33,7 +91,9 @@ public_http_port="$(value_or_default PUBLIC_HTTP_PORT '18080')"
 npm_docker_network_name="$(value_or_default NPM_DOCKER_NETWORK_NAME 'nginx-proxy-network')"
 minio_api_port="$(value_or_default MINIO_API_PORT '19000')"
 minio_console_port="$(value_or_default MINIO_CONSOLE_PORT '19001')"
+front_ssr_api_internal_url="$(value_or_default FRONT_SSR_API_INTERNAL_URL 'http://api:8080')"
 allowed_hosts="$(value_or_default ALLOWED_HOSTS "${public_domain};www.${public_domain};localhost;127.0.0.1;api;amusementpark-api")"
+allowed_hosts="$(append_required_allowed_hosts "${allowed_hosts}" "${front_ssr_api_internal_url}")"
 forwarded_allowed_hosts="$(value_or_default FORWARDED_HEADERS_ALLOWED_HOSTS "${public_domain};www.${public_domain};localhost;127.0.0.1")"
 ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${public_domain};localhost;127.0.0.1")"
 
@@ -51,7 +111,7 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line FORWARDED_HEADERS_ALLOWED_HOSTS "${forwarded_allowed_hosts}"
   write_line FORWARDED_HEADERS_KNOWN_NETWORKS "$(value_or_default FORWARDED_HEADERS_KNOWN_NETWORKS '172.30.31.0/24')"
   write_line FORWARDED_HEADERS_FORWARD_LIMIT "$(value_or_default FORWARDED_HEADERS_FORWARD_LIMIT '2')"
-  write_line FRONT_SSR_API_INTERNAL_URL "$(value_or_default FRONT_SSR_API_INTERNAL_URL 'http://api:8080')"
+  write_line FRONT_SSR_API_INTERNAL_URL "${front_ssr_api_internal_url}"
   write_line SSR_ALLOWED_HOSTS "${ssr_allowed_hosts}"
   write_line SSR_FORCE_HTTPS "$(value_or_default SSR_FORCE_HTTPS 'true')"
   write_line SSR_CSP_ALLOW_LOCAL_DEV_SOURCES "$(value_or_default SSR_CSP_ALLOW_LOCAL_DEV_SOURCES 'false')"

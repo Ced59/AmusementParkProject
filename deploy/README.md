@@ -38,6 +38,8 @@ ALLOWED_HOSTS=amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;ap
 - `api` couvre l'appel Docker interne réellement utilisé par le SSR (`FRONT_SSR_API_INTERNAL_URL=http://api:8080`).
 - `amusementpark-api` reste accepté par compatibilité avec le nom de container.
 
+Le script `write-production-env.sh` réinjecte automatiquement le host de `FRONT_SSR_API_INTERNAL_URL` ainsi que `localhost`/`127.0.0.1` dans `ALLOWED_HOSTS` si une variable GitHub personnalisée les oublie. Cela évite les boucles de `400 Invalid Hostname` pendant le SSR tout en gardant l'API privée derrière le réseau Docker.
+
 Toute autre valeur de `Host` doit être rejetée en production.
 
 
@@ -160,7 +162,8 @@ Ces limites ciblent login, OAuth externe, refresh-token, inscription, confirmati
 
 - `PUBLIC_BASE_URL`, défaut `https://amusement-parks.fun`
 - `PUBLIC_DOMAIN`, défaut `amusement-parks.fun`
-- `ALLOWED_HOSTS`, défaut pipeline : `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;api;amusementpark-api`
+- `ALLOWED_HOSTS`, défaut pipeline : `amusement-parks.fun;www.amusement-parks.fun;localhost;127.0.0.1;api;amusementpark-api`. Le host de `FRONT_SSR_API_INTERNAL_URL`, `localhost` et `127.0.0.1` sont ajoutés automatiquement au fichier généré si nécessaire.
+- `FRONT_SSR_API_INTERNAL_URL`, défaut `http://api:8080`
 - `PUBLIC_HTTP_PORT`, défaut `18080`
 - `MINIO_API_PORT`, défaut `19000`
 - `MINIO_CONSOLE_PORT`, défaut `19001`
@@ -312,7 +315,7 @@ Variable disponible si le nom du service API change :
 FRONT_SSR_API_INTERNAL_URL=http://api:8080
 ```
 
-Le host de cette URL interne (`api` par défaut) doit aussi être présent dans `ALLOWED_HOSTS`, sinon l'API ASP.NET Core renvoie des `400 Invalid Hostname` pendant le rendu SSR.
+Le host de cette URL interne (`api` par défaut) doit aussi être présent dans `ALLOWED_HOSTS`, sinon l'API ASP.NET Core renvoie des `400 Invalid Hostname` pendant le rendu SSR. Le script de génération prod l'ajoute automatiquement au fichier `deploy/.env`, mais la validation continue de bloquer un fichier `.env` manuel incohérent.
 
 Les routes publiques sont rendues côté serveur. Les routes admin/profil/auth sensibles restent en rendu client et en `noindex`.
 

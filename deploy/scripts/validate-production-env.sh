@@ -113,6 +113,13 @@ validate_front_ssr_api_host() {
   fi
 }
 
+validate_allowed_hosts_healthcheck_host() {
+  if ! semicolon_list_contains "${ALLOWED_HOSTS:-}" 'localhost'; then
+    echo "ERROR: ALLOWED_HOSTS must contain 'localhost' because the API Docker healthcheck sends Host: localhost." >&2
+    errors=$((errors + 1))
+  fi
+}
+
 
 validate_port() {
   local name="$1"
@@ -179,6 +186,7 @@ reject_wildcard ALLOWED_HOSTS
 reject_wildcard FORWARDED_HEADERS_ALLOWED_HOSTS
 reject_wildcard SSR_ALLOWED_HOSTS
 validate_front_ssr_api_host
+validate_allowed_hosts_healthcheck_host
 
 if [[ "${ALLOWED_HOSTS:-}" == *"localhost"* ]] || [[ "${ALLOWED_HOSTS:-}" == *"127.0.0.1"* ]]; then
   echo "NOTICE: ALLOWED_HOSTS contains localhost/127.0.0.1 for internal healthchecks. Keep API ports private." >&2
