@@ -33,7 +33,7 @@ public_http_port="$(value_or_default PUBLIC_HTTP_PORT '18080')"
 npm_docker_network_name="$(value_or_default NPM_DOCKER_NETWORK_NAME 'nginx-proxy-network')"
 minio_api_port="$(value_or_default MINIO_API_PORT '19000')"
 minio_console_port="$(value_or_default MINIO_CONSOLE_PORT '19001')"
-allowed_hosts="$(value_or_default ALLOWED_HOSTS "${public_domain};www.${public_domain};localhost;127.0.0.1;amusementpark-api")"
+allowed_hosts="$(value_or_default ALLOWED_HOSTS "${public_domain};www.${public_domain};localhost;127.0.0.1;api;amusementpark-api")"
 forwarded_allowed_hosts="$(value_or_default FORWARDED_HEADERS_ALLOWED_HOSTS "${public_domain};www.${public_domain};localhost;127.0.0.1")"
 ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${public_domain};localhost;127.0.0.1")"
 
