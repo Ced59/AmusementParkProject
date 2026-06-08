@@ -211,12 +211,10 @@ public sealed class GetSeoSitemapHistoryQueryHandler : IQueryHandler<GetSeoSitem
 public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPublicSitemapDocumentQuery, ApplicationResult<SitemapDocumentResult>>
 {
     private readonly ISeoSitemapSnapshotRepository snapshotRepository;
-    private readonly SeoSitemapGenerationOrchestrator orchestrator;
 
-    public GetPublicSitemapDocumentQueryHandler(ISeoSitemapSnapshotRepository snapshotRepository, SeoSitemapGenerationOrchestrator orchestrator)
+    public GetPublicSitemapDocumentQueryHandler(ISeoSitemapSnapshotRepository snapshotRepository)
     {
         this.snapshotRepository = snapshotRepository;
-        this.orchestrator = orchestrator;
     }
 
     public async Task<ApplicationResult<SitemapDocumentResult>> HandleAsync(GetPublicSitemapDocumentQuery query, CancellationToken cancellationToken = default)
@@ -225,23 +223,6 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
 
         SitemapSnapshot? snapshot = await this.snapshotRepository.GetLatestAsync(cancellationToken);
         bool wasGeneratedOnDemand = false;
-        if (snapshot is null)
-        {
-            SitemapGenerationResult generation = await this.orchestrator.GenerateAsync(
-                query.PublicBaseUrl,
-                new SitemapGenerationContext
-                {
-                    SupportedLanguages = query.SupportedLanguages,
-                },
-                SitemapGenerationTrigger.PublicFallback,
-                submitToIndexNow: false,
-                triggeredByUserId: null,
-                triggeredByUserEmail: null,
-                cancellationToken);
-
-            wasGeneratedOnDemand = generation.Status == SitemapGenerationStatus.Succeeded;
-            snapshot = await this.snapshotRepository.GetLatestAsync(cancellationToken);
-        }
 
         if (snapshot is null)
         {

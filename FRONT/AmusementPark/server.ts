@@ -4,6 +4,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import http from 'node:http';
 import https from 'node:https';
 import { dirname, join, resolve } from 'node:path';
+import { Buffer } from 'node:buffer';
 import { fileURLToPath } from 'node:url';
 import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
@@ -15,6 +16,15 @@ const cspEnabled = (process.env['SSR_CSP_ENABLED'] ?? 'true').toLowerCase() !== 
 const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?? 'localhost;127.0.0.1;amusement.localhost;front');
 const forceHttps = (process.env['SSR_FORCE_HTTPS'] ?? 'false').toLowerCase() === 'true';
 const allowLocalCspSources = (process.env['SSR_CSP_ALLOW_LOCAL_DEV_SOURCES'] ?? 'false').toLowerCase() === 'true';
+const pageCacheTtlSeconds = Math.max(0, Number(process.env['SSR_PAGE_CACHE_SECONDS'] ?? 30));
+const pageCacheMaxEntries = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'] ?? 250));
+const pageCache = new Map<string, PageCacheEntry>();
+
+interface PageCacheEntry {
+  readonly statusCode: number;
+  readonly html: string;
+  readonly expiresAt: number;
+}
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -66,6 +76,15 @@ export function app(): express.Express {
 
   server.get('*', (req: Request, res: Response, next: NextFunction) => {
     const publicUrl = getPublicRequestUrl(req);
+    const cacheKey = buildPageCacheKey(req);
+    const cachedEntry = cacheKey === null ? null : getCachedPage(cacheKey);
+
+    if (cachedEntry !== null) {
+      res.status(cachedEntry.statusCode);
+      res.setHeader('X-AmusementPark-SSR-Cache', 'HIT');
+      res.type('html').send(cachedEntry.html);
+      return;
+    }
 
     if (isExplicitNotFoundRoute(req.originalUrl)) {
       res.status(404);
@@ -82,7 +101,14 @@ export function app(): express.Express {
           { provide: SSR_RESPONSE, useValue: res }
         ],
       })
-      .then((html: string) => res.send(html))
+      .then((html: string) => {
+        if (cacheKey !== null && res.statusCode >= 200 && res.statusCode < 300) {
+          setCachedPage(cacheKey, res.statusCode, html);
+          res.setHeader('X-AmusementPark-SSR-Cache', 'MISS');
+        }
+
+        res.send(html);
+      })
       .catch((err: unknown) => next(err));
   });
 
@@ -96,9 +122,90 @@ function run(): void {
   server.listen(port, () => {
     console.log(`Angular SSR server listening on http://0.0.0.0:${port}`);
     console.log(`SSR API internal origin: ${apiInternalOrigin}`);
+    console.log(`SSR public page cache: ${pageCacheTtlSeconds}s / ${pageCacheMaxEntries} entries`);
   });
 }
 
+function buildPageCacheKey(req: Request): string | null {
+  if (pageCacheTtlSeconds <= 0 || pageCacheMaxEntries <= 0) {
+    return null;
+  }
+
+  if (!isCacheablePageRequest(req)) {
+    return null;
+  }
+
+  const host = getForwardedValue(req, 'x-forwarded-host') ?? req.headers.host ?? 'localhost';
+  const protocol = getForwardedValue(req, 'x-forwarded-proto') ?? req.protocol;
+  const acceptLanguage = req.headers['accept-language'] ?? '';
+
+  return `${protocol}://${host}${req.originalUrl}::${acceptLanguage}`;
+}
+
+function isCacheablePageRequest(req: Request): boolean {
+  if (req.method !== 'GET') {
+    return false;
+  }
+
+  if (req.headers.authorization || req.headers.cookie) {
+    return false;
+  }
+
+  if (!isPublicSsrCacheRoute(req.originalUrl)) {
+    return false;
+  }
+
+  const acceptHeader = req.headers.accept ?? '';
+  if (Array.isArray(acceptHeader)) {
+    return acceptHeader.some((value: string) => value.includes('text/html'));
+  }
+
+  return acceptHeader.length === 0 || acceptHeader.includes('text/html') || acceptHeader.includes('*/*');
+}
+
+function isPublicSsrCacheRoute(url: string): boolean {
+  const path = url.split(/[?#]/, 1)[0] ?? '';
+
+  return /^\/[a-z]{2}\/parks\/?$/i.test(path)
+    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/items)?\/?$/i.test(path)
+    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/?$/i.test(path)
+    || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path);
+}
+
+function getCachedPage(cacheKey: string): PageCacheEntry | null {
+  const entry = pageCache.get(cacheKey);
+  if (!entry) {
+    return null;
+  }
+
+  if (entry.expiresAt <= Date.now()) {
+    pageCache.delete(cacheKey);
+    return null;
+  }
+
+  return entry;
+}
+
+function setCachedPage(cacheKey: string, statusCode: number, html: string): void {
+  if (Buffer.byteLength(html, 'utf8') > 1024 * 1024) {
+    return;
+  }
+
+  pageCache.set(cacheKey, {
+    statusCode,
+    html,
+    expiresAt: Date.now() + pageCacheTtlSeconds * 1000
+  });
+
+  while (pageCache.size > pageCacheMaxEntries) {
+    const oldestKey = pageCache.keys().next().value as string | undefined;
+    if (!oldestKey) {
+      break;
+    }
+
+    pageCache.delete(oldestKey);
+  }
+}
 
 function redirectHttpToHttps(req: Request, res: Response, next: NextFunction): void {
   if (!forceHttps || req.method === 'OPTIONS') {

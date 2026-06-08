@@ -7,10 +7,12 @@ using AmusementPark.Application.Features.Seo.Queries;
 using AmusementPark.Application.Features.Seo.Results;
 using AmusementPark.WebAPI.Configuration;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 
@@ -41,6 +43,7 @@ public sealed class SeoController : ControllerBase
     }
 
     [HttpGet("robots.txt")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicSeoDocuments)]
     [Produces("text/plain")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     public IActionResult GetRobotsTxt()
@@ -62,6 +65,7 @@ public sealed class SeoController : ControllerBase
     }
 
     [HttpGet("sitemap.xml")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicSeoDocuments)]
     [Produces("application/xml")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetSitemapIndexXml(CancellationToken cancellationToken = default)
@@ -70,6 +74,7 @@ public sealed class SeoController : ControllerBase
     }
 
     [HttpGet("sitemaps/{sectionFileName}")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicSeoDocuments)]
     [Produces("application/xml")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetSitemapSectionXml([FromRoute] string sectionFileName, CancellationToken cancellationToken = default)
@@ -78,6 +83,7 @@ public sealed class SeoController : ControllerBase
     }
 
     [HttpGet("{key}.txt")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicSeoDocuments)]
     [Produces("text/plain")]
     public async Task<IActionResult> GetIndexNowKeyFileAsync([FromRoute] string key, CancellationToken cancellationToken = default)
     {

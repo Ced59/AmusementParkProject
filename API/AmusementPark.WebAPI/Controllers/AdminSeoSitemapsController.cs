@@ -19,7 +19,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.OutputCaching;
 using AmusementPark.WebAPI.Configuration;
+using AmusementPark.WebAPI.OutputCaching;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -39,6 +41,7 @@ public sealed class AdminSeoSitemapsController : ControllerBase
     private readonly IQueryHandler<GetSeoSitemapHistoryQuery, ApplicationResult<PagedResult<SitemapGenerationHistoryEntry>>> historyHandler;
     private readonly ICommandHandler<UpdateSeoSitemapSettingsCommand, ApplicationResult<SeoSitemapSettings>> updateSettingsHandler;
     private readonly ICommandHandler<GenerateSitemapCommand, ApplicationResult<SitemapGenerationResult>> generateHandler;
+    private readonly IOutputCacheStore outputCacheStore;
 
     public AdminSeoSitemapsController(
         IOptions<SeoSettings> settings,
@@ -47,7 +50,8 @@ public sealed class AdminSeoSitemapsController : ControllerBase
         IQueryHandler<GetSeoSitemapSettingsQuery, ApplicationResult<SeoSitemapSettings>> settingsHandler,
         IQueryHandler<GetSeoSitemapHistoryQuery, ApplicationResult<PagedResult<SitemapGenerationHistoryEntry>>> historyHandler,
         ICommandHandler<UpdateSeoSitemapSettingsCommand, ApplicationResult<SeoSitemapSettings>> updateSettingsHandler,
-        ICommandHandler<GenerateSitemapCommand, ApplicationResult<SitemapGenerationResult>> generateHandler)
+        ICommandHandler<GenerateSitemapCommand, ApplicationResult<SitemapGenerationResult>> generateHandler,
+        IOutputCacheStore outputCacheStore)
     {
         this.settings = settings.Value;
         this.environment = environment;
@@ -56,6 +60,7 @@ public sealed class AdminSeoSitemapsController : ControllerBase
         this.historyHandler = historyHandler;
         this.updateSettingsHandler = updateSettingsHandler;
         this.generateHandler = generateHandler;
+        this.outputCacheStore = outputCacheStore;
     }
 
     [HttpGet("overview")]
@@ -108,6 +113,7 @@ public sealed class AdminSeoSitemapsController : ControllerBase
             return this.ToActionResult(result);
         }
 
+        await this.EvictSeoOutputCacheAsync(cancellationToken);
         return this.Ok(result.Value.ToHttp());
     }
 
@@ -132,6 +138,7 @@ public sealed class AdminSeoSitemapsController : ControllerBase
             return this.ToActionResult(result);
         }
 
+        await this.EvictSeoOutputCacheAsync(cancellationToken);
         return this.Ok(result.Value.ToHttp(publicBaseUrl));
     }
 
@@ -155,6 +162,11 @@ public sealed class AdminSeoSitemapsController : ControllerBase
     private string GetPublicBaseUrl()
     {
         return this.settings.GetNormalizedPublicBaseUrl(requireHttps: !this.environment.IsDevelopment());
+    }
+
+    private async Task EvictSeoOutputCacheAsync(CancellationToken cancellationToken)
+    {
+        await this.outputCacheStore.EvictByTagAsync(ApiOutputCachePolicyNames.PublicSeoTag, cancellationToken);
     }
 
     private string? GetCurrentUserId()

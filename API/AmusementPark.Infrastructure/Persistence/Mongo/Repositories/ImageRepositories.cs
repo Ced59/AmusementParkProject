@@ -8,6 +8,8 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using System.Text.RegularExpressions;
+using System.Threading;
+using Microsoft.Extensions.Caching.Memory;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -18,11 +20,15 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 /// </summary>
 public sealed class ImageRepository : IImageRepository
 {
+    private static readonly TimeSpan OwnerImagesCacheDuration = TimeSpan.FromMinutes(5);
+    private static long cacheVersion;
     private readonly IMongoCollection<ImageDocument> collection;
+    private readonly IMemoryCache cache;
 
-    public ImageRepository(IMongoDatabase database, MongoDbSettings settings)
+    public ImageRepository(IMongoDatabase database, MongoDbSettings settings, IMemoryCache cache)
     {
         this.collection = database.GetCollection<ImageDocument>(settings.ImagesCollectionName);
+        this.cache = cache;
     }
 
     public async Task<IReadOnlyCollection<Image>> GetAllAsync(CancellationToken cancellationToken)
@@ -54,14 +60,32 @@ public sealed class ImageRepository : IImageRepository
 
     public async Task<Image?> GetByIdAsync(string imageId, CancellationToken cancellationToken)
     {
+        string cacheKey = BuildImageByIdCacheKey(imageId);
+        if (this.cache.TryGetValue(cacheKey, out Image? cachedImage) && cachedImage is not null)
+        {
+            return cachedImage;
+        }
+
         ImageDocument? document = await this.collection.Find(document => document.Id == imageId)
             .FirstOrDefaultAsync(cancellationToken);
 
-        return document?.ToDomain();
+        Image? image = document?.ToDomain();
+        if (image is not null)
+        {
+            this.cache.Set(cacheKey, image, OwnerImagesCacheDuration);
+        }
+
+        return image;
     }
 
     public async Task<IReadOnlyCollection<Image>> GetByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory? category, CancellationToken cancellationToken)
     {
+        string cacheKey = BuildOwnerImagesCacheKey(ownerType, ownerId, category);
+        if (this.cache.TryGetValue(cacheKey, out IReadOnlyCollection<Image>? cachedImages) && cachedImages is not null)
+        {
+            return cachedImages;
+        }
+
         FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.Eq(static document => document.OwnerType, ownerType) &
                                                  Builders<ImageDocument>.Filter.Eq(static document => document.OwnerId, ownerId);
 
@@ -74,11 +98,19 @@ public sealed class ImageRepository : IImageRepository
             .SortByDescending(static document => document.CreatedAt)
             .ToListAsync(cancellationToken);
 
-        return documents.Select(static document => document.ToDomain()).ToList();
+        IReadOnlyCollection<Image> images = documents.Select(static document => document.ToDomain()).ToList();
+        this.cache.Set(cacheKey, images, OwnerImagesCacheDuration);
+        return images;
     }
 
     public async Task<Image?> GetCurrentByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory category, CancellationToken cancellationToken)
     {
+        string cacheKey = BuildCurrentOwnerImageCacheKey(ownerType, ownerId, category);
+        if (this.cache.TryGetValue(cacheKey, out Image? cachedImage) && cachedImage is not null)
+        {
+            return cachedImage;
+        }
+
         ImageDocument? document = await this.collection.Find(document =>
                 document.OwnerType == ownerType &&
                 document.OwnerId == ownerId &&
@@ -86,7 +118,13 @@ public sealed class ImageRepository : IImageRepository
                 document.IsCurrent)
             .FirstOrDefaultAsync(cancellationToken);
 
-        return document?.ToDomain();
+        Image? image = document?.ToDomain();
+        if (image is not null)
+        {
+            this.cache.Set(cacheKey, image, OwnerImagesCacheDuration);
+        }
+
+        return image;
     }
 
     public async Task<Image> CreateAsync(ImageUploadRequest request, CancellationToken cancellationToken)
@@ -124,6 +162,7 @@ public sealed class ImageRepository : IImageRepository
         };
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
+        InvalidateReadCache();
         return document.ToDomain();
     }
 
@@ -141,6 +180,7 @@ public sealed class ImageRepository : IImageRepository
         };
 
         ImageDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
+        InvalidateReadCache();
         return document?.ToDomain();
     }
 
@@ -178,6 +218,7 @@ public sealed class ImageRepository : IImageRepository
         };
 
         ImageDocument? document = await this.collection.FindOneAndUpdateAsync(targetFilter, targetUpdate, options, cancellationToken);
+        InvalidateReadCache();
         return document?.ToDomain();
     }
 
@@ -201,12 +242,18 @@ public sealed class ImageRepository : IImageRepository
         };
 
         ImageDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
+        InvalidateReadCache();
         return document?.ToDomain();
     }
 
     public async Task<bool> DeleteAsync(string imageId, CancellationToken cancellationToken)
     {
         DeleteResult result = await this.collection.DeleteOneAsync(document => document.Id == imageId, cancellationToken: cancellationToken);
+        if (result.DeletedCount > 0)
+        {
+            InvalidateReadCache();
+        }
+
         return result.DeletedCount > 0;
     }
 
@@ -264,7 +311,41 @@ public sealed class ImageRepository : IImageRepository
 
         FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.In(static document => document.Id, normalizedImageIds);
         UpdateResult result = await this.collection.UpdateManyAsync(filter, Builders<ImageDocument>.Update.Combine(updates), cancellationToken: cancellationToken);
+        if (result.ModifiedCount > 0)
+        {
+            InvalidateReadCache();
+        }
+
         return checked((int)result.ModifiedCount);
+    }
+
+    private static string BuildImageByIdCacheKey(string imageId)
+    {
+        string normalizedImageId = string.IsNullOrWhiteSpace(imageId) ? string.Empty : imageId.Trim();
+        return $"images:by-id:{GetCacheVersion()}:{normalizedImageId}";
+    }
+
+    private static string BuildOwnerImagesCacheKey(ImageOwnerType ownerType, string ownerId, ImageCategory? category)
+    {
+        string normalizedOwnerId = string.IsNullOrWhiteSpace(ownerId) ? string.Empty : ownerId.Trim();
+        string normalizedCategory = category.HasValue ? category.Value.ToString() : "all";
+        return $"images:owner:{GetCacheVersion()}:{ownerType}:{normalizedOwnerId}:{normalizedCategory}";
+    }
+
+    private static string BuildCurrentOwnerImageCacheKey(ImageOwnerType ownerType, string ownerId, ImageCategory category)
+    {
+        string normalizedOwnerId = string.IsNullOrWhiteSpace(ownerId) ? string.Empty : ownerId.Trim();
+        return $"images:current:{GetCacheVersion()}:{ownerType}:{normalizedOwnerId}:{category}";
+    }
+
+    private static long GetCacheVersion()
+    {
+        return Volatile.Read(ref cacheVersion);
+    }
+
+    private static void InvalidateReadCache()
+    {
+        Interlocked.Increment(ref cacheVersion);
     }
 
     private static FilterDefinition<ImageDocument> BuildFilter(ImageSearchCriteria criteria)
@@ -356,20 +437,32 @@ public sealed class ImageRepository : IImageRepository
 /// </summary>
 public sealed class ImageTagRepository : IImageTagRepository
 {
+    private static readonly TimeSpan TagCacheDuration = TimeSpan.FromMinutes(30);
+    private static long tagCacheVersion;
     private readonly IMongoCollection<ImageTagDocument> collection;
+    private readonly IMemoryCache cache;
 
-    public ImageTagRepository(IMongoDatabase database, MongoDbSettings settings)
+    public ImageTagRepository(IMongoDatabase database, MongoDbSettings settings, IMemoryCache cache)
     {
         this.collection = database.GetCollection<ImageTagDocument>(settings.ImageTagsCollectionName);
+        this.cache = cache;
     }
 
     public async Task<IReadOnlyCollection<ImageTag>> GetAllAsync(CancellationToken cancellationToken)
     {
+        string cacheKey = BuildAllTagsCacheKey();
+        if (this.cache.TryGetValue(cacheKey, out IReadOnlyCollection<ImageTag>? cachedTags) && cachedTags is not null)
+        {
+            return cachedTags;
+        }
+
         List<ImageTagDocument> documents = await this.collection.Find(Builders<ImageTagDocument>.Filter.Empty)
             .SortBy(static document => document.Slug)
             .ToListAsync(cancellationToken);
 
-        return documents.Select(static document => document.ToDomain()).ToList();
+        IReadOnlyCollection<ImageTag> tags = documents.Select(static document => document.ToDomain()).ToList();
+        this.cache.Set(cacheKey, tags, TagCacheDuration);
+        return tags;
     }
 
     public async Task<ImageTag?> GetByIdAsync(string tagId, CancellationToken cancellationToken)
@@ -402,6 +495,7 @@ public sealed class ImageTagRepository : IImageTagRepository
         };
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
+        InvalidateTagCache();
         return document.ToDomain();
     }
 
@@ -421,6 +515,21 @@ public sealed class ImageTagRepository : IImageTagRepository
         };
 
         ImageTagDocument? document = await this.collection.FindOneAndUpdateAsync(filter, update, options, cancellationToken);
+        if (document is not null)
+        {
+            InvalidateTagCache();
+        }
+
         return document?.ToDomain();
+    }
+
+    private static string BuildAllTagsCacheKey()
+    {
+        return $"image-tags:all:{Volatile.Read(ref tagCacheVersion)}";
+    }
+
+    private static void InvalidateTagCache()
+    {
+        Interlocked.Increment(ref tagCacheVersion);
     }
 }

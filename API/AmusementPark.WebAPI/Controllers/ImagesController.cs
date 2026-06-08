@@ -17,8 +17,10 @@ using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Images;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
@@ -134,6 +136,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpGet("{ownerType}/{ownerId}/{category}/current")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ImageDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetCurrentImageAsync([FromRoute] string ownerType, [FromRoute] string ownerId, [FromRoute] string category, CancellationToken cancellationToken = default)
@@ -161,6 +164,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpGet("{ownerType}/{ownerId}/{category}")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ImageDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetImagesAsync([FromRoute] string ownerType, [FromRoute] string ownerId, [FromRoute] string category, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
@@ -373,6 +377,8 @@ public sealed class ImagesController : ControllerBase
             return this.ToNotFoundProblemDetailsResult("The requested image binary was not found.", "image.binary-not-found");
         }
 
+        this.Response.Headers.CacheControl = "public,max-age=31536000,immutable";
+        this.Response.Headers.Vary = "Accept";
         return this.File(binary.Value.Stream, binary.Value.ContentType);
     }
 }

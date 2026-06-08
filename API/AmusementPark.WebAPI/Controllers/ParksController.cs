@@ -17,8 +17,10 @@ using AmusementPark.WebAPI.Contracts.Parks;
 using AmusementPark.WebAPI.Contracts.Home;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
@@ -112,6 +114,7 @@ public sealed class ParksController : ControllerBase
 
 
     [HttpGet("home-featured")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<HomeFeaturedParkDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetHomeFeaturedParksAsync([FromQuery] int limit = 3, [FromQuery] string[]? excludeIds = null, CancellationToken cancellationToken = default)
@@ -130,6 +133,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("map-visible")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<ParkMapPointDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetVisibleParkMapPointsAsync([FromQuery] string? query = null, [FromQuery] string? name = null, [FromQuery] string? region = null, CancellationToken cancellationToken = default)
@@ -155,6 +159,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetParkById([FromRoute] string id, CancellationToken cancellationToken = default)
@@ -169,6 +174,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetParksAsync(
@@ -209,6 +215,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("geo-search")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> SearchParksByLocationAsync(
@@ -235,6 +242,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("{id}/distances")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkDistanceResponseDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetParkDistancesAsync(
@@ -255,6 +263,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("{id}/nearby")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkDistanceResponseDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetNearestParksAsync(

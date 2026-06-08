@@ -22,6 +22,7 @@ public static class WebApplicationPipelineExtensions
         ArgumentNullException.ThrowIfNull(app);
 
         app.UseForwardedHeaders();
+        app.UseResponseCompression();
         app.UseApiContentSecurityPolicy();
 
         if (!app.Environment.IsDevelopment())
@@ -100,6 +101,7 @@ public static class WebApplicationPipelineExtensions
         app.UseApiAuthenticationRateLimiting();
         app.UseAuthentication();
         app.UseAuthorization();
+        app.UseOutputCache();
         return app;
     }
 

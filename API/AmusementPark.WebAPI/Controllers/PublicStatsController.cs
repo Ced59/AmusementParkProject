@@ -6,8 +6,10 @@ using AmusementPark.Application.Features.Parks.Queries;
 using AmusementPark.Application.Features.Parks.Results;
 using AmusementPark.WebAPI.Contracts.PublicStats;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
@@ -27,6 +29,7 @@ public sealed class PublicStatsController : ControllerBase
     }
 
     [HttpGet("home")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PublicHomeStatsDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetHomeStatsAsync(CancellationToken cancellationToken = default)
