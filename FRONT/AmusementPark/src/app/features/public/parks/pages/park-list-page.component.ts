@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, skip } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
@@ -33,7 +33,6 @@ export class ParkListPageComponent implements OnInit {
   protected readonly currentLang = signal<string>('en');
   protected readonly searchTerm = signal<string>('');
 
-  private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private readonly searchSubject: Subject<string> = new Subject<string>();
 
   constructor(
@@ -41,7 +40,8 @@ export class ParkListPageComponent implements OnInit {
     private readonly router: Router,
     private readonly stateFacade: ParkListStateFacade,
     private readonly translationService: TranslationService,
-    private readonly seoService: SeoService
+    private readonly seoService: SeoService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
@@ -55,7 +55,10 @@ export class ParkListPageComponent implements OnInit {
     this.seoService.applyParkListSeo(initialLanguage, this.router.url);
 
     if (this.route.parent) {
-      this.route.parent.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
+      this.route.parent.paramMap.pipe(
+        skip(1),
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe((params) => {
         const language: string = params.get('lang') ?? 'en';
         this.currentLang.set(language);
         this.stateFacade.setCurrentLanguage(language);

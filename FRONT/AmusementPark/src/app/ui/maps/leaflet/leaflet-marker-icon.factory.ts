@@ -231,6 +231,8 @@ const LocationPopupAnchor: import('leaflet').PointExpression = [0, -54];
 const ItemMarkerSize: import('leaflet').PointExpression = [42, 52];
 const ItemMarkerAnchor: import('leaflet').PointExpression = [21, 52];
 const ItemPopupAnchor: import('leaflet').PointExpression = [0, -48];
+const ClusterMarkerSize: import('leaflet').PointExpression = [52, 52];
+const ClusterMarkerAnchor: import('leaflet').PointExpression = [26, 26];
 
 export function createLeafletMarkerIcon(
   leaflet: LeafletNamespace,
@@ -246,6 +248,25 @@ export function createLeafletMarkerIcon(
     iconSize: isItemMarker ? ItemMarkerSize : LocationMarkerSize,
     iconAnchor: isItemMarker ? ItemMarkerAnchor : LocationMarkerAnchor,
     popupAnchor: isItemMarker ? ItemPopupAnchor : LocationPopupAnchor,
+  });
+}
+
+export function createLeafletMarkerClusterIcon(
+  leaflet: LeafletNamespace,
+  count: number
+): import('leaflet').DivIcon {
+  const normalizedCount: number = Math.max(2, count);
+  const sizeClass: string = normalizedCount >= 100
+    ? 'large'
+    : normalizedCount >= 20
+      ? 'medium'
+      : 'small';
+
+  return leaflet.divIcon({
+    className: `app-leaflet-marker-cluster app-leaflet-marker-cluster--${sizeClass}`,
+    html: `<span class="app-leaflet-marker-cluster__count">${normalizedCount}</span>`,
+    iconSize: ClusterMarkerSize,
+    iconAnchor: ClusterMarkerAnchor
   });
 }
 

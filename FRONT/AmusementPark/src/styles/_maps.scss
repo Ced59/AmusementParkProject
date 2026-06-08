@@ -547,6 +547,41 @@
   font-size: 1.4rem;
 }
 
+.app-leaflet-marker-cluster {
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.42), transparent 30%),
+    linear-gradient(145deg, #38c5f5, #ff5a1f);
+  box-shadow:
+    0 0 0 4px rgba(15, 11, 6, 0.72),
+    0 12px 20px rgba(0, 0, 0, 0.28);
+  color: #0f0b06;
+  font-family: var(--font-heading, system-ui, sans-serif);
+  font-weight: 900;
+}
+
+.app-leaflet-marker-cluster__count {
+  display: grid;
+  min-width: 2rem;
+  min-height: 2rem;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.app-leaflet-marker-cluster--medium {
+  transform: scale(1.08);
+}
+
+.app-leaflet-marker-cluster--large {
+  transform: scale(1.16);
+}
+
 /* M10 responsive hardening for map-heavy pages. */
 @media (min-width: 681px) and (max-width: 1180px) {
   .app-map-shell__body,
