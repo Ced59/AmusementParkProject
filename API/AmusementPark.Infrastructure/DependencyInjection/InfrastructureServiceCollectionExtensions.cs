@@ -69,6 +69,7 @@ public static class InfrastructureServiceCollectionExtensions
         AdminSeedSettings adminSeedSettings = configuration.GetSection("Initialization:AdminUser").Get<AdminSeedSettings>() ?? new AdminSeedSettings();
         services.AddSingleton(adminSeedSettings);
 
+        services.AddMemoryCache();
         services.AddHttpClient();
         services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoDbSettings.Url));
         services.AddSingleton<IMinioClient>(_ =>

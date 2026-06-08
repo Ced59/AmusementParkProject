@@ -11,8 +11,10 @@ using AmusementPark.WebAPI.Contracts.ParkOperators;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Filters;
 using Microsoft.AspNetCore.Authorization;
@@ -52,6 +54,7 @@ public sealed class ParkOperatorsController : ControllerBase
     }
 
     [HttpGet]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicReferenceData)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ParkOperatorDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
@@ -89,6 +92,7 @@ public sealed class ParkOperatorsController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicReferenceData)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(ParkOperatorDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetByIdAsync([FromRoute] string id, CancellationToken cancellationToken = default)

@@ -1,8 +1,10 @@
 using System;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace AmusementPark.WebAPI.DependencyInjection;
 
@@ -28,6 +30,17 @@ public static class HttpApiServiceCollectionExtensions
         });
 
         services.AddProblemDetails();
+        services.AddResponseCompression(options =>
+        {
+            options.EnableForHttps = true;
+            options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
+            {
+                "application/xml",
+                "application/problem+json",
+                "application/ld+json"
+            });
+        });
+        services.AddApiOutputCaching();
         services.AddControllers();
         services.AddEndpointsApiExplorer();
 

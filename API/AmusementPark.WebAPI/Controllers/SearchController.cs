@@ -12,8 +12,10 @@ using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.Searching;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.AspNetCore.Authorization;
 
 namespace AmusementPark.WebAPI.Controllers;
@@ -33,6 +35,7 @@ public sealed class SearchController : ControllerBase
     }
 
     [HttpGet]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<SearchResultDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> SearchAsync(

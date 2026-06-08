@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Seo;
+using Microsoft.Extensions.Caching.Memory;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
@@ -11,20 +12,43 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class SeoSitemapSnapshotRepository : ISeoSitemapSnapshotRepository
 {
     private const string CurrentSnapshotId = "current";
+    private const string CurrentSnapshotCacheKey = "seo:sitemap:snapshot:current";
+    private const string MissingSnapshotCacheKey = "seo:sitemap:snapshot:missing";
+    private static readonly TimeSpan SnapshotCacheDuration = TimeSpan.FromMinutes(10);
     private readonly IMongoCollection<SeoSitemapSnapshotDocument> collection;
+    private readonly IMemoryCache cache;
 
-    public SeoSitemapSnapshotRepository(IMongoDatabase database, MongoDbSettings settings)
+    public SeoSitemapSnapshotRepository(IMongoDatabase database, MongoDbSettings settings, IMemoryCache cache)
     {
         this.collection = database.GetCollection<SeoSitemapSnapshotDocument>(settings.SeoSitemapSnapshotsCollectionName);
+        this.cache = cache;
     }
 
     public async Task<SitemapSnapshot?> GetLatestAsync(CancellationToken cancellationToken)
     {
+        if (this.cache.TryGetValue(CurrentSnapshotCacheKey, out SitemapSnapshot? cachedSnapshot) && cachedSnapshot is not null)
+        {
+            return cachedSnapshot;
+        }
+
+        if (this.cache.TryGetValue(MissingSnapshotCacheKey, out bool isMissingSnapshotCached) && isMissingSnapshotCached)
+        {
+            return null;
+        }
+
         SeoSitemapSnapshotDocument? document = await this.collection
             .Find(document => document.Id == CurrentSnapshotId)
             .FirstOrDefaultAsync(cancellationToken);
 
-        return document is null ? null : ToSnapshot(document);
+        if (document is null)
+        {
+            this.cache.Set(MissingSnapshotCacheKey, true, TimeSpan.FromSeconds(30));
+            return null;
+        }
+
+        SitemapSnapshot snapshot = ToSnapshot(document);
+        this.cache.Set(CurrentSnapshotCacheKey, snapshot, SnapshotCacheDuration);
+        return snapshot;
     }
 
     public async Task SaveAsync(SitemapSnapshot snapshot, CancellationToken cancellationToken)
@@ -46,6 +70,8 @@ public sealed class SeoSitemapSnapshotRepository : ISeoSitemapSnapshotRepository
 
         ReplaceOptions options = new ReplaceOptions { IsUpsert = true };
         await this.collection.ReplaceOneAsync(value => value.Id == CurrentSnapshotId, document, options, cancellationToken);
+        this.cache.Remove(MissingSnapshotCacheKey);
+        this.cache.Set(CurrentSnapshotCacheKey, snapshot, SnapshotCacheDuration);
     }
 
     private static SitemapSnapshot ToSnapshot(SeoSitemapSnapshotDocument document)
@@ -185,20 +211,31 @@ public sealed class SeoSitemapGenerationHistoryRepository : ISeoSitemapGeneratio
 public sealed class SeoSitemapSettingsRepository : ISeoSitemapSettingsRepository
 {
     private const string SettingsId = "current";
+    private const string SettingsCacheKey = "seo:sitemap:settings:current";
+    private static readonly TimeSpan SettingsCacheDuration = TimeSpan.FromMinutes(5);
     private readonly IMongoCollection<SeoSitemapSettingsDocument> collection;
+    private readonly IMemoryCache cache;
 
-    public SeoSitemapSettingsRepository(IMongoDatabase database, MongoDbSettings settings)
+    public SeoSitemapSettingsRepository(IMongoDatabase database, MongoDbSettings settings, IMemoryCache cache)
     {
         this.collection = database.GetCollection<SeoSitemapSettingsDocument>(settings.SeoSitemapSettingsCollectionName);
+        this.cache = cache;
     }
 
     public async Task<SeoSitemapSettings> GetAsync(CancellationToken cancellationToken)
     {
+        if (this.cache.TryGetValue(SettingsCacheKey, out SeoSitemapSettings? cachedSettings) && cachedSettings is not null)
+        {
+            return cachedSettings;
+        }
+
         SeoSitemapSettingsDocument? document = await this.collection
             .Find(document => document.Id == SettingsId)
             .FirstOrDefaultAsync(cancellationToken);
 
-        return document is null ? CreateDefaultSettings() : ToModel(document);
+        SeoSitemapSettings settings = document is null ? CreateDefaultSettings() : ToModel(document);
+        this.cache.Set(SettingsCacheKey, settings, SettingsCacheDuration);
+        return settings;
     }
 
     public async Task SaveAsync(SeoSitemapSettings settings, CancellationToken cancellationToken)
@@ -220,6 +257,7 @@ public sealed class SeoSitemapSettingsRepository : ISeoSitemapSettingsRepository
 
         ReplaceOptions options = new ReplaceOptions { IsUpsert = true };
         await this.collection.ReplaceOneAsync(value => value.Id == SettingsId, document, options, cancellationToken);
+        this.cache.Set(SettingsCacheKey, settings, SettingsCacheDuration);
     }
 
     private static SeoSitemapSettings CreateDefaultSettings()
