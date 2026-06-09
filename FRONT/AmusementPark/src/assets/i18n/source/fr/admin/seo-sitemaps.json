@@ -12,6 +12,8 @@
       "actions": {
         "generate": "Régénérer",
         "generateWithoutIndexNow": "Générer sans IndexNow",
+        "generateSeoSsr": "Régénérer SEO/SSR",
+        "generateSeoSsrWithoutIndexNow": "Régénérer SEO/SSR sans IndexNow",
         "openSitemap": "Afficher"
       },
       "stats": {
@@ -22,6 +24,12 @@
       },
       "lastResult": {
         "title": "Dernier résultat"
+      },
+      "prerender": {
+        "title": "Préchauffage du cache SSR",
+        "success": "succès",
+        "failed": "échecs",
+        "missingSitemap": "Impossible de préchauffer le cache SSR : sitemap index introuvable."
       },
       "publicFiles": {
         "title": "Fichiers publics",
