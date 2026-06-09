@@ -1,6 +1,5 @@
 using System;
 using AmusementPark.WebAPI.OutputCaching;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,15 +16,6 @@ public static class OutputCacheServiceCollectionExtensions
 
         services.AddOutputCache(options =>
         {
-            options.AddBasePolicy(policy => policy
-                .With(context => IsAnonymousCacheCandidate(context)
-                    && context.HttpContext.Request.Path.StartsWithSegments("/parks/random-visible", StringComparison.OrdinalIgnoreCase))
-                .Cache()
-                .Expire(TimeSpan.FromMinutes(5))
-                .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
-                .SetVaryByQuery("*")
-                .Tag(ApiOutputCachePolicyNames.PublicDataTag));
-
             options.AddPolicy(ApiOutputCachePolicyNames.PublicSeoDocuments, policy => policy
                 .With(IsAnonymousCacheCandidate)
                 .Cache()
@@ -72,6 +62,6 @@ public static class OutputCacheServiceCollectionExtensions
             return false;
         }
 
-        return context.HttpContext.User?.Identity?.IsAuthenticated != true;
+        return true;
     }
 }
