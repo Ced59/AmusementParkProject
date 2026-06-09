@@ -91,6 +91,7 @@ export class SeoSsrPrerenderService {
       processedUrlCount,
       succeededUrlCount,
       failedUrlCount,
+      currentUrl: null,
       errors
     };
 
