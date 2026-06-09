@@ -113,6 +113,7 @@ public sealed class ParkRepository : IParkRepository
             & this.BuildCriteriaFilter(criteria);
 
         List<ParkDocument> documents = await this.collection.Find(filter)
+            .Project(BuildMapPointProjection())
             .SortBy(document => document.Name)
             .ThenBy(document => document.Id)
             .ToListAsync(cancellationToken);
@@ -133,10 +134,21 @@ public sealed class ParkRepository : IParkRepository
         }
 
         FilterDefinition<ParkDocument> filter = this.BuildVisibleSelectionFilter(excludedParkIds);
+        long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
-        List<ParkDocument> documents = await this.collection.Aggregate()
-            .Match(filter)
-            .Sample(limit)
+        if (totalItems <= 0)
+        {
+            return Array.Empty<Park>();
+        }
+
+        int effectiveLimit = checked((int)Math.Min(limit, totalItems));
+        int maxSkip = checked((int)Math.Max(0L, totalItems - effectiveLimit));
+        int skip = maxSkip == 0 ? 0 : Random.Shared.Next(0, maxSkip + 1);
+
+        List<ParkDocument> documents = await this.collection.Find(filter)
+            .SortBy(document => document.Id)
+            .Skip(skip)
+            .Limit(effectiveLimit)
             .ToListAsync(cancellationToken);
 
         return documents.Select(document => document.ToDomain()).ToList();
@@ -353,6 +365,25 @@ public sealed class ParkRepository : IParkRepository
     {
         return new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
             new GeoJson2DGeographicCoordinates(longitude, latitude));
+    }
+
+    private static ProjectionDefinition<ParkDocument, ParkDocument> BuildMapPointProjection()
+    {
+        return Builders<ParkDocument>.Projection.Expression(static document => new ParkDocument
+        {
+            Id = document.Id,
+            Name = document.Name,
+            CountryCode = document.CountryCode,
+            Street = document.Street,
+            City = document.City,
+            PostalCode = document.PostalCode,
+            Latitude = document.Latitude,
+            Longitude = document.Longitude,
+            CurrentLogoImageId = document.CurrentLogoImageId,
+            IsVisible = document.IsVisible,
+            CreatedAt = document.CreatedAt,
+            UpdatedAt = document.UpdatedAt,
+        });
     }
 
     private FilterDefinition<ParkDocument> BuildNearLocationFilter(GeoJsonPoint<GeoJson2DGeographicCoordinates> center, double? radiusInKilometers, bool includeHidden)

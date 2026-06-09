@@ -40,6 +40,19 @@ public sealed partial class MongoDatabaseInitializer
                 Builders<ParkDocument>.IndexKeys.Ascending(item => item.IsVisible).Ascending(item => item.Name).Ascending(item => item.Id),
                 new CreateIndexOptions { Name = "idx_parks_visibility_name_id" }),
             new CreateIndexModel<ParkDocument>(
+                Builders<ParkDocument>.IndexKeys.Ascending(item => item.IsVisible).Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_parks_visibility_id" }),
+            new CreateIndexModel<ParkDocument>(
+                Builders<ParkDocument>.IndexKeys.Ascending(item => item.IsVisible).Ascending(item => item.CountryCode),
+                new CreateIndexOptions { Name = "idx_parks_visibility_country_code" }),
+            new CreateIndexModel<ParkDocument>(
+                Builders<ParkDocument>.IndexKeys
+                    .Ascending(item => item.IsVisible)
+                    .Ascending(item => item.CountryCode)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_parks_public_country_name_id" }),
+            new CreateIndexModel<ParkDocument>(
                 Builders<ParkDocument>.IndexKeys
                     .Ascending(item => item.IsVisible)
                     .Ascending(item => item.IsFeaturedOnHome)
@@ -131,6 +144,14 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(item => item.Id),
                 new CreateIndexOptions { Name = "idx_park_zones_park_sort_name" }),
             new CreateIndexModel<ParkZoneDocument>(
+                Builders<ParkZoneDocument>.IndexKeys
+                    .Ascending(item => item.ParkId)
+                    .Ascending(item => item.IsVisible)
+                    .Ascending(item => item.SortOrder)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_park_zones_public_park_sort_name" }),
+            new CreateIndexModel<ParkZoneDocument>(
                 Builders<ParkZoneDocument>.IndexKeys.Geo2DSphere(item => item.Location),
                 new CreateIndexOptions { Name = "idx_park_zones_location" }),
         };
@@ -157,8 +178,20 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(item => item.Name),
                 new CreateIndexOptions { Name = "idx_park_items_park_category_type_name" }),
             new CreateIndexModel<ParkItemDocument>(
+                Builders<ParkItemDocument>.IndexKeys
+                    .Ascending(item => item.ParkId)
+                    .Ascending(item => item.IsVisible)
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.Type)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_park_items_public_park_category_type_name" }),
+            new CreateIndexModel<ParkItemDocument>(
                 Builders<ParkItemDocument>.IndexKeys.Ascending(item => item.ZoneId),
                 new CreateIndexOptions { Name = "idx_park_items_zone_id" }),
+            new CreateIndexModel<ParkItemDocument>(
+                Builders<ParkItemDocument>.IndexKeys.Ascending(item => item.Category).Ascending(item => item.IsVisible),
+                new CreateIndexOptions { Name = "idx_park_items_category_visibility" }),
             new CreateIndexModel<ParkItemDocument>(
                 Builders<ParkItemDocument>.IndexKeys.Ascending(item => item.Category).Ascending(item => item.IsVisible).Descending(item => item.UpdatedAt),
                 new CreateIndexOptions { Name = "idx_park_items_category_visibility_updated" }),
@@ -194,6 +227,9 @@ public sealed partial class MongoDatabaseInitializer
             new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys.Ascending(item => item.OwnerType).Ascending(item => item.OwnerId).Descending(item => item.CreatedAt),
                 new CreateIndexOptions { Name = "idx_images_owner_created_at_desc" }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys.Ascending(item => item.OwnerType).Ascending(item => item.OwnerId).Ascending(item => item.IsPublished).Descending(item => item.CreatedAt),
+                new CreateIndexOptions { Name = "idx_images_owner_published_created_at_desc" }),
             new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys
                     .Ascending(item => item.OwnerType)

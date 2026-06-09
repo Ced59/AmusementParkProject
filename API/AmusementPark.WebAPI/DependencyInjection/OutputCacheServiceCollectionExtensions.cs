@@ -62,6 +62,6 @@ public static class OutputCacheServiceCollectionExtensions
             return false;
         }
 
-        return true;
+        return context.HttpContext.User?.Identity?.IsAuthenticated != true;
     }
 }

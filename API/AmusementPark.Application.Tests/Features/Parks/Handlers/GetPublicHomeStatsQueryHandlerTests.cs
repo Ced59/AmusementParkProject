@@ -15,16 +15,16 @@ namespace AmusementPark.Application.Tests.Features.Parks.Handlers;
 public sealed class GetPublicHomeStatsQueryHandlerTests
 {
     [Fact]
-    public async Task HandleAsync_ShouldCountVisibleAttractionsOnly()
+    public async Task HandleAsync_ShouldCountPublicDataWithIndexedRepositoryQueries()
     {
         FakeParkRepository parkRepository = new FakeParkRepository
         {
-            VisibleParkIds = new[] { "park-1", "park-2" },
-            CountriesCount = 2
+            ParksCount = 42,
+            CountriesCount = 6
         };
         FakeParkItemRepository parkItemRepository = new FakeParkItemRepository
         {
-            CountByCategoryForParkIdsResult = 7
+            AttractionCount = 123
         };
         GetPublicHomeStatsQueryHandler handler = new GetPublicHomeStatsQueryHandler(parkRepository, parkItemRepository);
 
@@ -32,32 +32,42 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
-        Assert.Equal(2, result.Value.ParksCount);
-        Assert.Equal(7, result.Value.AttractionsCount);
-        Assert.Equal(2, result.Value.CountriesCount);
-        Assert.Equal(new[] { "park-1", "park-2" }, parkItemRepository.CountByCategoryForParkIdsCall?.ParkIds);
-        Assert.Equal(ParkItemCategory.Attraction, parkItemRepository.CountByCategoryForParkIdsCall?.Category);
-        Assert.False(parkItemRepository.CountByCategoryForParkIdsCall?.IncludeHidden);
+        Assert.Equal(42, result.Value.ParksCount);
+        Assert.Equal(123, result.Value.AttractionsCount);
+        Assert.Equal(6, result.Value.CountriesCount);
+        Assert.Equal(new[] { false }, parkRepository.CountIncludeHiddenCalls);
+        Assert.Equal(new[] { false }, parkRepository.CountryCountIncludeHiddenCalls);
+        Assert.Equal(ParkItemCategory.Attraction, parkItemRepository.CountByCategoryCall?.Category);
+        Assert.False(parkItemRepository.CountByCategoryCall?.IncludeHidden);
+        Assert.Empty(parkRepository.VisibleParkIdsCalls);
     }
 
-    private sealed record CountByCategoryForParkIdsCall(
-        ParkItemCategory Category,
-        IReadOnlyCollection<string> ParkIds,
-        bool IncludeHidden);
+    private sealed record CountByCategoryCall(ParkItemCategory Category, bool IncludeHidden);
 
     private sealed class FakeParkRepository : IParkRepository
     {
-        public IReadOnlyCollection<string> VisibleParkIds { get; init; } = Array.Empty<string>();
+        public long ParksCount { get; init; }
         public int CountriesCount { get; init; }
+        public List<bool> CountIncludeHiddenCalls { get; } = new List<bool>();
+        public List<bool> CountryCountIncludeHiddenCalls { get; } = new List<bool>();
+        public List<CancellationToken> VisibleParkIdsCalls { get; } = new List<CancellationToken>();
+
+        public Task<long> CountAsync(bool includeHidden, CancellationToken cancellationToken)
+        {
+            this.CountIncludeHiddenCalls.Add(includeHidden);
+            return Task.FromResult(this.ParksCount);
+        }
+
+        public Task<int> CountDistinctCountryCodesAsync(bool includeHidden, CancellationToken cancellationToken)
+        {
+            this.CountryCountIncludeHiddenCalls.Add(includeHidden);
+            return Task.FromResult(this.CountriesCount);
+        }
 
         public Task<IReadOnlyCollection<string>> GetVisibleParkIdsAsync(CancellationToken cancellationToken)
         {
-            return Task.FromResult(this.VisibleParkIds);
-        }
-
-        public Task<int> CountDistinctCountryCodesForParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken)
-        {
-            return Task.FromResult(this.CountriesCount);
+            this.VisibleParkIdsCalls.Add(cancellationToken);
+            return Task.FromResult<IReadOnlyCollection<string>>(Array.Empty<string>());
         }
 
         public Task<Park?> GetByIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
@@ -71,11 +81,6 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
         }
 
         public Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<long> CountAsync(bool includeHidden, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -105,7 +110,7 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
             throw new NotImplementedException();
         }
 
-        public Task<int> CountDistinctCountryCodesAsync(bool includeHidden, CancellationToken cancellationToken)
+        public Task<int> CountDistinctCountryCodesForParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -158,13 +163,13 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
 
     private sealed class FakeParkItemRepository : IParkItemRepository
     {
-        public long CountByCategoryForParkIdsResult { get; init; }
-        public CountByCategoryForParkIdsCall? CountByCategoryForParkIdsCall { get; private set; }
+        public long AttractionCount { get; init; }
+        public CountByCategoryCall? CountByCategoryCall { get; private set; }
 
-        public Task<long> CountByCategoryForParkIdsAsync(ParkItemCategory category, IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
+        public Task<long> CountByCategoryAsync(ParkItemCategory category, bool includeHidden, CancellationToken cancellationToken)
         {
-            this.CountByCategoryForParkIdsCall = new CountByCategoryForParkIdsCall(category, parkIds.ToList(), includeHidden);
-            return Task.FromResult(this.CountByCategoryForParkIdsResult);
+            this.CountByCategoryCall = new CountByCategoryCall(category, includeHidden);
+            return Task.FromResult(this.AttractionCount);
         }
 
         public Task<IReadOnlyCollection<ParkItem>> GetByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
@@ -182,7 +187,7 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
             throw new NotImplementedException();
         }
 
-        public Task<long> CountByCategoryAsync(ParkItemCategory category, bool includeHidden, CancellationToken cancellationToken)
+        public Task<long> CountByCategoryForParkIdsAsync(ParkItemCategory category, IReadOnlyCollection<string> parkIds, bool includeHidden, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

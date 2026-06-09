@@ -95,6 +95,7 @@ public sealed class ParksController : ControllerBase
     }
 
     [HttpGet("random-visible")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(IReadOnlyCollection<ParkDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetRandomVisibleParksAsync([FromQuery] int limit = 4, CancellationToken cancellationToken = default)

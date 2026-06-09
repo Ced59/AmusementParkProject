@@ -1,5 +1,6 @@
 using System;
 using AmusementPark.WebAPI.Diagnostics;
+using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -39,6 +40,7 @@ public static class WebApplicationPipelineExtensions
             context.Response.Headers.TryAdd("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
             await next();
         });
+        app.UseMiddleware<PublicHttpCacheHeadersMiddleware>();
 
         app.UseExceptionHandler(static errorApp =>
         {

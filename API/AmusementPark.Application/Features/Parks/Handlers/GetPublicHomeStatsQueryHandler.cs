@@ -26,14 +26,18 @@ public sealed class GetPublicHomeStatsQueryHandler : IQueryHandler<GetPublicHome
     {
         const bool includeHidden = false;
 
-        IReadOnlyCollection<string> visibleParkIds = await this.parkRepository.GetVisibleParkIdsAsync(cancellationToken);
-        long parksCount = visibleParkIds.Count;
-        long attractionsCount = await this.parkItemRepository.CountByCategoryForParkIdsAsync(
+        Task<long> parksCountTask = this.parkRepository.CountAsync(includeHidden, cancellationToken);
+        Task<long> attractionsCountTask = this.parkItemRepository.CountByCategoryAsync(
             ParkItemCategory.Attraction,
-            visibleParkIds,
             includeHidden,
             cancellationToken);
-        int countriesCount = await this.parkRepository.CountDistinctCountryCodesForParkIdsAsync(visibleParkIds, cancellationToken);
+        Task<int> countriesCountTask = this.parkRepository.CountDistinctCountryCodesAsync(includeHidden, cancellationToken);
+
+        await Task.WhenAll(parksCountTask, attractionsCountTask, countriesCountTask);
+
+        long parksCount = await parksCountTask;
+        long attractionsCount = await attractionsCountTask;
+        int countriesCount = await countriesCountTask;
 
         PublicHomeStatsResult result = new PublicHomeStatsResult(parksCount, attractionsCount, countriesCount);
         return ApplicationResult<PublicHomeStatsResult>.Success(result);
