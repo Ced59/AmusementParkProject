@@ -2,6 +2,7 @@ using System;
 using System.IO.Compression;
 using System.Linq;
 using AmusementPark.WebAPI.Diagnostics;
+using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -57,7 +58,10 @@ public static class HttpApiServiceCollectionExtensions
             options.Level = CompressionLevel.Fastest;
         });
         services.AddApiOutputCaching();
-        services.AddControllers();
+        services.AddControllers(options =>
+        {
+            options.Filters.Add<PublicHttpCacheHeadersFilter>();
+        });
         services.AddEndpointsApiExplorer();
 
         return services;
