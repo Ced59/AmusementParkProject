@@ -303,4 +303,257 @@ public sealed class ParkItemDocument : MongoGeolocatedDocumentBase
 
     [BsonElement("isVisible")]
     public bool IsVisible { get; set; } = true;
+
+    [BsonElement("adminReviewStatus")]
+    [BsonRepresentation(BsonType.String)]
+    public AdminReviewStatus AdminReviewStatus { get; set; } = AdminReviewStatus.ToReview;
+
+    [BsonElement("adminReviewPriority")]
+    public int AdminReviewPriority { get; set; }
 }
+
+/// <summary>
+/// Document embarqué des détails d'attraction.
+/// </summary>
+public sealed class AttractionDetailsDocument
+{
+    [BsonElement("manufacturerId")]
+    [BsonIgnoreIfNull]
+    public string? ManufacturerId { get; set; }
+
+    [BsonElement("model")]
+    [BsonIgnoreIfNull]
+    public string? Model { get; set; }
+
+    [BsonElement("externalSource")]
+    [BsonIgnoreIfNull]
+    public string? ExternalSource { get; set; }
+
+    [BsonElement("externalId")]
+    [BsonIgnoreIfNull]
+    public string? ExternalId { get; set; }
+
+    [BsonElement("sourceUrl")]
+    [BsonIgnoreIfNull]
+    public string? SourceUrl { get; set; }
+
+    [BsonElement("status")]
+    [BsonIgnoreIfNull]
+    public string? Status { get; set; }
+
+    [BsonElement("materialType")]
+    [BsonIgnoreIfNull]
+    public string? MaterialType { get; set; }
+
+    [BsonElement("seatingType")]
+    [BsonIgnoreIfNull]
+    public string? SeatingType { get; set; }
+
+    [BsonElement("launchType")]
+    [BsonIgnoreIfNull]
+    public string? LaunchType { get; set; }
+
+    [BsonElement("restraintType")]
+    [BsonIgnoreIfNull]
+    public string? RestraintType { get; set; }
+
+    [BsonElement("isLaunched")]
+    [BsonIgnoreIfNull]
+    public bool? IsLaunched { get; set; }
+
+    [BsonElement("openingDate")]
+    [BsonIgnoreIfNull]
+    public DateTime? OpeningDate { get; set; }
+
+    [BsonElement("closingDate")]
+    [BsonIgnoreIfNull]
+    public DateTime? ClosingDate { get; set; }
+
+    [BsonElement("openingDateText")]
+    [BsonIgnoreIfNull]
+    public string? OpeningDateText { get; set; }
+
+    [BsonElement("closingDateText")]
+    [BsonIgnoreIfNull]
+    public string? ClosingDateText { get; set; }
+
+    [BsonElement("durationInSeconds")]
+    [BsonIgnoreIfNull]
+    public int? DurationInSeconds { get; set; }
+
+    [BsonElement("capacityPerHour")]
+    [BsonIgnoreIfNull]
+    public int? CapacityPerHour { get; set; }
+
+    [BsonElement("heightInFeet")]
+    [BsonIgnoreIfNull]
+    public double? HeightInFeet { get; set; }
+
+    [BsonElement("heightInMeters")]
+    [BsonIgnoreIfNull]
+    public double? HeightInMeters { get; set; }
+
+    [BsonElement("lengthInFeet")]
+    [BsonIgnoreIfNull]
+    public double? LengthInFeet { get; set; }
+
+    [BsonElement("lengthInMeters")]
+    [BsonIgnoreIfNull]
+    public double? LengthInMeters { get; set; }
+
+    [BsonElement("speedInMph")]
+    [BsonIgnoreIfNull]
+    public double? SpeedInMph { get; set; }
+
+    [BsonElement("speedInKmH")]
+    [BsonIgnoreIfNull]
+    public double? SpeedInKmH { get; set; }
+
+    [BsonElement("dropInMeters")]
+    [BsonIgnoreIfNull]
+    public double? DropInMeters { get; set; }
+
+    [BsonElement("inversionCount")]
+    [BsonIgnoreIfNull]
+    public int? InversionCount { get; set; }
+
+    [BsonElement("trainCount")]
+    [BsonIgnoreIfNull]
+    public int? TrainCount { get; set; }
+
+    [BsonElement("carsPerTrain")]
+    [BsonIgnoreIfNull]
+    public int? CarsPerTrain { get; set; }
+
+    [BsonElement("ridersPerVehicle")]
+    [BsonIgnoreIfNull]
+    public int? RidersPerVehicle { get; set; }
+
+    [BsonElement("hasSingleRider")]
+    [BsonIgnoreIfNull]
+    public bool? HasSingleRider { get; set; }
+
+    [BsonElement("hasFastPass")]
+    [BsonIgnoreIfNull]
+    public bool? HasFastPass { get; set; }
+
+    [BsonElement("isAccessibleForReducedMobility")]
+    [BsonIgnoreIfNull]
+    public bool? IsAccessibleForReducedMobility { get; set; }
+
+    [BsonElement("isIndoor")]
+    [BsonIgnoreIfNull]
+    public bool? IsIndoor { get; set; }
+
+    [BsonElement("waterExposureLevel")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public AttractionWaterExposureLevel? WaterExposureLevel { get; set; }
+
+    [BsonElement("accessConditions")]
+    public List<AttractionAccessConditionDocument> AccessConditions { get; set; } = new();
+}
+
+/// <summary>
+/// Document embarqué d'une contrainte d'accès.
+/// </summary>
+public sealed class AttractionAccessConditionDocument
+{
+    [BsonElement("type")]
+    [BsonRepresentation(BsonType.String)]
+    public AttractionAccessConditionType Type { get; set; }
+
+    [BsonElement("typeKey")]
+    [BsonIgnoreIfNull]
+    public string? TypeKey { get; set; }
+
+    [BsonElement("isCustom")]
+    [BsonIgnoreIfNull]
+    public bool? IsCustom { get; set; }
+
+    [BsonElement("customTypeKey")]
+    [BsonIgnoreIfNull]
+    public string? CustomTypeKey { get; set; }
+
+    [BsonElement("customTypeLabel")]
+    public List<LocalizedTextDocument> CustomTypeLabel { get; set; } = new();
+
+    [BsonElement("value")]
+    [BsonIgnoreIfNull]
+    public double? Value { get; set; }
+
+    [BsonElement("unit")]
+    [BsonIgnoreIfNull]
+    [BsonRepresentation(BsonType.String)]
+    public AttractionAccessConditionUnit? Unit { get; set; }
+
+    [BsonElement("requiresAccompaniment")]
+    [BsonIgnoreIfNull]
+    public bool? RequiresAccompaniment { get; set; }
+
+    [BsonElement("minimumCompanionAge")]
+    [BsonIgnoreIfNull]
+    public int? MinimumCompanionAge { get; set; }
+
+    [BsonElement("label")]
+    public List<LocalizedTextDocument> Label { get; set; } = new();
+
+    [BsonElement("description")]
+    public List<LocalizedTextDocument> Description { get; set; } = new();
+
+    [BsonElement("displayOrder")]
+    [BsonIgnoreIfNull]
+    public int? DisplayOrder { get; set; }
+}
+
+/// <summary>
+/// Document embarqué des points fonctionnels d'une attraction.
+/// </summary>
+public sealed class AttractionLocationsDocument
+{
+    [BsonElement("entrance")]
+    [BsonIgnoreIfNull]
+    public GeoPointDocument? Entrance { get; set; }
+
+    [BsonElement("exit")]
+    [BsonIgnoreIfNull]
+    public GeoPointDocument? Exit { get; set; }
+
+    [BsonElement("fastPassEntrance")]
+    [BsonIgnoreIfNull]
+    public GeoPointDocument? FastPassEntrance { get; set; }
+
+    [BsonElement("reducedMobilityEntrance")]
+    [BsonIgnoreIfNull]
+    public GeoPointDocument? ReducedMobilityEntrance { get; set; }
+}
+
+/// <summary>
+/// Document Mongo d'un type réutilisable de condition d'accès.
+/// </summary>
+[BsonIgnoreExtraElements]
+public sealed class AttractionAccessConditionTypeDefinitionDocument : MongoDocumentBase
+{
+    [BsonElement("key")]
+    public string Key { get; set; } = string.Empty;
+
+    [BsonElement("legacyType")]
+    [BsonRepresentation(BsonType.String)]
+    public AttractionAccessConditionType LegacyType { get; set; } = AttractionAccessConditionType.Custom;
+
+    [BsonElement("isSystem")]
+    public bool IsSystem { get; set; }
+
+    [BsonElement("isActive")]
+    public bool IsActive { get; set; } = true;
+
+    [BsonElement("labels")]
+    public List<LocalizedTextDocument> Labels { get; set; } = new();
+
+    [BsonElement("descriptions")]
+    public List<LocalizedTextDocument> Descriptions { get; set; } = new();
+
+    [BsonElement("sortOrder")]
+    public int SortOrder { get; set; }
+}
+
