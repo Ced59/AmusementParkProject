@@ -1037,7 +1037,9 @@
       "actions": {
         "generate": "Régénérer",
         "generateWithoutIndexNow": "Générer sans IndexNow",
-        "openSitemap": "Afficher"
+        "openSitemap": "Afficher",
+        "generateSeoSsr": "Régénérer SEO/SSR",
+        "generateSeoSsrWithoutIndexNow": "SEO/SSR sans IndexNow"
       },
       "stats": {
         "totalUrls": "URLs référencées",
@@ -1080,6 +1082,12 @@
           "indexNow": "IndexNow",
           "actor": "Acteur"
         }
+      },
+      "prerender": {
+        "title": "Prérendu SSR / cache HTML",
+        "success": "réussies",
+        "failed": "échouées",
+        "missingSitemap": "Impossible de lancer le prérendu SSR : sitemap public introuvable."
       }
     },
     "tabs": {

@@ -27,7 +27,7 @@ public static class OutputCacheServiceCollectionExtensions
             options.AddPolicy(ApiOutputCachePolicyNames.PublicDataShort, policy => policy
                 .With(IsAnonymousCacheCandidate)
                 .Cache()
-                .Expire(TimeSpan.FromSeconds(45))
+                .Expire(TimeSpan.FromMinutes(5))
                 .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
                 .SetVaryByQuery("*")
                 .Tag(ApiOutputCachePolicyNames.PublicDataTag));
@@ -35,7 +35,7 @@ public static class OutputCacheServiceCollectionExtensions
             options.AddPolicy(ApiOutputCachePolicyNames.PublicDataMedium, policy => policy
                 .With(IsAnonymousCacheCandidate)
                 .Cache()
-                .Expire(TimeSpan.FromMinutes(5))
+                .Expire(TimeSpan.FromMinutes(30))
                 .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
                 .SetVaryByQuery("*")
                 .Tag(ApiOutputCachePolicyNames.PublicDataTag));
@@ -43,7 +43,7 @@ public static class OutputCacheServiceCollectionExtensions
             options.AddPolicy(ApiOutputCachePolicyNames.PublicReferenceData, policy => policy
                 .With(IsAnonymousCacheCandidate)
                 .Cache()
-                .Expire(TimeSpan.FromMinutes(30))
+                .Expire(TimeSpan.FromHours(6))
                 .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
                 .SetVaryByQuery("*")
                 .Tag(ApiOutputCachePolicyNames.PublicReferenceDataTag));
@@ -54,11 +54,9 @@ public static class OutputCacheServiceCollectionExtensions
 
     private static bool IsAnonymousCacheCandidate(OutputCacheContext context)
     {
-        if (context.HttpContext.User.Identity?.IsAuthenticated == true)
-        {
-            return false;
-        }
-
+        // Les cookies analytiques (Matomo, consentement, etc.) ne doivent pas casser le cache.
+        // Les endpoints publics utilisent des DTO publics et les appels SSR/front publics
+        // sont faits sans Authorization via anonymousHttpOptions().
         if (context.HttpContext.Request.Headers.ContainsKey("Authorization"))
         {
             return false;

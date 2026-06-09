@@ -5,6 +5,8 @@ import http from 'node:http';
 import https from 'node:https';
 import { dirname, join, resolve } from 'node:path';
 import { Buffer } from 'node:buffer';
+import { createHash } from 'node:crypto';
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
@@ -17,9 +19,13 @@ const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?
 const forceHttps = (process.env['SSR_FORCE_HTTPS'] ?? 'false').toLowerCase() === 'true';
 const ssrRenderEnabled = (process.env['SSR_RENDER_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const allowLocalCspSources = (process.env['SSR_CSP_ALLOW_LOCAL_DEV_SOURCES'] ?? 'false').toLowerCase() === 'true';
-const pageCacheTtlSeconds = Math.max(0, Number(process.env['SSR_PAGE_CACHE_SECONDS'] ?? 30));
-const pageCacheMaxEntries = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'] ?? 250));
+const pageCacheTtlSeconds = Math.max(0, Number(process.env['SSR_PAGE_CACHE_SECONDS'] ?? 900));
+const pageCacheMaxEntries = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'] ?? 1000));
 const pageCache = new Map<string, PageCacheEntry>();
+const pageCacheAllowAuthenticatedPublicHtml = (process.env['SSR_PUBLIC_PAGE_CACHE_ALLOW_AUTH_COOKIES'] ?? 'true').toLowerCase() !== 'false';
+const diskPageCacheEnabled = (process.env['SSR_DISK_PAGE_CACHE_ENABLED'] ?? 'true').toLowerCase() !== 'false';
+const diskPageCacheDirectory = process.env['SSR_DISK_PAGE_CACHE_DIR'] ?? '/tmp/amusementpark-ssr-page-cache';
+const diskPageCacheMaxBytes = Math.max(0, Number(process.env['SSR_DISK_PAGE_CACHE_MAX_BYTES'] ?? 256 * 1024 * 1024));
 const seoDocumentCacheTtlSeconds = Math.max(0, Number(process.env['SSR_SEO_DOCUMENT_CACHE_SECONDS'] ?? 3600));
 const seoDocumentCacheMaxEntries = Math.max(0, Number(process.env['SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES'] ?? 128));
 const seoDocumentCache = new Map<string, SeoDocumentCacheEntry>();
@@ -128,11 +134,12 @@ export function app(): express.Express {
 
     const publicUrl = getPublicRequestUrl(req);
     const cacheKey = buildPageCacheKey(req);
-    const cachedEntry = cacheKey === null ? null : getCachedPage(cacheKey);
+    const warmupRequest = isSsrWarmupRequest(req);
+    const cachedEntry = cacheKey === null || warmupRequest ? null : getCachedPage(cacheKey);
 
     if (cachedEntry !== null) {
       res.status(cachedEntry.statusCode);
-      res.setHeader('X-AmusementPark-SSR-Cache', 'HIT');
+      setPageCacheResponseHeaders(res, 'HIT');
       res.type('html').send(cachedEntry.html);
       return;
     }
@@ -154,15 +161,15 @@ export function app(): express.Express {
       .then((html: string) => {
         if (cacheKey !== null && res.statusCode >= 200 && res.statusCode < 300) {
           setCachedPage(cacheKey, res.statusCode, html);
-          res.setHeader('X-AmusementPark-SSR-Cache', 'MISS');
+          setPageCacheResponseHeaders(res, warmupRequest ? 'WARMED' : 'MISS');
         }
 
         res.send(html);
       })
       .catch((err: unknown) => {
         if (err instanceof SsrRenderQueueFullError) {
-          res.setHeader('Retry-After', '10');
-          res.status(503).type('text/plain').send('SSR temporarily overloaded. Please retry later.');
+          console.warn(`SSR overload fallback to CSR: url=${req.originalUrl}`);
+          serveCsrOverloadFallbackPage(req, res, browserDistFolder);
           return;
         }
 
@@ -181,6 +188,8 @@ function run(): void {
     console.log(`Angular SSR server listening on http://0.0.0.0:${port}`);
     console.log(`SSR API internal origin: ${apiInternalOrigin}`);
     console.log(`SSR public page cache: ${pageCacheTtlSeconds}s / ${pageCacheMaxEntries} entries`);
+    console.log(`SSR disk page cache: ${diskPageCacheEnabled ? 'enabled' : 'disabled'} / ${diskPageCacheDirectory} / ${diskPageCacheMaxBytes} bytes`);
+    console.log(`SSR public page cache ignores analytics cookies: ${pageCacheAllowAuthenticatedPublicHtml}`);
     console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
     console.log(`SSR render enabled: ${ssrRenderEnabled}`);
     console.log(`SSR render concurrency: ${renderMaxConcurrency} active / ${renderQueueMaxEntries} queued`);
@@ -250,6 +259,16 @@ function serveCsrFallbackPage(req: Request, res: Response, browserDistFolder: st
   res.sendFile(join(browserDistFolder, 'index.html'));
 }
 
+function serveCsrOverloadFallbackPage(req: Request, res: Response, browserDistFolder: string): void {
+  if (isExplicitNotFoundRoute(req.originalUrl)) {
+    res.status(404);
+  }
+
+  res.setHeader('X-AmusementPark-SSR-Mode', 'CSR-OVERLOAD-FALLBACK');
+  res.setHeader('Cache-Control', 'no-store');
+  res.sendFile(join(browserDistFolder, 'index.html'));
+}
+
 function buildPageCacheKey(req: Request): string | null {
   if (pageCacheTtlSeconds <= 0 || pageCacheMaxEntries <= 0) {
     return null;
@@ -261,9 +280,7 @@ function buildPageCacheKey(req: Request): string | null {
 
   const host = getForwardedValue(req, 'x-forwarded-host') ?? req.headers.host ?? 'localhost';
   const protocol = getForwardedValue(req, 'x-forwarded-proto') ?? req.protocol;
-  const acceptLanguage = req.headers['accept-language'] ?? '';
-
-  return `${protocol}://${host}${req.originalUrl}::${acceptLanguage}`;
+  return `${protocol}://${host}${req.originalUrl}`;
 }
 
 function isCacheablePageRequest(req: Request): boolean {
@@ -271,7 +288,11 @@ function isCacheablePageRequest(req: Request): boolean {
     return false;
   }
 
-  if (req.headers.authorization || req.headers.cookie) {
+  if (req.headers.authorization) {
+    return false;
+  }
+
+  if (!pageCacheAllowAuthenticatedPublicHtml && containsAuthenticationCookie(req)) {
     return false;
   }
 
@@ -299,17 +320,17 @@ function isPublicSsrCacheRoute(url: string): boolean {
 }
 
 function getCachedPage(cacheKey: string): PageCacheEntry | null {
-  const entry = pageCache.get(cacheKey);
-  if (!entry) {
-    return null;
-  }
+  const memoryEntry = pageCache.get(cacheKey);
 
-  if (entry.expiresAt <= Date.now()) {
+  if (memoryEntry) {
+    if (memoryEntry.expiresAt > Date.now()) {
+      return memoryEntry;
+    }
+
     pageCache.delete(cacheKey);
-    return null;
   }
 
-  return entry;
+  return getDiskCachedPage(cacheKey);
 }
 
 function setCachedPage(cacheKey: string, statusCode: number, html: string): void {
@@ -317,11 +338,14 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
     return;
   }
 
-  pageCache.set(cacheKey, {
+  const entry: PageCacheEntry = {
     statusCode,
     html,
     expiresAt: Date.now() + pageCacheTtlSeconds * 1000
-  });
+  };
+
+  pageCache.set(cacheKey, entry);
+  setDiskCachedPage(cacheKey, entry);
 
   while (pageCache.size > pageCacheMaxEntries) {
     const oldestKey = pageCache.keys().next().value as string | undefined;
@@ -331,6 +355,109 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
 
     pageCache.delete(oldestKey);
   }
+}
+
+function setPageCacheResponseHeaders(res: Response, cacheStatus: 'HIT' | 'MISS' | 'WARMED'): void {
+  res.setHeader('X-AmusementPark-SSR-Cache', cacheStatus);
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=600');
+}
+
+function getDiskCachedPage(cacheKey: string): PageCacheEntry | null {
+  if (!diskPageCacheEnabled || pageCacheTtlSeconds <= 0 || diskPageCacheMaxBytes <= 0) {
+    return null;
+  }
+
+  const cacheFilePath = getDiskPageCacheFilePath(cacheKey);
+
+  try {
+    if (!existsSync(cacheFilePath)) {
+      return null;
+    }
+
+    const serializedEntry: string = readFileSync(cacheFilePath, 'utf8');
+    const parsedEntry = JSON.parse(serializedEntry) as PageCacheEntry;
+
+    if (parsedEntry.expiresAt <= Date.now() || typeof parsedEntry.html !== 'string') {
+      unlinkSync(cacheFilePath);
+      return null;
+    }
+
+    pageCache.set(cacheKey, parsedEntry);
+    return parsedEntry;
+  } catch (error: unknown) {
+    console.warn(`SSR disk cache read failed for ${cacheFilePath}`, error);
+    return null;
+  }
+}
+
+function setDiskCachedPage(cacheKey: string, entry: PageCacheEntry): void {
+  if (!diskPageCacheEnabled || diskPageCacheMaxBytes <= 0) {
+    return;
+  }
+
+  try {
+    mkdirSync(diskPageCacheDirectory, { recursive: true });
+    writeFileSync(getDiskPageCacheFilePath(cacheKey), JSON.stringify(entry), 'utf8');
+    enforceDiskPageCacheBudget();
+  } catch (error: unknown) {
+    console.warn('SSR disk cache write failed', error);
+  }
+}
+
+function getDiskPageCacheFilePath(cacheKey: string): string {
+  const hash: string = createHash('sha256').update(cacheKey).digest('hex');
+  return join(diskPageCacheDirectory, `${hash}.json`);
+}
+
+function enforceDiskPageCacheBudget(): void {
+  if (!diskPageCacheEnabled || diskPageCacheMaxBytes <= 0 || !existsSync(diskPageCacheDirectory)) {
+    return;
+  }
+
+  const files = readdirSync(diskPageCacheDirectory)
+    .filter((fileName: string) => fileName.endsWith('.json'))
+    .map((fileName: string) => {
+      const filePath: string = join(diskPageCacheDirectory, fileName);
+      const stats = statSync(filePath);
+      return { filePath, size: stats.size, mtimeMs: stats.mtimeMs };
+    })
+    .sort((left, right) => left.mtimeMs - right.mtimeMs);
+
+  let totalBytes: number = files.reduce((sum: number, file) => sum + file.size, 0);
+
+  for (const file of files) {
+    if (totalBytes <= diskPageCacheMaxBytes) {
+      break;
+    }
+
+    try {
+      unlinkSync(file.filePath);
+      totalBytes -= file.size;
+    } catch {
+      // Best effort cleanup only.
+    }
+  }
+}
+
+function containsAuthenticationCookie(req: Request): boolean {
+  const cookieHeader = req.headers.cookie;
+
+  if (!cookieHeader) {
+    return false;
+  }
+
+  const headerValue: string = Array.isArray(cookieHeader) ? cookieHeader.join(';') : cookieHeader;
+  return /(?:^|;\s*)(amusementpark\.refresh|amusementpark\.auth|\.AspNetCore\.|access_token|refresh_token)=/i.test(headerValue);
+}
+
+function isSsrWarmupRequest(req: Request): boolean {
+  const headerValue = req.headers['x-amusementpark-ssr-warmup'];
+
+  if (Array.isArray(headerValue)) {
+    return headerValue.some((value: string) => value === '1');
+  }
+
+  return headerValue === '1';
 }
 
 function redirectHttpToHttps(req: Request, res: Response, next: NextFunction): void {
