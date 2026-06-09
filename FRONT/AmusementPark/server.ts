@@ -18,9 +18,11 @@ const cspEnabled = (process.env['SSR_CSP_ENABLED'] ?? 'true').toLowerCase() !== 
 const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?? 'localhost;127.0.0.1;amusement.localhost;front');
 const forceHttps = (process.env['SSR_FORCE_HTTPS'] ?? 'false').toLowerCase() === 'true';
 const ssrRenderEnabled = (process.env['SSR_RENDER_ENABLED'] ?? 'true').toLowerCase() !== 'false';
+const renderOnCacheMiss = (process.env['SSR_RENDER_ON_CACHE_MISS'] ?? 'false').toLowerCase() === 'true';
+const renderCriticalRoutesOnCacheMiss = (process.env['SSR_RENDER_CRITICAL_ROUTES_ON_CACHE_MISS'] ?? 'true').toLowerCase() !== 'false';
 const allowLocalCspSources = (process.env['SSR_CSP_ALLOW_LOCAL_DEV_SOURCES'] ?? 'false').toLowerCase() === 'true';
-const pageCacheTtlSeconds = Math.max(0, Number(process.env['SSR_PAGE_CACHE_SECONDS'] ?? 900));
-const pageCacheMaxEntries = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'] ?? 1000));
+const pageCacheTtlSeconds = Math.max(0, Number(process.env['SSR_PAGE_CACHE_SECONDS'] ?? 86400));
+const pageCacheMaxEntries = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'] ?? 2000));
 const pageCache = new Map<string, PageCacheEntry>();
 const pageCacheAllowAuthenticatedPublicHtml = (process.env['SSR_PUBLIC_PAGE_CACHE_ALLOW_AUTH_COOKIES'] ?? 'true').toLowerCase() !== 'false';
 const diskPageCacheEnabled = (process.env['SSR_DISK_PAGE_CACHE_ENABLED'] ?? 'true').toLowerCase() !== 'false';
@@ -31,11 +33,17 @@ const seoDocumentCacheMaxEntries = Math.max(0, Number(process.env['SSR_SEO_DOCUM
 const seoDocumentCache = new Map<string, SeoDocumentCacheEntry>();
 const pendingSeoDocumentCacheRequests = new Map<string, Array<SeoDocumentCacheCallback>>();
 const internalSsrHeaderName = 'X-AmusementPark-Internal-SSR';
-const renderMaxConcurrency = Math.max(1, Number(process.env['SSR_RENDER_MAX_CONCURRENCY'] ?? 2));
-const renderQueueMaxEntries = Math.max(0, Number(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'] ?? 20));
+const renderMaxConcurrency = Math.max(1, Number(process.env['SSR_RENDER_MAX_CONCURRENCY'] ?? 1));
+const renderQueueMaxEntries = Math.max(0, Number(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'] ?? 0));
 const slowRenderThresholdMilliseconds = Math.max(0, Number(process.env['SSR_SLOW_RENDER_THRESHOLD_MILLISECONDS'] ?? 3000));
-const renderQueueWarningThreshold = Math.max(1, Number(process.env['SSR_RENDER_QUEUE_WARNING_THRESHOLD'] ?? Math.max(1, Math.floor(renderQueueMaxEntries * 0.75))));
+const renderQueueWarningThreshold = Math.max(1, Number(process.env['SSR_RENDER_QUEUE_WARNING_THRESHOLD'] ?? Math.max(1, Math.floor(Math.max(1, renderQueueMaxEntries) * 0.75))));
+const assetMissLogSampleRate = Math.max(0, Number(process.env['SSR_ASSET_MISS_LOG_SAMPLE_RATE'] ?? 25));
+const csrFallbackLogSampleRate = Math.max(0, Number(process.env['SSR_CSR_FALLBACK_LOG_SAMPLE_RATE'] ?? 100));
+const csrFallbackCacheControl = process.env['SSR_CSR_FALLBACK_CACHE_CONTROL'] ?? 'public, max-age=60, stale-while-revalidate=300';
 let activeRenderCount = 0;
+let assetMissCount = 0;
+let csrFallbackCount = 0;
+let cachedCsrShellHtml: string | null = null;
 const pendingRenderQueue: Array<() => void> = [];
 
 interface PageCacheEntry {
@@ -60,12 +68,12 @@ class SsrRenderQueueFullError extends Error {
   }
 }
 
-// The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
-  const browserDistFolder = resolve(serverDistFolder, '../browser');
-  const indexHtml = join(serverDistFolder, 'index.server.html');
+  const browserDistFolder = resolveBrowserDistFolder(serverDistFolder);
+  const indexHtml = resolveIndexServerHtml(serverDistFolder, browserDistFolder);
+  const csrIndexHtml = resolveCsrIndexHtml(serverDistFolder, browserDistFolder);
 
   const commonEngine = new CommonEngine({ allowedHosts: ssrAllowedHosts });
 
@@ -120,19 +128,24 @@ export function app(): express.Express {
     proxyToApi(req, res, next, apiPath);
   });
 
-  server.get('*.*', express.static(browserDistFolder, {
+  server.use(express.static(browserDistFolder, {
     immutable: true,
     index: false,
     maxAge: '1y'
   }));
 
   server.get('*', (req: Request, res: Response, next: NextFunction) => {
-    if (!ssrRenderEnabled) {
-      serveCsrFallbackPage(req, res, browserDistFolder);
+    if (isAssetLikeRequest(req.originalUrl)) {
+      logSampledAssetMiss(req.originalUrl);
+      res.status(404).type('text/plain').send('Not found');
       return;
     }
 
-    const publicUrl = getPublicRequestUrl(req);
+    if (!acceptsHtml(req)) {
+      res.status(406).type('text/plain').send('Not acceptable');
+      return;
+    }
+
     const cacheKey = buildPageCacheKey(req);
     const warmupRequest = isSsrWarmupRequest(req);
     const cachedEntry = cacheKey === null || warmupRequest ? null : getCachedPage(cacheKey);
@@ -144,10 +157,16 @@ export function app(): express.Express {
       return;
     }
 
+    if (!ssrRenderEnabled || !shouldRenderCacheMiss(req, warmupRequest)) {
+      serveCsrFallbackPage(req, res, csrIndexHtml, warmupRequest ? 'CSR-WARMUP-SKIPPED' : 'CSR-CACHE-MISS-FALLBACK');
+      return;
+    }
+
     if (isExplicitNotFoundRoute(req.originalUrl)) {
       res.status(404);
     }
 
+    const publicUrl = getPublicRequestUrl(req);
     scheduleSsrRender(() => commonEngine.render({
       bootstrap: AppServerModule,
       documentFilePath: indexHtml,
@@ -168,8 +187,8 @@ export function app(): express.Express {
       })
       .catch((err: unknown) => {
         if (err instanceof SsrRenderQueueFullError) {
-          console.warn(`SSR overload fallback to CSR: url=${req.originalUrl}`);
-          serveCsrOverloadFallbackPage(req, res, browserDistFolder);
+          console.warn(`SSR overload fallback to CSR: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${req.originalUrl}`);
+          serveCsrFallbackPage(req, res, csrIndexHtml, 'CSR-OVERLOAD-FALLBACK');
           return;
         }
 
@@ -192,6 +211,8 @@ function run(): void {
     console.log(`SSR public page cache ignores analytics cookies: ${pageCacheAllowAuthenticatedPublicHtml}`);
     console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
     console.log(`SSR render enabled: ${ssrRenderEnabled}`);
+    console.log(`SSR render on cache miss: ${renderOnCacheMiss}`);
+    console.log(`SSR render critical routes on cache miss: ${renderCriticalRoutesOnCacheMiss}`);
     console.log(`SSR render concurrency: ${renderMaxConcurrency} active / ${renderQueueMaxEntries} queued`);
     console.log(`SSR slow render threshold: ${slowRenderThresholdMilliseconds}ms`);
   });
@@ -248,25 +269,103 @@ function runNextQueuedSsrRender(): void {
   nextRender();
 }
 
-
-function serveCsrFallbackPage(req: Request, res: Response, browserDistFolder: string): void {
-  if (isExplicitNotFoundRoute(req.originalUrl)) {
-    res.status(404);
+function shouldRenderCacheMiss(req: Request, warmupRequest: boolean): boolean {
+  if (!isCacheablePageRequest(req)) {
+    return false;
   }
 
-  res.setHeader('X-AmusementPark-SSR-Mode', 'CSR-FALLBACK');
-  res.setHeader('Cache-Control', 'no-store');
-  res.sendFile(join(browserDistFolder, 'index.html'));
+  if (warmupRequest) {
+    return true;
+  }
+
+  if (renderOnCacheMiss) {
+    return true;
+  }
+
+  return renderCriticalRoutesOnCacheMiss && isCriticalPublicSsrRoute(req.originalUrl);
 }
 
-function serveCsrOverloadFallbackPage(req: Request, res: Response, browserDistFolder: string): void {
+function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: string | null, mode: string): void {
   if (isExplicitNotFoundRoute(req.originalUrl)) {
     res.status(404);
   }
 
-  res.setHeader('X-AmusementPark-SSR-Mode', 'CSR-OVERLOAD-FALLBACK');
-  res.setHeader('Cache-Control', 'no-store');
-  res.sendFile(join(browserDistFolder, 'index.html'));
+  csrFallbackCount += 1;
+  if (csrFallbackLogSampleRate > 0 && csrFallbackCount % csrFallbackLogSampleRate === 0) {
+    console.warn(`SSR CSR fallback sample: count=${csrFallbackCount}, mode=${mode}, url=${req.originalUrl}`);
+  }
+
+  res.setHeader('X-AmusementPark-SSR-Mode', mode);
+  res.setHeader('Cache-Control', csrFallbackCacheControl);
+  res.type('html').send(readCsrShellHtml(csrIndexHtmlPath));
+}
+
+function readCsrShellHtml(csrIndexHtmlPath: string | null): string {
+  if (cachedCsrShellHtml !== null) {
+    return cachedCsrShellHtml;
+  }
+
+  if (csrIndexHtmlPath !== null && existsSync(csrIndexHtmlPath)) {
+    cachedCsrShellHtml = readFileSync(csrIndexHtmlPath, 'utf8');
+    return cachedCsrShellHtml;
+  }
+
+  cachedCsrShellHtml = '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Amusement Park</title><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><app-root></app-root><script>location.reload()</script></body></html>';
+  console.error('CSR shell index.html was not found. Served emergency minimal shell.');
+  return cachedCsrShellHtml;
+}
+
+function resolveBrowserDistFolder(serverDistFolder: string): string {
+  return resolveFirstExistingDirectory([
+    process.env['SSR_BROWSER_DIST_FOLDER'] ?? '',
+    resolve(serverDistFolder, '../browser'),
+    resolve(serverDistFolder, '..'),
+    resolve(process.cwd(), 'dist/amusement-park/browser'),
+    resolve(process.cwd(), 'dist/amusement-park')
+  ], 'browser dist folder');
+}
+
+function resolveIndexServerHtml(serverDistFolder: string, browserDistFolder: string): string {
+  return resolveFirstExistingFile([
+    process.env['SSR_INDEX_SERVER_HTML'] ?? '',
+    join(serverDistFolder, 'index.server.html'),
+    join(browserDistFolder, 'index.server.html'),
+    join(browserDistFolder, 'index.html')
+  ], 'SSR index document') ?? join(serverDistFolder, 'index.server.html');
+}
+
+function resolveCsrIndexHtml(serverDistFolder: string, browserDistFolder: string): string | null {
+  return resolveFirstExistingFile([
+    process.env['SSR_CSR_INDEX_HTML'] ?? '',
+    join(browserDistFolder, 'index.html'),
+    join(browserDistFolder, 'index.csr.html'),
+    join(browserDistFolder, 'index.original.html'),
+    join(serverDistFolder, '../browser/index.html'),
+    join(serverDistFolder, '../index.html')
+  ], 'CSR index document');
+}
+
+function resolveFirstExistingDirectory(candidates: string[], label: string): string {
+  const existingPath: string | undefined = candidates.find((candidate: string): boolean => candidate.length > 0 && existsSync(candidate) && statSync(candidate).isDirectory());
+  if (existingPath) {
+    console.log(`Resolved ${label}: ${existingPath}`);
+    return existingPath;
+  }
+
+  const fallbackPath: string = candidates.find((candidate: string): boolean => candidate.length > 0) ?? process.cwd();
+  console.error(`Unable to resolve ${label}. Falling back to ${fallbackPath}. Candidates: ${candidates.filter((candidate: string): boolean => candidate.length > 0).join('; ')}`);
+  return fallbackPath;
+}
+
+function resolveFirstExistingFile(candidates: string[], label: string): string | null {
+  const existingPath: string | undefined = candidates.find((candidate: string): boolean => candidate.length > 0 && existsSync(candidate) && statSync(candidate).isFile());
+  if (existingPath) {
+    console.log(`Resolved ${label}: ${existingPath}`);
+    return existingPath;
+  }
+
+  console.error(`Unable to resolve ${label}. Candidates: ${candidates.filter((candidate: string): boolean => candidate.length > 0).join('; ')}`);
+  return null;
 }
 
 function buildPageCacheKey(req: Request): string | null {
@@ -300,23 +399,53 @@ function isCacheablePageRequest(req: Request): boolean {
     return false;
   }
 
+  return acceptsHtml(req);
+}
+
+function acceptsHtml(req: Request): boolean {
   const acceptHeader = req.headers.accept ?? '';
   if (Array.isArray(acceptHeader)) {
-    return acceptHeader.some((value: string) => value.includes('text/html'));
+    return acceptHeader.some((value: string) => value.includes('text/html') || value.includes('*/*'));
   }
 
   return acceptHeader.length === 0 || acceptHeader.includes('text/html') || acceptHeader.includes('*/*');
 }
 
 function isPublicSsrCacheRoute(url: string): boolean {
-  const path = url.split(/[?#]/, 1)[0] ?? '';
+  const path = getPathOnly(url);
 
   return /^\/?$/i.test(path)
     || /^\/[a-z]{2}\/?$/i.test(path)
+    || /^\/[a-z]{2}\/home\/?$/i.test(path)
     || /^\/[a-z]{2}\/parks\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/items)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path);
+}
+
+function isCriticalPublicSsrRoute(url: string): boolean {
+  const path = getPathOnly(url);
+
+  return /^\/?$/i.test(path)
+    || /^\/[a-z]{2}\/?$/i.test(path)
+    || /^\/[a-z]{2}\/home\/?$/i.test(path)
+    || /^\/[a-z]{2}\/parks\/?$/i.test(path);
+}
+
+function isAssetLikeRequest(url: string): boolean {
+  const path = getPathOnly(url);
+  return /\.[a-z0-9][a-z0-9_-]*(?:\.[a-z0-9][a-z0-9_-]*)?$/i.test(path);
+}
+
+function getPathOnly(url: string): string {
+  return url.split(/[?#]/, 1)[0] ?? '';
+}
+
+function logSampledAssetMiss(url: string): void {
+  assetMissCount += 1;
+  if (assetMissLogSampleRate > 0 && assetMissCount % assetMissLogSampleRate === 0) {
+    console.warn(`Static asset miss bypassed SSR: count=${assetMissCount}, url=${url}`);
+  }
 }
 
 function getCachedPage(cacheKey: string): PageCacheEntry | null {
@@ -530,7 +659,6 @@ function joinCspDirective(name: string, sources: string[]): string {
   return `${name} ${uniqueSources.join(' ')}`;
 }
 
-
 function proxySeoDocumentToApi(req: Request, res: Response, next: NextFunction, targetPath: string): void {
   if (!isSeoDocumentCacheEnabled() || !isSeoDocumentCacheableMethod(req.method)) {
     proxyToApi(req, res, next, targetPath);
@@ -598,7 +726,6 @@ function setCachedSeoDocument(cacheKey: string, entry: SeoDocumentCacheEntry): v
     seoDocumentCache.delete(oldestKey);
   }
 }
-
 
 function getOrFetchSeoDocument(req: Request, targetPath: string, cacheKey: string, callback: SeoDocumentCacheCallback): void {
   const pendingCallbacks = pendingSeoDocumentCacheRequests.get(cacheKey);
@@ -672,10 +799,6 @@ function buildCachedSeoDocumentHeaders(headers: http.IncomingHttpHeaders, bodyLe
       return;
     }
 
-    // Exclure le cache-control de l'API : on impose le nôtre ci-dessous pour
-    // garantir une valeur cohérente indépendante de ce que retourne le OutputCache ASP.NET.
-    // Exclure également le header Vary émis par OutputCache (Host, X-Forwarded-*)
-    // qui peut perturber certains crawlers ou CDN intermédiaires.
     const normalizedName = name.toLowerCase();
     if (normalizedName === 'cache-control' || normalizedName === 'vary') {
       return;
@@ -751,7 +874,6 @@ function proxyToApi(req: Request, res: Response, next: NextFunction, targetPath:
   req.pipe(proxyRequest);
 }
 
-
 function buildApiProxyHeaders(req: Request, targetUrl: URL): http.OutgoingHttpHeaders {
   const publicProtocol = getForwardedValue(req, 'x-forwarded-proto') ?? req.protocol;
   const publicHost = getForwardedValue(req, 'x-forwarded-host') ?? req.headers.host ?? targetUrl.host;
@@ -771,19 +893,6 @@ function buildApiProxyHeaders(req: Request, targetUrl: URL): http.OutgoingHttpHe
   return headers;
 }
 
-/**
- * Construit les headers minimalistes pour le fetch interne d'un document SEO vers l'API.
- *
- * Contrairement à buildApiProxyHeaders qui transmet les headers de la requête entrante,
- * cette fonction produit un jeu de headers propre et déterministe :
- * - Pas de Cookie ni Authorization (garantit que le OutputCache API met en cache la réponse).
- * - Pas d'User-Agent du crawler entrant (évite toute logique basée sur l'UA côté API).
- * - Pas d'Accept-Encoding (le corps doit rester non compressé pour être mis en cache en mémoire).
- * - Accept: application/xml, text/plain pour guider la négociation de contenu.
- *
- * Les headers de forwarding (Host, X-Forwarded-*) sont conservés pour que l'API
- * construise correctement les URLs publiques (sitemap index, robots Sitemap:).
- */
 function buildSeoDocumentFetchHeaders(req: Request, targetUrl: URL): http.OutgoingHttpHeaders {
   const publicProtocol = getForwardedValue(req, 'x-forwarded-proto') ?? req.protocol;
   const publicHost = getForwardedValue(req, 'x-forwarded-host') ?? req.headers.host ?? targetUrl.host;

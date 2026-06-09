@@ -12,6 +12,8 @@
       "actions": {
         "generate": "Regenerate",
         "generateWithoutIndexNow": "Generate without IndexNow",
+        "generateSeoSsr": "Regenerate SEO/SSR",
+        "generateSeoSsrWithoutIndexNow": "Regenerate SEO/SSR without IndexNow",
         "openSitemap": "Open"
       },
       "stats": {
@@ -22,6 +24,12 @@
       },
       "lastResult": {
         "title": "Last result"
+      },
+      "prerender": {
+        "title": "SSR cache warmup",
+        "success": "success",
+        "failed": "failed",
+        "missingSitemap": "Unable to warm the SSR cache: sitemap index not found."
       },
       "publicFiles": {
         "title": "Public files",
