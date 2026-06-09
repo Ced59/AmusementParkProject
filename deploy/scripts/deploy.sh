@@ -138,6 +138,29 @@ curl_with_retry \
   "Checking robots.txt through SSR public proxy..." \
   "http://127.0.0.1:${public_http_port}/robots.txt"
 
+
+if [ "${SSR_WARMUP_AFTER_DEPLOY:-false}" = "true" ]; then
+  mkdir -p ./warmup
+
+  if [ "${SSR_WARMUP_BACKGROUND:-true}" = "true" ]; then
+    warmup_log="./warmup/ssr-warmup-deploy-$(date -u +%Y%m%dT%H%M%SZ).log"
+    echo "Starting optional SSR cache warmup in background. Log: ${warmup_log}"
+    nohup ./scripts/warmup-ssr-cache.sh > "${warmup_log}" 2>&1 &
+  else
+    echo "Running optional SSR cache warmup in foreground..."
+    if ! ./scripts/warmup-ssr-cache.sh; then
+      if [ "${SSR_WARMUP_REQUIRED:-false}" = "true" ]; then
+        echo "SSR cache warmup failed and SSR_WARMUP_REQUIRED=true." >&2
+        exit 1
+      fi
+
+      echo "SSR cache warmup failed, but deployment continues because SSR_WARMUP_REQUIRED is not true." >&2
+    fi
+  fi
+else
+  echo "Optional SSR cache warmup after deploy is disabled. Set SSR_WARMUP_AFTER_DEPLOY=true to enable it."
+fi
+
 echo "Pruning old Docker images older than 7 days..."
 docker image prune -af --filter "until=168h" >/dev/null || true
 
