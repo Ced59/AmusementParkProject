@@ -61,22 +61,22 @@ public sealed class PublicHttpCacheHeadersMiddleware
 
     private static bool CanRegisterCacheHeaders(HttpContext context)
     {
-        if (!HttpMethods.IsGet(context.Request.Method) && !HttpMethods.IsHead(context.Request.Method))
-        {
-            return false;
-        }
-
-        if (context.Request.Headers.ContainsKey(HeaderNames.Authorization))
-        {
-            return false;
-        }
-
-        return context.User?.Identity?.IsAuthenticated != true;
+        return HttpMethods.IsGet(context.Request.Method) || HttpMethods.IsHead(context.Request.Method);
     }
 
     private static void ApplyCacheHeaders(HttpContext context)
     {
         if (context.Response.StatusCode != StatusCodes.Status200OK)
+        {
+            return;
+        }
+
+        if (context.Request.Headers.ContainsKey(HeaderNames.Authorization))
+        {
+            return;
+        }
+
+        if (context.User?.Identity?.IsAuthenticated == true)
         {
             return;
         }
