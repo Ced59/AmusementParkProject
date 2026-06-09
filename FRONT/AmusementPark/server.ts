@@ -23,6 +23,11 @@ const seoDocumentCacheTtlSeconds = Math.max(0, Number(process.env['SSR_SEO_DOCUM
 const seoDocumentCacheMaxEntries = Math.max(0, Number(process.env['SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES'] ?? 128));
 const seoDocumentCache = new Map<string, SeoDocumentCacheEntry>();
 const pendingSeoDocumentCacheRequests = new Map<string, Array<SeoDocumentCacheCallback>>();
+const internalSsrHeaderName = 'X-AmusementPark-Internal-SSR';
+const renderMaxConcurrency = Math.max(1, Number(process.env['SSR_RENDER_MAX_CONCURRENCY'] ?? 2));
+const renderQueueMaxEntries = Math.max(0, Number(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'] ?? 20));
+let activeRenderCount = 0;
+const pendingRenderQueue: Array<() => void> = [];
 
 interface PageCacheEntry {
   readonly statusCode: number;
@@ -38,6 +43,13 @@ interface SeoDocumentCacheEntry {
 }
 
 type SeoDocumentCacheCallback = (error: Error | null, entry: SeoDocumentCacheEntry | null) => void;
+
+class SsrRenderQueueFullError extends Error {
+  constructor() {
+    super('SSR render queue is full.');
+    this.name = 'SsrRenderQueueFullError';
+  }
+}
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -119,17 +131,16 @@ export function app(): express.Express {
       res.status(404);
     }
 
-    commonEngine
-      .render({
-        bootstrap: AppServerModule,
-        documentFilePath: indexHtml,
-        url: publicUrl,
-        publicPath: browserDistFolder,
-        providers: [
-          { provide: APP_BASE_HREF, useValue: req.baseUrl },
-          { provide: SSR_RESPONSE, useValue: res }
-        ],
-      })
+    scheduleSsrRender(() => commonEngine.render({
+      bootstrap: AppServerModule,
+      documentFilePath: indexHtml,
+      url: publicUrl,
+      publicPath: browserDistFolder,
+      providers: [
+        { provide: APP_BASE_HREF, useValue: req.baseUrl },
+        { provide: SSR_RESPONSE, useValue: res }
+      ],
+    }))
       .then((html: string) => {
         if (cacheKey !== null && res.statusCode >= 200 && res.statusCode < 300) {
           setCachedPage(cacheKey, res.statusCode, html);
@@ -138,7 +149,15 @@ export function app(): express.Express {
 
         res.send(html);
       })
-      .catch((err: unknown) => next(err));
+      .catch((err: unknown) => {
+        if (err instanceof SsrRenderQueueFullError) {
+          res.setHeader('Retry-After', '10');
+          res.status(503).type('text/plain').send('SSR temporarily overloaded. Please retry later.');
+          return;
+        }
+
+        next(err);
+      });
   });
 
   return server;
@@ -153,7 +172,47 @@ function run(): void {
     console.log(`SSR API internal origin: ${apiInternalOrigin}`);
     console.log(`SSR public page cache: ${pageCacheTtlSeconds}s / ${pageCacheMaxEntries} entries`);
     console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
+    console.log(`SSR render concurrency: ${renderMaxConcurrency} active / ${renderQueueMaxEntries} queued`);
   });
+}
+
+function scheduleSsrRender(render: () => Promise<string>): Promise<string> {
+  if (activeRenderCount < renderMaxConcurrency) {
+    return runScheduledSsrRender(render);
+  }
+
+  if (pendingRenderQueue.length >= renderQueueMaxEntries) {
+    return Promise.reject(new SsrRenderQueueFullError());
+  }
+
+  return new Promise<string>((resolve: (value: string) => void, reject: (reason?: unknown) => void): void => {
+    pendingRenderQueue.push((): void => {
+      runScheduledSsrRender(render).then(resolve).catch(reject);
+    });
+  });
+}
+
+function runScheduledSsrRender(render: () => Promise<string>): Promise<string> {
+  activeRenderCount += 1;
+
+  return render().finally((): void => {
+    activeRenderCount = Math.max(0, activeRenderCount - 1);
+    runNextQueuedSsrRender();
+  });
+}
+
+function runNextQueuedSsrRender(): void {
+  if (activeRenderCount >= renderMaxConcurrency) {
+    return;
+  }
+
+  const nextRender: (() => void) | undefined = pendingRenderQueue.shift();
+
+  if (nextRender === undefined) {
+    return;
+  }
+
+  nextRender();
 }
 
 function buildPageCacheKey(req: Request): string | null {
@@ -534,6 +593,8 @@ function buildApiProxyHeaders(req: Request, targetUrl: URL): http.OutgoingHttpHe
   const publicHost = getForwardedValue(req, 'x-forwarded-host') ?? req.headers.host ?? targetUrl.host;
   const headers: http.OutgoingHttpHeaders = { ...req.headers };
   delete headers['host'];
+  delete headers[internalSsrHeaderName];
+  delete headers[internalSsrHeaderName.toLowerCase()];
   headers['host'] = publicHost;
   headers['x-forwarded-host'] = publicHost;
   headers['x-forwarded-proto'] = publicProtocol;
@@ -571,6 +632,7 @@ function buildSeoDocumentFetchHeaders(req: Request, targetUrl: URL): http.Outgoi
     'accept': 'application/xml, text/plain, */*',
     'accept-language': 'en',
     'user-agent': 'AmusementPark-SSR-SeoCache/1.0',
+    [internalSsrHeaderName]: '1',
   };
 
   return headers;

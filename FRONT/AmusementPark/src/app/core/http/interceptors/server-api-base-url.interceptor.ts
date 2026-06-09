@@ -14,6 +14,7 @@ import { environment } from '../../../../environments/environment';
  */
 @Injectable()
 export class ServerApiBaseUrlInterceptor implements HttpInterceptor {
+  private static readonly InternalSsrHeaderName: string = 'X-AmusementPark-Internal-SSR';
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const rewrittenUrl: string = this.rewriteApiUrl(request.url);
 
@@ -21,7 +22,10 @@ export class ServerApiBaseUrlInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
 
-    return next.handle(request.clone({ url: rewrittenUrl }));
+    return next.handle(request.clone({
+      url: rewrittenUrl,
+      headers: request.headers.set(ServerApiBaseUrlInterceptor.InternalSsrHeaderName, '1')
+    }));
   }
 
   private rewriteApiUrl(url: string): string {
