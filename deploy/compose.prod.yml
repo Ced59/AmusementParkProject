@@ -37,8 +37,10 @@ services:
       SSR_SLOW_RENDER_THRESHOLD_MILLISECONDS: ${SSR_SLOW_RENDER_THRESHOLD_MILLISECONDS:-3000}
       SSR_PUBLIC_PAGE_CACHE_ALLOW_AUTH_COOKIES: ${SSR_PUBLIC_PAGE_CACHE_ALLOW_AUTH_COOKIES:-true}
       SSR_DISK_PAGE_CACHE_ENABLED: ${SSR_DISK_PAGE_CACHE_ENABLED:-true}
-      SSR_DISK_PAGE_CACHE_DIR: ${SSR_DISK_PAGE_CACHE_DIR:-/tmp/amusementpark-ssr-page-cache}
-      SSR_DISK_PAGE_CACHE_MAX_BYTES: ${SSR_DISK_PAGE_CACHE_MAX_BYTES:-268435456}
+      SSR_DISK_PAGE_CACHE_DIR: ${SSR_DISK_PAGE_CACHE_DIR:-/var/cache/amusementpark-ssr}
+      SSR_DISK_PAGE_CACHE_MAX_BYTES: ${SSR_DISK_PAGE_CACHE_MAX_BYTES:-4294967296}
+      SSR_DISK_PAGE_CACHE_BUDGET_CHECK_EVERY_WRITES: ${SSR_DISK_PAGE_CACHE_BUDGET_CHECK_EVERY_WRITES:-100}
+      SSR_PAGE_CACHE_MAX_HTML_BYTES: ${SSR_PAGE_CACHE_MAX_HTML_BYTES:-2097152}
       SSR_ASSET_MISS_LOG_SAMPLE_RATE: ${SSR_ASSET_MISS_LOG_SAMPLE_RATE:-25}
       SSR_CSR_FALLBACK_LOG_SAMPLE_RATE: ${SSR_CSR_FALLBACK_LOG_SAMPLE_RATE:-100}
       SSR_CSR_FALLBACK_CACHE_CONTROL: ${SSR_CSR_FALLBACK_CACHE_CONTROL:-public, max-age=60, stale-while-revalidate=300}
@@ -57,6 +59,8 @@ services:
     security_opt:
       - no-new-privileges:true
     read_only: true
+    volumes:
+      - ssr_page_cache:/var/cache/amusementpark-ssr
     tmpfs:
       - /tmp
 
@@ -227,3 +231,4 @@ networks:
 volumes:
   mongodb_data:
   minio_data:
+  ssr_page_cache:

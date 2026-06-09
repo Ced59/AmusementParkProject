@@ -27,7 +27,9 @@ const pageCache = new Map<string, PageCacheEntry>();
 const pageCacheAllowAuthenticatedPublicHtml = (process.env['SSR_PUBLIC_PAGE_CACHE_ALLOW_AUTH_COOKIES'] ?? 'true').toLowerCase() !== 'false';
 const diskPageCacheEnabled = (process.env['SSR_DISK_PAGE_CACHE_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const diskPageCacheDirectory = process.env['SSR_DISK_PAGE_CACHE_DIR'] ?? '/tmp/amusementpark-ssr-page-cache';
-const diskPageCacheMaxBytes = Math.max(0, Number(process.env['SSR_DISK_PAGE_CACHE_MAX_BYTES'] ?? 256 * 1024 * 1024));
+const diskPageCacheMaxBytes = Math.max(0, Number(process.env['SSR_DISK_PAGE_CACHE_MAX_BYTES'] ?? 4 * 1024 * 1024 * 1024));
+const diskPageCacheBudgetCheckEveryWrites = Math.max(1, Number(process.env['SSR_DISK_PAGE_CACHE_BUDGET_CHECK_EVERY_WRITES'] ?? 100));
+const pageCacheMaxHtmlBytes = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_HTML_BYTES'] ?? 2 * 1024 * 1024));
 const seoDocumentCacheTtlSeconds = Math.max(0, Number(process.env['SSR_SEO_DOCUMENT_CACHE_SECONDS'] ?? 3600));
 const seoDocumentCacheMaxEntries = Math.max(0, Number(process.env['SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES'] ?? 128));
 const seoDocumentCache = new Map<string, SeoDocumentCacheEntry>();
@@ -44,6 +46,7 @@ let activeRenderCount = 0;
 let assetMissCount = 0;
 let csrFallbackCount = 0;
 let cachedCsrShellHtml: string | null = null;
+let diskPageCacheWriteCount = 0;
 const pendingRenderQueue: Array<() => void> = [];
 
 interface PageCacheEntry {
@@ -148,11 +151,12 @@ export function app(): express.Express {
 
     const cacheKey = buildPageCacheKey(req);
     const warmupRequest = isSsrWarmupRequest(req);
-    const cachedEntry = cacheKey === null || warmupRequest ? null : getCachedPage(cacheKey);
+    const forceWarmupRefresh = warmupRequest && isSsrWarmupRefreshRequest(req);
+    const cachedEntry = cacheKey === null || forceWarmupRefresh ? null : getCachedPage(cacheKey);
 
     if (cachedEntry !== null) {
       res.status(cachedEntry.statusCode);
-      setPageCacheResponseHeaders(res, 'HIT');
+      setPageCacheResponseHeaders(res, warmupRequest ? 'WARMUP-HIT' : 'HIT');
       res.type('html').send(cachedEntry.html);
       return;
     }
@@ -208,6 +212,8 @@ function run(): void {
     console.log(`SSR API internal origin: ${apiInternalOrigin}`);
     console.log(`SSR public page cache: ${pageCacheTtlSeconds}s / ${pageCacheMaxEntries} entries`);
     console.log(`SSR disk page cache: ${diskPageCacheEnabled ? 'enabled' : 'disabled'} / ${diskPageCacheDirectory} / ${diskPageCacheMaxBytes} bytes`);
+    console.log(`SSR disk page cache budget check: every ${diskPageCacheBudgetCheckEveryWrites} writes`);
+    console.log(`SSR page cache max HTML bytes: ${pageCacheMaxHtmlBytes}`);
     console.log(`SSR public page cache ignores analytics cookies: ${pageCacheAllowAuthenticatedPublicHtml}`);
     console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
     console.log(`SSR render enabled: ${ssrRenderEnabled}`);
@@ -463,7 +469,9 @@ function getCachedPage(cacheKey: string): PageCacheEntry | null {
 }
 
 function setCachedPage(cacheKey: string, statusCode: number, html: string): void {
-  if (Buffer.byteLength(html, 'utf8') > 1024 * 1024) {
+  const htmlByteLength: number = Buffer.byteLength(html, 'utf8');
+  if (pageCacheMaxHtmlBytes > 0 && htmlByteLength > pageCacheMaxHtmlBytes) {
+    console.warn(`SSR page cache skipped: htmlSize=${htmlByteLength}, max=${pageCacheMaxHtmlBytes}, key=${cacheKey}`);
     return;
   }
 
@@ -486,7 +494,7 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
   }
 }
 
-function setPageCacheResponseHeaders(res: Response, cacheStatus: 'HIT' | 'MISS' | 'WARMED'): void {
+function setPageCacheResponseHeaders(res: Response, cacheStatus: 'HIT' | 'MISS' | 'WARMED' | 'WARMUP-HIT'): void {
   res.setHeader('X-AmusementPark-SSR-Cache', cacheStatus);
   res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=600');
 }
@@ -527,7 +535,10 @@ function setDiskCachedPage(cacheKey: string, entry: PageCacheEntry): void {
   try {
     mkdirSync(diskPageCacheDirectory, { recursive: true });
     writeFileSync(getDiskPageCacheFilePath(cacheKey), JSON.stringify(entry), 'utf8');
-    enforceDiskPageCacheBudget();
+    diskPageCacheWriteCount += 1;
+    if (diskPageCacheWriteCount % diskPageCacheBudgetCheckEveryWrites === 0) {
+      enforceDiskPageCacheBudget();
+    }
   } catch (error: unknown) {
     console.warn('SSR disk cache write failed', error);
   }
@@ -587,6 +598,16 @@ function isSsrWarmupRequest(req: Request): boolean {
   }
 
   return headerValue === '1';
+}
+
+function isSsrWarmupRefreshRequest(req: Request): boolean {
+  const headerValue = req.headers['x-amusementpark-ssr-warmup-refresh'];
+
+  if (Array.isArray(headerValue)) {
+    return headerValue.some((value: string) => value === '1' || value.toLowerCase() === 'true');
+  }
+
+  return headerValue === '1' || headerValue?.toLowerCase() === 'true';
 }
 
 function redirectHttpToHttps(req: Request, res: Response, next: NextFunction): void {
