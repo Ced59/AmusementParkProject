@@ -1,8 +1,5 @@
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Common.Results;
-using AmusementPark.Application.Features.ParkItems.Ports;
-using AmusementPark.Application.Features.ParkZones.Ports;
-using AmusementPark.Application.Features.ParkZones.Results;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Parks;
@@ -20,6 +17,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 /// </summary>
 public sealed class ParkRepository : IParkRepository
 {
+    private const int RandomVisibleFallbackHardLimit = 100;
+
     private readonly IMongoCollection<ParkDocument> collection;
 
     public ParkRepository(IMongoDatabase database, MongoDbSettings settings)
@@ -83,7 +82,6 @@ public sealed class ParkRepository : IParkRepository
         return await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
     }
 
-
     public async Task<IReadOnlyCollection<string>> GetVisibleParkIdsAsync(CancellationToken cancellationToken)
     {
         FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true);
@@ -92,11 +90,7 @@ public sealed class ParkRepository : IParkRepository
             .Project(document => document.Id)
             .ToListAsync(cancellationToken);
 
-        return parkIds
-            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
-            .Select(static parkId => parkId.Trim())
-            .Distinct(StringComparer.Ordinal)
-            .ToList();
+        return NormalizeParkIds(parkIds);
     }
 
     public Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken)
@@ -133,23 +127,14 @@ public sealed class ParkRepository : IParkRepository
             return Array.Empty<Park>();
         }
 
+        int safeLimit = Math.Min(limit, RandomVisibleFallbackHardLimit);
         FilterDefinition<ParkDocument> filter = this.BuildVisibleSelectionFilter(excludedParkIds);
-        long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+        List<ParkDocument> documents = await this.LoadRandomVisibleWindowAsync(filter, safeLimit, cancellationToken);
 
-        if (totalItems <= 0)
+        if (documents.Count == 0)
         {
-            return Array.Empty<Park>();
+            documents = await this.LoadRandomVisibleFallbackAsync(filter, safeLimit, cancellationToken);
         }
-
-        int effectiveLimit = checked((int)Math.Min(limit, totalItems));
-        int maxSkip = checked((int)Math.Max(0L, totalItems - effectiveLimit));
-        int skip = maxSkip == 0 ? 0 : Random.Shared.Next(0, maxSkip + 1);
-
-        List<ParkDocument> documents = await this.collection.Find(filter)
-            .SortBy(document => document.Id)
-            .Skip(skip)
-            .Limit(effectiveLimit)
-            .ToListAsync(cancellationToken);
 
         return documents.Select(document => document.ToDomain()).ToList();
     }
@@ -195,11 +180,7 @@ public sealed class ParkRepository : IParkRepository
 
     public async Task<int> CountDistinctCountryCodesForParkIdsAsync(IReadOnlyCollection<string> parkIds, CancellationToken cancellationToken)
     {
-        List<string> normalizedParkIds = parkIds
-            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
-            .Select(static parkId => parkId.Trim())
-            .Distinct(StringComparer.Ordinal)
-            .ToList();
+        List<string> normalizedParkIds = NormalizeParkIds(parkIds);
 
         if (normalizedParkIds.Count == 0)
         {
@@ -280,6 +261,7 @@ public sealed class ParkRepository : IParkRepository
         ParkDocument document = park.ToDocument();
         document.CreatedAt = DateTime.UtcNow;
         document.UpdatedAt = document.CreatedAt;
+        document.RandomSortKey = CreateRandomSortKey();
 
         await this.collection.InsertOneAsync(document, cancellationToken: cancellationToken);
         return document.ToDomain();
@@ -287,12 +269,28 @@ public sealed class ParkRepository : IParkRepository
 
     public async Task<Park?> UpdateAsync(string parkId, Park park, CancellationToken cancellationToken)
     {
+        ParkDocument? existing = await this.collection.Find(document => document.Id == parkId)
+            .Project(static document => new ParkDocument
+            {
+                Id = document.Id,
+                CreatedAt = document.CreatedAt,
+                RandomSortKey = document.RandomSortKey,
+            })
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (existing is null)
+        {
+            return null;
+        }
+
         ParkDocument document = park.ToDocument();
         document.Id = parkId;
+        document.CreatedAt = existing.CreatedAt;
         document.UpdatedAt = DateTime.UtcNow;
+        document.RandomSortKey = existing.RandomSortKey ?? CreateRandomSortKey();
 
         ReplaceOneResult result = await this.collection.ReplaceOneAsync(
-            existing => existing.Id == parkId,
+            current => current.Id == parkId,
             document,
             cancellationToken: cancellationToken);
 
@@ -384,6 +382,70 @@ public sealed class ParkRepository : IParkRepository
             CreatedAt = document.CreatedAt,
             UpdatedAt = document.UpdatedAt,
         });
+    }
+
+    private async Task<List<ParkDocument>> LoadRandomVisibleWindowAsync(
+        FilterDefinition<ParkDocument> baseFilter,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        double seed = CreateRandomSortKey();
+        FilterDefinition<ParkDocument> randomKeyExistsFilter = Builders<ParkDocument>.Filter.Ne(document => document.RandomSortKey, null);
+        FilterDefinition<ParkDocument> primaryFilter = baseFilter
+            & randomKeyExistsFilter
+            & Builders<ParkDocument>.Filter.Gte(document => document.RandomSortKey, seed);
+
+        List<ParkDocument> documents = await this.collection.Find(primaryFilter)
+            .SortBy(document => document.RandomSortKey)
+            .ThenBy(document => document.Id)
+            .Limit(limit)
+            .ToListAsync(cancellationToken);
+
+        if (documents.Count >= limit)
+        {
+            return documents;
+        }
+
+        HashSet<string> existingIds = documents.Select(document => document.Id).ToHashSet(StringComparer.Ordinal);
+        FilterDefinition<ParkDocument> secondaryFilter = baseFilter
+            & randomKeyExistsFilter
+            & Builders<ParkDocument>.Filter.Lt(document => document.RandomSortKey, seed);
+
+        if (existingIds.Count > 0)
+        {
+            secondaryFilter &= Builders<ParkDocument>.Filter.Nin(document => document.Id, existingIds);
+        }
+
+        List<ParkDocument> secondaryDocuments = await this.collection.Find(secondaryFilter)
+            .SortBy(document => document.RandomSortKey)
+            .ThenBy(document => document.Id)
+            .Limit(limit - documents.Count)
+            .ToListAsync(cancellationToken);
+
+        documents.AddRange(secondaryDocuments);
+        return documents;
+    }
+
+    private async Task<List<ParkDocument>> LoadRandomVisibleFallbackAsync(
+        FilterDefinition<ParkDocument> filter,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+        if (totalItems <= 0)
+        {
+            return new List<ParkDocument>();
+        }
+
+        int effectiveLimit = checked((int)Math.Min(limit, totalItems));
+        int maxSkip = checked((int)Math.Max(0L, totalItems - effectiveLimit));
+        int skip = maxSkip == 0 ? 0 : Random.Shared.Next(0, maxSkip + 1);
+
+        return await this.collection.Find(filter)
+            .SortBy(document => document.Id)
+            .Skip(skip)
+            .Limit(effectiveLimit)
+            .ToListAsync(cancellationToken);
     }
 
     private FilterDefinition<ParkDocument> BuildNearLocationFilter(GeoJsonPoint<GeoJson2DGeographicCoordinates> center, double? radiusInKilometers, bool includeHidden)
@@ -559,6 +621,11 @@ public sealed class ParkRepository : IParkRepository
             .Select(static parkId => parkId.Trim())
             .Distinct(StringComparer.Ordinal)
             .ToList();
+    }
+
+    private static double CreateRandomSortKey()
+    {
+        return Random.Shared.NextDouble();
     }
 
     private FilterDefinition<ParkDocument> BuildVisibilityFilter(bool includeHidden)

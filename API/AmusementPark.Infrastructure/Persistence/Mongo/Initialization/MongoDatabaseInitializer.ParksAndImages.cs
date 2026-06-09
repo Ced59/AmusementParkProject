@@ -25,6 +25,8 @@ public sealed partial class MongoDatabaseInitializer
     private async Task InitializeParksIndexesAsync(CancellationToken cancellationToken)
     {
         IMongoCollection<ParkDocument> parksCollection = this.database.GetCollection<ParkDocument>(this.settings.ParksCollectionName);
+        await BackfillParkRandomSortKeysAsync(parksCollection, cancellationToken);
+
         List<CreateIndexModel<ParkDocument>> indexes = new List<CreateIndexModel<ParkDocument>>
         {
             new CreateIndexModel<ParkDocument>(
@@ -45,6 +47,12 @@ public sealed partial class MongoDatabaseInitializer
             new CreateIndexModel<ParkDocument>(
                 Builders<ParkDocument>.IndexKeys.Ascending(item => item.IsVisible).Ascending(item => item.CountryCode),
                 new CreateIndexOptions { Name = "idx_parks_visibility_country_code" }),
+            new CreateIndexModel<ParkDocument>(
+                Builders<ParkDocument>.IndexKeys
+                    .Ascending(item => item.IsVisible)
+                    .Ascending(item => item.RandomSortKey)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_parks_visibility_random_sort_key" }),
             new CreateIndexModel<ParkDocument>(
                 Builders<ParkDocument>.IndexKeys
                     .Ascending(item => item.IsVisible)
@@ -294,6 +302,36 @@ public sealed partial class MongoDatabaseInitializer
         await BackfillAdminReviewPriorityAsync(this.database.GetCollection<AttractionManufacturerDocument>(this.settings.AttractionManufacturersCollectionName), cancellationToken);
     }
 
+    private static async Task BackfillParkRandomSortKeysAsync(IMongoCollection<ParkDocument> collection, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkDocument> missingRandomSortKeyFilter = Builders<ParkDocument>.Filter.Or(
+            Builders<ParkDocument>.Filter.Exists(document => document.RandomSortKey, false),
+            Builders<ParkDocument>.Filter.Eq(document => document.RandomSortKey, null));
+
+        List<string> parkIds = await collection.Find(missingRandomSortKeyFilter)
+            .Project(document => document.Id)
+            .ToListAsync(cancellationToken);
+
+        List<WriteModel<ParkDocument>> writes = new List<WriteModel<ParkDocument>>(Math.Min(parkIds.Count, 500));
+        foreach (string parkId in parkIds.Where(static id => !string.IsNullOrWhiteSpace(id)))
+        {
+            writes.Add(new UpdateOneModel<ParkDocument>(
+                Builders<ParkDocument>.Filter.Eq(document => document.Id, parkId),
+                Builders<ParkDocument>.Update.Set(document => document.RandomSortKey, Random.Shared.NextDouble())));
+
+            if (writes.Count >= 500)
+            {
+                await collection.BulkWriteAsync(writes, new BulkWriteOptions { IsOrdered = false }, cancellationToken);
+                writes.Clear();
+            }
+        }
+
+        if (writes.Count > 0)
+        {
+            await collection.BulkWriteAsync(writes, new BulkWriteOptions { IsOrdered = false }, cancellationToken);
+        }
+    }
+
     private static async Task BackfillAdminReviewPriorityAsync<TDocument>(IMongoCollection<TDocument> collection, CancellationToken cancellationToken)
     {
         await collection.UpdateManyAsync(
@@ -329,5 +367,4 @@ public sealed partial class MongoDatabaseInitializer
             Builders<TDocument>.Update.Set("adminReviewPriority", 99),
             cancellationToken: cancellationToken);
     }
-
 }
