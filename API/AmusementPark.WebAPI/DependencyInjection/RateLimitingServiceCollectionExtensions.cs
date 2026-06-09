@@ -123,7 +123,7 @@ public static class RateLimitingServiceCollectionExtensions
             return false;
         }
 
-        if (!headerValues.Any((value: string?) => string.Equals(value, InternalSsrHeaderValue, StringComparison.Ordinal)))
+        if (!headerValues.Any(value => string.Equals(value, InternalSsrHeaderValue, StringComparison.Ordinal)))
         {
             return false;
         }
