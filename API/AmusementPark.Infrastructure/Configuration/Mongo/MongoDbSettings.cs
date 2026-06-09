@@ -40,6 +40,24 @@ public sealed class MongoDbSettings
 
     public string SearchItemCollectionName { get; set; } = "searchItems";
 
+    /// <summary>
+    /// Reconstruit explicitement la projection de recherche au démarrage.
+    /// Par défaut, la projection n'est reconstruite que si elle est vide afin d'éviter
+    /// un gros volume d'upserts Mongo à chaque redéploiement.
+    /// </summary>
+    public bool RebuildSearchProjectionOnStartup { get; set; }
+
+    /// <summary>
+    /// Taille des lots utilisés lors d'une reconstruction volontaire de la projection de recherche.
+    /// </summary>
+    public int SearchProjectionRebuildBatchSize { get; set; } = 250;
+
+    /// <summary>
+    /// Pause optionnelle entre deux lots de reconstruction de la projection de recherche.
+    /// Utile sur un petit VPS bridé CPU pour lisser les écritures Mongo.
+    /// </summary>
+    public int SearchProjectionRebuildBatchDelayMilliseconds { get; set; }
+
     public string AdminAuditLogsCollectionName { get; set; } = "adminAuditLogs";
 
     public string SeoSitemapSnapshotsCollectionName { get; set; } = "seoSitemapSnapshots";
@@ -80,6 +98,16 @@ public sealed class MongoDbSettings
         if (string.IsNullOrWhiteSpace(settings.DatabaseName))
         {
             settings.DatabaseName = "AmusementPark";
+        }
+
+        if (settings.SearchProjectionRebuildBatchSize <= 0)
+        {
+            settings.SearchProjectionRebuildBatchSize = 250;
+        }
+
+        if (settings.SearchProjectionRebuildBatchDelayMilliseconds < 0)
+        {
+            settings.SearchProjectionRebuildBatchDelayMilliseconds = 0;
         }
 
         return settings;

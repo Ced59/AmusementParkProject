@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -27,7 +28,11 @@ public sealed class MongoSearchProjectionInitializer
     public async Task InitializeAsync(CancellationToken cancellationToken)
     {
         await this.EnsureCollectionAndIndexesAsync(cancellationToken);
-        await this.RebuildAsync(cancellationToken);
+
+        if (this.settings.RebuildSearchProjectionOnStartup || await this.IsSearchProjectionEmptyAsync(cancellationToken))
+        {
+            await this.RebuildAsync(cancellationToken);
+        }
     }
 
     private async Task EnsureCollectionAndIndexesAsync(CancellationToken cancellationToken)
@@ -54,7 +59,8 @@ public sealed class MongoSearchProjectionInitializer
                 Builders<SearchItemDocument>.IndexKeys.Ascending(item => item.OriginalId),
                 new CreateIndexOptions { Name = "idx_search_items_original_id_unique", Unique = true }),
             new CreateIndexModel<SearchItemDocument>(
-                Builders<SearchItemDocument>.IndexKeys.Geo2DSphere(item => item.Location)),
+                Builders<SearchItemDocument>.IndexKeys.Geo2DSphere(item => item.Location),
+                new CreateIndexOptions { Name = "idx_search_items_location" }),
             new CreateIndexModel<SearchItemDocument>(
                 Builders<SearchItemDocument>.IndexKeys.Ascending(item => item.Category).Ascending(item => item.IsVisible).Descending(item => item.UpdatedAt),
                 new CreateIndexOptions { Name = "idx_search_items_category_visibility_updated" }),
@@ -65,11 +71,24 @@ public sealed class MongoSearchProjectionInitializer
                 Builders<SearchItemDocument>.IndexKeys.Ascending(item => item.ResourceType).Ascending(item => item.IsVisible).Descending(item => item.CompositeScore).Descending(item => item.UpdatedAt),
                 new CreateIndexOptions { Name = "idx_search_items_resource_type_visibility_score_updated" }),
             new CreateIndexModel<SearchItemDocument>(
+                Builders<SearchItemDocument>.IndexKeys.Ascending(item => item.ParentParkId).Ascending(item => item.IsVisible).Descending(item => item.UpdatedAt),
+                new CreateIndexOptions { Name = "idx_search_items_parent_park_visibility_updated" }),
+            new CreateIndexModel<SearchItemDocument>(
                 textIndexKeys,
                 new CreateIndexOptions { DefaultLanguage = "french", Name = "Idx_SearchItem_Text" }),
         };
 
         await searchCollection.Indexes.CreateManyAsync(indexes, cancellationToken: cancellationToken);
+    }
+
+    private async Task<bool> IsSearchProjectionEmptyAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<SearchItemDocument> searchCollection = this.database.GetCollection<SearchItemDocument>(this.settings.SearchItemCollectionName);
+        long count = await searchCollection.CountDocumentsAsync(
+            Builders<SearchItemDocument>.Filter.Empty,
+            new CountOptions { Limit = 1 },
+            cancellationToken);
+        return count == 0;
     }
 
     private async Task RebuildAsync(CancellationToken cancellationToken)
@@ -78,48 +97,74 @@ public sealed class MongoSearchProjectionInitializer
         IMongoCollection<ParkItemDocument> parkItemsCollection = this.database.GetCollection<ParkItemDocument>(this.settings.ParkItemsCollectionName);
         IMongoCollection<ParkFounderDocument> parkFoundersCollection = this.database.GetCollection<ParkFounderDocument>(this.settings.ParkFoundersCollectionName);
         IMongoCollection<ParkOperatorDocument> parkOperatorsCollection = this.database.GetCollection<ParkOperatorDocument>(this.settings.ParkOperatorsCollectionName);
-        IMongoCollection<AttractionManufacturerDocument> attractionManufacturersCollection = this.database.GetCollection<AttractionManufacturerDocument>(this.settings.AttractionManufacturersCollectionName);
+        IMongoCollection<AttractionManufacturerDocument> attractionManufacturerCollection = this.database.GetCollection<AttractionManufacturerDocument>(this.settings.AttractionManufacturersCollectionName);
 
-        List<string> parkIds = await parksCollection.Find(Builders<ParkDocument>.Filter.Empty)
-            .Project(document => document.Id)
-            .ToListAsync(cancellationToken);
-
-        List<string> parkItemIds = await parkItemsCollection.Find(Builders<ParkItemDocument>.Filter.Empty)
-            .Project(document => document.Id)
-            .ToListAsync(cancellationToken);
-
-        List<string> parkFounderIds = await parkFoundersCollection.Find(Builders<ParkFounderDocument>.Filter.Empty)
-            .Project(document => document.Id)
-            .ToListAsync(cancellationToken);
-
-        List<string> parkOperatorIds = await parkOperatorsCollection.Find(Builders<ParkOperatorDocument>.Filter.Empty)
-            .Project(document => document.Id)
-            .ToListAsync(cancellationToken);
-
-        List<string> attractionManufacturerIds = await attractionManufacturersCollection.Find(Builders<AttractionManufacturerDocument>.Filter.Empty)
-            .Project(document => document.Id)
-            .ToListAsync(cancellationToken);
-
-        await this.UpsertAllAsync(parkIds, SearchProjectionResourceTypes.Parks, cancellationToken);
-        await this.UpsertAllAsync(parkItemIds, SearchProjectionResourceTypes.ParkItems, cancellationToken);
-        await this.UpsertAllAsync(parkFounderIds, SearchProjectionResourceTypes.Founders, cancellationToken);
-        await this.UpsertAllAsync(parkOperatorIds, SearchProjectionResourceTypes.Operators, cancellationToken);
-        await this.UpsertAllAsync(attractionManufacturerIds, SearchProjectionResourceTypes.Manufacturers, cancellationToken);
+        await this.UpsertAllAsync(parksCollection, document => document.Id, SearchProjectionResourceTypes.Parks, cancellationToken);
+        await this.UpsertAllAsync(parkItemsCollection, document => document.Id, SearchProjectionResourceTypes.ParkItems, cancellationToken);
+        await this.UpsertAllAsync(parkFoundersCollection, document => document.Id, SearchProjectionResourceTypes.Founders, cancellationToken);
+        await this.UpsertAllAsync(parkOperatorsCollection, document => document.Id, SearchProjectionResourceTypes.Operators, cancellationToken);
+        await this.UpsertAllAsync(attractionManufacturerCollection, document => document.Id, SearchProjectionResourceTypes.Manufacturers, cancellationToken);
     }
 
-    private async Task UpsertAllAsync(IEnumerable<string> ids, string resourceType, CancellationToken cancellationToken)
+    private async Task UpsertAllAsync<TDocument>(
+        IMongoCollection<TDocument> collection,
+        Expression<Func<TDocument, string>> idProjection,
+        string resourceType,
+        CancellationToken cancellationToken)
     {
-        List<string> normalizedIds = ids
-            .Where(static item => !string.IsNullOrWhiteSpace(item))
-            .Select(static item => item.Trim())
+        int batchSize = Math.Max(1, this.settings.SearchProjectionRebuildBatchSize);
+        int delayMilliseconds = Math.Max(0, this.settings.SearchProjectionRebuildBatchDelayMilliseconds);
+        List<string> batch = new List<string>(batchSize);
+
+        using IAsyncCursor<string> cursor = await collection
+            .Find(Builders<TDocument>.Filter.Empty)
+            .Project(idProjection)
+            .ToCursorAsync(cancellationToken);
+
+        while (await cursor.MoveNextAsync(cancellationToken))
+        {
+            foreach (string id in cursor.Current)
+            {
+                if (string.IsNullOrWhiteSpace(id))
+                {
+                    continue;
+                }
+
+                batch.Add(id.Trim());
+                if (batch.Count >= batchSize)
+                {
+                    await this.FlushBatchAsync(resourceType, batch, delayMilliseconds, cancellationToken);
+                }
+            }
+        }
+
+        if (batch.Count > 0)
+        {
+            await this.FlushBatchAsync(resourceType, batch, delayMilliseconds, cancellationToken);
+        }
+    }
+
+    private async Task FlushBatchAsync(
+        string resourceType,
+        List<string> batch,
+        int delayMilliseconds,
+        CancellationToken cancellationToken)
+    {
+        List<string> ids = batch
             .Distinct(StringComparer.Ordinal)
             .ToList();
+        batch.Clear();
 
-        if (normalizedIds.Count == 0)
+        if (ids.Count == 0)
         {
             return;
         }
 
-        await this.searchProjectionWriter.UpsertManyAsync(resourceType, normalizedIds, cancellationToken);
+        await this.searchProjectionWriter.UpsertManyAsync(resourceType, ids, cancellationToken);
+
+        if (delayMilliseconds > 0)
+        {
+            await Task.Delay(delayMilliseconds, cancellationToken);
+        }
     }
 }
