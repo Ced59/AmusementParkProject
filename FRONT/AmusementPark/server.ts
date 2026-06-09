@@ -15,6 +15,7 @@ const cspReportOnly = (process.env['SSR_CSP_REPORT_ONLY'] ?? 'true').toLowerCase
 const cspEnabled = (process.env['SSR_CSP_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?? 'localhost;127.0.0.1;amusement.localhost;front');
 const forceHttps = (process.env['SSR_FORCE_HTTPS'] ?? 'false').toLowerCase() === 'true';
+const ssrRenderEnabled = (process.env['SSR_RENDER_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const allowLocalCspSources = (process.env['SSR_CSP_ALLOW_LOCAL_DEV_SOURCES'] ?? 'false').toLowerCase() === 'true';
 const pageCacheTtlSeconds = Math.max(0, Number(process.env['SSR_PAGE_CACHE_SECONDS'] ?? 30));
 const pageCacheMaxEntries = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_ENTRIES'] ?? 250));
@@ -26,6 +27,8 @@ const pendingSeoDocumentCacheRequests = new Map<string, Array<SeoDocumentCacheCa
 const internalSsrHeaderName = 'X-AmusementPark-Internal-SSR';
 const renderMaxConcurrency = Math.max(1, Number(process.env['SSR_RENDER_MAX_CONCURRENCY'] ?? 2));
 const renderQueueMaxEntries = Math.max(0, Number(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'] ?? 20));
+const slowRenderThresholdMilliseconds = Math.max(0, Number(process.env['SSR_SLOW_RENDER_THRESHOLD_MILLISECONDS'] ?? 3000));
+const renderQueueWarningThreshold = Math.max(1, Number(process.env['SSR_RENDER_QUEUE_WARNING_THRESHOLD'] ?? Math.max(1, Math.floor(renderQueueMaxEntries * 0.75))));
 let activeRenderCount = 0;
 const pendingRenderQueue: Array<() => void> = [];
 
@@ -65,12 +68,14 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  server.use(redirectHttpToHttps);
-  server.use(applySecurityHeaders);
-
+  // Must stay before HTTPS redirection and before Angular SSR.
+  // Health checks should never trigger a render, an API call, or a redirect.
   server.get('/healthz', (_req: Request, res: Response) => {
     res.status(200).type('text/plain').send('ok\n');
   });
+
+  server.use(redirectHttpToHttps);
+  server.use(applySecurityHeaders);
 
   server.head('/robots.txt', (req: Request, res: Response, next: NextFunction) => {
     proxySeoDocumentToApi(req, res, next, req.originalUrl);
@@ -116,6 +121,11 @@ export function app(): express.Express {
   }));
 
   server.get('*', (req: Request, res: Response, next: NextFunction) => {
+    if (!ssrRenderEnabled) {
+      serveCsrFallbackPage(req, res, browserDistFolder);
+      return;
+    }
+
     const publicUrl = getPublicRequestUrl(req);
     const cacheKey = buildPageCacheKey(req);
     const cachedEntry = cacheKey === null ? null : getCachedPage(cacheKey);
@@ -140,7 +150,7 @@ export function app(): express.Express {
         { provide: APP_BASE_HREF, useValue: req.baseUrl },
         { provide: SSR_RESPONSE, useValue: res }
       ],
-    }))
+    }), req.originalUrl)
       .then((html: string) => {
         if (cacheKey !== null && res.statusCode >= 200 && res.statusCode < 300) {
           setCachedPage(cacheKey, res.statusCode, html);
@@ -172,30 +182,44 @@ function run(): void {
     console.log(`SSR API internal origin: ${apiInternalOrigin}`);
     console.log(`SSR public page cache: ${pageCacheTtlSeconds}s / ${pageCacheMaxEntries} entries`);
     console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
+    console.log(`SSR render enabled: ${ssrRenderEnabled}`);
     console.log(`SSR render concurrency: ${renderMaxConcurrency} active / ${renderQueueMaxEntries} queued`);
+    console.log(`SSR slow render threshold: ${slowRenderThresholdMilliseconds}ms`);
   });
 }
 
-function scheduleSsrRender(render: () => Promise<string>): Promise<string> {
+function scheduleSsrRender(render: () => Promise<string>, requestUrl?: string): Promise<string> {
   if (activeRenderCount < renderMaxConcurrency) {
-    return runScheduledSsrRender(render);
+    return runScheduledSsrRender(render, requestUrl);
   }
 
   if (pendingRenderQueue.length >= renderQueueMaxEntries) {
+    console.warn(`SSR render queue full: active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${requestUrl ?? 'unknown'}`);
     return Promise.reject(new SsrRenderQueueFullError());
+  }
+
+  const queueLengthAfterPush = pendingRenderQueue.length + 1;
+  if (queueLengthAfterPush >= renderQueueWarningThreshold) {
+    console.warn(`SSR render queue high: active=${activeRenderCount}, queued=${queueLengthAfterPush}, url=${requestUrl ?? 'unknown'}`);
   }
 
   return new Promise<string>((resolve: (value: string) => void, reject: (reason?: unknown) => void): void => {
     pendingRenderQueue.push((): void => {
-      runScheduledSsrRender(render).then(resolve).catch(reject);
+      runScheduledSsrRender(render, requestUrl).then(resolve).catch(reject);
     });
   });
 }
 
-function runScheduledSsrRender(render: () => Promise<string>): Promise<string> {
+function runScheduledSsrRender(render: () => Promise<string>, requestUrl?: string): Promise<string> {
   activeRenderCount += 1;
+  const startedAt = Date.now();
 
   return render().finally((): void => {
+    const elapsedMilliseconds = Date.now() - startedAt;
+    if (slowRenderThresholdMilliseconds > 0 && elapsedMilliseconds >= slowRenderThresholdMilliseconds) {
+      console.warn(`SSR slow render: ${elapsedMilliseconds}ms, active=${activeRenderCount}, queued=${pendingRenderQueue.length}, url=${requestUrl ?? 'unknown'}`);
+    }
+
     activeRenderCount = Math.max(0, activeRenderCount - 1);
     runNextQueuedSsrRender();
   });
@@ -213,6 +237,17 @@ function runNextQueuedSsrRender(): void {
   }
 
   nextRender();
+}
+
+
+function serveCsrFallbackPage(req: Request, res: Response, browserDistFolder: string): void {
+  if (isExplicitNotFoundRoute(req.originalUrl)) {
+    res.status(404);
+  }
+
+  res.setHeader('X-AmusementPark-SSR-Mode', 'CSR-FALLBACK');
+  res.setHeader('Cache-Control', 'no-store');
+  res.sendFile(join(browserDistFolder, 'index.html'));
 }
 
 function buildPageCacheKey(req: Request): string | null {
@@ -255,7 +290,9 @@ function isCacheablePageRequest(req: Request): boolean {
 function isPublicSsrCacheRoute(url: string): boolean {
   const path = url.split(/[?#]/, 1)[0] ?? '';
 
-  return /^\/[a-z]{2}\/parks\/?$/i.test(path)
+  return /^\/?$/i.test(path)
+    || /^\/[a-z]{2}\/?$/i.test(path)
+    || /^\/[a-z]{2}\/parks\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/items)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path);
