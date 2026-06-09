@@ -60,7 +60,7 @@ public sealed class MongoSearchProjectionInitializer
                 new CreateIndexOptions { Name = "idx_search_items_original_id_unique", Unique = true }),
             new CreateIndexModel<SearchItemDocument>(
                 Builders<SearchItemDocument>.IndexKeys.Geo2DSphere(item => item.Location),
-                new CreateIndexOptions { Name = "idx_search_items_location" }),
+                new CreateIndexOptions { Name = "location_2dsphere" }),
             new CreateIndexModel<SearchItemDocument>(
                 Builders<SearchItemDocument>.IndexKeys.Ascending(item => item.Category).Ascending(item => item.IsVisible).Descending(item => item.UpdatedAt),
                 new CreateIndexOptions { Name = "idx_search_items_category_visibility_updated" }),
