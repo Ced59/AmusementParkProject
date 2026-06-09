@@ -1037,7 +1037,9 @@
       "actions": {
         "generate": "Wygeneruj ponownie",
         "generateWithoutIndexNow": "Generuj bez IndexNow",
-        "openSitemap": "Otwórz"
+        "openSitemap": "Otwórz",
+        "generateSeoSsr": "Wygeneruj SEO/SSR",
+        "generateSeoSsrWithoutIndexNow": "SEO/SSR bez IndexNow"
       },
       "stats": {
         "totalUrls": "Adresy URL",
@@ -1080,6 +1082,12 @@
           "indexNow": "IndexNow",
           "actor": "Aktor"
         }
+      },
+      "prerender": {
+        "title": "Prerender SSR / cache HTML",
+        "success": "udane",
+        "failed": "nieudane",
+        "missingSitemap": "Nie można uruchomić prerendera SSR: nie znaleziono publicznej mapy witryny."
       }
     },
     "tabs": {

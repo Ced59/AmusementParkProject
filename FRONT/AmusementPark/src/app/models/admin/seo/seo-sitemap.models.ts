@@ -47,6 +47,23 @@ export interface GenerateSeoSitemapRequest {
   submitToIndexNow: boolean;
 }
 
+
+export interface SeoSsrPrerenderProgress {
+  status: SeoSitemapGenerationStatus;
+  totalUrlCount: number;
+  processedUrlCount: number;
+  succeededUrlCount: number;
+  failedUrlCount: number;
+  currentUrl: string | null;
+  errors: string[];
+}
+
+export interface SeoSsrPrerenderResult extends SeoSsrPrerenderProgress {
+  startedAtUtc: string;
+  completedAtUtc: string | null;
+  durationMs: number;
+}
+
 export interface UpdateSeoSitemapSettingsRequest {
   isIndexNowEnabled: boolean;
   submitToIndexNowAfterManualGeneration: boolean;

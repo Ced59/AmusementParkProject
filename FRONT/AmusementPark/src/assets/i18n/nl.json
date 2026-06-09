@@ -1037,7 +1037,9 @@
       "actions": {
         "generate": "Opnieuw genereren",
         "generateWithoutIndexNow": "Genereren zonder IndexNow",
-        "openSitemap": "Openen"
+        "openSitemap": "Openen",
+        "generateSeoSsr": "SEO/SSR opnieuw genereren",
+        "generateSeoSsrWithoutIndexNow": "SEO/SSR zonder IndexNow"
       },
       "stats": {
         "totalUrls": "Gerefereerde URLs",
@@ -1080,6 +1082,12 @@
           "indexNow": "IndexNow",
           "actor": "Actor"
         }
+      },
+      "prerender": {
+        "title": "SSR-prerender / HTML-cache",
+        "success": "gelukt",
+        "failed": "mislukt",
+        "missingSitemap": "SSR-prerender kan niet starten: publieke sitemap niet gevonden."
       }
     },
     "tabs": {

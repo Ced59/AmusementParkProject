@@ -19,6 +19,7 @@ import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemDescription } from '@shared/utils/display/park-item-presentation.helpers';
 import { buildTranslationOptions } from '@shared/utils/display/display-options';
@@ -213,7 +214,8 @@ export class ParkItemsPageStateFacade {
     @Inject(PARK_ITEMS_PAGE_STATE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: ParkItemsPageStateImagesApiServicePort,
     @Inject(PARK_ITEMS_PAGE_STATE_MANUFACTURERS_API_SERVICE_PORT) private readonly manufacturersApiService: ParkItemsPageStateManufacturersApiServicePort,
     @Inject(PARK_ITEMS_PAGE_STATE_PARK_ZONES_API_SERVICE_PORT) private readonly parkZonesApiService: ParkItemsPageStateParkZonesApiServicePort,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly ssrRuntimeService: SsrRuntimeService
   ) {
   }
 
@@ -238,13 +240,19 @@ export class ParkItemsPageStateFacade {
     const previousData: ParkItemsPageSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
+    const useMinimalSsrData: boolean = this.ssrRuntimeService.shouldUseMinimalPublicData();
+
     forkJoin({
       park: this.parksApiService.getParkById(parkId, anonymousHttpOptions()),
       explorer: this.parksApiService.getParkExplorer(parkId, anonymousHttpOptions()),
       items: this.parkItemsApiService.getParkItemsByParkId(parkId, anonymousHttpOptions()),
-      manufacturers: this.manufacturersApiService.getAttractionManufacturers().pipe(catchError(() => of([] as AttractionManufacturer[]))),
+      manufacturers: useMinimalSsrData
+        ? of([] as AttractionManufacturer[])
+        : this.manufacturersApiService.getAttractionManufacturers().pipe(catchError(() => of([] as AttractionManufacturer[]))),
       zones: this.parkZonesApiService.getParkZonesByParkId(parkId, anonymousHttpOptions()).pipe(catchError(() => of([] as ParkZone[]))),
-      parkPhotos: this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, 24, anonymousHttpOptions()).pipe(catchError(() => of([] as ImageDto[])))
+      parkPhotos: useMinimalSsrData
+        ? of([] as ImageDto[])
+        : this.imagesApiService.getImages(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, 24, anonymousHttpOptions()).pipe(catchError(() => of([] as ImageDto[])))
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: ({
         park,

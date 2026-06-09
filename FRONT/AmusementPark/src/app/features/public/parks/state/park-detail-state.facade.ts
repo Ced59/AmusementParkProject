@@ -20,6 +20,7 @@ import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
 import { mapArray, mapNullable } from '@shared/utils/mapping';
 import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
 import { mapParkDistanceTargetToCardModel } from '../mappers/park-distance-card.mapper';
@@ -149,7 +150,8 @@ export class ParkDetailStateFacade {
     @Inject(PARK_DETAIL_OPERATORS_PORT) private readonly parkOperatorsApiService: ParkDetailOperatorsPort,
     private readonly countryDisplayService: CountryDisplayService,
     private readonly destroyRef: DestroyRef,
-    private readonly ssrHttpStatusService: SsrHttpStatusService
+    private readonly ssrHttpStatusService: SsrHttpStatusService,
+    private readonly ssrRuntimeService: SsrRuntimeService
   ) {
   }
 
@@ -179,13 +181,18 @@ export class ParkDetailStateFacade {
         };
 
         this.screenStateStore.setReady(sourceData);
+        this.loadReferences(park);
+
+        if (this.ssrRuntimeService.shouldUseMinimalPublicData()) {
+          return;
+        }
+
         this.loadNearbyParks(park);
         this.loadExplorerSummary(park.id ?? id);
         this.loadZones(park.id ?? id);
         this.loadParkItems(park.id ?? id);
         this.loadParkPhotos(park.id ?? id);
         this.loadImageTags();
-        this.loadReferences(park);
       },
       error: (error: unknown) => {
         console.error('Error loading park details', error);

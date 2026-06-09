@@ -1037,7 +1037,9 @@
       "actions": {
         "generate": "Regenerate",
         "generateWithoutIndexNow": "Generate without IndexNow",
-        "openSitemap": "Open"
+        "openSitemap": "Open",
+        "generateSeoSsr": "Regenerate SEO/SSR",
+        "generateSeoSsrWithoutIndexNow": "SEO/SSR without IndexNow"
       },
       "stats": {
         "totalUrls": "Referenced URLs",
@@ -1080,6 +1082,12 @@
           "indexNow": "IndexNow",
           "actor": "Actor"
         }
+      },
+      "prerender": {
+        "title": "SSR prerender / HTML cache",
+        "success": "succeeded",
+        "failed": "failed",
+        "missingSitemap": "SSR prerender cannot start: public sitemap not found."
       }
     },
     "tabs": {

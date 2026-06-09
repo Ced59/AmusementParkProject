@@ -11,6 +11,7 @@ import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store'
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
 import { mapParkItemToDetailViewModel } from '../mappers/park-item-detail-view.mapper';
 import { ParkItemDetailViewModel } from '../models/park-item-detail-view.model';
 import {
@@ -64,7 +65,8 @@ export class ParkItemDetailStateFacade {
     @Inject(PARK_ITEM_DETAIL_ZONES_PORT) private readonly parkZonesApiService: ParkItemDetailZonesPort,
     @Inject(PARK_ITEM_DETAIL_IMAGES_PORT) private readonly imagesApiService: ParkItemDetailImagesPort,
     private readonly destroyRef: DestroyRef,
-    private readonly ssrHttpStatusService: SsrHttpStatusService
+    private readonly ssrHttpStatusService: SsrHttpStatusService,
+    private readonly ssrRuntimeService: SsrRuntimeService
   ) {
   }
 
@@ -120,6 +122,10 @@ export class ParkItemDetailStateFacade {
         this.screenStateStore.setError('parkItems.detail.errorMessage', this.screenStateStore.data());
       }
     });
+
+    if (this.ssrRuntimeService.shouldUseMinimalPublicData()) {
+      return;
+    }
 
     if (!item.id) {
       return;

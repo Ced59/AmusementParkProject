@@ -9,7 +9,8 @@
 
       <div class="admin-seo-sitemaps-header__actions">
         <button pButton type="button" class="p-button-secondary" icon="pi pi-refresh" [label]="'actions.refresh' | translate" [disabled]="loading()" (click)="refresh()"></button>
-        <button pButton type="button" icon="pi pi-sitemap" [label]="'admin.seoSitemaps.actions.generate' | translate" [loading]="generating()" (click)="generate(canSubmitIndexNow())"></button>
+        <button pButton type="button" class="p-button-secondary" icon="pi pi-sitemap" [label]="'admin.seoSitemaps.actions.generate' | translate" [loading]="generating() && !prerendering()" [disabled]="prerendering()" (click)="generate(canSubmitIndexNow())"></button>
+        <button pButton type="button" icon="pi pi-bolt" [label]="'admin.seoSitemaps.actions.generateSeoSsr' | translate" [loading]="generating() || prerendering()" (click)="generateSeoSsr(canSubmitIndexNow())"></button>
       </div>
     </div>
   </ng-template>
@@ -48,6 +49,26 @@
           </div>
           <p-tag [value]="generation.status" [severity]="statusSeverity(generation.status)"></p-tag>
           <p-tag [value]="generation.indexNow.wasRequested ? ('IndexNow ' + generation.indexNow.submittedUrlCount) : 'IndexNow off'" [severity]="indexNowSeverity(generation.indexNow.isSuccess, generation.indexNow.wasRequested)"></p-tag>
+        </section>
+      }
+
+      @if (prerenderProgress(); as progress) {
+        <section class="admin-seo-generation-result admin-seo-ssr-prerender">
+          <div>
+            <strong>{{ 'admin.seoSitemaps.prerender.title' | translate }}</strong>
+            <span>
+              {{ progress.processedUrlCount }} / {{ progress.totalUrlCount }} ·
+              {{ 'admin.seoSitemaps.prerender.success' | translate }} {{ progress.succeededUrlCount }} ·
+              {{ 'admin.seoSitemaps.prerender.failed' | translate }} {{ progress.failedUrlCount }}
+            </span>
+            @if (progress.currentUrl) {
+              <small>{{ progress.currentUrl }}</small>
+            }
+            @if (progress.errors.length > 0) {
+              <small class="admin-seo-ssr-prerender__error">{{ progress.errors[progress.errors.length - 1] }}</small>
+            }
+          </div>
+          <p-tag [value]="progress.status" [severity]="statusSeverity(progress.status)"></p-tag>
         </section>
       }
 
@@ -134,7 +155,8 @@
 
         <div class="admin-seo-settings__actions">
           <button pButton type="submit" icon="pi pi-save" [label]="'actions.save' | translate" [loading]="savingSettings()"></button>
-          <button pButton type="button" class="p-button-secondary" icon="pi pi-send" [label]="'admin.seoSitemaps.actions.generateWithoutIndexNow' | translate" [loading]="generating()" (click)="generate(false)"></button>
+          <button pButton type="button" class="p-button-secondary" icon="pi pi-send" [label]="'admin.seoSitemaps.actions.generateWithoutIndexNow' | translate" [loading]="generating() && !prerendering()" [disabled]="prerendering()" (click)="generate(false)"></button>
+          <button pButton type="button" class="p-button-secondary" icon="pi pi-bolt" [label]="'admin.seoSitemaps.actions.generateSeoSsrWithoutIndexNow' | translate" [loading]="generating() || prerendering()" (click)="generateSeoSsr(false)"></button>
         </div>
       </form>
 

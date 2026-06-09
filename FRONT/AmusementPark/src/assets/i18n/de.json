@@ -1037,7 +1037,9 @@
       "actions": {
         "generate": "Neu erzeugen",
         "generateWithoutIndexNow": "Ohne IndexNow erzeugen",
-        "openSitemap": "Öffnen"
+        "openSitemap": "Öffnen",
+        "generateSeoSsr": "SEO/SSR neu erzeugen",
+        "generateSeoSsrWithoutIndexNow": "SEO/SSR ohne IndexNow"
       },
       "stats": {
         "totalUrls": "Referenzierte URLs",
@@ -1080,6 +1082,12 @@
           "indexNow": "IndexNow",
           "actor": "Akteur"
         }
+      },
+      "prerender": {
+        "title": "SSR-Prerender / HTML-Cache",
+        "success": "erfolgreich",
+        "failed": "fehlgeschlagen",
+        "missingSitemap": "SSR-Prerender kann nicht starten: öffentliche Sitemap nicht gefunden."
       }
     },
     "tabs": {

@@ -16,8 +16,10 @@ import {
   SeoSitemapGenerationResult,
   SeoSitemapOverview,
   SeoSitemapSettings,
+  SeoSsrPrerenderProgress,
   UpdateSeoSitemapSettingsRequest
 } from '@app/models/admin/seo/seo-sitemap.models';
+import { SeoSsrPrerenderService } from '@app/data-access/admin/seo-ssr-prerender.service';
 import { PaginationContract } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 
@@ -39,6 +41,8 @@ export class AdminSeoSitemapsStateFacade {
   private readonly pageSizeSignal = signal(10);
   private readonly savingSettingsSignal = signal(false);
   private readonly generatingSignal = signal(false);
+  private readonly prerenderingSignal = signal(false);
+  private readonly prerenderProgressSignal = signal<SeoSsrPrerenderProgress | null>(null);
 
   public readonly state = this.screenStateStore.state;
   public readonly loading = this.screenStateStore.isLoading;
@@ -50,11 +54,14 @@ export class AdminSeoSitemapsStateFacade {
   public readonly pageSize = this.pageSizeSignal.asReadonly();
   public readonly savingSettings = this.savingSettingsSignal.asReadonly();
   public readonly generating = this.generatingSignal.asReadonly();
+  public readonly prerendering = this.prerenderingSignal.asReadonly();
+  public readonly prerenderProgress = this.prerenderProgressSignal.asReadonly();
   public readonly lastGeneration: Signal<SeoSitemapGenerationResult | null> = computed(() => this.screenStateStore.data()?.lastGeneration ?? null);
 
   constructor(
     @Inject(ADMIN_SEO_SITEMAPS_STATE__PORT) private readonly apiService: AdminSeoSitemapsStatePort,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly prerenderService: SeoSsrPrerenderService
   ) {
   }
 
@@ -136,6 +143,73 @@ export class AdminSeoSitemapsStateFacade {
         this.screenStateStore.setError('admin.seoSitemaps.generateError', previousData);
       }
     });
+  }
+
+
+  generateSeoSsr(submitToIndexNow: boolean): void {
+    const previousData: AdminSeoSitemapsViewModel | undefined = this.screenStateStore.data();
+    const sitemapIndexUrl: string | null = previousData?.overview?.sitemapIndexUrl ?? null;
+
+    if (!sitemapIndexUrl) {
+      this.screenStateStore.setError('admin.seoSitemaps.prerender.missingSitemap', previousData);
+      return;
+    }
+
+    const request: GenerateSeoSitemapRequest = { submitToIndexNow };
+    this.generatingSignal.set(true);
+    this.prerenderingSignal.set(false);
+    this.prerenderProgressSignal.set(null);
+    this.startRuntimePolling();
+
+    this.apiService.generate(request).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (generation: SeoSitemapGenerationResult) => {
+        this.generatingSignal.set(false);
+        const currentData: AdminSeoSitemapsViewModel | undefined = this.screenStateStore.data() ?? previousData;
+        if (currentData) {
+          this.screenStateStore.setReady({
+            ...currentData,
+            lastGeneration: generation
+          });
+        }
+
+        void this.prerenderSeoPagesAsync(sitemapIndexUrl);
+      },
+      error: (error: unknown) => {
+        console.error('Error generating SEO sitemap before SSR prerender', error);
+        this.generatingSignal.set(false);
+        this.prerenderingSignal.set(false);
+        this.screenStateStore.setError('admin.seoSitemaps.generateError', previousData);
+      }
+    });
+  }
+
+  private async prerenderSeoPagesAsync(sitemapIndexUrl: string): Promise<void> {
+    this.prerenderingSignal.set(true);
+
+    try {
+      await this.prerenderService.prerenderFromSitemapIndex(
+        sitemapIndexUrl,
+        (progress: SeoSsrPrerenderProgress): void => this.prerenderProgressSignal.set(progress)
+      );
+    } catch (error: unknown) {
+      console.error('Error warming SSR cache from sitemap', error);
+      const currentProgress: SeoSsrPrerenderProgress | null = this.prerenderProgressSignal();
+      this.prerenderProgressSignal.set({
+        status: 'Failed',
+        totalUrlCount: currentProgress?.totalUrlCount ?? 0,
+        processedUrlCount: currentProgress?.processedUrlCount ?? 0,
+        succeededUrlCount: currentProgress?.succeededUrlCount ?? 0,
+        failedUrlCount: (currentProgress?.failedUrlCount ?? 0) + 1,
+        currentUrl: currentProgress?.currentUrl ?? null,
+        errors: [
+          ...(currentProgress?.errors ?? []),
+          error instanceof Error ? error.message : 'Unknown SSR prerender error'
+        ].slice(-10)
+      });
+    } finally {
+      this.prerenderingSignal.set(false);
+      this.load(1, this.pageSizeSignal());
+    }
   }
   private startRuntimePolling(): void {
     timer(0, 1500).pipe(
