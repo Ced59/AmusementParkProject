@@ -1,12 +1,14 @@
 using System;
+using System.IO.Compression;
+using System.Linq;
 using AmusementPark.WebAPI.Diagnostics;
+using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
 
 namespace AmusementPark.WebAPI.DependencyInjection;
 
@@ -37,15 +39,29 @@ public static class HttpApiServiceCollectionExtensions
         services.AddResponseCompression(options =>
         {
             options.EnableForHttps = true;
+            options.Providers.Add<BrotliCompressionProvider>();
+            options.Providers.Add<GzipCompressionProvider>();
             options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
             {
+                "application/json",
                 "application/xml",
                 "application/problem+json",
                 "application/ld+json"
-            });
+            }).Distinct(StringComparer.OrdinalIgnoreCase);
+        });
+        services.Configure<BrotliCompressionProviderOptions>(static options =>
+        {
+            options.Level = CompressionLevel.Fastest;
+        });
+        services.Configure<GzipCompressionProviderOptions>(static options =>
+        {
+            options.Level = CompressionLevel.Fastest;
         });
         services.AddApiOutputCaching();
-        services.AddControllers();
+        services.AddControllers(options =>
+        {
+            options.Filters.Add<PublicHttpCacheHeadersFilter>();
+        });
         services.AddEndpointsApiExplorer();
 
         return services;
