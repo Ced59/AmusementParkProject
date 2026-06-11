@@ -12,6 +12,7 @@ import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { PagedResult, PaginationContract } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselImage } from '@ui/media';
+import { ParkDetailPhotoViewModel } from '../models/park-detail-view.model';
 import { buildPhotoCategories, buildPhotos } from '../mappers/park-detail-gallery.mapper';
 import {
   PARK_IMAGES_IMAGES_PORT,
@@ -46,7 +47,7 @@ export class ParkImagesStateFacade {
 
     return pagination.currentPage < pagination.totalPages;
   });
-  public readonly photos: Signal<UiPhotoCarouselImage[]> = computed(() => {
+  private readonly galleryPhotos: Signal<ParkDetailPhotoViewModel[]> = computed(() => {
     const currentData: ParkImagesPageData | undefined = this.screenStateStore.data();
     if (!currentData) {
       return [];
@@ -54,7 +55,8 @@ export class ParkImagesStateFacade {
 
     return buildPhotos(currentData.summary.park, currentData.images, [], [], this.currentLanguageSignal());
   });
-  public readonly categories: Signal<UiPhotoCarouselCategoryOption[]> = computed(() => buildPhotoCategories(this.photos()));
+  public readonly photos: Signal<UiPhotoCarouselImage[]> = computed(() => this.galleryPhotos());
+  public readonly categories: Signal<UiPhotoCarouselCategoryOption[]> = computed(() => buildPhotoCategories(this.galleryPhotos()));
 
   constructor(
     @Inject(PARK_IMAGES_PARKS_PORT) private readonly parksPort: ParkImagesParksPort,

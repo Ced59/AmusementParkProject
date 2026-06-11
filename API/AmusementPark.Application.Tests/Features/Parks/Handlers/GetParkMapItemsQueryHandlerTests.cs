@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Parks.Handlers;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Queries;
