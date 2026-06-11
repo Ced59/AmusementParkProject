@@ -9,28 +9,36 @@
     errorMessageKey: 'parks.mapPage.errorMessage'
   }">
   @if (currentPark) {
-    <section class="park-map-page">
-      <header class="park-map-hero">
-        <app-ui-kicker iconClass="pi pi-map-marker">
-          {{ 'parks.mapPage.kicker' | translate }}
-        </app-ui-kicker>
-        <h1>{{ 'parks.mapPage.title' | translate:{ name: currentPark.name } }}</h1>
-        <p>{{ 'parks.mapPage.subtitle' | translate:{ name: currentPark.name } }}</p>
+    <section class="park-map-page public-page">
+      <header class="park-subpage-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+        <div class="park-subpage-hero__content">
+          <div class="park-subpage-hero__meta">
+            <app-ui-kicker tone="sky" iconClass="pi pi-map-marker">
+              {{ 'parks.mapPage.kicker' | translate }}
+            </app-ui-kicker>
+            <app-ui-chip tone="gold" iconClass="pi pi-map-marker">
+              {{ currentPark.name }}
+            </app-ui-chip>
+          </div>
 
-        <div class="park-map-hero__actions">
-          @if (detailLink) {
-            <a appUiButton="ghost" [routerLink]="detailLink">
-              <i class="pi pi-arrow-left" aria-hidden="true"></i>
-              <span>{{ 'parks.mapPage.backToPark' | translate }}</span>
-            </a>
-          }
+          <h1 class="public-section-header__title">{{ 'parks.mapPage.title' | translate:{ name: currentPark.name } }}</h1>
+          <p class="public-section-header__subtitle">{{ 'parks.mapPage.subtitle' | translate:{ name: currentPark.name } }}</p>
 
-          @if (itemsLink) {
-            <a appUiButton="primary" [routerLink]="itemsLink">
-              <i class="pi pi-sitemap" aria-hidden="true"></i>
-              <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
-            </a>
-          }
+          <div class="park-subpage-hero__actions">
+            @if (detailLink) {
+              <a appUiButton="ghost" [routerLink]="detailLink">
+                <i class="pi pi-arrow-left" aria-hidden="true"></i>
+                <span>{{ 'parks.mapPage.backToPark' | translate:{ name: currentPark.name } }}</span>
+              </a>
+            }
+
+            @if (itemsLink) {
+              <a appUiButton="primary" [routerLink]="itemsLink">
+                <i class="pi pi-sitemap" aria-hidden="true"></i>
+                <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+              </a>
+            }
+          </div>
         </div>
       </header>
 

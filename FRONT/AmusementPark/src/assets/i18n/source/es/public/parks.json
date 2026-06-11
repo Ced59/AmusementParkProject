@@ -28,7 +28,9 @@
     "actions": {
       "viewDetails": "Ver detalles",
       "website": "Sitio web",
-      "backToList": "Volver a la lista"
+      "backToList": "Volver a la lista",
+      "images": "Imágenes",
+      "map": "Mapa"
     },
     "detail": {
       "heroBadge": "Vista general del parque",
@@ -249,6 +251,30 @@
       "lightbox": {
         "title": "Foto a pantalla completa"
       }
+    },
+    "imagesPage": {
+      "kicker": "Galería del parque",
+      "title": "Imágenes de {{name}}",
+      "subtitle": "Explora las imágenes publicadas de {{name}}. La galería carga las fotos por páginas para mantener una experiencia rápida.",
+      "loadingTitle": "Cargando imágenes",
+      "loadingMessage": "Preparando la galería del parque.",
+      "errorTitle": "Imágenes no disponibles",
+      "errorMessage": "No se pueden cargar las imágenes de este parque en este momento.",
+      "backToPark": "Volver a {{name}}",
+      "loadMore": "Cargar más imágenes",
+      "loadingMore": "Cargando…",
+      "emptyTitle": "No hay imágenes publicadas",
+      "emptyMessage": "Todavía no hay imágenes publicadas disponibles para {{name}}."
+    },
+    "mapPage": {
+      "kicker": "Mapa del parque",
+      "title": "Mapa de {{name}}",
+      "subtitle": "Explora los elementos geolocalizados de {{name}} en un mapa dedicado.",
+      "loadingTitle": "Cargando el mapa",
+      "loadingMessage": "Preparando los marcadores del parque.",
+      "errorTitle": "Mapa no disponible",
+      "errorMessage": "No se puede cargar el mapa de este parque en este momento.",
+      "backToPark": "Volver a {{name}}"
     }
   }
 }

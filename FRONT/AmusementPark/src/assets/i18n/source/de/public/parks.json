@@ -28,7 +28,9 @@
     "actions": {
       "viewDetails": "Details ansehen",
       "website": "Webseite",
-      "backToList": "Zurück zur Liste"
+      "backToList": "Zurück zur Liste",
+      "images": "Bilder",
+      "map": "Karte"
     },
     "detail": {
       "heroBadge": "Parkübersicht",
@@ -249,6 +251,30 @@
       "lightbox": {
         "title": "Vollbildfoto"
       }
+    },
+    "imagesPage": {
+      "kicker": "Parkgalerie",
+      "title": "Bilder von {{name}}",
+      "subtitle": "Durchsuche die veröffentlichten Bilder von {{name}}. Die Galerie lädt Fotos seitenweise, damit die Seite schnell bleibt.",
+      "loadingTitle": "Bilder werden geladen",
+      "loadingMessage": "Die Parkgalerie wird vorbereitet.",
+      "errorTitle": "Bilder nicht verfügbar",
+      "errorMessage": "Die Bilder dieses Parks können derzeit nicht geladen werden.",
+      "backToPark": "Zurück zu {{name}}",
+      "loadMore": "Weitere Bilder laden",
+      "loadingMore": "Laden…",
+      "emptyTitle": "Keine veröffentlichten Bilder",
+      "emptyMessage": "Für {{name}} sind noch keine veröffentlichten Bilder verfügbar."
+    },
+    "mapPage": {
+      "kicker": "Parkkarte",
+      "title": "Karte von {{name}}",
+      "subtitle": "Entdecke die geolokalisierten Elemente von {{name}} auf einer eigenen Karte.",
+      "loadingTitle": "Karte wird geladen",
+      "loadingMessage": "Die Parkmarker werden vorbereitet.",
+      "errorTitle": "Karte nicht verfügbar",
+      "errorMessage": "Die Karte dieses Parks kann derzeit nicht geladen werden.",
+      "backToPark": "Zurück zu {{name}}"
     }
   }
 }

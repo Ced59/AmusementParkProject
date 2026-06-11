@@ -1037,9 +1037,9 @@
       "actions": {
         "generate": "Regenerate",
         "generateWithoutIndexNow": "Generate without IndexNow",
-        "openSitemap": "Open",
         "generateSeoSsr": "Regenerate SEO/SSR",
-        "generateSeoSsrWithoutIndexNow": "SEO/SSR without IndexNow"
+        "generateSeoSsrWithoutIndexNow": "Regenerate SEO/SSR without IndexNow",
+        "openSitemap": "Open"
       },
       "stats": {
         "totalUrls": "Referenced URLs",
@@ -1049,6 +1049,12 @@
       },
       "lastResult": {
         "title": "Last result"
+      },
+      "prerender": {
+        "title": "SSR cache warmup",
+        "success": "success",
+        "failed": "failed",
+        "missingSitemap": "Unable to warm the SSR cache: sitemap index not found."
       },
       "publicFiles": {
         "title": "Public files",
@@ -1082,12 +1088,6 @@
           "indexNow": "IndexNow",
           "actor": "Actor"
         }
-      },
-      "prerender": {
-        "title": "SSR prerender / HTML cache",
-        "success": "succeeded",
-        "failed": "failed",
-        "missingSitemap": "SSR prerender cannot start: public sitemap not found."
       }
     },
     "tabs": {
@@ -1865,7 +1865,7 @@
       "viewDetails": "View details",
       "website": "Website",
       "backToList": "Back to list",
-      "images": "Photos",
+      "images": "Images",
       "map": "Map"
     },
     "detail": {
@@ -2090,27 +2090,27 @@
     },
     "imagesPage": {
       "kicker": "Park gallery",
-      "title": "Photos of {{name}}",
-      "subtitle": "Browse the published photos of {{name}}. Images are loaded page by page to preserve performance.",
-      "loadingTitle": "Loading photos",
+      "title": "Images of {{name}}",
+      "subtitle": "Browse the published images of {{name}}. The gallery loads photos page by page to keep the experience fast.",
+      "loadingTitle": "Loading images",
       "loadingMessage": "Preparing the park gallery.",
-      "errorTitle": "Photos unavailable",
-      "errorMessage": "Unable to load this park gallery right now.",
-      "backToPark": "Back to park",
-      "loadMore": "Load more photos",
-      "loadingMore": "Loading...",
-      "emptyTitle": "No published photos",
-      "emptyMessage": "No published photos are available for {{name}} yet."
+      "errorTitle": "Images unavailable",
+      "errorMessage": "The images for this park cannot be loaded right now.",
+      "backToPark": "Back to {{name}}",
+      "loadMore": "Load more images",
+      "loadingMore": "Loading…",
+      "emptyTitle": "No published images",
+      "emptyMessage": "No published image is available for {{name}} yet."
     },
     "mapPage": {
       "kicker": "Park map",
       "title": "Map of {{name}}",
-      "subtitle": "Explore geolocated items from {{name}} on a dedicated map.",
+      "subtitle": "Explore the geolocated elements of {{name}} on a dedicated map.",
       "loadingTitle": "Loading map",
-      "loadingMessage": "Preparing park markers.",
+      "loadingMessage": "Preparing the park markers.",
       "errorTitle": "Map unavailable",
-      "errorMessage": "Unable to load this park map right now.",
-      "backToPark": "Back to park"
+      "errorMessage": "The map for this park cannot be loaded right now.",
+      "backToPark": "Back to {{name}}"
     }
   },
   "privacyPage": {

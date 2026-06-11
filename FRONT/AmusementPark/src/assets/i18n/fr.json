@@ -1037,9 +1037,9 @@
       "actions": {
         "generate": "Régénérer",
         "generateWithoutIndexNow": "Générer sans IndexNow",
-        "openSitemap": "Afficher",
         "generateSeoSsr": "Régénérer SEO/SSR",
-        "generateSeoSsrWithoutIndexNow": "SEO/SSR sans IndexNow"
+        "generateSeoSsrWithoutIndexNow": "Régénérer SEO/SSR sans IndexNow",
+        "openSitemap": "Afficher"
       },
       "stats": {
         "totalUrls": "URLs référencées",
@@ -1049,6 +1049,12 @@
       },
       "lastResult": {
         "title": "Dernier résultat"
+      },
+      "prerender": {
+        "title": "Préchauffage du cache SSR",
+        "success": "succès",
+        "failed": "échecs",
+        "missingSitemap": "Impossible de préchauffer le cache SSR : sitemap index introuvable."
       },
       "publicFiles": {
         "title": "Fichiers publics",
@@ -1082,12 +1088,6 @@
           "indexNow": "IndexNow",
           "actor": "Acteur"
         }
-      },
-      "prerender": {
-        "title": "Prérendu SSR / cache HTML",
-        "success": "réussies",
-        "failed": "échouées",
-        "missingSitemap": "Impossible de lancer le prérendu SSR : sitemap public introuvable."
       }
     },
     "tabs": {
@@ -1865,7 +1865,7 @@
       "viewDetails": "Voir le détail",
       "website": "Site web",
       "backToList": "Retour à la liste",
-      "images": "Photos",
+      "images": "Images",
       "map": "Carte"
     },
     "detail": {
@@ -2090,17 +2090,17 @@
     },
     "imagesPage": {
       "kicker": "Galerie du parc",
-      "title": "Photos de {{name}}",
-      "subtitle": "Parcourez les photos publiées de {{name}}. Les images sont chargées par pages pour préserver les performances.",
-      "loadingTitle": "Chargement des photos",
+      "title": "Images de {{name}}",
+      "subtitle": "Parcourez les images publiées de {{name}}. La galerie charge les photos par pages pour préserver les performances.",
+      "loadingTitle": "Chargement des images",
       "loadingMessage": "Préparation de la galerie du parc.",
-      "errorTitle": "Photos indisponibles",
-      "errorMessage": "Impossible de charger les photos de ce parc pour le moment.",
-      "backToPark": "Retour au parc",
-      "loadMore": "Charger plus de photos",
-      "loadingMore": "Chargement...",
-      "emptyTitle": "Aucune photo publiée",
-      "emptyMessage": "Aucune photo publiée n’est encore disponible pour {{name}}."
+      "errorTitle": "Images indisponibles",
+      "errorMessage": "Impossible de charger les images de ce parc pour le moment.",
+      "backToPark": "Retour à {{name}}",
+      "loadMore": "Charger plus d’images",
+      "loadingMore": "Chargement…",
+      "emptyTitle": "Aucune image publiée",
+      "emptyMessage": "Aucune image publiée n’est encore disponible pour {{name}}."
     },
     "mapPage": {
       "kicker": "Carte du parc",
@@ -2110,7 +2110,7 @@
       "loadingMessage": "Préparation des marqueurs du parc.",
       "errorTitle": "Carte indisponible",
       "errorMessage": "Impossible de charger la carte de ce parc pour le moment.",
-      "backToPark": "Retour au parc"
+      "backToPark": "Retour à {{name}}"
     }
   },
   "privacyPage": {

@@ -1037,9 +1037,7 @@
       "actions": {
         "generate": "Opnieuw genereren",
         "generateWithoutIndexNow": "Genereren zonder IndexNow",
-        "openSitemap": "Openen",
-        "generateSeoSsr": "SEO/SSR opnieuw genereren",
-        "generateSeoSsrWithoutIndexNow": "SEO/SSR zonder IndexNow"
+        "openSitemap": "Openen"
       },
       "stats": {
         "totalUrls": "Gerefereerde URLs",
@@ -1082,12 +1080,6 @@
           "indexNow": "IndexNow",
           "actor": "Actor"
         }
-      },
-      "prerender": {
-        "title": "SSR-prerender / HTML-cache",
-        "success": "gelukt",
-        "failed": "mislukt",
-        "missingSitemap": "SSR-prerender kan niet starten: publieke sitemap niet gevonden."
       }
     },
     "tabs": {
@@ -1865,8 +1857,8 @@
       "viewDetails": "Details bekijken",
       "website": "Website",
       "backToList": "Terug naar de lijst",
-      "images": "Photos",
-      "map": "Map"
+      "images": "Afbeeldingen",
+      "map": "Kaart"
     },
     "detail": {
       "heroBadge": "Parkoverzicht",
@@ -2089,28 +2081,28 @@
       }
     },
     "imagesPage": {
-      "kicker": "Park gallery",
-      "title": "Photos of {{name}}",
-      "subtitle": "Browse the published photos of {{name}}. Images are loaded page by page to preserve performance.",
-      "loadingTitle": "Loading photos",
-      "loadingMessage": "Preparing the park gallery.",
-      "errorTitle": "Photos unavailable",
-      "errorMessage": "Unable to load this park gallery right now.",
-      "backToPark": "Back to park",
-      "loadMore": "Load more photos",
-      "loadingMore": "Loading...",
-      "emptyTitle": "No published photos",
-      "emptyMessage": "No published photos are available for {{name}} yet."
+      "kicker": "Parkgalerij",
+      "title": "Afbeeldingen van {{name}}",
+      "subtitle": "Bekijk de gepubliceerde afbeeldingen van {{name}}. De galerij laadt foto’s per pagina om de ervaring snel te houden.",
+      "loadingTitle": "Afbeeldingen laden",
+      "loadingMessage": "De parkgalerij wordt voorbereid.",
+      "errorTitle": "Afbeeldingen niet beschikbaar",
+      "errorMessage": "De afbeeldingen van dit park kunnen momenteel niet worden geladen.",
+      "backToPark": "Terug naar {{name}}",
+      "loadMore": "Meer afbeeldingen laden",
+      "loadingMore": "Laden…",
+      "emptyTitle": "Geen gepubliceerde afbeeldingen",
+      "emptyMessage": "Er zijn nog geen gepubliceerde afbeeldingen beschikbaar voor {{name}}."
     },
     "mapPage": {
-      "kicker": "Park map",
-      "title": "Map of {{name}}",
-      "subtitle": "Explore geolocated items from {{name}} on a dedicated map.",
-      "loadingTitle": "Loading map",
-      "loadingMessage": "Preparing park markers.",
-      "errorTitle": "Map unavailable",
-      "errorMessage": "Unable to load this park map right now.",
-      "backToPark": "Back to park"
+      "kicker": "Parkkaart",
+      "title": "Kaart van {{name}}",
+      "subtitle": "Verken de geolokaliseerde elementen van {{name}} op een aparte kaart.",
+      "loadingTitle": "Kaart laden",
+      "loadingMessage": "De parkmarkeringen worden voorbereid.",
+      "errorTitle": "Kaart niet beschikbaar",
+      "errorMessage": "De kaart van dit park kan momenteel niet worden geladen.",
+      "backToPark": "Terug naar {{name}}"
     }
   },
   "privacyPage": {

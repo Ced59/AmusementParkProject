@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Park } from '@app/models/parks/park';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
-import { UiButtonDirective, UiKickerComponent } from '@ui/primitives';
+import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselComponent, UiPhotoCarouselImage } from '@ui/media';
 
 @Component({
@@ -18,7 +18,9 @@ import { UiPhotoCarouselCategoryOption, UiPhotoCarouselComponent, UiPhotoCarouse
     RouterLink,
     TranslateModule,
     UiButtonDirective,
+    UiChipComponent,
     UiKickerComponent,
+    UiSurfaceDirective,
     UiPhotoCarouselComponent
   ]
 })

@@ -1037,9 +1037,7 @@
       "actions": {
         "generate": "Regenerar",
         "generateWithoutIndexNow": "Gerar sem IndexNow",
-        "openSitemap": "Abrir",
-        "generateSeoSsr": "Regenerar SEO/SSR",
-        "generateSeoSsrWithoutIndexNow": "SEO/SSR sem IndexNow"
+        "openSitemap": "Abrir"
       },
       "stats": {
         "totalUrls": "URLs referenciados",
@@ -1082,12 +1080,6 @@
           "indexNow": "IndexNow",
           "actor": "Ator"
         }
-      },
-      "prerender": {
-        "title": "Pré-render SSR / cache HTML",
-        "success": "com sucesso",
-        "failed": "falhadas",
-        "missingSitemap": "Não é possível iniciar o pré-render SSR: sitemap público não encontrado."
       }
     },
     "tabs": {
@@ -1865,8 +1857,8 @@
       "viewDetails": "Ver detalhes",
       "website": "Site",
       "backToList": "Voltar à lista",
-      "images": "Photos",
-      "map": "Map"
+      "images": "Imagens",
+      "map": "Mapa"
     },
     "detail": {
       "heroBadge": "Visão geral do parque",
@@ -2089,28 +2081,28 @@
       }
     },
     "imagesPage": {
-      "kicker": "Park gallery",
-      "title": "Photos of {{name}}",
-      "subtitle": "Browse the published photos of {{name}}. Images are loaded page by page to preserve performance.",
-      "loadingTitle": "Loading photos",
-      "loadingMessage": "Preparing the park gallery.",
-      "errorTitle": "Photos unavailable",
-      "errorMessage": "Unable to load this park gallery right now.",
-      "backToPark": "Back to park",
-      "loadMore": "Load more photos",
-      "loadingMore": "Loading...",
-      "emptyTitle": "No published photos",
-      "emptyMessage": "No published photos are available for {{name}} yet."
+      "kicker": "Galeria do parque",
+      "title": "Imagens de {{name}}",
+      "subtitle": "Explore as imagens publicadas de {{name}}. A galeria carrega fotos por páginas para manter a experiência rápida.",
+      "loadingTitle": "A carregar imagens",
+      "loadingMessage": "A preparar a galeria do parque.",
+      "errorTitle": "Imagens indisponíveis",
+      "errorMessage": "Não é possível carregar as imagens deste parque neste momento.",
+      "backToPark": "Voltar a {{name}}",
+      "loadMore": "Carregar mais imagens",
+      "loadingMore": "A carregar…",
+      "emptyTitle": "Sem imagens publicadas",
+      "emptyMessage": "Ainda não há imagens publicadas disponíveis para {{name}}."
     },
     "mapPage": {
-      "kicker": "Park map",
-      "title": "Map of {{name}}",
-      "subtitle": "Explore geolocated items from {{name}} on a dedicated map.",
-      "loadingTitle": "Loading map",
-      "loadingMessage": "Preparing park markers.",
-      "errorTitle": "Map unavailable",
-      "errorMessage": "Unable to load this park map right now.",
-      "backToPark": "Back to park"
+      "kicker": "Mapa do parque",
+      "title": "Mapa de {{name}}",
+      "subtitle": "Explore os elementos geolocalizados de {{name}} num mapa dedicado.",
+      "loadingTitle": "A carregar mapa",
+      "loadingMessage": "A preparar os marcadores do parque.",
+      "errorTitle": "Mapa indisponível",
+      "errorMessage": "Não é possível carregar o mapa deste parque neste momento.",
+      "backToPark": "Voltar a {{name}}"
     }
   },
   "privacyPage": {

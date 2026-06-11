@@ -28,7 +28,9 @@
     "actions": {
       "viewDetails": "Details bekijken",
       "website": "Website",
-      "backToList": "Terug naar de lijst"
+      "backToList": "Terug naar de lijst",
+      "images": "Afbeeldingen",
+      "map": "Kaart"
     },
     "detail": {
       "heroBadge": "Parkoverzicht",
@@ -249,6 +251,30 @@
       "lightbox": {
         "title": "Foto op volledig scherm"
       }
+    },
+    "imagesPage": {
+      "kicker": "Parkgalerij",
+      "title": "Afbeeldingen van {{name}}",
+      "subtitle": "Bekijk de gepubliceerde afbeeldingen van {{name}}. De galerij laadt foto’s per pagina om de ervaring snel te houden.",
+      "loadingTitle": "Afbeeldingen laden",
+      "loadingMessage": "De parkgalerij wordt voorbereid.",
+      "errorTitle": "Afbeeldingen niet beschikbaar",
+      "errorMessage": "De afbeeldingen van dit park kunnen momenteel niet worden geladen.",
+      "backToPark": "Terug naar {{name}}",
+      "loadMore": "Meer afbeeldingen laden",
+      "loadingMore": "Laden…",
+      "emptyTitle": "Geen gepubliceerde afbeeldingen",
+      "emptyMessage": "Er zijn nog geen gepubliceerde afbeeldingen beschikbaar voor {{name}}."
+    },
+    "mapPage": {
+      "kicker": "Parkkaart",
+      "title": "Kaart van {{name}}",
+      "subtitle": "Verken de geolokaliseerde elementen van {{name}} op een aparte kaart.",
+      "loadingTitle": "Kaart laden",
+      "loadingMessage": "De parkmarkeringen worden voorbereid.",
+      "errorTitle": "Kaart niet beschikbaar",
+      "errorMessage": "De kaart van dit park kan momenteel niet worden geladen.",
+      "backToPark": "Terug naar {{name}}"
     }
   }
 }
