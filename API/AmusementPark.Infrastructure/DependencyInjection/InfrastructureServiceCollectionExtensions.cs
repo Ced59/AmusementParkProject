@@ -91,6 +91,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IAttractionManufacturerRepository, AttractionManufacturerRepository>();
         services.AddScoped<IParkRepository, ParkRepository>();
         services.AddScoped<IParkDetailSummaryReadRepository, ParkDetailSummaryReadRepository>();
+        services.AddScoped<IParkMapItemsReadRepository, ParkMapItemsReadRepository>();
         services.AddScoped<IParkZoneRepository, ParkZoneRepository>();
         services.AddScoped<IParkItemRepository, ParkItemRepository>();
         services.AddScoped<IAttractionAccessConditionTypeDefinitionRepository, AttractionAccessConditionTypeDefinitionRepository>();

@@ -48,7 +48,6 @@ public sealed class ImagesController : ControllerBase
     private readonly IQueryHandler<GetAllImagesQuery, ApplicationResult<IReadOnlyCollection<Image>>> getAllImagesQueryHandler;
     private readonly IQueryHandler<GetImagesPageQuery, ApplicationResult<PagedResult<Image>>> getImagesPageQueryHandler;
     private readonly IQueryHandler<GetCurrentImageQuery, ApplicationResult<Image>> getCurrentImageQueryHandler;
-    private readonly IQueryHandler<GetImagesByOwnerQuery, ApplicationResult<IReadOnlyCollection<Image>>> getImagesByOwnerQueryHandler;
     private readonly IQueryHandler<ListImageTagsQuery, ApplicationResult<IReadOnlyCollection<ImageTag>>> listImageTagsQueryHandler;
     private readonly IImageBinaryStorage imageBinaryStorage;
 
@@ -65,7 +64,6 @@ public sealed class ImagesController : ControllerBase
         IQueryHandler<GetAllImagesQuery, ApplicationResult<IReadOnlyCollection<Image>>> getAllImagesQueryHandler,
         IQueryHandler<GetImagesPageQuery, ApplicationResult<PagedResult<Image>>> getImagesPageQueryHandler,
         IQueryHandler<GetCurrentImageQuery, ApplicationResult<Image>> getCurrentImageQueryHandler,
-        IQueryHandler<GetImagesByOwnerQuery, ApplicationResult<IReadOnlyCollection<Image>>> getImagesByOwnerQueryHandler,
         IQueryHandler<ListImageTagsQuery, ApplicationResult<IReadOnlyCollection<ImageTag>>> listImageTagsQueryHandler,
         IImageBinaryStorage imageBinaryStorage)
     {
@@ -81,7 +79,6 @@ public sealed class ImagesController : ControllerBase
         this.getAllImagesQueryHandler = getAllImagesQueryHandler;
         this.getImagesPageQueryHandler = getImagesPageQueryHandler;
         this.getCurrentImageQueryHandler = getCurrentImageQueryHandler;
-        this.getImagesByOwnerQueryHandler = getImagesByOwnerQueryHandler;
         this.listImageTagsQueryHandler = listImageTagsQueryHandler;
         this.imageBinaryStorage = imageBinaryStorage;
     }
@@ -179,16 +176,22 @@ public sealed class ImagesController : ControllerBase
             return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid category.", "image.category-invalid");
         }
 
-        ApplicationResult<IReadOnlyCollection<Image>> result = await this.getImagesByOwnerQueryHandler.HandleAsync(
-            new GetImagesByOwnerQuery(ownerId, parsedOwnerType.ToDomain(), parsedCategory.ToDomain()),
-            cancellationToken);
+        bool canSeeNonVisible = this.UserCanSeeNonVisible();
+        ImageSearchCriteria criteria = new ImageSearchCriteria(
+            Category: parsedCategory.ToDomain(),
+            OwnerType: parsedOwnerType.ToDomain(),
+            OwnerId: ownerId,
+            IsPublished: canSeeNonVisible ? null : true,
+            SortBy: "created",
+            SortDirection: "desc");
 
+        ApplicationResult<PagedResult<Image>> result = await this.getImagesPageQueryHandler.HandleAsync(new GetImagesPageQuery(pagination.ToApplication(), criteria), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<ImageDto> response = pagination.ToPagedResponse(result.Value, static imageValue => imageValue.ToHttp());
+        PagedResponseDto<ImageDto> response = result.Value.ToPagedResponse(static imageValue => imageValue.ToHttp());
         return this.Ok(response);
     }
 
@@ -380,5 +383,10 @@ public sealed class ImagesController : ControllerBase
         this.Response.Headers.CacheControl = "public,max-age=31536000,immutable";
         this.Response.Headers.Vary = "Accept";
         return this.File(binary.Value.Stream, binary.Value.ContentType);
+    }
+
+    private bool UserCanSeeNonVisible()
+    {
+        return this.User?.IsInRole("ADMIN") == true;
     }
 }

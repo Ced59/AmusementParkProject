@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.park-map-page {
+  display: grid;
+  gap: clamp(1.1rem, 3vw, 1.8rem);
+}
+
+.park-map-hero {
+  border: 1px solid rgba(129, 212, 250, 0.22);
+  border-radius: 1.6rem;
+  padding: clamp(1.2rem, 4vw, 2rem);
+  background: linear-gradient(135deg, rgba(14, 34, 54, 0.92), rgba(10, 17, 28, 0.94));
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.22);
+}
+
+.park-map-hero h1 {
+  margin: 0.7rem 0 0.45rem;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.95;
+}
+
+.park-map-hero p {
+  max-width: 64rem;
+  margin: 0;
+  color: var(--text-muted, #b6c5d8);
+}
+
+.park-map-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}

@@ -1,0 +1,57 @@
+:host {
+  display: block;
+}
+
+.park-images-page {
+  display: grid;
+  gap: clamp(1.1rem, 3vw, 1.8rem);
+}
+
+.park-images-hero {
+  border: 1px solid rgba(129, 212, 250, 0.22);
+  border-radius: 1.6rem;
+  padding: clamp(1.2rem, 4vw, 2rem);
+  background: linear-gradient(135deg, rgba(14, 34, 54, 0.92), rgba(10, 17, 28, 0.94));
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.22);
+}
+
+.park-images-hero h1 {
+  margin: 0.7rem 0 0.45rem;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.95;
+}
+
+.park-images-hero p {
+  max-width: 64rem;
+  margin: 0;
+  color: var(--text-muted, #b6c5d8);
+}
+
+.park-images-hero__actions,
+.park-images-page__load-more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+.park-images-empty {
+  display: grid;
+  justify-items: center;
+  gap: 0.7rem;
+  padding: clamp(2rem, 6vw, 4rem);
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  border-radius: 1.5rem;
+  text-align: center;
+  color: var(--text-muted, #b6c5d8);
+}
+
+.park-images-empty i {
+  font-size: 2.5rem;
+  color: var(--accent-sky, #38c5f5);
+}
+
+.park-images-empty h2,
+.park-images-empty p {
+  margin: 0;
+}

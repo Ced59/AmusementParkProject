@@ -77,6 +77,20 @@
               </button>
             }
 
+            @if (currentPark.imagesLink) {
+              <a appUiButton="ghost" [routerLink]="currentPark.imagesLink">
+                <i class="pi pi-images" aria-hidden="true"></i>
+                <span>{{ 'parks.actions.images' | translate }}</span>
+              </a>
+            }
+
+            @if (currentPark.mapLink) {
+              <a appUiButton="ghost" [routerLink]="currentPark.mapLink">
+                <i class="pi pi-map" aria-hidden="true"></i>
+                <span>{{ 'parks.actions.map' | translate }}</span>
+              </a>
+            }
+
             @if (currentPark.websiteUrl) {
               <a
                 appUiButton="ghost"

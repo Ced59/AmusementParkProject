@@ -155,6 +155,34 @@ internal static class ParksHttpMappers
         };
     }
 
+
+    public static ParkMapItemsDto ToMapItemsHttp(this ParkMapItemsResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkMapItemsDto
+        {
+            Park = value.Park.ToHttp(),
+            Items = value.Items.Select(static item => new ParkMapItemDto
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Category = item.Category.ToString(),
+                Type = item.Type.ToString(),
+                Subtype = item.Subtype,
+                ZoneId = item.ZoneId,
+                Latitude = item.Latitude,
+                Longitude = item.Longitude,
+            }).ToList(),
+            Zones = value.Zones.Select(static zone => new ParkMapZoneDto
+            {
+                Id = zone.Id,
+                Name = zone.Name,
+                SortOrder = zone.SortOrder,
+            }).ToList(),
+        };
+    }
+
     public static ParkMapPointDto ToMapPointHttp(this Park value)
     {
         ArgumentNullException.ThrowIfNull(value);
