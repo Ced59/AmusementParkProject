@@ -126,7 +126,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             foreach (string language in languages)
             {
                 urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc));
-                urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/items", park.UpdatedAtUtc));
+                urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc));
             }
         }
     }

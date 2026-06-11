@@ -102,7 +102,7 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             foreach (string language in languages)
             {
                 urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc, "weekly", 0.85m));
-                urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/items", park.UpdatedAtUtc, "weekly", 0.75m));
+                urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc, "weekly", 0.72m));
             }
         }
 

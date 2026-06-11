@@ -169,6 +169,17 @@ export class SeoService {
       return;
     }
 
+    if (this.isPublicParkMapRoute(url) || this.isPublicParkItemsRoute(url) || this.isFilteredPublicParkImagesRoute(url)) {
+      this.apply({
+        title: SITE_NAME,
+        description: DEFAULT_DESCRIPTION,
+        canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+        robots: 'noindex,follow',
+        alternates: this.hreflangService.buildAlternates(url),
+      });
+      return;
+    }
+
     const staticRouteKey: string | null = this.resolveStaticRouteKey(url);
     if (staticRouteKey === 'notFound') {
       this.apply(this.buildStaticRouteData(staticRouteKey, language, url, 'noindex,follow'));
@@ -237,7 +248,7 @@ export class SeoService {
       title: `Photos of ${park.name ?? 'park'}${titleSuffix} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
-      robots: 'index,follow',
+      robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url)
     });
   }
@@ -520,6 +531,32 @@ export class SeoService {
 
   private isAccountRoute(url: string): boolean {
     return /^\/[a-z]{2}\/(?:profile|confirm-account|forgot-password|reset-password)(?:\/|$)/i.test(this.normalizePath(url));
+  }
+
+  private isPublicParkMapRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/map\/?$/i.test(this.normalizePath(url));
+  }
+
+  private isPublicParkItemsRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/items\/?$/i.test(this.normalizePath(url));
+  }
+
+  private isFilteredPublicParkImagesRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/images\/?$/i.test(this.normalizePath(url))
+      && this.hasQueryString(url);
+  }
+
+  private hasQueryString(url: string): boolean {
+    const trimmedUrl: string = url?.trim() ?? '';
+
+    try {
+      const documentOrigin: string | undefined = this.document.location?.origin;
+      const baseUrl: string = documentOrigin && documentOrigin !== 'null' ? documentOrigin : 'https://amusement-parks.fun';
+      const parsedUrl: URL = new URL(trimmedUrl || '/', baseUrl);
+      return parsedUrl.search.length > 0;
+    } catch {
+      return trimmedUrl.includes('?');
+    }
   }
 
   private getPathSegments(url: string): string[] {
