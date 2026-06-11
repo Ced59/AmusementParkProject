@@ -84,7 +84,7 @@ export function mapParkToDetailViewModel(
   const locationRows: ParkDetailInfoRowViewModel[] = buildLocationRows(hasLocationInfo, park.latitude, park.longitude);
   const stats: ParkDetailStatViewModel[] = buildStats(totalItems, zoneCount, countryName, type);
   const photos: ParkDetailPhotoViewModel[] = buildPhotos(park, parkPhotos, itemPhotoSources, imageTags, currentLanguage);
-  const heroImageId: string | null = resolveParkHeroImageId(parkPhotos);
+  const heroImageId: string | null = resolveParkHeroImageId(parkPhotos) ?? logoImageId;
 
   return {
     id: park.id ?? null,
