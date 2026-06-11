@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, skip } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
-import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
+import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ParkListStateFacade } from '../state/park-list-state.facade';
@@ -35,6 +35,7 @@ export class ParkListPageComponent implements OnInit {
   protected readonly searchTerm = signal<string>('');
 
   private readonly searchSubject: Subject<string> = new Subject<string>();
+  private activeLanguage: string | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -49,16 +50,11 @@ export class ParkListPageComponent implements OnInit {
   ngOnInit(): void {
     const initialLanguage: string = resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en');
 
-    this.currentLang.set(initialLanguage);
-    this.stateFacade.setCurrentLanguage(initialLanguage);
-    this.seoService.applyParkListSeo(initialLanguage, this.router.url);
-
+    this.applyLanguage(initialLanguage, false);
+    this.watchRouteLanguageChanges();
 
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
-      this.currentLang.set(language);
-      this.stateFacade.setCurrentLanguage(language);
-      this.seoService.applyParkListSeo(language, this.router.url);
-      this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
+      this.applyLanguage(language, true);
     });
 
     this.searchSubject.pipe(
@@ -72,6 +68,33 @@ export class ParkListPageComponent implements OnInit {
 
     this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
     this.stateFacade.loadParks(1, this.stateFacade.pageSize(), this.searchTerm(), this.selectedRegion());
+  }
+
+  private watchRouteLanguageChanges(): void {
+    const languageRoute: ActivatedRoute | null = findNearestLanguageActivatedRoute(this.route);
+
+    languageRoute?.paramMap.pipe(
+      skip(1),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((params: ParamMap) => {
+      const language: string = resolveLanguageFromParamMap(params, this.currentLang());
+      this.applyLanguage(language, true);
+    });
+  }
+
+  private applyLanguage(language: string, reloadVisibleMapPoints: boolean): void {
+    if (this.activeLanguage === language) {
+      return;
+    }
+
+    this.activeLanguage = language;
+    this.currentLang.set(language);
+    this.stateFacade.setCurrentLanguage(language);
+    this.seoService.applyParkListSeo(language, this.router.url);
+
+    if (reloadVisibleMapPoints) {
+      this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
+    }
   }
 
   onSearchInput(value: string): void {

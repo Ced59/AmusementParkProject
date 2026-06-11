@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { LANGUAGES } from '@shared/models/localization';
 
@@ -14,6 +14,32 @@ export function resolveLanguageFromActivatedRoute(route: ActivatedRoute, fallbac
     }
 
     currentRoute = currentRoute.parent ?? null;
+  }
+
+  return isSupportedRouteLanguage(fallback) ? fallback : 'en';
+}
+
+
+export function findNearestLanguageActivatedRoute(route: ActivatedRoute): ActivatedRoute | null {
+  let currentRoute: ActivatedRoute | null = route;
+
+  while (currentRoute !== null) {
+    const language: string | null = currentRoute.snapshot?.paramMap?.get('lang') ?? null;
+    if (isSupportedRouteLanguage(language)) {
+      return currentRoute;
+    }
+
+    currentRoute = currentRoute.parent ?? null;
+  }
+
+  return null;
+}
+
+export function resolveLanguageFromParamMap(paramMap: ParamMap, fallback: string = 'en'): string {
+  const language: string | null = paramMap.get('lang');
+
+  if (isSupportedRouteLanguage(language)) {
+    return language;
   }
 
   return isSupportedRouteLanguage(fallback) ? fallback : 'en';
