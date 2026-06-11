@@ -28,7 +28,9 @@
     "actions": {
       "viewDetails": "Voir le détail",
       "website": "Site web",
-      "backToList": "Retour à la liste"
+      "backToList": "Retour à la liste",
+      "images": "Images",
+      "map": "Carte"
     },
     "detail": {
       "heroBadge": "Vue d’ensemble du parc",
@@ -249,6 +251,30 @@
       "lightbox": {
         "title": "Photo en plein écran"
       }
+    },
+    "imagesPage": {
+      "kicker": "Galerie du parc",
+      "title": "Images de {{name}}",
+      "subtitle": "Parcourez les images publiées de {{name}}. La galerie charge les photos par pages pour préserver les performances.",
+      "loadingTitle": "Chargement des images",
+      "loadingMessage": "Préparation de la galerie du parc.",
+      "errorTitle": "Images indisponibles",
+      "errorMessage": "Impossible de charger les images de ce parc pour le moment.",
+      "backToPark": "Retour à {{name}}",
+      "loadMore": "Charger plus d’images",
+      "loadingMore": "Chargement…",
+      "emptyTitle": "Aucune image publiée",
+      "emptyMessage": "Aucune image publiée n’est encore disponible pour {{name}}."
+    },
+    "mapPage": {
+      "kicker": "Carte du parc",
+      "title": "Carte de {{name}}",
+      "subtitle": "Explorez les éléments géolocalisés de {{name}} sur une carte dédiée.",
+      "loadingTitle": "Chargement de la carte",
+      "loadingMessage": "Préparation des marqueurs du parc.",
+      "errorTitle": "Carte indisponible",
+      "errorMessage": "Impossible de charger la carte de ce parc pour le moment.",
+      "backToPark": "Retour à {{name}}"
     }
   }
 }

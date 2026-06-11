@@ -249,7 +249,8 @@ export class SeoService {
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
-      alternates: this.hreflangService.buildAlternates(url)
+      alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, url, this.resolveParkImagesBreadcrumbLabel(language, park.name ?? 'park'))]
     });
   }
 
@@ -265,7 +266,8 @@ export class SeoService {
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: 'noindex,follow',
-      alternates: this.hreflangService.buildAlternates(url)
+      alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, url, this.resolveParkMapBreadcrumbLabel(language, park.name ?? 'park'))]
     });
   }
 
@@ -387,6 +389,53 @@ export class SeoService {
 
     jsonLd.push(parkJsonLd);
     return jsonLd;
+  }
+
+
+  private buildParkSubpageBreadcrumbJsonLd(park: Park, url: string, pageLabel: string): unknown {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const language: string = this.resolveLanguageFromUrl(url);
+    const segments: string[] = this.getPathSegments(url);
+    const parkDetailPath: string = segments.length >= 4
+      ? `/${segments.slice(0, 4).join('/')}`
+      : `/${language}/parks`;
+
+    return this.buildBreadcrumbJsonLd([
+      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
+      { name: park.name ?? 'Park', url: this.canonicalUrlService.buildAbsoluteUrl(parkDetailPath) },
+      { name: pageLabel, url: canonicalUrl }
+    ]);
+  }
+
+  private resolveParkImagesBreadcrumbLabel(language: string, parkLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Images ${parkLabel}`,
+      en: `${parkLabel} images`,
+      es: `Imágenes de ${parkLabel}`,
+      de: `Bilder von ${parkLabel}`,
+      it: `Immagini di ${parkLabel}`,
+      nl: `Afbeeldingen van ${parkLabel}`,
+      pl: `Zdjęcia ${parkLabel}`,
+      pt: `Imagens de ${parkLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkMapBreadcrumbLabel(language: string, parkLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Carte ${parkLabel}`,
+      en: `${parkLabel} map`,
+      es: `Mapa de ${parkLabel}`,
+      de: `Karte von ${parkLabel}`,
+      it: `Mappa di ${parkLabel}`,
+      nl: `Kaart van ${parkLabel}`,
+      pl: `Mapa ${parkLabel}`,
+      pt: `Mapa de ${parkLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
   }
 
   private buildParkItemDetailJsonLd(detail: ParkItemDetailViewModel, url: string): unknown[] {

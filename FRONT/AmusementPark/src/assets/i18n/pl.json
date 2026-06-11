@@ -1037,9 +1037,7 @@
       "actions": {
         "generate": "Wygeneruj ponownie",
         "generateWithoutIndexNow": "Generuj bez IndexNow",
-        "openSitemap": "Otwórz",
-        "generateSeoSsr": "Wygeneruj SEO/SSR",
-        "generateSeoSsrWithoutIndexNow": "SEO/SSR bez IndexNow"
+        "openSitemap": "Otwórz"
       },
       "stats": {
         "totalUrls": "Adresy URL",
@@ -1082,12 +1080,6 @@
           "indexNow": "IndexNow",
           "actor": "Aktor"
         }
-      },
-      "prerender": {
-        "title": "Prerender SSR / cache HTML",
-        "success": "udane",
-        "failed": "nieudane",
-        "missingSitemap": "Nie można uruchomić prerendera SSR: nie znaleziono publicznej mapy witryny."
       }
     },
     "tabs": {
@@ -1865,8 +1857,8 @@
       "viewDetails": "Zobacz szczegóły",
       "website": "Strona internetowa",
       "backToList": "Wróć do listy",
-      "images": "Photos",
-      "map": "Map"
+      "images": "Zdjęcia",
+      "map": "Mapa"
     },
     "detail": {
       "heroBadge": "Przegląd parku",
@@ -2089,28 +2081,28 @@
       }
     },
     "imagesPage": {
-      "kicker": "Park gallery",
-      "title": "Photos of {{name}}",
-      "subtitle": "Browse the published photos of {{name}}. Images are loaded page by page to preserve performance.",
-      "loadingTitle": "Loading photos",
-      "loadingMessage": "Preparing the park gallery.",
-      "errorTitle": "Photos unavailable",
-      "errorMessage": "Unable to load this park gallery right now.",
-      "backToPark": "Back to park",
-      "loadMore": "Load more photos",
-      "loadingMore": "Loading...",
-      "emptyTitle": "No published photos",
-      "emptyMessage": "No published photos are available for {{name}} yet."
+      "kicker": "Galeria parku",
+      "title": "Zdjęcia {{name}}",
+      "subtitle": "Przeglądaj opublikowane zdjęcia {{name}}. Galeria ładuje zdjęcia stronami, aby zachować szybkość działania.",
+      "loadingTitle": "Ładowanie zdjęć",
+      "loadingMessage": "Przygotowywanie galerii parku.",
+      "errorTitle": "Zdjęcia niedostępne",
+      "errorMessage": "Nie można teraz załadować zdjęć tego parku.",
+      "backToPark": "Wróć do {{name}}",
+      "loadMore": "Załaduj więcej zdjęć",
+      "loadingMore": "Ładowanie…",
+      "emptyTitle": "Brak opublikowanych zdjęć",
+      "emptyMessage": "Dla {{name}} nie ma jeszcze dostępnych opublikowanych zdjęć."
     },
     "mapPage": {
-      "kicker": "Park map",
-      "title": "Map of {{name}}",
-      "subtitle": "Explore geolocated items from {{name}} on a dedicated map.",
-      "loadingTitle": "Loading map",
-      "loadingMessage": "Preparing park markers.",
-      "errorTitle": "Map unavailable",
-      "errorMessage": "Unable to load this park map right now.",
-      "backToPark": "Back to park"
+      "kicker": "Mapa parku",
+      "title": "Mapa {{name}}",
+      "subtitle": "Przeglądaj geolokalizowane elementy {{name}} na dedykowanej mapie.",
+      "loadingTitle": "Ładowanie mapy",
+      "loadingMessage": "Przygotowywanie znaczników parku.",
+      "errorTitle": "Mapa niedostępna",
+      "errorMessage": "Nie można teraz załadować mapy tego parku.",
+      "backToPark": "Wróć do {{name}}"
     }
   },
   "privacyPage": {

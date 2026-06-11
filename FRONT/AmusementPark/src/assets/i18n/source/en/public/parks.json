@@ -28,7 +28,9 @@
     "actions": {
       "viewDetails": "View details",
       "website": "Website",
-      "backToList": "Back to list"
+      "backToList": "Back to list",
+      "images": "Images",
+      "map": "Map"
     },
     "detail": {
       "heroBadge": "Park overview",
@@ -249,6 +251,30 @@
       "lightbox": {
         "title": "Fullscreen photo"
       }
+    },
+    "imagesPage": {
+      "kicker": "Park gallery",
+      "title": "Images of {{name}}",
+      "subtitle": "Browse the published images of {{name}}. The gallery loads photos page by page to keep the experience fast.",
+      "loadingTitle": "Loading images",
+      "loadingMessage": "Preparing the park gallery.",
+      "errorTitle": "Images unavailable",
+      "errorMessage": "The images for this park cannot be loaded right now.",
+      "backToPark": "Back to {{name}}",
+      "loadMore": "Load more images",
+      "loadingMore": "Loading…",
+      "emptyTitle": "No published images",
+      "emptyMessage": "No published image is available for {{name}} yet."
+    },
+    "mapPage": {
+      "kicker": "Park map",
+      "title": "Map of {{name}}",
+      "subtitle": "Explore the geolocated elements of {{name}} on a dedicated map.",
+      "loadingTitle": "Loading map",
+      "loadingMessage": "Preparing the park markers.",
+      "errorTitle": "Map unavailable",
+      "errorMessage": "The map for this park cannot be loaded right now.",
+      "backToPark": "Back to {{name}}"
     }
   }
 }

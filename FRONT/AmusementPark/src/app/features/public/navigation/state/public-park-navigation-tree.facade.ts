@@ -16,8 +16,10 @@ import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import {
+  buildPublicParkImagesRouteCommands,
   buildPublicParkItemRouteCommands,
   buildPublicParkItemsRouteCommands,
+  buildPublicParkMapRouteCommands,
   buildPublicParkRouteCommands
 } from '@shared/utils/routing/public-detail-route.helpers';
 import {
@@ -40,7 +42,7 @@ interface PublicParkRouteContext {
   readonly itemId: string | null;
   readonly itemSlug: string | null;
   readonly selectedZoneId: string | null;
-  readonly pageKind: 'park-detail' | 'park-items' | 'park-item-detail';
+  readonly pageKind: 'park-detail' | 'park-items' | 'park-item-detail' | 'park-images' | 'park-map';
 }
 
 interface PublicParkNavigationSourceData {
@@ -165,6 +167,8 @@ export class PublicParkNavigationTreeFacade {
     const itemLabel: string | null = sourceData.item?.name ?? null;
     const parkRoute: string[] = this.buildParkRoute(sourceData);
     const parkItemsRoute: string[] = this.buildParkItemsRoute(sourceData);
+    const parkImagesRoute: string[] = this.buildParkImagesRoute(sourceData);
+    const parkMapRoute: string[] = this.buildParkMapRoute(sourceData);
     const items: PublicParkNavigationTreeItem[] = [
       {
         id: 'parks-list',
@@ -207,6 +211,28 @@ export class PublicParkNavigationTreeFacade {
       });
     }
 
+    if (context.pageKind === 'park-images') {
+      items.push({
+        id: `park-images-${context.parkId}`,
+        label: this.resolveParkImagesLabel(context.language, parkLabel),
+        icon: 'pi pi-images',
+        routeCommands: parkImagesRoute,
+        level: 2,
+        isCurrent: true
+      });
+    }
+
+    if (context.pageKind === 'park-map') {
+      items.push({
+        id: `park-map-${context.parkId}`,
+        label: this.resolveParkMapLabel(context.language, parkLabel),
+        icon: 'pi pi-map',
+        routeCommands: parkMapRoute,
+        level: 2,
+        isCurrent: true
+      });
+    }
+
     if (context.itemId && context.itemSlug) {
       items.push({
         id: `item-${context.itemId}`,
@@ -222,7 +248,8 @@ export class PublicParkNavigationTreeFacade {
   }
 
   private buildFallbackTreeItems(context: PublicParkRouteContext): PublicParkNavigationTreeItem[] {
-    return [
+    const parkLabel: string = context.parkSlug;
+    const items: PublicParkNavigationTreeItem[] = [
       {
         id: 'parks-list',
         label: this.resolveParksListLabel(context.language),
@@ -233,13 +260,37 @@ export class PublicParkNavigationTreeFacade {
       },
       {
         id: `park-${context.parkId}`,
-        label: context.parkSlug,
+        label: parkLabel,
         icon: 'pi pi-map-marker',
         routeCommands: this.buildFallbackParkRoute(context),
         level: 1,
         isCurrent: context.pageKind === 'park-detail'
       }
     ];
+
+    if (context.pageKind === 'park-images') {
+      items.push({
+        id: `park-images-${context.parkId}`,
+        label: this.resolveParkImagesLabel(context.language, parkLabel),
+        icon: 'pi pi-images',
+        routeCommands: this.buildFallbackParkImagesRoute(context),
+        level: 2,
+        isCurrent: true
+      });
+    }
+
+    if (context.pageKind === 'park-map') {
+      items.push({
+        id: `park-map-${context.parkId}`,
+        label: this.resolveParkMapLabel(context.language, parkLabel),
+        icon: 'pi pi-map',
+        routeCommands: this.buildFallbackParkMapRoute(context),
+        level: 2,
+        isCurrent: true
+      });
+    }
+
+    return items;
   }
 
   private buildParkRoute(sourceData: PublicParkNavigationSourceData): string[] {
@@ -260,6 +311,24 @@ export class PublicParkNavigationTreeFacade {
     }) ?? [...this.buildFallbackParkRoute(context), 'items'];
   }
 
+  private buildParkImagesRoute(sourceData: PublicParkNavigationSourceData): string[] {
+    const context: PublicParkRouteContext = sourceData.context;
+    return buildPublicParkImagesRouteCommands({
+      language: context.language,
+      parkId: context.parkId,
+      parkName: sourceData.park?.name ?? context.parkSlug
+    }) ?? this.buildFallbackParkImagesRoute(context);
+  }
+
+  private buildParkMapRoute(sourceData: PublicParkNavigationSourceData): string[] {
+    const context: PublicParkRouteContext = sourceData.context;
+    return buildPublicParkMapRouteCommands({
+      language: context.language,
+      parkId: context.parkId,
+      parkName: sourceData.park?.name ?? context.parkSlug
+    }) ?? this.buildFallbackParkMapRoute(context);
+  }
+
   private buildParkItemRoute(sourceData: PublicParkNavigationSourceData): string[] {
     const context: PublicParkRouteContext = sourceData.context;
     return buildPublicParkItemRouteCommands({
@@ -273,6 +342,14 @@ export class PublicParkNavigationTreeFacade {
 
   private buildFallbackParkRoute(context: PublicParkRouteContext): string[] {
     return ['/', context.language, 'park', context.parkId, context.parkSlug];
+  }
+
+  private buildFallbackParkImagesRoute(context: PublicParkRouteContext): string[] {
+    return [...this.buildFallbackParkRoute(context), 'images'];
+  }
+
+  private buildFallbackParkMapRoute(context: PublicParkRouteContext): string[] {
+    return [...this.buildFallbackParkRoute(context), 'map'];
   }
 
   private resolveRouteContext(url: string): PublicParkRouteContext | null {
@@ -301,6 +378,30 @@ export class PublicParkNavigationTreeFacade {
         itemSlug: paths[6],
         selectedZoneId: null,
         pageKind: 'park-item-detail'
+      };
+    }
+
+    if (paths[4] === 'images') {
+      return {
+        language,
+        parkId,
+        parkSlug,
+        itemId: null,
+        itemSlug: null,
+        selectedZoneId: null,
+        pageKind: 'park-images'
+      };
+    }
+
+    if (paths[4] === 'map') {
+      return {
+        language,
+        parkId,
+        parkSlug,
+        itemId: null,
+        itemSlug: null,
+        selectedZoneId: null,
+        pageKind: 'park-map'
       };
     }
 
@@ -346,11 +447,63 @@ export class PublicParkNavigationTreeFacade {
   }
 
   private resolveParksListLabel(language: string): string {
-    return language === 'fr' ? 'Liste des parcs' : 'Parks list';
+    const labels: Record<string, string> = {
+      fr: 'Liste des parcs',
+      en: 'Parks list',
+      es: 'Lista de parques',
+      de: 'Parkliste',
+      it: 'Elenco dei parchi',
+      nl: 'Parkenlijst',
+      pl: 'Lista parków',
+      pt: 'Lista de parques'
+    };
+
+    return labels[language] ?? labels['en'];
   }
 
   private resolveParkItemsListLabel(language: string): string {
-    return language === 'fr' ? 'Explorer les éléments' : 'Explore items';
+    const labels: Record<string, string> = {
+      fr: 'Explorer les éléments',
+      en: 'Explore items',
+      es: 'Explorar elementos',
+      de: 'Elemente erkunden',
+      it: 'Esplora gli elementi',
+      nl: 'Elementen verkennen',
+      pl: 'Przeglądaj elementy',
+      pt: 'Explorar elementos'
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkImagesLabel(language: string, parkLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Images ${parkLabel}`,
+      en: `${parkLabel} images`,
+      es: `Imágenes de ${parkLabel}`,
+      de: `Bilder von ${parkLabel}`,
+      it: `Immagini di ${parkLabel}`,
+      nl: `Afbeeldingen van ${parkLabel}`,
+      pl: `Zdjęcia ${parkLabel}`,
+      pt: `Imagens de ${parkLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkMapLabel(language: string, parkLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Carte ${parkLabel}`,
+      en: `${parkLabel} map`,
+      es: `Mapa de ${parkLabel}`,
+      de: `Karte von ${parkLabel}`,
+      it: `Mappa di ${parkLabel}`,
+      nl: `Kaart van ${parkLabel}`,
+      pl: `Mapa ${parkLabel}`,
+      pt: `Mapa de ${parkLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
   }
 
   private resolveFallbackZoneLabel(language: string): string {
