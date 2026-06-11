@@ -125,6 +125,64 @@ internal static class ParksHttpMappers
         };
     }
 
+    public static ParkDetailSummaryDto ToDetailSummaryHttp(this ParkDetailSummaryResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkDetailSummaryDto
+        {
+            Park = value.Park.ToHttp(),
+            MainImage = value.MainImage?.ToHttp(),
+            References = new ParkDetailReferenceSummaryDto
+            {
+                FounderName = value.FounderName,
+                OperatorName = value.OperatorName,
+            },
+            Stats = new ParkDetailSummaryStatsDto
+            {
+                TotalItems = value.Stats.TotalItems,
+                ZoneCount = value.Stats.ZoneCount,
+                AttractionCount = value.Stats.AttractionCount,
+                RestaurantCount = value.Stats.RestaurantCount,
+                ShowCount = value.Stats.ShowCount,
+                ShopCount = value.Stats.ShopCount,
+                HotelCount = value.Stats.HotelCount,
+                CountsByCategory = value.Stats.CountsByCategory.ToDictionary(
+                    pair => pair.Key.ToString(),
+                    pair => pair.Value,
+                    StringComparer.Ordinal),
+            },
+        };
+    }
+
+
+    public static ParkMapItemsDto ToMapItemsHttp(this ParkMapItemsResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkMapItemsDto
+        {
+            Park = value.Park.ToHttp(),
+            Items = value.Items.Select(static item => new ParkMapItemDto
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Category = item.Category.ToString(),
+                Type = item.Type.ToString(),
+                Subtype = item.Subtype,
+                ZoneId = item.ZoneId,
+                Latitude = item.Latitude,
+                Longitude = item.Longitude,
+            }).ToList(),
+            Zones = value.Zones.Select(static zone => new ParkMapZoneDto
+            {
+                Id = zone.Id,
+                Name = zone.Name,
+                SortOrder = zone.SortOrder,
+            }).ToList(),
+        };
+    }
+
     public static ParkMapPointDto ToMapPointHttp(this Park value)
     {
         ArgumentNullException.ThrowIfNull(value);

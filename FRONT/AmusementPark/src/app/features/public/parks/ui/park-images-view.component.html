@@ -1,0 +1,79 @@
+@let currentPark = park;
+
+<app-page-state
+  [state]="state"
+  [messages]="{
+    loadingTitleKey: 'parks.imagesPage.loadingTitle',
+    loadingMessageKey: 'parks.imagesPage.loadingMessage',
+    errorTitleKey: 'parks.imagesPage.errorTitle',
+    errorMessageKey: 'parks.imagesPage.errorMessage'
+  }">
+  @if (currentPark) {
+    <section class="park-images-page">
+      <header class="park-images-hero">
+        <app-ui-kicker iconClass="pi pi-images">
+          {{ 'parks.imagesPage.kicker' | translate }}
+        </app-ui-kicker>
+        <h1>{{ 'parks.imagesPage.title' | translate:{ name: currentPark.name } }}</h1>
+        <p>{{ 'parks.imagesPage.subtitle' | translate:{ name: currentPark.name, count: totalImages } }}</p>
+
+        <div class="park-images-hero__actions">
+          @if (detailLink) {
+            <a appUiButton="ghost" [routerLink]="detailLink">
+              <i class="pi pi-arrow-left" aria-hidden="true"></i>
+              <span>{{ 'parks.imagesPage.backToPark' | translate }}</span>
+            </a>
+          }
+
+          @if (itemsLink) {
+            <a appUiButton="primary" [routerLink]="itemsLink">
+              <i class="pi pi-sitemap" aria-hidden="true"></i>
+              <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+            </a>
+          }
+        </div>
+      </header>
+
+      @if (photos.length > 0) {
+        <app-ui-photo-carousel
+          [photos]="photos"
+          [categories]="categories"
+          [displayLimits]="[6, 12, 24, 0]"
+          [defaultDisplayLimit]="0"
+          tone="sky"
+          kickerLabelKey="parks.photos.kicker"
+          titleKey="parks.photos.title"
+          subtitleKey="parks.photos.subtitle"
+          categoryAriaLabelKey="parks.photos.controls.category"
+          allCategoriesLabelKey="parks.photos.controls.allCategories"
+          displayCountLabelKey="parks.photos.controls.displayCount"
+          countLimitLabelKey="parks.photos.controls.count"
+          allLimitLabelKey="parks.photos.controls.all"
+          previousLabelKey="parks.photos.controls.previous"
+          nextLabelKey="parks.photos.controls.next"
+          openFullscreenLabelKey="parks.photos.controls.openFullscreen"
+          closeFullscreenLabelKey="parks.photos.controls.closeFullscreen"
+          lightboxTitleKey="parks.photos.lightbox.title"
+          currentLabelKey="parks.photos.current">
+        </app-ui-photo-carousel>
+
+        @if (canLoadMore) {
+          <div class="park-images-page__load-more">
+            <button appUiButton="primary" type="button" [disabled]="loadingMore" (click)="loadMore()">
+              <i class="pi pi-plus" aria-hidden="true"></i>
+              <span>
+                {{ (loadingMore ? 'parks.imagesPage.loadingMore' : 'parks.imagesPage.loadMore') | translate }}
+              </span>
+            </button>
+          </div>
+        }
+      } @else {
+        <section class="park-images-empty">
+          <i class="pi pi-image" aria-hidden="true"></i>
+          <h2>{{ 'parks.imagesPage.emptyTitle' | translate }}</h2>
+          <p>{{ 'parks.imagesPage.emptyMessage' | translate:{ name: currentPark.name } }}</p>
+        </section>
+      }
+    </section>
+  }
+</app-page-state>

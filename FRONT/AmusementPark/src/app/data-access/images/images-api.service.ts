@@ -83,6 +83,23 @@ export class ImagesApiService {
     );
   }
 
+  getImagesPage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page: number = 1, size: number = 24, options: ImagesHttpOptions = {}): Observable<PagedResult<ImageDto>> {
+    const ownerTypeApiValue: number = toImageOwnerTypeApiValue(ownerType);
+    const categoryApiValue: number = toImageCategoryApiValue(category);
+    const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getImages(
+      String(ownerTypeApiValue),
+      ownerId,
+      String(categoryApiValue)
+    )}`;
+    const params: HttpParams = new HttpParams()
+      .set('page', String(page))
+      .set('size', String(size));
+
+    return this.http.get<ImageDto[] | PagedCollectionResponse<ImageDto>>(url, { ...options, params }).pipe(
+      map((response: ImageDto[] | PagedCollectionResponse<ImageDto>) => unwrapPagedCollection<ImageDto>(response))
+    );
+  }
+
   getCurrentImage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, options: ImagesHttpOptions = {}): Observable<ImageDto> {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getCurrentImage(
       String(toImageOwnerTypeApiValue(ownerType)),

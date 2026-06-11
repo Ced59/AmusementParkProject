@@ -5,19 +5,12 @@ import { SafeExternalUrlPipe, SafeRichHtmlPipe } from '@shared/pipes';
 
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
-import { ScreenState, ScreenStateKind } from '@shared/models/contracts/screen-state.model';
-import { ParkCardModel } from '@shared/models/parks/park-card.model';
-import { UiPhotoCarouselComponent } from '@ui/media';
+import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent } from '@ui/primitives';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
-import { ParkItemsMapViewModel } from '../models/park-items-map-view.model';
-import { ParkZoneDetailViewModel } from '../models/park-zone-detail-view.model';
 import { ParkContentSummaryComponent } from './park-content-summary.component';
-import { ParkItemsMapSectionComponent } from './park-items-map-section.component';
 import { ParkLocationSectionComponent } from './park-location-section.component';
-import { ParkNearbySectionComponent } from './park-nearby-section.component';
-import { ParkZonesSectionComponent } from './park-zones-section.component';
 
 @Component({
   selector: 'app-park-detail-view',
@@ -28,10 +21,7 @@ import { ParkZonesSectionComponent } from './park-zones-section.component';
     PageStateComponent,
     ImageDisplayComponent,
     ParkContentSummaryComponent,
-    ParkItemsMapSectionComponent,
     ParkLocationSectionComponent,
-    ParkNearbySectionComponent,
-    ParkZonesSectionComponent,
     TranslateModule,
     SafeExternalUrlPipe,
     SafeRichHtmlPipe,
@@ -39,20 +29,13 @@ import { ParkZonesSectionComponent } from './park-zones-section.component';
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,
-    UiStatCardComponent,
-    UiPhotoCarouselComponent
+    UiStatCardComponent
   ]
 })
 export class ParkDetailViewComponent {
   @Input() state: ScreenState<unknown, string> | null = null;
   @Input() park: ParkDetailViewModel | null = null;
   @Input() summary: ParkContentSummaryViewModel | null = null;
-  @Input() itemsMap: ParkItemsMapViewModel | null = null;
-  @Input() zones: ParkZoneDetailViewModel[] = [];
-  @Input() nearbyParks: ParkCardModel[] = [];
-  @Input() nearbyState: ScreenStateKind = 'empty';
-  @Input() currentLang: string = 'en';
-
   @Output() backClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() exploreClicked: EventEmitter<void> = new EventEmitter<void>();
 

@@ -5,6 +5,8 @@ import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ParkExplorer } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
+import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
+import { ParkMapItems } from '@app/models/parks/park-map-items';
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
@@ -70,6 +72,16 @@ export class ParksApiService {
   getParkById(id: string, options: ParksHttpOptions = {}): Observable<Park> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkById(id)}`;
     return this.http.get<Park>(url, options);
+  }
+
+  getParkDetailSummary(id: string, options: ParksHttpOptions = {}): Observable<ParkDetailSummary> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkDetailSummary(id)}`;
+    return this.http.get<ParkDetailSummary>(url, options);
+  }
+
+  getParkMapItems(id: string, options: ParksHttpOptions = {}): Observable<ParkMapItems> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkMapItems(id)}`;
+    return this.http.get<ParkMapItems>(url, options);
   }
 
   searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, options: ParksHttpOptions = {}): Observable<ParksApiResponse> {

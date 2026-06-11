@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
+import { Park } from '@app/models/parks/park';
 import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-view.model';
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
 import { CanonicalUrlService } from './canonical-url.service';
@@ -221,6 +222,39 @@ export class SeoService {
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
       jsonLd: this.buildParkDetailJsonLd(park, url)
+    });
+  }
+
+  applyParkImagesSeo(park: Park, language: string, url: string, totalImages: number = 0): void {
+    const locationLabel: string = [park.city, park.countryCode]
+      .filter((value: string | null | undefined): value is string => !!value)
+      .join(', ');
+    const titleSuffix: string = locationLabel ? ` — ${locationLabel}` : '';
+    const imageCountLabel: string = totalImages > 0 ? `${totalImages} published photos` : 'published photos';
+    const description: string = `Browse ${imageCountLabel} of ${park.name ?? 'this park'}${locationLabel ? ` in ${locationLabel}` : ''}.`;
+
+    this.apply({
+      title: `Photos of ${park.name ?? 'park'}${titleSuffix} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url)
+    });
+  }
+
+  applyParkMapSeo(park: Park, language: string, url: string): void {
+    const locationLabel: string = [park.city, park.countryCode]
+      .filter((value: string | null | undefined): value is string => !!value)
+      .join(', ');
+    const titleSuffix: string = locationLabel ? ` — ${locationLabel}` : '';
+    const description: string = `Interactive map of ${park.name ?? 'this park'}${locationLabel ? ` in ${locationLabel}` : ''}.`;
+
+    this.apply({
+      title: `Map of ${park.name ?? 'park'}${titleSuffix} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: 'noindex,follow',
+      alternates: this.hreflangService.buildAlternates(url)
     });
   }
 

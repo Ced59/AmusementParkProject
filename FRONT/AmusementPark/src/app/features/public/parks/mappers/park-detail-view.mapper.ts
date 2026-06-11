@@ -5,7 +5,7 @@ import { ParkType } from '@app/models/parks/park-type';
 import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/display/park-presentation.helpers';
 import { getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
-import { buildPublicParkItemsRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import { buildPublicParkImagesRouteCommands, buildPublicParkItemsRouteCommands, buildPublicParkMapRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkDetailInfoRowViewModel } from '../models/park-detail-info-row.model';
 import {
   ParkDetailPhotoViewModel,
@@ -84,7 +84,7 @@ export function mapParkToDetailViewModel(
   const locationRows: ParkDetailInfoRowViewModel[] = buildLocationRows(hasLocationInfo, park.latitude, park.longitude);
   const stats: ParkDetailStatViewModel[] = buildStats(totalItems, zoneCount, countryName, type);
   const photos: ParkDetailPhotoViewModel[] = buildPhotos(park, parkPhotos, itemPhotoSources, imageTags, currentLanguage);
-  const heroImageId: string | null = resolveParkHeroImageId(parkPhotos);
+  const heroImageId: string | null = resolveParkHeroImageId(parkPhotos) ?? logoImageId;
 
   return {
     id: park.id ?? null,
@@ -117,6 +117,12 @@ export function mapParkToDetailViewModel(
     hasDescription: !!description,
     exploreLink: hasIdentity
       ? buildPublicParkItemsRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
+      : null,
+    imagesLink: hasIdentity
+      ? buildPublicParkImagesRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
+      : null,
+    mapLink: hasIdentity
+      ? buildPublicParkMapRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     identityRows,
     practicalRows,

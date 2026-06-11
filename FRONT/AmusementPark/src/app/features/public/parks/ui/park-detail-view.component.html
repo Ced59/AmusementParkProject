@@ -1,10 +1,6 @@
 @let currentState = state;
 @let currentPark = park;
 @let currentSummary = summary;
-@let currentItemsMap = itemsMap;
-@let currentZones = zones;
-@let currentNearbyParks = nearbyParks;
-@let currentNearbyState = nearbyState;
 
 <app-page-state
   [state]="currentState"
@@ -63,6 +59,9 @@
 
             <h1 class="park-banner__name">{{ currentPark.name }}</h1>
 
+            @if (currentPark.description) {
+              <p class="park-banner__lead">{{ 'parks.detail.heroDescription' | translate }}</p>
+            }
           </div>
 
           <div class="park-banner__actions">
@@ -76,6 +75,20 @@
                 <i class="pi pi-sitemap" aria-hidden="true"></i>
                 <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
               </button>
+            }
+
+            @if (currentPark.imagesLink) {
+              <a appUiButton="ghost" [routerLink]="currentPark.imagesLink">
+                <i class="pi pi-images" aria-hidden="true"></i>
+                <span>{{ 'parks.actions.images' | translate }}</span>
+              </a>
+            }
+
+            @if (currentPark.mapLink) {
+              <a appUiButton="ghost" [routerLink]="currentPark.mapLink">
+                <i class="pi pi-map" aria-hidden="true"></i>
+                <span>{{ 'parks.actions.map' | translate }}</span>
+              </a>
             }
 
             @if (currentPark.websiteUrl) {
@@ -95,20 +108,15 @@
       <div class="park-detail__body">
         <main class="park-main">
           @if (currentPark.stats.length > 0) {
-            <div class="park-stats-row">
+            <div class="park-stats-row" aria-label="Park statistics">
               @for (stat of currentPark.stats; track stat.labelKey + '-' + stat.value) {
-                <div
-                  class="park-stats-row__item"
-                  [class.park-stats-row__item--country]="stat.labelKey === 'parks.fields.country'"
-                  [class.park-stats-row__item--items]="stat.labelKey === 'parkVisitor.summary.totalItems'">
-                  <app-ui-stat-card
-                    [tone]="stat.tone ?? 'soft'"
-                    [labelKey]="stat.labelKey"
-                    [value]="stat.value"
-                    [hintKey]="stat.hintKey ?? null"
-                    [hintText]="stat.hintText ?? null">
-                  </app-ui-stat-card>
-                </div>
+                <app-ui-stat-card
+                  [tone]="stat.tone ?? 'soft'"
+                  [labelKey]="stat.labelKey"
+                  [value]="stat.value"
+                  [hintKey]="stat.hintKey ?? null"
+                  [hintText]="stat.hintText ?? null">
+                </app-ui-stat-card>
               }
             </div>
           }
@@ -125,40 +133,8 @@
             }
           </section>
 
-
           @if (currentSummary) {
             <app-park-content-summary class="park-content-summary-block" [summary]="currentSummary"></app-park-content-summary>
-          }
-
-          <app-park-items-map-section class="park-items-map-block" [map]="currentItemsMap"></app-park-items-map-section>
-
-          <app-park-zones-section class="park-zones-block" [zones]="currentZones"></app-park-zones-section>
-
-
-          @if (currentPark.photos.length > 0) {
-            <app-ui-photo-carousel
-              class="park-photos-block"
-              [photos]="currentPark.photos"
-              [categories]="currentPark.photoCategories"
-              [defaultDisplayLimit]="8"
-              [displayLimits]="[4, 8, 12, 0]"
-              tone="sky"
-              kickerIconClass="pi pi-images"
-              kickerLabelKey="parks.photos.kicker"
-              titleKey="parks.photos.title"
-              subtitleKey="parks.photos.subtitle"
-              categoryAriaLabelKey="parks.photos.controls.category"
-              allCategoriesLabelKey="parks.photos.controls.allCategories"
-              displayCountLabelKey="parks.photos.controls.displayCount"
-              countLimitLabelKey="parks.photos.controls.count"
-              allLimitLabelKey="parks.photos.controls.all"
-              previousLabelKey="parks.photos.controls.previous"
-              nextLabelKey="parks.photos.controls.next"
-              openFullscreenLabelKey="parks.photos.controls.openFullscreen"
-              closeFullscreenLabelKey="parks.photos.controls.closeFullscreen"
-              lightboxTitleKey="parks.photos.lightbox.title"
-              currentLabelKey="parks.photos.current">
-            </app-ui-photo-carousel>
           }
         </main>
 
@@ -207,63 +183,11 @@
             </section>
           }
 
-
-
           @if (currentPark.hasLocationInfo) {
-            <app-park-location-section class="park-side-card--location" [park]="currentPark"></app-park-location-section>
+            <app-park-location-section class="park-side-card park-side-card--location" [park]="currentPark"></app-park-location-section>
           }
-
-          <section class="park-side-card park-side-card--weather park-side-coming-soon info-card">
-            <header class="info-card__header">
-              <span class="info-card__header-icon info-card__header-icon--sky"><i class="pi pi-cloud" aria-hidden="true"></i></span>
-              <div>
-                <h2 class="info-card__title">{{ 'parks.detail.weather.title' | translate }}</h2>
-                <p>{{ 'parks.detail.weather.subtitle' | translate }}</p>
-              </div>
-            </header>
-            <div class="park-side-coming-soon__body info-card__body">
-              <span class="park-side-coming-soon__badge">{{ 'parks.detail.comingSoon.badge' | translate }}</span>
-              <p>{{ 'parks.detail.comingSoon.message' | translate }}</p>
-            </div>
-          </section>
-
-          <section class="park-side-card park-side-card--hours park-side-coming-soon info-card">
-            <header class="info-card__header">
-              <span class="info-card__header-icon info-card__header-icon--lime"><i class="pi pi-clock" aria-hidden="true"></i></span>
-              <div>
-                <h2 class="info-card__title">{{ 'parks.detail.hours.title' | translate }}</h2>
-                <p>{{ 'parks.detail.hours.subtitle' | translate }}</p>
-              </div>
-            </header>
-            <div class="park-side-coming-soon__body info-card__body">
-              <span class="park-side-coming-soon__badge">{{ 'parks.detail.comingSoon.badge' | translate }}</span>
-              <p>{{ 'parks.detail.comingSoon.message' | translate }}</p>
-            </div>
-          </section>
-
-          <section class="park-side-card park-side-card--prices park-side-coming-soon info-card">
-            <header class="info-card__header">
-              <span class="info-card__header-icon info-card__header-icon--rose"><i class="pi pi-ticket" aria-hidden="true"></i></span>
-              <div>
-                <h2 class="info-card__title">{{ 'parks.detail.prices.title' | translate }}</h2>
-                <p>{{ 'parks.detail.prices.subtitle' | translate }}</p>
-              </div>
-            </header>
-            <div class="park-side-coming-soon__body info-card__body">
-              <span class="park-side-coming-soon__badge">{{ 'parks.detail.comingSoon.badge' | translate }}</span>
-              <p>{{ 'parks.detail.comingSoon.message' | translate }}</p>
-            </div>
-          </section>
-
         </aside>
       </div>
-
-      <app-park-nearby-section
-        [parks]="currentNearbyParks"
-        [currentLang]="currentLang"
-        [sourceName]="currentPark.name"
-        [state]="currentNearbyState">
-      </app-park-nearby-section>
     </section>
   }
 </app-page-state>
