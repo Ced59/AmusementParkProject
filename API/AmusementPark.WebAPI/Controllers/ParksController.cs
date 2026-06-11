@@ -38,6 +38,7 @@ public sealed class ParksController : ControllerBase
 {
     private readonly ICommandHandler<CreateParkCommand, ApplicationResult<Park>> createParkCommandHandler;
     private readonly IQueryHandler<GetParkByIdQuery, ApplicationResult<Park>> getParkByIdQueryHandler;
+    private readonly IQueryHandler<GetParkDetailSummaryQuery, ApplicationResult<ParkDetailSummaryResult>> getParkDetailSummaryQueryHandler;
     private readonly IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<Park>>> getParksPageQueryHandler;
     private readonly IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<Park>>> searchParksQueryHandler;
     private readonly IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler;
@@ -53,6 +54,7 @@ public sealed class ParksController : ControllerBase
     public ParksController(
         ICommandHandler<CreateParkCommand, ApplicationResult<Park>> createParkCommandHandler,
         IQueryHandler<GetParkByIdQuery, ApplicationResult<Park>> getParkByIdQueryHandler,
+        IQueryHandler<GetParkDetailSummaryQuery, ApplicationResult<ParkDetailSummaryResult>> getParkDetailSummaryQueryHandler,
         IQueryHandler<GetParksPageQuery, ApplicationResult<PagedResult<Park>>> getParksPageQueryHandler,
         IQueryHandler<SearchParksQuery, ApplicationResult<PagedResult<Park>>> searchParksQueryHandler,
         IQueryHandler<SearchParksByLocationQuery, ApplicationResult<IReadOnlyCollection<Park>>> searchParksByLocationQueryHandler,
@@ -67,6 +69,7 @@ public sealed class ParksController : ControllerBase
     {
         this.createParkCommandHandler = createParkCommandHandler;
         this.getParkByIdQueryHandler = getParkByIdQueryHandler;
+        this.getParkDetailSummaryQueryHandler = getParkDetailSummaryQueryHandler;
         this.getParksPageQueryHandler = getParksPageQueryHandler;
         this.searchParksQueryHandler = searchParksQueryHandler;
         this.searchParksByLocationQueryHandler = searchParksByLocationQueryHandler;
@@ -157,6 +160,21 @@ public sealed class ParksController : ControllerBase
             .ToList();
 
         return this.Ok(response);
+    }
+
+    [HttpGet("{id}/detail-summary")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(ParkDetailSummaryDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetParkDetailSummaryAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkDetailSummaryResult> result = await this.getParkDetailSummaryQueryHandler.HandleAsync(new GetParkDetailSummaryQuery(id, this.UserCanSeeNonVisible()), cancellationToken);
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToDetailSummaryHttp());
     }
 
     [HttpGet("{id}")]

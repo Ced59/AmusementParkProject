@@ -125,6 +125,36 @@ internal static class ParksHttpMappers
         };
     }
 
+    public static ParkDetailSummaryDto ToDetailSummaryHttp(this ParkDetailSummaryResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkDetailSummaryDto
+        {
+            Park = value.Park.ToHttp(),
+            MainImage = value.MainImage?.ToHttp(),
+            References = new ParkDetailReferenceSummaryDto
+            {
+                FounderName = value.FounderName,
+                OperatorName = value.OperatorName,
+            },
+            Stats = new ParkDetailSummaryStatsDto
+            {
+                TotalItems = value.Stats.TotalItems,
+                ZoneCount = value.Stats.ZoneCount,
+                AttractionCount = value.Stats.AttractionCount,
+                RestaurantCount = value.Stats.RestaurantCount,
+                ShowCount = value.Stats.ShowCount,
+                ShopCount = value.Stats.ShopCount,
+                HotelCount = value.Stats.HotelCount,
+                CountsByCategory = value.Stats.CountsByCategory.ToDictionary(
+                    pair => pair.Key.ToString(),
+                    pair => pair.Value,
+                    StringComparer.Ordinal),
+            },
+        };
+    }
+
     public static ParkMapPointDto ToMapPointHttp(this Park value)
     {
         ArgumentNullException.ThrowIfNull(value);

@@ -56,6 +56,7 @@ export const PARKS_API_ENDPOINTS = {
     return `parks/map-visible${params.length > 0 ? `?${params.join('&')}` : ''}`;
   },
   getParkById: (id: string) => `parks/${id}`,
+  getParkDetailSummary: (id: string) => `parks/${id}/detail-summary`,
   getParkDistances: (sourceParkId: string, targetParkIds: string[]) => {
     const params: string = targetParkIds
       .map((targetParkId: string) => `targetParkIds=${encodeURIComponent(targetParkId)}`)
