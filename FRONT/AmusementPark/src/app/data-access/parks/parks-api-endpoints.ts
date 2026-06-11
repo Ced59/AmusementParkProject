@@ -57,6 +57,7 @@ export const PARKS_API_ENDPOINTS = {
   },
   getParkById: (id: string) => `parks/${id}`,
   getParkDetailSummary: (id: string) => `parks/${id}/detail-summary`,
+  getParkMapItems: (id: string) => `parks/${id}/map-items`,
   getParkDistances: (sourceParkId: string, targetParkIds: string[]) => {
     const params: string = targetParkIds
       .map((targetParkId: string) => `targetParkIds=${encodeURIComponent(targetParkId)}`)

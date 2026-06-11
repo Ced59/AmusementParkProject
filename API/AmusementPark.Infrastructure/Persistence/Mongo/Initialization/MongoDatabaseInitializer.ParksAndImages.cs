@@ -195,6 +195,16 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(item => item.Id),
                 new CreateIndexOptions { Name = "idx_park_items_public_park_category_type_name" }),
             new CreateIndexModel<ParkItemDocument>(
+                Builders<ParkItemDocument>.IndexKeys
+                    .Ascending(item => item.ParkId)
+                    .Ascending(item => item.IsVisible)
+                    .Ascending(item => item.Latitude)
+                    .Ascending(item => item.Longitude)
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.Name)
+                    .Ascending(item => item.Id),
+                new CreateIndexOptions { Name = "idx_park_items_public_park_coordinates_category_name" }),
+            new CreateIndexModel<ParkItemDocument>(
                 Builders<ParkItemDocument>.IndexKeys.Ascending(item => item.ZoneId),
                 new CreateIndexOptions { Name = "idx_park_items_zone_id" }),
             new CreateIndexModel<ParkItemDocument>(
@@ -245,6 +255,14 @@ public sealed partial class MongoDatabaseInitializer
                     .Ascending(item => item.Category)
                     .Descending(item => item.CreatedAt),
                 new CreateIndexOptions { Name = "idx_images_owner_category_created_at_desc" }),
+            new CreateIndexModel<ImageDocument>(
+                Builders<ImageDocument>.IndexKeys
+                    .Ascending(item => item.OwnerType)
+                    .Ascending(item => item.OwnerId)
+                    .Ascending(item => item.Category)
+                    .Ascending(item => item.IsPublished)
+                    .Descending(item => item.CreatedAt),
+                new CreateIndexOptions { Name = "idx_images_owner_category_published_created_desc" }),
             new CreateIndexModel<ImageDocument>(
                 Builders<ImageDocument>.IndexKeys.Ascending(item => item.Category),
                 new CreateIndexOptions { Name = "idx_images_category" }),

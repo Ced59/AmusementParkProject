@@ -1,0 +1,42 @@
+@let currentPark = park;
+
+<app-page-state
+  [state]="state"
+  [messages]="{
+    loadingTitleKey: 'parks.mapPage.loadingTitle',
+    loadingMessageKey: 'parks.mapPage.loadingMessage',
+    errorTitleKey: 'parks.mapPage.errorTitle',
+    errorMessageKey: 'parks.mapPage.errorMessage'
+  }">
+  @if (currentPark) {
+    <section class="park-map-page">
+      <header class="park-map-hero">
+        <app-ui-kicker iconClass="pi pi-map-marker">
+          {{ 'parks.mapPage.kicker' | translate }}
+        </app-ui-kicker>
+        <h1>{{ 'parks.mapPage.title' | translate:{ name: currentPark.name } }}</h1>
+        <p>{{ 'parks.mapPage.subtitle' | translate:{ name: currentPark.name } }}</p>
+
+        <div class="park-map-hero__actions">
+          @if (detailLink) {
+            <a appUiButton="ghost" [routerLink]="detailLink">
+              <i class="pi pi-arrow-left" aria-hidden="true"></i>
+              <span>{{ 'parks.mapPage.backToPark' | translate }}</span>
+            </a>
+          }
+
+          @if (itemsLink) {
+            <a appUiButton="primary" [routerLink]="itemsLink">
+              <i class="pi pi-sitemap" aria-hidden="true"></i>
+              <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+            </a>
+          }
+        </div>
+      </header>
+
+      @if (map) {
+        <app-park-items-map-section [map]="map"></app-park-items-map-section>
+      }
+    </section>
+  }
+</app-page-state>

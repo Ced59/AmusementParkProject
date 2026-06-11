@@ -21,9 +21,11 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/park-operator/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park-founder/:id/:slug', renderMode: RenderMode.Server },
   { path: ':lang/park-manufacturer/:id/:slug', renderMode: RenderMode.Server },
-  { path: ':lang/park/:id/:slug', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug/images', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug/map', renderMode: RenderMode.Client },
   { path: ':lang/park/:id/:slug/items', renderMode: RenderMode.Server },
   { path: ':lang/park/:id/:slug/item/:itemId/:itemSlug', renderMode: RenderMode.Server },
+  { path: ':lang/park/:id/:slug', renderMode: RenderMode.Server },
 
   // Authenticated or user-specific routes: CSR shell + noindex handled by SEO service.
   { path: ':lang/profile', renderMode: RenderMode.Client },

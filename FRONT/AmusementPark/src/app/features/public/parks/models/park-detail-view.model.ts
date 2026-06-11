@@ -63,6 +63,8 @@ export interface ParkDetailViewModel {
   hasLocationInfo: boolean;
   hasDescription: boolean;
   exploreLink: string[] | null;
+  imagesLink: string[] | null;
+  mapLink: string[] | null;
   identityRows: ParkDetailInfoRowViewModel[];
   practicalRows: ParkDetailInfoRowViewModel[];
   publicationRows: ParkDetailInfoRowViewModel[];
