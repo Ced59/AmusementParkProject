@@ -5,6 +5,7 @@ import { firstValueFrom, forkJoin, Observable, of, tap } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { LANGUAGES } from '@shared/models/localization';
+import { resolveLanguageFromUrl } from '@shared/utils/routing/route-language.utils';
 
 @Injectable({
   providedIn: 'root'
@@ -44,8 +45,16 @@ export class TranslationService {
   }
 
   initializeLanguage(): Promise<unknown> {
+    const initialLanguage: string = this.resolveInitialLanguage();
     this.setDefaultLang('en');
-    return firstValueFrom(this.useLang('en'));
+    return firstValueFrom(this.useLang(initialLanguage));
+  }
+
+  private resolveInitialLanguage(): string {
+    const pathname: string = this.document.location?.pathname ?? '';
+    const htmlLanguage: string | null = this.document.documentElement.getAttribute('lang');
+
+    return resolveLanguageFromUrl(pathname, htmlLanguage ?? 'en');
   }
 
   getCurrentLang(): string {

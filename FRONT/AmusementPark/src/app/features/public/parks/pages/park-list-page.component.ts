@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { debounceTime, skip } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
+import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { ParkListStateFacade } from '../state/park-list-state.facade';
@@ -46,26 +47,12 @@ export class ParkListPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const initialLanguage: string = this.route.parent?.snapshot.paramMap.get('lang')
-      ?? this.translationService.getCurrentLang()
-      ?? 'en';
+    const initialLanguage: string = resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en');
 
     this.currentLang.set(initialLanguage);
     this.stateFacade.setCurrentLanguage(initialLanguage);
     this.seoService.applyParkListSeo(initialLanguage, this.router.url);
 
-    if (this.route.parent) {
-      this.route.parent.paramMap.pipe(
-        skip(1),
-        takeUntilDestroyed(this.destroyRef)
-      ).subscribe((params) => {
-        const language: string = params.get('lang') ?? 'en';
-        this.currentLang.set(language);
-        this.stateFacade.setCurrentLanguage(language);
-        this.seoService.applyParkListSeo(language, this.router.url);
-        this.stateFacade.loadVisibleMapPoints(this.searchTerm(), this.selectedRegion());
-      });
-    }
 
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
       this.currentLang.set(language);
