@@ -23,6 +23,12 @@ interface ParkImagesSeoCopy {
   description: (parkName: string, locationLabel: string, totalImages: number) => string;
 }
 
+interface ParkMapSeoCopy {
+  titlePrefix: string;
+  parkFallback: string;
+  description: (parkName: string, locationLabel: string) => string;
+}
+
 interface RegionDisplayNames {
   of(code: string): string | undefined;
 }
@@ -99,6 +105,50 @@ const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
       const countLabel: string = totalImages > 0 ? `${totalImages} fotos publicadas` : 'as fotos publicadas';
       return `Explore ${countLabel} de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`;
     }
+  }
+};
+
+
+const PARK_MAP_SEO_COPY: Record<string, ParkMapSeoCopy> = {
+  en: {
+    titlePrefix: 'Map of',
+    parkFallback: 'this park',
+    description: (parkName: string, locationLabel: string): string => `Interactive map of ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
+  },
+  fr: {
+    titlePrefix: 'Carte de',
+    parkFallback: 'ce parc',
+    description: (parkName: string, locationLabel: string): string => `Carte interactive de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}.`
+  },
+  es: {
+    titlePrefix: 'Mapa de',
+    parkFallback: 'este parque',
+    description: (parkName: string, locationLabel: string): string => `Mapa interactivo de ${parkName}${locationLabel ? ` en ${locationLabel}` : ''}.`
+  },
+  de: {
+    titlePrefix: 'Karte von',
+    parkFallback: 'diesem Park',
+    description: (parkName: string, locationLabel: string): string => `Interaktive Karte von ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
+  },
+  it: {
+    titlePrefix: 'Mappa di',
+    parkFallback: 'questo parco',
+    description: (parkName: string, locationLabel: string): string => `Mappa interattiva di ${parkName}${locationLabel ? ` a ${locationLabel}` : ''}.`
+  },
+  nl: {
+    titlePrefix: 'Kaart van',
+    parkFallback: 'dit park',
+    description: (parkName: string, locationLabel: string): string => `Interactieve kaart van ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}.`
+  },
+  pl: {
+    titlePrefix: 'Mapa',
+    parkFallback: 'tego parku',
+    description: (parkName: string, locationLabel: string): string => `Interaktywna mapa parku ${parkName}${locationLabel ? ` w ${locationLabel}` : ''}.`
+  },
+  pt: {
+    titlePrefix: 'Mapa de',
+    parkFallback: 'este parque',
+    description: (parkName: string, locationLabel: string): string => `Mapa interativo de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`
   }
 };
 
@@ -336,19 +386,20 @@ export class SeoService {
   }
 
   applyParkMapSeo(park: Park, language: string, url: string): void {
-    const locationLabel: string = [park.city, park.countryCode]
-      .filter((value: string | null | undefined): value is string => !!value)
-      .join(', ');
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: ParkMapSeoCopy = PARK_MAP_SEO_COPY[normalizedLanguage] ?? PARK_MAP_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const parkName: string = this.normalizeOptionalText(park.name) ?? copy.parkFallback;
+    const locationLabel: string = this.buildLocalizedLocationLabel(park, normalizedLanguage);
     const titleSuffix: string = locationLabel ? ` — ${locationLabel}` : '';
-    const description: string = `Interactive map of ${park.name ?? 'this park'}${locationLabel ? ` in ${locationLabel}` : ''}.`;
+    const description: string = copy.description(parkName, locationLabel);
 
     this.apply({
-      title: `Map of ${park.name ?? 'park'}${titleSuffix} — ${SITE_NAME}`,
+      title: `${copy.titlePrefix} ${parkName}${titleSuffix} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: 'noindex,follow',
       alternates: this.hreflangService.buildAlternates(url),
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, url, this.resolveParkMapBreadcrumbLabel(language, park.name ?? 'park'))]
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, url, this.resolveParkMapBreadcrumbLabel(normalizedLanguage, parkName))]
     });
   }
 

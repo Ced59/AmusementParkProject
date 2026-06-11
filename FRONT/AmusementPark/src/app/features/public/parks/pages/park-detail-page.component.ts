@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { TranslationService } from '@app/services/translation.service';
+import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { ParkDetailStateFacade } from '../state/park-detail-state.facade';
 import { ParkDetailViewComponent } from '../ui/park-detail-view.component';
 import { SeoService } from '@core/seo/seo.service';
@@ -42,9 +43,7 @@ export class ParkDetailPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const initialLanguage: string = this.route.parent?.snapshot.paramMap.get('lang')
-      ?? this.translationService.getCurrentLang()
-      ?? 'en';
+    const initialLanguage: string = resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en');
 
     this.currentLang.set(initialLanguage);
     this.stateFacade.setCurrentLanguage(initialLanguage);
@@ -58,14 +57,6 @@ export class ParkDetailPageComponent implements OnInit {
 
       this.stateFacade.loadPark(id);
     });
-
-    if (this.route.parent) {
-      this.route.parent.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {
-        const language: string = params.get('lang') ?? 'en';
-        this.currentLang.set(language);
-        this.stateFacade.setCurrentLanguage(language);
-      });
-    }
 
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
       this.currentLang.set(language);
