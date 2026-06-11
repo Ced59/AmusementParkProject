@@ -8,12 +8,12 @@ export function resolveLanguageFromActivatedRoute(route: ActivatedRoute, fallbac
   let currentRoute: ActivatedRoute | null = route;
 
   while (currentRoute !== null) {
-    const language: string | null = currentRoute.snapshot.paramMap.get('lang');
+    const language: string | null = currentRoute.snapshot?.paramMap?.get('lang') ?? null;
     if (isSupportedRouteLanguage(language)) {
       return language;
     }
 
-    currentRoute = currentRoute.parent;
+    currentRoute = currentRoute.parent ?? null;
   }
 
   return isSupportedRouteLanguage(fallback) ? fallback : 'en';
