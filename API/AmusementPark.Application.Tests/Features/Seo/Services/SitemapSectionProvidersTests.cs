@@ -93,7 +93,8 @@ public sealed class SitemapSectionProvidersTests
 
         Assert.Equal(2, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix");
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix/items");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix/images");
+        Assert.DoesNotContain(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix/items");
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
         repository.VerifyAll();
     }

@@ -517,3 +517,20 @@ PD0 est validé avec les décisions suivantes :
 11. Les données lourdes ne doivent plus être demandées par la facade principale ParkDetail.
 12. Un endpoint `ParkDetailSummary` devra être créé pour porter la refonte proprement.
 13. Le pattern doit préparer l'allègement futur de `ParkItemDetail`.
+
+---
+
+## 23. Implémentation Passe 4 — SEO/SSR réel avant déploiement
+
+Décisions appliquées pendant la Passe 4 :
+
+1. `ParkDetail`, `ParkImages`, `ParkItemDetail` et les pages de références publiques sont des routes SSR critiques.
+2. Ces routes sont rendues côté serveur sur cache miss, même avec `SSR_RENDER_ON_CACHE_MISS=false`.
+3. `SSR_RENDER_ON_CACHE_MISS` reste volontairement désactivé globalement pour éviter de rendre toutes les routes dynamiques au premier hit robot.
+4. La file SSR par défaut est limitée mais non nulle : `SSR_RENDER_MAX_CONCURRENCY=1`, `SSR_RENDER_QUEUE_MAX_ENTRIES=8`, `SSR_RENDER_QUEUE_WARNING_THRESHOLD=6`.
+5. `/images` est ajoutée au sitemap via les URLs parc existantes, sans ajouter de nouvelle requête Mongo dédiée.
+6. `/items` est retirée du sitemap tant que la page reste une page UX d'exploration en `noindex`.
+7. `/map` reste hors sitemap et reçoit aussi un header HTTP `X-Robots-Tag: noindex, follow` côté serveur.
+8. Les pages `/images` avec query string, futures combinaisons de filtres, reçoivent aussi `noindex, follow`.
+9. Les routes `/items` reçoivent `noindex, follow` côté Angular et côté header HTTP en fallback CSR.
+10. L'objectif prioritaire avant déploiement est que les robots reçoivent le HTML SSR complet des pages SEO fortes, pas seulement le shell `<app-root>`.

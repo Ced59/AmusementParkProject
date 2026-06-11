@@ -36,7 +36,7 @@ const seoDocumentCache = new Map<string, SeoDocumentCacheEntry>();
 const pendingSeoDocumentCacheRequests = new Map<string, Array<SeoDocumentCacheCallback>>();
 const internalSsrHeaderName = 'X-AmusementPark-Internal-SSR';
 const renderMaxConcurrency = Math.max(1, Number(process.env['SSR_RENDER_MAX_CONCURRENCY'] ?? 1));
-const renderQueueMaxEntries = Math.max(0, Number(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'] ?? 0));
+const renderQueueMaxEntries = Math.max(0, Number(process.env['SSR_RENDER_QUEUE_MAX_ENTRIES'] ?? 8));
 const slowRenderThresholdMilliseconds = Math.max(0, Number(process.env['SSR_SLOW_RENDER_THRESHOLD_MILLISECONDS'] ?? 3000));
 const renderQueueWarningThreshold = Math.max(1, Number(process.env['SSR_RENDER_QUEUE_WARNING_THRESHOLD'] ?? Math.max(1, Math.floor(Math.max(1, renderQueueMaxEntries) * 0.75))));
 const assetMissLogSampleRate = Math.max(0, Number(process.env['SSR_ASSET_MISS_LOG_SAMPLE_RATE'] ?? 25));
@@ -148,6 +148,8 @@ export function app(): express.Express {
       res.status(406).type('text/plain').send('Not acceptable');
       return;
     }
+
+    applySearchRobotsHeaders(req, res);
 
     const cacheKey = buildPageCacheKey(req);
     const warmupRequest = isSsrWarmupRequest(req);
@@ -273,6 +275,12 @@ function runNextQueuedSsrRender(): void {
   }
 
   nextRender();
+}
+
+function applySearchRobotsHeaders(req: Request, res: Response): void {
+  if (isNoindexPublicPageRoute(req.originalUrl)) {
+    res.setHeader('X-Robots-Tag', 'noindex, follow');
+  }
 }
 
 function shouldRenderCacheMiss(req: Request, warmupRequest: boolean): boolean {
@@ -420,22 +428,67 @@ function acceptsHtml(req: Request): boolean {
 function isPublicSsrCacheRoute(url: string): boolean {
   const path = getPathOnly(url);
 
-  return /^\/?$/i.test(path)
-    || /^\/[a-z]{2}\/?$/i.test(path)
-    || /^\/[a-z]{2}\/home\/?$/i.test(path)
-    || /^\/[a-z]{2}\/parks\/?$/i.test(path)
-    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/items)?\/?$/i.test(path)
-    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/?$/i.test(path)
-    || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path);
+  return isPublicStaticSsrRoute(path)
+    || isPublicParkDetailRoute(path)
+    || isPublicParkImagesRoute(path)
+    || isPublicParkItemsRoute(path)
+    || isPublicParkItemDetailRoute(path)
+    || isPublicReferenceRoute(path);
 }
 
 function isCriticalPublicSsrRoute(url: string): boolean {
   const path = getPathOnly(url);
 
+  return isPublicStaticSsrRoute(path)
+    || isPublicParkDetailRoute(path)
+    || (isPublicParkImagesRoute(path) && !hasQueryString(url))
+    || isPublicParkItemDetailRoute(path)
+    || isPublicReferenceRoute(path);
+}
+
+function isPublicStaticSsrRoute(path: string): boolean {
   return /^\/?$/i.test(path)
     || /^\/[a-z]{2}\/?$/i.test(path)
     || /^\/[a-z]{2}\/home\/?$/i.test(path)
-    || /^\/[a-z]{2}\/parks\/?$/i.test(path);
+    || /^\/[a-z]{2}\/parks\/?$/i.test(path)
+    || /^\/[a-z]{2}\/about\/?$/i.test(path)
+    || /^\/[a-z]{2}\/privacy\/?$/i.test(path);
+}
+
+function isPublicParkDetailRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/?$/i.test(path);
+}
+
+function isPublicParkImagesRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/images\/?$/i.test(path);
+}
+
+function isPublicParkItemsRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/items\/?$/i.test(path);
+}
+
+function isPublicParkItemDetailRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/?$/i.test(path);
+}
+
+function isPublicReferenceRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path);
+}
+
+function isNoindexPublicPageRoute(url: string): boolean {
+  const path = getPathOnly(url);
+
+  return isPublicParkMapRoute(path)
+    || isPublicParkItemsRoute(path)
+    || (isPublicParkImagesRoute(path) && hasQueryString(url));
+}
+
+function hasQueryString(url: string): boolean {
+  return url.includes('?');
+}
+
+function isPublicParkMapRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/map\/?$/i.test(path);
 }
 
 function isAssetLikeRequest(url: string): boolean {
