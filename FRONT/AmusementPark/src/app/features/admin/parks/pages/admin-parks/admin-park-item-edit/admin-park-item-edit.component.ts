@@ -49,6 +49,7 @@ import {
   SaveMode,
   SaveScope
 } from '@features/admin/park-items/models/admin-park-item-edit.model';
+import { AdminParkItemSequentialNavigationState } from '@features/admin/park-items/models/admin-park-item-sequential-navigation.model';
 import { AdminParkItemManufacturersStateFacade } from '@features/admin/park-items/state/admin-park-item-manufacturers-state.facade';
 import { AdminParkItemZonesStateFacade } from '@features/admin/park-items/state/admin-park-item-zones-state.facade';
 import { AdminParkItemLocationStateFacade } from '@features/admin/park-items/state/admin-park-item-location-state.facade';
@@ -142,6 +143,10 @@ export class AdminParkItemEditComponent implements OnInit {
     return this.editStateFacade.parkOptionsLoading;
   }
 
+  public get sequentialNavigationState(): Signal<AdminParkItemSequentialNavigationState> {
+    return this.editStateFacade.sequentialNavigationState;
+  }
+
   get isFormDirty(): boolean {
     return this.hasPendingChanges();
   }
@@ -192,6 +197,14 @@ export class AdminParkItemEditComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/', this.currentLang(), 'admin', 'parks', 'edit', this.parkId(), 'items']);
+  }
+
+  goToPreviousParkItem(): void {
+    this.navigateToParkItem(this.sequentialNavigationState().previousItemId);
+  }
+
+  goToNextParkItem(): void {
+    this.navigateToParkItem(this.sequentialNavigationState().nextItemId);
   }
 
   onTabChange(index: number | string | undefined): void {
@@ -448,6 +461,7 @@ export class AdminParkItemEditComponent implements OnInit {
       return;
     }
 
+    this.editStateFacade.clearSequentialNavigation();
     this.applySelectionOverridesFromQueryParams();
     await this.locationStateFacade.loadParkLocationDefaultAsync(this.parkId(), true);
     this.finalizeLoadedFormState();
@@ -465,11 +479,40 @@ export class AdminParkItemEditComponent implements OnInit {
       this.locationStateFacade.markGeneralLocationAsManuallyChanged();
       await this.locationStateFacade.loadParkLocationDefaultAsync(this.parkId(), false);
       this.finalizeLoadedFormState();
+      void this.editStateFacade.loadSequentialNavigation(this.parkId(), itemId);
       return true;
     } catch (error: unknown) {
       console.error('Error loading park item', error);
       this.goBack();
       return false;
+    }
+  }
+
+  private navigateToParkItem(targetItemId: string | null): void {
+    if (!targetItemId || targetItemId === this.itemId() || this.isSaving() || this.isFormDirty) {
+      return;
+    }
+
+    this.itemId.set(targetItemId);
+    this.lastSaveFailed.set(false);
+    this.isInitializing = true;
+    this.loadedSectionData.clear();
+    this.photosStateFacade.reset();
+
+    void this.router.navigate(
+      ['/', this.currentLang(), 'admin', 'parks', 'edit', this.parkId(), 'items', targetItemId],
+      { queryParams: { tab: this.activeTabIndex() } }
+    );
+    void this.loadNavigatedItemAsync(targetItemId);
+  }
+
+  private async loadNavigatedItemAsync(itemId: string): Promise<void> {
+    const loadStartedAt: number = this.now();
+    const wasLoaded: boolean = await this.loadItemAsync(itemId);
+
+    if (wasLoaded) {
+      this.loadSectionData(this.activeTabIndex());
+      this.logAdminTiming('park-item-editor.navigated', loadStartedAt);
     }
   }
 
@@ -607,6 +650,10 @@ export class AdminParkItemEditComponent implements OnInit {
     this.captureCurrentSnapshot();
     this.lastSaveFailed.set(false);
     this.showSaveSuccessMessage(scope, wasEditMode);
+
+    if (savedItem.id) {
+      void this.editStateFacade.loadSequentialNavigation(savedParkId, savedItem.id, true);
+    }
 
     if ((!this.itemId() || hasParkChanged) && savedItem.id) {
       this.itemId.set(savedItem.id);

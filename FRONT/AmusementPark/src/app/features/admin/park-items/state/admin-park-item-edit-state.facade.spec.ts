@@ -3,7 +3,9 @@ import { Observable, of } from 'rxjs';
 
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
+import { ApiResponse } from '@app/models/shared/api_reponse';
 import {
   ADMIN_PARK_ITEM_EDIT_STATE_PARK_ITEMS_API_SERVICE_PORT,
   AdminParkItemEditStateParkItemsApiServicePort,
@@ -19,6 +21,18 @@ class FakeParkItemsPort implements AdminParkItemEditStateParkItemsApiServicePort
 
   getParkItemById(itemId: string): Observable<ParkItem> {
     return of({ id: itemId } as ParkItem);
+  }
+
+  getParkItemsPaginated(): Observable<ApiResponse<ParkItemAdminRow>> {
+    return of({
+      data: [],
+      pagination: {
+        currentPage: 1,
+        itemsPerPage: 200,
+        totalItems: 0,
+        totalPages: 0
+      }
+    });
   }
 
   updateParkItem(_itemId: string, item: ParkItem): Observable<ParkItem> {

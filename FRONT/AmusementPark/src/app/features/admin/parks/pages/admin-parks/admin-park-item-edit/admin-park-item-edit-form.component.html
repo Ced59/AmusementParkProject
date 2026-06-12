@@ -19,6 +19,14 @@
       (saveAndClose)="saveAndClose.emit()">
     </app-editor-save-toolbar>
 
+    <app-admin-park-item-sequential-navigation
+      [state]="sequentialNavigationState"
+      [isSaving]="isSaving"
+      [isDirty]="isDirty"
+      (previous)="previousParkItem.emit()"
+      (next)="nextParkItem.emit()">
+    </app-admin-park-item-sequential-navigation>
+
     @if (saveErrorVisible) {
       <div class="admin-save-recovery" role="alert">
         <i class="pi pi-exclamation-triangle" aria-hidden="true"></i>
