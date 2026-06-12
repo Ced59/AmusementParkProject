@@ -25,9 +25,11 @@ import {
         <span class="admin-park-item-sequential-navigation__position">
           @if (state.isLoading) {
             <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
-          } @else {
+          } @else if (hasKnownPosition) {
             <strong>{{ state.currentPosition }} / {{ state.totalItems }}</strong>
             <small>+{{ state.remainingItems }}</small>
+          } @else {
+            <strong>—</strong>
           }
         </span>
 
@@ -104,6 +106,7 @@ import {
 })
 export class AdminParkItemSequentialNavigationComponent {
   @Input() state: AdminParkItemSequentialNavigationState = EMPTY_ADMIN_PARK_ITEM_SEQUENTIAL_NAVIGATION_STATE;
+  @Input() isEditMode: boolean = false;
   @Input() isSaving: boolean = false;
   @Input() isDirty: boolean = false;
 
@@ -111,7 +114,11 @@ export class AdminParkItemSequentialNavigationComponent {
   @Output() next: EventEmitter<void> = new EventEmitter<void>();
 
   get shouldDisplay(): boolean {
-    return this.state.isLoading || this.state.totalItems > 1;
+    return this.isEditMode || this.state.isLoading || this.state.totalItems > 1;
+  }
+
+  get hasKnownPosition(): boolean {
+    return this.state.totalItems > 0 && this.state.currentPosition > 0;
   }
 
   get previousDisabled(): boolean {

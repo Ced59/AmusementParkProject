@@ -21,6 +21,7 @@
 
     <app-admin-park-item-sequential-navigation
       [state]="sequentialNavigationState"
+      [isEditMode]="isEditMode"
       [isSaving]="isSaving"
       [isDirty]="isDirty"
       (previous)="previousParkItem.emit()"
@@ -59,8 +60,8 @@
       <small id="park-item-editor-section-help">{{ 'admin.parks.items.sectionNav.help' | translate }}</small>
     </div>
 
-    <p-tabs [value]="activeTabIndex" (valueChange)="tabChanged.emit($event)">
-      <p-tablist>
+    <p-tabs class="admin-park-item-main-tabs" [value]="activeTabIndex" (valueChange)="tabChanged.emit($event)">
+      <p-tablist class="admin-park-item-main-tablist">
         <p-tab [value]="0">{{ 'admin.parks.items.tabs.general' | translate }}</p-tab>
         @if (isAttractionCategory) {
           <p-tab [value]="1">{{ 'admin.parks.items.tabs.details' | translate }}</p-tab>

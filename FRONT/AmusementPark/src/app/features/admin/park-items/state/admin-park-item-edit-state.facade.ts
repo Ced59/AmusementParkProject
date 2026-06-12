@@ -176,7 +176,7 @@ export class AdminParkItemEditStateFacade {
       rows.push(...(pageResponse.data ?? []));
     }
 
-    const normalizedRows: ParkItemAdminRow[] = rows.filter((row: ParkItemAdminRow): boolean => !!row.id && row.parkId === parkId);
+    const normalizedRows: ParkItemAdminRow[] = rows.filter((row: ParkItemAdminRow): boolean => !!row.id);
     AdminParkItemEditStateFacade.parkItemNavigationCache.set(parkId, {
       expiresAt: Date.now() + AdminParkItemEditStateFacade.navigationCacheTtlMs,
       rows: normalizedRows
