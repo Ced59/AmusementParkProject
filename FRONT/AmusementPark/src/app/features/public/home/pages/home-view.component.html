@@ -148,6 +148,16 @@
     </p>
   </app-ui-search-panel>
 
+  @if (!hasPerformedSearch()) {
+    <app-empty-state
+      class="home-hint-state"
+      variant="public"
+      iconClass="pi pi-search"
+      titleKey="home.search.hintTitle"
+      messageKey="home.search.hintMessage">
+    </app-empty-state>
+  }
+
   @if (hasPerformedSearch()) {
     <section class="public-panel home-results" appUiSurface="panel" appUiSurfacePadding="regular">
       <app-ui-section-header
@@ -213,14 +223,4 @@
       </div>
     </app-page-state>
   </section>
-
-  @if (!hasPerformedSearch()) {
-    <app-empty-state
-      class="home-hint-state"
-      variant="public"
-      iconClass="pi pi-search"
-      titleKey="home.search.hintTitle"
-      messageKey="home.search.hintMessage">
-    </app-empty-state>
-  }
 </section>
