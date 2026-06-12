@@ -1,42 +1,145 @@
 {
   "aboutPage": {
-    "kicker": "Visión del proyecto",
-    "title": "Una forma más clara de explorar parques",
-    "lead": "AmusementPark cartografía parques, atracciones e información práctica con una arquitectura estable preparada para comparación y distancia.",
-    "primaryCta": "Explorar parques",
-    "secondaryCta": "Volver al inicio",
-    "stats": {
-      "parksLabel": "Parques potenciales",
-      "parksHint": "Diseñado para seguir siendo rápido a escala",
-      "mapLabel": "Objetivo visual",
-      "mapHint": "Recorrido público preparado para crecer"
+    "seo": {
+      "title": "Acerca de AmusementPark — Explora parques de otra manera",
+      "description": "Descubre AmusementPark, una guía visual para explorar parques de atracciones, atracciones, imágenes, mapas e ideas de visita."
     },
-    "mission": {
-      "kicker": "Misión",
-      "title": "Encontrar el parque adecuado más rápido",
-      "subtitle": "El producto comienza con un portfolio sólido y crece hacia herramientas de descubrimiento y decisión más ricas."
+    "kicker": "Acerca de AmusementPark",
+    "title": "Explora los parques de atracciones de otra manera",
+    "lead": "AmusementPark es una guía de descubrimiento pensada para ayudarte a explorar parques de atracciones, sus universos, atracciones y experiencias. Tanto si preparas una salida en familia, un futuro viaje o simplemente disfrutas descubriendo nuevos parques, el sitio reúne la información esencial en una interfaz clara, visual y agradable.",
+    "primaryCta": "Explorar parques",
+    "secondaryCta": "Ver cómo funciona",
+    "heroVisual": {
+      "parks": "Parques",
+      "parksHint": "Un punto de partida para descubrir nuevos destinos.",
+      "attractions": "Atracciones",
+      "images": "Imágenes",
+      "map": "Mapa"
+    },
+    "stats": {
+      "ariaLabel": "Puntos fuertes de AmusementPark",
+      "parksLabel": "Miles de parques para explorar",
+      "parksHint": "Una base internacional que se enriquece progresivamente.",
+      "contentValue": "Parques, atracciones, imágenes",
+      "contentLabel": "Contenido organizado",
+      "contentHint": "Páginas pensadas para entender rápidamente lo que ofrece cada parque.",
+      "languagesLabel": "Idiomas disponibles",
+      "languagesHint": "Para hacer el descubrimiento más accesible a visitantes de todo el mundo."
+    },
+    "promise": {
+      "kicker": "Nuestra promesa",
+      "title": "Ayudarte a elegir, comparar y soñar más fácilmente",
+      "subtitle": "Un parque de atracciones es mucho más que una dirección o una lista de atracciones. Es ambiente, zonas temáticas, experiencias, espectáculos, restaurantes, imágenes, ubicación y a veces un verdadero destino de viaje."
     },
     "cards": {
       "discover": {
         "badge": "Descubrir",
-        "title": "Páginas de parque fiables",
-        "text": "Cada página centraliza ubicación, elementos, fotos, parques cercanos y referencias útiles."
+        "title": "Encuentra parques que te apetezca visitar",
+        "text": "Explora parques de distintos países, su ubicación, ambiente y principales contenidos para hacerte una idea rápida."
       },
-      "explore": {
-        "badge": "Explorar",
-        "title": "Mentalidad centrada en el mapa",
-        "text": "Búsqueda, interacciones de mapa y distancias cercanas son bases reutilizables."
+      "understand": {
+        "badge": "Entender",
+        "title": "Visualiza qué se puede hacer allí",
+        "text": "Cada página puede reunir atracciones, restaurantes, tiendas, espectáculos, zonas e imágenes para comprender mejor el parque."
       },
-      "enjoy": {
-        "badge": "Disfrutar",
-        "title": "Identidad visual coherente",
-        "text": "Las páginas públicas, auth y perfil comparten los mismos tokens, superficies y componentes."
+      "prepare": {
+        "badge": "Preparar",
+        "title": "Prepara una visita o inspira tu próximo viaje",
+        "text": "AmusementPark es un punto de partida para imaginar una salida, localizar parques cercanos, explorar imágenes y abrir el mapa."
       }
     },
-    "clean": {
-      "kicker": "Ingeniería",
-      "title": "Construido para evolucionar paso a paso",
-      "text": "El proyecto está pensado para añadir mapas, comparativas y planificación de viajes sin alterar la experiencia del visitante."
+    "explore": {
+      "kicker": "Explorar",
+      "title": "Una página por parque, varias formas de descubrirlo",
+      "subtitle": "Las páginas van de lo simple a lo detallado: primero entender el parque, luego explorar atracciones, zonas, imágenes o mapa.",
+      "cards": {
+        "parkPages": {
+          "title": "Leer una presentación clara",
+          "text": "Cada ficha destaca nombre, ubicación, descripción, estado, experiencias y enlaces útiles."
+        },
+        "items": {
+          "title": "Explorar atracciones y lugares",
+          "text": "Cuando hay datos disponibles, puedes consultar atracciones, restaurantes, tiendas, espectáculos y puntos de interés."
+        },
+        "images": {
+          "title": "Descubrir el parque en imágenes",
+          "text": "Las imágenes ayudan a sentir el ambiente de un parque, una zona o una atracción."
+        },
+        "map": {
+          "title": "Ubicar parques y elementos",
+          "text": "El mapa ayuda a entender dónde está el parque y qué hay alrededor."
+        },
+        "nearby": {
+          "title": "Ver otros parques cercanos",
+          "text": "Los parques cercanos ayudan a ampliar la búsqueda y a imaginar un itinerario más completo."
+        },
+        "languages": {
+          "title": "Explorar en tu idioma",
+          "text": "El sitio está pensado para consultarse en varios idiomas."
+        }
+      }
+    },
+    "audiences": {
+      "kicker": "Para todos los exploradores",
+      "title": "Tanto si preparas una visita como si te gustan los parques",
+      "families": {
+        "title": "Para familias",
+        "text": "Encuentra parques adecuados para una salida con niños o una jornada tranquila."
+      },
+      "fans": {
+        "title": "Para aficionados",
+        "text": "Explora atracciones, zonas, imágenes y detalles que muestran la identidad del parque."
+      },
+      "travelers": {
+        "title": "Para viajeros",
+        "text": "Prepara una etapa, compara destinos y localiza lugares alrededor de una ciudad o región."
+      },
+      "curious": {
+        "title": "Para curiosos",
+        "text": "Descubre parques desconocidos y déjate sorprender por la variedad de destinos."
+      }
+    },
+    "approach": {
+      "kicker": "Nuestro enfoque",
+      "title": "Información útil, legible y cuidada",
+      "text": "AmusementPark presenta los parques de forma clara y agradable, sin ahogar al visitante en datos brutos.",
+      "points": {
+        "structured": {
+          "title": "Datos estructurados",
+          "text": "Parques, atracciones, imágenes, zonas y referencias se organizan para navegar con coherencia."
+        },
+        "progressive": {
+          "title": "Una base que mejora",
+          "text": "La información puede completarse, corregirse y enriquecerse con el tiempo."
+        },
+        "visitor": {
+          "title": "Presentación pensada para el visitante",
+          "text": "La página guía hacia el nivel adecuado de detalle."
+        },
+        "clarity": {
+          "title": "Atención a la claridad",
+          "text": "Si falta información, la página debe seguir siendo comprensible."
+        }
+      }
+    },
+    "future": {
+      "kicker": "Y mañana",
+      "title": "Un compañero de descubrimiento para amantes de los parques",
+      "text": "AmusementPark quiere convertirse en una herramienta práctica para explorar, comparar y preparar visitas.",
+      "items": {
+        "compare": "Comparar varios parques más fácilmente.",
+        "filters": "Filtrar mejor las atracciones y experiencias.",
+        "images": "Explorar imágenes por fecha, lugar o tipo.",
+        "map": "Visualizar más información en el mapa.",
+        "trips": "Ayudar a preparar ideas de salidas o viajes."
+      }
+    },
+    "finalCta": {
+      "kicker": "Empezar",
+      "title": "¿Listo para empezar la exploración?",
+      "text": "Elige un parque, abre su ficha, descubre sus atracciones, imágenes o mapa, y déjate guiar hacia tu próximo destino.",
+      "primary": "Explorar parques",
+      "secondary": "Volver al inicio"
     }
   }
 }

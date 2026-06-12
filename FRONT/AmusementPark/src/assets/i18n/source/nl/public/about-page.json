@@ -1,42 +1,145 @@
 {
   "aboutPage": {
-    "kicker": "Projectvisie",
-    "title": "Een duidelijkere manier om pretparken te verkennen",
-    "lead": "AmusementPark brengt parken, attracties en praktische informatie in kaart met een stabiele architectuur voor vergelijking en afstand.",
-    "primaryCta": "Parken verkennen",
-    "secondaryCta": "Terug naar home",
-    "stats": {
-      "parksLabel": "Potentiële parken",
-      "parksHint": "Ontworpen om snel te blijven op schaal",
-      "mapLabel": "Design doel",
-      "mapHint": "Publieke route klaar om te groeien"
+    "seo": {
+      "title": "Over AmusementPark — Pretparken anders ontdekken",
+      "description": "Ontdek AmusementPark, een visuele gids voor pretparken, attracties, beelden, kaarten en bezoekideeën."
     },
-    "mission": {
-      "kicker": "Missie",
-      "title": "Sneller het juiste park vinden",
-      "subtitle": "Het product start met een solide portfolio en groeit naar rijkere ontdek- en keuzehulpmiddelen."
+    "kicker": "Over AmusementPark",
+    "title": "Ontdek pretparken op een andere manier",
+    "lead": "AmusementPark is een ontdekkingsgids die je helpt pretparken, hun werelden, attracties en ervaringen te verkennen. Of je nu een gezinsuitje, een toekomstige reis of gewoon nieuwe parken wilt ontdekken: de site brengt de belangrijkste informatie samen in een duidelijke, visuele en prettige interface.",
+    "primaryCta": "Parken verkennen",
+    "secondaryCta": "Zo werkt het",
+    "heroVisual": {
+      "parks": "Parken",
+      "parksHint": "Een startpunt voor nieuwe bestemmingen.",
+      "attractions": "Attracties",
+      "images": "Beelden",
+      "map": "Kaart"
+    },
+    "stats": {
+      "ariaLabel": "Sterke punten van AmusementPark",
+      "parksLabel": "Duizenden parken om te verkennen",
+      "parksHint": "Een internationale basis die geleidelijk groeit.",
+      "contentValue": "Parken, attracties, beelden",
+      "contentLabel": "Geordende inhoud",
+      "contentHint": "Pagina’s die snel duidelijk maken wat elk park biedt.",
+      "languagesLabel": "Beschikbare talen",
+      "languagesHint": "Om ontdekking toegankelijker te maken voor bezoekers wereldwijd."
+    },
+    "promise": {
+      "kicker": "Onze belofte",
+      "title": "Je makkelijker laten kiezen, vergelijken en dromen",
+      "subtitle": "Een pretpark is meer dan een adres of attractielijst: het is sfeer, themagebieden, ervaringen, beelden en soms een echte reisbestemming."
     },
     "cards": {
       "discover": {
         "badge": "Ontdekken",
-        "title": "Betrouwbare parkpagina’s",
-        "text": "Elke parkpagina bundelt locatie, items, foto’s, nabijgelegen parken en nuttige referenties."
+        "title": "Vind parken die je zin geven om te gaan",
+        "text": "Bekijk parken in verschillende landen en begrijp snel ligging, sfeer en aanbod."
       },
-      "explore": {
-        "badge": "Verkennen",
-        "title": "Kaartgerichte aanpak",
-        "text": "Zoeken, kaartinteracties en nabije afstanden zijn herbruikbare fundamenten."
+      "understand": {
+        "badge": "Begrijpen",
+        "title": "Zie wat er ter plaatse te doen is",
+        "text": "Elke pagina kan attracties, restaurants, winkels, shows, gebieden en beelden bundelen."
       },
-      "enjoy": {
-        "badge": "Genieten",
-        "title": "Consistente visuele identiteit",
-        "text": "Publieke, auth- en profielpagina’s delen dezelfde tokens, surfaces en componenten."
+      "prepare": {
+        "badge": "Voorbereiden",
+        "title": "Bereid een bezoek voor of inspireer je volgende reis",
+        "text": "AmusementPark is een startpunt voor uitstapjes, nabije parken, beelden en kaarten."
       }
     },
-    "clean": {
-      "kicker": "Engineering",
-      "title": "Gebouwd om stap voor stap te evolueren",
-      "text": "Het project is ontworpen om kaarten, vergelijkingen en reisplanning toe te voegen zonder de bezoekerservaring te verstoren."
+    "explore": {
+      "kicker": "Verkennen",
+      "title": "Eén pagina per park, meerdere manieren om het te ontdekken",
+      "subtitle": "Eerst het park begrijpen, daarna attracties, gebieden, beelden of kaart verkennen.",
+      "cards": {
+        "parkPages": {
+          "title": "Lees een duidelijke parkpresentatie",
+          "text": "Elke pagina toont naam, locatie, beschrijving, status, ervaringen en nuttige links."
+        },
+        "items": {
+          "title": "Verken attracties en plaatsen",
+          "text": "Waar data beschikbaar is, bekijk je attracties, restaurants, winkels, shows en andere plekken."
+        },
+        "images": {
+          "title": "Ontdek het park in beelden",
+          "text": "Beelden helpen de sfeer van een park, gebied of attractie te voelen."
+        },
+        "map": {
+          "title": "Lokaliseer parken en elementen",
+          "text": "De kaart helpt te begrijpen waar het park ligt en wat eromheen is."
+        },
+        "nearby": {
+          "title": "Vind andere parken in de buurt",
+          "text": "Nabije parken helpen je zoektocht te verbreden en routes te bedenken."
+        },
+        "languages": {
+          "title": "Verken in je taal",
+          "text": "De site is ontworpen voor meerdere talen."
+        }
+      }
+    },
+    "audiences": {
+      "kicker": "Voor elke ontdekker",
+      "title": "Voor bezoekplanning en parkfans",
+      "families": {
+        "title": "Voor gezinnen",
+        "text": "Vind makkelijker parken voor kinderen, rustige dagen of geleidelijke ontdekking."
+      },
+      "fans": {
+        "title": "Voor parkfans",
+        "text": "Ontdek attracties, gebieden, fabrikanten, beelden en details."
+      },
+      "travelers": {
+        "title": "Voor reizigers",
+        "text": "Plan stops, vergelijk bestemmingen en vind plekken rond steden of regio’s."
+      },
+      "curious": {
+        "title": "Voor nieuwsgierigen",
+        "text": "Ontdek onbekende parken en de diversiteit van bestemmingen."
+      }
+    },
+    "approach": {
+      "kicker": "Onze aanpak",
+      "title": "Nuttige, leesbare en zorgvuldig verrijkte informatie",
+      "text": "AmusementPark presenteert parken helder en prettig, zonder bezoekers te overspoelen met ruwe data.",
+      "points": {
+        "structured": {
+          "title": "Gestructureerde data",
+          "text": "Parken, attracties, beelden, gebieden en referenties zijn coherent georganiseerd."
+        },
+        "progressive": {
+          "title": "Een basis die verbetert",
+          "text": "Informatie kan geleidelijk worden aangevuld en gecorrigeerd."
+        },
+        "visitor": {
+          "title": "Gemaakt voor bezoekers",
+          "text": "De pagina leidt naar het juiste detailniveau."
+        },
+        "clarity": {
+          "title": "Aandacht voor duidelijkheid",
+          "text": "Ontbrekende informatie blijft begrijpelijk gepresenteerd."
+        }
+      }
+    },
+    "future": {
+      "kicker": "Morgen",
+      "title": "Een ontdekkingspartner voor parkfans",
+      "text": "AmusementPark wil praktischer worden om bezoeken te verkennen, vergelijken en voorbereiden.",
+      "items": {
+        "compare": "Meerdere parken makkelijker vergelijken.",
+        "filters": "Attracties en ervaringen beter filteren.",
+        "images": "Beelden per datum, plaats of type verkennen.",
+        "map": "Meer informatie op de kaart tonen.",
+        "trips": "Ideeën voor uitstapjes of reizen voorbereiden."
+      }
+    },
+    "finalCta": {
+      "kicker": "Beginnen",
+      "title": "Klaar om te gaan ontdekken?",
+      "text": "Kies een park, open de pagina, ontdek attracties, beelden of kaart en laat je begeleiden naar je volgende bestemming.",
+      "primary": "Parken verkennen",
+      "secondary": "Terug naar home"
     }
   }
 }
