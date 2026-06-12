@@ -1,1 +1,0 @@
-confirm(this.translate.instant('admin.parks.items.photos.deleteConfirm'))
