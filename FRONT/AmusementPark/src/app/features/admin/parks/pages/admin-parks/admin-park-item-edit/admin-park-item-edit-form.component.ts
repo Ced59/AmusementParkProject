@@ -24,11 +24,16 @@ import {
   AttractionLocationOption,
   AdminParkItemPhotoCategoryOption
 } from '@features/admin/park-items/models/admin-park-item-edit.model';
+import {
+  AdminParkItemSequentialNavigationState,
+  EMPTY_ADMIN_PARK_ITEM_SEQUENTIAL_NAVIGATION_STATE
+} from '@features/admin/park-items/models/admin-park-item-sequential-navigation.model';
 import { AdminParkItemGeneralTabComponent } from './tabs/admin-park-item-general-tab/admin-park-item-general-tab.component';
 import { AdminParkItemDetailsTabComponent } from './tabs/admin-park-item-details-tab/admin-park-item-details-tab.component';
 import { AdminParkItemAccessConditionsTabComponent } from './tabs/admin-park-item-access-conditions-tab/admin-park-item-access-conditions-tab.component';
 import { AdminParkItemLocationsTabComponent } from './tabs/admin-park-item-locations-tab/admin-park-item-locations-tab.component';
 import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component';
+import { AdminParkItemSequentialNavigationComponent } from './components/admin-park-item-sequential-navigation.component';
 import { AdminJsonImportTabComponent } from '@features/admin/shared/ui/admin-json-import-tab/admin-json-import-tab.component';
 
 interface AdminParkItemEditorSectionOption {
@@ -60,6 +65,7 @@ interface AdminParkItemEditorSectionOption {
     AdminParkItemAccessConditionsTabComponent,
     AdminParkItemLocationsTabComponent,
     AdminParkItemPhotosTabComponent,
+    AdminParkItemSequentialNavigationComponent,
     AdminJsonImportTabComponent,
     TranslateModule
   ]
@@ -76,6 +82,7 @@ export class AdminParkItemEditFormComponent {
   @Input() isDirty: boolean = false;
   @Input() isSaving: boolean = false;
   @Input() saveErrorVisible: boolean = false;
+  @Input() sequentialNavigationState: AdminParkItemSequentialNavigationState = EMPTY_ADMIN_PARK_ITEM_SEQUENTIAL_NAVIGATION_STATE;
   @Input() categoryOptions: AdminParkItemCategoryOption[] = [];
   @Input() filteredTypeOptions: AdminParkItemTypeOption[] = [];
   @Input() parkOptions: EntitySelectOption[] = [];
@@ -116,6 +123,8 @@ export class AdminParkItemEditFormComponent {
   @Output() saveAll: EventEmitter<void> = new EventEmitter<void>();
   @Output() saveAndClose: EventEmitter<void> = new EventEmitter<void>();
   @Output() retrySave: EventEmitter<void> = new EventEmitter<void>();
+  @Output() previousParkItem: EventEmitter<void> = new EventEmitter<void>();
+  @Output() nextParkItem: EventEmitter<void> = new EventEmitter<void>();
   @Output() tabChanged: EventEmitter<number | string | undefined> = new EventEmitter<number | string | undefined>();
   @Output() generalMapPositionChange: EventEmitter<{ lat: number; lng: number }> = new EventEmitter<{ lat: number; lng: number }>();
   @Output() resetGeneralLocationToPark: EventEmitter<void> = new EventEmitter<void>();
