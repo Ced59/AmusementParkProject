@@ -1,11 +1,11 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpBackend } from '@angular/common/http';
 import { TranslateLoader } from '@ngx-translate/core';
 import { ApplicationConfig, mergeApplicationConfig } from '@angular/core';
 import { provideServerRendering, withRoutes } from '@angular/ssr';
 
 import { appConfig } from './app.config';
 import { serverRoutes } from './app.routes.server';
-import { ServerApiBaseUrlInterceptor } from '@core/http/interceptors/server-api-base-url.interceptor';
+import { ServerApiBaseUrlBackend } from '@core/http/backends/server-api-base-url.backend';
 import { ServerTranslateLoader } from '@core/i18n/server-translate.loader';
 
 const serverConfig: ApplicationConfig = {
@@ -16,9 +16,11 @@ const serverConfig: ApplicationConfig = {
       useClass: ServerTranslateLoader
     },
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ServerApiBaseUrlInterceptor,
-      multi: true
+      // Réécrit les URLs API vers l'origine interne au niveau transport (après le
+      // transfer-cache d'Angular), pour garantir une clé de cache identique
+      // SSR/navigateur et la réutilisation des données à l'hydratation.
+      provide: HttpBackend,
+      useClass: ServerApiBaseUrlBackend
     }
   ]
 };

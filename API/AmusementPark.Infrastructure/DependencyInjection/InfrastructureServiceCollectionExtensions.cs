@@ -19,6 +19,7 @@ using AmusementPark.Infrastructure.Configuration.Authentication;
 using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
+using AmusementPark.Infrastructure.Configuration.Ssr;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using AmusementPark.Infrastructure.Services.Authentication;
@@ -28,6 +29,7 @@ using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
 using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
 using AmusementPark.Infrastructure.Services.Images;
 using AmusementPark.Infrastructure.Services.Seo;
+using AmusementPark.Infrastructure.Services.Ssr;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Minio;
@@ -69,8 +71,15 @@ public static class InfrastructureServiceCollectionExtensions
         AdminSeedSettings adminSeedSettings = configuration.GetSection("Initialization:AdminUser").Get<AdminSeedSettings>() ?? new AdminSeedSettings();
         services.AddSingleton(adminSeedSettings);
 
+        SsrSettings ssrSettings = configuration.GetSection(SsrSettings.SectionName).Get<SsrSettings>() ?? new SsrSettings();
+        services.AddSingleton(ssrSettings);
+
         services.AddMemoryCache();
         services.AddHttpClient();
+        services.AddHttpClient(HttpSsrPageCacheInvalidator.HttpClientName, static client =>
+        {
+            client.Timeout = TimeSpan.FromSeconds(3);
+        });
         services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoDbSettings.Url));
         services.AddSingleton<IMinioClient>(_ =>
             new MinioClient()
@@ -108,6 +117,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ISeoSitemapGenerationHistoryRepository, SeoSitemapGenerationHistoryRepository>();
         services.AddScoped<ISeoSitemapSettingsRepository, SeoSitemapSettingsRepository>();
         services.AddScoped<IIndexNowSubmitter, IndexNowSubmitter>();
+        services.AddScoped<ISsrPageCacheInvalidator, HttpSsrPageCacheInvalidator>();
         services.AddScoped<IParkGraphUpsertHistoryRepository, ParkGraphUpsertHistoryRepository>();
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
         services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();

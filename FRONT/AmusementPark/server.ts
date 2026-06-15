@@ -42,6 +42,7 @@ const renderQueueWarningThreshold = Math.max(1, Number(process.env['SSR_RENDER_Q
 const assetMissLogSampleRate = Math.max(0, Number(process.env['SSR_ASSET_MISS_LOG_SAMPLE_RATE'] ?? 25));
 const csrFallbackLogSampleRate = Math.max(0, Number(process.env['SSR_CSR_FALLBACK_LOG_SAMPLE_RATE'] ?? 100));
 const csrFallbackCacheControl = process.env['SSR_CSR_FALLBACK_CACHE_CONTROL'] ?? 'public, max-age=60, stale-while-revalidate=300';
+const cacheInvalidationToken = process.env['SSR_CACHE_INVALIDATION_TOKEN'] ?? '';
 let activeRenderCount = 0;
 let assetMissCount = 0;
 let csrFallbackCount = 0;
@@ -124,6 +125,28 @@ export function app(): express.Express {
 
   server.get('/:fileName([A-Za-z0-9_-]+\\.txt)', (req: Request, res: Response, next: NextFunction) => {
     proxySeoDocumentToApi(req, res, next, req.originalUrl);
+  });
+
+  // Endpoint interne (réseau privé only) déclenché par l'API après une écriture
+  // de contenu public : purge le cache de pages SSR pour rendre les
+  // modifications immédiatement visibles. Protégé par un jeton partagé ;
+  // désactivé (404) si aucun jeton n'est configuré.
+  server.post('/internal/cache/invalidate', (req: Request, res: Response) => {
+    if (!cacheInvalidationToken) {
+      res.status(404).type('text/plain').send('Not found');
+      return;
+    }
+
+    const providedToken = req.headers['x-amusementpark-cache-token'];
+    const token = Array.isArray(providedToken) ? providedToken[0] : providedToken;
+
+    if (token !== cacheInvalidationToken) {
+      res.status(403).type('text/plain').send('Forbidden');
+      return;
+    }
+
+    const cleared = clearAllSsrCaches();
+    res.status(200).type('application/json').send(JSON.stringify({ cleared }));
   });
 
   server.use('/api', (req: Request, res: Response, next: NextFunction) => {
@@ -630,6 +653,43 @@ function enforceDiskPageCacheBudget(): void {
       // Best effort cleanup only.
     }
   }
+}
+
+function clearAllSsrCaches(): number {
+  let cleared: number = pageCache.size + seoDocumentCache.size;
+
+  pageCache.clear();
+  seoDocumentCache.clear();
+  cleared += clearDiskPageCache();
+
+  return cleared;
+}
+
+function clearDiskPageCache(): number {
+  if (!diskPageCacheEnabled || !existsSync(diskPageCacheDirectory)) {
+    return 0;
+  }
+
+  let removed: number = 0;
+
+  try {
+    for (const fileName of readdirSync(diskPageCacheDirectory)) {
+      if (!fileName.endsWith('.json')) {
+        continue;
+      }
+
+      try {
+        unlinkSync(join(diskPageCacheDirectory, fileName));
+        removed += 1;
+      } catch {
+        // Best effort cleanup only.
+      }
+    }
+  } catch (error: unknown) {
+    console.warn('SSR disk page cache clear failed', error);
+  }
+
+  return removed;
 }
 
 function containsAuthenticationCookie(req: Request): boolean {

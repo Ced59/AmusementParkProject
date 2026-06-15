@@ -13,6 +13,8 @@ using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+using AmusementPark.WebAPI.OutputCaching;
+
 namespace AmusementPark.WebAPI.Controllers;
 
 /// <summary>
@@ -22,6 +24,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("admin/localized-content")]
 [RequireActivatedUnblockedUser]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
+[InvalidatesPublicCache(PublicCacheScope.Data)]
 public sealed class LocalizedContentController : ControllerBase
 {
     private readonly IQueryHandler<SearchLocalizedContentTargetsQuery, ApplicationResult<PagedResult<LocalizedContentTargetResult>>> searchTargetsQueryHandler;

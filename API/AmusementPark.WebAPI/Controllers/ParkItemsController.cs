@@ -32,6 +32,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("park-items")]
 [RequireActivatedUnblockedUser]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
+[InvalidatesPublicCache(PublicCacheScope.Data)]
 public sealed class ParkItemsController : ControllerBase
 {
     private readonly IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler;

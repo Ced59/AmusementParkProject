@@ -15,25 +15,29 @@ namespace AmusementPark.WebAPI.OutputCaching;
 /// </summary>
 public sealed class PublicHttpCacheHeadersFilter : IAsyncResultFilter
 {
+    // Le stale-while-revalidate (SWR) est retiré des endpoints de contenu éditable :
+    // il faisait servir au navigateur une copie périmée juste après une mise à jour
+    // admin (« flicker » frais -> périmé). Il reste actif pour les ressources stables
+    // par URL (images) et les documents SEO (régénérés et évincés explicitement).
     private static readonly IReadOnlyList<PublicHttpCacheRule> Rules = new[]
     {
         new PublicHttpCacheRule("/robots.txt", 600, 3600, 3600, false),
         new PublicHttpCacheRule("/sitemap.xml", 600, 3600, 3600, false),
         new PublicHttpCacheRule("/sitemaps", 600, 3600, 3600, false),
         new PublicHttpCacheRule("/indexnow", 600, 3600, 3600, false),
-        new PublicHttpCacheRule("/public-stats/home", 60, 300, 300, true),
-        new PublicHttpCacheRule("/parks/random-visible", 60, 300, 300, true),
-        new PublicHttpCacheRule("/parks/home-featured", 60, 300, 300, true),
-        new PublicHttpCacheRule("/parks/map-visible", 120, 600, 600, true),
-        new PublicHttpCacheRule("/parks", 60, 300, 300, true),
-        new PublicHttpCacheRule("/park-zones", 120, 600, 600, true),
-        new PublicHttpCacheRule("/park-items", 120, 600, 600, true),
+        new PublicHttpCacheRule("/public-stats/home", 60, 300, 0, true),
+        new PublicHttpCacheRule("/parks/random-visible", 60, 300, 0, true),
+        new PublicHttpCacheRule("/parks/home-featured", 60, 300, 0, true),
+        new PublicHttpCacheRule("/parks/map-visible", 120, 600, 0, true),
+        new PublicHttpCacheRule("/parks", 60, 300, 0, true),
+        new PublicHttpCacheRule("/park-zones", 120, 600, 0, true),
+        new PublicHttpCacheRule("/park-items", 120, 600, 0, true),
         new PublicHttpCacheRule("/images", 300, 900, 900, true),
-        new PublicHttpCacheRule("/countries", 3600, 21600, 21600, true),
-        new PublicHttpCacheRule("/search", 60, 300, 300, true),
-        new PublicHttpCacheRule("/attraction-manufacturers", 3600, 21600, 21600, true),
-        new PublicHttpCacheRule("/park-founders", 3600, 21600, 21600, true),
-        new PublicHttpCacheRule("/park-operators", 3600, 21600, 21600, true),
+        new PublicHttpCacheRule("/countries", 3600, 21600, 0, true),
+        new PublicHttpCacheRule("/search", 60, 300, 0, true),
+        new PublicHttpCacheRule("/attraction-manufacturers", 3600, 21600, 0, true),
+        new PublicHttpCacheRule("/park-founders", 3600, 21600, 0, true),
+        new PublicHttpCacheRule("/park-operators", 3600, 21600, 0, true),
     };
 
     public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)

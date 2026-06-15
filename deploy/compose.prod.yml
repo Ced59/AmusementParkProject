@@ -27,8 +27,9 @@ services:
       SSR_RENDER_ENABLED: ${SSR_RENDER_ENABLED:-true}
       SSR_RENDER_ON_CACHE_MISS: ${SSR_RENDER_ON_CACHE_MISS:-false}
       SSR_RENDER_CRITICAL_ROUTES_ON_CACHE_MISS: ${SSR_RENDER_CRITICAL_ROUTES_ON_CACHE_MISS:-true}
-      SSR_SEO_DOCUMENT_CACHE_SECONDS: ${SSR_SEO_DOCUMENT_CACHE_SECONDS:-3600}
+      SSR_SEO_DOCUMENT_CACHE_SECONDS: ${SSR_SEO_DOCUMENT_CACHE_SECONDS:-21600}
       SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES: ${SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES:-128}
+      SSR_CACHE_INVALIDATION_TOKEN: ${SSR_CACHE_INVALIDATION_TOKEN:-}
       SSR_PAGE_CACHE_SECONDS: ${SSR_PAGE_CACHE_SECONDS:-86400}
       SSR_PAGE_CACHE_MAX_ENTRIES: ${SSR_PAGE_CACHE_MAX_ENTRIES:-2000}
       SSR_RENDER_MAX_CONCURRENCY: ${SSR_RENDER_MAX_CONCURRENCY:-1}
@@ -124,6 +125,8 @@ services:
       Seo__SupportedLanguages__5: pl
       Seo__SupportedLanguages__6: nl
       Seo__SupportedLanguages__7: pt
+      Ssr__InternalBaseUrl: ${SSR_INTERNAL_BASE_URL:-http://amusementpark-front:4000}
+      Ssr__CacheInvalidationToken: ${SSR_CACHE_INVALIDATION_TOKEN:-}
       Authentication__RefreshTokenCookie__Name: amusementpark.refresh
       Authentication__RefreshTokenCookie__Path: /api/auth
       Authentication__RefreshTokenCookie__HttpOnly: "true"

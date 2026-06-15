@@ -12,12 +12,15 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using AmusementPark.WebAPI.OutputCaching;
+
 namespace AmusementPark.WebAPI.Controllers;
 
 [ApiController]
 [Route("attraction-access-condition-types")]
 [RequireActivatedUnblockedUser]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
+[InvalidatesPublicCache(PublicCacheScope.ReferenceData)]
 public sealed class AttractionAccessConditionTypesController : ControllerBase
 {
     private readonly IQueryHandler<ListAttractionAccessConditionTypeDefinitionsQuery, ApplicationResult<IReadOnlyCollection<AttractionAccessConditionTypeDefinition>>> listQueryHandler;

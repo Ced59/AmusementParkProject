@@ -14,12 +14,15 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using AmusementPark.WebAPI.OutputCaching;
+
 namespace AmusementPark.WebAPI.Controllers;
 
 [ApiController]
 [Route("admin/park-graph-upserts")]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
 [RequireActivatedUnblockedUser]
+[InvalidatesPublicCache(PublicCacheScope.Data)]
 public sealed class ParkGraphUpsertsController : ControllerBase
 {
     private readonly ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler;
