@@ -116,6 +116,104 @@ public sealed class InvalidatePublicCachesFilterTests
         Assert.False(ssrCancellationToken.IsCancellationRequested);
     }
 
+    [Fact]
+    public async Task OnActionExecutionAsync_WhenTargetedMutationIsSafe_ShouldKeepStaleRefreshEnabled()
+    {
+        SsrPageCacheInvalidationRequest capturedRequest = null!;
+        Mock<IOutputCacheStore> outputCacheStore = CreateOutputCacheStore(ApiOutputCachePolicyNames.PublicDataTag);
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
+        ssrPageCacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
+            .Callback<SsrPageCacheInvalidationRequest, CancellationToken>((request, _) => capturedRequest = request)
+            .Returns(Task.CompletedTask);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver(CreateTargetedRequest());
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
+        ActionExecutingContext context = CreateExecutingContext(
+            HttpMethods.Put,
+            new InvalidatesPublicCacheAttribute(PublicCacheScope.Data));
+
+        await filter.OnActionExecutionAsync(context, () => Task.FromResult(CreateExecutedContext(context)));
+
+        Assert.True(capturedRequest.AllowStale);
+        Assert.True(capturedRequest.Refresh);
+        outputCacheStore.VerifyAll();
+        ssrPageCacheInvalidator.VerifyAll();
+    }
+
+    [Fact]
+    public async Task OnActionExecutionAsync_WhenDeletingPublicContent_ShouldForceHardSsrPurge()
+    {
+        SsrPageCacheInvalidationRequest capturedRequest = null!;
+        Mock<IOutputCacheStore> outputCacheStore = CreateOutputCacheStore(ApiOutputCachePolicyNames.PublicDataTag);
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
+        ssrPageCacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
+            .Callback<SsrPageCacheInvalidationRequest, CancellationToken>((request, _) => capturedRequest = request)
+            .Returns(Task.CompletedTask);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver(CreateTargetedRequest());
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
+        ActionExecutingContext context = CreateExecutingContext(
+            HttpMethods.Delete,
+            new InvalidatesPublicCacheAttribute(PublicCacheScope.Data));
+
+        await filter.OnActionExecutionAsync(context, () => Task.FromResult(CreateExecutedContext(context)));
+
+        Assert.False(capturedRequest.AllowStale);
+        Assert.False(capturedRequest.Refresh);
+        outputCacheStore.VerifyAll();
+        ssrPageCacheInvalidator.VerifyAll();
+    }
+
+    [Fact]
+    public async Task OnActionExecutionAsync_WhenVisibilityIsDisabled_ShouldForceHardSsrPurge()
+    {
+        SsrPageCacheInvalidationRequest capturedRequest = null!;
+        Mock<IOutputCacheStore> outputCacheStore = CreateOutputCacheStore(ApiOutputCachePolicyNames.PublicDataTag);
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
+        ssrPageCacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
+            .Callback<SsrPageCacheInvalidationRequest, CancellationToken>((request, _) => capturedRequest = request)
+            .Returns(Task.CompletedTask);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver(CreateTargetedRequest());
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
+        ActionExecutingContext context = CreateExecutingContext(
+            HttpMethods.Patch,
+            new InvalidatesPublicCacheAttribute(PublicCacheScope.Data),
+            new Dictionary<string, object?> { ["request"] = new VisibilityRequest { IsVisible = false } });
+
+        await filter.OnActionExecutionAsync(context, () => Task.FromResult(CreateExecutedContext(context)));
+
+        Assert.False(capturedRequest.AllowStale);
+        Assert.False(capturedRequest.Refresh);
+        outputCacheStore.VerifyAll();
+        ssrPageCacheInvalidator.VerifyAll();
+    }
+
+    [Fact]
+    public async Task OnActionExecutionAsync_WhenMarkedNotRelevant_ShouldForceHardSsrPurge()
+    {
+        SsrPageCacheInvalidationRequest capturedRequest = null!;
+        Mock<IOutputCacheStore> outputCacheStore = CreateOutputCacheStore(ApiOutputCachePolicyNames.PublicDataTag);
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
+        ssrPageCacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
+            .Callback<SsrPageCacheInvalidationRequest, CancellationToken>((request, _) => capturedRequest = request)
+            .Returns(Task.CompletedTask);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver(CreateTargetedRequest());
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
+        ActionExecutingContext context = CreateExecutingContext(
+            HttpMethods.Patch,
+            new InvalidatesPublicCacheAttribute(PublicCacheScope.Data),
+            new Dictionary<string, object?> { ["request"] = new ReviewStatusRequest { AdminReviewStatus = "NotRelevant" } });
+
+        await filter.OnActionExecutionAsync(context, () => Task.FromResult(CreateExecutedContext(context)));
+
+        Assert.False(capturedRequest.AllowStale);
+        Assert.False(capturedRequest.Refresh);
+        outputCacheStore.VerifyAll();
+        ssrPageCacheInvalidator.VerifyAll();
+    }
+
     private static InvalidatePublicCachesFilter CreateFilter(
         Mock<IOutputCacheStore> outputCacheStore,
         Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator,
@@ -128,7 +226,7 @@ public sealed class InvalidatePublicCachesFilterTests
             NullLogger<InvalidatePublicCachesFilter>.Instance);
     }
 
-    private static Mock<ISsrPageCacheInvalidationRequestResolver> CreateResolver()
+    private static Mock<ISsrPageCacheInvalidationRequestResolver> CreateResolver(SsrPageCacheInvalidationRequest? request = null)
     {
         Mock<ISsrPageCacheInvalidationRequestResolver> resolver = new Mock<ISsrPageCacheInvalidationRequestResolver>(MockBehavior.Strict);
         resolver
@@ -137,11 +235,32 @@ public sealed class InvalidatePublicCachesFilterTests
                 It.IsAny<ActionExecutedContext?>(),
                 It.IsAny<IReadOnlyCollection<PublicCacheScope>>(),
                 It.IsAny<CancellationToken>()))
-            .ReturnsAsync(SsrPageCacheInvalidationRequest.AllCaches());
+            .ReturnsAsync(request ?? SsrPageCacheInvalidationRequest.AllCaches());
         return resolver;
     }
 
-    private static ActionExecutingContext CreateExecutingContext(string method, InvalidatesPublicCacheAttribute attribute)
+    private static Mock<IOutputCacheStore> CreateOutputCacheStore(string tag)
+    {
+        Mock<IOutputCacheStore> outputCacheStore = new Mock<IOutputCacheStore>(MockBehavior.Strict);
+        outputCacheStore
+            .Setup(store => store.EvictByTagAsync(tag, It.IsAny<CancellationToken>()))
+            .Returns(ValueTask.CompletedTask);
+        return outputCacheStore;
+    }
+
+    private static SsrPageCacheInvalidationRequest CreateTargetedRequest()
+    {
+        return new SsrPageCacheInvalidationRequest
+        {
+            Paths = new[] { "/fr/home" },
+            IncludeSeoDocuments = true,
+        };
+    }
+
+    private static ActionExecutingContext CreateExecutingContext(
+        string method,
+        InvalidatesPublicCacheAttribute attribute,
+        Dictionary<string, object?>? actionArguments = null)
     {
         DefaultHttpContext httpContext = new DefaultHttpContext();
         httpContext.Request.Method = method;
@@ -154,7 +273,7 @@ public sealed class InvalidatePublicCachesFilterTests
         return new ActionExecutingContext(
             actionContext,
             new List<IFilterMetadata>(),
-            new Dictionary<string, object?>(),
+            actionArguments ?? new Dictionary<string, object?>(),
             new object());
     }
 
@@ -167,5 +286,15 @@ public sealed class InvalidatePublicCachesFilterTests
         {
             Result = new OkResult()
         };
+    }
+
+    private sealed class VisibilityRequest
+    {
+        public bool IsVisible { get; init; }
+    }
+
+    private sealed class ReviewStatusRequest
+    {
+        public string AdminReviewStatus { get; init; } = string.Empty;
     }
 }

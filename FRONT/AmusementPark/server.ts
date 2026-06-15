@@ -45,18 +45,28 @@ const csrFallbackCacheControl = process.env['SSR_CSR_FALLBACK_CACHE_CONTROL'] ??
 const pageCacheBrowserCacheControl = process.env['SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL'] ?? 'no-cache, max-age=0, must-revalidate';
 const seoDocumentBrowserCacheControl = process.env['SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL'] ?? 'no-cache, max-age=0, must-revalidate';
 const cacheInvalidationToken = process.env['SSR_CACHE_INVALIDATION_TOKEN'] ?? '';
+const stalePageCacheSeconds = Math.max(0, Number(process.env['SSR_STALE_PAGE_CACHE_SECONDS'] ?? 600));
+const targetedRefreshEnabled = (process.env['SSR_TARGETED_REFRESH_ENABLED'] ?? 'true').toLowerCase() !== 'false';
+const targetedRefreshMaxUrls = Math.max(0, Number(process.env['SSR_TARGETED_REFRESH_MAX_URLS'] ?? 24));
+const targetedRefreshConcurrency = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_CONCURRENCY'] ?? 1));
+const targetedRefreshDelayMilliseconds = Math.max(0, Number(process.env['SSR_TARGETED_REFRESH_DELAY_MILLISECONDS'] ?? 1500));
+const targetedRefreshTimeoutSeconds = Math.max(1, Number(process.env['SSR_TARGETED_REFRESH_TIMEOUT_SECONDS'] ?? 45));
 let activeRenderCount = 0;
 let assetMissCount = 0;
 let csrFallbackCount = 0;
 let cachedCsrShellHtml: string | null = null;
 let diskPageCacheWriteCount = 0;
 const pendingRenderQueue: Array<() => void> = [];
+const pendingTargetedRefreshQueue: string[] = [];
+const queuedTargetedRefreshKeys = new Set<string>();
+let activeTargetedRefreshCount = 0;
 
 interface PageCacheEntry {
   readonly cacheKey?: string;
   readonly statusCode: number;
   readonly html: string;
   readonly expiresAt: number;
+  readonly staleUntil?: number;
 }
 
 interface CacheInvalidationRequest {
@@ -64,6 +74,8 @@ interface CacheInvalidationRequest {
   readonly paths?: string[];
   readonly prefixes?: string[];
   readonly includeSeoDocuments?: boolean;
+  readonly allowStale?: boolean;
+  readonly refresh?: boolean;
 }
 
 interface NormalizedCacheInvalidationRequest {
@@ -71,6 +83,8 @@ interface NormalizedCacheInvalidationRequest {
   readonly paths: string[];
   readonly prefixes: string[];
   readonly includeSeoDocuments: boolean;
+  readonly allowStale: boolean;
+  readonly refresh: boolean;
 }
 
 interface CacheInvalidationResult {
@@ -78,6 +92,8 @@ interface CacheInvalidationResult {
   readonly pageMemoryEntries: number;
   readonly pageDiskEntries: number;
   readonly seoDocumentEntries: number;
+  readonly stalePageEntries: number;
+  readonly queuedRefreshes: number;
   readonly all: boolean;
 }
 
@@ -210,7 +226,11 @@ export function app(): express.Express {
 
     if (cachedEntry !== null) {
       res.status(cachedEntry.statusCode);
-      setPageCacheResponseHeaders(res, warmupRequest ? 'WARMUP-HIT' : 'HIT');
+      const staleEntry = isStalePageCacheEntry(cachedEntry);
+      setPageCacheResponseHeaders(res, staleEntry ? (warmupRequest ? 'WARMUP-STALE' : 'STALE') : (warmupRequest ? 'WARMUP-HIT' : 'HIT'));
+      if (staleEntry && cacheKey !== null && !warmupRequest) {
+        enqueueTargetedRefreshes([cacheKey]);
+      }
       res.type('html').send(cachedEntry.html);
       return;
     }
@@ -272,6 +292,7 @@ function run(): void {
     console.log(`SSR page browser Cache-Control: ${pageCacheBrowserCacheControl}`);
     console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
     console.log(`SSR SEO document browser Cache-Control: ${seoDocumentBrowserCacheControl}`);
+    console.log(`SSR stale page cache: ${stalePageCacheSeconds}s / targeted refresh=${targetedRefreshEnabled} / max=${targetedRefreshMaxUrls} / concurrency=${targetedRefreshConcurrency}`);
     console.log(`SSR render enabled: ${ssrRenderEnabled}`);
     console.log(`SSR render on cache miss: ${renderOnCacheMiss}`);
     console.log(`SSR render critical routes on cache miss: ${renderCriticalRoutesOnCacheMiss}`);
@@ -580,7 +601,7 @@ function getCachedPage(cacheKey: string): PageCacheEntry | null {
   const memoryEntry = pageCache.get(cacheKey);
 
   if (memoryEntry) {
-    if (memoryEntry.expiresAt > Date.now()) {
+    if (isUsablePageCacheEntry(memoryEntry)) {
       return memoryEntry;
     }
 
@@ -617,7 +638,16 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
   }
 }
 
-function setPageCacheResponseHeaders(res: Response, cacheStatus: 'HIT' | 'MISS' | 'WARMED' | 'WARMUP-HIT'): void {
+function isUsablePageCacheEntry(entry: PageCacheEntry): boolean {
+  const now = Date.now();
+  return entry.expiresAt > now || (entry.staleUntil ?? 0) > now;
+}
+
+function isStalePageCacheEntry(entry: PageCacheEntry): boolean {
+  return entry.expiresAt <= Date.now() && (entry.staleUntil ?? 0) > Date.now();
+}
+
+function setPageCacheResponseHeaders(res: Response, cacheStatus: 'HIT' | 'MISS' | 'WARMED' | 'WARMUP-HIT' | 'STALE' | 'WARMUP-STALE'): void {
   res.setHeader('X-AmusementPark-SSR-Cache', cacheStatus);
   res.setHeader('Cache-Control', pageCacheBrowserCacheControl);
 }
@@ -637,7 +667,7 @@ function getDiskCachedPage(cacheKey: string): PageCacheEntry | null {
     const serializedEntry: string = readFileSync(cacheFilePath, 'utf8');
     const parsedEntry = JSON.parse(serializedEntry) as PageCacheEntry;
 
-    if (parsedEntry.expiresAt <= Date.now() || typeof parsedEntry.html !== 'string') {
+    if (!isUsablePageCacheEntry(parsedEntry) || typeof parsedEntry.html !== 'string') {
       unlinkSync(cacheFilePath);
       return null;
     }
@@ -715,49 +745,68 @@ function clearAllSsrCaches(): CacheInvalidationResult {
     pageMemoryEntries,
     pageDiskEntries,
     seoDocumentEntries,
+    stalePageEntries: 0,
+    queuedRefreshes: 0,
     all: true
   };
 }
 
 function clearTargetedSsrCaches(request: NormalizedCacheInvalidationRequest): CacheInvalidationResult {
-  const pageMemoryEntries = clearMatchingMemoryPageCache(request);
-  const pageDiskEntries = clearMatchingDiskPageCache(request);
+  const matchedCacheKeys = new Set<string>();
+  const pageMemoryEntries = clearMatchingMemoryPageCache(request, matchedCacheKeys);
+  const pageDiskEntries = clearMatchingDiskPageCache(request, matchedCacheKeys);
   const seoDocumentEntries = request.includeSeoDocuments ? seoDocumentCache.size : 0;
 
   if (request.includeSeoDocuments) {
     seoDocumentCache.clear();
   }
 
+  const stalePageEntries = request.allowStale && stalePageCacheSeconds > 0 ? pageMemoryEntries + pageDiskEntries : 0;
+  const queuedRefreshes = request.allowStale && request.refresh
+    ? enqueueTargetedRefreshes(Array.from(matchedCacheKeys))
+    : 0;
+
   return {
     cleared: pageMemoryEntries + pageDiskEntries + seoDocumentEntries,
     pageMemoryEntries,
     pageDiskEntries,
     seoDocumentEntries,
+    stalePageEntries,
+    queuedRefreshes,
     all: false
   };
 }
 
-function clearMatchingMemoryPageCache(request: NormalizedCacheInvalidationRequest): number {
-  let removed = 0;
+function clearMatchingMemoryPageCache(request: NormalizedCacheInvalidationRequest, matchedCacheKeys: Set<string>): number {
+  let affected = 0;
 
   for (const cacheKey of Array.from(pageCache.keys())) {
     if (!isPageCacheKeyMatched(cacheKey, request)) {
       continue;
     }
 
-    pageCache.delete(cacheKey);
-    removed += 1;
+    const entry = pageCache.get(cacheKey);
+    if (entry && request.allowStale && stalePageCacheSeconds > 0) {
+      const staleEntry = markPageCacheEntryStale(cacheKey, entry);
+      pageCache.set(cacheKey, staleEntry);
+      setDiskCachedPage(cacheKey, staleEntry);
+      matchedCacheKeys.add(cacheKey);
+    } else {
+      pageCache.delete(cacheKey);
+    }
+
+    affected += 1;
   }
 
-  return removed;
+  return affected;
 }
 
-function clearMatchingDiskPageCache(request: NormalizedCacheInvalidationRequest): number {
+function clearMatchingDiskPageCache(request: NormalizedCacheInvalidationRequest, matchedCacheKeys: Set<string>): number {
   if (!diskPageCacheEnabled || !existsSync(diskPageCacheDirectory)) {
     return 0;
   }
 
-  let removed = 0;
+  let affected = 0;
 
   try {
     for (const fileName of readdirSync(diskPageCacheDirectory)) {
@@ -772,19 +821,37 @@ function clearMatchingDiskPageCache(request: NormalizedCacheInvalidationRequest)
         const parsedEntry = JSON.parse(serializedEntry) as PageCacheEntry;
 
         if (!parsedEntry.cacheKey || isPageCacheKeyMatched(parsedEntry.cacheKey, request)) {
-          unlinkSync(filePath);
-          removed += 1;
+          if (parsedEntry.cacheKey && request.allowStale && stalePageCacheSeconds > 0 && typeof parsedEntry.html === 'string') {
+            const staleEntry = markPageCacheEntryStale(parsedEntry.cacheKey, parsedEntry);
+            writeFileSync(filePath, JSON.stringify(staleEntry), 'utf8');
+            pageCache.set(parsedEntry.cacheKey, staleEntry);
+            matchedCacheKeys.add(parsedEntry.cacheKey);
+          } else {
+            unlinkSync(filePath);
+          }
+
+          affected += 1;
         }
       } catch {
         unlinkSync(filePath);
-        removed += 1;
+        affected += 1;
       }
     }
   } catch (error: unknown) {
     console.warn('SSR disk page cache targeted clear failed', error);
   }
 
-  return removed;
+  return affected;
+}
+
+function markPageCacheEntryStale(cacheKey: string, entry: PageCacheEntry): PageCacheEntry {
+  const now = Date.now();
+  return {
+    ...entry,
+    cacheKey,
+    expiresAt: Math.min(entry.expiresAt, now),
+    staleUntil: Math.max(entry.staleUntil ?? 0, now + stalePageCacheSeconds * 1000)
+  };
 }
 
 function clearDiskPageCache(): number {
@@ -820,13 +887,114 @@ function normalizeCacheInvalidationRequest(body: unknown): NormalizedCacheInvali
   const prefixes = normalizeInvalidationPaths(request.prefixes);
   const includeSeoDocuments = request.includeSeoDocuments === true;
   const all = request.all === true || (paths.length === 0 && prefixes.length === 0 && !includeSeoDocuments);
+  const allowStale = !all && request.allowStale !== false;
+  const refresh = allowStale && targetedRefreshEnabled && request.refresh !== false;
 
   return {
     all,
     paths,
     prefixes,
-    includeSeoDocuments: all || includeSeoDocuments
+    includeSeoDocuments: all || includeSeoDocuments,
+    allowStale,
+    refresh
   };
+}
+
+function enqueueTargetedRefreshes(cacheKeys: string[]): number {
+  if (!targetedRefreshEnabled || targetedRefreshMaxUrls <= 0) {
+    return 0;
+  }
+
+  let queued = 0;
+  for (const cacheKey of cacheKeys) {
+    if (queued >= targetedRefreshMaxUrls) {
+      break;
+    }
+
+    if (!isCacheKeyRefreshable(cacheKey) || queuedTargetedRefreshKeys.has(cacheKey)) {
+      continue;
+    }
+
+    queuedTargetedRefreshKeys.add(cacheKey);
+    pendingTargetedRefreshQueue.push(cacheKey);
+    queued += 1;
+  }
+
+  drainTargetedRefreshQueue();
+  return queued;
+}
+
+function drainTargetedRefreshQueue(): void {
+  while (activeTargetedRefreshCount < targetedRefreshConcurrency && pendingTargetedRefreshQueue.length > 0) {
+    const cacheKey = pendingTargetedRefreshQueue.shift();
+    if (!cacheKey) {
+      continue;
+    }
+
+    activeTargetedRefreshCount += 1;
+    void refreshTargetedCacheKey(cacheKey)
+      .catch((error: unknown) => {
+        console.warn(`SSR targeted refresh failed: key=${cacheKey}`, error);
+      })
+      .finally(() => {
+        activeTargetedRefreshCount -= 1;
+        queuedTargetedRefreshKeys.delete(cacheKey);
+        if (targetedRefreshDelayMilliseconds > 0) {
+          setTimeout(drainTargetedRefreshQueue, targetedRefreshDelayMilliseconds);
+        } else {
+          drainTargetedRefreshQueue();
+        }
+      });
+  }
+}
+
+function refreshTargetedCacheKey(cacheKey: string): Promise<void> {
+  const originalUrl = new URL(cacheKey);
+  const localPort = Number(process.env['PORT'] ?? 4000);
+  const refreshUrl = new URL(`${originalUrl.pathname}${originalUrl.search}`, `http://127.0.0.1:${localPort}`);
+  const client = refreshUrl.protocol === 'https:' ? https : http;
+
+  return new Promise<void>((resolvePromise, rejectPromise) => {
+    const request = client.request(refreshUrl, {
+      method: 'GET',
+      timeout: targetedRefreshTimeoutSeconds * 1000,
+      headers: {
+        Accept: 'text/html,*/*',
+        Host: originalUrl.host,
+        'User-Agent': 'AmusementPark-SSR-TargetedRefresh/1.0',
+        'X-Forwarded-Host': originalUrl.host,
+        'X-Forwarded-Proto': originalUrl.protocol.replace(':', ''),
+        'X-AmusementPark-SSR-Warmup': '1',
+        'X-AmusementPark-SSR-Warmup-Refresh': '1'
+      }
+    }, (response) => {
+      response.resume();
+      response.on('end', () => {
+        const statusCode = response.statusCode ?? 0;
+        if (statusCode >= 200 && statusCode < 300) {
+          resolvePromise();
+          return;
+        }
+
+        rejectPromise(new Error(`HTTP ${statusCode}`));
+      });
+    });
+
+    request.on('timeout', () => {
+      request.destroy(new Error(`timeout after ${targetedRefreshTimeoutSeconds}s`));
+    });
+    request.on('error', rejectPromise);
+    request.end();
+  });
+}
+
+function isCacheKeyRefreshable(cacheKey: string): boolean {
+  try {
+    const parsed = new URL(cacheKey);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+  } catch {
+    return false;
+  }
 }
 
 function normalizeInvalidationPaths(values: string[] | undefined): string[] {

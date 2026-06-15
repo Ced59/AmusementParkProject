@@ -16,12 +16,20 @@ public sealed class SsrPageCacheInvalidationRequest
     [JsonPropertyName("includeSeoDocuments")]
     public bool IncludeSeoDocuments { get; init; }
 
+    [JsonPropertyName("allowStale")]
+    public bool AllowStale { get; init; } = true;
+
+    [JsonPropertyName("refresh")]
+    public bool Refresh { get; init; } = true;
+
     public static SsrPageCacheInvalidationRequest AllCaches()
     {
         return new SsrPageCacheInvalidationRequest
         {
             All = true,
             IncludeSeoDocuments = true,
+            AllowStale = false,
+            Refresh = false,
         };
     }
 }

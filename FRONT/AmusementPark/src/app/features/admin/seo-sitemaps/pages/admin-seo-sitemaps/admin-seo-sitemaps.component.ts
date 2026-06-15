@@ -58,8 +58,6 @@ export class AdminSeoSitemapsComponent implements OnInit {
   protected readonly pageSize = this.stateFacade.pageSize;
   protected readonly savingSettings = this.stateFacade.savingSettings;
   protected readonly generating = this.stateFacade.generating;
-  protected readonly prerendering = this.stateFacade.prerendering;
-  protected readonly prerenderProgress = this.stateFacade.prerenderProgress;
   protected readonly lastGeneration = this.stateFacade.lastGeneration;
   protected readonly canSubmitIndexNow = computed(() => !!this.overview()?.settings.isIndexNowEnabled);
 
@@ -113,10 +111,6 @@ export class AdminSeoSitemapsComponent implements OnInit {
 
   protected generate(submitToIndexNow: boolean): void {
     this.stateFacade.generate(submitToIndexNow);
-  }
-
-  protected generateSeoSsr(submitToIndexNow: boolean): void {
-    this.stateFacade.generateSeoSsr(submitToIndexNow);
   }
 
   protected refresh(): void {
