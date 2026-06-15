@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { Paginator, PaginatorState } from 'primeng/paginator';
 import { PaginationContract } from '@shared/models/contracts';
+import { ScrollAnchorService } from '@shared/services/scroll/scroll-anchor.service';
 
 @Component({
   selector: 'app-pagination',
@@ -18,8 +19,16 @@ export class PaginationComponent {
   @Input() rowsPerPageOptions: number[] = [10, 20, 50];
   @Input() pageLinkSize: number = 3;
   @Input() alwaysShow: boolean = false;
+  @Input() scrollOnPageChange: boolean = true;
+  @Input() scrollTargetSelector: string | null = null;
 
   @Output() pageChanged: EventEmitter<PaginatorState> = new EventEmitter<PaginatorState>();
+
+  constructor(
+    private readonly elementRef: ElementRef<HTMLElement>,
+    private readonly scrollAnchorService: ScrollAnchorService
+  ) {
+  }
 
   protected get resolvedRows(): number {
     return this.rows ?? this.pagination?.itemsPerPage ?? 0;
@@ -55,5 +64,13 @@ export class PaginationComponent {
 
   protected onPageChange(event: PaginatorState): void {
     this.pageChanged.emit(event);
+
+    if (!this.scrollOnPageChange) {
+      return;
+    }
+
+    this.scrollAnchorService.scrollToPaginationTarget(this.elementRef.nativeElement, {
+      targetSelector: this.scrollTargetSelector
+    });
   }
 }

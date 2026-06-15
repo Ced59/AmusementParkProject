@@ -12,6 +12,7 @@ import { Tag } from 'primeng/tag';
 
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { AdminSeoSitemapsStateFacade } from '@features/admin/seo-sitemaps/state/admin-seo-sitemaps-state.facade';
+import { ScrollAnchorService } from '@shared/services/scroll/scroll-anchor.service';
 import {
   SeoSitemapGenerationHistory,
   SeoSitemapGenerationStatus,
@@ -70,7 +71,10 @@ export class AdminSeoSitemapsComponent implements OnInit {
     indexNowEndpoints: new FormControl<string>('https://api.indexnow.org/indexnow\nhttps://www.bing.com/indexnow', { nonNullable: true })
   });
 
-  constructor(private readonly stateFacade: AdminSeoSitemapsStateFacade) {
+  constructor(
+    private readonly stateFacade: AdminSeoSitemapsStateFacade,
+    private readonly scrollAnchorService: ScrollAnchorService
+  ) {
     effect(() => {
       const settings = this.overview()?.settings;
       if (!settings) {
@@ -121,7 +125,12 @@ export class AdminSeoSitemapsComponent implements OnInit {
     const rows: number = event.rows ?? this.pageSize();
     const first: number = event.first ?? 0;
     const page: number = Math.floor(first / rows) + 1;
+    const shouldScroll: boolean = page !== this.currentPage() || rows !== this.pageSize();
     this.stateFacade.load(page, rows);
+
+    if (shouldScroll) {
+      this.scrollAnchorService.scrollToSelector('[data-pagination-scroll-target="admin-seo-sitemap-history"]');
+    }
   }
 
   protected sectionTrackBy(_: number, section: SeoSitemapSectionStats): string {

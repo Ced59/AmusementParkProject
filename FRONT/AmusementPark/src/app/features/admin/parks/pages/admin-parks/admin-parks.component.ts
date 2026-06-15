@@ -9,6 +9,7 @@ import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { AdminParksStateFacade } from '@features/admin/parks/state/admin-parks-state.facade';
 import { AdminParksViewComponent } from './admin-parks-view.component';
 import { getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
+import { ScrollAnchorService } from '@shared/services/scroll/scroll-anchor.service';
 
 @Component({
   selector: 'app-admin-parks',
@@ -37,7 +38,8 @@ export class AdminParksComponent implements OnInit {
 
   constructor(
     protected readonly stateFacade: AdminParksStateFacade,
-    private readonly parksApiService: ParksApiService
+    private readonly parksApiService: ParksApiService,
+    private readonly scrollAnchorService: ScrollAnchorService
   ) {
   }
 
@@ -73,9 +75,14 @@ export class AdminParksComponent implements OnInit {
     const rows: number = event.rows ?? this.pageSize();
     const first: number = event.first ?? 0;
     const page: number = Math.floor(first / rows) + 1;
+    const shouldScroll: boolean = page !== this.currentPage() || rows !== this.pageSize();
 
     this.selectedParkIds.set([]);
     this.stateFacade.loadParks(page, rows);
+
+    if (shouldScroll) {
+      this.scrollAnchorService.scrollToSelector('[data-pagination-scroll-target="admin-parks"]');
+    }
   }
 
   async onVisibilityChange(park: Park): Promise<void> {
