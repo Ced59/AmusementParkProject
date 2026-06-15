@@ -58,6 +58,7 @@ public static class HttpApiServiceCollectionExtensions
             options.Level = CompressionLevel.Fastest;
         });
         services.AddApiOutputCaching();
+        services.AddScoped<ISsrPageCacheInvalidationRequestResolver, SsrPageCacheInvalidationRequestResolver>();
         services.AddControllers(static options =>
         {
             options.Filters.Add<InvalidatePublicCachesFilter>();

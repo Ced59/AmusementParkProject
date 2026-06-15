@@ -93,6 +93,18 @@ public sealed class ParkRepository : IParkRepository
         return NormalizeParkIds(parkIds);
     }
 
+    public Task<IReadOnlyCollection<string>> GetParkIdsByOperatorIdAsync(string operatorId, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.OperatorId, operatorId);
+        return this.GetParkIdsByFilterAsync(filter, cancellationToken);
+    }
+
+    public Task<IReadOnlyCollection<string>> GetParkIdsByFounderIdAsync(string founderId, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.FounderId, founderId);
+        return this.GetParkIdsByFilterAsync(filter, cancellationToken);
+    }
+
     public Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken)
     {
         ParkSearchCriteria criteria = new ParkSearchCriteria(searchTerm, Array.Empty<string>(), Array.Empty<string>());
@@ -352,6 +364,15 @@ public sealed class ParkRepository : IParkRepository
     {
         FilterDefinition<ParkDocument> filter = this.BuildAdminListFilter(includeHidden, isVisible, adminReviewStatus, type, countryCode, hasValidCoordinates);
 
+        List<string> parkIds = await this.collection.Find(filter)
+            .Project(document => document.Id)
+            .ToListAsync(cancellationToken);
+
+        return NormalizeParkIds(parkIds);
+    }
+
+    private async Task<IReadOnlyCollection<string>> GetParkIdsByFilterAsync(FilterDefinition<ParkDocument> filter, CancellationToken cancellationToken)
+    {
         List<string> parkIds = await this.collection.Find(filter)
             .Project(document => document.Id)
             .ToListAsync(cancellationToken);

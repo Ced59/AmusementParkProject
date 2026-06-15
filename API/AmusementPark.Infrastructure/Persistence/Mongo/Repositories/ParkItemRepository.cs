@@ -255,6 +255,29 @@ public sealed class ParkItemRepository : IParkItemRepository
         return documents.Select(static document => document.ToDomain()).ToList();
     }
 
+    public async Task<IReadOnlyCollection<string>> GetParkIdsByManufacturerIdAsync(string manufacturerId, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(manufacturerId))
+        {
+            return Array.Empty<string>();
+        }
+
+        string normalizedManufacturerId = manufacturerId.Trim();
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(
+            document => document.AttractionDetails!.ManufacturerId,
+            normalizedManufacturerId);
+
+        List<string> parkIds = await this.collection.Find(filter)
+            .Project(document => document.ParkId)
+            .ToListAsync(cancellationToken);
+
+        return parkIds
+            .Where(static parkId => !string.IsNullOrWhiteSpace(parkId))
+            .Select(static parkId => parkId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+    }
+
     public async Task<ParkItem> CreateAsync(ParkItem parkItem, CancellationToken cancellationToken)
     {
         ParkItemDocument document = parkItem.ToDocument();

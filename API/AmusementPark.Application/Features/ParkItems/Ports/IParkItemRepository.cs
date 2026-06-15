@@ -17,6 +17,7 @@ public interface IParkItemRepository
     Task<ParkItem?> GetByIdAsync(string parkItemId, CancellationToken cancellationToken);
     Task<ParkItem?> GetByIdAsync(string parkItemId, bool includeHidden, CancellationToken cancellationToken);
     Task<IReadOnlyCollection<ParkItem>> GetByIdsAsync(IReadOnlyCollection<string> parkItemIds, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<string>> GetParkIdsByManufacturerIdAsync(string manufacturerId, CancellationToken cancellationToken);
     Task<ParkItem> CreateAsync(ParkItem parkItem, CancellationToken cancellationToken);
     Task<ParkItem?> UpdateAsync(string parkItemId, ParkItem parkItem, CancellationToken cancellationToken);
     Task<bool> DeleteAsync(string parkItemId, CancellationToken cancellationToken);

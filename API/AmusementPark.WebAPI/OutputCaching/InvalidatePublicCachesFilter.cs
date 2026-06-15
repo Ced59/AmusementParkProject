@@ -23,15 +23,18 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
 {
     private readonly IOutputCacheStore outputCacheStore;
     private readonly ISsrPageCacheInvalidator ssrPageCacheInvalidator;
+    private readonly ISsrPageCacheInvalidationRequestResolver ssrPageCacheInvalidationRequestResolver;
     private readonly ILogger<InvalidatePublicCachesFilter> logger;
 
     public InvalidatePublicCachesFilter(
         IOutputCacheStore outputCacheStore,
         ISsrPageCacheInvalidator ssrPageCacheInvalidator,
+        ISsrPageCacheInvalidationRequestResolver ssrPageCacheInvalidationRequestResolver,
         ILogger<InvalidatePublicCachesFilter> logger)
     {
         this.outputCacheStore = outputCacheStore;
         this.ssrPageCacheInvalidator = ssrPageCacheInvalidator;
+        this.ssrPageCacheInvalidationRequestResolver = ssrPageCacheInvalidationRequestResolver;
         this.logger = logger;
     }
 
@@ -40,9 +43,17 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
         ArgumentNullException.ThrowIfNull(context);
         ArgumentNullException.ThrowIfNull(next);
 
+        if (!TryResolveScopes(context, out IReadOnlyCollection<PublicCacheScope> scopes))
+        {
+            await next();
+            return;
+        }
+
+        SsrPageCacheInvalidationRequest preExecutionSsrInvalidation = await this.ResolveSsrInvalidationAsync(context, null, scopes);
+
         ActionExecutedContext executedContext = await next();
 
-        if (!TryResolveScopes(context, executedContext, out IReadOnlyCollection<PublicCacheScope> scopes))
+        if (!IsSuccessfulResult(executedContext))
         {
             return;
         }
@@ -61,7 +72,9 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
 
         try
         {
-            await this.ssrPageCacheInvalidator.InvalidateAllAsync(CancellationToken.None);
+            SsrPageCacheInvalidationRequest postExecutionSsrInvalidation = await this.ResolveSsrInvalidationAsync(context, executedContext, scopes);
+            SsrPageCacheInvalidationRequest ssrInvalidation = MergeSsrInvalidation(preExecutionSsrInvalidation, postExecutionSsrInvalidation);
+            await this.ssrPageCacheInvalidator.InvalidateAsync(ssrInvalidation, CancellationToken.None);
         }
         catch (Exception exception)
         {
@@ -69,19 +82,63 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
         }
     }
 
+    private async Task<SsrPageCacheInvalidationRequest> ResolveSsrInvalidationAsync(
+        ActionExecutingContext context,
+        ActionExecutedContext? executedContext,
+        IReadOnlyCollection<PublicCacheScope> scopes)
+    {
+        try
+        {
+            return await this.ssrPageCacheInvalidationRequestResolver.ResolveAsync(context, executedContext, scopes, CancellationToken.None);
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogWarning(exception, "SSR page cache invalidation impact resolution failed.");
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
+    }
+
+    private static SsrPageCacheInvalidationRequest MergeSsrInvalidation(
+        SsrPageCacheInvalidationRequest preExecutionRequest,
+        SsrPageCacheInvalidationRequest postExecutionRequest)
+    {
+        if (preExecutionRequest.All && postExecutionRequest.All)
+        {
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
+
+        if (preExecutionRequest.All)
+        {
+            return postExecutionRequest;
+        }
+
+        if (postExecutionRequest.All)
+        {
+            return preExecutionRequest;
+        }
+
+        return new SsrPageCacheInvalidationRequest
+        {
+            All = false,
+            Paths = preExecutionRequest.Paths
+                .Concat(postExecutionRequest.Paths)
+                .Distinct(StringComparer.Ordinal)
+                .ToList(),
+            Prefixes = preExecutionRequest.Prefixes
+                .Concat(postExecutionRequest.Prefixes)
+                .Distinct(StringComparer.Ordinal)
+                .ToList(),
+            IncludeSeoDocuments = preExecutionRequest.IncludeSeoDocuments || postExecutionRequest.IncludeSeoDocuments,
+        };
+    }
+
     private static bool TryResolveScopes(
         ActionExecutingContext context,
-        ActionExecutedContext executedContext,
         out IReadOnlyCollection<PublicCacheScope> scopes)
     {
         scopes = Array.Empty<PublicCacheScope>();
 
         if (!IsMutatingMethod(context.HttpContext.Request.Method))
-        {
-            return false;
-        }
-
-        if (!IsSuccessfulResult(executedContext))
         {
             return false;
         }
