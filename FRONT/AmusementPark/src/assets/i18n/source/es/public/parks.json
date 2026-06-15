@@ -30,7 +30,8 @@
       "website": "Sitio web",
       "backToList": "Volver a la lista",
       "images": "Imágenes",
-      "map": "Mapa"
+      "map": "Mapa",
+      "browseZones": "Explorar todas las zonas"
     },
     "detail": {
       "heroBadge": "Vista general del parque",
@@ -275,6 +276,39 @@
       "errorTitle": "Mapa no disponible",
       "errorMessage": "No se puede cargar el mapa de este parque en este momento.",
       "backToPark": "Volver a {{name}}"
+    },
+    "zones": {
+      "badge": "Zonas del parque",
+      "title": "Zonas de {{park}}",
+      "subtitle": "{{count}} zona(s) que agrupan {{total}} elemento(s) público(s).",
+      "loadingTitle": "Cargando zonas",
+      "loadingMessage": "Se están cargando las zonas del parque.",
+      "errorTitle": "No se pueden cargar las zonas",
+      "errorMessage": "No se pudieron cargar las zonas del parque.",
+      "emptyTitle": "No hay zonas disponibles",
+      "emptyMessage": "No hay ninguna zona pública disponible actualmente para este parque.",
+      "noDescription": "Todavía no hay descripción disponible para esta zona.",
+      "openZone": "Abrir zona",
+      "backToZones": "Volver a las zonas"
+    },
+    "zone": {
+      "badge": "Zona de {{park}}",
+      "loadingTitle": "Cargando zona",
+      "loadingMessage": "Se está cargando la zona del parque.",
+      "errorTitle": "No se puede cargar la zona",
+      "errorMessage": "No se pudo cargar la zona del parque.",
+      "emptyTitle": "Zona no disponible",
+      "emptyMessage": "La zona solicitada no está disponible.",
+      "totalItems": "Elementos",
+      "totalItemsHint": "Vinculados a esta zona",
+      "mapMarkers": "Marcadores",
+      "mapMarkersHint": "Geolocalizados",
+      "mapBadge": "Mapa de la zona",
+      "mapTitle": "Elementos geolocalizados",
+      "itemsBadge": "Elementos de la zona",
+      "itemsTitle": "Elementos en esta zona",
+      "emptyItemsTitle": "No hay elementos en esta zona",
+      "emptyItemsMessage": "Actualmente no hay ningún elemento público vinculado a esta zona."
     }
   }
 }

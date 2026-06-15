@@ -2,7 +2,7 @@
   "privacyPage": {
     "kicker": "Personal data",
     "title": "Privacy policy",
-    "lead": "This page explains how AmusementPark processes personal data, necessary cookies, Google OAuth authentication and Matomo audience measurement.",
+    "lead": "This page explains how AmusementPark processes personal data, necessary cookies, Google OAuth authentication, Matomo audience measurement and Microsoft Clarity usage analytics.",
     "chips": {
       "hosting": "Hosting in France",
       "analytics": "Cookies and analytics",
@@ -11,7 +11,7 @@
     "consent": {
       "kicker": "Cookie preferences",
       "title": "Manage optional cookies",
-      "text": "Cookies that are necessary for operation and authentication may be used without consent. Here you can accept, refuse or show again the choice for optional audience measurement cookies.",
+      "text": "Cookies that are necessary for operation and authentication may be used without consent. Here you can accept, refuse or show again the choice for optional audience-measurement and usage-analytics cookies.",
       "currentStatus": "Current status:",
       "statusAccepted": "optional cookies accepted.",
       "statusRefused": "optional cookies refused.",
@@ -34,7 +34,7 @@
       "purposes": {
         "title": "Purposes and legal bases",
         "body1": "Data is used to provide website features, secure access, manage accounts, display public content and administer the project.",
-        "body2": "Processing required for operation relies on service performance or legitimate interest. Optional Matomo audience measurement cookies rely on your consent unless a strictly exempt configuration is later implemented."
+        "body2": "Processing required for operation relies on service performance or legitimate interest. Optional Matomo and Microsoft Clarity audience-measurement cookies rely on your consent unless a strictly exempt configuration is later implemented."
       },
       "analytics": {
         "title": "Matomo audience measurement",
@@ -46,7 +46,7 @@
         "title": "Cookies and local storage",
         "body1": "Strictly necessary cookies or storage may be used for session, security, language, theme, interface preferences and proper authentication behavior.",
         "body2": "These necessary trackers may include session/API cookies, HTTP-only authentication cookies, anti-abuse mechanisms and locally stored preferences. They cannot be disabled from the banner because they condition the requested service.",
-        "body3": "The optional-cookie choice is stored in browser local storage so the same choice is not requested on every page."
+        "body3": "The optional-cookie choice is stored in browser local storage and in a preference cookie so the same choice is not requested on every page."
       },
       "hosting": {
         "title": "Hosting and processors",
@@ -68,6 +68,12 @@
         "body1": "The website offers Google OAuth / Sign in with Google. When you use this method, Google may place or read its own cookies and similar technologies for authentication, security, fraud prevention and session maintenance.",
         "body2": "These third-party trackers are necessary for the Google authentication requested by the user and are not controlled by the website’s Matomo/analytics consent.",
         "body3": "Refusing AmusementPark optional cookies does not block authentication. However, a browser that blocks some third-party cookies may prevent or degrade Google sign-in."
+      },
+      "clarity": {
+        "title": "Microsoft Clarity usage analytics",
+        "body1": "The website uses Microsoft Clarity, project x7ca53dep2, to understand how public pages are used through aggregated usage analytics, heatmaps and session replay features.",
+        "body2": "Clarity may collect interactions such as clicks, scrolling, mouse movements, page rendering information, navigation context, device type and technical browser data. Private profile content must not be intentionally sent as analytics content.",
+        "body3": "Clarity is activated only after consent to optional cookies. The site sends the Clarity Consent API v2 signal so analytics storage is granted or denied according to your choice; you can withdraw that consent on this page."
       }
     },
     "lastUpdate": "Last updated: 23 May 2026.",

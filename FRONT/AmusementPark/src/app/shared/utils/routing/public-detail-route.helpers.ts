@@ -7,6 +7,11 @@ export interface PublicParkRouteTarget {
   parkName: string | null | undefined;
 }
 
+export interface PublicParkZoneRouteTarget extends PublicParkRouteTarget {
+  zoneId: string | null | undefined;
+  zoneName: string | null | undefined;
+}
+
 export interface PublicParkItemRouteTarget extends PublicParkRouteTarget {
   itemId: string | null | undefined;
   itemName: string | null | undefined;
@@ -46,6 +51,28 @@ export function buildPublicParkItemsRouteCommands(target: PublicParkRouteTarget)
   }
 
   return [...parkRouteCommands, 'items'];
+}
+
+export function buildPublicParkZonesRouteCommands(target: PublicParkRouteTarget): string[] | null {
+  const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
+
+  if (!parkRouteCommands) {
+    return null;
+  }
+
+  return [...parkRouteCommands, 'zones'];
+}
+
+export function buildPublicParkZoneRouteCommands(target: PublicParkZoneRouteTarget): string[] | null {
+  const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
+  const zoneId: string | null = normalizeRouteValue(target.zoneId);
+  const zoneName: string | null = normalizeRouteValue(target.zoneName);
+
+  if (!parkRouteCommands || !zoneId || !zoneName) {
+    return null;
+  }
+
+  return [...parkRouteCommands, 'zone', zoneId, buildEntitySlug(zoneName)];
 }
 
 export function buildPublicParkImagesRouteCommands(target: PublicParkRouteTarget): string[] | null {

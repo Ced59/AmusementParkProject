@@ -1037,7 +1037,9 @@
       "actions": {
         "generate": "Regenerar",
         "generateWithoutIndexNow": "Generar sin IndexNow",
-        "openSitemap": "Abrir"
+        "openSitemap": "Abrir",
+        "generateSeoSsr": "Regenerar SEO/SSR",
+        "generateSeoSsrWithoutIndexNow": "Regenerar SEO/SSR sin IndexNow"
       },
       "stats": {
         "totalUrls": "URLs referenciadas",
@@ -1080,6 +1082,12 @@
           "indexNow": "IndexNow",
           "actor": "Actor"
         }
+      },
+      "prerender": {
+        "title": "Precalentamiento de caché SSR",
+        "success": "éxito",
+        "failed": "fallo",
+        "missingSitemap": "No se puede precalentar la caché SSR: no se encontró el índice del sitemap."
       }
     },
     "tabs": {
@@ -1384,49 +1392,152 @@
     "required": "Este campo es obligatorio"
   },
   "aboutPage": {
-    "kicker": "Visión del proyecto",
-    "title": "Una forma más clara de explorar parques",
-    "lead": "AmusementPark cartografía parques, atracciones e información práctica con una arquitectura estable preparada para comparación y distancia.",
-    "primaryCta": "Explorar parques",
-    "secondaryCta": "Volver al inicio",
-    "stats": {
-      "parksLabel": "Parques potenciales",
-      "parksHint": "Diseñado para seguir siendo rápido a escala",
-      "mapLabel": "Objetivo visual",
-      "mapHint": "Recorrido público preparado para crecer"
+    "seo": {
+      "title": "Acerca de AmusementPark — Explora parques de otra manera",
+      "description": "Descubre AmusementPark, una guía visual para explorar parques de atracciones, atracciones, imágenes, mapas e ideas de visita."
     },
-    "mission": {
-      "kicker": "Misión",
-      "title": "Encontrar el parque adecuado más rápido",
-      "subtitle": "El producto comienza con un portfolio sólido y crece hacia herramientas de descubrimiento y decisión más ricas."
+    "kicker": "Acerca de AmusementPark",
+    "title": "Explora los parques de atracciones de otra manera",
+    "lead": "AmusementPark es una guía de descubrimiento pensada para ayudarte a explorar parques de atracciones, sus universos, atracciones y experiencias. Tanto si preparas una salida en familia, un futuro viaje o simplemente disfrutas descubriendo nuevos parques, el sitio reúne la información esencial en una interfaz clara, visual y agradable.",
+    "primaryCta": "Explorar parques",
+    "secondaryCta": "Ver cómo funciona",
+    "heroVisual": {
+      "parks": "Parques",
+      "parksHint": "Un punto de partida para descubrir nuevos destinos.",
+      "attractions": "Atracciones",
+      "images": "Imágenes",
+      "map": "Mapa"
+    },
+    "stats": {
+      "ariaLabel": "Puntos fuertes de AmusementPark",
+      "parksLabel": "Miles de parques para explorar",
+      "parksHint": "Una base internacional que se enriquece progresivamente.",
+      "contentValue": "Parques, atracciones, imágenes",
+      "contentLabel": "Contenido organizado",
+      "contentHint": "Páginas pensadas para entender rápidamente lo que ofrece cada parque.",
+      "languagesLabel": "Idiomas disponibles",
+      "languagesHint": "Para hacer el descubrimiento más accesible a visitantes de todo el mundo."
+    },
+    "promise": {
+      "kicker": "Nuestra promesa",
+      "title": "Ayudarte a elegir, comparar y soñar más fácilmente",
+      "subtitle": "Un parque de atracciones es mucho más que una dirección o una lista de atracciones. Es ambiente, zonas temáticas, experiencias, espectáculos, restaurantes, imágenes, ubicación y a veces un verdadero destino de viaje."
     },
     "cards": {
       "discover": {
         "badge": "Descubrir",
-        "title": "Páginas de parque fiables",
-        "text": "Cada página centraliza ubicación, elementos, fotos, parques cercanos y referencias útiles."
+        "title": "Encuentra parques que te apetezca visitar",
+        "text": "Explora parques de distintos países, su ubicación, ambiente y principales contenidos para hacerte una idea rápida."
       },
-      "explore": {
-        "badge": "Explorar",
-        "title": "Mentalidad centrada en el mapa",
-        "text": "Búsqueda, interacciones de mapa y distancias cercanas son bases reutilizables."
+      "understand": {
+        "badge": "Entender",
+        "title": "Visualiza qué se puede hacer allí",
+        "text": "Cada página puede reunir atracciones, restaurantes, tiendas, espectáculos, zonas e imágenes para comprender mejor el parque."
       },
-      "enjoy": {
-        "badge": "Disfrutar",
-        "title": "Identidad visual coherente",
-        "text": "Las páginas públicas, auth y perfil comparten los mismos tokens, superficies y componentes."
+      "prepare": {
+        "badge": "Preparar",
+        "title": "Prepara una visita o inspira tu próximo viaje",
+        "text": "AmusementPark es un punto de partida para imaginar una salida, localizar parques cercanos, explorar imágenes y abrir el mapa."
       }
     },
-    "clean": {
-      "kicker": "Ingeniería",
-      "title": "Construido para evolucionar paso a paso",
-      "text": "El proyecto está pensado para añadir mapas, comparativas y planificación de viajes sin alterar la experiencia del visitante."
+    "explore": {
+      "kicker": "Explorar",
+      "title": "Una página por parque, varias formas de descubrirlo",
+      "subtitle": "Las páginas van de lo simple a lo detallado: primero entender el parque, luego explorar atracciones, zonas, imágenes o mapa.",
+      "cards": {
+        "parkPages": {
+          "title": "Leer una presentación clara",
+          "text": "Cada ficha destaca nombre, ubicación, descripción, estado, experiencias y enlaces útiles."
+        },
+        "items": {
+          "title": "Explorar atracciones y lugares",
+          "text": "Cuando hay datos disponibles, puedes consultar atracciones, restaurantes, tiendas, espectáculos y puntos de interés."
+        },
+        "images": {
+          "title": "Descubrir el parque en imágenes",
+          "text": "Las imágenes ayudan a sentir el ambiente de un parque, una zona o una atracción."
+        },
+        "map": {
+          "title": "Ubicar parques y elementos",
+          "text": "El mapa ayuda a entender dónde está el parque y qué hay alrededor."
+        },
+        "nearby": {
+          "title": "Ver otros parques cercanos",
+          "text": "Los parques cercanos ayudan a ampliar la búsqueda y a imaginar un itinerario más completo."
+        },
+        "languages": {
+          "title": "Explorar en tu idioma",
+          "text": "El sitio está pensado para consultarse en varios idiomas."
+        }
+      }
+    },
+    "audiences": {
+      "kicker": "Para todos los exploradores",
+      "title": "Tanto si preparas una visita como si te gustan los parques",
+      "families": {
+        "title": "Para familias",
+        "text": "Encuentra parques adecuados para una salida con niños o una jornada tranquila."
+      },
+      "fans": {
+        "title": "Para aficionados",
+        "text": "Explora atracciones, zonas, imágenes y detalles que muestran la identidad del parque."
+      },
+      "travelers": {
+        "title": "Para viajeros",
+        "text": "Prepara una etapa, compara destinos y localiza lugares alrededor de una ciudad o región."
+      },
+      "curious": {
+        "title": "Para curiosos",
+        "text": "Descubre parques desconocidos y déjate sorprender por la variedad de destinos."
+      }
+    },
+    "approach": {
+      "kicker": "Nuestro enfoque",
+      "title": "Información útil, legible y cuidada",
+      "text": "AmusementPark presenta los parques de forma clara y agradable, sin ahogar al visitante en datos brutos.",
+      "points": {
+        "structured": {
+          "title": "Datos estructurados",
+          "text": "Parques, atracciones, imágenes, zonas y referencias se organizan para navegar con coherencia."
+        },
+        "progressive": {
+          "title": "Una base que mejora",
+          "text": "La información puede completarse, corregirse y enriquecerse con el tiempo."
+        },
+        "visitor": {
+          "title": "Presentación pensada para el visitante",
+          "text": "La página guía hacia el nivel adecuado de detalle."
+        },
+        "clarity": {
+          "title": "Atención a la claridad",
+          "text": "Si falta información, la página debe seguir siendo comprensible."
+        }
+      }
+    },
+    "future": {
+      "kicker": "Y mañana",
+      "title": "Un compañero de descubrimiento para amantes de los parques",
+      "text": "AmusementPark quiere convertirse en una herramienta práctica para explorar, comparar y preparar visitas.",
+      "items": {
+        "compare": "Comparar varios parques más fácilmente.",
+        "filters": "Filtrar mejor las atracciones y experiencias.",
+        "images": "Explorar imágenes por fecha, lugar o tipo.",
+        "map": "Visualizar más información en el mapa.",
+        "trips": "Ayudar a preparar ideas de salidas o viajes."
+      }
+    },
+    "finalCta": {
+      "kicker": "Empezar",
+      "title": "¿Listo para empezar la exploración?",
+      "text": "Elige un parque, abre su ficha, descubre sus atracciones, imágenes o mapa, y déjate guiar hacia tu próximo destino.",
+      "primary": "Explorar parques",
+      "secondary": "Volver al inicio"
     }
   },
   "cookieConsent": {
     "ariaLabel": "Banner de información y elección sobre cookies",
     "title": "Cookies y privacidad",
-    "text": "AmusementPark utiliza cookies o almacenamiento necesarios para el funcionamiento del sitio, especialmente para seguridad, sesión, idioma, tema y autenticación. Con tu consentimiento, el sitio también activa cookies opcionales de medición de audiencia Matomo.",
+    "text": "AmusementPark utiliza cookies o almacenamiento necesarios para el funcionamiento del sitio, especialmente para seguridad, sesión, idioma, tema y autenticación. Con tu consentimiento, el sitio también activa cookies opcionales de medición de audiencia con Matomo y Microsoft Clarity.",
     "privacyLink": "Leer la política de privacidad.",
     "accept": "Aceptar cookies opcionales",
     "continueWithNecessaryCookiesOnly": "Continuar con cookies necesarias"
@@ -1459,18 +1570,18 @@
     }
   },
   "home": {
-    "home_title": "Encuentra tu emoción perfecta",
+    "home_title": "Encuentra el parque ideal para tu próxima salida",
     "placeholder_search": "Buscar un parque, una atracción, un hotel…",
-    "placeholder_category": "Tipo de búsqueda",
+    "placeholder_category": "¿Qué quieres encontrar?",
     "no_results": "Sin resultados para",
     "in_category": "en",
     "categories": {
       "park": "Parque",
-      "attractions": "Atracción",
+      "attractions": "Atracciones",
       "everywhere": "En todas partes",
-      "parkItems": "Elementos",
-      "operators": "Operador",
-      "manufacturers": "Fabricante",
+      "parkItems": "Atracciones y lugares",
+      "operators": "Operadores",
+      "manufacturers": "Constructores",
       "attraction": "Atracción",
       "restaurant": "Restaurante",
       "hotel": "Hotel",
@@ -1480,41 +1591,41 @@
       "service": "Servicio",
       "transport": "Transporte",
       "other": "Otro",
-      "founders": "Fundador",
+      "founders": "Fundadores",
       "parks": "Parque"
     },
-    "heroBadge": "Cartografía de sensaciones",
-    "heroSubtitle": "Miles de atracciones catalogadas en cientos de parques de todo el mundo. Tu próximo vértigo está a un clic.",
+    "heroBadge": "Ideas de parques y emociones",
+    "heroSubtitle": "Explora parques, atracciones, restaurantes y hoteles para preparar tu próxima salida con más facilidad.",
     "ctaBrowseParks": "Explorar parques",
     "ctaLearnMore": "Cómo funciona",
     "featured": {
       "title": "Parques destacados",
-      "subtitle": "Nuestra selección de parques imprescindibles del momento.",
+      "subtitle": "Algunas ideas de parques para preparar tu próxima salida.",
       "loadingTitle": "Cargando parques destacados",
       "loadingMessage": "Se están cargando los parques destacados.",
       "errorTitle": "No se pueden cargar los parques destacados",
       "errorMessage": "No se pudieron cargar los parques destacados.",
       "emptyTitle": "Ningún parque destacado",
-      "emptyMessage": "Aún no hay ningún parque para destacar.",
+      "emptyMessage": "No hay ningún parque seleccionado por ahora.",
       "discover": "Descubrir",
-      "manualSelection": "Selección manual",
+      "manualSelection": "Selección",
       "sponsored": "Patrocinado"
     },
     "search": {
       "resultsTitle": "Resultados de búsqueda",
-      "resultsSubtitle": "Resultados públicos que coinciden con tu búsqueda, con acceso directo a las fichas disponibles.",
+      "resultsSubtitle": "Abre directamente las fichas que coinciden con tu búsqueda.",
       "loadingTitle": "Buscando",
       "loadingMessage": "Se están cargando los resultados de búsqueda.",
       "errorTitle": "Error en la búsqueda",
       "errorMessage": "No se pudieron cargar los resultados de búsqueda.",
       "emptyTitle": "No se encontró ningún resultado",
-      "emptyMessage": "Ningún contenido público coincide con tu búsqueda.",
-      "hintTitle": "Inicia una búsqueda",
-      "hintMessage": "Busca un parque o filtra el catálogo por categoría.",
+      "emptyMessage": "Ningún parque o lugar coincide con tu búsqueda por ahora.",
+      "hintTitle": "Inicia tu búsqueda",
+      "hintMessage": "Escribe el nombre de un parque o una atracción, o elige una categoría para empezar.",
       "openResult": "Abrir",
-      "kicker": "Búsqueda inteligente",
-      "commandTitle": "Encuentra el parque adecuado más rápido",
-      "commandSubtitle": "Explora parques, atracciones y lugares, filtra según lo que buscas y abre la ficha que te interese.",
+      "kicker": "Búsqueda rápida",
+      "commandTitle": "Encuentra antes dónde ir",
+      "commandSubtitle": "Busca un parque, una atracción o un hotel y afina los resultados para abrir directamente la ficha adecuada.",
       "attractionsLabel": "atracciones"
     },
     "experience": {
@@ -1542,7 +1653,7 @@
       "sensations": "Sensaciones",
       "family": "Familia",
       "locationFallback": "Destino por descubrir",
-      "placeholderTitle": "Catálogo en preparación",
+      "placeholderTitle": "Más parques próximamente",
       "placeholderSubtitle": "Los parques destacados aparecerán aquí.",
       "errorMessage": "No se pudieron cargar los parques destacados."
     }
@@ -1858,7 +1969,8 @@
       "website": "Sitio web",
       "backToList": "Volver a la lista",
       "images": "Imágenes",
-      "map": "Mapa"
+      "map": "Mapa",
+      "browseZones": "Explorar todas las zonas"
     },
     "detail": {
       "heroBadge": "Vista general del parque",
@@ -2103,12 +2215,45 @@
       "errorTitle": "Mapa no disponible",
       "errorMessage": "No se puede cargar el mapa de este parque en este momento.",
       "backToPark": "Volver a {{name}}"
+    },
+    "zones": {
+      "badge": "Zonas del parque",
+      "title": "Zonas de {{park}}",
+      "subtitle": "{{count}} zona(s) que agrupan {{total}} elemento(s) público(s).",
+      "loadingTitle": "Cargando zonas",
+      "loadingMessage": "Se están cargando las zonas del parque.",
+      "errorTitle": "No se pueden cargar las zonas",
+      "errorMessage": "No se pudieron cargar las zonas del parque.",
+      "emptyTitle": "No hay zonas disponibles",
+      "emptyMessage": "No hay ninguna zona pública disponible actualmente para este parque.",
+      "noDescription": "Todavía no hay descripción disponible para esta zona.",
+      "openZone": "Abrir zona",
+      "backToZones": "Volver a las zonas"
+    },
+    "zone": {
+      "badge": "Zona de {{park}}",
+      "loadingTitle": "Cargando zona",
+      "loadingMessage": "Se está cargando la zona del parque.",
+      "errorTitle": "No se puede cargar la zona",
+      "errorMessage": "No se pudo cargar la zona del parque.",
+      "emptyTitle": "Zona no disponible",
+      "emptyMessage": "La zona solicitada no está disponible.",
+      "totalItems": "Elementos",
+      "totalItemsHint": "Vinculados a esta zona",
+      "mapMarkers": "Marcadores",
+      "mapMarkersHint": "Geolocalizados",
+      "mapBadge": "Mapa de la zona",
+      "mapTitle": "Elementos geolocalizados",
+      "itemsBadge": "Elementos de la zona",
+      "itemsTitle": "Elementos en esta zona",
+      "emptyItemsTitle": "No hay elementos en esta zona",
+      "emptyItemsMessage": "Actualmente no hay ningún elemento público vinculado a esta zona."
     }
   },
   "privacyPage": {
     "kicker": "Datos personales",
     "title": "Política de privacidad",
-    "lead": "Esta página explica cómo AmusementPark trata los datos personales, las cookies necesarias, la autenticación Google OAuth y la medición de audiencia Matomo.",
+    "lead": "Esta página explica cómo AmusementPark trata datos personales, cookies necesarias, autenticación Google OAuth, medición de audiencia Matomo y analítica de uso Microsoft Clarity.",
     "chips": {
       "hosting": "Alojamiento en Francia",
       "analytics": "Cookies y analítica",
@@ -2117,7 +2262,7 @@
     "consent": {
       "kicker": "Preferencias de cookies",
       "title": "Gestionar cookies opcionales",
-      "text": "Las cookies necesarias para el funcionamiento y la autenticación pueden utilizarse sin consentimiento. Aquí puedes aceptar, rechazar o volver a mostrar la elección relativa a las cookies opcionales de medición de audiencia.",
+      "text": "Las cookies necesarias para el funcionamiento y la autenticación pueden utilizarse sin consentimiento. Aquí puedes aceptar, rechazar o volver a mostrar la elección relativa a cookies opcionales de medición de audiencia y analítica de uso.",
       "currentStatus": "Estado actual:",
       "statusAccepted": "cookies opcionales aceptadas.",
       "statusRefused": "cookies opcionales rechazadas.",
@@ -2140,7 +2285,7 @@
       "purposes": {
         "title": "Finalidades y bases legales",
         "body1": "Los datos se usan para ofrecer funciones del sitio, proteger accesos, gestionar cuentas, mostrar contenido público y administrar el proyecto.",
-        "body2": "Los tratamientos necesarios para el funcionamiento se basan en la ejecución del servicio o en el interés legítimo. Las cookies opcionales de medición de audiencia Matomo se basan en tu consentimiento, salvo que más adelante se implemente una configuración estrictamente exenta."
+        "body2": "Los tratamientos necesarios para el funcionamiento se basan en la ejecución del servicio o en el interés legítimo. Las cookies opcionales de medición de audiencia de Matomo y Microsoft Clarity se basan en tu consentimiento, salvo que más adelante se implemente una configuración estrictamente exenta."
       },
       "analytics": {
         "title": "Medición de audiencia Matomo",
@@ -2152,7 +2297,7 @@
         "title": "Cookies y almacenamiento local",
         "body1": "Pueden utilizarse cookies o almacenamiento estrictamente necesarios para sesión, seguridad, idioma, tema, preferencias de interfaz y correcto funcionamiento de la autenticación.",
         "body2": "Estos rastreadores necesarios pueden incluir cookies de sesión/API, cookies de autenticación HTTP-only, mecanismos antiabuso y preferencias guardadas localmente. No pueden desactivarse desde el banner porque condicionan el servicio solicitado.",
-        "body3": "La elección sobre cookies opcionales se conserva en el almacenamiento local del navegador para no pedirla en cada página."
+        "body3": "La elección sobre cookies opcionales se conserva en el almacenamiento local del navegador y en una cookie de preferencia para no pedirla en cada página."
       },
       "hosting": {
         "title": "Alojamiento y encargados",
@@ -2174,6 +2319,12 @@
         "body1": "El sitio ofrece conexión mediante Google OAuth / Sign in with Google. Al usar este método, Google puede depositar o leer sus propias cookies y tecnologías similares con fines de autenticación, seguridad, prevención del fraude y mantenimiento de sesión.",
         "body2": "Estos rastreadores de terceros son necesarios para la autenticación Google solicitada por el usuario y no están controlados por el consentimiento Matomo/analytics del sitio.",
         "body3": "Rechazar las cookies opcionales de AmusementPark no bloquea la autenticación. Sin embargo, un navegador que bloquee ciertas cookies de terceros puede impedir o degradar el inicio de sesión con Google."
+      },
+      "clarity": {
+        "title": "Analítica de uso Microsoft Clarity",
+        "body1": "El sitio utiliza Microsoft Clarity, proyecto x7ca53dep2, para comprender el uso de las páginas públicas mediante analítica agregada, mapas de calor y funciones de reproducción de sesiones.",
+        "body2": "Clarity puede recoger interacciones como clics, desplazamiento, movimientos del ratón, información de renderizado de páginas, contexto de navegación, tipo de dispositivo y datos técnicos del navegador. El contenido privado del perfil no debe enviarse intencionadamente como contenido analítico.",
+        "body3": "Clarity se activa solo tras el consentimiento a cookies opcionales. El sitio envía la señal de Clarity Consent API v2 para conceder o denegar el almacenamiento analítico según tu elección; puedes retirar ese consentimiento en esta página."
       }
     },
     "lastUpdate": "Última actualización: 23 de mayo de 2026.",

@@ -12,7 +12,9 @@
       "actions": {
         "generate": "Neu erzeugen",
         "generateWithoutIndexNow": "Ohne IndexNow erzeugen",
-        "openSitemap": "Öffnen"
+        "openSitemap": "Öffnen",
+        "generateSeoSsr": "SEO/SSR neu erzeugen",
+        "generateSeoSsrWithoutIndexNow": "SEO/SSR ohne IndexNow neu erzeugen"
       },
       "stats": {
         "totalUrls": "Referenzierte URLs",
@@ -55,6 +57,12 @@
           "indexNow": "IndexNow",
           "actor": "Akteur"
         }
+      },
+      "prerender": {
+        "title": "SSR-Cache vorwärmen",
+        "success": "Erfolg",
+        "failed": "Fehler",
+        "missingSitemap": "SSR-Cache konnte nicht vorgewärmt werden: Sitemap-Index nicht gefunden."
       }
     }
   }

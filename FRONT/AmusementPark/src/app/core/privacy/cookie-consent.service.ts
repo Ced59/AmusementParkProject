@@ -8,6 +8,7 @@ import { CookieConsentDecision, StoredCookieConsent } from './cookie-consent.mod
 export class CookieConsentService {
   private readonly storageKey: string = 'amusementpark.cookie-consent.v1';
   private readonly legacyAnalyticsStorageKey: string = 'amusementpark.analytics-consent.v1';
+  private readonly consentCookieName: string = 'amusementpark_cookie_consent';
   private readonly consentVersion: number = 1;
   private readonly isBrowser: boolean;
   private readonly decisionState: WritableSignal<CookieConsentDecision | null> = signal<CookieConsentDecision | null>(null);
@@ -32,6 +33,7 @@ export class CookieConsentService {
     }
 
     this.writeStoredDecision('accepted');
+    this.writeConsentCookie('accepted');
     this.decisionState.set('accepted');
 
   }
@@ -42,6 +44,7 @@ export class CookieConsentService {
     }
 
     this.writeStoredDecision('refused');
+    this.writeConsentCookie('refused');
     this.decisionState.set('refused');
     this.forgetOptionalCookieConsents();
   }
@@ -52,6 +55,7 @@ export class CookieConsentService {
     }
 
     this.writeStoredDecision('refused');
+    this.writeConsentCookie('refused');
     this.decisionState.set('refused');
     this.forgetOptionalCookieConsents();
   }
@@ -63,6 +67,7 @@ export class CookieConsentService {
 
     window.localStorage.removeItem(this.storageKey);
     window.localStorage.removeItem(this.legacyAnalyticsStorageKey);
+    this.deleteCookie(this.consentCookieName);
     this.decisionState.set(null);
     this.forgetOptionalCookieConsents();
   }
@@ -80,11 +85,12 @@ export class CookieConsentService {
   }
 
   private forgetOptionalCookieConsents(): void {
-    if (!environment.analytics.matomoEnabled) {
+    if (!this.isBrowser) {
       return;
     }
 
     this.deleteMatomoCookies();
+    this.deleteClarityCookies();
   }
 
   private deleteMatomoCookies(): void {
@@ -98,7 +104,23 @@ export class CookieConsentService {
       .filter((cookieName: string): boolean => cookieName.startsWith('_pk_'));
 
     for (const cookieName of cookieNames) {
-      document.cookie = `${cookieName}=; Max-Age=0; Path=/; SameSite=Lax`;
+      this.deleteCookie(cookieName);
+    }
+  }
+
+  private deleteClarityCookies(): void {
+    const clarityCookieNames: string[] = [
+      '_clck',
+      '_clsk',
+      'CLID',
+      'ANONCHK',
+      'MR',
+      'MUID',
+      'SM'
+    ];
+
+    for (const cookieName of clarityCookieNames) {
+      this.deleteCookie(cookieName);
     }
   }
 
@@ -109,14 +131,22 @@ export class CookieConsentService {
 
     const currentDecision: CookieConsentDecision | null = this.readStoredDecisionFromKey(this.storageKey);
     if (currentDecision !== null) {
+      this.writeConsentCookie(currentDecision);
       return currentDecision;
     }
 
     const legacyDecision: CookieConsentDecision | null = this.readStoredDecisionFromKey(this.legacyAnalyticsStorageKey);
     if (legacyDecision !== null) {
       this.writeStoredDecision(legacyDecision);
+      this.writeConsentCookie(legacyDecision);
       window.localStorage.removeItem(this.legacyAnalyticsStorageKey);
       return legacyDecision;
+    }
+
+    const cookieDecision: CookieConsentDecision | null = this.readConsentCookieDecision();
+    if (cookieDecision !== null) {
+      this.writeStoredDecision(cookieDecision);
+      return cookieDecision;
     }
 
     return null;
@@ -126,6 +156,15 @@ export class CookieConsentService {
     const rawValue: string | null = window.localStorage.getItem(storageKey);
     if (!rawValue) {
       return null;
+    }
+
+    const normalizedRawValue: string = rawValue.trim().toLowerCase();
+    if (normalizedRawValue === 'accepted' || normalizedRawValue === 'true') {
+      return 'accepted';
+    }
+
+    if (normalizedRawValue === 'refused' || normalizedRawValue === 'false') {
+      return 'refused';
     }
 
     try {
@@ -150,7 +189,68 @@ export class CookieConsentService {
     window.localStorage.setItem(this.storageKey, JSON.stringify(storedConsent));
   }
 
+  private writeConsentCookie(decision: CookieConsentDecision): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    const maxAgeSeconds: number = Math.max(1, environment.analytics.matomoConsentHoursToExpire) * 60 * 60;
+    const domainAttribute: string = this.resolveCookieDomainAttribute();
+    document.cookie = `${this.consentCookieName}=${encodeURIComponent(decision)}; Max-Age=${maxAgeSeconds}; Path=/; SameSite=Lax${domainAttribute}`;
+  }
+
+  private readConsentCookieDecision(): CookieConsentDecision | null {
+    if (!this.isBrowser) {
+      return null;
+    }
+
+    const cookiePrefix: string = `${this.consentCookieName}=`;
+    const rawCookie: string | undefined = document.cookie
+      .split(';')
+      .map((cookie: string): string => cookie.trim())
+      .find((cookie: string): boolean => cookie.startsWith(cookiePrefix));
+
+    if (!rawCookie) {
+      return null;
+    }
+
+    const decision: string = decodeURIComponent(rawCookie.slice(cookiePrefix.length)).trim().toLowerCase();
+    if (decision === 'accepted') {
+      return 'accepted';
+    }
+
+    if (decision === 'refused') {
+      return 'refused';
+    }
+
+    this.deleteCookie(this.consentCookieName);
+    return null;
+  }
+
+  private deleteCookie(cookieName: string): void {
+    if (!this.isBrowser || !cookieName) {
+      return;
+    }
+
+    const domainAttribute: string = this.resolveCookieDomainAttribute();
+    document.cookie = `${cookieName}=; Max-Age=0; Path=/; SameSite=Lax`;
+    if (domainAttribute) {
+      document.cookie = `${cookieName}=; Max-Age=0; Path=/; SameSite=Lax${domainAttribute}`;
+    }
+  }
+
+  private resolveCookieDomainAttribute(): string {
+    const hostname: string = window.location.hostname.toLowerCase();
+    if (hostname === 'amusement-parks.fun' || hostname.endsWith('.amusement-parks.fun')) {
+      return '; Domain=.amusement-parks.fun';
+    }
+
+    return '';
+  }
+
   private isCookieBannerEnabled(): boolean {
-    return this.isBrowser && environment.analytics.consentBannerEnabled && environment.analytics.matomoRequireConsent;
+    return this.isBrowser &&
+      environment.analytics.consentBannerEnabled &&
+      (environment.analytics.matomoRequireConsent || environment.analytics.clarityEnabled);
   }
 }

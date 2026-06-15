@@ -77,6 +77,13 @@
               </button>
             }
 
+            @if (currentPark.zonesLink) {
+              <a appUiButton="ghost" [routerLink]="currentPark.zonesLink">
+                <i class="pi pi-th-large" aria-hidden="true"></i>
+                <span>{{ 'parks.actions.browseZones' | translate }}</span>
+              </a>
+            }
+
             @if (currentPark.imagesLink) {
               <a appUiButton="ghost" [routerLink]="currentPark.imagesLink">
                 <i class="pi pi-images" aria-hidden="true"></i>

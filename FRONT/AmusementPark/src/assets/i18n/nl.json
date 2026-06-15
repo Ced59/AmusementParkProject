@@ -1037,7 +1037,9 @@
       "actions": {
         "generate": "Opnieuw genereren",
         "generateWithoutIndexNow": "Genereren zonder IndexNow",
-        "openSitemap": "Openen"
+        "openSitemap": "Openen",
+        "generateSeoSsr": "SEO/SSR opnieuw genereren",
+        "generateSeoSsrWithoutIndexNow": "SEO/SSR opnieuw genereren zonder IndexNow"
       },
       "stats": {
         "totalUrls": "Gerefereerde URLs",
@@ -1080,6 +1082,12 @@
           "indexNow": "IndexNow",
           "actor": "Actor"
         }
+      },
+      "prerender": {
+        "title": "SSR-cache opwarmen",
+        "success": "geslaagd",
+        "failed": "mislukt",
+        "missingSitemap": "Kan de SSR-cache niet opwarmen: sitemapindex niet gevonden."
       }
     },
     "tabs": {
@@ -1384,49 +1392,152 @@
     "required": "Dit veld is verplicht"
   },
   "aboutPage": {
-    "kicker": "Projectvisie",
-    "title": "Een duidelijkere manier om pretparken te verkennen",
-    "lead": "AmusementPark brengt parken, attracties en praktische informatie in kaart met een stabiele architectuur voor vergelijking en afstand.",
-    "primaryCta": "Parken verkennen",
-    "secondaryCta": "Terug naar home",
-    "stats": {
-      "parksLabel": "Potentiële parken",
-      "parksHint": "Ontworpen om snel te blijven op schaal",
-      "mapLabel": "Design doel",
-      "mapHint": "Publieke route klaar om te groeien"
+    "seo": {
+      "title": "Over AmusementPark — Pretparken anders ontdekken",
+      "description": "Ontdek AmusementPark, een visuele gids voor pretparken, attracties, beelden, kaarten en bezoekideeën."
     },
-    "mission": {
-      "kicker": "Missie",
-      "title": "Sneller het juiste park vinden",
-      "subtitle": "Het product start met een solide portfolio en groeit naar rijkere ontdek- en keuzehulpmiddelen."
+    "kicker": "Over AmusementPark",
+    "title": "Ontdek pretparken op een andere manier",
+    "lead": "AmusementPark is een ontdekkingsgids die je helpt pretparken, hun werelden, attracties en ervaringen te verkennen. Of je nu een gezinsuitje, een toekomstige reis of gewoon nieuwe parken wilt ontdekken: de site brengt de belangrijkste informatie samen in een duidelijke, visuele en prettige interface.",
+    "primaryCta": "Parken verkennen",
+    "secondaryCta": "Zo werkt het",
+    "heroVisual": {
+      "parks": "Parken",
+      "parksHint": "Een startpunt voor nieuwe bestemmingen.",
+      "attractions": "Attracties",
+      "images": "Beelden",
+      "map": "Kaart"
+    },
+    "stats": {
+      "ariaLabel": "Sterke punten van AmusementPark",
+      "parksLabel": "Duizenden parken om te verkennen",
+      "parksHint": "Een internationale basis die geleidelijk groeit.",
+      "contentValue": "Parken, attracties, beelden",
+      "contentLabel": "Geordende inhoud",
+      "contentHint": "Pagina’s die snel duidelijk maken wat elk park biedt.",
+      "languagesLabel": "Beschikbare talen",
+      "languagesHint": "Om ontdekking toegankelijker te maken voor bezoekers wereldwijd."
+    },
+    "promise": {
+      "kicker": "Onze belofte",
+      "title": "Je makkelijker laten kiezen, vergelijken en dromen",
+      "subtitle": "Een pretpark is meer dan een adres of attractielijst: het is sfeer, themagebieden, ervaringen, beelden en soms een echte reisbestemming."
     },
     "cards": {
       "discover": {
         "badge": "Ontdekken",
-        "title": "Betrouwbare parkpagina’s",
-        "text": "Elke parkpagina bundelt locatie, items, foto’s, nabijgelegen parken en nuttige referenties."
+        "title": "Vind parken die je zin geven om te gaan",
+        "text": "Bekijk parken in verschillende landen en begrijp snel ligging, sfeer en aanbod."
       },
-      "explore": {
-        "badge": "Verkennen",
-        "title": "Kaartgerichte aanpak",
-        "text": "Zoeken, kaartinteracties en nabije afstanden zijn herbruikbare fundamenten."
+      "understand": {
+        "badge": "Begrijpen",
+        "title": "Zie wat er ter plaatse te doen is",
+        "text": "Elke pagina kan attracties, restaurants, winkels, shows, gebieden en beelden bundelen."
       },
-      "enjoy": {
-        "badge": "Genieten",
-        "title": "Consistente visuele identiteit",
-        "text": "Publieke, auth- en profielpagina’s delen dezelfde tokens, surfaces en componenten."
+      "prepare": {
+        "badge": "Voorbereiden",
+        "title": "Bereid een bezoek voor of inspireer je volgende reis",
+        "text": "AmusementPark is een startpunt voor uitstapjes, nabije parken, beelden en kaarten."
       }
     },
-    "clean": {
-      "kicker": "Engineering",
-      "title": "Gebouwd om stap voor stap te evolueren",
-      "text": "Het project is ontworpen om kaarten, vergelijkingen en reisplanning toe te voegen zonder de bezoekerservaring te verstoren."
+    "explore": {
+      "kicker": "Verkennen",
+      "title": "Eén pagina per park, meerdere manieren om het te ontdekken",
+      "subtitle": "Eerst het park begrijpen, daarna attracties, gebieden, beelden of kaart verkennen.",
+      "cards": {
+        "parkPages": {
+          "title": "Lees een duidelijke parkpresentatie",
+          "text": "Elke pagina toont naam, locatie, beschrijving, status, ervaringen en nuttige links."
+        },
+        "items": {
+          "title": "Verken attracties en plaatsen",
+          "text": "Waar data beschikbaar is, bekijk je attracties, restaurants, winkels, shows en andere plekken."
+        },
+        "images": {
+          "title": "Ontdek het park in beelden",
+          "text": "Beelden helpen de sfeer van een park, gebied of attractie te voelen."
+        },
+        "map": {
+          "title": "Lokaliseer parken en elementen",
+          "text": "De kaart helpt te begrijpen waar het park ligt en wat eromheen is."
+        },
+        "nearby": {
+          "title": "Vind andere parken in de buurt",
+          "text": "Nabije parken helpen je zoektocht te verbreden en routes te bedenken."
+        },
+        "languages": {
+          "title": "Verken in je taal",
+          "text": "De site is ontworpen voor meerdere talen."
+        }
+      }
+    },
+    "audiences": {
+      "kicker": "Voor elke ontdekker",
+      "title": "Voor bezoekplanning en parkfans",
+      "families": {
+        "title": "Voor gezinnen",
+        "text": "Vind makkelijker parken voor kinderen, rustige dagen of geleidelijke ontdekking."
+      },
+      "fans": {
+        "title": "Voor parkfans",
+        "text": "Ontdek attracties, gebieden, fabrikanten, beelden en details."
+      },
+      "travelers": {
+        "title": "Voor reizigers",
+        "text": "Plan stops, vergelijk bestemmingen en vind plekken rond steden of regio’s."
+      },
+      "curious": {
+        "title": "Voor nieuwsgierigen",
+        "text": "Ontdek onbekende parken en de diversiteit van bestemmingen."
+      }
+    },
+    "approach": {
+      "kicker": "Onze aanpak",
+      "title": "Nuttige, leesbare en zorgvuldig verrijkte informatie",
+      "text": "AmusementPark presenteert parken helder en prettig, zonder bezoekers te overspoelen met ruwe data.",
+      "points": {
+        "structured": {
+          "title": "Gestructureerde data",
+          "text": "Parken, attracties, beelden, gebieden en referenties zijn coherent georganiseerd."
+        },
+        "progressive": {
+          "title": "Een basis die verbetert",
+          "text": "Informatie kan geleidelijk worden aangevuld en gecorrigeerd."
+        },
+        "visitor": {
+          "title": "Gemaakt voor bezoekers",
+          "text": "De pagina leidt naar het juiste detailniveau."
+        },
+        "clarity": {
+          "title": "Aandacht voor duidelijkheid",
+          "text": "Ontbrekende informatie blijft begrijpelijk gepresenteerd."
+        }
+      }
+    },
+    "future": {
+      "kicker": "Morgen",
+      "title": "Een ontdekkingspartner voor parkfans",
+      "text": "AmusementPark wil praktischer worden om bezoeken te verkennen, vergelijken en voorbereiden.",
+      "items": {
+        "compare": "Meerdere parken makkelijker vergelijken.",
+        "filters": "Attracties en ervaringen beter filteren.",
+        "images": "Beelden per datum, plaats of type verkennen.",
+        "map": "Meer informatie op de kaart tonen.",
+        "trips": "Ideeën voor uitstapjes of reizen voorbereiden."
+      }
+    },
+    "finalCta": {
+      "kicker": "Beginnen",
+      "title": "Klaar om te gaan ontdekken?",
+      "text": "Kies een park, open de pagina, ontdek attracties, beelden of kaart en laat je begeleiden naar je volgende bestemming.",
+      "primary": "Parken verkennen",
+      "secondary": "Terug naar home"
     }
   },
   "cookieConsent": {
     "ariaLabel": "Informatie- en keuzebanner voor cookies",
     "title": "Cookies en privacy",
-    "text": "AmusementPark gebruikt cookies of opslag die nodig zijn voor de werking van de site, waaronder beveiliging, sessie, taal, thema en authenticatie. Met je akkoord activeert de site ook optionele Matomo-cookies voor publieksmeting.",
+    "text": "AmusementPark gebruikt cookies of opslag die nodig zijn voor de werking van de site, met name voor beveiliging, sessie, taal, thema en authenticatie. Met jouw toestemming activeert de site ook optionele cookies voor publieksmeting met Matomo en Microsoft Clarity.",
     "privacyLink": "Lees het privacybeleid.",
     "accept": "Optionele cookies accepteren",
     "continueWithNecessaryCookiesOnly": "Doorgaan met noodzakelijke cookies"
@@ -1459,18 +1570,18 @@
     }
   },
   "home": {
-    "home_title": "Vind je perfecte sensatie",
+    "home_title": "Vind het juiste park voor je volgende uitstap",
     "placeholder_search": "Zoek een park, attractie, hotel…",
-    "placeholder_category": "Soort zoekopdracht",
+    "placeholder_category": "Wat wil je vinden?",
     "no_results": "Geen resultaten voor",
     "in_category": "in",
     "categories": {
       "park": "Park",
-      "attractions": "Attractie",
+      "attractions": "Attracties",
       "everywhere": "Overal",
-      "parkItems": "Parkitems",
-      "operators": "Exploitant",
-      "manufacturers": "Fabrikant",
+      "parkItems": "Attracties en plekken",
+      "operators": "Exploitanten",
+      "manufacturers": "Fabrikanten",
       "attraction": "Attractie",
       "restaurant": "Restaurant",
       "hotel": "Hotel",
@@ -1480,41 +1591,41 @@
       "service": "Service",
       "transport": "Vervoer",
       "other": "Overig",
-      "founders": "Oprichter",
+      "founders": "Oprichters",
       "parks": "Park"
     },
-    "heroBadge": "Kaart van sensaties",
-    "heroSubtitle": "Duizenden attracties in honderden parken wereldwijd. Je volgende adrenalinekick is maar één klik weg.",
+    "heroBadge": "Ideeën voor parken en sensaties",
+    "heroSubtitle": "Ontdek parken, attracties, restaurants en hotels om je volgende uitstap makkelijker te plannen.",
     "ctaBrowseParks": "Parken verkennen",
     "ctaLearnMore": "Hoe het werkt",
     "featured": {
       "title": "Uitgelichte parken",
-      "subtitle": "Onze selectie van niet te missen parken van dit moment.",
+      "subtitle": "Een paar parkideeën om je volgende uitstap te plannen.",
       "loadingTitle": "Uitgelichte parken laden",
       "loadingMessage": "De uitgelichte parken worden geladen.",
       "errorTitle": "Kan uitgelichte parken niet laden",
       "errorMessage": "De uitgelichte parken konden niet worden geladen.",
       "emptyTitle": "Geen uitgelicht park",
-      "emptyMessage": "Er is nog geen park om uit te lichten.",
+      "emptyMessage": "Er is momenteel geen park geselecteerd.",
       "discover": "Ontdekken",
-      "manualSelection": "Handmatige selectie",
+      "manualSelection": "Selectie",
       "sponsored": "Gesponsord"
     },
     "search": {
       "resultsTitle": "Zoekresultaten",
-      "resultsSubtitle": "Publieke resultaten die overeenkomen met je zoekopdracht, met directe toegang tot beschikbare detailpagina’s.",
+      "resultsSubtitle": "Open direct de pagina’s die bij je zoekopdracht passen.",
       "loadingTitle": "Zoeken",
       "loadingMessage": "De zoekresultaten worden geladen.",
       "errorTitle": "Zoeken mislukt",
       "errorMessage": "De zoekresultaten konden niet worden geladen.",
       "emptyTitle": "Geen resultaat gevonden",
-      "emptyMessage": "Geen openbare inhoud komt overeen met je zoekopdracht.",
-      "hintTitle": "Start een zoekopdracht",
-      "hintMessage": "Zoek een park of filter de catalogus op categorie.",
+      "emptyMessage": "Er past momenteel geen park of plek bij je zoekopdracht.",
+      "hintTitle": "Start je zoekopdracht",
+      "hintMessage": "Typ de naam van een park of attractie, of kies een categorie om te beginnen.",
       "openResult": "Openen",
-      "kicker": "Slim zoeken",
-      "commandTitle": "Vind sneller het juiste park",
-      "commandSubtitle": "Verken parken, attracties en plekken, filter op wat je zoekt en open de detailpagina die je interesseert.",
+      "kicker": "Snel zoeken",
+      "commandTitle": "Vind sneller waar je heen wilt",
+      "commandSubtitle": "Zoek een park, attractie of hotel en verfijn de resultaten om direct de juiste pagina te openen.",
       "attractionsLabel": "attracties"
     },
     "experience": {
@@ -1542,7 +1653,7 @@
       "sensations": "Sensaties",
       "family": "Familie",
       "locationFallback": "Bestemming om te ontdekken",
-      "placeholderTitle": "Catalogus in voorbereiding",
+      "placeholderTitle": "Binnenkort meer parken",
       "placeholderSubtitle": "Uitgelichte parken verschijnen hier.",
       "errorMessage": "De uitgelichte parken konden niet worden geladen."
     }
@@ -1858,7 +1969,8 @@
       "website": "Website",
       "backToList": "Terug naar de lijst",
       "images": "Afbeeldingen",
-      "map": "Kaart"
+      "map": "Kaart",
+      "browseZones": "Alle zones bekijken"
     },
     "detail": {
       "heroBadge": "Parkoverzicht",
@@ -2103,12 +2215,45 @@
       "errorTitle": "Kaart niet beschikbaar",
       "errorMessage": "De kaart van dit park kan momenteel niet worden geladen.",
       "backToPark": "Terug naar {{name}}"
+    },
+    "zones": {
+      "badge": "Parkzones",
+      "title": "Zones van {{park}}",
+      "subtitle": "{{count}} zone(s) met {{total}} openbare item(s).",
+      "loadingTitle": "Zones laden",
+      "loadingMessage": "De parkzones worden geladen.",
+      "errorTitle": "Zones kunnen niet worden geladen",
+      "errorMessage": "De parkzones konden niet worden geladen.",
+      "emptyTitle": "Geen zone beschikbaar",
+      "emptyMessage": "Er is momenteel geen openbare zone beschikbaar voor dit park.",
+      "noDescription": "Er is nog geen beschrijving beschikbaar voor deze zone.",
+      "openZone": "Zone openen",
+      "backToZones": "Terug naar zones"
+    },
+    "zone": {
+      "badge": "Zone van {{park}}",
+      "loadingTitle": "Zone laden",
+      "loadingMessage": "De parkzone wordt geladen.",
+      "errorTitle": "Zone kan niet worden geladen",
+      "errorMessage": "De parkzone kon niet worden geladen.",
+      "emptyTitle": "Zone niet beschikbaar",
+      "emptyMessage": "De gevraagde zone is niet beschikbaar.",
+      "totalItems": "Items",
+      "totalItemsHint": "Gekoppeld aan deze zone",
+      "mapMarkers": "Markeringen",
+      "mapMarkersHint": "Geolokaliseerd",
+      "mapBadge": "Zonekaart",
+      "mapTitle": "Geolokaliseerde items",
+      "itemsBadge": "Zone-items",
+      "itemsTitle": "Items in deze zone",
+      "emptyItemsTitle": "Geen item in deze zone",
+      "emptyItemsMessage": "Er is momenteel geen openbaar item aan deze zone gekoppeld."
     }
   },
   "privacyPage": {
     "kicker": "Persoonsgegevens",
     "title": "Privacybeleid",
-    "lead": "Deze pagina legt uit hoe AmusementPark persoonsgegevens, noodzakelijke cookies, Google OAuth-authenticatie en Matomo-publieksmeting verwerkt.",
+    "lead": "Deze pagina legt uit hoe AmusementPark persoonsgegevens, noodzakelijke cookies, Google OAuth-authenticatie, Matomo-publieksmeting en Microsoft Clarity-gebruiksanalyse verwerkt.",
     "chips": {
       "hosting": "Hosting in Frankrijk",
       "analytics": "Cookies en analytics",
@@ -2117,7 +2262,7 @@
     "consent": {
       "kicker": "Cookievoorkeuren",
       "title": "Optionele cookies beheren",
-      "text": "Cookies die nodig zijn voor werking en authenticatie kunnen zonder toestemming worden gebruikt. Hier kun je optionele cookies voor publieksmeting accepteren, weigeren of de keuze opnieuw tonen.",
+      "text": "Cookies die nodig zijn voor werking en authenticatie kunnen zonder toestemming worden gebruikt. Hier kun je optionele cookies voor publieksmeting en gebruiksanalyse accepteren, weigeren of de keuze opnieuw tonen.",
       "currentStatus": "Huidige status:",
       "statusAccepted": "optionele cookies geaccepteerd.",
       "statusRefused": "optionele cookies geweigerd.",
@@ -2140,7 +2285,7 @@
       "purposes": {
         "title": "Doeleinden en rechtsgronden",
         "body1": "Gegevens worden gebruikt om websitefuncties te leveren, toegang te beveiligen, accounts te beheren, openbare inhoud te tonen en het project te beheren.",
-        "body2": "Verwerkingen die nodig zijn voor de werking steunen op de uitvoering van de dienst of op gerechtvaardigd belang. Optionele Matomo-cookies voor publieksmeting steunen op je toestemming, tenzij later een strikt vrijgestelde configuratie wordt ingevoerd."
+        "body2": "Verwerkingen die nodig zijn voor de werking steunen op uitvoering van de dienst of gerechtvaardigd belang. Optionele cookies voor publieksmeting van Matomo en Microsoft Clarity steunen op jouw toestemming, tenzij later een strikt vrijgestelde configuratie wordt ingesteld."
       },
       "analytics": {
         "title": "Matomo-publieksmeting",
@@ -2152,7 +2297,7 @@
         "title": "Cookies en lokale opslag",
         "body1": "Strikt noodzakelijke cookies of opslag kunnen worden gebruikt voor sessie, beveiliging, taal, thema, interfacevoorkeuren en correcte authenticatie.",
         "body2": "Deze noodzakelijke trackers kunnen sessie-/API-cookies, HTTP-only authenticatiecookies, anti-misbruikmechanismen en lokaal opgeslagen voorkeuren omvatten. Ze kunnen niet via de banner worden uitgeschakeld omdat ze de gevraagde dienst mogelijk maken.",
-        "body3": "De keuze over optionele cookies wordt opgeslagen in de lokale opslag van de browser zodat ze niet op elke pagina opnieuw wordt gevraagd."
+        "body3": "De keuze voor optionele cookies wordt opgeslagen in de lokale browseropslag en in een voorkeurcookie, zodat dezelfde keuze niet op elke pagina opnieuw wordt gevraagd."
       },
       "hosting": {
         "title": "Hosting en verwerkers",
@@ -2174,6 +2319,12 @@
         "body1": "De website biedt inloggen via Google OAuth / Sign in with Google. Wanneer je deze methode gebruikt, kan Google eigen cookies en vergelijkbare technologieën plaatsen of lezen voor authenticatie, beveiliging, fraudepreventie en sessiebeheer.",
         "body2": "Deze trackers van derden zijn nodig voor de door de gebruiker gevraagde Google-authenticatie en worden niet beheerd door de Matomo-/analytics-toestemming van de website.",
         "body3": "Het weigeren van optionele AmusementPark-cookies blokkeert authenticatie niet. Een browser die bepaalde cookies van derden blokkeert, kan Google-inloggen wel verhinderen of verstoren."
+      },
+      "clarity": {
+        "title": "Gebruiksanalyse met Microsoft Clarity",
+        "body1": "De site gebruikt Microsoft Clarity, project x7ca53dep2, om het gebruik van publieke pagina’s te begrijpen via geaggregeerde gebruiksanalyses, heatmaps en sessiereplayfuncties.",
+        "body2": "Clarity kan interacties verzamelen zoals klikken, scrollen, muisbewegingen, informatie over paginaweergave, navigatiecontext, apparaattype en technische browsergegevens. Privé-inhoud van profielen mag niet bewust als analytics-inhoud worden verzonden.",
+        "body3": "Clarity wordt alleen geactiveerd na toestemming voor optionele cookies. De site stuurt het Clarity Consent API v2-signaal zodat analytics-opslag volgens jouw keuze wordt toegestaan of geweigerd; je kunt die toestemming op deze pagina intrekken."
       }
     },
     "lastUpdate": "Laatst bijgewerkt: 23 mei 2026.",

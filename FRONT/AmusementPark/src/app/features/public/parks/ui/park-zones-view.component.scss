@@ -1,0 +1,109 @@
+.park-zones-page {
+  align-content: start;
+}
+
+.zones-hero {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.zones-hero h1 {
+  margin: 0.85rem 0 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.zones-hero p {
+  max-width: 68ch;
+  margin: 0.55rem 0 0;
+  color: var(--app-text-muted);
+  line-height: 1.7;
+}
+
+.zones-hero__actions,
+.zone-card__actions,
+.zone-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.zones-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.zone-card {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.zone-card__header {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.zone-card__header h2 {
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.zone-card__description {
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.72;
+}
+
+:host ::ng-deep .zone-card__description :where(p, ul, ol, blockquote) {
+  margin-top: 0;
+}
+
+:host ::ng-deep .zone-card__description :where(p:last-child, ul:last-child, ol:last-child, blockquote:last-child) {
+  margin-bottom: 0;
+}
+
+.zone-card__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9rem;
+  padding: 0.25rem 0.68rem;
+  border: 1px solid color-mix(in srgb, var(--app-primary) 20%, var(--app-border));
+  border-radius: var(--radius-pill);
+  color: var(--app-text-muted);
+  background: color-mix(in srgb, var(--app-primary) 8%, transparent);
+  font-size: 0.73rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+@media (min-width: 760px) {
+  .zones-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1180px) {
+  .zones-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .zones-hero {
+    display: grid;
+    align-items: start;
+  }
+
+  .zones-hero__actions :where(a, button, .app-button) {
+    width: 100%;
+  }
+}

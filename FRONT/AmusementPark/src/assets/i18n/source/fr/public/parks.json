@@ -30,7 +30,8 @@
       "website": "Site web",
       "backToList": "Retour à la liste",
       "images": "Images",
-      "map": "Carte"
+      "map": "Carte",
+      "browseZones": "Parcourir toutes les zones"
     },
     "detail": {
       "heroBadge": "Vue d’ensemble du parc",
@@ -275,6 +276,39 @@
       "errorTitle": "Carte indisponible",
       "errorMessage": "Impossible de charger la carte de ce parc pour le moment.",
       "backToPark": "Retour à {{name}}"
+    },
+    "zones": {
+      "badge": "Zones du parc",
+      "title": "Zones de {{park}}",
+      "subtitle": "{{count}} zone(s) regroupant {{total}} élément(s) public(s).",
+      "loadingTitle": "Chargement des zones",
+      "loadingMessage": "Les zones du parc sont en cours de chargement.",
+      "errorTitle": "Impossible de charger les zones",
+      "errorMessage": "Les zones du parc n’ont pas pu être chargées.",
+      "emptyTitle": "Aucune zone disponible",
+      "emptyMessage": "Aucune zone publique n’est actuellement disponible pour ce parc.",
+      "noDescription": "Aucune description n’est encore disponible pour cette zone.",
+      "openZone": "Ouvrir la zone",
+      "backToZones": "Retour aux zones"
+    },
+    "zone": {
+      "badge": "Zone de {{park}}",
+      "loadingTitle": "Chargement de la zone",
+      "loadingMessage": "La zone du parc est en cours de chargement.",
+      "errorTitle": "Impossible de charger la zone",
+      "errorMessage": "La zone du parc n’a pas pu être chargée.",
+      "emptyTitle": "Zone indisponible",
+      "emptyMessage": "La zone demandée n’est pas disponible.",
+      "totalItems": "Éléments",
+      "totalItemsHint": "Rattachés à cette zone",
+      "mapMarkers": "Marqueurs",
+      "mapMarkersHint": "Géolocalisés",
+      "mapBadge": "Carte de la zone",
+      "mapTitle": "Éléments géolocalisés",
+      "itemsBadge": "Éléments de la zone",
+      "itemsTitle": "Éléments dans cette zone",
+      "emptyItemsTitle": "Aucun élément dans cette zone",
+      "emptyItemsMessage": "Aucun élément public n’est actuellement rattaché à cette zone."
     }
   }
 }

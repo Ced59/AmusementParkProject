@@ -12,6 +12,8 @@ export const environment = {
     matomoSiteId: 1,
     matomoTrackerUrl: 'http://localhost:18082/',
     matomoRequireConsent: true,
-    matomoConsentHoursToExpire: 4380
+    matomoConsentHoursToExpire: 4380,
+    clarityEnabled: false,
+    clarityProjectId: 'x7ca53dep2'
   }
 };

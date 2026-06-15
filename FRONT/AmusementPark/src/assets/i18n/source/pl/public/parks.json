@@ -30,7 +30,8 @@
       "website": "Strona internetowa",
       "backToList": "Wróć do listy",
       "images": "Zdjęcia",
-      "map": "Mapa"
+      "map": "Mapa",
+      "browseZones": "Przeglądaj wszystkie strefy"
     },
     "detail": {
       "heroBadge": "Przegląd parku",
@@ -275,6 +276,39 @@
       "errorTitle": "Mapa niedostępna",
       "errorMessage": "Nie można teraz załadować mapy tego parku.",
       "backToPark": "Wróć do {{name}}"
+    },
+    "zones": {
+      "badge": "Strefy parku",
+      "title": "Strefy {{park}}",
+      "subtitle": "{{count}} stref(y) grupujące {{total}} publiczne elementy.",
+      "loadingTitle": "Ładowanie stref",
+      "loadingMessage": "Strefy parku są ładowane.",
+      "errorTitle": "Nie można załadować stref",
+      "errorMessage": "Nie udało się załadować stref parku.",
+      "emptyTitle": "Brak dostępnych stref",
+      "emptyMessage": "Dla tego parku nie ma obecnie dostępnej publicznej strefy.",
+      "noDescription": "Dla tej strefy nie ma jeszcze opisu.",
+      "openZone": "Otwórz strefę",
+      "backToZones": "Wróć do stref"
+    },
+    "zone": {
+      "badge": "Strefa {{park}}",
+      "loadingTitle": "Ładowanie strefy",
+      "loadingMessage": "Strefa parku jest ładowana.",
+      "errorTitle": "Nie można załadować strefy",
+      "errorMessage": "Nie udało się załadować strefy parku.",
+      "emptyTitle": "Strefa niedostępna",
+      "emptyMessage": "Żądana strefa nie jest dostępna.",
+      "totalItems": "Elementy",
+      "totalItemsHint": "Powiązane z tą strefą",
+      "mapMarkers": "Znaczniki",
+      "mapMarkersHint": "Geolokalizowane",
+      "mapBadge": "Mapa strefy",
+      "mapTitle": "Elementy geolokalizowane",
+      "itemsBadge": "Elementy strefy",
+      "itemsTitle": "Elementy w tej strefie",
+      "emptyItemsTitle": "Brak elementów w tej strefie",
+      "emptyItemsMessage": "Żaden publiczny element nie jest obecnie powiązany z tą strefą."
     }
   }
 }

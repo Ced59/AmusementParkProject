@@ -9,136 +9,13 @@
     emptyMessageKey: 'parkItems.list.emptyMessage'
   }">
   <section class="park-items-page public-page page-shell" *ngIf="pageView() as currentView">
-    @if (zoneFocus(); as focus) {
-      <section class="zone-focus" appUiSurface="panel" appUiSurfacePadding="none" [class.zone-focus--active-zone]="focus.hasActiveZone">
-        <div class="zone-focus__hero">
-          <div class="zone-focus__media" aria-hidden="true">
-            <app-image-display
-              [imageId]="focus.heroImageId"
-              [alt]="focus.parkName"
-              imgClass="zone-focus__image"
-              placeholderClass="zone-focus__image-placeholder"
-              placeholderKind="map"
-              loading="eager">
-            </app-image-display>
-            <div class="zone-focus__media-overlay"></div>
-          </div>
-
-          <div class="zone-focus__content">
-            <app-ui-kicker [tone]="focus.hasActiveZone ? 'lime' : 'sky'" iconClass="pi pi-map-marker">
-              {{ (focus.hasActiveZone ? 'parkItems.zoneFocus.badge' : 'parkItems.zoneFocus.overviewBadge') | translate }}
-            </app-ui-kicker>
-
-            <div class="zone-focus__headline">
-              <span class="zone-focus__park-name">{{ focus.parkName }}</span>
-              <h1>{{ focus.zoneName }}</h1>
-
-              @if (focus.zoneDescription) {
-                <div class="zone-focus__rich-description" [innerHTML]="focus.zoneDescription | safeRichHtml"></div>
-              } @else {
-                <p>
-                  {{ (focus.hasActiveZone ? 'parkItems.zoneFocus.zoneFallbackDescription' : 'parkItems.zoneFocus.overviewDescription') | translate:{ park: focus.parkName } }}
-                </p>
-              }
-            </div>
-
-            <div class="zone-focus__quick-actions">
-              <button appUiButton="ghost" type="button" (click)="onBackClicked()">
-                <i class="pi pi-arrow-left" aria-hidden="true"></i>
-                <span>{{ 'parkItems.actions.backToPark' | translate }}</span>
-              </button>
-
-              <button appUiButton="ghost" type="button" (click)="clearFilters()">
-                <i class="pi pi-filter-slash" aria-hidden="true"></i>
-                <span>{{ 'parkItems.filters.clear' | translate }}</span>
-              </button>
-            </div>
-
-            <div class="zone-focus__stats">
-              <app-ui-stat-card
-                tone="primary"
-                labelKey="parkItems.zoneFocus.totalItems"
-                [value]="focus.totalItems"
-                hintKey="parkItems.zoneFocus.totalItemsHint">
-              </app-ui-stat-card>
-
-              <app-ui-stat-card
-                tone="sky"
-                labelKey="parkItems.zoneFocus.displayedItems"
-                [value]="focus.displayedItems"
-                hintKey="parkItems.zoneFocus.displayedItemsHint">
-              </app-ui-stat-card>
-
-              <app-ui-stat-card
-                tone="lime"
-                labelKey="parkItems.zoneFocus.mapMarkers"
-                [value]="focus.map.markers.length"
-                hintKey="parkItems.zoneFocus.mapMarkersHint">
-              </app-ui-stat-card>
-            </div>
-          </div>
-        </div>
-
-        <div class="zone-focus__map-layout">
-          <app-ui-map-slot
-            class="zone-focus__map-slot"
-            [available]="focus.map.hasMarkers"
-            minHeight="24rem"
-            placeholderTitleKey="parks.detail.itemsMap.emptyTitle"
-            placeholderMessageKey="parks.detail.itemsMap.emptyMessage">
-            <app-leaflet-map
-              [center]="focus.map.center"
-              [zoom]="17"
-              [fitBounds]="true"
-              [fitBoundsMaxZoom]="17"
-              [markers]="zoneNavigationMarkers">
-            </app-leaflet-map>
-          </app-ui-map-slot>
-
-          <aside class="zone-focus__side-panel">
-            <span class="zone-focus__side-kicker">{{ 'parkItems.zoneFocus.mapPanelTitle' | translate }}</span>
-            <h2>
-              {{ (focus.hasActiveZone ? 'parkItems.zoneFocus.zoneMapHeading' : 'parkItems.zoneFocus.parkMapHeading') | translate:{ name: focus.zoneName } }}
-            </h2>
-
-            <div class="zone-focus__chips" *ngIf="focus.topTypeHighlights.length > 0">
-              <button
-                class="zone-focus__filter-chip zone-focus__filter-chip--all"
-                type="button"
-                [class.zone-focus__filter-chip--active]="selectedType() === null"
-                [attr.aria-pressed]="selectedType() === null"
-                (click)="setMapTypeFilter(null)">
-                {{ 'parkItems.zoneFocus.allMapItems' | translate }}
-              </button>
-
-              @for (typeCount of focus.topTypeHighlights; track typeCount.value) {
-                <button
-                  class="zone-focus__filter-chip"
-                  type="button"
-                  [class.zone-focus__filter-chip--active]="selectedType() === typeCount.value"
-                  [attr.aria-pressed]="selectedType() === typeCount.value"
-                  (click)="setMapTypeFilter(typeCount.value)">
-                  {{ typeCount.labelKey | translate }} · {{ typeCount.count }}
-                </button>
-              }
-            </div>
-          </aside>
-        </div>
-      </section>
-    }
-
-    <app-park-items-zone-list
-      [zoneCards]="zoneCards"
-      (zoneSelected)="onZoneSelected($event)">
-    </app-park-items-zone-list>
-
     <section class="results-workbench" appUiSurface="panel" appUiSurfacePadding="regular">
       <div class="results-workbench__header">
         <div>
-          <app-ui-kicker iconClass="pi pi-sliders-h">
+          <app-ui-kicker iconClass="pi pi-sitemap">
             {{ 'parkVisitor.summary.viewAllItems' | translate }}
           </app-ui-kicker>
-          <h2>{{ 'parkVisitor.summary.viewAllItems' | translate }}</h2>
+          <h1>{{ 'parkVisitor.summary.viewAllItems' | translate }}</h1>
           <p>
             {{ 'parkItems.list.resultsCount' | translate:{ start: rangeStart(), end: rangeEnd(), total: totalResults() } }}
           </p>
@@ -168,6 +45,49 @@
         (typeChanged)="onTypeChanged($event)"
         (zoneChanged)="onZoneChanged($event)">
       </app-park-items-filters>
+
+      @if (zoneFocus(); as focus) {
+        <div class="items-map-panel">
+          <app-ui-map-slot
+            class="items-map-panel__slot"
+            [available]="focus.map.hasMarkers"
+            minHeight="23rem"
+            placeholderTitleKey="parks.detail.itemsMap.emptyTitle"
+            placeholderMessageKey="parks.detail.itemsMap.emptyMessage">
+            <app-leaflet-map
+              [center]="focus.map.center"
+              [zoom]="16"
+              [fitBounds]="true"
+              [fitBoundsMaxZoom]="17"
+              [markers]="zoneNavigationMarkers">
+            </app-leaflet-map>
+          </app-ui-map-slot>
+
+          @if (focus.topTypeHighlights.length > 0) {
+            <div class="items-map-panel__chips">
+              <button
+                class="items-map-panel__chip items-map-panel__chip--all"
+                type="button"
+                [class.items-map-panel__chip--active]="selectedType() === null"
+                [attr.aria-pressed]="selectedType() === null"
+                (click)="setMapTypeFilter(null)">
+                {{ 'parkItems.zoneFocus.allMapItems' | translate }}
+              </button>
+
+              @for (typeCount of focus.topTypeHighlights; track typeCount.value) {
+                <button
+                  class="items-map-panel__chip"
+                  type="button"
+                  [class.items-map-panel__chip--active]="selectedType() === typeCount.value"
+                  [attr.aria-pressed]="selectedType() === typeCount.value"
+                  (click)="setMapTypeFilter(typeCount.value)">
+                  {{ typeCount.labelKey | translate }} &middot; {{ typeCount.count }}
+                </button>
+              }
+            </div>
+          }
+        </div>
+      }
 
       <div class="items-grid" *ngIf="pagedItems().length > 0; else emptyFilteredState">
         <app-park-item-card-view

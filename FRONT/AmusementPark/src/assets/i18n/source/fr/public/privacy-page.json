@@ -2,7 +2,7 @@
   "privacyPage": {
     "kicker": "Données personnelles",
     "title": "Politique de confidentialité",
-    "lead": "Cette page explique comment AmusementPark traite les données personnelles, les cookies nécessaires, l’authentification Google OAuth et la mesure d’audience Matomo.",
+    "lead": "Cette page explique comment AmusementPark traite les données personnelles, les cookies nécessaires, l’authentification Google OAuth, la mesure d’audience Matomo et l’analyse d’usage Microsoft Clarity.",
     "chips": {
       "hosting": "Hébergement en France",
       "analytics": "Cookies et analytics",
@@ -11,7 +11,7 @@
     "consent": {
       "kicker": "Préférences cookies",
       "title": "Gérer les cookies optionnels",
-      "text": "Les cookies nécessaires au fonctionnement et à l’authentification peuvent être utilisés sans consentement. Ici, vous pouvez accepter, refuser ou réafficher le choix relatif aux cookies optionnels de mesure d’audience.",
+      "text": "Les cookies nécessaires au fonctionnement et à l’authentification peuvent être utilisés sans consentement. Ici, vous pouvez accepter, refuser ou réafficher le choix relatif aux cookies optionnels de mesure d’audience et d’analyse d’usage.",
       "currentStatus": "Statut actuel :",
       "statusAccepted": "cookies optionnels acceptés.",
       "statusRefused": "cookies optionnels refusés.",
@@ -34,7 +34,7 @@
       "purposes": {
         "title": "Finalités et bases légales",
         "body1": "Les données sont utilisées pour fournir les fonctionnalités du site, sécuriser les accès, gérer les comptes, afficher les contenus publics et administrer le projet.",
-        "body2": "Les traitements nécessaires au fonctionnement reposent sur l’exécution du service ou l’intérêt légitime. Les cookies optionnels de mesure d’audience Matomo reposent sur votre consentement, sauf si une configuration strictement exemptée est mise en place ultérieurement."
+        "body2": "Les traitements nécessaires au fonctionnement reposent sur l’exécution du service ou l’intérêt légitime. Les cookies optionnels de mesure d’audience Matomo et Microsoft Clarity reposent sur votre consentement, sauf si une configuration strictement exemptée est mise en place ultérieurement."
       },
       "analytics": {
         "title": "Mesure d’audience Matomo",
@@ -46,7 +46,7 @@
         "title": "Cookies et stockage local",
         "body1": "Des cookies ou stockages strictement nécessaires peuvent servir à la session, à la sécurité, à la langue, au thème, aux préférences d’interface et au bon fonctionnement de l’authentification.",
         "body2": "Ces traceurs nécessaires peuvent inclure des cookies de session/API, des cookies d’authentification HTTP-only, des mécanismes anti-abus et des préférences conservées localement. Ils ne sont pas désactivables depuis le bandeau car ils conditionnent le service demandé.",
-        "body3": "Le choix relatif aux cookies optionnels est conservé dans le stockage local du navigateur afin de ne pas redemander le même choix à chaque page."
+        "body3": "Le choix relatif aux cookies optionnels est conservé dans le stockage local du navigateur et dans un cookie de préférence afin de ne pas redemander le même choix à chaque page."
       },
       "hosting": {
         "title": "Hébergement et sous-traitants",
@@ -68,6 +68,12 @@
         "body1": "Le site propose une connexion via Google OAuth / Sign in with Google. Lorsque vous utilisez ce mode, Google peut déposer ou lire ses propres cookies et technologies similaires à des fins d’authentification, de sécurité, de prévention de la fraude et de maintien de session.",
         "body2": "Ces traceurs tiers sont nécessaires au fonctionnement de l’authentification Google demandée par l’utilisateur et ne sont pas pilotés par le consentement Matomo/analytics du site.",
         "body3": "Le refus des cookies optionnels d’AmusementPark ne bloque pas l’authentification. En revanche, un navigateur qui bloque certains cookies tiers peut empêcher ou dégrader le fonctionnement de la connexion Google."
+      },
+      "clarity": {
+        "title": "Analyse d’usage Microsoft Clarity",
+        "body1": "Le site utilise Microsoft Clarity, projet x7ca53dep2, pour comprendre l’usage des pages publiques au moyen de mesures agrégées, de cartes de chaleur et de fonctionnalités de relecture de session.",
+        "body2": "Clarity peut collecter des interactions comme les clics, le défilement, les mouvements de souris, les informations de rendu des pages, le contexte de navigation, le type d’appareil et des données techniques du navigateur. Le contenu privé du profil ne doit pas être envoyé volontairement comme contenu analytics.",
+        "body3": "Clarity est activé uniquement après accord sur les cookies optionnels. Le site transmet le signal Clarity Consent API v2 afin d’accorder ou refuser le stockage analytics selon votre choix ; vous pouvez retirer ce consentement sur cette page."
       }
     },
     "lastUpdate": "Dernière mise à jour : 23 mai 2026.",

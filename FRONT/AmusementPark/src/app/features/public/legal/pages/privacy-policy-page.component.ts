@@ -56,6 +56,15 @@ export class PrivacyPolicyPageComponent {
       ]
     },
     {
+      iconClass: 'pi pi-microsoft',
+      titleKey: 'privacyPage.sections.clarity.title',
+      bodyKeys: [
+        'privacyPage.sections.clarity.body1',
+        'privacyPage.sections.clarity.body2',
+        'privacyPage.sections.clarity.body3'
+      ]
+    },
+    {
       iconClass: 'pi pi-lock',
       titleKey: 'privacyPage.sections.cookies.title',
       bodyKeys: [

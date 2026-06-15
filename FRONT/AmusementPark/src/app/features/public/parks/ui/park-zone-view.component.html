@@ -1,0 +1,114 @@
+<app-page-state
+  [state]="state().kind"
+  [messages]="{
+    loadingTitleKey: 'parks.zone.loadingTitle',
+    loadingMessageKey: 'parks.zone.loadingMessage',
+    errorTitleKey: 'parks.zone.errorTitle',
+    errorMessageKey: 'parks.zone.errorMessage',
+    emptyTitleKey: 'parks.zone.emptyTitle',
+    emptyMessageKey: 'parks.zone.emptyMessage'
+  }">
+  <section class="park-zone-page public-page page-shell" *ngIf="page() as currentPage; else missingZone">
+    <section class="zone-hero" appUiSurface="panel" appUiSurfacePadding="regular">
+      <div class="zone-hero__content">
+        <app-ui-kicker iconClass="pi pi-map-marker">{{ 'parks.zone.badge' | translate:{ park: currentPage.parkName } }}</app-ui-kicker>
+        <h1>{{ currentPage.zoneName }}</h1>
+
+        @if (currentPage.zoneDescription) {
+          <div class="zone-hero__description" [innerHTML]="currentPage.zoneDescription | safeRichHtml"></div>
+        } @else {
+          <p class="zone-hero__description">{{ 'parks.zones.noDescription' | translate }}</p>
+        }
+
+        <div class="zone-hero__actions">
+          <button appUiButton="ghost" type="button" (click)="onBackClicked()">
+            <i class="pi pi-arrow-left" aria-hidden="true"></i>
+            <span>{{ 'parks.zones.backToZones' | translate }}</span>
+          </button>
+
+          <a *ngIf="currentPage.allItemsLink" appUiButton="primary" [routerLink]="currentPage.allItemsLink">
+            <i class="pi pi-sitemap" aria-hidden="true"></i>
+            <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="zone-hero__stats">
+        <app-ui-stat-card
+          tone="primary"
+          labelKey="parks.zone.totalItems"
+          [value]="currentPage.totalItems"
+          hintKey="parks.zone.totalItemsHint">
+        </app-ui-stat-card>
+
+        <app-ui-stat-card
+          tone="lime"
+          labelKey="parks.zone.mapMarkers"
+          [value]="currentPage.map.markers.length"
+          hintKey="parks.zone.mapMarkersHint">
+        </app-ui-stat-card>
+      </div>
+    </section>
+
+    <section class="zone-map" appUiSurface="panel" appUiSurfacePadding="regular">
+      <div class="zone-map__header">
+        <div>
+          <app-ui-kicker iconClass="pi pi-map">{{ 'parks.zone.mapBadge' | translate }}</app-ui-kicker>
+          <h2>{{ 'parks.zone.mapTitle' | translate }}</h2>
+        </div>
+
+        <div class="zone-map__chips" *ngIf="currentPage.typeHighlights.length > 0">
+          <app-ui-chip tone="soft" *ngFor="let type of currentPage.typeHighlights">
+            {{ type.labelKey | translate }} &middot; {{ type.count }}
+          </app-ui-chip>
+        </div>
+      </div>
+
+      <app-ui-map-slot
+        [available]="currentPage.map.hasMarkers"
+        minHeight="24rem"
+        placeholderTitleKey="parks.detail.itemsMap.emptyTitle"
+        placeholderMessageKey="parks.detail.itemsMap.emptyMessage">
+        <app-leaflet-map
+          [center]="currentPage.map.center"
+          [zoom]="17"
+          [fitBounds]="true"
+          [fitBoundsMaxZoom]="17"
+          [markers]="mapMarkers">
+        </app-leaflet-map>
+      </app-ui-map-slot>
+    </section>
+
+    <section class="zone-items" appUiSurface="panel" appUiSurfacePadding="regular">
+      <div class="zone-items__header">
+        <app-ui-kicker iconClass="pi pi-list">{{ 'parks.zone.itemsBadge' | translate }}</app-ui-kicker>
+        <h2>{{ 'parks.zone.itemsTitle' | translate }}</h2>
+      </div>
+
+      <div class="zone-items__grid" *ngIf="currentPage.items.length > 0; else emptyItems">
+        <app-park-item-card-view
+          *ngFor="let item of currentPage.items"
+          [card]="item">
+        </app-park-item-card-view>
+      </div>
+
+      <ng-template #emptyItems>
+        <app-empty-state
+          variant="public"
+          iconClass="pi pi-inbox"
+          titleKey="parks.zone.emptyItemsTitle"
+          messageKey="parks.zone.emptyItemsMessage">
+        </app-empty-state>
+      </ng-template>
+    </section>
+  </section>
+
+  <ng-template #missingZone>
+    <app-empty-state
+      variant="public"
+      iconClass="pi pi-map-marker"
+      titleKey="parks.zone.emptyTitle"
+      messageKey="parks.zone.emptyMessage">
+    </app-empty-state>
+  </ng-template>
+</app-page-state>
