@@ -87,12 +87,25 @@ jobs:
           tag="${{ steps.release-version.outputs.version }}"
 
           if git rev-parse -q --verify "refs/tags/${tag}" >/dev/null; then
-            echo "Tag ${tag} already exists locally."
+            tagged_sha="$(git rev-list -n 1 "${tag}")"
+            if [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref_name }}" = "master" ] && [ "${tagged_sha}" = "${{ github.sha }}" ]; then
+              echo "Tag ${tag} already exists locally on this commit."
+              exit 0
+            fi
+
+            echo "Tag ${tag} already exists locally on ${tagged_sha}."
             exit 1
           fi
 
           if git ls-remote --exit-code --tags origin "refs/tags/${tag}" >/dev/null 2>&1; then
-            echo "Tag ${tag} already exists on origin."
+            git fetch --quiet origin "refs/tags/${tag}:refs/tags/${tag}"
+            tagged_sha="$(git rev-list -n 1 "${tag}")"
+            if [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref_name }}" = "master" ] && [ "${tagged_sha}" = "${{ github.sha }}" ]; then
+              echo "Tag ${tag} already exists on origin on this commit."
+              exit 0
+            fi
+
+            echo "Tag ${tag} already exists on origin on ${tagged_sha}."
             exit 1
           fi
 
@@ -110,6 +123,15 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git rev-parse -q --verify "refs/tags/${tag}" >/dev/null; then
+            tagged_sha="$(git rev-list -n 1 "${tag}")"
+            if [ "${tagged_sha}" = "${{ github.sha }}" ]; then
+              echo "Tag ${tag} already exists on this commit; skipping tag creation."
+              exit 0
+            fi
+          fi
+
           git tag "${tag}" "${{ github.sha }}"
           git push origin "refs/tags/${tag}"
 
@@ -384,11 +406,14 @@ jobs:
       BACKUP_BEFORE_DEPLOY: ${{ vars.BACKUP_BEFORE_DEPLOY || 'true' }}
       SSR_SEO_DOCUMENT_CACHE_SECONDS: ${{ vars.SSR_SEO_DOCUMENT_CACHE_SECONDS || '3600' }}
       SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES: ${{ vars.SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES || '128' }}
+      SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL: ${{ vars.SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL || 'no-cache, max-age=0, must-revalidate' }}
+      SSR_CACHE_INVALIDATION_TOKEN: ${{ secrets.SSR_CACHE_INVALIDATION_TOKEN || secrets.PROD_SSR_CACHE_INVALIDATION_TOKEN }}
       SSR_RENDER_ENABLED: ${{ vars.SSR_RENDER_ENABLED || 'true' }}
       SSR_RENDER_ON_CACHE_MISS: ${{ vars.SSR_RENDER_ON_CACHE_MISS || 'false' }}
       SSR_RENDER_CRITICAL_ROUTES_ON_CACHE_MISS: ${{ vars.SSR_RENDER_CRITICAL_ROUTES_ON_CACHE_MISS || 'true' }}
       SSR_PAGE_CACHE_SECONDS: ${{ vars.SSR_PAGE_CACHE_SECONDS || '86400' }}
       SSR_PAGE_CACHE_MAX_ENTRIES: ${{ vars.SSR_PAGE_CACHE_MAX_ENTRIES || '2000' }}
+      SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL: ${{ vars.SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL || 'no-cache, max-age=0, must-revalidate' }}
       SSR_PAGE_CACHE_MAX_HTML_BYTES: ${{ vars.SSR_PAGE_CACHE_MAX_HTML_BYTES || '2097152' }}
       SSR_RENDER_MAX_CONCURRENCY: ${{ vars.SSR_RENDER_MAX_CONCURRENCY || '1' }}
       SSR_RENDER_QUEUE_MAX_ENTRIES: ${{ vars.SSR_RENDER_QUEUE_MAX_ENTRIES || '8' }}
