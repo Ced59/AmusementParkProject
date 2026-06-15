@@ -158,10 +158,11 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
             return null;
         }
 
-        ParkFounderDocument? document = await this.parkFoundersCollection.Find(founder => founder.Id == normalizedFounderId)
+        string? name = await this.parkFoundersCollection.Find(founder => founder.Id == normalizedFounderId)
+            .Project(founder => founder.Name)
             .FirstOrDefaultAsync(cancellationToken);
 
-        return NormalizeOptionalString(document?.Name);
+        return NormalizeOptionalString(name);
     }
 
     private async Task<string?> GetOperatorNameAsync(string? operatorId, CancellationToken cancellationToken)
@@ -172,10 +173,11 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
             return null;
         }
 
-        ParkOperatorDocument? document = await this.parkOperatorsCollection.Find(parkOperator => parkOperator.Id == normalizedOperatorId)
+        string? name = await this.parkOperatorsCollection.Find(parkOperator => parkOperator.Id == normalizedOperatorId)
+            .Project(parkOperator => parkOperator.Name)
             .FirstOrDefaultAsync(cancellationToken);
 
-        return NormalizeOptionalString(document?.Name);
+        return NormalizeOptionalString(name);
     }
 
     private static int GetCount(IReadOnlyDictionary<ParkItemCategory, int> counts, ParkItemCategory category)
