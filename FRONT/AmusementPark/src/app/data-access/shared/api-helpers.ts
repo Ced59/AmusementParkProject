@@ -71,6 +71,7 @@ const PARK_ITEM_TYPES_BY_API_VALUE: ReadonlyMap<number, ParkItem['type']> = new 
 
 export interface PagedCollectionResponse<T> {
   data?: T[];
+  items?: T[];
   pagination?: PaginationContract | null;
 }
 
@@ -80,8 +81,16 @@ export function unwrapPagedCollection<T>(response: T[] | PagedCollectionResponse
     return createPagedResult<T>(response);
   }
 
-  if (response && Array.isArray(response.data)) {
-    return createPagedResult<T>(response.data, response.pagination);
+  if (response) {
+    const items: T[] | undefined = Array.isArray(response.data)
+      ? response.data
+      : Array.isArray(response.items)
+        ? response.items
+        : undefined;
+
+    if (items) {
+      return createPagedResult<T>(items, response.pagination);
+    }
   }
 
   return createPagedResult<T>([]);
@@ -92,8 +101,14 @@ export function unwrapCollection<T>(response: T[] | PagedCollectionResponse<T> |
     return response;
   }
 
-  if (response && Array.isArray(response.data)) {
-    return coalesceArray(response.data);
+  if (response) {
+    if (Array.isArray(response.data)) {
+      return coalesceArray(response.data);
+    }
+
+    if (Array.isArray(response.items)) {
+      return coalesceArray(response.items);
+    }
   }
 
   return [];

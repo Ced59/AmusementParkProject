@@ -15,6 +15,11 @@ import {
 import { AdminParkItemEditStateFacade } from './admin-park-item-edit-state.facade';
 
 class FakeParkItemsPort implements AdminParkItemEditStateParkItemsApiServicePort {
+  public readonly pageCalls: Array<{ page: number; size: number; parkId: string | null | undefined }> = [];
+  public readonly rowsByPage: Map<number, ParkItemAdminRow[]> = new Map<number, ParkItemAdminRow[]>();
+  public totalPages: number = 0;
+  public totalItems: number = 0;
+
   createParkItem(item: ParkItem): Observable<ParkItem> {
     return of(item);
   }
@@ -23,14 +28,16 @@ class FakeParkItemsPort implements AdminParkItemEditStateParkItemsApiServicePort
     return of({ id: itemId } as ParkItem);
   }
 
-  getParkItemsPaginated(): Observable<ApiResponse<ParkItemAdminRow>> {
+  getParkItemsPaginated(page: number = 1, size: number = 100, parkId?: string | null): Observable<ApiResponse<ParkItemAdminRow>> {
+    this.pageCalls.push({ page, size, parkId });
+
     return of({
-      data: [],
+      data: this.rowsByPage.get(page) ?? [],
       pagination: {
-        currentPage: 1,
-        itemsPerPage: 200,
-        totalItems: 0,
-        totalPages: 0
+        currentPage: page,
+        itemsPerPage: size,
+        totalItems: this.totalItems,
+        totalPages: this.totalPages
       }
     });
   }
@@ -42,8 +49,22 @@ class FakeParkItemsPort implements AdminParkItemEditStateParkItemsApiServicePort
 
 class FakeParksPort implements AdminParkItemEditStateParksApiServicePort {
   public calls: number = 0;
+  public getByIdCalls: string[] = [];
 
-  getParksPaginated(): Observable<ParksApiResponse> {
+  getParkById(parkId: string): Observable<Park> {
+    this.getByIdCalls.push(parkId);
+    return of({
+      id: parkId,
+      name: 'Phantasialand',
+      city: 'Bruhl',
+      countryCode: 'DE',
+      latitude: 50.8,
+      longitude: 6.8,
+      descriptions: []
+    } as Park);
+  }
+
+  getParksPaginated(page: number = 1, size: number = 100): Observable<ParksApiResponse> {
     this.calls += 1;
     return of({
       data: [
@@ -58,8 +79,8 @@ class FakeParksPort implements AdminParkItemEditStateParksApiServicePort {
         } as Park
       ],
       pagination: {
-        currentPage: 1,
-        itemsPerPage: 100,
+        currentPage: page,
+        itemsPerPage: size,
         totalItems: 1,
         totalPages: 1
       }
@@ -69,15 +90,17 @@ class FakeParksPort implements AdminParkItemEditStateParksApiServicePort {
 
 describe('AdminParkItemEditStateFacade', () => {
   let facade: AdminParkItemEditStateFacade;
+  let parkItemsPort: FakeParkItemsPort;
   let parksPort: FakeParksPort;
 
   beforeEach(() => {
+    parkItemsPort = new FakeParkItemsPort();
     parksPort = new FakeParksPort();
 
     TestBed.configureTestingModule({
       providers: [
         AdminParkItemEditStateFacade,
-        { provide: ADMIN_PARK_ITEM_EDIT_STATE_PARK_ITEMS_API_SERVICE_PORT, useClass: FakeParkItemsPort },
+        { provide: ADMIN_PARK_ITEM_EDIT_STATE_PARK_ITEMS_API_SERVICE_PORT, useValue: parkItemsPort },
         { provide: ADMIN_PARK_ITEM_EDIT_STATE_PARKS_API_SERVICE_PORT, useValue: parksPort }
       ]
     });
@@ -94,5 +117,44 @@ describe('AdminParkItemEditStateFacade', () => {
     expect(facade.parkOptions()[0].id).toBe('park-1');
     expect(facade.parkOptions()[0].label).toContain('Walibi');
     expect(facade.parkOptions()[0].label).toContain('Wavre');
+  });
+
+  it('loads the current park option without waiting for the full park list', async () => {
+    await facade.ensureParkOption('park-2');
+
+    expect(parksPort.getByIdCalls).toEqual(['park-2']);
+    expect(facade.parkOptions().map((option: { id: string }) => option.id)).toContain('park-2');
+
+    await facade.loadParkOptions();
+
+    expect(parksPort.calls).toBe(1);
+  });
+
+  it('loads sequential navigation with the backend-supported page size', async () => {
+    parkItemsPort.rowsByPage.set(1, [
+      { id: 'item-1', parkId: 'park-1', parkName: 'Park', name: 'One', category: 'Attraction', type: 'Attraction', isVisible: false, adminReviewStatus: 'ToReview' },
+      { id: 'item-2', parkId: 'park-1', parkName: 'Park', name: 'Two', category: 'Attraction', type: 'Attraction', isVisible: false, adminReviewStatus: 'ToReview' }
+    ]);
+    parkItemsPort.rowsByPage.set(2, [
+      { id: 'item-3', parkId: 'park-1', parkName: 'Park', name: 'Three', category: 'Attraction', type: 'Attraction', isVisible: false, adminReviewStatus: 'ToReview' }
+    ]);
+    parkItemsPort.totalItems = 3;
+    parkItemsPort.totalPages = 2;
+
+    await facade.loadSequentialNavigation('park-1', 'item-2', true);
+
+    expect(parkItemsPort.pageCalls.map((call: { page: number; size: number }) => ({ page: call.page, size: call.size }))).toEqual([
+      { page: 1, size: 100 },
+      { page: 2, size: 100 }
+    ]);
+    expect(facade.sequentialNavigationState()).toEqual({
+      isLoading: false,
+      currentItemId: 'item-2',
+      currentPosition: 2,
+      remainingItems: 1,
+      totalItems: 3,
+      previousItemId: 'item-1',
+      nextItemId: 'item-3'
+    });
   });
 });

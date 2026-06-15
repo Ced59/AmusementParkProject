@@ -17,12 +17,14 @@ describe('api helpers', () => {
   it('unwraps arrays and paged collection responses to paged results', () => {
     expect(unwrapPagedCollection([1, 2]).items).toEqual([1, 2]);
     expect(unwrapPagedCollection({ data: [1], pagination: { totalItems: 10, totalPages: 5, currentPage: 2, itemsPerPage: 2 } }).pagination.currentPage).toBe(2);
+    expect(unwrapPagedCollection({ items: [3], pagination: { totalItems: 1, totalPages: 1, currentPage: 1, itemsPerPage: 1 } }).items).toEqual([3]);
     expect(unwrapPagedCollection<number>(null).items).toEqual([]);
   });
 
   it('unwraps arrays and collection response data to plain arrays', () => {
     expect(unwrapCollection(['a'])).toEqual(['a']);
     expect(unwrapCollection({ data: ['b'] })).toEqual(['b']);
+    expect(unwrapCollection({ items: ['c'] })).toEqual(['c']);
     expect(unwrapCollection<string>(undefined)).toEqual([]);
   });
 

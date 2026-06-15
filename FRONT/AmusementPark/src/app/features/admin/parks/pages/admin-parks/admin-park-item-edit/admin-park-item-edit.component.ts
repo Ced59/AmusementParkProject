@@ -450,6 +450,8 @@ export class AdminParkItemEditComponent implements OnInit {
     const loadStartedAt: number = this.now();
     const itemId: string | null = this.itemId();
 
+    void this.editStateFacade.ensureParkOption(this.parkId());
+
     if (itemId) {
       const wasLoaded: boolean = await this.loadItemAsync(itemId);
 
