@@ -6,6 +6,7 @@ import { UserDto } from '@app/models/users/user_dto';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { AdminUsersStateFacade } from '@features/admin/users/state/admin-users-state.facade';
 import { AdminUsersViewComponent } from './admin-users-view.component';
+import { ScrollAnchorService } from '@shared/services/scroll/scroll-anchor.service';
 
 @Component({
   selector: 'app-admin-users',
@@ -26,7 +27,8 @@ export class AdminUsersComponent implements OnInit {
   constructor(
     protected readonly stateFacade: AdminUsersStateFacade,
     private readonly imagesApiService: ImagesApiService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly scrollAnchorService: ScrollAnchorService
   ) {
   }
 
@@ -38,8 +40,13 @@ export class AdminUsersComponent implements OnInit {
     const rows: number = event.rows ?? this.pageSize();
     const first: number = event.first ?? 0;
     const page: number = Math.floor(first / rows) + 1;
+    const shouldScroll: boolean = page !== this.currentPage() || rows !== this.pageSize();
 
     this.stateFacade.loadUsers(page, rows);
+
+    if (shouldScroll) {
+      this.scrollAnchorService.scrollToSelector('[data-pagination-scroll-target="admin-users"]');
+    }
   }
 
   openUserProfile(userId: string): void {

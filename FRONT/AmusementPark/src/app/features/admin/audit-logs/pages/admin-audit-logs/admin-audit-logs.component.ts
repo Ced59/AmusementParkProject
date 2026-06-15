@@ -13,6 +13,7 @@ import { AdminAuditLog, AdminAuditLogQuery, AdminAuditMetadataEntry } from '@app
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { AdminAuditLogsStateFacade } from '@features/admin/audit-logs/state/admin-audit-logs-state.facade';
+import { ScrollAnchorService } from '@shared/services/scroll/scroll-anchor.service';
 
 interface AdminAuditLogFiltersForm {
   fromUtc: FormControl<string>;
@@ -65,7 +66,10 @@ export class AdminAuditLogsComponent implements OnInit {
     traceId: new FormControl<string>('', { nonNullable: true })
   });
 
-  constructor(private readonly stateFacade: AdminAuditLogsStateFacade) {
+  constructor(
+    private readonly stateFacade: AdminAuditLogsStateFacade,
+    private readonly scrollAnchorService: ScrollAnchorService
+  ) {
   }
 
   ngOnInit(): void {
@@ -100,12 +104,17 @@ export class AdminAuditLogsComponent implements OnInit {
     const rows: number = event.rows ?? this.pageSize();
     const first: number = event.first ?? 0;
     const page: number = Math.floor(first / rows) + 1;
+    const shouldScroll: boolean = page !== this.currentPage() || rows !== this.pageSize();
 
     this.stateFacade.load({
       ...this.toQueryFilters(),
       page,
       size: rows
     });
+
+    if (shouldScroll) {
+      this.scrollAnchorService.scrollToSelector('[data-pagination-scroll-target="admin-audit-logs"]');
+    }
   }
 
   protected trackByLogId(_: number, log: AdminAuditLog): string {

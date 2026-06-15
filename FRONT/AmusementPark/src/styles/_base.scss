@@ -1,6 +1,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--topbar-height) + 1rem);
 }
 
 body {
@@ -96,4 +97,9 @@ code {
 
 strong {
   color: var(--app-heading);
+}
+
+[data-pagination-scroll-target],
+.app-scroll-anchor {
+  scroll-margin-top: calc(var(--topbar-height) + 1rem);
 }

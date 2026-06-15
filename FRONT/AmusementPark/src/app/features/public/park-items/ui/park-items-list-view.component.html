@@ -9,7 +9,7 @@
     emptyMessageKey: 'parkItems.list.emptyMessage'
   }">
   <section class="park-items-page public-page page-shell" *ngIf="pageView() as currentView">
-    <section class="results-workbench" appUiSurface="panel" appUiSurfacePadding="regular">
+    <section class="results-workbench" appUiSurface="panel" appUiSurfacePadding="regular" data-pagination-scroll-target>
       <div class="results-workbench__header">
         <div>
           <app-ui-kicker iconClass="pi pi-sitemap">

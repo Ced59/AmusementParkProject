@@ -120,7 +120,7 @@
         </div>
       }
       @if (!logosLoading && parkLogos.length > 0) {
-        <div>
+        <div data-pagination-scroll-target>
           <div class="grid">
             @for (logo of pagedLogos; track logo) {
               <div class="col-12 md:col-4 lg:col-3">
