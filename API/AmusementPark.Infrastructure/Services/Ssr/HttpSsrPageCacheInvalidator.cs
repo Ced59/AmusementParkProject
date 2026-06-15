@@ -1,4 +1,5 @@
 using System.Net.Http;
+using System.Net.Http.Json;
 using AmusementPark.Application.Ports;
 using AmusementPark.Infrastructure.Configuration.Ssr;
 using Microsoft.Extensions.Logging;
@@ -32,8 +33,15 @@ public sealed class HttpSsrPageCacheInvalidator : ISsrPageCacheInvalidator
         this.logger = logger;
     }
 
-    public async Task InvalidateAllAsync(CancellationToken cancellationToken = default)
+    public Task InvalidateAllAsync(CancellationToken cancellationToken = default)
     {
+        return this.InvalidateAsync(SsrPageCacheInvalidationRequest.AllCaches(), cancellationToken);
+    }
+
+    public async Task InvalidateAsync(SsrPageCacheInvalidationRequest request, CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+
         if (string.IsNullOrWhiteSpace(this.settings.InternalBaseUrl) || string.IsNullOrWhiteSpace(this.settings.CacheInvalidationToken))
         {
             this.logger.LogDebug("SSR page cache invalidation skipped: SSR internal base URL or token is not configured.");
@@ -45,10 +53,13 @@ public sealed class HttpSsrPageCacheInvalidator : ISsrPageCacheInvalidator
             HttpClient client = this.httpClientFactory.CreateClient(HttpClientName);
             string requestUri = BuildInvalidationUri(this.settings.InternalBaseUrl);
 
-            using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUri);
-            request.Headers.TryAddWithoutValidation(TokenHeaderName, this.settings.CacheInvalidationToken);
+            using HttpRequestMessage httpRequest = new HttpRequestMessage(HttpMethod.Post, requestUri)
+            {
+                Content = JsonContent.Create(request),
+            };
+            httpRequest.Headers.TryAddWithoutValidation(TokenHeaderName, this.settings.CacheInvalidationToken);
 
-            using HttpResponseMessage response = await client.SendAsync(request, cancellationToken);
+            using HttpResponseMessage response = await client.SendAsync(httpRequest, cancellationToken);
 
             if (!response.IsSuccessStatusCode)
             {

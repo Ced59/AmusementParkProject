@@ -98,6 +98,16 @@ public sealed class GetParkByIdQueryHandlerTests
             throw new NotImplementedException();
         }
 
+        public Task<IReadOnlyCollection<string>> GetParkIdsByOperatorIdAsync(string operatorId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyCollection<string>> GetParkIdsByFounderIdAsync(string founderId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

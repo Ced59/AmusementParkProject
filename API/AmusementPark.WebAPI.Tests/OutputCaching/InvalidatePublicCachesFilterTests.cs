@@ -26,9 +26,10 @@ public sealed class InvalidatePublicCachesFilterTests
             .Returns(ValueTask.CompletedTask);
         Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
         ssrPageCacheInvalidator
-            .Setup(invalidator => invalidator.InvalidateAllAsync(It.IsAny<CancellationToken>()))
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
-        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver();
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
         ActionExecutingContext context = CreateExecutingContext(
             HttpMethods.Post,
             new InvalidatesPublicCacheAttribute(PublicCacheScope.Data, PublicCacheScope.ReferenceData));
@@ -48,9 +49,10 @@ public sealed class InvalidatePublicCachesFilterTests
             .Returns(ValueTask.FromException(new InvalidOperationException("cache backend unavailable")));
         Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
         ssrPageCacheInvalidator
-            .Setup(invalidator => invalidator.InvalidateAllAsync(It.IsAny<CancellationToken>()))
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
-        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver();
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
         ActionExecutingContext context = CreateExecutingContext(
             HttpMethods.Put,
             new InvalidatesPublicCacheAttribute(PublicCacheScope.Seo));
@@ -70,9 +72,10 @@ public sealed class InvalidatePublicCachesFilterTests
             .Returns(ValueTask.CompletedTask);
         Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
         ssrPageCacheInvalidator
-            .Setup(invalidator => invalidator.InvalidateAllAsync(It.IsAny<CancellationToken>()))
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
             .ThrowsAsync(new InvalidOperationException("ssr unavailable"));
-        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver();
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
         ActionExecutingContext context = CreateExecutingContext(
             HttpMethods.Delete,
             new InvalidatesPublicCacheAttribute(PublicCacheScope.Data));
@@ -95,10 +98,11 @@ public sealed class InvalidatePublicCachesFilterTests
             .Returns(ValueTask.CompletedTask);
         Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
         ssrPageCacheInvalidator
-            .Setup(invalidator => invalidator.InvalidateAllAsync(It.IsAny<CancellationToken>()))
-            .Callback<CancellationToken>(cancellationToken => ssrCancellationToken = cancellationToken)
+            .Setup(invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()))
+            .Callback<SsrPageCacheInvalidationRequest, CancellationToken>((_, cancellationToken) => ssrCancellationToken = cancellationToken)
             .Returns(Task.CompletedTask);
-        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver();
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
         ActionExecutingContext context = CreateExecutingContext(
             HttpMethods.Post,
             new InvalidatesPublicCacheAttribute(PublicCacheScope.Data));
@@ -114,12 +118,27 @@ public sealed class InvalidatePublicCachesFilterTests
 
     private static InvalidatePublicCachesFilter CreateFilter(
         Mock<IOutputCacheStore> outputCacheStore,
-        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator)
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator,
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver)
     {
         return new InvalidatePublicCachesFilter(
             outputCacheStore.Object,
             ssrPageCacheInvalidator.Object,
+            resolver.Object,
             NullLogger<InvalidatePublicCachesFilter>.Instance);
+    }
+
+    private static Mock<ISsrPageCacheInvalidationRequestResolver> CreateResolver()
+    {
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = new Mock<ISsrPageCacheInvalidationRequestResolver>(MockBehavior.Strict);
+        resolver
+            .Setup(value => value.ResolveAsync(
+                It.IsAny<ActionExecutingContext>(),
+                It.IsAny<ActionExecutedContext?>(),
+                It.IsAny<IReadOnlyCollection<PublicCacheScope>>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(SsrPageCacheInvalidationRequest.AllCaches());
+        return resolver;
     }
 
     private static ActionExecutingContext CreateExecutingContext(string method, InvalidatesPublicCacheAttribute attribute)

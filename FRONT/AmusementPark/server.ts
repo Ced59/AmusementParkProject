@@ -53,9 +53,32 @@ let diskPageCacheWriteCount = 0;
 const pendingRenderQueue: Array<() => void> = [];
 
 interface PageCacheEntry {
+  readonly cacheKey?: string;
   readonly statusCode: number;
   readonly html: string;
   readonly expiresAt: number;
+}
+
+interface CacheInvalidationRequest {
+  readonly all?: boolean;
+  readonly paths?: string[];
+  readonly prefixes?: string[];
+  readonly includeSeoDocuments?: boolean;
+}
+
+interface NormalizedCacheInvalidationRequest {
+  readonly all: boolean;
+  readonly paths: string[];
+  readonly prefixes: string[];
+  readonly includeSeoDocuments: boolean;
+}
+
+interface CacheInvalidationResult {
+  readonly cleared: number;
+  readonly pageMemoryEntries: number;
+  readonly pageDiskEntries: number;
+  readonly seoDocumentEntries: number;
+  readonly all: boolean;
 }
 
 interface SeoDocumentCacheEntry {
@@ -133,7 +156,7 @@ export function app(): express.Express {
   // de contenu public : purge le cache de pages SSR pour rendre les
   // modifications immédiatement visibles. Protégé par un jeton partagé ;
   // désactivé (404) si aucun jeton n'est configuré.
-  server.post('/internal/cache/invalidate', (req: Request, res: Response) => {
+  server.post('/internal/cache/invalidate', express.json({ limit: '64kb', type: ['application/json', 'application/*+json'] }), (req: Request, res: Response) => {
     if (!cacheInvalidationToken) {
       res.status(404).type('text/plain').send('Not found');
       return;
@@ -147,8 +170,12 @@ export function app(): express.Express {
       return;
     }
 
-    const cleared = clearAllSsrCaches();
-    res.status(200).type('application/json').send(JSON.stringify({ cleared }));
+    const invalidationRequest = normalizeCacheInvalidationRequest(req.body);
+    const result = invalidationRequest.all
+      ? clearAllSsrCaches()
+      : clearTargetedSsrCaches(invalidationRequest);
+
+    res.status(200).type('application/json').send(JSON.stringify(result));
   });
 
   server.use('/api', (req: Request, res: Response, next: NextFunction) => {
@@ -571,6 +598,7 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
   }
 
   const entry: PageCacheEntry = {
+    cacheKey,
     statusCode,
     html,
     expiresAt: Date.now() + pageCacheTtlSeconds * 1000
@@ -674,14 +702,89 @@ function enforceDiskPageCacheBudget(): void {
   }
 }
 
-function clearAllSsrCaches(): number {
-  let cleared: number = pageCache.size + seoDocumentCache.size;
+function clearAllSsrCaches(): CacheInvalidationResult {
+  const pageMemoryEntries: number = pageCache.size;
+  const seoDocumentEntries: number = seoDocumentCache.size;
 
   pageCache.clear();
   seoDocumentCache.clear();
-  cleared += clearDiskPageCache();
+  const pageDiskEntries = clearDiskPageCache();
 
-  return cleared;
+  return {
+    cleared: pageMemoryEntries + seoDocumentEntries + pageDiskEntries,
+    pageMemoryEntries,
+    pageDiskEntries,
+    seoDocumentEntries,
+    all: true
+  };
+}
+
+function clearTargetedSsrCaches(request: NormalizedCacheInvalidationRequest): CacheInvalidationResult {
+  const pageMemoryEntries = clearMatchingMemoryPageCache(request);
+  const pageDiskEntries = clearMatchingDiskPageCache(request);
+  const seoDocumentEntries = request.includeSeoDocuments ? seoDocumentCache.size : 0;
+
+  if (request.includeSeoDocuments) {
+    seoDocumentCache.clear();
+  }
+
+  return {
+    cleared: pageMemoryEntries + pageDiskEntries + seoDocumentEntries,
+    pageMemoryEntries,
+    pageDiskEntries,
+    seoDocumentEntries,
+    all: false
+  };
+}
+
+function clearMatchingMemoryPageCache(request: NormalizedCacheInvalidationRequest): number {
+  let removed = 0;
+
+  for (const cacheKey of Array.from(pageCache.keys())) {
+    if (!isPageCacheKeyMatched(cacheKey, request)) {
+      continue;
+    }
+
+    pageCache.delete(cacheKey);
+    removed += 1;
+  }
+
+  return removed;
+}
+
+function clearMatchingDiskPageCache(request: NormalizedCacheInvalidationRequest): number {
+  if (!diskPageCacheEnabled || !existsSync(diskPageCacheDirectory)) {
+    return 0;
+  }
+
+  let removed = 0;
+
+  try {
+    for (const fileName of readdirSync(diskPageCacheDirectory)) {
+      if (!fileName.endsWith('.json')) {
+        continue;
+      }
+
+      const filePath = join(diskPageCacheDirectory, fileName);
+
+      try {
+        const serializedEntry: string = readFileSync(filePath, 'utf8');
+        const parsedEntry = JSON.parse(serializedEntry) as PageCacheEntry;
+
+        if (!parsedEntry.cacheKey || isPageCacheKeyMatched(parsedEntry.cacheKey, request)) {
+          unlinkSync(filePath);
+          removed += 1;
+        }
+      } catch {
+        unlinkSync(filePath);
+        removed += 1;
+      }
+    }
+  } catch (error: unknown) {
+    console.warn('SSR disk page cache targeted clear failed', error);
+  }
+
+  return removed;
 }
 
 function clearDiskPageCache(): number {
@@ -709,6 +812,97 @@ function clearDiskPageCache(): number {
   }
 
   return removed;
+}
+
+function normalizeCacheInvalidationRequest(body: unknown): NormalizedCacheInvalidationRequest {
+  const request: CacheInvalidationRequest = isObject(body) ? body as CacheInvalidationRequest : {};
+  const paths = normalizeInvalidationPaths(request.paths);
+  const prefixes = normalizeInvalidationPaths(request.prefixes);
+  const includeSeoDocuments = request.includeSeoDocuments === true;
+  const all = request.all === true || (paths.length === 0 && prefixes.length === 0 && !includeSeoDocuments);
+
+  return {
+    all,
+    paths,
+    prefixes,
+    includeSeoDocuments: all || includeSeoDocuments
+  };
+}
+
+function normalizeInvalidationPaths(values: string[] | undefined): string[] {
+  if (!Array.isArray(values)) {
+    return [];
+  }
+
+  return Array.from(new Set(values
+    .map((value: string): string | null => normalizeInvalidationPath(value))
+    .filter((value: string | null): value is string => value !== null)));
+}
+
+function normalizeInvalidationPath(value: string): string | null {
+  if (typeof value !== 'string' || value.trim().length === 0) {
+    return null;
+  }
+
+  const trimmed = value.trim();
+  let path = trimmed;
+
+  try {
+    path = new URL(trimmed, 'https://amusement-parks.fun').pathname;
+  } catch {
+    path = trimmed.split(/[?#]/, 1)[0] ?? trimmed;
+  }
+
+  if (!path.startsWith('/')) {
+    path = `/${path}`;
+  }
+
+  return normalizePathForComparison(path);
+}
+
+function isPageCacheKeyMatched(cacheKey: string, request: NormalizedCacheInvalidationRequest): boolean {
+  const path = extractPathFromCacheKey(cacheKey);
+
+  if (path === null) {
+    return false;
+  }
+
+  if (request.paths.some((candidate: string): boolean => path === candidate)) {
+    return true;
+  }
+
+  return request.prefixes.some((prefix: string): boolean => path === prefix || path.startsWith(ensureTrailingSlash(prefix)));
+}
+
+function extractPathFromCacheKey(cacheKey: string): string | null {
+  try {
+    return normalizePathForComparison(new URL(cacheKey).pathname);
+  } catch {
+    const schemeIndex = cacheKey.indexOf('://');
+    const pathStart = schemeIndex >= 0 ? cacheKey.indexOf('/', schemeIndex + 3) : cacheKey.indexOf('/');
+
+    if (pathStart < 0) {
+      return null;
+    }
+
+    return normalizePathForComparison(cacheKey.slice(pathStart).split(/[?#]/, 1)[0] ?? '');
+  }
+}
+
+function normalizePathForComparison(path: string): string {
+  if (path.length > 1 && path.endsWith('/')) {
+    return path.slice(0, -1);
+  }
+
+  return path;
+}
+
+function ensureTrailingSlash(path: string): string {
+  return path.endsWith('/') ? path : `${path}/`;
+}
+
+function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
 }
 
 function containsAuthenticationCookie(req: Request): boolean {

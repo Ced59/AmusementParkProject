@@ -35,6 +35,16 @@ public interface IParkRepository
     Task<IReadOnlyCollection<string>> GetVisibleParkIdsAsync(CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne les identifiants de parcs rattaches a un exploitant.
+    /// </summary>
+    Task<IReadOnlyCollection<string>> GetParkIdsByOperatorIdAsync(string operatorId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne les identifiants de parcs rattaches a un fondateur.
+    /// </summary>
+    Task<IReadOnlyCollection<string>> GetParkIdsByFounderIdAsync(string founderId, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Retourne les parcs visibles publiquement disposant de coordonnées pour une carte.
     /// </summary>
     Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken);

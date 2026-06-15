@@ -70,6 +70,16 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
             return Task.FromResult<IReadOnlyCollection<string>>(Array.Empty<string>());
         }
 
+        public Task<IReadOnlyCollection<string>> GetParkIdsByOperatorIdAsync(string operatorId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyCollection<string>> GetParkIdsByFounderIdAsync(string founderId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Park?> GetByIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
@@ -208,6 +218,11 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
         }
 
         public Task<IReadOnlyCollection<ParkItem>> GetByIdsAsync(IReadOnlyCollection<string> parkItemIds, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyCollection<string>> GetParkIdsByManufacturerIdAsync(string manufacturerId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
