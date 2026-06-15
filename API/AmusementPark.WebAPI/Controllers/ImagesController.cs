@@ -34,6 +34,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("images")]
 [RequireActivatedUnblockedUser]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
+[InvalidatesPublicCache(PublicCacheScope.Data)]
 public sealed class ImagesController : ControllerBase
 {
     private readonly ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>> uploadImageCommandHandler;

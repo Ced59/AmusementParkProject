@@ -30,6 +30,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("park-zones")]
 [RequireActivatedUnblockedUser]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
+[InvalidatesPublicCache(PublicCacheScope.Data)]
 public sealed class ParkZonesController : ControllerBase
 {
     private readonly IQueryHandler<GetParkZonesByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkZone>>> getParkZonesByParkIdQueryHandler;

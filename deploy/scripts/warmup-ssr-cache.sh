@@ -39,6 +39,7 @@ export SSR_WARMUP_URL_FILE_VALUE="${url_file}"
 export SSR_WARMUP_PROGRESS_EVERY_VALUE="${progress_every}"
 export SSR_WARMUP_URL_FILTER_REGEX_VALUE="${url_filter_regex}"
 export SSR_WARMUP_SITEMAP_FILTER_REGEX_VALUE="${sitemap_filter_regex}"
+export SSR_WARMUP_SEO_DOCUMENTS_VALUE="${SSR_WARMUP_SEO_DOCUMENTS:-true}"
 
 python3 - <<'PY'
 import os
@@ -71,6 +72,7 @@ url_filter_regex = os.environ['SSR_WARMUP_URL_FILTER_REGEX_VALUE'].strip()
 sitemap_filter_regex = os.environ['SSR_WARMUP_SITEMAP_FILTER_REGEX_VALUE'].strip()
 url_filter = re.compile(url_filter_regex) if url_filter_regex else None
 sitemap_filter = re.compile(sitemap_filter_regex) if sitemap_filter_regex else None
+warmup_seo_documents_enabled = os.environ['SSR_WARMUP_SEO_DOCUMENTS_VALUE'].strip().lower() in {'1', 'true', 'yes', 'y'}
 
 # Keep the deploy script simple: fail loudly on unsupported modes.
 allowed_profiles = {'critical', 'static', 'parks', 'references', 'items', 'full'}
@@ -168,9 +170,66 @@ def url_matches(url: str) -> bool:
     return True
 
 
-def collect_urls() -> list[str]:
-    sitemap_index_url = base_url + '/sitemap.xml'
-    root = read_xml(sitemap_index_url)
+def warmup_seo_document(path: str) -> tuple[str, int, float, str]:
+    url = base_url + path
+    headers = {
+        'Accept': 'application/xml,text/xml,text/plain,*/*',
+        'User-Agent': 'AmusementPark-SSR-Warmup/1.0',
+    }
+    started = time.monotonic()
+    request = urllib.request.Request(url, headers=headers, method='GET')
+    try:
+        with urllib.request.urlopen(request, timeout=timeout_seconds, context=ssl.create_default_context()) as response:
+            # Read the whole body so the API fully generates the document and
+            # populates its OutputCache (cold-start protection for Googlebot).
+            response.read()
+            status = int(response.status)
+            cache_status = response.headers.get('X-AmusementPark-SEO-Cache') or '-'
+            return url, status, time.monotonic() - started, cache_status
+    except urllib.error.HTTPError as exc:
+        return url, int(exc.code), time.monotonic() - started, 'HTTP-ERROR'
+    except Exception as exc:  # noqa: BLE001 - deployment script needs resilient logging.
+        return url, 0, time.monotonic() - started, f"ERROR:{exc}"
+
+
+def collect_seo_document_paths(root: ET.Element) -> list[str]:
+    # Always warm robots.txt and the sitemap index, plus EVERY section sitemap
+    # referenced by the index (independent of the page warmup profile): Googlebot
+    # fetches them all, so none of them must ever be served cold.
+    paths: list[str] = ['/robots.txt', '/sitemap.xml']
+    for url in locs(root):
+        path = get_path(url)
+        if path.startswith('/sitemaps/'):
+            paths.append(path)
+
+    ordered: list[str] = []
+    seen: set[str] = set()
+    for path in paths:
+        if path not in seen:
+            seen.add(path)
+            ordered.append(path)
+
+    return ordered
+
+
+def warmup_seo_documents(root: ET.Element) -> None:
+    paths = collect_seo_document_paths(root)
+    log(f"SEO documents warmup: {len(paths)} target(s)")
+
+    success = 0
+    failed = 0
+    for path in paths:
+        url, status, elapsed, cache_status = warmup_seo_document(path)
+        if 200 <= status < 300:
+            success += 1
+        else:
+            failed += 1
+        log(f"SEO status={status} time={elapsed:.3f}s cache={cache_status} url={url}")
+
+    log(f"SEO documents warmup finished: total={len(paths)}, success={success}, failed={failed}")
+
+
+def collect_urls(root: ET.Element) -> list[str]:
     sitemap_urls = [url for url in locs(root) if sitemap_matches(url)]
     page_urls: list[str] = []
 
@@ -259,5 +318,11 @@ def warmup(urls: list[str]) -> None:
 
 
 log(f"SSR warmup configuration: base={base_url}, profile={profile}, concurrency={concurrency}, max_urls={max_urls}, refresh={refresh}")
-warmup(collect_urls())
+
+sitemap_index_root = read_xml(base_url + '/sitemap.xml')
+
+if warmup_seo_documents_enabled:
+    warmup_seo_documents(sitemap_index_root)
+
+warmup(collect_urls(sitemap_index_root))
 PY

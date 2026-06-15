@@ -34,6 +34,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("[controller]")]
 [RequireActivatedUnblockedUser]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
+[InvalidatesPublicCache(PublicCacheScope.Data)]
 public sealed class ParksController : ControllerBase
 {
     private readonly ICommandHandler<CreateParkCommand, ApplicationResult<Park>> createParkCommandHandler;

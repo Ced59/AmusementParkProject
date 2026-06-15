@@ -28,6 +28,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("attraction-manufacturers")]
 [RequireActivatedUnblockedUser]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
+[InvalidatesPublicCache(PublicCacheScope.ReferenceData)]
 public sealed class AttractionManufacturersController : ControllerBase
 {
     private readonly IQueryHandler<GetAttractionManufacturersQuery, ApplicationResult<IReadOnlyCollection<AttractionManufacturerResult>>> getAttractionManufacturersQueryHandler;
