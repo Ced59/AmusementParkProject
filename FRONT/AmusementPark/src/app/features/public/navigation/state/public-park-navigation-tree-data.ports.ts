@@ -23,7 +23,7 @@ export const PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT = new Injec
 });
 
 export interface PublicParkNavigationTreeParksApiServicePort {
-  getParkById(id: string, options?: AnonymousHttpOptions): ReturnType<ParksApiService['getParkById']>;
+  getParkDetailSummary(id: string, options?: AnonymousHttpOptions): ReturnType<ParksApiService['getParkDetailSummary']>;
 }
 
 export const PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT = new InjectionToken<PublicParkNavigationTreeParksApiServicePort>('PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT', {

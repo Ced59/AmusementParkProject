@@ -137,7 +137,10 @@ export class PublicParkNavigationTreeFacade {
 
   private loadSourceData(context: PublicParkRouteContext): Observable<PublicParkNavigationSourceData> {
     return forkJoin({
-      park: this.parksApiService.getParkById(context.parkId, anonymousHttpOptions()).pipe(catchError(() => of(null as Park | null))),
+      park: this.parksApiService.getParkDetailSummary(context.parkId, anonymousHttpOptions()).pipe(
+        map((summary) => summary.park ?? null),
+        catchError(() => of(null as Park | null))
+      ),
       item: context.itemId
         ? this.parkItemsApiService.getParkItemById(context.itemId, anonymousHttpOptions()).pipe(catchError(() => of(null as ParkItem | null)))
         : of(null as ParkItem | null)

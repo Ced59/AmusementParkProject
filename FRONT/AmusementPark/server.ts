@@ -424,7 +424,7 @@ function buildPageCacheKey(req: Request): string | null {
 }
 
 function isCacheablePageRequest(req: Request): boolean {
-  if (req.method !== 'GET') {
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
     return false;
   }
 
