@@ -520,7 +520,12 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   }
 
   private focusSelectedMarker(): boolean {
-    if (!this.map || !this.selectedMarkerId) {
+    if (!this.map) {
+      return false;
+    }
+
+    if (!this.selectedMarkerId) {
+      this.pendingPopupMarkerId = null;
       return false;
     }
 
@@ -528,6 +533,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
     if (marker) {
       const position = marker.getLatLng();
+      this.pendingPopupMarkerId = this.selectedMarkerId;
       this.map.setView(position, Math.max(this.map.getZoom(), LeafletMapComponent.ClusterFocusZoom), { animate: true });
       marker.openPopup();
       return true;
