@@ -100,7 +100,14 @@ public sealed class ParkMapItemsReadRepository : IParkMapItemsReadRepository
         FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId)
             & Builders<ParkItemDocument>.Filter.Ne(document => document.AdminReviewStatus, AdminReviewStatus.NotRelevant)
             & Builders<ParkItemDocument>.Filter.Exists(document => document.Latitude, true)
-            & Builders<ParkItemDocument>.Filter.Exists(document => document.Longitude, true);
+            & Builders<ParkItemDocument>.Filter.Exists(document => document.Longitude, true)
+            & Builders<ParkItemDocument>.Filter.Gte(document => document.Latitude, -90d)
+            & Builders<ParkItemDocument>.Filter.Lte(document => document.Latitude, 90d)
+            & Builders<ParkItemDocument>.Filter.Gte(document => document.Longitude, -180d)
+            & Builders<ParkItemDocument>.Filter.Lte(document => document.Longitude, 180d)
+            & Builders<ParkItemDocument>.Filter.Or(
+                Builders<ParkItemDocument>.Filter.Ne(document => document.Latitude, 0d),
+                Builders<ParkItemDocument>.Filter.Ne(document => document.Longitude, 0d));
 
         if (!includeHidden)
         {

@@ -587,7 +587,21 @@ function isAssetLikeRequest(url: string): boolean {
 }
 
 function getPathOnly(url: string): string {
-  return url.split(/[?#]/, 1)[0] ?? '';
+  const queryIndex = url.indexOf('?');
+  const hashIndex = url.indexOf('#');
+  if (queryIndex < 0 && hashIndex < 0) {
+    return url;
+  }
+
+  if (queryIndex < 0) {
+    return url.slice(0, hashIndex);
+  }
+
+  if (hashIndex < 0) {
+    return url.slice(0, queryIndex);
+  }
+
+  return url.slice(0, Math.min(queryIndex, hashIndex));
 }
 
 function logSampledAssetMiss(url: string): void {
@@ -1175,7 +1189,8 @@ function joinCspDirective(name: string, sources: string[]): string {
 }
 
 function proxySeoDocumentToApi(req: Request, res: Response, next: NextFunction, targetPath: string): void {
-  if (!isSeoDocumentCacheEnabled() || !isSeoDocumentCacheableMethod(req.method)) {
+  const normalizedMethod = req.method.toUpperCase();
+  if (!isSeoDocumentCacheEnabled() || !isSeoDocumentCacheableMethod(normalizedMethod)) {
     proxyToApi(req, res, next, targetPath);
     return;
   }
@@ -1185,6 +1200,11 @@ function proxySeoDocumentToApi(req: Request, res: Response, next: NextFunction, 
 
   if (cachedEntry !== null) {
     writeCachedSeoDocument(req, res, cachedEntry, 'HIT');
+    return;
+  }
+
+  if (normalizedMethod === 'HEAD') {
+    proxyToApi(req, res, next, targetPath);
     return;
   }
 
@@ -1208,7 +1228,7 @@ function isSeoDocumentCacheEnabled(): boolean {
 }
 
 function isSeoDocumentCacheableMethod(method: string): boolean {
-  return method.toUpperCase() === 'GET' || method.toUpperCase() === 'HEAD';
+  return method === 'GET' || method === 'HEAD';
 }
 
 function buildSeoDocumentCacheKey(targetPath: string): string {

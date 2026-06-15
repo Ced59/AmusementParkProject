@@ -309,6 +309,7 @@ internal static class ParksHttpMappers
             .ToList();
 
         List<ParkItem> items = value.Items.ToList();
+        ParkItemsByZoneGrouping groupedItems = GroupItemsByZoneId(items);
 
         ParkExplorerBucketDto overview = BuildBucket(
             id: null,
@@ -319,23 +320,27 @@ internal static class ParksHttpMappers
             items: items);
 
         List<ParkExplorerBucketDto> zoneBuckets = zones
-            .Select(zone => BuildBucket(
-                zone.Id,
-                ResolveDisplayName(zone.Names, zone.Name),
-                zone.Names,
-                zone.Slug,
-                false,
-                items.Where(item => item.ZoneId == zone.Id)))
-            .ToList();
+            .Select(zone =>
+            {
+                IReadOnlyCollection<ParkItem> zoneItems = !string.IsNullOrWhiteSpace(zone.Id)
+                    && groupedItems.ItemsByZoneId.TryGetValue(zone.Id, out List<ParkItem>? zoneGroup)
+                        ? zoneGroup
+                        : Array.Empty<ParkItem>();
 
-        List<ParkItem> unassignedItems = items
-            .Where(static item => string.IsNullOrWhiteSpace(item.ZoneId))
+                return BuildBucket(
+                    zone.Id,
+                    ResolveDisplayName(zone.Names, zone.Name),
+                    zone.Names,
+                    zone.Slug,
+                    false,
+                    zoneItems);
+            })
             .ToList();
 
         ParkExplorerBucketDto? unassignedBucket = null;
-        if (unassignedItems.Count > 0)
+        if (groupedItems.UnassignedItems.Count > 0)
         {
-            unassignedBucket = BuildBucket(null, "unassigned", null, null, true, unassignedItems);
+            unassignedBucket = BuildBucket(null, "unassigned", null, null, true, groupedItems.UnassignedItems);
         }
         else if (zoneBuckets.Count == 0)
         {
@@ -352,9 +357,33 @@ internal static class ParksHttpMappers
         };
     }
 
-    private static ParkExplorerBucketDto BuildBucket(string? id, string name, IEnumerable<AmusementPark.Core.Localization.LocalizedText>? names, string? slug, bool isVirtual, IEnumerable<ParkItem> items)
+    private static ParkItemsByZoneGrouping GroupItemsByZoneId(IEnumerable<ParkItem> items)
     {
-        List<ParkItem> materializedItems = items.ToList();
+        Dictionary<string, List<ParkItem>> itemsByZoneId = new(StringComparer.Ordinal);
+        List<ParkItem> unassignedItems = new();
+        foreach (ParkItem item in items)
+        {
+            if (string.IsNullOrWhiteSpace(item.ZoneId))
+            {
+                unassignedItems.Add(item);
+                continue;
+            }
+
+            if (!itemsByZoneId.TryGetValue(item.ZoneId, out List<ParkItem>? zoneItems))
+            {
+                zoneItems = new List<ParkItem>();
+                itemsByZoneId.Add(item.ZoneId, zoneItems);
+            }
+
+            zoneItems.Add(item);
+        }
+
+        return new ParkItemsByZoneGrouping(itemsByZoneId, unassignedItems);
+    }
+
+    private static ParkExplorerBucketDto BuildBucket(string? id, string name, IEnumerable<AmusementPark.Core.Localization.LocalizedText>? names, string? slug, bool isVirtual, IReadOnlyCollection<ParkItem> items)
+    {
+        ParkExplorerBucketCounts counts = CountBucketItems(items);
 
         return new ParkExplorerBucketDto
         {
@@ -363,26 +392,69 @@ internal static class ParksHttpMappers
             Names = names?.ToHttp() ?? new List<LocalizedTextDto>(),
             Slug = slug,
             IsVirtual = isVirtual,
-            TotalItems = materializedItems.Count,
-            CountsByCategory = materializedItems
-                .GroupBy(static item => item.Category.ToString())
-                .OrderBy(static group => group.Key, StringComparer.Ordinal)
-                .Select(static group => new ParkZoneSummaryCountDto
-                {
-                    Key = group.Key,
-                    Count = group.Count(),
-                })
-                .ToList(),
-            CountsByType = materializedItems
-                .GroupBy(static item => item.Type.ToString())
-                .OrderBy(static group => group.Key, StringComparer.Ordinal)
-                .Select(static group => new ParkZoneSummaryCountDto
-                {
-                    Key = group.Key,
-                    Count = group.Count(),
-                })
-                .ToList(),
+            TotalItems = counts.TotalItems,
+            CountsByCategory = ToOrderedCountDtos(counts.CountsByCategory),
+            CountsByType = ToOrderedCountDtos(counts.CountsByType),
         };
+    }
+
+    private static ParkExplorerBucketCounts CountBucketItems(IEnumerable<ParkItem> items)
+    {
+        Dictionary<string, int> countsByCategory = new(StringComparer.Ordinal);
+        Dictionary<string, int> countsByType = new(StringComparer.Ordinal);
+        int totalItems = 0;
+        foreach (ParkItem item in items)
+        {
+            totalItems += 1;
+            string categoryKey = item.Category.ToString();
+            countsByCategory[categoryKey] = countsByCategory.GetValueOrDefault(categoryKey) + 1;
+
+            string typeKey = item.Type.ToString();
+            countsByType[typeKey] = countsByType.GetValueOrDefault(typeKey) + 1;
+        }
+
+        return new ParkExplorerBucketCounts(totalItems, countsByCategory, countsByType);
+    }
+
+    private sealed class ParkItemsByZoneGrouping
+    {
+        public ParkItemsByZoneGrouping(Dictionary<string, List<ParkItem>> itemsByZoneId, List<ParkItem> unassignedItems)
+        {
+            this.ItemsByZoneId = itemsByZoneId;
+            this.UnassignedItems = unassignedItems;
+        }
+
+        public Dictionary<string, List<ParkItem>> ItemsByZoneId { get; }
+
+        public List<ParkItem> UnassignedItems { get; }
+    }
+
+    private sealed class ParkExplorerBucketCounts
+    {
+        public ParkExplorerBucketCounts(int totalItems, Dictionary<string, int> countsByCategory, Dictionary<string, int> countsByType)
+        {
+            this.TotalItems = totalItems;
+            this.CountsByCategory = countsByCategory;
+            this.CountsByType = countsByType;
+        }
+
+        public int TotalItems { get; }
+
+        public Dictionary<string, int> CountsByCategory { get; }
+
+        public Dictionary<string, int> CountsByType { get; }
+    }
+
+    private static List<ParkZoneSummaryCountDto> ToOrderedCountDtos(Dictionary<string, int> counts)
+    {
+        return counts
+            .OrderBy(static count => count.Key, StringComparer.Ordinal)
+            .Select(static count => new ParkZoneSummaryCountDto
+            {
+                Key = count.Key,
+                Count = count.Value,
+            })
+            .ToList();
     }
 
     private static string ResolveDisplayName(IEnumerable<AmusementPark.Core.Localization.LocalizedText>? names, string? fallback)
