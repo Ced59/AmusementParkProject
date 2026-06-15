@@ -158,25 +158,26 @@ public sealed class ParkItemListsSitemapSectionProvider : ISitemapSectionProvide
 
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
         IReadOnlyCollection<ParkItem> publicItems = await LoadPublicItemsAsync(this.parkItemRepository, cancellationToken);
-        IReadOnlyCollection<string> parentParkIds = publicItems
-            .Select(static item => item.ParkId)
-            .Distinct(StringComparer.OrdinalIgnoreCase)
-            .ToList();
+        IReadOnlyDictionary<string, List<ParkItem>> publicItemsByParkId = GroupItemsByParkId(publicItems);
+        IReadOnlyCollection<string> parentParkIds = publicItemsByParkId.Keys.ToList();
 
         IReadOnlyCollection<Park> parentParks = await this.parkRepository.GetByIdsAsync(parentParkIds, cancellationToken);
         Dictionary<string, Park> visibleParkById = parentParks
             .Where(static park => ParksSitemapSectionProvider.IsPublicPark(park))
             .ToDictionary(static park => park.Id!, static park => park, StringComparer.OrdinalIgnoreCase);
 
-        Dictionary<string, DateTime?> lastModifiedByParkId = publicItems
-            .Where(item => visibleParkById.ContainsKey(item.ParkId))
-            .GroupBy(static item => item.ParkId, StringComparer.OrdinalIgnoreCase)
-            .ToDictionary(
-                static group => group.Key,
-                static group => (DateTime?)group.Max(static item => item.UpdatedAtUtc),
-                StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, DateTime?> lastModifiedByParkId = new Dictionary<string, DateTime?>(StringComparer.OrdinalIgnoreCase);
+        foreach (KeyValuePair<string, List<ParkItem>> parkItems in publicItemsByParkId)
+        {
+            if (!visibleParkById.ContainsKey(parkItems.Key))
+            {
+                continue;
+            }
 
-        List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
+            lastModifiedByParkId[parkItems.Key] = ResolveLatestParkItemUpdate(parkItems.Value);
+        }
+
+        List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>(visibleParkById.Count * languages.Count);
         foreach (Park parentPark in visibleParkById.Values.OrderBy(static park => park.Name, StringComparer.OrdinalIgnoreCase))
         {
             string parkSlug = SeoSlugService.ToSlug(parentPark.Name, "park");
@@ -199,6 +200,37 @@ public sealed class ParkItemListsSitemapSectionProvider : ISitemapSectionProvide
         return candidateItems
             .Where(static item => ParkItemsSitemapSectionProvider.IsPublicItem(item))
             .ToList();
+    }
+
+    internal static IReadOnlyDictionary<string, List<ParkItem>> GroupItemsByParkId(IReadOnlyCollection<ParkItem> items)
+    {
+        Dictionary<string, List<ParkItem>> groupedItems = new Dictionary<string, List<ParkItem>>(StringComparer.OrdinalIgnoreCase);
+        foreach (ParkItem item in items)
+        {
+            if (!groupedItems.TryGetValue(item.ParkId, out List<ParkItem>? parkItems))
+            {
+                parkItems = new List<ParkItem>();
+                groupedItems[item.ParkId] = parkItems;
+            }
+
+            parkItems.Add(item);
+        }
+
+        return groupedItems;
+    }
+
+    internal static DateTime? ResolveLatestParkItemUpdate(IReadOnlyCollection<ParkItem> items)
+    {
+        DateTime? latest = null;
+        foreach (ParkItem item in items)
+        {
+            if (!latest.HasValue || item.UpdatedAtUtc > latest.Value)
+            {
+                latest = item.UpdatedAtUtc;
+            }
+        }
+
+        return latest;
     }
 
     internal static DateTime? ResolveLatest(DateTime? first, DateTime? second)
@@ -245,6 +277,7 @@ public sealed class ParkZonesSitemapSectionProvider : ISitemapSectionProvider
 
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
         IReadOnlyCollection<ParkItem> publicItems = await ParkItemListsSitemapSectionProvider.LoadPublicItemsAsync(this.parkItemRepository, cancellationToken);
+        IReadOnlyDictionary<string, List<ParkItem>> publicItemsByParkId = ParkItemListsSitemapSectionProvider.GroupItemsByParkId(publicItems);
         IReadOnlyCollection<string> parentParkIds = publicItems
             .Where(static item => !string.IsNullOrWhiteSpace(item.ZoneId))
             .Select(static item => item.ParkId)
@@ -259,17 +292,12 @@ public sealed class ParkZonesSitemapSectionProvider : ISitemapSectionProvider
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (Park parentPark in visibleParkById.Values.OrderBy(static park => park.Name, StringComparer.OrdinalIgnoreCase))
         {
-            IReadOnlyCollection<ParkItem> publicParkItems = publicItems
-                .Where(item => string.Equals(item.ParkId, parentPark.Id, StringComparison.OrdinalIgnoreCase))
-                .ToList();
+            if (!publicItemsByParkId.TryGetValue(parentPark.Id!, out List<ParkItem>? publicParkItems))
+            {
+                continue;
+            }
 
-            Dictionary<string, DateTime?> lastModifiedByZoneId = publicParkItems
-                .Where(static item => !string.IsNullOrWhiteSpace(item.ZoneId))
-                .GroupBy(static item => item.ZoneId!, StringComparer.OrdinalIgnoreCase)
-                .ToDictionary(
-                    static group => group.Key,
-                    static group => (DateTime?)group.Max(static item => item.UpdatedAtUtc),
-                    StringComparer.OrdinalIgnoreCase);
+            Dictionary<string, DateTime?> lastModifiedByZoneId = BuildLastModifiedByZoneId(publicParkItems);
 
             IReadOnlyCollection<ParkZone> zones = await this.parkZoneRepository.GetByParkIdAsync(parentPark.Id!, cancellationToken);
             IReadOnlyCollection<ParkZone> publicZones = zones
@@ -284,11 +312,13 @@ public sealed class ParkZonesSitemapSectionProvider : ISitemapSectionProvider
             }
 
             string parkSlug = SeoSlugService.ToSlug(parentPark.Name, "park");
-            DateTime? zonesLastModifiedUtc = publicZones
-                .Select(zone => ParkItemListsSitemapSectionProvider.ResolveLatest(zone.UpdatedAtUtc, lastModifiedByZoneId.GetValueOrDefault(zone.Id!)))
-                .Concat(new DateTime?[] { parentPark.UpdatedAtUtc })
-                .Where(static value => value.HasValue)
-                .Max();
+            DateTime? zonesLastModifiedUtc = parentPark.UpdatedAtUtc;
+            foreach (ParkZone zone in publicZones)
+            {
+                zonesLastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(
+                    zonesLastModifiedUtc,
+                    ParkItemListsSitemapSectionProvider.ResolveLatest(zone.UpdatedAtUtc, lastModifiedByZoneId.GetValueOrDefault(zone.Id!)));
+            }
 
             foreach (string language in languages)
             {
@@ -316,6 +346,25 @@ public sealed class ParkZonesSitemapSectionProvider : ISitemapSectionProvider
                !string.IsNullOrWhiteSpace(zone.Name) &&
                zone.IsVisible;
     }
+
+    private static Dictionary<string, DateTime?> BuildLastModifiedByZoneId(IReadOnlyCollection<ParkItem> publicParkItems)
+    {
+        Dictionary<string, DateTime?> lastModifiedByZoneId = new Dictionary<string, DateTime?>(StringComparer.OrdinalIgnoreCase);
+        foreach (ParkItem item in publicParkItems)
+        {
+            if (string.IsNullOrWhiteSpace(item.ZoneId))
+            {
+                continue;
+            }
+
+            if (!lastModifiedByZoneId.TryGetValue(item.ZoneId, out DateTime? current) || !current.HasValue || item.UpdatedAtUtc > current.Value)
+            {
+                lastModifiedByZoneId[item.ZoneId] = item.UpdatedAtUtc;
+            }
+        }
+
+        return lastModifiedByZoneId;
+    }
 }
 
 public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
@@ -341,18 +390,20 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
 
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
         IReadOnlyCollection<ParkItem> publicItems = await ParkItemListsSitemapSectionProvider.LoadPublicItemsAsync(this.parkItemRepository, cancellationToken);
+        IReadOnlyDictionary<string, List<ParkItem>> publicItemsByParkId = ParkItemListsSitemapSectionProvider.GroupItemsByParkId(publicItems);
 
-        IReadOnlyCollection<string> parentParkIds = publicItems
-            .Select(static item => item.ParkId)
-            .Distinct(StringComparer.OrdinalIgnoreCase)
-            .ToList();
+        IReadOnlyCollection<string> parentParkIds = publicItemsByParkId.Keys.ToList();
 
         IReadOnlyCollection<Park> parentParks = await this.parkRepository.GetByIdsAsync(parentParkIds, cancellationToken);
         Dictionary<string, Park> visibleParkById = parentParks
             .Where(static park => ParksSitemapSectionProvider.IsPublicPark(park))
             .ToDictionary(static park => park.Id!, static park => park, StringComparer.OrdinalIgnoreCase);
+        Dictionary<string, string> parkSlugById = visibleParkById.ToDictionary(
+            static pair => pair.Key,
+            static pair => SeoSlugService.ToSlug(pair.Value.Name, "park"),
+            StringComparer.OrdinalIgnoreCase);
 
-        List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
+        List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>(publicItems.Count * languages.Count);
         foreach (ParkItem item in publicItems)
         {
             if (!visibleParkById.TryGetValue(item.ParkId, out Park? parentPark))
@@ -360,7 +411,7 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
                 continue;
             }
 
-            string parkSlug = SeoSlugService.ToSlug(parentPark.Name, "park");
+            string parkSlug = parkSlugById[item.ParkId];
             string itemSlug = SeoSlugService.ToSlug(item.Name, "item");
             foreach (string language in languages)
             {

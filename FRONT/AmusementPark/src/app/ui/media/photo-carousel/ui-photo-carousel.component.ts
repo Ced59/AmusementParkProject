@@ -58,12 +58,17 @@ export class UiPhotoCarouselComponent implements OnChanges {
   activePhotoIndex: number = 0;
   lightboxOpen: boolean = false;
 
+  private resolvedSelectedCategoryKeyValue: string | null = null;
+  private filteredPhotosValue: UiPhotoCarouselImage[] = [];
+  private displayedPhotosValue: UiPhotoCarouselImage[] = [];
+  private activePhotoValue: UiPhotoCarouselImage | null = null;
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['defaultDisplayLimit'] && !changes['defaultDisplayLimit'].isFirstChange()) {
       this.selectedLimit = this.defaultDisplayLimit;
     }
 
-    this.clampActivePhotoIndex();
+    this.refreshDerivedPhotos();
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -92,22 +97,23 @@ export class UiPhotoCarouselComponent implements OnChanges {
   selectCategory(categoryKey: string | null): void {
     this.selectedCategoryKey = categoryKey;
     this.activePhotoIndex = 0;
-    this.clampActivePhotoIndex();
+    this.refreshDerivedPhotos();
   }
 
   setLimit(limit: number): void {
     this.selectedLimit = limit;
     this.activePhotoIndex = 0;
-    this.clampActivePhotoIndex();
+    this.refreshDerivedPhotos();
   }
 
   selectPhoto(photoIndex: number): void {
     this.activePhotoIndex = Math.max(0, photoIndex);
     this.clampActivePhotoIndex();
+    this.refreshActivePhoto();
   }
 
   openLightbox(photoIndex: number): void {
-    if (this.displayedPhotos.length === 0) {
+    if (this.displayedPhotosValue.length === 0) {
       return;
     }
 
@@ -120,7 +126,7 @@ export class UiPhotoCarouselComponent implements OnChanges {
   }
 
   previousPhoto(): void {
-    const currentPhotos: UiPhotoCarouselImage[] = this.displayedPhotos;
+    const currentPhotos: UiPhotoCarouselImage[] = this.displayedPhotosValue;
 
     if (currentPhotos.length <= 1) {
       return;
@@ -129,10 +135,11 @@ export class UiPhotoCarouselComponent implements OnChanges {
     this.activePhotoIndex = this.activePhotoIndex === 0
       ? currentPhotos.length - 1
       : this.activePhotoIndex - 1;
+    this.refreshActivePhoto();
   }
 
   nextPhoto(): void {
-    const currentPhotos: UiPhotoCarouselImage[] = this.displayedPhotos;
+    const currentPhotos: UiPhotoCarouselImage[] = this.displayedPhotosValue;
 
     if (currentPhotos.length <= 1) {
       return;
@@ -141,40 +148,23 @@ export class UiPhotoCarouselComponent implements OnChanges {
     this.activePhotoIndex = this.activePhotoIndex >= currentPhotos.length - 1
       ? 0
       : this.activePhotoIndex + 1;
+    this.refreshActivePhoto();
   }
 
   hasSelectedCategory(categoryKey: string | null): boolean {
-    return this.resolvedSelectedCategoryKey === categoryKey;
+    return this.resolvedSelectedCategoryKeyValue === categoryKey;
   }
 
   get activePhoto(): UiPhotoCarouselImage | null {
-    const currentPhotos: UiPhotoCarouselImage[] = this.displayedPhotos;
-
-    if (currentPhotos.length === 0) {
-      return null;
-    }
-
-    return currentPhotos[Math.min(this.activePhotoIndex, currentPhotos.length - 1)] ?? currentPhotos[0];
+    return this.activePhotoValue;
   }
 
   get displayedPhotos(): UiPhotoCarouselImage[] {
-    const filteredPhotos: UiPhotoCarouselImage[] = this.filteredPhotos;
-
-    if (this.selectedLimit <= 0) {
-      return filteredPhotos;
-    }
-
-    return filteredPhotos.slice(0, this.selectedLimit);
+    return this.displayedPhotosValue;
   }
 
   get filteredPhotos(): UiPhotoCarouselImage[] {
-    const selectedCategoryKey: string | null = this.resolvedSelectedCategoryKey;
-
-    if (!selectedCategoryKey) {
-      return this.photos;
-    }
-
-    return this.photos.filter((photo: UiPhotoCarouselImage) => photo.categoryKey === selectedCategoryKey);
+    return this.filteredPhotosValue;
   }
 
   get limitLabelKey(): string {
@@ -189,7 +179,19 @@ export class UiPhotoCarouselComponent implements OnChanges {
     return `${category.count}`;
   }
 
-  private get resolvedSelectedCategoryKey(): string | null {
+  trackByCategory(_index: number, category: UiPhotoCarouselCategoryOption): string {
+    return category.key;
+  }
+
+  trackByDisplayLimit(_index: number, limit: number): number {
+    return limit;
+  }
+
+  trackByPhoto(_index: number, photo: UiPhotoCarouselImage): string {
+    return photo.imageId;
+  }
+
+  private resolveSelectedCategoryKey(): string | null {
     if (!this.selectedCategoryKey) {
       return null;
     }
@@ -198,8 +200,20 @@ export class UiPhotoCarouselComponent implements OnChanges {
     return hasSelectedCategory ? this.selectedCategoryKey : null;
   }
 
+  private refreshDerivedPhotos(): void {
+    this.resolvedSelectedCategoryKeyValue = this.resolveSelectedCategoryKey();
+    this.filteredPhotosValue = this.resolvedSelectedCategoryKeyValue
+      ? this.photos.filter((photo: UiPhotoCarouselImage) => photo.categoryKey === this.resolvedSelectedCategoryKeyValue)
+      : this.photos;
+    this.displayedPhotosValue = this.selectedLimit <= 0
+      ? this.filteredPhotosValue
+      : this.filteredPhotosValue.slice(0, this.selectedLimit);
+    this.clampActivePhotoIndex();
+    this.refreshActivePhoto();
+  }
+
   private clampActivePhotoIndex(): void {
-    const currentPhotos: UiPhotoCarouselImage[] = this.displayedPhotos;
+    const currentPhotos: UiPhotoCarouselImage[] = this.displayedPhotosValue;
 
     if (currentPhotos.length === 0) {
       this.activePhotoIndex = 0;
@@ -207,5 +221,14 @@ export class UiPhotoCarouselComponent implements OnChanges {
     }
 
     this.activePhotoIndex = Math.min(Math.max(this.activePhotoIndex, 0), currentPhotos.length - 1);
+  }
+
+  private refreshActivePhoto(): void {
+    if (this.displayedPhotosValue.length === 0) {
+      this.activePhotoValue = null;
+      return;
+    }
+
+    this.activePhotoValue = this.displayedPhotosValue[Math.min(this.activePhotoIndex, this.displayedPhotosValue.length - 1)] ?? this.displayedPhotosValue[0];
   }
 }
