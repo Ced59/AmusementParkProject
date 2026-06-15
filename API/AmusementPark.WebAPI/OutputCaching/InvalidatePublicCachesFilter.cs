@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using AmusementPark.Application.Ports;
@@ -74,6 +75,7 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
         {
             SsrPageCacheInvalidationRequest postExecutionSsrInvalidation = await this.ResolveSsrInvalidationAsync(context, executedContext, scopes);
             SsrPageCacheInvalidationRequest ssrInvalidation = MergeSsrInvalidation(preExecutionSsrInvalidation, postExecutionSsrInvalidation);
+            ssrInvalidation = ApplySafetyMode(context, ssrInvalidation);
             await this.ssrPageCacheInvalidator.InvalidateAsync(ssrInvalidation, CancellationToken.None);
         }
         catch (Exception exception)
@@ -129,7 +131,71 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
                 .Distinct(StringComparer.Ordinal)
                 .ToList(),
             IncludeSeoDocuments = preExecutionRequest.IncludeSeoDocuments || postExecutionRequest.IncludeSeoDocuments,
+            AllowStale = preExecutionRequest.AllowStale && postExecutionRequest.AllowStale,
+            Refresh = (preExecutionRequest.Refresh || postExecutionRequest.Refresh)
+                && preExecutionRequest.AllowStale
+                && postExecutionRequest.AllowStale,
         };
+    }
+
+    private static SsrPageCacheInvalidationRequest ApplySafetyMode(
+        ActionExecutingContext context,
+        SsrPageCacheInvalidationRequest request)
+    {
+        if (request.All || !RequiresHardSsrPurge(context))
+        {
+            return request;
+        }
+
+        return new SsrPageCacheInvalidationRequest
+        {
+            All = request.All,
+            Paths = request.Paths,
+            Prefixes = request.Prefixes,
+            IncludeSeoDocuments = request.IncludeSeoDocuments,
+            AllowStale = false,
+            Refresh = false,
+        };
+    }
+
+    private static bool RequiresHardSsrPurge(ActionExecutingContext context)
+    {
+        if (HttpMethods.IsDelete(context.HttpContext.Request.Method))
+        {
+            return true;
+        }
+
+        return context.ActionArguments.Values.Any(ContainsHardPurgeSignal);
+    }
+
+    private static bool ContainsHardPurgeSignal(object? value)
+    {
+        if (value is null || value is string)
+        {
+            return false;
+        }
+
+        if (value is System.Collections.IEnumerable enumerable)
+        {
+            foreach (object? item in enumerable)
+            {
+                if (ContainsHardPurgeSignal(item))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        PropertyInfo? property = value.GetType().GetProperty("IsVisible", BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
+        if (property?.GetValue(value) is false)
+        {
+            return true;
+        }
+
+        PropertyInfo? adminReviewStatusProperty = value.GetType().GetProperty("AdminReviewStatus", BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
+        return string.Equals(adminReviewStatusProperty?.GetValue(value)?.ToString(), "NotRelevant", StringComparison.OrdinalIgnoreCase);
     }
 
     private static bool TryResolveScopes(

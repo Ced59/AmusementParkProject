@@ -258,14 +258,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-.admin-seo-ssr-prerender small {
-  display: block;
-  max-width: min(72rem, 100%);
-  color: var(--app-text-muted);
-  overflow-wrap: anywhere;
-}
-
-.admin-seo-ssr-prerender__error {
-  color: var(--app-danger, #ff4d8b) !important;
-}
