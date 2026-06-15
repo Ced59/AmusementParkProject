@@ -10,9 +10,11 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, unlinkSync,
 import { fileURLToPath } from 'node:url';
 import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
+import { siteVersion } from './src/environments/version.generated';
 
 const defaultApiInternalOrigin = 'http://api:8080';
 const apiInternalOrigin = normalizeOrigin(process.env['SSR_API_INTERNAL_URL'] ?? defaultApiInternalOrigin);
+const currentBuildVersion = (process.env['APP_VERSION'] ?? siteVersion).trim() || siteVersion;
 const cspReportOnly = (process.env['SSR_CSP_REPORT_ONLY'] ?? 'true').toLowerCase() !== 'false';
 const cspEnabled = (process.env['SSR_CSP_ENABLED'] ?? 'true').toLowerCase() !== 'false';
 const ssrAllowedHosts = splitConfiguredValues(process.env['SSR_ALLOWED_HOSTS'] ?? 'localhost;127.0.0.1;amusement.localhost;front');
@@ -44,6 +46,8 @@ const csrFallbackLogSampleRate = Math.max(0, Number(process.env['SSR_CSR_FALLBAC
 const csrFallbackCacheControl = process.env['SSR_CSR_FALLBACK_CACHE_CONTROL'] ?? 'public, max-age=60, stale-while-revalidate=300';
 const pageCacheBrowserCacheControl = process.env['SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL'] ?? 'no-cache, max-age=0, must-revalidate';
 const seoDocumentBrowserCacheControl = process.env['SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL'] ?? 'no-cache, max-age=0, must-revalidate';
+const immutableBuildAssetCacheControl = 'public, max-age=31536000, immutable';
+const revalidatedStaticAssetCacheControl = 'no-cache, max-age=0, must-revalidate';
 const cacheInvalidationToken = process.env['SSR_CACHE_INVALIDATION_TOKEN'] ?? '';
 const stalePageCacheSeconds = Math.max(0, Number(process.env['SSR_STALE_PAGE_CACHE_SECONDS'] ?? 600));
 const targetedRefreshEnabled = (process.env['SSR_TARGETED_REFRESH_ENABLED'] ?? 'true').toLowerCase() !== 'false';
@@ -62,6 +66,7 @@ const queuedTargetedRefreshKeys = new Set<string>();
 let activeTargetedRefreshCount = 0;
 
 interface PageCacheEntry {
+  readonly buildVersion?: string;
   readonly cacheKey?: string;
   readonly statusCode: number;
   readonly html: string;
@@ -199,10 +204,14 @@ export function app(): express.Express {
     proxyToApi(req, res, next, apiPath);
   });
 
+  server.get('/version.json', (_req: Request, res: Response) => {
+    res.setHeader('Cache-Control', revalidatedStaticAssetCacheControl);
+    res.type('application/json').send(JSON.stringify({ version: currentBuildVersion }));
+  });
+
   server.use(express.static(browserDistFolder, {
-    immutable: true,
     index: false,
-    maxAge: '1y'
+    setHeaders: setStaticAssetResponseHeaders
   }));
 
   server.get('*', (req: Request, res: Response, next: NextFunction) => {
@@ -283,6 +292,7 @@ function run(): void {
 
   server.listen(port, () => {
     console.log(`Angular SSR server listening on http://0.0.0.0:${port}`);
+    console.log(`Application build version: ${currentBuildVersion}`);
     console.log(`SSR API internal origin: ${apiInternalOrigin}`);
     console.log(`SSR public page cache: ${pageCacheTtlSeconds}s / ${pageCacheMaxEntries} entries`);
     console.log(`SSR disk page cache: ${diskPageCacheEnabled ? 'enabled' : 'disabled'} / ${diskPageCacheDirectory} / ${diskPageCacheMaxBytes} bytes`);
@@ -385,8 +395,21 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
   }
 
   res.setHeader('X-AmusementPark-SSR-Mode', mode);
+  res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
   res.setHeader('Cache-Control', csrFallbackCacheControl);
   res.type('html').send(readCsrShellHtml(csrIndexHtmlPath));
+}
+
+function setStaticAssetResponseHeaders(res: Response, filePath: string): void {
+  res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
+  res.setHeader('Cache-Control', isImmutableBuildAsset(filePath) ? immutableBuildAssetCacheControl : revalidatedStaticAssetCacheControl);
+}
+
+function isImmutableBuildAsset(filePath: string): boolean {
+  const normalizedPath: string = filePath.replace(/\\/g, '/');
+  const fileName: string = normalizedPath.split('/').pop() ?? '';
+
+  return /\.(?:js|mjs|css)$/i.test(fileName) && /-[a-z0-9]{8,}\.(?:js|mjs|css)$/i.test(fileName);
 }
 
 function readCsrShellHtml(csrIndexHtmlPath: string | null): string {
@@ -633,6 +656,7 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
   }
 
   const entry: PageCacheEntry = {
+    buildVersion: currentBuildVersion,
     cacheKey,
     statusCode,
     html,
@@ -654,7 +678,7 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
 
 function isUsablePageCacheEntry(entry: PageCacheEntry): boolean {
   const now = Date.now();
-  return entry.expiresAt > now || (entry.staleUntil ?? 0) > now;
+  return entry.buildVersion === currentBuildVersion && (entry.expiresAt > now || (entry.staleUntil ?? 0) > now);
 }
 
 function isStalePageCacheEntry(entry: PageCacheEntry): boolean {
@@ -663,6 +687,7 @@ function isStalePageCacheEntry(entry: PageCacheEntry): boolean {
 
 function setPageCacheResponseHeaders(res: Response, cacheStatus: 'HIT' | 'MISS' | 'WARMED' | 'WARMUP-HIT' | 'STALE' | 'WARMUP-STALE'): void {
   res.setHeader('X-AmusementPark-SSR-Cache', cacheStatus);
+  res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
   res.setHeader('Cache-Control', pageCacheBrowserCacheControl);
 }
 
