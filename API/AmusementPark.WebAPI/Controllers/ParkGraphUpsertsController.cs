@@ -22,7 +22,6 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("admin/park-graph-upserts")]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
 [RequireActivatedUnblockedUser]
-[InvalidatesPublicCache(PublicCacheScope.Data)]
 public sealed class ParkGraphUpsertsController : ControllerBase
 {
     private readonly ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler;
@@ -69,6 +68,7 @@ public sealed class ParkGraphUpsertsController : ControllerBase
 
     [HttpPost("apply")]
     [AdminAudit("park-graph-upsert.apply", "Park")]
+    [InvalidatesPublicCache(PublicCacheScope.Data)]
     [ProducesResponseType(typeof(ParkGraphUpsertResultDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> ApplyAsync([FromBody] ParkGraphUpsertRequestDto request, CancellationToken cancellationToken = default)
     {

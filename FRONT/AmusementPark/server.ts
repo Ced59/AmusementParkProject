@@ -42,6 +42,8 @@ const renderQueueWarningThreshold = Math.max(1, Number(process.env['SSR_RENDER_Q
 const assetMissLogSampleRate = Math.max(0, Number(process.env['SSR_ASSET_MISS_LOG_SAMPLE_RATE'] ?? 25));
 const csrFallbackLogSampleRate = Math.max(0, Number(process.env['SSR_CSR_FALLBACK_LOG_SAMPLE_RATE'] ?? 100));
 const csrFallbackCacheControl = process.env['SSR_CSR_FALLBACK_CACHE_CONTROL'] ?? 'public, max-age=60, stale-while-revalidate=300';
+const pageCacheBrowserCacheControl = process.env['SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL'] ?? 'no-cache, max-age=0, must-revalidate';
+const seoDocumentBrowserCacheControl = process.env['SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL'] ?? 'no-cache, max-age=0, must-revalidate';
 const cacheInvalidationToken = process.env['SSR_CACHE_INVALIDATION_TOKEN'] ?? '';
 let activeRenderCount = 0;
 let assetMissCount = 0;
@@ -240,7 +242,9 @@ function run(): void {
     console.log(`SSR disk page cache budget check: every ${diskPageCacheBudgetCheckEveryWrites} writes`);
     console.log(`SSR page cache max HTML bytes: ${pageCacheMaxHtmlBytes}`);
     console.log(`SSR public page cache ignores analytics cookies: ${pageCacheAllowAuthenticatedPublicHtml}`);
+    console.log(`SSR page browser Cache-Control: ${pageCacheBrowserCacheControl}`);
     console.log(`SSR SEO document cache: ${seoDocumentCacheTtlSeconds}s / ${seoDocumentCacheMaxEntries} entries`);
+    console.log(`SSR SEO document browser Cache-Control: ${seoDocumentBrowserCacheControl}`);
     console.log(`SSR render enabled: ${ssrRenderEnabled}`);
     console.log(`SSR render on cache miss: ${renderOnCacheMiss}`);
     console.log(`SSR render critical routes on cache miss: ${renderCriticalRoutesOnCacheMiss}`);
@@ -572,7 +576,7 @@ function setCachedPage(cacheKey: string, statusCode: number, html: string): void
 
 function setPageCacheResponseHeaders(res: Response, cacheStatus: 'HIT' | 'MISS' | 'WARMED' | 'WARMUP-HIT'): void {
   res.setHeader('X-AmusementPark-SSR-Cache', cacheStatus);
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=600');
+  res.setHeader('Cache-Control', pageCacheBrowserCacheControl);
 }
 
 function getDiskCachedPage(cacheKey: string): PageCacheEntry | null {
@@ -943,8 +947,7 @@ function buildCachedSeoDocumentHeaders(headers: http.IncomingHttpHeaders, bodyLe
 
   responseHeaders['content-length'] = bodyLength.toString();
 
-  const browserMaxAge = Math.min(seoDocumentCacheTtlSeconds, 300);
-  responseHeaders['cache-control'] = `public, max-age=${browserMaxAge}, stale-while-revalidate=60`;
+  responseHeaders['cache-control'] = seoDocumentBrowserCacheControl;
 
   return responseHeaders;
 }
