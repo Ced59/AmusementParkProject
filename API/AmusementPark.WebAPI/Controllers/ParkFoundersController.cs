@@ -27,7 +27,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [Route("park-founders")]
 [RequireActivatedUnblockedUser]
 [Authorize(Roles = AuthorizationRoleGroups.Admin)]
-[InvalidatesPublicCache(PublicCacheScope.ReferenceData)]
+[InvalidatesPublicCache(PublicCacheScope.ReferenceData, PublicCacheScope.Data)]
 public sealed class ParkFoundersController : ControllerBase
 {
     private readonly IQueryHandler<GetParkFoundersQuery, ApplicationResult<IReadOnlyCollection<ParkFounder>>> getParkFoundersQueryHandler;

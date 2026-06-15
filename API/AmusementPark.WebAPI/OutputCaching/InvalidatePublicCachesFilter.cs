@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.OutputCaching;
+using Microsoft.Extensions.Logging;
 
 namespace AmusementPark.WebAPI.OutputCaching;
 
@@ -22,13 +23,16 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
 {
     private readonly IOutputCacheStore outputCacheStore;
     private readonly ISsrPageCacheInvalidator ssrPageCacheInvalidator;
+    private readonly ILogger<InvalidatePublicCachesFilter> logger;
 
     public InvalidatePublicCachesFilter(
         IOutputCacheStore outputCacheStore,
-        ISsrPageCacheInvalidator ssrPageCacheInvalidator)
+        ISsrPageCacheInvalidator ssrPageCacheInvalidator,
+        ILogger<InvalidatePublicCachesFilter> logger)
     {
         this.outputCacheStore = outputCacheStore;
         this.ssrPageCacheInvalidator = ssrPageCacheInvalidator;
+        this.logger = logger;
     }
 
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -43,14 +47,26 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
             return;
         }
 
-        CancellationToken cancellationToken = context.HttpContext.RequestAborted;
-
         foreach (string tag in ResolveTags(scopes))
         {
-            await this.outputCacheStore.EvictByTagAsync(tag, cancellationToken);
+            try
+            {
+                await this.outputCacheStore.EvictByTagAsync(tag, CancellationToken.None);
+            }
+            catch (Exception exception)
+            {
+                this.logger.LogWarning(exception, "Public output cache eviction failed for tag {Tag}.", tag);
+            }
         }
 
-        await this.ssrPageCacheInvalidator.InvalidateAllAsync(cancellationToken);
+        try
+        {
+            await this.ssrPageCacheInvalidator.InvalidateAllAsync(CancellationToken.None);
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogWarning(exception, "SSR page cache invalidation failed.");
+        }
     }
 
     private static bool TryResolveScopes(
