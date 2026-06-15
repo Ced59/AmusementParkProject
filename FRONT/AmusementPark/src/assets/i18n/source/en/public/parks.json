@@ -30,7 +30,8 @@
       "website": "Website",
       "backToList": "Back to list",
       "images": "Images",
-      "map": "Map"
+      "map": "Map",
+      "browseZones": "Browse all zones"
     },
     "detail": {
       "heroBadge": "Park overview",
@@ -275,6 +276,39 @@
       "errorTitle": "Map unavailable",
       "errorMessage": "The map for this park cannot be loaded right now.",
       "backToPark": "Back to {{name}}"
+    },
+    "zones": {
+      "badge": "Park zones",
+      "title": "{{park}} zones",
+      "subtitle": "{{count}} zone(s) grouping {{total}} public item(s).",
+      "loadingTitle": "Loading zones",
+      "loadingMessage": "The park zones are being loaded.",
+      "errorTitle": "Unable to load zones",
+      "errorMessage": "The park zones could not be loaded.",
+      "emptyTitle": "No zone available",
+      "emptyMessage": "No public zone is currently available for this park.",
+      "noDescription": "No description is available for this zone yet.",
+      "openZone": "Open zone",
+      "backToZones": "Back to zones"
+    },
+    "zone": {
+      "badge": "{{park}} zone",
+      "loadingTitle": "Loading zone",
+      "loadingMessage": "The park zone is being loaded.",
+      "errorTitle": "Unable to load zone",
+      "errorMessage": "The park zone could not be loaded.",
+      "emptyTitle": "Zone unavailable",
+      "emptyMessage": "The requested zone is not available.",
+      "totalItems": "Items",
+      "totalItemsHint": "Linked to this zone",
+      "mapMarkers": "Markers",
+      "mapMarkersHint": "Geolocated",
+      "mapBadge": "Zone map",
+      "mapTitle": "Geolocated items",
+      "itemsBadge": "Zone items",
+      "itemsTitle": "Items in this zone",
+      "emptyItemsTitle": "No item in this zone",
+      "emptyItemsMessage": "No public item is currently linked to this zone."
     }
   }
 }

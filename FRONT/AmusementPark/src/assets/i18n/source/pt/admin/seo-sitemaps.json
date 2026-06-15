@@ -12,7 +12,9 @@
       "actions": {
         "generate": "Regenerar",
         "generateWithoutIndexNow": "Gerar sem IndexNow",
-        "openSitemap": "Abrir"
+        "openSitemap": "Abrir",
+        "generateSeoSsr": "Regenerar SEO/SSR",
+        "generateSeoSsrWithoutIndexNow": "Regenerar SEO/SSR sem IndexNow"
       },
       "stats": {
         "totalUrls": "URLs referenciados",
@@ -55,6 +57,12 @@
           "indexNow": "IndexNow",
           "actor": "Ator"
         }
+      },
+      "prerender": {
+        "title": "Pré-aquecimento da cache SSR",
+        "success": "sucesso",
+        "failed": "falha",
+        "missingSitemap": "Não foi possível pré-aquecer a cache SSR: índice do sitemap não encontrado."
       }
     }
   }

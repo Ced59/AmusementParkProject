@@ -12,7 +12,9 @@
       "actions": {
         "generate": "Wygeneruj ponownie",
         "generateWithoutIndexNow": "Generuj bez IndexNow",
-        "openSitemap": "Otwórz"
+        "openSitemap": "Otwórz",
+        "generateSeoSsr": "Wygeneruj ponownie SEO/SSR",
+        "generateSeoSsrWithoutIndexNow": "Wygeneruj ponownie SEO/SSR bez IndexNow"
       },
       "stats": {
         "totalUrls": "Adresy URL",
@@ -55,6 +57,12 @@
           "indexNow": "IndexNow",
           "actor": "Aktor"
         }
+      },
+      "prerender": {
+        "title": "Rozgrzewanie pamięci podręcznej SSR",
+        "success": "sukces",
+        "failed": "błąd",
+        "missingSitemap": "Nie można rozgrzać pamięci podręcznej SSR: nie znaleziono indeksu sitemap."
       }
     }
   }

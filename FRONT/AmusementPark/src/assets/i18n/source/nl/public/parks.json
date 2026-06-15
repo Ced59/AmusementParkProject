@@ -30,7 +30,8 @@
       "website": "Website",
       "backToList": "Terug naar de lijst",
       "images": "Afbeeldingen",
-      "map": "Kaart"
+      "map": "Kaart",
+      "browseZones": "Alle zones bekijken"
     },
     "detail": {
       "heroBadge": "Parkoverzicht",
@@ -275,6 +276,39 @@
       "errorTitle": "Kaart niet beschikbaar",
       "errorMessage": "De kaart van dit park kan momenteel niet worden geladen.",
       "backToPark": "Terug naar {{name}}"
+    },
+    "zones": {
+      "badge": "Parkzones",
+      "title": "Zones van {{park}}",
+      "subtitle": "{{count}} zone(s) met {{total}} openbare item(s).",
+      "loadingTitle": "Zones laden",
+      "loadingMessage": "De parkzones worden geladen.",
+      "errorTitle": "Zones kunnen niet worden geladen",
+      "errorMessage": "De parkzones konden niet worden geladen.",
+      "emptyTitle": "Geen zone beschikbaar",
+      "emptyMessage": "Er is momenteel geen openbare zone beschikbaar voor dit park.",
+      "noDescription": "Er is nog geen beschrijving beschikbaar voor deze zone.",
+      "openZone": "Zone openen",
+      "backToZones": "Terug naar zones"
+    },
+    "zone": {
+      "badge": "Zone van {{park}}",
+      "loadingTitle": "Zone laden",
+      "loadingMessage": "De parkzone wordt geladen.",
+      "errorTitle": "Zone kan niet worden geladen",
+      "errorMessage": "De parkzone kon niet worden geladen.",
+      "emptyTitle": "Zone niet beschikbaar",
+      "emptyMessage": "De gevraagde zone is niet beschikbaar.",
+      "totalItems": "Items",
+      "totalItemsHint": "Gekoppeld aan deze zone",
+      "mapMarkers": "Markeringen",
+      "mapMarkersHint": "Geolokaliseerd",
+      "mapBadge": "Zonekaart",
+      "mapTitle": "Geolokaliseerde items",
+      "itemsBadge": "Zone-items",
+      "itemsTitle": "Items in deze zone",
+      "emptyItemsTitle": "Geen item in deze zone",
+      "emptyItemsMessage": "Er is momenteel geen openbaar item aan deze zone gekoppeld."
     }
   }
 }

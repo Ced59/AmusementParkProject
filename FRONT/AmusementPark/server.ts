@@ -458,6 +458,8 @@ function isPublicSsrCacheRoute(url: string): boolean {
   return isPublicStaticSsrRoute(path)
     || isPublicParkDetailRoute(path)
     || isPublicParkImagesRoute(path)
+    || isPublicParkZonesRoute(path)
+    || isPublicParkZoneDetailRoute(path)
     || isPublicParkItemsRoute(path)
     || isPublicParkItemDetailRoute(path)
     || isPublicReferenceRoute(path);
@@ -469,6 +471,9 @@ function isCriticalPublicSsrRoute(url: string): boolean {
   return isPublicStaticSsrRoute(path)
     || isPublicParkDetailRoute(path)
     || (isPublicParkImagesRoute(path) && !hasQueryString(url))
+    || isPublicParkZonesRoute(path)
+    || isPublicParkZoneDetailRoute(path)
+    || (isPublicParkItemsRoute(path) && !hasQueryString(url))
     || isPublicParkItemDetailRoute(path)
     || isPublicReferenceRoute(path);
 }
@@ -490,6 +495,14 @@ function isPublicParkImagesRoute(path: string): boolean {
   return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/images\/?$/i.test(path);
 }
 
+function isPublicParkZonesRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zones\/?$/i.test(path);
+}
+
+function isPublicParkZoneDetailRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zone\/[^/]+\/[^/]+\/?$/i.test(path);
+}
+
 function isPublicParkItemsRoute(path: string): boolean {
   return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/items\/?$/i.test(path);
 }
@@ -506,7 +519,9 @@ function isNoindexPublicPageRoute(url: string): boolean {
   const path = getPathOnly(url);
 
   return isPublicParkMapRoute(path)
-    || isPublicParkItemsRoute(path)
+    || (isPublicParkItemsRoute(path) && hasQueryString(url))
+    || (isPublicParkZonesRoute(path) && hasQueryString(url))
+    || (isPublicParkZoneDetailRoute(path) && hasQueryString(url))
     || (isPublicParkImagesRoute(path) && hasQueryString(url));
 }
 
@@ -778,12 +793,12 @@ function buildContentSecurityPolicy(): string {
     "object-src 'none'",
     "frame-ancestors 'none'",
     "form-action 'self'",
-    joinCspDirective('script-src', ["'self'", "'unsafe-inline'", 'https://accounts.google.com', 'https://apis.google.com', 'https://matomo.cedric-caudron.com', ...localScriptSources]),
+    joinCspDirective('script-src', ["'self'", "'unsafe-inline'", 'https://accounts.google.com', 'https://apis.google.com', 'https://matomo.cedric-caudron.com', 'https://www.clarity.ms', 'https://*.clarity.ms', ...localScriptSources]),
     joinCspDirective('style-src', ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://accounts.google.com']),
     joinCspDirective('style-src-elem', ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://accounts.google.com']),
     joinCspDirective('font-src', ["'self'", 'data:', 'https://fonts.gstatic.com']),
-    joinCspDirective('img-src', ["'self'", 'data:', 'blob:', 'https:', 'https://tile.openstreetmap.org', 'https://*.tile.openstreetmap.org', ...localImageSources]),
-    joinCspDirective('connect-src', ["'self'", 'https://accounts.google.com', 'https://www.googleapis.com', 'https://matomo.cedric-caudron.com', ...localConnectSources]),
+    joinCspDirective('img-src', ["'self'", 'data:', 'blob:', 'https:', 'https://tile.openstreetmap.org', 'https://*.tile.openstreetmap.org', 'https://*.clarity.ms', ...localImageSources]),
+    joinCspDirective('connect-src', ["'self'", 'https://accounts.google.com', 'https://www.googleapis.com', 'https://matomo.cedric-caudron.com', 'https://www.clarity.ms', 'https://*.clarity.ms', ...localConnectSources]),
     joinCspDirective('frame-src', ["'self'", 'https://accounts.google.com']),
     "worker-src 'self' blob:",
     "media-src 'self' blob: data:",

@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
@@ -132,10 +133,193 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
 /// <summary>
 /// Provider des pages publiques d'éléments de parc.
 /// </summary>
-public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
+public sealed class ParkItemListsSitemapSectionProvider : ISitemapSectionProvider
 {
     private const int PublicSitemapCandidateLimit = int.MaxValue;
 
+    private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
+
+    public ParkItemListsSitemapSectionProvider(IParkRepository parkRepository, IParkItemRepository parkItemRepository)
+    {
+        this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
+    }
+
+    public string Key => SitemapSectionKeys.ParkItemLists;
+
+    public string FileName => "park-item-lists.xml";
+
+    public string DisplayName => "Listes d'elements de parc";
+
+    public async Task<IReadOnlyCollection<SitemapUrlEntry>> GetUrlsAsync(SitemapGenerationContext context, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+
+        IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
+        IReadOnlyCollection<ParkItem> publicItems = await LoadPublicItemsAsync(this.parkItemRepository, cancellationToken);
+        IReadOnlyCollection<string> parentParkIds = publicItems
+            .Select(static item => item.ParkId)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
+        IReadOnlyCollection<Park> parentParks = await this.parkRepository.GetByIdsAsync(parentParkIds, cancellationToken);
+        Dictionary<string, Park> visibleParkById = parentParks
+            .Where(static park => ParksSitemapSectionProvider.IsPublicPark(park))
+            .ToDictionary(static park => park.Id!, static park => park, StringComparer.OrdinalIgnoreCase);
+
+        Dictionary<string, DateTime?> lastModifiedByParkId = publicItems
+            .Where(item => visibleParkById.ContainsKey(item.ParkId))
+            .GroupBy(static item => item.ParkId, StringComparer.OrdinalIgnoreCase)
+            .ToDictionary(
+                static group => group.Key,
+                static group => (DateTime?)group.Max(static item => item.UpdatedAtUtc),
+                StringComparer.OrdinalIgnoreCase);
+
+        List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
+        foreach (Park parentPark in visibleParkById.Values.OrderBy(static park => park.Name, StringComparer.OrdinalIgnoreCase))
+        {
+            string parkSlug = SeoSlugService.ToSlug(parentPark.Name, "park");
+            DateTime? lastModifiedUtc = ResolveLatest(parentPark.UpdatedAtUtc, lastModifiedByParkId.GetValueOrDefault(parentPark.Id!));
+            foreach (string language in languages)
+            {
+                urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/items", lastModifiedUtc, "weekly", 0.74m));
+            }
+        }
+
+        return urls;
+    }
+
+    internal static async Task<IReadOnlyCollection<ParkItem>> LoadPublicItemsAsync(IParkItemRepository parkItemRepository, CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<ParkItem> candidateItems = await parkItemRepository.GetPublicSitemapCandidatesAsync(
+            PublicSitemapCandidateLimit,
+            cancellationToken);
+
+        return candidateItems
+            .Where(static item => ParkItemsSitemapSectionProvider.IsPublicItem(item))
+            .ToList();
+    }
+
+    internal static DateTime? ResolveLatest(DateTime? first, DateTime? second)
+    {
+        if (!first.HasValue)
+        {
+            return second;
+        }
+
+        if (!second.HasValue)
+        {
+            return first;
+        }
+
+        return first.Value > second.Value ? first : second;
+    }
+}
+
+public sealed class ParkZonesSitemapSectionProvider : ISitemapSectionProvider
+{
+    private readonly IParkRepository parkRepository;
+    private readonly IParkZoneRepository parkZoneRepository;
+    private readonly IParkItemRepository parkItemRepository;
+
+    public ParkZonesSitemapSectionProvider(
+        IParkRepository parkRepository,
+        IParkZoneRepository parkZoneRepository,
+        IParkItemRepository parkItemRepository)
+    {
+        this.parkRepository = parkRepository;
+        this.parkZoneRepository = parkZoneRepository;
+        this.parkItemRepository = parkItemRepository;
+    }
+
+    public string Key => SitemapSectionKeys.ParkZones;
+
+    public string FileName => "park-zones.xml";
+
+    public string DisplayName => "Zones de parc";
+
+    public async Task<IReadOnlyCollection<SitemapUrlEntry>> GetUrlsAsync(SitemapGenerationContext context, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+
+        IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
+        IReadOnlyCollection<ParkItem> publicItems = await ParkItemListsSitemapSectionProvider.LoadPublicItemsAsync(this.parkItemRepository, cancellationToken);
+        IReadOnlyCollection<string> parentParkIds = publicItems
+            .Where(static item => !string.IsNullOrWhiteSpace(item.ZoneId))
+            .Select(static item => item.ParkId)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
+        IReadOnlyCollection<Park> parentParks = await this.parkRepository.GetByIdsAsync(parentParkIds, cancellationToken);
+        Dictionary<string, Park> visibleParkById = parentParks
+            .Where(static park => ParksSitemapSectionProvider.IsPublicPark(park))
+            .ToDictionary(static park => park.Id!, static park => park, StringComparer.OrdinalIgnoreCase);
+
+        List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
+        foreach (Park parentPark in visibleParkById.Values.OrderBy(static park => park.Name, StringComparer.OrdinalIgnoreCase))
+        {
+            IReadOnlyCollection<ParkItem> publicParkItems = publicItems
+                .Where(item => string.Equals(item.ParkId, parentPark.Id, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            Dictionary<string, DateTime?> lastModifiedByZoneId = publicParkItems
+                .Where(static item => !string.IsNullOrWhiteSpace(item.ZoneId))
+                .GroupBy(static item => item.ZoneId!, StringComparer.OrdinalIgnoreCase)
+                .ToDictionary(
+                    static group => group.Key,
+                    static group => (DateTime?)group.Max(static item => item.UpdatedAtUtc),
+                    StringComparer.OrdinalIgnoreCase);
+
+            IReadOnlyCollection<ParkZone> zones = await this.parkZoneRepository.GetByParkIdAsync(parentPark.Id!, cancellationToken);
+            IReadOnlyCollection<ParkZone> publicZones = zones
+                .Where(zone => IsPublicZone(zone) && lastModifiedByZoneId.ContainsKey(zone.Id!))
+                .OrderBy(static zone => zone.SortOrder)
+                .ThenBy(static zone => zone.Name, StringComparer.OrdinalIgnoreCase)
+                .ToList();
+
+            if (publicZones.Count == 0)
+            {
+                continue;
+            }
+
+            string parkSlug = SeoSlugService.ToSlug(parentPark.Name, "park");
+            DateTime? zonesLastModifiedUtc = publicZones
+                .Select(zone => ParkItemListsSitemapSectionProvider.ResolveLatest(zone.UpdatedAtUtc, lastModifiedByZoneId.GetValueOrDefault(zone.Id!)))
+                .Concat(new DateTime?[] { parentPark.UpdatedAtUtc })
+                .Where(static value => value.HasValue)
+                .Max();
+
+            foreach (string language in languages)
+            {
+                urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/zones", zonesLastModifiedUtc, "weekly", 0.73m));
+            }
+
+            foreach (ParkZone zone in publicZones)
+            {
+                string zoneSlug = SeoSlugService.ToSlug(zone.Name, "zone");
+                DateTime? zoneLastModifiedUtc = ParkItemListsSitemapSectionProvider.ResolveLatest(zone.UpdatedAtUtc, lastModifiedByZoneId.GetValueOrDefault(zone.Id!));
+                foreach (string language in languages)
+                {
+                    urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/zone/{zone.Id}/{zoneSlug}", zoneLastModifiedUtc, "weekly", 0.71m));
+                }
+            }
+        }
+
+        return urls;
+    }
+
+    internal static bool IsPublicZone(ParkZone zone)
+    {
+        return !string.IsNullOrWhiteSpace(zone.Id) &&
+               !string.IsNullOrWhiteSpace(zone.ParkId) &&
+               !string.IsNullOrWhiteSpace(zone.Name) &&
+               zone.IsVisible;
+    }
+}
+
+public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
+{
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
 
@@ -156,13 +340,7 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
         ArgumentNullException.ThrowIfNull(context);
 
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
-        IReadOnlyCollection<ParkItem> candidateItems = await this.parkItemRepository.GetPublicSitemapCandidatesAsync(
-            PublicSitemapCandidateLimit,
-            cancellationToken);
-
-        IReadOnlyCollection<ParkItem> publicItems = candidateItems
-            .Where(static item => IsPublicItem(item))
-            .ToList();
+        IReadOnlyCollection<ParkItem> publicItems = await ParkItemListsSitemapSectionProvider.LoadPublicItemsAsync(this.parkItemRepository, cancellationToken);
 
         IReadOnlyCollection<string> parentParkIds = publicItems
             .Select(static item => item.ParkId)
@@ -193,7 +371,7 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
         return urls;
     }
 
-    private static bool IsPublicItem(ParkItem item)
+    internal static bool IsPublicItem(ParkItem item)
     {
         return !string.IsNullOrWhiteSpace(item.Id) &&
                !string.IsNullOrWhiteSpace(item.ParkId) &&

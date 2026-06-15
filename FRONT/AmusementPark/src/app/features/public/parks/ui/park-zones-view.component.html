@@ -1,0 +1,68 @@
+<app-page-state
+  [state]="state().kind"
+  [messages]="{
+    loadingTitleKey: 'parks.zones.loadingTitle',
+    loadingMessageKey: 'parks.zones.loadingMessage',
+    errorTitleKey: 'parks.zones.errorTitle',
+    errorMessageKey: 'parks.zones.errorMessage',
+    emptyTitleKey: 'parks.zones.emptyTitle',
+    emptyMessageKey: 'parks.zones.emptyMessage'
+  }">
+  <section class="park-zones-page public-page page-shell" *ngIf="page() as currentPage">
+    <section class="zones-hero" appUiSurface="panel" appUiSurfacePadding="regular">
+      <div>
+        <app-ui-kicker iconClass="pi pi-th-large">{{ 'parks.zones.badge' | translate }}</app-ui-kicker>
+        <h1>{{ 'parks.zones.title' | translate:{ park: currentPage.parkName } }}</h1>
+        <p>{{ 'parks.zones.subtitle' | translate:{ count: currentPage.zoneCount, total: currentPage.totalItems } }}</p>
+      </div>
+
+      <div class="zones-hero__actions">
+        <button appUiButton="ghost" type="button" (click)="onBackClicked()">
+          <i class="pi pi-arrow-left" aria-hidden="true"></i>
+          <span>{{ 'parkItems.actions.backToPark' | translate }}</span>
+        </button>
+
+        <a *ngIf="currentPage.itemsLink" appUiButton="primary" [routerLink]="currentPage.itemsLink">
+          <i class="pi pi-sitemap" aria-hidden="true"></i>
+          <span>{{ 'parkVisitor.summary.viewAllItems' | translate }}</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="zones-grid" *ngIf="currentPage.zones.length > 0; else emptyZones">
+      <article class="zone-card" appUiSurface="panel" appUiSurfacePadding="regular" *ngFor="let zone of currentPage.zones">
+        <div class="zone-card__header">
+          <app-ui-chip tone="lime" iconClass="pi pi-map-marker">{{ zone.totalItems }}</app-ui-chip>
+          <h2>{{ zone.name }}</h2>
+        </div>
+
+        <div class="zone-card__description" *ngIf="zone.description; else noDescription" [innerHTML]="zone.description | safeRichHtml"></div>
+        <ng-template #noDescription>
+          <p class="zone-card__description">{{ 'parks.zones.noDescription' | translate }}</p>
+        </ng-template>
+
+        <div class="zone-card__chips" *ngIf="zone.typeHighlights.length > 0">
+          <span class="zone-card__chip" *ngFor="let type of zone.typeHighlights">
+            {{ type.labelKey | translate }} &middot; {{ type.count }}
+          </span>
+        </div>
+
+        <div class="zone-card__actions">
+          <a *ngIf="zone.zoneLink" appUiButton="primary" [routerLink]="zone.zoneLink">
+            <span>{{ 'parks.zones.openZone' | translate }}</span>
+            <i class="pi pi-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <ng-template #emptyZones>
+      <app-empty-state
+        variant="public"
+        iconClass="pi pi-map"
+        titleKey="parks.zones.emptyTitle"
+        messageKey="parks.zones.emptyMessage">
+      </app-empty-state>
+    </ng-template>
+  </section>
+</app-page-state>

@@ -21,6 +21,7 @@ import { LanguageInterceptor } from '@core/http/interceptors/language.intercepto
 import { AuthInterceptor } from '@core/http/interceptors/auth.interceptor';
 import AmusementParkPreset from './config/primeng-preset';
 import { MatomoPageViewTrackingService } from '@core/analytics/matomo-page-view-tracking.service';
+import { MicrosoftClarityTrackingService } from '@core/analytics/microsoft-clarity-tracking.service';
 
 import { SelectModule } from 'primeng/select';
 import { ToolbarModule } from 'primeng/toolbar';
@@ -72,6 +73,7 @@ export const appConfig: ApplicationConfig = {
 
     provideAppInitializer(() => {
       inject(MatomoPageViewTrackingService).initialize();
+      inject(MicrosoftClarityTrackingService).initialize();
     }),
 
     {

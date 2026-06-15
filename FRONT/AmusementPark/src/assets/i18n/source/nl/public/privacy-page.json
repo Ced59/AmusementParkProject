@@ -2,7 +2,7 @@
   "privacyPage": {
     "kicker": "Persoonsgegevens",
     "title": "Privacybeleid",
-    "lead": "Deze pagina legt uit hoe AmusementPark persoonsgegevens, noodzakelijke cookies, Google OAuth-authenticatie en Matomo-publieksmeting verwerkt.",
+    "lead": "Deze pagina legt uit hoe AmusementPark persoonsgegevens, noodzakelijke cookies, Google OAuth-authenticatie, Matomo-publieksmeting en Microsoft Clarity-gebruiksanalyse verwerkt.",
     "chips": {
       "hosting": "Hosting in Frankrijk",
       "analytics": "Cookies en analytics",
@@ -11,7 +11,7 @@
     "consent": {
       "kicker": "Cookievoorkeuren",
       "title": "Optionele cookies beheren",
-      "text": "Cookies die nodig zijn voor werking en authenticatie kunnen zonder toestemming worden gebruikt. Hier kun je optionele cookies voor publieksmeting accepteren, weigeren of de keuze opnieuw tonen.",
+      "text": "Cookies die nodig zijn voor werking en authenticatie kunnen zonder toestemming worden gebruikt. Hier kun je optionele cookies voor publieksmeting en gebruiksanalyse accepteren, weigeren of de keuze opnieuw tonen.",
       "currentStatus": "Huidige status:",
       "statusAccepted": "optionele cookies geaccepteerd.",
       "statusRefused": "optionele cookies geweigerd.",
@@ -34,7 +34,7 @@
       "purposes": {
         "title": "Doeleinden en rechtsgronden",
         "body1": "Gegevens worden gebruikt om websitefuncties te leveren, toegang te beveiligen, accounts te beheren, openbare inhoud te tonen en het project te beheren.",
-        "body2": "Verwerkingen die nodig zijn voor de werking steunen op de uitvoering van de dienst of op gerechtvaardigd belang. Optionele Matomo-cookies voor publieksmeting steunen op je toestemming, tenzij later een strikt vrijgestelde configuratie wordt ingevoerd."
+        "body2": "Verwerkingen die nodig zijn voor de werking steunen op uitvoering van de dienst of gerechtvaardigd belang. Optionele cookies voor publieksmeting van Matomo en Microsoft Clarity steunen op jouw toestemming, tenzij later een strikt vrijgestelde configuratie wordt ingesteld."
       },
       "analytics": {
         "title": "Matomo-publieksmeting",
@@ -46,7 +46,7 @@
         "title": "Cookies en lokale opslag",
         "body1": "Strikt noodzakelijke cookies of opslag kunnen worden gebruikt voor sessie, beveiliging, taal, thema, interfacevoorkeuren en correcte authenticatie.",
         "body2": "Deze noodzakelijke trackers kunnen sessie-/API-cookies, HTTP-only authenticatiecookies, anti-misbruikmechanismen en lokaal opgeslagen voorkeuren omvatten. Ze kunnen niet via de banner worden uitgeschakeld omdat ze de gevraagde dienst mogelijk maken.",
-        "body3": "De keuze over optionele cookies wordt opgeslagen in de lokale opslag van de browser zodat ze niet op elke pagina opnieuw wordt gevraagd."
+        "body3": "De keuze voor optionele cookies wordt opgeslagen in de lokale browseropslag en in een voorkeurcookie, zodat dezelfde keuze niet op elke pagina opnieuw wordt gevraagd."
       },
       "hosting": {
         "title": "Hosting en verwerkers",
@@ -68,6 +68,12 @@
         "body1": "De website biedt inloggen via Google OAuth / Sign in with Google. Wanneer je deze methode gebruikt, kan Google eigen cookies en vergelijkbare technologieën plaatsen of lezen voor authenticatie, beveiliging, fraudepreventie en sessiebeheer.",
         "body2": "Deze trackers van derden zijn nodig voor de door de gebruiker gevraagde Google-authenticatie en worden niet beheerd door de Matomo-/analytics-toestemming van de website.",
         "body3": "Het weigeren van optionele AmusementPark-cookies blokkeert authenticatie niet. Een browser die bepaalde cookies van derden blokkeert, kan Google-inloggen wel verhinderen of verstoren."
+      },
+      "clarity": {
+        "title": "Gebruiksanalyse met Microsoft Clarity",
+        "body1": "De site gebruikt Microsoft Clarity, project x7ca53dep2, om het gebruik van publieke pagina’s te begrijpen via geaggregeerde gebruiksanalyses, heatmaps en sessiereplayfuncties.",
+        "body2": "Clarity kan interacties verzamelen zoals klikken, scrollen, muisbewegingen, informatie over paginaweergave, navigatiecontext, apparaattype en technische browsergegevens. Privé-inhoud van profielen mag niet bewust als analytics-inhoud worden verzonden.",
+        "body3": "Clarity wordt alleen geactiveerd na toestemming voor optionele cookies. De site stuurt het Clarity Consent API v2-signaal zodat analytics-opslag volgens jouw keuze wordt toegestaan of geweigerd; je kunt die toestemming op deze pagina intrekken."
       }
     },
     "lastUpdate": "Laatst bijgewerkt: 23 mei 2026.",

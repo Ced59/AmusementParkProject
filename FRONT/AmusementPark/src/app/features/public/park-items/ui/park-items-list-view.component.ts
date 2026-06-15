@@ -3,7 +3,6 @@ import { NgFor, NgIf } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
-import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
 import { MapMarker } from '@app/models/map/map-marker';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
@@ -15,11 +14,9 @@ import { ParkItemsPageViewModel, ParkItemZoneCardViewModel } from '../models/par
 import { ParkItemsZoneFocusViewModel } from '../models/park-items-zone-focus.model';
 import { ParkItemCardComponent } from './park-item-card.component';
 import { ParkItemsFiltersComponent } from './park-items-filters.component';
-import { ParkItemsZoneListComponent } from './park-items-zone-list.component';
 import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
-import { SafeRichHtmlPipe } from '@shared/pipes';
 import { UiMapSlotComponent } from '@ui/maps';
-import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective } from '@ui/primitives';
+import { UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
 
 @Component({
   selector: 'app-park-items-list-view',
@@ -33,18 +30,13 @@ import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardCompon
     EmptyStateComponent,
     PageStateComponent,
     PaginationComponent,
-    ImageDisplayComponent,
     LeafletMapComponent,
     ParkItemCardComponent,
     ParkItemsFiltersComponent,
-    ParkItemsZoneListComponent,
     UiMapSlotComponent,
-    UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,
-    UiStatCardComponent,
-    UiSurfaceDirective,
-    SafeRichHtmlPipe
+    UiSurfaceDirective
   ]
 })
 export class ParkItemsListViewComponent {
@@ -75,7 +67,7 @@ export class ParkItemsListViewComponent {
   @Output() zoneSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() pageChanged: EventEmitter<{ page?: number; rows?: number }> = new EventEmitter<{ page?: number; rows?: number }>();
 
-  protected readonly hasZones = computed(() => this.zoneCards().length > 0);
+  protected readonly hasZones = computed(() => false);
 
   private readonly mapMarkerPopupActionService: MapMarkerPopupActionService = inject(MapMarkerPopupActionService);
   private readonly translateService: TranslateService = inject(TranslateService);

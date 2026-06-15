@@ -1,6 +1,7 @@
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Core.Domain.Parks;
@@ -97,6 +98,68 @@ public sealed class SitemapSectionProvidersTests
         Assert.DoesNotContain(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix/items");
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
         repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ParkItemListsProvider_WhenPublicItemsExist_ShouldReturnParkItemsPageForEachLanguage()
+    {
+        ParkItem[] itemCandidates = new[]
+        {
+            new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Attraction familiale", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc) },
+            new ParkItem { Id = "item-2", ParkId = "park-1", Name = "Restaurant", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc) },
+        };
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) } });
+        ParkItemListsSitemapSectionProvider provider = new ParkItemListsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/items" && url.LastModifiedUtc == new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/visible-park/items");
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ParkZonesProvider_WhenVisibleZoneHasPublicItems_ShouldReturnZoneOverviewAndDetailUrls()
+    {
+        ParkItem[] itemCandidates = new[]
+        {
+            new ParkItem { Id = "item-1", ParkId = "park-1", ZoneId = "zone-1", Name = "Attraction familiale", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc) },
+            new ParkItem { Id = "item-2", ParkId = "park-1", ZoneId = "zone-hidden", Name = "Hidden zone item", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+            new ParkItem { Id = "item-3", ParkId = "park-1", Name = "No zone item", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+        };
+        ParkZone[] zones = new[]
+        {
+            new ParkZone { Id = "zone-1", ParkId = "park-1", Name = "Zone enfants", IsVisible = true, SortOrder = 1, UpdatedAtUtc = new DateTime(2026, 2, 2, 0, 0, 0, DateTimeKind.Utc) },
+            new ParkZone { Id = "zone-hidden", ParkId = "park-1", Name = "Zone cachee", IsVisible = false, SortOrder = 2 },
+            new ParkZone { Id = "zone-empty", ParkId = "park-1", Name = "Zone vide", IsVisible = true, SortOrder = 3 },
+        };
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> zoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
+        zoneRepository.Setup(item => item.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>())).ReturnsAsync(zones);
+        ParkZonesSitemapSectionProvider provider = new ParkZonesSitemapSectionProvider(parkRepository.Object, zoneRepository.Object, itemRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/zones");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/zone/zone-1/zone-enfants" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("zone-hidden", StringComparison.OrdinalIgnoreCase));
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("zone-empty", StringComparison.OrdinalIgnoreCase));
+        parkRepository.VerifyAll();
+        zoneRepository.VerifyAll();
+        itemRepository.VerifyAll();
     }
 
     [Fact]

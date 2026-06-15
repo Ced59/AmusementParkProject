@@ -63,6 +63,7 @@ export interface ParkDetailViewModel {
   hasLocationInfo: boolean;
   hasDescription: boolean;
   exploreLink: string[] | null;
+  zonesLink: string[] | null;
   imagesLink: string[] | null;
   mapLink: string[] | null;
   identityRows: ParkDetailInfoRowViewModel[];
@@ -73,4 +74,3 @@ export interface ParkDetailViewModel {
   photos: ParkDetailPhotoViewModel[];
   photoCategories: ParkDetailPhotoCategoryOptionViewModel[];
 }
-

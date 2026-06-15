@@ -1,0 +1,119 @@
+.park-zone-page {
+  align-content: start;
+}
+
+.zone-hero,
+.zone-map,
+.zone-items {
+  display: grid;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.zone-hero {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+}
+
+.zone-hero__content,
+.zone-items__header {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.zone-hero h1 {
+  margin: 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.zone-hero__description {
+  max-width: 76ch;
+  margin: 0;
+  color: var(--app-text-muted);
+  line-height: 1.74;
+}
+
+:host ::ng-deep .zone-hero__description :where(p, ul, ol, blockquote) {
+  margin-top: 0;
+}
+
+:host ::ng-deep .zone-hero__description :where(p:last-child, ul:last-child, ol:last-child, blockquote:last-child) {
+  margin-bottom: 0;
+}
+
+.zone-hero__actions,
+.zone-hero__stats,
+.zone-map__header,
+.zone-map__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.zone-hero__stats {
+  align-items: stretch;
+}
+
+.zone-hero__stats app-ui-stat-card {
+  min-width: min(100%, 12rem);
+}
+
+.zone-map__header {
+  align-items: end;
+  justify-content: space-between;
+}
+
+.zone-map__header h2,
+.zone-items__header h2 {
+  margin: 0.55rem 0 0;
+  color: var(--app-heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.45rem, 3vw, 2.15rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+:host ::ng-deep .zone-map .leaflet-map-container {
+  height: clamp(22rem, 38vw, 31rem);
+  border: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+}
+
+.zone-items__grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+:host ::ng-deep .zone-items__grid .ui-item-card__description {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+@media (min-width: 760px) {
+  .zone-hero {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .zone-items__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1180px) {
+  .zone-items__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .zone-hero__actions :where(a, button, .app-button) {
+    width: 100%;
+  }
+}

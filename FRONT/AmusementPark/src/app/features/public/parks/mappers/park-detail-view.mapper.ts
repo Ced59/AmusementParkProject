@@ -5,7 +5,7 @@ import { ParkType } from '@app/models/parks/park-type';
 import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/display/park-presentation.helpers';
 import { getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
-import { buildPublicParkImagesRouteCommands, buildPublicParkItemsRouteCommands, buildPublicParkMapRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import { buildPublicParkImagesRouteCommands, buildPublicParkItemsRouteCommands, buildPublicParkMapRouteCommands, buildPublicParkZonesRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkDetailInfoRowViewModel } from '../models/park-detail-info-row.model';
 import {
   ParkDetailPhotoViewModel,
@@ -117,6 +117,9 @@ export function mapParkToDetailViewModel(
     hasDescription: !!description,
     exploreLink: hasIdentity
       ? buildPublicParkItemsRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
+      : null,
+    zonesLink: hasIdentity && zoneCount > 0
+      ? buildPublicParkZonesRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     imagesLink: hasIdentity
       ? buildPublicParkImagesRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })

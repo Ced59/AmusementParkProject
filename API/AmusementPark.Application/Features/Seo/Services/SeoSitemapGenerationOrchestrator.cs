@@ -284,12 +284,22 @@ public sealed class SeoSitemapGenerationOrchestrator
 
         if (string.Equals(key, SitemapSectionKeys.ParkItems, StringComparison.OrdinalIgnoreCase))
         {
+            return 4;
+        }
+
+        if (string.Equals(key, SitemapSectionKeys.ParkItemLists, StringComparison.OrdinalIgnoreCase))
+        {
             return 2;
+        }
+
+        if (string.Equals(key, SitemapSectionKeys.ParkZones, StringComparison.OrdinalIgnoreCase))
+        {
+            return 3;
         }
 
         if (string.Equals(key, SitemapSectionKeys.References, StringComparison.OrdinalIgnoreCase))
         {
-            return 3;
+            return 5;
         }
 
         return 100;

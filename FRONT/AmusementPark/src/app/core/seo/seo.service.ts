@@ -300,7 +300,7 @@ export class SeoService {
       return;
     }
 
-    if (this.isPublicParkMapRoute(url) || this.isPublicParkItemsRoute(url) || this.isFilteredPublicParkImagesRoute(url)) {
+    if (this.isPublicParkMapRoute(url) || this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url)) {
       this.apply({
         title: SITE_NAME,
         description: DEFAULT_DESCRIPTION,
@@ -400,6 +400,51 @@ export class SeoService {
       robots: 'noindex,follow',
       alternates: this.hreflangService.buildAlternates(url),
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, url, this.resolveParkMapBreadcrumbLabel(normalizedLanguage, parkName))]
+    });
+  }
+
+  applyParkItemsSeo(parkName: string, language: string, url: string): void {
+    const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? 'Park';
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const title: string = `${normalizedParkName} attractions and places — ${SITE_NAME}`;
+    const description: string = `Browse attractions, restaurants, hotels, shows and practical places at ${normalizedParkName}.`;
+
+    this.apply({
+      title,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, normalizedLanguage === 'fr' ? 'Elements' : 'Items')]
+    });
+  }
+
+  applyParkZonesSeo(parkName: string, language: string, url: string): void {
+    const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? 'Park';
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const pageLabel: string = normalizedLanguage === 'fr' ? 'Zones' : 'Zones';
+
+    this.apply({
+      title: `${normalizedParkName} zones — ${SITE_NAME}`,
+      description: truncateSeoText(`Browse the themed zones and areas of ${normalizedParkName}, then explore their attractions, restaurants and places.`, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, pageLabel)]
+    });
+  }
+
+  applyParkZoneSeo(parkName: string, zoneName: string, language: string, url: string): void {
+    const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? 'Park';
+    const normalizedZoneName: string = this.normalizeOptionalText(zoneName) ?? 'Zone';
+
+    this.apply({
+      title: `${normalizedZoneName} at ${normalizedParkName} — ${SITE_NAME}`,
+      description: truncateSeoText(`Explore ${normalizedZoneName} at ${normalizedParkName}: attractions, restaurants, places and map markers in this park zone.`, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, normalizedZoneName)]
     });
   }
 
@@ -758,8 +803,19 @@ export class SeoService {
     return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/map\/?$/i.test(this.normalizePath(url));
   }
 
-  private isPublicParkItemsRoute(url: string): boolean {
-    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/items\/?$/i.test(this.normalizePath(url));
+  private isFilteredPublicParkItemsRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/items\/?$/i.test(this.normalizePath(url))
+      && this.hasQueryString(url);
+  }
+
+  private isFilteredPublicParkZonesRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zones\/?$/i.test(this.normalizePath(url))
+      && this.hasQueryString(url);
+  }
+
+  private isFilteredPublicParkZoneRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zone\/[^/]+\/[^/]+\/?$/i.test(this.normalizePath(url))
+      && this.hasQueryString(url);
   }
 
   private isFilteredPublicParkImagesRoute(url: string): boolean {

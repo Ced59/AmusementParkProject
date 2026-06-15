@@ -2,7 +2,7 @@
   "cookieConsent": {
     "ariaLabel": "Baner informacji i wyboru dotyczący plików cookie",
     "title": "Pliki cookie i prywatność",
-    "text": "AmusementPark używa plików cookie lub pamięci niezbędnych do działania strony, w szczególności bezpieczeństwa, sesji, języka, motywu i uwierzytelniania. Za Twoją zgodą strona włącza także opcjonalne pliki cookie Matomo do pomiaru oglądalności.",
+    "text": "AmusementPark używa cookie lub pamięci niezbędnych do działania strony, w szczególności do bezpieczeństwa, sesji, języka, motywu i uwierzytelniania. Za Twoją zgodą strona aktywuje też opcjonalne cookie pomiaru oglądalności Matomo i Microsoft Clarity.",
     "privacyLink": "Przeczytaj politykę prywatności.",
     "accept": "Akceptuj opcjonalne cookie",
     "continueWithNecessaryCookiesOnly": "Kontynuuj z niezbędnymi cookie"

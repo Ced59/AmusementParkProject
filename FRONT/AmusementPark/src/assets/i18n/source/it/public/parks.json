@@ -30,7 +30,8 @@
       "website": "Sito web",
       "backToList": "Torna alla lista",
       "images": "Immagini",
-      "map": "Mappa"
+      "map": "Mappa",
+      "browseZones": "Sfoglia tutte le zone"
     },
     "detail": {
       "heroBadge": "Panoramica del parco",
@@ -275,6 +276,39 @@
       "errorTitle": "Mappa non disponibile",
       "errorMessage": "Al momento non è possibile caricare la mappa di questo parco.",
       "backToPark": "Torna a {{name}}"
+    },
+    "zones": {
+      "badge": "Zone del parco",
+      "title": "Zone di {{park}}",
+      "subtitle": "{{count}} zona/e che raggruppano {{total}} elemento/i pubblico/i.",
+      "loadingTitle": "Caricamento zone",
+      "loadingMessage": "Le zone del parco sono in caricamento.",
+      "errorTitle": "Impossibile caricare le zone",
+      "errorMessage": "Non è stato possibile caricare le zone del parco.",
+      "emptyTitle": "Nessuna zona disponibile",
+      "emptyMessage": "Al momento non è disponibile alcuna zona pubblica per questo parco.",
+      "noDescription": "Non è ancora disponibile una descrizione per questa zona.",
+      "openZone": "Apri zona",
+      "backToZones": "Torna alle zone"
+    },
+    "zone": {
+      "badge": "Zona di {{park}}",
+      "loadingTitle": "Caricamento zona",
+      "loadingMessage": "La zona del parco è in caricamento.",
+      "errorTitle": "Impossibile caricare la zona",
+      "errorMessage": "Non è stato possibile caricare la zona del parco.",
+      "emptyTitle": "Zona non disponibile",
+      "emptyMessage": "La zona richiesta non è disponibile.",
+      "totalItems": "Elementi",
+      "totalItemsHint": "Collegati a questa zona",
+      "mapMarkers": "Marker",
+      "mapMarkersHint": "Geolocalizzati",
+      "mapBadge": "Mappa della zona",
+      "mapTitle": "Elementi geolocalizzati",
+      "itemsBadge": "Elementi della zona",
+      "itemsTitle": "Elementi in questa zona",
+      "emptyItemsTitle": "Nessun elemento in questa zona",
+      "emptyItemsMessage": "Al momento nessun elemento pubblico è collegato a questa zona."
     }
   }
 }

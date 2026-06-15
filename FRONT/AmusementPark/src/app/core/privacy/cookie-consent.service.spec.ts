@@ -3,15 +3,18 @@ import { CookieConsentService } from './cookie-consent.service';
 describe('CookieConsentService', () => {
   const storageKey: string = 'amusementpark.cookie-consent.v1';
   const legacyStorageKey: string = 'amusementpark.analytics-consent.v1';
+  const consentCookieName: string = 'amusementpark_cookie_consent';
 
   beforeEach(() => {
     window.localStorage.removeItem(storageKey);
     window.localStorage.removeItem(legacyStorageKey);
+    document.cookie = `${consentCookieName}=; Max-Age=0; Path=/; SameSite=Lax`;
   });
 
   afterEach(() => {
     window.localStorage.removeItem(storageKey);
     window.localStorage.removeItem(legacyStorageKey);
+    document.cookie = `${consentCookieName}=; Max-Age=0; Path=/; SameSite=Lax`;
   });
 
   it('starts with no decision and shows the banner in the browser when consent is required', () => {
@@ -31,6 +34,7 @@ describe('CookieConsentService', () => {
     expect(service.hasAcceptedOptionalCookies()).toBeTrue();
     expect(service.isBannerVisible()).toBeFalse();
     expect(JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision).toBe('accepted');
+    expect(document.cookie).toContain(`${consentCookieName}=accepted`);
   });
 
   it('stores a refused decision when the user continues with necessary cookies only', () => {
@@ -53,6 +57,25 @@ describe('CookieConsentService', () => {
     expect(JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision).toBe('accepted');
   });
 
+  it('migrates a raw legacy accepted value', () => {
+    window.localStorage.setItem(legacyStorageKey, 'accepted');
+
+    const service = new CookieConsentService('browser' as unknown as object);
+
+    expect(service.decision()).toBe('accepted');
+    expect(window.localStorage.getItem(legacyStorageKey)).toBeNull();
+    expect(JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision).toBe('accepted');
+  });
+
+  it('restores a decision from the consent cookie', () => {
+    document.cookie = `${consentCookieName}=refused; Path=/; SameSite=Lax`;
+
+    const service = new CookieConsentService('browser' as unknown as object);
+
+    expect(service.decision()).toBe('refused');
+    expect(JSON.parse(window.localStorage.getItem(storageKey) ?? '{}').decision).toBe('refused');
+  });
+
   it('removes malformed stored JSON and keeps the decision empty', () => {
     window.localStorage.setItem(storageKey, '{broken-json');
 
@@ -72,6 +95,7 @@ describe('CookieConsentService', () => {
     expect(service.decision()).toBeNull();
     expect(window.localStorage.getItem(storageKey)).toBeNull();
     expect(window.localStorage.getItem(legacyStorageKey)).toBeNull();
+    expect(document.cookie).not.toContain(consentCookieName);
   });
 
   it('does not access browser storage on the server platform', () => {

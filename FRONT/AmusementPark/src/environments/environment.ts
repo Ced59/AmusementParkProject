@@ -12,6 +12,8 @@ export const environment = {
     matomoSiteId: 4,
     matomoTrackerUrl: 'https://matomo.cedric-caudron.com/',
     matomoRequireConsent: true,
-    matomoConsentHoursToExpire: 4380
+    matomoConsentHoursToExpire: 4380,
+    clarityEnabled: false,
+    clarityProjectId: 'x7ca53dep2'
   }
 };

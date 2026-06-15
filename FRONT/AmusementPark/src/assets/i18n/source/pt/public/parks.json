@@ -30,7 +30,8 @@
       "website": "Site",
       "backToList": "Voltar à lista",
       "images": "Imagens",
-      "map": "Mapa"
+      "map": "Mapa",
+      "browseZones": "Explorar todas as zonas"
     },
     "detail": {
       "heroBadge": "Visão geral do parque",
@@ -275,6 +276,39 @@
       "errorTitle": "Mapa indisponível",
       "errorMessage": "Não é possível carregar o mapa deste parque neste momento.",
       "backToPark": "Voltar a {{name}}"
+    },
+    "zones": {
+      "badge": "Zonas do parque",
+      "title": "Zonas de {{park}}",
+      "subtitle": "{{count}} zona(s) que agrupam {{total}} elemento(s) público(s).",
+      "loadingTitle": "A carregar zonas",
+      "loadingMessage": "As zonas do parque estão a carregar.",
+      "errorTitle": "Não foi possível carregar as zonas",
+      "errorMessage": "Não foi possível carregar as zonas do parque.",
+      "emptyTitle": "Nenhuma zona disponível",
+      "emptyMessage": "Não há atualmente nenhuma zona pública disponível para este parque.",
+      "noDescription": "Ainda não há descrição disponível para esta zona.",
+      "openZone": "Abrir zona",
+      "backToZones": "Voltar às zonas"
+    },
+    "zone": {
+      "badge": "Zona de {{park}}",
+      "loadingTitle": "A carregar zona",
+      "loadingMessage": "A zona do parque está a carregar.",
+      "errorTitle": "Não foi possível carregar a zona",
+      "errorMessage": "Não foi possível carregar a zona do parque.",
+      "emptyTitle": "Zona indisponível",
+      "emptyMessage": "A zona solicitada não está disponível.",
+      "totalItems": "Elementos",
+      "totalItemsHint": "Ligados a esta zona",
+      "mapMarkers": "Marcadores",
+      "mapMarkersHint": "Geolocalizados",
+      "mapBadge": "Mapa da zona",
+      "mapTitle": "Elementos geolocalizados",
+      "itemsBadge": "Elementos da zona",
+      "itemsTitle": "Elementos nesta zona",
+      "emptyItemsTitle": "Nenhum elemento nesta zona",
+      "emptyItemsMessage": "Nenhum elemento público está atualmente ligado a esta zona."
     }
   }
 }

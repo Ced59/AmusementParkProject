@@ -30,7 +30,8 @@
       "website": "Webseite",
       "backToList": "Zurück zur Liste",
       "images": "Bilder",
-      "map": "Karte"
+      "map": "Karte",
+      "browseZones": "Alle Bereiche ansehen"
     },
     "detail": {
       "heroBadge": "Parkübersicht",
@@ -275,6 +276,39 @@
       "errorTitle": "Karte nicht verfügbar",
       "errorMessage": "Die Karte dieses Parks kann derzeit nicht geladen werden.",
       "backToPark": "Zurück zu {{name}}"
+    },
+    "zones": {
+      "badge": "Parkbereiche",
+      "title": "Bereiche von {{park}}",
+      "subtitle": "{{count}} Bereich(e) mit {{total}} öffentlichen Element(en).",
+      "loadingTitle": "Bereiche werden geladen",
+      "loadingMessage": "Die Parkbereiche werden geladen.",
+      "errorTitle": "Bereiche konnten nicht geladen werden",
+      "errorMessage": "Die Parkbereiche konnten nicht geladen werden.",
+      "emptyTitle": "Kein Bereich verfügbar",
+      "emptyMessage": "Für diesen Park ist derzeit kein öffentlicher Bereich verfügbar.",
+      "noDescription": "Für diesen Bereich ist noch keine Beschreibung verfügbar.",
+      "openZone": "Bereich öffnen",
+      "backToZones": "Zurück zu den Bereichen"
+    },
+    "zone": {
+      "badge": "Bereich von {{park}}",
+      "loadingTitle": "Bereich wird geladen",
+      "loadingMessage": "Der Parkbereich wird geladen.",
+      "errorTitle": "Bereich konnte nicht geladen werden",
+      "errorMessage": "Der Parkbereich konnte nicht geladen werden.",
+      "emptyTitle": "Bereich nicht verfügbar",
+      "emptyMessage": "Der angeforderte Bereich ist nicht verfügbar.",
+      "totalItems": "Elemente",
+      "totalItemsHint": "Mit diesem Bereich verknüpft",
+      "mapMarkers": "Marker",
+      "mapMarkersHint": "Geolokalisiert",
+      "mapBadge": "Bereichskarte",
+      "mapTitle": "Geolokalisierte Elemente",
+      "itemsBadge": "Bereichselemente",
+      "itemsTitle": "Elemente in diesem Bereich",
+      "emptyItemsTitle": "Kein Element in diesem Bereich",
+      "emptyItemsMessage": "Derzeit ist kein öffentliches Element mit diesem Bereich verknüpft."
     }
   }
 }

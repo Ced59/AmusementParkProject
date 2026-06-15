@@ -1,6 +1,8 @@
 import {
   buildPublicParkItemRouteCommands,
   buildPublicParkItemsRouteCommands,
+  buildPublicParkZoneRouteCommands,
+  buildPublicParkZonesRouteCommands,
   buildPublicParkReferenceRouteCommands,
   buildPublicParkRouteCommands
 } from './public-detail-route.helpers';
@@ -19,6 +21,18 @@ describe('public detail route helpers', () => {
   it('extends park routes with the items segment', () => {
     expect(buildPublicParkItemsRouteCommands({ language: 'de', parkId: 'p1', parkName: 'Europa Park' }))
       .toEqual(['/', 'de', 'park', 'p1', 'europa-park', 'items']);
+  });
+
+  it('extends park routes with the zones segment', () => {
+    expect(buildPublicParkZonesRouteCommands({ language: 'fr', parkId: 'p1', parkName: 'Parc Test' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'parc-test', 'zones']);
+  });
+
+  it('builds zone route commands only when park and zone identifiers are valid', () => {
+    expect(buildPublicParkZoneRouteCommands({ language: 'fr', parkId: 'p1', parkName: 'Parc Test', zoneId: 'z1', zoneName: 'Far West' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'parc-test', 'zone', 'z1', 'far-west']);
+    expect(buildPublicParkZoneRouteCommands({ language: 'fr', parkId: 'p1', parkName: 'Parc Test', zoneId: '', zoneName: 'Far West' }))
+      .toBeNull();
   });
 
   it('builds item route commands only when park and item identifiers are valid', () => {
