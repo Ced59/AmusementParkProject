@@ -28,7 +28,7 @@ interface ParkItemNavigationCacheEntry {
 export class AdminParkItemEditStateFacade {
   private static readonly parkOptionsCacheTtlMs: number = 5 * 60 * 1000;
   private static readonly navigationCacheTtlMs: number = 2 * 60 * 1000;
-  private static readonly navigationPageSize: number = 200;
+  private static readonly pageSize: number = 100;
   private static parkOptionsCache: { expiresAt: number; options: EntitySelectOption[] } | null = null;
   private static readonly parkItemNavigationCache: Map<string, ParkItemNavigationCacheEntry> = new Map<string, ParkItemNavigationCacheEntry>();
 
@@ -37,6 +37,7 @@ export class AdminParkItemEditStateFacade {
   private readonly parkOptionsLoadingSignal = signal(false);
   private readonly sequentialNavigationStateSignal = signal<AdminParkItemSequentialNavigationState>(EMPTY_ADMIN_PARK_ITEM_SEQUENTIAL_NAVIGATION_STATE);
   private navigationLoadVersion: number = 0;
+  private parkOptionsFullyLoaded: boolean = false;
 
   public readonly isSaving: Signal<boolean> = this.isSavingSignal.asReadonly();
   public readonly parkOptions: Signal<EntitySelectOption[]> = this.parkOptionsSignal.asReadonly();
@@ -53,8 +54,36 @@ export class AdminParkItemEditStateFacade {
     return await firstValueFrom(this.parkItemsApiService.getParkItemById(itemId));
   }
 
+  async ensureParkOption(parkId: string): Promise<void> {
+    const normalizedParkId: string = parkId.trim();
+    if (!normalizedParkId || this.hasParkOption(normalizedParkId)) {
+      return;
+    }
+
+    const cachedOptions: { expiresAt: number; options: EntitySelectOption[] } | null = AdminParkItemEditStateFacade.parkOptionsCache;
+    if (cachedOptions && cachedOptions.expiresAt > Date.now()) {
+      this.parkOptionsSignal.set(cachedOptions.options);
+      this.parkOptionsFullyLoaded = true;
+      return;
+    }
+
+    try {
+      const park: Park = await firstValueFrom(this.parksApiService.getParkById(normalizedParkId));
+      if (!park.id) {
+        return;
+      }
+
+      this.mergeParkOption({
+        id: park.id,
+        label: this.buildParkOptionLabel(park)
+      });
+    } catch (error: unknown) {
+      console.error('Error loading current park option', error);
+    }
+  }
+
   async loadParkOptions(): Promise<void> {
-    if (this.parkOptionsSignal().length > 0 || this.parkOptionsLoadingSignal()) {
+    if (this.parkOptionsFullyLoaded || this.parkOptionsLoadingSignal()) {
       return;
     }
 
@@ -62,6 +91,7 @@ export class AdminParkItemEditStateFacade {
 
     if (cachedOptions && cachedOptions.expiresAt > Date.now()) {
       this.parkOptionsSignal.set(cachedOptions.options);
+      this.parkOptionsFullyLoaded = true;
       return;
     }
 
@@ -69,12 +99,18 @@ export class AdminParkItemEditStateFacade {
 
     try {
       const parks: Park[] = [];
-      const firstResponse: ParksApiResponse = await firstValueFrom(this.parksApiService.getParksPaginated(1, 100));
+      const pageSize: number = AdminParkItemEditStateFacade.pageSize;
+      const firstResponse: ParksApiResponse = await firstValueFrom(this.parksApiService.getParksPaginated(1, pageSize));
       parks.push(...(firstResponse.data ?? []));
 
       const totalPages: number = firstResponse.pagination?.totalPages ?? 1;
+      const remainingPageRequests: Array<Promise<ParksApiResponse>> = [];
       for (let currentPage: number = 2; currentPage <= totalPages; currentPage += 1) {
-        const pageResponse: ParksApiResponse = await firstValueFrom(this.parksApiService.getParksPaginated(currentPage, 100));
+        remainingPageRequests.push(firstValueFrom(this.parksApiService.getParksPaginated(currentPage, pageSize)));
+      }
+
+      const remainingResponses: ParksApiResponse[] = await Promise.all(remainingPageRequests);
+      for (const pageResponse of remainingResponses) {
         parks.push(...(pageResponse.data ?? []));
       }
 
@@ -90,6 +126,7 @@ export class AdminParkItemEditStateFacade {
         expiresAt: Date.now() + AdminParkItemEditStateFacade.parkOptionsCacheTtlMs,
         options
       };
+      this.parkOptionsFullyLoaded = true;
       this.parkOptionsSignal.set(options);
     } finally {
       this.parkOptionsLoadingSignal.set(false);
@@ -162,17 +199,20 @@ export class AdminParkItemEditStateFacade {
     }
 
     const rows: ParkItemAdminRow[] = [];
-    const pageSize: number = AdminParkItemEditStateFacade.navigationPageSize;
+    const pageSize: number = AdminParkItemEditStateFacade.pageSize;
     const firstResponse: ApiResponse<ParkItemAdminRow> = await firstValueFrom(
       this.parkItemsApiService.getParkItemsPaginated(1, pageSize, parkId)
     );
     rows.push(...(firstResponse.data ?? []));
 
     const totalPages: number = firstResponse.pagination?.totalPages ?? 1;
+    const remainingPageRequests: Array<Promise<ApiResponse<ParkItemAdminRow>>> = [];
     for (let currentPage: number = 2; currentPage <= totalPages; currentPage += 1) {
-      const pageResponse: ApiResponse<ParkItemAdminRow> = await firstValueFrom(
-        this.parkItemsApiService.getParkItemsPaginated(currentPage, pageSize, parkId)
-      );
+      remainingPageRequests.push(firstValueFrom(this.parkItemsApiService.getParkItemsPaginated(currentPage, pageSize, parkId)));
+    }
+
+    const remainingResponses: Array<ApiResponse<ParkItemAdminRow>> = await Promise.all(remainingPageRequests);
+    for (const pageResponse of remainingResponses) {
       rows.push(...(pageResponse.data ?? []));
     }
 
@@ -199,6 +239,22 @@ export class AdminParkItemEditStateFacade {
       previousItemId: currentIndex > 0 ? rows[currentIndex - 1].id : null,
       nextItemId: currentIndex >= 0 && currentIndex < totalItems - 1 ? rows[currentIndex + 1].id : null
     };
+  }
+
+  private hasParkOption(parkId: string): boolean {
+    return this.parkOptionsSignal().some((option: EntitySelectOption): boolean => option.id === parkId);
+  }
+
+  private mergeParkOption(option: EntitySelectOption): void {
+    const existingOptions: EntitySelectOption[] = this.parkOptionsSignal();
+    if (existingOptions.some((existingOption: EntitySelectOption): boolean => existingOption.id === option.id)) {
+      return;
+    }
+
+    this.parkOptionsSignal.set(
+      [...existingOptions, option]
+        .sort((left: EntitySelectOption, right: EntitySelectOption): number => left.label.localeCompare(right.label))
+    );
   }
 
   private buildParkOptionLabel(park: Park): string {

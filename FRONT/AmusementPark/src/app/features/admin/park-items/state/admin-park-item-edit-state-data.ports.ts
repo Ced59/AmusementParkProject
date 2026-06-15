@@ -10,7 +10,7 @@ export const ADMIN_PARK_ITEM_EDIT_STATE_PARK_ITEMS_API_SERVICE_PORT = new Inject
   factory: () => inject(ParkItemsApiService)
 });
 
-export interface AdminParkItemEditStateParksApiServicePort extends Pick<ParksApiService, 'getParksPaginated'> {
+export interface AdminParkItemEditStateParksApiServicePort extends Pick<ParksApiService, 'getParkById' | 'getParksPaginated'> {
 }
 
 export const ADMIN_PARK_ITEM_EDIT_STATE_PARKS_API_SERVICE_PORT = new InjectionToken<AdminParkItemEditStateParksApiServicePort>('ADMIN_PARK_ITEM_EDIT_STATE_PARKS_API_SERVICE_PORT', {

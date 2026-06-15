@@ -29,6 +29,8 @@ describe('admin park item edit form mapper', () => {
     expect(form.get('type')?.value).toBe('Attraction');
     expect(form.get('latitude')?.value).toBe(48.8566);
     expect(form.get('longitude')?.value).toBe(2.3522);
+    expect(form.get('isVisible')?.value).toBeFalse();
+    expect(form.get('adminReviewStatus')?.value).toBe('ToReview');
     expect(getAccessConditions(form).length).toBe(0);
   });
 

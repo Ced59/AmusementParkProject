@@ -59,8 +59,8 @@ export function createAdminParkItemEditForm(formBuilder: FormBuilder, parkId: st
       fastPassEntrance: createLocationGroup(formBuilder),
       reducedMobilityEntrance: createLocationGroup(formBuilder)
     }),
-    isVisible: [true],
-    adminReviewStatus: ['Validated']
+    isVisible: [false],
+    adminReviewStatus: ['ToReview']
   });
 }
 

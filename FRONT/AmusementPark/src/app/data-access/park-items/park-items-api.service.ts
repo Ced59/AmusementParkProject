@@ -21,7 +21,8 @@ import {
   normalizeParkItem,
   normalizeParkItemAdminRows,
   PagedCollectionResponse,
-  unwrapCollection
+  unwrapCollection,
+  unwrapPagedCollection
 } from '../shared/api-helpers';
 import { PARK_ITEMS_API_ENDPOINTS, ParkItemAdminListFilters, ParkItemAdminListSort } from './park-items-api-endpoints';
 import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
@@ -134,11 +135,15 @@ export class ParkItemsApiService {
     options: ParkItemsHttpOptions = {}
   ): Observable<ApiResponse<ParkItemAdminRow>> {
     const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsPaginated(page, size, parkId, search, filters, sort)}`;
-    return this.http.get<ApiResponse<ParkItemAdminRow>>(url, options).pipe(
-      map((response: ApiResponse<ParkItemAdminRow>) => ({
-        ...response,
-        data: normalizeParkItemAdminRows(response.data)
-      }))
+    return this.http.get<ApiResponse<ParkItemAdminRow> | PagedCollectionResponse<ParkItemAdminRow>>(url, options).pipe(
+      map((response: ApiResponse<ParkItemAdminRow> | PagedCollectionResponse<ParkItemAdminRow>) => {
+        const page = unwrapPagedCollection<ParkItemAdminRow>(response);
+
+        return {
+          data: normalizeParkItemAdminRows(page.items),
+          pagination: page.pagination
+        };
+      })
     );
   }
 
