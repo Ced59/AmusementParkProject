@@ -20,6 +20,7 @@ import { AuthService } from './services/auth/auth.service';
 import { LanguageInterceptor } from '@core/http/interceptors/language.interceptor';
 import { AuthInterceptor } from '@core/http/interceptors/auth.interceptor';
 import AmusementParkPreset from './config/primeng-preset';
+import { DeploymentVersionService } from '@core/deployment/deployment-version.service';
 import { MatomoPageViewTrackingService } from '@core/analytics/matomo-page-view-tracking.service';
 import { MicrosoftClarityTrackingService } from '@core/analytics/microsoft-clarity-tracking.service';
 
@@ -69,6 +70,10 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(() => {
       const initializerFn = initializeApp(inject(TranslationService), inject(AuthService));
       return initializerFn();
+    }),
+
+    provideAppInitializer(() => {
+      inject(DeploymentVersionService).initialize();
     }),
 
     provideAppInitializer(() => {
