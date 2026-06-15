@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
@@ -22,6 +24,8 @@ public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
 {
     private static readonly string[] DefaultRouteIdKeys = { "id", "imageId", "userId", "sourceKey", "parkId" };
     private static readonly string[] DefaultPropertyIdKeys = { "Id", "UserId", "IdUser", "ImageId", "SourceKey", "ParkId", "TargetParkId" };
+    private static readonly ConcurrentDictionary<Type, PropertyInfo[]> ReadablePropertiesByType = new ConcurrentDictionary<Type, PropertyInfo[]>();
+    private static readonly ConcurrentDictionary<Type, IReadOnlyDictionary<string, PropertyInfo>> ReadablePropertiesByNameByType = new ConcurrentDictionary<Type, IReadOnlyDictionary<string, PropertyInfo>>();
     private static readonly HashSet<string> SensitivePropertyNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
     {
         "password",
@@ -216,16 +220,15 @@ public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
             return;
         }
 
-        if (argumentValue is System.Collections.IEnumerable enumerable && argumentValue is not string)
+        if (argumentValue is IEnumerable enumerable && argumentValue is not string)
         {
-            int count = enumerable.Cast<object>().Count();
-            AddValue(metadata, $"argument.{argumentName}.count", count.ToString());
+            AddValue(metadata, $"argument.{argumentName}.count", CountEnumerable(enumerable).ToString());
             return;
         }
 
-        foreach (PropertyInfo propertyInfo in valueType.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+        foreach (PropertyInfo propertyInfo in GetReadableProperties(valueType))
         {
-            if (!propertyInfo.CanRead || propertyInfo.GetIndexParameters().Length > 0 || IsSensitiveName(propertyInfo.Name))
+            if (IsSensitiveName(propertyInfo.Name))
             {
                 continue;
             }
@@ -242,10 +245,9 @@ public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
                 continue;
             }
 
-            if (propertyValue is System.Collections.IEnumerable propertyEnumerable && propertyValue is not string)
+            if (propertyValue is IEnumerable propertyEnumerable && propertyValue is not string)
             {
-                int count = propertyEnumerable.Cast<object>().Count();
-                AddValue(metadata, $"argument.{argumentName}.{propertyInfo.Name}.count", count.ToString());
+                AddValue(metadata, $"argument.{argumentName}.{propertyInfo.Name}.count", CountEnumerable(propertyEnumerable).ToString());
             }
         }
     }
@@ -306,8 +308,8 @@ public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
 
     private static string? TryReadScalarProperty(object value, string propertyName)
     {
-        PropertyInfo? propertyInfo = value.GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
-        if (propertyInfo is null || !propertyInfo.CanRead || propertyInfo.GetIndexParameters().Length > 0)
+        IReadOnlyDictionary<string, PropertyInfo> readablePropertiesByName = ReadablePropertiesByNameByType.GetOrAdd(value.GetType(), BuildReadablePropertiesByName);
+        if (!readablePropertiesByName.TryGetValue(propertyName, out PropertyInfo? propertyInfo))
         {
             return null;
         }
@@ -318,7 +320,15 @@ public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
 
     private static bool IsSensitiveName(string name)
     {
-        return SensitivePropertyNames.Any(sensitiveName => name.Contains(sensitiveName, StringComparison.OrdinalIgnoreCase));
+        foreach (string sensitiveName in SensitivePropertyNames)
+        {
+            if (name.Contains(sensitiveName, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static void AddValue(Dictionary<string, string> metadata, string key, string? value)
@@ -339,5 +349,51 @@ public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
         }
 
         return value[..maxLength];
+    }
+
+    private static PropertyInfo[] GetReadableProperties(Type type)
+    {
+        return ReadablePropertiesByType.GetOrAdd(type, static valueType => valueType
+            .GetProperties(BindingFlags.Instance | BindingFlags.Public)
+            .Where(static propertyInfo => propertyInfo.CanRead && propertyInfo.GetIndexParameters().Length == 0)
+            .ToArray());
+    }
+
+    private static IReadOnlyDictionary<string, PropertyInfo> BuildReadablePropertiesByName(Type type)
+    {
+        Dictionary<string, PropertyInfo> propertiesByName = new Dictionary<string, PropertyInfo>(StringComparer.OrdinalIgnoreCase);
+        foreach (PropertyInfo propertyInfo in GetReadableProperties(type))
+        {
+            propertiesByName[propertyInfo.Name] = propertyInfo;
+        }
+
+        return propertiesByName;
+    }
+
+    private static int CountEnumerable(IEnumerable enumerable)
+    {
+        if (enumerable is ICollection collection)
+        {
+            return collection.Count;
+        }
+
+        int count = 0;
+        IEnumerator enumerator = enumerable.GetEnumerator();
+        try
+        {
+            while (enumerator.MoveNext())
+            {
+                count++;
+            }
+        }
+        finally
+        {
+            if (enumerator is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+        }
+
+        return count;
     }
 }

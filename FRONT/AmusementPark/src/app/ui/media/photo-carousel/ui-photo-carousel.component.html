@@ -18,7 +18,7 @@
       </button>
 
       <button
-        *ngFor="let category of categories"
+        *ngFor="let category of categories; trackBy: trackByCategory"
         type="button"
         class="photo-carousel-filter"
         [class.photo-carousel-filter--active]="hasSelectedCategory(category.key)"
@@ -31,7 +31,7 @@
     <div class="photo-carousel-toolbar__group photo-carousel-toolbar__group--limits" role="group" [attr.aria-label]="displayCountLabelKey | translate">
       <span class="photo-carousel-toolbar__label">{{ displayCountLabelKey | translate }}</span>
       <button
-        *ngFor="let limit of displayLimits"
+        *ngFor="let limit of displayLimits; trackBy: trackByDisplayLimit"
         type="button"
         class="photo-carousel-limit"
         [class.photo-carousel-limit--active]="selectedLimit === limit"
@@ -107,7 +107,7 @@
 
     <div class="photo-carousel-strip" *ngIf="displayedPhotos.length > 1">
       <button
-        *ngFor="let photo of displayedPhotos; let photoIndex = index"
+        *ngFor="let photo of displayedPhotos; let photoIndex = index; trackBy: trackByPhoto"
         type="button"
         class="photo-carousel-strip__item"
         [class.photo-carousel-strip__item--active]="photoIndex === activePhotoIndex"
@@ -203,7 +203,7 @@
 
       <div class="photo-lightbox__thumbs" *ngIf="displayedPhotos.length > 1">
         <button
-          *ngFor="let photo of displayedPhotos; let photoIndex = index"
+          *ngFor="let photo of displayedPhotos; let photoIndex = index; trackBy: trackByPhoto"
           type="button"
           class="photo-lightbox__thumb"
           [class.photo-lightbox__thumb--active]="photoIndex === activePhotoIndex"

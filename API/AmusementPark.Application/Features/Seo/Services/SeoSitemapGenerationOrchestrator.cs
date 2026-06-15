@@ -71,12 +71,7 @@ public sealed class SeoSitemapGenerationOrchestrator
             foreach (ISitemapSectionProvider provider in this.sectionProviders)
             {
                 IReadOnlyCollection<SitemapUrlEntry> providerUrls = await provider.GetUrlsAsync(context, cancellationToken);
-                IReadOnlyCollection<SitemapUrlEntry> distinctUrls = providerUrls
-                    .Where(static url => !string.IsNullOrWhiteSpace(url.RelativePath))
-                    .GroupBy(static url => NormalizeRelativePath(url.RelativePath), StringComparer.OrdinalIgnoreCase)
-                    .Select(static group => group.OrderByDescending(url => url.LastModifiedUtc).First())
-                    .OrderBy(static url => url.RelativePath, StringComparer.OrdinalIgnoreCase)
-                    .ToList();
+                IReadOnlyCollection<SitemapUrlEntry> distinctUrls = GetDistinctUrls(providerUrls);
 
                 foreach (SitemapSectionBuildResult languageSection in SplitProviderSectionByLanguage(provider, distinctUrls, context.SupportedLanguages))
                 {
@@ -166,12 +161,30 @@ public sealed class SeoSitemapGenerationOrchestrator
         List<SitemapSectionBuildResult> sections = new List<SitemapSectionBuildResult>();
 
         string baseFileName = NormalizeBaseFileName(provider.FileName, provider.Key);
+        Dictionary<string, List<SitemapUrlEntry>> urlsByLanguage = new Dictionary<string, List<SitemapUrlEntry>>(StringComparer.OrdinalIgnoreCase);
         foreach (string language in languages)
         {
-            IReadOnlyCollection<SitemapUrlEntry> languageUrls = urls
-                .Where(url => IsUrlForLanguage(url.RelativePath, language))
-                .OrderBy(static url => url.RelativePath, StringComparer.OrdinalIgnoreCase)
-                .ToList();
+            urlsByLanguage[language] = new List<SitemapUrlEntry>();
+        }
+
+        List<SitemapUrlEntry> unscopedUrls = new List<SitemapUrlEntry>();
+        foreach (SitemapUrlEntry url in urls)
+        {
+            string normalizedPath = NormalizeRelativePath(url.RelativePath);
+            string? language = ResolveUrlLanguage(normalizedPath, languages);
+            if (language is null)
+            {
+                unscopedUrls.Add(url);
+                continue;
+            }
+
+            urlsByLanguage[language].Add(url);
+        }
+
+        foreach (string language in languages)
+        {
+            List<SitemapUrlEntry> languageUrls = urlsByLanguage[language];
+            languageUrls.Sort(CompareUrlsByRelativePath);
 
             if (languageUrls.Count == 0)
             {
@@ -186,10 +199,7 @@ public sealed class SeoSitemapGenerationOrchestrator
                 languageUrls);
         }
 
-        IReadOnlyCollection<SitemapUrlEntry> unscopedUrls = urls
-            .Where(url => !languages.Any(language => IsUrlForLanguage(url.RelativePath, language)))
-            .OrderBy(static url => url.RelativePath, StringComparer.OrdinalIgnoreCase)
-            .ToList();
+        unscopedUrls.Sort(CompareUrlsByRelativePath);
 
         if (unscopedUrls.Count > 0)
         {
@@ -202,6 +212,43 @@ public sealed class SeoSitemapGenerationOrchestrator
         }
 
         return sections;
+    }
+
+    private static IReadOnlyCollection<SitemapUrlEntry> GetDistinctUrls(IReadOnlyCollection<SitemapUrlEntry> urls)
+    {
+        Dictionary<string, SitemapUrlEntry> urlsByPath = new Dictionary<string, SitemapUrlEntry>(StringComparer.OrdinalIgnoreCase);
+        foreach (SitemapUrlEntry url in urls)
+        {
+            if (string.IsNullOrWhiteSpace(url.RelativePath))
+            {
+                continue;
+            }
+
+            string normalizedPath = NormalizeRelativePath(url.RelativePath);
+            if (!urlsByPath.TryGetValue(normalizedPath, out SitemapUrlEntry? existingUrl) || IsNewerUrl(url, existingUrl))
+            {
+                urlsByPath[normalizedPath] = url;
+            }
+        }
+
+        List<SitemapUrlEntry> distinctUrls = urlsByPath.Values.ToList();
+        distinctUrls.Sort(CompareUrlsByRelativePath);
+        return distinctUrls;
+    }
+
+    private static bool IsNewerUrl(SitemapUrlEntry candidate, SitemapUrlEntry existing)
+    {
+        if (!candidate.LastModifiedUtc.HasValue)
+        {
+            return false;
+        }
+
+        if (!existing.LastModifiedUtc.HasValue)
+        {
+            return true;
+        }
+
+        return candidate.LastModifiedUtc.Value > existing.LastModifiedUtc.Value;
     }
 
     private static void AddChunkedSections(
@@ -266,6 +313,25 @@ public sealed class SeoSitemapGenerationOrchestrator
 
         return normalizedPath.StartsWith($"/{normalizedLanguage}/", StringComparison.OrdinalIgnoreCase)
             || string.Equals(normalizedPath, $"/{normalizedLanguage}", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static string? ResolveUrlLanguage(string normalizedPath, IReadOnlyCollection<string> languages)
+    {
+        foreach (string language in languages)
+        {
+            if (normalizedPath.StartsWith($"/{language}/", StringComparison.OrdinalIgnoreCase)
+                || string.Equals(normalizedPath, $"/{language}", StringComparison.OrdinalIgnoreCase))
+            {
+                return language;
+            }
+        }
+
+        return null;
+    }
+
+    private static int CompareUrlsByRelativePath(SitemapUrlEntry first, SitemapUrlEntry second)
+    {
+        return string.Compare(first.RelativePath, second.RelativePath, StringComparison.OrdinalIgnoreCase);
     }
 
 
@@ -355,11 +421,22 @@ public sealed class SeoSitemapGenerationOrchestrator
 
     private static DateTime? ResolveLastModified(IReadOnlyCollection<SitemapUrlEntry> urls)
     {
-        return urls
-            .Where(static url => url.LastModifiedUtc.HasValue)
-            .Select(static url => url.LastModifiedUtc!.Value.ToUniversalTime())
-            .DefaultIfEmpty(DateTime.UtcNow)
-            .Max();
+        DateTime? lastModifiedUtc = null;
+        foreach (SitemapUrlEntry url in urls)
+        {
+            if (!url.LastModifiedUtc.HasValue)
+            {
+                continue;
+            }
+
+            DateTime candidateUtc = url.LastModifiedUtc.Value.ToUniversalTime();
+            if (!lastModifiedUtc.HasValue || candidateUtc > lastModifiedUtc.Value)
+            {
+                lastModifiedUtc = candidateUtc;
+            }
+        }
+
+        return lastModifiedUtc ?? DateTime.UtcNow;
     }
 
     private static string NormalizeRelativePath(string relativePath)
