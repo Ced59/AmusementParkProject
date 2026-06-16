@@ -7,7 +7,7 @@ Une Content Security Policy est un en-tête HTTP envoyé au navigateur pour limi
 Exemples de règles :
 
 - scripts autorisés uniquement depuis le site, Google Identity et Matomo ;
-- styles autorisés depuis le site et Google Fonts ;
+- styles autorisés depuis le site ;
 - images autorisées depuis le site, l'API images, les données inline nécessaires et les domaines HTTPS ;
 - iframes autorisées uniquement pour Google Identity ;
 - objets/plugins interdits ;
@@ -88,7 +88,7 @@ La politique initiale est volontairement pragmatique pour ne pas casser la MVP :
 | Application Angular | `'self'` |
 | Google Identity | `https://accounts.google.com`, `https://apis.google.com` |
 | Matomo | `https://matomo.cedric-caudron.com` |
-| Google Fonts | `https://fonts.googleapis.com`, `https://fonts.gstatic.com` |
+| Polices locales | `'self'`, `data:` |
 | Images | `'self'`, `data:`, `blob:`, `https:`, `http://localhost:*` |
 | API / appels XHR | `'self'`, localhost dev, Google Identity, Matomo |
 | Frames | `'self'`, Google Identity |

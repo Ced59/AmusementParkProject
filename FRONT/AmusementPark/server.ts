@@ -402,7 +402,11 @@ function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: str
 
 function setStaticAssetResponseHeaders(res: Response, filePath: string): void {
   res.setHeader('X-AmusementPark-Build-Version', currentBuildVersion);
-  res.setHeader('Cache-Control', isImmutableBuildAsset(filePath) ? immutableBuildAssetCacheControl : revalidatedStaticAssetCacheControl);
+  res.setHeader('Cache-Control', isImmutableStaticAsset(filePath) ? immutableBuildAssetCacheControl : revalidatedStaticAssetCacheControl);
+}
+
+function isImmutableStaticAsset(filePath: string): boolean {
+  return isImmutableBuildAsset(filePath) || isLocalFontAsset(filePath);
 }
 
 function isImmutableBuildAsset(filePath: string): boolean {
@@ -410,6 +414,12 @@ function isImmutableBuildAsset(filePath: string): boolean {
   const fileName: string = normalizedPath.split('/').pop() ?? '';
 
   return /\.(?:js|mjs|css)$/i.test(fileName) && /-[a-z0-9]{8,}\.(?:js|mjs|css)$/i.test(fileName);
+}
+
+function isLocalFontAsset(filePath: string): boolean {
+  const normalizedPath: string = filePath.replace(/\\/g, '/');
+
+  return /\/assets\/fonts\/.+\.(?:ttf|woff2?)$/i.test(normalizedPath);
 }
 
 function readCsrShellHtml(csrIndexHtmlPath: string | null): string {
@@ -1195,9 +1205,9 @@ function buildContentSecurityPolicy(): string {
     "frame-ancestors 'none'",
     "form-action 'self'",
     joinCspDirective('script-src', ["'self'", "'unsafe-inline'", 'https://accounts.google.com', 'https://apis.google.com', 'https://matomo.cedric-caudron.com', 'https://www.clarity.ms', 'https://*.clarity.ms', ...localScriptSources]),
-    joinCspDirective('style-src', ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://accounts.google.com']),
-    joinCspDirective('style-src-elem', ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://accounts.google.com']),
-    joinCspDirective('font-src', ["'self'", 'data:', 'https://fonts.gstatic.com']),
+    joinCspDirective('style-src', ["'self'", "'unsafe-inline'", 'https://accounts.google.com']),
+    joinCspDirective('style-src-elem', ["'self'", "'unsafe-inline'", 'https://accounts.google.com']),
+    joinCspDirective('font-src', ["'self'", 'data:']),
     joinCspDirective('img-src', ["'self'", 'data:', 'blob:', 'https:', 'https://tile.openstreetmap.org', 'https://*.tile.openstreetmap.org', 'https://*.clarity.ms', ...localImageSources]),
     joinCspDirective('connect-src', ["'self'", 'https://accounts.google.com', 'https://www.googleapis.com', 'https://matomo.cedric-caudron.com', 'https://www.clarity.ms', 'https://*.clarity.ms', ...localConnectSources]),
     joinCspDirective('frame-src', ["'self'", 'https://accounts.google.com']),
