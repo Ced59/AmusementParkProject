@@ -10,6 +10,7 @@
     "start": "ng serve",
     "prebuild": "npm run generate-version && npm run i18n:build",
     "build": "ng build",
+    "postbuild": "node tools/patch-primeicons-font-display.mjs",
     "prewatch": "npm run generate-version && npm run i18n:build",
     "watch": "ng build --watch --configuration development",
     "pretest": "npm run generate-version && npm run i18n:build",

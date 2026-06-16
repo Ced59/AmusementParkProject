@@ -19,6 +19,7 @@ export class ImageDisplayComponent implements OnChanges {
   @Input() placeholderIconClass: string | null = null;
   @Input() placeholderKind: ImageFallbackKind = 'generic';
   @Input() loading: 'eager' | 'lazy' = 'lazy';
+  @Input() fetchPriority: 'high' | 'low' | 'auto' | null = null;
   @Input() sizes: string = '100vw';
   @Input() responsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280, 1600, 1920];
 

@@ -31,6 +31,7 @@ export class TranslationService {
       catchError((error: unknown): Observable<unknown> => {
         console.error(`Error loading language ${lang}:`, error);
         if (lang !== 'en') {
+          this.setDefaultLang('en');
           return this.translate.use('en');
         }
 
@@ -46,7 +47,7 @@ export class TranslationService {
 
   initializeLanguage(): Promise<unknown> {
     const initialLanguage: string = this.resolveInitialLanguage();
-    this.setDefaultLang('en');
+    this.setDefaultLang(initialLanguage);
     return firstValueFrom(this.useLang(initialLanguage));
   }
 

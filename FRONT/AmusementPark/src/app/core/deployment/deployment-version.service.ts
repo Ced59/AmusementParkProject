@@ -31,6 +31,7 @@ export function shouldReloadForDeploymentVersion(currentVersion: string, deploye
 export class DeploymentVersionService {
   private readonly versionEndpoint: string = '/version.json';
   private readonly checkIntervalMilliseconds: number = 5 * 60 * 1000;
+  private readonly initialCheckDelayMilliseconds: number = 15 * 1000;
   private readonly reloadSessionStorageKey: string = 'amusement-park-reloaded-deployment-version';
   private initialized: boolean = false;
 
@@ -49,7 +50,10 @@ export class DeploymentVersionService {
     this.initialized = true;
 
     this.ngZone.runOutsideAngular((): void => {
-      void this.checkForDeploymentVersionChange();
+      window.setTimeout((): void => {
+        void this.checkForDeploymentVersionChange();
+      }, this.initialCheckDelayMilliseconds);
+
       this.document.addEventListener('visibilitychange', this.handleVisibilityChange);
       window.addEventListener('pageshow', this.handlePageShow);
       window.setInterval((): void => {
