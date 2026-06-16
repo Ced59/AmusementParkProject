@@ -43,7 +43,6 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/primeflex/primeflex.css",
               "node_modules/primeicons/primeicons.css",
               "src/styles/primeicons-font-display.scss"
             ],
@@ -160,10 +159,8 @@
               }
             ],
             "styles": [
-              "node_modules/leaflet/dist/leaflet.css",
               "node_modules/primeicons/primeicons.css",
               "src/styles/primeicons-font-display.scss",
-              "node_modules/primeflex/primeflex.css",
               "src/styles.scss"
             ],
             "scripts": []

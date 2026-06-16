@@ -1,3 +1,6 @@
+@import "quill/dist/quill.core.css";
+@import "quill/dist/quill.snow.css";
+
 .localized-rich-text-editor {
   display: block;
   max-width: 100%;
@@ -7,42 +10,38 @@
   display: block;
 }
 
-:host ::ng-deep {
-  .localized-rich-text-editor .p-tablist {
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: thin;
-  }
+.localized-rich-text-editor .p-tablist {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
 
-  .localized-rich-text-editor .p-tab {
-    flex: 0 0 auto;
-    white-space: nowrap;
-  }
+.localized-rich-text-editor .p-tab {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
 
-  .p-editor-container {
-    border-radius: 0.75rem;
-    overflow: hidden;
-  }
+.localized-rich-text-editor .p-editor-container {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
 
-  .p-editor-toolbar {
-    border-bottom: 1px solid var(--surface-border);
-  }
+.localized-rich-text-editor .p-editor-toolbar {
+  border-bottom: 1px solid var(--surface-border);
+}
 
-  .p-editor-content {
-    min-height: 16rem;
-  }
+.localized-rich-text-editor .p-editor-content {
+  min-height: 16rem;
 }
 
 @media (max-width: 767px) {
-  :host ::ng-deep {
-    .localized-rich-text-editor .p-tablist {
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.35rem;
-    }
+  .localized-rich-text-editor .p-tablist {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.35rem;
+  }
 
-    .localized-rich-text-editor .p-tab {
-      min-width: max-content;
-    }
+  .localized-rich-text-editor .p-tab {
+    min-width: max-content;
   }
 }
