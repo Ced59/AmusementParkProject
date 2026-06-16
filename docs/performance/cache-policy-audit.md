@@ -48,7 +48,7 @@ l'incohérence.
 | 1 | Cache HTTP navigateur | `Cache-Control` posé par l'API (`PublicHttpCacheHeadersMiddleware`/`Filter`) et par le SSR | par client | `/parks*` : `max-age=60, s-maxage=300, swr=300` ; SEO docs : `max-age=600, s-maxage=3600, swr=3600` ; pages SSR : `max-age=60, swr=600` | URL + `Vary: Accept-Language` | impossible (détenu par le client) |
 | 2 | Transfer‑cache Angular | `provideClientHydration()` (défaut, transfer‑cache activé) | par chargement de page | le temps de l'hydratation | méthode + **URL** + params | n/a — **cassé** (cf. §3) |
 | 3 | Page cache SSR | `server.ts` (`pageCache` mémoire **+ disque**) | par URL publique | `SSR_PAGE_CACHE_SECONDS=86400` (**24 h**), 2000 entrées, disque 4 Go | `proto://host + originalUrl` | **aucune** |
-| 4 | Cache SEO SSR | `server.ts` (`seoDocumentCache`) | robots/sitemap | `SSR_SEO_DOCUMENT_CACHE_SECONDS=3600` (**1 h**) | **chemin uniquement** ; supprime `Vary`, réécrit `Cache-Control` en `max-age≤300, swr=60` | aucune (expire seul) |
+| 4 | Cache SEO SSR | `server.ts` (`seoDocumentCache`) | robots/sitemap | `SSR_SEO_DOCUMENT_CACHE_SECONDS=0` (pas d'expiration temporelle) | **chemin uniquement** ; supprime `Vary`, réécrit `Cache-Control` selon `SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL` | invalidation SEO |
 | 5 | OutputCache API (.NET) | `AddApiOutputCaching` | endpoints GET anonymes | `PublicSeoDocuments` 6 h ; `PublicDataShort` 5 min ; `PublicDataMedium` 30 min ; `PublicReferenceData` 6 h | `Host, X-Forwarded-Host, X-Forwarded-Proto (+ Accept-Language pour data)` + query | **SEO uniquement** (`EvictByTagAsync(PublicSeoTag)` dans `AdminSeoSitemapsController`). `PublicDataTag` / `PublicReferenceDataTag` : **jamais évincés** |
 | 6 | Cache edge openresty / NPM | reverse‑proxy frontal | par URL | observé `age ≈ 4 h` (≠ `max-age=300` origine) | config NPM | purge manuelle / au déploiement uniquement |
 
@@ -156,7 +156,7 @@ ciblée au déploiement et après chaque maj/régénération. Le `age` à ~4 h v
 `proxy_cache` qui ignore l'origine.
 
 ### F. Aligner et purger les caches SEO
-Aligner `SSR_SEO_DOCUMENT_CACHE_SECONDS` (1 h) sur l'OutputCache SEO API (6 h), et **purger les
+Conserver les documents SEO en cache serveur jusqu'a invalidation explicite, et **purger les
 deux + l'edge** après chaque régénération de sitemap (en complément du warmup déjà câblé).
 
 ---
@@ -221,8 +221,7 @@ résiduelles après une mise à jour.
   admin sont rares et le warmup recharge les routes critiques ; correctness > efficacité.
 
 ### F — Alignement des caches SEO ✅
-- `compose.prod.yml` + `.env.production.example` : `SSR_SEO_DOCUMENT_CACHE_SECONDS` aligné à
-  21600 (6 h) sur l'OutputCache SEO de l'API.
+- `compose.prod.yml` + `.env.production.example` : `SSR_SEO_DOCUMENT_CACHE_SECONDS=0`, donc les documents SEO restent en cache mémoire jusqu'a l'invalidation SEO déclenchée par une nouvelle génération.
 
 ### E — Cache edge openresty / NPM (à appliquer côté Nginx Proxy Manager, hors dépôt)
 Le proxy frontal sert ~4 h (`age` observé) alors que l'origine annonce `s-maxage=300`. Aligner

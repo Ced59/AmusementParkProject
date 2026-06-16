@@ -24,21 +24,23 @@ Le cache fonctionne pour `GET` et `HEAD`. Un `HEAD` froid remplit aussi le cache
 Variables front SSR :
 
 ```env
-SSR_SEO_DOCUMENT_CACHE_SECONDS=3600
+SSR_SEO_DOCUMENT_CACHE_SECONDS=0
 SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES=128
 ```
 
 Pour désactiver ce cache :
 
 ```env
-SSR_SEO_DOCUMENT_CACHE_SECONDS=0
+SSR_SEO_DOCUMENT_CACHE_SECONDS=-1
 ```
+
+`0` signifie cache memoire sans expiration temporelle. Une valeur positive applique une expiration en secondes.
 
 ## Invalidation
 
 Le sitemap reste un snapshot généré depuis l'administration. La consultation publique ne régénère pas le sitemap.
 
-Après une régénération admin, le cache front expirera automatiquement selon `SSR_SEO_DOCUMENT_CACHE_SECONDS`. Pour une prise en compte immédiate après une grosse régénération, redémarrer uniquement le container front vide aussi ce cache mémoire :
+Après une régénération admin, l'invalidation publique `PublicCacheScope.Seo` vide le cache front des documents SEO. En secours, redémarrer uniquement le container front vide aussi ce cache mémoire :
 
 ```bash
 docker restart amusementpark-front

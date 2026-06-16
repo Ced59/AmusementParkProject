@@ -32,7 +32,7 @@ const diskPageCacheDirectory = process.env['SSR_DISK_PAGE_CACHE_DIR'] ?? '/tmp/a
 const diskPageCacheMaxBytes = Math.max(0, Number(process.env['SSR_DISK_PAGE_CACHE_MAX_BYTES'] ?? 4 * 1024 * 1024 * 1024));
 const diskPageCacheBudgetCheckEveryWrites = Math.max(1, Number(process.env['SSR_DISK_PAGE_CACHE_BUDGET_CHECK_EVERY_WRITES'] ?? 100));
 const pageCacheMaxHtmlBytes = Math.max(0, Number(process.env['SSR_PAGE_CACHE_MAX_HTML_BYTES'] ?? 2 * 1024 * 1024));
-const seoDocumentCacheTtlSeconds = Math.max(0, Number(process.env['SSR_SEO_DOCUMENT_CACHE_SECONDS'] ?? 3600));
+const seoDocumentCacheTtlSeconds = Number(process.env['SSR_SEO_DOCUMENT_CACHE_SECONDS'] ?? 0);
 const seoDocumentCacheMaxEntries = Math.max(0, Number(process.env['SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES'] ?? 128));
 const seoDocumentCache = new Map<string, SeoDocumentCacheEntry>();
 const pendingSeoDocumentCacheRequests = new Map<string, Array<SeoDocumentCacheCallback>>();
@@ -106,7 +106,7 @@ interface SeoDocumentCacheEntry {
   readonly statusCode: number;
   readonly headers: Record<string, string | string[]>;
   readonly body: Buffer;
-  readonly expiresAt: number;
+  readonly expiresAt: number | null;
 }
 
 type SeoDocumentCacheCallback = (error: Error | null, entry: SeoDocumentCacheEntry | null) => void;
@@ -1249,7 +1249,7 @@ function proxySeoDocumentToApi(req: Request, res: Response, next: NextFunction, 
 }
 
 function isSeoDocumentCacheEnabled(): boolean {
-  return seoDocumentCacheTtlSeconds > 0 && seoDocumentCacheMaxEntries > 0;
+  return seoDocumentCacheTtlSeconds >= 0 && seoDocumentCacheMaxEntries > 0;
 }
 
 function isSeoDocumentCacheableMethod(method: string): boolean {
@@ -1266,7 +1266,7 @@ function getCachedSeoDocument(cacheKey: string): SeoDocumentCacheEntry | null {
     return null;
   }
 
-  if (entry.expiresAt <= Date.now()) {
+  if (entry.expiresAt !== null && entry.expiresAt <= Date.now()) {
     seoDocumentCache.delete(cacheKey);
     return null;
   }
@@ -1339,7 +1339,7 @@ function fetchSeoDocumentFromApi(
           statusCode: proxyResponse.statusCode ?? 502,
           headers: responseHeaders,
           body,
-          expiresAt: Date.now() + seoDocumentCacheTtlSeconds * 1000
+          expiresAt: seoDocumentCacheTtlSeconds === 0 ? null : Date.now() + seoDocumentCacheTtlSeconds * 1000
         };
 
         callback(null, entry);
