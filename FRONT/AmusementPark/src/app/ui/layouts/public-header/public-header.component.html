@@ -99,7 +99,7 @@
           }
         </button>
       } @else {
-        <button type="button" class="btn-nav btn-nav--primary" (click)="openModal('loginModal')">
+        <button type="button" class="btn-nav btn-nav--primary" [attr.aria-label]="'topbar.login_header' | translate" (click)="openModal('loginModal')">
           <i class="pi pi-user" aria-hidden="true"></i>
           <span>{{ 'topbar.login_header' | translate }}</span>
         </button>

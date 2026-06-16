@@ -55,4 +55,13 @@ describe('PublicFooterComponent', () => {
 
     expect(textContent).toContain(`Version ${siteVersion}`);
   });
+
+  it('marks the current footer language link for accessible active styling', () => {
+    const activeLanguageLink: HTMLAnchorElement | null = (fixture.nativeElement as HTMLElement)
+      .querySelector('.app-public-footer__language-link--active');
+
+    expect(activeLanguageLink).not.toBeNull();
+    expect(activeLanguageLink?.textContent).toContain('English');
+    expect(activeLanguageLink?.getAttribute('aria-current')).toBe('page');
+  });
 });
