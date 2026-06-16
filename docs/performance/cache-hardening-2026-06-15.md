@@ -20,6 +20,7 @@ SSR_CACHE_INVALIDATION_TOKEN=CHANGE_ME_GENERATE_WITH_OPENSSL_RAND_HEX_32
 SSR_PAGE_CACHE_BROWSER_CACHE_CONTROL=no-cache, max-age=0, must-revalidate
 SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL=no-cache, max-age=0, must-revalidate
 SSR_INTERNAL_BASE_URL=http://amusementpark-front:4000
+SSR_SEO_DOCUMENT_CACHE_SECONDS=0
 ```
 
 `SSR_PAGE_CACHE_SECONDS`, `SSR_DISK_PAGE_CACHE_ENABLED` et `SSR_SEO_DOCUMENT_CACHE_SECONDS` continuent de piloter les caches internes serveur. Les nouveaux `Cache-Control` ne désactivent pas ces caches internes : ils empêchent seulement le navigateur ou un intermédiaire respectueux des headers de resservir un HTML ou sitemap périmé sans revalidation.

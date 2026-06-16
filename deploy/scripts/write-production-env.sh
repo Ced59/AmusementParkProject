@@ -119,7 +119,7 @@ ssr_allowed_hosts="$(value_or_default SSR_ALLOWED_HOSTS "${public_domain};www.${
   write_line CSP_REPORT_ONLY "$(value_or_default CSP_REPORT_ONLY 'true')"
   write_line CSP_REPORT_URI "$(value_or_default CSP_REPORT_URI '/security/csp-report')"
   write_line FRONT_CSP_REPORT_URI "$(value_or_default FRONT_CSP_REPORT_URI '/api/security/csp-report')"
-  write_line SSR_SEO_DOCUMENT_CACHE_SECONDS "$(value_or_default SSR_SEO_DOCUMENT_CACHE_SECONDS '21600')"
+  write_line SSR_SEO_DOCUMENT_CACHE_SECONDS "$(value_or_default SSR_SEO_DOCUMENT_CACHE_SECONDS '0')"
   write_line SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES "$(value_or_default SSR_SEO_DOCUMENT_CACHE_MAX_ENTRIES '128')"
   write_line SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL "$(value_or_default SSR_SEO_DOCUMENT_BROWSER_CACHE_CONTROL 'no-cache, max-age=0, must-revalidate')"
   write_line SSR_RENDER_ENABLED "$(value_or_default SSR_RENDER_ENABLED 'true')"

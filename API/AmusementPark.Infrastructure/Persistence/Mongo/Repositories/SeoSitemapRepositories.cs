@@ -14,7 +14,6 @@ public sealed class SeoSitemapSnapshotRepository : ISeoSitemapSnapshotRepository
     private const string CurrentSnapshotId = "current";
     private const string CurrentSnapshotCacheKey = "seo:sitemap:snapshot:current";
     private const string MissingSnapshotCacheKey = "seo:sitemap:snapshot:missing";
-    private static readonly TimeSpan SnapshotCacheDuration = TimeSpan.FromMinutes(10);
     private readonly IMongoCollection<SeoSitemapSnapshotDocument> collection;
     private readonly IMemoryCache cache;
 
@@ -47,7 +46,7 @@ public sealed class SeoSitemapSnapshotRepository : ISeoSitemapSnapshotRepository
         }
 
         SitemapSnapshot snapshot = ToSnapshot(document);
-        this.cache.Set(CurrentSnapshotCacheKey, snapshot, SnapshotCacheDuration);
+        this.cache.Set(CurrentSnapshotCacheKey, snapshot, CreateSnapshotCacheOptions());
         return snapshot;
     }
 
@@ -71,7 +70,15 @@ public sealed class SeoSitemapSnapshotRepository : ISeoSitemapSnapshotRepository
         ReplaceOptions options = new ReplaceOptions { IsUpsert = true };
         await this.collection.ReplaceOneAsync(value => value.Id == CurrentSnapshotId, document, options, cancellationToken);
         this.cache.Remove(MissingSnapshotCacheKey);
-        this.cache.Set(CurrentSnapshotCacheKey, snapshot, SnapshotCacheDuration);
+        this.cache.Set(CurrentSnapshotCacheKey, snapshot, CreateSnapshotCacheOptions());
+    }
+
+    private static MemoryCacheEntryOptions CreateSnapshotCacheOptions()
+    {
+        return new MemoryCacheEntryOptions
+        {
+            Priority = CacheItemPriority.NeverRemove,
+        };
     }
 
     private static SitemapSnapshot ToSnapshot(SeoSitemapSnapshotDocument document)
