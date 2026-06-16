@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
@@ -16,6 +17,7 @@ export interface ParkImagesParksPort {
 
 export interface ParkImagesImagesPort {
   getImagesPage(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number, options?: AnonymousHttpOptions): Observable<PagedResult<ImageDto>>;
+  getImageTags(options?: AnonymousHttpOptions): Observable<ImageTagDto[]>;
 }
 
 export const PARK_IMAGES_PARKS_PORT = new InjectionToken<ParkImagesParksPort>('PARK_IMAGES_PARKS_PORT', {

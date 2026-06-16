@@ -7,18 +7,22 @@ public static class SitemapSectionKeys
 {
     public const string Static = "static";
     public const string Parks = "parks";
+    public const string ParkImages = "park-images";
     public const string ParkItemLists = "park-item-lists";
     public const string ParkZones = "park-zones";
     public const string ParkItems = "park-items";
+    public const string ParkItemImages = "park-item-images";
     public const string References = "references";
 
     public static readonly IReadOnlyCollection<string> All = new[]
     {
         Static,
         Parks,
+        ParkImages,
         ParkItemLists,
         ParkZones,
         ParkItems,
+        ParkItemImages,
         References,
     };
 }

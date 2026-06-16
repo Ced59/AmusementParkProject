@@ -25,6 +25,37 @@
         "closeFullscreen": "Close fullscreen",
         "openSource": "Open {{name}}"
       },
+      "axes": {
+        "years": "Years",
+        "tags": "Tags",
+        "allYears": "All years",
+        "allTags": "All tags"
+      },
+      "years": {
+        "unknown": "Unknown date"
+      },
+      "selection": {
+        "count": "{{count}} photos",
+        "empty": "No photo matches this selection."
+      },
+      "metadata": {
+        "title": "Selected photo",
+        "subtitle": "Useful data found in the image metadata.",
+        "takenOn": "Taken on",
+        "uploadedAt": "Uploaded",
+        "updatedAt": "Updated",
+        "location": "Location",
+        "dimensions": "Dimensions",
+        "camera": "Camera",
+        "settings": "Settings",
+        "credit": "Credit",
+        "file": "File"
+      },
+      "map": {
+        "title": "Photo map",
+        "subtitle": "Geolocated photos matching the current filters.",
+        "empty": "No geolocated photo for this selection."
+      },
       "lightbox": {
         "title": "Fullscreen photo"
       }

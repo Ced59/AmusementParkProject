@@ -6,7 +6,14 @@ import { ParkOperator } from '@app/models/parks/park-operator';
 import { ParkReferenceContactDetails } from '@app/models/parks/park-reference-contact-details';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
-import { UiPhotoCarouselCategoryOption, UiPhotoCarouselImage } from '@ui/media';
+import {
+  buildPublicPhotoMetadata,
+  buildPublicPhotoTagLookup,
+  PublicPhotoMetadata,
+  PublicPhotoTagLookup,
+  UiPhotoCarouselCategoryOption,
+  UiPhotoCarouselImage
+} from '@ui/media';
 import {
   ParkReferenceAttractionViewModel,
   ParkReferenceDetailViewModel,
@@ -152,22 +159,25 @@ function mapPhotos(
   ownerName: string,
   categoryKey: 'founder' | 'operator' | 'manufacturer'
 ): UiPhotoCarouselImage[] {
+  const tagLookup: PublicPhotoTagLookup = buildPublicPhotoTagLookup([], currentLanguage);
+  const categoryLabelKey: string = `parks.reference.photos.${categoryKey}`;
+
   return photos
     .filter((photo: ImageDto) => normalizeOptionalString(photo.id) !== null && photo.isPublished !== false)
     .map((photo: ImageDto): UiPhotoCarouselImage => {
-      const caption: string | null = normalizeOptionalString(resolveLocalizedValue(photo.captions, currentLanguage) ?? photo.description ?? null);
-      const alt: string = normalizeOptionalString(resolveLocalizedValue(photo.altTexts, currentLanguage) ?? null)
-        ?? caption
-        ?? ownerName
-        ?? 'Reference image';
+      const metadata: PublicPhotoMetadata = buildPublicPhotoMetadata(photo, tagLookup, {
+        currentLanguage,
+        fallbackAlt: ownerName || 'Reference image',
+        fallbackTagKey: categoryKey,
+        fallbackTagLabelKey: categoryLabelKey
+      });
 
       return {
         id: photo.id,
         imageId: photo.id,
-        alt,
         categoryKey,
-        categoryLabelKey: `parks.reference.photos.${categoryKey}`,
-        description: caption,
+        categoryLabelKey,
+        ...metadata,
         isCurrent: photo.isCurrent,
         sourceTitle: ownerName,
         sourceSubtitle: photo.originalFileName ?? null,

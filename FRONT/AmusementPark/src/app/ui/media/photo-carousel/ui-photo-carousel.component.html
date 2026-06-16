@@ -6,126 +6,223 @@
     [subtitleKey]="subtitleKey">
   </app-ui-section-header>
 
-  <div class="photo-carousel-toolbar">
-    <div class="photo-carousel-toolbar__group" role="group" [attr.aria-label]="categoryAriaLabelKey | translate">
+  <div class="photo-carousel-years" role="group" [attr.aria-label]="yearAriaLabelKey | translate">
+    <button
+      type="button"
+      class="photo-carousel-axis photo-carousel-axis--year"
+      [class.photo-carousel-axis--active]="hasSelectedYear(null)"
+      (click)="selectYear(null)">
+      <span>{{ allYearsLabelKey | translate }}</span>
+      <strong>{{ photos.length }}</strong>
+    </button>
+
+    <button
+      *ngFor="let year of yearOptions; trackBy: trackByAxisOption"
+      type="button"
+      class="photo-carousel-axis photo-carousel-axis--year"
+      [class.photo-carousel-axis--active]="hasSelectedYear(year.key)"
+      (click)="selectYear(year.key)">
+      <span>{{ year.labelKey ? (year.labelKey | translate) : year.label }}</span>
+      <strong>{{ getAxisCountLabel(year) }}</strong>
+    </button>
+  </div>
+
+  <div class="photo-carousel-explorer">
+    <aside class="photo-carousel-tags" role="group" [attr.aria-label]="tagAriaLabelKey | translate">
+      <span class="photo-carousel-tags__title">{{ tagAriaLabelKey | translate }}</span>
+
       <button
         type="button"
-        class="photo-carousel-filter"
-        [class.photo-carousel-filter--active]="hasSelectedCategory(null)"
-        (click)="selectCategory(null)">
-        <span>{{ allCategoriesLabelKey | translate }}</span>
+        class="photo-carousel-axis photo-carousel-axis--tag"
+        [class.photo-carousel-axis--active]="hasSelectedTag(null)"
+        (click)="selectTag(null)">
+        <span>{{ allTagsLabelKey | translate }}</span>
         <strong>{{ photos.length }}</strong>
       </button>
 
       <button
-        *ngFor="let category of categories; trackBy: trackByCategory"
+        *ngFor="let tag of tagOptions; trackBy: trackByAxisOption"
         type="button"
-        class="photo-carousel-filter"
-        [class.photo-carousel-filter--active]="hasSelectedCategory(category.key)"
-        (click)="selectCategory(category.key)">
-        <span>{{ category.labelKey | translate }}</span>
-        <strong>{{ getCategoryCountLabel(category) }}</strong>
+        class="photo-carousel-axis photo-carousel-axis--tag"
+        [class.photo-carousel-axis--active]="hasSelectedTag(tag.key)"
+        (click)="selectTag(tag.key)">
+        <span>{{ tag.labelKey ? (tag.labelKey | translate) : tag.label }}</span>
+        <strong>{{ getAxisCountLabel(tag) }}</strong>
       </button>
-    </div>
+    </aside>
 
-    <div class="photo-carousel-toolbar__group photo-carousel-toolbar__group--limits" role="group" [attr.aria-label]="displayCountLabelKey | translate">
-      <span class="photo-carousel-toolbar__label">{{ displayCountLabelKey | translate }}</span>
-      <button
-        *ngFor="let limit of displayLimits; trackBy: trackByDisplayLimit"
-        type="button"
-        class="photo-carousel-limit"
-        [class.photo-carousel-limit--active]="selectedLimit === limit"
-        (click)="setLimit(limit)">
-        {{ getLimitLabelKey(limit) | translate:{ count: limit } }}
-      </button>
-    </div>
+    <main class="photo-carousel-main">
+      <div class="photo-carousel-selection-count">
+        {{ selectionCountKey | translate:{ count: selectedCount } }}
+      </div>
+
+      <ng-container *ngIf="activePhoto as currentPhoto; else emptySelection">
+        <div class="photo-carousel">
+          <button
+            type="button"
+            class="photo-carousel__nav photo-carousel__nav--prev"
+            (click)="previousPhoto()"
+            [disabled]="displayedPhotos.length <= 1"
+            [attr.aria-label]="previousLabelKey | translate">
+            <i class="pi pi-chevron-left" aria-hidden="true"></i>
+          </button>
+
+          <article
+            class="photo-carousel__stage"
+            role="button"
+            tabindex="0"
+            [attr.aria-label]="openFullscreenLabelKey | translate"
+            (click)="openLightbox(activePhotoIndex)"
+            (keydown.enter)="openLightbox(activePhotoIndex)"
+            (keydown.space)="openLightbox(activePhotoIndex); $event.preventDefault()">
+            <app-image-display
+              [imageId]="currentPhoto.imageId"
+              [alt]="currentPhoto.alt"
+              loading="eager"
+              fetchPriority="high"
+              [srcWidth]="1280"
+              [responsiveWidths]="stageResponsiveWidths"
+              sizes="(max-width: 760px) 100vw, (max-width: 1180px) 82vw, 58vw"
+              imgClass="photo-carousel__image"
+              placeholderClass="photo-carousel__placeholder"
+              placeholderKind="photo">
+            </app-image-display>
+
+            <span class="photo-carousel__fullscreen-hint">
+              <i class="pi pi-expand" aria-hidden="true"></i>
+              {{ openFullscreenLabelKey | translate }}
+            </span>
+
+            <div class="photo-carousel__caption">
+              <div class="photo-carousel__caption-tags">
+                <app-ui-chip
+                  *ngFor="let tag of currentPhoto.tagLabels; trackBy: trackByTagLabel"
+                  tone="primary">
+                  {{ tag.labelKey ? (tag.labelKey | translate) : tag.label }}
+                </app-ui-chip>
+                <app-ui-chip tone="soft" *ngIf="currentPhoto.isCurrent">{{ currentLabelKey | translate }}</app-ui-chip>
+              </div>
+
+              <p *ngIf="currentPhoto.caption || currentPhoto.description">{{ currentPhoto.caption ?? currentPhoto.description }}</p>
+
+              <div class="photo-carousel__source" *ngIf="currentPhoto.sourceTitle">
+                <span class="photo-carousel__source-name">
+                  <i [class]="currentPhoto.sourceIconClass ?? 'pi pi-map-marker'" aria-hidden="true"></i>
+                  {{ currentPhoto.sourceTitle }}
+                </span>
+                <a
+                  *ngIf="currentPhoto.sourceRouterLink"
+                  class="photo-carousel__source-link"
+                  [routerLink]="currentPhoto.sourceRouterLink"
+                  [attr.aria-label]="(currentPhoto.sourceLinkLabelKey ?? 'ui.photoCarousel.controls.openSource') | translate:{ name: currentPhoto.sourceTitle }">
+                  <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <button
+            type="button"
+            class="photo-carousel__nav photo-carousel__nav--next"
+            (click)="nextPhoto()"
+            [disabled]="displayedPhotos.length <= 1"
+            [attr.aria-label]="nextLabelKey | translate">
+            <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="photo-carousel-strip" *ngIf="displayedPhotos.length > 1">
+          <button
+            *ngFor="let photo of displayedPhotos; let photoIndex = index; trackBy: trackByPhoto"
+            type="button"
+            class="photo-carousel-strip__item"
+            [class.photo-carousel-strip__item--active]="photoIndex === activePhotoIndex"
+            (click)="selectPhoto(photoIndex)">
+            <app-image-display
+              [imageId]="photo.imageId"
+              [alt]="photo.alt"
+              loading="lazy"
+              [srcWidth]="320"
+              [responsiveWidths]="thumbResponsiveWidths"
+              sizes="10rem"
+              imgClass="photo-carousel-strip__image"
+              placeholderClass="photo-carousel-strip__placeholder"
+              placeholderKind="photo">
+            </app-image-display>
+            <span>
+              <ng-container *ngIf="getPrimaryTag(photo) as tag">
+                {{ tag.labelKey ? (tag.labelKey | translate) : tag.label }}
+              </ng-container>
+            </span>
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-template #emptySelection>
+        <div class="photo-carousel-empty">
+          <i class="pi pi-image" aria-hidden="true"></i>
+          <strong>{{ emptySelectionKey | translate }}</strong>
+        </div>
+      </ng-template>
+    </main>
+
+    <aside class="photo-carousel-metadata" *ngIf="activePhoto as selectedPhoto">
+      <header class="photo-carousel-metadata__header">
+        <span>{{ metadataTitleKey | translate }}</span>
+        <p>{{ metadataSubtitleKey | translate }}</p>
+      </header>
+
+      <dl class="photo-carousel-metadata__list">
+        <div
+          *ngFor="let row of metadataRows; trackBy: trackByMetadataRow"
+          class="photo-carousel-metadata__row">
+          <dt>
+            <i [class]="row.iconClass" aria-hidden="true"></i>
+            {{ row.labelKey | translate }}
+          </dt>
+          <dd>{{ row.value }}</dd>
+        </div>
+      </dl>
+
+      <div class="photo-carousel-metadata__tags" *ngIf="selectedPhoto.tagLabels.length > 0">
+        <app-ui-chip
+          *ngFor="let tag of selectedPhoto.tagLabels; trackBy: trackByTagLabel"
+          tone="soft">
+          {{ tag.labelKey ? (tag.labelKey | translate) : tag.label }}
+        </app-ui-chip>
+      </div>
+    </aside>
   </div>
 
-  <ng-container *ngIf="activePhoto as currentPhoto">
-    <div class="photo-carousel">
-      <button
-        type="button"
-        class="photo-carousel__nav photo-carousel__nav--prev"
-        (click)="previousPhoto()"
-        [disabled]="displayedPhotos.length <= 1"
-        [attr.aria-label]="previousLabelKey | translate">
-        <i class="pi pi-chevron-left" aria-hidden="true"></i>
-      </button>
+  <section class="photo-carousel-map">
+    <header class="photo-carousel-map__header">
+      <div>
+        <h3>{{ mapTitleKey | translate }}</h3>
+        <p>{{ mapSubtitleKey | translate }}</p>
+      </div>
+      <app-ui-chip tone="sky">{{ mapMarkers.length }}</app-ui-chip>
+    </header>
 
-      <article
-        class="photo-carousel__stage"
-        role="button"
-        tabindex="0"
-        [attr.aria-label]="openFullscreenLabelKey | translate"
-        (click)="openLightbox(activePhotoIndex)"
-        (keydown.enter)="openLightbox(activePhotoIndex)"
-        (keydown.space)="openLightbox(activePhotoIndex); $event.preventDefault()">
-        <app-image-display
-          [imageId]="currentPhoto.imageId"
-          [alt]="currentPhoto.alt"
-          loading="lazy"
-          sizes="(max-width: 900px) 100vw, 900px"
-          imgClass="photo-carousel__image"
-          placeholderClass="photo-carousel__placeholder"
-          placeholderKind="photo">
-        </app-image-display>
+    <div class="photo-carousel-map__slot">
+      <app-leaflet-map
+        *ngIf="mapMarkers.length > 0; else emptyMap"
+        [center]="mapCenter"
+        [zoom]="mapZoom"
+        [markers]="mapMarkers"
+        [fitBounds]="mapMarkers.length > 1"
+        [fitBoundsMaxZoom]="15"
+        [selectedMarkerId]="selectedMarkerId"
+        (markerClick)="onMapMarkerClick($event)">
+      </app-leaflet-map>
 
-        <span class="photo-carousel__fullscreen-hint">
-          <i class="pi pi-expand" aria-hidden="true"></i>
-          {{ openFullscreenLabelKey | translate }}
-        </span>
-
-        <div class="photo-carousel__caption">
-          <app-ui-chip tone="primary">{{ currentPhoto.categoryLabelKey | translate }}</app-ui-chip>
-          <app-ui-chip tone="soft" *ngIf="currentPhoto.isCurrent">{{ currentLabelKey | translate }}</app-ui-chip>
-          <p *ngIf="currentPhoto.description">{{ currentPhoto.description }}</p>
-
-          <div class="photo-carousel__source" *ngIf="currentPhoto.sourceTitle">
-            <span class="photo-carousel__source-name">
-              <i [class]="currentPhoto.sourceIconClass ?? 'pi pi-map-marker'" aria-hidden="true"></i>
-              {{ currentPhoto.sourceTitle }}
-            </span>
-            <a
-              *ngIf="currentPhoto.sourceRouterLink"
-              class="photo-carousel__source-link"
-              [routerLink]="currentPhoto.sourceRouterLink"
-              [attr.aria-label]="(currentPhoto.sourceLinkLabelKey ?? 'ui.photoCarousel.controls.openSource') | translate:{ name: currentPhoto.sourceTitle }">
-              <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
-            </a>
-          </div>
+      <ng-template #emptyMap>
+        <div class="photo-carousel-map__empty">
+          <i class="pi pi-map-marker" aria-hidden="true"></i>
+          <strong>{{ mapEmptyKey | translate }}</strong>
         </div>
-      </article>
-
-      <button
-        type="button"
-        class="photo-carousel__nav photo-carousel__nav--next"
-        (click)="nextPhoto()"
-        [disabled]="displayedPhotos.length <= 1"
-        [attr.aria-label]="nextLabelKey | translate">
-        <i class="pi pi-chevron-right" aria-hidden="true"></i>
-      </button>
+      </ng-template>
     </div>
-
-    <div class="photo-carousel-strip" *ngIf="displayedPhotos.length > 1">
-      <button
-        *ngFor="let photo of displayedPhotos; let photoIndex = index; trackBy: trackByPhoto"
-        type="button"
-        class="photo-carousel-strip__item"
-        [class.photo-carousel-strip__item--active]="photoIndex === activePhotoIndex"
-        (click)="selectPhoto(photoIndex)">
-        <app-image-display
-          [imageId]="photo.imageId"
-          [alt]="photo.alt"
-          loading="lazy"
-          sizes="96px"
-          imgClass="photo-carousel-strip__image"
-          placeholderClass="photo-carousel-strip__placeholder"
-          placeholderKind="photo">
-        </app-image-display>
-        <span>{{ photo.categoryLabelKey | translate }}</span>
-      </button>
-    </div>
-  </ng-container>
+  </section>
 </section>
 
 <section
@@ -138,7 +235,11 @@
   <div class="photo-lightbox__dialog" (click)="$event.stopPropagation()">
     <header class="photo-lightbox__header">
       <div>
-        <span class="photo-lightbox__kicker">{{ fullscreenPhoto.categoryLabelKey | translate }}</span>
+        <span class="photo-lightbox__kicker">
+          <ng-container *ngIf="getPrimaryTag(fullscreenPhoto) as tag">
+            {{ tag.labelKey ? (tag.labelKey | translate) : tag.label }}
+          </ng-container>
+        </span>
         <h2>{{ lightboxTitleKey | translate }}</h2>
       </div>
 
@@ -166,7 +267,9 @@
           [imageId]="fullscreenPhoto.imageId"
           [alt]="fullscreenPhoto.alt"
           loading="eager"
-          sizes="(max-width: 1200px) 100vw, 1200px"
+          [srcWidth]="1600"
+          [responsiveWidths]="stageResponsiveWidths"
+          sizes="100vw"
           imgClass="photo-lightbox__image"
           placeholderClass="photo-lightbox__placeholder"
           placeholderKind="photo">
@@ -185,9 +288,13 @@
 
     <footer class="photo-lightbox__footer">
       <div class="photo-lightbox__caption">
-        <app-ui-chip tone="primary">{{ fullscreenPhoto.categoryLabelKey | translate }}</app-ui-chip>
+        <app-ui-chip
+          *ngFor="let tag of fullscreenPhoto.tagLabels; trackBy: trackByTagLabel"
+          tone="primary">
+          {{ tag.labelKey ? (tag.labelKey | translate) : tag.label }}
+        </app-ui-chip>
         <app-ui-chip tone="soft" *ngIf="fullscreenPhoto.isCurrent">{{ currentLabelKey | translate }}</app-ui-chip>
-        <p *ngIf="fullscreenPhoto.description">{{ fullscreenPhoto.description }}</p>
+        <p *ngIf="fullscreenPhoto.caption || fullscreenPhoto.description">{{ fullscreenPhoto.caption ?? fullscreenPhoto.description }}</p>
 
         <div class="photo-lightbox__source" *ngIf="fullscreenPhoto.sourceTitle">
           <span class="photo-lightbox__source-name">
@@ -215,12 +322,18 @@
             [imageId]="photo.imageId"
             [alt]="photo.alt"
             loading="lazy"
-            sizes="72px"
+            [srcWidth]="320"
+            [responsiveWidths]="thumbResponsiveWidths"
+            sizes="8rem"
             imgClass="photo-lightbox__thumb-image"
             placeholderClass="photo-lightbox__thumb-placeholder"
             placeholderKind="photo">
           </app-image-display>
-          <span>{{ photo.categoryLabelKey | translate }}</span>
+          <span>
+            <ng-container *ngIf="getPrimaryTag(photo) as tag">
+              {{ tag.labelKey ? (tag.labelKey | translate) : tag.label }}
+            </ng-container>
+          </span>
         </button>
       </div>
     </footer>

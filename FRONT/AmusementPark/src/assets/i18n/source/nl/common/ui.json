@@ -25,6 +25,37 @@
         "closeFullscreen": "Volledig scherm sluiten",
         "openSource": "{{name}} openen"
       },
+      "axes": {
+        "years": "Jaren",
+        "tags": "Tags",
+        "allYears": "Alle jaren",
+        "allTags": "Alle tags"
+      },
+      "years": {
+        "unknown": "Onbekende datum"
+      },
+      "selection": {
+        "count": "{{count}} foto's",
+        "empty": "Geen foto past bij deze selectie."
+      },
+      "metadata": {
+        "title": "Geselecteerde foto",
+        "subtitle": "Nuttige gegevens uit de beeldmetadata.",
+        "takenOn": "Genomen op",
+        "uploadedAt": "Geüpload",
+        "updatedAt": "Bijgewerkt",
+        "location": "Locatie",
+        "dimensions": "Afmetingen",
+        "camera": "Camera",
+        "settings": "Instellingen",
+        "credit": "Credit",
+        "file": "Bestand"
+      },
+      "map": {
+        "title": "Fotokaart",
+        "subtitle": "Geolokaliseerde foto's die passen bij de actieve filters.",
+        "empty": "Geen geolokaliseerde foto voor deze selectie."
+      },
       "lightbox": {
         "title": "Foto op volledig scherm"
       }

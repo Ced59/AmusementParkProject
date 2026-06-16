@@ -162,7 +162,7 @@
     "imagesPage": {
       "kicker": "Item gallery",
       "title": "Images of {{name}}",
-      "subtitle": "Browse the published images of {{name}} at {{park}}. The gallery loads photos page by page to keep the experience fast.",
+      "subtitle": "Explore images of {{name}} at {{park}}: details, atmosphere, viewpoints and geolocated photos when available.",
       "loadingTitle": "Loading images",
       "loadingMessage": "Preparing the item gallery.",
       "errorTitle": "Images unavailable",

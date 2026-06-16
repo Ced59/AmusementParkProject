@@ -1383,6 +1383,37 @@
         "closeFullscreen": "Volledig scherm sluiten",
         "openSource": "{{name}} openen"
       },
+      "axes": {
+        "years": "Jaren",
+        "tags": "Tags",
+        "allYears": "Alle jaren",
+        "allTags": "Alle tags"
+      },
+      "years": {
+        "unknown": "Onbekende datum"
+      },
+      "selection": {
+        "count": "{{count}} foto's",
+        "empty": "Geen foto past bij deze selectie."
+      },
+      "metadata": {
+        "title": "Geselecteerde foto",
+        "subtitle": "Nuttige gegevens uit de beeldmetadata.",
+        "takenOn": "Genomen op",
+        "uploadedAt": "Geüpload",
+        "updatedAt": "Bijgewerkt",
+        "location": "Locatie",
+        "dimensions": "Afmetingen",
+        "camera": "Camera",
+        "settings": "Instellingen",
+        "credit": "Credit",
+        "file": "Bestand"
+      },
+      "map": {
+        "title": "Fotokaart",
+        "subtitle": "Geolokaliseerde foto's die passen bij de actieve filters.",
+        "empty": "Geen geolokaliseerde foto voor deze selectie."
+      },
       "lightbox": {
         "title": "Foto op volledig scherm"
       }
@@ -1892,7 +1923,7 @@
     "imagesPage": {
       "kicker": "Onderdeelgalerij",
       "title": "Afbeeldingen van {{name}}",
-      "subtitle": "Bekijk de gepubliceerde afbeeldingen van {{name}} in {{park}}. De galerij laadt foto's per pagina om de ervaring snel te houden.",
+      "subtitle": "Ontdek afbeeldingen van {{name}} in {{park}}: details, sfeer, standpunten en geolokaliseerde foto's wanneer beschikbaar.",
       "loadingTitle": "Afbeeldingen laden",
       "loadingMessage": "De onderdeelgalerij wordt voorbereid.",
       "errorTitle": "Afbeeldingen niet beschikbaar",
@@ -2211,7 +2242,7 @@
     "imagesPage": {
       "kicker": "Parkgalerij",
       "title": "Afbeeldingen van {{name}}",
-      "subtitle": "Bekijk de gepubliceerde afbeeldingen van {{name}}. De galerij laadt foto’s per pagina om de ervaring snel te houden.",
+      "subtitle": "Ontdek afbeeldingen van {{name}}: parkbeelden, sfeer, details en geolokaliseerde foto's wanneer beschikbaar.",
       "loadingTitle": "Afbeeldingen laden",
       "loadingMessage": "De parkgalerij wordt voorbereid.",
       "errorTitle": "Afbeeldingen niet beschikbaar",

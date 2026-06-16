@@ -1,29 +1,38 @@
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
+import { buildPublicPhotoMetadata, buildPublicPhotoTagLookup, PublicPhotoMetadata, PublicPhotoTagLookup } from '@ui/media';
 import {
   ParkItemPhotoCategoryOptionViewModel,
   ParkItemPhotoViewModel
 } from '../models/park-item-detail-view.model';
 import { trimOrNull } from './park-item-detail-formatters';
 
-export function buildPhotos(photos: ImageDto[], imageTags: ImageTagDto[]): ParkItemPhotoViewModel[] {
-  const tagSlugById: Map<string, string> = new Map<string, string>(imageTags.map((tag: ImageTagDto) => [tag.id, tag.slug]));
+export function buildPhotos(photos: ImageDto[], imageTags: ImageTagDto[], currentLanguage: string = 'en'): ParkItemPhotoViewModel[] {
+  const tagLookup: PublicPhotoTagLookup = buildPublicPhotoTagLookup(imageTags, currentLanguage);
+
   return photos
     .filter((photo: ImageDto) => photo.isPublished !== false)
     .map((photo: ImageDto) => {
       const firstKnownTag: string | undefined = photo.tagIds
-        ?.map((tagId: string) => tagSlugById.get(tagId) ?? tagId)
+        ?.map((tagId: string) => tagLookup.get(tagId)?.key ?? tagId)
         .find((tagSlug: string) => !!tagSlug);
       const categoryKey: string = resolvePhotoCategoryKey(firstKnownTag);
+      const categoryLabelKey: string = resolvePhotoCategoryLabelKey(categoryKey);
+      const fallbackAlt: string = trimOrNull(photo.description) ?? trimOrNull(photo.originalFileName) ?? 'Park item photo';
+      const metadata: PublicPhotoMetadata = buildPublicPhotoMetadata(photo, tagLookup, {
+        currentLanguage,
+        fallbackAlt,
+        fallbackTagKey: categoryKey,
+        fallbackTagLabelKey: categoryLabelKey
+      });
 
       return {
         id: photo.id,
         imageId: photo.id,
         category: photo.category,
         categoryKey,
-        categoryLabelKey: resolvePhotoCategoryLabelKey(categoryKey),
-        description: trimOrNull(photo.description),
-        alt: trimOrNull(photo.description) ?? trimOrNull(photo.originalFileName) ?? 'Park item photo',
+        categoryLabelKey,
+        ...metadata,
         isCurrent: photo.isCurrent
       };
     });

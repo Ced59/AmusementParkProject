@@ -18,10 +18,22 @@ export interface ImageDto {
   originalFileName?: string;
   contentType?: string;
   geoLocation?: ImageGeoLocation | null;
+  exifMetadata?: ImageExifMetadataDto | null;
   altTexts: LocalizedItemDto<string>[];
   captions: LocalizedItemDto<string>[];
   credits: LocalizedItemDto<string>[];
   tagIds: string[];
   createdAt: string;
   updatedAt: string;
+}
+
+export interface ImageExifMetadataDto {
+  cameraMaker?: string | null;
+  cameraModel?: string | null;
+  takenOnUtc?: string | null;
+  orientation?: string | null;
+  focalLength?: number | null;
+  aperture?: number | null;
+  exposureTime?: number | null;
+  iso?: number | null;
 }

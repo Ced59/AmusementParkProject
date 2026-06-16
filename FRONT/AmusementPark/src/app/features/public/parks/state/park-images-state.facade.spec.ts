@@ -6,43 +6,31 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
-import { ParkItem } from '@app/models/parks/park-item';
+import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { PagedResult } from '@shared/models/contracts';
 import {
-  PARK_ITEM_IMAGES_IMAGES_PORT,
-  PARK_ITEM_IMAGES_ITEMS_PORT,
-  PARK_ITEM_IMAGES_PARKS_PORT,
-  ParkItemImagesImagesPort,
-  ParkItemImagesItemsPort,
-  ParkItemImagesParksPort
-} from './park-item-images-data.ports';
-import { ParkItemImagesStateFacade } from './park-item-images-state.facade';
+  PARK_IMAGES_IMAGES_PORT,
+  PARK_IMAGES_PARKS_PORT,
+  ParkImagesImagesPort,
+  ParkImagesParksPort
+} from './park-images-data.ports';
+import { ParkImagesStateFacade } from './park-images-state.facade';
 
-class FakeItemsPort implements ParkItemImagesItemsPort {
-  public response$: Observable<ParkItem> = of(createParkItem());
+class FakeParksPort implements ParkImagesParksPort {
+  public response$: Observable<ParkDetailSummary> = of(createSummary());
   public readonly calls: string[] = [];
 
-  getParkItemById(id: string): Observable<ParkItem> {
+  getParkDetailSummary(id: string): Observable<ParkDetailSummary> {
     this.calls.push(id);
     return this.response$;
   }
 }
 
-class FakeParksPort implements ParkItemImagesParksPort {
-  public response$: Observable<Park> = of(createPark());
-  public readonly calls: string[] = [];
-
-  getParkById(id: string): Observable<Park> {
-    this.calls.push(id);
-    return this.response$;
-  }
-}
-
-class FakeImagesPort implements ParkItemImagesImagesPort {
+class FakeImagesPort implements ParkImagesImagesPort {
   public firstPage$: Observable<PagedResult<ImageDto>> = of(createImagePage([createImage('image-1')], 1, 2, 2));
   public nextPage$: Observable<PagedResult<ImageDto>> = of(createImagePage([createImage('image-2')], 2, 2, 2));
-  public tags$: Observable<ImageTagDto[]> = of([]);
+  public tags$: Observable<ImageTagDto[]> = of([createImageTag()]);
   public readonly pageCalls: { ownerType: ImageOwnerType; ownerId: string; category: ImageCategory; page?: number; size?: number }[] = [];
   public tagCallCount: number = 0;
 
@@ -77,28 +65,34 @@ function createPark(): Park {
   };
 }
 
-function createParkItem(overrides: Partial<ParkItem> = {}): ParkItem {
+function createSummary(): ParkDetailSummary {
   return {
-    id: 'item-1',
-    parkId: 'park-1',
-    zoneId: null,
-    name: 'Taron',
-    category: 'Attraction',
-    type: 'RollerCoaster',
-    latitude: 50.8,
-    longitude: 6.8,
-    isVisible: true,
-    ...overrides
-  } as ParkItem;
+    park: createPark(),
+    mainImage: null,
+    references: {
+      founderName: null,
+      operatorName: null
+    },
+    stats: {
+      totalItems: 0,
+      zoneCount: 0,
+      attractionCount: 0,
+      restaurantCount: 0,
+      showCount: 0,
+      shopCount: 0,
+      hotelCount: 0,
+      countsByCategory: {}
+    }
+  };
 }
 
 function createImage(id: string): ImageDto {
   return {
     id,
-    category: ImageCategory.ATTRACTION,
-    ownerType: ImageOwnerType.ATTRACTION,
-    ownerId: 'item-1',
-    path: `items/${id}`,
+    category: ImageCategory.PARK,
+    ownerType: ImageOwnerType.PARK,
+    ownerId: 'park-1',
+    path: `parks/${id}`,
     description: `Photo ${id}`,
     isCurrent: id === 'image-1',
     isPublished: true,
@@ -108,10 +102,25 @@ function createImage(id: string): ImageDto {
     originalFileName: `${id}.jpg`,
     contentType: 'image/jpeg',
     geoLocation: null,
+    exifMetadata: {
+      takenOnUtc: '2024-04-02T00:00:00Z'
+    },
     altTexts: [],
     captions: [],
     credits: [],
-    tagIds: [],
+    tagIds: ['tag-entrance'],
+    createdAt: '2026-01-01T00:00:00Z',
+    updatedAt: '2026-01-01T00:00:00Z'
+  };
+}
+
+function createImageTag(): ImageTagDto {
+  return {
+    id: 'tag-entrance',
+    slug: 'entrance',
+    labels: [{ languageCode: 'en', value: 'Entrance' }],
+    descriptions: [],
+    isActive: true,
     createdAt: '2026-01-01T00:00:00Z',
     updatedAt: '2026-01-01T00:00:00Z'
   };
@@ -130,80 +139,75 @@ function createImagePage(items: ImageDto[], currentPage: number, totalPages: num
 }
 
 function configureFacade(): {
-  facade: ParkItemImagesStateFacade;
-  itemsPort: FakeItemsPort;
+  facade: ParkImagesStateFacade;
   parksPort: FakeParksPort;
   imagesPort: FakeImagesPort;
   ssrStatusService: FakeSsrHttpStatusService;
 } {
-  const itemsPort: FakeItemsPort = new FakeItemsPort();
   const parksPort: FakeParksPort = new FakeParksPort();
   const imagesPort: FakeImagesPort = new FakeImagesPort();
   const ssrStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
 
   TestBed.configureTestingModule({
     providers: [
-      ParkItemImagesStateFacade,
-      { provide: PARK_ITEM_IMAGES_ITEMS_PORT, useValue: itemsPort },
-      { provide: PARK_ITEM_IMAGES_PARKS_PORT, useValue: parksPort },
-      { provide: PARK_ITEM_IMAGES_IMAGES_PORT, useValue: imagesPort },
+      ParkImagesStateFacade,
+      { provide: PARK_IMAGES_PARKS_PORT, useValue: parksPort },
+      { provide: PARK_IMAGES_IMAGES_PORT, useValue: imagesPort },
       { provide: SsrHttpStatusService, useValue: ssrStatusService }
     ]
   });
 
   return {
-    facade: TestBed.inject(ParkItemImagesStateFacade),
-    itemsPort,
+    facade: TestBed.inject(ParkImagesStateFacade),
     parksPort,
     imagesPort,
     ssrStatusService
   };
 }
 
-describe('ParkItemImagesStateFacade', () => {
+describe('ParkImagesStateFacade', () => {
   beforeEach(() => {
     TestBed.resetTestingModule();
   });
 
-  it('loads the item, parent park and first image page through public ports', () => {
+  it('loads the park summary, public tags and first image page through public ports', () => {
     const context = configureFacade();
 
-    context.facade.loadItemImages('item-1');
+    context.facade.loadParkImages('park-1');
 
     expect(context.facade.state().kind).toBe('ready');
-    expect(context.facade.item()?.name).toBe('Taron');
     expect(context.facade.park()?.name).toBe('Phantasialand');
     expect(context.facade.totalImages()).toBe(2);
     expect(context.facade.canLoadMore()).toBeTrue();
-    expect(context.facade.photos()[0]?.categoryKey).toBe('gallery');
-    expect(context.facade.categories()).toEqual([{ key: 'gallery', labelKey: 'parkItems.photos.categories.gallery', count: 1 }]);
-    expect(context.itemsPort.calls).toEqual(['item-1']);
+    expect(context.facade.photos()[0]?.categoryKey).toBe('park-entrance');
+    expect(context.facade.photos()[0]?.year).toBe('2024');
+    expect(context.facade.categories()).toEqual([{ key: 'park-entrance', labelKey: 'parks.photos.categories.entrance', count: 1 }]);
     expect(context.parksPort.calls).toEqual(['park-1']);
     expect(context.imagesPort.tagCallCount).toBe(1);
     expect(context.imagesPort.pageCalls).toEqual([
-      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: 1, size: 100 }
+      { ownerType: ImageOwnerType.PARK, ownerId: 'park-1', category: ImageCategory.PARK, page: 1, size: 100 }
     ]);
   });
 
   it('appends the next image page', () => {
     const context = configureFacade();
 
-    context.facade.loadItemImages('item-1');
+    context.facade.loadParkImages('park-1');
     context.facade.loadNextPage();
 
     expect(context.facade.photos().map((photo) => photo.imageId)).toEqual(['image-1', 'image-2']);
     expect(context.facade.canLoadMore()).toBeFalse();
     expect(context.imagesPort.pageCalls).toEqual([
-      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: 1, size: 100 },
-      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: 2, size: 100 }
+      { ownerType: ImageOwnerType.PARK, ownerId: 'park-1', category: ImageCategory.PARK, page: 1, size: 100 },
+      { ownerType: ImageOwnerType.PARK, ownerId: 'park-1', category: ImageCategory.PARK, page: 2, size: 100 }
     ]);
   });
 
-  it('sets SSR not found when the item lookup returns 404', () => {
+  it('sets SSR not found when the summary lookup returns 404', () => {
     const context = configureFacade();
-    context.itemsPort.response$ = throwError(() => ({ status: 404 }));
+    context.parksPort.response$ = throwError(() => ({ status: 404 }));
 
-    context.facade.loadItemImages('missing-item');
+    context.facade.loadParkImages('missing-park');
 
     expect(context.facade.state().kind).toBe('error');
     expect(context.ssrStatusService.notFoundCallCount).toBe(1);

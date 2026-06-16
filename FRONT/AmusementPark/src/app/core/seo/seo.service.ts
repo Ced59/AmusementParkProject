@@ -50,7 +50,7 @@ const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpa
 
 const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
   en: {
-    titlePrefix: 'Photos of',
+    titlePrefix: 'Images of',
     parkFallback: 'this park',
     description: (parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} published photos` : 'published photos';
@@ -58,7 +58,7 @@ const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
     }
   },
   fr: {
-    titlePrefix: 'Photos de',
+    titlePrefix: 'Images de',
     parkFallback: 'ce parc',
     description: (parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} photos publiées` : 'les photos publiées';
@@ -66,7 +66,7 @@ const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
     }
   },
   es: {
-    titlePrefix: 'Fotos de',
+    titlePrefix: 'Imágenes de',
     parkFallback: 'este parque',
     description: (parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} fotos publicadas` : 'las fotos publicadas';
@@ -82,7 +82,7 @@ const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
     }
   },
   it: {
-    titlePrefix: 'Foto di',
+    titlePrefix: 'Immagini di',
     parkFallback: 'questo parco',
     description: (parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} foto pubblicate` : 'le foto pubblicate';
@@ -90,7 +90,7 @@ const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
     }
   },
   nl: {
-    titlePrefix: "Foto's van",
+    titlePrefix: 'Afbeeldingen van',
     parkFallback: 'dit park',
     description: (parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} gepubliceerde foto's` : `de gepubliceerde foto's`;
@@ -106,7 +106,7 @@ const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
     }
   },
   pt: {
-    titlePrefix: 'Fotos de',
+    titlePrefix: 'Imagens de',
     parkFallback: 'este parque',
     description: (parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} fotos publicadas` : 'as fotos publicadas';
@@ -117,7 +117,7 @@ const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
 
 const PARK_ITEM_IMAGES_SEO_COPY: Record<string, ParkItemImagesSeoCopy> = {
   en: {
-    titlePrefix: 'Photos of',
+    titlePrefix: 'Images of',
     itemFallback: 'this item',
     description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} published photos` : 'published photos';
@@ -125,7 +125,7 @@ const PARK_ITEM_IMAGES_SEO_COPY: Record<string, ParkItemImagesSeoCopy> = {
     }
   },
   fr: {
-    titlePrefix: 'Photos de',
+    titlePrefix: 'Images de',
     itemFallback: 'cet élément',
     description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} photos publiées` : 'les photos publiées';
@@ -133,7 +133,7 @@ const PARK_ITEM_IMAGES_SEO_COPY: Record<string, ParkItemImagesSeoCopy> = {
     }
   },
   es: {
-    titlePrefix: 'Fotos de',
+    titlePrefix: 'Imágenes de',
     itemFallback: 'este elemento',
     description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} fotos publicadas` : 'las fotos publicadas';
@@ -149,7 +149,7 @@ const PARK_ITEM_IMAGES_SEO_COPY: Record<string, ParkItemImagesSeoCopy> = {
     }
   },
   it: {
-    titlePrefix: 'Foto di',
+    titlePrefix: 'Immagini di',
     itemFallback: 'questo elemento',
     description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} foto pubblicate` : 'le foto pubblicate';
@@ -157,7 +157,7 @@ const PARK_ITEM_IMAGES_SEO_COPY: Record<string, ParkItemImagesSeoCopy> = {
     }
   },
   nl: {
-    titlePrefix: "Foto's van",
+    titlePrefix: 'Afbeeldingen van',
     itemFallback: 'dit onderdeel',
     description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} gepubliceerde foto's` : `de gepubliceerde foto's`;
@@ -173,7 +173,7 @@ const PARK_ITEM_IMAGES_SEO_COPY: Record<string, ParkItemImagesSeoCopy> = {
     }
   },
   pt: {
-    titlePrefix: 'Fotos de',
+    titlePrefix: 'Imagens de',
     itemFallback: 'este elemento',
     description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} fotos publicadas` : 'as fotos publicadas';

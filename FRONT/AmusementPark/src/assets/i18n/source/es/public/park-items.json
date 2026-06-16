@@ -162,7 +162,7 @@
     "imagesPage": {
       "kicker": "Galería del elemento",
       "title": "Imágenes de {{name}}",
-      "subtitle": "Consulta las imágenes publicadas de {{name}} en {{park}}. La galería carga fotos página a página para mantener la experiencia rápida.",
+      "subtitle": "Explora imágenes de {{name}} en {{park}}: detalles, ambiente, puntos de vista y fotos geolocalizadas cuando estén disponibles.",
       "loadingTitle": "Cargando imágenes",
       "loadingMessage": "Preparando la galería del elemento.",
       "errorTitle": "Imágenes no disponibles",

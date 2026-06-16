@@ -1383,6 +1383,37 @@
         "closeFullscreen": "Cerrar pantalla completa",
         "openSource": "Abrir {{name}}"
       },
+      "axes": {
+        "years": "Años",
+        "tags": "Etiquetas",
+        "allYears": "Todos los años",
+        "allTags": "Todas las etiquetas"
+      },
+      "years": {
+        "unknown": "Fecha desconocida"
+      },
+      "selection": {
+        "count": "{{count}} fotos",
+        "empty": "Ninguna foto coincide con esta selección."
+      },
+      "metadata": {
+        "title": "Foto seleccionada",
+        "subtitle": "Datos útiles encontrados en los metadatos de la imagen.",
+        "takenOn": "Tomada el",
+        "uploadedAt": "Subida",
+        "updatedAt": "Actualizada",
+        "location": "Ubicación",
+        "dimensions": "Dimensiones",
+        "camera": "Cámara",
+        "settings": "Ajustes",
+        "credit": "Crédito",
+        "file": "Archivo"
+      },
+      "map": {
+        "title": "Mapa de fotos",
+        "subtitle": "Fotos geolocalizadas que coinciden con los filtros activos.",
+        "empty": "No hay ninguna foto geolocalizada para esta selección."
+      },
       "lightbox": {
         "title": "Foto en pantalla completa"
       }
@@ -1892,7 +1923,7 @@
     "imagesPage": {
       "kicker": "Galería del elemento",
       "title": "Imágenes de {{name}}",
-      "subtitle": "Consulta las imágenes publicadas de {{name}} en {{park}}. La galería carga fotos página a página para mantener la experiencia rápida.",
+      "subtitle": "Explora imágenes de {{name}} en {{park}}: detalles, ambiente, puntos de vista y fotos geolocalizadas cuando estén disponibles.",
       "loadingTitle": "Cargando imágenes",
       "loadingMessage": "Preparando la galería del elemento.",
       "errorTitle": "Imágenes no disponibles",
@@ -2211,7 +2242,7 @@
     "imagesPage": {
       "kicker": "Galería del parque",
       "title": "Imágenes de {{name}}",
-      "subtitle": "Explora las imágenes publicadas de {{name}}. La galería carga las fotos por páginas para mantener una experiencia rápida.",
+      "subtitle": "Explora imágenes de {{name}}: vistas del parque, ambiente, detalles y fotos geolocalizadas cuando estén disponibles.",
       "loadingTitle": "Cargando imágenes",
       "loadingMessage": "Preparando la galería del parque.",
       "errorTitle": "Imágenes no disponibles",

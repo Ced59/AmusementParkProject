@@ -32,6 +32,7 @@ export class ParkImagesViewComponent {
   @Input() totalImages: number = 0;
   @Input() canLoadMore: boolean = false;
   @Input() loadingMore: boolean = false;
+  @Input() language: string = 'en';
   @Input() detailLink: string[] | null = null;
   @Input() itemsLink: string[] | null = null;
 

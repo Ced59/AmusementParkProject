@@ -6,6 +6,7 @@ import { ParkItem } from '@app/models/parks/park-item';
 import { normalizeTranslationSegment } from '@shared/utils/display/display-label.helpers';
 import { getParkItemCategoryTranslationKey } from '@shared/utils/display/park-item-presentation.helpers';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import { buildPublicPhotoMetadata, buildPublicPhotoTagLookup, PublicPhotoMetadata, PublicPhotoTagLookup } from '@ui/media';
 import { ParkDetailPhotoCategoryOptionViewModel, ParkDetailPhotoViewModel } from '../models/park-detail-view.model';
 import { ParkDetailItemPhotoSource } from './park-detail-mapping.model';
 import { normalizeOptionalString } from './park-detail-info.mapper';
@@ -36,10 +37,10 @@ export function buildPhotos(
   imageTags: ImageTagDto[],
   currentLanguage: string
 ): ParkDetailPhotoViewModel[] {
-  const tagSlugById: Map<string, string> = new Map<string, string>(imageTags.map((tag: ImageTagDto) => [tag.id, tag.slug]));
-  const mappedParkPhotos: ParkDetailPhotoViewModel[] = buildParkPhotos(park, parkPhotos, tagSlugById);
+  const tagLookup: PublicPhotoTagLookup = buildPublicPhotoTagLookup(imageTags, currentLanguage);
+  const mappedParkPhotos: ParkDetailPhotoViewModel[] = buildParkPhotos(park, parkPhotos, tagLookup, currentLanguage);
   const mappedItemPhotos: ParkDetailPhotoViewModel[] = itemPhotoSources.flatMap((source: ParkDetailItemPhotoSource) => {
-    return buildItemPhotos(park, source.item, source.photos, currentLanguage);
+    return buildItemPhotos(park, source.item, source.photos, tagLookup, currentLanguage);
   });
 
 
@@ -54,26 +55,36 @@ export function buildPhotos(
     });
 }
 
-function buildParkPhotos(park: Park, photos: ImageDto[], tagSlugById: Map<string, string>): ParkDetailPhotoViewModel[] {
+function buildParkPhotos(
+  park: Park,
+  photos: ImageDto[],
+  tagLookup: PublicPhotoTagLookup,
+  currentLanguage: string
+): ParkDetailPhotoViewModel[] {
   const displayablePhotos: ImageDto[] = photos.filter((photo: ImageDto) => isDisplayableParkPhoto(photo));
 
   return displayablePhotos
     .map((photo: ImageDto) => {
       const firstKnownTag: string | undefined = photo.tagIds
-        ?.map((tagId: string) => tagSlugById.get(tagId) ?? tagId)
+        ?.map((tagId: string) => tagLookup.get(tagId)?.key ?? tagId)
         .find((tagSlug: string) => !!tagSlug);
       const categoryKey: string = resolveParkPhotoCategoryKey(firstKnownTag);
-      const description: string | null = normalizeOptionalString(photo.description);
+      const categoryLabelKey: string = resolveParkPhotoCategoryLabelKey(categoryKey);
       const parkName: string = park.name?.trim() ?? 'Park';
+      const metadata: PublicPhotoMetadata = buildPublicPhotoMetadata(photo, tagLookup, {
+        currentLanguage,
+        fallbackAlt: `${parkName} photo`,
+        fallbackTagKey: categoryKey,
+        fallbackTagLabelKey: categoryLabelKey
+      });
 
       return {
         id: photo.id,
         imageId: photo.id,
         category: photo.category,
         categoryKey,
-        categoryLabelKey: resolveParkPhotoCategoryLabelKey(categoryKey),
-        description,
-        alt: description ?? `${parkName} photo`,
+        categoryLabelKey,
+        ...metadata,
         isCurrent: photo.isCurrent,
         sourceTitle: parkName,
         sourceIconClass: 'pi pi-map-marker',
@@ -87,6 +98,7 @@ function buildItemPhotos(
   park: Park,
   item: ParkItem,
   photos: ImageDto[],
+  tagLookup: PublicPhotoTagLookup,
   currentLanguage: string
 ): ParkDetailPhotoViewModel[] {
   const categoryKey: string = `item-${normalizeTranslationSegment(item.category, 'other')}`;
@@ -98,10 +110,15 @@ function buildItemPhotos(
     return [];
   }
 
-  return photos
+    return photos
     .filter((photo: ImageDto) => isDisplayableItemPhoto(photo))
     .map((photo: ImageDto) => {
-      const description: string | null = normalizeOptionalString(photo.description);
+      const metadata: PublicPhotoMetadata = buildPublicPhotoMetadata(photo, tagLookup, {
+        currentLanguage,
+        fallbackAlt: `${itemName} photo`,
+        fallbackTagKey: categoryKey,
+        fallbackTagLabelKey: categoryLabelKey
+      });
 
       return {
         id: photo.id,
@@ -109,8 +126,7 @@ function buildItemPhotos(
         category: photo.category,
         categoryKey,
         categoryLabelKey,
-        description,
-        alt: description ?? `${itemName} photo`,
+        ...metadata,
         isCurrent: photo.isCurrent,
         sourceTitle: itemName,
         sourceSubtitle: categoryLabelKey,

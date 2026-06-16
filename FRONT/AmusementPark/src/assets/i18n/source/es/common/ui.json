@@ -25,6 +25,37 @@
         "closeFullscreen": "Cerrar pantalla completa",
         "openSource": "Abrir {{name}}"
       },
+      "axes": {
+        "years": "Años",
+        "tags": "Etiquetas",
+        "allYears": "Todos los años",
+        "allTags": "Todas las etiquetas"
+      },
+      "years": {
+        "unknown": "Fecha desconocida"
+      },
+      "selection": {
+        "count": "{{count}} fotos",
+        "empty": "Ninguna foto coincide con esta selección."
+      },
+      "metadata": {
+        "title": "Foto seleccionada",
+        "subtitle": "Datos útiles encontrados en los metadatos de la imagen.",
+        "takenOn": "Tomada el",
+        "uploadedAt": "Subida",
+        "updatedAt": "Actualizada",
+        "location": "Ubicación",
+        "dimensions": "Dimensiones",
+        "camera": "Cámara",
+        "settings": "Ajustes",
+        "credit": "Crédito",
+        "file": "Archivo"
+      },
+      "map": {
+        "title": "Mapa de fotos",
+        "subtitle": "Fotos geolocalizadas que coinciden con los filtros activos.",
+        "empty": "No hay ninguna foto geolocalizada para esta selección."
+      },
       "lightbox": {
         "title": "Foto en pantalla completa"
       }

@@ -245,7 +245,7 @@ export class ImagesApiService {
     return this.http.put<ImageDto>(url, request);
   }
 
-  getAdminImageTags(options: ImagesHttpOptions = {}): Observable<ImageTagDto[]> {
+  getImageTags(options: ImagesHttpOptions = {}): Observable<ImageTagDto[]> {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.getAdminImageTags}`;
     const params: HttpParams = new HttpParams()
       .set('page', '1')
@@ -254,6 +254,10 @@ export class ImagesApiService {
     return this.http.get<ImageTagDto[] | PagedCollectionResponse<ImageTagDto>>(url, { ...options, params }).pipe(
       map((response: ImageTagDto[] | PagedCollectionResponse<ImageTagDto>) => unwrapCollection<ImageTagDto>(response))
     );
+  }
+
+  getAdminImageTags(options: ImagesHttpOptions = {}): Observable<ImageTagDto[]> {
+    return this.getImageTags(options);
   }
 
   createAdminImageTag(request: {

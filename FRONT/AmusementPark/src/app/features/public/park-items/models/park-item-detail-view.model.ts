@@ -1,5 +1,6 @@
 import { MapMarker } from '@app/models/map/map-marker';
 import { ImageCategory } from '@app/models/images/image-category';
+import { UiPhotoCarouselImage } from '@ui/media';
 import { ParkItemCardViewModel } from './park-item-card.model';
 
 export interface ParkItemDetailRowViewModel {
@@ -39,15 +40,8 @@ export interface ParkItemPhotoCategoryOptionViewModel {
   count: number;
 }
 
-export interface ParkItemPhotoViewModel {
-  id: string;
-  imageId: string;
+export interface ParkItemPhotoViewModel extends UiPhotoCarouselImage {
   category: ImageCategory;
-  categoryKey: string;
-  categoryLabelKey: string;
-  description: string | null;
-  alt: string;
-  isCurrent: boolean;
 }
 
 export interface ParkItemAccessConditionMetricViewModel {

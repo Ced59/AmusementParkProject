@@ -162,7 +162,7 @@
     "imagesPage": {
       "kicker": "Onderdeelgalerij",
       "title": "Afbeeldingen van {{name}}",
-      "subtitle": "Bekijk de gepubliceerde afbeeldingen van {{name}} in {{park}}. De galerij laadt foto's per pagina om de ervaring snel te houden.",
+      "subtitle": "Ontdek afbeeldingen van {{name}} in {{park}}: details, sfeer, standpunten en geolokaliseerde foto's wanneer beschikbaar.",
       "loadingTitle": "Afbeeldingen laden",
       "loadingMessage": "De onderdeelgalerij wordt voorbereid.",
       "errorTitle": "Afbeeldingen niet beschikbaar",

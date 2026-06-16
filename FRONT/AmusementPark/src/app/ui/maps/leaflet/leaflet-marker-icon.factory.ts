@@ -181,6 +181,12 @@ const MarkerDefinitions: Record<MapMarkerIconKind, LeafletMarkerIconDefinition> 
     symbol: '🚉',
     family: 'item'
   },
+  photo: {
+    label: 'Photo',
+    color: '#38C5F5',
+    symbol: 'IMG',
+    family: 'item'
+  },
   toilets: {
     label: 'Toilettes',
     color: '#B09D7A',

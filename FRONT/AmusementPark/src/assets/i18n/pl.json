@@ -1383,6 +1383,37 @@
         "closeFullscreen": "Zamknij pełny ekran",
         "openSource": "Otwórz {{name}}"
       },
+      "axes": {
+        "years": "Lata",
+        "tags": "Tagi",
+        "allYears": "Wszystkie lata",
+        "allTags": "Wszystkie tagi"
+      },
+      "years": {
+        "unknown": "Nieznana data"
+      },
+      "selection": {
+        "count": "{{count}} zdjęć",
+        "empty": "Żadne zdjęcie nie pasuje do tego wyboru."
+      },
+      "metadata": {
+        "title": "Wybrane zdjęcie",
+        "subtitle": "Przydatne dane znalezione w metadanych obrazu.",
+        "takenOn": "Wykonano",
+        "uploadedAt": "Dodano",
+        "updatedAt": "Zaktualizowano",
+        "location": "Lokalizacja",
+        "dimensions": "Wymiary",
+        "camera": "Aparat",
+        "settings": "Ustawienia",
+        "credit": "Autor",
+        "file": "Plik"
+      },
+      "map": {
+        "title": "Mapa zdjęć",
+        "subtitle": "Geolokalizowane zdjęcia pasujące do aktywnych filtrów.",
+        "empty": "Brak geolokalizowanego zdjęcia dla tego wyboru."
+      },
       "lightbox": {
         "title": "Zdjęcie pełnoekranowe"
       }
@@ -1892,7 +1923,7 @@
     "imagesPage": {
       "kicker": "Galeria elementu",
       "title": "Zdjęcia {{name}}",
-      "subtitle": "Przeglądaj opublikowane zdjęcia {{name}} w {{park}}. Galeria ładuje zdjęcia stronami, aby zachować szybkość działania.",
+      "subtitle": "Odkrywaj zdjęcia {{name}} w {{park}}: detale, atmosferę, ujęcia i geolokalizowane fotografie, gdy są dostępne.",
       "loadingTitle": "Ładowanie zdjęć",
       "loadingMessage": "Przygotowywanie galerii elementu.",
       "errorTitle": "Zdjęcia niedostępne",
@@ -2211,7 +2242,7 @@
     "imagesPage": {
       "kicker": "Galeria parku",
       "title": "Zdjęcia {{name}}",
-      "subtitle": "Przeglądaj opublikowane zdjęcia {{name}}. Galeria ładuje zdjęcia stronami, aby zachować szybkość działania.",
+      "subtitle": "Odkrywaj zdjęcia {{name}}: widoki parku, atmosferę, detale i geolokalizowane fotografie, gdy są dostępne.",
       "loadingTitle": "Ładowanie zdjęć",
       "loadingMessage": "Przygotowywanie galerii parku.",
       "errorTitle": "Zdjęcia niedostępne",
