@@ -1889,6 +1889,22 @@
         "title": "Foto a schermo intero"
       }
     },
+    "imagesPage": {
+      "kicker": "Galleria dell’elemento",
+      "title": "Immagini di {{name}}",
+      "subtitle": "Sfoglia le immagini pubblicate di {{name}} a {{park}}. La galleria carica le foto pagina dopo pagina per mantenere l’esperienza veloce.",
+      "loadingTitle": "Caricamento immagini",
+      "loadingMessage": "Preparazione della galleria dell’elemento.",
+      "errorTitle": "Immagini non disponibili",
+      "errorMessage": "Le immagini di questo elemento non possono essere caricate al momento.",
+      "backToItem": "Torna a {{name}}",
+      "backToItems": "Tutti gli elementi di {{name}}",
+      "backToPark": "Torna a {{name}}",
+      "loadMore": "Carica altre immagini",
+      "loadingMore": "Caricamento...",
+      "emptyTitle": "Nessuna immagine pubblicata",
+      "emptyMessage": "Nessuna immagine pubblicata è ancora disponibile per {{name}}."
+    },
     "accessConditions": {
       "height": {
         "title": "Requisiti di altezza",

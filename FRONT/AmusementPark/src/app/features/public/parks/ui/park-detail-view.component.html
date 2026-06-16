@@ -133,6 +133,37 @@
             </div>
           }
 
+          @if (currentPark.primaryPhoto; as mainPhoto) {
+            @if (currentPark.imagesLink) {
+              <section class="park-main-photo">
+                <a
+                  class="park-main-photo__link"
+                  [routerLink]="currentPark.imagesLink"
+                  [attr.aria-label]="'parks.imagesPage.title' | translate:{ name: currentPark.name }">
+                  <app-image-display
+                    [imageId]="mainPhoto.imageId"
+                    [alt]="mainPhoto.alt"
+                    loading="lazy"
+                    fetchPriority="low"
+                    sizes="(max-width: 900px) 100vw, 980px"
+                    [srcWidth]="960"
+                    [responsiveWidths]="heroImageResponsiveWidths"
+                    imgClass="park-main-photo__img"
+                    placeholderClass="park-main-photo__placeholder"
+                    placeholderKind="photo">
+                  </app-image-display>
+                  <span class="park-main-photo__caption">
+                    <span>{{ 'parks.photos.title' | translate }}</span>
+                    <strong>
+                      {{ 'parks.imagesPage.kicker' | translate }}
+                      <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+                    </strong>
+                  </span>
+                </a>
+              </section>
+            }
+          }
+
           <section class="park-desc">
             <app-ui-kicker iconClass="pi pi-align-left">
               {{ 'parks.detail.description.badge' | translate }}

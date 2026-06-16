@@ -2,6 +2,7 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
@@ -9,6 +10,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Queries;
 using AmusementPark.Application.Features.Seo.Services;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Seo.Handlers;
@@ -33,19 +35,22 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
     private readonly IParkOperatorRepository parkOperatorRepository;
     private readonly IParkFounderRepository parkFounderRepository;
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
+    private readonly IImageRepository imageRepository;
 
     public GetPublicSitemapSeedQueryHandler(
         IParkRepository parkRepository,
         IParkItemRepository parkItemRepository,
         IParkOperatorRepository parkOperatorRepository,
         IParkFounderRepository parkFounderRepository,
-        IAttractionManufacturerRepository attractionManufacturerRepository)
+        IAttractionManufacturerRepository attractionManufacturerRepository,
+        IImageRepository imageRepository)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.parkOperatorRepository = parkOperatorRepository;
         this.parkFounderRepository = parkFounderRepository;
         this.attractionManufacturerRepository = attractionManufacturerRepository;
+        this.imageRepository = imageRepository;
     }
 
     public async Task<ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>>> HandleAsync(GetPublicSitemapSeedQuery query, CancellationToken cancellationToken = default)
@@ -59,8 +64,19 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             .Where(static park => !string.IsNullOrWhiteSpace(park.Id))
             .ToDictionary(static park => park.Id!, static park => park, StringComparer.OrdinalIgnoreCase);
 
-        this.AddParkUrls(urls, visibleParks, languages);
-        await this.AddParkItemUrlsAsync(urls, visibleParkById, languages, cancellationToken);
+        HashSet<string> parkIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
+            this.imageRepository,
+            ImageOwnerType.Park,
+            ImageCategory.Park,
+            cancellationToken);
+        HashSet<string> itemIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
+            this.imageRepository,
+            ImageOwnerType.Attraction,
+            ImageCategory.Attraction,
+            cancellationToken);
+
+        this.AddParkUrls(urls, visibleParks, languages, parkIdsWithPublishedImages);
+        await this.AddParkItemUrlsAsync(urls, visibleParkById, languages, itemIdsWithPublishedImages, cancellationToken);
 
         await this.AddReferenceUrlsAsync(urls, languages, cancellationToken);
 
@@ -113,7 +129,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             .ToList();
     }
 
-    private void AddParkUrls(List<PublicSitemapUrl> urls, IReadOnlyCollection<Park> parks, IReadOnlyCollection<string> languages)
+    private void AddParkUrls(List<PublicSitemapUrl> urls, IReadOnlyCollection<Park> parks, IReadOnlyCollection<string> languages, HashSet<string> parkIdsWithPublishedImages)
     {
         foreach (Park park in parks)
         {
@@ -126,12 +142,20 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             foreach (string language in languages)
             {
                 urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc));
-                urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc));
+                if (parkIdsWithPublishedImages.Contains(park.Id))
+                {
+                    urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc));
+                }
             }
         }
     }
 
-    private async Task AddParkItemUrlsAsync(List<PublicSitemapUrl> urls, IReadOnlyDictionary<string, Park> visibleParkById, IReadOnlyCollection<string> languages, CancellationToken cancellationToken)
+    private async Task AddParkItemUrlsAsync(
+        List<PublicSitemapUrl> urls,
+        IReadOnlyDictionary<string, Park> visibleParkById,
+        IReadOnlyCollection<string> languages,
+        HashSet<string> itemIdsWithPublishedImages,
+        CancellationToken cancellationToken)
     {
         IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetPublicSitemapCandidatesAsync(
             PublicSitemapCandidatePageSize,
@@ -154,6 +178,10 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             foreach (string language in languages)
             {
                 urls.Add(new PublicSitemapUrl($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}", item.UpdatedAtUtc));
+                if (itemIdsWithPublishedImages.Contains(item.Id))
+                {
+                    urls.Add(new PublicSitemapUrl($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/images", item.UpdatedAtUtc));
+                }
             }
         }
     }

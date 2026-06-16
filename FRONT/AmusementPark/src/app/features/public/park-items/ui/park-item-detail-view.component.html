@@ -141,6 +141,35 @@
       </article>
     </section>
 
+    <ng-container *ngIf="currentDetail.heroPhoto as mainPhoto">
+      <section class="item-main-photo" *ngIf="currentDetail.imagesLink as imagesLink">
+        <a
+          class="item-main-photo__link"
+          [routerLink]="imagesLink"
+          [attr.aria-label]="'parkItems.imagesPage.title' | translate:{ name: currentDetail.name }">
+          <app-image-display
+            [imageId]="mainPhoto.imageId"
+            [alt]="mainPhoto.alt"
+            loading="lazy"
+            fetchPriority="low"
+            [sizes]="heroImageSizes"
+            [srcWidth]="heroImageSrcWidth"
+            [responsiveWidths]="heroImageResponsiveWidths"
+            imgClass="item-main-photo__img"
+            placeholderClass="item-main-photo__placeholder"
+            placeholderKind="photo">
+          </app-image-display>
+          <span class="item-main-photo__caption">
+            <span>{{ 'parkItems.photos.title' | translate }}</span>
+            <strong>
+              {{ 'parkItems.imagesPage.kicker' | translate }}
+              <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+            </strong>
+          </span>
+        </a>
+      </section>
+    </ng-container>
+
     <div class="item-detail-body">
       <div class="item-detail-main">
         <section class="detail-panel detail-panel--description" appUiSurface="detail" appUiSurfacePadding="regular" *ngIf="currentDetail.description">
@@ -187,30 +216,6 @@
             </button>
           </div>
         </app-ui-map-shell>
-
-        <app-ui-photo-carousel
-          *ngIf="currentDetail.photos.length > 0"
-          [photos]="currentDetail.photos"
-          [categories]="currentDetail.photoCategories"
-          [displayLimits]="photoDisplayLimits"
-          [defaultDisplayLimit]="4"
-          [tone]="currentDetail.typeTone"
-          kickerIconClass="pi pi-images"
-          kickerLabelKey="parkItems.photos.kicker"
-          titleKey="parkItems.photos.title"
-          subtitleKey="parkItems.photos.subtitle"
-          categoryAriaLabelKey="parkItems.photos.controls.category"
-          allCategoriesLabelKey="parkItems.photos.controls.allCategories"
-          displayCountLabelKey="parkItems.photos.controls.displayCount"
-          countLimitLabelKey="parkItems.photos.controls.count"
-          allLimitLabelKey="parkItems.photos.controls.all"
-          previousLabelKey="parkItems.photos.controls.previous"
-          nextLabelKey="parkItems.photos.controls.next"
-          openFullscreenLabelKey="parkItems.photos.controls.openFullscreen"
-          closeFullscreenLabelKey="parkItems.photos.controls.closeFullscreen"
-          lightboxTitleKey="parkItems.photos.lightbox.title"
-          currentLabelKey="parkItems.photos.current">
-        </app-ui-photo-carousel>
 
         <section class="detail-panel spec-panel" appUiSurface="detail" appUiSurfacePadding="regular" *ngFor="let group of currentDetail.specGroups">
           <app-ui-section-header

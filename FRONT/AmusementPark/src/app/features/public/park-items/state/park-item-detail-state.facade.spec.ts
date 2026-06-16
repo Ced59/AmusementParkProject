@@ -4,7 +4,6 @@ import { Observable, of, throwError } from 'rxjs';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
-import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
@@ -70,17 +69,12 @@ class FakeZonesPort implements ParkItemDetailZonesPort {
 }
 
 class FakeImagesPort implements ParkItemDetailImagesPort {
-  public tagsResponse$: Observable<ImageTagDto[]> = of([]);
   public photosResponse$: Observable<ImageDto[]> = of([]);
   public readonly imageCalls: { ownerType: ImageOwnerType; ownerId: string; category: ImageCategory; page?: number; size?: number }[] = [];
 
   getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number): Observable<ImageDto[]> {
     this.imageCalls.push({ ownerType, ownerId, category, page, size });
     return this.photosResponse$;
-  }
-
-  getAdminImageTags(): Observable<ImageTagDto[]> {
-    return this.tagsResponse$;
   }
 }
 
@@ -122,6 +116,31 @@ function createParkItem(overrides: Partial<ParkItem> = {}): ParkItem {
     },
     ...overrides
   } as ParkItem;
+}
+
+function createImage(id: string): ImageDto {
+  return {
+    id,
+    category: ImageCategory.ATTRACTION,
+    ownerType: ImageOwnerType.ATTRACTION,
+    ownerId: 'item-1',
+    path: `items/${id}.jpg`,
+    description: 'Taron main image',
+    isCurrent: true,
+    isPublished: true,
+    width: 1200,
+    height: 800,
+    sizeInBytes: 1000,
+    originalFileName: `${id}.jpg`,
+    contentType: 'image/jpeg',
+    geoLocation: null,
+    altTexts: [],
+    captions: [],
+    credits: [],
+    tagIds: [],
+    createdAt: '2026-01-01T00:00:00Z',
+    updatedAt: '2026-01-01T00:00:00Z'
+  };
 }
 
 function configureFacade(): {
@@ -171,6 +190,7 @@ describe('ParkItemDetailStateFacade', () => {
   it('loads the park item and orchestrates related detail data through ports', () => {
     const context = configureFacade();
     context.itemsPort.relatedResponse$ = of([createParkItem({ id: 'item-2', name: 'Raik' })]);
+    context.imagesPort.photosResponse$ = of([createImage('image-1')]);
 
     context.facade.setCurrentLanguage('fr');
     context.facade.loadItem('item-1');
@@ -180,13 +200,15 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.facade.detail()?.parkName).toBe('Phantasialand');
     expect(context.facade.detail()?.manufacturerName).toBe('Intamin');
     expect(context.facade.detail()?.zoneName).toBe('Mexico');
+    expect(context.facade.detail()?.heroPhoto?.imageId).toBe('image-1');
+    expect(context.facade.detail()?.imagesLink).toEqual(['/', 'fr', 'park', 'park-1', 'phantasialand', 'item', 'item-1', 'taron', 'images']);
     expect(context.itemsPort.itemCalls).toEqual(['item-1']);
     expect(context.parksPort.calls).toEqual(['park-1']);
     expect(context.itemsPort.relatedCalls).toEqual(['park-1']);
     expect(context.manufacturersPort.calls).toEqual(['manufacturer-1']);
     expect(context.zonesPort.calls).toEqual(['zone-1']);
     expect(context.imagesPort.imageCalls).toEqual([
-      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: 1, size: 100 }
+      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: 1, size: 1 }
     ]);
   });
 
@@ -203,7 +225,6 @@ describe('ParkItemDetailStateFacade', () => {
   it('keeps the primary detail ready when optional related data fails', () => {
     const context = configureFacade();
     context.imagesPort.photosResponse$ = throwError(() => new Error('Image API unavailable'));
-    context.imagesPort.tagsResponse$ = throwError(() => new Error('Tags API unavailable'));
     context.itemsPort.relatedResponse$ = throwError(() => new Error('Related items unavailable'));
     context.manufacturersPort.response$ = throwError(() => new Error('Manufacturer unavailable'));
     context.zonesPort.response$ = throwError(() => new Error('Zone unavailable'));
@@ -214,7 +235,8 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.facade.detail()?.name).toBe('Taron');
     expect(context.facade.detail()?.manufacturerName).toBeNull();
     expect(context.facade.detail()?.zoneName).toBeNull();
-    expect(context.facade.detail()?.photos).toEqual([]);
+    expect(context.facade.detail()?.heroPhoto).toBeNull();
+    expect(context.facade.detail()?.imagesLink).toBeNull();
     expect(context.facade.detail()?.relatedItems).toEqual([]);
   });
 });

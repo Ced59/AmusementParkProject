@@ -17,6 +17,7 @@ import { ParkZone } from '@app/models/parks/park-zone';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import {
   buildPublicParkImagesRouteCommands,
+  buildPublicParkItemImagesRouteCommands,
   buildPublicParkItemRouteCommands,
   buildPublicParkItemsRouteCommands,
   buildPublicParkMapRouteCommands,
@@ -42,7 +43,7 @@ interface PublicParkRouteContext {
   readonly itemId: string | null;
   readonly itemSlug: string | null;
   readonly selectedZoneId: string | null;
-  readonly pageKind: 'park-detail' | 'park-items' | 'park-item-detail' | 'park-images' | 'park-map';
+  readonly pageKind: 'park-detail' | 'park-items' | 'park-item-detail' | 'park-item-images' | 'park-images' | 'park-map';
 }
 
 interface PublicParkNavigationSourceData {
@@ -243,8 +244,19 @@ export class PublicParkNavigationTreeFacade {
         icon: 'pi pi-star',
         routeCommands: this.buildParkItemRoute(sourceData),
         level: sourceData.zone?.id ? 3 : 2,
-        isCurrent: true
+        isCurrent: context.pageKind === 'park-item-detail'
       });
+
+      if (context.pageKind === 'park-item-images') {
+        items.push({
+          id: `item-images-${context.itemId}`,
+          label: this.resolveParkItemImagesLabel(context.language, itemLabel ?? context.itemSlug),
+          icon: 'pi pi-images',
+          routeCommands: this.buildParkItemImagesRoute(sourceData),
+          level: sourceData.zone?.id ? 4 : 3,
+          isCurrent: true
+        });
+      }
     }
 
     return items;
@@ -291,6 +303,28 @@ export class PublicParkNavigationTreeFacade {
         level: 2,
         isCurrent: true
       });
+    }
+
+    if (context.itemId && context.itemSlug) {
+      items.push({
+        id: `item-${context.itemId}`,
+        label: context.itemSlug,
+        icon: 'pi pi-star',
+        routeCommands: this.buildFallbackParkItemRoute(context),
+        level: 2,
+        isCurrent: context.pageKind === 'park-item-detail'
+      });
+
+      if (context.pageKind === 'park-item-images') {
+        items.push({
+          id: `item-images-${context.itemId}`,
+          label: this.resolveParkItemImagesLabel(context.language, context.itemSlug),
+          icon: 'pi pi-images',
+          routeCommands: this.buildFallbackParkItemImagesRoute(context),
+          level: 3,
+          isCurrent: true
+        });
+      }
     }
 
     return items;
@@ -343,6 +377,17 @@ export class PublicParkNavigationTreeFacade {
     }) ?? [...this.buildFallbackParkRoute(context), 'item', context.itemId ?? '', context.itemSlug ?? ''];
   }
 
+  private buildParkItemImagesRoute(sourceData: PublicParkNavigationSourceData): string[] {
+    const context: PublicParkRouteContext = sourceData.context;
+    return buildPublicParkItemImagesRouteCommands({
+      language: context.language,
+      parkId: context.parkId,
+      parkName: sourceData.park?.name ?? context.parkSlug,
+      itemId: context.itemId,
+      itemName: sourceData.item?.name ?? context.itemSlug
+    }) ?? this.buildFallbackParkItemImagesRoute(context);
+  }
+
   private buildFallbackParkRoute(context: PublicParkRouteContext): string[] {
     return ['/', context.language, 'park', context.parkId, context.parkSlug];
   }
@@ -353,6 +398,14 @@ export class PublicParkNavigationTreeFacade {
 
   private buildFallbackParkMapRoute(context: PublicParkRouteContext): string[] {
     return [...this.buildFallbackParkRoute(context), 'map'];
+  }
+
+  private buildFallbackParkItemRoute(context: PublicParkRouteContext): string[] {
+    return [...this.buildFallbackParkRoute(context), 'item', context.itemId ?? '', context.itemSlug ?? ''];
+  }
+
+  private buildFallbackParkItemImagesRoute(context: PublicParkRouteContext): string[] {
+    return [...this.buildFallbackParkItemRoute(context), 'images'];
   }
 
   private resolveRouteContext(url: string): PublicParkRouteContext | null {
@@ -380,7 +433,7 @@ export class PublicParkNavigationTreeFacade {
         itemId: paths[5],
         itemSlug: paths[6],
         selectedZoneId: null,
-        pageKind: 'park-item-detail'
+        pageKind: paths[7] === 'images' ? 'park-item-images' : 'park-item-detail'
       };
     }
 
@@ -489,6 +542,21 @@ export class PublicParkNavigationTreeFacade {
       nl: `Afbeeldingen van ${parkLabel}`,
       pl: `Zdjęcia ${parkLabel}`,
       pt: `Imagens de ${parkLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkItemImagesLabel(language: string, itemLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Images ${itemLabel}`,
+      en: `${itemLabel} images`,
+      es: `ImÃ¡genes de ${itemLabel}`,
+      de: `Bilder von ${itemLabel}`,
+      it: `Immagini di ${itemLabel}`,
+      nl: `Afbeeldingen van ${itemLabel}`,
+      pl: `ZdjÄ™cia ${itemLabel}`,
+      pt: `Imagens de ${itemLabel}`
     };
 
     return labels[language] ?? labels['en'];

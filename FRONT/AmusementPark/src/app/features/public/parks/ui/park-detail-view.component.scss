@@ -159,6 +159,93 @@
   height: 100%;
 }
 
+.park-main-photo {
+  display: block;
+}
+
+.park-main-photo__link {
+  position: relative;
+  display: block;
+  min-height: clamp(13rem, 30vw, 22rem);
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-xl);
+  background: var(--app-surface-2);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+}
+
+.park-main-photo__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 32%, color-mix(in srgb, var(--app-bg) 78%, transparent) 100%);
+  pointer-events: none;
+}
+
+:host ::ng-deep .park-main-photo__img,
+.park-main-photo__placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: clamp(13rem, 30vw, 22rem);
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+
+.park-main-photo__placeholder {
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--app-primary) 14%, transparent);
+}
+
+.park-main-photo__caption {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  color: var(--app-heading);
+}
+
+.park-main-photo__caption span {
+  color: color-mix(in srgb, var(--app-text-muted) 88%, white);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.park-main-photo__caption strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  max-width: 100%;
+  color: var(--app-heading);
+  font-size: 0.96rem;
+  line-height: 1.25;
+}
+
+.park-main-photo__link:hover,
+.park-main-photo__link:focus-visible {
+  border-color: color-mix(in srgb, var(--app-primary) 42%, var(--app-border));
+}
+
+:host ::ng-deep .park-main-photo__link:hover .park-main-photo__img,
+:host ::ng-deep .park-main-photo__link:focus-visible .park-main-photo__img {
+  transform: scale(1.025);
+}
+
+.park-main-photo__link:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--app-primary) 30%, transparent);
+  outline-offset: 3px;
+}
+
 .park-desc,
 .park-side-card {
   border: 1px solid var(--app-border);

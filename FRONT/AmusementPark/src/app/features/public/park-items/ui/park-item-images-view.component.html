@@ -1,0 +1,99 @@
+@let currentItem = item;
+@let currentPark = park;
+
+<app-page-state
+  [state]="state"
+  [messages]="{
+    loadingTitleKey: 'parkItems.imagesPage.loadingTitle',
+    loadingMessageKey: 'parkItems.imagesPage.loadingMessage',
+    errorTitleKey: 'parkItems.imagesPage.errorTitle',
+    errorMessageKey: 'parkItems.imagesPage.errorMessage'
+  }">
+  @if (currentItem && currentPark) {
+    <section class="park-item-images-page public-page">
+      <header class="park-subpage-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+        <div class="park-subpage-hero__content">
+          <div class="park-subpage-hero__meta">
+            <app-ui-kicker tone="sky" iconClass="pi pi-images">
+              {{ 'parkItems.imagesPage.kicker' | translate }}
+            </app-ui-kicker>
+            <app-ui-chip tone="gold" iconClass="pi pi-star">
+              {{ currentItem.name }}
+            </app-ui-chip>
+            <app-ui-chip tone="soft" iconClass="pi pi-map-marker">
+              {{ currentPark.name }}
+            </app-ui-chip>
+          </div>
+
+          <h1 class="public-section-header__title">{{ 'parkItems.imagesPage.title' | translate:{ name: currentItem.name } }}</h1>
+          <p class="public-section-header__subtitle">{{ 'parkItems.imagesPage.subtitle' | translate:{ name: currentItem.name, park: currentPark.name, count: totalImages } }}</p>
+
+          <div class="park-subpage-hero__actions">
+            @if (detailLink) {
+              <a appUiButton="ghost" [routerLink]="detailLink">
+                <i class="pi pi-arrow-left" aria-hidden="true"></i>
+                <span>{{ 'parkItems.imagesPage.backToItem' | translate:{ name: currentItem.name } }}</span>
+              </a>
+            }
+
+            @if (itemsLink) {
+              <a appUiButton="primary" [routerLink]="itemsLink">
+                <i class="pi pi-sitemap" aria-hidden="true"></i>
+                <span>{{ 'parkItems.imagesPage.backToItems' | translate:{ name: currentPark.name } }}</span>
+              </a>
+            }
+
+            @if (parkLink) {
+              <a appUiButton="ghost" [routerLink]="parkLink">
+                <i class="pi pi-map" aria-hidden="true"></i>
+                <span>{{ 'parkItems.imagesPage.backToPark' | translate:{ name: currentPark.name } }}</span>
+              </a>
+            }
+          </div>
+        </div>
+      </header>
+
+      @if (photos.length > 0) {
+        <app-ui-photo-carousel
+          [photos]="photos"
+          [categories]="categories"
+          [displayLimits]="[6, 12, 24, 0]"
+          [defaultDisplayLimit]="0"
+          tone="sky"
+          kickerIconClass="pi pi-images"
+          kickerLabelKey="parkItems.photos.kicker"
+          titleKey="parkItems.photos.title"
+          subtitleKey="parkItems.photos.subtitle"
+          categoryAriaLabelKey="parkItems.photos.controls.category"
+          allCategoriesLabelKey="parkItems.photos.controls.allCategories"
+          displayCountLabelKey="parkItems.photos.controls.displayCount"
+          countLimitLabelKey="parkItems.photos.controls.count"
+          allLimitLabelKey="parkItems.photos.controls.all"
+          previousLabelKey="parkItems.photos.controls.previous"
+          nextLabelKey="parkItems.photos.controls.next"
+          openFullscreenLabelKey="parkItems.photos.controls.openFullscreen"
+          closeFullscreenLabelKey="parkItems.photos.controls.closeFullscreen"
+          lightboxTitleKey="parkItems.photos.lightbox.title"
+          currentLabelKey="parkItems.photos.current">
+        </app-ui-photo-carousel>
+
+        @if (canLoadMore) {
+          <div class="park-item-images-page__load-more">
+            <button appUiButton="primary" type="button" [disabled]="loadingMore" (click)="loadMore()">
+              <i class="pi pi-plus" aria-hidden="true"></i>
+              <span>
+                {{ (loadingMore ? 'parkItems.imagesPage.loadingMore' : 'parkItems.imagesPage.loadMore') | translate }}
+              </span>
+            </button>
+          </div>
+        }
+      } @else {
+        <section class="park-item-images-empty" appUiSurface="soft" appUiSurfacePadding="spacious">
+          <i class="pi pi-image" aria-hidden="true"></i>
+          <h2>{{ 'parkItems.imagesPage.emptyTitle' | translate }}</h2>
+          <p>{{ 'parkItems.imagesPage.emptyMessage' | translate:{ name: currentItem.name } }}</p>
+        </section>
+      }
+    </section>
+  }
+</app-page-state>

@@ -159,6 +159,22 @@
         "title": "Foto op volledig scherm"
       }
     },
+    "imagesPage": {
+      "kicker": "Onderdeelgalerij",
+      "title": "Afbeeldingen van {{name}}",
+      "subtitle": "Bekijk de gepubliceerde afbeeldingen van {{name}} in {{park}}. De galerij laadt foto's per pagina om de ervaring snel te houden.",
+      "loadingTitle": "Afbeeldingen laden",
+      "loadingMessage": "De onderdeelgalerij wordt voorbereid.",
+      "errorTitle": "Afbeeldingen niet beschikbaar",
+      "errorMessage": "De afbeeldingen voor dit onderdeel kunnen nu niet worden geladen.",
+      "backToItem": "Terug naar {{name}}",
+      "backToItems": "Alle onderdelen van {{name}}",
+      "backToPark": "Terug naar {{name}}",
+      "loadMore": "Meer afbeeldingen laden",
+      "loadingMore": "Laden...",
+      "emptyTitle": "Geen gepubliceerde afbeeldingen",
+      "emptyMessage": "Er is nog geen gepubliceerde afbeelding beschikbaar voor {{name}}."
+    },
     "accessConditions": {
       "height": {
         "title": "Lengtevoorwaarden",

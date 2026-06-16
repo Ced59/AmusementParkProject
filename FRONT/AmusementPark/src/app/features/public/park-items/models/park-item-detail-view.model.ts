@@ -78,6 +78,7 @@ export interface ParkItemDetailViewModel {
   homeLink: string[];
   parkLink: string[] | null;
   itemsLink: string[] | null;
+  imagesLink: string[] | null;
   categoryNavigation: ParkItemDetailNavigationLinkViewModel | null;
   typeNavigation: ParkItemDetailNavigationLinkViewModel | null;
   subtypeNavigation: ParkItemDetailNavigationLinkViewModel | null;
@@ -91,8 +92,6 @@ export interface ParkItemDetailViewModel {
   spotlightRows: ParkItemDetailRowViewModel[];
   summaryRows: ParkItemDetailRowViewModel[];
   specGroups: ParkItemDetailSpecGroupViewModel[];
-  photos: ParkItemPhotoViewModel[];
-  photoCategories: ParkItemPhotoCategoryOptionViewModel[];
   heroPhoto: ParkItemPhotoViewModel | null;
   accessConditions: ParkItemAccessConditionViewModel[];
   locationPoints: ParkItemLocationPointViewModel[];

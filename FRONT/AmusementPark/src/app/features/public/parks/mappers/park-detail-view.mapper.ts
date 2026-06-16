@@ -84,6 +84,7 @@ export function mapParkToDetailViewModel(
   const locationRows: ParkDetailInfoRowViewModel[] = buildLocationRows(hasLocationInfo, park.latitude, park.longitude);
   const stats: ParkDetailStatViewModel[] = buildStats(totalItems, zoneCount, countryName, type);
   const photos: ParkDetailPhotoViewModel[] = buildPhotos(park, parkPhotos, itemPhotoSources, imageTags, currentLanguage);
+  const primaryPhoto: ParkDetailPhotoViewModel | null = photos[0] ?? null;
   const heroImageId: string | null = resolveParkHeroImageId(parkPhotos) ?? logoImageId;
 
   return {
@@ -121,12 +122,13 @@ export function mapParkToDetailViewModel(
     zonesLink: hasIdentity && zoneCount > 0
       ? buildPublicParkZonesRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
-    imagesLink: hasIdentity
+    imagesLink: hasIdentity && primaryPhoto
       ? buildPublicParkImagesRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     mapLink: hasIdentity
       ? buildPublicParkMapRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
+    primaryPhoto,
     identityRows,
     practicalRows,
     publicationRows,

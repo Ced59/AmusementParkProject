@@ -13,7 +13,6 @@ import { MapMarker } from '@app/models/map/map-marker';
 import { ParkItemDetailRowViewModel, ParkItemDetailViewModel } from '../models/park-item-detail-view.model';
 import { UiItemCardComponent } from '@ui/cards';
 import { UiMapShellComponent, UiMapSlotComponent } from '@ui/maps';
-import { UiPhotoCarouselComponent } from '@ui/media';
 import { SafeRichHtmlPipe } from '@shared/pipes';
 import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 
@@ -35,14 +34,12 @@ import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent, UiSurface
     UiItemCardComponent,
     UiMapShellComponent,
     UiMapSlotComponent,
-    UiPhotoCarouselComponent,
     SafeRichHtmlPipe,
     UiSectionHeaderComponent,
     UiSurfaceDirective
   ]
 })
 export class ParkItemDetailViewComponent {
-  readonly photoDisplayLimits: number[] = [4, 8, 12, 0];
   readonly selectedLocationPointId = signal<string | null>(null);
 
   readonly locationMapMarkers = computed<MapMarker[]>(() => {

@@ -66,6 +66,7 @@ export interface ParkDetailViewModel {
   zonesLink: string[] | null;
   imagesLink: string[] | null;
   mapLink: string[] | null;
+  primaryPhoto: ParkDetailPhotoViewModel | null;
   identityRows: ParkDetailInfoRowViewModel[];
   practicalRows: ParkDetailInfoRowViewModel[];
   publicationRows: ParkDetailInfoRowViewModel[];

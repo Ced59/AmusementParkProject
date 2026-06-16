@@ -48,10 +48,10 @@ function createPark(): Park {
   };
 }
 
-function createSummary(totalItems: number = 3): ParkDetailSummary {
+function createSummary(totalItems: number = 3, hasMainImage: boolean = true): ParkDetailSummary {
   return {
     park: createPark(),
-    mainImage: {
+    mainImage: hasMainImage ? {
       id: 'main-image-1',
       category: ImageCategory.PARK,
       ownerType: ImageOwnerType.PARK,
@@ -72,7 +72,7 @@ function createSummary(totalItems: number = 3): ParkDetailSummary {
       tagIds: [],
       createdAt: '2026-01-01T00:00:00Z',
       updatedAt: '2026-01-01T00:00:00Z'
-    },
+    } : null,
     references: {
       founderName: 'Founder',
       operatorName: 'Operator'
@@ -138,11 +138,25 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.park()?.name).toBe('Bellewaerde');
     expect(context.facade.park()?.countryName).toBe('Belgique');
     expect(context.facade.park()?.heroImageId).toBe('main-image-1');
+    expect(context.facade.park()?.primaryPhoto?.imageId).toBe('main-image-1');
+    expect(context.facade.park()?.imagesLink).toEqual(['/', 'fr', 'park', 'park-1', 'bellewaerde', 'images']);
     expect(context.facade.park()?.founderName).toBe('Founder');
     expect(context.facade.park()?.operatorName).toBe('Operator');
     expect(context.facade.park()?.stats[0].value).toBe(3);
     expect(context.facade.summary()?.entries.find((entry) => entry.labelKey === 'parkVisitor.summary.totalItems')?.count).toBe(3);
     expect(context.parksPort.summaryCalls).toEqual(['park-1']);
+  });
+
+  it('keeps the logo fallback but hides the images link when no main photo exists', () => {
+    const context = configureFacade();
+    context.parksPort.summaryResponse$ = of(createSummary(3, false));
+
+    context.facade.setCurrentLanguage('fr');
+    context.facade.loadPark('park-1');
+
+    expect(context.facade.park()?.heroImageId).toBe('logo-1');
+    expect(context.facade.park()?.primaryPhoto).toBeNull();
+    expect(context.facade.park()?.imagesLink).toBeNull();
   });
 
   it('sets the SSR 404 status and preserves the previous data when the summary is missing', () => {
