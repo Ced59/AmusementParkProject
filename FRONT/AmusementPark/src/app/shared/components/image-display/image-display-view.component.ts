@@ -11,6 +11,8 @@ import { NgClass, NgIf } from '@angular/common';
 export class ImageDisplayViewComponent {
   @Input() showImage: boolean = false;
   @Input() resolvedImageUrl: string | null = null;
+  @Input() resolvedImageSrcSet: string | null = null;
+  @Input() resolvedImageSizes: string | null = null;
   @Input() alt: string = '';
   @Input() imgClass: string = '';
   @Input() placeholderClass: string = '';

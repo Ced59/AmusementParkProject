@@ -19,6 +19,7 @@ import { ModalName, ModalService } from '@app/services/modal/modal.service';
 import { SharedService } from '@app/services/shared/shared.service';
 import { TranslationService } from '@app/services/translation.service';
 import { LANGUAGES, LanguageOption } from '@shared/models/localization';
+import { resolveFlagAssetPath } from '@shared/utils/assets/flag-assets';
 import { resolveSupportedLanguage, resolveSupportedLanguageFromUrl } from '@shared/utils/routing/localized-route.helpers';
 import { PublicParkNavigationTreeFacade } from '@features/public/navigation/state/public-park-navigation-tree.facade';
 import { PublicParkNavigationTreeViewModel } from '@features/public/navigation/models/public-park-navigation-tree.model';
@@ -166,6 +167,10 @@ export class PublicHeaderComponent implements OnInit {
 
   protected getLanguageShortCode(language: LanguageOption): string {
     return language.value.toUpperCase();
+  }
+
+  protected flagAssetPath(language: string): string {
+    return resolveFlagAssetPath(language);
   }
 
   protected onLanguageDialogVisibleChanged(visible: boolean): void {

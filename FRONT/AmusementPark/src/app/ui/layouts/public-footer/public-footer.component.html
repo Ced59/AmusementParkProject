@@ -37,7 +37,7 @@
               [routerLink]="languageRouteCommands(language.value)"
               [class.app-public-footer__language-link--active]="isCurrentLanguage(language.value)"
               [attr.aria-current]="isCurrentLanguage(language.value) ? 'page' : null">
-              <img class="app-public-footer__flag" [src]="'assets/flags/' + language.value + '.png'" alt="" />
+              <img class="app-public-footer__flag" [src]="flagAssetPath(language.value)" alt="" />
               <span>{{ language.label }}</span>
             </a>
           </li>

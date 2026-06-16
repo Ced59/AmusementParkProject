@@ -20,6 +20,7 @@ The project must preserve its current architecture, SOLID principles, separation
 
 ## General rules
 
+- For implementation tasks, always start from a new branch based on `origin/master`, then commit, push, and open a pull request targeting `master`.
 - Keep pull requests small, focused, and easy to review.
 - Increment the release version in every PR unless the user explicitly asks for a major or intermediate version increment instead.
 - Do not mix unrelated backend, frontend, SEO, security, UI, deployment, and refactoring changes in one PR.
@@ -29,6 +30,8 @@ The project must preserve its current architecture, SOLID principles, separation
 - Do not silently change public contracts, route URLs, DTO shapes, database behavior, localization behavior, or SEO behavior.
 - Prefer incremental, testable changes over broad rewrites.
 - Add or update tests for every behavior change.
+- Every new feature must include relevant unit tests.
+- Always pay close attention to performance impact. The production VPS target is modest, so avoid unnecessary CPU work, memory pressure, network payload, bundle weight, synchronous blocking work, and repeated runtime computations.
 - When unsure, inspect the existing pattern and follow it.
 
 ## Backend rules

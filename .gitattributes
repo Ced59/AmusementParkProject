@@ -45,6 +45,11 @@
 #*.gif   binary
 
 ###############################################################################
+# Keep generated frontend i18n assets stable across Windows checkouts.
+###############################################################################
+FRONT/AmusementPark/src/assets/i18n/*.json text eol=lf
+
+###############################################################################
 # diff behavior for common document formats
 # 
 # Convert binary document formats to text before diffing them. This feature
