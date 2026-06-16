@@ -91,11 +91,21 @@
 
 .app-public-footer__links a:hover,
 .app-public-footer__language-link--active {
-  color: var(--c-orange) !important;
+  color: var(--app-heading) !important;
+  text-decoration: underline;
+  text-decoration-color: var(--c-orange);
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.24em;
 }
 
 .app-public-footer__links a:hover {
   transform: translateX(3px);
+}
+
+.app-public-footer__language-link--active .app-public-footer__flag {
+  box-shadow:
+    0 0 0 2px var(--c-orange),
+    0 0 0 4px var(--app-bg-elevated);
 }
 
 .app-public-footer__flag {
