@@ -6,6 +6,7 @@ import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing
 type LeafletMapComponentInternals = {
   focusSelectedMarker: () => boolean;
   openPendingSelectedMarkerPopup: () => void;
+  buildTileLayerOptions: () => Record<string, unknown>;
   map: { getZoom: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } | null;
   leafletMarkers: Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>;
   pendingPopupMarkerId: string | null;
@@ -74,5 +75,33 @@ describe('LeafletMapComponent', () => {
 
     expect(internals.focusSelectedMarker()).toBeFalse();
     expect(internals.pendingPopupMarkerId).toBeNull();
+  });
+
+  it('uses reduced OpenStreetMap tile requests on mobile viewports', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    spyOnProperty(window, 'innerWidth', 'get').and.returnValue(390);
+
+    const options: Record<string, unknown> = internals.buildTileLayerOptions();
+
+    expect(options).toEqual(jasmine.objectContaining({
+      maxZoom: 19,
+      detectRetina: false,
+      keepBuffer: 0,
+      updateWhenIdle: true,
+      updateWhenZooming: false,
+      tileSize: 512,
+      zoomOffset: -1
+    }));
+  });
+
+  it('keeps native tile detail on wider viewports', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1024);
+
+    const options: Record<string, unknown> = internals.buildTileLayerOptions();
+
+    expect(options['tileSize']).toBeUndefined();
+    expect(options['zoomOffset']).toBeUndefined();
+    expect(options['keepBuffer']).toBe(0);
   });
 });

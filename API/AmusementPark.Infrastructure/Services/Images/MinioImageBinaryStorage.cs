@@ -22,7 +22,10 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
     private const string WatermarkText = "amusement-parks.fun";
     private const int MaxFileSizeKb = 300;
     private const int MaxLongEdge = 1920;
-    private static readonly int[] ResponsiveWidths = new[] { 320, 640, 960, 1280, 1920 };
+    private const int ResponsiveVariantVersion = 2;
+    private static readonly int[] ResponsiveWidths = new[] { 320, 480, 640, 800, 960, 1280, 1600, 1920 };
+    private static readonly int[] DefaultQualitySteps = new[] { 80, 70, 60 };
+    private static readonly int[] ResponsiveQualitySteps = new[] { 72, 64, 56 };
 
     private readonly IMinioClient minioClient;
     private readonly MinioImageStorageSettings settings;
@@ -139,7 +142,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
     {
         foreach ((string extension, Func<int, IImageEncoder> encoderFactory, string contentType) format in GetReadableFormats(supportsWebp))
         {
-            string objectName = $"{pathWithoutExtension}.w{width}.{format.extension}";
+            string objectName = GetResponsiveVariantObjectName(pathWithoutExtension, width, format.extension);
             (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(objectName, format.contentType, cancellationToken);
             if (cached is not null)
             {
@@ -198,7 +201,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
                 });
             });
 
-            byte[] content = await EncodeWithSizeLimitAsync(image, encoderFactory, cancellationToken);
+            byte[] content = await EncodeResponsiveVariantAsync(image, encoderFactory, cancellationToken);
             MemoryStream outputStream = new MemoryStream(content);
             await this.minioClient.PutObjectAsync(
                 new PutObjectArgs()
@@ -284,9 +287,16 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
 
         foreach (int width in ResponsiveWidths)
         {
+            yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.webp";
+            yield return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.jpg";
             yield return $"{pathWithoutExtension}.w{width}.webp";
             yield return $"{pathWithoutExtension}.w{width}.jpg";
         }
+    }
+
+    internal static string GetResponsiveVariantObjectName(string pathWithoutExtension, int width, string extension)
+    {
+        return $"{pathWithoutExtension}.w{width}.v{ResponsiveVariantVersion}.{extension}";
     }
 
     private static IEnumerable<(string extension, Func<int, IImageEncoder> encoderFactory, string contentType)> GetFormats()
@@ -386,7 +396,16 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
 
     private static async Task<byte[]> EncodeWithSizeLimitAsync(Image image, Func<int, IImageEncoder> encoderFactory, CancellationToken cancellationToken)
     {
-        int[] qualities = { 80, 70, 60 };
+        return await EncodeWithQualitiesAsync(image, encoderFactory, DefaultQualitySteps, cancellationToken);
+    }
+
+    private static async Task<byte[]> EncodeResponsiveVariantAsync(Image image, Func<int, IImageEncoder> encoderFactory, CancellationToken cancellationToken)
+    {
+        return await EncodeWithQualitiesAsync(image, encoderFactory, ResponsiveQualitySteps, cancellationToken);
+    }
+
+    private static async Task<byte[]> EncodeWithQualitiesAsync(Image image, Func<int, IImageEncoder> encoderFactory, IReadOnlyCollection<int> qualities, CancellationToken cancellationToken)
+    {
         byte[]? lastAttempt = null;
 
         using MemoryStream stream = new MemoryStream();

@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MapMarker } from '@app/models/map/map-marker';
 import { createLeafletMarkerClusterIcon, createLeafletMarkerIcon } from '@ui/maps/leaflet';
 import { MapDirectionsUrlService } from '@shared/services/maps/map-directions-url.service';
-import type { LeafletEvent, LeafletMouseEvent, Marker as LeafletMarker } from 'leaflet';
+import type { LeafletEvent, LeafletMouseEvent, Marker as LeafletMarker, TileLayerOptions } from 'leaflet';
 import { buildMarkerClusters, MarkerCluster, MarkerClusterPoint } from './leaflet-marker-cluster.builder';
 
 type LeafletNamespace = typeof import('leaflet');
@@ -23,6 +23,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   private static readonly ClusterDisableZoom = 15;
   private static readonly ClusterFocusZoom = 14;
   private static readonly ViewportPaddingRatio = 0.35;
+  private static readonly ReducedMobileTileMaxViewportWidth = 768;
 
   private resizeObserver: ResizeObserver | null = null;
   private viewportUpdateTimeoutId: number | null = null;
@@ -203,10 +204,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       zoom: this.zoom
     });
 
-    this.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(this.map);
+    this.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', this.buildTileLayerOptions()).addTo(this.map);
 
     this.markerLayer = this.L.layerGroup().addTo(this.map);
 
@@ -228,6 +226,32 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     if (this.editable) {
       this.map.on('click', (event: LeafletMouseEvent) => this.handleMapClick(event));
     }
+  }
+
+  private buildTileLayerOptions(): TileLayerOptions {
+    const options: TileLayerOptions = {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors',
+      detectRetina: false,
+      keepBuffer: 0,
+      updateWhenIdle: true,
+      updateWhenZooming: false
+    };
+
+    if (this.shouldUseReducedMobileTileRequests()) {
+      options.tileSize = 512;
+      options.zoomOffset = -1;
+    }
+
+    return options;
+  }
+
+  private shouldUseReducedMobileTileRequests(): boolean {
+    if (!this.isBrowser || typeof window === 'undefined') {
+      return false;
+    }
+
+    return window.innerWidth <= LeafletMapComponent.ReducedMobileTileMaxViewportWidth;
   }
 
   private scheduleViewportUpdate(): void {
