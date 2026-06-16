@@ -58,10 +58,20 @@ describe('ImagesApiService', () => {
 
   it('builds image urls from ids and normalizes supported image paths', () => {
     expect(service.buildImageUrl('img-1')).toBe(`${environment.imagesBaseUrl}/img-1`);
+    expect(service.buildImageUrl('img-1', { width: 640 })).toBe(`${environment.imagesBaseUrl}/img-1?width=640`);
     expect(service.resolveImageUrl('/images/img-1')).toBe(`${environment.imagesBaseUrl}/img-1`);
     expect(service.resolveImageUrl('images/img-2')).toBe(`${environment.imagesBaseUrl}/img-2`);
     expect(service.resolveImageUrl('img-3')).toBe(`${environment.imagesBaseUrl}/img-3`);
     expect(service.resolveImageUrl('assets/img.png')).toBe(`${environment.apiBaseUrl}assets/img.png`);
+  });
+
+  it('builds responsive srcset entries only for API image ids', () => {
+    expect(service.buildImageSrcSet('img-1', [640, 320, 640])).toBe(
+      `${environment.imagesBaseUrl}/img-1?width=320 320w, ${environment.imagesBaseUrl}/img-1?width=640 640w`
+    );
+    expect(service.buildImageSrcSet('/images/img-2', [960])).toBe(`${environment.imagesBaseUrl}/img-2?width=960 960w`);
+    expect(service.buildImageSrcSet('https://example.com/img.png', [640])).toBeNull();
+    expect(service.buildImageSrcSet('assets/img.png', [640])).toBeNull();
   });
 
   it('returns null for empty or unsafe image paths and preserves safe absolute paths', () => {

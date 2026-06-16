@@ -22,6 +22,7 @@
               [imageId]="currentPark.heroImageId"
               [alt]="currentPark.name"
               loading="eager"
+              sizes="(max-width: 900px) 100vw, 900px"
               imgClass="park-banner__photo-img"
               placeholderClass="park-banner__photo-placeholder"
               placeholderKind="photo">
@@ -34,6 +35,7 @@
             <app-image-display
               [imageId]="currentPark.logoImageId"
               [alt]="currentPark.name || 'Park logo'"
+              sizes="180px"
               placeholderKind="park">
             </app-image-display>
           </div>

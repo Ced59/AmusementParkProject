@@ -22,6 +22,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
     private const string WatermarkText = "amusement-parks.fun";
     private const int MaxFileSizeKb = 300;
     private const int MaxLongEdge = 1920;
+    private static readonly int[] ResponsiveWidths = new[] { 320, 640, 960, 1280, 1920 };
 
     private readonly IMinioClient minioClient;
     private readonly MinioImageStorageSettings settings;
@@ -85,7 +86,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         return savedFiles;
     }
 
-    public async Task<(Stream Stream, string ContentType)?> GetBestAsync(string pathWithoutExtension, string? acceptHeader, CancellationToken cancellationToken)
+    public async Task<(Stream Stream, string ContentType)?> GetBestAsync(string pathWithoutExtension, string? acceptHeader, int? width, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(pathWithoutExtension))
         {
@@ -95,6 +96,21 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         bool supportsWebp = !string.IsNullOrWhiteSpace(acceptHeader) &&
                             acceptHeader.Contains("image/webp", StringComparison.OrdinalIgnoreCase);
 
+        int? responsiveWidth = NormalizeResponsiveWidth(width);
+        if (responsiveWidth is int requestedWidth)
+        {
+            (Stream Stream, string ContentType)? resized = await GetResizedVariantAsync(pathWithoutExtension, requestedWidth, supportsWebp, cancellationToken);
+            if (resized is not null)
+            {
+                return resized;
+            }
+        }
+
+        return await GetOriginalBestAsync(pathWithoutExtension, supportsWebp, cancellationToken);
+    }
+
+    private async Task<(Stream Stream, string ContentType)?> GetOriginalBestAsync(string pathWithoutExtension, bool supportsWebp, CancellationToken cancellationToken)
+    {
         if (supportsWebp)
         {
             (Stream Stream, string ContentType)? webp = await TryGetObjectAsync($"{pathWithoutExtension}.webp", "image/webp", cancellationToken);
@@ -119,6 +135,116 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         return null;
     }
 
+    private async Task<(Stream Stream, string ContentType)?> GetResizedVariantAsync(string pathWithoutExtension, int width, bool supportsWebp, CancellationToken cancellationToken)
+    {
+        foreach ((string extension, Func<int, IImageEncoder> encoderFactory, string contentType) format in GetReadableFormats(supportsWebp))
+        {
+            string objectName = $"{pathWithoutExtension}.w{width}.{format.extension}";
+            (Stream Stream, string ContentType)? cached = await TryGetObjectAsync(objectName, format.contentType, cancellationToken);
+            if (cached is not null)
+            {
+                return cached;
+            }
+
+            (Stream Stream, string ContentType)? generated = await TryCreateResizedVariantAsync(
+                pathWithoutExtension,
+                objectName,
+                width,
+                format.encoderFactory,
+                format.contentType,
+                cancellationToken);
+
+            if (generated is not null)
+            {
+                return generated;
+            }
+        }
+
+        return null;
+    }
+
+    private async Task<(Stream Stream, string ContentType)?> TryCreateResizedVariantAsync(
+        string pathWithoutExtension,
+        string objectName,
+        int width,
+        Func<int, IImageEncoder> encoderFactory,
+        string contentType,
+        CancellationToken cancellationToken)
+    {
+        (Stream Stream, string ContentType)? source = await TryGetSourceObjectAsync(pathWithoutExtension, cancellationToken);
+        if (source is null)
+        {
+            return null;
+        }
+
+        try
+        {
+            await using Stream sourceStream = source.Value.Stream;
+            using Image image = await Image.LoadAsync(sourceStream, cancellationToken);
+
+            if (image.Width <= width)
+            {
+                return null;
+            }
+
+            double scale = (double)width / image.Width;
+            int targetHeight = Math.Max(1, (int)Math.Round(image.Height * scale));
+            image.Mutate(context =>
+            {
+                context.Resize(new ResizeOptions
+                {
+                    Size = new Size(width, targetHeight),
+                    Mode = ResizeMode.Max,
+                });
+            });
+
+            byte[] content = await EncodeWithSizeLimitAsync(image, encoderFactory, cancellationToken);
+            MemoryStream outputStream = new MemoryStream(content);
+            await this.minioClient.PutObjectAsync(
+                new PutObjectArgs()
+                    .WithBucket(this.settings.Bucket)
+                    .WithObject(objectName)
+                    .WithStreamData(outputStream)
+                    .WithObjectSize(outputStream.Length)
+                    .WithContentType(contentType),
+                cancellationToken);
+
+            outputStream.Position = 0;
+            return (outputStream, contentType);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (Exception exception)
+        {
+            this.logger.LogWarning(exception, "Unable to create responsive image variant {ObjectName} in MinIO bucket {Bucket}.", objectName, this.settings.Bucket);
+            return null;
+        }
+    }
+
+    private async Task<(Stream Stream, string ContentType)?> TryGetSourceObjectAsync(string pathWithoutExtension, CancellationToken cancellationToken)
+    {
+        foreach ((string extension, string contentType) format in GetSourceFormats())
+        {
+            (Stream Stream, string ContentType)? source = await TryGetObjectAsync($"{pathWithoutExtension}.{format.extension}", format.contentType, cancellationToken);
+            if (source is not null)
+            {
+                return source;
+            }
+        }
+
+        return null;
+    }
+
+    private static IEnumerable<(string extension, string contentType)> GetSourceFormats()
+    {
+        yield return ("webp", "image/webp");
+        yield return ("jpg", "image/jpeg");
+        yield return ("jpeg", "image/jpeg");
+        yield return ("png", "image/png");
+    }
+
     public async Task DeleteAsync(string pathWithoutExtension, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(pathWithoutExtension))
@@ -126,13 +252,7 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
             return;
         }
 
-        foreach (string objectName in new[]
-                 {
-                     $"{pathWithoutExtension}.webp",
-                     $"{pathWithoutExtension}.jpg",
-                     $"{pathWithoutExtension}.jpeg",
-                     $"{pathWithoutExtension}.png",
-                 })
+        foreach (string objectName in GetObjectNamesForDeletion(pathWithoutExtension))
         {
             try
             {
@@ -155,10 +275,52 @@ public sealed class MinioImageBinaryStorage : IImageBinaryStorage
         }
     }
 
+    internal static IEnumerable<string> GetObjectNamesForDeletion(string pathWithoutExtension)
+    {
+        yield return $"{pathWithoutExtension}.webp";
+        yield return $"{pathWithoutExtension}.jpg";
+        yield return $"{pathWithoutExtension}.jpeg";
+        yield return $"{pathWithoutExtension}.png";
+
+        foreach (int width in ResponsiveWidths)
+        {
+            yield return $"{pathWithoutExtension}.w{width}.webp";
+            yield return $"{pathWithoutExtension}.w{width}.jpg";
+        }
+    }
+
     private static IEnumerable<(string extension, Func<int, IImageEncoder> encoderFactory, string contentType)> GetFormats()
     {
         yield return ("webp", quality => new WebpEncoder { Quality = quality }, "image/webp");
         yield return ("jpg", quality => new JpegEncoder { Quality = quality }, "image/jpeg");
+    }
+
+    private static IEnumerable<(string extension, Func<int, IImageEncoder> encoderFactory, string contentType)> GetReadableFormats(bool supportsWebp)
+    {
+        if (supportsWebp)
+        {
+            yield return ("webp", quality => new WebpEncoder { Quality = quality }, "image/webp");
+        }
+
+        yield return ("jpg", quality => new JpegEncoder { Quality = quality }, "image/jpeg");
+    }
+
+    internal static int? NormalizeResponsiveWidth(int? width)
+    {
+        if (width is null || width <= 0)
+        {
+            return null;
+        }
+
+        foreach (int candidate in ResponsiveWidths)
+        {
+            if (width <= candidate)
+            {
+                return candidate;
+            }
+        }
+
+        return ResponsiveWidths[^1];
     }
 
     private async Task EnsureBucketExistsAsync(CancellationToken cancellationToken)

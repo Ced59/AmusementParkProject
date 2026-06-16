@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { TranslationService } from '@app/services/translation.service';
 import { LANGUAGES, LanguageOption } from '@shared/models/localization';
+import { resolveFlagAssetPath } from '@shared/utils/assets/flag-assets';
 import { resolveSupportedLanguageFromUrl } from '@shared/utils/routing/localized-route.helpers';
 import { siteVersion } from '../../../../environments/version.generated';
 
@@ -65,6 +66,10 @@ export class PublicFooterComponent implements OnInit {
 
   protected isCurrentLanguage(language: string): boolean {
     return this.selectedLanguage() === language;
+  }
+
+  protected flagAssetPath(language: string): string {
+    return resolveFlagAssetPath(language);
   }
 
   private getLanguageFromUrl(): string {

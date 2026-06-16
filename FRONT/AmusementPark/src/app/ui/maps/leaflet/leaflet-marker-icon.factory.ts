@@ -272,7 +272,7 @@ export function createLeafletMarkerClusterIcon(
 
 function buildMarkerHtml(iconKind: MapMarkerIconKind, definition: LeafletMarkerIconDefinition): string {
   const content: string = definition.useLogo
-    ? '<img class="app-leaflet-marker__logo" src="assets/general-icon/logo-amusementpark.png" alt="" loading="lazy">'
+    ? '<img class="app-leaflet-marker__logo" src="assets/general-icon/logo-amusementpark-marker.webp" alt="" loading="lazy" width="32" height="32">'
     : `<span class="app-leaflet-marker__symbol">${definition.symbol}</span>`;
 
   return `

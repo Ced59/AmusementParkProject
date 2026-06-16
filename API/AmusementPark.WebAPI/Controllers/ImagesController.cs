@@ -362,7 +362,7 @@ public sealed class ImagesController : ControllerBase
 
     [HttpGet("{imageId}")]
     [AllowAnonymous]
-    public async Task<IActionResult> GetImageAsync([FromRoute] string imageId, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetImageAsync([FromRoute] string imageId, [FromQuery] int? width, CancellationToken cancellationToken = default)
     {
         ApplicationResult<Image> result = await this.getImageByIdQueryHandler.HandleAsync(new GetImageByIdQuery(imageId), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
@@ -375,7 +375,7 @@ public sealed class ImagesController : ControllerBase
             return this.ToNotFoundProblemDetailsResult("The requested image binary was not found.", "image.binary-not-found");
         }
 
-        (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetBestAsync(result.Value.Path, this.Request.Headers.Accept.ToString(), cancellationToken);
+        (System.IO.Stream Stream, string ContentType)? binary = await this.imageBinaryStorage.GetBestAsync(result.Value.Path, this.Request.Headers.Accept.ToString(), width, cancellationToken);
         if (binary is null)
         {
             return this.ToNotFoundProblemDetailsResult("The requested image binary was not found.", "image.binary-not-found");

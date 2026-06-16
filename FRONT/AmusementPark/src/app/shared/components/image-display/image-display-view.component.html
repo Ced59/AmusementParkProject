@@ -1,6 +1,8 @@
 <img
   *ngIf="showImage"
   [src]="resolvedImageUrl"
+  [attr.srcset]="resolvedImageSrcSet"
+  [attr.sizes]="resolvedImageSizes"
   [alt]="alt"
   [ngClass]="imgClass"
   [attr.loading]="loading"

@@ -20,6 +20,7 @@ public interface IImageBinaryStorage
     Task<(Stream Stream, string ContentType)?> GetBestAsync(
         string pathWithoutExtension,
         string? acceptHeader,
+        int? width,
         CancellationToken cancellationToken);
 
     /// <summary>

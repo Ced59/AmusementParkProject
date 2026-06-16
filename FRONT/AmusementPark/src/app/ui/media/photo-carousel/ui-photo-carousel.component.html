@@ -64,6 +64,7 @@
           [imageId]="currentPhoto.imageId"
           [alt]="currentPhoto.alt"
           loading="lazy"
+          sizes="(max-width: 900px) 100vw, 900px"
           imgClass="photo-carousel__image"
           placeholderClass="photo-carousel__placeholder"
           placeholderKind="photo">
@@ -116,6 +117,7 @@
           [imageId]="photo.imageId"
           [alt]="photo.alt"
           loading="lazy"
+          sizes="96px"
           imgClass="photo-carousel-strip__image"
           placeholderClass="photo-carousel-strip__placeholder"
           placeholderKind="photo">
@@ -164,6 +166,7 @@
           [imageId]="fullscreenPhoto.imageId"
           [alt]="fullscreenPhoto.alt"
           loading="eager"
+          sizes="(max-width: 1200px) 100vw, 1200px"
           imgClass="photo-lightbox__image"
           placeholderClass="photo-lightbox__placeholder"
           placeholderKind="photo">
@@ -212,6 +215,7 @@
             [imageId]="photo.imageId"
             [alt]="photo.alt"
             loading="lazy"
+            sizes="72px"
             imgClass="photo-lightbox__thumb-image"
             placeholderClass="photo-lightbox__thumb-placeholder"
             placeholderKind="photo">

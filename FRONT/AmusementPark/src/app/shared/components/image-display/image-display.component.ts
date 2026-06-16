@@ -19,8 +19,13 @@ export class ImageDisplayComponent implements OnChanges {
   @Input() placeholderIconClass: string | null = null;
   @Input() placeholderKind: ImageFallbackKind = 'generic';
   @Input() loading: 'eager' | 'lazy' = 'lazy';
+  @Input() sizes: string = '100vw';
+  @Input() responsiveWidths: readonly number[] = [320, 640, 960, 1280, 1920];
 
   imageLoadFailed: boolean = false;
+  resolvedImageUrl: string | null = null;
+  resolvedImageSrcSet: string | null = null;
+  resolvedImageSizes: string | null = null;
 
   constructor(private readonly imagesApiService: ImagesApiService) {
   }
@@ -29,16 +34,15 @@ export class ImageDisplayComponent implements OnChanges {
     if (changes['imageId'] || changes['imagePathOrUrl']) {
       this.imageLoadFailed = false;
     }
-  }
 
-  get resolvedImageUrl(): string | null {
-    const rawValue: string | undefined = this.imagePathOrUrl?.trim() || this.imageId?.trim();
-
-    if (!rawValue) {
-      return null;
+    if (
+      changes['imageId'] ||
+      changes['imagePathOrUrl'] ||
+      changes['responsiveWidths'] ||
+      changes['sizes']
+    ) {
+      this.refreshResolvedImage();
     }
-
-    return this.imagesApiService.resolveImageUrl(rawValue);
   }
 
   get showImage(): boolean {
@@ -57,5 +61,20 @@ export class ImageDisplayComponent implements OnChanges {
 
   onImageError(): void {
     this.imageLoadFailed = true;
+  }
+
+  private refreshResolvedImage(): void {
+    const rawValue: string | undefined = this.imagePathOrUrl?.trim() || this.imageId?.trim();
+
+    if (!rawValue) {
+      this.resolvedImageUrl = null;
+      this.resolvedImageSrcSet = null;
+      this.resolvedImageSizes = null;
+      return;
+    }
+
+    this.resolvedImageUrl = this.imagesApiService.resolveImageUrl(rawValue);
+    this.resolvedImageSrcSet = this.imagesApiService.buildImageSrcSet(rawValue, this.responsiveWidths);
+    this.resolvedImageSizes = this.resolvedImageSrcSet ? this.sizes : null;
   }
 }

@@ -28,6 +28,10 @@ interface ImagesHttpOptions {
   context?: HttpContext;
 }
 
+interface ImageUrlOptions {
+  width?: number | null;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -119,8 +123,37 @@ export class ImagesApiService {
     return this.http.delete<boolean>(url);
   }
 
-  buildImageUrl(imageId: string): string {
-    return `${environment.imagesBaseUrl}/${imageId}`;
+  buildImageUrl(imageId: string, options: ImageUrlOptions = {}): string {
+    const baseUrl: string = `${environment.imagesBaseUrl}/${imageId}`;
+    const width: number | null = this.normalizeResponsiveWidth(options.width);
+
+    if (width === null) {
+      return baseUrl;
+    }
+
+    return `${baseUrl}?width=${width}`;
+  }
+
+  buildImageSrcSet(imagePathOrUrl?: string | null, widths: readonly number[] = [320, 640, 960, 1280, 1920]): string | null {
+    const imageId: string | null = this.resolveImageId(imagePathOrUrl);
+
+    if (imageId === null) {
+      return null;
+    }
+
+    const normalizedWidths: number[] = Array.from(new Set(
+      widths
+        .map((width: number) => this.normalizeResponsiveWidth(width))
+        .filter((width: number | null): width is number => width !== null)
+    )).sort((left: number, right: number) => left - right);
+
+    if (normalizedWidths.length === 0) {
+      return null;
+    }
+
+    return normalizedWidths
+      .map((width: number) => `${this.buildImageUrl(imageId, { width })} ${width}w`)
+      .join(', ');
   }
 
   resolveImageUrl(imagePathOrUrl?: string | null): string | null {
@@ -252,6 +285,50 @@ export class ImagesApiService {
     }
 
     return params.set(key, String(value));
+  }
+
+  private resolveImageId(imagePathOrUrl?: string | null): string | null {
+    const rawValue: string | undefined = imagePathOrUrl?.trim();
+
+    if (!rawValue) {
+      return null;
+    }
+
+    if (/^data:/i.test(rawValue) || /^blob:/i.test(rawValue) || /^https?:\/\//i.test(rawValue)) {
+      return null;
+    }
+
+    if (/^[a-z][a-z0-9+.-]*:/i.test(rawValue)) {
+      return null;
+    }
+
+    if (rawValue.startsWith('/images/')) {
+      return rawValue.replace(/^\/images\//, '');
+    }
+
+    if (rawValue.startsWith('images/')) {
+      return rawValue.replace(/^images\//, '');
+    }
+
+    if (!rawValue.includes('/')) {
+      return rawValue;
+    }
+
+    return null;
+  }
+
+  private normalizeResponsiveWidth(width?: number | null): number | null {
+    if (width === null || width === undefined || !Number.isFinite(width)) {
+      return null;
+    }
+
+    const roundedWidth: number = Math.round(width);
+
+    if (roundedWidth < 160 || roundedWidth > 1920) {
+      return null;
+    }
+
+    return roundedWidth;
   }
 
 }
