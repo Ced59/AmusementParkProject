@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
-import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ImagesApiService } from '@data-access/images/images-api.service';
@@ -33,7 +32,6 @@ export interface ParkItemDetailZonesPort {
 
 export interface ParkItemDetailImagesPort {
   getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number, options?: AnonymousHttpOptions): Observable<ImageDto[]>;
-  getAdminImageTags(options?: AnonymousHttpOptions): Observable<ImageTagDto[]>;
 }
 
 export const PARK_ITEM_DETAIL_ITEMS_PORT = new InjectionToken<ParkItemDetailItemsPort>('PARK_ITEM_DETAIL_ITEMS_PORT', {

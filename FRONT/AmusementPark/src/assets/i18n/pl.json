@@ -1889,6 +1889,22 @@
         "title": "Zdjęcie pełnoekranowe"
       }
     },
+    "imagesPage": {
+      "kicker": "Galeria elementu",
+      "title": "Zdjęcia {{name}}",
+      "subtitle": "Przeglądaj opublikowane zdjęcia {{name}} w {{park}}. Galeria ładuje zdjęcia stronami, aby zachować szybkość działania.",
+      "loadingTitle": "Ładowanie zdjęć",
+      "loadingMessage": "Przygotowywanie galerii elementu.",
+      "errorTitle": "Zdjęcia niedostępne",
+      "errorMessage": "Nie można teraz załadować zdjęć tego elementu.",
+      "backToItem": "Wróć do {{name}}",
+      "backToItems": "Wszystkie elementy {{name}}",
+      "backToPark": "Wróć do {{name}}",
+      "loadMore": "Załaduj więcej zdjęć",
+      "loadingMore": "Ładowanie...",
+      "emptyTitle": "Brak opublikowanych zdjęć",
+      "emptyMessage": "Nie ma jeszcze opublikowanego zdjęcia dla {{name}}."
+    },
     "accessConditions": {
       "height": {
         "title": "Wymagania wzrostu",

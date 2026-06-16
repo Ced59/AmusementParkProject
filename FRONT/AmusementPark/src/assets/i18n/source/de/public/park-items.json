@@ -159,6 +159,22 @@
         "title": "Foto im Vollbild"
       }
     },
+    "imagesPage": {
+      "kicker": "Elementgalerie",
+      "title": "Bilder von {{name}}",
+      "subtitle": "Durchsuche die veröffentlichten Bilder von {{name}} in {{park}}. Die Galerie lädt Fotos seitenweise, damit die Seite schnell bleibt.",
+      "loadingTitle": "Bilder werden geladen",
+      "loadingMessage": "Die Elementgalerie wird vorbereitet.",
+      "errorTitle": "Bilder nicht verfügbar",
+      "errorMessage": "Die Bilder für dieses Element können derzeit nicht geladen werden.",
+      "backToItem": "Zurück zu {{name}}",
+      "backToItems": "Alle Elemente von {{name}}",
+      "backToPark": "Zurück zu {{name}}",
+      "loadMore": "Weitere Bilder laden",
+      "loadingMore": "Wird geladen...",
+      "emptyTitle": "Keine veröffentlichten Bilder",
+      "emptyMessage": "Für {{name}} ist noch kein veröffentlichtes Bild verfügbar."
+    },
     "accessConditions": {
       "height": {
         "title": "Größenanforderungen",

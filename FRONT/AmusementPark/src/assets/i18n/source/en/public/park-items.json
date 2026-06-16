@@ -159,6 +159,22 @@
         "title": "Fullscreen photo"
       }
     },
+    "imagesPage": {
+      "kicker": "Item gallery",
+      "title": "Images of {{name}}",
+      "subtitle": "Browse the published images of {{name}} at {{park}}. The gallery loads photos page by page to keep the experience fast.",
+      "loadingTitle": "Loading images",
+      "loadingMessage": "Preparing the item gallery.",
+      "errorTitle": "Images unavailable",
+      "errorMessage": "The images for this item cannot be loaded right now.",
+      "backToItem": "Back to {{name}}",
+      "backToItems": "All {{name}} items",
+      "backToPark": "Back to {{name}}",
+      "loadMore": "Load more images",
+      "loadingMore": "Loading...",
+      "emptyTitle": "No published images",
+      "emptyMessage": "No published image is available for {{name}} yet."
+    },
     "accessConditions": {
       "height": {
         "title": "Height requirements",

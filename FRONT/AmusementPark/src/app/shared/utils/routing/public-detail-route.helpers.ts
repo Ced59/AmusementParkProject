@@ -112,6 +112,16 @@ export function buildPublicParkItemRouteCommands(target: PublicParkItemRouteTarg
   ];
 }
 
+export function buildPublicParkItemImagesRouteCommands(target: PublicParkItemRouteTarget): string[] | null {
+  const itemRouteCommands: string[] | null = buildPublicParkItemRouteCommands(target);
+
+  if (!itemRouteCommands) {
+    return null;
+  }
+
+  return [...itemRouteCommands, 'images'];
+}
+
 export function buildPublicParkReferenceRouteCommands(target: PublicParkReferenceRouteTarget): string[] | null {
   const referenceId: string | null = normalizeRouteValue(target.referenceId);
   const referenceName: string | null = normalizeRouteValue(target.referenceName);

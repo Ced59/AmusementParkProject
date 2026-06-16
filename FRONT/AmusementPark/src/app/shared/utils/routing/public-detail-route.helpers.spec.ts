@@ -1,4 +1,5 @@
 import {
+  buildPublicParkItemImagesRouteCommands,
   buildPublicParkItemRouteCommands,
   buildPublicParkItemsRouteCommands,
   buildPublicParkZoneRouteCommands,
@@ -40,6 +41,11 @@ describe('public detail route helpers', () => {
       .toEqual(['/', 'en', 'park', 'p1', 'test-park', 'item', 'i1', 'big-ride']);
     expect(buildPublicParkItemRouteCommands({ language: 'en', parkId: 'p1', parkName: 'Test Park', itemId: '', itemName: 'Big Ride' }))
       .toBeNull();
+  });
+
+  it('extends item routes with the images segment', () => {
+    expect(buildPublicParkItemImagesRouteCommands({ language: 'fr', parkId: 'p1', parkName: 'Parc Test', itemId: 'i1', itemName: 'Grand Huit' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'parc-test', 'item', 'i1', 'grand-huit', 'images']);
   });
 
   it('builds reference routes for each supported reference kind', () => {

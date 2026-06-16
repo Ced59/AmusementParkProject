@@ -4,7 +4,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
-import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
@@ -34,7 +33,6 @@ interface ParkItemDetailSourceData {
   zoneName: string | null;
   relatedItems: ParkItem[];
   photos: ImageDto[];
-  imageTags: ImageTagDto[];
 }
 
 @Injectable()
@@ -53,8 +51,7 @@ export class ParkItemDetailStateFacade {
       sourceData?.zoneName ?? null,
       this.currentLanguageSignal(),
       sourceData?.relatedItems ?? [],
-      sourceData?.photos ?? [],
-      sourceData?.imageTags ?? []
+      sourceData?.photos ?? []
     );
   });
 
@@ -86,8 +83,7 @@ export class ParkItemDetailStateFacade {
           manufacturerName: null,
           zoneName: null,
           relatedItems: [],
-          photos: [],
-          imageTags: []
+          photos: []
         });
 
         this.loadRelatedData(item);
@@ -123,30 +119,12 @@ export class ParkItemDetailStateFacade {
       }
     });
 
-    if (this.ssrRuntimeService.shouldUseMinimalPublicData()) {
-      return;
-    }
-
     if (!item.id) {
       return;
     }
 
-    this.imagesApiService.getAdminImageTags(anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (imageTags: ImageTagDto[]) => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
-          ...current,
-          imageTags
-        }));
-      },
-      error: () => {
-        this.updateReadyData((current: ParkItemDetailSourceData) => ({
-          ...current,
-          imageTags: []
-        }));
-      }
-    });
-
-    this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, item.id, ImageCategory.ATTRACTION, 1, 100, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    const useMinimalSsrData: boolean = this.ssrRuntimeService.shouldUseMinimalPublicData();
+    this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, item.id, ImageCategory.ATTRACTION, 1, 1, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (photos: ImageDto[]) => {
         this.updateReadyData((current: ParkItemDetailSourceData) => ({
           ...current,
@@ -160,6 +138,10 @@ export class ParkItemDetailStateFacade {
         }));
       }
     });
+
+    if (useMinimalSsrData) {
+      return;
+    }
 
     this.parkItemsApiService.getParkItemsByParkId(item.parkId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (items: ParkItem[]) => {

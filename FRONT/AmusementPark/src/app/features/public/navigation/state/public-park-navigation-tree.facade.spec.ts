@@ -24,7 +24,7 @@ interface PublicParkRouteContextForTest {
   readonly itemId: string | null;
   readonly itemSlug: string | null;
   readonly selectedZoneId: string | null;
-  readonly pageKind: 'park-detail' | 'park-items' | 'park-item-detail' | 'park-images' | 'park-map';
+  readonly pageKind: 'park-detail' | 'park-items' | 'park-item-detail' | 'park-item-images' | 'park-images' | 'park-map';
 }
 
 interface PublicParkNavigationSourceDataForTest {

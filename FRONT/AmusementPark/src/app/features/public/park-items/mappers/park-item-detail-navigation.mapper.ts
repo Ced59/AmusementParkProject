@@ -1,5 +1,7 @@
 import { Park } from '@app/models/parks/park';
+import { ParkItem } from '@app/models/parks/park-item';
 import {
+  buildPublicParkItemImagesRouteCommands,
   buildPublicParkItemsRouteCommands,
   buildPublicParkRouteCommands
 } from '@shared/utils/routing/public-detail-route.helpers';
@@ -69,5 +71,15 @@ export function buildItemsLink(park: Park | null, currentLanguage: string): stri
     language: currentLanguage,
     parkId: park?.id,
     parkName: park?.name
+  });
+}
+
+export function buildImagesLink(park: Park | null, item: ParkItem | null, currentLanguage: string): string[] | null {
+  return buildPublicParkItemImagesRouteCommands({
+    language: currentLanguage,
+    parkId: park?.id,
+    parkName: park?.name,
+    itemId: item?.id,
+    itemName: item?.name
   });
 }

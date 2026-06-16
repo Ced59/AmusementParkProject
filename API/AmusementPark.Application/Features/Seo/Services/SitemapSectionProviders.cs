@@ -1,4 +1,6 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.Images.Contracts;
+using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -7,6 +9,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Seo.Services;
@@ -66,12 +69,15 @@ public sealed class StaticPagesSitemapSectionProvider : ISitemapSectionProvider
 public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
 {
     private const int PublicSitemapCandidatePageSize = int.MaxValue;
+    private const int PublicSitemapImagePageSize = 100;
 
     private readonly IParkRepository parkRepository;
+    private readonly IImageRepository imageRepository;
 
-    public ParksSitemapSectionProvider(IParkRepository parkRepository)
+    public ParksSitemapSectionProvider(IParkRepository parkRepository, IImageRepository imageRepository)
     {
         this.parkRepository = parkRepository;
+        this.imageRepository = imageRepository;
     }
 
     public string Key => SitemapSectionKeys.Parks;
@@ -96,6 +102,12 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             hasValidCoordinates: null,
             cancellationToken);
 
+        HashSet<string> parkIdsWithPublishedImages = await LoadPublishedImageOwnerIdsAsync(
+            this.imageRepository,
+            ImageOwnerType.Park,
+            ImageCategory.Park,
+            cancellationToken);
+
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (Park park in page.Items.Where(static park => IsPublicPark(park)))
         {
@@ -103,7 +115,10 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             foreach (string language in languages)
             {
                 urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc, "weekly", 0.85m));
-                urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc, "weekly", 0.72m));
+                if (parkIdsWithPublishedImages.Contains(park.Id!))
+                {
+                    urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc, "weekly", 0.72m));
+                }
             }
         }
 
@@ -127,6 +142,54 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             .ToList();
 
         return normalizedLanguages.Count > 0 ? normalizedLanguages : new[] { "en" };
+    }
+
+    internal static async Task<HashSet<string>> LoadPublishedImageOwnerIdsAsync(
+        IImageRepository imageRepository,
+        ImageOwnerType ownerType,
+        ImageCategory category,
+        CancellationToken cancellationToken)
+    {
+        HashSet<string> ownerIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        int pageNumber = 1;
+
+        while (true)
+        {
+            ImageSearchCriteria criteria = new ImageSearchCriteria(
+                Category: category,
+                OwnerType: ownerType,
+                IsPublished: true,
+                HasOwner: true);
+
+            PagedResult<Image> page = await imageRepository.GetPageAsync(
+                pageNumber,
+                PublicSitemapImagePageSize,
+                criteria,
+                cancellationToken);
+
+            foreach (Image image in page.Items)
+            {
+                string? ownerId = NormalizeOwnerId(image.OwnerId);
+                if (ownerId is not null)
+                {
+                    ownerIds.Add(ownerId);
+                }
+            }
+
+            if (page.Items.Count == 0 || page.Page >= page.TotalPages)
+            {
+                break;
+            }
+
+            pageNumber++;
+        }
+
+        return ownerIds;
+    }
+
+    private static string? NormalizeOwnerId(string? ownerId)
+    {
+        return string.IsNullOrWhiteSpace(ownerId) ? null : ownerId.Trim();
     }
 }
 
@@ -371,11 +434,13 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
 {
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
+    private readonly IImageRepository imageRepository;
 
-    public ParkItemsSitemapSectionProvider(IParkRepository parkRepository, IParkItemRepository parkItemRepository)
+    public ParkItemsSitemapSectionProvider(IParkRepository parkRepository, IParkItemRepository parkItemRepository, IImageRepository imageRepository)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
+        this.imageRepository = imageRepository;
     }
 
     public string Key => SitemapSectionKeys.ParkItems;
@@ -402,6 +467,11 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
             static pair => pair.Key,
             static pair => SeoSlugService.ToSlug(pair.Value.Name, "park"),
             StringComparer.OrdinalIgnoreCase);
+        HashSet<string> itemIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
+            this.imageRepository,
+            ImageOwnerType.Attraction,
+            ImageCategory.Attraction,
+            cancellationToken);
 
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>(publicItems.Count * languages.Count);
         foreach (ParkItem item in publicItems)
@@ -416,6 +486,10 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
             foreach (string language in languages)
             {
                 urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}", item.UpdatedAtUtc, "weekly", 0.7m));
+                if (itemIdsWithPublishedImages.Contains(item.Id!))
+                {
+                    urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/images", item.UpdatedAtUtc, "weekly", 0.62m));
+                }
             }
         }
 

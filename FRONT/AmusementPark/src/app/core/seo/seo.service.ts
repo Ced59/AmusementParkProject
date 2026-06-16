@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { Park } from '@app/models/parks/park';
+import { ParkItem } from '@app/models/parks/park-item';
 import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-view.model';
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
 import { CanonicalUrlService } from './canonical-url.service';
@@ -21,6 +22,12 @@ interface ParkImagesSeoCopy {
   titlePrefix: string;
   parkFallback: string;
   description: (parkName: string, locationLabel: string, totalImages: number) => string;
+}
+
+interface ParkItemImagesSeoCopy {
+  titlePrefix: string;
+  itemFallback: string;
+  description: (itemName: string, parkName: string, locationLabel: string, totalImages: number) => string;
 }
 
 interface ParkMapSeoCopy {
@@ -104,6 +111,73 @@ const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
     description: (parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} fotos publicadas` : 'as fotos publicadas';
       return `Explore ${countLabel} de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`;
+    }
+  }
+};
+
+const PARK_ITEM_IMAGES_SEO_COPY: Record<string, ParkItemImagesSeoCopy> = {
+  en: {
+    titlePrefix: 'Photos of',
+    itemFallback: 'this item',
+    description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
+      const countLabel: string = totalImages > 0 ? `${totalImages} published photos` : 'published photos';
+      return `Browse ${countLabel} of ${itemName}${parkName ? ` at ${parkName}` : ''}${locationLabel ? ` in ${locationLabel}` : ''}.`;
+    }
+  },
+  fr: {
+    titlePrefix: 'Photos de',
+    itemFallback: 'cet élément',
+    description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
+      const countLabel: string = totalImages > 0 ? `${totalImages} photos publiées` : 'les photos publiées';
+      return `Découvrez ${countLabel} de ${itemName}${parkName ? ` à ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  es: {
+    titlePrefix: 'Fotos de',
+    itemFallback: 'este elemento',
+    description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
+      const countLabel: string = totalImages > 0 ? `${totalImages} fotos publicadas` : 'las fotos publicadas';
+      return `Consulta ${countLabel} de ${itemName}${parkName ? ` en ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  de: {
+    titlePrefix: 'Bilder von',
+    itemFallback: 'diesem Element',
+    description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
+      const countLabel: string = totalImages > 0 ? `${totalImages} veröffentlichte Fotos` : 'die veröffentlichten Fotos';
+      return `Entdecke ${countLabel} von ${itemName}${parkName ? ` in ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  it: {
+    titlePrefix: 'Foto di',
+    itemFallback: 'questo elemento',
+    description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
+      const countLabel: string = totalImages > 0 ? `${totalImages} foto pubblicate` : 'le foto pubblicate';
+      return `Scopri ${countLabel} di ${itemName}${parkName ? ` a ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  nl: {
+    titlePrefix: "Foto's van",
+    itemFallback: 'dit onderdeel',
+    description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
+      const countLabel: string = totalImages > 0 ? `${totalImages} gepubliceerde foto's` : `de gepubliceerde foto's`;
+      return `Bekijk ${countLabel} van ${itemName}${parkName ? ` in ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  pl: {
+    titlePrefix: 'Zdjęcia',
+    itemFallback: 'tego elementu',
+    description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
+      const countLabel: string = totalImages > 0 ? `${totalImages} opublikowanych zdjęć` : 'opublikowane zdjęcia';
+      return `Zobacz ${countLabel} elementu ${itemName}${parkName ? ` w ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  },
+  pt: {
+    titlePrefix: 'Fotos de',
+    itemFallback: 'este elemento',
+    description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
+      const countLabel: string = totalImages > 0 ? `${totalImages} fotos publicadas` : 'as fotos publicadas';
+      return `Explore ${countLabel} de ${itemName}${parkName ? ` em ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
     }
   }
 };
@@ -300,7 +374,7 @@ export class SeoService {
       return;
     }
 
-    if (this.isPublicParkMapRoute(url) || this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url)) {
+    if (this.isPublicParkMapRoute(url) || this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url) || this.isFilteredPublicParkItemImagesRoute(url)) {
       this.apply({
         title: SITE_NAME,
         description: DEFAULT_DESCRIPTION,
@@ -379,9 +453,29 @@ export class SeoService {
       title: `${copy.titlePrefix} ${parkName}${titleSuffix} — ${SITE_NAME}`,
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
-      robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
+      robots: this.hasQueryString(url) || totalImages <= 0 ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, url, this.resolveParkImagesBreadcrumbLabel(normalizedLanguage, parkName))]
+    });
+  }
+
+  applyParkItemImagesSeo(item: ParkItem, park: Park, language: string, url: string, totalImages: number = 0): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: ParkItemImagesSeoCopy = PARK_ITEM_IMAGES_SEO_COPY[normalizedLanguage] ?? PARK_ITEM_IMAGES_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const itemName: string = this.normalizeOptionalText(item.name) ?? copy.itemFallback;
+    const parkName: string = this.normalizeOptionalText(park.name) ?? '';
+    const locationLabel: string = this.buildLocalizedLocationLabel(park, normalizedLanguage);
+    const titleContext: string = [parkName, locationLabel].filter((value: string) => value.length > 0).join(' — ');
+    const titleSuffix: string = titleContext ? ` — ${titleContext}` : '';
+    const description: string = copy.description(itemName, parkName, locationLabel, totalImages);
+
+    this.apply({
+      title: `${copy.titlePrefix} ${itemName}${titleSuffix} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: this.hasQueryString(url) || totalImages <= 0 ? 'noindex,follow' : 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: [this.buildParkItemImagesBreadcrumbJsonLd(item, park, url, this.resolveParkItemImagesBreadcrumbLabel(normalizedLanguage, itemName))]
     });
   }
 
@@ -625,6 +719,26 @@ export class SeoService {
     ]);
   }
 
+  private buildParkItemImagesBreadcrumbJsonLd(item: ParkItem, park: Park, url: string, pageLabel: string): unknown {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const language: string = this.resolveLanguageFromUrl(url);
+    const segments: string[] = this.getPathSegments(url);
+    const parkDetailPath: string = segments.length >= 4
+      ? `/${segments.slice(0, 4).join('/')}`
+      : `/${language}/parks`;
+    const itemDetailPath: string = segments.length >= 7
+      ? `/${segments.slice(0, 7).join('/')}`
+      : parkDetailPath;
+
+    return this.buildBreadcrumbJsonLd([
+      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
+      { name: park.name ?? 'Park', url: this.canonicalUrlService.buildAbsoluteUrl(parkDetailPath) },
+      { name: item.name ?? 'Item', url: this.canonicalUrlService.buildAbsoluteUrl(itemDetailPath) },
+      { name: pageLabel, url: canonicalUrl }
+    ]);
+  }
+
   private resolveParkImagesBreadcrumbLabel(language: string, parkLabel: string): string {
     const labels: Record<string, string> = {
       fr: `Images ${parkLabel}`,
@@ -635,6 +749,21 @@ export class SeoService {
       nl: `Afbeeldingen van ${parkLabel}`,
       pl: `Zdjęcia ${parkLabel}`,
       pt: `Imagens de ${parkLabel}`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkItemImagesBreadcrumbLabel(language: string, itemLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Images ${itemLabel}`,
+      en: `${itemLabel} images`,
+      es: `Imágenes de ${itemLabel}`,
+      de: `Bilder von ${itemLabel}`,
+      it: `Immagini di ${itemLabel}`,
+      nl: `Afbeeldingen van ${itemLabel}`,
+      pl: `Zdjęcia ${itemLabel}`,
+      pt: `Imagens de ${itemLabel}`
     };
 
     return labels[language] ?? labels['en'];
@@ -820,6 +949,11 @@ export class SeoService {
 
   private isFilteredPublicParkImagesRoute(url: string): boolean {
     return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/images\/?$/i.test(this.normalizePath(url))
+      && this.hasQueryString(url);
+  }
+
+  private isFilteredPublicParkItemImagesRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/images\/?$/i.test(this.normalizePath(url))
       && this.hasQueryString(url);
   }
 

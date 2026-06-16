@@ -1,5 +1,4 @@
 import { ImageDto } from '@app/models/images/image-dto';
-import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import {
@@ -19,13 +18,14 @@ import { trimOrNull } from './park-item-detail-formatters';
 import { buildLocationPoints, buildMapMarkers, resolveMapCenter } from './park-item-detail-location.mapper';
 import {
   buildCategoryNavigation,
+  buildImagesLink,
   buildItemsLink,
   buildParkLink,
   buildSearchNavigation,
   buildTypeNavigation,
   buildZoneNavigation
 } from './park-item-detail-navigation.mapper';
-import { buildPhotoCategories, buildPhotos } from './park-item-detail-photos.mapper';
+import { buildPhotos } from './park-item-detail-photos.mapper';
 import { resolveParkItemTypeIconClass, resolveParkItemTypeTone } from './park-item-detail-presentation.mapper';
 import { buildRelatedItems } from './park-item-detail-related.mapper';
 import {
@@ -44,8 +44,7 @@ export function mapParkItemToDetailViewModel(
   zoneName: string | null,
   currentLanguage: string,
   relatedItems: ParkItem[] = [],
-  photos: ImageDto[] = [],
-  imageTags: ImageTagDto[] = []
+  photos: ImageDto[] = []
 ): ParkItemDetailViewModel | null {
   if (!item) {
     return null;
@@ -61,9 +60,11 @@ export function mapParkItemToDetailViewModel(
   }
 
   const hasPreciseLocations: boolean = locationPoints.some((point: ParkItemLocationPointViewModel) => !point.isGeneralFallback);
-  const galleryPhotos: ParkItemPhotoViewModel[] = buildPhotos(photos, imageTags);
+  const galleryPhotos: ParkItemPhotoViewModel[] = buildPhotos(photos, []);
+  const heroPhoto: ParkItemPhotoViewModel | null = galleryPhotos.find((photo: ParkItemPhotoViewModel) => photo.isCurrent) ?? galleryPhotos[0] ?? null;
   const itemsLink: string[] | null = buildItemsLink(park, currentLanguage);
   const parkLink: string[] | null = buildParkLink(park, currentLanguage);
+  const imagesLink: string[] | null = heroPhoto ? buildImagesLink(park, item, currentLanguage) : null;
 
   return {
     name: item.name?.trim() ?? '',
@@ -75,6 +76,7 @@ export function mapParkItemToDetailViewModel(
     homeLink: ['/', currentLanguage, 'home'],
     parkLink,
     itemsLink,
+    imagesLink,
     categoryNavigation: buildCategoryNavigation(itemsLink, item.category),
     typeNavigation: buildTypeNavigation(itemsLink, item.type),
     subtypeNavigation: buildSearchNavigation(itemsLink, item.subtype),
@@ -88,9 +90,7 @@ export function mapParkItemToDetailViewModel(
     spotlightRows: buildSpotlightRows(item, performanceRows),
     summaryRows: buildSummaryRows(item, park, manufacturerName, zoneName, currentLanguage),
     specGroups,
-    photos: galleryPhotos,
-    photoCategories: buildPhotoCategories(galleryPhotos),
-    heroPhoto: galleryPhotos.find((photo: ParkItemPhotoViewModel) => photo.isCurrent) ?? galleryPhotos[0] ?? null,
+    heroPhoto,
     accessConditions: buildAccessConditions(item, currentLanguage),
     locationPoints,
     mapMarkers: buildMapMarkers(locationPoints, item.name),
