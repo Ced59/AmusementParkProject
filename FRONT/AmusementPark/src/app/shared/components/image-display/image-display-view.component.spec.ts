@@ -29,6 +29,19 @@ describe('ImageDisplayViewComponent', () => {
     expect(image.getAttribute('sizes')).toBe('(max-width: 900px) 100vw, 900px');
   });
 
+  it('renders fetch priority when provided for LCP images', () => {
+    component.showImage = true;
+    component.resolvedImageUrl = 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
+    component.loading = 'eager';
+    component.fetchPriority = 'high';
+
+    fixture.detectChanges();
+
+    const image: HTMLImageElement = fixture.debugElement.query(By.css('img')).nativeElement;
+    expect(image.getAttribute('loading')).toBe('eager');
+    expect(image.getAttribute('fetchpriority')).toBe('high');
+  });
+
   it('does not render srcset or sizes attributes when they are absent', () => {
     component.showImage = true;
     component.resolvedImageUrl = 'https://example.com/image.png';
