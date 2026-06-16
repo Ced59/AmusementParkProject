@@ -27,6 +27,7 @@ export type MapMarkerIconKind =
   | 'meetAndGreet'
   | 'transport'
   | 'station'
+  | 'photo'
   | 'toilets'
   | 'firstAid'
   | 'information'

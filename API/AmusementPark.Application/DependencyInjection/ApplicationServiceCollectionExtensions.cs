@@ -43,9 +43,11 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<IParkDistanceCalculator, ParkDistanceCalculator>();
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParksSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, ParkImagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkItemListsSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkZonesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkItemsSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, ParkItemImagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ReferencesSitemapSectionProvider>();
         services.AddScoped<ISitemapXmlWriter, SitemapXmlWriter>();
         services.AddScoped<SeoSitemapGenerationOrchestrator>();

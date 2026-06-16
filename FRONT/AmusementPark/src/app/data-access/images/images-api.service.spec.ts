@@ -117,6 +117,18 @@ describe('ImagesApiService', () => {
     request.flush({ data: [] });
   });
 
+  it('gets public image tags with bounded pagination params', () => {
+    service.getImageTags().subscribe((tags) => {
+      expect(tags).toEqual([{ id: 'tag-1', slug: 'entrance' } as never]);
+    });
+
+    const request = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}images/tags`);
+    expect(request.request.method).toBe('GET');
+    expect(request.request.params.get('page')).toBe('1');
+    expect(request.request.params.get('size')).toBe('100');
+    request.flush({ data: [{ id: 'tag-1', slug: 'entrance' }] });
+  });
+
   it('updates admin image metadata and image tags', () => {
     service.updateAdminImage('img-1', { altTexts: [], captions: [], credits: [], tagIds: [], isPublished: true }).subscribe();
     service.createAdminImageTag({ slug: 'tag', labels: [], descriptions: [] }).subscribe();

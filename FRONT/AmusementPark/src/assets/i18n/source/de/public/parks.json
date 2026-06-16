@@ -256,7 +256,7 @@
     "imagesPage": {
       "kicker": "Parkgalerie",
       "title": "Bilder von {{name}}",
-      "subtitle": "Durchsuche die veröffentlichten Bilder von {{name}}. Die Galerie lädt Fotos seitenweise, damit die Seite schnell bleibt.",
+      "subtitle": "Entdecke Bilder von {{name}}: Parkansichten, Atmosphäre, Details und geolokalisierte Fotos, wenn sie verfügbar sind.",
       "loadingTitle": "Bilder werden geladen",
       "loadingMessage": "Die Parkgalerie wird vorbereitet.",
       "errorTitle": "Bilder nicht verfügbar",

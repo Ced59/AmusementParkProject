@@ -1383,6 +1383,37 @@
         "closeFullscreen": "Fermer le plein écran",
         "openSource": "Ouvrir {{name}}"
       },
+      "axes": {
+        "years": "Années",
+        "tags": "Tags",
+        "allYears": "Toutes les années",
+        "allTags": "Tous les tags"
+      },
+      "years": {
+        "unknown": "Date inconnue"
+      },
+      "selection": {
+        "count": "{{count}} photos",
+        "empty": "Aucune photo ne correspond à cette sélection."
+      },
+      "metadata": {
+        "title": "Photo sélectionnée",
+        "subtitle": "Données utiles trouvées dans les métadonnées de l’image.",
+        "takenOn": "Prise le",
+        "uploadedAt": "Ajoutée",
+        "updatedAt": "Mise à jour",
+        "location": "Localisation",
+        "dimensions": "Dimensions",
+        "camera": "Appareil",
+        "settings": "Réglages",
+        "credit": "Crédit",
+        "file": "Fichier"
+      },
+      "map": {
+        "title": "Carte des photos",
+        "subtitle": "Photos géolocalisées correspondant aux filtres actifs.",
+        "empty": "Aucune photo géolocalisée pour cette sélection."
+      },
       "lightbox": {
         "title": "Photo en plein écran"
       }
@@ -1892,7 +1923,7 @@
     "imagesPage": {
       "kicker": "Galerie de l’élément",
       "title": "Images de {{name}}",
-      "subtitle": "Parcourez les images publiées de {{name}} à {{park}}. La galerie charge les photos par pages pour préserver les performances.",
+      "subtitle": "Explorez les images de {{name}} à {{park}} : détails, ambiance, angles de vue et photos géolocalisées quand elles sont disponibles.",
       "loadingTitle": "Chargement des images",
       "loadingMessage": "Préparation de la galerie de l’élément.",
       "errorTitle": "Images indisponibles",
@@ -2211,7 +2242,7 @@
     "imagesPage": {
       "kicker": "Galerie du parc",
       "title": "Images de {{name}}",
-      "subtitle": "Parcourez les images publiées de {{name}}. La galerie charge les photos par pages pour préserver les performances.",
+      "subtitle": "Explorez les images de {{name}} : vues du parc, ambiance, détails et photos géolocalisées quand elles sont disponibles.",
       "loadingTitle": "Chargement des images",
       "loadingMessage": "Préparation de la galerie du parc.",
       "errorTitle": "Images indisponibles",

@@ -5,6 +5,7 @@ import { forkJoin } from 'rxjs';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
@@ -24,12 +25,13 @@ import {
 interface ParkImagesPageData {
   summary: ParkDetailSummary;
   images: ImageDto[];
+  imageTags: ImageTagDto[];
   pagination: PaginationContract;
 }
 
 @Injectable()
 export class ParkImagesStateFacade {
-  private static readonly PageSize: number = 24;
+  private static readonly PageSize: number = 100;
   private readonly screenStateStore = new SignalScreenStateStore<ParkImagesPageData>();
   private readonly loadingMoreSignal = signal(false);
   private readonly currentLanguageSignal = signal('en');
@@ -53,7 +55,7 @@ export class ParkImagesStateFacade {
       return [];
     }
 
-    return buildPhotos(currentData.summary.park, currentData.images, [], [], this.currentLanguageSignal());
+    return buildPhotos(currentData.summary.park, currentData.images, [], currentData.imageTags, this.currentLanguageSignal());
   });
   public readonly photos: Signal<UiPhotoCarouselImage[]> = computed(() => this.galleryPhotos());
   public readonly categories: Signal<UiPhotoCarouselCategoryOption[]> = computed(() => buildPhotoCategories(this.galleryPhotos()));
@@ -76,12 +78,14 @@ export class ParkImagesStateFacade {
 
     forkJoin({
       summary: this.parksPort.getParkDetailSummary(parkId, anonymousHttpOptions()),
-      imagePage: this.imagesPort.getImagesPage(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, ParkImagesStateFacade.PageSize, anonymousHttpOptions())
+      imagePage: this.imagesPort.getImagesPage(ImageOwnerType.PARK, parkId, ImageCategory.PARK, 1, ParkImagesStateFacade.PageSize, anonymousHttpOptions()),
+      imageTags: this.imagesPort.getImageTags(anonymousHttpOptions())
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (response: { summary: ParkDetailSummary; imagePage: PagedResult<ImageDto> }) => {
+      next: (response: { summary: ParkDetailSummary; imagePage: PagedResult<ImageDto>; imageTags: ImageTagDto[] }) => {
         this.screenStateStore.setReady({
           summary: response.summary,
           images: response.imagePage.items,
+          imageTags: response.imageTags,
           pagination: response.imagePage.pagination
         });
       },
@@ -115,6 +119,7 @@ export class ParkImagesStateFacade {
           this.screenStateStore.setReady({
             summary: currentData.summary,
             images: [...currentData.images, ...imagePage.items],
+            imageTags: currentData.imageTags,
             pagination: imagePage.pagination
           });
         },

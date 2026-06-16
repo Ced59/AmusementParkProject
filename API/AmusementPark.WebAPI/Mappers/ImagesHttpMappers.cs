@@ -178,6 +178,19 @@ internal static class ImagesHttpMappers
                     Latitude = value.GeoLocation.Latitude,
                     Longitude = value.GeoLocation.Longitude,
                 },
+            ExifMetadata = value.ExifMetadata == null
+                ? null
+                : new ImageExifMetadataDto
+                {
+                    CameraMaker = value.ExifMetadata.CameraMaker,
+                    CameraModel = value.ExifMetadata.CameraModel,
+                    TakenOnUtc = value.ExifMetadata.TakenOnUtc,
+                    Orientation = value.ExifMetadata.Orientation,
+                    FocalLength = value.ExifMetadata.FocalLength,
+                    Aperture = value.ExifMetadata.Aperture,
+                    ExposureTime = value.ExifMetadata.ExposureTime,
+                    Iso = value.ExifMetadata.Iso,
+                },
             AltTexts = value.AltTexts.ToHttp(),
             Captions = value.Captions.ToHttp(),
             Credits = value.Credits.ToHttp(),

@@ -256,7 +256,7 @@
     "imagesPage": {
       "kicker": "Galerie du parc",
       "title": "Images de {{name}}",
-      "subtitle": "Parcourez les images publiées de {{name}}. La galerie charge les photos par pages pour préserver les performances.",
+      "subtitle": "Explorez les images de {{name}} : vues du parc, ambiance, détails et photos géolocalisées quand elles sont disponibles.",
       "loadingTitle": "Chargement des images",
       "loadingMessage": "Préparation de la galerie du parc.",
       "errorTitle": "Images indisponibles",

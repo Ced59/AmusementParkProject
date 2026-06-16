@@ -256,7 +256,7 @@
     "imagesPage": {
       "kicker": "Parkgalerij",
       "title": "Afbeeldingen van {{name}}",
-      "subtitle": "Bekijk de gepubliceerde afbeeldingen van {{name}}. De galerij laadt foto’s per pagina om de ervaring snel te houden.",
+      "subtitle": "Ontdek afbeeldingen van {{name}}: parkbeelden, sfeer, details en geolokaliseerde foto's wanneer beschikbaar.",
       "loadingTitle": "Afbeeldingen laden",
       "loadingMessage": "De parkgalerij wordt voorbereid.",
       "errorTitle": "Afbeeldingen niet beschikbaar",

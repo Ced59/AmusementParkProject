@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
@@ -29,14 +30,16 @@ interface ParkItemImagesPageData {
   item: ParkItem;
   park: Park;
   images: ImageDto[];
+  imageTags: ImageTagDto[];
   pagination: PaginationContract;
 }
 
 @Injectable()
 export class ParkItemImagesStateFacade {
-  private static readonly PageSize: number = 24;
+  private static readonly PageSize: number = 100;
   private readonly screenStateStore = new SignalScreenStateStore<ParkItemImagesPageData>();
   private readonly loadingMoreSignal = signal(false);
+  private readonly currentLanguageSignal = signal('en');
 
   public readonly state = this.screenStateStore.state;
   public readonly data = this.screenStateStore.data;
@@ -58,7 +61,7 @@ export class ParkItemImagesStateFacade {
       return [];
     }
 
-    return buildPhotos(currentData.images, []);
+    return buildPhotos(currentData.images, currentData.imageTags, this.currentLanguageSignal());
   });
   public readonly photos: Signal<UiPhotoCarouselImage[]> = computed(() => this.galleryPhotos());
   public readonly categories: Signal<UiPhotoCarouselCategoryOption[]> = computed(() => buildPhotoCategories(this.galleryPhotos()));
@@ -72,6 +75,10 @@ export class ParkItemImagesStateFacade {
   ) {
   }
 
+  setCurrentLanguage(language: string): void {
+    this.currentLanguageSignal.set(language || 'en');
+  }
+
   loadItemImages(itemId: string): void {
     const previousData: ParkItemImagesPageData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
@@ -80,11 +87,12 @@ export class ParkItemImagesStateFacade {
       switchMap((item: ParkItem) => this.loadPageData(item, itemId, 1)),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe({
-      next: (response: { item: ParkItem; park: Park; imagePage: PagedResult<ImageDto> }) => {
+      next: (response: { item: ParkItem; park: Park; imagePage: PagedResult<ImageDto>; imageTags: ImageTagDto[] }) => {
         this.screenStateStore.setReady({
           item: response.item,
           park: response.park,
           images: response.imagePage.items,
+          imageTags: response.imageTags,
           pagination: response.imagePage.pagination
         });
       },
@@ -129,13 +137,14 @@ export class ParkItemImagesStateFacade {
       });
   }
 
-  private loadPageData(item: ParkItem, routeItemId: string, page: number): Observable<{ item: ParkItem; park: Park; imagePage: PagedResult<ImageDto> }> {
+  private loadPageData(item: ParkItem, routeItemId: string, page: number): Observable<{ item: ParkItem; park: Park; imagePage: PagedResult<ImageDto>; imageTags: ImageTagDto[] }> {
     const itemId: string = this.resolveItemId(item) ?? routeItemId;
 
     return forkJoin({
       item: of(item),
       park: this.parksPort.getParkById(item.parkId, anonymousHttpOptions()),
-      imagePage: this.imagesPort.getImagesPage(ImageOwnerType.ATTRACTION, itemId, ImageCategory.ATTRACTION, page, ParkItemImagesStateFacade.PageSize, anonymousHttpOptions())
+      imagePage: this.imagesPort.getImagesPage(ImageOwnerType.ATTRACTION, itemId, ImageCategory.ATTRACTION, page, ParkItemImagesStateFacade.PageSize, anonymousHttpOptions()),
+      imageTags: this.imagesPort.getImageTags(anonymousHttpOptions())
     });
   }
 

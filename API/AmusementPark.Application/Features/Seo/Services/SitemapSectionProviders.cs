@@ -72,12 +72,10 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
     private const int PublicSitemapImagePageSize = 100;
 
     private readonly IParkRepository parkRepository;
-    private readonly IImageRepository imageRepository;
 
-    public ParksSitemapSectionProvider(IParkRepository parkRepository, IImageRepository imageRepository)
+    public ParksSitemapSectionProvider(IParkRepository parkRepository)
     {
         this.parkRepository = parkRepository;
-        this.imageRepository = imageRepository;
     }
 
     public string Key => SitemapSectionKeys.Parks;
@@ -102,12 +100,6 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             hasValidCoordinates: null,
             cancellationToken);
 
-        HashSet<string> parkIdsWithPublishedImages = await LoadPublishedImageOwnerIdsAsync(
-            this.imageRepository,
-            ImageOwnerType.Park,
-            ImageCategory.Park,
-            cancellationToken);
-
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
         foreach (Park park in page.Items.Where(static park => IsPublicPark(park)))
         {
@@ -115,10 +107,6 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
             foreach (string language in languages)
             {
                 urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc, "weekly", 0.85m));
-                if (parkIdsWithPublishedImages.Contains(park.Id!))
-                {
-                    urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc, "weekly", 0.72m));
-                }
             }
         }
 
@@ -193,9 +181,6 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
     }
 }
 
-/// <summary>
-/// Provider des pages publiques d'éléments de parc.
-/// </summary>
 public sealed class ParkItemListsSitemapSectionProvider : ISitemapSectionProvider
 {
     private const int PublicSitemapCandidateLimit = int.MaxValue;
@@ -434,13 +419,11 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
 {
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
-    private readonly IImageRepository imageRepository;
 
-    public ParkItemsSitemapSectionProvider(IParkRepository parkRepository, IParkItemRepository parkItemRepository, IImageRepository imageRepository)
+    public ParkItemsSitemapSectionProvider(IParkRepository parkRepository, IParkItemRepository parkItemRepository)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
-        this.imageRepository = imageRepository;
     }
 
     public string Key => SitemapSectionKeys.ParkItems;
@@ -467,12 +450,6 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
             static pair => pair.Key,
             static pair => SeoSlugService.ToSlug(pair.Value.Name, "park"),
             StringComparer.OrdinalIgnoreCase);
-        HashSet<string> itemIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
-            this.imageRepository,
-            ImageOwnerType.Attraction,
-            ImageCategory.Attraction,
-            cancellationToken);
-
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>(publicItems.Count * languages.Count);
         foreach (ParkItem item in publicItems)
         {
@@ -486,10 +463,6 @@ public sealed class ParkItemsSitemapSectionProvider : ISitemapSectionProvider
             foreach (string language in languages)
             {
                 urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}", item.UpdatedAtUtc, "weekly", 0.7m));
-                if (itemIdsWithPublishedImages.Contains(item.Id!))
-                {
-                    urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/images", item.UpdatedAtUtc, "weekly", 0.62m));
-                }
             }
         }
 

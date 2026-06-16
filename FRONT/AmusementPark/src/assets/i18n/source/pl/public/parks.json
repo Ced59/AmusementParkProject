@@ -256,7 +256,7 @@
     "imagesPage": {
       "kicker": "Galeria parku",
       "title": "Zdjęcia {{name}}",
-      "subtitle": "Przeglądaj opublikowane zdjęcia {{name}}. Galeria ładuje zdjęcia stronami, aby zachować szybkość działania.",
+      "subtitle": "Odkrywaj zdjęcia {{name}}: widoki parku, atmosferę, detale i geolokalizowane fotografie, gdy są dostępne.",
       "loadingTitle": "Ładowanie zdjęć",
       "loadingMessage": "Przygotowywanie galerii parku.",
       "errorTitle": "Zdjęcia niedostępne",

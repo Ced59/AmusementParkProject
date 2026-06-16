@@ -283,6 +283,8 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpGet("tags")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicReferenceData)]
+    [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<ImageTagDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetTagsAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {

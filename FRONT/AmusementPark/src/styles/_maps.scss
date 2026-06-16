@@ -534,9 +534,15 @@
 }
 
 .app-leaflet-marker--information .app-leaflet-marker__symbol,
-.app-leaflet-marker--parking .app-leaflet-marker__symbol {
+.app-leaflet-marker--parking .app-leaflet-marker__symbol,
+.app-leaflet-marker--photo .app-leaflet-marker__symbol {
   font-family: var(--font-heading, system-ui, sans-serif);
   font-size: 1rem;
+}
+
+.app-leaflet-marker--photo .app-leaflet-marker__symbol {
+  font-size: 0.68rem;
+  letter-spacing: 0;
 }
 
 .app-leaflet-marker--familyRide .app-leaflet-marker__symbol {

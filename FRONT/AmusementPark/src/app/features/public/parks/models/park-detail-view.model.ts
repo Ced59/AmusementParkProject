@@ -1,5 +1,6 @@
 import { ImageCategory } from '@app/models/images/image-category';
 import { ParkType } from '@app/models/parks/park-type';
+import { UiPhotoCarouselImage } from '@ui/media';
 import { ParkDetailInfoRowViewModel } from './park-detail-info-row.model';
 
 export interface ParkDetailStatViewModel {
@@ -17,20 +18,8 @@ export interface ParkDetailPhotoCategoryOptionViewModel {
   count: number;
 }
 
-export interface ParkDetailPhotoViewModel {
-  id: string;
-  imageId: string;
+export interface ParkDetailPhotoViewModel extends UiPhotoCarouselImage {
   category: ImageCategory;
-  categoryKey: string;
-  categoryLabelKey: string;
-  description: string | null;
-  alt: string;
-  isCurrent: boolean;
-  sourceTitle?: string | null;
-  sourceSubtitle?: string | null;
-  sourceIconClass?: string | null;
-  sourceRouterLink?: string[] | null;
-  sourceLinkLabelKey?: string | null;
 }
 
 export interface ParkDetailViewModel {

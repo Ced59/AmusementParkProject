@@ -71,9 +71,11 @@ export class ParkItemImagesPageComponent implements OnInit {
     const initialLanguage: string = resolveLanguageFromActivatedRoute(this.route, this.translationService.getCurrentLang() || 'en');
 
     this.currentLanguage.set(initialLanguage);
+    this.stateFacade.setCurrentLanguage(initialLanguage);
 
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
       this.currentLanguage.set(language);
+      this.stateFacade.setCurrentLanguage(language);
     });
 
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params: ParamMap) => {

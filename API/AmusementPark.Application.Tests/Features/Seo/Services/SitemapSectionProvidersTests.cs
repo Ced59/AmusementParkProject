@@ -89,19 +89,44 @@ public sealed class SitemapSectionProvidersTests
             new Park { Id = "hidden", Name = "Hidden", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
         }, 1, int.MaxValue, 2);
         Mock<IParkRepository> repository = new Mock<IParkRepository>(MockBehavior.Strict);
-        Mock<IImageRepository> imageRepository = CreateImageRepository(CreateImage("image-park-1", ImageOwnerType.Park, "park-1", ImageCategory.Park));
         repository.Setup(item => item.GetPageAsync(1, int.MaxValue, false, true, null, null, null, null, cancellationToken)).ReturnsAsync(page);
-        ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(repository.Object, imageRepository.Object);
+        ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(repository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, cancellationToken);
 
-        Assert.Equal(2, urls.Count);
+        Assert.Single(urls);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix");
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix/images");
         Assert.DoesNotContain(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix/items");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.EndsWith("/images", StringComparison.OrdinalIgnoreCase));
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
         repository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ParkImagesProvider_WhenPublicParkHasPublishedImages_ShouldReturnImageUrlsOnly()
+    {
+        CancellationToken cancellationToken = new CancellationTokenSource().Token;
+        PagedResult<Park> page = new PagedResult<Park>(new[]
+        {
+            new Park { Id = "park-1", Name = "Parc Asterix", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) },
+            new Park { Id = "park-2", Name = "No Photos", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+            new Park { Id = "hidden", Name = "Hidden", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
+        }, 1, int.MaxValue, 3);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = CreateImageRepository(CreateImage("image-park-1", ImageOwnerType.Park, "park-1", ImageCategory.Park));
+        parkRepository.Setup(item => item.GetPageAsync(1, int.MaxValue, false, true, null, null, null, null, cancellationToken)).ReturnsAsync(page);
+        ParkImagesSitemapSectionProvider provider = new ParkImagesSitemapSectionProvider(parkRepository.Object, imageRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, cancellationToken);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix/images" && url.LastModifiedUtc == new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/parc-asterix/images");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("park-2", StringComparison.OrdinalIgnoreCase));
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
+        parkRepository.VerifyAll();
         imageRepository.VerifyAll();
     }
 
@@ -176,20 +201,45 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        Mock<IImageRepository> imageRepository = CreateImageRepository(CreateImage("image-item-1", ImageOwnerType.Attraction, "item-1", ImageCategory.Attraction));
         itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
-        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
+        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(4, urls.Count);
+        Assert.Equal(2, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/images" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.EndsWith("/images", StringComparison.OrdinalIgnoreCase));
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ParkItemImagesProvider_WhenVisibleItemHasPublishedImages_ShouldReturnImageUrlsOnly()
+    {
+        ParkItem[] itemCandidates = new[]
+        {
+            new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Attraction familiale", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc) },
+            new ParkItem { Id = "item-2", ParkId = "park-1", Name = "No Photos", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
+        };
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = CreateImageRepository(CreateImage("image-item-1", ImageOwnerType.Attraction, "item-1", ImageCategory.Attraction));
+        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
+        ParkItemImagesSitemapSectionProvider provider = new ParkItemImagesSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/images" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale/images");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("item-2", StringComparison.OrdinalIgnoreCase));
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
         imageRepository.VerifyAll();
@@ -206,7 +256,6 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        Mock<IImageRepository> imageRepository = CreateImageRepository(CreateImage("image-item-1", ImageOwnerType.Attraction, "item-1", ImageCategory.Attraction));
         itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[]
@@ -214,17 +263,15 @@ public sealed class SitemapSectionProvidersTests
                 new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
                 new Park { Id = "hidden-park", Name = "Hidden Park", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
             });
-        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
+        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(2, urls.Count);
+        Assert.Single(urls);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction");
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction/images");
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("missing", StringComparison.OrdinalIgnoreCase));
-        imageRepository.VerifyAll();
     }
 
     [Theory]
@@ -241,17 +288,15 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        Mock<IImageRepository> imageRepository = CreateImageRepository();
         itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => !ids.Any()), It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<Park>());
-        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
+        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
         Assert.Empty(urls);
-        imageRepository.VerifyAll();
     }
 
     [Fact]
@@ -267,12 +312,6 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        Mock<IImageRepository> imageRepository = CreateImageRepository(
-            CreateImage("image-item-1", ImageOwnerType.Attraction, "item-1", ImageCategory.Attraction),
-            CreateImage("image-item-2", ImageOwnerType.Attraction, "item-2", ImageCategory.Attraction),
-            CreateImage("image-item-3", ImageOwnerType.Attraction, "item-3", ImageCategory.Attraction),
-            CreateImage("image-item-4", ImageOwnerType.Attraction, "item-4", ImageCategory.Attraction),
-            CreateImage("image-item-5", ImageOwnerType.Attraction, "item-5", ImageCategory.Attraction));
         itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[]
@@ -280,20 +319,18 @@ public sealed class SitemapSectionProvidersTests
                 new Park { Id = "park-1", Name = "Water Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
                 new Park { Id = "park-2", Name = "Theme Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
             });
-        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
+        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(10, urls.Count);
+        Assert.Equal(5, urls.Count);
         Assert.Equal(urls.Count, urls.Select(static url => url.RelativePath).Distinct(StringComparer.OrdinalIgnoreCase).Count());
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-2/theme-park/item/item-1/wood-coaster");
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-2/theme-park/item/item-1/wood-coaster/images");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/water-park/item/item-2/water-ride");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-2/theme-park/item/item-3/dark-ride");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/water-park/item/item-4/main-restaurant");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-2/theme-park/item/item-5/guest-services");
-        imageRepository.VerifyAll();
     }
 
     [Fact]
@@ -313,25 +350,18 @@ public sealed class SitemapSectionProvidersTests
             .ToList();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        Image[] itemImages = itemCandidates
-            .Select(static item => CreateImage($"image-{item.Id}", ImageOwnerType.Attraction, item.Id!, ImageCategory.Attraction))
-            .ToArray();
-        Mock<IImageRepository> imageRepository = CreateImageRepository(itemImages);
         itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
-        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
+        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(46, urls.Count);
+        Assert.Equal(23, urls.Count);
         Assert.Equal(urls.Count, urls.Select(static url => url.RelativePath).Distinct(StringComparer.OrdinalIgnoreCase).Count());
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-01/visible-item-01");
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-01/visible-item-01/images");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-23/visible-item-23");
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-23/visible-item-23/images");
-        imageRepository.VerifyAll();
     }
 
     [Fact]
@@ -343,24 +373,21 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        Mock<IImageRepository> imageRepository = CreateImageRepository(CreateImage("image-item-99", ImageOwnerType.Attraction, "item-99", ImageCategory.Attraction));
         itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-99" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-99", Name = "Late Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
-        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
+        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(2, urls.Count);
+        Assert.Single(urls);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-99/late-park/item/item-99/late-attraction");
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-99/late-park/item/item-99/late-attraction/images");
         parkRepository.Verify(repository => repository.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<bool?>(), It.IsAny<AdminReviewStatus?>(), It.IsAny<ParkType?>(), It.IsAny<string?>(), It.IsAny<bool?>(), It.IsAny<CancellationToken>()), Times.Never);
-        imageRepository.VerifyAll();
     }
 
     [Fact]
-    public async Task ParksProvider_WhenPublicParkHasNoPublishedImages_ShouldSkipImagesUrl()
+    public async Task ParkImagesProvider_WhenPublicParkHasNoPublishedImages_ShouldSkipImagesUrl()
     {
         CancellationToken cancellationToken = new CancellationTokenSource().Token;
         PagedResult<Park> page = new PagedResult<Park>(new[]
@@ -370,20 +397,18 @@ public sealed class SitemapSectionProvidersTests
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = CreateImageRepository();
         parkRepository.Setup(item => item.GetPageAsync(1, int.MaxValue, false, true, null, null, null, null, cancellationToken)).ReturnsAsync(page);
-        ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(parkRepository.Object, imageRepository.Object);
+        ParkImagesSitemapSectionProvider provider = new ParkImagesSitemapSectionProvider(parkRepository.Object, imageRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, cancellationToken);
 
-        Assert.Single(urls);
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park");
-        Assert.DoesNotContain(urls, static url => url.RelativePath.EndsWith("/images", StringComparison.OrdinalIgnoreCase));
+        Assert.Empty(urls);
         parkRepository.VerifyAll();
         imageRepository.VerifyAll();
     }
 
     [Fact]
-    public async Task ParkItemsProvider_WhenPublicItemHasNoPublishedImages_ShouldSkipImagesUrl()
+    public async Task ParkItemImagesProvider_WhenPublicItemHasNoPublishedImages_ShouldSkipImagesUrl()
     {
         ParkItem[] itemCandidates = new[]
         {
@@ -395,14 +420,12 @@ public sealed class SitemapSectionProvidersTests
         itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
-        ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
+        ParkItemImagesSitemapSectionProvider provider = new ParkItemImagesSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Single(urls);
-        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale");
-        Assert.DoesNotContain(urls, static url => url.RelativePath.EndsWith("/images", StringComparison.OrdinalIgnoreCase));
+        Assert.Empty(urls);
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
         imageRepository.VerifyAll();
