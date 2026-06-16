@@ -24,19 +24,6 @@ import { DeploymentVersionService } from '@core/deployment/deployment-version.se
 import { MatomoPageViewTrackingService } from '@core/analytics/matomo-page-view-tracking.service';
 import { MicrosoftClarityTrackingService } from '@core/analytics/microsoft-clarity-tracking.service';
 
-import { SelectModule } from 'primeng/select';
-import { ToolbarModule } from 'primeng/toolbar';
-import { ButtonModule } from 'primeng/button';
-import { FormsModule } from '@angular/forms';
-import { DialogModule } from 'primeng/dialog';
-import { InputTextModule } from 'primeng/inputtext';
-import { CardModule } from 'primeng/card';
-import { TooltipModule } from 'primeng/tooltip';
-import { ToastModule } from 'primeng/toast';
-import { AvatarModule } from 'primeng/avatar';
-import { PaginatorModule } from 'primeng/paginator';
-import { MultiSelectModule } from 'primeng/multiselect';
-
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -54,19 +41,7 @@ export const appConfig: ApplicationConfig = {
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
         }
-      }),
-      SelectModule,
-      ToolbarModule,
-      ButtonModule,
-      FormsModule,
-      DialogModule,
-      InputTextModule,
-      CardModule,
-      TooltipModule,
-      ToastModule,
-      AvatarModule,
-      PaginatorModule,
-      MultiSelectModule
+      })
     ),
 
     provideAnimations(),
