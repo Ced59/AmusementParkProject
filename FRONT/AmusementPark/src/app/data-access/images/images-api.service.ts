@@ -32,6 +32,9 @@ interface ImageUrlOptions {
   width?: number | null;
 }
 
+const ResponsiveImageVersion = 2;
+const ResponsiveImageWidths: readonly number[] = [320, 480, 640, 800, 960, 1280, 1600, 1920];
+
 @Injectable({
   providedIn: 'root'
 })
@@ -131,10 +134,10 @@ export class ImagesApiService {
       return baseUrl;
     }
 
-    return `${baseUrl}?width=${width}`;
+    return `${baseUrl}?width=${width}&v=${ResponsiveImageVersion}`;
   }
 
-  buildImageSrcSet(imagePathOrUrl?: string | null, widths: readonly number[] = [320, 640, 960, 1280, 1920]): string | null {
+  buildImageSrcSet(imagePathOrUrl?: string | null, widths: readonly number[] = ResponsiveImageWidths): string | null {
     const imageId: string | null = this.resolveImageId(imagePathOrUrl);
 
     if (imageId === null) {
