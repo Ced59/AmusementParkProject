@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, NgZone, OnChanges, OnDestroy, Output, PLATFORM_ID, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, NgZone, OnChanges, OnDestroy, Output, PLATFORM_ID, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,10 +12,11 @@ type LeafletNamespace = typeof import('leaflet');
 type LeafletModule = LeafletNamespace & { readonly default?: LeafletNamespace };
 
 @Component({
-    selector: 'app-leaflet-map',
-    templateUrl: './leaflet-map.component.html',
+  selector: 'app-leaflet-map',
+  templateUrl: './leaflet-map.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-    styleUrls: ['./leaflet-map.component.scss']
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./leaflet-map.component.scss']
 })
 export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy {
 

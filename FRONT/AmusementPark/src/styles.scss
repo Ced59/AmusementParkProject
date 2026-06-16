@@ -3,6 +3,7 @@
 @use "styles/theme-dark";
 @use "styles/theme-light";
 @use "styles/mixins";
+@use "styles/primeflex-lite";
 @use "styles/base";
 @use "styles/layout";
 @use "styles/public-experience";
@@ -18,10 +19,4 @@
 @use "styles/states";
 @use "styles/accessibility-polish";
 @use "styles/utilities";
-@use "styles/admin-skin";
 @use "styles/primeng-overrides";
-@use "styles/admin-editor-mobile";
-
-@import "leaflet/dist/leaflet.css";
-@import "quill/dist/quill.core.css";
-@import "quill/dist/quill.snow.css";

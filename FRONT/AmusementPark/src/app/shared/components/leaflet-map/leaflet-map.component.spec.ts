@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ViewEncapsulation } from '@angular/core';
 
 import { LeafletMapComponent } from './leaflet-map.component';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -28,6 +29,11 @@ describe('LeafletMapComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('uses unscoped component styles so Leaflet CSS can stay out of the initial global bundle', () => {
+    expect((LeafletMapComponent as unknown as { ɵcmp: { encapsulation: ViewEncapsulation } }).ɵcmp.encapsulation)
+      .toBe(ViewEncapsulation.None);
   });
 
   it('keeps the selected marker popup pending while focusing an already rendered marker', () => {

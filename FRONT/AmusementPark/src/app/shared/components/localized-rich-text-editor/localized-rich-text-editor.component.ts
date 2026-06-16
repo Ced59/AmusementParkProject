@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, forwardRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
 import { LANGUAGES } from '@shared/models/localization';
@@ -19,18 +19,19 @@ interface LocalizedRichTextEntry {
 }
 
 @Component({
-    selector: 'app-localized-rich-text-editor',
-    templateUrl: './localized-rich-text-editor.component.html',
-    styleUrls: ['./localized-rich-text-editor.component.scss'],
+  selector: 'app-localized-rich-text-editor',
+  templateUrl: './localized-rich-text-editor.component.html',
+  styleUrls: ['./localized-rich-text-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => LocalizedRichTextEditorComponent),
-            multi: true
-        }
-    ],
-    imports: [Bind, Tabs, TabList, Ripple, Tab, TabPanels, TabPanel, Editor, FormsModule, PrimeTemplate, TranslateModule]
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => LocalizedRichTextEditorComponent),
+      multi: true
+    }
+  ],
+  imports: [Bind, Tabs, TabList, Ripple, Tab, TabPanels, TabPanel, Editor, FormsModule, PrimeTemplate, TranslateModule]
 })
 export class LocalizedRichTextEditorComponent implements ControlValueAccessor {
   @Input() placeholderKey: string = 'admin.parks.descriptions.placeholder';
