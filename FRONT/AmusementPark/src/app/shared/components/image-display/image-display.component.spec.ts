@@ -23,7 +23,28 @@ describe('ImageDisplayComponent', () => {
     expect(component.resolvedImageUrl).toBe('/api/images/img-1');
     expect(component.resolvedImageSrcSet).toBe('/api/images/img-1?width=320 320w');
     expect(component.resolvedImageSizes).toBe('100vw');
+    expect(imagesApiService.resolveImageUrl).toHaveBeenCalledOnceWith('img-1', { width: null });
     expect(imagesApiService.buildImageSrcSet).toHaveBeenCalledOnceWith('img-1', [320]);
+  });
+
+  it('uses a dimensioned image url for the fallback src when requested', () => {
+    const imagesApiService: jasmine.SpyObj<ImagesApiService> = jasmine.createSpyObj<ImagesApiService>('ImagesApiService', [
+      'resolveImageUrl',
+      'buildImageSrcSet'
+    ]);
+    imagesApiService.resolveImageUrl.and.returnValue('/api/images/img-1?width=960&v=2');
+    imagesApiService.buildImageSrcSet.and.returnValue('/api/images/img-1?width=960&v=2 960w');
+    const component = new ImageDisplayComponent(imagesApiService);
+
+    component.imageId = 'img-1';
+    component.srcWidth = 960;
+    component.ngOnChanges({
+      imageId: new SimpleChange(null, 'img-1', true),
+      srcWidth: new SimpleChange(null, 960, true)
+    });
+
+    expect(component.resolvedImageUrl).toBe('/api/images/img-1?width=960&v=2');
+    expect(imagesApiService.resolveImageUrl).toHaveBeenCalledOnceWith('img-1', { width: 960 });
   });
 
   it('omits sizes when no responsive srcset can be built', () => {

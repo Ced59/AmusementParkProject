@@ -75,6 +75,9 @@ export class ParkItemDetailViewComponent {
 
   @Input({ required: true }) state!: Signal<ScreenState<unknown, string>>;
   @Input({ required: true }) detail!: Signal<ParkItemDetailViewModel | null>;
+  @Input() heroImageResponsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280];
+  @Input() heroImageSizes: string = '(max-width: 900px) 100vw, 900px';
+  @Input() heroImageSrcWidth: number | null = 960;
 
   @Output() backToItemsClicked: EventEmitter<void> = new EventEmitter<void>();
 

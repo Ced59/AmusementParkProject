@@ -159,7 +159,7 @@ export class ImagesApiService {
       .join(', ');
   }
 
-  resolveImageUrl(imagePathOrUrl?: string | null): string | null {
+  resolveImageUrl(imagePathOrUrl?: string | null, options: ImageUrlOptions = {}): string | null {
     const rawValue: string | undefined = imagePathOrUrl?.trim();
 
     if (!rawValue) {
@@ -176,16 +176,16 @@ export class ImagesApiService {
 
     if (rawValue.startsWith('/images/')) {
       const imageId: string = rawValue.replace(/^\/images\//, '');
-      return this.buildImageUrl(imageId);
+      return this.buildImageUrl(imageId, options);
     }
 
     if (rawValue.startsWith('images/')) {
       const imageId: string = rawValue.replace(/^images\//, '');
-      return this.buildImageUrl(imageId);
+      return this.buildImageUrl(imageId, options);
     }
 
     if (!rawValue.includes('/')) {
-      return this.buildImageUrl(rawValue);
+      return this.buildImageUrl(rawValue, options);
     }
 
     const normalizedPath: string = rawValue.replace(/^\/+/, '');

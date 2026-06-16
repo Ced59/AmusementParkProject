@@ -2,6 +2,7 @@ import { HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { Park } from '@app/models/parks/park';
+import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { environment } from '../../../environments/environment';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { ParksApiService } from './parks-api.service';
@@ -57,6 +58,37 @@ describe('ParksApiService', () => {
     expect(result.length).toBe(1);
   });
 
+  it('shares in-flight park detail summary requests without persisting stale data', () => {
+    const firstSummary: ParkDetailSummary = createParkDetailSummary('Park');
+    const secondSummary: ParkDetailSummary = createParkDetailSummary('Updated Park');
+    const firstResults: ParkDetailSummary[] = [];
+    const secondResults: ParkDetailSummary[] = [];
+    const thirdResults: ParkDetailSummary[] = [];
+
+    service.getParkDetailSummary('park-1').subscribe((summary: ParkDetailSummary): void => {
+      firstResults.push(summary);
+    });
+    service.getParkDetailSummary('park-1').subscribe((summary: ParkDetailSummary): void => {
+      secondResults.push(summary);
+    });
+
+    const sharedRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/park-1/detail-summary`);
+    expect(sharedRequest.request.method).toBe('GET');
+    sharedRequest.flush(firstSummary);
+
+    expect(firstResults[0]?.park.name).toBe('Park');
+    expect(secondResults[0]?.park.name).toBe('Park');
+
+    service.getParkDetailSummary('park-1').subscribe((summary: ParkDetailSummary): void => {
+      thirdResults.push(summary);
+    });
+
+    const refreshedRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/park-1/detail-summary`);
+    refreshedRequest.flush(secondSummary);
+
+    expect(thirdResults[0]?.park.name).toBe('Updated Park');
+  });
+
   it('normalizes park write requests for create and update', () => {
     const park: Park = createPark({
       isVisible: undefined,
@@ -99,4 +131,22 @@ describe('ParksApiService', () => {
     expect(bulkRequest.request.method).toBe('PATCH');
     bulkRequest.flush({ requestedCount: 1, updatedCount: 1 });
   });
+
+  function createParkDetailSummary(name: string): ParkDetailSummary {
+    return {
+      park: createPark({ name }),
+      mainImage: null,
+      references: {},
+      stats: {
+        totalItems: 0,
+        zoneCount: 0,
+        attractionCount: 0,
+        restaurantCount: 0,
+        showCount: 0,
+        shopCount: 0,
+        hotelCount: 0,
+        countsByCategory: {}
+      }
+    };
+  }
 });

@@ -1,6 +1,6 @@
 import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { finalize, map, Observable, shareReplay } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 import { ParkExplorer } from '@app/models/parks/park-explorer';
@@ -44,6 +44,8 @@ interface ParksHttpOptions {
   providedIn: 'root'
 })
 export class ParksApiService {
+  private readonly parkDetailSummaryRequests = new Map<string, Observable<ParkDetailSummary>>();
+
   private readonly jsonHttpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -76,7 +78,21 @@ export class ParksApiService {
 
   getParkDetailSummary(id: string, options: ParksHttpOptions = {}): Observable<ParkDetailSummary> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkDetailSummary(id)}`;
-    return this.http.get<ParkDetailSummary>(url, options);
+    const pendingRequest: Observable<ParkDetailSummary> | undefined = this.parkDetailSummaryRequests.get(url);
+
+    if (pendingRequest) {
+      return pendingRequest;
+    }
+
+    const request: Observable<ParkDetailSummary> = this.http.get<ParkDetailSummary>(url, options).pipe(
+      finalize((): void => {
+        this.parkDetailSummaryRequests.delete(url);
+      }),
+      shareReplay({ bufferSize: 1, refCount: false })
+    );
+
+    this.parkDetailSummaryRequests.set(url, request);
+    return request;
   }
 
   getParkMapItems(id: string, options: ParksHttpOptions = {}): Observable<ParkMapItems> {
