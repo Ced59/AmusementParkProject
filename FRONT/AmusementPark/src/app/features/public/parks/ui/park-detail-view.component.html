@@ -23,7 +23,9 @@
               [alt]="currentPark.name"
               loading="eager"
               fetchPriority="high"
-              sizes="(max-width: 900px) 100vw, 900px"
+              [sizes]="heroImageSizes"
+              [srcWidth]="heroImageSrcWidth"
+              [responsiveWidths]="heroImageResponsiveWidths"
               imgClass="park-banner__photo-img"
               placeholderClass="park-banner__photo-placeholder"
               placeholderKind="photo">

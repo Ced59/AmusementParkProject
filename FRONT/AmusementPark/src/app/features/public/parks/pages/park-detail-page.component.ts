@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, PLATFORM_ID, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -7,6 +8,7 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { ParkDetailStateFacade } from '../state/park-detail-state.facade';
 import { ParkDetailViewComponent } from '../ui/park-detail-view.component';
 import { SeoService } from '@core/seo/seo.service';
+import { LcpImagePreloadService } from '@core/performance/lcp-image-preload.service';
 
 @Component({
   selector: 'app-park-detail-page',
@@ -17,27 +19,40 @@ import { SeoService } from '@core/seo/seo.service';
   imports: [ParkDetailViewComponent]
 })
 export class ParkDetailPageComponent implements OnInit {
+  protected readonly heroImageResponsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280];
+  protected readonly heroImageSizes: string = '(max-width: 900px) 100vw, 900px';
+  protected readonly heroImageSrcWidth: number = 960;
   protected readonly state = this.stateFacade.state;
   protected readonly park = this.stateFacade.park;
   protected readonly summary = this.stateFacade.summary;
   protected readonly currentLang = signal<string>('en');
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
+  private readonly isBrowser: boolean = isPlatformBrowser(inject(PLATFORM_ID));
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly translationService: TranslationService,
     private readonly stateFacade: ParkDetailStateFacade,
-    private readonly seoService: SeoService
+    private readonly seoService: SeoService,
+    private readonly lcpImagePreloadService: LcpImagePreloadService
   ) {
+    this.destroyRef.onDestroy((): void => {
+      if (this.isBrowser) {
+        this.lcpImagePreloadService.clearPreload();
+      }
+    });
+
     effect((): void => {
       const currentPark = this.park();
 
       if (!currentPark) {
+        this.lcpImagePreloadService.clearPreload();
         return;
       }
 
+      this.preloadHeroImage(currentPark.heroImageId);
       this.seoService.applyParkDetailSeo(currentPark, this.currentLang(), this.router.url);
     });
   }
@@ -76,5 +91,14 @@ export class ParkDetailPageComponent implements OnInit {
     }
 
     this.router.navigate(exploreLink);
+  }
+
+  private preloadHeroImage(heroImageId: string | null): void {
+    this.lcpImagePreloadService.preloadImage({
+      imageId: heroImageId,
+      fallbackWidth: this.heroImageSrcWidth,
+      responsiveWidths: this.heroImageResponsiveWidths,
+      sizes: this.heroImageSizes
+    });
   }
 }

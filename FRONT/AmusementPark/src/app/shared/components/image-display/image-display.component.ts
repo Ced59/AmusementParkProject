@@ -21,6 +21,7 @@ export class ImageDisplayComponent implements OnChanges {
   @Input() loading: 'eager' | 'lazy' = 'lazy';
   @Input() fetchPriority: 'high' | 'low' | 'auto' | null = null;
   @Input() sizes: string = '100vw';
+  @Input() srcWidth: number | null = null;
   @Input() responsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280, 1600, 1920];
 
   imageLoadFailed: boolean = false;
@@ -40,6 +41,7 @@ export class ImageDisplayComponent implements OnChanges {
       changes['imageId'] ||
       changes['imagePathOrUrl'] ||
       changes['responsiveWidths'] ||
+      changes['srcWidth'] ||
       changes['sizes']
     ) {
       this.refreshResolvedImage();
@@ -74,7 +76,7 @@ export class ImageDisplayComponent implements OnChanges {
       return;
     }
 
-    this.resolvedImageUrl = this.imagesApiService.resolveImageUrl(rawValue);
+    this.resolvedImageUrl = this.imagesApiService.resolveImageUrl(rawValue, { width: this.srcWidth });
     this.resolvedImageSrcSet = this.imagesApiService.buildImageSrcSet(rawValue, this.responsiveWidths);
     this.resolvedImageSizes = this.resolvedImageSrcSet ? this.sizes : null;
   }

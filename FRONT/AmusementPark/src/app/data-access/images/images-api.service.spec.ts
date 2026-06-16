@@ -60,8 +60,10 @@ describe('ImagesApiService', () => {
     expect(service.buildImageUrl('img-1')).toBe(`${environment.imagesBaseUrl}/img-1`);
     expect(service.buildImageUrl('img-1', { width: 640 })).toBe(`${environment.imagesBaseUrl}/img-1?width=640&v=2`);
     expect(service.resolveImageUrl('/images/img-1')).toBe(`${environment.imagesBaseUrl}/img-1`);
+    expect(service.resolveImageUrl('/images/img-1', { width: 640 })).toBe(`${environment.imagesBaseUrl}/img-1?width=640&v=2`);
     expect(service.resolveImageUrl('images/img-2')).toBe(`${environment.imagesBaseUrl}/img-2`);
     expect(service.resolveImageUrl('img-3')).toBe(`${environment.imagesBaseUrl}/img-3`);
+    expect(service.resolveImageUrl('img-3', { width: 960 })).toBe(`${environment.imagesBaseUrl}/img-3?width=960&v=2`);
     expect(service.resolveImageUrl('assets/img.png')).toBe(`${environment.apiBaseUrl}assets/img.png`);
   });
 

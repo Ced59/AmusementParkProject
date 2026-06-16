@@ -24,7 +24,9 @@
           [alt]="currentDetail.heroPhoto.alt"
           loading="eager"
           fetchPriority="high"
-          sizes="(max-width: 900px) 100vw, 900px"
+          [sizes]="heroImageSizes"
+          [srcWidth]="heroImageSrcWidth"
+          [responsiveWidths]="heroImageResponsiveWidths"
           imgClass="item-detail-hero__photo-img"
           placeholderClass="item-detail-hero__photo-placeholder"
           placeholderKind="photo">
