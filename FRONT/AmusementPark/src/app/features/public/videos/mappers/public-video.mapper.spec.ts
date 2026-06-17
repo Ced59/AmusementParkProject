@@ -14,6 +14,7 @@ describe('public video mapper', () => {
       thumbnailImageId: 'thumb-1',
       thumbnailUrl: 'https://img.example/thumb.jpg',
       durationSeconds: 125,
+      externalMetadata: { providerViewCount: 123456 },
       tagIds: ['official']
     });
     const tags: VideoTagDto[] = [{
@@ -32,6 +33,7 @@ describe('public video mapper', () => {
     expect(cards[0].description).toBe('Description FR');
     expect(cards[0].thumbnailPathOrUrl).toBe('thumb-1');
     expect(cards[0].durationLabel).toBe('2:05');
+    expect(cards[0].viewCountLabel).toBe(new Intl.NumberFormat('fr').format(123456));
     expect(cards[0].tags[0].label).toBe('Officiel');
   });
 

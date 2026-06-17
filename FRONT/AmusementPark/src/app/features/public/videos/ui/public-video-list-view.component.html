@@ -117,6 +117,9 @@
                 @if (video.publishedAtLabel) {
                   <span><i class="pi pi-calendar" aria-hidden="true"></i>{{ video.publishedAtLabel }}</span>
                 }
+                @if (video.viewCountLabel) {
+                  <span><i class="pi pi-eye" aria-hidden="true"></i>{{ 'videos.list.views' | translate:{ count: video.viewCountLabel } }}</span>
+                }
               </span>
               @if (video.tags.length > 0) {
                 <span class="public-video-card__tags">

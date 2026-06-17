@@ -16,12 +16,17 @@ public sealed class VideosHttpMappersTests
             OwnerType = VideoOwnerType.ParkItem,
             OwnerId = "item-1",
             LanguageCodes = new List<string> { "fr" },
+            ExternalMetadata = new VideoExternalMetadata
+            {
+                ProviderViewCount = 123456,
+            },
         };
 
         VideoDto dto = video.ToHttp();
 
         Assert.Equal(VideoOwnerTypeDto.PARK_ITEM, dto.OwnerType);
         Assert.Equal(new[] { "fr" }, dto.LanguageCodes);
+        Assert.Equal(123456L, dto.ExternalMetadata.ProviderViewCount);
     }
 
     [Fact]

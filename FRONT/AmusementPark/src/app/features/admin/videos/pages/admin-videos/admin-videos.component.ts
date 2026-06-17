@@ -257,6 +257,16 @@ export class AdminVideosComponent implements OnInit {
     return this.tags().find((tag: VideoTagDto) => tag.id === tagId)?.slug ?? tagId;
   }
 
+  protected formatProviderViewCount(video: VideoDto): string {
+    const providerViewCount: number | null | undefined = video.externalMetadata?.providerViewCount;
+
+    if (providerViewCount === null || providerViewCount === undefined || !Number.isFinite(providerViewCount) || providerViewCount < 0) {
+      return '-';
+    }
+
+    return new Intl.NumberFormat('fr-FR').format(Math.round(providerViewCount));
+  }
+
   protected formatDuration(value: number | null | undefined): string {
     if (value === null || value === undefined || value <= 0) {
       return '-';

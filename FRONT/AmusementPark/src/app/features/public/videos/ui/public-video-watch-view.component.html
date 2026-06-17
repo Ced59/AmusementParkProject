@@ -28,6 +28,16 @@
                 {{ video.publishedAtLabel }}
               </app-ui-chip>
             }
+            @if (video.durationLabel) {
+              <app-ui-chip tone="soft" iconClass="pi pi-clock">
+                {{ video.durationLabel }}
+              </app-ui-chip>
+            }
+            @if (video.viewCountLabel) {
+              <app-ui-chip tone="soft" iconClass="pi pi-eye">
+                {{ 'videos.watch.views' | translate:{ count: video.viewCountLabel } }}
+              </app-ui-chip>
+            }
           </div>
         </div>
 
@@ -98,9 +108,58 @@
       </section>
 
       <section class="public-video-watch__details" appUiSurface="panel" appUiSurfacePadding="regular">
+        <dl class="public-video-watch__facts">
+          @if (video.creatorName) {
+            <div>
+              <dt>{{ 'videos.watch.creator' | translate }}</dt>
+              <dd>
+                @if (video.creatorUrl | safeExternalUrl; as creatorUrl) {
+                  <a [href]="creatorUrl" target="_blank" rel="noopener noreferrer">{{ video.creatorName }}</a>
+                } @else {
+                  <span>{{ video.creatorName }}</span>
+                }
+              </dd>
+            </div>
+          }
+          <div>
+            <dt>{{ 'videos.watch.category' | translate }}</dt>
+            <dd>{{ video.typeLabelKey | translate }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'videos.watch.provider' | translate }}</dt>
+            <dd>{{ video.providerLabelKey | translate }}</dd>
+          </div>
+          @if (video.durationLabel) {
+            <div>
+              <dt>{{ 'videos.watch.duration' | translate }}</dt>
+              <dd>{{ video.durationLabel }}</dd>
+            </div>
+          }
+          @if (video.publishedAtLabel) {
+            <div>
+              <dt>{{ 'videos.watch.publishedAt' | translate }}</dt>
+              <dd>{{ video.publishedAtLabel }}</dd>
+            </div>
+          }
+          @if (video.viewCountLabel) {
+            <div>
+              <dt>{{ 'videos.watch.viewCount' | translate }}</dt>
+              <dd>{{ 'videos.watch.views' | translate:{ count: video.viewCountLabel } }}</dd>
+            </div>
+          }
+        </dl>
+
         @if (video.description) {
           <p>{{ video.description }}</p>
         }
+
+        <div class="public-video-watch__tags" [attr.aria-label]="'videos.watch.tagsAndCategories' | translate">
+          <span class="public-video-watch__tags-label">{{ 'videos.watch.tagsAndCategories' | translate }}</span>
+          <span>{{ video.typeLabelKey | translate }}</span>
+          @for (tag of video.tags; track tag.id) {
+            <span>{{ tag.label }}</span>
+          }
+        </div>
 
         <div class="public-video-watch__detail-actions">
           @if (video.creatorUrl | safeExternalUrl; as creatorUrl) {
@@ -116,14 +175,6 @@
             </a>
           }
         </div>
-
-        @if (video.tags.length > 0) {
-          <div class="public-video-watch__tags">
-            @for (tag of video.tags; track tag.id) {
-              <span>{{ tag.label }}</span>
-            }
-          </div>
-        }
       </section>
     </article>
   }

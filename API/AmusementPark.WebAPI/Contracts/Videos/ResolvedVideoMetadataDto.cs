@@ -35,4 +35,6 @@ public sealed class ResolvedVideoMetadataDto
     public string? ProviderChannelId { get; set; }
 
     public string? ProviderChannelUrl { get; set; }
+
+    public long? ViewCount { get; set; }
 }

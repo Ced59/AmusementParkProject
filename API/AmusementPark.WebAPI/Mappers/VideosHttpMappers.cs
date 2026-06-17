@@ -177,6 +177,7 @@ internal static class VideosHttpMappers
                 ProviderDescription = value.ExternalMetadata.ProviderDescription,
                 ProviderChannelId = value.ExternalMetadata.ProviderChannelId,
                 ProviderChannelUrl = value.ExternalMetadata.ProviderChannelUrl,
+                ProviderViewCount = value.ExternalMetadata.ProviderViewCount,
             },
             IsPublished = value.IsPublished,
             CreatedAt = value.CreatedAtUtc,
@@ -219,6 +220,7 @@ internal static class VideosHttpMappers
             FetchedAtUtc = value.FetchedAtUtc,
             ProviderChannelId = value.ProviderChannelId,
             ProviderChannelUrl = value.ProviderChannelUrl,
+            ViewCount = value.ViewCount,
         };
     }
 

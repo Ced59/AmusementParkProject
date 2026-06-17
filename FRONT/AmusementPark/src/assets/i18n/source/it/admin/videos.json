@@ -70,6 +70,7 @@
       "inspector": "Inspector video",
       "owner": "Proprietario",
       "externalId": "ID esterno",
+      "providerViewCount": "Provider views",
       "thumbnailImageId": "Immagine miniatura",
       "saveVideo": "Salva video",
       "deleteVideo": "Elimina",

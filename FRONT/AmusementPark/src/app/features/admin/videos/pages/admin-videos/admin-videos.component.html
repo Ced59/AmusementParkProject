@@ -233,6 +233,7 @@
             <div><dt>{{ 'admin.videos.owner' | translate }}</dt><dd>{{ ('admin.videos.ownerTypes.' + currentVideo.ownerType) | translate }} · {{ currentVideo.ownerId || '-' }}</dd></div>
             <div><dt>{{ 'admin.videos.provider' | translate }}</dt><dd>{{ ('admin.videos.providers.' + currentVideo.hostingProvider) | translate }}</dd></div>
             <div><dt>{{ 'admin.videos.externalId' | translate }}</dt><dd>{{ currentVideo.externalId || '-' }}</dd></div>
+            <div><dt>{{ 'admin.videos.providerViewCount' | translate }}</dt><dd>{{ formatProviderViewCount(currentVideo) }}</dd></div>
             <div><dt>{{ 'admin.videos.thumbnailImageId' | translate }}</dt><dd>{{ currentVideo.thumbnailImageId || '-' }}</dd></div>
           </dl>
 

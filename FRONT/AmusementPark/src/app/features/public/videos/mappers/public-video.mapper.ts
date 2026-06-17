@@ -111,6 +111,7 @@ function buildPublicVideoCard(
     type: video.type ?? VideoType.OTHER,
     typeLabelKey: getVideoTypeLabelKey(video.type),
     durationLabel: formatDuration(video.durationSeconds),
+    viewCountLabel: formatViewCount(video.externalMetadata?.providerViewCount, currentLanguage),
     publishedAtLabel: formatPublishedAt(video.publishedAtUtc, currentLanguage),
     thumbnailPathOrUrl: normalizeOptionalString(video.thumbnailImageId) ?? normalizeOptionalString(video.thumbnailUrl),
     detailLink,
@@ -225,6 +226,14 @@ function formatPublishedAt(value: string | null | undefined, currentLanguage: st
     month: 'short',
     day: 'numeric'
   }).format(date);
+}
+
+function formatViewCount(value: number | null | undefined, currentLanguage: string): string | null {
+  if (value === null || value === undefined || !Number.isFinite(value) || value < 0) {
+    return null;
+  }
+
+  return new Intl.NumberFormat(currentLanguage || 'en').format(Math.round(value));
 }
 
 function toNavigationItem(video: VideoDto, routerLink: string[] | null): PublicVideoNavigationItem {

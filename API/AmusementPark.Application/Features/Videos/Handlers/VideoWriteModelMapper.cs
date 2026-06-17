@@ -45,6 +45,7 @@ internal static class VideoWriteModelMapper
                 ProviderDescription = metadata.Description,
                 ProviderChannelId = metadata.ProviderChannelId,
                 ProviderChannelUrl = metadata.ProviderChannelUrl,
+                ProviderViewCount = metadata.ViewCount,
             },
         };
     }

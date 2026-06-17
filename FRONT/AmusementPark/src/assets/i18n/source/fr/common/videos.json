@@ -10,6 +10,7 @@
   "videos": {
     "list": {
       "count": "{{count}} videos",
+      "views": "{{count}} vues",
       "loadMore": "Charger plus de videos",
       "loadingMore": "Chargement..."
     },
@@ -49,6 +50,14 @@
       "previous": "Video precedente",
       "next": "Video suivante",
       "backToVideos": "Retour aux videos",
+      "creator": "Createur",
+      "category": "Categorie",
+      "provider": "Hebergeur",
+      "duration": "Duree",
+      "publishedAt": "Publiee le",
+      "viewCount": "Vues",
+      "views": "{{count}} vues",
+      "tagsAndCategories": "Categories et tags",
       "openExternal": "Ouvrir la video",
       "openCreator": "Ouvrir le createur",
       "openProvider": "Ouvrir la page source"
