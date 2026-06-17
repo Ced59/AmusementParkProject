@@ -206,6 +206,7 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.facade.detail()?.zoneName).toBe('Mexico');
     expect(context.facade.detail()?.heroPhoto?.imageId).toBe('image-1');
     expect(context.facade.detail()?.imagesLink).toEqual(['/', 'fr', 'park', 'park-1', 'phantasialand', 'item', 'item-1', 'taron', 'images']);
+    expect(context.facade.detail()?.videosLink).toEqual(['/', 'fr', 'park', 'park-1', 'phantasialand', 'item', 'item-1', 'taron', 'videos']);
     expect(context.facade.detail()?.relatedItems[0]?.description?.length).toBeLessThanOrEqual(160);
     expect(context.facade.detail()?.relatedItems[0]?.description?.endsWith('...')).toBeTrue();
     expect(context.itemsPort.itemCalls).toEqual(['item-1']);

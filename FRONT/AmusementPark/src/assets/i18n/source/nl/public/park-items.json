@@ -3,7 +3,8 @@
     "actions": {
       "viewDetails": "Item bekijken",
       "backToItems": "Terug naar items",
-      "backToPark": "Terug naar het park"
+      "backToPark": "Terug naar het park",
+      "videos": "Video's"
     },
     "filters": {
       "search": "Zoeken",

@@ -1832,7 +1832,8 @@
     "actions": {
       "viewDetails": "View item",
       "backToItems": "Back to items",
-      "backToPark": "Back to park"
+      "backToPark": "Back to park",
+      "videos": "Videos"
     },
     "filters": {
       "search": "Search",
@@ -2098,6 +2099,7 @@
       "website": "Website",
       "backToList": "Back to list",
       "images": "Images",
+      "videos": "Videos",
       "map": "Map",
       "browseZones": "Browse all zones"
     },

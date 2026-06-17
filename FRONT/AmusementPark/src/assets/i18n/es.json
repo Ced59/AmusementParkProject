@@ -1830,9 +1830,10 @@
   },
   "parkItems": {
     "actions": {
-      "viewDetails": "View elemento",
-      "backToItems": "Back to elementos",
-      "backToPark": "Back to parque"
+      "viewDetails": "Ver elemento",
+      "backToItems": "Volver a los elementos",
+      "backToPark": "Volver al parque",
+      "videos": "Vídeos"
     },
     "filters": {
       "search": "Buscar",
@@ -2098,6 +2099,7 @@
       "website": "Sitio web",
       "backToList": "Volver a la lista",
       "images": "Imágenes",
+      "videos": "Vídeos",
       "map": "Mapa",
       "browseZones": "Explorar todas las zonas"
     },

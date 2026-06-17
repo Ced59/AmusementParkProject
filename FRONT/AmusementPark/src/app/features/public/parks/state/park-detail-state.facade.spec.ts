@@ -188,6 +188,7 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.park()?.heroImageId).toBe('main-image-1');
     expect(context.facade.park()?.primaryPhoto?.imageId).toBe('main-image-1');
     expect(context.facade.park()?.imagesLink).toEqual(['/', 'fr', 'park', 'park-1', 'bellewaerde', 'images']);
+    expect(context.facade.park()?.videosLink).toEqual(['/', 'fr', 'park', 'park-1', 'bellewaerde', 'videos']);
     expect(context.facade.park()?.founderName).toBe('Founder');
     expect(context.facade.park()?.operatorName).toBe('Operator');
     expect(context.facade.park()?.stats[0].value).toBe(3);

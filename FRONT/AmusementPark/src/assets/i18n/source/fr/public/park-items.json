@@ -3,7 +3,8 @@
     "actions": {
       "viewDetails": "Voir la fiche",
       "backToItems": "Retour aux éléments",
-      "backToPark": "Retour au parc"
+      "backToPark": "Retour au parc",
+      "videos": "Vidéos"
     },
     "filters": {
       "search": "Recherche",
