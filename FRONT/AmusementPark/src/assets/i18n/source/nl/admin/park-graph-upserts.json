@@ -28,7 +28,7 @@
       },
       "editor": {
         "title": "JSON-document",
-        "description": "Ontbrekende eigenschappen blijven behouden. Zones/items-lijsten upserten alleen aanwezige elementen."
+        "description": "Ontbrekende eigenschappen blijven behouden. Zones/items-lijsten upserten alleen aanwezige invoer."
       },
       "mode": {
         "title": "Upsert-modus",

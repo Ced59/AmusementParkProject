@@ -90,10 +90,10 @@
       "zones": {
         "badge": "Strefy parku",
         "title": "Strefy i obszary",
-        "subtitle": "Szybko znajdź atrakcje i miejsca powiązane z każdą strefą parku.",
+        "subtitle": "Szybko znajdź atrakcje, pokazy i miejsca powiązane z każdą strefą parku.",
         "visible": "Widoczna",
         "hidden": "Ukryta",
-        "open": "Zobacz elementy strefy",
+        "open": "Zobacz miejsca w strefie",
         "noDescription": "Opis tej strefy nie jest jeszcze dostępny.",
         "slug": "Slug",
         "sortOrder": "Kolejność",
@@ -103,12 +103,12 @@
         "zones": "Strefy"
       },
       "itemsMap": {
-        "badge": "Mapa elementów",
-        "title": "Mapa elementów parku",
-        "subtitle": "Znajdź geolokalizowane elementy tego parku i filtruj mapę według strefy lub kategorii.",
+        "badge": "Miejsca w parku",
+        "title": "Mapa miejsc w parku",
+        "subtitle": "Znajdź geolokalizowane atrakcje, pokazy, restauracje, sklepy i inne punkty zainteresowania w tym parku, a potem filtruj mapę według strefy lub kategorii.",
         "categoriesTitle": "Kategorie",
-        "emptyTitle": "Brak geolokalizowanych elementów",
-        "emptyMessage": "Żaden geolokalizowany element nie pasuje obecnie do wybranych filtrów."
+        "emptyTitle": "Brak geolokalizowanego miejsca",
+        "emptyMessage": "Żadne geolokalizowane miejsce nie pasuje obecnie do wybranych filtrów."
       },
       "comingSoon": {
         "badge": "Wkrótce",
@@ -223,7 +223,7 @@
     "photos": {
       "kicker": "Zdjęcia",
       "title": "Zdjęcia",
-      "subtitle": "Ogólne zdjęcia parku i materiały elementów, filtrowane według typu.",
+      "subtitle": "Ogólne zdjęcia parku oraz materiały atrakcji i miejsc, filtrowane według typu.",
       "current": "Aktualne",
       "openItem": "Otwórz stronę szczegółów {{name}}",
       "categories": {
@@ -271,7 +271,7 @@
     "mapPage": {
       "kicker": "Mapa parku",
       "title": "Mapa {{name}}",
-      "subtitle": "Przeglądaj geolokalizowane elementy {{name}} na dedykowanej mapie.",
+      "subtitle": "Przeglądaj geolokalizowane atrakcje, restauracje, sklepy i punkty zainteresowania {{name}} na dedykowanej mapie.",
       "loadingTitle": "Ładowanie mapy",
       "loadingMessage": "Przygotowywanie znaczników parku.",
       "errorTitle": "Mapa niedostępna",
@@ -281,7 +281,7 @@
     "zones": {
       "badge": "Strefy parku",
       "title": "Strefy {{park}}",
-      "subtitle": "{{count}} stref(y) grupujące {{total}} publiczne elementy.",
+      "subtitle": "{{count}} stref(y) grupujące {{total}} publiczne miejsca do odkrycia.",
       "loadingTitle": "Ładowanie stref",
       "loadingMessage": "Strefy parku są ładowane.",
       "errorTitle": "Nie można załadować stref",
@@ -300,16 +300,16 @@
       "errorMessage": "Nie udało się załadować strefy parku.",
       "emptyTitle": "Strefa niedostępna",
       "emptyMessage": "Żądana strefa nie jest dostępna.",
-      "totalItems": "Elementy",
-      "totalItemsHint": "Powiązane z tą strefą",
+      "totalItems": "Miejsca",
+      "totalItemsHint": "Do odkrycia",
       "mapMarkers": "Znaczniki",
       "mapMarkersHint": "Geolokalizowane",
       "mapBadge": "Mapa strefy",
-      "mapTitle": "Elementy geolokalizowane",
-      "itemsBadge": "Elementy strefy",
-      "itemsTitle": "Elementy w tej strefie",
-      "emptyItemsTitle": "Brak elementów w tej strefie",
-      "emptyItemsMessage": "Żaden publiczny element nie jest obecnie powiązany z tą strefą."
+      "mapTitle": "Geolokalizowane miejsca",
+      "itemsBadge": "Do odkrycia",
+      "itemsTitle": "Miejsca do odkrycia w tej strefie",
+      "emptyItemsTitle": "Brak miejsca w tej strefie",
+      "emptyItemsMessage": "Żadne publiczne miejsce nie jest obecnie powiązane z tą strefą."
     }
   }
 }

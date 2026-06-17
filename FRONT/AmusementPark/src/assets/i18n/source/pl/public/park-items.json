@@ -1,8 +1,8 @@
 {
   "parkItems": {
     "actions": {
-      "viewDetails": "Zobacz element",
-      "backToItems": "Wróć do elementów",
+      "viewDetails": "Zobacz stronę",
+      "backToItems": "Wróć do miejsc w parku",
       "backToPark": "Wróć do parku",
       "videos": "Filmy"
     },
@@ -18,23 +18,23 @@
       "allZones": "Wszystkie strefy"
     },
     "list": {
-      "subtitle": "Przeglądaj zawartość parku i otwieraj poszczególne elementy, aby zobaczyć szczegóły.",
-      "loadingTitle": "Ładowanie park elements",
-      "loadingMessage": "Zawartość parku jest ładowana.",
-      "errorTitle": "Nie można wczytać park elements",
-      "errorMessage": "The park content nie udało się wczytać.",
-      "emptyTitle": "Brak element available",
-      "emptyMessage": "Obecnie dla tego parku nie ma dostępnego publicznego elementu.",
-      "emptyFilteredTitle": "Brak matching element",
-      "emptyFilteredMessage": "Rozszerz filtry albo wyczyść je, aby zobaczyć więcej treści.",
+      "subtitle": "Przeglądaj atrakcje, pokazy, restauracje, sklepy i usługi parku, a potem otwieraj szczegółowe strony każdego miejsca.",
+      "loadingTitle": "Ładowanie miejsc do odkrycia",
+      "loadingMessage": "Atrakcje, pokazy i miejsca w parku są ładowane.",
+      "errorTitle": "Nie można wczytać miejsc w parku",
+      "errorMessage": "Nie udało się wczytać miejsc do odkrycia w tym parku.",
+      "emptyTitle": "Na razie nie ma nic do odkrycia",
+      "emptyMessage": "Dla tego parku nie ma obecnie publicznych atrakcji, pokazów ani miejsc.",
+      "emptyFilteredTitle": "Brak pasującego miejsca",
+      "emptyFilteredMessage": "Rozszerz filtry albo zresetuj je, aby zobaczyć więcej miejsc.",
       "filteredResults": "Wyniki filtrowane",
-      "resultsCount": "Wyświetlanie {{start}}-{{end}} z {{total}} elementów"
+      "resultsCount": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsc(a)"
     },
     "detail": {
-      "loadingTitle": "Ładowanie element",
-      "loadingMessage": "The element page is being loaded.",
-      "errorTitle": "Nie można wczytać the element",
-      "errorMessage": "The requested element nie udało się wczytać.",
+      "loadingTitle": "Ładowanie strony",
+      "loadingMessage": "Strona jest ładowana.",
+      "errorTitle": "Nie można wczytać strony",
+      "errorMessage": "Nie udało się wczytać żądanej strony.",
       "descriptionTitle": "Opis",
       "specificationsTitle": "Specyfikacje",
       "sourceTitle": "Źródło",
@@ -47,16 +47,16 @@
       "locationKicker": "Lokalizacja",
       "locationTitle": "Lokalizacja w parku",
       "preciseLocationSubtitle": "Dostępne są dokładne punkty, więc mapa pokazuje te konkretne lokalizacje.",
-      "generalLocationSubtitle": "Brak szczegółowej lokalizacji, więc mapa pokazuje tylko ogólne położenie elementu.",
+      "generalLocationSubtitle": "Nie podano dokładnej lokalizacji: mapa pokazuje tylko ogólne położenie tego miejsca.",
       "preciseLocationBadge": "Dokładny punkt",
       "generalLocationBadge": "Lokalizacja ogólna",
       "relatedKicker": "Odkryj także",
-      "relatedTitle": "Similar elements",
-      "relatedSubtitle": "Wybór na podstawie typu, kategorii lub strefy elementu.",
+      "relatedTitle": "Warto też odkryć",
+      "relatedSubtitle": "Wybór na podstawie typu, kategorii lub strefy.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Wybierz punkt, aby wyróżnić go na mapie albo otworzyć trasę z poziomu znacznika.",
       "showLocationOnMap": "Pokaż na mapie",
-      "noGeolocationMessage": "Brak geolokalizacji dla tego elementu."
+      "noGeolocationMessage": "Brak geolokalizacji dla tego miejsca"
     },
     "fields": {
       "category": "Kategoria",
@@ -161,15 +161,15 @@
       }
     },
     "imagesPage": {
-      "kicker": "Galeria elementu",
+      "kicker": "Galeria miejsca",
       "title": "Zdjęcia {{name}}",
       "subtitle": "Odkrywaj zdjęcia {{name}} w {{park}}: detale, atmosferę, ujęcia i geolokalizowane fotografie, gdy są dostępne.",
       "loadingTitle": "Ładowanie zdjęć",
-      "loadingMessage": "Przygotowywanie galerii elementu.",
+      "loadingMessage": "Przygotowywanie galerii miejsca.",
       "errorTitle": "Zdjęcia niedostępne",
-      "errorMessage": "Nie można teraz załadować zdjęć tego elementu.",
+      "errorMessage": "Nie można teraz wczytać zdjęć tego miejsca.",
       "backToItem": "Wróć do {{name}}",
-      "backToItems": "Wszystkie elementy {{name}}",
+      "backToItems": "Odkrywaj więcej w {{name}}",
       "backToPark": "Wróć do {{name}}",
       "loadMore": "Załaduj więcej zdjęć",
       "loadingMore": "Ładowanie...",
@@ -190,20 +190,20 @@
     "zoneFocus": {
       "badge": "Strefa parku",
       "overviewBadge": "Mapa na żywo",
-      "overviewDescription": "Zobacz elementy aktualnie wyświetlane dla {{park}} zgodnie z aktywnymi filtrami.",
-      "zoneFallbackDescription": "Ta strefa grupuje aktualnie wyświetlane elementy. Użyj filtrów, aby zawęzić wybór.",
-      "totalItems": "Elementy strefy",
-      "totalItemsHint": "Powiązana zawartość",
+      "overviewDescription": "Zobacz miejsca aktualnie wyświetlane dla {{park}} zgodnie z aktywnymi filtrami.",
+      "zoneFallbackDescription": "Ta strefa grupuje aktualnie wyświetlane miejsca. Użyj filtrów, aby zawęzić wybór.",
+      "totalItems": "Miejsca w strefie",
+      "totalItemsHint": "Do odkrycia",
       "displayedItems": "Wyświetlane",
       "displayedItemsHint": "Po filtrach",
       "mapMarkers": "Znaczniki",
       "mapMarkersHint": "Geolokalizowane",
       "mapPanelTitle": "Punkty mapy",
       "mapPanelHeading": "Mapa filtrowana w czasie rzeczywistym",
-      "mapPanelText": "Mapa podąża za aktualnym wyborem: strefą, kategorią, typem i wyszukiwaniem. Niestandardowe znaczniki pozostają dopasowane do dokładnego typu elementu.",
+      "mapPanelText": "Mapa podąża za aktualnym wyborem: strefą, kategorią, typem i wyszukiwaniem. Niestandardowe znaczniki pozostają dopasowane do dokładnego typu miejsca.",
       "zoneMapHeading": "Mapa strefy {{name}}",
       "parkMapHeading": "Mapa {{name}}",
-      "allMapItems": "Wszystko"
+      "allMapItems": "Wszystkie"
     },
     "statuses": {
       "operating": "Działa",

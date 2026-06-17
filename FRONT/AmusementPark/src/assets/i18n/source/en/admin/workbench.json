@@ -1,10 +1,10 @@
 {
   "admin": {
     "workbench": {
-      "navTitle": "Park items workbench",
-      "title": "Fast item entry",
+      "navTitle": "Park content workbench",
+      "title": "Quick page entry",
       "kicker": "Fast administration",
-      "subtitle": "Create, filter and correct park items quickly without opening the full record.",
+      "subtitle": "Create, filter and correct park content pages quickly without opening the full record.",
       "quickCreate": {
         "title": "Quick create",
         "name": "Name",
@@ -30,7 +30,7 @@
       "validations": {
         "nameRequired": "Name is required.",
         "parkRequired": "Park is required.",
-        "duplicateWarning": "A similar item already exists.",
+        "duplicateWarning": "A similar page already exists.",
         "invalidTypeForCategory": "The type does not match the category."
       },
       "duplicates": {
@@ -38,11 +38,11 @@
         "samePark": "Same park",
         "sameZone": "Same zone",
         "ignore": "Ignore",
-        "openExisting": "Open existing"
+        "openExisting": "Open existing page"
       },
       "templates": {
         "parkOnly": "Park only",
-        "zoneItems": "Zone + items",
+        "zoneItems": "Zone + pages",
         "services": "Services without zone",
         "captainCoaster": "Enriched Captain Coaster import"
       }

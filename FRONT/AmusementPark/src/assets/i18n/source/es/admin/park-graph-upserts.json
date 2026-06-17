@@ -28,7 +28,7 @@
       },
       "editor": {
         "title": "Documento JSON",
-        "description": "Las propiedades ausentes se conservan. Las listas de zonas/items hacen upsert solo de sus elementos."
+        "description": "Las propiedades ausentes se conservan. Las listas de zonas/items hacen upsert solo de sus entradas presentes."
       },
       "mode": {
         "title": "Modo upsert",

@@ -1,14 +1,14 @@
 {
   "admin": {
     "parkItems": {
-      "title": "Parkitems",
-      "subtitle": "Parkoverstijgend overzicht van alle parkitems voor sneller bewerken.",
-      "searchPlaceholder": "Zoek een park, item of type",
+      "title": "Parkcontent",
+      "subtitle": "Parkbreed overzicht van attracties, shows, restaurants, winkels en services om pagina's sneller te bewerken.",
+      "searchPlaceholder": "Zoek een park, pagina of type",
       "parkFilter": "Filteren op park",
-      "empty": "Geen items found.",
+      "empty": "Geen pagina gevonden.",
       "columns": {
         "park": "Park",
-        "item": "Item",
+        "item": "Pagina",
         "type": "Type",
         "visibility": "Zichtbaarheid",
         "actions": "Acties",
@@ -17,7 +17,7 @@
         "contentQuality": "Content"
       },
       "allParks": "Alle parken",
-      "total": "{{count}} item(s)",
+      "total": "{{count}} pagina('s)",
       "content": {
         "backlogFilter": "To complete",
         "complete": "Complete",

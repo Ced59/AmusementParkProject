@@ -90,10 +90,10 @@
       "zones": {
         "badge": "Parkzonen",
         "title": "Zonen und Themenbereiche",
-        "subtitle": "Finde schnell die Attraktionen und Orte, die zu jedem Bereich des Parks gehören.",
+        "subtitle": "Finde schnell Attraktionen, Shows und Orte, die zu jedem Parkbereich gehören.",
         "visible": "Sichtbar",
         "hidden": "Ausgeblendet",
-        "open": "Elemente der Zone anzeigen",
+        "open": "Orte im Bereich ansehen",
         "noDescription": "Für diese Zone ist noch keine Beschreibung verfügbar.",
         "slug": "Slug",
         "sortOrder": "Reihenfolge",
@@ -103,12 +103,12 @@
         "zones": "Zonen"
       },
       "itemsMap": {
-        "badge": "Elementkarte",
-        "title": "Karte der Parkelemente",
-        "subtitle": "Finde die geolokalisierten Elemente dieses Parks und filtere die Karte nach Zone oder Kategorie.",
+        "badge": "Orte im Park",
+        "title": "Karte der Orte im Park",
+        "subtitle": "Finde geolokalisierte Attraktionen, Shows, Restaurants, Shops und weitere interessante Punkte dieses Parks und filtere die Karte nach Bereich oder Kategorie.",
         "categoriesTitle": "Kategorien",
-        "emptyTitle": "Kein geolokalisiertes Element",
-        "emptyMessage": "Kein geolokalisiertes Element entspricht derzeit den ausgewählten Filtern."
+        "emptyTitle": "Kein geolokalisierter Ort",
+        "emptyMessage": "Kein geolokalisierter Ort passt derzeit zu den ausgewählten Filtern."
       },
       "comingSoon": {
         "badge": "Demnächst",
@@ -223,7 +223,7 @@
     "photos": {
       "kicker": "Fotos",
       "title": "Fotos",
-      "subtitle": "Allgemeine Parkfotos und Bilder von Parkelementen, nach Typ filterbar.",
+      "subtitle": "Allgemeine Parkfotos und Bilder von Attraktionen und Orten, nach Typ filterbar.",
       "current": "Aktuell",
       "openItem": "Detailseite von {{name}} öffnen",
       "categories": {
@@ -271,7 +271,7 @@
     "mapPage": {
       "kicker": "Parkkarte",
       "title": "Karte von {{name}}",
-      "subtitle": "Entdecke die geolokalisierten Elemente von {{name}} auf einer eigenen Karte.",
+      "subtitle": "Entdecke geolokalisierte Attraktionen, Restaurants, Shops und interessante Punkte von {{name}} auf einer eigenen Karte.",
       "loadingTitle": "Karte wird geladen",
       "loadingMessage": "Die Parkmarker werden vorbereitet.",
       "errorTitle": "Karte nicht verfügbar",
@@ -281,7 +281,7 @@
     "zones": {
       "badge": "Parkbereiche",
       "title": "Bereiche von {{park}}",
-      "subtitle": "{{count}} Bereich(e) mit {{total}} öffentlichen Element(en).",
+      "subtitle": "{{count}} Bereich(e) mit {{total}} öffentlichen Ort(en) zum Entdecken.",
       "loadingTitle": "Bereiche werden geladen",
       "loadingMessage": "Die Parkbereiche werden geladen.",
       "errorTitle": "Bereiche konnten nicht geladen werden",
@@ -300,16 +300,16 @@
       "errorMessage": "Der Parkbereich konnte nicht geladen werden.",
       "emptyTitle": "Bereich nicht verfügbar",
       "emptyMessage": "Der angeforderte Bereich ist nicht verfügbar.",
-      "totalItems": "Elemente",
-      "totalItemsHint": "Mit diesem Bereich verknüpft",
+      "totalItems": "Orte",
+      "totalItemsHint": "Zum Entdecken",
       "mapMarkers": "Marker",
       "mapMarkersHint": "Geolokalisiert",
       "mapBadge": "Bereichskarte",
-      "mapTitle": "Geolokalisierte Elemente",
-      "itemsBadge": "Bereichselemente",
-      "itemsTitle": "Elemente in diesem Bereich",
-      "emptyItemsTitle": "Kein Element in diesem Bereich",
-      "emptyItemsMessage": "Derzeit ist kein öffentliches Element mit diesem Bereich verknüpft."
+      "mapTitle": "Geolokalisierte Orte",
+      "itemsBadge": "Zum Entdecken",
+      "itemsTitle": "Orte in diesem Bereich entdecken",
+      "emptyItemsTitle": "Kein Ort in diesem Bereich",
+      "emptyItemsMessage": "Derzeit ist kein öffentlicher Ort mit diesem Bereich verknüpft."
     }
   }
 }

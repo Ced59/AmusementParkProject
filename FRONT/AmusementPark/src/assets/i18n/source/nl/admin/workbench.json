@@ -1,10 +1,10 @@
 {
   "admin": {
     "workbench": {
-      "navTitle": "Werkbank voor parkitems",
-      "title": "Snelle iteminvoer",
+      "navTitle": "Werkruimte parkcontent",
+      "title": "Snel pagina’s invoeren",
       "kicker": "Snelle administratie",
-      "subtitle": "Maak, filter en corrigeer parkitems snel zonder de volledige fiche te openen.",
+      "subtitle": "Maak, filter en corrigeer parkcontentpagina’s snel zonder het volledige record te openen.",
       "quickCreate": {
         "title": "Snel aanmaken",
         "name": "Naam",
@@ -30,7 +30,7 @@
       "validations": {
         "nameRequired": "Naam is verplicht.",
         "parkRequired": "Park is verplicht.",
-        "duplicateWarning": "Er bestaat al een vergelijkbaar item.",
+        "duplicateWarning": "Er bestaat al een vergelijkbare pagina.",
         "invalidTypeForCategory": "Het type past niet bij de categorie."
       },
       "duplicates": {
@@ -38,11 +38,11 @@
         "samePark": "Zelfde park",
         "sameZone": "Zelfde zone",
         "ignore": "Negeren",
-        "openExisting": "Bestaande openen"
+        "openExisting": "Bestaande pagina openen"
       },
       "templates": {
         "parkOnly": "Alleen park",
-        "zoneItems": "Zone + items",
+        "zoneItems": "Zone + pagina’s",
         "services": "Services zonder zone",
         "captainCoaster": "Verrijkte Captain Coaster-import"
       }

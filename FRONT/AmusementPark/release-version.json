@@ -1,6 +1,20 @@
 {
-  "version": "1.10.11",
+  "version": "1.10.12",
   "history": [
+    {
+      "version": "1.10.12",
+      "releasedAt": "2026-06-18",
+      "labels": {
+        "fr": "Les pages du parc parlent plus naturellement des lieux à découvrir.",
+        "en": "Park pages describe places to discover more naturally.",
+        "de": "Parkseiten beschreiben Orte zum Entdecken natuerlicher.",
+        "nl": "Parkpagina's beschrijven plekken om te ontdekken natuurlijker.",
+        "it": "Le pagine del parco descrivono meglio i luoghi da scoprire.",
+        "es": "Las paginas del parque describen mejor los lugares por descubrir.",
+        "pl": "Strony parku lepiej opisuja miejsca do odkrycia.",
+        "pt": "As paginas do parque descrevem melhor os locais a descobrir."
+      }
+    },
     {
       "version": "1.10.11",
       "releasedAt": "2026-06-18",

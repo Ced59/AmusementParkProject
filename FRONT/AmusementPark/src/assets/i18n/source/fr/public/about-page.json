@@ -35,7 +35,7 @@
       "discover": {
         "badge": "Découvrir",
         "title": "Trouvez des parcs qui vous donnent envie",
-        "text": "Parcourez des parcs situés dans différents pays, découvrez leur localisation, leur ambiance générale et les éléments qui les composent. L’objectif est de vous donner rapidement une première idée : est-ce un parc familial, un grand parc de destination, un parc régional, un parc aquatique, un lieu très thématisé ou une sortie plus locale ?"
+        "text": "Parcourez des parcs situés dans différents pays, découvrez leur localisation, leur ambiance générale et les lieux qui les composent. L’objectif est de vous donner rapidement une première idée : est-ce un parc familial, un grand parc de destination, un parc régional, un parc aquatique, un lieu très thématisé ou une sortie plus locale ?"
       },
       "understand": {
         "badge": "Comprendre",
@@ -66,7 +66,7 @@
           "text": "Les images permettent de mieux ressentir l’ambiance d’un parc, d’une zone ou d’une attraction. Elles aident à passer d’une simple fiche descriptive à une découverte plus visuelle."
         },
         "map": {
-          "title": "Situer les parcs et leurs éléments",
+          "title": "Situer les parcs et leurs lieux",
           "text": "La carte aide à comprendre où se trouve un parc, ce qui l’entoure, et à terme où se situent les différentes expériences à l’intérieur du site."
         },
         "nearby": {

@@ -167,7 +167,7 @@
       "ownerType": "Proprietário",
       "allOwnerTypes": "Todos os proprietários",
       "ownerId": "ID do proprietário",
-      "ownerIdPlaceholder": "Park, elemento or user ID",
+      "ownerIdPlaceholder": "ID do parque, ficha ou utilizador",
       "tag": "Etiqueta",
       "allTags": "Todas as etiquetas",
       "publication": "Publicação",
@@ -318,7 +318,7 @@
       },
       "editor": {
         "title": "Documento JSON",
-        "description": "As propriedades ausentes são preservadas. As listas zones/items fazem upsert apenas dos elementos presentes."
+        "description": "As propriedades ausentes são preservadas. As listas zones/items fazem upsert apenas das entradas presentes."
       },
       "mode": {
         "title": "Modo upsert",
@@ -448,14 +448,14 @@
       }
     },
     "parkItems": {
-      "title": "Elementos do parque",
-      "subtitle": "Vista transversal de todos os elementos dos parques para edição mais rápida.",
-      "searchPlaceholder": "Search a parque, elemento or type",
+      "title": "Conteúdos do parque",
+      "subtitle": "Vista transversal de atrações, espetáculos, restaurantes, lojas e serviços para editar fichas mais depressa.",
+      "searchPlaceholder": "Pesquisar parque, ficha ou tipo",
       "parkFilter": "Filter by parque",
-      "empty": "Nenhum elementos found.",
+      "empty": "Nenhuma ficha encontrada.",
       "columns": {
         "park": "Parque",
-        "item": "Elemento",
+        "item": "Ficha",
         "type": "Tipo",
         "visibility": "Visibilidade",
         "actions": "Ações",
@@ -464,7 +464,7 @@
         "contentQuality": "Content"
       },
       "allParks": "Todos os parques",
-      "total": "{{count}} item(ns)",
+      "total": "{{count}} ficha(s)",
       "content": {
         "backlogFilter": "To complete",
         "complete": "Complete",
@@ -585,20 +585,20 @@
         "empty": "Nenhuma zona encontrada para este parque."
       },
       "items": {
-        "manage": "Gerir elementos do parque",
-        "title": "Elementos do parque",
-        "create": "Criar um elemento",
-        "createTitle": "Criar um elemento do parque",
-        "editTitle": "Editar um elemento do parque",
+        "manage": "Gerir conteúdos do parque",
+        "title": "Conteúdos do parque",
+        "create": "Criar ficha",
+        "createTitle": "Criar uma ficha do parque",
+        "editTitle": "Editar uma ficha do parque",
         "category": "Categoria",
         "type": "Tipo",
         "subtype": "Subtipo",
         "zone": "Zona",
-        "deleteConfirm": "Eliminar este elemento?",
+        "deleteConfirm": "Eliminar esta ficha?",
         "quickCreate": {
           "kicker": "Workbench rápido",
           "title": "Criação rápida",
-          "subtitle": "Crie um elemento sem sair do contexto do parque.",
+          "subtitle": "Cria uma ficha sem sair do contexto do parque.",
           "open": "Criação rápida",
           "close": "Fechar criação rápida",
           "noZone": "Sem zona",
@@ -609,12 +609,12 @@
           "duplicate": "Duplicar",
           "duplicatesTitle": "Já existem nomes semelhantes"
         },
-        "itemName": "Nome do elemento",
+        "itemName": "Nome apresentado",
         "generalLocation": "Localização geral",
-        "generalLocationHelp": "Ponto principal do elemento no parque. Os pontos específicos da atração podem ser preenchidos abaixo.",
-        "saveBeforePhotos": "Guarda primeiro a atração antes de anexar fotos.",
+        "generalLocationHelp": "Ponto principal desta ficha no parque. Os pontos específicos da atração são definidos mais abaixo.",
+        "saveBeforePhotos": "Guarda primeiro a ficha para lhe poderes associar fotos.",
         "attractionSectionTitle": "Configuração da atração",
-        "attractionSectionDescription": "Esta secção só aparece para elementos da categoria Atração. Todos os campos são opcionais.",
+        "attractionSectionDescription": "Esta secção só aparece para fichas da categoria Atração. Todos os campos são opcionais.",
         "locationsTitle": "Localizações específicas",
         "locationsHelp": "Permite guardar coordenadas separadas para entrada, saída, entrada Fast Pass e entrada de mobilidade reduzida.",
         "details": {
@@ -683,7 +683,7 @@
           }
         },
         "attractionConfigurationTitle": "Configuração da atração",
-        "attractionConfigurationHelp": "Esta secção só aparece para atrações. Todos os campos são opcionais.",
+        "attractionConfigurationHelp": "Esta secção só aparece para fichas da categoria Atração. Todos os campos são opcionais.",
         "accessConditionsTitle": "Condições de acesso",
         "accessConditionsHelp": "Adiciona aqui regras estruturadas de altura, idade, restrições médicas ou acessos especiais. As etiquetas continuam personalizáveis para cada atração.",
         "accessConditionsPreset": "Tipo de condição a adicionar",
@@ -757,7 +757,7 @@
           "upToDate": "Atualizado"
         },
         "editorActions": {
-          "backToItems": "Voltar à lista de elementos",
+          "backToItems": "Voltar à lista de fichas",
           "saveAll": "Guardar tudo",
           "saveAndClose": "Guardar e terminar",
           "saveSection": "Guardar esta secção",
@@ -766,10 +766,10 @@
         "saveMessages": {
           "successSummary": "Guardado",
           "sectionSaved": "A secção atual foi guardada e continuas na página.",
-          "itemSaved": "O elemento do parque foi guardado.",
-          "itemCreated": "O elemento do parque foi criado e continuas em modo de edição.",
+          "itemSaved": "A ficha do parque foi guardada.",
+          "itemCreated": "A ficha do parque foi criada e continuas em modo de edição.",
           "errorSummary": "Falha ao guardar",
-          "errorDetail": "Ocorreu um erro ao guardar o elemento do parque."
+          "errorDetail": "Ocorreu um erro ao guardar a ficha do parque."
         },
         "heightRequirements": {
           "title": "Requisitos de altura",
@@ -793,7 +793,7 @@
         "advancedAccessConditionsHelp": "Adicione apenas regras que não sejam requisitos de altura.",
         "advancedAccessConditionsEmpty": "Nenhuma outra condição configurada.",
         "park": "Parque associado",
-        "parkHelp": "Permite mover manualmente o elemento para o parque correto se uma importação o associou ao parque errado.",
+        "parkHelp": "Permite mover manualmente a ficha para o parque correto se uma importação a associou ao parque errado.",
         "accessConditionTypesAdmin": {
           "title": "Tipos de condição reutilizáveis",
           "help": "Adiciona um tipo comum ao catálogo antes de o usar numa atração.",
@@ -815,9 +815,9 @@
           "planned": "Planeado",
           "unknown": "Desconhecido"
         },
-        "subtitle": "Lista de administração dos elementos ligados a este parque, com filtros, paginação, ordenação e acompanhamento da revisão.",
-        "total": "{{count}} item(ns)",
-        "searchPlaceholder": "Pesquisar um item, tipo ou estado",
+        "subtitle": "Lista administrável das fichas ligadas a este parque, com filtros, paginação, ordenação e acompanhamento do tratamento.",
+        "total": "{{count}} ficha(s)",
+        "searchPlaceholder": "Pesquisar ficha, tipo ou estado",
         "import": {
           "open": "Importar por colagem",
           "title": "Importacao por colagem / CSV",
@@ -831,7 +831,7 @@
           "descriptionFr": "Descricao FR",
           "previewSummary": "{{ready}} prontas, {{warnings}} com aviso, {{errors}} com erro"
         },
-        "empty": "Nenhum elemento encontrado para este parque."
+        "empty": "Nenhuma ficha encontrada para este parque."
       },
       "refactorHint": "O editor está agora dividido em separadores temáticos para tornar a página mais leve e fácil de usar.",
       "visibilityHelp": "Controla se este parque fica visível na aplicação pública.",
@@ -866,7 +866,7 @@
       },
       "management": {
         "sectionTitle": "Gestão do conteúdo do parque",
-        "sectionHelp": "Acede rapidamente às zonas e aos elementos associados a este parque."
+        "sectionHelp": "Acede rapidamente às zonas e aos conteúdos ligados a este parque."
       },
       "featuredOnHomeField": "Destacar na página inicial",
       "featuredOnHomeHelp": "Prioriza este parque na secção pública “Parques em destaque”. Se nenhum parque estiver marcado, a página inicial usa uma seleção aleatória de parques visíveis.",
@@ -1073,8 +1073,8 @@
         "Home": "Início",
         "Parks": "Parques",
         "Park": "Parque",
-        "ParkItems": "Itens do parque",
-        "ParkItem": "Item do parque",
+        "ParkItems": "Páginas a descobrir do parque",
+        "ParkItem": "Ficha do parque",
         "Videos": "Vídeos",
         "Video": "Vídeo",
         "Page": "Página"
@@ -1091,7 +1091,7 @@
       "site": "Site",
       "operators": "Operadores",
       "manufacturers": "Fabricantes",
-      "parkItems": "Elementos",
+      "parkItems": "Conteúdos",
       "data": "Dados"
     },
     "title": "Painel de administração",
@@ -1140,7 +1140,7 @@
     "videos": {
       "title": "Vídeos",
       "kicker": "M16 - Videoteca",
-      "subtitle": "Gestão de vídeos públicos, ligação a parques e park items, tags, tipos e metadados do alojamento.",
+      "subtitle": "Gestão de vídeos públicos, ligação a parques e fichas do parque, tags, tipos e metadados do alojamento.",
       "total": "vídeo(s)",
       "loadingMessage": "A carregar vídeos...",
       "search": "Pesquisa",
@@ -1150,7 +1150,7 @@
       "ownerType": "Proprietário",
       "allOwnerTypes": "Todos os proprietários",
       "ownerId": "ID do proprietário",
-      "ownerIdPlaceholder": "ID do parque ou park item",
+      "ownerIdPlaceholder": "ID do parque ou da ficha",
       "type": "Tipo",
       "allTypes": "Todos os tipos",
       "tag": "Tag",
@@ -1225,7 +1225,7 @@
       },
       "ownerTypes": {
         "PARK": "Parque",
-        "PARK_ITEM": "Park item"
+        "PARK_ITEM": "Ficha do parque"
       },
       "types": {
         "ON_RIDE": "Onride",
@@ -1242,10 +1242,10 @@
     },
     "visible": "Visível",
     "workbench": {
-      "navTitle": "Área de trabalho de elementos do parque",
-      "title": "Entrada rápida de elementos",
+      "navTitle": "Área de trabalho de conteúdos do parque",
+      "title": "Entrada rápida de fichas",
       "kicker": "Administração rápida",
-      "subtitle": "Crie, filtre e corrija rapidamente elementos do parque sem abrir a ficha completa.",
+      "subtitle": "Cria, filtra e corrige rapidamente fichas do parque sem abrir o registo completo.",
       "quickCreate": {
         "title": "Criação rápida",
         "name": "Nome",
@@ -1271,7 +1271,7 @@
       "validations": {
         "nameRequired": "O nome é obrigatório.",
         "parkRequired": "O parque é obrigatório.",
-        "duplicateWarning": "Já existe um elemento semelhante.",
+        "duplicateWarning": "Já existe uma ficha semelhante.",
         "invalidTypeForCategory": "O tipo não corresponde à categoria."
       },
       "duplicates": {
@@ -1279,11 +1279,11 @@
         "samePark": "Mesmo parque",
         "sameZone": "Mesma zona",
         "ignore": "Ignorar",
-        "openExisting": "Abrir existente"
+        "openExisting": "Abrir a ficha existente"
       },
       "templates": {
         "parkOnly": "Apenas parque",
-        "zoneItems": "Zona + elementos",
+        "zoneItems": "Zona + fichas",
         "services": "Serviços sem zona",
         "captainCoaster": "Importação enriquecida do Captain Coaster"
       }
@@ -1391,14 +1391,14 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Logótipo do parque",
       "PARK": "Foto do parque",
-      "PARK_ITEM": "Item foto",
+      "PARK_ITEM": "Foto do local",
       "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
       "NONE": "Nenhum",
       "PARK": "Parque",
       "USER": "Utilizador",
-      "PARK_ITEM": "Elemento",
+      "PARK_ITEM": "Ficha do parque",
       "VIDEO": "Video"
     }
   },
@@ -1613,7 +1613,7 @@
       "discover": {
         "badge": "Descobrir",
         "title": "Encontre parques que dão vontade de visitar",
-        "text": "Explore parques em diferentes países e perceba rapidamente localização, ambiente e oferta."
+        "text": "Explora parques em diferentes países, descobre a sua localização, ambiente geral e os locais que os compõem. O objetivo é dar-te rapidamente uma primeira impressão: parque familiar, grande destino, parque regional, parque aquático, local muito tematizado ou saída local."
       },
       "understand": {
         "badge": "Compreender",
@@ -1644,7 +1644,7 @@
           "text": "As imagens ajudam a sentir o ambiente de um parque, zona ou atração."
         },
         "map": {
-          "title": "Localizar parques e elementos",
+          "title": "Localizar parques e locais",
           "text": "O mapa ajuda a perceber onde fica o parque e o que o rodeia."
         },
         "nearby": {
@@ -1795,7 +1795,7 @@
       "park": "Parque",
       "attractions": "Atrações",
       "everywhere": "Em todo o lado",
-      "parkItems": "Atrações e locais",
+      "parkItems": "Atrações, espetáculos e locais",
       "operators": "Operadores",
       "manufacturers": "Fabricantes",
       "attraction": "Atração",
@@ -1895,10 +1895,10 @@
   },
   "parkExplorer": {
     "headerChip": "Exploração do parque",
-    "subtitle": "Explore o parque através das suas zonas e das principais categorias de elementos que contém.",
+    "subtitle": "Explore o parque através das suas zonas e das principais categorias de locais que contém.",
     "overviewTitle": "Todo o parque",
-    "unassignedTitle": "Elementos sem zona",
-    "totalItems": "{{count}} elemento(s)",
+    "unassignedTitle": "Locais sem zona",
+    "totalItems": "{{count}} local(is)",
     "byCategory": "Por categoria",
     "byType": "Por tipo",
     "loading": "A carregar exploração...",
@@ -1948,8 +1948,8 @@
   },
   "parkItems": {
     "actions": {
-      "viewDetails": "Ver elemento",
-      "backToItems": "Voltar aos elementos",
+      "viewDetails": "Ver ficha",
+      "backToItems": "Voltar aos locais do parque",
       "backToPark": "Voltar ao parque",
       "videos": "Vídeos"
     },
@@ -1965,23 +1965,23 @@
       "allZones": "Todas as zonas"
     },
     "list": {
-      "subtitle": "Explora o conteúdo do parque e abre cada elemento para ver os detalhes.",
-      "loadingTitle": "A carregar parque elementos",
-      "loadingMessage": "The parque content is being loaded.",
-      "errorTitle": "Não foi possível carregar parque elementos",
-      "errorMessage": "The parque content não foi possível carregar.",
-      "emptyTitle": "Nenhum elemento available",
-      "emptyMessage": "Atualmente não há nenhum elemento público disponível para este parque.",
-      "emptyFilteredTitle": "Nenhum matching elemento",
-      "emptyFilteredMessage": "Tenta alargar os filtros ou limpa-os para ver mais conteúdo.",
+      "subtitle": "Explora as atrações, espetáculos, restaurantes, lojas e serviços do parque, depois abre a ficha detalhada de cada local.",
+      "loadingTitle": "A carregar locais a descobrir",
+      "loadingMessage": "As atrações, espetáculos e locais do parque estão a carregar.",
+      "errorTitle": "Não foi possível carregar os locais do parque",
+      "errorMessage": "Não foi possível carregar os locais a descobrir neste parque.",
+      "emptyTitle": "Ainda não há nada a descobrir",
+      "emptyMessage": "Ainda não há nenhuma atração, espetáculo ou local público disponível para este parque.",
+      "emptyFilteredTitle": "Nenhum local correspondente",
+      "emptyFilteredMessage": "Alarga os filtros ou repõe-nos para ver mais locais.",
       "filteredResults": "Resultados filtrados",
-      "resultsCount": "A mostrar {{start}}-{{end}} de {{total}} elemento(s)"
+      "resultsCount": "A mostrar {{start}} a {{end}} de {{total}} local(is)"
     },
     "detail": {
-      "loadingTitle": "A carregar elemento",
-      "loadingMessage": "The elemento page is being loaded.",
-      "errorTitle": "Não foi possível carregar the elemento",
-      "errorMessage": "The requested elemento não foi possível carregar.",
+      "loadingTitle": "A carregar ficha",
+      "loadingMessage": "A ficha está a carregar.",
+      "errorTitle": "Não foi possível carregar a ficha",
+      "errorMessage": "A ficha pedida não pôde ser carregada.",
       "descriptionTitle": "Descrição",
       "specificationsTitle": "Especificações",
       "sourceTitle": "Fonte",
@@ -1994,16 +1994,16 @@
       "locationKicker": "Localização",
       "locationTitle": "Location inside the parque",
       "preciseLocationSubtitle": "Há pontos precisos disponíveis, por isso o mapa mostra estas localizações específicas.",
-      "generalLocationSubtitle": "Não há localização específica disponível, por isso o mapa mostra apenas a localização geral do elemento.",
+      "generalLocationSubtitle": "Nenhuma localização específica está definida: o mapa mostra apenas a localização geral deste local.",
       "preciseLocationBadge": "Ponto preciso",
       "generalLocationBadge": "Localização geral",
       "relatedKicker": "Descobre também",
-      "relatedTitle": "Similar elementos",
-      "relatedSubtitle": "Seleção baseada no tipo, categoria ou zona do elemento.",
+      "relatedTitle": "Também a descobrir",
+      "relatedSubtitle": "Seleção baseada no tipo, categoria ou zona.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Seleciona um ponto para o destacar no mapa ou abrir o itinerário a partir do marcador.",
       "showLocationOnMap": "Mostrar no mapa",
-      "noGeolocationMessage": "Não há geolocalização disponível para este elemento."
+      "noGeolocationMessage": "Sem geolocalização para este local"
     },
     "fields": {
       "category": "Categoria",
@@ -2108,15 +2108,15 @@
       }
     },
     "imagesPage": {
-      "kicker": "Galeria do elemento",
+      "kicker": "Galeria do local",
       "title": "Imagens de {{name}}",
       "subtitle": "Explore imagens de {{name}} em {{park}}: detalhes, ambiente, pontos de vista e fotos geolocalizadas quando disponíveis.",
       "loadingTitle": "A carregar imagens",
-      "loadingMessage": "A preparar a galeria do elemento.",
+      "loadingMessage": "Preparação da galeria do local.",
       "errorTitle": "Imagens indisponíveis",
-      "errorMessage": "As imagens deste elemento não podem ser carregadas neste momento.",
+      "errorMessage": "As imagens deste local não podem ser carregadas de momento.",
       "backToItem": "Voltar a {{name}}",
-      "backToItems": "Todos os elementos de {{name}}",
+      "backToItems": "A descobrir em {{name}}",
       "backToPark": "Voltar a {{name}}",
       "loadMore": "Carregar mais imagens",
       "loadingMore": "A carregar...",
@@ -2137,20 +2137,20 @@
     "zoneFocus": {
       "badge": "Zona do parque",
       "overviewBadge": "Mapa em tempo real",
-      "overviewDescription": "Veja os itens atualmente exibidos para {{park}} de acordo com os filtros ativos.",
-      "zoneFallbackDescription": "Esta zona agrupa os itens exibidos no momento. Use os filtros para refinar a seleção.",
-      "totalItems": "Itens da zona",
-      "totalItemsHint": "Conteúdo vinculado",
+      "overviewDescription": "Veja os locais atualmente exibidos para {{park}} de acordo com os filtros ativos.",
+      "zoneFallbackDescription": "Esta zona agrupa os locais apresentados neste momento. Usa os filtros para ajustar a seleção.",
+      "totalItems": "Locais na zona",
+      "totalItemsHint": "A descobrir",
       "displayedItems": "Exibidos",
       "displayedItemsHint": "Após filtros",
       "mapMarkers": "Marcadores",
       "mapMarkersHint": "Geolocalizados",
       "mapPanelTitle": "Referências do mapa",
       "mapPanelHeading": "Mapa filtrado em tempo real",
-      "mapPanelText": "O mapa acompanha a seleção atual: zona, categoria, tipo e pesquisa. Os marcadores personalizados continuam adaptados ao tipo exato de cada item.",
+      "mapPanelText": "O mapa acompanha a seleção atual: zona, categoria, tipo e pesquisa. Os marcadores personalizados continuam adaptados ao tipo exato de cada local.",
       "zoneMapHeading": "Mapa zona {{name}}",
       "parkMapHeading": "Mapa {{name}}",
-      "allMapItems": "Tudo"
+      "allMapItems": "Todos"
     },
     "statuses": {
       "operating": "Em funcionamento",
@@ -2162,15 +2162,15 @@
       "unknown": "Desconhecido"
     },
     "videosPage": {
-      "kicker": "Item videos",
+      "kicker": "Vídeos do local",
       "title": "Videos of {{name}}",
       "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
       "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the item videos.",
+      "loadingMessage": "Preparação dos vídeos deste local.",
       "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this item cannot be loaded right now.",
+      "errorMessage": "Não foi possível carregar os vídeos deste local de momento.",
       "backToItem": "Back to {{name}}",
-      "backToItems": "All {{name}} items",
+      "backToItems": "A descobrir em {{name}}",
       "backToPark": "Back to {{name}}",
       "emptyTitle": "No published videos",
       "emptyMessage": "No published video is available for {{name}} yet."
@@ -2181,9 +2181,9 @@
       "badge": "Conteúdo do parque",
       "title": "Explore o que este parque oferece",
       "subtitle": "Escolha uma categoria para encontrar rapidamente atrações, restaurantes e lugares do parque.",
-      "viewAllItems": "Ver todos os itens",
-      "totalItems": "Itens no total",
-      "unassignedItems": "Itens sem zona"
+      "viewAllItems": "Atrações, espetáculos e locais a descobrir",
+      "totalItems": "Locais a descobrir",
+      "unassignedItems": "Locais sem zona"
     }
   },
   "parks": {
@@ -2277,10 +2277,10 @@
       "zones": {
         "badge": "Zonas do parque",
         "title": "Zonas e lands",
-        "subtitle": "Encontre rapidamente as atrações e locais associados a cada zona do parque.",
+        "subtitle": "Encontra rapidamente as atrações, espetáculos e locais associados a cada zona do parque.",
         "visible": "Visível",
         "hidden": "Oculta",
-        "open": "Ver itens da zona",
+        "open": "Ver os locais da zona",
         "noDescription": "Ainda não há descrição disponível para esta zona.",
         "slug": "Slug",
         "sortOrder": "Ordem",
@@ -2290,12 +2290,12 @@
         "zones": "Zonas"
       },
       "itemsMap": {
-        "badge": "Mapa de elementos",
-        "title": "Mapa dos elementos do parque",
-        "subtitle": "Encontra os elementos geolocalizados deste parque e filtra o mapa por zona ou categoria.",
+        "badge": "Locais do parque",
+        "title": "Mapa dos locais do parque",
+        "subtitle": "Encontra atrações, espetáculos, restaurantes, lojas e outros pontos de interesse geolocalizados deste parque, depois filtra o mapa por zona ou categoria.",
         "categoriesTitle": "Categorias",
-        "emptyTitle": "Nenhum elemento geolocalizado",
-        "emptyMessage": "Nenhum elemento geolocalizado corresponde atualmente aos filtros selecionados."
+        "emptyTitle": "Nenhum local geolocalizado",
+        "emptyMessage": "Nenhum local geolocalizado corresponde neste momento aos filtros selecionados."
       },
       "comingSoon": {
         "badge": "Em breve",
@@ -2410,7 +2410,7 @@
     "photos": {
       "kicker": "Fotos",
       "title": "Fotos",
-      "subtitle": "Fotos gerais do parque e imagens dos elementos, filtráveis por tipo.",
+      "subtitle": "Fotos gerais do parque e imagens de atrações e locais, filtráveis por tipo.",
       "current": "Atual",
       "openItem": "Abrir a ficha de {{name}}",
       "categories": {
@@ -2458,7 +2458,7 @@
     "mapPage": {
       "kicker": "Mapa do parque",
       "title": "Mapa de {{name}}",
-      "subtitle": "Explore os elementos geolocalizados de {{name}} num mapa dedicado.",
+      "subtitle": "Explora atrações, restaurantes, lojas e pontos de interesse geolocalizados de {{name}} num mapa dedicado.",
       "loadingTitle": "A carregar mapa",
       "loadingMessage": "A preparar os marcadores do parque.",
       "errorTitle": "Mapa indisponível",
@@ -2468,7 +2468,7 @@
     "zones": {
       "badge": "Zonas do parque",
       "title": "Zonas de {{park}}",
-      "subtitle": "{{count}} zona(s) que agrupam {{total}} elemento(s) público(s).",
+      "subtitle": "{{count}} zona(s) que agrupam {{total}} local(is) público(s) a descobrir.",
       "loadingTitle": "A carregar zonas",
       "loadingMessage": "As zonas do parque estão a carregar.",
       "errorTitle": "Não foi possível carregar as zonas",
@@ -2487,16 +2487,16 @@
       "errorMessage": "Não foi possível carregar a zona do parque.",
       "emptyTitle": "Zona indisponível",
       "emptyMessage": "A zona solicitada não está disponível.",
-      "totalItems": "Elementos",
-      "totalItemsHint": "Ligados a esta zona",
+      "totalItems": "Locais",
+      "totalItemsHint": "A descobrir",
       "mapMarkers": "Marcadores",
       "mapMarkersHint": "Geolocalizados",
       "mapBadge": "Mapa da zona",
-      "mapTitle": "Elementos geolocalizados",
-      "itemsBadge": "Elementos da zona",
-      "itemsTitle": "Elementos nesta zona",
-      "emptyItemsTitle": "Nenhum elemento nesta zona",
-      "emptyItemsMessage": "Nenhum elemento público está atualmente ligado a esta zona."
+      "mapTitle": "Locais geolocalizados",
+      "itemsBadge": "A descobrir",
+      "itemsTitle": "Locais a descobrir nesta zona",
+      "emptyItemsTitle": "Nenhum local nesta zona",
+      "emptyItemsMessage": "Nenhum local público está atualmente ligado a esta zona."
     },
     "videosPage": {
       "kicker": "Park videos",
@@ -2631,9 +2631,9 @@
       "text": "Veja {{title}} no AmusementPark."
     },
     "parkItems": {
-      "title": "Partilhar estas atrações",
+      "title": "Partilhar estas atrações e locais",
       "description": "Envie este guia a alguém que esteja a preparar a visita.",
-      "text": "Veja atrações e locais de {{title}} no AmusementPark."
+      "text": "Explora atrações, espetáculos e locais de {{title}} no AmusementPark."
     },
     "parkItem": {
       "title": "Partilhar esta ficha",

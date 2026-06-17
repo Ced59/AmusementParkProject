@@ -39,9 +39,9 @@
       "text": "Zobacz {{title}} w AmusementPark."
     },
     "parkItems": {
-      "title": "Udostępnij te atrakcje",
+      "title": "Udostępnij te atrakcje i miejsca",
       "description": "Wyślij ten przewodnik komuś, kto planuje wizytę.",
-      "text": "Przeglądaj atrakcje i miejsca {{title}} w AmusementPark."
+      "text": "Przeglądaj atrakcje, pokazy i miejsca w {{title}} na AmusementPark."
     },
     "parkItem": {
       "title": "Udostępnij tę kartę",

@@ -93,20 +93,20 @@
         "empty": "Geen zone gevonden voor dit park."
       },
       "items": {
-        "manage": "Parkitems beheren",
-        "title": "Parkitems",
-        "create": "Item aanmaken",
-        "createTitle": "Parkitem aanmaken",
-        "editTitle": "Parkitem bewerken",
+        "manage": "Parkcontent beheren",
+        "title": "Parkcontent",
+        "create": "Pagina aanmaken",
+        "createTitle": "Parkpagina aanmaken",
+        "editTitle": "Parkpagina bewerken",
         "category": "Categorie",
         "type": "Type",
         "subtype": "Subtype",
         "zone": "Zone",
-        "deleteConfirm": "Dit item verwijderen?",
+        "deleteConfirm": "Deze pagina verwijderen?",
         "quickCreate": {
           "kicker": "Snelle workbench",
           "title": "Snel aanmaken",
-          "subtitle": "Maak een item aan zonder de parkcontext te verlaten.",
+          "subtitle": "Maak een pagina aan zonder de parkcontext te verlaten.",
           "open": "Snel aanmaken",
           "close": "Snel aanmaken sluiten",
           "noZone": "Geen zone",
@@ -117,12 +117,12 @@
           "duplicate": "Dupliceren",
           "duplicatesTitle": "Vergelijkbare namen bestaan al"
         },
-        "itemName": "Itemnaam",
+        "itemName": "Weergavenaam",
         "generalLocation": "Algemene locatie",
-        "generalLocationHelp": "Hoofdpunt van het item in het park. Specifieke attractiepunten kunnen hieronder worden ingevuld.",
-        "saveBeforePhotos": "Sla de attractie eerst op voordat je foto’s toevoegt.",
+        "generalLocationHelp": "Hoofdpunt van deze pagina in het park. Attractiespecifieke punten worden hieronder ingevuld.",
+        "saveBeforePhotos": "Sla eerst de pagina op voordat je foto's koppelt.",
         "attractionSectionTitle": "Attractieconfiguratie",
-        "attractionSectionDescription": "Deze sectie wordt alleen getoond voor items in de categorie Attractie. Elk veld is optioneel.",
+        "attractionSectionDescription": "Deze sectie verschijnt alleen voor pagina's in de categorie Attractie. Alle velden zijn optioneel.",
         "locationsTitle": "Specifieke locaties",
         "locationsHelp": "Hiermee kun je aparte coördinaten opslaan voor ingang, uitgang, fastpass-ingang en ingang voor beperkte mobiliteit.",
         "details": {
@@ -191,7 +191,7 @@
           }
         },
         "attractionConfigurationTitle": "Attractieconfiguratie",
-        "attractionConfigurationHelp": "Deze sectie wordt alleen getoond voor attracties. Alle velden zijn optioneel.",
+        "attractionConfigurationHelp": "Deze sectie verschijnt alleen voor pagina's in de categorie Attractie. Alle velden zijn optioneel.",
         "accessConditionsTitle": "Toegangsvoorwaarden",
         "accessConditionsHelp": "Voeg hier gestructureerde regels toe voor lengte, leeftijd, medische beperkingen of speciale toegang. Labels blijven per attractie aanpasbaar.",
         "accessConditionsPreset": "Voorwaardetype toevoegen",
@@ -265,7 +265,7 @@
           "upToDate": "Bijgewerkt"
         },
         "editorActions": {
-          "backToItems": "Terug naar de elementenlijst",
+          "backToItems": "Terug naar de paginalijst",
           "saveAll": "Alles opslaan",
           "saveAndClose": "Opslaan en afronden",
           "saveSection": "Deze sectie opslaan",
@@ -274,10 +274,10 @@
         "saveMessages": {
           "successSummary": "Opgeslagen",
           "sectionSaved": "De huidige sectie is opgeslagen en je blijft op deze pagina.",
-          "itemSaved": "Het parkelement is opgeslagen.",
-          "itemCreated": "Het parkelement is aangemaakt en je blijft in de bewerkingsmodus.",
+          "itemSaved": "De parkpagina is opgeslagen.",
+          "itemCreated": "De parkpagina is aangemaakt en je blijft in bewerkmodus.",
           "errorSummary": "Opslaan mislukt",
-          "errorDetail": "Er is een fout opgetreden bij het opslaan van het parkelement."
+          "errorDetail": "Er is een fout opgetreden bij het opslaan van de parkpagina."
         },
         "heightRequirements": {
           "title": "Lengtevoorwaarden",
@@ -301,7 +301,7 @@
         "advancedAccessConditionsHelp": "Voeg alleen regels toe die geen lengtevoorwaarden zijn.",
         "advancedAccessConditionsEmpty": "Geen andere voorwaarde ingesteld.",
         "park": "Gekoppeld park",
-        "parkHelp": "Gebruik dit om het item handmatig naar het juiste park te verplaatsen als een import het verkeerd heeft gekoppeld.",
+        "parkHelp": "Gebruik dit om de pagina handmatig naar het juiste park te verplaatsen als een import ze verkeerd heeft gekoppeld.",
         "accessConditionTypesAdmin": {
           "title": "Herbruikbare voorwaardetypes",
           "help": "Voeg een gedeeld type toe aan de catalogus voordat je het op een attractie gebruikt.",
@@ -323,9 +323,9 @@
           "planned": "Gepland",
           "unknown": "Onbekend"
         },
-        "subtitle": "Beheerlijst van de onderdelen die aan dit park zijn gekoppeld, met filters, paginering, sortering en beoordelingsstatus.",
-        "total": "{{count}} item(s)",
-        "searchPlaceholder": "Zoek een item, type of status",
+        "subtitle": "Beheerbare lijst met pagina's die aan dit park zijn gekoppeld, met filters, paginering, sortering en verwerkingsstatus.",
+        "total": "{{count}} pagina('s)",
+        "searchPlaceholder": "Zoek een pagina, type of status",
         "import": {
           "open": "Importeren via plakken",
           "title": "Plakken / CSV-import",
@@ -339,7 +339,7 @@
           "descriptionFr": "Beschrijving FR",
           "previewSummary": "{{ready}} klaar, {{warnings}} met waarschuwing, {{errors}} met fout"
         },
-        "empty": "Geen item gevonden voor dit park."
+        "empty": "Geen pagina gevonden voor dit park."
       },
       "refactorHint": "De editor is nu opgesplitst in thematische tabbladen om de pagina lichter en overzichtelijker te maken.",
       "visibilityHelp": "Bepaalt of dit park zichtbaar is in de publieke applicatie.",
@@ -374,7 +374,7 @@
       },
       "management": {
         "sectionTitle": "Beheer van parkinhoud",
-        "sectionHelp": "Snelle toegang tot de zones en elementen die aan dit park zijn gekoppeld."
+        "sectionHelp": "Open snel de zones en content die aan dit park zijn gekoppeld."
       },
       "featuredOnHomeField": "Uitlichten op de homepage",
       "featuredOnHomeHelp": "Geeft dit park voorrang in de publieke sectie “Uitgelichte parken”. Als er geen park is gemarkeerd, gebruikt de homepage een willekeurige selectie zichtbare parken.",

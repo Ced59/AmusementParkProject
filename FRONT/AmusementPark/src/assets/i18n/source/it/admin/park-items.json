@@ -1,14 +1,14 @@
 {
   "admin": {
     "parkItems": {
-      "title": "Elementi del parco",
-      "subtitle": "Vista trasversale di tutti gli elementi del parco per modifiche più rapide.",
-      "searchPlaceholder": "Search a parco, elemento or type",
+      "title": "Contenuti del parco",
+      "subtitle": "Vista trasversale di attrazioni, spettacoli, ristoranti, negozi e servizi per modificare le schede più rapidamente.",
+      "searchPlaceholder": "Cerca un parco, una scheda o un tipo",
       "parkFilter": "Filter by parco",
-      "empty": "Nessun elementos found.",
+      "empty": "Nessuna scheda trovata.",
       "columns": {
         "park": "Parco",
-        "item": "Elemento",
+        "item": "Scheda",
         "type": "Tipo",
         "visibility": "Visibilità",
         "actions": "Azioni",
@@ -17,7 +17,7 @@
         "contentQuality": "Content"
       },
       "allParks": "Tutti i parchi",
-      "total": "{{count}} elemento/i",
+      "total": "{{count}} scheda/e",
       "content": {
         "backlogFilter": "To complete",
         "complete": "Complete",

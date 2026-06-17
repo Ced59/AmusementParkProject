@@ -14,7 +14,7 @@
       "ownerType": "Propietario",
       "allOwnerTypes": "Todos los propietarios",
       "ownerId": "ID del propietario",
-      "ownerIdPlaceholder": "Park, elemento or user ID",
+      "ownerIdPlaceholder": "ID de parque, ficha o usuario",
       "tag": "Etiqueta",
       "allTags": "Todas las etiquetas",
       "publication": "Publicación",

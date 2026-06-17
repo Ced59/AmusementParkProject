@@ -1,8 +1,8 @@
 {
   "parkItems": {
     "actions": {
-      "viewDetails": "Vedi elemento",
-      "backToItems": "Torna agli elementi",
+      "viewDetails": "Vedi scheda",
+      "backToItems": "Torna ai luoghi del parco",
       "backToPark": "Torna al parco",
       "videos": "Video"
     },
@@ -18,23 +18,23 @@
       "allZones": "Tutte le zone"
     },
     "list": {
-      "subtitle": "Esplora il contenuto del parco e apri ogni elemento per vederne i dettagli.",
-      "loadingTitle": "Caricamento parco elementos",
-      "loadingMessage": "The parco content is being loaded.",
-      "errorTitle": "Impossibile caricare parco elementos",
-      "errorMessage": "The parco content non è stato possibile caricare.",
-      "emptyTitle": "Nessun elemento available",
-      "emptyMessage": "Al momento non è disponibile alcun elemento pubblico per questo parco.",
-      "emptyFilteredTitle": "Nessun matching elemento",
-      "emptyFilteredMessage": "Prova ad ampliare i filtri o cancellali per vedere più contenuti.",
+      "subtitle": "Esplora attrazioni, spettacoli, ristoranti, negozi e servizi del parco, poi apri la scheda dettagliata di ogni luogo.",
+      "loadingTitle": "Caricamento dei luoghi da scoprire",
+      "loadingMessage": "Attrazioni, spettacoli e luoghi del parco sono in caricamento.",
+      "errorTitle": "Impossibile caricare i luoghi del parco",
+      "errorMessage": "I luoghi da scoprire in questo parco non sono stati caricati.",
+      "emptyTitle": "Ancora nulla da scoprire",
+      "emptyMessage": "Nessuna attrazione, spettacolo o luogo pubblico è attualmente disponibile per questo parco.",
+      "emptyFilteredTitle": "Nessun luogo corrispondente",
+      "emptyFilteredMessage": "Prova ad ampliare i filtri o reimpostali per vedere più luoghi.",
       "filteredResults": "Risultati filtrati",
-      "resultsCount": "Visualizzazione {{start}}-{{end}} di {{total}} elementi"
+      "resultsCount": "Visualizzazione da {{start}} a {{end}} su {{total}} luogo/i"
     },
     "detail": {
-      "loadingTitle": "Caricamento elemento",
-      "loadingMessage": "The elemento page is being loaded.",
-      "errorTitle": "Impossibile caricare the elemento",
-      "errorMessage": "The requested elemento non è stato possibile caricare.",
+      "loadingTitle": "Caricamento della scheda",
+      "loadingMessage": "La scheda è in caricamento.",
+      "errorTitle": "Impossibile caricare la scheda",
+      "errorMessage": "La scheda richiesta non è stata caricata.",
       "descriptionTitle": "Descrizione",
       "specificationsTitle": "Specifiche",
       "sourceTitle": "Fonte",
@@ -47,16 +47,16 @@
       "locationKicker": "Posizione",
       "locationTitle": "Location inside the parco",
       "preciseLocationSubtitle": "Sono disponibili punti precisi, quindi la mappa mostra queste posizioni specifiche.",
-      "generalLocationSubtitle": "Non è disponibile una posizione specifica, quindi la mappa mostra solo la posizione generale.",
+      "generalLocationSubtitle": "Non è indicata una posizione specifica: la mappa mostra solo la posizione generale di questo luogo.",
       "preciseLocationBadge": "Punto preciso",
       "generalLocationBadge": "Posizione generale",
       "relatedKicker": "Scopri anche",
-      "relatedTitle": "Similar elementos",
-      "relatedSubtitle": "Selezione basata sul tipo, sulla categoria o sulla zona dell’elemento.",
+      "relatedTitle": "Da scoprire anche",
+      "relatedSubtitle": "Selezione basata su tipo, categoria o zona.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Seleziona un punto per evidenziarlo sulla mappa o aprire le indicazioni dal marker.",
       "showLocationOnMap": "Mostra sulla mappa",
-      "noGeolocationMessage": "Nessuna geolocalizzazione disponibile per questo elemento."
+      "noGeolocationMessage": "Nessuna geolocalizzazione per questo luogo"
     },
     "fields": {
       "category": "Categoria",
@@ -161,15 +161,15 @@
       }
     },
     "imagesPage": {
-      "kicker": "Galleria dell’elemento",
+      "kicker": "Galleria del luogo",
       "title": "Immagini di {{name}}",
       "subtitle": "Esplora le immagini di {{name}} a {{park}}: dettagli, atmosfera, punti di vista e foto geolocalizzate quando disponibili.",
       "loadingTitle": "Caricamento immagini",
-      "loadingMessage": "Preparazione della galleria dell’elemento.",
+      "loadingMessage": "Preparazione della galleria del luogo.",
       "errorTitle": "Immagini non disponibili",
-      "errorMessage": "Le immagini di questo elemento non possono essere caricate al momento.",
+      "errorMessage": "Le immagini di questo luogo non possono essere caricate al momento.",
       "backToItem": "Torna a {{name}}",
-      "backToItems": "Tutti gli elementi di {{name}}",
+      "backToItems": "Da scoprire a {{name}}",
       "backToPark": "Torna a {{name}}",
       "loadMore": "Carica altre immagini",
       "loadingMore": "Caricamento...",
@@ -190,20 +190,20 @@
     "zoneFocus": {
       "badge": "Zona del parco",
       "overviewBadge": "Mappa live",
-      "overviewDescription": "Visualizza gli elementi mostrati per {{park}} in base ai filtri attivi.",
-      "zoneFallbackDescription": "Questa zona raggruppa gli elementi attualmente mostrati. Usa i filtri per affinare la selezione.",
-      "totalItems": "Elementi zona",
-      "totalItemsHint": "Contenuto collegato",
+      "overviewDescription": "Visualizza i luoghi mostrati per {{park}} in base ai filtri attivi.",
+      "zoneFallbackDescription": "Questa zona raggruppa i luoghi attualmente mostrati. Usa i filtri per affinare la selezione.",
+      "totalItems": "Luoghi nella zona",
+      "totalItemsHint": "Da scoprire",
       "displayedItems": "Visualizzati",
       "displayedItemsHint": "Dopo i filtri",
       "mapMarkers": "Marker",
       "mapMarkersHint": "Geolocalizzati",
       "mapPanelTitle": "Riferimenti mappa",
       "mapPanelHeading": "Mappa filtrata in tempo reale",
-      "mapPanelText": "La mappa segue la selezione corrente: zona, categoria, tipo e ricerca. I marker personalizzati restano adattati al tipo preciso di ogni elemento.",
+      "mapPanelText": "La mappa segue la selezione corrente: zona, categoria, tipo e ricerca. I marker personalizzati restano adattati al tipo preciso di ogni luogo.",
       "zoneMapHeading": "Mappa zona {{name}}",
       "parkMapHeading": "Mappa {{name}}",
-      "allMapItems": "Tutto"
+      "allMapItems": "Tutti"
     },
     "statuses": {
       "operating": "In funzione",

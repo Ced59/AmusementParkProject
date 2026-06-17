@@ -39,9 +39,9 @@
       "text": "Have a look at {{title}} on AmusementPark."
     },
     "parkItems": {
-      "title": "Share these attractions",
+      "title": "Share these attractions and places",
       "description": "Send this park guide to someone planning what to do.",
-      "text": "Browse attractions and places for {{title}} on AmusementPark."
+      "text": "Browse attractions, shows and places at {{title}} on AmusementPark."
     },
     "parkItem": {
       "title": "Share this place",

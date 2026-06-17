@@ -35,7 +35,7 @@
       "discover": {
         "badge": "Odkrywaj",
         "title": "Znajdź parki, które chce się odwiedzić",
-        "text": "Przeglądaj parki w różnych krajach i szybko poznaj ich lokalizację, klimat i ofertę."
+        "text": "Przeglądaj parki w różnych krajach, odkrywaj ich lokalizację, ogólny klimat oraz miejsca i doświadczenia, które oferują. Celem jest szybkie pierwsze wrażenie: park rodzinny, duży park docelowy, park regionalny, park wodny, mocno tematyzowane miejsce albo lokalna wycieczka."
       },
       "understand": {
         "badge": "Zrozum",
@@ -66,7 +66,7 @@
           "text": "Zdjęcia pomagają poczuć klimat parku, strefy lub atrakcji."
         },
         "map": {
-          "title": "Zlokalizuj parki i elementy",
+          "title": "Zlokalizuj parki i ich miejsca",
           "text": "Mapa pomaga zrozumieć, gdzie znajduje się park i co go otacza."
         },
         "nearby": {

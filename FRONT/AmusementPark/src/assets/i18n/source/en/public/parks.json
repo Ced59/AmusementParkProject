@@ -90,10 +90,10 @@
       "zones": {
         "badge": "Park zones",
         "title": "Zones and lands",
-        "subtitle": "Quickly find the attractions and places linked to each area of the park.",
+        "subtitle": "Quickly find the attractions, shows and places linked to each park zone.",
         "visible": "Visible",
         "hidden": "Hidden",
-        "open": "View zone items",
+        "open": "View places in the zone",
         "noDescription": "No description is available for this zone yet.",
         "slug": "Slug",
         "sortOrder": "Order",
@@ -103,12 +103,12 @@
         "zones": "Zones"
       },
       "itemsMap": {
-        "badge": "Item map",
-        "title": "Park item map",
-        "subtitle": "Find the geolocated items in this park and filter the map by zone or category.",
+        "badge": "Park places",
+        "title": "Map of park places",
+        "subtitle": "Find geolocated attractions, shows, restaurants, shops and other points of interest in this park, then filter the map by zone or category.",
         "categoriesTitle": "Categories",
-        "emptyTitle": "No geolocated item",
-        "emptyMessage": "No geolocated item currently matches the selected filters."
+        "emptyTitle": "No geolocated place",
+        "emptyMessage": "No geolocated place currently matches the selected filters."
       },
       "comingSoon": {
         "badge": "Coming soon",
@@ -223,7 +223,7 @@
     "photos": {
       "kicker": "Photos",
       "title": "Photos",
-      "subtitle": "General park photos and visuals from park items, filterable by type.",
+      "subtitle": "General park photos and visuals from attractions and places, filterable by type.",
       "current": "Current",
       "openItem": "Open {{name}} detail page",
       "categories": {
@@ -271,7 +271,7 @@
     "mapPage": {
       "kicker": "Park map",
       "title": "Map of {{name}}",
-      "subtitle": "Explore the geolocated elements of {{name}} on a dedicated map.",
+      "subtitle": "Explore geolocated attractions, restaurants, shops and points of interest at {{name}} on a dedicated map.",
       "loadingTitle": "Loading map",
       "loadingMessage": "Preparing the park markers.",
       "errorTitle": "Map unavailable",
@@ -281,7 +281,7 @@
     "zones": {
       "badge": "Park zones",
       "title": "{{park}} zones",
-      "subtitle": "{{count}} zone(s) grouping {{total}} public item(s).",
+      "subtitle": "{{count}} zone(s) grouping {{total}} public place(s).",
       "loadingTitle": "Loading zones",
       "loadingMessage": "The park zones are being loaded.",
       "errorTitle": "Unable to load zones",
@@ -300,16 +300,16 @@
       "errorMessage": "The park zone could not be loaded.",
       "emptyTitle": "Zone unavailable",
       "emptyMessage": "The requested zone is not available.",
-      "totalItems": "Items",
-      "totalItemsHint": "Linked to this zone",
+      "totalItems": "Places",
+      "totalItemsHint": "To discover",
       "mapMarkers": "Markers",
       "mapMarkersHint": "Geolocated",
       "mapBadge": "Zone map",
-      "mapTitle": "Geolocated items",
-      "itemsBadge": "Zone items",
-      "itemsTitle": "Items in this zone",
-      "emptyItemsTitle": "No item in this zone",
-      "emptyItemsMessage": "No public item is currently linked to this zone."
+      "mapTitle": "Geolocated places",
+      "itemsBadge": "To discover",
+      "itemsTitle": "Places to discover in this zone",
+      "emptyItemsTitle": "No place in this zone",
+      "emptyItemsMessage": "No public place is currently attached to this zone."
     }
   }
 }

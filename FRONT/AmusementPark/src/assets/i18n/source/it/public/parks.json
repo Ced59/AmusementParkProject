@@ -90,10 +90,10 @@
       "zones": {
         "badge": "Zone del parco",
         "title": "Zone e lands",
-        "subtitle": "Trova rapidamente attrazioni e luoghi collegati a ogni area del parco.",
+        "subtitle": "Trova rapidamente attrazioni, spettacoli e luoghi associati a ogni zona del parco.",
         "visible": "Visibile",
         "hidden": "Nascosta",
-        "open": "Vedi elementi della zona",
+        "open": "Vedi i luoghi della zona",
         "noDescription": "Nessuna descrizione è ancora disponibile per questa zona.",
         "slug": "Slug",
         "sortOrder": "Ordine",
@@ -103,12 +103,12 @@
         "zones": "Zone"
       },
       "itemsMap": {
-        "badge": "Mappa elementi",
-        "title": "Mappa degli elementi del parco",
-        "subtitle": "Trova gli elementi geolocalizzati di questo parco e filtra la mappa per zona o categoria.",
+        "badge": "Luoghi del parco",
+        "title": "Mappa dei luoghi del parco",
+        "subtitle": "Trova attrazioni, spettacoli, ristoranti, negozi e altri punti di interesse geolocalizzati in questo parco, poi filtra la mappa per zona o categoria.",
         "categoriesTitle": "Categorie",
-        "emptyTitle": "Nessun elemento geolocalizzato",
-        "emptyMessage": "Nessun elemento geolocalizzato corrisponde attualmente ai filtri selezionati."
+        "emptyTitle": "Nessun luogo geolocalizzato",
+        "emptyMessage": "Nessun luogo geolocalizzato corrisponde attualmente ai filtri selezionati."
       },
       "comingSoon": {
         "badge": "Prossimamente",
@@ -223,7 +223,7 @@
     "photos": {
       "kicker": "Foto",
       "title": "Foto",
-      "subtitle": "Foto generali del parco e immagini degli elementi, filtrabili per tipo.",
+      "subtitle": "Foto generali del parco e immagini di attrazioni e luoghi, filtrabili per tipo.",
       "current": "Attuale",
       "openItem": "Apri la scheda di {{name}}",
       "categories": {
@@ -271,7 +271,7 @@
     "mapPage": {
       "kicker": "Mappa del parco",
       "title": "Mappa di {{name}}",
-      "subtitle": "Esplora gli elementi geolocalizzati di {{name}} su una mappa dedicata.",
+      "subtitle": "Esplora attrazioni, ristoranti, negozi e punti di interesse geolocalizzati di {{name}} su una mappa dedicata.",
       "loadingTitle": "Caricamento mappa",
       "loadingMessage": "Preparazione dei marker del parco.",
       "errorTitle": "Mappa non disponibile",
@@ -281,7 +281,7 @@
     "zones": {
       "badge": "Zone del parco",
       "title": "Zone di {{park}}",
-      "subtitle": "{{count}} zona/e che raggruppano {{total}} elemento/i pubblico/i.",
+      "subtitle": "{{count}} zona/e che raggruppano {{total}} luogo/i pubblico/i da scoprire.",
       "loadingTitle": "Caricamento zone",
       "loadingMessage": "Le zone del parco sono in caricamento.",
       "errorTitle": "Impossibile caricare le zone",
@@ -300,16 +300,16 @@
       "errorMessage": "Non è stato possibile caricare la zona del parco.",
       "emptyTitle": "Zona non disponibile",
       "emptyMessage": "La zona richiesta non è disponibile.",
-      "totalItems": "Elementi",
-      "totalItemsHint": "Collegati a questa zona",
+      "totalItems": "Luoghi",
+      "totalItemsHint": "Da scoprire",
       "mapMarkers": "Marker",
       "mapMarkersHint": "Geolocalizzati",
       "mapBadge": "Mappa della zona",
-      "mapTitle": "Elementi geolocalizzati",
-      "itemsBadge": "Elementi della zona",
-      "itemsTitle": "Elementi in questa zona",
-      "emptyItemsTitle": "Nessun elemento in questa zona",
-      "emptyItemsMessage": "Al momento nessun elemento pubblico è collegato a questa zona."
+      "mapTitle": "Luoghi geolocalizzati",
+      "itemsBadge": "Da scoprire",
+      "itemsTitle": "Luoghi da scoprire in questa zona",
+      "emptyItemsTitle": "Nessun luogo in questa zona",
+      "emptyItemsMessage": "Nessun luogo pubblico è attualmente collegato a questa zona."
     }
   }
 }

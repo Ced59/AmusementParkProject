@@ -39,9 +39,9 @@
       "text": "Guarda {{title}} su AmusementPark."
     },
     "parkItems": {
-      "title": "Condividi queste attrazioni",
+      "title": "Condividi queste attrazioni e luoghi",
       "description": "Invia questa guida a qualcuno che sta preparando la visita.",
-      "text": "Consulta attrazioni e luoghi di {{title}} su AmusementPark."
+      "text": "Scopri attrazioni, spettacoli e luoghi di {{title}} su AmusementPark."
     },
     "parkItem": {
       "title": "Condividi questa scheda",

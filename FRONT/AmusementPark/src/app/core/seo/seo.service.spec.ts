@@ -58,6 +58,22 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[name="twitter:image"]')).toBe('http://localhost:4200/assets/general-icon/logo-amusementpark.png');
   });
 
+  it('uses explicit localized discovery terms for the French park content SEO', () => {
+    service.applyParkItemsSeo('Parc Démo', 'fr', '/fr/park/park-1/parc-demo/items');
+
+    expect(documentRef.title).toBe('Attractions, spectacles, restaurants et boutiques à Parc Démo — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]'))
+      .toBe('Découvrez les attractions, spectacles, restaurants, boutiques et lieux pratiques de Parc Démo.');
+  });
+
+  it('uses explicit discovery terms for the English park content SEO', () => {
+    service.applyParkItemsSeo('Demo Park', 'en', '/en/park/park-1/demo-park/items');
+
+    expect(documentRef.title).toBe('Demo Park attractions, shows, restaurants and shops — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]'))
+      .toBe('Browse attractions, shows, restaurants, shops and practical places at Demo Park.');
+  });
+
   function readMetaContent(selector: string): string | null {
     return documentRef.head.querySelector<HTMLMetaElement>(selector)?.content ?? null;
   }

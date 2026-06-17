@@ -4,9 +4,9 @@
       "badge": "Park content",
       "title": "Explore what this park contains",
       "subtitle": "Pick a category to quickly find the rides, restaurants and places available in this park.",
-      "viewAllItems": "Browse all items",
-      "totalItems": "Total items",
-      "unassignedItems": "Unassigned items"
+      "viewAllItems": "Attractions, shows and places to discover",
+      "totalItems": "Places to discover",
+      "unassignedItems": "Places without a zone"
     }
   }
 }

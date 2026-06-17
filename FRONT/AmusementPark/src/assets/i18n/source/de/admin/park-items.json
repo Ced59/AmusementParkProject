@@ -1,14 +1,14 @@
 {
   "admin": {
     "parkItems": {
-      "title": "Parkelemente",
-      "subtitle": "Parkübergreifende Ansicht aller Parkelemente für schnelleres Bearbeiten.",
-      "searchPlaceholder": "Park, Element oder Typ suchen",
+      "title": "Parkinhalte",
+      "subtitle": "Parkübergreifende Ansicht von Attraktionen, Shows, Restaurants, Shops und Services zur schnelleren Bearbeitung.",
+      "searchPlaceholder": "Park, Eintrag oder Typ suchen",
       "parkFilter": "Nach Park filtern",
-      "empty": "Keine Elemente gefunden.",
+      "empty": "Kein Eintrag gefunden.",
       "columns": {
         "park": "Park",
-        "item": "Item",
+        "item": "Eintrag",
         "type": "Typ",
         "visibility": "Sichtbarkeit",
         "actions": "Aktionen",
@@ -17,7 +17,7 @@
         "contentQuality": "Content"
       },
       "allParks": "Alle Parks",
-      "total": "{{count}} Element(e)",
+      "total": "{{count}} Eintrag/Einträge",
       "content": {
         "backlogFilter": "To complete",
         "complete": "Complete",

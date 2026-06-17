@@ -1,14 +1,14 @@
 {
   "admin": {
     "parkItems": {
-      "title": "Park items",
-      "subtitle": "Cross-park view of every park item for faster editing.",
-      "searchPlaceholder": "Search a park, item or type",
+      "title": "Park content",
+      "subtitle": "Cross-park view of attractions, shows, restaurants, shops and services for faster page editing.",
+      "searchPlaceholder": "Search a park, page or type",
       "parkFilter": "Filter by park",
-      "empty": "No items found.",
+      "empty": "No page found.",
       "columns": {
         "park": "Park",
-        "item": "Item",
+        "item": "Page",
         "type": "Type",
         "visibility": "Visibility",
         "actions": "Actions",
@@ -17,7 +17,7 @@
         "contentQuality": "Content"
       },
       "allParks": "All parks",
-      "total": "{{count}} item(s)",
+      "total": "{{count}} page(s)",
       "content": {
         "backlogFilter": "To complete",
         "complete": "Complete",

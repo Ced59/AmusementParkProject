@@ -35,7 +35,7 @@
       "discover": {
         "badge": "Discover",
         "title": "Find parks that make you want to go",
-        "text": "Browse parks in different countries, discover their location, general atmosphere and the elements they contain. The goal is to quickly give you a first impression: family park, major destination park, regional park, water park, highly themed place or local day out."
+        "text": "Browse parks in different countries, discover their location, general atmosphere and the places and experiences they contain. The goal is to quickly give you a first impression: family park, major destination park, regional park, water park, highly themed place or local day out."
       },
       "understand": {
         "badge": "Understand",
@@ -66,7 +66,7 @@
           "text": "Images help you feel the atmosphere of a park, area or attraction, turning a simple description into a more visual discovery."
         },
         "map": {
-          "title": "Locate parks and their elements",
+          "title": "Locate parks and their places",
           "text": "The map helps you understand where a park is, what surrounds it, and eventually where the different experiences are located inside the site."
         },
         "nearby": {

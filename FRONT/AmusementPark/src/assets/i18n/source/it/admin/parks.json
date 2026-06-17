@@ -93,20 +93,20 @@
         "empty": "Nessuna zona trovata per questo parco."
       },
       "items": {
-        "manage": "Gestisci gli elementi del parco",
-        "title": "Elementi del parco",
-        "create": "Crea un elemento",
-        "createTitle": "Crea un elemento del parco",
-        "editTitle": "Modifica un elemento del parco",
+        "manage": "Gestisci i contenuti del parco",
+        "title": "Contenuti del parco",
+        "create": "Crea una scheda",
+        "createTitle": "Crea una scheda del parco",
+        "editTitle": "Modifica una scheda del parco",
         "category": "Categoria",
         "type": "Tipo",
         "subtype": "Sottotipo",
         "zone": "Zona",
-        "deleteConfirm": "Eliminare questo elemento?",
+        "deleteConfirm": "Eliminare questa scheda?",
         "quickCreate": {
           "kicker": "Workbench rapido",
           "title": "Creazione rapida",
-          "subtitle": "Crea un elemento senza uscire dal contesto del parco.",
+          "subtitle": "Crea una scheda senza uscire dal contesto del parco.",
           "open": "Creazione rapida",
           "close": "Chiudi creazione rapida",
           "noZone": "Nessuna zona",
@@ -117,12 +117,12 @@
           "duplicate": "Duplica",
           "duplicatesTitle": "Esistono già nomi simili"
         },
-        "itemName": "Nome elemento",
+        "itemName": "Nome visualizzato",
         "generalLocation": "Posizione generale",
-        "generalLocationHelp": "Punto principale dell’elemento nel parco. I punti specifici dell’attrazione possono essere compilati qui sotto.",
-        "saveBeforePhotos": "Salva prima l’attrazione prima di allegare foto.",
+        "generalLocationHelp": "Punto principale di questa scheda nel parco. I punti specifici dell'attrazione si impostano più sotto.",
+        "saveBeforePhotos": "Salva prima la scheda per poter associare foto.",
         "attractionSectionTitle": "Configurazione dell’attrazione",
-        "attractionSectionDescription": "Questa sezione viene mostrata solo per gli elementi della categoria Attrazione. Tutti i campi sono opzionali.",
+        "attractionSectionDescription": "Questa sezione appare solo per le schede di categoria Attrazione. Tutti i campi sono opzionali.",
         "locationsTitle": "Posizioni specifiche",
         "locationsHelp": "Permette di salvare coordinate separate per ingresso, uscita, ingresso Fast Pass e ingresso per mobilità ridotta.",
         "details": {
@@ -191,7 +191,7 @@
           }
         },
         "attractionConfigurationTitle": "Configurazione dell’attrazione",
-        "attractionConfigurationHelp": "Questa sezione viene mostrata solo per le attrazioni. Tutti i campi sono opzionali.",
+        "attractionConfigurationHelp": "Questa sezione appare solo per le schede di categoria Attrazione. Tutti i campi sono opzionali.",
         "accessConditionsTitle": "Condizioni di accesso",
         "accessConditionsHelp": "Aggiungi qui regole strutturate per altezze, età, restrizioni mediche o accessi speciali. Le etichette restano personalizzabili per ogni attrazione.",
         "accessConditionsPreset": "Tipo di condizione da aggiungere",
@@ -265,7 +265,7 @@
           "upToDate": "Aggiornato"
         },
         "editorActions": {
-          "backToItems": "Torna alla lista degli elementi",
+          "backToItems": "Torna all'elenco delle schede",
           "saveAll": "Salva tutto",
           "saveAndClose": "Salva e termina",
           "saveSection": "Salva questa sezione",
@@ -274,10 +274,10 @@
         "saveMessages": {
           "successSummary": "Salvato",
           "sectionSaved": "La sezione corrente è stata salvata e rimani nella pagina.",
-          "itemSaved": "L’elemento del parco è stato salvato.",
-          "itemCreated": "L’elemento del parco è stato creato e rimani in modalità modifica.",
+          "itemSaved": "La scheda del parco è stata salvata.",
+          "itemCreated": "La scheda del parco è stata creata e rimani in modifica.",
           "errorSummary": "Salvataggio non riuscito",
-          "errorDetail": "Si è verificato un errore durante il salvataggio dell’elemento del parco."
+          "errorDetail": "Si è verificato un errore durante il salvataggio della scheda del parco."
         },
         "heightRequirements": {
           "title": "Requisiti di altezza",
@@ -301,7 +301,7 @@
         "advancedAccessConditionsHelp": "Aggiungi solo regole che non sono requisiti di altezza.",
         "advancedAccessConditionsEmpty": "Nessun’altra condizione configurata.",
         "park": "Parco associato",
-        "parkHelp": "Consente di spostare manualmente l’elemento nel parco corretto se un import lo ha associato a quello sbagliato.",
+        "parkHelp": "Consente di spostare manualmente la scheda nel parco corretto se un import l’ha associata a quello sbagliato.",
         "accessConditionTypesAdmin": {
           "title": "Tipi di condizioni riutilizzabili",
           "help": "Aggiungi un tipo comune al catalogo prima di usarlo su un’attrazione.",
@@ -323,9 +323,9 @@
           "planned": "Previsto",
           "unknown": "Sconosciuto"
         },
-        "subtitle": "Elenco di amministrazione degli elementi collegati a questo parco, con filtri, paginazione, ordinamento e stato di revisione.",
-        "total": "{{count}} elemento/i",
-        "searchPlaceholder": "Cerca un elemento, un tipo o uno stato",
+        "subtitle": "Elenco amministrabile delle schede collegate a questo parco, con filtri, paginazione, ordinamento e stato di lavorazione.",
+        "total": "{{count}} scheda/e",
+        "searchPlaceholder": "Cerca una scheda, un tipo o uno stato",
         "import": {
           "open": "Importa da incolla",
           "title": "Import incolla / CSV",
@@ -339,7 +339,7 @@
           "descriptionFr": "Descrizione FR",
           "previewSummary": "{{ready}} pronte, {{warnings}} con avviso, {{errors}} in errore"
         },
-        "empty": "Nessun elemento trovato per questo parco."
+        "empty": "Nessuna scheda trovata per questo parco."
       },
       "refactorHint": "L’editor è ora suddiviso in schede tematiche per alleggerire la pagina e renderla più chiara.",
       "visibilityHelp": "Controlla se questo parco è visibile nell’applicazione pubblica.",
@@ -374,7 +374,7 @@
       },
       "management": {
         "sectionTitle": "Gestione dei contenuti del parco",
-        "sectionHelp": "Accedi rapidamente alle zone e agli elementi collegati a questo parco."
+        "sectionHelp": "Accedi rapidamente alle zone e ai contenuti collegati a questo parco."
       },
       "featuredOnHomeField": "Metti in evidenza in home",
       "featuredOnHomeHelp": "Dà priorità a questo parco nella sezione pubblica “Parchi in evidenza”. Se nessun parco è marcato, la home usa una selezione casuale di parchi visibili.",

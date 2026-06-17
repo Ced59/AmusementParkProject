@@ -51,6 +51,13 @@ interface ParkMapSeoCopy {
   description: (parkName: string, locationLabel: string) => string;
 }
 
+interface ParkItemsSeoCopy {
+  parkFallback: string;
+  breadcrumbLabel: string;
+  title: (parkName: string) => string;
+  description: (parkName: string) => string;
+}
+
 interface RegionDisplayNames {
   of(code: string): string | undefined;
 }
@@ -276,6 +283,57 @@ const PARK_MAP_SEO_COPY: Record<string, ParkMapSeoCopy> = {
     titlePrefix: 'Mapa de',
     parkFallback: 'este parque',
     description: (parkName: string, locationLabel: string): string => `Mapa interativo de ${parkName}${locationLabel ? ` em ${locationLabel}` : ''}.`
+  }
+};
+
+const PARK_ITEMS_SEO_COPY: Record<string, ParkItemsSeoCopy> = {
+  en: {
+    parkFallback: 'this park',
+    breadcrumbLabel: 'To discover',
+    title: (parkName: string): string => `${parkName} attractions, shows, restaurants and shops`,
+    description: (parkName: string): string => `Browse attractions, shows, restaurants, shops and practical places at ${parkName}.`
+  },
+  fr: {
+    parkFallback: 'ce parc',
+    breadcrumbLabel: 'À découvrir',
+    title: (parkName: string): string => `Attractions, spectacles, restaurants et boutiques à ${parkName}`,
+    description: (parkName: string): string => `Découvrez les attractions, spectacles, restaurants, boutiques et lieux pratiques de ${parkName}.`
+  },
+  es: {
+    parkFallback: 'este parque',
+    breadcrumbLabel: 'Por descubrir',
+    title: (parkName: string): string => `Atracciones, espectáculos, restaurantes y tiendas de ${parkName}`,
+    description: (parkName: string): string => `Explora atracciones, espectáculos, restaurantes, tiendas y lugares prácticos de ${parkName}.`
+  },
+  de: {
+    parkFallback: 'diesem Park',
+    breadcrumbLabel: 'Entdecken',
+    title: (parkName: string): string => `Attraktionen, Shows, Restaurants und Shops in ${parkName}`,
+    description: (parkName: string): string => `Entdecke Attraktionen, Shows, Restaurants, Shops und praktische Orte in ${parkName}.`
+  },
+  it: {
+    parkFallback: 'questo parco',
+    breadcrumbLabel: 'Da scoprire',
+    title: (parkName: string): string => `Attrazioni, spettacoli, ristoranti e negozi di ${parkName}`,
+    description: (parkName: string): string => `Esplora attrazioni, spettacoli, ristoranti, negozi e luoghi utili di ${parkName}.`
+  },
+  nl: {
+    parkFallback: 'dit park',
+    breadcrumbLabel: 'Te ontdekken',
+    title: (parkName: string): string => `Attracties, shows, restaurants en winkels in ${parkName}`,
+    description: (parkName: string): string => `Ontdek attracties, shows, restaurants, winkels en praktische plekken in ${parkName}.`
+  },
+  pl: {
+    parkFallback: 'tym parku',
+    breadcrumbLabel: 'Do odkrycia',
+    title: (parkName: string): string => `Atrakcje, pokazy, restauracje i sklepy w ${parkName}`,
+    description: (parkName: string): string => `Przeglądaj atrakcje, pokazy, restauracje, sklepy i praktyczne miejsca w ${parkName}.`
+  },
+  pt: {
+    parkFallback: 'este parque',
+    breadcrumbLabel: 'A descobrir',
+    title: (parkName: string): string => `Atrações, espetáculos, restaurantes e lojas de ${parkName}`,
+    description: (parkName: string): string => `Explora atrações, espetáculos, restaurantes, lojas e locais práticos de ${parkName}.`
   }
 };
 
@@ -655,10 +713,11 @@ export class SeoService {
   }
 
   applyParkItemsSeo(parkName: string, language: string, url: string): void {
-    const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? 'Park';
     const normalizedLanguage: string = this.normalizeLanguage(language);
-    const title: string = `${normalizedParkName} attractions and places — ${SITE_NAME}`;
-    const description: string = `Browse attractions, restaurants, hotels, shows and practical places at ${normalizedParkName}.`;
+    const copy: ParkItemsSeoCopy = PARK_ITEMS_SEO_COPY[normalizedLanguage] ?? PARK_ITEMS_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? copy.parkFallback;
+    const title: string = `${copy.title(normalizedParkName)} — ${SITE_NAME}`;
+    const description: string = copy.description(normalizedParkName);
 
     this.apply({
       title,
@@ -666,7 +725,7 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
-      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, normalizedLanguage === 'fr' ? 'Elements' : 'Items')]
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, copy.breadcrumbLabel)]
     });
   }
 

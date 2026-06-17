@@ -93,20 +93,20 @@
         "empty": "No zone found for this park."
       },
       "items": {
-        "manage": "Manage park items",
-        "title": "Park items",
-        "create": "Create an item",
-        "createTitle": "Create a park item",
-        "editTitle": "Edit a park item",
+        "manage": "Manage park content",
+        "title": "Park content",
+        "create": "Create a page",
+        "createTitle": "Create a park page",
+        "editTitle": "Edit a park page",
         "category": "Category",
         "type": "Type",
         "subtype": "Subtype",
         "zone": "Zone",
-        "deleteConfirm": "Delete this item?",
+        "deleteConfirm": "Delete this page?",
         "quickCreate": {
           "kicker": "Fast workbench",
           "title": "Quick create",
-          "subtitle": "Create an item without leaving the park context.",
+          "subtitle": "Create a page without leaving the park context.",
           "open": "Quick create",
           "close": "Close quick create",
           "noZone": "No zone",
@@ -117,12 +117,12 @@
           "duplicate": "Duplicate",
           "duplicatesTitle": "Similar names already exist"
         },
-        "itemName": "Item name",
+        "itemName": "Display name",
         "generalLocation": "General location",
-        "generalLocationHelp": "Main point of the item in the park. Specific attraction points can be filled in below.",
-        "saveBeforePhotos": "Save the attraction first before attaching photos.",
+        "generalLocationHelp": "Main point for this page in the park. Attraction-specific points are set below.",
+        "saveBeforePhotos": "Save the page first before attaching photos.",
         "attractionSectionTitle": "Attraction configuration",
-        "attractionSectionDescription": "This section is only displayed for items in the Attraction category. Every field is optional.",
+        "attractionSectionDescription": "This section only appears for pages in the Attraction category. All fields are optional.",
         "locationsTitle": "Specific locations",
         "locationsHelp": "Lets you store separate coordinates for entrance, exit, fast pass entrance and reduced mobility entrance.",
         "details": {
@@ -191,7 +191,7 @@
           }
         },
         "attractionConfigurationTitle": "Attraction configuration",
-        "attractionConfigurationHelp": "This section is only displayed for Attraction items. All fields are optional.",
+        "attractionConfigurationHelp": "This section only appears for pages in the Attraction category. All fields are optional.",
         "accessConditionsTitle": "Access conditions",
         "accessConditionsHelp": "Add structured rules here for heights, ages, medical restrictions or special access. Labels remain customizable for each attraction.",
         "accessConditionsPreset": "Condition type to add",
@@ -265,7 +265,7 @@
           "upToDate": "Up to date"
         },
         "editorActions": {
-          "backToItems": "Back to item list",
+          "backToItems": "Back to page list",
           "saveAll": "Save all",
           "saveAndClose": "Save and finish",
           "saveSection": "Save this section",
@@ -274,10 +274,10 @@
         "saveMessages": {
           "successSummary": "Saved",
           "sectionSaved": "The current section has been saved and you stay on the page.",
-          "itemSaved": "The park item has been saved.",
-          "itemCreated": "The park item has been created and you stay in edit mode.",
+          "itemSaved": "The park page has been saved.",
+          "itemCreated": "The park page has been created and you stay in edit mode.",
           "errorSummary": "Save failed",
-          "errorDetail": "An error occurred while saving the park item."
+          "errorDetail": "An error occurred while saving the park page."
         },
         "heightRequirements": {
           "title": "Height requirements",
@@ -301,7 +301,7 @@
         "advancedAccessConditionsHelp": "Add only rules that are not height requirements: age, health, transfer, access pass or custom condition.",
         "advancedAccessConditionsEmpty": "No other condition has been configured.",
         "park": "Linked park",
-        "parkHelp": "Use this to manually move the item to the correct park if an import attached it to the wrong one.",
+        "parkHelp": "Use this to manually move the page to the correct park if an import attached it to the wrong one.",
         "accessConditionTypesAdmin": {
           "title": "Reusable condition types",
           "help": "Add a shared type to the catalogue before using it on an attraction.",
@@ -323,9 +323,9 @@
           "planned": "Planned",
           "unknown": "Unknown"
         },
-        "subtitle": "Admin list of the items attached to this park, with filters, pagination, sorting and review tracking.",
-        "total": "{{count}} item(s)",
-        "searchPlaceholder": "Search an item, type or status",
+        "subtitle": "Admin list of pages attached to this park, with filters, pagination, sorting and processing status.",
+        "total": "{{count}} page(s)",
+        "searchPlaceholder": "Search a page, type or status",
         "import": {
           "open": "Paste import",
           "title": "Paste / CSV import",
@@ -339,7 +339,7 @@
           "descriptionFr": "Description FR",
           "previewSummary": "{{ready}} ready, {{warnings}} with warnings, {{errors}} in error"
         },
-        "empty": "No item found for this park."
+        "empty": "No page found for this park."
       },
       "refactorHint": "The editor is now split into thematic tabs to keep the page lighter and easier to navigate.",
       "visibilityHelp": "Controls whether this park is visible in the public application.",
@@ -374,7 +374,7 @@
       },
       "management": {
         "sectionTitle": "Park content management",
-        "sectionHelp": "Quick access to the zones and items attached to this park."
+        "sectionHelp": "Quickly access the zones and content attached to this park."
       },
       "featuredOnHomeField": "Feature on the home page",
       "featuredOnHomeHelp": "Prioritizes this park in the public “Featured parks” section. If no park is marked, the home page uses a random selection of visible parks.",

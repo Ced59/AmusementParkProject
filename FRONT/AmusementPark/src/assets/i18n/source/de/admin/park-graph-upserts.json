@@ -28,7 +28,7 @@
       },
       "editor": {
         "title": "JSON-Dokument",
-        "description": "Fehlende Eigenschaften bleiben erhalten. Zonen/Items-Listen führen Upserts nur für enthaltene Elemente aus."
+        "description": "Fehlende Eigenschaften bleiben erhalten. Zones/items-Arrays führen Upserts nur für die enthaltenen Einträge aus."
       },
       "mode": {
         "title": "Upsert-Modus",

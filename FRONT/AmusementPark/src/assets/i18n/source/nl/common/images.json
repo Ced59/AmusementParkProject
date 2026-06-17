@@ -4,13 +4,13 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Parklogo",
       "PARK": "Parkfoto",
-      "PARK_ITEM": "Item foto"
+      "PARK_ITEM": "Foto van plek"
     },
     "ownerTypes": {
       "NONE": "Geen",
       "PARK": "Park",
       "USER": "Gebruiker",
-      "PARK_ITEM": "Element"
+      "PARK_ITEM": "Parkcontentpagina"
     }
   }
 }
