@@ -28,7 +28,7 @@
       },
       "editor": {
         "title": "Dokument JSON",
-        "description": "Brakujące właściwości są zachowywane. Tablice zones/items wykonują upsert tylko zawartych elementów."
+        "description": "Brakujące właściwości są zachowywane. Tablice zones/items wykonują upsert tylko zawartych wpisów."
       },
       "mode": {
         "title": "Tryb upsert",

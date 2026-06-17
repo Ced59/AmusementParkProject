@@ -39,9 +39,9 @@
       "text": "Bekijk {{title}} op AmusementPark."
     },
     "parkItems": {
-      "title": "Deze attracties delen",
+      "title": "Deze attracties en plekken delen",
       "description": "Stuur deze gids naar iemand die een bezoek plant.",
-      "text": "Bekijk attracties en plekken van {{title}} op AmusementPark."
+      "text": "Bekijk attracties, shows en plekken in {{title}} op AmusementPark."
     },
     "parkItem": {
       "title": "Deze fiche delen",

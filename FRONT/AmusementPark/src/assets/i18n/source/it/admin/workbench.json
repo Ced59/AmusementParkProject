@@ -1,10 +1,10 @@
 {
   "admin": {
     "workbench": {
-      "navTitle": "Area di lavoro elementi del parco",
-      "title": "Inserimento rapido elementi",
+      "navTitle": "Area di lavoro contenuti del parco",
+      "title": "Inserimento rapido schede",
       "kicker": "Amministrazione rapida",
-      "subtitle": "Crea, filtra e correggi rapidamente gli elementi del parco senza aprire la scheda completa.",
+      "subtitle": "Crea, filtra e correggi rapidamente schede del parco senza aprire il record completo.",
       "quickCreate": {
         "title": "Creazione rapida",
         "name": "Nome",
@@ -30,7 +30,7 @@
       "validations": {
         "nameRequired": "Il nome è obbligatorio.",
         "parkRequired": "Il parco è obbligatorio.",
-        "duplicateWarning": "Esiste già un elemento simile.",
+        "duplicateWarning": "Esiste già una scheda simile.",
         "invalidTypeForCategory": "Il tipo non corrisponde alla categoria."
       },
       "duplicates": {
@@ -38,11 +38,11 @@
         "samePark": "Stesso parco",
         "sameZone": "Stessa zona",
         "ignore": "Ignora",
-        "openExisting": "Apri esistente"
+        "openExisting": "Apri la scheda esistente"
       },
       "templates": {
         "parkOnly": "Solo parco",
-        "zoneItems": "Zona + elementi",
+        "zoneItems": "Zona + schede",
         "services": "Servizi senza zona",
         "captainCoaster": "Import Captain Coaster arricchito"
       }

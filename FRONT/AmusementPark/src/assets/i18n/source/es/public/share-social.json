@@ -39,9 +39,9 @@
       "text": "Mira {{title}} en AmusementPark."
     },
     "parkItems": {
-      "title": "Compartir estas atracciones",
+      "title": "Compartir estas atracciones y lugares",
       "description": "Envía esta guía a alguien que esté preparando su visita.",
-      "text": "Consulta atracciones y lugares de {{title}} en AmusementPark."
+      "text": "Explora atracciones, espectáculos y lugares de {{title}} en AmusementPark."
     },
     "parkItem": {
       "title": "Compartir esta ficha",

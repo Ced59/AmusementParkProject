@@ -93,20 +93,20 @@
         "empty": "Für diesen Park wurde keine Zone gefunden."
       },
       "items": {
-        "manage": "Parkelemente verwalten",
-        "title": "Parkelemente",
-        "create": "Element erstellen",
-        "createTitle": "Parkelement erstellen",
-        "editTitle": "Parkelement bearbeiten",
+        "manage": "Parkinhalte verwalten",
+        "title": "Parkinhalte",
+        "create": "Eintrag erstellen",
+        "createTitle": "Parkeintrag erstellen",
+        "editTitle": "Parkeintrag bearbeiten",
         "category": "Kategorie",
         "type": "Typ",
         "subtype": "Untertyp",
         "zone": "Bereich",
-        "deleteConfirm": "Dieses Element löschen?",
+        "deleteConfirm": "Diesen Eintrag löschen?",
         "quickCreate": {
           "kicker": "Schneller Workbench",
           "title": "Schnellerstellung",
-          "subtitle": "Element erstellen, ohne den Parkkontext zu verlassen.",
+          "subtitle": "Erstelle einen Eintrag, ohne den Parkkontext zu verlassen.",
           "open": "Schnellerstellung",
           "close": "Schnellerstellung schließen",
           "noZone": "Keine Zone",
@@ -117,12 +117,12 @@
           "duplicate": "Duplizieren",
           "duplicatesTitle": "Ähnliche Namen sind bereits vorhanden"
         },
-        "itemName": "Elementname",
+        "itemName": "Anzeigename",
         "generalLocation": "Allgemeiner Standort",
-        "generalLocationHelp": "Hauptpunkt des Elements im Park. Spezifische Attraktionspunkte können unten ergänzt werden.",
-        "saveBeforePhotos": "Speichere die Attraktion zuerst, bevor du Fotos hinzufügst.",
+        "generalLocationHelp": "Hauptpunkt dieses Eintrags im Park. Attraktionsspezifische Punkte werden weiter unten gepflegt.",
+        "saveBeforePhotos": "Speichere zuerst den Eintrag, bevor du Fotos zuordnest.",
         "attractionSectionTitle": "Attraktionskonfiguration",
-        "attractionSectionDescription": "Dieser Bereich wird nur für Elemente der Kategorie Attraktion angezeigt. Jedes Feld ist optional.",
+        "attractionSectionDescription": "Dieser Abschnitt erscheint nur für Einträge der Kategorie Attraktion. Alle Felder sind optional.",
         "locationsTitle": "Spezifische Standorte",
         "locationsHelp": "Hier kannst du getrennte Koordinaten für Eingang, Ausgang, Fast-Pass-Eingang und Eingang für Personen mit eingeschränkter Mobilität speichern.",
         "details": {
@@ -191,7 +191,7 @@
           }
         },
         "attractionConfigurationTitle": "Attraktionskonfiguration",
-        "attractionConfigurationHelp": "Dieser Bereich wird nur für Attraktionselemente angezeigt. Alle Felder sind optional.",
+        "attractionConfigurationHelp": "Dieser Abschnitt erscheint nur für Einträge der Kategorie Attraktion. Alle Felder sind optional.",
         "accessConditionsTitle": "Zugangsbedingungen",
         "accessConditionsHelp": "Füge hier strukturierte Regeln für Größen, Alter, medizinische Einschränkungen oder besondere Zugänge hinzu. Beschriftungen bleiben je Attraktion anpassbar.",
         "accessConditionsPreset": "Hinzuzufügender Bedingungstyp",
@@ -265,7 +265,7 @@
           "upToDate": "Aktuell"
         },
         "editorActions": {
-          "backToItems": "Zur Elementliste zurück",
+          "backToItems": "Zurück zur Eintragsliste",
           "saveAll": "Alles speichern",
           "saveAndClose": "Speichern und beenden",
           "saveSection": "Diesen Bereich speichern",
@@ -274,10 +274,10 @@
         "saveMessages": {
           "successSummary": "Gespeichert",
           "sectionSaved": "Der aktuelle Bereich wurde gespeichert und die Seite bleibt geöffnet.",
-          "itemSaved": "Das Parkelement wurde gespeichert.",
-          "itemCreated": "Das Parkelement wurde erstellt und bleibt im Bearbeitungsmodus geöffnet.",
+          "itemSaved": "Der Parkeintrag wurde gespeichert.",
+          "itemCreated": "Der Parkeintrag wurde erstellt und du bleibst im Bearbeitungsmodus.",
           "errorSummary": "Speichern fehlgeschlagen",
-          "errorDetail": "Beim Speichern des Parkelements ist ein Fehler aufgetreten."
+          "errorDetail": "Beim Speichern des Parkeintrags ist ein Fehler aufgetreten."
         },
         "heightRequirements": {
           "title": "Größenanforderungen",
@@ -301,7 +301,7 @@
         "advancedAccessConditionsHelp": "Füge nur Regeln hinzu, die keine Größenanforderungen sind.",
         "advancedAccessConditionsEmpty": "Keine weitere Bedingung eingetragen.",
         "park": "Zugeordneter Park",
-        "parkHelp": "Damit kann das Element manuell in den richtigen Park verschoben werden, falls ein Import es falsch zugeordnet hat.",
+        "parkHelp": "Damit kann der Eintrag manuell in den richtigen Park verschoben werden, falls ein Import ihn falsch zugeordnet hat.",
         "accessConditionTypesAdmin": {
           "title": "Wiederverwendbare Bedingungstypen",
           "help": "Füge dem Katalog einen gemeinsamen Typ hinzu, bevor du ihn bei einer Attraktion verwendest.",
@@ -323,9 +323,9 @@
           "planned": "Geplant",
           "unknown": "Unbekannt"
         },
-        "subtitle": "Administrationsliste der mit diesem Park verknüpften Elemente, mit Filtern, Paginierung, Sortierung und Prüfstatus.",
-        "total": "{{count}} Element(e)",
-        "searchPlaceholder": "Element, Typ oder Status suchen",
+        "subtitle": "Administrierbare Liste der mit diesem Park verknüpften Einträge mit Filtern, Paginierung, Sortierung und Bearbeitungsstatus.",
+        "total": "{{count}} Eintrag/Einträge",
+        "searchPlaceholder": "Eintrag, Typ oder Status suchen",
         "import": {
           "open": "Per Einfuegen importieren",
           "title": "Einfuegen / CSV-Import",
@@ -339,7 +339,7 @@
           "descriptionFr": "Beschreibung FR",
           "previewSummary": "{{ready}} bereit, {{warnings}} mit Warnung, {{errors}} fehlerhaft"
         },
-        "empty": "Für diesen Park wurde kein Element gefunden."
+        "empty": "Kein Eintrag für diesen Park gefunden."
       },
       "refactorHint": "Der Editor ist jetzt in thematische Tabs aufgeteilt, damit die Seite leichter und übersichtlicher bleibt.",
       "visibilityHelp": "Steuert, ob dieser Park in der öffentlichen Anwendung sichtbar ist.",
@@ -374,7 +374,7 @@
       },
       "management": {
         "sectionTitle": "Verwaltung der Parkinhalte",
-        "sectionHelp": "Schneller Zugriff auf die Zonen und Elemente dieses Parks."
+        "sectionHelp": "Greife schnell auf Bereiche und Inhalte dieses Parks zu."
       },
       "featuredOnHomeField": "Auf der Startseite hervorheben",
       "featuredOnHomeHelp": "Priorisiert diesen Park im öffentlichen Bereich „Empfohlene Parks“. Wenn kein Park markiert ist, nutzt die Startseite eine zufällige Auswahl sichtbarer Parks.",

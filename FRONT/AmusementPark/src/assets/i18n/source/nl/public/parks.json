@@ -90,10 +90,10 @@
       "zones": {
         "badge": "Parkzones",
         "title": "Zones en lands",
-        "subtitle": "Vind snel de attracties en plekken die bij elke zone van het park horen.",
+        "subtitle": "Vind snel de attracties, shows en plekken die bij elke parkzone horen.",
         "visible": "Zichtbaar",
         "hidden": "Verborgen",
-        "open": "Zone-items bekijken",
+        "open": "Plekken in de zone bekijken",
         "noDescription": "Er is nog geen beschrijving beschikbaar voor deze zone.",
         "slug": "Slug",
         "sortOrder": "Volgorde",
@@ -103,12 +103,12 @@
         "zones": "Zones"
       },
       "itemsMap": {
-        "badge": "Itemkaart",
-        "title": "Kaart met parkitems",
-        "subtitle": "Vind de geolokaliseerde items van dit park en filter de kaart op zone of categorie.",
+        "badge": "Plekken in het park",
+        "title": "Kaart met plekken in het park",
+        "subtitle": "Vind geolokaliseerde attracties, shows, restaurants, winkels en andere aandachtspunten in dit park en filter de kaart op zone of categorie.",
         "categoriesTitle": "Categorieën",
-        "emptyTitle": "Geen geolokaliseerd item",
-        "emptyMessage": "Geen geolokaliseerd item komt momenteel overeen met de geselecteerde filters."
+        "emptyTitle": "Geen geolokaliseerde plek",
+        "emptyMessage": "Geen geolokaliseerde plek past momenteel bij de gekozen filters."
       },
       "comingSoon": {
         "badge": "Binnenkort",
@@ -223,7 +223,7 @@
     "photos": {
       "kicker": "Foto’s",
       "title": "Foto’s",
-      "subtitle": "Algemene parkfoto’s en beelden van parkitems, filterbaar op type.",
+      "subtitle": "Algemene parkfoto's en beelden van attracties en plekken, filterbaar op type.",
       "current": "Huidig",
       "openItem": "Detailpagina van {{name}} openen",
       "categories": {
@@ -271,7 +271,7 @@
     "mapPage": {
       "kicker": "Parkkaart",
       "title": "Kaart van {{name}}",
-      "subtitle": "Verken de geolokaliseerde elementen van {{name}} op een aparte kaart.",
+      "subtitle": "Verken de geolokaliseerde attracties, restaurants, winkels en aandachtspunten van {{name}} op een aparte kaart.",
       "loadingTitle": "Kaart laden",
       "loadingMessage": "De parkmarkeringen worden voorbereid.",
       "errorTitle": "Kaart niet beschikbaar",
@@ -281,7 +281,7 @@
     "zones": {
       "badge": "Parkzones",
       "title": "Zones van {{park}}",
-      "subtitle": "{{count}} zone(s) met {{total}} openbare item(s).",
+      "subtitle": "{{count}} zone(s) met {{total}} openbare plek(ken) om te ontdekken.",
       "loadingTitle": "Zones laden",
       "loadingMessage": "De parkzones worden geladen.",
       "errorTitle": "Zones kunnen niet worden geladen",
@@ -300,16 +300,16 @@
       "errorMessage": "De parkzone kon niet worden geladen.",
       "emptyTitle": "Zone niet beschikbaar",
       "emptyMessage": "De gevraagde zone is niet beschikbaar.",
-      "totalItems": "Items",
-      "totalItemsHint": "Gekoppeld aan deze zone",
+      "totalItems": "Plekken",
+      "totalItemsHint": "Te ontdekken",
       "mapMarkers": "Markeringen",
       "mapMarkersHint": "Geolokaliseerd",
       "mapBadge": "Zonekaart",
-      "mapTitle": "Geolokaliseerde items",
-      "itemsBadge": "Zone-items",
-      "itemsTitle": "Items in deze zone",
-      "emptyItemsTitle": "Geen item in deze zone",
-      "emptyItemsMessage": "Er is momenteel geen openbaar item aan deze zone gekoppeld."
+      "mapTitle": "Geolokaliseerde plekken",
+      "itemsBadge": "Te ontdekken",
+      "itemsTitle": "Plekken om te ontdekken in deze zone",
+      "emptyItemsTitle": "Geen plek in deze zone",
+      "emptyItemsMessage": "Er is momenteel geen openbare plek aan deze zone gekoppeld."
     }
   }
 }

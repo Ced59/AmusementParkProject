@@ -1,10 +1,10 @@
 {
   "admin": {
     "workbench": {
-      "navTitle": "Parkelemente-Arbeitsbereich",
-      "title": "Schnelle Elementerfassung",
+      "navTitle": "Arbeitsbereich Parkinhalte",
+      "title": "Schnellerfassung von Einträgen",
       "kicker": "Schnelle Administration",
-      "subtitle": "Parkelemente schnell erstellen, filtern und korrigieren, ohne den vollständigen Datensatz zu öffnen.",
+      "subtitle": "Parkeinträge schnell erstellen, filtern und korrigieren, ohne den vollständigen Datensatz zu öffnen.",
       "quickCreate": {
         "title": "Schnellerfassung",
         "name": "Name",
@@ -30,7 +30,7 @@
       "validations": {
         "nameRequired": "Der Name ist erforderlich.",
         "parkRequired": "Der Park ist erforderlich.",
-        "duplicateWarning": "Ein ähnliches Element existiert bereits.",
+        "duplicateWarning": "Ein ähnlicher Eintrag existiert bereits.",
         "invalidTypeForCategory": "Der Typ passt nicht zur Kategorie."
       },
       "duplicates": {
@@ -38,11 +38,11 @@
         "samePark": "Gleicher Park",
         "sameZone": "Gleiche Zone",
         "ignore": "Ignorieren",
-        "openExisting": "Vorhandenes öffnen"
+        "openExisting": "Bestehenden Eintrag öffnen"
       },
       "templates": {
         "parkOnly": "Nur Park",
-        "zoneItems": "Zone + Elemente",
+        "zoneItems": "Bereich + Einträge",
         "services": "Services ohne Zone",
         "captainCoaster": "Angereicherter Captain-Coaster-Import"
       }

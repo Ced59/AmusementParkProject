@@ -28,7 +28,7 @@
       },
       "editor": {
         "title": "Documento JSON",
-        "description": "Le proprietà assenti sono conservate. Gli array zone/items eseguono upsert solo sugli elementi presenti."
+        "description": "Le proprietà assenti sono conservate. Gli array zone/items eseguono upsert solo sulle voci presenti."
       },
       "mode": {
         "title": "Modo upsert",

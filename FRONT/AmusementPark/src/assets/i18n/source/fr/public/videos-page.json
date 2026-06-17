@@ -15,15 +15,15 @@
   },
   "parkItems": {
     "videosPage": {
-      "kicker": "Videos de l'element",
+      "kicker": "Vidéos du lieu",
       "title": "Videos de {{name}}",
       "subtitle": "Regardez les videos de {{name}} a {{park}} : onrides, offrides, avis et medias officiels.",
       "loadingTitle": "Chargement des videos",
-      "loadingMessage": "Preparation des videos de l'element.",
+      "loadingMessage": "Préparation des vidéos du lieu.",
       "errorTitle": "Videos indisponibles",
-      "errorMessage": "Impossible de charger les videos de cet element pour le moment.",
+      "errorMessage": "Impossible de charger les vidéos de ce lieu pour le moment.",
       "backToItem": "Retour a {{name}}",
-      "backToItems": "Tous les elements de {{name}}",
+      "backToItems": "À découvrir à {{name}}",
       "backToPark": "Retour a {{name}}",
       "emptyTitle": "Aucune video publiee",
       "emptyMessage": "Aucune video publiee n'est encore disponible pour {{name}}."

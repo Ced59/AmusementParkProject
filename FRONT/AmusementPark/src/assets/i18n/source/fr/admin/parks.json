@@ -93,20 +93,20 @@
         "empty": "Aucune zone trouvée pour ce parc."
       },
       "items": {
-        "manage": "Gérer les éléments du parc",
-        "title": "Éléments du parc",
-        "create": "Créer un élément",
-        "createTitle": "Créer un élément du parc",
-        "editTitle": "Modifier un élément du parc",
+        "manage": "Gérer les contenus du parc",
+        "title": "Contenus du parc",
+        "create": "Créer une fiche",
+        "createTitle": "Créer une fiche du parc",
+        "editTitle": "Modifier une fiche du parc",
         "category": "Catégorie",
         "type": "Type",
         "subtype": "Sous-type",
         "zone": "Zone",
-        "deleteConfirm": "Supprimer cet élément ?",
+        "deleteConfirm": "Supprimer cette fiche ?",
         "quickCreate": {
           "kicker": "Workbench rapide",
           "title": "Création rapide",
-          "subtitle": "Crée un élément sans quitter le contexte du parc.",
+          "subtitle": "Crée une fiche sans quitter le contexte du parc.",
           "open": "Création rapide",
           "close": "Fermer la création rapide",
           "noZone": "Aucune zone",
@@ -117,12 +117,12 @@
           "duplicate": "Dupliquer",
           "duplicatesTitle": "Noms proches déjà présents"
         },
-        "itemName": "Nom de l’élément",
+        "itemName": "Nom affiché",
         "generalLocation": "Localisation générale",
-        "generalLocationHelp": "Point principal de l’élément dans le parc. Les points spécifiques de l’attraction se renseignent plus bas.",
-        "saveBeforePhotos": "Enregistre d’abord l’attraction pour pouvoir lui associer des photos.",
+        "generalLocationHelp": "Point principal de cette fiche dans le parc. Les points spécifiques de l'attraction se renseignent plus bas.",
+        "saveBeforePhotos": "Enregistre d'abord la fiche pour pouvoir lui associer des photos.",
         "attractionSectionTitle": "Configuration de l’attraction",
-        "attractionSectionDescription": "Cette section n’apparaît que pour les éléments de catégorie Attraction. Tous les champs sont optionnels.",
+        "attractionSectionDescription": "Cette section n'apparaît que pour les fiches de catégorie Attraction. Tous les champs sont optionnels.",
         "locationsTitle": "Localisations spécifiques",
         "locationsHelp": "Permet de renseigner séparément l’entrée, la sortie, l’entrée fast pass et l’entrée PMR.",
         "details": {
@@ -191,7 +191,7 @@
           }
         },
         "attractionConfigurationTitle": "Configuration de l’attraction",
-        "attractionConfigurationHelp": "Cette section n’apparaît que pour les éléments de catégorie Attraction. Tous les champs sont optionnels.",
+        "attractionConfigurationHelp": "Cette section n'apparaît que pour les fiches de catégorie Attraction. Tous les champs sont optionnels.",
         "accessConditionsTitle": "Conditions d’accès",
         "accessConditionsHelp": "Ajoute ici des règles structurées pour les tailles, âges, restrictions médicales ou accès spécifiques. Les libellés restent personnalisables pour chaque attraction.",
         "accessConditionsPreset": "Type de condition à ajouter",
@@ -265,7 +265,7 @@
           "upToDate": "À jour"
         },
         "editorActions": {
-          "backToItems": "Retour à la liste des éléments",
+          "backToItems": "Retour à la liste des fiches",
           "saveAll": "Enregistrer tout",
           "saveAndClose": "Enregistrer et terminer",
           "saveSection": "Enregistrer cette section",
@@ -274,10 +274,10 @@
         "saveMessages": {
           "successSummary": "Enregistrement effectué",
           "sectionSaved": "La section en cours a été enregistrée et tu restes sur la page.",
-          "itemSaved": "L’élément du parc a bien été enregistré.",
-          "itemCreated": "L’élément du parc a été créé et l’édition continue sur cette page.",
+          "itemSaved": "La fiche du parc a bien été enregistrée.",
+          "itemCreated": "La fiche du parc a été créée et l'édition continue sur cette page.",
           "errorSummary": "Échec de l’enregistrement",
-          "errorDetail": "Une erreur est survenue pendant l’enregistrement de l’élément du parc."
+          "errorDetail": "Une erreur est survenue pendant l'enregistrement de la fiche du parc."
         },
         "heightRequirements": {
           "title": "Gabarit de taille",
@@ -301,7 +301,7 @@
         "advancedAccessConditionsHelp": "Ajoute seulement les règles qui ne relèvent pas du gabarit de taille : âge, santé, transfert, access pass ou condition personnalisée.",
         "advancedAccessConditionsEmpty": "Aucune autre condition renseignée.",
         "park": "Parc de rattachement",
-        "parkHelp": "Permet de déplacer manuellement l’élément vers le bon parc si un import l’a rattaché au mauvais endroit.",
+        "parkHelp": "Permet de déplacer manuellement la fiche vers le bon parc si un import l’a rattachée au mauvais endroit.",
         "accessConditionTypesAdmin": {
           "title": "Types de conditions réutilisables",
           "help": "Ajoute un type commun au catalogue avant de l’utiliser sur une attraction.",
@@ -323,9 +323,9 @@
           "planned": "Prévu",
           "unknown": "Inconnu"
         },
-        "subtitle": "Liste administrable des éléments rattachés à ce parc, avec filtres, pagination, tri et suivi du traitement.",
-        "total": "{{count}} élément(s)",
-        "searchPlaceholder": "Rechercher un élément, un type ou un statut",
+        "subtitle": "Liste administrable des fiches rattachées à ce parc, avec filtres, pagination, tri et suivi du traitement.",
+        "total": "{{count}} fiche(s)",
+        "searchPlaceholder": "Rechercher une fiche, un type ou un statut",
         "import": {
           "open": "Importer par collage",
           "title": "Import par collage / CSV",
@@ -339,7 +339,7 @@
           "descriptionFr": "Description FR",
           "previewSummary": "{{ready}} pretes, {{warnings}} avec avertissement, {{errors}} en erreur"
         },
-        "empty": "Aucun élément trouvé pour ce parc."
+        "empty": "Aucune fiche trouvée pour ce parc."
       },
       "refactorHint": "L’éditeur est désormais découpé en onglets thématiques pour alléger la page et mieux s’y retrouver.",
       "visibilityHelp": "Contrôle si ce parc est visible dans l’application publique.",
@@ -374,7 +374,7 @@
       },
       "management": {
         "sectionTitle": "Gestion du contenu du parc",
-        "sectionHelp": "Accède rapidement aux zones et aux éléments rattachés à ce parc."
+        "sectionHelp": "Accède rapidement aux zones et aux contenus rattachés à ce parc."
       },
       "featuredOnHomeField": "Mettre en avant sur la home",
       "featuredOnHomeHelp": "Priorise ce parc dans la section publique « Parcs en vedette ». Si aucun parc n’est marqué, la home utilise une sélection aléatoire de parcs visibles.",

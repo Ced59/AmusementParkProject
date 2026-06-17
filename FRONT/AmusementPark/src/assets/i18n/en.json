@@ -167,7 +167,7 @@
       "ownerType": "Owner",
       "allOwnerTypes": "All owners",
       "ownerId": "Owner ID",
-      "ownerIdPlaceholder": "Park, item or user ID",
+      "ownerIdPlaceholder": "Park, content page or user ID",
       "tag": "Tag",
       "allTags": "All tags",
       "publication": "Publication",
@@ -318,7 +318,7 @@
       },
       "editor": {
         "title": "JSON document",
-        "description": "Absent properties are preserved. Zones/items arrays upsert only the elements they contain."
+        "description": "Absent properties are preserved. Zones/items arrays upsert only the entries they contain."
       },
       "mode": {
         "title": "Upsert mode",
@@ -448,14 +448,14 @@
       }
     },
     "parkItems": {
-      "title": "Park items",
-      "subtitle": "Cross-park view of every park item for faster editing.",
-      "searchPlaceholder": "Search a park, item or type",
+      "title": "Park content",
+      "subtitle": "Cross-park view of attractions, shows, restaurants, shops and services for faster page editing.",
+      "searchPlaceholder": "Search a park, page or type",
       "parkFilter": "Filter by park",
-      "empty": "No items found.",
+      "empty": "No page found.",
       "columns": {
         "park": "Park",
-        "item": "Item",
+        "item": "Page",
         "type": "Type",
         "visibility": "Visibility",
         "actions": "Actions",
@@ -464,7 +464,7 @@
         "contentQuality": "Content"
       },
       "allParks": "All parks",
-      "total": "{{count}} item(s)",
+      "total": "{{count}} page(s)",
       "content": {
         "backlogFilter": "To complete",
         "complete": "Complete",
@@ -585,20 +585,20 @@
         "empty": "No zone found for this park."
       },
       "items": {
-        "manage": "Manage park items",
-        "title": "Park items",
-        "create": "Create an item",
-        "createTitle": "Create a park item",
-        "editTitle": "Edit a park item",
+        "manage": "Manage park content",
+        "title": "Park content",
+        "create": "Create a page",
+        "createTitle": "Create a park page",
+        "editTitle": "Edit a park page",
         "category": "Category",
         "type": "Type",
         "subtype": "Subtype",
         "zone": "Zone",
-        "deleteConfirm": "Delete this item?",
+        "deleteConfirm": "Delete this page?",
         "quickCreate": {
           "kicker": "Fast workbench",
           "title": "Quick create",
-          "subtitle": "Create an item without leaving the park context.",
+          "subtitle": "Create a page without leaving the park context.",
           "open": "Quick create",
           "close": "Close quick create",
           "noZone": "No zone",
@@ -609,12 +609,12 @@
           "duplicate": "Duplicate",
           "duplicatesTitle": "Similar names already exist"
         },
-        "itemName": "Item name",
+        "itemName": "Display name",
         "generalLocation": "General location",
-        "generalLocationHelp": "Main point of the item in the park. Specific attraction points can be filled in below.",
-        "saveBeforePhotos": "Save the attraction first before attaching photos.",
+        "generalLocationHelp": "Main point for this page in the park. Attraction-specific points are set below.",
+        "saveBeforePhotos": "Save the page first before attaching photos.",
         "attractionSectionTitle": "Attraction configuration",
-        "attractionSectionDescription": "This section is only displayed for items in the Attraction category. Every field is optional.",
+        "attractionSectionDescription": "This section only appears for pages in the Attraction category. All fields are optional.",
         "locationsTitle": "Specific locations",
         "locationsHelp": "Lets you store separate coordinates for entrance, exit, fast pass entrance and reduced mobility entrance.",
         "details": {
@@ -683,7 +683,7 @@
           }
         },
         "attractionConfigurationTitle": "Attraction configuration",
-        "attractionConfigurationHelp": "This section is only displayed for Attraction items. All fields are optional.",
+        "attractionConfigurationHelp": "This section only appears for pages in the Attraction category. All fields are optional.",
         "accessConditionsTitle": "Access conditions",
         "accessConditionsHelp": "Add structured rules here for heights, ages, medical restrictions or special access. Labels remain customizable for each attraction.",
         "accessConditionsPreset": "Condition type to add",
@@ -757,7 +757,7 @@
           "upToDate": "Up to date"
         },
         "editorActions": {
-          "backToItems": "Back to item list",
+          "backToItems": "Back to page list",
           "saveAll": "Save all",
           "saveAndClose": "Save and finish",
           "saveSection": "Save this section",
@@ -766,10 +766,10 @@
         "saveMessages": {
           "successSummary": "Saved",
           "sectionSaved": "The current section has been saved and you stay on the page.",
-          "itemSaved": "The park item has been saved.",
-          "itemCreated": "The park item has been created and you stay in edit mode.",
+          "itemSaved": "The park page has been saved.",
+          "itemCreated": "The park page has been created and you stay in edit mode.",
           "errorSummary": "Save failed",
-          "errorDetail": "An error occurred while saving the park item."
+          "errorDetail": "An error occurred while saving the park page."
         },
         "heightRequirements": {
           "title": "Height requirements",
@@ -793,7 +793,7 @@
         "advancedAccessConditionsHelp": "Add only rules that are not height requirements: age, health, transfer, access pass or custom condition.",
         "advancedAccessConditionsEmpty": "No other condition has been configured.",
         "park": "Linked park",
-        "parkHelp": "Use this to manually move the item to the correct park if an import attached it to the wrong one.",
+        "parkHelp": "Use this to manually move the page to the correct park if an import attached it to the wrong one.",
         "accessConditionTypesAdmin": {
           "title": "Reusable condition types",
           "help": "Add a shared type to the catalogue before using it on an attraction.",
@@ -815,9 +815,9 @@
           "planned": "Planned",
           "unknown": "Unknown"
         },
-        "subtitle": "Admin list of the items attached to this park, with filters, pagination, sorting and review tracking.",
-        "total": "{{count}} item(s)",
-        "searchPlaceholder": "Search an item, type or status",
+        "subtitle": "Admin list of pages attached to this park, with filters, pagination, sorting and processing status.",
+        "total": "{{count}} page(s)",
+        "searchPlaceholder": "Search a page, type or status",
         "import": {
           "open": "Paste import",
           "title": "Paste / CSV import",
@@ -831,7 +831,7 @@
           "descriptionFr": "Description FR",
           "previewSummary": "{{ready}} ready, {{warnings}} with warnings, {{errors}} in error"
         },
-        "empty": "No item found for this park."
+        "empty": "No page found for this park."
       },
       "refactorHint": "The editor is now split into thematic tabs to keep the page lighter and easier to navigate.",
       "visibilityHelp": "Controls whether this park is visible in the public application.",
@@ -866,7 +866,7 @@
       },
       "management": {
         "sectionTitle": "Park content management",
-        "sectionHelp": "Quick access to the zones and items attached to this park."
+        "sectionHelp": "Quickly access the zones and content attached to this park."
       },
       "featuredOnHomeField": "Feature on the home page",
       "featuredOnHomeHelp": "Prioritizes this park in the public “Featured parks” section. If no park is marked, the home page uses a random selection of visible parks.",
@@ -1073,8 +1073,8 @@
         "Home": "Home",
         "Parks": "Parks",
         "Park": "Park",
-        "ParkItems": "Park items",
-        "ParkItem": "Park item",
+        "ParkItems": "Park discovery pages",
+        "ParkItem": "Park content page",
         "Videos": "Videos",
         "Video": "Video",
         "Page": "Page"
@@ -1091,7 +1091,7 @@
       "site": "Site",
       "operators": "Operators",
       "manufacturers": "Manufacturers",
-      "parkItems": "Items",
+      "parkItems": "Content",
       "data": "Data"
     },
     "title": "Administration panel",
@@ -1140,7 +1140,7 @@
     "videos": {
       "title": "Videos",
       "kicker": "M16 - Video library",
-      "subtitle": "Manage public videos, park and park item ownership, tags, types and host metadata.",
+      "subtitle": "Manage public videos, park and park-content ownership, tags, types and host metadata.",
       "total": "video(s)",
       "loadingMessage": "Loading videos...",
       "search": "Search",
@@ -1150,7 +1150,7 @@
       "ownerType": "Owner",
       "allOwnerTypes": "All owners",
       "ownerId": "Owner ID",
-      "ownerIdPlaceholder": "Park or park item ID",
+      "ownerIdPlaceholder": "Park or content page ID",
       "type": "Type",
       "allTypes": "All types",
       "tag": "Tag",
@@ -1225,7 +1225,7 @@
       },
       "ownerTypes": {
         "PARK": "Park",
-        "PARK_ITEM": "Park item"
+        "PARK_ITEM": "Park content page"
       },
       "types": {
         "ON_RIDE": "Onride",
@@ -1242,10 +1242,10 @@
     },
     "visible": "Visible",
     "workbench": {
-      "navTitle": "Park items workbench",
-      "title": "Fast item entry",
+      "navTitle": "Park content workbench",
+      "title": "Quick page entry",
       "kicker": "Fast administration",
-      "subtitle": "Create, filter and correct park items quickly without opening the full record.",
+      "subtitle": "Create, filter and correct park content pages quickly without opening the full record.",
       "quickCreate": {
         "title": "Quick create",
         "name": "Name",
@@ -1271,7 +1271,7 @@
       "validations": {
         "nameRequired": "Name is required.",
         "parkRequired": "Park is required.",
-        "duplicateWarning": "A similar item already exists.",
+        "duplicateWarning": "A similar page already exists.",
         "invalidTypeForCategory": "The type does not match the category."
       },
       "duplicates": {
@@ -1279,11 +1279,11 @@
         "samePark": "Same park",
         "sameZone": "Same zone",
         "ignore": "Ignore",
-        "openExisting": "Open existing"
+        "openExisting": "Open existing page"
       },
       "templates": {
         "parkOnly": "Park only",
-        "zoneItems": "Zone + items",
+        "zoneItems": "Zone + pages",
         "services": "Services without zone",
         "captainCoaster": "Enriched Captain Coaster import"
       }
@@ -1391,14 +1391,14 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Park logo",
       "PARK": "Park photo",
-      "PARK_ITEM": "Item photo",
+      "PARK_ITEM": "Place photo",
       "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
       "NONE": "None",
       "PARK": "Park",
       "USER": "User",
-      "PARK_ITEM": "Item",
+      "PARK_ITEM": "Park content page",
       "VIDEO": "Video"
     }
   },
@@ -1613,7 +1613,7 @@
       "discover": {
         "badge": "Discover",
         "title": "Find parks that make you want to go",
-        "text": "Browse parks in different countries, discover their location, general atmosphere and the elements they contain. The goal is to quickly give you a first impression: family park, major destination park, regional park, water park, highly themed place or local day out."
+        "text": "Browse parks in different countries, discover their location, general atmosphere and the places and experiences they contain. The goal is to quickly give you a first impression: family park, major destination park, regional park, water park, highly themed place or local day out."
       },
       "understand": {
         "badge": "Understand",
@@ -1644,7 +1644,7 @@
           "text": "Images help you feel the atmosphere of a park, area or attraction, turning a simple description into a more visual discovery."
         },
         "map": {
-          "title": "Locate parks and their elements",
+          "title": "Locate parks and their places",
           "text": "The map helps you understand where a park is, what surrounds it, and eventually where the different experiences are located inside the site."
         },
         "nearby": {
@@ -1795,7 +1795,7 @@
       "park": "Park",
       "attractions": "Attractions",
       "everywhere": "Everywhere",
-      "parkItems": "Attractions and places",
+      "parkItems": "Attractions, shows and places",
       "operators": "Operators",
       "manufacturers": "Manufacturers",
       "attraction": "Attraction",
@@ -1895,10 +1895,10 @@
   },
   "parkExplorer": {
     "headerChip": "Park exploration",
-    "subtitle": "Browse the park through its zones and the main categories of items it contains.",
+    "subtitle": "Explore the park through its zones and the main categories of places it contains.",
     "overviewTitle": "Whole park",
-    "unassignedTitle": "Unassigned items",
-    "totalItems": "{{count}} item(s)",
+    "unassignedTitle": "Places without a zone",
+    "totalItems": "{{count}} place(s)",
     "byCategory": "By category",
     "byType": "By type",
     "loading": "Loading exploration...",
@@ -1948,8 +1948,8 @@
   },
   "parkItems": {
     "actions": {
-      "viewDetails": "View item",
-      "backToItems": "Back to items",
+      "viewDetails": "View page",
+      "backToItems": "Back to places in the park",
       "backToPark": "Back to park",
       "videos": "Videos"
     },
@@ -1965,23 +1965,23 @@
       "allZones": "All zones"
     },
     "list": {
-      "subtitle": "Browse the park content through its generic ParkItem model and drill down into each item.",
-      "loadingTitle": "Loading park items",
-      "loadingMessage": "The park content is being loaded.",
-      "errorTitle": "Unable to load park items",
-      "errorMessage": "The park content could not be loaded.",
-      "emptyTitle": "No item available",
-      "emptyMessage": "No public item is currently available for this park.",
-      "emptyFilteredTitle": "No matching item",
-      "emptyFilteredMessage": "Try broadening your filters or clear them to see more content.",
+      "subtitle": "Explore the park's attractions, shows, restaurants, shops and services, then open each detailed page.",
+      "loadingTitle": "Loading places to discover",
+      "loadingMessage": "The park's attractions, shows and places are loading.",
+      "errorTitle": "Unable to load park places",
+      "errorMessage": "Places to discover in this park could not be loaded.",
+      "emptyTitle": "Nothing to discover yet",
+      "emptyMessage": "No public attraction, show or place is available for this park yet.",
+      "emptyFilteredTitle": "No matching place",
+      "emptyFilteredMessage": "Try widening your filters or reset them to see more places.",
       "filteredResults": "Filtered results",
-      "resultsCount": "Showing {{start}}-{{end}} of {{total}} item(s)"
+      "resultsCount": "Showing {{start}} to {{end}} of {{total}} place(s)"
     },
     "detail": {
-      "loadingTitle": "Loading item",
-      "loadingMessage": "The item page is being loaded.",
-      "errorTitle": "Unable to load the item",
-      "errorMessage": "The requested item could not be loaded.",
+      "loadingTitle": "Loading page",
+      "loadingMessage": "The page is loading.",
+      "errorTitle": "Unable to load this page",
+      "errorMessage": "The requested page could not be loaded.",
       "descriptionTitle": "Description",
       "specificationsTitle": "Specifications",
       "sourceTitle": "Source",
@@ -1994,16 +1994,16 @@
       "locationKicker": "Location",
       "locationTitle": "Location inside the park",
       "preciseLocationSubtitle": "Precise points are available, so the map displays these specific locations.",
-      "generalLocationSubtitle": "No specific location is available, so the map displays only the general item location.",
+      "generalLocationSubtitle": "No specific location is available: the map only shows this place's general location.",
       "preciseLocationBadge": "Precise point",
       "generalLocationBadge": "General fallback",
       "relatedKicker": "Discover too",
-      "relatedTitle": "Similar items",
-      "relatedSubtitle": "Selection based on the item type, category or zone.",
+      "relatedTitle": "More to discover",
+      "relatedSubtitle": "Selection based on type, category or zone.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Select a point to highlight it on the map or open directions from the marker.",
       "showLocationOnMap": "Show on map",
-      "noGeolocationMessage": "No geolocation is available for this item."
+      "noGeolocationMessage": "No geolocation for this place"
     },
     "fields": {
       "category": "Category",
@@ -2108,15 +2108,15 @@
       }
     },
     "imagesPage": {
-      "kicker": "Item gallery",
+      "kicker": "Place gallery",
       "title": "Images of {{name}}",
       "subtitle": "Explore images of {{name}} at {{park}}: details, atmosphere, viewpoints and geolocated photos when available.",
       "loadingTitle": "Loading images",
-      "loadingMessage": "Preparing the item gallery.",
+      "loadingMessage": "Preparing this place gallery.",
       "errorTitle": "Images unavailable",
-      "errorMessage": "The images for this item cannot be loaded right now.",
+      "errorMessage": "Images for this place cannot be loaded right now.",
       "backToItem": "Back to {{name}}",
-      "backToItems": "All {{name}} items",
+      "backToItems": "Discover more at {{name}}",
       "backToPark": "Back to {{name}}",
       "loadMore": "Load more images",
       "loadingMore": "Loading...",
@@ -2137,17 +2137,17 @@
     "zoneFocus": {
       "badge": "Park zone",
       "overviewBadge": "Live map",
-      "overviewDescription": "View the items currently displayed for {{park}} according to the active filters.",
-      "zoneFallbackDescription": "This zone groups the items currently displayed. Use the filters to refine the selection.",
-      "totalItems": "Zone items",
-      "totalItemsHint": "Linked content",
+      "overviewDescription": "View the places currently displayed for {{park}} according to the active filters.",
+      "zoneFallbackDescription": "This zone groups the currently displayed places. Use filters to refine the selection.",
+      "totalItems": "Places in zone",
+      "totalItemsHint": "To discover",
       "displayedItems": "Displayed",
       "displayedItemsHint": "After filters",
       "mapMarkers": "Markers",
       "mapMarkersHint": "Geolocated",
       "mapPanelTitle": "Map cues",
       "mapPanelHeading": "Real-time filtered map",
-      "mapPanelText": "The map follows the current selection: zone, category, type and search. Custom markers stay adapted to each item type.",
+      "mapPanelText": "The map follows the current selection: zone, category, type and search. Custom markers stay adapted to each precise place type.",
       "zoneMapHeading": "Map Zone {{name}}",
       "parkMapHeading": "{{name}} map",
       "allMapItems": "All"
@@ -2162,15 +2162,15 @@
       "unknown": "Unknown"
     },
     "videosPage": {
-      "kicker": "Item videos",
+      "kicker": "Place videos",
       "title": "Videos of {{name}}",
       "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
       "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the item videos.",
+      "loadingMessage": "Preparing this place's videos.",
       "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this item cannot be loaded right now.",
+      "errorMessage": "Videos for this place cannot be loaded right now.",
       "backToItem": "Back to {{name}}",
-      "backToItems": "All {{name}} items",
+      "backToItems": "Discover more at {{name}}",
       "backToPark": "Back to {{name}}",
       "emptyTitle": "No published videos",
       "emptyMessage": "No published video is available for {{name}} yet."
@@ -2181,9 +2181,9 @@
       "badge": "Park content",
       "title": "Explore what this park contains",
       "subtitle": "Pick a category to quickly find the rides, restaurants and places available in this park.",
-      "viewAllItems": "Browse all items",
-      "totalItems": "Total items",
-      "unassignedItems": "Unassigned items"
+      "viewAllItems": "Attractions, shows and places to discover",
+      "totalItems": "Places to discover",
+      "unassignedItems": "Places without a zone"
     }
   },
   "parks": {
@@ -2277,10 +2277,10 @@
       "zones": {
         "badge": "Park zones",
         "title": "Zones and lands",
-        "subtitle": "Quickly find the attractions and places linked to each area of the park.",
+        "subtitle": "Quickly find the attractions, shows and places linked to each park zone.",
         "visible": "Visible",
         "hidden": "Hidden",
-        "open": "View zone items",
+        "open": "View places in the zone",
         "noDescription": "No description is available for this zone yet.",
         "slug": "Slug",
         "sortOrder": "Order",
@@ -2290,12 +2290,12 @@
         "zones": "Zones"
       },
       "itemsMap": {
-        "badge": "Item map",
-        "title": "Park item map",
-        "subtitle": "Find the geolocated items in this park and filter the map by zone or category.",
+        "badge": "Park places",
+        "title": "Map of park places",
+        "subtitle": "Find geolocated attractions, shows, restaurants, shops and other points of interest in this park, then filter the map by zone or category.",
         "categoriesTitle": "Categories",
-        "emptyTitle": "No geolocated item",
-        "emptyMessage": "No geolocated item currently matches the selected filters."
+        "emptyTitle": "No geolocated place",
+        "emptyMessage": "No geolocated place currently matches the selected filters."
       },
       "comingSoon": {
         "badge": "Coming soon",
@@ -2410,7 +2410,7 @@
     "photos": {
       "kicker": "Photos",
       "title": "Photos",
-      "subtitle": "General park photos and visuals from park items, filterable by type.",
+      "subtitle": "General park photos and visuals from attractions and places, filterable by type.",
       "current": "Current",
       "openItem": "Open {{name}} detail page",
       "categories": {
@@ -2458,7 +2458,7 @@
     "mapPage": {
       "kicker": "Park map",
       "title": "Map of {{name}}",
-      "subtitle": "Explore the geolocated elements of {{name}} on a dedicated map.",
+      "subtitle": "Explore geolocated attractions, restaurants, shops and points of interest at {{name}} on a dedicated map.",
       "loadingTitle": "Loading map",
       "loadingMessage": "Preparing the park markers.",
       "errorTitle": "Map unavailable",
@@ -2468,7 +2468,7 @@
     "zones": {
       "badge": "Park zones",
       "title": "{{park}} zones",
-      "subtitle": "{{count}} zone(s) grouping {{total}} public item(s).",
+      "subtitle": "{{count}} zone(s) grouping {{total}} public place(s).",
       "loadingTitle": "Loading zones",
       "loadingMessage": "The park zones are being loaded.",
       "errorTitle": "Unable to load zones",
@@ -2487,16 +2487,16 @@
       "errorMessage": "The park zone could not be loaded.",
       "emptyTitle": "Zone unavailable",
       "emptyMessage": "The requested zone is not available.",
-      "totalItems": "Items",
-      "totalItemsHint": "Linked to this zone",
+      "totalItems": "Places",
+      "totalItemsHint": "To discover",
       "mapMarkers": "Markers",
       "mapMarkersHint": "Geolocated",
       "mapBadge": "Zone map",
-      "mapTitle": "Geolocated items",
-      "itemsBadge": "Zone items",
-      "itemsTitle": "Items in this zone",
-      "emptyItemsTitle": "No item in this zone",
-      "emptyItemsMessage": "No public item is currently linked to this zone."
+      "mapTitle": "Geolocated places",
+      "itemsBadge": "To discover",
+      "itemsTitle": "Places to discover in this zone",
+      "emptyItemsTitle": "No place in this zone",
+      "emptyItemsMessage": "No public place is currently attached to this zone."
     },
     "videosPage": {
       "kicker": "Park videos",
@@ -2631,9 +2631,9 @@
       "text": "Have a look at {{title}} on AmusementPark."
     },
     "parkItems": {
-      "title": "Share these attractions",
+      "title": "Share these attractions and places",
       "description": "Send this park guide to someone planning what to do.",
-      "text": "Browse attractions and places for {{title}} on AmusementPark."
+      "text": "Browse attractions, shows and places at {{title}} on AmusementPark."
     },
     "parkItem": {
       "title": "Share this place",

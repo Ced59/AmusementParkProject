@@ -3,7 +3,7 @@
     "videos": {
       "title": "Videos",
       "kicker": "M16 - Video library",
-      "subtitle": "Manage public videos, park and park item ownership, tags, types and host metadata.",
+      "subtitle": "Manage public videos, park and park-content ownership, tags, types and host metadata.",
       "total": "video(s)",
       "loadingMessage": "Loading videos...",
       "search": "Search",
@@ -13,7 +13,7 @@
       "ownerType": "Owner",
       "allOwnerTypes": "All owners",
       "ownerId": "Owner ID",
-      "ownerIdPlaceholder": "Park or park item ID",
+      "ownerIdPlaceholder": "Park or content page ID",
       "type": "Type",
       "allTypes": "All types",
       "tag": "Tag",
@@ -88,7 +88,7 @@
       },
       "ownerTypes": {
         "PARK": "Park",
-        "PARK_ITEM": "Park item"
+        "PARK_ITEM": "Park content page"
       },
       "types": {
         "ON_RIDE": "Onride",

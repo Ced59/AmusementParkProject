@@ -3,7 +3,7 @@
     "videos": {
       "title": "Video's",
       "kicker": "M16 - Videotheek",
-      "subtitle": "Beheer van publieke video's, koppeling aan parken en park items, tags, types en hostmetadata.",
+      "subtitle": "Beheer van publieke video's, koppeling aan parken en parkcontent, tags, types en hostmetadata.",
       "total": "video('s)",
       "loadingMessage": "Video's laden...",
       "search": "Zoeken",
@@ -13,7 +13,7 @@
       "ownerType": "Eigenaar",
       "allOwnerTypes": "Alle eigenaars",
       "ownerId": "Eigenaar-ID",
-      "ownerIdPlaceholder": "Park- of park-item-ID",
+      "ownerIdPlaceholder": "Park- of contentpagina-ID",
       "type": "Type",
       "allTypes": "Alle types",
       "tag": "Tag",
@@ -88,7 +88,7 @@
       },
       "ownerTypes": {
         "PARK": "Park",
-        "PARK_ITEM": "Park item"
+        "PARK_ITEM": "Parkcontentpagina"
       },
       "types": {
         "ON_RIDE": "Onride",

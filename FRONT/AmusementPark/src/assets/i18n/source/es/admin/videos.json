@@ -3,7 +3,7 @@
     "videos": {
       "title": "Vídeos",
       "kicker": "M16 - Videoteca",
-      "subtitle": "Gestión de vídeos públicos, vinculación a parques y park items, etiquetas, tipos y metadatos del alojamiento.",
+      "subtitle": "Gestión de vídeos públicos, vinculación a parques y fichas del parque, etiquetas, tipos y metadatos del alojamiento.",
       "total": "vídeo(s)",
       "loadingMessage": "Cargando vídeos...",
       "search": "Búsqueda",
@@ -13,7 +13,7 @@
       "ownerType": "Propietario",
       "allOwnerTypes": "Todos los propietarios",
       "ownerId": "ID del propietario",
-      "ownerIdPlaceholder": "ID de parque o park item",
+      "ownerIdPlaceholder": "ID de parque o ficha",
       "type": "Tipo",
       "allTypes": "Todos los tipos",
       "tag": "Etiqueta",
@@ -88,7 +88,7 @@
       },
       "ownerTypes": {
         "PARK": "Parque",
-        "PARK_ITEM": "Park item"
+        "PARK_ITEM": "Ficha del parque"
       },
       "types": {
         "ON_RIDE": "Onride",

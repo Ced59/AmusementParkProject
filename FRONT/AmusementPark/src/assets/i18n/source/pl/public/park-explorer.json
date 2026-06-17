@@ -1,10 +1,10 @@
 {
   "parkExplorer": {
     "headerChip": "Eksploracja parku",
-    "subtitle": "Przeglądaj park poprzez jego strefy i główne kategorie elementów, które zawiera.",
+    "subtitle": "Przeglądaj park poprzez jego strefy i główne kategorie miejsc, które zawiera.",
     "overviewTitle": "Cały park",
-    "unassignedTitle": "Elementy bez strefy",
-    "totalItems": "{{count}} element(y/ów)",
+    "unassignedTitle": "Miejsca bez strefy",
+    "totalItems": "{{count}} miejsc(a)",
     "byCategory": "Według kategorii",
     "byType": "Według typu",
     "loading": "Ładowanie eksploracji...",

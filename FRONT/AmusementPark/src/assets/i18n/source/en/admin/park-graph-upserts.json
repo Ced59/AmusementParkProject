@@ -28,7 +28,7 @@
       },
       "editor": {
         "title": "JSON document",
-        "description": "Absent properties are preserved. Zones/items arrays upsert only the elements they contain."
+        "description": "Absent properties are preserved. Zones/items arrays upsert only the entries they contain."
       },
       "mode": {
         "title": "Upsert mode",

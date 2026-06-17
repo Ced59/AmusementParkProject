@@ -35,7 +35,7 @@
       "discover": {
         "badge": "Entdecken",
         "title": "Finde Parks, die Lust auf Besuch machen",
-        "text": "Durchstöbere Parks in verschiedenen Ländern und erhalte schnell einen Eindruck von Lage, Stimmung und Angebot."
+        "text": "Entdecke Parks in verschiedenen Ländern, ihre Lage, ihre allgemeine Atmosphäre und die Orte, die sie ausmachen. Ziel ist es, dir schnell einen ersten Eindruck zu geben: Familienpark, großes Reiseziel, regionaler Park, Wasserpark, stark thematisierter Ort oder lokaler Tagesausflug."
       },
       "understand": {
         "badge": "Verstehen",
@@ -66,7 +66,7 @@
           "text": "Bilder vermitteln die Stimmung eines Parks, Bereichs oder einer Attraktion."
         },
         "map": {
-          "title": "Parks und Elemente lokalisieren",
+          "title": "Parks und ihre Orte lokalisieren",
           "text": "Die Karte hilft zu verstehen, wo der Park liegt und was ihn umgibt."
         },
         "nearby": {

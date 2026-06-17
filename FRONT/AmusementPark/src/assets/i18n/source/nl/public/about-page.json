@@ -35,7 +35,7 @@
       "discover": {
         "badge": "Ontdekken",
         "title": "Vind parken die je zin geven om te gaan",
-        "text": "Bekijk parken in verschillende landen en begrijp snel ligging, sfeer en aanbod."
+        "text": "Blader door parken in verschillende landen, ontdek hun locatie, algemene sfeer en de plekken en ervaringen die ze bieden. Het doel is om je snel een eerste indruk te geven: familiepark, grote bestemming, regionaal park, waterpark, sterk gethematiseerde plek of lokale daguitstap."
       },
       "understand": {
         "badge": "Begrijpen",
@@ -66,7 +66,7 @@
           "text": "Beelden helpen de sfeer van een park, gebied of attractie te voelen."
         },
         "map": {
-          "title": "Lokaliseer parken en elementen",
+          "title": "Parken en hun plekken lokaliseren",
           "text": "De kaart helpt te begrijpen waar het park ligt en wat eromheen is."
         },
         "nearby": {

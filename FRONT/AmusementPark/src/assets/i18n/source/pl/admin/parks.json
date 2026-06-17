@@ -93,20 +93,20 @@
         "empty": "Nie znaleziono stref dla tego parku."
       },
       "items": {
-        "manage": "Zarządzaj elementami parku",
-        "title": "Elementy parku",
-        "create": "Utwórz element",
-        "createTitle": "Utwórz element parku",
-        "editTitle": "Edytuj element parku",
+        "manage": "Zarządzaj treściami parku",
+        "title": "Treści parku",
+        "create": "Utwórz wpis",
+        "createTitle": "Utwórz wpis parku",
+        "editTitle": "Edytuj wpis parku",
         "category": "Kategoria",
         "type": "Typ",
         "subtype": "Podtyp",
         "zone": "Strefa",
-        "deleteConfirm": "Usunąć ten element?",
+        "deleteConfirm": "Usunąć ten wpis?",
         "quickCreate": {
           "kicker": "Szybki workbench",
           "title": "Szybkie tworzenie",
-          "subtitle": "Utwórz element bez opuszczania kontekstu parku.",
+          "subtitle": "Utwórz wpis bez opuszczania kontekstu parku.",
           "open": "Szybkie tworzenie",
           "close": "Zamknij szybkie tworzenie",
           "noZone": "Brak strefy",
@@ -117,12 +117,12 @@
           "duplicate": "Duplikuj",
           "duplicatesTitle": "Podobne nazwy już istnieją"
         },
-        "itemName": "Nazwa elementu",
+        "itemName": "Nazwa wyświetlana",
         "generalLocation": "Lokalizacja ogólna",
-        "generalLocationHelp": "Główny punkt elementu w parku. Szczegółowe punkty atrakcji można uzupełnić poniżej.",
-        "saveBeforePhotos": "Najpierw zapisz atrakcję, zanim dodasz zdjęcia.",
+        "generalLocationHelp": "Główny punkt tego wpisu w parku. Punkty specyficzne dla atrakcji uzupełnia się niżej.",
+        "saveBeforePhotos": "Najpierw zapisz wpis, aby móc dodać zdjęcia.",
         "attractionSectionTitle": "Konfiguracja atrakcji",
-        "attractionSectionDescription": "Ta sekcja jest widoczna tylko dla elementów z kategorii Atrakcja. Wszystkie pola są opcjonalne.",
+        "attractionSectionDescription": "Ta sekcja pojawia się tylko dla wpisów w kategorii Atrakcja. Wszystkie pola są opcjonalne.",
         "locationsTitle": "Lokalizacje szczegółowe",
         "locationsHelp": "Pozwala zapisać osobne współrzędne wejścia, wyjścia, wejścia Fast Pass i wejścia dla osób o ograniczonej mobilności.",
         "details": {
@@ -191,7 +191,7 @@
           }
         },
         "attractionConfigurationTitle": "Konfiguracja atrakcji",
-        "attractionConfigurationHelp": "Ta sekcja jest widoczna tylko dla atrakcji. Wszystkie pola są opcjonalne.",
+        "attractionConfigurationHelp": "Ta sekcja pojawia się tylko dla wpisów w kategorii Atrakcja. Wszystkie pola są opcjonalne.",
         "accessConditionsTitle": "Warunki dostępu",
         "accessConditionsHelp": "Dodaj tutaj uporządkowane zasady dotyczące wzrostu, wieku, ograniczeń medycznych lub specjalnego dostępu. Etykiety można nadal dostosować dla każdej atrakcji.",
         "accessConditionsPreset": "Typ warunku do dodania",
@@ -265,7 +265,7 @@
           "upToDate": "Aktualne"
         },
         "editorActions": {
-          "backToItems": "Powrót do listy elementów",
+          "backToItems": "Wróć do listy wpisów",
           "saveAll": "Zapisz wszystko",
           "saveAndClose": "Zapisz i zakończ",
           "saveSection": "Zapisz tę sekcję",
@@ -274,10 +274,10 @@
         "saveMessages": {
           "successSummary": "Zapisano",
           "sectionSaved": "Bieżąca sekcja została zapisana i pozostajesz na stronie.",
-          "itemSaved": "Element parku został zapisany.",
-          "itemCreated": "Element parku został utworzony i pozostajesz w trybie edycji.",
+          "itemSaved": "Wpis parku został zapisany.",
+          "itemCreated": "Wpis parku został utworzony i pozostajesz w trybie edycji.",
           "errorSummary": "Zapisywanie nie powiodło się",
-          "errorDetail": "Wystąpił błąd podczas zapisywania elementu parku."
+          "errorDetail": "Wystąpił błąd podczas zapisywania wpisu parku."
         },
         "heightRequirements": {
           "title": "Wymagania wzrostu",
@@ -301,7 +301,7 @@
         "advancedAccessConditionsHelp": "Dodaj tylko zasady, które nie są wymaganiami wzrostu.",
         "advancedAccessConditionsEmpty": "Brak innych skonfigurowanych warunków.",
         "park": "Powiązany park",
-        "parkHelp": "Pozwala ręcznie przenieść element do właściwego parku, jeśli import przypisał go błędnie.",
+        "parkHelp": "Pozwala ręcznie przenieść wpis do właściwego parku, jeśli import przypisał go błędnie.",
         "accessConditionTypesAdmin": {
           "title": "Typy warunków wielokrotnego użycia",
           "help": "Dodaj wspólny typ do katalogu przed użyciem go przy atrakcji.",
@@ -323,9 +323,9 @@
           "planned": "Planowane",
           "unknown": "Nieznane"
         },
-        "subtitle": "Lista administracyjna elementów powiązanych z tym parkiem, z filtrami, paginacją, sortowaniem i statusem przeglądu.",
-        "total": "{{count}} element(ów)",
-        "searchPlaceholder": "Szukaj elementu, typu lub statusu",
+        "subtitle": "Lista administracyjna wpisów powiązanych z tym parkiem, z filtrami, paginacją, sortowaniem i stanem opracowania.",
+        "total": "{{count}} wpis(y)",
+        "searchPlaceholder": "Szukaj wpisu, typu lub statusu",
         "import": {
           "open": "Import przez wklejenie",
           "title": "Import wklejania / CSV",
@@ -339,7 +339,7 @@
           "descriptionFr": "Opis FR",
           "previewSummary": "{{ready}} gotowe, {{warnings}} z ostrzezeniem, {{errors}} z bledem"
         },
-        "empty": "Nie znaleziono elementów dla tego parku."
+        "empty": "Nie znaleziono wpisu dla tego parku."
       },
       "refactorHint": "Edytor został teraz podzielony na tematyczne zakładki, aby strona była lżejsza i bardziej czytelna.",
       "visibilityHelp": "Określa, czy ten park jest widoczny w publicznej aplikacji.",
@@ -374,7 +374,7 @@
       },
       "management": {
         "sectionTitle": "Zarządzanie zawartością parku",
-        "sectionHelp": "Szybki dostęp do stref i elementów powiązanych z tym parkiem."
+        "sectionHelp": "Szybko przejdź do stref i treści powiązanych z tym parkiem."
       },
       "featuredOnHomeField": "Wyróżnij na stronie głównej",
       "featuredOnHomeHelp": "Nadaje temu parkowi priorytet w publicznej sekcji „Wyróżnione parki”. Jeśli żaden park nie jest oznaczony, strona główna używa losowego wyboru widocznych parków.",

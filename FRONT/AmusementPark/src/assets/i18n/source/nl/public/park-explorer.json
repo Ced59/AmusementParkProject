@@ -1,10 +1,10 @@
 {
   "parkExplorer": {
     "headerChip": "Parkverkenning",
-    "subtitle": "Verken het park via de zones en de belangrijkste categorieën elementen die het bevat.",
+    "subtitle": "Verken het park via de zones en de belangrijkste categorieën plekken die het bevat.",
     "overviewTitle": "Hele park",
-    "unassignedTitle": "Niet-toegewezen items",
-    "totalItems": "{{count}} item(s)",
+    "unassignedTitle": "Plekken zonder zone",
+    "totalItems": "{{count}} plek(ken)",
     "byCategory": "Per categorie",
     "byType": "Per type",
     "loading": "Verkenning wordt geladen...",

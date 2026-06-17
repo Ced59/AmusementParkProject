@@ -28,7 +28,7 @@
       },
       "editor": {
         "title": "Document JSON",
-        "description": "Les propriétés absentes sont conservées. Les tableaux zones/items effectuent des upserts des éléments présents."
+        "description": "Les propriétés absentes sont conservées. Les tableaux zones/items effectuent des upserts des entrées présentes."
       },
       "mode": {
         "title": "Mode d'upsert",

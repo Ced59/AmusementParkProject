@@ -35,7 +35,7 @@
       "discover": {
         "badge": "Descubrir",
         "title": "Encuentra parques que te apetezca visitar",
-        "text": "Explora parques de distintos países, su ubicación, ambiente y principales contenidos para hacerte una idea rápida."
+        "text": "Explora parques situados en distintos países, descubre su ubicación, su ambiente general y los lugares que los componen. El objetivo es darte una primera impresión rápidamente: parque familiar, gran parque de destino, parque regional, parque acuático, lugar muy tematizado o salida local."
       },
       "understand": {
         "badge": "Entender",
@@ -66,7 +66,7 @@
           "text": "Las imágenes ayudan a sentir el ambiente de un parque, una zona o una atracción."
         },
         "map": {
-          "title": "Ubicar parques y elementos",
+          "title": "Ubicar parques y lugares",
           "text": "El mapa ayuda a entender dónde está el parque y qué hay alrededor."
         },
         "nearby": {

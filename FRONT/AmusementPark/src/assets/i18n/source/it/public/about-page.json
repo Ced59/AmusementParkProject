@@ -35,7 +35,7 @@
       "discover": {
         "badge": "Scoprire",
         "title": "Trova parchi che fanno venire voglia di partire",
-        "text": "Esplora parchi in diversi paesi e capisci rapidamente posizione, atmosfera e offerta."
+        "text": "Esplora parchi in diversi paesi, scopri la loro posizione, l’atmosfera generale e i luoghi che li compongono. L’obiettivo è darti rapidamente una prima impressione: parco per famiglie, grande destinazione, parco regionale, parco acquatico, luogo molto tematizzato o uscita locale."
       },
       "understand": {
         "badge": "Capire",
@@ -66,7 +66,7 @@
           "text": "Le immagini aiutano a percepire atmosfera e dettagli."
         },
         "map": {
-          "title": "Localizzare parchi ed elementi",
+          "title": "Localizzare parchi e luoghi",
           "text": "La mappa aiuta a capire dove si trova il parco e cosa lo circonda."
         },
         "nearby": {

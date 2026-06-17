@@ -1,10 +1,10 @@
 {
   "admin": {
     "workbench": {
-      "navTitle": "Panel de elementos del parque",
-      "title": "Entrada rápida de elementos",
+      "navTitle": "Panel de contenidos del parque",
+      "title": "Entrada rápida de fichas",
       "kicker": "Administración rápida",
-      "subtitle": "Crea, filtra y corrige rápidamente elementos del parque sin abrir la ficha completa.",
+      "subtitle": "Crea, filtra y corrige rápidamente fichas del parque sin abrir el registro completo.",
       "quickCreate": {
         "title": "Creación rápida",
         "name": "Nombre",
@@ -30,7 +30,7 @@
       "validations": {
         "nameRequired": "El nombre es obligatorio.",
         "parkRequired": "El parque es obligatorio.",
-        "duplicateWarning": "Ya existe un elemento similar.",
+        "duplicateWarning": "Ya existe una ficha similar.",
         "invalidTypeForCategory": "El tipo no corresponde a la categoría."
       },
       "duplicates": {
@@ -38,11 +38,11 @@
         "samePark": "Mismo parque",
         "sameZone": "Misma zona",
         "ignore": "Ignorar",
-        "openExisting": "Abrir existente"
+        "openExisting": "Abrir la ficha existente"
       },
       "templates": {
         "parkOnly": "Solo parque",
-        "zoneItems": "Zona + elementos",
+        "zoneItems": "Zona + fichas",
         "services": "Servicios sin zona",
         "captainCoaster": "Importación enriquecida de Captain Coaster"
       }

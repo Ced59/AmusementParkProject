@@ -39,9 +39,9 @@
       "text": "Sieh dir {{title}} auf AmusementPark an."
     },
     "parkItems": {
-      "title": "Diese Attraktionen teilen",
+      "title": "Diese Attraktionen und Orte teilen",
       "description": "Sende diesen Guide an jemanden, der den Besuch plant.",
-      "text": "Entdecke Attraktionen und Orte von {{title}} auf AmusementPark."
+      "text": "Entdecke Attraktionen, Shows und Orte in {{title}} auf AmusementPark."
     },
     "parkItem": {
       "title": "Diese Seite teilen",

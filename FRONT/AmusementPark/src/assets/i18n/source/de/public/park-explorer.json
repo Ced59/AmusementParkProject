@@ -1,10 +1,10 @@
 {
   "parkExplorer": {
     "headerChip": "Parkerkundung",
-    "subtitle": "Erkunde den Park über seine Bereiche und die wichtigsten darin enthaltenen Elementkategorien.",
+    "subtitle": "Erkunde den Park über seine Bereiche und die wichtigsten Kategorien von Orten.",
     "overviewTitle": "Gesamter Park",
-    "unassignedTitle": "Nicht zugewiesene Elemente",
-    "totalItems": "{{count}} Element(e)",
+    "unassignedTitle": "Orte ohne Bereich",
+    "totalItems": "{{count}} Ort(e)",
     "byCategory": "Nach Kategorie",
     "byType": "Nach Typ",
     "loading": "Erkundung wird geladen...",

@@ -3,7 +3,7 @@
     "videos": {
       "title": "Filmy",
       "kicker": "M16 - Biblioteka filmów",
-      "subtitle": "Zarządzanie publicznymi filmami, powiązaniami z parkami i park items, tagami, typami oraz metadanymi hosta.",
+      "subtitle": "Zarządzanie publicznymi filmami, powiązaniami z parkami i treściami parku, tagami, typami oraz metadanymi hosta.",
       "total": "film(y)",
       "loadingMessage": "Ładowanie filmów...",
       "search": "Wyszukiwanie",
@@ -13,7 +13,7 @@
       "ownerType": "Właściciel",
       "allOwnerTypes": "Wszyscy właściciele",
       "ownerId": "ID właściciela",
-      "ownerIdPlaceholder": "ID parku lub park item",
+      "ownerIdPlaceholder": "ID parku lub wpisu",
       "type": "Typ",
       "allTypes": "Wszystkie typy",
       "tag": "Tag",
@@ -88,7 +88,7 @@
       },
       "ownerTypes": {
         "PARK": "Park",
-        "PARK_ITEM": "Park item"
+        "PARK_ITEM": "Wpis parku"
       },
       "types": {
         "ON_RIDE": "Onride",

@@ -167,7 +167,7 @@
       "ownerType": "Eigenaar",
       "allOwnerTypes": "Alle eigenaren",
       "ownerId": "Eigenaar-ID",
-      "ownerIdPlaceholder": "Park-, item- of gebruikers-ID",
+      "ownerIdPlaceholder": "Park-, contentpagina- of gebruikers-ID",
       "tag": "Tag",
       "allTags": "Alle tags",
       "publication": "Publicatie",
@@ -318,7 +318,7 @@
       },
       "editor": {
         "title": "JSON-document",
-        "description": "Ontbrekende eigenschappen blijven behouden. Zones/items-lijsten upserten alleen aanwezige elementen."
+        "description": "Ontbrekende eigenschappen blijven behouden. Zones/items-lijsten upserten alleen aanwezige invoer."
       },
       "mode": {
         "title": "Upsert-modus",
@@ -448,14 +448,14 @@
       }
     },
     "parkItems": {
-      "title": "Parkitems",
-      "subtitle": "Parkoverstijgend overzicht van alle parkitems voor sneller bewerken.",
-      "searchPlaceholder": "Zoek een park, item of type",
+      "title": "Parkcontent",
+      "subtitle": "Parkbreed overzicht van attracties, shows, restaurants, winkels en services om pagina's sneller te bewerken.",
+      "searchPlaceholder": "Zoek een park, pagina of type",
       "parkFilter": "Filteren op park",
-      "empty": "Geen items found.",
+      "empty": "Geen pagina gevonden.",
       "columns": {
         "park": "Park",
-        "item": "Item",
+        "item": "Pagina",
         "type": "Type",
         "visibility": "Zichtbaarheid",
         "actions": "Acties",
@@ -464,7 +464,7 @@
         "contentQuality": "Content"
       },
       "allParks": "Alle parken",
-      "total": "{{count}} item(s)",
+      "total": "{{count}} pagina('s)",
       "content": {
         "backlogFilter": "To complete",
         "complete": "Complete",
@@ -585,20 +585,20 @@
         "empty": "Geen zone gevonden voor dit park."
       },
       "items": {
-        "manage": "Parkitems beheren",
-        "title": "Parkitems",
-        "create": "Item aanmaken",
-        "createTitle": "Parkitem aanmaken",
-        "editTitle": "Parkitem bewerken",
+        "manage": "Parkcontent beheren",
+        "title": "Parkcontent",
+        "create": "Pagina aanmaken",
+        "createTitle": "Parkpagina aanmaken",
+        "editTitle": "Parkpagina bewerken",
         "category": "Categorie",
         "type": "Type",
         "subtype": "Subtype",
         "zone": "Zone",
-        "deleteConfirm": "Dit item verwijderen?",
+        "deleteConfirm": "Deze pagina verwijderen?",
         "quickCreate": {
           "kicker": "Snelle workbench",
           "title": "Snel aanmaken",
-          "subtitle": "Maak een item aan zonder de parkcontext te verlaten.",
+          "subtitle": "Maak een pagina aan zonder de parkcontext te verlaten.",
           "open": "Snel aanmaken",
           "close": "Snel aanmaken sluiten",
           "noZone": "Geen zone",
@@ -609,12 +609,12 @@
           "duplicate": "Dupliceren",
           "duplicatesTitle": "Vergelijkbare namen bestaan al"
         },
-        "itemName": "Itemnaam",
+        "itemName": "Weergavenaam",
         "generalLocation": "Algemene locatie",
-        "generalLocationHelp": "Hoofdpunt van het item in het park. Specifieke attractiepunten kunnen hieronder worden ingevuld.",
-        "saveBeforePhotos": "Sla de attractie eerst op voordat je foto’s toevoegt.",
+        "generalLocationHelp": "Hoofdpunt van deze pagina in het park. Attractiespecifieke punten worden hieronder ingevuld.",
+        "saveBeforePhotos": "Sla eerst de pagina op voordat je foto's koppelt.",
         "attractionSectionTitle": "Attractieconfiguratie",
-        "attractionSectionDescription": "Deze sectie wordt alleen getoond voor items in de categorie Attractie. Elk veld is optioneel.",
+        "attractionSectionDescription": "Deze sectie verschijnt alleen voor pagina's in de categorie Attractie. Alle velden zijn optioneel.",
         "locationsTitle": "Specifieke locaties",
         "locationsHelp": "Hiermee kun je aparte coördinaten opslaan voor ingang, uitgang, fastpass-ingang en ingang voor beperkte mobiliteit.",
         "details": {
@@ -683,7 +683,7 @@
           }
         },
         "attractionConfigurationTitle": "Attractieconfiguratie",
-        "attractionConfigurationHelp": "Deze sectie wordt alleen getoond voor attracties. Alle velden zijn optioneel.",
+        "attractionConfigurationHelp": "Deze sectie verschijnt alleen voor pagina's in de categorie Attractie. Alle velden zijn optioneel.",
         "accessConditionsTitle": "Toegangsvoorwaarden",
         "accessConditionsHelp": "Voeg hier gestructureerde regels toe voor lengte, leeftijd, medische beperkingen of speciale toegang. Labels blijven per attractie aanpasbaar.",
         "accessConditionsPreset": "Voorwaardetype toevoegen",
@@ -757,7 +757,7 @@
           "upToDate": "Bijgewerkt"
         },
         "editorActions": {
-          "backToItems": "Terug naar de elementenlijst",
+          "backToItems": "Terug naar de paginalijst",
           "saveAll": "Alles opslaan",
           "saveAndClose": "Opslaan en afronden",
           "saveSection": "Deze sectie opslaan",
@@ -766,10 +766,10 @@
         "saveMessages": {
           "successSummary": "Opgeslagen",
           "sectionSaved": "De huidige sectie is opgeslagen en je blijft op deze pagina.",
-          "itemSaved": "Het parkelement is opgeslagen.",
-          "itemCreated": "Het parkelement is aangemaakt en je blijft in de bewerkingsmodus.",
+          "itemSaved": "De parkpagina is opgeslagen.",
+          "itemCreated": "De parkpagina is aangemaakt en je blijft in bewerkmodus.",
           "errorSummary": "Opslaan mislukt",
-          "errorDetail": "Er is een fout opgetreden bij het opslaan van het parkelement."
+          "errorDetail": "Er is een fout opgetreden bij het opslaan van de parkpagina."
         },
         "heightRequirements": {
           "title": "Lengtevoorwaarden",
@@ -793,7 +793,7 @@
         "advancedAccessConditionsHelp": "Voeg alleen regels toe die geen lengtevoorwaarden zijn.",
         "advancedAccessConditionsEmpty": "Geen andere voorwaarde ingesteld.",
         "park": "Gekoppeld park",
-        "parkHelp": "Gebruik dit om het item handmatig naar het juiste park te verplaatsen als een import het verkeerd heeft gekoppeld.",
+        "parkHelp": "Gebruik dit om de pagina handmatig naar het juiste park te verplaatsen als een import ze verkeerd heeft gekoppeld.",
         "accessConditionTypesAdmin": {
           "title": "Herbruikbare voorwaardetypes",
           "help": "Voeg een gedeeld type toe aan de catalogus voordat je het op een attractie gebruikt.",
@@ -815,9 +815,9 @@
           "planned": "Gepland",
           "unknown": "Onbekend"
         },
-        "subtitle": "Beheerlijst van de onderdelen die aan dit park zijn gekoppeld, met filters, paginering, sortering en beoordelingsstatus.",
-        "total": "{{count}} item(s)",
-        "searchPlaceholder": "Zoek een item, type of status",
+        "subtitle": "Beheerbare lijst met pagina's die aan dit park zijn gekoppeld, met filters, paginering, sortering en verwerkingsstatus.",
+        "total": "{{count}} pagina('s)",
+        "searchPlaceholder": "Zoek een pagina, type of status",
         "import": {
           "open": "Importeren via plakken",
           "title": "Plakken / CSV-import",
@@ -831,7 +831,7 @@
           "descriptionFr": "Beschrijving FR",
           "previewSummary": "{{ready}} klaar, {{warnings}} met waarschuwing, {{errors}} met fout"
         },
-        "empty": "Geen item gevonden voor dit park."
+        "empty": "Geen pagina gevonden voor dit park."
       },
       "refactorHint": "De editor is nu opgesplitst in thematische tabbladen om de pagina lichter en overzichtelijker te maken.",
       "visibilityHelp": "Bepaalt of dit park zichtbaar is in de publieke applicatie.",
@@ -866,7 +866,7 @@
       },
       "management": {
         "sectionTitle": "Beheer van parkinhoud",
-        "sectionHelp": "Snelle toegang tot de zones en elementen die aan dit park zijn gekoppeld."
+        "sectionHelp": "Open snel de zones en content die aan dit park zijn gekoppeld."
       },
       "featuredOnHomeField": "Uitlichten op de homepage",
       "featuredOnHomeHelp": "Geeft dit park voorrang in de publieke sectie “Uitgelichte parken”. Als er geen park is gemarkeerd, gebruikt de homepage een willekeurige selectie zichtbare parken.",
@@ -1073,8 +1073,8 @@
         "Home": "Home",
         "Parks": "Parken",
         "Park": "Park",
-        "ParkItems": "Parkitems",
-        "ParkItem": "Parkitem",
+        "ParkItems": "Ontdekpagina's van het park",
+        "ParkItem": "Parkcontentpagina",
         "Videos": "Video's",
         "Video": "Video",
         "Page": "Pagina"
@@ -1091,7 +1091,7 @@
       "site": "Site",
       "operators": "Exploitanten",
       "manufacturers": "Fabrikanten",
-      "parkItems": "Items",
+      "parkItems": "Content",
       "data": "Gegevens"
     },
     "title": "Beheerpaneel",
@@ -1140,7 +1140,7 @@
     "videos": {
       "title": "Video's",
       "kicker": "M16 - Videotheek",
-      "subtitle": "Beheer van publieke video's, koppeling aan parken en park items, tags, types en hostmetadata.",
+      "subtitle": "Beheer van publieke video's, koppeling aan parken en parkcontent, tags, types en hostmetadata.",
       "total": "video('s)",
       "loadingMessage": "Video's laden...",
       "search": "Zoeken",
@@ -1150,7 +1150,7 @@
       "ownerType": "Eigenaar",
       "allOwnerTypes": "Alle eigenaars",
       "ownerId": "Eigenaar-ID",
-      "ownerIdPlaceholder": "Park- of park-item-ID",
+      "ownerIdPlaceholder": "Park- of contentpagina-ID",
       "type": "Type",
       "allTypes": "Alle types",
       "tag": "Tag",
@@ -1225,7 +1225,7 @@
       },
       "ownerTypes": {
         "PARK": "Park",
-        "PARK_ITEM": "Park item"
+        "PARK_ITEM": "Parkcontentpagina"
       },
       "types": {
         "ON_RIDE": "Onride",
@@ -1242,10 +1242,10 @@
     },
     "visible": "Zichtbaar",
     "workbench": {
-      "navTitle": "Werkbank voor parkitems",
-      "title": "Snelle iteminvoer",
+      "navTitle": "Werkruimte parkcontent",
+      "title": "Snel pagina’s invoeren",
       "kicker": "Snelle administratie",
-      "subtitle": "Maak, filter en corrigeer parkitems snel zonder de volledige fiche te openen.",
+      "subtitle": "Maak, filter en corrigeer parkcontentpagina’s snel zonder het volledige record te openen.",
       "quickCreate": {
         "title": "Snel aanmaken",
         "name": "Naam",
@@ -1271,7 +1271,7 @@
       "validations": {
         "nameRequired": "Naam is verplicht.",
         "parkRequired": "Park is verplicht.",
-        "duplicateWarning": "Er bestaat al een vergelijkbaar item.",
+        "duplicateWarning": "Er bestaat al een vergelijkbare pagina.",
         "invalidTypeForCategory": "Het type past niet bij de categorie."
       },
       "duplicates": {
@@ -1279,11 +1279,11 @@
         "samePark": "Zelfde park",
         "sameZone": "Zelfde zone",
         "ignore": "Negeren",
-        "openExisting": "Bestaande openen"
+        "openExisting": "Bestaande pagina openen"
       },
       "templates": {
         "parkOnly": "Alleen park",
-        "zoneItems": "Zone + items",
+        "zoneItems": "Zone + pagina’s",
         "services": "Services zonder zone",
         "captainCoaster": "Verrijkte Captain Coaster-import"
       }
@@ -1391,14 +1391,14 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Parklogo",
       "PARK": "Parkfoto",
-      "PARK_ITEM": "Item foto",
+      "PARK_ITEM": "Foto van plek",
       "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
       "NONE": "Geen",
       "PARK": "Park",
       "USER": "Gebruiker",
-      "PARK_ITEM": "Element",
+      "PARK_ITEM": "Parkcontentpagina",
       "VIDEO": "Video"
     }
   },
@@ -1613,7 +1613,7 @@
       "discover": {
         "badge": "Ontdekken",
         "title": "Vind parken die je zin geven om te gaan",
-        "text": "Bekijk parken in verschillende landen en begrijp snel ligging, sfeer en aanbod."
+        "text": "Blader door parken in verschillende landen, ontdek hun locatie, algemene sfeer en de plekken en ervaringen die ze bieden. Het doel is om je snel een eerste indruk te geven: familiepark, grote bestemming, regionaal park, waterpark, sterk gethematiseerde plek of lokale daguitstap."
       },
       "understand": {
         "badge": "Begrijpen",
@@ -1644,7 +1644,7 @@
           "text": "Beelden helpen de sfeer van een park, gebied of attractie te voelen."
         },
         "map": {
-          "title": "Lokaliseer parken en elementen",
+          "title": "Parken en hun plekken lokaliseren",
           "text": "De kaart helpt te begrijpen waar het park ligt en wat eromheen is."
         },
         "nearby": {
@@ -1795,7 +1795,7 @@
       "park": "Park",
       "attractions": "Attracties",
       "everywhere": "Overal",
-      "parkItems": "Attracties en plekken",
+      "parkItems": "Attracties, shows en plekken",
       "operators": "Exploitanten",
       "manufacturers": "Fabrikanten",
       "attraction": "Attractie",
@@ -1895,10 +1895,10 @@
   },
   "parkExplorer": {
     "headerChip": "Parkverkenning",
-    "subtitle": "Verken het park via de zones en de belangrijkste categorieën elementen die het bevat.",
+    "subtitle": "Verken het park via de zones en de belangrijkste categorieën plekken die het bevat.",
     "overviewTitle": "Hele park",
-    "unassignedTitle": "Niet-toegewezen items",
-    "totalItems": "{{count}} item(s)",
+    "unassignedTitle": "Plekken zonder zone",
+    "totalItems": "{{count}} plek(ken)",
     "byCategory": "Per categorie",
     "byType": "Per type",
     "loading": "Verkenning wordt geladen...",
@@ -1948,8 +1948,8 @@
   },
   "parkItems": {
     "actions": {
-      "viewDetails": "Item bekijken",
-      "backToItems": "Terug naar items",
+      "viewDetails": "Pagina bekijken",
+      "backToItems": "Terug naar plekken in het park",
       "backToPark": "Terug naar het park",
       "videos": "Video's"
     },
@@ -1965,23 +1965,23 @@
       "allZones": "Alle zones"
     },
     "list": {
-      "subtitle": "Blader door de inhoud van het park en open elk item voor meer details.",
-      "loadingTitle": "Laden park items",
-      "loadingMessage": "De parkinhoud wordt geladen.",
-      "errorTitle": "Kan niet laden park items",
-      "errorMessage": "The park content kon niet worden geladen.",
-      "emptyTitle": "Geen item available",
-      "emptyMessage": "Er is momenteel geen openbaar item beschikbaar voor dit park.",
-      "emptyFilteredTitle": "Geen matching item",
-      "emptyFilteredMessage": "Verruim je filters of wis ze om meer inhoud te zien.",
+      "subtitle": "Ontdek de attracties, shows, restaurants, winkels en services van dit park en open elke detailpagina.",
+      "loadingTitle": "Plekken om te ontdekken laden",
+      "loadingMessage": "De attracties, shows en plekken van het park worden geladen.",
+      "errorTitle": "Kan parkplekken niet laden",
+      "errorMessage": "De plekken om te ontdekken in dit park konden niet worden geladen.",
+      "emptyTitle": "Nog niets te ontdekken",
+      "emptyMessage": "Er is momenteel geen openbare attractie, show of plek beschikbaar voor dit park.",
+      "emptyFilteredTitle": "Geen passende plek",
+      "emptyFilteredMessage": "Maak je filters ruimer of reset ze om meer plekken te zien.",
       "filteredResults": "Gefilterde resultaten",
-      "resultsCount": "{{start}}-{{end}} van {{total}} item(s) weergegeven"
+      "resultsCount": "Weergave {{start}} tot {{end}} van {{total}} plek(ken)"
     },
     "detail": {
-      "loadingTitle": "Laden item",
-      "loadingMessage": "De itempagina wordt geladen.",
-      "errorTitle": "Kan niet laden the item",
-      "errorMessage": "The requested item kon niet worden geladen.",
+      "loadingTitle": "Pagina laden",
+      "loadingMessage": "De pagina wordt geladen.",
+      "errorTitle": "Kan deze pagina niet laden",
+      "errorMessage": "De gevraagde pagina kon niet worden geladen.",
       "descriptionTitle": "Beschrijving",
       "specificationsTitle": "Specificaties",
       "sourceTitle": "Bron",
@@ -1994,16 +1994,16 @@
       "locationKicker": "Locatie",
       "locationTitle": "Locatie in het park",
       "preciseLocationSubtitle": "Er zijn precieze punten beschikbaar, dus de kaart toont deze specifieke locaties.",
-      "generalLocationSubtitle": "Er is geen specifieke locatie beschikbaar, dus de kaart toont alleen de algemene itemlocatie.",
+      "generalLocationSubtitle": "Er is geen specifieke locatie ingevuld: de kaart toont alleen de algemene locatie van deze plek.",
       "preciseLocationBadge": "Exact punt",
       "generalLocationBadge": "Algemene locatie",
       "relatedKicker": "Ook ontdekken",
-      "relatedTitle": "Vergelijkbare items",
-      "relatedSubtitle": "Selectie op basis van itemtype, categorie of zone.",
+      "relatedTitle": "Ook te ontdekken",
+      "relatedSubtitle": "Selectie op basis van type, categorie of zone.",
       "navigationTitle": "Navigation",
       "locationSubtitle": "Selecteer een punt om het op de kaart te markeren of een route via de marker te openen.",
       "showLocationOnMap": "Toon op kaart",
-      "noGeolocationMessage": "Er is geen geolocatie beschikbaar voor dit item."
+      "noGeolocationMessage": "Geen geolocatie voor deze plek"
     },
     "fields": {
       "category": "Categorie",
@@ -2108,15 +2108,15 @@
       }
     },
     "imagesPage": {
-      "kicker": "Onderdeelgalerij",
+      "kicker": "Galerij van de plek",
       "title": "Afbeeldingen van {{name}}",
       "subtitle": "Ontdek afbeeldingen van {{name}} in {{park}}: details, sfeer, standpunten en geolokaliseerde foto's wanneer beschikbaar.",
       "loadingTitle": "Afbeeldingen laden",
-      "loadingMessage": "De onderdeelgalerij wordt voorbereid.",
+      "loadingMessage": "De galerij van deze plek wordt voorbereid.",
       "errorTitle": "Afbeeldingen niet beschikbaar",
-      "errorMessage": "De afbeeldingen voor dit onderdeel kunnen nu niet worden geladen.",
+      "errorMessage": "De beelden van deze plek kunnen momenteel niet worden geladen.",
       "backToItem": "Terug naar {{name}}",
-      "backToItems": "Alle onderdelen van {{name}}",
+      "backToItems": "Meer ontdekken in {{name}}",
       "backToPark": "Terug naar {{name}}",
       "loadMore": "Meer afbeeldingen laden",
       "loadingMore": "Laden...",
@@ -2137,17 +2137,17 @@
     "zoneFocus": {
       "badge": "Parkzone",
       "overviewBadge": "Live kaart",
-      "overviewDescription": "Bekijk de momenteel getoonde items voor {{park}} volgens de actieve filters.",
-      "zoneFallbackDescription": "Deze zone groepeert de momenteel getoonde items. Gebruik de filters om de selectie te verfijnen.",
-      "totalItems": "Zone-items",
-      "totalItemsHint": "Gekoppelde inhoud",
+      "overviewDescription": "Bekijk de momenteel getoonde plekken voor {{park}} volgens de actieve filters.",
+      "zoneFallbackDescription": "Deze zone groepeert de plekken die nu worden getoond. Gebruik filters om de selectie te verfijnen.",
+      "totalItems": "Plekken in zone",
+      "totalItemsHint": "Te ontdekken",
       "displayedItems": "Getoond",
       "displayedItemsHint": "Na filters",
       "mapMarkers": "Markers",
       "mapMarkersHint": "Geolokaliseerd",
       "mapPanelTitle": "Kaartpunten",
       "mapPanelHeading": "Realtime gefilterde kaart",
-      "mapPanelText": "De kaart volgt de huidige selectie: zone, categorie, type en zoekopdracht. De aangepaste markers blijven afgestemd op het exacte itemtype.",
+      "mapPanelText": "De kaart volgt de huidige selectie: zone, categorie, type en zoekopdracht. De aangepaste markers blijven afgestemd op het exacte type plek.",
       "zoneMapHeading": "Kaart zone {{name}}",
       "parkMapHeading": "Kaart {{name}}",
       "allMapItems": "Alles"
@@ -2162,15 +2162,15 @@
       "unknown": "Onbekend"
     },
     "videosPage": {
-      "kicker": "Item videos",
+      "kicker": "Video's van de plek",
       "title": "Videos of {{name}}",
       "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
       "loadingTitle": "Loading videos",
-      "loadingMessage": "Preparing the item videos.",
+      "loadingMessage": "De video's van deze plek worden voorbereid.",
       "errorTitle": "Videos unavailable",
-      "errorMessage": "The videos for this item cannot be loaded right now.",
+      "errorMessage": "De video's van deze plek kunnen momenteel niet worden geladen.",
       "backToItem": "Back to {{name}}",
-      "backToItems": "All {{name}} items",
+      "backToItems": "Meer ontdekken in {{name}}",
       "backToPark": "Back to {{name}}",
       "emptyTitle": "No published videos",
       "emptyMessage": "No published video is available for {{name}} yet."
@@ -2181,9 +2181,9 @@
       "badge": "Parkinhoud",
       "title": "Ontdek wat dit park biedt",
       "subtitle": "Kies een categorie om attracties, restaurants en plekken in dit park snel te vinden.",
-      "viewAllItems": "Alle items bekijken",
-      "totalItems": "Items in totaal",
-      "unassignedItems": "Items zonder zone"
+      "viewAllItems": "Attracties, shows en plekken ontdekken",
+      "totalItems": "Plekken om te ontdekken",
+      "unassignedItems": "Plekken zonder zone"
     }
   },
   "parks": {
@@ -2277,10 +2277,10 @@
       "zones": {
         "badge": "Parkzones",
         "title": "Zones en lands",
-        "subtitle": "Vind snel de attracties en plekken die bij elke zone van het park horen.",
+        "subtitle": "Vind snel de attracties, shows en plekken die bij elke parkzone horen.",
         "visible": "Zichtbaar",
         "hidden": "Verborgen",
-        "open": "Zone-items bekijken",
+        "open": "Plekken in de zone bekijken",
         "noDescription": "Er is nog geen beschrijving beschikbaar voor deze zone.",
         "slug": "Slug",
         "sortOrder": "Volgorde",
@@ -2290,12 +2290,12 @@
         "zones": "Zones"
       },
       "itemsMap": {
-        "badge": "Itemkaart",
-        "title": "Kaart met parkitems",
-        "subtitle": "Vind de geolokaliseerde items van dit park en filter de kaart op zone of categorie.",
+        "badge": "Plekken in het park",
+        "title": "Kaart met plekken in het park",
+        "subtitle": "Vind geolokaliseerde attracties, shows, restaurants, winkels en andere aandachtspunten in dit park en filter de kaart op zone of categorie.",
         "categoriesTitle": "Categorieën",
-        "emptyTitle": "Geen geolokaliseerd item",
-        "emptyMessage": "Geen geolokaliseerd item komt momenteel overeen met de geselecteerde filters."
+        "emptyTitle": "Geen geolokaliseerde plek",
+        "emptyMessage": "Geen geolokaliseerde plek past momenteel bij de gekozen filters."
       },
       "comingSoon": {
         "badge": "Binnenkort",
@@ -2410,7 +2410,7 @@
     "photos": {
       "kicker": "Foto’s",
       "title": "Foto’s",
-      "subtitle": "Algemene parkfoto’s en beelden van parkitems, filterbaar op type.",
+      "subtitle": "Algemene parkfoto's en beelden van attracties en plekken, filterbaar op type.",
       "current": "Huidig",
       "openItem": "Detailpagina van {{name}} openen",
       "categories": {
@@ -2458,7 +2458,7 @@
     "mapPage": {
       "kicker": "Parkkaart",
       "title": "Kaart van {{name}}",
-      "subtitle": "Verken de geolokaliseerde elementen van {{name}} op een aparte kaart.",
+      "subtitle": "Verken de geolokaliseerde attracties, restaurants, winkels en aandachtspunten van {{name}} op een aparte kaart.",
       "loadingTitle": "Kaart laden",
       "loadingMessage": "De parkmarkeringen worden voorbereid.",
       "errorTitle": "Kaart niet beschikbaar",
@@ -2468,7 +2468,7 @@
     "zones": {
       "badge": "Parkzones",
       "title": "Zones van {{park}}",
-      "subtitle": "{{count}} zone(s) met {{total}} openbare item(s).",
+      "subtitle": "{{count}} zone(s) met {{total}} openbare plek(ken) om te ontdekken.",
       "loadingTitle": "Zones laden",
       "loadingMessage": "De parkzones worden geladen.",
       "errorTitle": "Zones kunnen niet worden geladen",
@@ -2487,16 +2487,16 @@
       "errorMessage": "De parkzone kon niet worden geladen.",
       "emptyTitle": "Zone niet beschikbaar",
       "emptyMessage": "De gevraagde zone is niet beschikbaar.",
-      "totalItems": "Items",
-      "totalItemsHint": "Gekoppeld aan deze zone",
+      "totalItems": "Plekken",
+      "totalItemsHint": "Te ontdekken",
       "mapMarkers": "Markeringen",
       "mapMarkersHint": "Geolokaliseerd",
       "mapBadge": "Zonekaart",
-      "mapTitle": "Geolokaliseerde items",
-      "itemsBadge": "Zone-items",
-      "itemsTitle": "Items in deze zone",
-      "emptyItemsTitle": "Geen item in deze zone",
-      "emptyItemsMessage": "Er is momenteel geen openbaar item aan deze zone gekoppeld."
+      "mapTitle": "Geolokaliseerde plekken",
+      "itemsBadge": "Te ontdekken",
+      "itemsTitle": "Plekken om te ontdekken in deze zone",
+      "emptyItemsTitle": "Geen plek in deze zone",
+      "emptyItemsMessage": "Er is momenteel geen openbare plek aan deze zone gekoppeld."
     },
     "videosPage": {
       "kicker": "Park videos",
@@ -2631,9 +2631,9 @@
       "text": "Bekijk {{title}} op AmusementPark."
     },
     "parkItems": {
-      "title": "Deze attracties delen",
+      "title": "Deze attracties en plekken delen",
       "description": "Stuur deze gids naar iemand die een bezoek plant.",
-      "text": "Bekijk attracties en plekken van {{title}} op AmusementPark."
+      "text": "Bekijk attracties, shows en plekken in {{title}} op AmusementPark."
     },
     "parkItem": {
       "title": "Deze fiche delen",
