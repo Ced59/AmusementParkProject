@@ -11,6 +11,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Localization;
 using Moq;
@@ -125,7 +126,8 @@ public sealed class ParkItemsBulkCreateCommandHandlerTests
         ApplyParkItemsBulkCreateCommandHandler handler = new ApplyParkItemsBulkCreateCommandHandler(
             fixture.CreatePreviewService(),
             fixture.ParkItemRepository.Object,
-            fixture.SearchProjectionWriter.Object);
+            fixture.SearchProjectionWriter.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>());
 
         ApplicationResult<ParkItemsBulkCreateApplyResult> result = await handler.HandleAsync(
             new ApplyParkItemsBulkCreateCommand(

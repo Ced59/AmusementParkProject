@@ -117,6 +117,9 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ISeoSitemapGenerationHistoryRepository, SeoSitemapGenerationHistoryRepository>();
         services.AddScoped<ISeoSitemapSettingsRepository, SeoSitemapSettingsRepository>();
         services.AddScoped<IIndexNowSubmitter, IndexNowSubmitter>();
+        services.AddSingleton<InMemorySeoSitemapRefreshScheduler>();
+        services.AddSingleton<ISeoSitemapRefreshScheduler>(serviceProvider => serviceProvider.GetRequiredService<InMemorySeoSitemapRefreshScheduler>());
+        services.AddHostedService(serviceProvider => serviceProvider.GetRequiredService<InMemorySeoSitemapRefreshScheduler>());
         services.AddScoped<ISsrPageCacheInvalidator, HttpSsrPageCacheInvalidator>();
         services.AddScoped<IParkGraphUpsertHistoryRepository, ParkGraphUpsertHistoryRepository>();
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();

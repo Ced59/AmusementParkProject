@@ -6,6 +6,8 @@ using AmusementPark.Application.Features.ParkItems.Results;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkItems.Handlers;
@@ -16,15 +18,18 @@ public sealed class ApplyParkItemsBulkCreateCommandHandler
     private readonly ParkItemsBulkCreatePreviewService previewService;
     private readonly IParkItemRepository parkItemRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
+    private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
 
     public ApplyParkItemsBulkCreateCommandHandler(
         ParkItemsBulkCreatePreviewService previewService,
         IParkItemRepository parkItemRepository,
-        ISearchProjectionWriter searchProjectionWriter)
+        ISearchProjectionWriter searchProjectionWriter,
+        IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
     {
         this.previewService = previewService;
         this.parkItemRepository = parkItemRepository;
         this.searchProjectionWriter = searchProjectionWriter;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<ParkItemsBulkCreateApplyResult>> HandleAsync(
@@ -38,17 +43,25 @@ public sealed class ApplyParkItemsBulkCreateCommandHandler
         }
 
         List<string> createdIds = new List<string>();
+        List<ParkItem> createdItems = new List<ParkItem>();
         foreach (ParkItemBulkCreatePreviewRow row in previewResult.Value.Rows.Where(static item => item.CanApply))
         {
             ParkItem parkItem = this.previewService.ToParkItem(command.ParkId.Trim(), row);
             ParkItem created = await this.parkItemRepository.CreateAsync(parkItem, cancellationToken);
             createdIds.Add(created.Id);
+            createdItems.Add(created);
         }
 
         if (createdIds.Count > 0)
         {
             await this.searchProjectionWriter.UpsertManyAsync(SearchProjectionResourceTypes.ParkItems, createdIds, cancellationToken);
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, command.ParkId.Trim(), cancellationToken);
+            await this.publicSeoUpdateNotifier.NotifyAsync(
+                new PublicSeoUpdate
+                {
+                    CurrentParkItems = PublicSeoParkItemSnapshot.FromParkItems(createdItems),
+                },
+                cancellationToken);
         }
 
         ParkItemsBulkCreateApplyResult result = new ParkItemsBulkCreateApplyResult

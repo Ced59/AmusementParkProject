@@ -9,6 +9,7 @@ using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
 using Xunit;
@@ -58,7 +59,8 @@ public sealed class UpdateParkItemCommandHandlerPublicationTests
             parkItemRepository.Object,
             validator,
             Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
-            new ParkItemContentQualityService());
+            new ParkItemContentQualityService(),
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict));
 
         ApplicationResult<ParkItem> result = await handler.HandleAsync(new UpdateParkItemCommand("item-1", update), CancellationToken.None);
 

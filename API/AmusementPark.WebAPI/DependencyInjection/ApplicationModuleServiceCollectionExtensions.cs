@@ -1,6 +1,8 @@
 using System;
 using AmusementPark.Application.DependencyInjection;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.WebAPI.Configuration;
+using AmusementPark.WebAPI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,6 +19,7 @@ public static class ApplicationModuleServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(configuration);
 
         services.Configure<SeoSettings>(configuration.GetSection(SeoSettings.SectionName));
+        services.AddScoped<IPublicSeoContextProvider, SeoPublicContextProvider>();
         services.AddApplication();
         services.AddApplicationHandlers(static type =>
         {

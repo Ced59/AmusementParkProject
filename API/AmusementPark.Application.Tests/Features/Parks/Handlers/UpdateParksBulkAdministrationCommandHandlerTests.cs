@@ -7,6 +7,8 @@ using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Handlers;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 using Xunit;
 
@@ -27,7 +29,8 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
         UpdateParksBulkAdministrationCommandHandler handler = new UpdateParksBulkAdministrationCommandHandler(
             parkRepository,
             parkItemRepository,
-            searchProjectionWriter);
+            searchProjectionWriter,
+            new NoOpPublicSeoUpdateNotifier());
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
             new UpdateParksBulkAdministrationCommand(
@@ -56,7 +59,8 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
         UpdateParksBulkAdministrationCommandHandler handler = new UpdateParksBulkAdministrationCommandHandler(
             parkRepository,
             new FakeParkItemRepository(),
-            new FakeSearchProjectionWriter());
+            new FakeSearchProjectionWriter(),
+            new NoOpPublicSeoUpdateNotifier());
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
             new UpdateParksBulkAdministrationCommand(Array.Empty<string>(), true, null));
@@ -82,6 +86,7 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
         public int UpdatedCount { get; init; }
         public List<GetAdministrationIdsCall> GetAdministrationIdsCalls { get; } = new List<GetAdministrationIdsCall>();
         public List<UpdateBulkCall> UpdateCalls { get; } = new List<UpdateBulkCall>();
+        public List<IReadOnlyCollection<string>> GetByIdsCalls { get; } = new List<IReadOnlyCollection<string>>();
 
         public Task<IReadOnlyCollection<string>> GetAdministrationIdsAsync(bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
         {
@@ -102,7 +107,18 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
 
         public Task<IReadOnlyCollection<Park>> GetByIdsAsync(IEnumerable<string> parkIds, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            List<string> ids = parkIds.ToList();
+            this.GetByIdsCalls.Add(ids);
+            IReadOnlyCollection<Park> parks = ids
+                .Select(static parkId => new Park
+                {
+                    Id = parkId,
+                    Name = $"Park {parkId}",
+                    IsVisible = true,
+                    AdminReviewStatus = AdminReviewStatus.Validated,
+                })
+                .ToList();
+            return Task.FromResult(parks);
         }
 
         public Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken)
@@ -302,6 +318,14 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
         public Task DeleteAsync(string resourceType, string resourceId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    private sealed class NoOpPublicSeoUpdateNotifier : IPublicSeoUpdateNotifier
+    {
+        public Task NotifyAsync(PublicSeoUpdate update, CancellationToken cancellationToken)
+        {
+            return Task.CompletedTask;
         }
     }
 }

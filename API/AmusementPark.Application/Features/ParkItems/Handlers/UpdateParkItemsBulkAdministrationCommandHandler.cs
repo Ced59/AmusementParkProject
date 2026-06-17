@@ -7,6 +7,8 @@ using AmusementPark.Application.Features.ParkItems.Results;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkItems.Handlers;
@@ -19,12 +21,18 @@ public sealed class UpdateParkItemsBulkAdministrationCommandHandler : ICommandHa
     private readonly IParkItemRepository parkItemRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly ParkItemContentQualityService contentQualityService;
+    private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
 
-    public UpdateParkItemsBulkAdministrationCommandHandler(IParkItemRepository parkItemRepository, ISearchProjectionWriter searchProjectionWriter, ParkItemContentQualityService contentQualityService)
+    public UpdateParkItemsBulkAdministrationCommandHandler(
+        IParkItemRepository parkItemRepository,
+        ISearchProjectionWriter searchProjectionWriter,
+        ParkItemContentQualityService contentQualityService,
+        IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
     {
         this.parkItemRepository = parkItemRepository;
         this.searchProjectionWriter = searchProjectionWriter;
         this.contentQualityService = contentQualityService;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<BulkAdministrationUpdateResult>> HandleAsync(UpdateParkItemsBulkAdministrationCommand command, CancellationToken cancellationToken = default)
@@ -54,6 +62,8 @@ public sealed class UpdateParkItemsBulkAdministrationCommandHandler : ICommandHa
             }
         }
 
+        IReadOnlyCollection<ParkItem> previousItems = await this.parkItemRepository.GetByIdsAsync(normalizedParkItemIds, cancellationToken);
+
         int updatedCount = await this.parkItemRepository.UpdateBulkAdministrationAsync(
             normalizedParkItemIds,
             command.IsVisible,
@@ -63,6 +73,18 @@ public sealed class UpdateParkItemsBulkAdministrationCommandHandler : ICommandHa
         foreach (string parkItemId in normalizedParkItemIds)
         {
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, parkItemId, cancellationToken);
+        }
+
+        if (updatedCount > 0)
+        {
+            IReadOnlyCollection<ParkItem> currentItems = await this.parkItemRepository.GetByIdsAsync(normalizedParkItemIds, cancellationToken);
+            await this.publicSeoUpdateNotifier.NotifyAsync(
+                new PublicSeoUpdate
+                {
+                    PreviousParkItems = PublicSeoParkItemSnapshot.FromParkItems(previousItems),
+                    CurrentParkItems = PublicSeoParkItemSnapshot.FromParkItems(currentItems),
+                },
+                cancellationToken);
         }
 
         return ApplicationResult<BulkAdministrationUpdateResult>.Success(new BulkAdministrationUpdateResult

@@ -5,6 +5,8 @@ using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Parks.Handlers;
@@ -17,12 +19,18 @@ public sealed class UpdateParkCommandHandler : ICommandHandler<UpdateParkCommand
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
+    private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
 
-    public UpdateParkCommandHandler(IParkRepository parkRepository, IParkItemRepository parkItemRepository, ISearchProjectionWriter searchProjectionWriter)
+    public UpdateParkCommandHandler(
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository,
+        ISearchProjectionWriter searchProjectionWriter,
+        IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.searchProjectionWriter = searchProjectionWriter;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<Park>> HandleAsync(UpdateParkCommand command, CancellationToken cancellationToken = default)
@@ -61,6 +69,15 @@ public sealed class UpdateParkCommandHandler : ICommandHandler<UpdateParkCommand
             {
                 await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, parkItem.Id, cancellationToken);
             }
+
+            await this.publicSeoUpdateNotifier.NotifyAsync(
+                new PublicSeoUpdate
+                {
+                    PreviousParks = PublicSeoParkSnapshot.FromParks(new[] { existing }),
+                    CurrentParks = PublicSeoParkSnapshot.FromParks(new[] { updated }),
+                    IncludeDiscoveryPages = true,
+                },
+                cancellationToken);
 
             return ApplicationResult<Park>.Success(updated);
         }

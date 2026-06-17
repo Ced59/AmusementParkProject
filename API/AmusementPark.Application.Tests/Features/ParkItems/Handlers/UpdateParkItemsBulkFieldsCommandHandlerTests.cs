@@ -6,6 +6,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
 using Xunit;
@@ -19,7 +20,7 @@ public sealed class UpdateParkItemsBulkFieldsCommandHandlerTests
     {
         Mock<IParkItemRepository> repository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
-        UpdateParkItemsBulkFieldsCommandHandler handler = new UpdateParkItemsBulkFieldsCommandHandler(repository.Object, searchProjectionWriter.Object, new ParkItemContentQualityService());
+        UpdateParkItemsBulkFieldsCommandHandler handler = new UpdateParkItemsBulkFieldsCommandHandler(repository.Object, searchProjectionWriter.Object, new ParkItemContentQualityService(), Mock.Of<IPublicSeoUpdateNotifier>());
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
             new UpdateParkItemsBulkFieldsCommand(Array.Empty<string>(), true, "zone-1", null, null, false, null, null, null),
@@ -36,7 +37,7 @@ public sealed class UpdateParkItemsBulkFieldsCommandHandlerTests
     {
         Mock<IParkItemRepository> repository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
-        UpdateParkItemsBulkFieldsCommandHandler handler = new UpdateParkItemsBulkFieldsCommandHandler(repository.Object, searchProjectionWriter.Object, new ParkItemContentQualityService());
+        UpdateParkItemsBulkFieldsCommandHandler handler = new UpdateParkItemsBulkFieldsCommandHandler(repository.Object, searchProjectionWriter.Object, new ParkItemContentQualityService(), Mock.Of<IPublicSeoUpdateNotifier>());
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
             new UpdateParkItemsBulkFieldsCommand(new[] { "item-1" }, false, null, null, null, false, null, null, null),
@@ -111,7 +112,7 @@ public sealed class UpdateParkItemsBulkFieldsCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
-        UpdateParkItemsBulkFieldsCommandHandler handler = new UpdateParkItemsBulkFieldsCommandHandler(repository.Object, searchProjectionWriter.Object, new ParkItemContentQualityService());
+        UpdateParkItemsBulkFieldsCommandHandler handler = new UpdateParkItemsBulkFieldsCommandHandler(repository.Object, searchProjectionWriter.Object, new ParkItemContentQualityService(), Mock.Of<IPublicSeoUpdateNotifier>());
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
             new UpdateParkItemsBulkFieldsCommand(
@@ -159,7 +160,7 @@ public sealed class UpdateParkItemsBulkFieldsCommandHandlerTests
                 It.IsAny<CancellationToken>()))
             .ReturnsAsync(incompleteItems);
 
-        UpdateParkItemsBulkFieldsCommandHandler handler = new UpdateParkItemsBulkFieldsCommandHandler(repository.Object, searchProjectionWriter.Object, new ParkItemContentQualityService());
+        UpdateParkItemsBulkFieldsCommandHandler handler = new UpdateParkItemsBulkFieldsCommandHandler(repository.Object, searchProjectionWriter.Object, new ParkItemContentQualityService(), Mock.Of<IPublicSeoUpdateNotifier>());
 
         ApplicationResult<BulkAdministrationUpdateResult> result = await handler.HandleAsync(
             new UpdateParkItemsBulkFieldsCommand(new[] { "item-1" }, false, null, null, null, false, null, true, null),
