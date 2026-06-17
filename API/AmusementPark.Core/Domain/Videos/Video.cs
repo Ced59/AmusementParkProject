@@ -37,6 +37,8 @@ public sealed class Video : AuditableEntity
 
     public DateTime? PublishedAtUtc { get; set; }
 
+    public List<string> LanguageCodes { get; set; } = new();
+
     public List<LocalizedText> Titles { get; set; } = new();
 
     public List<LocalizedText> Descriptions { get; set; } = new();

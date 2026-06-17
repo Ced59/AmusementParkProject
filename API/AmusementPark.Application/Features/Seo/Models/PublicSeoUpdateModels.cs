@@ -70,6 +70,8 @@ public sealed record PublicSeoVideoSnapshot(
     bool IsPublished,
     DateTime? UpdatedAtUtc)
 {
+    public IReadOnlyCollection<string> LanguageCodes { get; init; } = Array.Empty<string>();
+
     public static PublicSeoVideoSnapshot? FromVideo(Video? video)
     {
         if (video is null || string.IsNullOrWhiteSpace(video.Id) || string.IsNullOrWhiteSpace(video.OwnerId))
@@ -83,7 +85,13 @@ public sealed record PublicSeoVideoSnapshot(
             video.OwnerId.Trim(),
             video.Title ?? string.Empty,
             video.IsPublished,
-            video.UpdatedAtUtc);
+            video.UpdatedAtUtc)
+        {
+            LanguageCodes = video.LanguageCodes
+                .Where(static languageCode => !string.IsNullOrWhiteSpace(languageCode))
+                .Select(static languageCode => languageCode.Trim().ToLowerInvariant())
+                .ToList(),
+        };
     }
 
     public static IReadOnlyCollection<PublicSeoVideoSnapshot> FromVideos(IEnumerable<Video?> videos)

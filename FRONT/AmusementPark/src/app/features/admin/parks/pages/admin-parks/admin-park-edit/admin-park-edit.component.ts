@@ -7,6 +7,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { Park } from '@app/models/parks/park';
 import { OwnedImageItem } from '@shared/models/images/owned-image-item.model';
+import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { Bind } from 'primeng/bind';
 import { Tag } from 'primeng/tag';
 import { ButtonDirective } from 'primeng/button';
@@ -33,6 +34,7 @@ import { AdminParkLocationStateFacade } from '@features/admin/parks/state/admin-
 import { AdminParkLogosStateFacade } from '@features/admin/parks/state/admin-park-logos-state.facade';
 import { AdminParkPhotosStateFacade } from '@features/admin/parks/state/admin-park-photos-state.facade';
 import { AdminParkEditStateFacade } from '@features/admin/parks/state/admin-park-edit-state.facade';
+import { AdminVideoCreatePanelComponent } from '@features/admin/videos/ui/admin-video-create-panel/admin-video-create-panel.component';
 
 
 type SaveMode = 'stay' | 'back';
@@ -70,6 +72,7 @@ type SaveScope = 'section' | 'all';
     AdminParkDescriptionsTabComponent,
     AdminParkLogosTabComponent,
     AdminParkPhotosTabComponent,
+    AdminVideoCreatePanelComponent,
     TranslateModule
   ]
 })
@@ -82,6 +85,7 @@ export class AdminParkEditComponent implements OnInit {
   public readonly parkId = signal<string | null>(null);
   public readonly isEditMode = computed(() => !!this.parkId());
   public readonly hasPendingChanges = signal(false);
+  public readonly videoOwnerType: VideoOwnerType = VideoOwnerType.PARK;
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private lastSavedSnapshot: string = '';

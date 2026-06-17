@@ -34,6 +34,9 @@ public sealed partial class MongoDatabaseInitializer
                 Builders<VideoDocument>.IndexKeys.Ascending("tagIds"),
                 new CreateIndexOptions { Name = "idx_videos_tag_ids" }),
             new CreateIndexModel<VideoDocument>(
+                Builders<VideoDocument>.IndexKeys.Ascending("languageCodes"),
+                new CreateIndexOptions { Name = "idx_videos_language_codes" }),
+            new CreateIndexModel<VideoDocument>(
                 Builders<VideoDocument>.IndexKeys
                     .Ascending(item => item.CreatorName)
                     .Ascending(item => item.IsPublished)

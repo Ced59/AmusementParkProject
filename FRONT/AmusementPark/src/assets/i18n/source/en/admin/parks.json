@@ -239,7 +239,8 @@
           "details": "Technical details",
           "accessConditions": "Access conditions",
           "locations": "Specific locations",
-          "photos": "Photos"
+          "photos": "Photos",
+          "videos": "Videos"
         },
         "sectionNav": {
           "label": "Editor section",
@@ -349,7 +350,8 @@
         "location": "Location",
         "descriptions": "Descriptions",
         "logos": "Logos",
-        "photos": "Photos"
+        "photos": "Photos",
+        "videos": "Videos"
       },
       "editorStatus": {
         "saving": "Saving...",

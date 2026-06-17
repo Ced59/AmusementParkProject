@@ -33,9 +33,13 @@ export class VideosApiService {
     );
   }
 
-  getVideoById(id: string, options: VideosHttpOptions = {}): Observable<VideoDto> {
+  getVideoById(id: string, options: VideosHttpOptions = {}, languageCode: string | null = null): Observable<VideoDto> {
     const url: string = `${environment.apiBaseUrl}${VIDEOS_API_ENDPOINTS.getVideo(id)}`;
-    return this.http.get<VideoDto>(url, options);
+    const params: HttpParams = languageCode?.trim()
+      ? new HttpParams().set('languageCode', languageCode.trim())
+      : new HttpParams();
+
+    return this.http.get<VideoDto>(url, { ...options, params });
   }
 
   resolveVideoMetadata(videoUrl: string, options: VideosHttpOptions = {}): Observable<ResolvedVideoMetadataDto> {
@@ -93,6 +97,7 @@ export class VideosApiService {
     params = this.appendOptionalParam(params, 'type', query.type);
     params = this.appendOptionalParam(params, 'tagId', query.tagId);
     params = this.appendOptionalParam(params, 'creatorName', query.creatorName);
+    params = this.appendOptionalParam(params, 'languageCode', query.languageCode);
     params = this.appendOptionalBooleanParam(params, 'isPublished', query.isPublished);
     params = this.appendOptionalParam(params, 'sortBy', query.sortBy);
     params = this.appendOptionalParam(params, 'sortDirection', query.sortDirection);

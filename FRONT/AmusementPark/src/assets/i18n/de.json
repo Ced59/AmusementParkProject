@@ -709,7 +709,8 @@
           "details": "Technische Details",
           "accessConditions": "Zugangsbedingungen",
           "locations": "Spezifische Positionen",
-          "photos": "Fotos"
+          "photos": "Fotos",
+          "videos": "Videos"
         },
         "sectionNav": {
           "label": "Editorbereich",
@@ -819,7 +820,8 @@
         "location": "Standort",
         "descriptions": "Beschreibungen",
         "logos": "Logos",
-        "photos": "Fotos"
+        "photos": "Fotos",
+        "videos": "Videos"
       },
       "editorStatus": {
         "saving": "Speichern...",
@@ -1102,12 +1104,22 @@
       "thumbnailUrl": "Thumbnail-URL",
       "durationSeconds": "Dauer (Sekunden)",
       "publishedAt": "Veröffentlicht am",
-      "titleFr": "FR-Titel",
-      "descriptionFr": "FR-Beschreibung",
+      "language": "Ausspiel-Sprache",
+      "allLanguageFilters": "Alle Ausspiel-Sprachen",
+      "allLanguagesVisibility": "Alle Sprachen",
+      "contextCreateKicker": "Kontextbezogen hinzufuegen",
+      "localizedTitles": "Lokalisierte Titel",
+      "localizedDescriptions": "Lokalisierte Beschreibungen",
       "isPublished": "Video veröffentlicht",
       "tags": "Tags",
       "resolve": "Analysieren",
       "create": "Video erstellen",
+      "tagsLoadError": "Video-Tags konnten nicht geladen werden.",
+      "metadataError": "Dieses Video konnte nicht analysiert werden.",
+      "createSuccess": "Video erstellt.",
+      "createError": "Das Video konnte nicht erstellt werden.",
+      "saveOwnerFirstTitle": "Speichere diesen Inhalt zuerst",
+      "saveOwnerFirstMessage": "Das Video kann hinzugefuegt werden, sobald die Kennung verfuegbar ist.",
       "listTitle": "Bibliothek",
       "pageHint": "Lazy Thumbnails, Serverfilter und echte Paginierung.",
       "emptyTitle": "Kein Video gefunden",

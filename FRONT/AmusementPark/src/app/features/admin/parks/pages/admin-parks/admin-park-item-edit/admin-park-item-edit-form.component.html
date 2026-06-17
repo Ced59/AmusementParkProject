@@ -75,6 +75,9 @@
         @if (isAttractionCategory) {
           <p-tab [value]="4">{{ 'admin.parks.items.tabs.photos' | translate }}</p-tab>
         }
+        @if (isEditMode) {
+          <p-tab [value]="5">{{ 'admin.parks.items.tabs.videos' | translate }}</p-tab>
+        }
       </p-tablist>
 
       <p-tabpanels>
@@ -189,6 +192,18 @@
                 (photosPageChange)="photosPageChange.emit($event)"
                 (saveSection)="saveSection.emit()">
               </app-admin-park-item-photos-tab>
+            }
+          </p-tabpanel>
+        }
+
+        @if (isEditMode) {
+          <p-tabpanel [value]="5">
+            @if (activeTabIndex === 5) {
+              <app-admin-video-create-panel
+                [ownerType]="videoOwnerType"
+                [ownerId]="itemId"
+                [ownerName]="itemName">
+              </app-admin-video-create-panel>
             }
           </p-tabpanel>
         }

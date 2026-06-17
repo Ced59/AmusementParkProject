@@ -26,6 +26,8 @@ public sealed class ResolvedVideoMetadataDto
 
     public DateTime? PublishedAtUtc { get; set; }
 
+    public string? DetectedLanguageCode { get; set; }
+
     public string? MetadataSource { get; set; }
 
     public DateTime? FetchedAtUtc { get; set; }

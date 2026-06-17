@@ -239,7 +239,8 @@
           "details": "Technische details",
           "accessConditions": "Toegangsvoorwaarden",
           "locations": "Specifieke locaties",
-          "photos": "Foto's"
+          "photos": "Foto's",
+          "videos": "Video's"
         },
         "sectionNav": {
           "label": "Editorsectie",
@@ -349,7 +350,8 @@
         "location": "Locatie",
         "descriptions": "Beschrijvingen",
         "logos": "Logo’s",
-        "photos": "Foto’s"
+        "photos": "Foto’s",
+        "videos": "Video's"
       },
       "editorStatus": {
         "saving": "Opslaan...",

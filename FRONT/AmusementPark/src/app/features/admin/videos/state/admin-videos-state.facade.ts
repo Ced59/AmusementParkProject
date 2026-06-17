@@ -36,6 +36,7 @@ const DEFAULT_VIDEO_QUERY: VideoSearchQuery = {
   type: null,
   tagId: null,
   creatorName: null,
+  languageCode: null,
   isPublished: null,
   sortBy: 'created',
   sortDirection: 'desc',
@@ -201,10 +202,6 @@ export class AdminVideosStateFacade {
     return this.videosApiService.resolveVideoMetadata(videoUrl);
   }
 
-  createVideo(request: VideoWriteRequest): Observable<VideoDto> {
-    return this.videosApiService.createVideo(request);
-  }
-
   updateVideo(id: string, request: VideoWriteRequest): Observable<VideoDto> {
     return this.videosApiService.updateVideo(id, request);
   }
@@ -253,6 +250,7 @@ export class AdminVideosStateFacade {
   private cloneVideo(video: VideoDto): VideoDto {
     const clonedVideo: VideoDto = JSON.parse(JSON.stringify(video)) as VideoDto;
     clonedVideo.tagIds = clonedVideo.tagIds ?? [];
+    clonedVideo.languageCodes = clonedVideo.languageCodes ?? [];
     clonedVideo.titles = clonedVideo.titles ?? [];
     clonedVideo.descriptions = clonedVideo.descriptions ?? [];
     clonedVideo.externalMetadata = clonedVideo.externalMetadata ?? {};

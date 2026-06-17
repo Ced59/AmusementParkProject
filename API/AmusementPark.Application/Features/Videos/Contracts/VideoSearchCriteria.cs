@@ -10,6 +10,7 @@ public sealed record VideoSearchCriteria(
     VideoType? Type = null,
     string? TagId = null,
     string? CreatorName = null,
+    string? LanguageCode = null,
     bool? IsPublished = null,
     string? SortBy = null,
     string? SortDirection = null);

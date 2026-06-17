@@ -31,6 +31,7 @@ describe('VideosApiService', () => {
       type: VideoType.ON_RIDE,
       tagId: 'official',
       creatorName: 'creator',
+      languageCode: 'fr',
       sortBy: 'published',
       sortDirection: 'desc'
     }).subscribe((page) => {
@@ -46,18 +47,20 @@ describe('VideosApiService', () => {
     expect(request.request.params.get('type')).toBe('ON_RIDE');
     expect(request.request.params.get('tagId')).toBe('official');
     expect(request.request.params.get('creatorName')).toBe('creator');
+    expect(request.request.params.get('languageCode')).toBe('fr');
     expect(request.request.params.get('sortBy')).toBe('published');
     expect(request.request.params.get('sortDirection')).toBe('desc');
     request.flush({ data: [{ id: 'video-1' }] });
   });
 
   it('gets a video detail and public tags', () => {
-    service.getVideoById('video-1').subscribe((video) => {
+    service.getVideoById('video-1', {}, 'fr').subscribe((video) => {
       expect(video.id).toBe('video-1');
     });
 
-    const videoRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos/video-1`);
+    const videoRequest = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}videos/video-1`);
     expect(videoRequest.request.method).toBe('GET');
+    expect(videoRequest.request.params.get('languageCode')).toBe('fr');
     videoRequest.flush({ id: 'video-1' });
 
     service.getVideoTags().subscribe((tags) => {
@@ -84,6 +87,7 @@ describe('VideosApiService', () => {
       thumbnailUrl: null,
       durationSeconds: 120,
       publishedAtUtc: null,
+      languageCodes: ['fr'],
       titles: [],
       descriptions: [],
       tagIds: ['tag-1'],

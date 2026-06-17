@@ -22,6 +22,7 @@ public sealed class ExternalVideoMetadataProviderTests
                     "channelId": "UC123",
                     "title": "Onride test",
                     "description": "Stable description",
+                    "defaultAudioLanguage": "fr-FR",
                     "channelTitle": "Creator name",
                     "thumbnails": {
                       "default": { "url": "https://i.ytimg.com/vi/abcdefghijk/default.jpg", "width": 120, "height": 90 },
@@ -54,6 +55,7 @@ public sealed class ExternalVideoMetadataProviderTests
         Assert.Equal("Onride test", metadata.Title);
         Assert.Equal("Creator name", metadata.CreatorName);
         Assert.Equal("https://i.ytimg.com/vi/abcdefghijk/maxresdefault.jpg", metadata.ThumbnailUrl);
+        Assert.Equal("fr", metadata.DetectedLanguageCode);
         Assert.Equal(TimeSpan.FromSeconds(123), metadata.Duration);
         Assert.Equal("youtube-data-api", metadata.MetadataSource);
         Assert.NotNull(handler.LastRequestUri);

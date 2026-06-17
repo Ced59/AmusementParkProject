@@ -15,28 +15,11 @@ import { VideoType } from '@app/models/videos/video-type';
 import { VideoWriteRequest } from '@app/models/videos/video-write-request';
 import { AdminVideosStateFacade } from '@features/admin/videos/state/admin-videos-state.facade';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
+import { LANGUAGES, LanguageOption } from '@shared/models/localization';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 
 type VideoSortField = 'created' | 'updated' | 'title' | 'published';
 type VideoSortDirection = 'asc' | 'desc';
-
-interface AdminVideoDraft {
-  originalUrl: string;
-  ownerType: VideoOwnerType;
-  ownerId: string;
-  type: VideoType;
-  title: string;
-  description: string;
-  creatorName: string;
-  creatorUrl: string;
-  thumbnailUrl: string;
-  durationSeconds: number | null;
-  publishedAtUtc: string;
-  titleFr: string;
-  descriptionFr: string;
-  tagIds: string[];
-  isPublished: boolean;
-}
 
 @Component({
   selector: 'app-admin-videos',
@@ -71,10 +54,8 @@ export class AdminVideosComponent implements OnInit {
   ];
   protected readonly sortFields: VideoSortField[] = ['created', 'updated', 'title', 'published'];
   protected readonly pageSizes: number[] = [12, 24, 48, 96];
-  protected readonly defaultLanguageCode: string = 'fr';
+  protected readonly languages: readonly LanguageOption[] = LANGUAGES;
 
-  protected draft: AdminVideoDraft = this.createEmptyDraft();
-  protected resolvedMetadata: ResolvedVideoMetadataDto | null = null;
   protected selectedResolvedMetadata: ResolvedVideoMetadataDto | null = null;
   protected newTagSlug: string = '';
 
@@ -125,6 +106,10 @@ export class AdminVideosComponent implements OnInit {
     this.stateFacade.updateQuery({ creatorName: value || null });
   }
 
+  protected updateLanguageFilter(value: string): void {
+    this.stateFacade.updateQuery({ languageCode: value || null });
+  }
+
   protected updatePublishedFilter(value: string): void {
     this.stateFacade.updateQuery({ isPublished: this.parseBooleanFilter(value) });
   }
@@ -150,37 +135,6 @@ export class AdminVideosComponent implements OnInit {
   protected selectVideo(video: VideoDto): void {
     this.selectedResolvedMetadata = null;
     this.stateFacade.selectVideo(video);
-  }
-
-  protected async resolveDraftMetadata(): Promise<void> {
-    const originalUrl: string = this.draft.originalUrl.trim();
-
-    if (!originalUrl) {
-      return;
-    }
-
-    try {
-      const metadata: ResolvedVideoMetadataDto = await firstValueFrom(this.stateFacade.resolveVideoMetadata(originalUrl));
-      this.resolvedMetadata = metadata;
-      this.applyMetadataToDraft(metadata);
-    } catch {
-      this.stateFacade.setError();
-    }
-  }
-
-  protected async createVideo(): Promise<void> {
-    if (!this.canSubmitDraft()) {
-      return;
-    }
-
-    try {
-      await firstValueFrom(this.stateFacade.createVideo(this.buildVideoRequestFromDraft(this.draft)));
-      this.draft = this.createEmptyDraft();
-      this.resolvedMetadata = null;
-      this.reload();
-    } catch {
-      this.stateFacade.setError();
-    }
   }
 
   protected async resolveSelectedMetadata(): Promise<void> {
@@ -242,7 +196,7 @@ export class AdminVideosComponent implements OnInit {
     try {
       await firstValueFrom(this.stateFacade.createTag({
         slug,
-        labels: [{ languageCode: this.defaultLanguageCode, value: slug }],
+        labels: this.languages.map((language: LanguageOption) => ({ languageCode: language.value, value: slug })),
         descriptions: [],
       }));
       this.newTagSlug = '';
@@ -250,10 +204,6 @@ export class AdminVideosComponent implements OnInit {
     } catch {
       this.stateFacade.setError();
     }
-  }
-
-  protected toggleDraftTag(tagId: string, checked: boolean): void {
-    this.draft.tagIds = this.toggleTagId(this.draft.tagIds, tagId, checked);
   }
 
   protected toggleSelectedTag(tagId: string, checked: boolean): void {
@@ -272,23 +222,31 @@ export class AdminVideosComponent implements OnInit {
     this.stateFacade.updateSelectedVideo({ type: value as VideoType });
   }
 
+  protected updateSelectedLanguage(value: string): void {
+    this.stateFacade.updateSelectedVideo({ languageCodes: this.toLanguageCodes(value) });
+  }
+
+  protected getSelectedLanguage(video: VideoDto): string {
+    return video.languageCodes?.[0] ?? 'all';
+  }
+
   protected updateSelectedDuration(value: string | number): void {
     this.stateFacade.updateSelectedVideo({ durationSeconds: this.toNullableNumber(value) });
   }
 
-  protected updateSelectedLocalizedField(field: 'titles' | 'descriptions', value: string): void {
+  protected updateSelectedLocalizedField(field: 'titles' | 'descriptions', languageCode: string, value: string): void {
     const selectedVideo: VideoDto | null = this.selectedVideo();
 
     if (!selectedVideo) {
       return;
     }
 
-    const values: LocalizedItemDto<string>[] = this.upsertLocalizedValue(selectedVideo[field] ?? [], value);
+    const values: LocalizedItemDto<string>[] = this.upsertLocalizedValue(selectedVideo[field] ?? [], languageCode, value);
     this.stateFacade.updateSelectedVideo({ [field]: values } as Partial<VideoDto>);
   }
 
-  protected getLocalizedField(video: VideoDto, field: 'titles' | 'descriptions'): string {
-    return video[field]?.find((item: LocalizedItemDto<string>) => item.languageCode === this.defaultLanguageCode)?.value ?? '';
+  protected getLocalizedField(video: VideoDto, field: 'titles' | 'descriptions', languageCode: string): string {
+    return video[field]?.find((item: LocalizedItemDto<string>) => item.languageCode === languageCode)?.value ?? '';
   }
 
   protected getThumbnailPathOrUrl(video: VideoDto): string | null {
@@ -329,39 +287,6 @@ export class AdminVideosComponent implements OnInit {
     return item.id;
   }
 
-  private createEmptyDraft(): AdminVideoDraft {
-    return {
-      originalUrl: '',
-      ownerType: VideoOwnerType.PARK,
-      ownerId: '',
-      type: VideoType.ON_RIDE,
-      title: '',
-      description: '',
-      creatorName: '',
-      creatorUrl: '',
-      thumbnailUrl: '',
-      durationSeconds: null,
-      publishedAtUtc: '',
-      titleFr: '',
-      descriptionFr: '',
-      tagIds: [],
-      isPublished: true,
-    };
-  }
-
-  private applyMetadataToDraft(metadata: ResolvedVideoMetadataDto): void {
-    this.draft.originalUrl = metadata.originalUrl || this.draft.originalUrl;
-    this.draft.title = metadata.title || this.draft.title;
-    this.draft.description = metadata.description || this.draft.description;
-    this.draft.creatorName = metadata.creatorName || this.draft.creatorName;
-    this.draft.creatorUrl = metadata.creatorUrl || metadata.providerChannelUrl || this.draft.creatorUrl;
-    this.draft.thumbnailUrl = metadata.thumbnailUrl || this.draft.thumbnailUrl;
-    this.draft.durationSeconds = metadata.durationSeconds ?? this.draft.durationSeconds;
-    this.draft.publishedAtUtc = metadata.publishedAtUtc || this.draft.publishedAtUtc;
-    this.draft.titleFr = this.draft.titleFr || metadata.title || '';
-    this.draft.descriptionFr = this.draft.descriptionFr || metadata.description || '';
-  }
-
   private applyMetadataToSelectedVideo(metadata: ResolvedVideoMetadataDto): void {
     this.stateFacade.updateSelectedVideo({
       title: metadata.title || this.selectedVideo()?.title || '',
@@ -371,27 +296,9 @@ export class AdminVideosComponent implements OnInit {
       thumbnailUrl: metadata.thumbnailUrl || this.selectedVideo()?.thumbnailUrl || null,
       durationSeconds: metadata.durationSeconds ?? this.selectedVideo()?.durationSeconds ?? null,
       publishedAtUtc: metadata.publishedAtUtc || this.selectedVideo()?.publishedAtUtc || null,
+      titles: this.applyMetadataToLocalizedValues(this.selectedVideo()?.titles ?? [], metadata.title),
+      descriptions: this.applyMetadataToLocalizedValues(this.selectedVideo()?.descriptions ?? [], metadata.description),
     });
-  }
-
-  private buildVideoRequestFromDraft(draft: AdminVideoDraft): VideoWriteRequest {
-    return {
-      originalUrl: draft.originalUrl.trim(),
-      ownerType: draft.ownerType,
-      ownerId: draft.ownerId.trim(),
-      type: draft.type,
-      title: this.normalizeOptionalString(draft.title),
-      description: this.normalizeOptionalString(draft.description),
-      creatorName: this.normalizeOptionalString(draft.creatorName),
-      creatorUrl: this.normalizeOptionalString(draft.creatorUrl),
-      thumbnailUrl: this.normalizeOptionalString(draft.thumbnailUrl),
-      durationSeconds: draft.durationSeconds,
-      publishedAtUtc: this.normalizeOptionalString(draft.publishedAtUtc),
-      titles: this.upsertLocalizedValue([], draft.titleFr),
-      descriptions: this.upsertLocalizedValue([], draft.descriptionFr),
-      tagIds: draft.tagIds,
-      isPublished: draft.isPublished,
-    };
   }
 
   private buildVideoRequestFromVideo(video: VideoDto): VideoWriteRequest {
@@ -407,15 +314,12 @@ export class AdminVideosComponent implements OnInit {
       thumbnailUrl: this.normalizeOptionalString(video.thumbnailUrl),
       durationSeconds: video.durationSeconds ?? null,
       publishedAtUtc: this.normalizeOptionalString(video.publishedAtUtc),
+      languageCodes: video.languageCodes ?? [],
       titles: video.titles ?? [],
       descriptions: video.descriptions ?? [],
       tagIds: video.tagIds ?? [],
       isPublished: video.isPublished,
     };
-  }
-
-  protected canSubmitDraft(): boolean {
-    return !!this.draft.originalUrl.trim() && !!this.draft.ownerId.trim() && this.ownerTypes.includes(this.draft.ownerType);
   }
 
   private parseBooleanFilter(value: string): boolean | null {
@@ -430,20 +334,24 @@ export class AdminVideosComponent implements OnInit {
     return null;
   }
 
-  private toggleTagId(currentTagIds: string[], tagId: string, checked: boolean): string[] {
-    const tagIds: Set<string> = new Set(currentTagIds);
+  private applyMetadataToLocalizedValues(values: LocalizedItemDto<string>[], value: string | null | undefined): LocalizedItemDto<string>[] {
+    const normalizedValue: string = value?.trim() ?? '';
 
-    if (checked) {
-      tagIds.add(tagId);
-    } else {
-      tagIds.delete(tagId);
+    if (!normalizedValue) {
+      return values;
     }
 
-    return Array.from(tagIds);
+    return this.languages.reduce((accumulator: LocalizedItemDto<string>[], language: LanguageOption) => {
+      const existingValue: string = accumulator.find((item: LocalizedItemDto<string>) => item.languageCode === language.value)?.value?.trim() ?? '';
+      return existingValue
+        ? accumulator
+        : this.upsertLocalizedValue(accumulator, language.value, normalizedValue);
+    }, values);
   }
 
-  private upsertLocalizedValue(values: LocalizedItemDto<string>[], value: string): LocalizedItemDto<string>[] {
-    const others: LocalizedItemDto<string>[] = values.filter((item: LocalizedItemDto<string>) => item.languageCode !== this.defaultLanguageCode);
+  private upsertLocalizedValue(values: LocalizedItemDto<string>[], languageCode: string, value: string): LocalizedItemDto<string>[] {
+    const normalizedLanguageCode: string = languageCode.trim().toLowerCase();
+    const others: LocalizedItemDto<string>[] = values.filter((item: LocalizedItemDto<string>) => item.languageCode !== normalizedLanguageCode);
 
     if (!value.trim()) {
       return others;
@@ -452,7 +360,7 @@ export class AdminVideosComponent implements OnInit {
     return [
       ...others,
       {
-        languageCode: this.defaultLanguageCode,
+        languageCode: normalizedLanguageCode,
         value: value.trim(),
       },
     ];
@@ -470,5 +378,12 @@ export class AdminVideosComponent implements OnInit {
 
     const numericValue: number = Number(value);
     return Number.isFinite(numericValue) ? numericValue : null;
+  }
+
+  private toLanguageCodes(languageCode: string): string[] {
+    const normalizedLanguageCode: string = languageCode.trim().toLowerCase();
+    return normalizedLanguageCode === 'all' || normalizedLanguageCode.length === 0
+      ? []
+      : [normalizedLanguageCode];
   }
 }

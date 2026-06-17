@@ -114,9 +114,10 @@ internal static class VideosHttpMappers
             ThumbnailUrl = value.ThumbnailUrl,
             Duration = value.DurationSeconds.HasValue ? TimeSpan.FromSeconds(value.DurationSeconds.Value) : null,
             PublishedAtUtc = value.PublishedAtUtc,
+            LanguageCodes = value.LanguageCodes ?? new List<string>(),
             Titles = value.Titles.ToApplicationLocalizedTextValues(),
             Descriptions = value.Descriptions.ToApplicationLocalizedTextValues(),
-            TagIds = value.TagIds,
+            TagIds = value.TagIds ?? new List<string>(),
             IsPublished = value.IsPublished,
         };
     }
@@ -164,6 +165,7 @@ internal static class VideosHttpMappers
             ThumbnailImageId = value.ThumbnailImageId,
             DurationSeconds = value.Duration.HasValue ? checked((long)value.Duration.Value.TotalSeconds) : null,
             PublishedAtUtc = value.PublishedAtUtc,
+            LanguageCodes = value.LanguageCodes.ToList(),
             Titles = value.Titles.ToHttp(),
             Descriptions = value.Descriptions.ToHttp(),
             TagIds = value.TagIds.ToList(),
@@ -212,6 +214,7 @@ internal static class VideosHttpMappers
             ThumbnailUrl = value.ThumbnailUrl,
             DurationSeconds = value.Duration.HasValue ? checked((long)value.Duration.Value.TotalSeconds) : null,
             PublishedAtUtc = value.PublishedAtUtc,
+            DetectedLanguageCode = value.DetectedLanguageCode,
             MetadataSource = value.MetadataSource,
             FetchedAtUtc = value.FetchedAtUtc,
             ProviderChannelId = value.ProviderChannelId,

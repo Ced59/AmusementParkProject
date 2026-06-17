@@ -1,0 +1,260 @@
+:host {
+  display: block;
+}
+
+.admin-video-create-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-video-create-panel__header,
+.admin-video-create-panel__bottom {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.admin-video-create-panel__header h3 {
+  margin: 0.25rem 0 0;
+  color: var(--heading, var(--text-color));
+  font-family: var(--font-heading, inherit);
+  font-size: 1.08rem;
+}
+
+.admin-video-create-panel__owner,
+.admin-video-create-panel__provider {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  min-height: 1.8rem;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(56, 197, 245, 0.24);
+  border-radius: var(--radius-pill, 999px);
+  background: rgba(56, 197, 245, 0.1);
+  color: var(--c-sky, #2563eb);
+  font-size: 0.75rem;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.admin-video-create-panel__provider {
+  border-color: rgba(155, 93, 229, 0.22);
+  background: rgba(155, 93, 229, 0.1);
+  color: var(--c-purple, #7c3aed);
+}
+
+.admin-video-create-panel__message {
+  margin: 0;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-lg, 8px);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.admin-video-create-panel__message--error {
+  border: 1px solid rgba(255, 90, 31, 0.28);
+  background: rgba(255, 90, 31, 0.1);
+  color: var(--c-orange, #ea580c);
+}
+
+.admin-video-create-panel__message--success {
+  border: 1px solid rgba(34, 197, 94, 0.28);
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--green-700, #15803d);
+}
+
+.admin-video-create-panel__grid,
+.admin-video-create-panel__localized-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.admin-video-create-panel__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.admin-video-create-panel__field span,
+.admin-video-create-panel__localized > span,
+.admin-video-create-panel__tags > span {
+  color: var(--text-color-secondary, var(--text-muted));
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.admin-video-create-panel__field input,
+.admin-video-create-panel__field select,
+.admin-video-create-panel__field textarea {
+  min-height: 2.55rem;
+  border: 1px solid var(--border-2, var(--surface-border));
+  border-radius: var(--radius-md, 8px);
+  background: color-mix(in srgb, var(--bg, var(--surface-0)) 72%, transparent);
+  color: var(--text, var(--text-color));
+  outline: none;
+  transition: var(--transition, border-color 160ms ease, box-shadow 160ms ease);
+}
+
+.admin-video-create-panel__field input,
+.admin-video-create-panel__field select {
+  padding: 0 0.85rem;
+}
+
+.admin-video-create-panel__field textarea {
+  min-height: 5.5rem;
+  resize: vertical;
+  padding: 0.75rem 0.85rem;
+}
+
+.admin-video-create-panel__field input:focus,
+.admin-video-create-panel__field select:focus,
+.admin-video-create-panel__field textarea:focus {
+  border-color: rgba(56, 197, 245, 0.42);
+  box-shadow: 0 0 0 3px rgba(56, 197, 245, 0.08);
+}
+
+.admin-video-create-panel__url-field,
+.admin-video-create-panel__description-field,
+.admin-video-create-panel__localized {
+  grid-column: span 2;
+}
+
+.admin-video-create-panel__localized {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.admin-video-create-panel__localized--descriptions {
+  grid-column: 1 / -1;
+}
+
+.admin-video-create-panel__switch {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  gap: 0.55rem;
+  color: var(--heading, var(--text-color));
+  font-weight: 800;
+}
+
+.admin-video-create-panel__switch input,
+.admin-video-create-panel__tags-grid input {
+  accent-color: var(--c-sky, #2563eb);
+}
+
+.admin-video-create-panel__tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: min(100%, 20rem);
+}
+
+.admin-video-create-panel__tags-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+  max-height: 12rem;
+  overflow: auto;
+  padding: 0.55rem;
+  border: 1px solid var(--border, var(--surface-border));
+  border-radius: var(--radius-lg, 8px);
+  background: rgba(56, 197, 245, 0.04);
+}
+
+.admin-video-create-panel__tags-grid label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  color: var(--text-muted, var(--text-color-secondary));
+  font-size: 0.78rem;
+}
+
+.admin-video-create-panel__tags-grid span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-video-create-panel__tags-grid.is-loading {
+  opacity: 0.62;
+}
+
+:host ::ng-deep .admin-video-create-panel__thumbnail {
+  width: 12rem;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--border, var(--surface-border));
+  border-radius: var(--radius-lg, 8px);
+  background: color-mix(in srgb, var(--bg, var(--surface-0)) 70%, transparent);
+}
+
+:host ::ng-deep .admin-video-create-panel__thumbnail--placeholder {
+  display: grid;
+  place-items: center;
+  object-fit: initial;
+}
+
+.admin-video-create-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  margin-left: auto;
+}
+
+.admin-video-create-panel__empty {
+  display: grid;
+  place-items: center;
+  gap: 0.45rem;
+  min-height: 220px;
+  padding: 2rem;
+  color: var(--text-muted, var(--text-color-secondary));
+  text-align: center;
+}
+
+.admin-video-create-panel__empty .pi {
+  color: var(--c-sky, #2563eb);
+  font-size: 2rem;
+}
+
+.admin-video-create-panel__empty strong {
+  color: var(--heading, var(--text-color));
+}
+
+@media (max-width: 960px) {
+  .admin-video-create-panel__grid,
+  .admin-video-create-panel__localized-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-video-create-panel__grid,
+  .admin-video-create-panel__localized-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-video-create-panel__url-field,
+  .admin-video-create-panel__description-field {
+    grid-column: auto;
+  }
+
+  .admin-video-create-panel__actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .admin-video-create-panel__actions .btn {
+    flex: 1 1 10rem;
+  }
+}

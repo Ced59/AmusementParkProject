@@ -13,6 +13,7 @@ export interface ResolvedVideoMetadataDto {
   thumbnailUrl?: string | null;
   durationSeconds?: number | null;
   publishedAtUtc?: string | null;
+  detectedLanguageCode?: string | null;
   metadataSource?: string | null;
   fetchedAtUtc?: string | null;
   providerChannelId?: string | null;

@@ -67,13 +67,16 @@ public sealed class ParkVideosSitemapSectionProvider : ISitemapSectionProvider
 
             foreach (string language in languages)
             {
-                urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{parkSlug}/videos", listLastModifiedUtc, "weekly", 0.72m));
+                if (parkVideos.Any(video => VideoSitemapSectionProviderHelpers.IsVisibleInLanguage(video, language)))
+                {
+                    urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{parkSlug}/videos", listLastModifiedUtc, "weekly", 0.72m));
+                }
             }
 
             foreach (Video video in parkVideos.OrderBy(static video => video.Title, StringComparer.OrdinalIgnoreCase))
             {
                 string videoSlug = SeoSlugService.ToSlug(video.Title, "video");
-                foreach (string language in languages)
+                foreach (string language in VideoSitemapSectionProviderHelpers.ResolveVisibleLanguages(video, languages))
                 {
                     urls.Add(new SitemapUrlEntry($"/{language}/park/{park.Id}/{parkSlug}/videos/{video.Id}/{videoSlug}", video.UpdatedAtUtc, "weekly", 0.66m));
                 }
@@ -161,13 +164,16 @@ public sealed class ParkItemVideosSitemapSectionProvider : ISitemapSectionProvid
 
             foreach (string language in languages)
             {
-                urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/videos", listLastModifiedUtc, "weekly", 0.62m));
+                if (itemVideos.Any(video => VideoSitemapSectionProviderHelpers.IsVisibleInLanguage(video, language)))
+                {
+                    urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/videos", listLastModifiedUtc, "weekly", 0.62m));
+                }
             }
 
             foreach (Video video in itemVideos.OrderBy(static video => video.Title, StringComparer.OrdinalIgnoreCase))
             {
                 string videoSlug = SeoSlugService.ToSlug(video.Title, "video");
-                foreach (string language in languages)
+                foreach (string language in VideoSitemapSectionProviderHelpers.ResolveVisibleLanguages(video, languages))
                 {
                     urls.Add(new SitemapUrlEntry($"/{language}/park/{parentPark.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/videos/{video.Id}/{videoSlug}", video.UpdatedAtUtc, "weekly", 0.6m));
                 }
@@ -248,11 +254,39 @@ internal static class VideoSitemapSectionProviderHelpers
         return latest;
     }
 
+    public static IReadOnlyCollection<string> ResolveVisibleLanguages(Video video, IReadOnlyCollection<string> languages)
+    {
+        if (video.LanguageCodes.Count == 0)
+        {
+            return languages;
+        }
+
+        HashSet<string> videoLanguages = video.LanguageCodes
+            .Where(static languageCode => !string.IsNullOrWhiteSpace(languageCode))
+            .Select(static languageCode => NormalizeLanguageCode(languageCode))
+            .ToHashSet(StringComparer.Ordinal);
+
+        return languages
+            .Where(language => videoLanguages.Contains(NormalizeLanguageCode(language)))
+            .ToList();
+    }
+
+    public static bool IsVisibleInLanguage(Video video, string language)
+    {
+        return ResolveVisibleLanguages(video, new[] { language }).Count > 0;
+    }
+
     private static bool IsPublicVideo(Video video, VideoOwnerType ownerType)
     {
         return !string.IsNullOrWhiteSpace(video.Id) &&
                !string.IsNullOrWhiteSpace(video.OwnerId) &&
                video.OwnerType == ownerType &&
                video.IsPublished;
+    }
+
+    private static string NormalizeLanguageCode(string languageCode)
+    {
+        string normalizedLanguageCode = languageCode.Trim().ToLowerInvariant();
+        return normalizedLanguageCode.Length >= 2 ? normalizedLanguageCode[..2] : normalizedLanguageCode;
     }
 }

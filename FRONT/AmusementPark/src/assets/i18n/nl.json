@@ -709,7 +709,8 @@
           "details": "Technische details",
           "accessConditions": "Toegangsvoorwaarden",
           "locations": "Specifieke locaties",
-          "photos": "Foto's"
+          "photos": "Foto's",
+          "videos": "Video's"
         },
         "sectionNav": {
           "label": "Editorsectie",
@@ -819,7 +820,8 @@
         "location": "Locatie",
         "descriptions": "Beschrijvingen",
         "logos": "Logo’s",
-        "photos": "Foto’s"
+        "photos": "Foto’s",
+        "videos": "Video's"
       },
       "editorStatus": {
         "saving": "Opslaan...",
@@ -1102,12 +1104,22 @@
       "thumbnailUrl": "Thumbnail-URL",
       "durationSeconds": "Duur (seconden)",
       "publishedAt": "Gepubliceerd op",
-      "titleFr": "FR-titel",
-      "descriptionFr": "FR-beschrijving",
+      "language": "Weergavetaal",
+      "allLanguageFilters": "Alle weergavetalen",
+      "allLanguagesVisibility": "Alle talen",
+      "contextCreateKicker": "Contextueel toevoegen",
+      "localizedTitles": "Gelokaliseerde titels",
+      "localizedDescriptions": "Gelokaliseerde beschrijvingen",
       "isPublished": "Video gepubliceerd",
       "tags": "Tags",
       "resolve": "Analyseren",
       "create": "Video maken",
+      "tagsLoadError": "Videotags konden niet worden geladen.",
+      "metadataError": "Deze video kon niet worden geanalyseerd.",
+      "createSuccess": "Video gemaakt.",
+      "createError": "De video kon niet worden gemaakt.",
+      "saveOwnerFirstTitle": "Sla deze inhoud eerst op",
+      "saveOwnerFirstMessage": "De video kan worden toegevoegd zodra de identifier beschikbaar is.",
       "listTitle": "Bibliotheek",
       "pageHint": "Lazy thumbnails, serverfilters en echte paginering.",
       "emptyTitle": "Geen video gevonden",

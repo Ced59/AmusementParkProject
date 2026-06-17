@@ -79,6 +79,7 @@ function createVideo(overrides: Partial<VideoDto> = {}): VideoDto {
     thumbnailImageId: null,
     durationSeconds: null,
     publishedAtUtc: null,
+    languageCodes: [],
     titles: [],
     descriptions: [],
     tagIds: [],

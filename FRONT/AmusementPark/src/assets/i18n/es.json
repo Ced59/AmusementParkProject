@@ -709,7 +709,8 @@
           "details": "Detalles técnicos",
           "accessConditions": "Condiciones de acceso",
           "locations": "Ubicaciones específicas",
-          "photos": "Fotos"
+          "photos": "Fotos",
+          "videos": "Videos"
         },
         "sectionNav": {
           "label": "Seccion del editor",
@@ -819,7 +820,8 @@
         "location": "Ubicación",
         "descriptions": "Descripciones",
         "logos": "Logotipos",
-        "photos": "Fotos"
+        "photos": "Fotos",
+        "videos": "Videos"
       },
       "editorStatus": {
         "saving": "Guardando...",
@@ -1102,12 +1104,22 @@
       "thumbnailUrl": "URL de la miniatura",
       "durationSeconds": "Duración (segundos)",
       "publishedAt": "Publicado el",
-      "titleFr": "Título FR",
-      "descriptionFr": "Descripción FR",
+      "language": "Idioma de emision",
+      "allLanguageFilters": "Todos los idiomas de emision",
+      "allLanguagesVisibility": "Todos los idiomas",
+      "contextCreateKicker": "Alta contextual",
+      "localizedTitles": "Titulos localizados",
+      "localizedDescriptions": "Descripciones localizadas",
       "isPublished": "Vídeo publicado",
       "tags": "Etiquetas",
       "resolve": "Analizar",
       "create": "Crear vídeo",
+      "tagsLoadError": "No se pudieron cargar las etiquetas de video.",
+      "metadataError": "No se pudo analizar este video.",
+      "createSuccess": "Video creado.",
+      "createError": "No se pudo crear el video.",
+      "saveOwnerFirstTitle": "Guarda primero este contenido",
+      "saveOwnerFirstMessage": "El video podra anadirse cuando el identificador este disponible.",
       "listTitle": "Biblioteca",
       "pageHint": "Miniaturas lazy, filtros del servidor y paginación real.",
       "emptyTitle": "No se encontró ningún vídeo",

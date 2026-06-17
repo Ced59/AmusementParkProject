@@ -1,0 +1,159 @@
+<section class="admin-video-create-panel">
+  @if (!ownerId) {
+    <div class="admin-video-create-panel__empty" role="status">
+      <i class="pi pi-video" aria-hidden="true"></i>
+      <strong>{{ 'admin.videos.saveOwnerFirstTitle' | translate }}</strong>
+      <span>{{ 'admin.videos.saveOwnerFirstMessage' | translate }}</span>
+    </div>
+  } @else {
+    <header class="admin-video-create-panel__header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.videos.contextCreateKicker' | translate }}</span>
+        <h3>{{ 'admin.videos.createTitle' | translate }}</h3>
+      </div>
+
+      <span class="admin-video-create-panel__owner">
+        {{ ('admin.videos.ownerTypes.' + ownerType) | translate }}
+        ·
+        {{ ownerName || ownerId }}
+      </span>
+
+      @if (resolvedMetadata) {
+        <span class="admin-video-create-panel__provider">{{ ('admin.videos.providers.' + resolvedMetadata.hostingProvider) | translate }}</span>
+      }
+    </header>
+
+    @if (errorKey()) {
+      <p class="admin-video-create-panel__message admin-video-create-panel__message--error" role="alert">{{ errorKey()! | translate }}</p>
+    }
+
+    @if (successKey()) {
+      <p class="admin-video-create-panel__message admin-video-create-panel__message--success" role="status">{{ successKey()! | translate }}</p>
+    }
+
+    <div class="admin-video-create-panel__grid">
+      <label class="admin-video-create-panel__field admin-video-create-panel__url-field">
+        <span>{{ 'admin.videos.url' | translate }}</span>
+        <input [(ngModel)]="draft.originalUrl" [ngModelOptions]="{ standalone: true }" [placeholder]="'admin.videos.urlPlaceholder' | translate">
+      </label>
+
+      <label class="admin-video-create-panel__field">
+        <span>{{ 'admin.videos.type' | translate }}</span>
+        <select [(ngModel)]="draft.type" [ngModelOptions]="{ standalone: true }">
+          @for (type of videoTypes; track type) {
+            <option [value]="type">{{ ('admin.videos.types.' + type) | translate }}</option>
+          }
+        </select>
+      </label>
+
+      <label class="admin-video-create-panel__field">
+        <span>{{ 'admin.videos.language' | translate }}</span>
+        <select [(ngModel)]="draft.languageCode" [ngModelOptions]="{ standalone: true }">
+          <option value="all">{{ 'admin.videos.allLanguagesVisibility' | translate }}</option>
+          @for (language of languages; track language.value) {
+            <option [value]="language.value">{{ language.label }}</option>
+          }
+        </select>
+      </label>
+
+      <label class="admin-video-create-panel__field">
+        <span>{{ 'admin.videos.titleField' | translate }}</span>
+        <input [(ngModel)]="draft.title" [ngModelOptions]="{ standalone: true }">
+      </label>
+
+      <label class="admin-video-create-panel__field">
+        <span>{{ 'admin.videos.creatorName' | translate }}</span>
+        <input [(ngModel)]="draft.creatorName" [ngModelOptions]="{ standalone: true }">
+      </label>
+
+      <label class="admin-video-create-panel__field">
+        <span>{{ 'admin.videos.creatorUrl' | translate }}</span>
+        <input [(ngModel)]="draft.creatorUrl" [ngModelOptions]="{ standalone: true }">
+      </label>
+
+      <label class="admin-video-create-panel__field">
+        <span>{{ 'admin.videos.thumbnailUrl' | translate }}</span>
+        <input [(ngModel)]="draft.thumbnailUrl" [ngModelOptions]="{ standalone: true }">
+      </label>
+
+      <label class="admin-video-create-panel__field">
+        <span>{{ 'admin.videos.durationSeconds' | translate }}</span>
+        <input type="number" [(ngModel)]="draft.durationSeconds" [ngModelOptions]="{ standalone: true }">
+      </label>
+
+      <label class="admin-video-create-panel__field">
+        <span>{{ 'admin.videos.publishedAt' | translate }}</span>
+        <input [(ngModel)]="draft.publishedAtUtc" [ngModelOptions]="{ standalone: true }" placeholder="2026-01-01T12:00:00Z">
+      </label>
+
+      <label class="admin-video-create-panel__field admin-video-create-panel__description-field">
+        <span>{{ 'admin.videos.description' | translate }}</span>
+        <textarea [(ngModel)]="draft.description" [ngModelOptions]="{ standalone: true }"></textarea>
+      </label>
+
+      <div class="admin-video-create-panel__localized admin-video-create-panel__localized--titles">
+        <span>{{ 'admin.videos.localizedTitles' | translate }}</span>
+        <div class="admin-video-create-panel__localized-grid">
+          @for (entry of draft.titles; track entry.languageCode) {
+            <label class="admin-video-create-panel__field">
+              <span>{{ entry.languageLabel }}</span>
+              <input [(ngModel)]="entry.value" [ngModelOptions]="{ standalone: true }">
+            </label>
+          }
+        </div>
+      </div>
+
+      <div class="admin-video-create-panel__localized admin-video-create-panel__localized--descriptions">
+        <span>{{ 'admin.videos.localizedDescriptions' | translate }}</span>
+        <div class="admin-video-create-panel__localized-grid">
+          @for (entry of draft.descriptions; track entry.languageCode) {
+            <label class="admin-video-create-panel__field">
+              <span>{{ entry.languageLabel }}</span>
+              <textarea [(ngModel)]="entry.value" [ngModelOptions]="{ standalone: true }"></textarea>
+            </label>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-video-create-panel__bottom">
+      <label class="admin-video-create-panel__switch">
+        <input type="checkbox" [(ngModel)]="draft.isPublished" [ngModelOptions]="{ standalone: true }">
+        <span>{{ 'admin.videos.isPublished' | translate }}</span>
+      </label>
+
+      <div class="admin-video-create-panel__tags">
+        <span>{{ 'admin.videos.tags' | translate }}</span>
+        <div class="admin-video-create-panel__tags-grid" [class.is-loading]="tagsLoading()">
+          @for (tag of tags(); track trackById($index, tag)) {
+            <label>
+              <input type="checkbox" [checked]="draft.tagIds.includes(tag.id)" (change)="toggleDraftTag(tag.id, $any($event.target).checked)">
+              <span>{{ tag.slug }}</span>
+            </label>
+          }
+        </div>
+      </div>
+
+      @if (draft.thumbnailUrl) {
+        <app-image-display
+          [imagePathOrUrl]="draft.thumbnailUrl"
+          [alt]="draft.title || draft.originalUrl"
+          imgClass="admin-video-create-panel__thumbnail"
+          placeholderClass="admin-video-create-panel__thumbnail admin-video-create-panel__thumbnail--placeholder"
+          placeholderIconClass="pi pi-video">
+        </app-image-display>
+      }
+
+      <div class="admin-video-create-panel__actions">
+        <button type="button" class="btn btn--ghost" [disabled]="!draft.originalUrl.trim() || resolvingMetadata()" (click)="resolveDraftMetadata()">
+          <i class="pi pi-search" aria-hidden="true"></i>
+          {{ 'admin.videos.resolve' | translate }}
+        </button>
+        <button type="button" class="btn btn--primary" [disabled]="!canSubmitDraft() || creating()" (click)="createVideo()">
+          <i class="pi pi-plus" aria-hidden="true"></i>
+          {{ 'admin.videos.create' | translate }}
+        </button>
+      </div>
+    </div>
+  }
+</section>

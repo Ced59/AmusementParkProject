@@ -77,6 +77,7 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
 
             YouTubeSnippet? snippet = item.Snippet;
             string? thumbnailUrl = SelectBestThumbnailUrl(snippet?.Thumbnails);
+            string? detectedLanguageCode = NormalizeLanguageCode(snippet?.DefaultAudioLanguage) ?? NormalizeLanguageCode(snippet?.DefaultLanguage);
 
             return new ResolvedVideoMetadata
             {
@@ -92,6 +93,7 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
                 ThumbnailUrl = thumbnailUrl,
                 Duration = TryParseIsoDuration(item.ContentDetails?.Duration),
                 PublishedAtUtc = snippet?.PublishedAt,
+                DetectedLanguageCode = detectedLanguageCode,
                 MetadataSource = "youtube-data-api",
                 FetchedAtUtc = DateTime.UtcNow,
                 ProviderChannelId = snippet?.ChannelId,
@@ -412,6 +414,12 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
 
         [JsonPropertyName("channelTitle")]
         public string? ChannelTitle { get; init; }
+
+        [JsonPropertyName("defaultLanguage")]
+        public string? DefaultLanguage { get; init; }
+
+        [JsonPropertyName("defaultAudioLanguage")]
+        public string? DefaultAudioLanguage { get; init; }
     }
 
     private sealed class YouTubeContentDetails
@@ -430,5 +438,11 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
 
         [JsonPropertyName("height")]
         public int? Height { get; init; }
+    }
+
+    private static string? NormalizeLanguageCode(string? languageCode)
+    {
+        string normalizedLanguageCode = languageCode?.Trim().ToLowerInvariant() ?? string.Empty;
+        return normalizedLanguageCode.Length >= 2 ? normalizedLanguageCode[..2] : null;
     }
 }

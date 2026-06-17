@@ -282,6 +282,33 @@ public sealed class SitemapSectionProvidersTests
     }
 
     [Fact]
+    public async Task ParkVideosProvider_WhenVideoTargetsOneLanguage_ShouldReturnOnlyMatchingLanguageUrls()
+    {
+        DateTime videoUpdatedAtUtc = new DateTime(2026, 3, 1, 0, 0, 0, DateTimeKind.Utc);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IVideoRepository> videoRepository = CreateVideoRepository(
+            CreateVideo("video-1", VideoOwnerType.Park, "park-1", "Front Row Ride", videoUpdatedAtUtc, languageCodes: new[] { "fr" }));
+        parkRepository.Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 2, 28, 0, 0, 0, DateTimeKind.Utc) },
+            });
+        ParkVideosSitemapSectionProvider provider = new ParkVideosSitemapSectionProvider(parkRepository.Object, videoRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/visible-park/videos" && url.LastModifiedUtc == videoUpdatedAtUtc);
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/videos/video-1/front-row-ride");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.StartsWith("/en/", StringComparison.OrdinalIgnoreCase));
+        parkRepository.VerifyAll();
+        videoRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task ParkItemVideosProvider_WhenPublicParkItemHasPublishedVideos_ShouldReturnListAndWatchUrls()
     {
         DateTime videoUpdatedAtUtc = new DateTime(2026, 4, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -315,6 +342,39 @@ public sealed class SitemapSectionProvidersTests
         Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/big-coaster/videos/video-1/front-row-ride");
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("park-video", StringComparison.OrdinalIgnoreCase));
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
+        videoRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ParkItemVideosProvider_WhenVideoTargetsOneLanguage_ShouldReturnOnlyMatchingLanguageUrls()
+    {
+        DateTime videoUpdatedAtUtc = new DateTime(2026, 4, 1, 0, 0, 0, DateTimeKind.Utc);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IVideoRepository> videoRepository = CreateVideoRepository(
+            CreateVideo("video-1", VideoOwnerType.ParkItem, "item-1", "Front Row Ride", videoUpdatedAtUtc, languageCodes: new[] { "fr" }));
+        itemRepository.Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Big Coaster", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 3, 31, 0, 0, 0, DateTimeKind.Utc) },
+            });
+        parkRepository.Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 3, 30, 0, 0, 0, DateTimeKind.Utc) } });
+        ParkItemVideosSitemapSectionProvider provider = new ParkItemVideosSitemapSectionProvider(parkRepository.Object, itemRepository.Object, videoRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(2, urls.Count);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/big-coaster/videos" && url.LastModifiedUtc == videoUpdatedAtUtc);
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/big-coaster/videos/video-1/front-row-ride");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.StartsWith("/en/", StringComparison.OrdinalIgnoreCase));
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
         videoRepository.VerifyAll();
@@ -570,7 +630,8 @@ public sealed class SitemapSectionProvidersTests
         string ownerId,
         string title,
         DateTime updatedAtUtc,
-        bool isPublished = true)
+        bool isPublished = true,
+        IReadOnlyCollection<string>? languageCodes = null)
     {
         return new Video
         {
@@ -579,6 +640,7 @@ public sealed class SitemapSectionProvidersTests
             OwnerId = ownerId,
             Title = title,
             IsPublished = isPublished,
+            LanguageCodes = languageCodes?.ToList() ?? new List<string>(),
             UpdatedAtUtc = updatedAtUtc,
         };
     }

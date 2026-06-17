@@ -102,12 +102,13 @@ export class ParkItemVideoStateFacade {
       switchMap((item: ParkItem) => forkJoin({
         item: of(item),
         park: this.parksPort.getParkById(item.parkId, anonymousHttpOptions()),
-        video: this.videosPort.getVideoById(videoId, anonymousHttpOptions()),
+        video: this.videosPort.getVideoById(videoId, anonymousHttpOptions(), this.currentLanguageSignal()),
         videoPage: this.videosPort.getVideosPage({
           page: 1,
           size: ParkItemVideoStateFacade.NavigationPageSize,
           ownerType: VideoOwnerType.PARK_ITEM,
           ownerId: normalizeOptionalString(item.id) ?? itemId,
+          languageCode: this.currentLanguageSignal(),
           sortBy: 'published',
           sortDirection: 'desc'
         }, anonymousHttpOptions()),

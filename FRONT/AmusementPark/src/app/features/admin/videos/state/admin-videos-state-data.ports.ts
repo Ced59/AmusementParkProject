@@ -6,7 +6,6 @@ export interface AdminVideosStateVideosApiServicePort extends Pick<VideosApiServ
   | 'getVideosPage'
   | 'getVideoTags'
   | 'resolveVideoMetadata'
-  | 'createVideo'
   | 'updateVideo'
   | 'deleteVideo'
   | 'createVideoTag'

@@ -78,6 +78,9 @@
           <p-tab [value]="2">{{ 'admin.parks.tabs.descriptions' | translate }}</p-tab>
           <p-tab [value]="3">{{ 'admin.parks.tabs.logos' | translate }}</p-tab>
           <p-tab [value]="4">{{ 'admin.parks.tabs.photos' | translate }}</p-tab>
+          @if (isEditMode()) {
+            <p-tab [value]="5">{{ 'admin.parks.tabs.videos' | translate }}</p-tab>
+          }
         </p-tablist>
 
         <p-tabpanels>
@@ -180,6 +183,18 @@
               </app-admin-park-photos-tab>
             }
           </p-tabpanel>
+
+          @if (isEditMode()) {
+            <p-tabpanel [value]="5">
+              @if (activeTabIndex() === 5) {
+                <app-admin-video-create-panel
+                  [ownerType]="videoOwnerType"
+                  [ownerId]="parkId()"
+                  [ownerName]="nameControl?.value || null">
+                </app-admin-video-create-panel>
+              }
+            </p-tabpanel>
+          }
 
         </p-tabpanels>
       </p-tabs>

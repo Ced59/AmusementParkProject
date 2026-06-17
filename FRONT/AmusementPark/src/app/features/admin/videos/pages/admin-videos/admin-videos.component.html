@@ -100,6 +100,17 @@
         </label>
 
         <label class="admin-field">
+          <span class="admin-field-label">{{ 'admin.videos.language' | translate }}</span>
+          <select [ngModel]="query().languageCode || ''" (ngModelChange)="updateLanguageFilter($event)">
+            <option value="">{{ 'admin.videos.allLanguageFilters' | translate }}</option>
+            <option value="all">{{ 'admin.videos.allLanguagesVisibility' | translate }}</option>
+            @for (language of languages; track language.value) {
+              <option [value]="language.value">{{ language.label }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="admin-field">
           <span class="admin-field-label">{{ 'admin.videos.publication' | translate }}</span>
           <select [ngModel]="query().isPublished === null ? '' : query().isPublished" (ngModelChange)="updatePublishedFilter($event)">
             <option value="">{{ 'admin.videos.allPublicationStates' | translate }}</option>
@@ -124,133 +135,6 @@
               <option value="asc">{{ 'admin.videos.asc' | translate }}</option>
             </select>
           </label>
-        </div>
-      </div>
-    </section>
-
-    <section class="admin-videos-create">
-      <header>
-        <div>
-          <span class="admin-kicker">{{ 'admin.videos.createKicker' | translate }}</span>
-          <h3>{{ 'admin.videos.createTitle' | translate }}</h3>
-        </div>
-        @if (resolvedMetadata) {
-          <span class="admin-video-badge admin-video-badge--provider">{{ ('admin.videos.providers.' + resolvedMetadata.hostingProvider) | translate }}</span>
-        }
-      </header>
-
-      <div class="admin-videos-create__grid">
-        <label class="admin-field admin-videos-url-field">
-          <span class="admin-field-label">{{ 'admin.videos.url' | translate }}</span>
-          <input [(ngModel)]="draft.originalUrl" [placeholder]="'admin.videos.urlPlaceholder' | translate">
-        </label>
-
-        <label class="admin-field">
-          <span class="admin-field-label">{{ 'admin.videos.ownerType' | translate }}</span>
-          <select [(ngModel)]="draft.ownerType">
-            @for (ownerType of ownerTypes; track ownerType) {
-              <option [value]="ownerType">{{ ('admin.videos.ownerTypes.' + ownerType) | translate }}</option>
-            }
-          </select>
-        </label>
-
-        <label class="admin-field">
-          <span class="admin-field-label">{{ 'admin.videos.ownerId' | translate }}</span>
-          <input [(ngModel)]="draft.ownerId" [placeholder]="'admin.videos.ownerIdPlaceholder' | translate">
-        </label>
-
-        <label class="admin-field">
-          <span class="admin-field-label">{{ 'admin.videos.type' | translate }}</span>
-          <select [(ngModel)]="draft.type">
-            @for (type of videoTypes; track type) {
-              <option [value]="type">{{ ('admin.videos.types.' + type) | translate }}</option>
-            }
-          </select>
-        </label>
-
-        <label class="admin-field">
-          <span class="admin-field-label">{{ 'admin.videos.titleField' | translate }}</span>
-          <input [(ngModel)]="draft.title">
-        </label>
-
-        <label class="admin-field">
-          <span class="admin-field-label">{{ 'admin.videos.creatorName' | translate }}</span>
-          <input [(ngModel)]="draft.creatorName">
-        </label>
-
-        <label class="admin-field">
-          <span class="admin-field-label">{{ 'admin.videos.creatorUrl' | translate }}</span>
-          <input [(ngModel)]="draft.creatorUrl">
-        </label>
-
-        <label class="admin-field">
-          <span class="admin-field-label">{{ 'admin.videos.thumbnailUrl' | translate }}</span>
-          <input [(ngModel)]="draft.thumbnailUrl">
-        </label>
-
-        <label class="admin-field">
-          <span class="admin-field-label">{{ 'admin.videos.durationSeconds' | translate }}</span>
-          <input type="number" [(ngModel)]="draft.durationSeconds">
-        </label>
-
-        <label class="admin-field">
-          <span class="admin-field-label">{{ 'admin.videos.publishedAt' | translate }}</span>
-          <input [(ngModel)]="draft.publishedAtUtc" placeholder="2026-01-01T12:00:00Z">
-        </label>
-
-        <label class="admin-field admin-videos-description-field">
-          <span class="admin-field-label">{{ 'admin.videos.description' | translate }}</span>
-          <textarea [(ngModel)]="draft.description"></textarea>
-        </label>
-
-        <label class="admin-field">
-          <span class="admin-field-label">{{ 'admin.videos.titleFr' | translate }}</span>
-          <input [(ngModel)]="draft.titleFr">
-        </label>
-
-        <label class="admin-field admin-videos-description-field">
-          <span class="admin-field-label">{{ 'admin.videos.descriptionFr' | translate }}</span>
-          <textarea [(ngModel)]="draft.descriptionFr"></textarea>
-        </label>
-      </div>
-
-      <div class="admin-videos-create__bottom">
-        <label class="admin-video-switch">
-          <input type="checkbox" [(ngModel)]="draft.isPublished">
-          <span>{{ 'admin.videos.isPublished' | translate }}</span>
-        </label>
-
-        <div class="admin-video-tags-panel">
-          <span class="admin-field-label">{{ 'admin.videos.tags' | translate }}</span>
-          <div class="admin-video-tags-grid">
-            @for (tag of tags(); track trackById($index, tag)) {
-              <label>
-                <input type="checkbox" [checked]="draft.tagIds.includes(tag.id)" (change)="toggleDraftTag(tag.id, $any($event.target).checked)">
-                <span>{{ tag.slug }}</span>
-              </label>
-            }
-          </div>
-        </div>
-
-        @if (draft.thumbnailUrl) {
-          <app-image-display
-            [imagePathOrUrl]="draft.thumbnailUrl"
-            [alt]="draft.title || draft.originalUrl"
-            imgClass="admin-video-create__thumbnail"
-            placeholderClass="admin-video-create__thumbnail admin-video-create__thumbnail--placeholder"
-            placeholderIconClass="pi pi-video">
-          </app-image-display>
-        }
-
-        <div class="admin-videos-create__actions">
-          <button type="button" class="btn btn--ghost" (click)="resolveDraftMetadata()">
-            <i class="pi pi-search" aria-hidden="true"></i>
-            {{ 'admin.videos.resolve' | translate }}
-          </button>
-          <button type="button" class="btn btn--primary" [disabled]="!canSubmitDraft()" (click)="createVideo()">
-            <i class="pi pi-plus" aria-hidden="true"></i>
-            {{ 'admin.videos.create' | translate }}
-          </button>
         </div>
       </div>
     </section>
@@ -345,6 +229,7 @@
 
           <dl class="admin-video-facts">
             <div><dt>ID</dt><dd>{{ currentVideo.id }}</dd></div>
+            <div><dt>{{ 'admin.videos.language' | translate }}</dt><dd>{{ getSelectedLanguage(currentVideo) === 'all' ? ('admin.videos.allLanguagesVisibility' | translate) : getSelectedLanguage(currentVideo).toUpperCase() }}</dd></div>
             <div><dt>{{ 'admin.videos.owner' | translate }}</dt><dd>{{ ('admin.videos.ownerTypes.' + currentVideo.ownerType) | translate }} · {{ currentVideo.ownerId || '-' }}</dd></div>
             <div><dt>{{ 'admin.videos.provider' | translate }}</dt><dd>{{ ('admin.videos.providers.' + currentVideo.hostingProvider) | translate }}</dd></div>
             <div><dt>{{ 'admin.videos.externalId' | translate }}</dt><dd>{{ currentVideo.externalId || '-' }}</dd></div>
@@ -388,6 +273,16 @@
             </div>
 
             <label class="admin-field">
+              <span class="admin-field-label">{{ 'admin.videos.language' | translate }}</span>
+              <select [ngModel]="getSelectedLanguage(currentVideo)" (ngModelChange)="updateSelectedLanguage($event)">
+                <option value="all">{{ 'admin.videos.allLanguagesVisibility' | translate }}</option>
+                @for (language of languages; track language.value) {
+                  <option [value]="language.value">{{ language.label }}</option>
+                }
+              </select>
+            </label>
+
+            <label class="admin-field">
               <span class="admin-field-label">{{ 'admin.videos.titleField' | translate }}</span>
               <input [ngModel]="currentVideo.title" (ngModelChange)="updateSelectedVideo({ title: $event })">
             </label>
@@ -418,15 +313,28 @@
               <input [ngModel]="currentVideo.publishedAtUtc || ''" (ngModelChange)="updateSelectedVideo({ publishedAtUtc: $event })">
             </label>
 
-            <div class="admin-videos-two-columns">
-              <label class="admin-field">
-                <span class="admin-field-label">{{ 'admin.videos.titleFr' | translate }}</span>
-                <input [ngModel]="getLocalizedField(currentVideo, 'titles')" (ngModelChange)="updateSelectedLocalizedField('titles', $event)">
-              </label>
-              <label class="admin-field">
-                <span class="admin-field-label">{{ 'admin.videos.descriptionFr' | translate }}</span>
-                <input [ngModel]="getLocalizedField(currentVideo, 'descriptions')" (ngModelChange)="updateSelectedLocalizedField('descriptions', $event)">
-              </label>
+            <div class="admin-video-localized-panel">
+              <span class="admin-field-label">{{ 'admin.videos.localizedTitles' | translate }}</span>
+              <div class="admin-video-localized-grid">
+                @for (language of languages; track language.value) {
+                  <label class="admin-field">
+                    <span class="admin-field-label">{{ language.label }}</span>
+                    <input [ngModel]="getLocalizedField(currentVideo, 'titles', language.value)" (ngModelChange)="updateSelectedLocalizedField('titles', language.value, $event)">
+                  </label>
+                }
+              </div>
+            </div>
+
+            <div class="admin-video-localized-panel">
+              <span class="admin-field-label">{{ 'admin.videos.localizedDescriptions' | translate }}</span>
+              <div class="admin-video-localized-grid">
+                @for (language of languages; track language.value) {
+                  <label class="admin-field">
+                    <span class="admin-field-label">{{ language.label }}</span>
+                    <textarea [ngModel]="getLocalizedField(currentVideo, 'descriptions', language.value)" (ngModelChange)="updateSelectedLocalizedField('descriptions', language.value, $event)"></textarea>
+                  </label>
+                }
+              </div>
             </div>
 
             <label class="admin-video-switch">

@@ -25,13 +25,11 @@
   line-height: 1.35;
 }
 
-.admin-videos-controls,
-.admin-videos-create {
+.admin-videos-controls {
   padding: 1.2rem 1.35rem 0;
 }
 
-.admin-videos-filters-grid,
-.admin-videos-create__grid {
+.admin-videos-filters-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
@@ -42,16 +40,6 @@
   gap: 0.75rem;
 }
 
-.admin-videos-create {
-  margin-top: 1rem;
-  padding-bottom: 1rem;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--bg-card-2) 58%, transparent);
-}
-
-.admin-videos-create header,
-.admin-videos-create__bottom,
 .admin-videos-browser__head,
 .admin-videos-pagination {
   display: flex;
@@ -60,31 +48,6 @@
   gap: 1rem;
 }
 
-.admin-videos-create header h3 {
-  margin: 0.25rem 0 0;
-  color: var(--heading);
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-}
-
-.admin-videos-create__grid {
-  display: grid;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.admin-videos-url-field,
-.admin-videos-description-field {
-  grid-column: span 2;
-}
-
-.admin-videos-create__bottom {
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-.admin-videos-create__actions,
 .admin-video-editor-form__actions,
 .admin-videos-pagination__actions {
   display: flex;
@@ -92,21 +55,6 @@
   align-items: center;
   justify-content: flex-end;
   gap: 0.55rem;
-}
-
-:host ::ng-deep .admin-video-create__thumbnail {
-  width: 12rem;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
-}
-
-:host ::ng-deep .admin-video-create__thumbnail--placeholder {
-  display: grid;
-  place-items: center;
-  object-fit: initial;
 }
 
 .admin-videos-workbench {
@@ -364,6 +312,18 @@
   border-top: 1px solid var(--border);
 }
 
+.admin-video-localized-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.admin-video-localized-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
 .admin-field textarea,
 .admin-field input,
 .admin-field select,
@@ -479,8 +439,7 @@
 }
 
 @media (max-width: 960px) {
-  .admin-videos-filters-grid,
-  .admin-videos-create__grid {
+  .admin-videos-filters-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -498,15 +457,10 @@
 
 @media (max-width: 640px) {
   .admin-videos-filters-grid,
-  .admin-videos-create__grid,
   .admin-videos-sort-row,
-  .admin-videos-two-columns {
+  .admin-videos-two-columns,
+  .admin-video-localized-grid {
     grid-template-columns: 1fr;
-  }
-
-  .admin-videos-url-field,
-  .admin-videos-description-field {
-    grid-column: auto;
   }
 
   .admin-videos-grid {
