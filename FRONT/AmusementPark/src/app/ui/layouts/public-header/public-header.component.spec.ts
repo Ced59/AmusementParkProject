@@ -115,6 +115,14 @@ describe('PublicHeaderComponent', () => {
     expect(loginButton?.getAttribute('aria-label')).toBe('Connexion / Inscription');
   });
 
+  it('renders the official logo asset in the brand link', () => {
+    const logoImage: HTMLImageElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-nav__logo-mark');
+
+    expect(logoImage).not.toBeNull();
+    expect(logoImage?.getAttribute('src')).toBe('/assets/general-icon/logo-amusementpark.png');
+    expect(logoImage?.getAttribute('alt')).toBe('');
+  });
+
   it('opens the login modal from the named login button', () => {
     const loginButton: HTMLButtonElement = (fixture.nativeElement as HTMLElement).querySelector('.btn-nav--primary') as HTMLButtonElement;
 
