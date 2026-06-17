@@ -14,6 +14,7 @@
       [filter]="true"
       [loading]="parkOptionsLoading"
       [appendTo]="'body'"
+      (onShow)="parkOptionsRequested.emit()"
       (onChange)="onParkSelectionChanged($event.value)">
     </p-select>
     <small class="text-color-secondary">{{ 'admin.parks.items.parkHelp' | translate }}</small>

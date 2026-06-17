@@ -10,8 +10,20 @@ namespace AmusementPark.Infrastructure.Tests.Services.Videos;
 
 public sealed class ExternalVideoMetadataProviderTests
 {
-    [Fact]
-    public async Task ResolveAsync_WhenYouTubeWatchUrlContainsShareParameters_ShouldKeepOnlyVideoIdInCanonicalUrl()
+    [Theory]
+    [InlineData("https://youtube.com/watch?v=WlLikBWTmbg&is=lUPBiTdjFOXks1sk", "WlLikBWTmbg")]
+    [InlineData("https://www.youtube.com/watch?si=lUPBiTdjFOXks1sk&v=WlLikBWTmbg&feature=shared", "WlLikBWTmbg")]
+    [InlineData("https://m.youtube.com/watch?v=WlLikBWTmbg", "WlLikBWTmbg")]
+    [InlineData("https://music.youtube.com/watch?v=WlLikBWTmbg", "WlLikBWTmbg")]
+    [InlineData("https://youtu.be/WlLikBWTmbg?si=lUPBiTdjFOXks1sk", "WlLikBWTmbg")]
+    [InlineData("https://www.youtube.com/embed/WlLikBWTmbg?start=12", "WlLikBWTmbg")]
+    [InlineData("https://www.youtube-nocookie.com/embed/WlLikBWTmbg?rel=0", "WlLikBWTmbg")]
+    [InlineData("https://www.youtube.com/shorts/WlLikBWTmbg?feature=share", "WlLikBWTmbg")]
+    [InlineData("https://www.youtube.com/live/WlLikBWTmbg?si=lUPBiTdjFOXks1sk", "WlLikBWTmbg")]
+    [InlineData("https://www.youtube.com/v/WlLikBWTmbg?version=3", "WlLikBWTmbg")]
+    [InlineData("https://www.youtube.com/e/WlLikBWTmbg", "WlLikBWTmbg")]
+    [InlineData("https://www.youtube.com/attribution_link?u=%2Fwatch%3Fv%3DWlLikBWTmbg%26feature%3Dshare", "WlLikBWTmbg")]
+    public async Task ResolveAsync_WhenYouTubeUrlUsesSupportedVideoFormat_ShouldKeepOnlyVideoIdInCanonicalUrl(string url, string expectedVideoId)
     {
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler("{}");
         ExternalVideoMetadataProvider provider = new ExternalVideoMetadataProvider(
@@ -24,13 +36,13 @@ public sealed class ExternalVideoMetadataProviderTests
             NullLogger<ExternalVideoMetadataProvider>.Instance);
 
         AmusementPark.Application.Features.Videos.Contracts.ResolvedVideoMetadata? metadata =
-            await provider.ResolveAsync("https://youtube.com/watch?v=WlLikBWTmbg&is=lUPBiTdjFOXks1sk", CancellationToken.None);
+            await provider.ResolveAsync(url, CancellationToken.None);
 
         Assert.NotNull(metadata);
         Assert.Equal(VideoHostingProvider.YouTube, metadata!.HostingProvider);
-        Assert.Equal("WlLikBWTmbg", metadata.ExternalId);
-        Assert.Equal("https://www.youtube.com/watch?v=WlLikBWTmbg", metadata.CanonicalUrl);
-        Assert.Equal("https://www.youtube.com/embed/WlLikBWTmbg", metadata.EmbedUrl);
+        Assert.Equal(expectedVideoId, metadata.ExternalId);
+        Assert.Equal($"https://www.youtube.com/watch?v={expectedVideoId}", metadata.CanonicalUrl);
+        Assert.Equal($"https://www.youtube.com/embed/{expectedVideoId}", metadata.EmbedUrl);
         Assert.Equal("url", metadata.MetadataSource);
     }
 

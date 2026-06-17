@@ -246,6 +246,10 @@ export class AdminParkItemEditComponent implements OnInit {
     this.updatePendingChanges();
   }
 
+  onParkOptionsRequested(): void {
+    void this.editStateFacade.loadParkOptions();
+  }
+
   selectLocationEditor(locationKey: AttractionLocationKey): void {
     this.locationStateFacade.selectLocationEditor(locationKey);
     setTimeout((): void => {
@@ -696,7 +700,6 @@ export class AdminParkItemEditComponent implements OnInit {
     switch (tabIndex) {
       case 0:
         this.zonesStateFacade.load(this.parkId(), this.currentLang());
-        void this.editStateFacade.loadParkOptions();
         break;
       case 1:
         this.manufacturersStateFacade.load();
