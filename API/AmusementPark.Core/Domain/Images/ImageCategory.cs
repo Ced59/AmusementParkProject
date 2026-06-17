@@ -12,4 +12,5 @@ public enum ImageCategory
     Operator,
     Manufacturer,
     Founder,
+    VideoThumbnail,
 }

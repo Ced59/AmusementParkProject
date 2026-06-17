@@ -15,4 +15,5 @@ public enum ImageCategoryDto
     OPERATOR,
     MANUFACTURER,
     FOUNDER,
+    VIDEO_THUMBNAIL,
 }

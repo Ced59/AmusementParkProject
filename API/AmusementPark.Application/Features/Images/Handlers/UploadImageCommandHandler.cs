@@ -104,6 +104,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             ImageCategory.Operator => "operator",
             ImageCategory.Manufacturer => "manufacturer",
             ImageCategory.Founder => "founder",
+            ImageCategory.VideoThumbnail => "video_thumbnail",
             _ => "image",
         };
     }

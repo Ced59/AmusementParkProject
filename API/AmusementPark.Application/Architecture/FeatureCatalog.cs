@@ -19,9 +19,10 @@ namespace AmusementPark.Application.Architecture
             new FeatureSlice("ParkZones", 7, "Zones de parc et rattachements au parc."),
             new FeatureSlice("ParkItems", 8, "Attractions et autres park items avec leurs détails métiers."),
             new FeatureSlice("Images", 9, "Images, liens d'ownership, tags, compression, watermark et métadonnées."),
-            new FeatureSlice("Search", 10, "Projection technique pour la recherche et l'indexation."),
-            new FeatureSlice("DataSources", 11, "Socle générique d'ingestion et de synchronisation de sources externes, avec Captain Coaster comme premier provider."),
-            new FeatureSlice("AdminAudit", 12, "Journalisation et consultation des actions d'administration sensibles."),
+            new FeatureSlice("Videos", 10, "Videos externes, enrichissement de metadonnees, tags et liens d'ownership."),
+            new FeatureSlice("Search", 11, "Projection technique pour la recherche et l'indexation."),
+            new FeatureSlice("DataSources", 12, "Socle générique d'ingestion et de synchronisation de sources externes, avec Captain Coaster comme premier provider."),
+            new FeatureSlice("AdminAudit", 13, "Journalisation et consultation des actions d'administration sensibles."),
         };
     }
 }

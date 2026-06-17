@@ -12,6 +12,7 @@ using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Countries;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Users;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Videos;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
@@ -57,6 +58,12 @@ public sealed partial class MongoDatabaseInitializer
 
         await this.EnsureCollectionExistsAsync(this.settings.ImageTagsCollectionName, cancellationToken);
         await this.InitializeImageTagsIndexesAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(this.settings.VideosCollectionName, cancellationToken);
+        await this.InitializeVideosIndexesAsync(cancellationToken);
+
+        await this.EnsureCollectionExistsAsync(this.settings.VideoTagsCollectionName, cancellationToken);
+        await this.InitializeVideoTagsIndexesAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.CountriesCollectionName, cancellationToken);
         await this.InitializeCountriesIndexesAsync(cancellationToken);

@@ -22,8 +22,8 @@ namespace AmusementPark.WebAPI.Filters;
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
 public sealed class AdminAuditAttribute : Attribute, IAsyncActionFilter
 {
-    private static readonly string[] DefaultRouteIdKeys = { "id", "imageId", "userId", "sourceKey", "parkId" };
-    private static readonly string[] DefaultPropertyIdKeys = { "Id", "UserId", "IdUser", "ImageId", "SourceKey", "ParkId", "TargetParkId" };
+    private static readonly string[] DefaultRouteIdKeys = { "id", "imageId", "videoId", "userId", "sourceKey", "parkId" };
+    private static readonly string[] DefaultPropertyIdKeys = { "Id", "UserId", "IdUser", "ImageId", "VideoId", "SourceKey", "ParkId", "TargetParkId" };
     private static readonly ConcurrentDictionary<Type, PropertyInfo[]> ReadablePropertiesByType = new ConcurrentDictionary<Type, PropertyInfo[]>();
     private static readonly ConcurrentDictionary<Type, IReadOnlyDictionary<string, PropertyInfo>> ReadablePropertiesByNameByType = new ConcurrentDictionary<Type, IReadOnlyDictionary<string, PropertyInfo>>();
     private static readonly HashSet<string> SensitivePropertyNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase)

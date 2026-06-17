@@ -72,6 +72,10 @@ public sealed class MongoDbSettings
 
     public string ImageTagsCollectionName { get; set; } = "imageTags";
 
+    public string VideosCollectionName { get; set; } = "videos";
+
+    public string VideoTagsCollectionName { get; set; } = "videoTags";
+
     public string CountriesCollectionName { get; set; } = "countries";
 
     public string CaptainCoasterSettingsCollectionName { get; set; } = "captainCoasterSettings";

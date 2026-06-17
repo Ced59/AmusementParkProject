@@ -23,6 +23,9 @@ public static class DomainCatalog
         "Image",
         "ImageExifMetadata",
         "ImageTag",
+        "Video",
+        "VideoExternalMetadata",
+        "VideoTag",
         "User",
         "ExternalLogin",
     };

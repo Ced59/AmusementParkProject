@@ -15,4 +15,5 @@ public enum ImageOwnerTypeDto
     PARK_OPERATOR = 4,
     ATTRACTION_MANUFACTURER = 5,
     PARK_FOUNDER = 6,
+    VIDEO = 7,
 }

@@ -14,12 +14,14 @@ using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Users.Ports;
+using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Configuration.Ssr;
+using AmusementPark.Infrastructure.Configuration.Videos;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using AmusementPark.Infrastructure.Services.Authentication;
@@ -30,6 +32,7 @@ using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCo
 using AmusementPark.Infrastructure.Services.Images;
 using AmusementPark.Infrastructure.Services.Seo;
 using AmusementPark.Infrastructure.Services.Ssr;
+using AmusementPark.Infrastructure.Services.Videos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Minio;
@@ -56,6 +59,9 @@ public static class InfrastructureServiceCollectionExtensions
         MinioImageStorageSettings minioSettings = configuration.GetSection(MinioImageStorageSettings.SectionName).Get<MinioImageStorageSettings>() ?? new MinioImageStorageSettings();
         services.AddSingleton(minioSettings);
 
+        VideoMetadataSettings videoMetadataSettings = VideoMetadataSettings.Bind(configuration);
+        services.AddSingleton(videoMetadataSettings);
+
         JwtSettings jwtSettings = configuration.GetSection("Authentication:Jwt").Get<JwtSettings>() ?? new JwtSettings();
         services.AddSingleton(jwtSettings);
 
@@ -79,6 +85,10 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHttpClient(HttpSsrPageCacheInvalidator.HttpClientName, static client =>
         {
             client.Timeout = TimeSpan.FromSeconds(3);
+        });
+        services.AddHttpClient(ExternalVideoMetadataProvider.HttpClientName, client =>
+        {
+            client.Timeout = TimeSpan.FromSeconds(videoMetadataSettings.RequestTimeoutSeconds);
         });
         services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoDbSettings.Url));
         services.AddSingleton<IMinioClient>(_ =>
@@ -109,6 +119,10 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IImageTagRepository, ImageTagRepository>();
         services.AddScoped<IImageProcessingPipeline, ImageMetadataPipeline>();
         services.AddScoped<IImageBinaryStorage, MinioImageBinaryStorage>();
+        services.AddScoped<IVideoRepository, VideoRepository>();
+        services.AddScoped<IVideoTagRepository, VideoTagRepository>();
+        services.AddScoped<IVideoMetadataProvider, ExternalVideoMetadataProvider>();
+        services.AddScoped<IVideoThumbnailImporter, VideoThumbnailImporter>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IAdminAuditLogWriter, AdminAuditLogWriter>();
