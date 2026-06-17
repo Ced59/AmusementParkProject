@@ -404,7 +404,6 @@ public sealed class SeoSitemapGenerationOrchestrator
             .SelectMany(static section => section.Urls)
             .Select(url => $"{normalizedPublicBaseUrl}{NormalizeRelativePath(url.RelativePath)}")
             .Distinct(StringComparer.OrdinalIgnoreCase)
-            .Take(10000)
             .ToList();
 
         return await this.indexNowSubmitter.SubmitAsync(settings, normalizedPublicBaseUrl, absoluteUrls, cancellationToken);

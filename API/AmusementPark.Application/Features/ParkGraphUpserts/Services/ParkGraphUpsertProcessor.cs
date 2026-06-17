@@ -16,6 +16,8 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
@@ -34,6 +36,7 @@ public sealed partial class ParkGraphUpsertProcessor
     private readonly IImageRepository imageRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IParkGraphUpsertHistoryRepository historyRepository;
+    private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
 
     public ParkGraphUpsertProcessor(
         IParkRepository parkRepository,
@@ -44,7 +47,8 @@ public sealed partial class ParkGraphUpsertProcessor
         IAttractionManufacturerRepository attractionManufacturerRepository,
         IImageRepository imageRepository,
         ISearchProjectionWriter searchProjectionWriter,
-        IParkGraphUpsertHistoryRepository historyRepository)
+        IParkGraphUpsertHistoryRepository historyRepository,
+        IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -55,6 +59,7 @@ public sealed partial class ParkGraphUpsertProcessor
         this.imageRepository = imageRepository;
         this.searchProjectionWriter = searchProjectionWriter;
         this.historyRepository = historyRepository;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<ParkGraphUpsertResult>> PreviewAsync(ParkGraphUpsertRequest request, string? requestedByUserId, CancellationToken cancellationToken)
@@ -122,8 +127,10 @@ public sealed partial class ParkGraphUpsertProcessor
             await this.SaveHistoryAsync(request, requestedByUserId, apply, result, cancellationToken);
             return apply
                 ? ApplicationResult<ParkGraphUpsertResult>.Failure(ParkGraphUpsertApplicationErrors.CannotApply("Le document ne peut pas être appliqué car aucun parc cible fiable n'a été résolu."))
-                : ApplicationResult<ParkGraphUpsertResult>.Success(result);
+            : ApplicationResult<ParkGraphUpsertResult>.Success(result);
         }
+
+        PublicSeoParkSnapshot? previousParkSnapshot = PublicSeoParkSnapshot.FromPark(targetPark);
 
         Dictionary<string, string> founderKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, string> operatorKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -157,15 +164,32 @@ public sealed partial class ParkGraphUpsertProcessor
 
         Dictionary<string, string> zoneKeys = await this.ProcessZonesAsync(root, targetPark, result, apply, cancellationToken);
         Dictionary<string, string> itemKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        List<string> changedItemIds = await this.ProcessItemsAsync(root, targetPark, zoneKeys, manufacturerKeys, itemKeys, result, apply, cancellationToken);
+        ParkGraphUpsertItemSeoChanges itemSeoChanges = await this.ProcessItemsAsync(root, targetPark, zoneKeys, manufacturerKeys, itemKeys, result, apply, cancellationToken);
         await this.ProcessImagesAsync(root, targetPark, itemKeys, result, apply, cancellationToken);
 
         if (apply)
         {
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, targetPark.Id, cancellationToken);
-            if (changedItemIds.Count > 0)
+            if (itemSeoChanges.ChangedItemIds.Count > 0)
             {
-                await this.searchProjectionWriter.UpsertManyAsync(SearchProjectionResourceTypes.ParkItems, changedItemIds, cancellationToken);
+                await this.searchProjectionWriter.UpsertManyAsync(SearchProjectionResourceTypes.ParkItems, itemSeoChanges.ChangedItemIds, cancellationToken);
+            }
+
+            if (result.Changes.Any(static change => !string.Equals(change.ChangeType, "Unchanged", StringComparison.Ordinal)))
+            {
+                IReadOnlyCollection<PublicSeoParkSnapshot> previousParks = previousParkSnapshot is null
+                    ? Array.Empty<PublicSeoParkSnapshot>()
+                    : new[] { previousParkSnapshot };
+                await this.publicSeoUpdateNotifier.NotifyAsync(
+                    new PublicSeoUpdate
+                    {
+                        PreviousParks = previousParks,
+                        CurrentParks = PublicSeoParkSnapshot.FromParks(new[] { targetPark }),
+                        PreviousParkItems = itemSeoChanges.PreviousItems,
+                        CurrentParkItems = itemSeoChanges.CurrentItems,
+                        IncludeDiscoveryPages = true,
+                    },
+                    cancellationToken);
             }
         }
 

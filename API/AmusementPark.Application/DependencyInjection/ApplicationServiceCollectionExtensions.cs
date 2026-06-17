@@ -51,6 +51,9 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ISitemapSectionProvider, ReferencesSitemapSectionProvider>();
         services.AddScoped<ISitemapXmlWriter, SitemapXmlWriter>();
         services.AddScoped<SeoSitemapGenerationOrchestrator>();
+        services.AddScoped<PublicSeoUrlResolver>();
+        services.AddScoped<IPublicSeoUpdateNotifier, PublicSeoUpdateNotifier>();
+        services.AddSingleton<ISeoSitemapRefreshScheduler, NoOpSeoSitemapRefreshScheduler>();
         services.AddSingleton<ISeoSitemapRuntimeStateStore, InMemorySeoSitemapRuntimeStateStore>();
         return services;
     }

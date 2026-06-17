@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.ParkGraphUpserts.Ports;
 using AmusementPark.Application.Features.ParkGraphUpserts.Results;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Search;
+using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
@@ -16,12 +17,12 @@ namespace AmusementPark.Application.Features.ParkGraphUpserts.Services;
 
 public sealed partial class ParkGraphUpsertProcessor
 {
-    private async Task<List<string>> ProcessItemsAsync(JsonElement root, Park park, Dictionary<string, string> zoneKeys, Dictionary<string, string> manufacturerKeys, Dictionary<string, string> itemKeys, ParkGraphUpsertResult result, bool apply, CancellationToken cancellationToken)
+    private async Task<ParkGraphUpsertItemSeoChanges> ProcessItemsAsync(JsonElement root, Park park, Dictionary<string, string> zoneKeys, Dictionary<string, string> manufacturerKeys, Dictionary<string, string> itemKeys, ParkGraphUpsertResult result, bool apply, CancellationToken cancellationToken)
     {
-        List<string> changedIds = new List<string>();
+        ParkGraphUpsertItemSeoChanges seoChanges = new ParkGraphUpsertItemSeoChanges();
         if (!root.TryGetProperty("items", out JsonElement items) || items.ValueKind != JsonValueKind.Array)
         {
-            return changedIds;
+            return seoChanges;
         }
 
         IReadOnlyCollection<ParkItem> existingItems = await this.parkItemRepository.GetByParkIdAsync(park.Id, true, cancellationToken);
@@ -49,6 +50,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 IsVisible = ParkItemAdministrationDefaults.QuickCreateIsVisible,
                 AdminReviewStatus = ParkItemAdministrationDefaults.QuickCreateAdminReviewStatus,
             };
+            PublicSeoParkItemSnapshot? previousItemSnapshot = isNew ? null : PublicSeoParkItemSnapshot.FromParkItem(item);
 
             ParkGraphUpsertChange change = BuildEntityChange("ParkItem", item.Id, key, item.Name, isNew ? "Created" : "Unchanged", isNew ? "name" : MatchMode(id, name));
             PatchItem(item, patch, zoneKeys, manufacturerKeys, change, result, isNew);
@@ -64,11 +66,21 @@ public sealed partial class ParkGraphUpsertProcessor
                 item = isNew
                     ? await this.parkItemRepository.CreateAsync(item, cancellationToken)
                     : await this.parkItemRepository.UpdateAsync(item.Id, item, cancellationToken) ?? item;
-                changedIds.Add(item.Id);
+                seoChanges.ChangedItemIds.Add(item.Id);
+                if (previousItemSnapshot is not null)
+                {
+                    seoChanges.PreviousItems.Add(previousItemSnapshot);
+                }
+
+                PublicSeoParkItemSnapshot? currentItemSnapshot = PublicSeoParkItemSnapshot.FromParkItem(item);
+                if (currentItemSnapshot is not null)
+                {
+                    seoChanges.CurrentItems.Add(currentItemSnapshot);
+                }
             }
             else if (!apply && (change.Fields.Count > 0 || isNew))
             {
-                changedIds.Add(item.Id);
+                seoChanges.ChangedItemIds.Add(item.Id);
             }
 
             if (isNew)
@@ -89,6 +101,15 @@ public sealed partial class ParkGraphUpsertProcessor
             result.Changes.Add(change);
         }
 
-        return changedIds;
+        return seoChanges;
+    }
+
+    private sealed class ParkGraphUpsertItemSeoChanges
+    {
+        public List<string> ChangedItemIds { get; } = new List<string>();
+
+        public List<PublicSeoParkItemSnapshot> PreviousItems { get; } = new List<PublicSeoParkItemSnapshot>();
+
+        public List<PublicSeoParkItemSnapshot> CurrentItems { get; } = new List<PublicSeoParkItemSnapshot>();
     }
 }

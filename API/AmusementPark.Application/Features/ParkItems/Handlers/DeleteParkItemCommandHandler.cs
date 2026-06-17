@@ -4,6 +4,8 @@ using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 
 namespace AmusementPark.Application.Features.ParkItems.Handlers;
 
@@ -11,11 +13,16 @@ public sealed class DeleteParkItemCommandHandler : ICommandHandler<DeleteParkIte
 {
     private readonly IParkItemRepository parkItemRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
+    private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
 
-    public DeleteParkItemCommandHandler(IParkItemRepository parkItemRepository, ISearchProjectionWriter searchProjectionWriter)
+    public DeleteParkItemCommandHandler(
+        IParkItemRepository parkItemRepository,
+        ISearchProjectionWriter searchProjectionWriter,
+        IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
     {
         this.parkItemRepository = parkItemRepository;
         this.searchProjectionWriter = searchProjectionWriter;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult> HandleAsync(DeleteParkItemCommand command, CancellationToken cancellationToken = default)
@@ -39,6 +46,13 @@ public sealed class DeleteParkItemCommandHandler : ICommandHandler<DeleteParkIte
             {
                 await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, existing.ParkId, cancellationToken);
             }
+
+            await this.publicSeoUpdateNotifier.NotifyAsync(
+                new PublicSeoUpdate
+                {
+                    PreviousParkItems = PublicSeoParkItemSnapshot.FromParkItems(new[] { existing }),
+                },
+                cancellationToken);
 
             return ApplicationResult.Success();
         }

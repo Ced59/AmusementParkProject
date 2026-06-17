@@ -10,6 +10,8 @@ namespace AmusementPark.Infrastructure.Services.Seo;
 /// </summary>
 public sealed class IndexNowSubmitter : IIndexNowSubmitter
 {
+    private const int MaxUrlsPerRequest = 10000;
+
     private readonly IHttpClientFactory httpClientFactory;
 
     public IndexNowSubmitter(IHttpClientFactory httpClientFactory)
@@ -17,7 +19,11 @@ public sealed class IndexNowSubmitter : IIndexNowSubmitter
         this.httpClientFactory = httpClientFactory;
     }
 
-    public async Task<IndexNowSubmissionResult> SubmitAsync(SeoSitemapSettings settings, string publicBaseUrl, IReadOnlyCollection<string> absoluteUrls, CancellationToken cancellationToken)
+    public async Task<IndexNowSubmissionResult> SubmitAsync(
+        SeoSitemapSettings settings,
+        string publicBaseUrl,
+        IReadOnlyCollection<string> absoluteUrls,
+        CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(settings);
 
@@ -28,7 +34,7 @@ public sealed class IndexNowSubmitter : IIndexNowSubmitter
                 WasRequested = true,
                 IsEnabled = false,
                 IsSuccess = false,
-                Errors = new[] { "IndexNow est désactivé." },
+                Errors = new[] { "IndexNow est desactive." },
             };
         }
 
@@ -39,14 +45,13 @@ public sealed class IndexNowSubmitter : IIndexNowSubmitter
                 WasRequested = true,
                 IsEnabled = true,
                 IsSuccess = false,
-                Errors = new[] { "La clé IndexNow est absente." },
+                Errors = new[] { "La cle IndexNow est absente." },
             };
         }
 
         List<string> urls = absoluteUrls
             .Where(static url => !string.IsNullOrWhiteSpace(url))
             .Distinct(StringComparer.OrdinalIgnoreCase)
-            .Take(10000)
             .ToList();
 
         if (urls.Count == 0)
@@ -63,35 +68,46 @@ public sealed class IndexNowSubmitter : IIndexNowSubmitter
         Uri hostUri = new Uri(publicBaseUrl.TrimEnd('/'));
         string keyLocation = NormalizeKeyLocation(publicBaseUrl, settings);
         IReadOnlyCollection<string> endpoints = NormalizeEndpoints(settings.IndexNowEndpoints);
+        IReadOnlyCollection<IReadOnlyCollection<string>> urlBatches = SplitIntoBatches(urls);
         List<string> acceptedEndpoints = new List<string>();
         List<string> errors = new List<string>();
 
         foreach (string endpoint in endpoints)
         {
-            try
+            bool endpointAcceptedAllBatches = true;
+            int batchIndex = 1;
+            foreach (IReadOnlyCollection<string> batch in urlBatches)
             {
-                HttpClient client = this.httpClientFactory.CreateClient();
-                IndexNowPayload payload = new IndexNowPayload
+                try
                 {
-                    Host = hostUri.Host,
-                    Key = settings.IndexNowKey.Trim(),
-                    KeyLocation = keyLocation,
-                    UrlList = urls,
-                };
+                    HttpClient client = this.httpClientFactory.CreateClient();
+                    IndexNowPayload payload = new IndexNowPayload
+                    {
+                        Host = hostUri.Host,
+                        Key = settings.IndexNowKey.Trim(),
+                        KeyLocation = keyLocation,
+                        UrlList = batch,
+                    };
 
-                HttpResponseMessage response = await client.PostAsJsonAsync(endpoint, payload, cancellationToken);
-                if (response.IsSuccessStatusCode)
-                {
-                    acceptedEndpoints.Add(endpoint);
+                    HttpResponseMessage response = await client.PostAsJsonAsync(endpoint, payload, cancellationToken);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        endpointAcceptedAllBatches = false;
+                        errors.Add($"{endpoint} batch {batchIndex}/{urlBatches.Count} -> {(int)response.StatusCode} {response.ReasonPhrase}");
+                    }
                 }
-                else
+                catch (Exception exception) when (exception is not OperationCanceledException)
                 {
-                    errors.Add($"{endpoint} -> {(int)response.StatusCode} {response.ReasonPhrase}");
+                    endpointAcceptedAllBatches = false;
+                    errors.Add($"{endpoint} batch {batchIndex}/{urlBatches.Count} -> {exception.Message}");
                 }
+
+                batchIndex++;
             }
-            catch (Exception exception) when (exception is not OperationCanceledException)
+
+            if (endpointAcceptedAllBatches)
             {
-                errors.Add($"{endpoint} -> {exception.Message}");
+                acceptedEndpoints.Add(endpoint);
             }
         }
 
@@ -104,6 +120,28 @@ public sealed class IndexNowSubmitter : IIndexNowSubmitter
             AcceptedEndpoints = acceptedEndpoints,
             Errors = errors,
         };
+    }
+
+    private static IReadOnlyCollection<IReadOnlyCollection<string>> SplitIntoBatches(IReadOnlyCollection<string> urls)
+    {
+        List<IReadOnlyCollection<string>> batches = new List<IReadOnlyCollection<string>>();
+        List<string> currentBatch = new List<string>(MaxUrlsPerRequest);
+        foreach (string url in urls)
+        {
+            currentBatch.Add(url);
+            if (currentBatch.Count == MaxUrlsPerRequest)
+            {
+                batches.Add(currentBatch);
+                currentBatch = new List<string>(MaxUrlsPerRequest);
+            }
+        }
+
+        if (currentBatch.Count > 0)
+        {
+            batches.Add(currentBatch);
+        }
+
+        return batches;
     }
 
     private static string NormalizeKeyLocation(string publicBaseUrl, SeoSitemapSettings settings)

@@ -14,6 +14,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 using Moq;
 using Xunit;
@@ -78,7 +79,8 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             Mock.Of<IImageRepository>(MockBehavior.Strict),
             searchProjectionWriter.Object,
-            historyRepository.Object);
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>());
 
         using JsonDocument document = JsonDocument.Parse("""
         {

@@ -5,6 +5,8 @@ using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Parks.Handlers;
@@ -17,12 +19,18 @@ public sealed class UpdateParkVisibilityCommandHandler : ICommandHandler<UpdateP
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
+    private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
 
-    public UpdateParkVisibilityCommandHandler(IParkRepository parkRepository, IParkItemRepository parkItemRepository, ISearchProjectionWriter searchProjectionWriter)
+    public UpdateParkVisibilityCommandHandler(
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository,
+        ISearchProjectionWriter searchProjectionWriter,
+        IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.searchProjectionWriter = searchProjectionWriter;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<Park>> HandleAsync(UpdateParkVisibilityCommand command, CancellationToken cancellationToken = default)
@@ -34,7 +42,14 @@ public sealed class UpdateParkVisibilityCommandHandler : ICommandHandler<UpdateP
 
         try
         {
-            Park? updated = await this.parkRepository.UpdateVisibilityAsync(command.ParkId.Trim(), command.IsVisible, cancellationToken);
+            string parkId = command.ParkId.Trim();
+            Park? existing = await this.parkRepository.GetByIdAsync(parkId, true, cancellationToken);
+            if (existing is null)
+            {
+                return ApplicationResult<Park>.Failure(ParkApplicationErrors.ParkNotExists());
+            }
+
+            Park? updated = await this.parkRepository.UpdateVisibilityAsync(parkId, command.IsVisible, cancellationToken);
             if (updated is null)
             {
                 return ApplicationResult<Park>.Failure(ParkApplicationErrors.ParkNotExists());
@@ -46,6 +61,15 @@ public sealed class UpdateParkVisibilityCommandHandler : ICommandHandler<UpdateP
             {
                 await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, parkItem.Id, cancellationToken);
             }
+
+            await this.publicSeoUpdateNotifier.NotifyAsync(
+                new PublicSeoUpdate
+                {
+                    PreviousParks = PublicSeoParkSnapshot.FromParks(new[] { existing }),
+                    CurrentParks = PublicSeoParkSnapshot.FromParks(new[] { updated }),
+                    IncludeDiscoveryPages = true,
+                },
+                cancellationToken);
 
             return ApplicationResult<Park>.Success(updated);
         }

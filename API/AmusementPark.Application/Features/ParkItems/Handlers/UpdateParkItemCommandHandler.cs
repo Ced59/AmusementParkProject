@@ -6,6 +6,8 @@ using AmusementPark.Application.Features.ParkItems.Results;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.ParkItems.Handlers;
@@ -16,17 +18,20 @@ public sealed class UpdateParkItemCommandHandler : ICommandHandler<UpdateParkIte
     private readonly ParkItemReferenceValidator parkItemReferenceValidator;
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly ParkItemContentQualityService contentQualityService;
+    private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
 
     public UpdateParkItemCommandHandler(
         IParkItemRepository parkItemRepository,
         ParkItemReferenceValidator parkItemReferenceValidator,
         ISearchProjectionWriter searchProjectionWriter,
-        ParkItemContentQualityService contentQualityService)
+        ParkItemContentQualityService contentQualityService,
+        IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
     {
         this.parkItemRepository = parkItemRepository;
         this.parkItemReferenceValidator = parkItemReferenceValidator;
         this.searchProjectionWriter = searchProjectionWriter;
         this.contentQualityService = contentQualityService;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<ParkItem>> HandleAsync(UpdateParkItemCommand command, CancellationToken cancellationToken = default)
@@ -83,6 +88,14 @@ public sealed class UpdateParkItemCommandHandler : ICommandHandler<UpdateParkIte
             {
                 await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Parks, existing.ParkId, cancellationToken);
             }
+
+            await this.publicSeoUpdateNotifier.NotifyAsync(
+                new PublicSeoUpdate
+                {
+                    PreviousParkItems = PublicSeoParkItemSnapshot.FromParkItems(new[] { existing }),
+                    CurrentParkItems = PublicSeoParkItemSnapshot.FromParkItems(new[] { updated }),
+                },
+                cancellationToken);
 
             return ApplicationResult<ParkItem>.Success(updated);
         }

@@ -6,6 +6,8 @@ using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.Parks.Handlers;
@@ -18,12 +20,18 @@ public sealed class UpdateParksBulkAdministrationCommandHandler : ICommandHandle
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
+    private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
 
-    public UpdateParksBulkAdministrationCommandHandler(IParkRepository parkRepository, IParkItemRepository parkItemRepository, ISearchProjectionWriter searchProjectionWriter)
+    public UpdateParksBulkAdministrationCommandHandler(
+        IParkRepository parkRepository,
+        IParkItemRepository parkItemRepository,
+        ISearchProjectionWriter searchProjectionWriter,
+        IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
     {
         this.parkRepository = parkRepository;
         this.parkItemRepository = parkItemRepository;
         this.searchProjectionWriter = searchProjectionWriter;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<BulkAdministrationUpdateResult>> HandleAsync(UpdateParksBulkAdministrationCommand command, CancellationToken cancellationToken = default)
@@ -62,6 +70,8 @@ public sealed class UpdateParksBulkAdministrationCommandHandler : ICommandHandle
                 .ToList();
         }
 
+        IReadOnlyCollection<Park> previousParks = await this.parkRepository.GetByIdsAsync(normalizedParkIds, cancellationToken);
+
         int updatedCount = await this.parkRepository.UpdateBulkAdministrationAsync(
             normalizedParkIds,
             command.IsVisible,
@@ -76,6 +86,19 @@ public sealed class UpdateParksBulkAdministrationCommandHandler : ICommandHandle
             {
                 await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.ParkItems, parkItem.Id, cancellationToken);
             }
+        }
+
+        if (updatedCount > 0)
+        {
+            IReadOnlyCollection<Park> currentParks = await this.parkRepository.GetByIdsAsync(normalizedParkIds, cancellationToken);
+            await this.publicSeoUpdateNotifier.NotifyAsync(
+                new PublicSeoUpdate
+                {
+                    PreviousParks = PublicSeoParkSnapshot.FromParks(previousParks),
+                    CurrentParks = PublicSeoParkSnapshot.FromParks(currentParks),
+                    IncludeDiscoveryPages = true,
+                },
+                cancellationToken);
         }
 
         return ApplicationResult<BulkAdministrationUpdateResult>.Success(new BulkAdministrationUpdateResult
