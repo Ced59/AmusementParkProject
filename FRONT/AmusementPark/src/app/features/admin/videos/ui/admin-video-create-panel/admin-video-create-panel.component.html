@@ -124,6 +124,9 @@
 
       <div class="admin-video-create-panel__tags">
         <span>{{ 'admin.videos.tags' | translate }}</span>
+        @if (tagsErrorKey()) {
+          <p class="admin-video-create-panel__message admin-video-create-panel__message--warning" role="status">{{ tagsErrorKey()! | translate }}</p>
+        }
         <div class="admin-video-create-panel__tags-grid" [class.is-loading]="tagsLoading()">
           @for (tag of tags(); track trackById($index, tag)) {
             <label>

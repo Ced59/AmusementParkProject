@@ -157,4 +157,19 @@ describe('AdminParkItemEditStateFacade', () => {
       nextItemId: 'item-3'
     });
   });
+
+  it('normalizes park and item ids before loading sequential navigation', async () => {
+    parkItemsPort.rowsByPage.set(1, [
+      { id: 'item-1', parkId: 'park-1', parkName: 'Park', name: 'One', category: 'Attraction', type: 'Attraction', isVisible: true, adminReviewStatus: 'Validated' },
+      { id: 'item-2 ', parkId: 'park-1', parkName: 'Park', name: 'Two', category: 'Attraction', type: 'Attraction', isVisible: true, adminReviewStatus: 'Validated' }
+    ]);
+    parkItemsPort.totalItems = 2;
+    parkItemsPort.totalPages = 1;
+
+    await facade.loadSequentialNavigation(' park-1 ', ' item-2 ', true);
+
+    expect(parkItemsPort.pageCalls[0].parkId).toBe('park-1');
+    expect(facade.sequentialNavigationState().currentPosition).toBe(2);
+    expect(facade.sequentialNavigationState().previousItemId).toBe('item-1');
+  });
 });

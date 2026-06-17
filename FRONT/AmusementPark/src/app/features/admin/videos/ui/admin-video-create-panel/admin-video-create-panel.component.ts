@@ -57,6 +57,7 @@ export class AdminVideoCreatePanelComponent implements OnInit, OnChanges {
   protected readonly resolvingMetadata = this.stateFacade.resolvingMetadata;
   protected readonly creating = this.stateFacade.creating;
   protected readonly errorKey = this.stateFacade.errorKey;
+  protected readonly tagsErrorKey = this.stateFacade.tagsErrorKey;
   protected readonly successKey = this.stateFacade.successKey;
   protected readonly languages: readonly LanguageOption[] = LANGUAGES;
   protected readonly videoTypes: VideoType[] = [

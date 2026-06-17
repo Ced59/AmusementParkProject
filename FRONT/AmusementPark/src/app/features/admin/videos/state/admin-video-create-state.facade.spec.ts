@@ -101,6 +101,7 @@ describe('AdminVideoCreateStateFacade', () => {
 
     expect(facade.tags().map((tag: VideoTagDto) => tag.id)).toEqual(['official']);
     expect(facade.errorKey()).toBeNull();
+    expect(facade.tagsErrorKey()).toBeNull();
   });
 
   it('keeps contextual creation available when tags fail to load', () => {
@@ -109,7 +110,8 @@ describe('AdminVideoCreateStateFacade', () => {
     facade.loadTags();
 
     expect(facade.tags()).toEqual([]);
-    expect(facade.errorKey()).toBe('admin.videos.tagsLoadError');
+    expect(facade.errorKey()).toBeNull();
+    expect(facade.tagsErrorKey()).toBe('admin.videos.tagsLoadError');
   });
 
   it('resolves metadata and creates a video request', async () => {

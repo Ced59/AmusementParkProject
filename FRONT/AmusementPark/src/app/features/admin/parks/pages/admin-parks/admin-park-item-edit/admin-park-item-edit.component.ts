@@ -429,14 +429,22 @@ export class AdminParkItemEditComponent implements OnInit {
   private async loadItemAsync(itemId: string): Promise<boolean> {
     try {
       const item: ParkItem = await this.editStateFacade.loadItem(itemId);
+      const itemParkId: string = item.parkId?.trim() ?? '';
+      const navigationParkId: string = itemParkId || this.parkId().trim();
+      const navigationItemId: string = item.id?.trim() || itemId.trim();
+
+      if (navigationParkId && navigationParkId !== this.parkId()) {
+        this.parkId.set(navigationParkId);
+      }
 
       patchAdminParkItemEditForm(this.formBuilder, this.form, item);
       this.applySelectionOverridesFromQueryParams();
       this.filteredTypeOptions.set(applyAdminParkItemCategorySelection(this.form, item.category));
       this.locationStateFacade.markGeneralLocationAsManuallyChanged();
-      await this.locationStateFacade.loadParkLocationDefaultAsync(this.parkId(), false);
+      await this.locationStateFacade.loadParkLocationDefaultAsync(navigationParkId, false);
       this.finalizeLoadedFormState();
-      void this.editStateFacade.loadSequentialNavigation(this.parkId(), itemId);
+      void this.editStateFacade.ensureParkOption(navigationParkId);
+      void this.editStateFacade.loadSequentialNavigation(navigationParkId, navigationItemId);
       return true;
     } catch (error: unknown) {
       console.error('Error loading park item', error);

@@ -64,6 +64,7 @@ public sealed partial class MongoDatabaseInitializer
 
         await this.EnsureCollectionExistsAsync(this.settings.VideoTagsCollectionName, cancellationToken);
         await this.InitializeVideoTagsIndexesAsync(cancellationToken);
+        await this.SeedSystemVideoTagsAsync(cancellationToken);
 
         await this.EnsureCollectionExistsAsync(this.settings.CountriesCollectionName, cancellationToken);
         await this.InitializeCountriesIndexesAsync(cancellationToken);
