@@ -68,6 +68,12 @@
   color: var(--green-700, #15803d);
 }
 
+.admin-video-create-panel__message--warning {
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  background: rgba(245, 158, 11, 0.1);
+  color: #b45309;
+}
+
 .admin-video-create-panel__grid,
 .admin-video-create-panel__localized-grid {
   display: grid;

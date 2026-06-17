@@ -19,6 +19,7 @@ export class AdminVideoCreateStateFacade {
   private readonly resolvingMetadataSignal = signal(false);
   private readonly creatingSignal = signal(false);
   private readonly errorKeySignal = signal<string | null>(null);
+  private readonly tagsErrorKeySignal = signal<string | null>(null);
   private readonly successKeySignal = signal<string | null>(null);
 
   public readonly tags: Signal<VideoTagDto[]> = this.tagsSignal.asReadonly();
@@ -26,6 +27,7 @@ export class AdminVideoCreateStateFacade {
   public readonly resolvingMetadata: Signal<boolean> = this.resolvingMetadataSignal.asReadonly();
   public readonly creating: Signal<boolean> = this.creatingSignal.asReadonly();
   public readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
+  public readonly tagsErrorKey: Signal<string | null> = this.tagsErrorKeySignal.asReadonly();
   public readonly successKey: Signal<string | null> = this.successKeySignal.asReadonly();
 
   constructor(
@@ -36,7 +38,7 @@ export class AdminVideoCreateStateFacade {
 
   loadTags(): void {
     this.tagsLoadingSignal.set(true);
-    this.errorKeySignal.set(null);
+    this.tagsErrorKeySignal.set(null);
 
     this.videosPort.getVideoTags()
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -44,12 +46,13 @@ export class AdminVideoCreateStateFacade {
         next: (tags: VideoTagDto[]): void => {
           this.tagsSignal.set(tags);
           this.tagsLoadingSignal.set(false);
+          this.tagsErrorKeySignal.set(null);
         },
         error: (error: unknown): void => {
           console.error('Error loading admin video tags', error);
           this.tagsSignal.set([]);
           this.tagsLoadingSignal.set(false);
-          this.errorKeySignal.set('admin.videos.tagsLoadError');
+          this.tagsErrorKeySignal.set('admin.videos.tagsLoadError');
         }
       });
   }

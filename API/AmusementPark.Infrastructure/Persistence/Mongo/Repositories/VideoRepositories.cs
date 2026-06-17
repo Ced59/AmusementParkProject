@@ -39,14 +39,15 @@ public sealed class VideoRepository : IVideoRepository
         }
 
         long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
-        List<VideoDocument> documents = await this.collection
+        List<BsonDocument> documents = await this.collection
             .Find(filter)
             .Sort(sort)
             .Skip((safePage - 1) * safePageSize)
             .Limit(safePageSize)
+            .Project<BsonDocument>(Builders<VideoDocument>.Projection.Exclude("__unused"))
             .ToListAsync(cancellationToken);
 
-        PagedResult<Video> pageResult = new PagedResult<Video>(documents.Select(static document => document.ToDomain()).ToList(), safePage, safePageSize, totalItems);
+        PagedResult<Video> pageResult = new PagedResult<Video>(documents.Select(static document => document.ToVideoDomain()).ToList(), safePage, safePageSize, totalItems);
         this.cache.Set(cacheKey, pageResult, ReadCacheDuration);
         return pageResult;
     }
@@ -59,10 +60,11 @@ public sealed class VideoRepository : IVideoRepository
             return cachedVideo;
         }
 
-        VideoDocument? document = await this.collection.Find(item => item.Id == videoId)
+        BsonDocument? document = await this.collection.Find(item => item.Id == videoId)
+            .Project<BsonDocument>(Builders<VideoDocument>.Projection.Exclude("__unused"))
             .FirstOrDefaultAsync(cancellationToken);
 
-        Video? video = document?.ToDomain();
+        Video? video = document?.ToVideoDomain();
         if (video is not null)
         {
             this.cache.Set(cacheKey, video, ReadCacheDuration);
@@ -347,11 +349,12 @@ public sealed class VideoTagRepository : IVideoTagRepository
             return cachedTags;
         }
 
-        List<VideoTagDocument> documents = await this.collection.Find(Builders<VideoTagDocument>.Filter.Empty)
+        List<BsonDocument> documents = await this.collection.Find(Builders<VideoTagDocument>.Filter.Empty)
             .SortBy(static document => document.Slug)
+            .Project<BsonDocument>(Builders<VideoTagDocument>.Projection.Exclude("__unused"))
             .ToListAsync(cancellationToken);
 
-        IReadOnlyCollection<VideoTag> tags = documents.Select(static document => document.ToDomain()).ToList();
+        IReadOnlyCollection<VideoTag> tags = documents.Select(static document => document.ToVideoTagDomain()).ToList();
         this.cache.Set(cacheKey, tags, TagCacheDuration);
         return tags;
     }

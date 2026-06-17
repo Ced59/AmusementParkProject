@@ -134,25 +134,28 @@ export class AdminParkItemEditStateFacade {
   }
 
   async loadSequentialNavigation(parkId: string, currentItemId: string, forceReload: boolean = false): Promise<void> {
-    if (!parkId || !currentItemId) {
+    const normalizedParkId: string = parkId.trim();
+    const normalizedCurrentItemId: string = currentItemId.trim();
+
+    if (!normalizedParkId || !normalizedCurrentItemId) {
       this.clearSequentialNavigation();
       return;
     }
 
     const loadVersion: number = ++this.navigationLoadVersion;
     this.sequentialNavigationStateSignal.set({
-      ...this.buildSequentialNavigationState([], currentItemId),
+      ...this.buildSequentialNavigationState([], normalizedCurrentItemId),
       isLoading: true
     });
 
     try {
-      const rows: ParkItemAdminRow[] = await this.loadParkItemRowsForNavigation(parkId, forceReload);
+      const rows: ParkItemAdminRow[] = await this.loadParkItemRowsForNavigation(normalizedParkId, forceReload);
 
       if (loadVersion !== this.navigationLoadVersion) {
         return;
       }
 
-      this.sequentialNavigationStateSignal.set(this.buildSequentialNavigationState(rows, currentItemId));
+      this.sequentialNavigationStateSignal.set(this.buildSequentialNavigationState(rows, normalizedCurrentItemId));
     } catch (error: unknown) {
       console.error('Error loading park item sequential navigation', error);
 
@@ -162,7 +165,7 @@ export class AdminParkItemEditStateFacade {
 
       this.sequentialNavigationStateSignal.set({
         ...EMPTY_ADMIN_PARK_ITEM_SEQUENTIAL_NAVIGATION_STATE,
-        currentItemId
+        currentItemId: normalizedCurrentItemId
       });
     }
   }
@@ -226,13 +229,14 @@ export class AdminParkItemEditStateFacade {
   }
 
   private buildSequentialNavigationState(rows: ParkItemAdminRow[], currentItemId: string): AdminParkItemSequentialNavigationState {
-    const currentIndex: number = rows.findIndex((row: ParkItemAdminRow): boolean => row.id === currentItemId);
+    const normalizedCurrentItemId: string = currentItemId.trim();
+    const currentIndex: number = rows.findIndex((row: ParkItemAdminRow): boolean => row.id?.trim() === normalizedCurrentItemId);
     const totalItems: number = rows.length;
     const currentPosition: number = currentIndex >= 0 ? currentIndex + 1 : 0;
 
     return {
       isLoading: false,
-      currentItemId,
+      currentItemId: normalizedCurrentItemId,
       currentPosition,
       remainingItems: currentPosition > 0 ? Math.max(totalItems - currentPosition, 0) : 0,
       totalItems,
