@@ -1,0 +1,13 @@
+{
+  "versionHistoryPage": {
+    "kicker": "Cronologia",
+    "title": "Cosa e cambiato",
+    "lead": "Versione attuale: {{version}}. Ogni nota e breve, pubblica e centrata sui progressi visibili.",
+    "timelineAriaLabel": "Cronologia delle versioni",
+    "levels": {
+      "major": "Maggiore",
+      "minor": "Tappa",
+      "patch": "Aggiornamento"
+    }
+  }
+}

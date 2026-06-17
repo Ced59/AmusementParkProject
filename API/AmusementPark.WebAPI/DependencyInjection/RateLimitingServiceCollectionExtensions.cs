@@ -41,6 +41,9 @@ public static class RateLimitingServiceCollectionExtensions
             .Get<AuthenticationRateLimitingSettings>() ?? new AuthenticationRateLimitingSettings();
 
         FixedWindowRateLimitSettings globalSettings = GetGlobalRateLimitSettings(configuration);
+        FixedWindowRateLimitSettings contactSubmissionSettings = configuration
+            .GetSection("RateLimiting:Contact:Submission")
+            .Get<FixedWindowRateLimitSettings>() ?? FixedWindowRateLimitSettings.Create(3, 900);
 
         services.AddRateLimiter(options =>
         {
@@ -75,6 +78,7 @@ public static class RateLimitingServiceCollectionExtensions
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthRegistration, authenticationSettings.Registration);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthEmailChallenge, authenticationSettings.EmailChallenge);
             AddFixedWindowIpPolicy(options, RateLimitPolicyNames.AuthPasswordReset, authenticationSettings.PasswordReset);
+            AddFixedWindowIpPolicy(options, RateLimitPolicyNames.ContactSubmission, contactSubmissionSettings);
         });
 
         return services;

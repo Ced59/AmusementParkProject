@@ -79,6 +79,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/seo-sitemaps/pages/admin-seo-sitemaps/admin-seo-sitemaps.component').then((m) => m.AdminSeoSitemapsComponent)
           },
           {
+            path: 'contact-grievances',
+            loadComponent: () => import('@features/admin/contact/pages/admin-contact-grievances/admin-contact-grievances.component').then((m) => m.AdminContactGrievancesComponent)
+          },
+          {
             path: 'images',
             loadChildren: () =>
               import('@features/admin/site/pages/admin-site/admin-site.module')
@@ -112,6 +116,8 @@ export const routes: Routes = [
           { path: 'home', loadComponent: () => import('@features/public/home/pages/home.component').then((m) => m.HomeComponent) },
           { path: 'parks', loadComponent: () => import('./features/public/parks/pages/park-list-page.component').then((m) => m.ParkListPageComponent) },
           { path: 'about', loadComponent: () => import('@features/public/about/pages/about.component').then((m) => m.AboutComponent) },
+          { path: 'contact', loadComponent: () => import('@features/public/contact/pages/contact-page.component').then((m) => m.ContactPageComponent) },
+          { path: 'versions', loadComponent: () => import('@features/public/version-history/pages/version-history-page.component').then((m) => m.VersionHistoryPageComponent) },
           { path: 'privacy', loadComponent: () => import('./features/public/legal/pages/privacy-policy-page.component').then((m) => m.PrivacyPolicyPageComponent) },
           { path: 'not-found', loadComponent: () => import('./features/public/not-found/pages/public-not-found-page.component').then((m) => m.PublicNotFoundPageComponent) },
 

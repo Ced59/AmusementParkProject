@@ -1,0 +1,30 @@
+{
+  "admin": {
+    "contactGrievances": {
+      "navTitle": "Contact messages",
+      "kicker": "Contact",
+      "title": "Feedback notebook",
+      "subtitle": "Consult public contact messages with IP context for abuse prevention.",
+      "total": "{{count}} messages",
+      "loading": "Loading contact messages...",
+      "loadError": "Unable to load contact messages.",
+      "empty": "No contact message found.",
+      "filters": {
+        "search": "Search",
+        "ipAddress": "IP address",
+        "languageCode": "Language"
+      },
+      "columns": {
+        "date": "Date",
+        "message": "Message",
+        "context": "Context",
+        "userAgent": "User agent"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "contactGrievances": "Consult contact messages and abuse context."
+      }
+    }
+  }
+}

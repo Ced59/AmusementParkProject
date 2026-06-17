@@ -90,10 +90,30 @@
       "validCoordinatesScope": "Valid-coordinate parks",
       "makeFilteredValidCoordinatesVisible": "Make geolocated parks visible"
     },
+    "contactGrievances": {
+      "navTitle": "Contact messages",
+      "kicker": "Contact",
+      "title": "Feedback notebook",
+      "subtitle": "Consult public contact messages with IP context for abuse prevention.",
+      "total": "{{count}} messages",
+      "loading": "Loading contact messages...",
+      "loadError": "Unable to load contact messages.",
+      "empty": "No contact message found.",
+      "filters": {
+        "search": "Search",
+        "ipAddress": "IP address",
+        "languageCode": "Language"
+      },
+      "columns": {
+        "date": "Date",
+        "message": "Message",
+        "context": "Context",
+        "userAgent": "User agent"
+      }
+    },
     "dashboard": {
-      "title": "Dashboard",
-      "subtitle": "Back-office entry point: choose a section from the left menu or from the shortcuts below.",
       "shortcuts": {
+        "contactGrievances": "Consult contact messages and abuse context.",
         "users": "Manage accounts, roles and access.",
         "parks": "Filter, prioritize and publish parks.",
         "parkItems": "Manage attractions, shops, restaurants and services.",
@@ -105,7 +125,9 @@
         "auditLogs": "Review logged sensitive administration actions.",
         "parkGraphUpserts": "Preview then apply a full or partial park graph JSON.",
         "seoSitemaps": "Manage the sitemap index, XML sections, stats and IndexNow."
-      }
+      },
+      "title": "Dashboard",
+      "subtitle": "Back-office entry point: choose a section from the left menu or from the shortcuts below."
     },
     "dataSources": {
       "title": "Data sources"
@@ -1642,6 +1664,38 @@
       "secondary": "Back home"
     }
   },
+  "contactPage": {
+    "kicker": "Contact",
+    "title": "Contact AmusementPark",
+    "lead": "Send a note about the site, a missing detail, a data issue or an idea to improve the experience.",
+    "email": {
+      "badge": "Temporary email",
+      "title": "Direct contact",
+      "note": "This address is temporary until a dedicated mail provider is configured."
+    },
+    "form": {
+      "kicker": "Feedback notebook",
+      "title": "Leave a message",
+      "description": "Messages are stored as plain text and reviewed from the admin panel.",
+      "messageLabel": "Your message",
+      "help": "Plain text only. HTML tags and abusive links are rejected.",
+      "validation": "Enter a plain text message between 10 and 2000 characters.",
+      "success": "Your message has been recorded.",
+      "error": "The message could not be sent. Check the text or try again later.",
+      "submit": "Send",
+      "submitting": "Sending"
+    },
+    "privacy": {
+      "badge": "Protection",
+      "title": "Anti-abuse notice",
+      "text": "This form is intentionally strict to protect the site and its administrators.",
+      "points": {
+        "plainText": "Messages are accepted as plain text only.",
+        "ip": "Your IP address is recorded to limit repeated abuse.",
+        "admin": "Only administrators can consult submitted messages and technical context."
+      }
+    }
+  },
   "cookieConsent": {
     "ariaLabel": "Cookie information and choice banner",
     "title": "Cookies and privacy",
@@ -1658,22 +1712,20 @@
     "explore": {
       "title": "Explore",
       "allParks": "All parks",
-      "topRollerCoasters": "Top Rollercoasters",
-      "interactiveMap": "Interactive map",
-      "news": "New releases"
+      "interactiveMap": "Interactive map"
     },
     "about": {
       "title": "About",
       "project": "The project",
-      "sources": "Sources",
       "contact": "Contact",
+      "versions": "Version history",
       "privacy": "Privacy"
     },
     "languages": {
       "title": "Languages"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Made with ❤️ and adrenaline",
+      "copy": "© {{year}} AmusementPark — Made with heart and adrenaline",
       "version": "Version {{version}}"
     }
   },
@@ -2482,5 +2534,16 @@
     },
     "lastUpdate": "Last updated: 23 May 2026.",
     "backHome": "Back home"
+  },
+  "versionHistoryPage": {
+    "kicker": "Version history",
+    "title": "What changed",
+    "lead": "Current version: {{version}}. Each release note is short, public and focused on visible progress.",
+    "timelineAriaLabel": "Version history timeline",
+    "levels": {
+      "major": "Major",
+      "minor": "Milestone",
+      "patch": "Update"
+    }
   }
 }

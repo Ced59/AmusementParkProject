@@ -1,0 +1,98 @@
+<p-card styleClass="admin-list-card admin-contact-grievances-card" data-pagination-scroll-target="admin-contact-grievances">
+  <ng-template pTemplate="header">
+    <div class="admin-list-header admin-contact-grievances-header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.contactGrievances.kicker' | translate }}</span>
+        <h2>{{ 'admin.contactGrievances.title' | translate }}</h2>
+        <p>{{ 'admin.contactGrievances.subtitle' | translate }}</p>
+      </div>
+
+      @if (canShowHeaderTotal()) {
+        <span class="admin-total-pill">
+          {{ 'admin.contactGrievances.total' | translate:{ count: totalRecords() } }}
+        </span>
+      }
+    </div>
+  </ng-template>
+
+  <form class="admin-contact-grievances-filters" [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
+    <label>
+      <span>{{ 'admin.contactGrievances.filters.search' | translate }}</span>
+      <input pInputText type="text" formControlName="search" autocomplete="off" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.contactGrievances.filters.ipAddress' | translate }}</span>
+      <input pInputText type="text" formControlName="ipAddress" autocomplete="off" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.contactGrievances.filters.languageCode' | translate }}</span>
+      <input pInputText type="text" formControlName="languageCode" autocomplete="off" maxlength="5" />
+    </label>
+
+    <div class="admin-contact-grievances-filters__actions">
+      <button pButton type="submit" icon="pi pi-search" [label]="'actions.search' | translate"></button>
+      <button pButton type="button" class="p-button-secondary" icon="pi pi-filter-slash" [label]="'actions.reset' | translate" (click)="resetFilters()"></button>
+    </div>
+  </form>
+
+  <app-page-state
+    [state]="state()"
+    loadingMessageKey="admin.contactGrievances.loading"
+    errorMessageKey="admin.contactGrievances.loadError"
+    emptyMessageKey="admin.contactGrievances.empty">
+    <p-table
+      [value]="grievances()"
+      [loading]="loading()"
+      [paginator]="true"
+      [rows]="pageSize()"
+      [totalRecords]="totalRecords()"
+      [lazy]="true"
+      (onLazyLoad)="onPageChanged($event)"
+      [responsiveLayout]="'scroll'"
+      styleClass="admin-data-table admin-contact-grievances-table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>{{ 'admin.contactGrievances.columns.date' | translate }}</th>
+          <th>{{ 'admin.contactGrievances.columns.message' | translate }}</th>
+          <th>{{ 'admin.contactGrievances.columns.context' | translate }}</th>
+          <th>{{ 'admin.contactGrievances.columns.userAgent' | translate }}</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-grievance>
+        <tr>
+          <td class="admin-contact-grievances-table__date" [attr.data-label]="'admin.contactGrievances.columns.date' | translate">
+            <strong>{{ grievance.createdAtUtc | date:'yyyy-MM-dd HH:mm:ss':'UTC' }}</strong>
+            <span>UTC</span>
+          </td>
+          <td class="admin-contact-grievances-table__message" [attr.data-label]="'admin.contactGrievances.columns.message' | translate">
+            {{ grievance.message }}
+          </td>
+          <td [attr.data-label]="'admin.contactGrievances.columns.context' | translate">
+            <div class="admin-contact-grievances-table__tags">
+              <p-tag [value]="grievance.languageCode || 'n/a'" severity="info"></p-tag>
+              <p-tag [value]="grievance.ipAddress || 'unknown'" severity="secondary"></p-tag>
+            </div>
+          </td>
+          <td class="admin-contact-grievances-table__user-agent" [attr.data-label]="'admin.contactGrievances.columns.userAgent' | translate">
+            {{ grievance.userAgent || '-' }}
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="4">
+            <app-empty-state
+              [compact]="true"
+              titleKey="common.emptyTitle"
+              messageKey="admin.contactGrievances.empty">
+            </app-empty-state>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </app-page-state>
+</p-card>

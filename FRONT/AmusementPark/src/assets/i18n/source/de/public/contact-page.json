@@ -1,0 +1,34 @@
+{
+  "contactPage": {
+    "kicker": "Kontakt",
+    "title": "AmusementPark kontaktieren",
+    "lead": "Sende einen Hinweis zur Website, zu fehlenden Angaben, Datenproblemen oder Verbesserungsideen.",
+    "email": {
+      "badge": "Vorlaeufige E-Mail",
+      "title": "Direkter Kontakt",
+      "note": "Diese Adresse ist vorlaeufig, bis ein eigener Mailanbieter eingerichtet ist."
+    },
+    "form": {
+      "kicker": "Rueckmeldebuch",
+      "title": "Nachricht hinterlassen",
+      "description": "Nachrichten werden als reiner Text gespeichert und im Adminbereich geprueft.",
+      "messageLabel": "Deine Nachricht",
+      "help": "Nur reiner Text. HTML-Tags und missbraeuchliche Links werden abgelehnt.",
+      "validation": "Gib eine reine Textnachricht mit 10 bis 2000 Zeichen ein.",
+      "success": "Deine Nachricht wurde gespeichert.",
+      "error": "Die Nachricht konnte nicht gesendet werden. Pruefe den Text oder versuche es spaeter erneut.",
+      "submit": "Senden",
+      "submitting": "Senden"
+    },
+    "privacy": {
+      "badge": "Schutz",
+      "title": "Anti-Missbrauch-Hinweis",
+      "text": "Dieses Formular ist bewusst streng, um die Website und ihre Administratoren zu schuetzen.",
+      "points": {
+        "plainText": "Nachrichten werden nur als reiner Text akzeptiert.",
+        "ip": "Deine IP-Adresse wird gespeichert, um wiederholten Missbrauch zu begrenzen.",
+        "admin": "Nur Administratoren koennen Nachrichten und technische Daten einsehen."
+      }
+    }
+  }
+}

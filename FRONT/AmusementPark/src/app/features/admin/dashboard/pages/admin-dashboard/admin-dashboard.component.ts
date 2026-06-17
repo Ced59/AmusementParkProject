@@ -83,6 +83,12 @@ export class AdminDashboardComponent {
       titleKey: 'admin.seoSitemaps.navTitle',
       descriptionKey: 'admin.dashboard.shortcuts.seoSitemaps',
       segment: 'seo-sitemaps'
+    },
+    {
+      iconClass: 'pi pi-inbox',
+      titleKey: 'admin.contactGrievances.navTitle',
+      descriptionKey: 'admin.dashboard.shortcuts.contactGrievances',
+      segment: 'contact-grievances'
     }
   ];
 

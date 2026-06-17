@@ -7,22 +7,20 @@
     "explore": {
       "title": "Odkrywaj",
       "allParks": "Wszystkie parki",
-      "topRollerCoasters": "Najlepsze rollercoastery",
-      "interactiveMap": "Mapa interaktywna",
-      "news": "Nowości"
+      "interactiveMap": "Mapa interaktywna"
     },
     "about": {
       "title": "O projekcie",
       "project": "Projekt",
-      "sources": "Źródła",
       "contact": "Kontakt",
+      "versions": "Historia wersji",
       "privacy": "Prywatność"
     },
     "languages": {
       "title": "Języki"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Stworzone z ❤️ i adrenaliną",
+      "copy": "© {{year}} AmusementPark — Stworzone z sercem i adrenalina",
       "version": "Wersja {{version}}"
     }
   }

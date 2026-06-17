@@ -24,6 +24,8 @@ public sealed class StaticPagesSitemapSectionProvider : ISitemapSectionProvider
         new StaticSitemapPage("home", "daily", 1.0m),
         new StaticSitemapPage("parks", "daily", 0.9m),
         new StaticSitemapPage("about", "monthly", 0.4m),
+        new StaticSitemapPage("contact", "monthly", 0.35m),
+        new StaticSitemapPage("versions", "monthly", 0.3m),
         new StaticSitemapPage("privacy", "yearly", 0.2m),
     };
 

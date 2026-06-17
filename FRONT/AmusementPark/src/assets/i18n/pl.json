@@ -90,10 +90,30 @@
       "validCoordinatesScope": "Parki z poprawnymi wspolrzednymi",
       "makeFilteredValidCoordinatesVisible": "Pokaz parki geolokalizowane"
     },
+    "contactGrievances": {
+      "navTitle": "Wiadomosci kontaktowe",
+      "kicker": "Kontakt",
+      "title": "Ksiega uwag",
+      "subtitle": "Przegladaj publiczne wiadomosci z kontekstem IP przeciw naduzyciom.",
+      "total": "{{count}} wiadomosci",
+      "loading": "Ladowanie wiadomosci...",
+      "loadError": "Nie mozna zaladowac wiadomosci.",
+      "empty": "Nie znaleziono wiadomosci.",
+      "filters": {
+        "search": "Szukaj",
+        "ipAddress": "Adres IP",
+        "languageCode": "Jezyk"
+      },
+      "columns": {
+        "date": "Data",
+        "message": "Wiadomosc",
+        "context": "Kontekst",
+        "userAgent": "User-agent"
+      }
+    },
     "dashboard": {
-      "title": "Panel",
-      "subtitle": "Punkt wejścia do panelu administracyjnego: wybierz sekcję z lewego menu albo ze skrótów poniżej.",
       "shortcuts": {
+        "contactGrievances": "Przegladaj wiadomosci kontaktowe i kontekst antynaduzyciowy.",
         "users": "Zarządzanie kontami, rolami i dostępem.",
         "parks": "Filtrowanie, priorytetyzacja i publikowanie parków.",
         "parkItems": "Zarządzanie atrakcjami, sklepami, restauracjami i usługami.",
@@ -105,7 +125,9 @@
         "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne.",
         "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
         "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow."
-      }
+      },
+      "title": "Panel",
+      "subtitle": "Punkt wejścia do panelu administracyjnego: wybierz sekcję z lewego menu albo ze skrótów poniżej."
     },
     "dataSources": {
       "title": "Źródła danych"
@@ -1642,6 +1664,38 @@
       "secondary": "Wróć do strony głównej"
     }
   },
+  "contactPage": {
+    "kicker": "Kontakt",
+    "title": "Kontakt z AmusementPark",
+    "lead": "Wyslij uwage o stronie, brakujacej informacji, problemie z danymi albo pomysl na ulepszenie.",
+    "email": {
+      "badge": "Tymczasowy e-mail",
+      "title": "Kontakt bezposredni",
+      "note": "Ten adres jest tymczasowy do czasu skonfigurowania dedykowanego dostawcy poczty."
+    },
+    "form": {
+      "kicker": "Ksiega uwag",
+      "title": "Zostaw wiadomosc",
+      "description": "Wiadomosci sa zapisywane jako zwykly tekst i przegladane w panelu admina.",
+      "messageLabel": "Twoja wiadomosc",
+      "help": "Tylko zwykly tekst. Tagi HTML i naduzywane linki sa odrzucane.",
+      "validation": "Wpisz zwykla wiadomosc tekstowa od 10 do 2000 znakow.",
+      "success": "Twoja wiadomosc zostala zapisana.",
+      "error": "Nie udalo sie wyslac wiadomosci. Sprawdz tekst albo sprobuj pozniej.",
+      "submit": "Wyslij",
+      "submitting": "Wysylanie"
+    },
+    "privacy": {
+      "badge": "Ochrona",
+      "title": "Informacja antynaduzyciowa",
+      "text": "Ten formularz jest celowo surowy, aby chronic strone i administratorow.",
+      "points": {
+        "plainText": "Akceptowane sa tylko wiadomosci jako zwykly tekst.",
+        "ip": "Twoj adres IP jest zapisywany, aby ograniczac powtarzajace sie naduzycia.",
+        "admin": "Tylko administratorzy moga przegladac wiadomosci i kontekst techniczny."
+      }
+    }
+  },
   "cookieConsent": {
     "ariaLabel": "Baner informacji i wyboru dotyczący plików cookie",
     "title": "Pliki cookie i prywatność",
@@ -1658,22 +1712,20 @@
     "explore": {
       "title": "Odkrywaj",
       "allParks": "Wszystkie parki",
-      "topRollerCoasters": "Najlepsze rollercoastery",
-      "interactiveMap": "Mapa interaktywna",
-      "news": "Nowości"
+      "interactiveMap": "Mapa interaktywna"
     },
     "about": {
       "title": "O projekcie",
       "project": "Projekt",
-      "sources": "Źródła",
       "contact": "Kontakt",
+      "versions": "Historia wersji",
       "privacy": "Prywatność"
     },
     "languages": {
       "title": "Języki"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Stworzone z ❤️ i adrenaliną",
+      "copy": "© {{year}} AmusementPark — Stworzone z sercem i adrenalina",
       "version": "Wersja {{version}}"
     }
   },
@@ -2482,5 +2534,16 @@
     },
     "lastUpdate": "Ostatnia aktualizacja: 23 maja 2026 r.",
     "backHome": "Wróć do strony głównej"
+  },
+  "versionHistoryPage": {
+    "kicker": "Historia wersji",
+    "title": "Co sie zmienilo",
+    "lead": "Aktualna wersja: {{version}}. Kazda notatka jest krotka, publiczna i skupiona na widocznym postepie.",
+    "timelineAriaLabel": "Os czasu historii wersji",
+    "levels": {
+      "major": "Duza",
+      "minor": "Etap",
+      "patch": "Aktualizacja"
+    }
   }
 }

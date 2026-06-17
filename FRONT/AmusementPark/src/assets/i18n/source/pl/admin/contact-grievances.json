@@ -1,0 +1,30 @@
+{
+  "admin": {
+    "contactGrievances": {
+      "navTitle": "Wiadomosci kontaktowe",
+      "kicker": "Kontakt",
+      "title": "Ksiega uwag",
+      "subtitle": "Przegladaj publiczne wiadomosci z kontekstem IP przeciw naduzyciom.",
+      "total": "{{count}} wiadomosci",
+      "loading": "Ladowanie wiadomosci...",
+      "loadError": "Nie mozna zaladowac wiadomosci.",
+      "empty": "Nie znaleziono wiadomosci.",
+      "filters": {
+        "search": "Szukaj",
+        "ipAddress": "Adres IP",
+        "languageCode": "Jezyk"
+      },
+      "columns": {
+        "date": "Data",
+        "message": "Wiadomosc",
+        "context": "Kontekst",
+        "userAgent": "User-agent"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "contactGrievances": "Przegladaj wiadomosci kontaktowe i kontekst antynaduzyciowy."
+      }
+    }
+  }
+}

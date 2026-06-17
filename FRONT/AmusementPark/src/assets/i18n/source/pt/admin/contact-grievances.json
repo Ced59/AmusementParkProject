@@ -1,0 +1,30 @@
+{
+  "admin": {
+    "contactGrievances": {
+      "navTitle": "Mensagens contacto",
+      "kicker": "Contacto",
+      "title": "Livro de comentarios",
+      "subtitle": "Consulte mensagens publicas com contexto IP para prevenir abusos.",
+      "total": "{{count}} mensagens",
+      "loading": "A carregar mensagens...",
+      "loadError": "Nao foi possivel carregar as mensagens.",
+      "empty": "Nenhuma mensagem encontrada.",
+      "filters": {
+        "search": "Pesquisar",
+        "ipAddress": "Endereco IP",
+        "languageCode": "Idioma"
+      },
+      "columns": {
+        "date": "Data",
+        "message": "Mensagem",
+        "context": "Contexto",
+        "userAgent": "User-agent"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "contactGrievances": "Consultar mensagens de contacto e contexto antiabuso."
+      }
+    }
+  }
+}

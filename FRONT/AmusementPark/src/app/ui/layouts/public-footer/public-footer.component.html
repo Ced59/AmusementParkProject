@@ -12,9 +12,7 @@
       <h2 class="app-public-footer__col-title">{{ 'footer.explore.title' | translate }}</h2>
       <ul class="app-public-footer__links">
         <li><a [routerLink]="['/', selectedLanguage(), 'parks']">{{ 'footer.explore.allParks' | translate }}</a></li>
-        <li><a [routerLink]="['/', selectedLanguage(), 'parks']">{{ 'footer.explore.topRollerCoasters' | translate }}</a></li>
         <li><a [routerLink]="['/', selectedLanguage(), 'parks']">{{ 'footer.explore.interactiveMap' | translate }}</a></li>
-        <li><a [routerLink]="['/', selectedLanguage(), 'parks']">{{ 'footer.explore.news' | translate }}</a></li>
       </ul>
     </nav>
 
@@ -22,8 +20,8 @@
       <h2 class="app-public-footer__col-title">{{ 'footer.about.title' | translate }}</h2>
       <ul class="app-public-footer__links">
         <li><a [routerLink]="['/', selectedLanguage(), 'about']">{{ 'footer.about.project' | translate }}</a></li>
-        <li><a [routerLink]="['/', selectedLanguage(), 'about']">{{ 'footer.about.sources' | translate }}</a></li>
-        <li><a [routerLink]="['/', selectedLanguage(), 'about']">{{ 'footer.about.contact' | translate }}</a></li>
+        <li><a [routerLink]="['/', selectedLanguage(), 'contact']">{{ 'footer.about.contact' | translate }}</a></li>
+        <li><a [routerLink]="['/', selectedLanguage(), 'versions']">{{ 'footer.about.versions' | translate }}</a></li>
         <li><a [routerLink]="['/', selectedLanguage(), 'privacy']">{{ 'footer.about.privacy' | translate }}</a></li>
       </ul>
     </nav>
@@ -48,8 +46,8 @@
 
   <div class="app-public-footer__bottom">
     <span class="app-public-footer__copy">{{ 'footer.bottom.copy' | translate:{ year: currentYear } }}</span>
-    <div class="app-public-footer__badges" aria-hidden="true">
-      <span class="chip chip--soft">{{ 'footer.bottom.version' | translate:{ version: siteVersion } }}</span>
+    <div class="app-public-footer__badges">
+      <a class="chip chip--soft" [routerLink]="['/', selectedLanguage(), 'versions']">{{ 'footer.bottom.version' | translate:{ version: siteVersion } }}</a>
     </div>
   </div>
 </footer>

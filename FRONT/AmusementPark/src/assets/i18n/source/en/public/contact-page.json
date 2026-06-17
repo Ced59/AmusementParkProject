@@ -1,0 +1,34 @@
+{
+  "contactPage": {
+    "kicker": "Contact",
+    "title": "Contact AmusementPark",
+    "lead": "Send a note about the site, a missing detail, a data issue or an idea to improve the experience.",
+    "email": {
+      "badge": "Temporary email",
+      "title": "Direct contact",
+      "note": "This address is temporary until a dedicated mail provider is configured."
+    },
+    "form": {
+      "kicker": "Feedback notebook",
+      "title": "Leave a message",
+      "description": "Messages are stored as plain text and reviewed from the admin panel.",
+      "messageLabel": "Your message",
+      "help": "Plain text only. HTML tags and abusive links are rejected.",
+      "validation": "Enter a plain text message between 10 and 2000 characters.",
+      "success": "Your message has been recorded.",
+      "error": "The message could not be sent. Check the text or try again later.",
+      "submit": "Send",
+      "submitting": "Sending"
+    },
+    "privacy": {
+      "badge": "Protection",
+      "title": "Anti-abuse notice",
+      "text": "This form is intentionally strict to protect the site and its administrators.",
+      "points": {
+        "plainText": "Messages are accepted as plain text only.",
+        "ip": "Your IP address is recorded to limit repeated abuse.",
+        "admin": "Only administrators can consult submitted messages and technical context."
+      }
+    }
+  }
+}

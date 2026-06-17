@@ -1,0 +1,34 @@
+{
+  "contactPage": {
+    "kicker": "Contacto",
+    "title": "Contactar o AmusementPark",
+    "lead": "Envie uma nota sobre o site, um detalhe em falta, um problema de dados ou uma ideia de melhoria.",
+    "email": {
+      "badge": "Email temporario",
+      "title": "Contacto direto",
+      "note": "Este endereco e temporario ate ser configurado um fornecedor de email dedicado."
+    },
+    "form": {
+      "kicker": "Livro de comentarios",
+      "title": "Deixar uma mensagem",
+      "description": "As mensagens sao guardadas como texto simples e revistas no painel admin.",
+      "messageLabel": "A sua mensagem",
+      "help": "Apenas texto simples. Tags HTML e links abusivos sao recusados.",
+      "validation": "Introduza uma mensagem de texto simples entre 10 e 2000 caracteres.",
+      "success": "A sua mensagem foi registada.",
+      "error": "Nao foi possivel enviar a mensagem. Verifique o texto ou tente mais tarde.",
+      "submit": "Enviar",
+      "submitting": "A enviar"
+    },
+    "privacy": {
+      "badge": "Protecao",
+      "title": "Aviso antiabuso",
+      "text": "Este formulario e intencionalmente rigoroso para proteger o site e os administradores.",
+      "points": {
+        "plainText": "As mensagens sao aceites apenas em texto simples.",
+        "ip": "O seu endereco IP e registado para limitar abusos repetidos.",
+        "admin": "Apenas administradores podem consultar mensagens e contexto tecnico."
+      }
+    }
+  }
+}

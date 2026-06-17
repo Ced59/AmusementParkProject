@@ -1,6 +1,9 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Contact.Commands;
+using AmusementPark.Application.Features.Contact.Contracts;
+using AmusementPark.Application.Features.Contact.Queries;
 using AmusementPark.Application.Features.Videos.Commands;
 using AmusementPark.Application.Features.Videos.Contracts;
 using AmusementPark.Application.Features.Videos.Queries;
@@ -31,5 +34,7 @@ public sealed class ApplicationModuleServiceCollectionExtensionsTests
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetVideosPageQuery, ApplicationResult<PagedResult<Video>>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<ListVideoTagsQuery, ApplicationResult<IReadOnlyCollection<VideoTag>>>));
         Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<ResolveVideoMetadataQuery, ApplicationResult<ResolvedVideoMetadata>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(ICommandHandler<SubmitContactGrievanceCommand, ApplicationResult<ContactGrievanceSubmissionResult>>));
+        Assert.Contains(services, static service => service.ServiceType == typeof(IQueryHandler<GetContactGrievancesQuery, ApplicationResult<PagedResult<AmusementPark.Core.Domain.Contact.ContactGrievance>>>));
     }
 }

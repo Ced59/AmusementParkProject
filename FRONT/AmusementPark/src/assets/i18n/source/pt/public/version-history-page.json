@@ -1,0 +1,13 @@
+{
+  "versionHistoryPage": {
+    "kicker": "Historico",
+    "title": "O que mudou",
+    "lead": "Versao atual: {{version}}. Cada nota e curta, publica e centrada no progresso visivel.",
+    "timelineAriaLabel": "Linha temporal do historico de versoes",
+    "levels": {
+      "major": "Maior",
+      "minor": "Marco",
+      "patch": "Atualizacao"
+    }
+  }
+}

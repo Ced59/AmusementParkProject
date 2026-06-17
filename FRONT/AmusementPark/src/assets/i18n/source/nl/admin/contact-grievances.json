@@ -1,0 +1,30 @@
+{
+  "admin": {
+    "contactGrievances": {
+      "navTitle": "Contactberichten",
+      "kicker": "Contact",
+      "title": "Feedbackboek",
+      "subtitle": "Bekijk publieke contactberichten met IP-context tegen misbruik.",
+      "total": "{{count}} berichten",
+      "loading": "Contactberichten laden...",
+      "loadError": "Kan contactberichten niet laden.",
+      "empty": "Geen contactbericht gevonden.",
+      "filters": {
+        "search": "Zoeken",
+        "ipAddress": "IP-adres",
+        "languageCode": "Taal"
+      },
+      "columns": {
+        "date": "Datum",
+        "message": "Bericht",
+        "context": "Context",
+        "userAgent": "User-agent"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "contactGrievances": "Bekijk contactberichten en anti-misbruikcontext."
+      }
+    }
+  }
+}

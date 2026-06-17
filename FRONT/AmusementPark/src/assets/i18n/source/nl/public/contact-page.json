@@ -1,0 +1,34 @@
+{
+  "contactPage": {
+    "kicker": "Contact",
+    "title": "Contact met AmusementPark",
+    "lead": "Stuur een opmerking over de site, ontbrekende informatie, een dataprobleem of een verbeteridee.",
+    "email": {
+      "badge": "Tijdelijk e-mailadres",
+      "title": "Direct contact",
+      "note": "Dit adres is tijdelijk totdat een eigen mailprovider is ingesteld."
+    },
+    "form": {
+      "kicker": "Feedbackboek",
+      "title": "Laat een bericht achter",
+      "description": "Berichten worden als platte tekst opgeslagen en in het adminpaneel bekeken.",
+      "messageLabel": "Je bericht",
+      "help": "Alleen platte tekst. HTML-tags en misbruiklinks worden geweigerd.",
+      "validation": "Voer een plattetekstbericht in tussen 10 en 2000 tekens.",
+      "success": "Je bericht is geregistreerd.",
+      "error": "Het bericht kon niet worden verzonden. Controleer de tekst of probeer later opnieuw.",
+      "submit": "Verzenden",
+      "submitting": "Verzenden"
+    },
+    "privacy": {
+      "badge": "Bescherming",
+      "title": "Anti-misbruikmelding",
+      "text": "Dit formulier is bewust streng om de site en beheerders te beschermen.",
+      "points": {
+        "plainText": "Berichten worden alleen als platte tekst geaccepteerd.",
+        "ip": "Je IP-adres wordt opgeslagen om herhaald misbruik te beperken.",
+        "admin": "Alleen beheerders kunnen berichten en technische context bekijken."
+      }
+    }
+  }
+}

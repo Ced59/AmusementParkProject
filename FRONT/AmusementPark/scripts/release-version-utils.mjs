@@ -18,6 +18,16 @@ export function normalizeReleaseVersion(value) {
 }
 
 export function readConfiguredReleaseVersion(projectRoot) {
+  const releaseVersion = readConfiguredReleaseDocument(projectRoot);
+
+  if (!releaseVersion) {
+    return null;
+  }
+
+  return normalizeReleaseVersion(releaseVersion.version);
+}
+
+export function readConfiguredReleaseDocument(projectRoot) {
   const filePath = releaseVersionFilePath(projectRoot);
 
   if (!existsSync(filePath)) {
@@ -25,14 +35,13 @@ export function readConfiguredReleaseVersion(projectRoot) {
   }
 
   const content = readFileSync(filePath, 'utf8');
-  const releaseVersion = JSON.parse(content);
-
-  return normalizeReleaseVersion(releaseVersion.version);
+  return JSON.parse(content);
 }
 
 export function writeConfiguredReleaseVersion(projectRoot, version) {
   const normalizedVersion = normalizeReleaseVersion(version);
-  const content = `${JSON.stringify({ version: normalizedVersion }, null, 2)}\n`;
+  const existingDocument = readConfiguredReleaseDocument(projectRoot) ?? {};
+  const content = `${JSON.stringify({ ...existingDocument, version: normalizedVersion }, null, 2)}\n`;
 
   writeFileSync(releaseVersionFilePath(projectRoot), content, 'utf8');
 

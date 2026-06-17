@@ -1,0 +1,13 @@
+{
+  "versionHistoryPage": {
+    "kicker": "Versionsverlauf",
+    "title": "Was sich geaendert hat",
+    "lead": "Aktuelle Version: {{version}}. Jede Notiz bleibt kurz, oeffentlich und auf sichtbare Fortschritte ausgerichtet.",
+    "timelineAriaLabel": "Zeitleiste des Versionsverlaufs",
+    "levels": {
+      "major": "Gross",
+      "minor": "Etappe",
+      "patch": "Update"
+    }
+  }
+}

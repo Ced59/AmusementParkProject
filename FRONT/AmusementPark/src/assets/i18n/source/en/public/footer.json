@@ -7,22 +7,20 @@
     "explore": {
       "title": "Explore",
       "allParks": "All parks",
-      "topRollerCoasters": "Top Rollercoasters",
-      "interactiveMap": "Interactive map",
-      "news": "New releases"
+      "interactiveMap": "Interactive map"
     },
     "about": {
       "title": "About",
       "project": "The project",
-      "sources": "Sources",
       "contact": "Contact",
+      "versions": "Version history",
       "privacy": "Privacy"
     },
     "languages": {
       "title": "Languages"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Made with ❤️ and adrenaline",
+      "copy": "© {{year}} AmusementPark — Made with heart and adrenaline",
       "version": "Version {{version}}"
     }
   }

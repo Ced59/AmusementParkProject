@@ -1,0 +1,34 @@
+{
+  "contactPage": {
+    "kicker": "Kontakt",
+    "title": "Kontakt z AmusementPark",
+    "lead": "Wyslij uwage o stronie, brakujacej informacji, problemie z danymi albo pomysl na ulepszenie.",
+    "email": {
+      "badge": "Tymczasowy e-mail",
+      "title": "Kontakt bezposredni",
+      "note": "Ten adres jest tymczasowy do czasu skonfigurowania dedykowanego dostawcy poczty."
+    },
+    "form": {
+      "kicker": "Ksiega uwag",
+      "title": "Zostaw wiadomosc",
+      "description": "Wiadomosci sa zapisywane jako zwykly tekst i przegladane w panelu admina.",
+      "messageLabel": "Twoja wiadomosc",
+      "help": "Tylko zwykly tekst. Tagi HTML i naduzywane linki sa odrzucane.",
+      "validation": "Wpisz zwykla wiadomosc tekstowa od 10 do 2000 znakow.",
+      "success": "Twoja wiadomosc zostala zapisana.",
+      "error": "Nie udalo sie wyslac wiadomosci. Sprawdz tekst albo sprobuj pozniej.",
+      "submit": "Wyslij",
+      "submitting": "Wysylanie"
+    },
+    "privacy": {
+      "badge": "Ochrona",
+      "title": "Informacja antynaduzyciowa",
+      "text": "Ten formularz jest celowo surowy, aby chronic strone i administratorow.",
+      "points": {
+        "plainText": "Akceptowane sa tylko wiadomosci jako zwykly tekst.",
+        "ip": "Twoj adres IP jest zapisywany, aby ograniczac powtarzajace sie naduzycia.",
+        "admin": "Tylko administratorzy moga przegladac wiadomosci i kontekst techniczny."
+      }
+    }
+  }
+}

@@ -90,10 +90,30 @@
       "validCoordinatesScope": "Parchi con coordinate valide",
       "makeFilteredValidCoordinatesVisible": "Rendi visibili i geolocalizzati"
     },
+    "contactGrievances": {
+      "navTitle": "Messaggi contatto",
+      "kicker": "Contatto",
+      "title": "Registro feedback",
+      "subtitle": "Consulta i messaggi pubblici con contesto IP per prevenire abusi.",
+      "total": "{{count}} messaggi",
+      "loading": "Caricamento messaggi...",
+      "loadError": "Impossibile caricare i messaggi.",
+      "empty": "Nessun messaggio trovato.",
+      "filters": {
+        "search": "Cerca",
+        "ipAddress": "Indirizzo IP",
+        "languageCode": "Lingua"
+      },
+      "columns": {
+        "date": "Data",
+        "message": "Messaggio",
+        "context": "Contesto",
+        "userAgent": "User-agent"
+      }
+    },
     "dashboard": {
-      "title": "Pannello di controllo",
-      "subtitle": "Punto di ingresso del back-office: scegli una sezione dal menu a sinistra o dalle scorciatoie qui sotto.",
       "shortcuts": {
+        "contactGrievances": "Consulta messaggi di contatto e contesto antiabuso.",
         "users": "Gestire account, ruoli e accessi.",
         "parks": "Filtrare, prioritizzare e pubblicare i parchi.",
         "parkItems": "Amministrare attrazioni, negozi, ristoranti e servizi.",
@@ -105,7 +125,9 @@
         "auditLogs": "Consultare le azioni amministrative sensibili registrate.",
         "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale.",
         "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow."
-      }
+      },
+      "title": "Pannello di controllo",
+      "subtitle": "Punto di ingresso del back-office: scegli una sezione dal menu a sinistra o dalle scorciatoie qui sotto."
     },
     "dataSources": {
       "title": "Fonti dati"
@@ -1642,6 +1664,38 @@
       "secondary": "Torna alla home"
     }
   },
+  "contactPage": {
+    "kicker": "Contatto",
+    "title": "Contattare AmusementPark",
+    "lead": "Invia una nota sul sito, un dettaglio mancante, un problema nei dati o un'idea di miglioramento.",
+    "email": {
+      "badge": "Email temporanea",
+      "title": "Contatto diretto",
+      "note": "Questo indirizzo e temporaneo finche non sara configurato un provider email dedicato."
+    },
+    "form": {
+      "kicker": "Registro feedback",
+      "title": "Lascia un messaggio",
+      "description": "I messaggi sono salvati come testo semplice e controllati dal pannello admin.",
+      "messageLabel": "Il tuo messaggio",
+      "help": "Solo testo semplice. Tag HTML e link abusivi vengono rifiutati.",
+      "validation": "Inserisci un messaggio di testo semplice tra 10 e 2000 caratteri.",
+      "success": "Il tuo messaggio e stato registrato.",
+      "error": "Il messaggio non puo essere inviato. Controlla il testo o riprova piu tardi.",
+      "submit": "Invia",
+      "submitting": "Invio"
+    },
+    "privacy": {
+      "badge": "Protezione",
+      "title": "Avviso antiabuso",
+      "text": "Questo modulo e volutamente severo per proteggere il sito e gli amministratori.",
+      "points": {
+        "plainText": "Sono accettati solo messaggi in testo semplice.",
+        "ip": "Il tuo indirizzo IP viene registrato per limitare abusi ripetuti.",
+        "admin": "Solo gli amministratori possono consultare messaggi e contesto tecnico."
+      }
+    }
+  },
   "cookieConsent": {
     "ariaLabel": "Banner informativo e di scelta sui cookie",
     "title": "Cookie e privacy",
@@ -1658,22 +1712,20 @@
     "explore": {
       "title": "Esplora",
       "allParks": "Tutti i parchi",
-      "topRollerCoasters": "Top montagne russe",
-      "interactiveMap": "Mappa interattiva",
-      "news": "Novità"
+      "interactiveMap": "Mappa interattiva"
     },
     "about": {
       "title": "Informazioni",
       "project": "Il progetto",
-      "sources": "Fonti",
       "contact": "Contatto",
+      "versions": "Cronologia versioni",
       "privacy": "Riservatezza"
     },
     "languages": {
       "title": "Lingue"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Creato con ❤️ e adrenalina",
+      "copy": "© {{year}} AmusementPark — Creato con cuore e adrenalina",
       "version": "Versione {{version}}"
     }
   },
@@ -2482,5 +2534,16 @@
     },
     "lastUpdate": "Ultimo aggiornamento: 23 maggio 2026.",
     "backHome": "Torna alla home"
+  },
+  "versionHistoryPage": {
+    "kicker": "Cronologia",
+    "title": "Cosa e cambiato",
+    "lead": "Versione attuale: {{version}}. Ogni nota e breve, pubblica e centrata sui progressi visibili.",
+    "timelineAriaLabel": "Cronologia delle versioni",
+    "levels": {
+      "major": "Maggiore",
+      "minor": "Tappa",
+      "patch": "Aggiornamento"
+    }
   }
 }

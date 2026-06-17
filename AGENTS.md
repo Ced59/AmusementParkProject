@@ -23,6 +23,7 @@ The project must preserve its current architecture, SOLID principles, separation
 - For implementation tasks, always start from a new branch based on `origin/master`, then commit, push, and open a pull request targeting `master`.
 - Keep pull requests small, focused, and easy to review.
 - Increment the release version in every PR unless the user explicitly asks for a major or intermediate version increment instead. Always base that increment on the current `origin/master` release version, not on the local `master` branch or the current working branch.
+- When incrementing a release version, update `FRONT/AmusementPark/release-version.json`: set the new version and add or update the matching history entry with the release date and short non-technical localized labels for every supported language.
 - Do not mix unrelated backend, frontend, SEO, security, UI, deployment, and refactoring changes in one PR.
 - Respect the current architecture and naming conventions.
 - Do not introduce shortcuts that bypass validation, authorization, domain rules, or application services.
