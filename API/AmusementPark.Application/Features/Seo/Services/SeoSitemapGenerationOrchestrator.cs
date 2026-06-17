@@ -353,29 +353,39 @@ public sealed class SeoSitemapGenerationOrchestrator
             return 2;
         }
 
-        if (string.Equals(key, SitemapSectionKeys.ParkItemLists, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(key, SitemapSectionKeys.ParkVideos, StringComparison.OrdinalIgnoreCase))
         {
             return 3;
         }
 
-        if (string.Equals(key, SitemapSectionKeys.ParkZones, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(key, SitemapSectionKeys.ParkItemLists, StringComparison.OrdinalIgnoreCase))
         {
             return 4;
         }
 
-        if (string.Equals(key, SitemapSectionKeys.ParkItems, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(key, SitemapSectionKeys.ParkZones, StringComparison.OrdinalIgnoreCase))
         {
             return 5;
         }
 
-        if (string.Equals(key, SitemapSectionKeys.ParkItemImages, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(key, SitemapSectionKeys.ParkItems, StringComparison.OrdinalIgnoreCase))
         {
             return 6;
         }
 
-        if (string.Equals(key, SitemapSectionKeys.References, StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(key, SitemapSectionKeys.ParkItemImages, StringComparison.OrdinalIgnoreCase))
         {
             return 7;
+        }
+
+        if (string.Equals(key, SitemapSectionKeys.ParkItemVideos, StringComparison.OrdinalIgnoreCase))
+        {
+            return 8;
+        }
+
+        if (string.Equals(key, SitemapSectionKeys.References, StringComparison.OrdinalIgnoreCase))
+        {
+            return 9;
         }
 
         return 100;

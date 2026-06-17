@@ -9,7 +9,7 @@ namespace AmusementPark.Application.Tests.Features.Seo.Services;
 public sealed class SeoSitemapGenerationOrchestratorTests
 {
     [Fact]
-    public async Task GenerateAsync_WhenImageSectionsExist_ShouldPersistThemAndReferenceThemInSitemapIndex()
+    public async Task GenerateAsync_WhenMediaSectionsExist_ShouldPersistThemAndReferenceThemInSitemapIndex()
     {
         ISitemapSectionProvider[] providers = new ISitemapSectionProvider[]
         {
@@ -19,10 +19,20 @@ public sealed class SeoSitemapGenerationOrchestratorTests
                 "Images de parcs",
                 new[] { new SitemapUrlEntry("/fr/park/park-1/visible-park/images", new DateTime(2026, 6, 1, 0, 0, 0, DateTimeKind.Utc)) }),
             new FakeSitemapSectionProvider(
+                SitemapSectionKeys.ParkVideos,
+                "park-videos.xml",
+                "Videos de parcs",
+                new[] { new SitemapUrlEntry("/fr/park/park-1/visible-park/videos", new DateTime(2026, 6, 3, 0, 0, 0, DateTimeKind.Utc)) }),
+            new FakeSitemapSectionProvider(
                 SitemapSectionKeys.ParkItemImages,
                 "park-item-images.xml",
                 "Images d'elements de parc",
                 new[] { new SitemapUrlEntry("/fr/park/park-1/visible-park/item/item-1/visible-item/images", new DateTime(2026, 6, 2, 0, 0, 0, DateTimeKind.Utc)) }),
+            new FakeSitemapSectionProvider(
+                SitemapSectionKeys.ParkItemVideos,
+                "park-item-videos.xml",
+                "Videos d'elements de parc",
+                new[] { new SitemapUrlEntry("/fr/park/park-1/visible-park/item/item-1/visible-item/videos", new DateTime(2026, 6, 4, 0, 0, 0, DateTimeKind.Utc)) }),
         };
         SitemapSnapshot? savedSnapshot = null;
         Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
@@ -63,11 +73,17 @@ public sealed class SeoSitemapGenerationOrchestratorTests
         Assert.NotNull(savedSnapshot);
         SitemapSnapshot snapshot = savedSnapshot!;
         Assert.Contains(snapshot.Sections, static section => section.Key == "park-images-fr" && section.FileName == "park-images-fr.xml");
+        Assert.Contains(snapshot.Sections, static section => section.Key == "park-videos-fr" && section.FileName == "park-videos-fr.xml");
         Assert.Contains(snapshot.Sections, static section => section.Key == "park-item-images-fr" && section.FileName == "park-item-images-fr.xml");
+        Assert.Contains(snapshot.Sections, static section => section.Key == "park-item-videos-fr" && section.FileName == "park-item-videos-fr.xml");
         Assert.Contains("https://example.com/sitemaps/park-images-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/sitemaps/park-videos-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
         Assert.Contains("https://example.com/sitemaps/park-item-images-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
+        Assert.Contains("https://example.com/sitemaps/park-item-videos-fr.xml", snapshot.IndexXml, StringComparison.Ordinal);
         Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-images-fr"));
+        Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-videos-fr"));
         Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-item-images-fr"));
+        Assert.True(snapshot.SectionXmlByKey.ContainsKey("park-item-videos-fr"));
         snapshotRepository.VerifyAll();
         historyRepository.VerifyAll();
         settingsRepository.VerifyAll();
