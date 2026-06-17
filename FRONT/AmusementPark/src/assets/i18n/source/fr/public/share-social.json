@@ -1,0 +1,62 @@
+{
+  "shareSocial": {
+    "defaultTitle": "Partager cette page",
+    "defaultDescription": "Vous connaissez quelqu'un qui pourrait utiliser cette page ?",
+    "defaultText": "Regarde {{title}} sur AmusementPark.",
+    "actions": {
+      "share": "Partager",
+      "copy": "Copier",
+      "copied": "Copié",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook",
+      "x": "X",
+      "reddit": "Reddit",
+      "more": "Plus",
+      "less": "Moins",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "qrCode": "QR code"
+    },
+    "qr": {
+      "title": "Partager via QR code",
+      "loading": "Génération du QR code",
+      "alt": "QR code pour {{title}}"
+    },
+    "home": {
+      "title": "Partager AmusementPark",
+      "description": "Envoyez le moteur de recherche à quelqu'un qui prépare une sortie.",
+      "text": "Explore des parcs et attractions sur AmusementPark."
+    },
+    "parks": {
+      "title": "Partager les parcs",
+      "description": "Aidez quelqu'un à trouver un parc à visiter.",
+      "text": "Parcours les parcs d'attractions sur AmusementPark."
+    },
+    "park": {
+      "title": "Partager ce parc",
+      "description": "Envoyez cette fiche à quelqu'un qui pourrait vouloir visiter {{title}}.",
+      "text": "Regarde {{title}} sur AmusementPark."
+    },
+    "parkItems": {
+      "title": "Partager ces attractions",
+      "description": "Envoyez ce guide à quelqu'un qui prépare sa visite.",
+      "text": "Parcours les attractions et lieux de {{title}} sur AmusementPark."
+    },
+    "parkItem": {
+      "title": "Partager cette fiche",
+      "description": "Envoyez cette page à quelqu'un intéressé par {{title}}.",
+      "text": "Découvre {{title}} sur AmusementPark."
+    },
+    "videos": {
+      "title": "Partager ces vidéos",
+      "description": "Envoyez ces vidéos à quelqu'un qui veut un aperçu.",
+      "text": "Regarde les vidéos de {{title}} sur AmusementPark."
+    },
+    "video": {
+      "title": "Partager cette vidéo",
+      "description": "Envoyez cette vidéo à quelqu'un qui pourrait l'apprécier.",
+      "text": "Regarde {{title}} sur AmusementPark."
+    }
+  }
+}

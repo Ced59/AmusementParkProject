@@ -1,0 +1,62 @@
+{
+  "shareSocial": {
+    "defaultTitle": "Compartir esta página",
+    "defaultDescription": "¿Conoces a alguien que pueda usar esta página?",
+    "defaultText": "Mira {{title}} en AmusementPark.",
+    "actions": {
+      "share": "Compartir",
+      "copy": "Copiar",
+      "copied": "Copiado",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook",
+      "x": "X",
+      "reddit": "Reddit",
+      "more": "Más",
+      "less": "Menos",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "qrCode": "Código QR"
+    },
+    "qr": {
+      "title": "Compartir con código QR",
+      "loading": "Generando código QR",
+      "alt": "Código QR para {{title}}"
+    },
+    "home": {
+      "title": "Compartir AmusementPark",
+      "description": "Envía el buscador a alguien que esté preparando una salida.",
+      "text": "Explora parques y atracciones en AmusementPark."
+    },
+    "parks": {
+      "title": "Compartir los parques",
+      "description": "Ayuda a alguien a encontrar un parque para visitar.",
+      "text": "Consulta parques de atracciones en AmusementPark."
+    },
+    "park": {
+      "title": "Compartir este parque",
+      "description": "Envía esta ficha a alguien que quiera visitar {{title}}.",
+      "text": "Mira {{title}} en AmusementPark."
+    },
+    "parkItems": {
+      "title": "Compartir estas atracciones",
+      "description": "Envía esta guía a alguien que esté preparando su visita.",
+      "text": "Consulta atracciones y lugares de {{title}} en AmusementPark."
+    },
+    "parkItem": {
+      "title": "Compartir esta ficha",
+      "description": "Envía esta página a alguien interesado en {{title}}.",
+      "text": "Descubre {{title}} en AmusementPark."
+    },
+    "videos": {
+      "title": "Compartir estos videos",
+      "description": "Envía estos videos a alguien que quiera una vista previa.",
+      "text": "Mira videos de {{title}} en AmusementPark."
+    },
+    "video": {
+      "title": "Compartir este video",
+      "description": "Envía este video a alguien que pueda disfrutarlo.",
+      "text": "Mira {{title}} en AmusementPark."
+    }
+  }
+}

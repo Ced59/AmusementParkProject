@@ -1,0 +1,62 @@
+{
+  "shareSocial": {
+    "defaultTitle": "Deze pagina delen",
+    "defaultDescription": "Ken je iemand die deze pagina kan gebruiken?",
+    "defaultText": "Bekijk {{title}} op AmusementPark.",
+    "actions": {
+      "share": "Delen",
+      "copy": "Kopiëren",
+      "copied": "Gekopieerd",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook",
+      "x": "X",
+      "reddit": "Reddit",
+      "more": "Meer",
+      "less": "Minder",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "qrCode": "QR-code"
+    },
+    "qr": {
+      "title": "Delen via QR-code",
+      "loading": "QR-code maken",
+      "alt": "QR-code voor {{title}}"
+    },
+    "home": {
+      "title": "AmusementPark delen",
+      "description": "Stuur de zoekfunctie naar iemand die een uitstap plant.",
+      "text": "Ontdek parken en attracties op AmusementPark."
+    },
+    "parks": {
+      "title": "Parken delen",
+      "description": "Help iemand een park te vinden om te bezoeken.",
+      "text": "Bekijk pretparken op AmusementPark."
+    },
+    "park": {
+      "title": "Dit park delen",
+      "description": "Stuur deze parkpagina naar iemand die {{title}} wil bezoeken.",
+      "text": "Bekijk {{title}} op AmusementPark."
+    },
+    "parkItems": {
+      "title": "Deze attracties delen",
+      "description": "Stuur deze gids naar iemand die een bezoek plant.",
+      "text": "Bekijk attracties en plekken van {{title}} op AmusementPark."
+    },
+    "parkItem": {
+      "title": "Deze fiche delen",
+      "description": "Stuur deze pagina naar iemand met interesse in {{title}}.",
+      "text": "Ontdek {{title}} op AmusementPark."
+    },
+    "videos": {
+      "title": "Deze video's delen",
+      "description": "Stuur deze video's naar iemand die een voorproefje wil.",
+      "text": "Bekijk video's van {{title}} op AmusementPark."
+    },
+    "video": {
+      "title": "Deze video delen",
+      "description": "Stuur deze video naar iemand die hem leuk kan vinden.",
+      "text": "Bekijk {{title}} op AmusementPark."
+    }
+  }
+}

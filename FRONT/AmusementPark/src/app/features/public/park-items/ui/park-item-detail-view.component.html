@@ -365,5 +365,14 @@
         </section>
       </aside>
     </div>
+
+    <app-public-share-panel
+      targetType="ParkItem"
+      [targetId]="currentDetail.id"
+      [targetTitle]="currentDetail.name"
+      titleKey="shareSocial.parkItem.title"
+      descriptionKey="shareSocial.parkItem.description"
+      textKey="shareSocial.parkItem.text">
+    </app-public-share-panel>
   </section>
 </app-page-state>

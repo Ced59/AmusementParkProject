@@ -1,0 +1,62 @@
+{
+  "shareSocial": {
+    "defaultTitle": "Share this page",
+    "defaultDescription": "Know someone who could use this page?",
+    "defaultText": "Have a look at {{title}} on AmusementPark.",
+    "actions": {
+      "share": "Share",
+      "copy": "Copy",
+      "copied": "Copied",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook",
+      "x": "X",
+      "reddit": "Reddit",
+      "more": "More",
+      "less": "Less",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "qrCode": "QR code"
+    },
+    "qr": {
+      "title": "Share via QR code",
+      "loading": "Generating QR code",
+      "alt": "QR code for {{title}}"
+    },
+    "home": {
+      "title": "Share AmusementPark",
+      "description": "Send the park finder to someone planning a trip.",
+      "text": "Explore parks and attractions on AmusementPark."
+    },
+    "parks": {
+      "title": "Share the parks",
+      "description": "Help someone find a park to visit.",
+      "text": "Browse amusement parks on AmusementPark."
+    },
+    "park": {
+      "title": "Share this park",
+      "description": "Send this park page to someone who may want to visit {{title}}.",
+      "text": "Have a look at {{title}} on AmusementPark."
+    },
+    "parkItems": {
+      "title": "Share these attractions",
+      "description": "Send this park guide to someone planning what to do.",
+      "text": "Browse attractions and places for {{title}} on AmusementPark."
+    },
+    "parkItem": {
+      "title": "Share this place",
+      "description": "Send this page to someone interested in {{title}}.",
+      "text": "Discover {{title}} on AmusementPark."
+    },
+    "videos": {
+      "title": "Share these videos",
+      "description": "Send these videos to someone who wants a preview.",
+      "text": "Watch videos for {{title}} on AmusementPark."
+    },
+    "video": {
+      "title": "Share this video",
+      "description": "Send this video to someone who may enjoy it.",
+      "text": "Watch {{title}} on AmusementPark."
+    }
+  }
+}

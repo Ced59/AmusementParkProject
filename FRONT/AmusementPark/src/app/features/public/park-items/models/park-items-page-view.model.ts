@@ -13,6 +13,7 @@ export interface ParkItemZoneCardViewModel {
 }
 
 export interface ParkItemsPageViewModel {
+  parkId: string | null;
   parkName: string;
   backLink: string[] | null;
   totalItems: number;

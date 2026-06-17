@@ -78,6 +78,8 @@ public sealed class MongoDbSettings
 
     public string ContactGrievancesCollectionName { get; set; } = "contactGrievances";
 
+    public string SocialShareEventsCollectionName { get; set; } = "socialShareEvents";
+
     public string CountriesCollectionName { get; set; } = "countries";
 
     public string CaptainCoasterSettingsCollectionName { get; set; } = "captainCoasterSettings";

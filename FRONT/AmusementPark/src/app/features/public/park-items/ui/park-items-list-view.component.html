@@ -115,5 +115,14 @@
         (pageChanged)="onPageChanged($event)">
       </app-pagination>
     </section>
+
+    <app-public-share-panel
+      targetType="ParkItems"
+      [targetId]="currentView.parkId"
+      [targetTitle]="currentView.parkName"
+      titleKey="shareSocial.parkItems.title"
+      descriptionKey="shareSocial.parkItems.description"
+      textKey="shareSocial.parkItems.text">
+    </app-public-share-panel>
   </section>
 </app-page-state>

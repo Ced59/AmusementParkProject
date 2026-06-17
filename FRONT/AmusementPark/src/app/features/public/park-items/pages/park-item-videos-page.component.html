@@ -19,6 +19,8 @@
   emptyTitleKey="parkItems.videosPage.emptyTitle"
   emptyMessageKey="parkItems.videosPage.emptyMessage"
   [backLinks]="backLinks()"
+  [shareTargetId]="item()?.id ?? null"
+  [shareTargetTitle]="item()?.name ?? null"
   (filtersChanged)="onFiltersChanged($event)"
   (loadMoreClicked)="onLoadMoreClicked()">
 </app-public-video-list-view>

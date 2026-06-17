@@ -1,0 +1,60 @@
+{
+  "admin": {
+    "socialShare": {
+      "navTitle": "Partilhas",
+      "kicker": "Envolvimento",
+      "title": "Partilha social",
+      "subtitle": "Acompanhe que páginas públicas são partilhadas e se o visitante era anónimo ou autenticado.",
+      "total": "{{count}} ações de partilha",
+      "loading": "A carregar estatísticas de partilha...",
+      "loadError": "Não foi possível carregar as estatísticas de partilha.",
+      "empty": "Nenhuma ação de partilha encontrada neste período.",
+      "filters": {
+        "fromUtc": "De",
+        "toUtc": "Até"
+      },
+      "metrics": {
+        "total": "Ações totais",
+        "anonymous": "Visitantes anónimos",
+        "authenticated": "Utilizadores autenticados"
+      },
+      "chart": {
+        "title": "Uso diário"
+      },
+      "breakdowns": {
+        "channels": "Canais",
+        "targets": "Páginas partilhadas",
+        "visitors": "Visitantes"
+      },
+      "topTargets": {
+        "title": "Destinos mais partilhados"
+      },
+      "channels": {
+        "Native": "Partilha nativa",
+        "Copy": "Cópia",
+        "Email": "Email",
+        "WhatsApp": "WhatsApp",
+        "Telegram": "Telegram",
+        "LinkedIn": "LinkedIn",
+        "Facebook": "Facebook",
+        "X": "X",
+        "Reddit": "Reddit",
+        "QrCode": "Código QR"
+      },
+      "targets": {
+        "Home": "Início",
+        "Parks": "Parques",
+        "Park": "Parque",
+        "ParkItems": "Itens do parque",
+        "ParkItem": "Item do parque",
+        "Videos": "Vídeos",
+        "Video": "Vídeo",
+        "Page": "Página"
+      },
+      "visitors": {
+        "Anonymous": "Anónimo",
+        "Authenticated": "Autenticado"
+      }
+    }
+  }
+}

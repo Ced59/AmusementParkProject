@@ -239,6 +239,15 @@
         </aside>
       </div>
 
+      <app-public-share-panel
+        targetType="Park"
+        [targetId]="currentPark.id"
+        [targetTitle]="currentPark.name"
+        titleKey="shareSocial.park.title"
+        descriptionKey="shareSocial.park.description"
+        textKey="shareSocial.park.text">
+      </app-public-share-panel>
+
       <app-park-nearby-section
         class="park-nearby-block"
         [parks]="nearbyParks"

@@ -1,0 +1,60 @@
+{
+  "admin": {
+    "socialShare": {
+      "navTitle": "Teilen",
+      "kicker": "Engagement",
+      "title": "Social Sharing",
+      "subtitle": "Verfolge, welche öffentlichen Seiten geteilt werden und ob Besucher anonym oder angemeldet waren.",
+      "total": "{{count}} Teilaktionen",
+      "loading": "Teilstatistiken werden geladen...",
+      "loadError": "Teilstatistiken konnten nicht geladen werden.",
+      "empty": "In diesem Zeitraum wurde keine Teilaktion gefunden.",
+      "filters": {
+        "fromUtc": "Von",
+        "toUtc": "Bis"
+      },
+      "metrics": {
+        "total": "Aktionen gesamt",
+        "anonymous": "Anonyme Besucher",
+        "authenticated": "Angemeldete Nutzer"
+      },
+      "chart": {
+        "title": "Tägliche Nutzung"
+      },
+      "breakdowns": {
+        "channels": "Kanäle",
+        "targets": "Geteilte Seiten",
+        "visitors": "Besucher"
+      },
+      "topTargets": {
+        "title": "Meistgeteilte Ziele"
+      },
+      "channels": {
+        "Native": "Natives Teilen",
+        "Copy": "Kopieren",
+        "Email": "E-Mail",
+        "WhatsApp": "WhatsApp",
+        "Telegram": "Telegram",
+        "LinkedIn": "LinkedIn",
+        "Facebook": "Facebook",
+        "X": "X",
+        "Reddit": "Reddit",
+        "QrCode": "QR-Code"
+      },
+      "targets": {
+        "Home": "Startseite",
+        "Parks": "Parks",
+        "Park": "Park",
+        "ParkItems": "Parkelemente",
+        "ParkItem": "Parkelement",
+        "Videos": "Videos",
+        "Video": "Video",
+        "Page": "Seite"
+      },
+      "visitors": {
+        "Anonymous": "Anonym",
+        "Authenticated": "Angemeldet"
+      }
+    }
+  }
+}

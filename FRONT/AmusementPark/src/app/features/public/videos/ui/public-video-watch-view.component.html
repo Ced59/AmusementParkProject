@@ -176,6 +176,15 @@
           }
         </div>
       </section>
+
+      <app-public-share-panel
+        targetType="Video"
+        [targetId]="video.id"
+        [targetTitle]="video.title"
+        titleKey="shareSocial.video.title"
+        descriptionKey="shareSocial.video.description"
+        textKey="shareSocial.video.text">
+      </app-public-share-panel>
     </article>
   }
 </app-page-state>

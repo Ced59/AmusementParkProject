@@ -148,5 +148,14 @@
         <p>{{ emptyMessageKey | translate:titleParams }}</p>
       </section>
     }
+
+    <app-public-share-panel
+      [targetType]="shareTargetType"
+      [targetId]="shareTargetId"
+      [targetTitle]="shareTargetTitle"
+      titleKey="shareSocial.videos.title"
+      descriptionKey="shareSocial.videos.description"
+      textKey="shareSocial.videos.text">
+    </app-public-share-panel>
   </section>
 </app-page-state>

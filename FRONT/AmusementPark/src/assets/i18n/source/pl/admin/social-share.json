@@ -1,0 +1,60 @@
+{
+  "admin": {
+    "socialShare": {
+      "navTitle": "Udostępnienia",
+      "kicker": "Zaangażowanie",
+      "title": "Udostępnianie społecznościowe",
+      "subtitle": "Sprawdzaj, które publiczne strony są udostępniane i czy odwiedzający był anonimowy czy zalogowany.",
+      "total": "{{count}} akcji udostępnienia",
+      "loading": "Ładowanie statystyk udostępnień...",
+      "loadError": "Nie można załadować statystyk udostępnień.",
+      "empty": "Brak akcji udostępnienia w tym okresie.",
+      "filters": {
+        "fromUtc": "Od",
+        "toUtc": "Do"
+      },
+      "metrics": {
+        "total": "Wszystkie akcje",
+        "anonymous": "Anonimowi odwiedzający",
+        "authenticated": "Zalogowani użytkownicy"
+      },
+      "chart": {
+        "title": "Dzienne użycie"
+      },
+      "breakdowns": {
+        "channels": "Kanały",
+        "targets": "Udostępnione strony",
+        "visitors": "Odwiedzający"
+      },
+      "topTargets": {
+        "title": "Najczęściej udostępniane cele"
+      },
+      "channels": {
+        "Native": "Udostępnianie natywne",
+        "Copy": "Kopiowanie",
+        "Email": "Email",
+        "WhatsApp": "WhatsApp",
+        "Telegram": "Telegram",
+        "LinkedIn": "LinkedIn",
+        "Facebook": "Facebook",
+        "X": "X",
+        "Reddit": "Reddit",
+        "QrCode": "Kod QR"
+      },
+      "targets": {
+        "Home": "Strona główna",
+        "Parks": "Parki",
+        "Park": "Park",
+        "ParkItems": "Elementy parku",
+        "ParkItem": "Element parku",
+        "Videos": "Filmy",
+        "Video": "Film",
+        "Page": "Strona"
+      },
+      "visitors": {
+        "Anonymous": "Anonimowy",
+        "Authenticated": "Zalogowany"
+      }
+    }
+  }
+}

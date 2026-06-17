@@ -17,6 +17,7 @@ import { ParkItemsFiltersComponent } from './park-items-filters.component';
 import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-popup-action.service';
 import { UiMapSlotComponent } from '@ui/maps';
 import { UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 
 @Component({
   selector: 'app-park-items-list-view',
@@ -36,7 +37,8 @@ import { UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/prim
     UiMapSlotComponent,
     UiChipComponent,
     UiKickerComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    PublicSharePanelComponent
   ]
 })
 export class ParkItemsListViewComponent {
