@@ -14,6 +14,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Application.Features.SocialShare.Ports;
 using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Application.Ports;
@@ -125,6 +126,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IVideoMetadataProvider, ExternalVideoMetadataProvider>();
         services.AddScoped<IVideoThumbnailImporter, VideoThumbnailImporter>();
         services.AddScoped<IContactGrievanceRepository, ContactGrievanceRepository>();
+        services.AddScoped<ISocialShareEventRepository, SocialShareEventRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IAdminAuditLogWriter, AdminAuditLogWriter>();

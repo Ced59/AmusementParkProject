@@ -71,6 +71,7 @@ export function mapParkItemToDetailViewModel(
   const videosLink: string[] | null = buildVideosLink(park, item, currentLanguage);
 
   return {
+    id: item.id ?? null,
     name: item.name?.trim() ?? '',
     categoryLabelKey: getParkItemCategoryTranslationKey(item.category),
     typeLabelKey: getParkItemTypeTranslationKey(item.type),

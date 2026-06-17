@@ -1028,6 +1028,62 @@
         "missingSitemap": "SSR-Cache konnte nicht vorgewärmt werden: Sitemap-Index nicht gefunden."
       }
     },
+    "socialShare": {
+      "navTitle": "Teilen",
+      "kicker": "Engagement",
+      "title": "Social Sharing",
+      "subtitle": "Verfolge, welche öffentlichen Seiten geteilt werden und ob Besucher anonym oder angemeldet waren.",
+      "total": "{{count}} Teilaktionen",
+      "loading": "Teilstatistiken werden geladen...",
+      "loadError": "Teilstatistiken konnten nicht geladen werden.",
+      "empty": "In diesem Zeitraum wurde keine Teilaktion gefunden.",
+      "filters": {
+        "fromUtc": "Von",
+        "toUtc": "Bis"
+      },
+      "metrics": {
+        "total": "Aktionen gesamt",
+        "anonymous": "Anonyme Besucher",
+        "authenticated": "Angemeldete Nutzer"
+      },
+      "chart": {
+        "title": "Tägliche Nutzung"
+      },
+      "breakdowns": {
+        "channels": "Kanäle",
+        "targets": "Geteilte Seiten",
+        "visitors": "Besucher"
+      },
+      "topTargets": {
+        "title": "Meistgeteilte Ziele"
+      },
+      "channels": {
+        "Native": "Natives Teilen",
+        "Copy": "Kopieren",
+        "Email": "E-Mail",
+        "WhatsApp": "WhatsApp",
+        "Telegram": "Telegram",
+        "LinkedIn": "LinkedIn",
+        "Facebook": "Facebook",
+        "X": "X",
+        "Reddit": "Reddit",
+        "QrCode": "QR-Code"
+      },
+      "targets": {
+        "Home": "Startseite",
+        "Parks": "Parks",
+        "Park": "Park",
+        "ParkItems": "Parkelemente",
+        "ParkItem": "Parkelement",
+        "Videos": "Videos",
+        "Video": "Video",
+        "Page": "Seite"
+      },
+      "visitors": {
+        "Anonymous": "Anonym",
+        "Authenticated": "Angemeldet"
+      }
+    },
     "tabs": {
       "users": "Benutzer",
       "parks": "Parks",
@@ -2534,6 +2590,66 @@
     },
     "lastUpdate": "Zuletzt aktualisiert: 23. Mai 2026.",
     "backHome": "Zurück zur Startseite"
+  },
+  "shareSocial": {
+    "defaultTitle": "Diese Seite teilen",
+    "defaultDescription": "Kennst du jemanden, dem diese Seite helfen könnte?",
+    "defaultText": "Sieh dir {{title}} auf AmusementPark an.",
+    "actions": {
+      "share": "Teilen",
+      "copy": "Kopieren",
+      "copied": "Kopiert",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook",
+      "x": "X",
+      "reddit": "Reddit",
+      "more": "Mehr",
+      "less": "Weniger",
+      "email": "E-Mail",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "qrCode": "QR-Code"
+    },
+    "qr": {
+      "title": "Per QR-Code teilen",
+      "loading": "QR-Code wird erstellt",
+      "alt": "QR-Code für {{title}}"
+    },
+    "home": {
+      "title": "AmusementPark teilen",
+      "description": "Sende die Suche an jemanden, der einen Ausflug plant.",
+      "text": "Entdecke Parks und Attraktionen auf AmusementPark."
+    },
+    "parks": {
+      "title": "Parks teilen",
+      "description": "Hilf jemandem, einen Park für den nächsten Besuch zu finden.",
+      "text": "Durchsuche Freizeitparks auf AmusementPark."
+    },
+    "park": {
+      "title": "Diesen Park teilen",
+      "description": "Sende diese Parkseite an jemanden, der {{title}} besuchen möchte.",
+      "text": "Sieh dir {{title}} auf AmusementPark an."
+    },
+    "parkItems": {
+      "title": "Diese Attraktionen teilen",
+      "description": "Sende diesen Guide an jemanden, der den Besuch plant.",
+      "text": "Entdecke Attraktionen und Orte von {{title}} auf AmusementPark."
+    },
+    "parkItem": {
+      "title": "Diese Seite teilen",
+      "description": "Sende diese Seite an jemanden, der sich für {{title}} interessiert.",
+      "text": "Entdecke {{title}} auf AmusementPark."
+    },
+    "videos": {
+      "title": "Diese Videos teilen",
+      "description": "Sende diese Videos an jemanden, der einen Eindruck bekommen möchte.",
+      "text": "Sieh dir Videos zu {{title}} auf AmusementPark an."
+    },
+    "video": {
+      "title": "Dieses Video teilen",
+      "description": "Sende dieses Video an jemanden, dem es gefallen könnte.",
+      "text": "Sieh dir {{title}} auf AmusementPark an."
+    }
   },
   "versionHistoryPage": {
     "kicker": "Versionsverlauf",

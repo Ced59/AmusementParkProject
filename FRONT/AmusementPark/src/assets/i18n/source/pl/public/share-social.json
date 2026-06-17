@@ -1,0 +1,62 @@
+{
+  "shareSocial": {
+    "defaultTitle": "Udostępnij tę stronę",
+    "defaultDescription": "Znasz kogoś, komu ta strona może się przydać?",
+    "defaultText": "Zobacz {{title}} w AmusementPark.",
+    "actions": {
+      "share": "Udostępnij",
+      "copy": "Kopiuj",
+      "copied": "Skopiowano",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook",
+      "x": "X",
+      "reddit": "Reddit",
+      "more": "Więcej",
+      "less": "Mniej",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "qrCode": "Kod QR"
+    },
+    "qr": {
+      "title": "Udostępnij kodem QR",
+      "loading": "Tworzenie kodu QR",
+      "alt": "Kod QR dla {{title}}"
+    },
+    "home": {
+      "title": "Udostępnij AmusementPark",
+      "description": "Wyślij wyszukiwarkę komuś, kto planuje wyjazd.",
+      "text": "Odkrywaj parki i atrakcje w AmusementPark."
+    },
+    "parks": {
+      "title": "Udostępnij parki",
+      "description": "Pomóż komuś znaleźć park do odwiedzenia.",
+      "text": "Przeglądaj parki rozrywki w AmusementPark."
+    },
+    "park": {
+      "title": "Udostępnij ten park",
+      "description": "Wyślij tę stronę komuś, kto może chcieć odwiedzić {{title}}.",
+      "text": "Zobacz {{title}} w AmusementPark."
+    },
+    "parkItems": {
+      "title": "Udostępnij te atrakcje",
+      "description": "Wyślij ten przewodnik komuś, kto planuje wizytę.",
+      "text": "Przeglądaj atrakcje i miejsca {{title}} w AmusementPark."
+    },
+    "parkItem": {
+      "title": "Udostępnij tę kartę",
+      "description": "Wyślij tę stronę komuś zainteresowanemu {{title}}.",
+      "text": "Odkryj {{title}} w AmusementPark."
+    },
+    "videos": {
+      "title": "Udostępnij te filmy",
+      "description": "Wyślij te filmy komuś, kto chce zobaczyć podgląd.",
+      "text": "Oglądaj filmy o {{title}} w AmusementPark."
+    },
+    "video": {
+      "title": "Udostępnij ten film",
+      "description": "Wyślij ten film komuś, komu może się spodobać.",
+      "text": "Obejrzyj {{title}} w AmusementPark."
+    }
+  }
+}

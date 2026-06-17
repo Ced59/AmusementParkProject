@@ -7,6 +7,7 @@ import { PageStateComponent } from '@shared/components/page-state/page-state.com
 import { ScreenState } from '@shared/models/contracts';
 import { SafeExternalUrlPipe } from '@shared/pipes';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { PublicVideoBackLink } from './public-video-list-view.component';
 import { PublicVideoNavigationItem, PublicVideoWatchViewModel } from '../models/public-video-view.model';
 
@@ -24,7 +25,8 @@ import { PublicVideoNavigationItem, PublicVideoWatchViewModel } from '../models/
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    PublicSharePanelComponent
   ]
 })
 export class PublicVideoWatchViewComponent {

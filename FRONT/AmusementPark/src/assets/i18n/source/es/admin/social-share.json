@@ -1,0 +1,60 @@
+{
+  "admin": {
+    "socialShare": {
+      "navTitle": "Compartidos",
+      "kicker": "Interacción",
+      "title": "Compartir social",
+      "subtitle": "Consulta qué páginas públicas se comparten y si el visitante era anónimo o conectado.",
+      "total": "{{count}} acciones de compartir",
+      "loading": "Cargando estadísticas de compartidos...",
+      "loadError": "No se pudieron cargar las estadísticas de compartidos.",
+      "empty": "No se encontró ninguna acción de compartir en este periodo.",
+      "filters": {
+        "fromUtc": "Desde",
+        "toUtc": "Hasta"
+      },
+      "metrics": {
+        "total": "Acciones totales",
+        "anonymous": "Visitantes anónimos",
+        "authenticated": "Usuarios conectados"
+      },
+      "chart": {
+        "title": "Uso diario"
+      },
+      "breakdowns": {
+        "channels": "Canales",
+        "targets": "Páginas compartidas",
+        "visitors": "Visitantes"
+      },
+      "topTargets": {
+        "title": "Destinos más compartidos"
+      },
+      "channels": {
+        "Native": "Compartir nativo",
+        "Copy": "Copiar",
+        "Email": "Email",
+        "WhatsApp": "WhatsApp",
+        "Telegram": "Telegram",
+        "LinkedIn": "LinkedIn",
+        "Facebook": "Facebook",
+        "X": "X",
+        "Reddit": "Reddit",
+        "QrCode": "Código QR"
+      },
+      "targets": {
+        "Home": "Inicio",
+        "Parks": "Parques",
+        "Park": "Parque",
+        "ParkItems": "Elementos del parque",
+        "ParkItem": "Elemento del parque",
+        "Videos": "Vídeos",
+        "Video": "Vídeo",
+        "Page": "Página"
+      },
+      "visitors": {
+        "Anonymous": "Anónimo",
+        "Authenticated": "Conectado"
+      }
+    }
+  }
+}

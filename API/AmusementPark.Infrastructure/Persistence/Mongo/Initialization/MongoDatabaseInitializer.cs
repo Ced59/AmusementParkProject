@@ -69,6 +69,9 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.ContactGrievancesCollectionName, cancellationToken);
         await this.InitializeContactGrievanceIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.SocialShareEventsCollectionName, cancellationToken);
+        await this.InitializeSocialShareEventIndexesAsync(cancellationToken);
+
         await this.EnsureCollectionExistsAsync(this.settings.CountriesCollectionName, cancellationToken);
         await this.InitializeCountriesIndexesAsync(cancellationToken);
         await this.SeedCountriesAsync(cancellationToken);

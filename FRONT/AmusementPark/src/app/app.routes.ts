@@ -83,6 +83,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/contact/pages/admin-contact-grievances/admin-contact-grievances.component').then((m) => m.AdminContactGrievancesComponent)
           },
           {
+            path: 'social-share',
+            loadComponent: () => import('@features/admin/social-share/pages/admin-social-share-stats/admin-social-share-stats.component').then((m) => m.AdminSocialShareStatsComponent)
+          },
+          {
             path: 'images',
             loadChildren: () =>
               import('@features/admin/site/pages/admin-site/admin-site.module')

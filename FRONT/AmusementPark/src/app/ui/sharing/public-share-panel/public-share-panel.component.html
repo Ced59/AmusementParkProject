@@ -1,0 +1,87 @@
+<section class="public-share-panel" appUiSurface="panel" appUiSurfacePadding="regular" aria-labelledby="public-share-panel-title">
+  <div class="public-share-panel__header">
+    <div>
+      <h2 id="public-share-panel-title">{{ titleKey | translate:{ title: resolvedTargetTitle } }}</h2>
+      <p>{{ descriptionKey | translate:{ title: resolvedTargetTitle } }}</p>
+    </div>
+  </div>
+
+  <div class="public-share-panel__actions" role="list">
+    @if (canUseNativeShare) {
+      <button type="button" class="public-share-button public-share-button--primary" role="listitem" (click)="shareNative()">
+        <i class="pi pi-share-alt" aria-hidden="true"></i>
+        <span>{{ 'shareSocial.actions.share' | translate }}</span>
+      </button>
+    }
+
+    <button type="button" class="public-share-button" role="listitem" (click)="copyLink()">
+      <i [class]="copyConfirmed() ? 'pi pi-check' : 'pi pi-copy'" aria-hidden="true"></i>
+      <span>{{ (copyConfirmed() ? 'shareSocial.actions.copied' : 'shareSocial.actions.copy') | translate }}</span>
+    </button>
+
+    @for (network of primaryNetworks; track network.channel) {
+      <a
+        class="public-share-button"
+        role="listitem"
+        [href]="buildShareHref(network.channel)"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="trackLink(network.channel)">
+        <i [class]="network.iconClass" aria-hidden="true"></i>
+        <span>{{ network.labelKey | translate }}</span>
+      </a>
+    }
+
+    <button
+      type="button"
+      class="public-share-button"
+      role="listitem"
+      [attr.aria-expanded]="showMore()"
+      (click)="toggleMore()">
+      <i class="pi pi-ellipsis-h" aria-hidden="true"></i>
+      <span>{{ (showMore() ? 'shareSocial.actions.less' : 'shareSocial.actions.more') | translate }}</span>
+    </button>
+  </div>
+
+  @if (showMore()) {
+    <div class="public-share-panel__secondary" role="list">
+      @for (network of secondaryNetworks; track network.channel) {
+        <a
+          class="public-share-button"
+          role="listitem"
+          [href]="buildShareHref(network.channel)"
+          [attr.target]="network.channel === 'Email' ? null : '_blank'"
+          rel="noopener noreferrer"
+          (click)="trackLink(network.channel)">
+          <i [class]="network.iconClass" aria-hidden="true"></i>
+          <span>{{ network.labelKey | translate }}</span>
+        </a>
+      }
+
+      <button
+        type="button"
+        class="public-share-button"
+        role="listitem"
+        [attr.aria-expanded]="showQr()"
+        (click)="toggleQrCode()">
+        <i class="pi pi-qrcode" aria-hidden="true"></i>
+        <span>{{ 'shareSocial.actions.qrCode' | translate }}</span>
+      </button>
+    </div>
+  }
+
+  @if (showQr()) {
+    <div class="public-share-panel__qr">
+      <h3>{{ 'shareSocial.qr.title' | translate }}</h3>
+      @if (qrCodeLoading()) {
+        <div class="public-share-panel__qr-loading" aria-live="polite">
+          <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+          <span>{{ 'shareSocial.qr.loading' | translate }}</span>
+        </div>
+      } @else if (qrCodeDataUrl()) {
+        <img [src]="qrCodeDataUrl()" [alt]="'shareSocial.qr.alt' | translate:{ title: resolvedTargetTitle }" width="240" height="240" loading="lazy" />
+        <code>{{ shareUrl }}</code>
+      }
+    </div>
+  }
+</section>

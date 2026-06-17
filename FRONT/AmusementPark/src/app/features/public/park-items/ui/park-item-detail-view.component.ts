@@ -15,6 +15,7 @@ import { UiItemCardComponent } from '@ui/cards';
 import { UiMapShellComponent, UiMapSlotComponent } from '@ui/maps';
 import { SafeRichHtmlPipe } from '@shared/pipes';
 import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 
 @Component({
   selector: 'app-park-item-detail-view',
@@ -36,7 +37,8 @@ import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent, UiSurface
     UiMapSlotComponent,
     SafeRichHtmlPipe,
     UiSectionHeaderComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    PublicSharePanelComponent
   ]
 })
 export class ParkItemDetailViewComponent {

@@ -1,0 +1,60 @@
+{
+  "admin": {
+    "socialShare": {
+      "navTitle": "Sharing",
+      "kicker": "Engagement",
+      "title": "Social sharing",
+      "subtitle": "Track how public pages are shared and whether the visitor was anonymous or signed in.",
+      "total": "{{count}} share actions",
+      "loading": "Loading sharing statistics...",
+      "loadError": "Unable to load sharing statistics.",
+      "empty": "No sharing action found for this period.",
+      "filters": {
+        "fromUtc": "From",
+        "toUtc": "To"
+      },
+      "metrics": {
+        "total": "Total actions",
+        "anonymous": "Anonymous visitors",
+        "authenticated": "Signed-in users"
+      },
+      "chart": {
+        "title": "Daily usage"
+      },
+      "breakdowns": {
+        "channels": "Channels",
+        "targets": "Shared pages",
+        "visitors": "Visitors"
+      },
+      "topTargets": {
+        "title": "Most shared targets"
+      },
+      "channels": {
+        "Native": "Native share",
+        "Copy": "Copy",
+        "Email": "Email",
+        "WhatsApp": "WhatsApp",
+        "Telegram": "Telegram",
+        "LinkedIn": "LinkedIn",
+        "Facebook": "Facebook",
+        "X": "X",
+        "Reddit": "Reddit",
+        "QrCode": "QR code"
+      },
+      "targets": {
+        "Home": "Home",
+        "Parks": "Parks",
+        "Park": "Park",
+        "ParkItems": "Park items",
+        "ParkItem": "Park item",
+        "Videos": "Videos",
+        "Video": "Video",
+        "Page": "Page"
+      },
+      "visitors": {
+        "Anonymous": "Anonymous",
+        "Authenticated": "Signed in"
+      }
+    }
+  }
+}

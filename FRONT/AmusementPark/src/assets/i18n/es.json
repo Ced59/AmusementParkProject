@@ -1028,6 +1028,62 @@
         "missingSitemap": "No se puede precalentar la caché SSR: no se encontró el índice del sitemap."
       }
     },
+    "socialShare": {
+      "navTitle": "Compartidos",
+      "kicker": "Interacción",
+      "title": "Compartir social",
+      "subtitle": "Consulta qué páginas públicas se comparten y si el visitante era anónimo o conectado.",
+      "total": "{{count}} acciones de compartir",
+      "loading": "Cargando estadísticas de compartidos...",
+      "loadError": "No se pudieron cargar las estadísticas de compartidos.",
+      "empty": "No se encontró ninguna acción de compartir en este periodo.",
+      "filters": {
+        "fromUtc": "Desde",
+        "toUtc": "Hasta"
+      },
+      "metrics": {
+        "total": "Acciones totales",
+        "anonymous": "Visitantes anónimos",
+        "authenticated": "Usuarios conectados"
+      },
+      "chart": {
+        "title": "Uso diario"
+      },
+      "breakdowns": {
+        "channels": "Canales",
+        "targets": "Páginas compartidas",
+        "visitors": "Visitantes"
+      },
+      "topTargets": {
+        "title": "Destinos más compartidos"
+      },
+      "channels": {
+        "Native": "Compartir nativo",
+        "Copy": "Copiar",
+        "Email": "Email",
+        "WhatsApp": "WhatsApp",
+        "Telegram": "Telegram",
+        "LinkedIn": "LinkedIn",
+        "Facebook": "Facebook",
+        "X": "X",
+        "Reddit": "Reddit",
+        "QrCode": "Código QR"
+      },
+      "targets": {
+        "Home": "Inicio",
+        "Parks": "Parques",
+        "Park": "Parque",
+        "ParkItems": "Elementos del parque",
+        "ParkItem": "Elemento del parque",
+        "Videos": "Vídeos",
+        "Video": "Vídeo",
+        "Page": "Página"
+      },
+      "visitors": {
+        "Anonymous": "Anónimo",
+        "Authenticated": "Conectado"
+      }
+    },
     "tabs": {
       "users": "Usuarios",
       "parks": "Parques",
@@ -2534,6 +2590,66 @@
     },
     "lastUpdate": "Última actualización: 23 de mayo de 2026.",
     "backHome": "Volver al inicio"
+  },
+  "shareSocial": {
+    "defaultTitle": "Compartir esta página",
+    "defaultDescription": "¿Conoces a alguien que pueda usar esta página?",
+    "defaultText": "Mira {{title}} en AmusementPark.",
+    "actions": {
+      "share": "Compartir",
+      "copy": "Copiar",
+      "copied": "Copiado",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook",
+      "x": "X",
+      "reddit": "Reddit",
+      "more": "Más",
+      "less": "Menos",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "qrCode": "Código QR"
+    },
+    "qr": {
+      "title": "Compartir con código QR",
+      "loading": "Generando código QR",
+      "alt": "Código QR para {{title}}"
+    },
+    "home": {
+      "title": "Compartir AmusementPark",
+      "description": "Envía el buscador a alguien que esté preparando una salida.",
+      "text": "Explora parques y atracciones en AmusementPark."
+    },
+    "parks": {
+      "title": "Compartir los parques",
+      "description": "Ayuda a alguien a encontrar un parque para visitar.",
+      "text": "Consulta parques de atracciones en AmusementPark."
+    },
+    "park": {
+      "title": "Compartir este parque",
+      "description": "Envía esta ficha a alguien que quiera visitar {{title}}.",
+      "text": "Mira {{title}} en AmusementPark."
+    },
+    "parkItems": {
+      "title": "Compartir estas atracciones",
+      "description": "Envía esta guía a alguien que esté preparando su visita.",
+      "text": "Consulta atracciones y lugares de {{title}} en AmusementPark."
+    },
+    "parkItem": {
+      "title": "Compartir esta ficha",
+      "description": "Envía esta página a alguien interesado en {{title}}.",
+      "text": "Descubre {{title}} en AmusementPark."
+    },
+    "videos": {
+      "title": "Compartir estos videos",
+      "description": "Envía estos videos a alguien que quiera una vista previa.",
+      "text": "Mira videos de {{title}} en AmusementPark."
+    },
+    "video": {
+      "title": "Compartir este video",
+      "description": "Envía este video a alguien que pueda disfrutarlo.",
+      "text": "Mira {{title}} en AmusementPark."
+    }
   },
   "versionHistoryPage": {
     "kicker": "Historial",

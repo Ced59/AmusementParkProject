@@ -19,6 +19,7 @@ import { UiSearchPanelComponent } from '@ui/forms';
 import { UiButtonDirective, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 import { UiPrimitiveTone } from '@ui/primitives/models/ui-primitive-variant.model';
 import { UiFeaturedParkCardComponent, UiSearchResultCardComponent, UiSearchResultCardModel } from '@ui/cards';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 
 @Component({
   selector: 'app-home-view',
@@ -36,7 +37,8 @@ import { UiFeaturedParkCardComponent, UiSearchResultCardComponent, UiSearchResul
     UiButtonDirective,
     UiSearchPanelComponent,
     UiSectionHeaderComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    PublicSharePanelComponent
   ]
 })
 export class HomeViewComponent {

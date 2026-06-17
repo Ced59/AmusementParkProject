@@ -1028,6 +1028,62 @@
         }
       }
     },
+    "socialShare": {
+      "navTitle": "Sharing",
+      "kicker": "Engagement",
+      "title": "Social sharing",
+      "subtitle": "Track how public pages are shared and whether the visitor was anonymous or signed in.",
+      "total": "{{count}} share actions",
+      "loading": "Loading sharing statistics...",
+      "loadError": "Unable to load sharing statistics.",
+      "empty": "No sharing action found for this period.",
+      "filters": {
+        "fromUtc": "From",
+        "toUtc": "To"
+      },
+      "metrics": {
+        "total": "Total actions",
+        "anonymous": "Anonymous visitors",
+        "authenticated": "Signed-in users"
+      },
+      "chart": {
+        "title": "Daily usage"
+      },
+      "breakdowns": {
+        "channels": "Channels",
+        "targets": "Shared pages",
+        "visitors": "Visitors"
+      },
+      "topTargets": {
+        "title": "Most shared targets"
+      },
+      "channels": {
+        "Native": "Native share",
+        "Copy": "Copy",
+        "Email": "Email",
+        "WhatsApp": "WhatsApp",
+        "Telegram": "Telegram",
+        "LinkedIn": "LinkedIn",
+        "Facebook": "Facebook",
+        "X": "X",
+        "Reddit": "Reddit",
+        "QrCode": "QR code"
+      },
+      "targets": {
+        "Home": "Home",
+        "Parks": "Parks",
+        "Park": "Park",
+        "ParkItems": "Park items",
+        "ParkItem": "Park item",
+        "Videos": "Videos",
+        "Video": "Video",
+        "Page": "Page"
+      },
+      "visitors": {
+        "Anonymous": "Anonymous",
+        "Authenticated": "Signed in"
+      }
+    },
     "tabs": {
       "users": "Users",
       "parks": "Parks",
@@ -2534,6 +2590,66 @@
     },
     "lastUpdate": "Last updated: 23 May 2026.",
     "backHome": "Back home"
+  },
+  "shareSocial": {
+    "defaultTitle": "Share this page",
+    "defaultDescription": "Know someone who could use this page?",
+    "defaultText": "Have a look at {{title}} on AmusementPark.",
+    "actions": {
+      "share": "Share",
+      "copy": "Copy",
+      "copied": "Copied",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook",
+      "x": "X",
+      "reddit": "Reddit",
+      "more": "More",
+      "less": "Less",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "qrCode": "QR code"
+    },
+    "qr": {
+      "title": "Share via QR code",
+      "loading": "Generating QR code",
+      "alt": "QR code for {{title}}"
+    },
+    "home": {
+      "title": "Share AmusementPark",
+      "description": "Send the park finder to someone planning a trip.",
+      "text": "Explore parks and attractions on AmusementPark."
+    },
+    "parks": {
+      "title": "Share the parks",
+      "description": "Help someone find a park to visit.",
+      "text": "Browse amusement parks on AmusementPark."
+    },
+    "park": {
+      "title": "Share this park",
+      "description": "Send this park page to someone who may want to visit {{title}}.",
+      "text": "Have a look at {{title}} on AmusementPark."
+    },
+    "parkItems": {
+      "title": "Share these attractions",
+      "description": "Send this park guide to someone planning what to do.",
+      "text": "Browse attractions and places for {{title}} on AmusementPark."
+    },
+    "parkItem": {
+      "title": "Share this place",
+      "description": "Send this page to someone interested in {{title}}.",
+      "text": "Discover {{title}} on AmusementPark."
+    },
+    "videos": {
+      "title": "Share these videos",
+      "description": "Send these videos to someone who wants a preview.",
+      "text": "Watch videos for {{title}} on AmusementPark."
+    },
+    "video": {
+      "title": "Share this video",
+      "description": "Send this video to someone who may enjoy it.",
+      "text": "Watch {{title}} on AmusementPark."
+    }
   },
   "versionHistoryPage": {
     "kicker": "Version history",

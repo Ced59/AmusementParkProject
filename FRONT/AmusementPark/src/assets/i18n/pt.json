@@ -1028,6 +1028,62 @@
         "missingSitemap": "Não foi possível pré-aquecer a cache SSR: índice do sitemap não encontrado."
       }
     },
+    "socialShare": {
+      "navTitle": "Partilhas",
+      "kicker": "Envolvimento",
+      "title": "Partilha social",
+      "subtitle": "Acompanhe que páginas públicas são partilhadas e se o visitante era anónimo ou autenticado.",
+      "total": "{{count}} ações de partilha",
+      "loading": "A carregar estatísticas de partilha...",
+      "loadError": "Não foi possível carregar as estatísticas de partilha.",
+      "empty": "Nenhuma ação de partilha encontrada neste período.",
+      "filters": {
+        "fromUtc": "De",
+        "toUtc": "Até"
+      },
+      "metrics": {
+        "total": "Ações totais",
+        "anonymous": "Visitantes anónimos",
+        "authenticated": "Utilizadores autenticados"
+      },
+      "chart": {
+        "title": "Uso diário"
+      },
+      "breakdowns": {
+        "channels": "Canais",
+        "targets": "Páginas partilhadas",
+        "visitors": "Visitantes"
+      },
+      "topTargets": {
+        "title": "Destinos mais partilhados"
+      },
+      "channels": {
+        "Native": "Partilha nativa",
+        "Copy": "Cópia",
+        "Email": "Email",
+        "WhatsApp": "WhatsApp",
+        "Telegram": "Telegram",
+        "LinkedIn": "LinkedIn",
+        "Facebook": "Facebook",
+        "X": "X",
+        "Reddit": "Reddit",
+        "QrCode": "Código QR"
+      },
+      "targets": {
+        "Home": "Início",
+        "Parks": "Parques",
+        "Park": "Parque",
+        "ParkItems": "Itens do parque",
+        "ParkItem": "Item do parque",
+        "Videos": "Vídeos",
+        "Video": "Vídeo",
+        "Page": "Página"
+      },
+      "visitors": {
+        "Anonymous": "Anónimo",
+        "Authenticated": "Autenticado"
+      }
+    },
     "tabs": {
       "users": "Utilizadores",
       "parks": "Parques",
@@ -2534,6 +2590,66 @@
     },
     "lastUpdate": "Última atualização: 23 de maio de 2026.",
     "backHome": "Voltar ao início"
+  },
+  "shareSocial": {
+    "defaultTitle": "Partilhar esta página",
+    "defaultDescription": "Conhece alguém que possa usar esta página?",
+    "defaultText": "Veja {{title}} no AmusementPark.",
+    "actions": {
+      "share": "Partilhar",
+      "copy": "Copiar",
+      "copied": "Copiado",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook",
+      "x": "X",
+      "reddit": "Reddit",
+      "more": "Mais",
+      "less": "Menos",
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "qrCode": "Código QR"
+    },
+    "qr": {
+      "title": "Partilhar por código QR",
+      "loading": "A gerar código QR",
+      "alt": "Código QR para {{title}}"
+    },
+    "home": {
+      "title": "Partilhar AmusementPark",
+      "description": "Envie a pesquisa a alguém que esteja a planear uma saída.",
+      "text": "Explore parques e atrações no AmusementPark."
+    },
+    "parks": {
+      "title": "Partilhar os parques",
+      "description": "Ajude alguém a encontrar um parque para visitar.",
+      "text": "Veja parques de diversões no AmusementPark."
+    },
+    "park": {
+      "title": "Partilhar este parque",
+      "description": "Envie esta página a alguém que possa querer visitar {{title}}.",
+      "text": "Veja {{title}} no AmusementPark."
+    },
+    "parkItems": {
+      "title": "Partilhar estas atrações",
+      "description": "Envie este guia a alguém que esteja a preparar a visita.",
+      "text": "Veja atrações e locais de {{title}} no AmusementPark."
+    },
+    "parkItem": {
+      "title": "Partilhar esta ficha",
+      "description": "Envie esta página a alguém interessado em {{title}}.",
+      "text": "Descubra {{title}} no AmusementPark."
+    },
+    "videos": {
+      "title": "Partilhar estes vídeos",
+      "description": "Envie estes vídeos a alguém que queira uma prévia.",
+      "text": "Veja vídeos de {{title}} no AmusementPark."
+    },
+    "video": {
+      "title": "Partilhar este vídeo",
+      "description": "Envie este vídeo a alguém que possa gostar.",
+      "text": "Veja {{title}} no AmusementPark."
+    }
   },
   "versionHistoryPage": {
     "kicker": "Historico",

@@ -63,6 +63,7 @@ export interface ParkItemAccessConditionViewModel {
 }
 
 export interface ParkItemDetailViewModel {
+  id: string | null;
   name: string;
   categoryLabelKey: string;
   typeLabelKey: string;

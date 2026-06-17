@@ -5,8 +5,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts';
+import { SocialShareTargetType } from '@app/models/social-share/social-share.models';
 import { VideoType } from '@app/models/videos/video-type';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSurfaceDirective } from '@ui/primitives';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import {
   PublicVideoCardViewModel,
   PublicVideoFilterState,
@@ -34,7 +36,8 @@ export interface PublicVideoBackLink {
     UiButtonDirective,
     UiChipComponent,
     UiKickerComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    PublicSharePanelComponent
   ]
 })
 export class PublicVideoListViewComponent implements OnChanges {
@@ -58,6 +61,9 @@ export class PublicVideoListViewComponent implements OnChanges {
   @Input() emptyTitleKey: string = 'videos.list.emptyTitle';
   @Input() emptyMessageKey: string = 'videos.list.emptyMessage';
   @Input() backLinks: PublicVideoBackLink[] = [];
+  @Input() shareTargetType: SocialShareTargetType = 'Videos';
+  @Input() shareTargetId: string | null = null;
+  @Input() shareTargetTitle: string | null = null;
 
   @Output() filtersChanged: EventEmitter<PublicVideoFilterState> = new EventEmitter<PublicVideoFilterState>();
   @Output() loadMoreClicked: EventEmitter<void> = new EventEmitter<void>();

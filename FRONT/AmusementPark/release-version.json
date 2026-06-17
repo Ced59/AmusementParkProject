@@ -1,6 +1,20 @@
 {
-  "version": "1.10.9",
+  "version": "1.10.10",
   "history": [
+    {
+      "version": "1.10.10",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "Les pages publiques se partagent plus facilement.",
+        "en": "Public pages become easier to share.",
+        "de": "Oeffentliche Seiten lassen sich leichter teilen.",
+        "nl": "Publieke pagina's zijn makkelijker te delen.",
+        "it": "Le pagine pubbliche si condividono piu facilmente.",
+        "es": "Las paginas publicas se comparten con mas facilidad.",
+        "pl": "Publiczne strony latwiej udostepniac.",
+        "pt": "As paginas publicas ficam mais faceis de partilhar."
+      }
+    },
     {
       "version": "1.10.9",
       "releasedAt": "2026-06-17",

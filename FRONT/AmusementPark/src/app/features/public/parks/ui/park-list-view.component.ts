@@ -10,6 +10,7 @@ import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective } from '@ui/primitives';
 import { UiSearchPanelComponent } from '@ui/forms';
 import { UiParkCardComponent } from '@ui/cards';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkListMapComponent } from './park-list-map.component';
@@ -19,7 +20,7 @@ import { ParkListMapComponent } from './park-list-map.component';
   templateUrl: './park-list-view.component.html',
   styleUrls: ['./park-list-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, PaginationComponent, NgFor, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective, UiSearchPanelComponent, UiParkCardComponent, ParkListMapComponent]
+  imports: [PageStateComponent, PaginationComponent, NgFor, TranslateModule, UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent, UiSurfaceDirective, UiSearchPanelComponent, UiParkCardComponent, ParkListMapComponent, PublicSharePanelComponent]
 })
 export class ParkListViewComponent {
   @Input() state!: Signal<ScreenState<unknown, string>>;

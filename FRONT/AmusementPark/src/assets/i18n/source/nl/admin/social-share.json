@@ -1,0 +1,60 @@
+{
+  "admin": {
+    "socialShare": {
+      "navTitle": "Delen",
+      "kicker": "Betrokkenheid",
+      "title": "Sociaal delen",
+      "subtitle": "Volg welke publieke pagina's worden gedeeld en of de bezoeker anoniem of ingelogd was.",
+      "total": "{{count}} deelacties",
+      "loading": "Deelstatistieken laden...",
+      "loadError": "Deelstatistieken konden niet worden geladen.",
+      "empty": "Geen deelactie gevonden voor deze periode.",
+      "filters": {
+        "fromUtc": "Van",
+        "toUtc": "Tot"
+      },
+      "metrics": {
+        "total": "Totaal acties",
+        "anonymous": "Anonieme bezoekers",
+        "authenticated": "Ingelogde gebruikers"
+      },
+      "chart": {
+        "title": "Dagelijks gebruik"
+      },
+      "breakdowns": {
+        "channels": "Kanalen",
+        "targets": "Gedeelde pagina's",
+        "visitors": "Bezoekers"
+      },
+      "topTargets": {
+        "title": "Meest gedeelde doelen"
+      },
+      "channels": {
+        "Native": "Native delen",
+        "Copy": "Kopiëren",
+        "Email": "Email",
+        "WhatsApp": "WhatsApp",
+        "Telegram": "Telegram",
+        "LinkedIn": "LinkedIn",
+        "Facebook": "Facebook",
+        "X": "X",
+        "Reddit": "Reddit",
+        "QrCode": "QR-code"
+      },
+      "targets": {
+        "Home": "Home",
+        "Parks": "Parken",
+        "Park": "Park",
+        "ParkItems": "Parkitems",
+        "ParkItem": "Parkitem",
+        "Videos": "Video's",
+        "Video": "Video",
+        "Page": "Pagina"
+      },
+      "visitors": {
+        "Anonymous": "Anoniem",
+        "Authenticated": "Ingelogd"
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+<p-card styleClass="admin-list-card admin-social-share-card">
+  <ng-template pTemplate="header">
+    <div class="admin-list-header admin-social-share-header">
+      <div>
+        <span class="admin-kicker">{{ 'admin.socialShare.kicker' | translate }}</span>
+        <h2>{{ 'admin.socialShare.title' | translate }}</h2>
+        <p>{{ 'admin.socialShare.subtitle' | translate }}</p>
+      </div>
+
+      @if (canShowHeaderTotal()) {
+        <span class="admin-total-pill">
+          {{ 'admin.socialShare.total' | translate:{ count: totalEvents() } }}
+        </span>
+      }
+    </div>
+  </ng-template>
+
+  <form class="admin-social-share-filters" [formGroup]="filtersForm" (ngSubmit)="applyFilters()">
+    <label>
+      <span>{{ 'admin.socialShare.filters.fromUtc' | translate }}</span>
+      <input pInputText type="datetime-local" formControlName="fromUtc" />
+    </label>
+
+    <label>
+      <span>{{ 'admin.socialShare.filters.toUtc' | translate }}</span>
+      <input pInputText type="datetime-local" formControlName="toUtc" />
+    </label>
+
+    <div class="admin-social-share-filters__actions">
+      <button pButton type="submit" icon="pi pi-search" [label]="'actions.search' | translate"></button>
+      <button pButton type="button" class="p-button-secondary" icon="pi pi-filter-slash" [label]="'actions.reset' | translate" (click)="resetFilters()"></button>
+    </div>
+  </form>
+
+  <app-page-state
+    [state]="state()"
+    loadingMessageKey="admin.socialShare.loading"
+    errorMessageKey="admin.socialShare.loadError"
+    emptyMessageKey="admin.socialShare.empty">
+    <section class="admin-social-share-kpis" aria-label="Social share metrics">
+      <article>
+        <span>{{ 'admin.socialShare.metrics.total' | translate }}</span>
+        <strong>{{ totalEvents() | number }}</strong>
+      </article>
+      <article>
+        <span>{{ 'admin.socialShare.metrics.anonymous' | translate }}</span>
+        <strong>{{ anonymousEvents() | number }}</strong>
+      </article>
+      <article>
+        <span>{{ 'admin.socialShare.metrics.authenticated' | translate }}</span>
+        <strong>{{ authenticatedEvents() | number }}</strong>
+      </article>
+    </section>
+
+    <section class="admin-social-share-chart">
+      <div class="admin-social-share-section-head">
+        <h3>{{ 'admin.socialShare.chart.title' | translate }}</h3>
+        @if (stats(); as currentStats) {
+          <span>
+            {{ currentStats.fromUtc | date:'yyyy-MM-dd':'UTC' }}
+            -
+            {{ currentStats.toUtc | date:'yyyy-MM-dd':'UTC' }}
+          </span>
+        }
+      </div>
+
+      <div class="admin-social-share-bars">
+        @for (point of chartPoints(); track point.date) {
+          <div class="admin-social-share-bar" [style.--bar-height]="point.heightPercent + '%'">
+            <span class="admin-social-share-bar__value">{{ point.count }}</span>
+            <span class="admin-social-share-bar__fill" aria-hidden="true"></span>
+            <span class="admin-social-share-bar__date">{{ point.date | date:'MM-dd':'UTC' }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="admin-social-share-breakdowns">
+      <article>
+        <h3>{{ 'admin.socialShare.breakdowns.channels' | translate }}</h3>
+        @for (item of channels(); track trackByDimensionKey($index, item)) {
+          <div class="admin-social-share-row">
+            <span>{{ dimensionLabel('admin.socialShare.channels', item) | translate }}</span>
+            <strong>{{ item.count | number }}</strong>
+          </div>
+        }
+      </article>
+
+      <article>
+        <h3>{{ 'admin.socialShare.breakdowns.targets' | translate }}</h3>
+        @for (item of targetTypes(); track trackByDimensionKey($index, item)) {
+          <div class="admin-social-share-row">
+            <span>{{ dimensionLabel('admin.socialShare.targets', item) | translate }}</span>
+            <strong>{{ item.count | number }}</strong>
+          </div>
+        }
+      </article>
+
+      <article>
+        <h3>{{ 'admin.socialShare.breakdowns.visitors' | translate }}</h3>
+        @for (item of visitorKinds(); track trackByDimensionKey($index, item)) {
+          <div class="admin-social-share-row">
+            <span>{{ dimensionLabel('admin.socialShare.visitors', item) | translate }}</span>
+            <strong>{{ item.count | number }}</strong>
+          </div>
+        }
+      </article>
+    </section>
+
+    <section class="admin-social-share-top-targets">
+      <div class="admin-social-share-section-head">
+        <h3>{{ 'admin.socialShare.topTargets.title' | translate }}</h3>
+      </div>
+
+      <div class="admin-social-share-target-list">
+        @for (target of topTargets(); track trackByTarget($index, target)) {
+          <article>
+            <div>
+              <p-tag [value]="targetTypeLabel(target) | translate" severity="info"></p-tag>
+              <h4>{{ targetLabel(target) }}</h4>
+              <a [href]="target.url" target="_blank" rel="noopener noreferrer">{{ target.url }}</a>
+            </div>
+            <strong>{{ target.count | number }}</strong>
+          </article>
+        }
+      </div>
+    </section>
+  </app-page-state>
+</p-card>
