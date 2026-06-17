@@ -33,6 +33,7 @@ The project must preserve its current architecture, SOLID principles, separation
 - Every new feature must include relevant unit tests.
 - Always pay close attention to performance impact. The production VPS target is modest, so avoid unnecessary CPU work, memory pressure, network payload, bundle weight, synchronous blocking work, and repeated runtime computations.
 - Do not test by starting a local frontend or backend server on the user's PC unless the user explicitly asks for it.
+- If `.codex-remote-attachments/` exists in the local repository, remove it before committing or pushing.
 - When unsure, inspect the existing pattern and follow it.
 
 ## Backend rules
@@ -117,6 +118,7 @@ If a script does not exist, inspect `package.json`, use the closest existing scr
 Every PR must include:
 
 - Clear title.
+- PR descriptions must be written in French.
 - Short summary of the change.
 - Why the change was needed.
 - Tests run.
