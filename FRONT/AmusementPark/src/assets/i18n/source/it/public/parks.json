@@ -61,7 +61,7 @@
         "emptyTitle": "Nessun nearby parco",
         "emptyMessage": "Non è stato trovato nessun parco vicino a questa destinazione.",
         "closestTitle": "Parco più vicino",
-        "distanceNote": "Distanza ortodromica calcolata dalle coordinate del parco."
+        "distanceNote": "Distanza stimata in linea d'aria da questo parco."
       },
       "description": {
         "badge": "Panoramica",

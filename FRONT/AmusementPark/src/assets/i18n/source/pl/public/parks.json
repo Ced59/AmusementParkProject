@@ -61,7 +61,7 @@
         "emptyTitle": "Brak nearby park",
         "emptyMessage": "Nie znaleziono pobliskiego parku wokół tego miejsca.",
         "closestTitle": "Najbliższy park",
-        "distanceNote": "Odległość po ortodromie obliczona z koordynatów parku."
+        "distanceNote": "Szacowana odległość w linii prostej od tego parku."
       },
       "description": {
         "badge": "Opis",

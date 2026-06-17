@@ -1961,7 +1961,7 @@
         "emptyTitle": "Geen nearby park",
         "emptyMessage": "Er is geen nabijgelegen park rond deze bestemming gevonden.",
         "closestTitle": "Dichtstbijzijnde park",
-        "distanceNote": "Grootcirkelafstand berekend vanaf de parkcoördinaten."
+        "distanceNote": "Geschatte afstand in vogelvlucht vanaf dit park."
       },
       "description": {
         "badge": "Overzicht",
