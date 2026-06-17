@@ -3,7 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 interface AdminDashboardShortcut {
-  readonly icon: string;
+  readonly iconClass: string;
   readonly titleKey: string;
   readonly descriptionKey: string;
   readonly segment: string;
@@ -19,73 +19,67 @@ interface AdminDashboardShortcut {
 export class AdminDashboardComponent {
   protected readonly shortcuts: readonly AdminDashboardShortcut[] = [
     {
-      icon: '👤',
+      iconClass: 'pi pi-users',
       titleKey: 'admin.users.title',
       descriptionKey: 'admin.dashboard.shortcuts.users',
       segment: 'users'
     },
     {
-      icon: '🗺️',
+      iconClass: 'pi pi-map',
       titleKey: 'admin.parks.title',
       descriptionKey: 'admin.dashboard.shortcuts.parks',
       segment: 'parks'
     },
     {
-      icon: '🎢',
+      iconClass: 'pi pi-ticket',
       titleKey: 'admin.parkItems.title',
       descriptionKey: 'admin.dashboard.shortcuts.parkItems',
       segment: 'items'
     },
     {
-      icon: '🏢',
+      iconClass: 'pi pi-building',
       titleKey: 'admin.operators.title',
       descriptionKey: 'admin.dashboard.shortcuts.operators',
       segment: 'operators'
     },
     {
-      icon: '🧬',
+      iconClass: 'pi pi-sparkles',
       titleKey: 'admin.parkFounders.title',
       descriptionKey: 'admin.dashboard.shortcuts.founders',
       segment: 'founders'
     },
     {
-      icon: '🔧',
+      iconClass: 'pi pi-wrench',
       titleKey: 'admin.manufacturers.title',
       descriptionKey: 'admin.dashboard.shortcuts.manufacturers',
       segment: 'manufacturers'
     },
     {
-      icon: '🖼️',
+      iconClass: 'pi pi-image',
       titleKey: 'admin.images.title',
       descriptionKey: 'admin.dashboard.shortcuts.images',
       segment: 'images'
     },
     {
-      icon: '⚙️',
+      iconClass: 'pi pi-cog',
       titleKey: 'admin.dataSources.title',
       descriptionKey: 'admin.dashboard.shortcuts.data',
       segment: 'data'
     },
     {
-      icon: '🧩',
+      iconClass: 'pi pi-sitemap',
       titleKey: 'admin.parkGraphUpserts.title',
       descriptionKey: 'admin.dashboard.shortcuts.parkGraphUpserts',
       segment: 'park-graph-upserts'
     },
     {
-      icon: '🌍',
-      titleKey: 'admin.localizedContent.navTitle',
-      descriptionKey: 'admin.dashboard.shortcuts.localizedContent',
-      segment: 'localized-content'
-    },
-    {
-      icon: '🛡️',
+      iconClass: 'pi pi-shield',
       titleKey: 'admin.auditLogs.title',
       descriptionKey: 'admin.dashboard.shortcuts.auditLogs',
       segment: 'audit-logs'
     },
     {
-      icon: '🔎',
+      iconClass: 'pi pi-search',
       titleKey: 'admin.seoSitemaps.navTitle',
       descriptionKey: 'admin.dashboard.shortcuts.seoSitemaps',
       segment: 'seo-sitemaps'

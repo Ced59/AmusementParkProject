@@ -34,7 +34,6 @@ import { AdminParkItemAccessConditionsTabComponent } from './tabs/admin-park-ite
 import { AdminParkItemLocationsTabComponent } from './tabs/admin-park-item-locations-tab/admin-park-item-locations-tab.component';
 import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component';
 import { AdminParkItemSequentialNavigationComponent } from './components/admin-park-item-sequential-navigation.component';
-import { AdminJsonImportTabComponent } from '@features/admin/shared/ui/admin-json-import-tab/admin-json-import-tab.component';
 
 interface AdminParkItemEditorSectionOption {
   value: number;
@@ -66,7 +65,6 @@ interface AdminParkItemEditorSectionOption {
     AdminParkItemLocationsTabComponent,
     AdminParkItemPhotosTabComponent,
     AdminParkItemSequentialNavigationComponent,
-    AdminJsonImportTabComponent,
     TranslateModule
   ]
 })
@@ -74,8 +72,6 @@ export class AdminParkItemEditFormComponent {
   @Input({ required: true }) form!: FormGroup;
   @Input() activeTabIndex: number = 0;
   @Input() isEditMode: boolean = false;
-  @Input() entityId: string | null = null;
-  @Input() jsonImportExample: string = '{\n  "descriptions": []\n}';
   @Input() isAttractionCategory: boolean = true;
   @Input() currentLang: string = 'en';
   @Input() statusLabel: string = '';
@@ -149,7 +145,6 @@ export class AdminParkItemEditFormComponent {
   @Output() setCurrentPhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() deletePhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() photosPageChange: EventEmitter<PaginatorState> = new EventEmitter<PaginatorState>();
-  @Output() jsonImported: EventEmitter<void> = new EventEmitter<void>();
 
   get attractionDetailsGroup(): FormGroup {
     return this.form.get('attractionDetails') as FormGroup;
@@ -165,8 +160,7 @@ export class AdminParkItemEditFormComponent {
       { value: 1, labelKey: 'admin.parks.items.tabs.details', enabled: this.isAttractionCategory },
       { value: 2, labelKey: 'admin.parks.items.tabs.accessConditions', enabled: this.isAttractionCategory },
       { value: 3, labelKey: 'admin.parks.items.tabs.locations', enabled: this.isAttractionCategory },
-      { value: 4, labelKey: 'admin.parks.items.tabs.photos', enabled: this.isAttractionCategory },
-      { value: 5, labelKey: 'admin.jsonImport.tab', enabled: true }
+      { value: 4, labelKey: 'admin.parks.items.tabs.photos', enabled: this.isAttractionCategory }
     ].filter((option: AdminParkItemEditorSectionOption): boolean => option.enabled);
   }
 

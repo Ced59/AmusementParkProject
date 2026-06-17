@@ -1,11 +1,7 @@
 .admin-dashboard {
   display: grid;
   gap: 1.25rem;
-  border: 1px solid var(--app-border);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, var(--app-card-bg), var(--app-card-bg-2));
-  box-shadow: var(--shadow-card);
-  padding: clamp(1rem, 2.4vw, 1.5rem);
+  padding: 1rem;
 }
 
 .admin-dashboard__header {
@@ -36,7 +32,7 @@
   min-height: 7rem;
   padding: 1rem;
   border: 1px solid var(--app-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--admin-radius, 0.5rem);
   color: var(--app-text);
   background: rgba(255, 210, 140, 0.035);
   transition: var(--transition);
@@ -54,8 +50,9 @@
   flex: 0 0 2.35rem;
   display: grid;
   place-items: center;
-  border-radius: var(--radius-md);
+  border-radius: var(--admin-radius, 0.5rem);
   background: rgba(255, 90, 31, 0.12);
+  color: var(--c-orange);
 }
 
 .admin-dashboard__shortcut-body {
@@ -67,6 +64,7 @@
     color: var(--app-heading);
     font-family: var(--font-heading);
     font-size: 0.98rem;
+    letter-spacing: 0;
   }
 
   span {

@@ -84,7 +84,7 @@
 .admin-card {
   border: 1px solid var(--app-border);
   border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, var(--app-card-bg), var(--app-card-bg-2));
+  background: linear-gradient(180deg, var(--app-surface), var(--app-surface-2));
   box-shadow: var(--shadow-card);
   padding: clamp(1rem, 2vw, 1.25rem);
 }

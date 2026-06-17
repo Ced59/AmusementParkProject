@@ -103,7 +103,6 @@
         "data": "Monitor imports, sources and data processing.",
         "founders": "Maintain founders and biographies linked to parks.",
         "auditLogs": "Review logged sensitive administration actions.",
-        "localizedContent": "Quickly import localized texts through JSON after selecting a target.",
         "parkGraphUpserts": "Preview then apply a full or partial park graph JSON.",
         "seoSitemaps": "Manage the sitemap index, XML sections, stats and IndexNow."
       }
@@ -207,92 +206,7 @@
       "newTagPlaceholder": "ex: official-logo",
       "createTag": "Create tag"
     },
-    "jsonImport": {
-      "tab": "JSON import",
-      "kicker": "JSON import",
-      "title": "Import data for this entity",
-      "description": "Paste a partial or complete JSON payload to quickly fill supported fields, without managing photos or creating child entities.",
-      "resetExample": "Reset example",
-      "jsonLabel": "Entity JSON",
-      "apply": "Apply JSON",
-      "applying": "Applying…",
-      "disabledUntilSave": "Save this entity before importing JSON.",
-      "messages": {
-        "invalidJson": "The JSON is invalid.",
-        "success": "JSON applied. Reload or check the tabs if needed.",
-        "error": "Unable to apply the JSON."
-      },
-      "help": {
-        "title": "Accepted format",
-        "partial": "A partial JSON only updates the fields it contains.",
-        "merge": "Localized values are merged by language, unless replaceExisting or mode: replace is used.",
-        "accessConditions": "For park items, accessConditions can create or update conditions and their reusable types."
-      }
-    },
     "loading": "Loading...",
-    "localizedContent": {
-      "navTitle": "JSON imports",
-      "kicker": "JSON import",
-      "title": "Import entity JSON",
-      "subtitle": "Choose an existing entity, then apply a partial or complete JSON payload to the supported fields.",
-      "selection": {
-        "title": "1. Select the target",
-        "description": "Selection uses readable search results so you do not update an entity from a technical ID alone.",
-        "entityType": "Entity type",
-        "search": "Search",
-        "searchPlaceholder": "Park name, attraction, zone, manufacturer…",
-        "searchButton": "Search",
-        "searching": "Searching…",
-        "empty": "Run a search to display available targets."
-      },
-      "editor": {
-        "title": "2. Paste JSON",
-        "description": "The JSON is validated by the API and applied through the Application layer.",
-        "resetExample": "Reset example",
-        "selected": "Selected target",
-        "noTarget": "No target selected.",
-        "jsonLabel": "Localized JSON",
-        "apply": "Apply JSON",
-        "applying": "Applying…"
-      },
-      "help": {
-        "title": "Accepted format",
-        "merge": "By default, provided languages are merged with existing values: other languages are preserved.",
-        "replace": "Add \"replaceExisting\": true or \"mode\": \"replace\" to fully replace the localized field.",
-        "fields": "Supported fields: descriptions, names, description, biography, altTexts, captions, credits, labels depending on the selected type.",
-        "accessConditions": "For an attraction park item, accessConditions can create or update conditions: type, implicit customTypeKey for an unknown type, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label and description."
-      },
-      "messages": {
-        "searchError": "Could not load localizable targets.",
-        "selectTargetFirst": "Select a target first.",
-        "invalidJson": "The JSON is invalid.",
-        "applySuccess": "Localized JSON applied successfully.",
-        "applyNoField": "No localized field was updated.",
-        "applyError": "Could not apply localized JSON."
-      },
-      "entityTypes": {
-        "park": "Park",
-        "parkZone": "Park zone",
-        "parkItem": "Park item",
-        "parkOperator": "Operator",
-        "parkFounder": "Founder",
-        "attractionManufacturer": "Manufacturer",
-        "image": "Image",
-        "imageTag": "Image tag",
-        "accessConditionType": "Access condition type"
-      },
-      "entityHints": {
-        "park": "Localized park description.",
-        "parkZone": "Localized zone name and description.",
-        "parkItem": "Localized item description, with access conditions for attractions.",
-        "parkOperator": "Localized operator description.",
-        "parkFounder": "Localized founder biography.",
-        "attractionManufacturer": "Localized manufacturer biography.",
-        "image": "Localized alternative texts, captions and credits.",
-        "imageTag": "Localized tag labels and descriptions.",
-        "accessConditionType": "Reusable catalogue of access condition types."
-      }
-    },
     "m14": {
       "kicker": "Administration",
       "sidebarTitle": "Back-office control"

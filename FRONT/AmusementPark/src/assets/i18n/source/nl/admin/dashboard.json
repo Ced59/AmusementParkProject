@@ -9,11 +9,10 @@
         "parkItems": "Attracties, winkels, restaurants en diensten beheren.",
         "operators": "Exploitanten gekoppeld aan parken onderhouden.",
         "manufacturers": "Constructeurs en attractiebouwers onderhouden.",
-        "images": "Media, logo’s en sitebeelden controleren.",
+        "images": "Media, logoâ€™s en sitebeelden controleren.",
         "data": "Imports, bronnen en gegevensverwerking volgen.",
-        "founders": "Beheer oprichters en biografieën die aan parken zijn gekoppeld.",
+        "founders": "Beheer oprichters en biografieÃ«n die aan parken zijn gekoppeld.",
         "auditLogs": "Gelogde gevoelige beheeracties bekijken.",
-        "localizedContent": "Snel gelokaliseerde teksten via JSON importeren na het kiezen van een doel.",
         "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
         "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow."
       }

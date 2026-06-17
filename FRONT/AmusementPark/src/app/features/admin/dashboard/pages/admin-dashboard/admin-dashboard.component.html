@@ -10,7 +10,9 @@
   <div class="admin-dashboard__grid" aria-label="Administration">
     @for (shortcut of shortcuts; track shortcut.segment) {
       <a class="admin-dashboard__shortcut" [routerLink]="buildAdminRoute(shortcut.segment)">
-        <span class="admin-dashboard__shortcut-icon" aria-hidden="true">{{ shortcut.icon }}</span>
+        <span class="admin-dashboard__shortcut-icon" aria-hidden="true">
+          <i [class]="shortcut.iconClass"></i>
+        </span>
         <span class="admin-dashboard__shortcut-body">
           <strong>{{ shortcut.titleKey | translate }}</strong>
           <span>{{ shortcut.descriptionKey | translate }}</span>

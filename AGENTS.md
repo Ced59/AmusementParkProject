@@ -22,7 +22,7 @@ The project must preserve its current architecture, SOLID principles, separation
 
 - For implementation tasks, always start from a new branch based on `origin/master`, then commit, push, and open a pull request targeting `master`.
 - Keep pull requests small, focused, and easy to review.
-- Increment the release version in every PR unless the user explicitly asks for a major or intermediate version increment instead.
+- Increment the release version in every PR unless the user explicitly asks for a major or intermediate version increment instead. Always base that increment on the current `origin/master` release version, not on the local `master` branch or the current working branch.
 - Do not mix unrelated backend, frontend, SEO, security, UI, deployment, and refactoring changes in one PR.
 - Respect the current architecture and naming conventions.
 - Do not introduce shortcuts that bypass validation, authorization, domain rules, or application services.
@@ -32,6 +32,8 @@ The project must preserve its current architecture, SOLID principles, separation
 - Add or update tests for every behavior change.
 - Every new feature must include relevant unit tests.
 - Always pay close attention to performance impact. The production VPS target is modest, so avoid unnecessary CPU work, memory pressure, network payload, bundle weight, synchronous blocking work, and repeated runtime computations.
+- Do not test by starting a local frontend or backend server on the user's PC unless the user explicitly asks for it.
+- If `.codex-remote-attachments/` exists in the local repository, remove it before committing or pushing.
 - When unsure, inspect the existing pattern and follow it.
 
 ## Backend rules
@@ -116,6 +118,7 @@ If a script does not exist, inspect `package.json`, use the closest existing scr
 Every PR must include:
 
 - Clear title.
+- PR descriptions must be written in French.
 - Short summary of the change.
 - Why the change was needed.
 - Tests run.

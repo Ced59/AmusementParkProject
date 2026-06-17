@@ -13,7 +13,6 @@
         "data": "Monitorare importazioni, fonti e processi dati.",
         "founders": "Gestire fondatori e biografie collegati ai parchi.",
         "auditLogs": "Consultare le azioni amministrative sensibili registrate.",
-        "localizedContent": "Importare rapidamente testi localizzati via JSON dopo aver scelto una destinazione.",
         "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale.",
         "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow."
       }
