@@ -121,8 +121,8 @@ function createParkItem(overrides: Partial<ParkItem> = {}): ParkItem {
 function createImage(id: string): ImageDto {
   return {
     id,
-    category: ImageCategory.ATTRACTION,
-    ownerType: ImageOwnerType.ATTRACTION,
+    category: ImageCategory.PARK_ITEM,
+    ownerType: ImageOwnerType.PARK_ITEM,
     ownerId: 'item-1',
     path: `items/${id}.jpg`,
     description: 'Taron main image',
@@ -214,7 +214,7 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.manufacturersPort.calls).toEqual(['manufacturer-1']);
     expect(context.zonesPort.calls).toEqual(['zone-1']);
     expect(context.imagesPort.imageCalls).toEqual([
-      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: 1, size: 1 }
+      { ownerType: ImageOwnerType.PARK_ITEM, ownerId: 'item-1', category: ImageCategory.PARK_ITEM, page: 1, size: 1 }
     ]);
   });
 

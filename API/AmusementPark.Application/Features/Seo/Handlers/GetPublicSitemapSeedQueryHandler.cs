@@ -71,8 +71,8 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             cancellationToken);
         HashSet<string> itemIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
             this.imageRepository,
-            ImageOwnerType.Attraction,
-            ImageCategory.Attraction,
+            ImageOwnerType.ParkItem,
+            ImageCategory.ParkItem,
             cancellationToken);
 
         this.AddParkUrls(urls, visibleParks, languages, parkIdsWithPublishedImages);

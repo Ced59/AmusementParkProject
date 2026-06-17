@@ -34,8 +34,8 @@ export class AdminSiteComponent implements OnInit {
   protected readonly selectedImageIds = this.stateFacade.selectedImageIds;
   protected readonly selectedCount = this.stateFacade.selectedCount;
   protected readonly isEveryPageImageSelected = this.stateFacade.isEveryPageImageSelected;
-  protected readonly categories: ImageCategory[] = [ImageCategory.AVATAR, ImageCategory.PARK_LOGO, ImageCategory.PARK, ImageCategory.ATTRACTION];
-  protected readonly ownerTypes: ImageOwnerType[] = [ImageOwnerType.NONE, ImageOwnerType.PARK, ImageOwnerType.USER, ImageOwnerType.ATTRACTION];
+  protected readonly categories: ImageCategory[] = [ImageCategory.AVATAR, ImageCategory.PARK_LOGO, ImageCategory.PARK, ImageCategory.PARK_ITEM];
+  protected readonly ownerTypes: ImageOwnerType[] = [ImageOwnerType.NONE, ImageOwnerType.PARK, ImageOwnerType.USER, ImageOwnerType.PARK_ITEM];
   protected readonly sortFields: AdminImageSortField[] = ['created', 'updated', 'filename', 'size', 'dimensions'];
   protected readonly pageSizes: number[] = [20, 40, 60, 100];
   protected readonly defaultLanguageCode: string = 'fr';

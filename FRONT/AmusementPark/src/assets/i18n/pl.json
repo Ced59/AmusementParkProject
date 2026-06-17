@@ -1208,14 +1208,14 @@
       "AVATAR": "Awatar",
       "PARK_LOGO": "Logo parku",
       "PARK": "Zdjęcie parku",
-      "ATTRACTION": "Item zdjęcie",
+      "PARK_ITEM": "Item zdjęcie",
       "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
       "NONE": "Brak",
       "PARK": "Park",
       "USER": "Użytkownik",
-      "ATTRACTION": "Element",
+      "PARK_ITEM": "Element",
       "VIDEO": "Video"
     }
   },
@@ -1720,7 +1720,8 @@
       "information": "Informacja",
       "locker": "Szafka",
       "parking": "Parking",
-      "station": "Stacja"
+      "station": "Stacja",
+      "cinema": "Kina 4D"
     }
   },
   "parkItems": {

@@ -1208,14 +1208,14 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Logo de parc",
       "PARK": "Photo de parc",
-      "ATTRACTION": "Photo d’élément",
+      "PARK_ITEM": "Photo d’élément",
       "VIDEO_THUMBNAIL": "Miniature video"
     },
     "ownerTypes": {
       "NONE": "Aucun",
       "PARK": "Parc",
       "USER": "Utilisateur",
-      "ATTRACTION": "Élément",
+      "PARK_ITEM": "Élément",
       "VIDEO": "Video"
     }
   },
@@ -1720,7 +1720,8 @@
       "information": "Information",
       "locker": "Consigne",
       "parking": "Parking",
-      "station": "Station"
+      "station": "Station",
+      "cinema": "Cinémas 4D"
     }
   },
   "parkItems": {

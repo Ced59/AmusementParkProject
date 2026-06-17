@@ -50,7 +50,7 @@ internal static class VideoWriteModelMapper
 
     public static bool HasValidOwner(VideoWriteModel writeModel)
     {
-        return (writeModel.OwnerType == VideoOwnerType.Park || writeModel.OwnerType == VideoOwnerType.Attraction) &&
+        return (writeModel.OwnerType == VideoOwnerType.Park || writeModel.OwnerType == VideoOwnerType.ParkItem) &&
                !string.IsNullOrWhiteSpace(writeModel.OwnerId);
     }
 

@@ -114,8 +114,8 @@ public sealed class ParkItemImagesSitemapSectionProvider : ISitemapSectionProvid
             StringComparer.OrdinalIgnoreCase);
         HashSet<string> itemIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
             this.imageRepository,
-            ImageOwnerType.Attraction,
-            ImageCategory.Attraction,
+            ImageOwnerType.ParkItem,
+            ImageCategory.ParkItem,
             cancellationToken);
 
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();

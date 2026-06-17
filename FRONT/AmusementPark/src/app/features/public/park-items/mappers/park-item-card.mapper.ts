@@ -222,6 +222,7 @@ function resolveParkItemTypeIconClass(type: string | null | undefined): string {
     case 'Snack':
       return 'pi pi-shopping-bag';
     case 'Show':
+    case 'Cinema':
       return 'pi pi-video';
     case 'Hotel':
       return 'pi pi-home';

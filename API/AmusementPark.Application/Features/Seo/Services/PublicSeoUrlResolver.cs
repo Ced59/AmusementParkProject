@@ -99,7 +99,7 @@ public sealed class PublicSeoUrlResolver
             AddZoneImpactUrls(relativePaths, languages, parentPark, new[] { item }, parentZones);
 
             AddParkItemDetailUrls(relativePaths, languages, parentPark, item);
-            if (await this.HasPublishedImagesAsync(ImageOwnerType.Attraction, ImageCategory.Attraction, item.Id, imagePresenceByKey, cancellationToken))
+            if (await this.HasPublishedImagesAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imagePresenceByKey, cancellationToken))
             {
                 AddParkItemImageUrls(relativePaths, languages, parentPark, item);
             }
@@ -134,7 +134,7 @@ public sealed class PublicSeoUrlResolver
         foreach (PublicSeoParkItemSnapshot item in currentPublicItems)
         {
             AddParkItemDetailUrls(relativePaths, languages, park, item);
-            if (await this.HasPublishedImagesAsync(ImageOwnerType.Attraction, ImageCategory.Attraction, item.Id, imagePresenceByKey, cancellationToken))
+            if (await this.HasPublishedImagesAsync(ImageOwnerType.ParkItem, ImageCategory.ParkItem, item.Id, imagePresenceByKey, cancellationToken))
             {
                 AddParkItemImageUrls(relativePaths, languages, park, item);
             }

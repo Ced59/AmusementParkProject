@@ -106,7 +106,7 @@ export class ParkItemVideoStateFacade {
         videoPage: this.videosPort.getVideosPage({
           page: 1,
           size: ParkItemVideoStateFacade.NavigationPageSize,
-          ownerType: VideoOwnerType.ATTRACTION,
+          ownerType: VideoOwnerType.PARK_ITEM,
           ownerId: normalizeOptionalString(item.id) ?? itemId,
           sortBy: 'published',
           sortDirection: 'desc'
@@ -117,7 +117,7 @@ export class ParkItemVideoStateFacade {
     ).subscribe({
       next: (response: { item: ParkItem; park: Park; video: VideoDto; videoPage: PagedResult<VideoDto>; videoTags: VideoTagDto[] }) => {
         const normalizedItemId: string = normalizeOptionalString(response.item.id) ?? itemId;
-        if (!isOwnedBy(response.video, VideoOwnerType.ATTRACTION, normalizedItemId)) {
+        if (!isOwnedBy(response.video, VideoOwnerType.PARK_ITEM, normalizedItemId)) {
           this.ssrHttpStatusService.setNotFound();
           this.screenStateStore.setError('videos.watch.errorMessage', previousData);
           return;

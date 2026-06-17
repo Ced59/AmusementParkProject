@@ -1208,14 +1208,14 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Logótipo do parque",
       "PARK": "Foto do parque",
-      "ATTRACTION": "Item foto",
+      "PARK_ITEM": "Item foto",
       "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
       "NONE": "Nenhum",
       "PARK": "Parque",
       "USER": "Utilizador",
-      "ATTRACTION": "Elemento",
+      "PARK_ITEM": "Elemento",
       "VIDEO": "Video"
     }
   },
@@ -1720,7 +1720,8 @@
       "information": "Informação",
       "locker": "Cacifo",
       "parking": "Estacionamento",
-      "station": "Estação"
+      "station": "Estação",
+      "cinema": "Cinemas 4D"
     }
   },
   "parkItems": {

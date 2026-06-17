@@ -4,13 +4,13 @@
       "AVATAR": "Awatar",
       "PARK_LOGO": "Logo parku",
       "PARK": "Zdjęcie parku",
-      "ATTRACTION": "Item zdjęcie"
+      "PARK_ITEM": "Item zdjęcie"
     },
     "ownerTypes": {
       "NONE": "Brak",
       "PARK": "Park",
       "USER": "Użytkownik",
-      "ATTRACTION": "Element"
+      "PARK_ITEM": "Element"
     }
   }
 }

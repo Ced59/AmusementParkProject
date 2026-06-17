@@ -11,6 +11,35 @@ namespace AmusementPark.WebAPI.Tests.Mappers;
 public sealed class ImagesHttpMappersTests
 {
     [Fact]
+    public void ToHttp_WhenImageBelongsToParkItem_ShouldExposeParkItemOwnerAndCategory()
+    {
+        Image image = new Image
+        {
+            Id = "image-1",
+            Category = ImageCategory.ParkItem,
+            OwnerType = ImageOwnerType.ParkItem,
+            OwnerId = "item-1",
+        };
+
+        ImageDto dto = image.ToHttp();
+
+        Assert.Equal(ImageCategoryDto.PARK_ITEM, dto.Category);
+        Assert.Equal(ImageOwnerTypeDto.PARK_ITEM, dto.OwnerType);
+    }
+
+    [Fact]
+    public void TryParse_WhenLegacyAttractionImageValuesAreProvided_ShouldMapToParkItem()
+    {
+        bool categoryParsed = ImagesHttpMappers.TryParseImageCategoryDto("ATTRACTION", out ImageCategoryDto category);
+        bool ownerTypeParsed = ImagesHttpMappers.TryParseImageOwnerTypeDto("ATTRACTION", out ImageOwnerTypeDto ownerType);
+
+        Assert.True(categoryParsed);
+        Assert.True(ownerTypeParsed);
+        Assert.Equal(ImageCategory.ParkItem, category.ToDomain());
+        Assert.Equal(ImageOwnerType.ParkItem, ownerType.ToDomain());
+    }
+
+    [Fact]
     public void ToHttp_WhenImageHasExifMetadata_ShouldExposePublicMetadata()
     {
         DateTime takenOnUtc = new DateTime(2021, 8, 14, 9, 30, 0, DateTimeKind.Utc);

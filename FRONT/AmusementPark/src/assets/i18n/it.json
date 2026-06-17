@@ -1208,14 +1208,14 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Logo del parco",
       "PARK": "Foto del parco",
-      "ATTRACTION": "Item foto",
+      "PARK_ITEM": "Item foto",
       "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
       "NONE": "Nessuno",
       "PARK": "Parco",
       "USER": "User",
-      "ATTRACTION": "Elemento",
+      "PARK_ITEM": "Elemento",
       "VIDEO": "Video"
     }
   },
@@ -1720,7 +1720,8 @@
       "information": "Informazioni",
       "locker": "Armadio deposito",
       "parking": "Parcheggio",
-      "station": "Stazione"
+      "station": "Stazione",
+      "cinema": "Cinema 4D"
     }
   },
   "parkItems": {

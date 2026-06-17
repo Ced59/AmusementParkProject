@@ -10,7 +10,7 @@ import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 const IMAGE_OWNER_TYPE_API_VALUES: ReadonlyMap<ImageOwnerType, number> = new Map<ImageOwnerType, number>([
   [ImageOwnerType.PARK, 1],
   [ImageOwnerType.USER, 2],
-  [ImageOwnerType.ATTRACTION, 3],
+  [ImageOwnerType.PARK_ITEM, 3],
   [ImageOwnerType.PARK_OPERATOR, 4],
   [ImageOwnerType.ATTRACTION_MANUFACTURER, 5],
   [ImageOwnerType.PARK_FOUNDER, 6],
@@ -21,7 +21,7 @@ const IMAGE_CATEGORY_API_VALUES: ReadonlyMap<ImageCategory, number> = new Map<Im
   [ImageCategory.AVATAR, 0],
   [ImageCategory.PARK_LOGO, 1],
   [ImageCategory.PARK, 2],
-  [ImageCategory.ATTRACTION, 3],
+  [ImageCategory.PARK_ITEM, 3],
   [ImageCategory.OPERATOR, 4],
   [ImageCategory.MANUFACTURER, 5],
   [ImageCategory.FOUNDER, 6],
@@ -67,7 +67,9 @@ const PARK_ITEM_TYPES_BY_API_VALUE: ReadonlyMap<number, ParkItem['type']> = new 
   [24, 'Locker'],
   [25, 'Parking'],
   [26, 'Transport'],
-  [27, 'Station']
+  [27, 'Station'],
+  [28, 'Other'],
+  [29, 'Cinema']
 ]);
 
 

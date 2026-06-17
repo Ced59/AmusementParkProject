@@ -21,7 +21,7 @@ internal static class ImagesHttpMappers
             ImageCategoryDto.AVATAR => ImageCategory.Avatar,
             ImageCategoryDto.PARK_LOGO => ImageCategory.ParkLogo,
             ImageCategoryDto.PARK => ImageCategory.Park,
-            ImageCategoryDto.ATTRACTION => ImageCategory.Attraction,
+            ImageCategoryDto.PARK_ITEM => ImageCategory.ParkItem,
             ImageCategoryDto.OPERATOR => ImageCategory.Operator,
             ImageCategoryDto.MANUFACTURER => ImageCategory.Manufacturer,
             ImageCategoryDto.FOUNDER => ImageCategory.Founder,
@@ -36,7 +36,7 @@ internal static class ImagesHttpMappers
         {
             ImageOwnerTypeDto.PARK => ImageOwnerType.Park,
             ImageOwnerTypeDto.USER => ImageOwnerType.User,
-            ImageOwnerTypeDto.ATTRACTION => ImageOwnerType.Attraction,
+            ImageOwnerTypeDto.PARK_ITEM => ImageOwnerType.ParkItem,
             ImageOwnerTypeDto.PARK_OPERATOR => ImageOwnerType.ParkOperator,
             ImageOwnerTypeDto.ATTRACTION_MANUFACTURER => ImageOwnerType.AttractionManufacturer,
             ImageOwnerTypeDto.PARK_FOUNDER => ImageOwnerType.ParkFounder,
@@ -55,6 +55,40 @@ internal static class ImagesHttpMappers
         return value.HasValue ? value.Value.ToDomain() : null;
     }
 
+    public static bool TryParseImageCategoryDto(string value, out ImageCategoryDto category)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            category = ImageCategoryDto.PARK;
+            return false;
+        }
+
+        if (string.Equals(value.Trim(), "ATTRACTION", StringComparison.OrdinalIgnoreCase))
+        {
+            category = ImageCategoryDto.PARK_ITEM;
+            return true;
+        }
+
+        return Enum.TryParse(value, true, out category);
+    }
+
+    public static bool TryParseImageOwnerTypeDto(string value, out ImageOwnerTypeDto ownerType)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            ownerType = ImageOwnerTypeDto.NONE;
+            return false;
+        }
+
+        if (string.Equals(value.Trim(), "ATTRACTION", StringComparison.OrdinalIgnoreCase))
+        {
+            ownerType = ImageOwnerTypeDto.PARK_ITEM;
+            return true;
+        }
+
+        return Enum.TryParse(value, true, out ownerType);
+    }
+
     public static ImageBulkMetadataUpdate ToApplication(this BulkImageMetadataUpdateDto value)
     {
         return new ImageBulkMetadataUpdate(
@@ -71,12 +105,12 @@ internal static class ImagesHttpMappers
             ImageCategory.Avatar => ImageCategoryDto.AVATAR,
             ImageCategory.ParkLogo => ImageCategoryDto.PARK_LOGO,
             ImageCategory.Park => ImageCategoryDto.PARK,
-            ImageCategory.Attraction => ImageCategoryDto.ATTRACTION,
+            ImageCategory.ParkItem => ImageCategoryDto.PARK_ITEM,
             ImageCategory.Operator => ImageCategoryDto.OPERATOR,
             ImageCategory.Manufacturer => ImageCategoryDto.MANUFACTURER,
             ImageCategory.Founder => ImageCategoryDto.FOUNDER,
             ImageCategory.VideoThumbnail => ImageCategoryDto.VIDEO_THUMBNAIL,
-            _ => ImageCategoryDto.ATTRACTION,
+            _ => ImageCategoryDto.PARK,
         };
     }
 
@@ -86,7 +120,7 @@ internal static class ImagesHttpMappers
         {
             ImageOwnerType.Park => ImageOwnerTypeDto.PARK,
             ImageOwnerType.User => ImageOwnerTypeDto.USER,
-            ImageOwnerType.Attraction => ImageOwnerTypeDto.ATTRACTION,
+            ImageOwnerType.ParkItem => ImageOwnerTypeDto.PARK_ITEM,
             ImageOwnerType.ParkOperator => ImageOwnerTypeDto.PARK_OPERATOR,
             ImageOwnerType.AttractionManufacturer => ImageOwnerTypeDto.ATTRACTION_MANUFACTURER,
             ImageOwnerType.ParkFounder => ImageOwnerTypeDto.PARK_FOUNDER,

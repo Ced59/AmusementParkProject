@@ -47,7 +47,7 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Mock<IAttractionManufacturerRepository> attractionManufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = CreateImageRepository(
             CreateImage("image-park-1", ImageOwnerType.Park, "park-1", ImageCategory.Park),
-            CreateImage("image-item-1", ImageOwnerType.Attraction, "item-1", ImageCategory.Attraction));
+            CreateImage("image-item-1", ImageOwnerType.ParkItem, "item-1", ImageCategory.ParkItem));
         parkRepository
             .Setup(repository => repository.GetPageAsync(1, int.MaxValue, false, true, null, null, null, null, cancellationToken))
             .ReturnsAsync(new PagedResult<Park>(new[] { parentPark }, 1, int.MaxValue, 1));

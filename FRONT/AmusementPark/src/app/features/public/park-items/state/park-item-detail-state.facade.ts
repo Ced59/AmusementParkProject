@@ -127,7 +127,7 @@ export class ParkItemDetailStateFacade {
     }
 
     const useMinimalSsrData: boolean = this.ssrRuntimeService.shouldUseMinimalPublicData();
-    this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, item.id, ImageCategory.ATTRACTION, 1, 1, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.imagesApiService.getImages(ImageOwnerType.PARK_ITEM, item.id, ImageCategory.PARK_ITEM, 1, 1, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (photos: ImageDto[]) => {
         this.updateReadyData((current: ParkItemDetailSourceData) => ({
           ...current,

@@ -24,7 +24,7 @@ internal static class VideosHttpMappers
         return value switch
         {
             VideoOwnerTypeDto.PARK => VideoOwnerType.Park,
-            VideoOwnerTypeDto.ATTRACTION => VideoOwnerType.Attraction,
+            VideoOwnerTypeDto.PARK_ITEM => VideoOwnerType.ParkItem,
             _ => VideoOwnerType.None,
         };
     }
@@ -77,7 +77,7 @@ internal static class VideosHttpMappers
         return value switch
         {
             VideoOwnerType.Park => VideoOwnerTypeDto.PARK,
-            VideoOwnerType.Attraction => VideoOwnerTypeDto.ATTRACTION,
+            VideoOwnerType.ParkItem => VideoOwnerTypeDto.PARK_ITEM,
             _ => VideoOwnerTypeDto.NONE,
         };
     }

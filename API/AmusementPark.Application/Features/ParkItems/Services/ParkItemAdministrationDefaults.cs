@@ -61,6 +61,7 @@ public static class ParkItemAdministrationDefaults
                 or ParkItemType.WalkThrough
                 or ParkItemType.Playground
                 or ParkItemType.InteractiveExperience
+                or ParkItemType.Cinema
                 or ParkItemType.Game
                 or ParkItemType.MeetAndGreet
                 or ParkItemType.ObservationRide

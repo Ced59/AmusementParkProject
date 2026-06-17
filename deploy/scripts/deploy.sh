@@ -59,6 +59,27 @@ wait_for_service_healthy() {
   return 1
 }
 
+run_legacy_enum_migrations() {
+  local migration_script="./scripts/migrate-legacy-enums-1.10.0.js"
+  local mongo_database_name="${MONGO_DATABASE_NAME:-AmusementPark}"
+  local dry_run="${LEGACY_ENUM_MIGRATIONS_DRY_RUN:-false}"
+
+  if [ ! -f "${migration_script}" ]; then
+    echo "Missing legacy enum migration script: ${migration_script}" >&2
+    return 1
+  fi
+
+  echo "Running legacy enum MongoDB migrations..."
+  compose exec -T \
+    -e MONGO_APP_DATABASE="${mongo_database_name}" \
+    -e DRY_RUN="${dry_run}" \
+    mongodb mongosh --quiet \
+      --username "${MONGO_APP_USERNAME:?MONGO_APP_USERNAME is required}" \
+      --password "${MONGO_APP_PASSWORD:?MONGO_APP_PASSWORD is required}" \
+      --authenticationDatabase "${mongo_database_name}" \
+      "${mongo_database_name}" < "${migration_script}"
+}
+
 curl_with_retry() {
   local label="$1"
   local url="$2"
@@ -122,6 +143,14 @@ if ! compose up -d --remove-orphans; then
 fi
 
 compose ps
+
+wait_for_service_healthy mongodb 180
+
+if [ "${RUN_LEGACY_ENUM_MIGRATIONS:-true}" = "true" ]; then
+  run_legacy_enum_migrations
+else
+  echo "Legacy enum MongoDB migrations are disabled. Set RUN_LEGACY_ENUM_MIGRATIONS=true to enable them."
+fi
 
 wait_for_service_healthy api 180
 wait_for_service_healthy front 180

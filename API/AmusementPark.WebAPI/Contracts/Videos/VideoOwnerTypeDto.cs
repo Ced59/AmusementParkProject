@@ -7,5 +7,5 @@ public enum VideoOwnerTypeDto
 {
     NONE = 0,
     PARK = 1,
-    ATTRACTION = 2,
+    PARK_ITEM = 2,
 }

@@ -171,7 +171,7 @@ public sealed class VideoRepository : IVideoRepository
 
         if (criteria.OwnerType.HasValue)
         {
-            filter &= builder.Eq(static document => document.OwnerType, criteria.OwnerType.Value);
+            filter &= BuildOwnerTypeFilter(builder, criteria.OwnerType.Value);
         }
 
         if (!string.IsNullOrWhiteSpace(criteria.OwnerId))
@@ -215,6 +215,14 @@ public sealed class VideoRepository : IVideoRepository
         }
 
         return filter;
+    }
+
+    private static FilterDefinition<VideoDocument> BuildOwnerTypeFilter(FilterDefinitionBuilder<VideoDocument> builder, VideoOwnerType ownerType)
+    {
+        FilterDefinition<VideoDocument> currentFilter = builder.Eq(static document => document.OwnerType, ownerType);
+        return ownerType == VideoOwnerType.ParkItem
+            ? builder.Or(currentFilter, builder.Eq("ownerType", "Attraction"))
+            : currentFilter;
     }
 
     private static SortDefinition<VideoDocument> BuildSort(VideoSearchCriteria criteria)

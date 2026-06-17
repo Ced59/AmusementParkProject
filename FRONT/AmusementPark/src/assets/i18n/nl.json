@@ -1208,14 +1208,14 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Parklogo",
       "PARK": "Parkfoto",
-      "ATTRACTION": "Item foto",
+      "PARK_ITEM": "Item foto",
       "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
       "NONE": "Geen",
       "PARK": "Park",
       "USER": "Gebruiker",
-      "ATTRACTION": "Element",
+      "PARK_ITEM": "Element",
       "VIDEO": "Video"
     }
   },
@@ -1720,7 +1720,8 @@
       "information": "Informatie",
       "locker": "Kluisje",
       "parking": "Parking",
-      "station": "Station"
+      "station": "Station",
+      "cinema": "4D-bioscopen"
     }
   },
   "parkItems": {

@@ -179,7 +179,7 @@ export class ParkItemVideosStateFacade {
     return {
       page,
       size: ParkItemVideosStateFacade.PageSize,
-      ownerType: VideoOwnerType.ATTRACTION,
+      ownerType: VideoOwnerType.PARK_ITEM,
       ownerId: itemId,
       type: filters.type,
       tagId: filters.tagId,

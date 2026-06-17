@@ -10,6 +10,7 @@ export type ParkItemType =
   | 'WalkThrough'
   | 'Playground'
   | 'InteractiveExperience'
+  | 'Cinema'
   | 'ObservationRide'
   | 'AnimalExhibit'
   | 'Restaurant'

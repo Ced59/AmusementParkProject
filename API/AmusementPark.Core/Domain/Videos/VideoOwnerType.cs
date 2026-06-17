@@ -4,5 +4,7 @@ public enum VideoOwnerType
 {
     None = 0,
     Park = 1,
-    Attraction = 2,
+    ParkItem = 2,
+    [Obsolete("Use ParkItem.")]
+    Attraction = ParkItem,
 }
