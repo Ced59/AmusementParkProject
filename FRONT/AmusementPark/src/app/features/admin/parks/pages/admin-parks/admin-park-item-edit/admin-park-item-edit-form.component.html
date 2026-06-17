@@ -97,6 +97,7 @@
               [isSaving]="isSaving"
               (generalMapPositionChange)="generalMapPositionChange.emit($event)"
               (resetGeneralLocationToPark)="resetGeneralLocationToPark.emit()"
+              (parkOptionsRequested)="parkOptionsRequested.emit()"
               (parkSelectionChange)="parkSelectionChange.emit($event)"
               (saveSection)="saveSection.emit()">
             </app-admin-park-item-general-tab>

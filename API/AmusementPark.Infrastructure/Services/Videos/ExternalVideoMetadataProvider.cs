@@ -199,42 +199,109 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
     private static bool TryBuildYouTubeReference(Uri uri, string host, out VideoUrlReference? reference)
     {
         reference = null;
-        bool isYouTubeHost = host == "youtu.be" ||
-                             host == "youtube.com" ||
-                             host == "www.youtube.com" ||
-                             host == "m.youtube.com" ||
-                             host == "music.youtube.com";
-        if (!isYouTubeHost)
+        if (!IsYouTubeHost(host))
         {
             return false;
         }
 
-        string? videoId = null;
-        if (host == "youtu.be")
-        {
-            videoId = FirstPathSegment(uri);
-        }
-        else if (uri.AbsolutePath.Equals("/watch", StringComparison.OrdinalIgnoreCase))
-        {
-            videoId = ReadQueryValue(uri.Query, "v");
-        }
-        else if (uri.AbsolutePath.StartsWith("/embed/", StringComparison.OrdinalIgnoreCase) ||
-                 uri.AbsolutePath.StartsWith("/shorts/", StringComparison.OrdinalIgnoreCase) ||
-                 uri.AbsolutePath.StartsWith("/live/", StringComparison.OrdinalIgnoreCase))
-        {
-            videoId = uri.AbsolutePath.Split('/', StringSplitOptions.RemoveEmptyEntries).Skip(1).FirstOrDefault();
-        }
-
+        string? videoId = TryExtractYouTubeVideoId(uri, host);
         if (string.IsNullOrWhiteSpace(videoId))
         {
             return false;
         }
 
-        videoId = videoId.Trim();
         string canonicalUrl = $"https://www.youtube.com/watch?v={Uri.EscapeDataString(videoId)}";
         string embedUrl = $"https://www.youtube.com/embed/{Uri.EscapeDataString(videoId)}";
         reference = new VideoUrlReference(VideoHostingProvider.YouTube, uri.AbsoluteUri, canonicalUrl, embedUrl, videoId);
         return true;
+    }
+
+    private static bool IsYouTubeHost(string host)
+    {
+        return host == "youtu.be" ||
+               host == "youtube.com" ||
+               host.EndsWith(".youtube.com", StringComparison.Ordinal) ||
+               host == "youtube-nocookie.com" ||
+               host.EndsWith(".youtube-nocookie.com", StringComparison.Ordinal);
+    }
+
+    private static string? TryExtractYouTubeVideoId(Uri uri, string host)
+    {
+        if (host == "youtu.be")
+        {
+            return NormalizeYouTubeVideoId(FirstPathSegment(uri));
+        }
+
+        string? directVideoId = TryExtractDirectYouTubeVideoId(uri, host);
+        if (!string.IsNullOrWhiteSpace(directVideoId))
+        {
+            return directVideoId;
+        }
+
+        if (uri.AbsolutePath.Equals("/attribution_link", StringComparison.OrdinalIgnoreCase))
+        {
+            return TryExtractYouTubeVideoIdFromAttributionLink(uri);
+        }
+
+        return null;
+    }
+
+    private static string? TryExtractDirectYouTubeVideoId(Uri uri, string host)
+    {
+        if (host == "youtu.be")
+        {
+            return NormalizeYouTubeVideoId(FirstPathSegment(uri));
+        }
+
+        if (uri.AbsolutePath.Equals("/watch", StringComparison.OrdinalIgnoreCase))
+        {
+            return NormalizeYouTubeVideoId(ReadQueryValue(uri.Query, "v"));
+        }
+
+        string[] pathSegments = uri.AbsolutePath.Split('/', StringSplitOptions.RemoveEmptyEntries);
+        if (pathSegments.Length >= 2 && IsYouTubeVideoPathPrefix(pathSegments[0]))
+        {
+            return NormalizeYouTubeVideoId(pathSegments[1]);
+        }
+
+        return null;
+    }
+
+    private static bool IsYouTubeVideoPathPrefix(string pathSegment)
+    {
+        return string.Equals(pathSegment, "embed", StringComparison.OrdinalIgnoreCase) ||
+               string.Equals(pathSegment, "shorts", StringComparison.OrdinalIgnoreCase) ||
+               string.Equals(pathSegment, "live", StringComparison.OrdinalIgnoreCase) ||
+               string.Equals(pathSegment, "v", StringComparison.OrdinalIgnoreCase) ||
+               string.Equals(pathSegment, "e", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static string? TryExtractYouTubeVideoIdFromAttributionLink(Uri uri)
+    {
+        string? nestedUrl = ReadQueryValue(uri.Query, "u");
+        if (string.IsNullOrWhiteSpace(nestedUrl))
+        {
+            return null;
+        }
+
+        string normalizedNestedUrl = nestedUrl.Trim();
+        if (normalizedNestedUrl.StartsWith("/", StringComparison.Ordinal))
+        {
+            normalizedNestedUrl = $"https://www.youtube.com{normalizedNestedUrl}";
+        }
+
+        if (!Uri.TryCreate(normalizedNestedUrl, UriKind.Absolute, out Uri? nestedUri))
+        {
+            return null;
+        }
+
+        string nestedHost = nestedUri.Host.ToLowerInvariant();
+        if (!IsYouTubeHost(nestedHost))
+        {
+            return null;
+        }
+
+        return TryExtractDirectYouTubeVideoId(nestedUri, nestedHost);
     }
 
     private static bool TryBuildDailymotionReference(Uri uri, string host, out VideoUrlReference? reference)
@@ -308,6 +375,19 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
     private static string? FirstPathSegment(Uri uri)
     {
         return uri.AbsolutePath.Split('/', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
+    }
+
+    private static string? NormalizeYouTubeVideoId(string? videoId)
+    {
+        string normalizedVideoId = videoId?.Trim() ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(normalizedVideoId))
+        {
+            return null;
+        }
+
+        return normalizedVideoId.All(static character => char.IsLetterOrDigit(character) || character == '-' || character == '_')
+            ? normalizedVideoId
+            : null;
     }
 
     private static string? ReadQueryValue(string query, string key)

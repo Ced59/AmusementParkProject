@@ -49,7 +49,11 @@ class FakeParkItemsPort implements AdminParkItemEditStateParkItemsApiServicePort
 
 class FakeParksPort implements AdminParkItemEditStateParksApiServicePort {
   public calls: number = 0;
+  public readonly pageCalls: Array<{ page: number; size: number }> = [];
   public getByIdCalls: string[] = [];
+  public readonly rowsByPage: Map<number, Park[]> = new Map<number, Park[]>();
+  public totalItems: number = 1;
+  public totalPages: number = 1;
 
   getParkById(parkId: string): Observable<Park> {
     this.getByIdCalls.push(parkId);
@@ -66,8 +70,9 @@ class FakeParksPort implements AdminParkItemEditStateParksApiServicePort {
 
   getParksPaginated(page: number = 1, size: number = 100): Observable<ParksApiResponse> {
     this.calls += 1;
+    this.pageCalls.push({ page, size });
     return of({
-      data: [
+      data: this.rowsByPage.get(page) ?? [
         {
           id: 'park-1',
           name: 'Walibi',
@@ -81,8 +86,8 @@ class FakeParksPort implements AdminParkItemEditStateParksApiServicePort {
       pagination: {
         currentPage: page,
         itemsPerPage: size,
-        totalItems: 1,
-        totalPages: 1
+        totalItems: this.totalItems,
+        totalPages: this.totalPages
       }
     });
   }
@@ -128,6 +133,25 @@ describe('AdminParkItemEditStateFacade', () => {
     await facade.loadParkOptions();
 
     expect(parksPort.calls).toBe(1);
+  });
+
+  it('loads full park options one page at a time', async () => {
+    parksPort.rowsByPage.set(1, [
+      { id: 'park-1', name: 'Walibi', city: 'Wavre', countryCode: 'BE', latitude: 50.7, longitude: 4.6, descriptions: [] } as Park
+    ]);
+    parksPort.rowsByPage.set(2, [
+      { id: 'park-2', name: 'Phantasialand', city: 'Bruhl', countryCode: 'DE', latitude: 50.8, longitude: 6.8, descriptions: [] } as Park
+    ]);
+    parksPort.totalItems = 2;
+    parksPort.totalPages = 2;
+
+    await facade.loadParkOptions();
+
+    expect(parksPort.pageCalls).toEqual([
+      { page: 1, size: 100 },
+      { page: 2, size: 100 }
+    ]);
+    expect(facade.parkOptions().map((option: { id: string }) => option.id).sort()).toEqual(['park-1', 'park-2']);
   });
 
   it('loads sequential navigation with the backend-supported page size', async () => {

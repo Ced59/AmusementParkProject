@@ -29,6 +29,7 @@ export class AdminParkItemEditStateFacade {
   private static readonly parkOptionsCacheTtlMs: number = 5 * 60 * 1000;
   private static readonly navigationCacheTtlMs: number = 2 * 60 * 1000;
   private static readonly pageSize: number = 100;
+  private static readonly interPageRequestDelayMs: number = 50;
   private static parkOptionsCache: { expiresAt: number; options: EntitySelectOption[] } | null = null;
   private static readonly parkItemNavigationCache: Map<string, ParkItemNavigationCacheEntry> = new Map<string, ParkItemNavigationCacheEntry>();
 
@@ -104,13 +105,9 @@ export class AdminParkItemEditStateFacade {
       parks.push(...(firstResponse.data ?? []));
 
       const totalPages: number = firstResponse.pagination?.totalPages ?? 1;
-      const remainingPageRequests: Array<Promise<ParksApiResponse>> = [];
       for (let currentPage: number = 2; currentPage <= totalPages; currentPage += 1) {
-        remainingPageRequests.push(firstValueFrom(this.parksApiService.getParksPaginated(currentPage, pageSize)));
-      }
-
-      const remainingResponses: ParksApiResponse[] = await Promise.all(remainingPageRequests);
-      for (const pageResponse of remainingResponses) {
+        await this.waitBeforeNextPagedRequest();
+        const pageResponse: ParksApiResponse = await firstValueFrom(this.parksApiService.getParksPaginated(currentPage, pageSize));
         parks.push(...(pageResponse.data ?? []));
       }
 
@@ -209,13 +206,9 @@ export class AdminParkItemEditStateFacade {
     rows.push(...(firstResponse.data ?? []));
 
     const totalPages: number = firstResponse.pagination?.totalPages ?? 1;
-    const remainingPageRequests: Array<Promise<ApiResponse<ParkItemAdminRow>>> = [];
     for (let currentPage: number = 2; currentPage <= totalPages; currentPage += 1) {
-      remainingPageRequests.push(firstValueFrom(this.parkItemsApiService.getParkItemsPaginated(currentPage, pageSize, parkId)));
-    }
-
-    const remainingResponses: Array<ApiResponse<ParkItemAdminRow>> = await Promise.all(remainingPageRequests);
-    for (const pageResponse of remainingResponses) {
+      await this.waitBeforeNextPagedRequest();
+      const pageResponse: ApiResponse<ParkItemAdminRow> = await firstValueFrom(this.parkItemsApiService.getParkItemsPaginated(currentPage, pageSize, parkId));
       rows.push(...(pageResponse.data ?? []));
     }
 
@@ -226,6 +219,12 @@ export class AdminParkItemEditStateFacade {
     });
 
     return normalizedRows;
+  }
+
+  private async waitBeforeNextPagedRequest(): Promise<void> {
+    await new Promise<void>((resolve: () => void): void => {
+      setTimeout(resolve, AdminParkItemEditStateFacade.interPageRequestDelayMs);
+    });
   }
 
   private buildSequentialNavigationState(rows: ParkItemAdminRow[], currentItemId: string): AdminParkItemSequentialNavigationState {

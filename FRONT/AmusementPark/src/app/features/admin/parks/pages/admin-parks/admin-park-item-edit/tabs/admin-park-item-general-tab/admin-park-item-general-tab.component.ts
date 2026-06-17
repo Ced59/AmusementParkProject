@@ -41,6 +41,7 @@ export class AdminParkItemGeneralTabComponent {
 
   @Output() generalMapPositionChange: EventEmitter<{ lat: number; lng: number }> = new EventEmitter<{ lat: number; lng: number }>();
   @Output() resetGeneralLocationToPark: EventEmitter<void> = new EventEmitter<void>();
+  @Output() parkOptionsRequested: EventEmitter<void> = new EventEmitter<void>();
   @Output() parkSelectionChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() saveSection: EventEmitter<void> = new EventEmitter<void>();
 
