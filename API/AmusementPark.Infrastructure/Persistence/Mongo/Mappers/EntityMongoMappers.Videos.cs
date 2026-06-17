@@ -117,6 +117,7 @@ internal static partial class EntityMongoMappers
             ProviderDescription = document.ProviderDescription,
             ProviderChannelId = document.ProviderChannelId,
             ProviderChannelUrl = document.ProviderChannelUrl,
+            ProviderViewCount = document.ProviderViewCount,
         };
     }
 
@@ -130,6 +131,7 @@ internal static partial class EntityMongoMappers
             ProviderDescription = entity.ProviderDescription,
             ProviderChannelId = entity.ProviderChannelId,
             ProviderChannelUrl = entity.ProviderChannelUrl,
+            ProviderViewCount = entity.ProviderViewCount,
         };
     }
 
@@ -190,6 +192,7 @@ internal static partial class EntityMongoMappers
             ProviderDescription = ReadOptionalString(metadataDocument, "providerDescription"),
             ProviderChannelId = ReadOptionalString(metadataDocument, "providerChannelId"),
             ProviderChannelUrl = ReadOptionalString(metadataDocument, "providerChannelUrl"),
+            ProviderViewCount = ReadLong(metadataDocument, "providerViewCount"),
         };
     }
 

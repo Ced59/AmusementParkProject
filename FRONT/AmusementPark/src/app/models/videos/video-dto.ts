@@ -38,4 +38,5 @@ export interface VideoExternalMetadataDto {
   providerDescription?: string | null;
   providerChannelId?: string | null;
   providerChannelUrl?: string | null;
+  providerViewCount?: number | null;
 }

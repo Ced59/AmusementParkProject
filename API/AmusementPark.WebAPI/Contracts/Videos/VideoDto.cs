@@ -68,4 +68,6 @@ public sealed class VideoExternalMetadataDto
     public string? ProviderChannelId { get; set; }
 
     public string? ProviderChannelUrl { get; set; }
+
+    public long? ProviderViewCount { get; set; }
 }

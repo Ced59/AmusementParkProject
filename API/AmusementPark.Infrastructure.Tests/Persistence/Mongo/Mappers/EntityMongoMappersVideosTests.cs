@@ -35,6 +35,7 @@ public sealed class EntityMongoMappersVideosTests
                 {
                     { "providerChannelId", "channel-1" },
                     { "providerChannelUrl", "https://www.youtube.com/channel/channel-1" },
+                    { "providerViewCount", 123456L },
                     { "fetchedAtUtc", new BsonDateTime(now) },
                 }
             },
@@ -52,6 +53,7 @@ public sealed class EntityMongoMappersVideosTests
         Assert.Equal(new[] { "fr", "en" }, video.LanguageCodes);
         Assert.Equal(TimeSpan.FromSeconds(123), video.Duration);
         Assert.Equal("channel-1", video.ExternalMetadata.ProviderChannelId);
+        Assert.Equal(123456L, video.ExternalMetadata.ProviderViewCount);
         Assert.Single(video.Titles);
     }
 

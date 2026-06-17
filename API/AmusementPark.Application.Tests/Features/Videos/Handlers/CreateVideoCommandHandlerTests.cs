@@ -47,6 +47,7 @@ public sealed class CreateVideoCommandHandlerTests
             CreatorName = "Creator",
             ThumbnailUrl = "https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg",
             MetadataSource = "youtube-data-api",
+            ViewCount = 123456,
         };
 
         Mock<IVideoRepository> repository = new Mock<IVideoRepository>(MockBehavior.Strict);
@@ -115,6 +116,7 @@ public sealed class CreateVideoCommandHandlerTests
             video.OwnerType == VideoOwnerType.Park &&
             video.OwnerId == "park-1" &&
             video.Type == VideoType.OnRide &&
+            video.ExternalMetadata.ProviderViewCount == 123456 &&
             video.LanguageCodes.SequenceEqual(new[] { "fr", "en" })), It.IsAny<CancellationToken>()), Times.Once);
         publicSeoUpdateNotifier.VerifyAll();
     }

@@ -1129,6 +1129,7 @@
       "inspector": "Video inspector",
       "owner": "Owner",
       "externalId": "External ID",
+      "providerViewCount": "Provider views",
       "thumbnailImageId": "Thumbnail image",
       "saveVideo": "Save video",
       "deleteVideo": "Delete",
@@ -1445,6 +1446,7 @@
   "videos": {
     "list": {
       "count": "{{count}} videos",
+      "views": "{{count}} views",
       "loadMore": "Load more videos",
       "loadingMore": "Loading..."
     },
@@ -1484,6 +1486,14 @@
       "previous": "Previous video",
       "next": "Next video",
       "backToVideos": "Back to videos",
+      "creator": "Creator",
+      "category": "Category",
+      "provider": "Provider",
+      "duration": "Duration",
+      "publishedAt": "Published",
+      "viewCount": "Views",
+      "views": "{{count}} views",
+      "tagsAndCategories": "Categories and tags",
       "openExternal": "Open video",
       "openCreator": "Open creator",
       "openProvider": "Open provider page"

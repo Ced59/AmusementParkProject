@@ -18,4 +18,5 @@ export interface ResolvedVideoMetadataDto {
   fetchedAtUtc?: string | null;
   providerChannelId?: string | null;
   providerChannelUrl?: string | null;
+  viewCount?: number | null;
 }

@@ -31,6 +31,7 @@ export interface PublicVideoCardViewModel {
   type: VideoType;
   typeLabelKey: string;
   durationLabel: string | null;
+  viewCountLabel: string | null;
   publishedAtLabel: string | null;
   thumbnailPathOrUrl: string | null;
   detailLink: string[] | null;

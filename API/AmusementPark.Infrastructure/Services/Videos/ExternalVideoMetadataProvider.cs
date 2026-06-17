@@ -67,7 +67,7 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
         try
         {
             HttpClient client = this.httpClientFactory.CreateClient(HttpClientName);
-            string requestUrl = $"{this.settings.YouTubeApiBaseUrl}?part=snippet,contentDetails&id={Uri.EscapeDataString(reference.ExternalId)}&key={Uri.EscapeDataString(this.settings.YouTubeApiKey)}";
+            string requestUrl = $"{this.settings.YouTubeApiBaseUrl}?part=snippet,contentDetails,statistics&id={Uri.EscapeDataString(reference.ExternalId)}&key={Uri.EscapeDataString(this.settings.YouTubeApiKey)}";
             YouTubeVideoListResponse? response = await client.GetFromJsonAsync<YouTubeVideoListResponse>(requestUrl, JsonOptions, cancellationToken);
             YouTubeVideoItem? item = response?.Items?.FirstOrDefault();
             if (item is null)
@@ -98,6 +98,7 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
                 FetchedAtUtc = DateTime.UtcNow,
                 ProviderChannelId = snippet?.ChannelId,
                 ProviderChannelUrl = string.IsNullOrWhiteSpace(snippet?.ChannelId) ? null : $"https://www.youtube.com/channel/{snippet.ChannelId}",
+                ViewCount = TryParseNonNegativeLong(item.Statistics?.ViewCount),
             };
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -428,6 +429,16 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
         }
     }
 
+    private static long? TryParseNonNegativeLong(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        return long.TryParse(value.Trim(), out long parsed) && parsed >= 0 ? parsed : null;
+    }
+
     private static string? SelectBestThumbnailUrl(IReadOnlyDictionary<string, YouTubeThumbnail>? thumbnails)
     {
         return thumbnails?
@@ -473,6 +484,9 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
 
         [JsonPropertyName("contentDetails")]
         public YouTubeContentDetails? ContentDetails { get; init; }
+
+        [JsonPropertyName("statistics")]
+        public YouTubeStatistics? Statistics { get; init; }
     }
 
     private sealed class YouTubeSnippet
@@ -506,6 +520,12 @@ public sealed class ExternalVideoMetadataProvider : IVideoMetadataProvider
     {
         [JsonPropertyName("duration")]
         public string? Duration { get; init; }
+    }
+
+    private sealed class YouTubeStatistics
+    {
+        [JsonPropertyName("viewCount")]
+        public string? ViewCount { get; init; }
     }
 
     private sealed class YouTubeThumbnail

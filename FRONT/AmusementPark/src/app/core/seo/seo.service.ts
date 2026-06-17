@@ -982,6 +982,7 @@ export class SeoService {
     const duration: string | null = this.formatVideoDuration(video.durationSeconds);
     const embedUrl: string | null = this.normalizeHttpsUrl(video.embedUrl);
     const contentUrl: string | null = this.normalizeHttpsUrl(video.canonicalUrl) ?? this.normalizeHttpsUrl(video.originalUrl);
+    const viewCount: number | null = this.resolveVideoViewCount(video);
 
     if (duration) {
       videoObject['duration'] = duration;
@@ -993,6 +994,14 @@ export class SeoService {
 
     if (contentUrl) {
       videoObject['contentUrl'] = contentUrl;
+    }
+
+    if (viewCount !== null) {
+      videoObject['interactionStatistic'] = {
+        '@type': 'InteractionCounter',
+        interactionType: { '@type': 'WatchAction' },
+        userInteractionCount: viewCount
+      };
     }
 
     return videoObject;
@@ -1148,6 +1157,16 @@ export class SeoService {
     }
 
     return parts.join('');
+  }
+
+  private resolveVideoViewCount(video: VideoDto): number | null {
+    const viewCount: number | null | undefined = video.externalMetadata?.providerViewCount;
+
+    if (viewCount === null || viewCount === undefined || !Number.isFinite(viewCount) || viewCount < 0) {
+      return null;
+    }
+
+    return Math.round(viewCount);
   }
 
   private normalizeHttpsUrl(value: string | null | undefined): string | null {

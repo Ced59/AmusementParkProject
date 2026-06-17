@@ -70,6 +70,7 @@
       "inspector": "Inspektor filmu",
       "owner": "Właściciel",
       "externalId": "ID zewnętrzne",
+      "providerViewCount": "Provider views",
       "thumbnailImageId": "Obraz miniatury",
       "saveVideo": "Zapisz film",
       "deleteVideo": "Usuń",

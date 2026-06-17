@@ -113,6 +113,10 @@ public sealed class VideoExternalMetadataDocument
     [BsonElement("providerChannelUrl")]
     [BsonIgnoreIfNull]
     public string? ProviderChannelUrl { get; set; }
+
+    [BsonElement("providerViewCount")]
+    [BsonIgnoreIfNull]
+    public long? ProviderViewCount { get; set; }
 }
 
 [BsonIgnoreExtraElements]

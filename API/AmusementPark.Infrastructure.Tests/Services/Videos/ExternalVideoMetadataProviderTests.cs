@@ -47,7 +47,7 @@ public sealed class ExternalVideoMetadataProviderTests
     }
 
     [Fact]
-    public async Task ResolveAsync_WhenYouTubeApiKeyIsConfigured_ShouldReadStableMetadataWithoutCommentsOrStatistics()
+    public async Task ResolveAsync_WhenYouTubeApiKeyIsConfigured_ShouldReadMetadataAndViewCountWithoutComments()
     {
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler("""
             {
@@ -67,6 +67,9 @@ public sealed class ExternalVideoMetadataProviderTests
                   },
                   "contentDetails": {
                     "duration": "PT2M3S"
+                  },
+                  "statistics": {
+                    "viewCount": "123456"
                   }
                 }
               ]
@@ -93,11 +96,11 @@ public sealed class ExternalVideoMetadataProviderTests
         Assert.Equal("https://i.ytimg.com/vi/abcdefghijk/maxresdefault.jpg", metadata.ThumbnailUrl);
         Assert.Equal("fr", metadata.DetectedLanguageCode);
         Assert.Equal(TimeSpan.FromSeconds(123), metadata.Duration);
+        Assert.Equal(123456L, metadata.ViewCount);
         Assert.Equal("youtube-data-api", metadata.MetadataSource);
         Assert.NotNull(handler.LastRequestUri);
-        Assert.Contains("part=snippet,contentDetails", handler.LastRequestUri!.Query);
+        Assert.Contains("part=snippet,contentDetails,statistics", handler.LastRequestUri!.Query);
         Assert.DoesNotContain("comment", handler.LastRequestUri.Query, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("statistics", handler.LastRequestUri.Query, StringComparison.OrdinalIgnoreCase);
     }
 
     private sealed class SingleClientFactory : IHttpClientFactory
