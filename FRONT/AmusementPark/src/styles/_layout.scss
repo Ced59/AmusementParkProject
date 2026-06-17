@@ -402,8 +402,13 @@
 
   .app-admin-layout__nav {
     flex-direction: row;
+    max-width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
     padding-bottom: 0.85rem;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-inline: contain;
+    touch-action: pan-x;
   }
 
   .app-admin-layout__nav a {

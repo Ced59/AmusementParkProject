@@ -14,7 +14,7 @@
 
       <span class="admin-video-create-panel__owner">
         {{ ('admin.videos.ownerTypes.' + ownerType) | translate }}
-        ·
+        &middot;
         {{ ownerName || ownerId }}
       </span>
 
@@ -34,7 +34,7 @@
     <div class="admin-video-create-panel__grid">
       <label class="admin-video-create-panel__field admin-video-create-panel__url-field">
         <span>{{ 'admin.videos.url' | translate }}</span>
-        <input [(ngModel)]="draft.originalUrl" [ngModelOptions]="{ standalone: true }" [placeholder]="'admin.videos.urlPlaceholder' | translate">
+        <input type="url" inputmode="url" autocomplete="off" [(ngModel)]="draft.originalUrl" [ngModelOptions]="{ standalone: true }" [placeholder]="'admin.videos.urlPlaceholder' | translate">
       </label>
 
       <label class="admin-video-create-panel__field">

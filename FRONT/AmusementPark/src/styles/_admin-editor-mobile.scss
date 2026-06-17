@@ -489,6 +489,9 @@
   overflow-x: auto !important;
   overflow-y: hidden;
   scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
+  touch-action: pan-x;
 }
 
 .admin-shell .p-tablist-tab-list {
