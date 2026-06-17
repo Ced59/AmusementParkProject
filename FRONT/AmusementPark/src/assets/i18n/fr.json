@@ -1208,13 +1208,15 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Logo de parc",
       "PARK": "Photo de parc",
-      "ATTRACTION": "Photo d’élément"
+      "ATTRACTION": "Photo d’élément",
+      "VIDEO_THUMBNAIL": "Miniature video"
     },
     "ownerTypes": {
       "NONE": "Aucun",
       "PARK": "Parc",
       "USER": "Utilisateur",
-      "ATTRACTION": "Élément"
+      "ATTRACTION": "Élément",
+      "VIDEO": "Video"
     }
   },
   "languageModal": {
@@ -1335,6 +1337,53 @@
   },
   "validation": {
     "required": "Ce champ est obligatoire"
+  },
+  "videos": {
+    "list": {
+      "count": "{{count}} videos",
+      "loadMore": "Charger plus de videos",
+      "loadingMore": "Chargement..."
+    },
+    "filters": {
+      "type": "Type de video",
+      "allTypes": "Tous les types",
+      "tag": "Tag",
+      "allTags": "Tous les tags",
+      "creator": "Createur",
+      "creatorPlaceholder": "Filtrer par nom de createur",
+      "applyCreator": "Appliquer",
+      "clear": "Effacer les filtres"
+    },
+    "providers": {
+      "youtube": "YouTube",
+      "dailymotion": "Dailymotion",
+      "vimeo": "Vimeo",
+      "other": "Video externe"
+    },
+    "types": {
+      "onRide": "Onride",
+      "offRide": "Offride",
+      "walkthrough": "Walkthrough",
+      "advertisement": "Publicite",
+      "documentary": "Documentaire",
+      "review": "Avis",
+      "news": "Actualite",
+      "event": "Evenement",
+      "interview": "Interview",
+      "other": "Autre"
+    },
+    "watch": {
+      "loadingTitle": "Chargement de la video",
+      "loadingMessage": "La page video est en cours de chargement.",
+      "errorTitle": "Video indisponible",
+      "errorMessage": "La video demandee n'a pas pu etre chargee.",
+      "previous": "Video precedente",
+      "next": "Video suivante",
+      "backToVideos": "Retour aux videos",
+      "openExternal": "Ouvrir la video",
+      "openCreator": "Ouvrir le createur",
+      "openProvider": "Ouvrir la page source"
+    }
   },
   "aboutPage": {
     "seo": {
@@ -1887,6 +1936,20 @@
       "removed": "Supprimé / démonté",
       "planned": "Prévu",
       "unknown": "Inconnu"
+    },
+    "videosPage": {
+      "kicker": "Videos de l'element",
+      "title": "Videos de {{name}}",
+      "subtitle": "Regardez les videos de {{name}} a {{park}} : onrides, offrides, avis et medias officiels.",
+      "loadingTitle": "Chargement des videos",
+      "loadingMessage": "Preparation des videos de l'element.",
+      "errorTitle": "Videos indisponibles",
+      "errorMessage": "Impossible de charger les videos de cet element pour le moment.",
+      "backToItem": "Retour a {{name}}",
+      "backToItems": "Tous les elements de {{name}}",
+      "backToPark": "Retour a {{name}}",
+      "emptyTitle": "Aucune video publiee",
+      "emptyMessage": "Aucune video publiee n'est encore disponible pour {{name}}."
     }
   },
   "parkVisitor": {
@@ -2209,6 +2272,18 @@
       "itemsTitle": "Éléments dans cette zone",
       "emptyItemsTitle": "Aucun élément dans cette zone",
       "emptyItemsMessage": "Aucun élément public n’est actuellement rattaché à cette zone."
+    },
+    "videosPage": {
+      "kicker": "Videos du parc",
+      "title": "Videos de {{name}}",
+      "subtitle": "Regardez les videos de {{name}} : onrides, offrides, clips officiels et contenus createurs.",
+      "loadingTitle": "Chargement des videos",
+      "loadingMessage": "Preparation des videos du parc.",
+      "errorTitle": "Videos indisponibles",
+      "errorMessage": "Impossible de charger les videos de ce parc pour le moment.",
+      "backToPark": "Retour a {{name}}",
+      "emptyTitle": "Aucune video publiee",
+      "emptyMessage": "Aucune video publiee n'est encore disponible pour {{name}}."
     }
   },
   "privacyPage": {

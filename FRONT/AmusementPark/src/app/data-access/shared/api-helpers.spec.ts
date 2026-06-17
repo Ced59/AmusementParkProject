@@ -115,6 +115,7 @@ describe('api helpers', () => {
     expect(toImageOwnerTypeApiValue(ImageOwnerType.PARK)).toBe(1);
     expect(toImageOwnerTypeApiValue(ImageOwnerType.USER)).toBe(2);
     expect(toImageOwnerTypeApiValue(ImageOwnerType.PARK_FOUNDER)).toBe(6);
+    expect(toImageOwnerTypeApiValue(ImageOwnerType.VIDEO)).toBe(7);
     expect(toImageOwnerTypeApiValue('unknown' as unknown as ImageOwnerType)).toBe(0);
   });
 
@@ -122,6 +123,7 @@ describe('api helpers', () => {
     expect(toImageCategoryApiValue(ImageCategory.AVATAR)).toBe(0);
     expect(toImageCategoryApiValue(ImageCategory.PARK_LOGO)).toBe(1);
     expect(toImageCategoryApiValue(ImageCategory.FOUNDER)).toBe(6);
+    expect(toImageCategoryApiValue(ImageCategory.VIDEO_THUMBNAIL)).toBe(7);
     expect(toImageCategoryApiValue('unknown' as unknown as ImageCategory)).toBe(2);
   });
 });

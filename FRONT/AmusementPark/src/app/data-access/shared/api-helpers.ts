@@ -13,7 +13,8 @@ const IMAGE_OWNER_TYPE_API_VALUES: ReadonlyMap<ImageOwnerType, number> = new Map
   [ImageOwnerType.ATTRACTION, 3],
   [ImageOwnerType.PARK_OPERATOR, 4],
   [ImageOwnerType.ATTRACTION_MANUFACTURER, 5],
-  [ImageOwnerType.PARK_FOUNDER, 6]
+  [ImageOwnerType.PARK_FOUNDER, 6],
+  [ImageOwnerType.VIDEO, 7]
 ]);
 
 const IMAGE_CATEGORY_API_VALUES: ReadonlyMap<ImageCategory, number> = new Map<ImageCategory, number>([
@@ -23,7 +24,8 @@ const IMAGE_CATEGORY_API_VALUES: ReadonlyMap<ImageCategory, number> = new Map<Im
   [ImageCategory.ATTRACTION, 3],
   [ImageCategory.OPERATOR, 4],
   [ImageCategory.MANUFACTURER, 5],
-  [ImageCategory.FOUNDER, 6]
+  [ImageCategory.FOUNDER, 6],
+  [ImageCategory.VIDEO_THUMBNAIL, 7]
 ]);
 
 const PARK_ITEM_CATEGORIES_BY_API_VALUE: ReadonlyMap<number, ParkItem['category']> = new Map<number, ParkItem['category']>([

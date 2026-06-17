@@ -1,0 +1,32 @@
+{
+  "parks": {
+    "videosPage": {
+      "kicker": "Videos du parc",
+      "title": "Videos de {{name}}",
+      "subtitle": "Regardez les videos de {{name}} : onrides, offrides, clips officiels et contenus createurs.",
+      "loadingTitle": "Chargement des videos",
+      "loadingMessage": "Preparation des videos du parc.",
+      "errorTitle": "Videos indisponibles",
+      "errorMessage": "Impossible de charger les videos de ce parc pour le moment.",
+      "backToPark": "Retour a {{name}}",
+      "emptyTitle": "Aucune video publiee",
+      "emptyMessage": "Aucune video publiee n'est encore disponible pour {{name}}."
+    }
+  },
+  "parkItems": {
+    "videosPage": {
+      "kicker": "Videos de l'element",
+      "title": "Videos de {{name}}",
+      "subtitle": "Regardez les videos de {{name}} a {{park}} : onrides, offrides, avis et medias officiels.",
+      "loadingTitle": "Chargement des videos",
+      "loadingMessage": "Preparation des videos de l'element.",
+      "errorTitle": "Videos indisponibles",
+      "errorMessage": "Impossible de charger les videos de cet element pour le moment.",
+      "backToItem": "Retour a {{name}}",
+      "backToItems": "Tous les elements de {{name}}",
+      "backToPark": "Retour a {{name}}",
+      "emptyTitle": "Aucune video publiee",
+      "emptyMessage": "Aucune video publiee n'est encore disponible pour {{name}}."
+    }
+  }
+}

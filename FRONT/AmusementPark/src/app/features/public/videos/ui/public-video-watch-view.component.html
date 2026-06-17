@@ -1,0 +1,130 @@
+<app-page-state
+  [state]="state"
+  [messages]="{
+    loadingTitleKey: loadingTitleKey,
+    loadingMessageKey: loadingMessageKey,
+    errorTitleKey: errorTitleKey,
+    errorMessageKey: errorMessageKey
+  }">
+  @if (video) {
+    <article class="public-video-watch public-page">
+      <header class="public-video-watch__header" appUiSurface="hero" appUiSurfacePadding="regular">
+        <div class="public-video-watch__headline">
+          <app-ui-kicker tone="sky" iconClass="pi pi-play-circle">
+            {{ video.typeLabelKey | translate }}
+          </app-ui-kicker>
+          <h1>{{ video.title }}</h1>
+          <div class="public-video-watch__meta">
+            <app-ui-chip tone="soft" iconClass="pi pi-video">
+              {{ video.providerLabelKey | translate }}
+            </app-ui-chip>
+            @if (video.creatorName) {
+              <app-ui-chip tone="gold" iconClass="pi pi-user">
+                {{ video.creatorName }}
+              </app-ui-chip>
+            }
+            @if (video.publishedAtLabel) {
+              <app-ui-chip tone="soft" iconClass="pi pi-calendar">
+                {{ video.publishedAtLabel }}
+              </app-ui-chip>
+            }
+          </div>
+        </div>
+
+        @if (backLinks.length > 0) {
+          <nav class="public-video-watch__actions" aria-label="Video links">
+            @for (link of backLinks; track link.labelKey) {
+              @if (link.routerLink) {
+                <a [appUiButton]="link.variant" [routerLink]="link.routerLink">
+                  <i [class]="link.iconClass" aria-hidden="true"></i>
+                  <span>{{ link.labelKey | translate:link.labelParams }}</span>
+                </a>
+              }
+            }
+          </nav>
+        }
+      </header>
+
+      <section class="public-video-watch__stage" aria-label="Video player">
+        @if (previousVideo?.routerLink) {
+          <a class="public-video-watch__nav public-video-watch__nav--previous" [routerLink]="previousVideo?.routerLink" [attr.aria-label]="'videos.watch.previous' | translate">
+            <i class="pi pi-chevron-left" aria-hidden="true"></i>
+            <span>{{ 'videos.watch.previous' | translate }}</span>
+            <strong>{{ previousVideo?.title }}</strong>
+          </a>
+        } @else {
+          <span class="public-video-watch__nav-placeholder" aria-hidden="true"></span>
+        }
+
+        <div class="public-video-watch__player">
+          @if (video.embedUrl) {
+            <iframe
+              [src]="video.embedUrl"
+              [title]="video.title"
+              loading="eager"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          } @else {
+            <div class="public-video-watch__external">
+              <app-image-display
+                [imagePathOrUrl]="video.thumbnailPathOrUrl"
+                [alt]="video.title"
+                imgClass="public-video-watch__poster-image"
+                placeholderClass="public-video-watch__poster-placeholder"
+                placeholderIconClass="pi pi-video"
+                [srcWidth]="1280"
+                sizes="(max-width: 900px) 100vw, 960px"
+                [responsiveWidths]="posterResponsiveWidths">
+              </app-image-display>
+              <a appUiButton="primary" [href]="video.originalUrl | safeExternalUrl" target="_blank" rel="noopener noreferrer">
+                <i class="pi pi-external-link" aria-hidden="true"></i>
+                <span>{{ 'videos.watch.openExternal' | translate }}</span>
+              </a>
+            </div>
+          }
+        </div>
+
+        @if (nextVideo?.routerLink) {
+          <a class="public-video-watch__nav public-video-watch__nav--next" [routerLink]="nextVideo?.routerLink" [attr.aria-label]="'videos.watch.next' | translate">
+            <i class="pi pi-chevron-right" aria-hidden="true"></i>
+            <span>{{ 'videos.watch.next' | translate }}</span>
+            <strong>{{ nextVideo?.title }}</strong>
+          </a>
+        } @else {
+          <span class="public-video-watch__nav-placeholder" aria-hidden="true"></span>
+        }
+      </section>
+
+      <section class="public-video-watch__details" appUiSurface="panel" appUiSurfacePadding="regular">
+        @if (video.description) {
+          <p>{{ video.description }}</p>
+        }
+
+        <div class="public-video-watch__detail-actions">
+          @if (video.creatorUrl | safeExternalUrl; as creatorUrl) {
+            <a appUiButton="ghost" [href]="creatorUrl" target="_blank" rel="noopener noreferrer">
+              <i class="pi pi-user" aria-hidden="true"></i>
+              <span>{{ 'videos.watch.openCreator' | translate }}</span>
+            </a>
+          }
+          @if (video.originalUrl | safeExternalUrl; as originalUrl) {
+            <a appUiButton="ghost" [href]="originalUrl" target="_blank" rel="noopener noreferrer">
+              <i class="pi pi-external-link" aria-hidden="true"></i>
+              <span>{{ 'videos.watch.openProvider' | translate }}</span>
+            </a>
+          }
+        </div>
+
+        @if (video.tags.length > 0) {
+          <div class="public-video-watch__tags">
+            @for (tag of video.tags; track tag.id) {
+              <span>{{ tag.label }}</span>
+            }
+          </div>
+        }
+      </section>
+    </article>
+  }
+</app-page-state>
