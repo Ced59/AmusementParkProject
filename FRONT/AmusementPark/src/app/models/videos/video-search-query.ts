@@ -12,6 +12,7 @@ export interface VideoSearchQuery {
   type?: VideoType | null;
   tagId?: string | null;
   creatorName?: string | null;
+  languageCode?: string | null;
   isPublished?: boolean | null;
   sortBy?: string | null;
   sortDirection?: 'asc' | 'desc' | string | null;

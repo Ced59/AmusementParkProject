@@ -21,6 +21,7 @@ export interface VideoDto {
   thumbnailImageId?: string | null;
   durationSeconds?: number | null;
   publishedAtUtc?: string | null;
+  languageCodes: string[];
   titles: LocalizedItemDto<string>[];
   descriptions: LocalizedItemDto<string>[];
   tagIds: string[];

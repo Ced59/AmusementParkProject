@@ -39,10 +39,6 @@ class FakeVideosPort implements AdminVideosStateVideosApiServicePort {
     });
   }
 
-  createVideo(request: VideoWriteRequest): Observable<VideoDto> {
-    return of(createVideo('created-video'));
-  }
-
   updateVideo(id: string, request: VideoWriteRequest): Observable<VideoDto> {
     return of(createVideo(id));
   }
@@ -74,6 +70,7 @@ function createVideo(id: string): VideoDto {
     title: id,
     descriptions: [],
     titles: [],
+    languageCodes: [],
     tagIds: [],
     externalMetadata: {},
     isPublished: true,

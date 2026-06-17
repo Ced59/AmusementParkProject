@@ -709,7 +709,8 @@
           "details": "Szczegóły techniczne",
           "accessConditions": "Warunki dostępu",
           "locations": "Lokalizacje szczegółowe",
-          "photos": "Zdjęcia"
+          "photos": "Zdjęcia",
+          "videos": "Wideo"
         },
         "sectionNav": {
           "label": "Sekcja edytora",
@@ -819,7 +820,8 @@
         "location": "Lokalizacja",
         "descriptions": "Opisy",
         "logos": "Logotypy",
-        "photos": "Zdjęcia"
+        "photos": "Zdjęcia",
+        "videos": "Wideo"
       },
       "editorStatus": {
         "saving": "Zapisywanie...",
@@ -1102,12 +1104,22 @@
       "thumbnailUrl": "URL miniatury",
       "durationSeconds": "Czas trwania (sekundy)",
       "publishedAt": "Opublikowano",
-      "titleFr": "Tytuł FR",
-      "descriptionFr": "Opis FR",
+      "language": "Jezyk emisji",
+      "allLanguageFilters": "Wszystkie jezyki emisji",
+      "allLanguagesVisibility": "Wszystkie jezyki",
+      "contextCreateKicker": "Dodawanie w kontekscie",
+      "localizedTitles": "Tytuly lokalizowane",
+      "localizedDescriptions": "Opisy lokalizowane",
       "isPublished": "Film opublikowany",
       "tags": "Tagi",
       "resolve": "Analizuj",
       "create": "Utwórz film",
+      "tagsLoadError": "Nie udalo sie zaladowac tagow wideo.",
+      "metadataError": "Nie udalo sie przeanalizowac tego wideo.",
+      "createSuccess": "Wideo utworzone.",
+      "createError": "Nie udalo sie utworzyc wideo.",
+      "saveOwnerFirstTitle": "Najpierw zapisz ta zawartosc",
+      "saveOwnerFirstMessage": "Wideo bedzie mozna dodac, gdy identyfikator bedzie dostepny.",
       "listTitle": "Biblioteka",
       "pageHint": "Lazy thumbnails, filtry serwera i rzeczywista paginacja.",
       "emptyTitle": "Nie znaleziono filmu",

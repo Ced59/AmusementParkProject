@@ -79,6 +79,7 @@ public sealed class CreateVideoCommandHandlerTests
                 OwnerId = "park-1",
                 ThumbnailImageId = thumbnailImageId,
                 Title = "Ride video",
+                LanguageCodes = new List<string> { "fr", "en" },
                 IsPublished = true,
             });
 
@@ -88,7 +89,8 @@ public sealed class CreateVideoCommandHandlerTests
                     update.CurrentVideos.Count == 1 &&
                     update.CurrentVideos.Single().Id == "video-1" &&
                     update.CurrentVideos.Single().OwnerType == VideoOwnerType.Park &&
-                    update.CurrentVideos.Single().OwnerId == "park-1"),
+                    update.CurrentVideos.Single().OwnerId == "park-1" &&
+                    update.CurrentVideos.Single().LanguageCodes.SequenceEqual(new[] { "fr", "en" })),
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
@@ -100,6 +102,7 @@ public sealed class CreateVideoCommandHandlerTests
             OwnerType = VideoOwnerType.Park,
             OwnerId = "park-1",
             Type = VideoType.OnRide,
+            LanguageCodes = new[] { "fr-FR", "all", "en" },
             IsPublished = true,
         }));
 
@@ -111,7 +114,8 @@ public sealed class CreateVideoCommandHandlerTests
             video.Title == "Ride video" &&
             video.OwnerType == VideoOwnerType.Park &&
             video.OwnerId == "park-1" &&
-            video.Type == VideoType.OnRide), It.IsAny<CancellationToken>()), Times.Once);
+            video.Type == VideoType.OnRide &&
+            video.LanguageCodes.SequenceEqual(new[] { "fr", "en" })), It.IsAny<CancellationToken>()), Times.Once);
         publicSeoUpdateNotifier.VerifyAll();
     }
 }

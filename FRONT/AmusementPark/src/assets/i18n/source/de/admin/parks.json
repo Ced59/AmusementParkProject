@@ -239,7 +239,8 @@
           "details": "Technische Details",
           "accessConditions": "Zugangsbedingungen",
           "locations": "Spezifische Positionen",
-          "photos": "Fotos"
+          "photos": "Fotos",
+          "videos": "Videos"
         },
         "sectionNav": {
           "label": "Editorbereich",
@@ -349,7 +350,8 @@
         "location": "Standort",
         "descriptions": "Beschreibungen",
         "logos": "Logos",
-        "photos": "Fotos"
+        "photos": "Fotos",
+        "videos": "Videos"
       },
       "editorStatus": {
         "saving": "Speichern...",

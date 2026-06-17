@@ -26,6 +26,8 @@ public sealed class VideoWriteDto
 
     public DateTime? PublishedAtUtc { get; set; }
 
+    public List<string> LanguageCodes { get; set; } = new();
+
     public List<LocalizedTextDto> Titles { get; set; } = new();
 
     public List<LocalizedTextDto> Descriptions { get; set; } = new();

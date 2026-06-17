@@ -11,6 +11,7 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from 'primeng/tabs';
 import { EditorSaveToolbarComponent } from '@shared/components/editor-save-toolbar/editor-save-toolbar.component';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
+import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { AdminParkItemAccessConditionTypeOption } from '@features/admin/park-items/mappers/admin-park-item-access-condition-form.utils';
 import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';
 import { AttractionWaterExposureLevel } from '@app/models/parks/attraction-water-exposure-level';
@@ -34,6 +35,7 @@ import { AdminParkItemAccessConditionsTabComponent } from './tabs/admin-park-ite
 import { AdminParkItemLocationsTabComponent } from './tabs/admin-park-item-locations-tab/admin-park-item-locations-tab.component';
 import { AdminParkItemPhotosTabComponent } from './tabs/admin-park-item-photos-tab/admin-park-item-photos-tab.component';
 import { AdminParkItemSequentialNavigationComponent } from './components/admin-park-item-sequential-navigation.component';
+import { AdminVideoCreatePanelComponent } from '@features/admin/videos/ui/admin-video-create-panel/admin-video-create-panel.component';
 
 interface AdminParkItemEditorSectionOption {
   value: number;
@@ -65,11 +67,13 @@ interface AdminParkItemEditorSectionOption {
     AdminParkItemLocationsTabComponent,
     AdminParkItemPhotosTabComponent,
     AdminParkItemSequentialNavigationComponent,
+    AdminVideoCreatePanelComponent,
     TranslateModule
   ]
 })
 export class AdminParkItemEditFormComponent {
   @Input({ required: true }) form!: FormGroup;
+  @Input() itemId: string | null = null;
   @Input() activeTabIndex: number = 0;
   @Input() isEditMode: boolean = false;
   @Input() isAttractionCategory: boolean = true;
@@ -113,6 +117,7 @@ export class AdminParkItemEditFormComponent {
   @Input() attractionPhotos: OwnedImageItem[] = [];
   @Input() pagedPhotos: OwnedImageItem[] = [];
   @Input() photosPageSize: number = 8;
+  readonly videoOwnerType: VideoOwnerType = VideoOwnerType.PARK_ITEM;
 
   @Output() submitForm: EventEmitter<void> = new EventEmitter<void>();
   @Output() back: EventEmitter<void> = new EventEmitter<void>();
@@ -160,8 +165,14 @@ export class AdminParkItemEditFormComponent {
       { value: 1, labelKey: 'admin.parks.items.tabs.details', enabled: this.isAttractionCategory },
       { value: 2, labelKey: 'admin.parks.items.tabs.accessConditions', enabled: this.isAttractionCategory },
       { value: 3, labelKey: 'admin.parks.items.tabs.locations', enabled: this.isAttractionCategory },
-      { value: 4, labelKey: 'admin.parks.items.tabs.photos', enabled: this.isAttractionCategory }
+      { value: 4, labelKey: 'admin.parks.items.tabs.photos', enabled: this.isAttractionCategory },
+      { value: 5, labelKey: 'admin.parks.items.tabs.videos', enabled: this.isEditMode }
     ].filter((option: AdminParkItemEditorSectionOption): boolean => option.enabled);
+  }
+
+  get itemName(): string | null {
+    const name: string = this.form.get('name')?.value ?? '';
+    return name.trim() || null;
   }
 
   onSectionSelect(value: string): void {

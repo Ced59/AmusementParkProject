@@ -69,6 +69,9 @@ public sealed class VideoDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public DateTime? PublishedAtUtc { get; set; }
 
+    [BsonElement("languageCodes")]
+    public List<string> LanguageCodes { get; set; } = new();
+
     [BsonElement("titles")]
     public List<LocalizedTextDocument> Titles { get; set; } = new();
 

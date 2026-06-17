@@ -164,6 +164,7 @@ export class ParkVideosStateFacade {
       type: filters.type,
       tagId: filters.tagId,
       creatorName: filters.creatorName,
+      languageCode: this.currentLanguageSignal(),
       sortBy: 'published',
       sortDirection: 'desc'
     };

@@ -16,7 +16,7 @@ export interface ParkVideosParksPort {
 
 export interface ParkVideosVideosPort {
   getVideosPage(query?: VideoSearchQuery, options?: AnonymousHttpOptions): Observable<PagedResult<VideoDto>>;
-  getVideoById(id: string, options?: AnonymousHttpOptions): Observable<VideoDto>;
+  getVideoById(id: string, options?: AnonymousHttpOptions, languageCode?: string | null): Observable<VideoDto>;
   getVideoTags(options?: AnonymousHttpOptions): Observable<VideoTagDto[]>;
 }
 

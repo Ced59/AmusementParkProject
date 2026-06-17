@@ -67,6 +67,7 @@ public sealed class VideosController : ControllerBase
         [FromQuery] VideoTypeDto? type = null,
         [FromQuery] string? tagId = null,
         [FromQuery] string? creatorName = null,
+        [FromQuery] string? languageCode = null,
         [FromQuery] bool? isPublished = null,
         [FromQuery] string? sortBy = null,
         [FromQuery] string? sortDirection = null,
@@ -81,6 +82,7 @@ public sealed class VideosController : ControllerBase
             type.ToOptionalDomain(),
             tagId,
             creatorName,
+            languageCode,
             canSeeNonVisible ? isPublished : true,
             sortBy,
             sortDirection);
@@ -99,7 +101,7 @@ public sealed class VideosController : ControllerBase
     [AllowAnonymous]
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [ProducesResponseType(typeof(VideoDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetVideoAsync([FromRoute] string videoId, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetVideoAsync([FromRoute] string videoId, [FromQuery] string? languageCode = null, CancellationToken cancellationToken = default)
     {
         ApplicationResult<Video> result = await this.getVideoByIdQueryHandler.HandleAsync(new GetVideoByIdQuery(videoId), cancellationToken);
         if (!result.IsSuccess || result.Value is null)
@@ -108,6 +110,11 @@ public sealed class VideosController : ControllerBase
         }
 
         if (!this.UserCanSeeNonVisible() && !result.Value.IsPublished)
+        {
+            return this.ToNotFoundProblemDetailsResult("Video does not exist.", "video.not-found");
+        }
+
+        if (!this.UserCanSeeNonVisible() && !IsVisibleForLanguage(result.Value, languageCode))
         {
             return this.ToNotFoundProblemDetailsResult("Video does not exist.", "video.not-found");
         }
@@ -233,5 +240,22 @@ public sealed class VideosController : ControllerBase
     private bool UserCanSeeNonVisible()
     {
         return this.User?.IsInRole("ADMIN") == true;
+    }
+
+    private static bool IsVisibleForLanguage(Video video, string? languageCode)
+    {
+        if (string.IsNullOrWhiteSpace(languageCode) || video.LanguageCodes.Count == 0)
+        {
+            return true;
+        }
+
+        string normalizedLanguageCode = NormalizeLanguageCode(languageCode);
+        return video.LanguageCodes.Any(videoLanguageCode => string.Equals(NormalizeLanguageCode(videoLanguageCode), normalizedLanguageCode, StringComparison.Ordinal));
+    }
+
+    private static string NormalizeLanguageCode(string languageCode)
+    {
+        string normalizedLanguageCode = languageCode.Trim().ToLowerInvariant();
+        return normalizedLanguageCode.Length >= 2 ? normalizedLanguageCode[..2] : normalizedLanguageCode;
     }
 }

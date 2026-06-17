@@ -27,6 +27,8 @@ public sealed class VideoWriteModel
 
     public DateTime? PublishedAtUtc { get; init; }
 
+    public IReadOnlyCollection<string> LanguageCodes { get; init; } = Array.Empty<string>();
+
     public IReadOnlyCollection<LocalizedTextValue> Titles { get; init; } = Array.Empty<LocalizedTextValue>();
 
     public IReadOnlyCollection<LocalizedTextValue> Descriptions { get; init; } = Array.Empty<LocalizedTextValue>();

@@ -239,7 +239,8 @@
           "details": "Détails techniques",
           "accessConditions": "Conditions d’accès",
           "locations": "Localisations spécifiques",
-          "photos": "Photos"
+          "photos": "Photos",
+          "videos": "Videos"
         },
         "sectionNav": {
           "label": "Section de l'editeur",
@@ -349,7 +350,8 @@
         "location": "Localisation",
         "descriptions": "Descriptions",
         "logos": "Logos",
-        "photos": "Photos"
+        "photos": "Photos",
+        "videos": "Videos"
       },
       "editorStatus": {
         "saving": "Enregistrement en cours...",

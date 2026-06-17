@@ -93,12 +93,13 @@ export class ParkVideoStateFacade {
 
     forkJoin({
       summary: this.parksPort.getParkDetailSummary(parkId, anonymousHttpOptions()),
-      video: this.videosPort.getVideoById(videoId, anonymousHttpOptions()),
+      video: this.videosPort.getVideoById(videoId, anonymousHttpOptions(), this.currentLanguageSignal()),
       videoPage: this.videosPort.getVideosPage({
         page: 1,
         size: ParkVideoStateFacade.NavigationPageSize,
         ownerType: VideoOwnerType.PARK,
         ownerId: parkId,
+        languageCode: this.currentLanguageSignal(),
         sortBy: 'published',
         sortDirection: 'desc'
       }, anonymousHttpOptions()),

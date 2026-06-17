@@ -15,16 +15,35 @@ public sealed class VideosHttpMappersTests
             Id = "video-1",
             OwnerType = VideoOwnerType.ParkItem,
             OwnerId = "item-1",
+            LanguageCodes = new List<string> { "fr" },
         };
 
         VideoDto dto = video.ToHttp();
 
         Assert.Equal(VideoOwnerTypeDto.PARK_ITEM, dto.OwnerType);
+        Assert.Equal(new[] { "fr" }, dto.LanguageCodes);
     }
 
     [Fact]
     public void ToDomain_WhenParkItemOwnerIsProvided_ShouldMapToParkItem()
     {
         Assert.Equal(VideoOwnerType.ParkItem, VideoOwnerTypeDto.PARK_ITEM.ToDomain());
+    }
+
+    [Fact]
+    public void ToApplication_WhenLanguageCodesAreProvided_ShouldMapThemToWriteModel()
+    {
+        VideoWriteDto dto = new VideoWriteDto
+        {
+            OriginalUrl = "https://www.youtube.com/watch?v=abcdefghijk",
+            OwnerType = VideoOwnerTypeDto.PARK,
+            OwnerId = "park-1",
+            Type = VideoTypeDto.ON_RIDE,
+            LanguageCodes = new List<string> { "fr" },
+        };
+
+        AmusementPark.Application.Features.Videos.Contracts.VideoWriteModel model = dto.ToApplication();
+
+        Assert.Equal(new[] { "fr" }, model.LanguageCodes);
     }
 }

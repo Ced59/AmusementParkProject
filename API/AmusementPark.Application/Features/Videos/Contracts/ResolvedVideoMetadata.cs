@@ -28,6 +28,8 @@ public sealed class ResolvedVideoMetadata
 
     public DateTime? PublishedAtUtc { get; init; }
 
+    public string? DetectedLanguageCode { get; init; }
+
     public string? MetadataSource { get; init; }
 
     public DateTime? FetchedAtUtc { get; init; }

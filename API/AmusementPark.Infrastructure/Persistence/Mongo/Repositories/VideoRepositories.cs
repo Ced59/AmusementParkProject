@@ -78,6 +78,7 @@ public sealed class VideoRepository : IVideoRepository
         video.CreatedAtUtc = now;
         video.UpdatedAtUtc = now;
         video.OwnerId = string.IsNullOrWhiteSpace(video.OwnerId) ? null : video.OwnerId.Trim();
+        video.LanguageCodes = NormalizeLanguageCodes(video.LanguageCodes);
         video.TagIds = video.TagIds.Distinct(StringComparer.Ordinal).ToList();
 
         VideoDocument document = video.ToDocument();
@@ -106,6 +107,7 @@ public sealed class VideoRepository : IVideoRepository
             .Set(static document => document.ThumbnailImageId, video.ThumbnailImageId)
             .Set(static document => document.DurationSeconds, video.Duration.HasValue ? checked((long)video.Duration.Value.TotalSeconds) : null)
             .Set(static document => document.PublishedAtUtc, video.PublishedAtUtc)
+            .Set(static document => document.LanguageCodes, NormalizeLanguageCodes(video.LanguageCodes))
             .Set(static document => document.Titles, CommonMongoMappers.ToDocuments(video.Titles))
             .Set(static document => document.Descriptions, CommonMongoMappers.ToDocuments(video.Descriptions))
             .Set(static document => document.TagIds, video.TagIds.Distinct(StringComparer.Ordinal).ToList())
@@ -200,6 +202,11 @@ public sealed class VideoRepository : IVideoRepository
             filter &= builder.Regex(static document => document.CreatorName, creatorRegex);
         }
 
+        if (!string.IsNullOrWhiteSpace(criteria.LanguageCode))
+        {
+            filter &= BuildLanguageFilter(builder, criteria.LanguageCode);
+        }
+
         if (!string.IsNullOrWhiteSpace(criteria.Search))
         {
             BsonRegularExpression regex = new BsonRegularExpression(Regex.Escape(criteria.Search.Trim()), "i");
@@ -264,6 +271,7 @@ public sealed class VideoRepository : IVideoRepository
             criteria.Type,
             criteria.TagId,
             criteria.CreatorName,
+            criteria.LanguageCode,
             criteria.IsPublished,
             criteria.SortBy,
             criteria.SortDirection);
@@ -277,6 +285,44 @@ public sealed class VideoRepository : IVideoRepository
     private static void InvalidateReadCache()
     {
         Interlocked.Increment(ref cacheVersion);
+    }
+
+    private static FilterDefinition<VideoDocument> BuildLanguageFilter(FilterDefinitionBuilder<VideoDocument> builder, string languageCode)
+    {
+        string normalizedLanguageCode = NormalizeLanguageCode(languageCode);
+        FilterDefinition<VideoDocument> allLanguagesFilter = builder.Or(
+            builder.Exists(static document => document.LanguageCodes, false),
+            builder.Size(static document => document.LanguageCodes, 0));
+
+        if (string.Equals(normalizedLanguageCode, "all", StringComparison.OrdinalIgnoreCase))
+        {
+            return allLanguagesFilter;
+        }
+
+        return builder.Or(
+            allLanguagesFilter,
+            builder.AnyEq(static document => document.LanguageCodes, normalizedLanguageCode));
+    }
+
+    private static List<string> NormalizeLanguageCodes(IReadOnlyCollection<string> languageCodes)
+    {
+        return languageCodes
+            .Where(static languageCode => !string.IsNullOrWhiteSpace(languageCode))
+            .Select(static languageCode => NormalizeLanguageCode(languageCode))
+            .Where(static languageCode => languageCode.Length == 2)
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+    }
+
+    private static string NormalizeLanguageCode(string languageCode)
+    {
+        string normalizedLanguageCode = languageCode.Trim().ToLowerInvariant();
+        if (string.Equals(normalizedLanguageCode, "all", StringComparison.OrdinalIgnoreCase))
+        {
+            return "all";
+        }
+
+        return normalizedLanguageCode.Length >= 2 ? normalizedLanguageCode[..2] : normalizedLanguageCode;
     }
 }
 

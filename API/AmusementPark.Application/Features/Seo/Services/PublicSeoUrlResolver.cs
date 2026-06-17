@@ -206,8 +206,9 @@ public sealed class PublicSeoUrlResolver
             }
 
             AddParkDetailUrls(relativePaths, languages, park);
-            AddParkVideoUrls(relativePaths, languages, park);
-            AddParkVideoDetailUrls(relativePaths, languages, park, video);
+            IReadOnlyCollection<string> videoLanguages = ResolveVisibleLanguages(video, languages);
+            AddParkVideoUrls(relativePaths, videoLanguages, park);
+            AddParkVideoDetailUrls(relativePaths, videoLanguages, park, video);
         }
 
         IReadOnlyCollection<PublicSeoVideoSnapshot> itemVideos = publicVideos
@@ -239,8 +240,9 @@ public sealed class PublicSeoUrlResolver
 
             AddParkDetailUrls(relativePaths, languages, park);
             AddParkItemDetailUrls(relativePaths, languages, park, item);
-            AddParkItemVideoUrls(relativePaths, languages, park, item);
-            AddParkItemVideoDetailUrls(relativePaths, languages, park, item, video);
+            IReadOnlyCollection<string> videoLanguages = ResolveVisibleLanguages(video, languages);
+            AddParkItemVideoUrls(relativePaths, videoLanguages, park, item);
+            AddParkItemVideoDetailUrls(relativePaths, videoLanguages, park, item, video);
         }
     }
 
@@ -572,6 +574,35 @@ public sealed class PublicSeoUrlResolver
 
     private static string BuildVideoRouteKey(PublicSeoVideoSnapshot video)
     {
-        return $"{video.OwnerType}:{video.OwnerId}:{video.Id}:{SeoSlugService.ToSlug(video.Title, "video")}:{video.IsPublished}";
+        return $"{video.OwnerType}:{video.OwnerId}:{video.Id}:{SeoSlugService.ToSlug(video.Title, "video")}:{video.IsPublished}:{string.Join(",", NormalizeVideoLanguageCodes(video.LanguageCodes))}";
+    }
+
+    private static IReadOnlyCollection<string> ResolveVisibleLanguages(PublicSeoVideoSnapshot video, IReadOnlyCollection<string> languages)
+    {
+        IReadOnlyCollection<string> videoLanguageCodes = NormalizeVideoLanguageCodes(video.LanguageCodes);
+        if (videoLanguageCodes.Count == 0)
+        {
+            return languages;
+        }
+
+        return languages
+            .Where(language => videoLanguageCodes.Contains(NormalizeLanguageCode(language), StringComparer.Ordinal))
+            .ToList();
+    }
+
+    private static IReadOnlyCollection<string> NormalizeVideoLanguageCodes(IReadOnlyCollection<string> languageCodes)
+    {
+        return languageCodes
+            .Where(static languageCode => !string.IsNullOrWhiteSpace(languageCode))
+            .Select(static languageCode => NormalizeLanguageCode(languageCode))
+            .Where(static languageCode => languageCode.Length == 2)
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+    }
+
+    private static string NormalizeLanguageCode(string languageCode)
+    {
+        string normalizedLanguageCode = languageCode.Trim().ToLowerInvariant();
+        return normalizedLanguageCode.Length >= 2 ? normalizedLanguageCode[..2] : normalizedLanguageCode;
     }
 }

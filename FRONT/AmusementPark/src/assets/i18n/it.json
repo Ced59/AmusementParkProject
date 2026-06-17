@@ -709,7 +709,8 @@
           "details": "Dettagli tecnici",
           "accessConditions": "Condizioni di accesso",
           "locations": "Posizioni specifiche",
-          "photos": "Foto"
+          "photos": "Foto",
+          "videos": "Video"
         },
         "sectionNav": {
           "label": "Sezione editor",
@@ -819,7 +820,8 @@
         "location": "Posizione",
         "descriptions": "Descrizioni",
         "logos": "Loghi",
-        "photos": "Foto"
+        "photos": "Foto",
+        "videos": "Video"
       },
       "editorStatus": {
         "saving": "Salvataggio...",
@@ -1102,12 +1104,22 @@
       "thumbnailUrl": "URL miniatura",
       "durationSeconds": "Durata (secondi)",
       "publishedAt": "Pubblicato il",
-      "titleFr": "Titolo FR",
-      "descriptionFr": "Descrizione FR",
+      "language": "Lingua di pubblicazione",
+      "allLanguageFilters": "Tutte le lingue di pubblicazione",
+      "allLanguagesVisibility": "Tutte le lingue",
+      "contextCreateKicker": "Aggiunta contestuale",
+      "localizedTitles": "Titoli localizzati",
+      "localizedDescriptions": "Descrizioni localizzate",
       "isPublished": "Video pubblicato",
       "tags": "Tag",
       "resolve": "Analizza",
       "create": "Crea video",
+      "tagsLoadError": "Impossibile caricare i tag video.",
+      "metadataError": "Impossibile analizzare questo video.",
+      "createSuccess": "Video creato.",
+      "createError": "Impossibile creare il video.",
+      "saveOwnerFirstTitle": "Salva prima questo contenuto",
+      "saveOwnerFirstMessage": "Il video potra essere aggiunto quando l'identificativo sara disponibile.",
       "listTitle": "Biblioteca",
       "pageHint": "Miniature lazy, filtri server e paginazione reale.",
       "emptyTitle": "Nessun video trovato",

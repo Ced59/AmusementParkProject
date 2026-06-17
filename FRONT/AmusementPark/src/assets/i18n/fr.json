@@ -709,7 +709,8 @@
           "details": "Détails techniques",
           "accessConditions": "Conditions d’accès",
           "locations": "Localisations spécifiques",
-          "photos": "Photos"
+          "photos": "Photos",
+          "videos": "Videos"
         },
         "sectionNav": {
           "label": "Section de l'editeur",
@@ -819,7 +820,8 @@
         "location": "Localisation",
         "descriptions": "Descriptions",
         "logos": "Logos",
-        "photos": "Photos"
+        "photos": "Photos",
+        "videos": "Videos"
       },
       "editorStatus": {
         "saving": "Enregistrement en cours...",
@@ -1102,12 +1104,22 @@
       "thumbnailUrl": "URL thumbnail",
       "durationSeconds": "Duree (secondes)",
       "publishedAt": "Date de publication",
-      "titleFr": "Titre FR",
-      "descriptionFr": "Description FR",
+      "language": "Langue de diffusion",
+      "allLanguageFilters": "Toutes les langues de diffusion",
+      "allLanguagesVisibility": "Toutes les langues",
+      "contextCreateKicker": "Ajout contextualise",
+      "localizedTitles": "Titres localises",
+      "localizedDescriptions": "Descriptions localisees",
       "isPublished": "Video publiee",
       "tags": "Tags",
       "resolve": "Analyser",
       "create": "Creer la video",
+      "tagsLoadError": "Les tags video n'ont pas pu etre charges.",
+      "metadataError": "Impossible d'analyser cette video.",
+      "createSuccess": "Video creee.",
+      "createError": "La video n'a pas pu etre creee.",
+      "saveOwnerFirstTitle": "Enregistre d'abord ce contenu",
+      "saveOwnerFirstMessage": "La video pourra etre ajoutee des que l'identifiant sera disponible.",
       "listTitle": "Bibliotheque",
       "pageHint": "Thumbnails lazy, filtres serveur et pagination reelle.",
       "emptyTitle": "Aucune video trouvee",

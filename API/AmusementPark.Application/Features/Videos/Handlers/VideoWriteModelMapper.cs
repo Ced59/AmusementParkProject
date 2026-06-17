@@ -32,6 +32,7 @@ internal static class VideoWriteModelMapper
             ThumbnailUrl = thumbnailUrl,
             Duration = writeModel.Duration ?? metadata.Duration,
             PublishedAtUtc = writeModel.PublishedAtUtc ?? metadata.PublishedAtUtc,
+            LanguageCodes = NormalizeLanguageCodes(writeModel.LanguageCodes),
             Titles = ToLocalizedTexts(writeModel.Titles),
             Descriptions = ToLocalizedTexts(writeModel.Descriptions),
             TagIds = NormalizeTagIds(writeModel.TagIds),
@@ -67,6 +68,18 @@ internal static class VideoWriteModelMapper
         return tagIds
             .Where(static tagId => !string.IsNullOrWhiteSpace(tagId))
             .Select(static tagId => tagId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+    }
+
+    private static List<string> NormalizeLanguageCodes(IReadOnlyCollection<string> languageCodes)
+    {
+        return languageCodes
+            .Where(static languageCode => !string.IsNullOrWhiteSpace(languageCode))
+            .Select(static languageCode => languageCode.Trim().ToLowerInvariant())
+            .Where(static languageCode => !string.Equals(languageCode, "all", StringComparison.OrdinalIgnoreCase))
+            .Select(static languageCode => languageCode.Length >= 2 ? languageCode[..2] : languageCode)
+            .Where(static languageCode => languageCode.Length == 2)
             .Distinct(StringComparer.Ordinal)
             .ToList();
     }
