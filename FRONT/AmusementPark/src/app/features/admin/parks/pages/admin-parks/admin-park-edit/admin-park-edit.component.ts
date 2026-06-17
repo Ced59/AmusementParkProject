@@ -19,7 +19,6 @@ import { AdminParkLocationTabComponent } from './tabs/admin-park-location-tab/ad
 import { AdminParkDescriptionsTabComponent } from './tabs/admin-park-descriptions-tab/admin-park-descriptions-tab.component';
 import { AdminParkLogosTabComponent } from './tabs/admin-park-logos-tab/admin-park-logos-tab.component';
 import { AdminParkPhotosTabComponent } from './tabs/admin-park-photos-tab/admin-park-photos-tab.component';
-import { AdminJsonImportTabComponent } from '@features/admin/shared/ui/admin-json-import-tab/admin-json-import-tab.component';
 import { PARK_TYPE_OPTIONS } from '@shared/utils/display/display-options';
 import { AdminParkTypeOption } from '@features/admin/parks/models/admin-park-edit.model';
 import {
@@ -71,7 +70,6 @@ type SaveScope = 'section' | 'all';
     AdminParkDescriptionsTabComponent,
     AdminParkLogosTabComponent,
     AdminParkPhotosTabComponent,
-    AdminJsonImportTabComponent,
     TranslateModule
   ]
 })
@@ -167,24 +165,6 @@ export class AdminParkEditComponent implements OnInit {
 
   goBack(): void {
     this.navigateToList();
-  }
-
-  get parkJsonImportExample(): string {
-    const payload: unknown = {
-      name: this.form.get('name')?.value || 'Nom du parc',
-      countryCode: this.form.get('countryCode')?.value || 'BE',
-      type: this.form.get('type')?.value || 'ThemePark',
-      websiteUrl: this.form.get('websiteUrl')?.value || null,
-      city: this.form.get('city')?.value || null,
-      postalCode: this.form.get('postalCode')?.value || null,
-      isVisible: this.form.get('isVisible')?.value ?? true,
-      descriptions: [
-        { languageCode: 'fr', value: '<p>Description en français.</p>' },
-        { languageCode: 'en', value: '<p>English description.</p>' }
-      ]
-    };
-
-    return JSON.stringify(payload, null, 2);
   }
 
   onTabChange(index: number | string | undefined): void {

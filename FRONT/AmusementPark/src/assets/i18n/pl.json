@@ -92,20 +92,19 @@
     },
     "dashboard": {
       "title": "Panel",
-      "subtitle": "Punkt wejścia do panelu administracyjnego: wybierz sekcję z lewego menu albo ze skrótów poniżej.",
+      "subtitle": "Punkt wejÅ›cia do panelu administracyjnego: wybierz sekcjÄ™ z lewego menu albo ze skrÃ³tÃ³w poniÅ¼ej.",
       "shortcuts": {
-        "users": "Zarządzanie kontami, rolami i dostępem.",
-        "parks": "Filtrowanie, priorytetyzacja i publikowanie parków.",
-        "parkItems": "Zarządzanie atrakcjami, sklepami, restauracjami i usługami.",
-        "operators": "Utrzymywanie operatorów powiązanych z parkami.",
-        "manufacturers": "Utrzymywanie producentów i konstruktorów atrakcji.",
-        "images": "Kontrola mediów, logo i grafik strony.",
-        "data": "Monitorowanie importów, źródeł i przetwarzania danych.",
-        "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami.",
-        "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne.",
-        "localizedContent": "Szybko importować zlokalizowane teksty przez JSON po wyborze celu.",
-        "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
-        "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow."
+        "users": "ZarzÄ…dzanie kontami, rolami i dostÄ™pem.",
+        "parks": "Filtrowanie, priorytetyzacja i publikowanie parkÃ³w.",
+        "parkItems": "ZarzÄ…dzanie atrakcjami, sklepami, restauracjami i usÅ‚ugami.",
+        "operators": "Utrzymywanie operatorÃ³w powiÄ…zanych z parkami.",
+        "manufacturers": "Utrzymywanie producentÃ³w i konstruktorÃ³w atrakcji.",
+        "images": "Kontrola mediÃ³w, logo i grafik strony.",
+        "data": "Monitorowanie importÃ³w, ÅºrÃ³deÅ‚ i przetwarzania danych.",
+        "founders": "ZarzÄ…dzaj zaÅ‚oÅ¼ycielami i biografiami powiÄ…zanymi z parkami.",
+        "auditLogs": "PrzeglÄ…daÄ‡ zapisane wraÅ¼liwe akcje administracyjne.",
+        "parkGraphUpserts": "PodglÄ…d i zastosowanie peÅ‚nego lub czÄ™Å›ciowego JSON parku.",
+        "seoSitemaps": "ZarzÄ…dzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow."
       }
     },
     "dataSources": {
@@ -207,92 +206,7 @@
       "newTagPlaceholder": "np.: oficjalne-logo",
       "createTag": "Utwórz tag"
     },
-    "jsonImport": {
-      "tab": "Import JSON",
-      "kicker": "Import JSON",
-      "title": "Importuj dane tej encji",
-      "description": "Wklej częściowy lub pełny JSON, aby szybko uzupełnić obsługiwane pola, bez zarządzania zdjęciami ani tworzenia encji podrzędnych.",
-      "resetExample": "Przywróć przykład",
-      "jsonLabel": "JSON encji",
-      "apply": "Zastosuj JSON",
-      "applying": "Stosowanie…",
-      "disabledUntilSave": "Najpierw zapisz tę encję przed importem JSON.",
-      "messages": {
-        "invalidJson": "JSON jest nieprawidłowy.",
-        "success": "JSON zastosowany. W razie potrzeby odśwież lub sprawdź zakładki.",
-        "error": "Nie można zastosować JSON."
-      },
-      "help": {
-        "title": "Akceptowany format",
-        "partial": "Częściowy JSON zmienia tylko obecne pola.",
-        "merge": "Wartości lokalizowane są łączone według języka, chyba że użyto replaceExisting lub mode: replace.",
-        "accessConditions": "Dla elementów parku accessConditions może tworzyć lub aktualizować warunki i ich typy wielokrotnego użytku."
-      }
-    },
     "loading": "Ładowanie...",
-    "localizedContent": {
-      "navTitle": "Importy JSON",
-      "kicker": "Import JSON",
-      "title": "Importuj JSON encji",
-      "subtitle": "Wybierz istniejącą encję i zastosuj częściowy lub pełny JSON do obsługiwanych pól.",
-      "selection": {
-        "title": "1. Wybierz cel",
-        "description": "Wybór odbywa się przez czytelne wyniki wyszukiwania, aby nie edytować encji wyłącznie po technicznym identyfikatorze.",
-        "entityType": "Typ encji",
-        "search": "Szukaj",
-        "searchPlaceholder": "Nazwa parku, atrakcja, strefa, producent…",
-        "searchButton": "Szukaj",
-        "searching": "Wyszukiwanie…",
-        "empty": "Uruchom wyszukiwanie, aby zobaczyć dostępne cele."
-      },
-      "editor": {
-        "title": "2. Wklej JSON",
-        "description": "JSON jest walidowany przez API i stosowany przez warstwę Application.",
-        "resetExample": "Przywróć przykład",
-        "selected": "Wybrany cel",
-        "noTarget": "Nie wybrano celu.",
-        "jsonLabel": "Zlokalizowany JSON",
-        "apply": "Zastosuj JSON",
-        "applying": "Stosowanie…"
-      },
-      "help": {
-        "title": "Akceptowany format",
-        "merge": "Domyślnie podane języki są scalane z istniejącymi wartościami: pozostałe języki zostają zachowane.",
-        "replace": "Dodaj \"replaceExisting\": true lub \"mode\": \"replace\", aby całkowicie zastąpić pole lokalizowane.",
-        "fields": "Obsługiwane pola: descriptions, names, description, biography, altTexts, captions, credits, labels zależnie od wybranego typu.",
-        "accessConditions": "Dla elementu parku typu atrakcja accessConditions może tworzyć lub aktualizować warunki: type, domyślny customTypeKey dla nieznanego typu, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label i description."
-      },
-      "messages": {
-        "searchError": "Nie udało się załadować celów lokalizowanych.",
-        "selectTargetFirst": "Najpierw wybierz cel.",
-        "invalidJson": "Wprowadzony JSON jest nieprawidłowy.",
-        "applySuccess": "Zlokalizowany JSON zastosowano pomyślnie.",
-        "applyNoField": "Nie zaktualizowano żadnego pola lokalizowanego.",
-        "applyError": "Nie udało się zastosować zlokalizowanego JSON."
-      },
-      "entityTypes": {
-        "park": "Park",
-        "parkZone": "Strefa parku",
-        "parkItem": "Element parku",
-        "parkOperator": "Operator",
-        "parkFounder": "Założyciel",
-        "attractionManufacturer": "Producent",
-        "image": "Obraz",
-        "imageTag": "Tag obrazu",
-        "accessConditionType": "Typ warunku dostępu"
-      },
-      "entityHints": {
-        "park": "Zlokalizowany opis parku.",
-        "parkZone": "Zlokalizowana nazwa i opis strefy.",
-        "parkItem": "Zlokalizowany opis elementu, z warunkami dostępu dla atrakcji.",
-        "parkOperator": "Zlokalizowany opis operatora.",
-        "parkFounder": "Zlokalizowana biografia założyciela.",
-        "attractionManufacturer": "Zlokalizowana biografia producenta.",
-        "image": "Zlokalizowane teksty alternatywne, podpisy i kredyty.",
-        "imageTag": "Zlokalizowane etykiety i opisy tagu.",
-        "accessConditionType": "Katalog typów warunków dostępu wielokrotnego użytku."
-      }
-    },
     "m14": {
       "kicker": "Administracja",
       "sidebarTitle": "Panel back-office"

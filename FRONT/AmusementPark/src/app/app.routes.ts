@@ -71,10 +71,6 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/park-graph-upserts/pages/admin-park-graph-upserts/admin-park-graph-upserts.component').then((m) => m.AdminParkGraphUpsertsComponent)
           },
           {
-            path: 'localized-content',
-            loadComponent: () => import('@features/admin/localized-content/pages/admin-localized-content/admin-localized-content.component').then((m) => m.AdminLocalizedContentComponent)
-          },
-          {
             path: 'audit-logs',
             loadComponent: () => import('@features/admin/audit-logs/pages/admin-audit-logs/admin-audit-logs.component').then((m) => m.AdminAuditLogsComponent)
           },

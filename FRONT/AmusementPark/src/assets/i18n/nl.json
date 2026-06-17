@@ -99,11 +99,10 @@
         "parkItems": "Attracties, winkels, restaurants en diensten beheren.",
         "operators": "Exploitanten gekoppeld aan parken onderhouden.",
         "manufacturers": "Constructeurs en attractiebouwers onderhouden.",
-        "images": "Media, logo’s en sitebeelden controleren.",
+        "images": "Media, logoâ€™s en sitebeelden controleren.",
         "data": "Imports, bronnen en gegevensverwerking volgen.",
-        "founders": "Beheer oprichters en biografieën die aan parken zijn gekoppeld.",
+        "founders": "Beheer oprichters en biografieÃ«n die aan parken zijn gekoppeld.",
         "auditLogs": "Gelogde gevoelige beheeracties bekijken.",
-        "localizedContent": "Snel gelokaliseerde teksten via JSON importeren na het kiezen van een doel.",
         "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
         "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow."
       }
@@ -207,92 +206,7 @@
       "newTagPlaceholder": "bv.: officieel-logo",
       "createTag": "Tag aanmaken"
     },
-    "jsonImport": {
-      "tab": "JSON-import",
-      "kicker": "JSON-import",
-      "title": "Gegevens van deze entiteit importeren",
-      "description": "Plak een gedeeltelijke of volledige JSON om ondersteunde velden snel in te vullen, zonder foto’s te beheren of child-entiteiten te maken.",
-      "resetExample": "Voorbeeld herstellen",
-      "jsonLabel": "Entiteit-JSON",
-      "apply": "JSON toepassen",
-      "applying": "Toepassen…",
-      "disabledUntilSave": "Sla deze entiteit eerst op voordat je JSON importeert.",
-      "messages": {
-        "invalidJson": "De JSON is ongeldig.",
-        "success": "JSON toegepast. Herlaad of controleer de tabs indien nodig.",
-        "error": "JSON kon niet worden toegepast."
-      },
-      "help": {
-        "title": "Geaccepteerd formaat",
-        "partial": "Een gedeeltelijke JSON wijzigt alleen de aanwezige velden.",
-        "merge": "Gelokaliseerde waarden worden per taal samengevoegd, behalve met replaceExisting of mode: replace.",
-        "accessConditions": "Voor parkitems kan accessConditions voorwaarden en herbruikbare types maken of bijwerken."
-      }
-    },
     "loading": "Laden...",
-    "localizedContent": {
-      "navTitle": "JSON-imports",
-      "kicker": "JSON-import",
-      "title": "Entiteit-JSON importeren",
-      "subtitle": "Kies een bestaande entiteit en pas een gedeeltelijke of volledige JSON toe op de ondersteunde velden.",
-      "selection": {
-        "title": "1. Doel kiezen",
-        "description": "De selectie gebruikt leesbare zoekresultaten zodat je geen entiteit alleen via een technische ID wijzigt.",
-        "entityType": "Entiteitstype",
-        "search": "Zoeken",
-        "searchPlaceholder": "Parknaam, attractie, zone, fabrikant…",
-        "searchButton": "Zoeken",
-        "searching": "Zoeken…",
-        "empty": "Start een zoekopdracht om beschikbare doelen te tonen."
-      },
-      "editor": {
-        "title": "2. JSON plakken",
-        "description": "De JSON wordt door de API gevalideerd en via de Application-laag toegepast.",
-        "resetExample": "Voorbeeld herstellen",
-        "selected": "Geselecteerd doel",
-        "noTarget": "Geen doel geselecteerd.",
-        "jsonLabel": "Gelokaliseerde JSON",
-        "apply": "JSON toepassen",
-        "applying": "Toepassen…"
-      },
-      "help": {
-        "title": "Geaccepteerd formaat",
-        "merge": "Standaard worden aangeleverde talen samengevoegd met bestaande waarden: andere talen blijven behouden.",
-        "replace": "Voeg \"replaceExisting\": true of \"mode\": \"replace\" toe om het gelokaliseerde veld volledig te vervangen.",
-        "fields": "Ondersteunde velden: descriptions, names, description, biography, altTexts, captions, credits, labels afhankelijk van het gekozen type.",
-        "accessConditions": "Voor een parkitem van het type attractie kan accessConditions voorwaarden maken of bijwerken: type, impliciete customTypeKey voor een onbekend type, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label en description."
-      },
-      "messages": {
-        "searchError": "Gelokaliseerde doelen konden niet worden geladen.",
-        "selectTargetFirst": "Selecteer eerst een doel.",
-        "invalidJson": "De ingevoerde JSON is ongeldig.",
-        "applySuccess": "Gelokaliseerde JSON succesvol toegepast.",
-        "applyNoField": "Er is geen gelokaliseerd veld bijgewerkt.",
-        "applyError": "Gelokaliseerde JSON kon niet worden toegepast."
-      },
-      "entityTypes": {
-        "park": "Park",
-        "parkZone": "Parkzone",
-        "parkItem": "Parkelement",
-        "parkOperator": "Operator",
-        "parkFounder": "Oprichter",
-        "attractionManufacturer": "Fabrikant",
-        "image": "Afbeelding",
-        "imageTag": "Afbeeldingstag",
-        "accessConditionType": "Type toegangsvoorwaarde"
-      },
-      "entityHints": {
-        "park": "Gelokaliseerde parkbeschrijving.",
-        "parkZone": "Gelokaliseerde zonenaam en beschrijving.",
-        "parkItem": "Gelokaliseerde elementbeschrijving, met toegangsvoorwaarden bij attracties.",
-        "parkOperator": "Gelokaliseerde operatorbeschrijving.",
-        "parkFounder": "Gelokaliseerde biografie van de oprichter.",
-        "attractionManufacturer": "Gelokaliseerde biografie van de fabrikant.",
-        "image": "Gelokaliseerde alt-teksten, bijschriften en credits.",
-        "imageTag": "Gelokaliseerde taglabels en beschrijvingen.",
-        "accessConditionType": "Herbruikbare catalogus van types toegangsvoorwaarden."
-      }
-    },
     "m14": {
       "kicker": "Administratie",
       "sidebarTitle": "Backoffice beheer"

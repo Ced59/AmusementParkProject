@@ -78,7 +78,6 @@
           <p-tab [value]="2">{{ 'admin.parks.tabs.descriptions' | translate }}</p-tab>
           <p-tab [value]="3">{{ 'admin.parks.tabs.logos' | translate }}</p-tab>
           <p-tab [value]="4">{{ 'admin.parks.tabs.photos' | translate }}</p-tab>
-          <p-tab [value]="5">{{ 'admin.jsonImport.tab' | translate }}</p-tab>
         </p-tablist>
 
         <p-tabpanels>
@@ -182,16 +181,6 @@
             }
           </p-tabpanel>
 
-          <p-tabpanel [value]="5">
-            @if (activeTabIndex() === 5) {
-              <app-admin-json-import-tab
-                entityType="park"
-                [entityId]="parkId()"
-                [exampleJson]="parkJsonImportExample"
-                (applied)="saveSection()">
-              </app-admin-json-import-tab>
-            }
-          </p-tabpanel>
         </p-tabpanels>
       </p-tabs>
     </form>

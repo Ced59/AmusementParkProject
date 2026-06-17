@@ -103,7 +103,6 @@
         "data": "Monitorare importazioni, fonti e processi dati.",
         "founders": "Gestire fondatori e biografie collegati ai parchi.",
         "auditLogs": "Consultare le azioni amministrative sensibili registrate.",
-        "localizedContent": "Importare rapidamente testi localizzati via JSON dopo aver scelto una destinazione.",
         "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale.",
         "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow."
       }
@@ -207,92 +206,7 @@
       "newTagPlaceholder": "es.: logo-ufficiale",
       "createTag": "Crea tag"
     },
-    "jsonImport": {
-      "tab": "Import JSON",
-      "kicker": "Import JSON",
-      "title": "Importare i dati di questa entità",
-      "description": "Incolla un JSON parziale o completo per compilare rapidamente i campi supportati, senza gestire foto o creare entità figlie.",
-      "resetExample": "Ripristina esempio",
-      "jsonLabel": "JSON entità",
-      "apply": "Applica JSON",
-      "applying": "Applicazione…",
-      "disabledUntilSave": "Salva prima questa entità prima di importare JSON.",
-      "messages": {
-        "invalidJson": "Il JSON non è valido.",
-        "success": "JSON applicato. Ricarica o controlla le schede se necessario.",
-        "error": "Impossibile applicare il JSON."
-      },
-      "help": {
-        "title": "Formato accettato",
-        "partial": "Un JSON parziale modifica solo i campi presenti.",
-        "merge": "I valori localizzati vengono uniti per lingua, salvo replaceExisting o mode: replace.",
-        "accessConditions": "Per gli elementi del parco, accessConditions può creare o aggiornare condizioni e tipi riutilizzabili."
-      }
-    },
     "loading": "Caricamento...",
-    "localizedContent": {
-      "navTitle": "Import JSON",
-      "kicker": "Import JSON",
-      "title": "Importare JSON entità",
-      "subtitle": "Scegli un’entità esistente e applica un JSON parziale o completo ai campi supportati.",
-      "selection": {
-        "title": "1. Scegliere la destinazione",
-        "description": "La selezione usa risultati leggibili per evitare modifiche basate solo su un ID tecnico.",
-        "entityType": "Tipo di entità",
-        "search": "Cerca",
-        "searchPlaceholder": "Nome parco, attrazione, area, produttore…",
-        "searchButton": "Cerca",
-        "searching": "Ricerca…",
-        "empty": "Avvia una ricerca per mostrare le destinazioni disponibili."
-      },
-      "editor": {
-        "title": "2. Incollare il JSON",
-        "description": "Il JSON viene validato dall’API e applicato tramite il livello Application.",
-        "resetExample": "Ripristina esempio",
-        "selected": "Destinazione selezionata",
-        "noTarget": "Nessuna destinazione selezionata.",
-        "jsonLabel": "JSON localizzato",
-        "apply": "Applica JSON",
-        "applying": "Applicazione…"
-      },
-      "help": {
-        "title": "Formato accettato",
-        "merge": "Per impostazione predefinita, le lingue fornite vengono unite ai valori esistenti: le altre lingue sono conservate.",
-        "replace": "Aggiungi \"replaceExisting\": true o \"mode\": \"replace\" per sostituire completamente il campo localizzato.",
-        "fields": "Campi supportati: descriptions, names, description, biography, altTexts, captions, credits, labels a seconda del tipo scelto.",
-        "accessConditions": "Per un elemento di parco di tipo attrazione, accessConditions può creare o aggiornare condizioni: type, customTypeKey implicito per un tipo sconosciuto, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label e description."
-      },
-      "messages": {
-        "searchError": "Impossibile caricare le destinazioni localizzabili.",
-        "selectTargetFirst": "Seleziona prima una destinazione.",
-        "invalidJson": "Il JSON inserito non è valido.",
-        "applySuccess": "JSON localizzato applicato correttamente.",
-        "applyNoField": "Nessun campo localizzato è stato aggiornato.",
-        "applyError": "Impossibile applicare il JSON localizzato."
-      },
-      "entityTypes": {
-        "park": "Parco",
-        "parkZone": "Area del parco",
-        "parkItem": "Elemento del parco",
-        "parkOperator": "Operatore",
-        "parkFounder": "Fondatore",
-        "attractionManufacturer": "Produttore",
-        "image": "Immagine",
-        "imageTag": "Tag immagine",
-        "accessConditionType": "Tipo di condizione di accesso"
-      },
-      "entityHints": {
-        "park": "Descrizione localizzata del parco.",
-        "parkZone": "Nome e descrizione localizzati dell’area.",
-        "parkItem": "Descrizione localizzata dell’elemento, con condizioni di accesso se attrazione.",
-        "parkOperator": "Descrizione localizzata dell’operatore.",
-        "parkFounder": "Biografia localizzata del fondatore.",
-        "attractionManufacturer": "Biografia localizzata del produttore.",
-        "image": "Testi alternativi, didascalie e crediti localizzati.",
-        "imageTag": "Etichette e descrizioni localizzate del tag.",
-        "accessConditionType": "Catalogo riutilizzabile dei tipi di condizioni di accesso."
-      }
-    },
     "m14": {
       "kicker": "Amministrazione",
       "sidebarTitle": "Controllo back-office"

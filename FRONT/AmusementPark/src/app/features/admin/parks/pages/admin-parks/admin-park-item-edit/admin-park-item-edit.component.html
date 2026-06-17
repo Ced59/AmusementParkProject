@@ -2,8 +2,6 @@
   [form]="form"
   [activeTabIndex]="activeTabIndex()"
   [isEditMode]="isEditMode()"
-  [entityId]="itemId()"
-  [jsonImportExample]="parkItemJsonImportExample"
   [isAttractionCategory]="isAttractionCategory()"
   [currentLang]="currentLang()"
   [statusLabel]="getEditorStatusLabel()"
@@ -75,6 +73,5 @@
   (uploadPhoto)="onUploadPhoto()"
   (setCurrentPhoto)="onSetCurrentPhoto($event)"
   (deletePhoto)="onDeletePhoto($event)"
-  (photosPageChange)="onPhotosPageChange($event)"
-  (jsonImported)="reloadCurrentItem()">
+  (photosPageChange)="onPhotosPageChange($event)">
 </app-admin-park-item-edit-form>

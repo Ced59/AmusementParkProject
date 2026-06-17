@@ -4,7 +4,6 @@
   .reference-edit-page,
   .admin-user-page,
   .park-graph-upserts,
-  .admin-localized-content,
   app-admin-park-item-edit-form,
   app-admin-park-zone-edit {
     min-width: 0;
@@ -17,7 +16,7 @@
   app-admin-park-zone-edit > .p-card {
     width: 100%;
     overflow: hidden;
-    border-radius: var(--radius-xl);
+    border-radius: var(--admin-radius, 0.5rem);
   }
 
   .admin-editor-card .p-card-body,
@@ -61,7 +60,6 @@
   .security-grid,
   .photo-upload-grid,
   .locations-layout,
-  .admin-localized-content__grid,
   .park-graph-upserts__grid {
     min-width: 0;
   }
@@ -75,7 +73,6 @@
   .security-grid > *,
   .photo-upload-grid > *,
   .locations-layout > *,
-  .admin-localized-content__grid > *,
   .park-graph-upserts__grid > * {
     min-width: 0;
   }
@@ -104,7 +101,7 @@
   .app-input,
   .app-select,
   .json-editor,
-  .admin-localized-content__textarea {
+  textarea {
     max-width: 100%;
   }
 
@@ -184,8 +181,6 @@
     .editor-head,
     .result-head,
     .admin-reference-images__header,
-    .admin-localized-content__editor-head,
-    .admin-localized-content__panel-header,
     .management-links-card,
     .visibility-card,
     .access-condition-card__header,
@@ -262,8 +257,6 @@
     .height-requirement-grid,
     .access-condition-type-create,
     .locations-layout,
-    .admin-localized-content__grid,
-    .admin-localized-content__search-grid,
     .park-graph-upserts__grid {
       grid-template-columns: 1fr !important;
     }
@@ -366,11 +359,11 @@
 
     .leaflet-map-container {
       height: min(70vh, 360px) !important;
-      border-radius: var(--radius-lg) !important;
+      border-radius: var(--admin-radius, 0.5rem) !important;
     }
 
     .json-editor,
-    .admin-localized-content__textarea {
+    textarea {
       min-height: min(62vh, 28rem) !important;
       font-size: 0.82rem !important;
     }
@@ -383,15 +376,14 @@
     .admin-list-header h2,
     .page-header h2,
     .reference-edit-page h2 {
-      font-size: clamp(1.25rem, 8vw, 1.65rem) !important;
+      font-size: 1.35rem !important;
       line-height: 1.08;
     }
 
     .admin-park-edit,
     .reference-edit-page,
     .admin-user-page,
-    .park-graph-upserts,
-    .admin-localized-content {
+    .park-graph-upserts {
       gap: 0.75rem;
     }
 
@@ -405,7 +397,7 @@
     .management-links-card,
     .visibility-card,
     .admin-reference-images {
-      border-radius: var(--radius-lg) !important;
+      border-radius: var(--admin-radius, 0.5rem) !important;
     }
 
     .admin-list-card .p-card-body,
@@ -468,7 +460,6 @@
 .admin-shell .reference-edit-page,
 .admin-shell .admin-user-page,
 .admin-shell .park-graph-upserts,
-.admin-shell .admin-localized-content,
 .admin-shell app-admin-park-item-edit-form,
 .admin-shell app-admin-park-zone-edit {
   min-inline-size: 0;
@@ -532,7 +523,7 @@
   .admin-shell .reference-edit-page,
   .admin-shell .admin-user-page,
   .admin-shell .park-graph-upserts,
-  .admin-shell .admin-localized-content {
+  .admin-shell .park-graph-upserts {
     inline-size: 100%;
   }
 
@@ -541,7 +532,7 @@
   }
 
   .admin-shell .p-tablist {
-    border-radius: var(--radius-lg);
+    border-radius: var(--admin-radius, 0.5rem);
   }
 
   .admin-shell .p-tab {

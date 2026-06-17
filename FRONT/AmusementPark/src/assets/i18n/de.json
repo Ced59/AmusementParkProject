@@ -92,19 +92,18 @@
     },
     "dashboard": {
       "title": "Dashboard",
-      "subtitle": "Einstieg ins Backoffice: Wähle einen Bereich im linken Menü oder über die folgenden Schnellzugriffe.",
+      "subtitle": "Einstieg ins Backoffice: WÃ¤hle einen Bereich im linken MenÃ¼ oder Ã¼ber die folgenden Schnellzugriffe.",
       "shortcuts": {
         "users": "Konten, Rollen und Zugriffe verwalten.",
-        "parks": "Parks filtern, priorisieren und veröffentlichen.",
+        "parks": "Parks filtern, priorisieren und verÃ¶ffentlichen.",
         "parkItems": "Attraktionen, Shops, Restaurants und Services verwalten.",
-        "operators": "Die mit Parks verknüpften Betreiber pflegen.",
+        "operators": "Die mit Parks verknÃ¼pften Betreiber pflegen.",
         "manufacturers": "Hersteller und Anlagenbauer pflegen.",
-        "images": "Medien, Logos und Website-Bilder prüfen.",
-        "data": "Importe, Quellen und Datenverarbeitung überwachen.",
-        "founders": "Gründer und Biografien verwalten, die mit Parks verknüpft sind.",
-        "auditLogs": "Protokollierte sensible Verwaltungsaktionen prüfen.",
-        "localizedContent": "Lokalisierte Texte nach Zielauswahl schnell per JSON importieren.",
-        "parkGraphUpserts": "Ein vollständiges oder teilweises Park-JSON prüfen und anwenden.",
+        "images": "Medien, Logos und Website-Bilder prÃ¼fen.",
+        "data": "Importe, Quellen und Datenverarbeitung Ã¼berwachen.",
+        "founders": "GrÃ¼nder und Biografien verwalten, die mit Parks verknÃ¼pft sind.",
+        "auditLogs": "Protokollierte sensible Verwaltungsaktionen prÃ¼fen.",
+        "parkGraphUpserts": "Ein vollstÃ¤ndiges oder teilweises Park-JSON prÃ¼fen und anwenden.",
         "seoSitemaps": "Sitemap-Index, XML-Bereiche, Statistiken und IndexNow verwalten."
       }
     },
@@ -207,92 +206,7 @@
       "newTagPlaceholder": "z. B.: offizielles-logo",
       "createTag": "Tag erstellen"
     },
-    "jsonImport": {
-      "tab": "JSON-Import",
-      "kicker": "JSON-Import",
-      "title": "Daten dieser Entität importieren",
-      "description": "Füge ein teilweises oder vollständiges JSON ein, um unterstützte Felder schnell zu füllen, ohne Fotos zu verwalten oder untergeordnete Entitäten zu erstellen.",
-      "resetExample": "Beispiel zurücksetzen",
-      "jsonLabel": "Entitäts-JSON",
-      "apply": "JSON anwenden",
-      "applying": "Wird angewendet…",
-      "disabledUntilSave": "Speichere diese Entität zuerst, bevor du JSON importierst.",
-      "messages": {
-        "invalidJson": "Das JSON ist ungültig.",
-        "success": "JSON angewendet. Lade neu oder prüfe die Tabs bei Bedarf.",
-        "error": "JSON konnte nicht angewendet werden."
-      },
-      "help": {
-        "title": "Akzeptiertes Format",
-        "partial": "Ein teilweises JSON ändert nur enthaltene Felder.",
-        "merge": "Lokalisierte Werte werden pro Sprache zusammengeführt, außer mit replaceExisting oder mode: replace.",
-        "accessConditions": "Für Parkelemente kann accessConditions Bedingungen und wiederverwendbare Typen erstellen oder aktualisieren."
-      }
-    },
     "loading": "Laden...",
-    "localizedContent": {
-      "navTitle": "JSON-Importe",
-      "kicker": "JSON-Import",
-      "title": "Entitäts-JSON importieren",
-      "subtitle": "Wähle eine bestehende Entität aus und wende ein teilweises oder vollständiges JSON auf die unterstützten Felder an.",
-      "selection": {
-        "title": "1. Ziel auswählen",
-        "description": "Die Auswahl erfolgt über lesbare Suchergebnisse, damit keine Entität nur über eine technische ID geändert wird.",
-        "entityType": "Entitätstyp",
-        "search": "Suche",
-        "searchPlaceholder": "Parkname, Attraktion, Bereich, Hersteller…",
-        "searchButton": "Suchen",
-        "searching": "Suche…",
-        "empty": "Starte eine Suche, um verfügbare Ziele anzuzeigen."
-      },
-      "editor": {
-        "title": "2. JSON einfügen",
-        "description": "Das JSON wird von der API validiert und über die Application-Schicht angewendet.",
-        "resetExample": "Beispiel zurücksetzen",
-        "selected": "Ausgewähltes Ziel",
-        "noTarget": "Kein Ziel ausgewählt.",
-        "jsonLabel": "Lokalisiertes JSON",
-        "apply": "JSON anwenden",
-        "applying": "Wird angewendet…"
-      },
-      "help": {
-        "title": "Akzeptiertes Format",
-        "merge": "Standardmäßig werden gelieferte Sprachen mit vorhandenen Werten zusammengeführt: andere Sprachen bleiben erhalten.",
-        "replace": "Füge \"replaceExisting\": true oder \"mode\": \"replace\" hinzu, um das lokalisierte Feld vollständig zu ersetzen.",
-        "fields": "Unterstützte Felder: descriptions, names, description, biography, altTexts, captions, credits, labels je nach gewähltem Typ.",
-        "accessConditions": "Für ein Parkelement der Kategorie Attraktion kann accessConditions Bedingungen erstellen oder aktualisieren: type, impliziter customTypeKey bei unbekanntem Typ, value, unit, requiresAccompaniment, minimumCompanionAge, displayOrder, label und description."
-      },
-      "messages": {
-        "searchError": "Lokalisierbare Ziele konnten nicht geladen werden.",
-        "selectTargetFirst": "Wähle zuerst ein Ziel aus.",
-        "invalidJson": "Das eingegebene JSON ist ungültig.",
-        "applySuccess": "Lokalisiertes JSON erfolgreich angewendet.",
-        "applyNoField": "Kein lokalisiertes Feld wurde aktualisiert.",
-        "applyError": "Lokalisiertes JSON konnte nicht angewendet werden."
-      },
-      "entityTypes": {
-        "park": "Park",
-        "parkZone": "Parkbereich",
-        "parkItem": "Parkelement",
-        "parkOperator": "Betreiber",
-        "parkFounder": "Gründer",
-        "attractionManufacturer": "Hersteller",
-        "image": "Bild",
-        "imageTag": "Bild-Tag",
-        "accessConditionType": "Zugangsbedingungstyp"
-      },
-      "entityHints": {
-        "park": "Lokalisierte Parkbeschreibung.",
-        "parkZone": "Lokalisierter Name und Beschreibung des Bereichs.",
-        "parkItem": "Lokalisierte Elementbeschreibung, mit Zugangsbedingungen bei Attraktionen.",
-        "parkOperator": "Lokalisierte Betreiberbeschreibung.",
-        "parkFounder": "Lokalisierte Gründerbiografie.",
-        "attractionManufacturer": "Lokalisierte Herstellerbiografie.",
-        "image": "Lokalisierte Alternativtexte, Bildunterschriften und Credits.",
-        "imageTag": "Lokalisierte Tag-Bezeichnungen und Beschreibungen.",
-        "accessConditionType": "Wiederverwendbarer Katalog der Zugangsbedingungstypen."
-      }
-    },
     "m14": {
       "kicker": "Administration",
       "sidebarTitle": "Backoffice-Steuerung"

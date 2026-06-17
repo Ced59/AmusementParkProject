@@ -75,7 +75,6 @@
         @if (isAttractionCategory) {
           <p-tab [value]="4">{{ 'admin.parks.items.tabs.photos' | translate }}</p-tab>
         }
-        <p-tab [value]="5">{{ 'admin.jsonImport.tab' | translate }}</p-tab>
       </p-tablist>
 
       <p-tabpanels>
@@ -194,16 +193,6 @@
           </p-tabpanel>
         }
 
-        <p-tabpanel [value]="5">
-          @if (activeTabIndex === 5) {
-            <app-admin-json-import-tab
-              entityType="parkItem"
-              [entityId]="entityId"
-              [exampleJson]="jsonImportExample"
-              (applied)="jsonImported.emit()">
-            </app-admin-json-import-tab>
-          }
-        </p-tabpanel>
       </p-tabpanels>
     </p-tabs>
   </form>
