@@ -17,6 +17,10 @@
       <span class="admin-total-pill">{{ pagination().totalItems || 0 }} {{ 'admin.videos.total' | translate }}</span>
     </header>
 
+    @if (operationErrorKey()) {
+      <p class="admin-videos-inline-error" role="alert">{{ operationErrorKey()! | translate }}</p>
+    }
+
     <section class="admin-videos-controls" aria-label="Video filters">
       <div class="admin-toolbar">
         <label class="admin-toolbar__search">

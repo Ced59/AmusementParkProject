@@ -54,6 +54,7 @@ export class AdminVideosComponent implements OnInit {
   protected readonly selectedVideo = this.stateFacade.selectedVideo;
   protected readonly query = this.stateFacade.query;
   protected readonly pagination = this.stateFacade.pagination;
+  protected readonly operationErrorKey = this.stateFacade.operationErrorKey;
   protected readonly providers: VideoHostingProvider[] = [VideoHostingProvider.YOUTUBE, VideoHostingProvider.DAILYMOTION, VideoHostingProvider.VIMEO, VideoHostingProvider.OTHER];
   protected readonly ownerTypes: VideoOwnerType[] = [VideoOwnerType.PARK, VideoOwnerType.PARK_ITEM];
   protected readonly videoTypes: VideoType[] = [
