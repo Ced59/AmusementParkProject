@@ -1832,7 +1832,8 @@
     "actions": {
       "viewDetails": "Voir la fiche",
       "backToItems": "Retour aux éléments",
-      "backToPark": "Retour au parc"
+      "backToPark": "Retour au parc",
+      "videos": "Vidéos"
     },
     "filters": {
       "search": "Recherche",
@@ -2098,6 +2099,7 @@
       "website": "Site web",
       "backToList": "Retour à la liste",
       "images": "Images",
+      "videos": "Vidéos",
       "map": "Carte",
       "browseZones": "Parcourir toutes les zones"
     },

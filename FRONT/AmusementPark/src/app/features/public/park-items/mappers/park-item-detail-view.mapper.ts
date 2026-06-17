@@ -24,6 +24,7 @@ import {
   buildParkLink,
   buildSearchNavigation,
   buildTypeNavigation,
+  buildVideosLink,
   buildZoneNavigation
 } from './park-item-detail-navigation.mapper';
 import { buildPhotos } from './park-item-detail-photos.mapper';
@@ -58,7 +59,7 @@ export function mapParkItemToDetailViewModel(
   const locationPoints: ParkItemLocationPointViewModel[] = buildLocationPoints(item, currentLanguage);
   const specGroups: ParkItemDetailSpecGroupViewModel[] = buildSpecGroups(technicalRows, performanceRows, experienceRows);
   if (locationPoints.length === 0) {
-    specGroups.push(buildNoGeolocationSpecGroup(currentLanguage));
+    specGroups.push(buildNoGeolocationSpecGroup());
   }
 
   const hasPreciseLocations: boolean = locationPoints.some((point: ParkItemLocationPointViewModel) => !point.isGeneralFallback);
@@ -67,6 +68,7 @@ export function mapParkItemToDetailViewModel(
   const itemsLink: string[] | null = buildItemsLink(park, currentLanguage);
   const parkLink: string[] | null = buildParkLink(park, currentLanguage);
   const imagesLink: string[] | null = heroPhoto ? buildImagesLink(park, item, currentLanguage) : null;
+  const videosLink: string[] | null = buildVideosLink(park, item, currentLanguage);
 
   return {
     name: item.name?.trim() ?? '',
@@ -79,6 +81,7 @@ export function mapParkItemToDetailViewModel(
     parkLink,
     itemsLink,
     imagesLink,
+    videosLink,
     categoryNavigation: buildCategoryNavigation(itemsLink, item.category),
     typeNavigation: buildTypeNavigation(itemsLink, item.type),
     subtypeNavigation: buildSearchNavigation(itemsLink, item.subtype),
@@ -103,13 +106,14 @@ export function mapParkItemToDetailViewModel(
   };
 }
 
-function buildNoGeolocationSpecGroup(currentLanguage: string): ParkItemDetailSpecGroupViewModel {
+function buildNoGeolocationSpecGroup(): ParkItemDetailSpecGroupViewModel {
   return {
     titleKey: 'parkItems.detail.locationTitle',
     iconClass: 'pi pi-map-marker',
     rows: [{
       labelKey: 'parkItems.fields.coordinates',
-      value: currentLanguage === 'fr' ? 'Pas de géolocalisation pour cet élément' : 'No geolocation is available for this item.',
+      value: '',
+      valueKey: 'parkItems.detail.noGeolocationMessage',
       iconClass: 'pi pi-map-marker',
       isTextualValue: true
     }]

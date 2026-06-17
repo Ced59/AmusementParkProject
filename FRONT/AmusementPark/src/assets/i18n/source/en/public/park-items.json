@@ -3,7 +3,8 @@
     "actions": {
       "viewDetails": "View item",
       "backToItems": "Back to items",
-      "backToPark": "Back to park"
+      "backToPark": "Back to park",
+      "videos": "Videos"
     },
     "filters": {
       "search": "Search",

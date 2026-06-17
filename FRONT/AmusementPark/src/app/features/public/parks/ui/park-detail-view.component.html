@@ -96,6 +96,13 @@
               </a>
             }
 
+            @if (currentPark.videosLink) {
+              <a appUiButton="ghost" [routerLink]="currentPark.videosLink">
+                <i class="pi pi-video" aria-hidden="true"></i>
+                <span>{{ 'parks.actions.videos' | translate }}</span>
+              </a>
+            }
+
             @if (currentPark.mapLink) {
               <a appUiButton="ghost" [routerLink]="currentPark.mapLink">
                 <i class="pi pi-map" aria-hidden="true"></i>

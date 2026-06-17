@@ -73,6 +73,7 @@ export interface ParkItemDetailViewModel {
   parkLink: string[] | null;
   itemsLink: string[] | null;
   imagesLink: string[] | null;
+  videosLink: string[] | null;
   categoryNavigation: ParkItemDetailNavigationLinkViewModel | null;
   typeNavigation: ParkItemDetailNavigationLinkViewModel | null;
   subtypeNavigation: ParkItemDetailNavigationLinkViewModel | null;
