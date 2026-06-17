@@ -17,6 +17,7 @@ export class UiParkCardComponent {
   @Input() park: ParkCardModel | null = null;
   @Input() detailLink: string[] | null = null;
   @Input() compact: boolean = false;
+  @Input() showDescriptionInCompact: boolean = false;
   @Input() showWebsiteAction: boolean = true;
   @Input() primaryActionLabelKey: string = 'parks.actions.viewDetails';
 
@@ -29,7 +30,7 @@ export class UiParkCardComponent {
   }
 
   protected get hasDescription(): boolean {
-    return !!this.park?.shortDescription && !this.compact;
+    return !!this.park?.shortDescription && (!this.compact || this.showDescriptionInCompact);
   }
 
   protected get hasDistance(): boolean {

@@ -2,19 +2,19 @@
   "admin": {
     "dashboard": {
       "title": "Panel",
-      "subtitle": "Punkt wejÅ›cia do panelu administracyjnego: wybierz sekcjÄ™ z lewego menu albo ze skrÃ³tÃ³w poniÅ¼ej.",
+      "subtitle": "Punkt wejścia do panelu administracyjnego: wybierz sekcję z lewego menu albo ze skrótów poniżej.",
       "shortcuts": {
-        "users": "ZarzÄ…dzanie kontami, rolami i dostÄ™pem.",
-        "parks": "Filtrowanie, priorytetyzacja i publikowanie parkÃ³w.",
-        "parkItems": "ZarzÄ…dzanie atrakcjami, sklepami, restauracjami i usÅ‚ugami.",
-        "operators": "Utrzymywanie operatorÃ³w powiÄ…zanych z parkami.",
-        "manufacturers": "Utrzymywanie producentÃ³w i konstruktorÃ³w atrakcji.",
-        "images": "Kontrola mediÃ³w, logo i grafik strony.",
-        "data": "Monitorowanie importÃ³w, ÅºrÃ³deÅ‚ i przetwarzania danych.",
-        "founders": "ZarzÄ…dzaj zaÅ‚oÅ¼ycielami i biografiami powiÄ…zanymi z parkami.",
-        "auditLogs": "PrzeglÄ…daÄ‡ zapisane wraÅ¼liwe akcje administracyjne.",
-        "parkGraphUpserts": "PodglÄ…d i zastosowanie peÅ‚nego lub czÄ™Å›ciowego JSON parku.",
-        "seoSitemaps": "ZarzÄ…dzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow."
+        "users": "Zarządzanie kontami, rolami i dostępem.",
+        "parks": "Filtrowanie, priorytetyzacja i publikowanie parków.",
+        "parkItems": "Zarządzanie atrakcjami, sklepami, restauracjami i usługami.",
+        "operators": "Utrzymywanie operatorów powiązanych z parkami.",
+        "manufacturers": "Utrzymywanie producentów i konstruktorów atrakcji.",
+        "images": "Kontrola mediów, logo i grafik strony.",
+        "data": "Monitorowanie importów, źródeł i przetwarzania danych.",
+        "founders": "Zarządzaj założycielami i biografiami powiązanymi z parkami.",
+        "auditLogs": "Przeglądać zapisane wrażliwe akcje administracyjne.",
+        "parkGraphUpserts": "Podgląd i zastosowanie pełnego lub częściowego JSON parku.",
+        "seoSitemaps": "Zarządzaj indeksem sitemap, sekcjami XML, statystykami i IndexNow."
       }
     }
   }

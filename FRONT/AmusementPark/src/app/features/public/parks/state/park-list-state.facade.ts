@@ -16,6 +16,7 @@ import { mapArray, mapCollectionResponse, mapParkToCardModel } from '@shared/uti
 import { Park } from '@app/models/parks/park';
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { ParkMapPointViewModel } from '../models/park-map-point-view.model';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
@@ -44,7 +45,8 @@ export class ParkListStateFacade {
   public readonly state = this.screenStateStore.state;
   public readonly mapState = this.mapStateStore.state;
   public readonly parks: Signal<ParkCardModel[]> = computed(() => {
-    return mapArray(this.screenStateStore.data()?.parks, (park: Park) => mapParkToCardModel(park, this.currentLanguageSignal(), this.countryDisplayService));
+    return mapArray(this.screenStateStore.data()?.parks, (park: Park) =>
+      mapParkToCardModel(park, this.currentLanguageSignal(), this.countryDisplayService, this.textTruncator));
   });
   public readonly displayedParks: Signal<ParkCardModel[]> = computed(() => {
     const selectedPark: ParkCardModel | null = this.selectedParkCardSignal();
@@ -77,6 +79,7 @@ export class ParkListStateFacade {
   constructor(
     @Inject(PARK_LIST_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: ParkListStateParksApiServicePort,
     private readonly countryDisplayService: CountryDisplayService,
+    private readonly textTruncator: NaturalTextTruncatorService,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -133,7 +136,7 @@ export class ParkListStateFacade {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (park: Park) => {
-          const selectedPark: ParkCardModel = mapParkToCardModel(park, this.currentLanguageSignal(), this.countryDisplayService);
+          const selectedPark: ParkCardModel = mapParkToCardModel(park, this.currentLanguageSignal(), this.countryDisplayService, this.textTruncator);
           this.selectedParkCardSignal.set(selectedPark);
         },
         error: (error: unknown) => {

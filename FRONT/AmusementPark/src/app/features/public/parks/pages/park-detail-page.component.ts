@@ -23,7 +23,9 @@ export class ParkDetailPageComponent implements OnInit {
   protected readonly heroImageSizes: string = '(max-width: 900px) 100vw, 900px';
   protected readonly heroImageSrcWidth: number = 960;
   protected readonly state = this.stateFacade.state;
+  protected readonly nearbyState = this.stateFacade.nearbyState;
   protected readonly park = this.stateFacade.park;
+  protected readonly nearbyParks = this.stateFacade.nearbyParks;
   protected readonly summary = this.stateFacade.summary;
   protected readonly currentLang = signal<string>('en');
 

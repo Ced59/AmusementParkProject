@@ -11,6 +11,7 @@ import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { mapParkItemToDetailViewModel } from '../mappers/park-item-detail-view.mapper';
 import { ParkItemDetailViewModel } from '../models/park-item-detail-view.model';
 import {
@@ -51,7 +52,8 @@ export class ParkItemDetailStateFacade {
       sourceData?.zoneName ?? null,
       this.currentLanguageSignal(),
       sourceData?.relatedItems ?? [],
-      sourceData?.photos ?? []
+      sourceData?.photos ?? [],
+      this.textTruncator
     );
   });
 
@@ -63,7 +65,8 @@ export class ParkItemDetailStateFacade {
     @Inject(PARK_ITEM_DETAIL_IMAGES_PORT) private readonly imagesApiService: ParkItemDetailImagesPort,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService,
-    private readonly ssrRuntimeService: SsrRuntimeService
+    private readonly ssrRuntimeService: SsrRuntimeService,
+    private readonly textTruncator: NaturalTextTruncatorService
   ) {
   }
 

@@ -1,13 +1,22 @@
 import { Park } from '@app/models/parks/park';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/display/park-presentation.helpers';
 import { resolveLocalizedCountryName } from '@shared/utils/display/country-display.helpers';
 import { resolveLocalizedValue, stripHtml } from '@shared/utils/localization';
 
-export function mapParkToCardModel(park: Park, currentLanguage: string, countryDisplayService: CountryDisplayService | null = null): ParkCardModel {
+const PARK_CARD_DESCRIPTION_MAX_LENGTH = 140;
+
+export function mapParkToCardModel(
+  park: Park,
+  currentLanguage: string,
+  countryDisplayService: CountryDisplayService | null = null,
+  textTruncator: NaturalTextTruncatorService | null = null
+): ParkCardModel {
   const shortDescription: string | null = buildShortDescription(
-    resolveLocalizedValue(park.descriptions, currentLanguage) ?? null
+    resolveLocalizedValue(park.descriptions, currentLanguage) ?? null,
+    textTruncator
   );
   const hasCoordinates: boolean = Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
   const countryName: string | null = countryDisplayService?.resolveLocalizedCountryName(park.countryCode, currentLanguage)
@@ -29,16 +38,20 @@ export function mapParkToCardModel(park: Park, currentLanguage: string, countryD
   };
 }
 
-function buildShortDescription(value: string | null): string | null {
+function buildShortDescription(value: string | null, textTruncator: NaturalTextTruncatorService | null): string | null {
   const plainText: string = stripHtml(value);
 
   if (!plainText) {
     return null;
   }
 
-  if (plainText.length <= 140) {
+  if (textTruncator) {
+    return textTruncator.truncate(plainText, { maxLength: PARK_CARD_DESCRIPTION_MAX_LENGTH, ellipsis: '...' });
+  }
+
+  if (plainText.length <= PARK_CARD_DESCRIPTION_MAX_LENGTH) {
     return plainText;
   }
 
-  return `${plainText.slice(0, 137).trimEnd()}...`;
+  return `${plainText.slice(0, PARK_CARD_DESCRIPTION_MAX_LENGTH - 3).trimEnd()}...`;
 }

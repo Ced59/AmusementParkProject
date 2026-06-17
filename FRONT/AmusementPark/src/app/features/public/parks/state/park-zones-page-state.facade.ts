@@ -8,6 +8,7 @@ import { ParkExplorer, ParkExplorerBucket, ParkExplorerCount } from '@app/models
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { getParkItemTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
@@ -93,7 +94,7 @@ export class ParkZonesPageStateFacade {
       totalItems: zoneItems.length,
       typeHighlights: this.buildTypeHighlights(zoneItems, 5),
       map: this.buildMap(park, zoneItems),
-      items: zoneItems.map((item: ParkItem) => mapParkItemToCardViewModel(item, park, this.currentLanguageSignal(), null, zoneName))
+      items: zoneItems.map((item: ParkItem) => mapParkItemToCardViewModel(item, park, this.currentLanguageSignal(), null, zoneName, this.textTruncator))
     };
   });
 
@@ -132,6 +133,7 @@ export class ParkZonesPageStateFacade {
     @Inject(PARK_ZONES_PAGE_STATE_PARKS_API_SERVICE_PORT) private readonly parksApiService: ParkZonesPageStateParksApiServicePort,
     @Inject(PARK_ZONES_PAGE_STATE_PARK_ZONES_API_SERVICE_PORT) private readonly parkZonesApiService: ParkZonesPageStateParkZonesApiServicePort,
     @Inject(PARK_ZONES_PAGE_STATE_PARK_ITEMS_API_SERVICE_PORT) private readonly parkItemsApiService: ParkZonesPageStateParkItemsApiServicePort,
+    private readonly textTruncator: NaturalTextTruncatorService,
     private readonly destroyRef: DestroyRef
   ) {
   }

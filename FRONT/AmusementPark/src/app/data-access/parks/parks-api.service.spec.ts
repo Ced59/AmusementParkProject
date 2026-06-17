@@ -2,6 +2,7 @@ import { HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { Park } from '@app/models/parks/park';
+import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { environment } from '../../../environments/environment';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
@@ -89,6 +90,37 @@ describe('ParksApiService', () => {
     expect(thirdResults[0]?.park.name).toBe('Updated Park');
   });
 
+  it('shares in-flight nearest park requests without persisting stale data', () => {
+    const firstResponse: ParkDistanceResponse = createNearestResponse('near-1');
+    const secondResponse: ParkDistanceResponse = createNearestResponse('near-2');
+    const firstResults: ParkDistanceResponse[] = [];
+    const secondResults: ParkDistanceResponse[] = [];
+    const thirdResults: ParkDistanceResponse[] = [];
+
+    service.getNearestParks('park-1', 4, null).subscribe((response: ParkDistanceResponse): void => {
+      firstResults.push(response);
+    });
+    service.getNearestParks('park-1', 4, null).subscribe((response: ParkDistanceResponse): void => {
+      secondResults.push(response);
+    });
+
+    const sharedRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/park-1/nearby?limit=4`);
+    expect(sharedRequest.request.method).toBe('GET');
+    sharedRequest.flush(firstResponse);
+
+    expect(firstResults[0]?.targets[0]?.park.id).toBe('near-1');
+    expect(secondResults[0]?.targets[0]?.park.id).toBe('near-1');
+
+    service.getNearestParks('park-1', 4, null).subscribe((response: ParkDistanceResponse): void => {
+      thirdResults.push(response);
+    });
+
+    const refreshedRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}parks/park-1/nearby?limit=4`);
+    refreshedRequest.flush(secondResponse);
+
+    expect(thirdResults[0]?.targets[0]?.park.id).toBe('near-2');
+  });
+
   it('normalizes park write requests for create and update', () => {
     const park: Park = createPark({
       isVisible: undefined,
@@ -147,6 +179,32 @@ describe('ParksApiService', () => {
         hotelCount: 0,
         countsByCategory: {}
       }
+    };
+  }
+
+  function createNearestResponse(targetParkId: string): ParkDistanceResponse {
+    return {
+      source: {
+        id: 'park-1',
+        name: 'Park',
+        countryCode: 'BE',
+        latitude: 50,
+        longitude: 3
+      },
+      distanceUnit: 'km',
+      calculationKind: 'nearest',
+      targets: [
+        {
+          proximityRank: 1,
+          distanceKilometers: 12,
+          distanceMeters: 12000,
+          distanceUnit: 'km',
+          estimatedTravelDurationMinutes: 18,
+          park: createPark({ id: targetParkId })
+        }
+      ],
+      missingTargetParkIds: [],
+      unavailableTargetParkIds: []
     };
   }
 });

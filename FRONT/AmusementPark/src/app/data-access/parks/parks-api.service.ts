@@ -45,6 +45,7 @@ interface ParksHttpOptions {
 })
 export class ParksApiService {
   private readonly parkDetailSummaryRequests = new Map<string, Observable<ParkDetailSummary>>();
+  private readonly nearestParkRequests = new Map<string, Observable<ParkDistanceResponse>>();
 
   private readonly jsonHttpOptions = {
     headers: new HttpHeaders({
@@ -112,7 +113,21 @@ export class ParksApiService {
 
   getNearestParks(sourceParkId: string, limit: number = 4, maxDistanceKilometers: number | null = null, options: ParksHttpOptions = {}): Observable<ParkDistanceResponse> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getNearestParks(sourceParkId, limit, maxDistanceKilometers)}`;
-    return this.http.get<ParkDistanceResponse>(url, options);
+    const pendingRequest: Observable<ParkDistanceResponse> | undefined = this.nearestParkRequests.get(url);
+
+    if (pendingRequest) {
+      return pendingRequest;
+    }
+
+    const request: Observable<ParkDistanceResponse> = this.http.get<ParkDistanceResponse>(url, options).pipe(
+      finalize((): void => {
+        this.nearestParkRequests.delete(url);
+      }),
+      shareReplay({ bufferSize: 1, refCount: false })
+    );
+
+    this.nearestParkRequests.set(url, request);
+    return request;
   }
 
   getParksByLocation(latitude: number, longitude: number, radiusMeters: number, options: ParksHttpOptions = {}): Observable<Park[]> {

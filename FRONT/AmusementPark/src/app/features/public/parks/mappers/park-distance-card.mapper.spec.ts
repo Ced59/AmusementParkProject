@@ -1,4 +1,5 @@
 import { ParkDistanceTarget } from '@app/models/parks/park-distance';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 
 import { mapParkDistanceTargetToCardModel } from './park-distance-card.mapper';
 
@@ -40,5 +41,15 @@ describe('mapParkDistanceTargetToCardModel', () => {
   it('returns null travel duration lines for zero or invalid durations', () => {
     expect(mapParkDistanceTargetToCardModel(createTarget(1, 0), 'en').travelDurationLine).toBeNull();
     expect(mapParkDistanceTargetToCardModel(createTarget(1, Number.NaN), 'en').travelDurationLine).toBeNull();
+  });
+
+  it('maps nearby park descriptions through the shared truncator', () => {
+    const target: ParkDistanceTarget = createTarget(1, 10);
+    target.park.descriptions = [{ languageCode: 'en', value: 'A nearby park description '.repeat(12) }];
+
+    const result = mapParkDistanceTargetToCardModel(target, 'en', null, new NaturalTextTruncatorService());
+
+    expect(result.shortDescription?.length).toBeLessThanOrEqual(140);
+    expect(result.shortDescription?.endsWith('...')).toBeTrue();
   });
 });

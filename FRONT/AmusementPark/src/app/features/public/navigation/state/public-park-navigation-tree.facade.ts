@@ -551,11 +551,11 @@ export class PublicParkNavigationTreeFacade {
     const labels: Record<string, string> = {
       fr: `Images ${itemLabel}`,
       en: `${itemLabel} images`,
-      es: `ImÃ¡genes de ${itemLabel}`,
+      es: `Imágenes de ${itemLabel}`,
       de: `Bilder von ${itemLabel}`,
       it: `Immagini di ${itemLabel}`,
       nl: `Afbeeldingen van ${itemLabel}`,
-      pl: `ZdjÄ™cia ${itemLabel}`,
+      pl: `Zdjęcia ${itemLabel}`,
       pt: `Imagens de ${itemLabel}`
     };
 

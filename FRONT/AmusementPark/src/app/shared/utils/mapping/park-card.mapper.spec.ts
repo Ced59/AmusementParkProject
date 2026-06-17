@@ -1,5 +1,6 @@
 import { Park } from '@app/models/parks/park';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 
 import { mapParkToCardModel } from './park-card.mapper';
 
@@ -46,7 +47,9 @@ describe('mapParkToCardModel', () => {
 
   it('truncates long descriptions and returns null for empty descriptions', () => {
     const longDescription: string = 'a'.repeat(200);
-    expect(mapParkToCardModel(createPark({ descriptions: [{ languageCode: 'en', value: longDescription }] }), 'en').shortDescription)
+    const textTruncator: NaturalTextTruncatorService = new NaturalTextTruncatorService();
+
+    expect(mapParkToCardModel(createPark({ descriptions: [{ languageCode: 'en', value: longDescription }] }), 'en', null, textTruncator).shortDescription)
       .toBe(`${'a'.repeat(137)}...`);
     expect(mapParkToCardModel(createPark({ descriptions: [] }), 'en').shortDescription).toBeNull();
   });

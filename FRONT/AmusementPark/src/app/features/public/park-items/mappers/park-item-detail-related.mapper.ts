@@ -1,5 +1,6 @@
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { mapParkItemToCardViewModel } from './park-item-card.mapper';
 import { ParkItemCardViewModel } from '../models/park-item-card.model';
 
@@ -8,7 +9,8 @@ export function buildRelatedItems(
   park: Park | null,
   relatedItems: ParkItem[],
   currentLanguage: string,
-  zoneName: string | null
+  zoneName: string | null,
+  textTruncator: NaturalTextTruncatorService | null = null
 ): ParkItemCardViewModel[] {
   return relatedItems
     .filter((candidate: ParkItem) => candidate.id !== item.id)
@@ -19,6 +21,7 @@ export function buildRelatedItems(
       park,
       currentLanguage,
       null,
-      candidate.zoneId === item.zoneId ? zoneName : null
+      candidate.zoneId === item.zoneId ? zoneName : null,
+      textTruncator
     ));
 }

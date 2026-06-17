@@ -1,15 +1,17 @@
 import { ParkDistanceTarget } from '@app/models/parks/park-distance';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { mapParkToCardModel } from '@shared/utils/mapping';
 
 export function mapParkDistanceTargetToCardModel(
   target: ParkDistanceTarget,
   currentLanguage: string,
-  countryDisplayService: CountryDisplayService | null = null
+  countryDisplayService: CountryDisplayService | null = null,
+  textTruncator: NaturalTextTruncatorService | null = null
 ): ParkCardModel {
   return {
-    ...mapParkToCardModel(target.park, currentLanguage, countryDisplayService),
+    ...mapParkToCardModel(target.park, currentLanguage, countryDisplayService, textTruncator),
     distanceLine: formatDistance(target.distanceKilometers),
     travelDurationLine: formatTravelDuration(target.estimatedTravelDurationMinutes)
   };

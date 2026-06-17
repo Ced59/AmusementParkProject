@@ -1,14 +1,19 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
+import { ParkDistanceResponse, ParkDistanceTarget } from '@app/models/parks/park-distance';
 import { ParkDetailSummary, ParkDetailSummaryStats } from '@app/models/parks/park-detail-summary';
 import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
+import { Park } from '@app/models/parks/park';
+import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { mapNullable } from '@shared/utils/mapping';
+import { mapParkDistanceTargetToCardModel } from '../mappers/park-distance-card.mapper';
 import { mapParkContentSummaryViewModel } from '../mappers/park-content-summary.mapper';
 import { mapParkToDetailViewModel } from '../mappers/park-detail-view.mapper';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
@@ -18,12 +23,16 @@ import {
   ParkDetailParksPort
 } from './park-detail-data.ports';
 
+const NEARBY_PARKS_LIMIT = 4;
+
 @Injectable()
 export class ParkDetailStateFacade {
   private readonly screenStateStore = new SignalScreenStateStore<ParkDetailSummary>();
+  private readonly nearbyStateStore = new SignalScreenStateStore<ParkDistanceTarget[]>();
   private readonly currentLanguageSignal = signal('en');
 
   public readonly state = this.screenStateStore.state;
+  public readonly nearbyState = this.nearbyStateStore.state;
   public readonly park: Signal<ParkDetailViewModel | null> = computed(() => {
     const summary: ParkDetailSummary | undefined = this.screenStateStore.data();
 
@@ -47,10 +56,22 @@ export class ParkDetailStateFacade {
   public readonly summary: Signal<ParkContentSummaryViewModel | null> = computed(() => {
     return mapParkContentSummaryViewModel(this.park(), this.toExplorerSummary(this.screenStateStore.data()));
   });
+  public readonly nearbyParks: Signal<ParkCardModel[]> = computed(() => {
+    const targets: ParkDistanceTarget[] = this.nearbyStateStore.data() ?? [];
+    const currentLanguage: string = this.currentLanguageSignal();
+
+    return targets.map((target: ParkDistanceTarget) => mapParkDistanceTargetToCardModel(
+      target,
+      currentLanguage,
+      this.countryDisplayService,
+      this.textTruncator
+    ));
+  });
 
   constructor(
     @Inject(PARK_DETAIL_PARKS_PORT) private readonly parksApiService: ParkDetailParksPort,
     private readonly countryDisplayService: CountryDisplayService,
+    private readonly textTruncator: NaturalTextTruncatorService,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
@@ -62,11 +83,14 @@ export class ParkDetailStateFacade {
 
   loadPark(id: string): void {
     const previousData: ParkDetailSummary | undefined = this.screenStateStore.data();
+    const previousNearbyData: ParkDistanceTarget[] | undefined = this.nearbyStateStore.data();
     this.screenStateStore.setLoading(previousData);
+    this.nearbyStateStore.setLoading(previousNearbyData);
 
     this.parksApiService.getParkDetailSummary(id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (summary: ParkDetailSummary) => {
         this.screenStateStore.setReady(summary);
+        this.loadNearbyParks(summary.park);
       },
       error: (error: unknown) => {
         console.error('Error loading park detail summary', error);
@@ -76,6 +100,35 @@ export class ParkDetailStateFacade {
         }
 
         this.screenStateStore.setError('parks.detail.errorMessage', previousData);
+        this.nearbyStateStore.setError('parks.detail.nearby.errorMessage', previousNearbyData);
+      }
+    });
+  }
+
+  private loadNearbyParks(park: Park): void {
+    const parkId: string | null = park.id?.trim() ?? null;
+
+    if (!parkId || !Number.isFinite(park.latitude) || !Number.isFinite(park.longitude)) {
+      this.nearbyStateStore.setEmpty([]);
+      return;
+    }
+
+    this.parksApiService.getNearestParks(parkId, NEARBY_PARKS_LIMIT, null, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (response: ParkDistanceResponse) => {
+        const targets: ParkDistanceTarget[] = response.targets
+          .filter((target: ParkDistanceTarget) => !!target.park?.id && target.park.id !== parkId)
+          .slice(0, NEARBY_PARKS_LIMIT);
+
+        if (targets.length === 0) {
+          this.nearbyStateStore.setEmpty([]);
+          return;
+        }
+
+        this.nearbyStateStore.setReady(targets);
+      },
+      error: (error: unknown) => {
+        console.error('Error loading nearby parks', error);
+        this.nearbyStateStore.setError('parks.detail.nearby.errorMessage', []);
       }
     });
   }
