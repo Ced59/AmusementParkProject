@@ -1,6 +1,6 @@
 import { DestroyRef, Inject, Injectable, Signal, computed } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable, catchError, forkJoin, of } from 'rxjs';
 
 import { CreateVideoTagRequest, UpdateVideoTagRequest } from '@app/models/videos/video-tag-write-request';
 import { PagedResult, DEFAULT_PAGINATION, PaginationContract } from '@shared/models/contracts';
@@ -10,6 +10,7 @@ import { VideoSearchQuery } from '@app/models/videos/video-search-query';
 import { VideoTagDto } from '@app/models/videos/video-tag-dto';
 import { VideoWriteRequest } from '@app/models/videos/video-write-request';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
+import { createPagedResult } from '@shared/utils/mapping';
 
 import {
   ADMIN_VIDEOS_STATE_VIDEOS_API_SERVICE_PORT,
@@ -22,6 +23,7 @@ interface AdminVideosViewModel {
   selectedVideo: VideoDto | null;
   pagination: PaginationContract;
   query: VideoSearchQuery;
+  operationErrorKey: string | null;
 }
 
 const DEFAULT_VIDEO_QUERY: VideoSearchQuery = {
@@ -49,6 +51,7 @@ export class AdminVideosStateFacade {
   public readonly selectedVideo: Signal<VideoDto | null> = computed(() => this.screenStateStore.data()?.selectedVideo ?? null);
   public readonly pagination: Signal<PaginationContract> = computed(() => this.screenStateStore.data()?.pagination ?? DEFAULT_PAGINATION);
   public readonly query: Signal<VideoSearchQuery> = computed(() => this.screenStateStore.data()?.query ?? DEFAULT_VIDEO_QUERY);
+  public readonly operationErrorKey: Signal<string | null> = computed(() => this.screenStateStore.data()?.operationErrorKey ?? null);
 
   constructor(
     @Inject(ADMIN_VIDEOS_STATE_VIDEOS_API_SERVICE_PORT) private readonly videosApiService: AdminVideosStateVideosApiServicePort,
@@ -62,8 +65,18 @@ export class AdminVideosStateFacade {
     this.screenStateStore.setLoading(previousData);
 
     forkJoin({
-      page: this.videosApiService.getVideosPage(query),
-      tags: this.videosApiService.getVideoTags(),
+      page: this.videosApiService.getVideosPage(query).pipe(
+        catchError((error: unknown) => {
+          console.error('Error loading admin videos', error);
+          return of(createPagedResult<VideoDto>([], { ...DEFAULT_PAGINATION, currentPage: query.page ?? 1, itemsPerPage: query.size ?? 24 }));
+        })
+      ),
+      tags: this.videosApiService.getVideoTags().pipe(
+        catchError((error: unknown) => {
+          console.error('Error loading admin video tags', error);
+          return of([]);
+        })
+      ),
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: ({ page, tags }: { page: PagedResult<VideoDto>; tags: VideoTagDto[] }) => {
         this.screenStateStore.setReady({
@@ -72,6 +85,7 @@ export class AdminVideosStateFacade {
           selectedVideo: this.resolveSelectedVideo(page.items, previousData?.selectedVideo?.id ?? null),
           pagination: page.pagination,
           query,
+          operationErrorKey: null,
         });
       },
       error: (error: unknown) => {
@@ -96,6 +110,7 @@ export class AdminVideosStateFacade {
       selectedVideo: currentData?.selectedVideo ?? null,
       pagination: currentData?.pagination ?? DEFAULT_PAGINATION,
       query,
+      operationErrorKey: currentData?.operationErrorKey ?? null,
     });
   }
 
@@ -111,6 +126,7 @@ export class AdminVideosStateFacade {
       selectedVideo: currentData?.selectedVideo ?? null,
       pagination: currentData?.pagination ?? DEFAULT_PAGINATION,
       query: DEFAULT_VIDEO_QUERY,
+      operationErrorKey: null,
     });
     this.reload();
   }
@@ -135,6 +151,7 @@ export class AdminVideosStateFacade {
     this.screenStateStore.setReady({
       ...currentData,
       selectedVideo: this.cloneVideo(video),
+      operationErrorKey: null,
     });
   }
 
@@ -151,6 +168,7 @@ export class AdminVideosStateFacade {
         ...currentData.selectedVideo,
         ...patch,
       },
+      operationErrorKey: null,
     });
   }
 
@@ -175,6 +193,7 @@ export class AdminVideosStateFacade {
         ...currentData.selectedVideo,
         tagIds: Array.from(currentTags),
       },
+      operationErrorKey: null,
     });
   }
 
@@ -203,7 +222,16 @@ export class AdminVideosStateFacade {
   }
 
   setError(): void {
-    this.screenStateStore.setError('common.errorMessage', this.screenStateStore.data());
+    const currentData: AdminVideosViewModel | undefined = this.screenStateStore.data();
+    if (!currentData) {
+      this.screenStateStore.setError('common.errorMessage');
+      return;
+    }
+
+    this.screenStateStore.setReady({
+      ...currentData,
+      operationErrorKey: 'common.errorMessage',
+    });
   }
 
   private resolveSelectedVideo(videos: VideoDto[], previousSelectionId: string | null): VideoDto | null {

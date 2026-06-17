@@ -10,6 +10,21 @@
   border-bottom: 1px solid var(--border);
 }
 
+.admin-videos-inline-error {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin: 1rem 1.35rem 0;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(255, 90, 31, 0.28);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 90, 31, 0.1);
+  color: var(--c-orange);
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
 .admin-videos-controls,
 .admin-videos-create {
   padding: 1.2rem 1.35rem 0;
