@@ -1,5 +1,7 @@
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Videos.Commands;
 using AmusementPark.Application.Features.Videos.Contracts;
 using AmusementPark.Application.Features.Videos.Ports;
@@ -12,15 +14,18 @@ public sealed class UpdateVideoCommandHandler : ICommandHandler<UpdateVideoComma
     private readonly IVideoRepository videoRepository;
     private readonly IVideoMetadataProvider metadataProvider;
     private readonly IVideoThumbnailImporter thumbnailImporter;
+    private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
 
     public UpdateVideoCommandHandler(
         IVideoRepository videoRepository,
         IVideoMetadataProvider metadataProvider,
-        IVideoThumbnailImporter thumbnailImporter)
+        IVideoThumbnailImporter thumbnailImporter,
+        IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
     {
         this.videoRepository = videoRepository;
         this.metadataProvider = metadataProvider;
         this.thumbnailImporter = thumbnailImporter;
+        this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
     }
 
     public async Task<ApplicationResult<Video>> HandleAsync(UpdateVideoCommand command, CancellationToken cancellationToken = default)
@@ -72,6 +77,14 @@ public sealed class UpdateVideoCommandHandler : ICommandHandler<UpdateVideoComma
                     updated = await this.videoRepository.SetThumbnailImageAsync(updated.Id!, thumbnailImageId, cancellationToken) ?? updated;
                 }
             }
+
+            await this.publicSeoUpdateNotifier.NotifyAsync(
+                new PublicSeoUpdate
+                {
+                    PreviousVideos = PublicSeoVideoSnapshot.FromVideos(new[] { existing }),
+                    CurrentVideos = PublicSeoVideoSnapshot.FromVideos(new[] { updated }),
+                },
+                cancellationToken);
 
             return ApplicationResult<Video>.Success(updated);
         }

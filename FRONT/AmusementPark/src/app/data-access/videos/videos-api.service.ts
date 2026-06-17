@@ -2,9 +2,12 @@ import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
+import { CreateVideoTagRequest, UpdateVideoTagRequest } from '@app/models/videos/video-tag-write-request';
+import { ResolvedVideoMetadataDto } from '@app/models/videos/resolved-video-metadata-dto';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
 import { VideoTagDto } from '@app/models/videos/video-tag-dto';
+import { VideoWriteRequest } from '@app/models/videos/video-write-request';
 import { environment } from '../../../environments/environment';
 import { PagedResult } from '@shared/models/contracts';
 import { PagedCollectionResponse, unwrapCollection, unwrapPagedCollection } from '../shared/api-helpers';
@@ -35,6 +38,28 @@ export class VideosApiService {
     return this.http.get<VideoDto>(url, options);
   }
 
+  resolveVideoMetadata(videoUrl: string, options: VideosHttpOptions = {}): Observable<ResolvedVideoMetadataDto> {
+    const url: string = `${environment.apiBaseUrl}${VIDEOS_API_ENDPOINTS.resolveMetadata}`;
+    const params: HttpParams = new HttpParams().set('url', videoUrl);
+
+    return this.http.get<ResolvedVideoMetadataDto>(url, { ...options, params });
+  }
+
+  createVideo(request: VideoWriteRequest, options: VideosHttpOptions = {}): Observable<VideoDto> {
+    const url: string = `${environment.apiBaseUrl}${VIDEOS_API_ENDPOINTS.createVideo}`;
+    return this.http.post<VideoDto>(url, request, options);
+  }
+
+  updateVideo(id: string, request: VideoWriteRequest, options: VideosHttpOptions = {}): Observable<VideoDto> {
+    const url: string = `${environment.apiBaseUrl}${VIDEOS_API_ENDPOINTS.updateVideo(id)}`;
+    return this.http.put<VideoDto>(url, request, options);
+  }
+
+  deleteVideo(id: string, options: VideosHttpOptions = {}): Observable<boolean> {
+    const url: string = `${environment.apiBaseUrl}${VIDEOS_API_ENDPOINTS.deleteVideo(id)}`;
+    return this.http.delete<boolean>(url, options);
+  }
+
   getVideoTags(options: VideosHttpOptions = {}): Observable<VideoTagDto[]> {
     const url: string = `${environment.apiBaseUrl}${VIDEOS_API_ENDPOINTS.getVideoTags}`;
     const params: HttpParams = new HttpParams()
@@ -44,6 +69,16 @@ export class VideosApiService {
     return this.http.get<VideoTagDto[] | PagedCollectionResponse<VideoTagDto>>(url, { ...options, params }).pipe(
       map((response: VideoTagDto[] | PagedCollectionResponse<VideoTagDto>) => unwrapCollection<VideoTagDto>(response))
     );
+  }
+
+  createVideoTag(request: CreateVideoTagRequest, options: VideosHttpOptions = {}): Observable<VideoTagDto> {
+    const url: string = `${environment.apiBaseUrl}${VIDEOS_API_ENDPOINTS.createVideoTag}`;
+    return this.http.post<VideoTagDto>(url, request, options);
+  }
+
+  updateVideoTag(id: string, request: UpdateVideoTagRequest, options: VideosHttpOptions = {}): Observable<VideoTagDto> {
+    const url: string = `${environment.apiBaseUrl}${VIDEOS_API_ENDPOINTS.updateVideoTag(id)}`;
+    return this.http.put<VideoTagDto>(url, request, options);
   }
 
   private buildSearchParams(query: VideoSearchQuery): HttpParams {

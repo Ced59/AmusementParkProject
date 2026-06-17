@@ -1,4 +1,5 @@
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Videos;
 
 namespace AmusementPark.Application.Features.Seo.Models;
 
@@ -13,6 +14,10 @@ public sealed class PublicSeoUpdate
     public IReadOnlyCollection<PublicSeoParkItemSnapshot> PreviousParkItems { get; init; } = Array.Empty<PublicSeoParkItemSnapshot>();
 
     public IReadOnlyCollection<PublicSeoParkItemSnapshot> CurrentParkItems { get; init; } = Array.Empty<PublicSeoParkItemSnapshot>();
+
+    public IReadOnlyCollection<PublicSeoVideoSnapshot> PreviousVideos { get; init; } = Array.Empty<PublicSeoVideoSnapshot>();
+
+    public IReadOnlyCollection<PublicSeoVideoSnapshot> CurrentVideos { get; init; } = Array.Empty<PublicSeoVideoSnapshot>();
 
     public bool IncludeDiscoveryPages { get; init; }
 }
@@ -47,6 +52,48 @@ public sealed record PublicSeoParkSnapshot(
         foreach (Park? park in parks)
         {
             PublicSeoParkSnapshot? snapshot = FromPark(park);
+            if (snapshot is not null)
+            {
+                snapshots.Add(snapshot);
+            }
+        }
+
+        return snapshots;
+    }
+}
+
+public sealed record PublicSeoVideoSnapshot(
+    string Id,
+    VideoOwnerType OwnerType,
+    string OwnerId,
+    string Title,
+    bool IsPublished,
+    DateTime? UpdatedAtUtc)
+{
+    public static PublicSeoVideoSnapshot? FromVideo(Video? video)
+    {
+        if (video is null || string.IsNullOrWhiteSpace(video.Id) || string.IsNullOrWhiteSpace(video.OwnerId))
+        {
+            return null;
+        }
+
+        return new PublicSeoVideoSnapshot(
+            video.Id.Trim(),
+            video.OwnerType,
+            video.OwnerId.Trim(),
+            video.Title ?? string.Empty,
+            video.IsPublished,
+            video.UpdatedAtUtc);
+    }
+
+    public static IReadOnlyCollection<PublicSeoVideoSnapshot> FromVideos(IEnumerable<Video?> videos)
+    {
+        ArgumentNullException.ThrowIfNull(videos);
+
+        List<PublicSeoVideoSnapshot> snapshots = new List<PublicSeoVideoSnapshot>();
+        foreach (Video? video in videos)
+        {
+            PublicSeoVideoSnapshot? snapshot = FromVideo(video);
             if (snapshot is not null)
             {
                 snapshots.Add(snapshot);

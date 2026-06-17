@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Videos;
 
 namespace AmusementPark.Application.Features.Seo.Services;
 
@@ -105,6 +106,9 @@ public sealed class PublicSeoUrlResolver
             }
         }
 
+        IReadOnlyCollection<PublicSeoVideoSnapshot> videoSnapshots = MergeVideoSnapshots(update.PreviousVideos, update.CurrentVideos);
+        await this.AddVideoImpactUrlsAsync(relativePaths, languages, videoSnapshots, update, cancellationToken);
+
         return relativePaths.OrderBy(static path => path, StringComparer.OrdinalIgnoreCase).ToList();
     }
 
@@ -168,6 +172,99 @@ public sealed class PublicSeoUrlResolver
         }
 
         return itemsByParkId;
+    }
+
+    private async Task AddVideoImpactUrlsAsync(
+        HashSet<string> relativePaths,
+        IReadOnlyCollection<string> languages,
+        IReadOnlyCollection<PublicSeoVideoSnapshot> videoSnapshots,
+        PublicSeoUpdate update,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<PublicSeoVideoSnapshot> publicVideos = videoSnapshots
+            .Where(IsPublicVideo)
+            .ToList();
+        if (publicVideos.Count == 0)
+        {
+            return;
+        }
+
+        IReadOnlyCollection<PublicSeoVideoSnapshot> parkVideos = publicVideos
+            .Where(static video => video.OwnerType == VideoOwnerType.Park)
+            .ToList();
+        IReadOnlyCollection<string> parkOwnerIds = parkVideos
+            .Select(static video => video.OwnerId)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+        IReadOnlyDictionary<string, PublicSeoParkSnapshot> parksById = await this.LoadParentParksAsync(parkOwnerIds, update, cancellationToken);
+
+        foreach (PublicSeoVideoSnapshot video in parkVideos)
+        {
+            if (!parksById.TryGetValue(video.OwnerId, out PublicSeoParkSnapshot? park) || !IsPublicPark(park))
+            {
+                continue;
+            }
+
+            AddParkDetailUrls(relativePaths, languages, park);
+            AddParkVideoUrls(relativePaths, languages, park);
+            AddParkVideoDetailUrls(relativePaths, languages, park, video);
+        }
+
+        IReadOnlyCollection<PublicSeoVideoSnapshot> itemVideos = publicVideos
+            .Where(static video => video.OwnerType == VideoOwnerType.ParkItem)
+            .ToList();
+        IReadOnlyCollection<string> itemOwnerIds = itemVideos
+            .Select(static video => video.OwnerId)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+        IReadOnlyDictionary<string, PublicSeoParkItemSnapshot> itemsById = await this.LoadVideoOwnerItemsAsync(itemOwnerIds, cancellationToken);
+        IReadOnlyCollection<string> itemParkIds = itemsById.Values
+            .Where(IsPublicItem)
+            .Select(static item => item.ParkId)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+        IReadOnlyDictionary<string, PublicSeoParkSnapshot> itemParksById = await this.LoadParentParksAsync(itemParkIds, update, cancellationToken);
+
+        foreach (PublicSeoVideoSnapshot video in itemVideos)
+        {
+            if (!itemsById.TryGetValue(video.OwnerId, out PublicSeoParkItemSnapshot? item) || !IsPublicItem(item))
+            {
+                continue;
+            }
+
+            if (!itemParksById.TryGetValue(item.ParkId, out PublicSeoParkSnapshot? park) || !IsPublicPark(park))
+            {
+                continue;
+            }
+
+            AddParkDetailUrls(relativePaths, languages, park);
+            AddParkItemDetailUrls(relativePaths, languages, park, item);
+            AddParkItemVideoUrls(relativePaths, languages, park, item);
+            AddParkItemVideoDetailUrls(relativePaths, languages, park, item, video);
+        }
+    }
+
+    private async Task<IReadOnlyDictionary<string, PublicSeoParkItemSnapshot>> LoadVideoOwnerItemsAsync(
+        IReadOnlyCollection<string> itemIds,
+        CancellationToken cancellationToken)
+    {
+        if (itemIds.Count == 0)
+        {
+            return new Dictionary<string, PublicSeoParkItemSnapshot>(StringComparer.OrdinalIgnoreCase);
+        }
+
+        IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetByIdsAsync(itemIds.ToList(), cancellationToken);
+        Dictionary<string, PublicSeoParkItemSnapshot> itemsById = new Dictionary<string, PublicSeoParkItemSnapshot>(StringComparer.OrdinalIgnoreCase);
+        foreach (ParkItem item in items)
+        {
+            PublicSeoParkItemSnapshot? snapshot = PublicSeoParkItemSnapshot.FromParkItem(item);
+            if (snapshot is not null && !itemsById.ContainsKey(snapshot.Id))
+            {
+                itemsById[snapshot.Id] = snapshot;
+            }
+        }
+
+        return itemsById;
     }
 
     private async Task<IReadOnlyDictionary<string, PublicSeoParkSnapshot>> LoadParentParksAsync(
@@ -268,6 +365,18 @@ public sealed class PublicSeoUrlResolver
             .ToList();
     }
 
+    private static IReadOnlyCollection<PublicSeoVideoSnapshot> MergeVideoSnapshots(
+        IReadOnlyCollection<PublicSeoVideoSnapshot> previousVideos,
+        IReadOnlyCollection<PublicSeoVideoSnapshot> currentVideos)
+    {
+        return previousVideos
+            .Concat(currentVideos)
+            .Where(static video => !string.IsNullOrWhiteSpace(video.Id) && !string.IsNullOrWhiteSpace(video.OwnerId))
+            .GroupBy(static video => BuildVideoRouteKey(video), StringComparer.OrdinalIgnoreCase)
+            .Select(static group => group.First())
+            .ToList();
+    }
+
     private static void AddDiscoveryUrls(HashSet<string> relativePaths, IReadOnlyCollection<string> languages)
     {
         foreach (string language in languages)
@@ -292,6 +401,29 @@ public sealed class PublicSeoUrlResolver
         foreach (string language in languages)
         {
             relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/images");
+        }
+    }
+
+    private static void AddParkVideoUrls(HashSet<string> relativePaths, IReadOnlyCollection<string> languages, PublicSeoParkSnapshot park)
+    {
+        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
+        foreach (string language in languages)
+        {
+            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/videos");
+        }
+    }
+
+    private static void AddParkVideoDetailUrls(
+        HashSet<string> relativePaths,
+        IReadOnlyCollection<string> languages,
+        PublicSeoParkSnapshot park,
+        PublicSeoVideoSnapshot video)
+    {
+        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
+        string videoSlug = SeoSlugService.ToSlug(video.Title, "video");
+        foreach (string language in languages)
+        {
+            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/videos/{video.Id}/{videoSlug}");
         }
     }
 
@@ -329,6 +461,36 @@ public sealed class PublicSeoUrlResolver
         foreach (string language in languages)
         {
             relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/images");
+        }
+    }
+
+    private static void AddParkItemVideoUrls(
+        HashSet<string> relativePaths,
+        IReadOnlyCollection<string> languages,
+        PublicSeoParkSnapshot park,
+        PublicSeoParkItemSnapshot item)
+    {
+        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
+        string itemSlug = SeoSlugService.ToSlug(item.Name, "item");
+        foreach (string language in languages)
+        {
+            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/videos");
+        }
+    }
+
+    private static void AddParkItemVideoDetailUrls(
+        HashSet<string> relativePaths,
+        IReadOnlyCollection<string> languages,
+        PublicSeoParkSnapshot park,
+        PublicSeoParkItemSnapshot item,
+        PublicSeoVideoSnapshot video)
+    {
+        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
+        string itemSlug = SeoSlugService.ToSlug(item.Name, "item");
+        string videoSlug = SeoSlugService.ToSlug(video.Title, "video");
+        foreach (string language in languages)
+        {
+            relativePaths.Add($"/{language}/park/{park.Id}/{parkSlug}/item/{item.Id}/{itemSlug}/videos/{video.Id}/{videoSlug}");
         }
     }
 
@@ -390,6 +552,14 @@ public sealed class PublicSeoUrlResolver
                item.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 
+    private static bool IsPublicVideo(PublicSeoVideoSnapshot video)
+    {
+        return !string.IsNullOrWhiteSpace(video.Id) &&
+               !string.IsNullOrWhiteSpace(video.OwnerId) &&
+               (video.OwnerType == VideoOwnerType.Park || video.OwnerType == VideoOwnerType.ParkItem) &&
+               video.IsPublished;
+    }
+
     private static string BuildParkRouteKey(PublicSeoParkSnapshot park)
     {
         return $"{park.Id}:{SeoSlugService.ToSlug(park.Name, "park")}:{park.IsVisible}:{park.AdminReviewStatus}";
@@ -398,5 +568,10 @@ public sealed class PublicSeoUrlResolver
     private static string BuildItemRouteKey(PublicSeoParkItemSnapshot item)
     {
         return $"{item.ParkId}:{item.Id}:{item.ZoneId}:{SeoSlugService.ToSlug(item.Name, "item")}:{item.IsVisible}:{item.AdminReviewStatus}";
+    }
+
+    private static string BuildVideoRouteKey(PublicSeoVideoSnapshot video)
+    {
+        return $"{video.OwnerType}:{video.OwnerId}:{video.Id}:{SeoSlugService.ToSlug(video.Title, "video")}:{video.IsPublished}";
     }
 }

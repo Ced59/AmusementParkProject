@@ -1,4 +1,6 @@
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Videos.Commands;
 using AmusementPark.Application.Features.Videos.Contracts;
 using AmusementPark.Application.Features.Videos.Handlers;
@@ -17,7 +19,8 @@ public sealed class CreateVideoCommandHandlerTests
         Mock<IVideoRepository> repository = new Mock<IVideoRepository>(MockBehavior.Strict);
         Mock<IVideoMetadataProvider> metadataProvider = new Mock<IVideoMetadataProvider>(MockBehavior.Strict);
         Mock<IVideoThumbnailImporter> thumbnailImporter = new Mock<IVideoThumbnailImporter>(MockBehavior.Strict);
-        CreateVideoCommandHandler handler = new CreateVideoCommandHandler(repository.Object, metadataProvider.Object, thumbnailImporter.Object);
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        CreateVideoCommandHandler handler = new CreateVideoCommandHandler(repository.Object, metadataProvider.Object, thumbnailImporter.Object, publicSeoUpdateNotifier.Object);
 
         ApplicationResult<Video> result = await handler.HandleAsync(new CreateVideoCommand(new VideoWriteModel
         {
@@ -49,6 +52,7 @@ public sealed class CreateVideoCommandHandlerTests
         Mock<IVideoRepository> repository = new Mock<IVideoRepository>(MockBehavior.Strict);
         Mock<IVideoMetadataProvider> metadataProvider = new Mock<IVideoMetadataProvider>(MockBehavior.Strict);
         Mock<IVideoThumbnailImporter> thumbnailImporter = new Mock<IVideoThumbnailImporter>(MockBehavior.Strict);
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
 
         metadataProvider
             .Setup(provider => provider.ResolveAsync("https://youtu.be/abcdefghijk", It.IsAny<CancellationToken>()))
@@ -71,11 +75,24 @@ public sealed class CreateVideoCommandHandlerTests
             .ReturnsAsync((string _, string thumbnailImageId, CancellationToken _) => new Video
             {
                 Id = "video-1",
+                OwnerType = VideoOwnerType.Park,
+                OwnerId = "park-1",
                 ThumbnailImageId = thumbnailImageId,
                 Title = "Ride video",
+                IsPublished = true,
             });
 
-        CreateVideoCommandHandler handler = new CreateVideoCommandHandler(repository.Object, metadataProvider.Object, thumbnailImporter.Object);
+        publicSeoUpdateNotifier
+            .Setup(notifier => notifier.NotifyAsync(
+                It.Is<PublicSeoUpdate>(update =>
+                    update.CurrentVideos.Count == 1 &&
+                    update.CurrentVideos.Single().Id == "video-1" &&
+                    update.CurrentVideos.Single().OwnerType == VideoOwnerType.Park &&
+                    update.CurrentVideos.Single().OwnerId == "park-1"),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        CreateVideoCommandHandler handler = new CreateVideoCommandHandler(repository.Object, metadataProvider.Object, thumbnailImporter.Object, publicSeoUpdateNotifier.Object);
 
         ApplicationResult<Video> result = await handler.HandleAsync(new CreateVideoCommand(new VideoWriteModel
         {
@@ -95,5 +112,6 @@ public sealed class CreateVideoCommandHandlerTests
             video.OwnerType == VideoOwnerType.Park &&
             video.OwnerId == "park-1" &&
             video.Type == VideoType.OnRide), It.IsAny<CancellationToken>()), Times.Once);
+        publicSeoUpdateNotifier.VerifyAll();
     }
 }

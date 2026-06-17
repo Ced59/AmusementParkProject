@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { VideoType } from '@app/models/videos/video-type';
+import { VideoWriteRequest } from '@app/models/videos/video-write-request';
 import { environment } from '../../../environments/environment';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { VideosApiService } from './videos-api.service';
@@ -68,5 +69,87 @@ describe('VideosApiService', () => {
     expect(tagsRequest.request.params.get('page')).toBe('1');
     expect(tagsRequest.request.params.get('size')).toBe('100');
     tagsRequest.flush({ data: [{ id: 'tag-1', slug: 'official' }] });
+  });
+
+  it('resolves metadata and writes videos through admin endpoints', () => {
+    const requestBody: VideoWriteRequest = {
+      originalUrl: 'https://www.youtube.com/watch?v=abcdefghijk',
+      ownerType: VideoOwnerType.PARK,
+      ownerId: 'park-1',
+      type: VideoType.ON_RIDE,
+      title: 'Ride video',
+      description: null,
+      creatorName: 'Creator',
+      creatorUrl: null,
+      thumbnailUrl: null,
+      durationSeconds: 120,
+      publishedAtUtc: null,
+      titles: [],
+      descriptions: [],
+      tagIds: ['tag-1'],
+      isPublished: true
+    };
+
+    service.resolveVideoMetadata('https://www.youtube.com/watch?v=abcdefghijk').subscribe((metadata) => {
+      expect(metadata.externalId).toBe('abcdefghijk');
+    });
+
+    const metadataRequest = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}videos/resolve-metadata`);
+    expect(metadataRequest.request.method).toBe('GET');
+    expect(metadataRequest.request.params.get('url')).toBe('https://www.youtube.com/watch?v=abcdefghijk');
+    metadataRequest.flush({ externalId: 'abcdefghijk' });
+
+    service.createVideo(requestBody).subscribe((video) => {
+      expect(video.id).toBe('video-1');
+    });
+
+    const createRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos`);
+    expect(createRequest.request.method).toBe('POST');
+    expect(createRequest.request.body).toEqual(requestBody);
+    createRequest.flush({ id: 'video-1' });
+
+    service.updateVideo('video-1', requestBody).subscribe((video) => {
+      expect(video.id).toBe('video-1');
+    });
+
+    const updateRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos/video-1`);
+    expect(updateRequest.request.method).toBe('PUT');
+    expect(updateRequest.request.body).toEqual(requestBody);
+    updateRequest.flush({ id: 'video-1' });
+
+    service.deleteVideo('video-1').subscribe((deleted) => {
+      expect(deleted).toBeTrue();
+    });
+
+    const deleteRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos/video-1`);
+    expect(deleteRequest.request.method).toBe('DELETE');
+    deleteRequest.flush(true);
+  });
+
+  it('creates and updates video tags through admin endpoints', () => {
+    service.createVideoTag({
+      slug: 'official',
+      labels: [{ languageCode: 'fr', value: 'official' }],
+      descriptions: []
+    }).subscribe((tag) => {
+      expect(tag.slug).toBe('official');
+    });
+
+    const createRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos/tags`);
+    expect(createRequest.request.method).toBe('POST');
+    createRequest.flush({ id: 'tag-1', slug: 'official' });
+
+    service.updateVideoTag('tag-1', {
+      slug: 'official',
+      labels: [{ languageCode: 'fr', value: 'official' }],
+      descriptions: [],
+      isActive: true
+    }).subscribe((tag) => {
+      expect(tag.id).toBe('tag-1');
+    });
+
+    const updateRequest = httpTestingController.expectOne(`${environment.apiBaseUrl}videos/tags/tag-1`);
+    expect(updateRequest.request.method).toBe('PUT');
+    updateRequest.flush({ id: 'tag-1', slug: 'official' });
   });
 });

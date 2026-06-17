@@ -85,6 +85,10 @@ export const routes: Routes = [
                 .then((m) => m.AdminSiteModule)
           },
           {
+            path: 'videos',
+            loadComponent: () => import('@features/admin/videos/pages/admin-videos/admin-videos.component').then((m) => m.AdminVideosComponent)
+          },
+          {
             path: 'site',
             redirectTo: 'images',
             pathMatch: 'full'
