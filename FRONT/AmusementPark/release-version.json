@@ -1,6 +1,20 @@
 {
-  "version": "1.10.10",
+  "version": "1.10.11",
   "history": [
+    {
+      "version": "1.10.11",
+      "releasedAt": "2026-06-18",
+      "labels": {
+        "fr": "Les partages et le logo affichent une image plus claire.",
+        "en": "Sharing and the logo show a clearer image.",
+        "de": "Teilen und Logo zeigen ein klareres Bild.",
+        "nl": "Delen en het logo tonen een duidelijker beeld.",
+        "it": "Condivisioni e logo mostrano un'immagine piu chiara.",
+        "es": "Los compartidos y el logo muestran una imagen mas clara.",
+        "pl": "Udostepnianie i logo pokazuja wyrazniejszy obraz.",
+        "pt": "As partilhas e o logotipo mostram uma imagem mais clara."
+      }
+    },
     {
       "version": "1.10.10",
       "releasedAt": "2026-06-17",

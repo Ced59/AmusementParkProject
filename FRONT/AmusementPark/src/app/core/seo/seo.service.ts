@@ -518,6 +518,7 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveImageIdAbsoluteUrl(park.primaryPhoto?.imageId) ?? undefined,
       jsonLd: this.buildParkDetailJsonLd(park, url)
     });
   }
@@ -709,6 +710,7 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveImageIdAbsoluteUrl(detail.heroPhoto?.imageId) ?? undefined,
       jsonLd: this.buildParkItemDetailJsonLd(detail, url)
     });
   }
@@ -1142,10 +1144,20 @@ export class SeoService {
     const thumbnailImageId: string | null = this.normalizeOptionalText(video.thumbnailImageId);
 
     if (thumbnailImageId) {
-      return this.buildAbsoluteAssetUrl(`${environment.imagesBaseUrl}/${encodeURIComponent(thumbnailImageId)}`);
+      return this.resolveImageIdAbsoluteUrl(thumbnailImageId);
     }
 
     return this.normalizeHttpsUrl(video.thumbnailUrl);
+  }
+
+  private resolveImageIdAbsoluteUrl(imageId: string | null | undefined): string | null {
+    const normalizedImageId: string | null = this.normalizeOptionalText(imageId);
+
+    if (!normalizedImageId) {
+      return null;
+    }
+
+    return this.buildAbsoluteAssetUrl(`${environment.imagesBaseUrl}/${encodeURIComponent(normalizedImageId)}`);
   }
 
   private resolveVideoUploadDate(video: VideoDto): string | null {
