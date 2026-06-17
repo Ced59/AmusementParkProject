@@ -61,7 +61,7 @@
         "emptyTitle": "Aucun parc à proximité",
         "emptyMessage": "Aucun parc proche n’a été trouvé autour de cette destination.",
         "closestTitle": "Parc le plus proche",
-        "distanceNote": "Distance orthodromique calculée depuis les coordonnées du parc."
+        "distanceNote": "Distance à vol d’oiseau estimée depuis ce parc."
       },
       "description": {
         "badge": "Présentation",

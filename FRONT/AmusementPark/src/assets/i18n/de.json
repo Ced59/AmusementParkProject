@@ -1961,7 +1961,7 @@
         "emptyTitle": "Kein Park in der Nähe",
         "emptyMessage": "Rund um dieses Ziel wurde kein Park in der Nähe gefunden.",
         "closestTitle": "Nächster Park",
-        "distanceNote": "Luftlinienentfernung aus den Parkkoordinaten berechnet."
+        "distanceNote": "Geschätzte Entfernung in Luftlinie von diesem Park."
       },
       "description": {
         "badge": "Übersicht",

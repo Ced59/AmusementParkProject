@@ -61,7 +61,7 @@
         "emptyTitle": "No nearby park",
         "emptyMessage": "No nearby park has been found around this destination.",
         "closestTitle": "Closest park",
-        "distanceNote": "Great-circle distance calculated from the park coordinates."
+        "distanceNote": "Distance estimated as the crow flies from this park."
       },
       "description": {
         "badge": "Overview",
