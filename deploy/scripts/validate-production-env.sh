@@ -135,6 +135,24 @@ validate_port() {
   fi
 }
 
+validate_boolean() {
+  local name="$1"
+  local value="${!name:-}"
+
+  if [ -z "${value// }" ]; then
+    return
+  fi
+
+  case "${value}" in
+    true|false)
+      ;;
+    *)
+      echo "ERROR: ${name} must be true or false." >&2
+      errors=$((errors + 1))
+      ;;
+  esac
+}
+
 warn_missing() {
   local name="$1"
   local value="${!name:-}"
@@ -211,6 +229,9 @@ fi
 
 validate_port MINIO_API_PORT
 validate_port MINIO_CONSOLE_PORT
+
+validate_boolean RUN_LEGACY_ENUM_MIGRATIONS
+validate_boolean LEGACY_ENUM_MIGRATIONS_DRY_RUN
 
 
 jwt_value="${JWT_KEY:-}"

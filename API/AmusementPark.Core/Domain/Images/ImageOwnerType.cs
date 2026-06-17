@@ -8,8 +8,11 @@ public enum ImageOwnerType
     None = 0,
     Park = 1,
     User = 2,
-    Attraction = 3,
+    ParkItem = 3,
+    [Obsolete("Use ParkItem.")]
+    Attraction = ParkItem,
     ParkOperator = 4,
     AttractionManufacturer = 5,
     ParkFounder = 6,
+    Video = 7,
 }

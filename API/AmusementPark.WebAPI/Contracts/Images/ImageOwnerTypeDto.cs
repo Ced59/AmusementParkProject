@@ -11,8 +11,9 @@ public enum ImageOwnerTypeDto
     NONE = 0,
     PARK = 1,
     USER = 2,
-    ATTRACTION = 3,
+    PARK_ITEM = 3,
     PARK_OPERATOR = 4,
     ATTRACTION_MANUFACTURER = 5,
     PARK_FOUNDER = 6,
+    VIDEO = 7,
 }

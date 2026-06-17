@@ -6,8 +6,11 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Services;
+using AmusementPark.Application.Features.Videos.Contracts;
+using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Videos;
 using Moq;
 using Xunit;
 
@@ -227,7 +230,7 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        Mock<IImageRepository> imageRepository = CreateImageRepository(CreateImage("image-item-1", ImageOwnerType.Attraction, "item-1", ImageCategory.Attraction));
+        Mock<IImageRepository> imageRepository = CreateImageRepository(CreateImage("image-item-1", ImageOwnerType.ParkItem, "item-1", ImageCategory.ParkItem));
         itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
@@ -243,6 +246,78 @@ public sealed class SitemapSectionProvidersTests
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
         imageRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ParkVideosProvider_WhenPublicParkHasPublishedVideos_ShouldReturnListAndWatchUrls()
+    {
+        DateTime videoUpdatedAtUtc = new DateTime(2026, 3, 1, 0, 0, 0, DateTimeKind.Utc);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IVideoRepository> videoRepository = CreateVideoRepository(
+            CreateVideo("video-1", VideoOwnerType.Park, "park-1", "Front Row Ride", videoUpdatedAtUtc),
+            CreateVideo("hidden-parent-video", VideoOwnerType.Park, "hidden-park", "Hidden Parent Video", new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc)),
+            CreateVideo("draft-video", VideoOwnerType.Park, "park-1", "Draft Video", new DateTime(2026, 3, 3, 0, 0, 0, DateTimeKind.Utc), isPublished: false));
+        parkRepository.Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.Contains("park-1") && ids.Contains("hidden-park")),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 2, 28, 0, 0, 0, DateTimeKind.Utc) },
+                new Park { Id = "hidden-park", Name = "Hidden Park", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
+            });
+        ParkVideosSitemapSectionProvider provider = new ParkVideosSitemapSectionProvider(parkRepository.Object, videoRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(4, urls.Count);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/visible-park/videos" && url.LastModifiedUtc == videoUpdatedAtUtc && url.Priority == 0.72m);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/visible-park/videos/video-1/front-row-ride" && url.LastModifiedUtc == videoUpdatedAtUtc && url.Priority == 0.66m);
+        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/visible-park/videos");
+        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/visible-park/videos/video-1/front-row-ride");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("draft", StringComparison.OrdinalIgnoreCase));
+        parkRepository.VerifyAll();
+        videoRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ParkItemVideosProvider_WhenPublicParkItemHasPublishedVideos_ShouldReturnListAndWatchUrls()
+    {
+        DateTime videoUpdatedAtUtc = new DateTime(2026, 4, 1, 0, 0, 0, DateTimeKind.Utc);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IVideoRepository> videoRepository = CreateVideoRepository(
+            CreateVideo("video-1", VideoOwnerType.ParkItem, "item-1", "Front Row Ride", videoUpdatedAtUtc),
+            CreateVideo("hidden-item-video", VideoOwnerType.ParkItem, "hidden-item", "Hidden Item Video", new DateTime(2026, 4, 2, 0, 0, 0, DateTimeKind.Utc)),
+            CreateVideo("park-video", VideoOwnerType.Park, "park-1", "Park Video", new DateTime(2026, 4, 3, 0, 0, 0, DateTimeKind.Utc)));
+        itemRepository.Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.Contains("item-1") && ids.Contains("hidden-item")),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Big Coaster", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 3, 31, 0, 0, 0, DateTimeKind.Utc) },
+                new ParkItem { Id = "hidden-item", ParkId = "park-1", Name = "Hidden Coaster", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
+            });
+        parkRepository.Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 3, 30, 0, 0, 0, DateTimeKind.Utc) } });
+        ParkItemVideosSitemapSectionProvider provider = new ParkItemVideosSitemapSectionProvider(parkRepository.Object, itemRepository.Object, videoRepository.Object);
+        SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
+
+        IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
+
+        Assert.Equal(4, urls.Count);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/big-coaster/videos" && url.LastModifiedUtc == videoUpdatedAtUtc && url.Priority == 0.62m);
+        Assert.Contains(urls, url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/big-coaster/videos/video-1/front-row-ride" && url.LastModifiedUtc == videoUpdatedAtUtc && url.Priority == 0.6m);
+        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/big-coaster/videos");
+        Assert.Contains(urls, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/big-coaster/videos/video-1/front-row-ride");
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));
+        Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("park-video", StringComparison.OrdinalIgnoreCase));
+        parkRepository.VerifyAll();
+        itemRepository.VerifyAll();
+        videoRepository.VerifyAll();
     }
 
     [Fact]
@@ -466,6 +541,48 @@ public sealed class SitemapSectionProvidersTests
         };
     }
 
+    private static Mock<IVideoRepository> CreateVideoRepository(params Video[] videos)
+    {
+        Mock<IVideoRepository> repository = new Mock<IVideoRepository>(MockBehavior.Strict);
+        repository
+            .Setup(item => item.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<VideoSearchCriteria>(), It.IsAny<CancellationToken>()))
+            .Returns((int page, int pageSize, VideoSearchCriteria criteria, CancellationToken cancellationToken) =>
+            {
+                int safePage = Math.Max(1, page);
+                int safePageSize = Math.Max(1, pageSize);
+                List<Video> matchingVideos = videos
+                    .Where(video => MatchesCriteria(video, criteria))
+                    .ToList();
+                IReadOnlyCollection<Video> pageItems = matchingVideos
+                    .Skip((safePage - 1) * safePageSize)
+                    .Take(safePageSize)
+                    .ToList();
+
+                return Task.FromResult(new PagedResult<Video>(pageItems, safePage, safePageSize, matchingVideos.Count));
+            });
+
+        return repository;
+    }
+
+    private static Video CreateVideo(
+        string id,
+        VideoOwnerType ownerType,
+        string ownerId,
+        string title,
+        DateTime updatedAtUtc,
+        bool isPublished = true)
+    {
+        return new Video
+        {
+            Id = id,
+            OwnerType = ownerType,
+            OwnerId = ownerId,
+            Title = title,
+            IsPublished = isPublished,
+            UpdatedAtUtc = updatedAtUtc,
+        };
+    }
+
     private static bool MatchesCriteria(Image image, ImageSearchCriteria criteria)
     {
         if (criteria.Category.HasValue && image.Category != criteria.Category.Value)
@@ -495,6 +612,26 @@ public sealed class SitemapSectionProvidersTests
             {
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    private static bool MatchesCriteria(Video video, VideoSearchCriteria criteria)
+    {
+        if (criteria.OwnerType.HasValue && video.OwnerType != criteria.OwnerType.Value)
+        {
+            return false;
+        }
+
+        if (!string.IsNullOrWhiteSpace(criteria.OwnerId) && !string.Equals(video.OwnerId, criteria.OwnerId.Trim(), StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
+        if (criteria.IsPublished.HasValue && video.IsPublished != criteria.IsPublished.Value)
+        {
+            return false;
         }
 
         return true;

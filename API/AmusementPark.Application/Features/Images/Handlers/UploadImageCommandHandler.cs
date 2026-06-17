@@ -100,10 +100,11 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
             ImageCategory.Avatar => "avatar",
             ImageCategory.ParkLogo => "park_logo",
             ImageCategory.Park => "park",
-            ImageCategory.Attraction => "attraction",
+            ImageCategory.ParkItem => "park_item",
             ImageCategory.Operator => "operator",
             ImageCategory.Manufacturer => "manufacturer",
             ImageCategory.Founder => "founder",
+            ImageCategory.VideoThumbnail => "video_thumbnail",
             _ => "image",
         };
     }

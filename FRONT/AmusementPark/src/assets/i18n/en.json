@@ -1057,6 +1057,98 @@
       "blockAction": "Block account",
       "unblockAction": "Unblock account"
     },
+    "videos": {
+      "title": "Videos",
+      "kicker": "M16 - Video library",
+      "subtitle": "Manage public videos, park and park item ownership, tags, types and host metadata.",
+      "total": "video(s)",
+      "loadingMessage": "Loading videos...",
+      "search": "Search",
+      "searchPlaceholder": "Title, creator, id, host...",
+      "provider": "Host",
+      "allProviders": "All hosts",
+      "ownerType": "Owner",
+      "allOwnerTypes": "All owners",
+      "ownerId": "Owner ID",
+      "ownerIdPlaceholder": "Park or park item ID",
+      "type": "Type",
+      "allTypes": "All types",
+      "tag": "Tag",
+      "allTags": "All tags",
+      "creator": "Creator",
+      "creatorPlaceholder": "Creator or channel name",
+      "publication": "Publication",
+      "allPublicationStates": "All states",
+      "published": "Published",
+      "hidden": "Hidden",
+      "sortBy": "Sort",
+      "direction": "Direction",
+      "desc": "Descending",
+      "asc": "Ascending",
+      "sortFields": {
+        "created": "Created",
+        "updated": "Updated",
+        "title": "Title",
+        "published": "Publication"
+      },
+      "createKicker": "Add",
+      "createTitle": "Add video",
+      "url": "Video URL",
+      "urlPlaceholder": "https://www.youtube.com/watch?v=...",
+      "titleField": "Title",
+      "description": "Description",
+      "creatorName": "Creator",
+      "creatorUrl": "Creator URL",
+      "thumbnailUrl": "Thumbnail URL",
+      "durationSeconds": "Duration (seconds)",
+      "publishedAt": "Published at",
+      "titleFr": "FR title",
+      "descriptionFr": "FR description",
+      "isPublished": "Published video",
+      "tags": "Tags",
+      "resolve": "Analyze",
+      "create": "Create video",
+      "listTitle": "Library",
+      "pageHint": "Lazy thumbnails, server filters and real pagination.",
+      "emptyTitle": "No video found",
+      "emptyMessage": "Change filters or add a video.",
+      "page": "Page",
+      "pageSize": "Size",
+      "inspector": "Video inspector",
+      "owner": "Owner",
+      "externalId": "External ID",
+      "thumbnailImageId": "Thumbnail image",
+      "saveVideo": "Save video",
+      "deleteVideo": "Delete",
+      "noSelectionTitle": "No video selected",
+      "noSelectionMessage": "Select a video to edit its metadata.",
+      "tagCreation": "Tag creation",
+      "newTagSlug": "Tag slug",
+      "newTagPlaceholder": "ex. official",
+      "createTag": "Create tag",
+      "providers": {
+        "YOUTUBE": "YouTube",
+        "DAILYMOTION": "Dailymotion",
+        "VIMEO": "Vimeo",
+        "OTHER": "Other"
+      },
+      "ownerTypes": {
+        "PARK": "Park",
+        "PARK_ITEM": "Park item"
+      },
+      "types": {
+        "ON_RIDE": "Onride",
+        "OFF_RIDE": "Offride",
+        "WALKTHROUGH": "Walkthrough",
+        "ADVERTISEMENT": "Advertisement",
+        "DOCUMENTARY": "Documentary",
+        "REVIEW": "Review",
+        "NEWS": "News",
+        "EVENT": "Event",
+        "INTERVIEW": "Interview",
+        "OTHER": "Other"
+      }
+    },
     "visible": "Visible",
     "workbench": {
       "navTitle": "Park items workbench",
@@ -1208,13 +1300,15 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Park logo",
       "PARK": "Park photo",
-      "ATTRACTION": "Item photo"
+      "PARK_ITEM": "Item photo",
+      "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
       "NONE": "None",
       "PARK": "Park",
       "USER": "User",
-      "ATTRACTION": "Item"
+      "PARK_ITEM": "Item",
+      "VIDEO": "Video"
     }
   },
   "languageModal": {
@@ -1335,6 +1429,53 @@
   },
   "validation": {
     "required": "This field is required"
+  },
+  "videos": {
+    "list": {
+      "count": "{{count}} videos",
+      "loadMore": "Load more videos",
+      "loadingMore": "Loading..."
+    },
+    "filters": {
+      "type": "Video type",
+      "allTypes": "All types",
+      "tag": "Tag",
+      "allTags": "All tags",
+      "creator": "Creator",
+      "creatorPlaceholder": "Filter by creator name",
+      "applyCreator": "Apply",
+      "clear": "Clear filters"
+    },
+    "providers": {
+      "youtube": "YouTube",
+      "dailymotion": "Dailymotion",
+      "vimeo": "Vimeo",
+      "other": "External video"
+    },
+    "types": {
+      "onRide": "Onride",
+      "offRide": "Offride",
+      "walkthrough": "Walkthrough",
+      "advertisement": "Advertisement",
+      "documentary": "Documentary",
+      "review": "Review",
+      "news": "News",
+      "event": "Event",
+      "interview": "Interview",
+      "other": "Other"
+    },
+    "watch": {
+      "loadingTitle": "Loading video",
+      "loadingMessage": "The video page is being loaded.",
+      "errorTitle": "Video unavailable",
+      "errorMessage": "The requested video could not be loaded.",
+      "previous": "Previous video",
+      "next": "Next video",
+      "backToVideos": "Back to videos",
+      "openExternal": "Open video",
+      "openCreator": "Open creator",
+      "openProvider": "Open provider page"
+    }
   },
   "aboutPage": {
     "seo": {
@@ -1671,7 +1812,8 @@
       "information": "Information",
       "locker": "Locker",
       "parking": "Parking",
-      "station": "Station"
+      "station": "Station",
+      "cinema": "4D cinemas"
     }
   },
   "parkItems": {
@@ -1887,6 +2029,20 @@
       "removed": "Removed / dismantled",
       "planned": "Planned",
       "unknown": "Unknown"
+    },
+    "videosPage": {
+      "kicker": "Item videos",
+      "title": "Videos of {{name}}",
+      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
+      "loadingTitle": "Loading videos",
+      "loadingMessage": "Preparing the item videos.",
+      "errorTitle": "Videos unavailable",
+      "errorMessage": "The videos for this item cannot be loaded right now.",
+      "backToItem": "Back to {{name}}",
+      "backToItems": "All {{name}} items",
+      "backToPark": "Back to {{name}}",
+      "emptyTitle": "No published videos",
+      "emptyMessage": "No published video is available for {{name}} yet."
     }
   },
   "parkVisitor": {
@@ -2209,6 +2365,18 @@
       "itemsTitle": "Items in this zone",
       "emptyItemsTitle": "No item in this zone",
       "emptyItemsMessage": "No public item is currently linked to this zone."
+    },
+    "videosPage": {
+      "kicker": "Park videos",
+      "title": "Videos of {{name}}",
+      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
+      "loadingTitle": "Loading videos",
+      "loadingMessage": "Preparing the park videos.",
+      "errorTitle": "Videos unavailable",
+      "errorMessage": "The videos for this park cannot be loaded right now.",
+      "backToPark": "Back to {{name}}",
+      "emptyTitle": "No published videos",
+      "emptyMessage": "No published video is available for {{name}} yet."
     }
   },
   "privacyPage": {

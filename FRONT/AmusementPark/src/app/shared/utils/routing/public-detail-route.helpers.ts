@@ -17,6 +17,16 @@ export interface PublicParkItemRouteTarget extends PublicParkRouteTarget {
   itemName: string | null | undefined;
 }
 
+export interface PublicParkVideoRouteTarget extends PublicParkRouteTarget {
+  videoId: string | null | undefined;
+  videoTitle: string | null | undefined;
+}
+
+export interface PublicParkItemVideoRouteTarget extends PublicParkItemRouteTarget {
+  videoId: string | null | undefined;
+  videoTitle: string | null | undefined;
+}
+
 export type PublicParkReferenceKind = 'operator' | 'founder' | 'manufacturer';
 
 export interface PublicParkReferenceRouteTarget {
@@ -85,6 +95,28 @@ export function buildPublicParkImagesRouteCommands(target: PublicParkRouteTarget
   return [...parkRouteCommands, 'images'];
 }
 
+export function buildPublicParkVideosRouteCommands(target: PublicParkRouteTarget): string[] | null {
+  const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
+
+  if (!parkRouteCommands) {
+    return null;
+  }
+
+  return [...parkRouteCommands, 'videos'];
+}
+
+export function buildPublicParkVideoRouteCommands(target: PublicParkVideoRouteTarget): string[] | null {
+  const videosRouteCommands: string[] | null = buildPublicParkVideosRouteCommands(target);
+  const videoId: string | null = normalizeRouteValue(target.videoId);
+  const videoTitle: string | null = normalizeRouteValue(target.videoTitle);
+
+  if (!videosRouteCommands || !videoId || !videoTitle) {
+    return null;
+  }
+
+  return [...videosRouteCommands, videoId, buildEntitySlug(videoTitle)];
+}
+
 export function buildPublicParkMapRouteCommands(target: PublicParkRouteTarget): string[] | null {
   const parkRouteCommands: string[] | null = buildPublicParkRouteCommands(target);
 
@@ -120,6 +152,28 @@ export function buildPublicParkItemImagesRouteCommands(target: PublicParkItemRou
   }
 
   return [...itemRouteCommands, 'images'];
+}
+
+export function buildPublicParkItemVideosRouteCommands(target: PublicParkItemRouteTarget): string[] | null {
+  const itemRouteCommands: string[] | null = buildPublicParkItemRouteCommands(target);
+
+  if (!itemRouteCommands) {
+    return null;
+  }
+
+  return [...itemRouteCommands, 'videos'];
+}
+
+export function buildPublicParkItemVideoRouteCommands(target: PublicParkItemVideoRouteTarget): string[] | null {
+  const videosRouteCommands: string[] | null = buildPublicParkItemVideosRouteCommands(target);
+  const videoId: string | null = normalizeRouteValue(target.videoId);
+  const videoTitle: string | null = normalizeRouteValue(target.videoTitle);
+
+  if (!videosRouteCommands || !videoId || !videoTitle) {
+    return null;
+  }
+
+  return [...videosRouteCommands, videoId, buildEntitySlug(videoTitle)];
 }
 
 export function buildPublicParkReferenceRouteCommands(target: PublicParkReferenceRouteTarget): string[] | null {

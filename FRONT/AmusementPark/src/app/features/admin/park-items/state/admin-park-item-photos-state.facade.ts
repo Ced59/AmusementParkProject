@@ -84,7 +84,7 @@ export class AdminParkItemPhotosStateFacade {
     this.photosLoadingSignal.set(true);
     this.ensurePhotoCategoryTags();
 
-    this.imagesApiService.getImages(ImageOwnerType.ATTRACTION, itemId, ImageCategory.ATTRACTION).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.imagesApiService.getImages(ImageOwnerType.PARK_ITEM, itemId, ImageCategory.PARK_ITEM).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (images: ImageDto[]) => {
         const photoItems: OwnedImageItem[] = images.map((image: ImageDto) => this.toOwnedImageItem(image));
         this.attractionPhotosSignal.set(photoItems);
@@ -278,7 +278,7 @@ export class AdminParkItemPhotosStateFacade {
     const uploadedImage: UploadedImage = await firstValueFrom(
       this.imagesApiService.uploadImage(
         file,
-        ImageCategory.ATTRACTION,
+        ImageCategory.PARK_ITEM,
         false,
         itemName
       )
@@ -287,7 +287,7 @@ export class AdminParkItemPhotosStateFacade {
     const linkedImage: ImageDto = await firstValueFrom(
       this.imagesApiService.linkImage({
         imageId: uploadedImage.id,
-        ownerType: ImageOwnerType.ATTRACTION,
+        ownerType: ImageOwnerType.PARK_ITEM,
         ownerId: itemId,
         description: this.newPhotoDescriptionSignal() || undefined,
         setAsCurrent

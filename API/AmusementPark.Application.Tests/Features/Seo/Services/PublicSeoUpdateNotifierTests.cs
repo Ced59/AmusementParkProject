@@ -9,6 +9,7 @@ using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Videos;
 using Moq;
 using Xunit;
 
@@ -158,6 +159,120 @@ public sealed class PublicSeoUpdateNotifierTests
         settingsRepository.VerifyAll();
         refreshScheduler.VerifyAll();
         indexNowSubmitter.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveAsync_WhenPublishedParkVideoChanges_ShouldReturnParkVideoListAndWatchUrls()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Park
+                {
+                    Id = "park-1",
+                    Name = "Magic Park",
+                    IsVisible = true,
+                    AdminReviewStatus = AdminReviewStatus.Validated,
+                },
+            });
+
+        PublicSeoUrlResolver resolver = new PublicSeoUrlResolver(
+            parkItemRepository.Object,
+            parkRepository.Object,
+            parkZoneRepository.Object,
+            imageRepository.Object);
+
+        IReadOnlyCollection<string> urls = await resolver.ResolveAsync(
+            new PublicSeoUpdate
+            {
+                CurrentVideos = new[]
+                {
+                    new PublicSeoVideoSnapshot("video-1", VideoOwnerType.Park, "park-1", "Front Row Ride", true, null),
+                },
+            },
+            new[] { "fr" },
+            CancellationToken.None);
+
+        Assert.Contains("/fr/park/park-1/magic-park", urls);
+        Assert.Contains("/fr/park/park-1/magic-park/videos", urls);
+        Assert.Contains("/fr/park/park-1/magic-park/videos/video-1/front-row-ride", urls);
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyNoOtherCalls();
+        parkZoneRepository.VerifyNoOtherCalls();
+        imageRepository.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task ResolveAsync_WhenPublishedParkItemVideoChanges_ShouldReturnParkItemVideoListAndWatchUrls()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+
+        parkItemRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IReadOnlyCollection<string>>(ids => ids.SequenceEqual(new[] { "item-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new ParkItem
+                {
+                    Id = "item-1",
+                    ParkId = "park-1",
+                    Name = "Big Coaster",
+                    IsVisible = true,
+                    AdminReviewStatus = AdminReviewStatus.Validated,
+                },
+            });
+        parkRepository
+            .Setup(repository => repository.GetByIdsAsync(
+                It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[]
+            {
+                new Park
+                {
+                    Id = "park-1",
+                    Name = "Magic Park",
+                    IsVisible = true,
+                    AdminReviewStatus = AdminReviewStatus.Validated,
+                },
+            });
+
+        PublicSeoUrlResolver resolver = new PublicSeoUrlResolver(
+            parkItemRepository.Object,
+            parkRepository.Object,
+            parkZoneRepository.Object,
+            imageRepository.Object);
+
+        IReadOnlyCollection<string> urls = await resolver.ResolveAsync(
+            new PublicSeoUpdate
+            {
+                CurrentVideos = new[]
+                {
+                    new PublicSeoVideoSnapshot("video-1", VideoOwnerType.ParkItem, "item-1", "Front Row Ride", true, null),
+                },
+            },
+            new[] { "fr" },
+            CancellationToken.None);
+
+        Assert.Contains("/fr/park/park-1/magic-park", urls);
+        Assert.Contains("/fr/park/park-1/magic-park/item/item-1/big-coaster", urls);
+        Assert.Contains("/fr/park/park-1/magic-park/item/item-1/big-coaster/videos", urls);
+        Assert.Contains("/fr/park/park-1/magic-park/item/item-1/big-coaster/videos/video-1/front-row-ride", urls);
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyNoOtherCalls();
+        imageRepository.VerifyNoOtherCalls();
     }
 
     private static Mock<IImageRepository> CreateEmptyImageRepository()

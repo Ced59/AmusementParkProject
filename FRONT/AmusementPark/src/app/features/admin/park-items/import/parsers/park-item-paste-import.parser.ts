@@ -130,6 +130,7 @@ function mapValuesToDraft(values: readonly string[], columns: readonly ColumnKey
           'WalkThrough',
           'Playground',
           'InteractiveExperience',
+          'Cinema',
           'ObservationRide',
           'AnimalExhibit',
           'Restaurant',

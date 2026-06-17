@@ -95,8 +95,8 @@ function createParkItem(overrides: Partial<ParkItem> = {}): ParkItem {
 function createImage(id: string): ImageDto {
   return {
     id,
-    category: ImageCategory.ATTRACTION,
-    ownerType: ImageOwnerType.ATTRACTION,
+    category: ImageCategory.PARK_ITEM,
+    ownerType: ImageOwnerType.PARK_ITEM,
     ownerId: 'item-1',
     path: `items/${id}`,
     description: `Photo ${id}`,
@@ -181,7 +181,7 @@ describe('ParkItemImagesStateFacade', () => {
     expect(context.parksPort.calls).toEqual(['park-1']);
     expect(context.imagesPort.tagCallCount).toBe(1);
     expect(context.imagesPort.pageCalls).toEqual([
-      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: 1, size: 100 }
+      { ownerType: ImageOwnerType.PARK_ITEM, ownerId: 'item-1', category: ImageCategory.PARK_ITEM, page: 1, size: 100 }
     ]);
   });
 
@@ -194,8 +194,8 @@ describe('ParkItemImagesStateFacade', () => {
     expect(context.facade.photos().map((photo) => photo.imageId)).toEqual(['image-1', 'image-2']);
     expect(context.facade.canLoadMore()).toBeFalse();
     expect(context.imagesPort.pageCalls).toEqual([
-      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: 1, size: 100 },
-      { ownerType: ImageOwnerType.ATTRACTION, ownerId: 'item-1', category: ImageCategory.ATTRACTION, page: 2, size: 100 }
+      { ownerType: ImageOwnerType.PARK_ITEM, ownerId: 'item-1', category: ImageCategory.PARK_ITEM, page: 1, size: 100 },
+      { ownerType: ImageOwnerType.PARK_ITEM, ownerId: 'item-1', category: ImageCategory.PARK_ITEM, page: 2, size: 100 }
     ]);
   });
 

@@ -42,6 +42,19 @@ describe('api helpers', () => {
     expect(normalizeParkItem(item).type).toBe('RollerCoaster');
   });
 
+  it('normalizes the cinema park item type from its stable API value', () => {
+    const item: ParkItem = {
+      parkId: 'p1',
+      name: '4D cinema',
+      category: 'Attraction',
+      type: 29 as unknown as ParkItem['type'],
+      latitude: 0,
+      longitude: 0
+    };
+
+    expect(normalizeParkItem(item).type).toBe('Cinema');
+  });
+
   it('keeps existing string park item category and type values', () => {
     const item: ParkItem = {
       parkId: 'p1',
@@ -114,14 +127,18 @@ describe('api helpers', () => {
   it('maps image owner types to API numeric values with default fallback', () => {
     expect(toImageOwnerTypeApiValue(ImageOwnerType.PARK)).toBe(1);
     expect(toImageOwnerTypeApiValue(ImageOwnerType.USER)).toBe(2);
+    expect(toImageOwnerTypeApiValue(ImageOwnerType.PARK_ITEM)).toBe(3);
     expect(toImageOwnerTypeApiValue(ImageOwnerType.PARK_FOUNDER)).toBe(6);
+    expect(toImageOwnerTypeApiValue(ImageOwnerType.VIDEO)).toBe(7);
     expect(toImageOwnerTypeApiValue('unknown' as unknown as ImageOwnerType)).toBe(0);
   });
 
   it('maps image categories to API numeric values with default fallback', () => {
     expect(toImageCategoryApiValue(ImageCategory.AVATAR)).toBe(0);
     expect(toImageCategoryApiValue(ImageCategory.PARK_LOGO)).toBe(1);
+    expect(toImageCategoryApiValue(ImageCategory.PARK_ITEM)).toBe(3);
     expect(toImageCategoryApiValue(ImageCategory.FOUNDER)).toBe(6);
+    expect(toImageCategoryApiValue(ImageCategory.VIDEO_THUMBNAIL)).toBe(7);
     expect(toImageCategoryApiValue('unknown' as unknown as ImageCategory)).toBe(2);
   });
 });

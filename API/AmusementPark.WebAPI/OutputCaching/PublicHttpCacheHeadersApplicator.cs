@@ -26,6 +26,7 @@ internal static class PublicHttpCacheHeadersApplicator
         new PublicHttpCacheRule("/park-zones", 120, 600, 0, true),
         new PublicHttpCacheRule("/park-items", 120, 600, 0, true),
         new PublicHttpCacheRule("/images", 300, 900, 900, true),
+        new PublicHttpCacheRule("/videos", 300, 900, 0, true),
         new PublicHttpCacheRule("/countries", 3600, 21600, 0, true),
         new PublicHttpCacheRule("/search", 60, 300, 0, true),
         new PublicHttpCacheRule("/attraction-manufacturers", 3600, 21600, 0, true),

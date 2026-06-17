@@ -10,8 +10,11 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Seo.Handlers;
 using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Queries;
+using AmusementPark.Application.Features.Videos.Contracts;
+using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Videos;
 using Moq;
 using Xunit;
 
@@ -30,6 +33,7 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
             Name = "Visible Park",
             IsVisible = true,
             AdminReviewStatus = AdminReviewStatus.Validated,
+            UpdatedAtUtc = new DateTime(2026, 2, 1, 0, 0, 0, DateTimeKind.Utc),
         };
         ParkItem publicItem = new ParkItem
         {
@@ -47,7 +51,10 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Mock<IAttractionManufacturerRepository> attractionManufacturerRepository = new Mock<IAttractionManufacturerRepository>(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = CreateImageRepository(
             CreateImage("image-park-1", ImageOwnerType.Park, "park-1", ImageCategory.Park),
-            CreateImage("image-item-1", ImageOwnerType.Attraction, "item-1", ImageCategory.Attraction));
+            CreateImage("image-item-1", ImageOwnerType.ParkItem, "item-1", ImageCategory.ParkItem));
+        Mock<IVideoRepository> videoRepository = CreateVideoRepository(
+            CreateVideo("video-park-1", VideoOwnerType.Park, "park-1", "Park tour", new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc)),
+            CreateVideo("video-item-1", VideoOwnerType.ParkItem, "item-1", "Front row", new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc)));
         parkRepository
             .Setup(repository => repository.GetPageAsync(1, int.MaxValue, false, true, null, null, null, null, cancellationToken))
             .ReturnsAsync(new PagedResult<Park>(new[] { parentPark }, 1, int.MaxValue, 1));
@@ -63,7 +70,8 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
             parkOperatorRepository.Object,
             parkFounderRepository.Object,
             attractionManufacturerRepository.Object,
-            imageRepository.Object);
+            imageRepository.Object,
+            videoRepository.Object);
 
         ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>> result = await handler.HandleAsync(
             new GetPublicSitemapSeedQuery(new[] { "fr", "en" }),
@@ -73,14 +81,21 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Assert.NotNull(result.Value);
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/images" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/videos" && url.LastModifiedUtc == new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/videos/video-park-1/park-tour" && url.LastModifiedUtc == new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/videos" && url.LastModifiedUtc == new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/videos/video-item-1/front-row" && url.LastModifiedUtc == new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale/images");
+        Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/videos/video-park-1/park-tour");
+        Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale/videos/video-item-1/front-row");
         parkRepository.VerifyAll();
         parkItemRepository.VerifyAll();
         parkOperatorRepository.VerifyAll();
         parkFounderRepository.VerifyAll();
         attractionManufacturerRepository.VerifyAll();
         imageRepository.VerifyAll();
+        videoRepository.VerifyAll();
     }
 
     private static Mock<IImageRepository> CreateImageRepository(params Image[] images)
@@ -118,6 +133,42 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         };
     }
 
+    private static Mock<IVideoRepository> CreateVideoRepository(params Video[] videos)
+    {
+        Mock<IVideoRepository> repository = new Mock<IVideoRepository>(MockBehavior.Strict);
+        repository
+            .Setup(item => item.GetPageAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<VideoSearchCriteria>(), It.IsAny<CancellationToken>()))
+            .Returns((int page, int pageSize, VideoSearchCriteria criteria, CancellationToken cancellationToken) =>
+            {
+                int safePage = Math.Max(1, page);
+                int safePageSize = Math.Max(1, pageSize);
+                List<Video> matchingVideos = videos
+                    .Where(video => MatchesCriteria(video, criteria))
+                    .ToList();
+                IReadOnlyCollection<Video> pageItems = matchingVideos
+                    .Skip((safePage - 1) * safePageSize)
+                    .Take(safePageSize)
+                    .ToList();
+
+                return Task.FromResult(new PagedResult<Video>(pageItems, safePage, safePageSize, matchingVideos.Count));
+            });
+
+        return repository;
+    }
+
+    private static Video CreateVideo(string id, VideoOwnerType ownerType, string ownerId, string title, DateTime updatedAtUtc)
+    {
+        return new Video
+        {
+            Id = id,
+            OwnerType = ownerType,
+            OwnerId = ownerId,
+            Title = title,
+            IsPublished = true,
+            UpdatedAtUtc = updatedAtUtc,
+        };
+    }
+
     private static bool MatchesCriteria(Image image, ImageSearchCriteria criteria)
     {
         if (criteria.Category.HasValue && image.Category != criteria.Category.Value)
@@ -142,6 +193,26 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
             {
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    private static bool MatchesCriteria(Video video, VideoSearchCriteria criteria)
+    {
+        if (criteria.OwnerType.HasValue && video.OwnerType != criteria.OwnerType.Value)
+        {
+            return false;
+        }
+
+        if (!string.IsNullOrWhiteSpace(criteria.OwnerId) && !string.Equals(video.OwnerId, criteria.OwnerId.Trim(), StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
+        if (criteria.IsPublished.HasValue && video.IsPublished != criteria.IsPublished.Value)
+        {
+            return false;
         }
 
         return true;

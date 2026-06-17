@@ -32,6 +32,7 @@ describe('admin park item type options', () => {
 
     expect(values).toContain('RollerCoaster');
     expect(values).toContain('DarkRide');
+    expect(values).toContain('Cinema');
   });
 
   it('uses category-specific non-attraction type options', () => {

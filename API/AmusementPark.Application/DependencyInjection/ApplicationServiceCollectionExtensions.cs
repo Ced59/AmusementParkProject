@@ -44,10 +44,12 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParksSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkImagesSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, ParkVideosSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkItemListsSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkZonesSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkItemsSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ParkItemImagesSitemapSectionProvider>();
+        services.AddScoped<ISitemapSectionProvider, ParkItemVideosSitemapSectionProvider>();
         services.AddScoped<ISitemapSectionProvider, ReferencesSitemapSectionProvider>();
         services.AddScoped<ISitemapXmlWriter, SitemapXmlWriter>();
         services.AddScoped<SeoSitemapGenerationOrchestrator>();

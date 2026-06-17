@@ -228,6 +228,7 @@ function getAllowedTypes(category: ParkItemCategory): ReadonlyArray<ParkItemType
         'WalkThrough',
         'Playground',
         'InteractiveExperience',
+        'Cinema',
         'Game',
         'MeetAndGreet',
         'ObservationRide',

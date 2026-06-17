@@ -118,7 +118,7 @@ export class ParkItemImagesStateFacade {
     const nextPage: number = currentData.pagination.currentPage + 1;
     this.loadingMoreSignal.set(true);
 
-    this.imagesPort.getImagesPage(ImageOwnerType.ATTRACTION, itemId, ImageCategory.ATTRACTION, nextPage, ParkItemImagesStateFacade.PageSize, anonymousHttpOptions())
+    this.imagesPort.getImagesPage(ImageOwnerType.PARK_ITEM, itemId, ImageCategory.PARK_ITEM, nextPage, ParkItemImagesStateFacade.PageSize, anonymousHttpOptions())
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (imagePage: PagedResult<ImageDto>) => {
@@ -143,7 +143,7 @@ export class ParkItemImagesStateFacade {
     return forkJoin({
       item: of(item),
       park: this.parksPort.getParkById(item.parkId, anonymousHttpOptions()),
-      imagePage: this.imagesPort.getImagesPage(ImageOwnerType.ATTRACTION, itemId, ImageCategory.ATTRACTION, page, ParkItemImagesStateFacade.PageSize, anonymousHttpOptions()),
+      imagePage: this.imagesPort.getImagesPage(ImageOwnerType.PARK_ITEM, itemId, ImageCategory.PARK_ITEM, page, ParkItemImagesStateFacade.PageSize, anonymousHttpOptions()),
       imageTags: this.imagesPort.getImageTags(anonymousHttpOptions())
     });
   }

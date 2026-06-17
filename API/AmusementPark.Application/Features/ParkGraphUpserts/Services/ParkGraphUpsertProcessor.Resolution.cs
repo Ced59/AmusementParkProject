@@ -74,7 +74,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (!string.IsNullOrWhiteSpace(ownerKey) && itemKeys.TryGetValue(ownerKey, out string? itemId))
         {
-            ownerType = ImageOwnerType.Attraction;
+            ownerType = ImageOwnerType.ParkItem;
             resolvedOwnerId = itemId;
             return;
         }
@@ -84,7 +84,7 @@ public sealed partial class ParkGraphUpsertProcessor
             string normalizedItemNameKey = $"item:{NormalizeKey(ownerKey)}";
             if (itemKeys.TryGetValue(normalizedItemNameKey, out string? itemIdByName))
             {
-                ownerType = ImageOwnerType.Attraction;
+                ownerType = ImageOwnerType.ParkItem;
                 resolvedOwnerId = itemIdByName;
                 return;
             }

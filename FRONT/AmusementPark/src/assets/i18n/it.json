@@ -1057,6 +1057,98 @@
       "blockAction": "Blocca account",
       "unblockAction": "Sblocca account"
     },
+    "videos": {
+      "title": "Video",
+      "kicker": "M16 - Videoteca",
+      "subtitle": "Gestione dei video pubblici, collegamento a parchi e park item, tag, tipi e metadati dell'host.",
+      "total": "video",
+      "loadingMessage": "Caricamento dei video...",
+      "search": "Ricerca",
+      "searchPlaceholder": "Titolo, creatore, id, host...",
+      "provider": "Host",
+      "allProviders": "Tutti gli host",
+      "ownerType": "Proprietario",
+      "allOwnerTypes": "Tutti i proprietari",
+      "ownerId": "ID proprietario",
+      "ownerIdPlaceholder": "ID parco o park item",
+      "type": "Tipo",
+      "allTypes": "Tutti i tipi",
+      "tag": "Tag",
+      "allTags": "Tutti i tag",
+      "creator": "Creatore",
+      "creatorPlaceholder": "Nome creatore o canale",
+      "publication": "Pubblicazione",
+      "allPublicationStates": "Tutti gli stati",
+      "published": "Pubblicato",
+      "hidden": "Nascosto",
+      "sortBy": "Ordine",
+      "direction": "Direzione",
+      "desc": "Decrescente",
+      "asc": "Crescente",
+      "sortFields": {
+        "created": "Creazione",
+        "updated": "Aggiornamento",
+        "title": "Titolo",
+        "published": "Pubblicazione"
+      },
+      "createKicker": "Aggiunta",
+      "createTitle": "Aggiungi video",
+      "url": "URL video",
+      "urlPlaceholder": "https://www.youtube.com/watch?v=...",
+      "titleField": "Titolo",
+      "description": "Descrizione",
+      "creatorName": "Creatore",
+      "creatorUrl": "URL creatore",
+      "thumbnailUrl": "URL miniatura",
+      "durationSeconds": "Durata (secondi)",
+      "publishedAt": "Pubblicato il",
+      "titleFr": "Titolo FR",
+      "descriptionFr": "Descrizione FR",
+      "isPublished": "Video pubblicato",
+      "tags": "Tag",
+      "resolve": "Analizza",
+      "create": "Crea video",
+      "listTitle": "Biblioteca",
+      "pageHint": "Miniature lazy, filtri server e paginazione reale.",
+      "emptyTitle": "Nessun video trovato",
+      "emptyMessage": "Modifica i filtri o aggiungi un video.",
+      "page": "Pagina",
+      "pageSize": "Dimensione",
+      "inspector": "Inspector video",
+      "owner": "Proprietario",
+      "externalId": "ID esterno",
+      "thumbnailImageId": "Immagine miniatura",
+      "saveVideo": "Salva video",
+      "deleteVideo": "Elimina",
+      "noSelectionTitle": "Nessun video selezionato",
+      "noSelectionMessage": "Seleziona un video per modificarne i metadati.",
+      "tagCreation": "Creazione tag",
+      "newTagSlug": "Slug del tag",
+      "newTagPlaceholder": "es. ufficiale",
+      "createTag": "Crea tag",
+      "providers": {
+        "YOUTUBE": "YouTube",
+        "DAILYMOTION": "Dailymotion",
+        "VIMEO": "Vimeo",
+        "OTHER": "Altro"
+      },
+      "ownerTypes": {
+        "PARK": "Parco",
+        "PARK_ITEM": "Park item"
+      },
+      "types": {
+        "ON_RIDE": "Onride",
+        "OFF_RIDE": "Offride",
+        "WALKTHROUGH": "Percorso",
+        "ADVERTISEMENT": "Pubblicità",
+        "DOCUMENTARY": "Documentario",
+        "REVIEW": "Recensione",
+        "NEWS": "Notizia",
+        "EVENT": "Evento",
+        "INTERVIEW": "Intervista",
+        "OTHER": "Altro"
+      }
+    },
     "visible": "Visibile",
     "workbench": {
       "navTitle": "Area di lavoro elementi del parco",
@@ -1208,13 +1300,15 @@
       "AVATAR": "Avatar",
       "PARK_LOGO": "Logo del parco",
       "PARK": "Foto del parco",
-      "ATTRACTION": "Item foto"
+      "PARK_ITEM": "Item foto",
+      "VIDEO_THUMBNAIL": "Video thumbnail"
     },
     "ownerTypes": {
       "NONE": "Nessuno",
       "PARK": "Parco",
       "USER": "User",
-      "ATTRACTION": "Elemento"
+      "PARK_ITEM": "Elemento",
+      "VIDEO": "Video"
     }
   },
   "languageModal": {
@@ -1335,6 +1429,53 @@
   },
   "validation": {
     "required": "Questo campo è obbligatorio"
+  },
+  "videos": {
+    "list": {
+      "count": "{{count}} videos",
+      "loadMore": "Load more videos",
+      "loadingMore": "Loading..."
+    },
+    "filters": {
+      "type": "Video type",
+      "allTypes": "All types",
+      "tag": "Tag",
+      "allTags": "All tags",
+      "creator": "Creator",
+      "creatorPlaceholder": "Filter by creator name",
+      "applyCreator": "Apply",
+      "clear": "Clear filters"
+    },
+    "providers": {
+      "youtube": "YouTube",
+      "dailymotion": "Dailymotion",
+      "vimeo": "Vimeo",
+      "other": "External video"
+    },
+    "types": {
+      "onRide": "Onride",
+      "offRide": "Offride",
+      "walkthrough": "Walkthrough",
+      "advertisement": "Advertisement",
+      "documentary": "Documentary",
+      "review": "Review",
+      "news": "News",
+      "event": "Event",
+      "interview": "Interview",
+      "other": "Other"
+    },
+    "watch": {
+      "loadingTitle": "Loading video",
+      "loadingMessage": "The video page is being loaded.",
+      "errorTitle": "Video unavailable",
+      "errorMessage": "The requested video could not be loaded.",
+      "previous": "Previous video",
+      "next": "Next video",
+      "backToVideos": "Back to videos",
+      "openExternal": "Open video",
+      "openCreator": "Open creator",
+      "openProvider": "Open provider page"
+    }
   },
   "aboutPage": {
     "seo": {
@@ -1671,7 +1812,8 @@
       "information": "Informazioni",
       "locker": "Armadio deposito",
       "parking": "Parcheggio",
-      "station": "Stazione"
+      "station": "Stazione",
+      "cinema": "Cinema 4D"
     }
   },
   "parkItems": {
@@ -1887,6 +2029,20 @@
       "removed": "Rimosso / smontato",
       "planned": "Previsto",
       "unknown": "Sconosciuto"
+    },
+    "videosPage": {
+      "kicker": "Item videos",
+      "title": "Videos of {{name}}",
+      "subtitle": "Watch videos of {{name}} at {{park}}: onrides, offrides, reviews and official media.",
+      "loadingTitle": "Loading videos",
+      "loadingMessage": "Preparing the item videos.",
+      "errorTitle": "Videos unavailable",
+      "errorMessage": "The videos for this item cannot be loaded right now.",
+      "backToItem": "Back to {{name}}",
+      "backToItems": "All {{name}} items",
+      "backToPark": "Back to {{name}}",
+      "emptyTitle": "No published videos",
+      "emptyMessage": "No published video is available for {{name}} yet."
     }
   },
   "parkVisitor": {
@@ -2209,6 +2365,18 @@
       "itemsTitle": "Elementi in questa zona",
       "emptyItemsTitle": "Nessun elemento in questa zona",
       "emptyItemsMessage": "Al momento nessun elemento pubblico è collegato a questa zona."
+    },
+    "videosPage": {
+      "kicker": "Park videos",
+      "title": "Videos of {{name}}",
+      "subtitle": "Watch videos of {{name}}: onrides, offrides, official clips and creator content.",
+      "loadingTitle": "Loading videos",
+      "loadingMessage": "Preparing the park videos.",
+      "errorTitle": "Videos unavailable",
+      "errorMessage": "The videos for this park cannot be loaded right now.",
+      "backToPark": "Back to {{name}}",
+      "emptyTitle": "No published videos",
+      "emptyMessage": "No published video is available for {{name}} yet."
     }
   },
   "privacyPage": {

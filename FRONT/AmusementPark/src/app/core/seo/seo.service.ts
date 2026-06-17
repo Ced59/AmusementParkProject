@@ -4,8 +4,11 @@ import { Meta, Title } from '@angular/platform-browser';
 
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { VideoDto } from '@app/models/videos/video-dto';
 import { ParkDetailViewModel } from '@features/public/parks/models/park-detail-view.model';
 import { ParkItemDetailViewModel } from '@features/public/park-items/models/park-item-detail-view.model';
+import { environment } from '../../../environments/environment';
+import { resolveLocalizedText, stripHtml } from '@shared/utils/localization/localized-text.helpers';
 import { CanonicalUrlService } from './canonical-url.service';
 import { HreflangService } from './hreflang.service';
 import { JsonLdService } from './json-ld.service';
@@ -28,6 +31,18 @@ interface ParkItemImagesSeoCopy {
   titlePrefix: string;
   itemFallback: string;
   description: (itemName: string, parkName: string, locationLabel: string, totalImages: number) => string;
+}
+
+interface ParkVideosSeoCopy {
+  titlePrefix: string;
+  parkFallback: string;
+  description: (parkName: string, locationLabel: string, totalVideos: number) => string;
+}
+
+interface ParkItemVideosSeoCopy {
+  titlePrefix: string;
+  itemFallback: string;
+  description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number) => string;
 }
 
 interface ParkMapSeoCopy {
@@ -178,6 +193,44 @@ const PARK_ITEM_IMAGES_SEO_COPY: Record<string, ParkItemImagesSeoCopy> = {
     description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} fotos publicadas` : 'as fotos publicadas';
       return `Explore ${countLabel} de ${itemName}${parkName ? ` em ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+    }
+  }
+};
+
+const PARK_VIDEOS_SEO_COPY: Record<string, ParkVideosSeoCopy> = {
+  en: {
+    titlePrefix: 'Videos of',
+    parkFallback: 'this park',
+    description: (parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} published videos` : 'published videos';
+      return `Watch ${countLabel} of ${parkName}${locationLabel ? ` in ${locationLabel}` : ''}: onrides, offrides, official videos and creator content.`;
+    }
+  },
+  fr: {
+    titlePrefix: 'Videos de',
+    parkFallback: 'ce parc',
+    description: (parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} videos publiees` : 'les videos publiees';
+      return `Regardez ${countLabel} de ${parkName}${locationLabel ? ` a ${locationLabel}` : ''} : onrides, offrides, videos officielles et contenus createurs.`;
+    }
+  }
+};
+
+const PARK_ITEM_VIDEOS_SEO_COPY: Record<string, ParkItemVideosSeoCopy> = {
+  en: {
+    titlePrefix: 'Videos of',
+    itemFallback: 'this item',
+    description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} published videos` : 'published videos';
+      return `Watch ${countLabel} of ${itemName}${parkName ? ` at ${parkName}` : ''}${locationLabel ? ` in ${locationLabel}` : ''}.`;
+    }
+  },
+  fr: {
+    titlePrefix: 'Videos de',
+    itemFallback: 'cet element',
+    description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number): string => {
+      const countLabel: string = totalVideos > 0 ? `${totalVideos} videos publiees` : 'les videos publiees';
+      return `Regardez ${countLabel} de ${itemName}${parkName ? ` a ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
     }
   }
 };
@@ -374,7 +427,7 @@ export class SeoService {
       return;
     }
 
-    if (this.isPublicParkMapRoute(url) || this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url) || this.isFilteredPublicParkItemImagesRoute(url)) {
+    if (this.isPublicParkMapRoute(url) || this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url) || this.isFilteredPublicParkItemImagesRoute(url) || this.isFilteredPublicParkVideosRoute(url) || this.isFilteredPublicParkItemVideosRoute(url)) {
       this.apply({
         title: SITE_NAME,
         description: DEFAULT_DESCRIPTION,
@@ -476,6 +529,81 @@ export class SeoService {
       robots: this.hasQueryString(url) || totalImages <= 0 ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
       jsonLd: [this.buildParkItemImagesBreadcrumbJsonLd(item, park, url, this.resolveParkItemImagesBreadcrumbLabel(normalizedLanguage, itemName))]
+    });
+  }
+
+  applyParkVideosSeo(park: Park, language: string, url: string, totalVideos: number = 0): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: ParkVideosSeoCopy = PARK_VIDEOS_SEO_COPY[normalizedLanguage] ?? PARK_VIDEOS_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const parkName: string = this.normalizeOptionalText(park.name) ?? copy.parkFallback;
+    const locationLabel: string = this.buildLocalizedLocationLabel(park, normalizedLanguage);
+    const titleSuffix: string = locationLabel ? ` — ${locationLabel}` : '';
+    const description: string = copy.description(parkName, locationLabel, totalVideos);
+
+    this.apply({
+      title: `${copy.titlePrefix} ${parkName}${titleSuffix} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: this.hasQueryString(url) || totalVideos <= 0 ? 'noindex,follow' : 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, url, this.resolveParkVideosBreadcrumbLabel(normalizedLanguage, parkName))]
+    });
+  }
+
+  applyParkItemVideosSeo(item: ParkItem, park: Park, language: string, url: string, totalVideos: number = 0): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: ParkItemVideosSeoCopy = PARK_ITEM_VIDEOS_SEO_COPY[normalizedLanguage] ?? PARK_ITEM_VIDEOS_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const itemName: string = this.normalizeOptionalText(item.name) ?? copy.itemFallback;
+    const parkName: string = this.normalizeOptionalText(park.name) ?? '';
+    const locationLabel: string = this.buildLocalizedLocationLabel(park, normalizedLanguage);
+    const titleContext: string = [parkName, locationLabel].filter((value: string) => value.length > 0).join(' — ');
+    const titleSuffix: string = titleContext ? ` — ${titleContext}` : '';
+    const description: string = copy.description(itemName, parkName, locationLabel, totalVideos);
+
+    this.apply({
+      title: `${copy.titlePrefix} ${itemName}${titleSuffix} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: this.hasQueryString(url) || totalVideos <= 0 ? 'noindex,follow' : 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: [this.buildParkItemSubpageBreadcrumbJsonLd(item, park, url, this.resolveParkItemVideosBreadcrumbLabel(normalizedLanguage, itemName))]
+    });
+  }
+
+  applyParkVideoSeo(video: VideoDto, park: Park, language: string, url: string): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const videoTitle: string = this.resolveVideoTitle(video, normalizedLanguage);
+    const parkName: string = this.normalizeOptionalText(park.name) ?? 'Park';
+    const description: string = this.resolveVideoDescription(video, normalizedLanguage)
+      ?? `Watch ${videoTitle} from ${parkName}.`;
+
+    this.apply({
+      title: `${videoTitle} — ${parkName} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveVideoThumbnailAbsoluteUrl(video) ?? undefined,
+      jsonLd: this.buildParkVideoJsonLd(video, park, url, videoTitle, description)
+    });
+  }
+
+  applyParkItemVideoSeo(video: VideoDto, item: ParkItem, park: Park, language: string, url: string): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const videoTitle: string = this.resolveVideoTitle(video, normalizedLanguage);
+    const itemName: string = this.normalizeOptionalText(item.name) ?? 'Item';
+    const parkName: string = this.normalizeOptionalText(park.name) ?? 'Park';
+    const description: string = this.resolveVideoDescription(video, normalizedLanguage)
+      ?? `Watch ${videoTitle} for ${itemName} at ${parkName}.`;
+
+    this.apply({
+      title: `${videoTitle} — ${itemName} — ${SITE_NAME}`,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveVideoThumbnailAbsoluteUrl(video) ?? undefined,
+      jsonLd: this.buildParkItemVideoJsonLd(video, item, park, url, videoTitle, description)
     });
   }
 
@@ -720,6 +848,10 @@ export class SeoService {
   }
 
   private buildParkItemImagesBreadcrumbJsonLd(item: ParkItem, park: Park, url: string, pageLabel: string): unknown {
+    return this.buildParkItemSubpageBreadcrumbJsonLd(item, park, url, pageLabel);
+  }
+
+  private buildParkItemSubpageBreadcrumbJsonLd(item: ParkItem, park: Park, url: string, pageLabel: string): unknown {
     const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
     const language: string = this.resolveLanguageFromUrl(url);
     const segments: string[] = this.getPathSegments(url);
@@ -769,6 +901,15 @@ export class SeoService {
     return labels[language] ?? labels['en'];
   }
 
+  private resolveParkVideosBreadcrumbLabel(language: string, parkLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Videos ${parkLabel}`,
+      en: `${parkLabel} videos`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
   private resolveParkMapBreadcrumbLabel(language: string, parkLabel: string): string {
     const labels: Record<string, string> = {
       fr: `Carte ${parkLabel}`,
@@ -782,6 +923,123 @@ export class SeoService {
     };
 
     return labels[language] ?? labels['en'];
+  }
+
+  private resolveParkItemVideosBreadcrumbLabel(language: string, itemLabel: string): string {
+    const labels: Record<string, string> = {
+      fr: `Videos ${itemLabel}`,
+      en: `${itemLabel} videos`
+    };
+
+    return labels[language] ?? labels['en'];
+  }
+
+  private buildParkVideoJsonLd(video: VideoDto, park: Park, url: string, videoTitle: string, description: string): unknown[] {
+    const jsonLd: unknown[] = [
+      this.buildParkVideoBreadcrumbJsonLd(park, url, videoTitle)
+    ];
+    const videoObject: Record<string, unknown> | null = this.buildVideoObjectJsonLd(video, url, videoTitle, description);
+
+    if (videoObject) {
+      jsonLd.push(videoObject);
+    }
+
+    return jsonLd;
+  }
+
+  private buildParkItemVideoJsonLd(video: VideoDto, item: ParkItem, park: Park, url: string, videoTitle: string, description: string): unknown[] {
+    const jsonLd: unknown[] = [
+      this.buildParkItemVideoBreadcrumbJsonLd(item, park, url, videoTitle)
+    ];
+    const videoObject: Record<string, unknown> | null = this.buildVideoObjectJsonLd(video, url, videoTitle, description);
+
+    if (videoObject) {
+      jsonLd.push(videoObject);
+    }
+
+    return jsonLd;
+  }
+
+  private buildVideoObjectJsonLd(video: VideoDto, url: string, videoTitle: string, description: string): Record<string, unknown> | null {
+    const thumbnailUrl: string | null = this.resolveVideoThumbnailAbsoluteUrl(video);
+    const uploadDate: string | null = this.resolveVideoUploadDate(video);
+
+    if (!thumbnailUrl || !uploadDate) {
+      return null;
+    }
+
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const videoObject: Record<string, unknown> = {
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: videoTitle,
+      description: truncateSeoText(description, 300),
+      thumbnailUrl: [thumbnailUrl],
+      uploadDate,
+      url: canonicalUrl
+    };
+
+    const duration: string | null = this.formatVideoDuration(video.durationSeconds);
+    const embedUrl: string | null = this.normalizeHttpsUrl(video.embedUrl);
+    const contentUrl: string | null = this.normalizeHttpsUrl(video.canonicalUrl) ?? this.normalizeHttpsUrl(video.originalUrl);
+
+    if (duration) {
+      videoObject['duration'] = duration;
+    }
+
+    if (embedUrl) {
+      videoObject['embedUrl'] = embedUrl;
+    }
+
+    if (contentUrl) {
+      videoObject['contentUrl'] = contentUrl;
+    }
+
+    return videoObject;
+  }
+
+  private buildParkVideoBreadcrumbJsonLd(park: Park, url: string, videoLabel: string): unknown {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const language: string = this.resolveLanguageFromUrl(url);
+    const segments: string[] = this.getPathSegments(url);
+    const parkDetailPath: string = segments.length >= 4
+      ? `/${segments.slice(0, 4).join('/')}`
+      : `/${language}/parks`;
+    const videosPath: string = segments.length >= 5
+      ? `/${segments.slice(0, 5).join('/')}`
+      : parkDetailPath;
+
+    return this.buildBreadcrumbJsonLd([
+      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
+      { name: park.name ?? 'Park', url: this.canonicalUrlService.buildAbsoluteUrl(parkDetailPath) },
+      { name: this.resolveParkVideosBreadcrumbLabel(language, park.name ?? 'Park'), url: this.canonicalUrlService.buildAbsoluteUrl(videosPath) },
+      { name: videoLabel, url: canonicalUrl }
+    ]);
+  }
+
+  private buildParkItemVideoBreadcrumbJsonLd(item: ParkItem, park: Park, url: string, videoLabel: string): unknown {
+    const canonicalUrl: string = this.canonicalUrlService.buildCanonicalFromCurrentUrl(url);
+    const language: string = this.resolveLanguageFromUrl(url);
+    const segments: string[] = this.getPathSegments(url);
+    const parkDetailPath: string = segments.length >= 4
+      ? `/${segments.slice(0, 4).join('/')}`
+      : `/${language}/parks`;
+    const itemDetailPath: string = segments.length >= 7
+      ? `/${segments.slice(0, 7).join('/')}`
+      : parkDetailPath;
+    const videosPath: string = segments.length >= 8
+      ? `/${segments.slice(0, 8).join('/')}`
+      : itemDetailPath;
+
+    return this.buildBreadcrumbJsonLd([
+      { name: 'Home', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/home`) },
+      { name: 'Parks', url: this.canonicalUrlService.buildAbsoluteUrl(`/${language}/parks`) },
+      { name: park.name ?? 'Park', url: this.canonicalUrlService.buildAbsoluteUrl(parkDetailPath) },
+      { name: item.name ?? 'Item', url: this.canonicalUrlService.buildAbsoluteUrl(itemDetailPath) },
+      { name: this.resolveParkItemVideosBreadcrumbLabel(language, item.name ?? 'Item'), url: this.canonicalUrlService.buildAbsoluteUrl(videosPath) },
+      { name: videoLabel, url: canonicalUrl }
+    ]);
   }
 
   private buildParkItemDetailJsonLd(detail: ParkItemDetailViewModel, url: string): unknown[] {
@@ -825,6 +1083,95 @@ export class SeoService {
     }
 
     return [this.buildBreadcrumbJsonLd(breadcrumbItems), itemJsonLd];
+  }
+
+  private resolveVideoTitle(video: VideoDto, language: string): string {
+    const localizedTitle: string = resolveLocalizedText(video.titles, language, video.title || 'Video');
+    return this.normalizeOptionalText(localizedTitle) ?? this.normalizeOptionalText(video.title) ?? 'Video';
+  }
+
+  private resolveVideoDescription(video: VideoDto, language: string): string | null {
+    const localizedDescription: string = resolveLocalizedText(video.descriptions, language, video.description ?? '');
+    const normalizedDescription: string | null = this.normalizeOptionalText(stripHtml(localizedDescription));
+
+    if (normalizedDescription) {
+      return normalizedDescription;
+    }
+
+    return this.normalizeOptionalText(stripHtml(video.description));
+  }
+
+  private resolveVideoThumbnailAbsoluteUrl(video: VideoDto): string | null {
+    const thumbnailImageId: string | null = this.normalizeOptionalText(video.thumbnailImageId);
+
+    if (thumbnailImageId) {
+      return this.buildAbsoluteAssetUrl(`${environment.imagesBaseUrl}/${encodeURIComponent(thumbnailImageId)}`);
+    }
+
+    return this.normalizeHttpsUrl(video.thumbnailUrl);
+  }
+
+  private resolveVideoUploadDate(video: VideoDto): string | null {
+    const dateValue: string | null = this.normalizeOptionalText(video.publishedAtUtc)
+      ?? this.normalizeOptionalText(video.createdAt);
+
+    if (!dateValue) {
+      return null;
+    }
+
+    const date: Date = new Date(dateValue);
+    return Number.isNaN(date.getTime()) ? null : date.toISOString();
+  }
+
+  private formatVideoDuration(durationSeconds: number | null | undefined): string | null {
+    if (durationSeconds === null || durationSeconds === undefined || !Number.isFinite(durationSeconds) || durationSeconds <= 0) {
+      return null;
+    }
+
+    let remainingSeconds: number = Math.round(durationSeconds);
+    const hours: number = Math.floor(remainingSeconds / 3600);
+    remainingSeconds -= hours * 3600;
+    const minutes: number = Math.floor(remainingSeconds / 60);
+    const seconds: number = remainingSeconds - minutes * 60;
+    const parts: string[] = ['PT'];
+
+    if (hours > 0) {
+      parts.push(`${hours}H`);
+    }
+
+    if (minutes > 0) {
+      parts.push(`${minutes}M`);
+    }
+
+    if (seconds > 0 || parts.length === 1) {
+      parts.push(`${seconds}S`);
+    }
+
+    return parts.join('');
+  }
+
+  private normalizeHttpsUrl(value: string | null | undefined): string | null {
+    const normalizedValue: string | null = this.normalizeOptionalText(value);
+
+    if (!normalizedValue) {
+      return null;
+    }
+
+    try {
+      const parsedUrl: URL = new URL(normalizedValue);
+      return parsedUrl.protocol === 'https:' ? parsedUrl.href : null;
+    } catch {
+      return null;
+    }
+  }
+
+  private buildAbsoluteAssetUrl(pathOrUrl: string): string {
+    try {
+      const parsedUrl: URL = new URL(pathOrUrl);
+      return parsedUrl.href;
+    } catch {
+      return this.canonicalUrlService.buildAbsoluteUrl(pathOrUrl);
+    }
   }
 
   private buildBreadcrumbJsonLd(items: Array<{ name: string; url: string }>): unknown {
@@ -954,6 +1301,16 @@ export class SeoService {
 
   private isFilteredPublicParkItemImagesRoute(url: string): boolean {
     return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/images\/?$/i.test(this.normalizePath(url))
+      && this.hasQueryString(url);
+  }
+
+  private isFilteredPublicParkVideosRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/videos\/?$/i.test(this.normalizePath(url))
+      && this.hasQueryString(url);
+  }
+
+  private isFilteredPublicParkItemVideosRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/videos\/?$/i.test(this.normalizePath(url))
       && this.hasQueryString(url);
   }
 

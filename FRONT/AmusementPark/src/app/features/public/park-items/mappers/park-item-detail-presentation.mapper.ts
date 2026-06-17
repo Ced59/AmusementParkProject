@@ -78,6 +78,7 @@ export function resolveParkItemTypeIconClass(type: string | null | undefined): s
     case 'Snack':
       return 'pi pi-shopping-bag';
     case 'Show':
+    case 'Cinema':
       return 'pi pi-video';
     case 'Hotel':
       return 'pi pi-home';
@@ -120,6 +121,7 @@ export function resolveParkItemTypeTone(type: string | null | undefined, categor
     case 'Playground':
       return 'family';
     case 'Show':
+    case 'Cinema':
       return 'show';
     case 'Restaurant':
     case 'Snack':

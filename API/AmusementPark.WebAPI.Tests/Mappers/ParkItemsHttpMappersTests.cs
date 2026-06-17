@@ -51,6 +51,23 @@ public sealed class ParkItemsHttpMappersTests
     }
 
     [Fact]
+    public void ToDomain_WhenQuickCreateAttractionUsesCinemaType_ShouldKeepCinemaType()
+    {
+        ParkItemQuickCreateDto dto = new ParkItemQuickCreateDto
+        {
+            ParkId = "park-1",
+            Name = "Cinema 4D",
+            Category = ParkItemCategoryDto.Attraction,
+            Type = ParkItemTypeDto.Cinema,
+        };
+
+        ParkItem parkItem = dto.ToDomain();
+
+        Assert.Equal(ParkItemCategory.Attraction, parkItem.Category);
+        Assert.Equal(ParkItemType.Cinema, parkItem.Type);
+    }
+
+    [Fact]
     public void ToDomain_WhenQuickCreateAttractionHasManufacturer_ShouldMapLightAttractionDetails()
     {
         ParkItemQuickCreateDto dto = new ParkItemQuickCreateDto

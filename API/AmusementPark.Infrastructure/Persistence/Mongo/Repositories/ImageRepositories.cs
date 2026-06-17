@@ -86,12 +86,13 @@ public sealed class ImageRepository : IImageRepository
             return cachedImages;
         }
 
-        FilterDefinition<ImageDocument> filter = Builders<ImageDocument>.Filter.Eq(static document => document.OwnerType, ownerType) &
-                                                 Builders<ImageDocument>.Filter.Eq(static document => document.OwnerId, ownerId);
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter = BuildOwnerTypeFilter(builder, ownerType) &
+                                                 builder.Eq(static document => document.OwnerId, ownerId);
 
         if (category.HasValue)
         {
-            filter &= Builders<ImageDocument>.Filter.Eq(static document => document.Category, category.Value);
+            filter &= BuildCategoryFilter(builder, category.Value);
         }
 
         List<ImageDocument> documents = await this.collection.Find(filter)
@@ -111,11 +112,13 @@ public sealed class ImageRepository : IImageRepository
             return cachedImage;
         }
 
-        ImageDocument? document = await this.collection.Find(document =>
-                document.OwnerType == ownerType &&
-                document.OwnerId == ownerId &&
-                document.Category == category &&
-                document.IsCurrent)
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter = BuildOwnerTypeFilter(builder, ownerType) &
+                                                 builder.Eq(static document => document.OwnerId, ownerId) &
+                                                 BuildCategoryFilter(builder, category) &
+                                                 builder.Eq(static document => document.IsCurrent, true);
+
+        ImageDocument? document = await this.collection.Find(filter)
             .FirstOrDefaultAsync(cancellationToken);
 
         Image? image = document?.ToDomain();
@@ -194,9 +197,10 @@ public sealed class ImageRepository : IImageRepository
             return null;
         }
 
-        FilterDefinition<ImageDocument> ownerFilter = Builders<ImageDocument>.Filter.Eq(static document => document.OwnerType, ownerType) &
-                                                     Builders<ImageDocument>.Filter.Eq(static document => document.OwnerId, ownerId) &
-                                                     Builders<ImageDocument>.Filter.Eq(static document => document.Category, currentDocument.Category);
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> ownerFilter = BuildOwnerTypeFilter(builder, ownerType) &
+                                                     builder.Eq(static document => document.OwnerId, ownerId) &
+                                                     BuildCategoryFilter(builder, currentDocument.Category);
 
         await this.collection.UpdateManyAsync(
             ownerFilter,
@@ -355,12 +359,12 @@ public sealed class ImageRepository : IImageRepository
 
         if (criteria.Category.HasValue)
         {
-            filter &= builder.Eq(static document => document.Category, criteria.Category.Value);
+            filter &= BuildCategoryFilter(builder, criteria.Category.Value);
         }
 
         if (criteria.OwnerType.HasValue)
         {
-            filter &= builder.Eq(static document => document.OwnerType, criteria.OwnerType.Value);
+            filter &= BuildOwnerTypeFilter(builder, criteria.OwnerType.Value);
         }
 
         if (!string.IsNullOrWhiteSpace(criteria.OwnerId))
@@ -409,6 +413,22 @@ public sealed class ImageRepository : IImageRepository
         }
 
         return filter;
+    }
+
+    private static FilterDefinition<ImageDocument> BuildOwnerTypeFilter(FilterDefinitionBuilder<ImageDocument> builder, ImageOwnerType ownerType)
+    {
+        FilterDefinition<ImageDocument> currentFilter = builder.Eq(static document => document.OwnerType, ownerType);
+        return ownerType == ImageOwnerType.ParkItem
+            ? builder.Or(currentFilter, builder.Eq("ownerType", "Attraction"))
+            : currentFilter;
+    }
+
+    private static FilterDefinition<ImageDocument> BuildCategoryFilter(FilterDefinitionBuilder<ImageDocument> builder, ImageCategory category)
+    {
+        FilterDefinition<ImageDocument> currentFilter = builder.Eq(static document => document.Category, category);
+        return category == ImageCategory.ParkItem
+            ? builder.Or(currentFilter, builder.Eq("category", "Attraction"))
+            : currentFilter;
     }
 
     private static SortDefinition<ImageDocument> BuildSort(ImageSearchCriteria criteria)

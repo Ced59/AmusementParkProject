@@ -139,12 +139,12 @@ public sealed class ImagesController : ControllerBase
     [ProducesResponseType(typeof(ImageDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetCurrentImageAsync([FromRoute] string ownerType, [FromRoute] string ownerId, [FromRoute] string category, CancellationToken cancellationToken = default)
     {
-        if (!Enum.TryParse<ImageOwnerTypeDto>(ownerType, true, out ImageOwnerTypeDto parsedOwnerType))
+        if (!ImagesHttpMappers.TryParseImageOwnerTypeDto(ownerType, out ImageOwnerTypeDto parsedOwnerType))
         {
             return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid ownerType.", "image.owner-type-invalid");
         }
 
-        if (!Enum.TryParse<ImageCategoryDto>(category, true, out ImageCategoryDto parsedCategory))
+        if (!ImagesHttpMappers.TryParseImageCategoryDto(category, out ImageCategoryDto parsedCategory))
         {
             return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid category.", "image.category-invalid");
         }
@@ -167,12 +167,12 @@ public sealed class ImagesController : ControllerBase
     [ProducesResponseType(typeof(PagedResponseDto<ImageDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetImagesAsync([FromRoute] string ownerType, [FromRoute] string ownerId, [FromRoute] string category, [FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
     {
-        if (!Enum.TryParse<ImageOwnerTypeDto>(ownerType, true, out ImageOwnerTypeDto parsedOwnerType))
+        if (!ImagesHttpMappers.TryParseImageOwnerTypeDto(ownerType, out ImageOwnerTypeDto parsedOwnerType))
         {
             return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid ownerType.", "image.owner-type-invalid");
         }
 
-        if (!Enum.TryParse<ImageCategoryDto>(category, true, out ImageCategoryDto parsedCategory))
+        if (!ImagesHttpMappers.TryParseImageCategoryDto(category, out ImageCategoryDto parsedCategory))
         {
             return this.ToProblemDetailsResult(StatusCodes.Status400BadRequest, "Invalid category.", "image.category-invalid");
         }

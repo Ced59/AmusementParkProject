@@ -1,7 +1,11 @@
 import {
   buildPublicParkItemImagesRouteCommands,
+  buildPublicParkItemVideoRouteCommands,
+  buildPublicParkItemVideosRouteCommands,
   buildPublicParkItemRouteCommands,
   buildPublicParkItemsRouteCommands,
+  buildPublicParkVideoRouteCommands,
+  buildPublicParkVideosRouteCommands,
   buildPublicParkZoneRouteCommands,
   buildPublicParkZonesRouteCommands,
   buildPublicParkReferenceRouteCommands,
@@ -46,6 +50,20 @@ describe('public detail route helpers', () => {
   it('extends item routes with the images segment', () => {
     expect(buildPublicParkItemImagesRouteCommands({ language: 'fr', parkId: 'p1', parkName: 'Parc Test', itemId: 'i1', itemName: 'Grand Huit' }))
       .toEqual(['/', 'fr', 'park', 'p1', 'parc-test', 'item', 'i1', 'grand-huit', 'images']);
+  });
+
+  it('builds park video list and detail route commands', () => {
+    expect(buildPublicParkVideosRouteCommands({ language: 'fr', parkId: 'p1', parkName: 'Parc Test' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'parc-test', 'videos']);
+    expect(buildPublicParkVideoRouteCommands({ language: 'fr', parkId: 'p1', parkName: 'Parc Test', videoId: 'v1', videoTitle: 'On ride officiel' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'parc-test', 'videos', 'v1', 'on-ride-officiel']);
+  });
+
+  it('builds park item video list and detail route commands', () => {
+    expect(buildPublicParkItemVideosRouteCommands({ language: 'fr', parkId: 'p1', parkName: 'Parc Test', itemId: 'i1', itemName: 'Grand Huit' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'parc-test', 'item', 'i1', 'grand-huit', 'videos']);
+    expect(buildPublicParkItemVideoRouteCommands({ language: 'fr', parkId: 'p1', parkName: 'Parc Test', itemId: 'i1', itemName: 'Grand Huit', videoId: 'v1', videoTitle: 'Off ride' }))
+      .toEqual(['/', 'fr', 'park', 'p1', 'parc-test', 'item', 'i1', 'grand-huit', 'videos', 'v1', 'off-ride']);
   });
 
   it('builds reference routes for each supported reference kind', () => {

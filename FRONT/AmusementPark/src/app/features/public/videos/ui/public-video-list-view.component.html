@@ -1,0 +1,149 @@
+<app-page-state
+  [state]="state"
+  [messages]="{
+    loadingTitleKey: loadingTitleKey,
+    loadingMessageKey: loadingMessageKey,
+    errorTitleKey: errorTitleKey,
+    errorMessageKey: errorMessageKey
+  }">
+  <section class="public-video-list public-page">
+    <header class="public-video-list__hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+      <div class="public-video-list__hero-content">
+        <div class="public-video-list__meta">
+          <app-ui-kicker tone="sky" iconClass="pi pi-video">
+            {{ kickerLabelKey | translate }}
+          </app-ui-kicker>
+          <app-ui-chip tone="soft" iconClass="pi pi-play-circle">
+            {{ 'videos.list.count' | translate:{ count: totalVideos } }}
+          </app-ui-chip>
+        </div>
+
+        <h1 class="public-section-header__title">{{ titleKey | translate:titleParams }}</h1>
+        <p class="public-section-header__subtitle">{{ subtitleKey | translate:subtitleParams }}</p>
+
+        @if (backLinks.length > 0) {
+          <div class="public-video-list__actions">
+            @for (link of backLinks; track link.labelKey) {
+              @if (link.routerLink) {
+                <a [appUiButton]="link.variant" [routerLink]="link.routerLink">
+                  <i [class]="link.iconClass" aria-hidden="true"></i>
+                  <span>{{ link.labelKey | translate:link.labelParams }}</span>
+                </a>
+              }
+            }
+          </div>
+        }
+      </div>
+    </header>
+
+    <form class="public-video-list__filters" appUiSurface="filter" appUiSurfacePadding="regular" (submit)="applyCreatorFilter($event)">
+      <label class="public-video-list__filter-field">
+        <span>{{ 'videos.filters.type' | translate }}</span>
+        <select [value]="filters.type ?? ''" (change)="onTypeChanged($event)">
+          <option value="">{{ 'videos.filters.allTypes' | translate }}</option>
+          @for (option of typeOptions; track option.value) {
+            <option [value]="option.value">{{ option.label | translate }}</option>
+          }
+        </select>
+      </label>
+
+      <label class="public-video-list__filter-field">
+        <span>{{ 'videos.filters.tag' | translate }}</span>
+        <select [value]="filters.tagId ?? ''" (change)="onTagChanged($event)">
+          <option value="">{{ 'videos.filters.allTags' | translate }}</option>
+          @for (option of tagOptions; track option.value) {
+            <option [value]="option.value">{{ option.label }}</option>
+          }
+        </select>
+      </label>
+
+      <label class="public-video-list__filter-field public-video-list__filter-field--creator">
+        <span>{{ 'videos.filters.creator' | translate }}</span>
+        <input
+          type="search"
+          [value]="creatorNameDraft"
+          [placeholder]="'videos.filters.creatorPlaceholder' | translate"
+          (input)="onCreatorInput($event)" />
+      </label>
+
+      <div class="public-video-list__filter-actions">
+        <button appUiButton="primary" type="submit">
+          <i class="pi pi-search" aria-hidden="true"></i>
+          <span>{{ 'videos.filters.applyCreator' | translate }}</span>
+        </button>
+        <button appUiButton="ghost" type="button" (click)="clearFilters()">
+          <i class="pi pi-times" aria-hidden="true"></i>
+          <span>{{ 'videos.filters.clear' | translate }}</span>
+        </button>
+      </div>
+    </form>
+
+    @if (videos.length > 0) {
+      <section class="public-video-list__grid" aria-label="Videos">
+        @for (video of videos; track video.id) {
+          <a class="public-video-card" [routerLink]="video.detailLink" [attr.aria-label]="video.title">
+            <span class="public-video-card__thumbnail">
+              <app-image-display
+                [imagePathOrUrl]="video.thumbnailPathOrUrl"
+                [alt]="video.title"
+                imgClass="public-video-card__image"
+                placeholderClass="public-video-card__placeholder"
+                placeholderIconClass="pi pi-video"
+                [srcWidth]="640"
+                sizes="(max-width: 720px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                [responsiveWidths]="thumbnailResponsiveWidths">
+              </app-image-display>
+              <span class="public-video-card__play" aria-hidden="true">
+                <i class="pi pi-play"></i>
+              </span>
+              @if (video.durationLabel) {
+                <span class="public-video-card__duration">{{ video.durationLabel }}</span>
+              }
+            </span>
+
+            <span class="public-video-card__body">
+              <span class="public-video-card__eyebrow">
+                <span>{{ video.typeLabelKey | translate }}</span>
+                <span>{{ video.providerLabelKey | translate }}</span>
+              </span>
+              <span class="public-video-card__title">{{ video.title }}</span>
+              @if (video.description) {
+                <span class="public-video-card__description">{{ video.description }}</span>
+              }
+              <span class="public-video-card__details">
+                @if (video.creatorName) {
+                  <span><i class="pi pi-user" aria-hidden="true"></i>{{ video.creatorName }}</span>
+                }
+                @if (video.publishedAtLabel) {
+                  <span><i class="pi pi-calendar" aria-hidden="true"></i>{{ video.publishedAtLabel }}</span>
+                }
+              </span>
+              @if (video.tags.length > 0) {
+                <span class="public-video-card__tags">
+                  @for (tag of video.tags; track tag.id) {
+                    <span>{{ tag.label }}</span>
+                  }
+                </span>
+              }
+            </span>
+          </a>
+        }
+      </section>
+
+      @if (canLoadMore) {
+        <div class="public-video-list__load-more">
+          <button appUiButton="primary" type="button" [disabled]="loadingMore" (click)="loadMore()">
+            <i class="pi pi-plus" aria-hidden="true"></i>
+            <span>{{ (loadingMore ? 'videos.list.loadingMore' : 'videos.list.loadMore') | translate }}</span>
+          </button>
+        </div>
+      }
+    } @else {
+      <section class="public-video-list__empty" appUiSurface="soft" appUiSurfacePadding="spacious">
+        <i class="pi pi-video" aria-hidden="true"></i>
+        <h2>{{ emptyTitleKey | translate }}</h2>
+        <p>{{ emptyMessageKey | translate:titleParams }}</p>
+      </section>
+    }
+  </section>
+</app-page-state>
