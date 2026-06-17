@@ -94,13 +94,15 @@ describe('VideosApiService', () => {
       isPublished: true
     };
 
-    service.resolveVideoMetadata('https://www.youtube.com/watch?v=abcdefghijk').subscribe((metadata) => {
+    service.resolveVideoMetadata('https://youtube.com/watch?v=WlLikBWTmbg&is=lUPBiTdjFOXks1sk').subscribe((metadata) => {
       expect(metadata.externalId).toBe('abcdefghijk');
     });
 
     const metadataRequest = httpTestingController.expectOne((candidate) => candidate.url === `${environment.apiBaseUrl}videos/resolve-metadata`);
     expect(metadataRequest.request.method).toBe('GET');
-    expect(metadataRequest.request.params.get('url')).toBe('https://www.youtube.com/watch?v=abcdefghijk');
+    expect(metadataRequest.request.params.get('url')).toBe('https://youtube.com/watch?v=WlLikBWTmbg&is=lUPBiTdjFOXks1sk');
+    expect(metadataRequest.request.urlWithParams).toContain('url=https%3A%2F%2Fyoutube.com%2Fwatch%3Fv%3DWlLikBWTmbg%26is%3DlUPBiTdjFOXks1sk');
+    expect(metadataRequest.request.urlWithParams).not.toContain('&is=lUPBiTdjFOXks1sk');
     metadataRequest.flush({ externalId: 'abcdefghijk' });
 
     service.createVideo(requestBody).subscribe((video) => {

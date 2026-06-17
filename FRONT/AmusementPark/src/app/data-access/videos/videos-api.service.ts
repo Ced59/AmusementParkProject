@@ -1,4 +1,4 @@
-import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpParameterCodec, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
@@ -16,6 +16,26 @@ import { VIDEOS_API_ENDPOINTS } from './videos-api-endpoints';
 interface VideosHttpOptions {
   context?: HttpContext;
 }
+
+class StrictUriParameterCodec implements HttpParameterCodec {
+  encodeKey(key: string): string {
+    return encodeURIComponent(key);
+  }
+
+  encodeValue(value: string): string {
+    return encodeURIComponent(value);
+  }
+
+  decodeKey(key: string): string {
+    return decodeURIComponent(key);
+  }
+
+  decodeValue(value: string): string {
+    return decodeURIComponent(value);
+  }
+}
+
+const STRICT_URI_PARAMETER_CODEC = new StrictUriParameterCodec();
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +64,7 @@ export class VideosApiService {
 
   resolveVideoMetadata(videoUrl: string, options: VideosHttpOptions = {}): Observable<ResolvedVideoMetadataDto> {
     const url: string = `${environment.apiBaseUrl}${VIDEOS_API_ENDPOINTS.resolveMetadata}`;
-    const params: HttpParams = new HttpParams().set('url', videoUrl);
+    const params: HttpParams = new HttpParams({ encoder: STRICT_URI_PARAMETER_CODEC }).set('url', videoUrl);
 
     return this.http.get<ResolvedVideoMetadataDto>(url, { ...options, params });
   }

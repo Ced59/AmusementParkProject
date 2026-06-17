@@ -11,6 +11,30 @@ namespace AmusementPark.Infrastructure.Tests.Services.Videos;
 public sealed class ExternalVideoMetadataProviderTests
 {
     [Fact]
+    public async Task ResolveAsync_WhenYouTubeWatchUrlContainsShareParameters_ShouldKeepOnlyVideoIdInCanonicalUrl()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler("{}");
+        ExternalVideoMetadataProvider provider = new ExternalVideoMetadataProvider(
+            new SingleClientFactory(new HttpClient(handler)),
+            new VideoMetadataSettings
+            {
+                YouTubeApiKey = string.Empty,
+                YouTubeOEmbedBaseUrl = string.Empty,
+            },
+            NullLogger<ExternalVideoMetadataProvider>.Instance);
+
+        AmusementPark.Application.Features.Videos.Contracts.ResolvedVideoMetadata? metadata =
+            await provider.ResolveAsync("https://youtube.com/watch?v=WlLikBWTmbg&is=lUPBiTdjFOXks1sk", CancellationToken.None);
+
+        Assert.NotNull(metadata);
+        Assert.Equal(VideoHostingProvider.YouTube, metadata!.HostingProvider);
+        Assert.Equal("WlLikBWTmbg", metadata.ExternalId);
+        Assert.Equal("https://www.youtube.com/watch?v=WlLikBWTmbg", metadata.CanonicalUrl);
+        Assert.Equal("https://www.youtube.com/embed/WlLikBWTmbg", metadata.EmbedUrl);
+        Assert.Equal("url", metadata.MetadataSource);
+    }
+
+    [Fact]
     public async Task ResolveAsync_WhenYouTubeApiKeyIsConfigured_ShouldReadStableMetadataWithoutCommentsOrStatistics()
     {
         RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler("""

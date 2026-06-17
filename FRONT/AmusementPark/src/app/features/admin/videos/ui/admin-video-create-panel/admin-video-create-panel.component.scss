@@ -3,9 +3,11 @@
 }
 
 .admin-video-create-panel {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  min-width: 0;
 }
 
 .admin-video-create-panel__header,
@@ -69,7 +71,7 @@
 .admin-video-create-panel__grid,
 .admin-video-create-panel__localized-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
   gap: 0.75rem;
 }
 
@@ -123,7 +125,7 @@
 .admin-video-create-panel__url-field,
 .admin-video-create-panel__description-field,
 .admin-video-create-panel__localized {
-  grid-column: span 2;
+  grid-column: 1 / -1;
 }
 
 .admin-video-create-panel__localized {
@@ -155,6 +157,7 @@
   flex-direction: column;
   gap: 0.55rem;
   min-width: min(100%, 20rem);
+  max-width: 100%;
 }
 
 .admin-video-create-panel__tags-grid {
@@ -231,26 +234,34 @@
   color: var(--heading, var(--text-color));
 }
 
-@media (max-width: 960px) {
-  .admin-video-create-panel__grid,
-  .admin-video-create-panel__localized-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
+@container (max-width: 44rem) {
   .admin-video-create-panel__grid,
   .admin-video-create-panel__localized-grid {
     grid-template-columns: 1fr;
   }
 
+  .admin-video-create-panel__bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
   .admin-video-create-panel__url-field,
-  .admin-video-create-panel__description-field {
-    grid-column: auto;
+  .admin-video-create-panel__description-field,
+  .admin-video-create-panel__localized {
+    grid-column: 1;
+  }
+
+  .admin-video-create-panel__tags {
+    min-width: 0;
+  }
+
+  :host ::ng-deep .admin-video-create-panel__thumbnail {
+    width: 100%;
   }
 
   .admin-video-create-panel__actions {
     width: 100%;
+    margin-left: 0;
     justify-content: stretch;
   }
 
