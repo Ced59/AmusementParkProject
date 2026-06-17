@@ -24,15 +24,13 @@ describe('PublicFooterComponent', () => {
         explore: {
           title: 'Explore',
           allParks: 'All parks',
-          topRollerCoasters: 'Top rollercoasters',
-          interactiveMap: 'Interactive map',
-          news: 'News'
+          interactiveMap: 'Interactive map'
         },
         about: {
           title: 'About',
           project: 'The project',
-          sources: 'Sources',
           contact: 'Contact',
+          versions: 'Versions',
           privacy: 'Privacy'
         },
         languages: {
@@ -54,6 +52,14 @@ describe('PublicFooterComponent', () => {
     const textContent = (fixture.nativeElement as HTMLElement).textContent ?? '';
 
     expect(textContent).toContain(`Version ${siteVersion}`);
+  });
+
+  it('links the generated site version to the version history page', () => {
+    const versionLink: HTMLAnchorElement | null = (fixture.nativeElement as HTMLElement)
+      .querySelector('.app-public-footer__badges a');
+
+    expect(versionLink).not.toBeNull();
+    expect(versionLink?.getAttribute('href')).toBe('/en/versions');
   });
 
   it('marks the current footer language link for accessible active styling', () => {

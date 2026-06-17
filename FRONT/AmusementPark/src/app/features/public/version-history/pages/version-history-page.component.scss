@@ -1,0 +1,118 @@
+:host {
+  display: block;
+}
+
+.version-history-page {
+  gap: clamp(1rem, 2.4vw, 1.6rem);
+}
+
+.version-history-hero {
+  display: grid;
+  gap: 1rem;
+}
+
+.version-history-hero h1 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: 5.6rem;
+  letter-spacing: 0;
+  line-height: 1.02;
+  overflow-wrap: anywhere;
+}
+
+.version-history-hero p {
+  max-width: 70ch;
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.version-history-timeline {
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+  padding-left: 1.4rem;
+}
+
+.version-history-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0.35rem;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--c-rose), var(--c-sky), var(--c-lime));
+}
+
+.version-entry {
+  position: relative;
+  display: grid;
+  gap: 0.7rem;
+  border-left: 4px solid var(--version-level-color, var(--c-lime));
+}
+
+.version-entry__marker {
+  position: absolute;
+  top: 1.35rem;
+  left: -1.72rem;
+  width: 0.72rem;
+  height: 0.72rem;
+  border: 2px solid var(--bg);
+  border-radius: 999px;
+  background: var(--version-level-color, var(--c-lime));
+}
+
+.version-entry__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.version-entry__header > div {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.version-entry strong {
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+}
+
+.version-entry time,
+.version-entry p {
+  color: var(--text-muted);
+}
+
+.version-entry p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.version-entry--major {
+  --version-level-color: var(--c-rose);
+}
+
+.version-entry--minor {
+  --version-level-color: var(--c-sky);
+}
+
+.version-entry--patch {
+  --version-level-color: var(--c-lime);
+}
+
+@media (max-width: 560px) {
+  .version-history-hero h1 {
+    font-size: 3.3rem;
+  }
+
+  .version-entry__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

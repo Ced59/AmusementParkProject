@@ -7,22 +7,20 @@
     "explore": {
       "title": "Explorar",
       "allParks": "Todos os parques",
-      "topRollerCoasters": "Top montanhas-russas",
-      "interactiveMap": "Mapa interativo",
-      "news": "Novidades"
+      "interactiveMap": "Mapa interativo"
     },
     "about": {
       "title": "Sobre",
       "project": "O projeto",
-      "sources": "Fontes",
       "contact": "Contacto",
+      "versions": "Histórico de versões",
       "privacy": "Privacidade"
     },
     "languages": {
       "title": "Idiomas"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Feito com ❤️ e adrenalina",
+      "copy": "© {{year}} AmusementPark — Feito com coração e adrenalina",
       "version": "Versão {{version}}"
     }
   }

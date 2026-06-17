@@ -1,0 +1,30 @@
+{
+  "admin": {
+    "contactGrievances": {
+      "navTitle": "Messages contact",
+      "kicker": "Contact",
+      "title": "Cahier de doleances",
+      "subtitle": "Consulter les messages publics avec le contexte IP utile contre les abus.",
+      "total": "{{count}} messages",
+      "loading": "Chargement des messages...",
+      "loadError": "Impossible de charger les messages.",
+      "empty": "Aucun message trouve.",
+      "filters": {
+        "search": "Recherche",
+        "ipAddress": "Adresse IP",
+        "languageCode": "Langue"
+      },
+      "columns": {
+        "date": "Date",
+        "message": "Message",
+        "context": "Contexte",
+        "userAgent": "User-agent"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "contactGrievances": "Consulter les messages contact et le contexte anti-abus."
+      }
+    }
+  }
+}

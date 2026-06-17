@@ -1,0 +1,79 @@
+<section class="contact-page public-page">
+  <section class="contact-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <div class="contact-hero__content">
+      <app-ui-kicker tone="sky" iconClass="pi pi-envelope">
+        {{ 'contactPage.kicker' | translate }}
+      </app-ui-kicker>
+      <h1>{{ 'contactPage.title' | translate }}</h1>
+      <p>{{ 'contactPage.lead' | translate }}</p>
+    </div>
+
+    <aside class="contact-email" appUiSurface="shell" appUiSurfacePadding="regular">
+      <app-ui-chip tone="lime" iconClass="pi pi-at">{{ 'contactPage.email.badge' | translate }}</app-ui-chip>
+      <h2>{{ 'contactPage.email.title' | translate }}</h2>
+      <a [href]="'mailto:' + contactEmail">{{ contactEmail }}</a>
+      <p>{{ 'contactPage.email.note' | translate }}</p>
+    </aside>
+  </section>
+
+  <section class="contact-grid">
+    <form class="contact-form" appUiSurface="panel" appUiSurfacePadding="spacious" [formGroup]="contactForm" (ngSubmit)="submit()" (input)="clearStatus()">
+      <div class="contact-form__header">
+        <app-ui-kicker tone="rose" iconClass="pi pi-pencil">
+          {{ 'contactPage.form.kicker' | translate }}
+        </app-ui-kicker>
+        <h2>{{ 'contactPage.form.title' | translate }}</h2>
+        <p>{{ 'contactPage.form.description' | translate }}</p>
+      </div>
+
+      <label class="contact-form__field">
+        <span>{{ 'contactPage.form.messageLabel' | translate }}</span>
+        <textarea
+          formControlName="message"
+          rows="9"
+          maxlength="2000"
+          autocomplete="off"
+          spellcheck="true"
+          [attr.aria-describedby]="'contact-message-help'"></textarea>
+      </label>
+
+      <label class="contact-form__trap" aria-hidden="true" tabindex="-1">
+        <span>Website</span>
+        <input type="text" formControlName="website" autocomplete="off" tabindex="-1" />
+      </label>
+
+      <div id="contact-message-help" class="contact-form__meta">
+        <span>{{ 'contactPage.form.help' | translate }}</span>
+        <span>{{ remainingCharacters }} / {{ maxMessageLength }}</span>
+      </div>
+
+      @if (contactForm.controls.message.touched && contactForm.controls.message.invalid) {
+        <p class="contact-form__error">{{ 'contactPage.form.validation' | translate }}</p>
+      }
+
+      @if (submitted()) {
+        <p class="contact-form__success">{{ 'contactPage.form.success' | translate }}</p>
+      }
+
+      @if (errorKey()) {
+        <p class="contact-form__error">{{ errorKey()! | translate }}</p>
+      }
+
+      <button appUiButton="primary" type="submit" [disabled]="submitting()">
+        <span>{{ (submitting() ? 'contactPage.form.submitting' : 'contactPage.form.submit') | translate }}</span>
+        <i class="pi pi-send" aria-hidden="true"></i>
+      </button>
+    </form>
+
+    <aside class="contact-privacy" appUiSurface="shell" appUiSurfacePadding="regular">
+      <app-ui-chip tone="gold" iconClass="pi pi-shield">{{ 'contactPage.privacy.badge' | translate }}</app-ui-chip>
+      <h2>{{ 'contactPage.privacy.title' | translate }}</h2>
+      <p>{{ 'contactPage.privacy.text' | translate }}</p>
+      <ul>
+        <li>{{ 'contactPage.privacy.points.plainText' | translate }}</li>
+        <li>{{ 'contactPage.privacy.points.ip' | translate }}</li>
+        <li>{{ 'contactPage.privacy.points.admin' | translate }}</li>
+      </ul>
+    </aside>
+  </section>
+</section>

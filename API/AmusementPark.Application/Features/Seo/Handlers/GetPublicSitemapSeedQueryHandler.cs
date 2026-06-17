@@ -29,6 +29,8 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         "home",
         "parks",
         "about",
+        "contact",
+        "versions",
         "privacy",
     };
 

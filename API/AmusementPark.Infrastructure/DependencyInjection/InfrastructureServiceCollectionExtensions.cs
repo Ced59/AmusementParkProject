@@ -2,6 +2,7 @@ using AmusementPark.Application.Features.AdminAudit.Ports;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.AttractionAccessConditionTypes.Ports;
 using AmusementPark.Application.Features.CaptainCoaster.Ports;
+using AmusementPark.Application.Features.Contact.Ports;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.DataSources.Ports;
 using AmusementPark.Application.Features.Images.Ports;
@@ -123,6 +124,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IVideoTagRepository, VideoTagRepository>();
         services.AddScoped<IVideoMetadataProvider, ExternalVideoMetadataProvider>();
         services.AddScoped<IVideoThumbnailImporter, VideoThumbnailImporter>();
+        services.AddScoped<IContactGrievanceRepository, ContactGrievanceRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IAdminAuditLogWriter, AdminAuditLogWriter>();

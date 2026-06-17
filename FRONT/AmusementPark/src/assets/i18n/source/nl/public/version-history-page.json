@@ -1,0 +1,13 @@
+{
+  "versionHistoryPage": {
+    "kicker": "Versiegeschiedenis",
+    "title": "Wat veranderde",
+    "lead": "Huidige versie: {{version}}. Elke notitie is kort, publiek en gericht op zichtbare vooruitgang.",
+    "timelineAriaLabel": "Tijdlijn van versiegeschiedenis",
+    "levels": {
+      "major": "Groot",
+      "minor": "Mijlpaal",
+      "patch": "Update"
+    }
+  }
+}

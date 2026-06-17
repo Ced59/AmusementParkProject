@@ -1,3 +1,691 @@
 {
-  "version": "1.10.8"
+  "version": "1.10.9",
+  "history": [
+    {
+      "version": "1.10.9",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "Le footer, le contact et l'historique des versions deviennent plus utiles.",
+        "en": "The footer, contact page and version history become more useful.",
+        "de": "Footer, Kontaktseite und Versionsverlauf werden nuetzlicher.",
+        "nl": "De footer, contactpagina en versiegeschiedenis worden nuttiger.",
+        "it": "Footer, pagina contatto e cronologia versioni diventano piu utili.",
+        "es": "El pie de pagina, el contacto y el historial de versiones son mas utiles.",
+        "pl": "Stopka, kontakt i historia wersji staja sie bardziej przydatne.",
+        "pt": "O rodape, o contacto e o historico de versoes ficam mais uteis."
+      }
+    },
+    {
+      "version": "1.10.8",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "Les videos affichent plus d'informations utiles.",
+        "en": "Videos show more useful information.",
+        "de": "Videos zeigen mehr hilfreiche Informationen.",
+        "nl": "Video's tonen meer nuttige informatie.",
+        "it": "I video mostrano piu informazioni utili.",
+        "es": "Los videos muestran mas informacion util.",
+        "pl": "Filmy pokazuja wiecej przydatnych informacji.",
+        "pt": "Os videos mostram mais informacoes uteis."
+      }
+    },
+    {
+      "version": "1.10.7",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "Une video est mieux reliee a sa bonne attraction.",
+        "en": "A video is linked to the right attraction more accurately.",
+        "de": "Ein Video ist genauer mit der richtigen Attraktion verbunden.",
+        "nl": "Een video is beter gekoppeld aan de juiste attractie.",
+        "it": "Un video e collegato meglio all'attrazione corretta.",
+        "es": "Un video queda mejor vinculado a la atraccion correcta.",
+        "pl": "Film jest lepiej powiazany z wlasciwa atrakcja.",
+        "pt": "Um video fica melhor ligado a atracao correta."
+      }
+    },
+    {
+      "version": "1.10.6",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "Les videos publiques s'affichent de facon plus fiable.",
+        "en": "Public videos display more reliably.",
+        "de": "Oeffentliche Videos werden zuverlaessiger angezeigt.",
+        "nl": "Publieke video's worden betrouwbaarder getoond.",
+        "it": "I video pubblici si mostrano in modo piu affidabile.",
+        "es": "Los videos publicos se muestran con mas fiabilidad.",
+        "pl": "Publiczne filmy wyswietlaja sie bardziej niezawodnie.",
+        "pt": "Os videos publicos aparecem de forma mais fiavel."
+      }
+    },
+    {
+      "version": "1.10.5",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "L'ajout de videos dans l'administration est plus stable.",
+        "en": "Adding videos in administration is more stable.",
+        "de": "Das Hinzufuegen von Videos in der Administration ist stabiler.",
+        "nl": "Video's toevoegen in beheer is stabieler.",
+        "it": "L'aggiunta di video in amministrazione e piu stabile.",
+        "es": "Anadir videos en administracion es mas estable.",
+        "pl": "Dodawanie filmow w administracji jest stabilniejsze.",
+        "pt": "Adicionar videos na administracao fica mais estavel."
+      }
+    },
+    {
+      "version": "1.10.4",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "La creation de videos dans l'administration est corrigee.",
+        "en": "Video creation in administration is fixed.",
+        "de": "Die Videoerstellung in der Administration ist korrigiert.",
+        "nl": "Video's aanmaken in beheer is gecorrigeerd.",
+        "it": "La creazione dei video in amministrazione e corretta.",
+        "es": "La creacion de videos en administracion queda corregida.",
+        "pl": "Tworzenie filmow w administracji zostalo poprawione.",
+        "pt": "A criacao de videos na administracao foi corrigida."
+      }
+    },
+    {
+      "version": "1.10.3",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "L'analyse de videos YouTube est plus confortable sur mobile.",
+        "en": "YouTube video analysis is easier on mobile.",
+        "de": "Die YouTube-Videoanalyse ist auf Mobilgeraeten angenehmer.",
+        "nl": "YouTube-videoanalyse werkt prettiger op mobiel.",
+        "it": "L'analisi dei video YouTube e piu comoda su mobile.",
+        "es": "El analisis de videos de YouTube es mas comodo en movil.",
+        "pl": "Analiza filmow YouTube jest wygodniejsza na telefonie.",
+        "pt": "A analise de videos YouTube fica mais confortavel no telemovel."
+      }
+    },
+    {
+      "version": "1.10.2",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "Les videos se relient plus facilement aux parcs et attractions.",
+        "en": "Videos can be linked to parks and attractions more easily.",
+        "de": "Videos lassen sich leichter mit Parks und Attraktionen verbinden.",
+        "nl": "Video's zijn makkelijker te koppelen aan parken en attracties.",
+        "it": "I video si collegano piu facilmente a parchi e attrazioni.",
+        "es": "Los videos se vinculan mas facilmente a parques y atracciones.",
+        "pl": "Filmy latwiej lacza sie z parkami i atrakcjami.",
+        "pt": "Os videos ligam-se mais facilmente a parques e atracoes."
+      }
+    },
+    {
+      "version": "1.10.1",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "La gestion des videos reste utilisable dans l'administration.",
+        "en": "Video management remains usable in administration.",
+        "de": "Die Videoverwaltung bleibt in der Administration nutzbar.",
+        "nl": "Videobeheer blijft bruikbaar in de administratie.",
+        "it": "La gestione video resta utilizzabile in amministrazione.",
+        "es": "La gestion de videos sigue siendo usable en administracion.",
+        "pl": "Zarzadzanie filmami pozostaje uzyteczne w administracji.",
+        "pt": "A gestao de videos continua utilizavel na administracao."
+      }
+    },
+    {
+      "version": "1.10.0",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "Les pages de videos publiques et administrees arrivent sur le site.",
+        "en": "Public and administered video pages arrive on the site.",
+        "de": "Oeffentliche und verwaltete Videoseiten kommen auf die Website.",
+        "nl": "Publieke en beheerde videopagina's komen op de site.",
+        "it": "Arrivano sul sito le pagine video pubbliche e amministrate.",
+        "es": "Llegan al sitio paginas de videos publicas y administradas.",
+        "pl": "Na stronie pojawiaja sie publiczne i administracyjne strony filmow.",
+        "pt": "Chegam ao site paginas de videos publicas e administradas."
+      }
+    },
+    {
+      "version": "1.9.4",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "Les distances autour des parcs sont expliquees plus clairement.",
+        "en": "Distances around parks are explained more clearly.",
+        "de": "Entfernungen rund um Parks werden klarer erklaert.",
+        "nl": "Afstanden rond parken worden duidelijker uitgelegd.",
+        "it": "Le distanze intorno ai parchi sono spiegate meglio.",
+        "es": "Las distancias alrededor de los parques se explican mejor.",
+        "pl": "Odleglosci wokol parkow sa wyjasnione jasniej.",
+        "pt": "As distancias em redor dos parques sao explicadas melhor."
+      }
+    },
+    {
+      "version": "1.9.3",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "Les parcs proches sont proposes sur les fiches de parcs.",
+        "en": "Nearby parks are suggested on park pages.",
+        "de": "Nahe Parks werden auf Parkseiten vorgeschlagen.",
+        "nl": "Nabije parken worden op parkpagina's voorgesteld.",
+        "it": "I parchi vicini sono proposti nelle schede dei parchi.",
+        "es": "Los parques cercanos se sugieren en las fichas de parques.",
+        "pl": "Pobliskie parki sa proponowane na stronach parkow.",
+        "pt": "Parques proximos sao sugeridos nas fichas dos parques."
+      }
+    },
+    {
+      "version": "1.9.2",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "L'administration devient plus claire a parcourir.",
+        "en": "Administration becomes clearer to browse.",
+        "de": "Die Administration wird uebersichtlicher.",
+        "nl": "De administratie wordt duidelijker om te gebruiken.",
+        "it": "L'amministrazione diventa piu chiara da navigare.",
+        "es": "La administracion resulta mas clara de recorrer.",
+        "pl": "Administracja staje sie czytelniejsza.",
+        "pt": "A administracao fica mais clara de navegar."
+      }
+    },
+    {
+      "version": "1.9.1",
+      "releasedAt": "2026-06-17",
+      "labels": {
+        "fr": "Les changements publics sont signales plus vite aux moteurs.",
+        "en": "Public changes are reported to search engines faster.",
+        "de": "Oeffentliche Aenderungen werden Suchmaschinen schneller gemeldet.",
+        "nl": "Publieke wijzigingen worden sneller aan zoekmachines gemeld.",
+        "it": "Le modifiche pubbliche sono segnalate prima ai motori.",
+        "es": "Los cambios publicos se avisan antes a los buscadores.",
+        "pl": "Zmiany publiczne szybciej trafiaja do wyszukiwarek.",
+        "pt": "As mudancas publicas sao comunicadas mais depressa aos motores."
+      }
+    },
+    {
+      "version": "1.9.0",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Les galeries d'images publiques deviennent plus simples a explorer.",
+        "en": "Public image galleries become easier to explore.",
+        "de": "Oeffentliche Bildergalerien sind leichter zu erkunden.",
+        "nl": "Publieke beeldgalerijen zijn makkelijker te verkennen.",
+        "it": "Le gallerie pubbliche di immagini sono piu semplici da esplorare.",
+        "es": "Las galerias publicas de imagenes son mas faciles de explorar.",
+        "pl": "Publiczne galerie zdjec sa latwiejsze do przegladania.",
+        "pt": "As galerias publicas de imagens ficam mais faceis de explorar."
+      }
+    },
+    {
+      "version": "1.8.0",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Les attractions disposent de leurs propres pages d'images.",
+        "en": "Attractions get their own image pages.",
+        "de": "Attraktionen erhalten eigene Bilderseiten.",
+        "nl": "Attracties krijgen hun eigen beeldpagina's.",
+        "it": "Le attrazioni hanno pagine immagini dedicate.",
+        "es": "Las atracciones tienen sus propias paginas de imagenes.",
+        "pl": "Atrakcje otrzymuja wlasne strony zdjec.",
+        "pt": "As atracoes ganham paginas de imagens proprias."
+      }
+    },
+    {
+      "version": "1.7.5",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Le chargement mobile des pages publiques est accelere.",
+        "en": "Public pages load faster on mobile.",
+        "de": "Oeffentliche Seiten laden auf Mobilgeraeten schneller.",
+        "nl": "Publieke pagina's laden sneller op mobiel.",
+        "it": "Le pagine pubbliche caricano piu velocemente su mobile.",
+        "es": "Las paginas publicas cargan mas rapido en movil.",
+        "pl": "Publiczne strony laduja sie szybciej na telefonach.",
+        "pt": "As paginas publicas carregam mais depressa no telemovel."
+      }
+    },
+    {
+      "version": "1.7.4",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "L'accessibilite et les performances publiques progressent.",
+        "en": "Public accessibility and performance improve.",
+        "de": "Oeffentliche Barrierefreiheit und Leistung verbessern sich.",
+        "nl": "Publieke toegankelijkheid en prestaties verbeteren.",
+        "it": "Accessibilita e prestazioni pubbliche migliorano.",
+        "es": "Mejoran la accesibilidad y el rendimiento publicos.",
+        "pl": "Poprawiaja sie dostepnosc i wydajnosc publiczna.",
+        "pt": "A acessibilidade e o desempenho publicos melhoram."
+      }
+    },
+    {
+      "version": "1.7.3",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Les styles initiaux sont plus legers.",
+        "en": "Initial styles are lighter.",
+        "de": "Die ersten Styles sind leichter.",
+        "nl": "De eerste stijlen zijn lichter.",
+        "it": "Gli stili iniziali sono piu leggeri.",
+        "es": "Los estilos iniciales son mas ligeros.",
+        "pl": "Poczatkowe style sa lzejsze.",
+        "pt": "Os estilos iniciais ficam mais leves."
+      }
+    },
+    {
+      "version": "1.7.2",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Les premieres secondes de chargement sont optimisees.",
+        "en": "The first seconds of loading are optimized.",
+        "de": "Die ersten Sekunden des Ladens sind optimiert.",
+        "nl": "De eerste seconden van het laden zijn geoptimaliseerd.",
+        "it": "I primi secondi di caricamento sono ottimizzati.",
+        "es": "Los primeros segundos de carga estan optimizados.",
+        "pl": "Pierwsze sekundy ladowania sa zoptymalizowane.",
+        "pt": "Os primeiros segundos de carregamento ficam otimizados."
+      }
+    },
+    {
+      "version": "1.7.1",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Les images mobiles et les cartes se chargent mieux.",
+        "en": "Mobile images and maps load better.",
+        "de": "Mobile Bilder und Karten laden besser.",
+        "nl": "Mobiele beelden en kaarten laden beter.",
+        "it": "Immagini mobili e mappe caricano meglio.",
+        "es": "Las imagenes moviles y los mapas cargan mejor.",
+        "pl": "Obrazy mobilne i mapy laduja sie lepiej.",
+        "pt": "Imagens moveis e mapas carregam melhor."
+      }
+    },
+    {
+      "version": "1.7.0",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Les images publiques sont mieux adaptees aux ecrans.",
+        "en": "Public images adapt better to screens.",
+        "de": "Oeffentliche Bilder passen sich besser an Bildschirme an.",
+        "nl": "Publieke beelden passen beter bij schermen.",
+        "it": "Le immagini pubbliche si adattano meglio agli schermi.",
+        "es": "Las imagenes publicas se adaptan mejor a las pantallas.",
+        "pl": "Publiczne obrazy lepiej dopasowuja sie do ekranow.",
+        "pt": "As imagens publicas adaptam-se melhor aos ecras."
+      }
+    },
+    {
+      "version": "1.6.7",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Les images conservent mieux leur cache navigateur.",
+        "en": "Images keep their browser cache more reliably.",
+        "de": "Bilder behalten ihren Browser-Cache zuverlaessiger.",
+        "nl": "Beelden bewaren hun browsercache betrouwbaarder.",
+        "it": "Le immagini conservano meglio la cache del browser.",
+        "es": "Las imagenes conservan mejor la cache del navegador.",
+        "pl": "Obrazy lepiej zachowuja pamiec podreczna przegladarki.",
+        "pt": "As imagens conservam melhor a cache do navegador."
+      }
+    },
+    {
+      "version": "1.6.6",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Les polices publiques se chargent plus rapidement.",
+        "en": "Public fonts load faster.",
+        "de": "Oeffentliche Schriften laden schneller.",
+        "nl": "Publieke lettertypes laden sneller.",
+        "it": "I font pubblici caricano piu rapidamente.",
+        "es": "Las fuentes publicas cargan mas rapido.",
+        "pl": "Publiczne czcionki laduja sie szybciej.",
+        "pt": "As fontes publicas carregam mais rapidamente."
+      }
+    },
+    {
+      "version": "1.6.5",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Le premier chargement embarque moins de code inutile.",
+        "en": "The first load carries less unused code.",
+        "de": "Der erste Ladevorgang enthaelt weniger ungenutzten Code.",
+        "nl": "De eerste lading bevat minder ongebruikte code.",
+        "it": "Il primo caricamento porta meno codice inutilizzato.",
+        "es": "La primera carga trae menos codigo inutil.",
+        "pl": "Pierwsze ladowanie zawiera mniej nieuzywanego kodu.",
+        "pt": "O primeiro carregamento leva menos codigo inutil."
+      }
+    },
+    {
+      "version": "1.6.4",
+      "releasedAt": "2026-06-16",
+      "labels": {
+        "fr": "Les sitemaps sont servis plus efficacement.",
+        "en": "Sitemaps are served more efficiently.",
+        "de": "Sitemaps werden effizienter ausgeliefert.",
+        "nl": "Sitemaps worden efficienter geleverd.",
+        "it": "Le sitemap sono servite in modo piu efficiente.",
+        "es": "Los sitemaps se sirven de forma mas eficiente.",
+        "pl": "Sitemapy sa serwowane wydajniej.",
+        "pt": "Os sitemaps sao servidos com mais eficiencia."
+      }
+    },
+    {
+      "version": "1.6.3",
+      "releasedAt": "2026-06-15",
+      "labels": {
+        "fr": "La carte garde mieux le marqueur selectionne.",
+        "en": "The map keeps the selected marker more reliably.",
+        "de": "Die Karte behaelt den ausgewaehlten Marker besser.",
+        "nl": "De kaart behoudt de geselecteerde marker beter.",
+        "it": "La mappa mantiene meglio il marcatore selezionato.",
+        "es": "El mapa conserva mejor el marcador seleccionado.",
+        "pl": "Mapa lepiej zachowuje wybrany znacznik.",
+        "pt": "O mapa mantem melhor o marcador selecionado."
+      }
+    },
+    {
+      "version": "1.6.2",
+      "releasedAt": "2026-06-15",
+      "labels": {
+        "fr": "La navigation vers les sections devient plus fiable.",
+        "en": "Navigation to page sections becomes more reliable.",
+        "de": "Die Navigation zu Abschnitten wird zuverlaessiger.",
+        "nl": "Navigatie naar secties wordt betrouwbaarder.",
+        "it": "La navigazione verso le sezioni diventa piu affidabile.",
+        "es": "La navegacion hacia secciones es mas fiable.",
+        "pl": "Nawigacja do sekcji staje sie bardziej niezawodna.",
+        "pt": "A navegacao para secoes fica mais fiavel."
+      }
+    },
+    {
+      "version": "1.6.1",
+      "releasedAt": "2026-06-15",
+      "labels": {
+        "fr": "Le site detecte mieux les nouvelles mises en ligne.",
+        "en": "The site detects new deployments more reliably.",
+        "de": "Die Website erkennt neue Bereitstellungen zuverlaessiger.",
+        "nl": "De site herkent nieuwe publicaties betrouwbaarder.",
+        "it": "Il sito rileva meglio le nuove pubblicazioni.",
+        "es": "El sitio detecta mejor las nuevas publicaciones.",
+        "pl": "Strona lepiej wykrywa nowe wdrozenia.",
+        "pt": "O site deteta melhor novas publicacoes."
+      }
+    },
+    {
+      "version": "1.6.0",
+      "releasedAt": "2026-06-15",
+      "labels": {
+        "fr": "Le site consomme moins de ressources serveur.",
+        "en": "The site uses fewer server resources.",
+        "de": "Die Website verbraucht weniger Serverressourcen.",
+        "nl": "De site gebruikt minder servermiddelen.",
+        "it": "Il sito consuma meno risorse server.",
+        "es": "El sitio consume menos recursos del servidor.",
+        "pl": "Strona zuzywa mniej zasobow serwera.",
+        "pt": "O site consome menos recursos do servidor."
+      }
+    },
+    {
+      "version": "1.5.3",
+      "releasedAt": "2026-06-15",
+      "labels": {
+        "fr": "L'edition des attractions en administration est corrigee.",
+        "en": "Attraction editing in administration is fixed.",
+        "de": "Die Bearbeitung von Attraktionen in der Administration ist korrigiert.",
+        "nl": "Attracties bewerken in beheer is gecorrigeerd.",
+        "it": "La modifica delle attrazioni in amministrazione e corretta.",
+        "es": "La edicion de atracciones en administracion queda corregida.",
+        "pl": "Edycja atrakcji w administracji zostala poprawiona.",
+        "pt": "A edicao de atracoes na administracao foi corrigida."
+      }
+    },
+    {
+      "version": "1.5.2",
+      "releasedAt": "2026-06-15",
+      "labels": {
+        "fr": "Les pages publiques rafraichissent mieux leur cache.",
+        "en": "Public pages refresh their cache more reliably.",
+        "de": "Oeffentliche Seiten erneuern ihren Cache zuverlaessiger.",
+        "nl": "Publieke pagina's verversen hun cache betrouwbaarder.",
+        "it": "Le pagine pubbliche aggiornano meglio la cache.",
+        "es": "Las paginas publicas refrescan mejor su cache.",
+        "pl": "Publiczne strony lepiej odswiezaja pamiec podreczna.",
+        "pt": "As paginas publicas atualizam melhor a cache."
+      }
+    },
+    {
+      "version": "1.5.1",
+      "releasedAt": "2026-06-15",
+      "labels": {
+        "fr": "Les caches changent seulement quand c'est necessaire.",
+        "en": "Caches change only when needed.",
+        "de": "Caches aendern sich nur bei Bedarf.",
+        "nl": "Caches veranderen alleen wanneer nodig.",
+        "it": "Le cache cambiano solo quando serve.",
+        "es": "Las caches cambian solo cuando hace falta.",
+        "pl": "Pamiec podreczna zmienia sie tylko gdy trzeba.",
+        "pt": "As caches mudam apenas quando e necessario."
+      }
+    },
+    {
+      "version": "1.5.0",
+      "releasedAt": "2026-06-15",
+      "labels": {
+        "fr": "Les zones de parcs gagnent des pages publiques dediees.",
+        "en": "Park zones get dedicated public pages.",
+        "de": "Parkbereiche erhalten eigene oeffentliche Seiten.",
+        "nl": "Parkzones krijgen eigen publieke pagina's.",
+        "it": "Le zone dei parchi ottengono pagine pubbliche dedicate.",
+        "es": "Las zonas de parques ganan paginas publicas dedicadas.",
+        "pl": "Strefy parkow dostaja wlasne strony publiczne.",
+        "pt": "As zonas dos parques ganham paginas publicas dedicadas."
+      }
+    },
+    {
+      "version": "1.4.2",
+      "releasedAt": "2026-06-15",
+      "labels": {
+        "fr": "Les pages publiques chargent moins de donnees inutiles.",
+        "en": "Public pages load less unnecessary data.",
+        "de": "Oeffentliche Seiten laden weniger unnoetige Daten.",
+        "nl": "Publieke pagina's laden minder onnodige data.",
+        "it": "Le pagine pubbliche caricano meno dati inutili.",
+        "es": "Las paginas publicas cargan menos datos innecesarios.",
+        "pl": "Publiczne strony laduja mniej zbednych danych.",
+        "pt": "As paginas publicas carregam menos dados desnecessarios."
+      }
+    },
+    {
+      "version": "1.4.1",
+      "releasedAt": "2026-06-15",
+      "labels": {
+        "fr": "La gestion du cache public devient plus robuste.",
+        "en": "Public cache handling becomes more robust.",
+        "de": "Die Verwaltung des oeffentlichen Caches wird robuster.",
+        "nl": "Publiek cachebeheer wordt robuuster.",
+        "it": "La gestione della cache pubblica diventa piu solida.",
+        "es": "La gestion de cache publica es mas robusta.",
+        "pl": "Obsluga publicznej pamieci podrecznej jest solidniejsza.",
+        "pt": "A gestao da cache publica fica mais robusta."
+      }
+    },
+    {
+      "version": "1.4.0",
+      "releasedAt": "2026-06-11",
+      "labels": {
+        "fr": "Les fiches de parcs presentent mieux leurs informations.",
+        "en": "Park pages present their information better.",
+        "de": "Parkseiten praesentieren ihre Informationen besser.",
+        "nl": "Parkpagina's tonen hun informatie beter.",
+        "it": "Le schede dei parchi presentano meglio le informazioni.",
+        "es": "Las fichas de parques presentan mejor su informacion.",
+        "pl": "Strony parkow lepiej prezentuja informacje.",
+        "pt": "As fichas dos parques apresentam melhor as informacoes."
+      }
+    },
+    {
+      "version": "1.3.1",
+      "releasedAt": "2026-06-09",
+      "labels": {
+        "fr": "La base de donnees repond plus regulierement.",
+        "en": "The database responds more consistently.",
+        "de": "Die Datenbank antwortet gleichmaessiger.",
+        "nl": "De database reageert constanter.",
+        "it": "Il database risponde in modo piu regolare.",
+        "es": "La base de datos responde de forma mas constante.",
+        "pl": "Baza danych odpowiada bardziej regularnie.",
+        "pt": "A base de dados responde de forma mais regular."
+      }
+    },
+    {
+      "version": "1.3.0",
+      "releasedAt": "2026-06-09",
+      "labels": {
+        "fr": "Les acces a la base de donnees sont optimises.",
+        "en": "Database access is optimized.",
+        "de": "Datenbankzugriffe sind optimiert.",
+        "nl": "Databasetoegang is geoptimaliseerd.",
+        "it": "Gli accessi al database sono ottimizzati.",
+        "es": "Los accesos a la base de datos estan optimizados.",
+        "pl": "Dostep do bazy danych jest zoptymalizowany.",
+        "pt": "Os acessos a base de dados sao otimizados."
+      }
+    },
+    {
+      "version": "1.2.8",
+      "releasedAt": "2026-06-08",
+      "labels": {
+        "fr": "Les appels internes entre services sont corriges.",
+        "en": "Internal calls between services are fixed.",
+        "de": "Interne Aufrufe zwischen Diensten sind korrigiert.",
+        "nl": "Interne oproepen tussen services zijn gecorrigeerd.",
+        "it": "Le chiamate interne tra servizi sono corrette.",
+        "es": "Las llamadas internas entre servicios quedan corregidas.",
+        "pl": "Wewnetrzne wywolania miedzy uslugami zostaly poprawione.",
+        "pt": "As chamadas internas entre servicos foram corrigidas."
+      }
+    },
+    {
+      "version": "1.2.7",
+      "releasedAt": "2026-06-08",
+      "labels": {
+        "fr": "Les donnees publiques et administrees sont mieux alignees.",
+        "en": "Public and administered data are better aligned.",
+        "de": "Oeffentliche und verwaltete Daten sind besser abgestimmt.",
+        "nl": "Publieke en beheerde data zijn beter afgestemd.",
+        "it": "Dati pubblici e amministrati sono piu allineati.",
+        "es": "Los datos publicos y administrados estan mejor alineados.",
+        "pl": "Dane publiczne i administracyjne sa lepiej spojne.",
+        "pt": "Dados publicos e administrados ficam melhor alinhados."
+      }
+    },
+    {
+      "version": "1.2.6",
+      "releasedAt": "2026-06-08",
+      "labels": {
+        "fr": "La carte des parcs visibles est plus fluide.",
+        "en": "The visible parks map is smoother.",
+        "de": "Die Karte sichtbarer Parks laeuft fluessiger.",
+        "nl": "De kaart met zichtbare parken werkt vloeiender.",
+        "it": "La mappa dei parchi visibili e piu fluida.",
+        "es": "El mapa de parques visibles es mas fluido.",
+        "pl": "Mapa widocznych parkow dziala plynniej.",
+        "pt": "O mapa de parques visiveis fica mais fluido."
+      }
+    },
+    {
+      "version": "1.2.5",
+      "releasedAt": "2026-06-08",
+      "labels": {
+        "fr": "L'administration des coordonnees de parcs est amelioree.",
+        "en": "Park coordinate administration is improved.",
+        "de": "Die Verwaltung von Parkkoordinaten ist verbessert.",
+        "nl": "Het beheer van parkcoordinaten is verbeterd.",
+        "it": "L'amministrazione delle coordinate dei parchi migliora.",
+        "es": "Mejora la administracion de coordenadas de parques.",
+        "pl": "Administracja wspolrzednych parkow jest ulepszona.",
+        "pt": "A administracao das coordenadas dos parques melhora."
+      }
+    },
+    {
+      "version": "1.2.4",
+      "releasedAt": "2026-06-07",
+      "labels": {
+        "fr": "L'administration devient plus pratique sur mobile.",
+        "en": "Administration becomes more convenient on mobile.",
+        "de": "Die Administration wird auf Mobilgeraeten praktischer.",
+        "nl": "De administratie wordt handiger op mobiel.",
+        "it": "L'amministrazione diventa piu pratica su mobile.",
+        "es": "La administracion es mas practica en movil.",
+        "pl": "Administracja staje sie wygodniejsza na telefonie.",
+        "pt": "A administracao fica mais pratica no telemovel."
+      }
+    },
+    {
+      "version": "1.2.3",
+      "releasedAt": "2026-06-07",
+      "labels": {
+        "fr": "Le parcours de publication du contenu est mieux encadre.",
+        "en": "The content publishing path is better guided.",
+        "de": "Der Weg zur Inhaltsveroeffentlichung ist besser gefuehrt.",
+        "nl": "Het publicatiepad voor content is beter begeleid.",
+        "it": "Il percorso di pubblicazione dei contenuti e piu guidato.",
+        "es": "El recorrido de publicacion de contenido esta mejor guiado.",
+        "pl": "Sciezka publikacji tresci jest lepiej prowadzona.",
+        "pt": "O percurso de publicacao de conteudo fica melhor guiado."
+      }
+    },
+    {
+      "version": "1.2.2",
+      "releasedAt": "2026-06-07",
+      "labels": {
+        "fr": "L'espace de travail des attractions arrive dans l'administration.",
+        "en": "The attraction workspace arrives in administration.",
+        "de": "Der Arbeitsbereich fuer Attraktionen kommt in die Administration.",
+        "nl": "De werkruimte voor attracties komt in beheer.",
+        "it": "Lo spazio di lavoro delle attrazioni arriva in amministrazione.",
+        "es": "El espacio de trabajo de atracciones llega a administracion.",
+        "pl": "Obszar pracy nad atrakcjami trafia do administracji.",
+        "pt": "O espaco de trabalho das atracoes chega a administracao."
+      }
+    },
+    {
+      "version": "1.2.1",
+      "releasedAt": "2026-06-07",
+      "labels": {
+        "fr": "Les pages d'attractions manquantes reviennent dans le sitemap.",
+        "en": "Missing attraction pages return to the sitemap.",
+        "de": "Fehlende Attraktionsseiten kehren in die Sitemap zurueck.",
+        "nl": "Ontbrekende attractiepagina's keren terug in de sitemap.",
+        "it": "Le pagine attrazione mancanti tornano nella sitemap.",
+        "es": "Las paginas de atracciones faltantes vuelven al sitemap.",
+        "pl": "Brakujace strony atrakcji wracaja do sitemap.",
+        "pt": "As paginas de atracoes em falta voltam ao sitemap."
+      }
+    },
+    {
+      "version": "1.2.0",
+      "releasedAt": "2026-06-07",
+      "labels": {
+        "fr": "La version affichee est automatisee dans le footer.",
+        "en": "The displayed version is automated in the footer.",
+        "de": "Die angezeigte Version wird im Footer automatisiert.",
+        "nl": "De getoonde versie wordt automatisch in de footer gezet.",
+        "it": "La versione mostrata e automatizzata nel footer.",
+        "es": "La version mostrada se automatiza en el pie de pagina.",
+        "pl": "Wyswietlana wersja jest automatyczna w stopce.",
+        "pt": "A versao apresentada e automatizada no rodape."
+      }
+    },
+    {
+      "version": "1.0.0",
+      "releasedAt": "2026-05-25",
+      "labels": {
+        "fr": "Les traductions de base sont completees.",
+        "en": "The base translations are completed.",
+        "de": "Die Grunduebersetzungen sind abgeschlossen.",
+        "nl": "De basisvertalingen zijn afgerond.",
+        "it": "Le traduzioni di base sono completate.",
+        "es": "Las traducciones base estan completas.",
+        "pl": "Podstawowe tlumaczenia sa ukonczone.",
+        "pt": "As traducoes de base estao concluidas."
+      }
+    }
+  ]
 }

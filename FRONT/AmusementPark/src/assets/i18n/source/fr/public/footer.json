@@ -7,22 +7,20 @@
     "explore": {
       "title": "Explorer",
       "allParks": "Tous les parcs",
-      "topRollerCoasters": "Top montagnes russes",
-      "interactiveMap": "Carte interactive",
-      "news": "Nouveautés"
+      "interactiveMap": "Carte interactive"
     },
     "about": {
       "title": "À propos",
       "project": "Le projet",
-      "sources": "Sources",
       "contact": "Contact",
+      "versions": "Historique des versions",
       "privacy": "Confidentialité"
     },
     "languages": {
       "title": "Langues"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Fait avec ❤️ et de l’adrénaline",
+      "copy": "© {{year}} AmusementPark — Fait avec du coeur et de l'adrénaline",
       "version": "Version {{version}}"
     }
   }

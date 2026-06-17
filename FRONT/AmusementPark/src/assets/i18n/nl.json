@@ -90,10 +90,30 @@
       "validCoordinatesScope": "Parken met geldige coordinaten",
       "makeFilteredValidCoordinatesVisible": "Maak geolokaliseerde parken zichtbaar"
     },
+    "contactGrievances": {
+      "navTitle": "Contactberichten",
+      "kicker": "Contact",
+      "title": "Feedbackboek",
+      "subtitle": "Bekijk publieke contactberichten met IP-context tegen misbruik.",
+      "total": "{{count}} berichten",
+      "loading": "Contactberichten laden...",
+      "loadError": "Kan contactberichten niet laden.",
+      "empty": "Geen contactbericht gevonden.",
+      "filters": {
+        "search": "Zoeken",
+        "ipAddress": "IP-adres",
+        "languageCode": "Taal"
+      },
+      "columns": {
+        "date": "Datum",
+        "message": "Bericht",
+        "context": "Context",
+        "userAgent": "User-agent"
+      }
+    },
     "dashboard": {
-      "title": "Beheerpaneel",
-      "subtitle": "Startpunt van de backoffice: kies een rubriek in het linkermenu of via de snelkoppelingen hieronder.",
       "shortcuts": {
+        "contactGrievances": "Bekijk contactberichten en anti-misbruikcontext.",
         "users": "Accounts, rollen en toegang beheren.",
         "parks": "Parken filteren, prioriteren en publiceren.",
         "parkItems": "Attracties, winkels, restaurants en diensten beheren.",
@@ -105,7 +125,9 @@
         "auditLogs": "Gelogde gevoelige beheeracties bekijken.",
         "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
         "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow."
-      }
+      },
+      "title": "Beheerpaneel",
+      "subtitle": "Startpunt van de backoffice: kies een rubriek in het linkermenu of via de snelkoppelingen hieronder."
     },
     "dataSources": {
       "title": "Databronnen"
@@ -1642,6 +1664,38 @@
       "secondary": "Terug naar home"
     }
   },
+  "contactPage": {
+    "kicker": "Contact",
+    "title": "Contact met AmusementPark",
+    "lead": "Stuur een opmerking over de site, ontbrekende informatie, een dataprobleem of een verbeteridee.",
+    "email": {
+      "badge": "Tijdelijk e-mailadres",
+      "title": "Direct contact",
+      "note": "Dit adres is tijdelijk totdat een eigen mailprovider is ingesteld."
+    },
+    "form": {
+      "kicker": "Feedbackboek",
+      "title": "Laat een bericht achter",
+      "description": "Berichten worden als platte tekst opgeslagen en in het adminpaneel bekeken.",
+      "messageLabel": "Je bericht",
+      "help": "Alleen platte tekst. HTML-tags en misbruiklinks worden geweigerd.",
+      "validation": "Voer een plattetekstbericht in tussen 10 en 2000 tekens.",
+      "success": "Je bericht is geregistreerd.",
+      "error": "Het bericht kon niet worden verzonden. Controleer de tekst of probeer later opnieuw.",
+      "submit": "Verzenden",
+      "submitting": "Verzenden"
+    },
+    "privacy": {
+      "badge": "Bescherming",
+      "title": "Anti-misbruikmelding",
+      "text": "Dit formulier is bewust streng om de site en beheerders te beschermen.",
+      "points": {
+        "plainText": "Berichten worden alleen als platte tekst geaccepteerd.",
+        "ip": "Je IP-adres wordt opgeslagen om herhaald misbruik te beperken.",
+        "admin": "Alleen beheerders kunnen berichten en technische context bekijken."
+      }
+    }
+  },
   "cookieConsent": {
     "ariaLabel": "Informatie- en keuzebanner voor cookies",
     "title": "Cookies en privacy",
@@ -1658,22 +1712,20 @@
     "explore": {
       "title": "Ontdekken",
       "allParks": "Alle parken",
-      "topRollerCoasters": "Top achtbanen",
-      "interactiveMap": "Interactieve kaart",
-      "news": "Nieuwigheden"
+      "interactiveMap": "Interactieve kaart"
     },
     "about": {
       "title": "Over",
       "project": "Het project",
-      "sources": "Bronnen",
       "contact": "Contact",
+      "versions": "Versiegeschiedenis",
       "privacy": "Privacy"
     },
     "languages": {
       "title": "Talen"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Gemaakt met ❤️ en adrenaline",
+      "copy": "© {{year}} AmusementPark — Gemaakt met hart en adrenaline",
       "version": "Versie {{version}}"
     }
   },
@@ -2482,5 +2534,16 @@
     },
     "lastUpdate": "Laatst bijgewerkt: 23 mei 2026.",
     "backHome": "Terug naar home"
+  },
+  "versionHistoryPage": {
+    "kicker": "Versiegeschiedenis",
+    "title": "Wat veranderde",
+    "lead": "Huidige versie: {{version}}. Elke notitie is kort, publiek en gericht op zichtbare vooruitgang.",
+    "timelineAriaLabel": "Tijdlijn van versiegeschiedenis",
+    "levels": {
+      "major": "Groot",
+      "minor": "Mijlpaal",
+      "patch": "Update"
+    }
   }
 }

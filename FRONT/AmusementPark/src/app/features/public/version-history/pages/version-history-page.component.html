@@ -1,0 +1,33 @@
+<section class="version-history-page public-page">
+  <section class="version-history-hero" appUiSurface="hero" appUiSurfacePadding="spacious">
+    <app-ui-kicker tone="gold" iconClass="pi pi-history">
+      {{ 'versionHistoryPage.kicker' | translate }}
+    </app-ui-kicker>
+    <h1>{{ 'versionHistoryPage.title' | translate }}</h1>
+    <p>{{ 'versionHistoryPage.lead' | translate:{ version: siteVersion } }}</p>
+  </section>
+
+  <section class="version-history-timeline" [attr.aria-label]="'versionHistoryPage.timelineAriaLabel' | translate">
+    @for (entry of entries; track trackByVersion($index, entry)) {
+      <article
+        class="version-entry"
+        [class.version-entry--major]="level(entry) === 'major'"
+        [class.version-entry--minor]="level(entry) === 'minor'"
+        [class.version-entry--patch]="level(entry) === 'patch'"
+        appUiSurface="shell"
+        appUiSurfacePadding="regular">
+        <div class="version-entry__marker" aria-hidden="true"></div>
+        <div class="version-entry__header">
+          <div>
+            <strong>{{ entry.version }}</strong>
+            <time [attr.datetime]="entry.releasedAt">{{ entry.releasedAt | date:'longDate' }}</time>
+          </div>
+          <app-ui-chip [tone]="level(entry) === 'major' ? 'rose' : level(entry) === 'minor' ? 'sky' : 'lime'" iconClass="pi pi-tag">
+            {{ levelKey(entry) | translate }}
+          </app-ui-chip>
+        </div>
+        <p>{{ label(entry) }}</p>
+      </article>
+    }
+  </section>
+</section>

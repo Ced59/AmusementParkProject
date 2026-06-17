@@ -1,0 +1,30 @@
+{
+  "admin": {
+    "contactGrievances": {
+      "navTitle": "Messaggi contatto",
+      "kicker": "Contatto",
+      "title": "Registro feedback",
+      "subtitle": "Consulta i messaggi pubblici con contesto IP per prevenire abusi.",
+      "total": "{{count}} messaggi",
+      "loading": "Caricamento messaggi...",
+      "loadError": "Impossibile caricare i messaggi.",
+      "empty": "Nessun messaggio trovato.",
+      "filters": {
+        "search": "Cerca",
+        "ipAddress": "Indirizzo IP",
+        "languageCode": "Lingua"
+      },
+      "columns": {
+        "date": "Data",
+        "message": "Messaggio",
+        "context": "Contesto",
+        "userAgent": "User-agent"
+      }
+    },
+    "dashboard": {
+      "shortcuts": {
+        "contactGrievances": "Consulta messaggi di contatto e contesto antiabuso."
+      }
+    }
+  }
+}

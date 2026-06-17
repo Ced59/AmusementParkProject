@@ -11,4 +11,5 @@ public static class RateLimitPolicyNames
     public const string AuthRegistration = "auth-registration";
     public const string AuthEmailChallenge = "auth-email-challenge";
     public const string AuthPasswordReset = "auth-password-reset";
+    public const string ContactSubmission = "contact-submission";
 }

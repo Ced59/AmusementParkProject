@@ -7,22 +7,20 @@
     "explore": {
       "title": "Entdecken",
       "allParks": "Alle Parks",
-      "topRollerCoasters": "Top-Achterbahnen",
-      "interactiveMap": "Interaktive Karte",
-      "news": "Neuheiten"
+      "interactiveMap": "Interaktive Karte"
     },
     "about": {
       "title": "Über uns",
       "project": "Das Projekt",
-      "sources": "Quellen",
       "contact": "Kontakt",
+      "versions": "Versionsverlauf",
       "privacy": "Datenschutz"
     },
     "languages": {
       "title": "Sprachen"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Gemacht mit ❤️ und Adrenalin",
+      "copy": "© {{year}} AmusementPark — Gemacht mit Herz und Adrenalin",
       "version": "Version {{version}}"
     }
   }

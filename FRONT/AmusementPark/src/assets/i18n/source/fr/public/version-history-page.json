@@ -1,0 +1,13 @@
+{
+  "versionHistoryPage": {
+    "kicker": "Historique",
+    "title": "Ce qui a change",
+    "lead": "Version actuelle : {{version}}. Chaque note reste courte, publique et centree sur les progres visibles.",
+    "timelineAriaLabel": "Historique des versions",
+    "levels": {
+      "major": "Majeure",
+      "minor": "Palier",
+      "patch": "Mise a jour"
+    }
+  }
+}

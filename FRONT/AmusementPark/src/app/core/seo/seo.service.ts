@@ -293,6 +293,14 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       title: 'About Amusement Parks — Project and data approach',
       description: 'Learn about the Amusement Parks project, its purpose, its public park portfolio and its careful data publication approach.',
     },
+    contact: {
+      title: 'Contact Amusement Parks — Feedback and requests',
+      description: 'Contact Amusement Parks by email or leave a short protected message for the project administrators.',
+    },
+    versions: {
+      title: 'Version history — Amusement Parks',
+      description: 'Follow the public version history of Amusement Parks with short notes for each release.',
+    },
     privacy: {
       title: 'Privacy policy — Amusement Parks',
       description: 'Read how Amusement Parks handles privacy, cookies, authentication data and analytics consent.',
@@ -323,6 +331,14 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       title: 'À propos — Amusement Parks',
       description: 'Découvrez le projet Amusement Parks, son objectif, son portefeuille public de parcs et sa démarche de publication des données.',
     },
+    contact: {
+      title: 'Contact — Amusement Parks',
+      description: 'Contactez Amusement Parks par email ou laissez un message court et protege aux administrateurs du projet.',
+    },
+    versions: {
+      title: 'Historique des versions — Amusement Parks',
+      description: 'Suivez l historique public des versions d Amusement Parks avec une note courte pour chaque mise en ligne.',
+    },
     privacy: {
       title: 'Politique de confidentialité — Amusement Parks',
       description: 'Consultez la manière dont Amusement Parks gère la confidentialité, les cookies, les données de connexion et le consentement analytics.',
@@ -345,6 +361,8 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Explora parques, atracciones y destinos', description: 'Explora parques de ocio, atracciones, restaurantes, hoteles y referencias del sector en todo el mundo.' },
     parks: { title: 'Parques de ocio del mundo — Amusement Parks', description: 'Consulta parques visibles, parques temáticos, acuáticos, zoológicos y resorts con información pública y mapa.' },
     about: { title: 'Acerca de Amusement Parks — Proyecto y datos', description: 'Conoce el proyecto Amusement Parks, su objetivo y su enfoque cuidadoso de publicación de datos.' },
+    contact: { title: 'Contacto — Amusement Parks', description: 'Contacta con Amusement Parks por correo o deja un mensaje breve y protegido para los administradores.' },
+    versions: { title: 'Historial de versiones — Amusement Parks', description: 'Sigue el historial publico de versiones de Amusement Parks con una nota breve por lanzamiento.' },
     privacy: { title: 'Política de privacidad — Amusement Parks', description: 'Consulta cómo Amusement Parks gestiona privacidad, cookies, datos de autenticación y consentimiento analítico.' },
     notFound: { title: 'Página no encontrada — Amusement Parks', description: 'La página solicitada no existe o ya no está disponible en Amusement Parks.' },
     account: { title: 'Cuenta — Amusement Parks', description: 'Página privada de cuenta de usuario de Amusement Parks.' },
@@ -354,6 +372,8 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Parks, Attraktionen und Reiseziele entdecken', description: 'Entdecke Freizeitparks, Attraktionen, Restaurants, Hotels und Branchenreferenzen weltweit.' },
     parks: { title: 'Freizeitparks weltweit — Amusement Parks', description: 'Durchsuche sichtbare Freizeitparks, Themenparks, Wasserparks, Zoos und Resorts mit öffentlichen Details und Karte.' },
     about: { title: 'Über Amusement Parks — Projekt und Datenansatz', description: 'Erfahre mehr über das Projekt Amusement Parks, seinen Zweck und seine sorgfältige Veröffentlichung von Daten.' },
+    contact: { title: 'Kontakt — Amusement Parks', description: 'Kontaktiere Amusement Parks per E-Mail oder sende eine kurze geschuetzte Nachricht an die Administration.' },
+    versions: { title: 'Versionsverlauf — Amusement Parks', description: 'Verfolge den oeffentlichen Versionsverlauf von Amusement Parks mit kurzen Hinweisen je Version.' },
     privacy: { title: 'Datenschutzerklärung — Amusement Parks', description: 'Lies, wie Amusement Parks Datenschutz, Cookies, Anmeldedaten und Analytics-Zustimmung verarbeitet.' },
     notFound: { title: 'Seite nicht gefunden — Amusement Parks', description: 'Die angeforderte Seite existiert nicht oder ist auf Amusement Parks nicht mehr verfügbar.' },
     account: { title: 'Konto — Amusement Parks', description: 'Private Kontoseite für Benutzer von Amusement Parks.' },
@@ -363,6 +383,8 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Esplora parchi, attrazioni e destinazioni', description: 'Esplora parchi divertimento, attrazioni, ristoranti, hotel e riferimenti del settore in tutto il mondo.' },
     parks: { title: 'Parchi divertimento nel mondo — Amusement Parks', description: 'Sfoglia parchi visibili, parchi a tema, acquatici, zoo e resort con informazioni pubbliche e mappa.' },
     about: { title: 'Informazioni su Amusement Parks — Progetto e dati', description: 'Scopri il progetto Amusement Parks, il suo obiettivo e il suo approccio prudente alla pubblicazione dei dati.' },
+    contact: { title: 'Contatto — Amusement Parks', description: 'Contatta Amusement Parks via email o lascia un breve messaggio protetto agli amministratori.' },
+    versions: { title: 'Cronologia versioni — Amusement Parks', description: 'Segui la cronologia pubblica delle versioni di Amusement Parks con brevi note per ogni rilascio.' },
     privacy: { title: 'Informativa sulla privacy — Amusement Parks', description: 'Leggi come Amusement Parks gestisce privacy, cookie, dati di autenticazione e consenso analytics.' },
     notFound: { title: 'Pagina non trovata — Amusement Parks', description: 'La pagina richiesta non esiste o non è più disponibile su Amusement Parks.' },
     account: { title: 'Account — Amusement Parks', description: 'Pagina privata dell’account utente Amusement Parks.' },
@@ -372,6 +394,8 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Odkrywaj parki, atrakcje i kierunki', description: 'Odkrywaj parki rozrywki, atrakcje, restauracje, hotele i referencje branżowe na całym świecie.' },
     parks: { title: 'Parki rozrywki na świecie — Amusement Parks', description: 'Przeglądaj widoczne parki rozrywki, parki tematyczne, wodne, zoo i resorty z publicznymi informacjami oraz mapą.' },
     about: { title: 'O Amusement Parks — Projekt i dane', description: 'Poznaj projekt Amusement Parks, jego cel oraz ostrożne podejście do publikacji danych.' },
+    contact: { title: 'Kontakt — Amusement Parks', description: 'Skontaktuj sie z Amusement Parks e-mailem lub zostaw krotka chroniona wiadomosc dla administratorow.' },
+    versions: { title: 'Historia wersji — Amusement Parks', description: 'Sledz publiczna historie wersji Amusement Parks z krotkimi notatkami dla kazdego wydania.' },
     privacy: { title: 'Polityka prywatności — Amusement Parks', description: 'Sprawdź, jak Amusement Parks zarządza prywatnością, cookies, danymi logowania i zgodą analityczną.' },
     notFound: { title: 'Nie znaleziono strony — Amusement Parks', description: 'Żądana strona nie istnieje albo nie jest już dostępna w Amusement Parks.' },
     account: { title: 'Konto — Amusement Parks', description: 'Prywatna strona konta użytkownika Amusement Parks.' },
@@ -381,6 +405,8 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Ontdek parken, attracties en bestemmingen', description: 'Ontdek pretparken, attracties, restaurants, hotels en brancheverwijzingen over de hele wereld.' },
     parks: { title: 'Pretparken wereldwijd — Amusement Parks', description: 'Bekijk zichtbare pretparken, themaparken, waterparken, dierentuinen en resorts met publieke info en kaart.' },
     about: { title: 'Over Amusement Parks — Project en data-aanpak', description: 'Lees meer over het Amusement Parks-project, het doel en de zorgvuldige aanpak voor datapublicatie.' },
+    contact: { title: 'Contact — Amusement Parks', description: 'Neem contact op met Amusement Parks per e-mail of laat een kort beschermd bericht achter voor de beheerders.' },
+    versions: { title: 'Versiegeschiedenis — Amusement Parks', description: 'Volg de publieke versiegeschiedenis van Amusement Parks met korte notities per release.' },
     privacy: { title: 'Privacybeleid — Amusement Parks', description: 'Lees hoe Amusement Parks omgaat met privacy, cookies, authenticatiegegevens en analytics-toestemming.' },
     notFound: { title: 'Pagina niet gevonden — Amusement Parks', description: 'De gevraagde pagina bestaat niet of is niet meer beschikbaar op Amusement Parks.' },
     account: { title: 'Account — Amusement Parks', description: 'Privé-accountpagina voor gebruikers van Amusement Parks.' },
@@ -390,6 +416,8 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     home: { title: 'Amusement Parks — Explore parques, atrações e destinos', description: 'Explore parques de diversão, atrações, restaurantes, hotéis e referências do setor em todo o mundo.' },
     parks: { title: 'Parques de diversão no mundo — Amusement Parks', description: 'Veja parques visíveis, parques temáticos, aquáticos, zoológicos e resorts com informações públicas e mapa.' },
     about: { title: 'Sobre o Amusement Parks — Projeto e dados', description: 'Conheça o projeto Amusement Parks, seu objetivo e sua abordagem cuidadosa de publicação de dados.' },
+    contact: { title: 'Contacto — Amusement Parks', description: 'Contacte o Amusement Parks por email ou deixe uma mensagem curta e protegida para a administracao.' },
+    versions: { title: 'Historico de versoes — Amusement Parks', description: 'Acompanhe o historico publico de versoes do Amusement Parks com notas curtas por lancamento.' },
     privacy: { title: 'Política de privacidade — Amusement Parks', description: 'Leia como o Amusement Parks trata privacidade, cookies, dados de autenticação e consentimento analítico.' },
     notFound: { title: 'Página não encontrada — Amusement Parks', description: 'A página solicitada não existe ou já não está disponível no Amusement Parks.' },
     account: { title: 'Conta — Amusement Parks', description: 'Página privada da conta de usuário do Amusement Parks.' },
@@ -1273,6 +1301,14 @@ export class SeoService {
 
     if (routeSegment === 'about') {
       return 'about';
+    }
+
+    if (routeSegment === 'contact') {
+      return 'contact';
+    }
+
+    if (routeSegment === 'versions') {
+      return 'versions';
     }
 
     if (routeSegment === 'privacy') {

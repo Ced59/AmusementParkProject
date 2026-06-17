@@ -25,9 +25,11 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(new SitemapGenerationContext(), CancellationToken.None);
 
-        Assert.Equal(4, urls.Count);
+        Assert.Equal(6, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/en/home" && url.Priority == 1.0m);
         Assert.Contains(urls, static url => url.RelativePath == "/en/privacy" && url.ChangeFrequency == "yearly");
+        Assert.Contains(urls, static url => url.RelativePath == "/en/contact" && url.ChangeFrequency == "monthly");
+        Assert.Contains(urls, static url => url.RelativePath == "/en/versions" && url.ChangeFrequency == "monthly");
     }
 
     [Fact]
@@ -41,9 +43,11 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(8, urls.Count);
+        Assert.Equal(12, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/home");
         Assert.Contains(urls, static url => url.RelativePath == "/en/home");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/contact");
+        Assert.Contains(urls, static url => url.RelativePath == "/en/versions");
     }
 
     [Fact]

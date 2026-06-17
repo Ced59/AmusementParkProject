@@ -1,0 +1,13 @@
+{
+  "versionHistoryPage": {
+    "kicker": "Historia wersji",
+    "title": "Co sie zmienilo",
+    "lead": "Aktualna wersja: {{version}}. Kazda notatka jest krotka, publiczna i skupiona na widocznym postepie.",
+    "timelineAriaLabel": "Os czasu historii wersji",
+    "levels": {
+      "major": "Duza",
+      "minor": "Etap",
+      "patch": "Aktualizacja"
+    }
+  }
+}

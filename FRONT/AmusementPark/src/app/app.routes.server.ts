@@ -14,6 +14,8 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/home', renderMode: RenderMode.Server },
   { path: ':lang/parks', renderMode: RenderMode.Server },
   { path: ':lang/about', renderMode: RenderMode.Server },
+  { path: ':lang/contact', renderMode: RenderMode.Server },
+  { path: ':lang/versions', renderMode: RenderMode.Server },
   { path: ':lang/privacy', renderMode: RenderMode.Server },
   { path: ':lang/not-found', renderMode: RenderMode.Server },
 
@@ -59,6 +61,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: ':lang/admin/data', renderMode: RenderMode.Client },
   { path: ':lang/admin/audit-logs', renderMode: RenderMode.Client },
   { path: ':lang/admin/seo-sitemaps', renderMode: RenderMode.Client },
+  { path: ':lang/admin/contact-grievances', renderMode: RenderMode.Client },
   { path: ':lang/admin/images', renderMode: RenderMode.Client },
   { path: ':lang/admin/site', renderMode: RenderMode.Client },
   { path: ':lang/admin/park-graph-upserts', renderMode: RenderMode.Client },

@@ -90,10 +90,30 @@
       "validCoordinatesScope": "Parques com coordenadas validas",
       "makeFilteredValidCoordinatesVisible": "Tornar visiveis os geolocalizados"
     },
+    "contactGrievances": {
+      "navTitle": "Mensagens contacto",
+      "kicker": "Contacto",
+      "title": "Livro de comentarios",
+      "subtitle": "Consulte mensagens publicas com contexto IP para prevenir abusos.",
+      "total": "{{count}} mensagens",
+      "loading": "A carregar mensagens...",
+      "loadError": "Nao foi possivel carregar as mensagens.",
+      "empty": "Nenhuma mensagem encontrada.",
+      "filters": {
+        "search": "Pesquisar",
+        "ipAddress": "Endereco IP",
+        "languageCode": "Idioma"
+      },
+      "columns": {
+        "date": "Data",
+        "message": "Mensagem",
+        "context": "Contexto",
+        "userAgent": "User-agent"
+      }
+    },
     "dashboard": {
-      "title": "Painel",
-      "subtitle": "Ponto de entrada do back-office: escolha uma secção no menu esquerdo ou nos atalhos abaixo.",
       "shortcuts": {
+        "contactGrievances": "Consultar mensagens de contacto e contexto antiabuso.",
         "users": "Gerir contas, funções e acessos.",
         "parks": "Filtrar, priorizar e publicar parques.",
         "parkItems": "Administrar atrações, lojas, restaurantes e serviços.",
@@ -105,7 +125,9 @@
         "auditLogs": "Consultar ações administrativas sensíveis registadas.",
         "parkGraphUpserts": "Pré-visualizar e aplicar um JSON completo ou parcial de parque.",
         "seoSitemaps": "Gerir índice sitemap, secções XML, estatísticas e IndexNow."
-      }
+      },
+      "title": "Painel",
+      "subtitle": "Ponto de entrada do back-office: escolha uma secção no menu esquerdo ou nos atalhos abaixo."
     },
     "dataSources": {
       "title": "Fontes de dados"
@@ -1642,6 +1664,38 @@
       "secondary": "Voltar ao início"
     }
   },
+  "contactPage": {
+    "kicker": "Contacto",
+    "title": "Contactar o AmusementPark",
+    "lead": "Envie uma nota sobre o site, um detalhe em falta, um problema de dados ou uma ideia de melhoria.",
+    "email": {
+      "badge": "Email temporario",
+      "title": "Contacto direto",
+      "note": "Este endereco e temporario ate ser configurado um fornecedor de email dedicado."
+    },
+    "form": {
+      "kicker": "Livro de comentarios",
+      "title": "Deixar uma mensagem",
+      "description": "As mensagens sao guardadas como texto simples e revistas no painel admin.",
+      "messageLabel": "A sua mensagem",
+      "help": "Apenas texto simples. Tags HTML e links abusivos sao recusados.",
+      "validation": "Introduza uma mensagem de texto simples entre 10 e 2000 caracteres.",
+      "success": "A sua mensagem foi registada.",
+      "error": "Nao foi possivel enviar a mensagem. Verifique o texto ou tente mais tarde.",
+      "submit": "Enviar",
+      "submitting": "A enviar"
+    },
+    "privacy": {
+      "badge": "Protecao",
+      "title": "Aviso antiabuso",
+      "text": "Este formulario e intencionalmente rigoroso para proteger o site e os administradores.",
+      "points": {
+        "plainText": "As mensagens sao aceites apenas em texto simples.",
+        "ip": "O seu endereco IP e registado para limitar abusos repetidos.",
+        "admin": "Apenas administradores podem consultar mensagens e contexto tecnico."
+      }
+    }
+  },
   "cookieConsent": {
     "ariaLabel": "Banner de informação e escolha sobre cookies",
     "title": "Cookies e privacidade",
@@ -1658,22 +1712,20 @@
     "explore": {
       "title": "Explorar",
       "allParks": "Todos os parques",
-      "topRollerCoasters": "Top montanhas-russas",
-      "interactiveMap": "Mapa interativo",
-      "news": "Novidades"
+      "interactiveMap": "Mapa interativo"
     },
     "about": {
       "title": "Sobre",
       "project": "O projeto",
-      "sources": "Fontes",
       "contact": "Contacto",
+      "versions": "Histórico de versões",
       "privacy": "Privacidade"
     },
     "languages": {
       "title": "Idiomas"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Feito com ❤️ e adrenalina",
+      "copy": "© {{year}} AmusementPark — Feito com coração e adrenalina",
       "version": "Versão {{version}}"
     }
   },
@@ -2482,5 +2534,16 @@
     },
     "lastUpdate": "Última atualização: 23 de maio de 2026.",
     "backHome": "Voltar ao início"
+  },
+  "versionHistoryPage": {
+    "kicker": "Historico",
+    "title": "O que mudou",
+    "lead": "Versao atual: {{version}}. Cada nota e curta, publica e centrada no progresso visivel.",
+    "timelineAriaLabel": "Linha temporal do historico de versoes",
+    "levels": {
+      "major": "Maior",
+      "minor": "Marco",
+      "patch": "Atualizacao"
+    }
   }
 }

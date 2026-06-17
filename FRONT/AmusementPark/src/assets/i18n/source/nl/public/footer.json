@@ -7,22 +7,20 @@
     "explore": {
       "title": "Ontdekken",
       "allParks": "Alle parken",
-      "topRollerCoasters": "Top achtbanen",
-      "interactiveMap": "Interactieve kaart",
-      "news": "Nieuwigheden"
+      "interactiveMap": "Interactieve kaart"
     },
     "about": {
       "title": "Over",
       "project": "Het project",
-      "sources": "Bronnen",
       "contact": "Contact",
+      "versions": "Versiegeschiedenis",
       "privacy": "Privacy"
     },
     "languages": {
       "title": "Talen"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Gemaakt met ❤️ en adrenaline",
+      "copy": "© {{year}} AmusementPark — Gemaakt met hart en adrenaline",
       "version": "Versie {{version}}"
     }
   }
