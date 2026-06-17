@@ -142,6 +142,12 @@
   padding: 2.25rem 0 4.5rem;
 }
 
+.park-nearby-block {
+  width: min(100% - 2.5rem, var(--park-detail-content-max-width));
+  margin: 0 auto;
+  padding: 0 0 4.5rem;
+}
+
 .park-main,
 .park-sidebar {
   display: flex;
@@ -482,7 +488,8 @@
   }
 
   .park-banner__content,
-  .park-detail__body {
+  .park-detail__body,
+  .park-nearby-block {
     width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -541,7 +548,8 @@
 
 @media (min-width: 681px) and (max-width: 959px) {
   .park-banner__content,
-  .park-detail__body {
+  .park-detail__body,
+  .park-nearby-block {
     width: min(100% - 1.5rem, var(--park-detail-content-max-width));
   }
 }

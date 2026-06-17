@@ -20,6 +20,7 @@ import { ParkZone } from '@app/models/parks/park-zone';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SsrRuntimeService } from '@core/ssr/ssr-runtime.service';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemDescription } from '@shared/utils/display/park-item-presentation.helpers';
 import { buildTranslationOptions } from '@shared/utils/display/display-options';
@@ -147,7 +148,8 @@ export class ParkItemsPageStateFacade {
         park,
         this.currentLanguageSignal(),
         this.resolveManufacturerName(item),
-        this.resolveZoneName(item)
+        this.resolveZoneName(item),
+        this.textTruncator
       ));
   });
   public readonly totalResults = computed(() => this.filteredItems().length);
@@ -214,6 +216,7 @@ export class ParkItemsPageStateFacade {
     @Inject(PARK_ITEMS_PAGE_STATE_IMAGES_API_SERVICE_PORT) private readonly imagesApiService: ParkItemsPageStateImagesApiServicePort,
     @Inject(PARK_ITEMS_PAGE_STATE_MANUFACTURERS_API_SERVICE_PORT) private readonly manufacturersApiService: ParkItemsPageStateManufacturersApiServicePort,
     @Inject(PARK_ITEMS_PAGE_STATE_PARK_ZONES_API_SERVICE_PORT) private readonly parkZonesApiService: ParkItemsPageStateParkZonesApiServicePort,
+    private readonly textTruncator: NaturalTextTruncatorService,
     private readonly destroyRef: DestroyRef,
     private readonly ssrRuntimeService: SsrRuntimeService
   ) {

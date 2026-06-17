@@ -1,6 +1,7 @@
 import { ImageDto } from '@app/models/images/image-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import {
   getParkItemCategoryTranslationKey,
   getParkItemTypeTranslationKey,
@@ -44,7 +45,8 @@ export function mapParkItemToDetailViewModel(
   zoneName: string | null,
   currentLanguage: string,
   relatedItems: ParkItem[] = [],
-  photos: ImageDto[] = []
+  photos: ImageDto[] = [],
+  textTruncator: NaturalTextTruncatorService | null = null
 ): ParkItemDetailViewModel | null {
   if (!item) {
     return null;
@@ -97,7 +99,7 @@ export function mapParkItemToDetailViewModel(
     mapCenter: resolveMapCenter(locationPoints, item, park),
     mapZoom: locationPoints.length > 1 ? 17 : 18,
     hasPreciseLocations,
-    relatedItems: buildRelatedItems(item, park, relatedItems, currentLanguage, zoneName)
+    relatedItems: buildRelatedItems(item, park, relatedItems, currentLanguage, zoneName, textTruncator)
   };
 }
 

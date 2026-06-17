@@ -1,5 +1,6 @@
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 
 import { mapParkItemToCardViewModel } from './park-item-card.mapper';
 
@@ -58,5 +59,16 @@ describe('mapParkItemToCardViewModel', () => {
     expect(result.subtitle).toBeNull();
     expect(result.itemLink).toBeNull();
     expect(result.highlights).toEqual([]);
+  });
+
+  it('truncates card descriptions with the shared text truncator when provided', () => {
+    const item: ParkItem = createItem({
+      descriptions: [{ languageCode: 'en', value: 'A detailed attraction description '.repeat(12) }]
+    });
+
+    const result = mapParkItemToCardViewModel(item, park, 'en', null, null, new NaturalTextTruncatorService());
+
+    expect(result.description?.length).toBeLessThanOrEqual(160);
+    expect(result.description?.endsWith('...')).toBeTrue();
   });
 });

@@ -2,19 +2,19 @@
   "admin": {
     "dashboard": {
       "title": "Painel",
-      "subtitle": "Ponto de entrada do back-office: escolha uma secÃ§Ã£o no menu esquerdo ou nos atalhos abaixo.",
+      "subtitle": "Ponto de entrada do back-office: escolha uma secção no menu esquerdo ou nos atalhos abaixo.",
       "shortcuts": {
-        "users": "Gerir contas, funÃ§Ãµes e acessos.",
+        "users": "Gerir contas, funções e acessos.",
         "parks": "Filtrar, priorizar e publicar parques.",
-        "parkItems": "Administrar atraÃ§Ãµes, lojas, restaurantes e serviÃ§os.",
+        "parkItems": "Administrar atrações, lojas, restaurantes e serviços.",
         "operators": "Manter os operadores associados aos parques.",
-        "manufacturers": "Manter construtores e fabricantes de atraÃ§Ãµes.",
-        "images": "Rever multimÃ©dia, logÃ³tipos e imagens do site.",
-        "data": "Monitorizar importaÃ§Ãµes, fontes e processamento de dados.",
+        "manufacturers": "Manter construtores e fabricantes de atrações.",
+        "images": "Rever multimédia, logótipos e imagens do site.",
+        "data": "Monitorizar importações, fontes e processamento de dados.",
         "founders": "Gerir fundadores e biografias ligados aos parques.",
-        "auditLogs": "Consultar aÃ§Ãµes administrativas sensÃ­veis registadas.",
-        "parkGraphUpserts": "PrÃ©-visualizar e aplicar um JSON completo ou parcial de parque.",
-        "seoSitemaps": "Gerir Ã­ndice sitemap, secÃ§Ãµes XML, estatÃ­sticas e IndexNow."
+        "auditLogs": "Consultar ações administrativas sensíveis registadas.",
+        "parkGraphUpserts": "Pré-visualizar e aplicar um JSON completo ou parcial de parque.",
+        "seoSitemaps": "Gerir índice sitemap, secções XML, estatísticas e IndexNow."
       }
     }
   }

@@ -113,7 +113,8 @@ export class HomeStateFacade {
 
     this.parksApiService.getRandomVisibleParks(4, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (response: Park[]) => {
-        const heroParks: ParkCardModel[] = mapArray(response, (park: Park) => mapParkToCardModel(park, currentLanguage, this.countryDisplayService));
+        const heroParks: ParkCardModel[] = mapArray(response, (park: Park) =>
+          mapParkToCardModel(park, currentLanguage, this.countryDisplayService, this.textTruncator));
         this.setHeroParks(heroParks);
         this.loadHomeFeaturedParks(currentLanguage, heroParks.map((park: ParkCardModel) => park.id).filter((parkId: string | null): parkId is string => !!parkId));
       },

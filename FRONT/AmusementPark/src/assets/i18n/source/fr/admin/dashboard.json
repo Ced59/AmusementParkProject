@@ -2,18 +2,18 @@
   "admin": {
     "dashboard": {
       "title": "Tableau de bord",
-      "subtitle": "Point dâ€™entrÃ©e du back-office : choisis une rubrique dans le menu de gauche ou dans les raccourcis ci-dessous.",
+      "subtitle": "Point d’entrée du back-office : choisis une rubrique dans le menu de gauche ou dans les raccourcis ci-dessous.",
       "shortcuts": {
-        "users": "GÃ©rer les comptes, les rÃ´les et les accÃ¨s.",
+        "users": "Gérer les comptes, les rôles et les accès.",
         "parks": "Filtrer, prioriser et publier les parcs.",
         "parkItems": "Administrer les attractions, boutiques, restaurants et services.",
-        "operators": "Maintenir les exploitants rattachÃ©s aux parcs.",
-        "manufacturers": "Maintenir les constructeurs et fabricants dâ€™attractions.",
-        "images": "ContrÃ´ler les mÃ©dias, logos et visuels du site.",
-        "data": "Suivre les imports, sources et traitements de donnÃ©es.",
-        "founders": "Maintenir les fondateurs et biographies rattachÃ©s aux parcs.",
-        "auditLogs": "Consulter les actions sensibles journalisÃ©es.",
-        "parkGraphUpserts": "PrÃ©visualiser puis appliquer un JSON global ou partiel de parc.",
+        "operators": "Maintenir les exploitants rattachés aux parcs.",
+        "manufacturers": "Maintenir les constructeurs et fabricants d’attractions.",
+        "images": "Contrôler les médias, logos et visuels du site.",
+        "data": "Suivre les imports, sources et traitements de données.",
+        "founders": "Maintenir les fondateurs et biographies rattachés aux parcs.",
+        "auditLogs": "Consulter les actions sensibles journalisées.",
+        "parkGraphUpserts": "Prévisualiser puis appliquer un JSON global ou partiel de parc.",
         "seoSitemaps": "Piloter le sitemap index, les sections XML, les statistiques et IndexNow."
       }
     }

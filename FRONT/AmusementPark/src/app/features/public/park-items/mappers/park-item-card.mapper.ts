@@ -6,14 +6,18 @@ import {
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { ParkItemCardViewModel } from '../models/park-item-card.model';
+
+const PARK_ITEM_CARD_DESCRIPTION_MAX_LENGTH = 160;
 
 export function mapParkItemToCardViewModel(
   item: ParkItem,
   park: Park | null,
   currentLanguage: string,
   manufacturerName: string | null,
-  zoneName: string | null
+  zoneName: string | null,
+  textTruncator: NaturalTextTruncatorService | null = null
 ): ParkItemCardViewModel {
   const modelName: string | null = item.attractionDetails?.model?.trim() ?? null;
   const subtitleParts: string[] = [manufacturerName, modelName]
@@ -23,7 +27,7 @@ export function mapParkItemToCardViewModel(
     id: item.id ?? null,
     name: item.name?.trim() ?? '',
     subtitle: subtitleParts.length > 0 ? subtitleParts.join(' · ') : null,
-    description: resolveParkItemDescription(item, currentLanguage),
+    description: buildCardDescription(item, currentLanguage, textTruncator),
     categoryLabelKey: getParkItemCategoryTranslationKey(item.category),
     typeLabelKey: getParkItemTypeTranslationKey(item.type),
     typeIconClass: resolveParkItemTypeIconClass(item.type),
@@ -31,6 +35,20 @@ export function mapParkItemToCardViewModel(
     highlights: buildParkItemHighlights(item, manufacturerName, currentLanguage),
     itemLink: buildParkItemLink(park, item, currentLanguage)
   };
+}
+
+function buildCardDescription(
+  item: ParkItem,
+  currentLanguage: string,
+  textTruncator: NaturalTextTruncatorService | null
+): string | null {
+  const description: string | null = resolveParkItemDescription(item, currentLanguage);
+
+  if (!textTruncator) {
+    return description;
+  }
+
+  return textTruncator.truncate(description, { maxLength: PARK_ITEM_CARD_DESCRIPTION_MAX_LENGTH, ellipsis: '...' });
 }
 
 function buildParkItemHighlights(item: ParkItem, manufacturerName: string | null, currentLanguage: string): string[] {

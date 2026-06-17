@@ -2,7 +2,7 @@
   "admin": {
     "dashboard": {
       "title": "Panel",
-      "subtitle": "Punto de entrada del back-office: elige una secciÃ³n en el menÃº izquierdo o en los accesos directos.",
+      "subtitle": "Punto de entrada del back-office: elige una sección en el menú izquierdo o en los accesos directos.",
       "shortcuts": {
         "users": "Gestionar cuentas, roles y accesos.",
         "parks": "Filtrar, priorizar y publicar parques.",
@@ -11,10 +11,10 @@
         "manufacturers": "Mantener constructores y fabricantes de atracciones.",
         "images": "Revisar medios, logotipos y visuales del sitio.",
         "data": "Supervisar importaciones, fuentes y procesos de datos.",
-        "founders": "Mantener fundadores y biografÃ­as vinculados a los parques.",
+        "founders": "Mantener fundadores y biografías vinculados a los parques.",
         "auditLogs": "Revisar acciones administrativas sensibles registradas.",
         "parkGraphUpserts": "Previsualizar y aplicar un JSON completo o parcial de parque.",
-        "seoSitemaps": "Gestionar el Ã­ndice sitemap, secciones XML, estadÃ­sticas e IndexNow."
+        "seoSitemaps": "Gestionar el índice sitemap, secciones XML, estadísticas e IndexNow."
       }
     }
   }

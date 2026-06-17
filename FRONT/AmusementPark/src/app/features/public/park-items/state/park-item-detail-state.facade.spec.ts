@@ -189,7 +189,11 @@ describe('ParkItemDetailStateFacade', () => {
 
   it('loads the park item and orchestrates related detail data through ports', () => {
     const context = configureFacade();
-    context.itemsPort.relatedResponse$ = of([createParkItem({ id: 'item-2', name: 'Raik' })]);
+    context.itemsPort.relatedResponse$ = of([createParkItem({
+      id: 'item-2',
+      name: 'Raik',
+      descriptions: [{ languageCode: 'fr', value: 'Description similaire tres detaillee '.repeat(12) }]
+    })]);
     context.imagesPort.photosResponse$ = of([createImage('image-1')]);
 
     context.facade.setCurrentLanguage('fr');
@@ -202,6 +206,8 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.facade.detail()?.zoneName).toBe('Mexico');
     expect(context.facade.detail()?.heroPhoto?.imageId).toBe('image-1');
     expect(context.facade.detail()?.imagesLink).toEqual(['/', 'fr', 'park', 'park-1', 'phantasialand', 'item', 'item-1', 'taron', 'images']);
+    expect(context.facade.detail()?.relatedItems[0]?.description?.length).toBeLessThanOrEqual(160);
+    expect(context.facade.detail()?.relatedItems[0]?.description?.endsWith('...')).toBeTrue();
     expect(context.itemsPort.itemCalls).toEqual(['item-1']);
     expect(context.parksPort.calls).toEqual(['park-1']);
     expect(context.itemsPort.relatedCalls).toEqual(['park-1']);

@@ -36,6 +36,7 @@
         *ngFor="let park of parks"
         [park]="park"
         [detailLink]="buildParkLink(park)"
+        [showDescriptionInCompact]="true"
         [compact]="true">
       </app-ui-park-card>
     </div>

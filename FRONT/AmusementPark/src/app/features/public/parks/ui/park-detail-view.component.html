@@ -231,6 +231,14 @@
           }
         </aside>
       </div>
+
+      <app-park-nearby-section
+        class="park-nearby-block"
+        [parks]="nearbyParks"
+        [state]="nearbyState"
+        [currentLang]="currentLang"
+        [sourceName]="currentPark.name">
+      </app-park-nearby-section>
     </section>
   }
 </app-page-state>

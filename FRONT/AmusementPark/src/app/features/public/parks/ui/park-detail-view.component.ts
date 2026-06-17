@@ -6,11 +6,13 @@ import { SafeExternalUrlPipe, SafeRichHtmlPipe } from '@shared/pipes';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
+import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiStatCardComponent } from '@ui/primitives';
 import { ParkContentSummaryViewModel } from '../models/park-content-summary.model';
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
 import { ParkContentSummaryComponent } from './park-content-summary.component';
 import { ParkLocationSectionComponent } from './park-location-section.component';
+import { ParkNearbySectionComponent } from './park-nearby-section.component';
 
 @Component({
   selector: 'app-park-detail-view',
@@ -22,6 +24,7 @@ import { ParkLocationSectionComponent } from './park-location-section.component'
     ImageDisplayComponent,
     ParkContentSummaryComponent,
     ParkLocationSectionComponent,
+    ParkNearbySectionComponent,
     TranslateModule,
     SafeExternalUrlPipe,
     SafeRichHtmlPipe,
@@ -36,6 +39,9 @@ export class ParkDetailViewComponent {
   @Input() state: ScreenState<unknown, string> | null = null;
   @Input() park: ParkDetailViewModel | null = null;
   @Input() summary: ParkContentSummaryViewModel | null = null;
+  @Input() nearbyParks: ParkCardModel[] = [];
+  @Input() nearbyState: ScreenState<unknown, string> | null = null;
+  @Input() currentLang: string = 'en';
   @Input() heroImageResponsiveWidths: readonly number[] = [320, 480, 640, 800, 960, 1280];
   @Input() heroImageSizes: string = '(max-width: 900px) 100vw, 900px';
   @Input() heroImageSrcWidth: number | null = 960;

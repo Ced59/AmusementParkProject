@@ -3,6 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { Park } from '@app/models/parks/park';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
@@ -15,11 +16,18 @@ import { ParkDetailStateFacade } from './park-detail-state.facade';
 
 class FakeParksPort implements ParkDetailParksPort {
   public summaryResponse$: Observable<ParkDetailSummary> = of(createSummary());
+  public nearestResponse$: Observable<ParkDistanceResponse> = of(createNearbyResponse());
   public readonly summaryCalls: string[] = [];
+  public readonly nearestCalls: { sourceParkId: string; limit?: number; maxDistanceKilometers?: number | null }[] = [];
 
   getParkDetailSummary(id: string): Observable<ParkDetailSummary> {
     this.summaryCalls.push(id);
     return this.summaryResponse$;
+  }
+
+  getNearestParks(sourceParkId: string, limit?: number, maxDistanceKilometers?: number | null): Observable<ParkDistanceResponse> {
+    this.nearestCalls.push({ sourceParkId, limit, maxDistanceKilometers });
+    return this.nearestResponse$;
   }
 }
 
@@ -93,6 +101,46 @@ function createSummary(totalItems: number = 3, hasMainImage: boolean = true): Pa
   };
 }
 
+function createNearbyPark(id: string, name: string, distanceLatitude: number): Park {
+  return {
+    id,
+    name,
+    countryCode: 'BE',
+    latitude: distanceLatitude,
+    longitude: 3.1,
+    isVisible: true,
+    descriptions: [
+      { languageCode: 'en', value: 'Nearby park description '.repeat(12) }
+    ]
+  };
+}
+
+function createNearbyResponse(): ParkDistanceResponse {
+  return {
+    source: {
+      id: 'park-1',
+      name: 'Bellewaerde',
+      countryCode: 'BE',
+      latitude: 50.845,
+      longitude: 2.945
+    },
+    distanceUnit: 'km',
+    calculationKind: 'nearest',
+    targets: [
+      {
+        proximityRank: 1,
+        distanceKilometers: 18.4,
+        distanceMeters: 18400,
+        distanceUnit: 'km',
+        estimatedTravelDurationMinutes: 22,
+        park: createNearbyPark('near-1', 'Nearby One', 50.9)
+      }
+    ],
+    missingTargetParkIds: [],
+    unavailableTargetParkIds: []
+  };
+}
+
 function configureFacade(): {
   facade: ParkDetailStateFacade;
   parksPort: FakeParksPort;
@@ -127,7 +175,7 @@ describe('ParkDetailStateFacade', () => {
     TestBed.resetTestingModule();
   });
 
-  it('loads the optimized park detail summary only', () => {
+  it('loads the optimized park detail summary and nearby parks', () => {
     const context = configureFacade();
     context.parksPort.summaryResponse$ = of(createSummary(3));
 
@@ -145,6 +193,10 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.park()?.stats[0].value).toBe(3);
     expect(context.facade.summary()?.entries.find((entry) => entry.labelKey === 'parkVisitor.summary.totalItems')?.count).toBe(3);
     expect(context.parksPort.summaryCalls).toEqual(['park-1']);
+    expect(context.parksPort.nearestCalls).toEqual([{ sourceParkId: 'park-1', limit: 4, maxDistanceKilometers: null }]);
+    expect(context.facade.nearbyState().kind).toBe('ready');
+    expect(context.facade.nearbyParks().map((park) => park.id)).toEqual(['near-1']);
+    expect(context.facade.nearbyParks()[0].shortDescription?.length).toBeLessThanOrEqual(140);
   });
 
   it('keeps the logo fallback but hides the images link when no main photo exists', () => {
