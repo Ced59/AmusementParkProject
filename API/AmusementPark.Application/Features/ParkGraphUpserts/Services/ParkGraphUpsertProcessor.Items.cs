@@ -53,7 +53,7 @@ public sealed partial class ParkGraphUpsertProcessor
             PublicSeoParkItemSnapshot? previousItemSnapshot = isNew ? null : PublicSeoParkItemSnapshot.FromParkItem(item);
 
             ParkGraphUpsertChange change = BuildEntityChange("ParkItem", item.Id, key, item.Name, isNew ? "Created" : "Unchanged", isNew ? "name" : MatchMode(id, name));
-            PatchItem(item, patch, zoneKeys, manufacturerKeys, change, result, isNew);
+            this.PatchItem(item, patch, zoneKeys, manufacturerKeys, change, result, isNew);
             item.ParkId = park.Id;
 
             if (change.Fields.Count > 0 || isNew)

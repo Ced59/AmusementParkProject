@@ -116,6 +116,27 @@
               {{ 'user-profile.modify' | translate }}
             </button>
           </div>
+
+          <div class="profile-row">
+            <span class="profile-label">{{ 'user-profile.preferred_measurement_system' | translate }}</span>
+            <span class="profile-value">{{ measurementSystemLabelKey(currentUser.preferredMeasurementSystem) | translate }}</span>
+            <div class="profile-measurement-actions" role="group" [attr.aria-label]="'measurementSystem.label' | translate">
+              <button
+                appUiButton="ghost"
+                type="button"
+                [class.profile-measurement-actions__active]="(currentUser.preferredMeasurementSystem || 'Metric') === 'Metric'"
+                (click)="selectPreferredMeasurementSystem('Metric')">
+                m
+              </button>
+              <button
+                appUiButton="ghost"
+                type="button"
+                [class.profile-measurement-actions__active]="currentUser.preferredMeasurementSystem === 'Imperial'"
+                (click)="selectPreferredMeasurementSystem('Imperial')">
+                ft
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="logout-container">

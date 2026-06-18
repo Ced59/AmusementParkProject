@@ -8,6 +8,7 @@ import { UserCredentials } from '@app/models/users/user_credentials';
 import { UserDto } from '@app/models/users/user_dto';
 import { UserRegister } from '@app/models/users/user-register';
 import { UserToken } from '@app/models/users/user_token';
+import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
 import { AUTH_API_ENDPOINTS } from './auth-api-endpoints';
 import { RefreshTokenResponse } from './models/api/refresh-token-response.model';
 
@@ -69,9 +70,21 @@ export class AuthApiService {
     return this.http.post<AuthMessageResponse>(url, { token, newPassword, newPasswordConfirm }, this.jsonHttpOptions);
   }
 
-  externalLogin(provider: string, token: string, nonce?: string): Observable<UserToken> {
+  externalLogin(provider: string, token: string, nonce?: string, preferredMeasurementSystem?: MeasurementSystem): Observable<UserToken> {
     const url: string = `${environment.apiBaseUrl}${AUTH_API_ENDPOINTS.externalLogin(provider)}`;
-    return this.http.post<UserToken>(url, { token, nonce }, this.credentialedJsonHttpOptions);
+    const body: { token: string; nonce?: string; preferredMeasurementSystem?: MeasurementSystem } = {
+      token
+    };
+
+    if (nonce) {
+      body.nonce = nonce;
+    }
+
+    if (preferredMeasurementSystem) {
+      body.preferredMeasurementSystem = preferredMeasurementSystem;
+    }
+
+    return this.http.post<UserToken>(url, body, this.credentialedJsonHttpOptions);
   }
 
   googleLogin(token: string): Observable<UserToken> {

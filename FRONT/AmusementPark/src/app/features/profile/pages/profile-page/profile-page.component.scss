@@ -6,3 +6,23 @@
   border: 1px solid var(--app-border);
   background: var(--app-surface-2);
 }
+
+.profile-measurement-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-sm);
+  background: var(--app-surface-2);
+}
+
+.profile-measurement-actions button {
+  min-width: 2.5rem;
+}
+
+.profile-measurement-actions__active {
+  color: var(--app-primary);
+  background: var(--app-surface);
+  border-color: var(--app-primary);
+}

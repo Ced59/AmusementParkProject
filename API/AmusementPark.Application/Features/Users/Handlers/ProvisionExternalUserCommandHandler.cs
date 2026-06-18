@@ -86,7 +86,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
             return await this.SignInAsync(updatedExistingUser, verifiedIdentity, cancellationToken);
         }
 
-        User newUser = BuildUserFromIdentity(verifiedIdentity, command.Request.PreferredLanguage);
+        User newUser = BuildUserFromIdentity(verifiedIdentity, command.Request.PreferredLanguage, command.Request.PreferredMeasurementSystem);
         User? createdUser = await this.PersistUserAsync(newUser, verifiedIdentity, true, cancellationToken);
         if (createdUser is null)
         {
@@ -96,7 +96,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
         return await this.SignInAsync(createdUser, verifiedIdentity, cancellationToken);
     }
 
-    private static User BuildUserFromIdentity(VerifiedExternalIdentity identity, string? preferredLanguage)
+    private static User BuildUserFromIdentity(VerifiedExternalIdentity identity, string? preferredLanguage, string? preferredMeasurementSystem)
     {
         DateTime now = DateTime.UtcNow;
 
@@ -106,6 +106,7 @@ public sealed class ProvisionExternalUserCommandHandler : ICommandHandler<Provis
             CreatedAtUtc = now,
             UpdatedAtUtc = now,
             PreferredLanguage = UserRules.NormalizePreferredLanguage(preferredLanguage),
+            PreferredMeasurementSystem = UserRules.NormalizePreferredMeasurementSystem(preferredMeasurementSystem),
             IsActivated = true,
             IsBlocked = false,
             FirstName = identity.GivenName,

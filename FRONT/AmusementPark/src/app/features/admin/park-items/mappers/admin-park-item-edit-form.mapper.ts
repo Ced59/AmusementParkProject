@@ -389,7 +389,7 @@ function toNullableNumber(value: unknown): number | null {
 }
 
 function toNullableUnit(value: unknown): AttractionAccessConditionUnit | null {
-  return value === 'Centimeter' || value === 'Year'
+  return value === 'Centimeter' || value === 'Inch' || value === 'Year'
     ? value
     : null;
 }

@@ -214,6 +214,7 @@
         },
         "accessConditionUnits": {
           "centimeter": "Zentimeter",
+          "inch": "Zoll",
           "year": "Jahre"
         },
         "accessConditionFields": {

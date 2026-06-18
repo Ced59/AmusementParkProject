@@ -1,5 +1,6 @@
 using System.Text.Json;
 using AmusementPark.Application.Common.Contracts;
+using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Ports;
@@ -82,7 +83,8 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IImageRepository>(MockBehavior.Strict),
             searchProjectionWriter.Object,
             historyRepository.Object,
-            Mock.Of<IPublicSeoUpdateNotifier>());
+            Mock.Of<IPublicSeoUpdateNotifier>(),
+            MeasurementConversionService.Instance);
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -185,7 +187,8 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IImageRepository>(MockBehavior.Strict),
             searchProjectionWriter.Object,
             historyRepository.Object,
-            Mock.Of<IPublicSeoUpdateNotifier>());
+            Mock.Of<IPublicSeoUpdateNotifier>(),
+            MeasurementConversionService.Instance);
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -303,7 +306,8 @@ public sealed class ParkGraphUpsertProcessorTests
             imageRepository.Object,
             searchProjectionWriter.Object,
             historyRepository.Object,
-            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict));
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance);
 
         using JsonDocument document = JsonDocument.Parse("""
         {
@@ -361,6 +365,121 @@ public sealed class ParkGraphUpsertProcessorTests
         Assert.Equal(0, result.Value.Counts.Updated);
         parkRepository.VerifyAll();
         imageRepository.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenImperialAttractionMeasurementsAreProvided_ShouldPersistMetricTruth()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Park",
+            CountryCode = "US",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.ToReview,
+        };
+
+        ParkItem? createdItem = null;
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(value => value.GetByParkIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<ParkItem>());
+        parkItemRepository
+            .Setup(value => value.CreateAsync(It.IsAny<ParkItem>(), It.IsAny<CancellationToken>()))
+            .Callback<ParkItem, CancellationToken>((item, _) =>
+            {
+                createdItem = item;
+                item.Id = "item-1";
+            })
+            .ReturnsAsync((ParkItem item, CancellationToken _) => item);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        searchProjectionWriter
+            .Setup(value => value.UpsertManyAsync(SearchProjectionResourceTypes.ParkItems, It.Is<IReadOnlyCollection<string>>(ids => ids.Contains("item-1")), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            parkItemRepository.Object,
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(),
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "items": [
+            {
+              "key": "coaster-1",
+              "name": "American Coaster",
+              "category": "Attraction",
+              "type": "RollerCoaster",
+              "attractionDetails": {
+                "heightInFeet": 200,
+                "lengthInFeet": 5000,
+                "speedInMph": 75,
+                "dropInFeet": 180,
+                "accessConditions": [
+                  {
+                    "type": "MinHeight",
+                    "value": 48,
+                    "unit": "Inch"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(createdItem);
+        Assert.NotNull(createdItem.AttractionDetails);
+        Assert.Equal(60.96d, createdItem.AttractionDetails.HeightInMeters);
+        Assert.Equal(1524d, createdItem.AttractionDetails.LengthInMeters);
+        Assert.Equal(120.7d, createdItem.AttractionDetails.SpeedInKmH);
+        Assert.Equal(54.86d, createdItem.AttractionDetails.DropInMeters);
+        AttractionAccessCondition condition = Assert.Single(createdItem.AttractionDetails.AccessConditions);
+        Assert.Equal(121.92d, condition.Value);
+        Assert.Equal(AttractionAccessConditionUnit.Centimeter, condition.Unit);
+        Assert.Contains(result.Value!.Changes.SelectMany(change => change.Fields), field => field.Field == "attractionDetails.heightInMeters" && field.NewValue == "60.96");
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
         searchProjectionWriter.VerifyAll();
         historyRepository.VerifyAll();
     }

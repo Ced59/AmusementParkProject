@@ -5,6 +5,7 @@
     "firstname": "Imię",
     "email": "E-mail",
     "preferred_language": "Preferowany język",
+    "preferred_measurement_system": "Preferowany system miar",
     "modify": "Edytuj",
     "avatar": {
       "title": "Zmień awatar",

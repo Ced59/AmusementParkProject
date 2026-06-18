@@ -13,6 +13,7 @@
     "firstname": "Voornaam",
     "email": "E-mail",
     "preferred_language": "Voorkeurstaal",
+    "preferred_measurement_system": "Voorkeurseenheden",
     "modify": "Bewerken",
     "avatar": {
       "title": "Avatar wijzigen",
@@ -719,6 +720,7 @@
         },
         "accessConditionUnits": {
           "centimeter": "Centimeter",
+          "inch": "Inch",
           "year": "Jaren"
         },
         "accessConditionFields": {
@@ -1398,6 +1400,11 @@
     "error": "Fout",
     "warning": "Let op",
     "unexpectedError": "Er is een onverwachte fout opgetreden."
+  },
+  "measurementSystem": {
+    "label": "Eenhedensysteem",
+    "metric": "Metrisch",
+    "imperial": "Imperiaal"
   },
   "description": "Ontdek pretparken, attracties en praktische informatie over de hele wereld.",
   "images": {

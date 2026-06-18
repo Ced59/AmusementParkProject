@@ -30,6 +30,21 @@ public sealed class UserRulesTests
     }
 
     [Theory]
+    [InlineData(null, "Metric")]
+    [InlineData("", "Metric")]
+    [InlineData("   ", "Metric")]
+    [InlineData("metric", "Metric")]
+    [InlineData("Imperial", "Imperial")]
+    [InlineData(" imperial ", "Imperial")]
+    [InlineData("unknown", "Metric")]
+    public void NormalizePreferredMeasurementSystem_WhenValueProvided_ShouldFallbackToMetric(string? preferredMeasurementSystem, string expected)
+    {
+        string result = UserRules.NormalizePreferredMeasurementSystem(preferredMeasurementSystem);
+
+        Assert.Equal(expected, result);
+    }
+
+    [Theory]
     [InlineData("user@example.com", true)]
     [InlineData("USER@EXAMPLE.COM", true)]
     [InlineData("user.name+tag@example.co.uk", true)]

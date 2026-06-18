@@ -214,6 +214,7 @@
         },
         "accessConditionUnits": {
           "centimeter": "Centímetros",
+          "inch": "Pulgadas",
           "year": "Años"
         },
         "accessConditionFields": {

@@ -14,5 +14,10 @@
     "error": "Fout",
     "warning": "Let op",
     "unexpectedError": "Er is een onverwachte fout opgetreden."
+  },
+  "measurementSystem": {
+    "label": "Eenhedensysteem",
+    "metric": "Metrisch",
+    "imperial": "Imperiaal"
   }
 }

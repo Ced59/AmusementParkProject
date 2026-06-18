@@ -27,6 +27,7 @@ export interface AttractionDetails {
   speedInMph?: number | null;
   speedInKmH?: number | null;
   dropInMeters?: number | null;
+  dropInFeet?: number | null;
   inversionCount?: number | null;
   trainCount?: number | null;
   carsPerTrain?: number | null;

@@ -14,4 +14,6 @@ public sealed class ProvisionExternalUserRequest
     public string? Nonce { get; init; }
 
     public string? PreferredLanguage { get; init; }
+
+    public string? PreferredMeasurementSystem { get; init; }
 }

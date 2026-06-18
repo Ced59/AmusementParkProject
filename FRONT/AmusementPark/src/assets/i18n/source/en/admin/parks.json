@@ -214,6 +214,7 @@
         },
         "accessConditionUnits": {
           "centimeter": "Centimeters",
+          "inch": "Inches",
           "year": "Years"
         },
         "accessConditionFields": {

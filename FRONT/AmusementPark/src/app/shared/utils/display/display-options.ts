@@ -158,6 +158,7 @@ export const ATTRACTION_WATER_EXPOSURE_LEVEL_OPTIONS: ReadonlyArray<TranslationO
 
 export const ATTRACTION_ACCESS_CONDITION_UNIT_OPTIONS: ReadonlyArray<TranslationOption<AttractionAccessConditionUnit>> = [
   { labelKey: 'admin.parks.items.accessConditionUnits.centimeter', value: 'Centimeter' },
+  { labelKey: 'admin.parks.items.accessConditionUnits.inch', value: 'Inch' },
   { labelKey: 'admin.parks.items.accessConditionUnits.year', value: 'Year' }
 ];
 

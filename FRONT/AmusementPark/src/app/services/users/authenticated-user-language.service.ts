@@ -7,6 +7,7 @@ import { UserDto } from '@app/models/users/user_dto';
 import { AuthService } from '@app/services/auth/auth.service';
 import { TranslationService } from '@app/services/translation.service';
 import { CurrentUserService } from '@app/services/users/current-user.service';
+import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { isSupportedLanguage, resolveSupportedLanguage } from '@shared/utils/routing/localized-route.helpers';
 
 export interface AuthenticatedUserLanguageSyncResult {
@@ -23,6 +24,7 @@ export class AuthenticatedUserLanguageService {
     private readonly authApiService: AuthApiService,
     private readonly authService: AuthService,
     private readonly currentUserService: CurrentUserService,
+    private readonly measurementPreferenceService: MeasurementPreferenceService,
     private readonly router: Router,
     private readonly translationService: TranslationService
   ) {
@@ -35,7 +37,10 @@ export class AuthenticatedUserLanguageService {
     }
 
     return this.authApiService.getCurrentUserById(userId).pipe(
-      tap((user: UserDto): void => this.currentUserService.setCurrentUser(user)),
+      tap((user: UserDto): void => {
+        this.currentUserService.setCurrentUser(user);
+        this.measurementPreferenceService.syncFromUser(user);
+      }),
       switchMap((user: UserDto): Observable<AuthenticatedUserLanguageSyncResult> => {
         const preferredLanguage: string = this.resolvePreferredLanguage(user.preferredLanguage);
         const localizedTargetUrl: string = this.buildLocalizedUrl(targetUrl ?? this.router.url, preferredLanguage);

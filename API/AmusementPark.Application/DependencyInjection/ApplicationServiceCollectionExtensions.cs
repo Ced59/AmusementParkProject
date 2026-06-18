@@ -1,5 +1,6 @@
 using System.Reflection;
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.Countries.Services;
 using AmusementPark.Application.Features.ParkItems;
@@ -39,6 +40,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ParkItemContentQualityService>();
         services.AddScoped<ParkItemsBulkCreatePreviewService>();
         services.AddScoped<ParkGraphUpsertProcessor>();
+        services.AddSingleton<IMeasurementConversionService>(MeasurementConversionService.Instance);
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddSingleton<IParkDistanceCalculator, ParkDistanceCalculator>();
         services.AddScoped<ISitemapSectionProvider, StaticPagesSitemapSectionProvider>();

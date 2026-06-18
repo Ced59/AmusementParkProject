@@ -5,6 +5,7 @@ using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Services;
+using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.ParkItems.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
@@ -289,7 +290,7 @@ internal static class ParkItemsHttpMappers
     {
         ArgumentNullException.ThrowIfNull(dto);
 
-        return new AttractionDetails
+        AttractionDetails details = new AttractionDetails
         {
             ManufacturerId = dto.ManufacturerId,
             Model = dto.Model,
@@ -314,6 +315,7 @@ internal static class ParkItemsHttpMappers
             LengthInMeters = dto.LengthInMeters,
             SpeedInMph = dto.SpeedInMph,
             SpeedInKmH = dto.SpeedInKmH,
+            DropInFeet = dto.DropInFeet,
             DropInMeters = dto.DropInMeters,
             InversionCount = dto.InversionCount,
             TrainCount = dto.TrainCount,
@@ -326,6 +328,9 @@ internal static class ParkItemsHttpMappers
             WaterExposureLevel = dto.WaterExposureLevel?.ToDomain(),
             AccessConditions = dto.AccessConditions?.Select(static value => value.ToDomain()).ToList() ?? new List<AttractionAccessCondition>(),
         };
+
+        MeasurementConversionService.Instance.NormalizeAttractionDetails(details);
+        return details;
     }
 
     private static AttractionDetailsDto ToHttp(this AttractionDetails value)
@@ -357,6 +362,7 @@ internal static class ParkItemsHttpMappers
             LengthInMeters = value.LengthInMeters,
             SpeedInMph = value.SpeedInMph,
             SpeedInKmH = value.SpeedInKmH,
+            DropInFeet = value.DropInFeet,
             DropInMeters = value.DropInMeters,
             InversionCount = value.InversionCount,
             TrainCount = value.TrainCount,

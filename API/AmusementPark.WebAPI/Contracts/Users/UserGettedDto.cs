@@ -28,5 +28,7 @@ public sealed class UserGettedDto
 
     public string? PreferredLanguage { get; set; } = string.Empty;
 
+    public string? PreferredMeasurementSystem { get; set; } = string.Empty;
+
     public string? AvatarUrl { get; set; }
 }

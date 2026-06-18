@@ -156,6 +156,7 @@ public sealed class AuthController : ControllerBase
             Provider = parsedProvider,
             Token = request.Token,
             Nonce = request.Nonce,
+            PreferredMeasurementSystem = request.PreferredMeasurementSystem,
         };
 
         ApplicationResult<AuthenticatedUserResult> result = await this.provisionExternalUserCommandHandler.HandleAsync(

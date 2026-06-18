@@ -70,6 +70,7 @@ public sealed class RegisterLocalUserCommandHandler : ICommandHandler<RegisterLo
             {
                 Email = normalizedEmail,
                 PreferredLanguage = UserRules.NormalizePreferredLanguage(command.Request.PreferredLanguage),
+                PreferredMeasurementSystem = UserRules.NormalizePreferredMeasurementSystem(command.Request.PreferredMeasurementSystem),
                 IsActivated = false,
                 IsBlocked = false,
                 Roles = new List<Role> { Role.User },

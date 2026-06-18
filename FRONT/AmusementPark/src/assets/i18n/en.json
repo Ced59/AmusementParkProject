@@ -13,6 +13,7 @@
     "firstname": "First name",
     "email": "Email",
     "preferred_language": "Preferred language",
+    "preferred_measurement_system": "Preferred measurement system",
     "modify": "Edit",
     "avatar": {
       "title": "Change avatar",
@@ -719,6 +720,7 @@
         },
         "accessConditionUnits": {
           "centimeter": "Centimeters",
+          "inch": "Inches",
           "year": "Years"
         },
         "accessConditionFields": {
@@ -1398,6 +1400,11 @@
     "error": "Error",
     "warning": "Warning",
     "unexpectedError": "An unexpected error occurred."
+  },
+  "measurementSystem": {
+    "label": "Measurement system",
+    "metric": "Metric",
+    "imperial": "Imperial"
   },
   "description": "Explore amusement parks, attractions and practical information around the world.",
   "images": {

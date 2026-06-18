@@ -1,6 +1,20 @@
 {
-  "version": "1.10.16",
+  "version": "1.11.0",
   "history": [
+    {
+      "version": "1.11.0",
+      "releasedAt": "2026-06-18",
+      "labels": {
+        "fr": "Les unites d'affichage deviennent plus flexibles.",
+        "en": "Display units become more flexible.",
+        "de": "Anzeigeeinheiten werden flexibler.",
+        "nl": "Weergave-eenheden worden flexibeler.",
+        "it": "Le unita visualizzate diventano piu flessibili.",
+        "es": "Las unidades de visualizacion son mas flexibles.",
+        "pl": "Jednostki wyswietlania staja sie bardziej elastyczne.",
+        "pt": "As unidades apresentadas ficam mais flexiveis."
+      }
+    },
     {
       "version": "1.10.16",
       "releasedAt": "2026-06-18",

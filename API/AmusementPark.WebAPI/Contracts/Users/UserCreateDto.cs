@@ -12,4 +12,6 @@ public sealed class UserCreateDto
     public string? VerifyPassword { get; set; }
 
     public string? PreferredLanguage { get; set; }
+
+    public string? PreferredMeasurementSystem { get; set; }
 }

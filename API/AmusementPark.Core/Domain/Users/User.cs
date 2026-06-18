@@ -21,6 +21,8 @@ public sealed class User : AuditableEntity
 
     public string? PreferredLanguage { get; set; }
 
+    public string? PreferredMeasurementSystem { get; set; }
+
     public string? AvatarUrl { get; set; }
 
     public List<Role> Roles { get; set; } = new();

@@ -166,6 +166,11 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler
             updatedValueCount = accessResult.Value;
         }
 
+        if (ShouldNormalizeAttractionDetails(patch) && item.AttractionDetails is not null)
+        {
+            this.NormalizeAttractionDetailsAfterPatch(item.AttractionDetails, updatedFields);
+        }
+
         ParkItem? updated = await this.parkItemRepository.UpdateAsync(entityId, item, cancellationToken);
         if (updated is null)
         {

@@ -197,6 +197,8 @@ public sealed class ParkGraphExportAttractionDetails
 
     public double? SpeedInKmH { get; init; }
 
+    public double? DropInFeet { get; init; }
+
     public double? DropInMeters { get; init; }
 
     public int? InversionCount { get; init; }

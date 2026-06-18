@@ -13,6 +13,7 @@
     "firstname": "Nombre",
     "email": "Correo",
     "preferred_language": "Idioma preferido",
+    "preferred_measurement_system": "Sistema de medidas preferido",
     "modify": "Modificar",
     "avatar": {
       "title": "Cambiar avatar",
@@ -719,6 +720,7 @@
         },
         "accessConditionUnits": {
           "centimeter": "Centímetros",
+          "inch": "Pulgadas",
           "year": "Años"
         },
         "accessConditionFields": {
@@ -1398,6 +1400,11 @@
     "error": "Error",
     "warning": "Atención",
     "unexpectedError": "Se produjo un error inesperado."
+  },
+  "measurementSystem": {
+    "label": "Sistema de medidas",
+    "metric": "MÃ©trico",
+    "imperial": "Imperial"
   },
   "description": "Explora parques de atracciones, atracciones e información práctica de todo el mundo.",
   "images": {

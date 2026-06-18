@@ -3,4 +3,5 @@ export interface UserRegister {
   password: string;
   verifyPassword: string;
   preferredLanguage: string;
+  preferredMeasurementSystem: string;
 }

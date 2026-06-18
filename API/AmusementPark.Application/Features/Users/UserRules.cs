@@ -21,6 +21,18 @@ internal static class UserRules
             : preferredLanguage.Trim().ToUpperInvariant();
     }
 
+    public static string NormalizePreferredMeasurementSystem(string? preferredMeasurementSystem)
+    {
+        string normalized = preferredMeasurementSystem?.Trim() ?? string.Empty;
+
+        if (string.Equals(normalized, "Imperial", StringComparison.OrdinalIgnoreCase))
+        {
+            return "Imperial";
+        }
+
+        return "Metric";
+    }
+
     public static bool IsValidEmail(string? email)
     {
         if (string.IsNullOrWhiteSpace(email))

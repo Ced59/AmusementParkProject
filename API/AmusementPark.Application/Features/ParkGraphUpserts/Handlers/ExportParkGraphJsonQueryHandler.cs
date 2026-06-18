@@ -275,6 +275,7 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
             LengthInMeters = details.LengthInMeters,
             SpeedInMph = details.SpeedInMph,
             SpeedInKmH = details.SpeedInKmH,
+            DropInFeet = details.DropInFeet,
             DropInMeters = details.DropInMeters,
             InversionCount = details.InversionCount,
             TrainCount = details.TrainCount,

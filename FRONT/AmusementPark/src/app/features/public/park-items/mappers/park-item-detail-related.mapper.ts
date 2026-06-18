@@ -1,5 +1,7 @@
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { MeasurementSystem, DEFAULT_MEASUREMENT_SYSTEM } from '@shared/models/measurements/measurement-system.model';
+import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { mapParkItemToCardViewModel } from './park-item-card.mapper';
 import { ParkItemCardViewModel } from '../models/park-item-card.model';
@@ -10,7 +12,9 @@ export function buildRelatedItems(
   relatedItems: ParkItem[],
   currentLanguage: string,
   zoneName: string | null,
-  textTruncator: NaturalTextTruncatorService | null = null
+  textTruncator: NaturalTextTruncatorService | null = null,
+  measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
+  measurementConversionService: MeasurementConversionService = new MeasurementConversionService()
 ): ParkItemCardViewModel[] {
   return relatedItems
     .filter((candidate: ParkItem) => candidate.id !== item.id)
@@ -22,6 +26,8 @@ export function buildRelatedItems(
       currentLanguage,
       null,
       candidate.zoneId === item.zoneId ? zoneName : null,
-      textTruncator
+      textTruncator,
+      measurementSystem,
+      measurementConversionService
     ));
 }

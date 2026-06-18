@@ -8,4 +8,6 @@ public sealed class ExternalLoginRequestDto
     public string Token { get; set; } = string.Empty;
 
     public string? Nonce { get; set; }
+
+    public string? PreferredMeasurementSystem { get; set; }
 }

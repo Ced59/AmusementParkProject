@@ -24,5 +24,7 @@ public sealed class UserCreatedDto
 
     public string? PreferredLanguage { get; set; }
 
+    public string? PreferredMeasurementSystem { get; set; }
+
     public string? AvatarUrl { get; set; }
 }

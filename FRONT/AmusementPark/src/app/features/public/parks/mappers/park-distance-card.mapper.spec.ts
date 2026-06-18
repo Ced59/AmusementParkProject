@@ -27,6 +27,11 @@ describe('mapParkDistanceTargetToCardModel', () => {
     expect(mapParkDistanceTargetToCardModel(createTarget(12.7, 10), 'en').distanceLine).toBe('13 km');
   });
 
+  it('formats nearby distances with imperial units when requested', () => {
+    expect(mapParkDistanceTargetToCardModel(createTarget(0.45, 10), 'en', null, null, 'Imperial').distanceLine).toBe('0.3 mi');
+    expect(mapParkDistanceTargetToCardModel(createTarget(4.26, 10), 'en', null, null, 'Imperial').distanceLine).toBe('2.6 mi');
+  });
+
   it('returns null distance lines for invalid distances', () => {
     expect(mapParkDistanceTargetToCardModel(createTarget(-1, 10), 'en').distanceLine).toBeNull();
     expect(mapParkDistanceTargetToCardModel(createTarget(Number.NaN, 10), 'en').distanceLine).toBeNull();

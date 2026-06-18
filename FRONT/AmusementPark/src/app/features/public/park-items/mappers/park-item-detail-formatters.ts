@@ -1,7 +1,11 @@
 import { AttractionAccessCondition } from '@app/models/parks/attraction-access-condition';
 import { AttractionAccessConditionUnit } from '@app/models/parks/attraction-access-condition-unit';
+import { MeasurementSystem, DEFAULT_MEASUREMENT_SYSTEM } from '@shared/models/measurements/measurement-system.model';
+import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { getLocalizedBooleanDisplay } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedText } from '@shared/utils/localization/localized-text.helpers';
+
+const defaultMeasurementConversionService = new MeasurementConversionService();
 
 export function trimOrNull(value: string | null | undefined): string | null {
   const trimmedValue: string = value?.trim() ?? '';
@@ -24,6 +28,24 @@ export function formatNumberWithUnit(value: number | null | undefined, unit: str
   }
 
   return `${formatNumber(value)} ${unit}`;
+}
+
+export function formatLengthFromMeters(
+  value: number | null | undefined,
+  currentLanguage: string,
+  measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
+  measurementConversionService: MeasurementConversionService = defaultMeasurementConversionService
+): string | null {
+  return measurementConversionService.formatLengthFromMeters(value, measurementSystem, currentLanguage);
+}
+
+export function formatSpeedFromKilometersPerHour(
+  value: number | null | undefined,
+  currentLanguage: string,
+  measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
+  measurementConversionService: MeasurementConversionService = defaultMeasurementConversionService
+): string | null {
+  return measurementConversionService.formatSpeedFromKilometersPerHour(value, measurementSystem, currentLanguage);
 }
 
 export function formatInteger(value: number | null | undefined): string | null {
@@ -54,9 +76,20 @@ export function formatBoolean(value: boolean | null | undefined, currentLanguage
   return getLocalizedBooleanDisplay(value, currentLanguage);
 }
 
-export function formatAccessConditionValue(value: number, unit: AttractionAccessConditionUnit | null | undefined, currentLanguage: string): string {
+export function formatAccessConditionValue(
+  value: number,
+  unit: AttractionAccessConditionUnit | null | undefined,
+  currentLanguage: string,
+  measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
+  measurementConversionService: MeasurementConversionService = defaultMeasurementConversionService
+): string {
   if (unit === 'Centimeter') {
-    return `${formatNumber(value)} cm`;
+    return measurementConversionService.formatAccessHeightFromCentimeters(value, measurementSystem, currentLanguage) ?? formatNumber(value);
+  }
+
+  if (unit === 'Inch') {
+    const centimeters: number = measurementConversionService.inchesToCentimeters(value);
+    return measurementConversionService.formatAccessHeightFromCentimeters(centimeters, measurementSystem, currentLanguage) ?? formatNumber(value);
   }
 
   if (unit === 'Year') {

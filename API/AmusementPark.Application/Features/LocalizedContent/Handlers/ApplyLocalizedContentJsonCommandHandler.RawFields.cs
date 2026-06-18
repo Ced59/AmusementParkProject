@@ -406,9 +406,24 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler
             "materialtype" or "seatingtype" or "launchtype" or "restrainttype" or "islaunched" or "openingdate" or "closingdate" or
             "openingdatetext" or "closingdatetext" or "durationinseconds" or "duration" or "capacityperhour" or "heightinfeet" or
             "heightinmeters" or "height" or "lengthinfeet" or "lengthinmeters" or "length" or "speedinmph" or "speedinkmh" or "speed" or
-            "dropinmeters" or "drop" or "inversioncount" or "inversions" or "traincount" or "carspertrain" or "riderspervehicle" or
+            "dropinfeet" or "dropinmeters" or "drop" or "inversioncount" or "inversions" or "traincount" or "carspertrain" or "riderspervehicle" or
             "hassinglerider" or "hasfastpass" or "isaccessibleforreducedmobility" or "isindoor" or "waterexposurelevel";
     }
+
+    private static bool ShouldNormalizeAttractionDetails(LocalizedContentPatch patch)
+    {
+        if (patch.AccessConditions.Count > 0)
+        {
+            return true;
+        }
+
+        return patch.RawFields.Keys.Any(static key =>
+        {
+            string normalizedKey = NormalizeField(key);
+            return normalizedKey is "attractiondetails" or "details" || IsAttractionDetailsField(normalizedKey);
+        });
+    }
+
     private static void ApplyAttractionDetailsField(AttractionDetails details, string normalizedField, JsonElement value, List<string> updatedFields, string fieldName)
     {
         switch (normalizedField)
@@ -440,6 +455,7 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler
             case "speedinmph": ApplyDouble(value, v => details.SpeedInMph = v, updatedFields, fieldName); break;
             case "speed":
             case "speedinkmh": ApplyDouble(value, v => details.SpeedInKmH = v, updatedFields, fieldName); break;
+            case "dropinfeet": ApplyDouble(value, v => details.DropInFeet = v, updatedFields, fieldName); break;
             case "drop":
             case "dropinmeters": ApplyDouble(value, v => details.DropInMeters = v, updatedFields, fieldName); break;
             case "inversions":
