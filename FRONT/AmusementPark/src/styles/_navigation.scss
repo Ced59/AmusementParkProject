@@ -310,39 +310,47 @@ button.app-mobile-bottom-nav__item {
   background: var(--app-surface-2) !important;
 }
 
-.app-public-nav__measurement {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.15rem;
-  min-height: 2.5rem;
-  padding: 0.18rem;
-  border: 1px solid var(--app-border);
-  border-radius: 999px;
-  background: var(--app-surface-2);
-}
-
-.app-public-nav__measurement-option {
-  width: 2rem;
-  height: 1.95rem;
+.app-public-nav__measurement-toggle {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
   display: inline-grid;
+  grid-template-columns: 1fr;
   place-items: center;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
+  border: 1px solid var(--app-border);
+  border-radius: 50%;
   color: var(--app-text-muted);
-  font: inherit;
-  font-size: 0.78rem;
-  font-weight: 800;
-  line-height: 1;
+  background: color-mix(in srgb, var(--app-surface-2) 94%, transparent);
   cursor: pointer;
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    background-color var(--transition);
 }
 
-.app-public-nav__measurement-option--active {
-  background: var(--app-text);
-  color: var(--app-surface-1);
+.app-public-nav__measurement-toggle:hover {
+  transform: translateY(-1px);
+  border-color: var(--app-border-stronger);
+  color: var(--app-heading);
+  background: color-mix(in srgb, var(--app-surface-2) 98%, transparent);
 }
 
-.app-public-nav__measurement-option:focus-visible {
+.app-public-nav__measurement-toggle i {
+  font-size: 0.72rem;
+  line-height: 1;
+  transform: translateY(0.18rem);
+}
+
+.app-public-nav__measurement-toggle span {
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1;
+  transform: translateY(-0.12rem);
+}
+
+.app-public-nav__measurement-toggle:focus-visible {
   outline: 2px solid var(--app-primary);
   outline-offset: 2px;
 }
@@ -423,6 +431,7 @@ button.app-mobile-bottom-nav__item {
   }
 
   .app-public-nav__profile,
+  .app-public-nav__measurement-toggle,
   .app-public-nav .btn-nav--primary,
   .app-public-nav__right .app-public-nav__language,
   app-theme-switcher .theme-icon-button {
@@ -450,15 +459,12 @@ button.app-mobile-bottom-nav__item {
     height: 42px;
   }
 
-  .app-public-nav__measurement {
-    min-height: 42px;
-    padding: 0.2rem;
+  .app-public-nav__measurement-toggle i {
+    font-size: 0.68rem;
   }
 
-  .app-public-nav__measurement-option {
-    width: 1.75rem;
-    height: 1.75rem;
-    font-size: 0.72rem;
+  .app-public-nav__measurement-toggle span {
+    font-size: 0.68rem;
   }
 }
 

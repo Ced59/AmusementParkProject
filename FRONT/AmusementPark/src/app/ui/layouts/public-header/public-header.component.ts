@@ -196,8 +196,19 @@ export class PublicHeaderComponent implements OnInit {
       });
   }
 
-  protected selectMeasurementSystem(system: MeasurementSystem): void {
-    this.measurementPreferenceService.setPreferredSystem(system);
+  protected measurementSystemShortLabel(): string {
+    return this.preferredMeasurementSystem() === 'Imperial' ? 'ft' : 'm';
+  }
+
+  protected measurementToggleAriaLabelKey(): string {
+    return this.preferredMeasurementSystem() === 'Imperial'
+      ? 'measurementSystem.toggleToMetric'
+      : 'measurementSystem.toggleToImperial';
+  }
+
+  protected toggleMeasurementSystem(): void {
+    const nextSystem: MeasurementSystem = this.preferredMeasurementSystem() === 'Imperial' ? 'Metric' : 'Imperial';
+    this.measurementPreferenceService.setPreferredSystem(nextSystem);
   }
 
   private updateUrlWithNewLang(newLang: string): void {

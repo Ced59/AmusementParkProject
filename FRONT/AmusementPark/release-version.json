@@ -1,6 +1,20 @@
 {
-  "version": "1.11.0",
+  "version": "1.11.1",
   "history": [
+    {
+      "version": "1.11.1",
+      "releasedAt": "2026-06-18",
+      "labels": {
+        "fr": "Le choix des unites est plus clair.",
+        "en": "Unit choice is clearer.",
+        "de": "Die Einheitenauswahl ist klarer.",
+        "nl": "De keuze van eenheden is duidelijker.",
+        "it": "La scelta delle unita e piu chiara.",
+        "es": "La eleccion de unidades es mas clara.",
+        "pl": "Wybor jednostek jest czytelniejszy.",
+        "pt": "A escolha de unidades fica mais clara."
+      }
+    },
     {
       "version": "1.11.0",
       "releasedAt": "2026-06-18",
