@@ -12,6 +12,7 @@
           "mode": "Modus",
           "graph": "Graph",
           "preview": "Preview",
+          "export": "JSON-export",
           "expert": "Expert JSON",
           "history": "History"
         }
@@ -29,6 +30,12 @@
       "editor": {
         "title": "JSON-document",
         "description": "Ontbrekende eigenschappen blijven behouden. Zones/items-lijsten upserten alleen aanwezige invoer."
+      },
+      "export": {
+        "title": "Park JSON exporteren",
+        "description": "Download de huidige staat van het geselecteerde park als JSON-bestand.",
+        "selected": "Geselecteerd park",
+        "noParkSelected": "Selecteer een bestaand park voor de export."
       },
       "mode": {
         "title": "Upsert-modus",
@@ -67,6 +74,9 @@
         "apply": "Toepassen",
         "applying": "Toepassen…",
         "updateJson": "Update JSON",
+        "exportJson": "JSON downloaden",
+        "exportingJson": "JSON voorbereiden...",
+        "uploadJsonFile": "JSON-bestand importeren",
         "loadingHistory": "Loading history...",
         "refreshHistory": "Refresh history",
         "reuseDraft": "Reuse as draft"
@@ -78,6 +88,8 @@
         "searchFailed": "Park zoeken mislukt.",
         "previewFailed": "Voorbeeld mislukt.",
         "applyFailed": "Toepassen mislukt.",
+        "exportFailed": "JSON-export mislukt.",
+        "fileReadFailed": "Het JSON-bestand kon niet worden gelezen.",
         "historyFailed": "Graph history loading failed."
       },
       "result": {

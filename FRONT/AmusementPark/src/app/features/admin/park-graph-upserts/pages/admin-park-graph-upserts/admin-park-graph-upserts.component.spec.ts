@@ -14,6 +14,7 @@ interface AdminParkGraphUpsertsComponentHarness {
   };
   createIfMissing: boolean;
   graphMode: string;
+  hasJsonDraft: boolean;
   jsonText: string;
   replaceCollections: boolean;
   uiError: string | null;
@@ -21,6 +22,7 @@ interface AdminParkGraphUpsertsComponentHarness {
   applyTemplate(templateId: 'parkOnly' | 'zonesOnly' | 'zoneItems' | 'servicesNoZone' | 'references' | 'captainCoaster'): void;
   continueFromMode(): void;
   continueFromTarget(): void;
+  loadExpertJsonFile(event: Event): void;
   openExpertJson(): void;
   reuseHistory(entry: ParkGraphUpsertHistoryEntry): void;
   selectGraphMode(mode: 'merge' | 'replaceCollections'): void;
@@ -42,17 +44,23 @@ describe('AdminParkGraphUpsertsComponent', () => {
     harness = component as unknown as AdminParkGraphUpsertsComponentHarness;
   });
 
-  it('starts on the target wizard step and keeps the expert JSON tab available', () => {
+  it('starts on the target wizard step and keeps the expert JSON tab available without editable sample text', () => {
     fixture.detectChanges();
 
     expect(harness.activeWorkspaceTab).toBe('target');
+    expect(harness.jsonText).toBe('');
+    expect(harness.hasJsonDraft).toBeFalse();
 
-    const expertButton: HTMLButtonElement = fixture.nativeElement.querySelector('.graph-wizard__step--expert') as HTMLButtonElement;
+    const expertIcon: HTMLElement = fixture.nativeElement.querySelector('.pi-code') as HTMLElement;
+    const expertButton: HTMLButtonElement = expertIcon.closest('button') as HTMLButtonElement;
     expertButton.click();
     fixture.detectChanges();
 
     expect(harness.activeWorkspaceTab).toBe('expert');
-    expect(fixture.nativeElement.querySelector('.json-editor')).not.toBeNull();
+    const editor: HTMLTextAreaElement = fixture.nativeElement.querySelector('.json-editor') as HTMLTextAreaElement;
+    expect(editor).not.toBeNull();
+    expect(editor.value).toBe('');
+    expect(editor.placeholder).toContain('AmusementParkParkGraphUpsert');
   });
 
   it('requires an existing park or explicit creation before leaving the target step', () => {
@@ -68,6 +76,7 @@ describe('AdminParkGraphUpsertsComponent', () => {
   });
 
   it('syncs the selected upsert mode into the JSON document before the graph step', () => {
+    harness.jsonText = '{"mode":"merge"}';
     harness.selectGraphMode('replaceCollections');
     harness.continueFromMode();
 
@@ -77,6 +86,43 @@ describe('AdminParkGraphUpsertsComponent', () => {
     expect(harness.graphMode).toBe('replaceCollections');
     expect(harness.replaceCollections).toBeTrue();
     expect(document.mode).toBe('replace');
+  });
+
+  it('keeps the graph builder available when the expert JSON draft is empty', () => {
+    harness.createIfMissing = true;
+    harness.continueFromTarget();
+    harness.continueFromMode();
+    fixture.detectChanges();
+
+    expect(harness.activeWorkspaceTab).toBe('graph');
+    expect(harness.jsonText).toBe('');
+    expect(fixture.nativeElement.querySelector('.graph-builder')).not.toBeNull();
+    expect(fixture.nativeElement.querySelector('.template-list')).not.toBeNull();
+  });
+
+  it('loads uploaded JSON files into the expert draft', () => {
+    const uploadedJson: string = '{"park":{"name":"Uploaded Park"},"items":[]}';
+    const fakeReader: Partial<FileReader> = {
+      get result(): string {
+        return uploadedJson;
+      },
+      onload: null,
+      onerror: null,
+      readAsText(): void {
+        this.onload?.call(this as FileReader, new ProgressEvent('load') as ProgressEvent<FileReader>);
+      }
+    };
+    spyOn(window, 'FileReader').and.returnValue(fakeReader as FileReader);
+
+    const file: File = new File([uploadedJson], 'park.json', { type: 'application/json' });
+    const input: HTMLInputElement = { files: [file], value: 'park.json' } as unknown as HTMLInputElement;
+
+    harness.loadExpertJsonFile({ target: input } as unknown as Event);
+
+    expect(harness.activeWorkspaceTab).toBe('expert');
+    expect(harness.jsonText).toBe(uploadedJson);
+    expect(harness.uiError).toBeNull();
+    expect(input.value).toBe('');
   });
 
   it('builds safe hidden ToReview JSON from the graph builder', () => {

@@ -68,6 +68,8 @@ public sealed class MongoDbSettings
 
     public string ParkGraphUpsertHistoryCollectionName { get; set; } = "parkGraphUpsertHistory";
 
+    public int ParkGraphUpsertHistoryRetentionDays { get; set; } = 30;
+
     public string ImagesCollectionName { get; set; } = "images";
 
     public string ImageTagsCollectionName { get; set; } = "imageTags";
@@ -116,6 +118,11 @@ public sealed class MongoDbSettings
         if (settings.SearchProjectionRebuildBatchDelayMilliseconds < 0)
         {
             settings.SearchProjectionRebuildBatchDelayMilliseconds = 0;
+        }
+
+        if (settings.ParkGraphUpsertHistoryRetentionDays <= 0)
+        {
+            settings.ParkGraphUpsertHistoryRetentionDays = 30;
         }
 
         return settings;

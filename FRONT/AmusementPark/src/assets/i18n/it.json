@@ -302,6 +302,7 @@
           "mode": "Modo",
           "graph": "Graph",
           "preview": "Preview",
+          "export": "Export JSON",
           "expert": "JSON esperto",
           "history": "History"
         }
@@ -319,6 +320,12 @@
       "editor": {
         "title": "Documento JSON",
         "description": "Le proprietà assenti sono conservate. Gli array zone/items eseguono upsert solo sulle voci presenti."
+      },
+      "export": {
+        "title": "Export JSON del parco",
+        "description": "Scarica lo stato attuale del parco selezionato in un file JSON.",
+        "selected": "Parco selezionato",
+        "noParkSelected": "Seleziona un parco esistente prima dell'export."
       },
       "mode": {
         "title": "Modo upsert",
@@ -357,6 +364,9 @@
         "apply": "Applica",
         "applying": "Applicazione…",
         "updateJson": "Update JSON",
+        "exportJson": "Scarica JSON",
+        "exportingJson": "Preparazione JSON...",
+        "uploadJsonFile": "Importa file JSON",
         "loadingHistory": "Loading history...",
         "refreshHistory": "Refresh history",
         "reuseDraft": "Reuse as draft"
@@ -368,6 +378,8 @@
         "searchFailed": "Ricerca parco non riuscita.",
         "previewFailed": "Anteprima non riuscita.",
         "applyFailed": "Applicazione non riuscita.",
+        "exportFailed": "Export JSON non riuscito.",
+        "fileReadFailed": "Il file JSON non puo essere letto.",
         "historyFailed": "Graph history loading failed."
       },
       "result": {

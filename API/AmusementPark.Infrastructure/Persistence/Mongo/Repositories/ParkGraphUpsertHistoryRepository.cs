@@ -11,10 +11,12 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 public sealed class ParkGraphUpsertHistoryRepository : IParkGraphUpsertHistoryRepository
 {
     private readonly IMongoCollection<ParkGraphUpsertHistoryDocument> collection;
+    private readonly int retentionDays;
 
     public ParkGraphUpsertHistoryRepository(IMongoDatabase database, MongoDbSettings settings)
     {
         this.collection = database.GetCollection<ParkGraphUpsertHistoryDocument>(settings.ParkGraphUpsertHistoryCollectionName);
+        this.retentionDays = Math.Max(1, settings.ParkGraphUpsertHistoryRetentionDays);
     }
 
     public async Task SaveAsync(ParkGraphUpsertHistoryEntry entry, CancellationToken cancellationToken)
@@ -29,6 +31,7 @@ public sealed class ParkGraphUpsertHistoryRepository : IParkGraphUpsertHistoryRe
             TargetParkId = entry.TargetParkId,
             TargetParkName = entry.TargetParkName,
             RequestedByUserId = entry.RequestedByUserId,
+            ExpiresAt = entry.CreatedAtUtc.AddDays(this.retentionDays),
             RawJson = entry.RawJson,
             Result = BsonDocument.Parse(serializedResult),
             CreatedAt = entry.CreatedAtUtc,

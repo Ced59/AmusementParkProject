@@ -104,6 +104,35 @@ public sealed class ImageRepository : IImageRepository
         return images;
     }
 
+    public async Task<IReadOnlyCollection<Image>> GetByOwnersAsync(ImageOwnerType ownerType, IReadOnlyCollection<string> ownerIds, ImageCategory? category, CancellationToken cancellationToken)
+    {
+        List<string> normalizedOwnerIds = ownerIds
+            .Where(static ownerId => !string.IsNullOrWhiteSpace(ownerId))
+            .Select(static ownerId => ownerId.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (normalizedOwnerIds.Count == 0)
+        {
+            return Array.Empty<Image>();
+        }
+
+        FilterDefinitionBuilder<ImageDocument> builder = Builders<ImageDocument>.Filter;
+        FilterDefinition<ImageDocument> filter = BuildOwnerTypeFilter(builder, ownerType) &
+                                                 builder.In(static document => document.OwnerId, normalizedOwnerIds);
+
+        if (category.HasValue)
+        {
+            filter &= BuildCategoryFilter(builder, category.Value);
+        }
+
+        List<ImageDocument> documents = await this.collection.Find(filter)
+            .SortByDescending(static document => document.CreatedAt)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(static document => document.ToDomain()).ToList();
+    }
+
     public async Task<Image?> GetCurrentByOwnerAsync(ImageOwnerType ownerType, string ownerId, ImageCategory category, CancellationToken cancellationToken)
     {
         string cacheKey = BuildCurrentOwnerImageCacheKey(ownerType, ownerId, category);

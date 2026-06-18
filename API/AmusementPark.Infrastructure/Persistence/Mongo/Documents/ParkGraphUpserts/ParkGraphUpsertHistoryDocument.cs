@@ -21,6 +21,10 @@ public sealed class ParkGraphUpsertHistoryDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? RequestedByUserId { get; set; }
 
+    [BsonElement("expiresAt")]
+    [BsonIgnoreIfNull]
+    public DateTime? ExpiresAt { get; set; }
+
     [BsonElement("rawJson")]
     public string RawJson { get; set; } = string.Empty;
 

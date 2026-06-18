@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -36,5 +36,13 @@ export class ParkGraphUpsertsApiService {
 
     const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/history?${params.join('&')}`;
     return this.http.get<ParkGraphUpsertHistoryEntry[]>(url);
+  }
+
+  downloadParkExport(parkId: string): Observable<HttpResponse<Blob>> {
+    const url: string = `${environment.apiBaseUrl}admin/park-graph-upserts/parks/${encodeURIComponent(parkId)}/export`;
+    return this.http.get(url, {
+      observe: 'response',
+      responseType: 'blob'
+    });
   }
 }

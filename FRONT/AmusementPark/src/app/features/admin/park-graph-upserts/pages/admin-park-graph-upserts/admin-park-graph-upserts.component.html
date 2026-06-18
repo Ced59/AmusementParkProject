@@ -23,6 +23,15 @@
     <button
       type="button"
       class="graph-wizard__step graph-wizard__step--expert"
+      [class.active]="activeWorkspaceTab === 'export'"
+      (click)="openExportJson()">
+      <span class="pi pi-download" aria-hidden="true"></span>
+      <strong>{{ 'admin.parkGraphUpserts.wizard.steps.export' | translate }}</strong>
+    </button>
+
+    <button
+      type="button"
+      class="graph-wizard__step graph-wizard__step--expert"
       [class.active]="activeWorkspaceTab === 'expert'"
       (click)="openExpertJson()">
       <span class="pi pi-code" aria-hidden="true"></span>
@@ -160,8 +169,7 @@
         </div>
       </div>
 
-      @if (documentSummary; as summary) {
-        <section class="template-list" [attr.aria-label]="'admin.parkGraphUpserts.templates.title' | translate">
+      <section class="template-list" [attr.aria-label]="'admin.parkGraphUpserts.templates.title' | translate">
           <div class="section-head">
             <h3>{{ 'admin.parkGraphUpserts.templates.title' | translate }}</h3>
             <p class="admin-muted">{{ 'admin.parkGraphUpserts.templates.description' | translate }}</p>
@@ -174,9 +182,9 @@
               </button>
             }
           </div>
-        </section>
+      </section>
 
-        <section class="graph-builder">
+      <section class="graph-builder">
           <div class="section-head">
             <h3>{{ 'admin.parkGraphUpserts.builder.title' | translate }}</h3>
             <p class="admin-muted">{{ 'admin.parkGraphUpserts.builder.description' | translate }}</p>
@@ -254,8 +262,9 @@
               {{ 'admin.parkGraphUpserts.actions.updateJson' | translate }}
             </button>
           </div>
-        </section>
+      </section>
 
+      @if (documentSummary; as summary) {
         <div class="graph-summary">
           <span>
             <small>{{ 'admin.parkGraphUpserts.graph.identity' | translate }}</small>
@@ -282,7 +291,7 @@
             <strong>{{ summary.operatorCount + summary.founderCount + summary.manufacturerCount }}</strong>
           </span>
         </div>
-      } @else {
+      } @else if (hasJsonDraft) {
         <p class="admin-alert admin-alert--error">{{ 'admin.parkGraphUpserts.graph.invalidJson' | translate }}</p>
       }
 
@@ -299,6 +308,31 @@
     </article>
   }
 
+  @if (activeWorkspaceTab === 'export') {
+    <article class="admin-card park-graph-upserts__panel">
+      <header class="result-head">
+        <div>
+          <h2>{{ 'admin.parkGraphUpserts.export.title' | translate }}</h2>
+          <p class="admin-muted">{{ 'admin.parkGraphUpserts.export.description' | translate }}</p>
+        </div>
+        <button type="button" class="btn-nav" (click)="exportSelectedParkJson()" [disabled]="!selectedPark || isExporting">
+          <span class="pi" [class.pi-download]="!isExporting" [class.pi-spin]="isExporting" [class.pi-spinner]="isExporting" aria-hidden="true"></span>
+          {{ (isExporting ? 'admin.parkGraphUpserts.actions.exportingJson' : 'admin.parkGraphUpserts.actions.exportJson') | translate }}
+        </button>
+      </header>
+
+      @if (selectedPark) {
+        <div class="selected-park">
+          <span>{{ 'admin.parkGraphUpserts.export.selected' | translate }}</span>
+          <strong>{{ selectedPark.name }}</strong>
+          <code>{{ selectedPark.id }}</code>
+        </div>
+      } @else {
+        <p class="admin-alert admin-alert--error">{{ 'admin.parkGraphUpserts.export.noParkSelected' | translate }}</p>
+      }
+    </article>
+  }
+
   @if (activeWorkspaceTab === 'expert') {
     <article class="admin-card park-graph-upserts__editor">
       <div class="editor-head">
@@ -307,6 +341,11 @@
           <p class="admin-muted">{{ 'admin.parkGraphUpserts.editor.description' | translate }}</p>
         </div>
         <div class="editor-actions">
+          <label class="btn-nav btn-nav--ghost file-upload-action">
+            <span class="pi pi-upload" aria-hidden="true"></span>
+            {{ 'admin.parkGraphUpserts.actions.uploadJsonFile' | translate }}
+            <input type="file" accept=".json,application/json" (change)="loadExpertJsonFile($event)">
+          </label>
           <button type="button" class="btn-nav btn-nav--ghost" (click)="selectWorkspaceTab('graph')">
             <span class="pi pi-sitemap" aria-hidden="true"></span>
             {{ 'admin.parkGraphUpserts.actions.graph' | translate }}
@@ -318,7 +357,7 @@
         </div>
       </div>
 
-      <textarea class="json-editor" [(ngModel)]="jsonText" spellcheck="false" aria-label="JSON"></textarea>
+      <textarea class="json-editor" [(ngModel)]="jsonText" [placeholder]="expertJsonPlaceholder" spellcheck="false" aria-label="JSON"></textarea>
     </article>
   }
 
