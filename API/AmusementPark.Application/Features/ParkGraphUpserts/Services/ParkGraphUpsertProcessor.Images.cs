@@ -44,36 +44,109 @@ public sealed partial class ParkGraphUpsertProcessor
                 continue;
             }
 
-            string? ownerTypeText = ReadString(patch, "ownerType");
-            string? ownerId = ReadString(patch, "ownerId");
-            ResolveImageOwner(patch, park, itemKeys, ownerTypeText, ownerId, out ImageOwnerType ownerType, out string? resolvedOwnerId);
-
-            ParkGraphUpsertChange change = BuildEntityChange("Image", image.Id, null, image.OriginalFileName ?? image.Id, "Updated", "imageId");
-            AddChange(change, "ownerType", image.OwnerType.ToString(), ownerType.ToString());
-            AddChange(change, "ownerId", image.OwnerId, resolvedOwnerId);
-
-            if (apply && resolvedOwnerId is not null)
+            bool hasOwnerPatch = HasProperty(patch, "ownerType") || HasProperty(patch, "ownerId") || HasProperty(patch, "ownerKey");
+            ImageOwnerType ownerType = image.OwnerType;
+            string? resolvedOwnerId = image.OwnerId;
+            if (hasOwnerPatch)
             {
-                Image? linked = await this.imageRepository.LinkAsync(image.Id, ownerType, resolvedOwnerId, cancellationToken);
-                image = linked ?? image;
+                string? ownerTypeText = ReadString(patch, "ownerType");
+                string? ownerId = ReadString(patch, "ownerId");
+                ResolveImageOwner(patch, park, itemKeys, ownerTypeText, ownerId, out ownerType, out resolvedOwnerId);
+            }
+
+            ParkGraphUpsertChange change = BuildEntityChange("Image", image.Id, null, image.OriginalFileName ?? image.Id, "Unchanged", "imageId");
+            int ownerFieldStart = change.Fields.Count;
+            if (hasOwnerPatch)
+            {
+                AddChange(change, "ownerType", image.OwnerType.ToString(), ownerType.ToString());
+                AddChange(change, "ownerId", image.OwnerId, resolvedOwnerId);
+            }
+
+            bool ownerChanged = change.Fields.Count > ownerFieldStart;
+
+            string? description = image.Description;
+            ImageCategory category = image.Category;
+            bool isPublished = image.IsPublished;
+            List<LocalizedText> altTexts = image.AltTexts.ToList();
+            List<LocalizedText> captions = image.Captions.ToList();
+            List<LocalizedText> credits = image.Credits.ToList();
+            List<string> tagIds = image.TagIds.ToList();
+            GeoPointValue? geoLocation = image.GeoLocation is null
+                ? null
+                : new GeoPointValue(image.GeoLocation.Latitude, image.GeoLocation.Longitude);
+
+            int metadataFieldStart = change.Fields.Count;
+            PatchString(patch, "description", image.Description, value => description = value, change);
+            PatchEnum(patch, "category", image.Category, value => category = value, change);
+            PatchBool(patch, "isPublished", image.IsPublished, value => isPublished = value, change);
+
+            if (HasProperty(patch, "altTexts"))
+            {
+                altTexts = PatchLocalizedTexts(image.AltTexts, GetArray(patch, "altTexts"), false, change, "altTexts");
+            }
+
+            if (HasProperty(patch, "captions"))
+            {
+                captions = PatchLocalizedTexts(image.Captions, GetArray(patch, "captions"), false, change, "captions");
+            }
+
+            if (HasProperty(patch, "credits"))
+            {
+                credits = PatchLocalizedTexts(image.Credits, GetArray(patch, "credits"), false, change, "credits");
+            }
+
+            if (HasProperty(patch, "tagIds"))
+            {
+                tagIds = ReadStringArray(GetArray(patch, "tagIds"));
+                AddChange(change, "tagIds", DescribeStringCollection(image.TagIds), DescribeStringCollection(tagIds));
+            }
+
+            if (HasProperty(patch, "geoLocation"))
+            {
+                geoLocation = ReadGeoPointValue(patch, "geoLocation");
+                AddChange(change, "geoLocation", FormatGeoPointValue(image.GeoLocation is null ? null : new GeoPointValue(image.GeoLocation.Latitude, image.GeoLocation.Longitude)), FormatGeoPointValue(geoLocation));
+            }
+
+            bool metadataChanged = change.Fields.Count > metadataFieldStart;
+
+            bool setAsCurrent = ReadBool(patch, "setAsCurrent") == true;
+            bool shouldSetCurrent = setAsCurrent && (ownerChanged || !image.IsCurrent);
+            if (shouldSetCurrent)
+            {
+                AddChange(change, "isCurrent", image.IsCurrent, true);
             }
 
             ImageMetadataUpdate metadata = new ImageMetadataUpdate
             {
-                Description = HasProperty(patch, "description") ? ReadStringAllowNull(patch, "description") : image.Description,
-                AltTexts = HasProperty(patch, "altTexts") ? ToLocalizedTextValues(MergeLocalizedTexts(image.AltTexts, GetArray(patch, "altTexts"), false)) : ToLocalizedTextValues(image.AltTexts),
-                Captions = HasProperty(patch, "captions") ? ToLocalizedTextValues(MergeLocalizedTexts(image.Captions, GetArray(patch, "captions"), false)) : ToLocalizedTextValues(image.Captions),
-                Credits = HasProperty(patch, "credits") ? ToLocalizedTextValues(MergeLocalizedTexts(image.Credits, GetArray(patch, "credits"), false)) : ToLocalizedTextValues(image.Credits),
-                TagIds = HasProperty(patch, "tagIds") ? ReadStringArray(GetArray(patch, "tagIds")) : image.TagIds,
-                GeoLocation = image.GeoLocation is null ? null : new GeoPointValue(image.GeoLocation.Latitude, image.GeoLocation.Longitude),
-                Category = image.Category,
-                IsPublished = HasProperty(patch, "isPublished") ? ReadBool(patch, "isPublished") ?? image.IsPublished : image.IsPublished,
+                Description = description,
+                AltTexts = ToLocalizedTextValues(altTexts),
+                Captions = ToLocalizedTextValues(captions),
+                Credits = ToLocalizedTextValues(credits),
+                TagIds = tagIds,
+                GeoLocation = geoLocation,
+                Category = category,
+                IsPublished = isPublished,
             };
+
+            if (change.Fields.Count > 0)
+            {
+                change.ChangeType = "Updated";
+            }
 
             if (apply)
             {
-                await this.imageRepository.UpdateMetadataAsync(image.Id, metadata, cancellationToken);
-                if (ReadBool(patch, "setAsCurrent") == true && resolvedOwnerId is not null)
+                if (ownerChanged && resolvedOwnerId is not null && !setAsCurrent)
+                {
+                    Image? linked = await this.imageRepository.LinkAsync(image.Id, ownerType, resolvedOwnerId, cancellationToken);
+                    image = linked ?? image;
+                }
+
+                if (metadataChanged)
+                {
+                    await this.imageRepository.UpdateMetadataAsync(image.Id, metadata, cancellationToken);
+                }
+
+                if (shouldSetCurrent && resolvedOwnerId is not null)
                 {
                     await this.imageRepository.SetCurrentAsync(image.Id, ownerType, resolvedOwnerId, cancellationToken);
                 }
@@ -81,5 +154,37 @@ public sealed partial class ParkGraphUpsertProcessor
 
             result.Changes.Add(change);
         }
+    }
+
+    private static string DescribeStringCollection(IReadOnlyCollection<string> values)
+    {
+        return string.Join(", ", values
+            .Where(static value => !string.IsNullOrWhiteSpace(value))
+            .Select(static value => value.Trim())
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static value => value, StringComparer.Ordinal));
+    }
+
+    private static GeoPointValue? ReadGeoPointValue(JsonElement patch, string propertyName)
+    {
+        if (HasNull(patch, propertyName))
+        {
+            return null;
+        }
+
+        JsonElement? point = GetObject(patch, propertyName);
+        if (point is null)
+        {
+            return null;
+        }
+
+        double? latitude = ReadDouble(point, "latitude");
+        double? longitude = ReadDouble(point, "longitude");
+        if (!latitude.HasValue || !longitude.HasValue)
+        {
+            return null;
+        }
+
+        return new GeoPointValue(latitude.Value, longitude.Value);
     }
 }

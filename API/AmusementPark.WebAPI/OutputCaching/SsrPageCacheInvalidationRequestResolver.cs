@@ -3,9 +3,11 @@ using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -73,7 +75,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             "AttractionManufacturers" => await this.ResolveAttractionManufacturerAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "LocalizedContent" => await this.ResolveLocalizedContentAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "Images" => await this.ResolveImagesAsync(context, executedContext, includeSeoDocuments, cancellationToken),
-            "ParkGraphUpserts" => await this.ResolveParkGraphUpsertAsync(context, executedContext, includeSeoDocuments),
+            "ParkGraphUpserts" => await this.ResolveParkGraphUpsertAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             _ => SsrPageCacheInvalidationRequest.AllCaches(),
         };
 
@@ -323,20 +325,268 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         return await this.ResolveEntityImpactAsync(ownerType, ownerId, includeSeoDocuments, cancellationToken);
     }
 
-    private Task<SsrPageCacheInvalidationRequest> ResolveParkGraphUpsertAsync(
+    private async Task<SsrPageCacheInvalidationRequest> ResolveParkGraphUpsertAsync(
         ActionExecutingContext context,
         ActionExecutedContext? executedContext,
-        bool includeSeoDocuments)
+        bool includeSeoDocuments,
+        CancellationToken cancellationToken)
     {
-        HashSet<string> parkIds = new HashSet<string>(StringComparer.Ordinal);
-        AddNonEmpty(parkIds, GetStringProperty(FindActionArgument(context, "request"), "TargetParkId"));
-        AddNonEmpty(parkIds, GetStringProperty(ResolveResultValue(executedContext), "TargetParkId"));
+        if (executedContext is null)
+        {
+            return BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false);
+        }
 
-        SsrPageCacheInvalidationRequest request = parkIds.Count == 0
-            ? SsrPageCacheInvalidationRequest.AllCaches()
-            : BuildParkImpactRequest(parkIds, includeSeoDocuments, includeDiscoveryPages: false);
+        object? resultValue = ResolveResultValue(executedContext);
+        if (resultValue is not ParkGraphUpsertResultDto result)
+        {
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
 
-        return Task.FromResult(request);
+        IReadOnlyCollection<ParkGraphUpsertChangeDto> changedEntities = result.Changes
+            .Where(static change => !string.Equals(change.ChangeType, "Unchanged", StringComparison.OrdinalIgnoreCase))
+            .ToList();
+        if (changedEntities.Count == 0)
+        {
+            return BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false);
+        }
+
+        if (changedEntities.Count > MaxTargetedEntityCount)
+        {
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
+
+        HashSet<string> paths = new HashSet<string>(StringComparer.Ordinal);
+        HashSet<string> prefixes = new HashSet<string>(StringComparer.Ordinal);
+        HashSet<string> fallbackParkIds = new HashSet<string>(StringComparer.Ordinal);
+        bool includeDiscoveryPages = false;
+        bool requiresHardPurge = false;
+
+        foreach (ParkGraphUpsertChangeDto change in changedEntities)
+        {
+            requiresHardPurge = requiresHardPurge || ContainsHardPurgeSignal(change);
+            string entityType = NormalizeEntityType(change.EntityType);
+            string? entityId = NormalizeTarget(change.EntityId);
+
+            if (string.Equals(entityType, "park", StringComparison.Ordinal))
+            {
+                AddNonEmpty(fallbackParkIds, entityId ?? result.TargetParkId);
+                includeDiscoveryPages = true;
+                continue;
+            }
+
+            if (string.Equals(entityType, "parkitem", StringComparison.Ordinal) || string.Equals(entityType, "attraction", StringComparison.Ordinal))
+            {
+                bool resolved = await this.AddParkItemImpactAsync(paths, prefixes, entityId, cancellationToken);
+                if (!resolved)
+                {
+                    AddNonEmpty(fallbackParkIds, result.TargetParkId);
+                }
+
+                continue;
+            }
+
+            if (string.Equals(entityType, "parkzone", StringComparison.Ordinal) || string.Equals(entityType, "zone", StringComparison.Ordinal))
+            {
+                bool resolved = await this.AddParkZoneImpactAsync(paths, prefixes, entityId, cancellationToken);
+                if (!resolved)
+                {
+                    AddNonEmpty(fallbackParkIds, result.TargetParkId);
+                }
+
+                continue;
+            }
+
+            if (string.Equals(entityType, "image", StringComparison.Ordinal))
+            {
+                bool resolved = await this.AddImageImpactAsync(paths, prefixes, change, cancellationToken);
+                if (!resolved)
+                {
+                    AddNonEmpty(fallbackParkIds, result.TargetParkId);
+                }
+
+                continue;
+            }
+
+            if (string.Equals(entityType, "parkoperator", StringComparison.Ordinal) || string.Equals(entityType, "operator", StringComparison.Ordinal))
+            {
+                await this.AddReferenceImpactAsync(paths, prefixes, entityId, "operator", id => this.parkRepository.GetParkIdsByOperatorIdAsync(id, cancellationToken));
+                continue;
+            }
+
+            if (string.Equals(entityType, "parkfounder", StringComparison.Ordinal) || string.Equals(entityType, "founder", StringComparison.Ordinal))
+            {
+                await this.AddReferenceImpactAsync(paths, prefixes, entityId, "founder", id => this.parkRepository.GetParkIdsByFounderIdAsync(id, cancellationToken));
+                continue;
+            }
+
+            if (string.Equals(entityType, "attractionmanufacturer", StringComparison.Ordinal) || string.Equals(entityType, "manufacturer", StringComparison.Ordinal))
+            {
+                await this.AddReferenceImpactAsync(paths, prefixes, entityId, "manufacturer", id => this.parkItemRepository.GetParkIdsByManufacturerIdAsync(id, cancellationToken));
+                continue;
+            }
+
+            AddNonEmpty(fallbackParkIds, result.TargetParkId);
+        }
+
+        AddParkPrefixes(prefixes, fallbackParkIds);
+
+        if (includeDiscoveryPages)
+        {
+            AddDiscoveryPaths(paths);
+        }
+
+        SsrPageCacheInvalidationRequest request = BuildRequest(paths, prefixes, includeSeoDocuments);
+        return requiresHardPurge ? ForceHardPurge(request) : request;
+    }
+
+    private async Task<bool> AddParkItemImpactAsync(
+        ISet<string> paths,
+        ISet<string> prefixes,
+        string? itemId,
+        CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(itemId))
+        {
+            return false;
+        }
+
+        ParkItem? item = await this.parkItemRepository.GetByIdAsync(itemId, true, cancellationToken);
+        if (item is null || string.IsNullOrWhiteSpace(item.ParkId))
+        {
+            return false;
+        }
+
+        Park? park = await this.parkRepository.GetByIdAsync(item.ParkId, true, cancellationToken);
+        if (park is null)
+        {
+            return false;
+        }
+
+        AddParkDetailPaths(paths, park);
+        AddParkItemListPaths(paths, park);
+        AddParkItemPrefixes(prefixes, park, item);
+
+        if (!string.IsNullOrWhiteSpace(item.ZoneId))
+        {
+            ParkZone? zone = await this.parkZoneRepository.GetByIdAsync(item.ZoneId, cancellationToken);
+            if (zone is not null)
+            {
+                AddParkZoneListPaths(paths, park);
+                AddParkZonePrefixes(prefixes, park, zone);
+            }
+        }
+
+        return true;
+    }
+
+    private async Task<bool> AddParkZoneImpactAsync(
+        ISet<string> paths,
+        ISet<string> prefixes,
+        string? zoneId,
+        CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(zoneId))
+        {
+            return false;
+        }
+
+        ParkZone? zone = await this.parkZoneRepository.GetByIdAsync(zoneId, cancellationToken);
+        if (zone is null || string.IsNullOrWhiteSpace(zone.ParkId))
+        {
+            return false;
+        }
+
+        Park? park = await this.parkRepository.GetByIdAsync(zone.ParkId, true, cancellationToken);
+        if (park is null)
+        {
+            return false;
+        }
+
+        AddParkDetailPaths(paths, park);
+        AddParkItemListPaths(paths, park);
+        AddParkZoneListPaths(paths, park);
+        AddParkZonePrefixes(prefixes, park, zone);
+        return true;
+    }
+
+    private async Task<bool> AddImageImpactAsync(
+        ISet<string> paths,
+        ISet<string> prefixes,
+        ParkGraphUpsertChangeDto change,
+        CancellationToken cancellationToken)
+    {
+        HashSet<string> ownerTargets = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        Image? image = string.IsNullOrWhiteSpace(change.EntityId)
+            ? null
+            : await this.imageRepository.GetByIdAsync(change.EntityId, cancellationToken);
+
+        AddImageOwnerTarget(ownerTargets, image?.OwnerType.ToString(), image?.OwnerId);
+
+        ParkGraphUpsertFieldChangeDto? ownerTypeChange = change.Fields.FirstOrDefault(static field => string.Equals(field.Field, "ownerType", StringComparison.OrdinalIgnoreCase));
+        ParkGraphUpsertFieldChangeDto? ownerIdChange = change.Fields.FirstOrDefault(static field => string.Equals(field.Field, "ownerId", StringComparison.OrdinalIgnoreCase));
+        string? fallbackOwnerType = image?.OwnerType.ToString();
+        AddImageOwnerTarget(ownerTargets, ownerTypeChange?.OldValue ?? fallbackOwnerType, ownerIdChange?.OldValue);
+        AddImageOwnerTarget(ownerTargets, ownerTypeChange?.NewValue ?? fallbackOwnerType, ownerIdChange?.NewValue);
+
+        bool resolved = false;
+        foreach (string ownerTarget in ownerTargets)
+        {
+            string[] parts = ownerTarget.Split(':', 2);
+            if (parts.Length != 2)
+            {
+                continue;
+            }
+
+            resolved = await this.AddImageOwnerImpactAsync(paths, prefixes, parts[0], parts[1], cancellationToken) || resolved;
+        }
+
+        return resolved;
+    }
+
+    private async Task<bool> AddImageOwnerImpactAsync(
+        ISet<string> paths,
+        ISet<string> prefixes,
+        string ownerType,
+        string ownerId,
+        CancellationToken cancellationToken)
+    {
+        string normalizedOwnerType = NormalizeEntityType(ownerType);
+        if (string.Equals(normalizedOwnerType, "park", StringComparison.Ordinal))
+        {
+            Park? park = await this.parkRepository.GetByIdAsync(ownerId, true, cancellationToken);
+            if (park is null)
+            {
+                return false;
+            }
+
+            AddParkDetailPaths(paths, park);
+            AddParkImagePaths(paths, park);
+            return true;
+        }
+
+        if (string.Equals(normalizedOwnerType, "parkitem", StringComparison.Ordinal) || string.Equals(normalizedOwnerType, "attraction", StringComparison.Ordinal))
+        {
+            return await this.AddParkItemImpactAsync(paths, prefixes, ownerId, cancellationToken);
+        }
+
+        return false;
+    }
+
+    private async Task AddReferenceImpactAsync(
+        ISet<string> paths,
+        ISet<string> prefixes,
+        string? referenceId,
+        string referenceKind,
+        Func<string, Task<IReadOnlyCollection<string>>> parkIdsResolver)
+    {
+        if (string.IsNullOrWhiteSpace(referenceId))
+        {
+            return;
+        }
+
+        AddReferencePrefixes(prefixes, referenceKind, referenceId);
+        IReadOnlyCollection<string> parkIds = await parkIdsResolver(referenceId);
+        AddParkPrefixes(prefixes, parkIds);
     }
 
     private async Task<SsrPageCacheInvalidationRequest> ResolveEntityImpactAsync(
@@ -415,6 +665,100 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         }
 
         return BuildRequest(paths, prefixes, includeSeoDocuments);
+    }
+
+    private static void AddParkDetailPaths(ISet<string> paths, Park park)
+    {
+        foreach (string language in PublicLanguages)
+        {
+            paths.Add(BuildParkBasePath(language, park));
+        }
+    }
+
+    private static void AddParkImagePaths(ISet<string> paths, Park park)
+    {
+        foreach (string language in PublicLanguages)
+        {
+            paths.Add($"{BuildParkBasePath(language, park)}/images");
+        }
+    }
+
+    private static void AddParkItemListPaths(ISet<string> paths, Park park)
+    {
+        foreach (string language in PublicLanguages)
+        {
+            paths.Add($"{BuildParkBasePath(language, park)}/items");
+        }
+    }
+
+    private static void AddParkZoneListPaths(ISet<string> paths, Park park)
+    {
+        foreach (string language in PublicLanguages)
+        {
+            paths.Add($"{BuildParkBasePath(language, park)}/zones");
+        }
+    }
+
+    private static void AddParkItemPrefixes(ISet<string> prefixes, Park park, ParkItem item)
+    {
+        if (string.IsNullOrWhiteSpace(item.Id))
+        {
+            return;
+        }
+
+        foreach (string language in PublicLanguages)
+        {
+            prefixes.Add($"{BuildParkBasePath(language, park)}/item/{item.Id}/");
+        }
+    }
+
+    private static void AddParkZonePrefixes(ISet<string> prefixes, Park park, ParkZone zone)
+    {
+        if (string.IsNullOrWhiteSpace(zone.Id))
+        {
+            return;
+        }
+
+        foreach (string language in PublicLanguages)
+        {
+            prefixes.Add($"{BuildParkBasePath(language, park)}/zone/{zone.Id}/");
+        }
+    }
+
+    private static string BuildParkBasePath(string language, Park park)
+    {
+        string parkSlug = SeoSlugService.ToSlug(park.Name, "park");
+        return $"/{language}/park/{park.Id}/{parkSlug}";
+    }
+
+    private static void AddImageOwnerTarget(ISet<string> ownerTargets, string? ownerType, string? ownerId)
+    {
+        if (string.IsNullOrWhiteSpace(ownerType) || string.IsNullOrWhiteSpace(ownerId))
+        {
+            return;
+        }
+
+        ownerTargets.Add($"{ownerType.Trim()}:{ownerId.Trim()}");
+    }
+
+    private static bool ContainsHardPurgeSignal(ParkGraphUpsertChangeDto change)
+    {
+        return change.Fields.Any(static field =>
+            (string.Equals(field.Field, "isVisible", StringComparison.OrdinalIgnoreCase) && string.Equals(field.NewValue, "false", StringComparison.OrdinalIgnoreCase))
+            || (string.Equals(field.Field, "adminReviewStatus", StringComparison.OrdinalIgnoreCase) && string.Equals(field.NewValue, AdminReviewStatus.NotRelevant.ToString(), StringComparison.OrdinalIgnoreCase)));
+    }
+
+    private static SsrPageCacheInvalidationRequest ForceHardPurge(SsrPageCacheInvalidationRequest request)
+    {
+        return new SsrPageCacheInvalidationRequest
+        {
+            All = request.All,
+            Paths = request.Paths,
+            Prefixes = request.Prefixes,
+            IncludeSeoDocuments = request.IncludeSeoDocuments,
+            AllowStale = false,
+            Refresh = false,
+        };
     }
 
     private static SsrPageCacheInvalidationRequest BuildRequest(
@@ -566,6 +910,11 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             .Where(static value => !string.IsNullOrWhiteSpace(value))
             .Select(static value => value.Trim())
             .Distinct(StringComparer.Ordinal);
+    }
+
+    private static string? NormalizeTarget(string? value)
+    {
+        return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
     }
 
     private static IEnumerable<string> NormalizePaths(IEnumerable<string> values)

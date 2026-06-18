@@ -391,6 +391,7 @@
         "errors": "Błędy",
         "pending": "Uruchom podglad, aby sprawdzic zmiany przed zastosowaniem.",
         "applied": "Upsert zastosowany pomyślnie.",
+        "contentChangesDetected": "Wykryto zmiany tresci ({{count}}). Zostana zaktualizowane po zastosowaniu tego JSON.",
         "field": "Pole",
         "oldValue": "Stare",
         "newValue": "Nowe",

@@ -54,6 +54,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 zone = isNew
                     ? await this.parkZoneRepository.CreateAsync(zone, cancellationToken)
                     : await this.parkZoneRepository.UpdateAsync(zone.Id, zone, cancellationToken) ?? zone;
+                change.EntityId = zone.Id;
             }
 
             if (isNew)

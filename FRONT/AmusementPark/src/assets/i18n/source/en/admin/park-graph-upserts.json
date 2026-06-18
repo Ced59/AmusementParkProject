@@ -101,6 +101,7 @@
         "errors": "Errors",
         "pending": "Run a preview to inspect changes before applying.",
         "applied": "Upsert applied successfully.",
+        "contentChangesDetected": "Content changes detected ({{count}}). They will be updated if you apply this JSON.",
         "field": "Field",
         "oldValue": "Old",
         "newValue": "New",

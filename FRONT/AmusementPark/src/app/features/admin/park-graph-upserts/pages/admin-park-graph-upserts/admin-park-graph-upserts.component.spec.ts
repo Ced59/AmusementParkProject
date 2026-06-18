@@ -15,6 +15,7 @@ interface ActivatedRouteStub {
 }
 
 interface AdminParkGraphUpsertsComponentHarness {
+  contentChangeCount: number;
   hasJsonDraft: boolean;
   jsonText: string;
   previewResult: ParkGraphUpsertResult | null;
@@ -176,5 +177,50 @@ describe('AdminParkGraphUpsertsComponent', () => {
 
     expect(harness.previewResult?.targetParkId).toBe('park-1');
     expect(harness.previewResult?.canApply).toBeTrue();
+  });
+
+  it('shows when previewed content fields will be updated', () => {
+    createComponent({
+      parkId: 'park-1',
+      parkName: 'Selected Park'
+    });
+
+    harness.jsonText = '{"park":{"id":"park-1"}}';
+    harness.preview();
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/park-graph-upserts/preview`);
+    request.flush({
+      operationId: 'operation-1',
+      mode: 'merge',
+      isApplied: false,
+      canApply: true,
+      previewedAtUtc: '2026-06-18T10:00:00Z',
+      targetParkId: 'park-1',
+      targetParkName: 'Selected Park',
+      counts: { created: 0, updated: 1, unchanged: 0, warnings: 0, errors: 0 },
+      changes: [
+        {
+          entityType: 'ParkItem',
+          entityId: 'item-1',
+          entityKey: null,
+          displayName: 'Wakala',
+          changeType: 'Updated',
+          matchedBy: 'id',
+          fields: [
+            {
+              field: 'descriptions.fr',
+              oldValue: 'Ancienne description',
+              newValue: 'Nouvelle description'
+            }
+          ]
+        }
+      ],
+      warnings: [],
+      errors: []
+    } satisfies ParkGraphUpsertResult);
+    fixture.detectChanges();
+
+    expect(harness.contentChangeCount).toBe(1);
+    expect(fixture.nativeElement.querySelector('.admin-alert--info')).not.toBeNull();
   });
 });

@@ -157,6 +157,7 @@ public sealed partial class ParkGraphUpsertProcessor
             targetPark = parkWillBeCreated
                 ? await this.parkRepository.CreateAsync(targetPark, cancellationToken)
                 : await this.parkRepository.UpdateAsync(targetPark.Id, targetPark, cancellationToken) ?? targetPark;
+            parkChange.EntityId = targetPark.Id;
         }
 
         result.TargetParkId = targetPark.Id;

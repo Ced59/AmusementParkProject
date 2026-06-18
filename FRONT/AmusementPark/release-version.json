@@ -1,6 +1,20 @@
 {
-  "version": "1.10.15",
+  "version": "1.10.16",
   "history": [
+    {
+      "version": "1.10.16",
+      "releasedAt": "2026-06-18",
+      "labels": {
+        "fr": "La previsualisation admin est plus fiable.",
+        "en": "Admin preview is more reliable.",
+        "de": "Die Admin-Vorschau ist zuverlaessiger.",
+        "nl": "De beheerpreview is betrouwbaarder.",
+        "it": "L'anteprima admin e piu affidabile.",
+        "es": "La vista previa de administracion es mas fiable.",
+        "pl": "Podglad administracyjny jest bardziej niezawodny.",
+        "pt": "A pre-visualizacao da administracao fica mais fiavel."
+      }
+    },
     {
       "version": "1.10.15",
       "releasedAt": "2026-06-18",

@@ -101,6 +101,7 @@
         "errors": "Fehler",
         "pending": "Fuehre eine Vorschau aus, um Aenderungen vor dem Anwenden zu pruefen.",
         "applied": "Upsert erfolgreich angewendet.",
+        "contentChangesDetected": "Inhaltsaenderungen erkannt ({{count}}). Sie werden aktualisiert, wenn Sie dieses JSON anwenden.",
         "field": "Feld",
         "oldValue": "Alt",
         "newValue": "Neu",

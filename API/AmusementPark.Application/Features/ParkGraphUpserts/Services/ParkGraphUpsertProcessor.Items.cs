@@ -66,6 +66,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 item = isNew
                     ? await this.parkItemRepository.CreateAsync(item, cancellationToken)
                     : await this.parkItemRepository.UpdateAsync(item.Id, item, cancellationToken) ?? item;
+                change.EntityId = item.Id;
                 seoChanges.ChangedItemIds.Add(item.Id);
                 if (previousItemSnapshot is not null)
                 {

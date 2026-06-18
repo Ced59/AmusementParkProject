@@ -123,6 +123,12 @@
       }
 
       @if (previewResult) {
+        @if (contentChangeCount > 0) {
+          <p class="admin-alert admin-alert--info">
+            {{ 'admin.parkGraphUpserts.result.contentChangesDetected' | translate: { count: contentChangeCount } }}
+          </p>
+        }
+
         @if (groupedErrors.length > 0) {
           <div class="message-list message-list--error">
             @for (group of groupedErrors; track trackMessageGroup($index, group)) {
