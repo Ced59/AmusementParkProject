@@ -1,1 +1,1 @@
-export type AttractionAccessConditionUnit = 'Centimeter' | 'Year';
+export type AttractionAccessConditionUnit = 'Centimeter' | 'Inch' | 'Year';

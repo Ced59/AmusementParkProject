@@ -12,4 +12,6 @@ public sealed class RegisterUserRequest
     public string? VerifyPassword { get; init; }
 
     public string? PreferredLanguage { get; init; }
+
+    public string? PreferredMeasurementSystem { get; init; }
 }

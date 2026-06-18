@@ -23,6 +23,8 @@ import { resolveFlagAssetPath } from '@shared/utils/assets/flag-assets';
 import { resolveSupportedLanguage, resolveSupportedLanguageFromUrl } from '@shared/utils/routing/localized-route.helpers';
 import { PublicParkNavigationTreeFacade } from '@features/public/navigation/state/public-park-navigation-tree.facade';
 import { PublicParkNavigationTreeViewModel } from '@features/public/navigation/models/public-park-navigation-tree.model';
+import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
+import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
 
 @Component({
   selector: 'app-public-header',
@@ -44,6 +46,7 @@ import { PublicParkNavigationTreeViewModel } from '@features/public/navigation/m
 export class PublicHeaderComponent implements OnInit {
   protected readonly languages: readonly LanguageOption[] = LANGUAGES;
   protected readonly selectedLanguage = signal<string>('en');
+  protected readonly preferredMeasurementSystem = this.measurementPreferenceService.preferredSystem;
   protected readonly currentUrl = signal<string>('');
   protected readonly displayLoginModal = signal<boolean>(false);
   protected readonly displayLanguageModal = signal<boolean>(false);
@@ -61,6 +64,7 @@ export class PublicHeaderComponent implements OnInit {
     private readonly authApiService: AuthApiService,
     private readonly authService: AuthService,
     private readonly translationService: TranslationService,
+    private readonly measurementPreferenceService: MeasurementPreferenceService,
     private readonly publicParkNavigationTreeFacade: PublicParkNavigationTreeFacade,
     private readonly router: Router,
     private readonly modalService: ModalService,
@@ -192,6 +196,10 @@ export class PublicHeaderComponent implements OnInit {
       });
   }
 
+  protected selectMeasurementSystem(system: MeasurementSystem): void {
+    this.measurementPreferenceService.setPreferredSystem(system);
+  }
+
   private updateUrlWithNewLang(newLang: string): void {
     const urlSegments: string[] = this.router.url.split('/');
 
@@ -226,6 +234,7 @@ export class PublicHeaderComponent implements OnInit {
       .subscribe({
         next: (user: UserDto): void => {
           this.userProfile.set(user);
+          this.measurementPreferenceService.syncFromUser(user);
         },
         error: (): void => {
           this.userProfile.set(null);

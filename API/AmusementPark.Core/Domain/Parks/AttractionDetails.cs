@@ -51,6 +51,8 @@ public sealed class AttractionDetails
 
     public double? SpeedInKmH { get; set; }
 
+    public double? DropInFeet { get; set; }
+
     public double? DropInMeters { get; set; }
 
     public int? InversionCount { get; set; }

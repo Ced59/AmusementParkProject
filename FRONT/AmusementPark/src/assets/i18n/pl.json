@@ -13,6 +13,7 @@
     "firstname": "Imię",
     "email": "E-mail",
     "preferred_language": "Preferowany język",
+    "preferred_measurement_system": "Preferowany system miar",
     "modify": "Edytuj",
     "avatar": {
       "title": "Zmień awatar",
@@ -719,6 +720,7 @@
         },
         "accessConditionUnits": {
           "centimeter": "Centymetry",
+          "inch": "Cale",
           "year": "Lata"
         },
         "accessConditionFields": {
@@ -1398,6 +1400,11 @@
     "error": "Błąd",
     "warning": "Uwaga",
     "unexpectedError": "Wystąpił nieoczekiwany błąd."
+  },
+  "measurementSystem": {
+    "label": "System miar",
+    "metric": "Metryczny",
+    "imperial": "Imperialny"
   },
   "description": "Odkrywaj parki rozrywki, atrakcje i praktyczne informacje z całego świata.",
   "images": {

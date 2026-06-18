@@ -13,6 +13,7 @@
     "firstname": "Vorname",
     "email": "E-Mail",
     "preferred_language": "Bevorzugte Sprache",
+    "preferred_measurement_system": "Bevorzugtes Einheitensystem",
     "modify": "Bearbeiten",
     "avatar": {
       "title": "Avatar ändern",
@@ -719,6 +720,7 @@
         },
         "accessConditionUnits": {
           "centimeter": "Zentimeter",
+          "inch": "Zoll",
           "year": "Jahre"
         },
         "accessConditionFields": {
@@ -1398,6 +1400,11 @@
     "error": "Fehler",
     "warning": "Achtung",
     "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten."
+  },
+  "measurementSystem": {
+    "label": "Einheitensystem",
+    "metric": "Metrisch",
+    "imperial": "Imperial"
   },
   "description": "Entdecke Freizeitparks, Attraktionen und praktische Informationen auf der ganzen Welt.",
   "images": {

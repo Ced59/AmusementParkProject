@@ -76,7 +76,8 @@ public sealed class UpdateUserProfileCommandHandler : ICommandHandler<UpdateUser
 
         user.FirstName = command.Update.FirstName;
         user.LastName = command.Update.LastName;
-        user.PreferredLanguage = command.Update.PreferredLanguage;
+        user.PreferredLanguage = UserRules.NormalizePreferredLanguage(command.Update.PreferredLanguage);
+        user.PreferredMeasurementSystem = UserRules.NormalizePreferredMeasurementSystem(command.Update.PreferredMeasurementSystem);
         user.LastActivityUtc = DateTime.UtcNow;
         user.UpdatedAtUtc = DateTime.UtcNow;
         if (command.Update.AvatarUrl is not null)

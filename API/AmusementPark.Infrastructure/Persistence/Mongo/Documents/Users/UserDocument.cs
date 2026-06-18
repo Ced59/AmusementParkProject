@@ -37,6 +37,10 @@ public sealed class UserDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? PreferredLanguage { get; set; }
 
+    [BsonElement("preferredMeasurementSystem")]
+    [BsonIgnoreIfNull]
+    public string? PreferredMeasurementSystem { get; set; }
+
     [BsonElement("avatarUrl")]
     [BsonIgnoreIfNull]
     public string? AvatarUrl { get; set; }

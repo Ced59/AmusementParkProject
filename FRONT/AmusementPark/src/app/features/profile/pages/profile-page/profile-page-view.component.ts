@@ -5,6 +5,7 @@ import { UserDto } from '@app/models/users/user_dto';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { OwnerImageUploadDialogComponent } from '@shared/components/owner-image-upload-dialog/owner-image-upload-dialog.component';
@@ -44,6 +45,7 @@ export class ProfilePageViewComponent {
 
   @Output() editFieldClicked: EventEmitter<string> = new EventEmitter<string>();
   @Output() preferredLanguageEditClicked: EventEmitter<void> = new EventEmitter<void>();
+  @Output() preferredMeasurementSystemChanged: EventEmitter<MeasurementSystem> = new EventEmitter<MeasurementSystem>();
   @Output() saveIdentityClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() cancelIdentityClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() logoutClicked: EventEmitter<void> = new EventEmitter<void>();
@@ -56,6 +58,14 @@ export class ProfilePageViewComponent {
 
   editPreferredLanguage(): void {
     this.preferredLanguageEditClicked.emit();
+  }
+
+  selectPreferredMeasurementSystem(system: MeasurementSystem): void {
+    this.preferredMeasurementSystemChanged.emit(system);
+  }
+
+  measurementSystemLabelKey(system: string | null | undefined): string {
+    return system === 'Imperial' ? 'measurementSystem.imperial' : 'measurementSystem.metric';
   }
 
   saveIdentity(): void {

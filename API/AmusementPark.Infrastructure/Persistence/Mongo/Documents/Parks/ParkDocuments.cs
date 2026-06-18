@@ -409,6 +409,10 @@ public sealed class AttractionDetailsDocument
     [BsonIgnoreIfNull]
     public double? SpeedInKmH { get; set; }
 
+    [BsonElement("dropInFeet")]
+    [BsonIgnoreIfNull]
+    public double? DropInFeet { get; set; }
+
     [BsonElement("dropInMeters")]
     [BsonIgnoreIfNull]
     public double? DropInMeters { get; set; }
@@ -556,4 +560,3 @@ public sealed class AttractionAccessConditionTypeDefinitionDocument : MongoDocum
     [BsonElement("sortOrder")]
     public int SortOrder { get; set; }
 }
-

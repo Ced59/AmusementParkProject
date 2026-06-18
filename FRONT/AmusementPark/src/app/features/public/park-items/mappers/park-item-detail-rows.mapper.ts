@@ -1,5 +1,7 @@
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
+import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { normalizeTranslationSegment } from '@shared/utils/display/display-label.helpers';
 import {
   getParkItemCategoryTranslationKey,
@@ -15,7 +17,8 @@ import {
   formatDate,
   formatDuration,
   formatInteger,
-  formatNumberWithUnit
+  formatLengthFromMeters,
+  formatSpeedFromKilometersPerHour
 } from './park-item-detail-formatters';
 import {
   buildCategoryQueryParams,
@@ -83,14 +86,19 @@ function pushStatusRow(rows: ParkItemDetailRowViewModel[], status: string | null
   );
 }
 
-export function buildPerformanceRows(item: ParkItem, currentLanguage: string): ParkItemDetailRowViewModel[] {
+export function buildPerformanceRows(
+  item: ParkItem,
+  currentLanguage: string,
+  measurementSystem: MeasurementSystem,
+  measurementConversionService: MeasurementConversionService
+): ParkItemDetailRowViewModel[] {
   const details = item.attractionDetails;
   const rows: ParkItemDetailRowViewModel[] = [];
 
-  pushRow(rows, 'parkItems.fields.heightInMeters', formatNumberWithUnit(details?.heightInMeters, 'm'), null, 'pi pi-arrow-up');
-  pushRow(rows, 'parkItems.fields.lengthInMeters', formatNumberWithUnit(details?.lengthInMeters, 'm'), null, 'pi pi-arrows-h');
-  pushRow(rows, 'parkItems.fields.speedInKmH', formatNumberWithUnit(details?.speedInKmH, 'km/h'), null, 'pi pi-gauge');
-  pushRow(rows, 'parkItems.fields.dropInMeters', formatNumberWithUnit(details?.dropInMeters, 'm'), null, 'pi pi-arrow-down');
+  pushRow(rows, 'parkItems.fields.heightInMeters', formatLengthFromMeters(details?.heightInMeters, currentLanguage, measurementSystem, measurementConversionService), null, 'pi pi-arrow-up');
+  pushRow(rows, 'parkItems.fields.lengthInMeters', formatLengthFromMeters(details?.lengthInMeters, currentLanguage, measurementSystem, measurementConversionService), null, 'pi pi-arrows-h');
+  pushRow(rows, 'parkItems.fields.speedInKmH', formatSpeedFromKilometersPerHour(details?.speedInKmH, currentLanguage, measurementSystem, measurementConversionService), null, 'pi pi-gauge');
+  pushRow(rows, 'parkItems.fields.dropInMeters', formatLengthFromMeters(details?.dropInMeters, currentLanguage, measurementSystem, measurementConversionService), null, 'pi pi-arrow-down');
   pushRow(rows, 'parkItems.fields.inversionCount', formatInteger(details?.inversionCount), null, 'pi pi-refresh');
   pushRow(rows, 'parkItems.fields.capacityPerHour', formatInteger(details?.capacityPerHour), null, 'pi pi-users');
   pushRow(rows, 'parkItems.fields.durationInSeconds', formatDuration(details?.durationInSeconds, currentLanguage), null, 'pi pi-clock');

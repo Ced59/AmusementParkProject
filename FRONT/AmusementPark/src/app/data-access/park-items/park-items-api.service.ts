@@ -67,6 +67,7 @@ interface AttractionDetailsWriteRequest {
   speedInMph?: number | null;
   speedInKmH?: number | null;
   dropInMeters?: number | null;
+  dropInFeet?: number | null;
   inversionCount?: number | null;
   trainCount?: number | null;
   carsPerTrain?: number | null;
@@ -251,6 +252,7 @@ export class ParkItemsApiService {
       speedInMph: details.speedInMph ?? null,
       speedInKmH: details.speedInKmH ?? null,
       dropInMeters: details.dropInMeters ?? null,
+      dropInFeet: details.dropInFeet ?? null,
       inversionCount: details.inversionCount ?? null,
       trainCount: details.trainCount ?? null,
       carsPerTrain: details.carsPerTrain ?? null,

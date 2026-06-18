@@ -125,7 +125,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         ApplyOptionalPositionPatch(zone, patch, change);
     }
-    private static void PatchItem(ParkItem item, JsonElement patch, Dictionary<string, string> zoneKeys, Dictionary<string, string> manufacturerKeys, ParkGraphUpsertChange change, ParkGraphUpsertResult result, bool isNew)
+    private void PatchItem(ParkItem item, JsonElement patch, Dictionary<string, string> zoneKeys, Dictionary<string, string> manufacturerKeys, ParkGraphUpsertChange change, ParkGraphUpsertResult result, bool isNew)
     {
         PatchString(patch, "name", item.Name, value => item.Name = value ?? string.Empty, change);
         PatchString(patch, "subtype", item.Subtype, value => item.Subtype = value, change);
@@ -170,7 +170,7 @@ public sealed partial class ParkGraphUpsertProcessor
         {
             JsonElement? detailsPatch = GetObject(patch, "attractionDetails");
             item.AttractionDetails ??= new AttractionDetails();
-            PatchAttractionDetails(item.AttractionDetails, detailsPatch, manufacturerKeys, change, result, item.Name);
+            this.PatchAttractionDetails(item.AttractionDetails, detailsPatch, manufacturerKeys, change, result, item.Name);
         }
         else if (isNew && item.Category == ParkItemCategory.Attraction)
         {
@@ -183,7 +183,7 @@ public sealed partial class ParkGraphUpsertProcessor
             PatchAttractionLocations(item.AttractionLocations, GetObject(patch, "attractionLocations"), change);
         }
     }
-    private static void PatchAttractionDetails(AttractionDetails details, JsonElement? patch, Dictionary<string, string> manufacturerKeys, ParkGraphUpsertChange change, ParkGraphUpsertResult result, string itemName)
+    private void PatchAttractionDetails(AttractionDetails details, JsonElement? patch, Dictionary<string, string> manufacturerKeys, ParkGraphUpsertChange change, ParkGraphUpsertResult result, string itemName)
     {
         if (patch is null)
         {
@@ -224,6 +224,7 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchDoubleNullable(patch, "lengthInMeters", details.LengthInMeters, value => details.LengthInMeters = value, change, "attractionDetails.lengthInMeters");
         PatchDoubleNullable(patch, "speedInMph", details.SpeedInMph, value => details.SpeedInMph = value, change, "attractionDetails.speedInMph");
         PatchDoubleNullable(patch, "speedInKmH", details.SpeedInKmH, value => details.SpeedInKmH = value, change, "attractionDetails.speedInKmH");
+        PatchDoubleNullable(patch, "dropInFeet", details.DropInFeet, value => details.DropInFeet = value, change, "attractionDetails.dropInFeet");
         PatchDoubleNullable(patch, "dropInMeters", details.DropInMeters, value => details.DropInMeters = value, change, "attractionDetails.dropInMeters");
         PatchIntNullable(patch, "inversionCount", details.InversionCount, value => details.InversionCount = value, change, "attractionDetails.inversionCount");
         PatchIntNullable(patch, "trainCount", details.TrainCount, value => details.TrainCount = value, change, "attractionDetails.trainCount");
@@ -238,9 +239,41 @@ public sealed partial class ParkGraphUpsertProcessor
         if (HasProperty(patch, "accessConditions"))
         {
             List<AttractionAccessCondition> conditions = ReadAccessConditions(GetArray(patch, "accessConditions"));
+            foreach (AttractionAccessCondition condition in conditions)
+            {
+                this.measurementConversionService.NormalizeAccessCondition(condition);
+            }
+
             AddChange(change, "attractionDetails.accessConditions", DescribeAccessConditions(details.AccessConditions), DescribeAccessConditions(conditions));
             details.AccessConditions = conditions;
         }
+
+        NormalizeAttractionDetailsAfterPatch(details, change);
+    }
+
+    private void NormalizeAttractionDetailsAfterPatch(AttractionDetails details, ParkGraphUpsertChange change)
+    {
+        double? currentHeightInFeet = details.HeightInFeet;
+        double? currentHeightInMeters = details.HeightInMeters;
+        double? currentLengthInFeet = details.LengthInFeet;
+        double? currentLengthInMeters = details.LengthInMeters;
+        double? currentSpeedInMph = details.SpeedInMph;
+        double? currentSpeedInKmH = details.SpeedInKmH;
+        double? currentDropInFeet = details.DropInFeet;
+        double? currentDropInMeters = details.DropInMeters;
+        string currentAccessConditions = DescribeAccessConditions(details.AccessConditions);
+
+        this.measurementConversionService.NormalizeAttractionDetails(details);
+
+        AddChange(change, "attractionDetails.heightInFeet", currentHeightInFeet, details.HeightInFeet);
+        AddChange(change, "attractionDetails.heightInMeters", currentHeightInMeters, details.HeightInMeters);
+        AddChange(change, "attractionDetails.lengthInFeet", currentLengthInFeet, details.LengthInFeet);
+        AddChange(change, "attractionDetails.lengthInMeters", currentLengthInMeters, details.LengthInMeters);
+        AddChange(change, "attractionDetails.speedInMph", currentSpeedInMph, details.SpeedInMph);
+        AddChange(change, "attractionDetails.speedInKmH", currentSpeedInKmH, details.SpeedInKmH);
+        AddChange(change, "attractionDetails.dropInFeet", currentDropInFeet, details.DropInFeet);
+        AddChange(change, "attractionDetails.dropInMeters", currentDropInMeters, details.DropInMeters);
+        AddChange(change, "attractionDetails.accessConditions", currentAccessConditions, DescribeAccessConditions(details.AccessConditions));
     }
     private static void PatchAttractionLocations(AttractionLocations locations, JsonElement? patch, ParkGraphUpsertChange change)
     {

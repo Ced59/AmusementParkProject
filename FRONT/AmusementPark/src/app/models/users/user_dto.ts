@@ -7,6 +7,7 @@ export interface UserDto {
   isBlocked: boolean;
   roles: string[];
   preferredLanguage: string;
+  preferredMeasurementSystem?: string | null;
   avatarUrl: string;
   createdAt: string;
   updatedAt: string;

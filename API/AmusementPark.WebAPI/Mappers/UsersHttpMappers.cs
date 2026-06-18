@@ -21,6 +21,7 @@ public static class UsersHttpMappers
             Password = request.Password,
             VerifyPassword = request.VerifyPassword,
             PreferredLanguage = request.PreferredLanguage,
+            PreferredMeasurementSystem = request.PreferredMeasurementSystem,
         };
     }
 
@@ -50,6 +51,7 @@ public static class UsersHttpMappers
             Email = request.Email,
             NewEmail = request.NewEmail,
             PreferredLanguage = request.PreferredLanguage,
+            PreferredMeasurementSystem = request.PreferredMeasurementSystem,
             AvatarUrl = request.AvatarUrl,
         };
     }
@@ -99,6 +101,7 @@ public static class UsersHttpMappers
             IsBlocked = user.IsBlocked,
             Roles = user.Roles.Select(ToHttp).ToList(),
             PreferredLanguage = user.PreferredLanguage,
+            PreferredMeasurementSystem = user.PreferredMeasurementSystem,
             AvatarUrl = user.AvatarUrl,
         };
     }
@@ -117,6 +120,7 @@ public static class UsersHttpMappers
             IsBlocked = user.IsBlocked,
             Roles = user.Roles.Select(ToHttp).ToList(),
             PreferredLanguage = user.PreferredLanguage,
+            PreferredMeasurementSystem = user.PreferredMeasurementSystem,
             AvatarUrl = user.AvatarUrl,
         };
     }
@@ -135,6 +139,7 @@ public static class UsersHttpMappers
             IsBlocked = user.IsBlocked,
             Roles = user.Roles.Select(ToHttp).ToList(),
             PreferredLanguage = user.PreferredLanguage,
+            PreferredMeasurementSystem = user.PreferredMeasurementSystem,
             AvatarUrl = user.AvatarUrl,
         };
     }
@@ -152,6 +157,7 @@ public static class UsersHttpMappers
             IsActivated = user.IsActivated,
             IsBlocked = user.IsBlocked,
             PreferredLanguage = user.PreferredLanguage,
+            PreferredMeasurementSystem = user.PreferredMeasurementSystem,
             Roles = user.Roles.Select(ToHttp).ToList(),
             AvatarUrl = user.AvatarUrl,
         };

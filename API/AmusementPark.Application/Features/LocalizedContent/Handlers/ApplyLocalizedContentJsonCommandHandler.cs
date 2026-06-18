@@ -1,6 +1,7 @@
 using System.Text.Json;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Contracts;
+using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.AttractionAccessConditionTypes;
 using AmusementPark.Application.Features.AttractionAccessConditionTypes.Contracts;
 using AmusementPark.Application.Features.AttractionAccessConditionTypes.Ports;
@@ -39,6 +40,7 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler : ICommandHa
     private readonly IImageTagRepository imageTagRepository;
     private readonly IAttractionAccessConditionTypeDefinitionRepository accessConditionTypeDefinitionRepository;
     private readonly ISearchProjectionWriter searchProjectionWriter;
+    private readonly IMeasurementConversionService measurementConversionService;
 
     public ApplyLocalizedContentJsonCommandHandler(
         IParkRepository parkRepository,
@@ -50,7 +52,8 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler : ICommandHa
         IImageRepository imageRepository,
         IImageTagRepository imageTagRepository,
         IAttractionAccessConditionTypeDefinitionRepository accessConditionTypeDefinitionRepository,
-        ISearchProjectionWriter searchProjectionWriter)
+        ISearchProjectionWriter searchProjectionWriter,
+        IMeasurementConversionService measurementConversionService)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -62,6 +65,7 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler : ICommandHa
         this.imageTagRepository = imageTagRepository;
         this.accessConditionTypeDefinitionRepository = accessConditionTypeDefinitionRepository;
         this.searchProjectionWriter = searchProjectionWriter;
+        this.measurementConversionService = measurementConversionService;
     }
 
     public async Task<ApplicationResult<LocalizedContentApplyResult>> HandleAsync(ApplyLocalizedContentJsonCommand command, CancellationToken cancellationToken = default)
@@ -76,7 +80,7 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler : ICommandHa
             return ApplicationResult<LocalizedContentApplyResult>.Failure(ApplicationErrors.Required(nameof(command.EntityId)));
         }
 
-        if (!TryParsePatch(command.Json, out LocalizedContentPatch? patch))
+        if (!TryParsePatch(command.Json, out LocalizedContentPatch? patch) || patch is null)
         {
             return ApplicationResult<LocalizedContentApplyResult>.Failure(LocalizedContentApplicationErrors.InvalidJson());
         }

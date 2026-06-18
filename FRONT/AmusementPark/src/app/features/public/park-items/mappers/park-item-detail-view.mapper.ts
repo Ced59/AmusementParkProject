@@ -1,6 +1,8 @@
 import { ImageDto } from '@app/models/images/image-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { MeasurementSystem, DEFAULT_MEASUREMENT_SYSTEM } from '@shared/models/measurements/measurement-system.model';
+import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import {
   getParkItemCategoryTranslationKey,
@@ -47,14 +49,21 @@ export function mapParkItemToDetailViewModel(
   currentLanguage: string,
   relatedItems: ParkItem[] = [],
   photos: ImageDto[] = [],
-  textTruncator: NaturalTextTruncatorService | null = null
+  textTruncator: NaturalTextTruncatorService | null = null,
+  measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
+  measurementConversionService: MeasurementConversionService = new MeasurementConversionService()
 ): ParkItemDetailViewModel | null {
   if (!item) {
     return null;
   }
 
   const technicalRows: ParkItemDetailRowViewModel[] = buildTechnicalRows(item, manufacturerName, currentLanguage);
-  const performanceRows: ParkItemDetailRowViewModel[] = buildPerformanceRows(item, currentLanguage);
+  const performanceRows: ParkItemDetailRowViewModel[] = buildPerformanceRows(
+    item,
+    currentLanguage,
+    measurementSystem,
+    measurementConversionService
+  );
   const experienceRows: ParkItemDetailRowViewModel[] = buildExperienceRows(item, currentLanguage);
   const locationPoints: ParkItemLocationPointViewModel[] = buildLocationPoints(item, currentLanguage);
   const specGroups: ParkItemDetailSpecGroupViewModel[] = buildSpecGroups(technicalRows, performanceRows, experienceRows);
@@ -97,13 +106,22 @@ export function mapParkItemToDetailViewModel(
     summaryRows: buildSummaryRows(item, park, manufacturerName, zoneName, currentLanguage),
     specGroups,
     heroPhoto,
-    accessConditions: buildAccessConditions(item, currentLanguage),
+    accessConditions: buildAccessConditions(item, currentLanguage, measurementSystem, measurementConversionService),
     locationPoints,
     mapMarkers: buildMapMarkers(locationPoints, item.name),
     mapCenter: resolveMapCenter(locationPoints, item, park),
     mapZoom: locationPoints.length > 1 ? 17 : 18,
     hasPreciseLocations,
-    relatedItems: buildRelatedItems(item, park, relatedItems, currentLanguage, zoneName, textTruncator)
+    relatedItems: buildRelatedItems(
+      item,
+      park,
+      relatedItems,
+      currentLanguage,
+      zoneName,
+      textTruncator,
+      measurementSystem,
+      measurementConversionService
+    )
   };
 }
 

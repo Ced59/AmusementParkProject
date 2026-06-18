@@ -26,6 +26,8 @@ public sealed class UserDto
 
     public string? PreferredLanguage { get; set; }
 
+    public string? PreferredMeasurementSystem { get; set; }
+
     public List<UserRoleDto> Roles { get; set; } = new();
 
 

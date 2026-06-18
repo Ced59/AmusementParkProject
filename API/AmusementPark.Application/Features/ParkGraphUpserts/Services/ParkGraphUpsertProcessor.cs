@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Text.Json;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
@@ -37,6 +38,7 @@ public sealed partial class ParkGraphUpsertProcessor
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IParkGraphUpsertHistoryRepository historyRepository;
     private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
+    private readonly IMeasurementConversionService measurementConversionService;
 
     public ParkGraphUpsertProcessor(
         IParkRepository parkRepository,
@@ -48,7 +50,8 @@ public sealed partial class ParkGraphUpsertProcessor
         IImageRepository imageRepository,
         ISearchProjectionWriter searchProjectionWriter,
         IParkGraphUpsertHistoryRepository historyRepository,
-        IPublicSeoUpdateNotifier publicSeoUpdateNotifier)
+        IPublicSeoUpdateNotifier publicSeoUpdateNotifier,
+        IMeasurementConversionService measurementConversionService)
     {
         this.parkRepository = parkRepository;
         this.parkZoneRepository = parkZoneRepository;
@@ -60,6 +63,7 @@ public sealed partial class ParkGraphUpsertProcessor
         this.searchProjectionWriter = searchProjectionWriter;
         this.historyRepository = historyRepository;
         this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
+        this.measurementConversionService = measurementConversionService;
     }
 
     public async Task<ApplicationResult<ParkGraphUpsertResult>> PreviewAsync(ParkGraphUpsertRequest request, string? requestedByUserId, CancellationToken cancellationToken)

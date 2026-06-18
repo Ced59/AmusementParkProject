@@ -14,5 +14,10 @@
     "error": "Erro",
     "warning": "Atenção",
     "unexpectedError": "Ocorreu um erro inesperado."
+  },
+  "measurementSystem": {
+    "label": "Sistema de medidas",
+    "metric": "MÃ©trico",
+    "imperial": "Imperial"
   }
 }

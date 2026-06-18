@@ -1,6 +1,8 @@
 import { AttractionAccessCondition } from '@app/models/parks/attraction-access-condition';
 import { AttractionAccessConditionType } from '@app/models/parks/attraction-access-condition-type';
 import { ParkItem } from '@app/models/parks/park-item';
+import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
+import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import {
   ParkItemAccessConditionMetricViewModel,
   ParkItemAccessConditionViewModel,
@@ -15,11 +17,21 @@ import {
 import { getAccessConditionTypeLabelKey } from './park-item-detail-presentation.mapper';
 import { pushRow } from './park-item-detail-row.helpers';
 
-export function buildAccessConditions(item: ParkItem, currentLanguage: string): ParkItemAccessConditionViewModel[] {
+export function buildAccessConditions(
+  item: ParkItem,
+  currentLanguage: string,
+  measurementSystem: MeasurementSystem,
+  measurementConversionService: MeasurementConversionService
+): ParkItemAccessConditionViewModel[] {
   const conditions: AttractionAccessCondition[] = [...(item.attractionDetails?.accessConditions ?? [])]
     .sort((first: AttractionAccessCondition, second: AttractionAccessCondition) => (first.displayOrder ?? 0) - (second.displayOrder ?? 0));
   const viewModels: ParkItemAccessConditionViewModel[] = [];
-  const heightCondition: ParkItemAccessConditionViewModel | null = buildHeightAccessCondition(conditions, currentLanguage);
+  const heightCondition: ParkItemAccessConditionViewModel | null = buildHeightAccessCondition(
+    conditions,
+    currentLanguage,
+    measurementSystem,
+    measurementConversionService
+  );
 
   if (heightCondition) {
     viewModels.push(heightCondition);
@@ -28,7 +40,7 @@ export function buildAccessConditions(item: ParkItem, currentLanguage: string): 
   viewModels.push(
     ...conditions
       .filter((condition: AttractionAccessCondition) => !isHeightAccessCondition(condition.type))
-      .map((condition: AttractionAccessCondition) => mapAccessCondition(condition, currentLanguage))
+      .map((condition: AttractionAccessCondition) => mapAccessCondition(condition, currentLanguage, measurementSystem, measurementConversionService))
   );
 
   return viewModels;
@@ -36,7 +48,9 @@ export function buildAccessConditions(item: ParkItem, currentLanguage: string): 
 
 function buildHeightAccessCondition(
   conditions: AttractionAccessCondition[],
-  currentLanguage: string
+  currentLanguage: string,
+  measurementSystem: MeasurementSystem,
+  measurementConversionService: MeasurementConversionService
 ): ParkItemAccessConditionViewModel | null {
   const metrics: ParkItemAccessConditionMetricViewModel[] = [];
 
@@ -47,7 +61,9 @@ function buildHeightAccessCondition(
     'parkItems.accessConditions.height.minHeight',
     'parkItems.accessConditions.height.minHeightHelp',
     'pi pi-user',
-    currentLanguage
+    currentLanguage,
+    measurementSystem,
+    measurementConversionService
   );
   pushHeightMetric(
     metrics,
@@ -56,7 +72,9 @@ function buildHeightAccessCondition(
     'parkItems.accessConditions.height.minHeightAccompanied',
     'parkItems.accessConditions.height.minHeightAccompaniedHelp',
     'pi pi-users',
-    currentLanguage
+    currentLanguage,
+    measurementSystem,
+    measurementConversionService
   );
   pushHeightMetric(
     metrics,
@@ -65,7 +83,9 @@ function buildHeightAccessCondition(
     'parkItems.accessConditions.height.maxHeight',
     'parkItems.accessConditions.height.maxHeightHelp',
     'pi pi-ban',
-    currentLanguage
+    currentLanguage,
+    measurementSystem,
+    measurementConversionService
   );
 
   if (metrics.length === 0) {
@@ -91,7 +111,9 @@ function pushHeightMetric(
   labelKey: string,
   helperKey: string,
   iconClass: string,
-  currentLanguage: string
+  currentLanguage: string,
+  measurementSystem: MeasurementSystem,
+  measurementConversionService: MeasurementConversionService
 ): void {
   const condition: AttractionAccessCondition | undefined = conditions.find((candidate: AttractionAccessCondition) => candidate.type === type);
 
@@ -101,20 +123,25 @@ function pushHeightMetric(
 
   metrics.push({
     labelKey,
-    value: formatAccessConditionValue(condition.value, 'Centimeter', currentLanguage),
+    value: formatAccessConditionValue(condition.value, condition.unit ?? 'Centimeter', currentLanguage, measurementSystem, measurementConversionService),
     helperKey,
     iconClass
   });
 }
 
-function mapAccessCondition(condition: AttractionAccessCondition, currentLanguage: string): ParkItemAccessConditionViewModel {
+function mapAccessCondition(
+  condition: AttractionAccessCondition,
+  currentLanguage: string,
+  measurementSystem: MeasurementSystem,
+  measurementConversionService: MeasurementConversionService
+): ParkItemAccessConditionViewModel {
   const rows: ParkItemDetailRowViewModel[] = [];
   const title: string | null = resolveOptionalLocalizedText(condition.label, currentLanguage)
     ?? resolveOptionalLocalizedText(condition.customTypeLabel, currentLanguage);
   const description: string | null = resolveOptionalLocalizedText(condition.description, currentLanguage);
 
   if (condition.value != null) {
-    pushRow(rows, 'parkItems.accessConditionFields.value', formatAccessConditionValue(condition.value, condition.unit, currentLanguage), null, 'pi pi-sliders-h');
+    pushRow(rows, 'parkItems.accessConditionFields.value', formatAccessConditionValue(condition.value, condition.unit, currentLanguage, measurementSystem, measurementConversionService), null, 'pi pi-sliders-h');
   }
 
   if (condition.requiresAccompaniment === true) {

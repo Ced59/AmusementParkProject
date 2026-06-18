@@ -214,6 +214,7 @@
         },
         "accessConditionUnits": {
           "centimeter": "Centímetros",
+          "inch": "Polegadas",
           "year": "Anos"
         },
         "accessConditionFields": {

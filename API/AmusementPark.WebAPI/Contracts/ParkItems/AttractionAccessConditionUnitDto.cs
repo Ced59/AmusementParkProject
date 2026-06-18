@@ -9,5 +9,6 @@ namespace AmusementPark.WebAPI.Contracts.ParkItems;
 public enum AttractionAccessConditionUnitDto
 {
     Centimeter,
+    Inch,
     Year,
 }

@@ -10,6 +10,7 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { UserDto } from '@app/models/users/user_dto';
 import { UserPut } from '@app/models/users/user_put';
+import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { UsersApiService } from '@data-access/users/users-api.service';
 import { AuthService } from '@app/services/auth/auth.service';
@@ -42,6 +43,10 @@ export class AdminUserManagementComponent implements OnInit {
     label: language.label,
     value: language.value.toUpperCase()
   }));
+  readonly measurementSystemOptions: Array<{ labelKey: string; value: MeasurementSystem }> = [
+    { labelKey: 'measurementSystem.metric', value: 'Metric' },
+    { labelKey: 'measurementSystem.imperial', value: 'Imperial' }
+  ];
 
   readonly profileForm: FormGroup;
   readonly passwordForm: FormGroup;
@@ -78,7 +83,8 @@ export class AdminUserManagementComponent implements OnInit {
       lastName: ['', Validators.required],
       email: [{ value: '', disabled: true }],
       newEmail: ['', [Validators.required, Validators.email]],
-      preferredLanguage: ['EN', Validators.required]
+      preferredLanguage: ['EN', Validators.required],
+      preferredMeasurementSystem: ['Metric', Validators.required]
     });
 
     this.passwordForm = this.fb.group({
@@ -143,7 +149,8 @@ export class AdminUserManagementComponent implements OnInit {
       lastName: formValue.lastName,
       email: formValue.email,
       newEmail: formValue.newEmail,
-      preferredLanguage: formValue.preferredLanguage
+      preferredLanguage: formValue.preferredLanguage,
+      preferredMeasurementSystem: formValue.preferredMeasurementSystem
     };
 
     this.savingProfile = true;
@@ -289,7 +296,8 @@ export class AdminUserManagementComponent implements OnInit {
       lastName: user.lastName ?? '',
       email: user.email ?? '',
       newEmail: user.email ?? '',
-      preferredLanguage: (user.preferredLanguage ?? 'EN').toUpperCase()
+      preferredLanguage: (user.preferredLanguage ?? 'EN').toUpperCase(),
+      preferredMeasurementSystem: user.preferredMeasurementSystem ?? 'Metric'
     });
   }
 }

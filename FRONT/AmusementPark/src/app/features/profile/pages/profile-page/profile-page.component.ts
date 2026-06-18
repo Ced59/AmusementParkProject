@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, effect, inject } from '@angular/core';
 import { distinctUntilChanged } from 'rxjs';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -15,6 +15,8 @@ import { ToastMessageService } from '@app/services/messages/toast-message.servic
 import { ModalService } from '@app/services/modal/modal.service';
 import { SharedService } from '@app/services/shared/shared.service';
 import { TranslationService } from '@app/services/translation.service';
+import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
+import { MeasurementSystem } from '@shared/models/measurements/measurement-system.model';
 import { TranslateService } from '@ngx-translate/core';
 import { ProfilePageViewComponent } from './profile-page-view.component';
 import { ProfilePageStateFacade } from '@features/profile/state/profile-page-state.facade';
@@ -53,9 +55,13 @@ export class ProfilePageComponent implements OnInit {
     private readonly sharedService: SharedService,
     private readonly modalService: ModalService,
     private readonly translationService: TranslationService,
+    private readonly measurementPreferenceService: MeasurementPreferenceService,
     private readonly translateService: TranslateService,
     private readonly messageService: ToastMessageService
   ) {
+    effect((): void => {
+      this.measurementPreferenceService.syncFromUser(this.user());
+    });
   }
 
   ngOnInit(): void {
@@ -137,7 +143,8 @@ export class ProfilePageComponent implements OnInit {
       lastName,
       email: currentUser.email ?? '',
       newEmail: currentUser.email ?? '',
-      preferredLanguage: currentUser.preferredLanguage ?? this.translationService.getCurrentLang().toUpperCase()
+      preferredLanguage: currentUser.preferredLanguage ?? this.translationService.getCurrentLang().toUpperCase(),
+      preferredMeasurementSystem: currentUser.preferredMeasurementSystem ?? this.measurementPreferenceService.getPreferredSystem()
     };
 
     this.usersApiService.putUserById(this.currentUserId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
@@ -199,12 +206,43 @@ export class ProfilePageComponent implements OnInit {
       lastName: currentUser.lastName ?? '',
       email: currentUser.email ?? '',
       newEmail: currentUser.email ?? '',
-      preferredLanguage: lang.toUpperCase()
+      preferredLanguage: lang.toUpperCase(),
+      preferredMeasurementSystem: currentUser.preferredMeasurementSystem ?? this.measurementPreferenceService.getPreferredSystem()
     };
 
     this.usersApiService.putUserById(this.currentUserId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (user: UserDto) => {
         this.stateFacade.setUser(user);
+      }
+    });
+  }
+
+  updatePreferredMeasurementSystem(system: MeasurementSystem): void {
+    const currentUser: UserDto | null = this.user();
+
+    if (!this.currentUserId || !currentUser) {
+      this.measurementPreferenceService.setPreferredSystem(system);
+      return;
+    }
+
+    const payload: UserPut = {
+      firstName: currentUser.firstName ?? '',
+      lastName: currentUser.lastName ?? '',
+      email: currentUser.email ?? '',
+      newEmail: currentUser.email ?? '',
+      preferredLanguage: currentUser.preferredLanguage ?? this.translationService.getCurrentLang().toUpperCase(),
+      preferredMeasurementSystem: system
+    };
+
+    this.usersApiService.putUserById(this.currentUserId, payload).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (user: UserDto) => {
+        this.stateFacade.setUser(user);
+        this.measurementPreferenceService.syncFromUser(user);
+        this.messageService.add('success', this.translate('common.success', 'Success'), this.translate('user-profile.updateSuccess', 'Profile updated successfully.'));
+      },
+      error: (error: unknown) => {
+        console.error('Error updating preferred measurement system', error);
+        this.messageService.add('error', this.translate('common.error', 'Error'), this.translate('user-profile.updateError', 'Profile update failed.'));
       }
     });
   }

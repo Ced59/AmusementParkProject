@@ -6,6 +6,7 @@ import { UserRegister } from '@app/models/users/user-register';
 import { AuthApiService } from '@data-access/auth/auth-api.service';
 import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { TranslationService } from '@app/services/translation.service';
+import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { FormsModule } from '@angular/forms';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent } from '@ui/primitives';
 import { UiFieldInputComponent } from '@ui/forms';
@@ -28,6 +29,7 @@ export class RegisterFormComponent {
     private readonly authApiService: AuthApiService,
     private readonly messageService: ToastMessageService,
     private readonly translationService: TranslationService,
+    private readonly measurementPreferenceService: MeasurementPreferenceService,
     private readonly translateService: TranslateService) {
   }
 
@@ -41,7 +43,8 @@ export class RegisterFormComponent {
       email: this.registerEmail,
       password: this.registerPassword,
       verifyPassword: this.confirmPassword,
-      preferredLanguage: this.translationService.getCurrentLang().toUpperCase()
+      preferredLanguage: this.translationService.getCurrentLang().toUpperCase(),
+      preferredMeasurementSystem: this.measurementPreferenceService.getPreferredSystem()
     };
 
     try {

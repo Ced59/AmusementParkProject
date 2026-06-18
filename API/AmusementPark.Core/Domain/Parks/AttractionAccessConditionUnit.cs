@@ -6,5 +6,6 @@ namespace AmusementPark.Core.Domain.Parks;
 public enum AttractionAccessConditionUnit
 {
     Centimeter,
+    Inch,
     Year,
 }

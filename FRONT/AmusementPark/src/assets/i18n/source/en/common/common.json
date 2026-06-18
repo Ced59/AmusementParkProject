@@ -14,5 +14,10 @@
     "error": "Error",
     "warning": "Warning",
     "unexpectedError": "An unexpected error occurred."
+  },
+  "measurementSystem": {
+    "label": "Measurement system",
+    "metric": "Metric",
+    "imperial": "Imperial"
   }
 }

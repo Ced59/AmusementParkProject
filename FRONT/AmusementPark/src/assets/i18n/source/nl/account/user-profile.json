@@ -5,6 +5,7 @@
     "firstname": "Voornaam",
     "email": "E-mail",
     "preferred_language": "Voorkeurstaal",
+    "preferred_measurement_system": "Voorkeurseenheden",
     "modify": "Bewerken",
     "avatar": {
       "title": "Avatar wijzigen",

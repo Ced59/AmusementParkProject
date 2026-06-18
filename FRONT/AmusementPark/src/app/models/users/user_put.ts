@@ -4,4 +4,5 @@ export interface UserPut {
   email: string;
   newEmail: string;
   preferredLanguage: string;
+  preferredMeasurementSystem: string;
 }

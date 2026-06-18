@@ -47,6 +47,25 @@ describe('mapParkItemToCardViewModel', () => {
     expect(result.highlights).toEqual(['B&M', 'Hyper Coaster', 'En fonctionnement', '50 m']);
   });
 
+  it('formats attraction highlights with imperial units when requested', () => {
+    const result = mapParkItemToCardViewModel(
+      createItem({
+        attractionDetails: {
+          heightInMeters: 60.96,
+          speedInKmH: 120.7
+        } as never
+      }),
+      park,
+      'en',
+      null,
+      null,
+      null,
+      'Imperial'
+    );
+
+    expect(result.highlights).toEqual(['200 ft', '75 mph']);
+  });
+
   it('falls back to raw status labels when status is unknown', () => {
     const result = mapParkItemToCardViewModel(createItem({ attractionDetails: { status: 'Soft opening' } as never }), park, 'en', null, null);
 

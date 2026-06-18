@@ -214,6 +214,7 @@
         },
         "accessConditionUnits": {
           "centimeter": "Centimètres",
+          "inch": "Pouces",
           "year": "Ans"
         },
         "accessConditionFields": {

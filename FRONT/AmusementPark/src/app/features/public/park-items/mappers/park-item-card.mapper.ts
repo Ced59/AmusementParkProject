@@ -7,9 +7,12 @@ import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-d
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
+import { MeasurementSystem, DEFAULT_MEASUREMENT_SYSTEM } from '@shared/models/measurements/measurement-system.model';
+import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { ParkItemCardViewModel } from '../models/park-item-card.model';
 
 const PARK_ITEM_CARD_DESCRIPTION_MAX_LENGTH = 160;
+const defaultMeasurementConversionService = new MeasurementConversionService();
 
 export function mapParkItemToCardViewModel(
   item: ParkItem,
@@ -17,7 +20,9 @@ export function mapParkItemToCardViewModel(
   currentLanguage: string,
   manufacturerName: string | null,
   zoneName: string | null,
-  textTruncator: NaturalTextTruncatorService | null = null
+  textTruncator: NaturalTextTruncatorService | null = null,
+  measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
+  measurementConversionService: MeasurementConversionService = defaultMeasurementConversionService
 ): ParkItemCardViewModel {
   const modelName: string | null = item.attractionDetails?.model?.trim() ?? null;
   const subtitleParts: string[] = [manufacturerName, modelName]
@@ -32,7 +37,7 @@ export function mapParkItemToCardViewModel(
     typeLabelKey: getParkItemTypeTranslationKey(item.type),
     typeIconClass: resolveParkItemTypeIconClass(item.type),
     zoneName,
-    highlights: buildParkItemHighlights(item, manufacturerName, currentLanguage),
+    highlights: buildParkItemHighlights(item, manufacturerName, currentLanguage, measurementSystem, measurementConversionService),
     itemLink: buildParkItemLink(park, item, currentLanguage)
   };
 }
@@ -51,7 +56,13 @@ function buildCardDescription(
   return textTruncator.truncate(description, { maxLength: PARK_ITEM_CARD_DESCRIPTION_MAX_LENGTH, ellipsis: '...' });
 }
 
-function buildParkItemHighlights(item: ParkItem, manufacturerName: string | null, currentLanguage: string): string[] {
+function buildParkItemHighlights(
+  item: ParkItem,
+  manufacturerName: string | null,
+  currentLanguage: string,
+  measurementSystem: MeasurementSystem,
+  measurementConversionService: MeasurementConversionService
+): string[] {
   const values: string[] = [];
 
   if (manufacturerName) {
@@ -67,12 +78,22 @@ function buildParkItemHighlights(item: ParkItem, manufacturerName: string | null
     values.push(statusLabel);
   }
 
-  if (item.attractionDetails?.heightInMeters != null) {
-    values.push(`${item.attractionDetails.heightInMeters} m`);
+  const heightLine: string | null = measurementConversionService.formatLengthFromMeters(
+    item.attractionDetails?.heightInMeters,
+    measurementSystem,
+    currentLanguage
+  );
+  if (heightLine) {
+    values.push(heightLine);
   }
 
-  if (item.attractionDetails?.speedInKmH != null) {
-    values.push(`${item.attractionDetails.speedInKmH} km/h`);
+  const speedLine: string | null = measurementConversionService.formatSpeedFromKilometersPerHour(
+    item.attractionDetails?.speedInKmH,
+    measurementSystem,
+    currentLanguage
+  );
+  if (speedLine) {
+    values.push(speedLine);
   }
 
   if (item.attractionDetails?.inversionCount != null) {

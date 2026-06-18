@@ -1,6 +1,7 @@
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
 using AmusementPark.Core.Localization;
+using AmusementPark.Application.Common.Measurements;
 
 namespace AmusementPark.Application.Features.ParkItems;
 
@@ -93,6 +94,7 @@ internal static class ParkItemNormalization
             LengthInMeters = NormalizeNullableDouble(details.LengthInMeters),
             SpeedInMph = NormalizeNullableDouble(details.SpeedInMph),
             SpeedInKmH = NormalizeNullableDouble(details.SpeedInKmH),
+            DropInFeet = NormalizeNullableDouble(details.DropInFeet),
             DropInMeters = NormalizeNullableDouble(details.DropInMeters),
             InversionCount = NormalizeNullableInt(details.InversionCount),
             TrainCount = NormalizeNullableInt(details.TrainCount),
@@ -105,6 +107,8 @@ internal static class ParkItemNormalization
             WaterExposureLevel = details.WaterExposureLevel,
             AccessConditions = NormalizeAccessConditions(details.AccessConditions),
         };
+
+        MeasurementConversionService.Instance.NormalizeAttractionDetails(normalized);
 
         if (!HasAtLeastOneAttractionDetail(normalized))
         {
@@ -151,6 +155,8 @@ internal static class ParkItemNormalization
             Description = NormalizeLocalizedTexts(value.Description),
             DisplayOrder = NormalizeNullableInt(value.DisplayOrder),
         };
+
+        MeasurementConversionService.Instance.NormalizeAccessCondition(normalized);
 
         if (!HasAtLeastOneAccessConditionValue(normalized))
         {
@@ -254,6 +260,7 @@ internal static class ParkItemNormalization
                details.LengthInMeters != null ||
                details.SpeedInMph != null ||
                details.SpeedInKmH != null ||
+               details.DropInFeet != null ||
                details.DropInMeters != null ||
                details.InversionCount != null ||
                details.TrainCount != null ||

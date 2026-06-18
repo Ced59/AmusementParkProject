@@ -8,6 +8,8 @@ import { Park } from '@app/models/parks/park';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
+import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
+import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
@@ -64,7 +66,9 @@ export class ParkDetailStateFacade {
       target,
       currentLanguage,
       this.countryDisplayService,
-      this.textTruncator
+      this.textTruncator,
+      this.measurementPreferenceService.preferredSystem(),
+      this.measurementConversionService
     ));
   });
 
@@ -72,6 +76,8 @@ export class ParkDetailStateFacade {
     @Inject(PARK_DETAIL_PARKS_PORT) private readonly parksApiService: ParkDetailParksPort,
     private readonly countryDisplayService: CountryDisplayService,
     private readonly textTruncator: NaturalTextTruncatorService,
+    private readonly measurementPreferenceService: MeasurementPreferenceService,
+    private readonly measurementConversionService: MeasurementConversionService,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService
   ) {
