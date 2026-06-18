@@ -519,14 +519,14 @@ export class PublicParkNavigationTreeFacade {
 
   private resolveParkItemsListLabel(language: string): string {
     const labels: Record<string, string> = {
-      fr: 'Explorer les éléments',
-      en: 'Explore items',
-      es: 'Explorar elementos',
-      de: 'Elemente erkunden',
-      it: 'Esplora gli elementi',
-      nl: 'Elementen verkennen',
-      pl: 'Przeglądaj elementy',
-      pt: 'Explorar elementos'
+      fr: 'Lieux du parc',
+      en: 'Places in the park',
+      es: 'Lugares del parque',
+      de: 'Orte im Park',
+      it: 'Luoghi del parco',
+      nl: 'Plekken in het park',
+      pl: 'Miejsca w parku',
+      pt: 'Locais do parque'
     };
 
     return labels[language] ?? labels['en'];

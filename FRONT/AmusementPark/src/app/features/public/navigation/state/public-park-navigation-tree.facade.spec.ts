@@ -136,4 +136,24 @@ describe('PublicParkNavigationTreeFacade', () => {
     expect(parksPort.summaryCalls).toEqual(['park-1']);
     expect(sourceData.park?.name).toBe('Bellewaerde');
   });
+
+  it('uses natural localized park places labels in public navigation', () => {
+    TestBed.configureTestingModule({
+      providers: [
+        PublicParkNavigationTreeFacade,
+        provideRouter([]),
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_PARKS_API_SERVICE_PORT, useClass: FakeParksPort },
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_PARK_ITEMS_API_SERVICE_PORT, useClass: FakeParkItemsPort },
+        { provide: PUBLIC_PARK_NAVIGATION_TREE_PARK_ZONES_API_SERVICE_PORT, useClass: FakeParkZonesPort }
+      ]
+    });
+
+    const facade: PublicParkNavigationTreeFacade = TestBed.inject(PublicParkNavigationTreeFacade);
+    const resolveParkItemsListLabel = (facade as unknown as {
+      resolveParkItemsListLabel(language: string): string;
+    }).resolveParkItemsListLabel.bind(facade);
+
+    expect(resolveParkItemsListLabel('fr')).toBe('Lieux du parc');
+    expect(resolveParkItemsListLabel('en')).toBe('Places in the park');
+  });
 });

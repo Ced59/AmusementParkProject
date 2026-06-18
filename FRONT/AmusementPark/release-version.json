@@ -1,6 +1,20 @@
 {
-  "version": "1.10.12",
+  "version": "1.10.13",
   "history": [
+    {
+      "version": "1.10.13",
+      "releasedAt": "2026-06-18",
+      "labels": {
+        "fr": "Les boutons mobiles des pages parc tiennent mieux à l'écran.",
+        "en": "Park page buttons fit better on mobile.",
+        "de": "Buttons auf Parkseiten passen auf Mobilgeraeten besser.",
+        "nl": "Knoppen op parkpagina's passen beter op mobiel.",
+        "it": "I pulsanti delle pagine parco si adattano meglio su mobile.",
+        "es": "Los botones de las paginas de parques encajan mejor en movil.",
+        "pl": "Przyciski stron parku lepiej mieszcza sie na telefonie.",
+        "pt": "Os botoes das paginas do parque ajustam-se melhor no telemovel."
+      }
+    },
     {
       "version": "1.10.12",
       "releasedAt": "2026-06-18",

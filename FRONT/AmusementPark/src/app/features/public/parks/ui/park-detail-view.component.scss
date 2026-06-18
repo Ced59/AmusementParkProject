@@ -504,6 +504,21 @@
     word-break: break-word;
   }
 
+  .park-banner__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .park-banner__actions > * {
+    max-width: 100%;
+  }
+
+  .park-banner__actions span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .park-info-row {
     grid-template-columns: 1fr;
     gap: 0.35rem;
