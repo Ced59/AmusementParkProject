@@ -13,6 +13,7 @@ export function mapImageDtoToOwnedImageItem(image: ImageDto, languageCode: strin
     category: image.category,
     tagIds: image.tagIds ?? [],
     description: image.description ?? null,
+    sourceUrl: image.sourceUrl ?? null,
     alt: resolvedAlt ?? image.description ?? image.originalFileName ?? image.id,
     isCurrent: image.isCurrent,
     createdAt: image.createdAt

@@ -35,6 +35,7 @@ using AmusementPark.Infrastructure.Services.Images;
 using AmusementPark.Infrastructure.Services.Seo;
 using AmusementPark.Infrastructure.Services.Ssr;
 using AmusementPark.Infrastructure.Services.Videos;
+using System.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Minio;
@@ -92,6 +93,15 @@ public static class InfrastructureServiceCollectionExtensions
         {
             client.Timeout = TimeSpan.FromSeconds(videoMetadataSettings.RequestTimeoutSeconds);
         });
+        services.AddHttpClient(RemoteImageImporter.HttpClientName, static client =>
+        {
+            client.Timeout = TimeSpan.FromSeconds(15);
+        })
+        .ConfigurePrimaryHttpMessageHandler(static () => new HttpClientHandler
+        {
+            AllowAutoRedirect = false,
+            AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate | DecompressionMethods.Brotli,
+        });
         services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoDbSettings.Url));
         services.AddSingleton<IMinioClient>(_ =>
             new MinioClient()
@@ -121,6 +131,7 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<IImageTagRepository, ImageTagRepository>();
         services.AddScoped<IImageProcessingPipeline, ImageMetadataPipeline>();
         services.AddScoped<IImageBinaryStorage, MinioImageBinaryStorage>();
+        services.AddScoped<IRemoteImageImporter, RemoteImageImporter>();
         services.AddScoped<IVideoRepository, VideoRepository>();
         services.AddScoped<IVideoTagRepository, VideoTagRepository>();
         services.AddScoped<IVideoMetadataProvider, ExternalVideoMetadataProvider>();

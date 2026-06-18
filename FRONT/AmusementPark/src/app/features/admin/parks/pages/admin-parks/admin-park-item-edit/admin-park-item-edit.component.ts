@@ -346,6 +346,19 @@ export class AdminParkItemEditComponent implements OnInit {
     );
   }
 
+  async onImportRemotePhoto(): Promise<void> {
+    const itemId: string | null = this.itemId();
+
+    if (!itemId || !this.isAttractionCategory()) {
+      return;
+    }
+
+    await this.photosStateFacade.importRemotePhoto(
+      itemId,
+      this.form.get('name')?.value ?? ''
+    );
+  }
+
   onSetCurrentPhoto(photo: OwnedImageItem): void {
     this.photosStateFacade.setCurrentPhoto(photo);
   }

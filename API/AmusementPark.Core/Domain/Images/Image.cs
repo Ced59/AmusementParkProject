@@ -95,6 +95,11 @@ public sealed class Image : AuditableEntity
     public string? ContentType { get; set; }
 
     /// <summary>
+    /// URL source externe d'origine lorsque l'image a ete importee depuis le web.
+    /// </summary>
+    public string? SourceUrl { get; set; }
+
+    /// <summary>
     /// Indique si l'image est publiée.
     /// </summary>
     public bool IsPublished { get; set; } = true;

@@ -12,7 +12,10 @@
       "noImageSelected": "Sélectionne une image avant de l’envoyer.",
       "uploading": "Envoi en cours...",
       "uploadError": "Une erreur est survenue pendant le téléversement de l’image.",
-      "descriptionPlaceholder": "Description"
+      "descriptionPlaceholder": "Description",
+      "remoteSourceUrlPlaceholder": "URL de l'image source",
+      "remoteImport": "Importer depuis l'URL",
+      "remotePreviewAlt": "Apercu de l'image source"
     }
   }
 }

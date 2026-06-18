@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MapMarker } from '@app/models/map/map-marker';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
+import { SafeExternalUrlPipe } from '@shared/pipes';
 import { UiChipComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 import {
   UiPhotoCarouselAxisOption,
@@ -29,7 +30,8 @@ import {
     UiChipComponent,
     UiSectionHeaderComponent,
     UiSurfaceDirective,
-    RouterLink
+    RouterLink,
+    SafeExternalUrlPipe
   ]
 })
 export class UiPhotoCarouselComponent implements OnChanges {

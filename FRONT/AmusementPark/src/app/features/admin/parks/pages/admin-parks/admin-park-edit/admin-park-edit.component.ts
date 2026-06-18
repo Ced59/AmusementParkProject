@@ -209,6 +209,19 @@ export class AdminParkEditComponent implements OnInit {
     );
   }
 
+  async onImportRemoteLogo(): Promise<void> {
+    const parkId: string | null = this.parkId();
+
+    if (!parkId) {
+      return;
+    }
+
+    await this.logosStateFacade.importRemoteLogo(
+      parkId,
+      this.form.get('name')?.value ?? ''
+    );
+  }
+
   onSetCurrentLogo(logo: OwnedImageItem): void {
     this.logosStateFacade.setCurrentLogo(logo);
   }
@@ -225,6 +238,19 @@ export class AdminParkEditComponent implements OnInit {
     }
 
     await this.photosStateFacade.uploadSelectedPhotos(
+      parkId,
+      this.form.get('name')?.value ?? ''
+    );
+  }
+
+  async onImportRemoteParkPhoto(): Promise<void> {
+    const parkId: string | null = this.parkId();
+
+    if (!parkId) {
+      return;
+    }
+
+    await this.photosStateFacade.importRemotePhoto(
       parkId,
       this.form.get('name')?.value ?? ''
     );

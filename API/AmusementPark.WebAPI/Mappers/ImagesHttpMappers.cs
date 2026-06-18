@@ -140,7 +140,21 @@ internal static class ImagesHttpMappers
         };
     }
 
-    public static ImageMetadataUpdate ToApplication(this UpdateImageAssetRequest value, ImageCategory category)
+    public static RemoteImageImportRequest ToApplication(this RemoteImageCreateDto value)
+    {
+        return new RemoteImageImportRequest
+        {
+            SourceUrl = value.SourceUrl,
+            Category = value.Category.ToDomain(),
+            OwnerType = value.OwnerType.ToDomain(),
+            OwnerId = value.OwnerId,
+            Description = value.Description,
+            WithWatermark = value.WithWatermark,
+            SetAsCurrent = value.SetAsCurrent,
+        };
+    }
+
+    public static ImageMetadataUpdate ToApplication(this UpdateImageAssetRequest value, Image existing)
     {
         return new ImageMetadataUpdate
         {
@@ -150,8 +164,9 @@ internal static class ImagesHttpMappers
             Captions = value.Captions.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
             Credits = value.Credits.Select(static item => new LocalizedTextValue(item.LanguageCode, item.Value)).ToList(),
             TagIds = value.TagIds.Distinct(StringComparer.Ordinal).ToList(),
-            Category = category,
+            Category = existing.Category,
             IsPublished = value.IsPublished,
+            SourceUrl = string.IsNullOrWhiteSpace(value.SourceUrl) ? existing.SourceUrl : value.SourceUrl,
         };
     }
 
@@ -189,6 +204,7 @@ internal static class ImagesHttpMappers
             Width = value.Image.Width,
             Height = value.Image.Height,
             SizeInBytes = value.Image.SizeInBytes,
+            SourceUrl = value.Image.SourceUrl,
         };
     }
 
@@ -209,6 +225,7 @@ internal static class ImagesHttpMappers
             SizeInBytes = value.SizeInBytes,
             OriginalFileName = value.OriginalFileName,
             ContentType = value.ContentType,
+            SourceUrl = value.SourceUrl,
             GeoLocation = value.GeoLocation == null
                 ? null
                 : new ImageGeoLocationDto

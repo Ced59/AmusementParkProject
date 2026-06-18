@@ -55,7 +55,7 @@
                   class="logo-upload-picker__input"
                   type="file"
                   (change)="logoFileSelected.emit($event)"
-                  accept="image/jpeg,image/png,image/webp,image/gif"
+                  accept="image/*"
                   [multiple]="allowMultipleLogoUpload" />
                 <button
                   pButton
@@ -76,12 +76,30 @@
               </div>
               <input
                 pInputText
+                type="url"
+                [ngModel]="remoteLogoSourceUrl"
+                (ngModelChange)="remoteLogoSourceUrlChange.emit($event)"
+                [ngModelOptions]="{ standalone: true }"
+                [placeholder]="'shared.imageUpload.remoteSourceUrlPlaceholder' | translate" />
+              @if (remoteLogoSourceUrl.trim()) {
+                <div class="logo-remote-preview">
+                  <app-image-display
+                    [imagePathOrUrl]="remoteLogoSourceUrl"
+                    [alt]="'shared.imageUpload.remotePreviewAlt' | translate"
+                    imgClass="logo-remote-preview__image"
+                    placeholderClass="logo-remote-preview__image logo-remote-preview__image--placeholder"
+                    placeholderIconClass="pi pi-image">
+                  </app-image-display>
+                </div>
+              }
+              <input
+                pInputText
                 type="text"
                 [ngModel]="newLogoDescription"
                 (ngModelChange)="newLogoDescriptionChange.emit($event)"
                 [ngModelOptions]="{ standalone: true }"
                 [placeholder]="'admin.parks.logos.descriptionPlaceholder' | translate" />
-              <div class="flex justify-content-end">
+              <div class="flex justify-content-end gap-2 flex-wrap">
                 <button
                   pButton
                   type="button"
@@ -97,6 +115,15 @@
                       {{ 'admin.loading' | translate }}
                     </span>
                   }
+                </button>
+                <button
+                  pButton
+                  type="button"
+                  class="p-button-outlined"
+                  icon="pi pi-link"
+                  (click)="importRemoteLogo.emit()"
+                  [disabled]="!remoteLogoSourceUrl.trim() || logosUploading"
+                  [label]="'shared.imageUpload.remoteImport' | translate">
                 </button>
               </div>
             </div>

@@ -17,6 +17,7 @@ export interface ImageDto {
   sizeInBytes: number;
   originalFileName?: string;
   contentType?: string;
+  sourceUrl?: string | null;
   geoLocation?: ImageGeoLocation | null;
   exifMetadata?: ImageExifMetadataDto | null;
   altTexts: LocalizedItemDto<string>[];

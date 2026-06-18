@@ -22,4 +22,6 @@ public sealed class ImageCreatedDto
     public int Height { get; set; }
 
     public long SizeInBytes { get; set; }
+
+    public string? SourceUrl { get; set; }
 }

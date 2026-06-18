@@ -38,6 +38,7 @@ namespace AmusementPark.WebAPI.Controllers;
 public sealed class ImagesController : ControllerBase
 {
     private readonly ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>> uploadImageCommandHandler;
+    private readonly ICommandHandler<ImportRemoteImageCommand, ApplicationResult<Image>> importRemoteImageCommandHandler;
     private readonly ICommandHandler<LinkImageCommand, ApplicationResult<Image>> linkImageCommandHandler;
     private readonly ICommandHandler<SetCurrentImageCommand, ApplicationResult<Image>> setCurrentImageCommandHandler;
     private readonly ICommandHandler<DeleteImageCommand, ApplicationResult> deleteImageCommandHandler;
@@ -54,6 +55,7 @@ public sealed class ImagesController : ControllerBase
 
     public ImagesController(
         ICommandHandler<UploadImageCommand, ApplicationResult<UploadedImageResult>> uploadImageCommandHandler,
+        ICommandHandler<ImportRemoteImageCommand, ApplicationResult<Image>> importRemoteImageCommandHandler,
         ICommandHandler<LinkImageCommand, ApplicationResult<Image>> linkImageCommandHandler,
         ICommandHandler<SetCurrentImageCommand, ApplicationResult<Image>> setCurrentImageCommandHandler,
         ICommandHandler<DeleteImageCommand, ApplicationResult> deleteImageCommandHandler,
@@ -69,6 +71,7 @@ public sealed class ImagesController : ControllerBase
         IImageBinaryStorage imageBinaryStorage)
     {
         this.uploadImageCommandHandler = uploadImageCommandHandler;
+        this.importRemoteImageCommandHandler = importRemoteImageCommandHandler;
         this.linkImageCommandHandler = linkImageCommandHandler;
         this.setCurrentImageCommandHandler = setCurrentImageCommandHandler;
         this.deleteImageCommandHandler = deleteImageCommandHandler;
@@ -106,6 +109,23 @@ public sealed class ImagesController : ControllerBase
 
         ApplicationResult<UploadedImageResult> result = await this.uploadImageCommandHandler.HandleAsync(
             new UploadImageCommand(image.ToApplication(file)),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPost("remote")]
+    [AdminAudit("image.remote-import", "Image")]
+    [ProducesResponseType(typeof(ImageDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> ImportRemoteAsync([FromBody] RemoteImageCreateDto request, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<Image> result = await this.importRemoteImageCommandHandler.HandleAsync(
+            new ImportRemoteImageCommand(request.ToApplication()),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -351,7 +371,7 @@ public sealed class ImagesController : ControllerBase
         }
 
         ApplicationResult<Image> result = await this.updateImageMetadataCommandHandler.HandleAsync(
-            new UpdateImageMetadataCommand(imageId, request.ToApplication(existingResult.Value.Category)),
+            new UpdateImageMetadataCommand(imageId, request.ToApplication(existingResult.Value)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

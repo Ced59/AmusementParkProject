@@ -105,8 +105,8 @@
 
               <p *ngIf="currentPhoto.caption || currentPhoto.description">{{ currentPhoto.caption ?? currentPhoto.description }}</p>
 
-              <div class="photo-carousel__source" *ngIf="currentPhoto.sourceTitle">
-                <span class="photo-carousel__source-name">
+              <div class="photo-carousel__source" *ngIf="currentPhoto.sourceTitle || currentPhoto.externalSourceUrl">
+                <span class="photo-carousel__source-name" *ngIf="currentPhoto.sourceTitle">
                   <i [class]="currentPhoto.sourceIconClass ?? 'pi pi-map-marker'" aria-hidden="true"></i>
                   {{ currentPhoto.sourceTitle }}
                 </span>
@@ -116,6 +116,17 @@
                   [routerLink]="currentPhoto.sourceRouterLink"
                   [attr.aria-label]="(currentPhoto.sourceLinkLabelKey ?? 'ui.photoCarousel.controls.openSource') | translate:{ name: currentPhoto.sourceTitle }">
                   <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+                </a>
+                <a
+                  *ngIf="currentPhoto.externalSourceUrl | safeExternalUrl as externalSourceUrl"
+                  class="photo-carousel__external-source-link"
+                  [href]="externalSourceUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [title]="currentPhoto.externalSourceUrl"
+                  [attr.aria-label]="'ui.photoCarousel.controls.viewSource' | translate">
+                  <i class="pi pi-link" aria-hidden="true"></i>
+                  <span>{{ 'ui.photoCarousel.controls.viewSource' | translate }}</span>
                 </a>
               </div>
             </div>
@@ -296,8 +307,8 @@
         <app-ui-chip tone="soft" *ngIf="fullscreenPhoto.isCurrent">{{ currentLabelKey | translate }}</app-ui-chip>
         <p *ngIf="fullscreenPhoto.caption || fullscreenPhoto.description">{{ fullscreenPhoto.caption ?? fullscreenPhoto.description }}</p>
 
-        <div class="photo-lightbox__source" *ngIf="fullscreenPhoto.sourceTitle">
-          <span class="photo-lightbox__source-name">
+        <div class="photo-lightbox__source" *ngIf="fullscreenPhoto.sourceTitle || fullscreenPhoto.externalSourceUrl">
+          <span class="photo-lightbox__source-name" *ngIf="fullscreenPhoto.sourceTitle">
             <i [class]="fullscreenPhoto.sourceIconClass ?? 'pi pi-map-marker'" aria-hidden="true"></i>
             {{ fullscreenPhoto.sourceTitle }}
           </span>
@@ -307,6 +318,17 @@
             [routerLink]="fullscreenPhoto.sourceRouterLink"
             [attr.aria-label]="(fullscreenPhoto.sourceLinkLabelKey ?? 'ui.photoCarousel.controls.openSource') | translate:{ name: fullscreenPhoto.sourceTitle }">
             <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a
+            *ngIf="fullscreenPhoto.externalSourceUrl | safeExternalUrl as externalSourceUrl"
+            class="photo-lightbox__external-source-link"
+            [href]="externalSourceUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            [title]="fullscreenPhoto.externalSourceUrl"
+            [attr.aria-label]="'ui.photoCarousel.controls.viewSource' | translate">
+            <i class="pi pi-link" aria-hidden="true"></i>
+            <span>{{ 'ui.photoCarousel.controls.viewSource' | translate }}</span>
           </a>
         </div>
       </div>

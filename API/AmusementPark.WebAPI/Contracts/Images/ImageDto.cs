@@ -35,6 +35,8 @@ public sealed class ImageDto
 
     public string? ContentType { get; set; }
 
+    public string? SourceUrl { get; set; }
+
     public ImageGeoLocationDto? GeoLocation { get; set; }
 
     public ImageExifMetadataDto? ExifMetadata { get; set; }

@@ -110,6 +110,7 @@ export class AdminParkItemEditFormComponent {
   @Input() allowMultiplePhotoUpload: boolean = true;
   @Input() selectedPhotoCount: number = 0;
   @Input() newPhotoDescription: string = '';
+  @Input() remotePhotoSourceUrl: string = '';
   @Input() selectedPhotoCategorySlug: string = 'park-item-gallery';
   @Input() photoCategoryOptions: AdminParkItemPhotoCategoryOption[] = [];
   @Input() photosUploading: boolean = false;
@@ -146,8 +147,10 @@ export class AdminParkItemEditFormComponent {
   @Output() clearSelectedLocation: EventEmitter<void> = new EventEmitter<void>();
   @Output() photoFileSelected: EventEmitter<Event> = new EventEmitter<Event>();
   @Output() newPhotoDescriptionChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() remotePhotoSourceUrlChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() selectedPhotoCategorySlugChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() uploadPhoto: EventEmitter<void> = new EventEmitter<void>();
+  @Output() importRemotePhoto: EventEmitter<void> = new EventEmitter<void>();
   @Output() setCurrentPhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() deletePhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() photosPageChange: EventEmitter<PaginatorState> = new EventEmitter<PaginatorState>();

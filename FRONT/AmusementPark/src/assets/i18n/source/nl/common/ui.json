@@ -23,7 +23,8 @@
         "next": "Volgende foto",
         "openFullscreen": "Volledig scherm openen",
         "closeFullscreen": "Volledig scherm sluiten",
-        "openSource": "{{name}} openen"
+        "openSource": "{{name}} openen",
+        "viewSource": "Bron bekijken"
       },
       "axes": {
         "years": "Jaren",

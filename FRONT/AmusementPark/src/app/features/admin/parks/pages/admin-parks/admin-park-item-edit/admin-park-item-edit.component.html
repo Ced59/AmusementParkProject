@@ -37,6 +37,7 @@
   [allowMultiplePhotoUpload]="allowMultiplePhotoUpload"
   [selectedPhotoCount]="photosState.selectedPhotoCount()"
   [newPhotoDescription]="photosState.newPhotoDescription()"
+  [remotePhotoSourceUrl]="photosState.remotePhotoSourceUrl()"
   [selectedPhotoCategorySlug]="photosState.selectedPhotoCategorySlug()"
   [photoCategoryOptions]="photosState.photoCategoryOptions()"
   [photosUploading]="photosState.photosUploading()"
@@ -71,8 +72,10 @@
   (clearSelectedLocation)="clearSelectedLocationPoint()"
   (photoFileSelected)="onPhotoFileSelected($event)"
   (newPhotoDescriptionChange)="photosState.setNewPhotoDescription($event)"
+  (remotePhotoSourceUrlChange)="photosState.setRemotePhotoSourceUrl($event)"
   (selectedPhotoCategorySlugChange)="photosState.setSelectedPhotoCategorySlug($event)"
   (uploadPhoto)="onUploadPhoto()"
+  (importRemotePhoto)="onImportRemotePhoto()"
   (setCurrentPhoto)="onSetCurrentPhoto($event)"
   (deletePhoto)="onDeletePhoto($event)"
   (photosPageChange)="onPhotosPageChange($event)">

@@ -27,6 +27,7 @@ export class AdminParkLogosTabComponent {
   @Input() allowMultipleLogoUpload: boolean = true;
   @Input() selectedLogoCount: number = 0;
   @Input() newLogoDescription: string = '';
+  @Input() remoteLogoSourceUrl: string = '';
   @Input() logosUploading: boolean = false;
   @Input() logosLoading: boolean = false;
   @Input() parkLogos: OwnedImageItem[] = [];
@@ -36,7 +37,9 @@ export class AdminParkLogosTabComponent {
 
   @Output() logoFileSelected: EventEmitter<Event> = new EventEmitter<Event>();
   @Output() newLogoDescriptionChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() remoteLogoSourceUrlChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() uploadLogo: EventEmitter<void> = new EventEmitter<void>();
+  @Output() importRemoteLogo: EventEmitter<void> = new EventEmitter<void>();
   @Output() setCurrentLogo: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() deleteLogo: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() logosPageChange: EventEmitter<PaginatorState> = new EventEmitter<PaginatorState>();

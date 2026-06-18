@@ -123,6 +123,7 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
             Width = 1200,
             Height = 800,
             SizeInBytes = 2048,
+            SourceUrl = "https://source.example.test/park.jpg",
         };
 
         Image itemImage = new Image
@@ -133,6 +134,17 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
             Category = ImageCategory.ParkItem,
             IsPublished = false,
             OriginalFileName = "item.jpg",
+        };
+
+        Image manufacturerImage = new Image
+        {
+            Id = "image-manufacturer-1",
+            OwnerType = ImageOwnerType.AttractionManufacturer,
+            OwnerId = "manufacturer-1",
+            Category = ImageCategory.Manufacturer,
+            IsPublished = true,
+            OriginalFileName = "manufacturer.png",
+            SourceUrl = "https://source.example.test/manufacturer.png",
         };
 
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
@@ -172,6 +184,15 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         imageRepository
             .Setup(repository => repository.GetByOwnersAsync(ImageOwnerType.ParkItem, It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.Contains("item-1")), null, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { itemImage });
+        imageRepository
+            .Setup(repository => repository.GetByOwnersAsync(ImageOwnerType.ParkFounder, It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.Contains("founder-1")), null, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Image>());
+        imageRepository
+            .Setup(repository => repository.GetByOwnersAsync(ImageOwnerType.ParkOperator, It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.Contains("operator-1")), null, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Array.Empty<Image>());
+        imageRepository
+            .Setup(repository => repository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, It.Is<IReadOnlyCollection<string>>(ownerIds => ownerIds.Contains("manufacturer-1")), null, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { manufacturerImage });
 
         ExportParkGraphJsonQueryHandler handler = new ExportParkGraphJsonQueryHandler(
             parkRepository.Object,
@@ -201,8 +222,16 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         Assert.Equal("zone-1", root.GetProperty("items")[0].GetProperty("zoneKey").GetString());
         Assert.Equal("manufacturer-1", root.GetProperty("items")[0].GetProperty("attractionDetails").GetProperty("manufacturerKey").GetString());
         Assert.Equal("Manufacturer", root.GetProperty("references").GetProperty("manufacturers")[0].GetProperty("name").GetString());
-        Assert.Equal("park", root.GetProperty("images")[0].GetProperty("ownerKey").GetString());
-        Assert.Equal("image-item-1", root.GetProperty("images")[1].GetProperty("imageId").GetString());
+        JsonElement parkExportImage = root.GetProperty("images").EnumerateArray().Single(image => image.GetProperty("imageId").GetString() == "image-park-1");
+        JsonElement itemExportImage = root.GetProperty("images").EnumerateArray().Single(image => image.GetProperty("imageId").GetString() == "image-item-1");
+        JsonElement manufacturerExportImage = root.GetProperty("images").EnumerateArray().Single(image => image.GetProperty("imageId").GetString() == "image-manufacturer-1");
+        Assert.Equal("park", parkExportImage.GetProperty("ownerKey").GetString());
+        Assert.Equal("https://source.example.test/park.jpg", parkExportImage.GetProperty("sourceUrl").GetString());
+        Assert.Equal("/images/image-park-1", parkExportImage.GetProperty("internalUrl").GetString());
+        Assert.Equal("item-1", itemExportImage.GetProperty("ownerKey").GetString());
+        Assert.Equal("manufacturer:manufacturer-1", manufacturerExportImage.GetProperty("ownerKey").GetString());
+        Assert.Equal("https://source.example.test/manufacturer.png", manufacturerExportImage.GetProperty("sourceUrl").GetString());
+        Assert.Equal("/images/image-manufacturer-1", manufacturerExportImage.GetProperty("internalUrl").GetString());
 
         parkRepository.VerifyAll();
         zoneRepository.VerifyAll();

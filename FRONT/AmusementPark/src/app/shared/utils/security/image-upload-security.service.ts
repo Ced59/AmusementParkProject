@@ -6,10 +6,16 @@ export interface ImageUploadValidationResult {
 }
 
 export const ACCEPTED_IMAGE_MIME_TYPES: readonly string[] = [
+  'image/apng',
+  'image/avif',
+  'image/bmp',
   'image/jpeg',
   'image/png',
+  'image/tiff',
+  'image/vnd.microsoft.icon',
   'image/webp',
-  'image/gif'
+  'image/gif',
+  'image/x-icon'
 ] as const;
 
 export const IMAGE_UPLOAD_ACCEPT_ATTRIBUTE: string = ACCEPTED_IMAGE_MIME_TYPES.join(',');

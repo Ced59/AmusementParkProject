@@ -1,5 +1,6 @@
 export const IMAGES_API_ENDPOINTS = {
   uploadImage: 'images',
+  importRemoteImage: 'images/remote',
   linkImage: 'images/links',
   getImages: (ownerType: string, ownerId: string, category: string) => `images/${ownerType}/${ownerId}/${category}`,
   getCurrentImage: (ownerType: string, ownerId: string, category: string) => `images/${ownerType}/${ownerId}/${category}/current`,

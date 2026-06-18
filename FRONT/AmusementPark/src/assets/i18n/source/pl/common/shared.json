@@ -12,7 +12,10 @@
       "noImageSelected": "Please select an obraz before uploading.",
       "uploading": "Prześlijing...",
       "uploadError": "Wystąpił błąd podczas przesyłania obrazu.",
-      "descriptionPlaceholder": "Opis"
+      "descriptionPlaceholder": "Opis",
+      "remoteSourceUrlPlaceholder": "URL obrazu zrodlowego",
+      "remoteImport": "Importuj z URL",
+      "remotePreviewAlt": "Podglad obrazu zrodlowego"
     }
   }
 }

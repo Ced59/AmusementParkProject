@@ -1457,7 +1457,10 @@
       "noImageSelected": "Bitte wähle vor dem Hochladen ein Bild aus.",
       "uploading": "Wird hochgeladen...",
       "uploadError": "Beim Hochladen des Bildes ist ein Fehler aufgetreten.",
-      "descriptionPlaceholder": "Beschreibung"
+      "descriptionPlaceholder": "Beschreibung",
+      "remoteSourceUrlPlaceholder": "URL des Quellbilds",
+      "remoteImport": "Aus URL importieren",
+      "remotePreviewAlt": "Vorschau des Quellbilds"
     }
   },
   "sidebar": {
@@ -1503,7 +1506,8 @@
         "next": "Nächstes Foto",
         "openFullscreen": "Vollbild öffnen",
         "closeFullscreen": "Vollbild schließen",
-        "openSource": "{{name}} öffnen"
+        "openSource": "{{name}} öffnen",
+        "viewSource": "Quelle anzeigen"
       },
       "axes": {
         "years": "Jahre",

@@ -11,6 +11,7 @@ import { ImageGeoLocation } from '@app/models/images/image-geo-location';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { LinkImageToOwner } from '@app/models/images/link-image-to-owner';
+import { RemoteImageImport } from '@app/models/images/remote-image-import';
 import { UploadedImage } from '@app/models/images/uploaded-image';
 import { LocalizedItemDto } from '@app/models/shared/localized-item-dto';
 import { PagedResult } from '@shared/models/contracts';
@@ -70,6 +71,15 @@ export class ImagesApiService {
     return this.http.post<ImageDto>(url, {
       ...request,
       ownerType: toImageOwnerTypeApiValue(request.ownerType)
+    });
+  }
+
+  importRemoteImage(request: RemoteImageImport): Observable<ImageDto> {
+    const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.importRemoteImage}`;
+    return this.http.post<ImageDto>(url, {
+      ...request,
+      ownerType: toImageOwnerTypeApiValue(request.ownerType),
+      category: toImageCategoryApiValue(request.category)
     });
   }
 
@@ -240,6 +250,7 @@ export class ImagesApiService {
     credits: LocalizedItemDto<string>[];
     tagIds: string[];
     isPublished: boolean;
+    sourceUrl?: string | null;
   }): Observable<ImageDto> {
     const url: string = `${environment.apiBaseUrl}${IMAGES_API_ENDPOINTS.updateAdminImage(id)}`;
     return this.http.put<ImageDto>(url, request);

@@ -24,6 +24,8 @@ public sealed class ImageUploadRequest
 
     public string? StoragePath { get; init; }
 
+    public string? SourceUrl { get; init; }
+
     public int Width { get; init; }
 
     public int Height { get; init; }

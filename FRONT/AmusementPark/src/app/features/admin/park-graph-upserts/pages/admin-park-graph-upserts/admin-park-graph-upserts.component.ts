@@ -11,6 +11,8 @@ import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkGraphUpsertChange, ParkGraphUpsertRequest, ParkGraphUpsertResult } from '@app/models/admin/park-graph-upsert.models';
 import { Park } from '@app/models/parks/park';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
+import { SafeExternalUrlPipe } from '@shared/pipes';
 
 type ParkGraphUpsertChangeTypeFilter = 'All' | 'Created' | 'Updated' | 'Unchanged' | 'Warning' | 'Skipped';
 
@@ -23,7 +25,7 @@ interface ParkGraphUpsertMessageGroup {
 @Component({
   selector: 'app-admin-park-graph-upserts',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule],
+  imports: [CommonModule, FormsModule, TranslateModule, ImageDisplayComponent, SafeExternalUrlPipe],
   templateUrl: './admin-park-graph-upserts.component.html',
   styleUrl: './admin-park-graph-upserts.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -253,6 +255,22 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     return value;
   }
 
+  protected resolveChangePreviewImageUrl(change: ParkGraphUpsertChange): string | null {
+    if (change.entityType !== 'Image') {
+      return null;
+    }
+
+    return this.findFieldValue(change, 'internalUrl') ?? this.findFieldValue(change, 'sourceUrl');
+  }
+
+  protected resolveChangeSourceUrl(change: ParkGraphUpsertChange): string | null {
+    if (change.entityType !== 'Image') {
+      return null;
+    }
+
+    return this.findFieldValue(change, 'sourceUrl');
+  }
+
   private selectParkFromQueryParams(params: ParamMap): void {
     const parkId: string = params.get('parkId')?.trim() ?? '';
     if (!parkId) {
@@ -363,6 +381,12 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
         || (entityKey.length > 0 && normalizedMessage.includes(entityKey))
         || normalizedMessage.includes(entityType);
     });
+  }
+
+  private findFieldValue(change: ParkGraphUpsertChange, fieldName: string): string | null {
+    const value: string | null | undefined = change.fields.find(field => field.field === fieldName)?.newValue;
+    const normalizedValue: string = value?.trim() ?? '';
+    return normalizedValue.length > 0 ? normalizedValue : null;
   }
 
   private isContentField(fieldName: string): boolean {

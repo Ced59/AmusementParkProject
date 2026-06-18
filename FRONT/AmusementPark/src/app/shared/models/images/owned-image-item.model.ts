@@ -6,6 +6,7 @@ export interface OwnedImageItem {
   category: ImageCategory;
   tagIds: string[];
   description?: string | null;
+  sourceUrl?: string | null;
   alt?: string | null;
   isCurrent: boolean;
   createdAt: string;

@@ -186,6 +186,31 @@
                 <em [class]="'change-status change-status--' + change.changeType.toLowerCase()">{{ change.changeType }}</em>
               </summary>
 
+              @if (resolveChangePreviewImageUrl(change); as previewImageUrl) {
+                <div class="change-image-preview">
+                  <app-image-display
+                    [imagePathOrUrl]="previewImageUrl"
+                    [alt]="change.displayName"
+                    imgClass="change-image-preview__image"
+                    placeholderClass="change-image-preview__image change-image-preview__image--placeholder"
+                    placeholderIconClass="pi pi-image">
+                  </app-image-display>
+
+                  @if (resolveChangeSourceUrl(change) | safeExternalUrl; as sourceUrl) {
+                    <a
+                      class="change-image-preview__source"
+                      [href]="sourceUrl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      [title]="resolveChangeSourceUrl(change)"
+                      [attr.aria-label]="'ui.photoCarousel.controls.viewSource' | translate">
+                      <span class="pi pi-link" aria-hidden="true"></span>
+                      {{ 'ui.photoCarousel.controls.viewSource' | translate }}
+                    </a>
+                  }
+                </div>
+              }
+
               @if (change.fields.length > 0) {
                 <table class="admin-mini-table">
                   <thead>
