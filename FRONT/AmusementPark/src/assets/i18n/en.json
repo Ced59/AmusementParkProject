@@ -1404,7 +1404,9 @@
   "measurementSystem": {
     "label": "Measurement system",
     "metric": "Metric",
-    "imperial": "Imperial"
+    "imperial": "Imperial",
+    "toggleToMetric": "Switch to metric units",
+    "toggleToImperial": "Switch to imperial units"
   },
   "description": "Explore amusement parks, attractions and practical information around the world.",
   "images": {

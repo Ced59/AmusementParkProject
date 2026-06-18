@@ -18,6 +18,8 @@
   "measurementSystem": {
     "label": "System miar",
     "metric": "Metryczny",
-    "imperial": "Imperialny"
+    "imperial": "Imperialny",
+    "toggleToMetric": "Przełącz na jednostki metryczne",
+    "toggleToImperial": "Przełącz na jednostki imperialne"
   }
 }

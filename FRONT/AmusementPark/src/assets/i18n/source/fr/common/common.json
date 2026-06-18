@@ -16,8 +16,10 @@
     "unexpectedError": "Une erreur inattendue est survenue."
   },
   "measurementSystem": {
-    "label": "SystÃ¨me d'unitÃ©s",
-    "metric": "MÃ©trique",
-    "imperial": "ImpÃ©rial"
+    "label": "Système d'unités",
+    "metric": "Métrique",
+    "imperial": "Impérial",
+    "toggleToMetric": "Passer aux unités métriques",
+    "toggleToImperial": "Passer aux unités impériales"
   }
 }

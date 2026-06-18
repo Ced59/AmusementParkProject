@@ -101,32 +101,21 @@
           }
         </button>
       } @else {
+        <button
+          type="button"
+          class="app-public-nav__measurement-toggle"
+          [attr.aria-label]="measurementToggleAriaLabelKey() | translate"
+          [attr.title]="measurementToggleAriaLabelKey() | translate"
+          (click)="toggleMeasurementSystem()">
+          <i class="pi pi-sliders-h" aria-hidden="true"></i>
+          <span>{{ measurementSystemShortLabel() }}</span>
+        </button>
+
         <button type="button" class="btn-nav btn-nav--primary" [attr.aria-label]="'topbar.login_header' | translate" (click)="openModal('loginModal')">
           <i class="pi pi-user" aria-hidden="true"></i>
           <span>{{ 'topbar.login_header' | translate }}</span>
         </button>
       }
-
-      <div class="app-public-nav__measurement" role="group" [attr.aria-label]="'measurementSystem.label' | translate">
-        <button
-          type="button"
-          class="app-public-nav__measurement-option"
-          [class.app-public-nav__measurement-option--active]="preferredMeasurementSystem() === 'Metric'"
-          [attr.aria-pressed]="preferredMeasurementSystem() === 'Metric'"
-          [attr.aria-label]="'measurementSystem.metric' | translate"
-          (click)="selectMeasurementSystem('Metric')">
-          m
-        </button>
-        <button
-          type="button"
-          class="app-public-nav__measurement-option"
-          [class.app-public-nav__measurement-option--active]="preferredMeasurementSystem() === 'Imperial'"
-          [attr.aria-pressed]="preferredMeasurementSystem() === 'Imperial'"
-          [attr.aria-label]="'measurementSystem.imperial' | translate"
-          (click)="selectMeasurementSystem('Imperial')">
-          ft
-        </button>
-      </div>
 
       <button type="button" class="btn-nav btn-nav--ghost app-public-nav__language" (click)="openModal('languageModal')" [attr.aria-label]="'topbar.choose_language' | translate">
         <img [src]="flagAssetPath(selectedLanguage())" class="app-public-nav__flag" alt="" />

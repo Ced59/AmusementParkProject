@@ -1404,7 +1404,9 @@
   "measurementSystem": {
     "label": "Sistema di misura",
     "metric": "Metrico",
-    "imperial": "Imperiale"
+    "imperial": "Imperiale",
+    "toggleToMetric": "Passa alle unità metriche",
+    "toggleToImperial": "Passa alle unità imperiali"
   },
   "description": "Esplora parchi divertimento, attrazioni e informazioni pratiche in tutto il mondo.",
   "images": {

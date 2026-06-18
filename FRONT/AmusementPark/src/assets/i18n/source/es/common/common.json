@@ -17,7 +17,9 @@
   },
   "measurementSystem": {
     "label": "Sistema de medidas",
-    "metric": "MÃ©trico",
-    "imperial": "Imperial"
+    "metric": "Métrico",
+    "imperial": "Imperial",
+    "toggleToMetric": "Cambiar a unidades métricas",
+    "toggleToImperial": "Cambiar a unidades imperiales"
   }
 }

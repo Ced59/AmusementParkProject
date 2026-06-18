@@ -17,6 +17,7 @@ import { AuthModalComponent } from '@features/auth/ui/auth-modal/auth-modal.comp
 import { PublicHeaderComponent } from './public-header.component';
 import { Avatar } from 'primeng/avatar';
 import { Dialog } from 'primeng/dialog';
+import { UserDto } from '@app/models/users/user_dto';
 
 class PublicParkNavigationTreeFacadeStub {
   private readonly treeSignal = signal<PublicParkNavigationTreeViewModel>({
@@ -30,14 +31,16 @@ class PublicParkNavigationTreeFacadeStub {
 
 describe('PublicHeaderComponent', () => {
   let fixture: ComponentFixture<PublicHeaderComponent>;
+  let authApiService: jasmine.SpyObj<AuthApiService>;
+  let authService: jasmine.SpyObj<AuthService>;
   let modalService: jasmine.SpyObj<ModalService>;
 
   beforeEach(async () => {
     const imagesApiService: jasmine.SpyObj<ImagesApiService> = jasmine.createSpyObj<ImagesApiService>('ImagesApiService', ['resolveImageUrl']);
     imagesApiService.resolveImageUrl.and.returnValue(null);
 
-    const authApiService: jasmine.SpyObj<AuthApiService> = jasmine.createSpyObj<AuthApiService>('AuthApiService', ['getCurrentUserById']);
-    const authService: jasmine.SpyObj<AuthService> = jasmine.createSpyObj<AuthService>('AuthService', [
+    authApiService = jasmine.createSpyObj<AuthApiService>('AuthApiService', ['getCurrentUserById']);
+    authService = jasmine.createSpyObj<AuthService>('AuthService', [
       'ensureValidAccessToken',
       'getUserIdFromToken',
       'hasRole',
@@ -100,6 +103,10 @@ describe('PublicHeaderComponent', () => {
       topbar: {
         choose_language: 'Choisir la langue',
         login_header: 'Connexion / Inscription'
+      },
+      measurementSystem: {
+        toggleToImperial: 'Passer aux unités impériales',
+        toggleToMetric: 'Passer aux unités métriques'
       }
     });
     translateService.use('fr');
@@ -129,5 +136,54 @@ describe('PublicHeaderComponent', () => {
     loginButton.click();
 
     expect(modalService.openModal).toHaveBeenCalledOnceWith('loginModal');
+  });
+
+  it('places the visitor measurement toggle before login and shows the active unit', () => {
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const measurementButton: HTMLButtonElement | null = host.querySelector('.app-public-nav__measurement-toggle');
+    const loginButton: HTMLButtonElement | null = host.querySelector('.btn-nav--primary');
+
+    expect(measurementButton).not.toBeNull();
+    expect(loginButton).not.toBeNull();
+    expect(measurementButton?.textContent?.trim()).toBe('m');
+    expect(measurementButton?.getAttribute('aria-label')).toBe('Passer aux unités impériales');
+    const measurementButtonPosition: number = measurementButton?.compareDocumentPosition(loginButton as Node) ?? 0;
+    expect(measurementButtonPosition & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+
+    measurementButton?.click();
+    fixture.detectChanges();
+
+    expect(measurementButton?.textContent?.trim()).toBe('ft');
+    expect(measurementButton?.getAttribute('aria-label')).toBe('Passer aux unités métriques');
+  });
+
+  it('hides the header measurement toggle for authenticated users', () => {
+    fixture.destroy();
+
+    const user: UserDto = {
+      id: 'user-1',
+      email: 'user@example.com',
+      firstName: 'Ced',
+      lastName: 'Caudron',
+      isActivated: true,
+      isBlocked: false,
+      roles: [],
+      preferredLanguage: 'FR',
+      preferredMeasurementSystem: 'Metric',
+      avatarUrl: '',
+      createdAt: '2026-06-18T00:00:00Z',
+      updatedAt: '2026-06-18T00:00:00Z'
+    };
+
+    authService.isLoggedIn.and.returnValue(true);
+    authService.getUserIdFromToken.and.returnValue('user-1');
+    authApiService.getCurrentUserById.and.returnValue(of(user));
+
+    fixture = TestBed.createComponent(PublicHeaderComponent);
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    expect(host.querySelector('.app-public-nav__measurement-toggle')).toBeNull();
+    expect(host.querySelector('.app-public-nav__profile')).not.toBeNull();
   });
 });
