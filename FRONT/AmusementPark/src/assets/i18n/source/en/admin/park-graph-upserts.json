@@ -12,6 +12,7 @@
           "mode": "Mode",
           "graph": "Graph",
           "preview": "Preview",
+          "export": "Export JSON",
           "expert": "Expert JSON",
           "history": "History"
         }
@@ -29,6 +30,12 @@
       "editor": {
         "title": "JSON document",
         "description": "Absent properties are preserved. Zones/items arrays upsert only the entries they contain."
+      },
+      "export": {
+        "title": "Park JSON export",
+        "description": "Download the selected park's current graph as a JSON file.",
+        "selected": "Selected park",
+        "noParkSelected": "Select an existing park before exporting."
       },
       "mode": {
         "title": "Upsert mode",
@@ -67,6 +74,9 @@
         "apply": "Apply",
         "applying": "Applying…",
         "updateJson": "Update JSON",
+        "exportJson": "Download JSON",
+        "exportingJson": "Preparing JSON...",
+        "uploadJsonFile": "Upload JSON file",
         "loadingHistory": "Loading history...",
         "refreshHistory": "Refresh history",
         "reuseDraft": "Reuse as draft"
@@ -78,6 +88,8 @@
         "searchFailed": "Park search failed.",
         "previewFailed": "Preview failed.",
         "applyFailed": "Apply failed.",
+        "exportFailed": "JSON export failed.",
+        "fileReadFailed": "The JSON file could not be read.",
         "historyFailed": "Graph history loading failed."
       },
       "result": {

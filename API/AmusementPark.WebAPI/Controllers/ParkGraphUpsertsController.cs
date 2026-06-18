@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using System.Text;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkGraphUpserts.Commands;
@@ -27,15 +28,18 @@ public sealed class ParkGraphUpsertsController : ControllerBase
     private readonly ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler;
     private readonly ICommandHandler<ApplyParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> applyHandler;
     private readonly IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler;
+    private readonly IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> exportHandler;
 
     public ParkGraphUpsertsController(
         ICommandHandler<PreviewParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> previewHandler,
         ICommandHandler<ApplyParkGraphUpsertCommand, ApplicationResult<ParkGraphUpsertResult>> applyHandler,
-        IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler)
+        IQueryHandler<ListParkGraphUpsertHistoryQuery, IReadOnlyCollection<ParkGraphUpsertHistoryEntry>> historyHandler,
+        IQueryHandler<ExportParkGraphJsonQuery, ApplicationResult<ParkGraphJsonExportResult>> exportHandler)
     {
         this.previewHandler = previewHandler;
         this.applyHandler = applyHandler;
         this.historyHandler = historyHandler;
+        this.exportHandler = exportHandler;
     }
 
     [HttpGet("history")]
@@ -47,6 +51,24 @@ public sealed class ParkGraphUpsertsController : ControllerBase
             cancellationToken);
 
         return this.Ok(entries.Select(static entry => entry.ToHttp()).ToList());
+    }
+
+    [HttpGet("parks/{parkId}/export")]
+    [AdminAudit("park-graph-upsert.export", "Park")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> ExportParkJsonAsync([FromRoute] string parkId, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkGraphJsonExportResult> result = await this.exportHandler.HandleAsync(
+            new ExportParkGraphJsonQuery(parkId),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        byte[] content = Encoding.UTF8.GetBytes(result.Value.Json);
+        return this.File(content, result.Value.ContentType, result.Value.FileName);
     }
 
     [HttpPost("preview")]

@@ -302,6 +302,7 @@
           "mode": "Modus",
           "graph": "Graph",
           "preview": "Vorschau",
+          "export": "JSON-Export",
           "expert": "Experten-JSON",
           "history": "History"
         }
@@ -319,6 +320,12 @@
       "editor": {
         "title": "JSON-Dokument",
         "description": "Fehlende Eigenschaften bleiben erhalten. Zones/items-Arrays führen Upserts nur für die enthaltenen Einträge aus."
+      },
+      "export": {
+        "title": "Park-JSON exportieren",
+        "description": "Den aktuellen Stand des ausgewaehlten Parks als JSON-Datei herunterladen.",
+        "selected": "Ausgewaehlter Park",
+        "noParkSelected": "Waehle vor dem Export einen bestehenden Park aus."
       },
       "mode": {
         "title": "Upsert-Modus",
@@ -357,6 +364,9 @@
         "apply": "Anwenden",
         "applying": "Anwendung…",
         "updateJson": "Update JSON",
+        "exportJson": "JSON herunterladen",
+        "exportingJson": "JSON wird vorbereitet...",
+        "uploadJsonFile": "JSON-Datei importieren",
         "loadingHistory": "Loading history...",
         "refreshHistory": "Refresh history",
         "reuseDraft": "Reuse as draft"
@@ -368,6 +378,8 @@
         "searchFailed": "Parksuche fehlgeschlagen.",
         "previewFailed": "Prüfung fehlgeschlagen.",
         "applyFailed": "Anwendung fehlgeschlagen.",
+        "exportFailed": "Der JSON-Export ist fehlgeschlagen.",
+        "fileReadFailed": "Die JSON-Datei konnte nicht gelesen werden.",
         "historyFailed": "Graph history loading failed."
       },
       "result": {

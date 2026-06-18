@@ -1,5 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject } from '@angular/core';
+import { HttpResponse } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { finalize } from 'rxjs';
@@ -11,7 +12,7 @@ import { Park } from '@app/models/parks/park';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 
 type ParkGraphUpsertWizardStep = 'target' | 'mode' | 'graph' | 'preview';
-type ParkGraphUpsertWorkspaceTab = ParkGraphUpsertWizardStep | 'expert' | 'history';
+type ParkGraphUpsertWorkspaceTab = ParkGraphUpsertWizardStep | 'export' | 'expert' | 'history';
 type ParkGraphUpsertMode = 'merge' | 'replaceCollections';
 type ParkGraphUpsertChangeTypeFilter = 'All' | 'Created' | 'Updated' | 'Unchanged' | 'Warning' | 'Skipped';
 type ParkGraphUpsertTemplateId = 'parkOnly' | 'zonesOnly' | 'zoneItems' | 'servicesNoZone' | 'references' | 'captainCoaster';
@@ -108,7 +109,8 @@ export class AdminParkGraphUpsertsComponent {
   protected createIfMissing: boolean = false;
   protected replaceCollections: boolean = false;
   protected graphMode: ParkGraphUpsertMode = 'merge';
-  protected jsonText: string = this.buildDefaultJson();
+  protected readonly expertJsonPlaceholder: string = this.buildDefaultJson();
+  protected jsonText: string = '';
   protected builder: ParkGraphUpsertBuilderState = this.buildDefaultBuilder();
   protected previewResult: ParkGraphUpsertResult | null = null;
   protected lastAppliedResult: ParkGraphUpsertResult | null = null;
@@ -118,13 +120,15 @@ export class AdminParkGraphUpsertsComponent {
   protected isSearching: boolean = false;
   protected isPreviewing: boolean = false;
   protected isApplying: boolean = false;
+  protected isExporting: boolean = false;
   protected isLoadingHistory: boolean = false;
   protected uiError: string | null = null;
 
   constructor(
     private readonly parksApi: ParksApiService,
     private readonly parkGraphUpsertsApi: ParkGraphUpsertsApiService,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    @Inject(DOCUMENT) private readonly document: Document
   ) {
   }
 
@@ -205,6 +209,10 @@ export class AdminParkGraphUpsertsComponent {
     this.activeWorkspaceTab = 'expert';
   }
 
+  protected openExportJson(): void {
+    this.activeWorkspaceTab = 'export';
+  }
+
   protected applyTemplate(templateId: ParkGraphUpsertTemplateId): void {
     const document: Record<string, unknown> = this.buildTemplateDocument(templateId);
     this.jsonText = JSON.stringify(document, null, 2);
@@ -236,6 +244,68 @@ export class AdminParkGraphUpsertsComponent {
           this.uiError = 'admin.parkGraphUpserts.errors.historyFailed';
         }
       });
+  }
+
+  protected exportSelectedParkJson(): void {
+    this.uiError = null;
+
+    if (!this.selectedPark?.id) {
+      this.uiError = 'admin.parkGraphUpserts.errors.noParkSelected';
+      this.changeDetectorRef.markForCheck();
+      return;
+    }
+
+    this.isExporting = true;
+    this.parkGraphUpsertsApi.downloadParkExport(this.selectedPark.id)
+      .pipe(finalize((): void => {
+        this.isExporting = false;
+        this.changeDetectorRef.markForCheck();
+      }))
+      .subscribe({
+        next: (response: HttpResponse<Blob>): void => {
+          if (!response.body) {
+            this.uiError = 'admin.parkGraphUpserts.errors.exportFailed';
+            return;
+          }
+
+          this.downloadBlob(response.body, this.resolveDownloadFileName(response));
+        },
+        error: (): void => {
+          this.uiError = 'admin.parkGraphUpserts.errors.exportFailed';
+        }
+      });
+  }
+
+  protected loadExpertJsonFile(event: Event): void {
+    const input: HTMLInputElement = event.target as HTMLInputElement;
+    const file: File | null = input.files?.[0] ?? null;
+    if (!file) {
+      return;
+    }
+
+    const reader: FileReader = new FileReader();
+    reader.onload = (): void => {
+      this.jsonText = typeof reader.result === 'string' ? reader.result : '';
+      this.previewResult = null;
+      this.lastAppliedResult = null;
+      this.uiError = null;
+
+      const document: Record<string, unknown> | null = this.parseJsonRecord();
+      if (document) {
+        this.hydrateBuilderFromDocument(document);
+      } else if (this.hasJsonDraft) {
+        this.uiError = 'admin.parkGraphUpserts.errors.invalidJson';
+      }
+
+      this.activeWorkspaceTab = 'expert';
+      this.changeDetectorRef.markForCheck();
+    };
+    reader.onerror = (): void => {
+      this.uiError = 'admin.parkGraphUpserts.errors.fileReadFailed';
+      this.changeDetectorRef.markForCheck();
+    };
+    reader.readAsText(file);
+    input.value = '';
   }
 
   protected reuseHistory(entry: ParkGraphUpsertHistoryEntry): void {
@@ -342,6 +412,10 @@ export class AdminParkGraphUpsertsComponent {
     return Boolean(this.selectedPark) || this.createIfMissing;
   }
 
+  protected get hasJsonDraft(): boolean {
+    return this.jsonText.trim().length > 0;
+  }
+
   protected get documentSummary(): ParkGraphUpsertDocumentSummary | null {
     const document: Record<string, unknown> | null = this.parseJsonRecord();
     if (!document) {
@@ -377,7 +451,11 @@ export class AdminParkGraphUpsertsComponent {
     }
 
     if (step === 'mode') {
-      return this.activeWorkspaceTab === 'graph' || this.activeWorkspaceTab === 'preview' || this.activeWorkspaceTab === 'expert' || Boolean(this.previewResult);
+      return this.activeWorkspaceTab === 'graph'
+        || this.activeWorkspaceTab === 'preview'
+        || this.activeWorkspaceTab === 'export'
+        || this.activeWorkspaceTab === 'expert'
+        || Boolean(this.previewResult);
     }
 
     if (step === 'graph') {
@@ -439,6 +517,38 @@ export class AdminParkGraphUpsertsComponent {
       replaceCollections: this.replaceCollections,
       document
     };
+  }
+
+  private downloadBlob(blob: Blob, fileName: string): void {
+    if (!this.document.defaultView || typeof URL === 'undefined') {
+      this.uiError = 'admin.parkGraphUpserts.errors.exportFailed';
+      return;
+    }
+
+    const objectUrl: string = URL.createObjectURL(blob);
+    const anchor: HTMLAnchorElement = this.document.createElement('a');
+    anchor.href = objectUrl;
+    anchor.download = fileName;
+    anchor.rel = 'noopener';
+    this.document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(objectUrl);
+  }
+
+  private resolveDownloadFileName(response: HttpResponse<Blob>): string {
+    const contentDisposition: string = response.headers.get('content-disposition') ?? '';
+    const utf8Match: RegExpMatchArray | null = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i);
+    if (utf8Match?.[1]) {
+      return decodeURIComponent(utf8Match[1].replace(/"/g, ''));
+    }
+
+    const fallbackMatch: RegExpMatchArray | null = contentDisposition.match(/filename="?([^";]+)"?/i);
+    if (fallbackMatch?.[1]) {
+      return fallbackMatch[1];
+    }
+
+    return 'park-graph-export.json';
   }
 
   private syncModeToJson(): void {

@@ -1,6 +1,20 @@
 {
-  "version": "1.10.13",
+  "version": "1.10.14",
   "history": [
+    {
+      "version": "1.10.14",
+      "releasedAt": "2026-06-18",
+      "labels": {
+        "fr": "Ameliorations d'ergonomie cote admin.",
+        "en": "Admin ergonomics improvements.",
+        "de": "Verbesserungen der Admin-Ergonomie.",
+        "nl": "Verbeteringen aan de beheerergonomie.",
+        "it": "Miglioramenti dell'ergonomia admin.",
+        "es": "Mejoras de ergonomia en administracion.",
+        "pl": "Usprawnienia ergonomii administracji.",
+        "pt": "Melhorias de ergonomia na administracao."
+      }
+    },
     {
       "version": "1.10.13",
       "releasedAt": "2026-06-18",
