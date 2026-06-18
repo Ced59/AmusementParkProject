@@ -45,6 +45,7 @@ export class AdminParkPhotosTabComponent {
   @Input() allowMultiplePhotoUpload: boolean = true;
   @Input() selectedPhotoCount: number = 0;
   @Input() newPhotoDescription: string = '';
+  @Input() remotePhotoSourceUrl: string = '';
   @Input() selectedPhotoCategorySlug: string = 'park-gallery';
   @Input() photoCategoryOptions: AdminParkPhotoCategoryOption[] = [];
   @Input() photosUploading: boolean = false;
@@ -56,8 +57,10 @@ export class AdminParkPhotosTabComponent {
 
   @Output() photoFileSelected: EventEmitter<Event> = new EventEmitter<Event>();
   @Output() newPhotoDescriptionChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() remotePhotoSourceUrlChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() selectedPhotoCategorySlugChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() uploadPhoto: EventEmitter<void> = new EventEmitter<void>();
+  @Output() importRemotePhoto: EventEmitter<void> = new EventEmitter<void>();
   @Output() setCurrentPhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() deletePhoto: EventEmitter<OwnedImageItem> = new EventEmitter<OwnedImageItem>();
   @Output() photosPageChange: EventEmitter<PaginatorState> = new EventEmitter<PaginatorState>();

@@ -35,6 +35,7 @@ export interface UiPhotoCarouselImage {
   sourceIconClass?: string | null;
   sourceRouterLink?: string[] | null;
   sourceLinkLabelKey?: string | null;
+  externalSourceUrl?: string | null;
 }
 
 export interface UiPhotoCarouselCategoryOption {

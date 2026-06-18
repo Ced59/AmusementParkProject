@@ -1457,7 +1457,10 @@
       "noImageSelected": "Please select an afbeelding before uploading.",
       "uploading": "Uploadening...",
       "uploadError": "Er is een fout opgetreden bij het uploaden van de afbeelding.",
-      "descriptionPlaceholder": "Beschrijving"
+      "descriptionPlaceholder": "Beschrijving",
+      "remoteSourceUrlPlaceholder": "URL van bronafbeelding",
+      "remoteImport": "Importeren via URL",
+      "remotePreviewAlt": "Voorbeeld van bronafbeelding"
     }
   },
   "sidebar": {
@@ -1503,7 +1506,8 @@
         "next": "Volgende foto",
         "openFullscreen": "Volledig scherm openen",
         "closeFullscreen": "Volledig scherm sluiten",
-        "openSource": "{{name}} openen"
+        "openSource": "{{name}} openen",
+        "viewSource": "Bron bekijken"
       },
       "axes": {
         "years": "Jaren",

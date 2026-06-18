@@ -45,6 +45,27 @@ describe('ImagesApiService', () => {
     request.flush({ id: 'img-1' });
   });
 
+  it('imports remote images with mapped owner type and category', () => {
+    service.importRemoteImage({
+      sourceUrl: 'https://cdn.example.test/logo.webp',
+      category: ImageCategory.PARK_LOGO,
+      ownerType: ImageOwnerType.PARK,
+      ownerId: 'park-1',
+      withWatermark: false,
+      setAsCurrent: true
+    }).subscribe();
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}images/remote`);
+    expect(request.request.method).toBe('POST');
+    expect(request.request.body.sourceUrl).toBe('https://cdn.example.test/logo.webp');
+    expect(request.request.body.category).toBe(1);
+    expect(request.request.body.ownerType).toBe(1);
+    expect(request.request.body.ownerId).toBe('park-1');
+    expect(request.request.body.withWatermark).toBeFalse();
+    expect(request.request.body.setAsCurrent).toBeTrue();
+    request.flush({ id: 'img-1' });
+  });
+
   it('gets owner images with mapped owner and category params and unwraps paged responses', () => {
     service.getImages(ImageOwnerType.PARK, 'park-1', ImageCategory.PARK, 2, 20).subscribe((images) => {
       expect(images.length).toBe(1);

@@ -22,6 +22,16 @@ internal static class ImageApplicationErrors
         return ApplicationError.Technical("image.processing.failed", "Image processing Internal Server Error");
     }
 
+    public static ApplicationError RemoteImageImportFailed()
+    {
+        return ApplicationError.Validation("image.remote-import.failed", "Remote image could not be imported.");
+    }
+
+    public static ApplicationError RemoteImageSourceInvalid()
+    {
+        return ApplicationError.Validation("image.remote-import.source-invalid", "Remote image source URL is invalid.");
+    }
+
     public static ApplicationError ImageNotExists()
     {
         return ApplicationError.NotFound("image.not-found", "Image does not exist.");

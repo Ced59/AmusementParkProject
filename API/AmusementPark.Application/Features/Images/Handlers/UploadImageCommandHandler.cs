@@ -68,6 +68,7 @@ public sealed class UploadImageCommandHandler : ICommandHandler<UploadImageComma
                 OwnerType = command.Request.OwnerType,
                 OwnerId = string.IsNullOrWhiteSpace(command.Request.OwnerId) ? null : command.Request.OwnerId.Trim(),
                 StoragePath = storagePath,
+                SourceUrl = command.Request.SourceUrl,
                 Width = metadata?.Width ?? 0,
                 Height = metadata?.Height ?? 0,
                 SizeInBytes = metadata?.SizeInBytes ?? command.Request.File.Length,

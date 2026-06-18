@@ -37,6 +37,7 @@ export class AdminParkItemPhotosStateFacade {
   private readonly photosPageSizeSignal = signal(8);
   private readonly selectedPhotoFilesSignal = signal<File[]>([]);
   private readonly newPhotoDescriptionSignal = signal('');
+  private readonly remotePhotoSourceUrlSignal = signal('');
   private readonly selectedPhotoCategorySlugSignal = signal(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
   private readonly photoTagIdsBySlugSignal = signal<Record<string, string>>({});
 
@@ -46,6 +47,7 @@ export class AdminParkItemPhotosStateFacade {
   public readonly photosUploading: Signal<boolean> = this.photosUploadingSignal.asReadonly();
   public readonly photosPageSize: Signal<number> = this.photosPageSizeSignal.asReadonly();
   public readonly newPhotoDescription: Signal<string> = this.newPhotoDescriptionSignal.asReadonly();
+  public readonly remotePhotoSourceUrl: Signal<string> = this.remotePhotoSourceUrlSignal.asReadonly();
   public readonly selectedPhotoCategorySlug: Signal<string> = this.selectedPhotoCategorySlugSignal.asReadonly();
   public readonly photoCategoryOptions: Signal<AdminParkItemPhotoCategoryOption[]> = signal([...PARK_ITEM_PHOTO_CATEGORY_OPTIONS]).asReadonly();
   public readonly selectedPhotoCount: Signal<number> = computed(() => this.selectedPhotoFilesSignal().length);
@@ -76,6 +78,7 @@ export class AdminParkItemPhotosStateFacade {
     this.photosPageSizeSignal.set(8);
     this.selectedPhotoFilesSignal.set([]);
     this.newPhotoDescriptionSignal.set('');
+    this.remotePhotoSourceUrlSignal.set('');
     this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
     this.photoTagIdsBySlugSignal.set({});
   }
@@ -126,6 +129,10 @@ export class AdminParkItemPhotosStateFacade {
     this.newPhotoDescriptionSignal.set(description);
   }
 
+  setRemotePhotoSourceUrl(sourceUrl: string): void {
+    this.remotePhotoSourceUrlSignal.set(sourceUrl);
+  }
+
   setSelectedPhotoCategorySlug(slug: string): void {
     const isKnownSlug: boolean = PARK_ITEM_PHOTO_CATEGORY_OPTIONS.some((option: AdminParkItemPhotoCategoryOption) => option.slug === slug);
     this.selectedPhotoCategorySlugSignal.set(isKnownSlug ? slug : PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
@@ -142,6 +149,7 @@ export class AdminParkItemPhotosStateFacade {
     }
 
     this.photosUploadingSignal.set(true);
+    await this.ensurePhotoCategoryTagsAsync();
     const files: File[] = [...this.selectedPhotoFilesSignal()];
     const hadNoPhotoInitially: boolean = this.attractionPhotosSignal().length === 0;
     let uploadedCount: number = 0;
@@ -154,9 +162,10 @@ export class AdminParkItemPhotosStateFacade {
       }
 
       this.selectedPhotoFilesSignal.set([]);
+      this.remotePhotoSourceUrlSignal.set('');
       this.newPhotoDescriptionSignal.set('');
-    this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
-    this.photoTagIdsBySlugSignal.set({});
+      this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
+      this.photoTagIdsBySlugSignal.set({});
       this.toastMessageService.add(
         'success',
         this.translateService.instant('admin.parks.items.saveMessages.successSummary'),
@@ -168,6 +177,48 @@ export class AdminParkItemPhotosStateFacade {
         'error',
         this.translateService.instant('admin.parks.items.saveMessages.errorSummary'),
         this.translateService.instant('admin.parks.items.photos.uploadError', { count: uploadedCount })
+      );
+    } finally {
+      this.photosUploadingSignal.set(false);
+    }
+  }
+
+  async importRemotePhoto(itemId: string, itemName: string): Promise<void> {
+    const sourceUrl: string = this.remotePhotoSourceUrlSignal().trim();
+    if (!sourceUrl || this.photosUploadingSignal()) {
+      return;
+    }
+
+    this.photosUploadingSignal.set(true);
+    await this.ensurePhotoCategoryTagsAsync();
+    const shouldSetCurrent: boolean = this.attractionPhotosSignal().length === 0;
+
+    try {
+      const importedImage: ImageDto = await firstValueFrom(this.imagesApiService.importRemoteImage({
+        sourceUrl,
+        category: ImageCategory.PARK_ITEM,
+        ownerType: ImageOwnerType.PARK_ITEM,
+        ownerId: itemId,
+        description: this.newPhotoDescriptionSignal() || itemName || undefined,
+        withWatermark: false,
+        setAsCurrent: shouldSetCurrent
+      }));
+      const taggedImage: ImageDto = await this.applySelectedPhotoCategoryAsync(importedImage);
+      this.upsertPhoto(this.toOwnedImageItem(taggedImage));
+      this.remotePhotoSourceUrlSignal.set('');
+      this.newPhotoDescriptionSignal.set('');
+      this.selectedPhotoCategorySlugSignal.set(PARK_ITEM_PHOTO_CATEGORY_OPTIONS[0].slug);
+      this.toastMessageService.add(
+        'success',
+        this.translateService.instant('admin.parks.items.saveMessages.successSummary'),
+        this.translateService.instant('admin.parks.items.photos.uploadSuccess', { count: 1 })
+      );
+    } catch (error: unknown) {
+      console.error('Error importing remote attraction image', error);
+      this.toastMessageService.add(
+        'error',
+        this.translateService.instant('admin.parks.items.saveMessages.errorSummary'),
+        this.translateService.instant('admin.parks.items.photos.uploadError', { count: 0 })
       );
     } finally {
       this.photosUploadingSignal.set(false);
@@ -220,14 +271,16 @@ export class AdminParkItemPhotosStateFacade {
   }
 
   private ensurePhotoCategoryTags(): void {
-    this.imagesApiService.getAdminImageTags().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (tags: ImageTagDto[]) => {
-        void this.ensureMissingPhotoCategoryTagsAsync(tags);
-      },
-      error: (error: unknown) => {
-        console.error('Error loading image tags', error);
-      }
-    });
+    void this.ensurePhotoCategoryTagsAsync();
+  }
+
+  private async ensurePhotoCategoryTagsAsync(): Promise<void> {
+    try {
+      const tags: ImageTagDto[] = await firstValueFrom(this.imagesApiService.getAdminImageTags());
+      await this.ensureMissingPhotoCategoryTagsAsync(tags);
+    } catch (error: unknown) {
+      console.error('Error loading image tags', error);
+    }
   }
 
   private async ensureMissingPhotoCategoryTagsAsync(existingTags: ImageTagDto[]): Promise<void> {
@@ -270,7 +323,8 @@ export class AdminParkItemPhotosStateFacade {
       captions: image.captions ?? [],
       credits: image.credits ?? [],
       tagIds: [...new Set([...(image.tagIds ?? []), selectedTagId])],
-      isPublished: image.isPublished !== false
+      isPublished: image.isPublished !== false,
+      sourceUrl: image.sourceUrl ?? null
     }));
   }
 

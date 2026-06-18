@@ -70,11 +70,29 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
             .Where(static itemId => !string.IsNullOrWhiteSpace(itemId))
             .Distinct(StringComparer.Ordinal)
             .ToList();
+        List<string> founderIds = BuildDistinctIds(new[] { park.FounderId });
+        List<string> operatorIds = BuildDistinctIds(new[] { park.OperatorId });
+        List<string> manufacturerIds = items
+            .Select(static item => item.AttractionDetails?.ManufacturerId)
+            .Where(static manufacturerId => !string.IsNullOrWhiteSpace(manufacturerId))
+            .Select(static manufacturerId => manufacturerId ?? string.Empty)
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static manufacturerId => manufacturerId, StringComparer.Ordinal)
+            .ToList();
 
         IReadOnlyCollection<Image> parkImages = await this.imageRepository.GetByOwnersAsync(ImageOwnerType.Park, new[] { park.Id }, null, cancellationToken);
         IReadOnlyCollection<Image> itemImages = itemIds.Count == 0
             ? Array.Empty<Image>()
             : await this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkItem, itemIds, null, cancellationToken);
+        IReadOnlyCollection<Image> founderImages = founderIds.Count == 0
+            ? Array.Empty<Image>()
+            : await this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkFounder, founderIds, null, cancellationToken);
+        IReadOnlyCollection<Image> operatorImages = operatorIds.Count == 0
+            ? Array.Empty<Image>()
+            : await this.imageRepository.GetByOwnersAsync(ImageOwnerType.ParkOperator, operatorIds, null, cancellationToken);
+        IReadOnlyCollection<Image> manufacturerImages = manufacturerIds.Count == 0
+            ? Array.Empty<Image>()
+            : await this.imageRepository.GetByOwnersAsync(ImageOwnerType.AttractionManufacturer, manufacturerIds, null, cancellationToken);
 
         DateTime exportedAtUtc = DateTime.UtcNow;
         ParkGraphExportDocument document = new ParkGraphExportDocument
@@ -93,6 +111,9 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
                 .ToList(),
             Images = parkImages
                 .Concat(itemImages)
+                .Concat(operatorImages)
+                .Concat(founderImages)
+                .Concat(manufacturerImages)
                 .OrderBy(static image => image.OwnerType.ToString(), StringComparer.Ordinal)
                 .ThenBy(static image => image.OwnerId, StringComparer.Ordinal)
                 .ThenBy(static image => image.OriginalFileName, StringComparer.OrdinalIgnoreCase)
@@ -303,6 +324,8 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
             IsPublished = image.IsPublished,
             IsCurrent = image.IsCurrent,
             SetAsCurrent = image.IsCurrent,
+            SourceUrl = image.SourceUrl,
+            InternalUrl = BuildInternalImageUrl(image.Id),
             Description = image.Description,
             AltTexts = CopyLocalizedTexts(image.AltTexts),
             Captions = CopyLocalizedTexts(image.Captions),
@@ -329,7 +352,37 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
             return image.OwnerId;
         }
 
+        if (image.OwnerType == ImageOwnerType.ParkOperator)
+        {
+            return string.IsNullOrWhiteSpace(image.OwnerId) ? null : $"operator:{image.OwnerId}";
+        }
+
+        if (image.OwnerType == ImageOwnerType.ParkFounder)
+        {
+            return string.IsNullOrWhiteSpace(image.OwnerId) ? null : $"founder:{image.OwnerId}";
+        }
+
+        if (image.OwnerType == ImageOwnerType.AttractionManufacturer)
+        {
+            return string.IsNullOrWhiteSpace(image.OwnerId) ? null : $"manufacturer:{image.OwnerId}";
+        }
+
         return image.OwnerId;
+    }
+
+    private static string BuildInternalImageUrl(string imageId)
+    {
+        return $"/images/{imageId}";
+    }
+
+    private static List<string> BuildDistinctIds(IEnumerable<string?> values)
+    {
+        return values
+            .Where(static value => !string.IsNullOrWhiteSpace(value))
+            .Select(static value => value ?? string.Empty)
+            .Distinct(StringComparer.Ordinal)
+            .OrderBy(static value => value, StringComparer.Ordinal)
+            .ToList();
     }
 
     private static ParkGraphExportFounder MapFounder(ParkFounder founder)

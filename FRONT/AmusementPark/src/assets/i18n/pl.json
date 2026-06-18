@@ -1457,7 +1457,10 @@
       "noImageSelected": "Please select an obraz before uploading.",
       "uploading": "Prześlijing...",
       "uploadError": "Wystąpił błąd podczas przesyłania obrazu.",
-      "descriptionPlaceholder": "Opis"
+      "descriptionPlaceholder": "Opis",
+      "remoteSourceUrlPlaceholder": "URL obrazu zrodlowego",
+      "remoteImport": "Importuj z URL",
+      "remotePreviewAlt": "Podglad obrazu zrodlowego"
     }
   },
   "sidebar": {
@@ -1503,7 +1506,8 @@
         "next": "Następne zdjęcie",
         "openFullscreen": "Otwórz pełny ekran",
         "closeFullscreen": "Zamknij pełny ekran",
-        "openSource": "Otwórz {{name}}"
+        "openSource": "Otwórz {{name}}",
+        "viewSource": "Zobacz zrodlo"
       },
       "axes": {
         "years": "Lata",

@@ -1457,7 +1457,10 @@
       "noImageSelected": "Please select an imagem before uploading.",
       "uploading": "Carregaring...",
       "uploadError": "Ocorreu um erro ao carregar a imagem.",
-      "descriptionPlaceholder": "Descrição"
+      "descriptionPlaceholder": "Descrição",
+      "remoteSourceUrlPlaceholder": "URL da imagem de origem",
+      "remoteImport": "Importar por URL",
+      "remotePreviewAlt": "Pre-visualizacao da imagem de origem"
     }
   },
   "sidebar": {
@@ -1503,7 +1506,8 @@
         "next": "Foto seguinte",
         "openFullscreen": "Abrir em ecrã inteiro",
         "closeFullscreen": "Fechar ecrã inteiro",
-        "openSource": "Abrir {{name}}"
+        "openSource": "Abrir {{name}}",
+        "viewSource": "Ver fonte"
       },
       "axes": {
         "years": "Anos",

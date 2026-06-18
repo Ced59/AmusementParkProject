@@ -296,6 +296,39 @@
   color: var(--app-text-muted);
 }
 
+.change-image-preview {
+  display: grid;
+  grid-template-columns: minmax(8rem, 14rem) auto;
+  gap: 0.85rem;
+  align-items: end;
+  padding: 0 1rem 1rem;
+}
+
+:host ::ng-deep .change-image-preview__image {
+  width: 100%;
+  max-height: 10rem;
+  object-fit: contain;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: rgba(15, 11, 6, 0.38);
+}
+
+.change-image-preview__source {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 0.4rem;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(56, 197, 245, 0.28);
+  border-radius: 999px;
+  background: rgba(56, 197, 245, 0.09);
+  color: var(--color-sky, #38c5f5);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
 .admin-mini-table {
   width: 100%;
   border-collapse: collapse;
@@ -335,6 +368,10 @@
   }
 
   .preview-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .change-image-preview {
     grid-template-columns: 1fr;
   }
 }

@@ -2,6 +2,7 @@ using System.Text.Json;
 using AmusementPark.Application.Common.Contracts;
 using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkFounders.Ports;
@@ -15,6 +16,7 @@ using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
+using AmusementPark.Application.Features.Seo.Models;
 using AmusementPark.Application.Features.Seo.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
@@ -81,6 +83,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
             searchProjectionWriter.Object,
             historyRepository.Object,
             Mock.Of<IPublicSeoUpdateNotifier>(),
@@ -185,6 +188,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
             searchProjectionWriter.Object,
             historyRepository.Object,
             Mock.Of<IPublicSeoUpdateNotifier>(),
@@ -304,6 +308,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             imageRepository.Object,
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
             searchProjectionWriter.Object,
             historyRepository.Object,
             Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
@@ -370,6 +375,206 @@ public sealed class ParkGraphUpsertProcessorTests
     }
 
     [Fact]
+    public async Task PreviewAsync_WhenRemoteImageSourceIsProvided_ShouldExposePreviewWithoutImporting()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Park",
+            CountryCode = "FR",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.ToReview,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+
+        Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            Mock.Of<IImageRepository>(MockBehavior.Strict),
+            remoteImageImporter.Object,
+            Mock.Of<ISearchProjectionWriter>(MockBehavior.Strict),
+            historyRepository.Object,
+            Mock.Of<IPublicSeoUpdateNotifier>(MockBehavior.Strict),
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "images": [
+            {
+              "sourceUrl": "https://cdn.example.test/logo.webp",
+              "ownerKey": "park",
+              "category": "ParkLogo"
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.PreviewAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        ParkGraphUpsertChange imageChange = Assert.Single(result.Value!.Changes, change => change.EntityType == "Image");
+        Assert.Equal("Created", imageChange.ChangeType);
+        Assert.Contains(imageChange.Fields, field => field.Field == "sourceUrl" && field.NewValue == "https://cdn.example.test/logo.webp");
+        Assert.Contains(imageChange.Fields, field => field.Field == "ownerType" && field.NewValue == "Park");
+        Assert.Contains(imageChange.Fields, field => field.Field == "category" && field.NewValue == "ParkLogo");
+        remoteImageImporter.VerifyNoOtherCalls();
+        parkRepository.VerifyAll();
+        historyRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ApplyAsync_WhenRemoteParkLogoIsProvided_ShouldImportAndSetCurrent()
+    {
+        Park park = new Park
+        {
+            Id = "park-1",
+            Name = "Park",
+            CountryCode = "FR",
+            IsVisible = false,
+            AdminReviewStatus = AdminReviewStatus.ToReview,
+        };
+
+        Image importedImage = new Image
+        {
+            Id = "image-remote-1",
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.ParkLogo,
+            SourceUrl = "https://cdn.example.test/logo.webp",
+            IsPublished = true,
+        };
+
+        Image currentImage = new Image
+        {
+            Id = "image-remote-1",
+            OwnerType = ImageOwnerType.Park,
+            OwnerId = "park-1",
+            Category = ImageCategory.ParkLogo,
+            SourceUrl = "https://cdn.example.test/logo.webp",
+            IsPublished = true,
+            IsCurrent = true,
+        };
+
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(value => value.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        parkRepository
+            .Setup(value => value.UpdateAsync("park-1", It.IsAny<Park>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string _, Park value, CancellationToken _) => value);
+
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(value => value.SetCurrentAsync("image-remote-1", ImageOwnerType.Park, "park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(currentImage);
+
+        Mock<IRemoteImageImporter> remoteImageImporter = new Mock<IRemoteImageImporter>(MockBehavior.Strict);
+        remoteImageImporter
+            .Setup(value => value.ImportAsync(
+                It.Is<RemoteImageImportRequest>(request =>
+                    request.SourceUrl == "https://cdn.example.test/logo.webp"
+                    && request.OwnerType == ImageOwnerType.Park
+                    && request.OwnerId == "park-1"
+                    && request.Category == ImageCategory.ParkLogo
+                    && request.WithWatermark == false
+                    && request.SetAsCurrent == false),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(importedImage);
+
+        Mock<ISearchProjectionWriter> searchProjectionWriter = new Mock<ISearchProjectionWriter>(MockBehavior.Strict);
+        searchProjectionWriter
+            .Setup(value => value.UpsertAsync(SearchProjectionResourceTypes.Parks, "park-1", It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IParkGraphUpsertHistoryRepository> historyRepository = new Mock<IParkGraphUpsertHistoryRepository>(MockBehavior.Strict);
+        historyRepository
+            .Setup(value => value.SaveAsync(It.IsAny<ParkGraphUpsertHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        Mock<IPublicSeoUpdateNotifier> publicSeoUpdateNotifier = new Mock<IPublicSeoUpdateNotifier>(MockBehavior.Strict);
+        publicSeoUpdateNotifier
+            .Setup(value => value.NotifyAsync(It.IsAny<PublicSeoUpdate>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        ParkGraphUpsertProcessor processor = new ParkGraphUpsertProcessor(
+            parkRepository.Object,
+            Mock.Of<IParkZoneRepository>(MockBehavior.Strict),
+            Mock.Of<IParkItemRepository>(MockBehavior.Strict),
+            Mock.Of<IParkFounderRepository>(MockBehavior.Strict),
+            Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
+            Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
+            imageRepository.Object,
+            remoteImageImporter.Object,
+            searchProjectionWriter.Object,
+            historyRepository.Object,
+            publicSeoUpdateNotifier.Object,
+            MeasurementConversionService.Instance);
+
+        using JsonDocument document = JsonDocument.Parse("""
+        {
+          "mode": "merge",
+          "images": [
+            {
+              "sourceUrl": "https://cdn.example.test/logo.webp",
+              "ownerKey": "park",
+              "category": "ParkLogo"
+            }
+          ]
+        }
+        """);
+
+        ParkGraphUpsertRequest request = new ParkGraphUpsertRequest
+        {
+            TargetParkId = "park-1",
+            CreateIfMissing = false,
+            ReplaceCollections = false,
+            Document = document.RootElement.Clone(),
+            RawJson = document.RootElement.GetRawText(),
+        };
+
+        ApplicationResult<ParkGraphUpsertResult> result = await processor.ApplyAsync(request, "user-1", CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.Equal("image-remote-1", park.CurrentLogoImageId);
+        ParkGraphUpsertChange imageChange = Assert.Single(result.Value!.Changes, change => change.EntityType == "Image");
+        Assert.Equal("Created", imageChange.ChangeType);
+        Assert.Equal("image-remote-1", imageChange.EntityId);
+        Assert.Contains(imageChange.Fields, field => field.Field == "imageId" && field.NewValue == "image-remote-1");
+        Assert.Contains(imageChange.Fields, field => field.Field == "internalUrl" && field.NewValue == "/images/image-remote-1");
+        parkRepository.VerifyAll();
+        imageRepository.VerifyAll();
+        remoteImageImporter.VerifyAll();
+        searchProjectionWriter.VerifyAll();
+        historyRepository.VerifyAll();
+        publicSeoUpdateNotifier.VerifyAll();
+    }
+
+    [Fact]
     public async Task ApplyAsync_WhenImperialAttractionMeasurementsAreProvided_ShouldPersistMetricTruth()
     {
         Park park = new Park
@@ -424,6 +629,7 @@ public sealed class ParkGraphUpsertProcessorTests
             Mock.Of<IParkOperatorRepository>(MockBehavior.Strict),
             Mock.Of<IAttractionManufacturerRepository>(MockBehavior.Strict),
             Mock.Of<IImageRepository>(MockBehavior.Strict),
+            Mock.Of<IRemoteImageImporter>(MockBehavior.Strict),
             searchProjectionWriter.Object,
             historyRepository.Object,
             Mock.Of<IPublicSeoUpdateNotifier>(),

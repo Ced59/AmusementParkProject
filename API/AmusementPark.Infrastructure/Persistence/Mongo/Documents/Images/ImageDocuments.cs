@@ -71,6 +71,10 @@ public sealed class ImageDocument : MongoDocumentBase
     [BsonIgnoreIfNull]
     public string? ContentType { get; set; }
 
+    [BsonElement("sourceUrl")]
+    [BsonIgnoreIfNull]
+    public string? SourceUrl { get; set; }
+
     [BsonElement("isPublished")]
     public bool IsPublished { get; set; } = true;
 }

@@ -12,7 +12,10 @@
       "noImageSelected": "Please select an immagine before uploading.",
       "uploading": "Caricaing...",
       "uploadError": "Si è verificato un errore durante il caricamento dell’immagine.",
-      "descriptionPlaceholder": "Descrizione"
+      "descriptionPlaceholder": "Descrizione",
+      "remoteSourceUrlPlaceholder": "URL immagine sorgente",
+      "remoteImport": "Importa da URL",
+      "remotePreviewAlt": "Anteprima immagine sorgente"
     }
   }
 }

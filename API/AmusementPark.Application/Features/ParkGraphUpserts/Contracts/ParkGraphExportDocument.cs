@@ -242,6 +242,10 @@ public sealed class ParkGraphExportImage
 
     public bool SetAsCurrent { get; init; }
 
+    public string? SourceUrl { get; init; }
+
+    public string? InternalUrl { get; init; }
+
     public string? Description { get; init; }
 
     public List<LocalizedText> AltTexts { get; init; } = new List<LocalizedText>();

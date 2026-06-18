@@ -53,13 +53,32 @@
               <input
                 type="file"
                 (change)="photoFileSelected.emit($event)"
-                accept="image/jpeg,image/png,image/webp,image/gif"
+                accept="image/*"
                 [multiple]="allowMultiplePhotoUpload" />
 
               @if (selectedPhotoCount > 0) {
                 <small class="text-color-secondary">
                   {{ 'admin.parks.photos.selectedCount' | translate:{ count: selectedPhotoCount } }}
                 </small>
+              }
+
+              <input
+                pInputText
+                type="url"
+                [ngModel]="remotePhotoSourceUrl"
+                (ngModelChange)="remotePhotoSourceUrlChange.emit($event)"
+                [ngModelOptions]="{ standalone: true }"
+                [placeholder]="'shared.imageUpload.remoteSourceUrlPlaceholder' | translate" />
+              @if (remotePhotoSourceUrl.trim()) {
+                <div class="photo-remote-preview">
+                  <app-image-display
+                    [imagePathOrUrl]="remotePhotoSourceUrl"
+                    [alt]="'shared.imageUpload.remotePreviewAlt' | translate"
+                    imgClass="photo-remote-preview__image"
+                    placeholderClass="photo-remote-preview__image photo-remote-preview__image--placeholder"
+                    placeholderIconClass="pi pi-image">
+                  </app-image-display>
+                </div>
               }
 
               <div class="photo-upload-grid">
@@ -90,7 +109,7 @@
                 </div>
               </div>
 
-              <div class="flex justify-content-end">
+              <div class="flex justify-content-end gap-2 flex-wrap">
                 <button
                   pButton
                   type="button"
@@ -102,6 +121,15 @@
                   @if (photosUploading) {
                     <span>{{ 'admin.loading' | translate }}</span>
                   }
+                </button>
+                <button
+                  pButton
+                  type="button"
+                  class="p-button-outlined"
+                  icon="pi pi-link"
+                  (click)="importRemotePhoto.emit()"
+                  [disabled]="!remotePhotoSourceUrl.trim() || photosUploading"
+                  [label]="'shared.imageUpload.remoteImport' | translate">
                 </button>
               </div>
             </div>

@@ -38,6 +38,7 @@ export type PublicPhotoMetadata = Pick<
   | 'exposureTime'
   | 'iso'
   | 'orientation'
+  | 'externalSourceUrl'
 >;
 
 export type PublicPhotoTagLookup = ReadonlyMap<string, UiPhotoCarouselTagLabel>;
@@ -117,7 +118,8 @@ export function buildPublicPhotoMetadata(
     aperture: normalizeFiniteNumber(photo.exifMetadata?.aperture),
     exposureTime: normalizeFiniteNumber(photo.exifMetadata?.exposureTime),
     iso: normalizeFiniteNumber(photo.exifMetadata?.iso),
-    orientation: normalizeOptionalString(photo.exifMetadata?.orientation)
+    orientation: normalizeOptionalString(photo.exifMetadata?.orientation),
+    externalSourceUrl: normalizeOptionalString(photo.sourceUrl)
   };
 }
 

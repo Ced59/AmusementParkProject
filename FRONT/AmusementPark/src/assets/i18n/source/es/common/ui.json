@@ -23,7 +23,8 @@
         "next": "Foto siguiente",
         "openFullscreen": "Abrir en pantalla completa",
         "closeFullscreen": "Cerrar pantalla completa",
-        "openSource": "Abrir {{name}}"
+        "openSource": "Abrir {{name}}",
+        "viewSource": "Ver fuente"
       },
       "axes": {
         "years": "Años",

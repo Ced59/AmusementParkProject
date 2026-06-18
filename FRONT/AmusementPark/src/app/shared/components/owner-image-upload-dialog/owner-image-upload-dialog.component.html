@@ -12,7 +12,7 @@
   <input
     #fileInput
     type="file"
-    accept="image/jpeg,image/png,image/webp,image/gif"
+    accept="image/*"
     class="hidden-file-input"
     (change)="onFileInputChange($event)" />
 
@@ -59,6 +59,30 @@
       </div>
     }
 
+    @if (allowRemoteImport) {
+      <div class="remote-import">
+        <input
+          pInputText
+          type="url"
+          [ngModel]="remoteSourceUrl"
+          (ngModelChange)="setRemoteSourceUrl($event)"
+          [placeholder]="remoteSourceUrlPlaceholderKey | translate"
+          [disabled]="isUploading" />
+
+        @if (remotePreviewUrl) {
+          <div class="remote-preview-wrapper">
+            <app-image-display
+              [imagePathOrUrl]="remotePreviewUrl"
+              [alt]="remotePreviewAltKey | translate"
+              imgClass="remote-preview-image"
+              placeholderClass="remote-preview-image remote-preview-image--placeholder"
+              placeholderIconClass="pi pi-image">
+            </app-image-display>
+          </div>
+        }
+      </div>
+    }
+
     @if (showDescription) {
       <input
         pInputText
@@ -89,9 +113,9 @@
       <button
         pButton
         type="button"
-        [label]="(isUploading ? uploadingKey : uploadButtonKey) | translate"
+        [label]="(isUploading ? uploadingKey : (remotePreviewUrl ? remoteImportButtonKey : uploadButtonKey)) | translate"
         [loading]="isUploading"
-        [disabled]="!selectedFile || isUploading || !ownerId"
+        [disabled]="(!selectedFile && !remotePreviewUrl) || isUploading || !ownerId"
         (click)="upload()">
       </button>
     </div>

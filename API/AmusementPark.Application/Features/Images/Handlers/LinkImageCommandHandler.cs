@@ -70,6 +70,7 @@ public sealed class LinkImageCommandHandler : ICommandHandler<LinkImageCommand, 
                     TagIds = updated.TagIds.ToList(),
                     Category = updated.Category,
                     IsPublished = updated.IsPublished,
+                    SourceUrl = updated.SourceUrl,
                 };
 
                 Image? metadataUpdated = await this.imageRepository.UpdateMetadataAsync(updated.Id, metadata, cancellationToken);

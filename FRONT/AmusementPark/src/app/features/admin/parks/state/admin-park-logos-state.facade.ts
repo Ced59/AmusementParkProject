@@ -36,6 +36,7 @@ export class AdminParkLogosStateFacade {
   private readonly logosPageSizeSignal = signal(8);
   private readonly selectedLogoFilesSignal = signal<File[]>([]);
   private readonly newLogoDescriptionSignal = signal('');
+  private readonly remoteLogoSourceUrlSignal = signal('');
 
   public readonly parkLogos: Signal<OwnedImageItem[]> = this.parkLogosSignal.asReadonly();
   public readonly currentLogo: Signal<OwnedImageItem | null> = this.currentLogoSignal.asReadonly();
@@ -43,6 +44,7 @@ export class AdminParkLogosStateFacade {
   public readonly logosUploading: Signal<boolean> = this.logosUploadingSignal.asReadonly();
   public readonly logosPageSize: Signal<number> = this.logosPageSizeSignal.asReadonly();
   public readonly newLogoDescription: Signal<string> = this.newLogoDescriptionSignal.asReadonly();
+  public readonly remoteLogoSourceUrl: Signal<string> = this.remoteLogoSourceUrlSignal.asReadonly();
   public readonly selectedLogoCount: Signal<number> = computed(() => this.selectedLogoFilesSignal().length);
   public readonly pagedLogos: Signal<OwnedImageItem[]> = computed(() => {
     const start: number = this.logosPageSignal() * this.logosPageSizeSignal();
@@ -70,6 +72,7 @@ export class AdminParkLogosStateFacade {
     this.logosPageSignal.set(0);
     this.selectedLogoFilesSignal.set([]);
     this.newLogoDescriptionSignal.set('');
+    this.remoteLogoSourceUrlSignal.set('');
   }
 
   loadLogos(parkId: string): void {
@@ -117,6 +120,10 @@ export class AdminParkLogosStateFacade {
     this.newLogoDescriptionSignal.set(description);
   }
 
+  setRemoteLogoSourceUrl(sourceUrl: string): void {
+    this.remoteLogoSourceUrlSignal.set(sourceUrl);
+  }
+
   onLogosPageChange(event: PaginatorState): void {
     this.logosPageSignal.set(event.page ?? 0);
     this.logosPageSizeSignal.set(event.rows ?? this.logosPageSizeSignal());
@@ -150,6 +157,45 @@ export class AdminParkLogosStateFacade {
         'error',
         this.translateService.instant('admin.parks.saveMessages.errorSummary'),
         this.translateService.instant('admin.parks.logos.uploadError', { count: uploadedCount })
+      );
+    } finally {
+      this.logosUploadingSignal.set(false);
+    }
+  }
+
+  async importRemoteLogo(parkId: string, parkName: string): Promise<void> {
+    const sourceUrl: string = this.remoteLogoSourceUrlSignal().trim();
+    if (!sourceUrl || this.logosUploadingSignal()) {
+      return;
+    }
+
+    this.logosUploadingSignal.set(true);
+
+    try {
+      const importedImage: ImageDto = await firstValueFrom(this.imagesApiService.importRemoteImage({
+        sourceUrl,
+        category: ImageCategory.PARK_LOGO,
+        ownerType: ImageOwnerType.PARK,
+        ownerId: parkId,
+        description: this.newLogoDescriptionSignal() || parkName || undefined,
+        withWatermark: false,
+        setAsCurrent: true
+      }));
+      const taggedImage: ImageDto = await this.tryApplyLogoTagAsync(importedImage);
+      this.upsertCurrentLogo(taggedImage);
+      this.remoteLogoSourceUrlSignal.set('');
+      this.newLogoDescriptionSignal.set('');
+      this.toastMessageService.add(
+        'success',
+        this.translateService.instant('admin.parks.saveMessages.successSummary'),
+        this.translateService.instant('admin.parks.logos.uploadSuccess', { count: 1 })
+      );
+    } catch (error: unknown) {
+      console.error('Error importing remote logo image', error);
+      this.toastMessageService.add(
+        'error',
+        this.translateService.instant('admin.parks.saveMessages.errorSummary'),
+        this.translateService.instant('admin.parks.logos.uploadError', { count: 0 })
       );
     } finally {
       this.logosUploadingSignal.set(false);
@@ -222,22 +268,7 @@ export class AdminParkLogosStateFacade {
     );
 
     const taggedImage: ImageDto = await this.tryApplyLogoTagAsync(linkedImage);
-    const item: OwnedImageItem = this.toOwnedImageItem(taggedImage);
-    const normalizedItems: OwnedImageItem[] = this.parkLogosSignal().map((logo: OwnedImageItem) => ({
-      ...logo,
-      isCurrent: logo.id === item.id
-    }));
-    const existingIndex: number = normalizedItems.findIndex((logo: OwnedImageItem) => logo.id === item.id);
-
-    if (existingIndex >= 0) {
-      normalizedItems[existingIndex] = item;
-    } else {
-      normalizedItems.unshift(item);
-    }
-
-    this.parkLogosSignal.set(normalizedItems);
-    this.currentLogoSignal.set(item);
-    this.logosPageSignal.set(0);
+    this.upsertCurrentLogo(taggedImage);
   }
 
   private async tryApplyLogoTagAsync(image: ImageDto): Promise<ImageDto> {
@@ -267,12 +298,32 @@ export class AdminParkLogosStateFacade {
         captions: image.captions ?? [],
         credits: image.credits ?? [],
         tagIds: [...image.tagIds, logoTag.id],
-        isPublished: image.isPublished
+        isPublished: image.isPublished,
+        sourceUrl: image.sourceUrl ?? null
       }));
     } catch (error: unknown) {
       console.warn('Unable to apply logo tag to image.', error);
       return image;
     }
+  }
+
+  private upsertCurrentLogo(image: ImageDto): void {
+    const item: OwnedImageItem = this.toOwnedImageItem(image);
+    const normalizedItems: OwnedImageItem[] = this.parkLogosSignal().map((logo: OwnedImageItem) => ({
+      ...logo,
+      isCurrent: logo.id === item.id
+    }));
+    const existingIndex: number = normalizedItems.findIndex((logo: OwnedImageItem) => logo.id === item.id);
+
+    if (existingIndex >= 0) {
+      normalizedItems[existingIndex] = item;
+    } else {
+      normalizedItems.unshift(item);
+    }
+
+    this.parkLogosSignal.set(normalizedItems);
+    this.currentLogoSignal.set(item);
+    this.logosPageSignal.set(0);
   }
 
   private toOwnedImageItem(image: ImageDto): OwnedImageItem {

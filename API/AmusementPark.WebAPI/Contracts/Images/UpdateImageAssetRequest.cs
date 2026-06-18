@@ -21,4 +21,6 @@ public sealed class UpdateImageAssetRequest
     public List<string> TagIds { get; set; } = new();
 
     public bool IsPublished { get; set; } = true;
+
+    public string? SourceUrl { get; set; }
 }

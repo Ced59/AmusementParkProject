@@ -1,6 +1,20 @@
 {
-  "version": "1.11.1",
+  "version": "1.11.2",
   "history": [
+    {
+      "version": "1.11.2",
+      "releasedAt": "2026-06-18",
+      "labels": {
+        "fr": "La gestion des medias est plus complete.",
+        "en": "Media management is more complete.",
+        "de": "Die Medienverwaltung ist umfassender.",
+        "nl": "Mediabeheer is completer.",
+        "it": "La gestione dei media e piu completa.",
+        "es": "La gestion de medios es mas completa.",
+        "pl": "Zarzadzanie mediami jest pelniejsze.",
+        "pt": "A gestao de media fica mais completa."
+      }
+    },
     {
       "version": "1.11.1",
       "releasedAt": "2026-06-18",

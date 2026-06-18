@@ -23,4 +23,6 @@ public sealed class ImageMetadataUpdate
     public ImageCategory Category { get; init; }
 
     public bool IsPublished { get; init; } = true;
+
+    public string? SourceUrl { get; init; }
 }

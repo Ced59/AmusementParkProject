@@ -184,6 +184,7 @@ public sealed class ImageRepository : IImageRepository
             IsPublished = true,
             OriginalFileName = request.File.FileName,
             ContentType = request.File.ContentType,
+            SourceUrl = string.IsNullOrWhiteSpace(request.SourceUrl) ? null : request.SourceUrl.Trim(),
             Width = request.Width,
             Height = request.Height,
             GeoLocation = request.GeoLocation is null ? null : CommonMongoMappers.ToDocument(new GeoPoint(request.GeoLocation.Latitude, request.GeoLocation.Longitude)),
@@ -267,6 +268,7 @@ public sealed class ImageRepository : IImageRepository
             .Set(static document => document.TagIds, metadata.TagIds.Distinct(StringComparer.Ordinal).ToList())
             .Set(static document => document.Category, metadata.Category)
             .Set(static document => document.IsPublished, metadata.IsPublished)
+            .Set(static document => document.SourceUrl, string.IsNullOrWhiteSpace(metadata.SourceUrl) ? null : metadata.SourceUrl.Trim())
             .Set(static document => document.UpdatedAt, DateTime.UtcNow);
 
         FindOneAndUpdateOptions<ImageDocument> options = new FindOneAndUpdateOptions<ImageDocument>

@@ -43,6 +43,10 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
   @Input() uploadingKey: string = 'shared.imageUpload.uploading';
   @Input() showDescription: boolean = false;
   @Input() descriptionPlaceholderKey: string = 'shared.imageUpload.descriptionPlaceholder';
+  @Input() allowRemoteImport: boolean = false;
+  @Input() remoteSourceUrlPlaceholderKey: string = 'shared.imageUpload.remoteSourceUrlPlaceholder';
+  @Input() remoteImportButtonKey: string = 'shared.imageUpload.remoteImport';
+  @Input() remotePreviewAltKey: string = 'shared.imageUpload.remotePreviewAlt';
   @Input() withWatermark: boolean = false;
   @Input() maxFileSizeBytes: number = 5 * 1024 * 1024;
 
@@ -52,6 +56,7 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
 
   selectedFile: File | null = null;
   previewUrl: string | null = null;
+  remoteSourceUrl: string = '';
   description: string = '';
   isUploading: boolean = false;
   isDragging: boolean = false;
@@ -128,6 +133,12 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
       return;
     }
 
+    const normalizedRemoteSourceUrl: string = this.remoteSourceUrl.trim();
+    if (this.allowRemoteImport && normalizedRemoteSourceUrl.length > 0) {
+      this.importRemote(normalizedRemoteSourceUrl);
+      return;
+    }
+
     if (!this.selectedFile || !this.ownerId) {
       this.errorTranslationKey = this.noImageSelectedKey;
       return;
@@ -172,8 +183,27 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     }
   }
 
+  setRemoteSourceUrl(value: string): void {
+    this.remoteSourceUrl = value;
+    this.errorTranslationKey = null;
+
+    if (this.remoteSourceUrl.trim().length > 0) {
+      this.selectedFile = null;
+      this.cleanupPreviewUrl();
+      if (this.fileInput?.nativeElement) {
+        this.fileInput.nativeElement.value = '';
+      }
+    }
+  }
+
+  get remotePreviewUrl(): string | null {
+    const normalizedRemoteSourceUrl: string = this.remoteSourceUrl.trim();
+    return normalizedRemoteSourceUrl.length > 0 ? normalizedRemoteSourceUrl : null;
+  }
+
   private processSelectedFile(file: File | null): void {
     this.errorTranslationKey = null;
+    this.remoteSourceUrl = '';
 
     if (!file) {
       this.selectedFile = null;
@@ -195,6 +225,38 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
     this.setPreviewFromFile(file);
   }
 
+  private importRemote(sourceUrl: string): void {
+    if (!this.ownerId) {
+      this.errorTranslationKey = this.noImageSelectedKey;
+      return;
+    }
+
+    this.errorTranslationKey = null;
+    this.isUploading = true;
+    this.uploadSubscription?.unsubscribe();
+    this.uploadSubscription = this.imagesApiService.importRemoteImage({
+      sourceUrl,
+      category: this.category,
+      ownerType: this.ownerType,
+      ownerId: this.ownerId,
+      description: this.showDescription ? this.description : undefined,
+      withWatermark: this.withWatermark,
+      setAsCurrent: true
+    })
+      .pipe(finalize(() => {
+        this.isUploading = false;
+      }))
+      .pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+        next: (image: ImageDto) => {
+          this.uploaded.emit(image);
+          this.resetAndClose();
+        },
+        error: () => {
+          this.errorTranslationKey = 'shared.imageUpload.uploadError';
+        }
+      });
+  }
+
   private setPreviewFromFile(file: File): void {
     this.cleanupPreviewUrl();
     this.previewUrl = URL.createObjectURL(file);
@@ -209,6 +271,7 @@ export class OwnerImageUploadDialogComponent implements OnDestroy {
 
   private resetAndClose(): void {
     this.selectedFile = null;
+    this.remoteSourceUrl = '';
     this.description = '';
     this.errorTranslationKey = null;
     this.isDragging = false;

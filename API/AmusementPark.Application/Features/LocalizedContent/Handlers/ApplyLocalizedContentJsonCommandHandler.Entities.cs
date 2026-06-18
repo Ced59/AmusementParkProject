@@ -473,6 +473,7 @@ public sealed partial class ApplyLocalizedContentJsonCommandHandler
             TagIds = image.TagIds,
             Category = image.Category,
             IsPublished = image.IsPublished,
+            SourceUrl = image.SourceUrl,
         };
 
         Image? updated = await this.imageRepository.UpdateMetadataAsync(entityId, metadata, cancellationToken);

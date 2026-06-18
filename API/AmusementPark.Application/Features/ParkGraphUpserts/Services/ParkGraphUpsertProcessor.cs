@@ -35,6 +35,7 @@ public sealed partial class ParkGraphUpsertProcessor
     private readonly IParkOperatorRepository parkOperatorRepository;
     private readonly IAttractionManufacturerRepository attractionManufacturerRepository;
     private readonly IImageRepository imageRepository;
+    private readonly IRemoteImageImporter remoteImageImporter;
     private readonly ISearchProjectionWriter searchProjectionWriter;
     private readonly IParkGraphUpsertHistoryRepository historyRepository;
     private readonly IPublicSeoUpdateNotifier publicSeoUpdateNotifier;
@@ -48,6 +49,7 @@ public sealed partial class ParkGraphUpsertProcessor
         IParkOperatorRepository parkOperatorRepository,
         IAttractionManufacturerRepository attractionManufacturerRepository,
         IImageRepository imageRepository,
+        IRemoteImageImporter remoteImageImporter,
         ISearchProjectionWriter searchProjectionWriter,
         IParkGraphUpsertHistoryRepository historyRepository,
         IPublicSeoUpdateNotifier publicSeoUpdateNotifier,
@@ -60,6 +62,7 @@ public sealed partial class ParkGraphUpsertProcessor
         this.parkOperatorRepository = parkOperatorRepository;
         this.attractionManufacturerRepository = attractionManufacturerRepository;
         this.imageRepository = imageRepository;
+        this.remoteImageImporter = remoteImageImporter;
         this.searchProjectionWriter = searchProjectionWriter;
         this.historyRepository = historyRepository;
         this.publicSeoUpdateNotifier = publicSeoUpdateNotifier;
@@ -170,7 +173,7 @@ public sealed partial class ParkGraphUpsertProcessor
         Dictionary<string, string> zoneKeys = await this.ProcessZonesAsync(root, targetPark, result, apply, cancellationToken);
         Dictionary<string, string> itemKeys = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         ParkGraphUpsertItemSeoChanges itemSeoChanges = await this.ProcessItemsAsync(root, targetPark, zoneKeys, manufacturerKeys, itemKeys, result, apply, cancellationToken);
-        await this.ProcessImagesAsync(root, targetPark, itemKeys, result, apply, cancellationToken);
+        await this.ProcessImagesAsync(root, targetPark, itemKeys, founderKeys, operatorKeys, manufacturerKeys, result, apply, cancellationToken);
 
         if (apply)
         {
