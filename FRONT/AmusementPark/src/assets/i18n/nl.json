@@ -511,6 +511,7 @@
       "country": "Land",
       "actions": "Acties",
       "edit": "Bewerken",
+      "exportJson": "JSON-export",
       "coordinates": "Coordinaten",
       "coordinatesMissing": "Ontbrekend of 0,0",
       "searchPlaceholder": "Zoek een park...",

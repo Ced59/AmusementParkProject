@@ -1,6 +1,20 @@
 {
-  "version": "1.10.14",
+  "version": "1.10.15",
   "history": [
+    {
+      "version": "1.10.15",
+      "releasedAt": "2026-06-18",
+      "labels": {
+        "fr": "L'administration des parcs devient plus directe.",
+        "en": "Park administration becomes more direct.",
+        "de": "Die Parkverwaltung wird direkter.",
+        "nl": "Parkbeheer wordt directer.",
+        "it": "L'amministrazione dei parchi diventa piu diretta.",
+        "es": "La administracion de parques es mas directa.",
+        "pl": "Administracja parkami staje sie bardziej bezposrednia.",
+        "pt": "A administracao de parques fica mais direta."
+      }
+    },
     {
       "version": "1.10.14",
       "releasedAt": "2026-06-18",

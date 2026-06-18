@@ -195,6 +195,13 @@
   color: var(--text-faint);
 }
 
+.admin-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
 .create-park-container {
   margin-top: 1.5rem;
   display: flex;

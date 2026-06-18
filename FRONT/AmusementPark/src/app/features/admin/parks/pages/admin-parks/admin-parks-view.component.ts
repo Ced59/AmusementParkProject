@@ -156,6 +156,17 @@ export class AdminParksViewComponent {
     return getAdminReviewStatusTranslationKey(status);
   }
 
+  getParkGraphExportQueryParams(park: Park): Record<string, string> {
+    return {
+      parkId: park.id ?? '',
+      parkName: park.name ?? '',
+      parkCountryCode: park.countryCode ?? '',
+      parkCity: park.city ?? '',
+      parkLatitude: String(park.latitude),
+      parkLongitude: String(park.longitude)
+    };
+  }
+
   hasValidCoordinates(park: Park): boolean {
     const latitude: number = Number(park.latitude);
     const longitude: number = Number(park.longitude);
