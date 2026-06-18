@@ -511,6 +511,7 @@
       "country": "País",
       "actions": "Acciones",
       "edit": "Editar",
+      "exportJson": "Exportar JSON",
       "coordinates": "Coordenadas",
       "coordinatesMissing": "Faltantes o 0,0",
       "searchPlaceholder": "Buscar un parque...",

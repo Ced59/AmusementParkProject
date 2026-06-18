@@ -194,14 +194,26 @@
           </p-toggleswitch>
         </td>
         <td [attr.data-label]="'admin.parks.actions' | translate">
-          <button
-            pButton
-            type="button"
-            icon="pi pi-pencil"
-            class="p-button-text p-button-sm"
-            [label]="'admin.parks.edit' | translate"
-            [routerLink]="['./edit', park.id]">
-          </button>
+          <div class="admin-row-actions">
+            @if (park.id) {
+              <a
+                pButton
+                icon="pi pi-download"
+                class="p-button-text p-button-sm p-button-secondary"
+                [label]="'admin.parks.exportJson' | translate"
+                [routerLink]="['../park-graph-upserts']"
+                [queryParams]="getParkGraphExportQueryParams(park)">
+              </a>
+            }
+            <button
+              pButton
+              type="button"
+              icon="pi pi-pencil"
+              class="p-button-text p-button-sm"
+              [label]="'admin.parks.edit' | translate"
+              [routerLink]="['./edit', park.id]">
+            </button>
+          </div>
         </td>
       </tr>
     </ng-template>

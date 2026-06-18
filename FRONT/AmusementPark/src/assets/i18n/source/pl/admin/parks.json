@@ -7,6 +7,7 @@
       "country": "Kraj",
       "actions": "Akcje",
       "edit": "Edytuj",
+      "exportJson": "Eksport JSON",
       "coordinates": "Wspolrzedne",
       "coordinatesMissing": "Brak lub 0,0",
       "searchPlaceholder": "Szukaj parku...",
