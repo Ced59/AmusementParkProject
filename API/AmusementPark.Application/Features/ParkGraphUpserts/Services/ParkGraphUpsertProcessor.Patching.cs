@@ -86,9 +86,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (HasProperty(patch, "descriptions"))
         {
-            List<LocalizedText> merged = MergeLocalizedTexts(park.Descriptions, GetArray(patch, "descriptions"), false);
-            AddChange(change, "descriptions", DescribeLocalized(park.Descriptions), DescribeLocalized(merged));
-            park.Descriptions = merged;
+            park.Descriptions = PatchLocalizedTexts(park.Descriptions, GetArray(patch, "descriptions"), false, change, "descriptions");
         }
 
         bool hasLatitude = HasProperty(patch, "latitude");
@@ -117,16 +115,12 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (HasProperty(patch, "names"))
         {
-            List<LocalizedText> merged = MergeLocalizedTexts(zone.Names, GetArray(patch, "names"), false);
-            AddChange(change, "names", DescribeLocalized(zone.Names), DescribeLocalized(merged));
-            zone.Names = merged;
+            zone.Names = PatchLocalizedTexts(zone.Names, GetArray(patch, "names"), false, change, "names");
         }
 
         if (HasProperty(patch, "descriptions"))
         {
-            List<LocalizedText> merged = MergeLocalizedTexts(zone.Descriptions, GetArray(patch, "descriptions"), false);
-            AddChange(change, "descriptions", DescribeLocalized(zone.Descriptions), DescribeLocalized(merged));
-            zone.Descriptions = merged;
+            zone.Descriptions = PatchLocalizedTexts(zone.Descriptions, GetArray(patch, "descriptions"), false, change, "descriptions");
         }
 
         ApplyOptionalPositionPatch(zone, patch, change);
@@ -167,9 +161,7 @@ public sealed partial class ParkGraphUpsertProcessor
 
         if (HasProperty(patch, "descriptions"))
         {
-            List<LocalizedText> merged = MergeLocalizedTexts(item.Descriptions, GetArray(patch, "descriptions"), false);
-            AddChange(change, "descriptions", DescribeLocalized(item.Descriptions), DescribeLocalized(merged));
-            item.Descriptions = merged;
+            item.Descriptions = PatchLocalizedTexts(item.Descriptions, GetArray(patch, "descriptions"), false, change, "descriptions");
         }
 
         ApplyOptionalPositionPatch(item, patch, change);
@@ -246,7 +238,7 @@ public sealed partial class ParkGraphUpsertProcessor
         if (HasProperty(patch, "accessConditions"))
         {
             List<AttractionAccessCondition> conditions = ReadAccessConditions(GetArray(patch, "accessConditions"));
-            AddChange(change, "attractionDetails.accessConditions", details.AccessConditions.Count.ToString(CultureInfo.InvariantCulture), conditions.Count.ToString(CultureInfo.InvariantCulture));
+            AddChange(change, "attractionDetails.accessConditions", DescribeAccessConditions(details.AccessConditions), DescribeAccessConditions(conditions));
             details.AccessConditions = conditions;
         }
     }
@@ -273,9 +265,7 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchString(patch, "websiteUrl", entity.WebsiteUrl, value => entity.WebsiteUrl = value, change);
         if (HasProperty(patch, "biography"))
         {
-            List<LocalizedText> merged = MergeLocalizedTexts(entity.Biography, GetArray(patch, "biography"), false);
-            AddChange(change, "biography", DescribeLocalized(entity.Biography), DescribeLocalized(merged));
-            entity.Biography = merged;
+            entity.Biography = PatchLocalizedTexts(entity.Biography, GetArray(patch, "biography"), false, change, "biography");
         }
     }
     private static void PatchOperator(ParkOperator entity, JsonElement patch, ParkGraphUpsertChange change)
@@ -288,9 +278,7 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchContactDetails(patch, entity.ContactDetails, value => entity.ContactDetails = value, change);
         if (HasProperty(patch, "description"))
         {
-            List<LocalizedText> merged = MergeLocalizedTexts(entity.Description, GetArray(patch, "description"), false);
-            AddChange(change, "description", DescribeLocalized(entity.Description), DescribeLocalized(merged));
-            entity.Description = merged;
+            entity.Description = PatchLocalizedTexts(entity.Description, GetArray(patch, "description"), false, change, "description");
         }
     }
     private static void PatchManufacturer(AttractionManufacturer entity, JsonElement patch, ParkGraphUpsertChange change)
@@ -303,9 +291,7 @@ public sealed partial class ParkGraphUpsertProcessor
         PatchContactDetails(patch, entity.ContactDetails, value => entity.ContactDetails = value, change);
         if (HasProperty(patch, "biography"))
         {
-            List<LocalizedText> merged = MergeLocalizedTexts(entity.Biography, GetArray(patch, "biography"), false);
-            AddChange(change, "biography", DescribeLocalized(entity.Biography), DescribeLocalized(merged));
-            entity.Biography = merged;
+            entity.Biography = PatchLocalizedTexts(entity.Biography, GetArray(patch, "biography"), false, change, "biography");
         }
     }
     private static void PatchContactDetails(JsonElement patch, ParkReferenceContactDetails? current, Action<ParkReferenceContactDetails?> assign, ParkGraphUpsertChange change)
@@ -411,6 +397,37 @@ public sealed partial class ParkGraphUpsertProcessor
             contactDetails.Latitude?.ToString(CultureInfo.InvariantCulture),
             contactDetails.Longitude?.ToString(CultureInfo.InvariantCulture),
         }.Where(static value => !string.IsNullOrWhiteSpace(value)));
+    }
+    private static string DescribeAccessConditions(IReadOnlyCollection<AttractionAccessCondition> conditions)
+    {
+        return string.Join(" || ", conditions.Select(static condition => DescribeAccessCondition(condition)));
+    }
+    private static string DescribeAccessCondition(AttractionAccessCondition condition)
+    {
+        List<string> parts = new List<string>
+        {
+            condition.Type.ToString(),
+            condition.TypeKey ?? string.Empty,
+            FormatValue(condition.IsCustom) ?? string.Empty,
+            condition.CustomTypeKey ?? string.Empty,
+            DescribeLocalizedTextsForDiff(condition.CustomTypeLabel),
+            FormatValue(condition.Value) ?? string.Empty,
+            condition.Unit?.ToString() ?? string.Empty,
+            FormatValue(condition.RequiresAccompaniment) ?? string.Empty,
+            FormatValue(condition.MinimumCompanionAge) ?? string.Empty,
+            DescribeLocalizedTextsForDiff(condition.Label),
+            DescribeLocalizedTextsForDiff(condition.Description),
+            FormatValue(condition.DisplayOrder) ?? string.Empty,
+        };
+
+        return string.Join("|", parts);
+    }
+    private static string DescribeLocalizedTextsForDiff(IReadOnlyCollection<LocalizedText> texts)
+    {
+        Dictionary<string, string> values = ToLocalizedTextMap(texts);
+        return string.Join(", ", values
+            .OrderBy(static value => value.Key, StringComparer.OrdinalIgnoreCase)
+            .Select(static value => $"{value.Key}:{value.Value}"));
     }
     private static void ApplyOptionalPositionPatch(AmusementPark.Core.Geo.GeolocatedEntityBase entity, JsonElement patch, ParkGraphUpsertChange change)
     {

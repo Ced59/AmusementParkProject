@@ -87,6 +87,25 @@ public sealed class InvalidatePublicCachesFilterTests
     }
 
     [Fact]
+    public async Task OnActionExecutionAsync_WhenSsrInvalidationIsNoOp_ShouldSkipSsrCall()
+    {
+        Mock<IOutputCacheStore> outputCacheStore = CreateOutputCacheStore(ApiOutputCachePolicyNames.PublicDataTag);
+        Mock<ISsrPageCacheInvalidator> ssrPageCacheInvalidator = new Mock<ISsrPageCacheInvalidator>(MockBehavior.Strict);
+        Mock<ISsrPageCacheInvalidationRequestResolver> resolver = CreateResolver(CreateNoOpRequest());
+        InvalidatePublicCachesFilter filter = CreateFilter(outputCacheStore, ssrPageCacheInvalidator, resolver);
+        ActionExecutingContext context = CreateExecutingContext(
+            HttpMethods.Post,
+            new InvalidatesPublicCacheAttribute(PublicCacheScope.Data));
+
+        await filter.OnActionExecutionAsync(context, () => Task.FromResult(CreateExecutedContext(context)));
+
+        outputCacheStore.VerifyAll();
+        ssrPageCacheInvalidator.Verify(
+            invalidator => invalidator.InvalidateAsync(It.IsAny<SsrPageCacheInvalidationRequest>(), It.IsAny<CancellationToken>()),
+            Times.Never);
+    }
+
+    [Fact]
     public async Task OnActionExecutionAsync_WhenRequestIsAborted_ShouldUseIndependentInvalidationToken()
     {
         CancellationToken outputCacheCancellationToken = CancellationToken.None;
@@ -255,6 +274,11 @@ public sealed class InvalidatePublicCachesFilterTests
             Paths = new[] { "/fr/home" },
             IncludeSeoDocuments = true,
         };
+    }
+
+    private static SsrPageCacheInvalidationRequest CreateNoOpRequest()
+    {
+        return new SsrPageCacheInvalidationRequest();
     }
 
     private static ActionExecutingContext CreateExecutingContext(

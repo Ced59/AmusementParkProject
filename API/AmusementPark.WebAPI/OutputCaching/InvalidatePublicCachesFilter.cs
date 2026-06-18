@@ -76,6 +76,11 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
             SsrPageCacheInvalidationRequest postExecutionSsrInvalidation = await this.ResolveSsrInvalidationAsync(context, executedContext, scopes);
             SsrPageCacheInvalidationRequest ssrInvalidation = MergeSsrInvalidation(preExecutionSsrInvalidation, postExecutionSsrInvalidation);
             ssrInvalidation = ApplySafetyMode(context, ssrInvalidation);
+            if (IsNoOpSsrInvalidation(ssrInvalidation))
+            {
+                return;
+            }
+
             await this.ssrPageCacheInvalidator.InvalidateAsync(ssrInvalidation, CancellationToken.None);
         }
         catch (Exception exception)
@@ -136,6 +141,14 @@ public sealed class InvalidatePublicCachesFilter : IAsyncActionFilter
                 && preExecutionRequest.AllowStale
                 && postExecutionRequest.AllowStale,
         };
+    }
+
+    private static bool IsNoOpSsrInvalidation(SsrPageCacheInvalidationRequest request)
+    {
+        return !request.All
+            && request.Paths.Count == 0
+            && request.Prefixes.Count == 0
+            && !request.IncludeSeoDocuments;
     }
 
     private static SsrPageCacheInvalidationRequest ApplySafetyMode(

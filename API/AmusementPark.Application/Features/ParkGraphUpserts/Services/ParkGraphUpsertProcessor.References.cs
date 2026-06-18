@@ -49,6 +49,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 entity = isNew
                     ? await this.parkFounderRepository.CreateAsync(entity, cancellationToken)
                     : await this.parkFounderRepository.UpdateAsync(entity.Id, entity, cancellationToken) ?? entity;
+                change.EntityId = entity.Id;
                 await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Founders, entity.Id, cancellationToken);
             }
 
@@ -95,6 +96,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 entity = isNew
                     ? await this.parkOperatorRepository.CreateAsync(entity, cancellationToken)
                     : await this.parkOperatorRepository.UpdateAsync(entity.Id, entity, cancellationToken) ?? entity;
+                change.EntityId = entity.Id;
                 await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Operators, entity.Id, cancellationToken);
             }
 
@@ -141,6 +143,7 @@ public sealed partial class ParkGraphUpsertProcessor
                 entity = isNew
                     ? await this.attractionManufacturerRepository.CreateAsync(entity, cancellationToken)
                     : await this.attractionManufacturerRepository.UpdateAsync(entity.Id, entity, cancellationToken) ?? entity;
+                change.EntityId = entity.Id;
                 await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, entity.Id, cancellationToken);
             }
 

@@ -391,6 +391,7 @@
         "errors": "Erreurs",
         "pending": "Lancez une preview pour inspecter les changements avant application.",
         "applied": "Upsert appliqué avec succès.",
+        "contentChangesDetected": "Changements de contenu detectes ({{count}}). Ils seront mis a jour si vous appliquez ce JSON.",
         "field": "Champ",
         "oldValue": "Ancien",
         "newValue": "Nouveau",

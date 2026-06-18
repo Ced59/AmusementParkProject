@@ -2,7 +2,9 @@ using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
+using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
 using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -83,6 +85,210 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         parkItemRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task ResolveAsync_ForParkGraphUpsertBeforeExecution_ShouldReturnNoOp()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            null,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Empty(request.Paths);
+        Assert.Empty(request.Prefixes);
+        Assert.False(request.IncludeSeoDocuments);
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ForParkGraphUpsertWithoutChangedEntity_ShouldReturnNoOp()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ParkGraphUpsertResultDto
+        {
+            TargetParkId = "park-1",
+            Changes = new List<ParkGraphUpsertChangeDto>
+            {
+                new ParkGraphUpsertChangeDto
+                {
+                    EntityType = "ParkItem",
+                    EntityId = "item-1",
+                    ChangeType = "Unchanged",
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Empty(request.Paths);
+        Assert.Empty(request.Prefixes);
+        Assert.False(request.IncludeSeoDocuments);
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ForParkGraphUpsertItemChange_ShouldTargetOnlyImpactedItemPages()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Target Park" });
+
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Wakala", ZoneId = "zone-1" });
+
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        parkZoneRepository
+            .Setup(repository => repository.GetByIdAsync("zone-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkZone { Id = "zone-1", ParkId = "park-1", Name = "Africa" });
+
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver(
+            parkRepository: parkRepository,
+            parkItemRepository: parkItemRepository,
+            parkZoneRepository: parkZoneRepository);
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ParkGraphUpsertResultDto
+        {
+            TargetParkId = "park-1",
+            Changes = new List<ParkGraphUpsertChangeDto>
+            {
+                new ParkGraphUpsertChangeDto
+                {
+                    EntityType = "ParkItem",
+                    EntityId = "item-1",
+                    ChangeType = "Updated",
+                    Fields = new List<ParkGraphUpsertFieldChangeDto>
+                    {
+                        new ParkGraphUpsertFieldChangeDto { Field = "descriptions.fr", OldValue = "Old", NewValue = "New" },
+                    },
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/target-park", request.Paths);
+        Assert.Contains("/fr/park/park-1/target-park/items", request.Paths);
+        Assert.Contains("/fr/park/park-1/target-park/zones", request.Paths);
+        Assert.Contains("/fr/park/park-1/target-park/item/item-1/", request.Prefixes);
+        Assert.Contains("/fr/park/park-1/target-park/zone/zone-1/", request.Prefixes);
+        Assert.DoesNotContain("/fr/park/park-1/", request.Prefixes);
+        Assert.DoesNotContain("/fr/home", request.Paths);
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ForParkGraphUpsertParkChange_ShouldTargetParkAndDiscoveryPages()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ParkGraphUpsertResultDto
+        {
+            TargetParkId = "park-1",
+            Changes = new List<ParkGraphUpsertChangeDto>
+            {
+                new ParkGraphUpsertChangeDto
+                {
+                    EntityType = "Park",
+                    EntityId = "park-1",
+                    ChangeType = "Updated",
+                    Fields = new List<ParkGraphUpsertFieldChangeDto>
+                    {
+                        new ParkGraphUpsertFieldChangeDto { Field = "isVisible", OldValue = "true", NewValue = "false" },
+                    },
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/", request.Prefixes);
+        Assert.Contains("/fr/home", request.Paths);
+        Assert.False(request.AllowStale);
+        Assert.False(request.Refresh);
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ForParkGraphUpsertImageOwnerChange_ShouldTargetOldAndNewOwners()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Target Park" });
+
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Old Owner" });
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-2", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkItem { Id = "item-2", ParkId = "park-1", Name = "New Owner" });
+
+        Mock<IImageRepository> imageRepository = new Mock<IImageRepository>(MockBehavior.Strict);
+        imageRepository
+            .Setup(repository => repository.GetByIdAsync("image-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Image { Id = "image-1", OwnerType = ImageOwnerType.ParkItem, OwnerId = "item-2" });
+
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver(
+            parkRepository: parkRepository,
+            parkItemRepository: parkItemRepository,
+            imageRepository: imageRepository);
+        ActionExecutingContext context = CreateContext("ParkGraphUpserts", new Dictionary<string, object?>());
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ParkGraphUpsertResultDto
+        {
+            TargetParkId = "park-1",
+            Changes = new List<ParkGraphUpsertChangeDto>
+            {
+                new ParkGraphUpsertChangeDto
+                {
+                    EntityType = "Image",
+                    EntityId = "image-1",
+                    ChangeType = "Updated",
+                    Fields = new List<ParkGraphUpsertFieldChangeDto>
+                    {
+                        new ParkGraphUpsertFieldChangeDto { Field = "ownerId", OldValue = "item-1", NewValue = "item-2" },
+                    },
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/target-park/item/item-1/", request.Prefixes);
+        Assert.Contains("/fr/park/park-1/target-park/item/item-2/", request.Prefixes);
+        Assert.DoesNotContain("/fr/park/park-1/", request.Prefixes);
+        parkRepository.Verify(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()), Times.Exactly(2));
+        parkItemRepository.VerifyAll();
+        imageRepository.VerifyAll();
+    }
+
     private static SsrPageCacheInvalidationRequestResolver CreateResolver(
         Mock<IParkRepository>? parkRepository = null,
         Mock<IParkItemRepository>? parkItemRepository = null,
@@ -118,5 +324,22 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
             new List<IFilterMetadata>(),
             new Dictionary<string, object?>(),
             new object());
+    }
+
+    private static ActionExecutedContext CreateExecutedContext(ActionExecutingContext context, object result)
+    {
+        ActionContext actionContext = new ActionContext(
+            context.HttpContext,
+            context.RouteData,
+            context.ActionDescriptor,
+            context.ModelState);
+
+        return new ActionExecutedContext(
+            actionContext,
+            new List<IFilterMetadata>(),
+            new object())
+        {
+            Result = new OkObjectResult(result),
+        };
     }
 }

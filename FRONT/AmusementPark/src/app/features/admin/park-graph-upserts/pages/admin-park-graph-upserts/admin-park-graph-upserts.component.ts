@@ -215,6 +215,12 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
     return Array.from(new Set(this.changes.map((change: ParkGraphUpsertChange): string => change.entityType))).sort();
   }
 
+  protected get contentChangeCount(): number {
+    return this.changes.reduce((count: number, change: ParkGraphUpsertChange): number => {
+      return count + change.fields.filter(field => this.isContentField(field.field)).length;
+    }, 0);
+  }
+
   protected get groupedErrors(): ParkGraphUpsertMessageGroup[] {
     return this.groupMessages(this.previewResult?.errors ?? []);
   }
@@ -357,6 +363,19 @@ export class AdminParkGraphUpsertsComponent implements OnInit {
         || (entityKey.length > 0 && normalizedMessage.includes(entityKey))
         || normalizedMessage.includes(entityType);
     });
+  }
+
+  private isContentField(fieldName: string): boolean {
+    const normalizedFieldName: string = fieldName.trim().toLocaleLowerCase();
+    return normalizedFieldName === 'description'
+      || normalizedFieldName.startsWith('description.')
+      || normalizedFieldName.startsWith('descriptions.')
+      || normalizedFieldName.startsWith('names.')
+      || normalizedFieldName.startsWith('biography.')
+      || normalizedFieldName.startsWith('alttexts.')
+      || normalizedFieldName.startsWith('captions.')
+      || normalizedFieldName.startsWith('credits.')
+      || normalizedFieldName === 'attractiondetails.accessconditions';
   }
 
   private buildDefaultJson(): string {

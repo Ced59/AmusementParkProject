@@ -391,6 +391,7 @@
         "errors": "Fouten",
         "pending": "Voer een preview uit om wijzigingen te controleren voor toepassing.",
         "applied": "Upsert succesvol toegepast.",
+        "contentChangesDetected": "Contentwijzigingen gedetecteerd ({{count}}). Ze worden bijgewerkt als u deze JSON toepast.",
         "field": "Veld",
         "oldValue": "Oud",
         "newValue": "Nieuw",

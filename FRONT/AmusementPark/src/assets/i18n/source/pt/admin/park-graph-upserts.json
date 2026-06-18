@@ -101,6 +101,7 @@
         "errors": "Erros",
         "pending": "Execute uma preview para rever alteracoes antes de aplicar.",
         "applied": "Upsert aplicado com sucesso.",
+        "contentChangesDetected": "Alteracoes de conteudo detetadas ({{count}}). Serao atualizadas se aplicar este JSON.",
         "field": "Campo",
         "oldValue": "Antigo",
         "newValue": "Novo",
