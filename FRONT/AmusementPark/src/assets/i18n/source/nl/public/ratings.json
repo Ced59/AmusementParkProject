@@ -83,7 +83,12 @@
       "Attraction": "Attracties",
       "Restaurant": "Restaurants",
       "Hotel": "Hotels",
-      "Service": "Services"
+      "Animal": "Dieren",
+      "Show": "Shows",
+      "Shop": "Winkels",
+      "Service": "Services",
+      "Transport": "Vervoer",
+      "Other": "Andere plekken"
     }
   }
 }

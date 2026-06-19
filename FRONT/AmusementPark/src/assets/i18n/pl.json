@@ -2755,7 +2755,12 @@
       "Attraction": "Atrakcje",
       "Restaurant": "Restauracje",
       "Hotel": "Hotele",
-      "Service": "Usługi"
+      "Animal": "Zwierzęta",
+      "Show": "Pokazy",
+      "Shop": "Sklepy",
+      "Service": "Usługi",
+      "Transport": "Transport",
+      "Other": "Inne miejsca"
     }
   },
   "shareSocial": {

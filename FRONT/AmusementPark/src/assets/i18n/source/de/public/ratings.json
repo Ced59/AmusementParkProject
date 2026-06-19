@@ -83,7 +83,12 @@
       "Attraction": "Attraktionen",
       "Restaurant": "Restaurants",
       "Hotel": "Hotels",
-      "Service": "Services"
+      "Animal": "Tierbereiche",
+      "Show": "Shows",
+      "Shop": "Shops",
+      "Service": "Services",
+      "Transport": "Transport",
+      "Other": "Weitere Orte"
     }
   }
 }
