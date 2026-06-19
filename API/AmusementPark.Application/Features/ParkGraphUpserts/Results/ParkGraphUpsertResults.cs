@@ -33,6 +33,8 @@ public sealed class ParkGraphUpsertCounts
 
     public int Updated { get; set; }
 
+    public int Deleted { get; set; }
+
     public int Unchanged { get; set; }
 
     public int Warnings { get; set; }

@@ -44,6 +44,7 @@ internal static class ParkGraphUpsertHttpMappers
             {
                 Created = result.Counts.Created,
                 Updated = result.Counts.Updated,
+                Deleted = result.Counts.Deleted,
                 Unchanged = result.Counts.Unchanged,
                 Warnings = result.Counts.Warnings,
                 Errors = result.Counts.Errors,

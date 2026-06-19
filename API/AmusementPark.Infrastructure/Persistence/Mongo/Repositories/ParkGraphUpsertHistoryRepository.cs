@@ -104,6 +104,7 @@ public sealed class ParkGraphUpsertHistoryRepository : IParkGraphUpsertHistoryRe
         {
             Created = ReadInt(document, "created"),
             Updated = ReadInt(document, "updated"),
+            Deleted = ReadInt(document, "deleted"),
             Unchanged = ReadInt(document, "unchanged"),
             Warnings = ReadInt(document, "warnings"),
             Errors = ReadInt(document, "errors"),
