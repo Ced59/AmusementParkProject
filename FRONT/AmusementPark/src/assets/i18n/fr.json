@@ -571,9 +571,28 @@
         "warnings": "{{count}} avertissement(s)",
         "failed": "Echecs"
       },
+      "statuses": {
+        "queued": "En attente",
+        "running": "En cours",
+        "completed": "Termine",
+        "completedWithFailures": "Termine avec echecs",
+        "failed": "Echec",
+        "skipped": "Ignore"
+      },
+      "messages": {
+        "queued": "Rafraichissement meteo en attente.",
+        "running": "Rafraichissement meteo en cours.",
+        "completed": "Rafraichissement meteo termine.",
+        "completedWithFailures": "Rafraichissement meteo termine avec des echecs.",
+        "canceled": "Rafraichissement meteo annule.",
+        "skippedByManual": "Execution automatique ignoree car un rafraichissement manuel couvre deja ce cycle."
+      },
+      "values": {
+        "empty": "-"
+      },
       "latestRun": {
         "title": "Derniere execution",
-        "meta": "{{trigger}} · {{scope}}",
+        "meta": "{{trigger}} - {{scope}}",
         "requestedAt": "Demandee",
         "startedAt": "Demarree",
         "cancelAuto": "Execution auto annulee"

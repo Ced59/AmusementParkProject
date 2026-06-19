@@ -24,8 +24,8 @@
         <section class="admin-park-weather__summary">
           <article class="admin-weather-stat-card">
             <span>{{ 'admin.parkWeather.stats.status' | translate }}</span>
-            <p-tag [value]="run.status" [severity]="statusSeverity(run.status)"></p-tag>
-            <small>{{ run.message || '-' }}</small>
+            <p-tag [value]="statusLabelKey(run.status) | translate" [severity]="statusSeverity(run.status)"></p-tag>
+            <small>{{ messageLabelKey(run.message) | translate }}</small>
           </article>
           <article class="admin-weather-stat-card">
             <span>{{ 'admin.parkWeather.stats.progress' | translate }}</span>

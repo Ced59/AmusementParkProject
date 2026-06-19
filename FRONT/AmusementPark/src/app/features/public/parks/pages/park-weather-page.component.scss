@@ -17,7 +17,7 @@
 
 .park-weather-hero__kicker {
   margin: 0;
-  color: #0f6d94;
+  color: var(--app-accent-cyan, #38c5f5);
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -33,7 +33,7 @@
 .park-weather-hero p {
   max-width: 68ch;
   margin: 0;
-  color: var(--text-color-secondary, #5d6675);
+  color: var(--app-text-muted, #b09d7a);
 }
 
 .park-weather-hero__back {
@@ -42,7 +42,7 @@
   gap: 0.5rem;
   width: fit-content;
   min-height: 2.5rem;
-  color: #0f6d94;
+  color: var(--app-accent-cyan, #38c5f5);
   font-weight: 700;
   text-decoration: none;
 }
@@ -58,10 +58,15 @@
   gap: 1rem;
   align-content: start;
   padding: 1rem;
-  border: 1px solid color-mix(in srgb, var(--surface-border, #d8dee9) 72%, transparent);
-  border-radius: 8px;
-  background: var(--surface-card, #ffffff);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid var(--app-border, rgba(255, 210, 140, 0.12));
+  border-radius: var(--radius-md, 8px);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--app-surface, #1a140f) 92%, transparent),
+    color-mix(in srgb, var(--app-surface-2, #211a13) 100%, transparent)
+  );
+  box-shadow: var(--shadow-card, 0 14px 30px rgba(15, 23, 42, 0.12));
+  color: var(--app-text, #f6eed9);
 }
 
 .park-weather-day__icon {
@@ -69,9 +74,10 @@
   width: 3.5rem;
   height: 3.5rem;
   place-items: center;
-  border-radius: 8px;
-  background: #e2f2ff;
-  color: #0f6d94;
+  border: 1px solid color-mix(in srgb, var(--app-accent-cyan, #38c5f5) 24%, var(--app-border, rgba(255, 210, 140, 0.12)));
+  border-radius: var(--radius-md, 8px);
+  background: color-mix(in srgb, var(--app-accent-cyan, #38c5f5) 12%, var(--app-surface, #1a140f));
+  color: var(--app-accent-cyan, #38c5f5);
   font-size: 1.65rem;
 }
 
@@ -87,10 +93,12 @@
 }
 
 .park-weather-day h2 {
+  color: var(--app-heading, #ffffff);
   font-size: 1.05rem;
 }
 
 .park-weather-day strong {
+  color: var(--app-heading, #ffffff);
   font-size: 1.45rem;
 }
 
@@ -107,22 +115,23 @@
 }
 
 .park-weather-day dt {
-  color: var(--text-color-secondary, #5d6675);
+  color: var(--app-text-muted, #b09d7a);
 }
 
 .park-weather-day dd {
   margin: 0;
+  color: var(--app-heading, #ffffff);
   font-weight: 700;
 }
 
 .park-weather-attribution {
   margin: 0;
-  color: var(--text-color-secondary, #5d6675);
+  color: var(--app-text-muted, #b09d7a);
   font-size: 0.9rem;
 }
 
 .park-weather-attribution a {
   margin-left: 0.5rem;
-  color: #0f6d94;
+  color: var(--app-accent-cyan, #38c5f5);
   font-weight: 700;
 }

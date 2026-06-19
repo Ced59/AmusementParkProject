@@ -65,6 +65,44 @@ export class AdminParkWeatherComponent implements OnInit {
     return this.refreshingParkIds().has(parkId);
   }
 
+  protected statusLabelKey(status: string | null | undefined): string {
+    switch (status) {
+      case 'Queued':
+        return 'admin.parkWeather.statuses.queued';
+      case 'Running':
+        return 'admin.parkWeather.statuses.running';
+      case 'Completed':
+        return 'admin.parkWeather.statuses.completed';
+      case 'CompletedWithFailures':
+        return 'admin.parkWeather.statuses.completedWithFailures';
+      case 'Failed':
+        return 'admin.parkWeather.statuses.failed';
+      case 'Skipped':
+        return 'admin.parkWeather.statuses.skipped';
+      default:
+        return status?.trim() || 'admin.parkWeather.values.empty';
+    }
+  }
+
+  protected messageLabelKey(message: string | null | undefined): string {
+    switch (message?.trim()) {
+      case 'Weather refresh queued.':
+        return 'admin.parkWeather.messages.queued';
+      case 'Weather refresh running.':
+        return 'admin.parkWeather.messages.running';
+      case 'Weather refresh completed.':
+        return 'admin.parkWeather.messages.completed';
+      case 'Weather refresh completed with failures.':
+        return 'admin.parkWeather.messages.completedWithFailures';
+      case 'Weather refresh canceled.':
+        return 'admin.parkWeather.messages.canceled';
+      case 'Automatic weather refresh skipped because a manual refresh already covers this cycle.':
+        return 'admin.parkWeather.messages.skippedByManual';
+      default:
+        return message?.trim() || 'admin.parkWeather.values.empty';
+    }
+  }
+
   protected runProgressPercent(run: ParkWeatherRun | null): number {
     if (!run || run.totalParkCount <= 0) {
       return 0;

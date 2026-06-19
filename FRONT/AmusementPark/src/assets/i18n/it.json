@@ -571,9 +571,28 @@
         "warnings": "{{count}} avviso/i",
         "failed": "Errori"
       },
+      "statuses": {
+        "queued": "In coda",
+        "running": "In corso",
+        "completed": "Completato",
+        "completedWithFailures": "Completato con errori",
+        "failed": "Non riuscito",
+        "skipped": "Saltato"
+      },
+      "messages": {
+        "queued": "Aggiornamento meteo in coda.",
+        "running": "Aggiornamento meteo in corso.",
+        "completed": "Aggiornamento meteo completato.",
+        "completedWithFailures": "Aggiornamento meteo completato con errori.",
+        "canceled": "Aggiornamento meteo annullato.",
+        "skippedByManual": "Esecuzione automatica saltata perche un aggiornamento manuale copre gia questo ciclo."
+      },
+      "values": {
+        "empty": "-"
+      },
       "latestRun": {
         "title": "Ultima esecuzione",
-        "meta": "{{trigger}} · {{scope}}",
+        "meta": "{{trigger}} - {{scope}}",
         "requestedAt": "Richiesta",
         "startedAt": "Avviata",
         "cancelAuto": "Esecuzione auto annullata"

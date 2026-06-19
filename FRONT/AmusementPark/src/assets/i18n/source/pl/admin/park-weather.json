@@ -21,9 +21,28 @@
         "warnings": "{{count}} ostrzezenie(a)",
         "failed": "Bledy"
       },
+      "statuses": {
+        "queued": "W kolejce",
+        "running": "W toku",
+        "completed": "Zakonczone",
+        "completedWithFailures": "Zakonczone z bledami",
+        "failed": "Nieudane",
+        "skipped": "Pominiete"
+      },
+      "messages": {
+        "queued": "Odswiezanie pogody jest w kolejce.",
+        "running": "Odswiezanie pogody trwa.",
+        "completed": "Odswiezanie pogody zakonczone.",
+        "completedWithFailures": "Odswiezanie pogody zakonczone z bledami.",
+        "canceled": "Odswiezanie pogody anulowane.",
+        "skippedByManual": "Automatyczne wykonanie pominieto, bo reczne odswiezenie obejmuje juz ten cykl."
+      },
+      "values": {
+        "empty": "-"
+      },
       "latestRun": {
         "title": "Ostatnie wykonanie",
-        "meta": "{{trigger}} · {{scope}}",
+        "meta": "{{trigger}} - {{scope}}",
         "requestedAt": "Zlecone",
         "startedAt": "Uruchomione",
         "cancelAuto": "Automatyczne wykonanie anulowane"
