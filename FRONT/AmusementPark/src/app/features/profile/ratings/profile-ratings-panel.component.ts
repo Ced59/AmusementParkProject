@@ -4,7 +4,14 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { UserRatingListItem, UserRatingStatBucket, UserRatingStats } from '@app/models/ratings/rating.models';
 import { TranslationService } from '@app/services/translation.service';
-import { RatingTreeComponent, RatingTreePark, RatingTreeSection } from '@shared/components/rating-tree/rating-tree.component';
+import {
+  RatingTreeComponent,
+  RatingTreeEditableScore,
+  RatingTreeMetric,
+  RatingTreePark,
+  RatingTreeRatingChange,
+  RatingTreeSection
+} from '@shared/components/rating-tree/rating-tree.component';
 import { buildPublicParkItemRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { UiButtonDirective, UiSectionHeaderComponent } from '@ui/primitives';
 import { ProfileRatingsStateFacade } from './profile-ratings-state.facade';
@@ -38,9 +45,10 @@ export class ProfileRatingsPanelComponent implements OnInit {
   protected readonly ratings: Signal<UserRatingListItem[]> = this.stateFacade.ratings;
   protected readonly stats: Signal<UserRatingStats | null> = this.stateFacade.stats;
   protected readonly isEmpty: Signal<boolean> = this.stateFacade.isEmpty;
+  protected readonly savingRatingIds: Signal<ReadonlySet<string>> = this.stateFacade.savingRatingIds;
   protected readonly ratingParks: Signal<RatingTreePark[]> = computed(() => {
     const language: string = this.currentLang();
-    return this.groupRatingsByPark(this.ratings(), language);
+    return this.groupRatingsByPark(this.ratings(), language, this.savingRatingIds());
   });
 
   constructor(
@@ -74,6 +82,10 @@ export class ProfileRatingsPanelComponent implements OnInit {
 
   protected loadMore(): void {
     this.stateFacade.loadMore();
+  }
+
+  protected updateRating(change: RatingTreeRatingChange): void {
+    this.stateFacade.updateRating(change.ratingId, change.value);
   }
 
   protected formatRating(value: number | null | undefined): string {
@@ -121,7 +133,7 @@ export class ProfileRatingsPanelComponent implements OnInit {
     });
   }
 
-  private groupRatingsByPark(ratings: UserRatingListItem[], language: string): RatingTreePark[] {
+  private groupRatingsByPark(ratings: UserRatingListItem[], language: string, savingRatingIds: ReadonlySet<string>): RatingTreePark[] {
     const groups = new Map<string, UserRatingListItem[]>();
     for (const rating of ratings) {
       const key: string = rating.parkId || rating.targetId;
@@ -135,6 +147,8 @@ export class ProfileRatingsPanelComponent implements OnInit {
 
     return Array.from(groups.entries()).map(([parkId, groupRatings]: [string, UserRatingListItem[]]) => {
       const ratingSum: number = groupRatings.reduce((sum: number, rating: UserRatingListItem) => sum + rating.value, 0);
+      const parkRatings: UserRatingListItem[] = groupRatings.filter((rating: UserRatingListItem): boolean => rating.targetType === 'Park');
+      const itemRatings: UserRatingListItem[] = groupRatings.filter((rating: UserRatingListItem): boolean => rating.targetType !== 'Park');
       const parkName: string = groupRatings[0]?.parkName || groupRatings[0]?.targetName || parkId;
       return {
         id: parkId,
@@ -143,8 +157,8 @@ export class ProfileRatingsPanelComponent implements OnInit {
         score: ratingSum / Math.max(groupRatings.length, 1),
         ratingCount: groupRatings.length,
         route: this.parkRoute(parkId, parkName, language),
-        metrics: [],
-        sections: this.groupRatingsBySection(groupRatings, language)
+        metrics: this.buildMetrics(parkRatings, itemRatings, savingRatingIds),
+        sections: this.groupRatingsBySection(itemRatings, language, savingRatingIds)
       };
     }).sort((left: RatingTreePark, right: RatingTreePark) => {
       if (right.score !== left.score) {
@@ -159,7 +173,27 @@ export class ProfileRatingsPanelComponent implements OnInit {
     });
   }
 
-  private groupRatingsBySection(ratings: UserRatingListItem[], language: string): RatingTreeSection[] {
+  private buildMetrics(
+    parkRatings: UserRatingListItem[],
+    itemRatings: UserRatingListItem[],
+    savingRatingIds: ReadonlySet<string>
+  ): RatingTreeMetric[] {
+    const parkRating: UserRatingListItem | undefined = parkRatings[0];
+    return [
+      {
+        labelKey: 'ratings.rankings.parkSignal',
+        value: this.averageRating(parkRatings),
+        editable: parkRating ? this.editableScore(parkRating.id, savingRatingIds) : null
+      },
+      { labelKey: 'ratings.rankings.itemsSignal', value: this.averageRating(itemRatings) }
+    ];
+  }
+
+  private groupRatingsBySection(
+    ratings: UserRatingListItem[],
+    language: string,
+    savingRatingIds: ReadonlySet<string>
+  ): RatingTreeSection[] {
     const groups = new Map<string, ProfileRatingSectionGroup>();
 
     for (const rating of ratings) {
@@ -199,8 +233,7 @@ export class ProfileRatingsPanelComponent implements OnInit {
             name: rating.targetName,
             score: rating.value,
             route: this.targetRoute(rating, language),
-            secondaryLabelKey: 'ratings.profile.communityAverage',
-            secondaryScore: rating.summary.averageRating
+            editable: this.editableScore(rating.id, savingRatingIds)
           };
         })
       };
@@ -208,15 +241,6 @@ export class ProfileRatingsPanelComponent implements OnInit {
   }
 
   private resolveSectionGroup(rating: UserRatingListItem): ProfileRatingSectionGroup {
-    if (rating.targetType === 'Park') {
-      return {
-        key: 'Park',
-        titleKey: 'ratings.targetTypes.Park',
-        order: 0,
-        ratings: []
-      };
-    }
-
     if (rating.parkItemCategory) {
       return {
         key: rating.parkItemCategory,
@@ -247,5 +271,21 @@ export class ProfileRatingsPanelComponent implements OnInit {
       default:
         return 90;
     }
+  }
+
+  private averageRating(ratings: UserRatingListItem[]): number {
+    if (ratings.length === 0) {
+      return 0;
+    }
+
+    const ratingSum: number = ratings.reduce((sum: number, rating: UserRatingListItem) => sum + rating.value, 0);
+    return ratingSum / ratings.length;
+  }
+
+  private editableScore(ratingId: string, savingRatingIds: ReadonlySet<string>): RatingTreeEditableScore {
+    return {
+      ratingId,
+      saving: savingRatingIds.has(ratingId)
+    };
   }
 }

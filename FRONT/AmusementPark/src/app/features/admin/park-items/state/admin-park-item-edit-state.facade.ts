@@ -4,9 +4,8 @@ import { firstValueFrom } from 'rxjs';
 import { EntitySelectOption } from '@app/models/shared/entity-select-option';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
-import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
+import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
 import { ParksApiResponse } from '@app/models/parks/parks_api_response';
-import { ApiResponse } from '@app/models/shared/api_reponse';
 import {
   AdminParkItemSequentialNavigationState,
   EMPTY_ADMIN_PARK_ITEM_SEQUENTIAL_NAVIGATION_STATE
@@ -19,19 +18,12 @@ import {
   AdminParkItemEditStateParksApiServicePort
 } from './admin-park-item-edit-state-data.ports';
 
-interface ParkItemNavigationCacheEntry {
-  readonly expiresAt: number;
-  readonly rows: ParkItemAdminRow[];
-}
-
 @Injectable()
 export class AdminParkItemEditStateFacade {
   private static readonly parkOptionsCacheTtlMs: number = 5 * 60 * 1000;
-  private static readonly navigationCacheTtlMs: number = 2 * 60 * 1000;
   private static readonly pageSize: number = 100;
   private static readonly interPageRequestDelayMs: number = 50;
   private static parkOptionsCache: { expiresAt: number; options: EntitySelectOption[] } | null = null;
-  private static readonly parkItemNavigationCache: Map<string, ParkItemNavigationCacheEntry> = new Map<string, ParkItemNavigationCacheEntry>();
 
   private readonly isSavingSignal = signal(false);
   private readonly parkOptionsSignal = signal<EntitySelectOption[]>([]);
@@ -130,7 +122,7 @@ export class AdminParkItemEditStateFacade {
     }
   }
 
-  async loadSequentialNavigation(parkId: string, currentItemId: string, forceReload: boolean = false): Promise<void> {
+  async loadSequentialNavigation(parkId: string, currentItemId: string, _forceReload: boolean = false): Promise<void> {
     const normalizedParkId: string = parkId.trim();
     const normalizedCurrentItemId: string = currentItemId.trim();
 
@@ -141,18 +133,35 @@ export class AdminParkItemEditStateFacade {
 
     const loadVersion: number = ++this.navigationLoadVersion;
     this.sequentialNavigationStateSignal.set({
-      ...this.buildSequentialNavigationState([], normalizedCurrentItemId),
+      ...EMPTY_ADMIN_PARK_ITEM_SEQUENTIAL_NAVIGATION_STATE,
+      currentItemId: normalizedCurrentItemId,
       isLoading: true
     });
 
     try {
-      const rows: ParkItemAdminRow[] = await this.loadParkItemRowsForNavigation(normalizedParkId, forceReload);
+      const navigation: ParkItemSiblingNavigation = await firstValueFrom(this.parkItemsApiService.getParkItemSiblingNavigation(normalizedCurrentItemId));
 
       if (loadVersion !== this.navigationLoadVersion) {
         return;
       }
 
-      this.sequentialNavigationStateSignal.set(this.buildSequentialNavigationState(rows, normalizedCurrentItemId));
+      if (navigation.parkId !== normalizedParkId || navigation.currentItemId !== normalizedCurrentItemId) {
+        this.sequentialNavigationStateSignal.set({
+          ...EMPTY_ADMIN_PARK_ITEM_SEQUENTIAL_NAVIGATION_STATE,
+          currentItemId: normalizedCurrentItemId
+        });
+        return;
+      }
+
+      this.sequentialNavigationStateSignal.set({
+        isLoading: false,
+        currentItemId: normalizedCurrentItemId,
+        currentPosition: navigation.currentPosition,
+        remainingItems: navigation.remainingItems,
+        totalItems: navigation.totalItems,
+        previousItemId: navigation.previous?.id ?? null,
+        nextItemId: navigation.next?.id ?? null
+      });
     } catch (error: unknown) {
       console.error('Error loading park item sequential navigation', error);
 
@@ -180,7 +189,6 @@ export class AdminParkItemEditStateFacade {
         ? await firstValueFrom(this.parkItemsApiService.updateParkItem(itemId, item))
         : await firstValueFrom(this.parkItemsApiService.createParkItem(item));
 
-      AdminParkItemEditStateFacade.parkItemNavigationCache.clear();
       return savedItem;
     } finally {
       this.isSavingSignal.set(false);
@@ -191,57 +199,10 @@ export class AdminParkItemEditStateFacade {
     AdminParkItemEditStateFacade.parkOptionsCache = null;
   }
 
-  private async loadParkItemRowsForNavigation(parkId: string, forceReload: boolean): Promise<ParkItemAdminRow[]> {
-    const cachedEntry: ParkItemNavigationCacheEntry | undefined = AdminParkItemEditStateFacade.parkItemNavigationCache.get(parkId);
-
-    if (!forceReload && cachedEntry && cachedEntry.expiresAt > Date.now()) {
-      return cachedEntry.rows;
-    }
-
-    const rows: ParkItemAdminRow[] = [];
-    const pageSize: number = AdminParkItemEditStateFacade.pageSize;
-    const firstResponse: ApiResponse<ParkItemAdminRow> = await firstValueFrom(
-      this.parkItemsApiService.getParkItemsPaginated(1, pageSize, parkId)
-    );
-    rows.push(...(firstResponse.data ?? []));
-
-    const totalPages: number = firstResponse.pagination?.totalPages ?? 1;
-    for (let currentPage: number = 2; currentPage <= totalPages; currentPage += 1) {
-      await this.waitBeforeNextPagedRequest();
-      const pageResponse: ApiResponse<ParkItemAdminRow> = await firstValueFrom(this.parkItemsApiService.getParkItemsPaginated(currentPage, pageSize, parkId));
-      rows.push(...(pageResponse.data ?? []));
-    }
-
-    const normalizedRows: ParkItemAdminRow[] = rows.filter((row: ParkItemAdminRow): boolean => !!row.id);
-    AdminParkItemEditStateFacade.parkItemNavigationCache.set(parkId, {
-      expiresAt: Date.now() + AdminParkItemEditStateFacade.navigationCacheTtlMs,
-      rows: normalizedRows
-    });
-
-    return normalizedRows;
-  }
-
   private async waitBeforeNextPagedRequest(): Promise<void> {
     await new Promise<void>((resolve: () => void): void => {
       setTimeout(resolve, AdminParkItemEditStateFacade.interPageRequestDelayMs);
     });
-  }
-
-  private buildSequentialNavigationState(rows: ParkItemAdminRow[], currentItemId: string): AdminParkItemSequentialNavigationState {
-    const normalizedCurrentItemId: string = currentItemId.trim();
-    const currentIndex: number = rows.findIndex((row: ParkItemAdminRow): boolean => row.id?.trim() === normalizedCurrentItemId);
-    const totalItems: number = rows.length;
-    const currentPosition: number = currentIndex >= 0 ? currentIndex + 1 : 0;
-
-    return {
-      isLoading: false,
-      currentItemId: normalizedCurrentItemId,
-      currentPosition,
-      remainingItems: currentPosition > 0 ? Math.max(totalItems - currentPosition, 0) : 0,
-      totalItems,
-      previousItemId: currentIndex > 0 ? rows[currentIndex - 1].id : null,
-      nextItemId: currentIndex >= 0 && currentIndex < totalItems - 1 ? rows[currentIndex + 1].id : null
-    };
   }
 
   private hasParkOption(parkId: string): boolean {

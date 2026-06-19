@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AmusementPark.Application.Abstractions;
@@ -41,6 +42,8 @@ public sealed class ParkItemsController : ControllerBase
     private readonly IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler;
     private readonly IQueryHandler<GetParkItemsPageQuery, ApplicationResult<PagedResult<ParkItemAdminListResult>>> getParkItemsPageQueryHandler;
     private readonly IQueryHandler<GetParkItemByIdQuery, ApplicationResult<ParkItem>> getParkItemByIdQueryHandler;
+    private readonly IQueryHandler<GetParkItemSiblingNavigationQuery, ApplicationResult<ParkItemSiblingNavigationResult>> getParkItemSiblingNavigationQueryHandler;
+    private readonly IQueryHandler<GetRelatedParkItemsQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getRelatedParkItemsQueryHandler;
     private readonly IQueryHandler<GetRatingSummaryQuery, ApplicationResult<RatingSummaryResult>> getRatingSummaryQueryHandler;
     private readonly ICommandHandler<CreateParkItemCommand, ApplicationResult<ParkItem>> createParkItemCommandHandler;
     private readonly ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler;
@@ -54,6 +57,8 @@ public sealed class ParkItemsController : ControllerBase
         IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler,
         IQueryHandler<GetParkItemsPageQuery, ApplicationResult<PagedResult<ParkItemAdminListResult>>> getParkItemsPageQueryHandler,
         IQueryHandler<GetParkItemByIdQuery, ApplicationResult<ParkItem>> getParkItemByIdQueryHandler,
+        IQueryHandler<GetParkItemSiblingNavigationQuery, ApplicationResult<ParkItemSiblingNavigationResult>> getParkItemSiblingNavigationQueryHandler,
+        IQueryHandler<GetRelatedParkItemsQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getRelatedParkItemsQueryHandler,
         IQueryHandler<GetRatingSummaryQuery, ApplicationResult<RatingSummaryResult>> getRatingSummaryQueryHandler,
         ICommandHandler<CreateParkItemCommand, ApplicationResult<ParkItem>> createParkItemCommandHandler,
         ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler,
@@ -66,6 +71,8 @@ public sealed class ParkItemsController : ControllerBase
         this.getParkItemsByParkIdQueryHandler = getParkItemsByParkIdQueryHandler;
         this.getParkItemsPageQueryHandler = getParkItemsPageQueryHandler;
         this.getParkItemByIdQueryHandler = getParkItemByIdQueryHandler;
+        this.getParkItemSiblingNavigationQueryHandler = getParkItemSiblingNavigationQueryHandler;
+        this.getRelatedParkItemsQueryHandler = getRelatedParkItemsQueryHandler;
         this.getRatingSummaryQueryHandler = getRatingSummaryQueryHandler;
         this.createParkItemCommandHandler = createParkItemCommandHandler;
         this.updateParkItemCommandHandler = updateParkItemCommandHandler;
@@ -143,6 +150,42 @@ public sealed class ParkItemsController : ControllerBase
         PagedResponseDto<ParkItemAdminListDto> response = result.Value.ToPagedResponse(static item => item.ToHttp());
 
         return this.Ok(response);
+    }
+
+    [HttpGet("{id}/siblings")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(ParkItemSiblingNavigationDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetSiblingNavigationAsync([FromRoute] string id, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkItemSiblingNavigationResult> result = await this.getParkItemSiblingNavigationQueryHandler.HandleAsync(
+            new GetParkItemSiblingNavigationQuery(id, this.UserCanSeeNonVisible()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpGet("{id}/related")]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
+    [AllowAnonymous]
+    [ProducesResponseType(typeof(IReadOnlyCollection<ParkItemDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetRelatedAsync([FromRoute] string id, [FromQuery] int limit = 3, CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<IReadOnlyCollection<ParkItem>> result = await this.getRelatedParkItemsQueryHandler.HandleAsync(
+            new GetRelatedParkItemsQuery(id, limit, this.UserCanSeeNonVisible()),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.Select(static item => item.ToHttp()).ToList());
     }
 
     [HttpGet("{id}")]

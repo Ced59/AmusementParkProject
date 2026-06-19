@@ -1,6 +1,7 @@
 import { ImageDto } from '@app/models/images/image-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
 import { MeasurementSystem, DEFAULT_MEASUREMENT_SYSTEM } from '@shared/models/measurements/measurement-system.model';
 import { MeasurementConversionService } from '@shared/services/measurements/measurement-conversion.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
@@ -25,6 +26,7 @@ import {
   buildItemsLink,
   buildParkLink,
   buildSearchNavigation,
+  buildSiblingNavigation,
   buildTypeNavigation,
   buildVideosLink,
   buildZoneNavigation
@@ -48,6 +50,7 @@ export function mapParkItemToDetailViewModel(
   zoneName: string | null,
   currentLanguage: string,
   relatedItems: ParkItem[] = [],
+  siblingNavigation: ParkItemSiblingNavigation | null = null,
   photos: ImageDto[] = [],
   textTruncator: NaturalTextTruncatorService | null = null,
   measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
@@ -92,6 +95,7 @@ export function mapParkItemToDetailViewModel(
     itemsLink,
     imagesLink,
     videosLink,
+    siblingNavigation: buildSiblingNavigation(siblingNavigation, park, currentLanguage),
     categoryNavigation: buildCategoryNavigation(itemsLink, item.category),
     typeNavigation: buildTypeNavigation(itemsLink, item.type),
     subtypeNavigation: buildSearchNavigation(itemsLink, item.subtype),

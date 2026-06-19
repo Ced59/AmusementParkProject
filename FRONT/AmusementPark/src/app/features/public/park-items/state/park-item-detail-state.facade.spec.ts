@@ -6,6 +6,7 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import {
   PARK_ITEM_DETAIL_IMAGES_PORT,
@@ -24,16 +25,23 @@ import { ParkItemDetailStateFacade } from './park-item-detail-state.facade';
 class FakeItemsPort implements ParkItemDetailItemsPort {
   public itemResponse$: Observable<ParkItem> = of(createParkItem());
   public relatedResponse$: Observable<ParkItem[]> = of([]);
+  public siblingResponse$: Observable<ParkItemSiblingNavigation> = of(createSiblingNavigation());
   public readonly itemCalls: string[] = [];
   public readonly relatedCalls: string[] = [];
+  public readonly siblingCalls: string[] = [];
 
   getParkItemById(id: string): Observable<ParkItem> {
     this.itemCalls.push(id);
     return this.itemResponse$;
   }
 
-  getParkItemsByParkId(parkId: string): Observable<ParkItem[]> {
-    this.relatedCalls.push(parkId);
+  getParkItemSiblingNavigation(itemId: string): Observable<ParkItemSiblingNavigation> {
+    this.siblingCalls.push(itemId);
+    return this.siblingResponse$;
+  }
+
+  getRelatedParkItems(itemId: string, limit: number = 3): Observable<ParkItem[]> {
+    this.relatedCalls.push(`${itemId}:${limit}`);
     return this.relatedResponse$;
   }
 }
@@ -143,6 +151,18 @@ function createImage(id: string): ImageDto {
   };
 }
 
+function createSiblingNavigation(): ParkItemSiblingNavigation {
+  return {
+    parkId: 'park-1',
+    currentItemId: 'item-1',
+    currentPosition: 1,
+    totalItems: 2,
+    remainingItems: 1,
+    previous: null,
+    next: { id: 'item-2', name: 'Raik' }
+  };
+}
+
 function configureFacade(): {
   facade: ParkItemDetailStateFacade;
   itemsPort: FakeItemsPort;
@@ -207,11 +227,13 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.facade.detail()?.heroPhoto?.imageId).toBe('image-1');
     expect(context.facade.detail()?.imagesLink).toEqual(['/', 'fr', 'park', 'park-1', 'phantasialand', 'item', 'item-1', 'taron', 'images']);
     expect(context.facade.detail()?.videosLink).toEqual(['/', 'fr', 'park', 'park-1', 'phantasialand', 'item', 'item-1', 'taron', 'videos']);
+    expect(context.facade.detail()?.siblingNavigation?.next?.routerLink).toEqual(['/', 'fr', 'park', 'park-1', 'phantasialand', 'item', 'item-2', 'raik']);
     expect(context.facade.detail()?.relatedItems[0]?.description?.length).toBeLessThanOrEqual(160);
     expect(context.facade.detail()?.relatedItems[0]?.description?.endsWith('...')).toBeTrue();
     expect(context.itemsPort.itemCalls).toEqual(['item-1']);
     expect(context.parksPort.calls).toEqual(['park-1']);
-    expect(context.itemsPort.relatedCalls).toEqual(['park-1']);
+    expect(context.itemsPort.siblingCalls).toEqual(['item-1']);
+    expect(context.itemsPort.relatedCalls).toEqual(['item-1:3']);
     expect(context.manufacturersPort.calls).toEqual(['manufacturer-1']);
     expect(context.zonesPort.calls).toEqual(['zone-1']);
     expect(context.imagesPort.imageCalls).toEqual([

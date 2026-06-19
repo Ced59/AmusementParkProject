@@ -19,6 +19,19 @@ export interface ParkItemDetailNavigationLinkViewModel {
   queryParams?: Record<string, string> | null;
 }
 
+export interface ParkItemDetailSiblingNavigationItemViewModel {
+  name: string;
+  routerLink: string[];
+}
+
+export interface ParkItemDetailSiblingNavigationViewModel {
+  currentPosition: number;
+  totalItems: number;
+  remainingItems: number;
+  previous: ParkItemDetailSiblingNavigationItemViewModel | null;
+  next: ParkItemDetailSiblingNavigationItemViewModel | null;
+}
+
 export interface ParkItemDetailSpecGroupViewModel {
   titleKey: string;
   iconClass: string;
@@ -76,6 +89,7 @@ export interface ParkItemDetailViewModel {
   itemsLink: string[] | null;
   imagesLink: string[] | null;
   videosLink: string[] | null;
+  siblingNavigation: ParkItemDetailSiblingNavigationViewModel | null;
   categoryNavigation: ParkItemDetailNavigationLinkViewModel | null;
   typeNavigation: ParkItemDetailNavigationLinkViewModel | null;
   subtypeNavigation: ParkItemDetailNavigationLinkViewModel | null;
