@@ -22,6 +22,12 @@
       "precipitationSum": "Precipitacion",
       "wind": "Viento"
     },
+    "chart": {
+      "maximum": "Max",
+      "minimum": "Min",
+      "condition": "Tiempo",
+      "temperature": "Temp."
+    },
     "attribution": {
       "short": "Fuente: {{provider}}",
       "full": "Datos meteorologicos proporcionados por {{provider}} bajo licencia:"

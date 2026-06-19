@@ -28,9 +28,10 @@
 .admin-park-weather__run,
 .admin-park-weather__failures,
 .admin-park-weather__empty {
-  border: 1px solid var(--surface-border, #d8dee9);
-  border-radius: 8px;
-  background: var(--surface-card, #ffffff);
+  border: 1px solid var(--app-border, rgba(255, 210, 140, 0.16));
+  border-radius: var(--admin-radius, 0.5rem);
+  background: rgba(255, 210, 140, 0.035);
+  color: var(--app-text, #f7efe2);
 }
 
 .admin-weather-stat-card {
@@ -41,16 +42,25 @@
   padding: 1rem;
 }
 
+:host ::ng-deep .admin-weather-stat-card p-tag,
+:host ::ng-deep .admin-weather-stat-card .p-tag {
+  justify-self: start;
+  width: fit-content;
+  max-width: 100%;
+}
+
 .admin-weather-stat-card span,
 .admin-weather-stat-card small,
 .admin-park-weather__run p,
 .admin-park-weather__run dt,
 .admin-park-weather__failures p,
 .admin-weather-failures-table__muted {
-  color: var(--text-color-secondary, #5d6675);
+  color: var(--app-text-muted, #c9bca7);
 }
 
 .admin-weather-stat-card strong {
+  color: var(--app-heading, #fff7ea);
+  font-family: var(--font-heading, inherit);
   font-size: 2rem;
   line-height: 1;
 }
@@ -69,6 +79,11 @@
   margin: 0;
 }
 
+.admin-park-weather__run h3,
+.admin-park-weather__failures h3 {
+  color: var(--app-heading, #fff7ea);
+}
+
 .admin-park-weather__run dl {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -78,6 +93,7 @@
 
 .admin-park-weather__run dd {
   margin: 0.2rem 0 0;
+  color: var(--app-heading, #fff7ea);
   font-weight: 700;
 }
 
@@ -104,7 +120,7 @@
 }
 
 .admin-park-weather__empty i {
-  color: #0f6d94;
+  color: var(--c-sky, #38c5f5);
   font-size: 2rem;
 }
 
@@ -122,5 +138,16 @@
   .admin-park-weather-header__actions > *,
   .admin-park-weather__failures header button {
     width: 100%;
+  }
+
+  :host ::ng-deep .admin-park-weather-header__actions .p-button {
+    justify-content: center;
+    min-width: 0;
+  }
+
+  :host ::ng-deep .admin-park-weather-header__actions .p-button-icon {
+    flex: 0 0 auto;
+    font-size: 1rem;
+    line-height: 1;
   }
 }

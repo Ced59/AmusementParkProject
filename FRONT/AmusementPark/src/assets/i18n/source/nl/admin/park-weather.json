@@ -21,9 +21,28 @@
         "warnings": "{{count}} waarschuwing(en)",
         "failed": "Fouten"
       },
+      "statuses": {
+        "queued": "In wachtrij",
+        "running": "Bezig",
+        "completed": "Voltooid",
+        "completedWithFailures": "Voltooid met fouten",
+        "failed": "Mislukt",
+        "skipped": "Overgeslagen"
+      },
+      "messages": {
+        "queued": "Weerverversing staat in de wachtrij.",
+        "running": "Weerverversing loopt.",
+        "completed": "Weerverversing voltooid.",
+        "completedWithFailures": "Weerverversing voltooid met fouten.",
+        "canceled": "Weerverversing geannuleerd.",
+        "skippedByManual": "Automatische uitvoering overgeslagen omdat een handmatige verversing deze cyclus al dekt."
+      },
+      "values": {
+        "empty": "-"
+      },
       "latestRun": {
         "title": "Laatste uitvoering",
-        "meta": "{{trigger}} · {{scope}}",
+        "meta": "{{trigger}} - {{scope}}",
         "requestedAt": "Aangevraagd",
         "startedAt": "Gestart",
         "cancelAuto": "Automatische run geannuleerd"

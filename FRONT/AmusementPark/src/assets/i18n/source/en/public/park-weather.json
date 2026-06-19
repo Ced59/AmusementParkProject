@@ -22,6 +22,12 @@
       "precipitationSum": "Rainfall",
       "wind": "Wind"
     },
+    "chart": {
+      "maximum": "Max",
+      "minimum": "Min",
+      "condition": "Weather",
+      "temperature": "Temp."
+    },
     "attribution": {
       "short": "Source: {{provider}}",
       "full": "Weather data provided by {{provider}} under license:"

@@ -69,23 +69,41 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
             this.BuildForecastUrl(park.Position.Latitude, park.Position.Longitude, forecastDays),
             cancellationToken);
 
-        snapshots.AddRange(this.MapDailySnapshots(park, forecastResponse, ParkWeatherDataKind.Forecast));
+        DateTime forecastFetchedAtUtc = DateTime.UtcNow;
+        IReadOnlyCollection<ParkWeatherDailySnapshot> forecastSnapshots = this.MapDailySnapshots(
+            park,
+            forecastResponse,
+            ParkWeatherDataKind.Forecast,
+            forecastFetchedAtUtc);
+        snapshots.AddRange(forecastSnapshots);
 
         if (includeYesterdayObservation)
         {
-            try
+            DateOnly? firstForecastLocalDate = ResolveFirstLocalDate(forecastResponse);
+            if (!firstForecastLocalDate.HasValue)
             {
-                DateOnly yesterday = DateOnly.FromDateTime(DateTime.UtcNow.AddDays(-1));
-                OpenMeteoResponse archiveResponse = await this.GetAsync(
-                    httpClient,
-                    this.BuildArchiveUrl(park.Position.Latitude, park.Position.Longitude, yesterday),
-                    cancellationToken);
-
-                snapshots.AddRange(this.MapDailySnapshots(park, archiveResponse, ParkWeatherDataKind.Observation));
+                warnings.Add("Yesterday observation could not be fetched because Open-Meteo did not return a local forecast date.");
             }
-            catch (Exception exception) when (exception is not OperationCanceledException)
+            else
             {
-                warnings.Add($"Yesterday observation could not be fetched: {SanitizeWarning(exception.Message)}");
+                try
+                {
+                    DateOnly yesterday = firstForecastLocalDate.Value.AddDays(-1);
+                    OpenMeteoResponse archiveResponse = await this.GetAsync(
+                        httpClient,
+                        this.BuildArchiveUrl(park.Position.Latitude, park.Position.Longitude, yesterday),
+                        cancellationToken);
+
+                    snapshots.AddRange(this.MapDailySnapshots(
+                        park,
+                        archiveResponse,
+                        ParkWeatherDataKind.Observation,
+                        DateTime.UtcNow));
+                }
+                catch (Exception exception) when (exception is not OperationCanceledException)
+                {
+                    warnings.Add($"Yesterday observation could not be fetched: {SanitizeWarning(exception.Message)}");
+                }
             }
         }
 
@@ -143,7 +161,11 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
         return BuildUrl(this.settings.OpenMeteoArchiveBaseUrl, query);
     }
 
-    private IReadOnlyCollection<ParkWeatherDailySnapshot> MapDailySnapshots(Park park, OpenMeteoResponse response, ParkWeatherDataKind dataKind)
+    private IReadOnlyCollection<ParkWeatherDailySnapshot> MapDailySnapshots(
+        Park park,
+        OpenMeteoResponse response,
+        ParkWeatherDataKind dataKind,
+        DateTime fetchedAtUtc)
     {
         List<ParkWeatherDailySnapshot> snapshots = new List<ParkWeatherDailySnapshot>();
         IReadOnlyList<string> times = response.Daily?.Time is { } dailyTimes
@@ -163,7 +185,7 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
                 LocalDate = localDate,
                 DataKind = dataKind,
                 SourceProvider = Provider,
-                FetchedAtUtc = DateTime.UtcNow,
+                FetchedAtUtc = fetchedAtUtc,
                 TimeZone = response.TimeZone,
                 UtcOffsetSeconds = response.UtcOffsetSeconds,
                 Latitude = response.Latitude ?? park.Position?.Latitude ?? 0d,
@@ -181,6 +203,22 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
         }
 
         return snapshots;
+    }
+
+    private static DateOnly? ResolveFirstLocalDate(OpenMeteoResponse response)
+    {
+        string? firstTime = response.Daily?.Time?.FirstOrDefault();
+        if (string.IsNullOrWhiteSpace(firstTime))
+        {
+            return null;
+        }
+
+        if (!DateOnly.TryParseExact(firstTime, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateOnly localDate))
+        {
+            return null;
+        }
+
+        return localDate;
     }
 
     private static string BuildUrl(string baseUrl, IReadOnlyDictionary<string, string> query)

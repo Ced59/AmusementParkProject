@@ -90,6 +90,19 @@ public sealed class ParkWeatherRepository : IParkWeatherRepository
         await this.collection.DeleteManyAsync(filter, cancellationToken);
     }
 
+    public async Task<ParkWeatherDailySnapshot?> GetLatestForecastSnapshotAsync(string parkId, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkWeatherDailySnapshotDocument> filter = Builders<ParkWeatherDailySnapshotDocument>.Filter.Eq(item => item.ParkId, parkId)
+            & Builders<ParkWeatherDailySnapshotDocument>.Filter.Eq(item => item.DataKind, ParkWeatherDataKind.Forecast);
+
+        ParkWeatherDailySnapshotDocument? document = await this.collection.Find(filter)
+            .SortByDescending(item => item.FetchedAtUtc)
+            .ThenByDescending(item => item.LocalDate)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        return document?.ToDomain();
+    }
+
     public async Task<IReadOnlyCollection<ParkWeatherDailySnapshot>> GetForecastAsync(string parkId, DateOnly fromLocalDate, int dayCount, CancellationToken cancellationToken)
     {
         string fromDate = EntityMongoMappers.FormatDate(fromLocalDate);

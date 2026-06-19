@@ -19,6 +19,7 @@ import { MeasurementConversionService } from '@shared/services/measurements/meas
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
+import { UiButtonDirective } from '@ui/primitives';
 import { resolveWeatherConditionKey, resolveWeatherIconClass } from '../ui/park-weather-card.component';
 
 interface ParkWeatherPageData {
@@ -26,12 +27,19 @@ interface ParkWeatherPageData {
   weather: ParkWeatherForecast;
 }
 
+type TemperatureSeriesKind = 'min' | 'max';
+
+const CHART_LEFT: number = 64;
+const CHART_RIGHT: number = 724;
+const CHART_TOP: number = 28;
+const CHART_BOTTOM: number = 216;
+
 @Component({
   selector: 'app-park-weather-page',
   templateUrl: './park-weather-page.component.html',
   styleUrls: ['./park-weather-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, RouterLink, TranslateModule]
+  imports: [PageStateComponent, RouterLink, TranslateModule, UiButtonDirective]
 })
 export class ParkWeatherPageComponent implements OnInit {
   private readonly stateStore = new SignalScreenStateStore<ParkWeatherPageData>();
@@ -111,10 +119,87 @@ export class ParkWeatherPageComponent implements OnInit {
     return min ?? max ?? '';
   }
 
+  temperatureLinePoints(days: ParkWeatherDay[], kind: TemperatureSeriesKind): string {
+    return days
+      .map((day: ParkWeatherDay, index: number) => {
+        const value: number | null | undefined = kind === 'max'
+          ? day.temperatureMaxCelsius
+          : day.temperatureMinCelsius;
+
+        if (!this.isTemperatureAvailable(value)) {
+          return null;
+        }
+
+        return `${this.chartDayX(index, days)},${this.temperatureY(value, days)}`;
+      })
+      .filter((point: string | null): point is string => point !== null)
+      .join(' ');
+  }
+
+  chartAxisValues(days: ParkWeatherDay[]): number[] {
+    const scale: { min: number; max: number } = this.temperatureScale(days);
+    const middle: number = scale.min + ((scale.max - scale.min) / 2);
+    return [scale.max, middle, scale.min];
+  }
+
+  chartDayX(index: number, days: ParkWeatherDay[]): number {
+    const dayCount: number = Math.max(1, days.length);
+    const step: number = (CHART_RIGHT - CHART_LEFT) / dayCount;
+    return Math.round(CHART_LEFT + (step * index) + (step / 2));
+  }
+
+  temperatureY(value: number | null | undefined, days: ParkWeatherDay[]): number {
+    if (!this.isTemperatureAvailable(value)) {
+      return CHART_BOTTOM;
+    }
+
+    const scale: { min: number; max: number } = this.temperatureScale(days);
+    const ratio: number = (value - scale.min) / Math.max(1, scale.max - scale.min);
+    return Math.round(CHART_BOTTOM - (ratio * (CHART_BOTTOM - CHART_TOP)));
+  }
+
+  isTemperatureAvailable(value: number | null | undefined): value is number {
+    return value !== null && value !== undefined && Number.isFinite(value);
+  }
+
+  precipitationProbabilityLabel(day: ParkWeatherDay): string {
+    if (day.precipitationProbabilityMaxPercent === null || day.precipitationProbabilityMaxPercent === undefined) {
+      return '-';
+    }
+
+    return `${this.formatNumber(day.precipitationProbabilityMaxPercent, 0)}%`;
+  }
+
+  precipitationSumLabel(day: ParkWeatherDay): string {
+    if (day.precipitationSumMillimeters === null || day.precipitationSumMillimeters === undefined) {
+      return '-';
+    }
+
+    return `${this.formatNumber(day.precipitationSumMillimeters, 1)} mm`;
+  }
+
+  windSpeedLabel(day: ParkWeatherDay): string {
+    return this.measurementConversionService.formatSpeedFromKilometersPerHour(
+      day.windSpeedMaxKilometersPerHour,
+      this.measurementPreferenceService.preferredSystem(),
+      this.currentLanguage()) ?? '-';
+  }
+
+  chartTemperatureLabel(value: number | null | undefined): string {
+    return this.formatTemperature(value) ?? '-';
+  }
+
   formatDate(value: string): string {
     return new Intl.DateTimeFormat(this.currentLanguage(), {
       weekday: 'short',
       month: 'short',
+      day: 'numeric'
+    }).format(new Date(`${value}T12:00:00`));
+  }
+
+  formatShortDate(value: string): string {
+    return new Intl.DateTimeFormat(this.currentLanguage(), {
+      weekday: 'short',
       day: 'numeric'
     }).format(new Date(`${value}T12:00:00`));
   }
@@ -152,5 +237,38 @@ export class ParkWeatherPageComponent implements OnInit {
       value,
       this.measurementPreferenceService.preferredSystem(),
       this.currentLanguage());
+  }
+
+  private temperatureScale(days: ParkWeatherDay[]): { min: number; max: number } {
+    const values: number[] = days
+      .flatMap((day: ParkWeatherDay) => [day.temperatureMinCelsius, day.temperatureMaxCelsius])
+      .filter((value: number | null | undefined): value is number => this.isTemperatureAvailable(value));
+
+    if (values.length === 0) {
+      return { min: 0, max: 10 };
+    }
+
+    const rawMin: number = Math.min(...values);
+    const rawMax: number = Math.max(...values);
+    const padding: number = Math.max(2, (rawMax - rawMin) * 0.16);
+
+    if (rawMax === rawMin) {
+      return {
+        min: rawMin - 3,
+        max: rawMax + 3
+      };
+    }
+
+    return {
+      min: Math.floor(rawMin - padding),
+      max: Math.ceil(rawMax + padding)
+    };
+  }
+
+  private formatNumber(value: number, maximumFractionDigits: number): string {
+    return new Intl.NumberFormat(this.currentLanguage(), {
+      maximumFractionDigits,
+      minimumFractionDigits: 0
+    }).format(value);
   }
 }

@@ -571,9 +571,28 @@
         "warnings": "{{count}} warning(s)",
         "failed": "Failed"
       },
+      "statuses": {
+        "queued": "Queued",
+        "running": "Running",
+        "completed": "Completed",
+        "completedWithFailures": "Completed with failures",
+        "failed": "Failed",
+        "skipped": "Skipped"
+      },
+      "messages": {
+        "queued": "Weather refresh queued.",
+        "running": "Weather refresh running.",
+        "completed": "Weather refresh completed.",
+        "completedWithFailures": "Weather refresh completed with failures.",
+        "canceled": "Weather refresh canceled.",
+        "skippedByManual": "Automatic weather refresh skipped because a manual refresh already covers this cycle."
+      },
+      "values": {
+        "empty": "-"
+      },
       "latestRun": {
         "title": "Latest run",
-        "meta": "{{trigger}} · {{scope}}",
+        "meta": "{{trigger}} - {{scope}}",
         "requestedAt": "Requested",
         "startedAt": "Started",
         "cancelAuto": "Auto run canceled"
@@ -2333,6 +2352,12 @@
       "precipitationProbability": "Rain risk",
       "precipitationSum": "Rainfall",
       "wind": "Wind"
+    },
+    "chart": {
+      "maximum": "Max",
+      "minimum": "Min",
+      "condition": "Weather",
+      "temperature": "Temp."
     },
     "attribution": {
       "short": "Source: {{provider}}",

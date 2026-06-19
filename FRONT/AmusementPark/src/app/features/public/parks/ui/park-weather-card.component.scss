@@ -2,10 +2,15 @@
   display: grid;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid color-mix(in srgb, var(--surface-border, #d8dee9) 72%, transparent);
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--surface-card, #ffffff) 94%, #e8f5f0);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid var(--app-border, rgba(255, 210, 140, 0.12));
+  border-radius: var(--radius-md, 8px);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--app-surface, #1a140f) 92%, transparent),
+    color-mix(in srgb, var(--app-surface-2, #211a13) 100%, transparent)
+  );
+  box-shadow: var(--shadow-card, 0 14px 30px rgba(15, 23, 42, 0.12));
+  color: var(--app-text, #f6eed9);
 }
 
 .park-weather-card__header {
@@ -20,9 +25,10 @@
   height: 3.25rem;
   place-items: center;
   flex: 0 0 auto;
-  border-radius: 8px;
-  background: #e2f2ff;
-  color: #0f6d94;
+  border: 1px solid color-mix(in srgb, var(--app-accent-cyan, #38c5f5) 24%, var(--app-border, rgba(255, 210, 140, 0.12)));
+  border-radius: var(--radius-md, 8px);
+  background: color-mix(in srgb, var(--app-accent-cyan, #38c5f5) 12%, var(--app-surface, #1a140f));
+  color: var(--app-accent-cyan, #38c5f5);
   font-size: 1.55rem;
 }
 
@@ -32,6 +38,7 @@
 }
 
 .park-weather-card h2 {
+  color: var(--app-heading, #ffffff);
   font-size: 1rem;
   line-height: 1.25;
 }
@@ -42,13 +49,14 @@
 }
 
 .park-weather-card__values strong {
+  color: var(--app-heading, #ffffff);
   font-size: 1.45rem;
   line-height: 1.1;
 }
 
 .park-weather-card__values span,
 .park-weather-card__source {
-  color: var(--text-color-secondary, #5d6675);
+  color: var(--app-text-muted, #b09d7a);
   font-size: 0.9rem;
 }
 
@@ -58,7 +66,7 @@
   justify-content: space-between;
   gap: 0.5rem;
   min-height: 2.5rem;
-  color: #0f6d94;
+  color: var(--app-accent-cyan, #38c5f5);
   font-weight: 700;
   text-decoration: none;
 }

@@ -21,9 +21,28 @@
         "warnings": "{{count}} Warnung(en)",
         "failed": "Fehler"
       },
+      "statuses": {
+        "queued": "In Warteschlange",
+        "running": "Lauft",
+        "completed": "Abgeschlossen",
+        "completedWithFailures": "Abgeschlossen mit Fehlern",
+        "failed": "Fehlgeschlagen",
+        "skipped": "Ubersprungen"
+      },
+      "messages": {
+        "queued": "Wetteraktualisierung ist in der Warteschlange.",
+        "running": "Wetteraktualisierung lauft.",
+        "completed": "Wetteraktualisierung abgeschlossen.",
+        "completedWithFailures": "Wetteraktualisierung mit Fehlern abgeschlossen.",
+        "canceled": "Wetteraktualisierung wurde abgebrochen.",
+        "skippedByManual": "Automatische Ausfuhrung ubersprungen, da eine manuelle Aktualisierung diesen Zyklus bereits abdeckt."
+      },
+      "values": {
+        "empty": "-"
+      },
       "latestRun": {
         "title": "Letzte Ausfuhrung",
-        "meta": "{{trigger}} · {{scope}}",
+        "meta": "{{trigger}} - {{scope}}",
         "requestedAt": "Angefordert",
         "startedAt": "Gestartet",
         "cancelAuto": "Automatiklauf storniert"
