@@ -5,7 +5,7 @@ import { UserRatingStats, UserRatingsPage } from '@app/models/ratings/rating.mod
 import { RatingsApiService } from '@data-access/ratings/ratings-api.service';
 
 export interface ProfileRatingsPort {
-  getMyRatings(page: number, size: number): Observable<UserRatingsPage>;
+  getMyRatings(page: number, size: number, search: string | null): Observable<UserRatingsPage>;
   getMyRatingStats(): Observable<UserRatingStats>;
 }
 

@@ -61,7 +61,6 @@ public sealed record UserRatingStatsResult(
     IReadOnlyCollection<UserRatingStatBucketResult> ByParkItemCategory);
 
 public sealed record RatingRankingItemResult(
-    int Rank,
     RatingTargetType TargetType,
     string TargetId,
     string TargetName,
@@ -70,5 +69,34 @@ public sealed record RatingRankingItemResult(
     ParkItemCategory? ParkItemCategory,
     ParkItemType? ParkItemType,
     long RatingCount,
+    double RatingSum,
     double AverageRating,
     double BayesianScore);
+
+public sealed record ParkRatingRankingItemResult(
+    string TargetId,
+    string TargetName,
+    ParkItemCategory? ParkItemCategory,
+    ParkItemType? ParkItemType,
+    long RatingCount,
+    double AverageRating,
+    double BayesianScore);
+
+public sealed record ParkRatingRankingCategoryResult(
+    ParkItemCategory ParkItemCategory,
+    long RatingCount,
+    double AverageRating,
+    double BayesianScore,
+    IReadOnlyCollection<ParkRatingRankingItemResult> Items);
+
+public sealed record ParkRatingRankingResult(
+    int Rank,
+    string ParkId,
+    string ParkName,
+    long RatingCount,
+    double Score,
+    long ParkRatingCount,
+    double ParkAverageRating,
+    long ItemsRatingCount,
+    double ItemsAverageRating,
+    IReadOnlyCollection<ParkRatingRankingCategoryResult> Categories);

@@ -37,6 +37,14 @@ public sealed class RatingScoreCalculatorTests
         Assert.Equal(3.75d, score);
     }
 
+    [Fact]
+    public void CalculateCompositeParkScore_WhenParkAndItemsExist_ShouldFavorDirectParkRating()
+    {
+        double score = RatingScoreCalculator.CalculateCompositeParkScore(4.5d, 3.5d);
+
+        Assert.Equal(4.2d, score, 6);
+    }
+
     [Theory]
     [InlineData(0.5d)]
     [InlineData(1d)]

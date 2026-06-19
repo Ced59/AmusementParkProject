@@ -15,14 +15,12 @@ public interface IRatingRepository
 
     Task<RatingAggregate?> RecalculateAggregateAsync(RatingTargetMetadataResult metadata, CancellationToken cancellationToken);
 
-    Task<PagedResult<UserRatingListItemResult>> GetUserRatingsAsync(string userId, int page, int pageSize, CancellationToken cancellationToken);
+    Task<PagedResult<UserRatingListItemResult>> GetUserRatingsAsync(string userId, int page, int pageSize, string? parkSearch, CancellationToken cancellationToken);
 
     Task<UserRatingStatsResult> GetUserRatingStatsAsync(string userId, CancellationToken cancellationToken);
 
-    Task<PagedResult<RatingRankingItemResult>> GetRankingsAsync(
-        RatingTargetType? targetType,
+    Task<IReadOnlyCollection<RatingRankingItemResult>> GetVisibleRankingSourcesAsync(
         ParkItemCategory? parkItemCategory,
-        int page,
-        int pageSize,
+        int maxItems,
         CancellationToken cancellationToken);
 }

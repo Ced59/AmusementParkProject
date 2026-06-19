@@ -268,6 +268,7 @@ public sealed class ListUserRatingsQueryHandler : IQueryHandler<ListUserRatingsQ
             query.UserId.Trim(),
             query.Paging.Page,
             query.Paging.PageSize,
+            query.ParkSearch,
             cancellationToken);
 
         return ApplicationResult<PagedResult<UserRatingListItemResult>>.Success(result);
@@ -295,8 +296,10 @@ public sealed class GetUserRatingStatsQueryHandler : IQueryHandler<GetUserRating
     }
 }
 
-public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRankingsQuery, ApplicationResult<PagedResult<RatingRankingItemResult>>>
+public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRankingsQuery, ApplicationResult<PagedResult<ParkRatingRankingResult>>>
 {
+    private const int RankingSourceLimit = 5000;
+
     private readonly IRatingRepository ratingRepository;
     private readonly PagedQueryValidator pagedQueryValidator;
 
@@ -306,26 +309,142 @@ public sealed class GetRatingRankingsQueryHandler : IQueryHandler<GetRatingRanki
         this.pagedQueryValidator = pagedQueryValidator;
     }
 
-    public async Task<ApplicationResult<PagedResult<RatingRankingItemResult>>> HandleAsync(GetRatingRankingsQuery query, CancellationToken cancellationToken = default)
+    public async Task<ApplicationResult<PagedResult<ParkRatingRankingResult>>> HandleAsync(GetRatingRankingsQuery query, CancellationToken cancellationToken = default)
     {
-        if (query.TargetType.HasValue && !Enum.IsDefined(query.TargetType.Value))
-        {
-            return ApplicationResult<PagedResult<RatingRankingItemResult>>.Failure(RatingApplicationErrors.InvalidTargetType());
-        }
-
         IReadOnlyCollection<ApplicationError> errors = this.pagedQueryValidator.Validate(query.Paging);
         if (errors.Count > 0)
         {
-            return ApplicationResult<PagedResult<RatingRankingItemResult>>.Failure(errors);
+            return ApplicationResult<PagedResult<ParkRatingRankingResult>>.Failure(errors);
         }
 
-        PagedResult<RatingRankingItemResult> result = await this.ratingRepository.GetRankingsAsync(
-            query.TargetType,
+        IReadOnlyCollection<RatingRankingItemResult> sources = await this.ratingRepository.GetVisibleRankingSourcesAsync(
             query.ParkItemCategory,
-            query.Paging.Page,
-            query.Paging.PageSize,
+            RankingSourceLimit,
             cancellationToken);
 
-        return ApplicationResult<PagedResult<RatingRankingItemResult>>.Success(result);
+        IReadOnlyCollection<ParkRatingRankingResult> rankings = BuildParkRankings(sources, query.ParkItemCategory);
+        PagedResult<ParkRatingRankingResult> result = string.IsNullOrWhiteSpace(query.ParkSearch)
+            ? BuildPagedRankings(rankings, query.Paging.Page, query.Paging.PageSize)
+            : BuildSearchWindow(rankings, query.ParkSearch.Trim(), query.Paging.PageSize);
+
+        return ApplicationResult<PagedResult<ParkRatingRankingResult>>.Success(result);
+    }
+
+    private static PagedResult<ParkRatingRankingResult> BuildPagedRankings(IReadOnlyCollection<ParkRatingRankingResult> rankings, int page, int pageSize)
+    {
+        IReadOnlyCollection<ParkRatingRankingResult> pageItems = rankings
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+
+        return new PagedResult<ParkRatingRankingResult>(pageItems, page, pageSize, rankings.Count);
+    }
+
+    private static PagedResult<ParkRatingRankingResult> BuildSearchWindow(IReadOnlyCollection<ParkRatingRankingResult> rankings, string parkSearch, int requestedPageSize)
+    {
+        List<ParkRatingRankingResult> orderedRankings = rankings.ToList();
+        int matchIndex = orderedRankings.FindIndex(ranking => ranking.ParkName.Contains(parkSearch, StringComparison.OrdinalIgnoreCase));
+        if (matchIndex < 0)
+        {
+            return new PagedResult<ParkRatingRankingResult>(Array.Empty<ParkRatingRankingResult>(), 1, requestedPageSize, 0);
+        }
+
+        const int contextSize = 5;
+        int startIndex = Math.Max(0, matchIndex - contextSize);
+        int endIndex = Math.Min(orderedRankings.Count - 1, matchIndex + contextSize);
+        List<ParkRatingRankingResult> items = orderedRankings
+            .Skip(startIndex)
+            .Take(endIndex - startIndex + 1)
+            .ToList();
+
+        return new PagedResult<ParkRatingRankingResult>(items, 1, Math.Max(items.Count, 1), items.Count);
+    }
+
+    private static IReadOnlyCollection<ParkRatingRankingResult> BuildParkRankings(IReadOnlyCollection<RatingRankingItemResult> sources, ParkItemCategory? categoryFilter)
+    {
+        List<ParkRatingRankingResult> rankings = sources
+            .Where(static source => !string.IsNullOrWhiteSpace(source.ParkId))
+            .GroupBy(static source => source.ParkId, StringComparer.Ordinal)
+            .Select(group => BuildParkRanking(group.Key, group.ToList(), categoryFilter))
+            .Where(static ranking => ranking is not null)
+            .Select(static ranking => ranking!)
+            .OrderByDescending(static ranking => ranking.Score)
+            .ThenByDescending(static ranking => ranking.RatingCount)
+            .ThenBy(static ranking => ranking.ParkName, StringComparer.OrdinalIgnoreCase)
+            .Select(static (ranking, index) => ranking with { Rank = index + 1 })
+            .ToList();
+
+        return rankings;
+    }
+
+    private static ParkRatingRankingResult? BuildParkRanking(string parkId, IReadOnlyCollection<RatingRankingItemResult> sources, ParkItemCategory? categoryFilter)
+    {
+        RatingRankingItemResult? directParkSource = sources.FirstOrDefault(static source => source.TargetType == RatingTargetType.Park);
+        List<RatingRankingItemResult> itemSources = sources
+            .Where(static source => source.TargetType == RatingTargetType.ParkItem && source.ParkItemCategory.HasValue)
+            .ToList();
+
+        if (categoryFilter.HasValue && itemSources.Count == 0)
+        {
+            return null;
+        }
+
+        List<ParkRatingRankingCategoryResult> categories = itemSources
+            .GroupBy(static source => source.ParkItemCategory!.Value)
+            .Select(static group => BuildCategoryRanking(group.Key, group.ToList()))
+            .OrderByDescending(static category => category.BayesianScore)
+            .ThenBy(static category => category.ParkItemCategory)
+            .ToList();
+
+        double? directParkScore = directParkSource?.BayesianScore;
+        double? itemsScore = categories.Count == 0
+            ? null
+            : RatingScoreCalculator.CalculateCategoryBalancedItemsScore(categories.Select(static category => category.BayesianScore).ToList());
+        double score = RatingScoreCalculator.CalculateCompositeParkScore(directParkScore, itemsScore);
+        long parkRatingCount = directParkSource?.RatingCount ?? 0;
+        long itemRatingCount = itemSources.Sum(static source => source.RatingCount);
+        long totalRatingCount = parkRatingCount + itemRatingCount;
+        double itemRatingSum = itemSources.Sum(static source => source.RatingSum);
+        string parkName = directParkSource?.TargetName
+            ?? sources.Select(static source => source.ParkName).FirstOrDefault(static name => !string.IsNullOrWhiteSpace(name))?.Trim()
+            ?? parkId;
+
+        return new ParkRatingRankingResult(
+            0,
+            parkId,
+            parkName,
+            totalRatingCount,
+            score,
+            parkRatingCount,
+            directParkSource?.AverageRating ?? 0d,
+            itemRatingCount,
+            RatingScoreCalculator.CalculateAverage(itemRatingSum, itemRatingCount),
+            categories);
+    }
+
+    private static ParkRatingRankingCategoryResult BuildCategoryRanking(ParkItemCategory category, IReadOnlyCollection<RatingRankingItemResult> sources)
+    {
+        long ratingCount = sources.Sum(static source => source.RatingCount);
+        double ratingSum = sources.Sum(static source => source.RatingSum);
+        List<ParkRatingRankingItemResult> items = sources
+            .OrderByDescending(static source => source.BayesianScore)
+            .ThenByDescending(static source => source.RatingCount)
+            .ThenBy(static source => source.TargetName, StringComparer.OrdinalIgnoreCase)
+            .Select(static source => new ParkRatingRankingItemResult(
+                source.TargetId,
+                source.TargetName,
+                source.ParkItemCategory,
+                source.ParkItemType,
+                source.RatingCount,
+                source.AverageRating,
+                source.BayesianScore))
+            .ToList();
+
+        return new ParkRatingRankingCategoryResult(
+            category,
+            ratingCount,
+            RatingScoreCalculator.CalculateAverage(ratingSum, ratingCount),
+            RatingScoreCalculator.CalculateBayesianScore(ratingSum, ratingCount),
+            items);
     }
 }

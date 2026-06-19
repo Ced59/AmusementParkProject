@@ -101,19 +101,11 @@ public sealed class UserRatingStatsDto
     public IReadOnlyCollection<UserRatingStatBucketDto> ByParkItemCategory { get; set; } = Array.Empty<UserRatingStatBucketDto>();
 }
 
-public sealed class RatingRankingItemDto
+public sealed class ParkRatingRankingItemDto
 {
-    public int Rank { get; set; }
-
-    public string TargetType { get; set; } = string.Empty;
-
     public string TargetId { get; set; } = string.Empty;
 
     public string TargetName { get; set; } = string.Empty;
-
-    public string ParkId { get; set; } = string.Empty;
-
-    public string? ParkName { get; set; }
 
     public string? ParkItemCategory { get; set; }
 
@@ -124,4 +116,40 @@ public sealed class RatingRankingItemDto
     public double AverageRating { get; set; }
 
     public double BayesianScore { get; set; }
+}
+
+public sealed class ParkRatingRankingCategoryDto
+{
+    public string ParkItemCategory { get; set; } = string.Empty;
+
+    public long RatingCount { get; set; }
+
+    public double AverageRating { get; set; }
+
+    public double BayesianScore { get; set; }
+
+    public IReadOnlyCollection<ParkRatingRankingItemDto> Items { get; set; } = Array.Empty<ParkRatingRankingItemDto>();
+}
+
+public sealed class ParkRatingRankingDto
+{
+    public int Rank { get; set; }
+
+    public string ParkId { get; set; } = string.Empty;
+
+    public string ParkName { get; set; } = string.Empty;
+
+    public long RatingCount { get; set; }
+
+    public double Score { get; set; }
+
+    public long ParkRatingCount { get; set; }
+
+    public double ParkAverageRating { get; set; }
+
+    public long ItemsRatingCount { get; set; }
+
+    public double ItemsAverageRating { get; set; }
+
+    public IReadOnlyCollection<ParkRatingRankingCategoryDto> Categories { get; set; } = Array.Empty<ParkRatingRankingCategoryDto>();
 }

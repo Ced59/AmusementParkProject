@@ -60,13 +60,9 @@ export interface UserRatingStats {
   byParkItemCategory: UserRatingStatBucket[];
 }
 
-export interface RatingRankingItem {
-  rank: number;
-  targetType: RatingTargetType;
+export interface ParkRatingRankingItem {
   targetId: string;
   targetName: string;
-  parkId: string;
-  parkName?: string | null;
   parkItemCategory?: string | null;
   parkItemType?: string | null;
   ratingCount: number;
@@ -74,5 +70,26 @@ export interface RatingRankingItem {
   bayesianScore: number;
 }
 
+export interface ParkRatingRankingCategory {
+  parkItemCategory: string;
+  ratingCount: number;
+  averageRating: number;
+  bayesianScore: number;
+  items: ParkRatingRankingItem[];
+}
+
+export interface ParkRatingRanking {
+  rank: number;
+  parkId: string;
+  parkName: string;
+  ratingCount: number;
+  score: number;
+  parkRatingCount: number;
+  parkAverageRating: number;
+  itemsRatingCount: number;
+  itemsAverageRating: number;
+  categories: ParkRatingRankingCategory[];
+}
+
 export type UserRatingsPage = PagedResult<UserRatingListItem>;
-export type RatingRankingsPage = PagedResult<RatingRankingItem>;
+export type RatingRankingsPage = PagedResult<ParkRatingRanking>;

@@ -31,7 +31,7 @@ public sealed class RatingsController : ControllerBase
     private readonly IQueryHandler<GetUserRatingQuery, ApplicationResult<UserRatingResult?>> getUserRatingQueryHandler;
     private readonly IQueryHandler<ListUserRatingsQuery, ApplicationResult<PagedResult<UserRatingListItemResult>>> listUserRatingsQueryHandler;
     private readonly IQueryHandler<GetUserRatingStatsQuery, ApplicationResult<UserRatingStatsResult>> getUserRatingStatsQueryHandler;
-    private readonly IQueryHandler<GetRatingRankingsQuery, ApplicationResult<PagedResult<RatingRankingItemResult>>> getRatingRankingsQueryHandler;
+    private readonly IQueryHandler<GetRatingRankingsQuery, ApplicationResult<PagedResult<ParkRatingRankingResult>>> getRatingRankingsQueryHandler;
 
     public RatingsController(
         ICommandHandler<UpsertUserRatingCommand, ApplicationResult<UserRatingResult>> upsertUserRatingCommandHandler,
@@ -39,7 +39,7 @@ public sealed class RatingsController : ControllerBase
         IQueryHandler<GetUserRatingQuery, ApplicationResult<UserRatingResult?>> getUserRatingQueryHandler,
         IQueryHandler<ListUserRatingsQuery, ApplicationResult<PagedResult<UserRatingListItemResult>>> listUserRatingsQueryHandler,
         IQueryHandler<GetUserRatingStatsQuery, ApplicationResult<UserRatingStatsResult>> getUserRatingStatsQueryHandler,
-        IQueryHandler<GetRatingRankingsQuery, ApplicationResult<PagedResult<RatingRankingItemResult>>> getRatingRankingsQueryHandler)
+        IQueryHandler<GetRatingRankingsQuery, ApplicationResult<PagedResult<ParkRatingRankingResult>>> getRatingRankingsQueryHandler)
     {
         this.upsertUserRatingCommandHandler = upsertUserRatingCommandHandler;
         this.getRatingSummaryQueryHandler = getRatingSummaryQueryHandler;
@@ -70,17 +70,16 @@ public sealed class RatingsController : ControllerBase
     [HttpGet("rankings")]
     [AllowAnonymous]
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataShort)]
-    [ProducesResponseType(typeof(PagedResponseDto<RatingRankingItemDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PagedResponseDto<ParkRatingRankingDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetRankingsAsync(
         [FromQuery] PaginationRequestDto pagination,
-        [FromQuery] string? targetType = null,
         [FromQuery] string? category = null,
+        [FromQuery] string? search = null,
         CancellationToken cancellationToken = default)
     {
-        RatingTargetType? parsedTargetType = string.IsNullOrWhiteSpace(targetType) ? null : targetType.ToRatingTargetType();
         ParkItemCategory? parsedCategory = category.ToParkItemCategoryFilter();
-        ApplicationResult<PagedResult<RatingRankingItemResult>> result = await this.getRatingRankingsQueryHandler.HandleAsync(
-            new GetRatingRankingsQuery(parsedTargetType, parsedCategory, pagination.ToApplication()),
+        ApplicationResult<PagedResult<ParkRatingRankingResult>> result = await this.getRatingRankingsQueryHandler.HandleAsync(
+            new GetRatingRankingsQuery(parsedCategory, pagination.ToApplication(), search),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -95,7 +94,7 @@ public sealed class RatingsController : ControllerBase
     [Authorize(Roles = AuthorizationRoleGroups.UserModeratorAdmin)]
     [RequireActivatedUnblockedUser]
     [ProducesResponseType(typeof(PagedResponseDto<UserRatingListItemDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetMyRatingsAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetMyRatingsAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? search = null, CancellationToken cancellationToken = default)
     {
         string? userId = this.User.GetUserId();
         if (string.IsNullOrWhiteSpace(userId))
@@ -104,7 +103,7 @@ public sealed class RatingsController : ControllerBase
         }
 
         ApplicationResult<PagedResult<UserRatingListItemResult>> result = await this.listUserRatingsQueryHandler.HandleAsync(
-            new ListUserRatingsQuery(userId, pagination.ToApplication()),
+            new ListUserRatingsQuery(userId, pagination.ToApplication(), search),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

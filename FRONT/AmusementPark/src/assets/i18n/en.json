@@ -2678,7 +2678,8 @@
       "prompt": "Choose your rating",
       "signInMessage": "Sign in to leave your rating.",
       "savedMessage": "Thanks, your rating has been saved.",
-      "errorMessage": "Your rating could not be saved right now."
+      "errorMessage": "Your rating could not be saved right now.",
+      "savedToast": "Your rating has been saved."
     },
     "profile": {
       "kicker": "My ratings",
@@ -2696,7 +2697,14 @@
       "byPark": "By park",
       "byKind": "By type",
       "unknownPark": "Linked park",
-      "communityAverage": "Average rating"
+      "communityAverage": "Average rating",
+      "searchLabel": "Search your rated parks",
+      "searchPlaceholder": "Find a park in your ratings",
+      "searchAction": "Search",
+      "clearSearch": "Clear search",
+      "ratingCount": "{{count}} rating(s)",
+      "loadMore": "Load more ratings",
+      "loadingMore": "Loading ratings..."
     },
     "rankings": {
       "kicker": "Community favorites",
@@ -2716,7 +2724,17 @@
         "restaurants": "Restaurants",
         "hotels": "Hotels",
         "services": "Services"
-      }
+      },
+      "calculationHint": "Park rankings combine visitor ratings for the park and the rated places inside it, so a park stands out for its overall experience and what visitors enjoyed on site.",
+      "scoreAria": "Rating {{value}} out of 5",
+      "parkSignal": "Park rating",
+      "itemsSignal": "Places rating",
+      "searchLabel": "Search a park in rankings",
+      "searchPlaceholder": "Find a park in the ranking",
+      "searchAction": "Search",
+      "clearSearch": "Clear search",
+      "loadMore": "Load more parks",
+      "loadingMore": "Loading parks..."
     },
     "targetTypes": {
       "Park": "Parks",
