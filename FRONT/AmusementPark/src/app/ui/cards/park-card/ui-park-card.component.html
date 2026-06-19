@@ -67,13 +67,6 @@
     </div>
 
     <div class="ui-park-card__footer">
-      @if (detailLink) {
-        <a appUiButton="primary" [routerLink]="detailLink" class="ui-park-card__cta">
-          <span>{{ primaryActionLabelKey | translate }}</span>
-          <i class="pi pi-arrow-right" aria-hidden="true"></i>
-        </a>
-      }
-
       @if (canOpenWebsite) {
         <a
           appUiButton="soft"
@@ -84,6 +77,13 @@
           [attr.aria-label]="'parks.actions.website' | translate">
           <i class="pi pi-external-link" aria-hidden="true"></i>
           <span>{{ 'parks.actions.website' | translate }}</span>
+        </a>
+      }
+
+      @if (detailLink) {
+        <a appUiButton="primary" [routerLink]="detailLink" class="ui-park-card__cta">
+          <span>{{ primaryActionLabelKey | translate }}</span>
+          <i class="pi pi-arrow-right" aria-hidden="true"></i>
         </a>
       }
     </div>

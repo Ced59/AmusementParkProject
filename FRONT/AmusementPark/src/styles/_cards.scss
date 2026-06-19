@@ -321,12 +321,18 @@ a.public-feature-card:hover {
   padding: 0 1.1rem 1.1rem;
 }
 
+.ui-park-card__footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+
 .ui-park-card__cta {
-  flex: 1 1 auto;
+  width: 100%;
 }
 
 .ui-park-card__secondary-cta {
-  flex: 0 0 auto;
+  width: 100%;
 }
 
 .ui-park-card--compact .ui-park-card__visual {

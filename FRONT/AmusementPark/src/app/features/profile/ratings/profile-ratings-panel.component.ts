@@ -266,10 +266,20 @@ export class ProfileRatingsPanelComponent implements OnInit {
         return 20;
       case 'Hotel':
         return 30;
-      case 'Service':
+      case 'Animal':
         return 40;
-      default:
+      case 'Show':
+        return 50;
+      case 'Shop':
+        return 60;
+      case 'Service':
+        return 70;
+      case 'Transport':
+        return 80;
+      case 'Other':
         return 90;
+      default:
+        return 100;
     }
   }
 
