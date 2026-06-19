@@ -14,6 +14,12 @@
       "errorMessage": "Deine Bewertung konnte gerade nicht gespeichert werden.",
       "savedToast": "Deine Bewertung wurde gespeichert."
     },
+    "tree": {
+      "detailAction": "Details ansehen",
+      "collapseAction": "Einklappen",
+      "openParkAction": "Seite ansehen",
+      "scoreAria": "Bewertung {{value}} von 5"
+    },
     "profile": {
       "kicker": "Meine Bewertungen",
       "title": "Deine Besuchsnoten",

@@ -14,6 +14,12 @@
       "errorMessage": "Ta note ne peut pas être enregistrée pour le moment.",
       "savedToast": "Ta note a bien été enregistrée."
     },
+    "tree": {
+      "detailAction": "Voir détail",
+      "collapseAction": "Replier",
+      "openParkAction": "Voir la fiche",
+      "scoreAria": "Note {{value}} sur 5"
+    },
     "profile": {
       "kicker": "Mes notes",
       "title": "Tes notes de visite",

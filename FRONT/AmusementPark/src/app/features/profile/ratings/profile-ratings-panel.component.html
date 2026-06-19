@@ -92,46 +92,10 @@
       </div>
     }
 
-    <div class="profile-ratings__list">
-      @for (group of ratingGroups(); track group.parkId; let groupIndex = $index) {
-        <details class="profile-rating-park" [open]="groupIndex < 3">
-          <summary class="profile-rating-park__summary">
-            <span class="profile-rating-park__main">
-              @if (parkRoute(group); as route) {
-                <a class="profile-rating-row__title" [routerLink]="route" (click)="$event.stopPropagation()">{{ group.parkName }}</a>
-              } @else {
-                <strong class="profile-rating-row__title">{{ group.parkName }}</strong>
-              }
-              <span>{{ 'ratings.profile.ratingCount' | translate:{ count: group.ratingCount } }}</span>
-            </span>
-            <span class="profile-rating-park__score">
-              <app-ui-chip tone="gold" iconClass="pi pi-star">{{ formatRating(group.averageRating) }}</app-ui-chip>
-            </span>
-          </summary>
-
-          <div class="profile-rating-park__items">
-            @for (rating of group.ratings; track rating.id) {
-              <article class="profile-rating-row">
-                <div class="profile-rating-row__main">
-                  <app-ui-chip tone="gold" iconClass="pi pi-star">{{ formatRating(rating.value) }}</app-ui-chip>
-                  <div>
-                    @if (targetRoute(rating); as route) {
-                      <a class="profile-rating-row__title" [routerLink]="route">{{ rating.targetName }}</a>
-                    } @else {
-                      <strong class="profile-rating-row__title">{{ rating.targetName }}</strong>
-                    }
-                  </div>
-                </div>
-                <div class="profile-rating-row__average">
-                  <span>{{ 'ratings.profile.communityAverage' | translate }}</span>
-                  <strong>{{ formatRating(rating.summary.averageRating) }}</strong>
-                </div>
-              </article>
-            }
-          </div>
-        </details>
-      }
-    </div>
+    <app-rating-tree
+      [parks]="ratingParks()"
+      ratingCountLabelKey="ratings.profile.ratingCount">
+    </app-rating-tree>
 
     @if (hasMore()) {
       <div class="profile-ratings__more">

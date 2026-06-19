@@ -2681,6 +2681,12 @@
       "errorMessage": "Your rating could not be saved right now.",
       "savedToast": "Your rating has been saved."
     },
+    "tree": {
+      "detailAction": "View detail",
+      "collapseAction": "Collapse",
+      "openParkAction": "View page",
+      "scoreAria": "Rating {{value}} out of 5"
+    },
     "profile": {
       "kicker": "My ratings",
       "title": "Your park notes",

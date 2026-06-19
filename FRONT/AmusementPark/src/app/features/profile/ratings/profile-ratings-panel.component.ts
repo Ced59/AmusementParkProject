@@ -1,18 +1,18 @@
-import { ChangeDetectionStrategy, Component, OnInit, Signal, computed, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, computed, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { UserRatingListItem, UserRatingStatBucket, UserRatingStats } from '@app/models/ratings/rating.models';
 import { TranslationService } from '@app/services/translation.service';
+import { RatingTreeComponent, RatingTreePark, RatingTreeSection } from '@shared/components/rating-tree/rating-tree.component';
 import { buildPublicParkItemRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
-import { UiButtonDirective, UiChipComponent, UiSectionHeaderComponent } from '@ui/primitives';
+import { UiButtonDirective, UiSectionHeaderComponent } from '@ui/primitives';
 import { ProfileRatingsStateFacade } from './profile-ratings-state.facade';
 
-interface ProfileRatingParkGroup {
-  parkId: string;
-  parkName: string;
-  averageRating: number;
-  ratingCount: number;
+interface ProfileRatingSectionGroup {
+  key: string;
+  titleKey: string;
+  order: number;
   ratings: UserRatingListItem[];
 }
 
@@ -23,31 +23,40 @@ interface ProfileRatingParkGroup {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ProfileRatingsStateFacade],
   imports: [
-    RouterLink,
+    RatingTreeComponent,
     TranslateModule,
     UiButtonDirective,
-    UiChipComponent,
     UiSectionHeaderComponent
   ]
 })
 export class ProfileRatingsPanelComponent implements OnInit {
   protected readonly searchTerm = signal<string>('');
+  protected readonly currentLang = signal<string>('en');
   protected readonly loading: Signal<boolean> = this.stateFacade.loading;
   protected readonly loadingMore: Signal<boolean> = this.stateFacade.loadingMore;
   protected readonly hasMore: Signal<boolean> = this.stateFacade.hasMore;
   protected readonly ratings: Signal<UserRatingListItem[]> = this.stateFacade.ratings;
   protected readonly stats: Signal<UserRatingStats | null> = this.stateFacade.stats;
   protected readonly isEmpty: Signal<boolean> = this.stateFacade.isEmpty;
-  protected readonly ratingGroups: Signal<ProfileRatingParkGroup[]> = computed(() => this.groupRatingsByPark(this.ratings()));
+  protected readonly ratingParks: Signal<RatingTreePark[]> = computed(() => {
+    const language: string = this.currentLang();
+    return this.groupRatingsByPark(this.ratings(), language);
+  });
 
   constructor(
     private readonly stateFacade: ProfileRatingsStateFacade,
-    private readonly translationService: TranslationService
+    private readonly translationService: TranslationService,
+    private readonly destroyRef: DestroyRef
   ) {
   }
 
   ngOnInit(): void {
+    this.currentLang.set(this.translationService.getCurrentLang() || 'en');
     this.stateFacade.load();
+
+    this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((lang: string): void => {
+      this.currentLang.set(lang);
+    });
   }
 
   protected updateSearchTerm(value: string): void {
@@ -86,9 +95,7 @@ export class ProfileRatingsPanelComponent implements OnInit {
     return `${keyPrefix}.${bucket.key}`;
   }
 
-  protected targetRoute(rating: UserRatingListItem): string[] | null {
-    const language: string = this.translationService.getCurrentLang() || 'en';
-
+  private targetRoute(rating: UserRatingListItem, language: string): string[] | null {
     if (rating.targetType === 'Park') {
       return buildPublicParkRouteCommands({
         language,
@@ -106,48 +113,139 @@ export class ProfileRatingsPanelComponent implements OnInit {
     });
   }
 
-  protected parkRoute(group: ProfileRatingParkGroup): string[] | null {
-    const language: string = this.translationService.getCurrentLang() || 'en';
-
+  private parkRoute(parkId: string, parkName: string, language: string): string[] | null {
     return buildPublicParkRouteCommands({
       language,
-      parkId: group.parkId,
-      parkName: group.parkName
+      parkId,
+      parkName
     });
   }
 
-  private groupRatingsByPark(ratings: UserRatingListItem[]): ProfileRatingParkGroup[] {
+  private groupRatingsByPark(ratings: UserRatingListItem[], language: string): RatingTreePark[] {
     const groups = new Map<string, UserRatingListItem[]>();
     for (const rating of ratings) {
       const key: string = rating.parkId || rating.targetId;
-      groups.set(key, [...(groups.get(key) ?? []), rating]);
+      const existingRatings: UserRatingListItem[] | undefined = groups.get(key);
+      if (existingRatings) {
+        existingRatings.push(rating);
+      } else {
+        groups.set(key, [rating]);
+      }
     }
 
     return Array.from(groups.entries()).map(([parkId, groupRatings]: [string, UserRatingListItem[]]) => {
       const ratingSum: number = groupRatings.reduce((sum: number, rating: UserRatingListItem) => sum + rating.value, 0);
+      const parkName: string = groupRatings[0]?.parkName || groupRatings[0]?.targetName || parkId;
       return {
-        parkId,
-        parkName: groupRatings[0]?.parkName || groupRatings[0]?.targetName || parkId,
-        averageRating: ratingSum / Math.max(groupRatings.length, 1),
+        id: parkId,
+        rank: null,
+        name: parkName,
+        score: ratingSum / Math.max(groupRatings.length, 1),
         ratingCount: groupRatings.length,
-        ratings: [...groupRatings].sort((left: UserRatingListItem, right: UserRatingListItem) => {
-          if (right.value !== left.value) {
-            return right.value - left.value;
-          }
-
-          return left.targetName.localeCompare(right.targetName);
-        })
+        route: this.parkRoute(parkId, parkName, language),
+        metrics: [],
+        sections: this.groupRatingsBySection(groupRatings, language)
       };
-    }).sort((left: ProfileRatingParkGroup, right: ProfileRatingParkGroup) => {
-      if (right.averageRating !== left.averageRating) {
-        return right.averageRating - left.averageRating;
+    }).sort((left: RatingTreePark, right: RatingTreePark) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
       }
 
       if (right.ratingCount !== left.ratingCount) {
         return right.ratingCount - left.ratingCount;
       }
 
-      return left.parkName.localeCompare(right.parkName);
+      return left.name.localeCompare(right.name);
     });
+  }
+
+  private groupRatingsBySection(ratings: UserRatingListItem[], language: string): RatingTreeSection[] {
+    const groups = new Map<string, ProfileRatingSectionGroup>();
+
+    for (const rating of ratings) {
+      const section: ProfileRatingSectionGroup = this.resolveSectionGroup(rating);
+      const existingSection: ProfileRatingSectionGroup | undefined = groups.get(section.key);
+      if (existingSection) {
+        existingSection.ratings.push(rating);
+      } else {
+        groups.set(section.key, {
+          ...section,
+          ratings: [rating]
+        });
+      }
+    }
+
+    return Array.from(groups.values()).sort((left: ProfileRatingSectionGroup, right: ProfileRatingSectionGroup) => {
+      if (left.order !== right.order) {
+        return left.order - right.order;
+      }
+
+      return left.titleKey.localeCompare(right.titleKey);
+    }).map((section: ProfileRatingSectionGroup): RatingTreeSection => {
+      const ratingSum: number = section.ratings.reduce((sum: number, rating: UserRatingListItem) => sum + rating.value, 0);
+      return {
+        id: section.key,
+        titleKey: section.titleKey,
+        score: ratingSum / Math.max(section.ratings.length, 1),
+        items: [...section.ratings].sort((left: UserRatingListItem, right: UserRatingListItem) => {
+          if (right.value !== left.value) {
+            return right.value - left.value;
+          }
+
+          return left.targetName.localeCompare(right.targetName);
+        }).map((rating: UserRatingListItem) => {
+          return {
+            id: rating.id,
+            name: rating.targetName,
+            score: rating.value,
+            route: this.targetRoute(rating, language),
+            secondaryLabelKey: 'ratings.profile.communityAverage',
+            secondaryScore: rating.summary.averageRating
+          };
+        })
+      };
+    });
+  }
+
+  private resolveSectionGroup(rating: UserRatingListItem): ProfileRatingSectionGroup {
+    if (rating.targetType === 'Park') {
+      return {
+        key: 'Park',
+        titleKey: 'ratings.targetTypes.Park',
+        order: 0,
+        ratings: []
+      };
+    }
+
+    if (rating.parkItemCategory) {
+      return {
+        key: rating.parkItemCategory,
+        titleKey: `ratings.categories.${rating.parkItemCategory}`,
+        order: this.categoryOrder(rating.parkItemCategory),
+        ratings: []
+      };
+    }
+
+    return {
+      key: 'ParkItem',
+      titleKey: 'ratings.targetTypes.ParkItem',
+      order: 99,
+      ratings: []
+    };
+  }
+
+  private categoryOrder(category: string): number {
+    switch (category) {
+      case 'Attraction':
+        return 10;
+      case 'Restaurant':
+        return 20;
+      case 'Hotel':
+        return 30;
+      case 'Service':
+        return 40;
+      default:
+        return 90;
+    }
   }
 }

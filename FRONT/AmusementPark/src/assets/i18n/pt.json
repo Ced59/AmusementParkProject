@@ -2681,6 +2681,12 @@
       "errorMessage": "Não foi possível guardar a avaliação agora.",
       "savedToast": "A sua avaliação foi guardada."
     },
+    "tree": {
+      "detailAction": "Ver detalhe",
+      "collapseAction": "Recolher",
+      "openParkAction": "Ver ficha",
+      "scoreAria": "Avaliação {{value}} de 5"
+    },
     "profile": {
       "kicker": "As minhas avaliações",
       "title": "As tuas notas de visita",
