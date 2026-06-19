@@ -14,11 +14,16 @@ public sealed class GetParkWeatherForecastQueryHandler : IQueryHandler<GetParkWe
 {
     private readonly IParkRepository parkRepository;
     private readonly IParkWeatherRepository weatherRepository;
+    private readonly ParkWeatherLocalDateResolver localDateResolver;
 
-    public GetParkWeatherForecastQueryHandler(IParkRepository parkRepository, IParkWeatherRepository weatherRepository)
+    public GetParkWeatherForecastQueryHandler(
+        IParkRepository parkRepository,
+        IParkWeatherRepository weatherRepository,
+        ParkWeatherLocalDateResolver localDateResolver)
     {
         this.parkRepository = parkRepository;
         this.weatherRepository = weatherRepository;
+        this.localDateResolver = localDateResolver;
     }
 
     public async Task<ApplicationResult<ParkWeatherForecastResult>> HandleAsync(GetParkWeatherForecastQuery query, CancellationToken cancellationToken = default)
@@ -40,8 +45,9 @@ public sealed class GetParkWeatherForecastQueryHandler : IQueryHandler<GetParkWe
         }
 
         int dayCount = Math.Clamp(query.DayCount, 1, 7);
-        DateOnly todayUtc = DateOnly.FromDateTime(DateTime.UtcNow);
-        IReadOnlyCollection<ParkWeatherDailySnapshot> snapshots = await this.weatherRepository.GetForecastAsync(park.Id, todayUtc, dayCount, cancellationToken);
+        ParkWeatherDailySnapshot? latestForecastSnapshot = await this.weatherRepository.GetLatestForecastSnapshotAsync(park.Id, cancellationToken);
+        DateOnly parkLocalToday = this.localDateResolver.ResolveCurrentLocalDate(latestForecastSnapshot);
+        IReadOnlyCollection<ParkWeatherDailySnapshot> snapshots = await this.weatherRepository.GetForecastAsync(park.Id, parkLocalToday, dayCount, cancellationToken);
         ParkWeatherForecastResult result = new ParkWeatherForecastResult
         {
             ParkId = park.Id,

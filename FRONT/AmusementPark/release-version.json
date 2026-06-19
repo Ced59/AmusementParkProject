@@ -1,6 +1,20 @@
 {
-  "version": "2.1.0",
+  "version": "2.1.1",
   "history": [
+    {
+      "version": "2.1.1",
+      "releasedAt": "2026-06-19",
+      "labels": {
+        "fr": "La meteo des parcs est plus fiable.",
+        "en": "Park weather is more reliable.",
+        "de": "Das Parkwetter ist zuverlaessiger.",
+        "nl": "Parkweer is betrouwbaarder.",
+        "it": "Il meteo dei parchi e piu affidabile.",
+        "es": "La meteo de los parques es mas fiable.",
+        "pl": "Pogoda parkow jest bardziej niezawodna.",
+        "pt": "A meteorologia dos parques fica mais fiavel."
+      }
+    },
     {
       "version": "2.1.0",
       "releasedAt": "2026-06-19",
