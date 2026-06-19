@@ -1,0 +1,74 @@
+<app-page-state
+  [state]="state()"
+  [messages]="{
+    loadingTitleKey: 'parkWeather.page.loadingTitle',
+    loadingMessageKey: 'parkWeather.page.loadingMessage',
+    emptyTitleKey: 'parkWeather.page.emptyTitle',
+    emptyMessageKey: 'parkWeather.page.emptyMessage',
+    errorTitleKey: 'parkWeather.page.errorTitle',
+    errorMessageKey: 'parkWeather.errorMessage'
+  }">
+  @if (state().data; as data) {
+    <section class="park-weather-page">
+      <header class="park-weather-hero">
+        <p class="park-weather-hero__kicker">{{ 'parkWeather.page.kicker' | translate }}</p>
+        <h1>{{ 'parkWeather.page.title' | translate:{ name: data.park.name } }}</h1>
+        <p>{{ 'parkWeather.page.lead' | translate }}</p>
+
+        @if (detailLink()) {
+          <a class="park-weather-hero__back" [routerLink]="detailLink()">
+            <i class="pi pi-arrow-left" aria-hidden="true"></i>
+            <span>{{ 'parkWeather.page.backToPark' | translate:{ name: data.park.name } }}</span>
+          </a>
+        }
+      </header>
+
+      <section class="park-weather-grid" [attr.aria-label]="'parkWeather.page.forecastLabel' | translate">
+        @for (day of data.weather.days; track day.localDate) {
+          <article class="park-weather-day">
+            <div class="park-weather-day__icon" aria-hidden="true">
+              <i [class]="iconClass(day)"></i>
+            </div>
+            <div class="park-weather-day__content">
+              <h2>{{ formatDate(day.localDate) }}</h2>
+              <p>{{ conditionKey(day) | translate }}</p>
+
+              @if (temperatureRange(day)) {
+                <strong>{{ temperatureRange(day) }}</strong>
+              }
+
+              <dl>
+                @if (day.precipitationProbabilityMaxPercent !== null && day.precipitationProbabilityMaxPercent !== undefined) {
+                  <div>
+                    <dt>{{ 'parkWeather.fields.precipitationProbability' | translate }}</dt>
+                    <dd>{{ day.precipitationProbabilityMaxPercent }}%</dd>
+                  </div>
+                }
+
+                @if (day.precipitationSumMillimeters !== null && day.precipitationSumMillimeters !== undefined) {
+                  <div>
+                    <dt>{{ 'parkWeather.fields.precipitationSum' | translate }}</dt>
+                    <dd>{{ day.precipitationSumMillimeters }} mm</dd>
+                  </div>
+                }
+
+                @if (day.windSpeedMaxKilometersPerHour !== null && day.windSpeedMaxKilometersPerHour !== undefined) {
+                  <div>
+                    <dt>{{ 'parkWeather.fields.wind' | translate }}</dt>
+                    <dd>{{ day.windSpeedMaxKilometersPerHour }} km/h</dd>
+                  </div>
+                }
+              </dl>
+            </div>
+          </article>
+        }
+      </section>
+
+      <p class="park-weather-attribution">
+        {{ 'parkWeather.attribution.full' | translate:{ provider: data.weather.attribution.providerName } }}
+        <a [href]="data.weather.attribution.providerUrl" target="_blank" rel="noreferrer noopener">{{ data.weather.attribution.providerName }}</a>
+        <a [href]="data.weather.attribution.licenseUrl" target="_blank" rel="noreferrer noopener">{{ data.weather.attribution.licenseName }}</a>
+      </p>
+    </section>
+  }
+</app-page-state>

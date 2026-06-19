@@ -1,0 +1,48 @@
+{
+  "admin": {
+    "parkWeather": {
+      "navTitle": "Tiempo",
+      "title": "Actualizacion meteorologica",
+      "subtitle": "Seguimiento de ejecuciones programadas, cobertura de parques visibles y fallos.",
+      "loading": "Cargando estado meteorologico...",
+      "loadError": "No se pudo cargar el estado meteorologico.",
+      "startError": "No se pudo iniciar la actualizacion meteorologica.",
+      "retryError": "No se pudo reintentar la actualizacion meteorologica.",
+      "empty": "No hay informacion meteorologica disponible.",
+      "actions": {
+        "startManual": "Actualizar ahora",
+        "retryFailed": "Reintentar fallos",
+        "retryPark": "Reintentar"
+      },
+      "stats": {
+        "status": "Estado",
+        "progress": "Progreso",
+        "success": "Correctos",
+        "warnings": "{{count}} aviso(s)",
+        "failed": "Fallos"
+      },
+      "latestRun": {
+        "title": "Ultima ejecucion",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Solicitada",
+        "startedAt": "Iniciada",
+        "cancelAuto": "Ejecucion auto cancelada"
+      },
+      "failures": {
+        "title": "Parques con fallo",
+        "subtitle": "Reintenta todos los fallos o un parque concreto.",
+        "empty": "No hay parques con fallo en esta ejecucion.",
+        "columns": {
+          "park": "Parque",
+          "error": "Error",
+          "attempts": "Intentos",
+          "actions": "Acciones"
+        }
+      },
+      "noRun": {
+        "title": "Sin ejecucion",
+        "message": "Inicia una actualizacion manual o espera la proxima ejecucion programada."
+      }
+    }
+  }
+}

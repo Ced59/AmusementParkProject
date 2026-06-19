@@ -130,7 +130,8 @@
         "founders": "Mantener fundadores y biografías vinculados a los parques.",
         "auditLogs": "Revisar acciones administrativas sensibles registradas.",
         "parkGraphUpserts": "Previsualizar y aplicar un JSON completo o parcial de parque.",
-        "seoSitemaps": "Gestionar el índice sitemap, secciones XML, estadísticas e IndexNow."
+        "seoSitemaps": "Gestionar el índice sitemap, secciones XML, estadísticas e IndexNow.",
+        "parkWeather": "Supervisar actualizaciones programadas de datos publicos."
       },
       "title": "Panel",
       "subtitle": "Punto de entrada del back-office: elige una sección en el menú izquierdo o en los accesos directos."
@@ -547,6 +548,50 @@
           "zone": "Zone",
           "typePrecise": "Precise type"
         }
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Tiempo",
+      "title": "Actualizacion meteorologica",
+      "subtitle": "Seguimiento de ejecuciones programadas, cobertura de parques visibles y fallos.",
+      "loading": "Cargando estado meteorologico...",
+      "loadError": "No se pudo cargar el estado meteorologico.",
+      "startError": "No se pudo iniciar la actualizacion meteorologica.",
+      "retryError": "No se pudo reintentar la actualizacion meteorologica.",
+      "empty": "No hay informacion meteorologica disponible.",
+      "actions": {
+        "startManual": "Actualizar ahora",
+        "retryFailed": "Reintentar fallos",
+        "retryPark": "Reintentar"
+      },
+      "stats": {
+        "status": "Estado",
+        "progress": "Progreso",
+        "success": "Correctos",
+        "warnings": "{{count}} aviso(s)",
+        "failed": "Fallos"
+      },
+      "latestRun": {
+        "title": "Ultima ejecucion",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Solicitada",
+        "startedAt": "Iniciada",
+        "cancelAuto": "Ejecucion auto cancelada"
+      },
+      "failures": {
+        "title": "Parques con fallo",
+        "subtitle": "Reintenta todos los fallos o un parque concreto.",
+        "empty": "No hay parques con fallo en esta ejecucion.",
+        "columns": {
+          "park": "Parque",
+          "error": "Error",
+          "attempts": "Intentos",
+          "actions": "Acciones"
+        }
+      },
+      "noRun": {
+        "title": "Sin ejecucion",
+        "message": "Inicia una actualizacion manual o espera la proxima ejecucion programada."
       }
     },
     "parks": {
@@ -2264,6 +2309,46 @@
       "viewAllItems": "Lugares del parque",
       "totalItems": "Lugares por descubrir",
       "unassignedItems": "Lugares sin zona"
+    }
+  },
+  "parkWeather": {
+    "loading": "Cargando el tiempo",
+    "errorMessage": "No se pudieron cargar los datos meteorologicos.",
+    "today": {
+      "title": "Tiempo de hoy",
+      "precipitationProbability": "{{value}}% de riesgo de lluvia",
+      "viewSevenDays": "Prevision a 7 dias"
+    },
+    "conditions": {
+      "clear": "Cielo despejado",
+      "partlyCloudy": "Parcialmente nublado",
+      "cloudy": "Nublado",
+      "fog": "Niebla",
+      "rain": "Lluvia",
+      "snow": "Nieve",
+      "thunderstorm": "Tormenta",
+      "unknown": "Tiempo no disponible"
+    },
+    "fields": {
+      "precipitationProbability": "Riesgo de lluvia",
+      "precipitationSum": "Precipitacion",
+      "wind": "Viento"
+    },
+    "attribution": {
+      "short": "Fuente: {{provider}}",
+      "full": "Datos meteorologicos proporcionados por {{provider}} bajo licencia:"
+    },
+    "page": {
+      "kicker": "Tiempo",
+      "title": "Tiempo a 7 dias de {{name}}",
+      "lead": "Prevision diaria guardada por el sitio para preparar visitas y crear memoria meteorologica.",
+      "loadingTitle": "Cargando el tiempo",
+      "loadingMessage": "La prevision se esta cargando.",
+      "emptyTitle": "Sin prevision disponible",
+      "emptyMessage": "Aun no hay datos meteorologicos para este parque.",
+      "errorTitle": "Tiempo no disponible",
+      "backToPark": "Volver a {{name}}",
+      "forecastLabel": "Prevision meteorologica a 7 dias"
     }
   },
   "parks": {

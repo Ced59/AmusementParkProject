@@ -40,6 +40,14 @@ public static class OutputCacheServiceCollectionExtensions
                 .SetVaryByQuery("*")
                 .Tag(ApiOutputCachePolicyNames.PublicDataTag));
 
+            options.AddPolicy(ApiOutputCachePolicyNames.PublicWeatherDataShort, policy => policy
+                .With(IsAnonymousCacheCandidate)
+                .Cache()
+                .Expire(TimeSpan.FromMinutes(5))
+                .SetVaryByHeader("Host", "X-Forwarded-Host", "X-Forwarded-Proto", "Accept-Language")
+                .SetVaryByQuery("*")
+                .Tag(ApiOutputCachePolicyNames.PublicWeatherDataTag));
+
             options.AddPolicy(ApiOutputCachePolicyNames.PublicReferenceData, policy => policy
                 .With(IsAnonymousCacheCandidate)
                 .Cache()

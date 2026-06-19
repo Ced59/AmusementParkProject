@@ -130,7 +130,8 @@
         "founders": "Beheer oprichters en biografieën die aan parken zijn gekoppeld.",
         "auditLogs": "Gelogde gevoelige beheeracties bekijken.",
         "parkGraphUpserts": "Een volledige of gedeeltelijke park-JSON bekijken en toepassen.",
-        "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow."
+        "seoSitemaps": "Beheer sitemap-index, XML-secties, statistieken en IndexNow.",
+        "parkWeather": "Geplande updates van publieke gegevens volgen."
       },
       "title": "Beheerpaneel",
       "subtitle": "Startpunt van de backoffice: kies een rubriek in het linkermenu of via de snelkoppelingen hieronder."
@@ -547,6 +548,50 @@
           "zone": "Zone",
           "typePrecise": "Precise type"
         }
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Weer",
+      "title": "Weerupdate",
+      "subtitle": "Volg geplande uitvoeringen, zichtbare parken en fouten.",
+      "loading": "Weerstatus wordt geladen...",
+      "loadError": "Weerstatus kon niet worden geladen.",
+      "startError": "Weerupdate kon niet worden gestart.",
+      "retryError": "Weerupdate kon niet opnieuw worden gestart.",
+      "empty": "Geen weerinformatie beschikbaar.",
+      "actions": {
+        "startManual": "Nu bijwerken",
+        "retryFailed": "Fouten opnieuw",
+        "retryPark": "Opnieuw"
+      },
+      "stats": {
+        "status": "Status",
+        "progress": "Voortgang",
+        "success": "Geslaagd",
+        "warnings": "{{count}} waarschuwing(en)",
+        "failed": "Fouten"
+      },
+      "latestRun": {
+        "title": "Laatste uitvoering",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Aangevraagd",
+        "startedAt": "Gestart",
+        "cancelAuto": "Automatische run geannuleerd"
+      },
+      "failures": {
+        "title": "Parks met fouten",
+        "subtitle": "Probeer alle fouten of een enkel park opnieuw.",
+        "empty": "Geen park met fout voor deze uitvoering.",
+        "columns": {
+          "park": "Park",
+          "error": "Fout",
+          "attempts": "Pogingen",
+          "actions": "Acties"
+        }
+      },
+      "noRun": {
+        "title": "Nog geen uitvoering",
+        "message": "Start een handmatige update of wacht op de volgende geplande uitvoering."
       }
     },
     "parks": {
@@ -2264,6 +2309,46 @@
       "viewAllItems": "Plekken in het park",
       "totalItems": "Plekken om te ontdekken",
       "unassignedItems": "Plekken zonder zone"
+    }
+  },
+  "parkWeather": {
+    "loading": "Weer wordt geladen",
+    "errorMessage": "Weergegevens konden niet worden geladen.",
+    "today": {
+      "title": "Weer vandaag",
+      "precipitationProbability": "{{value}}% kans op regen",
+      "viewSevenDays": "7-daagse verwachting"
+    },
+    "conditions": {
+      "clear": "Heldere hemel",
+      "partlyCloudy": "Half bewolkt",
+      "cloudy": "Bewolkt",
+      "fog": "Mist",
+      "rain": "Regen",
+      "snow": "Sneeuw",
+      "thunderstorm": "Onweer",
+      "unknown": "Weer niet beschikbaar"
+    },
+    "fields": {
+      "precipitationProbability": "Kans op regen",
+      "precipitationSum": "Neerslag",
+      "wind": "Wind"
+    },
+    "attribution": {
+      "short": "Bron: {{provider}}",
+      "full": "Weergegevens geleverd door {{provider}} onder licentie:"
+    },
+    "page": {
+      "kicker": "Weer",
+      "title": "7-daags weer voor {{name}}",
+      "lead": "Dagelijkse verwachting die de site bewaart om bezoeken te plannen en weerhistorie op te bouwen.",
+      "loadingTitle": "Weer wordt geladen",
+      "loadingMessage": "De verwachting wordt geladen.",
+      "emptyTitle": "Geen verwachting beschikbaar",
+      "emptyMessage": "Er zijn nog geen weergegevens beschikbaar voor dit park.",
+      "errorTitle": "Weer niet beschikbaar",
+      "backToPark": "Terug naar {{name}}",
+      "forecastLabel": "7-daagse weersverwachting"
     }
   },
   "parks": {

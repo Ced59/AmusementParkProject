@@ -1,0 +1,42 @@
+{
+  "parkWeather": {
+    "loading": "Wetter wird geladen",
+    "errorMessage": "Wetterdaten konnten nicht geladen werden.",
+    "today": {
+      "title": "Wetter heute",
+      "precipitationProbability": "{{value}}% Regenrisiko",
+      "viewSevenDays": "7-Tage-Vorhersage"
+    },
+    "conditions": {
+      "clear": "Klarer Himmel",
+      "partlyCloudy": "Teilweise bewolkt",
+      "cloudy": "Bewolkt",
+      "fog": "Nebel",
+      "rain": "Regen",
+      "snow": "Schnee",
+      "thunderstorm": "Gewitter",
+      "unknown": "Wetter nicht verfugbar"
+    },
+    "fields": {
+      "precipitationProbability": "Regenrisiko",
+      "precipitationSum": "Niederschlag",
+      "wind": "Wind"
+    },
+    "attribution": {
+      "short": "Quelle: {{provider}}",
+      "full": "Wetterdaten bereitgestellt von {{provider}} unter Lizenz:"
+    },
+    "page": {
+      "kicker": "Wetter",
+      "title": "7-Tage-Wetter fur {{name}}",
+      "lead": "Tagliche Vorhersage, die zur Besuchsplanung und fur eine Wetterhistorie gespeichert wird.",
+      "loadingTitle": "Wetter wird geladen",
+      "loadingMessage": "Die Vorhersage wird geladen.",
+      "emptyTitle": "Keine Vorhersage verfugbar",
+      "emptyMessage": "Fur diesen Park sind noch keine Wetterdaten verfugbar.",
+      "errorTitle": "Wetter nicht verfugbar",
+      "backToPark": "Zuruck zu {{name}}",
+      "forecastLabel": "7-Tage-Wettervorhersage"
+    }
+  }
+}

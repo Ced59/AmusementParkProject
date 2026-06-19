@@ -1,6 +1,20 @@
 {
-  "version": "2.0.4",
+  "version": "2.1.0",
   "history": [
+    {
+      "version": "2.1.0",
+      "releasedAt": "2026-06-19",
+      "labels": {
+        "fr": "La meteo des parcs arrive sur les fiches.",
+        "en": "Park weather arrives on park pages.",
+        "de": "Das Parkwetter kommt auf die Parkseiten.",
+        "nl": "Parkweer komt naar de parkpagina's.",
+        "it": "Il meteo dei parchi arriva nelle schede.",
+        "es": "La meteo de los parques llega a las fichas.",
+        "pl": "Pogoda parkow trafia na strony parkow.",
+        "pt": "A meteorologia dos parques chega as fichas."
+      }
+    },
     {
       "version": "2.0.4",
       "releasedAt": "2026-06-19",

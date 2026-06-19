@@ -1,0 +1,48 @@
+{
+  "admin": {
+    "parkWeather": {
+      "navTitle": "Weather",
+      "title": "Weather refresh",
+      "subtitle": "Track scheduled refreshes, visible park coverage and failed parks.",
+      "loading": "Loading weather refresh status...",
+      "loadError": "Unable to load weather refresh status.",
+      "startError": "Unable to start the weather refresh.",
+      "retryError": "Unable to retry the weather refresh.",
+      "empty": "No weather refresh information available.",
+      "actions": {
+        "startManual": "Refresh now",
+        "retryFailed": "Retry failed parks",
+        "retryPark": "Retry"
+      },
+      "stats": {
+        "status": "Status",
+        "progress": "Progress",
+        "success": "Succeeded",
+        "warnings": "{{count}} warning(s)",
+        "failed": "Failed"
+      },
+      "latestRun": {
+        "title": "Latest run",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Requested",
+        "startedAt": "Started",
+        "cancelAuto": "Auto run canceled"
+      },
+      "failures": {
+        "title": "Failed parks",
+        "subtitle": "Retry all failures in batch or refresh a single failed park.",
+        "empty": "No failed park for this run.",
+        "columns": {
+          "park": "Park",
+          "error": "Error",
+          "attempts": "Attempts",
+          "actions": "Actions"
+        }
+      },
+      "noRun": {
+        "title": "No run yet",
+        "message": "Start a manual refresh or wait for the next scheduled execution."
+      }
+    }
+  }
+}

@@ -58,6 +58,7 @@ export interface ParkDetailViewModel {
   imagesLink: string[] | null;
   videosLink: string[] | null;
   mapLink: string[] | null;
+  weatherLink: string[] | null;
   primaryPhoto: ParkDetailPhotoViewModel | null;
   identityRows: ParkDetailInfoRowViewModel[];
   practicalRows: ParkDetailInfoRowViewModel[];

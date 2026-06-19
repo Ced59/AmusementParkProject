@@ -1,0 +1,42 @@
+{
+  "parkWeather": {
+    "loading": "Loading weather",
+    "errorMessage": "Weather data could not be loaded.",
+    "today": {
+      "title": "Weather today",
+      "precipitationProbability": "{{value}}% rain risk",
+      "viewSevenDays": "7-day forecast"
+    },
+    "conditions": {
+      "clear": "Clear sky",
+      "partlyCloudy": "Partly cloudy",
+      "cloudy": "Cloudy",
+      "fog": "Fog",
+      "rain": "Rain",
+      "snow": "Snow",
+      "thunderstorm": "Thunderstorm",
+      "unknown": "Weather unavailable"
+    },
+    "fields": {
+      "precipitationProbability": "Rain risk",
+      "precipitationSum": "Rainfall",
+      "wind": "Wind"
+    },
+    "attribution": {
+      "short": "Source: {{provider}}",
+      "full": "Weather data provided by {{provider}} under license:"
+    },
+    "page": {
+      "kicker": "Weather",
+      "title": "7-day weather for {{name}}",
+      "lead": "Daily forecast stored by the site to prepare visits and build a weather memory over time.",
+      "loadingTitle": "Loading weather",
+      "loadingMessage": "The forecast is being loaded.",
+      "emptyTitle": "No forecast available",
+      "emptyMessage": "No weather data is available for this park yet.",
+      "errorTitle": "Weather unavailable",
+      "backToPark": "Back to {{name}}",
+      "forecastLabel": "7-day weather forecast"
+    }
+  }
+}

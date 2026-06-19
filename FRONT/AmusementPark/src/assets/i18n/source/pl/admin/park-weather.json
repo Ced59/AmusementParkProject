@@ -1,0 +1,48 @@
+{
+  "admin": {
+    "parkWeather": {
+      "navTitle": "Pogoda",
+      "title": "Odswiezanie pogody",
+      "subtitle": "Monitoruj zaplanowane wykonania, widoczne parki i bledy.",
+      "loading": "Ladowanie statusu pogody...",
+      "loadError": "Nie udalo sie zaladowac statusu pogody.",
+      "startError": "Nie udalo sie uruchomic odswiezania pogody.",
+      "retryError": "Nie udalo sie ponowic odswiezania pogody.",
+      "empty": "Brak informacji pogodowych.",
+      "actions": {
+        "startManual": "Odswiez teraz",
+        "retryFailed": "Ponow bledy",
+        "retryPark": "Ponow"
+      },
+      "stats": {
+        "status": "Status",
+        "progress": "Postep",
+        "success": "Udane",
+        "warnings": "{{count}} ostrzezenie(a)",
+        "failed": "Bledy"
+      },
+      "latestRun": {
+        "title": "Ostatnie wykonanie",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Zlecone",
+        "startedAt": "Uruchomione",
+        "cancelAuto": "Automatyczne wykonanie anulowane"
+      },
+      "failures": {
+        "title": "Parki z bledem",
+        "subtitle": "Ponow wszystkie bledy albo jeden park.",
+        "empty": "Brak parkow z bledem w tym wykonaniu.",
+        "columns": {
+          "park": "Park",
+          "error": "Blad",
+          "attempts": "Proby",
+          "actions": "Akcje"
+        }
+      },
+      "noRun": {
+        "title": "Brak wykonania",
+        "message": "Uruchom reczne odswiezanie albo poczekaj na kolejne zaplanowane wykonanie."
+      }
+    }
+  }
+}

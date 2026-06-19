@@ -137,6 +137,11 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
             throw new NotImplementedException();
         }
 
+        public Task<IReadOnlyCollection<Park>> GetVisibleWithValidCoordinatesAsync(CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IReadOnlyCollection<string>> GetParkIdsByOperatorIdAsync(string operatorId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

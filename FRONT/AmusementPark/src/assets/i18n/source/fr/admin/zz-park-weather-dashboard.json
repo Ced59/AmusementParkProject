@@ -1,0 +1,9 @@
+{
+  "admin": {
+    "dashboard": {
+      "shortcuts": {
+        "parkWeather": "Suivre les rafraichissements planifies de donnees publiques."
+      }
+    }
+  }
+}

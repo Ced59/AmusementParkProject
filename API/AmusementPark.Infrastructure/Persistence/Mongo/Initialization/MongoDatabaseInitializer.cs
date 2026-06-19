@@ -130,6 +130,11 @@ public sealed partial class MongoDatabaseInitializer
         await this.EnsureCollectionExistsAsync(this.settings.CaptainCoasterComparisonResultsCollectionName, cancellationToken);
         await this.InitializeCaptainCoasterComparisonResultsIndexesAsync(cancellationToken);
 
+        await this.EnsureCollectionExistsAsync(this.settings.ParkWeatherDailySnapshotsCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.ParkWeatherRunsCollectionName, cancellationToken);
+        await this.EnsureCollectionExistsAsync(this.settings.ParkWeatherRunItemsCollectionName, cancellationToken);
+        await this.InitializeParkWeatherIndexesAsync(cancellationToken);
+
         await this.InitializeAdminUserAsync(cancellationToken);
     }
 

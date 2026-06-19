@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ParkDistanceResponse, ParkDistanceTarget } from '@app/models/parks/park-distance';
 import { ParkDetailSummary, ParkDetailSummaryStats } from '@app/models/parks/park-detail-summary';
+import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
@@ -31,10 +32,12 @@ const NEARBY_PARKS_LIMIT = 4;
 export class ParkDetailStateFacade {
   private readonly screenStateStore = new SignalScreenStateStore<ParkDetailSummary>();
   private readonly nearbyStateStore = new SignalScreenStateStore<ParkDistanceTarget[]>();
+  private readonly weatherStateStore = new SignalScreenStateStore<ParkWeatherForecast>();
   private readonly currentLanguageSignal = signal('en');
 
   public readonly state = this.screenStateStore.state;
   public readonly nearbyState = this.nearbyStateStore.state;
+  public readonly weatherState = this.weatherStateStore.state;
   public readonly park: Signal<ParkDetailViewModel | null> = computed(() => {
     const summary: ParkDetailSummary | undefined = this.screenStateStore.data();
 
@@ -74,6 +77,7 @@ export class ParkDetailStateFacade {
       this.measurementConversionService
     ));
   });
+  public readonly weather: Signal<ParkWeatherForecast | null> = computed(() => this.weatherStateStore.data() ?? null);
 
   constructor(
     @Inject(PARK_DETAIL_PARKS_PORT) private readonly parksApiService: ParkDetailParksPort,
@@ -93,13 +97,16 @@ export class ParkDetailStateFacade {
   loadPark(id: string): void {
     const previousData: ParkDetailSummary | undefined = this.screenStateStore.data();
     const previousNearbyData: ParkDistanceTarget[] | undefined = this.nearbyStateStore.data();
+    const previousWeatherData: ParkWeatherForecast | undefined = this.weatherStateStore.data();
     this.screenStateStore.setLoading(previousData);
     this.nearbyStateStore.setLoading(previousNearbyData);
+    this.weatherStateStore.setLoading(previousWeatherData);
 
     this.parksApiService.getParkDetailSummary(id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (summary: ParkDetailSummary) => {
         this.screenStateStore.setReady(summary);
         this.loadNearbyParks(summary.park);
+        this.loadWeather(summary.park);
       },
       error: (error: unknown) => {
         console.error('Error loading park detail summary', error);
@@ -110,6 +117,31 @@ export class ParkDetailStateFacade {
 
         this.screenStateStore.setError('parks.detail.errorMessage', previousData);
         this.nearbyStateStore.setError('parks.detail.nearby.errorMessage', previousNearbyData);
+        this.weatherStateStore.setError('parkWeather.errorMessage', previousWeatherData);
+      }
+    });
+  }
+
+  private loadWeather(park: Park): void {
+    const parkId: string | null = park.id?.trim() ?? null;
+
+    if (!parkId || !Number.isFinite(park.latitude) || !Number.isFinite(park.longitude)) {
+      this.weatherStateStore.setEmpty(undefined);
+      return;
+    }
+
+    this.parksApiService.getParkWeather(parkId, 7, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (forecast: ParkWeatherForecast) => {
+        if (!forecast.days || forecast.days.length === 0) {
+          this.weatherStateStore.setEmpty(forecast);
+          return;
+        }
+
+        this.weatherStateStore.setReady(forecast);
+      },
+      error: (error: unknown) => {
+        console.error('Error loading park weather', error);
+        this.weatherStateStore.setError('parkWeather.errorMessage');
       }
     });
   }

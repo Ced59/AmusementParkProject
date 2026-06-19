@@ -1,0 +1,48 @@
+{
+  "admin": {
+    "parkWeather": {
+      "navTitle": "Meteo",
+      "title": "Aggiornamento meteo",
+      "subtitle": "Controlla esecuzioni pianificate, copertura dei parchi visibili ed errori.",
+      "loading": "Caricamento stato meteo...",
+      "loadError": "Impossibile caricare lo stato meteo.",
+      "startError": "Impossibile avviare l'aggiornamento meteo.",
+      "retryError": "Impossibile riprovare l'aggiornamento meteo.",
+      "empty": "Nessuna informazione meteo disponibile.",
+      "actions": {
+        "startManual": "Aggiorna ora",
+        "retryFailed": "Riprova errori",
+        "retryPark": "Riprova"
+      },
+      "stats": {
+        "status": "Stato",
+        "progress": "Avanzamento",
+        "success": "Riusciti",
+        "warnings": "{{count}} avviso/i",
+        "failed": "Errori"
+      },
+      "latestRun": {
+        "title": "Ultima esecuzione",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Richiesta",
+        "startedAt": "Avviata",
+        "cancelAuto": "Esecuzione auto annullata"
+      },
+      "failures": {
+        "title": "Parchi in errore",
+        "subtitle": "Riprova tutti gli errori o un singolo parco.",
+        "empty": "Nessun parco in errore per questa esecuzione.",
+        "columns": {
+          "park": "Parco",
+          "error": "Errore",
+          "attempts": "Tentativi",
+          "actions": "Azioni"
+        }
+      },
+      "noRun": {
+        "title": "Nessuna esecuzione",
+        "message": "Avvia un aggiornamento manuale o attendi la prossima esecuzione pianificata."
+      }
+    }
+  }
+}

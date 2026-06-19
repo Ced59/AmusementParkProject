@@ -1,0 +1,48 @@
+{
+  "admin": {
+    "parkWeather": {
+      "navTitle": "Meteo",
+      "title": "Rafraichissement meteo",
+      "subtitle": "Suivi des executions planifiees, de la couverture des parcs visibles et des echecs.",
+      "loading": "Chargement du statut meteo...",
+      "loadError": "Impossible de charger le statut meteo.",
+      "startError": "Impossible de lancer le rafraichissement meteo.",
+      "retryError": "Impossible de relancer le rafraichissement meteo.",
+      "empty": "Aucune information meteo disponible.",
+      "actions": {
+        "startManual": "Rafraichir maintenant",
+        "retryFailed": "Relancer les echecs",
+        "retryPark": "Relancer"
+      },
+      "stats": {
+        "status": "Statut",
+        "progress": "Progression",
+        "success": "Reussis",
+        "warnings": "{{count}} avertissement(s)",
+        "failed": "Echecs"
+      },
+      "latestRun": {
+        "title": "Derniere execution",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Demandee",
+        "startedAt": "Demarree",
+        "cancelAuto": "Execution auto annulee"
+      },
+      "failures": {
+        "title": "Parcs en echec",
+        "subtitle": "Relance les echecs en lot ou un parc en particulier.",
+        "empty": "Aucun parc en echec pour cette execution.",
+        "columns": {
+          "park": "Parc",
+          "error": "Erreur",
+          "attempts": "Tentatives",
+          "actions": "Actions"
+        }
+      },
+      "noRun": {
+        "title": "Aucune execution",
+        "message": "Lance un rafraichissement manuel ou attends la prochaine execution planifiee."
+      }
+    }
+  }
+}

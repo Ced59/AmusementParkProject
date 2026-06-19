@@ -1,0 +1,46 @@
+@let day = today;
+
+@if (day) {
+  <section class="park-weather-card">
+    <header class="park-weather-card__header">
+      <span class="park-weather-card__icon" aria-hidden="true">
+        <i [class]="iconClass(day)"></i>
+      </span>
+      <div>
+        <h2>{{ 'parkWeather.today.title' | translate }}</h2>
+        <p>{{ conditionKey(day) | translate }}</p>
+      </div>
+    </header>
+
+    <div class="park-weather-card__values">
+      @if (temperatureRange(day)) {
+        <strong>{{ temperatureRange(day) }}</strong>
+      }
+
+      @if (day.precipitationProbabilityMaxPercent !== null && day.precipitationProbabilityMaxPercent !== undefined) {
+        <span>{{ 'parkWeather.today.precipitationProbability' | translate:{ value: day.precipitationProbabilityMaxPercent } }}</span>
+      }
+    </div>
+
+    <p class="park-weather-card__source">
+      {{ 'parkWeather.attribution.short' | translate:{ provider: forecast?.attribution?.providerName || 'Open-Meteo' } }}
+    </p>
+
+    @if (weatherLink) {
+      <a class="park-weather-card__link" [routerLink]="weatherLink">
+        <span>{{ 'parkWeather.today.viewSevenDays' | translate }}</span>
+        <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+      </a>
+    }
+  </section>
+} @else if (isLoading) {
+  <section class="park-weather-card park-weather-card--loading" aria-busy="true">
+    <span class="park-weather-card__icon" aria-hidden="true">
+      <i class="pi pi-cloud"></i>
+    </span>
+    <div>
+      <h2>{{ 'parkWeather.today.title' | translate }}</h2>
+      <p>{{ 'parkWeather.loading' | translate }}</p>
+    </div>
+  </section>
+}

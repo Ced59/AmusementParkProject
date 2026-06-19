@@ -1,0 +1,9 @@
+{
+  "admin": {
+    "dashboard": {
+      "shortcuts": {
+        "parkWeather": "Geplande updates van publieke gegevens volgen."
+      }
+    }
+  }
+}

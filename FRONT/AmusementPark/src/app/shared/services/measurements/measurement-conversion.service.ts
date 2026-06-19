@@ -34,6 +34,23 @@ export class MeasurementConversionService {
     return roundImperial(centimeters / MeasurementConversionService.centimetersPerInch);
   }
 
+  celsiusToFahrenheit(celsius: number): number {
+    return roundImperial((celsius * 9 / 5) + 32);
+  }
+
+  formatTemperatureFromCelsius(value: number | null | undefined, system: MeasurementSystem, language: string): string | null {
+    if (!isFiniteNumber(value)) {
+      return null;
+    }
+
+    const normalizedSystem: MeasurementSystem = normalizeMeasurementSystem(system);
+    if (normalizedSystem === 'Imperial') {
+      return `${formatLocalizedNumber(this.celsiusToFahrenheit(value), language, 0)}\u00b0F`;
+    }
+
+    return `${formatLocalizedNumber(value, language, 0)}\u00b0C`;
+  }
+
   formatLengthFromMeters(value: number | null | undefined, system: MeasurementSystem, language: string): string | null {
     if (!isFinitePositiveOrZero(value)) {
       return null;
@@ -107,6 +124,10 @@ export class MeasurementConversionService {
 
 function isFinitePositiveOrZero(value: number | null | undefined): value is number {
   return value != null && Number.isFinite(value) && value >= 0;
+}
+
+function isFiniteNumber(value: number | null | undefined): value is number {
+  return value != null && Number.isFinite(value);
 }
 
 function roundMetric(value: number): number {

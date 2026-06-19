@@ -1,0 +1,9 @@
+{
+  "admin": {
+    "dashboard": {
+      "shortcuts": {
+        "parkWeather": "Geplante Aktualisierungen offentlicher Daten uberwachen."
+      }
+    }
+  }
+}

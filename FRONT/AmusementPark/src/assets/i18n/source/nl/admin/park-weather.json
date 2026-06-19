@@ -1,0 +1,48 @@
+{
+  "admin": {
+    "parkWeather": {
+      "navTitle": "Weer",
+      "title": "Weerupdate",
+      "subtitle": "Volg geplande uitvoeringen, zichtbare parken en fouten.",
+      "loading": "Weerstatus wordt geladen...",
+      "loadError": "Weerstatus kon niet worden geladen.",
+      "startError": "Weerupdate kon niet worden gestart.",
+      "retryError": "Weerupdate kon niet opnieuw worden gestart.",
+      "empty": "Geen weerinformatie beschikbaar.",
+      "actions": {
+        "startManual": "Nu bijwerken",
+        "retryFailed": "Fouten opnieuw",
+        "retryPark": "Opnieuw"
+      },
+      "stats": {
+        "status": "Status",
+        "progress": "Voortgang",
+        "success": "Geslaagd",
+        "warnings": "{{count}} waarschuwing(en)",
+        "failed": "Fouten"
+      },
+      "latestRun": {
+        "title": "Laatste uitvoering",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Aangevraagd",
+        "startedAt": "Gestart",
+        "cancelAuto": "Automatische run geannuleerd"
+      },
+      "failures": {
+        "title": "Parks met fouten",
+        "subtitle": "Probeer alle fouten of een enkel park opnieuw.",
+        "empty": "Geen park met fout voor deze uitvoering.",
+        "columns": {
+          "park": "Park",
+          "error": "Fout",
+          "attempts": "Pogingen",
+          "actions": "Acties"
+        }
+      },
+      "noRun": {
+        "title": "Nog geen uitvoering",
+        "message": "Start een handmatige update of wacht op de volgende geplande uitvoering."
+      }
+    }
+  }
+}

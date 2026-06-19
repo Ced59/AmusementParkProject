@@ -1,0 +1,42 @@
+{
+  "parkWeather": {
+    "loading": "Cargando el tiempo",
+    "errorMessage": "No se pudieron cargar los datos meteorologicos.",
+    "today": {
+      "title": "Tiempo de hoy",
+      "precipitationProbability": "{{value}}% de riesgo de lluvia",
+      "viewSevenDays": "Prevision a 7 dias"
+    },
+    "conditions": {
+      "clear": "Cielo despejado",
+      "partlyCloudy": "Parcialmente nublado",
+      "cloudy": "Nublado",
+      "fog": "Niebla",
+      "rain": "Lluvia",
+      "snow": "Nieve",
+      "thunderstorm": "Tormenta",
+      "unknown": "Tiempo no disponible"
+    },
+    "fields": {
+      "precipitationProbability": "Riesgo de lluvia",
+      "precipitationSum": "Precipitacion",
+      "wind": "Viento"
+    },
+    "attribution": {
+      "short": "Fuente: {{provider}}",
+      "full": "Datos meteorologicos proporcionados por {{provider}} bajo licencia:"
+    },
+    "page": {
+      "kicker": "Tiempo",
+      "title": "Tiempo a 7 dias de {{name}}",
+      "lead": "Prevision diaria guardada por el sitio para preparar visitas y crear memoria meteorologica.",
+      "loadingTitle": "Cargando el tiempo",
+      "loadingMessage": "La prevision se esta cargando.",
+      "emptyTitle": "Sin prevision disponible",
+      "emptyMessage": "Aun no hay datos meteorologicos para este parque.",
+      "errorTitle": "Tiempo no disponible",
+      "backToPark": "Volver a {{name}}",
+      "forecastLabel": "Prevision meteorologica a 7 dias"
+    }
+  }
+}

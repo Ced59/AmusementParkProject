@@ -1,0 +1,42 @@
+{
+  "parkWeather": {
+    "loading": "Weer wordt geladen",
+    "errorMessage": "Weergegevens konden niet worden geladen.",
+    "today": {
+      "title": "Weer vandaag",
+      "precipitationProbability": "{{value}}% kans op regen",
+      "viewSevenDays": "7-daagse verwachting"
+    },
+    "conditions": {
+      "clear": "Heldere hemel",
+      "partlyCloudy": "Half bewolkt",
+      "cloudy": "Bewolkt",
+      "fog": "Mist",
+      "rain": "Regen",
+      "snow": "Sneeuw",
+      "thunderstorm": "Onweer",
+      "unknown": "Weer niet beschikbaar"
+    },
+    "fields": {
+      "precipitationProbability": "Kans op regen",
+      "precipitationSum": "Neerslag",
+      "wind": "Wind"
+    },
+    "attribution": {
+      "short": "Bron: {{provider}}",
+      "full": "Weergegevens geleverd door {{provider}} onder licentie:"
+    },
+    "page": {
+      "kicker": "Weer",
+      "title": "7-daags weer voor {{name}}",
+      "lead": "Dagelijkse verwachting die de site bewaart om bezoeken te plannen en weerhistorie op te bouwen.",
+      "loadingTitle": "Weer wordt geladen",
+      "loadingMessage": "De verwachting wordt geladen.",
+      "emptyTitle": "Geen verwachting beschikbaar",
+      "emptyMessage": "Er zijn nog geen weergegevens beschikbaar voor dit park.",
+      "errorTitle": "Weer niet beschikbaar",
+      "backToPark": "Terug naar {{name}}",
+      "forecastLabel": "7-daagse weersverwachting"
+    }
+  }
+}

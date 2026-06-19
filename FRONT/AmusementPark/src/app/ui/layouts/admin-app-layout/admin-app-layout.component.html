@@ -76,6 +76,10 @@
           <i class="pi pi-search" aria-hidden="true"></i>
           <span>{{ 'admin.seoSitemaps.navTitle' | translate }}</span>
         </a>
+        <a [routerLink]="['/', currentLang, 'admin', 'park-weather']" routerLinkActive="active">
+          <i class="pi pi-cloud" aria-hidden="true"></i>
+          <span>{{ 'admin.parkWeather.navTitle' | translate }}</span>
+        </a>
         <a [routerLink]="['/', currentLang, 'admin', 'contact-grievances']" routerLinkActive="active">
           <i class="pi pi-inbox" aria-hidden="true"></i>
           <span>{{ 'admin.contactGrievances.navTitle' | translate }}</span>

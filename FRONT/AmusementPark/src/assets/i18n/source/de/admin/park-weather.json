@@ -1,0 +1,48 @@
+{
+  "admin": {
+    "parkWeather": {
+      "navTitle": "Wetter",
+      "title": "Wetteraktualisierung",
+      "subtitle": "Uberwacht geplante Ausfuhrungen, sichtbare Parks und Fehler.",
+      "loading": "Wetterstatus wird geladen...",
+      "loadError": "Wetterstatus konnte nicht geladen werden.",
+      "startError": "Wetteraktualisierung konnte nicht gestartet werden.",
+      "retryError": "Wetteraktualisierung konnte nicht erneut gestartet werden.",
+      "empty": "Keine Wetterinformationen verfugbar.",
+      "actions": {
+        "startManual": "Jetzt aktualisieren",
+        "retryFailed": "Fehler erneut versuchen",
+        "retryPark": "Erneut"
+      },
+      "stats": {
+        "status": "Status",
+        "progress": "Fortschritt",
+        "success": "Erfolgreich",
+        "warnings": "{{count}} Warnung(en)",
+        "failed": "Fehler"
+      },
+      "latestRun": {
+        "title": "Letzte Ausfuhrung",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Angefordert",
+        "startedAt": "Gestartet",
+        "cancelAuto": "Automatiklauf storniert"
+      },
+      "failures": {
+        "title": "Fehlgeschlagene Parks",
+        "subtitle": "Alle Fehler oder einen einzelnen Park erneut starten.",
+        "empty": "Kein fehlgeschlagener Park in dieser Ausfuhrung.",
+        "columns": {
+          "park": "Park",
+          "error": "Fehler",
+          "attempts": "Versuche",
+          "actions": "Aktionen"
+        }
+      },
+      "noRun": {
+        "title": "Noch keine Ausfuhrung",
+        "message": "Starte eine manuelle Aktualisierung oder warte auf die nachste geplante Ausfuhrung."
+      }
+    }
+  }
+}

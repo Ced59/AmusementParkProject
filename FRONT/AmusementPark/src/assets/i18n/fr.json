@@ -130,7 +130,8 @@
         "founders": "Maintenir les fondateurs et biographies rattachés aux parcs.",
         "auditLogs": "Consulter les actions sensibles journalisées.",
         "parkGraphUpserts": "Prévisualiser puis appliquer un JSON global ou partiel de parc.",
-        "seoSitemaps": "Piloter le sitemap index, les sections XML, les statistiques et IndexNow."
+        "seoSitemaps": "Piloter le sitemap index, les sections XML, les statistiques et IndexNow.",
+        "parkWeather": "Suivre les rafraichissements planifies de donnees publiques."
       },
       "title": "Tableau de bord",
       "subtitle": "Point d’entrée du back-office : choisis une rubrique dans le menu de gauche ou dans les raccourcis ci-dessous."
@@ -547,6 +548,50 @@
           "zone": "Zone",
           "typePrecise": "Precise type"
         }
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Meteo",
+      "title": "Rafraichissement meteo",
+      "subtitle": "Suivi des executions planifiees, de la couverture des parcs visibles et des echecs.",
+      "loading": "Chargement du statut meteo...",
+      "loadError": "Impossible de charger le statut meteo.",
+      "startError": "Impossible de lancer le rafraichissement meteo.",
+      "retryError": "Impossible de relancer le rafraichissement meteo.",
+      "empty": "Aucune information meteo disponible.",
+      "actions": {
+        "startManual": "Rafraichir maintenant",
+        "retryFailed": "Relancer les echecs",
+        "retryPark": "Relancer"
+      },
+      "stats": {
+        "status": "Statut",
+        "progress": "Progression",
+        "success": "Reussis",
+        "warnings": "{{count}} avertissement(s)",
+        "failed": "Echecs"
+      },
+      "latestRun": {
+        "title": "Derniere execution",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Demandee",
+        "startedAt": "Demarree",
+        "cancelAuto": "Execution auto annulee"
+      },
+      "failures": {
+        "title": "Parcs en echec",
+        "subtitle": "Relance les echecs en lot ou un parc en particulier.",
+        "empty": "Aucun parc en echec pour cette execution.",
+        "columns": {
+          "park": "Parc",
+          "error": "Erreur",
+          "attempts": "Tentatives",
+          "actions": "Actions"
+        }
+      },
+      "noRun": {
+        "title": "Aucune execution",
+        "message": "Lance un rafraichissement manuel ou attends la prochaine execution planifiee."
       }
     },
     "parks": {
@@ -2264,6 +2309,46 @@
       "viewAllItems": "Lieux du parc",
       "totalItems": "Lieux à découvrir",
       "unassignedItems": "Lieux sans zone"
+    }
+  },
+  "parkWeather": {
+    "loading": "Chargement de la meteo",
+    "errorMessage": "Les donnees meteo n'ont pas pu etre chargees.",
+    "today": {
+      "title": "Meteo du jour",
+      "precipitationProbability": "{{value}} % de risque de pluie",
+      "viewSevenDays": "Previsions a 7 jours"
+    },
+    "conditions": {
+      "clear": "Ciel degage",
+      "partlyCloudy": "Partiellement nuageux",
+      "cloudy": "Nuageux",
+      "fog": "Brouillard",
+      "rain": "Pluie",
+      "snow": "Neige",
+      "thunderstorm": "Orage",
+      "unknown": "Meteo indisponible"
+    },
+    "fields": {
+      "precipitationProbability": "Risque de pluie",
+      "precipitationSum": "Precipitations",
+      "wind": "Vent"
+    },
+    "attribution": {
+      "short": "Source : {{provider}}",
+      "full": "Donnees meteo fournies par {{provider}} sous licence :"
+    },
+    "page": {
+      "kicker": "Meteo",
+      "title": "Meteo a 7 jours de {{name}}",
+      "lead": "Previsions quotidiennes stockees par le site pour preparer les visites et construire une memoire meteo dans le temps.",
+      "loadingTitle": "Chargement de la meteo",
+      "loadingMessage": "Les previsions sont en cours de chargement.",
+      "emptyTitle": "Aucune prevision disponible",
+      "emptyMessage": "Aucune donnee meteo n'est encore disponible pour ce parc.",
+      "errorTitle": "Meteo indisponible",
+      "backToPark": "Retour a {{name}}",
+      "forecastLabel": "Previsions meteo a 7 jours"
     }
   },
   "parks": {

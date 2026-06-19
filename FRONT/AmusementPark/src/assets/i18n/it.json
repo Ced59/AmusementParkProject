@@ -130,7 +130,8 @@
         "founders": "Gestire fondatori e biografie collegati ai parchi.",
         "auditLogs": "Consultare le azioni amministrative sensibili registrate.",
         "parkGraphUpserts": "Anteprima e applicazione di un JSON parco completo o parziale.",
-        "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow."
+        "seoSitemaps": "Gestire indice sitemap, sezioni XML, statistiche e IndexNow.",
+        "parkWeather": "Monitorare aggiornamenti pianificati di dati pubblici."
       },
       "title": "Pannello di controllo",
       "subtitle": "Punto di ingresso del back-office: scegli una sezione dal menu a sinistra o dalle scorciatoie qui sotto."
@@ -547,6 +548,50 @@
           "zone": "Zone",
           "typePrecise": "Precise type"
         }
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Meteo",
+      "title": "Aggiornamento meteo",
+      "subtitle": "Controlla esecuzioni pianificate, copertura dei parchi visibili ed errori.",
+      "loading": "Caricamento stato meteo...",
+      "loadError": "Impossibile caricare lo stato meteo.",
+      "startError": "Impossibile avviare l'aggiornamento meteo.",
+      "retryError": "Impossibile riprovare l'aggiornamento meteo.",
+      "empty": "Nessuna informazione meteo disponibile.",
+      "actions": {
+        "startManual": "Aggiorna ora",
+        "retryFailed": "Riprova errori",
+        "retryPark": "Riprova"
+      },
+      "stats": {
+        "status": "Stato",
+        "progress": "Avanzamento",
+        "success": "Riusciti",
+        "warnings": "{{count}} avviso/i",
+        "failed": "Errori"
+      },
+      "latestRun": {
+        "title": "Ultima esecuzione",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Richiesta",
+        "startedAt": "Avviata",
+        "cancelAuto": "Esecuzione auto annullata"
+      },
+      "failures": {
+        "title": "Parchi in errore",
+        "subtitle": "Riprova tutti gli errori o un singolo parco.",
+        "empty": "Nessun parco in errore per questa esecuzione.",
+        "columns": {
+          "park": "Parco",
+          "error": "Errore",
+          "attempts": "Tentativi",
+          "actions": "Azioni"
+        }
+      },
+      "noRun": {
+        "title": "Nessuna esecuzione",
+        "message": "Avvia un aggiornamento manuale o attendi la prossima esecuzione pianificata."
       }
     },
     "parks": {
@@ -2264,6 +2309,46 @@
       "viewAllItems": "Luoghi del parco",
       "totalItems": "Luoghi da scoprire",
       "unassignedItems": "Luoghi senza zona"
+    }
+  },
+  "parkWeather": {
+    "loading": "Caricamento meteo",
+    "errorMessage": "I dati meteo non possono essere caricati.",
+    "today": {
+      "title": "Meteo di oggi",
+      "precipitationProbability": "{{value}}% rischio pioggia",
+      "viewSevenDays": "Previsioni a 7 giorni"
+    },
+    "conditions": {
+      "clear": "Cielo sereno",
+      "partlyCloudy": "Parzialmente nuvoloso",
+      "cloudy": "Nuvoloso",
+      "fog": "Nebbia",
+      "rain": "Pioggia",
+      "snow": "Neve",
+      "thunderstorm": "Temporale",
+      "unknown": "Meteo non disponibile"
+    },
+    "fields": {
+      "precipitationProbability": "Rischio pioggia",
+      "precipitationSum": "Precipitazioni",
+      "wind": "Vento"
+    },
+    "attribution": {
+      "short": "Fonte: {{provider}}",
+      "full": "Dati meteo forniti da {{provider}} con licenza:"
+    },
+    "page": {
+      "kicker": "Meteo",
+      "title": "Meteo a 7 giorni di {{name}}",
+      "lead": "Previsioni giornaliere salvate dal sito per preparare le visite e costruire memoria meteo.",
+      "loadingTitle": "Caricamento meteo",
+      "loadingMessage": "Le previsioni sono in caricamento.",
+      "emptyTitle": "Nessuna previsione disponibile",
+      "emptyMessage": "Non sono ancora disponibili dati meteo per questo parco.",
+      "errorTitle": "Meteo non disponibile",
+      "backToPark": "Torna a {{name}}",
+      "forecastLabel": "Previsioni meteo a 7 giorni"
     }
   },
   "parks": {

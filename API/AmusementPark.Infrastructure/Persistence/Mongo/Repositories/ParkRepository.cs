@@ -127,6 +127,20 @@ public sealed class ParkRepository : IParkRepository
         return documents.Select(document => document.ToDomain()).ToList();
     }
 
+    public async Task<IReadOnlyCollection<Park>> GetVisibleWithValidCoordinatesAsync(CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkDocument> filter = Builders<ParkDocument>.Filter.Eq(document => document.IsVisible, true)
+            & BuildValidCoordinatesFilter();
+
+        List<ParkDocument> documents = await this.collection.Find(filter)
+            .Project(BuildMapPointProjection())
+            .SortBy(document => document.Name)
+            .ThenBy(document => document.Id)
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
     public Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken)
     {
         return this.GetRandomVisibleAsync(limit, Array.Empty<string>(), cancellationToken);

@@ -1,0 +1,138 @@
+<p-card styleClass="admin-list-card admin-park-weather-card">
+  <ng-template pTemplate="header">
+    <div class="admin-list-header admin-park-weather-header">
+      <div>
+        <span class="admin-kicker">2.1.0 - Weather</span>
+        <h2>{{ 'admin.parkWeather.title' | translate }}</h2>
+        <p>{{ 'admin.parkWeather.subtitle' | translate }}</p>
+      </div>
+
+      <div class="admin-park-weather-header__actions">
+        <button pButton type="button" class="p-button-secondary" icon="pi pi-refresh" [label]="'actions.refresh' | translate" [disabled]="loading()" (click)="refresh()"></button>
+        <button pButton type="button" icon="pi pi-cloud-download" [label]="'admin.parkWeather.actions.startManual' | translate" [loading]="startingManualRefresh()" [disabled]="isRunActive()" (click)="startManualRefresh()"></button>
+      </div>
+    </div>
+  </ng-template>
+
+  <app-page-state
+    [state]="state()"
+    loadingMessageKey="admin.parkWeather.loading"
+    errorMessageKey="admin.parkWeather.loadError"
+    emptyMessageKey="admin.parkWeather.empty">
+    <section class="admin-park-weather">
+      @if (latestRun(); as run) {
+        <section class="admin-park-weather__summary">
+          <article class="admin-weather-stat-card">
+            <span>{{ 'admin.parkWeather.stats.status' | translate }}</span>
+            <p-tag [value]="run.status" [severity]="statusSeverity(run.status)"></p-tag>
+            <small>{{ run.message || '-' }}</small>
+          </article>
+          <article class="admin-weather-stat-card">
+            <span>{{ 'admin.parkWeather.stats.progress' | translate }}</span>
+            <strong>{{ runProgressPercent(run) }}%</strong>
+            <small>{{ run.succeededParkCount + run.failedParkCount + run.skippedParkCount }} / {{ run.totalParkCount }}</small>
+          </article>
+          <article class="admin-weather-stat-card">
+            <span>{{ 'admin.parkWeather.stats.success' | translate }}</span>
+            <strong>{{ run.succeededParkCount }}</strong>
+            <small>{{ 'admin.parkWeather.stats.warnings' | translate:{ count: run.warningParkCount } }}</small>
+          </article>
+          <article class="admin-weather-stat-card">
+            <span>{{ 'admin.parkWeather.stats.failed' | translate }}</span>
+            <strong>{{ run.failedParkCount }}</strong>
+            <small>{{ run.completedAtUtc ? (run.completedAtUtc | date:'yyyy-MM-dd HH:mm:ss':'UTC') : (run.requestedAtUtc | date:'yyyy-MM-dd HH:mm:ss':'UTC') }} UTC</small>
+          </article>
+        </section>
+
+        <section class="admin-park-weather__run">
+          <div>
+            <h3>{{ 'admin.parkWeather.latestRun.title' | translate }}</h3>
+            <p>{{ 'admin.parkWeather.latestRun.meta' | translate:{ trigger: run.trigger, scope: run.scope } }}</p>
+          </div>
+          <dl>
+            <div>
+              <dt>{{ 'admin.parkWeather.latestRun.requestedAt' | translate }}</dt>
+              <dd>{{ run.requestedAtUtc | date:'yyyy-MM-dd HH:mm:ss':'UTC' }} UTC</dd>
+            </div>
+            <div>
+              <dt>{{ 'admin.parkWeather.latestRun.startedAt' | translate }}</dt>
+              <dd>{{ run.startedAtUtc ? (run.startedAtUtc | date:'yyyy-MM-dd HH:mm:ss':'UTC') + ' UTC' : '-' }}</dd>
+            </div>
+            <div>
+              <dt>{{ 'admin.parkWeather.latestRun.cancelAuto' | translate }}</dt>
+              <dd>{{ run.cancelsAutomaticRunLocalDate || '-' }}</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="admin-park-weather__failures">
+          <header>
+            <div>
+              <h3>{{ 'admin.parkWeather.failures.title' | translate }}</h3>
+              <p>{{ 'admin.parkWeather.failures.subtitle' | translate }}</p>
+            </div>
+            <button
+              pButton
+              type="button"
+              class="p-button-secondary"
+              icon="pi pi-replay"
+              [label]="'admin.parkWeather.actions.retryFailed' | translate"
+              [loading]="retryingFailed()"
+              [disabled]="failedItems().length === 0 || isRunActive()"
+              (click)="retryFailed()">
+            </button>
+          </header>
+
+          <p-table
+            [value]="failedItems()"
+            [responsiveLayout]="'scroll'"
+            styleClass="admin-data-table admin-weather-failures-table">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>{{ 'admin.parkWeather.failures.columns.park' | translate }}</th>
+                <th>{{ 'admin.parkWeather.failures.columns.error' | translate }}</th>
+                <th>{{ 'admin.parkWeather.failures.columns.attempts' | translate }}</th>
+                <th>{{ 'admin.parkWeather.failures.columns.actions' | translate }}</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-item>
+              <tr>
+                <td [attr.data-label]="'admin.parkWeather.failures.columns.park' | translate">
+                  <strong>{{ item.parkName || item.parkId }}</strong>
+                  <span class="admin-weather-failures-table__muted">{{ item.parkId }}</span>
+                </td>
+                <td [attr.data-label]="'admin.parkWeather.failures.columns.error' | translate">{{ item.errorMessage || item.errorCode || '-' }}</td>
+                <td [attr.data-label]="'admin.parkWeather.failures.columns.attempts' | translate">{{ item.attemptCount }}</td>
+                <td [attr.data-label]="'admin.parkWeather.failures.columns.actions' | translate">
+                  <button
+                    pButton
+                    type="button"
+                    class="p-button-secondary p-button-sm"
+                    icon="pi pi-refresh"
+                    [label]="'admin.parkWeather.actions.retryPark' | translate"
+                    [loading]="isRefreshingPark(item.parkId)"
+                    [disabled]="isRunActive()"
+                    (click)="refreshPark(item)">
+                  </button>
+                </td>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td colspan="4">{{ 'admin.parkWeather.failures.empty' | translate }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </section>
+      } @else {
+        <section class="admin-park-weather__empty">
+          <i class="pi pi-cloud" aria-hidden="true"></i>
+          <h3>{{ 'admin.parkWeather.noRun.title' | translate }}</h3>
+          <p>{{ 'admin.parkWeather.noRun.message' | translate }}</p>
+        </section>
+      }
+    </section>
+  </app-page-state>
+</p-card>
