@@ -8,7 +8,17 @@
   </header>
 
   @if (uiError) {
-    <p class="admin-alert admin-alert--error">{{ uiError | translate }}</p>
+    <div class="admin-alert admin-alert--error operation-alert" role="alert">
+      <span>{{ uiError | translate }}</span>
+      @if (operationErrorDetail) {
+        <small>{{ operationErrorDetail }}</small>
+      }
+      @if (hasOperationErrors) {
+        <button type="button" class="icon-action" (click)="copyOperationErrors()" [attr.aria-label]="'admin.parkGraphUpserts.actions.copyErrors' | translate">
+          <span class="pi pi-copy" aria-hidden="true"></span>
+        </button>
+      }
+    </div>
   }
 
   <article class="admin-card park-graph-upserts__workspace">
@@ -112,6 +122,7 @@
           <div class="result-counts">
             <span>{{ 'admin.parkGraphUpserts.result.created' | translate }} <strong>{{ previewResult.counts.created }}</strong></span>
             <span>{{ 'admin.parkGraphUpserts.result.updated' | translate }} <strong>{{ previewResult.counts.updated }}</strong></span>
+            <span>{{ 'admin.parkGraphUpserts.result.deleted' | translate }} <strong>{{ previewResult.counts.deleted }}</strong></span>
             <span>{{ 'admin.parkGraphUpserts.result.warnings' | translate }} <strong>{{ previewResult.counts.warnings }}</strong></span>
             <span>{{ 'admin.parkGraphUpserts.result.errors' | translate }} <strong>{{ previewResult.counts.errors }}</strong></span>
           </div>
@@ -131,6 +142,12 @@
 
         @if (groupedErrors.length > 0) {
           <div class="message-list message-list--error">
+            <div class="message-list__head">
+              <strong>{{ 'admin.parkGraphUpserts.result.errorDetails' | translate }}</strong>
+              <button type="button" class="icon-action" (click)="copyResultErrors()" [attr.aria-label]="'admin.parkGraphUpserts.actions.copyErrors' | translate">
+                <span class="pi pi-copy" aria-hidden="true"></span>
+              </button>
+            </div>
             @for (group of groupedErrors; track trackMessageGroup($index, group)) {
               <section class="message-group">
                 <strong>{{ group.entityType }} - {{ group.displayName }}</strong>
@@ -183,7 +200,14 @@
                   <strong>{{ change.displayName }}</strong>
                   <small>{{ change.entityType }} - {{ 'admin.parkGraphUpserts.result.matchedBy' | translate }} {{ change.matchedBy }}</small>
                 </span>
-                <em [class]="'change-status change-status--' + change.changeType.toLowerCase()">{{ change.changeType }}</em>
+                <span class="change-card__actions">
+                  <em [class]="'change-status change-status--' + change.changeType.toLowerCase()">{{ change.changeType }}</em>
+                  @if (canRemovePreviewBlock(change)) {
+                    <button type="button" class="icon-action icon-action--danger" (click)="$event.preventDefault(); $event.stopPropagation(); removePreviewBlock(change)" [attr.aria-label]="'admin.parkGraphUpserts.actions.removeBlock' | translate">
+                      <span class="pi pi-trash" aria-hidden="true"></span>
+                    </button>
+                  }
+                </span>
               </summary>
 
               @if (resolveChangePreviewImageUrl(change); as previewImageUrl) {
@@ -246,4 +270,13 @@
       </div>
     </article>
   }
+
+  <button
+    type="button"
+    class="page-jump-button"
+    (click)="togglePageScroll()"
+    [attr.aria-label]="(isNearPageBottom ? 'admin.parkGraphUpserts.actions.scrollTop' : 'admin.parkGraphUpserts.actions.scrollBottom') | translate"
+    [title]="(isNearPageBottom ? 'admin.parkGraphUpserts.actions.scrollTop' : 'admin.parkGraphUpserts.actions.scrollBottom') | translate">
+    <span class="pi" [class.pi-arrow-up]="isNearPageBottom" [class.pi-arrow-down]="!isNearPageBottom" aria-hidden="true"></span>
+  </button>
 </section>

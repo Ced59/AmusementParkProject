@@ -56,6 +56,54 @@
   justify-content: flex-end;
 }
 
+.operation-alert,
+.message-list__head,
+.change-card__actions {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.operation-alert {
+  small {
+    display: block;
+    margin-top: 0.2rem;
+    overflow-wrap: anywhere;
+  }
+
+  > span {
+    min-width: 0;
+  }
+}
+
+.icon-action {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 1px solid rgba(255, 210, 140, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 210, 140, 0.08);
+  color: var(--app-heading);
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(56, 197, 245, 0.38);
+    background: rgba(56, 197, 245, 0.12);
+  }
+}
+
+.icon-action--danger {
+  color: #ff7aa8;
+
+  &:hover {
+    border-color: rgba(255, 77, 139, 0.36);
+    background: rgba(255, 77, 139, 0.12);
+  }
+}
+
 .btn-nav {
   .pi {
     font-size: 0.9rem;
@@ -219,6 +267,10 @@
   }
 }
 
+.message-list__head {
+  margin-bottom: 0.2rem;
+}
+
 .message-group {
   display: grid;
   gap: 0.25rem;
@@ -288,6 +340,10 @@
   color: var(--color-sky, #38c5f5);
 }
 
+.change-status--deleted {
+  color: #ff7aa8;
+}
+
 .change-status--warning {
   color: var(--color-warning, #ffb627);
 }
@@ -343,6 +399,27 @@
   }
 }
 
+.page-jump-button {
+  position: fixed;
+  right: clamp(1rem, 2vw, 1.5rem);
+  bottom: clamp(1rem, 2vw, 1.5rem);
+  z-index: 20;
+  display: inline-grid;
+  width: 2.85rem;
+  height: 2.85rem;
+  place-items: center;
+  border: 1px solid rgba(56, 197, 245, 0.34);
+  border-radius: 999px;
+  background: rgba(15, 11, 6, 0.82);
+  color: var(--color-sky, #38c5f5);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(56, 197, 245, 0.14);
+  }
+}
+
 @media (max-width: 1100px) {
   .park-graph-upserts__workspace {
     grid-template-columns: 1fr;
@@ -373,5 +450,10 @@
 
   .change-image-preview {
     grid-template-columns: 1fr;
+  }
+
+  .operation-alert,
+  .message-list__head {
+    align-items: flex-start;
   }
 }

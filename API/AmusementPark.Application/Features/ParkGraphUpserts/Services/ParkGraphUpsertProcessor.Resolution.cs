@@ -212,6 +212,7 @@ public sealed partial class ParkGraphUpsertProcessor
     {
         result.Counts.Created = result.Changes.Count(change => string.Equals(change.ChangeType, "Created", StringComparison.Ordinal));
         result.Counts.Updated = result.Changes.Count(change => string.Equals(change.ChangeType, "Updated", StringComparison.Ordinal));
+        result.Counts.Deleted = result.Changes.Count(change => string.Equals(change.ChangeType, "Deleted", StringComparison.Ordinal));
         result.Counts.Unchanged = result.Changes.Count(change => string.Equals(change.ChangeType, "Unchanged", StringComparison.Ordinal));
         result.Counts.Warnings = result.Warnings.Count;
         result.Counts.Errors = result.Errors.Count;

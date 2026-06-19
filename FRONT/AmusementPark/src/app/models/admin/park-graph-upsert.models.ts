@@ -34,6 +34,7 @@ export interface ParkGraphUpsertResult {
 export interface ParkGraphUpsertCounts {
   created: number;
   updated: number;
+  deleted: number;
   unchanged: number;
   warnings: number;
   errors: number;

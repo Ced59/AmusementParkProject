@@ -112,5 +112,14 @@ public sealed partial class ParkGraphUpsertProcessor
         public List<PublicSeoParkItemSnapshot> PreviousItems { get; } = new List<PublicSeoParkItemSnapshot>();
 
         public List<PublicSeoParkItemSnapshot> CurrentItems { get; } = new List<PublicSeoParkItemSnapshot>();
+
+        public void MergeFrom(ParkGraphUpsertItemSeoChanges other)
+        {
+            ArgumentNullException.ThrowIfNull(other);
+
+            this.ChangedItemIds.AddRange(other.ChangedItemIds);
+            this.PreviousItems.AddRange(other.PreviousItems);
+            this.CurrentItems.AddRange(other.CurrentItems);
+        }
     }
 }

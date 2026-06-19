@@ -25,6 +25,7 @@ interface AdminParkGraphUpsertsComponentHarness {
   exportSelectedParkJson(): void;
   loadExpertJsonFile(event: Event): void;
   preview(): void;
+  removePreviewBlock(change: ParkGraphUpsertResult['changes'][number]): void;
 }
 
 describe('AdminParkGraphUpsertsComponent', () => {
@@ -169,7 +170,7 @@ describe('AdminParkGraphUpsertsComponent', () => {
       previewedAtUtc: '2026-06-18T10:00:00Z',
       targetParkId: 'park-1',
       targetParkName: 'Selected Park',
-      counts: { created: 0, updated: 1, unchanged: 0, warnings: 0, errors: 0 },
+      counts: { created: 0, updated: 1, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
       changes: [],
       warnings: [],
       errors: []
@@ -197,7 +198,7 @@ describe('AdminParkGraphUpsertsComponent', () => {
       previewedAtUtc: '2026-06-18T10:00:00Z',
       targetParkId: 'park-1',
       targetParkName: 'Selected Park',
-      counts: { created: 0, updated: 1, unchanged: 0, warnings: 0, errors: 0 },
+      counts: { created: 0, updated: 1, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
       changes: [
         {
           entityType: 'ParkItem',
@@ -222,5 +223,50 @@ describe('AdminParkGraphUpsertsComponent', () => {
 
     expect(harness.contentChangeCount).toBe(1);
     expect(fixture.nativeElement.querySelector('.admin-alert--info')).not.toBeNull();
+  });
+
+  it('queues a deletion and removes the source image block from the JSON draft', () => {
+    createComponent({
+      parkId: 'park-1',
+      parkName: 'Selected Park'
+    });
+
+    harness.jsonText = JSON.stringify({
+      images: [
+        {
+          imageId: 'image-1',
+          description: 'Duplicate image'
+        }
+      ]
+    });
+    const change: ParkGraphUpsertResult['changes'][number] = {
+      entityType: 'Image',
+      entityId: 'image-1',
+      entityKey: null,
+      displayName: 'Duplicate image',
+      changeType: 'Updated',
+      matchedBy: 'imageId',
+      fields: []
+    };
+    harness.previewResult = {
+      operationId: 'operation-1',
+      mode: 'merge',
+      isApplied: false,
+      canApply: true,
+      previewedAtUtc: '2026-06-18T10:00:00Z',
+      targetParkId: 'park-1',
+      targetParkName: 'Selected Park',
+      counts: { created: 0, updated: 1, deleted: 0, unchanged: 0, warnings: 0, errors: 0 },
+      changes: [change],
+      warnings: [],
+      errors: []
+    };
+
+    harness.removePreviewBlock(change);
+
+    const nextDocument: { images: unknown[]; suppr: Array<{ entityType: string; id: string }> } = JSON.parse(harness.jsonText);
+    expect(nextDocument.images).toEqual([]);
+    expect(nextDocument.suppr).toEqual([{ entityType: 'Image', id: 'image-1' }]);
+    expect(harness.previewResult?.changes).toEqual([]);
   });
 });
