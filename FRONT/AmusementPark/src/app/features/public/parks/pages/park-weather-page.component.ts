@@ -5,7 +5,13 @@ import { forkJoin } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { Park } from '@app/models/parks/park';
-import { ParkWeatherDay, ParkWeatherForecast } from '@app/models/parks/park-weather';
+import {
+  ParkWeatherDay,
+  ParkWeatherForecast,
+  ParkWeatherHistoricalComparison,
+  ParkWeatherHistoricalComparisonDay,
+  ParkWeatherHistoricalComparisons
+} from '@app/models/parks/park-weather';
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
 import { TranslationService } from '@app/services/translation.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
@@ -27,6 +33,7 @@ interface ParkWeatherPageData {
   weather: ParkWeatherForecast;
 }
 
+type WeatherDisplayDay = Pick<ParkWeatherDay, 'weatherCode' | 'temperatureMinCelsius' | 'temperatureMaxCelsius' | 'precipitationSumMillimeters' | 'windSpeedMaxKilometersPerHour'>;
 type TemperatureSeriesKind = 'min' | 'max';
 
 const CHART_LEFT: number = 64;
@@ -43,13 +50,17 @@ const CHART_BOTTOM: number = 216;
 })
 export class ParkWeatherPageComponent implements OnInit {
   private readonly stateStore = new SignalScreenStateStore<ParkWeatherPageData>();
+  private readonly historicalComparisonStore = new SignalScreenStateStore<ParkWeatherHistoricalComparisons>();
 
   protected readonly state = this.stateStore.state;
+  protected readonly historicalComparisonState = this.historicalComparisonStore.state;
+  protected readonly historicalComparisonRequested = signal<boolean>(false);
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private currentParkId: string | null = null;
+  private loadedHistoricalComparisonParkId: string | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -100,15 +111,15 @@ export class ParkWeatherPageComponent implements OnInit {
     });
   }
 
-  conditionKey(day: ParkWeatherDay): string {
+  conditionKey(day: WeatherDisplayDay): string {
     return `parkWeather.conditions.${resolveWeatherConditionKey(day.weatherCode ?? null)}`;
   }
 
-  iconClass(day: ParkWeatherDay): string {
+  iconClass(day: WeatherDisplayDay): string {
     return resolveWeatherIconClass(day.weatherCode ?? null);
   }
 
-  temperatureRange(day: ParkWeatherDay): string {
+  temperatureRange(day: WeatherDisplayDay): string {
     const min: string | null = this.formatTemperature(day.temperatureMinCelsius);
     const max: string | null = this.formatTemperature(day.temperatureMaxCelsius);
 
@@ -170,7 +181,7 @@ export class ParkWeatherPageComponent implements OnInit {
     return `${this.formatNumber(day.precipitationProbabilityMaxPercent, 0)}%`;
   }
 
-  precipitationSumLabel(day: ParkWeatherDay): string {
+  precipitationSumLabel(day: WeatherDisplayDay): string {
     if (day.precipitationSumMillimeters === null || day.precipitationSumMillimeters === undefined) {
       return '-';
     }
@@ -178,7 +189,7 @@ export class ParkWeatherPageComponent implements OnInit {
     return `${this.formatNumber(day.precipitationSumMillimeters, 1)} mm`;
   }
 
-  windSpeedLabel(day: ParkWeatherDay): string {
+  windSpeedLabel(day: WeatherDisplayDay): string {
     return this.measurementConversionService.formatSpeedFromKilometersPerHour(
       day.windSpeedMaxKilometersPerHour,
       this.measurementPreferenceService.preferredSystem(),
@@ -204,9 +215,38 @@ export class ParkWeatherPageComponent implements OnInit {
     }).format(new Date(`${value}T12:00:00`));
   }
 
+  comparisonYearLabelKey(yearsBack: number): string {
+    return yearsBack === 1
+      ? 'parkWeather.history.yearSingular'
+      : 'parkWeather.history.yearPlural';
+  }
+
+  historicalComparisonDay(comparison: ParkWeatherHistoricalComparison, forecastLocalDate: string): ParkWeatherHistoricalComparisonDay | null {
+    return comparison.days.find((day: ParkWeatherHistoricalComparisonDay) => day.forecastLocalDate === forecastLocalDate) ?? null;
+  }
+
+  onHistoricalComparisonToggle(event: Event, parkId: string | null | undefined): void {
+    const normalizedParkId: string = parkId?.trim() ?? '';
+    if (!normalizedParkId) {
+      return;
+    }
+
+    const details: HTMLDetailsElement | null = event.currentTarget instanceof HTMLDetailsElement
+      ? event.currentTarget
+      : null;
+
+    if (!details?.open || this.loadedHistoricalComparisonParkId === normalizedParkId) {
+      return;
+    }
+
+    this.loadHistoricalComparisons(normalizedParkId);
+  }
+
   private loadWeatherPage(parkId: string): void {
     const previousData: ParkWeatherPageData | undefined = this.stateStore.data();
     this.stateStore.setLoading(previousData);
+    this.historicalComparisonRequested.set(false);
+    this.loadedHistoricalComparisonParkId = null;
 
     forkJoin({
       park: this.parksApiService.getParkById(parkId, anonymousHttpOptions()),
@@ -230,6 +270,29 @@ export class ParkWeatherPageComponent implements OnInit {
         this.stateStore.setError('parkWeather.errorMessage', previousData);
       }
     });
+  }
+
+  private loadHistoricalComparisons(parkId: string): void {
+    this.historicalComparisonRequested.set(true);
+    this.historicalComparisonStore.setLoading();
+
+    this.parksApiService.getParkWeatherHistoricalComparisons(parkId, 7, 10, anonymousHttpOptions())
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (comparisons: ParkWeatherHistoricalComparisons) => {
+          this.loadedHistoricalComparisonParkId = parkId;
+          if (!comparisons.years || comparisons.years.length === 0) {
+            this.historicalComparisonStore.setEmpty(comparisons);
+            return;
+          }
+
+          this.historicalComparisonStore.setReady(comparisons);
+        },
+        error: (error: unknown) => {
+          console.error('Error loading park weather historical comparisons', error);
+          this.historicalComparisonStore.setError('parkWeather.history.errorMessage');
+        }
+      });
   }
 
   private formatTemperature(value: number | null | undefined): string | null {

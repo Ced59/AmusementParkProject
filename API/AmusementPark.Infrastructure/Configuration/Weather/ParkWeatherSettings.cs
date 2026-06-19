@@ -17,7 +17,13 @@ public sealed class ParkWeatherSettings : IParkWeatherRefreshSettings
 
     public bool IncludeYesterdayObservation { get; set; } = true;
 
+    public int HistoricalBackfillYears { get; set; } = 3;
+
+    public int HistoricalComparisonYearsLimit { get; set; } = 10;
+
     public int DelayBetweenParksMilliseconds { get; set; } = 250;
+
+    public int MinimumDelayBetweenProviderRequestsMilliseconds { get; set; } = 750;
 
     public string AutomaticRefreshTimeZoneId { get; set; } = "Europe/Paris";
 
@@ -44,7 +50,10 @@ public sealed class ParkWeatherSettings : IParkWeatherRefreshSettings
 
         settings.ForecastDays = Math.Clamp(settings.ForecastDays, 1, 7);
         settings.ForecastPastRetentionDays = Math.Clamp(settings.ForecastPastRetentionDays, 0, 30);
+        settings.HistoricalBackfillYears = Math.Clamp(settings.HistoricalBackfillYears, 0, 3);
+        settings.HistoricalComparisonYearsLimit = Math.Clamp(settings.HistoricalComparisonYearsLimit, 0, 10);
         settings.DelayBetweenParksMilliseconds = Math.Clamp(settings.DelayBetweenParksMilliseconds, 0, 60_000);
+        settings.MinimumDelayBetweenProviderRequestsMilliseconds = Math.Clamp(settings.MinimumDelayBetweenProviderRequestsMilliseconds, 0, 60_000);
         settings.AutomaticRefreshHour = Math.Clamp(settings.AutomaticRefreshHour, 0, 23);
         settings.AutomaticRefreshMinute = Math.Clamp(settings.AutomaticRefreshMinute, 0, 59);
         settings.RequestTimeoutSeconds = Math.Clamp(settings.RequestTimeoutSeconds, 2, 120);

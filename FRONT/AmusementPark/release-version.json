@@ -1,6 +1,20 @@
 {
-  "version": "2.1.2",
+  "version": "2.1.3",
   "history": [
+    {
+      "version": "2.1.3",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "La meteo des parcs compare les annees precedentes.",
+        "en": "Park weather compares previous years.",
+        "de": "Das Parkwetter vergleicht fruehere Jahre.",
+        "nl": "Parkweer vergelijkt vorige jaren.",
+        "it": "Il meteo dei parchi confronta gli anni precedenti.",
+        "es": "La meteo de los parques compara anos anteriores.",
+        "pl": "Pogoda parkow porownuje poprzednie lata.",
+        "pt": "A meteorologia dos parques compara anos anteriores."
+      }
+    },
     {
       "version": "2.1.2",
       "releasedAt": "2026-06-20",

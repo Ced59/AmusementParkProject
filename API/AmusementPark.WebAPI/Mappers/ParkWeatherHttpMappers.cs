@@ -16,6 +16,42 @@ internal static class ParkWeatherHttpMappers
         };
     }
 
+    public static ParkWeatherHistoricalComparisonsDto ToHttp(this ParkWeatherHistoricalComparisonsResult result)
+    {
+        return new ParkWeatherHistoricalComparisonsDto
+        {
+            ParkId = result.ParkId,
+            Years = result.Years.Select(static year => year.ToHttp()).ToList(),
+            Attribution = result.Attribution.ToHttp(),
+        };
+    }
+
+    public static ParkWeatherHistoricalComparisonDto ToHttp(this ParkWeatherHistoricalComparisonResult result)
+    {
+        return new ParkWeatherHistoricalComparisonDto
+        {
+            YearsBack = result.YearsBack,
+            Days = result.Days.Select(static day => day.ToHttp()).ToList(),
+        };
+    }
+
+    public static ParkWeatherHistoricalComparisonDayDto ToHttp(this ParkWeatherHistoricalComparisonDayResult result)
+    {
+        return new ParkWeatherHistoricalComparisonDayDto
+        {
+            ForecastLocalDate = result.ForecastLocalDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
+            LocalDate = result.LocalDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
+            WeatherCode = result.WeatherCode,
+            TemperatureMinCelsius = result.TemperatureMinCelsius,
+            TemperatureMaxCelsius = result.TemperatureMaxCelsius,
+            ApparentTemperatureMinCelsius = result.ApparentTemperatureMinCelsius,
+            ApparentTemperatureMaxCelsius = result.ApparentTemperatureMaxCelsius,
+            PrecipitationSumMillimeters = result.PrecipitationSumMillimeters,
+            WindSpeedMaxKilometersPerHour = result.WindSpeedMaxKilometersPerHour,
+            WindGustsMaxKilometersPerHour = result.WindGustsMaxKilometersPerHour,
+        };
+    }
+
     public static ParkWeatherDailyForecastDto ToHttp(this ParkWeatherDailyForecastResult result)
     {
         return new ParkWeatherDailyForecastDto

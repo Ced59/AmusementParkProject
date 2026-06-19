@@ -61,6 +61,60 @@ public sealed class ParkWeatherQueryHandlersTests
         Assert.Equal(new DateOnly(2026, 6, 19), localDate);
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenHistoricalComparisonsAreRequested_ShouldReturnStoredObservationDatesAlignedWithForecastDates()
+    {
+        Park park = CreatePark("park-1");
+        ParkWeatherDailySnapshot latestForecast = CreateSnapshot("park-1", new DateOnly(2028, 2, 29));
+        latestForecast.UtcOffsetSeconds = 0;
+        ParkWeatherDailySnapshot leapForecast = CreateSnapshot("park-1", new DateOnly(2028, 2, 29));
+        ParkWeatherDailySnapshot marchForecast = CreateSnapshot("park-1", new DateOnly(2028, 3, 1));
+        IReadOnlyCollection<DateOnly> requestedObservationDates = Array.Empty<DateOnly>();
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(park);
+        Mock<IParkWeatherRepository> weatherRepository = new Mock<IParkWeatherRepository>(MockBehavior.Strict);
+        weatherRepository
+            .Setup(repository => repository.GetLatestForecastSnapshotAsync("park-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(latestForecast);
+        weatherRepository
+            .Setup(repository => repository.GetForecastAsync("park-1", new DateOnly(2028, 2, 29), 7, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { leapForecast, marchForecast });
+        weatherRepository
+            .Setup(repository => repository.GetObservationsByDatesAsync("park-1", It.IsAny<IReadOnlyCollection<DateOnly>>(), It.IsAny<CancellationToken>()))
+            .Callback<string, IReadOnlyCollection<DateOnly>, CancellationToken>((_, dates, _) => requestedObservationDates = dates)
+            .ReturnsAsync(new[]
+            {
+                CreateObservation("park-1", new DateOnly(2027, 2, 28), 6d, 12d),
+                CreateObservation("park-1", new DateOnly(2027, 3, 1), 7d, 13d),
+                CreateObservation("park-1", new DateOnly(2026, 2, 28), 8d, 14d),
+            });
+        GetParkWeatherHistoricalComparisonsQueryHandler handler = new GetParkWeatherHistoricalComparisonsQueryHandler(
+            parkRepository.Object,
+            weatherRepository.Object,
+            new ParkWeatherLocalDateResolver(new FixedTimeProvider(new DateTimeOffset(2028, 2, 29, 8, 0, 0, TimeSpan.Zero))),
+            new ParkWeatherHistoricalComparisonDateResolver(),
+            new TestRefreshSettings());
+
+        ApplicationResult<ParkWeatherHistoricalComparisonsResult> result = await handler.HandleAsync(
+            new GetParkWeatherHistoricalComparisonsQuery("park-1", 7, 10),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        ParkWeatherHistoricalComparisonsResult value = result.Value ?? throw new InvalidOperationException("A successful result should expose comparisons.");
+        Assert.Equal(2, value.Years.Count);
+        Assert.Contains(new DateOnly(2027, 2, 28), requestedObservationDates);
+        Assert.Contains(new DateOnly(2027, 3, 1), requestedObservationDates);
+        Assert.Contains(new DateOnly(2026, 2, 28), requestedObservationDates);
+        Assert.DoesNotContain(new DateOnly(2025, 2, 28), requestedObservationDates);
+        ParkWeatherHistoricalComparisonDayResult leapDayComparison = value.Years.Single(year => year.YearsBack == 1).Days.Single(day => day.ForecastLocalDate == new DateOnly(2028, 2, 29));
+        Assert.Equal(new DateOnly(2027, 2, 28), leapDayComparison.LocalDate);
+        Assert.Equal(6d, leapDayComparison.TemperatureMinCelsius);
+        parkRepository.VerifyAll();
+        weatherRepository.VerifyAll();
+    }
+
     private static Park CreatePark(string id)
     {
         Park park = new Park
@@ -88,6 +142,38 @@ public sealed class ParkWeatherQueryHandlersTests
             TemperatureMinCelsius = 14d,
             TemperatureMaxCelsius = 24d,
         };
+    }
+
+    private static ParkWeatherDailySnapshot CreateObservation(string parkId, DateOnly localDate, double minTemperature, double maxTemperature)
+    {
+        ParkWeatherDailySnapshot snapshot = CreateSnapshot(parkId, localDate);
+        snapshot.DataKind = ParkWeatherDataKind.Observation;
+        snapshot.TemperatureMinCelsius = minTemperature;
+        snapshot.TemperatureMaxCelsius = maxTemperature;
+        return snapshot;
+    }
+
+    private sealed class TestRefreshSettings : IParkWeatherRefreshSettings
+    {
+        public bool IsAutomaticRefreshEnabled => true;
+
+        public int ForecastDays => 7;
+
+        public int ForecastPastRetentionDays => 3;
+
+        public bool IncludeYesterdayObservation => true;
+
+        public int HistoricalBackfillYears => 3;
+
+        public int HistoricalComparisonYearsLimit => 2;
+
+        public int DelayBetweenParksMilliseconds => 0;
+
+        public string AutomaticRefreshTimeZoneId => "UTC";
+
+        public int AutomaticRefreshHour => 2;
+
+        public int AutomaticRefreshMinute => 15;
     }
 
     private sealed class FixedTimeProvider : TimeProvider

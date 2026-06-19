@@ -13,6 +13,7 @@ public sealed class ParkWeatherRefreshOrchestrator
     private readonly IParkWeatherProviderStrategyResolver providerStrategyResolver;
     private readonly IParkWeatherRefreshSettings settings;
     private readonly IParkWeatherCacheInvalidator cacheInvalidator;
+    private readonly ParkWeatherHistoricalComparisonDateResolver historicalComparisonDateResolver;
 
     public ParkWeatherRefreshOrchestrator(
         IParkRepository parkRepository,
@@ -20,7 +21,8 @@ public sealed class ParkWeatherRefreshOrchestrator
         IParkWeatherRunRepository runRepository,
         IParkWeatherProviderStrategyResolver providerStrategyResolver,
         IParkWeatherRefreshSettings settings,
-        IParkWeatherCacheInvalidator cacheInvalidator)
+        IParkWeatherCacheInvalidator cacheInvalidator,
+        ParkWeatherHistoricalComparisonDateResolver historicalComparisonDateResolver)
     {
         this.parkRepository = parkRepository;
         this.weatherRepository = weatherRepository;
@@ -28,6 +30,7 @@ public sealed class ParkWeatherRefreshOrchestrator
         this.providerStrategyResolver = providerStrategyResolver;
         this.settings = settings;
         this.cacheInvalidator = cacheInvalidator;
+        this.historicalComparisonDateResolver = historicalComparisonDateResolver;
     }
 
     public async Task ProcessRunAsync(string runId, CancellationToken cancellationToken)
@@ -62,7 +65,7 @@ public sealed class ParkWeatherRefreshOrchestrator
                 await this.DelayBetweenParksAsync(cancellationToken);
             }
 
-            await this.CleanupExpiredForecastsAsync(cancellationToken);
+            await this.CleanupExpiredWeatherDataAsync(cancellationToken);
             await this.cacheInvalidator.InvalidateUpdatedWeatherAsync(updatedParks, cancellationToken);
 
             run.CompletedAtUtc = DateTime.UtcNow;
@@ -147,14 +150,25 @@ public sealed class ParkWeatherRefreshOrchestrator
                 this.settings.IncludeYesterdayObservation,
                 cancellationToken);
 
-            await this.weatherRepository.UpsertSnapshotsAsync(providerResult.Snapshots, cancellationToken);
-            await this.CleanupForecastsCoveredByObservationsAsync(item.ParkId, providerResult.Snapshots, cancellationToken);
+            List<ParkWeatherDailySnapshot> snapshots = new List<ParkWeatherDailySnapshot>(providerResult.Snapshots);
+            List<string> warnings = new List<string>(providerResult.Warnings);
+
+            IReadOnlyCollection<ParkWeatherDailySnapshot> historicalSnapshots = await this.FetchMissingHistoricalComparisonObservationsAsync(
+                park,
+                providerStrategy,
+                snapshots,
+                warnings,
+                cancellationToken);
+            snapshots.AddRange(historicalSnapshots);
+
+            await this.weatherRepository.UpsertSnapshotsAsync(snapshots, cancellationToken);
+            await this.CleanupForecastsCoveredByObservationsAsync(item.ParkId, snapshots, cancellationToken);
 
             item.Status = ParkWeatherRunItemStatus.Succeeded;
             item.CompletedAtUtc = DateTime.UtcNow;
-            item.ForecastDayCount = providerResult.Snapshots.Count(static snapshot => snapshot.DataKind == ParkWeatherDataKind.Forecast);
-            item.ObservationDayCount = providerResult.Snapshots.Count(static snapshot => snapshot.DataKind == ParkWeatherDataKind.Observation);
-            item.WarningMessage = string.Join(" ", providerResult.Warnings.Where(static warning => !string.IsNullOrWhiteSpace(warning)));
+            item.ForecastDayCount = snapshots.Count(static snapshot => snapshot.DataKind == ParkWeatherDataKind.Forecast);
+            item.ObservationDayCount = snapshots.Count(static snapshot => snapshot.DataKind == ParkWeatherDataKind.Observation);
+            item.WarningMessage = string.Join(" ", warnings.Where(static warning => !string.IsNullOrWhiteSpace(warning)));
             await this.runRepository.UpsertItemAsync(item, cancellationToken);
 
             run.SucceededParkCount += 1;
@@ -164,7 +178,7 @@ public sealed class ParkWeatherRefreshOrchestrator
             }
 
             await this.runRepository.UpdateAsync(run, cancellationToken);
-            return providerResult.Snapshots.Count > 0;
+            return snapshots.Count > 0;
         }
         catch (Exception exception) when (exception is not OperationCanceledException)
         {
@@ -204,11 +218,72 @@ public sealed class ParkWeatherRefreshOrchestrator
         }
     }
 
-    private async Task CleanupExpiredForecastsAsync(CancellationToken cancellationToken)
+    private async Task<IReadOnlyCollection<ParkWeatherDailySnapshot>> FetchMissingHistoricalComparisonObservationsAsync(
+        Park park,
+        IParkWeatherProviderStrategy providerStrategy,
+        IReadOnlyCollection<ParkWeatherDailySnapshot> currentSnapshots,
+        List<string> warnings,
+        CancellationToken cancellationToken)
+    {
+        int historicalBackfillYears = Math.Clamp(this.settings.HistoricalBackfillYears, 0, 3);
+        if (historicalBackfillYears == 0)
+        {
+            return Array.Empty<ParkWeatherDailySnapshot>();
+        }
+
+        List<DateOnly> forecastDates = currentSnapshots
+            .Where(static snapshot => snapshot.DataKind == ParkWeatherDataKind.Forecast)
+            .Select(static snapshot => snapshot.LocalDate)
+            .Distinct()
+            .OrderBy(static date => date)
+            .ToList();
+
+        IReadOnlyCollection<DateOnly> comparisonDates = this.historicalComparisonDateResolver.ResolveComparisonDates(forecastDates, historicalBackfillYears);
+        if (comparisonDates.Count == 0)
+        {
+            return Array.Empty<ParkWeatherDailySnapshot>();
+        }
+
+        IReadOnlyCollection<DateOnly> existingObservationDates = await this.weatherRepository.GetExistingObservationDatesAsync(
+            park.Id ?? string.Empty,
+            comparisonDates,
+            cancellationToken);
+        HashSet<DateOnly> existingObservationDateSet = existingObservationDates.ToHashSet();
+        List<DateOnly> missingDates = comparisonDates
+            .Where(date => !existingObservationDateSet.Contains(date))
+            .OrderBy(static date => date)
+            .ToList();
+
+        if (missingDates.Count == 0)
+        {
+            return Array.Empty<ParkWeatherDailySnapshot>();
+        }
+
+        try
+        {
+            ParkWeatherProviderResult historicalProviderResult = await providerStrategy.FetchDailyObservationsAsync(
+                park,
+                missingDates,
+                cancellationToken);
+            warnings.AddRange(historicalProviderResult.Warnings);
+            return historicalProviderResult.Snapshots;
+        }
+        catch (Exception exception) when (exception is not OperationCanceledException)
+        {
+            warnings.Add($"Historical comparison observations could not be fetched: {SanitizeMessage(exception.Message)}");
+            return Array.Empty<ParkWeatherDailySnapshot>();
+        }
+    }
+
+    private async Task CleanupExpiredWeatherDataAsync(CancellationToken cancellationToken)
     {
         int retentionDays = Math.Clamp(this.settings.ForecastPastRetentionDays, 0, 30);
         DateOnly oldestLocalDateToKeep = DateOnly.FromDateTime(DateTime.UtcNow).AddDays(-retentionDays);
         await this.weatherRepository.DeleteExpiredForecastsAsync(oldestLocalDateToKeep, cancellationToken);
+
+        int historicalRetentionYears = Math.Clamp(this.settings.HistoricalComparisonYearsLimit, 0, 10);
+        DateOnly oldestObservationLocalDateToKeep = DateOnly.FromDateTime(DateTime.UtcNow).AddYears(-historicalRetentionYears);
+        await this.weatherRepository.DeleteExpiredObservationsAsync(oldestObservationLocalDateToKeep, cancellationToken);
     }
 
     private static bool HasValidCoordinates(Park park)

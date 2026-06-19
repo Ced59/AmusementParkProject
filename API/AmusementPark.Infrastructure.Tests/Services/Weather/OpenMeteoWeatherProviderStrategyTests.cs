@@ -22,6 +22,7 @@ public sealed class OpenMeteoWeatherProviderStrategyTests
             {
                 OpenMeteoForecastBaseUrl = "https://weather.test/forecast",
                 OpenMeteoArchiveBaseUrl = "https://weather.test/archive",
+                MinimumDelayBetweenProviderRequestsMilliseconds = 0,
             });
         Park park = CreatePark();
 
@@ -38,6 +39,42 @@ public sealed class OpenMeteoWeatherProviderStrategyTests
             snapshot.DataKind == ParkWeatherDataKind.Observation &&
             snapshot.LocalDate == new DateOnly(2026, 6, 17) &&
             snapshot.TimeZone == "America/New_York");
+    }
+
+    [Fact]
+    public async Task FetchDailyObservationsAsync_WhenDatesSpanSeparateRanges_ShouldRequestEachContiguousRange()
+    {
+        RecordingHttpMessageHandler handler = new RecordingHttpMessageHandler();
+        TestHttpClientFactory httpClientFactory = new TestHttpClientFactory(new HttpClient(handler));
+        OpenMeteoWeatherProviderStrategy strategy = new OpenMeteoWeatherProviderStrategy(
+            httpClientFactory,
+            new ParkWeatherSettings
+            {
+                OpenMeteoForecastBaseUrl = "https://weather.test/forecast",
+                OpenMeteoArchiveBaseUrl = "https://weather.test/archive",
+                MinimumDelayBetweenProviderRequestsMilliseconds = 0,
+            });
+        Park park = CreatePark();
+
+        await strategy.FetchDailyObservationsAsync(
+            park,
+            new[]
+            {
+                new DateOnly(2025, 6, 20),
+                new DateOnly(2025, 6, 21),
+                new DateOnly(2024, 6, 20),
+                new DateOnly(2024, 6, 21),
+            },
+            CancellationToken.None);
+
+        List<Uri> archiveRequests = handler.Requests.Where(uri => uri.AbsolutePath == "/archive").ToList();
+        Assert.Equal(2, archiveRequests.Count);
+        Assert.Contains(archiveRequests, static uri =>
+            uri.Query.Contains("start_date=2024-06-20", StringComparison.Ordinal) &&
+            uri.Query.Contains("end_date=2024-06-21", StringComparison.Ordinal));
+        Assert.Contains(archiveRequests, static uri =>
+            uri.Query.Contains("start_date=2025-06-20", StringComparison.Ordinal) &&
+            uri.Query.Contains("end_date=2025-06-21", StringComparison.Ordinal));
     }
 
     private static Park CreatePark()

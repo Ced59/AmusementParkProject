@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 import { ParkExplorer } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
-import { ParkWeatherForecast } from '@app/models/parks/park-weather';
+import { ParkWeatherForecast, ParkWeatherHistoricalComparisons } from '@app/models/parks/park-weather';
 import { ParkMapItems } from '@app/models/parks/park-map-items';
 import { ParkMapPoint } from '@app/models/parks/park-map-point';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
@@ -81,6 +81,11 @@ export class ParksApiService {
   getParkWeather(id: string, days: number = 7, options: ParksHttpOptions = {}): Observable<ParkWeatherForecast> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkWeather(id, days)}`;
     return this.http.get<ParkWeatherForecast>(url, options);
+  }
+
+  getParkWeatherHistoricalComparisons(id: string, days: number = 7, years: number = 10, options: ParksHttpOptions = {}): Observable<ParkWeatherHistoricalComparisons> {
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkWeatherHistoricalComparisons(id, days, years)}`;
+    return this.http.get<ParkWeatherHistoricalComparisons>(url, options);
   }
 
   getParkDetailSummary(id: string, options: ParksHttpOptions = {}): Observable<ParkDetailSummary> {

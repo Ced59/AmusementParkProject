@@ -29,6 +29,17 @@
       "temperature": "Temp.",
       "precipitationSum": "Cumul"
     },
+    "history": {
+      "title": "Comparer avec les annees precedentes",
+      "subtitle": "Memoire meteo stockee pour les memes dates.",
+      "loading": "Chargement des comparaisons meteo.",
+      "empty": "Aucune observation historique n'est disponible pour ces dates.",
+      "errorMessage": "Les comparaisons meteo n'ont pas pu etre chargees.",
+      "yearSingular": "Il y a {{count}} an",
+      "yearPlural": "Il y a {{count}} ans",
+      "rain": "Pluie {{value}}",
+      "wind": "Vent {{value}}"
+    },
     "attribution": {
       "short": "Source : {{provider}}",
       "full": "Donnees meteo fournies par {{provider}} sous licence :"

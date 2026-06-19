@@ -51,6 +51,45 @@ public sealed class ParkWeatherForecastResult
     public ParkWeatherAttributionResult Attribution { get; init; } = new ParkWeatherAttributionResult();
 }
 
+public sealed class ParkWeatherHistoricalComparisonsResult
+{
+    public string ParkId { get; init; } = string.Empty;
+
+    public IReadOnlyCollection<ParkWeatherHistoricalComparisonResult> Years { get; init; } = Array.Empty<ParkWeatherHistoricalComparisonResult>();
+
+    public ParkWeatherAttributionResult Attribution { get; init; } = new ParkWeatherAttributionResult();
+}
+
+public sealed class ParkWeatherHistoricalComparisonResult
+{
+    public int YearsBack { get; init; }
+
+    public IReadOnlyCollection<ParkWeatherHistoricalComparisonDayResult> Days { get; init; } = Array.Empty<ParkWeatherHistoricalComparisonDayResult>();
+}
+
+public sealed class ParkWeatherHistoricalComparisonDayResult
+{
+    public DateOnly ForecastLocalDate { get; init; }
+
+    public DateOnly LocalDate { get; init; }
+
+    public int? WeatherCode { get; init; }
+
+    public double? TemperatureMinCelsius { get; init; }
+
+    public double? TemperatureMaxCelsius { get; init; }
+
+    public double? ApparentTemperatureMinCelsius { get; init; }
+
+    public double? ApparentTemperatureMaxCelsius { get; init; }
+
+    public double? PrecipitationSumMillimeters { get; init; }
+
+    public double? WindSpeedMaxKilometersPerHour { get; init; }
+
+    public double? WindGustsMaxKilometersPerHour { get; init; }
+}
+
 public sealed class ParkWeatherRunResult
 {
     public string Id { get; init; } = string.Empty;

@@ -90,6 +90,15 @@ public sealed class ParkWeatherRepository : IParkWeatherRepository
         await this.collection.DeleteManyAsync(filter, cancellationToken);
     }
 
+    public async Task DeleteExpiredObservationsAsync(DateOnly oldestLocalDateToKeep, CancellationToken cancellationToken)
+    {
+        string oldestDate = EntityMongoMappers.FormatDate(oldestLocalDateToKeep);
+        FilterDefinition<ParkWeatherDailySnapshotDocument> filter = Builders<ParkWeatherDailySnapshotDocument>.Filter.Eq(item => item.DataKind, ParkWeatherDataKind.Observation)
+            & Builders<ParkWeatherDailySnapshotDocument>.Filter.Lt(item => item.LocalDate, oldestDate);
+
+        await this.collection.DeleteManyAsync(filter, cancellationToken);
+    }
+
     public async Task<ParkWeatherDailySnapshot?> GetLatestForecastSnapshotAsync(string parkId, CancellationToken cancellationToken)
     {
         FilterDefinition<ParkWeatherDailySnapshotDocument> filter = Builders<ParkWeatherDailySnapshotDocument>.Filter.Eq(item => item.ParkId, parkId)
@@ -113,6 +122,55 @@ public sealed class ParkWeatherRepository : IParkWeatherRepository
         List<ParkWeatherDailySnapshotDocument> documents = await this.collection.Find(filter)
             .SortBy(item => item.LocalDate)
             .Limit(Math.Max(1, dayCount))
+            .ToListAsync(cancellationToken);
+
+        return documents.Select(document => document.ToDomain()).ToList();
+    }
+
+    public async Task<IReadOnlyCollection<DateOnly>> GetExistingObservationDatesAsync(string parkId, IReadOnlyCollection<DateOnly> localDates, CancellationToken cancellationToken)
+    {
+        List<string> dateKeys = localDates
+            .Select(EntityMongoMappers.FormatDate)
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (dateKeys.Count == 0)
+        {
+            return Array.Empty<DateOnly>();
+        }
+
+        FilterDefinition<ParkWeatherDailySnapshotDocument> filter = Builders<ParkWeatherDailySnapshotDocument>.Filter.Eq(item => item.ParkId, parkId)
+            & Builders<ParkWeatherDailySnapshotDocument>.Filter.Eq(item => item.DataKind, ParkWeatherDataKind.Observation)
+            & Builders<ParkWeatherDailySnapshotDocument>.Filter.In(item => item.LocalDate, dateKeys);
+
+        List<string> existingDateKeys = await this.collection.Find(filter)
+            .Project(item => item.LocalDate)
+            .ToListAsync(cancellationToken);
+
+        return existingDateKeys
+            .Distinct(StringComparer.Ordinal)
+            .Select(EntityMongoMappers.ParseDate)
+            .ToList();
+    }
+
+    public async Task<IReadOnlyCollection<ParkWeatherDailySnapshot>> GetObservationsByDatesAsync(string parkId, IReadOnlyCollection<DateOnly> localDates, CancellationToken cancellationToken)
+    {
+        List<string> dateKeys = localDates
+            .Select(EntityMongoMappers.FormatDate)
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
+
+        if (dateKeys.Count == 0)
+        {
+            return Array.Empty<ParkWeatherDailySnapshot>();
+        }
+
+        FilterDefinition<ParkWeatherDailySnapshotDocument> filter = Builders<ParkWeatherDailySnapshotDocument>.Filter.Eq(item => item.ParkId, parkId)
+            & Builders<ParkWeatherDailySnapshotDocument>.Filter.Eq(item => item.DataKind, ParkWeatherDataKind.Observation)
+            & Builders<ParkWeatherDailySnapshotDocument>.Filter.In(item => item.LocalDate, dateKeys);
+
+        List<ParkWeatherDailySnapshotDocument> documents = await this.collection.Find(filter)
+            .SortBy(item => item.LocalDate)
             .ToListAsync(cancellationToken);
 
         return documents.Select(document => document.ToDomain()).ToList();
