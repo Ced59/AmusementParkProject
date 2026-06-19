@@ -1,6 +1,20 @@
 {
-  "version": "2.0.2",
+  "version": "2.0.3",
   "history": [
+    {
+      "version": "2.0.3",
+      "releasedAt": "2026-06-19",
+      "labels": {
+        "fr": "Les fiches et les notes se parcourent plus facilement.",
+        "en": "Pages and ratings are easier to browse.",
+        "de": "Seiten und Bewertungen lassen sich leichter durchsehen.",
+        "nl": "Pagina's en beoordelingen zijn makkelijker te bekijken.",
+        "it": "Schede e valutazioni sono piu facili da sfogliare.",
+        "es": "Las fichas y valoraciones son mas faciles de recorrer.",
+        "pl": "Strony i oceny sa latwiejsze do przegladania.",
+        "pt": "Fichas e avaliacoes ficam mais faceis de percorrer."
+      }
+    },
     {
       "version": "2.0.2",
       "releasedAt": "2026-06-19",

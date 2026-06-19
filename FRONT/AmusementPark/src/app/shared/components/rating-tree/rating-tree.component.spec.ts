@@ -44,6 +44,20 @@ describe('RatingTreeComponent', () => {
     expect(actions[0].textContent).toContain('ratings.tree.detailAction');
     expect(actions[1].textContent).toContain('ratings.tree.detailAction');
   });
+
+  it('emits rating changes when an editable star is selected', () => {
+    const changes: Array<{ ratingId: string; value: number }> = [];
+    component.ratingChange.subscribe((change: { ratingId: string; value: number }): void => {
+      changes.push(change);
+    });
+    fixture.componentRef.setInput('parks', [createPark()]);
+    fixture.detectChanges();
+
+    const buttons: NodeListOf<HTMLButtonElement> = fixture.nativeElement.querySelectorAll('.rating-tree__items .rating-tree__star-hit--right');
+    buttons[3]?.click();
+
+    expect(changes).toEqual([{ ratingId: 'rating-item-1', value: 4 }]);
+  });
 });
 
 function createPark(): RatingTreePark {
@@ -67,7 +81,11 @@ function createPark(): RatingTreePark {
             score: 5,
             route: ['/parks', 'park-1', 'items', 'item-1'],
             secondaryLabelKey: 'ratings.profile.communityAverage',
-            secondaryScore: 4.8
+            secondaryScore: 4.8,
+            editable: {
+              ratingId: 'rating-item-1',
+              saving: false
+            }
           }
         ]
       }

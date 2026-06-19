@@ -207,6 +207,31 @@ internal static class ParkItemsHttpMappers
         };
     }
 
+    public static ParkItemSiblingNavigationDto ToHttp(this ParkItemSiblingNavigationResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        return new ParkItemSiblingNavigationDto
+        {
+            ParkId = value.ParkId,
+            CurrentItemId = value.CurrentItemId,
+            CurrentPosition = value.CurrentPosition,
+            TotalItems = value.TotalItems,
+            RemainingItems = value.RemainingItems,
+            Previous = value.Previous?.ToHttp(),
+            Next = value.Next?.ToHttp(),
+        };
+    }
+
+    private static ParkItemSiblingNavigationItemDto ToHttp(this ParkItemSiblingNavigationItem value)
+    {
+        return new ParkItemSiblingNavigationItemDto
+        {
+            Id = value.Id,
+            Name = value.Name,
+        };
+    }
+
     private static ParkItemContentQualityDto ToHttp(this ParkItemContentQualityResult value)
     {
         return new ParkItemContentQualityDto

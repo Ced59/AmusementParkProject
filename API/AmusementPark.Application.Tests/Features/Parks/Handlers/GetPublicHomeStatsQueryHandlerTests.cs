@@ -1,6 +1,7 @@
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems;
+using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Application.Features.Parks.Handlers;
@@ -183,6 +184,16 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
         }
 
         public Task<IReadOnlyCollection<ParkItem>> GetByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyList<ParkItemSiblingNavigationItem>> GetNavigationItemsByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyCollection<ParkItem>> GetRelatedItemsAsync(ParkItem currentItem, int limit, bool includeHidden, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

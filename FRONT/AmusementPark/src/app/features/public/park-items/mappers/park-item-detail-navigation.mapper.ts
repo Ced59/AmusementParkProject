@@ -1,12 +1,18 @@
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { ParkItemSiblingNavigation, ParkItemSiblingNavigationItem } from '@app/models/parks/park-item-sibling-navigation';
 import {
   buildPublicParkItemImagesRouteCommands,
+  buildPublicParkItemRouteCommands,
   buildPublicParkItemVideosRouteCommands,
   buildPublicParkItemsRouteCommands,
   buildPublicParkRouteCommands
 } from '@shared/utils/routing/public-detail-route.helpers';
-import { ParkItemDetailNavigationLinkViewModel } from '../models/park-item-detail-view.model';
+import {
+  ParkItemDetailNavigationLinkViewModel,
+  ParkItemDetailSiblingNavigationItemViewModel,
+  ParkItemDetailSiblingNavigationViewModel
+} from '../models/park-item-detail-view.model';
 import { trimOrNull } from './park-item-detail-formatters';
 
 export function buildCategoryNavigation(itemsLink: string[] | null, category: string | null | undefined): ParkItemDetailNavigationLinkViewModel | null {
@@ -93,4 +99,45 @@ export function buildVideosLink(park: Park | null, item: ParkItem | null, curren
     itemId: item?.id,
     itemName: item?.name
   });
+}
+
+export function buildSiblingNavigation(
+  navigation: ParkItemSiblingNavigation | null,
+  park: Park | null,
+  currentLanguage: string
+): ParkItemDetailSiblingNavigationViewModel | null {
+  if (!navigation || navigation.totalItems <= 1) {
+    return null;
+  }
+
+  return {
+    currentPosition: navigation.currentPosition,
+    totalItems: navigation.totalItems,
+    remainingItems: navigation.remainingItems,
+    previous: buildSiblingNavigationItem(navigation.previous, park, currentLanguage),
+    next: buildSiblingNavigationItem(navigation.next, park, currentLanguage)
+  };
+}
+
+function buildSiblingNavigationItem(
+  item: ParkItemSiblingNavigationItem | null,
+  park: Park | null,
+  currentLanguage: string
+): ParkItemDetailSiblingNavigationItemViewModel | null {
+  const routerLink: string[] | null = buildPublicParkItemRouteCommands({
+    language: currentLanguage,
+    parkId: park?.id,
+    parkName: park?.name,
+    itemId: item?.id,
+    itemName: item?.name
+  });
+
+  if (!item || !routerLink) {
+    return null;
+  }
+
+  return {
+    name: item.name,
+    routerLink
+  };
 }

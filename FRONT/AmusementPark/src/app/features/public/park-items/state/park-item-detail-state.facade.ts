@@ -6,6 +6,7 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
@@ -35,6 +36,7 @@ interface ParkItemDetailSourceData {
   manufacturerName: string | null;
   zoneName: string | null;
   relatedItems: ParkItem[];
+  siblingNavigation: ParkItemSiblingNavigation | null;
   photos: ImageDto[];
 }
 
@@ -54,6 +56,7 @@ export class ParkItemDetailStateFacade {
       sourceData?.zoneName ?? null,
       this.currentLanguageSignal(),
       sourceData?.relatedItems ?? [],
+      sourceData?.siblingNavigation ?? null,
       sourceData?.photos ?? [],
       this.textTruncator,
       this.measurementPreferenceService.preferredSystem(),
@@ -92,6 +95,7 @@ export class ParkItemDetailStateFacade {
           manufacturerName: null,
           zoneName: null,
           relatedItems: [],
+          siblingNavigation: null,
           photos: []
         });
 
@@ -152,7 +156,22 @@ export class ParkItemDetailStateFacade {
       return;
     }
 
-    this.parkItemsApiService.getParkItemsByParkId(item.parkId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.parkItemsApiService.getParkItemSiblingNavigation(item.id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (siblingNavigation: ParkItemSiblingNavigation) => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          siblingNavigation
+        }));
+      },
+      error: () => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          siblingNavigation: null
+        }));
+      }
+    });
+
+    this.parkItemsApiService.getRelatedParkItems(item.id, 3, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (items: ParkItem[]) => {
         this.updateReadyData((current: ParkItemDetailSourceData) => ({
           ...current,

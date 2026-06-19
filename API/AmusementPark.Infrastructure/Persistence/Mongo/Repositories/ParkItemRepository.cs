@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkItems;
+using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.ParkZones.Results;
@@ -44,6 +45,78 @@ public sealed class ParkItemRepository : IParkItemRepository
             .ToListAsync(cancellationToken);
 
         return documents.Select(document => document.ToDomain()).ToList();
+    }
+
+    public async Task<IReadOnlyList<ParkItemSiblingNavigationItem>> GetNavigationItemsByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+    {
+        FilterDefinition<ParkItemDocument> filter = Builders<ParkItemDocument>.Filter.Eq(document => document.ParkId, parkId);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
+
+        List<ParkItemSiblingNavigationItem> items = await this.collection.Find(filter)
+            .SortBy(document => document.Category)
+            .ThenBy(document => document.Type)
+            .ThenBy(document => document.Name)
+            .ThenBy(document => document.Id)
+            .Project(document => new ParkItemSiblingNavigationItem
+            {
+                Id = document.Id,
+                Name = document.Name,
+            })
+            .ToListAsync(cancellationToken);
+
+        return items;
+    }
+
+    public async Task<IReadOnlyCollection<ParkItem>> GetRelatedItemsAsync(ParkItem currentItem, int limit, bool includeHidden, CancellationToken cancellationToken)
+    {
+        if (limit <= 0 || string.IsNullOrWhiteSpace(currentItem.Id) || string.IsNullOrWhiteSpace(currentItem.ParkId))
+        {
+            return Array.Empty<ParkItem>();
+        }
+
+        FilterDefinitionBuilder<ParkItemDocument> filterBuilder = Builders<ParkItemDocument>.Filter;
+        FilterDefinition<ParkItemDocument> filter =
+            filterBuilder.Eq(document => document.ParkId, currentItem.ParkId) &
+            filterBuilder.Ne(document => document.Id, currentItem.Id);
+
+        if (!includeHidden)
+        {
+            filter &= filterBuilder.Eq(document => document.IsVisible, true);
+        }
+
+        List<FilterDefinition<ParkItemDocument>> affinityFilters = new List<FilterDefinition<ParkItemDocument>>
+        {
+            filterBuilder.Eq(document => document.Category, currentItem.Category),
+            filterBuilder.Eq(document => document.Type, currentItem.Type),
+        };
+
+        if (!string.IsNullOrWhiteSpace(currentItem.ZoneId))
+        {
+            affinityFilters.Add(filterBuilder.Eq(document => document.ZoneId, currentItem.ZoneId));
+        }
+
+        filter &= filterBuilder.Or(affinityFilters);
+
+        int candidateLimit = Math.Max(limit * 8, 24);
+        List<ParkItemDocument> documents = await this.collection.Find(filter)
+            .SortBy(document => document.Category)
+            .ThenBy(document => document.Type)
+            .ThenBy(document => document.Name)
+            .ThenBy(document => document.Id)
+            .Limit(candidateLimit)
+            .ToListAsync(cancellationToken);
+
+        return documents
+            .Select(document => document.ToDomain())
+            .OrderByDescending(item => CalculateRelatedScore(item, currentItem))
+            .ThenBy(item => item.Name, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(item => item.Id, StringComparer.Ordinal)
+            .Take(limit)
+            .ToList();
     }
 
     public async Task<IReadOnlyCollection<ParkItem>> GetPublicSitemapCandidatesAsync(int limit, CancellationToken cancellationToken)
@@ -557,6 +630,28 @@ public sealed class ParkItemRepository : IParkItemRepository
             default:
                 return sortBuilder.Ascending(document => document.AdminReviewPriority);
         }
+    }
+
+    private static int CalculateRelatedScore(ParkItem candidate, ParkItem currentItem)
+    {
+        int score = 0;
+
+        if (candidate.Category == currentItem.Category)
+        {
+            score += 4;
+        }
+
+        if (candidate.Type == currentItem.Type)
+        {
+            score += 3;
+        }
+
+        if (!string.IsNullOrWhiteSpace(currentItem.ZoneId) && string.Equals(candidate.ZoneId, currentItem.ZoneId, StringComparison.Ordinal))
+        {
+            score += 2;
+        }
+
+        return score;
     }
 
     private static List<string> NormalizeParkIds(IEnumerable<string> parkIds)

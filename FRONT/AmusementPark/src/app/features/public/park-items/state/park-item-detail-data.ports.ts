@@ -6,6 +6,7 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
+import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
@@ -15,7 +16,8 @@ import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 
 export interface ParkItemDetailItemsPort {
   getParkItemById(id: string, options?: AnonymousHttpOptions): Observable<ParkItem>;
-  getParkItemsByParkId(parkId: string, options?: AnonymousHttpOptions): Observable<ParkItem[]>;
+  getParkItemSiblingNavigation(id: string, options?: AnonymousHttpOptions): Observable<ParkItemSiblingNavigation>;
+  getRelatedParkItems(id: string, limit?: number, options?: AnonymousHttpOptions): Observable<ParkItem[]>;
 }
 
 export interface ParkItemDetailParksPort {

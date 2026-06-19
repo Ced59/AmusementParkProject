@@ -62,6 +62,8 @@ function buildParkItemAdminSortQuery(sort: ParkItemAdminListSort | null = null):
 
 export const PARK_ITEMS_API_ENDPOINTS = {
   getParkItemsByParkId: (parkId: string, page: number = 1, size: number = 100) => `park-items/park/${parkId}?page=${page}&size=${size}`,
+  getParkItemSiblingNavigation: (parkItemId: string) => `park-items/${encodeURIComponent(parkItemId)}/siblings`,
+  getRelatedParkItems: (parkItemId: string, limit: number = 3) => `park-items/${encodeURIComponent(parkItemId)}/related?limit=${limit}`,
   getParkItemsPaginated: (
     page: number,
     size: number,

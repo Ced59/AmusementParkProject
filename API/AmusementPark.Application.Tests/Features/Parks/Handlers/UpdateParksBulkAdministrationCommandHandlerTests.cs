@@ -1,6 +1,7 @@
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems;
+using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Contracts;
@@ -222,6 +223,16 @@ public sealed class UpdateParksBulkAdministrationCommandHandlerTests
         public Task<IReadOnlyCollection<ParkItem>> GetByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
         {
             return Task.FromResult<IReadOnlyCollection<ParkItem>>(Array.Empty<ParkItem>());
+        }
+
+        public Task<IReadOnlyList<ParkItemSiblingNavigationItem>> GetNavigationItemsByParkIdAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyCollection<ParkItem>> GetRelatedItemsAsync(ParkItem currentItem, int limit, bool includeHidden, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
 
         public Task<IReadOnlyCollection<ParkItem>> GetPublicSitemapCandidatesAsync(int limit, CancellationToken cancellationToken)

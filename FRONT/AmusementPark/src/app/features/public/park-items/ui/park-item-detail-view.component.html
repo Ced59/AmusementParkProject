@@ -33,6 +33,32 @@
         </app-image-display>
       </div>
 
+      <nav class="item-detail-hero__siblings" *ngIf="currentDetail.siblingNavigation as siblingNavigation" [attr.aria-label]="'parkItems.detail.siblingNavigation' | translate">
+        <a
+          *ngIf="siblingNavigation.previous as previousItem"
+          class="item-detail-hero__sibling item-detail-hero__sibling--previous"
+          [routerLink]="previousItem.routerLink"
+          [attr.aria-label]="'parkItems.detail.previousItemAria' | translate:{ name: previousItem.name }">
+          <span class="item-detail-hero__sibling-icon">
+            <i class="pi pi-chevron-left" aria-hidden="true"></i>
+          </span>
+          <span class="item-detail-hero__sibling-label">{{ 'parkItems.detail.previousItem' | translate }}</span>
+          <strong>{{ previousItem.name }}</strong>
+        </a>
+
+        <a
+          *ngIf="siblingNavigation.next as nextItem"
+          class="item-detail-hero__sibling item-detail-hero__sibling--next"
+          [routerLink]="nextItem.routerLink"
+          [attr.aria-label]="'parkItems.detail.nextItemAria' | translate:{ name: nextItem.name }">
+          <span class="item-detail-hero__sibling-icon">
+            <i class="pi pi-chevron-right" aria-hidden="true"></i>
+          </span>
+          <span class="item-detail-hero__sibling-label">{{ 'parkItems.detail.nextItem' | translate }}</span>
+          <strong>{{ nextItem.name }}</strong>
+        </a>
+      </nav>
+
       <div class="item-detail-hero__content">
         <div class="item-detail-hero__type">
           <div class="item-detail-icon">

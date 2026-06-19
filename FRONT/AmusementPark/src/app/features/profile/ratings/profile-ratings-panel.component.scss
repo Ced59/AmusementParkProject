@@ -142,6 +142,22 @@
     grid-template-columns: 1fr;
   }
 
+  app-rating-tree {
+    order: 2;
+  }
+
+  .profile-ratings__more {
+    order: 3;
+  }
+
+  .profile-ratings__stats {
+    order: 4;
+  }
+
+  .profile-ratings__visuals {
+    order: 5;
+  }
+
   .profile-ratings__search {
     grid-template-columns: auto minmax(0, 1fr);
   }

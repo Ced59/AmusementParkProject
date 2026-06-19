@@ -186,10 +186,19 @@ details[open] > summary .rating-tree__toggle-open {
   margin-left: 4.95rem;
 }
 
-.rating-tree__metrics {
+.rating-tree__metrics,
+.rating-tree__metric {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem 1rem;
+}
+
+.rating-tree__metrics {
+  gap: 0.55rem 1rem;
+}
+
+.rating-tree__metric {
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .rating-tree__park-link {
@@ -202,8 +211,8 @@ details[open] > summary .rating-tree__toggle-open {
 
 .rating-tree__park-link:hover,
 .rating-tree__park-link:focus-visible,
-.rating-tree__item:hover .rating-tree__item-name,
-.rating-tree__item:focus-visible .rating-tree__item-name {
+.rating-tree__item-name:hover,
+.rating-tree__item-name:focus-visible {
   color: var(--app-primary);
 }
 
@@ -239,6 +248,10 @@ details[open] > summary .rating-tree__toggle-open {
   text-decoration: none;
 }
 
+a.rating-tree__item-name {
+  text-decoration: none;
+}
+
 .rating-tree__item + .rating-tree__item {
   border-top: 1px solid color-mix(in srgb, var(--app-border) 70%, transparent);
 }
@@ -246,6 +259,42 @@ details[open] > summary .rating-tree__toggle-open {
 .rating-tree__item-name {
   min-width: 0;
   overflow-wrap: anywhere;
+}
+
+.rating-tree__score--editable .rating-tree__star {
+  cursor: pointer;
+}
+
+.rating-tree__score--saving {
+  opacity: 0.68;
+}
+
+.rating-tree__star-hit {
+  position: absolute;
+  top: -0.35rem;
+  bottom: -0.35rem;
+  width: 50%;
+  border: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.rating-tree__star-hit:disabled {
+  cursor: wait;
+}
+
+.rating-tree__star-hit:focus-visible {
+  outline: 2px solid var(--app-primary);
+  outline-offset: 2px;
+}
+
+.rating-tree__star-hit--left {
+  left: -0.05rem;
+}
+
+.rating-tree__star-hit--right {
+  right: -0.05rem;
 }
 
 @media (max-width: 760px) {

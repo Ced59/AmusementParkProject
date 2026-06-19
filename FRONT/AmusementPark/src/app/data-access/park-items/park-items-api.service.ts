@@ -8,6 +8,7 @@ import { AttractionDetails } from '@app/models/parks/attraction-details';
 import { AttractionLocationPoint } from '@app/models/parks/attraction-location-point';
 import { AttractionLocations } from '@app/models/parks/attraction-locations';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
+import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
 import { ParkItemBulkFieldsUpdateRequest } from '@app/models/parks/park-item-bulk-fields-update-request';
 import {
   ParkItemsBulkCreateApplyResult,
@@ -121,6 +122,18 @@ export class ParkItemsApiService {
 
   getParkItemsByParkId(parkId: string, options: ParkItemsHttpOptions = {}): Observable<ParkItem[]> {
     const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId(parkId)}`;
+    return this.http.get<ParkItem[] | PagedCollectionResponse<ParkItem>>(url, options).pipe(
+      map((response: ParkItem[] | PagedCollectionResponse<ParkItem>) => unwrapCollection<ParkItem>(response).map((item: ParkItem) => normalizeParkItem(item)))
+    );
+  }
+
+  getParkItemSiblingNavigation(parkItemId: string, options: ParkItemsHttpOptions = {}): Observable<ParkItemSiblingNavigation> {
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemSiblingNavigation(parkItemId)}`;
+    return this.http.get<ParkItemSiblingNavigation>(url, options);
+  }
+
+  getRelatedParkItems(parkItemId: string, limit: number = 3, options: ParkItemsHttpOptions = {}): Observable<ParkItem[]> {
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getRelatedParkItems(parkItemId, limit)}`;
     return this.http.get<ParkItem[] | PagedCollectionResponse<ParkItem>>(url, options).pipe(
       map((response: ParkItem[] | PagedCollectionResponse<ParkItem>) => unwrapCollection<ParkItem>(response).map((item: ParkItem) => normalizeParkItem(item)))
     );

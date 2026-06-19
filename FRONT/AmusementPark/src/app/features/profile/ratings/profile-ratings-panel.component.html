@@ -94,7 +94,8 @@
 
     <app-rating-tree
       [parks]="ratingParks()"
-      ratingCountLabelKey="ratings.profile.ratingCount">
+      ratingCountLabelKey="ratings.profile.ratingCount"
+      (ratingChange)="updateRating($event)">
     </app-rating-tree>
 
     @if (hasMore()) {

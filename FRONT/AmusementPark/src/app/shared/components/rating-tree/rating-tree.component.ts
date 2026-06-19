@@ -1,10 +1,16 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+
+export interface RatingTreeEditableScore {
+  ratingId: string;
+  saving: boolean;
+}
 
 export interface RatingTreeMetric {
   labelKey: string;
   value: number;
+  editable?: RatingTreeEditableScore | null;
 }
 
 export interface RatingTreeItem {
@@ -14,6 +20,7 @@ export interface RatingTreeItem {
   route: string[] | null;
   secondaryLabelKey?: string | null;
   secondaryScore?: number | null;
+  editable?: RatingTreeEditableScore | null;
 }
 
 export interface RatingTreeSection {
@@ -34,6 +41,11 @@ export interface RatingTreePark {
   sections: RatingTreeSection[];
 }
 
+export interface RatingTreeRatingChange {
+  ratingId: string;
+  value: number;
+}
+
 @Component({
   selector: 'app-rating-tree',
   templateUrl: './rating-tree.component.html',
@@ -49,6 +61,9 @@ export class RatingTreeComponent {
   @Input() detailActionKey: string = 'ratings.tree.detailAction';
   @Input() collapseActionKey: string = 'ratings.tree.collapseAction';
   @Input() openParkActionKey: string = 'ratings.tree.openParkAction';
+  @Input() rateActionKey: string = 'ratings.stars.rateValue';
+
+  @Output() ratingChange = new EventEmitter<RatingTreeRatingChange>();
 
   protected formatRating(value: number | null | undefined): string {
     const rating: number = Number(value ?? 0);
@@ -59,5 +74,19 @@ export class RatingTreeComponent {
     const rating: number = Number(value ?? 0);
     const filled: number = Math.max(0, Math.min(1, rating - (starIndex - 1)));
     return `${filled * 100}%`;
+  }
+
+  protected changeRating(event: Event, editableScore: RatingTreeEditableScore, value: number): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (editableScore.saving) {
+      return;
+    }
+
+    this.ratingChange.emit({
+      ratingId: editableScore.ratingId,
+      value
+    });
   }
 }

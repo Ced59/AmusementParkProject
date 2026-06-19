@@ -41,7 +41,41 @@
         @if (park.metrics.length > 0) {
           <div class="rating-tree__metrics">
             @for (metric of park.metrics; track metric.labelKey) {
-              <span>{{ metric.labelKey | translate }} : {{ formatRating(metric.value) }}</span>
+              <span class="rating-tree__metric">
+                <span>{{ metric.labelKey | translate }} :</span>
+                @if (metric.editable; as editable) {
+                  <span
+                    class="rating-tree__score rating-tree__score--compact rating-tree__score--editable"
+                    [class.rating-tree__score--saving]="editable.saving"
+                    [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(metric.value) }">
+                    <span class="rating-tree__stars">
+                      @for (star of starIndexes; track star) {
+                        <span class="rating-tree__star" [style.--fill]="fillPercent(metric.value, star)">
+                          <i class="pi pi-star rating-tree__star-empty" aria-hidden="true"></i>
+                          <i class="pi pi-star-fill rating-tree__star-filled" aria-hidden="true"></i>
+                          <button
+                            type="button"
+                            class="rating-tree__star-hit rating-tree__star-hit--left"
+                            [disabled]="editable.saving"
+                            [attr.aria-label]="rateActionKey | translate:{ value: star - 0.5 }"
+                            (click)="changeRating($event, editable, star - 0.5)">
+                          </button>
+                          <button
+                            type="button"
+                            class="rating-tree__star-hit rating-tree__star-hit--right"
+                            [disabled]="editable.saving"
+                            [attr.aria-label]="rateActionKey | translate:{ value: star }"
+                            (click)="changeRating($event, editable, star)">
+                          </button>
+                        </span>
+                      }
+                    </span>
+                    <strong>{{ formatRating(metric.value) }}</strong>
+                  </span>
+                } @else {
+                  <span>{{ formatRating(metric.value) }}</span>
+                }
+              </span>
             }
           </div>
         }
@@ -81,51 +115,51 @@
 
             <div class="rating-tree__items">
               @for (item of section.items; track item.id) {
-                @if (item.route; as route) {
-                  <a class="rating-tree__item" [routerLink]="route">
-                    <span class="rating-tree__item-main">
+                <div class="rating-tree__item">
+                  <span class="rating-tree__item-main">
+                    @if (item.route; as route) {
+                      <a class="rating-tree__item-name" [routerLink]="route">{{ item.name }}</a>
+                    } @else {
                       <span class="rating-tree__item-name">{{ item.name }}</span>
-                      @if (item.secondaryLabelKey && item.secondaryScore !== null && item.secondaryScore !== undefined) {
-                        <span class="rating-tree__item-secondary">
-                          {{ item.secondaryLabelKey | translate }} : {{ formatRating(item.secondaryScore) }}
+                    }
+                    @if (item.secondaryLabelKey && item.secondaryScore !== null && item.secondaryScore !== undefined) {
+                      <span class="rating-tree__item-secondary">
+                        {{ item.secondaryLabelKey | translate }} : {{ formatRating(item.secondaryScore) }}
+                      </span>
+                    }
+                  </span>
+                  <span
+                    class="rating-tree__score rating-tree__score--compact"
+                    [class.rating-tree__score--editable]="item.editable !== null && item.editable !== undefined"
+                    [class.rating-tree__score--saving]="item.editable?.saving"
+                    [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(item.score) }">
+                    <span class="rating-tree__stars" [attr.aria-hidden]="item.editable ? null : true">
+                      @for (star of starIndexes; track star) {
+                        <span class="rating-tree__star" [style.--fill]="fillPercent(item.score, star)">
+                          <i class="pi pi-star rating-tree__star-empty" aria-hidden="true"></i>
+                          <i class="pi pi-star-fill rating-tree__star-filled" aria-hidden="true"></i>
+                          @if (item.editable; as editable) {
+                            <button
+                              type="button"
+                              class="rating-tree__star-hit rating-tree__star-hit--left"
+                              [disabled]="editable.saving"
+                              [attr.aria-label]="rateActionKey | translate:{ value: star - 0.5 }"
+                              (click)="changeRating($event, editable, star - 0.5)">
+                            </button>
+                            <button
+                              type="button"
+                              class="rating-tree__star-hit rating-tree__star-hit--right"
+                              [disabled]="editable.saving"
+                              [attr.aria-label]="rateActionKey | translate:{ value: star }"
+                              (click)="changeRating($event, editable, star)">
+                            </button>
+                          }
                         </span>
                       }
                     </span>
-                    <span class="rating-tree__score rating-tree__score--compact" [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(item.score) }">
-                      <span class="rating-tree__stars" aria-hidden="true">
-                        @for (star of starIndexes; track star) {
-                          <span class="rating-tree__star" [style.--fill]="fillPercent(item.score, star)">
-                            <i class="pi pi-star rating-tree__star-empty" aria-hidden="true"></i>
-                            <i class="pi pi-star-fill rating-tree__star-filled" aria-hidden="true"></i>
-                          </span>
-                        }
-                      </span>
-                      <strong>{{ formatRating(item.score) }}</strong>
-                    </span>
-                  </a>
-                } @else {
-                  <div class="rating-tree__item">
-                    <span class="rating-tree__item-main">
-                      <span class="rating-tree__item-name">{{ item.name }}</span>
-                      @if (item.secondaryLabelKey && item.secondaryScore !== null && item.secondaryScore !== undefined) {
-                        <span class="rating-tree__item-secondary">
-                          {{ item.secondaryLabelKey | translate }} : {{ formatRating(item.secondaryScore) }}
-                        </span>
-                      }
-                    </span>
-                    <span class="rating-tree__score rating-tree__score--compact" [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(item.score) }">
-                      <span class="rating-tree__stars" aria-hidden="true">
-                        @for (star of starIndexes; track star) {
-                          <span class="rating-tree__star" [style.--fill]="fillPercent(item.score, star)">
-                            <i class="pi pi-star rating-tree__star-empty" aria-hidden="true"></i>
-                            <i class="pi pi-star-fill rating-tree__star-filled" aria-hidden="true"></i>
-                          </span>
-                        }
-                      </span>
-                      <strong>{{ formatRating(item.score) }}</strong>
-                    </span>
-                  </div>
-                }
+                    <strong>{{ formatRating(item.score) }}</strong>
+                  </span>
+                </div>
               }
             </div>
           </details>
