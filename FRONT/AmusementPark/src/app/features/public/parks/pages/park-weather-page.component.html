@@ -113,7 +113,7 @@
               </div>
 
               <div class="park-weather-chart__row">
-                <span class="park-weather-chart__row-label">{{ 'parkWeather.fields.precipitationSum' | translate }}</span>
+                <span class="park-weather-chart__row-label">{{ 'parkWeather.chart.precipitationSum' | translate }}</span>
                 @for (day of data.weather.days; track day.localDate) {
                   <span class="park-weather-chart__cell">{{ precipitationSumLabel(day) }}</span>
                 }

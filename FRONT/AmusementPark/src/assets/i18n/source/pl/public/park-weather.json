@@ -26,7 +26,8 @@
       "maximum": "Max",
       "minimum": "Min",
       "condition": "Pogoda",
-      "temperature": "Temp."
+      "temperature": "Temp.",
+      "precipitationSum": "Suma"
     },
     "attribution": {
       "short": "Zrodlo: {{provider}}",

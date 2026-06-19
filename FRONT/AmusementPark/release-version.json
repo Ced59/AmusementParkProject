@@ -1,6 +1,20 @@
 {
-  "version": "2.1.1",
+  "version": "2.1.2",
   "history": [
+    {
+      "version": "2.1.2",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "La meteo des parcs est plus lisible sur mobile.",
+        "en": "Park weather is easier to read on mobile.",
+        "de": "Das Parkwetter ist auf Mobilgeraeten besser lesbar.",
+        "nl": "Parkweer is beter leesbaar op mobiel.",
+        "it": "Il meteo dei parchi e piu leggibile su mobile.",
+        "es": "La meteo de los parques se lee mejor en movil.",
+        "pl": "Pogoda parkow jest czytelniejsza na telefonie.",
+        "pt": "A meteorologia dos parques fica mais legivel no telemovel."
+      }
+    },
     {
       "version": "2.1.1",
       "releasedAt": "2026-06-19",

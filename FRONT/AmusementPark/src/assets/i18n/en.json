@@ -2357,7 +2357,8 @@
       "maximum": "Max",
       "minimum": "Min",
       "condition": "Weather",
-      "temperature": "Temp."
+      "temperature": "Temp.",
+      "precipitationSum": "Amount"
     },
     "attribution": {
       "short": "Source: {{provider}}",

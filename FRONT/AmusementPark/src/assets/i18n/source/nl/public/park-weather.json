@@ -26,7 +26,8 @@
       "maximum": "Max",
       "minimum": "Min",
       "condition": "Weer",
-      "temperature": "Temp."
+      "temperature": "Temp.",
+      "precipitationSum": "Totaal"
     },
     "attribution": {
       "short": "Bron: {{provider}}",
