@@ -97,6 +97,7 @@ export function mapParkItemToDetailViewModel(
     subtypeNavigation: buildSearchNavigation(itemsLink, item.subtype),
     zoneNavigation: buildZoneNavigation(itemsLink, item.zoneId),
     description: resolveParkItemRichDescription(item, currentLanguage),
+    rating: item.rating ?? null,
     manufacturerName,
     modelName: trimOrNull(item.attractionDetails?.model),
     status: trimOrNull(item.attractionDetails?.status),

@@ -1,0 +1,99 @@
+<section class="profile-ratings">
+  <app-ui-section-header
+    kickerTone="gold"
+    kickerIconClass="pi pi-star"
+    kickerLabelKey="ratings.profile.kicker"
+    titleKey="ratings.profile.title"
+    subtitleKey="ratings.profile.subtitle">
+  </app-ui-section-header>
+
+  @if (loading()) {
+    <div class="profile-ratings__empty">{{ 'ratings.profile.loading' | translate }}</div>
+  } @else if (isEmpty()) {
+    <div class="profile-ratings__empty">
+      <i class="pi pi-star" aria-hidden="true"></i>
+      <strong>{{ 'ratings.profile.emptyTitle' | translate }}</strong>
+      <span>{{ 'ratings.profile.emptyText' | translate }}</span>
+    </div>
+  } @else {
+    @if (stats(); as currentStats) {
+      <div class="profile-ratings__stats">
+        <article class="profile-rating-stat">
+          <span>{{ 'ratings.profile.stats.total' | translate }}</span>
+          <strong>{{ currentStats.totalRatings }}</strong>
+        </article>
+        <article class="profile-rating-stat">
+          <span>{{ 'ratings.profile.stats.average' | translate }}</span>
+          <strong>{{ formatRating(currentStats.averageRating) }}</strong>
+        </article>
+        <article class="profile-rating-stat">
+          <span>{{ 'ratings.profile.stats.best' | translate }}</span>
+          <strong>{{ formatRating(currentStats.highestRating) }}</strong>
+        </article>
+        <article class="profile-rating-stat">
+          <span>{{ 'ratings.profile.stats.range' | translate }}</span>
+          <strong>{{ formatRating(currentStats.lowestRating) }} - {{ formatRating(currentStats.highestRating) }}</strong>
+        </article>
+      </div>
+
+      <div class="profile-ratings__visuals">
+        <section class="profile-rating-chart">
+          <h3>{{ 'ratings.profile.byPark' | translate }}</h3>
+          @for (bucket of currentStats.byPark; track bucket.key) {
+            <div class="profile-rating-bar">
+              <span>{{ bucket.label }}</span>
+              <div class="profile-rating-bar__track" aria-hidden="true">
+                <span [style.width]="ratingPercent(bucket.averageRating)"></span>
+              </div>
+              <strong>{{ formatRating(bucket.averageRating) }}</strong>
+            </div>
+          }
+        </section>
+
+        <section class="profile-rating-chart">
+          <h3>{{ 'ratings.profile.byKind' | translate }}</h3>
+          @for (bucket of currentStats.byTargetType; track bucket.key) {
+            <div class="profile-rating-bar">
+              <span>{{ bucketLabel(bucket, 'targetType') | translate }}</span>
+              <div class="profile-rating-bar__track" aria-hidden="true">
+                <span [style.width]="ratingPercent(bucket.averageRating)"></span>
+              </div>
+              <strong>{{ bucket.count }}</strong>
+            </div>
+          }
+          @for (bucket of currentStats.byParkItemCategory; track bucket.key) {
+            <div class="profile-rating-bar">
+              <span>{{ bucketLabel(bucket, 'category') | translate }}</span>
+              <div class="profile-rating-bar__track" aria-hidden="true">
+                <span [style.width]="ratingPercent(bucket.averageRating)"></span>
+              </div>
+              <strong>{{ formatRating(bucket.averageRating) }}</strong>
+            </div>
+          }
+        </section>
+      </div>
+    }
+
+    <div class="profile-ratings__list">
+      @for (rating of ratings(); track rating.id) {
+        <article class="profile-rating-row">
+          <div class="profile-rating-row__main">
+            <app-ui-chip tone="gold" iconClass="pi pi-star">{{ formatRating(rating.value) }}</app-ui-chip>
+            <div>
+              @if (targetRoute(rating); as route) {
+                <a class="profile-rating-row__title" [routerLink]="route">{{ rating.targetName }}</a>
+              } @else {
+                <strong class="profile-rating-row__title">{{ rating.targetName }}</strong>
+              }
+              <span>{{ rating.parkName || ('ratings.profile.unknownPark' | translate) }}</span>
+            </div>
+          </div>
+          <div class="profile-rating-row__average">
+            <span>{{ 'ratings.profile.communityAverage' | translate }}</span>
+            <strong>{{ formatRating(rating.summary.averageRating) }}</strong>
+          </div>
+        </article>
+      }
+    </div>
+  }
+</section>

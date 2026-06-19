@@ -1,6 +1,20 @@
 {
-  "version": "1.11.3",
+  "version": "2.0.0",
   "history": [
+    {
+      "version": "2.0.0",
+      "releasedAt": "2026-06-19",
+      "labels": {
+        "fr": "Les notes et classements visiteurs arrivent.",
+        "en": "Visitor ratings and rankings arrive.",
+        "de": "Besucherbewertungen und Ranglisten kommen hinzu.",
+        "nl": "Bezoekersbeoordelingen en ranglijsten komen erbij.",
+        "it": "Arrivano valutazioni e classifiche dei visitatori.",
+        "es": "Llegan valoraciones y rankings de visitantes.",
+        "pl": "Pojawiaja sie oceny i rankingi odwiedzajacych.",
+        "pt": "Chegam avaliacoes e rankings de visitantes."
+      }
+    },
     {
       "version": "1.11.3",
       "releasedAt": "2026-06-19",

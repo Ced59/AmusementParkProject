@@ -1,0 +1,65 @@
+{
+  "ratings": {
+    "stars": {
+      "averageAria": "Average rating {{value}} out of 5 from {{count}} rating(s).",
+      "averageLabel": "Average rating",
+      "count": "{{count}} rating(s)",
+      "noRatings": "No rating yet",
+      "chooseLabel": "Choose a rating",
+      "rateValue": "Rate {{value}} out of 5",
+      "yourRating": "Your rating: {{value}}/5",
+      "prompt": "Choose your rating",
+      "signInMessage": "Sign in to leave your rating.",
+      "savedMessage": "Thanks, your rating has been saved.",
+      "errorMessage": "Your rating could not be saved right now."
+    },
+    "profile": {
+      "kicker": "My ratings",
+      "title": "Your park notes",
+      "subtitle": "Find the places you rated and the parks you tend to enjoy most.",
+      "loading": "Loading your ratings...",
+      "emptyTitle": "No rating yet",
+      "emptyText": "Rate a park or a place to start building your personal view.",
+      "stats": {
+        "total": "Ratings",
+        "average": "Your average",
+        "best": "Best rating",
+        "range": "Range"
+      },
+      "byPark": "By park",
+      "byKind": "By type",
+      "unknownPark": "Linked park",
+      "communityAverage": "Average rating"
+    },
+    "rankings": {
+      "kicker": "Community favorites",
+      "title": "Rankings",
+      "subtitle": "Discover the parks and places most consistently appreciated by visitors.",
+      "reliableHint": "The order favors places that stay well rated over time.",
+      "loading": "Loading rankings...",
+      "empty": "No ranking is available yet.",
+      "parkFallback": "Park",
+      "ratingCount": "{{count}} rating(s)",
+      "reliableBadge": "Reliable",
+      "filters": {
+        "label": "Filter rankings",
+        "all": "All",
+        "parks": "Parks",
+        "attractions": "Attractions",
+        "restaurants": "Restaurants",
+        "hotels": "Hotels",
+        "services": "Services"
+      }
+    },
+    "targetTypes": {
+      "Park": "Parks",
+      "ParkItem": "Places"
+    },
+    "categories": {
+      "Attraction": "Attractions",
+      "Restaurant": "Restaurants",
+      "Hotel": "Hotels",
+      "Service": "Services"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "ratings": {
+    "stars": {
+      "averageAria": "Średnia ocena {{value}} z 5 na podstawie {{count}} ocen(y).",
+      "averageLabel": "Średnia ocena",
+      "count": "{{count}} ocen(y)",
+      "noRatings": "Brak ocen",
+      "chooseLabel": "Wybierz ocenę",
+      "rateValue": "Oceń {{value}} z 5",
+      "yourRating": "Twoja ocena: {{value}}/5",
+      "prompt": "Wybierz swoją ocenę",
+      "signInMessage": "Zaloguj się, aby dodać ocenę.",
+      "savedMessage": "Dziękujemy, ocena została zapisana.",
+      "errorMessage": "Nie można teraz zapisać oceny."
+    },
+    "profile": {
+      "kicker": "Moje oceny",
+      "title": "Twoje noty z wizyt",
+      "subtitle": "Zobacz ocenione miejsca i parki, które najlepiej wypadają w twoich wyborach.",
+      "loading": "Ładowanie ocen...",
+      "emptyTitle": "Brak ocen",
+      "emptyText": "Oceń park lub miejsce, aby rozpocząć osobisty widok.",
+      "stats": {
+        "total": "Oceny",
+        "average": "Twoja średnia",
+        "best": "Najlepsza ocena",
+        "range": "Zakres"
+      },
+      "byPark": "Według parku",
+      "byKind": "Według typu",
+      "unknownPark": "Powiązany park",
+      "communityAverage": "Średnia ocena"
+    },
+    "rankings": {
+      "kicker": "Ulubione odwiedzających",
+      "title": "Rankingi",
+      "subtitle": "Odkryj parki i miejsca stale doceniane przez odwiedzających.",
+      "reliableHint": "Kolejność wyróżnia miejsca, które długo pozostają dobrze oceniane.",
+      "loading": "Ładowanie rankingów...",
+      "empty": "Ranking nie jest jeszcze dostępny.",
+      "parkFallback": "Park",
+      "ratingCount": "{{count}} ocen(y)",
+      "reliableBadge": "Pewne",
+      "filters": {
+        "label": "Filtruj rankingi",
+        "all": "Wszystko",
+        "parks": "Parki",
+        "attractions": "Atrakcje",
+        "restaurants": "Restauracje",
+        "hotels": "Hotele",
+        "services": "Usługi"
+      }
+    },
+    "targetTypes": {
+      "Park": "Parki",
+      "ParkItem": "Miejsca"
+    },
+    "categories": {
+      "Attraction": "Atrakcje",
+      "Restaurant": "Restauracje",
+      "Hotel": "Hotele",
+      "Service": "Usługi"
+    }
+  }
+}

@@ -44,7 +44,12 @@
     "detailsSubtitle": "Mantieni pronte le tue informazioni per future funzionalità personalizzate.",
     "identityRequired": "Nome e cognome sono obbligatori.",
     "updateSuccess": "Profilo aggiornato con successo.",
-    "updateError": "Aggiornamento del profilo non riuscito."
+    "updateError": "Aggiornamento del profilo non riuscito.",
+    "tabs": {
+      "label": "Sezioni del profilo",
+      "profile": "Profilo",
+      "ratings": "Valutazioni"
+    }
   },
   "admin": {
     "auditLogs": {
@@ -1505,6 +1510,7 @@
     "logo_text": "Menu",
     "home": "Pagina iniziale",
     "parks": "Parchi",
+    "rankings": "Classifiche",
     "about": "Informazioni",
     "profile": "Profilo",
     "admin": "Amministrazione"
@@ -2655,6 +2661,69 @@
     },
     "lastUpdate": "Ultimo aggiornamento: 23 maggio 2026.",
     "backHome": "Torna alla home"
+  },
+  "ratings": {
+    "stars": {
+      "averageAria": "Valutazione media {{value}} su 5 con {{count}} valutazione/i.",
+      "averageLabel": "Media",
+      "count": "{{count}} valutazione/i",
+      "noRatings": "Nessuna valutazione",
+      "chooseLabel": "Scegli una valutazione",
+      "rateValue": "Valuta {{value}} su 5",
+      "yourRating": "La tua valutazione: {{value}}/5",
+      "prompt": "Scegli la tua valutazione",
+      "signInMessage": "Accedi per lasciare la tua valutazione.",
+      "savedMessage": "Grazie, la tua valutazione è stata salvata.",
+      "errorMessage": "Non è possibile salvare la valutazione ora."
+    },
+    "profile": {
+      "kicker": "Le mie valutazioni",
+      "title": "Le tue note di visita",
+      "subtitle": "Ritrova i luoghi valutati e i parchi che emergono di più nelle tue scelte.",
+      "loading": "Caricamento valutazioni...",
+      "emptyTitle": "Ancora nessuna valutazione",
+      "emptyText": "Valuta un parco o un luogo per iniziare la tua vista personale.",
+      "stats": {
+        "total": "Valutazioni",
+        "average": "La tua media",
+        "best": "Miglior voto",
+        "range": "Intervallo"
+      },
+      "byPark": "Per parco",
+      "byKind": "Per tipo",
+      "unknownPark": "Parco collegato",
+      "communityAverage": "Media"
+    },
+    "rankings": {
+      "kicker": "Preferiti dai visitatori",
+      "title": "Classifiche",
+      "subtitle": "Scopri parchi e luoghi apprezzati con più continuità dai visitatori.",
+      "reliableHint": "L'ordine premia i luoghi che restano ben valutati nel tempo.",
+      "loading": "Caricamento classifiche...",
+      "empty": "Nessuna classifica disponibile al momento.",
+      "parkFallback": "Parco",
+      "ratingCount": "{{count}} valutazione/i",
+      "reliableBadge": "Affidabile",
+      "filters": {
+        "label": "Filtra classifiche",
+        "all": "Tutti",
+        "parks": "Parchi",
+        "attractions": "Attrazioni",
+        "restaurants": "Ristoranti",
+        "hotels": "Hotel",
+        "services": "Servizi"
+      }
+    },
+    "targetTypes": {
+      "Park": "Parchi",
+      "ParkItem": "Luoghi"
+    },
+    "categories": {
+      "Attraction": "Attrazioni",
+      "Restaurant": "Ristoranti",
+      "Hotel": "Hotel",
+      "Service": "Servizi"
+    }
   },
   "shareSocial": {
     "defaultTitle": "Condividi questa pagina",

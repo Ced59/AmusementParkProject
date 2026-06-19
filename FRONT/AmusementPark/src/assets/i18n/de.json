@@ -44,7 +44,12 @@
     "detailsSubtitle": "Halte deine Daten für künftige personalisierte Funktionen bereit.",
     "identityRequired": "Vorname und Nachname sind erforderlich.",
     "updateSuccess": "Profil erfolgreich aktualisiert.",
-    "updateError": "Profilaktualisierung fehlgeschlagen."
+    "updateError": "Profilaktualisierung fehlgeschlagen.",
+    "tabs": {
+      "label": "Profilbereiche",
+      "profile": "Profil",
+      "ratings": "Bewertungen"
+    }
   },
   "admin": {
     "auditLogs": {
@@ -1505,6 +1510,7 @@
     "logo_text": "Menü",
     "home": "Startseite",
     "parks": "Parks",
+    "rankings": "Ranglisten",
     "about": "Über uns",
     "profile": "Profil",
     "admin": "Administration"
@@ -2655,6 +2661,69 @@
     },
     "lastUpdate": "Zuletzt aktualisiert: 23. Mai 2026.",
     "backHome": "Zurück zur Startseite"
+  },
+  "ratings": {
+    "stars": {
+      "averageAria": "Durchschnittliche Bewertung {{value}} von 5 aus {{count}} Bewertung(en).",
+      "averageLabel": "Durchschnitt",
+      "count": "{{count}} Bewertung(en)",
+      "noRatings": "Noch keine Bewertung",
+      "chooseLabel": "Bewertung wählen",
+      "rateValue": "{{value}} von 5 bewerten",
+      "yourRating": "Deine Bewertung: {{value}}/5",
+      "prompt": "Wähle deine Bewertung",
+      "signInMessage": "Melde dich an, um zu bewerten.",
+      "savedMessage": "Danke, deine Bewertung wurde gespeichert.",
+      "errorMessage": "Deine Bewertung konnte gerade nicht gespeichert werden."
+    },
+    "profile": {
+      "kicker": "Meine Bewertungen",
+      "title": "Deine Besuchsnoten",
+      "subtitle": "Finde die Orte, die du bewertet hast, und die Parks, die dir besonders gefallen.",
+      "loading": "Deine Bewertungen werden geladen...",
+      "emptyTitle": "Noch keine Bewertung",
+      "emptyText": "Bewerte einen Park oder Ort, um deine persönliche Ansicht zu starten.",
+      "stats": {
+        "total": "Bewertungen",
+        "average": "Dein Durchschnitt",
+        "best": "Beste Bewertung",
+        "range": "Spanne"
+      },
+      "byPark": "Nach Park",
+      "byKind": "Nach Typ",
+      "unknownPark": "Zugehöriger Park",
+      "communityAverage": "Durchschnitt"
+    },
+    "rankings": {
+      "kicker": "Besucherfavoriten",
+      "title": "Ranglisten",
+      "subtitle": "Entdecke Parks und Orte, die von Besuchern dauerhaft geschätzt werden.",
+      "reliableHint": "Die Reihenfolge bevorzugt Orte, die langfristig gut bewertet bleiben.",
+      "loading": "Ranglisten werden geladen...",
+      "empty": "Noch ist keine Rangliste verfügbar.",
+      "parkFallback": "Park",
+      "ratingCount": "{{count}} Bewertung(en)",
+      "reliableBadge": "Zuverlässig",
+      "filters": {
+        "label": "Ranglisten filtern",
+        "all": "Alle",
+        "parks": "Parks",
+        "attractions": "Attraktionen",
+        "restaurants": "Restaurants",
+        "hotels": "Hotels",
+        "services": "Services"
+      }
+    },
+    "targetTypes": {
+      "Park": "Parks",
+      "ParkItem": "Orte"
+    },
+    "categories": {
+      "Attraction": "Attraktionen",
+      "Restaurant": "Restaurants",
+      "Hotel": "Hotels",
+      "Service": "Services"
+    }
   },
   "shareSocial": {
     "defaultTitle": "Diese Seite teilen",

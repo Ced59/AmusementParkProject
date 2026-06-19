@@ -36,6 +36,11 @@
     "detailsSubtitle": "Utrzymuj dane gotowe na przyszłe funkcje personalizowane.",
     "identityRequired": "Imię i nazwisko są wymagane.",
     "updateSuccess": "Profil zaktualizowany pomyślnie.",
-    "updateError": "Aktualizacja profilu nie powiodła się."
+    "updateError": "Aktualizacja profilu nie powiodła się.",
+    "tabs": {
+      "label": "Sekcje profilu",
+      "profile": "Profil",
+      "ratings": "Oceny"
+    }
   }
 }

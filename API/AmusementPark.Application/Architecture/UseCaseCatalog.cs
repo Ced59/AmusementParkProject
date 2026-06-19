@@ -24,5 +24,6 @@ public static class UseCaseCatalog
             ["Search"] = new[] { "Search" },
             ["DataSources"] = new[] { "ListDataSources", "GetDataSourceStatus", "GetDataSourceSettings", "UpdateDataSourceSettings", "GetLatestDataSourceSession", "GetDataSourceSession", "GetDataSourceComparisonResults", "StartDataSourceImport", "ApplyDataSourceComparison" },
             ["AdminAudit"] = new[] { "GetAdminAuditLogs" },
+            ["Ratings"] = new[] { "UpsertUserRating", "GetRatingSummary", "GetUserRating", "ListUserRatings", "GetUserRatingStats", "GetRatingRankings" },
         };
 }

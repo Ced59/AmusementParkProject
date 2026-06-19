@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AmusementPark.WebAPI.Contracts.Common;
+using AmusementPark.WebAPI.Contracts.Ratings;
 
 namespace AmusementPark.WebAPI.Contracts.ParkItems;
 
@@ -35,4 +36,6 @@ public sealed class ParkItemDto
     public bool IsVisible { get; set; } = true;
 
     public AdminReviewStatusDto AdminReviewStatus { get; set; } = AdminReviewStatusDto.Validated;
+
+    public RatingSummaryDto? Rating { get; set; }
 }

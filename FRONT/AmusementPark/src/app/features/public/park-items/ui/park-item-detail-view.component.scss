@@ -139,6 +139,11 @@
   font-weight: 700;
 }
 
+.item-detail-hero__rating {
+  display: block;
+  max-width: min(100%, 32rem);
+}
+
 .item-specs-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

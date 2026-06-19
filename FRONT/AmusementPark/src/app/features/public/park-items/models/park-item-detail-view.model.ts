@@ -1,5 +1,6 @@
 import { MapMarker } from '@app/models/map/map-marker';
 import { ImageCategory } from '@app/models/images/image-category';
+import { RatingSummary } from '@app/models/ratings/rating.models';
 import { UiPhotoCarouselImage } from '@ui/media';
 import { ParkItemCardViewModel } from './park-item-card.model';
 
@@ -80,6 +81,7 @@ export interface ParkItemDetailViewModel {
   subtypeNavigation: ParkItemDetailNavigationLinkViewModel | null;
   zoneNavigation: ParkItemDetailNavigationLinkViewModel | null;
   description: string | null;
+  rating: RatingSummary | null;
   manufacturerName: string | null;
   modelName: string | null;
   status: string | null;

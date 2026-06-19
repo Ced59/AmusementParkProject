@@ -104,6 +104,14 @@
                 </ng-template>
               </ng-container>
             </p>
+
+            <app-rating-stars
+              *ngIf="currentDetail.id"
+              class="item-detail-hero__rating"
+              targetType="ParkItem"
+              [targetId]="currentDetail.id"
+              [initialSummary]="currentDetail.rating">
+            </app-rating-stars>
           </div>
         </div>
 

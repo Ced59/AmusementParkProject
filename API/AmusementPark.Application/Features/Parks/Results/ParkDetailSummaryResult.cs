@@ -1,5 +1,6 @@
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Application.Features.Ratings.Results;
 
 namespace AmusementPark.Application.Features.Parks.Results;
 
@@ -15,6 +16,8 @@ public sealed class ParkDetailSummaryResult
     public string? FounderName { get; init; }
 
     public string? OperatorName { get; init; }
+
+    public RatingSummaryResult? Rating { get; init; }
 
     public ParkDetailSummaryStatsResult Stats { get; init; } = new ParkDetailSummaryStatsResult();
 }

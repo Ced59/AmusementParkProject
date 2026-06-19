@@ -28,5 +28,8 @@ public static class DomainCatalog
         "VideoTag",
         "User",
         "ExternalLogin",
+        "UserRating",
+        "RatingAggregate",
+        "RatingScoreCalculator",
     };
 }

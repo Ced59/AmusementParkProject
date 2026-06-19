@@ -1,4 +1,5 @@
 import { ImageDto } from '@app/models/images/image-dto';
+import { RatingSummary } from '@app/models/ratings/rating.models';
 import { Park } from './park';
 
 export interface ParkDetailReferenceSummary {
@@ -21,5 +22,6 @@ export interface ParkDetailSummary {
   park: Park;
   mainImage?: ImageDto | null;
   references: ParkDetailReferenceSummary;
+  rating?: RatingSummary | null;
   stats: ParkDetailSummaryStats;
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using AmusementPark.WebAPI.Contracts.Images;
+using AmusementPark.WebAPI.Contracts.Ratings;
 
 namespace AmusementPark.WebAPI.Contracts.Parks;
 
@@ -13,6 +14,8 @@ public sealed class ParkDetailSummaryDto
     public ImageDto? MainImage { get; set; }
 
     public ParkDetailReferenceSummaryDto References { get; set; } = new ParkDetailReferenceSummaryDto();
+
+    public RatingSummaryDto? Rating { get; set; }
 
     public ParkDetailSummaryStatsDto Stats { get; set; } = new ParkDetailSummaryStatsDto();
 }

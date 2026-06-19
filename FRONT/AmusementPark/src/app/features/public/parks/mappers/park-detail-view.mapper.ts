@@ -2,6 +2,7 @@ import { ImageDto } from '@app/models/images/image-dto';
 import { ImageTagDto } from '@app/models/images/image-tag-dto';
 import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
+import { RatingSummary } from '@app/models/ratings/rating.models';
 import { buildParkAddressLine, buildParkLocationLine } from '@shared/utils/display/park-presentation.helpers';
 import { getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
 import { resolveLocalizedValue } from '@shared/utils/localization';
@@ -38,7 +39,8 @@ export function mapParkToDetailViewModel(
   statsSource: ParkDetailStatsSource = {},
   parkPhotos: ImageDto[] = [],
   itemPhotoSources: ParkDetailItemPhotoSource[] = [],
-  imageTags: ImageTagDto[] = []
+  imageTags: ImageTagDto[] = [],
+  rating: RatingSummary | null = null
 ): ParkDetailViewModel {
   const hasLocationInfo: boolean = Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
   const websiteUrl: string | null = normalizeOptionalString(park.webSiteUrl);
@@ -122,6 +124,7 @@ export function mapParkToDetailViewModel(
     hasPracticalInfo,
     hasLocationInfo,
     hasDescription: !!description,
+    rating,
     exploreLink: hasIdentity
       ? buildPublicParkItemsRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
