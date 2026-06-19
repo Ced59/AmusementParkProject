@@ -57,6 +57,7 @@ export const PARKS_API_ENDPOINTS = {
   },
   getParkById: (id: string) => `parks/${id}`,
   getParkWeather: (id: string, days: number = 7) => `parks/${encodeURIComponent(id)}/weather?days=${days}`,
+  getParkWeatherHistoricalComparisons: (id: string, days: number = 7, years: number = 10) => `parks/${encodeURIComponent(id)}/weather/historical-comparisons?days=${days}&years=${years}`,
   getParkDetailSummary: (id: string) => `parks/${id}/detail-summary`,
   getParkMapItems: (id: string) => `parks/${id}/map-items`,
   getParkDistances: (sourceParkId: string, targetParkIds: string[]) => {

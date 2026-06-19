@@ -44,6 +44,9 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         weatherRepository
             .Setup(repository => repository.DeleteExpiredForecastsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredObservationsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
         Mock<IParkWeatherRunRepository> runRepository = CreateRunRepository(run);
         Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
         providerStrategy
@@ -79,7 +82,8 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             runRepository.Object,
             providerStrategyResolver.Object,
             new TestRefreshSettings(),
-            cacheInvalidator.Object);
+            cacheInvalidator.Object,
+            new ParkWeatherHistoricalComparisonDateResolver());
 
         await orchestrator.ProcessRunAsync("run-1", CancellationToken.None);
 
@@ -128,6 +132,9 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         weatherRepository
             .Setup(repository => repository.DeleteExpiredForecastsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredObservationsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
         Mock<IParkWeatherRunRepository> runRepository = CreateRunRepository(run);
         runRepository
             .Setup(repository => repository.GetRunItemsAsync("source-run", ParkWeatherRunItemStatus.Failed, It.IsAny<CancellationToken>()))
@@ -160,7 +167,8 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             runRepository.Object,
             providerStrategyResolver.Object,
             new TestRefreshSettings(),
-            cacheInvalidator.Object);
+            cacheInvalidator.Object,
+            new ParkWeatherHistoricalComparisonDateResolver());
 
         await orchestrator.ProcessRunAsync("run-2", CancellationToken.None);
 
@@ -168,6 +176,101 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         Assert.Equal(1, run.TotalParkCount);
         Assert.Equal(1, run.SucceededParkCount);
         Assert.Equal(new[] { validPark }, invalidatedParks);
+        parkRepository.VerifyAll();
+        weatherRepository.VerifyAll();
+        runRepository.VerifyAll();
+        providerStrategyResolver.VerifyAll();
+        providerStrategy.VerifyAll();
+        cacheInvalidator.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ProcessRunAsync_WhenHistoricalBackfillIsEnabled_ShouldFetchOnlyMissingComparisonObservations()
+    {
+        Park park = CreatePark("park-1", "Magic Park", true, 48.86, 2.35);
+        ParkWeatherRun run = new ParkWeatherRun
+        {
+            Id = "run-history",
+            Scope = ParkWeatherRefreshScope.FullVisibleParks,
+            Status = ParkWeatherRunStatus.Queued,
+            Trigger = ParkWeatherRunTrigger.Manual,
+        };
+        ParkWeatherDailySnapshot firstForecast = CreateSnapshot("park-1", new DateOnly(2026, 6, 20), ParkWeatherDataKind.Forecast);
+        ParkWeatherDailySnapshot secondForecast = CreateSnapshot("park-1", new DateOnly(2026, 6, 21), ParkWeatherDataKind.Forecast);
+        List<ParkWeatherDailySnapshot> persistedSnapshots = new List<ParkWeatherDailySnapshot>();
+        IReadOnlyCollection<DateOnly> requestedHistoricalDates = Array.Empty<DateOnly>();
+        IReadOnlyCollection<DateOnly> checkedObservationDates = Array.Empty<DateOnly>();
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetVisibleWithValidCoordinatesAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        Mock<IParkWeatherRepository> weatherRepository = new Mock<IParkWeatherRepository>(MockBehavior.Strict);
+        weatherRepository
+            .Setup(repository => repository.GetExistingObservationDatesAsync("park-1", It.IsAny<IReadOnlyCollection<DateOnly>>(), It.IsAny<CancellationToken>()))
+            .Callback<string, IReadOnlyCollection<DateOnly>, CancellationToken>((_, dates, _) => checkedObservationDates = dates)
+            .ReturnsAsync(new[] { new DateOnly(2025, 6, 20) });
+        weatherRepository
+            .Setup(repository => repository.UpsertSnapshotsAsync(It.IsAny<IReadOnlyCollection<ParkWeatherDailySnapshot>>(), It.IsAny<CancellationToken>()))
+            .Callback<IReadOnlyCollection<ParkWeatherDailySnapshot>, CancellationToken>((snapshots, _) => persistedSnapshots.AddRange(snapshots))
+            .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteForecastsCoveredByObservationsAsync("park-1", It.IsAny<IReadOnlyCollection<DateOnly>>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredForecastsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredObservationsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<IParkWeatherRunRepository> runRepository = CreateRunRepository(run);
+        Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
+        providerStrategy
+            .Setup(strategy => strategy.FetchDailyForecastAsync(
+                park,
+                7,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkWeatherProviderResult
+            {
+                Snapshots = new[] { firstForecast, secondForecast },
+            });
+        providerStrategy
+            .Setup(strategy => strategy.FetchDailyObservationsAsync(
+                park,
+                It.IsAny<IReadOnlyCollection<DateOnly>>(),
+                It.IsAny<CancellationToken>()))
+            .Callback<Park, IReadOnlyCollection<DateOnly>, CancellationToken>((_, dates, _) => requestedHistoricalDates = dates)
+            .ReturnsAsync((Park _, IReadOnlyCollection<DateOnly> dates, CancellationToken _) => new ParkWeatherProviderResult
+            {
+                Snapshots = dates.Select(date => CreateSnapshot("park-1", date, ParkWeatherDataKind.Observation)).ToList(),
+            });
+        Mock<IParkWeatherProviderStrategyResolver> providerStrategyResolver = new Mock<IParkWeatherProviderStrategyResolver>(MockBehavior.Strict);
+        providerStrategyResolver
+            .Setup(resolver => resolver.Resolve())
+            .Returns(providerStrategy.Object);
+        Mock<IParkWeatherCacheInvalidator> cacheInvalidator = new Mock<IParkWeatherCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateUpdatedWeatherAsync(It.IsAny<IReadOnlyCollection<Park>>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        ParkWeatherRefreshOrchestrator orchestrator = new ParkWeatherRefreshOrchestrator(
+            parkRepository.Object,
+            weatherRepository.Object,
+            runRepository.Object,
+            providerStrategyResolver.Object,
+            new TestRefreshSettings { HistoricalBackfillYears = 3 },
+            cacheInvalidator.Object,
+            new ParkWeatherHistoricalComparisonDateResolver());
+
+        await orchestrator.ProcessRunAsync("run-history", CancellationToken.None);
+
+        Assert.Contains(new DateOnly(2025, 6, 20), checkedObservationDates);
+        Assert.Contains(new DateOnly(2025, 6, 21), checkedObservationDates);
+        Assert.Contains(new DateOnly(2024, 6, 20), checkedObservationDates);
+        Assert.DoesNotContain(new DateOnly(2025, 6, 20), requestedHistoricalDates);
+        Assert.Contains(new DateOnly(2025, 6, 21), requestedHistoricalDates);
+        Assert.Contains(new DateOnly(2024, 6, 20), requestedHistoricalDates);
+        Assert.Equal(2, persistedSnapshots.Count(static snapshot => snapshot.DataKind == ParkWeatherDataKind.Forecast));
+        Assert.Equal(5, persistedSnapshots.Count(static snapshot => snapshot.DataKind == ParkWeatherDataKind.Observation));
         parkRepository.VerifyAll();
         weatherRepository.VerifyAll();
         runRepository.VerifyAll();
@@ -230,6 +333,10 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         public int ForecastPastRetentionDays => 3;
 
         public bool IncludeYesterdayObservation => true;
+
+        public int HistoricalBackfillYears { get; init; }
+
+        public int HistoricalComparisonYearsLimit { get; init; } = 10;
 
         public int DelayBetweenParksMilliseconds => 0;
 

@@ -20,6 +20,7 @@ namespace AmusementPark.WebAPI.Controllers;
 public sealed class ParkWeatherController : ControllerBase
 {
     private readonly IQueryHandler<GetParkWeatherForecastQuery, ApplicationResult<ParkWeatherForecastResult>> getParkWeatherForecastQueryHandler;
+    private readonly IQueryHandler<GetParkWeatherHistoricalComparisonsQuery, ApplicationResult<ParkWeatherHistoricalComparisonsResult>> getParkWeatherHistoricalComparisonsQueryHandler;
     private readonly IQueryHandler<GetLatestParkWeatherRunQuery, ApplicationResult<ParkWeatherRunResult?>> getLatestParkWeatherRunQueryHandler;
     private readonly IQueryHandler<GetParkWeatherRunQuery, ApplicationResult<ParkWeatherRunResult>> getParkWeatherRunQueryHandler;
     private readonly IQueryHandler<GetParkWeatherRunItemsQuery, ApplicationResult<IReadOnlyCollection<ParkWeatherRunItemResult>>> getParkWeatherRunItemsQueryHandler;
@@ -29,6 +30,7 @@ public sealed class ParkWeatherController : ControllerBase
 
     public ParkWeatherController(
         IQueryHandler<GetParkWeatherForecastQuery, ApplicationResult<ParkWeatherForecastResult>> getParkWeatherForecastQueryHandler,
+        IQueryHandler<GetParkWeatherHistoricalComparisonsQuery, ApplicationResult<ParkWeatherHistoricalComparisonsResult>> getParkWeatherHistoricalComparisonsQueryHandler,
         IQueryHandler<GetLatestParkWeatherRunQuery, ApplicationResult<ParkWeatherRunResult?>> getLatestParkWeatherRunQueryHandler,
         IQueryHandler<GetParkWeatherRunQuery, ApplicationResult<ParkWeatherRunResult>> getParkWeatherRunQueryHandler,
         IQueryHandler<GetParkWeatherRunItemsQuery, ApplicationResult<IReadOnlyCollection<ParkWeatherRunItemResult>>> getParkWeatherRunItemsQueryHandler,
@@ -37,6 +39,7 @@ public sealed class ParkWeatherController : ControllerBase
         ICommandHandler<RefreshSingleParkWeatherCommand, ApplicationResult<ParkWeatherRunResult>> refreshSingleParkWeatherCommandHandler)
     {
         this.getParkWeatherForecastQueryHandler = getParkWeatherForecastQueryHandler;
+        this.getParkWeatherHistoricalComparisonsQueryHandler = getParkWeatherHistoricalComparisonsQueryHandler;
         this.getLatestParkWeatherRunQueryHandler = getLatestParkWeatherRunQueryHandler;
         this.getParkWeatherRunQueryHandler = getParkWeatherRunQueryHandler;
         this.getParkWeatherRunItemsQueryHandler = getParkWeatherRunItemsQueryHandler;
@@ -56,6 +59,28 @@ public sealed class ParkWeatherController : ControllerBase
     {
         ApplicationResult<ParkWeatherForecastResult> result = await this.getParkWeatherForecastQueryHandler.HandleAsync(
             new GetParkWeatherForecastQuery(parkId, days),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpGet("parks/{parkId}/weather/historical-comparisons")]
+    [AllowAnonymous]
+    [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicWeatherDataShort)]
+    [ProducesResponseType(typeof(ParkWeatherHistoricalComparisonsDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetParkWeatherHistoricalComparisonsAsync(
+        [FromRoute] string parkId,
+        [FromQuery] int days = 7,
+        [FromQuery] int years = 10,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ParkWeatherHistoricalComparisonsResult> result = await this.getParkWeatherHistoricalComparisonsQueryHandler.HandleAsync(
+            new GetParkWeatherHistoricalComparisonsQuery(parkId, days, years),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

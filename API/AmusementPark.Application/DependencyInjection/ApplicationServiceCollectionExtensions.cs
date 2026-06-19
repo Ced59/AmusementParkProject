@@ -44,6 +44,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ParkWeatherRefreshStarter>();
         services.AddScoped<ParkWeatherRefreshOrchestrator>();
         services.AddSingleton<ParkWeatherLocalDateResolver>();
+        services.AddSingleton<ParkWeatherHistoricalComparisonDateResolver>();
         services.AddSingleton<IMeasurementConversionService>(MeasurementConversionService.Instance);
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddSingleton<IParkDistanceCalculator, ParkDistanceCalculator>();

@@ -19,4 +19,9 @@ public interface IParkWeatherProviderStrategy
         int forecastDays,
         bool includeYesterdayObservation,
         CancellationToken cancellationToken);
+
+    Task<ParkWeatherProviderResult> FetchDailyObservationsAsync(
+        Park park,
+        IReadOnlyCollection<DateOnly> localDates,
+        CancellationToken cancellationToken);
 }

@@ -130,6 +130,67 @@
         </div>
       </section>
 
+      <details class="park-weather-history" (toggle)="onHistoricalComparisonToggle($event, data.park.id)">
+        <summary class="park-weather-history__summary">
+          <span>
+            <i class="pi pi-clock" aria-hidden="true"></i>
+            {{ 'parkWeather.history.title' | translate }}
+          </span>
+          <small>{{ 'parkWeather.history.subtitle' | translate }}</small>
+          <i class="pi pi-chevron-down park-weather-history__chevron" aria-hidden="true"></i>
+        </summary>
+
+        @if (historicalComparisonRequested()) {
+          @if (historicalComparisonState().kind === 'loading') {
+            <div class="park-weather-history__state">
+              <span>{{ 'parkWeather.history.loading' | translate }}</span>
+            </div>
+          } @else if (historicalComparisonState().kind === 'error') {
+            <div class="park-weather-history__state park-weather-history__state--error">
+              <span>{{ 'parkWeather.history.errorMessage' | translate }}</span>
+            </div>
+          } @else if (historicalComparisonState().kind === 'empty') {
+            <div class="park-weather-history__state">
+              <span>{{ 'parkWeather.history.empty' | translate }}</span>
+            </div>
+          } @else if (historicalComparisonState().data; as history) {
+            <div class="park-weather-history-scroll">
+              <div class="park-weather-history-grid" [style.--weather-day-count]="data.weather.days.length">
+                <div class="park-weather-history-grid__row park-weather-history-grid__row--days">
+                  <span class="park-weather-history-grid__label" aria-hidden="true"></span>
+                  @for (day of data.weather.days; track day.localDate) {
+                    <strong>{{ formatShortDate(day.localDate) }}</strong>
+                  }
+                </div>
+
+                @for (comparison of history.years; track comparison.yearsBack) {
+                  <div class="park-weather-history-grid__row">
+                    <span class="park-weather-history-grid__label">
+                      {{ comparisonYearLabelKey(comparison.yearsBack) | translate:{ count: comparison.yearsBack } }}
+                    </span>
+
+                    @for (day of data.weather.days; track day.localDate) {
+                      @if (historicalComparisonDay(comparison, day.localDate); as historicalDay) {
+                        <span class="park-weather-history-grid__cell">
+                          <small>{{ formatShortDate(historicalDay.localDate) }}</small>
+                          <i [class]="iconClass(historicalDay)" aria-hidden="true"></i>
+                          <strong>{{ temperatureRange(historicalDay) || '-' }}</strong>
+                          <span>{{ conditionKey(historicalDay) | translate }}</span>
+                          <em>{{ 'parkWeather.history.rain' | translate:{ value: precipitationSumLabel(historicalDay) } }}</em>
+                          <em>{{ 'parkWeather.history.wind' | translate:{ value: windSpeedLabel(historicalDay) } }}</em>
+                        </span>
+                      } @else {
+                        <span class="park-weather-history-grid__cell park-weather-history-grid__cell--empty">-</span>
+                      }
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        }
+      </details>
+
       <p class="park-weather-attribution">
         {{ 'parkWeather.attribution.full' | translate:{ provider: data.weather.attribution.providerName } }}
         <a [href]="data.weather.attribution.providerUrl" target="_blank" rel="noreferrer noopener">{{ data.weather.attribution.providerName }}</a>

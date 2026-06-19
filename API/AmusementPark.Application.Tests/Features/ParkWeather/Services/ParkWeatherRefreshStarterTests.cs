@@ -83,6 +83,10 @@ public sealed class ParkWeatherRefreshStarterTests
 
         public bool IncludeYesterdayObservation => true;
 
+        public int HistoricalBackfillYears => 0;
+
+        public int HistoricalComparisonYearsLimit => 10;
+
         public int DelayBetweenParksMilliseconds => 0;
 
         public string AutomaticRefreshTimeZoneId => "UTC";

@@ -10,7 +10,13 @@ public interface IParkWeatherRepository
 
     Task DeleteExpiredForecastsAsync(DateOnly oldestLocalDateToKeep, CancellationToken cancellationToken);
 
+    Task DeleteExpiredObservationsAsync(DateOnly oldestLocalDateToKeep, CancellationToken cancellationToken);
+
     Task<ParkWeatherDailySnapshot?> GetLatestForecastSnapshotAsync(string parkId, CancellationToken cancellationToken);
 
     Task<IReadOnlyCollection<ParkWeatherDailySnapshot>> GetForecastAsync(string parkId, DateOnly fromLocalDate, int dayCount, CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<DateOnly>> GetExistingObservationDatesAsync(string parkId, IReadOnlyCollection<DateOnly> localDates, CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<ParkWeatherDailySnapshot>> GetObservationsByDatesAsync(string parkId, IReadOnlyCollection<DateOnly> localDates, CancellationToken cancellationToken);
 }

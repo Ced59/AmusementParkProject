@@ -2360,6 +2360,17 @@
       "temperature": "Temp.",
       "precipitationSum": "Menge"
     },
+    "history": {
+      "title": "Mit Vorjahren vergleichen",
+      "subtitle": "Gespeicherte Wetterhistorie fur dieselben Daten.",
+      "loading": "Wettervergleiche werden geladen.",
+      "empty": "Fur diese Daten ist keine historische Beobachtung verfugbar.",
+      "errorMessage": "Wettervergleiche konnten nicht geladen werden.",
+      "yearSingular": "Vor {{count}} Jahr",
+      "yearPlural": "Vor {{count}} Jahren",
+      "rain": "Regen {{value}}",
+      "wind": "Wind {{value}}"
+    },
     "attribution": {
       "short": "Quelle: {{provider}}",
       "full": "Wetterdaten bereitgestellt von {{provider}} unter Lizenz:"

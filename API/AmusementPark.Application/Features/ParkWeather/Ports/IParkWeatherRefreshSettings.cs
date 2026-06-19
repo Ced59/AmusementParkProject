@@ -10,6 +10,10 @@ public interface IParkWeatherRefreshSettings
 
     bool IncludeYesterdayObservation { get; }
 
+    int HistoricalBackfillYears { get; }
+
+    int HistoricalComparisonYearsLimit { get; }
+
     int DelayBetweenParksMilliseconds { get; }
 
     string AutomaticRefreshTimeZoneId { get; }

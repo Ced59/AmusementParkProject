@@ -2360,6 +2360,17 @@
       "temperature": "Temp.",
       "precipitationSum": "Totale"
     },
+    "history": {
+      "title": "Confronta con gli anni precedenti",
+      "subtitle": "Memoria meteo salvata per le stesse date.",
+      "loading": "Caricamento confronti meteo.",
+      "empty": "Nessuna osservazione storica disponibile per queste date.",
+      "errorMessage": "I confronti meteo non possono essere caricati.",
+      "yearSingular": "{{count}} anno fa",
+      "yearPlural": "{{count}} anni fa",
+      "rain": "Pioggia {{value}}",
+      "wind": "Vento {{value}}"
+    },
     "attribution": {
       "short": "Fonte: {{provider}}",
       "full": "Dati meteo forniti da {{provider}} con licenza:"

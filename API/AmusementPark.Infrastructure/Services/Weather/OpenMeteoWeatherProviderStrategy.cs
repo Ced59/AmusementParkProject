@@ -13,6 +13,9 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
     public const string HttpClientName = "open-meteo-weather";
 
     private const string Provider = "open-meteo";
+    private readonly SemaphoreSlim requestSemaphore = new SemaphoreSlim(1, 1);
+    private DateTime lastProviderRequestUtc = DateTime.MinValue;
+
     private static readonly string DailyForecastVariables = string.Join(",", new[]
     {
         "weather_code",
@@ -114,8 +117,54 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
         };
     }
 
+    public async Task<ParkWeatherProviderResult> FetchDailyObservationsAsync(
+        Park park,
+        IReadOnlyCollection<DateOnly> localDates,
+        CancellationToken cancellationToken)
+    {
+        if (park.Position is null)
+        {
+            throw new InvalidOperationException($"Park '{park.Id}' has no coordinates.");
+        }
+
+        List<DateOnly> dates = localDates
+            .Distinct()
+            .OrderBy(static date => date)
+            .ToList();
+
+        if (dates.Count == 0)
+        {
+            return new ParkWeatherProviderResult();
+        }
+
+        HashSet<DateOnly> requestedDates = dates.ToHashSet();
+        List<ParkWeatherDailySnapshot> snapshots = new List<ParkWeatherDailySnapshot>();
+        HttpClient httpClient = this.httpClientFactory.CreateClient(HttpClientName);
+
+        foreach (DateRange dateRange in BuildDateRanges(dates))
+        {
+            OpenMeteoResponse archiveResponse = await this.GetAsync(
+                httpClient,
+                this.BuildArchiveUrl(park.Position.Latitude, park.Position.Longitude, dateRange.Start, dateRange.End),
+                cancellationToken);
+
+            snapshots.AddRange(this.MapDailySnapshots(
+                    park,
+                    archiveResponse,
+                    ParkWeatherDataKind.Observation,
+                    DateTime.UtcNow)
+                .Where(snapshot => requestedDates.Contains(snapshot.LocalDate)));
+        }
+
+        return new ParkWeatherProviderResult
+        {
+            Snapshots = snapshots,
+        };
+    }
+
     private async Task<OpenMeteoResponse> GetAsync(HttpClient httpClient, string url, CancellationToken cancellationToken)
     {
+        await this.WaitForProviderSlotAsync(cancellationToken);
         using HttpResponseMessage response = await httpClient.GetAsync(url, cancellationToken);
         if (!response.IsSuccessStatusCode)
         {
@@ -147,18 +196,79 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
 
     private string BuildArchiveUrl(double latitude, double longitude, DateOnly date)
     {
-        string formattedDate = date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+        return this.BuildArchiveUrl(latitude, longitude, date, date);
+    }
+
+    private string BuildArchiveUrl(double latitude, double longitude, DateOnly startDate, DateOnly endDate)
+    {
+        string formattedStartDate = startDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+        string formattedEndDate = endDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
         Dictionary<string, string> query = new Dictionary<string, string>
         {
             ["latitude"] = FormatNumber(latitude),
             ["longitude"] = FormatNumber(longitude),
-            ["start_date"] = formattedDate,
-            ["end_date"] = formattedDate,
+            ["start_date"] = formattedStartDate,
+            ["end_date"] = formattedEndDate,
             ["daily"] = DailyArchiveVariables,
             ["timezone"] = "auto",
         };
 
         return BuildUrl(this.settings.OpenMeteoArchiveBaseUrl, query);
+    }
+
+    private async Task WaitForProviderSlotAsync(CancellationToken cancellationToken)
+    {
+        int delayMilliseconds = Math.Max(0, this.settings.MinimumDelayBetweenProviderRequestsMilliseconds);
+        if (delayMilliseconds == 0)
+        {
+            return;
+        }
+
+        await this.requestSemaphore.WaitAsync(cancellationToken);
+        try
+        {
+            DateTime now = DateTime.UtcNow;
+            TimeSpan elapsed = now - this.lastProviderRequestUtc;
+            TimeSpan minimumDelay = TimeSpan.FromMilliseconds(delayMilliseconds);
+            if (this.lastProviderRequestUtc != DateTime.MinValue && elapsed < minimumDelay)
+            {
+                await Task.Delay(minimumDelay - elapsed, cancellationToken);
+            }
+
+            this.lastProviderRequestUtc = DateTime.UtcNow;
+        }
+        finally
+        {
+            this.requestSemaphore.Release();
+        }
+    }
+
+    private static IReadOnlyCollection<DateRange> BuildDateRanges(IReadOnlyCollection<DateOnly> dates)
+    {
+        if (dates.Count == 0)
+        {
+            return Array.Empty<DateRange>();
+        }
+
+        List<DateRange> ranges = new List<DateRange>();
+        DateOnly rangeStart = dates.First();
+        DateOnly previousDate = rangeStart;
+
+        foreach (DateOnly date in dates.Skip(1))
+        {
+            if (date == previousDate.AddDays(1))
+            {
+                previousDate = date;
+                continue;
+            }
+
+            ranges.Add(new DateRange(rangeStart, previousDate));
+            rangeStart = date;
+            previousDate = date;
+        }
+
+        ranges.Add(new DateRange(rangeStart, previousDate));
+        return ranges;
     }
 
     private IReadOnlyCollection<ParkWeatherDailySnapshot> MapDailySnapshots(
@@ -251,6 +361,8 @@ public sealed class OpenMeteoWeatherProviderStrategy : IParkWeatherProviderStrat
         string normalizedMessage = string.IsNullOrWhiteSpace(message) ? "unknown error" : message.Trim();
         return normalizedMessage.Length <= 200 ? normalizedMessage : normalizedMessage[..200];
     }
+
+    private sealed record DateRange(DateOnly Start, DateOnly End);
 
     private sealed class OpenMeteoResponse
     {

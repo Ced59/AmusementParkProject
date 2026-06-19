@@ -29,6 +29,17 @@
       "temperature": "Temp.",
       "precipitationSum": "Total"
     },
+    "history": {
+      "title": "Comparar com anos anteriores",
+      "subtitle": "Memoria meteorologica guardada para as mesmas datas.",
+      "loading": "A carregar comparacoes meteorologicas.",
+      "empty": "Nao existe observacao historica para estas datas.",
+      "errorMessage": "Nao foi possivel carregar as comparacoes meteorologicas.",
+      "yearSingular": "Ha {{count}} ano",
+      "yearPlural": "Ha {{count}} anos",
+      "rain": "Chuva {{value}}",
+      "wind": "Vento {{value}}"
+    },
     "attribution": {
       "short": "Fonte: {{provider}}",
       "full": "Dados meteorologicos fornecidos por {{provider}} sob licenca:"

@@ -2360,6 +2360,17 @@
       "temperature": "Temp.",
       "precipitationSum": "Amount"
     },
+    "history": {
+      "title": "Compare with previous years",
+      "subtitle": "Stored weather memory for the same dates.",
+      "loading": "Loading weather comparisons.",
+      "empty": "No historical observation is available for these dates.",
+      "errorMessage": "Weather comparisons could not be loaded.",
+      "yearSingular": "{{count}} year ago",
+      "yearPlural": "{{count}} years ago",
+      "rain": "Rain {{value}}",
+      "wind": "Wind {{value}}"
+    },
     "attribution": {
       "short": "Source: {{provider}}",
       "full": "Weather data provided by {{provider}} under license:"
