@@ -2353,6 +2353,12 @@
       "precipitationSum": "Neerslag",
       "wind": "Wind"
     },
+    "chart": {
+      "maximum": "Max",
+      "minimum": "Min",
+      "condition": "Weer",
+      "temperature": "Temp."
+    },
     "attribution": {
       "short": "Bron: {{provider}}",
       "full": "Weergegevens geleverd door {{provider}} onder licentie:"

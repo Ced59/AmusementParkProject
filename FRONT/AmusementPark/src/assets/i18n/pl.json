@@ -2353,6 +2353,12 @@
       "precipitationSum": "Opady",
       "wind": "Wiatr"
     },
+    "chart": {
+      "maximum": "Max",
+      "minimum": "Min",
+      "condition": "Pogoda",
+      "temperature": "Temp."
+    },
     "attribution": {
       "short": "Zrodlo: {{provider}}",
       "full": "Dane pogodowe dostarcza {{provider}} na licencji:"

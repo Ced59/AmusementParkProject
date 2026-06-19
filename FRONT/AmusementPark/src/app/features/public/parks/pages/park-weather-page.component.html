@@ -16,52 +16,118 @@
         <p>{{ 'parkWeather.page.lead' | translate }}</p>
 
         @if (detailLink()) {
-          <a class="park-weather-hero__back" [routerLink]="detailLink()">
+          <a appUiButton="ghost" class="park-weather-hero__back" [routerLink]="detailLink()">
             <i class="pi pi-arrow-left" aria-hidden="true"></i>
             <span>{{ 'parkWeather.page.backToPark' | translate:{ name: data.park.name } }}</span>
           </a>
         }
       </header>
 
-      <section class="park-weather-grid" [attr.aria-label]="'parkWeather.page.forecastLabel' | translate">
-        @for (day of data.weather.days; track day.localDate) {
-          <article class="park-weather-day">
-            <div class="park-weather-day__icon" aria-hidden="true">
-              <i [class]="iconClass(day)"></i>
+      <section
+        class="park-weather-board"
+        [attr.aria-label]="'parkWeather.page.forecastLabel' | translate"
+        [style.--weather-day-count]="data.weather.days.length">
+        @if (data.weather.days[0]; as today) {
+          <header class="park-weather-board__summary">
+            <div class="park-weather-board__icon" aria-hidden="true">
+              <i [class]="iconClass(today)"></i>
             </div>
-            <div class="park-weather-day__content">
-              <h2>{{ formatDate(day.localDate) }}</h2>
-              <p>{{ conditionKey(day) | translate }}</p>
 
-              @if (temperatureRange(day)) {
-                <strong>{{ temperatureRange(day) }}</strong>
-              }
-
-              <dl>
-                @if (day.precipitationProbabilityMaxPercent !== null && day.precipitationProbabilityMaxPercent !== undefined) {
-                  <div>
-                    <dt>{{ 'parkWeather.fields.precipitationProbability' | translate }}</dt>
-                    <dd>{{ day.precipitationProbabilityMaxPercent }}%</dd>
-                  </div>
-                }
-
-                @if (day.precipitationSumMillimeters !== null && day.precipitationSumMillimeters !== undefined) {
-                  <div>
-                    <dt>{{ 'parkWeather.fields.precipitationSum' | translate }}</dt>
-                    <dd>{{ day.precipitationSumMillimeters }} mm</dd>
-                  </div>
-                }
-
-                @if (day.windSpeedMaxKilometersPerHour !== null && day.windSpeedMaxKilometersPerHour !== undefined) {
-                  <div>
-                    <dt>{{ 'parkWeather.fields.wind' | translate }}</dt>
-                    <dd>{{ day.windSpeedMaxKilometersPerHour }} km/h</dd>
-                  </div>
-                }
-              </dl>
+            <div class="park-weather-board__main">
+              <span class="park-weather-board__park">
+                <i class="pi pi-map-marker" aria-hidden="true"></i>
+                {{ data.park.name }}
+              </span>
+              <span>{{ 'parkWeather.today.title' | translate }}</span>
+              <h2>{{ conditionKey(today) | translate }}</h2>
+              <p>{{ formatDate(today.localDate) }}</p>
             </div>
-          </article>
+
+            @if (temperatureRange(today)) {
+              <strong class="park-weather-board__temperature">{{ temperatureRange(today) }}</strong>
+            }
+          </header>
         }
+
+        <div class="park-weather-board__legend" aria-hidden="true">
+          <span class="park-weather-board__legend-item park-weather-board__legend-item--max">{{ 'parkWeather.chart.maximum' | translate }}</span>
+          <span class="park-weather-board__legend-item park-weather-board__legend-item--min">{{ 'parkWeather.chart.minimum' | translate }}</span>
+        </div>
+
+        <div class="park-weather-chart-scroll">
+          <div class="park-weather-chart">
+            <svg class="park-weather-chart__plot" viewBox="0 0 760 252" role="img" [attr.aria-label]="'parkWeather.page.forecastLabel' | translate">
+              <g class="park-weather-chart__grid" aria-hidden="true">
+                @for (axis of chartAxisValues(data.weather.days); track axis) {
+                  <line x1="64" [attr.y1]="temperatureY(axis, data.weather.days)" x2="724" [attr.y2]="temperatureY(axis, data.weather.days)"></line>
+                  <text x="12" [attr.y]="temperatureY(axis, data.weather.days) + 5">{{ chartTemperatureLabel(axis) }}</text>
+                }
+              </g>
+
+              <polyline class="park-weather-chart__line park-weather-chart__line--max" [attr.points]="temperatureLinePoints(data.weather.days, 'max')"></polyline>
+              <polyline class="park-weather-chart__line park-weather-chart__line--min" [attr.points]="temperatureLinePoints(data.weather.days, 'min')"></polyline>
+
+              @for (day of data.weather.days; track day.localDate; let index = $index) {
+                @if (isTemperatureAvailable(day.temperatureMaxCelsius)) {
+                  <circle class="park-weather-chart__point park-weather-chart__point--max" [attr.cx]="chartDayX(index, data.weather.days)" [attr.cy]="temperatureY(day.temperatureMaxCelsius, data.weather.days)" r="5"></circle>
+                  <text class="park-weather-chart__value park-weather-chart__value--max" [attr.x]="chartDayX(index, data.weather.days)" [attr.y]="temperatureY(day.temperatureMaxCelsius, data.weather.days) - 12">{{ chartTemperatureLabel(day.temperatureMaxCelsius) }}</text>
+                }
+
+                @if (isTemperatureAvailable(day.temperatureMinCelsius)) {
+                  <circle class="park-weather-chart__point park-weather-chart__point--min" [attr.cx]="chartDayX(index, data.weather.days)" [attr.cy]="temperatureY(day.temperatureMinCelsius, data.weather.days)" r="5"></circle>
+                  <text class="park-weather-chart__value park-weather-chart__value--min" [attr.x]="chartDayX(index, data.weather.days)" [attr.y]="temperatureY(day.temperatureMinCelsius, data.weather.days) + 22">{{ chartTemperatureLabel(day.temperatureMinCelsius) }}</text>
+                }
+              }
+            </svg>
+
+            <div class="park-weather-chart__matrix">
+              <div class="park-weather-chart__row park-weather-chart__row--days">
+                <span class="park-weather-chart__row-label" aria-hidden="true"></span>
+                @for (day of data.weather.days; track day.localDate) {
+                  <strong>{{ formatShortDate(day.localDate) }}</strong>
+                }
+              </div>
+
+              <div class="park-weather-chart__row park-weather-chart__row--condition">
+                <span class="park-weather-chart__row-label">{{ 'parkWeather.chart.condition' | translate }}</span>
+                @for (day of data.weather.days; track day.localDate) {
+                  <span class="park-weather-chart__cell park-weather-chart__cell--condition">
+                    <i [class]="iconClass(day)" aria-hidden="true"></i>
+                    <span>{{ conditionKey(day) | translate }}</span>
+                  </span>
+                }
+              </div>
+
+              <div class="park-weather-chart__row">
+                <span class="park-weather-chart__row-label">{{ 'parkWeather.chart.temperature' | translate }}</span>
+                @for (day of data.weather.days; track day.localDate) {
+                  <span class="park-weather-chart__cell">{{ temperatureRange(day) || '-' }}</span>
+                }
+              </div>
+
+              <div class="park-weather-chart__row">
+                <span class="park-weather-chart__row-label">{{ 'parkWeather.fields.precipitationProbability' | translate }}</span>
+                @for (day of data.weather.days; track day.localDate) {
+                  <span class="park-weather-chart__cell">{{ precipitationProbabilityLabel(day) }}</span>
+                }
+              </div>
+
+              <div class="park-weather-chart__row">
+                <span class="park-weather-chart__row-label">{{ 'parkWeather.fields.precipitationSum' | translate }}</span>
+                @for (day of data.weather.days; track day.localDate) {
+                  <span class="park-weather-chart__cell">{{ precipitationSumLabel(day) }}</span>
+                }
+              </div>
+
+              <div class="park-weather-chart__row">
+                <span class="park-weather-chart__row-label">{{ 'parkWeather.fields.wind' | translate }}</span>
+                @for (day of data.weather.days; track day.localDate) {
+                  <span class="park-weather-chart__cell">{{ windSpeedLabel(day) }}</span>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <p class="park-weather-attribution">
