@@ -2678,7 +2678,8 @@
       "prompt": "Escolhe a tua avaliação",
       "signInMessage": "Inicia sessão para deixar a tua avaliação.",
       "savedMessage": "Obrigado, a tua avaliação foi guardada.",
-      "errorMessage": "Não foi possível guardar a avaliação agora."
+      "errorMessage": "Não foi possível guardar a avaliação agora.",
+      "savedToast": "A sua avaliação foi guardada."
     },
     "profile": {
       "kicker": "As minhas avaliações",
@@ -2696,7 +2697,14 @@
       "byPark": "Por parque",
       "byKind": "Por tipo",
       "unknownPark": "Parque associado",
-      "communityAverage": "Avaliação média"
+      "communityAverage": "Avaliação média",
+      "searchLabel": "Pesquisar nos seus parques avaliados",
+      "searchPlaceholder": "Encontrar um parque nas suas avaliações",
+      "searchAction": "Pesquisar",
+      "clearSearch": "Limpar pesquisa",
+      "ratingCount": "{{count}} avaliação(ões)",
+      "loadMore": "Carregar mais avaliações",
+      "loadingMore": "A carregar avaliações..."
     },
     "rankings": {
       "kicker": "Favoritos dos visitantes",
@@ -2716,7 +2724,17 @@
         "restaurants": "Restaurantes",
         "hotels": "Hotéis",
         "services": "Serviços"
-      }
+      },
+      "calculationHint": "O ranking dos parques considera avaliações do parque e dos locais avaliados no interior, para destacar destinos apreciados como um todo.",
+      "scoreAria": "Avaliação {{value}} de 5",
+      "parkSignal": "Avaliação do parque",
+      "itemsSignal": "Avaliação dos locais",
+      "searchLabel": "Pesquisar um parque nos rankings",
+      "searchPlaceholder": "Encontrar um parque no ranking",
+      "searchAction": "Pesquisar",
+      "clearSearch": "Limpar pesquisa",
+      "loadMore": "Carregar mais parques",
+      "loadingMore": "A carregar parques..."
     },
     "targetTypes": {
       "Park": "Parques",

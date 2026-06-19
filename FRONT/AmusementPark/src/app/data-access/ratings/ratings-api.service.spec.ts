@@ -1,7 +1,7 @@
 import { HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { RatingRankingItem, RatingSummary, UserRating, UserRatingUpsertRequest } from '@app/models/ratings/rating.models';
+import { ParkRatingRanking, RatingSummary, UserRating, UserRatingUpsertRequest } from '@app/models/ratings/rating.models';
 import { provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { environment } from '../../../environments/environment';
 import { RatingsApiService } from './ratings-api.service';
@@ -62,35 +62,34 @@ describe('RatingsApiService', () => {
   });
 
   it('loads filtered rankings and unwraps paged responses', () => {
-    let items: RatingRankingItem[] = [];
+    let items: ParkRatingRanking[] = [];
 
-    service.getRankings(2, 5, 'ParkItem', 'Attraction').subscribe((page): void => {
+    service.getRankings(2, 5, 'Attraction', 'Demo').subscribe((page): void => {
       items = page.items;
     });
 
-    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}ratings/rankings?page=2&size=5&targetType=ParkItem&category=Attraction`);
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}ratings/rankings?page=2&size=5&category=Attraction&search=Demo`);
     expect(request.request.method).toBe('GET');
     request.flush({
       data: [
         {
           rank: 1,
-          targetType: 'ParkItem',
-          targetId: 'item-1',
-          targetName: 'Demo Attraction',
           parkId: 'park-1',
           parkName: 'Demo Park',
-          parkItemCategory: 'Attraction',
-          parkItemType: 'RollerCoaster',
-          ratingCount: 4,
-          averageRating: 4.75,
-          bayesianScore: 3.86
+          ratingCount: 8,
+          score: 4.21,
+          parkRatingCount: 3,
+          parkAverageRating: 4.5,
+          itemsRatingCount: 5,
+          itemsAverageRating: 4,
+          categories: []
         }
       ],
       pagination: { page: 2, pageSize: 5, totalItems: 1, totalPages: 1 }
     });
 
     expect(items.length).toBe(1);
-    expect(items[0]?.targetName).toBe('Demo Attraction');
+    expect(items[0]?.parkName).toBe('Demo Park');
   });
 
   function createUserRating(): UserRating {

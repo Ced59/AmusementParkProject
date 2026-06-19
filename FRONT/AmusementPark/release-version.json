@@ -1,6 +1,20 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "history": [
+    {
+      "version": "2.0.1",
+      "releasedAt": "2026-06-19",
+      "labels": {
+        "fr": "Les notes et classements sont plus fiables.",
+        "en": "Ratings and rankings are more reliable.",
+        "de": "Bewertungen und Ranglisten werden zuverlässiger.",
+        "nl": "Beoordelingen en ranglijsten zijn betrouwbaarder.",
+        "it": "Valutazioni e classifiche sono più affidabili.",
+        "es": "Las valoraciones y rankings son más fiables.",
+        "pl": "Oceny i rankingi są bardziej niezawodne.",
+        "pt": "Avaliações e rankings ficam mais fiáveis."
+      }
+    },
     {
       "version": "2.0.0",
       "releasedAt": "2026-06-19",

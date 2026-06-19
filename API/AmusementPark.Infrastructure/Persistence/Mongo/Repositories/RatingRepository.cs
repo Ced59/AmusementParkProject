@@ -14,8 +14,8 @@ namespace AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 
 public sealed class RatingRepository : IRatingRepository
 {
-    private const int RankingBatchSize = 50;
-    private const int RankingCandidateHardLimit = 1000;
+    private const int RankingCandidateHardLimit = 5000;
+    private const int UserRatingSearchHardLimit = 1000;
 
     private readonly IMongoCollection<UserRatingDocument> userRatingsCollection;
     private readonly IMongoCollection<RatingAggregateDocument> ratingAggregatesCollection;
@@ -142,9 +142,22 @@ public sealed class RatingRepository : IRatingRepository
         return document.ToDomain();
     }
 
-    public async Task<PagedResult<UserRatingListItemResult>> GetUserRatingsAsync(string userId, int page, int pageSize, CancellationToken cancellationToken)
+    public async Task<PagedResult<UserRatingListItemResult>> GetUserRatingsAsync(string userId, int page, int pageSize, string? parkSearch, CancellationToken cancellationToken)
     {
         FilterDefinition<UserRatingDocument> filter = Builders<UserRatingDocument>.Filter.Eq(document => document.UserId, userId);
+
+        if (!string.IsNullOrWhiteSpace(parkSearch))
+        {
+            List<UserRatingDocument> searchDocuments = await this.userRatingsCollection.Find(filter)
+                .SortByDescending(document => document.UpdatedAt)
+                .Limit(UserRatingSearchHardLimit)
+                .ToListAsync(cancellationToken);
+
+            IReadOnlyCollection<UserRatingListItemResult> enrichedRatings = await this.EnrichUserRatingsAsync(searchDocuments, cancellationToken);
+            IReadOnlyCollection<UserRatingListItemResult> searchItems = BuildUserRatingSearchWindow(enrichedRatings, parkSearch.Trim());
+            return new PagedResult<UserRatingListItemResult>(searchItems, 1, Math.Max(searchItems.Count, 1), searchItems.Count);
+        }
+
         long totalItems = await this.userRatingsCollection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
 
         List<UserRatingDocument> documents = await this.userRatingsCollection.Find(filter)
@@ -153,6 +166,12 @@ public sealed class RatingRepository : IRatingRepository
             .Limit(pageSize)
             .ToListAsync(cancellationToken);
 
+        IReadOnlyCollection<UserRatingListItemResult> items = await this.EnrichUserRatingsAsync(documents, cancellationToken);
+        return new PagedResult<UserRatingListItemResult>(items, page, pageSize, totalItems);
+    }
+
+    private async Task<IReadOnlyCollection<UserRatingListItemResult>> EnrichUserRatingsAsync(IReadOnlyCollection<UserRatingDocument> documents, CancellationToken cancellationToken)
+    {
         IReadOnlyDictionary<string, string> parkNames = await this.LoadParkNamesAsync(documents.Select(static document => document.ParkId), false, cancellationToken);
         IReadOnlyDictionary<string, ParkItemDocument> parkItems = await this.LoadParkItemsAsync(
             documents.Where(static document => document.TargetType == RatingTargetType.ParkItem).Select(static document => document.TargetId),
@@ -182,7 +201,7 @@ public sealed class RatingRepository : IRatingRepository
                 summary);
         }).ToList();
 
-        return new PagedResult<UserRatingListItemResult>(items, page, pageSize, totalItems);
+        return items;
     }
 
     public async Task<UserRatingStatsResult> GetUserRatingStatsAsync(string userId, CancellationToken cancellationToken)
@@ -234,41 +253,28 @@ public sealed class RatingRepository : IRatingRepository
             byParkItemCategory);
     }
 
-    public async Task<PagedResult<RatingRankingItemResult>> GetRankingsAsync(RatingTargetType? targetType, ParkItemCategory? parkItemCategory, int page, int pageSize, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<RatingRankingItemResult>> GetVisibleRankingSourcesAsync(ParkItemCategory? parkItemCategory, int maxItems, CancellationToken cancellationToken)
     {
-        FilterDefinition<RatingAggregateDocument> filter = this.BuildRankingFilter(targetType, parkItemCategory);
-        long totalItems = await this.ratingAggregatesCollection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
-        int requiredVisibleCount = page * pageSize;
-        int offset = 0;
-        List<RatingRankingItemResult> visibleItems = new List<RatingRankingItemResult>();
+        int effectiveMaxItems = Math.Clamp(maxItems, 1, RankingCandidateHardLimit);
+        List<RatingAggregateDocument> parkDocuments = await this.ratingAggregatesCollection.Find(BuildParkRankingParkFilter())
+            .Sort(BuildRankingSort())
+            .Limit(RankingCandidateHardLimit)
+            .ToListAsync(cancellationToken);
+        List<RatingAggregateDocument> parkItemDocuments = await this.ratingAggregatesCollection.Find(BuildParkRankingItemFilter(parkItemCategory))
+            .Sort(BuildRankingSort())
+            .Limit(effectiveMaxItems)
+            .ToListAsync(cancellationToken);
+        List<RatingAggregateDocument> candidateDocuments = parkDocuments.Concat(parkItemDocuments).ToList();
 
-        while (visibleItems.Count < requiredVisibleCount && offset < totalItems && offset < RankingCandidateHardLimit)
+        if (candidateDocuments.Count == 0)
         {
-            List<RatingAggregateDocument> candidateDocuments = await this.ratingAggregatesCollection.Find(filter)
-                .Sort(BuildRankingSort())
-                .Skip(offset)
-                .Limit(RankingBatchSize)
-                .ToListAsync(cancellationToken);
-
-            if (candidateDocuments.Count == 0)
-            {
-                break;
-            }
-
-            IReadOnlyCollection<RatingRankingItemResult> enrichedItems = await this.EnrichVisibleRankingItemsAsync(candidateDocuments, visibleItems.Count, cancellationToken);
-            visibleItems.AddRange(enrichedItems);
-            offset += candidateDocuments.Count;
+            return Array.Empty<RatingRankingItemResult>();
         }
 
-        List<RatingRankingItemResult> pageItems = visibleItems
-            .Skip((page - 1) * pageSize)
-            .Take(pageSize)
-            .ToList();
-
-        return new PagedResult<RatingRankingItemResult>(pageItems, page, pageSize, totalItems);
+        return await this.EnrichVisibleRankingSourcesAsync(candidateDocuments, cancellationToken);
     }
 
-    private async Task<IReadOnlyCollection<RatingRankingItemResult>> EnrichVisibleRankingItemsAsync(IReadOnlyCollection<RatingAggregateDocument> documents, int rankOffset, CancellationToken cancellationToken)
+    private async Task<IReadOnlyCollection<RatingRankingItemResult>> EnrichVisibleRankingSourcesAsync(IReadOnlyCollection<RatingAggregateDocument> documents, CancellationToken cancellationToken)
     {
         List<string> parkTargetIds = documents
             .Where(static document => document.TargetType == RatingTargetType.Park)
@@ -292,7 +298,6 @@ public sealed class RatingRepository : IRatingRepository
                 }
 
                 items.Add(new RatingRankingItemResult(
-                    rankOffset + items.Count + 1,
                     document.TargetType,
                     document.TargetId,
                     park.Name?.Trim() ?? document.TargetId,
@@ -301,6 +306,7 @@ public sealed class RatingRepository : IRatingRepository
                     null,
                     null,
                     document.RatingCount,
+                    document.RatingSum,
                     document.AverageRating,
                     document.BayesianScore));
                 continue;
@@ -317,7 +323,6 @@ public sealed class RatingRepository : IRatingRepository
             }
 
             items.Add(new RatingRankingItemResult(
-                rankOffset + items.Count + 1,
                 document.TargetType,
                 document.TargetId,
                 parkItem.Name.Trim(),
@@ -326,6 +331,7 @@ public sealed class RatingRepository : IRatingRepository
                 parkItem.Category,
                 parkItem.Type,
                 document.RatingCount,
+                document.RatingSum,
                 document.AverageRating,
                 document.BayesianScore));
         }
@@ -402,21 +408,56 @@ public sealed class RatingRepository : IRatingRepository
         return documents.ToDictionary(static document => document.Id, StringComparer.Ordinal);
     }
 
-    private FilterDefinition<RatingAggregateDocument> BuildRankingFilter(RatingTargetType? targetType, ParkItemCategory? parkItemCategory)
+    private static FilterDefinition<RatingAggregateDocument> BuildParkRankingParkFilter()
     {
         FilterDefinition<RatingAggregateDocument> filter = Builders<RatingAggregateDocument>.Filter.Gt(document => document.RatingCount, 0);
+        FilterDefinition<RatingAggregateDocument> parkFilter = Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetType, RatingTargetType.Park);
+        return filter & parkFilter;
+    }
 
-        if (targetType.HasValue)
-        {
-            filter &= Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetType, targetType.Value);
-        }
+    private static FilterDefinition<RatingAggregateDocument> BuildParkRankingItemFilter(ParkItemCategory? parkItemCategory)
+    {
+        FilterDefinition<RatingAggregateDocument> filter = Builders<RatingAggregateDocument>.Filter.Gt(document => document.RatingCount, 0);
+        FilterDefinition<RatingAggregateDocument> parkItemFilter = Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetType, RatingTargetType.ParkItem);
 
         if (parkItemCategory.HasValue)
         {
-            filter &= Builders<RatingAggregateDocument>.Filter.Eq(document => document.ParkItemCategory, parkItemCategory.Value);
+            parkItemFilter &= Builders<RatingAggregateDocument>.Filter.Eq(document => document.ParkItemCategory, parkItemCategory.Value);
         }
 
-        return filter;
+        return filter & parkItemFilter;
+    }
+
+    private static IReadOnlyCollection<UserRatingListItemResult> BuildUserRatingSearchWindow(IReadOnlyCollection<UserRatingListItemResult> ratings, string parkSearch)
+    {
+        if (ratings.Count == 0)
+        {
+            return Array.Empty<UserRatingListItemResult>();
+        }
+
+        List<IGrouping<string, UserRatingListItemResult>> groups = ratings
+            .Where(static rating => !string.IsNullOrWhiteSpace(rating.ParkId))
+            .GroupBy(static rating => rating.ParkId, StringComparer.Ordinal)
+            .OrderByDescending(static group => group.Average(static rating => rating.Value))
+            .ThenByDescending(static group => group.Count())
+            .ThenBy(static group => group.First().ParkName ?? group.Key, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
+        int matchIndex = groups.FindIndex(group => (group.First().ParkName ?? group.Key).Contains(parkSearch, StringComparison.OrdinalIgnoreCase));
+        if (matchIndex < 0)
+        {
+            return Array.Empty<UserRatingListItemResult>();
+        }
+
+        const int contextSize = 5;
+        int startIndex = Math.Max(0, matchIndex - contextSize);
+        int endIndex = Math.Min(groups.Count - 1, matchIndex + contextSize);
+
+        return groups
+            .Skip(startIndex)
+            .Take(endIndex - startIndex + 1)
+            .SelectMany(static group => group.OrderByDescending(static rating => rating.Value).ThenBy(static rating => rating.TargetName, StringComparer.OrdinalIgnoreCase))
+            .ToList();
     }
 
     private static SortDefinition<RatingAggregateDocument> BuildRankingSort()

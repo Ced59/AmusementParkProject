@@ -78,21 +78,20 @@ internal static class RatingsHttpMappers
         };
     }
 
-    public static RatingRankingItemDto ToHttp(this RatingRankingItemResult value)
+    public static ParkRatingRankingDto ToHttp(this ParkRatingRankingResult value)
     {
-        return new RatingRankingItemDto
+        return new ParkRatingRankingDto
         {
             Rank = value.Rank,
-            TargetType = value.TargetType.ToString(),
-            TargetId = value.TargetId,
-            TargetName = value.TargetName,
             ParkId = value.ParkId,
             ParkName = value.ParkName,
-            ParkItemCategory = value.ParkItemCategory?.ToString(),
-            ParkItemType = value.ParkItemType?.ToString(),
             RatingCount = value.RatingCount,
-            AverageRating = value.AverageRating,
-            BayesianScore = value.BayesianScore,
+            Score = value.Score,
+            ParkRatingCount = value.ParkRatingCount,
+            ParkAverageRating = value.ParkAverageRating,
+            ItemsRatingCount = value.ItemsRatingCount,
+            ItemsAverageRating = value.ItemsAverageRating,
+            Categories = value.Categories.Select(static category => category.ToHttp()).ToList(),
         };
     }
 
@@ -104,6 +103,32 @@ internal static class RatingsHttpMappers
             Label = value.Label,
             Count = value.Count,
             AverageRating = value.AverageRating,
+        };
+    }
+
+    private static ParkRatingRankingCategoryDto ToHttp(this ParkRatingRankingCategoryResult value)
+    {
+        return new ParkRatingRankingCategoryDto
+        {
+            ParkItemCategory = value.ParkItemCategory.ToString(),
+            RatingCount = value.RatingCount,
+            AverageRating = value.AverageRating,
+            BayesianScore = value.BayesianScore,
+            Items = value.Items.Select(static item => item.ToHttp()).ToList(),
+        };
+    }
+
+    private static ParkRatingRankingItemDto ToHttp(this ParkRatingRankingItemResult value)
+    {
+        return new ParkRatingRankingItemDto
+        {
+            TargetId = value.TargetId,
+            TargetName = value.TargetName,
+            ParkItemCategory = value.ParkItemCategory?.ToString(),
+            ParkItemType = value.ParkItemType?.ToString(),
+            RatingCount = value.RatingCount,
+            AverageRating = value.AverageRating,
+            BayesianScore = value.BayesianScore,
         };
     }
 }

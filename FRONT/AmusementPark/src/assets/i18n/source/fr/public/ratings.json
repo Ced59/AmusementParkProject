@@ -11,7 +11,8 @@
       "prompt": "Choisis ta note",
       "signInMessage": "Connecte-toi pour laisser ta note.",
       "savedMessage": "Merci, ta note est prise en compte.",
-      "errorMessage": "Ta note ne peut pas être enregistrée pour le moment."
+      "errorMessage": "Ta note ne peut pas être enregistrée pour le moment.",
+      "savedToast": "Ta note a bien été enregistrée."
     },
     "profile": {
       "kicker": "Mes notes",
@@ -29,7 +30,14 @@
       "byPark": "Par parc",
       "byKind": "Par type",
       "unknownPark": "Parc associé",
-      "communityAverage": "Note moyenne"
+      "communityAverage": "Note moyenne",
+      "searchLabel": "Rechercher dans tes parcs notés",
+      "searchPlaceholder": "Trouver un parc dans tes notes",
+      "searchAction": "Rechercher",
+      "clearSearch": "Effacer la recherche",
+      "ratingCount": "{{count}} note(s)",
+      "loadMore": "Charger plus de notes",
+      "loadingMore": "Chargement des notes..."
     },
     "rankings": {
       "kicker": "Coups de coeur visiteurs",
@@ -49,7 +57,17 @@
         "restaurants": "Restaurants",
         "hotels": "Hôtels",
         "services": "Services"
-      }
+      },
+      "calculationHint": "Le classement des parcs tient compte des notes du parc et des lieux notés à l’intérieur, pour faire ressortir les destinations appréciées dans leur ensemble.",
+      "scoreAria": "Note {{value}} sur 5",
+      "parkSignal": "Note du parc",
+      "itemsSignal": "Note des lieux",
+      "searchLabel": "Rechercher un parc dans le classement",
+      "searchPlaceholder": "Trouver un parc dans le classement",
+      "searchAction": "Rechercher",
+      "clearSearch": "Effacer la recherche",
+      "loadMore": "Charger plus de parcs",
+      "loadingMore": "Chargement des parcs..."
     },
     "targetTypes": {
       "Park": "Parcs",

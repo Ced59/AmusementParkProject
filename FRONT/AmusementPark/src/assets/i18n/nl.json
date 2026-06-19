@@ -2678,7 +2678,8 @@
       "prompt": "Kies je beoordeling",
       "signInMessage": "Log in om je beoordeling te geven.",
       "savedMessage": "Bedankt, je beoordeling is opgeslagen.",
-      "errorMessage": "Je beoordeling kan nu niet worden opgeslagen."
+      "errorMessage": "Je beoordeling kan nu niet worden opgeslagen.",
+      "savedToast": "Je beoordeling is opgeslagen."
     },
     "profile": {
       "kicker": "Mijn beoordelingen",
@@ -2696,7 +2697,14 @@
       "byPark": "Per park",
       "byKind": "Per type",
       "unknownPark": "Gekoppeld park",
-      "communityAverage": "Gemiddelde"
+      "communityAverage": "Gemiddelde",
+      "searchLabel": "Zoek in je beoordeelde parken",
+      "searchPlaceholder": "Vind een park in je beoordelingen",
+      "searchAction": "Zoeken",
+      "clearSearch": "Zoekopdracht wissen",
+      "ratingCount": "{{count}} beoordeling(en)",
+      "loadMore": "Meer beoordelingen laden",
+      "loadingMore": "Beoordelingen laden..."
     },
     "rankings": {
       "kicker": "Bezoekersfavorieten",
@@ -2716,7 +2724,17 @@
         "restaurants": "Restaurants",
         "hotels": "Hotels",
         "services": "Services"
-      }
+      },
+      "calculationHint": "De parkranglijst telt beoordelingen van het park en van beoordeelde plekken erin mee, zodat sterke totaalervaringen naar voren komen.",
+      "scoreAria": "Beoordeling {{value}} van 5",
+      "parkSignal": "Parkbeoordeling",
+      "itemsSignal": "Beoordeling van plekken",
+      "searchLabel": "Zoek een park in ranglijsten",
+      "searchPlaceholder": "Vind een park in de ranglijst",
+      "searchAction": "Zoeken",
+      "clearSearch": "Zoekopdracht wissen",
+      "loadMore": "Meer parken laden",
+      "loadingMore": "Parken laden..."
     },
     "targetTypes": {
       "Park": "Parken",

@@ -1,8 +1,11 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateService } from '@ngx-translate/core';
+import { take } from 'rxjs';
 
 import { RatingSummary, RatingTargetType, UserRating, UserRatingUpsertRequest } from '@app/models/ratings/rating.models';
 import { AuthService } from '@app/services/auth/auth.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ModalService } from '@app/services/modal/modal.service';
 import { PUBLIC_RATING_RATINGS_PORT, PublicRatingRatingsPort } from './public-rating-state-data.ports';
 
@@ -24,6 +27,8 @@ export class PublicRatingStateFacade {
     @Inject(PUBLIC_RATING_RATINGS_PORT) private readonly ratingsApiService: PublicRatingRatingsPort,
     private readonly authService: AuthService,
     private readonly modalService: ModalService,
+    private readonly toastMessageService: ToastMessageService,
+    private readonly translateService: TranslateService,
     private readonly destroyRef: DestroyRef
   ) {
   }
@@ -52,33 +57,52 @@ export class PublicRatingStateFacade {
       return;
     }
 
-    this.authService.ensureValidAccessToken(true).pipe(takeUntilDestroyed(this.destroyRef)).subscribe((token: string | null): void => {
-      if (!token) {
-        this.messageKeySignal.set('ratings.stars.signInMessage');
-        this.modalService.openModal('loginModal');
-        return;
-      }
-
-      const request: UserRatingUpsertRequest = {
-        targetType,
-        targetId,
-        value
-      };
-
-      this.savingSignal.set(true);
-      this.ratingsApiService.upsertRating(request).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-        next: (rating: UserRating): void => {
-          this.userRatingSignal.set(rating);
-          this.summarySignal.set(rating.summary);
-          this.messageKeySignal.set('ratings.stars.savedMessage');
+    this.savingSignal.set(true);
+    this.authService.ensureValidAccessToken(true).pipe(take(1)).subscribe({
+      next: (token: string | null): void => {
+        if (!token) {
+          this.messageKeySignal.set('ratings.stars.signInMessage');
           this.savingSignal.set(false);
-        },
-        error: (error: unknown): void => {
-          console.error('Error saving rating', error);
-          this.messageKeySignal.set('ratings.stars.errorMessage');
-          this.savingSignal.set(false);
+          this.modalService.openModal('loginModal');
+          return;
         }
-      });
+
+        const request: UserRatingUpsertRequest = {
+          targetType,
+          targetId,
+          value
+        };
+
+        this.ratingsApiService.upsertRating(request).pipe(take(1)).subscribe({
+          next: (rating: UserRating): void => {
+            if (rating.targetType !== targetType || rating.targetId !== targetId || rating.value !== value) {
+              this.messageKeySignal.set('ratings.stars.errorMessage');
+              this.savingSignal.set(false);
+              return;
+            }
+
+            this.userRatingSignal.set(rating);
+            this.summarySignal.set(rating.summary);
+            this.messageKeySignal.set('ratings.stars.savedMessage');
+            this.savingSignal.set(false);
+            this.toastMessageService.add(
+              'success',
+              this.translateService.instant('common.success'),
+              this.translateService.instant('ratings.stars.savedToast')
+            );
+          },
+          error: (error: unknown): void => {
+            console.error('Error saving rating', error);
+            this.messageKeySignal.set('ratings.stars.errorMessage');
+            this.savingSignal.set(false);
+          }
+        });
+      },
+      error: (error: unknown): void => {
+        console.error('Error checking rating session', error);
+        this.messageKeySignal.set('ratings.stars.errorMessage');
+        this.savingSignal.set(false);
+      }
     });
   }
 

@@ -11,7 +11,8 @@
       "prompt": "Wybierz swoją ocenę",
       "signInMessage": "Zaloguj się, aby dodać ocenę.",
       "savedMessage": "Dziękujemy, ocena została zapisana.",
-      "errorMessage": "Nie można teraz zapisać oceny."
+      "errorMessage": "Nie można teraz zapisać oceny.",
+      "savedToast": "Twoja ocena została zapisana."
     },
     "profile": {
       "kicker": "Moje oceny",
@@ -29,7 +30,14 @@
       "byPark": "Według parku",
       "byKind": "Według typu",
       "unknownPark": "Powiązany park",
-      "communityAverage": "Średnia ocena"
+      "communityAverage": "Średnia ocena",
+      "searchLabel": "Szukaj w ocenionych parkach",
+      "searchPlaceholder": "Znajdź park w swoich ocenach",
+      "searchAction": "Szukaj",
+      "clearSearch": "Wyczyść wyszukiwanie",
+      "ratingCount": "{{count}} ocen(a)",
+      "loadMore": "Załaduj więcej ocen",
+      "loadingMore": "Ładowanie ocen..."
     },
     "rankings": {
       "kicker": "Ulubione odwiedzających",
@@ -49,7 +57,17 @@
         "restaurants": "Restauracje",
         "hotels": "Hotele",
         "services": "Usługi"
-      }
+      },
+      "calculationHint": "Ranking parków uwzględnia oceny parku oraz ocenione miejsca w środku, aby wyróżnić kierunki cenione jako całość.",
+      "scoreAria": "Ocena {{value}} z 5",
+      "parkSignal": "Ocena parku",
+      "itemsSignal": "Ocena miejsc",
+      "searchLabel": "Szukaj parku w rankingach",
+      "searchPlaceholder": "Znajdź park w rankingu",
+      "searchAction": "Szukaj",
+      "clearSearch": "Wyczyść wyszukiwanie",
+      "loadMore": "Załaduj więcej parków",
+      "loadingMore": "Ładowanie parków..."
     },
     "targetTypes": {
       "Park": "Parki",

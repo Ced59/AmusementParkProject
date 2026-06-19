@@ -7,6 +7,24 @@
     subtitleKey="ratings.profile.subtitle">
   </app-ui-section-header>
 
+  <section class="profile-ratings__search" [attr.aria-label]="'ratings.profile.searchLabel' | translate">
+    <i class="pi pi-search" aria-hidden="true"></i>
+    <input
+      type="search"
+      [value]="searchTerm()"
+      [placeholder]="'ratings.profile.searchPlaceholder' | translate"
+      (input)="updateSearchTerm($any($event.target).value)"
+      (keyup.enter)="applySearch()">
+    <button appUiButton="primary" type="button" (click)="applySearch()">
+      {{ 'ratings.profile.searchAction' | translate }}
+    </button>
+    @if (searchTerm()) {
+      <button appUiButton="ghost" type="button" class="profile-ratings__search-clear" (click)="clearSearch()">
+        {{ 'ratings.profile.clearSearch' | translate }}
+      </button>
+    }
+  </section>
+
   @if (loading()) {
     <div class="profile-ratings__empty">{{ 'ratings.profile.loading' | translate }}</div>
   } @else if (isEmpty()) {
@@ -75,25 +93,52 @@
     }
 
     <div class="profile-ratings__list">
-      @for (rating of ratings(); track rating.id) {
-        <article class="profile-rating-row">
-          <div class="profile-rating-row__main">
-            <app-ui-chip tone="gold" iconClass="pi pi-star">{{ formatRating(rating.value) }}</app-ui-chip>
-            <div>
-              @if (targetRoute(rating); as route) {
-                <a class="profile-rating-row__title" [routerLink]="route">{{ rating.targetName }}</a>
+      @for (group of ratingGroups(); track group.parkId; let groupIndex = $index) {
+        <details class="profile-rating-park" [open]="groupIndex < 3">
+          <summary class="profile-rating-park__summary">
+            <span class="profile-rating-park__main">
+              @if (parkRoute(group); as route) {
+                <a class="profile-rating-row__title" [routerLink]="route" (click)="$event.stopPropagation()">{{ group.parkName }}</a>
               } @else {
-                <strong class="profile-rating-row__title">{{ rating.targetName }}</strong>
+                <strong class="profile-rating-row__title">{{ group.parkName }}</strong>
               }
-              <span>{{ rating.parkName || ('ratings.profile.unknownPark' | translate) }}</span>
-            </div>
+              <span>{{ 'ratings.profile.ratingCount' | translate:{ count: group.ratingCount } }}</span>
+            </span>
+            <span class="profile-rating-park__score">
+              <app-ui-chip tone="gold" iconClass="pi pi-star">{{ formatRating(group.averageRating) }}</app-ui-chip>
+            </span>
+          </summary>
+
+          <div class="profile-rating-park__items">
+            @for (rating of group.ratings; track rating.id) {
+              <article class="profile-rating-row">
+                <div class="profile-rating-row__main">
+                  <app-ui-chip tone="gold" iconClass="pi pi-star">{{ formatRating(rating.value) }}</app-ui-chip>
+                  <div>
+                    @if (targetRoute(rating); as route) {
+                      <a class="profile-rating-row__title" [routerLink]="route">{{ rating.targetName }}</a>
+                    } @else {
+                      <strong class="profile-rating-row__title">{{ rating.targetName }}</strong>
+                    }
+                  </div>
+                </div>
+                <div class="profile-rating-row__average">
+                  <span>{{ 'ratings.profile.communityAverage' | translate }}</span>
+                  <strong>{{ formatRating(rating.summary.averageRating) }}</strong>
+                </div>
+              </article>
+            }
           </div>
-          <div class="profile-rating-row__average">
-            <span>{{ 'ratings.profile.communityAverage' | translate }}</span>
-            <strong>{{ formatRating(rating.summary.averageRating) }}</strong>
-          </div>
-        </article>
+        </details>
       }
     </div>
+
+    @if (hasMore()) {
+      <div class="profile-ratings__more">
+        <button appUiButton="primary" type="button" [disabled]="loadingMore()" (click)="loadMore()">
+          {{ (loadingMore() ? 'ratings.profile.loadingMore' : 'ratings.profile.loadMore') | translate }}
+        </button>
+      </div>
+    }
   }
 </section>

@@ -5,7 +5,7 @@ import { Observable, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import {
   RatingRankingsPage,
-  RatingRankingItem,
+  ParkRatingRanking,
   RatingSummary,
   RatingTargetType,
   UserRating,
@@ -49,8 +49,8 @@ export class RatingsApiService {
     return this.http.put<UserRating>(url, request, this.jsonHttpOptions);
   }
 
-  getMyRatings(page: number = 1, size: number = 10): Observable<UserRatingsPage> {
-    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMyRatings(page, size)}`;
+  getMyRatings(page: number = 1, size: number = 10, search: string | null = null): Observable<UserRatingsPage> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getMyRatings(page, size, search)}`;
     return this.http.get<PagedCollectionResponse<UserRatingListItem>>(url).pipe(
       map((response: PagedCollectionResponse<UserRatingListItem>) => unwrapPagedCollection<UserRatingListItem>(response))
     );
@@ -61,10 +61,10 @@ export class RatingsApiService {
     return this.http.get<UserRatingStats>(url);
   }
 
-  getRankings(page: number = 1, size: number = 20, targetType: RatingTargetType | null = null, category: string | null = null, options: RatingsHttpOptions = {}): Observable<RatingRankingsPage> {
-    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getRankings(page, size, targetType, category)}`;
-    return this.http.get<PagedCollectionResponse<RatingRankingItem>>(url, options).pipe(
-      map((response: PagedCollectionResponse<RatingRankingItem>) => unwrapPagedCollection<RatingRankingItem>(response))
+  getRankings(page: number = 1, size: number = 20, category: string | null = null, search: string | null = null, options: RatingsHttpOptions = {}): Observable<RatingRankingsPage> {
+    const url: string = `${environment.apiBaseUrl}${RATINGS_API_ENDPOINTS.getRankings(page, size, category, search)}`;
+    return this.http.get<PagedCollectionResponse<ParkRatingRanking>>(url, options).pipe(
+      map((response: PagedCollectionResponse<ParkRatingRanking>) => unwrapPagedCollection<ParkRatingRanking>(response))
     );
   }
 }

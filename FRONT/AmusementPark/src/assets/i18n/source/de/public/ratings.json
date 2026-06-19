@@ -11,7 +11,8 @@
       "prompt": "Wähle deine Bewertung",
       "signInMessage": "Melde dich an, um zu bewerten.",
       "savedMessage": "Danke, deine Bewertung wurde gespeichert.",
-      "errorMessage": "Deine Bewertung konnte gerade nicht gespeichert werden."
+      "errorMessage": "Deine Bewertung konnte gerade nicht gespeichert werden.",
+      "savedToast": "Deine Bewertung wurde gespeichert."
     },
     "profile": {
       "kicker": "Meine Bewertungen",
@@ -29,7 +30,14 @@
       "byPark": "Nach Park",
       "byKind": "Nach Typ",
       "unknownPark": "Zugehöriger Park",
-      "communityAverage": "Durchschnitt"
+      "communityAverage": "Durchschnitt",
+      "searchLabel": "Deine bewerteten Parks durchsuchen",
+      "searchPlaceholder": "Park in deinen Bewertungen finden",
+      "searchAction": "Suchen",
+      "clearSearch": "Suche löschen",
+      "ratingCount": "{{count}} Bewertung(en)",
+      "loadMore": "Mehr Bewertungen laden",
+      "loadingMore": "Bewertungen werden geladen..."
     },
     "rankings": {
       "kicker": "Besucherfavoriten",
@@ -49,7 +57,17 @@
         "restaurants": "Restaurants",
         "hotels": "Hotels",
         "services": "Services"
-      }
+      },
+      "calculationHint": "Die Parkrangliste berücksichtigt Bewertungen des Parks und der bewerteten Orte im Park, damit Ziele mit einem starken Gesamterlebnis sichtbar werden.",
+      "scoreAria": "Bewertung {{value}} von 5",
+      "parkSignal": "Parkbewertung",
+      "itemsSignal": "Ortsbewertung",
+      "searchLabel": "Park in Ranglisten suchen",
+      "searchPlaceholder": "Park in der Rangliste finden",
+      "searchAction": "Suchen",
+      "clearSearch": "Suche löschen",
+      "loadMore": "Mehr Parks laden",
+      "loadingMore": "Parks werden geladen..."
     },
     "targetTypes": {
       "Park": "Parks",

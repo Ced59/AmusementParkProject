@@ -1,8 +1,10 @@
 import { DestroyRef } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable, of, throwError } from 'rxjs';
 
 import { RatingTargetType, UserRating, UserRatingUpsertRequest } from '@app/models/ratings/rating.models';
 import { AuthService } from '@app/services/auth/auth.service';
+import { ToastMessageService } from '@app/services/messages/toast-message.service';
 import { ModalService } from '@app/services/modal/modal.service';
 import { PublicRatingStateFacade } from './public-rating-state.facade';
 import { PublicRatingRatingsPort } from './public-rating-state-data.ports';
@@ -36,12 +38,17 @@ class FakeRatingsPort implements PublicRatingRatingsPort {
 class FakeAuthService {
   loggedIn = false;
   token: string | null = null;
+  tokenError: unknown | null = null;
 
   isLoggedIn(): boolean {
     return this.loggedIn;
   }
 
   ensureValidAccessToken(_silent: boolean): Observable<string | null> {
+    if (this.tokenError) {
+      return throwError(() => this.tokenError);
+    }
+
     return of(this.token);
   }
 }
@@ -51,6 +58,20 @@ class FakeModalService {
 
   openModal(id: string): void {
     this.openedModals.push(id);
+  }
+}
+
+class FakeToastMessageService {
+  readonly messages: Array<{ severity: string; summary: string; detail: string }> = [];
+
+  add(severity: 'success' | 'info' | 'warn' | 'error', summary: string, detail: string): void {
+    this.messages.push({ severity, summary, detail });
+  }
+}
+
+class FakeTranslateService {
+  instant(key: string): string {
+    return key;
   }
 }
 
@@ -89,12 +110,29 @@ describe('PublicRatingStateFacade', () => {
     expect(facade.messageKey()).toBe('ratings.stars.signInMessage');
   });
 
+  it('restores the rating controls when the session check fails', () => {
+    const port: FakeRatingsPort = new FakeRatingsPort();
+    const authService: FakeAuthService = new FakeAuthService();
+    authService.tokenError = new Error('session');
+    const facade: PublicRatingStateFacade = createFacade(port, authService);
+    const consoleErrorSpy: jasmine.Spy = spyOn(console, 'error').and.stub();
+
+    facade.configure('Park', 'park-1', null);
+    facade.rate(4.5);
+
+    expect(port.upsertCalls.length).toBe(0);
+    expect(facade.saving()).toBeFalse();
+    expect(facade.messageKey()).toBe('ratings.stars.errorMessage');
+    expect(consoleErrorSpy).toHaveBeenCalled();
+  });
+
   it('saves an authenticated rating and replaces the summary with the returned aggregate', () => {
     const port: FakeRatingsPort = new FakeRatingsPort();
     const authService: FakeAuthService = new FakeAuthService();
     authService.token = 'token';
     port.ratingResponse = createUserRating(4.5, 5, 4.2);
-    const facade: PublicRatingStateFacade = createFacade(port, authService);
+    const toastMessageService: FakeToastMessageService = new FakeToastMessageService();
+    const facade: PublicRatingStateFacade = createFacade(port, authService, new FakeModalService(), toastMessageService);
 
     facade.configure('ParkItem', ' item-1 ', null);
     facade.rate(4.5);
@@ -105,18 +143,24 @@ describe('PublicRatingStateFacade', () => {
     expect(facade.summary()?.averageRating).toBe(4.2);
     expect(facade.saving()).toBeFalse();
     expect(facade.messageKey()).toBe('ratings.stars.savedMessage');
+    expect(toastMessageService.messages).toEqual([
+      { severity: 'success', summary: 'common.success', detail: 'ratings.stars.savedToast' }
+    ]);
   });
 });
 
 function createFacade(
   port: FakeRatingsPort,
   authService: FakeAuthService,
-  modalService: FakeModalService = new FakeModalService()
+  modalService: FakeModalService = new FakeModalService(),
+  toastMessageService: FakeToastMessageService = new FakeToastMessageService()
 ): PublicRatingStateFacade {
   return new PublicRatingStateFacade(
     port,
     authService as unknown as AuthService,
     modalService as unknown as ModalService,
+    toastMessageService as unknown as ToastMessageService,
+    new FakeTranslateService() as unknown as TranslateService,
     new FakeDestroyRef()
   );
 }

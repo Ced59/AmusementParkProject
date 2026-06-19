@@ -19,12 +19,13 @@ public sealed record GetUserRatingQuery(
 
 public sealed record ListUserRatingsQuery(
     string UserId,
-    PagedQuery Paging) : IQuery<ApplicationResult<PagedResult<UserRatingListItemResult>>>;
+    PagedQuery Paging,
+    string? ParkSearch = null) : IQuery<ApplicationResult<PagedResult<UserRatingListItemResult>>>;
 
 public sealed record GetUserRatingStatsQuery(
     string UserId) : IQuery<ApplicationResult<UserRatingStatsResult>>;
 
 public sealed record GetRatingRankingsQuery(
-    RatingTargetType? TargetType,
     ParkItemCategory? ParkItemCategory,
-    PagedQuery Paging) : IQuery<ApplicationResult<PagedResult<RatingRankingItemResult>>>;
+    PagedQuery Paging,
+    string? ParkSearch = null) : IQuery<ApplicationResult<PagedResult<ParkRatingRankingResult>>>;
