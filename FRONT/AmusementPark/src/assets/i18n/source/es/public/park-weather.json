@@ -26,7 +26,8 @@
       "maximum": "Max",
       "minimum": "Min",
       "condition": "Tiempo",
-      "temperature": "Temp."
+      "temperature": "Temp.",
+      "precipitationSum": "Cantidad"
     },
     "attribution": {
       "short": "Fuente: {{provider}}",

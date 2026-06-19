@@ -285,7 +285,11 @@
   font-size: 0.7rem;
   font-weight: 900;
   letter-spacing: 0.04em;
+  line-height: 1.12;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  hyphens: auto;
 }
 
 .park-weather-chart__row--days strong {
