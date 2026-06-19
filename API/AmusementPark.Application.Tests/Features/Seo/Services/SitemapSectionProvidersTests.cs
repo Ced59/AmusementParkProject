@@ -102,8 +102,9 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, cancellationToken);
 
-        Assert.Single(urls);
+        Assert.Equal(2, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix/weather" && url.ChangeFrequency == "daily" && url.Priority == 0.76m);
         Assert.DoesNotContain(urls, static url => url.RelativePath == "/fr/park/park-1/parc-asterix/items");
         Assert.DoesNotContain(urls, static url => url.RelativePath.EndsWith("/images", StringComparison.OrdinalIgnoreCase));
         Assert.DoesNotContain(urls, static url => url.RelativePath.Contains("hidden", StringComparison.OrdinalIgnoreCase));

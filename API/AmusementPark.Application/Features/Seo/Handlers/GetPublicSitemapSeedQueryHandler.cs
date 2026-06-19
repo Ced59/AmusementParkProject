@@ -164,6 +164,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
             foreach (string language in languages)
             {
                 urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}", park.UpdatedAtUtc));
+                urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/weather", park.UpdatedAtUtc));
                 if (parkIdsWithPublishedImages.Contains(park.Id))
                 {
                     urls.Add(new PublicSitemapUrl($"/{language}/park/{park.Id}/{slug}/images", park.UpdatedAtUtc));

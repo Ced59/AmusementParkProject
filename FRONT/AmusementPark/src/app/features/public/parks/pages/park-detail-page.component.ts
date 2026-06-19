@@ -24,7 +24,9 @@ export class ParkDetailPageComponent implements OnInit {
   protected readonly heroImageSrcWidth: number = 960;
   protected readonly state = this.stateFacade.state;
   protected readonly nearbyState = this.stateFacade.nearbyState;
+  protected readonly weatherState = this.stateFacade.weatherState;
   protected readonly park = this.stateFacade.park;
+  protected readonly weather = this.stateFacade.weather;
   protected readonly nearbyParks = this.stateFacade.nearbyParks;
   protected readonly summary = this.stateFacade.summary;
   protected readonly currentLang = signal<string>('en');

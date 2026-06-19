@@ -6,6 +6,7 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { Park } from '@app/models/parks/park';
+import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import {
@@ -17,8 +18,10 @@ import { ParkDetailStateFacade } from './park-detail-state.facade';
 class FakeParksPort implements ParkDetailParksPort {
   public summaryResponse$: Observable<ParkDetailSummary> = of(createSummary());
   public nearestResponse$: Observable<ParkDistanceResponse> = of(createNearbyResponse());
+  public weatherResponse$: Observable<ParkWeatherForecast> = of(createWeatherForecast());
   public readonly summaryCalls: string[] = [];
   public readonly nearestCalls: { sourceParkId: string; limit?: number; maxDistanceKilometers?: number | null }[] = [];
+  public readonly weatherCalls: { id: string; days?: number }[] = [];
 
   getParkDetailSummary(id: string): Observable<ParkDetailSummary> {
     this.summaryCalls.push(id);
@@ -28,6 +31,11 @@ class FakeParksPort implements ParkDetailParksPort {
   getNearestParks(sourceParkId: string, limit?: number, maxDistanceKilometers?: number | null): Observable<ParkDistanceResponse> {
     this.nearestCalls.push({ sourceParkId, limit, maxDistanceKilometers });
     return this.nearestResponse$;
+  }
+
+  getParkWeather(id: string, days?: number): Observable<ParkWeatherForecast> {
+    this.weatherCalls.push({ id, days });
+    return this.weatherResponse$;
   }
 }
 
@@ -141,6 +149,35 @@ function createNearbyResponse(): ParkDistanceResponse {
   };
 }
 
+function createWeatherForecast(): ParkWeatherForecast {
+  return {
+    parkId: 'park-1',
+    attribution: {
+      providerName: 'Open-Meteo',
+      providerUrl: 'https://open-meteo.com/',
+      licenseName: 'CC BY 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by/4.0/'
+    },
+    days: [
+      {
+        localDate: '2026-06-19',
+        dataKind: 'Forecast',
+        weatherCode: 1,
+        temperatureMinCelsius: 12,
+        temperatureMaxCelsius: 21,
+        apparentTemperatureMinCelsius: 11,
+        apparentTemperatureMaxCelsius: 22,
+        precipitationProbabilityMaxPercent: 20,
+        precipitationSumMillimeters: 0,
+        windSpeedMaxKilometersPerHour: 18,
+        windGustsMaxKilometersPerHour: 28,
+        timeZone: 'Europe/Paris',
+        fetchedAtUtc: '2026-06-19T00:00:00Z'
+      }
+    ]
+  };
+}
+
 function configureFacade(): {
   facade: ParkDetailStateFacade;
   parksPort: FakeParksPort;
@@ -195,8 +232,11 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.summary()?.entries.find((entry) => entry.labelKey === 'parkVisitor.summary.totalItems')?.count).toBe(3);
     expect(context.parksPort.summaryCalls).toEqual(['park-1']);
     expect(context.parksPort.nearestCalls).toEqual([{ sourceParkId: 'park-1', limit: 4, maxDistanceKilometers: null }]);
+    expect(context.parksPort.weatherCalls).toEqual([{ id: 'park-1', days: 7 }]);
     expect(context.facade.nearbyState().kind).toBe('ready');
     expect(context.facade.nearbyParks().map((park) => park.id)).toEqual(['near-1']);
+    expect(context.facade.weatherState().kind).toBe('ready');
+    expect(context.facade.weather()?.days.length).toBe(1);
     expect(context.facade.nearbyParks()[0].shortDescription?.length).toBeLessThanOrEqual(140);
   });
 

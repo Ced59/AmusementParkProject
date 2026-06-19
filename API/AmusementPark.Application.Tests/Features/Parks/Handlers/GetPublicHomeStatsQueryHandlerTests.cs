@@ -71,6 +71,11 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
             return Task.FromResult<IReadOnlyCollection<string>>(Array.Empty<string>());
         }
 
+        public Task<IReadOnlyCollection<Park>> GetVisibleWithValidCoordinatesAsync(CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IReadOnlyCollection<string>> GetParkIdsByOperatorIdAsync(string operatorId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

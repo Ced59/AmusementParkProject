@@ -55,6 +55,11 @@ public interface IParkRepository
     Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(ParkSearchCriteria criteria, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Retourne les parcs visibles publiquement disposant de coordonnÃ©es exploitables.
+    /// </summary>
+    Task<IReadOnlyCollection<Park>> GetVisibleWithValidCoordinatesAsync(CancellationToken cancellationToken);
+
+    /// <summary>
     /// Retourne une sélection aléatoire de parcs visibles publiquement.
     /// </summary>
     Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken);

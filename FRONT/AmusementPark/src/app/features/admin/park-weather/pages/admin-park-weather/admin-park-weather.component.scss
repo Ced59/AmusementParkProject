@@ -1,0 +1,126 @@
+:host {
+  display: block;
+}
+
+.admin-park-weather-header {
+  align-items: flex-start;
+}
+
+.admin-park-weather-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.admin-park-weather {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.admin-park-weather__summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+}
+
+.admin-weather-stat-card,
+.admin-park-weather__run,
+.admin-park-weather__failures,
+.admin-park-weather__empty {
+  border: 1px solid var(--surface-border, #d8dee9);
+  border-radius: 8px;
+  background: var(--surface-card, #ffffff);
+}
+
+.admin-weather-stat-card {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+  min-height: 8rem;
+  padding: 1rem;
+}
+
+.admin-weather-stat-card span,
+.admin-weather-stat-card small,
+.admin-park-weather__run p,
+.admin-park-weather__run dt,
+.admin-park-weather__failures p,
+.admin-weather-failures-table__muted {
+  color: var(--text-color-secondary, #5d6675);
+}
+
+.admin-weather-stat-card strong {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.admin-park-weather__run,
+.admin-park-weather__failures {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.admin-park-weather__run h3,
+.admin-park-weather__run p,
+.admin-park-weather__failures h3,
+.admin-park-weather__failures p {
+  margin: 0;
+}
+
+.admin-park-weather__run dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin: 0;
+}
+
+.admin-park-weather__run dd {
+  margin: 0.2rem 0 0;
+  font-weight: 700;
+}
+
+.admin-park-weather__failures header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-weather-failures-table__muted {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+}
+
+.admin-park-weather__empty {
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.admin-park-weather__empty i {
+  color: #0f6d94;
+  font-size: 2rem;
+}
+
+.admin-park-weather__empty h3,
+.admin-park-weather__empty p {
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .admin-park-weather-header__actions,
+  .admin-park-weather__failures header {
+    justify-content: stretch;
+  }
+
+  .admin-park-weather-header__actions > *,
+  .admin-park-weather__failures header button {
+    width: 100%;
+  }
+}

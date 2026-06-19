@@ -10,6 +10,7 @@ import {
   buildPublicParkImagesRouteCommands,
   buildPublicParkItemsRouteCommands,
   buildPublicParkMapRouteCommands,
+  buildPublicParkWeatherRouteCommands,
   buildPublicParkVideosRouteCommands,
   buildPublicParkZonesRouteCommands
 } from '@shared/utils/routing/public-detail-route.helpers';
@@ -139,6 +140,9 @@ export function mapParkToDetailViewModel(
       : null,
     mapLink: hasIdentity
       ? buildPublicParkMapRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
+      : null,
+    weatherLink: hasIdentity
+      ? buildPublicParkWeatherRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     primaryPhoto,
     identityRows,

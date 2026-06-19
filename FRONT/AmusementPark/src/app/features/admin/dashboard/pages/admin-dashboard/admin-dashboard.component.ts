@@ -85,6 +85,12 @@ export class AdminDashboardComponent {
       segment: 'seo-sitemaps'
     },
     {
+      iconClass: 'pi pi-cloud',
+      titleKey: 'admin.parkWeather.navTitle',
+      descriptionKey: 'admin.dashboard.shortcuts.parkWeather',
+      segment: 'park-weather'
+    },
+    {
       iconClass: 'pi pi-inbox',
       titleKey: 'admin.contactGrievances.navTitle',
       descriptionKey: 'admin.dashboard.shortcuts.contactGrievances',

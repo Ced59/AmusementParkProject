@@ -245,6 +245,14 @@
           @if (currentPark.hasLocationInfo) {
             <app-park-location-section class="park-side-card park-side-card--location" [park]="currentPark"></app-park-location-section>
           }
+
+          <app-park-weather-card
+            class="park-side-card park-side-card--weather"
+            [forecast]="weather"
+            [state]="weatherState"
+            [currentLang]="currentLang"
+            [weatherLink]="currentPark.weatherLink">
+          </app-park-weather-card>
         </aside>
       </div>
 

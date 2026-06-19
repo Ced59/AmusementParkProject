@@ -1,0 +1,9 @@
+{
+  "admin": {
+    "dashboard": {
+      "shortcuts": {
+        "parkWeather": "Monitor scheduled public data refreshes."
+      }
+    }
+  }
+}

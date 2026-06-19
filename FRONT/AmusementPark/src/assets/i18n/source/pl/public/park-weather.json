@@ -1,0 +1,42 @@
+{
+  "parkWeather": {
+    "loading": "Ladowanie pogody",
+    "errorMessage": "Nie udalo sie zaladowac danych pogodowych.",
+    "today": {
+      "title": "Pogoda dzisiaj",
+      "precipitationProbability": "{{value}}% ryzyka deszczu",
+      "viewSevenDays": "Prognoza na 7 dni"
+    },
+    "conditions": {
+      "clear": "Czyste niebo",
+      "partlyCloudy": "Czesciowe zachmurzenie",
+      "cloudy": "Pochmurno",
+      "fog": "Mgla",
+      "rain": "Deszcz",
+      "snow": "Snieg",
+      "thunderstorm": "Burza",
+      "unknown": "Pogoda niedostepna"
+    },
+    "fields": {
+      "precipitationProbability": "Ryzyko deszczu",
+      "precipitationSum": "Opady",
+      "wind": "Wiatr"
+    },
+    "attribution": {
+      "short": "Zrodlo: {{provider}}",
+      "full": "Dane pogodowe dostarcza {{provider}} na licencji:"
+    },
+    "page": {
+      "kicker": "Pogoda",
+      "title": "Pogoda na 7 dni dla {{name}}",
+      "lead": "Codzienna prognoza zapisywana przez strone, aby planowac wizyty i budowac historie pogody.",
+      "loadingTitle": "Ladowanie pogody",
+      "loadingMessage": "Prognoza jest ladowana.",
+      "emptyTitle": "Brak prognozy",
+      "emptyMessage": "Dla tego parku nie ma jeszcze danych pogodowych.",
+      "errorTitle": "Pogoda niedostepna",
+      "backToPark": "Powrot do {{name}}",
+      "forecastLabel": "Prognoza pogody na 7 dni"
+    }
+  }
+}

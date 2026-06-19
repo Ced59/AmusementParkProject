@@ -1,6 +1,7 @@
 using System;
 using System.IO.Compression;
 using System.Linq;
+using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.WebAPI.Diagnostics;
 using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.Responses;
@@ -59,6 +60,7 @@ public static class HttpApiServiceCollectionExtensions
         });
         services.AddApiOutputCaching();
         services.AddScoped<ISsrPageCacheInvalidationRequestResolver, SsrPageCacheInvalidationRequestResolver>();
+        services.AddScoped<IParkWeatherCacheInvalidator, ParkWeatherPublicCacheInvalidator>();
         services.AddControllers(static options =>
         {
             options.Filters.Add<InvalidatePublicCachesFilter>();

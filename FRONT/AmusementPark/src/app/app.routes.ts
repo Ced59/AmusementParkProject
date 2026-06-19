@@ -79,6 +79,10 @@ export const routes: Routes = [
             loadComponent: () => import('@features/admin/seo-sitemaps/pages/admin-seo-sitemaps/admin-seo-sitemaps.component').then((m) => m.AdminSeoSitemapsComponent)
           },
           {
+            path: 'park-weather',
+            loadComponent: () => import('@features/admin/park-weather/pages/admin-park-weather/admin-park-weather.component').then((m) => m.AdminParkWeatherComponent)
+          },
+          {
             path: 'contact-grievances',
             loadComponent: () => import('@features/admin/contact/pages/admin-contact-grievances/admin-contact-grievances.component').then((m) => m.AdminContactGrievancesComponent)
           },
@@ -135,6 +139,7 @@ export const routes: Routes = [
           { path: 'park/:id/:slug/map', loadComponent: () => import('./features/public/parks/pages/park-map-page.component').then((m) => m.ParkMapPageComponent) },
           { path: 'park/:id/:slug/zones', loadComponent: () => import('./features/public/parks/pages/park-zones-page.component').then((m) => m.ParkZonesPageComponent) },
           { path: 'park/:id/:slug/zone/:zoneId/:zoneSlug', loadComponent: () => import('./features/public/parks/pages/park-zone-page.component').then((m) => m.ParkZonePageComponent) },
+          { path: 'park/:id/:slug/weather', loadComponent: () => import('./features/public/parks/pages/park-weather-page.component').then((m) => m.ParkWeatherPageComponent) },
           { path: 'park/:id/:slug/items', loadComponent: () => import('./features/public/park-items/pages/park-items-page.component').then((m) => m.ParkItemsPageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/images', loadComponent: () => import('./features/public/park-items/pages/park-item-images-page.component').then((m) => m.ParkItemImagesPageComponent) },
           { path: 'park/:id/:slug/item/:itemId/:itemSlug/videos/:videoId/:videoSlug', loadComponent: () => import('./features/public/park-items/pages/park-item-video-page.component').then((m) => m.ParkItemVideoPageComponent) },

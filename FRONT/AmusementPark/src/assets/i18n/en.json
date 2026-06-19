@@ -130,7 +130,8 @@
         "founders": "Maintain founders and biographies linked to parks.",
         "auditLogs": "Review logged sensitive administration actions.",
         "parkGraphUpserts": "Preview then apply a full or partial park graph JSON.",
-        "seoSitemaps": "Manage the sitemap index, XML sections, stats and IndexNow."
+        "seoSitemaps": "Manage the sitemap index, XML sections, stats and IndexNow.",
+        "parkWeather": "Monitor scheduled public data refreshes."
       },
       "title": "Dashboard",
       "subtitle": "Back-office entry point: choose a section from the left menu or from the shortcuts below."
@@ -547,6 +548,50 @@
           "zone": "Zone",
           "typePrecise": "Precise type"
         }
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Weather",
+      "title": "Weather refresh",
+      "subtitle": "Track scheduled refreshes, visible park coverage and failed parks.",
+      "loading": "Loading weather refresh status...",
+      "loadError": "Unable to load weather refresh status.",
+      "startError": "Unable to start the weather refresh.",
+      "retryError": "Unable to retry the weather refresh.",
+      "empty": "No weather refresh information available.",
+      "actions": {
+        "startManual": "Refresh now",
+        "retryFailed": "Retry failed parks",
+        "retryPark": "Retry"
+      },
+      "stats": {
+        "status": "Status",
+        "progress": "Progress",
+        "success": "Succeeded",
+        "warnings": "{{count}} warning(s)",
+        "failed": "Failed"
+      },
+      "latestRun": {
+        "title": "Latest run",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Requested",
+        "startedAt": "Started",
+        "cancelAuto": "Auto run canceled"
+      },
+      "failures": {
+        "title": "Failed parks",
+        "subtitle": "Retry all failures in batch or refresh a single failed park.",
+        "empty": "No failed park for this run.",
+        "columns": {
+          "park": "Park",
+          "error": "Error",
+          "attempts": "Attempts",
+          "actions": "Actions"
+        }
+      },
+      "noRun": {
+        "title": "No run yet",
+        "message": "Start a manual refresh or wait for the next scheduled execution."
       }
     },
     "parks": {
@@ -2264,6 +2309,46 @@
       "viewAllItems": "Places in the park",
       "totalItems": "Places to discover",
       "unassignedItems": "Places without a zone"
+    }
+  },
+  "parkWeather": {
+    "loading": "Loading weather",
+    "errorMessage": "Weather data could not be loaded.",
+    "today": {
+      "title": "Weather today",
+      "precipitationProbability": "{{value}}% rain risk",
+      "viewSevenDays": "7-day forecast"
+    },
+    "conditions": {
+      "clear": "Clear sky",
+      "partlyCloudy": "Partly cloudy",
+      "cloudy": "Cloudy",
+      "fog": "Fog",
+      "rain": "Rain",
+      "snow": "Snow",
+      "thunderstorm": "Thunderstorm",
+      "unknown": "Weather unavailable"
+    },
+    "fields": {
+      "precipitationProbability": "Rain risk",
+      "precipitationSum": "Rainfall",
+      "wind": "Wind"
+    },
+    "attribution": {
+      "short": "Source: {{provider}}",
+      "full": "Weather data provided by {{provider}} under license:"
+    },
+    "page": {
+      "kicker": "Weather",
+      "title": "7-day weather for {{name}}",
+      "lead": "Daily forecast stored by the site to prepare visits and build a weather memory over time.",
+      "loadingTitle": "Loading weather",
+      "loadingMessage": "The forecast is being loaded.",
+      "emptyTitle": "No forecast available",
+      "emptyMessage": "No weather data is available for this park yet.",
+      "errorTitle": "Weather unavailable",
+      "backToPark": "Back to {{name}}",
+      "forecastLabel": "7-day weather forecast"
     }
   },
   "parks": {

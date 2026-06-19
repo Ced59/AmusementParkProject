@@ -130,7 +130,8 @@
         "founders": "Gründer und Biografien verwalten, die mit Parks verknüpft sind.",
         "auditLogs": "Protokollierte sensible Verwaltungsaktionen prüfen.",
         "parkGraphUpserts": "Ein vollständiges oder teilweises Park-JSON prüfen und anwenden.",
-        "seoSitemaps": "Sitemap-Index, XML-Bereiche, Statistiken und IndexNow verwalten."
+        "seoSitemaps": "Sitemap-Index, XML-Bereiche, Statistiken und IndexNow verwalten.",
+        "parkWeather": "Geplante Aktualisierungen offentlicher Daten uberwachen."
       },
       "title": "Dashboard",
       "subtitle": "Einstieg ins Backoffice: Wähle einen Bereich im linken Menü oder über die folgenden Schnellzugriffe."
@@ -547,6 +548,50 @@
           "zone": "Zone",
           "typePrecise": "Precise type"
         }
+      }
+    },
+    "parkWeather": {
+      "navTitle": "Wetter",
+      "title": "Wetteraktualisierung",
+      "subtitle": "Uberwacht geplante Ausfuhrungen, sichtbare Parks und Fehler.",
+      "loading": "Wetterstatus wird geladen...",
+      "loadError": "Wetterstatus konnte nicht geladen werden.",
+      "startError": "Wetteraktualisierung konnte nicht gestartet werden.",
+      "retryError": "Wetteraktualisierung konnte nicht erneut gestartet werden.",
+      "empty": "Keine Wetterinformationen verfugbar.",
+      "actions": {
+        "startManual": "Jetzt aktualisieren",
+        "retryFailed": "Fehler erneut versuchen",
+        "retryPark": "Erneut"
+      },
+      "stats": {
+        "status": "Status",
+        "progress": "Fortschritt",
+        "success": "Erfolgreich",
+        "warnings": "{{count}} Warnung(en)",
+        "failed": "Fehler"
+      },
+      "latestRun": {
+        "title": "Letzte Ausfuhrung",
+        "meta": "{{trigger}} · {{scope}}",
+        "requestedAt": "Angefordert",
+        "startedAt": "Gestartet",
+        "cancelAuto": "Automatiklauf storniert"
+      },
+      "failures": {
+        "title": "Fehlgeschlagene Parks",
+        "subtitle": "Alle Fehler oder einen einzelnen Park erneut starten.",
+        "empty": "Kein fehlgeschlagener Park in dieser Ausfuhrung.",
+        "columns": {
+          "park": "Park",
+          "error": "Fehler",
+          "attempts": "Versuche",
+          "actions": "Aktionen"
+        }
+      },
+      "noRun": {
+        "title": "Noch keine Ausfuhrung",
+        "message": "Starte eine manuelle Aktualisierung oder warte auf die nachste geplante Ausfuhrung."
       }
     },
     "parks": {
@@ -2264,6 +2309,46 @@
       "viewAllItems": "Orte im Park",
       "totalItems": "Orte zum Entdecken",
       "unassignedItems": "Orte ohne Bereich"
+    }
+  },
+  "parkWeather": {
+    "loading": "Wetter wird geladen",
+    "errorMessage": "Wetterdaten konnten nicht geladen werden.",
+    "today": {
+      "title": "Wetter heute",
+      "precipitationProbability": "{{value}}% Regenrisiko",
+      "viewSevenDays": "7-Tage-Vorhersage"
+    },
+    "conditions": {
+      "clear": "Klarer Himmel",
+      "partlyCloudy": "Teilweise bewolkt",
+      "cloudy": "Bewolkt",
+      "fog": "Nebel",
+      "rain": "Regen",
+      "snow": "Schnee",
+      "thunderstorm": "Gewitter",
+      "unknown": "Wetter nicht verfugbar"
+    },
+    "fields": {
+      "precipitationProbability": "Regenrisiko",
+      "precipitationSum": "Niederschlag",
+      "wind": "Wind"
+    },
+    "attribution": {
+      "short": "Quelle: {{provider}}",
+      "full": "Wetterdaten bereitgestellt von {{provider}} unter Lizenz:"
+    },
+    "page": {
+      "kicker": "Wetter",
+      "title": "7-Tage-Wetter fur {{name}}",
+      "lead": "Tagliche Vorhersage, die zur Besuchsplanung und fur eine Wetterhistorie gespeichert wird.",
+      "loadingTitle": "Wetter wird geladen",
+      "loadingMessage": "Die Vorhersage wird geladen.",
+      "emptyTitle": "Keine Vorhersage verfugbar",
+      "emptyMessage": "Fur diesen Park sind noch keine Wetterdaten verfugbar.",
+      "errorTitle": "Wetter nicht verfugbar",
+      "backToPark": "Zuruck zu {{name}}",
+      "forecastLabel": "7-Tage-Wettervorhersage"
     }
   },
   "parks": {

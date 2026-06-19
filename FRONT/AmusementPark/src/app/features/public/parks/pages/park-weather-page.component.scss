@@ -1,0 +1,128 @@
+:host {
+  display: block;
+}
+
+.park-weather-page {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+}
+
+.park-weather-hero {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.park-weather-hero__kicker {
+  margin: 0;
+  color: #0f6d94;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.park-weather-hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.04;
+}
+
+.park-weather-hero p {
+  max-width: 68ch;
+  margin: 0;
+  color: var(--text-color-secondary, #5d6675);
+}
+
+.park-weather-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  min-height: 2.5rem;
+  color: #0f6d94;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.park-weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+.park-weather-day {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--surface-border, #d8dee9) 72%, transparent);
+  border-radius: 8px;
+  background: var(--surface-card, #ffffff);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.park-weather-day__icon {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  border-radius: 8px;
+  background: #e2f2ff;
+  color: #0f6d94;
+  font-size: 1.65rem;
+}
+
+.park-weather-day__content {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.park-weather-day h2,
+.park-weather-day p,
+.park-weather-day dl {
+  margin: 0;
+}
+
+.park-weather-day h2 {
+  font-size: 1.05rem;
+}
+
+.park-weather-day strong {
+  font-size: 1.45rem;
+}
+
+.park-weather-day dl {
+  display: grid;
+  gap: 0.35rem;
+  padding-top: 0.35rem;
+}
+
+.park-weather-day dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.park-weather-day dt {
+  color: var(--text-color-secondary, #5d6675);
+}
+
+.park-weather-day dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.park-weather-attribution {
+  margin: 0;
+  color: var(--text-color-secondary, #5d6675);
+  font-size: 0.9rem;
+}
+
+.park-weather-attribution a {
+  margin-left: 0.5rem;
+  color: #0f6d94;
+  font-weight: 700;
+}

@@ -58,6 +58,13 @@ interface ParkItemsSeoCopy {
   description: (parkName: string) => string;
 }
 
+interface ParkWeatherSeoCopy {
+  parkFallback: string;
+  breadcrumbLabel: string;
+  title: (parkName: string) => string;
+  description: (parkName: string, totalDays: number) => string;
+}
+
 interface RegionDisplayNames {
   of(code: string): string | undefined;
 }
@@ -337,6 +344,57 @@ const PARK_ITEMS_SEO_COPY: Record<string, ParkItemsSeoCopy> = {
   }
 };
 
+const PARK_WEATHER_SEO_COPY: Record<string, ParkWeatherSeoCopy> = {
+  en: {
+    parkFallback: 'this park',
+    breadcrumbLabel: '7-day weather',
+    title: (parkName: string): string => `7-day weather for ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Check the ${totalDays || 7}-day weather forecast for ${parkName}: daily conditions, temperatures, rain risk and wind.`
+  },
+  fr: {
+    parkFallback: 'ce parc',
+    breadcrumbLabel: 'M\u00e9t\u00e9o 7 jours',
+    title: (parkName: string): string => `M\u00e9t\u00e9o \u00e0 7 jours de ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Consultez la m\u00e9t\u00e9o \u00e0 ${totalDays || 7} jours de ${parkName} : conditions, temp\u00e9ratures, risque de pluie et vent.`
+  },
+  es: {
+    parkFallback: 'este parque',
+    breadcrumbLabel: 'Tiempo 7 dias',
+    title: (parkName: string): string => `Tiempo a 7 dias de ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Consulta el pronostico del tiempo a ${totalDays || 7} dias para ${parkName}: condiciones, temperaturas, lluvia y viento.`
+  },
+  de: {
+    parkFallback: 'diesem Park',
+    breadcrumbLabel: '7-Tage-Wetter',
+    title: (parkName: string): string => `7-Tage-Wetter fur ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Prufe die ${totalDays || 7}-Tage-Wettervorhersage fur ${parkName}: Wetterlage, Temperaturen, Regenrisiko und Wind.`
+  },
+  it: {
+    parkFallback: 'questo parco',
+    breadcrumbLabel: 'Meteo 7 giorni',
+    title: (parkName: string): string => `Meteo a 7 giorni di ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Consulta le previsioni meteo a ${totalDays || 7} giorni per ${parkName}: condizioni, temperature, pioggia e vento.`
+  },
+  nl: {
+    parkFallback: 'dit park',
+    breadcrumbLabel: '7-daags weer',
+    title: (parkName: string): string => `7-daags weer voor ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Bekijk de ${totalDays || 7}-daagse weersverwachting voor ${parkName}: weerbeeld, temperaturen, regen en wind.`
+  },
+  pl: {
+    parkFallback: 'tym parku',
+    breadcrumbLabel: 'Pogoda 7 dni',
+    title: (parkName: string): string => `Pogoda na 7 dni dla ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Sprawdz prognoze pogody na ${totalDays || 7} dni dla ${parkName}: warunki, temperatury, ryzyko deszczu i wiatr.`
+  },
+  pt: {
+    parkFallback: 'este parque',
+    breadcrumbLabel: 'Meteorologia 7 dias',
+    title: (parkName: string): string => `Meteorologia a 7 dias de ${parkName}`,
+    description: (parkName: string, totalDays: number): string => `Consulta a previsao meteorologica a ${totalDays || 7} dias para ${parkName}: condicoes, temperaturas, chuva e vento.`
+  }
+};
+
 const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
   en: {
     home: {
@@ -527,7 +585,7 @@ export class SeoService {
       return;
     }
 
-    if (this.isPublicParkMapRoute(url) || this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url) || this.isFilteredPublicParkItemImagesRoute(url) || this.isFilteredPublicParkVideosRoute(url) || this.isFilteredPublicParkItemVideosRoute(url)) {
+    if (this.isPublicParkMapRoute(url) || this.isFilteredPublicParkItemsRoute(url) || this.isFilteredPublicParkZonesRoute(url) || this.isFilteredPublicParkZoneRoute(url) || this.isFilteredPublicParkImagesRoute(url) || this.isFilteredPublicParkItemImagesRoute(url) || this.isFilteredPublicParkVideosRoute(url) || this.isFilteredPublicParkItemVideosRoute(url) || this.isFilteredPublicParkWeatherRoute(url)) {
       this.apply({
         title: SITE_NAME,
         description: DEFAULT_DESCRIPTION,
@@ -738,6 +796,23 @@ export class SeoService {
       description: truncateSeoText(description, 160),
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
+      alternates: this.hreflangService.buildAlternates(url),
+      jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, copy.breadcrumbLabel)]
+    });
+  }
+
+  applyParkWeatherSeo(parkName: string, language: string, url: string, totalDays: number = 0): void {
+    const normalizedLanguage: string = this.normalizeLanguage(language);
+    const copy: ParkWeatherSeoCopy = PARK_WEATHER_SEO_COPY[normalizedLanguage] ?? PARK_WEATHER_SEO_COPY[SEO_DEFAULT_LANGUAGE];
+    const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? copy.parkFallback;
+    const title: string = `${copy.title(normalizedParkName)} - ${SITE_NAME}`;
+    const description: string = copy.description(normalizedParkName, totalDays);
+
+    this.apply({
+      title,
+      description: truncateSeoText(description, 160),
+      canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
+      robots: this.hasQueryString(url) || totalDays <= 0 ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, copy.breadcrumbLabel)]
     });
@@ -1435,6 +1510,11 @@ export class SeoService {
 
   private isFilteredPublicParkZoneRoute(url: string): boolean {
     return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zone\/[^/]+\/[^/]+\/?$/i.test(this.normalizePath(url))
+      && this.hasQueryString(url);
+  }
+
+  private isFilteredPublicParkWeatherRoute(url: string): boolean {
+    return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/weather\/?$/i.test(this.normalizePath(url))
       && this.hasQueryString(url);
   }
 

@@ -1,0 +1,9 @@
+{
+  "admin": {
+    "dashboard": {
+      "shortcuts": {
+        "parkWeather": "Monitorizar atualizacoes programadas de dados publicos."
+      }
+    }
+  }
+}

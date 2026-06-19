@@ -82,10 +82,12 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/images" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/videos" && url.LastModifiedUtc == new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc));
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/weather" && url.LastModifiedUtc == new DateTime(2026, 2, 1, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/videos/video-park-1/park-tour" && url.LastModifiedUtc == new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/videos" && url.LastModifiedUtc == new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/videos/video-item-1/front-row" && url.LastModifiedUtc == new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale");
+        Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/weather");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale/images");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/videos/video-park-1/park-tour");
         Assert.Contains(result.Value, static url => url.RelativePath == "/en/park/park-1/visible-park/item/item-1/attraction-familiale/videos/video-item-1/front-row");

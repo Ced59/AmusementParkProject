@@ -12,6 +12,7 @@ using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.ParkZones.Ports;
+using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.Application.Features.Ratings.Ports;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Application.Features.Seo.Ports;
@@ -25,6 +26,7 @@ using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Configuration.Ssr;
 using AmusementPark.Infrastructure.Configuration.Videos;
+using AmusementPark.Infrastructure.Configuration.Weather;
 using AmusementPark.Infrastructure.Persistence.Mongo.Projections;
 using AmusementPark.Infrastructure.Persistence.Mongo.Repositories;
 using AmusementPark.Infrastructure.Services.Authentication;
@@ -36,6 +38,7 @@ using AmusementPark.Infrastructure.Services.Images;
 using AmusementPark.Infrastructure.Services.Seo;
 using AmusementPark.Infrastructure.Services.Ssr;
 using AmusementPark.Infrastructure.Services.Videos;
+using AmusementPark.Infrastructure.Services.Weather;
 using System.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -66,6 +69,10 @@ public static class InfrastructureServiceCollectionExtensions
         VideoMetadataSettings videoMetadataSettings = VideoMetadataSettings.Bind(configuration);
         services.AddSingleton(videoMetadataSettings);
 
+        ParkWeatherSettings parkWeatherSettings = ParkWeatherSettings.Bind(configuration);
+        services.AddSingleton(parkWeatherSettings);
+        services.AddSingleton<IParkWeatherRefreshSettings>(parkWeatherSettings);
+
         JwtSettings jwtSettings = configuration.GetSection("Authentication:Jwt").Get<JwtSettings>() ?? new JwtSettings();
         services.AddSingleton(jwtSettings);
 
@@ -93,6 +100,10 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHttpClient(ExternalVideoMetadataProvider.HttpClientName, client =>
         {
             client.Timeout = TimeSpan.FromSeconds(videoMetadataSettings.RequestTimeoutSeconds);
+        });
+        services.AddHttpClient(OpenMeteoWeatherProviderStrategy.HttpClientName, client =>
+        {
+            client.Timeout = TimeSpan.FromSeconds(parkWeatherSettings.RequestTimeoutSeconds);
         });
         services.AddHttpClient(RemoteImageImporter.HttpClientName, static client =>
         {
@@ -153,6 +164,13 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddHostedService(serviceProvider => serviceProvider.GetRequiredService<InMemorySeoSitemapRefreshScheduler>());
         services.AddScoped<ISsrPageCacheInvalidator, HttpSsrPageCacheInvalidator>();
         services.AddScoped<IParkGraphUpsertHistoryRepository, ParkGraphUpsertHistoryRepository>();
+        services.AddScoped<IParkWeatherRepository, ParkWeatherRepository>();
+        services.AddScoped<IParkWeatherRunRepository, ParkWeatherRunRepository>();
+        services.AddScoped<IParkWeatherProviderStrategy, OpenMeteoWeatherProviderStrategy>();
+        services.AddScoped<IParkWeatherProviderStrategyResolver, ParkWeatherProviderStrategyResolver>();
+        services.AddSingleton<IParkWeatherRefreshQueue, ParkWeatherRefreshQueue>();
+        services.AddHostedService<ParkWeatherRefreshBackgroundService>();
+        services.AddHostedService<ParkWeatherAutomaticRefreshBackgroundService>();
         services.AddScoped<ICaptainCoasterSettingsRepository, CaptainCoasterSettingsRepository>();
         services.AddScoped<ICaptainCoasterSessionRepository, CaptainCoasterSessionRepository>();
         services.AddSingleton<IDataSourceImportJobQueue, InMemoryDataSourceImportJobQueue>();

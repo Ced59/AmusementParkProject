@@ -100,6 +100,12 @@ public sealed class MongoDbSettings
 
     public string CaptainCoasterComparisonResultsCollectionName { get; set; } = "captainCoasterComparisonResults";
 
+    public string ParkWeatherDailySnapshotsCollectionName { get; set; } = "parkWeatherDailySnapshots";
+
+    public string ParkWeatherRunsCollectionName { get; set; } = "parkWeatherRuns";
+
+    public string ParkWeatherRunItemsCollectionName { get; set; } = "parkWeatherRunItems";
+
     /// <summary>
     /// Lie la configuration et applique des valeurs par défaut.
     /// </summary>
