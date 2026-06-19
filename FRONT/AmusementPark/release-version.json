@@ -1,6 +1,20 @@
 {
-  "version": "2.0.1",
+  "version": "2.0.2",
   "history": [
+    {
+      "version": "2.0.2",
+      "releasedAt": "2026-06-19",
+      "labels": {
+        "fr": "Les classements sont plus lisibles.",
+        "en": "Rankings are easier to read.",
+        "de": "Ranglisten sind leichter lesbar.",
+        "nl": "Ranglijsten zijn beter leesbaar.",
+        "it": "Le classifiche sono piu leggibili.",
+        "es": "Los rankings son mas legibles.",
+        "pl": "Rankingi sa czytelniejsze.",
+        "pt": "Os rankings ficam mais legiveis."
+      }
+    },
     {
       "version": "2.0.1",
       "releasedAt": "2026-06-19",

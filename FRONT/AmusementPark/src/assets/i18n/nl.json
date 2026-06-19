@@ -2681,6 +2681,12 @@
       "errorMessage": "Je beoordeling kan nu niet worden opgeslagen.",
       "savedToast": "Je beoordeling is opgeslagen."
     },
+    "tree": {
+      "detailAction": "Details bekijken",
+      "collapseAction": "Inklappen",
+      "openParkAction": "Pagina bekijken",
+      "scoreAria": "Score {{value}} van 5"
+    },
     "profile": {
       "kicker": "Mijn beoordelingen",
       "title": "Jouw bezoeknotities",

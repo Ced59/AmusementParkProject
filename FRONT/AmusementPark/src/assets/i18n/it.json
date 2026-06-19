@@ -2681,6 +2681,12 @@
       "errorMessage": "Non è possibile salvare la valutazione ora.",
       "savedToast": "La tua valutazione è stata salvata."
     },
+    "tree": {
+      "detailAction": "Vedi dettaglio",
+      "collapseAction": "Richiudi",
+      "openParkAction": "Vedi scheda",
+      "scoreAria": "Valutazione {{value}} su 5"
+    },
     "profile": {
       "kicker": "Le mie valutazioni",
       "title": "Le tue note di visita",

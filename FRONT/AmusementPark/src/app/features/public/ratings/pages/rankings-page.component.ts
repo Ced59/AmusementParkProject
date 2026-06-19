@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { ParkRatingRanking, ParkRatingRankingCategory, ParkRatingRankingItem } from '@app/models/ratings/rating.models';
 import { SeoService } from '@core/seo/seo.service';
 import { TranslationService } from '@app/services/translation.service';
+import { RatingTreeComponent, RatingTreePark } from '@shared/components/rating-tree/rating-tree.component';
 import { buildPublicParkItemRouteCommands, buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { UiButtonDirective, UiSectionHeaderComponent } from '@ui/primitives';
@@ -24,14 +25,13 @@ interface RankingFilter {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [RankingsStateFacade],
   imports: [
-    RouterLink,
+    RatingTreeComponent,
     TranslateModule,
     UiButtonDirective,
     UiSectionHeaderComponent
   ]
 })
 export class RankingsPageComponent implements OnInit {
-  protected readonly starIndexes: readonly number[] = [1, 2, 3, 4, 5];
   protected readonly searchTerm = signal<string>('');
   protected readonly filters: readonly RankingFilter[] = [
     { key: 'all', labelKey: 'ratings.rankings.filters.all', category: null },
@@ -46,6 +46,9 @@ export class RankingsPageComponent implements OnInit {
   protected readonly loadingMore: Signal<boolean> = this.stateFacade.loadingMore;
   protected readonly hasMore: Signal<boolean> = this.stateFacade.hasMore;
   protected readonly items: Signal<ParkRatingRanking[]> = this.stateFacade.items;
+  protected readonly treeParks: Signal<RatingTreePark[]> = computed(() => {
+    return this.items().map((item: ParkRatingRanking): RatingTreePark => this.mapRankingToTree(item));
+  });
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -91,11 +94,7 @@ export class RankingsPageComponent implements OnInit {
     this.stateFacade.load(this.currentFilter().category);
   }
 
-  protected formatRating(value: number): string {
-    return value > 0 ? value.toFixed(1).replace('.', ',') : '-';
-  }
-
-  protected parkRoute(item: ParkRatingRanking): string[] | null {
+  private parkRoute(item: ParkRatingRanking): string[] | null {
     return buildPublicParkRouteCommands({
       language: this.currentLang(),
       parkId: item.parkId,
@@ -103,7 +102,7 @@ export class RankingsPageComponent implements OnInit {
     });
   }
 
-  protected itemRoute(park: ParkRatingRanking, item: ParkRatingRankingItem): string[] | null {
+  private itemRoute(park: ParkRatingRanking, item: ParkRatingRankingItem): string[] | null {
     return buildPublicParkItemRouteCommands({
       language: this.currentLang(),
       parkId: park.parkId,
@@ -113,12 +112,37 @@ export class RankingsPageComponent implements OnInit {
     });
   }
 
-  protected categoryLabelKey(category: ParkRatingRankingCategory): string {
+  private categoryLabelKey(category: ParkRatingRankingCategory): string {
     return `ratings.categories.${category.parkItemCategory}`;
   }
 
-  protected fillPercent(value: number, starIndex: number): string {
-    const filled: number = Math.max(0, Math.min(1, value - (starIndex - 1)));
-    return `${filled * 100}%`;
+  private mapRankingToTree(item: ParkRatingRanking): RatingTreePark {
+    return {
+      id: item.parkId,
+      rank: item.rank,
+      name: item.parkName,
+      score: item.score,
+      ratingCount: item.ratingCount,
+      route: this.parkRoute(item),
+      metrics: [
+        { labelKey: 'ratings.rankings.parkSignal', value: item.parkAverageRating },
+        { labelKey: 'ratings.rankings.itemsSignal', value: item.itemsAverageRating }
+      ],
+      sections: item.categories.map((category: ParkRatingRankingCategory) => {
+        return {
+          id: category.parkItemCategory,
+          titleKey: this.categoryLabelKey(category),
+          score: category.averageRating,
+          items: category.items.map((parkItem: ParkRatingRankingItem) => {
+            return {
+              id: parkItem.targetId,
+              name: parkItem.targetName,
+              score: parkItem.averageRating,
+              route: this.itemRoute(item, parkItem)
+            };
+          })
+        };
+      })
+    };
   }
 }

@@ -64,9 +64,7 @@
 }
 
 .profile-rating-stat,
-.profile-rating-chart,
-.profile-rating-row,
-.profile-rating-park {
+.profile-rating-chart {
   border: 1px solid var(--app-border);
   border-radius: var(--app-radius-md);
   background: var(--app-surface);
@@ -79,7 +77,6 @@
 }
 
 .profile-rating-stat span,
-.profile-rating-row span,
 .profile-rating-bar span {
   color: var(--app-text-muted);
   font-size: 0.88rem;
@@ -134,91 +131,6 @@
   background: linear-gradient(90deg, #f7b733, var(--app-primary));
 }
 
-.profile-ratings__list {
-  display: grid;
-  gap: 0.7rem;
-}
-
-.profile-rating-row,
-.profile-rating-park {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.9rem;
-}
-
-.profile-rating-park {
-  display: grid;
-  padding: 0;
-  overflow: hidden;
-}
-
-.profile-rating-park__summary {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.9rem;
-  align-items: center;
-  padding: 0.9rem;
-  cursor: pointer;
-  list-style: none;
-}
-
-.profile-rating-park__summary::-webkit-details-marker {
-  display: none;
-}
-
-.profile-rating-park__main {
-  display: grid;
-  gap: 0.18rem;
-  min-width: 0;
-}
-
-.profile-rating-park__main span {
-  color: var(--app-text-muted);
-  font-size: 0.88rem;
-}
-
-.profile-rating-park__score {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.profile-rating-park__items {
-  display: grid;
-  gap: 0.55rem;
-  padding: 0 0.9rem 0.9rem;
-}
-
-.profile-rating-row__main {
-  display: flex;
-  min-width: 0;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.profile-rating-row__main > div,
-.profile-rating-row__average {
-  display: grid;
-  gap: 0.18rem;
-}
-
-.profile-rating-row__title {
-  min-width: 0;
-  overflow-wrap: anywhere;
-  color: var(--app-heading);
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.profile-rating-row__title:hover,
-.profile-rating-row__title:focus-visible {
-  color: var(--app-primary);
-}
-
-.profile-rating-row__average {
-  text-align: right;
-}
-
 .profile-ratings__more {
   display: flex;
   justify-content: center;
@@ -247,26 +159,5 @@
   .profile-rating-bar__track {
     grid-column: 1 / -1;
     order: 3;
-  }
-
-  .profile-rating-row,
-  .profile-rating-row__main {
-    align-items: flex-start;
-  }
-
-  .profile-rating-row {
-    flex-direction: column;
-  }
-
-  .profile-rating-park__summary {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-rating-park__score {
-    justify-content: flex-start;
-  }
-
-  .profile-rating-row__average {
-    text-align: left;
   }
 }

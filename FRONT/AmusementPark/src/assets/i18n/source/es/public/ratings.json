@@ -14,6 +14,12 @@
       "errorMessage": "No se pudo guardar tu valoración ahora.",
       "savedToast": "Tu nota se ha guardado."
     },
+    "tree": {
+      "detailAction": "Ver detalle",
+      "collapseAction": "Plegar",
+      "openParkAction": "Ver la ficha",
+      "scoreAria": "Valoración {{value}} sobre 5"
+    },
     "profile": {
       "kicker": "Mis valoraciones",
       "title": "Tus notas de visita",

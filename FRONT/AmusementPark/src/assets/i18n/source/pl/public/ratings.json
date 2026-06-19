@@ -14,6 +14,12 @@
       "errorMessage": "Nie można teraz zapisać oceny.",
       "savedToast": "Twoja ocena została zapisana."
     },
+    "tree": {
+      "detailAction": "Zobacz szczegóły",
+      "collapseAction": "Zwiń",
+      "openParkAction": "Zobacz kartę",
+      "scoreAria": "Ocena {{value}} na 5"
+    },
     "profile": {
       "kicker": "Moje oceny",
       "title": "Twoje noty z wizyt",

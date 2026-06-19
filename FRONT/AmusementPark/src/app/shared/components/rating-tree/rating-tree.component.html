@@ -1,0 +1,136 @@
+<div class="rating-tree">
+  @for (park of parks; track park.id) {
+    <details class="rating-tree__park" [class.rating-tree__park--ranked]="park.rank !== null">
+      <summary class="rating-tree__park-summary">
+        @if (park.rank !== null) {
+          <span class="rating-tree__rank">#{{ park.rank }}</span>
+        }
+
+        <span class="rating-tree__park-main">
+          <strong class="rating-tree__title">{{ park.name }}</strong>
+          <span>{{ ratingCountLabelKey | translate:{ count: park.ratingCount } }}</span>
+        </span>
+
+        <span class="rating-tree__summary-actions">
+          <span class="rating-tree__score" [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(park.score) }">
+            <span class="rating-tree__stars" aria-hidden="true">
+              @for (star of starIndexes; track star) {
+                <span class="rating-tree__star" [style.--fill]="fillPercent(park.score, star)">
+                  <i class="pi pi-star rating-tree__star-empty" aria-hidden="true"></i>
+                  <i class="pi pi-star-fill rating-tree__star-filled" aria-hidden="true"></i>
+                </span>
+              }
+            </span>
+            <strong>{{ formatRating(park.score) }}</strong>
+          </span>
+
+          <span class="rating-tree__toggle" aria-hidden="true">
+            <span class="rating-tree__toggle-closed">
+              <i class="pi pi-chevron-down" aria-hidden="true"></i>
+              {{ detailActionKey | translate }}
+            </span>
+            <span class="rating-tree__toggle-open">
+              <i class="pi pi-chevron-up" aria-hidden="true"></i>
+              {{ collapseActionKey | translate }}
+            </span>
+          </span>
+        </span>
+      </summary>
+
+      <div class="rating-tree__park-content">
+        @if (park.metrics.length > 0) {
+          <div class="rating-tree__metrics">
+            @for (metric of park.metrics; track metric.labelKey) {
+              <span>{{ metric.labelKey | translate }} : {{ formatRating(metric.value) }}</span>
+            }
+          </div>
+        }
+
+        @if (park.route; as route) {
+          <a class="rating-tree__park-link" [routerLink]="route">
+            {{ openParkActionKey | translate }}
+          </a>
+        }
+
+        @for (section of park.sections; track section.id) {
+          <details class="rating-tree__section">
+            <summary class="rating-tree__section-summary">
+              <span class="rating-tree__section-title">{{ section.titleKey | translate }}</span>
+              <span class="rating-tree__score rating-tree__score--compact" [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(section.score) }">
+                <span class="rating-tree__stars" aria-hidden="true">
+                  @for (star of starIndexes; track star) {
+                    <span class="rating-tree__star" [style.--fill]="fillPercent(section.score, star)">
+                      <i class="pi pi-star rating-tree__star-empty" aria-hidden="true"></i>
+                      <i class="pi pi-star-fill rating-tree__star-filled" aria-hidden="true"></i>
+                    </span>
+                  }
+                </span>
+                <strong>{{ formatRating(section.score) }}</strong>
+              </span>
+              <span class="rating-tree__toggle rating-tree__toggle--compact" aria-hidden="true">
+                <span class="rating-tree__toggle-closed">
+                  <i class="pi pi-chevron-down" aria-hidden="true"></i>
+                  {{ detailActionKey | translate }}
+                </span>
+                <span class="rating-tree__toggle-open">
+                  <i class="pi pi-chevron-up" aria-hidden="true"></i>
+                  {{ collapseActionKey | translate }}
+                </span>
+              </span>
+            </summary>
+
+            <div class="rating-tree__items">
+              @for (item of section.items; track item.id) {
+                @if (item.route; as route) {
+                  <a class="rating-tree__item" [routerLink]="route">
+                    <span class="rating-tree__item-main">
+                      <span class="rating-tree__item-name">{{ item.name }}</span>
+                      @if (item.secondaryLabelKey && item.secondaryScore !== null && item.secondaryScore !== undefined) {
+                        <span class="rating-tree__item-secondary">
+                          {{ item.secondaryLabelKey | translate }} : {{ formatRating(item.secondaryScore) }}
+                        </span>
+                      }
+                    </span>
+                    <span class="rating-tree__score rating-tree__score--compact" [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(item.score) }">
+                      <span class="rating-tree__stars" aria-hidden="true">
+                        @for (star of starIndexes; track star) {
+                          <span class="rating-tree__star" [style.--fill]="fillPercent(item.score, star)">
+                            <i class="pi pi-star rating-tree__star-empty" aria-hidden="true"></i>
+                            <i class="pi pi-star-fill rating-tree__star-filled" aria-hidden="true"></i>
+                          </span>
+                        }
+                      </span>
+                      <strong>{{ formatRating(item.score) }}</strong>
+                    </span>
+                  </a>
+                } @else {
+                  <div class="rating-tree__item">
+                    <span class="rating-tree__item-main">
+                      <span class="rating-tree__item-name">{{ item.name }}</span>
+                      @if (item.secondaryLabelKey && item.secondaryScore !== null && item.secondaryScore !== undefined) {
+                        <span class="rating-tree__item-secondary">
+                          {{ item.secondaryLabelKey | translate }} : {{ formatRating(item.secondaryScore) }}
+                        </span>
+                      }
+                    </span>
+                    <span class="rating-tree__score rating-tree__score--compact" [attr.aria-label]="'ratings.tree.scoreAria' | translate:{ value: formatRating(item.score) }">
+                      <span class="rating-tree__stars" aria-hidden="true">
+                        @for (star of starIndexes; track star) {
+                          <span class="rating-tree__star" [style.--fill]="fillPercent(item.score, star)">
+                            <i class="pi pi-star rating-tree__star-empty" aria-hidden="true"></i>
+                            <i class="pi pi-star-fill rating-tree__star-filled" aria-hidden="true"></i>
+                          </span>
+                        }
+                      </span>
+                      <strong>{{ formatRating(item.score) }}</strong>
+                    </span>
+                  </div>
+                }
+              }
+            </div>
+          </details>
+        }
+      </div>
+    </details>
+  }
+</div>
