@@ -1710,6 +1710,10 @@
           "title": "Attraktionen und Orte erkunden",
           "text": "Wenn Daten vorhanden sind, kannst du Attraktionen, Restaurants, Shops, Shows und weitere Orte ansehen."
         },
+        "ratings": {
+          "title": "Bewertungen und Ranglisten ansehen",
+          "text": "Sterne zeigen schnell, wie Besucher einen Ort einschätzen. Melde dich an, um selbst zu bewerten, deine Auswahl im Konto wiederzufinden und Ranglisten zu entdecken."
+        },
         "images": {
           "title": "Den Park in Bildern entdecken",
           "text": "Bilder vermitteln die Stimmung eines Parks, Bereichs oder einer Attraktion."
@@ -1882,7 +1886,7 @@
       "parks": "Park"
     },
     "heroBadge": "Ideen für Parks und Attraktionen",
-    "heroSubtitle": "Entdecke Parks, Attraktionen, Restaurants und Hotels, um deinen nächsten Ausflug einfacher zu planen.",
+    "heroSubtitle": "Entdecke Parks, Attraktionen, Restaurants und Hotels, sieh dir Besucherbewertungen an und plane deinen nächsten Ausflug einfacher.",
     "ctaBrowseParks": "Parks entdecken",
     "ctaLearnMore": "So funktioniert es",
     "featured": {

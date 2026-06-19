@@ -1710,6 +1710,10 @@
           "title": "Explore park attractions and places",
           "text": "When data is available, you can browse attractions, restaurants, shops, shows or other points of interest linked to the park."
         },
+        "ratings": {
+          "title": "Check ratings and rankings",
+          "text": "Stars give a quick view of visitor opinions. Sign in to add your own rating, then find your choices in your account and rankings."
+        },
         "images": {
           "title": "Discover the park through images",
           "text": "Images help you feel the atmosphere of a park, area or attraction, turning a simple description into a more visual discovery."
@@ -1882,7 +1886,7 @@
       "parks": "Park"
     },
     "heroBadge": "Ideas for parks and thrills",
-    "heroSubtitle": "Explore parks, attractions, restaurants and hotels to plan your next outing more easily.",
+    "heroSubtitle": "Explore parks, attractions, restaurants and hotels, check visitor ratings and plan your next outing more easily.",
     "ctaBrowseParks": "Explore parks",
     "ctaLearnMore": "How it works",
     "featured": {

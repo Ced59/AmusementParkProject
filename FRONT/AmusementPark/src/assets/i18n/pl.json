@@ -1710,6 +1710,10 @@
           "title": "Poznaj atrakcje i miejsca",
           "text": "Gdy dane są dostępne, sprawdzisz atrakcje, restauracje, sklepy, pokazy i inne miejsca."
         },
+        "ratings": {
+          "title": "Sprawdzaj oceny i rankingi",
+          "text": "Gwiazdki szybko pokazują opinie odwiedzających. Zaloguj się, aby dodać własną ocenę, wrócić do swoich wyborów na koncie i odkrywać rankingi."
+        },
         "images": {
           "title": "Odkryj park na zdjęciach",
           "text": "Zdjęcia pomagają poczuć klimat parku, strefy lub atrakcji."
@@ -1882,7 +1886,7 @@
       "parks": "Park"
     },
     "heroBadge": "Pomysły na parki i atrakcje",
-    "heroSubtitle": "Przeglądaj parki, atrakcje, restauracje i hotele, aby łatwiej zaplanować następną wycieczkę.",
+    "heroSubtitle": "Odkrywaj parki, atrakcje, restauracje i hotele, sprawdzaj oceny odwiedzających i łatwiej planuj kolejne wyjście.",
     "ctaBrowseParks": "Odkrywaj parki",
     "ctaLearnMore": "Jak to działa",
     "featured": {

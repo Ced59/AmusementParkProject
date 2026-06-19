@@ -61,6 +61,10 @@
           "title": "Explorar atrações e locais",
           "text": "Quando há dados, pode consultar atrações, restaurantes, lojas, espetáculos e pontos de interesse."
         },
+        "ratings": {
+          "title": "Consultar avaliações e rankings",
+          "text": "As estrelas mostram rapidamente a opinião dos visitantes. Inicie sessão para adicionar a sua avaliação, encontrar as suas escolhas na conta e explorar rankings."
+        },
         "images": {
           "title": "Descobrir o parque em imagens",
           "text": "As imagens ajudam a sentir o ambiente de um parque, zona ou atração."
