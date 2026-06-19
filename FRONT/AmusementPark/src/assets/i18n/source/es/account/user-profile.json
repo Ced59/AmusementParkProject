@@ -36,6 +36,11 @@
     "detailsSubtitle": "Mantén tu información lista para futuras funciones personalizadas.",
     "identityRequired": "Nombre y apellido son obligatorios.",
     "updateSuccess": "Perfil actualizado correctamente.",
-    "updateError": "No se pudo actualizar el perfil."
+    "updateError": "No se pudo actualizar el perfil.",
+    "tabs": {
+      "label": "Secciones del perfil",
+      "profile": "Perfil",
+      "ratings": "Valoraciones"
+    }
   }
 }

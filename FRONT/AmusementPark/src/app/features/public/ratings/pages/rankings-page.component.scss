@@ -1,0 +1,122 @@
+:host {
+  display: block;
+}
+
+.rankings-page {
+  display: grid;
+  gap: 1.25rem;
+  width: min(100% - 2.5rem, var(--content-wide-max-width, 1320px));
+  margin: 0 auto;
+  padding: 1.8rem 0 4rem;
+}
+
+.rankings-hero {
+  display: grid;
+  gap: 1rem;
+}
+
+.rankings-hero__note {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
+  color: var(--app-text-muted);
+  font-weight: 700;
+}
+
+.rankings-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.rankings-filters__button--active {
+  border-color: var(--app-primary);
+  color: var(--app-primary);
+}
+
+.rankings-empty,
+.ranking-row {
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
+}
+
+.rankings-empty {
+  display: grid;
+  min-height: 12rem;
+  place-items: center;
+  color: var(--app-text-muted);
+}
+
+.rankings-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ranking-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.95rem;
+}
+
+.ranking-row__rank {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: var(--app-radius-sm);
+  background: color-mix(in srgb, #f7b733 18%, var(--app-surface-2));
+  color: var(--app-heading);
+  font-weight: 900;
+}
+
+.ranking-row__main,
+.ranking-row__score {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.ranking-row__title {
+  color: var(--app-heading);
+  font-size: 1.05rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.ranking-row__title:hover,
+.ranking-row__title:focus-visible {
+  color: var(--app-primary);
+}
+
+.ranking-row__main span,
+.ranking-row__score span {
+  color: var(--app-text-muted);
+  font-size: 0.88rem;
+}
+
+.ranking-row__score {
+  text-align: right;
+}
+
+.ranking-row__score strong {
+  color: var(--app-heading);
+  font-size: 1.3rem;
+}
+
+@media (max-width: 760px) {
+  .ranking-row {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .ranking-row__score {
+    text-align: left;
+  }
+}

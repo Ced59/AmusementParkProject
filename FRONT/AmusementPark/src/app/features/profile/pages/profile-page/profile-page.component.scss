@@ -26,3 +26,46 @@
   background: var(--app-surface);
   border-color: var(--app-primary);
 }
+
+.profile-tabs {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface-2);
+}
+
+.profile-tabs__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.55rem;
+  padding: 0 0.9rem;
+  border: 1px solid transparent;
+  border-radius: var(--app-radius-sm);
+  background: transparent;
+  color: var(--app-text-muted);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.profile-tabs__button--active {
+  border-color: var(--app-border);
+  background: var(--app-surface);
+  color: var(--app-heading);
+}
+
+@media (max-width: 520px) {
+  .profile-tabs {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-tabs__button {
+    justify-content: center;
+  }
+}

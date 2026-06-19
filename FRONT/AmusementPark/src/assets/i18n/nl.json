@@ -44,7 +44,12 @@
     "detailsSubtitle": "Houd je gegevens klaar voor toekomstige gepersonaliseerde functies.",
     "identityRequired": "Voornaam en achternaam zijn verplicht.",
     "updateSuccess": "Profiel succesvol bijgewerkt.",
-    "updateError": "Profiel bijwerken mislukt."
+    "updateError": "Profiel bijwerken mislukt.",
+    "tabs": {
+      "label": "Profielonderdelen",
+      "profile": "Profiel",
+      "ratings": "Beoordelingen"
+    }
   },
   "admin": {
     "auditLogs": {
@@ -1505,6 +1510,7 @@
     "logo_text": "Menu",
     "home": "Start",
     "parks": "Parken",
+    "rankings": "Ranglijsten",
     "about": "Over",
     "profile": "Profiel",
     "admin": "Beheer"
@@ -1704,6 +1710,10 @@
           "title": "Verken attracties en plaatsen",
           "text": "Waar data beschikbaar is, bekijk je attracties, restaurants, winkels, shows en andere plekken."
         },
+        "ratings": {
+          "title": "Beoordelingen en ranglijsten bekijken",
+          "text": "Sterren tonen snel wat bezoekers van een plek vinden. Meld je aan om zelf te beoordelen, je keuzes in je account terug te vinden en ranglijsten te bekijken."
+        },
         "images": {
           "title": "Ontdek het park in beelden",
           "text": "Beelden helpen de sfeer van een park, gebied of attractie te voelen."
@@ -1876,7 +1886,7 @@
       "parks": "Park"
     },
     "heroBadge": "Ideeën voor parken en sensaties",
-    "heroSubtitle": "Ontdek parken, attracties, restaurants en hotels om je volgende uitstap makkelijker te plannen.",
+    "heroSubtitle": "Verken parken, attracties, restaurants en hotels, bekijk bezoekersbeoordelingen en plan je volgende uitstap makkelijker.",
     "ctaBrowseParks": "Parken verkennen",
     "ctaLearnMore": "Hoe het werkt",
     "featured": {
@@ -2655,6 +2665,69 @@
     },
     "lastUpdate": "Laatst bijgewerkt: 23 mei 2026.",
     "backHome": "Terug naar home"
+  },
+  "ratings": {
+    "stars": {
+      "averageAria": "Gemiddelde beoordeling {{value}} van 5 uit {{count}} beoordeling(en).",
+      "averageLabel": "Gemiddelde",
+      "count": "{{count}} beoordeling(en)",
+      "noRatings": "Nog geen beoordeling",
+      "chooseLabel": "Kies een beoordeling",
+      "rateValue": "Beoordeel {{value}} van 5",
+      "yourRating": "Jouw beoordeling: {{value}}/5",
+      "prompt": "Kies je beoordeling",
+      "signInMessage": "Log in om je beoordeling te geven.",
+      "savedMessage": "Bedankt, je beoordeling is opgeslagen.",
+      "errorMessage": "Je beoordeling kan nu niet worden opgeslagen."
+    },
+    "profile": {
+      "kicker": "Mijn beoordelingen",
+      "title": "Jouw bezoeknotities",
+      "subtitle": "Bekijk de plekken die je beoordeelde en de parken die voor jou het best scoren.",
+      "loading": "Je beoordelingen worden geladen...",
+      "emptyTitle": "Nog geen beoordeling",
+      "emptyText": "Beoordeel een park of plek om je persoonlijke overzicht te starten.",
+      "stats": {
+        "total": "Beoordelingen",
+        "average": "Jouw gemiddelde",
+        "best": "Beste score",
+        "range": "Bereik"
+      },
+      "byPark": "Per park",
+      "byKind": "Per type",
+      "unknownPark": "Gekoppeld park",
+      "communityAverage": "Gemiddelde"
+    },
+    "rankings": {
+      "kicker": "Bezoekersfavorieten",
+      "title": "Ranglijsten",
+      "subtitle": "Ontdek parken en plekken die bezoekers blijvend waarderen.",
+      "reliableHint": "De volgorde geeft voorrang aan plekken die lang goed beoordeeld blijven.",
+      "loading": "Ranglijsten worden geladen...",
+      "empty": "Er is nog geen ranglijst beschikbaar.",
+      "parkFallback": "Park",
+      "ratingCount": "{{count}} beoordeling(en)",
+      "reliableBadge": "Betrouwbaar",
+      "filters": {
+        "label": "Ranglijsten filteren",
+        "all": "Alles",
+        "parks": "Parken",
+        "attractions": "Attracties",
+        "restaurants": "Restaurants",
+        "hotels": "Hotels",
+        "services": "Services"
+      }
+    },
+    "targetTypes": {
+      "Park": "Parken",
+      "ParkItem": "Plekken"
+    },
+    "categories": {
+      "Attraction": "Attracties",
+      "Restaurant": "Restaurants",
+      "Hotel": "Hotels",
+      "Service": "Services"
+    }
   },
   "shareSocial": {
     "defaultTitle": "Deze pagina delen",

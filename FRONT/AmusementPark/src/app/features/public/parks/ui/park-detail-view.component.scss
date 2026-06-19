@@ -134,6 +134,11 @@
   line-height: 1.78;
 }
 
+.park-banner__rating {
+  display: block;
+  max-width: min(100%, 32rem);
+}
+
 .park-detail__body {
   width: min(100% - 2.5rem, var(--park-detail-content-max-width));
   margin: 0 auto;

@@ -44,7 +44,12 @@
     "detailsSubtitle": "Garde tes informations personnelles prêtes pour les futures fonctionnalités personnalisées.",
     "identityRequired": "Le prénom et le nom sont requis.",
     "updateSuccess": "Profil mis à jour avec succès.",
-    "updateError": "La mise à jour du profil a échoué."
+    "updateError": "La mise à jour du profil a échoué.",
+    "tabs": {
+      "label": "Rubriques du profil",
+      "profile": "Profil",
+      "ratings": "Notes"
+    }
   },
   "admin": {
     "auditLogs": {
@@ -1505,6 +1510,7 @@
     "logo_text": "Menu",
     "home": "Accueil",
     "parks": "Parcs",
+    "rankings": "Classements",
     "about": "À propos",
     "profile": "Profil",
     "admin": "Admin"
@@ -1704,6 +1710,10 @@
           "title": "Explorer les attractions et lieux du parc",
           "text": "Quand les données sont disponibles, vous pouvez consulter les attractions, restaurants, boutiques, spectacles ou autres points d’intérêt liés au parc."
         },
+        "ratings": {
+          "title": "Consulter les notes et classements",
+          "text": "Les étoiles donnent un aperçu des avis laissés par les visiteurs. En te connectant, tu peux ajouter ta note, retrouver tes choix dans ton compte et explorer les classements."
+        },
         "images": {
           "title": "Découvrir le parc en images",
           "text": "Les images permettent de mieux ressentir l’ambiance d’un parc, d’une zone ou d’une attraction. Elles aident à passer d’une simple fiche descriptive à une découverte plus visuelle."
@@ -1876,7 +1886,7 @@
       "parks": "Parc"
     },
     "heroBadge": "Idées de sorties et sensations",
-    "heroSubtitle": "Explore les parcs, attractions, restaurants et hôtels disponibles pour préparer plus facilement ta prochaine sortie.",
+    "heroSubtitle": "Explore les parcs, attractions, restaurants et hôtels, consulte les notes des visiteurs et prépare plus facilement ta prochaine sortie.",
     "ctaBrowseParks": "Explorer les parcs",
     "ctaLearnMore": "Comment ça marche",
     "featured": {
@@ -2655,6 +2665,69 @@
     },
     "lastUpdate": "Dernière mise à jour : 23 mai 2026.",
     "backHome": "Retour à l’accueil"
+  },
+  "ratings": {
+    "stars": {
+      "averageAria": "Note moyenne {{value}} sur 5 avec {{count}} note(s).",
+      "averageLabel": "Note moyenne",
+      "count": "{{count}} note(s)",
+      "noRatings": "Aucune note",
+      "chooseLabel": "Choisir une note",
+      "rateValue": "Noter {{value}} sur 5",
+      "yourRating": "Votre note : {{value}}/5",
+      "prompt": "Choisis ta note",
+      "signInMessage": "Connecte-toi pour laisser ta note.",
+      "savedMessage": "Merci, ta note est prise en compte.",
+      "errorMessage": "Ta note ne peut pas être enregistrée pour le moment."
+    },
+    "profile": {
+      "kicker": "Mes notes",
+      "title": "Tes notes de visite",
+      "subtitle": "Retrouve les lieux que tu as notés et les parcs qui ressortent le mieux dans tes choix.",
+      "loading": "Chargement de tes notes...",
+      "emptyTitle": "Aucune note pour l'instant",
+      "emptyText": "Note un parc ou un lieu pour commencer à construire ta sélection personnelle.",
+      "stats": {
+        "total": "Notes",
+        "average": "Ta moyenne",
+        "best": "Meilleure note",
+        "range": "Écart"
+      },
+      "byPark": "Par parc",
+      "byKind": "Par type",
+      "unknownPark": "Parc associé",
+      "communityAverage": "Note moyenne"
+    },
+    "rankings": {
+      "kicker": "Coups de coeur visiteurs",
+      "title": "Classements",
+      "subtitle": "Découvre les parcs et lieux qui plaisent le plus régulièrement aux visiteurs.",
+      "reliableHint": "L'ordre privilégie les lieux qui restent bien notés dans la durée.",
+      "loading": "Chargement du classement...",
+      "empty": "Aucun classement n'est disponible pour le moment.",
+      "parkFallback": "Parc",
+      "ratingCount": "{{count}} note(s)",
+      "reliableBadge": "Fiable",
+      "filters": {
+        "label": "Filtrer les classements",
+        "all": "Tous",
+        "parks": "Parcs",
+        "attractions": "Attractions",
+        "restaurants": "Restaurants",
+        "hotels": "Hôtels",
+        "services": "Services"
+      }
+    },
+    "targetTypes": {
+      "Park": "Parcs",
+      "ParkItem": "Lieux"
+    },
+    "categories": {
+      "Attraction": "Attractions",
+      "Restaurant": "Restaurants",
+      "Hotel": "Hôtels",
+      "Service": "Services"
+    }
   },
   "shareSocial": {
     "defaultTitle": "Partager cette page",

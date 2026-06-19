@@ -36,6 +36,11 @@
     "detailsSubtitle": "Garde tes informations personnelles prêtes pour les futures fonctionnalités personnalisées.",
     "identityRequired": "Le prénom et le nom sont requis.",
     "updateSuccess": "Profil mis à jour avec succès.",
-    "updateError": "La mise à jour du profil a échoué."
+    "updateError": "La mise à jour du profil a échoué.",
+    "tabs": {
+      "label": "Rubriques du profil",
+      "profile": "Profil",
+      "ratings": "Notes"
+    }
   }
 }

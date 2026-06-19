@@ -44,7 +44,12 @@
     "detailsSubtitle": "Utrzymuj dane gotowe na przyszłe funkcje personalizowane.",
     "identityRequired": "Imię i nazwisko są wymagane.",
     "updateSuccess": "Profil zaktualizowany pomyślnie.",
-    "updateError": "Aktualizacja profilu nie powiodła się."
+    "updateError": "Aktualizacja profilu nie powiodła się.",
+    "tabs": {
+      "label": "Sekcje profilu",
+      "profile": "Profil",
+      "ratings": "Oceny"
+    }
   },
   "admin": {
     "auditLogs": {
@@ -1505,6 +1510,7 @@
     "logo_text": "Menu",
     "home": "Strona główna",
     "parks": "Parki",
+    "rankings": "Rankingi",
     "about": "O nas",
     "profile": "Profil",
     "admin": "Administracja"
@@ -1704,6 +1710,10 @@
           "title": "Poznaj atrakcje i miejsca",
           "text": "Gdy dane są dostępne, sprawdzisz atrakcje, restauracje, sklepy, pokazy i inne miejsca."
         },
+        "ratings": {
+          "title": "Sprawdzaj oceny i rankingi",
+          "text": "Gwiazdki szybko pokazują opinie odwiedzających. Zaloguj się, aby dodać własną ocenę, wrócić do swoich wyborów na koncie i odkrywać rankingi."
+        },
         "images": {
           "title": "Odkryj park na zdjęciach",
           "text": "Zdjęcia pomagają poczuć klimat parku, strefy lub atrakcji."
@@ -1876,7 +1886,7 @@
       "parks": "Park"
     },
     "heroBadge": "Pomysły na parki i atrakcje",
-    "heroSubtitle": "Przeglądaj parki, atrakcje, restauracje i hotele, aby łatwiej zaplanować następną wycieczkę.",
+    "heroSubtitle": "Odkrywaj parki, atrakcje, restauracje i hotele, sprawdzaj oceny odwiedzających i łatwiej planuj kolejne wyjście.",
     "ctaBrowseParks": "Odkrywaj parki",
     "ctaLearnMore": "Jak to działa",
     "featured": {
@@ -2655,6 +2665,69 @@
     },
     "lastUpdate": "Ostatnia aktualizacja: 23 maja 2026 r.",
     "backHome": "Wróć do strony głównej"
+  },
+  "ratings": {
+    "stars": {
+      "averageAria": "Średnia ocena {{value}} z 5 na podstawie {{count}} ocen(y).",
+      "averageLabel": "Średnia ocena",
+      "count": "{{count}} ocen(y)",
+      "noRatings": "Brak ocen",
+      "chooseLabel": "Wybierz ocenę",
+      "rateValue": "Oceń {{value}} z 5",
+      "yourRating": "Twoja ocena: {{value}}/5",
+      "prompt": "Wybierz swoją ocenę",
+      "signInMessage": "Zaloguj się, aby dodać ocenę.",
+      "savedMessage": "Dziękujemy, ocena została zapisana.",
+      "errorMessage": "Nie można teraz zapisać oceny."
+    },
+    "profile": {
+      "kicker": "Moje oceny",
+      "title": "Twoje noty z wizyt",
+      "subtitle": "Zobacz ocenione miejsca i parki, które najlepiej wypadają w twoich wyborach.",
+      "loading": "Ładowanie ocen...",
+      "emptyTitle": "Brak ocen",
+      "emptyText": "Oceń park lub miejsce, aby rozpocząć osobisty widok.",
+      "stats": {
+        "total": "Oceny",
+        "average": "Twoja średnia",
+        "best": "Najlepsza ocena",
+        "range": "Zakres"
+      },
+      "byPark": "Według parku",
+      "byKind": "Według typu",
+      "unknownPark": "Powiązany park",
+      "communityAverage": "Średnia ocena"
+    },
+    "rankings": {
+      "kicker": "Ulubione odwiedzających",
+      "title": "Rankingi",
+      "subtitle": "Odkryj parki i miejsca stale doceniane przez odwiedzających.",
+      "reliableHint": "Kolejność wyróżnia miejsca, które długo pozostają dobrze oceniane.",
+      "loading": "Ładowanie rankingów...",
+      "empty": "Ranking nie jest jeszcze dostępny.",
+      "parkFallback": "Park",
+      "ratingCount": "{{count}} ocen(y)",
+      "reliableBadge": "Pewne",
+      "filters": {
+        "label": "Filtruj rankingi",
+        "all": "Wszystko",
+        "parks": "Parki",
+        "attractions": "Atrakcje",
+        "restaurants": "Restauracje",
+        "hotels": "Hotele",
+        "services": "Usługi"
+      }
+    },
+    "targetTypes": {
+      "Park": "Parki",
+      "ParkItem": "Miejsca"
+    },
+    "categories": {
+      "Attraction": "Atrakcje",
+      "Restaurant": "Restauracje",
+      "Hotel": "Hotele",
+      "Service": "Usługi"
+    }
   },
   "shareSocial": {
     "defaultTitle": "Udostępnij tę stronę",

@@ -119,6 +119,7 @@ export const routes: Routes = [
         children: [
           { path: 'home', loadComponent: () => import('@features/public/home/pages/home.component').then((m) => m.HomeComponent) },
           { path: 'parks', loadComponent: () => import('./features/public/parks/pages/park-list-page.component').then((m) => m.ParkListPageComponent) },
+          { path: 'rankings', loadComponent: () => import('@features/public/ratings/pages/rankings-page.component').then((m) => m.RankingsPageComponent) },
           { path: 'about', loadComponent: () => import('@features/public/about/pages/about.component').then((m) => m.AboutComponent) },
           { path: 'contact', loadComponent: () => import('@features/public/contact/pages/contact-page.component').then((m) => m.ContactPageComponent) },
           { path: 'versions', loadComponent: () => import('@features/public/version-history/pages/version-history-page.component').then((m) => m.VersionHistoryPageComponent) },

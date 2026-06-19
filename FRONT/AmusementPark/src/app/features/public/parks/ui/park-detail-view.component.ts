@@ -14,6 +14,7 @@ import { ParkContentSummaryComponent } from './park-content-summary.component';
 import { ParkLocationSectionComponent } from './park-location-section.component';
 import { ParkNearbySectionComponent } from './park-nearby-section.component';
 import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
+import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.component';
 
 @Component({
   selector: 'app-park-detail-view',
@@ -34,7 +35,8 @@ import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public
     UiChipComponent,
     UiKickerComponent,
     UiStatCardComponent,
-    PublicSharePanelComponent
+    PublicSharePanelComponent,
+    RatingStarsComponent
   ]
 })
 export class ParkDetailViewComponent {

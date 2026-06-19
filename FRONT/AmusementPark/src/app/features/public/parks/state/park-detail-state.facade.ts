@@ -51,7 +51,10 @@ export class ParkDetailStateFacade {
           totalItems: currentSummary.stats?.totalItems ?? null,
           zoneCount: currentSummary.stats?.zoneCount ?? null
         },
-        currentSummary.mainImage ? [currentSummary.mainImage] : []
+        currentSummary.mainImage ? [currentSummary.mainImage] : [],
+        [],
+        [],
+        currentSummary.rating ?? null
       );
     });
   });

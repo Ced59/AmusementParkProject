@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { UserDto } from '@app/models/users/user_dto';
@@ -12,6 +12,7 @@ import { OwnerImageUploadDialogComponent } from '@shared/components/owner-image-
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { UiButtonDirective, UiChipComponent, UiKickerComponent, UiSectionHeaderComponent, UiSurfaceDirective } from '@ui/primitives';
 import { UiFieldInputComponent } from '@ui/forms';
+import { ProfileRatingsPanelComponent } from '@features/profile/ratings/profile-ratings-panel.component';
 
 @Component({
   selector: 'app-profile-page-view',
@@ -28,10 +29,13 @@ import { UiFieldInputComponent } from '@ui/forms';
     UiFieldInputComponent,
     UiKickerComponent,
     UiSectionHeaderComponent,
-    UiSurfaceDirective
+    UiSurfaceDirective,
+    ProfileRatingsPanelComponent
   ]
 })
 export class ProfilePageViewComponent {
+  protected readonly activeTab = signal<'profile' | 'ratings'>('profile');
+
   @Input() state!: Signal<ScreenState<unknown, string>>;
   @Input() user!: Signal<UserDto | null>;
   @Input() displayAvatarUploadDialog: boolean = false;
@@ -86,5 +90,9 @@ export class ProfilePageViewComponent {
 
   onAvatarUploaded(image: ImageDto): void {
     this.avatarUploaded.emit(image);
+  }
+
+  selectTab(tab: 'profile' | 'ratings'): void {
+    this.activeTab.set(tab);
   }
 }

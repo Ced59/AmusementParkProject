@@ -40,6 +40,28 @@
         </div>
       </article>
 
+      <nav class="profile-tabs" [attr.aria-label]="'user-profile.tabs.label' | translate">
+        <button
+          type="button"
+          class="profile-tabs__button"
+          [class.profile-tabs__button--active]="activeTab() === 'profile'"
+          [attr.aria-pressed]="activeTab() === 'profile'"
+          (click)="selectTab('profile')">
+          <i class="pi pi-id-card" aria-hidden="true"></i>
+          <span>{{ 'user-profile.tabs.profile' | translate }}</span>
+        </button>
+        <button
+          type="button"
+          class="profile-tabs__button"
+          [class.profile-tabs__button--active]="activeTab() === 'ratings'"
+          [attr.aria-pressed]="activeTab() === 'ratings'"
+          (click)="selectTab('ratings')">
+          <i class="pi pi-star" aria-hidden="true"></i>
+          <span>{{ 'user-profile.tabs.ratings' | translate }}</span>
+        </button>
+      </nav>
+
+      @if (activeTab() === 'profile') {
       <article class="profile-panel" appUiSurface="panel" appUiSurfacePadding="spacious">
         <app-ui-section-header
           kickerTone="sky"
@@ -146,6 +168,11 @@
           </button>
         </div>
       </article>
+      } @else {
+        <article class="profile-panel" appUiSurface="panel" appUiSurfacePadding="spacious">
+          <app-profile-ratings-panel></app-profile-ratings-panel>
+        </article>
+      }
     </section>
   }
 </app-page-state>

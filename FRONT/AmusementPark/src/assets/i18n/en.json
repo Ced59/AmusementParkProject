@@ -44,7 +44,12 @@
     "detailsSubtitle": "Keep your personal information ready for future personalized features.",
     "identityRequired": "First name and last name are required.",
     "updateSuccess": "Profile updated successfully.",
-    "updateError": "Profile update failed."
+    "updateError": "Profile update failed.",
+    "tabs": {
+      "label": "Profile sections",
+      "profile": "Profile",
+      "ratings": "Ratings"
+    }
   },
   "admin": {
     "auditLogs": {
@@ -1505,6 +1510,7 @@
     "logo_text": "Menu",
     "home": "Home",
     "parks": "Parks",
+    "rankings": "Rankings",
     "about": "About",
     "profile": "Profile",
     "admin": "Admin"
@@ -1704,6 +1710,10 @@
           "title": "Explore park attractions and places",
           "text": "When data is available, you can browse attractions, restaurants, shops, shows or other points of interest linked to the park."
         },
+        "ratings": {
+          "title": "Check ratings and rankings",
+          "text": "Stars give a quick view of visitor opinions. Sign in to add your own rating, then find your choices in your account and rankings."
+        },
         "images": {
           "title": "Discover the park through images",
           "text": "Images help you feel the atmosphere of a park, area or attraction, turning a simple description into a more visual discovery."
@@ -1876,7 +1886,7 @@
       "parks": "Park"
     },
     "heroBadge": "Ideas for parks and thrills",
-    "heroSubtitle": "Explore parks, attractions, restaurants and hotels to plan your next outing more easily.",
+    "heroSubtitle": "Explore parks, attractions, restaurants and hotels, check visitor ratings and plan your next outing more easily.",
     "ctaBrowseParks": "Explore parks",
     "ctaLearnMore": "How it works",
     "featured": {
@@ -2655,6 +2665,69 @@
     },
     "lastUpdate": "Last updated: 23 May 2026.",
     "backHome": "Back home"
+  },
+  "ratings": {
+    "stars": {
+      "averageAria": "Average rating {{value}} out of 5 from {{count}} rating(s).",
+      "averageLabel": "Average rating",
+      "count": "{{count}} rating(s)",
+      "noRatings": "No rating yet",
+      "chooseLabel": "Choose a rating",
+      "rateValue": "Rate {{value}} out of 5",
+      "yourRating": "Your rating: {{value}}/5",
+      "prompt": "Choose your rating",
+      "signInMessage": "Sign in to leave your rating.",
+      "savedMessage": "Thanks, your rating has been saved.",
+      "errorMessage": "Your rating could not be saved right now."
+    },
+    "profile": {
+      "kicker": "My ratings",
+      "title": "Your park notes",
+      "subtitle": "Find the places you rated and the parks you tend to enjoy most.",
+      "loading": "Loading your ratings...",
+      "emptyTitle": "No rating yet",
+      "emptyText": "Rate a park or a place to start building your personal view.",
+      "stats": {
+        "total": "Ratings",
+        "average": "Your average",
+        "best": "Best rating",
+        "range": "Range"
+      },
+      "byPark": "By park",
+      "byKind": "By type",
+      "unknownPark": "Linked park",
+      "communityAverage": "Average rating"
+    },
+    "rankings": {
+      "kicker": "Community favorites",
+      "title": "Rankings",
+      "subtitle": "Discover the parks and places most consistently appreciated by visitors.",
+      "reliableHint": "The order favors places that stay well rated over time.",
+      "loading": "Loading rankings...",
+      "empty": "No ranking is available yet.",
+      "parkFallback": "Park",
+      "ratingCount": "{{count}} rating(s)",
+      "reliableBadge": "Reliable",
+      "filters": {
+        "label": "Filter rankings",
+        "all": "All",
+        "parks": "Parks",
+        "attractions": "Attractions",
+        "restaurants": "Restaurants",
+        "hotels": "Hotels",
+        "services": "Services"
+      }
+    },
+    "targetTypes": {
+      "Park": "Parks",
+      "ParkItem": "Places"
+    },
+    "categories": {
+      "Attraction": "Attractions",
+      "Restaurant": "Restaurants",
+      "Hotel": "Hotels",
+      "Service": "Services"
+    }
   },
   "shareSocial": {
     "defaultTitle": "Share this page",

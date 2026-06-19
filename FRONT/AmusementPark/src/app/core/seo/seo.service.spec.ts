@@ -74,6 +74,15 @@ describe('SeoService', () => {
       .toBe('Browse attractions, shows, restaurants, shops and practical places at Demo Park.');
   });
 
+  it('applies indexable localized metadata to the public rankings page', () => {
+    service.applyRouteDefaults('/fr/rankings');
+
+    expect(documentRef.title).toBe('Classements — Amusement Parks');
+    expect(readMetaContent('meta[name="description"]'))
+      .toBe('Découvrez les parcs, attractions, restaurants, hôtels et services les plus régulièrement appréciés des visiteurs.');
+    expect(readMetaContent('meta[name="robots"]')).toBe('index,follow');
+  });
+
   function readMetaContent(selector: string): string | null {
     return documentRef.head.querySelector<HTMLMetaElement>(selector)?.content ?? null;
   }

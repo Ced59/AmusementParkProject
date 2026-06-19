@@ -67,6 +67,15 @@
             @if (currentPark.description) {
               <p class="park-banner__lead">{{ 'parks.detail.heroDescription' | translate }}</p>
             }
+
+            @if (currentPark.id) {
+              <app-rating-stars
+                class="park-banner__rating"
+                targetType="Park"
+                [targetId]="currentPark.id"
+                [initialSummary]="currentPark.rating">
+              </app-rating-stars>
+            }
           </div>
 
           <div class="park-banner__actions">

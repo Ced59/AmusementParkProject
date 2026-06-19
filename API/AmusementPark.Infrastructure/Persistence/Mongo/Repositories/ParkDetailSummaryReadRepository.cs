@@ -1,10 +1,13 @@
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Application.Features.Parks.Results;
+using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.Infrastructure.Configuration.Mongo;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Images;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
+using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Ratings;
 using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -22,6 +25,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
     private readonly IMongoCollection<ImageDocument> imagesCollection;
     private readonly IMongoCollection<ParkFounderDocument> parkFoundersCollection;
     private readonly IMongoCollection<ParkOperatorDocument> parkOperatorsCollection;
+    private readonly IMongoCollection<RatingAggregateDocument> ratingAggregatesCollection;
 
     public ParkDetailSummaryReadRepository(IMongoDatabase database, MongoDbSettings settings)
     {
@@ -31,6 +35,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         this.imagesCollection = database.GetCollection<ImageDocument>(settings.ImagesCollectionName);
         this.parkFoundersCollection = database.GetCollection<ParkFounderDocument>(settings.ParkFoundersCollectionName);
         this.parkOperatorsCollection = database.GetCollection<ParkOperatorDocument>(settings.ParkOperatorsCollectionName);
+        this.ratingAggregatesCollection = database.GetCollection<RatingAggregateDocument>(settings.RatingAggregatesCollectionName);
     }
 
     public async Task<ParkDetailSummaryResult?> GetAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
@@ -52,8 +57,9 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         Task<Image?> mainImageTask = this.GetMainImageAsync(parkDocument, cancellationToken);
         Task<string?> founderNameTask = this.GetFounderNameAsync(parkDocument.FounderId, cancellationToken);
         Task<string?> operatorNameTask = this.GetOperatorNameAsync(parkDocument.OperatorId, cancellationToken);
+        Task<RatingSummaryResult> ratingTask = this.GetRatingSummaryAsync(parkDocument.Id, cancellationToken);
 
-        await Task.WhenAll(countsTask, zoneCountTask, mainImageTask, founderNameTask, operatorNameTask);
+        await Task.WhenAll(countsTask, zoneCountTask, mainImageTask, founderNameTask, operatorNameTask, ratingTask);
 
         IReadOnlyDictionary<ParkItemCategory, int> countsByCategory = await countsTask;
         int totalItems = countsByCategory.Values.Sum();
@@ -64,6 +70,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
             MainImage = await mainImageTask,
             FounderName = await founderNameTask,
             OperatorName = await operatorNameTask,
+            Rating = await ratingTask,
             Stats = new ParkDetailSummaryStatsResult
             {
                 TotalItems = totalItems,
@@ -76,6 +83,26 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
                 CountsByCategory = countsByCategory,
             },
         };
+    }
+
+    private async Task<RatingSummaryResult> GetRatingSummaryAsync(string parkId, CancellationToken cancellationToken)
+    {
+        RatingAggregateDocument? aggregate = await this.ratingAggregatesCollection.Find(
+                Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetType, RatingTargetType.Park)
+                & Builders<RatingAggregateDocument>.Filter.Eq(document => document.TargetId, parkId))
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (aggregate is null)
+        {
+            return new RatingSummaryResult(RatingTargetType.Park, parkId, 0, 0d, RatingScoreCalculator.PriorMean);
+        }
+
+        return new RatingSummaryResult(
+            aggregate.TargetType,
+            aggregate.TargetId,
+            aggregate.RatingCount,
+            aggregate.AverageRating,
+            aggregate.BayesianScore);
     }
 
     private async Task<IReadOnlyDictionary<ParkItemCategory, int>> GetCountsByCategoryAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
@@ -99,7 +126,7 @@ public sealed class ParkDetailSummaryReadRepository : IParkDetailSummaryReadRepo
         foreach (BsonDocument aggregationResult in aggregationResults)
         {
             BsonValue categoryValue = aggregationResult.GetValue("_id", BsonValue.Create(string.Empty));
-            string categoryText = categoryValue.IsString ? categoryValue.AsString : categoryValue.ToString();
+            string categoryText = categoryValue.IsString ? categoryValue.AsString : categoryValue.ToString() ?? string.Empty;
             if (!Enum.TryParse(categoryText, true, out ParkItemCategory category))
             {
                 continue;

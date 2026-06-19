@@ -36,6 +36,11 @@
     "detailsSubtitle": "Houd je gegevens klaar voor toekomstige gepersonaliseerde functies.",
     "identityRequired": "Voornaam en achternaam zijn verplicht.",
     "updateSuccess": "Profiel succesvol bijgewerkt.",
-    "updateError": "Profiel bijwerken mislukt."
+    "updateError": "Profiel bijwerken mislukt.",
+    "tabs": {
+      "label": "Profielonderdelen",
+      "profile": "Profiel",
+      "ratings": "Beoordelingen"
+    }
   }
 }

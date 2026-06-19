@@ -1,5 +1,6 @@
 import { ImageCategory } from '@app/models/images/image-category';
 import { ParkType } from '@app/models/parks/park-type';
+import { RatingSummary } from '@app/models/ratings/rating.models';
 import { UiPhotoCarouselImage } from '@ui/media';
 import { ParkDetailInfoRowViewModel } from './park-detail-info-row.model';
 
@@ -51,6 +52,7 @@ export interface ParkDetailViewModel {
   hasPracticalInfo: boolean;
   hasLocationInfo: boolean;
   hasDescription: boolean;
+  rating: RatingSummary | null;
   exploreLink: string[] | null;
   zonesLink: string[] | null;
   imagesLink: string[] | null;

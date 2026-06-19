@@ -1,0 +1,54 @@
+<section class="rating-stars" (mouseleave)="clearPreview()">
+  <div class="rating-stars__score" [attr.aria-label]="'ratings.stars.averageAria' | translate:{ value: formattedAverage(), count: count() }">
+    <span class="rating-stars__score-label">{{ 'ratings.stars.averageLabel' | translate }}</span>
+    <span class="rating-stars__average">{{ formattedAverage() }}</span>
+    <span class="rating-stars__meta">
+      @if (count() > 0) {
+        {{ 'ratings.stars.count' | translate:{ count: count() } }}
+      } @else {
+        {{ 'ratings.stars.noRatings' | translate }}
+      }
+    </span>
+  </div>
+
+  <div class="rating-stars__control" role="radiogroup" [attr.aria-label]="'ratings.stars.chooseLabel' | translate">
+    @for (star of starIndexes; track star) {
+      <span class="rating-stars__star" [style.--fill]="fillPercent(star)">
+        <i class="pi pi-star rating-stars__star-empty" aria-hidden="true"></i>
+        <i class="pi pi-star-fill rating-stars__star-filled" aria-hidden="true"></i>
+        <button
+          type="button"
+          class="rating-stars__hit rating-stars__hit--left"
+          [disabled]="saving()"
+          role="radio"
+          [attr.aria-checked]="selectedValue() === star - 0.5"
+          [attr.aria-label]="'ratings.stars.rateValue' | translate:{ value: star - 0.5 }"
+          (mouseenter)="preview(star - 0.5)"
+          (focus)="preview(star - 0.5)"
+          (click)="rate(star - 0.5)">
+        </button>
+        <button
+          type="button"
+          class="rating-stars__hit rating-stars__hit--right"
+          [disabled]="saving()"
+          role="radio"
+          [attr.aria-checked]="selectedValue() === star"
+          [attr.aria-label]="'ratings.stars.rateValue' | translate:{ value: star }"
+          (mouseenter)="preview(star)"
+          (focus)="preview(star)"
+          (click)="rate(star)">
+        </button>
+      </span>
+    }
+  </div>
+
+  <p class="rating-stars__message">
+    @if (messageKey()) {
+      {{ (messageKey() || '') | translate }}
+    } @else if (selectedValue()) {
+      {{ 'ratings.stars.yourRating' | translate:{ value: selectedValue() } }}
+    } @else {
+      {{ 'ratings.stars.prompt' | translate }}
+    }
+  </p>
+</section>

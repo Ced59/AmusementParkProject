@@ -36,6 +36,11 @@
     "detailsSubtitle": "Keep your personal information ready for future personalized features.",
     "identityRequired": "First name and last name are required.",
     "updateSuccess": "Profile updated successfully.",
-    "updateError": "Profile update failed."
+    "updateError": "Profile update failed.",
+    "tabs": {
+      "label": "Profile sections",
+      "profile": "Profile",
+      "ratings": "Ratings"
+    }
   }
 }

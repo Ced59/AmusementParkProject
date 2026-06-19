@@ -138,6 +138,7 @@ internal static class ParksHttpMappers
                 FounderName = value.FounderName,
                 OperatorName = value.OperatorName,
             },
+            Rating = value.Rating?.ToHttp(),
             Stats = new ParkDetailSummaryStatsDto
             {
                 TotalItems = value.Stats.TotalItems,

@@ -36,6 +36,11 @@
     "detailsSubtitle": "Halte deine Daten für künftige personalisierte Funktionen bereit.",
     "identityRequired": "Vorname und Nachname sind erforderlich.",
     "updateSuccess": "Profil erfolgreich aktualisiert.",
-    "updateError": "Profilaktualisierung fehlgeschlagen."
+    "updateError": "Profilaktualisierung fehlgeschlagen.",
+    "tabs": {
+      "label": "Profilbereiche",
+      "profile": "Profil",
+      "ratings": "Bewertungen"
+    }
   }
 }

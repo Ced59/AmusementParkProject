@@ -10,7 +10,10 @@ using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkItems.Commands;
 using AmusementPark.Application.Features.ParkItems.Queries;
 using AmusementPark.Application.Features.ParkItems.Results;
+using AmusementPark.Application.Features.Ratings.Queries;
+using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.Core.Domain.Ratings;
 using AmusementPark.WebAPI.Contracts.Common;
 using AmusementPark.WebAPI.Contracts.ParkItems;
 using AmusementPark.WebAPI.Mappers;
@@ -38,6 +41,7 @@ public sealed class ParkItemsController : ControllerBase
     private readonly IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler;
     private readonly IQueryHandler<GetParkItemsPageQuery, ApplicationResult<PagedResult<ParkItemAdminListResult>>> getParkItemsPageQueryHandler;
     private readonly IQueryHandler<GetParkItemByIdQuery, ApplicationResult<ParkItem>> getParkItemByIdQueryHandler;
+    private readonly IQueryHandler<GetRatingSummaryQuery, ApplicationResult<RatingSummaryResult>> getRatingSummaryQueryHandler;
     private readonly ICommandHandler<CreateParkItemCommand, ApplicationResult<ParkItem>> createParkItemCommandHandler;
     private readonly ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler;
     private readonly ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler;
@@ -50,6 +54,7 @@ public sealed class ParkItemsController : ControllerBase
         IQueryHandler<GetParkItemsByParkIdQuery, ApplicationResult<IReadOnlyCollection<ParkItem>>> getParkItemsByParkIdQueryHandler,
         IQueryHandler<GetParkItemsPageQuery, ApplicationResult<PagedResult<ParkItemAdminListResult>>> getParkItemsPageQueryHandler,
         IQueryHandler<GetParkItemByIdQuery, ApplicationResult<ParkItem>> getParkItemByIdQueryHandler,
+        IQueryHandler<GetRatingSummaryQuery, ApplicationResult<RatingSummaryResult>> getRatingSummaryQueryHandler,
         ICommandHandler<CreateParkItemCommand, ApplicationResult<ParkItem>> createParkItemCommandHandler,
         ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemCommandHandler,
         ICommandHandler<DeleteParkItemCommand, ApplicationResult> deleteParkItemCommandHandler,
@@ -61,6 +66,7 @@ public sealed class ParkItemsController : ControllerBase
         this.getParkItemsByParkIdQueryHandler = getParkItemsByParkIdQueryHandler;
         this.getParkItemsPageQueryHandler = getParkItemsPageQueryHandler;
         this.getParkItemByIdQueryHandler = getParkItemByIdQueryHandler;
+        this.getRatingSummaryQueryHandler = getRatingSummaryQueryHandler;
         this.createParkItemCommandHandler = createParkItemCommandHandler;
         this.updateParkItemCommandHandler = updateParkItemCommandHandler;
         this.deleteParkItemCommandHandler = deleteParkItemCommandHandler;
@@ -151,7 +157,11 @@ public sealed class ParkItemsController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        return this.Ok(result.Value.ToHttp());
+        ApplicationResult<RatingSummaryResult> ratingResult = await this.getRatingSummaryQueryHandler.HandleAsync(
+            new GetRatingSummaryQuery(RatingTargetType.ParkItem, result.Value.Id),
+            cancellationToken);
+
+        return this.Ok(result.Value.ToHttp(ratingResult.IsSuccess ? ratingResult.Value : null));
     }
 
     [HttpPost]

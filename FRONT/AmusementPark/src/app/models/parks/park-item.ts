@@ -4,6 +4,7 @@ import { AttractionLocations } from './attraction-locations';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
 import { ParkItemCategory } from './park-item-category';
 import { ParkItemType } from './park-item-type';
+import { RatingSummary } from '@app/models/ratings/rating.models';
 
 export interface ParkItem {
   id?: string;
@@ -20,4 +21,5 @@ export interface ParkItem {
   attractionLocations?: AttractionLocations | null;
   isVisible?: boolean;
   adminReviewStatus?: AdminReviewStatus;
+  rating?: RatingSummary | null;
 }

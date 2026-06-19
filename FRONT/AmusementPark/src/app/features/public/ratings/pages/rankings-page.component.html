@@ -1,0 +1,55 @@
+<section class="rankings-page public-page">
+  <header class="rankings-hero">
+    <app-ui-section-header
+      kickerTone="gold"
+      kickerIconClass="pi pi-star"
+      kickerLabelKey="ratings.rankings.kicker"
+      titleKey="ratings.rankings.title"
+      subtitleKey="ratings.rankings.subtitle">
+    </app-ui-section-header>
+
+    <div class="rankings-hero__note">
+      <i class="pi pi-shield" aria-hidden="true"></i>
+      <span>{{ 'ratings.rankings.reliableHint' | translate }}</span>
+    </div>
+  </header>
+
+  <nav class="rankings-filters" [attr.aria-label]="'ratings.rankings.filters.label' | translate">
+    @for (filter of filters; track filter.key) {
+      <button
+        appUiButton="ghost"
+        type="button"
+        [class.rankings-filters__button--active]="currentFilter().key === filter.key"
+        (click)="selectFilter(filter)">
+        {{ filter.labelKey | translate }}
+      </button>
+    }
+  </nav>
+
+  @if (loading()) {
+    <div class="rankings-empty">{{ 'ratings.rankings.loading' | translate }}</div>
+  } @else if (items().length === 0) {
+    <div class="rankings-empty">{{ 'ratings.rankings.empty' | translate }}</div>
+  } @else {
+    <div class="rankings-list">
+      @for (item of items(); track item.targetType + '-' + item.targetId) {
+        <article class="ranking-row">
+          <div class="ranking-row__rank">#{{ item.rank }}</div>
+          <div class="ranking-row__main">
+            @if (targetRoute(item); as route) {
+              <a class="ranking-row__title" [routerLink]="route">{{ item.targetName }}</a>
+            } @else {
+              <strong class="ranking-row__title">{{ item.targetName }}</strong>
+            }
+            <span>{{ item.parkName || ('ratings.rankings.parkFallback' | translate) }}</span>
+          </div>
+          <div class="ranking-row__score">
+            <strong>{{ formatRating(item.averageRating) }}</strong>
+            <span>{{ 'ratings.rankings.ratingCount' | translate:{ count: item.ratingCount } }}</span>
+          </div>
+          <app-ui-chip tone="gold" iconClass="pi pi-star">{{ 'ratings.rankings.reliableBadge' | translate }}</app-ui-chip>
+        </article>
+      }
+    </div>
+  }
+</section>

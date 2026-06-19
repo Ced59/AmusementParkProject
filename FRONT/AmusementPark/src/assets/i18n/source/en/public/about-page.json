@@ -61,6 +61,10 @@
           "title": "Explore park attractions and places",
           "text": "When data is available, you can browse attractions, restaurants, shops, shows or other points of interest linked to the park."
         },
+        "ratings": {
+          "title": "Check ratings and rankings",
+          "text": "Stars give a quick view of visitor opinions. Sign in to add your own rating, then find your choices in your account and rankings."
+        },
         "images": {
           "title": "Discover the park through images",
           "text": "Images help you feel the atmosphere of a park, area or attraction, turning a simple description into a more visual discovery."

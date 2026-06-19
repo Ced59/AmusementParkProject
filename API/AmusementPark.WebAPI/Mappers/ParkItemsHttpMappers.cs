@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Common.Measurements;
 using AmusementPark.Application.Features.ParkItems.Results;
+using AmusementPark.Application.Features.Ratings.Results;
 using AmusementPark.Core.Domain.Parks;
 using AmusementPark.Core.Geo;
 using AmusementPark.Core.Localization;
@@ -98,6 +99,11 @@ internal static class ParkItemsHttpMappers
 
     public static ParkItemDto ToHttp(this ParkItem value)
     {
+        return value.ToHttp(null);
+    }
+
+    public static ParkItemDto ToHttp(this ParkItem value, RatingSummaryResult? rating)
+    {
         ArgumentNullException.ThrowIfNull(value);
 
         return new ParkItemDto
@@ -116,6 +122,7 @@ internal static class ParkItemsHttpMappers
             AttractionLocations = value.AttractionLocations?.ToHttp(),
             IsVisible = value.IsVisible,
             AdminReviewStatus = value.AdminReviewStatus.ToHttp(),
+            Rating = rating?.ToHttp(),
         };
     }
 
