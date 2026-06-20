@@ -3,6 +3,7 @@ using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.AttractionManufacturers.Ports;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
+using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkFounders.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.ParkOperators.Ports;
@@ -55,12 +56,8 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         Mock<IVideoRepository> videoRepository = CreateVideoRepository(
             CreateVideo("video-park-1", VideoOwnerType.Park, "park-1", "Park tour", new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc)),
             CreateVideo("video-item-1", VideoOwnerType.ParkItem, "item-1", "Front row", new DateTime(2026, 2, 5, 0, 0, 0, DateTimeKind.Utc)));
-        parkRepository
-            .Setup(repository => repository.GetPageAsync(1, int.MaxValue, false, true, null, null, null, null, cancellationToken))
-            .ReturnsAsync(new PagedResult<Park>(new[] { parentPark }, 1, int.MaxValue, 1));
-        parkItemRepository
-            .Setup(repository => repository.GetPublicSitemapCandidatesAsync(int.MaxValue, cancellationToken))
-            .ReturnsAsync(new[] { publicItem });
+        SetupPublicSitemapParks(parkRepository, new[] { parentPark });
+        SetupPublicSitemapItems(parkItemRepository, new[] { publicItem });
         parkOperatorRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<ParkOperator>());
         parkFounderRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<ParkFounder>());
         attractionManufacturerRepository.Setup(repository => repository.GetAllAsync(cancellationToken)).ReturnsAsync(Array.Empty<AttractionManufacturer>());
@@ -79,6 +76,8 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.NotNull(result.Value);
+        Assert.Contains(result.Value, static url => url.RelativePath == "/fr/rankings");
+        Assert.Contains(result.Value, static url => url.RelativePath == "/en/rankings");
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/item/item-1/attraction-familiale/images" && url.LastModifiedUtc == new DateTime(2026, 2, 3, 0, 0, 0, DateTimeKind.Utc));
         Assert.Contains(result.Value, static url => url.RelativePath == "/fr/park/park-1/visible-park/videos" && url.LastModifiedUtc == new DateTime(2026, 2, 4, 0, 0, 0, DateTimeKind.Utc));
@@ -98,6 +97,84 @@ public sealed class GetPublicSitemapSeedQueryHandlerTests
         attractionManufacturerRepository.VerifyAll();
         imageRepository.VerifyAll();
         videoRepository.VerifyAll();
+    }
+
+    private static void SetupPublicSitemapParks(Mock<IParkRepository> repository, IReadOnlyCollection<Park> parks)
+    {
+        repository
+            .Setup(item => item.GetPageAsync(
+                It.IsAny<int>(),
+                It.IsAny<int>(),
+                false,
+                true,
+                null,
+                null,
+                null,
+                null,
+                It.IsAny<CancellationToken>()))
+            .Returns((
+                int page,
+                int pageSize,
+                bool includeHidden,
+                bool? isVisible,
+                AdminReviewStatus? adminReviewStatus,
+                ParkType? type,
+                string? countryCode,
+                bool? hasValidCoordinates,
+                CancellationToken cancellationToken) =>
+            {
+                IReadOnlyCollection<Park> pageItems = parks
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+
+                return Task.FromResult(new PagedResult<Park>(pageItems, page, pageSize, parks.Count));
+            });
+    }
+
+    private static void SetupPublicSitemapItems(Mock<IParkItemRepository> repository, IReadOnlyCollection<ParkItem> items)
+    {
+        repository
+            .Setup(item => item.GetPageAsync(
+                It.IsAny<int>(),
+                It.IsAny<int>(),
+                null,
+                null,
+                false,
+                true,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                It.IsAny<CancellationToken>(),
+                ParkItemAdminSortField.ParkId,
+                false))
+            .Returns((
+                int page,
+                int pageSize,
+                string? parkId,
+                string? search,
+                bool includeHidden,
+                bool? isVisible,
+                AdminReviewStatus? adminReviewStatus,
+                ParkItemCategory? category,
+                ParkItemType? type,
+                string? zoneId,
+                string? manufacturerId,
+                ParkItemContentBacklogFilter? contentBacklogFilter,
+                CancellationToken cancellationToken,
+                ParkItemAdminSortField sortField,
+                bool sortDescending) =>
+            {
+                IReadOnlyCollection<ParkItem> pageItems = items
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+
+                return Task.FromResult(new PagedResult<ParkItem>(pageItems, page, pageSize, items.Count));
+            });
     }
 
     private static Mock<IImageRepository> CreateImageRepository(params Image[] images)

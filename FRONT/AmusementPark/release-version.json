@@ -1,6 +1,20 @@
 {
-  "version": "2.3.3",
+  "version": "2.3.4",
   "history": [
+    {
+      "version": "2.3.4",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Les sitemaps couvrent mieux les pages publiques.",
+        "en": "Sitemaps cover public pages better.",
+        "de": "Sitemaps decken öffentliche Seiten besser ab.",
+        "nl": "Sitemaps dekken openbare pagina's beter.",
+        "it": "Le sitemap coprono meglio le pagine pubbliche.",
+        "es": "Los sitemaps cubren mejor las páginas públicas.",
+        "pl": "Sitemapy lepiej obejmują strony publiczne.",
+        "pt": "Os sitemaps cobrem melhor as páginas públicas."
+      }
+    },
     {
       "version": "2.3.3",
       "releasedAt": "2026-06-20",

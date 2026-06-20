@@ -211,10 +211,14 @@ public sealed class GetSeoSitemapHistoryQueryHandler : IQueryHandler<GetSeoSitem
 public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPublicSitemapDocumentQuery, ApplicationResult<SitemapDocumentResult>>
 {
     private readonly ISeoSitemapSnapshotRepository snapshotRepository;
+    private readonly SeoSitemapGenerationOrchestrator orchestrator;
 
-    public GetPublicSitemapDocumentQueryHandler(ISeoSitemapSnapshotRepository snapshotRepository)
+    public GetPublicSitemapDocumentQueryHandler(
+        ISeoSitemapSnapshotRepository snapshotRepository,
+        SeoSitemapGenerationOrchestrator orchestrator)
     {
         this.snapshotRepository = snapshotRepository;
+        this.orchestrator = orchestrator;
     }
 
     public async Task<ApplicationResult<SitemapDocumentResult>> HandleAsync(GetPublicSitemapDocumentQuery query, CancellationToken cancellationToken = default)
@@ -226,7 +230,28 @@ public sealed class GetPublicSitemapDocumentQueryHandler : IQueryHandler<GetPubl
 
         if (snapshot is null)
         {
-            return ApplicationResult<SitemapDocumentResult>.Failure(ApplicationError.NotFound("seo.sitemap.not-found", "Aucun sitemap généré n'est disponible."));
+            SitemapGenerationResult fallbackResult = await this.orchestrator.GenerateAsync(
+                query.PublicBaseUrl,
+                new SitemapGenerationContext
+                {
+                    SupportedLanguages = query.SupportedLanguages,
+                },
+                SitemapGenerationTrigger.PublicFallback,
+                submitToIndexNow: false,
+                triggeredByUserId: null,
+                triggeredByUserEmail: null,
+                cancellationToken);
+
+            if (fallbackResult.Status == SitemapGenerationStatus.Succeeded)
+            {
+                snapshot = await this.snapshotRepository.GetLatestAsync(cancellationToken);
+                wasGeneratedOnDemand = true;
+            }
+
+            if (snapshot is null)
+            {
+                return ApplicationResult<SitemapDocumentResult>.Failure(ApplicationError.NotFound("seo.sitemap.not-found", "Aucun sitemap généré n'est disponible."));
+            }
         }
 
         if (string.IsNullOrWhiteSpace(query.SectionKey))

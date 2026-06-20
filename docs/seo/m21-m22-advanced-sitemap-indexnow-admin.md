@@ -18,8 +18,10 @@ La génération reste volontairement côté backend : le sitemap doit refléter 
 | URL | Contenu |
 | --- | --- |
 | `/sitemap.xml` | Sitemap index listant les sitemaps sectionnés. |
-| `/sitemaps/static-fr.xml`, `/sitemaps/static-en.xml`, etc. | Pages publiques statiques de la langue concernée : home, parks, about, privacy. |
-| `/sitemaps/parks-fr.xml`, `/sitemaps/parks-en.xml`, etc. | Pages publiques de parcs visibles dans la langue concernée : détail parc + liste des éléments du parc. |
+| `/sitemaps/static-fr.xml`, `/sitemaps/static-en.xml`, etc. | Pages publiques statiques de la langue concernée : home, parks, rankings, about, contact, versions, privacy. |
+| `/sitemaps/parks-fr.xml`, `/sitemaps/parks-en.xml`, etc. | Pages publiques de parcs visibles dans la langue concernée : détail parc et météo. |
+| `/sitemaps/park-item-lists-fr.xml`, `/sitemaps/park-item-lists-en.xml`, etc. | Listes publiques des éléments des parcs visibles quand elles contiennent au moins un élément public. |
+| `/sitemaps/park-zones-fr.xml`, `/sitemaps/park-zones-en.xml`, etc. | Pages publiques des zones visibles contenant des éléments publics. |
 | `/sitemaps/park-items-fr.xml`, `/sitemaps/park-items-en.xml`, etc. | Pages publiques des éléments visibles rattachés à un parc visible dans la langue concernée. |
 | `/sitemaps/references-fr.xml`, `/sitemaps/references-en.xml`, etc. | Références publiques dans la langue concernée : exploitants, fondateurs, constructeurs. |
 | `/robots.txt` | Référence `/sitemap.xml` et bloque les chemins admin/auth/account. |

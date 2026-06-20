@@ -1,0 +1,88 @@
+using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Errors;
+using AmusementPark.Application.Features.Seo.Handlers;
+using AmusementPark.Application.Features.Seo.Models;
+using AmusementPark.Application.Features.Seo.Ports;
+using AmusementPark.Application.Features.Seo.Queries;
+using AmusementPark.Application.Features.Seo.Results;
+using AmusementPark.Application.Features.Seo.Services;
+using Moq;
+using Xunit;
+
+namespace AmusementPark.Application.Tests.Features.Seo.Handlers;
+
+public sealed class GetPublicSitemapDocumentQueryHandlerTests
+{
+    [Fact]
+    public async Task HandleAsync_WhenSnapshotIsMissing_ShouldGenerateFallbackSnapshotAndReturnIndex()
+    {
+        SitemapSnapshot? savedSnapshot = null;
+        SitemapGenerationHistoryEntry? historyEntry = null;
+        Mock<ISeoSitemapSnapshotRepository> snapshotRepository = new Mock<ISeoSitemapSnapshotRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapGenerationHistoryRepository> historyRepository = new Mock<ISeoSitemapGenerationHistoryRepository>(MockBehavior.Strict);
+        Mock<ISeoSitemapSettingsRepository> settingsRepository = new Mock<ISeoSitemapSettingsRepository>(MockBehavior.Strict);
+        Mock<IIndexNowSubmitter> indexNowSubmitter = new Mock<IIndexNowSubmitter>(MockBehavior.Strict);
+
+        snapshotRepository
+            .Setup(repository => repository.GetLatestAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(() => savedSnapshot);
+        snapshotRepository
+            .Setup(repository => repository.SaveAsync(It.IsAny<SitemapSnapshot>(), It.IsAny<CancellationToken>()))
+            .Callback<SitemapSnapshot, CancellationToken>((snapshot, _) => savedSnapshot = snapshot)
+            .Returns(Task.CompletedTask);
+        historyRepository
+            .Setup(repository => repository.WriteAsync(It.IsAny<SitemapGenerationHistoryEntry>(), It.IsAny<CancellationToken>()))
+            .Callback<SitemapGenerationHistoryEntry, CancellationToken>((entry, _) => historyEntry = entry)
+            .Returns(Task.CompletedTask);
+        settingsRepository
+            .Setup(repository => repository.GetAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new SeoSitemapSettings());
+
+        SeoSitemapGenerationOrchestrator orchestrator = new SeoSitemapGenerationOrchestrator(
+            new[] { new FakeSitemapSectionProvider() },
+            new SitemapXmlWriter(),
+            snapshotRepository.Object,
+            historyRepository.Object,
+            settingsRepository.Object,
+            indexNowSubmitter.Object,
+            new InMemorySeoSitemapRuntimeStateStore());
+        GetPublicSitemapDocumentQueryHandler handler = new GetPublicSitemapDocumentQueryHandler(
+            snapshotRepository.Object,
+            orchestrator);
+
+        ApplicationResult<SitemapDocumentResult> result = await handler.HandleAsync(
+            new GetPublicSitemapDocumentQuery(null, "https://example.com", new[] { "fr" }),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.True(result.Value.WasGeneratedOnDemand);
+        Assert.Contains("https://example.com/sitemaps/static-fr.xml", result.Value.Content, StringComparison.Ordinal);
+        Assert.NotNull(savedSnapshot);
+        Assert.NotNull(historyEntry);
+        Assert.Equal(SitemapGenerationTrigger.PublicFallback, historyEntry!.Trigger);
+        snapshotRepository.VerifyAll();
+        historyRepository.VerifyAll();
+        settingsRepository.VerifyAll();
+        indexNowSubmitter.VerifyNoOtherCalls();
+    }
+
+    private sealed class FakeSitemapSectionProvider : ISitemapSectionProvider
+    {
+        public string Key => SitemapSectionKeys.Static;
+
+        public string FileName => "static.xml";
+
+        public string DisplayName => "Pages statiques";
+
+        public Task<IReadOnlyCollection<SitemapUrlEntry>> GetUrlsAsync(SitemapGenerationContext context, CancellationToken cancellationToken)
+        {
+            IReadOnlyCollection<SitemapUrlEntry> urls = new[]
+            {
+                new SitemapUrlEntry("/fr/home", new DateTime(2026, 6, 20, 0, 0, 0, DateTimeKind.Utc), "daily", 1.0m),
+            };
+
+            return Task.FromResult(urls);
+        }
+    }
+}

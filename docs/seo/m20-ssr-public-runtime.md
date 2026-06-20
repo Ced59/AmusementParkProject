@@ -72,6 +72,7 @@ Le serveur Node relaie :
 /api/*       -> API interne Docker, sans le préfixe /api
 /robots.txt  -> API interne Docker /robots.txt
 /sitemap.xml -> API interne Docker /sitemap.xml
+/sitemaps/*  -> API interne Docker /sitemaps/*
 ```
 
 Les headers CSP émis par l'API sont masqués sur les réponses proxifiées afin que le front garde la responsabilité des headers publics de page.

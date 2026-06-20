@@ -22,12 +22,11 @@ namespace AmusementPark.Application.Features.Seo.Handlers;
 /// </summary>
 public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSitemapSeedQuery, ApplicationResult<IReadOnlyCollection<PublicSitemapUrl>>>
 {
-    private const int PublicSitemapCandidatePageSize = int.MaxValue;
-
     private static readonly IReadOnlyCollection<string> StaticPublicPages = new[]
     {
         "home",
         "parks",
+        "rankings",
         "about",
         "contact",
         "versions",
@@ -130,20 +129,7 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
 
     private async Task<IReadOnlyCollection<Park>> GetVisibleParksAsync(CancellationToken cancellationToken)
     {
-        PagedResult<Park> page = await this.parkRepository.GetPageAsync(
-            1,
-            PublicSitemapCandidatePageSize,
-            includeHidden: false,
-            isVisible: true,
-            adminReviewStatus: null,
-            type: null,
-            countryCode: null,
-            hasValidCoordinates: null,
-            cancellationToken);
-
-        return page.Items
-            .Where(static park => park.IsVisible && park.AdminReviewStatus != AdminReviewStatus.NotRelevant)
-            .ToList();
+        return await SitemapPublicCandidateLoader.LoadPublicParksAsync(this.parkRepository, cancellationToken);
     }
 
     private void AddParkUrls(
@@ -194,13 +180,13 @@ public sealed class GetPublicSitemapSeedQueryHandler : IQueryHandler<GetPublicSi
         IReadOnlyDictionary<string, List<Video>> videosByItemId,
         CancellationToken cancellationToken)
     {
-        IReadOnlyCollection<ParkItem> items = await this.parkItemRepository.GetPublicSitemapCandidatesAsync(
-            PublicSitemapCandidatePageSize,
+        IReadOnlyCollection<ParkItem> items = await SitemapPublicCandidateLoader.LoadPublicItemsAsync(
+            this.parkItemRepository,
             cancellationToken);
 
         foreach (ParkItem item in items)
         {
-            if (string.IsNullOrWhiteSpace(item.Id) || !item.IsVisible || item.AdminReviewStatus == AdminReviewStatus.NotRelevant)
+            if (!ParkItemsSitemapSectionProvider.IsPublicItem(item))
             {
                 continue;
             }
