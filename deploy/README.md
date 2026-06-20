@@ -148,7 +148,7 @@ Ces limites ciblent login, OAuth externe, refresh-token, inscription, confirmati
 
 ### Email prod
 
-- `PROD_EMAIL_MODE` : `Console` ou `Smtp`
+- `PROD_EMAIL_MODE` : `Smtp` en production ; `Console` uniquement pour un test volontaire sans vrais utilisateurs
 - `PROD_EMAIL_HOST`
 - `PROD_EMAIL_PORT`
 - `PROD_EMAIL_USE_SSL`
@@ -157,6 +157,12 @@ Ces limites ciblent login, OAuth externe, refresh-token, inscription, confirmati
 - `PROD_EMAIL_PASSWORD`
 - `PROD_EMAIL_FROM_ADDRESS`
 - `PROD_EMAIL_FROM_NAME`
+- `PROD_EMAIL_NOTIFICATION_ADMIN_ADDRESS`
+- `PROD_EMAIL_CONTACT_ADDRESS`
+- `PROD_EMAIL_CONTACT_NOTIFICATIONS_ENABLED`
+- `PROD_EMAIL_WEATHER_NOTIFICATIONS_ENABLED`
+
+En production, le déploiement utilise `Smtp` par défaut si `PROD_EMAIL_MODE` n'est pas renseignée. Le mode `Console` journalise le contenu des emails applicatifs et ne doit pas être utilisé avec de vrais utilisateurs.
 
 ### Variables GitHub optionnelles
 

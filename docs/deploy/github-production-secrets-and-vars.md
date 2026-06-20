@@ -72,6 +72,12 @@ https://amusement-parks.fun/api/auth/external/google/callback
 | `PROD_EMAIL_USERNAME` | login SMTP |
 | `PROD_EMAIL_PASSWORD` | mot de passe SMTP |
 
+Adresses mail a creer pour la production :
+
+- `noreply@amusement-parks.fun` : expediteur automatique pour confirmation de compte, reset password et notifications internes.
+- `contact@amusement-parks.fun` : adresse publique de contact et d'echange avec les utilisateurs.
+- `admin@amusement-parks.fun` : destinataire interne des notifications contact et meteo, sans usage automatique comme expediteur.
+
 ### Seed admin initial, optionnel
 
 | Secret | Exemple / note |
@@ -150,12 +156,16 @@ Recommandation : activer le seed admin seulement au premier déploiement, puis r
 
 | Variable | Valeur recommandée |
 |---|---|
-| `PROD_EMAIL_MODE` | `Console` pour smoke test discret, puis `Smtp` avant vrais utilisateurs |
+| `PROD_EMAIL_MODE` | `Smtp` en production ; `Console` uniquement pour un test volontaire sans vrais utilisateurs |
 | `PROD_EMAIL_PORT` | `587` |
 | `PROD_EMAIL_USE_SSL` | `false` |
 | `PROD_EMAIL_USE_STARTTLS` | `true` |
 | `PROD_EMAIL_FROM_ADDRESS` | `noreply@amusement-parks.fun` |
 | `PROD_EMAIL_FROM_NAME` | `Amusement Park` |
+| `PROD_EMAIL_NOTIFICATION_ADMIN_ADDRESS` | `admin@amusement-parks.fun` |
+| `PROD_EMAIL_CONTACT_ADDRESS` | `contact@amusement-parks.fun` |
+| `PROD_EMAIL_CONTACT_NOTIFICATIONS_ENABLED` | `true` |
+| `PROD_EMAIL_WEATHER_NOTIFICATIONS_ENABLED` | `true` |
 
 ### Seed admin
 

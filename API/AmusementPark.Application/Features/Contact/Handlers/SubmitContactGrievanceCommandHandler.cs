@@ -20,10 +20,14 @@ public sealed class SubmitContactGrievanceCommandHandler
     private static readonly Regex UrlRegex = new Regex(@"(?:https?://|www\.)", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
 
     private readonly IContactGrievanceRepository repository;
+    private readonly IContactNotificationService notificationService;
 
-    public SubmitContactGrievanceCommandHandler(IContactGrievanceRepository repository)
+    public SubmitContactGrievanceCommandHandler(
+        IContactGrievanceRepository repository,
+        IContactNotificationService notificationService)
     {
         this.repository = repository;
+        this.notificationService = notificationService;
     }
 
     public async Task<ApplicationResult<ContactGrievanceSubmissionResult>> HandleAsync(
@@ -65,6 +69,7 @@ public sealed class SubmitContactGrievanceCommandHandler
         };
 
         ContactGrievance created = await this.repository.CreateAsync(grievance, cancellationToken);
+        await this.notificationService.NotifySubmittedAsync(created, cancellationToken);
         return ApplicationResult<ContactGrievanceSubmissionResult>.Success(new ContactGrievanceSubmissionResult(true, created.CreatedAtUtc));
     }
 

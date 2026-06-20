@@ -391,7 +391,7 @@ jobs:
       GOOGLE_REDIRECT_URI: ${{ vars.PROD_GOOGLE_REDIRECT_URI || 'https://amusement-parks.fun/api/auth/external/google/callback' }}
       FACEBOOK_APP_ID: ${{ secrets.PROD_FACEBOOK_APP_ID }}
       FACEBOOK_APP_SECRET: ${{ secrets.PROD_FACEBOOK_APP_SECRET }}
-      EMAIL_MODE: ${{ vars.PROD_EMAIL_MODE || 'Console' }}
+      EMAIL_MODE: ${{ vars.PROD_EMAIL_MODE || 'Smtp' }}
       EMAIL_HOST: ${{ secrets.PROD_EMAIL_HOST }}
       EMAIL_PORT: ${{ vars.PROD_EMAIL_PORT || '587' }}
       EMAIL_USE_SSL: ${{ vars.PROD_EMAIL_USE_SSL || 'false' }}
@@ -400,6 +400,10 @@ jobs:
       EMAIL_PASSWORD: ${{ secrets.PROD_EMAIL_PASSWORD }}
       EMAIL_FROM_ADDRESS: ${{ vars.PROD_EMAIL_FROM_ADDRESS || 'noreply@amusement-parks.fun' }}
       EMAIL_FROM_NAME: ${{ vars.PROD_EMAIL_FROM_NAME || 'Amusement Park' }}
+      EMAIL_NOTIFICATION_ADMIN_ADDRESS: ${{ vars.PROD_EMAIL_NOTIFICATION_ADMIN_ADDRESS || 'admin@amusement-parks.fun' }}
+      EMAIL_CONTACT_ADDRESS: ${{ vars.PROD_EMAIL_CONTACT_ADDRESS || 'contact@amusement-parks.fun' }}
+      EMAIL_CONTACT_NOTIFICATIONS_ENABLED: ${{ vars.PROD_EMAIL_CONTACT_NOTIFICATIONS_ENABLED || 'true' }}
+      EMAIL_WEATHER_NOTIFICATIONS_ENABLED: ${{ vars.PROD_EMAIL_WEATHER_NOTIFICATIONS_ENABLED || 'true' }}
       ADMIN_USER_ENABLED: ${{ vars.PROD_ADMIN_USER_ENABLED || 'false' }}
       ADMIN_USER_EMAIL: ${{ secrets.PROD_ADMIN_USER_EMAIL }}
       ADMIN_USER_PASSWORD: ${{ secrets.PROD_ADMIN_USER_PASSWORD }}

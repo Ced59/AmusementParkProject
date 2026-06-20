@@ -27,7 +27,7 @@ interface ContactForm {
 })
 export class ContactPageComponent {
   protected readonly maxMessageLength: number = 2000;
-  protected readonly contactEmail: string = 'c.caudron59@gmail.com';
+  protected readonly contactEmail: string = 'contact@amusement-parks.fun';
   protected readonly submitting = this.contactPageFacade.submitting;
   protected readonly submitted = this.contactPageFacade.submitted;
   protected readonly errorKey = this.contactPageFacade.errorKey;
