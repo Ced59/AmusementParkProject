@@ -1,6 +1,20 @@
 {
-  "version": "2.3.1",
+  "version": "2.3.2",
   "history": [
+    {
+      "version": "2.3.2",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Les anciens liens vidéo se partagent correctement.",
+        "en": "Older video links share correctly.",
+        "de": "Ältere Videolinks lassen sich korrekt teilen.",
+        "nl": "Oudere videolinks delen correct.",
+        "it": "I vecchi link video si condividono correttamente.",
+        "es": "Los enlaces de vídeo antiguos se comparten correctamente.",
+        "pl": "Starsze linki wideo udostępniają się poprawnie.",
+        "pt": "As ligações de vídeo antigas partilham corretamente."
+      }
+    },
     {
       "version": "2.3.1",
       "releasedAt": "2026-06-20",
