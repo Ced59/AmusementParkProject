@@ -1,11 +1,14 @@
 using System.Reflection;
 using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Common.Measurements;
+using AmusementPark.Application.Features.Contact.Ports;
+using AmusementPark.Application.Features.Contact.Services;
 using AmusementPark.Application.Features.Countries.Ports;
 using AmusementPark.Application.Features.Countries.Services;
 using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.ParkItems.Services;
 using AmusementPark.Application.Features.ParkGraphUpserts.Services;
+using AmusementPark.Application.Features.ParkWeather.Ports;
 using AmusementPark.Application.Features.ParkWeather.Services;
 using AmusementPark.Application.Features.Parks.Services;
 using AmusementPark.Application.Features.Seo.Ports;
@@ -45,6 +48,8 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ParkWeatherRefreshOrchestrator>();
         services.AddSingleton<ParkWeatherLocalDateResolver>();
         services.AddSingleton<ParkWeatherHistoricalComparisonDateResolver>();
+        services.AddScoped<IContactNotificationService, NoOpContactNotificationService>();
+        services.AddScoped<IParkWeatherNotificationService, NoOpParkWeatherNotificationService>();
         services.AddSingleton<IMeasurementConversionService>(MeasurementConversionService.Instance);
         services.AddScoped<ICountryReferenceService, CountryReferenceService>();
         services.AddSingleton<IParkDistanceCalculator, ParkDistanceCalculator>();

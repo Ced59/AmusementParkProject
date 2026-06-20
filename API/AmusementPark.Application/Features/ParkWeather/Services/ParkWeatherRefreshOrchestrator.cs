@@ -13,6 +13,7 @@ public sealed class ParkWeatherRefreshOrchestrator
     private readonly IParkWeatherProviderStrategyResolver providerStrategyResolver;
     private readonly IParkWeatherRefreshSettings settings;
     private readonly IParkWeatherCacheInvalidator cacheInvalidator;
+    private readonly IParkWeatherNotificationService notificationService;
     private readonly ParkWeatherHistoricalComparisonDateResolver historicalComparisonDateResolver;
 
     public ParkWeatherRefreshOrchestrator(
@@ -22,6 +23,7 @@ public sealed class ParkWeatherRefreshOrchestrator
         IParkWeatherProviderStrategyResolver providerStrategyResolver,
         IParkWeatherRefreshSettings settings,
         IParkWeatherCacheInvalidator cacheInvalidator,
+        IParkWeatherNotificationService notificationService,
         ParkWeatherHistoricalComparisonDateResolver historicalComparisonDateResolver)
     {
         this.parkRepository = parkRepository;
@@ -30,6 +32,7 @@ public sealed class ParkWeatherRefreshOrchestrator
         this.providerStrategyResolver = providerStrategyResolver;
         this.settings = settings;
         this.cacheInvalidator = cacheInvalidator;
+        this.notificationService = notificationService;
         this.historicalComparisonDateResolver = historicalComparisonDateResolver;
     }
 
@@ -45,6 +48,7 @@ public sealed class ParkWeatherRefreshOrchestrator
         run.StartedAtUtc = DateTime.UtcNow;
         run.Message = "Weather refresh running.";
         await this.runRepository.UpdateAsync(run, cancellationToken);
+        await this.NotifyAutomaticRunStartedAsync(run, cancellationToken);
 
         try
         {
@@ -77,6 +81,7 @@ public sealed class ParkWeatherRefreshOrchestrator
                 : "Weather refresh completed with failures.";
 
             await this.runRepository.UpdateAsync(run, cancellationToken);
+            await this.NotifyAutomaticRunCompletedAsync(run, cancellationToken);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
@@ -92,6 +97,23 @@ public sealed class ParkWeatherRefreshOrchestrator
             run.Status = ParkWeatherRunStatus.Failed;
             run.Message = SanitizeMessage(exception.Message);
             await this.runRepository.UpdateAsync(run, cancellationToken);
+            await this.NotifyAutomaticRunCompletedAsync(run, cancellationToken);
+        }
+    }
+
+    private async Task NotifyAutomaticRunStartedAsync(ParkWeatherRun run, CancellationToken cancellationToken)
+    {
+        if (run.Trigger == ParkWeatherRunTrigger.Automatic)
+        {
+            await this.notificationService.NotifyRunStartedAsync(run, cancellationToken);
+        }
+    }
+
+    private async Task NotifyAutomaticRunCompletedAsync(ParkWeatherRun run, CancellationToken cancellationToken)
+    {
+        if (run.Trigger == ParkWeatherRunTrigger.Automatic)
+        {
+            await this.notificationService.NotifyRunCompletedAsync(run, cancellationToken);
         }
     }
 

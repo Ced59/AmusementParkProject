@@ -1,3 +1,5 @@
+using System.Net;
+using System.Text.RegularExpressions;
 using AmusementPark.Infrastructure.Configuration.Authentication;
 using MailKit.Net.Smtp;
 using MailKit.Security;
@@ -30,7 +32,8 @@ public sealed class SmtpEmailSender : IEmailSender
 
         BodyBuilder bodyBuilder = new BodyBuilder
         {
-            TextBody = htmlBody,
+            HtmlBody = htmlBody,
+            TextBody = BuildTextBody(htmlBody),
         };
 
         message.Body = bodyBuilder.ToMessageBody();
@@ -62,5 +65,16 @@ public sealed class SmtpEmailSender : IEmailSender
         }
 
         return SecureSocketOptions.Auto;
+    }
+
+    private static string BuildTextBody(string htmlBody)
+    {
+        string withLineBreaks = Regex.Replace(htmlBody, @"<\s*br\s*/?\s*>", "\n", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+        string withParagraphBreaks = Regex.Replace(withLineBreaks, @"<\s*/\s*(p|div|h1|h2|h3|li|tr)\s*>", "\n", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+        string withoutTags = Regex.Replace(withParagraphBreaks, "<.*?>", " ", RegexOptions.CultureInvariant);
+        string decoded = WebUtility.HtmlDecode(withoutTags);
+        string normalizedWhitespace = Regex.Replace(decoded, @"[ \t]+", " ", RegexOptions.CultureInvariant);
+        string normalizedLineBreaks = Regex.Replace(normalizedWhitespace, @"\n{3,}", "\n\n", RegexOptions.CultureInvariant);
+        return normalizedLineBreaks.Trim();
     }
 }

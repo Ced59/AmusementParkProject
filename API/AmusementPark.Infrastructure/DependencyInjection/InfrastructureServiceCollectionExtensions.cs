@@ -21,6 +21,7 @@ using AmusementPark.Application.Features.Users.Ports;
 using AmusementPark.Application.Features.Videos.Ports;
 using AmusementPark.Application.Ports;
 using AmusementPark.Infrastructure.Configuration.Authentication;
+using AmusementPark.Infrastructure.Configuration.Email;
 using AmusementPark.Infrastructure.Configuration.Initialization;
 using AmusementPark.Infrastructure.Configuration.Images;
 using AmusementPark.Infrastructure.Configuration.Mongo;
@@ -34,6 +35,7 @@ using AmusementPark.Infrastructure.Services.DataSources;
 using AmusementPark.Infrastructure.Services.DataSources.Acquisition;
 using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster;
 using AmusementPark.Infrastructure.Services.DataSources.CaptainCoaster.CaptainCoasterScraping;
+using AmusementPark.Infrastructure.Services.Email;
 using AmusementPark.Infrastructure.Services.Images;
 using AmusementPark.Infrastructure.Services.Seo;
 using AmusementPark.Infrastructure.Services.Ssr;
@@ -78,6 +80,9 @@ public static class InfrastructureServiceCollectionExtensions
 
         EmailSettings emailSettings = configuration.GetSection("Email").Get<EmailSettings>() ?? new EmailSettings();
         services.AddSingleton(emailSettings);
+
+        EmailNotificationSettings emailNotificationSettings = EmailNotificationSettings.Bind(configuration);
+        services.AddSingleton(emailNotificationSettings);
 
         GoogleOAuthSettings googleOAuthSettings = configuration.GetSection("Authentication:Google").Get<GoogleOAuthSettings>() ?? new GoogleOAuthSettings();
         services.AddSingleton(googleOAuthSettings);
@@ -190,6 +195,9 @@ public static class InfrastructureServiceCollectionExtensions
         services.AddScoped<ILocalAccountEmailService, LocalAccountEmailService>();
         services.AddScoped<IExternalIdentityVerifier, GoogleExternalIdentityVerifier>();
         services.AddScoped<IUserAvatarImporter, UserAvatarImporter>();
+        services.AddSingleton<BrandedEmailTemplateRenderer>();
+        services.AddScoped<IContactNotificationService, ContactNotificationEmailService>();
+        services.AddScoped<IParkWeatherNotificationService, ParkWeatherNotificationEmailService>();
 
         if (string.Equals(emailSettings.Mode, "Smtp", StringComparison.OrdinalIgnoreCase))
         {

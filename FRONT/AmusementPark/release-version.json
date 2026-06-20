@@ -1,6 +1,20 @@
 {
-  "version": "2.2.2",
+  "version": "2.3.0",
   "history": [
+    {
+      "version": "2.3.0",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Les emails du site sont plus utiles et plus soignés.",
+        "en": "Site emails are more helpful and polished.",
+        "de": "Website-E-Mails sind hilfreicher und gepflegter.",
+        "nl": "Site-e-mails zijn nuttiger en verzorgder.",
+        "it": "Le email del sito sono più utili e curate.",
+        "es": "Los correos del sitio son más útiles y cuidados.",
+        "pl": "E-maile ze strony są bardziej pomocne i dopracowane.",
+        "pt": "Os emails do site ficam mais úteis e cuidados."
+      }
+    },
     {
       "version": "2.2.2",
       "releasedAt": "2026-06-20",

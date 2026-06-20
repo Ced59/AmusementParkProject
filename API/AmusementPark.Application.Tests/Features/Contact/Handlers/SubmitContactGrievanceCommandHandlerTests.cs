@@ -16,7 +16,8 @@ public sealed class SubmitContactGrievanceCommandHandlerTests
     public async Task HandleAsync_WhenMessageContainsMarkup_ShouldRejectWithoutPersisting()
     {
         Mock<IContactGrievanceRepository> repository = new Mock<IContactGrievanceRepository>(MockBehavior.Strict);
-        SubmitContactGrievanceCommandHandler handler = new SubmitContactGrievanceCommandHandler(repository.Object);
+        Mock<IContactNotificationService> notificationService = new Mock<IContactNotificationService>(MockBehavior.Strict);
+        SubmitContactGrievanceCommandHandler handler = new SubmitContactGrievanceCommandHandler(repository.Object, notificationService.Object);
 
         ApplicationResult<ContactGrievanceSubmissionResult> result = await handler.HandleAsync(new SubmitContactGrievanceCommand(
             new ContactGrievanceSubmission("Bonjour <script>alert(1)</script>", null, "fr", "127.0.0.1", "test")));
@@ -24,13 +25,15 @@ public sealed class SubmitContactGrievanceCommandHandlerTests
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "contact.grievance.invalid");
         repository.VerifyNoOtherCalls();
+        notificationService.VerifyNoOtherCalls();
     }
 
     [Fact]
     public async Task HandleAsync_WhenHoneypotIsFilled_ShouldReturnSuccessWithoutPersisting()
     {
         Mock<IContactGrievanceRepository> repository = new Mock<IContactGrievanceRepository>(MockBehavior.Strict);
-        SubmitContactGrievanceCommandHandler handler = new SubmitContactGrievanceCommandHandler(repository.Object);
+        Mock<IContactNotificationService> notificationService = new Mock<IContactNotificationService>(MockBehavior.Strict);
+        SubmitContactGrievanceCommandHandler handler = new SubmitContactGrievanceCommandHandler(repository.Object, notificationService.Object);
 
         ApplicationResult<ContactGrievanceSubmissionResult> result = await handler.HandleAsync(new SubmitContactGrievanceCommand(
             new ContactGrievanceSubmission("Message valide pour un humain", "https://spam.example", "fr", "127.0.0.1", "test")));
@@ -40,6 +43,7 @@ public sealed class SubmitContactGrievanceCommandHandlerTests
         Assert.True(result.Value!.Accepted);
         Assert.Null(result.Value.SubmittedAtUtc);
         repository.VerifyNoOtherCalls();
+        notificationService.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -49,7 +53,8 @@ public sealed class SubmitContactGrievanceCommandHandlerTests
         repository
             .Setup(repo => repo.CountRecentByIpAsync("127.0.0.1", It.IsAny<DateTime>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(3);
-        SubmitContactGrievanceCommandHandler handler = new SubmitContactGrievanceCommandHandler(repository.Object);
+        Mock<IContactNotificationService> notificationService = new Mock<IContactNotificationService>(MockBehavior.Strict);
+        SubmitContactGrievanceCommandHandler handler = new SubmitContactGrievanceCommandHandler(repository.Object, notificationService.Object);
 
         ApplicationResult<ContactGrievanceSubmissionResult> result = await handler.HandleAsync(new SubmitContactGrievanceCommand(
             new ContactGrievanceSubmission("Message valide pour le cahier de doleances", null, "fr", "127.0.0.1", "test")));
@@ -57,6 +62,7 @@ public sealed class SubmitContactGrievanceCommandHandlerTests
         Assert.False(result.IsSuccess);
         Assert.Contains(result.Errors, static error => error.Code == "contact.grievance.too-many-submissions");
         repository.VerifyAll();
+        notificationService.VerifyNoOtherCalls();
     }
 
     [Fact]
@@ -75,7 +81,11 @@ public sealed class SubmitContactGrievanceCommandHandlerTests
                 grievance.CreatedAtUtc = createdAtUtc;
                 return grievance;
             });
-        SubmitContactGrievanceCommandHandler handler = new SubmitContactGrievanceCommandHandler(repository.Object);
+        Mock<IContactNotificationService> notificationService = new Mock<IContactNotificationService>(MockBehavior.Strict);
+        notificationService
+            .Setup(service => service.NotifySubmittedAsync(It.IsAny<ContactGrievance>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        SubmitContactGrievanceCommandHandler handler = new SubmitContactGrievanceCommandHandler(repository.Object, notificationService.Object);
 
         ApplicationResult<ContactGrievanceSubmissionResult> result = await handler.HandleAsync(new SubmitContactGrievanceCommand(
             new ContactGrievanceSubmission("  Une idee utile pour ameliorer le site.\r\nMerci.  ", null, "fr-FR", "127.0.0.1", new string('a', 300))));
@@ -88,6 +98,10 @@ public sealed class SubmitContactGrievanceCommandHandlerTests
             grievance.IpAddress == "127.0.0.1" &&
             grievance.UserAgent != null &&
             grievance.UserAgent.Length == 256), It.IsAny<CancellationToken>()), Times.Once);
+        notificationService.Verify(service => service.NotifySubmittedAsync(It.Is<ContactGrievance>(grievance =>
+            grievance.Id == "grievance-1" &&
+            grievance.Message == "Une idee utile pour ameliorer le site.\nMerci."), It.IsAny<CancellationToken>()), Times.Once);
         repository.VerifyAll();
+        notificationService.VerifyAll();
     }
 }

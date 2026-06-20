@@ -155,7 +155,7 @@ services:
       Cors__ExposedHeaders__2: X-Rate-Limit-Remaining
       Cors__ExposedHeaders__3: X-Rate-Limit-Reset
       Cors__AllowCredentials: "true"
-      Email__Mode: ${EMAIL_MODE:-Console}
+      Email__Mode: ${EMAIL_MODE:-Smtp}
       Email__Host: ${EMAIL_HOST:-}
       Email__Port: ${EMAIL_PORT:-587}
       Email__UseSsl: ${EMAIL_USE_SSL:-false}
@@ -164,6 +164,10 @@ services:
       Email__Password: ${EMAIL_PASSWORD:-}
       Email__FromAddress: ${EMAIL_FROM_ADDRESS:-noreply@amusement-parks.fun}
       Email__FromName: ${EMAIL_FROM_NAME:-Amusement Park}
+      Email__Notifications__AdminAddress: ${EMAIL_NOTIFICATION_ADMIN_ADDRESS:-admin@amusement-parks.fun}
+      Email__Notifications__ContactAddress: ${EMAIL_CONTACT_ADDRESS:-contact@amusement-parks.fun}
+      Email__Notifications__ContactNotificationsEnabled: ${EMAIL_CONTACT_NOTIFICATIONS_ENABLED:-true}
+      Email__Notifications__WeatherRunNotificationsEnabled: ${EMAIL_WEATHER_NOTIFICATIONS_ENABLED:-true}
       Initialization__AdminUser__Enabled: ${ADMIN_USER_ENABLED:-false}
       Initialization__AdminUser__Email: ${ADMIN_USER_EMAIL:-}
       Initialization__AdminUser__Password: ${ADMIN_USER_PASSWORD:-}

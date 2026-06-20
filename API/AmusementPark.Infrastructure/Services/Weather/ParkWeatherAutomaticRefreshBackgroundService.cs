@@ -47,7 +47,7 @@ public sealed class ParkWeatherAutomaticRefreshBackgroundService : BackgroundSer
 
         if (await runRepository.HasAutomaticCancellationAsync(localDate, cancellationToken))
         {
-            await runRepository.CreateAsync(new ParkWeatherRun
+            ParkWeatherRun skippedRun = await runRepository.CreateAsync(new ParkWeatherRun
             {
                 Trigger = ParkWeatherRunTrigger.Automatic,
                 Scope = ParkWeatherRefreshScope.FullVisibleParks,
@@ -57,6 +57,8 @@ public sealed class ParkWeatherAutomaticRefreshBackgroundService : BackgroundSer
                 Message = "Automatic weather refresh skipped because a manual refresh already covers this cycle.",
             }, cancellationToken);
 
+            IParkWeatherNotificationService notificationService = scope.ServiceProvider.GetRequiredService<IParkWeatherNotificationService>();
+            await notificationService.NotifyRunCompletedAsync(skippedRun, cancellationToken);
             this.logger.LogInformation("Automatic weather refresh skipped for local date {LocalDate}.", localDate);
             return;
         }

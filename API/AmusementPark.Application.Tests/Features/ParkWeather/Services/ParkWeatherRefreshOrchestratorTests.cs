@@ -83,6 +83,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             providerStrategyResolver.Object,
             new TestRefreshSettings(),
             cacheInvalidator.Object,
+            new NoOpParkWeatherNotificationService(),
             new ParkWeatherHistoricalComparisonDateResolver());
 
         await orchestrator.ProcessRunAsync("run-1", CancellationToken.None);
@@ -168,6 +169,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             providerStrategyResolver.Object,
             new TestRefreshSettings(),
             cacheInvalidator.Object,
+            new NoOpParkWeatherNotificationService(),
             new ParkWeatherHistoricalComparisonDateResolver());
 
         await orchestrator.ProcessRunAsync("run-2", CancellationToken.None);
@@ -176,6 +178,82 @@ public sealed class ParkWeatherRefreshOrchestratorTests
         Assert.Equal(1, run.TotalParkCount);
         Assert.Equal(1, run.SucceededParkCount);
         Assert.Equal(new[] { validPark }, invalidatedParks);
+        parkRepository.VerifyAll();
+        weatherRepository.VerifyAll();
+        runRepository.VerifyAll();
+        providerStrategyResolver.VerifyAll();
+        providerStrategy.VerifyAll();
+        cacheInvalidator.VerifyAll();
+    }
+
+    [Fact]
+    public async Task ProcessRunAsync_WhenAutomaticRunCompletes_ShouldNotifyStartAndCompletion()
+    {
+        Park park = CreatePark("park-1", "Magic Park", true, 48.86, 2.35);
+        ParkWeatherRun run = new ParkWeatherRun
+        {
+            Id = "run-auto",
+            Scope = ParkWeatherRefreshScope.FullVisibleParks,
+            Status = ParkWeatherRunStatus.Queued,
+            Trigger = ParkWeatherRunTrigger.Automatic,
+        };
+        ParkWeatherDailySnapshot forecast = CreateSnapshot("park-1", DateOnly.FromDateTime(DateTime.UtcNow), ParkWeatherDataKind.Forecast);
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetVisibleWithValidCoordinatesAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new[] { park });
+        Mock<IParkWeatherRepository> weatherRepository = new Mock<IParkWeatherRepository>(MockBehavior.Strict);
+        weatherRepository
+            .Setup(repository => repository.UpsertSnapshotsAsync(It.Is<IReadOnlyCollection<ParkWeatherDailySnapshot>>(snapshots => snapshots.Single() == forecast), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredForecastsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        weatherRepository
+            .Setup(repository => repository.DeleteExpiredObservationsAsync(It.IsAny<DateOnly>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<IParkWeatherRunRepository> runRepository = CreateRunRepository(run);
+        Mock<IParkWeatherProviderStrategy> providerStrategy = new Mock<IParkWeatherProviderStrategy>(MockBehavior.Strict);
+        providerStrategy
+            .Setup(strategy => strategy.FetchDailyForecastAsync(
+                park,
+                7,
+                true,
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkWeatherProviderResult { Snapshots = new[] { forecast } });
+        Mock<IParkWeatherProviderStrategyResolver> providerStrategyResolver = new Mock<IParkWeatherProviderStrategyResolver>(MockBehavior.Strict);
+        providerStrategyResolver
+            .Setup(resolver => resolver.Resolve())
+            .Returns(providerStrategy.Object);
+        Mock<IParkWeatherCacheInvalidator> cacheInvalidator = new Mock<IParkWeatherCacheInvalidator>(MockBehavior.Strict);
+        cacheInvalidator
+            .Setup(invalidator => invalidator.InvalidateUpdatedWeatherAsync(It.IsAny<IReadOnlyCollection<Park>>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        Mock<IParkWeatherNotificationService> notificationService = new Mock<IParkWeatherNotificationService>(MockBehavior.Strict);
+        notificationService
+            .Setup(service => service.NotifyRunStartedAsync(It.Is<ParkWeatherRun>(currentRun =>
+                currentRun.Id == "run-auto" &&
+                currentRun.Status == ParkWeatherRunStatus.Running), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        notificationService
+            .Setup(service => service.NotifyRunCompletedAsync(It.Is<ParkWeatherRun>(currentRun =>
+                currentRun.Id == "run-auto" &&
+                currentRun.Status == ParkWeatherRunStatus.Completed &&
+                currentRun.SucceededParkCount == 1), It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+        ParkWeatherRefreshOrchestrator orchestrator = new ParkWeatherRefreshOrchestrator(
+            parkRepository.Object,
+            weatherRepository.Object,
+            runRepository.Object,
+            providerStrategyResolver.Object,
+            new TestRefreshSettings(),
+            cacheInvalidator.Object,
+            notificationService.Object,
+            new ParkWeatherHistoricalComparisonDateResolver());
+
+        await orchestrator.ProcessRunAsync("run-auto", CancellationToken.None);
+
+        notificationService.VerifyAll();
         parkRepository.VerifyAll();
         weatherRepository.VerifyAll();
         runRepository.VerifyAll();
@@ -259,6 +337,7 @@ public sealed class ParkWeatherRefreshOrchestratorTests
             providerStrategyResolver.Object,
             new TestRefreshSettings { HistoricalBackfillYears = 3 },
             cacheInvalidator.Object,
+            new NoOpParkWeatherNotificationService(),
             new ParkWeatherHistoricalComparisonDateResolver());
 
         await orchestrator.ProcessRunAsync("run-history", CancellationToken.None);
