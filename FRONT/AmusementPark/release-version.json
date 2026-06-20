@@ -1,6 +1,20 @@
 {
-  "version": "2.3.2",
+  "version": "2.3.3",
   "history": [
+    {
+      "version": "2.3.3",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Les aperçus de partage précisent mieux les images.",
+        "en": "Shared previews describe images more precisely.",
+        "de": "Geteilte Vorschauen beschreiben Bilder genauer.",
+        "nl": "Gedeelde previews beschrijven beelden preciezer.",
+        "it": "Le anteprime condivise descrivono meglio le immagini.",
+        "es": "Las vistas compartidas describen mejor las imágenes.",
+        "pl": "Podglądy udostępniania dokładniej opisują obrazy.",
+        "pt": "As pré-visualizações partilhadas descrevem melhor as imagens."
+      }
+    },
     {
       "version": "2.3.2",
       "releasedAt": "2026-06-20",

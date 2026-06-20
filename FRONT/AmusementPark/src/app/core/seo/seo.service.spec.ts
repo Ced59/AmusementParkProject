@@ -39,6 +39,7 @@ describe('SeoService', () => {
     expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/park-photo%201?width=1200&v=2');
     expect(readMetaContent('meta[property="og:image:secure_url"]')).toBe('https://localhost:44391/images/park-photo%201?width=1200&v=2');
     expect(readMetaContent('meta[property="og:image:width"]')).toBe('1200');
+    expect(readMetaContent('meta[property="og:image:height"]')).toBe('630');
     expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Demo Park');
     expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/park-photo%201?width=1200&v=2');
   });

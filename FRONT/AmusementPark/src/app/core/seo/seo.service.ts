@@ -94,6 +94,7 @@ const SITE_NAME: string = 'Amusement Parks';
 const DEFAULT_DESCRIPTION: string = 'Explore amusement parks, attractions, restaurants, hotels and park references around the world.';
 const DEFAULT_SOCIAL_IMAGE_PATH: string = '/assets/general-icon/logo-amusementpark.png';
 const SOCIAL_IMAGE_WIDTH: number = 1200;
+const SOCIAL_IMAGE_HEIGHT: number = 630;
 const RESPONSIVE_IMAGE_VERSION: string = '2';
 
 const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
@@ -1102,6 +1103,7 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:image', content: socialImageUrl });
     this.meta.updateTag({ property: 'og:image:secure_url', content: socialImageUrl });
     this.meta.updateTag({ property: 'og:image:width', content: String(SOCIAL_IMAGE_WIDTH) });
+    this.meta.updateTag({ property: 'og:image:height', content: String(SOCIAL_IMAGE_HEIGHT) });
     this.meta.updateTag({ property: 'og:image:alt', content: socialImageAlt });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: data.title });
