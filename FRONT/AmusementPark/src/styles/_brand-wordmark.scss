@@ -12,6 +12,17 @@
   --brand-wordmark-fun-lift: -0.16em;
   --brand-wordmark-fun-rotation: -7deg;
   --brand-wordmark-gap: 0.08em;
+  --brand-wordmark-fun-dot-color: #ff7a45;
+  --brand-wordmark-fun-glow: rgba(255, 90, 31, 0.34);
+  --brand-wordmark-fun-shadow: rgba(0, 0, 0, 0.68);
+  --brand-wordmark-fun-stroke: rgba(15, 11, 6, 0.72);
+  --brand-wordmark-fun-1: #ff7a45;
+  --brand-wordmark-fun-2: #ff4d8b;
+  --brand-wordmark-fun-3: #9b5de5;
+  --brand-wordmark-fun-4: #38c5f5;
+  --brand-wordmark-fun-5: #d9ff6b;
+  --brand-wordmark-underline-1: #ff5a1f;
+  --brand-wordmark-underline-2: #ffb627;
 
   display: inline-flex;
   align-items: baseline;
@@ -23,6 +34,20 @@
   letter-spacing: 0.04em;
   line-height: 0.95;
   white-space: nowrap;
+}
+
+body.light-mode .app-brand-wordmark {
+  --brand-wordmark-fun-dot-color: #b83e0d;
+  --brand-wordmark-fun-glow: rgba(255, 90, 31, 0.18);
+  --brand-wordmark-fun-shadow: rgba(255, 249, 240, 0.86);
+  --brand-wordmark-fun-stroke: rgba(255, 249, 240, 0.8);
+  --brand-wordmark-fun-1: #b83e0d;
+  --brand-wordmark-fun-2: #c61855;
+  --brand-wordmark-fun-3: #6f36b8;
+  --brand-wordmark-fun-4: #006d93;
+  --brand-wordmark-fun-5: #4f6f00;
+  --brand-wordmark-underline-1: #ff5a1f;
+  --brand-wordmark-underline-2: #8a4f00;
 }
 
 .app-brand-wordmark__base {
@@ -42,11 +67,11 @@
 }
 
 .app-brand-wordmark__dot {
-  color: var(--c-orange-2);
+  color: var(--brand-wordmark-fun-dot-color);
   font-family: var(--font-display);
   font-size: 0.72em;
   line-height: 1;
-  text-shadow: 0 0 0.35em rgba(255, 90, 31, 0.38);
+  text-shadow: 0 0 0.35em var(--brand-wordmark-fun-glow);
   transform: translateY(0.04em);
 }
 
@@ -56,30 +81,30 @@
   margin-left: 0.015em;
   background: linear-gradient(
     100deg,
-    var(--c-orange-2) 0%,
-    var(--c-orange-2) 16%,
-    var(--c-rose) 17%,
-    var(--c-rose) 41%,
-    var(--c-sky-2) 42%,
-    var(--c-sky-2) 68%,
-    var(--c-lime) 69%,
-    var(--c-lime) 100%
+    var(--brand-wordmark-fun-1) 0%,
+    var(--brand-wordmark-fun-1) 15%,
+    var(--brand-wordmark-fun-2) 25%,
+    var(--brand-wordmark-fun-2) 42%,
+    var(--brand-wordmark-fun-3) 51%,
+    var(--brand-wordmark-fun-4) 68%,
+    var(--brand-wordmark-fun-5) 86%,
+    var(--brand-wordmark-fun-5) 100%
   );
   background-clip: text;
-  color: var(--c-rose);
+  color: var(--brand-wordmark-fun-2);
   font-family: "Satisfy Brand Fun", "Segoe Script", "Brush Script MT", cursive;
   font-size: var(--brand-wordmark-fun-size);
   font-weight: 400;
   letter-spacing: 0;
   line-height: 0.78;
   text-shadow:
-    0 0 0.4em rgba(255, 90, 31, 0.28),
-    0 0.045em 0 rgba(0, 0, 0, 0.82);
+    0 0 0.36em var(--brand-wordmark-fun-glow),
+    0 0.045em 0 var(--brand-wordmark-fun-shadow);
   transform: translateY(var(--brand-wordmark-fun-lift)) rotate(var(--brand-wordmark-fun-rotation));
   transform-origin: left bottom;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 0.012em rgba(15, 11, 6, 0.9);
+  -webkit-text-stroke: 0.006em var(--brand-wordmark-fun-stroke);
 }
 
 .app-brand-wordmark__fun-text::after {
@@ -90,7 +115,7 @@
   bottom: -0.42em;
   height: 0.08em;
   border-radius: var(--radius-pill);
-  background: linear-gradient(90deg, var(--c-orange), var(--c-gold));
+  background: linear-gradient(90deg, var(--brand-wordmark-underline-1), var(--brand-wordmark-underline-2));
   box-shadow: 0 0 0.28em rgba(255, 182, 39, 0.25);
   transform: rotate(-10deg);
   transform-origin: left center;
