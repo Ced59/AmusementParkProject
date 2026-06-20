@@ -1,6 +1,20 @@
 {
-  "version": "2.2.0",
+  "version": "2.2.1",
   "history": [
+    {
+      "version": "2.2.1",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Les liens du bas de page restent bien rangés sous la signature.",
+        "en": "Bottom links stay neatly below the signature.",
+        "de": "Die unteren Links bleiben sauber unter der Signatur.",
+        "nl": "De onderste links blijven netjes onder de signatuur.",
+        "it": "I link in fondo restano ordinati sotto la firma.",
+        "es": "Los enlaces inferiores quedan bien ordenados bajo la firma.",
+        "pl": "Dolne linki pozostają czytelnie pod podpisem.",
+        "pt": "Os links do rodapé ficam bem alinhados sob a assinatura."
+      }
+    },
     {
       "version": "2.2.0",
       "releasedAt": "2026-06-20",

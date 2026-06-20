@@ -85,6 +85,18 @@ describe('PublicFooterComponent', () => {
     expect(funLine?.textContent?.trim()).toBe('for even more fun');
   });
 
+  it('keeps the footer link columns after the full-width brand block', () => {
+    const layout: HTMLElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-footer__inner');
+    const children: Element[] = Array.from(layout?.children ?? []);
+    const brandIndex: number = children.findIndex((child: Element) => child.classList.contains('app-public-footer__brand'));
+    const columnIndexes: number[] = children
+      .map((child: Element, index: number) => child.classList.contains('app-public-footer__column') ? index : -1)
+      .filter((index: number) => index >= 0);
+
+    expect(brandIndex).toBe(0);
+    expect(columnIndexes).toEqual([1, 2, 3]);
+  });
+
   it('marks the current footer language link for accessible active styling', () => {
     const activeLanguageLink: HTMLAnchorElement | null = (fixture.nativeElement as HTMLElement)
       .querySelector('.app-public-footer__language-link--active');
