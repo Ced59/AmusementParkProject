@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Features.ParkItems;
 using AmusementPark.Application.Features.Images.Contracts;
 using AmusementPark.Application.Features.Images.Ports;
 using AmusementPark.Application.Features.ParkItems.Ports;
@@ -25,8 +26,9 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(new SitemapGenerationContext(), CancellationToken.None);
 
-        Assert.Equal(6, urls.Count);
+        Assert.Equal(7, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/en/home" && url.Priority == 1.0m);
+        Assert.Contains(urls, static url => url.RelativePath == "/en/rankings" && url.Priority == 0.82m);
         Assert.Contains(urls, static url => url.RelativePath == "/en/privacy" && url.ChangeFrequency == "yearly");
         Assert.Contains(urls, static url => url.RelativePath == "/en/contact" && url.ChangeFrequency == "monthly");
         Assert.Contains(urls, static url => url.RelativePath == "/en/versions" && url.ChangeFrequency == "monthly");
@@ -43,9 +45,10 @@ public sealed class SitemapSectionProvidersTests
 
         IReadOnlyCollection<SitemapUrlEntry> urls = await provider.GetUrlsAsync(context, CancellationToken.None);
 
-        Assert.Equal(12, urls.Count);
+        Assert.Equal(14, urls.Count);
         Assert.Contains(urls, static url => url.RelativePath == "/fr/home");
         Assert.Contains(urls, static url => url.RelativePath == "/en/home");
+        Assert.Contains(urls, static url => url.RelativePath == "/fr/rankings");
         Assert.Contains(urls, static url => url.RelativePath == "/fr/contact");
         Assert.Contains(urls, static url => url.RelativePath == "/en/versions");
     }
@@ -90,13 +93,13 @@ public sealed class SitemapSectionProvidersTests
     public async Task ParksProvider_WhenRepositoryReturnsMixedParks_ShouldReturnUrlsOnlyForPublicParks()
     {
         CancellationToken cancellationToken = new CancellationTokenSource().Token;
-        PagedResult<Park> page = new PagedResult<Park>(new[]
+        Park[] parks = new[]
         {
             new Park { Id = "park-1", Name = "Parc Astérix", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) },
             new Park { Id = "hidden", Name = "Hidden", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
-        }, 1, int.MaxValue, 2);
+        };
         Mock<IParkRepository> repository = new Mock<IParkRepository>(MockBehavior.Strict);
-        repository.Setup(item => item.GetPageAsync(1, int.MaxValue, false, true, null, null, null, null, cancellationToken)).ReturnsAsync(page);
+        SetupPublicSitemapParks(repository, parks);
         ParksSitemapSectionProvider provider = new ParksSitemapSectionProvider(repository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
@@ -115,15 +118,15 @@ public sealed class SitemapSectionProvidersTests
     public async Task ParkImagesProvider_WhenPublicParkHasPublishedImages_ShouldReturnImageUrlsOnly()
     {
         CancellationToken cancellationToken = new CancellationTokenSource().Token;
-        PagedResult<Park> page = new PagedResult<Park>(new[]
+        Park[] parks = new[]
         {
             new Park { Id = "park-1", Name = "Parc Asterix", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) },
             new Park { Id = "park-2", Name = "No Photos", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
             new Park { Id = "hidden", Name = "Hidden", IsVisible = false, AdminReviewStatus = AdminReviewStatus.Validated },
-        }, 1, int.MaxValue, 3);
+        };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = CreateImageRepository(CreateImage("image-park-1", ImageOwnerType.Park, "park-1", ImageCategory.Park));
-        parkRepository.Setup(item => item.GetPageAsync(1, int.MaxValue, false, true, null, null, null, null, cancellationToken)).ReturnsAsync(page);
+        SetupPublicSitemapParks(parkRepository, parks);
         ParkImagesSitemapSectionProvider provider = new ParkImagesSitemapSectionProvider(parkRepository.Object, imageRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr", "en" } };
 
@@ -148,7 +151,7 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        SetupPublicSitemapItems(itemRepository, itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated, UpdatedAtUtc = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc) } });
         ParkItemListsSitemapSectionProvider provider = new ParkItemListsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
@@ -181,7 +184,7 @@ public sealed class SitemapSectionProvidersTests
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkZoneRepository> zoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        SetupPublicSitemapItems(itemRepository, itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
         zoneRepository.Setup(item => item.GetByParkIdAsync("park-1", It.IsAny<CancellationToken>())).ReturnsAsync(zones);
@@ -209,7 +212,7 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        SetupPublicSitemapItems(itemRepository, itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
@@ -236,7 +239,7 @@ public sealed class SitemapSectionProvidersTests
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = CreateImageRepository(CreateImage("image-item-1", ImageOwnerType.ParkItem, "item-1", ImageCategory.ParkItem));
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        SetupPublicSitemapItems(itemRepository, itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
         ParkItemImagesSitemapSectionProvider provider = new ParkItemImagesSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
@@ -396,7 +399,7 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        SetupPublicSitemapItems(itemRepository, itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[]
             {
@@ -428,7 +431,7 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        SetupPublicSitemapItems(itemRepository, itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => !ids.Any()), It.IsAny<CancellationToken>()))
             .ReturnsAsync(Array.Empty<Park>());
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
@@ -452,7 +455,7 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        SetupPublicSitemapItems(itemRepository, itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.IsAny<IEnumerable<string>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[]
             {
@@ -490,7 +493,7 @@ public sealed class SitemapSectionProvidersTests
             .ToList();
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        SetupPublicSitemapItems(itemRepository, itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
@@ -513,7 +516,7 @@ public sealed class SitemapSectionProvidersTests
         };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        SetupPublicSitemapItems(itemRepository, itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-99" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-99", Name = "Late Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
         ParkItemsSitemapSectionProvider provider = new ParkItemsSitemapSectionProvider(parkRepository.Object, itemRepository.Object);
@@ -530,13 +533,13 @@ public sealed class SitemapSectionProvidersTests
     public async Task ParkImagesProvider_WhenPublicParkHasNoPublishedImages_ShouldSkipImagesUrl()
     {
         CancellationToken cancellationToken = new CancellationTokenSource().Token;
-        PagedResult<Park> page = new PagedResult<Park>(new[]
+        Park[] parks = new[]
         {
             new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated },
-        }, 1, int.MaxValue, 1);
+        };
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = CreateImageRepository();
-        parkRepository.Setup(item => item.GetPageAsync(1, int.MaxValue, false, true, null, null, null, null, cancellationToken)).ReturnsAsync(page);
+        SetupPublicSitemapParks(parkRepository, parks);
         ParkImagesSitemapSectionProvider provider = new ParkImagesSitemapSectionProvider(parkRepository.Object, imageRepository.Object);
         SitemapGenerationContext context = new SitemapGenerationContext { SupportedLanguages = new[] { "fr" } };
 
@@ -557,7 +560,7 @@ public sealed class SitemapSectionProvidersTests
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
         Mock<IParkItemRepository> itemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
         Mock<IImageRepository> imageRepository = CreateImageRepository();
-        itemRepository.Setup(item => item.GetPublicSitemapCandidatesAsync(int.MaxValue, It.IsAny<CancellationToken>())).ReturnsAsync(itemCandidates);
+        SetupPublicSitemapItems(itemRepository, itemCandidates);
         parkRepository.Setup(item => item.GetByIdsAsync(It.Is<IEnumerable<string>>(ids => ids.SequenceEqual(new[] { "park-1" })), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { new Park { Id = "park-1", Name = "Visible Park", IsVisible = true, AdminReviewStatus = AdminReviewStatus.Validated } });
         ParkItemImagesSitemapSectionProvider provider = new ParkItemImagesSitemapSectionProvider(parkRepository.Object, itemRepository.Object, imageRepository.Object);
@@ -569,6 +572,84 @@ public sealed class SitemapSectionProvidersTests
         parkRepository.VerifyAll();
         itemRepository.VerifyAll();
         imageRepository.VerifyAll();
+    }
+
+    private static void SetupPublicSitemapParks(Mock<IParkRepository> repository, IReadOnlyCollection<Park> parks)
+    {
+        repository
+            .Setup(item => item.GetPageAsync(
+                It.IsAny<int>(),
+                It.IsAny<int>(),
+                false,
+                true,
+                null,
+                null,
+                null,
+                null,
+                It.IsAny<CancellationToken>()))
+            .Returns((
+                int page,
+                int pageSize,
+                bool includeHidden,
+                bool? isVisible,
+                AdminReviewStatus? adminReviewStatus,
+                ParkType? type,
+                string? countryCode,
+                bool? hasValidCoordinates,
+                CancellationToken cancellationToken) =>
+            {
+                IReadOnlyCollection<Park> pageItems = parks
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+
+                return Task.FromResult(new PagedResult<Park>(pageItems, page, pageSize, parks.Count));
+            });
+    }
+
+    private static void SetupPublicSitemapItems(Mock<IParkItemRepository> repository, IReadOnlyCollection<ParkItem> items)
+    {
+        repository
+            .Setup(item => item.GetPageAsync(
+                It.IsAny<int>(),
+                It.IsAny<int>(),
+                null,
+                null,
+                false,
+                true,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                It.IsAny<CancellationToken>(),
+                ParkItemAdminSortField.ParkId,
+                false))
+            .Returns((
+                int page,
+                int pageSize,
+                string? parkId,
+                string? search,
+                bool includeHidden,
+                bool? isVisible,
+                AdminReviewStatus? adminReviewStatus,
+                ParkItemCategory? category,
+                ParkItemType? type,
+                string? zoneId,
+                string? manufacturerId,
+                ParkItemContentBacklogFilter? contentBacklogFilter,
+                CancellationToken cancellationToken,
+                ParkItemAdminSortField sortField,
+                bool sortDescending) =>
+            {
+                IReadOnlyCollection<ParkItem> pageItems = items
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+
+                return Task.FromResult(new PagedResult<ParkItem>(pageItems, page, pageSize, items.Count));
+            });
     }
 
     private static Mock<IImageRepository> CreateImageRepository(params Image[] images)

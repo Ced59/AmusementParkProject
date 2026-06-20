@@ -280,6 +280,7 @@ Le serveur Angular SSR proxifie maintenant les documents SEO racine vers l'API :
 
 - `GET /robots.txt` -> `api:8080/robots.txt`
 - `GET /sitemap.xml` -> `api:8080/sitemap.xml`
+- `GET /sitemaps/*.xml` -> `api:8080/sitemaps/*.xml`
 
 La variable `PUBLIC_BASE_URL` alimente aussi `Seo__PublicBaseUrl`, utilisée pour produire les URLs absolues du sitemap et la directive `Sitemap:` de `robots.txt`. En production, cette valeur doit rester une origin racine en `https://` : elle sert aussi de référence SEO pour éviter des canonical/hreflang/sitemap en `http://`.
 
@@ -313,6 +314,7 @@ Le serveur SSR relaie aussi :
 /api/*       -> API interne Docker
 /robots.txt  -> API interne Docker
 /sitemap.xml -> API interne Docker
+/sitemaps/*  -> API interne Docker
 ```
 
 Variable disponible si le nom du service API change :

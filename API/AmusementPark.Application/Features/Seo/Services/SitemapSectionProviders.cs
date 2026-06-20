@@ -23,6 +23,7 @@ public sealed class StaticPagesSitemapSectionProvider : ISitemapSectionProvider
     {
         new StaticSitemapPage("home", "daily", 1.0m),
         new StaticSitemapPage("parks", "daily", 0.9m),
+        new StaticSitemapPage("rankings", "daily", 0.82m),
         new StaticSitemapPage("about", "monthly", 0.4m),
         new StaticSitemapPage("contact", "monthly", 0.35m),
         new StaticSitemapPage("versions", "monthly", 0.3m),
@@ -70,7 +71,6 @@ public sealed class StaticPagesSitemapSectionProvider : ISitemapSectionProvider
 /// </summary>
 public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
 {
-    private const int PublicSitemapCandidatePageSize = int.MaxValue;
     private const int PublicSitemapImagePageSize = 100;
 
     private readonly IParkRepository parkRepository;
@@ -91,19 +91,12 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
         ArgumentNullException.ThrowIfNull(context);
 
         IReadOnlyCollection<string> languages = NormalizeLanguages(context.SupportedLanguages);
-        PagedResult<Park> page = await this.parkRepository.GetPageAsync(
-            1,
-            PublicSitemapCandidatePageSize,
-            includeHidden: false,
-            isVisible: true,
-            adminReviewStatus: null,
-            type: null,
-            countryCode: null,
-            hasValidCoordinates: null,
+        IReadOnlyCollection<Park> publicParks = await SitemapPublicCandidateLoader.LoadPublicParksAsync(
+            this.parkRepository,
             cancellationToken);
 
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
-        foreach (Park park in page.Items.Where(static park => IsPublicPark(park)))
+        foreach (Park park in publicParks)
         {
             string slug = SeoSlugService.ToSlug(park.Name, "park");
             foreach (string language in languages)
@@ -186,8 +179,6 @@ public sealed class ParksSitemapSectionProvider : ISitemapSectionProvider
 
 public sealed class ParkItemListsSitemapSectionProvider : ISitemapSectionProvider
 {
-    private const int PublicSitemapCandidateLimit = int.MaxValue;
-
     private readonly IParkRepository parkRepository;
     private readonly IParkItemRepository parkItemRepository;
 
@@ -244,13 +235,11 @@ public sealed class ParkItemListsSitemapSectionProvider : ISitemapSectionProvide
 
     internal static async Task<IReadOnlyCollection<ParkItem>> LoadPublicItemsAsync(IParkItemRepository parkItemRepository, CancellationToken cancellationToken)
     {
-        IReadOnlyCollection<ParkItem> candidateItems = await parkItemRepository.GetPublicSitemapCandidatesAsync(
-            PublicSitemapCandidateLimit,
+        IReadOnlyCollection<ParkItem> publicItems = await SitemapPublicCandidateLoader.LoadPublicItemsAsync(
+            parkItemRepository,
             cancellationToken);
 
-        return candidateItems
-            .Where(static item => ParkItemsSitemapSectionProvider.IsPublicItem(item))
-            .ToList();
+        return publicItems;
     }
 
     internal static IReadOnlyDictionary<string, List<ParkItem>> GroupItemsByParkId(IReadOnlyCollection<ParkItem> items)

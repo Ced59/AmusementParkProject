@@ -15,8 +15,6 @@ namespace AmusementPark.Application.Features.Seo.Services;
 /// </summary>
 public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
 {
-    private const int PublicSitemapCandidatePageSize = int.MaxValue;
-
     private readonly IParkRepository parkRepository;
     private readonly IImageRepository imageRepository;
 
@@ -37,15 +35,8 @@ public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
         ArgumentNullException.ThrowIfNull(context);
 
         IReadOnlyCollection<string> languages = ParksSitemapSectionProvider.NormalizeLanguages(context.SupportedLanguages);
-        PagedResult<Park> page = await this.parkRepository.GetPageAsync(
-            1,
-            PublicSitemapCandidatePageSize,
-            includeHidden: false,
-            isVisible: true,
-            adminReviewStatus: null,
-            type: null,
-            countryCode: null,
-            hasValidCoordinates: null,
+        IReadOnlyCollection<Park> publicParks = await SitemapPublicCandidateLoader.LoadPublicParksAsync(
+            this.parkRepository,
             cancellationToken);
 
         HashSet<string> parkIdsWithPublishedImages = await ParksSitemapSectionProvider.LoadPublishedImageOwnerIdsAsync(
@@ -55,7 +46,7 @@ public sealed class ParkImagesSitemapSectionProvider : ISitemapSectionProvider
             cancellationToken);
 
         List<SitemapUrlEntry> urls = new List<SitemapUrlEntry>();
-        foreach (Park park in page.Items.Where(static park => ParksSitemapSectionProvider.IsPublicPark(park)))
+        foreach (Park park in publicParks)
         {
             if (!parkIdsWithPublishedImages.Contains(park.Id!))
             {
