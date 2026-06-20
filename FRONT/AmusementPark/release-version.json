@@ -1,6 +1,20 @@
 {
-  "version": "2.1.7",
+  "version": "2.1.8",
   "history": [
+    {
+      "version": "2.1.8",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Les pages introuvables repondent correctement.",
+        "en": "Missing pages respond correctly.",
+        "de": "Fehlende Seiten antworten korrekt.",
+        "nl": "Ontbrekende pagina's reageren correct.",
+        "it": "Le pagine mancanti rispondono correttamente.",
+        "es": "Las paginas no encontradas responden correctamente.",
+        "pl": "Brakujace strony odpowiadaja prawidlowo.",
+        "pt": "As paginas em falta respondem corretamente."
+      }
+    },
     {
       "version": "2.1.7",
       "releasedAt": "2026-06-20",
