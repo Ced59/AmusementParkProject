@@ -19,8 +19,8 @@ describe('PublicFooterComponent', () => {
       footer: {
         ariaLabel: 'Site footer',
         brand: {
-          sloganData: 'Reliable data',
-          sloganFun: 'for more fun'
+          sloganData: 'Rigorous data',
+          sloganFun: 'for even more fun'
         },
         explore: {
           title: 'Explore',
@@ -81,8 +81,8 @@ describe('PublicFooterComponent', () => {
     const dataLine: HTMLElement | null = slogan?.querySelector('.app-public-footer__slogan-base') ?? null;
     const funLine: HTMLElement | null = slogan?.querySelector('.app-public-footer__slogan-fun') ?? null;
 
-    expect(dataLine?.textContent?.trim()).toBe('Reliable data');
-    expect(funLine?.textContent?.trim()).toBe('for more fun');
+    expect(dataLine?.textContent?.trim()).toBe('Rigorous data');
+    expect(funLine?.textContent?.trim()).toBe('for even more fun');
   });
 
   it('marks the current footer language link for accessible active styling', () => {

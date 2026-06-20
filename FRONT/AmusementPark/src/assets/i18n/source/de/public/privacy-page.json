@@ -45,7 +45,7 @@
       "cookies": {
         "title": "Cookies und lokaler Speicher",
         "body1": "Streng notwendige Cookies oder Speicher können für Sitzung, Sicherheit, Sprache, Design, Oberflächenpräferenzen und korrektes Authentifizierungsverhalten verwendet werden.",
-        "body2": "Diese notwendigen Tracker können Sitzungs-/API-Cookies, HTTP-only-Authentifizierungs-Cookies, Anti-Missbrauchsmechanismen und lokal gespeicherte Präferenzen umfassen. Sie können im Banner nicht deaktiviert werden, da sie den angeforderten Dienst ermöglichen.",
+        "body2": "Diese notwendigen Tracker können Sitzungs-/API-Cookies, HTTP-only-Authentifizierungs-Cookies, Anti-Missbrauchsmechanismen und lokal gespeicherte Präferenzen umfassen. Du kannst sie im Banner nicht deaktivieren, da sie den angeforderten Dienst ermöglichen.",
         "body3": "Die Auswahl zu optionalen Cookies wird im lokalen Browserspeicher und in einem Präferenz-Cookie gespeichert, damit dieselbe Auswahl nicht auf jeder Seite erneut abgefragt wird."
       },
       "hosting": {
@@ -65,7 +65,7 @@
       },
       "thirdPartyCookies": {
         "title": "Drittanbieter-Cookies und Google-Authentifizierung",
-        "body1": "Die Website bietet Google OAuth / Sign in with Google an. Wenn Sie diese Methode verwenden, kann Google eigene Cookies und ähnliche Technologien für Authentifizierung, Sicherheit, Betrugsprävention und Sitzungsverwaltung setzen oder lesen.",
+        "body1": "Die Website bietet Google OAuth / Sign in with Google an. Wenn du diese Methode verwendest, kann Google eigene Cookies und ähnliche Technologien für Authentifizierung, Sicherheit, Betrugsprävention und Sitzungsverwaltung setzen oder lesen.",
         "body2": "Diese Drittanbieter-Tracker sind für die vom Nutzer angeforderte Google-Authentifizierung erforderlich und werden nicht durch die Matomo-/Analytics-Einwilligung der Website gesteuert.",
         "body3": "Die Ablehnung optionaler AmusementPark-Cookies blockiert die Authentifizierung nicht. Ein Browser, der bestimmte Drittanbieter-Cookies blockiert, kann die Google-Anmeldung jedoch verhindern oder beeinträchtigen."
       },

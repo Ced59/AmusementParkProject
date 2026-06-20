@@ -1,9 +1,13 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable, forkJoin, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
+import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkItem } from '@app/models/parks/park-item';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
@@ -26,8 +30,10 @@ import {
 } from '@features/public/videos/models/public-video-view.model';
 import {
   PARK_ITEM_VIDEOS_ITEMS_PORT,
+  PARK_ITEM_VIDEOS_IMAGES_PORT,
   PARK_ITEM_VIDEOS_PARKS_PORT,
   PARK_ITEM_VIDEOS_VIDEOS_PORT,
+  ParkItemVideosImagesPort,
   ParkItemVideosItemsPort,
   ParkItemVideosParksPort,
   ParkItemVideosVideosPort
@@ -36,6 +42,8 @@ import {
 interface ParkItemVideosPageData {
   item: ParkItem;
   park: Park;
+  itemImageId: string | null;
+  parkImageId: string | null;
   videos: VideoDto[];
   videoTags: VideoTagDto[];
   pagination: PaginationContract;
@@ -54,6 +62,8 @@ export class ParkItemVideosStateFacade {
   public readonly loadingMore: Signal<boolean> = this.loadingMoreSignal.asReadonly();
   public readonly item = computed(() => this.screenStateStore.data()?.item ?? null);
   public readonly park = computed(() => this.screenStateStore.data()?.park ?? null);
+  public readonly itemImageId = computed(() => this.screenStateStore.data()?.itemImageId ?? null);
+  public readonly parkImageId = computed(() => this.screenStateStore.data()?.parkImageId ?? null);
   public readonly totalVideos = computed(() => this.screenStateStore.data()?.pagination.totalItems ?? 0);
   public readonly filters = computed(() => this.screenStateStore.data()?.filters ?? createEmptyFilters());
   public readonly canLoadMore = computed(() => {
@@ -94,6 +104,7 @@ export class ParkItemVideosStateFacade {
   constructor(
     @Inject(PARK_ITEM_VIDEOS_ITEMS_PORT) private readonly itemsPort: ParkItemVideosItemsPort,
     @Inject(PARK_ITEM_VIDEOS_PARKS_PORT) private readonly parksPort: ParkItemVideosParksPort,
+    @Inject(PARK_ITEM_VIDEOS_IMAGES_PORT) private readonly imagesPort: ParkItemVideosImagesPort,
     @Inject(PARK_ITEM_VIDEOS_VIDEOS_PORT) private readonly videosPort: ParkItemVideosVideosPort,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService
@@ -113,10 +124,12 @@ export class ParkItemVideosStateFacade {
       switchMap((item: ParkItem) => this.loadPageData(item, itemId, normalizedFilters, 1)),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe({
-      next: (response: { item: ParkItem; park: Park; videoPage: PagedResult<VideoDto>; videoTags: VideoTagDto[] }) => {
+      next: (response: { item: ParkItem; summary: ParkDetailSummary; itemImages: ImageDto[]; videoPage: PagedResult<VideoDto>; videoTags: VideoTagDto[] }) => {
         this.screenStateStore.setReady({
           item: response.item,
-          park: response.park,
+          park: response.summary.park,
+          itemImageId: resolveItemSocialImageId(response.itemImages),
+          parkImageId: response.summary.mainImage?.id ?? null,
           videos: response.videoPage.items,
           videoTags: response.videoTags,
           pagination: response.videoPage.pagination,
@@ -164,12 +177,19 @@ export class ParkItemVideosStateFacade {
       });
   }
 
-  private loadPageData(item: ParkItem, routeItemId: string, filters: PublicVideoFilterState, page: number): Observable<{ item: ParkItem; park: Park; videoPage: PagedResult<VideoDto>; videoTags: VideoTagDto[] }> {
+  private loadPageData(
+    item: ParkItem,
+    routeItemId: string,
+    filters: PublicVideoFilterState,
+    page: number
+  ): Observable<{ item: ParkItem; summary: ParkDetailSummary; itemImages: ImageDto[]; videoPage: PagedResult<VideoDto>; videoTags: VideoTagDto[] }> {
     const itemId: string = normalizeOptionalString(item.id) ?? routeItemId;
 
     return forkJoin({
       item: of(item),
-      park: this.parksPort.getParkById(item.parkId, anonymousHttpOptions()),
+      summary: this.parksPort.getParkDetailSummary(item.parkId, anonymousHttpOptions()),
+      itemImages: this.imagesPort.getImages(ImageOwnerType.PARK_ITEM, itemId, ImageCategory.PARK_ITEM, 1, 1, anonymousHttpOptions())
+        .pipe(catchError(() => of([] as ImageDto[]))),
       videoPage: this.videosPort.getVideosPage(this.buildVideoQuery(itemId, filters, page), anonymousHttpOptions()),
       videoTags: this.videosPort.getVideoTags(anonymousHttpOptions())
     });
@@ -212,4 +232,12 @@ function normalizeFilters(filters: PublicVideoFilterState): PublicVideoFilterSta
 function normalizeOptionalString(value: string | null | undefined): string | null {
   const normalized: string = value?.trim() ?? '';
   return normalized.length > 0 ? normalized : null;
+}
+
+function resolveItemSocialImageId(images: ImageDto[]): string | null {
+  const image: ImageDto | undefined = images.find((candidate: ImageDto) => {
+    return candidate.isPublished !== false && normalizeOptionalString(candidate.id) !== null;
+  });
+
+  return normalizeOptionalString(image?.id);
 }

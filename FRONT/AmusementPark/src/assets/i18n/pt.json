@@ -1416,9 +1416,9 @@
     "login": {
       "title": "Autenticação clássica",
       "title_email": "Email",
-      "mail_placeholder": "Introduza o seu email",
+      "mail_placeholder": "Introduz o teu email",
       "title_password": "Palavra-passe",
-      "password_placeholder": "Introduza a sua palavra-passe",
+      "password_placeholder": "Introduz a tua palavra-passe",
       "btn_text": "Iniciar sessão",
       "forgot_password": "Esqueceste-te da palavra-passe?",
       "success": "Sessão iniciada com sucesso.",
@@ -1428,9 +1428,9 @@
     "register": {
       "title": "Registo clássico",
       "title_email": "Email",
-      "mail_placeholder": "Introduza o seu email",
+      "mail_placeholder": "Introduz o teu email",
       "title_password": "Palavra-passe",
-      "password_placeholder": "Introduza a sua palavra-passe",
+      "password_placeholder": "Introduz a tua palavra-passe",
       "password_info": "A palavra-passe deve conter pelo menos 8 caracteres, uma maiúscula, uma minúscula e um número.",
       "password_confirm_placeholder": "Confirmar palavra-passe",
       "btn_text": "Registar",
@@ -1588,7 +1588,7 @@
   "topbar": {
     "login_header": "Iniciar sessão / Registar",
     "hello": "Olá",
-    "choose_language": "Escolha o seu idioma:"
+    "choose_language": "Escolhe o teu idioma:"
   },
   "ui": {
     "photoCarousel": {
@@ -1714,12 +1714,12 @@
   },
   "aboutPage": {
     "seo": {
-      "title": "Sobre o AmusementPark — Explore parques de outra forma",
-      "description": "Descubra o AmusementPark, um guia visual para explorar parques de diversão, atrações, imagens, mapas e ideias de visita."
+      "title": "Sobre o AmusementPark — Explora parques de outra forma",
+      "description": "Descobre o AmusementPark, um guia visual para explorar parques de diversão, atrações, imagens, mapas e ideias de visita."
     },
     "kicker": "Sobre o AmusementPark",
-    "title": "Explore parques de diversão de outra forma",
-    "lead": "AmusementPark é um guia de descoberta pensado para ajudar a explorar parques de diversão, os seus universos, atrações e experiências. Quer esteja a preparar uma saída em família, uma futura viagem ou goste simplesmente de descobrir novos parques, o site reúne as informações essenciais numa interface clara, visual e agradável.",
+    "title": "Explora parques de diversão de outra forma",
+    "lead": "AmusementPark é um guia de descoberta pensado para te ajudar a explorar parques de diversão, os respetivos universos, atrações e experiências. Quer estejas a preparar uma saída em família, uma futura viagem ou gostes simplesmente de descobrir novos parques, o site reúne as informações essenciais numa interface clara, visual e agradável.",
     "primaryCta": "Explorar parques",
     "secondaryCta": "Ver como funciona",
     "heroVisual": {
@@ -1741,23 +1741,23 @@
     },
     "promise": {
       "kicker": "A nossa promessa",
-      "title": "Ajudar a escolher, comparar e sonhar mais facilmente",
+      "title": "Ajudar-te a escolher, comparar e sonhar mais facilmente",
       "subtitle": "Um parque de diversão é mais do que uma morada ou uma lista de atrações: é ambiente, zonas temáticas, experiências, imagens e por vezes um verdadeiro destino de viagem."
     },
     "cards": {
       "discover": {
         "badge": "Descobrir",
-        "title": "Encontre parques que dão vontade de visitar",
-        "text": "Explora parques em diferentes países, descobre a sua localização, ambiente geral e os locais que os compõem. O objetivo é dar-te rapidamente uma primeira impressão: parque familiar, grande destino, parque regional, parque aquático, local muito tematizado ou saída local."
+        "title": "Encontra parques que dão vontade de visitar",
+        "text": "Explora parques em diferentes países, descobre a localização, o ambiente geral e os locais que os compõem. O objetivo é dar-te rapidamente uma primeira impressão: parque familiar, grande destino, parque regional, parque aquático, local muito tematizado ou saída local."
       },
       "understand": {
         "badge": "Compreender",
-        "title": "Veja o que há para fazer no local",
+        "title": "Vê o que há para fazer no local",
         "text": "Cada página pode reunir atrações, restaurantes, lojas, espetáculos, zonas e imagens."
       },
       "prepare": {
         "badge": "Preparar",
-        "title": "Prepare uma visita ou inspire a próxima viagem",
+        "title": "Prepara uma visita ou inspira a tua próxima viagem",
         "text": "AmusementPark é um ponto de partida para saídas, parques próximos, imagens e mapas."
       }
     },
@@ -1776,7 +1776,7 @@
         },
         "ratings": {
           "title": "Consultar avaliações e rankings",
-          "text": "As estrelas mostram rapidamente a opinião dos visitantes. Inicie sessão para adicionar a sua avaliação, encontrar as suas escolhas na conta e explorar rankings."
+          "text": "As estrelas mostram rapidamente a opinião dos visitantes. Inicia sessão para adicionar a tua avaliação, encontrar as tuas escolhas na conta e explorar rankings."
         },
         "images": {
           "title": "Descobrir o parque em imagens",
@@ -1791,7 +1791,7 @@
           "text": "Parques próximos ajudam a alargar a pesquisa e a imaginar itinerários."
         },
         "languages": {
-          "title": "Explorar no seu idioma",
+          "title": "Explorar no teu idioma",
           "text": "O site foi pensado para vários idiomas."
         }
       }
@@ -1805,7 +1805,7 @@
       },
       "fans": {
         "title": "Para fãs de parques",
-        "text": "Explore atrações, zonas, fabricantes, imagens e detalhes."
+        "text": "Explora atrações, zonas, fabricantes, imagens e detalhes."
       },
       "travelers": {
         "title": "Para viajantes",
@@ -1813,7 +1813,7 @@
       },
       "curious": {
         "title": "Para curiosos",
-        "text": "Descubra parques desconhecidos e a diversidade de destinos."
+        "text": "Descobre parques desconhecidos e a diversidade de destinos."
       }
     },
     "approach": {
@@ -1854,7 +1854,7 @@
     "finalCta": {
       "kicker": "Começar",
       "title": "Pronto para começar a explorar?",
-      "text": "Escolha um parque, abra a sua página, descubra atrações, imagens ou mapa e deixe-se guiar até ao próximo destino.",
+      "text": "Escolhe um parque, abre a ficha, descobre atrações, imagens ou mapa e deixa-te guiar até ao próximo destino.",
       "primary": "Explorar parques",
       "secondary": "Voltar ao início"
     }
@@ -1862,7 +1862,7 @@
   "contactPage": {
     "kicker": "Contacto",
     "title": "Contactar o AmusementPark",
-    "lead": "Envie uma nota sobre o site, um detalhe em falta, um problema de dados ou uma ideia de melhoria.",
+    "lead": "Envia uma nota sobre o site, uma informação em falta, um problema de dados ou uma ideia de melhoria.",
     "email": {
       "badge": "Email temporario",
       "title": "Contacto direto",
@@ -1872,10 +1872,10 @@
       "kicker": "Livro de comentarios",
       "title": "Deixar uma mensagem",
       "description": "As mensagens sao guardadas como texto simples e revistas no painel admin.",
-      "messageLabel": "A sua mensagem",
+      "messageLabel": "A tua mensagem",
       "help": "Apenas texto simples. Tags HTML e links abusivos sao recusados.",
-      "validation": "Introduza uma mensagem de texto simples entre 10 e 2000 caracteres.",
-      "success": "A sua mensagem foi registada.",
+      "validation": "Introduz uma mensagem de texto simples entre 10 e 2000 caracteres.",
+      "success": "A tua mensagem foi registada.",
       "error": "Nao foi possivel enviar a mensagem. Verifique o texto ou tente mais tarde.",
       "submit": "Enviar",
       "submitting": "A enviar"
@@ -1886,7 +1886,7 @@
       "text": "Este formulario e intencionalmente rigoroso para proteger o site e os administradores.",
       "points": {
         "plainText": "As mensagens sao aceites apenas em texto simples.",
-        "ip": "O seu endereco IP e registado para limitar abusos repetidos.",
+        "ip": "O teu endereço IP é registado para limitar abusos repetidos.",
         "admin": "Apenas administradores podem consultar mensagens e contexto tecnico."
       }
     }
@@ -1902,8 +1902,8 @@
   "footer": {
     "ariaLabel": "Rodapé do site",
     "brand": {
-      "sloganData": "Dados fiáveis",
-      "sloganFun": "para mais diversão"
+      "sloganData": "Dados rigorosos",
+      "sloganFun": "para ainda mais diversão"
     },
     "explore": {
       "title": "Explorar",
@@ -1951,7 +1951,7 @@
       "parks": "Parque"
     },
     "heroBadge": "Ideias de parques e emoções",
-    "heroSubtitle": "Explore parques, atrações, restaurantes e hotéis, consulte avaliações de visitantes e planeie mais facilmente a sua próxima saída.",
+    "heroSubtitle": "Explora parques, atrações, restaurantes e hotéis, consulta avaliações de visitantes e planeia mais facilmente a tua próxima saída.",
     "ctaBrowseParks": "Explorar parques",
     "ctaLearnMore": "Como funciona",
     "featured": {
@@ -1990,7 +1990,7 @@
       "mapText": "Encontra destinos no mapa, compara parques próximos e mantém locais úteis à mão.",
       "catalogKicker": "Descoberta",
       "catalogTitle": "Parques e atrações num só lugar",
-      "catalogText": "Passa de um parque para as suas atrações, fotos e referências úteis sem te perderes."
+      "catalogText": "Passa de um parque para as respetivas atrações, fotos e referências úteis sem te perderes."
     },
     "heroTitleFind": "Encontra",
     "heroTitleYour": "a tua",
@@ -2026,7 +2026,7 @@
   },
   "parkDetail": {
     "descriptionTitle": "Descrição",
-    "subtitle": "Informações detalhadas sobre este parque e a sua localização geográfica.",
+    "subtitle": "Informações detalhadas sobre este parque e a respetiva localização geográfica.",
     "exploreButton": "Explorar o parque",
     "countryCode": "Código do país",
     "latitude": "Latitude",
@@ -2035,7 +2035,7 @@
   },
   "parkExplorer": {
     "headerChip": "Exploração do parque",
-    "subtitle": "Explore o parque através das suas zonas e das principais categorias de locais que contém.",
+    "subtitle": "Explora o parque através das respetivas zonas e das principais categorias de locais que contém.",
     "overviewTitle": "Todo o parque",
     "unassignedTitle": "Locais sem zona",
     "totalItems": "{{count}} local(is)",
@@ -2255,7 +2255,7 @@
     "imagesPage": {
       "kicker": "Galeria do local",
       "title": "Imagens de {{name}}",
-      "subtitle": "Explore imagens de {{name}} em {{park}}: detalhes, ambiente, pontos de vista e fotos geolocalizadas quando disponíveis.",
+      "subtitle": "Explora imagens de {{name}} em {{park}}: detalhes, ambiente, pontos de vista e fotos geolocalizadas quando disponíveis.",
       "loadingTitle": "A carregar imagens",
       "loadingMessage": "Preparação da galeria do local.",
       "errorTitle": "Imagens indisponíveis",
@@ -2282,7 +2282,7 @@
     "zoneFocus": {
       "badge": "Zona do parque",
       "overviewBadge": "Mapa em tempo real",
-      "overviewDescription": "Veja os locais atualmente exibidos para {{park}} de acordo com os filtros ativos.",
+      "overviewDescription": "Vê os locais atualmente exibidos para {{park}} de acordo com os filtros ativos.",
       "zoneFallbackDescription": "Esta zona agrupa os locais apresentados neste momento. Usa os filtros para ajustar a seleção.",
       "totalItems": "Locais na zona",
       "totalItemsHint": "A descobrir",
@@ -2324,8 +2324,8 @@
   "parkVisitor": {
     "summary": {
       "badge": "Conteúdo do parque",
-      "title": "Explore o que este parque oferece",
-      "subtitle": "Escolha uma categoria para encontrar rapidamente atrações, restaurantes e lugares do parque.",
+      "title": "Explora o que este parque oferece",
+      "subtitle": "Escolhe uma categoria para encontrar rapidamente atrações, restaurantes e lugares do parque.",
       "viewAllItems": "Locais do parque",
       "totalItems": "Locais a descobrir",
       "unassignedItems": "Locais sem zona"
@@ -2363,7 +2363,7 @@
     },
     "history": {
       "title": "Comparar com anos anteriores",
-      "subtitle": "Memoria meteorologica guardada para as mesmas datas.",
+      "subtitle": "Compara as mesmas datas de anos anteriores antes de planeares a tua visita.",
       "loading": "A carregar comparacoes meteorologicas.",
       "empty": "Nao existe observacao historica para estas datas.",
       "errorMessage": "Nao foi possivel carregar as comparacoes meteorologicas.",
@@ -2379,7 +2379,7 @@
     "page": {
       "kicker": "Meteorologia",
       "title": "Meteorologia a 7 dias de {{name}}",
-      "lead": "Previsao diaria guardada pelo site para preparar visitas e criar memoria meteorologica.",
+      "lead": "Verifica a meteorologia de {{name}} antes da tua visita.",
       "loadingTitle": "A carregar meteorologia",
       "loadingMessage": "A previsao esta a carregar.",
       "emptyTitle": "Sem previsao disponivel",
@@ -2440,7 +2440,7 @@
       },
       "location": {
         "title": "Localização",
-        "subtitle": "Encontra o parque no mapa e consulta as suas coordenadas."
+        "subtitle": "Encontra o parque no mapa e consulta as coordenadas."
       },
       "nearby": {
         "title": "Nearby parques",
@@ -2647,7 +2647,7 @@
     "imagesPage": {
       "kicker": "Galeria do parque",
       "title": "Imagens de {{name}}",
-      "subtitle": "Explore imagens de {{name}}: vistas do parque, ambiente, detalhes e fotos geolocalizadas quando disponíveis.",
+      "subtitle": "Explora imagens de {{name}}: vistas do parque, ambiente, detalhes e fotos geolocalizadas quando disponíveis.",
       "loadingTitle": "A carregar imagens",
       "loadingMessage": "A preparar a galeria do parque.",
       "errorTitle": "Imagens indisponíveis",
@@ -2780,7 +2780,7 @@
       },
       "thirdPartyCookies": {
         "title": "Cookies de terceiros e autenticação Google",
-        "body1": "O site oferece autenticação via Google OAuth / Sign in with Google. Quando utiliza este método, a Google pode colocar ou ler os seus próprios cookies e tecnologias semelhantes para autenticação, segurança, prevenção de fraude e manutenção de sessão.",
+        "body1": "O site oferece autenticação via Google OAuth / Sign in with Google. Quando usas este método, a Google pode colocar ou ler os próprios cookies e tecnologias semelhantes para autenticação, segurança, prevenção de fraude e manutenção de sessão.",
         "body2": "Estes rastreadores de terceiros são necessários ao funcionamento da autenticação Google solicitada pelo utilizador e não são controlados pelo consentimento Matomo/analytics do site.",
         "body3": "Recusar os cookies opcionais do AmusementPark não bloqueia a autenticação. No entanto, um navegador que bloqueie alguns cookies de terceiros pode impedir ou degradar o início de sessão Google."
       },
@@ -2807,7 +2807,7 @@
       "signInMessage": "Inicia sessão para deixar a tua avaliação.",
       "savedMessage": "Obrigado, a tua avaliação foi guardada.",
       "errorMessage": "Não foi possível guardar a avaliação agora.",
-      "savedToast": "A sua avaliação foi guardada."
+      "savedToast": "A tua avaliação foi guardada."
     },
     "tree": {
       "detailAction": "Ver detalhe",
@@ -2832,8 +2832,8 @@
       "byKind": "Por tipo",
       "unknownPark": "Parque associado",
       "communityAverage": "Avaliação média",
-      "searchLabel": "Pesquisar nos seus parques avaliados",
-      "searchPlaceholder": "Encontrar um parque nas suas avaliações",
+      "searchLabel": "Pesquisar nos teus parques avaliados",
+      "searchPlaceholder": "Encontrar um parque nas tuas avaliações",
       "searchAction": "Pesquisar",
       "clearSearch": "Limpar pesquisa",
       "ratingCount": "{{count}} avaliação(ões)",
@@ -2888,8 +2888,8 @@
   },
   "shareSocial": {
     "defaultTitle": "Partilhar esta página",
-    "defaultDescription": "Conhece alguém que possa usar esta página?",
-    "defaultText": "Veja {{title}} no AmusementPark.",
+    "defaultDescription": "Conheces alguém que possa usar esta página?",
+    "defaultText": "Vê {{title}} no AmusementPark.",
     "actions": {
       "share": "Partilhar",
       "copy": "Copiar",
@@ -2912,38 +2912,38 @@
     },
     "home": {
       "title": "Partilhar AmusementPark",
-      "description": "Envie a pesquisa a alguém que esteja a planear uma saída.",
-      "text": "Explore parques e atrações no AmusementPark."
+      "description": "Envia a pesquisa a alguém que esteja a planear uma saída.",
+      "text": "Explora parques e atrações no AmusementPark."
     },
     "parks": {
       "title": "Partilhar os parques",
-      "description": "Ajude alguém a encontrar um parque para visitar.",
-      "text": "Veja parques de diversões no AmusementPark."
+      "description": "Ajuda alguém a encontrar um parque para visitar.",
+      "text": "Vê parques de diversões no AmusementPark."
     },
     "park": {
       "title": "Partilhar este parque",
-      "description": "Envie esta página a alguém que possa querer visitar {{title}}.",
-      "text": "Veja {{title}} no AmusementPark."
+      "description": "Envia esta página a alguém que possa querer visitar {{title}}.",
+      "text": "Vê {{title}} no AmusementPark."
     },
     "parkItems": {
       "title": "Partilhar estas atrações e locais",
-      "description": "Envie este guia a alguém que esteja a preparar a visita.",
+      "description": "Envia este guia a alguém que esteja a preparar a visita.",
       "text": "Explora atrações, espetáculos e locais de {{title}} no AmusementPark."
     },
     "parkItem": {
       "title": "Partilhar esta ficha",
-      "description": "Envie esta página a alguém interessado em {{title}}.",
-      "text": "Descubra {{title}} no AmusementPark."
+      "description": "Envia esta página a alguém interessado em {{title}}.",
+      "text": "Descobre {{title}} no AmusementPark."
     },
     "videos": {
       "title": "Partilhar estes vídeos",
-      "description": "Envie estes vídeos a alguém que queira uma prévia.",
-      "text": "Veja vídeos de {{title}} no AmusementPark."
+      "description": "Envia estes vídeos a alguém que queira uma prévia.",
+      "text": "Vê vídeos de {{title}} no AmusementPark."
     },
     "video": {
       "title": "Partilhar este vídeo",
-      "description": "Envie este vídeo a alguém que possa gostar.",
-      "text": "Veja {{title}} no AmusementPark."
+      "description": "Envia este vídeo a alguém que possa gostar.",
+      "text": "Vê {{title}} no AmusementPark."
     }
   },
   "versionHistoryPage": {

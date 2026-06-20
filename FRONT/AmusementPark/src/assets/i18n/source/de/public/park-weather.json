@@ -31,7 +31,7 @@
     },
     "history": {
       "title": "Mit Vorjahren vergleichen",
-      "subtitle": "Gespeicherte Wetterhistorie fur dieselben Daten.",
+      "subtitle": "Vergleiche dieselben Daten aus früheren Jahren, bevor du deinen Besuch planst.",
       "loading": "Wettervergleiche werden geladen.",
       "empty": "Fur diese Daten ist keine historische Beobachtung verfugbar.",
       "errorMessage": "Wettervergleiche konnten nicht geladen werden.",
@@ -47,7 +47,7 @@
     "page": {
       "kicker": "Wetter",
       "title": "7-Tage-Wetter fur {{name}}",
-      "lead": "Tagliche Vorhersage, die zur Besuchsplanung und fur eine Wetterhistorie gespeichert wird.",
+      "lead": "Prüfe das Wetter für {{name}} vor deinem Besuch.",
       "loadingTitle": "Wetter wird geladen",
       "loadingMessage": "Die Vorhersage wird geladen.",
       "emptyTitle": "Keine Vorhersage verfugbar",

@@ -25,6 +25,7 @@ import { ParkVideoStateFacade } from '../state/park-video-state.facade';
 export class ParkVideoPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly park = this.stateFacade.park;
+  protected readonly parkImageId = this.stateFacade.parkImageId;
   protected readonly video = this.stateFacade.video;
   protected readonly rawVideo = this.stateFacade.rawVideo;
   protected readonly previousVideo = this.stateFacade.previousVideo;
@@ -72,7 +73,7 @@ export class ParkVideoPageComponent implements OnInit {
           variant: 'soft'
         }
       ]);
-      this.seoService.applyParkVideoSeo(currentVideo, currentPark, this.currentLanguage(), this.router.url);
+      this.seoService.applyParkVideoSeo(currentVideo, currentPark, this.currentLanguage(), this.router.url, this.parkImageId());
     });
   }
 

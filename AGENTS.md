@@ -64,6 +64,7 @@ The project must preserve its current architecture, SOLID principles, separation
 - Reuse existing shared components where relevant.
 - Maintain responsive behavior, especially for admin screens.
 - Preserve route localization, SEO metadata, canonical URLs, hreflang, robots/noindex, Open Graph, and SSR behavior.
+- Public-facing copy must use a consistent informal tone in every supported language. In French, use tutoiement instead of vouvoiement for public, auth, account, SEO and sharing texts.
 - Add or update tests for facades, mappers, guards, interceptors, ports, and edge cases.
 - Do not introduce heavy dependencies without explicit justification.
 - Do not move admin-only code into the public initial bundle.

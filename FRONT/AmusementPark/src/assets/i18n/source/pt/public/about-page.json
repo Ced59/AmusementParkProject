@@ -1,12 +1,12 @@
 {
   "aboutPage": {
     "seo": {
-      "title": "Sobre o AmusementPark — Explore parques de outra forma",
-      "description": "Descubra o AmusementPark, um guia visual para explorar parques de diversão, atrações, imagens, mapas e ideias de visita."
+      "title": "Sobre o AmusementPark — Explora parques de outra forma",
+      "description": "Descobre o AmusementPark, um guia visual para explorar parques de diversão, atrações, imagens, mapas e ideias de visita."
     },
     "kicker": "Sobre o AmusementPark",
-    "title": "Explore parques de diversão de outra forma",
-    "lead": "AmusementPark é um guia de descoberta pensado para ajudar a explorar parques de diversão, os seus universos, atrações e experiências. Quer esteja a preparar uma saída em família, uma futura viagem ou goste simplesmente de descobrir novos parques, o site reúne as informações essenciais numa interface clara, visual e agradável.",
+    "title": "Explora parques de diversão de outra forma",
+    "lead": "AmusementPark é um guia de descoberta pensado para te ajudar a explorar parques de diversão, os respetivos universos, atrações e experiências. Quer estejas a preparar uma saída em família, uma futura viagem ou gostes simplesmente de descobrir novos parques, o site reúne as informações essenciais numa interface clara, visual e agradável.",
     "primaryCta": "Explorar parques",
     "secondaryCta": "Ver como funciona",
     "heroVisual": {
@@ -28,23 +28,23 @@
     },
     "promise": {
       "kicker": "A nossa promessa",
-      "title": "Ajudar a escolher, comparar e sonhar mais facilmente",
+      "title": "Ajudar-te a escolher, comparar e sonhar mais facilmente",
       "subtitle": "Um parque de diversão é mais do que uma morada ou uma lista de atrações: é ambiente, zonas temáticas, experiências, imagens e por vezes um verdadeiro destino de viagem."
     },
     "cards": {
       "discover": {
         "badge": "Descobrir",
-        "title": "Encontre parques que dão vontade de visitar",
-        "text": "Explora parques em diferentes países, descobre a sua localização, ambiente geral e os locais que os compõem. O objetivo é dar-te rapidamente uma primeira impressão: parque familiar, grande destino, parque regional, parque aquático, local muito tematizado ou saída local."
+        "title": "Encontra parques que dão vontade de visitar",
+        "text": "Explora parques em diferentes países, descobre a localização, o ambiente geral e os locais que os compõem. O objetivo é dar-te rapidamente uma primeira impressão: parque familiar, grande destino, parque regional, parque aquático, local muito tematizado ou saída local."
       },
       "understand": {
         "badge": "Compreender",
-        "title": "Veja o que há para fazer no local",
+        "title": "Vê o que há para fazer no local",
         "text": "Cada página pode reunir atrações, restaurantes, lojas, espetáculos, zonas e imagens."
       },
       "prepare": {
         "badge": "Preparar",
-        "title": "Prepare uma visita ou inspire a próxima viagem",
+        "title": "Prepara uma visita ou inspira a tua próxima viagem",
         "text": "AmusementPark é um ponto de partida para saídas, parques próximos, imagens e mapas."
       }
     },
@@ -63,7 +63,7 @@
         },
         "ratings": {
           "title": "Consultar avaliações e rankings",
-          "text": "As estrelas mostram rapidamente a opinião dos visitantes. Inicie sessão para adicionar a sua avaliação, encontrar as suas escolhas na conta e explorar rankings."
+          "text": "As estrelas mostram rapidamente a opinião dos visitantes. Inicia sessão para adicionar a tua avaliação, encontrar as tuas escolhas na conta e explorar rankings."
         },
         "images": {
           "title": "Descobrir o parque em imagens",
@@ -78,7 +78,7 @@
           "text": "Parques próximos ajudam a alargar a pesquisa e a imaginar itinerários."
         },
         "languages": {
-          "title": "Explorar no seu idioma",
+          "title": "Explorar no teu idioma",
           "text": "O site foi pensado para vários idiomas."
         }
       }
@@ -92,7 +92,7 @@
       },
       "fans": {
         "title": "Para fãs de parques",
-        "text": "Explore atrações, zonas, fabricantes, imagens e detalhes."
+        "text": "Explora atrações, zonas, fabricantes, imagens e detalhes."
       },
       "travelers": {
         "title": "Para viajantes",
@@ -100,7 +100,7 @@
       },
       "curious": {
         "title": "Para curiosos",
-        "text": "Descubra parques desconhecidos e a diversidade de destinos."
+        "text": "Descobre parques desconhecidos e a diversidade de destinos."
       }
     },
     "approach": {
@@ -141,7 +141,7 @@
     "finalCta": {
       "kicker": "Começar",
       "title": "Pronto para começar a explorar?",
-      "text": "Escolha um parque, abra a sua página, descubra atrações, imagens ou mapa e deixe-se guiar até ao próximo destino.",
+      "text": "Escolhe um parque, abre a ficha, descobre atrações, imagens ou mapa e deixa-te guiar até ao próximo destino.",
       "primary": "Explorar parques",
       "secondary": "Voltar ao início"
     }

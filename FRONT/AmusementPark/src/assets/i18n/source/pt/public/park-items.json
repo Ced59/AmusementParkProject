@@ -168,7 +168,7 @@
     "imagesPage": {
       "kicker": "Galeria do local",
       "title": "Imagens de {{name}}",
-      "subtitle": "Explore imagens de {{name}} em {{park}}: detalhes, ambiente, pontos de vista e fotos geolocalizadas quando disponíveis.",
+      "subtitle": "Explora imagens de {{name}} em {{park}}: detalhes, ambiente, pontos de vista e fotos geolocalizadas quando disponíveis.",
       "loadingTitle": "A carregar imagens",
       "loadingMessage": "Preparação da galeria do local.",
       "errorTitle": "Imagens indisponíveis",
@@ -195,7 +195,7 @@
     "zoneFocus": {
       "badge": "Zona do parque",
       "overviewBadge": "Mapa em tempo real",
-      "overviewDescription": "Veja os locais atualmente exibidos para {{park}} de acordo com os filtros ativos.",
+      "overviewDescription": "Vê os locais atualmente exibidos para {{park}} de acordo com os filtros ativos.",
       "zoneFallbackDescription": "Esta zona agrupa os locais apresentados neste momento. Usa os filtros para ajustar a seleção.",
       "totalItems": "Locais na zona",
       "totalItemsHint": "A descobrir",

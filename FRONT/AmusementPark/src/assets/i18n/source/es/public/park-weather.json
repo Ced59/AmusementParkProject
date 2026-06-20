@@ -31,7 +31,7 @@
     },
     "history": {
       "title": "Comparar con anos anteriores",
-      "subtitle": "Memoria meteorologica guardada para las mismas fechas.",
+      "subtitle": "Compara las mismas fechas de años anteriores antes de planear tu visita.",
       "loading": "Cargando comparaciones meteorologicas.",
       "empty": "No hay observacion historica disponible para estas fechas.",
       "errorMessage": "No se pudieron cargar las comparaciones meteorologicas.",
@@ -47,7 +47,7 @@
     "page": {
       "kicker": "Tiempo",
       "title": "Tiempo a 7 dias de {{name}}",
-      "lead": "Prevision diaria guardada por el sitio para preparar visitas y crear memoria meteorologica.",
+      "lead": "Consulta el tiempo de {{name}} antes de tu visita.",
       "loadingTitle": "Cargando el tiempo",
       "loadingMessage": "La prevision se esta cargando.",
       "emptyTitle": "Sin prevision disponible",

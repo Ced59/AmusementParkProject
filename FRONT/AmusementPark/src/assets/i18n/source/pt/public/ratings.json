@@ -12,7 +12,7 @@
       "signInMessage": "Inicia sessão para deixar a tua avaliação.",
       "savedMessage": "Obrigado, a tua avaliação foi guardada.",
       "errorMessage": "Não foi possível guardar a avaliação agora.",
-      "savedToast": "A sua avaliação foi guardada."
+      "savedToast": "A tua avaliação foi guardada."
     },
     "tree": {
       "detailAction": "Ver detalhe",
@@ -37,8 +37,8 @@
       "byKind": "Por tipo",
       "unknownPark": "Parque associado",
       "communityAverage": "Avaliação média",
-      "searchLabel": "Pesquisar nos seus parques avaliados",
-      "searchPlaceholder": "Encontrar um parque nas suas avaliações",
+      "searchLabel": "Pesquisar nos teus parques avaliados",
+      "searchPlaceholder": "Encontrar um parque nas tuas avaliações",
       "searchAction": "Pesquisar",
       "clearSearch": "Limpar pesquisa",
       "ratingCount": "{{count}} avaliação(ões)",

@@ -1,12 +1,16 @@
 import { inject, InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Park } from '@app/models/parks/park';
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkItem } from '@app/models/parks/park-item';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoSearchQuery } from '@app/models/videos/video-search-query';
 import { VideoTagDto } from '@app/models/videos/video-tag-dto';
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { VideosApiService } from '@data-access/videos/videos-api.service';
@@ -17,7 +21,11 @@ export interface ParkItemVideosItemsPort {
 }
 
 export interface ParkItemVideosParksPort {
-  getParkById(id: string, options?: AnonymousHttpOptions): Observable<Park>;
+  getParkDetailSummary(id: string, options?: AnonymousHttpOptions): Observable<ParkDetailSummary>;
+}
+
+export interface ParkItemVideosImagesPort {
+  getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number, options?: AnonymousHttpOptions): Observable<ImageDto[]>;
 }
 
 export interface ParkItemVideosVideosPort {
@@ -34,6 +42,11 @@ export const PARK_ITEM_VIDEOS_ITEMS_PORT = new InjectionToken<ParkItemVideosItem
 export const PARK_ITEM_VIDEOS_PARKS_PORT = new InjectionToken<ParkItemVideosParksPort>('PARK_ITEM_VIDEOS_PARKS_PORT', {
   providedIn: 'root',
   factory: () => inject(ParksApiService)
+});
+
+export const PARK_ITEM_VIDEOS_IMAGES_PORT = new InjectionToken<ParkItemVideosImagesPort>('PARK_ITEM_VIDEOS_IMAGES_PORT', {
+  providedIn: 'root',
+  factory: () => inject(ImagesApiService)
 });
 
 export const PARK_ITEM_VIDEOS_VIDEOS_PORT = new InjectionToken<ParkItemVideosVideosPort>('PARK_ITEM_VIDEOS_VIDEOS_PORT', {

@@ -50,7 +50,7 @@
       },
       "location": {
         "title": "Localização",
-        "subtitle": "Encontra o parque no mapa e consulta as suas coordenadas."
+        "subtitle": "Encontra o parque no mapa e consulta as coordenadas."
       },
       "nearby": {
         "title": "Nearby parques",
@@ -257,7 +257,7 @@
     "imagesPage": {
       "kicker": "Galeria do parque",
       "title": "Imagens de {{name}}",
-      "subtitle": "Explore imagens de {{name}}: vistas do parque, ambiente, detalhes e fotos geolocalizadas quando disponíveis.",
+      "subtitle": "Explora imagens de {{name}}: vistas do parque, ambiente, detalhes e fotos geolocalizadas quando disponíveis.",
       "loadingTitle": "A carregar imagens",
       "loadingMessage": "A preparar a galeria do parque.",
       "errorTitle": "Imagens indisponíveis",

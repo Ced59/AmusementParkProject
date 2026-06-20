@@ -20,6 +20,7 @@ import { ParkMapViewComponent } from '../ui/park-map-view.component';
 export class ParkMapPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly park = this.stateFacade.park;
+  protected readonly parkImageId = this.stateFacade.parkImageId;
   protected readonly map = this.stateFacade.map;
   protected readonly currentLanguage = signal<string>('en');
   protected readonly detailLink = signal<string[] | null>(null);
@@ -51,7 +52,7 @@ export class ParkMapPageComponent implements OnInit {
         parkId: currentPark.id,
         parkName: currentPark.name
       }));
-      this.seoService.applyParkMapSeo(currentPark, this.currentLanguage(), this.router.url);
+      this.seoService.applyParkMapSeo(currentPark, this.currentLanguage(), this.router.url, this.parkImageId());
     });
   }
 

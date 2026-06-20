@@ -3,7 +3,7 @@ import { ParkItemsApiService } from '@data-access/park-items/park-items-api.serv
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 
-export interface ParkZonesPageStateParksApiServicePort extends Pick<ParksApiService, 'getParkById' | 'getParkExplorer'> {
+export interface ParkZonesPageStateParksApiServicePort extends Pick<ParksApiService, 'getParkDetailSummary' | 'getParkExplorer'> {
 }
 
 export const PARK_ZONES_PAGE_STATE_PARKS_API_SERVICE_PORT = new InjectionToken<ParkZonesPageStateParksApiServicePort>('PARK_ZONES_PAGE_STATE_PARKS_API_SERVICE_PORT', {

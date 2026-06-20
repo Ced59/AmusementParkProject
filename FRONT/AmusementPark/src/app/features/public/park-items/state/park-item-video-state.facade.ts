@@ -1,9 +1,13 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { forkJoin, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 
+import { ImageCategory } from '@app/models/images/image-category';
+import { ImageDto } from '@app/models/images/image-dto';
+import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
+import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkItem } from '@app/models/parks/park-item';
 import { VideoDto } from '@app/models/videos/video-dto';
 import { VideoOwnerType } from '@app/models/videos/video-owner-type';
@@ -25,8 +29,10 @@ import {
 import { SafeVideoEmbedUrlService } from '@features/public/videos/services/safe-video-embed-url.service';
 import {
   PARK_ITEM_VIDEOS_ITEMS_PORT,
+  PARK_ITEM_VIDEOS_IMAGES_PORT,
   PARK_ITEM_VIDEOS_PARKS_PORT,
   PARK_ITEM_VIDEOS_VIDEOS_PORT,
+  ParkItemVideosImagesPort,
   ParkItemVideosItemsPort,
   ParkItemVideosParksPort,
   ParkItemVideosVideosPort
@@ -35,6 +41,8 @@ import {
 interface ParkItemVideoPageData {
   item: ParkItem;
   park: Park;
+  itemImageId: string | null;
+  parkImageId: string | null;
   video: VideoDto;
   videos: VideoDto[];
   videoTags: VideoTagDto[];
@@ -50,6 +58,8 @@ export class ParkItemVideoStateFacade {
   public readonly data = this.screenStateStore.data;
   public readonly item = computed(() => this.screenStateStore.data()?.item ?? null);
   public readonly park = computed(() => this.screenStateStore.data()?.park ?? null);
+  public readonly itemImageId = computed(() => this.screenStateStore.data()?.itemImageId ?? null);
+  public readonly parkImageId = computed(() => this.screenStateStore.data()?.parkImageId ?? null);
   public readonly rawVideo = computed(() => this.screenStateStore.data()?.video ?? null);
   public readonly video: Signal<PublicVideoWatchViewModel | null> = computed(() => {
     const currentData: ParkItemVideoPageData | undefined = this.screenStateStore.data();
@@ -83,6 +93,7 @@ export class ParkItemVideoStateFacade {
   constructor(
     @Inject(PARK_ITEM_VIDEOS_ITEMS_PORT) private readonly itemsPort: ParkItemVideosItemsPort,
     @Inject(PARK_ITEM_VIDEOS_PARKS_PORT) private readonly parksPort: ParkItemVideosParksPort,
+    @Inject(PARK_ITEM_VIDEOS_IMAGES_PORT) private readonly imagesPort: ParkItemVideosImagesPort,
     @Inject(PARK_ITEM_VIDEOS_VIDEOS_PORT) private readonly videosPort: ParkItemVideosVideosPort,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService,
@@ -101,7 +112,9 @@ export class ParkItemVideoStateFacade {
     this.itemsPort.getParkItemById(itemId, anonymousHttpOptions()).pipe(
       switchMap((item: ParkItem) => forkJoin({
         item: of(item),
-        park: this.parksPort.getParkById(item.parkId, anonymousHttpOptions()),
+        summary: this.parksPort.getParkDetailSummary(item.parkId, anonymousHttpOptions()),
+        itemImages: this.imagesPort.getImages(ImageOwnerType.PARK_ITEM, normalizeOptionalString(item.id) ?? itemId, ImageCategory.PARK_ITEM, 1, 1, anonymousHttpOptions())
+          .pipe(catchError(() => of([] as ImageDto[]))),
         video: this.videosPort.getVideoById(videoId, anonymousHttpOptions(), this.currentLanguageSignal()),
         videoPage: this.videosPort.getVideosPage({
           page: 1,
@@ -116,7 +129,7 @@ export class ParkItemVideoStateFacade {
       })),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe({
-      next: (response: { item: ParkItem; park: Park; video: VideoDto; videoPage: PagedResult<VideoDto>; videoTags: VideoTagDto[] }) => {
+      next: (response: { item: ParkItem; summary: ParkDetailSummary; itemImages: ImageDto[]; video: VideoDto; videoPage: PagedResult<VideoDto>; videoTags: VideoTagDto[] }) => {
         const normalizedItemId: string = normalizeOptionalString(response.item.id) ?? itemId;
         if (!isOwnedBy(response.video, VideoOwnerType.PARK_ITEM, normalizedItemId)) {
           this.ssrHttpStatusService.setNotFound();
@@ -126,7 +139,9 @@ export class ParkItemVideoStateFacade {
 
         this.screenStateStore.setReady({
           item: response.item,
-          park: response.park,
+          park: response.summary.park,
+          itemImageId: resolveItemSocialImageId(response.itemImages),
+          parkImageId: response.summary.mainImage?.id ?? null,
           video: response.video,
           videos: response.videoPage.items,
           videoTags: response.videoTags
@@ -170,4 +185,12 @@ function isOwnedBy(video: VideoDto, ownerType: VideoOwnerType, ownerId: string):
 function normalizeOptionalString(value: string | null | undefined): string | null {
   const normalized: string = value?.trim() ?? '';
   return normalized.length > 0 ? normalized : null;
+}
+
+function resolveItemSocialImageId(images: ImageDto[]): string | null {
+  const image: ImageDto | undefined = images.find((candidate: ImageDto) => {
+    return candidate.isPublished !== false && normalizeOptionalString(candidate.id) !== null;
+  });
+
+  return normalizeOptionalString(image?.id);
 }

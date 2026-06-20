@@ -1,6 +1,20 @@
 {
-  "version": "2.1.15",
+  "version": "2.1.16",
   "history": [
+    {
+      "version": "2.1.16",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Le ton public et la signature visuelle sont harmonisés.",
+        "en": "The public tone and visual signature are more consistent.",
+        "de": "Ton und visuelle Signatur wirken stimmiger.",
+        "nl": "De publieke toon en visuele signatuur zijn consistenter.",
+        "it": "Tono pubblico e firma visiva sono più coerenti.",
+        "es": "El tono público y la firma visual son más coherentes.",
+        "pl": "Ton publiczny i oprawa wizualna są spójniejsze.",
+        "pt": "O tom público e a assinatura visual ficam mais coerentes."
+      }
+    },
     {
       "version": "2.1.15",
       "releasedAt": "2026-06-20",

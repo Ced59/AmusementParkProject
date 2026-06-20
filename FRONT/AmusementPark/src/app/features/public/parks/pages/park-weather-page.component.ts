@@ -5,6 +5,7 @@ import { forkJoin } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { Park } from '@app/models/parks/park';
+import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import {
   ParkWeatherDay,
   ParkWeatherForecast,
@@ -30,6 +31,7 @@ import { resolveWeatherConditionKey, resolveWeatherIconClass } from '../ui/park-
 
 interface ParkWeatherPageData {
   park: Park;
+  parkImageId: string | null;
   weather: ParkWeatherForecast;
 }
 
@@ -88,7 +90,8 @@ export class ParkWeatherPageComponent implements OnInit {
         currentData.park.name ?? 'Park',
         this.currentLanguage(),
         this.router.url,
-        currentData.weather.days.length);
+        currentData.weather.days.length,
+        currentData.parkImageId);
     });
   }
 
@@ -249,16 +252,22 @@ export class ParkWeatherPageComponent implements OnInit {
     this.loadedHistoricalComparisonParkId = null;
 
     forkJoin({
-      park: this.parksApiService.getParkById(parkId, anonymousHttpOptions()),
+      summary: this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()),
       weather: this.parksApiService.getParkWeather(parkId, 7, anonymousHttpOptions())
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (data: ParkWeatherPageData) => {
-        if (!data.weather.days || data.weather.days.length === 0) {
-          this.stateStore.setEmpty(data);
+      next: (data: { summary: ParkDetailSummary; weather: ParkWeatherForecast }) => {
+        const pageData: ParkWeatherPageData = {
+          park: data.summary.park,
+          parkImageId: data.summary.mainImage?.id ?? null,
+          weather: data.weather
+        };
+
+        if (!pageData.weather.days || pageData.weather.days.length === 0) {
+          this.stateStore.setEmpty(pageData);
           return;
         }
 
-        this.stateStore.setReady(data);
+        this.stateStore.setReady(pageData);
       },
       error: (error: unknown) => {
         console.error('Error loading park weather page', error);

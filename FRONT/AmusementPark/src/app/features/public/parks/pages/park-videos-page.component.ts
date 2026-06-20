@@ -30,6 +30,7 @@ import { ParkVideosStateFacade } from '../state/park-videos-state.facade';
 export class ParkVideosPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly park = this.stateFacade.park;
+  protected readonly parkImageId = this.stateFacade.parkImageId;
   protected readonly videos = this.stateFacade.videoCards;
   protected readonly totalVideos = this.stateFacade.totalVideos;
   protected readonly canLoadMore = this.stateFacade.canLoadMore;
@@ -84,7 +85,14 @@ export class ParkVideosPageComponent implements OnInit {
           variant: 'primary'
         }
       ]);
-      this.seoService.applyParkVideosSeo(currentPark, this.currentLanguage(), this.router.url, this.totalVideos());
+      this.seoService.applyParkVideosSeo(
+        currentPark,
+        this.currentLanguage(),
+        this.router.url,
+        this.totalVideos(),
+        this.videos()[0]?.thumbnailPathOrUrl ?? null,
+        this.parkImageId()
+      );
     });
   }
 

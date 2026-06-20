@@ -18,7 +18,7 @@
       "allZones": "Toutes les zones"
     },
     "list": {
-      "subtitle": "Explorez les attractions, spectacles, restaurants, boutiques et services de ce parc, puis ouvrez la fiche détaillée de chaque lieu.",
+      "subtitle": "Explore les attractions, spectacles, restaurants, boutiques et services de ce parc, puis ouvre la fiche détaillée de chaque lieu.",
       "loadingTitle": "Chargement des lieux à découvrir",
       "loadingMessage": "Les attractions, spectacles et lieux du parc sont en cours de chargement.",
       "errorTitle": "Impossible de charger les lieux du parc",
@@ -26,7 +26,7 @@
       "emptyTitle": "Rien à découvrir pour le moment",
       "emptyMessage": "Aucune attraction, spectacle ou lieu public n'est actuellement disponible pour ce parc.",
       "emptyFilteredTitle": "Aucun lieu correspondant",
-      "emptyFilteredMessage": "Essayez d'élargir vos filtres ou réinitialisez-les pour voir plus de lieux.",
+      "emptyFilteredMessage": "Essaie d’élargir tes filtres ou réinitialise-les pour voir plus de lieux.",
       "filteredResults": "Résultats filtrés",
       "resultsCount": "Affichage de {{start}} à {{end}} sur {{total}} lieu(x)"
     },
@@ -168,7 +168,7 @@
     "imagesPage": {
       "kicker": "Galerie du lieu",
       "title": "Images de {{name}}",
-      "subtitle": "Explorez les images de {{name}} à {{park}} : détails, ambiance, angles de vue et photos géolocalisées quand elles sont disponibles.",
+      "subtitle": "Explore les images de {{name}} à {{park}} : détails, ambiance, angles de vue et photos géolocalisées quand elles sont disponibles.",
       "loadingTitle": "Chargement des images",
       "loadingMessage": "Préparation de la galerie du lieu.",
       "errorTitle": "Images indisponibles",
@@ -195,8 +195,8 @@
     "zoneFocus": {
       "badge": "Zone du parc",
       "overviewBadge": "Carte instantanée",
-      "overviewDescription": "Visualisez les lieux affichés pour {{park}} selon les filtres actifs.",
-      "zoneFallbackDescription": "Cette zone regroupe les lieux actuellement affichés. Utilisez les filtres pour affiner la sélection.",
+      "overviewDescription": "Visualise les lieux affichés pour {{park}} selon les filtres actifs.",
+      "zoneFallbackDescription": "Cette zone regroupe les lieux actuellement affichés. Utilise les filtres pour affiner la sélection.",
       "totalItems": "Lieux dans la zone",
       "totalItemsHint": "À découvrir",
       "displayedItems": "Affichés",

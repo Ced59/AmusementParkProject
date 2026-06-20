@@ -27,6 +27,8 @@ export class ParkItemVideoPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly item = this.stateFacade.item;
   protected readonly park = this.stateFacade.park;
+  protected readonly itemImageId = this.stateFacade.itemImageId;
+  protected readonly parkImageId = this.stateFacade.parkImageId;
   protected readonly video = this.stateFacade.video;
   protected readonly rawVideo = this.stateFacade.rawVideo;
   protected readonly previousVideo = this.stateFacade.previousVideo;
@@ -82,7 +84,15 @@ export class ParkItemVideoPageComponent implements OnInit {
           variant: 'soft'
         }
       ]);
-      this.seoService.applyParkItemVideoSeo(currentVideo, currentItem, currentPark, this.currentLanguage(), this.router.url);
+      this.seoService.applyParkItemVideoSeo(
+        currentVideo,
+        currentItem,
+        currentPark,
+        this.currentLanguage(),
+        this.router.url,
+        this.itemImageId(),
+        this.parkImageId()
+      );
     });
   }
 

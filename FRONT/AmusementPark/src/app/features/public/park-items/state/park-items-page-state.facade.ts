@@ -171,6 +171,7 @@ export class ParkItemsPageStateFacade {
   public readonly searchTerm = this.searchTermSignal.asReadonly();
   public readonly selectedCategory = this.selectedCategorySignal.asReadonly();
   public readonly selectedType = this.selectedTypeSignal.asReadonly();
+  public readonly parkImageId: Signal<string | null> = computed(() => resolveParkSocialImageId(this.screenStateStore.data()?.parkPhotos ?? []));
 
   private readonly park: Signal<Park | null> = computed(() => this.screenStateStore.data()?.park ?? null);
   private readonly explorer: Signal<ParkExplorer | null> = computed(() => this.screenStateStore.data()?.explorer ?? null);
@@ -387,4 +388,25 @@ export class ParkItemsPageStateFacade {
       this.currentPageSignal.set(1);
     }
   }
+}
+
+function resolveParkSocialImageId(parkPhotos: ImageDto[]): string | null {
+  const currentPhoto: ImageDto | undefined = parkPhotos.find((photo: ImageDto) => {
+    return photo.isCurrent && photo.isPublished !== false && normalizeOptionalImageId(photo.id) !== null;
+  });
+
+  if (currentPhoto) {
+    return normalizeOptionalImageId(currentPhoto.id);
+  }
+
+  const fallbackPhoto: ImageDto | undefined = parkPhotos.find((photo: ImageDto) => {
+    return photo.isPublished !== false && normalizeOptionalImageId(photo.id) !== null;
+  });
+
+  return normalizeOptionalImageId(fallbackPhoto?.id);
+}
+
+function normalizeOptionalImageId(value: string | null | undefined): string | null {
+  const normalizedValue: string = value?.trim() ?? '';
+  return normalizedValue.length > 0 ? normalizedValue : null;
 }
