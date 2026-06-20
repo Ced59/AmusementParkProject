@@ -99,7 +99,7 @@
     "contactGrievances": {
       "navTitle": "Messages contact",
       "kicker": "Contact",
-      "title": "Cahier de doleances",
+      "title": "Cahier de doléances",
       "subtitle": "Consulter les messages publics avec le contexte IP utile contre les abus.",
       "total": "{{count}} messages",
       "loading": "Chargement des messages...",
@@ -131,7 +131,7 @@
         "auditLogs": "Consulter les actions sensibles journalisées.",
         "parkGraphUpserts": "Prévisualiser puis appliquer un JSON global ou partiel de parc.",
         "seoSitemaps": "Piloter le sitemap index, les sections XML, les statistiques et IndexNow.",
-        "parkWeather": "Suivre les rafraichissements planifies de donnees publiques."
+        "parkWeather": "Suivre les rafraichissements planifiés de données publiques."
       },
       "title": "Tableau de bord",
       "subtitle": "Point d’entrée du back-office : choisis une rubrique dans le menu de gauche ou dans les raccourcis ci-dessous."
@@ -330,32 +330,32 @@
       },
       "export": {
         "title": "Export JSON du parc",
-        "description": "Telecharge l'etat actuel du parc selectionne dans un fichier JSON.",
-        "selected": "Parc selectionne",
-        "noParkSelected": "Selectionnez un parc existant avant l'export."
+        "description": "Télécharge l'état actuel du parc sélectionné dans un fichier JSON.",
+        "selected": "Parc sélectionné",
+        "noParkSelected": "Sélectionnez un parc existant avant l'export."
       },
       "mode": {
         "title": "Mode d'upsert",
         "description": "Choisissez le comportement du graph sur les collections existantes avant la preview.",
         "merge": {
           "title": "Fusion",
-          "description": "Conserve les collections absentes et upsert uniquement les entites presentes dans le graph."
+          "description": "Conserve les collections absentes et upsert uniquement les entités présentes dans le graph."
         },
         "replaceCollections": {
           "title": "Remplacement des collections",
-          "description": "Active le remplacement controle pour les collections pilotees par ce graph."
+          "description": "Active le remplacement contrôlé pour les collections pilotées par ce graph."
         }
       },
       "graph": {
         "title": "Vue graph",
-        "description": "Controlez la structure du graph avant preview.",
-        "identity": "Identite",
+        "description": "Contrôlez la structure du graph avant preview.",
+        "identity": "Identité",
         "country": "Pays",
         "zones": "Zones",
         "items": "Items",
         "images": "Images",
-        "references": "References",
-        "empty": "Non renseigne",
+        "references": "Références",
+        "empty": "Non renseigné",
         "invalidJson": "Le document JSON est invalide. Ouvrez JSON expert pour le corriger."
       },
       "actions": {
@@ -371,8 +371,8 @@
         "apply": "Appliquer",
         "applying": "Application…",
         "updateJson": "Update JSON",
-        "exportJson": "Telecharger JSON",
-        "exportingJson": "Preparation JSON...",
+        "exportJson": "Télécharger JSON",
+        "exportingJson": "Préparation JSON...",
         "uploadJsonFile": "Importer fichier JSON",
         "copyErrors": "Copier les erreurs",
         "removeBlock": "Retirer le bloc",
@@ -389,53 +389,53 @@
         "searchFailed": "La recherche de parc a échoué.",
         "previewFailed": "La prévisualisation a échoué.",
         "applyFailed": "L’application a échoué.",
-        "exportFailed": "L'export JSON a echoue.",
-        "fileReadFailed": "Le fichier JSON n'a pas pu etre lu.",
+        "exportFailed": "L'export JSON a échoué.",
+        "fileReadFailed": "Le fichier JSON n'a pas pu être lu.",
         "historyFailed": "Graph history loading failed."
       },
       "toasts": {
         "searchFailedTitle": "Recherche impossible",
         "searchFailedDetail": "La recherche de parc n'a pas pu aboutir.",
-        "previewSuccessTitle": "Preview prete",
-        "previewSuccessDetail": "Le JSON peut etre applique.",
+        "previewSuccessTitle": "Preview prête",
+        "previewSuccessDetail": "Le JSON peut être appliqué.",
         "previewPartialTitle": "Preview avec alertes",
-        "previewPartialDetail": "Verifiez les alertes avant application.",
-        "previewBlockedTitle": "Preview bloquee",
+        "previewPartialDetail": "Vérifiez les alertes avant application.",
+        "previewBlockedTitle": "Preview bloquée",
         "previewBlockedDetail": "La preview contient {{count}} erreur(s).",
-        "previewFailedTitle": "Preview echouee",
+        "previewFailedTitle": "Preview échouée",
         "previewFailedDetail": "La preview n'a pas pu aboutir.",
-        "applySuccessTitle": "Application terminee",
-        "applySuccessDetail": "Le JSON a ete applique.",
+        "applySuccessTitle": "Application terminée",
+        "applySuccessDetail": "Le JSON a été appliqué.",
         "applyPartialTitle": "Application partielle",
-        "applyPartialDetail": "Certaines entrees n'ont pas ete appliquees. Verifiez les details.",
-        "applyFailedTitle": "Application echouee",
-        "applyFailedDetail": "Le JSON n'a pas pu etre applique.",
-        "applyBlockedTitle": "Application bloquee",
+        "applyPartialDetail": "Certaines entrées n'ont pas été appliquées. Vérifiez les détails.",
+        "applyFailedTitle": "Application échouée",
+        "applyFailedDetail": "Le JSON n'a pas pu être appliqué.",
+        "applyBlockedTitle": "Application bloquée",
         "applyBlockedDetail": "Corrigez les erreurs de preview avant application.",
         "invalidJsonTitle": "JSON invalide",
         "invalidJsonDetail": "Corrigez le JSON avant de continuer.",
-        "blockRemovedTitle": "JSON mis a jour",
-        "blockRemovedDetail": "Le bloc a ete retire du brouillon.",
-        "blockQueuedForDeletionDetail": "Le bloc est place en suppression dans le brouillon.",
-        "blockRemoveFailedTitle": "Bloc inchange",
-        "blockRemoveFailedDetail": "Ce bloc n'a pas pu etre retrouve dans le JSON.",
-        "errorsCopiedTitle": "Erreurs copiees",
-        "errorsCopiedDetail": "Les details sont dans le presse-papiers.",
+        "blockRemovedTitle": "JSON mis à jour",
+        "blockRemovedDetail": "Le bloc a été retiré du brouillon.",
+        "blockQueuedForDeletionDetail": "Le bloc est placé en suppression dans le brouillon.",
+        "blockRemoveFailedTitle": "Bloc inchangé",
+        "blockRemoveFailedDetail": "Ce bloc n'a pas pu être retrouvé dans le JSON.",
+        "errorsCopiedTitle": "Erreurs copiées",
+        "errorsCopiedDetail": "Les détails sont dans le presse-papiers.",
         "copyFailedTitle": "Copie impossible",
-        "copyFailedDetail": "Les details n'ont pas pu etre copies."
+        "copyFailedDetail": "Les détails n'ont pas pu être copiés."
       },
       "result": {
         "title": "Prévisualisation",
         "noTarget": "Aucun parc cible",
         "created": "Créés",
         "updated": "Modifiés",
-        "deleted": "Supprimes",
+        "deleted": "Supprimés",
         "warnings": "Alertes",
         "errors": "Erreurs",
-        "errorDetails": "Details des erreurs",
+        "errorDetails": "Détails des erreurs",
         "pending": "Lancez une preview pour inspecter les changements avant application.",
         "applied": "Upsert appliqué avec succès.",
-        "contentChangesDetected": "Changements de contenu detectes ({{count}}). Ils seront mis a jour si vous appliquez ce JSON.",
+        "contentChangesDetected": "Changements de contenu détectés ({{count}}). Ils seront mis à jour si vous appliquez ce JSON.",
         "field": "Champ",
         "oldValue": "Ancien",
         "newValue": "Nouveau",
@@ -473,7 +473,7 @@
           "description": "Create service items without attaching a zone."
         },
         "references": {
-          "title": "References",
+          "title": "Références",
           "description": "Prepare operators, founders or manufacturers only."
         },
         "captainCoaster": {
@@ -551,56 +551,56 @@
       }
     },
     "parkWeather": {
-      "navTitle": "Meteo",
-      "title": "Rafraichissement meteo",
-      "subtitle": "Suivi des executions planifiees, de la couverture des parcs visibles et des echecs.",
-      "loading": "Chargement du statut meteo...",
-      "loadError": "Impossible de charger le statut meteo.",
-      "startError": "Impossible de lancer le rafraichissement meteo.",
-      "retryError": "Impossible de relancer le rafraichissement meteo.",
-      "empty": "Aucune information meteo disponible.",
+      "navTitle": "Météo",
+      "title": "Rafraîchissement météo",
+      "subtitle": "Suivi des executions planifiées, de la couverture des parcs visibles et des échecs.",
+      "loading": "Chargement du statut météo...",
+      "loadError": "Impossible de charger le statut météo.",
+      "startError": "Impossible de lancer le rafraîchissement météo.",
+      "retryError": "Impossible de relancer le rafraîchissement météo.",
+      "empty": "Aucune information météo disponible.",
       "actions": {
-        "startManual": "Rafraichir maintenant",
-        "retryFailed": "Relancer les echecs",
+        "startManual": "Rafraîchir maintenant",
+        "retryFailed": "Relancer les échecs",
         "retryPark": "Relancer"
       },
       "stats": {
         "status": "Statut",
         "progress": "Progression",
-        "success": "Reussis",
+        "success": "Réussis",
         "warnings": "{{count}} avertissement(s)",
-        "failed": "Echecs"
+        "failed": "Échecs"
       },
       "statuses": {
         "queued": "En attente",
         "running": "En cours",
-        "completed": "Termine",
-        "completedWithFailures": "Termine avec echecs",
-        "failed": "Echec",
-        "skipped": "Ignore"
+        "completed": "Terminé",
+        "completedWithFailures": "Terminé avec échecs",
+        "failed": "Échec",
+        "skipped": "Ignoré"
       },
       "messages": {
-        "queued": "Rafraichissement meteo en attente.",
-        "running": "Rafraichissement meteo en cours.",
-        "completed": "Rafraichissement meteo termine.",
-        "completedWithFailures": "Rafraichissement meteo termine avec des echecs.",
-        "canceled": "Rafraichissement meteo annule.",
-        "skippedByManual": "Execution automatique ignoree car un rafraichissement manuel couvre deja ce cycle."
+        "queued": "Rafraîchissement météo en attente.",
+        "running": "Rafraîchissement météo en cours.",
+        "completed": "Rafraîchissement météo terminé.",
+        "completedWithFailures": "Rafraîchissement météo terminé avec des échecs.",
+        "canceled": "Rafraîchissement météo annulé.",
+        "skippedByManual": "Exécution automatique ignorée car un rafraîchissement manuel couvre déjà ce cycle."
       },
       "values": {
         "empty": "-"
       },
       "latestRun": {
-        "title": "Derniere execution",
+        "title": "Dernière exécution",
         "meta": "{{trigger}} - {{scope}}",
-        "requestedAt": "Demandee",
-        "startedAt": "Demarree",
-        "cancelAuto": "Execution auto annulee"
+        "requestedAt": "Demandée",
+        "startedAt": "Démarrée",
+        "cancelAuto": "Exécution auto annulée"
       },
       "failures": {
-        "title": "Parcs en echec",
-        "subtitle": "Relance les echecs en lot ou un parc en particulier.",
-        "empty": "Aucun parc en echec pour cette execution.",
+        "title": "Parcs en échec",
+        "subtitle": "Relance les échecs en lot ou un parc en particulier.",
+        "empty": "Aucun parc en échec pour cette exécution.",
         "columns": {
           "park": "Parc",
           "error": "Erreur",
@@ -609,8 +609,8 @@
         }
       },
       "noRun": {
-        "title": "Aucune execution",
-        "message": "Lance un rafraichissement manuel ou attends la prochaine execution planifiee."
+        "title": "Aucune exécution",
+        "message": "Lance un rafraîchissement manuel ou attends la prochaine exécution planifiée."
       }
     },
     "parks": {
@@ -753,7 +753,7 @@
           "inversionCount": "Nombre d’inversions",
           "minimumHeightInCm": "Taille minimale (cm)",
           "maximumHeightInCm": "Taille maximale (cm)",
-          "minimumAge": "Âge minimum",
+          "minimumAge": "ge minimum",
           "trainCount": "Nombre de trains",
           "carsPerTrain": "Wagons par train",
           "ridersPerVehicle": "Passagers par véhicule",
@@ -816,8 +816,8 @@
           "minHeight": "Taille minimale",
           "minHeightAccompanied": "Taille minimale accompagné",
           "maxHeight": "Taille maximale",
-          "minAge": "Âge minimum",
-          "minAgeAccompanied": "Âge minimum accompagné",
+          "minAge": "ge minimum",
+          "minAgeAccompanied": "ge minimum accompagné",
           "pregnancyRestriction": "Restriction grossesse",
           "heartRestriction": "Restriction cardiaque",
           "backNeckRestriction": "Restriction dos ou nuque",
@@ -835,7 +835,7 @@
           "value": "Valeur",
           "unit": "Unité",
           "requiresAccompaniment": "Accompagnement requis",
-          "minimumCompanionAge": "Âge minimum de l’accompagnant",
+          "minimumCompanionAge": "ge minimum de l’accompagnant",
           "label": "Libellé localisé",
           "description": "Description localisée",
           "labelPlaceholder": "Libellé de la condition en {{language}}",
@@ -855,13 +855,13 @@
           "accessConditions": "Conditions d’accès",
           "locations": "Localisations spécifiques",
           "photos": "Photos",
-          "videos": "Videos"
+          "videos": "Vidéos"
         },
         "sectionNav": {
           "label": "Section de l'editeur",
           "help": "Sur petit ecran, choisis une section a la fois.",
           "retrySave": "Reessayer l'enregistrement",
-          "saveFailedWithRetry": "Echec de l'enregistrement. Tes modifications restent dans ce formulaire."
+          "saveFailedWithRetry": "Échec de l'enregistrement. Tes modifications restent dans ce formulaire."
         },
         "accessConditionsCount": "{{count}} condition(s) d’accès",
         "accessConditionsSummary": "Les règles détaillées sont maintenant gérées dans cette section dédiée au lieu de surcharger le formulaire principal.",
@@ -875,7 +875,7 @@
         "clearSelectedLocation": "Vider le point sélectionné",
         "editorStatus": {
           "saving": "Enregistrement en cours...",
-          "saveFailed": "Echec d'enregistrement",
+          "saveFailed": "Échec d'enregistrement",
           "unsavedChanges": "Modifications non enregistrées",
           "upToDate": "À jour"
         },
@@ -944,11 +944,11 @@
         "import": {
           "open": "Importer par collage",
           "title": "Import par collage / CSV",
-          "subtitle": "Colle une liste ou un tableau, corrige la previsualisation, puis applique seulement les lignes valides.",
+          "subtitle": "Colle une liste ou un tableau, corrige la prévisualisation, puis applique seulement les lignes valides.",
           "source": "Source",
-          "placeholder": "Nom\\nNom;Categorie;Type;Zone;Constructeur;Description FR",
+          "placeholder": "Nom\\nNom;Catégorie;Type;Zone;Constructeur;Description FR",
           "parsedRows": "{{count}} ligne(s) detectee(s)",
-          "preview": "Previsualiser",
+          "preview": "Prévisualiser",
           "apply": "Appliquer",
           "error": "Impossible de traiter cet import.",
           "descriptionFr": "Description FR",
@@ -966,7 +966,7 @@
         "descriptions": "Descriptions",
         "logos": "Logos",
         "photos": "Photos",
-        "videos": "Videos"
+        "videos": "Vidéos"
       },
       "editorStatus": {
         "saving": "Enregistrement en cours...",
@@ -1261,85 +1261,85 @@
       "unblockAction": "Débloquer le compte"
     },
     "videos": {
-      "title": "Videos",
-      "kicker": "M16 - Videotheque",
+      "title": "Vidéos",
+      "kicker": "M16 - Vidéothèque",
       "subtitle": "Gestion des vidéos publiques, rattachement aux parcs et fiches du parc, tags, types et métadonnées hébergeur.",
-      "total": "video(s)",
-      "loadingMessage": "Chargement des videos...",
+      "total": "vidéo(s)",
+      "loadingMessage": "Chargement des vidéos...",
       "search": "Recherche",
-      "searchPlaceholder": "Titre, createur, id, hebergeur...",
-      "provider": "Hebergeur",
-      "allProviders": "Tous les hebergeurs",
-      "ownerType": "Proprietaire",
-      "allOwnerTypes": "Tous les proprietaires",
-      "ownerId": "ID proprietaire",
+      "searchPlaceholder": "Titre, créateur, id, hébergeur...",
+      "provider": "Hébergeur",
+      "allProviders": "Tous les hébergeurs",
+      "ownerType": "Propriétaire",
+      "allOwnerTypes": "Tous les propriétaires",
+      "ownerId": "ID propriétaire",
       "ownerIdPlaceholder": "ID du parc ou de la fiche",
       "type": "Type",
       "allTypes": "Tous les types",
       "tag": "Tag",
       "allTags": "Tous les tags",
-      "creator": "Createur",
-      "creatorPlaceholder": "Nom createur ou chaine",
+      "creator": "Créateur",
+      "creatorPlaceholder": "Nom créateur ou chaîne",
       "publication": "Publication",
-      "allPublicationStates": "Tous les etats",
-      "published": "Publie",
-      "hidden": "Masque",
+      "allPublicationStates": "Tous les états",
+      "published": "Publié",
+      "hidden": "Masqué",
       "sortBy": "Tri",
       "direction": "Sens",
-      "desc": "Decroissant",
+      "desc": "Décroissant",
       "asc": "Croissant",
       "sortFields": {
-        "created": "Creation",
-        "updated": "Mise a jour",
+        "created": "Création",
+        "updated": "Mise à jour",
         "title": "Titre",
         "published": "Publication"
       },
       "createKicker": "Ajout",
-      "createTitle": "Ajouter une video",
-      "url": "URL video",
+      "createTitle": "Ajouter une vidéo",
+      "url": "URL vidéo",
       "urlPlaceholder": "https://www.youtube.com/watch?v=...",
       "titleField": "Titre",
       "description": "Description",
-      "creatorName": "Createur",
-      "creatorUrl": "URL createur",
+      "creatorName": "Créateur",
+      "creatorUrl": "URL créateur",
       "thumbnailUrl": "URL thumbnail",
-      "durationSeconds": "Duree (secondes)",
+      "durationSeconds": "Durée (secondes)",
       "publishedAt": "Date de publication",
       "language": "Langue de diffusion",
       "allLanguageFilters": "Toutes les langues de diffusion",
       "allLanguagesVisibility": "Toutes les langues",
-      "contextCreateKicker": "Ajout contextualise",
-      "localizedTitles": "Titres localises",
-      "localizedDescriptions": "Descriptions localisees",
-      "isPublished": "Video publiee",
+      "contextCreateKicker": "Ajout contextualisé",
+      "localizedTitles": "Titres localisés",
+      "localizedDescriptions": "Descriptions localisées",
+      "isPublished": "Vidéo publiée",
       "tags": "Tags",
       "resolve": "Analyser",
-      "create": "Creer la video",
-      "tagsLoadError": "Les tags video n'ont pas pu etre charges.",
-      "metadataError": "Impossible d'analyser cette video.",
-      "createSuccess": "Video creee.",
-      "createError": "La video n'a pas pu etre creee.",
+      "create": "Créer la vidéo",
+      "tagsLoadError": "Les tags vidéo n'ont pas pu être chargés.",
+      "metadataError": "Impossible d'analyser cette vidéo.",
+      "createSuccess": "Vidéo créée.",
+      "createError": "La vidéo n'a pas pu être créée.",
       "saveOwnerFirstTitle": "Enregistre d'abord ce contenu",
-      "saveOwnerFirstMessage": "La video pourra etre ajoutee des que l'identifiant sera disponible.",
-      "listTitle": "Bibliotheque",
-      "pageHint": "Thumbnails lazy, filtres serveur et pagination reelle.",
-      "emptyTitle": "Aucune video trouvee",
-      "emptyMessage": "Modifie les filtres ou ajoute une video.",
+      "saveOwnerFirstMessage": "La vidéo pourra être ajoutée dès que l'identifiant sera disponible.",
+      "listTitle": "Bibliothèque",
+      "pageHint": "Thumbnails lazy, filtres serveur et pagination réelle.",
+      "emptyTitle": "Aucune vidéo trouvée",
+      "emptyMessage": "Modifie les filtres ou ajoute une vidéo.",
       "page": "Page",
       "pageSize": "Taille",
-      "inspector": "Inspecteur video",
-      "owner": "Proprietaire",
+      "inspector": "Inspecteur vidéo",
+      "owner": "Propriétaire",
       "externalId": "ID externe",
       "providerViewCount": "Vues fournisseur",
       "thumbnailImageId": "Image thumbnail",
-      "saveVideo": "Enregistrer la video",
+      "saveVideo": "Enregistrer la vidéo",
       "deleteVideo": "Supprimer",
-      "noSelectionTitle": "Aucune video selectionnee",
-      "noSelectionMessage": "Selectionne une video pour editer ses metadonnees.",
-      "tagCreation": "Creation de tag",
+      "noSelectionTitle": "Aucune vidéo sélectionnée",
+      "noSelectionMessage": "Sélectionne une vidéo pour éditer ses métadonnées.",
+      "tagCreation": "Création de tag",
       "newTagSlug": "Slug du tag",
       "newTagPlaceholder": "ex. officiel",
-      "createTag": "Creer le tag",
+      "createTag": "Créer le tag",
       "providers": {
         "YOUTUBE": "YouTube",
         "DAILYMOTION": "Dailymotion",
@@ -1354,11 +1354,11 @@
         "ON_RIDE": "Onride",
         "OFF_RIDE": "Offride",
         "WALKTHROUGH": "Walkthrough",
-        "ADVERTISEMENT": "Publicite",
+        "ADVERTISEMENT": "Publicité",
         "DOCUMENTARY": "Documentaire",
         "REVIEW": "Avis",
-        "NEWS": "Actualite",
-        "EVENT": "Evenement",
+        "NEWS": "Actualité",
+        "EVENT": "Événement",
         "INTERVIEW": "Interview",
         "OTHER": "Autre"
       }
@@ -1522,14 +1522,14 @@
       "PARK_LOGO": "Logo de parc",
       "PARK": "Photo de parc",
       "PARK_ITEM": "Photo de lieu",
-      "VIDEO_THUMBNAIL": "Miniature video"
+      "VIDEO_THUMBNAIL": "Miniature vidéo"
     },
     "ownerTypes": {
       "NONE": "Aucun",
       "PARK": "Parc",
       "USER": "Utilisateur",
       "PARK_ITEM": "Fiche du parc",
-      "VIDEO": "Video"
+      "VIDEO": "Vidéo"
     }
   },
   "languageModal": {
@@ -1658,18 +1658,18 @@
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
+      "count": "{{count}} vidéos",
       "views": "{{count}} vues",
-      "loadMore": "Charger plus de videos",
+      "loadMore": "Charger plus de vidéos",
       "loadingMore": "Chargement..."
     },
     "filters": {
-      "type": "Type de video",
+      "type": "Type de vidéo",
       "allTypes": "Tous les types",
       "tag": "Tag",
       "allTags": "Tous les tags",
-      "creator": "Createur",
-      "creatorPlaceholder": "Filtrer par nom de createur",
+      "creator": "Créateur",
+      "creatorPlaceholder": "Filtrer par nom de créateur",
       "applyCreator": "Appliquer",
       "clear": "Effacer les filtres"
     },
@@ -1677,38 +1677,38 @@
       "youtube": "YouTube",
       "dailymotion": "Dailymotion",
       "vimeo": "Vimeo",
-      "other": "Video externe"
+      "other": "Vidéo externe"
     },
     "types": {
       "onRide": "Onride",
       "offRide": "Offride",
       "walkthrough": "Walkthrough",
-      "advertisement": "Publicite",
+      "advertisement": "Publicité",
       "documentary": "Documentaire",
       "review": "Avis",
-      "news": "Actualite",
-      "event": "Evenement",
+      "news": "Actualité",
+      "event": "Événement",
       "interview": "Interview",
       "other": "Autre"
     },
     "watch": {
-      "loadingTitle": "Chargement de la video",
-      "loadingMessage": "La page video est en cours de chargement.",
-      "errorTitle": "Video indisponible",
-      "errorMessage": "La video demandee n'a pas pu etre chargee.",
-      "previous": "Video precedente",
-      "next": "Video suivante",
-      "backToVideos": "Retour aux videos",
-      "creator": "Createur",
-      "category": "Categorie",
-      "provider": "Hebergeur",
-      "duration": "Duree",
-      "publishedAt": "Publiee le",
+      "loadingTitle": "Chargement de la vidéo",
+      "loadingMessage": "La page vidéo est en cours de chargement.",
+      "errorTitle": "Vidéo indisponible",
+      "errorMessage": "La vidéo demandée n'a pas pu être chargée.",
+      "previous": "Vidéo précédente",
+      "next": "Vidéo suivante",
+      "backToVideos": "Retour aux vidéos",
+      "creator": "Créateur",
+      "category": "Catégorie",
+      "provider": "Hébergeur",
+      "duration": "Durée",
+      "publishedAt": "Publiée le",
       "viewCount": "Vues",
       "views": "{{count}} vues",
-      "tagsAndCategories": "Categories et tags",
-      "openExternal": "Ouvrir la video",
-      "openCreator": "Ouvrir le createur",
+      "tagsAndCategories": "Catégories et tags",
+      "openExternal": "Ouvrir la vidéo",
+      "openCreator": "Ouvrir le créateur",
       "openProvider": "Ouvrir la page source"
     }
   },
@@ -1862,31 +1862,31 @@
   "contactPage": {
     "kicker": "Contact",
     "title": "Contacter AmusementPark",
-    "lead": "Envoyez une remarque sur le site, une information manquante, un probleme de donnees ou une idee d'amelioration.",
+    "lead": "Envoyez une remarque sur le site, une information manquante, un problème de données ou une idée d'amélioration.",
     "email": {
       "badge": "Adresse temporaire",
       "title": "Contact direct",
-      "note": "Cette adresse est temporaire en attendant la configuration d'un provider mail dedie."
+      "note": "Cette adresse est temporaire en attendant la configuration d'un provider mail dédié."
     },
     "form": {
-      "kicker": "Cahier de doleances",
+      "kicker": "Cahier de doléances",
       "title": "Laisser un message",
-      "description": "Les messages sont stockes en texte simple et consultables depuis le panel admin.",
+      "description": "Les messages sont stockés en texte simple et consultables depuis le panel admin.",
       "messageLabel": "Votre message",
-      "help": "Texte simple uniquement. Les balises HTML et les liens abusifs sont rejetes.",
-      "validation": "Saisissez un message en texte simple entre 10 et 2000 caracteres.",
-      "success": "Votre message a bien ete enregistre.",
-      "error": "Le message n'a pas pu etre envoye. Verifiez le texte ou reessayez plus tard.",
+      "help": "Texte simple uniquement. Les balises HTML et les liens abusifs sont rejetés.",
+      "validation": "Saisissez un message en texte simple entre 10 et 2000 caractères.",
+      "success": "Votre message a bien été enregistré.",
+      "error": "Le message n'a pas pu être envoyé. Vérifiez le texte ou réessayez plus tard.",
       "submit": "Envoyer",
       "submitting": "Envoi"
     },
     "privacy": {
       "badge": "Protection",
       "title": "Information anti-abus",
-      "text": "Ce formulaire est volontairement strict pour proteger le site et ses administrateurs.",
+      "text": "Ce formulaire est volontairement strict pour protéger le site et ses administrateurs.",
       "points": {
-        "plainText": "Les messages sont acceptes en texte simple uniquement.",
-        "ip": "Votre adresse IP est enregistree pour limiter les abus repetes.",
+        "plainText": "Les messages sont acceptés en texte simple uniquement.",
+        "ip": "Votre adresse IP est enregistrée pour limiter les abus répétés.",
         "admin": "Seuls les administrateurs peuvent consulter les messages et le contexte technique."
       }
     }
@@ -2197,14 +2197,14 @@
       "type": "Type",
       "value": "Valeur",
       "requiresAccompaniment": "Accompagnement requis",
-      "minimumCompanionAge": "Âge minimum de l’accompagnant"
+      "minimumCompanionAge": "ge minimum de l’accompagnant"
     },
     "accessConditionTypes": {
       "minHeight": "Taille minimale",
       "minHeightAccompanied": "Taille minimale accompagné",
       "maxHeight": "Taille maximale",
-      "minAge": "Âge minimum",
-      "minAgeAccompanied": "Âge minimum accompagné",
+      "minAge": "ge minimum",
+      "minAgeAccompanied": "ge minimum accompagné",
       "pregnancyRestriction": "Restriction grossesse",
       "heartRestriction": "Restriction cardiaque",
       "backNeckRestriction": "Restriction dos ou nuque",
@@ -2307,17 +2307,17 @@
     },
     "videosPage": {
       "kicker": "Vidéos du lieu",
-      "title": "Videos de {{name}}",
-      "subtitle": "Regardez les videos de {{name}} a {{park}} : onrides, offrides, avis et medias officiels.",
-      "loadingTitle": "Chargement des videos",
+      "title": "Vidéos de {{name}}",
+      "subtitle": "Regardez les vidéos de {{name}} à {{park}} : onrides, offrides, avis et médias officiels.",
+      "loadingTitle": "Chargement des vidéos",
       "loadingMessage": "Préparation des vidéos du lieu.",
-      "errorTitle": "Videos indisponibles",
+      "errorTitle": "Vidéos indisponibles",
       "errorMessage": "Impossible de charger les vidéos de ce lieu pour le moment.",
-      "backToItem": "Retour a {{name}}",
+      "backToItem": "Retour à {{name}}",
       "backToItems": "À découvrir à {{name}}",
-      "backToPark": "Retour a {{name}}",
-      "emptyTitle": "Aucune video publiee",
-      "emptyMessage": "Aucune video publiee n'est encore disponible pour {{name}}."
+      "backToPark": "Retour à {{name}}",
+      "emptyTitle": "Aucune vidéo publiée",
+      "emptyMessage": "Aucune vidéo publiée n'est encore disponible pour {{name}}."
     }
   },
   "parkVisitor": {
@@ -2331,67 +2331,67 @@
     }
   },
   "parkWeather": {
-    "loading": "Chargement de la meteo",
-    "errorMessage": "Les donnees meteo n'ont pas pu etre chargees.",
+    "loading": "Chargement de la météo",
+    "errorMessage": "Les données météo n'ont pas pu être chargées.",
     "today": {
-      "title": "Meteo du jour",
+      "title": "Météo du jour",
       "precipitationProbability": "{{value}} % de risque de pluie",
-      "viewSevenDays": "Previsions a 7 jours"
+      "viewSevenDays": "Prévisions à 7 jours"
     },
     "conditions": {
-      "clear": "Ciel degage",
+      "clear": "Ciel dégagé",
       "partlyCloudy": "Partiellement nuageux",
       "cloudy": "Nuageux",
       "fog": "Brouillard",
       "rain": "Pluie",
       "snow": "Neige",
       "thunderstorm": "Orage",
-      "unknown": "Meteo indisponible"
+      "unknown": "Météo indisponible"
     },
     "fields": {
       "precipitationProbability": "Risque de pluie",
-      "precipitationSum": "Precipitations",
+      "precipitationSum": "Précipitations",
       "wind": "Vent"
     },
     "chart": {
       "maximum": "Max",
       "minimum": "Min",
-      "condition": "Meteo",
+      "condition": "Météo",
       "temperature": "Temp.",
       "precipitationSum": "Cumul"
     },
     "history": {
-      "title": "Comparer avec les annees precedentes",
-      "subtitle": "Memoire meteo stockee pour les memes dates.",
-      "loading": "Chargement des comparaisons meteo.",
+      "title": "Comparer avec les années précédentes",
+      "subtitle": "Mémoire météo stockée pour les mêmes dates.",
+      "loading": "Chargement des comparaisons météo.",
       "empty": "Aucune observation historique n'est disponible pour ces dates.",
-      "errorMessage": "Les comparaisons meteo n'ont pas pu etre chargees.",
-      "yearSingular": "Il y a {{count}} an",
-      "yearPlural": "Il y a {{count}} ans",
+      "errorMessage": "Les comparaisons météo n'ont pas pu être chargées.",
+      "yearSingular": "Il y à {{count}} an",
+      "yearPlural": "Il y à {{count}} ans",
       "rain": "Pluie {{value}}",
       "wind": "Vent {{value}}"
     },
     "attribution": {
       "short": "Source : {{provider}}",
-      "full": "Donnees meteo fournies par {{provider}} sous licence :"
+      "full": "Données météo fournies par {{provider}} sous licence :"
     },
     "page": {
-      "kicker": "Meteo",
-      "title": "Meteo a 7 jours de {{name}}",
-      "lead": "Previsions quotidiennes stockees par le site pour preparer les visites et construire une memoire meteo dans le temps.",
-      "loadingTitle": "Chargement de la meteo",
-      "loadingMessage": "Les previsions sont en cours de chargement.",
-      "emptyTitle": "Aucune prevision disponible",
-      "emptyMessage": "Aucune donnee meteo n'est encore disponible pour ce parc.",
-      "errorTitle": "Meteo indisponible",
-      "backToPark": "Retour a {{name}}",
-      "forecastLabel": "Previsions meteo a 7 jours"
+      "kicker": "Météo",
+      "title": "Météo à 7 jours de {{name}}",
+      "lead": "Prévisions quotidiennes stockées par le site pour préparer les visites et construire une mémoire météo dans le temps.",
+      "loadingTitle": "Chargement de la météo",
+      "loadingMessage": "Les prévisions sont en cours de chargement.",
+      "emptyTitle": "Aucune prévision disponible",
+      "emptyMessage": "Aucune donnée météo n'est encore disponible pour ce parc.",
+      "errorTitle": "Météo indisponible",
+      "backToPark": "Retour à {{name}}",
+      "forecastLabel": "Prévisions météo à 7 jours"
     }
   },
   "parks": {
     "heroBadge": "🗺️ Exploration",
     "title": "Tous les parcs",
-    "subtitle": "Explore les parcs visibles, retrouve-les sur la carte interactive et choisis ta prochaine destination.",
+    "subtitle": "Explore les parcs visibles, retrouvé-les sur la carte interactive et choisis ta prochaine destination.",
     "loadingTitle": "Chargement des parcs",
     "loadingMessage": "La liste des parcs est en cours de chargement.",
     "errorTitle": "Impossible de charger les parcs",
@@ -2701,16 +2701,16 @@
       "emptyItemsMessage": "Aucun lieu public n'est actuellement rattaché à cette zone."
     },
     "videosPage": {
-      "kicker": "Videos du parc",
-      "title": "Videos de {{name}}",
-      "subtitle": "Regardez les videos de {{name}} : onrides, offrides, clips officiels et contenus createurs.",
-      "loadingTitle": "Chargement des videos",
-      "loadingMessage": "Preparation des videos du parc.",
-      "errorTitle": "Videos indisponibles",
-      "errorMessage": "Impossible de charger les videos de ce parc pour le moment.",
-      "backToPark": "Retour a {{name}}",
-      "emptyTitle": "Aucune video publiee",
-      "emptyMessage": "Aucune video publiee n'est encore disponible pour {{name}}."
+      "kicker": "Vidéos du parc",
+      "title": "Vidéos de {{name}}",
+      "subtitle": "Regardez les vidéos de {{name}} : onrides, offrides, clips officiels et contenus créateurs.",
+      "loadingTitle": "Chargement des vidéos",
+      "loadingMessage": "Préparation des vidéos du parc.",
+      "errorTitle": "Vidéos indisponibles",
+      "errorMessage": "Impossible de charger les vidéos de ce parc pour le moment.",
+      "backToPark": "Retour à {{name}}",
+      "emptyTitle": "Aucune vidéo publiée",
+      "emptyMessage": "Aucune vidéo publiée n'est encore disponible pour {{name}}."
     }
   },
   "privacyPage": {
@@ -2947,13 +2947,13 @@
   },
   "versionHistoryPage": {
     "kicker": "Historique",
-    "title": "Ce qui a change",
-    "lead": "Version actuelle : {{version}}. Chaque note reste courte, publique et centree sur les progres visibles.",
+    "title": "Ce qui a changé",
+    "lead": "Version actuelle : {{version}}. Chaque note reste courte, publique et centrée sur les progrès visibles.",
     "timelineAriaLabel": "Historique des versions",
     "levels": {
       "major": "Majeure",
       "minor": "Palier",
-      "patch": "Mise a jour"
+      "patch": "Mise à jour"
     }
   }
 }

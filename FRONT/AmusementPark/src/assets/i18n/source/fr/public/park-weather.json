@@ -1,60 +1,60 @@
 {
   "parkWeather": {
-    "loading": "Chargement de la meteo",
-    "errorMessage": "Les donnees meteo n'ont pas pu etre chargees.",
+    "loading": "Chargement de la météo",
+    "errorMessage": "Les données météo n'ont pas pu être chargées.",
     "today": {
-      "title": "Meteo du jour",
+      "title": "Météo du jour",
       "precipitationProbability": "{{value}} % de risque de pluie",
-      "viewSevenDays": "Previsions a 7 jours"
+      "viewSevenDays": "Prévisions à 7 jours"
     },
     "conditions": {
-      "clear": "Ciel degage",
+      "clear": "Ciel dégagé",
       "partlyCloudy": "Partiellement nuageux",
       "cloudy": "Nuageux",
       "fog": "Brouillard",
       "rain": "Pluie",
       "snow": "Neige",
       "thunderstorm": "Orage",
-      "unknown": "Meteo indisponible"
+      "unknown": "Météo indisponible"
     },
     "fields": {
       "precipitationProbability": "Risque de pluie",
-      "precipitationSum": "Precipitations",
+      "precipitationSum": "Précipitations",
       "wind": "Vent"
     },
     "chart": {
       "maximum": "Max",
       "minimum": "Min",
-      "condition": "Meteo",
+      "condition": "Météo",
       "temperature": "Temp.",
       "precipitationSum": "Cumul"
     },
     "history": {
-      "title": "Comparer avec les annees precedentes",
-      "subtitle": "Memoire meteo stockee pour les memes dates.",
-      "loading": "Chargement des comparaisons meteo.",
+      "title": "Comparer avec les années précédentes",
+      "subtitle": "Mémoire météo stockée pour les mêmes dates.",
+      "loading": "Chargement des comparaisons météo.",
       "empty": "Aucune observation historique n'est disponible pour ces dates.",
-      "errorMessage": "Les comparaisons meteo n'ont pas pu etre chargees.",
-      "yearSingular": "Il y a {{count}} an",
-      "yearPlural": "Il y a {{count}} ans",
+      "errorMessage": "Les comparaisons météo n'ont pas pu être chargées.",
+      "yearSingular": "Il y à {{count}} an",
+      "yearPlural": "Il y à {{count}} ans",
       "rain": "Pluie {{value}}",
       "wind": "Vent {{value}}"
     },
     "attribution": {
       "short": "Source : {{provider}}",
-      "full": "Donnees meteo fournies par {{provider}} sous licence :"
+      "full": "Données météo fournies par {{provider}} sous licence :"
     },
     "page": {
-      "kicker": "Meteo",
-      "title": "Meteo a 7 jours de {{name}}",
-      "lead": "Previsions quotidiennes stockees par le site pour preparer les visites et construire une memoire meteo dans le temps.",
-      "loadingTitle": "Chargement de la meteo",
-      "loadingMessage": "Les previsions sont en cours de chargement.",
-      "emptyTitle": "Aucune prevision disponible",
-      "emptyMessage": "Aucune donnee meteo n'est encore disponible pour ce parc.",
-      "errorTitle": "Meteo indisponible",
-      "backToPark": "Retour a {{name}}",
-      "forecastLabel": "Previsions meteo a 7 jours"
+      "kicker": "Météo",
+      "title": "Météo à 7 jours de {{name}}",
+      "lead": "Prévisions quotidiennes stockées par le site pour préparer les visites et construire une mémoire météo dans le temps.",
+      "loadingTitle": "Chargement de la météo",
+      "loadingMessage": "Les prévisions sont en cours de chargement.",
+      "emptyTitle": "Aucune prévision disponible",
+      "emptyMessage": "Aucune donnée météo n'est encore disponible pour ce parc.",
+      "errorTitle": "Météo indisponible",
+      "backToPark": "Retour à {{name}}",
+      "forecastLabel": "Prévisions météo à 7 jours"
     }
   }
 }

@@ -41,7 +41,8 @@ export function mapParkToDetailViewModel(
   parkPhotos: ImageDto[] = [],
   itemPhotoSources: ParkDetailItemPhotoSource[] = [],
   imageTags: ImageTagDto[] = [],
-  rating: RatingSummary | null = null
+  rating: RatingSummary | null = null,
+  hasVideos: boolean = false
 ): ParkDetailViewModel {
   const hasLocationInfo: boolean = Number.isFinite(park.latitude) && Number.isFinite(park.longitude);
   const websiteUrl: string | null = normalizeOptionalString(park.webSiteUrl);
@@ -135,7 +136,7 @@ export function mapParkToDetailViewModel(
     imagesLink: hasIdentity && primaryPhoto
       ? buildPublicParkImagesRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
-    videosLink: hasIdentity
+    videosLink: hasIdentity && hasVideos
       ? buildPublicParkVideosRouteCommands({ language: currentLanguage, parkId: park.id, parkName: park.name })
       : null,
     mapLink: hasIdentity

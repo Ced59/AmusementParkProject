@@ -1,4 +1,4 @@
-.park-items-map {
+﻿.park-items-map {
   display: grid;
   gap: 1rem;
   padding: clamp(1.2rem, 3vw, 1.5rem);
@@ -25,7 +25,7 @@
   margin: 0;
   color: var(--app-heading);
   font-size: clamp(1.45rem, 2.5vw, 2rem);
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
 }
 
 .park-items-map__heading p {

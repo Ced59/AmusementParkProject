@@ -8,7 +8,9 @@ type LeafletMapComponentInternals = {
   focusSelectedMarker: () => boolean;
   openPendingSelectedMarkerPopup: () => void;
   buildTileLayerOptions: () => Record<string, unknown>;
-  map: { getZoom: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } | null;
+  scheduleMapSizeStabilization: () => void;
+  map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } | null;
+  tileLayer: { redraw: jasmine.Spy } | null;
   leafletMarkers: Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>;
   pendingPopupMarkerId: string | null;
 };
@@ -39,7 +41,7 @@ describe('LeafletMapComponent', () => {
   it('keeps the selected marker popup pending while focusing an already rendered marker', () => {
     const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
     const marker: { getLatLng: jasmine.Spy; openPopup: jasmine.Spy } = jasmine.createSpyObj('marker', ['getLatLng', 'openPopup']);
-    const map: { getZoom: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['getZoom', 'setView', 'remove']);
+    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'remove']);
 
     marker.getLatLng.and.returnValue({ lat: 49.804, lng: 6.878 });
     map.getZoom.and.returnValue(12);
@@ -73,7 +75,7 @@ describe('LeafletMapComponent', () => {
 
   it('clears pending marker popup when there is no selected marker', () => {
     const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: { getZoom: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['getZoom', 'setView', 'remove']);
+    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'remove']);
 
     component.selectedMarkerId = null;
     internals.pendingPopupMarkerId = 'entrance';
@@ -109,5 +111,28 @@ describe('LeafletMapComponent', () => {
     expect(options['tileSize']).toBeUndefined();
     expect(options['zoomOffset']).toBeUndefined();
     expect(options['keepBuffer']).toBe(0);
+  });
+
+  it('redraws reduced mobile tiles while stabilizing the initial map size', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'remove']);
+    const tileLayer: { redraw: jasmine.Spy } = jasmine.createSpyObj('tileLayer', ['redraw']);
+
+    spyOnProperty(window, 'innerWidth', 'get').and.returnValue(390);
+    map.getZoom.and.returnValue(5);
+    internals.map = map;
+    internals.tileLayer = tileLayer;
+
+    jasmine.clock().install();
+    try {
+      internals.scheduleMapSizeStabilization();
+
+      jasmine.clock().tick(1500);
+
+      expect(map.invalidateSize).toHaveBeenCalledWith({ pan: false, debounceMoveend: true });
+      expect(tileLayer.redraw.calls.count()).toBe(5);
+    } finally {
+      jasmine.clock().uninstall();
+    }
   });
 });

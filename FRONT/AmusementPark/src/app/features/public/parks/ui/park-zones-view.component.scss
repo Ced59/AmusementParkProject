@@ -1,4 +1,4 @@
-.park-zones-page {
+﻿.park-zones-page {
   align-content: start;
 }
 
@@ -15,7 +15,7 @@
   font-family: var(--font-heading);
   font-size: clamp(2rem, 5vw, 3.4rem);
   line-height: 1;
-  letter-spacing: -0.045em;
+  letter-spacing: 0;
 }
 
 .zones-hero p {
@@ -54,7 +54,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.35rem, 3vw, 2rem);
   line-height: 1.08;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
 }
 
 .zone-card__description {

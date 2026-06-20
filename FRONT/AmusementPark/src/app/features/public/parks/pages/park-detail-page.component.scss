@@ -1,4 +1,4 @@
-.detail-actions {
+﻿.detail-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -21,7 +21,7 @@
 .park-detail__quick-title {
   margin: 0.75rem 0 0.35rem;
   font-size: 1.45rem;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 @media (min-width: 960px) {

@@ -10,6 +10,10 @@ import { buildMarkerClusters, MarkerCluster, MarkerClusterPoint } from './leafle
 
 type LeafletNamespace = typeof import('leaflet');
 type LeafletModule = LeafletNamespace & { readonly default?: LeafletNamespace };
+interface MapSizeRefreshOptions {
+  readonly redrawTiles?: boolean;
+  readonly updateViewport?: boolean;
+}
 
 @Component({
   selector: 'app-leaflet-map',
@@ -30,6 +34,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   private viewportUpdateTimeoutId: number | null = null;
   private viewportStabilizationTimeoutId: number | null = null;
   private markerRefreshTimeoutId: number | null = null;
+  private mapSizeRefreshTimeoutIds: number[] = [];
   private pendingPopupMarkerId: string | null = null;
 
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef<HTMLDivElement>;
@@ -67,10 +72,14 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   // Leaflet chargé dynamiquement
   private L: LeafletNamespace | null = null;
   private map: import('leaflet').Map | null = null;
+  private tileLayer: import('leaflet').TileLayer | null = null;
   private markerLayer: import('leaflet').LayerGroup | null = null;
   private leafletMarkers: Map<string, import('leaflet').Marker> = new Map();
 
   private readonly isBrowser: boolean;
+  private readonly viewportChangeListener = (): void => {
+    this.refreshMapSize(this.shouldUseReducedMobileTileRequests());
+  };
 
   constructor(
     @Inject(PLATFORM_ID) platformId: Object,
@@ -132,6 +141,8 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   ngOnDestroy(): void {
     this.clearViewportUpdateTimers();
     this.clearMarkerRefreshTimer();
+    this.clearMapSizeRefreshTimers();
+    this.unbindViewportChangeListeners();
 
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
@@ -142,16 +153,16 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       this.map.remove();
       this.map = null;
     }
+
+    this.tileLayer = null;
   }
 
-  public refreshMapSize(): void {
+  public refreshMapSize(redrawTiles: boolean = false): void {
     if (!this.map) {
       return;
     }
 
-    window.setTimeout((): void => {
-      this.map?.invalidateSize();
-    }, 50);
+    this.scheduleMapSizeRefresh(50, { redrawTiles });
   }
 
   private resolveLeafletNamespace(leafletModule: LeafletModule): LeafletNamespace {
@@ -186,13 +197,17 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       return;
     }
 
-    window.setTimeout((): void => {
-      this.map?.invalidateSize();
-    }, 50);
+    const shouldRedrawTiles: boolean = this.shouldUseReducedMobileTileRequests();
+    const stabilizationDelays: number[] = shouldRedrawTiles
+      ? [50, 160, 360, 800, 1400]
+      : [50, 250];
 
-    window.setTimeout((): void => {
-      this.map?.invalidateSize();
-    }, 250);
+    for (const delayMs of stabilizationDelays) {
+      this.scheduleMapSizeRefresh(delayMs, {
+        redrawTiles: shouldRedrawTiles,
+        updateViewport: true
+      });
+    }
   }
 
   private initMap(): void {
@@ -205,16 +220,17 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       zoom: this.zoom
     });
 
-    this.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', this.buildTileLayerOptions()).addTo(this.map);
+    this.tileLayer = this.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', this.buildTileLayerOptions()).addTo(this.map);
 
     this.markerLayer = this.L.layerGroup().addTo(this.map);
 
     this.refreshMarkers();
     this.scheduleViewportUpdate();
+    this.bindViewportChangeListeners();
 
     if (typeof ResizeObserver !== 'undefined') {
       this.resizeObserver = new ResizeObserver((): void => {
-        this.refreshMapSize();
+        this.refreshMapSize(this.shouldUseReducedMobileTileRequests());
       });
       this.resizeObserver.observe(this.mapContainer.nativeElement);
     }
@@ -302,6 +318,70 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     if (this.markerRefreshTimeoutId !== null) {
       window.clearTimeout(this.markerRefreshTimeoutId);
       this.markerRefreshTimeoutId = null;
+    }
+  }
+
+  private scheduleMapSizeRefresh(delayMs: number, options: MapSizeRefreshOptions = {}): void {
+    if (!this.map) {
+      return;
+    }
+
+    const timeoutId: number = window.setTimeout((): void => {
+      this.mapSizeRefreshTimeoutIds = this.mapSizeRefreshTimeoutIds.filter((candidateId: number): boolean => candidateId !== timeoutId);
+
+      if (!this.map) {
+        return;
+      }
+
+      this.map.invalidateSize({ pan: false, debounceMoveend: true });
+
+      if (options.updateViewport === true) {
+        this.applyMarkerViewport();
+      }
+
+      if (options.redrawTiles === true) {
+        this.tileLayer?.redraw();
+      }
+    }, delayMs);
+
+    this.mapSizeRefreshTimeoutIds.push(timeoutId);
+  }
+
+  private clearMapSizeRefreshTimers(): void {
+    for (const timeoutId of this.mapSizeRefreshTimeoutIds) {
+      window.clearTimeout(timeoutId);
+    }
+
+    this.mapSizeRefreshTimeoutIds = [];
+  }
+
+  private bindViewportChangeListeners(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    window.addEventListener('resize', this.viewportChangeListener, { passive: true });
+    window.addEventListener('orientationchange', this.viewportChangeListener, { passive: true });
+
+    const visualViewport: VisualViewport | null = window.visualViewport ?? null;
+
+    if (visualViewport) {
+      visualViewport.addEventListener('resize', this.viewportChangeListener, { passive: true });
+    }
+  }
+
+  private unbindViewportChangeListeners(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    window.removeEventListener('resize', this.viewportChangeListener);
+    window.removeEventListener('orientationchange', this.viewportChangeListener);
+
+    const visualViewport: VisualViewport | null = window.visualViewport ?? null;
+
+    if (visualViewport) {
+      visualViewport.removeEventListener('resize', this.viewportChangeListener);
     }
   }
 

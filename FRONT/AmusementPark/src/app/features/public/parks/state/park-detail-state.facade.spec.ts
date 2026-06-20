@@ -7,11 +7,19 @@ import { ParkDistanceResponse } from '@app/models/parks/park-distance';
 import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { Park } from '@app/models/parks/park';
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
+import { VideoDto } from '@app/models/videos/video-dto';
+import { VideoHostingProvider } from '@app/models/videos/video-hosting-provider';
+import { VideoOwnerType } from '@app/models/videos/video-owner-type';
+import { VideoSearchQuery } from '@app/models/videos/video-search-query';
+import { VideoType } from '@app/models/videos/video-type';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { PagedResult } from '@shared/models/contracts';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import {
   PARK_DETAIL_PARKS_PORT,
-  ParkDetailParksPort
+  PARK_DETAIL_VIDEOS_PORT,
+  ParkDetailParksPort,
+  ParkDetailVideosPort
 } from './park-detail-data.ports';
 import { ParkDetailStateFacade } from './park-detail-state.facade';
 
@@ -44,6 +52,16 @@ class FakeSsrHttpStatusService {
 
   setNotFound(): void {
     this.notFoundCallCount += 1;
+  }
+}
+
+class FakeVideosPort implements ParkDetailVideosPort {
+  public videosResponse$: Observable<PagedResult<VideoDto>> = of(createVideosPage(1));
+  public readonly calls: VideoSearchQuery[] = [];
+
+  getVideosPage(query: VideoSearchQuery = {}): Observable<PagedResult<VideoDto>> {
+    this.calls.push(query);
+    return this.videosResponse$;
   }
 }
 
@@ -105,6 +123,48 @@ function createSummary(totalItems: number = 3, hasMainImage: boolean = true): Pa
         Attraction: Math.max(totalItems - 1, 0),
         Restaurant: totalItems > 0 ? 1 : 0
       }
+    }
+  };
+}
+
+function createVideo(): VideoDto {
+  return {
+    id: 'video-1',
+    hostingProvider: VideoHostingProvider.YOUTUBE,
+    ownerType: VideoOwnerType.PARK,
+    ownerId: 'park-1',
+    type: VideoType.ON_RIDE,
+    originalUrl: 'https://www.youtube.com/watch?v=park',
+    canonicalUrl: 'https://www.youtube.com/watch?v=park',
+    embedUrl: null,
+    externalId: 'park',
+    title: 'Park video',
+    description: null,
+    creatorName: null,
+    creatorUrl: null,
+    thumbnailUrl: null,
+    thumbnailImageId: null,
+    durationSeconds: null,
+    publishedAtUtc: null,
+    languageCodes: ['fr'],
+    titles: [],
+    descriptions: [],
+    tagIds: [],
+    externalMetadata: {},
+    isPublished: true,
+    createdAt: '2026-01-01T00:00:00Z',
+    updatedAt: '2026-01-01T00:00:00Z'
+  };
+}
+
+function createVideosPage(totalItems: number): PagedResult<VideoDto> {
+  return {
+    items: totalItems > 0 ? [createVideo()] : [],
+    pagination: {
+      totalItems,
+      totalPages: totalItems > 0 ? 1 : 0,
+      currentPage: 1,
+      itemsPerPage: 1
     }
   };
 }
@@ -181,15 +241,18 @@ function createWeatherForecast(): ParkWeatherForecast {
 function configureFacade(): {
   facade: ParkDetailStateFacade;
   parksPort: FakeParksPort;
+  videosPort: FakeVideosPort;
   ssrStatusService: FakeSsrHttpStatusService;
 } {
   const parksPort: FakeParksPort = new FakeParksPort();
+  const videosPort: FakeVideosPort = new FakeVideosPort();
   const ssrStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
 
   TestBed.configureTestingModule({
     providers: [
       ParkDetailStateFacade,
       { provide: PARK_DETAIL_PARKS_PORT, useValue: parksPort },
+      { provide: PARK_DETAIL_VIDEOS_PORT, useValue: videosPort },
       {
         provide: CountryDisplayService,
         useValue: {
@@ -203,6 +266,7 @@ function configureFacade(): {
   return {
     facade: TestBed.inject(ParkDetailStateFacade),
     parksPort,
+    videosPort,
     ssrStatusService
   };
 }
@@ -231,6 +295,12 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.park()?.stats[0].value).toBe(3);
     expect(context.facade.summary()?.entries.find((entry) => entry.labelKey === 'parkVisitor.summary.totalItems')?.count).toBe(3);
     expect(context.parksPort.summaryCalls).toEqual(['park-1']);
+    expect(context.videosPort.calls).toEqual([{
+      page: 1,
+      size: 1,
+      ownerType: VideoOwnerType.PARK,
+      ownerId: 'park-1'
+    }]);
     expect(context.parksPort.nearestCalls).toEqual([{ sourceParkId: 'park-1', limit: 4, maxDistanceKilometers: null }]);
     expect(context.parksPort.weatherCalls).toEqual([{ id: 'park-1', days: 7 }]);
     expect(context.facade.nearbyState().kind).toBe('ready');
@@ -238,6 +308,16 @@ describe('ParkDetailStateFacade', () => {
     expect(context.facade.weatherState().kind).toBe('ready');
     expect(context.facade.weather()?.days.length).toBe(1);
     expect(context.facade.nearbyParks()[0].shortDescription?.length).toBeLessThanOrEqual(140);
+  });
+
+  it('hides the videos link when the park has no published videos', () => {
+    const context = configureFacade();
+    context.videosPort.videosResponse$ = of(createVideosPage(0));
+
+    context.facade.setCurrentLanguage('fr');
+    context.facade.loadPark('park-1');
+
+    expect(context.facade.park()?.videosLink).toBeNull();
   });
 
   it('keeps the logo fallback but hides the images link when no main photo exists', () => {

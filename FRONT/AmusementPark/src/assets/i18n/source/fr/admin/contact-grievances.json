@@ -3,7 +3,7 @@
     "contactGrievances": {
       "navTitle": "Messages contact",
       "kicker": "Contact",
-      "title": "Cahier de doleances",
+      "title": "Cahier de doléances",
       "subtitle": "Consulter les messages publics avec le contexte IP utile contre les abus.",
       "total": "{{count}} messages",
       "loading": "Chargement des messages...",

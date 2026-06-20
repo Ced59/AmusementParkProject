@@ -1,4 +1,4 @@
-@use "mixins" as m;
+﻿@use "mixins" as m;
 
 .public-page {
   display: grid;
@@ -112,7 +112,7 @@
   color: var(--app-heading);
   font-size: clamp(1.25rem, 4vw, 2rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .public-stat-card__hint {
@@ -148,7 +148,7 @@
 .public-feature-card__title {
   margin: 0.8rem 0 0.35rem;
   font-size: 1.1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .public-feature-card__text {
@@ -165,7 +165,7 @@
 .public-section-header__title {
   margin: 0;
   font-size: clamp(1.2rem, 3vw, 1.8rem);
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .public-section-header__subtitle {
@@ -376,7 +376,7 @@
   color: var(--app-heading);
   font-family: var(--font-display);
   font-size: clamp(3rem, 7vw, 6.4rem);
-  line-height: 0.94;
+  line-height: 1.06;
   letter-spacing: 0.03em;
 }
 
@@ -425,7 +425,7 @@
   color: var(--app-heading);
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 3.5vw, 2.15rem);
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .parks-results__card-target {

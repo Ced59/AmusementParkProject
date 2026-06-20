@@ -1,4 +1,4 @@
-.park-reference-detail {
+﻿.park-reference-detail {
   display: flex;
   flex-direction: column;
 }
@@ -92,8 +92,8 @@
   font-family: var(--font-heading);
   font-size: clamp(2.35rem, 5.4vw, 4.4rem);
   font-weight: 900;
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  line-height: 1.06;
+  letter-spacing: 0;
 }
 
 .park-reference-hero__legal-name {
@@ -214,7 +214,7 @@ a.reference-fact__value:hover {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3vw, 2.35rem);
   font-weight: 900;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .attractions-head p {

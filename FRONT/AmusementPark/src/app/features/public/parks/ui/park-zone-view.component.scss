@@ -1,4 +1,4 @@
-.park-zone-page {
+﻿.park-zone-page {
   align-content: start;
 }
 
@@ -26,8 +26,8 @@
   color: var(--app-heading);
   font-family: var(--font-heading);
   font-size: clamp(2.4rem, 6vw, 4.6rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
+  line-height: 1.06;
+  letter-spacing: 0;
 }
 
 .zone-hero__description {
@@ -74,7 +74,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.45rem, 3vw, 2.15rem);
   line-height: 1.05;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 :host ::ng-deep .zone-map .leaflet-map-container {

@@ -1,4 +1,4 @@
-.search-panel,
+﻿.search-panel,
 .app-search-panel,
 .public-filter-panel {
   padding: clamp(1rem, 2.4vw, 1.4rem);
@@ -84,7 +84,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   font-weight: 900;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .app-search-panel__actions {
@@ -302,7 +302,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.35rem, 3vw, 2rem);
   font-weight: 900;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
 }
 
 .auth-modal-intro p {
@@ -397,7 +397,7 @@
   color: var(--app-heading);
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 6vw, 4.8rem);
-  line-height: 0.95;
+  line-height: 1.06;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   overflow-wrap: anywhere;

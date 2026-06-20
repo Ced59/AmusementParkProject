@@ -140,7 +140,7 @@
           "inversionCount": "Nombre d’inversions",
           "minimumHeightInCm": "Taille minimale (cm)",
           "maximumHeightInCm": "Taille maximale (cm)",
-          "minimumAge": "Âge minimum",
+          "minimumAge": "ge minimum",
           "trainCount": "Nombre de trains",
           "carsPerTrain": "Wagons par train",
           "ridersPerVehicle": "Passagers par véhicule",
@@ -203,8 +203,8 @@
           "minHeight": "Taille minimale",
           "minHeightAccompanied": "Taille minimale accompagné",
           "maxHeight": "Taille maximale",
-          "minAge": "Âge minimum",
-          "minAgeAccompanied": "Âge minimum accompagné",
+          "minAge": "ge minimum",
+          "minAgeAccompanied": "ge minimum accompagné",
           "pregnancyRestriction": "Restriction grossesse",
           "heartRestriction": "Restriction cardiaque",
           "backNeckRestriction": "Restriction dos ou nuque",
@@ -222,7 +222,7 @@
           "value": "Valeur",
           "unit": "Unité",
           "requiresAccompaniment": "Accompagnement requis",
-          "minimumCompanionAge": "Âge minimum de l’accompagnant",
+          "minimumCompanionAge": "ge minimum de l’accompagnant",
           "label": "Libellé localisé",
           "description": "Description localisée",
           "labelPlaceholder": "Libellé de la condition en {{language}}",
@@ -242,13 +242,13 @@
           "accessConditions": "Conditions d’accès",
           "locations": "Localisations spécifiques",
           "photos": "Photos",
-          "videos": "Videos"
+          "videos": "Vidéos"
         },
         "sectionNav": {
           "label": "Section de l'editeur",
           "help": "Sur petit ecran, choisis une section a la fois.",
           "retrySave": "Reessayer l'enregistrement",
-          "saveFailedWithRetry": "Echec de l'enregistrement. Tes modifications restent dans ce formulaire."
+          "saveFailedWithRetry": "Échec de l'enregistrement. Tes modifications restent dans ce formulaire."
         },
         "accessConditionsCount": "{{count}} condition(s) d’accès",
         "accessConditionsSummary": "Les règles détaillées sont maintenant gérées dans cette section dédiée au lieu de surcharger le formulaire principal.",
@@ -262,7 +262,7 @@
         "clearSelectedLocation": "Vider le point sélectionné",
         "editorStatus": {
           "saving": "Enregistrement en cours...",
-          "saveFailed": "Echec d'enregistrement",
+          "saveFailed": "Échec d'enregistrement",
           "unsavedChanges": "Modifications non enregistrées",
           "upToDate": "À jour"
         },
@@ -331,11 +331,11 @@
         "import": {
           "open": "Importer par collage",
           "title": "Import par collage / CSV",
-          "subtitle": "Colle une liste ou un tableau, corrige la previsualisation, puis applique seulement les lignes valides.",
+          "subtitle": "Colle une liste ou un tableau, corrige la prévisualisation, puis applique seulement les lignes valides.",
           "source": "Source",
-          "placeholder": "Nom\\nNom;Categorie;Type;Zone;Constructeur;Description FR",
+          "placeholder": "Nom\\nNom;Catégorie;Type;Zone;Constructeur;Description FR",
           "parsedRows": "{{count}} ligne(s) detectee(s)",
-          "preview": "Previsualiser",
+          "preview": "Prévisualiser",
           "apply": "Appliquer",
           "error": "Impossible de traiter cet import.",
           "descriptionFr": "Description FR",
@@ -353,7 +353,7 @@
         "descriptions": "Descriptions",
         "logos": "Logos",
         "photos": "Photos",
-        "videos": "Videos"
+        "videos": "Vidéos"
       },
       "editorStatus": {
         "saving": "Enregistrement en cours...",

@@ -1,4 +1,4 @@
-.park-detail {
+﻿.park-detail {
   --park-detail-content-max-width: var(--content-wide-max-width, 1480px);
 
   display: flex;
@@ -122,8 +122,8 @@
   font-family: var(--font-heading);
   font-size: clamp(2.6rem, 5.6vw, 4.8rem);
   font-weight: 900;
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  line-height: 1.06;
+  letter-spacing: 0;
 }
 
 .park-banner__lead {
@@ -280,7 +280,7 @@
   margin: 0;
   color: var(--app-heading);
   font-size: clamp(1.45rem, 2.5vw, 2rem);
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
 }
 
 .park-desc__text {

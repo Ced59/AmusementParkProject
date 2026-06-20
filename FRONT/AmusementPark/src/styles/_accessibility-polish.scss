@@ -1,4 +1,4 @@
-/* M16 — accessibility, state and premium polish.
+﻿/* M16 — accessibility, state and premium polish.
    Keep dark visual identity untouched. Light-mode overrides only improve contrast. */
 
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
@@ -275,7 +275,7 @@ body.light-mode {
   color: var(--app-heading);
   font-family: var(--font-heading);
   font-weight: 900;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .app-empty-state p,

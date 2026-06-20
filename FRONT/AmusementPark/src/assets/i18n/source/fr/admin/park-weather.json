@@ -1,56 +1,56 @@
 {
   "admin": {
     "parkWeather": {
-      "navTitle": "Meteo",
-      "title": "Rafraichissement meteo",
-      "subtitle": "Suivi des executions planifiees, de la couverture des parcs visibles et des echecs.",
-      "loading": "Chargement du statut meteo...",
-      "loadError": "Impossible de charger le statut meteo.",
-      "startError": "Impossible de lancer le rafraichissement meteo.",
-      "retryError": "Impossible de relancer le rafraichissement meteo.",
-      "empty": "Aucune information meteo disponible.",
+      "navTitle": "Météo",
+      "title": "Rafraîchissement météo",
+      "subtitle": "Suivi des executions planifiées, de la couverture des parcs visibles et des échecs.",
+      "loading": "Chargement du statut météo...",
+      "loadError": "Impossible de charger le statut météo.",
+      "startError": "Impossible de lancer le rafraîchissement météo.",
+      "retryError": "Impossible de relancer le rafraîchissement météo.",
+      "empty": "Aucune information météo disponible.",
       "actions": {
-        "startManual": "Rafraichir maintenant",
-        "retryFailed": "Relancer les echecs",
+        "startManual": "Rafraîchir maintenant",
+        "retryFailed": "Relancer les échecs",
         "retryPark": "Relancer"
       },
       "stats": {
         "status": "Statut",
         "progress": "Progression",
-        "success": "Reussis",
+        "success": "Réussis",
         "warnings": "{{count}} avertissement(s)",
-        "failed": "Echecs"
+        "failed": "Échecs"
       },
       "statuses": {
         "queued": "En attente",
         "running": "En cours",
-        "completed": "Termine",
-        "completedWithFailures": "Termine avec echecs",
-        "failed": "Echec",
-        "skipped": "Ignore"
+        "completed": "Terminé",
+        "completedWithFailures": "Terminé avec échecs",
+        "failed": "Échec",
+        "skipped": "Ignoré"
       },
       "messages": {
-        "queued": "Rafraichissement meteo en attente.",
-        "running": "Rafraichissement meteo en cours.",
-        "completed": "Rafraichissement meteo termine.",
-        "completedWithFailures": "Rafraichissement meteo termine avec des echecs.",
-        "canceled": "Rafraichissement meteo annule.",
-        "skippedByManual": "Execution automatique ignoree car un rafraichissement manuel couvre deja ce cycle."
+        "queued": "Rafraîchissement météo en attente.",
+        "running": "Rafraîchissement météo en cours.",
+        "completed": "Rafraîchissement météo terminé.",
+        "completedWithFailures": "Rafraîchissement météo terminé avec des échecs.",
+        "canceled": "Rafraîchissement météo annulé.",
+        "skippedByManual": "Exécution automatique ignorée car un rafraîchissement manuel couvre déjà ce cycle."
       },
       "values": {
         "empty": "-"
       },
       "latestRun": {
-        "title": "Derniere execution",
+        "title": "Dernière exécution",
         "meta": "{{trigger}} - {{scope}}",
-        "requestedAt": "Demandee",
-        "startedAt": "Demarree",
-        "cancelAuto": "Execution auto annulee"
+        "requestedAt": "Demandée",
+        "startedAt": "Démarrée",
+        "cancelAuto": "Exécution auto annulée"
       },
       "failures": {
-        "title": "Parcs en echec",
-        "subtitle": "Relance les echecs en lot ou un parc en particulier.",
-        "empty": "Aucun parc en echec pour cette execution.",
+        "title": "Parcs en échec",
+        "subtitle": "Relance les échecs en lot ou un parc en particulier.",
+        "empty": "Aucun parc en échec pour cette exécution.",
         "columns": {
           "park": "Parc",
           "error": "Erreur",
@@ -59,8 +59,8 @@
         }
       },
       "noRun": {
-        "title": "Aucune execution",
-        "message": "Lance un rafraichissement manuel ou attends la prochaine execution planifiee."
+        "title": "Aucune exécution",
+        "message": "Lance un rafraîchissement manuel ou attends la prochaine exécution planifiée."
       }
     }
   }

@@ -7,12 +7,16 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
+import { VideoDto } from '@app/models/videos/video-dto';
+import { VideoSearchQuery } from '@app/models/videos/video-search-query';
 import { ImagesApiService } from '@data-access/images/images-api.service';
 import { ManufacturersApiService } from '@data-access/manufacturers/manufacturers-api.service';
 import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
+import { VideosApiService } from '@data-access/videos/videos-api.service';
 import { AnonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
+import { PagedResult } from '@shared/models/contracts';
 
 export interface ParkItemDetailItemsPort {
   getParkItemById(id: string, options?: AnonymousHttpOptions): Observable<ParkItem>;
@@ -34,6 +38,10 @@ export interface ParkItemDetailZonesPort {
 
 export interface ParkItemDetailImagesPort {
   getImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory, page?: number, size?: number, options?: AnonymousHttpOptions): Observable<ImageDto[]>;
+}
+
+export interface ParkItemDetailVideosPort {
+  getVideosPage(query?: VideoSearchQuery, options?: AnonymousHttpOptions): Observable<PagedResult<VideoDto>>;
 }
 
 export const PARK_ITEM_DETAIL_ITEMS_PORT = new InjectionToken<ParkItemDetailItemsPort>('PARK_ITEM_DETAIL_ITEMS_PORT', {
@@ -59,4 +67,9 @@ export const PARK_ITEM_DETAIL_ZONES_PORT = new InjectionToken<ParkItemDetailZone
 export const PARK_ITEM_DETAIL_IMAGES_PORT = new InjectionToken<ParkItemDetailImagesPort>('PARK_ITEM_DETAIL_IMAGES_PORT', {
   providedIn: 'root',
   factory: () => inject(ImagesApiService)
+});
+
+export const PARK_ITEM_DETAIL_VIDEOS_PORT = new InjectionToken<ParkItemDetailVideosPort>('PARK_ITEM_DETAIL_VIDEOS_PORT', {
+  providedIn: 'root',
+  factory: () => inject(VideosApiService)
 });
