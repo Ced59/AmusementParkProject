@@ -38,6 +38,11 @@
       "description": "Send this park page to someone who may want to visit {{title}}.",
       "text": "Have a look at {{title}} on AmusementPark."
     },
+    "weather": {
+      "title": "Share this weather forecast",
+      "description": "Send the {{title}} forecast to someone planning a visit.",
+      "text": "Check the weather for {{title}} on AmusementPark."
+    },
     "parkItems": {
       "title": "Share these attractions and places",
       "description": "Send this park guide to someone planning what to do.",

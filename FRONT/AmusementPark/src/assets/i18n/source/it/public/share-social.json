@@ -38,6 +38,11 @@
       "description": "Invia questa scheda a qualcuno che potrebbe voler visitare {{title}}.",
       "text": "Guarda {{title}} su AmusementPark."
     },
+    "weather": {
+      "title": "Condividi questo meteo",
+      "description": "Invia le previsioni di {{title}} a qualcuno che sta preparando la visita.",
+      "text": "Controlla il meteo di {{title}} su AmusementPark."
+    },
     "parkItems": {
       "title": "Condividi queste attrazioni e luoghi",
       "description": "Invia questa guida a qualcuno che sta preparando la visita.",

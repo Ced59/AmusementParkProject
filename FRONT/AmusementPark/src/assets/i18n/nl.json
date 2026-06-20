@@ -2925,6 +2925,11 @@
       "description": "Stuur deze parkpagina naar iemand die {{title}} wil bezoeken.",
       "text": "Bekijk {{title}} op AmusementPark."
     },
+    "weather": {
+      "title": "Deze weersverwachting delen",
+      "description": "Stuur de weersverwachting voor {{title}} naar iemand die een bezoek plant.",
+      "text": "Bekijk het weer voor {{title}} op AmusementPark."
+    },
     "parkItems": {
       "title": "Deze attracties en plekken delen",
       "description": "Stuur deze gids naar iemand die een bezoek plant.",

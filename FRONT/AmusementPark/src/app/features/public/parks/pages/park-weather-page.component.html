@@ -13,7 +13,7 @@
       <header class="park-weather-hero">
         <p class="park-weather-hero__kicker">{{ 'parkWeather.page.kicker' | translate }}</p>
         <h1>{{ 'parkWeather.page.title' | translate:{ name: data.park.name } }}</h1>
-        <p>{{ 'parkWeather.page.lead' | translate }}</p>
+        <p>{{ 'parkWeather.page.lead' | translate:{ name: data.park.name } }}</p>
 
         @if (detailLink()) {
           <a appUiButton="ghost" class="park-weather-hero__back" [routerLink]="detailLink()">
@@ -190,6 +190,15 @@
           }
         }
       </details>
+
+      <app-public-share-panel
+        targetType="Park"
+        [targetId]="data.park.id ?? null"
+        [targetTitle]="data.park.name ?? null"
+        titleKey="shareSocial.weather.title"
+        descriptionKey="shareSocial.weather.description"
+        textKey="shareSocial.weather.text">
+      </app-public-share-panel>
 
       <p class="park-weather-attribution">
         {{ 'parkWeather.attribution.full' | translate:{ provider: data.weather.attribution.providerName } }}

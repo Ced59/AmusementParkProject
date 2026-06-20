@@ -27,6 +27,7 @@ import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store'
 import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-language.utils';
 import { buildPublicParkRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { UiButtonDirective } from '@ui/primitives';
+import { PublicSharePanelComponent } from '@ui/sharing/public-share-panel/public-share-panel.component';
 import { resolveWeatherConditionKey, resolveWeatherIconClass } from '../ui/park-weather-card.component';
 
 interface ParkWeatherPageData {
@@ -48,7 +49,7 @@ const CHART_BOTTOM: number = 216;
   templateUrl: './park-weather-page.component.html',
   styleUrls: ['./park-weather-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PageStateComponent, RouterLink, TranslateModule, UiButtonDirective]
+  imports: [PageStateComponent, PublicSharePanelComponent, RouterLink, TranslateModule, UiButtonDirective]
 })
 export class ParkWeatherPageComponent implements OnInit {
   private readonly stateStore = new SignalScreenStateStore<ParkWeatherPageData>();
