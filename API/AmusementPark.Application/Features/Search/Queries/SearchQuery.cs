@@ -12,4 +12,5 @@ namespace AmusementPark.Application.Features.Search.Queries;
 /// <param name="Text">Texte de recherche.</param>
 /// <param name="Categories">Catégories filtrées éventuelles.</param>
 /// <param name="Paging">Paramètres de pagination.</param>
-public sealed record SearchQuery(string Text, IReadOnlyCollection<string> Categories, PagedQuery Paging) : IQuery<ApplicationResult<SearchResultPage<SearchHitResult>>>;
+/// <param name="LanguageCode">Langue d'affichage demandée.</param>
+public sealed record SearchQuery(string Text, IReadOnlyCollection<string> Categories, PagedQuery Paging, string LanguageCode) : IQuery<ApplicationResult<SearchResultPage<SearchHitResult>>>;

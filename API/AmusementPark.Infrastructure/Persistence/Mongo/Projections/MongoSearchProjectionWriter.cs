@@ -2,9 +2,9 @@ using System.Text.RegularExpressions;
 using AmusementPark.Application.Features.Search;
 using AmusementPark.Application.Features.Search.Ports;
 using AmusementPark.Infrastructure.Configuration.Mongo;
-using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Common;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Parks;
 using AmusementPark.Infrastructure.Persistence.Mongo.Documents.Search;
+using AmusementPark.Infrastructure.Persistence.Mongo.Mappers;
 using MongoDB.Driver;
 
 namespace AmusementPark.Infrastructure.Persistence.Mongo.Projections;
@@ -268,7 +268,8 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             ResourceType = SearchProjectionResourceTypes.Parks,
             Title = source.Name ?? string.Empty,
             Subtitle = BuildParkSubtitle(source),
-            Description = this.ResolveLocalizedText(source.Descriptions) ?? this.BuildParkFallbackDescription(source),
+            Description = SearchLocalizedTextResolver.Resolve(source.Descriptions, "en") ?? this.BuildParkFallbackDescription(source),
+            LocalizedDescriptions = SearchLocalizedTextResolver.Normalize(source.Descriptions),
             City = source.City,
             CountryCode = source.CountryCode,
             LogoImageId = source.CurrentLogoImageId,
@@ -300,7 +301,8 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             ResourceType = SearchProjectionResourceTypes.ParkItems,
             Title = source.Name,
             Subtitle = string.IsNullOrWhiteSpace(parkName) ? HumanizeValue(source.Category.ToString()) : parkName,
-            Description = this.ResolveLocalizedText(source.Descriptions) ?? fallbackDescription,
+            Description = SearchLocalizedTextResolver.Resolve(source.Descriptions, "en") ?? fallbackDescription,
+            LocalizedDescriptions = SearchLocalizedTextResolver.Normalize(source.Descriptions),
             City = park?.City,
             CountryCode = park?.CountryCode,
             LogoImageId = park?.CurrentLogoImageId,
@@ -356,7 +358,8 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             Category = "founders",
             ResourceType = SearchProjectionResourceTypes.Founders,
             Title = source.Name,
-            Description = this.ResolveLocalizedText(source.Biography) ?? source.Name,
+            Description = SearchLocalizedTextResolver.Resolve(source.Biography, "en") ?? source.Name,
+            LocalizedDescriptions = SearchLocalizedTextResolver.Normalize(source.Biography),
             Keywords = this.BuildKeywords(source.Name, "founder", "fondateur"),
             CompositeScore = 0.0,
             CreatedAt = source.CreatedAt,
@@ -380,7 +383,8 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             Category = "operators",
             ResourceType = SearchProjectionResourceTypes.Operators,
             Title = source.Name,
-            Description = this.ResolveLocalizedText(source.Description) ?? source.Name,
+            Description = SearchLocalizedTextResolver.Resolve(source.Description, "en") ?? source.Name,
+            LocalizedDescriptions = SearchLocalizedTextResolver.Normalize(source.Description),
             Keywords = this.BuildKeywords(source.Name, "operator", "exploitant"),
             CompositeScore = 0.0,
             CreatedAt = source.CreatedAt,
@@ -404,7 +408,8 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
             Category = "manufacturers",
             ResourceType = SearchProjectionResourceTypes.Manufacturers,
             Title = source.Name,
-            Description = this.ResolveLocalizedText(source.Biography) ?? source.Name,
+            Description = SearchLocalizedTextResolver.Resolve(source.Biography, "en") ?? source.Name,
+            LocalizedDescriptions = SearchLocalizedTextResolver.Normalize(source.Biography),
             Keywords = this.BuildKeywords(source.Name, "manufacturer", "constructor", "fabricant"),
             CompositeScore = 0.0,
             CreatedAt = source.CreatedAt,
@@ -458,34 +463,6 @@ public sealed class MongoSearchProjectionWriter : ISearchProjectionWriter
         {
             yield return compact;
         }
-    }
-
-    private string? ResolveLocalizedText(IEnumerable<LocalizedTextDocument>? values)
-    {
-        if (values is null)
-        {
-            return null;
-        }
-
-        List<LocalizedTextDocument> safeValues = values
-            .Where(static value => value is not null)
-            .Where(static value => !string.IsNullOrWhiteSpace(value.LanguageCode))
-            .ToList();
-
-        LocalizedTextDocument? english = safeValues.FirstOrDefault(value => string.Equals(value.LanguageCode, "en", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrWhiteSpace(value.Value));
-        if (english is not null)
-        {
-            return english.Value;
-        }
-
-        LocalizedTextDocument? french = safeValues.FirstOrDefault(value => string.Equals(value.LanguageCode, "fr", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrWhiteSpace(value.Value));
-        if (french is not null)
-        {
-            return french.Value;
-        }
-
-        LocalizedTextDocument? first = safeValues.FirstOrDefault(value => !string.IsNullOrWhiteSpace(value.Value));
-        return first?.Value;
     }
 
     private string BuildParkFallbackDescription(ParkDocument park)

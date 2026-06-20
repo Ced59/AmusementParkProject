@@ -35,56 +35,88 @@ public sealed class SearchReadRepository : ISearchReadRepository
         this.collection = database.GetCollection<SearchItemDocument>(settings.SearchItemCollectionName);
     }
 
-    public async Task<SearchResultPage<SearchHitResult>> SearchAsync(string text, IReadOnlyCollection<string> categories, int page, int pageSize, CancellationToken cancellationToken)
+    public async Task<SearchResultPage<SearchHitResult>> SearchAsync(string text, IReadOnlyCollection<string> categories, int page, int pageSize, string languageCode, CancellationToken cancellationToken)
     {
-        FilterDefinition<SearchItemDocument> filter = Builders<SearchItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        BsonDocument filter = BuildSearchFilter(text, categories);
+
+        long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+
+        BsonDocument[] pipeline =
+        {
+            new BsonDocument("$match", filter),
+            SearchResultOrdering.BuildPriorityAddFieldsStage(),
+            new BsonDocument("$sort", new BsonDocument
+            {
+                { SearchResultOrdering.PriorityFieldName, 1 },
+                { "compositeScore", -1 },
+                { "updatedAt", -1 },
+            }),
+            new BsonDocument("$skip", (page - 1) * pageSize),
+            new BsonDocument("$limit", pageSize),
+            new BsonDocument("$project", new BsonDocument(SearchResultOrdering.PriorityFieldName, 0)),
+        };
+
+        List<SearchItemDocument> documents = await this.collection.Aggregate<SearchItemDocument>(pipeline)
+            .ToListAsync(cancellationToken);
+
+        return new SearchResultPage<SearchHitResult>(
+            documents.Select(document => document.ToSearchHit(languageCode)).ToList(),
+            page,
+            pageSize,
+            totalItems);
+    }
+
+    private static BsonDocument BuildSearchFilter(string text, IReadOnlyCollection<string> categories)
+    {
+        List<BsonDocument> filters = new List<BsonDocument>
+        {
+            new BsonDocument("isVisible", true),
+        };
 
         if (!string.IsNullOrWhiteSpace(text))
         {
             string escapedQuery = Regex.Escape(text.Trim());
             BsonRegularExpression regex = new BsonRegularExpression($".*{escapedQuery}.*", "i");
 
-            FilterDefinition<SearchItemDocument> textFilter = Builders<SearchItemDocument>.Filter.Or(
-                Builders<SearchItemDocument>.Filter.Regex(document => document.Title, regex),
-                Builders<SearchItemDocument>.Filter.Regex(document => document.Subtitle, regex),
-                Builders<SearchItemDocument>.Filter.Regex(document => document.Description, regex),
-                Builders<SearchItemDocument>.Filter.Regex("keywords", regex));
-
-            filter &= textFilter;
+            filters.Add(new BsonDocument("$or", new BsonArray
+            {
+                new BsonDocument("title", regex),
+                new BsonDocument("subtitle", regex),
+                new BsonDocument("description", regex),
+                new BsonDocument("localizedDescriptions.value", regex),
+                new BsonDocument("keywords", regex),
+            }));
         }
 
         (string[] normalizedCategories, string[] normalizedResourceTypes) = NormalizeRequestedCategories(categories);
         if (normalizedCategories.Length > 0 || normalizedResourceTypes.Length > 0)
         {
-            List<FilterDefinition<SearchItemDocument>> categoryFilters = new List<FilterDefinition<SearchItemDocument>>();
+            BsonArray categoryFilters = new BsonArray();
 
             if (normalizedCategories.Length > 0)
             {
-                categoryFilters.Add(Builders<SearchItemDocument>.Filter.In(document => document.Category, normalizedCategories));
+                categoryFilters.Add(new BsonDocument("category", new BsonDocument("$in", ToBsonArray(normalizedCategories))));
             }
 
             if (normalizedResourceTypes.Length > 0)
             {
-                categoryFilters.Add(Builders<SearchItemDocument>.Filter.In(document => document.ResourceType, normalizedResourceTypes));
+                categoryFilters.Add(new BsonDocument("resourceType", new BsonDocument("$in", ToBsonArray(normalizedResourceTypes))));
             }
 
-            filter &= Builders<SearchItemDocument>.Filter.Or(categoryFilters);
+            filters.Add(new BsonDocument("$or", categoryFilters));
         }
 
-        long totalItems = await this.collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+        if (filters.Count == 1)
+        {
+            return filters[0];
+        }
 
-        List<SearchItemDocument> documents = await this.collection.Find(filter)
-            .SortByDescending(document => document.CompositeScore)
-            .ThenByDescending(document => document.UpdatedAt)
-            .Skip((page - 1) * pageSize)
-            .Limit(pageSize)
-            .ToListAsync(cancellationToken);
+        return new BsonDocument("$and", new BsonArray(filters));
+    }
 
-        return new SearchResultPage<SearchHitResult>(
-            documents.Select(document => document.ToSearchHit()).ToList(),
-            page,
-            pageSize,
-            totalItems);
+    private static BsonArray ToBsonArray(IEnumerable<string> values)
+    {
+        return new BsonArray(values.Select(static value => new BsonString(value)));
     }
 
     private static (string[] Categories, string[] ResourceTypes) NormalizeRequestedCategories(IReadOnlyCollection<string> categories)
