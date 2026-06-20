@@ -1,6 +1,20 @@
 {
-  "version": "2.1.14",
+  "version": "2.1.15",
   "history": [
+    {
+      "version": "2.1.15",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Le slogan du footer est plus lisible.",
+        "en": "The footer slogan is easier to read.",
+        "de": "Der Footer-Slogan ist besser lesbar.",
+        "nl": "De voettekst-slogan is beter leesbaar.",
+        "it": "Lo slogan del footer è più leggibile.",
+        "es": "El lema del pie de página se lee mejor.",
+        "pl": "Slogan w stopce jest bardziej czytelny.",
+        "pt": "O slogan do rodapé fica mais legível."
+      }
+    },
     {
       "version": "2.1.14",
       "releasedAt": "2026-06-20",

@@ -171,6 +171,13 @@ body.light-mode .app-brand-wordmark {
   --brand-wordmark-fun-size: 1.13em;
 }
 
+.app-public-footer__logo .app-brand-wordmark {
+  --brand-wordmark-fun-ink-padding-start: 0.3em;
+  --brand-wordmark-fun-ink-padding-end: 0.08em;
+
+  overflow: visible;
+}
+
 @media (max-width: 680px) {
   .app-public-nav__logo .app-brand-wordmark {
     --brand-wordmark-fun-size: 1.07em;

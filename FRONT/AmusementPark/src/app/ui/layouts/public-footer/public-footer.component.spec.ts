@@ -76,7 +76,7 @@ describe('PublicFooterComponent', () => {
     expect(fun?.textContent).toBe('fun');
   });
 
-  it('renders the footer slogan as a data line and a fun line', () => {
+  it('renders the footer slogan as a synchronized data and fun phrase', () => {
     const slogan: HTMLElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-footer__slogan');
     const dataLine: HTMLElement | null = slogan?.querySelector('.app-public-footer__slogan-base') ?? null;
     const funLine: HTMLElement | null = slogan?.querySelector('.app-public-footer__slogan-fun') ?? null;
