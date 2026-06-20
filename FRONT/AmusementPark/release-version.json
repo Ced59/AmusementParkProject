@@ -1,6 +1,20 @@
 {
-  "version": "2.1.11",
+  "version": "2.1.12",
   "history": [
+    {
+      "version": "2.1.12",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Le logo mobile est mieux ajuste.",
+        "en": "The mobile logo is better adjusted.",
+        "de": "Das mobile Logo ist besser angepasst.",
+        "nl": "Het mobiele logo is beter uitgelijnd.",
+        "it": "Il logo mobile e regolato meglio.",
+        "es": "El logo movil queda mejor ajustado.",
+        "pl": "Logo mobilne jest lepiej dopasowane.",
+        "pt": "O logotipo movel fica melhor ajustado."
+      }
+    },
     {
       "version": "2.1.11",
       "releasedAt": "2026-06-20",
