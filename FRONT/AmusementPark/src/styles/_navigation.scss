@@ -470,7 +470,7 @@ button.app-mobile-bottom-nav__item {
 
 @media (max-width: 430px) {
   .app-public-nav__logo-text {
-    display: none;
+    min-width: 0;
   }
 
   .app-public-nav__inner {

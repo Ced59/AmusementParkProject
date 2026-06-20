@@ -12,21 +12,33 @@
   --brand-wordmark-fun-lift: -0.17em;
   --brand-wordmark-fun-rotation: -6deg;
   --brand-wordmark-gap: 0.035em;
-  --brand-wordmark-fun-glow: rgba(255, 43, 214, 0.64);
-  --brand-wordmark-fun-shadow: rgba(0, 0, 0, 0.58);
-  --brand-wordmark-fun-stroke: rgba(255, 255, 255, 0.22);
-  --brand-wordmark-fun-outline: rgba(0, 0, 0, 0.42);
-  --brand-wordmark-fun-outline-width: 0.02em;
-  --brand-wordmark-fun-1: #fff200;
-  --brand-wordmark-fun-2: #ff6a00;
-  --brand-wordmark-fun-3: #ff23c8;
-  --brand-wordmark-fun-4: #7b2cff;
+  --brand-wordmark-fun-filter: saturate(1.6) contrast(1.24) brightness(1.36);
+  --brand-wordmark-fun-shadow-opacity: 0.78;
+  --brand-wordmark-fun-shadow-offset-x: 0.045em;
+  --brand-wordmark-fun-shadow-offset-y: 0.06em;
+  --brand-wordmark-fun-shadow-blur: 0.045em;
+  --brand-wordmark-fun-shadow-filter: blur(var(--brand-wordmark-fun-shadow-blur)) saturate(1.45) contrast(1.1) brightness(1.18);
+  --brand-wordmark-fun-glow: rgba(250, 255, 0, 0.24);
+  --brand-wordmark-fun-shadow: rgba(0, 0, 0, 0.38);
+  --brand-wordmark-fun-stroke: rgba(255, 255, 255, 0.48);
+  --brand-wordmark-fun-1: #fbff00;
+  --brand-wordmark-fun-2: #e8ff00;
+  --brand-wordmark-fun-3: #ff3500;
+  --brand-wordmark-fun-4: #ff0066;
   --brand-wordmark-fun-5: #00e5ff;
-  --brand-wordmark-fun-6: #39ff14;
-  --brand-wordmark-fun-7: #fff200;
-  --brand-wordmark-underline-1: #ff23c8;
-  --brand-wordmark-underline-2: #fff200;
-  --brand-wordmark-underline-3: #39ff14;
+  --brand-wordmark-fun-6: #1687ff;
+  --brand-wordmark-fun-gradient: linear-gradient(
+    102deg,
+    var(--brand-wordmark-fun-1) 0%,
+    var(--brand-wordmark-fun-2) 25%,
+    var(--brand-wordmark-fun-3) 43%,
+    var(--brand-wordmark-fun-4) 58%,
+    var(--brand-wordmark-fun-5) 78%,
+    var(--brand-wordmark-fun-6) 100%
+  );
+  --brand-wordmark-underline-1: #fbff00;
+  --brand-wordmark-underline-2: #ff0066;
+  --brand-wordmark-underline-3: #1687ff;
 
   display: inline-flex;
   align-items: baseline;
@@ -41,21 +53,24 @@
 }
 
 body.light-mode .app-brand-wordmark {
-  --brand-wordmark-fun-glow: rgba(255, 35, 200, 0.24);
-  --brand-wordmark-fun-shadow: rgba(56, 12, 0, 0.28);
-  --brand-wordmark-fun-stroke: rgba(255, 255, 255, 0.5);
-  --brand-wordmark-fun-outline: rgba(56, 12, 0, 0.22);
-  --brand-wordmark-fun-outline-width: 0.018em;
-  --brand-wordmark-fun-1: #ffcc00;
-  --brand-wordmark-fun-2: #ff4800;
-  --brand-wordmark-fun-3: #ff00ae;
-  --brand-wordmark-fun-4: #6500ff;
-  --brand-wordmark-fun-5: #008cff;
-  --brand-wordmark-fun-6: #13c900;
-  --brand-wordmark-fun-7: #ffcc00;
-  --brand-wordmark-underline-1: #ff00ae;
-  --brand-wordmark-underline-2: #ffcc00;
-  --brand-wordmark-underline-3: #13c900;
+  --brand-wordmark-fun-filter: saturate(1.58) contrast(1.18) brightness(1.03);
+  --brand-wordmark-fun-shadow-opacity: 0.46;
+  --brand-wordmark-fun-shadow-offset-x: 0.04em;
+  --brand-wordmark-fun-shadow-offset-y: 0.055em;
+  --brand-wordmark-fun-shadow-blur: 0.038em;
+  --brand-wordmark-fun-shadow-filter: blur(var(--brand-wordmark-fun-shadow-blur)) saturate(1.4) contrast(1.08) brightness(0.96);
+  --brand-wordmark-fun-glow: rgba(255, 0, 102, 0.16);
+  --brand-wordmark-fun-shadow: rgba(52, 13, 0, 0.22);
+  --brand-wordmark-fun-stroke: rgba(45, 13, 0, 0.32);
+  --brand-wordmark-fun-1: #dfff00;
+  --brand-wordmark-fun-2: #ffd400;
+  --brand-wordmark-fun-3: #ff2a00;
+  --brand-wordmark-fun-4: #ed005c;
+  --brand-wordmark-fun-5: #009cff;
+  --brand-wordmark-fun-6: #0057ff;
+  --brand-wordmark-underline-1: #dfff00;
+  --brand-wordmark-underline-2: #ed005c;
+  --brand-wordmark-underline-3: #0057ff;
 }
 
 .app-brand-wordmark__base {
@@ -87,28 +102,17 @@ body.light-mode .app-brand-wordmark {
   position: relative;
   display: inline-block;
   margin-left: 0.075em;
-  background: linear-gradient(
-    105deg,
-    var(--brand-wordmark-fun-1) 0%,
-    var(--brand-wordmark-fun-2) 15%,
-    var(--brand-wordmark-fun-3) 31%,
-    var(--brand-wordmark-fun-4) 48%,
-    var(--brand-wordmark-fun-5) 64%,
-    var(--brand-wordmark-fun-6) 82%,
-    var(--brand-wordmark-fun-7) 100%
-  );
+  background: var(--brand-wordmark-fun-gradient);
   background-clip: text;
   color: var(--brand-wordmark-fun-2);
   font-family: "Satisfy Brand Fun", "Segoe Script", "Brush Script MT", cursive;
   font-size: var(--brand-wordmark-fun-size);
   font-weight: 700;
-  filter: saturate(1.18) contrast(1.06);
+  filter: var(--brand-wordmark-fun-filter);
   isolation: isolate;
   letter-spacing: 0;
   line-height: 0.9;
-  text-shadow:
-    0 0 0.28em var(--brand-wordmark-fun-glow),
-    0 0.035em 0 var(--brand-wordmark-fun-shadow);
+  text-shadow: 0 0.028em 0 var(--brand-wordmark-fun-shadow);
   transform: translateY(var(--brand-wordmark-fun-lift)) rotate(var(--brand-wordmark-fun-rotation));
   transform-origin: left bottom;
   -webkit-background-clip: text;
@@ -121,12 +125,14 @@ body.light-mode .app-brand-wordmark {
   position: absolute;
   inset: 0;
   z-index: -1;
-  color: var(--brand-wordmark-fun-outline);
-  text-shadow:
-    0 0 0.08em var(--brand-wordmark-fun-outline),
-    0 0.038em 0 var(--brand-wordmark-fun-shadow);
-  -webkit-text-fill-color: var(--brand-wordmark-fun-outline);
-  -webkit-text-stroke: var(--brand-wordmark-fun-outline-width) var(--brand-wordmark-fun-outline);
+  background: var(--brand-wordmark-fun-gradient);
+  background-clip: text;
+  color: transparent;
+  filter: var(--brand-wordmark-fun-shadow-filter);
+  opacity: var(--brand-wordmark-fun-shadow-opacity);
+  transform: translate(var(--brand-wordmark-fun-shadow-offset-x), var(--brand-wordmark-fun-shadow-offset-y));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .app-brand-wordmark__fun-text::after {
@@ -144,7 +150,7 @@ body.light-mode .app-brand-wordmark {
     var(--brand-wordmark-underline-2),
     var(--brand-wordmark-underline-3)
   );
-  box-shadow: 0 0 0.32em var(--brand-wordmark-fun-glow);
+  box-shadow: 0 0 0.26em var(--brand-wordmark-fun-glow);
   transform: rotate(-10deg);
   transform-origin: left center;
 }
@@ -171,18 +177,19 @@ body.light-mode .app-brand-wordmark {
 
 @media (max-width: 430px) {
   .app-public-nav__logo-text.app-brand-wordmark {
-    --brand-wordmark-fun-size: 1.03em;
-    --brand-wordmark-fun-lift: -0.08em;
-    --brand-wordmark-gap: 0;
+    --brand-wordmark-fun-size: 0.99em;
+    --brand-wordmark-fun-lift: -0.07em;
+    --brand-wordmark-gap: 0.025em;
 
     display: inline-flex;
-    flex: 0 0 auto;
-    max-width: 3.6rem;
-    overflow: visible;
-    letter-spacing: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: clamp(6.8rem, 35vw, 9.2rem);
+    overflow: hidden;
+    letter-spacing: 0.008em;
   }
 
   .app-public-nav__logo-text .app-brand-wordmark__base {
-    display: none;
+    display: inline;
   }
 }
