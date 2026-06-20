@@ -111,14 +111,14 @@
       "type": "Type",
       "value": "Valeur",
       "requiresAccompaniment": "Accompagnement requis",
-      "minimumCompanionAge": "Âge minimum de l’accompagnant"
+      "minimumCompanionAge": "ge minimum de l’accompagnant"
     },
     "accessConditionTypes": {
       "minHeight": "Taille minimale",
       "minHeightAccompanied": "Taille minimale accompagné",
       "maxHeight": "Taille maximale",
-      "minAge": "Âge minimum",
-      "minAgeAccompanied": "Âge minimum accompagné",
+      "minAge": "ge minimum",
+      "minAgeAccompanied": "ge minimum accompagné",
       "pregnancyRestriction": "Restriction grossesse",
       "heartRestriction": "Restriction cardiaque",
       "backNeckRestriction": "Restriction dos ou nuque",

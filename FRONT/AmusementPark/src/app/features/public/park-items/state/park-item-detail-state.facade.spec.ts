@@ -7,17 +7,25 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
+import { VideoDto } from '@app/models/videos/video-dto';
+import { VideoHostingProvider } from '@app/models/videos/video-hosting-provider';
+import { VideoOwnerType } from '@app/models/videos/video-owner-type';
+import { VideoSearchQuery } from '@app/models/videos/video-search-query';
+import { VideoType } from '@app/models/videos/video-type';
 import { SsrHttpStatusService } from '@core/ssr/ssr-http-status.service';
+import { PagedResult } from '@shared/models/contracts';
 import {
   PARK_ITEM_DETAIL_IMAGES_PORT,
   PARK_ITEM_DETAIL_ITEMS_PORT,
   PARK_ITEM_DETAIL_MANUFACTURERS_PORT,
   PARK_ITEM_DETAIL_PARKS_PORT,
+  PARK_ITEM_DETAIL_VIDEOS_PORT,
   PARK_ITEM_DETAIL_ZONES_PORT,
   ParkItemDetailImagesPort,
   ParkItemDetailItemsPort,
   ParkItemDetailManufacturersPort,
   ParkItemDetailParksPort,
+  ParkItemDetailVideosPort,
   ParkItemDetailZonesPort
 } from './park-item-detail-data.ports';
 import { ParkItemDetailStateFacade } from './park-item-detail-state.facade';
@@ -86,6 +94,16 @@ class FakeImagesPort implements ParkItemDetailImagesPort {
   }
 }
 
+class FakeVideosPort implements ParkItemDetailVideosPort {
+  public videosResponse$: Observable<PagedResult<VideoDto>> = of(createVideosPage(1));
+  public readonly calls: VideoSearchQuery[] = [];
+
+  getVideosPage(query: VideoSearchQuery = {}): Observable<PagedResult<VideoDto>> {
+    this.calls.push(query);
+    return this.videosResponse$;
+  }
+}
+
 class FakeSsrHttpStatusService {
   public notFoundCallCount = 0;
 
@@ -151,6 +169,48 @@ function createImage(id: string): ImageDto {
   };
 }
 
+function createVideo(): VideoDto {
+  return {
+    id: 'video-1',
+    hostingProvider: VideoHostingProvider.YOUTUBE,
+    ownerType: VideoOwnerType.PARK_ITEM,
+    ownerId: 'item-1',
+    type: VideoType.ON_RIDE,
+    originalUrl: 'https://www.youtube.com/watch?v=item',
+    canonicalUrl: 'https://www.youtube.com/watch?v=item',
+    embedUrl: null,
+    externalId: 'item',
+    title: 'Item video',
+    description: null,
+    creatorName: null,
+    creatorUrl: null,
+    thumbnailUrl: null,
+    thumbnailImageId: null,
+    durationSeconds: null,
+    publishedAtUtc: null,
+    languageCodes: ['fr'],
+    titles: [],
+    descriptions: [],
+    tagIds: [],
+    externalMetadata: {},
+    isPublished: true,
+    createdAt: '2026-01-01T00:00:00Z',
+    updatedAt: '2026-01-01T00:00:00Z'
+  };
+}
+
+function createVideosPage(totalItems: number): PagedResult<VideoDto> {
+  return {
+    items: totalItems > 0 ? [createVideo()] : [],
+    pagination: {
+      totalItems,
+      totalPages: totalItems > 0 ? 1 : 0,
+      currentPage: 1,
+      itemsPerPage: 1
+    }
+  };
+}
+
 function createSiblingNavigation(): ParkItemSiblingNavigation {
   return {
     parkId: 'park-1',
@@ -170,6 +230,7 @@ function configureFacade(): {
   manufacturersPort: FakeManufacturersPort;
   zonesPort: FakeZonesPort;
   imagesPort: FakeImagesPort;
+  videosPort: FakeVideosPort;
   ssrStatusService: FakeSsrHttpStatusService;
 } {
   const itemsPort: FakeItemsPort = new FakeItemsPort();
@@ -177,6 +238,7 @@ function configureFacade(): {
   const manufacturersPort: FakeManufacturersPort = new FakeManufacturersPort();
   const zonesPort: FakeZonesPort = new FakeZonesPort();
   const imagesPort: FakeImagesPort = new FakeImagesPort();
+  const videosPort: FakeVideosPort = new FakeVideosPort();
   const ssrStatusService: FakeSsrHttpStatusService = new FakeSsrHttpStatusService();
 
   TestBed.configureTestingModule({
@@ -187,6 +249,7 @@ function configureFacade(): {
       { provide: PARK_ITEM_DETAIL_MANUFACTURERS_PORT, useValue: manufacturersPort },
       { provide: PARK_ITEM_DETAIL_ZONES_PORT, useValue: zonesPort },
       { provide: PARK_ITEM_DETAIL_IMAGES_PORT, useValue: imagesPort },
+      { provide: PARK_ITEM_DETAIL_VIDEOS_PORT, useValue: videosPort },
       { provide: SsrHttpStatusService, useValue: ssrStatusService }
     ]
   });
@@ -198,6 +261,7 @@ function configureFacade(): {
     manufacturersPort,
     zonesPort,
     imagesPort,
+    videosPort,
     ssrStatusService
   };
 }
@@ -239,6 +303,22 @@ describe('ParkItemDetailStateFacade', () => {
     expect(context.imagesPort.imageCalls).toEqual([
       { ownerType: ImageOwnerType.PARK_ITEM, ownerId: 'item-1', category: ImageCategory.PARK_ITEM, page: 1, size: 1 }
     ]);
+    expect(context.videosPort.calls).toEqual([{
+      page: 1,
+      size: 1,
+      ownerType: VideoOwnerType.PARK_ITEM,
+      ownerId: 'item-1'
+    }]);
+  });
+
+  it('hides the videos link when the park item has no published videos', () => {
+    const context = configureFacade();
+    context.videosPort.videosResponse$ = of(createVideosPage(0));
+
+    context.facade.setCurrentLanguage('fr');
+    context.facade.loadItem('item-1');
+
+    expect(context.facade.detail()?.videosLink).toBeNull();
   });
 
   it('sets SSR not found when the main item lookup returns 404', () => {

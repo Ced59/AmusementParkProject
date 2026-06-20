@@ -1,4 +1,4 @@
-.park-item-detail {
+﻿.park-item-detail {
   display: grid;
   gap: clamp(1.2rem, 3vw, 2.2rem);
 }
@@ -205,8 +205,8 @@
   font-family: var(--font-heading);
   font-size: clamp(2.1rem, 5vw, 3.6rem);
   font-weight: 900;
-  line-height: 0.98;
-  letter-spacing: -0.045em;
+  line-height: 1.06;
+  letter-spacing: 0;
   text-wrap: balance;
   overflow-wrap: break-word;
   word-break: normal;
@@ -774,7 +774,7 @@
   font-size: clamp(1.3rem, 2.2vw, 1.7rem);
   font-weight: 900;
   line-height: 1.08;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   white-space: normal;
   text-wrap: balance;
   overflow-wrap: normal;
@@ -792,7 +792,7 @@
   max-width: calc(100% - 0.5rem);
   font-size: clamp(0.9rem, 1.05vw, 1.12rem) !important;
   line-height: 1.15;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
   text-wrap: balance;
   overflow: visible;
 }
@@ -802,7 +802,7 @@
   max-width: calc(100% - 0.75rem);
   font-size: clamp(0.78rem, 0.92vw, 0.98rem) !important;
   line-height: 1.18;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 @supports (font-size: 1cqw) {

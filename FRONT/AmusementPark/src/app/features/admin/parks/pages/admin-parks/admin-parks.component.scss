@@ -1,4 +1,4 @@
-:host {
+﻿:host {
   display: block;
 }
 
@@ -24,7 +24,7 @@
     font-family: var(--font-heading);
     font-size: clamp(1.35rem, 2vw, 1.8rem);
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
   }
 
   p {

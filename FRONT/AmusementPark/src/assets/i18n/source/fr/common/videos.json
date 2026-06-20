@@ -1,26 +1,26 @@
 {
   "images": {
     "categories": {
-      "VIDEO_THUMBNAIL": "Miniature video"
+      "VIDEO_THUMBNAIL": "Miniature vidéo"
     },
     "ownerTypes": {
-      "VIDEO": "Video"
+      "VIDEO": "Vidéo"
     }
   },
   "videos": {
     "list": {
-      "count": "{{count}} videos",
+      "count": "{{count}} vidéos",
       "views": "{{count}} vues",
-      "loadMore": "Charger plus de videos",
+      "loadMore": "Charger plus de vidéos",
       "loadingMore": "Chargement..."
     },
     "filters": {
-      "type": "Type de video",
+      "type": "Type de vidéo",
       "allTypes": "Tous les types",
       "tag": "Tag",
       "allTags": "Tous les tags",
-      "creator": "Createur",
-      "creatorPlaceholder": "Filtrer par nom de createur",
+      "creator": "Créateur",
+      "creatorPlaceholder": "Filtrer par nom de créateur",
       "applyCreator": "Appliquer",
       "clear": "Effacer les filtres"
     },
@@ -28,38 +28,38 @@
       "youtube": "YouTube",
       "dailymotion": "Dailymotion",
       "vimeo": "Vimeo",
-      "other": "Video externe"
+      "other": "Vidéo externe"
     },
     "types": {
       "onRide": "Onride",
       "offRide": "Offride",
       "walkthrough": "Walkthrough",
-      "advertisement": "Publicite",
+      "advertisement": "Publicité",
       "documentary": "Documentaire",
       "review": "Avis",
-      "news": "Actualite",
-      "event": "Evenement",
+      "news": "Actualité",
+      "event": "Événement",
       "interview": "Interview",
       "other": "Autre"
     },
     "watch": {
-      "loadingTitle": "Chargement de la video",
-      "loadingMessage": "La page video est en cours de chargement.",
-      "errorTitle": "Video indisponible",
-      "errorMessage": "La video demandee n'a pas pu etre chargee.",
-      "previous": "Video precedente",
-      "next": "Video suivante",
-      "backToVideos": "Retour aux videos",
-      "creator": "Createur",
-      "category": "Categorie",
-      "provider": "Hebergeur",
-      "duration": "Duree",
-      "publishedAt": "Publiee le",
+      "loadingTitle": "Chargement de la vidéo",
+      "loadingMessage": "La page vidéo est en cours de chargement.",
+      "errorTitle": "Vidéo indisponible",
+      "errorMessage": "La vidéo demandée n'a pas pu être chargée.",
+      "previous": "Vidéo précédente",
+      "next": "Vidéo suivante",
+      "backToVideos": "Retour aux vidéos",
+      "creator": "Créateur",
+      "category": "Catégorie",
+      "provider": "Hébergeur",
+      "duration": "Durée",
+      "publishedAt": "Publiée le",
       "viewCount": "Vues",
       "views": "{{count}} vues",
-      "tagsAndCategories": "Categories et tags",
-      "openExternal": "Ouvrir la video",
-      "openCreator": "Ouvrir le createur",
+      "tagsAndCategories": "Catégories et tags",
+      "openExternal": "Ouvrir la vidéo",
+      "openCreator": "Ouvrir le créateur",
       "openProvider": "Ouvrir la page source"
     }
   }

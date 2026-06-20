@@ -6,7 +6,10 @@ import { ParkDetailSummary, ParkDetailSummaryStats } from '@app/models/parks/par
 import { ParkWeatherForecast } from '@app/models/parks/park-weather';
 import { ParkExplorer, ParkExplorerCount } from '@app/models/parks/park-explorer';
 import { Park } from '@app/models/parks/park';
+import { VideoDto } from '@app/models/videos/video-dto';
+import { VideoOwnerType } from '@app/models/videos/video-owner-type';
 import { ParkCardModel } from '@shared/models/parks/park-card.model';
+import { PagedResult } from '@shared/models/contracts';
 import { CountryDisplayService } from '@shared/services/countries/country-display.service';
 import { NaturalTextTruncatorService } from '@shared/services/text/natural-text-truncator.service';
 import { MeasurementPreferenceService } from '@app/services/measurements/measurement-preference.service';
@@ -23,7 +26,9 @@ import { ParkContentSummaryViewModel } from '../models/park-content-summary.mode
 import { ParkDetailViewModel } from '../models/park-detail-view.model';
 import {
   PARK_DETAIL_PARKS_PORT,
-  ParkDetailParksPort
+  PARK_DETAIL_VIDEOS_PORT,
+  ParkDetailParksPort,
+  ParkDetailVideosPort
 } from './park-detail-data.ports';
 
 const NEARBY_PARKS_LIMIT = 4;
@@ -34,6 +39,7 @@ export class ParkDetailStateFacade {
   private readonly nearbyStateStore = new SignalScreenStateStore<ParkDistanceTarget[]>();
   private readonly weatherStateStore = new SignalScreenStateStore<ParkWeatherForecast>();
   private readonly currentLanguageSignal = signal('en');
+  private readonly hasVideosSignal = signal(false);
 
   public readonly state = this.screenStateStore.state;
   public readonly nearbyState = this.nearbyStateStore.state;
@@ -57,7 +63,8 @@ export class ParkDetailStateFacade {
         currentSummary.mainImage ? [currentSummary.mainImage] : [],
         [],
         [],
-        currentSummary.rating ?? null
+        currentSummary.rating ?? null,
+        this.hasVideosSignal()
       );
     });
   });
@@ -81,6 +88,7 @@ export class ParkDetailStateFacade {
 
   constructor(
     @Inject(PARK_DETAIL_PARKS_PORT) private readonly parksApiService: ParkDetailParksPort,
+    @Inject(PARK_DETAIL_VIDEOS_PORT) private readonly videosApiService: ParkDetailVideosPort,
     private readonly countryDisplayService: CountryDisplayService,
     private readonly textTruncator: NaturalTextTruncatorService,
     private readonly measurementPreferenceService: MeasurementPreferenceService,
@@ -101,12 +109,14 @@ export class ParkDetailStateFacade {
     this.screenStateStore.setLoading(previousData);
     this.nearbyStateStore.setLoading(previousNearbyData);
     this.weatherStateStore.setLoading(previousWeatherData);
+    this.hasVideosSignal.set(false);
 
     this.parksApiService.getParkDetailSummary(id, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (summary: ParkDetailSummary) => {
         this.screenStateStore.setReady(summary);
         this.loadNearbyParks(summary.park);
         this.loadWeather(summary.park);
+        this.loadVideoAvailability(summary.park);
       },
       error: (error: unknown) => {
         console.error('Error loading park detail summary', error);
@@ -142,6 +152,29 @@ export class ParkDetailStateFacade {
       error: (error: unknown) => {
         console.error('Error loading park weather', error);
         this.weatherStateStore.setError('parkWeather.errorMessage');
+      }
+    });
+  }
+
+  private loadVideoAvailability(park: Park): void {
+    const parkId: string | null = park.id?.trim() ?? null;
+
+    if (!parkId) {
+      this.hasVideosSignal.set(false);
+      return;
+    }
+
+    this.videosApiService.getVideosPage({
+      page: 1,
+      size: 1,
+      ownerType: VideoOwnerType.PARK,
+      ownerId: parkId
+    }, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (response: PagedResult<VideoDto>) => {
+        this.hasVideosSignal.set(response.pagination.totalItems > 0 || response.items.length > 0);
+      },
+      error: () => {
+        this.hasVideosSignal.set(false);
       }
     });
   }

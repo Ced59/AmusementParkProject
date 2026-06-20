@@ -2,7 +2,7 @@
   "admin": {
     "dashboard": {
       "shortcuts": {
-        "parkWeather": "Suivre les rafraichissements planifies de donnees publiques."
+        "parkWeather": "Suivre les rafraichissements planifiés de données publiques."
       }
     }
   }

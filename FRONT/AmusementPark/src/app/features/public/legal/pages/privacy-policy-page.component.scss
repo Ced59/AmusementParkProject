@@ -1,4 +1,4 @@
-:host {
+﻿:host {
   display: block;
 }
 
@@ -18,7 +18,7 @@
   color: var(--app-heading);
   font-family: var(--font-display);
   font-size: clamp(3.4rem, 9vw, 6.8rem);
-  line-height: 0.9;
+  line-height: 1.06;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }

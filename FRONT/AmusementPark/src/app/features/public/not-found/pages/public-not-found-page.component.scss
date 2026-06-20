@@ -1,4 +1,4 @@
-.not-found-page {
+﻿.not-found-page {
   min-height: min(680px, 72vh);
   display: grid;
   place-items: center;
@@ -26,7 +26,7 @@
 .not-found-page h1 {
   margin: 0;
   font-size: clamp(2.4rem, 8vw, 5rem);
-  line-height: 0.95;
+  line-height: 1.06;
 }
 
 .not-found-page p:not(.not-found-page__eyebrow) {

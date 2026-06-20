@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--topbar-height) + 1rem);
@@ -77,7 +77,7 @@ h4 {
   margin-top: 0;
   color: var(--app-heading);
   font-family: var(--app-font-family-heading);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 p {

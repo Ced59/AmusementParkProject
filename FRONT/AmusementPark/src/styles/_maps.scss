@@ -1,4 +1,4 @@
-.map-shell-card,
+﻿.map-shell-card,
 .app-map-shell,
 .map-slot,
 .app-map-slot {
@@ -81,7 +81,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.25rem, 3vw, 2rem);
   font-weight: 900;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .app-map-shell__subtitle {
@@ -206,7 +206,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .app-distance-panel__value span {

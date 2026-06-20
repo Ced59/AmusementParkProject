@@ -54,7 +54,8 @@ export function mapParkItemToDetailViewModel(
   photos: ImageDto[] = [],
   textTruncator: NaturalTextTruncatorService | null = null,
   measurementSystem: MeasurementSystem = DEFAULT_MEASUREMENT_SYSTEM,
-  measurementConversionService: MeasurementConversionService = new MeasurementConversionService()
+  measurementConversionService: MeasurementConversionService = new MeasurementConversionService(),
+  hasVideos: boolean = false
 ): ParkItemDetailViewModel | null {
   if (!item) {
     return null;
@@ -80,7 +81,7 @@ export function mapParkItemToDetailViewModel(
   const itemsLink: string[] | null = buildItemsLink(park, currentLanguage);
   const parkLink: string[] | null = buildParkLink(park, currentLanguage);
   const imagesLink: string[] | null = heroPhoto ? buildImagesLink(park, item, currentLanguage) : null;
-  const videosLink: string[] | null = buildVideosLink(park, item, currentLanguage);
+  const videosLink: string[] | null = hasVideos ? buildVideosLink(park, item, currentLanguage) : null;
 
   return {
     id: item.id ?? null,

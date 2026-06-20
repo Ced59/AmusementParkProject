@@ -2,7 +2,7 @@
   "parks": {
     "heroBadge": "🗺️ Exploration",
     "title": "Tous les parcs",
-    "subtitle": "Explore les parcs visibles, retrouve-les sur la carte interactive et choisis ta prochaine destination.",
+    "subtitle": "Explore les parcs visibles, retrouvé-les sur la carte interactive et choisis ta prochaine destination.",
     "loadingTitle": "Chargement des parcs",
     "loadingMessage": "La liste des parcs est en cours de chargement.",
     "errorTitle": "Impossible de charger les parcs",

@@ -7,6 +7,9 @@ import { ImageOwnerType } from '@app/models/images/image-owner-type';
 import { Park } from '@app/models/parks/park';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkItemSiblingNavigation } from '@app/models/parks/park-item-sibling-navigation';
+import { VideoDto } from '@app/models/videos/video-dto';
+import { VideoOwnerType } from '@app/models/videos/video-owner-type';
+import { PagedResult } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
@@ -22,11 +25,13 @@ import {
   PARK_ITEM_DETAIL_ITEMS_PORT,
   PARK_ITEM_DETAIL_MANUFACTURERS_PORT,
   PARK_ITEM_DETAIL_PARKS_PORT,
+  PARK_ITEM_DETAIL_VIDEOS_PORT,
   PARK_ITEM_DETAIL_ZONES_PORT,
   ParkItemDetailImagesPort,
   ParkItemDetailItemsPort,
   ParkItemDetailManufacturersPort,
   ParkItemDetailParksPort,
+  ParkItemDetailVideosPort,
   ParkItemDetailZonesPort
 } from './park-item-detail-data.ports';
 
@@ -38,6 +43,7 @@ interface ParkItemDetailSourceData {
   relatedItems: ParkItem[];
   siblingNavigation: ParkItemSiblingNavigation | null;
   photos: ImageDto[];
+  hasVideos: boolean;
 }
 
 @Injectable()
@@ -60,7 +66,8 @@ export class ParkItemDetailStateFacade {
       sourceData?.photos ?? [],
       this.textTruncator,
       this.measurementPreferenceService.preferredSystem(),
-      this.measurementConversionService
+      this.measurementConversionService,
+      sourceData?.hasVideos ?? false
     );
   });
 
@@ -70,6 +77,7 @@ export class ParkItemDetailStateFacade {
     @Inject(PARK_ITEM_DETAIL_MANUFACTURERS_PORT) private readonly manufacturersApiService: ParkItemDetailManufacturersPort,
     @Inject(PARK_ITEM_DETAIL_ZONES_PORT) private readonly parkZonesApiService: ParkItemDetailZonesPort,
     @Inject(PARK_ITEM_DETAIL_IMAGES_PORT) private readonly imagesApiService: ParkItemDetailImagesPort,
+    @Inject(PARK_ITEM_DETAIL_VIDEOS_PORT) private readonly videosApiService: ParkItemDetailVideosPort,
     private readonly destroyRef: DestroyRef,
     private readonly ssrHttpStatusService: SsrHttpStatusService,
     private readonly ssrRuntimeService: SsrRuntimeService,
@@ -96,7 +104,8 @@ export class ParkItemDetailStateFacade {
           zoneName: null,
           relatedItems: [],
           siblingNavigation: null,
-          photos: []
+          photos: [],
+          hasVideos: false
         });
 
         this.loadRelatedData(item);
@@ -148,6 +157,26 @@ export class ParkItemDetailStateFacade {
         this.updateReadyData((current: ParkItemDetailSourceData) => ({
           ...current,
           photos: []
+        }));
+      }
+    });
+
+    this.videosApiService.getVideosPage({
+      page: 1,
+      size: 1,
+      ownerType: VideoOwnerType.PARK_ITEM,
+      ownerId: item.id
+    }, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (response: PagedResult<VideoDto>) => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          hasVideos: response.pagination.totalItems > 0 || response.items.length > 0
+        }));
+      },
+      error: () => {
+        this.updateReadyData((current: ParkItemDetailSourceData) => ({
+          ...current,
+          hasVideos: false
         }));
       }
     });

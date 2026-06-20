@@ -1,4 +1,4 @@
-
+﻿
 .home-page {
   align-content: start;
   gap: clamp(1rem, 2.2vw, 1.5rem);
@@ -102,7 +102,7 @@
   font-family: var(--font-display);
   font-size: clamp(4.3rem, 8vw, 7.4rem);
   font-weight: 400;
-  line-height: 0.92;
+  line-height: 1.06;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
@@ -164,7 +164,7 @@ body.light-mode .home-hero__title-line--outline {
   font-size: clamp(1.9rem, 3vw, 2.4rem);
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   white-space: nowrap;
 }
 
