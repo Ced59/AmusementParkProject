@@ -19,7 +19,8 @@ describe('PublicFooterComponent', () => {
       footer: {
         ariaLabel: 'Site footer',
         brand: {
-          tagline: 'The complete map of thrills.'
+          sloganData: 'Reliable data',
+          sloganFun: 'for more fun'
         },
         explore: {
           title: 'Explore',
@@ -37,7 +38,7 @@ describe('PublicFooterComponent', () => {
           title: 'Languages'
         },
         bottom: {
-          copy: 'Copyright {{year}} AmusementPark',
+          copy: 'Made with ❤️ and adrenaline',
           version: 'Version {{version}}'
         }
       }
@@ -73,6 +74,15 @@ describe('PublicFooterComponent', () => {
     expect(base?.textContent).toBe('AMUSEMENT-PARKS');
     expect(dot?.textContent).toBe('.');
     expect(fun?.textContent).toBe('fun');
+  });
+
+  it('renders the footer slogan as a data line and a fun line', () => {
+    const slogan: HTMLElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-footer__slogan');
+    const dataLine: HTMLElement | null = slogan?.querySelector('.app-public-footer__slogan-base') ?? null;
+    const funLine: HTMLElement | null = slogan?.querySelector('.app-public-footer__slogan-fun') ?? null;
+
+    expect(dataLine?.textContent?.trim()).toBe('Reliable data');
+    expect(funLine?.textContent?.trim()).toBe('for more fun');
   });
 
   it('marks the current footer language link for accessible active styling', () => {

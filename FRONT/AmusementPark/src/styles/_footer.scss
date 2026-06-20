@@ -47,12 +47,45 @@
   box-shadow: var(--shadow-soft-orange);
 }
 
-.app-public-footer__tagline {
-  max-width: 32ch;
+.app-public-footer__slogan {
+  display: grid;
+  grid-template-columns: minmax(0, max-content) max-content;
+  column-gap: 0.55rem;
+  row-gap: 0.12rem;
+  align-items: end;
+  width: fit-content;
+  max-width: 100%;
   margin: 0;
   color: var(--app-text-muted);
-  font-size: 0.88rem;
-  line-height: 1.7;
+}
+
+.app-public-footer__slogan-base {
+  display: block;
+  color: var(--app-text-muted);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.app-public-footer__slogan-fun {
+  display: block;
+  align-self: center;
+  background: linear-gradient(102deg, #e4d900 0%, #ff5a1f 48%, #248fff 100%);
+  background-clip: text;
+  color: var(--c-orange);
+  font-family: "Satisfy Brand Fun", "Segoe Script", "Brush Script MT", cursive;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.9;
+  text-shadow: 0 0.04em 0 rgba(0, 0, 0, 0.18);
+  transform: rotate(-5deg);
+  transform-origin: left bottom;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .app-public-footer__column {
@@ -171,5 +204,15 @@
   .app-public-footer__bottom {
     align-items: flex-start;
     justify-content: flex-start;
+  }
+
+  .app-public-footer__slogan {
+    grid-template-columns: 1fr;
+    row-gap: 0.24rem;
+  }
+
+  .app-public-footer__slogan-fun {
+    width: fit-content;
+    margin-left: 1.2rem;
   }
 }
