@@ -542,10 +542,16 @@ function isPublicSsrCacheRoute(url: string): boolean {
   return isPublicStaticSsrRoute(path)
     || isPublicParkDetailRoute(path)
     || isPublicParkImagesRoute(path)
+    || isPublicParkVideosRoute(path)
+    || isPublicParkVideoDetailRoute(path)
+    || isPublicParkWeatherRoute(path)
     || isPublicParkZonesRoute(path)
     || isPublicParkZoneDetailRoute(path)
     || isPublicParkItemsRoute(path)
     || isPublicParkItemDetailRoute(path)
+    || isPublicParkItemImagesRoute(path)
+    || isPublicParkItemVideosRoute(path)
+    || isPublicParkItemVideoDetailRoute(path)
     || isPublicReferenceRoute(path);
 }
 
@@ -555,10 +561,16 @@ function isCriticalPublicSsrRoute(url: string): boolean {
   return isPublicStaticSsrRoute(path)
     || isPublicParkDetailRoute(path)
     || (isPublicParkImagesRoute(path) && !hasQueryString(url))
+    || (isPublicParkVideosRoute(path) && !hasQueryString(url))
+    || isPublicParkVideoDetailRoute(path)
+    || (isPublicParkWeatherRoute(path) && !hasQueryString(url))
     || isPublicParkZonesRoute(path)
     || isPublicParkZoneDetailRoute(path)
     || (isPublicParkItemsRoute(path) && !hasQueryString(url))
     || isPublicParkItemDetailRoute(path)
+    || (isPublicParkItemImagesRoute(path) && !hasQueryString(url))
+    || (isPublicParkItemVideosRoute(path) && !hasQueryString(url))
+    || isPublicParkItemVideoDetailRoute(path)
     || isPublicReferenceRoute(path);
 }
 
@@ -567,7 +579,10 @@ function isPublicStaticSsrRoute(path: string): boolean {
     || /^\/[a-z]{2}\/?$/i.test(path)
     || /^\/[a-z]{2}\/home\/?$/i.test(path)
     || /^\/[a-z]{2}\/parks\/?$/i.test(path)
+    || /^\/[a-z]{2}\/rankings\/?$/i.test(path)
     || /^\/[a-z]{2}\/about\/?$/i.test(path)
+    || /^\/[a-z]{2}\/contact\/?$/i.test(path)
+    || /^\/[a-z]{2}\/versions\/?$/i.test(path)
     || /^\/[a-z]{2}\/privacy\/?$/i.test(path);
 }
 
@@ -577,6 +592,18 @@ function isPublicParkDetailRoute(path: string): boolean {
 
 function isPublicParkImagesRoute(path: string): boolean {
   return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/images\/?$/i.test(path);
+}
+
+function isPublicParkVideosRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/videos\/?$/i.test(path);
+}
+
+function isPublicParkVideoDetailRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/(?:videos\/[^/]+\/[^/]+|video\/(?:s\/)?[^/]+\/[^/]+)\/?$/i.test(path);
+}
+
+function isPublicParkWeatherRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/weather\/?$/i.test(path);
 }
 
 function isPublicParkZonesRoute(path: string): boolean {
@@ -593,6 +620,18 @@ function isPublicParkItemsRoute(path: string): boolean {
 
 function isPublicParkItemDetailRoute(path: string): boolean {
   return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/?$/i.test(path);
+}
+
+function isPublicParkItemImagesRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/images\/?$/i.test(path);
+}
+
+function isPublicParkItemVideosRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/videos\/?$/i.test(path);
+}
+
+function isPublicParkItemVideoDetailRoute(path: string): boolean {
+  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/(?:videos\/[^/]+\/[^/]+|video\/(?:s\/)?[^/]+\/[^/]+)\/?$/i.test(path);
 }
 
 function isPublicReferenceRoute(path: string): boolean {

@@ -36,8 +36,11 @@ describe('SeoService', () => {
 
     service.applyParkDetailSeo(park, 'fr', '/fr/park/park-1/demo-park');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/park-photo%201');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/park-photo%201');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/park-photo%201?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image:secure_url"]')).toBe('https://localhost:44391/images/park-photo%201?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image:width"]')).toBe('1200');
+    expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Demo Park');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/park-photo%201?width=1200&v=2');
   });
 
   it('uses the park item hero photo as the Open Graph image', () => {
@@ -49,8 +52,8 @@ describe('SeoService', () => {
 
     service.applyParkItemDetailSeo(detail, 'fr', '/fr/park/park-1/demo-park/item/item-1/demo-item');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/item-photo-1');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/item-photo-1');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/item-photo-1?width=1200&v=2');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/item-photo-1?width=1200&v=2');
   });
 
   it('falls back to the site social image when the page has no main photo', () => {
@@ -71,8 +74,8 @@ describe('SeoService', () => {
 
     service.applyParkImagesSeo(park, 'fr', '/fr/park/park-1/demo-park/photos', 4, 'gallery image 1');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/gallery%20image%201');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/gallery%20image%201');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/gallery%20image%201?width=1200&v=2');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/gallery%20image%201?width=1200&v=2');
   });
 
   it('uses the park main photo when a park video has no thumbnail', () => {
@@ -80,8 +83,8 @@ describe('SeoService', () => {
 
     service.applyParkVideoSeo(video, buildPark(), 'fr', '/fr/park/park-1/demo-park/videos/video-1/demo-video', 'park-main-1');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/park-main-1');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/park-main-1');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/park-main-1?width=1200&v=2');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/park-main-1?width=1200&v=2');
   });
 
   it('uses the park item main photo when a park item video has no thumbnail', () => {
@@ -101,8 +104,8 @@ describe('SeoService', () => {
       'item-main-1'
     );
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/item-main-1');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/item-main-1');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/item-main-1?width=1200&v=2');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/item-main-1?width=1200&v=2');
   });
 
   it('uses the first video thumbnail before the park main photo on video lists', () => {
@@ -115,8 +118,8 @@ describe('SeoService', () => {
       'park-main-1'
     );
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/video-thumb-1');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/video-thumb-1');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/video-thumb-1?width=1200&v=2');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/video-thumb-1?width=1200&v=2');
   });
 
   it('uses the park item main photo instead of an external thumbnail URL on park item video lists', () => {
@@ -130,8 +133,8 @@ describe('SeoService', () => {
       'item-main-1'
     );
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/item-main-1');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/item-main-1');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/item-main-1?width=1200&v=2');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/item-main-1?width=1200&v=2');
   });
 
   it('uses the park main photo instead of an external thumbnail URL on park video detail pages', () => {
@@ -142,8 +145,36 @@ describe('SeoService', () => {
 
     service.applyParkVideoSeo(video, buildPark(), 'fr', '/fr/park/park-1/demo-park/videos/video-1/demo-video', 'park-main-1');
 
-    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/park-main-1');
-    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/park-main-1');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/park-main-1?width=1200&v=2');
+    expect(readMetaContent('meta[name="twitter:image"]')).toBe('https://localhost:44391/images/park-main-1?width=1200&v=2');
+  });
+
+  it('uses localized French fallbacks for park item video social metadata', () => {
+    const video: VideoDto = buildVideo({
+      ownerType: VideoOwnerType.PARK_ITEM,
+      ownerId: 'item-1',
+      description: 'Watch this English fallback.',
+      descriptions: [],
+      thumbnailImageId: 'video-thumb-1'
+    });
+
+    service.applyParkItemVideoSeo(
+      video,
+      buildParkItem({ name: 'River Quest' }),
+      buildPark({ name: 'Phantasialand' }),
+      'fr',
+      '/fr/park/park-1/phantasialand/item/item-1/river-quest/video/s/video-1/river-quest',
+      'item-main-1'
+    );
+
+    expect(readMetaContent('meta[name="description"]')).toBe('Regarde Demo video pour River Quest à Phantasialand.');
+    expect(readMetaContent('meta[property="og:description"]')).toBe('Regarde Demo video pour River Quest à Phantasialand.');
+    expect(readMetaContent('meta[property="og:locale"]')).toBe('fr_FR');
+    expect(readMetaContent('meta[property="og:url"]'))
+      .toBe('http://localhost:4200/fr/park/park-1/phantasialand/item/item-1/river-quest/videos/video-1/river-quest');
+    expect(readMetaContent('meta[property="og:image"]')).toBe('https://localhost:44391/images/video-thumb-1?width=1200&v=2');
+    expect(readMetaContent('meta[property="og:image:alt"]')).toBe('Demo video');
+    expect(readMetaContent('meta[name="twitter:image:alt"]')).toBe('Demo video');
   });
 
   it('uses explicit localized discovery terms for the French park content SEO', () => {

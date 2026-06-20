@@ -40,9 +40,11 @@ function isKnownPublicPageRoute(path: string): boolean {
     || /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+(?:\/images|\/videos|\/map|\/zones|\/weather|\/items)?\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/videos\/[^/]+\/[^/]+\/?$/i.test(path)
+    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/video\/(?:s\/)?[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/zone\/[^/]+\/[^/]+\/?$/i.test(path)
     || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+(?:\/images|\/videos)?\/?$/i.test(path)
-    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/videos\/[^/]+\/[^/]+\/?$/i.test(path);
+    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/videos\/[^/]+\/[^/]+\/?$/i.test(path)
+    || /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/item\/[^/]+\/[^/]+\/video\/(?:s\/)?[^/]+\/[^/]+\/?$/i.test(path);
 }
 
 function isKnownPrivateClientRoute(path: string): boolean {

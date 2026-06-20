@@ -1,6 +1,20 @@
 {
-  "version": "2.3.0",
+  "version": "2.3.1",
   "history": [
+    {
+      "version": "2.3.1",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Les aperçus de partage affichent mieux les pages.",
+        "en": "Shared links show page previews better.",
+        "de": "Geteilte Links zeigen Seiten besser an.",
+        "nl": "Gedeelde links tonen pagina's beter.",
+        "it": "I link condivisi mostrano meglio le pagine.",
+        "es": "Los enlaces compartidos muestran mejor las páginas.",
+        "pl": "Udostępniane linki lepiej pokazują strony.",
+        "pt": "As ligações partilhadas mostram melhor as páginas."
+      }
+    },
     {
       "version": "2.3.0",
       "releasedAt": "2026-06-20",

@@ -25,6 +25,18 @@ describe('CanonicalUrlService', () => {
     expect(service.replaceLanguage('/fr/parks/1?x=1#top', 'en')).toBe('/en/parks/1');
   });
 
+  it('normalizes legacy video share routes to canonical video routes', () => {
+    expect(service.buildCanonicalFromCurrentUrl('/fr/park/park-1/demo-park/video/s/video-1/demo-video'))
+      .toBe('http://localhost:4200/fr/park/park-1/demo-park/videos/video-1/demo-video');
+    expect(service.buildCanonicalFromCurrentUrl('/fr/park/park-1/demo-park/item/item-1/demo-item/video/s/video-1/demo-video'))
+      .toBe('http://localhost:4200/fr/park/park-1/demo-park/item/item-1/demo-item/videos/video-1/demo-video');
+  });
+
+  it('builds alternates from normalized legacy video routes', () => {
+    expect(service.replaceLanguage('/fr/park/park-1/demo-park/item/item-1/demo-item/video/s/video-1/demo-video', 'en'))
+      .toBe('/en/park/park-1/demo-park/item/item-1/demo-item/videos/video-1/demo-video');
+  });
+
   it('uses language home when there is no path segment', () => {
     expect(service.replaceLanguage('/', 'de')).toBe('/de/home');
     expect(service.replaceLanguage('', 'pt')).toBe('/pt/home');
