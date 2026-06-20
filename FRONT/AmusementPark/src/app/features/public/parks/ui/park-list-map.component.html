@@ -44,8 +44,9 @@
     } @else {
       <app-leaflet-map
         [center]="mapCenter()"
-        [zoom]="5"
+        [zoom]="6"
         [fitBounds]="true"
+        [fitBoundsMinZoom]="3"
         [markers]="mapMarkers()"
         [selectedMarkerId]="selectedParkId()"
         (markerClick)="onMarkerClick($event)">

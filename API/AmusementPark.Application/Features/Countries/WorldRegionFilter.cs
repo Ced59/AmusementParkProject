@@ -21,7 +21,22 @@ public enum WorldRegionFilter
     SouthAmerica,
 
     /// <summary>
-    /// Asie, Moyen-Orient et Océanie regroupés sous le libellé public "Orient".
+    /// Asie.
+    /// </summary>
+    Asia,
+
+    /// <summary>
+    /// Moyen-Orient.
+    /// </summary>
+    MiddleEast,
+
+    /// <summary>
+    /// Océanie.
+    /// </summary>
+    Oceania,
+
+    /// <summary>
+    /// Ancien regroupement Asie, Moyen-Orient et Océanie conservé pour les anciens liens.
     /// </summary>
     Orient,
 

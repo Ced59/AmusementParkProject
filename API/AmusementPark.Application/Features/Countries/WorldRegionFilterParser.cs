@@ -17,7 +17,10 @@ public static class WorldRegionFilterParser
             "europe" => WorldRegionFilter.Europe,
             "north-america" or "northamerica" or "america-north" => WorldRegionFilter.NorthAmerica,
             "south-america" or "southamerica" or "america-south" => WorldRegionFilter.SouthAmerica,
-            "orient" or "asia" or "asia-pacific" or "middle-east" => WorldRegionFilter.Orient,
+            "asia" => WorldRegionFilter.Asia,
+            "middle-east" or "middleeast" => WorldRegionFilter.MiddleEast,
+            "oceania" or "australia" or "pacific" => WorldRegionFilter.Oceania,
+            "orient" or "asia-pacific" => WorldRegionFilter.Orient,
             "africa" => WorldRegionFilter.Africa,
             _ => null,
         };

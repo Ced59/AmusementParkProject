@@ -14,7 +14,10 @@ public sealed class CountryReferenceServiceTests
     [InlineData(WorldRegionFilter.Europe, "FR")]
     [InlineData(WorldRegionFilter.NorthAmerica, "US")]
     [InlineData(WorldRegionFilter.SouthAmerica, "BR")]
-    [InlineData(WorldRegionFilter.Orient, "JP")]
+    [InlineData(WorldRegionFilter.Asia, "JP")]
+    [InlineData(WorldRegionFilter.MiddleEast, "AE")]
+    [InlineData(WorldRegionFilter.Oceania, "AU")]
+    [InlineData(WorldRegionFilter.Orient, "AU")]
     [InlineData(WorldRegionFilter.Africa, "ZA")]
     public void GetCountryCodesForRegion_WhenKnownRegionProvided_ShouldContainRepresentativeCountry(WorldRegionFilter region, string expectedCountryCode)
     {
@@ -24,6 +27,38 @@ public sealed class CountryReferenceServiceTests
 
         Assert.Contains(expectedCountryCode, result);
         Assert.DoesNotContain(result, static countryCode => countryCode.Length != 2);
+    }
+
+    [Fact]
+    public void GetCountryCodesForRegion_WhenEuropeProvided_ShouldNotContainRussia()
+    {
+        CountryReferenceService service = new CountryReferenceService(Mock.Of<ICountryReadRepository>());
+
+        IReadOnlyCollection<string> result = service.GetCountryCodesForRegion(WorldRegionFilter.Europe);
+
+        Assert.DoesNotContain("RU", result);
+    }
+
+    [Fact]
+    public void GetCountryCodesForRegion_WhenAsiaProvided_ShouldContainRussiaAndExcludeAustralia()
+    {
+        CountryReferenceService service = new CountryReferenceService(Mock.Of<ICountryReadRepository>());
+
+        IReadOnlyCollection<string> result = service.GetCountryCodesForRegion(WorldRegionFilter.Asia);
+
+        Assert.Contains("RU", result);
+        Assert.DoesNotContain("AU", result);
+    }
+
+    [Fact]
+    public void GetCountryCodesForRegion_WhenOceaniaProvided_ShouldContainAustralia()
+    {
+        CountryReferenceService service = new CountryReferenceService(Mock.Of<ICountryReadRepository>());
+
+        IReadOnlyCollection<string> result = service.GetCountryCodesForRegion(WorldRegionFilter.Oceania);
+
+        Assert.Contains("AU", result);
+        Assert.DoesNotContain("RU", result);
     }
 
     [Fact]

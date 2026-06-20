@@ -54,6 +54,9 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   /** Zoom maximal utilisé lorsqu'une carte est ajustée sur plusieurs marqueurs. */
   @Input() fitBoundsMaxZoom = 8;
 
+  /** Zoom minimal conservé après ajustement sur plusieurs marqueurs. */
+  @Input() fitBoundsMinZoom: number | null = null;
+
   /** Marqueur à centrer et ouvrir, utile pour synchroniser une liste de résultats avec la carte. */
   @Input() selectedMarkerId: string | null = null;
 
@@ -669,7 +672,19 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
     const bounds = this.L.latLngBounds(this.markers.map((marker: MapMarker) => [marker.lat, marker.lng]));
     this.map.fitBounds(bounds, { padding: [32, 32], maxZoom: this.fitBoundsMaxZoom });
+    this.ensureFitBoundsMinimumZoom();
     return true;
+  }
+
+  private ensureFitBoundsMinimumZoom(): void {
+    if (!this.map || this.fitBoundsMinZoom === null || !Number.isFinite(this.fitBoundsMinZoom)) {
+      return;
+    }
+
+    const currentZoom: number = this.map.getZoom();
+    if (currentZoom < this.fitBoundsMinZoom) {
+      this.map.setZoom(this.fitBoundsMinZoom);
+    }
   }
 
   private buildPopupContent(marker: MapMarker): string {

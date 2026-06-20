@@ -13,10 +13,14 @@ public sealed class WorldRegionFilterParserTests
     [InlineData("south-america", WorldRegionFilter.SouthAmerica)]
     [InlineData("southamerica", WorldRegionFilter.SouthAmerica)]
     [InlineData("america-south", WorldRegionFilter.SouthAmerica)]
+    [InlineData("asia", WorldRegionFilter.Asia)]
+    [InlineData("middle-east", WorldRegionFilter.MiddleEast)]
+    [InlineData("middleeast", WorldRegionFilter.MiddleEast)]
+    [InlineData("oceania", WorldRegionFilter.Oceania)]
+    [InlineData("australia", WorldRegionFilter.Oceania)]
+    [InlineData("pacific", WorldRegionFilter.Oceania)]
     [InlineData("orient", WorldRegionFilter.Orient)]
-    [InlineData("asia", WorldRegionFilter.Orient)]
     [InlineData("asia-pacific", WorldRegionFilter.Orient)]
-    [InlineData("middle-east", WorldRegionFilter.Orient)]
     [InlineData("africa", WorldRegionFilter.Africa)]
     public void Parse_WhenAliasIsKnown_ShouldReturnExpectedRegion(string value, WorldRegionFilter expected)
     {

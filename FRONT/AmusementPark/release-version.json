@@ -1,6 +1,20 @@
 {
-  "version": "2.3.4",
+  "version": "2.3.5",
   "history": [
+    {
+      "version": "2.3.5",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "La carte des parcs filtre mieux les régions.",
+        "en": "The parks map filters regions better.",
+        "de": "Die Parkkarte filtert Regionen besser.",
+        "nl": "De parkkaart filtert regio's beter.",
+        "it": "La mappa dei parchi filtra meglio le regioni.",
+        "es": "El mapa de parques filtra mejor las regiones.",
+        "pl": "Mapa parków lepiej filtruje regiony.",
+        "pt": "O mapa dos parques filtra melhor as regiões."
+      }
+    },
     {
       "version": "2.3.4",
       "releasedAt": "2026-06-20",

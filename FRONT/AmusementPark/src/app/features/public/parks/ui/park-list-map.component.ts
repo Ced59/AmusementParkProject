@@ -36,7 +36,9 @@ export class ParkListMapComponent {
     { value: 'europe', labelKey: 'parks.map.regionFilters.europe' },
     { value: 'north-america', labelKey: 'parks.map.regionFilters.northAmerica' },
     { value: 'south-america', labelKey: 'parks.map.regionFilters.southAmerica' },
-    { value: 'orient', labelKey: 'parks.map.regionFilters.orient' },
+    { value: 'asia', labelKey: 'parks.map.regionFilters.asia' },
+    { value: 'middle-east', labelKey: 'parks.map.regionFilters.middleEast' },
+    { value: 'oceania', labelKey: 'parks.map.regionFilters.oceania' },
     { value: 'africa', labelKey: 'parks.map.regionFilters.africa' },
   ];
 
@@ -106,4 +108,3 @@ export class ParkListMapComponent {
     return details;
   }
 }
-
