@@ -38,6 +38,11 @@
       "description": "Wyślij tę stronę komuś, kto może chcieć odwiedzić {{title}}.",
       "text": "Zobacz {{title}} w AmusementPark."
     },
+    "weather": {
+      "title": "Udostępnij tę pogodę",
+      "description": "Wyślij prognozę dla {{title}} komuś, kto planuje wizytę.",
+      "text": "Sprawdź pogodę dla {{title}} w AmusementPark."
+    },
     "parkItems": {
       "title": "Udostępnij te atrakcje i miejsca",
       "description": "Wyślij ten przewodnik komuś, kto planuje wizytę.",

@@ -1,6 +1,20 @@
 {
-  "version": "2.2.1",
+  "version": "2.2.2",
   "history": [
+    {
+      "version": "2.2.2",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "La météo des parcs se partage plus clairement.",
+        "en": "Park weather is easier to share clearly.",
+        "de": "Das Parkwetter lässt sich klarer teilen.",
+        "nl": "Parkweer is duidelijker te delen.",
+        "it": "Il meteo dei parchi si condivide più chiaramente.",
+        "es": "La meteo de los parques se comparte con más claridad.",
+        "pl": "Pogoda parków jest czytelniejsza przy udostępnianiu.",
+        "pt": "A meteorologia dos parques fica mais clara ao partilhar."
+      }
+    },
     {
       "version": "2.2.1",
       "releasedAt": "2026-06-20",

@@ -2925,6 +2925,11 @@
       "description": "Envoie cette fiche à quelqu’un qui pourrait vouloir visiter {{title}}.",
       "text": "Regarde {{title}} sur AmusementPark."
     },
+    "weather": {
+      "title": "Partager cette météo",
+      "description": "Envoie les prévisions de {{title}} à quelqu’un qui prépare sa visite.",
+      "text": "Vérifie la météo de {{title}} sur AmusementPark."
+    },
     "parkItems": {
       "title": "Partager ces attractions et lieux",
       "description": "Envoie ce guide à quelqu’un qui prépare sa visite.",
