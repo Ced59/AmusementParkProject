@@ -32,7 +32,10 @@ public sealed class MongoSearchProjectionInitializer
         if (this.settings.RebuildSearchProjectionOnStartup || await this.IsSearchProjectionEmptyAsync(cancellationToken))
         {
             await this.RebuildAsync(cancellationToken);
+            return;
         }
+
+        await this.BackfillLocalizedDescriptionsAsync(cancellationToken);
     }
 
     private async Task EnsureCollectionAndIndexesAsync(CancellationToken cancellationToken)
@@ -106,6 +109,56 @@ public sealed class MongoSearchProjectionInitializer
         await this.UpsertAllAsync(attractionManufacturerCollection, document => document.Id, SearchProjectionResourceTypes.Manufacturers, cancellationToken);
     }
 
+    private async Task BackfillLocalizedDescriptionsAsync(CancellationToken cancellationToken)
+    {
+        IMongoCollection<SearchItemDocument> searchCollection = this.database.GetCollection<SearchItemDocument>(this.settings.SearchItemCollectionName);
+        FilterDefinition<SearchItemDocument> missingLocalizedDescriptions = Builders<SearchItemDocument>.Filter.Exists("localizedDescriptions", false);
+        int batchSize = Math.Max(1, this.settings.SearchProjectionRebuildBatchSize);
+        int delayMilliseconds = Math.Max(0, this.settings.SearchProjectionRebuildBatchDelayMilliseconds);
+        Dictionary<string, List<string>> batchesByResourceType = new Dictionary<string, List<string>>(StringComparer.Ordinal);
+
+        using IAsyncCursor<SearchItemDocument> cursor = await searchCollection
+            .Find(missingLocalizedDescriptions)
+            .Project(document => new SearchItemDocument
+            {
+                OriginalId = document.OriginalId,
+                ResourceType = document.ResourceType,
+                Category = document.Category,
+            })
+            .ToCursorAsync(cancellationToken);
+
+        while (await cursor.MoveNextAsync(cancellationToken))
+        {
+            foreach (SearchItemDocument document in cursor.Current)
+            {
+                if (!TryResolveProjectionResource(document, out string resourceType, out string resourceId))
+                {
+                    continue;
+                }
+
+                if (!batchesByResourceType.TryGetValue(resourceType, out List<string>? batch))
+                {
+                    batch = new List<string>(batchSize);
+                    batchesByResourceType[resourceType] = batch;
+                }
+
+                batch.Add(resourceId);
+                if (batch.Count >= batchSize)
+                {
+                    await this.FlushBatchAsync(resourceType, batch, delayMilliseconds, cancellationToken);
+                }
+            }
+        }
+
+        foreach (KeyValuePair<string, List<string>> batchByResourceType in batchesByResourceType)
+        {
+            if (batchByResourceType.Value.Count > 0)
+            {
+                await this.FlushBatchAsync(batchByResourceType.Key, batchByResourceType.Value, delayMilliseconds, cancellationToken);
+            }
+        }
+    }
+
     private async Task UpsertAllAsync<TDocument>(
         IMongoCollection<TDocument> collection,
         Expression<Func<TDocument, string>> idProjection,
@@ -166,5 +219,51 @@ public sealed class MongoSearchProjectionInitializer
         {
             await Task.Delay(delayMilliseconds, cancellationToken);
         }
+    }
+
+    private static bool TryResolveProjectionResource(SearchItemDocument document, out string resourceType, out string resourceId)
+    {
+        if (TryResolveOriginalId(document.OriginalId, "parkItem_", SearchProjectionResourceTypes.ParkItems, out resourceType, out resourceId))
+        {
+            return true;
+        }
+
+        if (TryResolveOriginalId(document.OriginalId, "park_", SearchProjectionResourceTypes.Parks, out resourceType, out resourceId))
+        {
+            return true;
+        }
+
+        if (TryResolveOriginalId(document.OriginalId, "operator_", SearchProjectionResourceTypes.Operators, out resourceType, out resourceId))
+        {
+            return true;
+        }
+
+        if (TryResolveOriginalId(document.OriginalId, "manufacturer_", SearchProjectionResourceTypes.Manufacturers, out resourceType, out resourceId))
+        {
+            return true;
+        }
+
+        if (TryResolveOriginalId(document.OriginalId, "founder_", SearchProjectionResourceTypes.Founders, out resourceType, out resourceId))
+        {
+            return true;
+        }
+
+        resourceType = string.Empty;
+        resourceId = string.Empty;
+        return false;
+    }
+
+    private static bool TryResolveOriginalId(string? originalId, string prefix, string targetResourceType, out string resourceType, out string resourceId)
+    {
+        if (!string.IsNullOrWhiteSpace(originalId) && originalId.StartsWith(prefix, StringComparison.Ordinal))
+        {
+            resourceType = targetResourceType;
+            resourceId = originalId[prefix.Length..].Trim();
+            return !string.IsNullOrWhiteSpace(resourceId);
+        }
+
+        resourceType = string.Empty;
+        resourceId = string.Empty;
+        return false;
     }
 }

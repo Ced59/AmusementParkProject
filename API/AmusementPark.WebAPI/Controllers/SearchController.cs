@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Net.Http.Headers;
 
 namespace AmusementPark.WebAPI.Controllers;
 
@@ -58,7 +59,7 @@ public sealed class SearchController : ControllerBase
         PaginationRequestDto effectivePagination = pagination.Override(size: legacyPageSize);
 
         ApplicationResult<SearchResultPage<SearchHitResult>> result = await this.searchQueryHandler.HandleAsync(
-            new SearchQuery(query ?? string.Empty, normalizedCategories, effectivePagination.ToApplication()),
+            new SearchQuery(query ?? string.Empty, normalizedCategories, effectivePagination.ToApplication(), ResolveRequestLanguageCode(this.Request)),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)
@@ -67,5 +68,35 @@ public sealed class SearchController : ControllerBase
         }
 
         return this.Ok(result.Value.ToPagedResponse(static item => item.ToHttp()));
+    }
+
+    private static string ResolveRequestLanguageCode(HttpRequest request)
+    {
+        string acceptLanguage = request.Headers[HeaderNames.AcceptLanguage].ToString();
+        if (string.IsNullOrWhiteSpace(acceptLanguage))
+        {
+            return "en";
+        }
+
+        string firstLanguage = acceptLanguage.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .FirstOrDefault() ?? string.Empty;
+        string languageCode = firstLanguage.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .FirstOrDefault() ?? string.Empty;
+
+        if (languageCode.Length < 2)
+        {
+            return "en";
+        }
+
+        string normalizedLanguageCode = languageCode.Trim().ToLowerInvariant();
+        int separatorIndex = normalizedLanguageCode.IndexOf('-', StringComparison.Ordinal);
+        if (separatorIndex <= 0)
+        {
+            separatorIndex = normalizedLanguageCode.IndexOf('_', StringComparison.Ordinal);
+        }
+
+        return separatorIndex > 0
+            ? normalizedLanguageCode[..separatorIndex]
+            : normalizedLanguageCode;
     }
 }

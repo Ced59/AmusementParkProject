@@ -38,7 +38,13 @@ public sealed class SearchQueryHandler : IQueryHandler<SearchQuery, ApplicationR
             return ApplicationResult<SearchResultPage<SearchHitResult>>.Failure(errors);
         }
 
-        SearchResultPage<SearchHitResult> page = await this.searchReadRepository.SearchAsync(query.Text ?? string.Empty, query.Categories, query.Paging.Page, query.Paging.PageSize, cancellationToken);
+        SearchResultPage<SearchHitResult> page = await this.searchReadRepository.SearchAsync(
+            query.Text ?? string.Empty,
+            query.Categories,
+            query.Paging.Page,
+            query.Paging.PageSize,
+            query.LanguageCode,
+            cancellationToken);
         return ApplicationResult<SearchResultPage<SearchHitResult>>.Success(page);
     }
 }

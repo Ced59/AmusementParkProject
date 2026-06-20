@@ -30,6 +30,9 @@ public sealed class SearchItemDocument : MongoGeolocatedDocumentBase
     [BsonIgnoreIfNull]
     public string? Description { get; set; }
 
+    [BsonElement("localizedDescriptions")]
+    public List<LocalizedTextDocument> LocalizedDescriptions { get; set; } = new();
+
     [BsonElement("city")]
     [BsonIgnoreIfNull]
     public string? City { get; set; }

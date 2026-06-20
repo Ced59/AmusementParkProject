@@ -1,6 +1,20 @@
 {
-  "version": "2.1.16",
+  "version": "2.2.0",
   "history": [
+    {
+      "version": "2.2.0",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "La recherche d'accueil est plus claire et mieux localisée.",
+        "en": "Home search is clearer and better localized.",
+        "de": "Die Startseitensuche ist klarer und besser lokalisiert.",
+        "nl": "De zoekfunctie op de startpagina is duidelijker en beter vertaald.",
+        "it": "La ricerca della home è più chiara e meglio localizzata.",
+        "es": "La búsqueda de inicio es más clara y está mejor localizada.",
+        "pl": "Wyszukiwanie na stronie głównej jest czytelniejsze i lepiej zlokalizowane.",
+        "pt": "A pesquisa da página inicial fica mais clara e melhor localizada."
+      }
+    },
     {
       "version": "2.1.16",
       "releasedAt": "2026-06-20",

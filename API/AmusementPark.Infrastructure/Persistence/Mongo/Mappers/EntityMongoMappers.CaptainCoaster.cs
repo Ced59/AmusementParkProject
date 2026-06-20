@@ -50,8 +50,10 @@ internal static partial class EntityMongoMappers
         };
     }
 
-    public static AmusementPark.Application.Features.Search.Results.SearchHitResult ToSearchHit(this SearchItemDocument document)
+    public static AmusementPark.Application.Features.Search.Results.SearchHitResult ToSearchHit(this SearchItemDocument document, string? languageCode = null)
     {
+        string? localizedDescription = SearchLocalizedTextResolver.Resolve(document.LocalizedDescriptions, languageCode);
+
         return new AmusementPark.Application.Features.Search.Results.SearchHitResult
         {
             Id = string.IsNullOrWhiteSpace(document.OriginalId) ? document.Id : document.OriginalId,
@@ -59,7 +61,7 @@ internal static partial class EntityMongoMappers
             Title = document.Title,
             Subtitle = document.Subtitle,
             Category = document.Category,
-            Description = document.Description,
+            Description = localizedDescription ?? document.Description,
             City = document.City,
             CountryCode = document.CountryCode,
             LogoImageId = document.LogoImageId,
