@@ -1,6 +1,20 @@
 {
-  "version": "2.1.4",
+  "version": "2.1.5",
   "history": [
+    {
+      "version": "2.1.5",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "La navigation des fiches est mieux placée sur ordinateur.",
+        "en": "Item page navigation is better placed on desktop.",
+        "de": "Die Navigation der Detailseiten ist auf dem Desktop besser platziert.",
+        "nl": "Navigatie op detailpagina's staat beter op desktop.",
+        "it": "La navigazione delle schede è meglio posizionata su desktop.",
+        "es": "La navegación de las fichas está mejor ubicada en escritorio.",
+        "pl": "Nawigacja na stronach szczegółów jest lepiej ustawiona na komputerze.",
+        "pt": "A navegação das fichas fica melhor posicionada no computador."
+      }
+    },
     {
       "version": "2.1.4",
       "releasedAt": "2026-06-20",
