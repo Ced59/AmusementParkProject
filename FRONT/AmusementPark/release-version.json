@@ -1,6 +1,20 @@
 {
-  "version": "2.3.5",
+  "version": "2.3.6",
   "history": [
+    {
+      "version": "2.3.6",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "La carte des parcs se charge et se recadre plus fiablement.",
+        "en": "The parks map loads and refocuses more reliably.",
+        "de": "Die Parkkarte lädt und richtet sich zuverlässiger aus.",
+        "nl": "De parkkaart laadt en focust betrouwbaarder.",
+        "it": "La mappa dei parchi si carica e si centra in modo più affidabile.",
+        "es": "El mapa de parques carga y se enfoca con más fiabilidad.",
+        "pl": "Mapa parków ładuje się i ustawia widok bardziej niezawodnie.",
+        "pt": "O mapa dos parques carrega e ajusta a vista com mais fiabilidade."
+      }
+    },
     {
       "version": "2.3.5",
       "releasedAt": "2026-06-20",

@@ -57,6 +57,12 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
   /** Zoom minimal conservé après ajustement sur plusieurs marqueurs. */
   @Input() fitBoundsMinZoom: number | null = null;
 
+  /**
+   * Stabilizes dense maps whose marker set changes while the map is visible.
+   * This keeps viewport-dependent marker rendering in sync with programmatic bounds changes.
+   */
+  @Input() stabilizeDynamicMarkerViewport = false;
+
   /** Marqueur à centrer et ouvrir, utile pour synchroniser une liste de résultats avec la carte. */
   @Input() selectedMarkerId: string | null = null;
 
@@ -81,7 +87,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
   private readonly isBrowser: boolean;
   private readonly viewportChangeListener = (): void => {
-    this.refreshMapSize(this.shouldUseReducedMobileTileRequests());
+    this.refreshMapSize(this.shouldRedrawTilesAfterMapSizeChange());
   };
 
   constructor(
@@ -125,8 +131,13 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     const fitBoundsChanged: boolean = Boolean(changes['fitBounds']);
     const centerChanged: boolean = Boolean(changes['center'] && !changes['center'].firstChange);
     const zoomChanged: boolean = Boolean(changes['zoom'] && !changes['zoom'].firstChange);
+    const shouldDelayMarkerRefresh: boolean = markersChanged && this.shouldDelayMarkerRefreshUntilViewport();
 
-    if (markersChanged) {
+    if (markersChanged && shouldDelayMarkerRefresh) {
+      this.clearRenderedMarkers();
+    }
+
+    if (markersChanged && !shouldDelayMarkerRefresh) {
       this.refreshMarkers();
     }
 
@@ -200,7 +211,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       return;
     }
 
-    const shouldRedrawTiles: boolean = this.shouldUseReducedMobileTileRequests();
+    const shouldRedrawTiles: boolean = this.shouldRedrawTilesAfterMapSizeChange();
     const stabilizationDelays: number[] = shouldRedrawTiles
       ? [50, 160, 360, 800, 1400]
       : [50, 250];
@@ -227,13 +238,16 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
     this.markerLayer = this.L.layerGroup().addTo(this.map);
 
-    this.refreshMarkers();
+    if (!this.shouldDelayMarkerRefreshUntilViewport()) {
+      this.refreshMarkers();
+    }
+
     this.scheduleViewportUpdate();
     this.bindViewportChangeListeners();
 
     if (typeof ResizeObserver !== 'undefined') {
       this.resizeObserver = new ResizeObserver((): void => {
-        this.refreshMapSize(this.shouldUseReducedMobileTileRequests());
+        this.refreshMapSize(this.shouldRedrawTilesAfterMapSizeChange());
       });
       this.resizeObserver.observe(this.mapContainer.nativeElement);
     }
@@ -253,7 +267,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       maxZoom: 19,
       attribution: '&copy; OpenStreetMap contributors',
       detectRetina: false,
-      keepBuffer: 0,
+      keepBuffer: this.resolveTileKeepBuffer(),
       updateWhenIdle: true,
       updateWhenZooming: false
     };
@@ -271,7 +285,20 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       return false;
     }
 
-    return window.innerWidth <= LeafletMapComponent.ReducedMobileTileMaxViewportWidth;
+    return !this.stabilizeDynamicMarkerViewport
+      && window.innerWidth <= LeafletMapComponent.ReducedMobileTileMaxViewportWidth;
+  }
+
+  private resolveTileKeepBuffer(): number {
+    return this.stabilizeDynamicMarkerViewport ? 2 : 0;
+  }
+
+  private shouldRedrawTilesAfterMapSizeChange(): boolean {
+    return this.stabilizeDynamicMarkerViewport || this.shouldUseReducedMobileTileRequests();
+  }
+
+  private shouldDelayMarkerRefreshUntilViewport(): boolean {
+    return this.stabilizeDynamicMarkerViewport && this.fitBounds;
   }
 
   private scheduleViewportUpdate(): void {
@@ -283,13 +310,35 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
     this.viewportUpdateTimeoutId = window.setTimeout((): void => {
       this.viewportUpdateTimeoutId = null;
-      this.applyMarkerViewport();
+      this.applyMarkerViewportUpdateCycle();
 
       this.viewportStabilizationTimeoutId = window.setTimeout((): void => {
         this.viewportStabilizationTimeoutId = null;
-        this.applyMarkerViewport();
+        this.applyMarkerViewportUpdateCycle();
       }, 120);
     }, 0);
+  }
+
+  private applyMarkerViewportUpdateCycle(): void {
+    this.applyMarkerViewport();
+    this.refreshMarkersAfterViewportUpdate();
+    this.redrawTilesAfterViewportUpdate();
+  }
+
+  private refreshMarkersAfterViewportUpdate(): void {
+    if (!this.stabilizeDynamicMarkerViewport) {
+      return;
+    }
+
+    this.refreshMarkers();
+  }
+
+  private redrawTilesAfterViewportUpdate(): void {
+    if (!this.stabilizeDynamicMarkerViewport) {
+      return;
+    }
+
+    this.tileLayer?.redraw();
   }
 
   private clearViewportUpdateTimers(): void {
@@ -340,6 +389,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
 
       if (options.updateViewport === true) {
         this.applyMarkerViewport();
+        this.refreshMarkersAfterViewportUpdate();
       }
 
       if (options.redrawTiles === true) {
@@ -411,7 +461,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       return;
     }
 
-    if (this.fitBounds && this.markers.length > 0) {
+    if (this.fitBounds && this.hasAnyUsableMarker()) {
       this.scheduleViewportUpdate();
       return;
     }
@@ -424,8 +474,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       return;
     }
 
-    this.markerLayer.clearLayers();
-    this.leafletMarkers.clear();
+    this.clearRenderedMarkers();
 
     const renderableMarkers: MapMarker[] = this.getRenderableMarkers();
 
@@ -453,6 +502,11 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     }
 
     this.openPendingSelectedMarkerPopup();
+  }
+
+  private clearRenderedMarkers(): void {
+    this.markerLayer?.clearLayers();
+    this.leafletMarkers.clear();
   }
 
   private getRenderableMarkers(): MapMarker[] {
@@ -623,6 +677,10 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       && marker.lng <= 180;
   }
 
+  private hasAnyUsableMarker(): boolean {
+    return this.markers.some((marker: MapMarker): boolean => this.hasUsableCoordinates(marker));
+  }
+
   private getCurrentZoom(): number {
     return this.map?.getZoom() ?? this.zoom;
   }
@@ -650,6 +708,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
     const markerModel: MapMarker | undefined = this.markers.find((candidate: MapMarker): boolean => candidate.id === this.selectedMarkerId);
 
     if (!markerModel || !this.hasUsableCoordinates(markerModel)) {
+      this.pendingPopupMarkerId = null;
       return false;
     }
 
@@ -664,16 +723,26 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges, OnDestroy 
       return false;
     }
 
-    if (this.markers.length === 1) {
-      const singleMarker: MapMarker = this.markers[0];
+    const fitMarkers: MapMarker[] = this.markers.filter((marker: MapMarker): boolean => this.hasUsableCoordinates(marker));
+
+    if (fitMarkers.length === 0) {
+      return false;
+    }
+
+    if (fitMarkers.length === 1) {
+      const singleMarker: MapMarker = fitMarkers[0];
       this.map.setView([singleMarker.lat, singleMarker.lng], Math.max(this.zoom, 8));
       return true;
     }
 
-    const bounds = this.L.latLngBounds(this.markers.map((marker: MapMarker) => [marker.lat, marker.lng]));
-    this.map.fitBounds(bounds, { padding: [32, 32], maxZoom: this.fitBoundsMaxZoom });
+    const bounds = this.L.latLngBounds(fitMarkers.map((marker: MapMarker) => [marker.lat, marker.lng]));
+    this.map.fitBounds(bounds, { padding: this.resolveFitBoundsPadding(), maxZoom: this.fitBoundsMaxZoom });
     this.ensureFitBoundsMinimumZoom();
     return true;
+  }
+
+  private resolveFitBoundsPadding(): [number, number] {
+    return this.stabilizeDynamicMarkerViewport ? [72, 72] : [32, 32];
   }
 
   private ensureFitBoundsMinimumZoom(): void {
