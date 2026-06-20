@@ -10,6 +10,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, unlinkSync,
 import { fileURLToPath } from 'node:url';
 import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
+import { resolveSsrRouteStatusCode, shouldApplyNoindexFollowHeader } from './src/app/core/ssr/ssr-route-status.helpers';
 import { siteVersion } from './src/environments/version.generated';
 
 const defaultApiInternalOrigin = 'http://api:8080';
@@ -249,8 +250,9 @@ export function app(): express.Express {
       return;
     }
 
-    if (isExplicitNotFoundRoute(req.originalUrl)) {
-      res.status(404);
+    const statusCode: number = resolveSsrRouteStatusCode(req.originalUrl);
+    if (statusCode !== 200) {
+      res.status(statusCode);
     }
 
     const publicUrl = getPublicRequestUrl(req);
@@ -363,7 +365,7 @@ function runNextQueuedSsrRender(): void {
 }
 
 function applySearchRobotsHeaders(req: Request, res: Response): void {
-  if (isNoindexPublicPageRoute(req.originalUrl)) {
+  if (shouldApplyNoindexFollowHeader(req.originalUrl)) {
     res.setHeader('X-Robots-Tag', 'noindex, follow');
   }
 }
@@ -385,8 +387,9 @@ function shouldRenderCacheMiss(req: Request, warmupRequest: boolean): boolean {
 }
 
 function serveCsrFallbackPage(req: Request, res: Response, csrIndexHtmlPath: string | null, mode: string): void {
-  if (isExplicitNotFoundRoute(req.originalUrl)) {
-    res.status(404);
+  const statusCode: number = resolveSsrRouteStatusCode(req.originalUrl);
+  if (statusCode !== 200) {
+    res.status(statusCode);
   }
 
   csrFallbackCount += 1;
@@ -596,22 +599,8 @@ function isPublicReferenceRoute(path: string): boolean {
   return /^\/[a-z]{2}\/park-(?:operator|founder|manufacturer)\/[^/]+\/[^/]+\/?$/i.test(path);
 }
 
-function isNoindexPublicPageRoute(url: string): boolean {
-  const path = getPathOnly(url);
-
-  return isPublicParkMapRoute(path)
-    || (isPublicParkItemsRoute(path) && hasQueryString(url))
-    || (isPublicParkZonesRoute(path) && hasQueryString(url))
-    || (isPublicParkZoneDetailRoute(path) && hasQueryString(url))
-    || (isPublicParkImagesRoute(path) && hasQueryString(url));
-}
-
 function hasQueryString(url: string): boolean {
   return url.includes('?');
-}
-
-function isPublicParkMapRoute(path: string): boolean {
-  return /^\/[a-z]{2}\/park\/[^/]+\/[^/]+\/map\/?$/i.test(path);
 }
 
 function isAssetLikeRequest(url: string): boolean {
@@ -1523,10 +1512,6 @@ function getForwardedValue(req: Request, headerName: string): string | null {
   }
 
   return value.split(',')[0]?.trim() || null;
-}
-
-function isExplicitNotFoundRoute(url: string): boolean {
-  return /^\/[a-z]{2}\/not-found(?:[/?#]|$)/i.test(url);
 }
 
 function normalizeOrigin(value: string): string {
