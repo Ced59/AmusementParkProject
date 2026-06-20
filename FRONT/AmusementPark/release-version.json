@@ -1,6 +1,20 @@
 {
-  "version": "2.1.10",
+  "version": "2.1.11",
   "history": [
+    {
+      "version": "2.1.11",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Le logo .fun ressort mieux sur tous les ecrans.",
+        "en": "The .fun logo stands out better on every screen.",
+        "de": "Das .fun-Logo hebt sich auf allen Bildschirmen besser ab.",
+        "nl": "Het .fun-logo valt beter op op elk scherm.",
+        "it": "Il logo .fun risalta meglio su ogni schermo.",
+        "es": "El logo .fun destaca mejor en todas las pantallas.",
+        "pl": "Logo .fun lepiej wyroznia sie na kazdym ekranie.",
+        "pt": "O logotipo .fun destaca-se melhor em todos os ecras."
+      }
+    },
     {
       "version": "2.1.10",
       "releasedAt": "2026-06-20",
