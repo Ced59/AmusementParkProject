@@ -1,6 +1,20 @@
 {
-  "version": "2.1.9",
+  "version": "2.1.10",
   "history": [
+    {
+      "version": "2.1.10",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Le logo .fun gagne en couleur.",
+        "en": "The .fun logo gets more colorful.",
+        "de": "Das .fun-Logo wird farbenfroher.",
+        "nl": "Het .fun-logo krijgt meer kleur.",
+        "it": "Il logo .fun diventa piu colorato.",
+        "es": "El logo .fun gana color.",
+        "pl": "Logo .fun zyskuje wiecej koloru.",
+        "pt": "O logotipo .fun ganha mais cor."
+      }
+    },
     {
       "version": "2.1.9",
       "releasedAt": "2026-06-20",
