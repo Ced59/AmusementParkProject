@@ -2525,17 +2525,17 @@
     },
     "map": {
       "badge": "Interactieve kaart",
-      "title": "Kaart van zichtbare parken",
-      "subtitle": "De kaart volgt de huidige zoekopdracht. Klik op een marker of resultaatkaart om de hele pagina te synchroniseren.",
-      "visiblePins": "{{count}} zichtbare pins",
+      "title": "Parkkaart",
+      "subtitle": "Verken parken op de kaart. Filter op regio en klik daarna op een marker of kaart om de lijst bij je keuze te houden.",
+      "visiblePins": "{{count}} parken op de kaart",
       "quickMarkers": "Snelle markeringen",
       "selected": "Geselecteerd park",
       "loadingTitle": "Kaart laden",
-      "loadingMessage": "De zichtbare parken worden op de kaart geplaatst.",
+      "loadingMessage": "De parken worden op de kaart geplaatst.",
       "errorTitle": "Kaart niet beschikbaar",
       "errorMessage": "De kaartpunten konden niet worden geladen.",
       "emptyTitle": "Geen punt beschikbaar",
-      "emptyMessage": "Geen zichtbaar park met coördinaten komt overeen met deze zoekopdracht.",
+      "emptyMessage": "Geen park met coördinaten komt overeen met deze zoekopdracht.",
       "navigate": "Route openen",
       "openDetail": "Naar de fiche",
       "regionFilters": {
@@ -2543,10 +2543,12 @@
         "europe": "Europa",
         "northAmerica": "Noord-Amerika",
         "southAmerica": "Zuid-Amerika",
-        "orient": "Oriënt",
+        "asia": "Azië",
+        "middleEast": "Midden-Oosten",
+        "oceania": "Oceanië",
         "africa": "Afrika"
       },
-      "regionFilterAriaLabel": "Parken filteren op continent"
+      "regionFilterAriaLabel": "Parken filteren op wereldregio"
     },
     "results": {
       "badge": "Resultaten",

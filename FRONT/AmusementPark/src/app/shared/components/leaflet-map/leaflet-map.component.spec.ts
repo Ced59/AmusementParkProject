@@ -9,7 +9,8 @@ type LeafletMapComponentInternals = {
   openPendingSelectedMarkerPopup: () => void;
   buildTileLayerOptions: () => Record<string, unknown>;
   scheduleMapSizeStabilization: () => void;
-  map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } | null;
+  ensureFitBoundsMinimumZoom: () => void;
+  map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; setZoom: jasmine.Spy; remove: jasmine.Spy } | null;
   tileLayer: { redraw: jasmine.Spy } | null;
   leafletMarkers: Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>;
   pendingPopupMarkerId: string | null;
@@ -41,7 +42,7 @@ describe('LeafletMapComponent', () => {
   it('keeps the selected marker popup pending while focusing an already rendered marker', () => {
     const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
     const marker: { getLatLng: jasmine.Spy; openPopup: jasmine.Spy } = jasmine.createSpyObj('marker', ['getLatLng', 'openPopup']);
-    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'remove']);
+    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; setZoom: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
 
     marker.getLatLng.and.returnValue({ lat: 49.804, lng: 6.878 });
     map.getZoom.and.returnValue(12);
@@ -75,7 +76,7 @@ describe('LeafletMapComponent', () => {
 
   it('clears pending marker popup when there is no selected marker', () => {
     const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'remove']);
+    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; setZoom: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
 
     component.selectedMarkerId = null;
     internals.pendingPopupMarkerId = 'entrance';
@@ -115,7 +116,7 @@ describe('LeafletMapComponent', () => {
 
   it('redraws reduced mobile tiles while stabilizing the initial map size', () => {
     const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
-    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'remove']);
+    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; setZoom: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
     const tileLayer: { redraw: jasmine.Spy } = jasmine.createSpyObj('tileLayer', ['redraw']);
 
     spyOnProperty(window, 'innerWidth', 'get').and.returnValue(390);
@@ -134,5 +135,18 @@ describe('LeafletMapComponent', () => {
     } finally {
       jasmine.clock().uninstall();
     }
+  });
+
+  it('keeps fitted bounds at the configured minimum zoom', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; setZoom: jasmine.Spy; remove: jasmine.Spy } = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+
+    component.fitBoundsMinZoom = 3;
+    map.getZoom.and.returnValue(2);
+    internals.map = map;
+
+    internals.ensureFitBoundsMinimumZoom();
+
+    expect(map.setZoom).toHaveBeenCalledWith(3);
   });
 });

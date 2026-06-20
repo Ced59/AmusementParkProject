@@ -2525,17 +2525,17 @@
     },
     "map": {
       "badge": "Mappa interattiva",
-      "title": "Mappa dei parchi visibili",
-      "subtitle": "La mappa segue la ricerca in corso. Clicca su un marker o su una card risultato per sincronizzare tutta la pagina.",
-      "visiblePins": "{{count}} pin visibili",
+      "title": "Mappa dei parchi",
+      "subtitle": "Esplora i parchi sulla mappa. Filtra per regione, poi clicca su un marker o su una scheda per mantenere la lista sulla tua scelta.",
+      "visiblePins": "{{count}} parchi sulla mappa",
       "quickMarkers": "Marker rapidi",
       "selected": "Parco selezionato",
       "loadingTitle": "Caricamento mappa",
-      "loadingMessage": "I parchi visibili vengono posizionati sulla mappa.",
+      "loadingMessage": "I parchi vengono posizionati sulla mappa.",
       "errorTitle": "Mappa non disponibile",
       "errorMessage": "Impossibile caricare i punti della mappa.",
       "emptyTitle": "Nessun punto disponibile",
-      "emptyMessage": "Nessun parco visibile con coordinate corrisponde a questa ricerca.",
+      "emptyMessage": "Nessun parco con coordinate corrisponde a questa ricerca.",
       "navigate": "Indicazioni",
       "openDetail": "Apri la scheda",
       "regionFilters": {
@@ -2543,10 +2543,12 @@
         "europe": "Europa",
         "northAmerica": "Nord America",
         "southAmerica": "Sud America",
-        "orient": "Oriente",
+        "asia": "Asia",
+        "middleEast": "Medio Oriente",
+        "oceania": "Oceania",
         "africa": "Africa"
       },
-      "regionFilterAriaLabel": "Filtra i parchi per continente"
+      "regionFilterAriaLabel": "Filtra i parchi per regione del mondo"
     },
     "results": {
       "badge": "Risultati",
