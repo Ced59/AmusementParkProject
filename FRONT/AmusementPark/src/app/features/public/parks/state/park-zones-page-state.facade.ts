@@ -4,6 +4,7 @@ import { catchError, forkJoin, of } from 'rxjs';
 
 import { MapMarker } from '@app/models/map/map-marker';
 import { Park } from '@app/models/parks/park';
+import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkExplorer, ParkExplorerBucket, ParkExplorerCount } from '@app/models/parks/park-explorer';
 import { ParkItem } from '@app/models/parks/park-item';
 import { ParkZone } from '@app/models/parks/park-zone';
@@ -42,6 +43,7 @@ import {
 
 interface ParkZonesPageSourceData {
   park: Park;
+  parkImageId: string | null;
   explorer: ParkExplorer;
   zones: ParkZone[];
   items: ParkItem[];
@@ -54,6 +56,7 @@ export class ParkZonesPageStateFacade {
   private readonly selectedZoneIdSignal = signal<string | null>(null);
 
   public readonly state = this.screenStateStore.state;
+  public readonly parkImageId: Signal<string | null> = computed(() => this.screenStateStore.data()?.parkImageId ?? null);
   public readonly zonesPage: Signal<ParkZonesPageViewModel | null> = computed(() => {
     const park: Park | null = this.park();
     const explorer: ParkExplorer | null = this.explorer();
@@ -166,13 +169,19 @@ export class ParkZonesPageStateFacade {
     this.screenStateStore.setLoading(previousData);
 
     forkJoin({
-      park: this.parksApiService.getParkById(parkId, anonymousHttpOptions()),
+      summary: this.parksApiService.getParkDetailSummary(parkId, anonymousHttpOptions()),
       explorer: this.parksApiService.getParkExplorer(parkId, anonymousHttpOptions()),
       zones: this.parkZonesApiService.getParkZonesByParkId(parkId, anonymousHttpOptions()).pipe(catchError(() => of([] as ParkZone[]))),
       items: this.parkItemsApiService.getParkItemsByParkId(parkId, anonymousHttpOptions())
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: ({ park, explorer, zones, items }: ParkZonesPageSourceData) => {
-        this.screenStateStore.setReady({ park, explorer, zones, items });
+      next: (data: { summary: ParkDetailSummary; explorer: ParkExplorer; zones: ParkZone[]; items: ParkItem[] }) => {
+        this.screenStateStore.setReady({
+          park: data.summary.park,
+          parkImageId: data.summary.mainImage?.id ?? null,
+          explorer: data.explorer,
+          zones: data.zones,
+          items: data.items
+        });
       },
       error: (error: unknown) => {
         console.error('Error loading park zones page', error);

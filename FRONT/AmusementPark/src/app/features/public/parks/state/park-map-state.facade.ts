@@ -1,6 +1,8 @@
 import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { forkJoin } from 'rxjs';
 
+import { ParkDetailSummary } from '@app/models/parks/park-detail-summary';
 import { ParkMapItems } from '@app/models/parks/park-map-items';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
@@ -10,20 +12,26 @@ import { mapParkMapItemsToViewModel } from '../mappers/park-map-items-view.mappe
 import { ParkItemsMapViewModel } from '../models/park-items-map-view.model';
 import { PARK_MAP_PARKS_PORT, ParkMapParksPort } from './park-map-data.ports';
 
+interface ParkMapPageData {
+  mapItems: ParkMapItems;
+  parkImageId: string | null;
+}
+
 @Injectable()
 export class ParkMapStateFacade {
-  private readonly screenStateStore = new SignalScreenStateStore<ParkMapItems>();
+  private readonly screenStateStore = new SignalScreenStateStore<ParkMapPageData>();
   private readonly currentLanguageSignal = signal('en');
 
   public readonly state = this.screenStateStore.state;
-  public readonly park = computed(() => this.screenStateStore.data()?.park ?? null);
+  public readonly park = computed(() => this.screenStateStore.data()?.mapItems.park ?? null);
+  public readonly parkImageId = computed(() => this.screenStateStore.data()?.parkImageId ?? null);
   public readonly map: Signal<ParkItemsMapViewModel | null> = computed(() => {
-    const data: ParkMapItems | undefined = this.screenStateStore.data();
+    const data: ParkMapPageData | undefined = this.screenStateStore.data();
     if (!data) {
       return null;
     }
 
-    return mapParkMapItemsToViewModel(data, this.currentLanguageSignal());
+    return mapParkMapItemsToViewModel(data.mapItems, this.currentLanguageSignal());
   });
 
   constructor(
@@ -38,12 +46,18 @@ export class ParkMapStateFacade {
   }
 
   loadParkMap(parkId: string): void {
-    const previousData: ParkMapItems | undefined = this.screenStateStore.data();
+    const previousData: ParkMapPageData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
-    this.parksPort.getParkMapItems(parkId, anonymousHttpOptions()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (data: ParkMapItems) => {
-        this.screenStateStore.setReady(data);
+    forkJoin({
+      mapItems: this.parksPort.getParkMapItems(parkId, anonymousHttpOptions()),
+      summary: this.parksPort.getParkDetailSummary(parkId, anonymousHttpOptions())
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (data: { mapItems: ParkMapItems; summary: ParkDetailSummary }) => {
+        this.screenStateStore.setReady({
+          mapItems: data.mapItems,
+          parkImageId: data.summary.mainImage?.id ?? null
+        });
       },
       error: (error: unknown) => {
         console.error('Error loading park map items', error);

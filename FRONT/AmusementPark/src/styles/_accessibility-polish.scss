@@ -133,7 +133,6 @@ body.light-mode {
   }
 
   .ui-result-card[data-tone="lime"] .ui-result-card__icon,
-  .ui-park-card__detail--distance strong,
   .app-stat-card--lime .app-stat-card__value,
   .public-stat-card--lime .public-stat-card__value {
     color: var(--app-light-accent-lime);
@@ -170,7 +169,6 @@ body.light-mode {
     border-color: var(--app-border);
   }
 
-  .ui-park-card__detail--distance,
   .auth-feedback--success,
   .auth-success-panel {
     background: var(--app-light-accent-lime-soft);

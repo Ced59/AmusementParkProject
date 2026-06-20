@@ -32,7 +32,7 @@ describe('VersionHistoryPageComponent', () => {
       versionHistoryPage: {
         kicker: 'Historique',
         title: 'Ce qui a change',
-        lead: 'Version actuelle : {{version}}. Retrouvez les nouveautes visibles du site au fil des mises a jour.',
+        lead: 'Version actuelle : {{version}}. Retrouve les nouveautes visibles du site au fil des mises a jour.',
         timelineAriaLabel: 'Historique des versions',
         levels: {
           major: 'Majeure',

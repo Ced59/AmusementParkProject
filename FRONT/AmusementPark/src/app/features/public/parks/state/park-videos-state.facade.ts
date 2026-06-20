@@ -48,6 +48,7 @@ export class ParkVideosStateFacade {
   public readonly data = this.screenStateStore.data;
   public readonly loadingMore: Signal<boolean> = this.loadingMoreSignal.asReadonly();
   public readonly park = computed(() => this.screenStateStore.data()?.summary.park ?? null);
+  public readonly parkImageId = computed(() => this.screenStateStore.data()?.summary.mainImage?.id ?? null);
   public readonly totalVideos = computed(() => this.screenStateStore.data()?.pagination.totalItems ?? 0);
   public readonly filters = computed(() => this.screenStateStore.data()?.filters ?? createEmptyFilters());
   public readonly canLoadMore = computed(() => {

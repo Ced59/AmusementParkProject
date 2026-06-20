@@ -1416,9 +1416,9 @@
     "login": {
       "title": "Authentification classique",
       "title_email": "Email",
-      "mail_placeholder": "Entrez votre email",
+      "mail_placeholder": "Entre ton email",
       "title_password": "Mot de passe",
-      "password_placeholder": "Entrez votre mot de passe",
+      "password_placeholder": "Entre ton mot de passe",
       "btn_text": "Se connecter",
       "forgot_password": "Mot de passe oublié ?",
       "success": "Connexion réussie.",
@@ -1428,17 +1428,17 @@
     "register": {
       "title": "Inscription classique",
       "title_email": "Email",
-      "mail_placeholder": "Entrez votre email",
+      "mail_placeholder": "Entre ton email",
       "title_password": "Mot de passe",
-      "password_placeholder": "Entrez votre mot de passe",
-      "password_info": "Votre mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, et un chiffre.",
+      "password_placeholder": "Entre ton mot de passe",
+      "password_info": "Ton mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre.",
       "password_confirm_placeholder": "Confirmation du mot de passe",
       "btn_text": "S'enregister",
       "errors": {
         "password_error_summary": "Erreur de mot de passe",
         "password_error": "Le mot de passe doit contenir au minimum 8 caractères, une majuscule, une minuscule, et un chiffre."
       },
-      "success_message": "Votre compte a été créé. Utilisez le lien de confirmation reçu par email pour l’activer.",
+      "success_message": "Ton compte a bien été créé. Utilise le lien de confirmation reçu par email pour l’activer.",
       "resend_confirmation": "Renvoyer le lien de confirmation",
       "success_badge": "Créé",
       "validation_error": "Le formulaire d’inscription contient des erreurs.",
@@ -1457,7 +1457,7 @@
     },
     "forgot_password": {
       "title": "Mot de passe oublié",
-      "description": "Saisissez votre adresse email pour recevoir un lien de réinitialisation.",
+      "description": "Saisis ton adresse email pour recevoir un lien de réinitialisation.",
       "submit": "Envoyer le lien de réinitialisation",
       "kicker": "Récupération",
       "sent_badge": "Envoyé"
@@ -1588,7 +1588,7 @@
   "topbar": {
     "login_header": "Connexion / Inscription",
     "hello": "Bonjour",
-    "choose_language": "Choisissez votre langue:"
+    "choose_language": "Choisis ta langue :"
   },
   "ui": {
     "photoCarousel": {
@@ -1714,12 +1714,12 @@
   },
   "aboutPage": {
     "seo": {
-      "title": "À propos d’AmusementPark — Explorez les parcs autrement",
-      "description": "Découvrez AmusementPark, un guide visuel pour explorer les parcs d’attractions, leurs attractions, images, cartes et idées de visite."
+      "title": "À propos d’AmusementPark — Explore les parcs autrement",
+      "description": "Découvre AmusementPark, un guide visuel pour explorer les parcs d’attractions, leurs attractions, images, cartes et idées de visite."
     },
     "kicker": "À propos d’AmusementPark",
-    "title": "Explorez les parcs d’attractions autrement",
-    "lead": "AmusementPark est un guide de découverte pensé pour vous aider à explorer les parcs d’attractions, leurs univers, leurs attractions et les expériences qu’ils proposent. Que vous prépariez une sortie en famille, un futur voyage ou que vous aimiez simplement découvrir de nouveaux parcs, le site rassemble les informations essentielles dans une interface claire, visuelle et agréable à parcourir.",
+    "title": "Explore les parcs d’attractions autrement",
+    "lead": "AmusementPark est un guide de découverte pensé pour t’aider à explorer les parcs d’attractions, leurs univers, leurs attractions et les expériences qu’ils proposent. Que tu prépares une sortie en famille, un futur voyage ou que tu aimes simplement découvrir de nouveaux parcs, le site rassemble les informations essentielles dans une interface claire, visuelle et agréable à parcourir.",
     "primaryCta": "Explorer les parcs",
     "secondaryCta": "Voir comment ça marche",
     "heroVisual": {
@@ -1741,24 +1741,24 @@
     },
     "promise": {
       "kicker": "Notre promesse",
-      "title": "Vous aider à choisir, comparer et rêver plus facilement",
+      "title": "T’aider à choisir, comparer et rêver plus facilement",
       "subtitle": "Un parc d’attractions ne se résume pas à une adresse ou à une liste d’attractions. C’est une ambiance, des zones thématiques, des expériences, des spectacles, des restaurants, des images, une localisation et parfois une vraie destination de voyage. AmusementPark veut réunir tout cela dans des pages simples à lire et faciles à explorer."
     },
     "cards": {
       "discover": {
         "badge": "Découvrir",
-        "title": "Trouvez des parcs qui vous donnent envie",
-        "text": "Parcourez des parcs situés dans différents pays, découvrez leur localisation, leur ambiance générale et les lieux qui les composent. L’objectif est de vous donner rapidement une première idée : est-ce un parc familial, un grand parc de destination, un parc régional, un parc aquatique, un lieu très thématisé ou une sortie plus locale ?"
+        "title": "Trouve des parcs qui te donnent envie",
+        "text": "Parcours des parcs situés dans différents pays, découvre leur localisation, leur ambiance générale et les lieux qui les composent. L’objectif est de te donner rapidement une première idée : est-ce un parc familial, un grand parc de destination, un parc régional, un parc aquatique, un lieu très thématisé ou une sortie plus locale ?"
       },
       "understand": {
         "badge": "Comprendre",
-        "title": "Visualisez ce qu’il y a à faire sur place",
-        "text": "Chaque page peut regrouper les attractions, restaurants, boutiques, spectacles, zones et images disponibles. Vous pouvez ainsi mieux comprendre la composition d’un parc avant de creuser les détails ou de comparer avec d’autres destinations."
+        "title": "Visualise ce qu’il y a à faire sur place",
+        "text": "Chaque page peut regrouper les attractions, restaurants, boutiques, spectacles, zones et images disponibles. Tu peux ainsi mieux comprendre la composition d’un parc avant de creuser les détails ou de comparer avec d’autres destinations."
       },
       "prepare": {
         "badge": "Préparer",
-        "title": "Préparez une visite ou inspirez votre prochain voyage",
-        "text": "AmusementPark n’est pas seulement une liste de lieux : c’est un point de départ pour imaginer une sortie, repérer les parcs proches d’une destination, explorer les images, ouvrir la carte et construire peu à peu votre propre sélection de parcs à découvrir."
+        "title": "Prépare une visite ou inspire ton prochain voyage",
+        "text": "AmusementPark n’est pas seulement une liste de lieux : c’est un point de départ pour imaginer une sortie, repérer les parcs proches d’une destination, explorer les images, ouvrir la carte et construire peu à peu ta propre sélection de parcs à découvrir."
       }
     },
     "explore": {
@@ -1772,7 +1772,7 @@
         },
         "items": {
           "title": "Explorer les attractions et lieux du parc",
-          "text": "Quand les données sont disponibles, vous pouvez consulter les attractions, restaurants, boutiques, spectacles ou autres points d’intérêt liés au parc."
+          "text": "Quand les données sont disponibles, tu peux consulter les attractions, restaurants, boutiques, spectacles ou autres points d’intérêt liés au parc."
         },
         "ratings": {
           "title": "Consulter les notes et classements",
@@ -1788,32 +1788,32 @@
         },
         "nearby": {
           "title": "Repérer d’autres parcs autour d’une destination",
-          "text": "Lorsque vous consultez un parc, les parcs proches peuvent vous aider à élargir votre recherche et à imaginer un itinéraire plus complet."
+          "text": "Lorsque tu consultes un parc, les parcs proches peuvent t’aider à élargir ta recherche et à imaginer un itinéraire plus complet."
         },
         "languages": {
-          "title": "Explorer dans votre langue",
-          "text": "Le site est pensé pour être consulté dans plusieurs langues afin de rendre les informations plus accessibles, que vous soyez visiteur local, touriste ou simple passionné."
+          "title": "Explorer dans ta langue",
+          "text": "Le site est pensé pour être consulté dans plusieurs langues afin de rendre les informations plus accessibles, que tu sois visiteur local, touriste ou simple passionné."
         }
       }
     },
     "audiences": {
       "kicker": "Pour tous les explorateurs",
-      "title": "Que vous prépariez une sortie ou que vous aimiez simplement les parcs",
+      "title": "Que tu prépares une sortie ou que tu aimes simplement les parcs",
       "families": {
         "title": "Pour les familles",
-        "text": "Repérez plus facilement les parcs qui peuvent correspondre à une sortie avec enfants, à une journée détente ou à une découverte progressive."
+        "text": "Repère plus facilement les parcs qui peuvent correspondre à une sortie avec enfants, à une journée détente ou à une découverte progressive."
       },
       "fans": {
         "title": "Pour les passionnés de parcs",
-        "text": "Explorez les attractions, les zones, les constructeurs, les images et les détails qui permettent de mieux comprendre l’identité d’un parc."
+        "text": "Explore les attractions, les zones, les constructeurs, les images et les détails qui permettent de mieux comprendre l’identité d’un parc."
       },
       "travelers": {
         "title": "Pour les voyageurs",
-        "text": "Préparez une étape autour d’un parc, comparez plusieurs destinations et repérez les lieux intéressants autour d’une ville ou d’une région."
+        "text": "Prépare une étape autour d’un parc, compare plusieurs destinations et repère les lieux intéressants autour d’une ville ou d’une région."
       },
       "curious": {
         "title": "Pour les curieux",
-        "text": "Découvrez des parcs dont vous n’aviez jamais entendu parler, explorez leur univers et laissez-vous surprendre par la diversité des destinations."
+        "text": "Découvre des parcs dont tu n’avais jamais entendu parler, explore leur univers et laisse-toi surprendre par la diversité des destinations."
       }
     },
     "approach": {
@@ -1854,7 +1854,7 @@
     "finalCta": {
       "kicker": "Commencer",
       "title": "Prêt à commencer l’exploration ?",
-      "text": "Choisissez un parc, ouvrez sa fiche, découvrez ses attractions, ses images ou sa carte, et laissez-vous guider vers votre prochaine destination.",
+      "text": "Choisis un parc, ouvre sa fiche, découvre ses attractions, ses images ou sa carte, et laisse-toi guider vers ta prochaine destination.",
       "primary": "Explorer les parcs",
       "secondary": "Retour à l’accueil"
     }
@@ -1862,7 +1862,7 @@
   "contactPage": {
     "kicker": "Contact",
     "title": "Contacter AmusementPark",
-    "lead": "Envoyez une remarque sur le site, une information manquante, un problème de données ou une idée d'amélioration.",
+    "lead": "Envoie une remarque sur le site, une information manquante, un problème de données ou une idée d’amélioration.",
     "email": {
       "badge": "Adresse temporaire",
       "title": "Contact direct",
@@ -1872,11 +1872,11 @@
       "kicker": "Cahier de doléances",
       "title": "Laisser un message",
       "description": "Les messages sont stockés en texte simple et consultables depuis le panel admin.",
-      "messageLabel": "Votre message",
+      "messageLabel": "Ton message",
       "help": "Texte simple uniquement. Les balises HTML et les liens abusifs sont rejetés.",
-      "validation": "Saisissez un message en texte simple entre 10 et 2000 caractères.",
-      "success": "Votre message a bien été enregistré.",
-      "error": "Le message n'a pas pu être envoyé. Vérifiez le texte ou réessayez plus tard.",
+      "validation": "Saisis un message en texte simple entre 10 et 2000 caractères.",
+      "success": "Ton message a bien été enregistré.",
+      "error": "Le message n’a pas pu être envoyé. Vérifie le texte ou réessaie plus tard.",
       "submit": "Envoyer",
       "submitting": "Envoi"
     },
@@ -1886,7 +1886,7 @@
       "text": "Ce formulaire est volontairement strict pour protéger le site et ses administrateurs.",
       "points": {
         "plainText": "Les messages sont acceptés en texte simple uniquement.",
-        "ip": "Votre adresse IP est enregistrée pour limiter les abus répétés.",
+        "ip": "Ton adresse IP est enregistrée pour limiter les abus répétés.",
         "admin": "Seuls les administrateurs peuvent consulter les messages et le contexte technique."
       }
     }
@@ -1894,7 +1894,7 @@
   "cookieConsent": {
     "ariaLabel": "Bandeau d’information et de choix sur les cookies",
     "title": "Cookies et confidentialité",
-    "text": "AmusementPark utilise des cookies ou stockages nécessaires au fonctionnement du site, notamment pour la sécurité, la session, la langue, le thème et l’authentification. Avec votre accord, le site active aussi les cookies optionnels de mesure d’audience Matomo et Microsoft Clarity.",
+    "text": "AmusementPark utilise des cookies ou stockages nécessaires au fonctionnement du site, notamment pour la sécurité, la session, la langue, le thème et l’authentification. Avec ton accord, le site active aussi les cookies optionnels de mesure d’audience Matomo et Microsoft Clarity.",
     "privacyLink": "Lire la politique de confidentialité.",
     "accept": "Accepter les cookies optionnels",
     "continueWithNecessaryCookiesOnly": "Continuer avec les cookies nécessaires"
@@ -1902,8 +1902,8 @@
   "footer": {
     "ariaLabel": "Pied de page du site",
     "brand": {
-      "sloganData": "Des données carrées",
-      "sloganFun": "pour plus de fun"
+      "sloganData": "La rigueur des données",
+      "sloganFun": "pour toujours plus de fun"
     },
     "explore": {
       "title": "Explorer",
@@ -2015,7 +2015,7 @@
     }
   },
   "publicNavigation": {
-    "youAreHere": "Vous êtes ici",
+    "youAreHere": "Tu es ici",
     "treeAriaLabel": "Arborescence de navigation des parcs"
   },
   "notFound": {
@@ -2035,7 +2035,7 @@
   },
   "parkExplorer": {
     "headerChip": "Exploration du parc",
-    "subtitle": "Parcourez le parc à travers ses zones et les principales catégories de lieux qu’il contient.",
+    "subtitle": "Parcours le parc à travers ses zones et les principales catégories de lieux qu’il contient.",
     "overviewTitle": "Tout le parc",
     "unassignedTitle": "Lieux hors zone",
     "totalItems": "{{count}} lieu(x)",
@@ -2105,7 +2105,7 @@
       "allZones": "Toutes les zones"
     },
     "list": {
-      "subtitle": "Explorez les attractions, spectacles, restaurants, boutiques et services de ce parc, puis ouvrez la fiche détaillée de chaque lieu.",
+      "subtitle": "Explore les attractions, spectacles, restaurants, boutiques et services de ce parc, puis ouvre la fiche détaillée de chaque lieu.",
       "loadingTitle": "Chargement des lieux à découvrir",
       "loadingMessage": "Les attractions, spectacles et lieux du parc sont en cours de chargement.",
       "errorTitle": "Impossible de charger les lieux du parc",
@@ -2113,7 +2113,7 @@
       "emptyTitle": "Rien à découvrir pour le moment",
       "emptyMessage": "Aucune attraction, spectacle ou lieu public n'est actuellement disponible pour ce parc.",
       "emptyFilteredTitle": "Aucun lieu correspondant",
-      "emptyFilteredMessage": "Essayez d'élargir vos filtres ou réinitialisez-les pour voir plus de lieux.",
+      "emptyFilteredMessage": "Essaie d’élargir tes filtres ou réinitialise-les pour voir plus de lieux.",
       "filteredResults": "Résultats filtrés",
       "resultsCount": "Affichage de {{start}} à {{end}} sur {{total}} lieu(x)"
     },
@@ -2255,7 +2255,7 @@
     "imagesPage": {
       "kicker": "Galerie du lieu",
       "title": "Images de {{name}}",
-      "subtitle": "Explorez les images de {{name}} à {{park}} : détails, ambiance, angles de vue et photos géolocalisées quand elles sont disponibles.",
+      "subtitle": "Explore les images de {{name}} à {{park}} : détails, ambiance, angles de vue et photos géolocalisées quand elles sont disponibles.",
       "loadingTitle": "Chargement des images",
       "loadingMessage": "Préparation de la galerie du lieu.",
       "errorTitle": "Images indisponibles",
@@ -2282,8 +2282,8 @@
     "zoneFocus": {
       "badge": "Zone du parc",
       "overviewBadge": "Carte instantanée",
-      "overviewDescription": "Visualisez les lieux affichés pour {{park}} selon les filtres actifs.",
-      "zoneFallbackDescription": "Cette zone regroupe les lieux actuellement affichés. Utilisez les filtres pour affiner la sélection.",
+      "overviewDescription": "Visualise les lieux affichés pour {{park}} selon les filtres actifs.",
+      "zoneFallbackDescription": "Cette zone regroupe les lieux actuellement affichés. Utilise les filtres pour affiner la sélection.",
       "totalItems": "Lieux dans la zone",
       "totalItemsHint": "À découvrir",
       "displayedItems": "Affichés",
@@ -2309,7 +2309,7 @@
     "videosPage": {
       "kicker": "Vidéos du lieu",
       "title": "Vidéos de {{name}}",
-      "subtitle": "Regardez les vidéos de {{name}} à {{park}} : onrides, offrides, avis et médias officiels.",
+      "subtitle": "Regarde les vidéos de {{name}} à {{park}} : onrides, offrides, avis et médias officiels.",
       "loadingTitle": "Chargement des vidéos",
       "loadingMessage": "Préparation des vidéos du lieu.",
       "errorTitle": "Vidéos indisponibles",
@@ -2363,7 +2363,7 @@
     },
     "history": {
       "title": "Comparer avec les années précédentes",
-      "subtitle": "Mémoire météo stockée pour les mêmes dates.",
+      "subtitle": "Compare avec les années précédentes pour mieux anticiper ta visite.",
       "loading": "Chargement des comparaisons météo.",
       "empty": "Aucune observation historique n'est disponible pour ces dates.",
       "errorMessage": "Les comparaisons météo n'ont pas pu être chargées.",
@@ -2379,7 +2379,7 @@
     "page": {
       "kicker": "Météo",
       "title": "Météo à 7 jours de {{name}}",
-      "lead": "Prévisions quotidiennes stockées par le site pour préparer les visites et construire une mémoire météo dans le temps.",
+      "lead": "Vérifie la météo de {{name}} pour ta visite.",
       "loadingTitle": "Chargement de la météo",
       "loadingMessage": "Les prévisions sont en cours de chargement.",
       "emptyTitle": "Aucune prévision disponible",
@@ -2392,7 +2392,7 @@
   "parks": {
     "heroBadge": "🗺️ Exploration",
     "title": "Tous les parcs",
-    "subtitle": "Explore les parcs visibles, retrouvé-les sur la carte interactive et choisis ta prochaine destination.",
+    "subtitle": "Explore les parcs visibles, retrouve-les sur la carte interactive et choisis ta prochaine destination.",
     "loadingTitle": "Chargement des parcs",
     "loadingMessage": "La liste des parcs est en cours de chargement.",
     "errorTitle": "Impossible de charger les parcs",
@@ -2647,7 +2647,7 @@
     "imagesPage": {
       "kicker": "Galerie du parc",
       "title": "Images de {{name}}",
-      "subtitle": "Explorez les images de {{name}} : vues du parc, ambiance, détails et photos géolocalisées quand elles sont disponibles.",
+      "subtitle": "Explore les images de {{name}} : vues du parc, ambiance, détails et photos géolocalisées quand elles sont disponibles.",
       "loadingTitle": "Chargement des images",
       "loadingMessage": "Préparation de la galerie du parc.",
       "errorTitle": "Images indisponibles",
@@ -2661,7 +2661,7 @@
     "mapPage": {
       "kicker": "Carte du parc",
       "title": "Carte de {{name}}",
-      "subtitle": "Explorez les attractions, restaurants, boutiques et points d'intérêt géolocalisés de {{name}} sur une carte dédiée.",
+      "subtitle": "Explore les attractions, restaurants, boutiques et points d’intérêt géolocalisés de {{name}} sur une carte dédiée.",
       "loadingTitle": "Chargement de la carte",
       "loadingMessage": "Préparation des marqueurs du parc.",
       "errorTitle": "Carte indisponible",
@@ -2704,7 +2704,7 @@
     "videosPage": {
       "kicker": "Vidéos du parc",
       "title": "Vidéos de {{name}}",
-      "subtitle": "Regardez les vidéos de {{name}} : onrides, offrides, clips officiels et contenus créateurs.",
+      "subtitle": "Regarde les vidéos de {{name}} : onrides, offrides, clips officiels et contenus créateurs.",
       "loadingTitle": "Chargement des vidéos",
       "loadingMessage": "Préparation des vidéos du parc.",
       "errorTitle": "Vidéos indisponibles",
@@ -2726,7 +2726,7 @@
     "consent": {
       "kicker": "Préférences cookies",
       "title": "Gérer les cookies optionnels",
-      "text": "Les cookies nécessaires au fonctionnement et à l’authentification peuvent être utilisés sans consentement. Ici, vous pouvez accepter, refuser ou réafficher le choix relatif aux cookies optionnels de mesure d’audience et d’analyse d’usage.",
+      "text": "Les cookies nécessaires au fonctionnement et à l’authentification peuvent être utilisés sans consentement. Ici, tu peux accepter, refuser ou réafficher le choix relatif aux cookies optionnels de mesure d’audience et d’analyse d’usage.",
       "currentStatus": "Statut actuel :",
       "statusAccepted": "cookies optionnels acceptés.",
       "statusRefused": "cookies optionnels refusés.",
@@ -2739,7 +2739,7 @@
       "controller": {
         "title": "Responsable du traitement",
         "body1": "Le responsable du traitement est Cédric Caudron, éditeur du site AmusementPark.",
-        "body2": "Pour toute demande relative aux données personnelles, vous pouvez utiliser les moyens de contact publiés sur le site cedric-caudron.com."
+        "body2": "Pour toute demande relative aux données personnelles, tu peux utiliser les moyens de contact publiés sur le site cedric-caudron.com."
       },
       "data": {
         "title": "Données traitées",
@@ -2749,7 +2749,7 @@
       "purposes": {
         "title": "Finalités et bases légales",
         "body1": "Les données sont utilisées pour fournir les fonctionnalités du site, sécuriser les accès, gérer les comptes, afficher les contenus publics et administrer le projet.",
-        "body2": "Les traitements nécessaires au fonctionnement reposent sur l’exécution du service ou l’intérêt légitime. Les cookies optionnels de mesure d’audience Matomo et Microsoft Clarity reposent sur votre consentement, sauf si une configuration strictement exemptée est mise en place ultérieurement."
+        "body2": "Les traitements nécessaires au fonctionnement reposent sur l’exécution du service ou l’intérêt légitime. Les cookies optionnels de mesure d’audience Matomo et Microsoft Clarity reposent sur ton consentement, sauf si une configuration strictement exemptée est mise en place ultérieurement."
       },
       "analytics": {
         "title": "Mesure d’audience Matomo",
@@ -2774,13 +2774,13 @@
         "body2": "Les logs techniques sont conservés pour une durée proportionnée à la sécurité et au diagnostic. Les données Matomo doivent être configurées avec une durée limitée et réexaminée régulièrement."
       },
       "rights": {
-        "title": "Vos droits",
-        "body1": "Vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou l’opposition aux traitements applicables à vos données.",
-        "body2": "Vous pouvez également retirer votre consentement analytics sur cette page et, si nécessaire, introduire une réclamation auprès de la CNIL."
+        "title": "Tes droits",
+        "body1": "Tu peux demander l’accès, la rectification, l’effacement, la limitation ou l’opposition aux traitements applicables à tes données.",
+        "body2": "Tu peux également retirer ton consentement analytics sur cette page et, si nécessaire, introduire une réclamation auprès de la CNIL."
       },
       "thirdPartyCookies": {
         "title": "Cookies tiers et authentification Google",
-        "body1": "Le site propose une connexion via Google OAuth / Sign in with Google. Lorsque vous utilisez ce mode, Google peut déposer ou lire ses propres cookies et technologies similaires à des fins d’authentification, de sécurité, de prévention de la fraude et de maintien de session.",
+        "body1": "Le site propose une connexion via Google OAuth / Sign in with Google. Lorsque tu utilises ce mode, Google peut déposer ou lire ses propres cookies et technologies similaires à des fins d’authentification, de sécurité, de prévention de la fraude et de maintien de session.",
         "body2": "Ces traceurs tiers sont nécessaires au fonctionnement de l’authentification Google demandée par l’utilisateur et ne sont pas pilotés par le consentement Matomo/analytics du site.",
         "body3": "Le refus des cookies optionnels d’AmusementPark ne bloque pas l’authentification. En revanche, un navigateur qui bloque certains cookies tiers peut empêcher ou dégrader le fonctionnement de la connexion Google."
       },
@@ -2788,7 +2788,7 @@
         "title": "Analyse d’usage Microsoft Clarity",
         "body1": "Le site utilise Microsoft Clarity, projet x7ca53dep2, pour comprendre l’usage des pages publiques au moyen de mesures agrégées, de cartes de chaleur et de fonctionnalités de relecture de session.",
         "body2": "Clarity peut collecter des interactions comme les clics, le défilement, les mouvements de souris, les informations de rendu des pages, le contexte de navigation, le type d’appareil et des données techniques du navigateur. Le contenu privé du profil ne doit pas être envoyé volontairement comme contenu analytics.",
-        "body3": "Clarity est activé uniquement après accord sur les cookies optionnels. Le site transmet le signal Clarity Consent API v2 afin d’accorder ou refuser le stockage analytics selon votre choix ; vous pouvez retirer ce consentement sur cette page."
+        "body3": "Clarity est activé uniquement après accord sur les cookies optionnels. Le site transmet le signal Clarity Consent API v2 afin d’accorder ou refuser le stockage analytics selon ton choix ; tu peux retirer ce consentement sur cette page."
       }
     },
     "lastUpdate": "Dernière mise à jour : 23 mai 2026.",
@@ -2802,7 +2802,7 @@
       "noRatings": "Aucune note",
       "chooseLabel": "Choisir une note",
       "rateValue": "Noter {{value}} sur 5",
-      "yourRating": "Votre note : {{value}}/5",
+      "yourRating": "Ta note : {{value}}/5",
       "prompt": "Choisis ta note",
       "signInMessage": "Connecte-toi pour laisser ta note.",
       "savedMessage": "Merci, ta note est prise en compte.",
@@ -2888,7 +2888,7 @@
   },
   "shareSocial": {
     "defaultTitle": "Partager cette page",
-    "defaultDescription": "Vous connaissez quelqu'un qui pourrait utiliser cette page ?",
+    "defaultDescription": "Tu connais quelqu’un qui pourrait utiliser cette page ?",
     "defaultText": "Regarde {{title}} sur AmusementPark.",
     "actions": {
       "share": "Partager",
@@ -2912,44 +2912,44 @@
     },
     "home": {
       "title": "Partager AmusementPark",
-      "description": "Envoyez le moteur de recherche à quelqu'un qui prépare une sortie.",
+      "description": "Envoie le moteur de recherche à quelqu’un qui prépare une sortie.",
       "text": "Explore des parcs et attractions sur AmusementPark."
     },
     "parks": {
       "title": "Partager les parcs",
-      "description": "Aidez quelqu'un à trouver un parc à visiter.",
+      "description": "Aide quelqu’un à trouver un parc à visiter.",
       "text": "Parcours les parcs d'attractions sur AmusementPark."
     },
     "park": {
       "title": "Partager ce parc",
-      "description": "Envoyez cette fiche à quelqu'un qui pourrait vouloir visiter {{title}}.",
+      "description": "Envoie cette fiche à quelqu’un qui pourrait vouloir visiter {{title}}.",
       "text": "Regarde {{title}} sur AmusementPark."
     },
     "parkItems": {
       "title": "Partager ces attractions et lieux",
-      "description": "Envoyez ce guide à quelqu'un qui prépare sa visite.",
+      "description": "Envoie ce guide à quelqu’un qui prépare sa visite.",
       "text": "Parcours les attractions, spectacles et lieux de {{title}} sur AmusementPark."
     },
     "parkItem": {
       "title": "Partager cette fiche",
-      "description": "Envoyez cette page à quelqu'un intéressé par {{title}}.",
+      "description": "Envoie cette page à quelqu’un intéressé par {{title}}.",
       "text": "Découvre {{title}} sur AmusementPark."
     },
     "videos": {
       "title": "Partager ces vidéos",
-      "description": "Envoyez ces vidéos à quelqu'un qui veut un aperçu.",
+      "description": "Envoie ces vidéos à quelqu’un qui veut un aperçu.",
       "text": "Regarde les vidéos de {{title}} sur AmusementPark."
     },
     "video": {
       "title": "Partager cette vidéo",
-      "description": "Envoyez cette vidéo à quelqu'un qui pourrait l'apprécier.",
+      "description": "Envoie cette vidéo à quelqu’un qui pourrait l’apprécier.",
       "text": "Regarde {{title}} sur AmusementPark."
     }
   },
   "versionHistoryPage": {
     "kicker": "Historique",
     "title": "Ce qui a changé",
-    "lead": "Version actuelle : {{version}}. Retrouvez les nouveautés visibles du site au fil des mises à jour.",
+    "lead": "Version actuelle : {{version}}. Retrouve les nouveautés visibles du site au fil des mises à jour.",
     "timelineAriaLabel": "Historique des versions",
     "levels": {
       "major": "Majeure",

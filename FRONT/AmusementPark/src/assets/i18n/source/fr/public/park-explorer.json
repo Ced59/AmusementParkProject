@@ -1,7 +1,7 @@
 {
   "parkExplorer": {
     "headerChip": "Exploration du parc",
-    "subtitle": "Parcourez le parc à travers ses zones et les principales catégories de lieux qu’il contient.",
+    "subtitle": "Parcours le parc à travers ses zones et les principales catégories de lieux qu’il contient.",
     "overviewTitle": "Tout le parc",
     "unassignedTitle": "Lieux hors zone",
     "totalItems": "{{count}} lieu(x)",

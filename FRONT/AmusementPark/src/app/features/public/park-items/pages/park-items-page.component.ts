@@ -53,7 +53,7 @@ export class ParkItemsPageComponent implements OnInit {
         return;
       }
 
-      this.seoService.applyParkItemsSeo(currentView.parkName, this.currentLanguage(), this.router.url);
+      this.seoService.applyParkItemsSeo(currentView.parkName, this.currentLanguage(), this.router.url, this.stateFacade.parkImageId());
     });
   }
 

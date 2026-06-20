@@ -19,6 +19,7 @@ import { ParkZonesViewComponent } from '../ui/park-zones-view.component';
 export class ParkZonesPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly page = this.stateFacade.zonesPage;
+  protected readonly parkImageId = this.stateFacade.parkImageId;
   protected readonly currentLanguage = signal<string>('en');
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -38,7 +39,7 @@ export class ParkZonesPageComponent implements OnInit {
         return;
       }
 
-      this.seoService.applyParkZonesSeo(currentPage.parkName, this.currentLanguage(), this.router.url);
+      this.seoService.applyParkZonesSeo(currentPage.parkName, this.currentLanguage(), this.router.url, this.parkImageId());
     });
   }
 

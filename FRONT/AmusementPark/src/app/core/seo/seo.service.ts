@@ -91,7 +91,7 @@ const PARK_IMAGES_SEO_COPY: Record<string, ParkImagesSeoCopy> = {
     parkFallback: 'ce parc',
     description: (parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} photos publiées` : 'les photos publiées';
-      return `Découvrez ${countLabel} de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}.`;
+      return `Découvre ${countLabel} de ${parkName}${locationLabel ? ` à ${locationLabel}` : ''}.`;
     }
   },
   es: {
@@ -158,7 +158,7 @@ const PARK_ITEM_IMAGES_SEO_COPY: Record<string, ParkItemImagesSeoCopy> = {
     itemFallback: 'cet élément',
     description: (itemName: string, parkName: string, locationLabel: string, totalImages: number): string => {
       const countLabel: string = totalImages > 0 ? `${totalImages} photos publiées` : 'les photos publiées';
-      return `Découvrez ${countLabel} de ${itemName}${parkName ? ` à ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+      return `Découvre ${countLabel} de ${itemName}${parkName ? ` à ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
     }
   },
   es: {
@@ -225,7 +225,7 @@ const PARK_VIDEOS_SEO_COPY: Record<string, ParkVideosSeoCopy> = {
     parkFallback: 'ce parc',
     description: (parkName: string, locationLabel: string, totalVideos: number): string => {
       const countLabel: string = totalVideos > 0 ? `${totalVideos} videos publiees` : 'les videos publiees';
-      return `Regardez ${countLabel} de ${parkName}${locationLabel ? ` a ${locationLabel}` : ''} : onrides, offrides, videos officielles et contenus createurs.`;
+      return `Regarde ${countLabel} de ${parkName}${locationLabel ? ` a ${locationLabel}` : ''} : onrides, offrides, videos officielles et contenus createurs.`;
     }
   }
 };
@@ -244,7 +244,7 @@ const PARK_ITEM_VIDEOS_SEO_COPY: Record<string, ParkItemVideosSeoCopy> = {
     itemFallback: 'cet element',
     description: (itemName: string, parkName: string, locationLabel: string, totalVideos: number): string => {
       const countLabel: string = totalVideos > 0 ? `${totalVideos} videos publiees` : 'les videos publiees';
-      return `Regardez ${countLabel} de ${itemName}${parkName ? ` a ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
+      return `Regarde ${countLabel} de ${itemName}${parkName ? ` a ${parkName}` : ''}${locationLabel ? ` (${locationLabel})` : ''}.`;
     }
   }
 };
@@ -304,7 +304,7 @@ const PARK_ITEMS_SEO_COPY: Record<string, ParkItemsSeoCopy> = {
     parkFallback: 'ce parc',
     breadcrumbLabel: 'À découvrir',
     title: (parkName: string): string => `Attractions, spectacles, restaurants et boutiques à ${parkName}`,
-    description: (parkName: string): string => `Découvrez les attractions, spectacles, restaurants, boutiques et lieux pratiques de ${parkName}.`
+    description: (parkName: string): string => `Découvre les attractions, spectacles, restaurants, boutiques et lieux pratiques de ${parkName}.`
   },
   es: {
     parkFallback: 'este parque',
@@ -355,7 +355,7 @@ const PARK_WEATHER_SEO_COPY: Record<string, ParkWeatherSeoCopy> = {
     parkFallback: 'ce parc',
     breadcrumbLabel: 'M\u00e9t\u00e9o 7 jours',
     title: (parkName: string): string => `M\u00e9t\u00e9o \u00e0 7 jours de ${parkName}`,
-    description: (parkName: string, totalDays: number): string => `Consultez la m\u00e9t\u00e9o \u00e0 ${totalDays || 7} jours de ${parkName} : conditions, temp\u00e9ratures, risque de pluie et vent.`
+    description: (parkName: string, totalDays: number): string => `V\u00e9rifie la m\u00e9t\u00e9o de ${parkName} pour ta visite : pr\u00e9visions \u00e0 ${totalDays || 7} jours, temp\u00e9ratures, pluie et vent.`
   },
   es: {
     parkFallback: 'este parque',
@@ -391,7 +391,7 @@ const PARK_WEATHER_SEO_COPY: Record<string, ParkWeatherSeoCopy> = {
     parkFallback: 'este parque',
     breadcrumbLabel: 'Meteorologia 7 dias',
     title: (parkName: string): string => `Meteorologia a 7 dias de ${parkName}`,
-    description: (parkName: string, totalDays: number): string => `Consulta a previsao meteorologica a ${totalDays || 7} dias para ${parkName}: condicoes, temperaturas, chuva e vento.`
+    description: (parkName: string, totalDays: number): string => `Verifica a meteorologia de ${parkName} antes da tua visita: previsao a ${totalDays || 7} dias, temperaturas, chuva e vento.`
   }
 };
 
@@ -441,31 +441,31 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
   fr: {
     home: {
       title: 'Amusement Parks — Explorer les parcs, attractions et destinations',
-      description: 'Explorez les parcs de loisirs, attractions, restaurants, hôtels et références du secteur partout dans le monde.',
+      description: 'Explore les parcs de loisirs, attractions, restaurants, hôtels et références du secteur partout dans le monde.',
     },
     parks: {
       title: 'Parcs de loisirs dans le monde — Amusement Parks',
-      description: 'Parcourez les parcs visibles, parcs à thèmes, parcs aquatiques, zoos et resorts avec leurs informations publiques et leur carte.',
+      description: 'Parcours les parcs visibles, parcs à thèmes, parcs aquatiques, zoos et resorts avec leurs informations publiques et leur carte.',
     },
     rankings: {
       title: 'Classements — Amusement Parks',
-      description: 'Découvrez les parcs, attractions, restaurants, hôtels et services les plus régulièrement appréciés des visiteurs.',
+      description: 'Découvre les parcs, attractions, restaurants, hôtels et services les plus régulièrement appréciés des visiteurs.',
     },
     about: {
       title: 'À propos — Amusement Parks',
-      description: 'Découvrez le projet Amusement Parks, son objectif, son portefeuille public de parcs et sa démarche de publication des données.',
+      description: 'Découvre le projet Amusement Parks, son objectif, son portefeuille public de parcs et sa démarche de publication des données.',
     },
     contact: {
       title: 'Contact — Amusement Parks',
-      description: 'Contactez Amusement Parks par email ou laissez un message court et protege aux administrateurs du projet.',
+      description: 'Contacte Amusement Parks par email ou laisse un message court et protege aux administrateurs du projet.',
     },
     versions: {
       title: 'Historique des versions — Amusement Parks',
-      description: 'Suivez l historique public des versions d Amusement Parks avec une note courte pour chaque mise en ligne.',
+      description: 'Suis l historique public des versions d Amusement Parks avec une note courte pour chaque mise en ligne.',
     },
     privacy: {
       title: 'Politique de confidentialité — Amusement Parks',
-      description: 'Consultez la manière dont Amusement Parks gère la confidentialité, les cookies, les données de connexion et le consentement analytics.',
+      description: 'Consulte la manière dont Amusement Parks gère la confidentialité, les cookies, les données de connexion et le consentement analytics.',
     },
     notFound: {
       title: 'Page introuvable — Amusement Parks',
@@ -653,7 +653,7 @@ export class SeoService {
     });
   }
 
-  applyParkImagesSeo(park: Park, language: string, url: string, totalImages: number = 0): void {
+  applyParkImagesSeo(park: Park, language: string, url: string, totalImages: number = 0, socialImageId: string | null = null): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkImagesSeoCopy = PARK_IMAGES_SEO_COPY[normalizedLanguage] ?? PARK_IMAGES_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const parkName: string = this.normalizeOptionalText(park.name) ?? copy.parkFallback;
@@ -667,11 +667,12 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) || totalImages <= 0 ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveImageIdAbsoluteUrl(socialImageId) ?? undefined,
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, url, this.resolveParkImagesBreadcrumbLabel(normalizedLanguage, parkName))]
     });
   }
 
-  applyParkItemImagesSeo(item: ParkItem, park: Park, language: string, url: string, totalImages: number = 0): void {
+  applyParkItemImagesSeo(item: ParkItem, park: Park, language: string, url: string, totalImages: number = 0, socialImageId: string | null = null): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkItemImagesSeoCopy = PARK_ITEM_IMAGES_SEO_COPY[normalizedLanguage] ?? PARK_ITEM_IMAGES_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const itemName: string = this.normalizeOptionalText(item.name) ?? copy.itemFallback;
@@ -687,11 +688,19 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) || totalImages <= 0 ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveImageIdAbsoluteUrl(socialImageId) ?? undefined,
       jsonLd: [this.buildParkItemImagesBreadcrumbJsonLd(item, park, url, this.resolveParkItemImagesBreadcrumbLabel(normalizedLanguage, itemName))]
     });
   }
 
-  applyParkVideosSeo(park: Park, language: string, url: string, totalVideos: number = 0): void {
+  applyParkVideosSeo(
+    park: Park,
+    language: string,
+    url: string,
+    totalVideos: number = 0,
+    primaryVideoThumbnailPathOrUrl: string | null = null,
+    parkImageId: string | null = null
+  ): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkVideosSeoCopy = PARK_VIDEOS_SEO_COPY[normalizedLanguage] ?? PARK_VIDEOS_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const parkName: string = this.normalizeOptionalText(park.name) ?? copy.parkFallback;
@@ -705,11 +714,23 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) || totalVideos <= 0 ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveInternalImageIdAbsoluteUrl(primaryVideoThumbnailPathOrUrl)
+        ?? this.resolveImageIdAbsoluteUrl(parkImageId)
+        ?? undefined,
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, url, this.resolveParkVideosBreadcrumbLabel(normalizedLanguage, parkName))]
     });
   }
 
-  applyParkItemVideosSeo(item: ParkItem, park: Park, language: string, url: string, totalVideos: number = 0): void {
+  applyParkItemVideosSeo(
+    item: ParkItem,
+    park: Park,
+    language: string,
+    url: string,
+    totalVideos: number = 0,
+    primaryVideoThumbnailPathOrUrl: string | null = null,
+    itemImageId: string | null = null,
+    parkImageId: string | null = null
+  ): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkItemVideosSeoCopy = PARK_ITEM_VIDEOS_SEO_COPY[normalizedLanguage] ?? PARK_ITEM_VIDEOS_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const itemName: string = this.normalizeOptionalText(item.name) ?? copy.itemFallback;
@@ -725,11 +746,15 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) || totalVideos <= 0 ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveInternalImageIdAbsoluteUrl(primaryVideoThumbnailPathOrUrl)
+        ?? this.resolveImageIdAbsoluteUrl(itemImageId)
+        ?? this.resolveImageIdAbsoluteUrl(parkImageId)
+        ?? undefined,
       jsonLd: [this.buildParkItemSubpageBreadcrumbJsonLd(item, park, url, this.resolveParkItemVideosBreadcrumbLabel(normalizedLanguage, itemName))]
     });
   }
 
-  applyParkVideoSeo(video: VideoDto, park: Park, language: string, url: string): void {
+  applyParkVideoSeo(video: VideoDto, park: Park, language: string, url: string, parkImageId: string | null = null): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const videoTitle: string = this.resolveVideoTitle(video, normalizedLanguage);
     const parkName: string = this.normalizeOptionalText(park.name) ?? 'Park';
@@ -742,12 +767,22 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
-      imageUrl: this.resolveVideoThumbnailAbsoluteUrl(video) ?? undefined,
+      imageUrl: this.resolveVideoInternalThumbnailAbsoluteUrl(video)
+        ?? this.resolveImageIdAbsoluteUrl(parkImageId)
+        ?? undefined,
       jsonLd: this.buildParkVideoJsonLd(video, park, url, videoTitle, description)
     });
   }
 
-  applyParkItemVideoSeo(video: VideoDto, item: ParkItem, park: Park, language: string, url: string): void {
+  applyParkItemVideoSeo(
+    video: VideoDto,
+    item: ParkItem,
+    park: Park,
+    language: string,
+    url: string,
+    itemImageId: string | null = null,
+    parkImageId: string | null = null
+  ): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const videoTitle: string = this.resolveVideoTitle(video, normalizedLanguage);
     const itemName: string = this.normalizeOptionalText(item.name) ?? 'Item';
@@ -761,12 +796,15 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
-      imageUrl: this.resolveVideoThumbnailAbsoluteUrl(video) ?? undefined,
+      imageUrl: this.resolveVideoInternalThumbnailAbsoluteUrl(video)
+        ?? this.resolveImageIdAbsoluteUrl(itemImageId)
+        ?? this.resolveImageIdAbsoluteUrl(parkImageId)
+        ?? undefined,
       jsonLd: this.buildParkItemVideoJsonLd(video, item, park, url, videoTitle, description)
     });
   }
 
-  applyParkMapSeo(park: Park, language: string, url: string): void {
+  applyParkMapSeo(park: Park, language: string, url: string, parkImageId: string | null = null): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkMapSeoCopy = PARK_MAP_SEO_COPY[normalizedLanguage] ?? PARK_MAP_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const parkName: string = this.normalizeOptionalText(park.name) ?? copy.parkFallback;
@@ -780,11 +818,12 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: 'noindex,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd(park, url, this.resolveParkMapBreadcrumbLabel(normalizedLanguage, parkName))]
     });
   }
 
-  applyParkItemsSeo(parkName: string, language: string, url: string): void {
+  applyParkItemsSeo(parkName: string, language: string, url: string, parkImageId: string | null = null): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkItemsSeoCopy = PARK_ITEMS_SEO_COPY[normalizedLanguage] ?? PARK_ITEMS_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? copy.parkFallback;
@@ -797,11 +836,12 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, copy.breadcrumbLabel)]
     });
   }
 
-  applyParkWeatherSeo(parkName: string, language: string, url: string, totalDays: number = 0): void {
+  applyParkWeatherSeo(parkName: string, language: string, url: string, totalDays: number = 0, parkImageId: string | null = null): void {
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const copy: ParkWeatherSeoCopy = PARK_WEATHER_SEO_COPY[normalizedLanguage] ?? PARK_WEATHER_SEO_COPY[SEO_DEFAULT_LANGUAGE];
     const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? copy.parkFallback;
@@ -814,11 +854,12 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) || totalDays <= 0 ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, copy.breadcrumbLabel)]
     });
   }
 
-  applyParkZonesSeo(parkName: string, language: string, url: string): void {
+  applyParkZonesSeo(parkName: string, language: string, url: string, parkImageId: string | null = null): void {
     const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? 'Park';
     const normalizedLanguage: string = this.normalizeLanguage(language);
     const pageLabel: string = normalizedLanguage === 'fr' ? 'Zones' : 'Zones';
@@ -829,11 +870,12 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, pageLabel)]
     });
   }
 
-  applyParkZoneSeo(parkName: string, zoneName: string, language: string, url: string): void {
+  applyParkZoneSeo(parkName: string, zoneName: string, language: string, url: string, parkImageId: string | null = null): void {
     const normalizedParkName: string = this.normalizeOptionalText(parkName) ?? 'Park';
     const normalizedZoneName: string = this.normalizeOptionalText(zoneName) ?? 'Zone';
 
@@ -843,6 +885,7 @@ export class SeoService {
       canonicalUrl: this.canonicalUrlService.buildCanonicalFromCurrentUrl(url),
       robots: this.hasQueryString(url) ? 'noindex,follow' : 'index,follow',
       alternates: this.hreflangService.buildAlternates(url),
+      imageUrl: this.resolveImageIdAbsoluteUrl(parkImageId) ?? undefined,
       jsonLd: [this.buildParkSubpageBreadcrumbJsonLd({ name: normalizedParkName } as Park, url, normalizedZoneName)]
     });
   }
@@ -1298,6 +1341,20 @@ export class SeoService {
     return this.normalizeHttpsUrl(video.thumbnailUrl);
   }
 
+  private resolveVideoInternalThumbnailAbsoluteUrl(video: VideoDto): string | null {
+    return this.resolveImageIdAbsoluteUrl(video.thumbnailImageId);
+  }
+
+  private resolveInternalImageIdAbsoluteUrl(value: string | null | undefined): string | null {
+    const normalizedValue: string | null = this.normalizeOptionalText(value);
+
+    if (!normalizedValue) {
+      return null;
+    }
+
+    return this.isAbsoluteUrl(normalizedValue) ? null : this.resolveImageIdAbsoluteUrl(normalizedValue);
+  }
+
   private resolveImageIdAbsoluteUrl(imageId: string | null | undefined): string | null {
     const normalizedImageId: string | null = this.normalizeOptionalText(imageId);
 
@@ -1369,6 +1426,15 @@ export class SeoService {
       return parsedUrl.protocol === 'https:' ? parsedUrl.href : null;
     } catch {
       return null;
+    }
+  }
+
+  private isAbsoluteUrl(value: string): boolean {
+    try {
+      new URL(value);
+      return true;
+    } catch {
+      return false;
     }
   }
 

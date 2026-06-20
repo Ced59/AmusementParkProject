@@ -7,7 +7,7 @@
       "noRatings": "Aucune note",
       "chooseLabel": "Choisir une note",
       "rateValue": "Noter {{value}} sur 5",
-      "yourRating": "Votre note : {{value}}/5",
+      "yourRating": "Ta note : {{value}}/5",
       "prompt": "Choisis ta note",
       "signInMessage": "Connecte-toi pour laisser ta note.",
       "savedMessage": "Merci, ta note est prise en compte.",

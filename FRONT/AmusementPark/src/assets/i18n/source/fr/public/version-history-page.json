@@ -2,7 +2,7 @@
   "versionHistoryPage": {
     "kicker": "Historique",
     "title": "Ce qui a changé",
-    "lead": "Version actuelle : {{version}}. Retrouvez les nouveautés visibles du site au fil des mises à jour.",
+    "lead": "Version actuelle : {{version}}. Retrouve les nouveautés visibles du site au fil des mises à jour.",
     "timelineAriaLabel": "Historique des versions",
     "levels": {
       "major": "Majeure",

@@ -31,7 +31,7 @@
     },
     "history": {
       "title": "Porownaj z poprzednimi latami",
-      "subtitle": "Zapisana historia pogody dla tych samych dat.",
+      "subtitle": "Porównaj te same daty z poprzednich lat, zanim zaplanujesz wizytę.",
       "loading": "Ladowanie porownan pogody.",
       "empty": "Brak historycznej obserwacji dla tych dat.",
       "errorMessage": "Nie udalo sie zaladowac porownan pogody.",
@@ -47,7 +47,7 @@
     "page": {
       "kicker": "Pogoda",
       "title": "Pogoda na 7 dni dla {{name}}",
-      "lead": "Codzienna prognoza zapisywana przez strone, aby planowac wizyty i budowac historie pogody.",
+      "lead": "Sprawdź pogodę w {{name}} przed swoją wizytą.",
       "loadingTitle": "Ladowanie pogody",
       "loadingMessage": "Prognoza jest ladowana.",
       "emptyTitle": "Brak prognozy",

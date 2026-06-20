@@ -31,7 +31,7 @@
     },
     "history": {
       "title": "Comparer avec les années précédentes",
-      "subtitle": "Mémoire météo stockée pour les mêmes dates.",
+      "subtitle": "Compare avec les années précédentes pour mieux anticiper ta visite.",
       "loading": "Chargement des comparaisons météo.",
       "empty": "Aucune observation historique n'est disponible pour ces dates.",
       "errorMessage": "Les comparaisons météo n'ont pas pu être chargées.",
@@ -47,7 +47,7 @@
     "page": {
       "kicker": "Météo",
       "title": "Météo à 7 jours de {{name}}",
-      "lead": "Prévisions quotidiennes stockées par le site pour préparer les visites et construire une mémoire météo dans le temps.",
+      "lead": "Vérifie la météo de {{name}} pour ta visite.",
       "loadingTitle": "Chargement de la météo",
       "loadingMessage": "Les prévisions sont en cours de chargement.",
       "emptyTitle": "Aucune prévision disponible",

@@ -24,12 +24,12 @@
   --brand-wordmark-fun-glow: rgba(250, 255, 0, 0.24);
   --brand-wordmark-fun-shadow: rgba(0, 0, 0, 0.38);
   --brand-wordmark-fun-stroke: rgba(255, 255, 255, 0.48);
-  --brand-wordmark-fun-1: #fbff00;
-  --brand-wordmark-fun-2: #e8ff00;
-  --brand-wordmark-fun-3: #ff3500;
-  --brand-wordmark-fun-4: #ff0066;
-  --brand-wordmark-fun-5: #00e5ff;
-  --brand-wordmark-fun-6: #1687ff;
+  --brand-wordmark-fun-1: #ff4a00;
+  --brand-wordmark-fun-2: #ff7a00;
+  --brand-wordmark-fun-3: #dfff00;
+  --brand-wordmark-fun-4: #8dff00;
+  --brand-wordmark-fun-5: #00eaff;
+  --brand-wordmark-fun-6: #008dff;
   --brand-wordmark-fun-gradient: linear-gradient(
     102deg,
     var(--brand-wordmark-fun-1) 0%,
@@ -39,9 +39,9 @@
     var(--brand-wordmark-fun-5) 78%,
     var(--brand-wordmark-fun-6) 100%
   );
-  --brand-wordmark-underline-1: #fbff00;
-  --brand-wordmark-underline-2: #ff0066;
-  --brand-wordmark-underline-3: #1687ff;
+  --brand-wordmark-underline-1: #ff4a00;
+  --brand-wordmark-underline-2: #dfff00;
+  --brand-wordmark-underline-3: #008dff;
 
   display: inline-flex;
   align-items: baseline;
@@ -62,18 +62,18 @@ body.light-mode .app-brand-wordmark {
   --brand-wordmark-fun-shadow-offset-y: 0.055em;
   --brand-wordmark-fun-shadow-blur: 0.038em;
   --brand-wordmark-fun-shadow-filter: blur(var(--brand-wordmark-fun-shadow-blur)) saturate(1.4) contrast(1.08) brightness(0.96);
-  --brand-wordmark-fun-glow: rgba(255, 0, 102, 0.16);
+  --brand-wordmark-fun-glow: rgba(0, 141, 255, 0.18);
   --brand-wordmark-fun-shadow: rgba(52, 13, 0, 0.22);
   --brand-wordmark-fun-stroke: rgba(45, 13, 0, 0.32);
-  --brand-wordmark-fun-1: #dfff00;
-  --brand-wordmark-fun-2: #ffd400;
-  --brand-wordmark-fun-3: #ff2a00;
-  --brand-wordmark-fun-4: #ed005c;
-  --brand-wordmark-fun-5: #009cff;
-  --brand-wordmark-fun-6: #0057ff;
-  --brand-wordmark-underline-1: #dfff00;
-  --brand-wordmark-underline-2: #ed005c;
-  --brand-wordmark-underline-3: #0057ff;
+  --brand-wordmark-fun-1: #ff4a00;
+  --brand-wordmark-fun-2: #ff7600;
+  --brand-wordmark-fun-3: #c9f400;
+  --brand-wordmark-fun-4: #79e000;
+  --brand-wordmark-fun-5: #00bde8;
+  --brand-wordmark-fun-6: #005dff;
+  --brand-wordmark-underline-1: #ff4a00;
+  --brand-wordmark-underline-2: #bde900;
+  --brand-wordmark-underline-3: #005dff;
 }
 
 .app-brand-wordmark__base {

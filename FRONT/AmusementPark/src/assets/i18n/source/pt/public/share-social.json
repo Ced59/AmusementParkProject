@@ -1,8 +1,8 @@
 {
   "shareSocial": {
     "defaultTitle": "Partilhar esta página",
-    "defaultDescription": "Conhece alguém que possa usar esta página?",
-    "defaultText": "Veja {{title}} no AmusementPark.",
+    "defaultDescription": "Conheces alguém que possa usar esta página?",
+    "defaultText": "Vê {{title}} no AmusementPark.",
     "actions": {
       "share": "Partilhar",
       "copy": "Copiar",
@@ -25,38 +25,38 @@
     },
     "home": {
       "title": "Partilhar AmusementPark",
-      "description": "Envie a pesquisa a alguém que esteja a planear uma saída.",
-      "text": "Explore parques e atrações no AmusementPark."
+      "description": "Envia a pesquisa a alguém que esteja a planear uma saída.",
+      "text": "Explora parques e atrações no AmusementPark."
     },
     "parks": {
       "title": "Partilhar os parques",
-      "description": "Ajude alguém a encontrar um parque para visitar.",
-      "text": "Veja parques de diversões no AmusementPark."
+      "description": "Ajuda alguém a encontrar um parque para visitar.",
+      "text": "Vê parques de diversões no AmusementPark."
     },
     "park": {
       "title": "Partilhar este parque",
-      "description": "Envie esta página a alguém que possa querer visitar {{title}}.",
-      "text": "Veja {{title}} no AmusementPark."
+      "description": "Envia esta página a alguém que possa querer visitar {{title}}.",
+      "text": "Vê {{title}} no AmusementPark."
     },
     "parkItems": {
       "title": "Partilhar estas atrações e locais",
-      "description": "Envie este guia a alguém que esteja a preparar a visita.",
+      "description": "Envia este guia a alguém que esteja a preparar a visita.",
       "text": "Explora atrações, espetáculos e locais de {{title}} no AmusementPark."
     },
     "parkItem": {
       "title": "Partilhar esta ficha",
-      "description": "Envie esta página a alguém interessado em {{title}}.",
-      "text": "Descubra {{title}} no AmusementPark."
+      "description": "Envia esta página a alguém interessado em {{title}}.",
+      "text": "Descobre {{title}} no AmusementPark."
     },
     "videos": {
       "title": "Partilhar estes vídeos",
-      "description": "Envie estes vídeos a alguém que queira uma prévia.",
-      "text": "Veja vídeos de {{title}} no AmusementPark."
+      "description": "Envia estes vídeos a alguém que queira uma prévia.",
+      "text": "Vê vídeos de {{title}} no AmusementPark."
     },
     "video": {
       "title": "Partilhar este vídeo",
-      "description": "Envie este vídeo a alguém que possa gostar.",
-      "text": "Veja {{title}} no AmusementPark."
+      "description": "Envia este vídeo a alguém que possa gostar.",
+      "text": "Vê {{title}} no AmusementPark."
     }
   }
 }

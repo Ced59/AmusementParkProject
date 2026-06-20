@@ -44,6 +44,7 @@ export class ParkVideoStateFacade {
   public readonly state = this.screenStateStore.state;
   public readonly data = this.screenStateStore.data;
   public readonly park = computed(() => this.screenStateStore.data()?.summary.park ?? null);
+  public readonly parkImageId = computed(() => this.screenStateStore.data()?.summary.mainImage?.id ?? null);
   public readonly rawVideo = computed(() => this.screenStateStore.data()?.video ?? null);
   public readonly video: Signal<PublicVideoWatchViewModel | null> = computed(() => {
     const currentData: ParkVideoPageData | undefined = this.screenStateStore.data();

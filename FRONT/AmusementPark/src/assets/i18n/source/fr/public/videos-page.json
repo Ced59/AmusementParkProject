@@ -3,7 +3,7 @@
     "videosPage": {
       "kicker": "Vidéos du parc",
       "title": "Vidéos de {{name}}",
-      "subtitle": "Regardez les vidéos de {{name}} : onrides, offrides, clips officiels et contenus créateurs.",
+      "subtitle": "Regarde les vidéos de {{name}} : onrides, offrides, clips officiels et contenus créateurs.",
       "loadingTitle": "Chargement des vidéos",
       "loadingMessage": "Préparation des vidéos du parc.",
       "errorTitle": "Vidéos indisponibles",
@@ -17,7 +17,7 @@
     "videosPage": {
       "kicker": "Vidéos du lieu",
       "title": "Vidéos de {{name}}",
-      "subtitle": "Regardez les vidéos de {{name}} à {{park}} : onrides, offrides, avis et médias officiels.",
+      "subtitle": "Regarde les vidéos de {{name}} à {{park}} : onrides, offrides, avis et médias officiels.",
       "loadingTitle": "Chargement des vidéos",
       "loadingMessage": "Préparation des vidéos du lieu.",
       "errorTitle": "Vidéos indisponibles",

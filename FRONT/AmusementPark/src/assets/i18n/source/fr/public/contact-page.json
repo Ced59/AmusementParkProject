@@ -2,7 +2,7 @@
   "contactPage": {
     "kicker": "Contact",
     "title": "Contacter AmusementPark",
-    "lead": "Envoyez une remarque sur le site, une information manquante, un problème de données ou une idée d'amélioration.",
+    "lead": "Envoie une remarque sur le site, une information manquante, un problème de données ou une idée d’amélioration.",
     "email": {
       "badge": "Adresse temporaire",
       "title": "Contact direct",
@@ -12,11 +12,11 @@
       "kicker": "Cahier de doléances",
       "title": "Laisser un message",
       "description": "Les messages sont stockés en texte simple et consultables depuis le panel admin.",
-      "messageLabel": "Votre message",
+      "messageLabel": "Ton message",
       "help": "Texte simple uniquement. Les balises HTML et les liens abusifs sont rejetés.",
-      "validation": "Saisissez un message en texte simple entre 10 et 2000 caractères.",
-      "success": "Votre message a bien été enregistré.",
-      "error": "Le message n'a pas pu être envoyé. Vérifiez le texte ou réessayez plus tard.",
+      "validation": "Saisis un message en texte simple entre 10 et 2000 caractères.",
+      "success": "Ton message a bien été enregistré.",
+      "error": "Le message n’a pas pu être envoyé. Vérifie le texte ou réessaie plus tard.",
       "submit": "Envoyer",
       "submitting": "Envoi"
     },
@@ -26,7 +26,7 @@
       "text": "Ce formulaire est volontairement strict pour protéger le site et ses administrateurs.",
       "points": {
         "plainText": "Les messages sont acceptés en texte simple uniquement.",
-        "ip": "Votre adresse IP est enregistrée pour limiter les abus répétés.",
+        "ip": "Ton adresse IP est enregistrée pour limiter les abus répétés.",
         "admin": "Seuls les administrateurs peuvent consulter les messages et le contexte technique."
       }
     }

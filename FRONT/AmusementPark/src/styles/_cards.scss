@@ -302,12 +302,12 @@ a.public-feature-card:hover {
 }
 
 .ui-park-card__detail--distance {
-  border-color: rgba(196, 255, 39, 0.18);
-  background: rgba(196, 255, 39, 0.055);
+  border-color: var(--app-border);
+  background: rgba(255, 210, 140, 0.035);
 }
 
 .ui-park-card__detail--distance strong {
-  color: var(--c-lime);
+  color: var(--app-heading);
 }
 
 .ui-park-card__footer,

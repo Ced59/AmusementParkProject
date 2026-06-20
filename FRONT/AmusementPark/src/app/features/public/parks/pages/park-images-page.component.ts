@@ -55,7 +55,13 @@ export class ParkImagesPageComponent implements OnInit {
         parkId: currentPark.id,
         parkName: currentPark.name
       }));
-      this.seoService.applyParkImagesSeo(currentPark, this.currentLanguage(), this.router.url, this.totalImages());
+      this.seoService.applyParkImagesSeo(
+        currentPark,
+        this.currentLanguage(),
+        this.router.url,
+        this.totalImages(),
+        this.photos()[0]?.imageId ?? null
+      );
     });
   }
 

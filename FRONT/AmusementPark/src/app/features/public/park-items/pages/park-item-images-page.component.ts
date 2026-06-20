@@ -63,7 +63,14 @@ export class ParkItemImagesPageComponent implements OnInit {
       this.detailLink.set(buildPublicParkItemRouteCommands(routeTarget));
       this.itemsLink.set(buildPublicParkItemsRouteCommands(routeTarget));
       this.parkLink.set(buildPublicParkRouteCommands(routeTarget));
-      this.seoService.applyParkItemImagesSeo(currentItem, currentPark, this.currentLanguage(), this.router.url, this.totalImages());
+      this.seoService.applyParkItemImagesSeo(
+        currentItem,
+        currentPark,
+        this.currentLanguage(),
+        this.router.url,
+        this.totalImages(),
+        this.photos()[0]?.imageId ?? null
+      );
     });
   }
 

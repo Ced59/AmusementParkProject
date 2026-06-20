@@ -31,7 +31,7 @@
     },
     "history": {
       "title": "Vergelijk met vorige jaren",
-      "subtitle": "Opgeslagen weerhistorie voor dezelfde datums.",
+      "subtitle": "Vergelijk dezelfde datums van eerdere jaren voordat je je bezoek plant.",
       "loading": "Weervergelijkingen worden geladen.",
       "empty": "Geen historische observatie beschikbaar voor deze datums.",
       "errorMessage": "Weervergelijkingen konden niet worden geladen.",
@@ -47,7 +47,7 @@
     "page": {
       "kicker": "Weer",
       "title": "7-daags weer voor {{name}}",
-      "lead": "Dagelijkse verwachting die de site bewaart om bezoeken te plannen en weerhistorie op te bouwen.",
+      "lead": "Check het weer voor {{name}} voordat je op bezoek gaat.",
       "loadingTitle": "Weer wordt geladen",
       "loadingMessage": "De verwachting wordt geladen.",
       "emptyTitle": "Geen verwachting beschikbaar",

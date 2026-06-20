@@ -31,7 +31,7 @@
     },
     "history": {
       "title": "Compare with previous years",
-      "subtitle": "Stored weather memory for the same dates.",
+      "subtitle": "Compare the same dates from previous years before you plan your visit.",
       "loading": "Loading weather comparisons.",
       "empty": "No historical observation is available for these dates.",
       "errorMessage": "Weather comparisons could not be loaded.",
@@ -47,7 +47,7 @@
     "page": {
       "kicker": "Weather",
       "title": "7-day weather for {{name}}",
-      "lead": "Daily forecast stored by the site to prepare visits and build a weather memory over time.",
+      "lead": "Check the weather for {{name}} before your visit.",
       "loadingTitle": "Loading weather",
       "loadingMessage": "The forecast is being loaded.",
       "emptyTitle": "No forecast available",
