@@ -2,7 +2,7 @@
   "versionHistoryPage": {
     "kicker": "Versionsverlauf",
     "title": "Was sich geaendert hat",
-    "lead": "Aktuelle Version: {{version}}. Jede Notiz bleibt kurz, oeffentlich und auf sichtbare Fortschritte ausgerichtet.",
+    "lead": "Aktuelle Version: {{version}}. Folge den sichtbaren Verbesserungen der Website im Laufe der Zeit.",
     "timelineAriaLabel": "Zeitleiste des Versionsverlaufs",
     "levels": {
       "major": "Gross",

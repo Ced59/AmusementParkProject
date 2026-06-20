@@ -1,9 +1,15 @@
 <footer class="app-public-footer" aria-label="{{ 'footer.ariaLabel' | translate }}">
   <div class="app-public-footer__inner">
-    <section class="app-public-footer__brand" aria-label="AmusementPark">
-      <a class="app-public-footer__logo" [routerLink]="['/', selectedLanguage(), 'home']" aria-label="AmusementPark">
+    <section class="app-public-footer__brand" aria-label="AMUSEMENT-PARKS.fun">
+      <a class="app-public-footer__logo" [routerLink]="['/', selectedLanguage(), 'home']" aria-label="AMUSEMENT-PARKS.fun">
         <span class="app-public-footer__logo-icon" aria-hidden="true">🎢</span>
-        <span class="app-public-footer__logo-text">AmusementPark</span>
+        <span class="app-brand-wordmark app-public-footer__logo-text" aria-hidden="true">
+          <span class="app-brand-wordmark__base">AMUSEMENT-PARKS</span>
+          <span class="app-brand-wordmark__fun">
+            <span class="app-brand-wordmark__dot">.</span>
+            <span class="app-brand-wordmark__fun-text">fun</span>
+          </span>
+        </span>
       </a>
       <p class="app-public-footer__tagline">{{ 'footer.brand.tagline' | translate }}</p>
     </section>

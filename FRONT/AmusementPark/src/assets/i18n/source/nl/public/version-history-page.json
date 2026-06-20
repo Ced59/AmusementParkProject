@@ -2,7 +2,7 @@
   "versionHistoryPage": {
     "kicker": "Versiegeschiedenis",
     "title": "Wat veranderde",
-    "lead": "Huidige versie: {{version}}. Elke notitie is kort, publiek en gericht op zichtbare vooruitgang.",
+    "lead": "Huidige versie: {{version}}. Volg de zichtbare verbeteringen van de site doorheen de tijd.",
     "timelineAriaLabel": "Tijdlijn van versiegeschiedenis",
     "levels": {
       "major": "Groot",

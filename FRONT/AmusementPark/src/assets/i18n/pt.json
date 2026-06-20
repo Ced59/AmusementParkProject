@@ -2948,7 +2948,7 @@
   "versionHistoryPage": {
     "kicker": "Historico",
     "title": "O que mudou",
-    "lead": "Versao atual: {{version}}. Cada nota e curta, publica e centrada no progresso visivel.",
+    "lead": "Versao atual: {{version}}. Acompanhe as melhorias visiveis do site ao longo das atualizacoes.",
     "timelineAriaLabel": "Linha temporal do historico de versoes",
     "levels": {
       "major": "Maior",
