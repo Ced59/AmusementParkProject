@@ -13,8 +13,8 @@
   --brand-wordmark-fun-rotation: -6deg;
   --brand-wordmark-gap: 0.035em;
   --brand-wordmark-fun-letter-gap: 0.075em;
-  --brand-wordmark-fun-ink-padding-start: 0;
-  --brand-wordmark-fun-ink-padding-end: 0;
+  --brand-wordmark-fun-ink-padding-start: 0.2em;
+  --brand-wordmark-fun-ink-padding-end: 0.05em;
   --brand-wordmark-fun-filter: saturate(1.6) contrast(1.24) brightness(1.36);
   --brand-wordmark-fun-shadow-opacity: 0.78;
   --brand-wordmark-fun-shadow-offset-x: 0.045em;
@@ -186,14 +186,14 @@ body.light-mode .app-brand-wordmark {
     --brand-wordmark-fun-size: 0.99em;
     --brand-wordmark-fun-lift: -0.07em;
     --brand-wordmark-gap: 0.025em;
-    --brand-wordmark-fun-ink-padding-start: 0.09em;
-    --brand-wordmark-fun-ink-padding-end: 0.025em;
+    --brand-wordmark-fun-ink-padding-start: 0.24em;
+    --brand-wordmark-fun-ink-padding-end: 0.06em;
 
     display: inline-flex;
     flex: 1 1 auto;
     min-width: 0;
     max-width: clamp(6.8rem, 35vw, 9.2rem);
-    overflow: hidden;
+    overflow: visible;
     letter-spacing: 0.008em;
   }
 
