@@ -2,7 +2,8 @@
   "footer": {
     "ariaLabel": "Voettekst van de site",
     "brand": {
-      "tagline": "De volledige kaart van sensaties. Park per park, attractie per attractie."
+      "sloganData": "Betrouwbare data",
+      "sloganFun": "voor meer fun"
     },
     "explore": {
       "title": "Ontdekken",
@@ -20,7 +21,7 @@
       "title": "Talen"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Gemaakt met hart en adrenaline",
+      "copy": "© {{year}} AmusementPark — Gemaakt met ❤️ en adrenaline",
       "version": "Versie {{version}}"
     }
   }

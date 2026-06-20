@@ -1902,7 +1902,8 @@
   "footer": {
     "ariaLabel": "Fußzeile der Website",
     "brand": {
-      "tagline": "Die vollständige Karte der Nervenkitzel. Park für Park, Attraktion für Attraktion."
+      "sloganData": "Verlässliche Daten",
+      "sloganFun": "für mehr Fun"
     },
     "explore": {
       "title": "Entdecken",
@@ -1920,7 +1921,7 @@
       "title": "Sprachen"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Gemacht mit Herz und Adrenalin",
+      "copy": "© {{year}} AmusementPark — Gemacht mit ❤️ und Adrenalin",
       "version": "Version {{version}}"
     }
   },

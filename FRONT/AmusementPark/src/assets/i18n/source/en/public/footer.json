@@ -2,7 +2,8 @@
   "footer": {
     "ariaLabel": "Site footer",
     "brand": {
-      "tagline": "The complete map of thrills. Park by park, attraction by attraction."
+      "sloganData": "Reliable data",
+      "sloganFun": "for more fun"
     },
     "explore": {
       "title": "Explore",
@@ -20,7 +21,7 @@
       "title": "Languages"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Made with heart and adrenaline",
+      "copy": "© {{year}} AmusementPark — Made with ❤️ and adrenaline",
       "version": "Version {{version}}"
     }
   }

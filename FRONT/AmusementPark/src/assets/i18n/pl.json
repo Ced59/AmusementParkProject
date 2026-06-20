@@ -1902,7 +1902,8 @@
   "footer": {
     "ariaLabel": "Stopka strony",
     "brand": {
-      "tagline": "Pełna mapa emocji. Park po parku, atrakcja po atrakcji."
+      "sloganData": "Rzetelne dane",
+      "sloganFun": "dla większej frajdy"
     },
     "explore": {
       "title": "Odkrywaj",
@@ -1920,7 +1921,7 @@
       "title": "Języki"
     },
     "bottom": {
-      "copy": "© {{year}} AmusementPark — Stworzone z sercem i adrenalina",
+      "copy": "© {{year}} AmusementPark — Stworzone z ❤️ i adrenaliną",
       "version": "Wersja {{version}}"
     }
   },
