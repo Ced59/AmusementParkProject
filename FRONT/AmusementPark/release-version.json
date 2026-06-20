@@ -1,6 +1,20 @@
 {
-  "version": "2.1.6",
+  "version": "2.1.7",
   "history": [
+    {
+      "version": "2.1.7",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Le logo s'accorde mieux aux thèmes.",
+        "en": "The logo fits the themes better.",
+        "de": "Das Logo passt besser zu den Designs.",
+        "nl": "Het logo past beter bij de thema's.",
+        "it": "Il logo si integra meglio con i temi.",
+        "es": "El logo encaja mejor con los temas.",
+        "pl": "Logo lepiej pasuje do motywów.",
+        "pt": "O logotipo combina melhor com os temas."
+      }
+    },
     {
       "version": "2.1.6",
       "releasedAt": "2026-06-20",
