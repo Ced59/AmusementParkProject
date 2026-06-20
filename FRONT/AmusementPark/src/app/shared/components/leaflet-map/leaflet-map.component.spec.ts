@@ -1,17 +1,32 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ViewEncapsulation } from '@angular/core';
+import { SimpleChange, ViewEncapsulation } from '@angular/core';
 
 import { LeafletMapComponent } from './leaflet-map.component';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
+
+type LeafletTestMap = {
+  fitBounds: jasmine.Spy;
+  getZoom: jasmine.Spy;
+  invalidateSize: jasmine.Spy;
+  setView: jasmine.Spy;
+  setZoom: jasmine.Spy;
+  remove: jasmine.Spy;
+};
 
 type LeafletMapComponentInternals = {
   focusSelectedMarker: () => boolean;
   openPendingSelectedMarkerPopup: () => void;
   buildTileLayerOptions: () => Record<string, unknown>;
+  scheduleViewportUpdate: () => void;
   scheduleMapSizeStabilization: () => void;
+  applyDefaultViewport: () => void;
+  fitMapToMarkersIfNeeded: () => boolean;
   ensureFitBoundsMinimumZoom: () => void;
-  map: { fitBounds: jasmine.Spy; getZoom: jasmine.Spy; invalidateSize: jasmine.Spy; setView: jasmine.Spy; setZoom: jasmine.Spy; remove: jasmine.Spy } | null;
+  refreshMarkers: () => void;
+  L: { latLngBounds: jasmine.Spy } | null;
+  map: LeafletTestMap | null;
   tileLayer: { redraw: jasmine.Spy } | null;
+  markerLayer: { clearLayers: jasmine.Spy } | null;
   leafletMarkers: Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>;
   pendingPopupMarkerId: string | null;
 };
@@ -103,6 +118,19 @@ describe('LeafletMapComponent', () => {
     }));
   });
 
+  it('keeps native tiles and a larger buffer for stabilized dynamic marker maps on mobile viewports', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    spyOnProperty(window, 'innerWidth', 'get').and.returnValue(390);
+
+    component.stabilizeDynamicMarkerViewport = true;
+
+    const options: Record<string, unknown> = internals.buildTileLayerOptions();
+
+    expect(options['tileSize']).toBeUndefined();
+    expect(options['zoomOffset']).toBeUndefined();
+    expect(options['keepBuffer']).toBe(2);
+  });
+
   it('keeps native tile detail on wider viewports', () => {
     const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
     spyOnProperty(window, 'innerWidth', 'get').and.returnValue(1024);
@@ -112,6 +140,35 @@ describe('LeafletMapComponent', () => {
     expect(options['tileSize']).toBeUndefined();
     expect(options['zoomOffset']).toBeUndefined();
     expect(options['keepBuffer']).toBe(0);
+  });
+
+  it('clears stale markers and defers marker refresh until viewport update for stabilized fit-bounds maps', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+    const markerLayer: { clearLayers: jasmine.Spy } = jasmine.createSpyObj('markerLayer', ['clearLayers']);
+    const marker: { getLatLng: jasmine.Spy; openPopup: jasmine.Spy } = jasmine.createSpyObj('marker', ['getLatLng', 'openPopup']);
+
+    component.fitBounds = true;
+    component.stabilizeDynamicMarkerViewport = true;
+    component.markers = [{ id: 'new', lat: 48.85, lng: 2.35 }];
+    internals.L = { latLngBounds: jasmine.createSpy('latLngBounds') };
+    internals.map = map;
+    internals.markerLayer = markerLayer;
+    internals.leafletMarkers = new Map<string, { getLatLng: jasmine.Spy; openPopup: jasmine.Spy }>([
+      ['old', marker]
+    ]);
+
+    const refreshMarkersSpy: jasmine.Spy = spyOn(internals, 'refreshMarkers');
+    spyOn(internals, 'scheduleViewportUpdate');
+
+    component.ngOnChanges({
+      markers: new SimpleChange([], component.markers, false)
+    });
+
+    expect(markerLayer.clearLayers).toHaveBeenCalled();
+    expect(internals.leafletMarkers.size).toBe(0);
+    expect(refreshMarkersSpy).not.toHaveBeenCalled();
+    expect(internals.scheduleViewportUpdate).toHaveBeenCalled();
   });
 
   it('redraws reduced mobile tiles while stabilizing the initial map size', () => {
@@ -135,6 +192,85 @@ describe('LeafletMapComponent', () => {
     } finally {
       jasmine.clock().uninstall();
     }
+  });
+
+  it('refreshes stabilized marker rendering and tiles after viewport updates', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+    const tileLayer: { redraw: jasmine.Spy } = jasmine.createSpyObj('tileLayer', ['redraw']);
+
+    component.center = [46.8, 2.2];
+    component.zoom = 6;
+    component.stabilizeDynamicMarkerViewport = true;
+    map.getZoom.and.returnValue(5);
+    internals.map = map;
+    internals.tileLayer = tileLayer;
+
+    const refreshMarkersSpy: jasmine.Spy = spyOn(internals, 'refreshMarkers');
+
+    jasmine.clock().install();
+    try {
+      internals.scheduleViewportUpdate();
+
+      jasmine.clock().tick(1);
+
+      expect(map.invalidateSize).toHaveBeenCalled();
+      expect(map.setView).toHaveBeenCalledWith([46.8, 2.2], 6);
+      expect(refreshMarkersSpy.calls.count()).toBe(1);
+      expect(tileLayer.redraw.calls.count()).toBe(1);
+
+      jasmine.clock().tick(120);
+
+      expect(refreshMarkersSpy.calls.count()).toBe(2);
+      expect(tileLayer.redraw.calls.count()).toBe(2);
+    } finally {
+      jasmine.clock().uninstall();
+    }
+  });
+
+  it('uses larger fit bounds padding and ignores invalid coordinates for stabilized dynamic marker maps', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const bounds: object = {};
+    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+
+    component.fitBounds = true;
+    component.stabilizeDynamicMarkerViewport = true;
+    component.markers = [
+      { id: 'valid-1', lat: 48.85, lng: 2.35 },
+      { id: 'invalid', lat: 120, lng: 2.35 },
+      { id: 'valid-2', lat: 41.89, lng: 12.49 }
+    ];
+    internals.L = {
+      latLngBounds: jasmine.createSpy('latLngBounds').and.returnValue(bounds)
+    };
+    internals.map = map;
+
+    expect(internals.fitMapToMarkersIfNeeded()).toBeTrue();
+    expect(internals.L.latLngBounds).toHaveBeenCalledWith([
+      [48.85, 2.35],
+      [41.89, 12.49]
+    ]);
+    expect(map.fitBounds).toHaveBeenCalledWith(bounds, { padding: [72, 72], maxZoom: 8 });
+  });
+
+  it('falls back to the default viewport when fit-bounds markers have no usable coordinates', () => {
+    const internals: LeafletMapComponentInternals = component as unknown as LeafletMapComponentInternals;
+    const map: LeafletTestMap = jasmine.createSpyObj('map', ['fitBounds', 'getZoom', 'invalidateSize', 'setView', 'setZoom', 'remove']);
+
+    component.center = [46.8, 2.2];
+    component.zoom = 6;
+    component.fitBounds = true;
+    component.markers = [
+      { id: 'invalid', lat: 120, lng: 2.35 }
+    ];
+    internals.map = map;
+
+    spyOn(internals, 'scheduleViewportUpdate');
+
+    internals.applyDefaultViewport();
+
+    expect(internals.scheduleViewportUpdate).not.toHaveBeenCalled();
+    expect(map.setView).toHaveBeenCalledWith([46.8, 2.2], 6);
   });
 
   it('keeps fitted bounds at the configured minimum zoom', () => {

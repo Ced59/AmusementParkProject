@@ -46,7 +46,7 @@
         [center]="mapCenter()"
         [zoom]="6"
         [fitBounds]="true"
-        [fitBoundsMinZoom]="3"
+        [stabilizeDynamicMarkerViewport]="true"
         [markers]="mapMarkers()"
         [selectedMarkerId]="selectedParkId()"
         (markerClick)="onMarkerClick($event)">
