@@ -1,6 +1,20 @@
 {
-  "version": "2.1.8",
+  "version": "2.1.9",
   "history": [
+    {
+      "version": "2.1.9",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Le logo .fun est plus visible.",
+        "en": "The .fun logo is more visible.",
+        "de": "Das .fun-Logo ist besser sichtbar.",
+        "nl": "Het .fun-logo is beter zichtbaar.",
+        "it": "Il logo .fun è più visibile.",
+        "es": "El logo .fun es más visible.",
+        "pl": "Logo .fun jest lepiej widoczne.",
+        "pt": "O logotipo .fun fica mais visível."
+      }
+    },
     {
       "version": "2.1.8",
       "releasedAt": "2026-06-20",

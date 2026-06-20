@@ -8,21 +8,22 @@
 }
 
 .app-brand-wordmark {
-  --brand-wordmark-fun-size: 1.08em;
-  --brand-wordmark-fun-lift: -0.16em;
-  --brand-wordmark-fun-rotation: -7deg;
-  --brand-wordmark-gap: 0.08em;
-  --brand-wordmark-fun-dot-color: #ff7a45;
-  --brand-wordmark-fun-glow: rgba(255, 90, 31, 0.34);
-  --brand-wordmark-fun-shadow: rgba(0, 0, 0, 0.68);
-  --brand-wordmark-fun-stroke: rgba(15, 11, 6, 0.72);
-  --brand-wordmark-fun-1: #ff7a45;
-  --brand-wordmark-fun-2: #ff4d8b;
-  --brand-wordmark-fun-3: #9b5de5;
-  --brand-wordmark-fun-4: #38c5f5;
-  --brand-wordmark-fun-5: #d9ff6b;
+  --brand-wordmark-fun-size: 1.18em;
+  --brand-wordmark-fun-lift: -0.17em;
+  --brand-wordmark-fun-rotation: -6deg;
+  --brand-wordmark-gap: 0.035em;
+  --brand-wordmark-fun-glow: rgba(255, 106, 0, 0.62);
+  --brand-wordmark-fun-shadow: rgba(0, 0, 0, 0.92);
+  --brand-wordmark-fun-stroke: rgba(13, 8, 3, 0.95);
+  --brand-wordmark-fun-outline: rgba(0, 0, 0, 0.82);
+  --brand-wordmark-fun-outline-width: 0.055em;
+  --brand-wordmark-fun-1: #ff8a00;
+  --brand-wordmark-fun-2: #ff1f73;
+  --brand-wordmark-fun-3: #8a2dff;
+  --brand-wordmark-fun-4: #00c8ff;
+  --brand-wordmark-fun-5: #b9ff00;
   --brand-wordmark-underline-1: #ff5a1f;
-  --brand-wordmark-underline-2: #ffb627;
+  --brand-wordmark-underline-2: #ffd000;
 
   display: inline-flex;
   align-items: baseline;
@@ -37,17 +38,18 @@
 }
 
 body.light-mode .app-brand-wordmark {
-  --brand-wordmark-fun-dot-color: #b83e0d;
-  --brand-wordmark-fun-glow: rgba(255, 90, 31, 0.18);
-  --brand-wordmark-fun-shadow: rgba(255, 249, 240, 0.86);
-  --brand-wordmark-fun-stroke: rgba(255, 249, 240, 0.8);
-  --brand-wordmark-fun-1: #b83e0d;
-  --brand-wordmark-fun-2: #c61855;
-  --brand-wordmark-fun-3: #6f36b8;
-  --brand-wordmark-fun-4: #006d93;
-  --brand-wordmark-fun-5: #4f6f00;
+  --brand-wordmark-fun-glow: rgba(255, 90, 31, 0.28);
+  --brand-wordmark-fun-shadow: rgba(255, 248, 232, 0.95);
+  --brand-wordmark-fun-stroke: rgba(63, 19, 0, 0.82);
+  --brand-wordmark-fun-outline: rgba(82, 24, 0, 0.48);
+  --brand-wordmark-fun-outline-width: 0.045em;
+  --brand-wordmark-fun-1: #d43b00;
+  --brand-wordmark-fun-2: #d6005a;
+  --brand-wordmark-fun-3: #6517d6;
+  --brand-wordmark-fun-4: #0078a8;
+  --brand-wordmark-fun-5: #537b00;
   --brand-wordmark-underline-1: #ff5a1f;
-  --brand-wordmark-underline-2: #8a4f00;
+  --brand-wordmark-underline-2: #a85f00;
 }
 
 .app-brand-wordmark__base {
@@ -67,18 +69,18 @@ body.light-mode .app-brand-wordmark {
 }
 
 .app-brand-wordmark__dot {
-  color: var(--brand-wordmark-fun-dot-color);
+  color: currentColor;
   font-family: var(--font-display);
-  font-size: 0.72em;
-  line-height: 1;
-  text-shadow: 0 0 0.35em var(--brand-wordmark-fun-glow);
-  transform: translateY(0.04em);
+  font-size: 0.92em;
+  line-height: 0.95;
+  text-shadow: none;
+  transform: translateY(0.01em);
 }
 
 .app-brand-wordmark__fun-text {
   position: relative;
   display: inline-block;
-  margin-left: 0.015em;
+  margin-left: 0.075em;
   background: linear-gradient(
     100deg,
     var(--brand-wordmark-fun-1) 0%,
@@ -94,48 +96,64 @@ body.light-mode .app-brand-wordmark {
   color: var(--brand-wordmark-fun-2);
   font-family: "Satisfy Brand Fun", "Segoe Script", "Brush Script MT", cursive;
   font-size: var(--brand-wordmark-fun-size);
-  font-weight: 400;
+  font-weight: 700;
+  isolation: isolate;
   letter-spacing: 0;
-  line-height: 0.78;
+  line-height: 0.9;
   text-shadow:
-    0 0 0.36em var(--brand-wordmark-fun-glow),
-    0 0.045em 0 var(--brand-wordmark-fun-shadow);
+    0 0 0.42em var(--brand-wordmark-fun-glow),
+    0 0.035em 0 var(--brand-wordmark-fun-shadow),
+    0 0.07em 0 var(--brand-wordmark-fun-shadow);
   transform: translateY(var(--brand-wordmark-fun-lift)) rotate(var(--brand-wordmark-fun-rotation));
   transform-origin: left bottom;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 0.006em var(--brand-wordmark-fun-stroke);
+  -webkit-text-stroke: 0.014em var(--brand-wordmark-fun-stroke);
+}
+
+.app-brand-wordmark__fun-text::before {
+  content: "fun";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: var(--brand-wordmark-fun-outline);
+  text-shadow:
+    0 0 0.18em var(--brand-wordmark-fun-outline),
+    0 0.055em 0 var(--brand-wordmark-fun-shadow);
+  -webkit-text-fill-color: var(--brand-wordmark-fun-outline);
+  -webkit-text-stroke: var(--brand-wordmark-fun-outline-width) var(--brand-wordmark-fun-outline);
 }
 
 .app-brand-wordmark__fun-text::after {
   content: "";
   position: absolute;
+  z-index: -1;
   left: 0.18em;
   right: -0.22em;
-  bottom: -0.42em;
-  height: 0.08em;
+  bottom: -0.28em;
+  height: 0.075em;
   border-radius: var(--radius-pill);
   background: linear-gradient(90deg, var(--brand-wordmark-underline-1), var(--brand-wordmark-underline-2));
-  box-shadow: 0 0 0.28em rgba(255, 182, 39, 0.25);
+  box-shadow: 0 0 0.32em var(--brand-wordmark-fun-glow);
   transform: rotate(-10deg);
   transform-origin: left center;
 }
 
 .app-public-nav__logo .app-brand-wordmark {
-  --brand-wordmark-fun-size: 1.03em;
-  --brand-wordmark-fun-lift: -0.14em;
+  --brand-wordmark-fun-size: 1.12em;
+  --brand-wordmark-fun-lift: -0.15em;
 }
 
 .app-public-footer__logo .app-brand-wordmark,
 .app-admin-layout__brand .app-brand-wordmark {
-  --brand-wordmark-fun-size: 1.05em;
+  --brand-wordmark-fun-size: 1.13em;
 }
 
 @media (max-width: 680px) {
   .app-public-nav__logo .app-brand-wordmark {
-    --brand-wordmark-fun-size: 1em;
+    --brand-wordmark-fun-size: 1.07em;
     --brand-wordmark-fun-lift: -0.12em;
-    --brand-wordmark-gap: 0.06em;
+    --brand-wordmark-gap: 0.03em;
 
     letter-spacing: 0.025em;
   }
