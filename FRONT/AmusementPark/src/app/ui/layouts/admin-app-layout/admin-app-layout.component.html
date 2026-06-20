@@ -1,10 +1,16 @@
 <div class="app-route-layout app-admin-layout admin-shell">
   <header class="app-admin-layout__header">
-    <a class="app-admin-layout__brand" [routerLink]="['/', currentLang, 'home']" aria-label="AmusementPark">
+    <a class="app-admin-layout__brand" [routerLink]="['/', currentLang, 'home']" aria-label="AMUSEMENT-PARKS.fun">
       <span class="app-admin-layout__brand-icon" aria-hidden="true">
         <i class="pi pi-ticket"></i>
       </span>
-      <span>AmusementPark</span>
+      <span class="app-brand-wordmark" aria-hidden="true">
+        <span class="app-brand-wordmark__base">AMUSEMENT-PARKS</span>
+        <span class="app-brand-wordmark__fun">
+          <span class="app-brand-wordmark__dot">.</span>
+          <span class="app-brand-wordmark__fun-text">fun</span>
+        </span>
+      </span>
     </a>
 
     <div class="app-admin-layout__actions">

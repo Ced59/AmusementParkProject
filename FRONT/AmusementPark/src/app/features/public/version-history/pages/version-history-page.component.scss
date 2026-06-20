@@ -30,6 +30,9 @@
 }
 
 .version-history-timeline {
+  --version-indent-minor: clamp(1.1rem, 3vw, 3rem);
+  --version-indent-patch: clamp(2.2rem, 6vw, 6rem);
+
   position: relative;
   display: grid;
   gap: 0.9rem;
@@ -52,6 +55,33 @@
   display: grid;
   gap: 0.7rem;
   border-left: 4px solid var(--version-level-color, var(--c-lime));
+}
+
+.version-entry--minor {
+  margin-left: var(--version-indent-minor);
+}
+
+.version-entry--patch {
+  margin-left: var(--version-indent-patch);
+}
+
+.version-entry--indented::before {
+  content: "";
+  position: absolute;
+  top: 1.68rem;
+  right: 100%;
+  width: calc(var(--version-entry-indent-connector, var(--version-indent-minor)) - 0.45rem);
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--version-level-color, var(--c-lime)));
+}
+
+.version-entry--minor {
+  --version-entry-indent-connector: var(--version-indent-minor);
+}
+
+.version-entry--patch {
+  --version-entry-indent-connector: var(--version-indent-patch);
 }
 
 .version-entry__marker {
@@ -109,6 +139,11 @@
 @media (max-width: 560px) {
   .version-history-hero h1 {
     font-size: 3.3rem;
+  }
+
+  .version-history-timeline {
+    --version-indent-minor: 0.85rem;
+    --version-indent-patch: 1.7rem;
   }
 
   .version-entry__header {

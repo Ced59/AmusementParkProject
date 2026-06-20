@@ -130,6 +130,19 @@ describe('PublicHeaderComponent', () => {
     expect(logoImage?.getAttribute('alt')).toBe('');
   });
 
+  it('renders the public brand wordmark with the .fun signature', () => {
+    const brandLink: HTMLAnchorElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-nav__logo');
+    const wordmark: HTMLElement | null = brandLink?.querySelector('.app-brand-wordmark') ?? null;
+    const base: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__base') ?? null;
+    const dot: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__dot') ?? null;
+    const fun: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__fun-text') ?? null;
+
+    expect(brandLink?.getAttribute('aria-label')).toBe('AMUSEMENT-PARKS.fun');
+    expect(base?.textContent).toBe('AMUSEMENT-PARKS');
+    expect(dot?.textContent).toBe('.');
+    expect(fun?.textContent).toBe('fun');
+  });
+
   it('opens the login modal from the named login button', () => {
     const loginButton: HTMLButtonElement = (fixture.nativeElement as HTMLElement).querySelector('.btn-nav--primary') as HTMLButtonElement;
 

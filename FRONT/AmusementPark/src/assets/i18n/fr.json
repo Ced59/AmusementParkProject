@@ -2948,7 +2948,7 @@
   "versionHistoryPage": {
     "kicker": "Historique",
     "title": "Ce qui a changé",
-    "lead": "Version actuelle : {{version}}. Chaque note reste courte, publique et centrée sur les progrès visibles.",
+    "lead": "Version actuelle : {{version}}. Retrouvez les nouveautés visibles du site au fil des mises à jour.",
     "timelineAriaLabel": "Historique des versions",
     "levels": {
       "major": "Majeure",

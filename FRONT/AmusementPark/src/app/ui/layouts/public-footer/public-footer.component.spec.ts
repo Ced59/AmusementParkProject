@@ -62,6 +62,19 @@ describe('PublicFooterComponent', () => {
     expect(versionLink?.getAttribute('href')).toBe('/en/versions');
   });
 
+  it('renders the public brand wordmark with the .fun signature', () => {
+    const brandLink: HTMLAnchorElement | null = (fixture.nativeElement as HTMLElement).querySelector('.app-public-footer__logo');
+    const wordmark: HTMLElement | null = brandLink?.querySelector('.app-brand-wordmark') ?? null;
+    const base: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__base') ?? null;
+    const dot: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__dot') ?? null;
+    const fun: HTMLElement | null = wordmark?.querySelector('.app-brand-wordmark__fun-text') ?? null;
+
+    expect(brandLink?.getAttribute('aria-label')).toBe('AMUSEMENT-PARKS.fun');
+    expect(base?.textContent).toBe('AMUSEMENT-PARKS');
+    expect(dot?.textContent).toBe('.');
+    expect(fun?.textContent).toBe('fun');
+  });
+
   it('marks the current footer language link for accessible active styling', () => {
     const activeLanguageLink: HTMLAnchorElement | null = (fixture.nativeElement as HTMLElement)
       .querySelector('.app-public-footer__language-link--active');

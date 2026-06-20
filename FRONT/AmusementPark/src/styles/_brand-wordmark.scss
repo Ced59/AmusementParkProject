@@ -1,0 +1,123 @@
+@font-face {
+  font-family: "Satisfy Brand Fun";
+  src: url("/assets/fonts/satisfy-brand-fun.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+002E, U+0066, U+006E, U+0075;
+}
+
+.app-brand-wordmark {
+  --brand-wordmark-fun-size: 1.08em;
+  --brand-wordmark-fun-lift: -0.16em;
+  --brand-wordmark-fun-rotation: -7deg;
+  --brand-wordmark-gap: 0.08em;
+
+  display: inline-flex;
+  align-items: baseline;
+  min-width: 0;
+  max-width: 100%;
+  color: var(--app-heading);
+  font-family: var(--font-display);
+  font-size: 1em;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.app-brand-wordmark__base {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-brand-wordmark__fun {
+  display: inline-flex;
+  align-items: baseline;
+  flex: 0 0 auto;
+  margin-left: var(--brand-wordmark-gap);
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.app-brand-wordmark__dot {
+  color: var(--c-orange-2);
+  font-family: var(--font-display);
+  font-size: 0.72em;
+  line-height: 1;
+  text-shadow: 0 0 0.35em rgba(255, 90, 31, 0.38);
+  transform: translateY(0.04em);
+}
+
+.app-brand-wordmark__fun-text {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.015em;
+  background: linear-gradient(
+    100deg,
+    var(--c-orange-2) 0%,
+    var(--c-orange-2) 16%,
+    var(--c-rose) 17%,
+    var(--c-rose) 41%,
+    var(--c-sky-2) 42%,
+    var(--c-sky-2) 68%,
+    var(--c-lime) 69%,
+    var(--c-lime) 100%
+  );
+  background-clip: text;
+  color: var(--c-rose);
+  font-family: "Satisfy Brand Fun", "Segoe Script", "Brush Script MT", cursive;
+  font-size: var(--brand-wordmark-fun-size);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.78;
+  text-shadow:
+    0 0 0.4em rgba(255, 90, 31, 0.28),
+    0 0.045em 0 rgba(0, 0, 0, 0.82);
+  transform: translateY(var(--brand-wordmark-fun-lift)) rotate(var(--brand-wordmark-fun-rotation));
+  transform-origin: left bottom;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.012em rgba(15, 11, 6, 0.9);
+}
+
+.app-brand-wordmark__fun-text::after {
+  content: "";
+  position: absolute;
+  left: 0.18em;
+  right: -0.22em;
+  bottom: -0.42em;
+  height: 0.08em;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--c-orange), var(--c-gold));
+  box-shadow: 0 0 0.28em rgba(255, 182, 39, 0.25);
+  transform: rotate(-10deg);
+  transform-origin: left center;
+}
+
+.app-public-nav__logo .app-brand-wordmark {
+  --brand-wordmark-fun-size: 1.03em;
+  --brand-wordmark-fun-lift: -0.14em;
+}
+
+.app-public-footer__logo .app-brand-wordmark,
+.app-admin-layout__brand .app-brand-wordmark {
+  --brand-wordmark-fun-size: 1.05em;
+}
+
+@media (max-width: 680px) {
+  .app-public-nav__logo .app-brand-wordmark {
+    --brand-wordmark-fun-size: 1em;
+    --brand-wordmark-fun-lift: -0.12em;
+    --brand-wordmark-gap: 0.06em;
+
+    letter-spacing: 0.025em;
+  }
+}
+
+@media (max-width: 430px) {
+  .app-public-nav__logo-text.app-brand-wordmark {
+    display: none;
+  }
+}

@@ -1,6 +1,20 @@
 {
-  "version": "2.1.5",
+  "version": "2.1.6",
   "history": [
+    {
+      "version": "2.1.6",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "L'identite visuelle et l'historique sont plus clairs.",
+        "en": "The visual identity and history are clearer.",
+        "de": "Die visuelle Identitaet und der Verlauf sind klarer.",
+        "nl": "De visuele identiteit en geschiedenis zijn duidelijker.",
+        "it": "Identita visiva e cronologia sono piu chiare.",
+        "es": "La identidad visual y el historial son mas claros.",
+        "pl": "Identyfikacja wizualna i historia sa czytelniejsze.",
+        "pt": "A identidade visual e o historico ficam mais claros."
+      }
+    },
     {
       "version": "2.1.5",
       "releasedAt": "2026-06-20",

@@ -2948,7 +2948,7 @@
   "versionHistoryPage": {
     "kicker": "Version history",
     "title": "What changed",
-    "lead": "Current version: {{version}}. Each release note is short, public and focused on visible progress.",
+    "lead": "Current version: {{version}}. Follow the visible improvements added to the site over time.",
     "timelineAriaLabel": "Version history timeline",
     "levels": {
       "major": "Major",

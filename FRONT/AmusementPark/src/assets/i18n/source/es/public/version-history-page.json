@@ -2,7 +2,7 @@
   "versionHistoryPage": {
     "kicker": "Historial",
     "title": "Que ha cambiado",
-    "lead": "Version actual: {{version}}. Cada nota es corta, publica y centrada en avances visibles.",
+    "lead": "Version actual: {{version}}. Sigue las mejoras visibles del sitio con cada actualizacion.",
     "timelineAriaLabel": "Linea temporal del historial de versiones",
     "levels": {
       "major": "Mayor",

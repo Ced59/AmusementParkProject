@@ -14,6 +14,7 @@
         [class.version-entry--major]="level(entry) === 'major'"
         [class.version-entry--minor]="level(entry) === 'minor'"
         [class.version-entry--patch]="level(entry) === 'patch'"
+        [class.version-entry--indented]="level(entry) !== 'major'"
         appUiSurface="shell"
         appUiSurfacePadding="regular">
         <div class="version-entry__marker" aria-hidden="true"></div>
