@@ -27,9 +27,12 @@ describe('SSR route status helpers', () => {
       '/fr/park/123/parc-test',
       '/fr/park/123/parc-test/images',
       '/fr/park/123/parc-test/videos/456/video-test',
+      '/fr/park/123/parc-test/video/s/456/video-test',
       '/fr/park/123/parc-test/zone/789/zone-test',
       '/fr/park/123/parc-test/item/abc/attraction-test',
       '/fr/park/123/parc-test/item/abc/attraction-test/videos',
+      '/fr/park/123/parc-test/item/abc/attraction-test/videos/456/video-test',
+      '/fr/park/123/parc-test/item/abc/attraction-test/video/s/456/video-test',
       '/fr/park-manufacturer/42/mack-rides'
     ];
 

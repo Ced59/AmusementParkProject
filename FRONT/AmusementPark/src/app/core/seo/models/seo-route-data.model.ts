@@ -12,5 +12,6 @@ export interface SeoRouteData {
   robots: SeoRobotsDirective;
   alternates: SeoAlternateLink[];
   imageUrl?: string;
+  imageAlt?: string;
   jsonLd?: unknown[];
 }

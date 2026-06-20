@@ -383,6 +383,7 @@ public sealed class ImagesController : ControllerBase
     }
 
     [HttpGet("{imageId}")]
+    [HttpHead("{imageId}")]
     [AllowAnonymous]
     public async Task<IActionResult> GetImageAsync([FromRoute] string imageId, [FromQuery] int? width, CancellationToken cancellationToken = default)
     {
