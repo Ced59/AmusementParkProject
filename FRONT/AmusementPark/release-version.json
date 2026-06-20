@@ -1,6 +1,20 @@
 {
-  "version": "2.1.13",
+  "version": "2.1.14",
   "history": [
+    {
+      "version": "2.1.14",
+      "releasedAt": "2026-06-20",
+      "labels": {
+        "fr": "Le logo et le slogan sont mieux alignés.",
+        "en": "The logo and slogan are better aligned.",
+        "de": "Logo und Slogan sind besser ausgerichtet.",
+        "nl": "Logo en slogan staan beter uitgelijnd.",
+        "it": "Logo e slogan sono allineati meglio.",
+        "es": "El logo y el lema quedan mejor alineados.",
+        "pl": "Logo i slogan są lepiej wyrównane.",
+        "pt": "O logótipo e o slogan ficam melhor alinhados."
+      }
+    },
     {
       "version": "2.1.13",
       "releasedAt": "2026-06-20",
