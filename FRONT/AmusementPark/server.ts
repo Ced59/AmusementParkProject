@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 import AppServerModule from './src/main.server';
 import { SSR_RESPONSE } from './src/app/core/ssr/ssr-response.token';
 import { resolveSsrRouteStatusCode, shouldApplyNoindexFollowHeader } from './src/app/core/ssr/ssr-route-status.helpers';
+import { buildCanonicalVideoRouteRedirectPath } from './src/app/core/seo/legacy-video-route.helpers';
 import { siteVersion } from './src/environments/version.generated';
 
 const defaultApiInternalOrigin = 'http://api:8080';
@@ -210,6 +211,16 @@ export function app(): express.Express {
     res.type('application/json').send(JSON.stringify({ version: currentBuildVersion }));
   });
 
+  const legacyVideoShareRoutes: string[] = [
+    '/:lang/park/:id/:slug/video/s/:videoId/:videoSlug',
+    '/:lang/park/:id/:slug/video/:videoId/:videoSlug',
+    '/:lang/park/:id/:slug/item/:itemId/:itemSlug/video/s/:videoId/:videoSlug',
+    '/:lang/park/:id/:slug/item/:itemId/:itemSlug/video/:videoId/:videoSlug'
+  ];
+
+  server.head(legacyVideoShareRoutes, redirectLegacyVideoShareRoute);
+  server.get(legacyVideoShareRoutes, redirectLegacyVideoShareRoute);
+
   server.use(express.static(browserDistFolder, {
     index: false,
     setHeaders: setStaticAssetResponseHeaders
@@ -286,6 +297,17 @@ export function app(): express.Express {
   });
 
   return server;
+}
+
+function redirectLegacyVideoShareRoute(req: Request, res: Response, next: NextFunction): void {
+  const canonicalPath: string | null = buildCanonicalVideoRouteRedirectPath(req.originalUrl);
+
+  if (canonicalPath === null) {
+    next();
+    return;
+  }
+
+  res.redirect(301, canonicalPath);
 }
 
 function run(): void {
