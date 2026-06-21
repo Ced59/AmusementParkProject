@@ -6,7 +6,7 @@
     "search": {
       "label": "Zoeken",
       "placeholder": "Naam, land, stad of jaar",
-      "count": "{{count}} bouwer(s) getoond"
+      "count": "{{count}} bouwer(s) gevonden"
     },
     "loading": "Bouwers laden...",
     "error": "Bouwers kunnen nu niet worden geladen.",

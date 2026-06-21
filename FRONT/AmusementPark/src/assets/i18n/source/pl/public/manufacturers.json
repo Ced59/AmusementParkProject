@@ -6,7 +6,7 @@
     "search": {
       "label": "Szukaj",
       "placeholder": "Nazwa, kraj, miasto lub rok",
-      "count": "{{count}} producentow widocznych"
+      "count": "{{count}} producentow znalezionych"
     },
     "loading": "Ladowanie producentow...",
     "error": "Nie mozna teraz zaladowac producentow.",

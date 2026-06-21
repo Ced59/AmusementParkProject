@@ -51,7 +51,7 @@ public sealed class UpdateAttractionManufacturerCommandHandler : ICommandHandler
             }
 
             await this.searchProjectionWriter.UpsertAsync(SearchProjectionResourceTypes.Manufacturers, updated.Id, cancellationToken);
-            IReadOnlyDictionary<string, int> counts = await this.parkItemRepository.GetAttractionCountsByManufacturerIdsAsync(new[] { command.Id }, cancellationToken);
+            IReadOnlyDictionary<string, int> counts = await this.parkItemRepository.GetAttractionCountsByManufacturerIdsAsync(new[] { command.Id }, cancellationToken, includeHidden: false);
             int attractionCount = counts.TryGetValue(command.Id, out int value) ? value : 0;
 
             return ApplicationResult<AttractionManufacturerResult>.Success(new AttractionManufacturerResult

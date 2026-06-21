@@ -26,11 +26,15 @@ export class ManufacturersApiService {
     return this.getAllAttractionManufacturers();
   }
 
-  getAttractionManufacturersPage(page: number = 1, size: number = 100): Observable<PagedResult<AttractionManufacturer>> {
+  getAttractionManufacturersPage(page: number = 1, size: number = 100, search: string | null = null): Observable<PagedResult<AttractionManufacturer>> {
     const url: string = `${environment.apiBaseUrl}${MANUFACTURERS_API_ENDPOINTS.getAttractionManufacturers}`;
-    const params: HttpParams = new HttpParams()
+    let params: HttpParams = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
+
+    if (search?.trim()) {
+      params = params.set('search', search.trim());
+    }
 
     return this.http.get<AttractionManufacturer[] | PagedCollectionResponse<AttractionManufacturer>>(url, { params }).pipe(
       map((response: AttractionManufacturer[] | PagedCollectionResponse<AttractionManufacturer>) => unwrapPagedCollection<AttractionManufacturer>(response))

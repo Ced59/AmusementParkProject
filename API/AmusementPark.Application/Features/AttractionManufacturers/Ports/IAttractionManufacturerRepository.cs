@@ -1,3 +1,4 @@
+using AmusementPark.Application.Common.Results;
 using AmusementPark.Core.Domain.Parks;
 
 namespace AmusementPark.Application.Features.AttractionManufacturers.Ports;
@@ -11,6 +12,11 @@ public interface IAttractionManufacturerRepository
     /// Retourne tous les attraction manufacturers.
     /// </summary>
     Task<IReadOnlyCollection<AttractionManufacturer>> GetAllAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Retourne une page de attraction manufacturers.
+    /// </summary>
+    Task<PagedResult<AttractionManufacturer>> GetPageAsync(int page, int pageSize, string? search, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retourne un attraction manufacturer par identifiant.

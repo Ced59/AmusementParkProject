@@ -2,6 +2,7 @@ import { DestroyRef, Inject, Injectable, Signal, computed, signal } from '@angul
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
+import { PagedResult, PaginationContract } from '@shared/models/contracts';
 import { PUBLIC_MANUFACTURERS_PORT, PublicManufacturersPort } from './public-manufacturers-state-data.ports';
 
 export interface PublicManufacturerGroup {
@@ -11,25 +12,28 @@ export interface PublicManufacturerGroup {
 
 @Injectable()
 export class PublicManufacturersStateFacade {
+  public static readonly DefaultPageSize: number = 24;
+
   private readonly manufacturersSignal = signal<AttractionManufacturer[]>([]);
+  private readonly paginationSignal = signal<PaginationContract | null>(null);
   private readonly loadingSignal = signal<boolean>(false);
   private readonly errorKeySignal = signal<string | null>(null);
   private readonly searchTermSignal = signal<string>('');
+  private readonly currentPageSignal = signal<number>(1);
+  private readonly pageSizeSignal = signal<number>(PublicManufacturersStateFacade.DefaultPageSize);
+  private loadSequence: number = 0;
 
   public readonly manufacturers: Signal<AttractionManufacturer[]> = this.manufacturersSignal.asReadonly();
+  public readonly pagination: Signal<PaginationContract | null> = this.paginationSignal.asReadonly();
   public readonly loading: Signal<boolean> = this.loadingSignal.asReadonly();
   public readonly errorKey: Signal<string | null> = this.errorKeySignal.asReadonly();
   public readonly searchTerm: Signal<string> = this.searchTermSignal.asReadonly();
+  public readonly currentPage: Signal<number> = this.currentPageSignal.asReadonly();
+  public readonly pageSize: Signal<number> = this.pageSizeSignal.asReadonly();
+  public readonly totalCount: Signal<number> = computed(() => this.paginationSignal()?.totalItems ?? this.manufacturersSignal().length);
   public readonly filteredManufacturers: Signal<AttractionManufacturer[]> = computed(() => {
-    const searchToken: string = normalizeSearchValue(this.searchTermSignal());
-    const sortedManufacturers: AttractionManufacturer[] = [...this.manufacturersSignal()]
+    return [...this.manufacturersSignal()]
       .sort((left: AttractionManufacturer, right: AttractionManufacturer) => left.name.localeCompare(right.name));
-
-    if (!searchToken) {
-      return sortedManufacturers;
-    }
-
-    return sortedManufacturers.filter((manufacturer: AttractionManufacturer) => this.matchesSearch(manufacturer, searchToken));
   });
   public readonly groupedManufacturers: Signal<PublicManufacturerGroup[]> = computed(() => {
     const groups = new Map<string, AttractionManufacturer[]>();
@@ -53,22 +57,42 @@ export class PublicManufacturersStateFacade {
   ) {
   }
 
-  load(): void {
+  load(page: number = this.currentPageSignal(), size: number = this.pageSizeSignal()): void {
+    const safePage: number = Math.max(page, 1);
+    const safeSize: number = Math.max(size, 1);
+    const sequence: number = this.loadSequence + 1;
+    this.loadSequence = sequence;
+    this.currentPageSignal.set(safePage);
+    this.pageSizeSignal.set(safeSize);
     this.loadingSignal.set(true);
     this.errorKeySignal.set(null);
 
-    this.manufacturersPort.getAllAttractionManufacturers().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (manufacturers: AttractionManufacturer[]): void => {
-        this.manufacturersSignal.set(manufacturers);
-        this.loadingSignal.set(false);
-      },
-      error: (error: unknown): void => {
-        console.error('Error loading attraction manufacturers', error);
-        this.manufacturersSignal.set([]);
-        this.loadingSignal.set(false);
-        this.errorKeySignal.set('manufacturersPage.error');
-      }
-    });
+    this.manufacturersPort.getAttractionManufacturersPage(safePage, safeSize, this.searchTermSignal())
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (pageResult: PagedResult<AttractionManufacturer>): void => {
+          if (sequence !== this.loadSequence) {
+            return;
+          }
+
+          this.manufacturersSignal.set(pageResult.items);
+          this.paginationSignal.set(pageResult.pagination);
+          this.currentPageSignal.set(pageResult.pagination.currentPage);
+          this.pageSizeSignal.set(pageResult.pagination.itemsPerPage || safeSize);
+          this.loadingSignal.set(false);
+        },
+        error: (error: unknown): void => {
+          if (sequence !== this.loadSequence) {
+            return;
+          }
+
+          console.error('Error loading attraction manufacturers', error);
+          this.manufacturersSignal.set([]);
+          this.paginationSignal.set(null);
+          this.loadingSignal.set(false);
+          this.errorKeySignal.set('manufacturersPage.error');
+        }
+      });
   }
 
   updateSearchTerm(value: string): void {
@@ -79,20 +103,8 @@ export class PublicManufacturersStateFacade {
     this.searchTermSignal.set('');
   }
 
-  private matchesSearch(manufacturer: AttractionManufacturer, searchToken: string): boolean {
-    const searchableText: string = [
-      manufacturer.name,
-      manufacturer.legalName,
-      manufacturer.foundedYear?.toString(),
-      manufacturer.closedYear?.toString(),
-      manufacturer.contactDetails?.city,
-      manufacturer.contactDetails?.countryCode
-    ]
-      .filter((value: string | null | undefined): value is string => Boolean(value))
-      .map((value: string) => normalizeSearchValue(value))
-      .join(' ');
-
-    return searchableText.includes(searchToken);
+  setPage(page: number, size: number): void {
+    this.load(page, size);
   }
 }
 
@@ -104,14 +116,4 @@ function resolveGroupLetter(name: string): string {
 
   const letter: string = normalizedName.charAt(0).toUpperCase();
   return /[A-Z]/.test(letter) ? letter : '#';
-}
-
-function normalizeSearchValue(value: string | null | undefined): string {
-  return (value ?? '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim()
-    .replace(/\s+/g, ' ');
 }

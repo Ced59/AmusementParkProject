@@ -888,7 +888,7 @@ public sealed class ParkItemRepository : IParkItemRepository
         };
     }
 
-    public async Task<IReadOnlyDictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds, CancellationToken cancellationToken)
+    public async Task<IReadOnlyDictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds, CancellationToken cancellationToken, bool includeHidden = false)
     {
         List<string> normalizedManufacturerIds = manufacturerIds
             .Where(static manufacturerId => !string.IsNullOrWhiteSpace(manufacturerId))
@@ -904,6 +904,11 @@ public sealed class ParkItemRepository : IParkItemRepository
         FilterDefinition<ParkItemDocument> filter =
             Builders<ParkItemDocument>.Filter.Eq(document => document.Category, ParkItemCategory.Attraction) &
             Builders<ParkItemDocument>.Filter.In("attractionDetails.manufacturerId", normalizedManufacturerIds);
+
+        if (!includeHidden)
+        {
+            filter &= Builders<ParkItemDocument>.Filter.Eq(document => document.IsVisible, true);
+        }
 
         List<BsonDocument> aggregationResults = await this.collection.Aggregate()
             .Match(filter)
