@@ -77,6 +77,111 @@
         </ul>
       </section>
 
+      @if (canPreviewJson(block)) {
+        <section class="admin-contextual-block-drawer__section admin-contextual-block-drawer__preview">
+          <h3>{{ 'admin.contextualBlocks.drawer.jsonDraft' | translate }}</h3>
+          <textarea
+            class="admin-contextual-block-drawer__json-input"
+            rows="8"
+            spellcheck="false"
+            [attr.aria-label]="'admin.contextualBlocks.drawer.jsonDraftAriaLabel' | translate"
+            [value]="jsonDraft()"
+            (input)="updateJsonDraft($event)"></textarea>
+
+          <div class="admin-contextual-block-drawer__preview-actions">
+            <button
+              type="button"
+              class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--primary"
+              [disabled]="isPreviewing() || jsonDraft().trim().length === 0"
+              (click)="previewJson(block)">
+              <i class="pi pi-eye" aria-hidden="true"></i>
+              <span>{{ (isPreviewing() ? 'admin.contextualBlocks.drawer.previewJsonBusy' : 'admin.contextualBlocks.drawer.previewJson') | translate }}</span>
+            </button>
+            <button
+              type="button"
+              class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--secondary"
+              [disabled]="isPreviewing() || jsonDraft().trim().length === 0"
+              (click)="clearJsonDraft()">
+              <i class="pi pi-times" aria-hidden="true"></i>
+              <span>{{ 'admin.contextualBlocks.drawer.clearJsonDraft' | translate }}</span>
+            </button>
+          </div>
+
+          @if (previewErrorKey(); as errorKey) {
+            <p class="admin-contextual-block-drawer__error" role="alert">{{ errorKey | translate }}</p>
+          }
+
+          @if (previewResult(); as result) {
+            <div
+              class="admin-contextual-block-drawer__preview-result"
+              [class.admin-contextual-block-drawer__preview-result--blocked]="!result.canApply">
+              <p class="admin-contextual-block-drawer__preview-status">{{ getPreviewStatusKey(result) | translate }}</p>
+              <dl class="admin-contextual-block-drawer__preview-counts">
+                <div>
+                  <dt>{{ 'admin.contextualBlocks.drawer.previewChanged' | translate }}</dt>
+                  <dd>{{ result.counts.updated }}</dd>
+                </div>
+                <div>
+                  <dt>{{ 'admin.contextualBlocks.drawer.previewErrors' | translate }}</dt>
+                  <dd>{{ result.counts.errors }}</dd>
+                </div>
+                <div>
+                  <dt>{{ 'admin.contextualBlocks.drawer.previewWarnings' | translate }}</dt>
+                  <dd>{{ result.counts.warnings }}</dd>
+                </div>
+              </dl>
+
+              @if (result.errors.length > 0) {
+                <ul class="admin-contextual-block-drawer__message-list admin-contextual-block-drawer__message-list--error">
+                  @for (message of result.errors; track message) {
+                    <li>{{ message }}</li>
+                  }
+                </ul>
+              }
+
+              @if (result.warnings.length > 0) {
+                <ul class="admin-contextual-block-drawer__message-list">
+                  @for (message of result.warnings; track message) {
+                    <li>{{ message }}</li>
+                  }
+                </ul>
+              }
+
+              @if (result.changes.length > 0) {
+                <div class="admin-contextual-block-drawer__changes">
+                  <h4>{{ 'admin.contextualBlocks.drawer.previewChanges' | translate }}</h4>
+                  <ul>
+                    @for (change of result.changes; track trackPreviewChange(change)) {
+                      <li>
+                        <span>{{ change.field }}</span>
+                        <div>
+                          <small>{{ 'admin.contextualBlocks.drawer.previewCurrentValue' | translate }}</small>
+                          @if (hasPreviewValue(change.oldValue)) {
+                            <code>{{ change.oldValue }}</code>
+                          } @else {
+                            <em>{{ 'admin.contextualBlocks.drawer.emptyValue' | translate }}</em>
+                          }
+                        </div>
+                        <div>
+                          <small>{{ 'admin.contextualBlocks.drawer.previewProposedValue' | translate }}</small>
+                          @if (hasPreviewValue(change.newValue)) {
+                            <code>{{ change.newValue }}</code>
+                          } @else {
+                            <em>{{ 'admin.contextualBlocks.drawer.emptyValue' | translate }}</em>
+                          }
+                        </div>
+                      </li>
+                    }
+                  </ul>
+                </div>
+              } @else if (result.canApply) {
+                <p class="admin-contextual-block-drawer__preview-empty">{{ 'admin.contextualBlocks.drawer.previewJsonNoChanges' | translate }}</p>
+              }
+            </div>
+          }
+        </section>
+      }
+
       @if (exportErrorKey(); as errorKey) {
         <p class="admin-contextual-block-drawer__error" role="alert">{{ errorKey | translate }}</p>
       }

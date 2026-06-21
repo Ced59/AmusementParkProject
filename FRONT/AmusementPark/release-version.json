@@ -1,6 +1,20 @@
 {
-  "version": "2.3.15",
+  "version": "2.3.16",
   "history": [
+    {
+      "version": "2.3.16",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "L'administration mobile gagne en clarte.",
+        "en": "Mobile administration gains clarity.",
+        "de": "Mobile Administration wird klarer.",
+        "nl": "Mobiele administratie wordt duidelijker.",
+        "it": "L'amministrazione mobile diventa piu chiara.",
+        "es": "La administracion movil gana claridad.",
+        "pl": "Administracja mobilna staje sie bardziej przejrzysta.",
+        "pt": "A administracao movel fica mais clara."
+      }
+    },
     {
       "version": "2.3.15",
       "releasedAt": "2026-06-21",

@@ -247,7 +247,7 @@ Livrables :
 - Endpoint admin `preview` dedie.
 - Validation des champs autorises par `blockType`.
 - Validation des variantes localisees attendues par le `blockType`, avec erreurs par langue.
-- Mapping vers les commandes existantes quand le scope correspond deja a `LocalizedContent` ou `ParkGraphUpsert`.
+- Reutilisation des validations existantes quand le scope correspond deja a `LocalizedContent` ou `ParkGraphUpsert`; validateur contextualise dedie quand les commandes existantes sont trop larges ou mutatrices.
 - Resultat de preview lisible : champs modifies, warnings, erreurs, bloc cible.
 - Tests backend pour refus des champs hors scope.
 - UI JSON avec erreurs non destructives.
@@ -264,6 +264,15 @@ Risques a verifier :
 
 - La preview ne doit pas invalider les caches publics.
 - Le JSON invalide ne doit jamais vider le contenu courant.
+
+Note de mise en oeuvre :
+
+- Le jalon 4 introduit `POST admin/contextual-blocks/{blockType}/{entityId}/preview` pour `park.description` et `park.practical`.
+- Le preview verifie `documentType`, `blockType`, `target`, `ids` et les champs autorises du bloc avant de calculer les changements.
+- `park.description` exige les variantes `en`, `fr`, `es`, `de`, `it`, `pl`, `nl` et `pt`; une langue absente, inconnue ou dupliquee bloque le preview.
+- Le resultat retourne `canApply`, `isApplied=false`, le bloc cible, les compteurs, les changements, les alertes et les erreurs sans mutation ni invalidation de cache.
+- Le drawer admin public propose un brouillon JSON et un resultat de preview responsive ; un JSON invalide ou une erreur API conserve le brouillon courant.
+- `park.hero` reste en capacite de preview planifiee tant que son contrat borne n'est pas livre.
 
 ### Jalon 5 - Apply JSON borne et refresh de page
 

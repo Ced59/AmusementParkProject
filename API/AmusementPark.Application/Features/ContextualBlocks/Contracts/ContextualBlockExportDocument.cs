@@ -4,7 +4,7 @@ namespace AmusementPark.Application.Features.ContextualBlocks.Contracts;
 
 public sealed class ContextualBlockExportDocument<TBlock>
 {
-    public string DocumentType { get; init; } = "AmusementParkContextualBlockUpsert";
+    public string DocumentType { get; init; } = ContextualBlockContracts.DocumentType;
 
     public string SchemaVersion { get; init; } = "2026-06-21";
 

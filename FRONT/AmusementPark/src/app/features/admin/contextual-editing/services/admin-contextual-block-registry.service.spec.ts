@@ -48,6 +48,7 @@ describe('AdminContextualBlockRegistryService', () => {
 
     expect(block?.localizedLanguageCodes).toEqual(LANGUAGES.map((language: LanguageOption) => language.value));
     expect(block?.capabilities).toContain('boundedJsonExport');
+    expect(block?.capabilities).toContain('boundedJsonPreview');
     expect(block?.jsonScope).toContain('park.descriptions[*].languageCode');
     expect(block?.jsonScope).toContain('park.descriptions[*].value');
   });
@@ -62,6 +63,7 @@ describe('AdminContextualBlockRegistryService', () => {
 
     expect(block?.capabilities).toContain('boundedJsonExportPlanned');
     expect(block?.capabilities).not.toContain('boundedJsonExport');
+    expect(block?.capabilities).not.toContain('boundedJsonPreview');
   });
 
   it('does not create a block without a park id', () => {
