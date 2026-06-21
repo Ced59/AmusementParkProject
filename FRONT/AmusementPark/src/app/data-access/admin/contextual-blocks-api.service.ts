@@ -24,4 +24,9 @@ export class ContextualBlocksApiService {
     const url: string = `${environment.apiBaseUrl}admin/contextual-blocks/${encodeURIComponent(blockType)}/${encodeURIComponent(entityId)}/preview`;
     return this.http.post<ContextualBlockPreviewResult>(url, { document });
   }
+
+  applyBlock(blockType: string, entityId: string, document: unknown): Observable<ContextualBlockPreviewResult> {
+    const url: string = `${environment.apiBaseUrl}admin/contextual-blocks/${encodeURIComponent(blockType)}/${encodeURIComponent(entityId)}/apply`;
+    return this.http.post<ContextualBlockPreviewResult>(url, { document });
+  }
 }

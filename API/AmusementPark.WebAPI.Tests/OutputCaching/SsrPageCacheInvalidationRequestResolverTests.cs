@@ -4,6 +4,7 @@ using AmusementPark.Application.Features.ParkZones.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.WebAPI.Contracts.ContextualBlocks;
 using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
 using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.Http;
@@ -94,6 +95,88 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
         AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
             context,
             null,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Empty(request.Paths);
+        Assert.Empty(request.Prefixes);
+        Assert.False(request.IncludeSeoDocuments);
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ForContextualBlockParkApply_ShouldTargetParkAndDiscoveryPages()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext(
+            "ContextualBlocks",
+            new Dictionary<string, object?>
+            {
+                ["blockType"] = "park.description",
+                ["entityId"] = "park-1",
+            });
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ContextualBlockPreviewResultDto
+        {
+            BlockType = "park.description",
+            IsApplied = true,
+            CanApply = true,
+            Target = new ContextualBlockPreviewTargetDto
+            {
+                EntityType = "Park",
+                EntityId = "park-1",
+                DisplayName = "Target Park",
+            },
+            Changes = new List<ContextualBlockPreviewChangeDto>
+            {
+                new ContextualBlockPreviewChangeDto
+                {
+                    EntityType = "Park",
+                    EntityId = "park-1",
+                    Field = "descriptions.fr.value",
+                    ChangeType = "Updated",
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/", request.Prefixes);
+        Assert.Contains("/fr/home", request.Paths);
+        Assert.True(request.IncludeSeoDocuments);
+    }
+
+    [Fact]
+    public async Task ResolveAsync_ForContextualBlockRejectedApply_ShouldReturnNoOp()
+    {
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();
+        ActionExecutingContext context = CreateContext(
+            "ContextualBlocks",
+            new Dictionary<string, object?>
+            {
+                ["blockType"] = "park.description",
+                ["entityId"] = "park-1",
+            });
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ContextualBlockPreviewResultDto
+        {
+            BlockType = "park.description",
+            IsApplied = false,
+            CanApply = false,
+            Target = new ContextualBlockPreviewTargetDto
+            {
+                EntityType = "Park",
+                EntityId = "park-1",
+                DisplayName = "Target Park",
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
             new[] { PublicCacheScope.Data },
             CancellationToken.None);
 

@@ -9,6 +9,7 @@ import { ParkDetailStateFacade } from '../state/park-detail-state.facade';
 import { ParkDetailViewComponent } from '../ui/park-detail-view.component';
 import { SeoService } from '@core/seo/seo.service';
 import { LcpImagePreloadService } from '@core/performance/lcp-image-preload.service';
+import { AdminContextualBlockAppliedEvent, AdminContextualBlockRefreshEvents } from '@features/admin/contextual-editing/state/admin-contextual-block-refresh-events.service';
 
 @Component({
   selector: 'app-park-detail-page',
@@ -40,7 +41,8 @@ export class ParkDetailPageComponent implements OnInit {
     private readonly translationService: TranslationService,
     private readonly stateFacade: ParkDetailStateFacade,
     private readonly seoService: SeoService,
-    private readonly lcpImagePreloadService: LcpImagePreloadService
+    private readonly lcpImagePreloadService: LcpImagePreloadService,
+    private readonly contextualBlockRefreshEvents: AdminContextualBlockRefreshEvents
   ) {
     this.destroyRef.onDestroy((): void => {
       if (this.isBrowser) {
@@ -80,6 +82,19 @@ export class ParkDetailPageComponent implements OnInit {
     this.translationService.languageChanged.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((language: string) => {
       this.currentLang.set(language);
       this.stateFacade.setCurrentLanguage(language);
+    });
+
+    this.contextualBlockRefreshEvents.appliedBlock$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event: AdminContextualBlockAppliedEvent) => {
+      if (event.entityType !== 'Park') {
+        return;
+      }
+
+      const currentParkId: string | null = this.park()?.id ?? this.route.snapshot.paramMap.get('id');
+      if (currentParkId !== event.entityId) {
+        return;
+      }
+
+      this.stateFacade.loadPark(event.entityId);
     });
   }
 

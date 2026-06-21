@@ -78,4 +78,41 @@ describe('ContextualBlocksApiService', () => {
       errors: []
     });
   });
+
+  it('posts bounded JSON apply requests to mutate selected blocks', () => {
+    const document: unknown = { blockType: 'park.description', block: { parkId: 'park-1' } };
+
+    service.applyBlock('park.description', 'park 1', document).subscribe((response) => {
+      expect(response.isApplied).toBeTrue();
+      expect(response.canApply).toBeTrue();
+    });
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/contextual-blocks/park.description/park%201/apply`);
+    expect(request.request.method).toBe('POST');
+    expect(request.request.body).toEqual({ document });
+
+    request.flush({
+      operationId: 'operation-1',
+      blockType: 'park.description',
+      isApplied: true,
+      canApply: true,
+      previewedAtUtc: '2026-06-21T10:00:00Z',
+      target: {
+        entityType: 'Park',
+        entityId: 'park-1',
+        displayName: 'Phantasialand'
+      },
+      counts: {
+        created: 0,
+        updated: 1,
+        deleted: 0,
+        unchanged: 7,
+        warnings: 0,
+        errors: 0
+      },
+      changes: [],
+      warnings: [],
+      errors: []
+    });
+  });
 });

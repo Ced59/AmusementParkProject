@@ -163,6 +163,41 @@ public sealed class PreviewContextualBlockJsonCommandHandlerTests
         parkRepository.VerifyAll();
     }
 
+    [Fact]
+    public async Task HandleAsync_WhenPracticalJsonContainsInvalidCoordinates_ShouldRejectBeforeApply()
+    {
+        Park park = CreatePark();
+        Mock<IParkRepository> parkRepository = CreateRepository(park);
+        PreviewContextualBlockJsonCommandHandler handler = new PreviewContextualBlockJsonCommandHandler(parkRepository.Object);
+
+        using JsonDocument document = JsonDocument.Parse(
+            """
+            {
+              "documentType": "AmusementParkContextualBlockUpsert",
+              "schemaVersion": "2026-06-21",
+              "blockType": "park.practical",
+              "target": { "entityType": "Park", "entityId": "park-1" },
+              "ids": { "parkId": "park-1", "founderId": "founder-1", "operatorId": "operator-1" },
+              "block": {
+                "parkId": "park-1",
+                "latitude": 91,
+                "longitude": 2.35
+              }
+            }
+            """);
+
+        ApplicationResult<ContextualBlockPreviewResult> result = await handler.HandleAsync(
+            new PreviewContextualBlockJsonCommand("park.practical", "park-1", document.RootElement),
+            CancellationToken.None);
+
+        Assert.True(result.IsSuccess);
+        Assert.NotNull(result.Value);
+        Assert.False(result.Value.CanApply);
+        Assert.Contains(result.Value.Errors, static error => error.Contains("block.latitude", StringComparison.Ordinal));
+        Assert.Empty(result.Value.Changes);
+        parkRepository.VerifyAll();
+    }
+
     private static Mock<IParkRepository> CreateRepository(Park park)
     {
         Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);

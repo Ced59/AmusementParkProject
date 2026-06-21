@@ -299,6 +299,14 @@ Risques a verifier :
 - Une reponse admin ne doit pas etre servie depuis le cache public.
 - Les pages SSR publiques doivent etre invalidees seulement quand l'apply reussit.
 
+Note de mise en oeuvre :
+
+- Le jalon 5 introduit `POST admin/contextual-blocks/{blockType}/{entityId}/apply` pour `park.description` et `park.practical`.
+- L'apply reutilise la preview bornee avant mutation ; un JSON bloque ou invalide conserve le brouillon cote drawer.
+- La mutation passe par le flux de mise a jour parc existant afin de conserver projections de recherche, SEO public et regles metier.
+- Le resultat applique reprend le format de preview avec `isApplied=true`, puis la fiche parc publique recharge sa facade courante sans navigation complete.
+- L'invalidation SSR cible les prefixes du parc impacte et les pages de decouverte lorsque le bloc concerne un parc.
+
 ### Jalon 6 - Formulaire contextuel pour blocs simples
 
 But : eviter le JSON pour les corrections simples.

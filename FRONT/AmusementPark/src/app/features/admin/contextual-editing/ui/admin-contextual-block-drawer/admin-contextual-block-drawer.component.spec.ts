@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
 import { AdminContextualBlockInstance } from '../../models/admin-contextual-block.model';
+import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-block-apply.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
@@ -32,6 +33,16 @@ describe('AdminContextualBlockDrawerComponent', () => {
     previewBlock: jasmine.Spy;
     resetForBlock: jasmine.Spy;
   };
+  let applyFacade: {
+    applyResult: Signal<ContextualBlockPreviewResult | null>;
+    isApplying: Signal<boolean>;
+    errorKey: Signal<string | null>;
+    canApply: jasmine.Spy;
+    hasAcceptedPreview: jasmine.Spy;
+    applyBlock: jasmine.Spy;
+    resetForBlock: jasmine.Spy;
+    clearResult: jasmine.Spy;
+  };
 
   beforeEach(async () => {
     const isExportingSignal = signal<boolean>(false);
@@ -40,6 +51,9 @@ describe('AdminContextualBlockDrawerComponent', () => {
     const previewResultSignal = signal<ContextualBlockPreviewResult | null>(null);
     const isPreviewingSignal = signal<boolean>(false);
     const previewErrorKeySignal = signal<string | null>(null);
+    const applyResultSignal = signal<ContextualBlockPreviewResult | null>(null);
+    const isApplyingSignal = signal<boolean>(false);
+    const applyErrorKeySignal = signal<string | null>(null);
     exportFacade = {
       isExporting: isExportingSignal.asReadonly(),
       errorKey: errorKeySignal.asReadonly(),
@@ -69,6 +83,21 @@ describe('AdminContextualBlockDrawerComponent', () => {
         }
       })
     };
+    applyFacade = {
+      applyResult: applyResultSignal.asReadonly(),
+      isApplying: isApplyingSignal.asReadonly(),
+      errorKey: applyErrorKeySignal.asReadonly(),
+      canApply: jasmine.createSpy('canApply').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
+        return Boolean(block?.capabilities.includes('boundedJsonApply'));
+      }),
+      hasAcceptedPreview: jasmine.createSpy('hasAcceptedPreview').and.returnValue(true),
+      applyBlock: jasmine.createSpy('applyBlock'),
+      resetForBlock: jasmine.createSpy('resetForBlock'),
+      clearResult: jasmine.createSpy('clearResult').and.callFake((): void => {
+        applyResultSignal.set(null);
+        applyErrorKeySignal.set(null);
+      })
+    };
 
     await TestBed.configureTestingModule({
       imports: [...COMMON_TEST_IMPORTS, AdminContextualBlockDrawerComponent],
@@ -83,6 +112,10 @@ describe('AdminContextualBlockDrawerComponent', () => {
         {
           provide: AdminContextualBlockPreviewFacade,
           useValue: previewFacade
+        },
+        {
+          provide: AdminContextualBlockApplyFacade,
+          useValue: applyFacade
         }
       ]
     }).compileComponents();
@@ -117,6 +150,13 @@ describe('AdminContextualBlockDrawerComponent', () => {
             previewJsonUnavailable: 'Previsualisation JSON indisponible',
             previewJsonCanApply: 'Previsualisation valide',
             previewJsonBlocked: 'Previsualisation bloquee',
+            applyJson: 'Appliquer',
+            applyJsonBusy: 'Application...',
+            applyJsonInvalid: 'JSON invalide',
+            applyJsonError: 'L application JSON a echoue.',
+            applyJsonUnavailable: 'Application JSON indisponible',
+            applyJsonPreviewRequired: 'Previsualise avant d appliquer.',
+            applyJsonSucceeded: 'JSON applique',
             previewChanged: 'Modifies',
             previewErrors: 'Erreurs',
             previewWarnings: 'Alertes',
@@ -130,6 +170,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
             fullAdminEdit: 'Edition admin complete disponible',
             boundedJsonExport: 'Export JSON borne disponible',
             boundedJsonPreview: 'Previsualisation JSON borne disponible',
+            boundedJsonApply: 'Application JSON borne disponible',
             boundedJsonExportPlanned: 'Export JSON borne prevu',
             boundedJsonUpsertPlanned: 'Upsert JSON borne prevu',
             formEditPlanned: 'Formulaire contextuel prevu'
@@ -156,7 +197,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect((fixture.nativeElement as HTMLElement).querySelector('.admin-contextual-block-drawer')).toBeNull();
   });
 
-  it('renders selected block diagnostics and bounded export action without exposing mutation submits', () => {
+  it('renders selected block diagnostics and bounded JSON actions without exposing submit forms', () => {
     publicViewModeFacade.setViewMode('adminPreview');
     publicViewModeFacade.setEditionModeEnabled(true);
     selectionFacade.selectBlock(createBlock());
@@ -174,6 +215,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect(drawer.textContent).toContain('en');
     expect(previewTextArea).not.toBeNull();
     expect(exportButton?.textContent).toContain('Telecharger le JSON du bloc');
+    expect(drawer.textContent).toContain('Appliquer');
     expect(adminLink?.textContent).toContain('Ouvrir edition admin complete');
     expect(drawer.querySelector('button[type="submit"]')).toBeNull();
   });
@@ -211,7 +253,23 @@ describe('AdminContextualBlockDrawerComponent', () => {
 
     expect(previewFacade.setJsonDraft).toHaveBeenCalledWith('{ "block": { "parkId": "park-1" } }');
     expect(previewFacade.previewBlock).toHaveBeenCalledOnceWith(block);
+    expect(applyFacade.clearResult).toHaveBeenCalled();
     expect(previewFacade.clearDraft).not.toHaveBeenCalled();
+  });
+
+  it('delegates bounded JSON apply after an accepted preview', () => {
+    const block: AdminContextualBlockInstance = createBlock();
+    publicViewModeFacade.setViewMode('adminPreview');
+    publicViewModeFacade.setEditionModeEnabled(true);
+    selectionFacade.selectBlock(block);
+    fixture.detectChanges();
+
+    const buttons: NodeListOf<HTMLButtonElement> = (fixture.nativeElement as HTMLElement)
+      .querySelectorAll('.admin-contextual-block-drawer__preview-actions .admin-contextual-block-drawer__action');
+    const applyButton: HTMLButtonElement = buttons.item(1);
+    applyButton.click();
+
+    expect(applyFacade.applyBlock).toHaveBeenCalledOnceWith(block);
   });
 
   it('clears the selected block from the close action', () => {
@@ -241,7 +299,7 @@ function createBlock(): AdminContextualBlockInstance {
     labelKey: 'admin.contextualBlocks.blocks.parkDescription.label',
     descriptionKey: 'admin.contextualBlocks.blocks.parkDescription.description',
     iconClass: 'pi pi-align-left',
-    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview'],
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply'],
     jsonScope: ['park.id', 'park.descriptions[*].value'],
     localizedLanguageCodes: ['fr', 'en'],
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']

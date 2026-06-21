@@ -1,6 +1,20 @@
 {
-  "version": "2.3.16",
+  "version": "2.3.17",
   "history": [
+    {
+      "version": "2.3.17",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "L'administration mobile gagne en fluidite.",
+        "en": "Mobile administration gains fluidity.",
+        "de": "Mobile Administration wird fluessiger.",
+        "nl": "Mobiele administratie wordt vloeiender.",
+        "it": "L'amministrazione mobile diventa piu fluida.",
+        "es": "La administracion movil gana fluidez.",
+        "pl": "Administracja mobilna dziala plynniej.",
+        "pt": "A administracao movel fica mais fluida."
+      }
+    },
     {
       "version": "2.3.16",
       "releasedAt": "2026-06-21",

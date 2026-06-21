@@ -8,6 +8,7 @@ using AmusementPark.WebAPI.Authorization;
 using AmusementPark.WebAPI.Contracts.ContextualBlocks;
 using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
+using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -23,13 +24,16 @@ public sealed class ContextualBlocksController : ControllerBase
 {
     private readonly IQueryHandler<ExportContextualBlockJsonQuery, ApplicationResult<ContextualBlockJsonExportResult>> exportHandler;
     private readonly ICommandHandler<PreviewContextualBlockJsonCommand, ApplicationResult<ContextualBlockPreviewResult>> previewHandler;
+    private readonly ICommandHandler<ApplyContextualBlockJsonCommand, ApplicationResult<ContextualBlockPreviewResult>> applyHandler;
 
     public ContextualBlocksController(
         IQueryHandler<ExportContextualBlockJsonQuery, ApplicationResult<ContextualBlockJsonExportResult>> exportHandler,
-        ICommandHandler<PreviewContextualBlockJsonCommand, ApplicationResult<ContextualBlockPreviewResult>> previewHandler)
+        ICommandHandler<PreviewContextualBlockJsonCommand, ApplicationResult<ContextualBlockPreviewResult>> previewHandler,
+        ICommandHandler<ApplyContextualBlockJsonCommand, ApplicationResult<ContextualBlockPreviewResult>> applyHandler)
     {
         this.exportHandler = exportHandler;
         this.previewHandler = previewHandler;
+        this.applyHandler = applyHandler;
     }
 
     [HttpGet("{blockType}/{entityId}/export")]
@@ -61,6 +65,28 @@ public sealed class ContextualBlocksController : ControllerBase
     {
         ApplicationResult<ContextualBlockPreviewResult> result = await this.previewHandler.HandleAsync(
             new PreviewContextualBlockJsonCommand(blockType, entityId, request.Document),
+            cancellationToken);
+
+        if (!result.IsSuccess || result.Value is null)
+        {
+            return this.ToActionResult(result);
+        }
+
+        return this.Ok(result.Value.ToHttp());
+    }
+
+    [HttpPost("{blockType}/{entityId}/apply")]
+    [InvalidatesPublicCache(PublicCacheScope.Data)]
+    [AdminAudit("contextual-block.apply", "ContextualBlock", TargetIdRouteKey = "entityId")]
+    [ProducesResponseType(typeof(ContextualBlockPreviewResultDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> ApplyBlockJsonAsync(
+        [FromRoute] string blockType,
+        [FromRoute] string entityId,
+        [FromBody] ContextualBlockApplyRequestDto request,
+        CancellationToken cancellationToken = default)
+    {
+        ApplicationResult<ContextualBlockPreviewResult> result = await this.applyHandler.HandleAsync(
+            new ApplyContextualBlockJsonCommand(blockType, entityId, request.Document),
             cancellationToken);
 
         if (!result.IsSuccess || result.Value is null)

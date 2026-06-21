@@ -349,6 +349,18 @@ public sealed class PreviewContextualBlockJsonCommandHandler
         }
 
         double? newValue = value.ValueKind == JsonValueKind.Null ? null : value.GetDouble();
+        if (newValue.HasValue && string.Equals(fieldName, "latitude", StringComparison.Ordinal) && (newValue.Value < -90 || newValue.Value > 90))
+        {
+            result.Errors.Add("block.latitude doit etre compris entre -90 et 90.");
+            return;
+        }
+
+        if (newValue.HasValue && string.Equals(fieldName, "longitude", StringComparison.Ordinal) && (newValue.Value < -180 || newValue.Value > 180))
+        {
+            result.Errors.Add("block.longitude doit etre compris entre -180 et 180.");
+            return;
+        }
+
         if (currentValue != newValue)
         {
             changes.Add(BuildChange(park, fieldName, null, FormatNumber(currentValue), FormatNumber(newValue)));
