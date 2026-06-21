@@ -7,6 +7,7 @@ import { ContextualBlockPreviewResult } from '@shared/models/admin/contextual-bl
 import { AdminContextualBlockInstance } from '../../models/admin-contextual-block.model';
 import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-block-apply.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
+import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField } from '../../state/admin-contextual-block-form.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
 import { AdminPublicViewModeFacade } from '../../state/admin-public-view-mode.facade';
@@ -43,6 +44,18 @@ describe('AdminContextualBlockDrawerComponent', () => {
     resetForBlock: jasmine.Spy;
     clearResult: jasmine.Spy;
   };
+  let formFacade: {
+    localizedFields: Signal<readonly AdminContextualBlockLocalizedFormField[]>;
+    isLoading: Signal<boolean>;
+    isSaving: Signal<boolean>;
+    errorKey: Signal<string | null>;
+    successKey: Signal<string | null>;
+    canEditForm: jasmine.Spy;
+    resetForBlock: jasmine.Spy;
+    loadForm: jasmine.Spy;
+    updateLocalizedValue: jasmine.Spy;
+    saveForm: jasmine.Spy;
+  };
 
   beforeEach(async () => {
     const isExportingSignal = signal<boolean>(false);
@@ -54,6 +67,14 @@ describe('AdminContextualBlockDrawerComponent', () => {
     const applyResultSignal = signal<ContextualBlockPreviewResult | null>(null);
     const isApplyingSignal = signal<boolean>(false);
     const applyErrorKeySignal = signal<string | null>(null);
+    const localizedFieldsSignal = signal<readonly AdminContextualBlockLocalizedFormField[]>([
+      { languageCode: 'en', value: 'English description' },
+      { languageCode: 'fr', value: '' }
+    ]);
+    const isFormLoadingSignal = signal<boolean>(false);
+    const isFormSavingSignal = signal<boolean>(false);
+    const formErrorKeySignal = signal<string | null>(null);
+    const formSuccessKeySignal = signal<string | null>(null);
     exportFacade = {
       isExporting: isExportingSignal.asReadonly(),
       errorKey: errorKeySignal.asReadonly(),
@@ -82,6 +103,24 @@ describe('AdminContextualBlockDrawerComponent', () => {
           jsonDraftSignal.set('');
         }
       })
+    };
+    formFacade = {
+      localizedFields: localizedFieldsSignal.asReadonly(),
+      isLoading: isFormLoadingSignal.asReadonly(),
+      isSaving: isFormSavingSignal.asReadonly(),
+      errorKey: formErrorKeySignal.asReadonly(),
+      successKey: formSuccessKeySignal.asReadonly(),
+      canEditForm: jasmine.createSpy('canEditForm').and.callFake((block: AdminContextualBlockInstance | null): boolean => {
+        return Boolean(block?.capabilities.includes('contextualFormEdit'));
+      }),
+      resetForBlock: jasmine.createSpy('resetForBlock'),
+      loadForm: jasmine.createSpy('loadForm'),
+      updateLocalizedValue: jasmine.createSpy('updateLocalizedValue').and.callFake((languageCode: string, value: string): void => {
+        localizedFieldsSignal.update((fields: readonly AdminContextualBlockLocalizedFormField[]) => fields.map((field: AdminContextualBlockLocalizedFormField) => {
+          return field.languageCode === languageCode ? { ...field, value } : field;
+        }));
+      }),
+      saveForm: jasmine.createSpy('saveForm')
     };
     applyFacade = {
       applyResult: applyResultSignal.asReadonly(),
@@ -116,6 +155,10 @@ describe('AdminContextualBlockDrawerComponent', () => {
         {
           provide: AdminContextualBlockApplyFacade,
           useValue: applyFacade
+        },
+        {
+          provide: AdminContextualBlockFormFacade,
+          useValue: formFacade
         }
       ]
     }).compileComponents();
@@ -157,6 +200,17 @@ describe('AdminContextualBlockDrawerComponent', () => {
             applyJsonUnavailable: 'Application JSON indisponible',
             applyJsonPreviewRequired: 'Previsualise avant d appliquer.',
             applyJsonSucceeded: 'JSON applique',
+            formTitle: 'Formulaire rapide',
+            formLoading: 'Chargement du formulaire...',
+            formReload: 'Recharger',
+            formSave: 'Enregistrer',
+            formSaveBusy: 'Enregistrement...',
+            formLoadError: 'Le formulaire n a pas pu charger.',
+            formSaveError: 'L enregistrement a echoue.',
+            formSaveSucceeded: 'Formulaire enregistre.',
+            formNoChanges: 'Aucun changement a enregistrer.',
+            formUnavailable: 'Formulaire indisponible',
+            localizedFieldAriaLabel: 'Champ localise',
             previewChanged: 'Modifies',
             previewErrors: 'Erreurs',
             previewWarnings: 'Alertes',
@@ -171,6 +225,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
             boundedJsonExport: 'Export JSON borne disponible',
             boundedJsonPreview: 'Previsualisation JSON borne disponible',
             boundedJsonApply: 'Application JSON borne disponible',
+            contextualFormEdit: 'Formulaire contextuel disponible',
             boundedJsonExportPlanned: 'Export JSON borne prevu',
             boundedJsonUpsertPlanned: 'Upsert JSON borne prevu',
             formEditPlanned: 'Formulaire contextuel prevu'
@@ -214,6 +269,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect(drawer.textContent).toContain('fr');
     expect(drawer.textContent).toContain('en');
     expect(previewTextArea).not.toBeNull();
+    expect(drawer.textContent).toContain('Formulaire rapide');
     expect(exportButton?.textContent).toContain('Telecharger le JSON du bloc');
     expect(drawer.textContent).toContain('Appliquer');
     expect(adminLink?.textContent).toContain('Ouvrir edition admin complete');
@@ -248,7 +304,7 @@ describe('AdminContextualBlockDrawerComponent', () => {
     fixture.detectChanges();
 
     const previewButton: HTMLButtonElement = (fixture.nativeElement as HTMLElement)
-      .querySelector('.admin-contextual-block-drawer__preview-actions .admin-contextual-block-drawer__action--primary') as HTMLButtonElement;
+      .querySelector('.admin-contextual-block-drawer__preview .admin-contextual-block-drawer__preview-actions .admin-contextual-block-drawer__action--primary') as HTMLButtonElement;
     previewButton.click();
 
     expect(previewFacade.setJsonDraft).toHaveBeenCalledWith('{ "block": { "parkId": "park-1" } }');
@@ -265,11 +321,32 @@ describe('AdminContextualBlockDrawerComponent', () => {
     fixture.detectChanges();
 
     const buttons: NodeListOf<HTMLButtonElement> = (fixture.nativeElement as HTMLElement)
-      .querySelectorAll('.admin-contextual-block-drawer__preview-actions .admin-contextual-block-drawer__action');
+      .querySelectorAll('.admin-contextual-block-drawer__preview .admin-contextual-block-drawer__preview-actions .admin-contextual-block-drawer__action');
     const applyButton: HTMLButtonElement = buttons.item(1);
     applyButton.click();
 
     expect(applyFacade.applyBlock).toHaveBeenCalledOnceWith(block);
+  });
+
+  it('delegates contextual form edits to the form facade', () => {
+    const block: AdminContextualBlockInstance = createBlock();
+    publicViewModeFacade.setViewMode('adminPreview');
+    publicViewModeFacade.setEditionModeEnabled(true);
+    selectionFacade.selectBlock(block);
+    fixture.detectChanges();
+
+    const textarea: HTMLTextAreaElement = (fixture.nativeElement as HTMLElement)
+      .querySelector('.admin-contextual-block-drawer__form-fields textarea') as HTMLTextAreaElement;
+    textarea.value = 'Updated description';
+    textarea.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    const saveButton: HTMLButtonElement = (fixture.nativeElement as HTMLElement)
+      .querySelector('.admin-contextual-block-drawer__form .admin-contextual-block-drawer__action--primary') as HTMLButtonElement;
+    saveButton.click();
+
+    expect(formFacade.updateLocalizedValue).toHaveBeenCalledWith('en', 'Updated description');
+    expect(formFacade.saveForm).toHaveBeenCalledOnceWith(block);
   });
 
   it('clears the selected block from the close action', () => {
@@ -299,7 +376,7 @@ function createBlock(): AdminContextualBlockInstance {
     labelKey: 'admin.contextualBlocks.blocks.parkDescription.label',
     descriptionKey: 'admin.contextualBlocks.blocks.parkDescription.description',
     iconClass: 'pi pi-align-left',
-    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply'],
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
     jsonScope: ['park.id', 'park.descriptions[*].value'],
     localizedLanguageCodes: ['fr', 'en'],
     adminRoute: ['/', 'fr', 'admin', 'parks', 'edit', 'park-1']

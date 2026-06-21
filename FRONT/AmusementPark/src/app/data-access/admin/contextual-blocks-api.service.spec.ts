@@ -79,6 +79,37 @@ describe('ContextualBlocksApiService', () => {
     });
   });
 
+  it('reads bounded contextual block exports as JSON documents', () => {
+    service.getBlockExportDocument('park.description', 'park 1').subscribe((response) => {
+      expect(response.blockType).toBe('park.description');
+      expect(response.target.entityId).toBe('park-1');
+    });
+
+    const request = httpTestingController.expectOne(`${environment.apiBaseUrl}admin/contextual-blocks/park.description/park%201/export`);
+    expect(request.request.method).toBe('GET');
+
+    request.flush({
+      documentType: 'AmusementParkContextualBlockUpsert',
+      schemaVersion: '2026-06-21',
+      blockType: 'park.description',
+      target: {
+        entityType: 'Park',
+        entityId: 'park-1'
+      },
+      ids: {
+        parkId: 'park-1'
+      },
+      block: {
+        parkId: 'park-1',
+        descriptions: []
+      },
+      metadata: {
+        source: 'admin-contextual-block-export',
+        exportedAtUtc: '2026-06-21T10:00:00Z'
+      }
+    });
+  });
+
   it('posts bounded JSON apply requests to mutate selected blocks', () => {
     const document: unknown = { blockType: 'park.description', block: { parkId: 'park-1' } };
 
