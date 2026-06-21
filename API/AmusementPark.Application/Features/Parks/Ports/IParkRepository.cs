@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Features.Parks.Contracts;
 using AmusementPark.Core.Domain.Parks;
 
@@ -22,12 +23,12 @@ public interface IParkRepository
     /// <summary>
     /// Retourne une page de parcs.
     /// </summary>
-    Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken);
+    Task<PagedResult<Park>> GetPageAsync(int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter, CancellationToken cancellationToken, ParkAdminSortField sortField = ParkAdminSortField.Default, bool sortDescending = false);
 
     /// <summary>
     /// Compte les parcs.
     /// </summary>
-    Task<long> CountAsync(bool includeHidden, CancellationToken cancellationToken);
+    Task<long> CountAsync(bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retourne les identifiants des parcs visibles publiquement.
@@ -47,12 +48,12 @@ public interface IParkRepository
     /// <summary>
     /// Retourne les parcs visibles publiquement disposant de coordonnées pour une carte.
     /// </summary>
-    Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(string? searchTerm, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retourne les parcs visibles publiquement disposant de coordonnées pour une carte selon des critères unifiés.
     /// </summary>
-    Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(ParkSearchCriteria criteria, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Park>> GetVisibleMapPointsAsync(ParkSearchCriteria criteria, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retourne les parcs visibles publiquement disposant de coordonnÃ©es exploitables.
@@ -62,22 +63,22 @@ public interface IParkRepository
     /// <summary>
     /// Retourne une sélection aléatoire de parcs visibles publiquement.
     /// </summary>
-    Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retourne une sélection aléatoire de parcs visibles publiquement, en excluant certains parcs.
     /// </summary>
-    Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Park>> GetRandomVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retourne les parcs visibles mis en avant manuellement sur la home publique.
     /// </summary>
-    Task<IReadOnlyCollection<Park>> GetManualHomeFeaturedVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Park>> GetManualHomeFeaturedVisibleAsync(int limit, IReadOnlyCollection<string> excludedParkIds, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Compte les pays réellement couverts par les parcs.
     /// </summary>
-    Task<int> CountDistinctCountryCodesAsync(bool includeHidden, CancellationToken cancellationToken);
+    Task<int> CountDistinctCountryCodesAsync(bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Compte les pays réellement couverts par une sélection explicite de parcs.
@@ -92,17 +93,17 @@ public interface IParkRepository
     /// <summary>
     /// Recherche des parcs par critères publics unifiés.
     /// </summary>
-    Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, CancellationToken cancellationToken);
+    Task<PagedResult<Park>> SearchAsync(ParkSearchCriteria criteria, int page, int pageSize, bool includeHidden, bool? isVisible, AdminReviewStatus? adminReviewStatus, ParkType? type, string? countryCode, bool? hasValidCoordinates, ClosedEntityFilter closedFilter, CancellationToken cancellationToken, ParkAdminSortField sortField = ParkAdminSortField.Default, bool sortDescending = false);
 
     /// <summary>
     /// Recherche des parcs par position.
     /// </summary>
-    Task<IReadOnlyCollection<Park>> SearchByLocationAsync(double latitude, double longitude, double radiusInKilometers, bool includeHidden, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Park>> SearchByLocationAsync(double latitude, double longitude, double radiusInKilometers, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retourne les parcs les plus proches d'une position.
     /// </summary>
-    Task<IReadOnlyCollection<Park>> GetNearestByLocationAsync(double latitude, double longitude, int limit, double? maxDistanceInKilometers, bool includeHidden, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Park>> GetNearestByLocationAsync(double latitude, double longitude, int limit, double? maxDistanceInKilometers, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Crée un parc.

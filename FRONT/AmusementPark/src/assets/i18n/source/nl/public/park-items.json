@@ -15,7 +15,11 @@
       "clear": "Filters wissen",
       "allCategories": "Alle categorieën",
       "allTypes": "Alle types",
-      "allZones": "Alle zones"
+      "allZones": "Alle zones",
+      "closedStatus": "Opening",
+      "openOnly": "Open",
+      "withClosed": "Met gesloten",
+      "closedOnly": "Gesloten"
     },
     "list": {
       "subtitle": "Ontdek de attracties, shows, restaurants, winkels en services van dit park en open elke detailpagina.",
@@ -28,7 +32,9 @@
       "emptyFilteredTitle": "Geen passende plek",
       "emptyFilteredMessage": "Maak je filters ruimer of reset ze om meer plekken te zien.",
       "filteredResults": "Gefilterde resultaten",
-      "resultsCount": "Weergave {{start}} tot {{end}} van {{total}} plek(ken)"
+      "resultsCount": "Weergave {{start}} tot {{end}} van {{total}} plek(ken)",
+      "backToPark": "Terug naar {{name}}",
+      "titleWithPark": "Plekken in {{name}}"
     },
     "detail": {
       "loadingTitle": "Pagina laden",
@@ -218,6 +224,10 @@
       "removed": "Verwijderd / afgebroken",
       "planned": "Gepland",
       "unknown": "Onbekend"
+    },
+    "unlocated": {
+      "title": "{{count}} plek(ken) buiten kaart",
+      "subtitle": "Ze zijn niet geolokaliseerd, maar je kunt ze hier openen."
     }
   }
 }

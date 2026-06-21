@@ -13,7 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AdminReviewStatus, getAdminReviewStatusSeverity, getAdminReviewStatusTranslationKey } from '@app/models/admin/admin-review-status';
 import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
-import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
+import { ParkAdminListFilters, ParkAdminListSortField } from '@data-access/parks/parks-api-endpoints';
 import { EmptyStateComponent } from '@shared/components/empty-state/empty-state.component';
 
 @Component({
@@ -35,6 +35,8 @@ export class AdminParksViewComponent {
   @Input() typeFilter!: Signal<ParkType | null>;
   @Input() countryCodeFilter!: Signal<string>;
   @Input() validCoordinatesFilter!: Signal<boolean | null>;
+  @Input() sortField!: Signal<ParkAdminListSortField>;
+  @Input() sortOrder!: Signal<1 | -1>;
   @Input() selectedParkIds!: Signal<string[]>;
   @Input() selectedCount!: Signal<number>;
   @Input() canShowHeaderTotal!: Signal<boolean>;
@@ -51,6 +53,7 @@ export class AdminParksViewComponent {
   @Output() allParksSelectionChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() bulkVisibilityChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() bulkStatusChanged: EventEmitter<AdminReviewStatus> = new EventEmitter<AdminReviewStatus>();
+  @Output() bulkParkItemsVisibilityChanged: EventEmitter<void> = new EventEmitter<void>();
   @Output() filteredValidCoordinateParksVisibilityRequested: EventEmitter<void> = new EventEmitter<void>();
   @Output() selectionCleared: EventEmitter<void> = new EventEmitter<void>();
 
@@ -136,6 +139,10 @@ export class AdminParksViewComponent {
     this.bulkStatusChanged.emit('NotRelevant');
   }
 
+  makeSelectedParkItemsVisible(): void {
+    this.bulkParkItemsVisibilityChanged.emit();
+  }
+
   makeFilteredValidCoordinateParksVisible(): void {
     this.filteredValidCoordinateParksVisibilityRequested.emit();
   }
@@ -182,5 +189,17 @@ export class AdminParksViewComponent {
     }
 
     return `${park.latitude.toFixed(6)}, ${park.longitude.toFixed(6)}`;
+  }
+
+  getParkItemsTotalCountLabel(park: Park): string {
+    return this.formatCount(park.parkItemsTotalCount);
+  }
+
+  getParkItemsVisibleCountLabel(park: Park): string {
+    return this.formatCount(park.parkItemsVisibleCount);
+  }
+
+  private formatCount(count: number | null | undefined): string {
+    return count === null || count === undefined ? '-' : String(count);
   }
 }

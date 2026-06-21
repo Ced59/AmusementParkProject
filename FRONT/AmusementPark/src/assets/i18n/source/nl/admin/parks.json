@@ -428,7 +428,14 @@
       "title": "Parken",
       "subtitle": "Filter, prioriteer en beheer parken op de site.",
       "reviewStatus": "Adminstatus",
-      "loadError": "Parken konden niet worden geladen."
+      "loadError": "Parken konden niet worden geladen.",
+      "status": "Status",
+      "itemsTotalCount": "Items",
+      "itemsVisibleCount": "Zicht.",
+      "statuses": {
+        "operating": "Open",
+        "closedDefinitively": "Definitief gesloten"
+      }
     }
   }
 }

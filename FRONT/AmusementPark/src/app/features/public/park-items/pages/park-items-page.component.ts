@@ -7,6 +7,7 @@ import { resolveLanguageFromActivatedRoute } from '@shared/utils/routing/route-l
 import { ParkItemsPageStateFacade } from '../state/park-items-page-state.facade';
 import { ParkItemsListViewComponent } from '../ui/park-items-list-view.component';
 import { SeoService } from '@core/seo/seo.service';
+import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 
 @Component({
   selector: 'app-park-items-page',
@@ -25,6 +26,8 @@ export class ParkItemsPageComponent implements OnInit {
   protected readonly categoryOptions = this.stateFacade.categoryOptions;
   protected readonly typeOptions = this.stateFacade.typeOptions;
   protected readonly zoneOptions = this.stateFacade.zoneOptions;
+  protected readonly closedFilterOptions = this.stateFacade.closedFilterOptions;
+  protected readonly hasZones = this.stateFacade.hasZones;
   protected readonly totalResults = this.stateFacade.totalResults;
   protected readonly rangeStart = this.stateFacade.rangeStart;
   protected readonly rangeEnd = this.stateFacade.rangeEnd;
@@ -35,6 +38,7 @@ export class ParkItemsPageComponent implements OnInit {
   protected readonly selectedCategory = signal<string | null>(null);
   protected readonly selectedType = signal<string | null>(null);
   protected readonly selectedZoneId = signal<string | null>(null);
+  protected readonly selectedClosedFilter = signal<ClosedEntityFilter>(DEFAULT_CLOSED_ENTITY_FILTER);
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
   private currentParkId: string | null = null;
@@ -86,6 +90,7 @@ export class ParkItemsPageComponent implements OnInit {
       const selectedCategory: string | null = queryParams.get('category');
       const selectedType: string | null = queryParams.get('type');
       const selectedZoneId: string | null = queryParams.get('zone');
+      const selectedClosedFilter: ClosedEntityFilter = normalizeClosedFilter(queryParams.get('closed'));
       const currentPage: number = Math.max(Number(queryParams.get('page') ?? '1') || 1, 1);
       const pageSize: number = Math.max(Number(queryParams.get('size') ?? '12') || 12, 1);
 
@@ -93,12 +98,14 @@ export class ParkItemsPageComponent implements OnInit {
       this.selectedCategory.set(selectedCategory);
       this.selectedType.set(selectedType);
       this.selectedZoneId.set(selectedZoneId);
+      this.selectedClosedFilter.set(selectedClosedFilter);
 
       this.stateFacade.setFilters({
         searchTerm,
         selectedCategory,
         selectedType,
         selectedZoneId,
+        selectedClosedFilter,
         currentPage,
         pageSize
       });
@@ -123,6 +130,7 @@ export class ParkItemsPageComponent implements OnInit {
       category: this.selectedCategory(),
       type: this.selectedType(),
       zone: this.selectedZoneId(),
+      closed: this.selectedClosedFilter(),
       page: 1,
       size: this.pageSize()
     });
@@ -135,6 +143,7 @@ export class ParkItemsPageComponent implements OnInit {
       category: this.selectedCategory(),
       type: this.selectedType(),
       zone: this.selectedZoneId(),
+      closed: this.selectedClosedFilter(),
       page: 1,
       size: this.pageSize()
     });
@@ -147,6 +156,7 @@ export class ParkItemsPageComponent implements OnInit {
       category: this.selectedCategory(),
       type: this.selectedType(),
       zone: this.selectedZoneId(),
+      closed: this.selectedClosedFilter(),
       page: 1,
       size: this.pageSize()
     });
@@ -159,6 +169,7 @@ export class ParkItemsPageComponent implements OnInit {
       category: this.selectedCategory(),
       type: this.selectedType(),
       zone: this.selectedZoneId(),
+      closed: this.selectedClosedFilter(),
       page: 1,
       size: this.pageSize()
     });
@@ -171,6 +182,20 @@ export class ParkItemsPageComponent implements OnInit {
       category: this.selectedCategory(),
       type: this.selectedType(),
       zone: this.selectedZoneId(),
+      closed: this.selectedClosedFilter(),
+      page: 1,
+      size: this.pageSize()
+    });
+  }
+
+  onClosedFilterChanged(value: string | null): void {
+    this.selectedClosedFilter.set(normalizeClosedFilter(value));
+    this.updateQueryParams({
+      search: this.searchTerm(),
+      category: this.selectedCategory(),
+      type: this.selectedType(),
+      zone: this.selectedZoneId(),
+      closed: this.selectedClosedFilter(),
       page: 1,
       size: this.pageSize()
     });
@@ -181,12 +206,14 @@ export class ParkItemsPageComponent implements OnInit {
     this.selectedCategory.set(null);
     this.selectedType.set(null);
     this.selectedZoneId.set(null);
+    this.selectedClosedFilter.set(DEFAULT_CLOSED_ENTITY_FILTER);
 
     this.updateQueryParams({
       search: null,
       category: null,
       type: null,
       zone: null,
+      closed: DEFAULT_CLOSED_ENTITY_FILTER,
       page: 1,
       size: 12
     });
@@ -201,6 +228,7 @@ export class ParkItemsPageComponent implements OnInit {
       category: this.selectedCategory(),
       type: this.selectedType(),
       zone: this.selectedZoneId(),
+      closed: this.selectedClosedFilter(),
       page,
       size: rows
     });
@@ -211,6 +239,7 @@ export class ParkItemsPageComponent implements OnInit {
     category: string | null;
     type: string | null;
     zone: string | null;
+    closed: ClosedEntityFilter;
     page: number;
     size: number;
   }): void {
@@ -221,10 +250,19 @@ export class ParkItemsPageComponent implements OnInit {
         category: values.category,
         type: values.type,
         zone: values.zone,
+        closed: values.closed !== DEFAULT_CLOSED_ENTITY_FILTER ? values.closed : null,
         page: values.page > 1 ? values.page : null,
         size: values.size !== 12 ? values.size : null
       },
       queryParamsHandling: 'merge'
     });
   }
+}
+
+function normalizeClosedFilter(value: string | null): ClosedEntityFilter {
+  if (value === 'all' || value === 'closedOnly') {
+    return value;
+  }
+
+  return DEFAULT_CLOSED_ENTITY_FILTER;
 }

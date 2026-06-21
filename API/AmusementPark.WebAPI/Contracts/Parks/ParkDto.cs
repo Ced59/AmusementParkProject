@@ -13,6 +13,8 @@ public sealed class ParkDto
 
     public ParkTypeDto? Type { get; set; }
 
+    public ParkStatusDto Status { get; set; } = ParkStatusDto.Operating;
+
     public string? FounderId { get; set; }
 
     public string? OperatorId { get; set; }
@@ -42,4 +44,8 @@ public sealed class ParkDto
     public string? PostalCode { get; set; }
 
     public string? CurrentLogoImageId { get; set; }
+
+    public int? ParkItemsTotalCount { get; set; }
+
+    public int? ParkItemsVisibleCount { get; set; }
 }

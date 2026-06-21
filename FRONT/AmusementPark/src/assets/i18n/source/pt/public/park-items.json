@@ -15,7 +15,11 @@
       "clear": "Limpar filtros",
       "allCategories": "Todas as categorias",
       "allTypes": "Todos os tipos",
-      "allZones": "Todas as zonas"
+      "allZones": "Todas as zonas",
+      "closedStatus": "Abertura",
+      "openOnly": "Abertos",
+      "withClosed": "Com fechados",
+      "closedOnly": "Fechados"
     },
     "list": {
       "subtitle": "Explora as atrações, espetáculos, restaurantes, lojas e serviços do parque, depois abre a ficha detalhada de cada local.",
@@ -28,7 +32,9 @@
       "emptyFilteredTitle": "Nenhum local correspondente",
       "emptyFilteredMessage": "Alarga os filtros ou repõe-nos para ver mais locais.",
       "filteredResults": "Resultados filtrados",
-      "resultsCount": "A mostrar {{start}} a {{end}} de {{total}} local(is)"
+      "resultsCount": "A mostrar {{start}} a {{end}} de {{total}} local(is)",
+      "backToPark": "Voltar a {{name}}",
+      "titleWithPark": "Locais de {{name}}"
     },
     "detail": {
       "loadingTitle": "A carregar ficha",
@@ -218,6 +224,10 @@
       "removed": "Removido / desmontado",
       "planned": "Planeado",
       "unknown": "Desconhecido"
+    },
+    "unlocated": {
+      "title": "{{count}} local(is) fora do mapa",
+      "subtitle": "N?o est?o geolocalizados, mas podes abri-los aqui."
     }
   }
 }

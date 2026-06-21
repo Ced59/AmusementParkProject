@@ -428,7 +428,14 @@
       "title": "Parques",
       "subtitle": "Filtra, prioriza e administra os parques do site.",
       "reviewStatus": "Estado admin",
-      "loadError": "Não foi possível carregar os parques."
+      "loadError": "Não foi possível carregar os parques.",
+      "status": "Estado",
+      "itemsTotalCount": "Itens",
+      "itemsVisibleCount": "Vis.",
+      "statuses": {
+        "operating": "Aberto",
+        "closedDefinitively": "Fechado definitivamente"
+      }
     }
   }
 }

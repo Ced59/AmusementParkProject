@@ -1,3 +1,4 @@
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Features.Parks.Results;
 
 namespace AmusementPark.Application.Features.Parks.Ports;
@@ -7,5 +8,5 @@ namespace AmusementPark.Application.Features.Parks.Ports;
 /// </summary>
 public interface IParkDetailSummaryReadRepository
 {
-    Task<ParkDetailSummaryResult?> GetAsync(string parkId, bool includeHidden, CancellationToken cancellationToken);
+    Task<ParkDetailSummaryResult?> GetAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken);
 }

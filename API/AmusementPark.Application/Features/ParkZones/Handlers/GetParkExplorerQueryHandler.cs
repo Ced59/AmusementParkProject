@@ -33,7 +33,7 @@ public sealed class GetParkExplorerQueryHandler : IQueryHandler<GetParkExplorerQ
             return ApplicationResult<ParkExplorerResult>.Failure(ParkApplicationErrors.ParkNotExists());
         }
 
-        ParkExplorerResult explorer = await this.parkZoneRepository.GetExplorerAsync(query.ParkId.Trim(), query.IncludeHidden, cancellationToken);
+        ParkExplorerResult explorer = await this.parkZoneRepository.GetExplorerAsync(query.ParkId.Trim(), query.IncludeHidden, query.ClosedFilter, cancellationToken);
         return ApplicationResult<ParkExplorerResult>.Success(explorer);
     }
 }

@@ -20,8 +20,8 @@ import { AdminParkLocationTabComponent } from './tabs/admin-park-location-tab/ad
 import { AdminParkDescriptionsTabComponent } from './tabs/admin-park-descriptions-tab/admin-park-descriptions-tab.component';
 import { AdminParkLogosTabComponent } from './tabs/admin-park-logos-tab/admin-park-logos-tab.component';
 import { AdminParkPhotosTabComponent } from './tabs/admin-park-photos-tab/admin-park-photos-tab.component';
-import { PARK_TYPE_OPTIONS } from '@shared/utils/display/display-options';
-import { AdminParkTypeOption } from '@features/admin/parks/models/admin-park-edit.model';
+import { PARK_STATUS_OPTIONS, PARK_TYPE_OPTIONS } from '@shared/utils/display/display-options';
+import { AdminParkStatusOption, AdminParkTypeOption } from '@features/admin/parks/models/admin-park-edit.model';
 import {
   buildAdminParkEditSnapshot,
   createAdminParkEditForm,
@@ -79,6 +79,7 @@ type SaveScope = 'section' | 'all';
 export class AdminParkEditComponent implements OnInit {
   public readonly form: FormGroup;
   public readonly parkTypeOptions: AdminParkTypeOption[] = [...PARK_TYPE_OPTIONS];
+  public readonly parkStatusOptions: AdminParkStatusOption[] = [...PARK_STATUS_OPTIONS];
   public readonly allowMultipleLogoUpload: boolean = true;
   public readonly activeTabIndex = signal(0);
   public readonly currentLang = signal('en');

@@ -14,15 +14,18 @@ export class ParkItemsFiltersComponent {
   @Input({ required: true }) selectedCategory!: Signal<string | null>;
   @Input({ required: true }) selectedType!: Signal<string | null>;
   @Input({ required: true }) selectedZoneId!: Signal<string | null>;
+  @Input({ required: true }) selectedClosedFilter!: Signal<string>;
   @Input({ required: true }) categoryOptions!: Signal<SelectOption[]>;
   @Input({ required: true }) typeOptions!: Signal<SelectOption[]>;
   @Input({ required: true }) zoneOptions!: Signal<SelectOption[]>;
+  @Input({ required: true }) closedFilterOptions!: Signal<SelectOption[]>;
   @Input({ required: true }) hasZones!: Signal<boolean>;
 
   @Output() searchChanged: EventEmitter<string> = new EventEmitter<string>();
   @Output() categoryChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() typeChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
   @Output() zoneChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
+  @Output() closedFilterChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
 
   protected readonly filters = computed<UiSearchPanelSelectFilterModel[]>(() => [
     {
@@ -43,6 +46,12 @@ export class ParkItemsFiltersComponent {
       selectedValue: this.selectedZoneId(),
       options: this.zoneOptions(),
       hidden: !this.hasZones()
+    },
+    {
+      id: 'closed',
+      labelKey: 'parkItems.filters.closedStatus',
+      selectedValue: this.selectedClosedFilter(),
+      options: this.closedFilterOptions()
     }
   ]);
 
@@ -63,6 +72,11 @@ export class ParkItemsFiltersComponent {
 
     if (event.id === 'zone') {
       this.zoneChanged.emit(event.value);
+      return;
+    }
+
+    if (event.id === 'closed') {
+      this.closedFilterChanged.emit(event.value);
     }
   }
 }

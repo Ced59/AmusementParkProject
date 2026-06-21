@@ -102,6 +102,15 @@ internal static class ParkItemsHttpMappers
         return value.ToHttp(null);
     }
 
+    public static ParkItemDto ToHttp(this ParkItemListResult value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+
+        ParkItemDto dto = value.Item.ToHttp();
+        dto.MainImageId = value.MainImageId;
+        return dto;
+    }
+
     public static ParkItemDto ToHttp(this ParkItem value, RatingSummaryResult? rating)
     {
         ArgumentNullException.ThrowIfNull(value);

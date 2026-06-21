@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
@@ -17,7 +18,7 @@ import { MapMarkerPopupActionService } from '@shared/services/maps/map-marker-po
   templateUrl: './park-items-map-section.component.html',
   styleUrls: ['./park-items-map-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LeafletMapComponent, TranslateModule, UiButtonDirective, UiKickerComponent, UiMapSlotComponent]
+  imports: [LeafletMapComponent, RouterLink, TranslateModule, UiButtonDirective, UiKickerComponent, UiMapSlotComponent]
 })
 export class ParkItemsMapSectionComponent implements OnChanges {
   @Input() map: ParkItemsMapViewModel | null = null;

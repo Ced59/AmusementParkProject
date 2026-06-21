@@ -23,6 +23,8 @@ public sealed class Park : GeolocatedEntityBase
     /// </summary>
     public ParkType? Type { get; set; }
 
+    public ParkStatus Status { get; set; } = ParkStatus.Operating;
+
     /// <summary>
     /// Identifiant du fondateur associé.
     /// </summary>

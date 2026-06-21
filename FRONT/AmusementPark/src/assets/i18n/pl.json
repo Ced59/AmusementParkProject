@@ -94,7 +94,12 @@
       "markValidated": "Zatwierdź",
       "markNotRelevant": "Nieistotne",
       "validCoordinatesScope": "Parki z poprawnymi wspolrzednymi",
-      "makeFilteredValidCoordinatesVisible": "Pokaz parki geolokalizowane"
+      "makeFilteredValidCoordinatesVisible": "Pokaz parki geolokalizowane",
+      "makeVisibleShort": "Widoczne",
+      "markToReviewShort": "Do sprawd.",
+      "processLaterShort": "P??niej",
+      "clearSelectionShort": "Wyczy??",
+      "showItems": "Poka? itemy"
     },
     "contactGrievances": {
       "navTitle": "Wiadomosci kontaktowe",
@@ -1041,7 +1046,14 @@
       "title": "Parki",
       "subtitle": "Filtruj, priorytetyzuj i administruj parkami w serwisie.",
       "reviewStatus": "Status admin",
-      "loadError": "Nie udało się wczytać parków."
+      "loadError": "Nie udało się wczytać parków.",
+      "status": "Status",
+      "itemsTotalCount": "Itemy",
+      "itemsVisibleCount": "Wid.",
+      "statuses": {
+        "operating": "Otwarty",
+        "closedDefinitively": "Zamkni?ty na sta?e"
+      }
     },
     "references": {
       "sections": {
@@ -2102,7 +2114,11 @@
       "clear": "Wyczyść filtry",
       "allCategories": "Wszystkie kategorie",
       "allTypes": "Wszystkie typy",
-      "allZones": "Wszystkie strefy"
+      "allZones": "Wszystkie strefy",
+      "closedStatus": "Otwarcie",
+      "openOnly": "Otwarte",
+      "withClosed": "Z zamkn.",
+      "closedOnly": "Zamkni?te"
     },
     "list": {
       "subtitle": "Przeglądaj atrakcje, pokazy, restauracje, sklepy i usługi parku, a potem otwieraj szczegółowe strony każdego miejsca.",
@@ -2115,7 +2131,9 @@
       "emptyFilteredTitle": "Brak pasującego miejsca",
       "emptyFilteredMessage": "Rozszerz filtry albo zresetuj je, aby zobaczyć więcej miejsc.",
       "filteredResults": "Wyniki filtrowane",
-      "resultsCount": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsc(a)"
+      "resultsCount": "Wyświetlanie od {{start}} do {{end}} z {{total}} miejsc(a)",
+      "backToPark": "Wr?? do {{name}}",
+      "titleWithPark": "Miejsca w {{name}}"
     },
     "detail": {
       "loadingTitle": "Ładowanie strony",
@@ -2305,6 +2323,10 @@
       "removed": "Usunięte / zdemontowane",
       "planned": "Planowane",
       "unknown": "Nieznane"
+    },
+    "unlocated": {
+      "title": "{{count}} miejsce/a poza map?",
+      "subtitle": "Nie maj? geolokalizacji, ale otworzysz je tutaj."
     },
     "videosPage": {
       "kicker": "Filmy miejsca",
@@ -2702,6 +2724,15 @@
       "itemsTitle": "Miejsca do odkrycia w tej strefie",
       "emptyItemsTitle": "Brak miejsca w tej strefie",
       "emptyItemsMessage": "Żadne publiczne miejsce nie jest obecnie powiązane z tą strefą."
+    },
+    "closedFilters": {
+      "label": "Otwarcie",
+      "openOnly": "Otwarte",
+      "withClosed": "Z zamkn.",
+      "closedOnly": "Zamkni?te"
+    },
+    "statuses": {
+      "closedDefinitively": "Zamkni?ty na sta?e"
     },
     "videosPage": {
       "kicker": "Park videos",

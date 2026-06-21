@@ -7,8 +7,13 @@ import { getParkItemCategoryTranslationKey, getParkItemTypeTranslationKey } from
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { resolveParkItemMarkerIconKind } from '@shared/utils/maps/map-marker-icon-kind.resolver';
 import { buildParkItemMapDetailRouteCommands } from '@shared/services/maps/map-marker-detail-route.helpers';
+import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { ParkItemsCountTagViewModel } from '../models/park-items-page-view.model';
-import { ParkItemsMapViewModel, ParkItemsZoneFocusViewModel } from '../models/park-items-zone-focus.model';
+import {
+  ParkItemsMapViewModel,
+  ParkItemsUnlocatedItemViewModel,
+  ParkItemsZoneFocusViewModel
+} from '../models/park-items-zone-focus.model';
 
 export function mapParkItemsZoneFocusViewModel(
   park: Park | null,
@@ -35,6 +40,7 @@ export function mapParkItemsZoneFocusViewModel(
   const heroImageId: string | null = resolveParkHeroImageId(parkPhotos);
   const map: ParkItemsMapViewModel = mapDisplayedItemsToMapViewModel(park, displayedItems, zones, currentLanguage);
   const topTypeHighlights: ParkItemsCountTagViewModel[] = buildTypeHighlightsFromItems(typeFilterScopeItems);
+  const unlocatedItems: ParkItemsUnlocatedItemViewModel[] = mapUnlocatedItems(park, displayedItems, currentLanguage);
 
   return {
     parkName: park.name ?? '',
@@ -46,8 +52,34 @@ export function mapParkItemsZoneFocusViewModel(
     displayedItems: displayedItems.length,
     hasActiveZone: !!activeZone,
     topTypeHighlights,
-    map
+    map,
+    unlocatedItems
   };
+}
+
+function mapUnlocatedItems(
+  park: Park,
+  displayedItems: readonly ParkItem[],
+  currentLanguage: string
+): ParkItemsUnlocatedItemViewModel[] {
+  return displayedItems
+    .filter((item: ParkItem) => item.isVisible !== false)
+    .filter((item: ParkItem) => !hasValidParkItemPosition(item))
+    .map((item: ParkItem) => ({
+      id: item.id ?? null,
+      name: item.name,
+      categoryLabelKey: getParkItemCategoryTranslationKey(item.category),
+      typeLabelKey: getParkItemTypeTranslationKey(item.type),
+      detailLink: buildPublicParkItemRouteCommands({
+        language: currentLanguage,
+        parkId: park.id,
+        parkName: park.name,
+        itemId: item.id,
+        itemName: item.name
+      })
+    }))
+    .sort((left: ParkItemsUnlocatedItemViewModel, right: ParkItemsUnlocatedItemViewModel) => left.name.localeCompare(right.name))
+    .slice(0, 10);
 }
 
 function mapDisplayedItemsToMapViewModel(

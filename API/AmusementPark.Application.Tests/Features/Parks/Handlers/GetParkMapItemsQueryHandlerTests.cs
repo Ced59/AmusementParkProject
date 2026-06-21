@@ -1,4 +1,5 @@
 using AmusementPark.Application.Common.Results;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Parks.Handlers;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -53,7 +54,7 @@ public sealed class GetParkMapItemsQueryHandlerTests
 
         Assert.True(result.IsSuccess);
         Assert.Same(mapItems, result.Value);
-        Assert.Equal(new[] { new MapItemsCall("park-1", true) }, repository.Calls);
+        Assert.Equal(new[] { new MapItemsCall("park-1", true, ClosedEntityFilter.OpenOnly) }, repository.Calls);
     }
 
     [Fact]
@@ -65,7 +66,7 @@ public sealed class GetParkMapItemsQueryHandlerTests
         ApplicationResult<ParkMapItemsResult> result = await handler.HandleAsync(new GetParkMapItemsQuery("park-404"));
 
         Assert.False(result.IsSuccess);
-        Assert.Equal(new[] { new MapItemsCall("park-404", false) }, repository.Calls);
+        Assert.Equal(new[] { new MapItemsCall("park-404", false, ClosedEntityFilter.OpenOnly) }, repository.Calls);
     }
 
     private static Park CreatePark(string id)
@@ -80,7 +81,7 @@ public sealed class GetParkMapItemsQueryHandlerTests
         return park;
     }
 
-    private sealed record MapItemsCall(string ParkId, bool IncludeHidden);
+    private sealed record MapItemsCall(string ParkId, bool IncludeHidden, ClosedEntityFilter ClosedFilter);
 
     private sealed class FakeParkMapItemsReadRepository : IParkMapItemsReadRepository
     {
@@ -88,9 +89,9 @@ public sealed class GetParkMapItemsQueryHandlerTests
 
         public List<MapItemsCall> Calls { get; } = new List<MapItemsCall>();
 
-        public Task<ParkMapItemsResult?> GetAsync(string parkId, bool includeHidden, CancellationToken cancellationToken)
+        public Task<ParkMapItemsResult?> GetAsync(string parkId, bool includeHidden, ClosedEntityFilter closedFilter, CancellationToken cancellationToken)
         {
-            this.Calls.Add(new MapItemsCall(parkId, includeHidden));
+            this.Calls.Add(new MapItemsCall(parkId, includeHidden, closedFilter));
             return Task.FromResult(this.MapItems);
         }
     }

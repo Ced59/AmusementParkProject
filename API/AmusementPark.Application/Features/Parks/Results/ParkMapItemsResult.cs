@@ -11,6 +11,8 @@ public sealed class ParkMapItemsResult
 
     public IReadOnlyCollection<ParkMapItemResult> Items { get; init; } = Array.Empty<ParkMapItemResult>();
 
+    public IReadOnlyCollection<ParkMapUnlocatedItemResult> UnlocatedItems { get; init; } = Array.Empty<ParkMapUnlocatedItemResult>();
+
     public IReadOnlyCollection<ParkMapZoneResult> Zones { get; init; } = Array.Empty<ParkMapZoneResult>();
 }
 
@@ -31,6 +33,21 @@ public sealed class ParkMapItemResult
     public double Latitude { get; init; }
 
     public double Longitude { get; init; }
+}
+
+public sealed class ParkMapUnlocatedItemResult
+{
+    public required string Id { get; init; }
+
+    public required string Name { get; init; }
+
+    public ParkItemCategory Category { get; init; }
+
+    public ParkItemType Type { get; init; }
+
+    public string? Subtype { get; init; }
+
+    public string? ZoneId { get; init; }
 }
 
 public sealed class ParkMapZoneResult

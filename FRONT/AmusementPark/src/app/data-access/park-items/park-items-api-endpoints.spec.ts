@@ -49,4 +49,13 @@ describe('PARK_ITEMS_API_ENDPOINTS', () => {
     expect(PARK_ITEMS_API_ENDPOINTS.previewParkItemsBulkCreate).toBe('park-items/bulk-create/preview');
     expect(PARK_ITEMS_API_ENDPOINTS.applyParkItemsBulkCreate).toBe('park-items/bulk-create/apply');
   });
+
+  it('adds closed filters to public navigation endpoints when requested', () => {
+    expect(PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId('park-1', 1, 100, 'all'))
+      .toBe('park-items/park/park-1?page=1&size=100&closedFilter=all');
+    expect(PARK_ITEMS_API_ENDPOINTS.getParkItemSiblingNavigation('item 1', 'closedOnly'))
+      .toBe('park-items/item%201/siblings?closedFilter=closedOnly');
+    expect(PARK_ITEMS_API_ENDPOINTS.getRelatedParkItems('item 1', 4, 'openOnly'))
+      .toBe('park-items/item%201/related?limit=4');
+  });
 });

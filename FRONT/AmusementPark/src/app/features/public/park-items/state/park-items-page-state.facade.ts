@@ -12,6 +12,7 @@ import { catchError, forkJoin, of } from 'rxjs';
 import { ImageCategory } from '@app/models/images/image-category';
 import { ImageDto } from '@app/models/images/image-dto';
 import { ImageOwnerType } from '@app/models/images/image-owner-type';
+import { ClosedEntityFilter, DEFAULT_CLOSED_ENTITY_FILTER } from '@app/models/shared/closed-entity-filter';
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { Park } from '@app/models/parks/park';
 import { ParkExplorer, ParkExplorerBucket } from '@app/models/parks/park-explorer';
@@ -64,6 +65,7 @@ export interface ParkItemsPageFilters {
   selectedCategory: string | null;
   selectedType: string | null;
   selectedZoneId: string | null;
+  selectedClosedFilter: ClosedEntityFilter;
   currentPage: number;
   pageSize: number;
 }
@@ -76,8 +78,10 @@ export class ParkItemsPageStateFacade {
   private readonly selectedCategorySignal = signal<string | null>(null);
   private readonly selectedTypeSignal = signal<string | null>(null);
   private readonly selectedZoneIdSignal = signal<string | null>(null);
+  private readonly selectedClosedFilterSignal = signal<ClosedEntityFilter>(DEFAULT_CLOSED_ENTITY_FILTER);
   private readonly currentPageSignal = signal(1);
   private readonly pageSizeSignal = signal(12);
+  private readonly currentParkIdSignal = signal<string | null>(null);
 
   public readonly state = this.screenStateStore.state;
   public readonly pageView: Signal<ParkItemsPageViewModel | null> = computed(() => {
@@ -112,6 +116,11 @@ export class ParkItemsPageStateFacade {
 
     return base.concat(values);
   });
+  public readonly closedFilterOptions: Signal<SelectOption[]> = computed(() => [
+    { labelKey: 'parkItems.filters.openOnly', value: 'openOnly' },
+    { labelKey: 'parkItems.filters.withClosed', value: 'all' },
+    { labelKey: 'parkItems.filters.closedOnly', value: 'closedOnly' }
+  ]);
   public readonly zoneCards: Signal<ParkItemZoneCardViewModel[]> = computed(() => {
     const explorer: ParkExplorer | null = this.explorer();
 
@@ -153,7 +162,9 @@ export class ParkItemsPageStateFacade {
         this.resolveZoneName(item),
         this.textTruncator,
         this.measurementPreferenceService.preferredSystem(),
-        this.measurementConversionService
+        this.measurementConversionService,
+        this.resolveItemImageUrl(item),
+        this.resolveItemImageSrcSet(item)
       ));
   });
   public readonly totalResults = computed(() => this.filteredItems().length);
@@ -168,9 +179,11 @@ export class ParkItemsPageStateFacade {
   public readonly currentPage = this.currentPageSignal.asReadonly();
   public readonly pageSize = this.pageSizeSignal.asReadonly();
   public readonly selectedZoneId = this.selectedZoneIdSignal.asReadonly();
+  public readonly selectedClosedFilter = this.selectedClosedFilterSignal.asReadonly();
   public readonly searchTerm = this.searchTermSignal.asReadonly();
   public readonly selectedCategory = this.selectedCategorySignal.asReadonly();
   public readonly selectedType = this.selectedTypeSignal.asReadonly();
+  public readonly hasZones = computed(() => this.zoneCards().length > 0);
   public readonly parkImageId: Signal<string | null> = computed(() => resolveParkSocialImageId(this.screenStateStore.data()?.parkPhotos ?? []));
 
   private readonly park: Signal<Park | null> = computed(() => this.screenStateStore.data()?.park ?? null);
@@ -211,7 +224,6 @@ export class ParkItemsPageStateFacade {
 
     return this.zonesById()[selectedZoneId] ?? null;
   });
-  private readonly hasZones = computed(() => this.zoneCards().length > 0);
   private readonly filteredItems: Signal<ParkItem[]> = computed(() => this.filterItems(true));
   private readonly typeFilterScopeItems: Signal<ParkItem[]> = computed(() => this.filterItems(false));
 
@@ -235,18 +247,36 @@ export class ParkItemsPageStateFacade {
   }
 
   setFilters(filters: ParkItemsPageFilters): void {
+    const previousClosedFilter: ClosedEntityFilter = this.selectedClosedFilterSignal();
+
     this.searchTermSignal.set(filters.searchTerm);
     this.selectedCategorySignal.set(filters.selectedCategory);
     this.selectedTypeSignal.set(filters.selectedType);
     this.selectedZoneIdSignal.set(filters.selectedZoneId);
+    this.selectedClosedFilterSignal.set(filters.selectedClosedFilter);
     this.currentPageSignal.set(filters.currentPage);
     this.pageSizeSignal.set(filters.pageSize);
     this.normalizeFilters();
+
+    if (previousClosedFilter !== filters.selectedClosedFilter && this.currentParkIdSignal()) {
+      this.reloadCurrentData();
+    }
   }
 
   loadData(parkId: string, currentLanguage: string): void {
+    this.currentParkIdSignal.set(parkId);
     this.currentLanguageSignal.set(currentLanguage);
+    this.reloadCurrentData();
+  }
 
+  private reloadCurrentData(): void {
+    const parkId: string | null = this.currentParkIdSignal();
+
+    if (!parkId) {
+      return;
+    }
+
+    const closedFilter: ClosedEntityFilter = this.selectedClosedFilterSignal();
     const previousData: ParkItemsPageSourceData | undefined = this.screenStateStore.data();
     this.screenStateStore.setLoading(previousData);
 
@@ -254,8 +284,8 @@ export class ParkItemsPageStateFacade {
 
     forkJoin({
       park: this.parksApiService.getParkById(parkId, anonymousHttpOptions()),
-      explorer: this.parksApiService.getParkExplorer(parkId, anonymousHttpOptions()),
-      items: this.parkItemsApiService.getParkItemsByParkId(parkId, anonymousHttpOptions()),
+      explorer: this.parksApiService.getParkExplorer(parkId, { ...anonymousHttpOptions(), closedFilter }),
+      items: this.parkItemsApiService.getParkItemsByParkId(parkId, { ...anonymousHttpOptions(), closedFilter }),
       manufacturers: useMinimalSsrData
         ? of([] as AttractionManufacturer[])
         : this.manufacturersApiService.getAttractionManufacturers().pipe(catchError(() => of([] as AttractionManufacturer[]))),
@@ -368,6 +398,18 @@ export class ParkItemsPageStateFacade {
     }
 
     return this.zonesById()[item.zoneId] ?? null;
+  }
+
+  private resolveItemImageUrl(item: ParkItem): string | null {
+    const imageId: string | null = normalizeOptionalImageId(item.mainImageId);
+
+    return imageId ? this.imagesApiService.buildImageUrl(imageId, { width: 640 }) : null;
+  }
+
+  private resolveItemImageSrcSet(item: ParkItem): string | null {
+    const imageId: string | null = normalizeOptionalImageId(item.mainImageId);
+
+    return imageId ? this.imagesApiService.buildImageSrcSet(imageId, [320, 480, 640, 800]) : null;
   }
 
   private normalizeFilters(): void {

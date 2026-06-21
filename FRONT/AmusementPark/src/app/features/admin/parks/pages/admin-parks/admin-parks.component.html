@@ -10,6 +10,8 @@
   [typeFilter]="typeFilter"
   [countryCodeFilter]="countryCodeFilter"
   [validCoordinatesFilter]="validCoordinatesFilter"
+  [sortField]="sortField"
+  [sortOrder]="sortOrder"
   [selectedParkIds]="selectedParkIds"
   [selectedCount]="selectedCount"
   [canShowHeaderTotal]="canShowHeaderTotal"
@@ -25,6 +27,7 @@
   (allParksSelectionChanged)="onAllParksSelectionChanged($event)"
   (bulkVisibilityChanged)="onBulkVisibilityChange($event)"
   (bulkStatusChanged)="onBulkStatusChange($event)"
+  (bulkParkItemsVisibilityChanged)="onSelectedParkItemsVisibilityChange()"
   (filteredValidCoordinateParksVisibilityRequested)="onMakeFilteredValidCoordinateParksVisible()"
   (selectionCleared)="clearSelection()">
 </app-admin-parks-view>

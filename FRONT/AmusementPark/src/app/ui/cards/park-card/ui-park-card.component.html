@@ -13,6 +13,12 @@
             {{ currentPark.city }}
           </app-ui-chip>
         }
+
+        @if (currentPark.isClosedDefinitively) {
+          <app-ui-chip tone="soft" iconClass="pi pi-ban">
+            {{ 'parks.statuses.closedDefinitively' | translate }}
+          </app-ui-chip>
+        }
       </div>
 
       <app-image-display

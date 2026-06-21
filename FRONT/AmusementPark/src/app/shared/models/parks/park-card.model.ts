@@ -3,6 +3,7 @@ export interface ParkCardModel {
   name: string;
   countryCode: string | null;
   city: string | null;
+  status: string | null;
   latitude: number | null;
   longitude: number | null;
   logoImageId: string | null;
@@ -13,4 +14,5 @@ export interface ParkCardModel {
   distanceLine?: string | null;
   travelDurationLine?: string | null;
   shortDescription: string | null;
+  isClosedDefinitively: boolean;
 }

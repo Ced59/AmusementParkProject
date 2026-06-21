@@ -21,7 +21,16 @@ export interface ParkItemsMapViewModel {
   language: string;
   center: [number, number];
   markers: ParkItemsMapMarkerViewModel[];
+  unlocatedItems: ParkItemsMapUnlocatedItemViewModel[];
   categoryFilters: ParkItemsMapFilterOptionViewModel[];
   zoneFilters: ParkItemsMapFilterOptionViewModel[];
   hasItemMarkers: boolean;
+}
+
+export interface ParkItemsMapUnlocatedItemViewModel {
+  id: string | null;
+  name: string;
+  categoryLabelKey: string;
+  typeLabelKey: string;
+  detailLink: string[] | null;
 }

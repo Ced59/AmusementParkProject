@@ -210,6 +210,7 @@ public sealed class ExportParkGraphJsonQueryHandler : IQueryHandler<ExportParkGr
             Name = park.Name,
             CountryCode = park.CountryCode,
             Type = park.Type,
+            Status = park.Status,
             FounderId = park.FounderId,
             FounderKey = park.FounderId,
             OperatorId = park.OperatorId,

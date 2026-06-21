@@ -4,8 +4,9 @@ import { Park } from '@app/models/parks/park';
 import { ParkType } from '@app/models/parks/park-type';
 import { TableLazyLoadEvent } from 'primeng/table';
 import { AdminReviewStatus } from '@app/models/admin/admin-review-status';
-import { ParkAdminListFilters } from '@data-access/parks/parks-api-endpoints';
+import { ParkAdminListFilters, ParkAdminListSortDirection, ParkAdminListSortField } from '@data-access/parks/parks-api-endpoints';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
+import { ParkItemsApiService } from '@data-access/park-items/park-items-api.service';
 import { AdminParksStateFacade } from '@features/admin/parks/state/admin-parks-state.facade';
 import { AdminParksViewComponent } from './admin-parks-view.component';
 import { getParkTypeTranslationKey } from '@shared/utils/display/display-label.helpers';
@@ -31,6 +32,8 @@ export class AdminParksComponent implements OnInit {
   protected readonly typeFilter = this.stateFacade.typeFilter;
   protected readonly countryCodeFilter = this.stateFacade.countryCodeFilter;
   protected readonly validCoordinatesFilter = this.stateFacade.validCoordinatesFilter;
+  protected readonly sortField = this.stateFacade.sortField;
+  protected readonly sortOrder = computed<1 | -1>(() => this.stateFacade.sortDirection() === 'desc' ? -1 : 1);
   protected readonly selectedParkIds = signal<string[]>([]);
   protected readonly selectedCount = computed(() => this.selectedParkIds().length);
   protected readonly canShowHeaderTotal = computed(() => !this.loading());
@@ -39,6 +42,7 @@ export class AdminParksComponent implements OnInit {
   constructor(
     protected readonly stateFacade: AdminParksStateFacade,
     private readonly parksApiService: ParksApiService,
+    private readonly parkItemsApiService: ParkItemsApiService,
     private readonly scrollAnchorService: ScrollAnchorService
   ) {
   }
@@ -74,7 +78,12 @@ export class AdminParksComponent implements OnInit {
   onPageChanged(event: TableLazyLoadEvent): void {
     const rows: number = event.rows ?? this.pageSize();
     const first: number = event.first ?? 0;
-    const page: number = Math.floor(first / rows) + 1;
+    const requestedPage: number = Math.floor(first / rows) + 1;
+    const sortChanged: boolean = this.stateFacade.updateSort(
+      this.normalizeSortField(event.sortField),
+      this.normalizeSortDirection(event.sortOrder)
+    );
+    const page: number = sortChanged ? 1 : requestedPage;
     const shouldScroll: boolean = page !== this.currentPage() || rows !== this.pageSize();
 
     this.selectedParkIds.set([]);
@@ -137,6 +146,21 @@ export class AdminParksComponent implements OnInit {
     await this.applyBulkAdministration({ adminReviewStatus });
   }
 
+  async onSelectedParkItemsVisibilityChange(): Promise<void> {
+    if (this.selectedCount() === 0) {
+      return;
+    }
+
+    try {
+      await firstValueFrom(this.parkItemsApiService.updateParkItemsVisibilityByParkIds(this.selectedParkIds(), true));
+      this.selectedParkIds.set([]);
+      this.stateFacade.loadParks(this.currentPage(), this.pageSize());
+    } catch (error: unknown) {
+      console.error('Error making selected park items visible', error);
+      this.stateFacade.loadParks(this.currentPage(), this.pageSize());
+    }
+  }
+
   async onMakeFilteredValidCoordinateParksVisible(): Promise<void> {
     try {
       await firstValueFrom(this.stateFacade.makeFilteredValidCoordinateParksVisible());
@@ -169,5 +193,24 @@ export class AdminParksComponent implements OnInit {
       console.error('Error applying bulk park administration update', error);
       this.stateFacade.loadParks(this.currentPage(), this.pageSize());
     }
+  }
+
+  private normalizeSortField(sortField: string | string[] | null | undefined): ParkAdminListSortField {
+    const primarySortField: string | null | undefined = Array.isArray(sortField) ? sortField[0] : sortField;
+
+    switch (primarySortField) {
+      case 'name':
+        return 'name';
+      case 'parkItemsTotalCount':
+        return 'parkItemsTotalCount';
+      case 'parkItemsVisibleCount':
+        return 'parkItemsVisibleCount';
+      default:
+        return 'default';
+    }
+  }
+
+  private normalizeSortDirection(sortOrder: number | null | undefined): ParkAdminListSortDirection {
+    return sortOrder === -1 ? 'desc' : 'asc';
   }
 }

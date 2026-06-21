@@ -20,7 +20,7 @@ public sealed class SearchParksByLocationQueryHandler : IQueryHandler<SearchPark
 
     public async Task<ApplicationResult<IReadOnlyCollection<Park>>> HandleAsync(SearchParksByLocationQuery query, CancellationToken cancellationToken = default)
     {
-        IReadOnlyCollection<Park> parks = await this.parkRepository.SearchByLocationAsync(query.Latitude, query.Longitude, query.RadiusInKilometers, query.IncludeHidden, cancellationToken);
+        IReadOnlyCollection<Park> parks = await this.parkRepository.SearchByLocationAsync(query.Latitude, query.Longitude, query.RadiusInKilometers, query.IncludeHidden, query.ClosedFilter, cancellationToken);
         if (parks.Count == 0)
         {
             return ApplicationResult<IReadOnlyCollection<Park>>.Failure(ParkApplicationErrors.NoParkInThisLocation());

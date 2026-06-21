@@ -5,7 +5,7 @@ import { ParkItemsApiService } from '@data-access/park-items/park-items-api.serv
 import { ParkZonesApiService } from '@data-access/parks/park-zones-api.service';
 import { ParksApiService } from '@data-access/parks/parks-api.service';
 
-export interface ParkItemsPageStateImagesApiServicePort extends Pick<ImagesApiService, 'getImages'> {
+export interface ParkItemsPageStateImagesApiServicePort extends Pick<ImagesApiService, 'getImages' | 'buildImageUrl' | 'buildImageSrcSet'> {
 }
 
 export const PARK_ITEMS_PAGE_STATE_IMAGES_API_SERVICE_PORT = new InjectionToken<ParkItemsPageStateImagesApiServicePort>('PARK_ITEMS_PAGE_STATE_IMAGES_API_SERVICE_PORT', {

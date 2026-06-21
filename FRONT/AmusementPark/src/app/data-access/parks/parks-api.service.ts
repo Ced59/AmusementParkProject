@@ -14,13 +14,15 @@ import { ParksApiResponse } from '@app/models/parks/parks_api_response';
 import { LocalizedItem } from '@app/models/shared/localized-item';
 import { PagedCollectionResponse, unwrapCollection } from '../shared/api-helpers';
 import { ParkRegionFilter } from '@shared/models/geo/world-region-filter.model';
-import { PARKS_API_ENDPOINTS, ParkAdminListFilters } from './parks-api-endpoints';
+import { PARKS_API_ENDPOINTS, ParkAdminListFilters, ParkAdminListSort } from './parks-api-endpoints';
 import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
+import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 
 interface ParkWriteRequest {
   name?: string;
   countryCode?: string | null;
   type?: Park['type'] | null;
+  status?: Park['status'] | null;
   founderId?: string | null;
   operatorId?: string | null;
   latitude: number;
@@ -39,6 +41,8 @@ interface ParkWriteRequest {
 
 interface ParksHttpOptions {
   context?: HttpContext;
+  closedFilter?: ClosedEntityFilter;
+  sort?: ParkAdminListSort;
 }
 
 @Injectable({
@@ -58,7 +62,7 @@ export class ParksApiService {
   }
 
   getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, options: ParksHttpOptions = {}): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly, region, filters)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly, region, filters, options.sort ?? null, options.closedFilter)}`;
     return this.http.get<ParksApiResponse>(url, options);
   }
 
@@ -69,7 +73,7 @@ export class ParksApiService {
 
   getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null, options: ParksHttpOptions = {}): Observable<ParkMapPoint[]> {
     const normalizedQuery: string | null = query?.trim() || null;
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedQuery, region)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getVisibleParkMapPoints(normalizedQuery, region, options.closedFilter)}`;
     return this.http.get<ParkMapPoint[]>(url, options);
   }
 
@@ -89,7 +93,7 @@ export class ParksApiService {
   }
 
   getParkDetailSummary(id: string, options: ParksHttpOptions = {}): Observable<ParkDetailSummary> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkDetailSummary(id)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkDetailSummary(id, options.closedFilter)}`;
     const pendingRequest: Observable<ParkDetailSummary> | undefined = this.parkDetailSummaryRequests.get(url);
 
     if (pendingRequest) {
@@ -108,12 +112,12 @@ export class ParksApiService {
   }
 
   getParkMapItems(id: string, options: ParksHttpOptions = {}): Observable<ParkMapItems> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkMapItems(id)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkMapItems(id, options.closedFilter)}`;
     return this.http.get<ParkMapItems>(url, options);
   }
 
   searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, options: ParksHttpOptions = {}): Observable<ParksApiResponse> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(query, page, size, visibleOnly, region, filters)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(query, page, size, visibleOnly, region, filters, options.sort ?? null, options.closedFilter)}`;
     return this.http.get<ParksApiResponse>(url, options);
   }
 
@@ -142,7 +146,7 @@ export class ParksApiService {
   }
 
   getParksByLocation(latitude: number, longitude: number, radiusMeters: number, options: ParksHttpOptions = {}): Observable<Park[]> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksByLocation(latitude, longitude, radiusMeters)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksByLocation(latitude, longitude, radiusMeters, options.closedFilter)}`;
     return this.http.get<Park[] | PagedCollectionResponse<Park>>(url, options).pipe(
       map((response: Park[] | PagedCollectionResponse<Park>) => unwrapCollection<Park>(response))
     );
@@ -169,7 +173,7 @@ export class ParksApiService {
   }
 
   getParkExplorer(parkId: string, options: ParksHttpOptions = {}): Observable<ParkExplorer> {
-    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkExplorer(parkId)}`;
+    const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkExplorer(parkId, options.closedFilter)}`;
     return this.http.get<ParkExplorer>(url, options);
   }
 
@@ -178,6 +182,7 @@ export class ParksApiService {
       name: park.name,
       countryCode: park.countryCode ?? null,
       type: park.type ?? null,
+      status: park.status ?? 'Operating',
       founderId: park.founderId ?? null,
       operatorId: park.operatorId ?? null,
       latitude: park.latitude,

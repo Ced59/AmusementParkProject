@@ -1,4 +1,5 @@
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.Parks.Results;
 
@@ -11,4 +12,5 @@ public sealed record GetNearestParksQuery(
     string SourceParkId,
     int Limit,
     double? MaxDistanceKilometers = null,
-    bool IncludeHidden = false) : IQuery<ApplicationResult<ParkDistanceResult>>;
+    bool IncludeHidden = false,
+    ClosedEntityFilter ClosedFilter = ClosedEntityFilter.OpenOnly) : IQuery<ApplicationResult<ParkDistanceResult>>;

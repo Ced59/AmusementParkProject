@@ -35,6 +35,32 @@ public sealed class ParkItemContentQualityServiceTests
     }
 
     [Fact]
+    public void Evaluate_WhenItemHasContentButNoZone_ShouldRemainPublishableWithMissingZoneSignal()
+    {
+        ParkItem item = new ParkItem
+        {
+            ParkId = "park-1",
+            Name = "Restrooms",
+            Category = ParkItemCategory.Service,
+            Type = ParkItemType.Toilets,
+            Descriptions = new List<LocalizedText>
+            {
+                new LocalizedText("fr", "Toilettes publiques"),
+                new LocalizedText("en", "Public restrooms"),
+            },
+        };
+
+        ParkItemContentQualityService service = new ParkItemContentQualityService();
+
+        AmusementPark.Application.Features.ParkItems.Results.ParkItemContentQualityResult result = service.Evaluate(item);
+
+        Assert.True(result.IsPublishable);
+        Assert.Contains("zone", result.MissingRequirementKeys);
+        Assert.DoesNotContain("descriptionAny", result.MissingRequirementKeys);
+        Assert.DoesNotContain("typePrecise", result.MissingRequirementKeys);
+    }
+
+    [Fact]
     public void Evaluate_WhenItemMissesPublicFields_ShouldExposeMissingRequirementKeys()
     {
         ParkItem item = new ParkItem

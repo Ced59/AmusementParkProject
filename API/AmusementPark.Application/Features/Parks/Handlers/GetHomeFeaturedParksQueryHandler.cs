@@ -1,4 +1,5 @@
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -37,6 +38,7 @@ public sealed class GetHomeFeaturedParksQueryHandler : IQueryHandler<GetHomeFeat
         IReadOnlyCollection<Park> manualParks = await this.parkRepository.GetManualHomeFeaturedVisibleAsync(
             normalizedLimit,
             Array.Empty<string>(),
+            ClosedEntityFilter.OpenOnly,
             cancellationToken);
 
         List<Park> selectedParks = new List<Park>(normalizedLimit);
@@ -56,6 +58,7 @@ public sealed class GetHomeFeaturedParksQueryHandler : IQueryHandler<GetHomeFeat
             IReadOnlyCollection<Park> randomParks = await this.parkRepository.GetRandomVisibleAsync(
                 remainingSlots,
                 randomExcludedParkIds,
+                ClosedEntityFilter.OpenOnly,
                 cancellationToken);
 
             selectedParks.AddRange(randomParks);
@@ -86,6 +89,7 @@ public sealed class GetHomeFeaturedParksQueryHandler : IQueryHandler<GetHomeFeat
             await this.parkItemRepository.GetCountsByCategoryForParkIdsAsync(
                 parkIds,
                 includeHidden: false,
+                ClosedEntityFilter.OpenOnly,
                 cancellationToken);
 
         List<HomeFeaturedParkResult> results = new List<HomeFeaturedParkResult>(parks.Count);

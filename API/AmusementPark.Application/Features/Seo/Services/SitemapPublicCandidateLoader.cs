@@ -1,3 +1,4 @@
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Common.Results;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -27,6 +28,7 @@ internal static class SitemapPublicCandidateLoader
                 type: null,
                 countryCode: null,
                 hasValidCoordinates: null,
+                closedFilter: ClosedEntityFilter.OpenOnly,
                 cancellationToken);
 
             parks.AddRange(page.Items.Where(ParksSitemapSectionProvider.IsPublicPark));

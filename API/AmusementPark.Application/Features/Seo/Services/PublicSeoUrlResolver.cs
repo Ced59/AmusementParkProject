@@ -542,6 +542,7 @@ public sealed class PublicSeoUrlResolver
         return !string.IsNullOrWhiteSpace(park.Id) &&
                !string.IsNullOrWhiteSpace(park.Name) &&
                park.IsVisible &&
+               park.Status != ParkStatus.ClosedDefinitively &&
                park.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 
@@ -551,6 +552,7 @@ public sealed class PublicSeoUrlResolver
                !string.IsNullOrWhiteSpace(item.ParkId) &&
                !string.IsNullOrWhiteSpace(item.Name) &&
                item.IsVisible &&
+               !ParkItemStatusNormalizer.IsClosedDefinitively(item.Status) &&
                item.AdminReviewStatus != AdminReviewStatus.NotRelevant;
     }
 
@@ -564,12 +566,12 @@ public sealed class PublicSeoUrlResolver
 
     private static string BuildParkRouteKey(PublicSeoParkSnapshot park)
     {
-        return $"{park.Id}:{SeoSlugService.ToSlug(park.Name, "park")}:{park.IsVisible}:{park.AdminReviewStatus}";
+        return $"{park.Id}:{SeoSlugService.ToSlug(park.Name, "park")}:{park.IsVisible}:{park.Status}:{park.AdminReviewStatus}";
     }
 
     private static string BuildItemRouteKey(PublicSeoParkItemSnapshot item)
     {
-        return $"{item.ParkId}:{item.Id}:{item.ZoneId}:{SeoSlugService.ToSlug(item.Name, "item")}:{item.IsVisible}:{item.AdminReviewStatus}";
+        return $"{item.ParkId}:{item.Id}:{item.ZoneId}:{SeoSlugService.ToSlug(item.Name, "item")}:{item.IsVisible}:{item.Status}:{item.AdminReviewStatus}";
     }
 
     private static string BuildVideoRouteKey(PublicSeoVideoSnapshot video)

@@ -312,6 +312,15 @@
       "itemsTitle": "Places to discover in this zone",
       "emptyItemsTitle": "No place in this zone",
       "emptyItemsMessage": "No public place is currently attached to this zone."
+    },
+    "closedFilters": {
+      "label": "Opening",
+      "openOnly": "Open",
+      "withClosed": "With closed",
+      "closedOnly": "Closed"
+    },
+    "statuses": {
+      "closedDefinitively": "Permanently closed"
     }
   }
 }

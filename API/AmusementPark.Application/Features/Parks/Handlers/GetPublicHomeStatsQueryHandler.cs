@@ -1,4 +1,5 @@
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Ports;
@@ -26,12 +27,13 @@ public sealed class GetPublicHomeStatsQueryHandler : IQueryHandler<GetPublicHome
     {
         const bool includeHidden = false;
 
-        Task<long> parksCountTask = this.parkRepository.CountAsync(includeHidden, cancellationToken);
+        Task<long> parksCountTask = this.parkRepository.CountAsync(includeHidden, ClosedEntityFilter.OpenOnly, cancellationToken);
         Task<long> attractionsCountTask = this.parkItemRepository.CountByCategoryAsync(
             ParkItemCategory.Attraction,
             includeHidden,
+            ClosedEntityFilter.OpenOnly,
             cancellationToken);
-        Task<int> countriesCountTask = this.parkRepository.CountDistinctCountryCodesAsync(includeHidden, cancellationToken);
+        Task<int> countriesCountTask = this.parkRepository.CountDistinctCountryCodesAsync(includeHidden, ClosedEntityFilter.OpenOnly, cancellationToken);
 
         await Task.WhenAll(parksCountTask, attractionsCountTask, countriesCountTask);
 

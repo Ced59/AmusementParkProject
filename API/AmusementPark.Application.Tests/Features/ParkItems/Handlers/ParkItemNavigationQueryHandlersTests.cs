@@ -1,3 +1,4 @@
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ParkItems.Contracts;
 using AmusementPark.Application.Features.ParkItems.Handlers;
@@ -27,7 +28,7 @@ public sealed class ParkItemNavigationQueryHandlersTests
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Park { Id = "park-1", Name = "Phantasialand", IsVisible = true });
         parkItemRepository
-            .Setup(repository => repository.GetNavigationItemsByParkIdAsync("park-1", false, It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetNavigationItemsByParkIdAsync("park-1", false, ClosedEntityFilter.OpenOnly, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new List<ParkItemSiblingNavigationItem>
             {
                 new ParkItemSiblingNavigationItem { Id = "item-1", Name = "Raik" },
@@ -68,7 +69,7 @@ public sealed class ParkItemNavigationQueryHandlersTests
             .Setup(repository => repository.GetByIdAsync("park-1", false, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Park { Id = "park-1", Name = "Phantasialand", IsVisible = true });
         parkItemRepository
-            .Setup(repository => repository.GetRelatedItemsAsync(currentItem, 6, false, It.IsAny<CancellationToken>()))
+            .Setup(repository => repository.GetRelatedItemsAsync(currentItem, 6, false, ClosedEntityFilter.OpenOnly, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new[] { CreateParkItem("item-3", "Talocan") });
 
         GetRelatedParkItemsQueryHandler handler = new GetRelatedParkItemsQueryHandler(parkItemRepository.Object, parkRepository.Object);

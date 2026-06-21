@@ -30,6 +30,11 @@
   color: var(--app-text-muted);
 }
 
+.results-workbench__back {
+  width: fit-content;
+  margin-bottom: 0.7rem;
+}
+
 .results-workbench__summary,
 .items-map-panel__chips {
   display: flex;
@@ -99,6 +104,53 @@
   color: var(--app-primary);
 }
 
+.items-map-panel__unlocated {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--app-accent-cyan) 24%, var(--app-border));
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--app-accent-cyan) 8%, var(--app-surface));
+}
+
+.items-map-panel__unlocated strong,
+.items-map-panel__unlocated span {
+  display: block;
+}
+
+.items-map-panel__unlocated strong {
+  color: var(--app-heading);
+  font-size: 0.9rem;
+}
+
+.items-map-panel__unlocated > div > span {
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+}
+
+.items-map-panel__unlocated-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.items-map-panel__unlocated-list a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.15rem 0.55rem;
+  align-items: center;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  color: var(--app-heading);
+  background: color-mix(in srgb, var(--app-surface) 82%, transparent);
+  text-decoration: none;
+}
+
+.items-map-panel__unlocated-list a small {
+  grid-column: 2;
+  color: var(--app-text-muted);
+}
+
 .items-grid {
   display: grid;
   gap: 0.9rem;
@@ -109,21 +161,53 @@
 }
 
 :host ::ng-deep .items-grid .ui-item-card__visual {
+  position: relative;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
   gap: 0.75rem;
   padding: 0.9rem 1rem;
+  min-height: 5rem;
+  overflow: hidden;
 }
 
 :host ::ng-deep .items-grid .ui-item-card__chips {
+  position: relative;
+  z-index: 1;
   min-width: 0;
 }
 
 :host ::ng-deep .items-grid .ui-item-card__icon {
+  position: relative;
+  z-index: 1;
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 0.95rem;
   font-size: 1.08rem;
+}
+
+:host ::ng-deep .items-grid .ui-item-card__visual--photo {
+  min-height: 8.25rem;
+  align-items: end;
+}
+
+:host ::ng-deep .items-grid .ui-item-card__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.01);
+}
+
+:host ::ng-deep .items-grid .ui-item-card__visual--photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12, 8, 5, 0.15), rgba(12, 8, 5, 0.72));
+}
+
+:host ::ng-deep .items-grid .ui-item-card__visual--photo .ui-item-card__icon {
+  box-shadow: 0 0.7rem 1.5rem rgba(0, 0, 0, 0.28);
 }
 
 :host ::ng-deep .items-grid .ui-item-card__body {

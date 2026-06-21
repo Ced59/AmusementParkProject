@@ -1,4 +1,5 @@
 using AmusementPark.Application.Abstractions;
+using AmusementPark.Application.Common.Requests;
 using AmusementPark.Application.Errors;
 using AmusementPark.Core.Domain.Parks;
 
@@ -11,4 +12,9 @@ namespace AmusementPark.Application.Features.Parks.Queries;
 /// <param name="Longitude">Longitude du centre.</param>
 /// <param name="RadiusInKilometers">Rayon de recherche en kilomètres.</param>
 /// <param name="IncludeHidden">Indique si les parcs non visibles doivent être inclus.</param>
-public sealed record SearchParksByLocationQuery(double Latitude, double Longitude, double RadiusInKilometers, bool IncludeHidden = false) : IQuery<ApplicationResult<IReadOnlyCollection<Park>>>;
+public sealed record SearchParksByLocationQuery(
+    double Latitude,
+    double Longitude,
+    double RadiusInKilometers,
+    bool IncludeHidden = false,
+    ClosedEntityFilter ClosedFilter = ClosedEntityFilter.OpenOnly) : IQuery<ApplicationResult<IReadOnlyCollection<Park>>>;

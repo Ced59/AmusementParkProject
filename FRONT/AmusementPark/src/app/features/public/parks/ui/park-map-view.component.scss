@@ -53,6 +53,27 @@
   justify-content: center;
 }
 
+.park-map-page__closed-filter {
+  display: grid;
+  gap: 0.3rem;
+  min-width: min(100%, 13rem);
+  color: var(--app-text-muted);
+  font-size: 0.75rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.park-map-page__closed-filter select {
+  min-height: 2.45rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--app-surface) 86%, transparent);
+  color: var(--app-heading);
+  font: inherit;
+  text-transform: none;
+}
+
 .park-images-empty {
   display: grid;
   justify-items: center;
@@ -88,6 +109,7 @@
 
   .park-subpage-hero__actions a,
   .park-subpage-hero__actions button,
+  .park-map-page__closed-filter,
   .park-images-page__load-more button {
     width: 100%;
     justify-content: center;

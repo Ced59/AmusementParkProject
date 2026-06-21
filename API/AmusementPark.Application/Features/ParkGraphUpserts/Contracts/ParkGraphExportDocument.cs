@@ -58,6 +58,8 @@ public sealed class ParkGraphExportPark
 
     public ParkType? Type { get; init; }
 
+    public ParkStatus Status { get; init; } = ParkStatus.Operating;
+
     public string? FounderId { get; init; }
 
     public string? FounderKey { get; init; }

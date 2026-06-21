@@ -27,6 +27,7 @@ import {
 } from '../shared/api-helpers';
 import { PARK_ITEMS_API_ENDPOINTS, ParkItemAdminListFilters, ParkItemAdminListSort } from './park-items-api-endpoints';
 import { BulkAdministrationUpdateRequest, BulkAdministrationUpdateResult } from '@app/models/admin/admin-review-status';
+import { ClosedEntityFilter } from '@app/models/shared/closed-entity-filter';
 
 interface AttractionAccessConditionWriteRequest {
   type: AttractionAccessCondition['type'];
@@ -111,6 +112,7 @@ interface ParkItemWriteRequest {
 
 interface ParkItemsHttpOptions {
   context?: HttpContext;
+  closedFilter?: ClosedEntityFilter;
 }
 
 @Injectable({
@@ -121,19 +123,19 @@ export class ParkItemsApiService {
   }
 
   getParkItemsByParkId(parkId: string, options: ParkItemsHttpOptions = {}): Observable<ParkItem[]> {
-    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId(parkId)}`;
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemsByParkId(parkId, 1, 100, options.closedFilter)}`;
     return this.http.get<ParkItem[] | PagedCollectionResponse<ParkItem>>(url, options).pipe(
       map((response: ParkItem[] | PagedCollectionResponse<ParkItem>) => unwrapCollection<ParkItem>(response).map((item: ParkItem) => normalizeParkItem(item)))
     );
   }
 
   getParkItemSiblingNavigation(parkItemId: string, options: ParkItemsHttpOptions = {}): Observable<ParkItemSiblingNavigation> {
-    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemSiblingNavigation(parkItemId)}`;
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getParkItemSiblingNavigation(parkItemId, options.closedFilter)}`;
     return this.http.get<ParkItemSiblingNavigation>(url, options);
   }
 
   getRelatedParkItems(parkItemId: string, limit: number = 3, options: ParkItemsHttpOptions = {}): Observable<ParkItem[]> {
-    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getRelatedParkItems(parkItemId, limit)}`;
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.getRelatedParkItems(parkItemId, limit, options.closedFilter)}`;
     return this.http.get<ParkItem[] | PagedCollectionResponse<ParkItem>>(url, options).pipe(
       map((response: ParkItem[] | PagedCollectionResponse<ParkItem>) => unwrapCollection<ParkItem>(response).map((item: ParkItem) => normalizeParkItem(item)))
     );
@@ -190,6 +192,11 @@ export class ParkItemsApiService {
   updateParkItemsBulkAdministration(request: BulkAdministrationUpdateRequest): Observable<BulkAdministrationUpdateResult> {
     const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.updateParkItemsBulkAdministration}`;
     return this.http.patch<BulkAdministrationUpdateResult>(url, request);
+  }
+
+  updateParkItemsVisibilityByParkIds(parkIds: string[], isVisible: boolean): Observable<BulkAdministrationUpdateResult> {
+    const url: string = `${environment.apiBaseUrl}${PARK_ITEMS_API_ENDPOINTS.updateParkItemsVisibilityByParkIds}`;
+    return this.http.patch<BulkAdministrationUpdateResult>(url, { parkIds, isVisible });
   }
 
   updateParkItemsBulkFields(request: ParkItemBulkFieldsUpdateRequest): Observable<BulkAdministrationUpdateResult> {

@@ -25,7 +25,7 @@ public sealed class GetParkMapItemsQueryHandler : IQueryHandler<GetParkMapItemsQ
             return ApplicationResult<ParkMapItemsResult>.Failure(ParkApplicationErrors.ParkNotExists());
         }
 
-        ParkMapItemsResult? result = await this.repository.GetAsync(query.ParkId.Trim(), query.IncludeHidden, cancellationToken);
+        ParkMapItemsResult? result = await this.repository.GetAsync(query.ParkId.Trim(), query.IncludeHidden, query.ClosedFilter, cancellationToken);
         if (result is null)
         {
             return ApplicationResult<ParkMapItemsResult>.Failure(ParkApplicationErrors.ParkNotExists());

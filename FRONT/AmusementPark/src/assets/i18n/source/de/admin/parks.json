@@ -428,7 +428,14 @@
       "title": "Parks",
       "subtitle": "Parks filtern, priorisieren und verwalten.",
       "reviewStatus": "Admin-Status",
-      "loadError": "Parks konnten nicht geladen werden."
+      "loadError": "Parks konnten nicht geladen werden.",
+      "status": "Status",
+      "itemsTotalCount": "Items",
+      "itemsVisibleCount": "Sicht.",
+      "statuses": {
+        "operating": "Ge?ffnet",
+        "closedDefinitively": "Dauerhaft geschlossen"
+      }
     }
   }
 }
