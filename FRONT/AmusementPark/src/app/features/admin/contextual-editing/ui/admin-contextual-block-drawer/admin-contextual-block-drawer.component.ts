@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, effect, Signal } from '@angular/cor
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { LeafletMapComponent } from '@shared/components/leaflet-map/leaflet-map.component';
 import { ContextualBlockPreviewChange, ContextualBlockPreviewResult } from '@shared/models/admin/contextual-block-preview.models';
 import {
@@ -12,6 +13,13 @@ import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-bl
 import { AdminContextualBlockChildAddFacade, AdminContextualBlockChildAddZoneOption } from '../../state/admin-contextual-block-child-add.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
 import { AdminContextualBlockFormFacade, AdminContextualBlockLocalizedFormField, AdminContextualBlockLocationForm } from '../../state/admin-contextual-block-form.facade';
+import {
+  AdminContextualBlockPhotoAddFacade,
+  AdminContextualBlockPhotoCategoryOption,
+  AdminContextualBlockPhotoMetadataRow,
+  AdminContextualBlockPhotoTagOption,
+  AdminContextualPhotoSourceMode
+} from '../../state/admin-contextual-block-photo-add.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
 
@@ -25,7 +33,7 @@ interface AdminContextualBlockIdEntry {
   templateUrl: './admin-contextual-block-drawer.component.html',
   styleUrl: './admin-contextual-block-drawer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslateModule, LeafletMapComponent]
+  imports: [RouterLink, TranslateModule, ImageDisplayComponent, LeafletMapComponent]
 })
 export class AdminContextualBlockDrawerComponent {
   protected readonly selectedBlock: Signal<AdminContextualBlockInstance | null> = this.selectionFacade.selectedBlock;
@@ -52,6 +60,23 @@ export class AdminContextualBlockDrawerComponent {
   protected readonly childAddErrorKey: Signal<string | null> = this.childAddFacade.errorKey;
   protected readonly childAddSuccessKey: Signal<string | null> = this.childAddFacade.successKey;
   protected readonly createdChildAdminRoute: Signal<readonly string[] | null> = this.childAddFacade.createdItemAdminRoute;
+  protected readonly photoSourceMode: Signal<AdminContextualPhotoSourceMode> = this.photoAddFacade.sourceMode;
+  protected readonly photoSelectedFile: Signal<File | null> = this.photoAddFacade.selectedFile;
+  protected readonly photoRemoteSourceUrl: Signal<string> = this.photoAddFacade.remoteSourceUrl;
+  protected readonly photoPreviewUrl: Signal<string | null> = this.photoAddFacade.previewUrl;
+  protected readonly photoMetadataRows: Signal<readonly AdminContextualBlockPhotoMetadataRow[]> = this.photoAddFacade.metadataRows;
+  protected readonly photoDescription: Signal<string> = this.photoAddFacade.description;
+  protected readonly photoIsPublished: Signal<boolean> = this.photoAddFacade.isPublished;
+  protected readonly photoSetAsCurrent: Signal<boolean> = this.photoAddFacade.setAsCurrent;
+  protected readonly photoCategoryOptions: Signal<readonly AdminContextualBlockPhotoCategoryOption[]> = this.photoAddFacade.categoryOptions;
+  protected readonly photoSelectedCategorySlug: Signal<string> = this.photoAddFacade.selectedCategorySlug;
+  protected readonly photoTagOptions: Signal<readonly AdminContextualBlockPhotoTagOption[]> = this.photoAddFacade.tagOptions;
+  protected readonly photoSelectedTagIds: Signal<readonly string[]> = this.photoAddFacade.selectedTagIds;
+  protected readonly isPhotoLoadingTags: Signal<boolean> = this.photoAddFacade.isLoadingTags;
+  protected readonly isPhotoReadingMetadata: Signal<boolean> = this.photoAddFacade.isReadingMetadata;
+  protected readonly isPhotoUploading: Signal<boolean> = this.photoAddFacade.isUploading;
+  protected readonly photoErrorKey: Signal<string | null> = this.photoAddFacade.errorKey;
+  protected readonly photoSuccessKey: Signal<string | null> = this.photoAddFacade.successKey;
 
   constructor(
     private readonly selectionFacade: AdminContextualBlockSelectionFacade,
@@ -59,7 +84,8 @@ export class AdminContextualBlockDrawerComponent {
     private readonly previewFacade: AdminContextualBlockPreviewFacade,
     private readonly applyFacade: AdminContextualBlockApplyFacade,
     private readonly formFacade: AdminContextualBlockFormFacade,
-    private readonly childAddFacade: AdminContextualBlockChildAddFacade
+    private readonly childAddFacade: AdminContextualBlockChildAddFacade,
+    private readonly photoAddFacade: AdminContextualBlockPhotoAddFacade
   ) {
     effect((): void => {
       const selectedBlock: AdminContextualBlockInstance | null = this.selectedBlock();
@@ -67,6 +93,7 @@ export class AdminContextualBlockDrawerComponent {
       this.applyFacade.resetForBlock(selectedBlock);
       this.formFacade.resetForBlock(selectedBlock);
       this.childAddFacade.resetForBlock(selectedBlock);
+      this.photoAddFacade.resetForBlock(selectedBlock);
     });
   }
 
@@ -96,6 +123,10 @@ export class AdminContextualBlockDrawerComponent {
 
   protected canAddChild(block: AdminContextualBlockInstance): boolean {
     return this.childAddFacade.canAddChild(block);
+  }
+
+  protected canAddPhoto(block: AdminContextualBlockInstance): boolean {
+    return this.photoAddFacade.canAddPhoto(block);
   }
 
   protected canApplyCurrentPreview(block: AdminContextualBlockInstance): boolean {
@@ -167,6 +198,57 @@ export class AdminContextualBlockDrawerComponent {
     this.childAddFacade.createChild(block);
   }
 
+  protected setPhotoSourceMode(mode: AdminContextualPhotoSourceMode): void {
+    this.photoAddFacade.setSourceMode(mode);
+  }
+
+  protected selectPhotoFile(event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    const file: File | null = target?.files && target.files.length > 0 ? target.files[0] : null;
+    this.photoAddFacade.selectFile(file);
+    if (target) {
+      target.value = '';
+    }
+  }
+
+  protected updatePhotoRemoteSourceUrl(event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    this.photoAddFacade.updateRemoteSourceUrl(target?.value ?? '');
+  }
+
+  protected previewPhotoRemoteSourceUrl(): void {
+    this.photoAddFacade.previewRemoteSourceUrl();
+  }
+
+  protected updatePhotoDescription(event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    this.photoAddFacade.updateDescription(target?.value ?? '');
+  }
+
+  protected updatePhotoCategory(event: Event): void {
+    const target: HTMLSelectElement | null = event.target instanceof HTMLSelectElement ? event.target : null;
+    this.photoAddFacade.updateSelectedCategorySlug(target?.value ?? '');
+  }
+
+  protected togglePhotoTag(tagId: string, event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    this.photoAddFacade.toggleTag(tagId, target?.checked ?? false);
+  }
+
+  protected updatePhotoPublished(event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    this.photoAddFacade.updateIsPublished(target?.checked ?? false);
+  }
+
+  protected updatePhotoSetAsCurrent(event: Event): void {
+    const target: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
+    this.photoAddFacade.updateSetAsCurrent(target?.checked ?? false);
+  }
+
+  protected uploadPhoto(block: AdminContextualBlockInstance): void {
+    this.photoAddFacade.uploadPhoto(block);
+  }
+
   protected getIdEntries(block: AdminContextualBlockInstance): AdminContextualBlockIdEntry[] {
     return Object.entries(block.ids).map(([key, value]: [string, string]) => ({ key, value }));
   }
@@ -199,5 +281,21 @@ export class AdminContextualBlockDrawerComponent {
 
   protected trackChildAddZone(zone: AdminContextualBlockChildAddZoneOption): string {
     return zone.id;
+  }
+
+  protected trackPhotoCategory(option: AdminContextualBlockPhotoCategoryOption): string {
+    return option.slug;
+  }
+
+  protected trackPhotoTag(option: AdminContextualBlockPhotoTagOption): string {
+    return option.id;
+  }
+
+  protected trackPhotoMetadataRow(row: AdminContextualBlockPhotoMetadataRow): string {
+    return row.labelKey;
+  }
+
+  protected isPhotoTagSelected(tagId: string): boolean {
+    return this.photoSelectedTagIds().includes(tagId);
   }
 }

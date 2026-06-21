@@ -1,6 +1,20 @@
 {
-  "version": "2.3.25",
+  "version": "2.3.26",
   "history": [
+    {
+      "version": "2.3.26",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "L'administration mobile gere mieux les medias.",
+        "en": "Mobile administration handles media better.",
+        "de": "Mobile Administration verwaltet Medien besser.",
+        "nl": "Mobiele administratie beheert media beter.",
+        "it": "L'amministrazione mobile gestisce meglio i media.",
+        "es": "La administracion movil gestiona mejor los medios.",
+        "pl": "Administracja mobilna lepiej obsluguje media.",
+        "pt": "A administracao movel gere melhor os media."
+      }
+    },
     {
       "version": "2.3.25",
       "releasedAt": "2026-06-21",
