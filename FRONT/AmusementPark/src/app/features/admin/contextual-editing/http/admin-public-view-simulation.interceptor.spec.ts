@@ -73,4 +73,16 @@ describe('AdminPublicViewSimulationInterceptor', () => {
     expect(capturedRequest.headers.has('X-AmusementPark-Public-View-Mode')).toBeFalse();
     expect(capturedRequest.context.get(SKIP_AUTHORIZATION_HEADER)).toBeTrue();
   });
+
+  it('does not modify protected requests that are not marked as anonymous public reads', async () => {
+    const facade = new AdminPublicViewModeFacade();
+    facade.setViewMode('adminPreview');
+    const interceptor = new AdminPublicViewSimulationInterceptor(facade);
+    const request = new HttpRequest('GET', '/api/admin/parks');
+
+    const capturedRequest: HttpRequest<unknown> = await captureRequest(interceptor, request);
+
+    expect(capturedRequest.headers.has('X-AmusementPark-Public-View-Mode')).toBeFalse();
+    expect(capturedRequest.context.get(SKIP_AUTHORIZATION_HEADER)).toBeFalse();
+  });
 });

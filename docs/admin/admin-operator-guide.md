@@ -39,6 +39,27 @@ This guide summarizes the repeatable admin workflow for parks and park items.
 3. Confirm visibility only after content quality is acceptable.
 4. Use review status to separate ToReview, Validated and ToProcessLater work.
 
+## Public contextual editing
+
+1. Open the public page while authenticated as admin.
+2. Keep the default anonymous view when checking visitor rendering.
+3. Switch to user or moderator view only to compare public read behavior; these modes never grant server rights.
+4. Switch to admin preview only when hidden draft content must be inspected.
+5. Enable edit mode only after selecting admin preview.
+6. On mobile, open one contextual drawer at a time and close it before navigating to another block.
+7. For JSON updates, always run preview before apply and keep all localized languages in the bounded payload.
+8. After apply, wait for the public block refresh before opening another edit action.
+
+## Contextual editing review checklist
+
+1. Visitor default stays anonymous and has no admin toolbar.
+2. SSR output does not load the admin toolbar.
+3. Simulated or authenticated public reads are not shared-cacheable.
+4. JSON exports contain only the selected block and required attachment ids.
+5. Localized JSON contains every supported language for localized blocks.
+6. New contextual creations stay hidden or ToReview unless explicitly published later.
+7. Mobile drawers have no horizontal overflow and keep primary actions reachable.
+
 ## Error recovery
 
 1. If save fails, do not leave the editor immediately.

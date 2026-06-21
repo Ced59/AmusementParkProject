@@ -457,6 +457,13 @@ Fin fonctionnelle :
 - La documentation permet de reprendre le chantier plus tard.
 - Les flux critiques sont valides sur telephone.
 
+Note de mise en oeuvre :
+
+- Le jalon 10 ajoute les garde-fous finaux sur le cache HTTP public : une lecture avec `Authorization`, une session authentifiee ou un header de simulation ne recoit pas de cache public partage.
+- Le layout public est teste pour ne pas charger la toolbar admin pendant le SSR, meme si la session reelle est admin.
+- L'intercepteur de simulation est teste pour ne modifier que les lectures publiques marquees anonymes, sans toucher aux appels admin proteges.
+- Le guide operateur admin contient le parcours contextual editing, les precautions mobiles et une checklist de review dediee.
+
 ## Endpoints probables a ajouter
 
 Ces noms sont indicatifs et devront etre ajustes au style final de l'API.

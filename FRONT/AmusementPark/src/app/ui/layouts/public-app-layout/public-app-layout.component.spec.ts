@@ -87,6 +87,25 @@ describe('PublicAppLayoutComponent', () => {
     expect(host.querySelector('.admin-public-view-toolbar')).not.toBeNull();
     expect(authService.hasRole).toHaveBeenCalledWith('ADMIN');
   });
+
+  it('does not lazy-load the admin toolbar during SSR even for admins', async () => {
+    TestBed.overrideProvider(PLATFORM_ID, { useValue: 'server' });
+    authService.isLoggedIn.and.returnValue(true);
+    authService.hasRole.and.returnValue(true);
+
+    fixture = TestBed.createComponent(PublicAppLayoutComponent);
+    const loadToolbarSpy: jasmine.Spy = spyOn(getPublicAppLayoutPrivateApi(fixture), 'loadAdminToolbarComponent')
+      .and.returnValue(Promise.resolve(TestAdminPublicViewToolbarComponent));
+    fixture.detectChanges();
+
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    expect(isPlatformBrowser(TestBed.inject(PLATFORM_ID))).toBeFalse();
+    expect(loadToolbarSpy).not.toHaveBeenCalled();
+    expect(host.querySelector('.admin-public-view-toolbar')).toBeNull();
+  });
 });
 
 function getNavigationTreeFacade(fixture: ComponentFixture<PublicAppLayoutComponent>): PublicParkNavigationTreeFacadeStub {
