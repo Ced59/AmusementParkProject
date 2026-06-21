@@ -19,7 +19,8 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(service.getDefinitions().map((definition) => definition.type)).toEqual([
       'park.hero',
       'park.description',
-      'park.practical'
+      'park.practical',
+      'parkItem.description'
     ]);
   });
 
@@ -56,6 +57,26 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.jsonScope).toContain('park.descriptions[*].value');
   });
 
+  it('creates a park item description block with parent ids and a full admin route', () => {
+    const block: AdminContextualBlockInstance | null = service.createParkItemBlock(
+      'parkItem.description',
+      'item-1',
+      'park-1',
+      'Wakala',
+      'fr'
+    );
+
+    expect(block?.id).toBe('parkItem.description:item-1');
+    expect(block?.entityType).toBe('ParkItem');
+    expect(block?.entityId).toBe('item-1');
+    expect(block?.ids).toEqual({ parkId: 'park-1', parkItemId: 'item-1' });
+    expect(block?.adminRoute).toEqual(['/', 'fr', 'admin', 'parks', 'edit', 'park-1', 'items', 'item-1']);
+    expect(block?.localizedLanguageCodes).toEqual(LANGUAGES.map((language: LanguageOption) => language.value));
+    expect(block?.capabilities).toContain('contextualFormEdit');
+    expect(block?.jsonScope).toContain('parkItem.descriptions[*].languageCode');
+    expect(block?.jsonScope).toContain('parkItem.descriptions[*].value');
+  });
+
   it('keeps unsupported hero exports as planned capabilities only', () => {
     const block: AdminContextualBlockInstance | null = service.createParkBlock(
       'park.hero',
@@ -72,5 +93,7 @@ describe('AdminContextualBlockRegistryService', () => {
 
   it('does not create a block without a park id', () => {
     expect(service.createParkBlock('park.practical', null, 'No id', 'fr')).toBeNull();
+    expect(service.createParkItemBlock('parkItem.description', 'item-1', null, 'No park', 'fr')).toBeNull();
+    expect(service.createParkBlock('parkItem.description', 'item-1', 'Wrong factory', 'fr')).toBeNull();
   });
 });

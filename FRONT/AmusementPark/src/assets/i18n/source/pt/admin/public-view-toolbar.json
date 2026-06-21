@@ -123,6 +123,10 @@
         "parkPractical": {
           "label": "Info pratica",
           "description": "Endereco, referencias, site e coordenadas uteis do parque."
+        },
+        "parkItemDescription": {
+          "label": "Descricao do item",
+          "description": "Descricao publica localizada para todos os idiomas suportados."
         }
       }
     }

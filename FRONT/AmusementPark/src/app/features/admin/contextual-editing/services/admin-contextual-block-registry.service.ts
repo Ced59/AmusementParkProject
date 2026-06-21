@@ -9,7 +9,7 @@ import {
 
 const SUPPORTED_LANGUAGE_CODES: readonly string[] = LANGUAGES.map((language: LanguageOption): string => language.value);
 
-const PARK_CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition[] = [
+const CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition[] = [
   {
     type: 'park.hero',
     labelKey: 'admin.contextualBlocks.blocks.parkHero.label',
@@ -58,6 +58,20 @@ const PARK_CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition
       'park.longitude'
     ],
     localizedLanguageCodes: []
+  },
+  {
+    type: 'parkItem.description',
+    labelKey: 'admin.contextualBlocks.blocks.parkItemDescription.label',
+    descriptionKey: 'admin.contextualBlocks.blocks.parkItemDescription.description',
+    iconClass: 'pi pi-align-left',
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonPreview', 'boundedJsonApply', 'contextualFormEdit'],
+    jsonScope: [
+      'parkItem.id',
+      'parkItem.parkId',
+      'parkItem.descriptions[*].languageCode',
+      'parkItem.descriptions[*].value'
+    ],
+    localizedLanguageCodes: SUPPORTED_LANGUAGE_CODES
   }
 ];
 
@@ -66,11 +80,11 @@ const PARK_CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition
 })
 export class AdminContextualBlockRegistryService {
   private readonly definitionsByType = new Map<AdminContextualBlockType, AdminContextualBlockDefinition>(
-    PARK_CONTEXTUAL_BLOCK_DEFINITIONS.map((definition: AdminContextualBlockDefinition) => [definition.type, definition])
+    CONTEXTUAL_BLOCK_DEFINITIONS.map((definition: AdminContextualBlockDefinition) => [definition.type, definition])
   );
 
   getDefinitions(): readonly AdminContextualBlockDefinition[] {
-    return PARK_CONTEXTUAL_BLOCK_DEFINITIONS;
+    return CONTEXTUAL_BLOCK_DEFINITIONS;
   }
 
   getDefinition(type: AdminContextualBlockType): AdminContextualBlockDefinition | null {
@@ -86,7 +100,7 @@ export class AdminContextualBlockRegistryService {
     const normalizedParkId: string | null = this.normalizeValue(parkId);
     const definition: AdminContextualBlockDefinition | null = this.getDefinition(type);
 
-    if (!normalizedParkId || !definition) {
+    if (!normalizedParkId || !definition || definition.type === 'parkItem.description') {
       return null;
     }
 
@@ -102,6 +116,37 @@ export class AdminContextualBlockRegistryService {
         parkId: normalizedParkId
       },
       adminRoute: ['/', normalizedLanguageCode, 'admin', 'parks', 'edit', normalizedParkId]
+    };
+  }
+
+  createParkItemBlock(
+    type: AdminContextualBlockType,
+    parkItemId: string | null | undefined,
+    parkId: string | null | undefined,
+    itemName: string | null | undefined,
+    languageCode: string | null | undefined
+  ): AdminContextualBlockInstance | null {
+    const normalizedParkItemId: string | null = this.normalizeValue(parkItemId);
+    const normalizedParkId: string | null = this.normalizeValue(parkId);
+    const definition: AdminContextualBlockDefinition | null = this.getDefinition(type);
+
+    if (!normalizedParkItemId || !normalizedParkId || !definition || definition.type !== 'parkItem.description') {
+      return null;
+    }
+
+    const normalizedLanguageCode: string = this.normalizeLanguageCode(languageCode);
+
+    return {
+      ...definition,
+      id: `${definition.type}:${normalizedParkItemId}`,
+      entityType: 'ParkItem',
+      entityId: normalizedParkItemId,
+      contextLabel: this.normalizeValue(itemName) ?? normalizedParkItemId,
+      ids: {
+        parkId: normalizedParkId,
+        parkItemId: normalizedParkItemId
+      },
+      adminRoute: ['/', normalizedLanguageCode, 'admin', 'parks', 'edit', normalizedParkId, 'items', normalizedParkItemId]
     };
   }
 

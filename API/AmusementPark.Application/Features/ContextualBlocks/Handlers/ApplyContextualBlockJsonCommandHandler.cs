@@ -3,6 +3,8 @@ using AmusementPark.Application.Abstractions;
 using AmusementPark.Application.Errors;
 using AmusementPark.Application.Features.ContextualBlocks.Commands;
 using AmusementPark.Application.Features.ContextualBlocks.Results;
+using AmusementPark.Application.Features.ParkItems.Commands;
+using AmusementPark.Application.Features.ParkItems.Ports;
 using AmusementPark.Application.Features.Parks.Commands;
 using AmusementPark.Application.Features.Parks.Ports;
 using AmusementPark.Core.Domain.Parks;
@@ -15,16 +17,22 @@ public sealed class ApplyContextualBlockJsonCommandHandler
 {
     private readonly ICommandHandler<PreviewContextualBlockJsonCommand, ApplicationResult<ContextualBlockPreviewResult>> previewHandler;
     private readonly IParkRepository parkRepository;
+    private readonly IParkItemRepository parkItemRepository;
     private readonly ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkHandler;
+    private readonly ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemHandler;
 
     public ApplyContextualBlockJsonCommandHandler(
         ICommandHandler<PreviewContextualBlockJsonCommand, ApplicationResult<ContextualBlockPreviewResult>> previewHandler,
         IParkRepository parkRepository,
-        ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkHandler)
+        IParkItemRepository parkItemRepository,
+        ICommandHandler<UpdateParkCommand, ApplicationResult<Park>> updateParkHandler,
+        ICommandHandler<UpdateParkItemCommand, ApplicationResult<ParkItem>> updateParkItemHandler)
     {
         this.previewHandler = previewHandler;
         this.parkRepository = parkRepository;
+        this.parkItemRepository = parkItemRepository;
         this.updateParkHandler = updateParkHandler;
+        this.updateParkItemHandler = updateParkItemHandler;
     }
 
     public async Task<ApplicationResult<ContextualBlockPreviewResult>> HandleAsync(ApplyContextualBlockJsonCommand command, CancellationToken cancellationToken = default)
@@ -51,6 +59,11 @@ public sealed class ApplyContextualBlockJsonCommandHandler
 
         string blockType = command.BlockType.Trim();
         string entityId = command.EntityId.Trim();
+        if (string.Equals(blockType, ContextualBlockContracts.ParkItemDescriptionBlockType, StringComparison.Ordinal))
+        {
+            return await this.ApplyParkItemDescriptionAsync(entityId, command.Document.GetProperty("block"), previewResult, cancellationToken);
+        }
+
         Park? park = await this.parkRepository.GetByIdAsync(entityId, true, cancellationToken);
         if (park is null)
         {
@@ -81,7 +94,40 @@ public sealed class ApplyContextualBlockJsonCommandHandler
         return ApplicationResult<ContextualBlockPreviewResult>.Success(previewResult);
     }
 
+    private async Task<ApplicationResult<ContextualBlockPreviewResult>> ApplyParkItemDescriptionAsync(
+        string parkItemId,
+        JsonElement block,
+        ContextualBlockPreviewResult previewResult,
+        CancellationToken cancellationToken)
+    {
+        ParkItem? item = await this.parkItemRepository.GetByIdAsync(parkItemId, true, cancellationToken);
+        if (item is null)
+        {
+            return ApplicationResult<ContextualBlockPreviewResult>.Failure(ApplicationErrors.EntityNotFound(nameof(ParkItem), parkItemId));
+        }
+
+        ApplyDescriptionBlock(item, block);
+        ApplicationResult<ParkItem> updateResult = await this.updateParkItemHandler.HandleAsync(new UpdateParkItemCommand(parkItemId, item), cancellationToken);
+        if (!updateResult.IsSuccess)
+        {
+            return ApplicationResult<ContextualBlockPreviewResult>.Failure(updateResult.Errors);
+        }
+
+        previewResult.IsApplied = true;
+        return ApplicationResult<ContextualBlockPreviewResult>.Success(previewResult);
+    }
+
     private static void ApplyDescriptionBlock(Park park, JsonElement block)
+    {
+        park.Descriptions = ReadLocalizedDescriptions(block);
+    }
+
+    private static void ApplyDescriptionBlock(ParkItem item, JsonElement block)
+    {
+        item.Descriptions = ReadLocalizedDescriptions(block);
+    }
+
+    private static List<LocalizedText> ReadLocalizedDescriptions(JsonElement block)
     {
         JsonElement descriptions = block.GetProperty("descriptions");
         List<LocalizedText> localizedDescriptions = new List<LocalizedText>();
@@ -93,7 +139,7 @@ public sealed class ApplyContextualBlockJsonCommandHandler
             localizedDescriptions.Add(new LocalizedText(languageCode, value));
         }
 
-        park.Descriptions = localizedDescriptions;
+        return localizedDescriptions;
     }
 
     private static void ApplyPracticalBlock(Park park, JsonElement block)

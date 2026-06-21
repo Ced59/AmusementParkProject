@@ -85,6 +85,7 @@ export function mapParkItemToDetailViewModel(
 
   return {
     id: item.id ?? null,
+    parkId: item.parkId ?? park?.id ?? null,
     name: item.name?.trim() ?? '',
     categoryLabelKey: getParkItemCategoryTranslationKey(item.category),
     typeLabelKey: getParkItemTypeTranslationKey(item.type),

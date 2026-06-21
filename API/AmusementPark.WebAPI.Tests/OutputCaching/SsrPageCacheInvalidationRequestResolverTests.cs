@@ -151,6 +151,75 @@ public sealed class SsrPageCacheInvalidationRequestResolverTests
     }
 
     [Fact]
+    public async Task ResolveAsync_ForContextualBlockParkItemApply_ShouldTargetImpactedItemPages()
+    {
+        Mock<IParkRepository> parkRepository = new Mock<IParkRepository>(MockBehavior.Strict);
+        parkRepository
+            .Setup(repository => repository.GetByIdAsync("park-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Park { Id = "park-1", Name = "Target Park" });
+
+        Mock<IParkItemRepository> parkItemRepository = new Mock<IParkItemRepository>(MockBehavior.Strict);
+        parkItemRepository
+            .Setup(repository => repository.GetByIdAsync("item-1", true, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkItem { Id = "item-1", ParkId = "park-1", Name = "Wakala", ZoneId = "zone-1" });
+
+        Mock<IParkZoneRepository> parkZoneRepository = new Mock<IParkZoneRepository>(MockBehavior.Strict);
+        parkZoneRepository
+            .Setup(repository => repository.GetByIdAsync("zone-1", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ParkZone { Id = "zone-1", ParkId = "park-1", Name = "Africa" });
+
+        SsrPageCacheInvalidationRequestResolver resolver = CreateResolver(
+            parkRepository: parkRepository,
+            parkItemRepository: parkItemRepository,
+            parkZoneRepository: parkZoneRepository);
+        ActionExecutingContext context = CreateContext(
+            "ContextualBlocks",
+            new Dictionary<string, object?>
+            {
+                ["blockType"] = "parkItem.description",
+                ["entityId"] = "item-1",
+            });
+        ActionExecutedContext executedContext = CreateExecutedContext(context, new ContextualBlockPreviewResultDto
+        {
+            BlockType = "parkItem.description",
+            IsApplied = true,
+            CanApply = true,
+            Target = new ContextualBlockPreviewTargetDto
+            {
+                EntityType = "ParkItem",
+                EntityId = "item-1",
+                DisplayName = "Wakala",
+            },
+            Changes = new List<ContextualBlockPreviewChangeDto>
+            {
+                new ContextualBlockPreviewChangeDto
+                {
+                    EntityType = "ParkItem",
+                    EntityId = "item-1",
+                    Field = "descriptions.fr.value",
+                    ChangeType = "Updated",
+                },
+            },
+        });
+
+        AmusementPark.Application.Ports.SsrPageCacheInvalidationRequest request = await resolver.ResolveAsync(
+            context,
+            executedContext,
+            new[] { PublicCacheScope.Data },
+            CancellationToken.None);
+
+        Assert.False(request.All);
+        Assert.Contains("/fr/park/park-1/target-park", request.Paths);
+        Assert.Contains("/fr/park/park-1/target-park/items", request.Paths);
+        Assert.Contains("/fr/park/park-1/target-park/zones", request.Paths);
+        Assert.Contains("/fr/park/park-1/target-park/item/item-1/", request.Prefixes);
+        Assert.DoesNotContain("/fr/home", request.Paths);
+        parkRepository.VerifyAll();
+        parkItemRepository.VerifyAll();
+        parkZoneRepository.VerifyAll();
+    }
+
+    [Fact]
     public async Task ResolveAsync_ForContextualBlockRejectedApply_ShouldReturnNoOp()
     {
         SsrPageCacheInvalidationRequestResolver resolver = CreateResolver();

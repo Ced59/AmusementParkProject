@@ -18,6 +18,15 @@ export interface ContextualParkDescriptionBlock {
   readonly descriptions: readonly ContextualBlockLocalizedText[];
 }
 
+export interface ContextualParkItemDescriptionBlock {
+  readonly parkId: string;
+  readonly parkItemId: string;
+  readonly zoneId: string | null;
+  readonly descriptions: readonly ContextualBlockLocalizedText[];
+}
+
+export type ContextualLocalizedDescriptionBlock = ContextualParkDescriptionBlock | ContextualParkItemDescriptionBlock;
+
 export interface ContextualBlockExportDocument<TBlock = unknown> {
   readonly documentType: string;
   readonly schemaVersion: string;
