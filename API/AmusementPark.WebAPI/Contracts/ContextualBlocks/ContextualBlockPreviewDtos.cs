@@ -7,6 +7,11 @@ public sealed class ContextualBlockPreviewRequestDto
     public JsonElement Document { get; set; }
 }
 
+public sealed class ContextualBlockApplyRequestDto
+{
+    public JsonElement Document { get; set; }
+}
+
 public sealed class ContextualBlockPreviewResultDto
 {
     public string OperationId { get; set; } = string.Empty;

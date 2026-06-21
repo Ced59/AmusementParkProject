@@ -7,6 +7,7 @@ using AmusementPark.Application.Features.Seo.Services;
 using AmusementPark.Application.Ports;
 using AmusementPark.Core.Domain.Images;
 using AmusementPark.Core.Domain.Parks;
+using AmusementPark.WebAPI.Contracts.ContextualBlocks;
 using AmusementPark.WebAPI.Contracts.ParkGraphUpserts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -76,6 +77,7 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
             "LocalizedContent" => await this.ResolveLocalizedContentAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "Images" => await this.ResolveImagesAsync(context, executedContext, includeSeoDocuments, cancellationToken),
             "ParkGraphUpserts" => await this.ResolveParkGraphUpsertAsync(context, executedContext, includeSeoDocuments, cancellationToken),
+            "ContextualBlocks" => this.ResolveContextualBlocks(context, executedContext, includeSeoDocuments),
             _ => SsrPageCacheInvalidationRequest.AllCaches(),
         };
 
@@ -294,6 +296,38 @@ public sealed class SsrPageCacheInvalidationRequestResolver : ISsrPageCacheInval
         }
 
         return await this.ResolveEntityImpactAsync(entityType, entityId, includeSeoDocuments, cancellationToken);
+    }
+
+    private SsrPageCacheInvalidationRequest ResolveContextualBlocks(
+        ActionExecutingContext context,
+        ActionExecutedContext? executedContext,
+        bool includeSeoDocuments)
+    {
+        object? resultValue = ResolveResultValue(executedContext);
+        if (resultValue is not ContextualBlockPreviewResultDto result)
+        {
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
+
+        if (!result.IsApplied || !result.CanApply || result.Changes.Count == 0)
+        {
+            return BuildRequest(Array.Empty<string>(), Array.Empty<string>(), includeSeoDocuments: false);
+        }
+
+        string? blockType = result.BlockType;
+        string? entityId = result.Target.EntityId;
+
+        if (string.IsNullOrWhiteSpace(blockType) || string.IsNullOrWhiteSpace(entityId))
+        {
+            return SsrPageCacheInvalidationRequest.AllCaches();
+        }
+
+        if (blockType.Trim().StartsWith("park.", StringComparison.Ordinal))
+        {
+            return BuildParkImpactRequest(new[] { entityId.Trim() }, includeSeoDocuments, includeDiscoveryPages: true);
+        }
+
+        return SsrPageCacheInvalidationRequest.AllCaches();
     }
 
     private async Task<SsrPageCacheInvalidationRequest> ResolveImagesAsync(

@@ -6,6 +6,7 @@ export type AdminContextualBlockCapability =
   | 'fullAdminEdit'
   | 'boundedJsonExport'
   | 'boundedJsonPreview'
+  | 'boundedJsonApply'
   | 'boundedJsonExportPlanned'
   | 'boundedJsonUpsertPlanned'
   | 'formEditPlanned';

@@ -206,7 +206,7 @@
 
 .admin-contextual-block-drawer__preview-actions {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   gap: 0.6rem;
 }
 
@@ -340,6 +340,18 @@
   border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--app-danger, #c62828) 9%, transparent);
   color: var(--app-danger, #c62828);
+  font-size: 0.86rem;
+  font-weight: 760;
+  line-height: 1.35;
+}
+
+.admin-contextual-block-drawer__success {
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--app-success, #2e7d32) 34%, var(--app-border));
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--app-success, #2e7d32) 9%, transparent);
+  color: var(--app-success, #2e7d32);
   font-size: 0.86rem;
   font-weight: 760;
   line-height: 1.35;

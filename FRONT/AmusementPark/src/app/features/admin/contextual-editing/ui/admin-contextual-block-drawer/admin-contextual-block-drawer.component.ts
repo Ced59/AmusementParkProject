@@ -7,6 +7,7 @@ import {
   AdminContextualBlockCapability,
   AdminContextualBlockInstance
 } from '../../models/admin-contextual-block.model';
+import { AdminContextualBlockApplyFacade } from '../../state/admin-contextual-block-apply.facade';
 import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
 import { AdminContextualBlockPreviewFacade } from '../../state/admin-contextual-block-preview.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
@@ -31,14 +32,20 @@ export class AdminContextualBlockDrawerComponent {
   protected readonly previewResult: Signal<ContextualBlockPreviewResult | null> = this.previewFacade.previewResult;
   protected readonly isPreviewing: Signal<boolean> = this.previewFacade.isPreviewing;
   protected readonly previewErrorKey: Signal<string | null> = this.previewFacade.errorKey;
+  protected readonly applyResult: Signal<ContextualBlockPreviewResult | null> = this.applyFacade.applyResult;
+  protected readonly isApplying: Signal<boolean> = this.applyFacade.isApplying;
+  protected readonly applyErrorKey: Signal<string | null> = this.applyFacade.errorKey;
 
   constructor(
     private readonly selectionFacade: AdminContextualBlockSelectionFacade,
     private readonly exportFacade: AdminContextualBlockExportFacade,
-    private readonly previewFacade: AdminContextualBlockPreviewFacade
+    private readonly previewFacade: AdminContextualBlockPreviewFacade,
+    private readonly applyFacade: AdminContextualBlockApplyFacade
   ) {
     effect((): void => {
-      this.previewFacade.resetForBlock(this.selectedBlock());
+      const selectedBlock: AdminContextualBlockInstance | null = this.selectedBlock();
+      this.previewFacade.resetForBlock(selectedBlock);
+      this.applyFacade.resetForBlock(selectedBlock);
     });
   }
 
@@ -58,17 +65,32 @@ export class AdminContextualBlockDrawerComponent {
     return this.previewFacade.canPreview(block);
   }
 
+  protected canApplyJson(block: AdminContextualBlockInstance): boolean {
+    return this.applyFacade.canApply(block);
+  }
+
+  protected canApplyCurrentPreview(block: AdminContextualBlockInstance): boolean {
+    return this.applyFacade.hasAcceptedPreview(block);
+  }
+
   protected updateJsonDraft(event: Event): void {
     const target: HTMLTextAreaElement | null = event.target instanceof HTMLTextAreaElement ? event.target : null;
     this.previewFacade.setJsonDraft(target?.value ?? '');
+    this.applyFacade.clearResult();
   }
 
   protected previewJson(block: AdminContextualBlockInstance): void {
+    this.applyFacade.clearResult();
     this.previewFacade.previewBlock(block);
+  }
+
+  protected applyJson(block: AdminContextualBlockInstance): void {
+    this.applyFacade.applyBlock(block);
   }
 
   protected clearJsonDraft(): void {
     this.previewFacade.clearDraft();
+    this.applyFacade.clearResult();
   }
 
   protected getIdEntries(block: AdminContextualBlockInstance): AdminContextualBlockIdEntry[] {
@@ -80,6 +102,10 @@ export class AdminContextualBlockDrawerComponent {
   }
 
   protected getPreviewStatusKey(result: ContextualBlockPreviewResult): string {
+    if (result.isApplied) {
+      return 'admin.contextualBlocks.drawer.applyJsonSucceeded';
+    }
+
     return result.canApply
       ? 'admin.contextualBlocks.drawer.previewJsonCanApply'
       : 'admin.contextualBlocks.drawer.previewJsonBlocked';

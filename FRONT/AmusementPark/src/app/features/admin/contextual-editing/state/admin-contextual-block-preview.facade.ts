@@ -55,6 +55,11 @@ export class AdminContextualBlockPreviewFacade {
     this.errorKeySignal.set(null);
   }
 
+  useServerResult(result: ContextualBlockPreviewResult): void {
+    this.previewResultSignal.set(result);
+    this.errorKeySignal.set(null);
+  }
+
   previewBlock(block: AdminContextualBlockInstance): void {
     this.errorKeySignal.set(null);
     this.previewResultSignal.set(null);

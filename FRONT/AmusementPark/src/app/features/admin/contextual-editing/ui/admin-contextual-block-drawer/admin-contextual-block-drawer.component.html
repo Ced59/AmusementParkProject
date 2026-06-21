@@ -92,15 +92,25 @@
             <button
               type="button"
               class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--primary"
-              [disabled]="isPreviewing() || jsonDraft().trim().length === 0"
+              [disabled]="isPreviewing() || isApplying() || jsonDraft().trim().length === 0"
               (click)="previewJson(block)">
               <i class="pi pi-eye" aria-hidden="true"></i>
               <span>{{ (isPreviewing() ? 'admin.contextualBlocks.drawer.previewJsonBusy' : 'admin.contextualBlocks.drawer.previewJson') | translate }}</span>
             </button>
+            @if (canApplyJson(block)) {
+              <button
+                type="button"
+                class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--primary"
+                [disabled]="isPreviewing() || isApplying() || !canApplyCurrentPreview(block)"
+                (click)="applyJson(block)">
+                <i class="pi pi-save" aria-hidden="true"></i>
+                <span>{{ (isApplying() ? 'admin.contextualBlocks.drawer.applyJsonBusy' : 'admin.contextualBlocks.drawer.applyJson') | translate }}</span>
+              </button>
+            }
             <button
               type="button"
               class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--secondary"
-              [disabled]="isPreviewing() || jsonDraft().trim().length === 0"
+              [disabled]="isPreviewing() || isApplying() || jsonDraft().trim().length === 0"
               (click)="clearJsonDraft()">
               <i class="pi pi-times" aria-hidden="true"></i>
               <span>{{ 'admin.contextualBlocks.drawer.clearJsonDraft' | translate }}</span>
@@ -109,6 +119,14 @@
 
           @if (previewErrorKey(); as errorKey) {
             <p class="admin-contextual-block-drawer__error" role="alert">{{ errorKey | translate }}</p>
+          }
+
+          @if (applyErrorKey(); as errorKey) {
+            <p class="admin-contextual-block-drawer__error" role="alert">{{ errorKey | translate }}</p>
+          }
+
+          @if (applyResult()?.isApplied) {
+            <p class="admin-contextual-block-drawer__success" role="status">{{ 'admin.contextualBlocks.drawer.applyJsonSucceeded' | translate }}</p>
           }
 
           @if (previewResult(); as result) {
