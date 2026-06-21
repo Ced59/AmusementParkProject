@@ -1,0 +1,17 @@
+{
+  "manufacturersPage": {
+    "kicker": "Costruttori",
+    "title": "Costruttori di attrazioni",
+    "subtitle": "Sfoglia costruttori di attrazioni e coaster presenti sul sito, con profili pubblici e link utili.",
+    "search": {
+      "label": "Cerca",
+      "placeholder": "Nome, paese, citta o anno",
+      "count": "{{count}} costruttore/i mostrato/i"
+    },
+    "loading": "Caricamento costruttori...",
+    "error": "Impossibile caricare i costruttori ora.",
+    "empty": "Nessun costruttore corrisponde alla ricerca.",
+    "noDescription": "Il profilo dettagliato deve ancora essere completato.",
+    "attractionCount": "{{count}} attrazione/i"
+  }
+}

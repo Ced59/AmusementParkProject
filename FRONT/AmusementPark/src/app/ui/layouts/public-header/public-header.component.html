@@ -83,6 +83,12 @@
         </a>
       </li>
       <li>
+        <a [routerLink]="['/', selectedLanguage(), 'manufacturers']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="pi pi-building" aria-hidden="true"></i>
+          <span>{{ 'sidebar.manufacturers' | translate }}</span>
+        </a>
+      </li>
+      <li>
         <a [routerLink]="['/', selectedLanguage(), 'about']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <i class="pi pi-info-circle" aria-hidden="true"></i>
           <span>{{ 'sidebar.about' | translate }}</span>

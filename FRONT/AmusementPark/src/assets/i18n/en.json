@@ -1821,6 +1821,7 @@
     "parks": "Parks",
     "rankings": "Rankings",
     "technical": "Tech",
+    "manufacturers": "Manufacturers",
     "about": "About",
     "profile": "Profile",
     "admin": "Admin"
@@ -2259,6 +2260,21 @@
       "placeholderSubtitle": "Featured parks will appear here.",
       "errorMessage": "Featured parks could not be loaded."
     }
+  },
+  "manufacturersPage": {
+    "kicker": "Manufacturers",
+    "title": "Attraction manufacturers",
+    "subtitle": "Browse attraction and coaster manufacturers referenced on the site, with public profiles and useful links.",
+    "search": {
+      "label": "Search",
+      "placeholder": "Name, country, city or year",
+      "count": "{{count}} manufacturer(s) shown"
+    },
+    "loading": "Loading manufacturers...",
+    "error": "Manufacturers cannot be loaded right now.",
+    "empty": "No manufacturer matches your search.",
+    "noDescription": "The detailed profile still needs more content.",
+    "attractionCount": "{{count}} attraction(s)"
   },
   "publicNavigation": {
     "youAreHere": "You are here",

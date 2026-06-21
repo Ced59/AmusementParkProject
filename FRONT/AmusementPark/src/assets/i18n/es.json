@@ -1821,6 +1821,7 @@
     "parks": "Parques",
     "rankings": "Rankings",
     "technical": "Tecnica",
+    "manufacturers": "Fabricantes",
     "about": "Acerca de",
     "profile": "Perfil",
     "admin": "Administración"
@@ -2259,6 +2260,21 @@
       "placeholderSubtitle": "Los parques destacados aparecerán aquí.",
       "errorMessage": "No se pudieron cargar los parques destacados."
     }
+  },
+  "manufacturersPage": {
+    "kicker": "Fabricantes",
+    "title": "Fabricantes de atracciones",
+    "subtitle": "Explora fabricantes de atracciones y coasters referenciados en el sitio, con perfiles publicos y enlaces utiles.",
+    "search": {
+      "label": "Busqueda",
+      "placeholder": "Nombre, pais, ciudad o ano",
+      "count": "{{count}} fabricante(s) mostrado(s)"
+    },
+    "loading": "Cargando fabricantes...",
+    "error": "No se pueden cargar los fabricantes ahora.",
+    "empty": "Ningun fabricante coincide con tu busqueda.",
+    "noDescription": "El perfil detallado aun debe completarse.",
+    "attractionCount": "{{count}} atraccion(es)"
   },
   "publicNavigation": {
     "youAreHere": "Estás aquí",

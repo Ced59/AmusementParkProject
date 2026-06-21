@@ -571,6 +571,10 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
       title: 'Technical attraction guides - Amusement Parks',
       description: 'Understand attraction systems, coaster lifts, restraints, trains, materials and other technical elements.',
     },
+    manufacturers: {
+      title: 'Attraction manufacturers - Amusement Parks',
+      description: 'Browse attraction and coaster manufacturers with their public profile, history and useful links.',
+    },
     about: {
       title: 'About Amusement Parks — Project and data approach',
       description: 'Learn about the Amusement Parks project, its purpose, its public park portfolio and its careful data publication approach.',
@@ -601,6 +605,10 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     },
   },
   fr: {
+    manufacturers: {
+      title: 'Constructeurs d attractions - Amusement Parks',
+      description: 'Parcours les constructeurs d attractions et de coasters avec leur fiche publique, leur histoire et leurs liens utiles.',
+    },
     home: {
       title: 'Amusement Parks — Explorer les parcs, attractions et destinations',
       description: 'Explore les parcs de loisirs, attractions, restaurants, hôtels et références du secteur partout dans le monde.',
@@ -648,6 +656,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
   },
 
   es: {
+    manufacturers: { title: 'Fabricantes de atracciones - Amusement Parks', description: 'Explora fabricantes de atracciones y coasters con su ficha publica, historia y enlaces utiles.' },
     home: { title: 'Amusement Parks — Explora parques, atracciones y destinos', description: 'Explora parques de ocio, atracciones, restaurantes, hoteles y referencias del sector en todo el mundo.' },
     parks: { title: 'Parques de ocio del mundo — Amusement Parks', description: 'Consulta parques visibles, parques temáticos, acuáticos, zoológicos y resorts con información pública y mapa.' },
     rankings: { title: 'Rankings — Amusement Parks', description: 'Descubre parques, atracciones, restaurantes, hoteles y servicios valorados de forma constante por visitantes.' },
@@ -661,6 +670,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     admin: { title: 'Administración — Amusement Parks', description: 'Página privada de administración de Amusement Parks.' },
   },
   de: {
+    manufacturers: { title: 'Hersteller von Attraktionen - Amusement Parks', description: 'Durchsuche Hersteller von Attraktionen und Coastern mit Profil, Geschichte und nuetzlichen Links.' },
     home: { title: 'Amusement Parks — Parks, Attraktionen und Reiseziele entdecken', description: 'Entdecke Freizeitparks, Attraktionen, Restaurants, Hotels und Branchenreferenzen weltweit.' },
     parks: { title: 'Freizeitparks weltweit — Amusement Parks', description: 'Durchsuche sichtbare Freizeitparks, Themenparks, Wasserparks, Zoos und Resorts mit öffentlichen Details und Karte.' },
     rankings: { title: 'Ranglisten — Amusement Parks', description: 'Entdecke Parks, Attraktionen, Restaurants, Hotels und Services, die Besucher dauerhaft hoch bewerten.' },
@@ -674,6 +684,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     admin: { title: 'Administration — Amusement Parks', description: 'Private Administrationsseite von Amusement Parks.' },
   },
   it: {
+    manufacturers: { title: 'Costruttori di attrazioni - Amusement Parks', description: 'Sfoglia costruttori di attrazioni e coaster con scheda pubblica, storia e link utili.' },
     home: { title: 'Amusement Parks — Esplora parchi, attrazioni e destinazioni', description: 'Esplora parchi divertimento, attrazioni, ristoranti, hotel e riferimenti del settore in tutto il mondo.' },
     parks: { title: 'Parchi divertimento nel mondo — Amusement Parks', description: 'Sfoglia parchi visibili, parchi a tema, acquatici, zoo e resort con informazioni pubbliche e mappa.' },
     rankings: { title: 'Classifiche — Amusement Parks', description: 'Scopri parchi, attrazioni, ristoranti, hotel e servizi valutati con continuità dai visitatori.' },
@@ -687,6 +698,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     admin: { title: 'Amministrazione — Amusement Parks', description: 'Pagina privata di amministrazione Amusement Parks.' },
   },
   pl: {
+    manufacturers: { title: 'Producenci atrakcji - Amusement Parks', description: 'Przegladaj producentow atrakcji i coasterow z publicznym profilem, historia i przydatnymi linkami.' },
     home: { title: 'Amusement Parks — Odkrywaj parki, atrakcje i kierunki', description: 'Odkrywaj parki rozrywki, atrakcje, restauracje, hotele i referencje branżowe na całym świecie.' },
     parks: { title: 'Parki rozrywki na świecie — Amusement Parks', description: 'Przeglądaj widoczne parki rozrywki, parki tematyczne, wodne, zoo i resorty z publicznymi informacjami oraz mapą.' },
     rankings: { title: 'Rankingi — Amusement Parks', description: 'Odkrywaj parki, atrakcje, restauracje, hotele i usługi stale wysoko oceniane przez odwiedzających.' },
@@ -700,6 +712,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     admin: { title: 'Administracja — Amusement Parks', description: 'Prywatna strona administracyjna Amusement Parks.' },
   },
   nl: {
+    manufacturers: { title: 'Attractiebouwers - Amusement Parks', description: 'Bekijk attractie- en coasterbouwers met publiek profiel, geschiedenis en nuttige links.' },
     home: { title: 'Amusement Parks — Ontdek parken, attracties en bestemmingen', description: 'Ontdek pretparken, attracties, restaurants, hotels en brancheverwijzingen over de hele wereld.' },
     parks: { title: 'Pretparken wereldwijd — Amusement Parks', description: 'Bekijk zichtbare pretparken, themaparken, waterparken, dierentuinen en resorts met publieke info en kaart.' },
     rankings: { title: 'Ranglijsten — Amusement Parks', description: 'Ontdek parken, attracties, restaurants, hotels en services die bezoekers blijvend hoog beoordelen.' },
@@ -713,6 +726,7 @@ const STATIC_SEO_COPY: Record<string, Record<string, StaticSeoCopy>> = {
     admin: { title: 'Administratie — Amusement Parks', description: 'Privé-administratiepagina van Amusement Parks.' },
   },
   pt: {
+    manufacturers: { title: 'Fabricantes de atracoes - Amusement Parks', description: 'Explore fabricantes de atracoes e coasters com perfil publico, historia e links uteis.' },
     home: { title: 'Amusement Parks — Explore parques, atrações e destinos', description: 'Explore parques de diversão, atrações, restaurantes, hotéis e referências do setor em todo o mundo.' },
     parks: { title: 'Parques de diversão no mundo — Amusement Parks', description: 'Veja parques visíveis, parques temáticos, aquáticos, zoológicos e resorts com informações públicas e mapa.' },
     rankings: { title: 'Rankings — Amusement Parks', description: 'Descubra parques, atrações, restaurantes, hotéis e serviços avaliados de forma consistente pelos visitantes.' },
@@ -1828,6 +1842,10 @@ export class SeoService {
 
     if (routeSegment === 'technical') {
       return 'technical';
+    }
+
+    if (routeSegment === 'manufacturers') {
+      return 'manufacturers';
     }
 
     if (routeSegment === 'about') {

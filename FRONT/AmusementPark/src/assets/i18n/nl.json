@@ -1821,6 +1821,7 @@
     "parks": "Parken",
     "rankings": "Ranglijsten",
     "technical": "Techniek",
+    "manufacturers": "Bouwers",
     "about": "Over",
     "profile": "Profiel",
     "admin": "Beheer"
@@ -2259,6 +2260,21 @@
       "placeholderSubtitle": "Uitgelichte parken verschijnen hier.",
       "errorMessage": "De uitgelichte parken konden niet worden geladen."
     }
+  },
+  "manufacturersPage": {
+    "kicker": "Bouwers",
+    "title": "Attractiebouwers",
+    "subtitle": "Bekijk attractie- en coasterbouwers die op de site staan, met publieke profielen en nuttige links.",
+    "search": {
+      "label": "Zoeken",
+      "placeholder": "Naam, land, stad of jaar",
+      "count": "{{count}} bouwer(s) getoond"
+    },
+    "loading": "Bouwers laden...",
+    "error": "Bouwers kunnen nu niet worden geladen.",
+    "empty": "Geen bouwer past bij je zoekopdracht.",
+    "noDescription": "Het detailprofiel moet nog worden aangevuld.",
+    "attractionCount": "{{count}} attractie(s)"
   },
   "publicNavigation": {
     "youAreHere": "Je bent hier",

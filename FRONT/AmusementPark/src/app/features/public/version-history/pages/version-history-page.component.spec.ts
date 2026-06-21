@@ -5,7 +5,6 @@ import { of } from 'rxjs';
 
 import { COMMON_TEST_IMPORTS, provideCommonTestDependencies } from '@app/testing/common-test-providers';
 import { TranslationService } from '@app/services/translation.service';
-import { siteVersion } from '../../../../../environments/version.generated';
 import { VersionHistoryPageComponent } from './version-history-page.component';
 
 describe('VersionHistoryPageComponent', () => {
@@ -73,7 +72,9 @@ describe('VersionHistoryPageComponent', () => {
 
     expect(patchVersionsBeforeCollapse.length).toBeGreaterThan(0);
 
-    const currentMajorToggle: HTMLButtonElement | null = host.querySelector('.version-entry--major.version-entry--expanded .version-entry__toggle');
+    const currentMajorToggle: HTMLButtonElement | null = host.querySelector(
+      '.version-entry--major.version-entry--expanded .version-entry__toggle'
+    );
     expect(currentMajorToggle).not.toBeNull();
 
     currentMajorToggle?.click();

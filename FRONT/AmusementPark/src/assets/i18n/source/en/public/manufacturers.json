@@ -1,0 +1,17 @@
+{
+  "manufacturersPage": {
+    "kicker": "Manufacturers",
+    "title": "Attraction manufacturers",
+    "subtitle": "Browse attraction and coaster manufacturers referenced on the site, with public profiles and useful links.",
+    "search": {
+      "label": "Search",
+      "placeholder": "Name, country, city or year",
+      "count": "{{count}} manufacturer(s) shown"
+    },
+    "loading": "Loading manufacturers...",
+    "error": "Manufacturers cannot be loaded right now.",
+    "empty": "No manufacturer matches your search.",
+    "noDescription": "The detailed profile still needs more content.",
+    "attractionCount": "{{count}} attraction(s)"
+  }
+}

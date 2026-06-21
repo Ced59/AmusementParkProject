@@ -1821,6 +1821,7 @@
     "parks": "Parcs",
     "rankings": "Classements",
     "technical": "Technique",
+    "manufacturers": "Constructeurs",
     "about": "À propos",
     "profile": "Profil",
     "admin": "Admin"
@@ -2259,6 +2260,21 @@
       "placeholderSubtitle": "Les parcs mis en avant apparaîtront ici.",
       "errorMessage": "Impossible de charger les parcs mis en avant."
     }
+  },
+  "manufacturersPage": {
+    "kicker": "Constructeurs",
+    "title": "Constructeurs d attractions",
+    "subtitle": "Retrouve les fabricants d attractions et de coasters references sur le site, avec leurs fiches publiques et leurs liens utiles.",
+    "search": {
+      "label": "Recherche",
+      "placeholder": "Nom, pays, ville ou annee",
+      "count": "{{count}} constructeur(s) affiche(s)"
+    },
+    "loading": "Chargement des constructeurs...",
+    "error": "Impossible de charger les constructeurs pour le moment.",
+    "empty": "Aucun constructeur ne correspond a ta recherche.",
+    "noDescription": "La fiche detaillee reste a completer.",
+    "attractionCount": "{{count}} attraction(s)"
   },
   "publicNavigation": {
     "youAreHere": "Tu es ici",

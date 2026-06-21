@@ -131,6 +131,7 @@ export const routes: Routes = [
           { path: 'parks', loadComponent: () => import('./features/public/parks/pages/park-list-page.component').then((m) => m.ParkListPageComponent) },
           { path: 'technical', loadComponent: () => import('./features/public/technical-pages/pages/technical-pages-page.component').then((m) => m.TechnicalPagesPageComponent) },
           { path: 'technical/:slug', loadComponent: () => import('./features/public/technical-pages/pages/technical-page-detail-page.component').then((m) => m.TechnicalPageDetailPageComponent) },
+          { path: 'manufacturers', loadComponent: () => import('@features/public/manufacturers/pages/manufacturers-page.component').then((m) => m.ManufacturersPageComponent) },
           { path: 'rankings', loadComponent: () => import('@features/public/ratings/pages/rankings-page.component').then((m) => m.RankingsPageComponent) },
           { path: 'about', loadComponent: () => import('@features/public/about/pages/about.component').then((m) => m.AboutComponent) },
           { path: 'contact', loadComponent: () => import('@features/public/contact/pages/contact-page.component').then((m) => m.ContactPageComponent) },
