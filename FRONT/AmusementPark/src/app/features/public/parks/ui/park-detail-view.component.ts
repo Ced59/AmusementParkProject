@@ -3,6 +3,9 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SafeExternalUrlPipe, SafeRichHtmlPipe } from '@shared/pipes';
 
+import { AdminContextualBlockDirective } from '@features/admin/contextual-editing/ui/admin-contextual-block/admin-contextual-block.directive';
+import { AdminContextualBlockInstance, AdminContextualBlockType } from '@features/admin/contextual-editing/models/admin-contextual-block.model';
+import { AdminContextualBlockRegistryService } from '@features/admin/contextual-editing/services/admin-contextual-block-registry.service';
 import { ImageDisplayComponent } from '@shared/components/image-display/image-display.component';
 import { PageStateComponent } from '@shared/components/page-state/page-state.component';
 import { ScreenState } from '@shared/models/contracts/screen-state.model';
@@ -39,7 +42,8 @@ import { RatingStarsComponent } from '@features/public/ratings/ui/rating-stars.c
     UiKickerComponent,
     UiStatCardComponent,
     PublicSharePanelComponent,
-    RatingStarsComponent
+    RatingStarsComponent,
+    AdminContextualBlockDirective
   ]
 })
 export class ParkDetailViewComponent {
@@ -57,11 +61,18 @@ export class ParkDetailViewComponent {
   @Output() backClicked: EventEmitter<void> = new EventEmitter<void>();
   @Output() exploreClicked: EventEmitter<void> = new EventEmitter<void>();
 
+  constructor(private readonly contextualBlockRegistry: AdminContextualBlockRegistryService) {
+  }
+
   goBack(): void {
     this.backClicked.emit();
   }
 
   goToExplore(): void {
     this.exploreClicked.emit();
+  }
+
+  protected getContextualBlock(type: AdminContextualBlockType, currentPark: ParkDetailViewModel): AdminContextualBlockInstance | null {
+    return this.contextualBlockRegistry.createParkBlock(type, currentPark.id, currentPark.name, this.currentLang);
   }
 }

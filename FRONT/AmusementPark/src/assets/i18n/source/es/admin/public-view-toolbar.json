@@ -30,6 +30,41 @@
           "aria": "Ver como admin"
         }
       }
+    },
+    "contextualBlocks": {
+      "editAction": "Editar",
+      "drawer": {
+        "ariaLabel": "Bloque editable seleccionado",
+        "kicker": "Bloque contextual",
+        "close": "Cerrar diagnostico del bloque",
+        "type": "Tipo de bloque",
+        "entity": "Entidad",
+        "label": "Elemento actual",
+        "capabilities": "Capacidades",
+        "localizedLanguages": "Localizado en",
+        "jsonScope": "Alcance JSON",
+        "openAdminEdit": "Abrir edicion admin completa"
+      },
+      "capabilities": {
+        "fullAdminEdit": "Edicion admin completa disponible",
+        "boundedJsonExportPlanned": "Export JSON acotado previsto",
+        "boundedJsonUpsertPlanned": "Upsert JSON acotado previsto",
+        "formEditPlanned": "Formulario contextual previsto"
+      },
+      "blocks": {
+        "parkHero": {
+          "label": "Hero del parque",
+          "description": "Identidad, senales visuales y campos principales del parque."
+        },
+        "parkDescription": {
+          "label": "Descripcion del parque",
+          "description": "Descripcion publica localizada para todos los idiomas soportados."
+        },
+        "parkPractical": {
+          "label": "Info practica",
+          "description": "Direccion, referencias, sitio web y coordenadas utiles del parque."
+        }
+      }
     }
   }
 }

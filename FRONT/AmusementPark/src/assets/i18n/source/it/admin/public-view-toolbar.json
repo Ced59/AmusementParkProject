@@ -30,6 +30,41 @@
           "aria": "Vedi come admin"
         }
       }
+    },
+    "contextualBlocks": {
+      "editAction": "Modifica",
+      "drawer": {
+        "ariaLabel": "Blocco modificabile selezionato",
+        "kicker": "Blocco contestuale",
+        "close": "Chiudi diagnostica del blocco",
+        "type": "Tipo blocco",
+        "entity": "Entita",
+        "label": "Elemento corrente",
+        "capabilities": "Capacita",
+        "localizedLanguages": "Localizzato in",
+        "jsonScope": "Ambito JSON",
+        "openAdminEdit": "Apri modifica admin completa"
+      },
+      "capabilities": {
+        "fullAdminEdit": "Modifica admin completa disponibile",
+        "boundedJsonExportPlanned": "Export JSON limitato previsto",
+        "boundedJsonUpsertPlanned": "Upsert JSON limitato previsto",
+        "formEditPlanned": "Modulo contestuale previsto"
+      },
+      "blocks": {
+        "parkHero": {
+          "label": "Hero del parco",
+          "description": "Identita, segnali visivi e campi principali del parco."
+        },
+        "parkDescription": {
+          "label": "Descrizione del parco",
+          "description": "Descrizione pubblica localizzata per tutte le lingue supportate."
+        },
+        "parkPractical": {
+          "label": "Info pratiche",
+          "description": "Indirizzo, riferimenti, sito web e coordinate utili del parco."
+        }
+      }
     }
   }
 }

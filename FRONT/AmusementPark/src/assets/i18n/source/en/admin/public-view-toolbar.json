@@ -30,6 +30,41 @@
           "aria": "View as admin"
         }
       }
+    },
+    "contextualBlocks": {
+      "editAction": "Edit",
+      "drawer": {
+        "ariaLabel": "Selected editable block",
+        "kicker": "Context block",
+        "close": "Close block details",
+        "type": "Block type",
+        "entity": "Entity",
+        "label": "Current item",
+        "capabilities": "Capabilities",
+        "localizedLanguages": "Localized in",
+        "jsonScope": "JSON scope",
+        "openAdminEdit": "Open full admin edit"
+      },
+      "capabilities": {
+        "fullAdminEdit": "Full admin edit available",
+        "boundedJsonExportPlanned": "Bounded JSON export planned",
+        "boundedJsonUpsertPlanned": "Bounded JSON upsert planned",
+        "formEditPlanned": "Context form planned"
+      },
+      "blocks": {
+        "parkHero": {
+          "label": "Park hero",
+          "description": "Identity, visual signals and hero-level park fields."
+        },
+        "parkDescription": {
+          "label": "Park description",
+          "description": "Localized public description for every supported language."
+        },
+        "parkPractical": {
+          "label": "Practical info",
+          "description": "Address, references, website and useful park coordinates."
+        }
+      }
     }
   }
 }

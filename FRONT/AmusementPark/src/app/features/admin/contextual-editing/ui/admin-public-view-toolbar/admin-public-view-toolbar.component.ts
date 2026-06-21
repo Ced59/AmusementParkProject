@@ -8,13 +8,14 @@ import {
   AdminPublicViewModeDefinition
 } from '../../models/admin-public-view-mode.model';
 import { AdminPublicViewModeFacade } from '../../state/admin-public-view-mode.facade';
+import { AdminContextualBlockDrawerComponent } from '../admin-contextual-block-drawer/admin-contextual-block-drawer.component';
 
 @Component({
   selector: 'app-admin-public-view-toolbar',
   templateUrl: './admin-public-view-toolbar.component.html',
   styleUrl: './admin-public-view-toolbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslateModule]
+  imports: [AdminContextualBlockDrawerComponent, TranslateModule]
 })
 export class AdminPublicViewToolbarComponent implements OnDestroy {
   protected readonly viewModeDefinitions: readonly AdminPublicViewModeDefinition[] = ADMIN_PUBLIC_VIEW_MODE_DEFINITIONS;

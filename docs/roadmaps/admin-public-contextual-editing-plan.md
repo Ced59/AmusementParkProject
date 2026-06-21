@@ -197,6 +197,12 @@ Risques a verifier :
 - Les wrappers ne doivent pas etre visibles dans le DOM visiteur hors admin.
 - Les ids exposes doivent etre uniquement ceux deja necessaires a l'admin.
 
+Note de mise en oeuvre :
+
+- Le jalon 2 utilise une directive d'attribut sur les blocs publics existants afin d'eviter un wrapper DOM supplementaire.
+- Les actions, attributs de diagnostic et focus admin ne sont ajoutes qu'en mode edition.
+- Le drawer de diagnostic reste passif : il affiche le contexte du bloc et un lien vers l'edition admin complete, sans preview, apply, export ou mutation JSON.
+
 ### Jalon 3 - Export JSON borne au bloc
 
 But : permettre de telecharger l'etat actuel d'un bloc selectionne.

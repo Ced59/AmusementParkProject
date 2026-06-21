@@ -30,6 +30,41 @@
           "aria": "Bekijken als admin"
         }
       }
+    },
+    "contextualBlocks": {
+      "editAction": "Bewerken",
+      "drawer": {
+        "ariaLabel": "Geselecteerd bewerkbaar blok",
+        "kicker": "Contextblok",
+        "close": "Blokdiagnose sluiten",
+        "type": "Bloktype",
+        "entity": "Entiteit",
+        "label": "Huidig item",
+        "capabilities": "Mogelijkheden",
+        "localizedLanguages": "Gelokaliseerd in",
+        "jsonScope": "JSON-bereik",
+        "openAdminEdit": "Volledige adminbewerking openen"
+      },
+      "capabilities": {
+        "fullAdminEdit": "Volledige adminbewerking beschikbaar",
+        "boundedJsonExportPlanned": "Begrensde JSON-export gepland",
+        "boundedJsonUpsertPlanned": "Begrensde JSON-upsert gepland",
+        "formEditPlanned": "Contextformulier gepland"
+      },
+      "blocks": {
+        "parkHero": {
+          "label": "Park hero",
+          "description": "Identiteit, visuele signalen en hoofdvelden van het park."
+        },
+        "parkDescription": {
+          "label": "Parkbeschrijving",
+          "description": "Gelokaliseerde publieke beschrijving voor alle ondersteunde talen."
+        },
+        "parkPractical": {
+          "label": "Praktische info",
+          "description": "Adres, referenties, website en nuttige parkcoordinaten."
+        }
+      }
     }
   }
 }
