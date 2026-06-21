@@ -1,6 +1,20 @@
 {
-  "version": "2.3.14",
+  "version": "2.3.15",
   "history": [
+    {
+      "version": "2.3.15",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "L'administration mobile gagne en souplesse.",
+        "en": "Mobile administration gains flexibility.",
+        "de": "Mobile Administration wird flexibler.",
+        "nl": "Mobiele administratie wordt flexibeler.",
+        "it": "L'amministrazione mobile diventa piu flessibile.",
+        "es": "La administracion movil gana flexibilidad.",
+        "pl": "Administracja mobilna staje sie bardziej elastyczna.",
+        "pt": "A administracao movel fica mais flexivel."
+      }
+    },
     {
       "version": "2.3.14",
       "releasedAt": "2026-06-21",

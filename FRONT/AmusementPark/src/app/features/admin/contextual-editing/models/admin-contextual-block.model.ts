@@ -4,6 +4,7 @@ export type AdminContextualBlockEntityType = 'Park';
 
 export type AdminContextualBlockCapability =
   | 'fullAdminEdit'
+  | 'boundedJsonExport'
   | 'boundedJsonExportPlanned'
   | 'boundedJsonUpsertPlanned'
   | 'formEditPlanned';

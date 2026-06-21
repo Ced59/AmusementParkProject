@@ -230,6 +230,14 @@ Risques a verifier :
 - Ne pas exposer de champs admin sensibles inutiles.
 - Ne pas reutiliser un export complet puis filtrer uniquement cote front.
 
+Note de mise en oeuvre :
+
+- Le jalon 3 introduit `GET admin/contextual-blocks/{blockType}/{entityId}/export` pour les blocs `park.description` et `park.practical`.
+- `park.description` exporte les variantes `en`, `fr`, `es`, `de`, `it`, `pl`, `nl` et `pt` avec leur code langue explicite.
+- `park.practical` exporte uniquement les champs pratiques et les ids de rattachement utiles (`parkId`, puis `founderId` et `operatorId` quand ils existent).
+- `park.hero` reste en capacite d'export planifiee tant que son contrat borne n'est pas livre.
+- Le drawer public admin declenche seulement un telechargement ; preview, apply et rafraichissement de page restent aux jalons suivants.
+
 ### Jalon 4 - Preview JSON borne
 
 But : valider un JSON de bloc sans appliquer la mutation.

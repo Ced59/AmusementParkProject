@@ -76,14 +76,32 @@
           }
         </ul>
       </section>
+
+      @if (exportErrorKey(); as errorKey) {
+        <p class="admin-contextual-block-drawer__error" role="alert">{{ errorKey | translate }}</p>
+      }
     </div>
 
-    @if (block.adminRoute) {
+    @if (canDownloadJson(block) || block.adminRoute) {
       <footer class="admin-contextual-block-drawer__footer">
-        <a class="admin-contextual-block-drawer__admin-link" [routerLink]="block.adminRoute">
-          <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
-          <span>{{ 'admin.contextualBlocks.drawer.openAdminEdit' | translate }}</span>
-        </a>
+        @if (canDownloadJson(block)) {
+          <button
+            type="button"
+            class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--secondary"
+            [disabled]="isExporting()"
+            [attr.aria-label]="'admin.contextualBlocks.drawer.exportJsonAriaLabel' | translate"
+            (click)="downloadJson(block)">
+            <i class="pi pi-download" aria-hidden="true"></i>
+            <span>{{ (isExporting() ? 'admin.contextualBlocks.drawer.downloadJsonBusy' : 'admin.contextualBlocks.drawer.downloadJson') | translate }}</span>
+          </button>
+        }
+
+        @if (block.adminRoute) {
+          <a class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--primary" [routerLink]="block.adminRoute">
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+            <span>{{ 'admin.contextualBlocks.drawer.openAdminEdit' | translate }}</span>
+          </a>
+        }
       </footer>
     }
   </aside>

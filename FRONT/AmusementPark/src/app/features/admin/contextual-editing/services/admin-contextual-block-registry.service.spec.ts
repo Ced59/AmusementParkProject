@@ -47,8 +47,21 @@ describe('AdminContextualBlockRegistryService', () => {
     );
 
     expect(block?.localizedLanguageCodes).toEqual(LANGUAGES.map((language: LanguageOption) => language.value));
+    expect(block?.capabilities).toContain('boundedJsonExport');
     expect(block?.jsonScope).toContain('park.descriptions[*].languageCode');
     expect(block?.jsonScope).toContain('park.descriptions[*].value');
+  });
+
+  it('keeps unsupported hero exports as planned capabilities only', () => {
+    const block: AdminContextualBlockInstance | null = service.createParkBlock(
+      'park.hero',
+      'park-1',
+      'Phantasialand',
+      'fr'
+    );
+
+    expect(block?.capabilities).toContain('boundedJsonExportPlanned');
+    expect(block?.capabilities).not.toContain('boundedJsonExport');
   });
 
   it('does not create a block without a park id', () => {

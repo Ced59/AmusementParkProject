@@ -31,7 +31,7 @@ const PARK_CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition
     labelKey: 'admin.contextualBlocks.blocks.parkDescription.label',
     descriptionKey: 'admin.contextualBlocks.blocks.parkDescription.description',
     iconClass: 'pi pi-align-left',
-    capabilities: ['fullAdminEdit', 'boundedJsonExportPlanned', 'boundedJsonUpsertPlanned', 'formEditPlanned'],
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonUpsertPlanned', 'formEditPlanned'],
     jsonScope: [
       'park.id',
       'park.descriptions[*].languageCode',
@@ -44,7 +44,7 @@ const PARK_CONTEXTUAL_BLOCK_DEFINITIONS: readonly AdminContextualBlockDefinition
     labelKey: 'admin.contextualBlocks.blocks.parkPractical.label',
     descriptionKey: 'admin.contextualBlocks.blocks.parkPractical.description',
     iconClass: 'pi pi-info-circle',
-    capabilities: ['fullAdminEdit', 'boundedJsonExportPlanned', 'boundedJsonUpsertPlanned', 'formEditPlanned'],
+    capabilities: ['fullAdminEdit', 'boundedJsonExport', 'boundedJsonUpsertPlanned', 'formEditPlanned'],
     jsonScope: [
       'park.id',
       'park.countryCode',

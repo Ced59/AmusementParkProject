@@ -1107,10 +1107,16 @@
         "capabilities": "Capacita",
         "localizedLanguages": "Localizzato in",
         "jsonScope": "Ambito JSON",
-        "openAdminEdit": "Apri modifica admin completa"
+        "openAdminEdit": "Apri modifica admin completa",
+        "downloadJson": "Scarica JSON del blocco",
+        "downloadJsonBusy": "Download in corso...",
+        "downloadJsonError": "Download JSON non riuscito.",
+        "downloadJsonUnavailable": "L'export JSON non e disponibile per questo blocco.",
+        "exportJsonAriaLabel": "Scarica il JSON limitato di questo blocco"
       },
       "capabilities": {
         "fullAdminEdit": "Modifica admin completa disponibile",
+        "boundedJsonExport": "Export JSON limitato disponibile",
         "boundedJsonExportPlanned": "Export JSON limitato previsto",
         "boundedJsonUpsertPlanned": "Upsert JSON limitato previsto",
         "formEditPlanned": "Modulo contestuale previsto"

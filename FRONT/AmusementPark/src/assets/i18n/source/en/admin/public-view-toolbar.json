@@ -43,10 +43,16 @@
         "capabilities": "Capabilities",
         "localizedLanguages": "Localized in",
         "jsonScope": "JSON scope",
-        "openAdminEdit": "Open full admin edit"
+        "openAdminEdit": "Open full admin edit",
+        "downloadJson": "Download block JSON",
+        "downloadJsonBusy": "Downloading...",
+        "downloadJsonError": "JSON download failed.",
+        "downloadJsonUnavailable": "JSON export is not available for this block.",
+        "exportJsonAriaLabel": "Download this block bounded JSON"
       },
       "capabilities": {
         "fullAdminEdit": "Full admin edit available",
+        "boundedJsonExport": "Bounded JSON export available",
         "boundedJsonExportPlanned": "Bounded JSON export planned",
         "boundedJsonUpsertPlanned": "Bounded JSON upsert planned",
         "formEditPlanned": "Context form planned"

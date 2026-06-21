@@ -43,10 +43,16 @@
         "capabilities": "Capacidades",
         "localizedLanguages": "Localizado en",
         "jsonScope": "Alcance JSON",
-        "openAdminEdit": "Abrir edicion admin completa"
+        "openAdminEdit": "Abrir edicion admin completa",
+        "downloadJson": "Descargar JSON del bloque",
+        "downloadJsonBusy": "Descargando...",
+        "downloadJsonError": "La descarga JSON ha fallado.",
+        "downloadJsonUnavailable": "La exportacion JSON no esta disponible para este bloque.",
+        "exportJsonAriaLabel": "Descargar el JSON acotado de este bloque"
       },
       "capabilities": {
         "fullAdminEdit": "Edicion admin completa disponible",
+        "boundedJsonExport": "Export JSON acotado disponible",
         "boundedJsonExportPlanned": "Export JSON acotado previsto",
         "boundedJsonUpsertPlanned": "Upsert JSON acotado previsto",
         "formEditPlanned": "Formulario contextual previsto"

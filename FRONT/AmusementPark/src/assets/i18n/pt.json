@@ -1107,10 +1107,16 @@
         "capabilities": "Capacidades",
         "localizedLanguages": "Localizado em",
         "jsonScope": "Escopo JSON",
-        "openAdminEdit": "Abrir edicao admin completa"
+        "openAdminEdit": "Abrir edicao admin completa",
+        "downloadJson": "Transferir JSON do bloco",
+        "downloadJsonBusy": "A transferir...",
+        "downloadJsonError": "A transferencia JSON falhou.",
+        "downloadJsonUnavailable": "A exportacao JSON nao esta disponivel para este bloco.",
+        "exportJsonAriaLabel": "Transferir o JSON limitado deste bloco"
       },
       "capabilities": {
         "fullAdminEdit": "Edicao admin completa disponivel",
+        "boundedJsonExport": "Export JSON limitado disponivel",
         "boundedJsonExportPlanned": "Export JSON limitado previsto",
         "boundedJsonUpsertPlanned": "Upsert JSON limitado previsto",
         "formEditPlanned": "Formulario contextual previsto"
