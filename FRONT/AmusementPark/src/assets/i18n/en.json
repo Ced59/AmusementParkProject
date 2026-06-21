@@ -1072,6 +1072,8 @@
       "editionOn": "Edit on",
       "enableEditionMode": "Enable editing",
       "disableEditionMode": "Disable editing",
+      "collapse": "Hide admin bar",
+      "expand": "Show admin bar",
       "modes": {
         "anonymous": {
           "label": "Anonymous visitor",

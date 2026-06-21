@@ -8,6 +8,8 @@
       "editionOn": "Edition on",
       "enableEditionMode": "Activer l'edition",
       "disableEditionMode": "Desactiver l'edition",
+      "collapse": "Masquer la barre admin",
+      "expand": "Afficher la barre admin",
       "modes": {
         "anonymous": {
           "label": "Visiteur non connecte",

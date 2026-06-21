@@ -29,6 +29,8 @@ describe('AdminPublicViewToolbarComponent', () => {
           editionOn: 'Edition on',
           enableEditionMode: 'Activer edition',
           disableEditionMode: 'Desactiver edition',
+          collapse: 'Masquer la barre admin',
+          expand: 'Afficher la barre admin',
           modes: {
             anonymous: { label: 'Visiteur non connecte', short: 'Visiteur', aria: 'Voir comme visiteur non connecte' },
             user: { label: 'Visiteur role user', short: 'User', aria: 'Voir comme visiteur role user' },
@@ -73,5 +75,34 @@ describe('AdminPublicViewToolbarComponent', () => {
 
     expect(facade.editionModeEnabled()).toBeTrue();
     expect(editionButton.getAttribute('aria-pressed')).toBe('true');
+  });
+
+  it('collapses to a compact restore button without resetting the selected mode', () => {
+    const host: HTMLElement = fixture.nativeElement as HTMLElement;
+    const modeButtons: NodeListOf<HTMLButtonElement> = host.querySelectorAll('.admin-public-view-toolbar__mode');
+    const editionButton: HTMLButtonElement = host.querySelector('.admin-public-view-toolbar__edition') as HTMLButtonElement;
+
+    modeButtons[3]?.click();
+    fixture.detectChanges();
+    editionButton.click();
+    fixture.detectChanges();
+
+    const collapseButton: HTMLButtonElement = host.querySelector('.admin-public-view-toolbar__collapse') as HTMLButtonElement;
+    collapseButton.click();
+    fixture.detectChanges();
+
+    expect(host.querySelector('.admin-public-view-toolbar')).toBeNull();
+    expect(host.querySelector('.admin-public-view-toolbar__restore')).not.toBeNull();
+    expect(facade.viewMode()).toBe('adminPreview');
+    expect(facade.editionModeEnabled()).toBeTrue();
+
+    const restoreButton: HTMLButtonElement = host.querySelector('.admin-public-view-toolbar__restore') as HTMLButtonElement;
+    restoreButton.click();
+    fixture.detectChanges();
+
+    expect(host.querySelector('.admin-public-view-toolbar')).not.toBeNull();
+    expect(host.querySelector('.admin-public-view-toolbar__restore')).toBeNull();
+    expect(facade.viewMode()).toBe('adminPreview');
+    expect(facade.editionModeEnabled()).toBeTrue();
   });
 });

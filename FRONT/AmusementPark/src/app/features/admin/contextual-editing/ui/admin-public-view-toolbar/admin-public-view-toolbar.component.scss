@@ -43,8 +43,17 @@
   min-width: 0;
 }
 
+.admin-public-view-toolbar__actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
 .admin-public-view-toolbar__mode,
-.admin-public-view-toolbar__edition {
+.admin-public-view-toolbar__edition,
+.admin-public-view-toolbar__collapse,
+.admin-public-view-toolbar__restore {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -71,13 +80,43 @@
 }
 
 .admin-public-view-toolbar__edition {
-  flex: 0 0 auto;
   min-width: 8.5rem;
   padding: 0.55rem 0.8rem;
 }
 
+.admin-public-view-toolbar__collapse,
+.admin-public-view-toolbar__restore {
+  width: 44px;
+  padding: 0;
+}
+
+.admin-public-view-toolbar__restore {
+  position: relative;
+  margin-left: auto;
+  border-color: color-mix(in srgb, var(--c-orange) 38%, var(--app-border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--app-surface) 94%, transparent);
+  color: var(--c-orange);
+  box-shadow: var(--shadow-lift);
+  backdrop-filter: blur(18px) saturate(150%);
+  pointer-events: auto;
+}
+
+.admin-public-view-toolbar__restore-dot {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 2px solid var(--app-surface);
+  border-radius: 999px;
+  background: var(--c-orange);
+}
+
 .admin-public-view-toolbar__mode:hover,
-.admin-public-view-toolbar__edition:not(:disabled):hover {
+.admin-public-view-toolbar__edition:not(:disabled):hover,
+.admin-public-view-toolbar__collapse:hover,
+.admin-public-view-toolbar__restore:hover {
   transform: translateY(-1px);
   border-color: var(--app-border-stronger);
   color: var(--app-heading);
@@ -96,7 +135,9 @@
 }
 
 .admin-public-view-toolbar__mode:focus-visible,
-.admin-public-view-toolbar__edition:focus-visible {
+.admin-public-view-toolbar__edition:focus-visible,
+.admin-public-view-toolbar__collapse:focus-visible,
+.admin-public-view-toolbar__restore:focus-visible {
   outline: 2px solid var(--app-primary);
   outline-offset: 2px;
 }
@@ -112,10 +153,15 @@
   .admin-public-view-toolbar {
     align-items: stretch;
     flex-direction: column;
-    max-height: min(42vh, 18rem);
+    max-height: min(34vh, 15rem);
     overflow-y: auto;
     border-radius: 0.85rem;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-public-view-toolbar__actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 44px;
   }
 
   .admin-public-view-toolbar__modes {
@@ -127,6 +173,10 @@
   .admin-public-view-toolbar__edition {
     width: 100%;
     min-width: 0;
+  }
+
+  .admin-public-view-toolbar__restore {
+    margin-right: 0.15rem;
   }
 }
 

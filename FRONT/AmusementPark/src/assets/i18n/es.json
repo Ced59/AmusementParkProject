@@ -1072,6 +1072,8 @@
       "editionOn": "Edicion on",
       "enableEditionMode": "Activar edicion",
       "disableEditionMode": "Desactivar edicion",
+      "collapse": "Ocultar barra admin",
+      "expand": "Mostrar barra admin",
       "modes": {
         "anonymous": {
           "label": "Visitante no autenticado",

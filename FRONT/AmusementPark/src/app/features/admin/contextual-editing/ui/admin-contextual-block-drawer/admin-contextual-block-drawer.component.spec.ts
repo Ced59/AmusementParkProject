@@ -326,6 +326,8 @@ describe('AdminContextualBlockDrawerComponent', () => {
 
     const host: HTMLElement = fixture.nativeElement as HTMLElement;
     const drawer: HTMLElement = host.querySelector('.admin-contextual-block-drawer') as HTMLElement;
+    const formSection: HTMLElement | null = host.querySelector('.admin-contextual-block-drawer__form');
+    const idsSection: HTMLElement | null = host.querySelector('.admin-contextual-block-drawer__ids');
     const adminLink: HTMLAnchorElement | null = host.querySelector('.admin-contextual-block-drawer__footer .admin-contextual-block-drawer__action--primary');
     const exportButton: HTMLButtonElement | null = host.querySelector('.admin-contextual-block-drawer__footer .admin-contextual-block-drawer__action--secondary');
     const previewTextArea: HTMLTextAreaElement | null = host.querySelector('.admin-contextual-block-drawer__json-input');
@@ -336,9 +338,14 @@ describe('AdminContextualBlockDrawerComponent', () => {
     expect(drawer.textContent).toContain('en');
     expect(previewTextArea).not.toBeNull();
     expect(drawer.textContent).toContain('Formulaire rapide');
+    expect(formSection).not.toBeNull();
+    expect(idsSection).not.toBeNull();
+    expect(Boolean((formSection as HTMLElement).compareDocumentPosition(idsSection as HTMLElement) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTrue();
     expect(exportButton?.textContent).toContain('Telecharger le JSON du bloc');
     expect(drawer.textContent).toContain('Appliquer');
     expect(adminLink?.textContent).toContain('Ouvrir edition admin complete');
+    expect(adminLink?.target).toBe('_blank');
+    expect(adminLink?.rel).toContain('noopener');
     expect(drawer.querySelector('button[type="submit"]')).toBeNull();
   });
 

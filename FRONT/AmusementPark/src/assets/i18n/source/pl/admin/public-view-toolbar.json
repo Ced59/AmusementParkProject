@@ -8,6 +8,8 @@
       "editionOn": "Edycja on",
       "enableEditionMode": "Wlacz edycje",
       "disableEditionMode": "Wylacz edycje",
+      "collapse": "Ukryj pasek admina",
+      "expand": "Pokaz pasek admina",
       "modes": {
         "anonymous": {
           "label": "Niezalogowany odwiedzajacy",
