@@ -1,4 +1,5 @@
 using System;
+using AmusementPark.WebAPI.AdminPublicView;
 using AmusementPark.WebAPI.Diagnostics;
 using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.Responses;
@@ -102,6 +103,7 @@ public static class WebApplicationPipelineExtensions
         app.UseApiRateLimiting();
         app.UseApiAuthenticationRateLimiting();
         app.UseAuthentication();
+        app.UseMiddleware<AdminPublicViewSimulationMiddleware>();
         app.UseAuthorization();
         app.UseMiddleware<ApiPerformanceLoggingMiddleware>();
         app.UseOutputCache();

@@ -18,6 +18,7 @@ using AmusementPark.WebAPI.Contracts.Images;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.Responses;
 using AmusementPark.WebAPI.OutputCaching;
+using AmusementPark.WebAPI.AdminPublicView;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -411,6 +412,6 @@ public sealed class ImagesController : ControllerBase
 
     private bool UserCanSeeNonVisible()
     {
-        return this.User?.IsInRole("ADMIN") == true;
+        return this.HttpContext.UserCanSeeNonVisibleInPublicView();
     }
 }

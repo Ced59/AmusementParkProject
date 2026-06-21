@@ -12,6 +12,7 @@ using AmusementPark.WebAPI.Filters;
 using AmusementPark.WebAPI.Mappers;
 using AmusementPark.WebAPI.OutputCaching;
 using AmusementPark.WebAPI.Responses;
+using AmusementPark.WebAPI.AdminPublicView;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
@@ -239,7 +240,7 @@ public sealed class VideosController : ControllerBase
 
     private bool UserCanSeeNonVisible()
     {
-        return this.User?.IsInRole("ADMIN") == true;
+        return this.HttpContext.UserCanSeeNonVisibleInPublicView();
     }
 
     private static bool IsVisibleForLanguage(Video video, string? languageCode)

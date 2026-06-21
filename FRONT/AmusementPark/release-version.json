@@ -1,6 +1,20 @@
 {
-  "version": "2.3.20",
+  "version": "2.3.21",
   "history": [
+    {
+      "version": "2.3.21",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "L'administration mobile gagne en fiabilite.",
+        "en": "Mobile administration gains reliability.",
+        "de": "Mobile Administration wird zuverlaessiger.",
+        "nl": "Mobiele administratie wordt betrouwbaarder.",
+        "it": "L'amministrazione mobile diventa piu affidabile.",
+        "es": "La administracion movil gana fiabilidad.",
+        "pl": "Administracja mobilna staje sie niezawodniejsza.",
+        "pt": "A administracao movel fica mais fiavel."
+      }
+    },
     {
       "version": "2.3.20",
       "releasedAt": "2026-06-21",

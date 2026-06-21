@@ -1,4 +1,5 @@
 using System;
+using AmusementPark.WebAPI.AdminPublicView;
 using AmusementPark.WebAPI.OutputCaching;
 using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.Extensions.DependencyInjection;
@@ -66,6 +67,11 @@ public static class OutputCacheServiceCollectionExtensions
         // Les endpoints publics utilisent des DTO publics et les appels SSR/front publics
         // sont faits sans Authorization via anonymousHttpOptions().
         if (context.HttpContext.Request.Headers.ContainsKey("Authorization"))
+        {
+            return false;
+        }
+
+        if (AdminPublicViewSimulation.HasRequestHeader(context.HttpContext.Request.Headers))
         {
             return false;
         }
