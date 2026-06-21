@@ -8,6 +8,7 @@ export type AdminContextualBlockCapability =
   | 'boundedJsonPreview'
   | 'boundedJsonApply'
   | 'contextualFormEdit'
+  | 'targetedChildAdd'
   | 'boundedJsonExportPlanned'
   | 'boundedJsonUpsertPlanned'
   | 'formEditPlanned';

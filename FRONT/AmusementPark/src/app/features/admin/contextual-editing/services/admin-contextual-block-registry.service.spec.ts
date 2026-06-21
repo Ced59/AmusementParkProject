@@ -36,6 +36,7 @@ describe('AdminContextualBlockRegistryService', () => {
     expect(block?.entityId).toBe('park-1');
     expect(block?.ids).toEqual({ parkId: 'park-1' });
     expect(block?.adminRoute).toEqual(['/', 'fr', 'admin', 'parks', 'edit', 'park-1']);
+    expect(block?.capabilities).toContain('targetedChildAdd');
   });
 
   it('bounds localized description blocks to every supported language', () => {
@@ -64,6 +65,7 @@ describe('AdminContextualBlockRegistryService', () => {
     );
 
     expect(block?.capabilities).toContain('boundedJsonExportPlanned');
+    expect(block?.capabilities).toContain('targetedChildAdd');
     expect(block?.capabilities).not.toContain('boundedJsonExport');
     expect(block?.capabilities).not.toContain('boundedJsonPreview');
   });

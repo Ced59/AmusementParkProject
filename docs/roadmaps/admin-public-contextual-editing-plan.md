@@ -364,6 +364,14 @@ Risques a verifier :
 - Ajout dans le mauvais parc ou la mauvaise zone.
 - Publication involontaire.
 
+Note de mise en oeuvre :
+
+- Le jalon 7 ajoute une creation ciblee de park item depuis le bloc `park.hero` de la fiche parc publique.
+- Le drawer charge les zones du parc et permet un rattachement optionnel a `zoneId` quand une zone existe.
+- Le park item cree utilise les valeurs admin sures : categorie/type attraction par defaut, `isVisible=false`, `adminReviewStatus=ToReview`, descriptions vides et rattachement explicite au `parkId`.
+- Le succes propose un lien vers l'edition admin complete de l'item cree et notifie la fiche parc pour rafraichir son etat sans navigation complete.
+- Les doublons restent un risque fonctionnel connu ; la detection avancee reste portee par le workbench admin complet.
+
 ### Jalon 8 - Extension aux pages publiques principales
 
 But : couvrir progressivement les surfaces utiles.
