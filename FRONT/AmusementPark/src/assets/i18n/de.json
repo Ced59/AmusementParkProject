@@ -2268,7 +2268,7 @@
     "search": {
       "label": "Suche",
       "placeholder": "Name, Land, Stadt oder Jahr",
-      "count": "{{count}} Hersteller angezeigt"
+      "count": "{{count}} Hersteller gefunden"
     },
     "loading": "Hersteller werden geladen...",
     "error": "Hersteller koennen gerade nicht geladen werden.",

@@ -193,6 +193,10 @@
   overflow-wrap: anywhere;
 }
 
+app-pagination {
+  display: block;
+}
+
 @media (max-width: 760px) {
   .manufacturers-page {
     width: min(100% - 1.5rem, var(--content-wide-max-width, 1320px));

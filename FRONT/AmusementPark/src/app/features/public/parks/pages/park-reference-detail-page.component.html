@@ -1,5 +1,7 @@
 <app-park-reference-detail-view
   [state]="state"
   [reference]="reference"
-  (backClicked)="goBack()">
+  [attractionsLoading]="attractionsLoading"
+  (backClicked)="goBack()"
+  (attractionsPageChanged)="onAttractionsPageChanged($event)">
 </app-park-reference-detail-view>

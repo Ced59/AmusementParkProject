@@ -19,6 +19,7 @@ import { ParkReferenceDetailViewComponent } from '../ui/park-reference-detail-vi
 export class ParkReferenceDetailPageComponent implements OnInit {
   protected readonly state = this.stateFacade.state;
   protected readonly reference = this.stateFacade.reference;
+  protected readonly attractionsLoading = this.stateFacade.attractionsLoading;
   protected readonly currentLang = signal<string>('en');
 
   private readonly destroyRef: DestroyRef = inject(DestroyRef);
@@ -56,6 +57,12 @@ export class ParkReferenceDetailPageComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/', this.currentLang(), 'parks']);
+  }
+
+  onAttractionsPageChanged(event: { page?: number; rows?: number }): void {
+    const page: number = (event.page ?? 0) + 1;
+    const rows: number = event.rows ?? 12;
+    this.stateFacade.loadManufacturerAttractionsPage(page, rows);
   }
 
   private resolveReferenceKind(): ParkReferenceKind {

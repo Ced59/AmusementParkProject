@@ -4,6 +4,7 @@ import { ParkFounder } from '@app/models/parks/park-founder';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { ParkReferenceContactDetails } from '@app/models/parks/park-reference-contact-details';
+import { PaginationContract } from '@shared/models/contracts';
 import { resolveLocalizedValue } from '@shared/utils/localization';
 import { buildPublicParkItemRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import {
@@ -49,7 +50,8 @@ export function mapParkFounderToReferenceDetailViewModel(
     facts,
     photos: gallery,
     photoCategories: buildPhotoCategories(gallery),
-    attractions: []
+    attractions: [],
+    attractionsPagination: null
   };
 }
 
@@ -75,7 +77,8 @@ export function mapParkOperatorToReferenceDetailViewModel(
     facts,
     photos: gallery,
     photoCategories: buildPhotoCategories(gallery),
-    attractions: []
+    attractions: [],
+    attractionsPagination: null
   };
 }
 
@@ -83,7 +86,8 @@ export function mapAttractionManufacturerToReferenceDetailViewModel(
   manufacturer: AttractionManufacturer,
   currentLanguage: string,
   photos: ImageDto[] = [],
-  attractions: ParkItemAdminRow[] = []
+  attractions: ParkItemAdminRow[] = [],
+  attractionsPagination: PaginationContract | null = null
 ): ParkReferenceDetailViewModel {
   const facts: ParkReferenceFactViewModel[] = buildCompanyFacts(
     manufacturer.legalName,
@@ -107,7 +111,8 @@ export function mapAttractionManufacturerToReferenceDetailViewModel(
     facts,
     photos: gallery,
     photoCategories: buildPhotoCategories(gallery),
-    attractions: attractions.map((item: ParkItemAdminRow) => mapAttraction(item, currentLanguage))
+    attractions: attractions.map((item: ParkItemAdminRow) => mapAttraction(item, currentLanguage)),
+    attractionsPagination
   };
 }
 

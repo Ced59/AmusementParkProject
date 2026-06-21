@@ -6,7 +6,7 @@
     "search": {
       "label": "Search",
       "placeholder": "Name, country, city or year",
-      "count": "{{count}} manufacturer(s) shown"
+      "count": "{{count}} manufacturer(s) found"
     },
     "loading": "Loading manufacturers...",
     "error": "Manufacturers cannot be loaded right now.",

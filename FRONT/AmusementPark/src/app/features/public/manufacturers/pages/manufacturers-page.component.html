@@ -24,7 +24,7 @@
         </button>
       }
     </div>
-    <p>{{ 'manufacturersPage.search.count' | translate:{ count: filteredManufacturers().length } }}</p>
+    <p>{{ 'manufacturersPage.search.count' | translate:{ count: totalCount() } }}</p>
   </section>
 
   @if (loading()) {
@@ -87,5 +87,14 @@
         </section>
       }
     </div>
+
+    <app-pagination
+      [pagination]="pagination()"
+      [first]="(currentPage() - 1) * pageSize()"
+      [rows]="pageSize()"
+      [rowsPerPageOptions]="[12, 24, 48, 96]"
+      [pageLinkSize]="3"
+      (pageChanged)="onPageChanged($event)">
+    </app-pagination>
   }
 </section>

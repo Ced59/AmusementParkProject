@@ -102,6 +102,12 @@
             </div>
 
             @if (currentReference.attractions.length > 0) {
+              @if (attractionsLoading()) {
+                <div class="attractions-loading" aria-live="polite">
+                  <i class="pi pi-spin pi-spinner" aria-hidden="true"></i>
+                </div>
+              }
+
               <div class="attractions-grid">
                 @for (attraction of currentReference.attractions; track attraction.id) {
                   @if (attraction.routerLink) {
@@ -125,6 +131,13 @@
                   }
                 }
               </div>
+
+              <app-pagination
+                [pagination]="currentReference.attractionsPagination"
+                [rowsPerPageOptions]="[6, 12, 24, 48]"
+                [pageLinkSize]="3"
+                (pageChanged)="onAttractionsPageChanged($event)">
+              </app-pagination>
             } @else {
               <p class="park-reference-card__empty">{{ 'parks.reference.manufacturer.emptyAttractions' | translate }}</p>
             }

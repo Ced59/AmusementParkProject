@@ -2268,7 +2268,7 @@
     "search": {
       "label": "Pesquisa",
       "placeholder": "Nome, pais, cidade ou ano",
-      "count": "{{count}} fabricante(s) mostrado(s)"
+      "count": "{{count}} fabricante(s) encontrado(s)"
     },
     "loading": "A carregar fabricantes...",
     "error": "Nao e possivel carregar os fabricantes agora.",

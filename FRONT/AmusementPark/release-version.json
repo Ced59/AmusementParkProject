@@ -1,6 +1,20 @@
 {
-  "version": "2.6.1",
+  "version": "2.6.2",
   "history": [
+    {
+      "version": "2.6.2",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "La navigation des constructeurs devient plus fluide.",
+        "en": "Manufacturer browsing feels smoother.",
+        "de": "Das Stoebern in Herstellern laeuft fluessiger.",
+        "nl": "Door bouwers bladeren voelt soepeler.",
+        "it": "La navigazione tra i costruttori e piu fluida.",
+        "es": "Navegar por fabricantes va mas fluido.",
+        "pl": "Przegladanie producentow dziala plynniej.",
+        "pt": "Navegar por fabricantes fica mais fluido."
+      }
+    },
     {
       "version": "2.6.1",
       "releasedAt": "2026-06-22",

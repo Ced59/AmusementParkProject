@@ -1,3 +1,4 @@
+import { PaginationContract } from '@shared/models/contracts';
 import { UiPhotoCarouselCategoryOption, UiPhotoCarouselImage } from '@ui/media';
 
 export type ParkReferenceKind = 'founder' | 'operator' | 'manufacturer';
@@ -35,4 +36,5 @@ export interface ParkReferenceDetailViewModel {
   photos: UiPhotoCarouselImage[];
   photoCategories: UiPhotoCarouselCategoryOption[];
   attractions: ParkReferenceAttractionViewModel[];
+  attractionsPagination: PaginationContract | null;
 }

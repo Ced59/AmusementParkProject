@@ -2268,7 +2268,7 @@
     "search": {
       "label": "Recherche",
       "placeholder": "Nom, pays, ville ou annee",
-      "count": "{{count}} constructeur(s) affiche(s)"
+      "count": "{{count}} constructeur(s) trouve(s)"
     },
     "loading": "Chargement des constructeurs...",
     "error": "Impossible de charger les constructeurs pour le moment.",

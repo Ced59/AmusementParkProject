@@ -369,7 +369,7 @@ public sealed class GetPublicHomeStatsQueryHandlerTests
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyDictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds, CancellationToken cancellationToken)
+        public Task<IReadOnlyDictionary<string, int>> GetAttractionCountsByManufacturerIdsAsync(IEnumerable<string> manufacturerIds, CancellationToken cancellationToken, bool includeHidden = false)
         {
             throw new NotImplementedException();
         }

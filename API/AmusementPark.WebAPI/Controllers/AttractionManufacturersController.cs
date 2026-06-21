@@ -31,7 +31,7 @@ namespace AmusementPark.WebAPI.Controllers;
 [InvalidatesPublicCache(PublicCacheScope.ReferenceData, PublicCacheScope.Data)]
 public sealed class AttractionManufacturersController : ControllerBase
 {
-    private readonly IQueryHandler<GetAttractionManufacturersQuery, ApplicationResult<IReadOnlyCollection<AttractionManufacturerResult>>> getAttractionManufacturersQueryHandler;
+    private readonly IQueryHandler<GetAttractionManufacturersQuery, ApplicationResult<PagedResult<AttractionManufacturerResult>>> getAttractionManufacturersQueryHandler;
     private readonly IQueryHandler<GetAttractionManufacturerByIdQuery, ApplicationResult<AttractionManufacturerResult>> getAttractionManufacturerByIdQueryHandler;
     private readonly ICommandHandler<CreateAttractionManufacturerCommand, ApplicationResult<AttractionManufacturerResult>> createAttractionManufacturerCommandHandler;
     private readonly ICommandHandler<UpdateAttractionManufacturerCommand, ApplicationResult<AttractionManufacturerResult>> updateAttractionManufacturerCommandHandler;
@@ -41,7 +41,7 @@ public sealed class AttractionManufacturersController : ControllerBase
     /// Initialise une nouvelle instance de la classe <see cref="AttractionManufacturersController"/>.
     /// </summary>
     public AttractionManufacturersController(
-        IQueryHandler<GetAttractionManufacturersQuery, ApplicationResult<IReadOnlyCollection<AttractionManufacturerResult>>> getAttractionManufacturersQueryHandler,
+        IQueryHandler<GetAttractionManufacturersQuery, ApplicationResult<PagedResult<AttractionManufacturerResult>>> getAttractionManufacturersQueryHandler,
         IQueryHandler<GetAttractionManufacturerByIdQuery, ApplicationResult<AttractionManufacturerResult>> getAttractionManufacturerByIdQueryHandler,
         ICommandHandler<CreateAttractionManufacturerCommand, ApplicationResult<AttractionManufacturerResult>> createAttractionManufacturerCommandHandler,
         ICommandHandler<UpdateAttractionManufacturerCommand, ApplicationResult<AttractionManufacturerResult>> updateAttractionManufacturerCommandHandler,
@@ -58,15 +58,17 @@ public sealed class AttractionManufacturersController : ControllerBase
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicReferenceData)]
     [AllowAnonymous]
     [ProducesResponseType(typeof(PagedResponseDto<AttractionManufacturerDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetAllAsync([FromQuery] PaginationRequestDto pagination, [FromQuery] string? search = null, CancellationToken cancellationToken = default)
     {
-        ApplicationResult<IReadOnlyCollection<AttractionManufacturerResult>> result = await this.getAttractionManufacturersQueryHandler.HandleAsync(new GetAttractionManufacturersQuery(), cancellationToken);
+        ApplicationResult<PagedResult<AttractionManufacturerResult>> result = await this.getAttractionManufacturersQueryHandler.HandleAsync(
+            new GetAttractionManufacturersQuery(pagination.ToApplication(), search),
+            cancellationToken);
         if (!result.IsSuccess || result.Value is null)
         {
             return this.ToActionResult(result);
         }
 
-        PagedResponseDto<AttractionManufacturerDto> response = pagination.ToPagedResponse(result.Value, static value => value.ToHttp());
+        PagedResponseDto<AttractionManufacturerDto> response = result.Value.ToPagedResponse(static value => value.ToHttp());
         return this.Ok(response);
     }
 

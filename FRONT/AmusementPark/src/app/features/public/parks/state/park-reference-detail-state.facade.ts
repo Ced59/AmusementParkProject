@@ -17,6 +17,7 @@ import { ParkFounder } from '@app/models/parks/park-founder';
 import { ParkItemAdminRow } from '@app/models/parks/park-item-admin-row';
 import { ParkOperator } from '@app/models/parks/park-operator';
 import { ApiResponse } from '@app/models/shared/api_reponse';
+import { PaginationContract } from '@shared/models/contracts';
 import { SignalScreenStateStore } from '@shared/state/signal-screen-state.store';
 import { anonymousHttpOptions } from '@core/http/auth/anonymous-http-options';
 import { hasHttpStatus } from '@core/http/http-error-status.helpers';
@@ -48,14 +49,25 @@ interface ParkReferenceDetailSourceData {
   manufacturer: AttractionManufacturer | null;
   images: ImageDto[];
   attractions: ParkItemAdminRow[];
+  attractionsPagination: PaginationContract | null;
+}
+
+interface ManufacturerAttractionsPage {
+  attractions: ParkItemAdminRow[];
+  pagination: PaginationContract;
 }
 
 @Injectable()
 export class ParkReferenceDetailStateFacade {
+  private static readonly ManufacturerAttractionsPageSize: number = 12;
+
   private readonly screenStateStore = new SignalScreenStateStore<ParkReferenceDetailSourceData>();
   private readonly currentLanguageSignal = signal('en');
+  private readonly attractionsLoadingSignal = signal<boolean>(false);
+  private attractionsLoadSequence: number = 0;
 
   public readonly state = this.screenStateStore.state;
+  public readonly attractionsLoading: Signal<boolean> = this.attractionsLoadingSignal.asReadonly();
   public readonly reference: Signal<ParkReferenceDetailViewModel | null> = computed(() => {
     const sourceData: ParkReferenceDetailSourceData | undefined = this.screenStateStore.data();
     const currentLanguage: string = this.currentLanguageSignal();
@@ -71,7 +83,7 @@ export class ParkReferenceDetailStateFacade {
 
     if (sourceData.kind === 'manufacturer') {
       return mapNullable(sourceData.manufacturer, (manufacturer: AttractionManufacturer) =>
-        mapAttractionManufacturerToReferenceDetailViewModel(manufacturer, currentLanguage, sourceData.images, sourceData.attractions));
+        mapAttractionManufacturerToReferenceDetailViewModel(manufacturer, currentLanguage, sourceData.images, sourceData.attractions, sourceData.attractionsPagination));
     }
 
     return mapNullable(sourceData.operator, (operator: ParkOperator) =>
@@ -94,6 +106,8 @@ export class ParkReferenceDetailStateFacade {
   }
 
   loadReference(kind: ParkReferenceKind, id: string): void {
+    this.attractionsLoadingSignal.set(false);
+
     if (kind === 'founder') {
       this.loadFounder(id);
       return;
@@ -122,7 +136,8 @@ export class ParkReferenceDetailStateFacade {
           operator: null,
           manufacturer: null,
           images,
-          attractions: []
+          attractions: [],
+          attractionsPagination: null
         });
       },
       error: (error: unknown) => {
@@ -152,7 +167,8 @@ export class ParkReferenceDetailStateFacade {
           operator,
           manufacturer: null,
           images,
-          attractions: []
+          attractions: [],
+          attractionsPagination: null
         });
       },
       error: (error: unknown) => {
@@ -174,16 +190,18 @@ export class ParkReferenceDetailStateFacade {
     forkJoin({
       manufacturer: this.manufacturersApiService.getAttractionManufacturerById(id),
       images: this.getReferenceImages(ImageOwnerType.ATTRACTION_MANUFACTURER, id, ImageCategory.MANUFACTURER),
-      attractions: this.getManufacturerAttractions(id)
+      attractionsPage: this.getManufacturerAttractions(id, 1, ParkReferenceDetailStateFacade.ManufacturerAttractionsPageSize)
     }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: ({ manufacturer, images, attractions }: { manufacturer: AttractionManufacturer; images: ImageDto[]; attractions: ParkItemAdminRow[] }) => {
+      next: ({ manufacturer, images, attractionsPage }: { manufacturer: AttractionManufacturer; images: ImageDto[]; attractionsPage: ManufacturerAttractionsPage }) => {
+        this.attractionsLoadingSignal.set(false);
         this.screenStateStore.setReady({
           kind: 'manufacturer',
           founder: null,
           operator: null,
           manufacturer,
           images,
-          attractions
+          attractions: attractionsPage.attractions,
+          attractionsPagination: attractionsPage.pagination
         });
       },
       error: (error: unknown) => {
@@ -193,9 +211,50 @@ export class ParkReferenceDetailStateFacade {
           this.ssrHttpStatusService.setNotFound();
         }
 
+        this.attractionsLoadingSignal.set(false);
         this.screenStateStore.setError('parks.reference.errorMessage', previousData);
       }
     });
+  }
+
+  loadManufacturerAttractionsPage(page: number, size: number): void {
+    const currentData: ParkReferenceDetailSourceData | undefined = this.screenStateStore.data();
+    const manufacturerId: string | null = currentData?.kind === 'manufacturer'
+      ? currentData.manufacturer?.id ?? null
+      : null;
+
+    if (!currentData || !manufacturerId) {
+      return;
+    }
+
+    const sequence: number = this.attractionsLoadSequence + 1;
+    this.attractionsLoadSequence = sequence;
+    this.attractionsLoadingSignal.set(true);
+
+    this.getManufacturerAttractions(manufacturerId, Math.max(page, 1), Math.max(size, 1))
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (attractionsPage: ManufacturerAttractionsPage): void => {
+          if (sequence !== this.attractionsLoadSequence) {
+            return;
+          }
+
+          this.attractionsLoadingSignal.set(false);
+          this.screenStateStore.setReady({
+            ...currentData,
+            attractions: attractionsPage.attractions,
+            attractionsPagination: attractionsPage.pagination
+          });
+        },
+        error: (error: unknown): void => {
+          if (sequence !== this.attractionsLoadSequence) {
+            return;
+          }
+
+          console.warn('Unable to load manufacturer attractions page', error);
+          this.attractionsLoadingSignal.set(false);
+        }
+      });
   }
 
   private getReferenceImages(ownerType: ImageOwnerType, ownerId: string, category: ImageCategory): Observable<ImageDto[]> {
@@ -207,17 +266,32 @@ export class ParkReferenceDetailStateFacade {
     );
   }
 
-  private getManufacturerAttractions(manufacturerId: string): Observable<ParkItemAdminRow[]> {
-    return this.parkItemsApiService.getParkItemsPaginated(1, 100, null, null, {
+  private getManufacturerAttractions(manufacturerId: string, page: number, size: number): Observable<ManufacturerAttractionsPage> {
+    return this.parkItemsApiService.getParkItemsPaginated(page, size, null, null, {
       manufacturerId,
       isVisible: true,
       category: 'Attraction'
     }, null, anonymousHttpOptions()).pipe(
-      map((response: ApiResponse<ParkItemAdminRow>) => response.data ?? []),
+      map((response: ApiResponse<ParkItemAdminRow>) => ({
+        attractions: response.data ?? [],
+        pagination: response.pagination ?? buildEmptyPagination(page, size)
+      })),
       catchError((error: unknown) => {
         console.warn('Unable to load manufacturer attractions', error);
-        return of([] as ParkItemAdminRow[]);
+        return of({
+          attractions: [],
+          pagination: buildEmptyPagination(page, size)
+        });
       })
     );
   }
+}
+
+function buildEmptyPagination(page: number, size: number): PaginationContract {
+  return {
+    totalItems: 0,
+    totalPages: 0,
+    currentPage: page,
+    itemsPerPage: size
+  };
 }

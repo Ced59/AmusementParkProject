@@ -2,11 +2,14 @@ import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, Signal, signal 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { skip } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, skip } from 'rxjs/operators';
 
 import { AttractionManufacturer } from '@app/models/parks/attraction-manufacturer';
 import { TranslationService } from '@app/services/translation.service';
 import { SeoService } from '@core/seo/seo.service';
+import { PaginationComponent } from '@shared/components/pagination/pagination.component';
+import { PaginationContract } from '@shared/models/contracts';
 import { resolveLocalizedText, stripHtml } from '@shared/utils/localization/localized-text.helpers';
 import { buildPublicParkReferenceRouteCommands } from '@shared/utils/routing/public-detail-route.helpers';
 import { findNearestLanguageActivatedRoute, resolveLanguageFromActivatedRoute, resolveLanguageFromParamMap } from '@shared/utils/routing/route-language.utils';
@@ -22,6 +25,7 @@ import { PublicManufacturerGroup, PublicManufacturersStateFacade } from '../stat
   imports: [
     RouterLink,
     TranslateModule,
+    PaginationComponent,
     UiButtonDirective,
     UiKickerComponent,
     UiSurfaceDirective
@@ -34,8 +38,13 @@ export class ManufacturersPageComponent implements OnInit {
   protected readonly searchTerm: Signal<string> = this.stateFacade.searchTerm;
   protected readonly filteredManufacturers: Signal<AttractionManufacturer[]> = this.stateFacade.filteredManufacturers;
   protected readonly groupedManufacturers: Signal<PublicManufacturerGroup[]> = this.stateFacade.groupedManufacturers;
+  protected readonly pagination: Signal<PaginationContract | null> = this.stateFacade.pagination;
+  protected readonly currentPage: Signal<number> = this.stateFacade.currentPage;
+  protected readonly pageSize: Signal<number> = this.stateFacade.pageSize;
+  protected readonly totalCount: Signal<number> = this.stateFacade.totalCount;
 
   private activeLanguage: string | null = null;
+  private readonly searchInputSubject = new Subject<string>();
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -56,16 +65,33 @@ export class ManufacturersPageComponent implements OnInit {
       this.applyLanguage(language);
     });
 
+    this.searchInputSubject.pipe(
+      debounceTime(250),
+      distinctUntilChanged(),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((): void => {
+      this.stateFacade.load(1, this.pageSize());
+    });
+
     this.stateFacade.load();
   }
 
   protected onSearchInput(event: Event): void {
     const input: HTMLInputElement | null = event.target instanceof HTMLInputElement ? event.target : null;
-    this.stateFacade.updateSearchTerm(input?.value ?? '');
+    const value: string = input?.value ?? '';
+    this.stateFacade.updateSearchTerm(value);
+    this.searchInputSubject.next(value.trim());
   }
 
   protected clearSearch(): void {
     this.stateFacade.clearSearch();
+    this.searchInputSubject.next('');
+  }
+
+  protected onPageChanged(event: { page?: number; rows?: number }): void {
+    const page: number = (event.page ?? 0) + 1;
+    const rows: number = event.rows ?? this.pageSize();
+    this.stateFacade.setPage(page, rows);
   }
 
   protected manufacturerRoute(manufacturer: AttractionManufacturer): string[] | null {

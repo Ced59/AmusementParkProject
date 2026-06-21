@@ -38,7 +38,7 @@ public sealed class GetAttractionManufacturerByIdQueryHandler : IQueryHandler<Ge
             return ApplicationResult<AttractionManufacturerResult>.Failure(ApplicationError.NotFound("attraction-manufacturer.not-found", "Attraction manufacturer not exists"));
         }
 
-        IReadOnlyDictionary<string, int> counts = await this.parkItemRepository.GetAttractionCountsByManufacturerIdsAsync(new[] { query.Id }, cancellationToken);
+        IReadOnlyDictionary<string, int> counts = await this.parkItemRepository.GetAttractionCountsByManufacturerIdsAsync(new[] { query.Id }, cancellationToken, includeHidden: false);
         int attractionCount = counts.TryGetValue(query.Id, out int value) ? value : 0;
 
         return ApplicationResult<AttractionManufacturerResult>.Success(new AttractionManufacturerResult
