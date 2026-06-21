@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, Signal, signal } from '@angular/core';
 
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -22,8 +22,12 @@ export class AdminPublicViewToolbarComponent implements OnDestroy {
   protected readonly viewMode: Signal<AdminPublicViewMode> = this.adminPublicViewModeFacade.viewMode;
   protected readonly editionModeEnabled: Signal<boolean> = this.adminPublicViewModeFacade.editionModeEnabled;
   protected readonly canEdit: Signal<boolean> = this.adminPublicViewModeFacade.canEdit;
+  protected readonly isCollapsed: Signal<boolean>;
+
+  private readonly isCollapsedSignal = signal<boolean>(false);
 
   constructor(private readonly adminPublicViewModeFacade: AdminPublicViewModeFacade) {
+    this.isCollapsed = this.isCollapsedSignal.asReadonly();
   }
 
   ngOnDestroy(): void {
@@ -36,5 +40,13 @@ export class AdminPublicViewToolbarComponent implements OnDestroy {
 
   protected toggleEditionMode(): void {
     this.adminPublicViewModeFacade.toggleEditionMode();
+  }
+
+  protected collapseToolbar(): void {
+    this.isCollapsedSignal.set(true);
+  }
+
+  protected expandToolbar(): void {
+    this.isCollapsedSignal.set(false);
   }
 }

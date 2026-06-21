@@ -27,116 +27,6 @@
     <div class="admin-contextual-block-drawer__body">
       <p class="admin-contextual-block-drawer__description">{{ block.descriptionKey | translate }}</p>
 
-      <dl class="admin-contextual-block-drawer__ids">
-        <div>
-          <dt>{{ 'admin.contextualBlocks.drawer.type' | translate }}</dt>
-          <dd>{{ block.type }}</dd>
-        </div>
-        <div>
-          <dt>{{ 'admin.contextualBlocks.drawer.entity' | translate }}</dt>
-          <dd>{{ block.entityType }}</dd>
-        </div>
-        <div>
-          <dt>{{ 'admin.contextualBlocks.drawer.label' | translate }}</dt>
-          <dd>{{ block.contextLabel }}</dd>
-        </div>
-        @for (entry of getIdEntries(block); track entry.key) {
-          <div>
-            <dt>{{ entry.key }}</dt>
-            <dd>{{ entry.value }}</dd>
-          </div>
-        }
-      </dl>
-
-      <section class="admin-contextual-block-drawer__section">
-        <h3>{{ 'admin.contextualBlocks.drawer.capabilities' | translate }}</h3>
-        <ul>
-          @for (capability of block.capabilities; track capability) {
-            <li>{{ getCapabilityLabelKey(capability) | translate }}</li>
-          }
-        </ul>
-      </section>
-
-      @if (block.localizedLanguageCodes.length > 0) {
-        <section class="admin-contextual-block-drawer__section">
-          <h3>{{ 'admin.contextualBlocks.drawer.localizedLanguages' | translate }}</h3>
-          <div class="admin-contextual-block-drawer__chips">
-            @for (languageCode of block.localizedLanguageCodes; track languageCode) {
-              <span>{{ languageCode }}</span>
-            }
-          </div>
-        </section>
-      }
-
-      <section class="admin-contextual-block-drawer__section">
-        <h3>{{ 'admin.contextualBlocks.drawer.jsonScope' | translate }}</h3>
-        <ul>
-          @for (field of block.jsonScope; track field) {
-            <li><code>{{ field }}</code></li>
-          }
-        </ul>
-      </section>
-
-      @if (canAddChild(block)) {
-        <section class="admin-contextual-block-drawer__section admin-contextual-block-drawer__child-add">
-          <h3>{{ 'admin.contextualBlocks.drawer.addChildTitle' | translate }}</h3>
-          <p class="admin-contextual-block-drawer__form-status">{{ 'admin.contextualBlocks.drawer.addChildHint' | translate }}</p>
-
-          <div class="admin-contextual-block-drawer__form-fields">
-            <label>
-              <span>{{ 'admin.contextualBlocks.drawer.addChildNameLabel' | translate }}</span>
-              <input
-                type="text"
-                [attr.placeholder]="'admin.contextualBlocks.drawer.addChildNamePlaceholder' | translate"
-                [value]="childAddName()"
-                (input)="updateChildAddName($event)" />
-            </label>
-
-            <label>
-              <span>{{ 'admin.contextualBlocks.drawer.addChildZoneLabel' | translate }}</span>
-              <select
-                [value]="childAddSelectedZoneId() ?? ''"
-                [disabled]="isChildAddLoadingZones() || isChildAddCreating()"
-                (change)="updateChildAddZone($event)">
-                <option value="">{{ 'admin.contextualBlocks.drawer.addChildNoZoneOption' | translate }}</option>
-                @for (zone of childAddZoneOptions(); track trackChildAddZone(zone)) {
-                  <option [value]="zone.id">{{ zone.label }}</option>
-                }
-              </select>
-            </label>
-          </div>
-
-          @if (isChildAddLoadingZones()) {
-            <p class="admin-contextual-block-drawer__form-status">{{ 'admin.contextualBlocks.drawer.addChildZonesLoading' | translate }}</p>
-          }
-
-          <div class="admin-contextual-block-drawer__preview-actions">
-            <button
-              type="button"
-              class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--primary"
-              [disabled]="isChildAddCreating() || childAddName().trim().length === 0"
-              (click)="createChild(block)">
-              <i class="pi pi-plus" aria-hidden="true"></i>
-              <span>{{ (isChildAddCreating() ? 'admin.contextualBlocks.drawer.addChildCreateBusy' : 'admin.contextualBlocks.drawer.addChildCreate') | translate }}</span>
-            </button>
-            @if (createdChildAdminRoute(); as createdRoute) {
-              <a class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--secondary" [routerLink]="createdRoute">
-                <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
-                <span>{{ 'admin.contextualBlocks.drawer.openCreatedChild' | translate }}</span>
-              </a>
-            }
-          </div>
-
-          @if (childAddErrorKey(); as errorKey) {
-            <p class="admin-contextual-block-drawer__error" role="alert">{{ errorKey | translate }}</p>
-          }
-
-          @if (childAddSuccessKey(); as successKey) {
-            <p class="admin-contextual-block-drawer__success" role="status">{{ successKey | translate }}</p>
-          }
-        </section>
-      }
-
       @if (canEditForm(block)) {
         <section class="admin-contextual-block-drawer__section admin-contextual-block-drawer__form">
           <h3>{{ 'admin.contextualBlocks.drawer.formTitle' | translate }}</h3>
@@ -188,6 +78,120 @@
           }
         </section>
       }
+
+      @if (canAddChild(block)) {
+        <section class="admin-contextual-block-drawer__section admin-contextual-block-drawer__child-add">
+          <h3>{{ 'admin.contextualBlocks.drawer.addChildTitle' | translate }}</h3>
+          <p class="admin-contextual-block-drawer__form-status">{{ 'admin.contextualBlocks.drawer.addChildHint' | translate }}</p>
+
+          <div class="admin-contextual-block-drawer__form-fields">
+            <label>
+              <span>{{ 'admin.contextualBlocks.drawer.addChildNameLabel' | translate }}</span>
+              <input
+                type="text"
+                [attr.placeholder]="'admin.contextualBlocks.drawer.addChildNamePlaceholder' | translate"
+                [value]="childAddName()"
+                (input)="updateChildAddName($event)" />
+            </label>
+
+            <label>
+              <span>{{ 'admin.contextualBlocks.drawer.addChildZoneLabel' | translate }}</span>
+              <select
+                [value]="childAddSelectedZoneId() ?? ''"
+                [disabled]="isChildAddLoadingZones() || isChildAddCreating()"
+                (change)="updateChildAddZone($event)">
+                <option value="">{{ 'admin.contextualBlocks.drawer.addChildNoZoneOption' | translate }}</option>
+                @for (zone of childAddZoneOptions(); track trackChildAddZone(zone)) {
+                  <option [value]="zone.id">{{ zone.label }}</option>
+                }
+              </select>
+            </label>
+          </div>
+
+          @if (isChildAddLoadingZones()) {
+            <p class="admin-contextual-block-drawer__form-status">{{ 'admin.contextualBlocks.drawer.addChildZonesLoading' | translate }}</p>
+          }
+
+          <div class="admin-contextual-block-drawer__preview-actions">
+            <button
+              type="button"
+              class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--primary"
+              [disabled]="isChildAddCreating() || childAddName().trim().length === 0"
+              (click)="createChild(block)">
+              <i class="pi pi-plus" aria-hidden="true"></i>
+              <span>{{ (isChildAddCreating() ? 'admin.contextualBlocks.drawer.addChildCreateBusy' : 'admin.contextualBlocks.drawer.addChildCreate') | translate }}</span>
+            </button>
+            @if (createdChildAdminRoute(); as createdRoute) {
+              <a
+                class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--secondary"
+                [routerLink]="createdRoute"
+                target="_blank"
+                rel="noopener noreferrer">
+                <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+                <span>{{ 'admin.contextualBlocks.drawer.openCreatedChild' | translate }}</span>
+              </a>
+            }
+          </div>
+
+          @if (childAddErrorKey(); as errorKey) {
+            <p class="admin-contextual-block-drawer__error" role="alert">{{ errorKey | translate }}</p>
+          }
+
+          @if (childAddSuccessKey(); as successKey) {
+            <p class="admin-contextual-block-drawer__success" role="status">{{ successKey | translate }}</p>
+          }
+        </section>
+      }
+
+      <dl class="admin-contextual-block-drawer__ids">
+        <div>
+          <dt>{{ 'admin.contextualBlocks.drawer.type' | translate }}</dt>
+          <dd>{{ block.type }}</dd>
+        </div>
+        <div>
+          <dt>{{ 'admin.contextualBlocks.drawer.entity' | translate }}</dt>
+          <dd>{{ block.entityType }}</dd>
+        </div>
+        <div>
+          <dt>{{ 'admin.contextualBlocks.drawer.label' | translate }}</dt>
+          <dd>{{ block.contextLabel }}</dd>
+        </div>
+        @for (entry of getIdEntries(block); track entry.key) {
+          <div>
+            <dt>{{ entry.key }}</dt>
+            <dd>{{ entry.value }}</dd>
+          </div>
+        }
+      </dl>
+
+      <section class="admin-contextual-block-drawer__section">
+        <h3>{{ 'admin.contextualBlocks.drawer.capabilities' | translate }}</h3>
+        <ul>
+          @for (capability of block.capabilities; track capability) {
+            <li>{{ getCapabilityLabelKey(capability) | translate }}</li>
+          }
+        </ul>
+      </section>
+
+      @if (block.localizedLanguageCodes.length > 0) {
+        <section class="admin-contextual-block-drawer__section">
+          <h3>{{ 'admin.contextualBlocks.drawer.localizedLanguages' | translate }}</h3>
+          <div class="admin-contextual-block-drawer__chips">
+            @for (languageCode of block.localizedLanguageCodes; track languageCode) {
+              <span>{{ languageCode }}</span>
+            }
+          </div>
+        </section>
+      }
+
+      <section class="admin-contextual-block-drawer__section">
+        <h3>{{ 'admin.contextualBlocks.drawer.jsonScope' | translate }}</h3>
+        <ul>
+          @for (field of block.jsonScope; track field) {
+            <li><code>{{ field }}</code></li>
+          }
+        </ul>
+      </section>
 
       @if (canPreviewJson(block)) {
         <section class="admin-contextual-block-drawer__section admin-contextual-block-drawer__preview">
@@ -332,7 +336,11 @@
         }
 
         @if (block.adminRoute) {
-          <a class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--primary" [routerLink]="block.adminRoute">
+          <a
+            class="admin-contextual-block-drawer__action admin-contextual-block-drawer__action--primary"
+            [routerLink]="block.adminRoute"
+            target="_blank"
+            rel="noopener noreferrer">
             <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
             <span>{{ 'admin.contextualBlocks.drawer.openAdminEdit' | translate }}</span>
           </a>

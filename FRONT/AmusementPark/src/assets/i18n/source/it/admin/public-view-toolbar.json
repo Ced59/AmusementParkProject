@@ -8,6 +8,8 @@
       "editionOn": "Modifica on",
       "enableEditionMode": "Attiva modifica",
       "disableEditionMode": "Disattiva modifica",
+      "collapse": "Nascondi barra admin",
+      "expand": "Mostra barra admin",
       "modes": {
         "anonymous": {
           "label": "Visitatore non connesso",

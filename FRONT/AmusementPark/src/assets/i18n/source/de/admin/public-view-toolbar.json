@@ -8,6 +8,8 @@
       "editionOn": "Bearbeiten an",
       "enableEditionMode": "Bearbeiten aktivieren",
       "disableEditionMode": "Bearbeiten deaktivieren",
+      "collapse": "Admin-Leiste ausblenden",
+      "expand": "Admin-Leiste anzeigen",
       "modes": {
         "anonymous": {
           "label": "Nicht angemeldeter Besucher",

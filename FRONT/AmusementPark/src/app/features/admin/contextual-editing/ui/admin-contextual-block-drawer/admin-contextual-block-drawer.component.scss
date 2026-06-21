@@ -10,9 +10,10 @@
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--app-primary) 26%, var(--app-border));
   border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--app-surface) 96%, transparent);
+  background: var(--app-surface);
   color: var(--app-text);
   box-shadow: 0 24px 70px color-mix(in srgb, #000 30%, transparent);
+  pointer-events: auto;
 }
 
 .admin-contextual-block-drawer__header,

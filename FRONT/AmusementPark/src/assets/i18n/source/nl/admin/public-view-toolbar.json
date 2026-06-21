@@ -8,6 +8,8 @@
       "editionOn": "Bewerken aan",
       "enableEditionMode": "Bewerken inschakelen",
       "disableEditionMode": "Bewerken uitschakelen",
+      "collapse": "Adminbalk verbergen",
+      "expand": "Adminbalk tonen",
       "modes": {
         "anonymous": {
           "label": "Niet-ingelogde bezoeker",

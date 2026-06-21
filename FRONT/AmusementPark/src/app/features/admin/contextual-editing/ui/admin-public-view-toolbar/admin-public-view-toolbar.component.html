@@ -1,40 +1,63 @@
-<section class="admin-public-view-toolbar" [attr.aria-label]="'admin.publicViewToolbar.ariaLabel' | translate">
-  <div class="admin-public-view-toolbar__view-group">
-    <span class="admin-public-view-toolbar__label">{{ 'admin.publicViewToolbar.viewMode' | translate }}</span>
-
-    <div class="admin-public-view-toolbar__modes" role="radiogroup" [attr.aria-label]="'admin.publicViewToolbar.viewModeAriaLabel' | translate">
-      @for (definition of viewModeDefinitions; track definition.value) {
-        <button
-          type="button"
-          class="admin-public-view-toolbar__mode"
-          role="radio"
-          [class.admin-public-view-toolbar__mode--active]="viewMode() === definition.value"
-          [attr.aria-checked]="viewMode() === definition.value"
-          [attr.aria-label]="definition.ariaLabelKey | translate"
-          (click)="selectViewMode(definition.value)">
-          <i class="pi {{ definition.icon }}" aria-hidden="true"></i>
-          <span>{{ definition.shortLabelKey | translate }}</span>
-          <span class="app-visually-hidden">{{ definition.labelKey | translate }}</span>
-        </button>
-      }
-    </div>
-  </div>
-
+@if (isCollapsed()) {
   <button
     type="button"
-    class="admin-public-view-toolbar__edition"
-    [class.admin-public-view-toolbar__edition--active]="editionModeEnabled()"
-    [disabled]="!canEdit()"
-    [attr.aria-pressed]="editionModeEnabled()"
-    [attr.aria-label]="(editionModeEnabled() ? 'admin.publicViewToolbar.disableEditionMode' : 'admin.publicViewToolbar.enableEditionMode') | translate"
-    (click)="toggleEditionMode()">
-    <i
-      class="pi"
-      [class.pi-pencil]="!editionModeEnabled()"
-      [class.pi-check]="editionModeEnabled()"
-      aria-hidden="true"></i>
-    <span>{{ (editionModeEnabled() ? 'admin.publicViewToolbar.editionOn' : 'admin.publicViewToolbar.editionOff') | translate }}</span>
+    class="admin-public-view-toolbar__restore"
+    [attr.aria-label]="'admin.publicViewToolbar.expand' | translate"
+    (click)="expandToolbar()">
+    <i class="pi pi-sliders-h" aria-hidden="true"></i>
+    @if (editionModeEnabled()) {
+      <span class="admin-public-view-toolbar__restore-dot" aria-hidden="true"></span>
+    }
   </button>
-</section>
+} @else {
+  <section class="admin-public-view-toolbar" [attr.aria-label]="'admin.publicViewToolbar.ariaLabel' | translate">
+    <div class="admin-public-view-toolbar__view-group">
+      <span class="admin-public-view-toolbar__label">{{ 'admin.publicViewToolbar.viewMode' | translate }}</span>
+
+      <div class="admin-public-view-toolbar__modes" role="radiogroup" [attr.aria-label]="'admin.publicViewToolbar.viewModeAriaLabel' | translate">
+        @for (definition of viewModeDefinitions; track definition.value) {
+          <button
+            type="button"
+            class="admin-public-view-toolbar__mode"
+            role="radio"
+            [class.admin-public-view-toolbar__mode--active]="viewMode() === definition.value"
+            [attr.aria-checked]="viewMode() === definition.value"
+            [attr.aria-label]="definition.ariaLabelKey | translate"
+            (click)="selectViewMode(definition.value)">
+            <i class="pi {{ definition.icon }}" aria-hidden="true"></i>
+            <span>{{ definition.shortLabelKey | translate }}</span>
+            <span class="app-visually-hidden">{{ definition.labelKey | translate }}</span>
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="admin-public-view-toolbar__actions">
+      <button
+        type="button"
+        class="admin-public-view-toolbar__edition"
+        [class.admin-public-view-toolbar__edition--active]="editionModeEnabled()"
+        [disabled]="!canEdit()"
+        [attr.aria-pressed]="editionModeEnabled()"
+        [attr.aria-label]="(editionModeEnabled() ? 'admin.publicViewToolbar.disableEditionMode' : 'admin.publicViewToolbar.enableEditionMode') | translate"
+        (click)="toggleEditionMode()">
+        <i
+          class="pi"
+          [class.pi-pencil]="!editionModeEnabled()"
+          [class.pi-check]="editionModeEnabled()"
+          aria-hidden="true"></i>
+        <span>{{ (editionModeEnabled() ? 'admin.publicViewToolbar.editionOn' : 'admin.publicViewToolbar.editionOff') | translate }}</span>
+      </button>
+
+      <button
+        type="button"
+        class="admin-public-view-toolbar__collapse"
+        [attr.aria-label]="'admin.publicViewToolbar.collapse' | translate"
+        (click)="collapseToolbar()">
+        <i class="pi pi-angle-down" aria-hidden="true"></i>
+      </button>
+    </div>
+  </section>
+}
 
 <app-admin-contextual-block-drawer></app-admin-contextual-block-drawer>
