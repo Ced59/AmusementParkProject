@@ -11,6 +11,7 @@ export type ParkItemType =
   | 'Playground'
   | 'InteractiveExperience'
   | 'Cinema'
+  | 'DropTower'
   | 'ObservationRide'
   | 'AnimalExhibit'
   | 'Restaurant'

@@ -242,6 +242,7 @@ function resolveParkItemTypeIconClass(type: string | null | undefined): string {
     case 'MeetAndGreet':
       return 'pi pi-heart';
     case 'ThrillRide':
+    case 'DropTower':
       return 'pi pi-send';
     case 'Restaurant':
     case 'Snack':

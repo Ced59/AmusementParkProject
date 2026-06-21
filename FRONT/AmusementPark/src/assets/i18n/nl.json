@@ -2234,7 +2234,8 @@
       "locker": "Kluisje",
       "parking": "Parking",
       "station": "Station",
-      "cinema": "4D-bioscopen"
+      "cinema": "4D-bioscopen",
+      "dropTower": "Vrijevaltorens"
     }
   },
   "parkItems": {

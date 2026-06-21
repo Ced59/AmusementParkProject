@@ -2234,7 +2234,8 @@
       "locker": "Locker",
       "parking": "Parking",
       "station": "Station",
-      "cinema": "4D cinemas"
+      "cinema": "4D cinemas",
+      "dropTower": "Drop towers"
     }
   },
   "parkItems": {

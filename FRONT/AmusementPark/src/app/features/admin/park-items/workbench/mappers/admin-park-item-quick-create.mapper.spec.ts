@@ -62,6 +62,18 @@ describe('admin park item quick create mapper', () => {
     expect(item.attractionDetails?.manufacturerId).toBe('intamin');
   });
 
+  it('keeps drop tower as an allowed attraction type', () => {
+    const draft: AdminParkItemQuickCreateDraft = createAdminParkItemQuickCreateDraft('park-1', {
+      name: 'Drop tower',
+      category: 'Attraction',
+      type: 'DropTower'
+    });
+
+    const item: ParkItem = mapAdminParkItemQuickCreateDraftToParkItem(draft, { latitude: 1, longitude: 2 });
+
+    expect(item.type).toBe('DropTower');
+  });
+
   it('resets only the name when creating the next draft', () => {
     const draft: AdminParkItemQuickCreateDraft = createAdminParkItemQuickCreateDraft('park-1', {
       name: 'First item',

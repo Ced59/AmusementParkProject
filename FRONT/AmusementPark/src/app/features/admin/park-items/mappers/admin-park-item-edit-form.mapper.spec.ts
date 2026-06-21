@@ -101,7 +101,7 @@ describe('admin park item edit form mapper', () => {
 
   it('maps attraction details only when at least one meaningful value exists', () => {
     const form: FormGroup = createAdminParkItemEditForm(formBuilder, 'park-1');
-    form.patchValue({ name: 'Attraction', category: 'Attraction', type: 'RollerCoaster' });
+    form.patchValue({ name: 'Attraction', category: 'Attraction', type: 'DropTower' });
 
     expect(mapAdminParkItemEditFormToParkItem(form).attractionDetails).toBeNull();
 
@@ -111,6 +111,7 @@ describe('admin park item edit form mapper', () => {
 
     const item: ParkItem = mapAdminParkItemEditFormToParkItem(form);
 
+    expect(item.type).toBe('DropTower');
     expect(item.attractionDetails?.hasFastPass).toBeTrue();
     expect(item.attractionDetails?.durationInSeconds).toBe(123);
     expect(item.attractionDetails?.waterExposureLevel).toBeNull();

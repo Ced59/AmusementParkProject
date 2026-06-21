@@ -42,6 +42,13 @@ describe('mapParkItemToCardViewModel', () => {
     expect(result.itemLink).toEqual(['/', 'fr', 'park', 'park-1', 'parc-test', 'item', 'item-1', 'big-ride']);
   });
 
+  it('maps drop tower cards as thrill-style attraction cards', () => {
+    const result = mapParkItemToCardViewModel(createItem({ type: 'DropTower' }), park, 'fr', null, null);
+
+    expect(result.typeLabelKey).toBe('parkExplorer.types.dropTower');
+    expect(result.typeIconClass).toBe('pi pi-send');
+  });
+
   it('maps the optional card image urls', () => {
     const result = mapParkItemToCardViewModel(createItem(), park, 'fr', 'B&M', 'Zone A', null, 'Metric', undefined, '/images/main', '/images/main 640w');
 

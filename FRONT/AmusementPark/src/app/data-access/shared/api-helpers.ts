@@ -69,7 +69,8 @@ const PARK_ITEM_TYPES_BY_API_VALUE: ReadonlyMap<number, ParkItem['type']> = new 
   [26, 'Transport'],
   [27, 'Station'],
   [28, 'Other'],
-  [29, 'Cinema']
+  [29, 'Cinema'],
+  [30, 'DropTower']
 ]);
 
 

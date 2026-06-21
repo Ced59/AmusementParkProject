@@ -77,9 +77,9 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
             Id = "item-1",
             ParkId = "park-1",
             ZoneId = "zone-1",
-            Name = "Blue Coaster",
+            Name = "Drop tower",
             Category = ParkItemCategory.Attraction,
-            Type = ParkItemType.RollerCoaster,
+            Type = ParkItemType.DropTower,
             IsVisible = false,
             AdminReviewStatus = AdminReviewStatus.ToReview,
             AttractionDetails = new AttractionDetails
@@ -219,6 +219,7 @@ public sealed class ExportParkGraphJsonQueryHandlerTests
         Assert.Equal("Export Park", root.GetProperty("park").GetProperty("name").GetString());
         Assert.Equal("Validated", root.GetProperty("park").GetProperty("adminReviewStatus").GetString());
         Assert.Equal("zone-1", root.GetProperty("zones")[0].GetProperty("key").GetString());
+        Assert.Equal("DropTower", root.GetProperty("items")[0].GetProperty("type").GetString());
         Assert.Equal("zone-1", root.GetProperty("items")[0].GetProperty("zoneKey").GetString());
         Assert.Equal("manufacturer-1", root.GetProperty("items")[0].GetProperty("attractionDetails").GetProperty("manufacturerKey").GetString());
         Assert.Equal("Manufacturer", root.GetProperty("references").GetProperty("manufacturers")[0].GetProperty("name").GetString());

@@ -35,4 +35,5 @@ public enum ParkItemType
     Station = 27,
     Other = 28,
     Cinema = 29,
+    DropTower = 30,
 }

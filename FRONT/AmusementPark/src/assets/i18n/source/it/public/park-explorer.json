@@ -49,7 +49,8 @@
       "locker": "Armadio deposito",
       "parking": "Parcheggio",
       "station": "Stazione",
-      "cinema": "Cinema 4D"
+      "cinema": "Cinema 4D",
+      "dropTower": "Torri a caduta"
     }
   }
 }

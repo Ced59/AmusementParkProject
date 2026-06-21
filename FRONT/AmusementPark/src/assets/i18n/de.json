@@ -2234,7 +2234,8 @@
       "locker": "Schließfach",
       "parking": "Parkplatz",
       "station": "Station",
-      "cinema": "4D-Kinos"
+      "cinema": "4D-Kinos",
+      "dropTower": "Freifalltürme"
     }
   },
   "parkItems": {

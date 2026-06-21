@@ -55,6 +55,19 @@ describe('api helpers', () => {
     expect(normalizeParkItem(item).type).toBe('Cinema');
   });
 
+  it('normalizes the drop tower park item type from its stable API value', () => {
+    const item: ParkItem = {
+      parkId: 'p1',
+      name: 'Drop tower',
+      category: 'Attraction',
+      type: 30 as unknown as ParkItem['type'],
+      latitude: 0,
+      longitude: 0
+    };
+
+    expect(normalizeParkItem(item).type).toBe('DropTower');
+  });
+
   it('keeps existing string park item category and type values', () => {
     const item: ParkItem = {
       parkId: 'p1',

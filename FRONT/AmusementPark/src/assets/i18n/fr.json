@@ -2234,7 +2234,8 @@
       "locker": "Consigne",
       "parking": "Parking",
       "station": "Station",
-      "cinema": "Cinémas 4D"
+      "cinema": "Cinémas 4D",
+      "dropTower": "Tours de chute"
     }
   },
   "parkItems": {

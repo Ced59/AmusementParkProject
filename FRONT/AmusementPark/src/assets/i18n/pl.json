@@ -2234,7 +2234,8 @@
       "locker": "Szafka",
       "parking": "Parking",
       "station": "Stacja",
-      "cinema": "Kina 4D"
+      "cinema": "Kina 4D",
+      "dropTower": "Wieże swobodnego spadania"
     }
   },
   "parkItems": {
