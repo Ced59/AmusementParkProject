@@ -1107,10 +1107,16 @@
         "capabilities": "Mogelijkheden",
         "localizedLanguages": "Gelokaliseerd in",
         "jsonScope": "JSON-bereik",
-        "openAdminEdit": "Volledige adminbewerking openen"
+        "openAdminEdit": "Volledige adminbewerking openen",
+        "downloadJson": "Blok-JSON downloaden",
+        "downloadJsonBusy": "Downloaden...",
+        "downloadJsonError": "JSON-download mislukt.",
+        "downloadJsonUnavailable": "JSON-export is niet beschikbaar voor dit blok.",
+        "exportJsonAriaLabel": "Begrensde JSON van dit blok downloaden"
       },
       "capabilities": {
         "fullAdminEdit": "Volledige adminbewerking beschikbaar",
+        "boundedJsonExport": "Begrensde JSON-export beschikbaar",
         "boundedJsonExportPlanned": "Begrensde JSON-export gepland",
         "boundedJsonUpsertPlanned": "Begrensde JSON-upsert gepland",
         "formEditPlanned": "Contextformulier gepland"

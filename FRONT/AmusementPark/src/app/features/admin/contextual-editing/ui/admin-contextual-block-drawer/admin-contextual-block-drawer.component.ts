@@ -6,6 +6,7 @@ import {
   AdminContextualBlockCapability,
   AdminContextualBlockInstance
 } from '../../models/admin-contextual-block.model';
+import { AdminContextualBlockExportFacade } from '../../state/admin-contextual-block-export.facade';
 import { AdminContextualBlockSelectionFacade } from '../../state/admin-contextual-block-selection.facade';
 
 interface AdminContextualBlockIdEntry {
@@ -22,12 +23,25 @@ interface AdminContextualBlockIdEntry {
 })
 export class AdminContextualBlockDrawerComponent {
   protected readonly selectedBlock: Signal<AdminContextualBlockInstance | null> = this.selectionFacade.selectedBlock;
+  protected readonly isExporting: Signal<boolean> = this.exportFacade.isExporting;
+  protected readonly exportErrorKey: Signal<string | null> = this.exportFacade.errorKey;
 
-  constructor(private readonly selectionFacade: AdminContextualBlockSelectionFacade) {
+  constructor(
+    private readonly selectionFacade: AdminContextualBlockSelectionFacade,
+    private readonly exportFacade: AdminContextualBlockExportFacade
+  ) {
   }
 
   protected close(): void {
     this.selectionFacade.clearSelection();
+  }
+
+  protected canDownloadJson(block: AdminContextualBlockInstance): boolean {
+    return this.exportFacade.canExport(block);
+  }
+
+  protected downloadJson(block: AdminContextualBlockInstance): void {
+    this.exportFacade.exportBlock(block);
   }
 
   protected getIdEntries(block: AdminContextualBlockInstance): AdminContextualBlockIdEntry[] {

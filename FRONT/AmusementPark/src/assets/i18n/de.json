@@ -1107,10 +1107,16 @@
         "capabilities": "Faehigkeiten",
         "localizedLanguages": "Lokalisiert in",
         "jsonScope": "JSON-Bereich",
-        "openAdminEdit": "Vollstaendige Admin-Bearbeitung oeffnen"
+        "openAdminEdit": "Vollstaendige Admin-Bearbeitung oeffnen",
+        "downloadJson": "Block-JSON herunterladen",
+        "downloadJsonBusy": "Download laeuft...",
+        "downloadJsonError": "JSON-Download fehlgeschlagen.",
+        "downloadJsonUnavailable": "JSON-Export ist fuer diesen Block nicht verfuegbar.",
+        "exportJsonAriaLabel": "Begrenztes JSON dieses Blocks herunterladen"
       },
       "capabilities": {
         "fullAdminEdit": "Vollstaendige Admin-Bearbeitung verfuegbar",
+        "boundedJsonExport": "Begrenzter JSON-Export verfuegbar",
         "boundedJsonExportPlanned": "Begrenzter JSON-Export geplant",
         "boundedJsonUpsertPlanned": "Begrenzter JSON-Upsert geplant",
         "formEditPlanned": "Kontextformular geplant"

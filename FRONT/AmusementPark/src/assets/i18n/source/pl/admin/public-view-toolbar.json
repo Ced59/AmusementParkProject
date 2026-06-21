@@ -43,10 +43,16 @@
         "capabilities": "Mozliwosci",
         "localizedLanguages": "Zlokalizowane w",
         "jsonScope": "Zakres JSON",
-        "openAdminEdit": "Otworz pelna edycje admin"
+        "openAdminEdit": "Otworz pelna edycje admin",
+        "downloadJson": "Pobierz JSON bloku",
+        "downloadJsonBusy": "Pobieranie...",
+        "downloadJsonError": "Pobieranie JSON nie powiodlo sie.",
+        "downloadJsonUnavailable": "Eksport JSON nie jest dostepny dla tego bloku.",
+        "exportJsonAriaLabel": "Pobierz ograniczony JSON tego bloku"
       },
       "capabilities": {
         "fullAdminEdit": "Pelna edycja admin dostepna",
+        "boundedJsonExport": "Ograniczony eksport JSON dostepny",
         "boundedJsonExportPlanned": "Ograniczony eksport JSON zaplanowany",
         "boundedJsonUpsertPlanned": "Ograniczony upsert JSON zaplanowany",
         "formEditPlanned": "Formularz kontekstowy zaplanowany"
