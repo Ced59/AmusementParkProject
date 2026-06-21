@@ -96,7 +96,7 @@
       "validCoordinatesScope": "Parcs avec coordonnees valides",
       "makeFilteredValidCoordinatesVisible": "Rendre visibles les geolocalises",
       "makeVisibleShort": "Visible",
-      "markToReviewShort": "? traiter",
+      "markToReviewShort": "À traiter",
       "processLaterShort": "Plus tard",
       "clearSelectionShort": "Annuler",
       "showItems": "Items visibles"
@@ -1052,7 +1052,7 @@
       "itemsVisibleCount": "Vis.",
       "statuses": {
         "operating": "Ouvert",
-        "closedDefinitively": "Ferm? d?finitivement"
+        "closedDefinitively": "Fermé définitivement"
       }
     },
     "references": {
@@ -2117,8 +2117,8 @@
       "allZones": "Toutes les zones",
       "closedStatus": "Ouverture",
       "openOnly": "Ouverts",
-      "withClosed": "Avec ferm?s",
-      "closedOnly": "Ferm?s"
+      "withClosed": "Avec fermés",
+      "closedOnly": "Fermés"
     },
     "list": {
       "subtitle": "Explore les attractions, spectacles, restaurants, boutiques et services de ce parc, puis ouvre la fiche détaillée de chaque lieu.",
@@ -2132,7 +2132,7 @@
       "emptyFilteredMessage": "Essaie d’élargir tes filtres ou réinitialise-les pour voir plus de lieux.",
       "filteredResults": "Résultats filtrés",
       "resultsCount": "Affichage de {{start}} à {{end}} sur {{total}} lieu(x)",
-      "backToPark": "Retour ? {{name}}",
+      "backToPark": "Retour à {{name}}",
       "titleWithPark": "Lieux de {{name}}"
     },
     "detail": {
@@ -2326,7 +2326,7 @@
     },
     "unlocated": {
       "title": "{{count}} lieu(x) sans carte",
-      "subtitle": "Ils ne sont pas g?olocalis?s, mais restent accessibles ici."
+      "subtitle": "Ils ne sont pas géolocalisés, mais restent accessibles ici."
     },
     "videosPage": {
       "kicker": "Vidéos du lieu",
@@ -2728,11 +2728,11 @@
     "closedFilters": {
       "label": "Ouverture",
       "openOnly": "Ouverts",
-      "withClosed": "Avec ferm?s",
-      "closedOnly": "Ferm?s"
+      "withClosed": "Avec fermés",
+      "closedOnly": "Fermés"
     },
     "statuses": {
-      "closedDefinitively": "Ferm? d?finitivement"
+      "closedDefinitively": "Fermé définitivement"
     },
     "videosPage": {
       "kicker": "Vidéos du parc",

@@ -227,7 +227,7 @@
     },
     "unlocated": {
       "title": "{{count}} lugar(es) fuera del mapa",
-      "subtitle": "No est?n geolocalizados, pero puedes abrirlos aqu?."
+      "subtitle": "No están geolocalizados, pero puedes abrirlos aquí."
     }
   }
 }

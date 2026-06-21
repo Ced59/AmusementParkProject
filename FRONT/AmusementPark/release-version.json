@@ -1,6 +1,20 @@
 {
-  "version": "2.3.7",
+  "version": "2.3.8",
   "history": [
+    {
+      "version": "2.3.8",
+      "releasedAt": "2026-06-21",
+      "labels": {
+        "fr": "Corrections d'affichage et d'administration.",
+        "en": "Display and admin fixes.",
+        "de": "Anzeige- und Admin-Korrekturen.",
+        "nl": "Weergave- en admincorrecties.",
+        "it": "Correzioni di visualizzazione e amministrazione.",
+        "es": "Correcciones de visualización y administración.",
+        "pl": "Poprawki wyświetlania i administracji.",
+        "pt": "Correções de visualização e administração."
+      }
+    },
     {
       "version": "2.3.7",
       "releasedAt": "2026-06-21",

@@ -317,10 +317,10 @@
       "label": "Otwarcie",
       "openOnly": "Otwarte",
       "withClosed": "Z zamkn.",
-      "closedOnly": "Zamkni?te"
+      "closedOnly": "Zamknięte"
     },
     "statuses": {
-      "closedDefinitively": "Zamkni?ty na sta?e"
+      "closedDefinitively": "Zamknięty na stałe"
     }
   }
 }

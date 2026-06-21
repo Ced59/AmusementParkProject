@@ -430,7 +430,7 @@
       "reviewStatus": "Estado admin",
       "loadError": "No se pudieron cargar los parques.",
       "status": "Estado",
-      "itemsTotalCount": "?tems",
+      "itemsTotalCount": "Ítems",
       "itemsVisibleCount": "Vis.",
       "statuses": {
         "operating": "Abierto",
