@@ -1,6 +1,34 @@
 {
-  "version": "2.5.0",
+  "version": "2.6.1",
   "history": [
+    {
+      "version": "2.6.1",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "La liste des constructeurs se parcourt plus vite.",
+        "en": "Manufacturer browsing is faster.",
+        "de": "Die Herstellerliste laesst sich schneller durchsehen.",
+        "nl": "De bouwerslijst bladert sneller.",
+        "it": "La lista dei costruttori si sfoglia piu rapidamente.",
+        "es": "La lista de fabricantes se recorre mas rapido.",
+        "pl": "Lista producentow przeglada sie szybciej.",
+        "pt": "A lista de fabricantes navega mais depressa."
+      }
+    },
+    {
+      "version": "2.6.0",
+      "releasedAt": "2026-06-22",
+      "labels": {
+        "fr": "Le lift a chaine gagne une fiche technique detaillee.",
+        "en": "The chain lift gets a detailed technical guide.",
+        "de": "Der Kettenlift bekommt eine ausfuehrliche Technikseite.",
+        "nl": "De kettinglift krijgt een uitgebreide technische pagina.",
+        "it": "Il lift a catena riceve una guida tecnica dettagliata.",
+        "es": "El lift de cadena suma una guia tecnica detallada.",
+        "pl": "Lift lancuchowy dostaje szczegolowy opis techniczny.",
+        "pt": "O lift de corrente ganha um guia tecnico detalhado."
+      }
+    },
     {
       "version": "2.5.0",
       "releasedAt": "2026-06-21",
